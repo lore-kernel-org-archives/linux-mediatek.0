@@ -2,94 +2,85 @@ Return-Path: <SRS0=it3p=NO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85F1FC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 07:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 71AF6C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 09:22:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4086B61220
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 07:11:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4086B61220
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 339FA61002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 09:22:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 339FA61002
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Cy0u5LOo+8bYCXk6g8oHwahaUlkNlbYf7YujMSpg1Hw=; b=kmRy3jc5Yi/S8x
-	Eqb4nzgMDEnqO+Qa9eZUtPGX9vWpJbQZVBlwdkaeOvosa4OA6TZ/UZpvnAH/SCXc3Ro8jS2OW0Jrx
-	9sMp4GmxIl3bXbLg7uVzKZThEAVdAvG+A71Qus6HXUQkdHTEomZbHbwfaQAH9foYliYtP4xr666rN
-	Hc4pP+5Q5pUz731+V1elHZtSL1ELveAbyPuplq0NDjy7CHXnwuH8EwfuQ+YvmZNaL/3WUGd2/JVBT
-	U/Ehyr2PBQipBhChlabCxi4ZJOd8u56TLNxQstG78UaSDFcIebjsQjbU8Q+oj/eLyRTVFWTx1C8Ma
-	zqSLjB2e/G5V6QD/XrdA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UmThDeVmJQ+rHZyf3a7NkGGbe07bIZNZwyIc87u+0FQ=; b=PoX6dEuTb9BB2M
+	b0mqaMjhTAomhOR69b39g2zHzrqPNfDCZYqIPwRXO82yECuwdfaTL4fk63BnK5uIIT17SqCYCPdMQ
+	a23dYVWc0KixpZjFGsoe54L8rh1B31W+hWyEThOglPmEDd1NHp5qt/g+3t+gjqlthWObhtqS7cO0O
+	gVJ3EsFBbyuNDoVHCM2hYj3hJj3yM2p20btfeqVA+DOBUFSXI6hIDG28+jm9bDDvSSM0kcxuPPAEf
+	TBE1+4Ofxj67WQnhG3MkVQR6EIHPNoiF2rMFXYwOK5ztS1cqlJi0WJhBor/Rc7g2oC2hBHevbndGI
+	VuXoonmAxg7Gc1sgSjuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI47C-00FgbW-MI; Mon, 23 Aug 2021 07:11:26 +0000
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+	id 1mI69y-00G55B-DH; Mon, 23 Aug 2021 09:22:26 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI45d-00FfUl-Ud; Mon, 23 Aug 2021 07:09:51 +0000
-Received: by mail-pj1-x102c.google.com with SMTP id bo18so11414072pjb.0;
- Mon, 23 Aug 2021 00:09:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9Nh9cOJMrafoLUQICBnICXP4da42X3TBMHLOJtv6el0=;
- b=AxZoV944kTBLUgukjShmgDe0FvhulDu6B3x2ddsY7WplXZl2E8qswgBIl0W+0BOkUV
- c0BspHSChAKwTslLkKvro5VlK5+U1n1QMF9gW3KhfYX4QeiNw4g/zHmyqWEWBYzqcQtG
- 1vLJ5x+8GRk8xZ8oOFtReEPhb64xk4ZmtPuQVx48lCNlJHFHp5RF5yCjOhlE9PjPXsx3
- 3VKJ9GrXLF/ju2O2QHv0uQRg4KCd/6/uJGtJXVXqp6M1CGTB7GsFn7AHIP/jL0NZwRJZ
- w6qECMP6h94h7oji/Byl/Dp8y4ZQNdZf89TEfUf1A6mJ8eBNCNsadlbCg2sH9rCcP/DA
- /Stg==
+ id 1mI69e-00G53t-Ob
+ for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 09:22:10 +0000
+Received: by mail-lf1-x132.google.com with SMTP id o10so36543032lfr.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 23 Aug 2021 02:22:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=2+DCF0QhaWRzk8EBok5WHzptu4bm9hyUmXTl5rTjDN4=;
+ b=Gfinkx+aU5xV0QUh6Q8ESgjgDLwMNCjzU7N9LE0J+Q3ockZDdHegqJ4joob2fdYOb2
+ qL76p8LbsKJvVy6Y4LBNHVcVZGu8UcMpKBjsM8yRzCgI2sF2sKWDXuwmf88SSeMLcYDP
+ VscaE3eYGJ/BGm+OefggTSvdLngVgJq6/2IS0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9Nh9cOJMrafoLUQICBnICXP4da42X3TBMHLOJtv6el0=;
- b=opXxTQQBw6GvQubFgevLju/YbyZsdM2BA0endjXOCkZTsmiV1flQiAvqXNyELyghpi
- 8LjWBT0JvoCLQ3yDwt5l9WYgf/Oo3eInAD/UedgUx1Y6MGAevY722Xp7DfF8KlwyuOxk
- ZOXvWbWOVPANj99ZnSG9IqD/m5iA3Z503ty4N6objqeWcWO6CTC26JqSBo8Noi1qVyZ+
- h/pCPhRuUDlK8wuC2ROFkQC1JD6z0sqoayD1SWdMMg9Oa0p2zK1VorT8hPINE0iABspw
- aNk6vyVmVkuwnB9CyIorHoguZKRvg4xKe/+/oKfV26hke5DKrfsU79ACrkBFGKUoLLtx
- iqaw==
-X-Gm-Message-State: AOAM530cqXYlYdQRFPMGBP72/jXoFIGpNxH9F9NUbA4j4r2va7JDJ6RN
- v2HHcjr/20waP+8+D8lCAZ4=
-X-Google-Smtp-Source: ABdhPJxoTn09yTVb41VGVSMz5hnPE0hHo+zxZ05BNRUzTGPTrnjYb7hN/zvxg3fQU2bDmXHeLLkRmg==
-X-Received: by 2002:a17:90b:370d:: with SMTP id
- mg13mr18518621pjb.117.1629702578826; 
- Mon, 23 Aug 2021 00:09:38 -0700 (PDT)
-Received: from haswell-ubuntu20.lan ([138.197.212.246])
- by smtp.gmail.com with ESMTPSA id j6sm16215974pgh.17.2021.08.23.00.09.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Aug 2021 00:09:38 -0700 (PDT)
-From: DENG Qingfang <dqfext@gmail.com>
-To: stable@vger.kernel.org
-Cc: Vladimir Oltean <olteanv@gmail.com>,
- "David S . Miller" <davem@davemloft.net>,
- Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Russell King <linux@armlinux.org.uk>,
- netdev@vger.kernel.org (open list:MEDIATEK SWITCH DRIVER),
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
- linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
- linux-kernel@vger.kernel.org (open list)
-Subject: [PATCH 5.4.y] net: dsa: mt7530: fix VLAN traffic leaks again
-Date: Mon, 23 Aug 2021 15:09:27 +0800
-Message-Id: <20210823070928.166082-1-dqfext@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=2+DCF0QhaWRzk8EBok5WHzptu4bm9hyUmXTl5rTjDN4=;
+ b=d1h+skIe3KZiiU7pyS8WaOHu5fD10TwkroIE9La2ePFFXM0KvfmrPwhLONFsdqm1Lf
+ azr4A1SNvjNx5H0/d59GRNbFCRCFsBFW5kCwwvOq53W61BT5oNGfutIjfb9VGNjTW8iR
+ cS0mg6XE4EVm2UB4m65JI42XWdrjbiCsI12Kd/HAt+GjbJzRC3/D3s+nmZxsZmoVvQWy
+ UiTu4CTzcoY+k/Z+EDD7lVqv2QfP/BgeVz44ZDKiJjEtFjcZK7KxeM7lIL6nDS2dqluG
+ 9/rPTYimtFaFxSm0e2uqd4DK4amVTrszINCB3WapTfSDtso3EB/EuLY/rPvsRgQ+CZU5
+ LJ1Q==
+X-Gm-Message-State: AOAM533MoqLZgMvAhld4Cluj7pqv2HSXI2lHNXm3ugNqVyt8XIx7yRFO
+ QW2pIw/el3eOsgnAjh/g2GM3M+UNT8J1GHAR+T9VVQ==
+X-Google-Smtp-Source: ABdhPJxPsFJw/b7ioRTc/3MTl9OvvjMlHdGDY9j9HIjziEvQfETvT0xku/Ri9Tv+bLyJm99FfIXDXZlidcGyqR5heuc=
+X-Received: by 2002:ac2:4116:: with SMTP id b22mr24879487lfi.587.1629710522138; 
+ Mon, 23 Aug 2021 02:22:02 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210820111504.350-1-chun-jie.chen@mediatek.com>
+ <20210820111504.350-7-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210820111504.350-7-chun-jie.chen@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 23 Aug 2021 17:21:50 +0800
+Message-ID: <CAGXv+5FVGQkR=OpyBA7rjE0sLLqVoTpgHJuG8YDaCnWFCdDM8A@mail.gmail.com>
+Subject: Re: [v2 06/24] clk: mediatek: Add MT8195 apmixedsys clock support
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ linux-clk@vger.kernel.org, Devicetree List <devicetree@vger.kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, 
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_000950_045572_7D3FC97D 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20210823_022206_846831_C45D962B 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,43 +97,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[ Upstream commit 7428022b50d0fbb4846dd0f00639ea09d36dff02 ]
+On Fri, Aug 20, 2021 at 7:20 PM Chun-Jie Chen
+<chun-jie.chen@mediatek.com> wrote:
+>
+> Add MT8195 apmixedsys clock controller which provides Plls
+> generated from SoC 26m and ssusb clock gate control.
+>
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> ---
+>  drivers/clk/mediatek/Kconfig                 |   8 +
+>  drivers/clk/mediatek/Makefile                |   1 +
+>  drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 145 +++++++++++++++++++
+>  3 files changed, 154 insertions(+)
+>  create mode 100644 drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+>
+> diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+> index 576babd86f98..7ba1f4118e0d 100644
+> --- a/drivers/clk/mediatek/Kconfig
+> +++ b/drivers/clk/mediatek/Kconfig
+> @@ -580,6 +580,14 @@ config COMMON_CLK_MT8192_VENCSYS
+>         help
+>           This driver supports MediaTek MT8192 vencsys clocks.
+>
+> +config COMMON_CLK_MT8195
+> +        bool "Clock driver for MediaTek MT8195"
+> +        depends on ARM64 || COMPILE_TEST
+> +        select COMMON_CLK_MEDIATEK
+> +        default ARM64
+> +        help
+> +          This driver supports MediaTek MT8195 basic clocks.
 
-When a port leaves a VLAN-aware bridge, the current code does not clear
-other ports' matrix field bit. If the bridge is later set to VLAN-unaware
-mode, traffic in the bridge may leak to that port.
+Since we will have all clocks under the same Kconfig option, please
+drop the word "basic".
 
-Remove the VLAN filtering check in mt7530_port_bridge_leave.
+> +
+>  config COMMON_CLK_MT8516
+>         bool "Clock driver for MediaTek MT8516"
+>         depends on ARCH_MEDIATEK || COMPILE_TEST
+> diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+> index 15bc045f0b71..d4157cfca865 100644
+> --- a/drivers/clk/mediatek/Makefile
+> +++ b/drivers/clk/mediatek/Makefile
+> @@ -80,5 +80,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_MSDC) += clk-mt8192-msdc.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_SCP_ADSP) += clk-mt8192-scp_adsp.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_VDECSYS) += clk-mt8192-vdec.o
+>  obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
+> +obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o
+>  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+>  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+> diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+> new file mode 100644
+> index 000000000000..253eb30b22d4
+> --- /dev/null
+> +++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
+> @@ -0,0 +1,145 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +//
+> +// Copyright (c) 2021 MediaTek Inc.
+> +// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+> +
+> +#include "clk-gate.h"
+> +#include "clk-mtk.h"
+> +
+> +#include <dt-bindings/clock/mt8195-clk.h>
+> +#include <linux/of_device.h>
+> +#include <linux/platform_device.h>
+> +
+> +static const struct mtk_gate_regs apmixed_cg_regs = {
+> +       .set_ofs = 0x8,
+> +       .clr_ofs = 0x8,
+> +       .sta_ofs = 0x8,
+> +};
+> +
+> +#define GATE_APMIXED(_id, _name, _parent, _shift)                      \
+> +       GATE_MTK(_id, _name, _parent, &apmixed_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
+> +
+> +static const struct mtk_gate apmixed_clks[] = {
+> +       GATE_APMIXED(CLK_APMIXED_PLL_SSUSB26M, "pll_ssusb26m", "clk26m", 1),
+> +};
+> +
+> +#define MT8195_PLL_FMAX                (3800UL * MHZ)
+> +#define MT8195_PLL_FMIN                (1500UL * MHZ)
+> +#define MT8195_INTEGER_BITS    8
+> +
+> +#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags,              \
+> +                       _rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,    \
+> +                       _tuner_reg, _tuner_en_reg, _tuner_en_bit,       \
+> +                       _pcw_reg, _pcw_shift, _pcw_chg_reg,             \
+> +                       _en_reg, _pll_en_bit) {                         \
 
-Fixes: 4fe4e1f48ba1 ("net: dsa: mt7530: fix VLAN traffic leaks")
-Fixes: 83163f7dca56 ("net: dsa: mediatek: add VLAN support for MT7530")
-Signed-off-by: DENG Qingfang <dqfext@gmail.com>
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
-Signed-off-by: David S. Miller <davem@davemloft.net>
----
- drivers/net/dsa/mt7530.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Nit: Even for macro definitions, you could align the lines to the opening
+parenthesis. That would give you more room. And it would make it slightly
+easier to read.
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index aec606058d98..fc45af12612f 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -840,11 +840,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
- 		/* Remove this port from the port matrix of the other ports
- 		 * in the same bridge. If the port is disabled, port matrix
- 		 * is kept and not being setup until the port becomes enabled.
--		 * And the other port's port matrix cannot be broken when the
--		 * other port is still a VLAN-aware port.
- 		 */
--		if (dsa_is_user_port(ds, i) && i != port &&
--		   !dsa_port_is_vlan_filtering(&ds->ports[i])) {
-+		if (dsa_is_user_port(ds, i) && i != port) {
- 			if (dsa_to_port(ds, i)->bridge_dev != bridge)
- 				continue;
- 			if (priv->ports[i].enable)
--- 
-2.25.1
+Otherwise,
 
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+[...]
 
 _______________________________________________
 Linux-mediatek mailing list
