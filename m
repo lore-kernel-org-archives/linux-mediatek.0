@@ -2,87 +2,105 @@ Return-Path: <SRS0=it3p=NO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+X-Spam-Status: No, score=-9.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CD127C4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 09:56:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 45C34C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 10:02:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D51561078
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 09:56:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8D51561078
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id F05CC61246
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 10:02:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F05CC61246
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JAeDQRre5kNocBhasX/v8F/YaWgqoIJAgPsH5ZMwWbo=; b=F1q4lqhaJhzNLA
-	81wTX30GE7hHNHfR1o+qKi7fcOKc8PM1QyLxymmzrBgMV34NhNcANZAbEs7lp5FcYyDtwy3e2v+hJ
-	wIN18D0S1ArfQNG8CQAyeSEP7d1f1TdYWmZ6bgSseoEagjNiDWBZiVhZJXpl2kovoRRe9soY+OtM1
-	s5J6vMjXzkH9FRnNLeg3tslvcF053lsC6c4Eu5vB1wbRxGGV6WoLR6hsA7vm7Di7w9UVJyC96QIJj
-	R5uK67ZjlOCTzCehtpTMxLIDAUE9viehftwTyRlCaaanU+FOJAgu94cW3QulPy3DF7puUnuB4bUmg
-	1GOBmd4vXGlctwkQr2bQ==;
+	List-Owner; bh=JX9NDDu8ZjgEXyKJYQfAtERPAkb/mFL6833VxYynT/0=; b=ht5/9PyoeZFRJ2
+	Q7sen9cOj3QDJ1l9kcIuEYSbnT0aS6itxZCOiWsGE/fhM1FydnGL87OmO5joe3eRK3LRkjclmIYOS
+	05Cr1X3/d1+yljbQc6KcqrL/OxCbVJfLpAKbIfN7tCPvZTSqQgzLoQWXI8NHY37llO77FhMRxk/ht
+	9R5ZkoLh0Py6jsy7RNSx1Qscw6NGHBSTUqe82RFdTFE46eHJ9kUMgaHbP/pEPxnxK8nqBKmM/B+vg
+	8iMqxH6cU4X32xgDU+/BhevaKs95fhJaFtoEfeiZ/QEfV/dUdRVIi3NtZee6ZZDqgoGtex81Dd1Lb
+	eYWGXtSWYkQWL/GoSjJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI6h8-00GDzp-KY; Mon, 23 Aug 2021 09:56:42 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1mI6mO-00GEuc-6h; Mon, 23 Aug 2021 10:02:08 +0000
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI6h3-00GDy0-R6
- for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 09:56:41 +0000
-Received: by mail-lf1-x129.google.com with SMTP id o10so36724375lfr.11
- for <linux-mediatek@lists.infradead.org>; Mon, 23 Aug 2021 02:56:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=DwLkafPCzacBVSHpjjdAUPEKJJ43SzqoH9OLBe2Mi0Q=;
- b=YgVAPvpVDcLUGJH7iZ2jc6W5WnbjynjOndiFSG7jVPMrplKFg+JDXHJhkyQF7kbk8B
- V6rT6v/4xnK8XbooWVgrkmK/ZpHk3T/XZcFcbe9fRpNkbXsEEVu2+kU0i+vOqdmAGrke
- NFb9pPkz+mcDPBNyDoG1fm8qwfBDEnqlEcB6s=
+ id 1mI6mJ-00GEqp-66
+ for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 10:02:07 +0000
+Received: by mail-pj1-x1033.google.com with SMTP id j1so11592036pjv.3
+ for <linux-mediatek@lists.infradead.org>; Mon, 23 Aug 2021 03:01:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=a83R/B9Lm/qgVoAlx8qnij+Ld74e3iDN4AlBrXWn3Xk=;
+ b=YZAtljkGqZOJTdpRv6gq3v0m2WWXbAf3uPSSoPDrKNT7qchBAg69QpaFsao25+MF+w
+ HtHHW7Xa3yHKhgbPyYjKcjpcuIY67qgVoPIzkF+0JqcXxgMhml9BkAsrUVsEi3Hvr/Yw
+ ghdLNA3EoSYqVEhybvndDhd3KlSRoZ9Ctz7bZQJa4arwFKkUbcwzvwto9nAuG4oNm9sb
+ U8Ln9GL1z6ZUsb3QdhRRTO5kqRTyf9FVQg/n+4XuaLKkZYzDbGN50oWhWdoDDT+5QYXG
+ K2qKN2aKdOwgp6ik/5WSHkHQsbvQSBjSfbAXPs4dbrsrD2J+gdq+fzTXW9ESrBIurWGT
+ Uu3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=DwLkafPCzacBVSHpjjdAUPEKJJ43SzqoH9OLBe2Mi0Q=;
- b=WHC+zZUenxh2CPCBGTrtVSHIZkney/vR1JhOh2yiHywFSzcP8w83dB+ohpnxGbPDH8
- CK1cSNqDl4cHzblIuMRn5QX4S2htdaoVssTpmEyyGsj4+qPHu5TxdVxQCj2WCFmL41gL
- DP2pF8EWdauosQ1p5JiF/zhpcapiltbuH8oGcz+dpVIcxxja69Y0CQXZzkIapJIviPbh
- YHIYqwjfec5ZiPUbyWrTgVPexg3Gi/h4Tm7JNmNkNH+NiJ/oGpZUwPVTzXrmvULBwrq8
- zmeiz03Zk+uTM6ywAd9kOT9iMBkIQUbWD/fjzNEaXxEzGK4cThT8oUeqMhfDYURjwfEF
- q2nw==
-X-Gm-Message-State: AOAM531/uVcz9BchjyAuuguX5biMPThHaetp51s9RBcYFGvyroGebe3G
- /WVlp4z63zOYB4ooprgWfeSEGCWu/2rhqtwH8cH/9Q==
-X-Google-Smtp-Source: ABdhPJyTMTEV40CeyBrnNkz402YWpL8znfz4DOOREIuAtTkANyhl+dbk7fSjMPr6NTPWNX8sb5dYEJPaEB9iHIKK5bY=
-X-Received: by 2002:a05:6512:3b98:: with SMTP id
- g24mr16898362lfv.276.1629712593296; 
- Mon, 23 Aug 2021 02:56:33 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=a83R/B9Lm/qgVoAlx8qnij+Ld74e3iDN4AlBrXWn3Xk=;
+ b=Fspf/Eh71DysjQ9JjhRHiasAJ1fcFB9yP6rfIWCFuEgzEd9H1C1V84MaVS0sv6viIl
+ p0T4HVAtMXqhKtmWmGULTJ+Jk9z0zPAF66y7KkHH/SKzs9AVz0Wroeu6ZmiMaqPQmO2d
+ R0qiu2LtcqEDvJ7Pr0QEb0blkrMMEsSEIOgZ7gpYf4q9eULYbm4XFRhuq7JuXXoN+PMQ
+ siMTpA4rnp34xPJgHWqiZ3oMquoT/hp9jxkyNxa170cyQJ8YzDM/BGQc2MX9LcaNy0vt
+ KpKKz+5jjnd1OzQPS8GSnQlPm3SXfeFHO17bnOMyk31uQT/wiVhkVKqYe6qA9hAaNidp
+ oxmg==
+X-Gm-Message-State: AOAM531T6UqGPfdYl3lvluVD9YHCvsglHSriNZ/vF85Rrqfy41z96JpL
+ ncREyRQT/QosSBa6UB48oDJWKA==
+X-Google-Smtp-Source: ABdhPJz+hz17o/gcGS8iJUfbpeh537f4BVJ+xiYeyWgkJMD344jXhdt++YyEDBEi6/n1J0b8QZSPZQ==
+X-Received: by 2002:a17:90a:4584:: with SMTP id
+ v4mr19165244pjg.169.1629712906127; 
+ Mon, 23 Aug 2021 03:01:46 -0700 (PDT)
+Received: from google.com ([2401:fa00:1:10:bc5a:af6a:3f08:a084])
+ by smtp.gmail.com with ESMTPSA id g13sm15458871pfo.53.2021.08.23.03.01.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Aug 2021 03:01:45 -0700 (PDT)
+Date: Mon, 23 Aug 2021 18:01:40 +0800
+From: Tzung-Bi Shih <tzungbi@google.com>
+To: Irui Wang <irui.wang@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>, Yong Wu <yong.wu@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ Longfei Wang <longfei.wang@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>,
+ Fritz Koenig <frkoenig@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 2/9] media: mtk-vcodec: Use component framework to manage
+ encoder hardware
+Message-ID: <YSNyBE4yF6VDt3cC@google.com>
+References: <20210816105934.28265-1-irui.wang@mediatek.com>
+ <20210816105934.28265-3-irui.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20210820111504.350-1-chun-jie.chen@mediatek.com>
- <20210820111504.350-7-chun-jie.chen@mediatek.com>
- <CAGXv+5FVGQkR=OpyBA7rjE0sLLqVoTpgHJuG8YDaCnWFCdDM8A@mail.gmail.com>
-In-Reply-To: <CAGXv+5FVGQkR=OpyBA7rjE0sLLqVoTpgHJuG8YDaCnWFCdDM8A@mail.gmail.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Mon, 23 Aug 2021 17:56:22 +0800
-Message-ID: <CAGXv+5E2G-OBwQyKdMVavw5hTNQsNe7v=yHc720csxOchV9wpA@mail.gmail.com>
-Subject: Re: [v2 06/24] clk: mediatek: Add MT8195 apmixedsys clock support
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
- Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-clk@vger.kernel.org, Devicetree List <devicetree@vger.kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, 
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20210816105934.28265-3-irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_025637_950964_3DA6E773 
-X-CRM114-Status: GOOD (  24.34  )
+X-CRM114-CacheID: sfid-20210823_030203_269541_34CF5372 
+X-CRM114-Status: GOOD (  29.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,118 +117,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 23, 2021 at 5:21 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
->
-> On Fri, Aug 20, 2021 at 7:20 PM Chun-Jie Chen
-> <chun-jie.chen@mediatek.com> wrote:
-> >
-> > Add MT8195 apmixedsys clock controller which provides Plls
-> > generated from SoC 26m and ssusb clock gate control.
-> >
-> > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > ---
-> >  drivers/clk/mediatek/Kconfig                 |   8 +
-> >  drivers/clk/mediatek/Makefile                |   1 +
-> >  drivers/clk/mediatek/clk-mt8195-apmixedsys.c | 145 +++++++++++++++++++
-> >  3 files changed, 154 insertions(+)
-> >  create mode 100644 drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> >
-> > diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
-> > index 576babd86f98..7ba1f4118e0d 100644
-> > --- a/drivers/clk/mediatek/Kconfig
-> > +++ b/drivers/clk/mediatek/Kconfig
-> > @@ -580,6 +580,14 @@ config COMMON_CLK_MT8192_VENCSYS
-> >         help
-> >           This driver supports MediaTek MT8192 vencsys clocks.
-> >
-> > +config COMMON_CLK_MT8195
-> > +        bool "Clock driver for MediaTek MT8195"
-> > +        depends on ARM64 || COMPILE_TEST
-> > +        select COMMON_CLK_MEDIATEK
-> > +        default ARM64
-> > +        help
-> > +          This driver supports MediaTek MT8195 basic clocks.
->
-> Since we will have all clocks under the same Kconfig option, please
-> drop the word "basic".
->
-> > +
-> >  config COMMON_CLK_MT8516
-> >         bool "Clock driver for MediaTek MT8516"
-> >         depends on ARCH_MEDIATEK || COMPILE_TEST
-> > diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
-> > index 15bc045f0b71..d4157cfca865 100644
-> > --- a/drivers/clk/mediatek/Makefile
-> > +++ b/drivers/clk/mediatek/Makefile
-> > @@ -80,5 +80,6 @@ obj-$(CONFIG_COMMON_CLK_MT8192_MSDC) += clk-mt8192-msdc.o
-> >  obj-$(CONFIG_COMMON_CLK_MT8192_SCP_ADSP) += clk-mt8192-scp_adsp.o
-> >  obj-$(CONFIG_COMMON_CLK_MT8192_VDECSYS) += clk-mt8192-vdec.o
-> >  obj-$(CONFIG_COMMON_CLK_MT8192_VENCSYS) += clk-mt8192-venc.o
-> > +obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o
-> >  obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
-> >  obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
-> > diff --git a/drivers/clk/mediatek/clk-mt8195-apmixedsys.c b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> > new file mode 100644
-> > index 000000000000..253eb30b22d4
-> > --- /dev/null
-> > +++ b/drivers/clk/mediatek/clk-mt8195-apmixedsys.c
-> > @@ -0,0 +1,145 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+On Mon, Aug 16, 2021 at 06:59:27PM +0800, Irui Wang wrote:
+> +static struct component_match *mtk_venc_match_add(struct mtk_vcodec_dev *dev)
+> +{
+> +	struct platform_device *pdev = dev->plat_dev;
+> +	struct component_match *match = NULL;
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(mtk_venc_comp_ids); i++) {
+> +		enum mtk_venc_hw_id comp_idx;
+> +		struct device_node *comp_node;
+> +		const struct of_device_id *of_id;
+To be neat, prefer to define the variables outside of the loop (i.e. at the beginning of the function).
 
-I actually only requested the files related to DT bindings, which includes
-`Documentation/device-tree/bindings/*` and `include/dt-bindings/*`, be dual
-licensed.
+> +
+> +		comp_node = of_find_compatible_node(NULL, NULL,
+> +			mtk_venc_comp_ids[i].compatible);
+> +		if (!comp_node)
+> +			continue;
+> +
+> +		of_id = of_match_node(mtk_venc_comp_ids, comp_node);
+> +		if (!of_id) {
+> +			dev_err(&pdev->dev, "Failed to get match node\n");
+Need to call of_node_put() actually, but see comment below.
 
-I'm not sure dual licensing the actual driver code makes sense, or is
-even valid, since this calls into existing GPL-2.0 code. But I am not
-a lawyer.
+> +			return ERR_PTR(-EINVAL);
+> +		}
+> +
+> +		comp_idx = (enum mtk_venc_hw_id)of_id->data;
+For getting the comp_idx, mtk_venc_comp_ids[i].data should be sufficient.  If so, of_match_node() can be removed so that the error handling path won't need to call of_node_put().
 
+> @@ -239,6 +314,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>  	phandle rproc_phandle;
+>  	enum mtk_vcodec_fw_type fw_type;
+>  	int ret;
+> +	struct component_match *match = NULL;
+It doesn't need to be initialized.
 
-ChenYu
+> -	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+> -	if (res == NULL) {
+> -		dev_err(&pdev->dev, "failed to get irq resource");
+> -		ret = -ENOENT;
+> -		goto err_res;
+> -	}
+> +		res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+> +		if (!res) {
+> +			dev_err(&pdev->dev, "failed to get irq resource");
+> +			ret = -ENOENT;
+> +			goto err_res;
+> +		}
+res is not used.  Can be removed in next version or in another patch.
 
-> > +//
-> > +// Copyright (c) 2021 MediaTek Inc.
-> > +// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> > +
-> > +#include "clk-gate.h"
-> > +#include "clk-mtk.h"
-> > +
-> > +#include <dt-bindings/clock/mt8195-clk.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/platform_device.h>
-> > +
-> > +static const struct mtk_gate_regs apmixed_cg_regs = {
-> > +       .set_ofs = 0x8,
-> > +       .clr_ofs = 0x8,
-> > +       .sta_ofs = 0x8,
-> > +};
-> > +
-> > +#define GATE_APMIXED(_id, _name, _parent, _shift)                      \
-> > +       GATE_MTK(_id, _name, _parent, &apmixed_cg_regs, _shift, &mtk_clk_gate_ops_no_setclr_inv)
-> > +
-> > +static const struct mtk_gate apmixed_clks[] = {
-> > +       GATE_APMIXED(CLK_APMIXED_PLL_SSUSB26M, "pll_ssusb26m", "clk26m", 1),
-> > +};
-> > +
-> > +#define MT8195_PLL_FMAX                (3800UL * MHZ)
-> > +#define MT8195_PLL_FMIN                (1500UL * MHZ)
-> > +#define MT8195_INTEGER_BITS    8
-> > +
-> > +#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags,              \
-> > +                       _rst_bar_mask, _pcwbits, _pd_reg, _pd_shift,    \
-> > +                       _tuner_reg, _tuner_en_reg, _tuner_en_bit,       \
-> > +                       _pcw_reg, _pcw_shift, _pcw_chg_reg,             \
-> > +                       _en_reg, _pll_en_bit) {                         \
->
-> Nit: Even for macro definitions, you could align the lines to the opening
-> parenthesis. That would give you more room. And it would make it slightly
-> easier to read.
->
-> Otherwise,
->
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
->
-> [...]
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c
+> new file mode 100644
+> index 000000000000..4e6a8a81ff67
+> --- /dev/null
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c
+> @@ -0,0 +1,179 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + */
+> +
+> +#include <linux/pm_runtime.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/irq.h>
+> +#include <linux/of_platform.h>
+> +#include <linux/module.h>
+Would be better to maintain an order.
+
+> +#include "mtk_vcodec_enc_hw.h"
+> +#include "mtk_vcodec_enc.h"
+Would be better to maintain an order.
+
+> +static irqreturn_t mtk_enc_comp_irq_handler(int irq, void *priv)
+> +{
+> +	struct mtk_venc_comp_dev *dev = priv;
+> +	struct mtk_vcodec_ctx *ctx;
+> +	unsigned long flags;
+> +	void __iomem *addr;
+> +
+> +	spin_lock_irqsave(&dev->master_dev->irqlock, flags);
+> +	ctx = dev->curr_ctx;
+> +	spin_unlock_irqrestore(&dev->master_dev->irqlock, flags);
+> +	if (!ctx)
+> +		return IRQ_HANDLED;
+Here is a read lock for the curr_ctx.  The patch doesn't contain the write lock part.
+
+I am not sure if the following situation would be happened:
+1. curr_ctx is not NULL.
+2. mtk_enc_comp_irq_handler() gets the curr_ctx.
+3. The curr_ctx has been destroyed somewhere.
+4. mtk_enc_comp_irq_handler() finds the ctx is not NULL so that it continues to execute.
+5. Something wrong in latter mtk_enc_comp_irq_handler() because the ctx has been destroyed.
+
+Does it make more sense to set curr_ctx to NULL to indicate the ownership has been transferred to mtk_enc_comp_irq_handler()?  For example:
+
+spin_lock_irqsave(...);
+ctx = dev->curr_ctx;
+dev->curr_ctx = NULL;
+spin_unlock_irqrestore(...);
+
+> +static int mtk_venc_comp_bind(struct device *dev,
+> +			      struct device *master, void *data)
+> +{
+> +	struct mtk_venc_comp_dev *comp_dev = dev_get_drvdata(dev);
+> +	struct mtk_vcodec_dev *master_dev = data;
+> +	int i;
+> +
+> +	for (i = 0; i < MTK_VENC_HW_MAX; i++) {
+> +		if (dev->of_node != master_dev->enc_comp_node[i])
+> +			continue;
+> +
+> +		/*add component device by order*/
+> +		if (comp_dev->core_id == MTK_VENC_CORE0)
+> +			master_dev->enc_comp_dev[MTK_VENC_CORE0] = comp_dev;
+> +		else if (comp_dev->core_id == MTK_VENC_CORE1)
+> +			master_dev->enc_comp_dev[MTK_VENC_CORE1] = comp_dev;
+> +		else
+> +			return -EINVAL;
+if (comp_dev->core_id < 0 || comp_dev->core_id >= MTK_VENC_HW_MAX)
+    return -EINVAL;
+
+master_dev->enc_comp_dev[comp_dev->core_id] = comp_dev;
 
 _______________________________________________
 Linux-mediatek mailing list
