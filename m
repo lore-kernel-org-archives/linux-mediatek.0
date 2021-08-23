@@ -1,101 +1,79 @@
-Return-Path: <SRS0=dV3g=NN=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=it3p=NO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 19D9BC4338F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 17:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 01111C4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 02:27:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CA0AD611C8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Aug 2021 17:57:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CA0AD611C8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	by mail.kernel.org (Postfix) with ESMTPS id B53A461361
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 02:27:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B53A461361
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=borCabpZSKoVvvDGyu0zNJzthsAc4xMTFe5wvI49d/M=; b=sHe6AuX85q+rRE
-	YyNGG4amtbcRLLl0nFGby4Yn+GEKDKSzJ4vraJFhN/WXgtSsElGu14z5Gkpg/Nyv3Zu8nTMABN3bM
-	eMGBU1KA37uHnc7khoUmRuG2s+KZqYccaKFJCTPd+AhERk3DuDadrA2Qaohqr8P+egMeB8Jqcm1BR
-	hyxj6VsYw6Gz0zPCPtNDMSxeNwOXnET7uGv/kBVtdDXci8YoMFJqQa9ovg8WZ3MNYPp81I8KDAfvy
-	I6H978wDqJFLlHM4v7dfNmyN7nfw1KDY059vSlGwqZ89c3MApVI4Fxg6z8jrqVSE/IFT/A9C0sd7B
-	sDxE00iXyCphgYo6ZCCg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hTPARlexnTrmX4k4i5ctcWwoDVkLg9MQHHpMgUIBRRw=; b=zYMvjY8/550AJm
+	Pxk+jm34UaLMEIkioPNFo5ubxlUnggp6cL2zSA0irE2d2HPqypYkNGG7LxwgSWkkKJMjCD4FIfbd6
+	Zic8aFX7og0rl9yzwNeg7QeEVC57fat744k5os3nLXJ1ZFgKuGf8x6xb/MkX64hNHi9Lf/9WQQkl5
+	+NS/4Cgr6Qos0Sj0mSarfhc2tNsEK5ZvSr1Aoc7zHyc6dseuQesG06gTJRfOjDn02RqCGl6Bj+hlQ
+	2kN3X4ACC5KIpxxBrsqonPrZDl7CJKbCuhlci88iFtack/OyhUkZj6iYKrsl9EaetZ7vYEXk4HdWj
+	HwHI1PQt/pjyww5v4uCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mHrj3-00ESU0-7t; Sun, 22 Aug 2021 17:57:41 +0000
-Received: from mail-il1-x12a.google.com ([2607:f8b0:4864:20::12a])
+	id 1mHzg3-00FChW-Qr; Mon, 23 Aug 2021 02:27:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mHrip-00ESQj-Dy
- for linux-mediatek@lists.infradead.org; Sun, 22 Aug 2021 17:57:29 +0000
-Received: by mail-il1-x12a.google.com with SMTP id z2so14926895iln.0
- for <linux-mediatek@lists.infradead.org>; Sun, 22 Aug 2021 10:57:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tO3FpggPumUudO2O7Ir/fs1af6Qf8hcFO9g7I6cp01Q=;
- b=NDkEoB50cJIffh8DEmD3xfV5OH8ema/PjNX2L8kixdAdzju1+1Q+RfI4dvsWmf6ckV
- cbsUqLyLFzaRWyrxKHgk9HO+WkFNp66FjMC0xCvO73mpe2AOuKEOT9losiWcUW3PDPNm
- I0Juj2PjGLAqKt2+Iz9cmX6gBy5MzrvAzxAH8s1TYKJbJaqQKfMgWI5aiYeXRCwwh3kd
- CJI4TEZHABSCNMA2IhdFQIizIVfW37pxWIzkxkAqqzqK5tmPuWInXDStw52NSqp8XXny
- pVSXtZOL/inFPT0NN6u8kmBCcSiariw/dIe5ePYIn0HTiy7GwQL7GtGEqlmgztShSjIB
- r2/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tO3FpggPumUudO2O7Ir/fs1af6Qf8hcFO9g7I6cp01Q=;
- b=aC9yAx5Rjs6gPc1meVbuHOUYIebZvElX5gcFDEPxI8BBwTRKX245dv24yN202S0D1M
- ZpjjvZRJmK0P8dd8zl0rOakwfXK82tAq3z58wTgSYGSWg3swNgaTwt+7Fi9Z3kxd1M3x
- TpiKx4WXubsGJQKsmhqcu4O/zSwdV9qujUC7fINOkRsfXV12DjEa/oRSPmfMy5fo0E3k
- mkVVV175bkat6djI9b1lHczJQxdPXyBpWu+ESPbwMWmlu94QgkF1dnB7xbi2crIEeBTV
- +yK+9hrJJpANFGhW75xcTEJD74SlmXaMCawu534Upuw/KGG/fBLmciJ2/nqlI/BZ9o9+
- ewLw==
-X-Gm-Message-State: AOAM531Wq+bdXg3KWJC0Cw0znlQRYjJnervspoBQUWxmS7C74KQUQIK8
- JSY88LBhfJThOssWZKN/i0P7Tjtf8eoOl0h5ZPFeSg==
-X-Google-Smtp-Source: ABdhPJxAy4F4JBrNf2BEXyC2jHsLYTKqTZpEvWl47iBJSnZyLzmCveu6cLApJEwjHW6shDTLnoCxAWArc0HfBTHBbuc=
-X-Received: by 2002:a92:ca89:: with SMTP id t9mr21038515ilo.178.1629655046630; 
- Sun, 22 Aug 2021 10:57:26 -0700 (PDT)
+ id 1mHzfz-00FCgj-I5
+ for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 02:27:07 +0000
+X-UUID: aef938ea2bc34f6695fcc527f366760a-20210822
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=q89acb8ctpCqH7/PdsfVg1HDy9o+OgGBP2spYzVdU8U=; 
+ b=KA+7nMVSpnHnPfzccOZoz6koMz2HQ+7NXWwaFmj2ZXVgSS1Q8XpubAQ0Tx3pJP/BSFs3kRQwFG6hy8dIRjsaLSA/5/xWXwGPuNJDZJmc/PlaXUyPjAlHXK+83lHnZ20rszwAKryICFKz7UEtvDjNm93eG+g3/xfhGOOMFA4AZ3g=;
+X-UUID: aef938ea2bc34f6695fcc527f366760a-20210822
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 408158283; Sun, 22 Aug 2021 19:26:55 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 22 Aug 2021 19:26:54 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 Aug 2021 10:26:52 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 23 Aug 2021 10:26:52 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <Eric.Liang@mediatek.com>, <Stella.Chang@mediatek.com>, <jemele@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] mt76: mt7921: fix the inconsistent state between bind and
+ unbind
+Date: Mon, 23 Aug 2021 10:26:51 +0800
+Message-ID: <9c71befbdf8a97f72f4538c39a71041ccffbaf83.1629685207.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
- <CAAEAJfDWOzCJxZFNtxeT7Cvr2pWbYrfz-YnA81sVNs-rM=8n4Q@mail.gmail.com>
- <CAKMK7uFW3Z=Up=OCJO4dNR9ffaTdFjHwoND9CrUw6LHmQ4t_AQ@mail.gmail.com>
-In-Reply-To: <CAKMK7uFW3Z=Up=OCJO4dNR9ffaTdFjHwoND9CrUw6LHmQ4t_AQ@mail.gmail.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Sun, 22 Aug 2021 14:57:15 -0300
-Message-ID: <CAAEAJfB3CoTU7bZe08wYEfTTm6=6UPOae9u39AtdbJ9saYknBA@mail.gmail.com>
-Subject: Re: [PATCH v5, 00/15] Using component framework to support multi
- hardware decode
-To: Daniel Vetter <daniel@ffwll.ch>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
- dri-devel <dri-devel@lists.freedesktop.org>, 
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
- Fritz Koenig <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>, 
- linux-media <linux-media@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- srv_heupstream <srv_heupstream@mediatek.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- George Sun <george.sun@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210822_105727_644366_A8CF3ECF 
-X-CRM114-Status: GOOD (  28.68  )
+X-CRM114-CacheID: sfid-20210822_192703_670236_8A0AF262 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,61 +90,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 22 Aug 2021 at 13:50, Daniel Vetter <daniel@ffwll.ch> wrote:
->
-> On Wed, Aug 18, 2021 at 4:12 PM Ezequiel Garcia
-> <ezequiel@vanguardiasur.com.ar> wrote:
-> >
-> > +danvet
-> >
-> > Hi,
-> >
-> > On Tue, 10 Aug 2021 at 23:58, Yunfei Dong <yunfei.dong@mediatek.com> wrote:
-> > >
-> > > This series adds support for multi hardware decode into mtk-vcodec, by first
-> > > adding component framework to manage each hardware information: interrupt,
-> > > clock, register bases and power. Secondly add core thread to deal with core
-> > > hardware message, at the same time, add msg queue for different hardware
-> > > share messages. Lastly, the architecture of different specs are not the same,
-> > > using specs type to separate them.
-> > >
-> >
-> > I don't think it's a good idea to introduce the component API in the
-> > media subsystem. It doesn't seem to be maintained, IRC there's not even
-> > a maintainer for it, and it has some issues that were never addressed.
->
-> Defacto dri-devel folks are maintainer component.c, but also I'm not
-> aware of anything missing there?
->
+From: Sean Wang <sean.wang@mediatek.com>
 
-A while ago, I tried to fix a crash in the Rockchip DRM driver
-(I was then told there can be similar issues on the IMX driver too,
-but I forgot the details of that).
+We shouldn't put back the device into fw own state after wifi reset at
+driver unbind stage to fix the following error because that is not the
+consistent state the current driver bind stage expects.
 
-I sent a patchset trying to address it and got total silence back.
-Although you could argue the issue is in how drivers use the component
-API, AFAICR the abuse is spreaded across a few drivers, so it felt
-more reasonable to improve the component API itself, instead of changing
-all the drivers.
+localhost ~ # echo 0000:01:00.0 > /sys/bus/pci/drivers/mt7921e/unbind
+localhost ~ # echo 0000:01:00.0 > /sys/bus/pci/drivers/mt7921e/bind
+...
+[  481.172969] mt7921e 0000:01:00.0: ASIC revision: feed0000
+[  482.133547] mt7921e: probe of 0000:01:00.0 failed with error -110
+-bash: echo: write error: No such device
 
-See below:
+Fixes: c1af184ba830 ("mt76: mt7921: fix dma hang in rmmod")
+Co-developed-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-https://patchwork.kernel.org/project/linux-rockchip/cover/20200120170602.3832-1-ezequiel@collabora.com/
-
-> There has been discussions that in various drm subsystems like
-> drm_bridge or drm_panel a few things are missing, which prevent
-> drivers from moving _away_ from component.c to the more specific
-> solutions for panel/bridges. But nothing that's preventing them from
-> using component.c itself.
->
-> I'm happy to merge a MAINTAINERS patch to clarify the situation if
-> that's needed.
-
-Indeed, that would be good.
-
-Thanks,
-Ezequiel
-
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 1f37e64b6038..3e84ef8f5358 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -279,7 +279,6 @@ void mt7921_unregister_device(struct mt7921_dev *dev)
+ 	mt7921_mcu_drv_pmctrl(dev);
+ 	mt7921_dma_cleanup(dev);
+ 	mt7921_mcu_exit(dev);
+-	mt7921_mcu_fw_pmctrl(dev);
+ 
+ 	tasklet_disable(&dev->irq_tasklet);
+ 	mt76_free_device(&dev->mt76);
+-- 
+2.25.1
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
