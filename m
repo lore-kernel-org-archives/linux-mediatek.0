@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C9EEBC4338F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:06:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7256EC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:07:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9842161373
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:06:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9842161373
+	by mail.kernel.org (Postfix) with ESMTPS id 3387861373
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 13:07:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3387861373
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kUKjfXZ3pzgXcml9RdmdfGcTa9LqwZnPXEZN9uSkT+o=; b=nvRx+gUMKc8yeq
-	PwBPSPoZ2pw1YfvL950i8rO+OqVWXq9YWKAn1hTnR/rblKUAxxaRz8t6GivAnttFmEqvshKY2cZ17
-	oszhrR6LD0D4obVqRY6Ieszb1BozBVQK7D/qXWyK5dvZodHIKrPzFirlQe0Es/pRin5TmDh050Fam
-	p4Fbn9NHGt2NDEFf3kSrfYOiCLJTUdm/psX8pdtIBpuwyHbhmnGJJ6QHIWCkDTrjLjYOiq+4rNN5D
-	E3gt/opdTAqbaZXShMoHbmq5b6ZpS+1qkFDS1DdERXT8fBW23kUThVZcyV2/SM1AQBrmDnZpP7+2g
-	AfuN+hb6pe6L0OlluM5g==;
+	List-Owner; bh=Dre/6pcsp52ZmsvBN5TgS5sow0NuUjOLL9MPOd+Yedk=; b=HwFjbMXMJrFTBb
+	rT5a4IUQNPQB5b0nMViiXuIwJ9fRiJh4qOVJNERRGcsXlv6hSH5AgQWSaELRr9kNi7B6VKdglNdlt
+	irrUWfFr4Jqq802SICX8J55flIQQyPxy0Bh7HCRRdObjPLbDv4uTvm1gf5U1ymzj178FQj3lUH6Ex
+	+IaQav+w74Yj9k8wmeyE1jtgY750f1K9mTX+PZo/bH0J5OwG82zI3WL0tUli/sVV+vLiuWAJ8YCad
+	v4ZJUYVes8c/UyoT1fZOb/9CU82mlPggqtDioJJxh9i2eVYP/g8Ff+s75elSpl9Jv5xFFgF3CknCb
+	58urWYGXyEuaHXjzpXPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI9ej-00Gvid-L8; Mon, 23 Aug 2021 13:06:25 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mI9fe-00Gvzp-Cc; Mon, 23 Aug 2021 13:07:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI9eH-00GvW6-Du; Mon, 23 Aug 2021 13:06:02 +0000
-X-UUID: 5bace8c051404d9994de084e58cc0068-20210823
+ id 1mI9eI-00GvXM-Kh; Mon, 23 Aug 2021 13:06:06 +0000
+X-UUID: 233dcea4dde540e6b514d21f0ef353a9-20210823
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=UxRjaeiWcm3XfePJXtxoFP4OPfO1obmoYMcKTfEX4Wo=; 
- b=oWezIoprMGoxUBsyFWL+4gdlObsrK54O55cEMtn9f57NvQWUOa+KkdMZo2w/jHKZePMPynNZbcWE/huNXTdTaVJ7HA6dQ760k5oO0PUdniy41kQGcUJO5CKdHagtBw5V4VZ3fw15vwGQpDE8k9r98ckIYKyPMgrm0Hfx8UDfOTU=;
-X-UUID: 5bace8c051404d9994de084e58cc0068-20210823
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=vDFwkbrNDs9BK6mrpZUd1Ho8mqPAN2w2JEJQw6Qu4+4=; 
+ b=MicwlHBujRpRbYBc0Eqq50+OaUKLgulVihwaJoozk2F344EEASKNIDj+hFMEXIdfpgNE+RZCwO6aBEgL6mVCgDAjlK8A0/gVRDn8hqW82Zn5bGXOKl5G/Bk5JBQaCnqb7v0ttW72nkfi1jzrDBWd3NsDM5iMWTa3btZVfb2DflE=;
+X-UUID: 233dcea4dde540e6b514d21f0ef353a9-20210823
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 365652048; Mon, 23 Aug 2021 06:05:43 -0700
+ with ESMTP id 1283342618; Mon, 23 Aug 2021 06:05:47 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Aug 2021 06:05:42 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 Aug 2021 06:05:46 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Aug 2021 21:05:41 +0800
+ 15.0.1497.2; Mon, 23 Aug 2021 21:05:44 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 23 Aug 2021 21:05:40 +0800
+ Transport; Mon, 23 Aug 2021 21:05:43 +0800
 From: Kewei Xu <kewei.xu@mediatek.com>
 To: <wsa@the-dreams.de>
 CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
@@ -65,17 +65,18 @@ CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
  <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
  <ot_daolong.zhu@mediatek.com>, <yuhan.wei@mediatek.com>,
  <kewei.xu@mediatek.com>
-Subject: [PATCH 1/7] i2c: mediatek: fixing the incorrect register offset
-Date: Mon, 23 Aug 2021 21:05:31 +0800
-Message-ID: <1629723937-10839-2-git-send-email-kewei.xu@mediatek.com>
+Subject: [PATCH 4/7] dt-bindings: i2c: add attribute use-default-timing
+Date: Mon, 23 Aug 2021 21:05:34 +0800
+Message-ID: <1629723937-10839-5-git-send-email-kewei.xu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1629723937-10839-1-git-send-email-kewei.xu@mediatek.com>
 References: <1629723937-10839-1-git-send-email-kewei.xu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_060557_533327_165D2BB2 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20210823_060558_745006_79EE9B4B 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,30 +93,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The reason for the modification here is that the previous
-offset information is incorrect, OFFSET_DEBUGSTAT = 0xE4 is
-the correct value.
+Add attribute use-default-timing for DT-binding document.
 
-Fixes: 25708278f810 ("i2c: mediatek: Add i2c support for MediaTek MT8183")
+Fixes: be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust support")
 Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 4ca716e..2661ed0 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -193,7 +193,7 @@ enum I2C_REGS_OFFSET {
- 	[OFFSET_CLOCK_DIV] = 0x48,
- 	[OFFSET_SOFTRESET] = 0x50,
- 	[OFFSET_SCL_MIS_COMP_POINT] = 0x90,
--	[OFFSET_DEBUGSTAT] = 0xe0,
-+	[OFFSET_DEBUGSTAT] = 0xe4,
- 	[OFFSET_DEBUGCTRL] = 0xe8,
- 	[OFFSET_FIFO_STAT] = 0xf4,
- 	[OFFSET_FIFO_THRESH] = 0xf8,
+diff --git a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+index 5ea216a..4dbb697 100644
+--- a/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
++++ b/Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+@@ -34,6 +34,8 @@ Optional properties:
+     Only mt6589 and mt8135 support this feature.
+   - mediatek,use-push-pull: IO config use push-pull mode.
+   - vbus-supply: phandle to the regulator that provides power to SCL/SDA.
++  - mediatek,use-default-timing: use default timing calculation, no timing
++    adjustment.
+ 
+ Example:
+ 
 -- 
 1.9.1
 _______________________________________________
