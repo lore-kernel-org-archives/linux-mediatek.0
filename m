@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E2C66C4320A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 12:54:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72C3BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 12:54:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A1150613A8
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 12:54:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A1150613A8
+	by mail.kernel.org (Postfix) with ESMTPS id 1028461368
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Aug 2021 12:54:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1028461368
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,55 +23,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/ZVjYklV/115nCC4p+MOA3dAv32O2z6hg9iAw/vgXvA=; b=KfR0JUFAe2fBB5
-	a51DtqBZGfSc888nxtGLvQXBHeEVJ4DVIIJVzPjFWzd9LD1ElgKf1GDYi3Yviar+2/AFmvC1tzS+D
-	ISVPvb1w3fQXtw5eJEUps8cm1xJ5VOkecZ11rlQvIz8SzAJ94rtmEeyu0aBfiYKxIdKaEySE0adYM
-	lJOyXyFlF9sOi7P4KKjUHMowjDHXtueeXbPl3GLHvhQkdmbarga8Y2w2pBn62+V/4a7wtsfjLGtgz
-	jUGn5RSwFFu7IHKo16sVTZ71HSDSZCwUxBAI4rqoMHwQCdBQYKjMsXDjFLhHtTbj0pceTOnUYgoy4
-	LpcAi0MmPd5edY9VU/DQ==;
+	List-Owner; bh=jpv8O05pi6qRJeSeRejaI/oUR/C0GBc08V6mBdKhSSw=; b=4JVGZ2/tiYTHIa
+	ob3ovle0WVfH5ejZYBAthO1ijPaa6OUTM4wnwdeWqKpR9Q3TZf105SQRKHLHRYU/QhtABbURDC3Fo
+	v4gAeUx8NjM4U2Ry0f6FE56rurpUSN5k7f47S/2e8PtstdYzaRe4Nfa9KGAlGbsMs5AJvpNEkjfNT
+	Ow4Mn3TNsePgwz41XL/Tq8y8M3v00hDBB/98d7keto/iUzdkUu2CaiZug1vTnPB63Y56k1Q/STx//
+	CkrTM47v0nUI5jQIcIC8VwRwuzHUozEweFYDsvgwP8Lv+3mmtMK2mHksnuMNGqLMZxSBsGDAF7Gy5
+	d/YYCuTEH6Wkuv8G7agA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mI9T4-00Gr3E-Pn; Mon, 23 Aug 2021 12:54:22 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mI9T7-00Gr4D-Ml; Mon, 23 Aug 2021 12:54:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mI9Sx-00Gr0I-87
- for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 12:54:20 +0000
-X-UUID: 16f55a970a904016bd54f5c43e2edc1d-20210823
+ id 1mI9Sz-00Gr0P-5z
+ for linux-mediatek@lists.infradead.org; Mon, 23 Aug 2021 12:54:24 +0000
+X-UUID: 782a179e1ea54915938fbf8c952dab3c-20210823
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=B2Ha5FPQ26WVEs8ltz70mEpCip77j/lb2U6MiQ5O/U0=; 
- b=kPXsUXksuN1XFVQU1SjpF2p/T2s0lP/dfK0ugi6ql5utcrsodaek5ASEE5kvPlaNv8zdaj7yXI4MLqujxmB35D+Y6K4038CWexuy+4glV45zFwtI/L8mPh07WtpMcBKGojP+CwpkLTuFInX8ad2pfAol7uGqbllL+qczzYtYvMw=;
-X-UUID: 16f55a970a904016bd54f5c43e2edc1d-20210823
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=Eba6rx6Yw++iUrqc7hHaBtpMp6Bdr0MzWxMOvXd6IDM=; 
+ b=ty3CCxT+WKO7N/P0r5fmjsUx4KSxyeGdwFJZIrJ7xpEZK+UEVzf2bc3xBsI6tHZ/qFlsp7lKZih4U+sEgTFUkMY8bE4F+C6KDm9W/bKzpj1+GP8RAqEJiT+NzEyTlBN8LByUVE2RiyILxz1rM9oy0IUnFTRFP+rJMyF1ipzFBRM=;
+X-UUID: 782a179e1ea54915938fbf8c952dab3c-20210823
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1898144627; Mon, 23 Aug 2021 05:54:08 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Aug 2021 05:54:06 -0700
+ with ESMTP id 1261151136; Mon, 23 Aug 2021 05:54:09 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 23 Aug 2021 05:54:08 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Aug 2021 20:54:05 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 23 Aug 2021 20:54:07 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 23 Aug 2021 20:54:05 +0800
+ Transport; Mon, 23 Aug 2021 20:54:06 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Ikjoon Jang <ikjn@chromium.org>
 CC: Yaqii wu <yaqii.wu@mediatek.com>, <srv_wsdupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, Chunfeng Yun
  <chunfeng.yun@mediatek.com>
-Subject: [RFC PATCH 2/6] usb: xhci-mtk: add a member of num_esit
-Date: Mon, 23 Aug 2021 20:53:52 +0800
-Message-ID: <1629723236-10768-2-git-send-email-chunfeng.yun@mediatek.com>
+Subject: [RFC PATCH 5/6] dt-bindings: usb: mtk-xhci: support drop extra CS
+Date: Mon, 23 Aug 2021 20:53:55 +0800
+Message-ID: <1629723236-10768-5-git-send-email-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 1.8.1.1.dirty
 In-Reply-To: <1629723236-10768-1-git-send-email-chunfeng.yun@mediatek.com>
 References: <1629723236-10768-1-git-send-email-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_055416_457038_E06C5044 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20210823_055417_301380_F6382B66 
+X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,108 +90,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a member num_esit to save the number of esit, then no need
-caculate it in some functions.
+Add optional property to drop extra CS for FS isoc/intr with TT,
+this helps to release some bandwidth.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/usb/host/xhci-mtk-sch.c | 20 +++++++-------------
- drivers/usb/host/xhci-mtk.h     |  2 ++
- 2 files changed, 9 insertions(+), 13 deletions(-)
+ .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml          | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index 83abd28269ca..54c521524bfc 100644
---- a/drivers/usb/host/xhci-mtk-sch.c
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -297,6 +297,7 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- 		 CTX_TO_MAX_ESIT_PAYLOAD(le32_to_cpu(ep_ctx->tx_info));
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+index 49729aab6d1a..963d4dedd4f2 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+@@ -123,7 +123,11 @@ properties:
+       defined in the xHCI spec on MTK's controller.
+     default: 5000
  
- 	sch_ep->esit = get_esit(ep_ctx);
-+	sch_ep->num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
- 	sch_ep->ep_type = ep_type;
- 	sch_ep->maxpkt = maxpkt;
- 	sch_ep->offset = 0;
-@@ -401,14 +402,12 @@ static void setup_sch_info(struct xhci_ep_ctx *ep_ctx,
- static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
- 	struct mu3h_sch_ep_info *sch_ep, u32 offset)
- {
--	u32 num_esit;
- 	u32 max_bw = 0;
- 	u32 bw;
- 	int i;
- 	int j;
- 
--	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
--	for (i = 0; i < num_esit; i++) {
-+	for (i = 0; i < sch_ep->num_esit; i++) {
- 		u32 base = offset + i * sch_ep->esit;
- 
- 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-@@ -424,13 +423,11 @@ static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
- static void update_bus_bw(struct mu3h_sch_bw_info *sch_bw,
- 	struct mu3h_sch_ep_info *sch_ep, bool used)
- {
--	u32 num_esit;
- 	u32 base;
- 	int i;
- 	int j;
- 
--	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
--	for (i = 0; i < num_esit; i++) {
-+	for (i = 0; i < sch_ep->num_esit; i++) {
- 		base = sch_ep->offset + i * sch_ep->esit;
- 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
- 			if (used)
-@@ -446,12 +443,11 @@ static void update_bus_bw(struct mu3h_sch_bw_info *sch_bw,
- static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
- {
- 	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
--	u32 num_esit, tmp;
-+	u32 tmp;
- 	int base;
- 	int i, j;
- 
--	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
--	for (i = 0; i < num_esit; i++) {
-+	for (i = 0; i < sch_ep->num_esit; i++) {
- 		base = offset + i * sch_ep->esit;
- 
- 		/*
-@@ -533,12 +529,10 @@ static int check_sch_tt(struct mu3h_sch_ep_info *sch_ep, u32 offset)
- static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
- {
- 	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
--	u32 base, num_esit;
-+	u32 base;
- 	int i, j;
- 
--	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
--
--	for (i = 0; i < num_esit; i++) {
-+	for (i = 0; i < sch_ep->num_esit; i++) {
- 		base = sch_ep->offset + i * sch_ep->esit;
- 
- 		for (j = 0; j < sch_ep->num_budget_microframes; j++)
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index ace432356c41..eb05aaf6edbe 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -50,6 +50,7 @@ struct mu3h_sch_bw_info {
-  * struct mu3h_sch_ep_info: schedule information for endpoint
-  *
-  * @esit: unit is 125us, equal to 2 << Interval field in ep-context
-+ * @num_esit: number of @esit in a period
-  * @num_budget_microframes: number of continuous uframes
-  *		(@repeat==1) scheduled within the interval
-  * @bw_cost_per_microframe: bandwidth cost per microframe
-@@ -79,6 +80,7 @@ struct mu3h_sch_bw_info {
-  */
- struct mu3h_sch_ep_info {
- 	u32 esit;
-+	u32 num_esit;
- 	u32 num_budget_microframes;
- 	u32 bw_cost_per_microframe;
- 	struct list_head endpoint;
+-  # the following properties are only used for case 1
++  mediatek,no-extra-cs:
++    description: do not add extra CS for FS intr/isoc eps with TT
++    type: boolean
++
++  # the foullowing properties are only used for case 1
+   wakeup-source:
+     description: enable USB remote wakeup, see power/wakeup-source.txt
+     type: boolean
 -- 
 2.18.0
 _______________________________________________
