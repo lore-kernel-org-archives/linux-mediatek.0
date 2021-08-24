@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5886C432BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 03:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 870E0C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 03:31:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5BB1E60EB0
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 03:31:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5BB1E60EB0
+	by mail.kernel.org (Postfix) with ESMTPS id 4321E608FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 03:31:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4321E608FE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kUKjfXZ3pzgXcml9RdmdfGcTa9LqwZnPXEZN9uSkT+o=; b=D2G9bebf1l8sPX
-	+niX+1cDeBgYUHaBp2aN3UC2pqddpKPyTA97chGq2UXVwunvFNQSEYWMD4MaIxqYYqrlFGc6n8xip
-	9M//87ykH+UvvPsmK9aNSCKvyrznPLRJxPAOaAjCFrXw+LZJnAbdhCkkJ6ALQZ1+Eia9WItX7BNH2
-	8SUwsAr8dqujfsgEFJV1EoJEd627qbLyY06EjtwJHcCcin91r72L/YbH6b8+3Fe0gGL4zhYNzsVFw
-	uj2b+o6b19pHDMB19t2E+U95K91upfyqWlzVL9ZuaeR8AR5mnlQjaRWkujdoOb4FArSlQbR5Jcl33
-	LSiNFCvPZtFGt7W1jCIw==;
+	List-Owner; bh=+1P55a/fdKaIa2gd+9LOH5ze0OwKkSuY2sLx6741NvE=; b=mEluyonwL4pXpw
+	NzfaZCBnSme3Bz1In5/jRT+rlYpicfcxLW0zEUc276zL65gG/b9uQI1tkaRprO1x4zUridLINJmHU
+	8n2MW5AMq/av4G+jm1F+3nOZ6e0QRJX48QpbBEAf+KSl9qHKsBCwOWqdPCMbaXC0hZMGhmpScndjv
+	8WCcE4Oj+369tGzAKwNhYvDRvDLWrZGh/sMHQq7UzP9BnM4MK3p3PPXOXbEqnyitz6d1ABmhOFmn9
+	b4RunQqev5TlQ5iY6np1A4HMPgDcYvG6UcldFiYS9/MYyYxQVliqgPlX5VBM7nmkTBvl5WW0IpckG
+	ay9eWZtw8dtFpNZGvgYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIN9M-001NuK-9Q; Tue, 24 Aug 2021 03:30:56 +0000
+	id 1mIN9Y-001NyJ-CR; Tue, 24 Aug 2021 03:31:08 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIN94-001NmS-U4; Tue, 24 Aug 2021 03:30:42 +0000
-X-UUID: 7930c749183146ef84eb236abdbedf62-20210823
+ id 1mIN98-001Nlh-78; Tue, 24 Aug 2021 03:30:46 +0000
+X-UUID: 135c4e1df6f34bec8451f0a830d2f255-20210823
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=UxRjaeiWcm3XfePJXtxoFP4OPfO1obmoYMcKTfEX4Wo=; 
- b=LMJVXu7cSdgtHlW4ms+4A/OQRjcaDgNTi2KYFkTf6gIJ5qxaAdwjkF7WuUkjZvUA+2MbILsLL//qyJSrjXdZnMkp1pxrS79X76GETiPF0wfnIvOPhuObNPjuLT+SkuUSS/N13IXC6TEamzgPKEe/dxlBGCyFh/5uZQZgl4ywDHQ=;
-X-UUID: 7930c749183146ef84eb236abdbedf62-20210823
+ bh=zL8pvYNXW3Z40twUOC1DFoRyMx0SiSLgttIErgd8QSA=; 
+ b=sCEaApOswV3oZ3Ks0eBshSjMtPsV+/i1Coxp3Qq+6ZiMgNlbDKhKWvab0EDwYltlog/jO2UwARWimHTSDnPLdNjO/lE06aytcEQH+sCCvtyrb8FpCjCmP3bTvYqKXS18CCxnc9ZU0KX6TApK/Septo509MeAjUxPHh4sfAeJj/g=;
+X-UUID: 135c4e1df6f34bec8451f0a830d2f255-20210823
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 764560518; Mon, 23 Aug 2021 20:30:35 -0700
+ with ESMTP id 370036433; Mon, 23 Aug 2021 20:30:35 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 23 Aug 2021 20:30:34 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Aug 2021 11:30:32 +0800
+ 15.0.1497.2; Tue, 24 Aug 2021 11:30:33 +0800
 Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 24 Aug 2021 11:30:32 +0800
+ Transport; Tue, 24 Aug 2021 11:30:33 +0800
 From: Kewei Xu <kewei.xu@mediatek.com>
 To: <wsa@the-dreams.de>
 CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
@@ -65,18 +66,18 @@ CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
  <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
  <ot_daolong.zhu@mediatek.com>, <yuhan.wei@mediatek.com>,
  <kewei.xu@mediatek.com>
-Subject: [RESEND PATCH v5 1/7] i2c: mediatek: fixing the incorrect register
- offset
-Date: Tue, 24 Aug 2021 11:30:22 +0800
-Message-ID: <1629775828-19993-2-git-send-email-kewei.xu@mediatek.com>
+Subject: [RESEND PATCH v5 2/7] i2c: mediatek: Reset the handshake signal
+ between i2c and dma
+Date: Tue, 24 Aug 2021 11:30:23 +0800
+Message-ID: <1629775828-19993-3-git-send-email-kewei.xu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1629775828-19993-1-git-send-email-kewei.xu@mediatek.com>
 References: <1629775828-19993-1-git-send-email-kewei.xu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_203039_001552_C05081E5 
-X-CRM114-Status: GOOD (  13.03  )
+X-CRM114-CacheID: sfid-20210823_203042_272758_4AF1F108 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,30 +94,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The reason for the modification here is that the previous
-offset information is incorrect, OFFSET_DEBUGSTAT = 0xE4 is
-the correct value.
+Due to changes in the hardware design of the handshaking signal
+between i2c and dma, it is necessary to reset the handshaking
+signal before each transfer to ensure that the multi-msgs can
+be transferred correctly.
 
-Fixes: 25708278f810 ("i2c: mediatek: Add i2c support for MediaTek MT8183")
 Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/i2c/busses/i2c-mt65xx.c | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
 diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 4ca716e..2661ed0 100644
+index 2661ed0..abda525 100644
 --- a/drivers/i2c/busses/i2c-mt65xx.c
 +++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -193,7 +193,7 @@ enum I2C_REGS_OFFSET {
- 	[OFFSET_CLOCK_DIV] = 0x48,
- 	[OFFSET_SOFTRESET] = 0x50,
- 	[OFFSET_SCL_MIS_COMP_POINT] = 0x90,
--	[OFFSET_DEBUGSTAT] = 0xe0,
-+	[OFFSET_DEBUGSTAT] = 0xe4,
- 	[OFFSET_DEBUGCTRL] = 0xe8,
- 	[OFFSET_FIFO_STAT] = 0xf4,
- 	[OFFSET_FIFO_THRESH] = 0xf8,
+@@ -15,6 +15,7 @@
+ #include <linux/init.h>
+ #include <linux/interrupt.h>
+ #include <linux/io.h>
++#include <linux/iopoll.h>
+ #include <linux/kernel.h>
+ #include <linux/mm.h>
+ #include <linux/module.h>
+@@ -47,6 +48,9 @@
+ #define I2C_RD_TRANAC_VALUE		0x0001
+ #define I2C_SCL_MIS_COMP_VALUE		0x0000
+ #define I2C_CHN_CLR_FLAG		0x0000
++#define I2C_CLR_DEBUGCTR		0x0000
++#define I2C_RELIABILITY			0x0010
++#define I2C_DMAACK_ENABLE		0x0008
+ 
+ #define I2C_DMA_CON_TX			0x0000
+ #define I2C_DMA_CON_RX			0x0001
+@@ -842,6 +846,7 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 	u16 restart_flag = 0;
+ 	u16 dma_sync = 0;
+ 	u32 reg_4g_mode;
++	u32 reg_dma_reset;
+ 	u8 *dma_rd_buf = NULL;
+ 	u8 *dma_wr_buf = NULL;
+ 	dma_addr_t rpaddr = 0;
+@@ -855,6 +860,27 @@ static int mtk_i2c_do_transfer(struct mtk_i2c *i2c, struct i2c_msg *msgs,
+ 
+ 	reinit_completion(&i2c->msg_complete);
+ 
++	if (i2c->dev_comp->apdma_sync && left_num > 1) {
++		mtk_i2c_writew(i2c, I2C_CLR_DEBUGCTR, OFFSET_DEBUGCTRL);
++		writel(I2C_DMA_HANDSHAKE_RST | I2C_DMA_WARM_RST,
++		       i2c->pdmabase + OFFSET_RST);
++
++		ret = readw_poll_timeout(i2c->pdmabase + OFFSET_RST,
++					 reg_dma_reset,
++					 !(reg_dma_reset & I2C_DMA_WARM_RST),
++					 0, 100);
++		if (ret) {
++			dev_err(i2c->dev, "DMA warm reset timeout\n");
++			return -ETIMEDOUT;
++		}
++
++		writel(I2C_DMA_CLR_FLAG, i2c->pdmabase + OFFSET_RST);
++		mtk_i2c_writew(i2c, I2C_HANDSHAKE_RST, OFFSET_SOFTRESET);
++		mtk_i2c_writew(i2c, I2C_CHN_CLR_FLAG, OFFSET_SOFTRESET);
++		mtk_i2c_writew(i2c, I2C_RELIABILITY | I2C_DMAACK_ENABLE,
++			       OFFSET_DEBUGCTRL);
++	}
++
+ 	control_reg = mtk_i2c_readw(i2c, OFFSET_CONTROL) &
+ 			~(I2C_CONTROL_DIR_CHANGE | I2C_CONTROL_RS);
+ 	if ((i2c->speed_hz > I2C_MAX_FAST_MODE_PLUS_FREQ) || (left_num >= 1))
 -- 
 1.9.1
 _______________________________________________
