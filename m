@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8B40EC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 14:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F189C432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 14:40:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5A8CE6127B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 14:39:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5A8CE6127B
+	by mail.kernel.org (Postfix) with ESMTPS id 0325E611C9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 14:40:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0325E611C9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,46 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=66DFj2PR/UeGNkMT2eVuaUs4d9QKKtKvp56NGLmilBc=; b=QMDc4qMu5Qdq0f
-	Cj8gPbI+UBJRUArp9SDGWVOrCwHDo//EV1QZuHcHRoEewKXf0L306OaXIXVp9jhV/da4f03j626gs
-	FzJklcppfopNV66/zdnPH/wsKQxGWyJh+c7GdS4omTMgWRqBbHZJoEFWQqu1FIOAOP55iFX4JMwJL
-	o2splFJbt+plrIKfoOjM4e0QNJrRwb+fsjI9HtLovM6Cqpf/eFFsjPca8Tw9KjOU+P/ogcDhmgoyP
-	meKeIUYkHqSVsXtSB2Dv/1PTysQzTkQXAUXhhBkvBZzkylR6VTjgcwb5eaa32xZThjaxwyt7IITd8
-	Uaqi0DGxkPfXTThwFL2Q==;
+	List-Owner; bh=uk2j/gKG+GrZWN5wKwYuFABHD7Lc8I+6YZzrtUmSK8I=; b=Bj2Oopkr0ZAq/J
+	+6Cd1McnFHHo8VYOaKZXw9/VwHX4vecqeqmGRIoAEWcQt3/uV6Et9XqcJaT78+UVCdZ+ym923gy64
+	KuQl8/1MzJ91L1Hhtv0frRgvVkpCvrlYSwrtTsXjjmjlzkYUF/vxKufv+C0xjNE/SpcZ1EiipOrec
+	CCw1/x5ibYlRqSFIIgd2gU+L07KgJrYCVA41ns1F8HEm2ADQccLj4cRh1DbJZz00e4f57tMFMp5Kr
+	EMqxKtzvPSe4XmkYZZOvOxndxeX/6p87LVgmjOWOqPf/6SIDlN+nIOBh6CYKYhnxVdOmskZ3fn6th
+	M7jzyjz123VKSvG8tM+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIXa1-003Xlm-PH; Tue, 24 Aug 2021 14:39:09 +0000
-Received: from mail-ot1-f43.google.com ([209.85.210.43])
+	id 1mIXbH-003YIn-Vt; Tue, 24 Aug 2021 14:40:28 +0000
+Received: from mail-ot1-f44.google.com ([209.85.210.44])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIXZw-003Xju-4Y; Tue, 24 Aug 2021 14:39:08 +0000
-Received: by mail-ot1-f43.google.com with SMTP id
- c19-20020a9d6153000000b0051829acbfc7so46594657otk.9; 
- Tue, 24 Aug 2021 07:39:03 -0700 (PDT)
+ id 1mIXbC-003YFv-4Q; Tue, 24 Aug 2021 14:40:26 +0000
+Received: by mail-ot1-f44.google.com with SMTP id
+ x9-20020a056830278900b0051b8be1192fso25942101otu.7; 
+ Tue, 24 Aug 2021 07:40:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=oJTjVdGamrFwSnS4XYHRrrAclccvRhahcNOf3uZWcog=;
- b=OLIm0ejwB6w0kaXHMDapHXHNP2ZBvkyBLRrnFlm6ZV/FfX78yjPnhAl2IP4OD/2Euf
- 4C6k0K4PWLbPzPGJgUEwP0BJAPfiNjyJWP+XUlpwHZ7GFgq+8i5vuGpJDZe/JlCD0cJ+
- LuUaiS0aVuRTZp9bPn2sDjVL9fzpINvDTea0exWCNUWIXW02dvvGuI4xwpO8yasdpbwI
- zOVKQ4uhbefAbT69tPjzGKhCciiWe3KRiV8fwLS4NCSTz+AnMTW0j5IP2N/GCUbCbyDd
- 1QKDV5NoISdrh4kbrmxEumgZJq3lxoGI+4TAp6LADuC4Hx/Xr+nHs20Ir3ls1GOJalXj
- B1SA==
-X-Gm-Message-State: AOAM533ZtUYPOQS6f9CMJfQ9ot8PyOrnYLlY7YI7/Wdgw4vFkN0gGjAH
- AdmITwTYUXfAPkbz9Sy3Bw==
-X-Google-Smtp-Source: ABdhPJyWxAQYVSvp5dfYC1MVG4wcDA3+xadxULnBKqwxP7AbYTYs6hbMs3GS17peHFiEsVBo69cv8g==
-X-Received: by 2002:a05:6830:238e:: with SMTP id
- l14mr31227924ots.354.1629815943350; 
- Tue, 24 Aug 2021 07:39:03 -0700 (PDT)
+ bh=Db5yqDC7zDMI6lAlEXopDZgJg3DaWYgaFCxZGGAfV98=;
+ b=AkKxtbg6/Vp26P8KFUp3XkJH2esDKv89zZUvCXP1GCM03XMvs0lb65JDK43d3U+NI5
+ m2mtwGadH4HKoYBHwNTWkv1c+6HwHzW0uL7c+EsCgPibbHInUUGnEM0Z8VMrlB1xukFz
+ ngPou95unjpYJszD7kROZ8r+NcoF/ytvLiho1wSCVp/VUNM+wL3VeHn9Q90BiFhj2iTW
+ +fgyN04PETjdTENne8d2jxthER6VxQPoUsEPOI3+XUZKhsxuK7Bbd1ahztwZuV2PoceO
+ Q2Wn2M4+5Ur0uaMlI2M5pZuarJlZAsRd9HAE7XHcn1HB/ofAiMjZhd4rd2gbDRgLDUUH
+ j8Sw==
+X-Gm-Message-State: AOAM533YfUPfl/ZM18J+TZe8GJVJVXjTPSXrcp4yrjSv6y7OEtPeP2vI
+ n93Ddkz/6gAODXkilkvjUQ==
+X-Google-Smtp-Source: ABdhPJxL8lFhvCs4+YAUBK3GXu3cNTYj1yhOTdCkzQWFU8HyHnTwBYORe7LWGVm8SsTIOZPAj9OoXg==
+X-Received: by 2002:a54:4789:: with SMTP id o9mr2986623oic.50.1629816021257;
+ Tue, 24 Aug 2021 07:40:21 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id i5sm4396860oie.11.2021.08.24.07.39.02
+ by smtp.gmail.com with ESMTPSA id l8sm4147035oom.19.2021.08.24.07.40.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Aug 2021 07:39:02 -0700 (PDT)
-Received: (nullmailer pid 407321 invoked by uid 1000);
- Tue, 24 Aug 2021 14:39:01 -0000
-Date: Tue, 24 Aug 2021 09:39:01 -0500
+ Tue, 24 Aug 2021 07:40:20 -0700 (PDT)
+Received: (nullmailer pid 409340 invoked by uid 1000);
+ Tue, 24 Aug 2021 14:40:19 -0000
+Date: Tue, 24 Aug 2021 09:40:19 -0500
 From: Rob Herring <robh@kernel.org>
 To: Jianjun Wang <jianjun.wang@mediatek.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>,
@@ -72,14 +71,14 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,
  linux-arm-kernel@lists.infradead.org, Rex-BC.Chen@mediatek.com,
  TingHan.Shen@mediatek.com
 Subject: Re: [PATCH] dt-bindings: PCI: mediatek-gen3: Add support for MT8195
-Message-ID: <YSUEhTbzz9x1UeaB@robh.at.kernel.org>
+Message-ID: <YSUE08dgiGhFsjwH@robh.at.kernel.org>
 References: <20210820023521.30716-1-jianjun.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20210820023521.30716-1-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_073904_227941_B7A05A23 
-X-CRM114-Status: GOOD (  15.34  )
+X-CRM114-CacheID: sfid-20210824_074022_245537_2C186EA5 
+X-CRM114-Status: GOOD (  16.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,6 +97,10 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Fri, Aug 20, 2021 at 10:35:21AM +0800, Jianjun Wang wrote:
 > MT8195 is an ARM platform SoC which has the same PCIe IP with MT8192.
+
+If it is the same, then 8192 should be a fallback compatible. 'The same' 
+means the current driver for 8192 will work unchanged.
+
 > 
 > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
 > ---
@@ -116,9 +119,6 @@ On Fri, Aug 20, 2021 at 10:35:21AM +0800, Jianjun Wang wrote:
 > +    oneOf:
 > +      - const: mediatek,mt8192-pcie
 > +      - const: mediatek,mt8195-pcie
-
-Use 'enum' instead of oneOf+const.
-
 >  
 >    reg:
 >      maxItems: 1
