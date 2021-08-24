@@ -2,86 +2,78 @@ Return-Path: <SRS0=VOwE=NP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15688C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 10:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A78BC4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 10:15:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C959E6125F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 10:02:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C959E6125F
+	by mail.kernel.org (Postfix) with ESMTPS id DE3EA61212
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 10:15:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DE3EA61212
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nsiH4JIZPRBtQokiRPchx51ElDG+VJn9PZKKIMls16Q=; b=xyd56aQb8YWSl7
-	Jl4p7bywIEYAdBdEe/z6pBZHyD1SAUveDWaqDhxwnYEEMNdepxpv62CVV96ftOFP8Sntu/jk1J3Qp
-	qbTfHzyxrAynKnU7AaYaKSK+Vlbg5umMuLVO6IkDg7mKLDmKcPQU5WJOkO6jGwB7UENEvP+NgDzb9
-	vDEzAEWAP/sbVejCQmtQOp5OqDT+Iwy7B4VrUOMsU0qF1uRH5bE4AhrDxNGUhtxf7YXJxolSWBMoH
-	aX7AOS22SAloJMHyhh12qDjemctyvbbJlSuElBJyzuTRSDRlQTjzxQ16ims/NsJ0+IYVqZ2TX08/j
-	TCmzkw6UgylwbIeigS4g==;
+	List-Owner; bh=V3toUPJ6gSSkoKSKVET6LG15+Q0EhGoLrhTFIvudjWg=; b=i1CnZd1dB5l8z7
+	E7aVkYiMbFxz2hAidFu20fwPezaT19iOyO7u0I/t6u1pu5rr9eF/OyHX477++5jmAHXXD+ZWwi+f6
+	HhGLB3HZ4ytRao96CkT6RwvxGwZkjqNVvIoan/YHnSPD08HrCZOsIbapK+l4zrF2vEW5c42d3gcPv
+	AsAmJmEAAfsGJsGqn+800qSrClzqoIASvGH8m+ce8cNRBCiekPYWnO66wWz7jmhcaduL2DYtMwmlT
+	Vzuy4D/BvxYuJxGbI+t+s+emc1OatMZM01xReyaiyH8aYdTruYLvwE0K4ZKUisO0qR6EjEWhldwOR
+	b8a7xjTzL9+WYskL24tA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mITFp-002PT9-AG; Tue, 24 Aug 2021 10:02:01 +0000
+	id 1mITST-002SaI-E2; Tue, 24 Aug 2021 10:15:05 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mITEm-002Ool-Q3; Tue, 24 Aug 2021 10:01:01 +0000
-X-UUID: 01a0e3fc6cfb4374ae8df2b2d86cacc6-20210824
+ id 1mITSE-002SXt-27; Tue, 24 Aug 2021 10:14:53 +0000
+X-UUID: 115b27a4d110487a86b8b8ad23755d50-20210824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1H7YfVN6p7PtZFYxKEJiH7kkeGZ88CfNT/ir+6Xe29c=; 
- b=bNYNwR9h8KhbECctMkLapUC7yYA3EjZ/vjOn4Yt8jT5uxaQoMY53oAmmnkfGlItTzKRLPPZR06QjVFB2GeDBWoK/OHJPrEBPDRncM2gHd5rjKTxqi+UQyOMXXR+VtCeCfR5lvvTZEElqc0RICojQLHeZzibqMkJXipg0M2WoF18=;
-X-UUID: 01a0e3fc6cfb4374ae8df2b2d86cacc6-20210824
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=FxgG9sTrhbQWNIvjCQ8JLjazd/LJnTOmKwvwF0rgCDw=; 
+ b=L/GSFa6787bdthwJ9TTZG6PD3t7pm7FGNdHUnrjX8Li9Ke0Q4mhjsWn52i4eWeWo4GS8TNWIynt6iNoIwM+I0ZADlqXmCajKO49kBeUICXmMS6FsSPHKjZmFTOkaUDsNRhLRP1moJO2Ezoxc4XXwEG9eURY5N/7Bfhaa2I8xUlI=;
+X-UUID: 115b27a4d110487a86b8b8ad23755d50-20210824
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <ck.hu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2119847657; Tue, 24 Aug 2021 03:00:32 -0700
+ with ESMTP id 1074082815; Tue, 24 Aug 2021 03:14:46 -0700
 Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Aug 2021 03:00:31 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 24 Aug 2021 03:14:45 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Aug 2021 18:00:29 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 24 Aug 2021 18:00:29 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: <moudy.ho@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- "Hans Verkuil" <hverkuil-cisco@xs4all.nl>, Jernej Skrabec
- <jernej.skrabec@siol.net>
-CC: Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- "Geert Uytterhoeven" <geert+renesas@glider.be>, Rob Landley
- <rob@landley.net>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ 15.0.1497.2; Tue, 24 Aug 2021 18:14:43 +0800
+Received: from [172.21.77.4] (172.21.77.4) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 24 Aug 2021 18:14:43 +0800
+Message-ID: <1629800083.22373.4.camel@mtksdaap41>
+Subject: Re: [PATCH v5 2/5] dt-bindings: gce: add gce header file for mt8195
+From: CK Hu <ck.hu@mediatek.com>
+To: jason-jh.lin <jason-jh.lin@mediatek.com>
+CC: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, <chunkuang.hu@kernel.org>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <acourbot@chromium.org>, <pihsun@chromium.org>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>, <ben.lok@mediatek.com>,
- <randy.wu@mediatek.com>, <srv_heupstream@mediatek.com>, <hsinyi@google.com>
-Subject: [PATCH v7 2/5] soc: mediatek: mmsys: Add support for MDP
-Date: Tue, 24 Aug 2021 18:00:24 +0800
-Message-ID: <20210824100027.25989-3-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210824100027.25989-1-moudy.ho@mediatek.com>
-References: <20210824100027.25989-1-moudy.ho@mediatek.com>
+ <hsinyi@chromium.org>, <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>
+Date: Tue, 24 Aug 2021 18:14:43 +0800
+In-Reply-To: <20210818024037.11396-3-jason-jh.lin@mediatek.com>
+References: <20210818024037.11396-1-jason-jh.lin@mediatek.com>
+ <20210818024037.11396-3-jason-jh.lin@mediatek.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_030056_952674_8FFE92D1 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20210824_031450_162165_17CEF955 
+X-CRM114-Status: GOOD (  22.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,619 +90,226 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add functions to support MDP:
-  1. MDP connect/disconnect functions
-  2. ISP control function
-  3. Write register via CMDQ
+Hi, Jason:
 
-Add MDP related settings for 8183 SoC
-  1. Register settings
-  2. MDP route table
+On Wed, 2021-08-18 at 10:40 +0800, jason-jh.lin wrote:
+> To define the subsys id and event id, add gce header file for mt8195.
+> 
+> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> ---
+>  include/dt-bindings/gce/mt8195-gce.h | 920 +++++++++++++++++++++++++++
+>  1 file changed, 920 insertions(+)
+>  create mode 100644 include/dt-bindings/gce/mt8195-gce.h
+> 
+> diff --git a/include/dt-bindings/gce/mt8195-gce.h b/include/dt-bindings/gce/mt8195-gce.h
+> new file mode 100644
+> index 000000000000..8c309e59491d
+> --- /dev/null
+> +++ b/include/dt-bindings/gce/mt8195-gce.h
+> @@ -0,0 +1,920 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2018 MediaTek Inc.
+> + *
+> + */
+> +
+> +#ifndef _DT_BINDINGS_GCE_MT8195_H
+> +#define _DT_BINDINGS_GCE_MT8195_H
+> +
+> +/* assign timeout 0 also means default */
+> +#define CMDQ_NO_TIMEOUT		0xffffffff
+> +#define CMDQ_TIMEOUT_DEFAULT	1000
+> +
+> +/* GCE thread priority */
+> +#define CMDQ_THR_PRIO_LOWEST	0
+> +#define CMDQ_THR_PRIO_1		1
+> +#define CMDQ_THR_PRIO_2		2
+> +#define CMDQ_THR_PRIO_3		3
+> +#define CMDQ_THR_PRIO_4		4
+> +#define CMDQ_THR_PRIO_5		5
+> +#define CMDQ_THR_PRIO_6		6
+> +#define CMDQ_THR_PRIO_HIGHEST	7
+> +
+> +/* CPR count in 32bit register */
+> +#define GCE_CPR_COUNT		1312
+> +
+> +/* GCE subsys table */
+> +#define SUBSYS_1400XXXX		0
+> +#define SUBSYS_1401XXXX		1
+> +#define SUBSYS_1402XXXX		2
+> +#define SUBSYS_1c00XXXX		3
+> +#define SUBSYS_1c01XXXX		4
+> +#define SUBSYS_1c02XXXX		5
+> +#define SUBSYS_1c10XXXX		6
+> +#define SUBSYS_1c11XXXX		7
+> +#define SUBSYS_1c12XXXX		8
+> +#define SUBSYS_14f0XXXX		9
+> +#define SUBSYS_14f1XXXX		10
+> +#define SUBSYS_14f2XXXX		11
+> +#define SUBSYS_1800XXXX		12
+> +#define SUBSYS_1801XXXX		13
+> +#define SUBSYS_1802XXXX		14
+> +#define SUBSYS_1803XXXX		15
+> +#define SUBSYS_1032XXXX		16
+> +#define SUBSYS_1033XXXX		17
+> +#define SUBSYS_1600XXXX		18
+> +#define SUBSYS_1601XXXX		19
+> +#define SUBSYS_14e0XXXX		20
+> +#define SUBSYS_1c20XXXX		21
+> +#define SUBSYS_1c30XXXX		22
+> +#define SUBSYS_1c40XXXX		23
+> +#define SUBSYS_1c50XXXX		24
+> +#define SUBSYS_1c60XXXX		25
+> +#define SUBSYS_NO_SUPPORT	99
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- drivers/soc/mediatek/mt8183-mmsys.h    | 235 +++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c       | 164 +++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.h       |   9 +-
- include/linux/soc/mediatek/mtk-mmsys.h |  81 +++++++++
- 4 files changed, 486 insertions(+), 3 deletions(-)
+Why define SUBSYS_NO_SUPPORT?
 
-diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
-index 579dfc8dc8fc..2fa79e745a45 100644
---- a/drivers/soc/mediatek/mt8183-mmsys.h
-+++ b/drivers/soc/mediatek/mt8183-mmsys.h
-@@ -12,6 +12,32 @@
- #define MT8183_DISP_DPI0_SEL_IN			0xf30
- #define MT8183_DISP_RDMA0_SOUT_SEL_IN		0xf50
- #define MT8183_DISP_RDMA1_SOUT_SEL_IN		0xf54
-+#define MT8183_MDP_ISP_MOUT_EN			0xf80
-+#define MT8183_MDP_RDMA0_MOUT_EN		0xf84
-+#define MT8183_MDP_PRZ0_MOUT_EN			0xf8c
-+#define MT8183_MDP_PRZ1_MOUT_EN			0xf90
-+#define MT8183_MDP_COLOR_MOUT_EN		0xf94
-+#define MT8183_MDP_IPU_MOUT_EN			0xf98
-+#define MT8183_MDP_PATH0_SOUT_SEL		0xfa8
-+#define MT8183_MDP_PATH1_SOUT_SEL		0xfac
-+#define MT8183_MDP_PRZ0_SEL_IN			0xfc0
-+#define MT8183_MDP_PRZ1_SEL_IN			0xfc4
-+#define MT8183_MDP_TDSHP_SEL_IN			0xfc8
-+#define MT8183_MDP_WROT0_SEL_IN			0xfd0
-+#define MT8183_MDP_WDMA_SEL_IN			0xfd4
-+#define MT8183_MDP_PATH0_SEL_IN			0xfe0
-+#define MT8183_MDP_PATH1_SEL_IN			0xfe4
-+#define MT8183_MDP_AAL_MOUT_EN			0xfe8
-+#define MT8183_MDP_AAL_SEL_IN			0xfec
-+#define MT8183_MDP_CCORR_SEL_IN			0xff0
-+#define MT8183_MDP_CCORR_SOUT_SEL		0xff4
-+
-+#define MT8183_ISP_CTRL_MMSYS_SW0_RST_B		0x140
-+#define MT8183_ISP_CTRL_MMSYS_SW1_RST_B		0x144
-+#define MT8183_ISP_CTRL_MDP_ASYNC_CFG_WD	0x934
-+#define MT8183_ISP_CTRL_MDP_ASYNC_IPU_CFG_WD	0x93C
-+#define MT8183_ISP_CTRL_ISP_RELAY_CFG_WD	0x994
-+#define MT8183_ISP_CTRL_IPU_RELAY_CFG_WD	0x9a0
- 
- #define MT8183_OVL0_MOUT_EN_OVL0_2L		BIT(4)
- #define MT8183_OVL0_2L_MOUT_EN_DISP_PATH0	BIT(0)
-@@ -24,6 +50,55 @@
- #define MT8183_DPI0_SEL_IN_RDMA1		0x2
- #define MT8183_RDMA0_SOUT_COLOR0		0x1
- #define MT8183_RDMA1_SOUT_DSI0			0x1
-+#define MT8183_MDP_ISP_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_ISP_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_ISP_MOUT_EN_AAL0		BIT(2)
-+#define MT8183_MDP_IPU_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_IPU_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_IPU_MOUT_EN_AAL0		BIT(2)
-+#define MT8183_MDP_RDMA0_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_RDMA0_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_RDMA0_MOUT_EN_PATH0_OUT	BIT(2)
-+#define MT8183_MDP_RDMA0_MOUT_EN_AAL0		BIT(3)
-+#define MT8183_MDP_AAL_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_AAL_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_AAL_MOUT_EN_RSZ0		BIT(2)
-+#define MT8183_MDP_PRZ0_MOUT_EN_PATH0_OUT	BIT(0)
-+#define MT8183_MDP_PRZ0_MOUT_EN_TDSHP0		BIT(1)
-+#define MT8183_MDP_PRZ1_MOUT_EN_PATH0_OUT	BIT(0)
-+#define MT8183_MDP_PRZ1_MOUT_EN_TDSHP0		BIT(1)
-+#define MT8183_MDP_PRZ1_MOUT_EN_PATH1_OUT	BIT(2)
-+#define MT8183_MDP_PRZ1_MOUT_EN_COLOR0		BIT(4)
-+#define MT8183_MDP_COLOR_MOUT_EN_PATH0_OUT	BIT(0)
-+#define MT8183_MDP_COLOR_MOUT_EN_PATH1_OUT	BIT(1)
-+#define MT8183_MDP_AAL_SEL_IN_CAMIN		0
-+#define MT8183_MDP_AAL_SEL_IN_RDMA0		1
-+#define MT8183_MDP_AAL_SEL_IN_CAMIN2		2
-+#define MT8183_MDP_AAL_SEL_IN_CCORR0		3
-+#define MT8183_MDP_CCORR_SEL_IN_CAMIN		0
-+#define MT8183_MDP_CCORR_SEL_IN_RDMA0		1
-+#define MT8183_MDP_CCORR_SEL_IN_CAMIN2		3
-+#define MT8183_MDP_CCORR_SEL_IN_AAL0		4
-+#define MT8183_MDP_PRZ0_SEL_IN_AAL0		0
-+#define MT8183_MDP_PRZ0_SEL_IN_CCORR0		1
-+#define MT8183_MDP_PRZ1_SEL_IN_CAMIN		0
-+#define MT8183_MDP_PRZ1_SEL_IN_RDMA0		1
-+#define MT8183_MDP_PRZ1_SEL_IN_CAMIN2		4
-+#define MT8183_MDP_PRZ1_SEL_IN_AAL0		5
-+#define MT8183_MDP_TDSHP_SEL_IN_RSZ0		0
-+#define MT8183_MDP_TDSHP_SEL_IN_RSZ1		1
-+#define MT8183_MDP_PATH0_SEL_IN_RSZ0		0
-+#define MT8183_MDP_PATH0_SEL_IN_RSZ1		1
-+#define MT8183_MDP_PATH0_SEL_IN_COLOR0		2
-+#define MT8183_MDP_PATH0_SEL_IN_RDMA0		3
-+#define MT8183_MDP_PATH1_SEL_IN_RSZ1		0
-+#define MT8183_MDP_PATH1_SEL_IN_COLOR0		1
-+#define MT8183_MDP_WROT0_SEL_IN_PATH0_OUT	0
-+#define MT8183_MDP_WDMA_SEL_IN_PATH1_OUT	0
-+#define MT8183_MDP_CCORR_SOUT_SEL_AAL0		0
-+#define MT8183_MDP_CCORR_SOUT_SEL_RSZ0		1
-+#define MT8183_MDP_PATH0_SOUT_SEL_WROT0		0
-+#define MT8183_MDP_PATH1_SOUT_SEL_WDMA		0
- 
- static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
- 	{
-@@ -50,5 +125,165 @@ static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
- 	}
- };
- 
-+static const struct mtk_mmsys_routes mmsys_mt8183_mdp_routing_table[] = {
-+	{
-+		MDP_COMP_CAMIN, MDP_COMP_CCORR0,
-+		MT8183_MDP_ISP_MOUT_EN, MT8183_MDP_ISP_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_RSZ1,
-+		MT8183_MDP_ISP_MOUT_EN, MT8183_MDP_ISP_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_AAL0,
-+		MT8183_MDP_ISP_MOUT_EN, MT8183_MDP_ISP_MOUT_EN_AAL0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_CCORR0,
-+		MT8183_MDP_IPU_MOUT_EN, MT8183_MDP_IPU_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_RSZ1,
-+		MT8183_MDP_IPU_MOUT_EN, MT8183_MDP_IPU_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_AAL0,
-+		MT8183_MDP_IPU_MOUT_EN, MT8183_MDP_IPU_MOUT_EN_AAL0
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_CCORR0,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_RSZ1,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_AAL0,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_AAL0
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_CCORR0,
-+		MT8183_MDP_AAL_MOUT_EN, MT8183_MDP_AAL_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ1,
-+		MT8183_MDP_AAL_MOUT_EN, MT8183_MDP_AAL_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ0,
-+		MT8183_MDP_AAL_MOUT_EN, MT8183_MDP_AAL_MOUT_EN_RSZ0
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PRZ0_MOUT_EN, MT8183_MDP_PRZ0_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_TDSHP0,
-+		MT8183_MDP_PRZ0_MOUT_EN, MT8183_MDP_PRZ0_MOUT_EN_TDSHP0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_TDSHP0,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_TDSHP0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_PATH1_OUT
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_COLOR0,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_COLOR0
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_COLOR_MOUT_EN, MT8183_MDP_COLOR_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_COLOR_MOUT_EN, MT8183_MDP_COLOR_MOUT_EN_PATH1_OUT
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_CAMIN
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_CAMIN2
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_CAMIN
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_CAMIN2
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_AAL0
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ0,
-+		MT8183_MDP_PRZ0_SEL_IN, MT8183_MDP_PRZ0_SEL_IN_AAL0
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_RSZ0,
-+		MT8183_MDP_PRZ0_SEL_IN, MT8183_MDP_PRZ0_SEL_IN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_CAMIN
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_CAMIN2
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_AAL0
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_TDSHP0,
-+		MT8183_MDP_TDSHP_SEL_IN, MT8183_MDP_TDSHP_SEL_IN_RSZ0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_TDSHP0,
-+		MT8183_MDP_TDSHP_SEL_IN, MT8183_MDP_TDSHP_SEL_IN_RSZ1
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_RSZ0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_RSZ1
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_COLOR0
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_PATH1_SEL_IN, MT8183_MDP_PATH1_SEL_IN_RSZ1
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_PATH1_SEL_IN, MT8183_MDP_PATH1_SEL_IN_COLOR0
-+	}, {
-+		MDP_COMP_PATH0_SOUT, MDP_COMP_WROT0,
-+		MT8183_MDP_WROT0_SEL_IN, MT8183_MDP_WROT0_SEL_IN_PATH0_OUT
-+	}, {
-+		MDP_COMP_PATH1_SOUT, MDP_COMP_WDMA,
-+		MT8183_MDP_WDMA_SEL_IN, MT8183_MDP_WDMA_SEL_IN_PATH1_OUT
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_AAL0,
-+		MT8183_MDP_CCORR_SOUT_SEL, MT8183_MDP_CCORR_SOUT_SEL_AAL0
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_RSZ0,
-+		MT8183_MDP_CCORR_SOUT_SEL, MT8183_MDP_CCORR_SOUT_SEL_RSZ0
-+	}, {
-+		MDP_COMP_PATH0_SOUT, MDP_COMP_WROT0,
-+		MT8183_MDP_PATH0_SOUT_SEL, MT8183_MDP_PATH0_SOUT_SEL_WROT0
-+	}, {
-+		MDP_COMP_PATH1_SOUT, MDP_COMP_WDMA,
-+		MT8183_MDP_PATH1_SOUT_SEL, MT8183_MDP_PATH1_SOUT_SEL_WDMA
-+	}
-+};
-+
-+static const unsigned int mmsys_mt8183_mdp_isp_ctrl_table[ISP_CTRL_MAX] = {
-+	[ISP_CTRL_MMSYS_SW0_RST_B] = MT8183_ISP_CTRL_MMSYS_SW0_RST_B,
-+	[ISP_CTRL_MMSYS_SW1_RST_B] = MT8183_ISP_CTRL_MMSYS_SW1_RST_B,
-+	[ISP_CTRL_MDP_ASYNC_CFG_WD] = MT8183_ISP_CTRL_MDP_ASYNC_CFG_WD,
-+	[ISP_CTRL_MDP_ASYNC_IPU_CFG_WD] = MT8183_ISP_CTRL_MDP_ASYNC_IPU_CFG_WD,
-+	[ISP_CTRL_ISP_RELAY_CFG_WD] = MT8183_ISP_CTRL_ISP_RELAY_CFG_WD,
-+	[ISP_CTRL_IPU_RELAY_CFG_WD] = MT8183_ISP_CTRL_IPU_RELAY_CFG_WD,
-+};
-+
- #endif /* __SOC_MEDIATEK_MT8183_MMSYS_H */
- 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 080660ef11bf..c4b99a99ee1e 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -7,8 +7,10 @@
- #include <linux/device.h>
- #include <linux/io.h>
- #include <linux/of_device.h>
-+#include <linux/of_address.h>
- #include <linux/platform_device.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk-mmsys.h"
- #include "mt8167-mmsys.h"
-@@ -50,11 +52,16 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.clk_driver = "clk-mt8183-mm",
- 	.routes = mmsys_mt8183_routing_table,
- 	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
-+	.mdp_routes = mmsys_mt8183_mdp_routing_table,
-+	.mdp_num_routes = ARRAY_SIZE(mmsys_mt8183_mdp_routing_table),
-+	.mdp_isp_ctrl = mmsys_mt8183_mdp_isp_ctrl_table,
- };
- 
- struct mtk_mmsys {
- 	void __iomem *regs;
- 	const struct mtk_mmsys_driver_data *data;
-+	phys_addr_t addr;
-+	u8 subsys_id;
- };
- 
- void mtk_mmsys_ddp_connect(struct device *dev,
-@@ -91,12 +98,160 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
- 
-+void mtk_mmsys_mdp_connect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			   enum mtk_mdp_comp_id cur,
-+			   enum mtk_mdp_comp_id next)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_routes *routes = mmsys->data->mdp_routes;
-+	int i;
-+
-+	WARN_ON(!routes);
-+	WARN_ON(mmsys->subsys_id == 0);
-+	for (i = 0; i < mmsys->data->mdp_num_routes; i++)
-+		if (cur == routes[i].from_comp && next == routes[i].to_comp)
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id,
-+					    mmsys->addr + routes[i].addr,
-+					    routes[i].val, 0xFFFFFFFF);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_connect);
-+
-+void mtk_mmsys_mdp_disconnect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id cur,
-+			      enum mtk_mdp_comp_id next)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_routes *routes = mmsys->data->mdp_routes;
-+	int i;
-+
-+	WARN_ON(mmsys->subsys_id == 0);
-+	for (i = 0; i < mmsys->data->mdp_num_routes; i++)
-+		if (cur == routes[i].from_comp && next == routes[i].to_comp)
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id,
-+					    mmsys->addr + routes[i].addr,
-+					    0, 0xFFFFFFFF);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_disconnect);
-+
-+void mtk_mmsys_mdp_isp_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			    enum mtk_mdp_comp_id id)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const unsigned int *isp_ctrl = mmsys->data->mdp_isp_ctrl;
-+	u32 reg;
-+
-+	WARN_ON(mmsys->subsys_id == 0);
-+	/* Direct link */
-+	if (id == MDP_COMP_CAMIN) {
-+		/* Reset MDP_DL_ASYNC_TX */
-+		/* Bit  3: MDP_DL_ASYNC_TX / MDP_RELAY */
-+		if (isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0, 0x00000008);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    1 << 3, 0x00000008);
-+		}
-+
-+		/* Reset MDP_DL_ASYNC_RX */
-+		/* Bit  10: MDP_DL_ASYNC_RX */
-+		if (isp_ctrl[ISP_CTRL_MMSYS_SW1_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MMSYS_SW1_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0, 0x00000400);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    1 << 10, 0x00000400);
-+		}
-+
-+		/* Enable sof mode */
-+		if (isp_ctrl[ISP_CTRL_ISP_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_ISP_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0 << 31, 0x80000000);
-+		}
-+	}
-+
-+	if (id == MDP_COMP_CAMIN2) {
-+		/* Reset MDP_DL_ASYNC2_TX */
-+		/* Bit  4: MDP_DL_ASYNC2_TX / MDP_RELAY2 */
-+		if (isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0, 0x00000010);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    1 << 4, 0x00000010);
-+		}
-+
-+		/* Reset MDP_DL_ASYNC2_RX */
-+		/* Bit  11: MDP_DL_ASYNC2_RX */
-+		if (isp_ctrl[ISP_CTRL_MMSYS_SW1_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MMSYS_SW1_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0, 0x00000800);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    1 << 11, 0x00000800);
-+		}
-+
-+		/* Enable sof mode */
-+		if (isp_ctrl[ISP_CTRL_IPU_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_IPU_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0 << 31, 0x80000000);
-+		}
-+	}
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_isp_ctrl);
-+
-+void mtk_mmsys_mdp_camin_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id id, u32 camin_w, u32 camin_h)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const unsigned int *isp_ctrl = mmsys->data->mdp_isp_ctrl;
-+	u32 reg;
-+
-+	WARN_ON(mmsys->subsys_id == 0);
-+	/* Config for direct link */
-+	if (id == MDP_COMP_CAMIN) {
-+		if (isp_ctrl[ISP_CTRL_MDP_ASYNC_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MDP_ASYNC_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+
-+		if (isp_ctrl[ISP_CTRL_ISP_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_ISP_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+	}
-+	if (id == MDP_COMP_CAMIN2) {
-+		if (isp_ctrl[ISP_CTRL_MDP_ASYNC_IPU_CFG_WD]) {
-+			reg = mmsys->addr +
-+			      isp_ctrl[ISP_CTRL_MDP_ASYNC_IPU_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+		if (isp_ctrl[ISP_CTRL_IPU_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_CTRL_IPU_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+	}
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_camin_ctrl);
-+
- static int mtk_mmsys_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct platform_device *clks;
- 	struct platform_device *drm;
- 	struct mtk_mmsys *mmsys;
-+	struct resource res;
-+	struct cmdq_client_reg cmdq_reg;
- 	int ret;
- 
- 	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
-@@ -110,6 +265,15 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	if (of_address_to_resource(dev->of_node, 0, &res) < 0)
-+		mmsys->addr = 0L;
-+	else
-+		mmsys->addr = res.start;
-+
-+	if (cmdq_dev_get_client_reg(dev, &cmdq_reg, 0) != 0)
-+		dev_info(dev, "cmdq subsys id has not been set\n");
-+	mmsys->subsys_id = cmdq_reg.subsys;
-+
- 	mmsys->data = of_device_get_match_data(&pdev->dev);
- 	platform_set_drvdata(pdev, mmsys);
- 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index a760a34e6eca..025d4bc9c8cc 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -74,9 +74,12 @@ struct mtk_mmsys_routes {
- };
- 
- struct mtk_mmsys_driver_data {
--	const char *clk_driver;
--	const struct mtk_mmsys_routes *routes;
--	const unsigned int num_routes;
-+	const char		*clk_driver;
-+	const struct		mtk_mmsys_routes *routes;
-+	const unsigned int	num_routes;
-+	const struct		mtk_mmsys_routes *mdp_routes;
-+	const unsigned int	mdp_num_routes;
-+	const unsigned int	*mdp_isp_ctrl;
- };
- 
- /*
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 2228bf6133da..4eb48d073d2a 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -7,8 +7,14 @@
- #define __MTK_MMSYS_H
- 
- enum mtk_ddp_comp_id;
-+enum mtk_mdp_comp_id;
- struct device;
- 
-+struct mmsys_cmdq_cmd {
-+	struct cmdq_pkt *pkt;
-+	s32 *event;
-+};
-+
- enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_AAL1,
-@@ -42,6 +48,64 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_ID_MAX,
- };
- 
-+enum mtk_mdp_comp_id {
-+	MDP_COMP_NONE = -1,	/* Invalid engine */
-+
-+	/* ISP */
-+	MDP_COMP_WPEI = 0,
-+	MDP_COMP_WPEO,		/* 1 */
-+	MDP_COMP_WPEI2,		/* 2 */
-+	MDP_COMP_WPEO2,		/* 3 */
-+	MDP_COMP_ISP_IMGI,	/* 4 */
-+	MDP_COMP_ISP_IMGO,	/* 5 */
-+	MDP_COMP_ISP_IMG2O,	/* 6 */
-+
-+	/* IPU */
-+	MDP_COMP_IPUI,		/* 7 */
-+	MDP_COMP_IPUO,		/* 8 */
-+
-+	/* MDP */
-+	MDP_COMP_CAMIN,		/* 9 */
-+	MDP_COMP_CAMIN2,	/* 10 */
-+	MDP_COMP_RDMA0,		/* 11 */
-+	MDP_COMP_AAL0,		/* 12 */
-+	MDP_COMP_CCORR0,	/* 13 */
-+	MDP_COMP_RSZ0,		/* 14 */
-+	MDP_COMP_RSZ1,		/* 15 */
-+	MDP_COMP_TDSHP0,	/* 16 */
-+	MDP_COMP_COLOR0,	/* 17 */
-+	MDP_COMP_PATH0_SOUT,	/* 18 */
-+	MDP_COMP_PATH1_SOUT,	/* 19 */
-+	MDP_COMP_WROT0,		/* 20 */
-+	MDP_COMP_WDMA,		/* 21 */
-+
-+	/* Dummy Engine */
-+	MDP_COMP_RDMA1,		/* 22 */
-+	MDP_COMP_RSZ2,		/* 23 */
-+	MDP_COMP_TDSHP1,	/* 24 */
-+	MDP_COMP_WROT1,		/* 25 */
-+
-+	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
-+};
-+
-+enum mtk_mdp_pipe_id {
-+	MDP_PIPE_RDMA0,
-+	MDP_PIPE_IMGI,
-+	MDP_PIPE_WPEI,
-+	MDP_PIPE_WPEI2,
-+	MDP_PIPE_MAX
-+};
-+
-+enum mtk_isp_ctrl {
-+	ISP_CTRL_MMSYS_SW0_RST_B,
-+	ISP_CTRL_MMSYS_SW1_RST_B,
-+	ISP_CTRL_MDP_ASYNC_CFG_WD,
-+	ISP_CTRL_MDP_ASYNC_IPU_CFG_WD,
-+	ISP_CTRL_ISP_RELAY_CFG_WD,
-+	ISP_CTRL_IPU_RELAY_CFG_WD,
-+	ISP_CTRL_MAX
-+};
-+
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
- 			   enum mtk_ddp_comp_id next);
-@@ -50,4 +114,21 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
- 			      enum mtk_ddp_comp_id cur,
- 			      enum mtk_ddp_comp_id next);
- 
-+void mtk_mmsys_mdp_connect(struct device *dev,
-+			   struct mmsys_cmdq_cmd *cmd,
-+			   enum mtk_mdp_comp_id cur,
-+			   enum mtk_mdp_comp_id next);
-+
-+void mtk_mmsys_mdp_disconnect(struct device *dev,
-+			      struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id cur,
-+			      enum mtk_mdp_comp_id next);
-+
-+void mtk_mmsys_mdp_isp_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			    enum mtk_mdp_comp_id id);
-+
-+void mtk_mmsys_mdp_camin_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id id,
-+			      u32 camin_w, u32 camin_h);
-+
- #endif /* __MTK_MMSYS_H */
--- 
-2.18.0
+> +
+> +/* GCE General Purpose Register (GPR) support
+> + * Leave note for scenario usage here
+> + */
+> +/* GCE: write mask */
+> +#define GCE_GPR_R00		0x00
+> +#define GCE_GPR_R01		0x01
+> +/* MDP: P1: JPEG dest */
+> +#define GCE_GPR_R02		0x02
+> +#define GCE_GPR_R03		0x03
+> +/* MDP: PQ color */
+> +#define GCE_GPR_R04		0x04
+> +/* MDP: 2D sharpness */
+> +#define GCE_GPR_R05		0x05
+> +/* DISP: poll esd */
+> +#define GCE_GPR_R06		0x06
+> +#define GCE_GPR_R07		0x07
+> +/* MDP: P4: 2D sharpness dst */
+> +#define GCE_GPR_R08		0x08
+> +#define GCE_GPR_R09		0x09
+> +/* VCU: poll with timeout for GPR timer */
+> +#define GCE_GPR_R10		0x0A
+> +#define GCE_GPR_R11		0x0B
+> +/* CMDQ: debug */
+> +#define GCE_GPR_R12		0x0C
+> +#define GCE_GPR_R13		0x0D
+> +/* CMDQ: P7: debug */
+> +#define GCE_GPR_R14		0x0E
+> +#define GCE_GPR_R15		0x0F
+
+GPR is general purpose register, so do not limit the usage of each GPR.
+
+> +
+
+[snip]
+
+> +
+> +/* end of hw event */
+> +#define CMDQ_MAX_HW_EVENT				1019
+> +
+> +/* sw token should use the unused event id from 0 to 1023 */
+
+SW token usage could be changed by different software design. So do not
+define in binding document.
+
+Regards,
+CK
+
+> +#define CMDQ_SYNC_TOKEN_INVALID				(-1)
+> +
+> +/* Event for imgsys flow control */
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_EIS			33
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_TNR			34
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_TRAW			35
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_LTRAW			36
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_DIP			37
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_A			38
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_B			39
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_1			41
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_2			42
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_3			43
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_4			44
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_5			45
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_6			46
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_7			47
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_8			48
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_9			49
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_10			50
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_11			51
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_12			52
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_13			53
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_14			54
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_15			55
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_16			56
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_17			57
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_18			58
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_19			59
+> +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_20			60
+> +/* Config thread notify trigger thread */
+> +#define CMDQ_SYNC_TOKEN_CONFIG_DIRTY			971
+> +/* Trigger thread notify config thread */
+> +#define CMDQ_SYNC_TOKEN_STREAM_EOF			972
+> +/* Block Trigger thread until the ESD check finishes. */
+> +#define CMDQ_SYNC_TOKEN_ESD_EOF				973
+> +#define CMDQ_SYNC_TOKEN_STREAM_BLOCK			974
+> +/* check CABC setup finish */
+> +#define CMDQ_SYNC_TOKEN_CABC_EOF			975
+> +/* Pass-2 notifies VENC frame is ready to be encoded */
+> +#define CMDQ_SYNC_TOKEN_VENC_INPUT_READY		976
+> +/* VENC notifies Pass-2 encode done so next frame may start */
+> +#define CMDQ_SYNC_TOKEN_VENC_EOF			977
+> +
+> +/* Notify normal CMDQ there are some secure task done
+> + * MUST NOT CHANGE, this token sync with secure world
+> + */
+> +#define CMDQ_SYNC_SECURE_THR_EOF			980
+> +#define CMDQ_SYNC_SECURE_THR_EOF_DBG			995
+> +
+> +/* CMDQ use sw token */
+> +#define CMDQ_SYNC_TOKEN_USER_0				981
+> +#define CMDQ_SYNC_TOKEN_USER_1				982
+> +#define CMDQ_SYNC_TOKEN_POLL_MONITOR			983
+> +#define CMDQ_SYNC_TOKEN_TPR_LOCK			984
+> +
+> +/* ISP sw token */
+> +#define CMDQ_SYNC_TOKEN_MSS				985
+> +#define CMDQ_SYNC_TOKEN_MSF				986
+> +
+> +/* GPR access tokens (for register backup)
+> + * There are 15 32-bit GPR, 3 GPR form a set
+> + * (64-bit for address, 32-bit for value)
+> + * MUST NOT CHANGE, these tokens sync with MDP
+> + */
+> +#define CMDQ_SYNC_TOKEN_GPR_SET_0			987
+> +#define CMDQ_SYNC_TOKEN_GPR_SET_1			988
+> +#define CMDQ_SYNC_TOKEN_GPR_SET_2			989
+> +#define CMDQ_SYNC_TOKEN_GPR_SET_3			990
+> +#define CMDQ_SYNC_TOKEN_GPR_SET_4			991
+> +
+> +/* Resource lock event to control resource in GCE thread */
+> +#define CMDQ_SYNC_RESOURCE_WROT0			992
+> +#define CMDQ_SYNC_RESOURCE_WROT1			993
+> +
+> +/* Event for gpr timer, used in sleep and poll with timeout */
+> +#define CMDQ_TOKEN_GPR_TIMER_R0				996
+> +#define CMDQ_TOKEN_GPR_TIMER_R1				997
+> +#define CMDQ_TOKEN_GPR_TIMER_R2				998
+> +#define CMDQ_TOKEN_GPR_TIMER_R3				999
+> +#define CMDQ_TOKEN_GPR_TIMER_R4				1000
+> +#define CMDQ_TOKEN_GPR_TIMER_R5				1001
+> +#define CMDQ_TOKEN_GPR_TIMER_R6				1002
+> +#define CMDQ_TOKEN_GPR_TIMER_R7				1003
+> +#define CMDQ_TOKEN_GPR_TIMER_R8				1004
+> +#define CMDQ_TOKEN_GPR_TIMER_R9				1005
+> +#define CMDQ_TOKEN_GPR_TIMER_R10			1006
+> +#define CMDQ_TOKEN_GPR_TIMER_R11			1007
+> +#define CMDQ_TOKEN_GPR_TIMER_R12			1008
+> +#define CMDQ_TOKEN_GPR_TIMER_R13			1009
+> +#define CMDQ_TOKEN_GPR_TIMER_R14			1010
+> +#define CMDQ_TOKEN_GPR_TIMER_R15			1011
+> +
+> +/* defined in mtk-cmdq-mailbox.h */
+> +/* #define CMDQ_EVENT_MAX					0x3ff */
+> +
+> +#endif
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
