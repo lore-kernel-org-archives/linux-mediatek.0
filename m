@@ -2,75 +2,73 @@ Return-Path: <SRS0=VOwE=NP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-4.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D953FC4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 15:29:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48EE6C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 15:45:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2DBC61165
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 15:29:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A2DBC61165
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 105EE6135F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 15:45:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 105EE6135F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W/X8YRwfSH/VXOG9wqj/M0IS2/3zs6sIXtx1lZPHKjQ=; b=CR8JtV2k01MLjH4zwkkTI55K+9
-	nwNen5r3h4xVU/gJ/USIERJTLKiuD/OABzvbOOehVwdnih/vrl1aWebODeXYWR69m/aRJqIoFp50z
-	KKktaPPnFQk5apM6rbMgAnEw42Ypcc9xw4pPupO6KDfFN3XQj03XP/xp2WOfTLuIN4ocX3QZ3nhoO
-	WhtT+w3uwzVnVjsKq7Ord4BqTmbIrqzWVYFbwnxmePinD6wele4P5r7Z4f4rDhFa233RafQ27sJtu
-	X8mH9vjBtwZ4/GzcNsrfaj2PkWIek/hI2//sHqPsWTD2DxIsSBx92/XRHJLrJ0mu9gMVcV+aEYbC0
-	o7ypdhMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CAGeXs6eJE8tG0Mk39HTc90xTHhk9BNVtoDAwVuC8V0=; b=byEhh+OEsxyz26
+	GkarO1Q6mCYjWlK/R6zZ/zauxClp67tTbZX5jydwXbmt/GHJ8pkvU/TZMk2234MaJu6SEXQoKXX1Q
+	A9TiqzAFjVmG/pwdxhSndE+hrCyeFcsi3ylZNnIL37yry6jeKXQw/or2wqv6X28tItC7X+Ou0YFCy
+	qXaYOwn6+FpFi6Q4RFSITptZzh7cvUWBmgYJrYjP1ZBDBz00TDEK43Nl4ul/FGSq/5fiC+G9rS/kA
+	0jKeinaa2AnSBbK5skI/5z+12sbPKh0JqMerBFEQCttUgSAyRUE4ZRWit2Meo1CTL+C5JmxaSRSqW
+	qp6Be2nIZ4SEWn/lzCNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIYN0-003io7-10; Tue, 24 Aug 2021 15:29:46 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mIYbd-003mkn-Qo; Tue, 24 Aug 2021 15:44:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIYMj-003iga-3p; Tue, 24 Aug 2021 15:29:30 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 7E66561265;
- Tue, 24 Aug 2021 15:29:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629818968;
- bh=6+biN29D5WoAzfO9BDov2cPTbiGldallkUXFPOK88js=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ZbXQuqv9UCGWSbmnuGM2/SP4M86QwDXHD/0D0Ely67U4o2yVP56OBp6jRRMlh1oSF
- 5veYNBtnUJ3pXEHicLmMF6V/a9iOwysLhlt/vsqQUdHtlgwaAorueBnqOszTuJSabv
- TsEt6GGwl8QO6aCvLpqHWBQUw6JqRhg75NNX81YzwXOx0HUEZje9xsvcaExeSvMI1Q
- omsbDbz5VS00VWVaLSIgWWbzeK3lBiYYH22ewdgCCICvGcvsvui8HzCvkjo9B8XdgL
- WVVI1RDoxyNZJwEMsnopBguQZG1QXEfa/8eYw9wpje9g2LWHi/mRztpi9Xb943SZLm
- ISBlKzlij56ew==
-Date: Tue, 24 Aug 2021 11:29:27 -0400
-From: Sasha Levin <sashal@kernel.org>
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: stable@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@savoirfairelinux.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- "David S. Miller" <davem@davemloft.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:MEDIATEK SWITCH DRIVER" <netdev@vger.kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 4.19.y] net: dsa: mt7530: disable learning on standalone
- ports
-Message-ID: <YSUQV3jhfbhbf5Ct@sashalap>
-References: <20210824055509.1316124-1-dqfext@gmail.com>
+ id 1mIYbW-003miY-Fa
+ for linux-mediatek@lists.infradead.org; Tue, 24 Aug 2021 15:44:51 +0000
+X-UUID: 2b2fc1303668490982a2a2f9a8b5636f-20210824
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=MTWq3GQtnf6nnNytaeWuSejSLW0uqgnzRy0DvAoGyvo=; 
+ b=Ar4CwIadU5F0Vf47j2QIkw4JXUQvYJQLXuyNtF6P7engaAHKm2ZMziKwlGXG9bwj91YVcYFEFQaP29zG02X2gMe74rTlq5ffYvmOnjggbDLBB42j10jh8n26qvo+zc9NTT+fBZWpMjGYQJHpX2tzsoKujRbCNWrb6/G3UBsxJSk=;
+X-UUID: 2b2fc1303668490982a2a2f9a8b5636f-20210824
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <mark-yw.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1822653651; Tue, 24 Aug 2021 08:44:43 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 24 Aug 2021 08:44:41 -0700
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 24 Aug 2021 23:44:41 +0800
+From: <mark-yw.chen@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <sean.wang@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <michaelfsun@google.com>, <mcchou@chromium.org>, mark-yw.chen
+ <mark-yw.chen@mediatek.com>
+Subject: [PATCH 1/2] Bluetooth: btusb: Support public address configuration
+ for MediaTek Chip.
+Date: Tue, 24 Aug 2021 23:44:29 +0800
+Message-ID: <20210824154430.27689-1-mark-yw.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210824055509.1316124-1-dqfext@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_082929_202902_9CD89356 
-X-CRM114-Status: UNSURE (   7.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210824_084447_998858_8AEF7199 
+X-CRM114-Status: GOOD (  10.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,26 +80,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Aug 24, 2021 at 01:55:08PM +0800, DENG Qingfang wrote:
->This is a partial backport of commit 5a30833b9a16f8d1aa15de06636f9317ca51f9df
->("net: dsa: mt7530: support MDB and bridge flag operations") upstream.
->
->Make sure that the standalone ports start up with learning disabled.
+From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
 
-What's the reasoning behind:
+The MediaTek chip support vendor specific HCI command(0xfc1a) to
+change the public address. Add hdev->set_bdaddr handler for MediaTek
+Chip.
 
-1. Backporting this patch?
-2. A partial backport of this patch?
+Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
+---
+ drivers/bluetooth/btusb.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
+diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
+index 60d2fce59a71..41e7c9f28d82 100644
+--- a/drivers/bluetooth/btusb.c
++++ b/drivers/bluetooth/btusb.c
+@@ -2200,6 +2200,23 @@ struct btmtk_section_map {
+ 	};
+ } __packed;
+ 
++static int btusb_set_bdaddr_mtk(struct hci_dev *hdev, const bdaddr_t *bdaddr)
++{
++	struct sk_buff *skb;
++	long ret;
++
++	skb = __hci_cmd_sync(hdev, 0xfc1a, sizeof(bdaddr), bdaddr, HCI_INIT_TIMEOUT);
++	if (IS_ERR(skb)) {
++		ret = PTR_ERR(skb);
++		bt_dev_err(hdev, "changing Mediatek device address failed (%ld)",
++			   ret);
++		return ret;
++	}
++	kfree_skb(skb);
++
++	return 0;
++}
++
+ static void btusb_mtk_wmt_recv(struct urb *urb)
+ {
+ 	struct hci_dev *hdev = urb->context;
+@@ -3819,6 +3836,7 @@ static int btusb_probe(struct usb_interface *intf,
+ 		hdev->shutdown = btusb_mtk_shutdown;
+ 		hdev->manufacturer = 70;
+ 		hdev->cmd_timeout = btusb_mtk_cmd_timeout;
++		hdev->set_bdaddr = btusb_set_bdaddr_mtk;
+ 		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
+ 		data->recv_acl = btusb_recv_acl_mtk;
+ 	}
 -- 
-Thanks,
-Sasha
-
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
