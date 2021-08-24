@@ -2,75 +2,74 @@ Return-Path: <SRS0=VOwE=NP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
 	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 34488C4320E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 17:17:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59AB1C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 17:33:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 00A8A610FD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 17:17:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 00A8A610FD
+	by mail.kernel.org (Postfix) with ESMTPS id 214FD60E8B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 17:33:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 214FD60E8B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pkmNGAwJb5Dg3jQnq8lhzhvJ0YdyZWTEIwvHkF90DKw=; b=mAZiIWBEp0CDrc
-	VB9vzYebDy8WyruQdiOSby8pWqXGghbOehHiZpHfQJFkNp7gcaP1RTnzjoIfC/+lY/dc9C3LsjWUQ
-	nVyCfa2KB22NvCyZ9PQCH+DvxszYIAd24UIgTTsteFJSt7OG1hC7Xt7W2NbZZx/oJ3ZPRot/Und1E
-	V9nzMk9xOMCJ9VwcYinXC7NsZ1C+3qgIwO11Ff9JjcBb7YEBWLTSfkZF3F7zeb1XiCrzVXCvAJag1
-	CMIvFnaXlAyCgyQiZx5+Ey9z5g8CvqlQq9MTYe64NRhoWf9YUMV6C+UecbR8RfTMxV7arbZ0z+dP+
-	sKukw/zv0VZ/N66pSf1A==;
+	List-Owner; bh=OfAtXNl8+Ke5yLNlu88f3J0AwDiIidMRBGWawmt4w6U=; b=QqITU1hWp8rm2w
+	tZG43Pq2HNF8cwMWaMg7mn0OGyXzIU27JtjqrdSZ4jQdFMSGN3H4SKmFrjnF1S2vL2pTuj9gfi7eO
+	6PAbCnmrg2YRg3nbfhiZp98EJUErnSKOn3z9ztthEk4KyCycvJ4fp2QOYnZzoaYLbLJjfQAm1XMzo
+	nkWRrHWliR7T0mfyqmFQ46BlrXMJ3Jlf5eh7wbFnMnLqZYvzc8MKWugOKelhiqKXmmDatBJElAWiB
+	NrJJv021xbyN5f9UbiUkVLe9A1rJ8jsanHV5nBaq8PKNpylmmPdHZZcduAaPKCfbZ57v84OX+gi7s
+	UuiZJem1sLLCPfarVqGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIa2r-0047RL-KB; Tue, 24 Aug 2021 17:17:05 +0000
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+	id 1mIaIL-004BNd-QO; Tue, 24 Aug 2021 17:33:05 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIa2e-0047P3-Vr; Tue, 24 Aug 2021 17:16:54 +0000
-Received: by mail-ej1-x630.google.com with SMTP id bt14so45872244ejb.3;
- Tue, 24 Aug 2021 10:16:52 -0700 (PDT)
+ id 1mIaI5-004BHs-BS; Tue, 24 Aug 2021 17:32:50 +0000
+Received: by mail-pg1-x531.google.com with SMTP id t1so20433868pgv.3;
+ Tue, 24 Aug 2021 10:32:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=ZrICEbmTTI5X+hclm7WK+PbQzG8reRJWlDrlnWqe5QM=;
- b=V7GFYricmNupzBQJITddKiJ5ku1Lqevd9U9bxpSrk0jzLvBuYGDIYibumqRNN0x5vp
- pSb64XnQkxG4tDTrNORxvVC6r/yjy64p4Gcem3ESHcB5ZNYGrW9cl6YZfdTXqGRCiVe7
- eq1VENoEhmH7DmNn4kapGxS5qi7KlF/N9RlD8Lx/C+kZGtyG1RHWVREmLQsDYZbq6lYK
- tpn2eyaAgXC2EaIIEnLDW7kcIpM7qUcG94JDw+jLRXbvxpbKffMn3jD8swoBhVDcj8Ww
- Ac9UtFbl535gK/3LeP2yd3dSnBDXYhh61E8eFOiNrBs561D7YgygGR4UvbDe91vcLyzB
- 8uUg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=g9LJhggKHy5VJtMaJ9R8dOKVVlo3xEJqmgw1Slxeh/4=;
+ b=Fvh6g+4bT66GQtkOkpVzPme6rUscGPaqEpRt4v7/FxlsWdaeM6Kfrqed0YuPBjI7F7
+ 66Lg9gXRDyDEH4YyqnuZCTZQ97wW/7KACpAR+RwHWpqT5L7kxAdlRAwtUhJ8h8nO/C7Z
+ aRzjxqWBgxT180W6zc+myoV7znLlUfp6LD0qqs1go7wd80mbgyWCTdTTtEn3hgr7Wer1
+ rhwRCmsJUyVbBhU3n9WL+eYf1Qvw8QWYwBSIqAL9yzgck+xGhIKZR7nGNVnT5mIsenHu
+ Y668D7vt+wTs40JDT+OkqwHIb8/N2QqOCym1DWt4KQv7Q+tTenxw4ohK/KMOexP+16T9
+ IgAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=ZrICEbmTTI5X+hclm7WK+PbQzG8reRJWlDrlnWqe5QM=;
- b=dFbK2Eq5hh6FLyueo2Lro0y9k11BZPN85jZMPZpEKxnlobfRQZhczte47ieG7gw3ob
- ES1x4Lon3Pe6u7cmVWDAH/4Tia8I0MQPRMbPgajBqQcy83FBMdWJqlMIjYVkaaM+1+jf
- 9/qtGqQFt1lxINpwch6kFWhi1cahmw957Mia06EDEvXIbCS2tuCUdPWRSY6+aPr/3XTJ
- AqJnJZr47YiovRiT4HWzWdk7t85SasNO7+nzDvxEFFJJgCGCfAcZiofjSuPNRMA9j1zp
- zSEJtSfjniwqo8FkWY5AtU8f1wfEUKmKVtV2B0fx4iQiAJejHdXGkTrFKonSoJCBL29J
- 8u8Q==
-X-Gm-Message-State: AOAM530uOD3FTlYgQDonssc5V9xag8dqYzD5scvCJ5ddTvRI+gu/FuuU
- UaIYsCtBuB0BmnX7NYCDRsQ=
-X-Google-Smtp-Source: ABdhPJwdGCzqk1Ny2qU9cmtS61qz1uXqMNjNnjfRHaaaWhcZMJ32Yp6OFCb0QywNgpvRbXpje3KbyQ==
-X-Received: by 2002:a17:906:401:: with SMTP id
- d1mr1200691eja.242.1629825411500; 
- Tue, 24 Aug 2021 10:16:51 -0700 (PDT)
-Received: from skbuf ([188.25.144.60])
- by smtp.gmail.com with ESMTPSA id v1sm9951266ejd.31.2021.08.24.10.16.50
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=g9LJhggKHy5VJtMaJ9R8dOKVVlo3xEJqmgw1Slxeh/4=;
+ b=QkuaIocim3jD7S176zpyvAhunoZwP/fbfKlPhoEUQzW7j2tfJy7QT5Q1o7E66L9Y/b
+ LZR198XnyhVFOP1r1zpXZMcGmIOIE8FA0V6kq7LzBLyr9VIUfMwvTyHOiIpATiP2oPzQ
+ 5ri5p4bpF7GATHjPinTvNKZckrpzqEYku7ZZvuyXxPkDpVKn+cDawwGKg8g6X7SypeEd
+ gJL1YqYP68Bn/61iG1NLjjoQ/+0G8J7KQpGEegqgsx1LgucDwp/HHDVU4IrsTzjg3UZX
+ hruKkKBwAZgZqtuZ71GfUKPkTxd2v+nxXDsuoQOyg2SZM+piqEcDrLcyFoapLMWj7Ox3
+ zPUA==
+X-Gm-Message-State: AOAM5301+4HZjb7/8DNF0cHa3WJTV6P0IF0VzgyHsvnZqMVe1+qWdFBw
+ h+PhK9P01pfz7W+Jkb15IwE=
+X-Google-Smtp-Source: ABdhPJwrP2Y1h9/6wAw1h0wgYRixs3rnIJtHaZT9iSxCxCh4eYqcTRpzqWDAqRb+OBEtlgFo/maFdw==
+X-Received: by 2002:a63:2047:: with SMTP id r7mr20577260pgm.398.1629826368075; 
+ Tue, 24 Aug 2021 10:32:48 -0700 (PDT)
+Received: from haswell-ubuntu20.lan ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id w76sm17142028pfd.71.2021.08.24.10.32.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Aug 2021 10:16:51 -0700 (PDT)
-Date: Tue, 24 Aug 2021 20:16:49 +0300
-From: Vladimir Oltean <olteanv@gmail.com>
-To: DENG Qingfang <dqfext@gmail.com>
+ Tue, 24 Aug 2021 10:32:47 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Vladimir Oltean <olteanv@gmail.com>
 Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
  Florian Fainelli <f.fainelli@gmail.com>,
@@ -84,15 +83,17 @@ Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
  open list <linux-kernel@vger.kernel.org>
 Subject: Re: [PATCH net-next] net: dsa: mt7530: manually set up VLAN ID 0
-Message-ID: <20210824171649.ebcolsbsqczomiee@skbuf>
+Date: Wed, 25 Aug 2021 01:32:37 +0800
+Message-Id: <20210824173237.1691654-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210824165742.xvkb3ke7boryfoj4@skbuf>
 References: <20210824165253.1691315-1-dqfext@gmail.com>
  <20210824165742.xvkb3ke7boryfoj4@skbuf>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210824165742.xvkb3ke7boryfoj4@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_101653_092232_F7C8BD79 
-X-CRM114-Status: GOOD (  11.77  )
+X-CRM114-CacheID: sfid-20210824_103249_434635_93FC0D13 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,6 +111,15 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On Tue, Aug 24, 2021 at 07:57:42PM +0300, Vladimir Oltean wrote:
+> I understand that this is how you noticed the issue, but please remember
+> that one can always compile a kernel with CONFIG_VLAN_8021Q=n. So the
+> issue predates my patch by much longer. You might reconsider the Fixes:
+> tag in light of this, maybe the patch needs to be sent to stable.
+
+Okay. So the Fixes tag should be 6087175b7991, which initially adds the
+software fallback support for mt7530.
+
+> 
 > > +static int
 > > +mt7530_setup_vlan0(struct mt7530_priv *priv)
 > > +{
@@ -122,9 +132,15 @@ On Tue, Aug 24, 2021 at 07:57:42PM +0300, Vladimir Oltean wrote:
 > 
 > FID_BRIDGED?
 
-yes, FID_BRIDGED.
+What's wrong with that?
 
-Please confirm that the Fixes: tag is the one you intend. The patch appears fine otherwise.
+> 
+> > +	      VLAN_VALID;
+> > +	mt7530_write(priv, MT7530_VAWD1, val);
+> > +
+> > +	return mt7530_vlan_cmd(priv, MT7530_VTCR_WR_VID, 0);
+> > +}
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
