@@ -2,85 +2,96 @@ Return-Path: <SRS0=VOwE=NP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.7 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4BA99C4338F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 05:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4A9B3C4338F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 05:51:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0626561212
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 05:08:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0626561212
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id F1D3860C51
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Aug 2021 05:51:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F1D3860C51
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xyXXdqloyXiD2CqVG6eH2gPvUM0WDBlqsBuaZsJGKys=; b=YRnHDn1S6pE8Ng
-	kzyyGX1ju5xU/NSfHkjDcAwC0QOEoxUikkVc3kl+TKtoGudX+Tdijm+2vO864OstdyneT3HwCM3Jb
-	z7+t2zq05LRYVRF0yKiw1OCBjjbMY4x+5HS/7ntOHPrJqXiDnoBPY0fTFHD24dfVBItcO7ksw9dej
-	fBDjIlQXR8gO/6rWb+HTD8yJElEZYT63kKlazlEUmlopm+CasNikXvjcaoSLwuFnOEoLB5YLOTzXV
-	l6scyW5+gva6JScmcbyKCIoZLkU22B1OTVs3IjmVouwzjNC6U8VU/1Y9hHVSHPyRpJFiJoxjIUcJi
-	IxzGfGgauEF1cqFJb+hg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BHdKQdhjSbzFsmejMjYCSRSxubB1LDb1ijbMvX8jgeU=; b=dPUJJjDqv3Yral
+	EBgItJ1dL3qZZ/pF90dxwcEg/0S8bTs1tB1YTM1cMLdMBeo7Bwo4Z5gRMBDeasMmVhRCpHsIfsjzM
+	vPFDxa974ssld9GSv3+0VH1g1lyJv++lo/2LXGinpnYd3N7YRCcJP65EJhX2SXDSUR5KaX0zaVMIA
+	oPNAqiazFspIEtvY60X7nyRX5VaN9jBQUw+sZhQjpcVh84M+DD0Dc8VMF54RDEnfGjJakIMqy/sPo
+	OT39PwrPTKS3iaex8szixoqjyWRzaxbwN0H45BzQ06uiI7tGzqPhGym7n0xYN7BXS/uAhUZm1/ocL
+	yC8OxKfKED8xZz+2rTLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIOfI-001dfD-7w; Tue, 24 Aug 2021 05:08:00 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mIPKi-001iT5-Ni; Tue, 24 Aug 2021 05:50:48 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIOfC-001deD-KZ; Tue, 24 Aug 2021 05:07:58 +0000
-X-UUID: 1099b9f2588048caa666cb74859cbaa1-20210823
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=HXfD2dpVdefMeboFVp42P1mXdWpz9qejPwkSFWMGwjA=; 
- b=JURKRdQ/QmnFeUoYfJSsJyjJAS3xW1SY8GgI2AG1cuNMmR6eV6ZZP9DSF+Y4NxZHXebcjHJbunp+EqBYd1gcyo6MTRd5KZwOPgtZvXcVbdNDLclELl5ko5o6v0fgDFa7AuohoiX9BiUkzKOAI/5N9YLDsujujDL8wfx3FbxJB7s=;
-X-UUID: 1099b9f2588048caa666cb74859cbaa1-20210823
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <nancy.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1126497846; Mon, 23 Aug 2021 22:07:53 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 23 Aug 2021 22:07:51 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Aug 2021 13:07:50 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 24 Aug 2021 13:07:50 +0800
-Message-ID: <9ce23e77e8ea5706b1d52700d655958f49eb911e.camel@mediatek.com>
-Subject: Re: [PATCH v3 02/15] dt-bindings: mediatek: add vdosys1 MERGE
- definition for mt8195
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "jason-jh .
- lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>, 
- DRI Development <dri-devel@lists.freedesktop.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, DTML
- <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>, 
- srv_heupstream <srv_heupstream@mediatek.com>
-Date: Tue, 24 Aug 2021 13:07:50 +0800
-In-Reply-To: <CAAOTY_-mJ0WHK0pXqASprrc7GW0R_ZTRmJ8Yo8pu9js-cQ5HAw@mail.gmail.com>
-References: <20210818091847.8060-1-nancy.lin@mediatek.com>
- <20210818091847.8060-3-nancy.lin@mediatek.com>
- <CAAOTY_-mJ0WHK0pXqASprrc7GW0R_ZTRmJ8Yo8pu9js-cQ5HAw@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mIPKU-001iQ4-9j; Tue, 24 Aug 2021 05:50:37 +0000
+Received: by mail-pl1-x635.google.com with SMTP id m4so531278pll.0;
+ Mon, 23 Aug 2021 22:50:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+gSDqXBdeSRky6h/E1OhzdBjGEqrt1+vEPvVVQ4fmdY=;
+ b=fkEVVaTV2+cKJJTlepLZ+0uRX9rphvYYfm69e6vR0mmyT45p0tH4xcrDtLDjUJ0IWj
+ B5Pk6Rf63UvqGjwmtNPuqFriO9Cmk/8zLn6bIr218PYLHhLzm0dtRS+lmndoYqgSVdnO
+ Y6l1pl9z8Y8YeCJ03gCEKEqeB0BPaRUEgwIRJ0QDfJdOQK8vHgcK48T/rLHQlaeLBTIV
+ y2mIs/vttXwW5aXJAqi9EdhYpZwReJp2gUgaSrWpgIRbHG70pL2ejANsWYu1lubgUmf6
+ WwFWwm4Kw9K76q9qx9VU/OHB1OhXiIPTA4NFZIqhaeLLr/jXV5cXLs6Rr7QRbxpfAPoD
+ Scew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+gSDqXBdeSRky6h/E1OhzdBjGEqrt1+vEPvVVQ4fmdY=;
+ b=Rb6CVuVojHRHJSdYbuvfKPt1XaSiurc7nJ+s5ZSXkvLmZ0so6RQrEQbzRO2laIkO8p
+ N7IqJJL7dkUf+b7xynS3FLc+XCyWwlGYYivaIephwDaG7OAQO/Flgiwiboz0hRToS/dz
+ 70362CUbKRpvOLDCksOE6tR80BFQhmhbbBD6Mi0OdZdq8lLC9qDvGewAa5Lb2eKUr4zR
+ mw48xQRlO35pThOkmludAdIzZjb+/i1fLsdn7CVqjfF59A+xQp1UETqIpK/OiymRuZbX
+ wtXGkXf9JVF1cHnhecE4JlFPLKfoGhJFmalwF07180bRIxrvgdplAmhvtkzwobME5bmk
+ jCGg==
+X-Gm-Message-State: AOAM532lOwwp2gvgJQYOb0FqRsn2vZcWkuzx8QsDWKpWVYHrzHPffWXh
+ WphS+4dmerp/R/FNO/4Fp8Q=
+X-Google-Smtp-Source: ABdhPJxVYFJEp7CkpwK0eGclGAm8CLw2ohd2D9rXLv5HSKLtdOEkciNduvW28N51frgsTWS87ms+rQ==
+X-Received: by 2002:a17:902:aa02:b0:134:b387:facc with SMTP id
+ be2-20020a170902aa0200b00134b387faccmr6828783plb.22.1629784231961; 
+ Mon, 23 Aug 2021 22:50:31 -0700 (PDT)
+Received: from haswell-ubuntu20.lan ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id s32sm18278054pfw.84.2021.08.23.22.50.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 23 Aug 2021 22:50:31 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: stable@vger.kernel.org
+Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Russell King <linux@armlinux.org.uk>,
+ netdev@vger.kernel.org (open list:MEDIATEK SWITCH DRIVER),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support), 
+ linux-kernel@vger.kernel.org (open list)
+Subject: [PATCH 5.10.y] net: dsa: mt7530: disable learning on standalone ports
+Date: Tue, 24 Aug 2021 13:50:19 +0800
+Message-Id: <20210824055020.1315672-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210823_220754_722350_6136EF28 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20210823_225034_400669_564050AD 
+X-CRM114-Status: UNSURE (   9.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,38 +103,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZywNCg0KVGhhbmtzIGZvciB0aGUgcmV2aWV3Lg0KDQpPbiBGcmksIDIwMjEt
-MDgtMjAgYXQgMDc6MjUgKzA4MDAsIENodW4tS3VhbmcgSHUgd3JvdGU6DQo+IEhpLCBOYW5jeToN
-Cj4gDQo+IE5hbmN5LkxpbiA8bmFuY3kubGluQG1lZGlhdGVrLmNvbT4g5pa8IDIwMjHlubQ45pyI
-MTjml6Ug6YCx5LiJIOS4i+WNiDU6MTjlr6vpgZPvvJoNCj4gPiANCj4gPiBBZGQgdmRvc3lzMSBN
-RVJHRSBkZWZpbml0aW9uLg0KPiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IE5hbmN5LkxpbiA8bmFu
-Y3kubGluQG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiAgLi4uL2RldmljZXRyZWUvYmluZGlu
-Z3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxtZXJnZS55YW1sICAgIHwNCj4gPiAyICsrDQo+
-ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykNCj4gPiANCj4gPiBkaWZmIC0tZ2l0
-DQo+ID4gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRl
-ay9tZWRpYXRlayxtZXJnZQ0KPiA+IC55YW1sDQo+ID4gYi9Eb2N1bWVudGF0aW9uL2RldmljZXRy
-ZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxtZXJnZQ0KPiA+IC55YW1sDQo+
-ID4gaW5kZXggMWEyN2IwMzcwODZiLi5iYTFlMGM4Mzc5ODggMTAwNjQ0DQo+ID4gLS0tDQo+ID4g
-YS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRp
-YXRlayxtZXJnZQ0KPiA+IC55YW1sDQo+ID4gKysrDQo+ID4gYi9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxtZXJnZQ0KPiA+IC55YW1s
-DQo+ID4gQEAgLTIzLDYgKzIzLDggQEAgcHJvcGVydGllczoNCj4gPiAgICAgICAgICAgIC0gY29u
-c3Q6IG1lZGlhdGVrLG10ODE3My1kaXNwLW1lcmdlDQo+ID4gICAgICAgIC0gaXRlbXM6DQo+ID4g
-ICAgICAgICAgICAtIGNvbnN0OiBtZWRpYXRlayxtdDgxOTUtZGlzcC1tZXJnZQ0KPiA+ICsgICAg
-ICAtIGl0ZW1zOg0KPiA+ICsgICAgICAgICAgLSBjb25zdDogbWVkaWF0ZWssbXQ4MTk1LXZkbzEt
-bWVyZ2UNCj4gDQo+IEkgZG9uJ3Qga25vdyB3aHkgY3JlYXRlIGEgbmV3IG1lcmdlIGZvciBtdDgx
-OTUuIFByb3ZpZGUgbW9yZQ0KPiBpbmZvcm1hdGlvbiBhYm91dCB0aGUgZGlmZmVyZW5jZSBvZiB0
-aGVzZSB0d28gbWVyZ2UuDQo+IA0KQ29tcGFyZWQgd2l0aCBNVDgxOTUgbWVyZ2UwIGFuZCBtZXJn
-ZTUsIG1lcmdlMX40IGhhcyBtb3JlIG11dGUNCmZ1bmN0aW9uLiBJIHdpbGwgcmVtb3ZlIHRoaXMg
-bmV3IGNvbXBhdGlibGUsIG1vdmUgb3ZsX2FkYXB0b3IgbWVyZ2UgdG8NCm1lcmdlIGNvbW1vbiBk
-cml2ZXIsIGFuZCBhZGQgbmV3IG1lcmdlIGJpbmRpbmcgcHJvcGVydHkgdG8gaW5jcmVhc2UNCm11
-dGUgZnVuY3Rpb24uDQoNCj4gUmVnYXJkcywNCj4gQ2h1bi1LdWFuZy4NCj4gDQo+ID4gDQo+ID4g
-ICAgcmVnOg0KPiA+ICAgICAgbWF4SXRlbXM6IDENCj4gPiAtLQ0KPiA+IDIuMTguMA0KPiA+IA0K
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+This is a partial backport of commit 5a30833b9a16f8d1aa15de06636f9317ca51f9df
+("net: dsa: mt7530: support MDB and bridge flag operations") upstream.
+
+Make sure that the standalone ports start up with learning disabled.
+
+Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+---
+ drivers/net/dsa/mt7530.c | 16 ++++++++++++++--
+ 1 file changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 3fa2f81c8b47..c9c02da3382d 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -1083,6 +1083,8 @@ mt7530_port_bridge_join(struct dsa_switch *ds, int port,
+ 			   PCR_MATRIX_MASK, PCR_MATRIX(port_bitmap));
+ 	priv->ports[port].pm |= PCR_MATRIX(port_bitmap);
+ 
++	mt7530_clear(priv, MT7530_PSC_P(port), SA_DIS);
++
+ 	mutex_unlock(&priv->reg_mutex);
+ 
+ 	return 0;
+@@ -1183,6 +1185,8 @@ mt7530_port_bridge_leave(struct dsa_switch *ds, int port,
+ 			   PCR_MATRIX(BIT(MT7530_CPU_PORT)));
+ 	priv->ports[port].pm = PCR_MATRIX(BIT(MT7530_CPU_PORT));
+ 
++	mt7530_set(priv, MT7530_PSC_P(port), SA_DIS);
++
+ 	mutex_unlock(&priv->reg_mutex);
+ }
+ 
+@@ -1636,9 +1640,13 @@ mt7530_setup(struct dsa_switch *ds)
+ 			ret = mt753x_cpu_port_enable(ds, i);
+ 			if (ret)
+ 				return ret;
+-		} else
++		} else {
+ 			mt7530_port_disable(ds, i);
+ 
++			/* Disable learning by default on all user ports */
++			mt7530_set(priv, MT7530_PSC_P(i), SA_DIS);
++		}
++
+ 		/* Enable consistent egress tag */
+ 		mt7530_rmw(priv, MT7530_PVC_P(i), PVC_EG_TAG_MASK,
+ 			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+@@ -1792,9 +1800,13 @@ mt7531_setup(struct dsa_switch *ds)
+ 			ret = mt753x_cpu_port_enable(ds, i);
+ 			if (ret)
+ 				return ret;
+-		} else
++		} else {
+ 			mt7530_port_disable(ds, i);
+ 
++			/* Disable learning by default on all user ports */
++			mt7530_set(priv, MT7530_PSC_P(i), SA_DIS);
++		}
++
+ 		/* Enable consistent egress tag */
+ 		mt7530_rmw(priv, MT7530_PVC_P(i), PVC_EG_TAG_MASK,
+ 			   PVC_EG_TAG(MT7530_VLAN_EG_CONSISTENT));
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
