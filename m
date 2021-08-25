@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87E58C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 07:18:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C902EC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 08:18:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 46CAC61212
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 07:18:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 46CAC61212
+	by mail.kernel.org (Postfix) with ESMTPS id 7DDB2610F7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 08:18:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7DDB2610F7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,58 +23,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HCk9zTTmggewhl+2iTWkdyJgD6nLQWg3ua5Bh1KUNak=; b=xOG5wAWU0EAZG0
-	HLAgOKmiRhxqa+lnu/il0oCuuyp6C7R7KguX3xOqE1RLWlRgtsWUFLDQ/JhPEKJX5CDwrjSnkGtOo
-	DoEEB6b/KlCqpuZA5fDKwjGiqPHsG5LR8FHRsmip3a7XEOTYwOvFOU0HPRKpKnQxj55zU7bzKyzgH
-	SIq/7Y5dRdh/l/zfZxIJblvCQUg42LuXIqSu16k2IY95Q8LM+PK3E3JfFFgCqyHkrRVhAoQHKz8+c
-	kglZwukf+aFRmlcEePgZUZSA9oP4/sI64nhdPC1qH3lTW9DTUo8BEB/9T/vLE79Rc/Jz75h9d3NcI
-	rc0ULOr3wJwxSF6q7btA==;
+	List-Owner; bh=kK/M8YF+jFxxg4+yLsZ9IcU/2CO8l7vvTAvs0IuJDEQ=; b=p0rjdFF+rz1qWY
+	dVVCuMHBPUs1zjDSjcvF1/ZKesEHGbGSApryBZn1JTCkUtJHPZp2rRblEqW7gsKQOo/xFfb3KLg1O
+	9aCkRJl6gZ29ZG9m8hPMGkxKs6GcvAdXvzP20m7LaDVW84lI0eTbXbNoNZsWHiEbmIgqRwf1QbUaB
+	aFtFWchtoC16ck2sMjzd+GpTfF8kPOzq+6G6ivNwBCmKHqKXJh5EQg62aHtU9cFdyXbfi0feOJ4Cp
+	heFPXHO5fGlwxzbrYlUh2/owkRyyfz9fF7ZyGaJEX/c2Gua2AOjfOMuQD3iYc+RlCsH6TKJZUSEHG
+	csGH6wQhp+/DbWGmthdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mInAg-005mL1-3x; Wed, 25 Aug 2021 07:18:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mIo7G-005tgQ-RM; Wed, 25 Aug 2021 08:18:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mInAQ-005mIf-Ps; Wed, 25 Aug 2021 07:17:50 +0000
-X-UUID: a48adf36ad574001a997d571bd726069-20210825
+ id 1mIo79-005tdp-Qx; Wed, 25 Aug 2021 08:18:33 +0000
+X-UUID: 46af7fd96f194a23b75bf0f59cc166c9-20210825
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=pprtBKT0dWUudmANrR4x1BTvfECL67B2YmOW4oZyHRQ=; 
- b=PfMpZg7dupYNY3J9zJFTdmOjD7i6l3qiL33MSqknGmcsQVWa9e6rgb4H5uZP4ahY6kFKU1zKihh6RI6b+OCLSEguGCxPyzhOZ9bAm9AN2i76Nw9YeyxCAwg/5xkqaFX8ngZbBXK8gb9911YZZSoNxr++P7rFk1ZPAyHbZokrYUg=;
-X-UUID: a48adf36ad574001a997d571bd726069-20210825
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
+ bh=SW4YpGAWVERq443ADDUWyRl617HRFIDb6oYcDffH6b4=; 
+ b=t/fjPlG6vR18R2zGniefmNGmgIwNu0WD6u8+LZ4vnAgzjbqnYNzEnV/19rGQWRWl6mhdsJtpyYS8XVUARpV0GFmW/aw2sRRag0B1A/14vRrA+uE5w+y2s/cOsM0D2u+KdvJuc5lsGazfotrPeBIG/sseHkrtE2EzOZdlb9STUa0=;
+X-UUID: 46af7fd96f194a23b75bf0f59cc166c9-20210825
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <houlong.wei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1136034699; Wed, 25 Aug 2021 00:17:44 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 1665709562; Wed, 25 Aug 2021 01:18:22 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 00:17:43 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 15:17:41 +0800
-Received: from mtksdccf07 (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 25 Aug 2021 15:17:42 +0800
-Message-ID: <72a33d12e45d455ce702f7095d7b290563f3a466.camel@mediatek.com>
-Subject: Re: [PATCH v5 2/5] dt-bindings: gce: add gce header file for mt8195
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, <chunkuang.hu@kernel.org>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <hsinyi@chromium.org>, <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>
-Date: Wed, 25 Aug 2021 15:17:41 +0800
-In-Reply-To: <1629800083.22373.4.camel@mtksdaap41>
-References: <20210818024037.11396-1-jason-jh.lin@mediatek.com>
- <20210818024037.11396-3-jason-jh.lin@mediatek.com>
- <1629800083.22373.4.camel@mtksdaap41>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.0.1497.2; Wed, 25 Aug 2021 01:18:20 -0700
+Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n1.mediatek.inc
+ (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 25 Aug 2021 16:18:19 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 25 Aug 2021 16:18:18 +0800
+Message-ID: <1629879498.12893.8.camel@mhfsdcap03>
+Subject: Re: [PATCH v7 5/7] mtk-mdp: make mdp driver to be loadable by
+ platform_device_register*()
+From: houlong wei <houlong.wei@mediatek.com>
+To: Eizan Miyamoto <eizan@chromium.org>
+CC: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, Yong Wu
+ =?UTF-8?Q?=28=E5=90=B4=E5=8B=87=29?= <Yong.Wu@mediatek.com>,
+ "wenst@chromium.org" <wenst@chromium.org>, CK Hu
+ =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>,
+ "enric.balletbo@collabora.com" <enric.balletbo@collabora.com>, Yongqiang Niu
+ =?UTF-8?Q?=28=E7=89=9B=E6=B0=B8=E5=BC=BA=29?= <yongqiang.niu@mediatek.com>,
+ Andrew-CT Chen =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?=
+ <Andrew-CT.Chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Minghsiu Tsai
+ =?UTF-8?Q?=28=E8=94=A1=E6=98=8E=E4=BF=AE=29?= <Minghsiu.Tsai@mediatek.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org"
+ <linux-media@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, <houlong.wei@mediatek.com>
+Date: Wed, 25 Aug 2021 16:18:18 +0800
+In-Reply-To: <20210825163247.v7.5.Iedb6b4f47788548b0cf7bfffae85cac917344c2f@changeid>
+References: <20210825063323.3607738-1-eizan@chromium.org>
+ <20210825163247.v7.5.Iedb6b4f47788548b0cf7bfffae85cac917344c2f@changeid>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_001746_896902_1F03B317 
-X-CRM114-Status: GOOD (  32.84  )
+X-CRM114-CacheID: sfid-20210825_011829_339394_8909446B 
+X-CRM114-Status: GOOD (  49.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,259 +101,322 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi CK,
-
-Thanks for the review.
-
-On Tue, 2021-08-24 at 18:14 +0800, CK Hu wrote:
-> Hi, Jason:
-> 
-> On Wed, 2021-08-18 at 10:40 +0800, jason-jh.lin wrote:
-> > To define the subsys id and event id, add gce header file for
-> > mt8195.
-> > 
-> > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> > ---
-> >  include/dt-bindings/gce/mt8195-gce.h | 920
-> > +++++++++++++++++++++++++++
-> >  1 file changed, 920 insertions(+)
-> >  create mode 100644 include/dt-bindings/gce/mt8195-gce.h
-> > 
-> > diff --git a/include/dt-bindings/gce/mt8195-gce.h b/include/dt-
-> > bindings/gce/mt8195-gce.h
-> > new file mode 100644
-> > index 000000000000..8c309e59491d
-> > --- /dev/null
-> > +++ b/include/dt-bindings/gce/mt8195-gce.h
-> > @@ -0,0 +1,920 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> > +/*
-> > + * Copyright (c) 2018 MediaTek Inc.
-> > + *
-> > + */
-> > +
-> > +#ifndef _DT_BINDINGS_GCE_MT8195_H
-> > +#define _DT_BINDINGS_GCE_MT8195_H
-> > +
-> > +/* assign timeout 0 also means default */
-> > +#define CMDQ_NO_TIMEOUT		0xffffffff
-> > +#define CMDQ_TIMEOUT_DEFAULT	1000
-> > +
-> > +/* GCE thread priority */
-> > +#define CMDQ_THR_PRIO_LOWEST	0
-> > +#define CMDQ_THR_PRIO_1		1
-> > +#define CMDQ_THR_PRIO_2		2
-> > +#define CMDQ_THR_PRIO_3		3
-> > +#define CMDQ_THR_PRIO_4		4
-> > +#define CMDQ_THR_PRIO_5		5
-> > +#define CMDQ_THR_PRIO_6		6
-> > +#define CMDQ_THR_PRIO_HIGHEST	7
-> > +
-> > +/* CPR count in 32bit register */
-> > +#define GCE_CPR_COUNT		1312
-> > +
-> > +/* GCE subsys table */
-> > +#define SUBSYS_1400XXXX		0
-> > +#define SUBSYS_1401XXXX		1
-> > +#define SUBSYS_1402XXXX		2
-> > +#define SUBSYS_1c00XXXX		3
-> > +#define SUBSYS_1c01XXXX		4
-> > +#define SUBSYS_1c02XXXX		5
-> > +#define SUBSYS_1c10XXXX		6
-> > +#define SUBSYS_1c11XXXX		7
-> > +#define SUBSYS_1c12XXXX		8
-> > +#define SUBSYS_14f0XXXX		9
-> > +#define SUBSYS_14f1XXXX		10
-> > +#define SUBSYS_14f2XXXX		11
-> > +#define SUBSYS_1800XXXX		12
-> > +#define SUBSYS_1801XXXX		13
-> > +#define SUBSYS_1802XXXX		14
-> > +#define SUBSYS_1803XXXX		15
-> > +#define SUBSYS_1032XXXX		16
-> > +#define SUBSYS_1033XXXX		17
-> > +#define SUBSYS_1600XXXX		18
-> > +#define SUBSYS_1601XXXX		19
-> > +#define SUBSYS_14e0XXXX		20
-> > +#define SUBSYS_1c20XXXX		21
-> > +#define SUBSYS_1c30XXXX		22
-> > +#define SUBSYS_1c40XXXX		23
-> > +#define SUBSYS_1c50XXXX		24
-> > +#define SUBSYS_1c60XXXX		25
-> > +#define SUBSYS_NO_SUPPORT	99
-> 
-> Why define SUBSYS_NO_SUPPORT?
-
-It is defined as invalid subsys id, but it is not necessary.
-I'll remove it.
-
-> 
-> > +
-> > +/* GCE General Purpose Register (GPR) support
-> > + * Leave note for scenario usage here
-> > + */
-> > +/* GCE: write mask */
-> > +#define GCE_GPR_R00		0x00
-> > +#define GCE_GPR_R01		0x01
-> > +/* MDP: P1: JPEG dest */
-> > +#define GCE_GPR_R02		0x02
-> > +#define GCE_GPR_R03		0x03
-> > +/* MDP: PQ color */
-> > +#define GCE_GPR_R04		0x04
-> > +/* MDP: 2D sharpness */
-> > +#define GCE_GPR_R05		0x05
-> > +/* DISP: poll esd */
-> > +#define GCE_GPR_R06		0x06
-> > +#define GCE_GPR_R07		0x07
-> > +/* MDP: P4: 2D sharpness dst */
-> > +#define GCE_GPR_R08		0x08
-> > +#define GCE_GPR_R09		0x09
-> > +/* VCU: poll with timeout for GPR timer */
-> > +#define GCE_GPR_R10		0x0A
-> > +#define GCE_GPR_R11		0x0B
-> > +/* CMDQ: debug */
-> > +#define GCE_GPR_R12		0x0C
-> > +#define GCE_GPR_R13		0x0D
-> > +/* CMDQ: P7: debug */
-> > +#define GCE_GPR_R14		0x0E
-> > +#define GCE_GPR_R15		0x0F
-> 
-> GPR is general purpose register, so do not limit the usage of each
-> GPR.
-
-To avoid the same GPR being used by 2 diffenerent client driver at the
-same time, we defined the use case that using GPR frequently GPR here
-to notify every user.
-E.g. MDP use GPR_R10 as temp register whilie VCU is polling the value
-in GPR_R10.
-
-But I think we should not limit the usage in the first version, so I'll
-remove the scenario here.
-
-> 
-> > +
-> 
-> [snip]
-> 
-> > +
-> > +/* end of hw event */
-> > +#define CMDQ_MAX_HW_EVENT				1019
-> > +
-> > +/* sw token should use the unused event id from 0 to 1023 */
-> 
-> SW token usage could be changed by different software design. So do
-> not
-> define in binding document.
-> 
-> Regards,
-> CK
-> 
-OK, I;ll remove them.
+Hi Eizan,
+I have inline comment below.
 
 Regards,
-Jason-JH.Lin
+Houlong
 
-> > +#define CMDQ_SYNC_TOKEN_INVALID				(-1)
-> > +
-> > +/* Event for imgsys flow control */
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_EIS			33
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_WPE_TNR			34
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_TRAW			35
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_LTRAW			36
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_DIP			37
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_A			38
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_PQDIP_B			39
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_1			41
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_2			42
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_3			43
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_4			44
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_5			45
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_6			46
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_7			47
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_8			48
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_9			49
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_10			50
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_11			51
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_12			52
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_13			53
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_14			54
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_15			55
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_16			56
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_17			57
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_18			58
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_19			59
-> > +#define CMDQ_SYNC_TOKEN_IMGSYS_POOL_20			60
-> > +/* Config thread notify trigger thread */
-> > +#define CMDQ_SYNC_TOKEN_CONFIG_DIRTY			971
-> > +/* Trigger thread notify config thread */
-> > +#define CMDQ_SYNC_TOKEN_STREAM_EOF			972
-> > +/* Block Trigger thread until the ESD check finishes. */
-> > +#define CMDQ_SYNC_TOKEN_ESD_EOF				973
-> > +#define CMDQ_SYNC_TOKEN_STREAM_BLOCK			974
-> > +/* check CABC setup finish */
-> > +#define CMDQ_SYNC_TOKEN_CABC_EOF			975
-> > +/* Pass-2 notifies VENC frame is ready to be encoded */
-> > +#define CMDQ_SYNC_TOKEN_VENC_INPUT_READY		976
-> > +/* VENC notifies Pass-2 encode done so next frame may start */
-> > +#define CMDQ_SYNC_TOKEN_VENC_EOF			977
-> > +
-> > +/* Notify normal CMDQ there are some secure task done
-> > + * MUST NOT CHANGE, this token sync with secure world
-> > + */
-> > +#define CMDQ_SYNC_SECURE_THR_EOF			980
-> > +#define CMDQ_SYNC_SECURE_THR_EOF_DBG			995
-> > +
-> > +/* CMDQ use sw token */
-> > +#define CMDQ_SYNC_TOKEN_USER_0				981
-> > +#define CMDQ_SYNC_TOKEN_USER_1				982
-> > +#define CMDQ_SYNC_TOKEN_POLL_MONITOR			983
-> > +#define CMDQ_SYNC_TOKEN_TPR_LOCK			984
-> > +
-> > +/* ISP sw token */
-> > +#define CMDQ_SYNC_TOKEN_MSS				985
-> > +#define CMDQ_SYNC_TOKEN_MSF				986
-> > +
-> > +/* GPR access tokens (for register backup)
-> > + * There are 15 32-bit GPR, 3 GPR form a set
-> > + * (64-bit for address, 32-bit for value)
-> > + * MUST NOT CHANGE, these tokens sync with MDP
-> > + */
-> > +#define CMDQ_SYNC_TOKEN_GPR_SET_0			987
-> > +#define CMDQ_SYNC_TOKEN_GPR_SET_1			988
-> > +#define CMDQ_SYNC_TOKEN_GPR_SET_2			989
-> > +#define CMDQ_SYNC_TOKEN_GPR_SET_3			990
-> > +#define CMDQ_SYNC_TOKEN_GPR_SET_4			991
-> > +
-> > +/* Resource lock event to control resource in GCE thread */
-> > +#define CMDQ_SYNC_RESOURCE_WROT0			992
-> > +#define CMDQ_SYNC_RESOURCE_WROT1			993
-> > +
-> > +/* Event for gpr timer, used in sleep and poll with timeout */
-> > +#define CMDQ_TOKEN_GPR_TIMER_R0				996
-> > +#define CMDQ_TOKEN_GPR_TIMER_R1				997
-> > +#define CMDQ_TOKEN_GPR_TIMER_R2				998
-> > +#define CMDQ_TOKEN_GPR_TIMER_R3				999
-> > +#define CMDQ_TOKEN_GPR_TIMER_R4				1000
-> > +#define CMDQ_TOKEN_GPR_TIMER_R5				1001
-> > +#define CMDQ_TOKEN_GPR_TIMER_R6				1002
-> > +#define CMDQ_TOKEN_GPR_TIMER_R7				1003
-> > +#define CMDQ_TOKEN_GPR_TIMER_R8				1004
-> > +#define CMDQ_TOKEN_GPR_TIMER_R9				1005
-> > +#define CMDQ_TOKEN_GPR_TIMER_R10			1006
-> > +#define CMDQ_TOKEN_GPR_TIMER_R11			1007
-> > +#define CMDQ_TOKEN_GPR_TIMER_R12			1008
-> > +#define CMDQ_TOKEN_GPR_TIMER_R13			1009
-> > +#define CMDQ_TOKEN_GPR_TIMER_R14			1010
-> > +#define CMDQ_TOKEN_GPR_TIMER_R15			1011
-> > +
-> > +/* defined in mtk-cmdq-mailbox.h */
-> > +/* #define CMDQ_EVENT_MAX					0x3ff
-> > */
-> > +
-> > +#endif
+On Wed, 2021-08-25 at 14:33 +0800, Eizan Miyamoto wrote:
+> Rather than hanging the MDP master component driver off of the rdma0
+> device, make it possible too create a "virtual" device by registering
+> it with platform_device_register_*() to be probed by the mtk_mdp_core
+> driver.
 > 
+> Broadly, three interdependent things are done by this change:
+> - Make it is possible to search for MDP devices in the device tree
+>   through the grandparent device's of_node.
+> - v4l-related setup is moved into from the mtk_mdp_core driver to the
+>   mtk_mdp_comp driver.
+> - Presence of a mediatek,vpu property in an MDP component device node
+>   is used to determine what device to use when dispatching DMA ops from
+>   the relevant ioctl, and also do V4L2 initialization in this case.
 > 
--- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
+> Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
+> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+> ---
+> 
+> Changes in v7:
+> - Drop last two changes from this series related to removing the vpu
+>   property from the mdp_rdma0 device node
+> 
+> Changes in v6:
+> - Don't propagate errors from clock_on/off as an afterthought.
+> - Split apart modifying mdp driver to be loadable from mmsys from
+>   actually loading it from mmsys into two changs to make review easier.
+> - Update devicetree bindings to reflect no longer needing the
+>   mediatek,vpu property in the mdp_rdma0 device node.
+> - Some stylistic cleanups.
+> 
+> Changes in v5:
+> - rebase and test on 5.13-next @ e2f74b13dbe6
+> 
+> Changes in v4:
+> - rebase and test on 5.13
+> - don't depend on https://patchwork.kernel.org/project/linux-mediatek/list/?series=464873
+> 
+> Changes in v3:
+> - get mdp master from aliases instead of strcmp against of_node->name
+> 
+> Changes in v2:
+> - rebased onto Linux 5.12
+> - 100 char line length allowance was utilized in a few places
+> - Removal of a redundant dev_err() print at the end of
+>   mtk_mdp_comp_init()
+> - Instead of printing errors and ignoring them, I've added a patch to
+>   correctly propagate them.
+> - Use of C style comments.
+> - Three additional patches were added to eliminate dependency on the
+>   mediatek,vpu property inside the mdp_rdma0 device node.
+> 
+>  drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 51 ++++++++++-----
+>  drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 62 ++++++-------------
+>  drivers/media/platform/mtk-mdp/mtk_mdp_core.h |  2 +
+>  drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c  |  4 +-
+>  4 files changed, 60 insertions(+), 59 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+> index 7b6c8a3f3455..85ef274841a3 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+> @@ -155,8 +155,45 @@ static int mtk_mdp_comp_bind(struct device *dev, struct device *master, void *da
+>  {
+>  	struct mtk_mdp_comp *comp = dev_get_drvdata(dev);
+>  	struct mtk_mdp_dev *mdp = data;
+> +	struct device_node *vpu_node;
+>  
+>  	mtk_mdp_register_component(mdp, comp);
+> +
+> +	/*
+> +	 * If this component has a "mediatek-vpu" property, it is responsible for
+> +	 * notifying the mdp master driver about it so it can be further initialized
+> +	 * later.
+> +	 */
+> +	vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
+> +	if (vpu_node) {
+> +		int ret;
+> +
+> +		mdp->vpu_dev = of_find_device_by_node(vpu_node);
+> +		if (WARN_ON(!mdp->vpu_dev)) {
+> +			dev_err(dev, "vpu pdev failed\n");
+> +			of_node_put(vpu_node);
+> +		}
+
+The 'vpu_node' should be put when 'mdp->vpu_dev' is valid.
+
+		mdp->vpu_dev = of_find_device_by_node(vpu_node);
+		of_node_put(vpu_node);
+		if (WARN_ON(!mdp->vpu_dev))
+			dev_err(dev, "vpu pdev failed\n");
+
+I commented it before, refer to
+http://lists.infradead.org/pipermail/linux-mediatek/2021-August/028370.html
+
+> +		ret = v4l2_device_register(dev, &mdp->v4l2_dev);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to register v4l2 device\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		ret = vb2_dma_contig_set_max_seg_size(dev, DMA_BIT_MASK(32));
+> +		if (ret) {
+> +			dev_err(dev, "Failed to set vb2 dma mag seg size\n");
+> +			return -EINVAL;
+> +		}
+> +
+> +		/*
+> +		 * presence of the "mediatek,vpu" property in a device node
+> +		 * indicates that it is the primary MDP rdma device and MDP DMA
+> +		 * ops should be handled by its DMA callbacks.
+> +		 */
+> +		mdp->rdma_dev = dev;
+> +	}
+> +
+>  	pm_runtime_enable(dev);
+>  
+>  	return 0;
+> @@ -237,23 +274,9 @@ int mtk_mdp_comp_init(struct mtk_mdp_comp *comp, struct device *dev)
+>  static int mtk_mdp_comp_probe(struct platform_device *pdev)
+>  {
+>  	struct device *dev = &pdev->dev;
+> -	struct device_node *vpu_node;
+>  	int status;
+>  	struct mtk_mdp_comp *comp;
+>  
+> -	vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
+> -	if (vpu_node) {
+> -		of_node_put(vpu_node);
+> -		/*
+> -		 * The device tree node with a mediatek,vpu property is deemed
+> -		 * the MDP "master" device, we don't want to add a component
+> -		 * for it in this function because the initialization for the
+> -		 * master is done elsewhere.
+> -		 */
+> -		dev_info(dev, "vpu node found, not probing\n");
+> -		return -ENODEV;
+> -	}
+> -
+>  	comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
+>  	if (!comp)
+>  		return -ENOMEM;
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> index a72a9ba41ea6..50eafcc9993d 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+> @@ -159,6 +159,17 @@ static int mtk_mdp_master_bind(struct device *dev)
+>  		goto err_component_bind_all;
+>  	}
+>  
+> +	if (mdp->vpu_dev) {
+> +		int ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
+> +					  VPU_RST_MDP);
+> +		if (ret) {
+> +			dev_err(dev, "Failed to register reset handler\n");
+> +			goto err_wdt_reg;
+> +		}
+> +	} else {
+> +		dev_err(dev, "no vpu_dev found\n");
+> +	}
+> +
+>  	status = mtk_mdp_register_m2m_device(mdp);
+>  	if (status) {
+>  		dev_err(dev, "Failed to register m2m device: %d\n", status);
+> @@ -170,6 +181,8 @@ static int mtk_mdp_master_bind(struct device *dev)
+>  	return 0;
+>  
+>  err_mtk_mdp_register_m2m_device:
+> +
+> +err_wdt_reg:
+>  	component_unbind_all(dev, mdp);
+>  
+>  err_component_bind_all:
+> @@ -228,8 +241,13 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  		of_node_put(node);
+>  		parent = dev->of_node;
+>  		dev_warn(dev, "device tree is out of date\n");
+> -	} else {
+> +	} else if (dev->of_node) {
+>  		parent = dev->of_node->parent;
+> +	} else if (dev->parent) {
+> +		/* maybe we were created from a call to platform_device_register_data() */
+> +		parent = dev->parent->parent->of_node;
+> +	} else {
+> +		return -ENODEV;
+>  	}
+>  
+>  	/* Iterate over sibling MDP function blocks */
+> @@ -262,16 +280,6 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  		}
+>  	}
+>  
+> -	/*
+> -	 * Create a component for myself so that clocks can be toggled in
+> -	 * clock_on().
+> -	 */
+> -	ret = mtk_mdp_comp_init(&mdp->comp_self, dev);
+> -	if (ret) {
+> -		dev_err(dev, "Failed to initialize component\n");
+> -		goto err_comp;
+> -	}
+> -
+>  	mdp->job_wq = create_singlethread_workqueue(MTK_MDP_MODULE_NAME);
+>  	if (!mdp->job_wq) {
+>  		dev_err(&pdev->dev, "unable to alloc job workqueue\n");
+> @@ -287,29 +295,8 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  	}
+>  	INIT_WORK(&mdp->wdt_work, mtk_mdp_wdt_worker);
+>  
+> -	ret = v4l2_device_register(dev, &mdp->v4l2_dev);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to register v4l2 device\n");
+> -		ret = -EINVAL;
+> -		goto err_dev_register;
+> -	}
+> -
+> -	mdp->vpu_dev = vpu_get_plat_device(pdev);
+> -	ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
+> -				  VPU_RST_MDP);
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to register reset handler\n");
+> -		goto err_wdt_reg;
+> -	}
+> -
+>  	platform_set_drvdata(pdev, mdp);
+>  
+> -	ret = vb2_dma_contig_set_max_seg_size(&pdev->dev, DMA_BIT_MASK(32));
+> -	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to set vb2 dma mag seg size\n");
+> -		goto err_set_max_seg_size;
+> -	}
+> -
+>  	ret = component_master_add_with_match(dev, &mtk_mdp_com_ops, match);
+>  	if (ret) {
+>  		dev_err(dev, "Component master add failed\n");
+> @@ -321,22 +308,12 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+>  	return 0;
+>  
+>  err_component_master_add:
+> -	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
+> -
+> -err_set_max_seg_size:
+> -
+> -err_wdt_reg:
+> -	v4l2_device_unregister(&mdp->v4l2_dev);
+> -
+> -err_dev_register:
+>  	destroy_workqueue(mdp->wdt_wq);
+>  
+>  err_alloc_wdt_wq:
+>  	destroy_workqueue(mdp->job_wq);
+>  
+>  err_alloc_job_wq:
+> -
+> -err_comp:
+>  	dev_dbg(dev, "err %d\n", ret);
+>  	return ret;
+>  }
+> @@ -404,7 +381,6 @@ static struct platform_driver mtk_mdp_driver = {
+>  	.driver = {
+>  		.name	= MTK_MDP_MODULE_NAME,
+>  		.pm	= &mtk_mdp_pm_ops,
+> -		.of_match_table = mtk_mdp_of_ids,
+>  	}
+>  };
+>  
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> index 8a52539b15d4..9fcd8b8e7c25 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.h
+> @@ -133,6 +133,7 @@ struct mtk_mdp_variant {
+>   * struct mtk_mdp_dev - abstraction for image processor entity
+>   * @lock:	the mutex protecting this data structure
+>   * @vpulock:	the mutex protecting the communication with VPU
+> + * @rdma_dev:  device pointer to rdma device for MDP
+>   * @pdev:	pointer to the image processor platform device
+>   * @variant:	the IP variant information
+>   * @id:		image processor device index (0..MTK_MDP_MAX_DEVS)
+> @@ -151,6 +152,7 @@ struct mtk_mdp_variant {
+>  struct mtk_mdp_dev {
+>  	struct mutex			lock;
+>  	struct mutex			vpulock;
+> +	struct device			*rdma_dev;
+>  	struct platform_device		*pdev;
+>  	struct mtk_mdp_variant		*variant;
+>  	u16				id;
+> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> index f14779e7596e..9834d3bbe851 100644
+> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_m2m.c
+> @@ -929,7 +929,7 @@ static int mtk_mdp_m2m_queue_init(void *priv, struct vb2_queue *src_vq,
+>  	src_vq->mem_ops = &vb2_dma_contig_memops;
+>  	src_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+>  	src_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> -	src_vq->dev = &ctx->mdp_dev->pdev->dev;
+> +	src_vq->dev = ctx->mdp_dev->rdma_dev;
+>  	src_vq->lock = &ctx->mdp_dev->lock;
+>  
+>  	ret = vb2_queue_init(src_vq);
+> @@ -944,7 +944,7 @@ static int mtk_mdp_m2m_queue_init(void *priv, struct vb2_queue *src_vq,
+>  	dst_vq->mem_ops = &vb2_dma_contig_memops;
+>  	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
+>  	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+> -	dst_vq->dev = &ctx->mdp_dev->pdev->dev;
+> +	dst_vq->dev = ctx->mdp_dev->rdma_dev;
+>  	dst_vq->lock = &ctx->mdp_dev->lock;
+>  
+>  	return vb2_queue_init(dst_vq);
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
