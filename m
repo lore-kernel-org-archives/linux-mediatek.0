@@ -2,108 +2,102 @@ Return-Path: <SRS0=pvhC=NQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92EF5C432BE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 03:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82CDFC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 03:56:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5AE816128A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 03:50:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5AE816128A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	by mail.kernel.org (Postfix) with ESMTPS id 4ECB260EFE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 03:56:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4ECB260EFE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C6dyX5ykZke5XMk2IW9v6UkmiO5PVQrHIVn5LeIIfds=; b=WssSdys2JDjVEL
-	DcjieNGuDHN8VlDo9rwkjHrsWVhTTnnIYX95igHRY42w53TW8ms6aLekAtTd0Cwbr+vTl3iEn0xv6
-	IsMllYuKY/Z/9k/HrZKr6xYtVveOyySpMYL6thMScVKSSn/AqZxz+zRlLWqb6k1qltjfTR2lXpRDz
-	nDLWJNualxIsK/AsAVKx4FsUcflPj2oehqIwVx3WH3k/Fx6zKOVwaTRX3XRdpEj7YSitavlEsU2eW
-	oSPvGYzZ1pY2MgLsOCBBX+80+CdG+BAnwWIvvtwQpxBXnMv/BrmMROWrFT0vcVtsJxcZI2Baac20d
-	dG9dA/v0qki6klRGyw/Q==;
+	List-Owner; bh=IJyYd0Kc2GmChsF10kHcC0iv69OTjMmTKPUE6pkWl1g=; b=zqEgF+o37tHUOu
+	+Bznb1FOuN8G9ft33FyhlNO5/c7QCBYgZIymqeuaWKjMJZ6OsY4gEqHSm8WacFrr9GKF170DVNB1b
+	w5JutlMkRKsOt5mm1e078TC0En9gNGRhljvVkLNoQpR92UQZ8+Da8eM5afzYludwHhaCFH7L9xvYE
+	tu8YGELTkw0JGVZhLjGQNEU26P9I8/Co2jaEjAQgL+8wlqRyx3ci3hah9LJVxPbcHUpGCLGzEWEi+
+	Y9franJbs2ow3L+gyJEOcjG5BkpyITEVhuckFUiDjlVX3vSyk1jy2pl4NAuuSV+CZFI0/v05n0qFW
+	+P6ziZy2tOZYEceDoOig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIjvX-005OhG-MM; Wed, 25 Aug 2021 03:50:11 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1mIk1J-005Pco-O6; Wed, 25 Aug 2021 03:56:09 +0000
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIjvH-005OZd-MA
- for linux-mediatek@lists.infradead.org; Wed, 25 Aug 2021 03:49:59 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id g22so4441082edy.12
- for <linux-mediatek@lists.infradead.org>; Tue, 24 Aug 2021 20:49:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=3kZXI1vtvS0Yvb6slBFRI9pS9XAeJXzQm2yXW938Umo=;
- b=rYLlw4fbNP1HTkXasUqH8ZRD7nxcL0P7KPGpLdqgwnOWslAsIhC9jnsZlxrx5otqpo
- 0N0Z+R3+Qd9VBsJP0pp/X6mjgcKX3uDeXXaB5/YKqIdbBniid8BqTFbbBMuUFH7VRQ2T
- Gzc7ZpquX6irb4GDSnakgLUYLUbs6xRt4YJIpJX+XMSY3x77cXB6jDgxNm+O18zr5b8A
- kTeVsXIQ2igplvXzF6erSAKUInYqMD2njfkNLSEu8YQh/71OI4SqC48mpwOC+CZoa+ol
- I86mqWiZk1OM2fNoHpEGJrBm8W8vMZr1pSS/ixy3CwCqtxKi/Hz96FMuVoW6m/o4UpRv
- PLHQ==
+ id 1mIk16-005PbS-DM; Wed, 25 Aug 2021 03:55:57 +0000
+Received: by mail-pl1-x62c.google.com with SMTP id e15so13525338plh.8;
+ Tue, 24 Aug 2021 20:55:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=rIAtfGj5qvVENV9WWVZMFVGBJuT4wuu3+yhzjBnrODs=;
+ b=FFLev3F07ILuAs83PdrenjINmyoPq0n77COtk2VIQDbIdEIeXPxZuh6I0B7OU+4Tt1
+ /E2LjvMMHnXZrAtRJc68INgHwY+om8QEUIereki+erzJLc59mmv0+1E4hb+pliTjsmta
+ ndeTK1oMki5pOWNxKSvJzaJsxln2TScgQ5SamfpiNJoXpv3KMxIBerlRqClBYSqdCooB
+ U8lLIVYl7tisFR0hGB6gNqVn0ZCbM4B+L/PJxhQg/O5q8o6fwNJUUyiw2WLrhxzP8wc0
+ 2Cpx0nIq0CB10pBWCp0R5uPg16kAk9b44mmjvPweTdxHy3yQnIEoIZKrKj6BApCD6lhS
+ O8ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=3kZXI1vtvS0Yvb6slBFRI9pS9XAeJXzQm2yXW938Umo=;
- b=YZN3LrUix0MhrtSjoLNQMdw19bTO5fAH6IN8Cq3CMO5vtJFXAGXI17niHw2U/Um5PD
- +GcyLObmJRH7xUXpdwZ2L18BLn1VDIR7yyx6hfYg9f6tE/HBgw7/tbi1WtLzGgbWQtXY
- De7uO6YrMzSPuAsR5EiHW0pVHJlKU+AKMqyx80TwyqolPNzoe/pmGOUeyQBS97Y6hztJ
- tUdUqpHbwbqEsmIEMDSvN0sgdog2Tc2efKIu3QACeQpO+VaD9hW795MC5RnDQ3fsw5vv
- 3CV1SW61y+q7H1KVIXsn+Rab4sIe1ZJ0bcEmjsb7t7aR/AiNN+mt8FJ1/BTH/uISYo5b
- AGJA==
-X-Gm-Message-State: AOAM531IEgWUhY+vr/hrkxylxHFou7r8ZUibk1KL0Zs2pwDwuQSNbCio
- tFLjcNXhi3E3l+2yfsq/dKmcUJsy7fH8kccVAf7RvQ==
-X-Google-Smtp-Source: ABdhPJz6WxJB9n9R0lhxCYrp90OGkbSPfI3upiI7vUcraPT3a8lXeVRKeYJ+3pLVzsidvy6f73vg7LbF70pb18gBPoI=
-X-Received: by 2002:a05:6402:693:: with SMTP id
- f19mr20106726edy.213.1629863393359; 
- Tue, 24 Aug 2021 20:49:53 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=rIAtfGj5qvVENV9WWVZMFVGBJuT4wuu3+yhzjBnrODs=;
+ b=AMB1to/7hxC1+2jkuIZgnJyooOvNPtcc+a2Go9KKTu4ZrcsOaOdaadvjoBT+ErATa0
+ xyytVTlKw93tmUbVz2TIeE9LKjci4XylGrUBtT2wffRmlB4V32aedYtXiMcRLiFv2iwr
+ jsZi92YMUqV3VmCfKy1rTMk9ksqskrHDtoDd0jgOUQW2qUDF3oZKEu03UZ6OkxXS4N2s
+ 7B71xMjCcP11QWFcVAirzxMnek97piaF67mWt2JNltCuGtckJqc08ZSQ1jIhkjbKoK8p
+ k0aMhzaRVB0DK/MgQt0lmZOCpymlnFp4A5lGTCmPqf6spWQJjZnX22VRt4WOVR7JVhZF
+ 0laA==
+X-Gm-Message-State: AOAM531rHyo2wHqVYB64LD/fUy1Bo6fCfTwNDL+E5heeyFN0h0QzWv3T
+ ePaZjFKuNycCHEd3bzCRusk=
+X-Google-Smtp-Source: ABdhPJzGY1gLl625kG0Emo3PW5/KunYn2jQ8ZmvIFLtams9OGpbD31KTB44Cic0fv4r3bexeCiy9bA==
+X-Received: by 2002:a17:90b:4a82:: with SMTP id
+ lp2mr8271118pjb.103.1629863755885; 
+ Tue, 24 Aug 2021 20:55:55 -0700 (PDT)
+Received: from haswell-ubuntu20.lan ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id a4sm21298248pfk.0.2021.08.24.20.55.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Aug 2021 20:55:55 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Russell King <linux@armlinux.org.uk>,
+ "open list:MEDIATEK SWITCH DRIVER" <netdev@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH net-next] net: dsa: mt7530: manually set up VLAN ID 0
+Date: Wed, 25 Aug 2021 11:55:45 +0800
+Message-Id: <20210825035545.1836274-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210824173714.cgpt2addxyjzlbyy@skbuf>
+References: <20210824165253.1691315-1-dqfext@gmail.com>
+ <20210824165742.xvkb3ke7boryfoj4@skbuf>
+ <20210824173237.1691654-1-dqfext@gmail.com>
+ <20210824173714.cgpt2addxyjzlbyy@skbuf>
 MIME-Version: 1.0
-References: <20210816105934.28265-1-irui.wang@mediatek.com>
- <20210816105934.28265-2-irui.wang@mediatek.com>
- <CAAEAJfDoSW3F85bFKTRvvGZXTZbCBRpUwZzEyx3zhrA6psiZfA@mail.gmail.com>
- <6efbfdbac55c5c8175168be96d3a2e63b4ac0f07.camel@mediatek.com>
-In-Reply-To: <6efbfdbac55c5c8175168be96d3a2e63b4ac0f07.camel@mediatek.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Wed, 25 Aug 2021 00:49:41 -0300
-Message-ID: <CAAEAJfBvWDqtb8oqxx9zosEbBhFVMiszG2cu=Y7OXx3-T4gAOQ@mail.gmail.com>
-Subject: Re: [PATCH 1/9] dt-bindings: media: mtk-vcodec: Add binding for
- MT8195 two venc cores
-To: =?UTF-8?B?SXJ1aSBXYW5nICjnjovnkZ4p?= <Irui.Wang@mediatek.com>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "robh+dt@kernel.org" <robh+dt@kernel.org>, 
- =?UTF-8?B?TG9uZ2ZlaSBXYW5nICjnjovpvpnpo54p?= <Longfei.Wang@mediatek.com>, 
- =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>, 
- "frkoenig@chromium.org" <frkoenig@chromium.org>, 
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>, 
- =?UTF-8?B?TWFvZ3VhbmcgTWVuZyAo5a2f5q+b5bm/KQ==?= <Maoguang.Meng@mediatek.com>, 
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>, 
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
- "mchehab@kernel.org" <mchehab@kernel.org>,
- "tzungbi@chromium.org" <tzungbi@chromium.org>, 
- =?UTF-8?B?WXVuZmVpIERvbmcgKOiRo+S6kemjnik=?= <Yunfei.Dong@mediatek.com>, 
- =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>, 
- srv_heupstream <srv_heupstream@mediatek.com>,
- "tfiga@google.com" <tfiga@google.com>, 
- "hverkuil-cisco@xs4all.nl" <hverkuil-cisco@xs4all.nl>,
- "hsinyi@chromium.org" <hsinyi@chromium.org>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
- =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?= <Andrew-CT.Chen@mediatek.com>,
- "acourbot@chromium.org" <acourbot@chromium.org>
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_204956_336262_E70DA03D 
-X-CRM114-Status: GOOD (  25.48  )
+X-CRM114-CacheID: sfid-20210824_205556_510172_15E3DFCD 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,57 +109,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyNCBBdWcgMjAyMSBhdCAyMzowNCwgSXJ1aSBXYW5nICjnjovnkZ4pIDxJcnVpLldh
-bmdAbWVkaWF0ZWsuY29tPiB3cm90ZToKPgo+IEhpLEV6ZXF1aWVsLAo+Cj4gVGhhbmtzIGZvciB5
-b3VyIHJldmlld2luZy4KPgo+IE9uIFR1ZSwgMjAyMS0wOC0yNCBhdCAwODowMiAtMDMwMCwgRXpl
-cXVpZWwgR2FyY2lhIHdyb3RlOgo+ID4gSGkgSXJ1aSwKPiA+Cj4gPiBPbiBNb24sIDE2IEF1ZyAy
-MDIxIGF0IDA4OjAwLCBJcnVpIFdhbmcgPGlydWkud2FuZ0BtZWRpYXRlay5jb20+Cj4gPiB3cm90
-ZToKPiA+ID4KPiA+ID4gRW5hYmxlIE1UODE5NSB0d28gSC4yNjQgdmVuYyBjb3JlcywgdXBkYXRl
-cyB2Y29kZWMgYmluZGluZwo+ID4gPiBkb2N1bWVudC4KPiA+ID4KPiA+ID4gU2lnbmVkLW9mZi1i
-eTogSXJ1aSBXYW5nIDxpcnVpLndhbmdAbWVkaWF0ZWsuY29tPgo+ID4gPiAtLS0KPiA+ID4gIERv
-Y3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlay12Y29kZWMudHh0
-IHwgMiArKwo+ID4gPiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQo+ID4gPgo+ID4g
-PiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21l
-ZGlhdGVrLQo+ID4gPiB2Y29kZWMudHh0IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRp
-bmdzL21lZGlhL21lZGlhdGVrLQo+ID4gPiB2Y29kZWMudHh0Cj4gPiA+IGluZGV4IGRlOTYxNjk5
-YmEwYS4uZWIyZTI0YzMyNDI2IDEwMDY0NAo+ID4gPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2Rldmlj
-ZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWstdmNvZGVjLnR4dAo+ID4gPiArKysgYi9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWstdmNvZGVjLnR4dAo+
-ID4gPiBAQCAtMTEsNiArMTEsOCBAQCBSZXF1aXJlZCBwcm9wZXJ0aWVzOgo+ID4gPiAgICAibWVk
-aWF0ZWssbXQ4MTczLXZjb2RlYy1kZWMiIGZvciBNVDgxNzMgZGVjb2Rlci4KPiA+ID4gICAgIm1l
-ZGlhdGVrLG10ODE5Mi12Y29kZWMtZW5jIiBmb3IgTVQ4MTkyIGVuY29kZXIuCj4gPiA+ICAgICJt
-ZWRpYXRlayxtdDgxOTUtdmNvZGVjLWVuYyIgZm9yIE1UODE5NSBlbmNvZGVyLgo+ID4gPiArICAi
-bWVkaWF0ZWssbXRrLXZlbmMtY29yZTAiIGZvciBNVDgxOTUgYXZjIGNvcmUwIGRldmljZS4KPiA+
-ID4gKyAgIm1lZGlhdGVrLG10ay12ZW5jLWNvcmUxIiBmb3IgTVQ4MTk1IGF2YyBjb3JlMSBkZXZp
-Y2UuCj4gPgo+ID4gV2hhdCBpcyB0aGUgZGlmZmVyZW5jZSBiZXR3ZWVuIGNvcmUwIGFuZCBjb3Jl
-MT8KPiA+Cj4gPiBUaGFua3MsCj4gPiBFemVxdWllbAo+Cj4gQm90aCBjb3JlMCBhbmQgY29yZTEg
-YXJlIEgyNjQgZW5jb2RlciBoYXJkd2FyZSwgdGhleSBoYXZlIHRoZWlyIG93bgo+IGhhcmR3YXJl
-IHJlZ2lzdGVyIGJhc2UsIHVzZWQgcG93ZXItZG9tYWlucy9jbG9ja3MvaXJxcy4gV2UgY2FuIHVz
-ZSBhbnkKPiBvZiB0aGVtIGZvciBILjI2NCBlbmNvZGluZywgYnV0IHRoZSB0d28gY29yZXMgY2Fu
-IHdvcmsgdG9nZXRoZXIgZm9yCj4gaGlnaGVyIHBlcmZvcm1hbmNlLCBpdCdzIGNhbGxlZCAiZnJh
-bWUgcmFjaW5nIiwgYSBoYXJkd2FyZSBlbmNvZGluZwo+IG1vZGUsIGNvbnRyb2wgZmxvdyBqdXN0
-IGxpa2UgaW4gdGhlIGNvbW1pdCBtZXNzYWdlczoKPgo+IGNvcmUwIGZyYW1lIzAuZnJhbWUjMi5m
-cmFtZSM0Li4uCj4gY29yZTEgICAgZnJhbWUjMS5mcmFtZSMzLmZyYW1lIzUuLi4KPgoKSWYgdGhl
-eSBhcmUgdHdvIGVuY29kZXIgY29yZXMsIHdoeSBkbyB5b3UgbmVlZCBkaWZmZXJlbnQgY29tcGF0
-aWJsZSBzdHJpbmdzPwoKSXQgd291bGQgYmUgaW50ZXJlc3RpbmcgdG8gc2VlIGEgZGV2aWNlIHRy
-ZWUgd2hpY2ggc2hvd3MgaG93IHRoaXMgc2hvdWxkCmJlIHVzZWQgaW4gdGhlIHJlYWwgd29ybGQs
-IGJ1dCBmcm9tIHRoZSBsb29rcyBvZiBpdCwgaXQgc2VlbXMgeW91IGRvbid0Cm5lZWQgYSBzZXBh
-cmF0ZSBjb21wYXRpYmxlLgoKSXQgc2VlbXMgdGhpcyBzZXJpZXMgaXMgc29tZXdoYXQgcmVsYXRl
-ZCB0byBZdW5mZWkncyAiW1BBVENIIHY1LAowMC8xNV0gVXNpbmcgY29tcG9uZW50IGZyYW1ld29y
-ayB0byBzdXBwb3J0IG11bHRpIGhhcmR3YXJlIGRlY29kZSIsCmJ1dCBJIGRvbid0IHNlZSBhIGRl
-dmljZSB0cmVlIHBhdGNoIGVpdGhlciBpbiB0aGF0IHNlcmllcy4KCkdpdmVuIHRoaXMgaXMgYSBj
-b21wbGV4IGFyY2hpdGVjdHVyZSwgSSBkb24ndCBrbm93IGlmIGl0Cm1ha2VzIHNlbnNlIHRvIGRp
-c2N1c3MgZGVjb2RlciBhbmQgZW5jb2RlciBpbmRlcGVuZGVudGx5LgoKSWYgeW91IGd1eXMgdW5p
-ZnkgdGhlIHR3byBzZXJpZXMsIGFuZCBhZGQgdGhlIGRldmljZSB0cmVlIHBhdGNoZXMgZm9yIGl0
-LApvciBhdCBsZWFzdCBmb3IgdGhlIG1vc3QgY29tcGxleCBjYXNlcywgbWF5YmUgdGhhdCB3aWxs
-IHN1cmZhY2UgdGhlCmFyY2hpdGVjdHVyZSBtb3JlIGNsZWFybHkgYW5kIGNvbWUgdXAgd2l0aCBh
-biBlYXNpZXIgc29sdXRpb24gdGhhdApkb2Vzbid0IGludm9sdmUKYW4gYXN5bmMgZnJhbWV3b3Jr
-IHRvIHB1bGwgaW4gdGhlIHBhcnRzIHRvZ2V0aGVyLgoKVGhhbmtzLApFemVxdWllbAoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsg
-bWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+On Tue, Aug 24, 2021 at 08:37:14PM +0300, Vladimir Oltean wrote:
+> On Wed, Aug 25, 2021 at 01:32:37AM +0800, DENG Qingfang wrote:
+> > Okay. So the Fixes tag should be 6087175b7991, which initially adds the
+> > software fallback support for mt7530.
+> 
+> Ok. Did the old code not need VLAN 0 for VLAN-unaware ports, or are you
+> saying that since the VLAN table lookup was bypassed completely in the
+> old code, 'no VLAN 0' was an inconsequential error?
+> 
+> I think it's the latter. Just wanted to make sure. So that means, either
+> this Fixes: tag or the other, the patch still belongs to net-next. From
+> my side you shouldn't need to resend.
+
+You're right. The old code does not use VLAN table lookup for VLAN-unaware
+ports, and the current code set VLAN-unaware ports to fallback mode so
+missing VLAN 0 will only make them fallback to SVL.
+
+> 
+> Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
