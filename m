@@ -2,91 +2,84 @@ Return-Path: <SRS0=pvhC=NQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 57D2DC4320A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 15:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BBDB2C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 16:53:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 198D9610FD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 15:18:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 198D9610FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 87E3F60FE7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 16:53:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 87E3F60FE7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/lso+AN6T02K92+3F5b+vHB1hIG3foQLLAhemsTrtos=; b=wE5UCi470YLdwA
-	gMvRUiz7RWnJ7hAeuJF5FSnyzt6IUa2v7r57r0jVlQ8IN6H2l1NxsaImj3VgjL/k5hbNTMz0KJcqJ
-	NF/pguLaHVrg1CGuHrA1IcU8YMcx2fOKM5jJixRCX5xK8S8ipyK/rBrabaYvWFIY5eizOC2e4KviW
-	IU1sR/hG+MY4lY2izL18rVOAxdi/P3KpxI0A0p/JOhl3KfOZxtqHCQpLbGplqBewOzBeBLDPUo/fC
-	Dw3M55IbfhSrNcKJ7bo0gyKMY2fB+jkD9mo1bYlvwRs8x7Uv6AkykhmqQF4nAvQ/8KlNw54wma7DN
-	rq+QqC/Ih4bP0zjt5Wow==;
+	List-Owner; bh=B4Noe7XKQcCX4lBv+AhpGBtJrzbc2nf0+hPNDn88Ecg=; b=mrEqnBiyYj3o8M
+	u34AgXo/OkYc46pnvKZUzwpM1YS9+T3ox9YL26P4AGYRI3hnufd2cF6z9ebEW05ZBIEXldt67FjQK
+	X29TuAbApt/KhZEv/XUQUH+4eNy/CjBbeEZiyUp304cnEgZL6gE+9lQTzauMlTT33VIN6IWCQc38o
+	1CnFCc7vAJaxNET6B+E6CGmc72qfS2XI0JlLVESzb2UVXWql9M51DOMz7sUFujAgX4/Qe6wB0LkJc
+	TeSkhBZ8K6ERjhAY0kl//r6T5DKnGsFETQe126NQIsGf4XmFjgZ31sCmiGbcsEbuSzbR8N7s8cpCU
+	1BcJ/VTDc7JQq2yUTWhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIufh-007Vgb-8N; Wed, 25 Aug 2021 15:18:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mIw9S-007xen-3u; Wed, 25 Aug 2021 16:53:22 +0000
+Received: from mail-ot1-f42.google.com ([209.85.210.42])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIufb-007Veu-Nh; Wed, 25 Aug 2021 15:18:31 +0000
-X-UUID: 1efacd26ce524f5b892974c39c806bf7-20210825
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=AvZ/1szMK7QPpc3wUkxkUpWTIZXC+pUg9drjZUKq8Jc=; 
- b=BSdsjZpz1ezSbni7ggqRdbycR9DLpSQ0nhHiLOzxsn71z3uVnlpKa1nHLdjZGKLC7m1sWihRdkkq9uAl+Xt9RHTDJjBqoeHWAnDgqrbTvj4EL/+RWztWe6qSbWDlJHVC5I2cbnjQ5QUfb5EASsovKyREYLSDx9ytU93790PWt8E=;
-X-UUID: 1efacd26ce524f5b892974c39c806bf7-20210825
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <houlong.wei@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 375637768; Wed, 25 Aug 2021 08:18:21 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 08:18:20 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by mtkmbs05n2.mediatek.inc
- (172.21.101.140) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 25 Aug 2021 23:18:18 +0800
-Received: from [10.17.3.153] (10.17.3.153) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 25 Aug 2021 23:18:17 +0800
-Message-ID: <1629904697.15752.11.camel@mhfsdcap03>
-Subject: Re: [PATCH v7 7/7] media: mtk-mdp: use mdp-rdma0 alias to point to
- MDP master
-From: houlong wei <houlong.wei@mediatek.com>
+ id 1mIvo2-007nI9-Jt; Wed, 25 Aug 2021 16:31:18 +0000
+Received: by mail-ot1-f42.google.com with SMTP id
+ v33-20020a0568300921b0290517cd06302dso55600660ott.13; 
+ Wed, 25 Aug 2021 09:31:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=tMEQ5rSS37SXZ86EXg6wb4SRLylx3WacUr1VwiLL/Ng=;
+ b=KEAifm5CsnRGagpJZ1RYFHyq9riHSRRRbKUPiqh6f3/ZlNNHp1+70GVFZv7DABMIkk
+ b9ukhqpWVoVUzMUXEhxm0OSLKev+9AzQ+R7MEJYHRZX3GWZD+fW2vHxOwEYgrQuLKZx1
+ vTxC1oB2etcBg5ADuKRZdVBPkZpjdGehLgKLQnwnPju8j0BUoS532WfZsZnCr/oz59zA
+ /hRkEmk4I7oooX0JorSAY4mwjdfVtr55zZuH9XwyFSjunMg/xfSHGC2W5AQjgebrcMH8
+ RW2TtKQqf+L6Tf2GpSNOGZP/vxZp1C4wgqcsfvorVms8LgzgWHO9ykHU0wYFUTMsyPMe
+ XYpw==
+X-Gm-Message-State: AOAM533CZjhi3JqB+ZpyPqWC4XtxbgjhlIS8xN8bHcnW52RtzYj5098e
+ MF5nfnqFK/SIcm8jHWpC2A==
+X-Google-Smtp-Source: ABdhPJxfTu0ee+tYGYmnlkF+0uBzIVdwz+W40xhaEOvLrBXPblsCrnPz+qZSsntwz86pKMcuTxI+sA==
+X-Received: by 2002:a9d:6e0a:: with SMTP id e10mr34241962otr.259.1629909073115; 
+ Wed, 25 Aug 2021 09:31:13 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id r20sm66162oot.16.2021.08.25.09.31.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 25 Aug 2021 09:31:12 -0700 (PDT)
+Received: (nullmailer pid 2904615 invoked by uid 1000);
+ Wed, 25 Aug 2021 16:31:11 -0000
+Date: Wed, 25 Aug 2021 11:31:11 -0500
+From: Rob Herring <robh@kernel.org>
 To: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-CC: Eizan Miyamoto <eizan@chromium.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "chunkuang.hu@kernel.org"
- <chunkuang.hu@kernel.org>, Yong Wu =?UTF-8?Q?=28=E5=90=B4=E5=8B=87=29?=
- <Yong.Wu@mediatek.com>, "wenst@chromium.org" <wenst@chromium.org>, CK Hu
- =?UTF-8?Q?=28=E8=83=A1=E4=BF=8A=E5=85=89=29?= <ck.hu@mediatek.com>, Yongqiang
- Niu =?UTF-8?Q?=28=E7=89=9B=E6=B0=B8=E5=BC=BA=29?=
- <yongqiang.niu@mediatek.com>, Andrew-CT Chen
- =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?= <Andrew-CT.Chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Minghsiu Tsai
- =?UTF-8?Q?=28=E8=94=A1=E6=98=8E=E4=BF=AE=29?= <Minghsiu.Tsai@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org"
- <linux-media@vger.kernel.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, <houlong.wei@mediatek.com>
-Date: Wed, 25 Aug 2021 23:18:17 +0800
-In-Reply-To: <0c9fa482-57dd-d4ef-c65b-01f137c57359@collabora.com>
-References: <20210825063323.3607738-1-eizan@chromium.org>
- <20210825163247.v7.7.I2049e180dca12e0d1b3178bfc7292dcf9e05ac28@changeid>
- <1629880999.12893.17.camel@mhfsdcap03>
- <0c9fa482-57dd-d4ef-c65b-01f137c57359@collabora.com>
-X-Mailer: Evolution 3.10.4-0ubuntu2 
+Cc: linux-kernel@vger.kernel.org, kernel@collabora.com, jitao.shi@mediatek.com,
+ eizan@chromium.org, linux-arm-kernel@lists.infradead.org,
+ matthias.bgg@gmail.com, Fabien Parent <fparent@baylibre.com>,
+ Rob Herring <robh+dt@kernel.org>, chunkuang.hu@kernel.org, hsinyi@chromium.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ drinkcat@chromium.org
+Subject: Re: [PATCH v3 2/7] dt-bindings: mediatek: Add #reset-cells to mmsys
+ system controller
+Message-ID: <YSZwT8QahCfWE5N3@robh.at.kernel.org>
+References: <20210825102632.601614-1-enric.balletbo@collabora.com>
+ <20210825122613.v3.2.I3f7f1c9a8e46be07d1757ddf4e0097535f3a7d41@changeid>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20210825122613.v3.2.I3f7f1c9a8e46be07d1757ddf4e0097535f3a7d41@changeid>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_081827_825618_7CEC61CD 
-X-CRM114-Status: GOOD (  56.47  )
+X-CRM114-CacheID: sfid-20210825_093114_716372_54F17EF2 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,267 +96,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-08-25 at 17:07 +0800, Enric Balletbo i Serra wrote:
-> Hi Houlong,
+On Wed, 25 Aug 2021 12:26:27 +0200, Enric Balletbo i Serra wrote:
+> The mmsys system controller exposes a set of memory client resets and
+> needs to specify the #reset-cells property in order to advertise the
+> number of cells needed to describe each of the resets.
 > 
-> Thank you for following up this patchset. I have some questions to try to
-> understand better the hardware though.
+> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> ---
 > 
-> On 25/8/21 10:43, houlong wei wrote:
-> > Hi Eizan,
-> > 
-> > Thanks for you patch. I have inline comment below.
-> > 
-> > Regards,
-> > Houlong
-> > 
-> > On Wed, 2021-08-25 at 14:33 +0800, Eizan Miyamoto wrote:
-> >> ... Instead of depending on the presence of a mediatek,vpu property in
-> >> the device node.
-> >>
-> >> That property was originally added to link to the vpu node so that the
-> >> mtk_mdp_core driver could pass the right device to
-> >> vpu_wdt_reg_handler(). However in a previous patch in this series,
-> >> the driver has been modified to search the device tree for that node
-> >> instead.
-> >>
-> >> That property was also used to indicate the primary MDP device, so that
-> >> it can be passed to the V4L2 subsystem as well as register it to be
-> >> used when setting up queues in the open() callback for the filesystem
-> >> device node that is created. In this case, assuming that the primary
-> >> MDP device is the one with a specific alias seems useable because the
-> >> alternative is to add a property to the device tree which doesn't
-> >> actually represent any facet of hardware (i.e., this being the primary
-> >> MDP device is a software decision). In other words, this solution is
-> >> equally as arbitrary, but at least it doesn't add a property to a
-> >> device node where said property is unrelated to the hardware present.
-> >>
-> >> Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
-> >> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> >> ---
-> >>
-> >> (no changes since v1)
-> >>
-> >>  drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 56 +++++++++++++------
-> >>  drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 36 ++++++++----
-> >>  2 files changed, 64 insertions(+), 28 deletions(-)
-> >>
-> >> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-> >> index 85ef274841a3..9527649de98e 100644
-> >> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-> >> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
-> >> @@ -151,29 +151,50 @@ void mtk_mdp_comp_clock_off(struct mtk_mdp_comp *comp)
-> >>  		mtk_smi_larb_put(comp->larb_dev);
-> >>  }
-> >>  
-> >> -static int mtk_mdp_comp_bind(struct device *dev, struct device *master, void *data)
-> >> +/*
-> >> + * The MDP master device node is identified by the device tree alias
-> >> + * "mdp-rdma0".
-> >> + */
-> >> +static bool is_mdp_master(struct device *dev)
-> >> +{
-> >> +	struct device_node *aliases, *mdp_rdma0_node;
-> >> +	const char *mdp_rdma0_path;
-> >> +
-> >> +	if (!dev->of_node)
-> >> +		return false;
-> >> +
-> >> +	aliases = of_find_node_by_path("/aliases");
-> >> +	if (!aliases) {
-> >> +		dev_err(dev, "no aliases found for mdp-rdma0");
-> >> +		return false;
-> >> +	}
-> >> +
-> >> +	mdp_rdma0_path = of_get_property(aliases, "mdp-rdma0", NULL);
-> >> +	if (!mdp_rdma0_path) {
-> >> +		dev_err(dev, "get mdp-rdma0 property of /aliases failed");
-> >> +		return false;
-> >> +	}
-> >> +
-> >> +	mdp_rdma0_node = of_find_node_by_path(mdp_rdma0_path);
-> >> +	if (!mdp_rdma0_node) {
-> >> +		dev_err(dev, "path resolution failed for %s", mdp_rdma0_path);
-> >> +		return false;
-> >> +	}
-> >> +
-> >> +	return dev->of_node == mdp_rdma0_node;
-> > 
-> > 
-> > About how to determine the master mdp driver, we also can
-> > judge the component type. The component type can be gotten by calling
-> > of_device_get_match_data(dev). If the component is MTK_MDP_RDMA, it is
-> > the master driver. No matter it is mdp_rdma0 or mdp_rdma1.
+> Changes in v3:
+> - Based on top of the patch that converts mmsys to schema
 > 
+>  .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml      | 4 ++++
+>  1 file changed, 4 insertions(+)
 > 
-> I'm confused, you mean that the component type, aka MTK_MDP_RDMA is only set for
-> mtk_mdp_rdma0? isn't mtk_dmp_rdma1 also a MTK_MDP_RDMA type? Because looks weird
-> to me that two rdma have diffent types.
-> 
-Hi Enric,
 
-I can understand your doubts. For mtk-mdp dirver, it is really difficult
-to understand the relationship among the components. Because the MDP
-hardware path is configured and connected in the VPU firmware.
-For MT8173, the component type of mtk_mdp_rdma0 and mtk_mdp_rdma1 are
-both MTK_MDP_RDMA. Even though the mtk-mdp driver's component list
-contains both of them, only one corresponding hardware component takes
-effect during the processing of a frame, the VPU decides it.
-
-Regards,
-Houlong
-> 
-> > http://lists.infradead.org/pipermail/linux-mediatek/2021-August/028533.html
-> > 
-> > IMO, judging it by component type is more flexible because it does not
-> > limit to 'mdp_rdma0'.
-> > 
-> 
-> Using an alias like Eizan did is also flexible, you only need to set mdp-rdma0
-> to point the mdp_rdma1 node.
-> 
-> What I am really interested to know is the differences between the platforms to
-> understand if this is really a platform hardware property or a software
-> configurable thing, so would help if you can give use the different use cases
-> for different SoCs.
-> 
-> For MT8173 which is the master device? is _always_ rdma0 or can also be rdma1?
-> 
-> Or maybe what is not clear here is what exactly means be a master device?
-> 
-> What about MT8183 and other SoCs?
-> 
-> Thanks,
->   Enric
-> 
-Hi Enric,
-
-Before answer your questions, let's unify the concept of the master
-device.If an MDP device-tree node can not only generate a /dev/video
-device node, but also can generate a mtk component device node, then
-this component device is the master device.
-From the perspective of the device tree node, the compatible of a MDP
-device tree node contains both "mediatek,mt8173-mdp-rdma" and
-"mediatek,mt8173-mdp", then its corresponding mtk component device is
-the master device.
-Since this concept comes from Eizan's patches, if my understanding is
-different from yours, please let me know, thanks.
-
-If there is only one master device, I fully agree with you. For MT8173,
-both mdp_rdma0 and mdp_rdma1 can be master device at the same time.
-But now only mdp_rdma0 takes this role, perhaps because one MDP hardware
-path could meet the project's the requirement six years ago.
-In some project, we have two or more MDP hardware paths, we can
-configure all the mdp_rdma components as master devices, and there will
-be several /dev/video device nodes. The user can control them
-concurrently.
-
-Regards,
-Houlong
-
-> 
-> >> +}
-> >> +
-> >> +static int mtk_mdp_comp_bind(struct device *dev, struct device *master,
-> >> +			void *data)
-> >>  {
-> >>  	struct mtk_mdp_comp *comp = dev_get_drvdata(dev);
-> >>  	struct mtk_mdp_dev *mdp = data;
-> >> -	struct device_node *vpu_node;
-> >>  
-> >>  	mtk_mdp_register_component(mdp, comp);
-> >>  
-> >> -	/*
-> >> -	 * If this component has a "mediatek-vpu" property, it is responsible for
-> >> -	 * notifying the mdp master driver about it so it can be further initialized
-> >> -	 * later.
-> >> -	 */
-> >> -	vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
-> >> -	if (vpu_node) {
-> >> +	if (is_mdp_master(dev)) {
-> >>  		int ret;
-> >>  
-> >> -		mdp->vpu_dev = of_find_device_by_node(vpu_node);
-> >> -		if (WARN_ON(!mdp->vpu_dev)) {
-> >> -			dev_err(dev, "vpu pdev failed\n");
-> >> -			of_node_put(vpu_node);
-> >> -		}
-> >> -
-> >>  		ret = v4l2_device_register(dev, &mdp->v4l2_dev);
-> >>  		if (ret) {
-> >>  			dev_err(dev, "Failed to register v4l2 device\n");
-> >> @@ -187,9 +208,8 @@ static int mtk_mdp_comp_bind(struct device *dev, struct device *master, void *da
-> >>  		}
-> >>  
-> >>  		/*
-> >> -		 * presence of the "mediatek,vpu" property in a device node
-> >> -		 * indicates that it is the primary MDP rdma device and MDP DMA
-> >> -		 * ops should be handled by its DMA callbacks.
-> >> +		 * MDP DMA ops will be handled by the DMA callbacks associated with this
-> >> +		 * device;
-> >>  		 */
-> >>  		mdp->rdma_dev = dev;
-> >>  	}
-> >> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> >> index 50eafcc9993d..6a775463399c 100644
-> >> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> >> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-> >> @@ -150,8 +150,9 @@ static void release_of(struct device *dev, void *data)
-> >>  
-> >>  static int mtk_mdp_master_bind(struct device *dev)
-> >>  {
-> >> -	int status;
-> >>  	struct mtk_mdp_dev *mdp = dev_get_drvdata(dev);
-> >> +	struct device_node *vpu_node;
-> >> +	int status;
-> >>  
-> >>  	status = component_bind_all(dev, mdp);
-> >>  	if (status) {
-> >> @@ -159,15 +160,30 @@ static int mtk_mdp_master_bind(struct device *dev)
-> >>  		goto err_component_bind_all;
-> >>  	}
-> >>  
-> >> -	if (mdp->vpu_dev) {
-> >> -		int ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
-> >> -					  VPU_RST_MDP);
-> >> -		if (ret) {
-> >> -			dev_err(dev, "Failed to register reset handler\n");
-> >> -			goto err_wdt_reg;
-> >> -		}
-> >> -	} else {
-> >> -		dev_err(dev, "no vpu_dev found\n");
-> >> +	if (mdp->rdma_dev == NULL) {
-> >> +		dev_err(dev, "Primary MDP device not found");
-> >> +		status = -ENODEV;
-> >> +		goto err_component_bind_all;
-> >> +	}
-> >> +
-> >> +	vpu_node = of_find_node_by_name(NULL, "vpu");
-> >> +	if (!vpu_node) {
-> >> +		dev_err(dev, "unable to find vpu node");
-> >> +		status = -ENODEV;
-> >> +		goto err_wdt_reg;
-> >> +	}
-> >> +
-> >> +	mdp->vpu_dev = of_find_device_by_node(vpu_node);
-> > 
-> > The 'vpu_node' should be put by calling 'of_node_put(vpu_node)' when it
-> > is not used.
-> > 
-> >> +	if (!mdp->vpu_dev) {
-> >> +		dev_err(dev, "unable to find vpu device");
-> >> +		status = -ENODEV;
-> >> +		goto err_wdt_reg;
-> >> +	}
-> >> +
-> >> +	status = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp, VPU_RST_MDP);
-> >> +	if (status) {
-> >> +		dev_err(dev, "Failed to register reset handler\n");
-> >> +		goto err_wdt_reg;
-> >>  	}
-> >>  
-> >>  	status = mtk_mdp_register_m2m_device(mdp);
-> > 
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
