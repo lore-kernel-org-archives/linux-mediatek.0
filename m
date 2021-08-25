@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A918EC4320A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 14:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82D3FC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 14:49:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6FB2F610CD
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 14:49:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6FB2F610CD
+	by mail.kernel.org (Postfix) with ESMTPS id 4F3A1610CD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 14:49:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4F3A1610CD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+RD18BWbl6T7L+oNBlxVdRhS7CBRJmjtgq+HtcnuJWA=; b=D1BtIPeKhZiO+w
-	nlBEWEO/CPo1s6VYK7+7ESOtoqnKFKz70rX7IWF/m7GfZXUexJuLOJ4jU8UEY+5uN9PzIhleZgb+8
-	T6h6pexz+Y6zFp3ObPEAhpvPl1yquRklm43EqWOtWQRZegM51EE2XvX94BrWoxzV16P5YhDLFX74Y
-	TMF7P3Jww7xb/mx80195QoBDWQCTWhzqkVZfsoiKitZSFPgUvVh3qBwv4qIcyUvu49j/NzaSVA6dE
-	6QGhfdrxK4lohx7IGzXvmDEgZrVLVUSiRqbCcM+DCOXILLLAdH9qCE7q8KneePV/Qj+9S0aWWBH1o
-	k4bNsODESAtyOvbaX7VQ==;
+	List-Owner; bh=DkBsICRreH2uPCGtpy/QvQAPTVxfiM5sR8enzJDTSCA=; b=SJc0iIFnTbXrqX
+	KXKPPkU+vFQBOD+4OQ9Sse4oWTO2145KRMasj437KtowAifmc+eudVS/pArQSB75upPcIlXnrZPmI
+	TC1eHt8OQkNN3QvINLAWkCRwJjmbTw1yVp/3x1KgFOGVM4PiOGrFSb4pH4PYI4rpnfwpZUxtBP2zA
+	4jl6kg4OylY17BM+p3nWXqClhIl1nKRr2VGICxFXVHfdBVeJe0CtdtV1IpVsZWqCf6/GAPtKpQbux
+	w6P1dbpBtALXfF28YKInFs68S4657XWU+lQvDTvRs38M0Yy1bUeFVI1yH+R6WGdaz0emvZz8n5BAG
+	Lijc0XdLpbrXw416qBjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIuDa-007JUU-BQ; Wed, 25 Aug 2021 14:49:30 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mIuDb-007JV3-Vr; Wed, 25 Aug 2021 14:49:32 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIuCq-007J8D-OX; Wed, 25 Aug 2021 14:48:48 +0000
-X-UUID: 569fe5761e5845279578f635ccdafe4e-20210825
+ id 1mIuCo-007J8K-W9; Wed, 25 Aug 2021 14:48:48 +0000
+X-UUID: a8f4a1b0cf934867882938c101dc3b1a-20210825
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=cjPrmfZ7m8cXiXqEGSkuCW5UOFv0rN5OY7UlvaASGkA=; 
- b=kw76XxxewrwZX8hY6QKxwpGaRRvF7S+LbqDTvuxmP2Yrw4SdD3NNiTegNAb8D1jw7Ob3lMOMQTZCawxjQOWjd33h+twEEaj3hguwv5h6vIZpwjq894YQ9ROfxuhYXQu5RxuA8bHr3USvPUDWDsp94nt9ncL3Z92/IJDuYHPV3Yc=;
-X-UUID: 569fe5761e5845279578f635ccdafe4e-20210825
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ bh=FXpmQN4JYUtRnHZkB9CfrcS7J7cPaYmYZggRHHHi26o=; 
+ b=ozb8AsxxLtCp3vgxo57DafxpxQR0Xqnz6lA1Zx8/LfXsA4BBXyVDBnNX0mlieGu1+nkdS6FvymOPnIhMOiYHYv5Owky24cnBb1KsoPIqLltK7IOUyGrVtF0iHeWqiUBJXD50k3GO17pK1ywMrzbaxJM9PcNXfLfhcf8KYtwDn3A=;
+X-UUID: a8f4a1b0cf934867882938c101dc3b1a-20210825
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 222094405; Wed, 25 Aug 2021 07:48:39 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 07:48:38 -0700
+ with ESMTP id 65703168; Wed, 25 Aug 2021 07:48:37 -0700
+Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 Aug 2021 07:48:36 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 22:48:35 +0800
+ mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 Aug 2021 22:48:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 25 Aug 2021 22:48:36 +0800
+ Frontend Transport; Wed, 25 Aug 2021 22:48:35 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -68,18 +68,18 @@ CC: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Frank Wunderlich
  <singo.chang@mediatek.com>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v9 09/14] drm/mediatek: remove unused define in
- mtk_drm_ddp_comp.c
-Date: Wed, 25 Aug 2021 22:48:28 +0800
-Message-ID: <20210825144833.7757-10-jason-jh.lin@mediatek.com>
+Subject: [PATCH v9 04/14] dt-bindings: mediatek: add mediatek,
+ dsc.yaml for mt8195 SoC binding
+Date: Wed, 25 Aug 2021 22:48:23 +0800
+Message-ID: <20210825144833.7757-5-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210825144833.7757-1-jason-jh.lin@mediatek.com>
 References: <20210825144833.7757-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_074844_848284_8A30E4D9 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20210825_074843_106138_09EC05C9 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,57 +96,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Remove the unsed define in mtk_drm_ddp_comp.c
+1. Add mediatek,dsc.yaml to describe DSC module in details.
+2. Add mt8195 SoC binding to mediatek,dsc.yaml.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
-rebase on [1] series
-[1] drm/mediatek: Separate aal module
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=516463
----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 10 ----------
- 1 file changed, 10 deletions(-)
+ .../display/mediatek/mediatek,dsc.yaml        | 70 +++++++++++++++++++
+ 1 file changed, 70 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index 99cbf44463e4..484080a0defa 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -21,8 +21,6 @@
- #include "mtk_drm_crtc.h"
- 
- #define DISP_OD_EN				0x0000
--#define DISP_OD_INTEN				0x0008
--#define DISP_OD_INTSTA				0x000c
- #define DISP_OD_CFG				0x0020
- #define DISP_OD_SIZE				0x0030
- #define DISP_DITHER_5				0x0114
-@@ -39,26 +37,18 @@
- #define DITHER_ENGINE_EN			BIT(1)
- #define DISP_DITHER_SIZE			0x0030
- 
--#define LUT_10BIT_MASK				0x03ff
--
- #define OD_RELAYMODE				BIT(0)
- 
- #define UFO_BYPASS				BIT(2)
- 
- #define DISP_DITHERING				BIT(2)
- #define DITHER_LSB_ERR_SHIFT_R(x)		(((x) & 0x7) << 28)
--#define DITHER_OVFLW_BIT_R(x)			(((x) & 0x7) << 24)
- #define DITHER_ADD_LSHIFT_R(x)			(((x) & 0x7) << 20)
--#define DITHER_ADD_RSHIFT_R(x)			(((x) & 0x7) << 16)
- #define DITHER_NEW_BIT_MODE			BIT(0)
- #define DITHER_LSB_ERR_SHIFT_B(x)		(((x) & 0x7) << 28)
--#define DITHER_OVFLW_BIT_B(x)			(((x) & 0x7) << 24)
- #define DITHER_ADD_LSHIFT_B(x)			(((x) & 0x7) << 20)
--#define DITHER_ADD_RSHIFT_B(x)			(((x) & 0x7) << 16)
- #define DITHER_LSB_ERR_SHIFT_G(x)		(((x) & 0x7) << 12)
--#define DITHER_OVFLW_BIT_G(x)			(((x) & 0x7) << 8)
- #define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
--#define DITHER_ADD_RSHIFT_G(x)			(((x) & 0x7) << 0)
- 
- struct mtk_ddp_comp_dev {
- 	struct clk *clk;
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+new file mode 100644
+index 000000000000..f26e3010d5f4
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+@@ -0,0 +1,70 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,dsc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: mediatek display DSC controller
++
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
++
++description: |
++  The DSC standard is a specification of the algorithms used for
++  compressing and decompressing image display streams, including
++  the specification of the syntax and semantics of the compressed
++  video bit stream. DSC is designed for real-time systems with
++  real-time compression, transmission, decompression and Display.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8195-disp-dsc
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: DSC Wrapper Clock
++
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++
++  mediatek,gce-client-reg:
++    description:
++      The register of client driver can be configured by gce with 4 arguments defined
++      in this property, such as phandle of gce, subsys id, register offset and size.
++      Each subsys id is mapping to a base address of display function blocks register
++      which is defined in the gce header include/include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    dsc0: disp_dsc_wrap@1c009000 {
++        compatible = "mediatek,mt8195-disp-dsc";
++        reg = <0 0x1c009000 0 0x1000>;
++        interrupts = <GIC_SPI 645 IRQ_TYPE_LEVEL_HIGH 0>;
++        power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++        clocks = <&vdosys0 CLK_VDO0_DSC_WRAP0>;
++        mediatek,gce-client-reg = <&gce1 SUBSYS_1c00XXXX 0x9000 0x1000>;
++    };
 -- 
 2.18.0
 _______________________________________________
