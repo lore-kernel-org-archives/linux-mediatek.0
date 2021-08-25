@@ -2,79 +2,95 @@ Return-Path: <SRS0=pvhC=NQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-6.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=no
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A949C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 05:50:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2F0AC4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 05:51:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41C0A60E99
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 05:50:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 41C0A60E99
+	by mail.kernel.org (Postfix) with ESMTPS id 9A14761165
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 05:51:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9A14761165
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ohkyWyBoIAfuGuMZfu+rt+kSYfLCRJLNlagIZR/fgwA=; b=G+zsNcR/+pErrt
-	4gBysNZryxxqf03dGXSqFdy8Yy+tN+m/lc60SdbnoQlUTgpGOqUCYCN/RfmYDGpRNIJjWAvuHtcDP
-	3whA9IwN+1dA5fa5zup/vMH76qoWO6KyJlMYTm89u/pyzDq/JJ3KjFy0zUz/x8Ak9gaWrwFveC7Xh
-	q8qitRB4GO5u74N2A15IaIimz4t4+kik1G1zOPZL07t1Q245NAc5h55BxCskU//oqCGoQuD77FtYW
-	bUNguc0btGl5NOyu2DiPYv8NTXMFLjJ7YSyvUcRNzbXtMQuQdSNKP/wfC/exAIyA7fnBLEykFEyFF
-	UH7wvddXDBwAhIErXO2w==;
+	List-Owner; bh=M3xFJp2854BZuqb5OO3KzwBIMuBE+sHXehKJvHujVEI=; b=kKYt+N9vWmEuJm
+	3JXfAFceAwaoJprw/pH1rKEh+oMoIoVRGP8uuza4zRQvLT11tSHQPA4qHtN8X2YbGFdHl/qpt8xoi
+	xBy7BnaVTytLd4Q75Qmg2EURZXoHXx/CbwxdYoR+JDgkmzJYpnYO6ZdGg3yqzER2cfmEr7vJyagGC
+	0iATVmYrfFd5gevZxWYsJUDJuJP067utheQime/pUS7j0VXjGcNask1IJh1vyLVmbJ611V2hIAtUb
+	GHCjOve6A8IGV9eD3gxC8iwbGHTJboRxkeKuumGQlYwN02lAoy1nfmx8y7V73NNNxTfyItkgAHQLx
+	F4BEeLzaq2nErDy9Kzjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIlo7-005Ys6-Se; Wed, 25 Aug 2021 05:50:39 +0000
+	id 1mIloJ-005YuJ-Cz; Wed, 25 Aug 2021 05:50:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIlo2-005Yr3-PF; Wed, 25 Aug 2021 05:50:38 +0000
-X-UUID: 8081f977109b43808d8f02cc0f0b1b96-20210824
+ id 1mIlo3-005YrS-OR; Wed, 25 Aug 2021 05:50:39 +0000
+X-UUID: 02bd26f2935949129508f7901368964e-20210824
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=07yNZ7WLw6gCRD7F6CIsZCAX6VEtK74OjBOyd9U0qR8=; 
- b=snQTNiuNdDtniTi0Pi0W6KedfW1DqxyXS7/yVDNh724MLNaG1c0GoheDlVTYdd7OstGpo9mMQzK8fw0l9ahTXgSzIb1ON17nej3gpZ3KZm3Uj4iGYoH15Rvh2H7/RH+4eCH2G0P6JC1k8YZW+0ApgOrIffhENhkXR9JzE5R7Lzk=;
-X-UUID: 8081f977109b43808d8f02cc0f0b1b96-20210824
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=ONQtWu3lv3dTBvMzZk9BAuNwnHHvjPfkOuyx0omprNw=; 
+ b=ULPC0OHyU5rcnV2lP5LZxFFAxUaNwZ2SXvLoQB3h68r5JsHHBp5vqlr239/yxXeb/0Vgr8LobH19rdShN24bqR8CVhvhYrasHNlEgaPmFVoO6MWoUAcBTErvUJTDkG/usza2q776dgshkVbxmOTexG0+RamQb/DdmymvxTr+osE=;
+X-UUID: 02bd26f2935949129508f7901368964e-20210824
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1304575362; Tue, 24 Aug 2021 22:50:33 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ with ESMTP id 1911751667; Tue, 24 Aug 2021 22:50:33 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 24 Aug 2021 22:48:05 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 13:48:03 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
+ 15.0.1497.2; Tue, 24 Aug 2021 22:48:37 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 Aug 2021 13:48:35 +0800
+Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 25 Aug 2021 13:48:03 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: "Rafael J. Wysocki" <rjw@rjwysocki.net>
-CC: Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, <linux-pm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH RESEND v3 2/2] usb: xhci-mtk: enable wake-up interrupt after
- runtime_suspend called
-Date: Wed, 25 Aug 2021 13:47:58 +0800
-Message-ID: <1629870478-11813-2-git-send-email-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 1.8.1.1.dirty
-In-Reply-To: <1629870478-11813-1-git-send-email-chunfeng.yun@mediatek.com>
-References: <1629870478-11813-1-git-send-email-chunfeng.yun@mediatek.com>
+ Transport; Wed, 25 Aug 2021 13:48:34 +0800
+Message-ID: <24aa6baa63408c4cb9809e3f5c82e5f5df8b916f.camel@mediatek.com>
+Subject: Re: [PATCH v5, 00/15] Using component framework to support multi
+ hardware decode
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Alexandre Courbot <acourbot@chromium.org>, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, "Andrew-CT
+ Chen" <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang
+ <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Irui Wang
+ <irui.wang@mediatek.com>, linux-media <linux-media@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, George Sun
+ <george.sun@mediatek.com>
+Date: Wed, 25 Aug 2021 13:48:35 +0800
+In-Reply-To: <6224223ec1ead769f281af54f93bd3142a8e212b.camel@mediatek.com>
+References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
+ <CAAEAJfDWOzCJxZFNtxeT7Cvr2pWbYrfz-YnA81sVNs-rM=8n4Q@mail.gmail.com>
+ <1b79a67b703d2c894bc4d9458c760e082fc42958.camel@mediatek.com>
+ <CAAEAJfCTrKj9AFExN-L-TKww4E=us1VVh8LHtZ8Q0j_eaCD4Eg@mail.gmail.com>
+ <1629446378.18871.27.camel@mhfsdcap03>
+ <CAAEAJfCdvj4drV+YSbvyR30b0+50RpJcOYdEoNODTdrAoL6+vA@mail.gmail.com>
+ <6224223ec1ead769f281af54f93bd3142a8e212b.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210824_225034_847280_1B0EF189 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20210824_225035_830294_3A61583F 
+X-CRM114-Status: GOOD (  63.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,30 +107,210 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use new function dev_pm_wake_irq_set_late_enabled_status() to enable
-dedicated wake-up interrupt after xhci_mtk_runtime_suspend() is called.
+Hi Ezequiel,
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v3: new patch
----
- drivers/usb/host/xhci-mtk.c | 1 +
- 1 file changed, 1 insertion(+)
+You can get the dtsi information from patch 13, it is decoder yaml file
+about component architecture:
 
-diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
-index 7ff0cd707ba1..6fb6f6853129 100644
---- a/drivers/usb/host/xhci-mtk.c
-+++ b/drivers/usb/host/xhci-mtk.c
-@@ -611,6 +611,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
- 			dev_err(dev, "set wakeup irq %d failed\n", wakeup_irq);
- 			goto dealloc_usb3_hcd;
- 		}
-+		dev_pm_wake_irq_set_late_enabled_status(dev);
- 		dev_info(dev, "wakeup irq %d\n", wakeup_irq);
- 	}
- 
--- 
-2.25.1
+[PATCH v4, 13/15] dt-bindings: media: mtk-vcodec: Adds decoder dt-
+bindings for mt8192
+
+Thanks
+Yunfei Dong
+
+On Tue, 2021-08-24 at 18:21 +0800, yunfei.dong@mediatek.com wrote:
+> Hi Ezequiel,
+> 
+> Thanks for your suggestion.
+> 
+> On Sun, 2021-08-22 at 11:32 -0300, Ezequiel Garcia wrote:
+> > On Fri, 20 Aug 2021 at 04:59, yunfei.dong@mediatek.com
+> > <yunfei.dong@mediatek.com> wrote:
+> > > 
+> > > Hi Ezequiel,
+> > > 
+> > > Thanks for your detail feedback.
+> > > 
+> > > On Thu, 2021-08-19 at 11:10 -0300, Ezequiel Garcia wrote:
+> > > > On Thu, 19 Aug 2021 at 04:13, yunfei.dong@mediatek.com
+> > > > <yunfei.dong@mediatek.com> wrote:
+> > > > > 
+> > > > > Hi Ezequiel,
+> > > > > 
+> > > > > Thanks for your suggestion.
+> > > > > 
+> > > > > On Wed, 2021-08-18 at 11:11 -0300, Ezequiel Garcia wrote:
+> > > > > > +danvet
+> > > > > > 
+> > > > > > Hi,
+> > > > > > 
+> > > > > > On Tue, 10 Aug 2021 at 23:58, Yunfei Dong <
+> > > > > > yunfei.dong@mediatek.com>
+> > > > > > wrote:
+> > > > > > > 
+> > > > > > > This series adds support for multi hardware decode into
+> > > > > > > mtk-vcodec,
+> > > > > > > by first
+> > > > > > > adding component framework to manage each hardware
+> > > > > > > information:
+> > > > > > > interrupt,
+> > > > > > > clock, register bases and power. Secondly add core thread
+> > > > > > > to deal
+> > > > > > > with core
+> > > > > > > hardware message, at the same time, add msg queue for
+> > > > > > > different
+> > > > > > > hardware
+> > > > > > > share messages. Lastly, the architecture of different
+> > > > > > > specs
+> > > > > > > are not
+> > > > > > > the same,
+> > > > > > > using specs type to separate them.
+> > > > > > > 
+> > > > > > 
+> > > > > > I don't think it's a good idea to introduce the component
+> > > > > > API
+> > > > > > in the
+> > > > > > media subsystem. It doesn't seem to be maintained, IRC
+> > > > > > there's not
+> > > > > > even
+> > > > > > a maintainer for it, and it has some issues that were never
+> > > > > > addressed.
+> > > > > > 
+> > > > > > It would be really important to avoid it. Is it really
+> > > > > > needed
+> > > > > > in the
+> > > > > > first place?
+> > > > > > 
+> > > > > > Thanks,
+> > > > > > Ezequiel
+> > > > > 
+> > > > > For there are many hardware need to use, mt8192 is three and
+> > > > > mt8195 is
+> > > > > five. Maybe need more to be used in the feature.
+> > > > > 
+> > > > > Each hardware has independent clk/power/iommu port/irq.
+> > > > > Use component interface in prob to get each component's
+> > > > > information.
+> > > > > Just enable the hardware when need to use it, very convenient
+> > > > > and
+> > > > > simple.
+> > > > > 
+> > > > > I found that there are many modules use component to manage
+> > > > > hardware
+> > > > > information, such as iommu and drm etc.
+> > > > > 
+> > > > 
+> > > > Many drivers support multiple hardware variants, where each
+> > > > variant
+> > > > has a different number of clocks or interrupts, see for
+> > > > instance
+> > > > struct hantro_variant which allows to expose different codec
+> > > > cores,
+> > > > some having both decoder/encoder, and some having just a
+> > > > decoder.
+> > > > 
+> > > > The component API is mostly used by DRM to aggregate
+> > > > independent
+> > > > subdevices (called components) into an aggregated driver.
+> > > > 
+> > > > For instance, a DRM driver needs to glue together the HDMI,
+> > > > MIPI,
+> > > > and plany controller, or any other hardware arrangement where
+> > > > devices can be described independently.
+> > > > 
+> > > 
+> > > The usage scenario is very similar with drm and iommu, So decide
+> > > to
+> > > use
+> > > component framework.
+> > > Decode has three/five or more hardwares, these hardware are
+> > > independent.
+> > > For mt8183 just need core hardware to decode, but mt8192 has
+> > > lat,soc and
+> > > core hardware to decode. When lat need to use, just enable lat
+> > > hardware,
+> > > core is the same.And mt8195 will has two cores, each core can
+> > > work
+> > > well
+> > > independent.
+> > > 
+> > > For each component device just used to open their power/clk/iommu
+> > > port/irq when master need to enable it. The main logic is in
+> > > master
+> > > device.
+> > > 
+> > > > The component API may look simple but has some issues, it's not
+> > > > easy
+> > > > to debug, and can cause troubles if not used as expected [1].
+> > > > It's worth making sure you actually need a framework
+> > > > to glue different devices together.
+> > > > 
+> > > 
+> > > Each hardware has its index, master can get hardware information
+> > > according these index, looks not complex. What do you mean about
+> > > not
+> > > easy to debug?
+> > > 
+> > > > > Do you have any other suggestion for this architecture?
+> > > > > 
+> > > > 
+> > > > Looking at the different patchsets that are posted, it's not
+> > > > clear
+> > > > to me what exactly are the different architectures that you
+> > > > intend
+> > > > to support, can you some documentation which clarifies that?
+> > > > 
+> > > 
+> > > Have five hardwares lat,soc,core0,core1 and main. Lat thread can
+> > > use lat
+> > > soc and main, core thread can use soc,lat, core0 and core1. Core
+> > > thread
+> > > can be used or not for different project.
+> > 
+> > Can you explain what are these lat,soc and core threads for?
+> > 
+> 
+> You can regards lat,soc and core as hardware, each hardware can work
+> independent. Lat and core threads used to control hardware to decode.
+> > > Also Need to use these
+> > > hardware dynamic at the same time. So I use component framework,
+> > > just
+> > > need to know the used  hardware index according to different
+> > > project.Need not to do complex logic to manage these hardwares.
+> > > 
+> > 
+> > I am not thrilled to see the component framework introduced to the
+> > media subsystem. Like I said, it has no clear maintainer, and it's
+> > not
+> > easy to use.
+> > 
+> 
+> How do you think about Deniel Vetter's mail ? It looks that there are
+> maintainer for it.
+> > The media subsystem has some support which AFAIK does the same
+> > thing,
+> > see v4l2-async, which is maintained by media people.
+> > 
+> 
+> If component can be used, I prefer to use it. At the other hand, I
+> will
+> try to use these method as compared.
+> > Please push a branch based on media/master containing these
+> > changes.
+> > I see there are other patch series for this device, but it's hard
+> > to
+> > track
+> > which goes first, etc.
+> > 
+> 
+> I need time to push a branch, or you can get the latest kernel and
+> git
+> am these patches, maybe much quicker.
+> > Thanks,
+> > Ezequiel
+> 
+> Thanks,
+> Yunfei Dong
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
