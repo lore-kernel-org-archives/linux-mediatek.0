@@ -2,64 +2,69 @@ Return-Path: <SRS0=pvhC=NQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2260CC4320A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:32:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3DD94C4320A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:33:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E676161037
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:32:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E676161037
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0035061139
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:33:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0035061139
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=QondAtQHSlxGuj9D2JFKcPOzVcEDlCVWg7+WWj5zhJ4=; b=i5z/MTnhCpyb/R
-	4WdlRG4blicG0VI4HDaPgs5ixLqIR068x3DiiNKq5Xo3/NLnGNjI5RgjG3VOC+rQAEJkkbph5w9oS
-	2MPCdj2jK9OOpU43QmZPYp9iug7DtPJ4kaN2hDICpBfDj4prfQZO5fPxEo9PckDzFTT63Q9l1h4BZ
-	x5AYY3tfT8DrFsjhB7XqE34K/NfxZmaNhdXxjR3aZxtcpJ0UxfrEJgZSuGDmr2e91CQf3T88LIful
-	fS3IRX7o9nnc5bvPAcPmZKI9g1gsFKNIu99k7FwcPGzwWsJqUR5Uf3M/Eq4bslw3hgkpVodArn86q
-	8oKvtLV4qigfPfVJNaPg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=w0mMKqTFEF6VwqLFt914/7yHJf29Ol15Kputm5vHLSk=; b=ECNOTrZ9K9f8Xt
+	iLBrd19+4dHaJNwQCO/rrwM9JZ4hgzno205lz1LbzwRg57vdmJOeKShobTkKGN478INb20Nsij40M
+	CBpu7H9XP7bah8qzR0rbNDg3mevYdueFjORa6nfHUlSlHfHQ3RV1zPxuK9MhoDzYWqrgGC1ckw+Vz
+	XXIY3wfxJfGfyRplu/ozKo2ya9OHbByU4mWUSoO0twEvU1/P2X/6xuACIeWOA4gdApLdDpNx+2Stt
+	aXb9puZBwAWCyUx+7fI82giZtZw3AEMw7sQc/ojEynzvLDAKjrXHYqIA87hKeRm+Oiccr58C5x1VM
+	EP1HwBo9rFAkTRGC0WPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIqCm-006WMd-92; Wed, 25 Aug 2021 10:32:24 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mIqDz-006Wxm-MZ; Wed, 25 Aug 2021 10:33:39 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIpyT-006PJg-Js
- for linux-mediatek@lists.infradead.org; Wed, 25 Aug 2021 10:17:39 +0000
-Received: from guri.fritz.box (unknown
- [IPv6:2a02:810a:880:f54:c5f4:b90c:545d:197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id DAAC61F436B4;
- Wed, 25 Aug 2021 11:17:31 +0100 (BST)
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-To: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ id 1mIq0v-006QYp-IJ; Wed, 25 Aug 2021 10:20:11 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPS id 1A6CE6121E;
+ Wed, 25 Aug 2021 10:20:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1629886809;
+ bh=O6J+rHSYQXPSx/jFP12S7IvB9F9Rnmxsu4WHal3JfBk=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=mfiF8rnrwSWnhZtl9cutMWs9KS7pJmd5V9UXYRN7mQojIGUEEj0CjoJiCAksH2gGc
+ 0sDQfSJWbdZVGaAccmXKEPWlqwXymTc75x25Dr4Zbwo2jHo5zu2jcKU3EodtTt5pzN
+ EBkEO6WZoa0Oq3VXCkcN/aIepZDFzn8J8SZjOYmlkGI83HD1hQpk04xBbxomNsGd2L
+ 6r1jWY+NYUBDYDYSKBHb/ii6+h3gTq0INasryEjUcAGQhuEicTYTnaeiZsC7hTtX9i
+ jxutHwxzd62N4hM7uryPV6HPGZ0IQo4zWVqcr4J3dlmXpEuvpcbdm2gxOAPeCEHHBg
+ DbZMJ33tFlJpw==
+MIME-Version: 1.0
+Subject: Re: [PATCH net-next] net: dsa: mt7530: manually set up VLAN ID 0
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <162988680906.8958.16937803471017689459.git-patchwork-notify@kernel.org>
+Date: Wed, 25 Aug 2021 10:20:09 +0000
+References: <20210824165253.1691315-1-dqfext@gmail.com>
+In-Reply-To: <20210824165253.1691315-1-dqfext@gmail.com>
+To: DENG Qingfang <dqfext@gmail.com>
+Cc: sean.wang@mediatek.com, Landen.Chao@mediatek.com, andrew@lunn.ch,
+ vivien.didelot@gmail.com, f.fainelli@gmail.com, olteanv@gmail.com,
+ davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
+ p.zabel@pengutronix.de, linux@armlinux.org.uk, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Cc: Alexandre Courbot <acourbot@chromium.org>, dafna.hirschfeld@collabora.com,
- kernel@collabora.com,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>, hverkuil@xs4all.nl,
- dafna3@gmail.com, mchehab@kernel.org, tfiga@chromium.org,
- minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com,
- andrew-ct.chen@mediatek.com, tiffany.lin@mediatek.com,
- matthias.bgg@gmail.com, courbot@chromium.org, hsinyi@chromium.org,
- eizan@chromium.org
-Subject: [PATCH v3] media: mtk-vpu: Ensure alignment of 8 for DTCM buffer
-Date: Wed, 25 Aug 2021 12:17:17 +0200
-Message-Id: <20210825101717.18075-1-dafna.hirschfeld@collabora.com>
-X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_031738_202365_A8307AFA 
-X-CRM114-Status: GOOD (  11.50  )
+X-CRM114-CacheID: sfid-20210825_032009_657536_A9FE0082 
+X-CRM114-Status: UNSURE (   8.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,62 +76,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alexandre Courbot <acourbot@chromium.org>
+Hello:
 
-When running memcpy_toio:
-memcpy_toio(send_obj->share_buf, buf, len);
-it was found that errors appear if len is not a multiple of 8:
+This patch was applied to netdev/net-next.git (refs/heads/master):
 
-[58.350841] mtk-mdp 14001000.rdma: processing failed: -22
+On Wed, 25 Aug 2021 00:52:52 +0800 you wrote:
+> The driver was relying on dsa_slave_vlan_rx_add_vid to add VLAN ID 0. After
+> the blamed commit, VLAN ID 0 won't be set up anymore, breaking software
+> bridging fallback on VLAN-unaware bridges.
+> 
+> Manually set up VLAN ID 0 to fix this.
+> 
+> Fixes: 06cfb2df7eb0 ("net: dsa: don't advertise 'rx-vlan-filter' when not needed")
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+> 
+> [...]
 
-This patch ensures the copy of a multile of 8 size by calling
-round_up(len, 8) when copying
+Here is the summary with links:
+  - [net-next] net: dsa: mt7530: manually set up VLAN ID 0
+    https://git.kernel.org/netdev/net-next/c/1ca8a193cade
 
-Fixes: e6599adfad30 ("media: mtk-vpu: avoid unaligned access to DTCM buffer.")
-Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
-changes since v2:
-1. do the extra copy only if len is not multiple of 8
+You are awesome, thank you!
+--
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-changes since v1:
-1. change sign-off-by tags
-2. change values to memset
-
- drivers/media/platform/mtk-vpu/mtk_vpu.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-index ec290dde59cf..658161ee3e4e 100644
---- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-@@ -349,7 +349,16 @@ int vpu_ipi_send(struct platform_device *pdev,
- 		}
- 	} while (vpu_cfg_readl(vpu, HOST_TO_VPU));
- 
--	memcpy_toio(send_obj->share_buf, buf, len);
-+	if (len % 8 != 0) {
-+		unsigned char data[SHARE_BUF_SIZE];
-+
-+		memset(data + len, 0, sizeof(data) - len);
-+		memcpy(data, buf, len);
-+		memcpy_toio(send_obj->share_buf, data, round_up(len, 8));
-+	} else {
-+		memcpy_toio(send_obj->share_buf, buf, len);
-+	}
-+
- 	writel(len, &send_obj->len);
- 	writel(id, &send_obj->id);
- 
--- 
-2.17.1
 
 
 _______________________________________________
