@@ -2,75 +2,86 @@ Return-Path: <SRS0=pvhC=NQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2A189C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 09:09:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 33BABC00144
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 09:35:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E5E5A61183
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 09:09:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E5E5A61183
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id EB29661183
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 09:35:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EB29661183
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=J9B9mqOlOB+5RO3Do9CgGkQLAyVU5kU+HNzevf2QHXQ=; b=s5Qd5PyYzWv/kX+NIfEhGpPrTz
-	tojHVIF8Nyl0mxZXj/M+su9JidrrFspLqtoWbNItIvwo9CN6Dol4o+uT96ep2GjyI/NT4/zzsDl//
-	v4xN8FpSxdaLd6aTDznW8Fc/DvL6gSaEnjDeG3JxOLp2pk65JFzUmqRZu96dAzotAdMLD2PuuBGAO
-	0rou02WIA6wwZFsRSnsUxQAQh/Gpey2QqxxYr2oJCzS9F87XAV97V7vX2vaQpMwJCud722+okR/k8
-	bcjDQPjHTYJPfVLRViVjp4skpKua0HvPGbax0PAk2nnIl6DvA0HC9UvBUTBehs+F6P70umka6bwiK
-	mAr3jJwQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DfJI96pdp52MH7XAhv1iPtg8nxoawZWfTypsa2nfuT4=; b=NO9AzeElo5dVFW
+	p8xeivPr/OSZo6IeSFEt+t9LQB/0Z3NlH24jguormDDqKFCUPdpSW4NN6qRHK3T2ZgMh6lqJOkLUH
+	KOd7JxnRY218tdaxhLAotGVhr0r+V2LvRyTEEcBAcSbf/GxcfvqQHvMl+H0VE+Z0JNADnGLeNRtei
+	O/vKv1Vuq4vCtsHTDM9dO6RDpn+ulQgq1tCsLCdcGQ9u+orhaoRQTzXJChvD9OAO+G7gGyfUb/Wmv
+	ge0I42QXsegEjYVIDIO4z/F2w26YJ1v3sTXpd5uJ99BGBju8w2C/5A46znvAyhgG9kk2hkenVlDV9
+	4qYBsNGZa8JMCgdwDhIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIou3-00638Q-L9; Wed, 25 Aug 2021 09:08:59 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1mIpJR-006A9b-F1; Wed, 25 Aug 2021 09:35:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIotL-0062mJ-Ng; Wed, 25 Aug 2021 09:08:19 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id A6D1A1F43274
-Subject: Re: [PATCH v7 7/7] media: mtk-mdp: use mdp-rdma0 alias to point to
- MDP master
-To: houlong wei <houlong.wei@mediatek.com>, Eizan Miyamoto <eizan@chromium.org>
-Cc: "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- =?UTF-8?B?WW9uZyBXdSAo5ZC05YuHKQ==?= <Yong.Wu@mediatek.com>,
- "wenst@chromium.org" <wenst@chromium.org>, =?UTF-8?B?Q0sgSHUgKOiDoeS/ig==?=
- =?UTF-8?B?5YWJKQ==?= <ck.hu@mediatek.com>,
- =?UTF-8?B?WW9uZ3FpYW5nIE5pdSAo54mb5rC45by6KQ==?=
- <yongqiang.niu@mediatek.com>,
- =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
- <Andrew-CT.Chen@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- =?UTF-8?B?TWluZ2hzaXUgVHNhaSAo6JSh5piO5L+uKQ==?=
- <Minghsiu.Tsai@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-References: <20210825063323.3607738-1-eizan@chromium.org>
- <20210825163247.v7.7.I2049e180dca12e0d1b3178bfc7292dcf9e05ac28@changeid>
- <1629880999.12893.17.camel@mhfsdcap03>
-From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Message-ID: <0c9fa482-57dd-d4ef-c65b-01f137c57359@collabora.com>
-Date: Wed, 25 Aug 2021 11:07:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
+ id 1mIpIq-006A4W-A6; Wed, 25 Aug 2021 09:34:40 +0000
+X-UUID: 5d9ede4512b54efaa39aa6b4b8c5eef9-20210825
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Xqmy41QMwBX0VOyZ8lsLoMvlBLPwaGxrWOlq9myKvbo=; 
+ b=poDi22txXDHgsXfi6FvduShWOrO3Uuc9AQJpN+rLIn0XMqE5LIcMThhWJCXZ9wJfrKeE6HxEw1Hq9+Wir/eblSjCNEDfY9nrBdBpl7s0B0UIsjT9vtJ/DsVCDIzgP/IQFqmKF+MxiAR1hay5OCY4aO6R00wpW0QW/SczmU9HM1w=;
+X-UUID: 5d9ede4512b54efaa39aa6b4b8c5eef9-20210825
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1143941729; Wed, 25 Aug 2021 02:34:21 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 Aug 2021 02:34:19 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 25 Aug 2021 17:34:18 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 25 Aug 2021 17:34:18 +0800
+Message-ID: <6d376c2d9a616cdb7b4f095d3e6c08dd824cccd7.camel@mediatek.com>
+Subject: Re: [PATCH v8 12/13] drm/mediatek: add MERGE support for mediatek-drm
+From: Jason-JH Lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+CC: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <fshao@chromium.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, David Airlie <airlied@linux.ie>, "Daniel
+ Vetter" <daniel@ffwll.ch>, Fabien Parent <fparent@baylibre.com>, "Hsin-Yi
+ Wang" <hsinyi@chromium.org>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>, DTML <devicetree@vger.kernel.org>, Linux ARM
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, linux-kernel
+ <linux-kernel@vger.kernel.org>, DRI Development
+ <dri-devel@lists.freedesktop.org>
+Date: Wed, 25 Aug 2021 17:34:18 +0800
+In-Reply-To: <CAAOTY_9+2CvcSxZByqxVM18hLQfE0rt5zf2JLxCYrd8O1_UCAg@mail.gmail.com>
+References: <20210819022327.13040-1-jason-jh.lin@mediatek.com>
+ <20210819022327.13040-13-jason-jh.lin@mediatek.com>
+ <CAAOTY_9+2CvcSxZByqxVM18hLQfE0rt5zf2JLxCYrd8O1_UCAg@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <1629880999.12893.17.camel@mhfsdcap03>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_020816_063262_DACB5083 
-X-CRM114-Status: GOOD (  42.01  )
+X-CRM114-CacheID: sfid-20210825_023436_407634_3C948C6C 
+X-CRM114-Status: GOOD (  23.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,236 +93,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Houlong,
-
-Thank you for following up this patchset. I have some questions to try to
-understand better the hardware though.
-
-On 25/8/21 10:43, houlong wei wrote:
-> Hi Eizan,
-> 
-> Thanks for you patch. I have inline comment below.
-> 
-> Regards,
-> Houlong
-> 
-> On Wed, 2021-08-25 at 14:33 +0800, Eizan Miyamoto wrote:
->> ... Instead of depending on the presence of a mediatek,vpu property in
->> the device node.
->>
->> That property was originally added to link to the vpu node so that the
->> mtk_mdp_core driver could pass the right device to
->> vpu_wdt_reg_handler(). However in a previous patch in this series,
->> the driver has been modified to search the device tree for that node
->> instead.
->>
->> That property was also used to indicate the primary MDP device, so that
->> it can be passed to the V4L2 subsystem as well as register it to be
->> used when setting up queues in the open() callback for the filesystem
->> device node that is created. In this case, assuming that the primary
->> MDP device is the one with a specific alias seems useable because the
->> alternative is to add a property to the device tree which doesn't
->> actually represent any facet of hardware (i.e., this being the primary
->> MDP device is a software decision). In other words, this solution is
->> equally as arbitrary, but at least it doesn't add a property to a
->> device node where said property is unrelated to the hardware present.
->>
->> Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
->> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
->> ---
->>
->> (no changes since v1)
->>
->>  drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 56 +++++++++++++------
->>  drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 36 ++++++++----
->>  2 files changed, 64 insertions(+), 28 deletions(-)
->>
->> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
->> index 85ef274841a3..9527649de98e 100644
->> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
->> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
->> @@ -151,29 +151,50 @@ void mtk_mdp_comp_clock_off(struct mtk_mdp_comp *comp)
->>  		mtk_smi_larb_put(comp->larb_dev);
->>  }
->>  
->> -static int mtk_mdp_comp_bind(struct device *dev, struct device *master, void *data)
->> +/*
->> + * The MDP master device node is identified by the device tree alias
->> + * "mdp-rdma0".
->> + */
->> +static bool is_mdp_master(struct device *dev)
->> +{
->> +	struct device_node *aliases, *mdp_rdma0_node;
->> +	const char *mdp_rdma0_path;
->> +
->> +	if (!dev->of_node)
->> +		return false;
->> +
->> +	aliases = of_find_node_by_path("/aliases");
->> +	if (!aliases) {
->> +		dev_err(dev, "no aliases found for mdp-rdma0");
->> +		return false;
->> +	}
->> +
->> +	mdp_rdma0_path = of_get_property(aliases, "mdp-rdma0", NULL);
->> +	if (!mdp_rdma0_path) {
->> +		dev_err(dev, "get mdp-rdma0 property of /aliases failed");
->> +		return false;
->> +	}
->> +
->> +	mdp_rdma0_node = of_find_node_by_path(mdp_rdma0_path);
->> +	if (!mdp_rdma0_node) {
->> +		dev_err(dev, "path resolution failed for %s", mdp_rdma0_path);
->> +		return false;
->> +	}
->> +
->> +	return dev->of_node == mdp_rdma0_node;
-> 
-> 
-> About how to determine the master mdp driver, we also can
-> judge the component type. The component type can be gotten by calling
-> of_device_get_match_data(dev). If the component is MTK_MDP_RDMA, it is
-> the master driver. No matter it is mdp_rdma0 or mdp_rdma1.
-
-
-I'm confused, you mean that the component type, aka MTK_MDP_RDMA is only set for
-mtk_mdp_rdma0? isn't mtk_dmp_rdma1 also a MTK_MDP_RDMA type? Because looks weird
-to me that two rdma have diffent types.
-
-
-> http://lists.infradead.org/pipermail/linux-mediatek/2021-August/028533.html
-> 
-> IMO, judging it by component type is more flexible because it does not
-> limit to 'mdp_rdma0'.
-> 
-
-Using an alias like Eizan did is also flexible, you only need to set mdp-rdma0
-to point the mdp_rdma1 node.
-
-What I am really interested to know is the differences between the platforms to
-understand if this is really a platform hardware property or a software
-configurable thing, so would help if you can give use the different use cases
-for different SoCs.
-
-For MT8173 which is the master device? is _always_ rdma0 or can also be rdma1?
-
-Or maybe what is not clear here is what exactly means be a master device?
-
-What about MT8183 and other SoCs?
-
-Thanks,
-  Enric
-
-
->> +}
->> +
->> +static int mtk_mdp_comp_bind(struct device *dev, struct device *master,
->> +			void *data)
->>  {
->>  	struct mtk_mdp_comp *comp = dev_get_drvdata(dev);
->>  	struct mtk_mdp_dev *mdp = data;
->> -	struct device_node *vpu_node;
->>  
->>  	mtk_mdp_register_component(mdp, comp);
->>  
->> -	/*
->> -	 * If this component has a "mediatek-vpu" property, it is responsible for
->> -	 * notifying the mdp master driver about it so it can be further initialized
->> -	 * later.
->> -	 */
->> -	vpu_node = of_parse_phandle(dev->of_node, "mediatek,vpu", 0);
->> -	if (vpu_node) {
->> +	if (is_mdp_master(dev)) {
->>  		int ret;
->>  
->> -		mdp->vpu_dev = of_find_device_by_node(vpu_node);
->> -		if (WARN_ON(!mdp->vpu_dev)) {
->> -			dev_err(dev, "vpu pdev failed\n");
->> -			of_node_put(vpu_node);
->> -		}
->> -
->>  		ret = v4l2_device_register(dev, &mdp->v4l2_dev);
->>  		if (ret) {
->>  			dev_err(dev, "Failed to register v4l2 device\n");
->> @@ -187,9 +208,8 @@ static int mtk_mdp_comp_bind(struct device *dev, struct device *master, void *da
->>  		}
->>  
->>  		/*
->> -		 * presence of the "mediatek,vpu" property in a device node
->> -		 * indicates that it is the primary MDP rdma device and MDP DMA
->> -		 * ops should be handled by its DMA callbacks.
->> +		 * MDP DMA ops will be handled by the DMA callbacks associated with this
->> +		 * device;
->>  		 */
->>  		mdp->rdma_dev = dev;
->>  	}
->> diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->> index 50eafcc9993d..6a775463399c 100644
->> --- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->> +++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
->> @@ -150,8 +150,9 @@ static void release_of(struct device *dev, void *data)
->>  
->>  static int mtk_mdp_master_bind(struct device *dev)
->>  {
->> -	int status;
->>  	struct mtk_mdp_dev *mdp = dev_get_drvdata(dev);
->> +	struct device_node *vpu_node;
->> +	int status;
->>  
->>  	status = component_bind_all(dev, mdp);
->>  	if (status) {
->> @@ -159,15 +160,30 @@ static int mtk_mdp_master_bind(struct device *dev)
->>  		goto err_component_bind_all;
->>  	}
->>  
->> -	if (mdp->vpu_dev) {
->> -		int ret = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp,
->> -					  VPU_RST_MDP);
->> -		if (ret) {
->> -			dev_err(dev, "Failed to register reset handler\n");
->> -			goto err_wdt_reg;
->> -		}
->> -	} else {
->> -		dev_err(dev, "no vpu_dev found\n");
->> +	if (mdp->rdma_dev == NULL) {
->> +		dev_err(dev, "Primary MDP device not found");
->> +		status = -ENODEV;
->> +		goto err_component_bind_all;
->> +	}
->> +
->> +	vpu_node = of_find_node_by_name(NULL, "vpu");
->> +	if (!vpu_node) {
->> +		dev_err(dev, "unable to find vpu node");
->> +		status = -ENODEV;
->> +		goto err_wdt_reg;
->> +	}
->> +
->> +	mdp->vpu_dev = of_find_device_by_node(vpu_node);
-> 
-> The 'vpu_node' should be put by calling 'of_node_put(vpu_node)' when it
-> is not used.
-> 
->> +	if (!mdp->vpu_dev) {
->> +		dev_err(dev, "unable to find vpu device");
->> +		status = -ENODEV;
->> +		goto err_wdt_reg;
->> +	}
->> +
->> +	status = vpu_wdt_reg_handler(mdp->vpu_dev, mtk_mdp_reset_handler, mdp, VPU_RST_MDP);
->> +	if (status) {
->> +		dev_err(dev, "Failed to register reset handler\n");
->> +		goto err_wdt_reg;
->>  	}
->>  
->>  	status = mtk_mdp_register_m2m_device(mdp);
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgQ2h1bi1LdWFuZywNCg0KVGhhbmtzIGZvciB0aGUgcmV2aWV3Lg0KDQpPbiBGcmksIDIwMjEt
+MDgtMjAgYXQgMjM6NDMgKzA4MDAsIENodW4tS3VhbmcgSHUgd3JvdGU6DQo+IEhpLCBKYXNvbjoN
+Cj4gDQo+IGphc29uLWpoLmxpbiA8amFzb24tamgubGluQG1lZGlhdGVrLmNvbT4g5pa8IDIwMjHl
+ubQ45pyIMTnml6Ug6YCx5ZubIOS4iuWNiDEwOjIz5a+r6YGT77yaDQo+ID4gDQo+ID4gQWRkIE1F
+UkdFIGVuZ2luZSBmaWxlOg0KPiA+IE1FUkdFIG1vZHVsZSBpcyB1c2VkIHRvIG1lcmdlIHR3byBz
+bGljZS1wZXItbGluZSBpbnB1dHMNCj4gPiBpbnRvIG9uZSBzaWRlLWJ5LXNpZGUgb3V0cHV0Lg0K
+PiA+IA0KPiA+IFNpZ25lZC1vZmYtYnk6IGphc29uLWpoLmxpbiA8amFzb24tamgubGluQG1lZGlh
+dGVrLmNvbT4NCj4gPiAtLS0NCj4gPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01ha2VmaWxl
+ICAgICAgICAgICB8ICAgMSArDQo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZGlz
+cF9kcnYuaCAgICAgfCAgIDggKw0KPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rp
+c3BfbWVyZ2UuYyAgIHwgMjY4DQo+ID4gKysrKysrKysrKysrKysrKysrKysNCj4gPiAgZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYyB8ICAxNiArKw0KPiA+ICBkcml2
+ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIHwgICAxICsNCj4gPiAgZHJp
+dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZHJ2LmMgICAgICB8ICAgMiArDQo+ID4gIGRy
+aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5oICAgICAgfCAgIDEgKw0KPiA+ICA3
+IGZpbGVzIGNoYW5nZWQsIDI5NyBpbnNlcnRpb25zKCspDQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0
+NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3BfbWVyZ2UuYw0KPiA+IA0KPiA+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUNCj4gPiBiL2RyaXZl
+cnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQ0KPiA+IGluZGV4IGRjNTRhN2E2OTAwNS4uNTM4
+ZTAwODdhNDRjIDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtl
+ZmlsZQ0KPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQ0KPiA+IEBA
+IC0zLDYgKzMsNyBAQA0KPiA+ICBtZWRpYXRlay1kcm0teSA6PSBtdGtfZGlzcF9jY29yci5vIFwN
+Cj4gPiAgICAgICAgICAgICAgICAgICBtdGtfZGlzcF9jb2xvci5vIFwNCj4gPiAgICAgICAgICAg
+ICAgICAgICBtdGtfZGlzcF9nYW1tYS5vIFwNCj4gPiArICAgICAgICAgICAgICAgICBtdGtfZGlz
+cF9tZXJnZS5vIFwNCj4gPiAgICAgICAgICAgICAgICAgICBtdGtfZGlzcF9vdmwubyBcDQo+ID4g
+ICAgICAgICAgICAgICAgICAgbXRrX2Rpc3BfcmRtYS5vIFwNCj4gPiAgICAgICAgICAgICAgICAg
+ICBtdGtfZHJtX2NydGMubyBcDQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRp
+YXRlay9tdGtfZGlzcF9kcnYuaA0KPiA+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+aXNwX2Rydi5oDQo+ID4gaW5kZXggY2FmZDlkZjJkNjNiLi5mNDA3Y2Q5ZDg3M2UgMTAwNjQ0DQo+
+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX2Rydi5oDQo+ID4gKysr
+IGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX2Rydi5oDQo+ID4gQEAgLTQ2LDYg
+KzQ2LDE0IEBAIHZvaWQgbXRrX2dhbW1hX3NldF9jb21tb24odm9pZCBfX2lvbWVtICpyZWdzLA0K
+PiA+IHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAqc3RhdGUpOw0KPiA+ICB2b2lkIG10a19nYW1tYV9z
+dGFydChzdHJ1Y3QgZGV2aWNlICpkZXYpOw0KPiA+ICB2b2lkIG10a19nYW1tYV9zdG9wKHN0cnVj
+dCBkZXZpY2UgKmRldik7DQo+ID4gDQo+ID4gK2ludCBtdGtfbWVyZ2VfY2xrX2VuYWJsZShzdHJ1
+Y3QgZGV2aWNlICpkZXYpOw0KPiA+ICt2b2lkIG10a19tZXJnZV9jbGtfZGlzYWJsZShzdHJ1Y3Qg
+ZGV2aWNlICpkZXYpOw0KPiA+ICt2b2lkIG10a19tZXJnZV9jb25maWcoc3RydWN0IGRldmljZSAq
+ZGV2LCB1bnNpZ25lZCBpbnQgd2lkdGgsDQo+ID4gKyAgICAgICAgICAgICAgICAgICAgIHVuc2ln
+bmVkIGludCBoZWlnaHQsIHVuc2lnbmVkIGludCB2cmVmcmVzaCwNCj4gPiArICAgICAgICAgICAg
+ICAgICAgICAgdW5zaWduZWQgaW50IGJwYywgc3RydWN0IGNtZHFfcGt0ICpjbWRxX3BrdCk7DQo+
+ID4gK3ZvaWQgbXRrX21lcmdlX3N0YXJ0KHN0cnVjdCBkZXZpY2UgKmRldik7DQo+ID4gK3ZvaWQg
+bXRrX21lcmdlX3N0b3Aoc3RydWN0IGRldmljZSAqZGV2KTsNCj4gPiArDQo+ID4gIHZvaWQgbXRr
+X292bF9iZ2Nscl9pbl9vbihzdHJ1Y3QgZGV2aWNlICpkZXYpOw0KPiA+ICB2b2lkIG10a19vdmxf
+YmdjbHJfaW5fb2ZmKHN0cnVjdCBkZXZpY2UgKmRldik7DQo+ID4gIHZvaWQgbXRrX292bF9ieXBh
+c3Nfc2hhZG93KHN0cnVjdCBkZXZpY2UgKmRldik7DQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9tZWRpYXRlay9tdGtfZGlzcF9tZXJnZS5jDQo+ID4gYi9kcml2ZXJzL2dwdS9kcm0v
+bWVkaWF0ZWsvbXRrX2Rpc3BfbWVyZ2UuYw0KPiA+IG5ldyBmaWxlIG1vZGUgMTAwNjQ0DQo+ID4g
+aW5kZXggMDAwMDAwMDAwMDAwLi5lYmNiNjQ2YmRlOWMNCj4gPiAtLS0gL2Rldi9udWxsDQo+ID4g
+KysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX21lcmdlLmMNCj4gPiBAQCAt
+MCwwICsxLDI2OCBAQA0KPiA+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMA0K
+PiA+ICsvKg0KPiA+ICsgKiBDb3B5cmlnaHQgKGMpIDIwMjEgTWVkaWFUZWsgSW5jLg0KPiA+ICsg
+Ki8NCj4gPiArDQo+ID4gKyNpbmNsdWRlIDxsaW51eC9jbGsuaD4NCj4gPiArI2luY2x1ZGUgPGxp
+bnV4L2NvbXBvbmVudC5oPg0KPiA+ICsjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNlLmg+DQo+ID4g
+KyNpbmNsdWRlIDxsaW51eC9vZl9pcnEuaD4NCj4gPiArI2luY2x1ZGUgPGxpbnV4L3BsYXRmb3Jt
+X2RldmljZS5oPg0KPiA+ICsjaW5jbHVkZSA8bGludXgvc29jL21lZGlhdGVrL210ay1jbWRxLmg+
+DQo+ID4gKw0KPiA+ICsjaW5jbHVkZSAibXRrX2RybV9kZHBfY29tcC5oIg0KPiA+ICsjaW5jbHVk
+ZSAibXRrX2RybV9kcnYuaCINCj4gPiArI2luY2x1ZGUgIm10a19kaXNwX2Rydi5oIg0KPiA+ICsN
+Cj4gPiArI2RlZmluZSBESVNQX1JFR19NRVJHRV9DVFJMICAgICAgICAgICAgMHgwMDANCj4gPiAr
+I2RlZmluZSBNRVJHRV9FTiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxDQo+ID4gKyNk
+ZWZpbmUgRElTUF9SRUdfTUVSR0VfQ0ZHXzAgICAgICAgICAgIDB4MDEwDQo+ID4gKyNkZWZpbmUg
+RElTUF9SRUdfTUVSR0VfQ0ZHXzQgICAgICAgICAgIDB4MDIwDQo+ID4gKyNkZWZpbmUgRElTUF9S
+RUdfTUVSR0VfQ0ZHXzEwICAgICAgICAgIDB4MDM4DQo+ID4gKy8qIG5vIHN3YXAgKi8NCj4gPiAr
+I2RlZmluZSBTV0FQX01PREUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAwDQo+ID4gKyNk
+ZWZpbmUgRkxEX1NXQVBfTU9ERSAgICAgICAgICAgICAgICAgICAgICAgICAgR0VOTUFTSyg0LCAw
+KQ0KPiA+ICsjZGVmaW5lIERJU1BfUkVHX01FUkdFX0NGR18xMiAgICAgICAgICAweDA0MA0KPiA+
+ICsjZGVmaW5lIENGR18xMF8xMF8xUElfMlBPX0JVRl9NT0RFICAgICAgICAgICAgIDYNCj4gPiAr
+I2RlZmluZSBDRkdfMTBfMTBfMlBJXzJQT19CVUZfTU9ERSAgICAgICAgICAgICA4DQo+ID4gKyNk
+ZWZpbmUgRkxEX0NGR19NRVJHRV9NT0RFICAgICAgICAgICAgICAgICAgICAgR0VOTUFTSyg0LCAw
+KQ0KPiA+ICsjZGVmaW5lIERJU1BfUkVHX01FUkdFX0NGR18yNCAgICAgICAgICAweDA3MA0KPiA+
+ICsjZGVmaW5lIERJU1BfUkVHX01FUkdFX0NGR18yNSAgICAgICAgICAweDA3NA0KPiA+ICsjZGVm
+aW5lIERJU1BfUkVHX01FUkdFX0NGR18zNiAgICAgICAgICAweDBhMA0KPiA+ICsjZGVmaW5lIFVM
+VFJBX0VOICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDENCj4gDQo+IFlvdSBjb3VsZCB1
+c2UgRkxEX1VMVFJBX0VOIGZvciB0aGlzLg0KDQpPSywgSSdsbCB1c2UgbXRrX2RkcF93cml0ZSgp
+IGRpcmVjdGx5LCBpZiB0aGUgYml0IHdpZHRoIG9mIHNldHRpbmcgaXMNCmFsd2F5cyB0aGUgc2Ft
+ZSBhcyBtYXNrLg0KDQo+IA0KPiA+ICsjZGVmaW5lIFBSRVVMVFJBX0VOICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIDENCj4gPiArI2RlZmluZSBIQUxUX0ZPUl9EVkZTX0VOICAgICAgICAgICAg
+ICAgICAgICAgICAwDQo+IA0KPiBZb3UgY291bGQganVzdCBub3Qgc2V0IHRoaXMuDQoNCk9LLCBJ
+J2xsIHJlbW92ZSB0aGUgc2V0dGluZyBvZiAwLg0KDQo+IA0KPiA+ICsjZGVmaW5lIEZMRF9VTFRS
+QV9FTiAgICAgICAgICAgICAgICAgICAgICAgICAgIEdFTk1BU0soMCwgMCkNCj4gDQo+ICNkZWZp
+bmUgRkxEX1VMVFJBX0VOIEJJVCgwKQ0KPiANCj4gUmVnYXJkcywNCj4gQ2h1bi1LdWFuZy4NCj4g
+DQpPSywgSSdsbCBqdXN0IHVzZSBCSVQobikgaW5zdGVhZCBvZiBHRU5NQVNLKG4sIG4pLg0KDQpS
+ZWdhcmRzLA0KSmFzb24tSkguTGluDQoNCj4gPiArI2RlZmluZSBGTERfUFJFVUxUUkFfRU4gICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIEdFTk1BU0soNCwNCj4gPiA0KQ0KPiA+ICsjZGVm
+aW5lIEZMRF9IQUxUX0ZPUl9EVkZTX0VOICAgICAgICAgICAgICAgICAgIEdFTk1BU0soOCwgOCkN
+Cj4gPiArI2RlZmluZSBESVNQX1JFR19NRVJHRV9DRkdfMzcgICAgICAgICAgMHgwYTQNCj4gPiAr
+LyogMDogT2ZmLCAxOiBTUkFNMCwgMjogU1JBTTEsIDM6IFNSQU0wICsgU1JBTTEgKi8NCj4gPiAr
+I2RlZmluZSBCVUZGRVJfTU9ERSAgICAgICAgICAgICAgICAgICAgICAgICAgICAzDQo+ID4gKyNk
+ZWZpbmUgRkxEX0JVRkZFUl9NT0RFICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBHRU5N
+QVNLKDEsDQo+ID4gMCkNCj4gPiArI2RlZmluZSBESVNQX1JFR19NRVJHRV9DRkdfMzggICAgICAg
+ICAgICAgICAgICAweDBhOA0KPiA+ICsjZGVmaW5lIEZMRF9WREVfQkxPQ0tfVUxUUkEgICAgICAg
+ICAgICAgICAgICAgIEdFTk1BU0soMCwgMCkNCj4gPiArI2RlZmluZSBGTERfVkFMSURfVEhfQkxP
+Q0tfVUxUUkEgICAgICAgICAgICAgICBHRU5NQVNLKDQsIDQpDQo+ID4gKyNkZWZpbmUgRkxEX1VM
+VFJBX0ZJRk9fVkFMSURfVEggICAgICAgICAgICAgICAgICAgICAgICBHRU5NQVNLKDMxLA0KPiA+
+IDE2KQ0KPiA+ICsjZGVmaW5lIERJU1BfUkVHX01FUkdFX0NGR18zOSAgICAgICAgICAweDBhYw0K
+PiA+ICsjZGVmaW5lIEZMRF9OVkRFX0ZPUkNFX1BSRVVMVFJBICAgICAgICAgICAgICAgICAgICAg
+ICAgR0VOTUFTSyg4LA0KPiA+IDgpDQo+ID4gKyNkZWZpbmUgRkxEX05WQUxJRF9USF9GT1JDRV9Q
+UkVVTFRSQSAgICAgICAgICAgR0VOTUFTSygxMiwgMTIpDQo+ID4gKyNkZWZpbmUgRkxEX1BSRVVM
+VFJBX0ZJRk9fVkFMSURfVEggICAgICAgICAgICAgR0VOTUFTSygzMSwgMTYpDQotLSANCkphc29u
+LUpIIExpbiA8amFzb24tamgubGluQG1lZGlhdGVrLmNvbT4NCl9fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApM
+aW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQu
+b3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
