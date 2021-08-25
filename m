@@ -2,68 +2,62 @@ Return-Path: <SRS0=pvhC=NQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 390D4C4338F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE309C4338F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:38:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6D506121E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:35:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E6D506121E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id AD2F560C3E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Aug 2021 10:38:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AD2F560C3E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kc1uHo+UvG1g4aTKBTvESThFEAZzkuBEWRDEwPW+bQA=; b=Z5hqRmw3TW+yE8
-	bQEEI4kMMaBCW9cI8rfvrbUdQ1/P0JjQk9tp/emXhuv9DTi2fcyukf2Mcp3SEvESeJ97uq3MAMwPY
-	oRReCHABvbsWDI1ov0/xrdkZkEN/XaAHsa1sgZYh6Dr/pSGG3BbYonyZ0mIdtkMv/51OcGJVbf+nx
-	Y0fUVNesVI962R6H2jsz3KYYUZ4BUjaKsC4sv+k5eoQYhbjA6mfvE/EQmnbx50mSAlVmUFh6/o+X2
-	zfj8B94dp/no50G/LhC2DiF41wymtSwqXlluC/bbpXy43/o0pU9izGbTCcxhVYzEx/K1tXErAODRp
-	Dq2RvsdyQi0cwQK3AmCA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+lWrbcseCbDkQ/4N0u1GzB/xY7U37JuOcUAOAN8X+WE=; b=zwzWawl+tpNFPM
+	dKZZ36NSbke6ZPOJp9dM/drjZt1rm8qtuvHxZjBvMJ6O51ciAJHcwZXp9iMjUuza92RbFK+s63yb0
+	ywxjrVWIZHe6ZGIHQUUjcmdoX2BiHOxuYavi2c8Ic/xXuA0HB8e84HQ8FZaVYcxNTS/0eCgtYUBnI
+	+1pb5RiCnmCcqIqct8n1h8FfP3tmP1RoGlMMEmZZkHkZSFfzzZ1EQz7iybnqnSXaWrcBVML6wEiyl
+	fqNHBWPNqD04vzejIuTADNIOJ3O0yUAJgoI40JPRkneURTRGtzlDrwYE4bNV/igTKiUPqJL6Wq0uQ
+	4Y29F+e5hFHDcg4gSHjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mIqFJ-006XZq-VW; Wed, 25 Aug 2021 10:35:02 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mIqIB-006YsL-1m; Wed, 25 Aug 2021 10:37:59 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mIq3w-006SC3-UK; Wed, 25 Aug 2021 10:23:18 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 988186120A;
- Wed, 25 Aug 2021 10:23:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1629886996;
- bh=aSw0cYg8pm1YpmSlIfShp0oFUe+o66pjQZD/ue8nx7U=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=a6pCHwq+W37Vca+6PO7MFagSCJAHN1FyCXp2CbRoMMSY2CFXOwiPxIPsXTiPXKXpC
- 9qTnfQ6cknl3Sn4UfcAeMTCwEvzkwrWMDQ/QKCCUzoc56NIzdJghGyfUzxSXEy5NMv
- JZ1G/81gDBZfh5MKewFvY82vbD1on2dOeBfAxwawW3GbpI68GRUCPhgi2WRqaCo4O9
- XUpOkT+rFAOKA1ja7mMji9/vtQQsT8WvkbPI1Jk5yFzCfLpeyXmOPbcl9AH+sny/pH
- WdvjU1HHWi/loFwSoxwPZGaxdd3oTCr4ErPGsKeR08YxfEt7jb8REj7Kw0pBPjnEct
- sqFBCsg7K6i1g==
-From: Mark Brown <broonie@kernel.org>
-To: tiwai@suse.com, matthias.bgg@gmail.com, Trevor Wu <trevor.wu@mediatek.com>,
- robh+dt@kernel.org, lgirdwood@gmail.com
-Cc: Mark Brown <broonie@kernel.org>, jiaxin.yu@mediatek.com,
- linux-mediatek@lists.infradead.org, bicycle.tsai@mediatek.com,
- aaronyu@google.com, alsa-devel@alsa-project.org, cychiang@google.com,
- wenst@chromium.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v5 00/11] ASoC: mediatek: Add support for MT8195 SoC
-Date: Wed, 25 Aug 2021 11:22:39 +0100
-Message-Id: <162988521424.7213.9083414971201440076.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210819084144.18483-1-trevor.wu@mediatek.com>
-References: <20210819084144.18483-1-trevor.wu@mediatek.com>
+ id 1mIq7F-006Tmm-Cc; Wed, 25 Aug 2021 10:26:43 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id 14CAE1F436E0
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: matthias.bgg@gmail.com, hsinyi@chromium.org,
+ linux-mediatek@lists.infradead.org, jitao.shi@mediatek.com,
+ eizan@chromium.org, drinkcat@chromium.org, chunkuang.hu@kernel.org,
+ kernel@collabora.com, Crystal Guo <crystal.guo@mediatek.com>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Fabien Parent <fparent@baylibre.com>, Guenter Roeck <linux@roeck-us.net>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-watchdog@vger.kernel.org
+Subject: [PATCH v3 0/7] Add support to the mmsys driver to be a reset
+ controller
+Date: Wed, 25 Aug 2021 12:26:25 +0200
+Message-Id: <20210825102632.601614-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_032317_073894_ECF1DDCD 
-X-CRM114-Status: GOOD (  15.37  )
+X-CRM114-CacheID: sfid-20210825_032641_624435_6EE764A0 
+X-CRM114-Status: GOOD (  18.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,68 +74,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Aug 2021 16:41:33 +0800, Trevor Wu wrote:
-> This series of patches adds support for Mediatek AFE of MT8195 SoC.
-> Patches are based on broonie tree "for-next" branch.
-> 
-> Changes since v4:
->   - removed sof related code
-> 
-> Changes since v3:
->   - fixed warnings found by kernel test robot
->   - removed unused critical section
->   - corrected the lock protected sections on etdm driver
->   - added DPTX and HDMITX audio support
-> 
-> [...]
+Dear all,
 
-Applied to
+The following patchset is a reimplementation of the patch sent by Jitao
+Shi [1] some time ago. As suggested by Chun-Kuang Hu, this time the
+reset is done using the reset API, where the mmsys driver is the reset
+controller and the mtk_dsi driver is the reset consumer.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Note that the first patch is kind of unrelated change, it's just a
+cleanup but is needed if you want to apply all the following patches
+cleanly.
 
-Thanks!
+This patchset is important in order to have the DSI panel working on some
+kukui MT8183 Chromebooks (i.e Lenovo IdeaPad Duet). Without it, you just
+get a black screen.
 
-[01/11] ASoC: mediatek: mt8195: update mediatek common driver
-        commit: cab2b9e5fc0e868ed8453ef4f433c795bda8bf84
-[02/11] ASoC: mediatek: mt8195: support audsys clock control
-        commit: d62ad762f67585acfb5e03f71b28a52dc4604cf2
-[03/11] ASoC: mediatek: mt8195: support etdm in platform driver
-        commit: 1de9a54acafba2f0e3ea2856ad0b22556d59ec45
-[04/11] ASoC: mediatek: mt8195: support adda in platform driver
-        commit: 3de3eba588bb7f6c39bf12de5761ff75c53b9961
-[05/11] ASoC: mediatek: mt8195: support pcm in platform driver
-        commit: 1f95c019115cc503c4c47fd7108675a56cdb29b4
-[06/11] ASoC: mediatek: mt8195: add platform driver
-        commit: 6746cc858259985a945a07075a19ec4d24352407
-[07/11] dt-bindings: mediatek: mt8195: add audio afe document
-        commit: b5bac34fcfb444e33f532e291ad1394ca05887e8
-[08/11] ASoC: mediatek: mt8195: add machine driver with mt6359, rt1019 and rt5682
-        commit: 40d605df0a7bf7723ed690f502f364c5320de440
-[09/11] ASoC: mediatek: mt8195: add DPTX audio support
-        commit: e581e3014cc4acee9025aa5704cf85a36a572b95
-[10/11] ASoC: mediatek: mt8195: add HDMITX audio support
-        commit: ef46cd42ecf00f0468df3ad1bf0f30db9634a04a
-[11/11] dt-bindings: mediatek: mt8195: add mt8195-mt6359-rt1019-rt5682 document
-        commit: 5f8c991e8950971cd1f81b61f79c83a511ad9fc8
+Best regards,
+  Enric
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+[1] https://lore.kernel.org/linux-arm-kernel/20210420132614.150242-4-jitao.shi@mediatek.com/
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Changes in v3:
+- Based on top of the patch that converts mmsys to schema
+- Fix typo in the commit description
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Changes in v2:
+- Fix build test ERROR Reported-by: kernel test robot <lkp@intel.com>
+- Added a new patch to describe the dsi reset optional property.
 
-Thanks,
-Mark
+Enric Balletbo i Serra (7):
+  arm64: dts: mediatek: Move reset controller constants into common
+    location
+  dt-bindings: mediatek: Add #reset-cells to mmsys system controller
+  dt-bindings: display: mediatek: add dsi reset optional property
+  arm64: dts: mt8173: Add the mmsys reset bit to reset the dsi0
+  arm64: dts: mt8183: Add the mmsys reset bit to reset the dsi0
+  soc: mediatek: mmsys: Add reset controller support
+  drm/mediatek: mtk_dsi: Reset the dsi0 hardware
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |  4 ++
+ .../display/mediatek/mediatek,dsi.txt         |  6 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  2 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  5 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c            |  5 +-
+ drivers/soc/mediatek/mtk-mmsys.c              | 69 +++++++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.h              |  2 +
+ drivers/watchdog/mtk_wdt.c                    |  6 +-
+ .../mt2712-resets.h                           |  0
+ include/dt-bindings/reset/mt8173-resets.h     |  2 +
+ .../mt8183-resets.h                           |  3 +
+ .../mt8192-resets.h                           |  0
+ 12 files changed, 98 insertions(+), 6 deletions(-)
+ rename include/dt-bindings/{reset-controller => reset}/mt2712-resets.h (100%)
+ rename include/dt-bindings/{reset-controller => reset}/mt8183-resets.h (98%)
+ rename include/dt-bindings/{reset-controller => reset}/mt8192-resets.h (100%)
+
+-- 
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
