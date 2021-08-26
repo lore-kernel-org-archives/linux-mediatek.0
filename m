@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EAC81C4320E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 02:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 022F7C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 02:52:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B54DA60FD9
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 02:52:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B54DA60FD9
+	by mail.kernel.org (Postfix) with ESMTPS id BCC5D60FDA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 02:52:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BCC5D60FDA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0SnIlTrGn6ymz1Ur6VNdJGtt0nWpG20dbzOw9GBIf14=; b=poQdwHJPIJJs//
-	aptaq50Z8i7yu9B5fjGvdkYM9CsfK1MCh5UeSssh/e555S+mrLAdfFGztym6tKNc4j0yNG8SM1Lq1
-	aHZdQ3rt1X/WWQbKeeqdAn2cH2YM1mrHGL/Bw06ocGOQNYNJuHOx2cwrjsH2Xui8yfZqxXeRn51rT
-	hjQu/n294s6ChOqerhqiMohLTDDo6m2Ze2qbIORh5gRjjyUCJFNiOnqS+mpcE/+awbhQOPANH91Ba
-	ueQtMIZGHIBRWmI7jm+9Aaf4nxygO6Okvp+SgYArjM/XenILzpq1PLcx2b5bByh1hzTgE6ozieioW
-	yVL5u25w0EKHrEfbMoCQ==;
+	List-Owner; bh=cym/MIUqdZX1jCkYIeSJNmtj9mi1DpfRxD2SLnxTY5k=; b=0ZeAQrXjxipXLv
+	D8vxfZ6a6NiVZsgyPFsIWX64H4QAj4pyHNqD1jaWtRxby9S6O/KGNukz15ZxOvFQaa5H7VYeGygjC
+	1IPMtlzZ92xlfJ8eAdNcF2CKpvm6fTga9uWeRu8yuMKotL8dHvPATMSm8CGDy43wamtll1le+TwAP
+	+m1m4wsI0NcDs7TCmcELxIOB1PEth++A1eQlwyaQ2zsG21Rycb5UBuYQZczM5uaDhkJx9UjiHuzOT
+	5bYQBgRm7iyqSgGHk5XiWgO27Vdnovm82YrxORP0PPvLjf/oziOrkEblsxC3qWbbs+DxQo1rOvmD0
+	BFs91gPBInD1vH/viYHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJ5Ux-008xlR-GM; Thu, 26 Aug 2021 02:52:11 +0000
+	id 1mJ5VJ-008xpd-Ru; Thu, 26 Aug 2021 02:52:33 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJ5Us-008xjb-Bw; Thu, 26 Aug 2021 02:52:10 +0000
-X-UUID: 8472f3e41805441aac7e603ae06eb29c-20210825
+ id 1mJ5Us-008xjf-Bx; Thu, 26 Aug 2021 02:52:10 +0000
+X-UUID: d5891ae7043c482cbfc734871ace3e63-20210825
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=ZXDJ0TE6N08HnmOOJMB2bdokcDG9hkhnn+Apj3hRgRU=; 
- b=TRZbafnXytUgdJnPfhAnI8z/J5yh0FYiVKY8rlYi3zEtbxE7gt0oBMJ3lfzGZbwmbnNVhRyMpCD30Pr+2oCJN8DL8p8uYAmiN3UtISFEmZMudpnB5pEEZEDb/Z5eT7LVaJjHyjbjY8IJL8MMUA7vFcq1qWM8nsFkUMS1L2BcPLY=;
-X-UUID: 8472f3e41805441aac7e603ae06eb29c-20210825
+ bh=zWMfwq6LT7ELHLNKOrvThK+ed+W/Mag+7UYGS5dgdeQ=; 
+ b=Eu4RezDsNnlcQMzHg1o98RtIpMCCq4h5hgZfqsICbQGZNP6zJM3PGgeuJXsTR2SIEx+iAPLt2yrx5tawywdpCv1tZCZxEbybx4uD/vEieCprJHEQgFSJp8i2dmPP/Np59EHIe2C+1jYOJKdzD7xa6lHRiXToTabmUtDYAbtlLQs=;
+X-UUID: d5891ae7043c482cbfc734871ace3e63-20210825
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 839315995; Wed, 25 Aug 2021 19:52:03 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 1259738813; Wed, 25 Aug 2021 19:52:03 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 19:52:01 -0700
+ 15.0.1497.2; Wed, 25 Aug 2021 19:52:02 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 26 Aug 2021 10:52:00 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 26 Aug 2021 10:52:00 +0800
 Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 26 Aug 2021 10:51:59 +0800
+ Frontend Transport; Thu, 26 Aug 2021 10:52:00 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
  <gregkh@linuxfoundation.org>
@@ -63,18 +65,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, Ikjoon Jang <ikjn@chromium.org>, Eddie Hung
  <eddie.hung@mediatek.com>, Yaqii wu <yaqii.wu@mediatek.com>
-Subject: [PATCH next v2 3/6] usb: xhci-mtk: update fs bus bandwidth by
- bw_budget_table
-Date: Thu, 26 Aug 2021 10:51:41 +0800
-Message-ID: <20210826025144.51992-3-chunfeng.yun@mediatek.com>
+Subject: [PATCH next v2 6/6] usb: xhci-mtk: allow bandwidth table rollover
+Date: Thu, 26 Aug 2021 10:51:44 +0800
+Message-ID: <20210826025144.51992-6-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210826025144.51992-1-chunfeng.yun@mediatek.com>
 References: <20210826025144.51992-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_195206_506486_1CC4182A 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20210825_195206_506304_77347C83 
+X-CRM114-Status: GOOD (  17.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,59 +92,161 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use @bw_budget_table[] to update fs bus bandwidth due to
-not all microframes consume @bw_cost_per_microframe, see
-setup_sch_info().
+xhci-mtk has 64 slots for periodic bandwidth calculations and each
+slot represents byte budgets on a microframe. When an endpoint's
+allocation sits on the boundary of the table, byte budgets' slot
+can be rolled over but the current implementation doesn't.
 
+This patch allows the microframe index rollover and prevent
+out-of-bounds array access.
+
+Signed-off-by: Ikjoon Jang <ikjn@chromium.org>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2: new patch, move from another series
+v2: new patch
 ---
- drivers/usb/host/xhci-mtk-sch.c | 17 +++++++----------
- 1 file changed, 7 insertions(+), 10 deletions(-)
+ drivers/usb/host/xhci-mtk-sch.c | 51 +++++++++++----------------------
+ drivers/usb/host/xhci-mtk.h     |  3 +-
+ 2 files changed, 18 insertions(+), 36 deletions(-)
 
 diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index cffcaf4dfa9f..83abd28269ca 100644
+index f3c6f078f82d..134f4789bd89 100644
 --- a/drivers/usb/host/xhci-mtk-sch.c
 +++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -458,8 +458,8 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
- 		 * Compared with hs bus, no matter what ep type,
+@@ -416,15 +416,14 @@ static u32 get_max_bw(struct mu3h_sch_bw_info *sch_bw,
+ {
+ 	u32 max_bw = 0;
+ 	u32 bw;
+-	int i;
+-	int j;
++	int i, j, k;
+ 
+ 	for (i = 0; i < sch_ep->num_esit; i++) {
+ 		u32 base = offset + i * sch_ep->esit;
+ 
+ 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
+-			bw = sch_bw->bus_bw[base + j] +
+-					sch_ep->bw_budget_table[j];
++			k = XHCI_MTK_BW_INDEX(base + j);
++			bw = sch_bw->bus_bw[k] + sch_ep->bw_budget_table[j];
+ 			if (bw > max_bw)
+ 				max_bw = bw;
+ 		}
+@@ -436,18 +435,16 @@ static void update_bus_bw(struct mu3h_sch_bw_info *sch_bw,
+ 	struct mu3h_sch_ep_info *sch_ep, bool used)
+ {
+ 	u32 base;
+-	int i;
+-	int j;
++	int i, j, k;
+ 
+ 	for (i = 0; i < sch_ep->num_esit; i++) {
+ 		base = sch_ep->offset + i * sch_ep->esit;
+ 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
++			k = XHCI_MTK_BW_INDEX(base + j);
+ 			if (used)
+-				sch_bw->bus_bw[base + j] +=
+-					sch_ep->bw_budget_table[j];
++				sch_bw->bus_bw[k] += sch_ep->bw_budget_table[j];
+ 			else
+-				sch_bw->bus_bw[base + j] -=
+-					sch_ep->bw_budget_table[j];
++				sch_bw->bus_bw[k] -= sch_ep->bw_budget_table[j];
+ 		}
+ 	}
+ }
+@@ -457,7 +454,7 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
+ 	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
+ 	u32 tmp;
+ 	int base;
+-	int i, j;
++	int i, j, k;
+ 
+ 	for (i = 0; i < sch_ep->num_esit; i++) {
+ 		base = offset + i * sch_ep->esit;
+@@ -467,7 +464,8 @@ static int check_fs_bus_bw(struct mu3h_sch_ep_info *sch_ep, int offset)
  		 * the hub will always delay one uframe to send data
  		 */
--		for (j = 0; j < sch_ep->cs_count; j++) {
--			tmp = tt->fs_bus_bw[base + j] + sch_ep->bw_cost_per_microframe;
-+		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
-+			tmp = tt->fs_bus_bw[base + j] + sch_ep->bw_budget_table[j];
+ 		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
+-			tmp = tt->fs_bus_bw[base + j] + sch_ep->bw_budget_table[j];
++			k = XHCI_MTK_BW_INDEX(base + j);
++			tmp = tt->fs_bus_bw[k] + sch_ep->bw_budget_table[j];
  			if (tmp > FS_PAYLOAD_MAX)
  				return -ESCH_BW_OVERFLOW;
  		}
-@@ -534,21 +534,18 @@ static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
+@@ -542,16 +540,18 @@ static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
  {
  	struct mu3h_sch_tt *tt = sch_ep->sch_tt;
- 	u32 base, num_esit;
--	int bw_updated;
- 	int i, j;
+ 	u32 base;
+-	int i, j;
++	int i, j, k;
  
- 	num_esit = XHCI_MTK_MAX_ESIT / sch_ep->esit;
- 
--	if (used)
--		bw_updated = sch_ep->bw_cost_per_microframe;
--	else
--		bw_updated = -sch_ep->bw_cost_per_microframe;
--
- 	for (i = 0; i < num_esit; i++) {
+ 	for (i = 0; i < sch_ep->num_esit; i++) {
  		base = sch_ep->offset + i * sch_ep->esit;
  
--		for (j = 0; j < sch_ep->cs_count; j++)
--			tt->fs_bus_bw[base + j] += bw_updated;
-+		for (j = 0; j < sch_ep->num_budget_microframes; j++)
-+			if (used)
-+				tt->fs_bus_bw[base + j] += sch_ep->bw_budget_table[j];
-+			else
-+				tt->fs_bus_bw[base + j] -= sch_ep->bw_budget_table[j];
+-		for (j = 0; j < sch_ep->num_budget_microframes; j++)
++		for (j = 0; j < sch_ep->num_budget_microframes; j++) {
++			k = XHCI_MTK_BW_INDEX(base + j);
+ 			if (used)
+-				tt->fs_bus_bw[base + j] += sch_ep->bw_budget_table[j];
++				tt->fs_bus_bw[k] += sch_ep->bw_budget_table[j];
+ 			else
+-				tt->fs_bus_bw[base + j] -= sch_ep->bw_budget_table[j];
++				tt->fs_bus_bw[k] -= sch_ep->bw_budget_table[j];
++		}
  	}
  
  	if (used)
+@@ -573,25 +573,9 @@ static int load_ep_bw(struct mu3h_sch_bw_info *sch_bw,
+ 	return 0;
+ }
+ 
+-static u32 get_esit_boundary(struct mu3h_sch_ep_info *sch_ep)
+-{
+-	u32 boundary = sch_ep->esit;
+-
+-	if (sch_ep->sch_tt) { /* LS/FS with TT */
+-		/* tune for CS */
+-		if (sch_ep->ep_type != ISOC_OUT_EP)
+-			boundary++;
+-		else if (boundary > 1) /* normally esit >= 8 for FS/LS */
+-			boundary--;
+-	}
+-
+-	return boundary;
+-}
+-
+ static int check_sch_bw(struct mu3h_sch_ep_info *sch_ep)
+ {
+ 	struct mu3h_sch_bw_info *sch_bw = sch_ep->bw_info;
+-	const u32 esit_boundary = get_esit_boundary(sch_ep);
+ 	const u32 bw_boundary = get_bw_boundary(sch_ep->speed);
+ 	u32 offset;
+ 	u32 worst_bw;
+@@ -608,9 +592,6 @@ static int check_sch_bw(struct mu3h_sch_ep_info *sch_ep)
+ 		if (ret)
+ 			continue;
+ 
+-		if ((offset + sch_ep->num_budget_microframes) > esit_boundary)
+-			break;
+-
+ 		worst_bw = get_max_bw(sch_bw, sch_ep, offset);
+ 		if (worst_bw > bw_boundary)
+ 			continue;
+diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+index dc5e83f5c5cc..7cc0123eada0 100644
+--- a/drivers/usb/host/xhci-mtk.h
++++ b/drivers/usb/host/xhci-mtk.h
+@@ -25,7 +25,8 @@
+  * round down to the limit value, that means allocating more
+  * bandwidth to it.
+  */
+-#define XHCI_MTK_MAX_ESIT	64
++#define XHCI_MTK_MAX_ESIT	(1 << 6)
++#define XHCI_MTK_BW_INDEX(x)	((x) & (XHCI_MTK_MAX_ESIT - 1))
+ 
+ /**
+  * @fs_bus_bw: array to keep track of bandwidth already used for FS
 -- 
 2.18.0
 _______________________________________________
