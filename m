@@ -2,80 +2,97 @@ Return-Path: <SRS0=zgIi=NR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-8.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C95BFC432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 02:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 41D01C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 05:30:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 84E83610A6
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 02:58:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 84E83610A6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 081456108D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 05:30:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 081456108D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3YqCbOXtbYDyYWrcNhftujQHaXGWybUOXFzT0LEk77c=; b=FlcKibl+D3ZbSp
-	79sKHB4sP/Tkj9ZVJDH0NLasDrSVVUYri3y/TC9X9290UEsCXOfGmK4+4F2+e1YoJn8rsiLAldmO0
-	KGbgXCSBvQMz7u/wuf3cQs+Qz5Qa1IhYeV7ITuow/688pWtGLhiVxU7nlSiUF1fQij7JbYLzPq3Ib
-	PK08j6hGFfC0T6JFZiev2P4QAOTPDU4BzWE8EiCGz1q4VVSxgJB2ioAy44BhjhuD10KRM2RBv3Xjo
-	e+5TUW5eBh1l+DGjj/Ug9/AUuLENUV0/D2IAsF9UpDxW0M+00UTkIOF5Y87Qw/yL3h17FNCrNn/QR
-	jQ+MMOuik11EhuseujBw==;
+	List-Owner; bh=jwAMiID7Dc+dIurWaql1eVP5agiQIN8BHH4rgUIo/Kg=; b=SO4RmDxnSLaIAa
+	ilk6uzJgnuQN7PPwQWmezYzBIaocHvD/AORjykS7GdfwvThAfdIBYiX6Rk9jt6m/eNAQUsEHkKszo
+	LBSAsdDfGXV0pHonkv2+Qanzb+PZ6VFQPcWSDUmAvjXQy4Hrz4mps4eiKnw80SiHwnevH70ASgBoD
+	Fmm5OzavmYKsyYmr6RnWtprzf+X54MpYBZzMYj10YrARTrBqua8m9vKo4Ruj+axG+iNQYYqMxvgAN
+	xbEcFV44e/IHN+s/HIE4PaAVoZKe2QjhRAnxnbUr2BroWMjDduKrQtMD8m88wo3fFKo8K9UHlJYou
+	vskBkxIl2ubTDFHRkYaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJ5b8-008zbw-8m; Thu, 26 Aug 2021 02:58:34 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mJ7y1-009D5T-CH; Thu, 26 Aug 2021 05:30:21 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJ5aQ-008zO5-SV; Thu, 26 Aug 2021 02:57:53 +0000
-X-UUID: df9e097d81344f7291b7acfc7afd9811-20210825
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=lIdq3qzE+iJPOzfaWirdUMwpftXRfwC/+xRG0UkD3TU=; 
- b=Xbsv2n4Y4un2KL4v+017rxGwHGTl6ji5mOJi262d3mCpD6BgErpzFZ9QK68jAxPvjTPStv9cVwJssXsIs61WDfAlwVdCGOY0hvFpHj27zvQR6U8b95stRQfsMZ1Se0gNIwBbnIl1CXNp3m3/ygVFOh1WwClS3S/f1XudSE8QN8o=;
-X-UUID: df9e097d81344f7291b7acfc7afd9811-20210825
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2091147465; Wed, 25 Aug 2021 19:57:45 -0700
-Received: from MTKMBS02N2.mediatek.inc (172.21.101.101) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 25 Aug 2021 19:52:07 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs02n2.mediatek.inc (172.21.101.101) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 26 Aug 2021 10:52:00 +0800
-Received: from mtkslt301.mediatek.inc (10.21.14.114) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 26 Aug 2021 10:51:59 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, Ikjoon Jang <ikjn@chromium.org>, Eddie Hung
- <eddie.hung@mediatek.com>, Yaqii wu <yaqii.wu@mediatek.com>
-Subject: [PATCH next v2 2/6] Revert "usb: xhci-mtk: Do not use xhci's virt_dev
- in drop_endpoint"
-Date: Thu, 26 Aug 2021 10:51:40 +0800
-Message-ID: <20210826025144.51992-2-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210826025144.51992-1-chunfeng.yun@mediatek.com>
-References: <20210826025144.51992-1-chunfeng.yun@mediatek.com>
+ id 1mJ7xn-009D3x-Ke; Thu, 26 Aug 2021 05:30:09 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id g184so2113605pgc.6;
+ Wed, 25 Aug 2021 22:30:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=x4RmyD5fclG+LrgWWesbcdVQE97Kggxj6lIU2hXpp1s=;
+ b=Iwld+o5kE3cC7dKFDVPDZ5uAL6M+SDCzXILZlsoW4OOYMm1/e0Pz1EuVluvNGV+rop
+ Vd7AzU0ZiFZWltIItaqBiQH8BFMyJCN11+7Hg0sWlJQq3YRn2FjbESWBmqHttTe0L3L0
+ 4zywT7UMIMUTmOUt8yeDuQdSyFNUrWkcJFlAUM4Gh5AU6SinB9cNKI6CyB2qEne/VZO5
+ dFeQ9aOT/l5wfnPAhkUi2zi3V3+K6tvp3WZ0yOMf3ZePhkzSV8+iA4qsPMg325NJrN3T
+ c0TdPGJn/xdGWEn9vHLJoRcl5l+zhTLrJsnc477kPc37YLpR46u2Sf5O3cycGwttBe8M
+ 8rvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=x4RmyD5fclG+LrgWWesbcdVQE97Kggxj6lIU2hXpp1s=;
+ b=mXk3iigapfSqv9zc8NnkdxZeMSEUtsWTDN+ZH19wJoOx7YxH30Xu8uCvGmVx5yNiBf
+ YclEOvZqNGknrNRGnaHkgqUKKul3Q1HD++CJaFmYx4CQ0TStHbdDrfQkFDljUlIcdcpg
+ lwka80m9MSkk+o4yp/NAlTsv6rBfXcZ2CPSH9GMCzJpqKI9Vk7b7+IKP1TZB3kieMKPm
+ SxmDsBXAPgm2gJQ2z7OSTyV2hfYYuW2LSlJHRnxRTrL28MqDWOepBVa/vaXc/HTXj1zy
+ /KFva9XNSNcHG3rrWO4wN74FfGbmdxeRzR4BUu3c9M0mFWTOAVrKyI7ocEb6HXqYYAvf
+ MG5Q==
+X-Gm-Message-State: AOAM531IXT7UrA6hxazQAtylvLJOqXBJV/Dcpu7ZZzSfX2n1T+USxF5v
+ 5BMD7p2U2dCHZMwEH/U2mmw=
+X-Google-Smtp-Source: ABdhPJwXQo89ZTUyaW5hgncilg4Qn18/2ISbQ2HecVAww0acCXr7JAbk83ELloXGBqr8+KhTkkp1xQ==
+X-Received: by 2002:a62:e90b:0:b029:30e:4530:8dca with SMTP id
+ j11-20020a62e90b0000b029030e45308dcamr2041539pfh.17.1629955806691; 
+ Wed, 25 Aug 2021 22:30:06 -0700 (PDT)
+Received: from haswell-ubuntu20.lan ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id u3sm1316019pfg.58.2021.08.25.22.30.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 25 Aug 2021 22:30:06 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Vladimir Oltean <olteanv@gmail.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [RFC net-next 2/2] net: dsa: tag_mtk: handle VLAN tag insertion
+ on TX
+Date: Thu, 26 Aug 2021 13:29:56 +0800
+Message-Id: <20210826052956.3101243-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210826000349.q3s5gjuworxtbcna@skbuf>
+References: <20210825083832.2425886-1-dqfext@gmail.com>
+ <20210825083832.2425886-3-dqfext@gmail.com>
+ <20210826000349.q3s5gjuworxtbcna@skbuf>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_195750_999185_F9E4CBA5 
-X-CRM114-Status: GOOD (  23.20  )
+X-CRM114-CacheID: sfid-20210825_223007_715015_BB2EAD0B 
+X-CRM114-Status: GOOD (  13.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,435 +109,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-I find the patch introduce some issues, e.g.
-1. oops happens when xhci_gen_setup() failed, and hash is not init
-   but try to destroy it;
-2. memory leakage happens when fail to insert ep, need free sch_ep,
-   or insert ep after insert int list;
-3. memory leakage happens when fail to allocate sch_array, need destroy
-   rhashtable;
-4. it's better to check ep->hcpriv when drop ep;
+On Thu, Aug 26, 2021 at 03:03:49AM +0300, Vladimir Oltean wrote:
+> 
+> You cannot just remove the old code. Only things like 8021q uppers will
+> send packets with the VLAN in the hwaccel area.
+> 
+> If you have an application that puts the VLAN in the actual AF_PACKET
+> payload, like:
+> 
+> https://github.com/vladimiroltean/tsn-scripts/blob/master/isochron/send.c
+> 
+> then you need to handle the VLAN being in the skb payload.
 
-so prefer to revert this patch, and resend it after the issues are fixed.
+I've actually tested this (only apply patch 2 without .features) and it
+still worked.
 
-This reverts commit b8731209958a1dffccc2888121f4c0280c990550.
+The comment says the VLAN tag need to be combined with the special tag in
+order to perform VLAN table lookup, so we can set its destination port
+vector to all zeroes and the switch will forward it like a data frame
+(TX forward offload), but as we allow multiple bridges which are either
+VLAN-unaware or VLAN-aware with the same VID, there is no way to determine
+the destination bridge unless we maintain some VLAN translation mapping.
 
-Cc: Ikjoon Jang <ikjn@chromium.org>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v2: append new version patch of this one [5/6] suggested by Ikjoon
----
- drivers/usb/host/xhci-mtk-sch.c | 140 ++++++++++++++------------------
- drivers/usb/host/xhci-mtk.h     |  15 ++--
- 2 files changed, 69 insertions(+), 86 deletions(-)
-
-diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
-index f9b4d27ce449..cffcaf4dfa9f 100644
---- a/drivers/usb/host/xhci-mtk-sch.c
-+++ b/drivers/usb/host/xhci-mtk-sch.c
-@@ -80,7 +80,7 @@ decode_ep(struct usb_host_endpoint *ep, enum usb_device_speed speed)
- 		interval /= 1000;
- 	}
- 
--	snprintf(buf, DBG_BUF_EN, "%s ep%d%s %s, mpkt:%d, interval:%d/%d%s",
-+	snprintf(buf, DBG_BUF_EN, "%s ep%d%s %s, mpkt:%d, interval:%d/%d%s\n",
- 		 usb_speed_string(speed), usb_endpoint_num(epd),
- 		 usb_endpoint_dir_in(epd) ? "in" : "out",
- 		 usb_ep_type_string(usb_endpoint_type(epd)),
-@@ -129,12 +129,6 @@ get_bw_info(struct xhci_hcd_mtk *mtk, struct usb_device *udev,
- 	int bw_index;
- 
- 	virt_dev = xhci->devs[udev->slot_id];
--	if (WARN_ONCE(!virt_dev, "xhci-mtk: usb %s has no virt_dev\n",
--				dev_name(&udev->dev)))
--		return NULL;
--	if (WARN_ONCE(!virt_dev->real_port, "xhci-mtk: usb %s has invalid port number\n",
--			dev_name(&udev->dev)))
--		return NULL;
- 
- 	if (udev->speed >= USB_SPEED_SUPER) {
- 		if (usb_endpoint_dir_out(&ep->desc))
-@@ -200,6 +194,7 @@ static struct mu3h_sch_tt *find_tt(struct usb_device *udev)
- 			}
- 			return ERR_PTR(-ENOMEM);
- 		}
-+		INIT_LIST_HEAD(&tt->ep_list);
- 		*ptt = tt;
- 	}
- 
-@@ -229,7 +224,7 @@ static void drop_tt(struct usb_device *udev)
- 	}
- 
- 	tt = *ptt;
--	if (!tt || tt->nr_eps > 0)
-+	if (!tt || !list_empty(&tt->ep_list))
- 		return;		/* never allocated , or still in use*/
- 
- 	*ptt = NULL;
-@@ -241,19 +236,13 @@ static void drop_tt(struct usb_device *udev)
- 	}
- }
- 
--static struct mu3h_sch_ep_info *create_sch_ep(struct xhci_hcd_mtk *mtk,
--		struct usb_device *udev, struct usb_host_endpoint *ep,
--		struct xhci_ep_ctx *ep_ctx)
-+static struct mu3h_sch_ep_info *create_sch_ep(struct usb_device *udev,
-+	struct usb_host_endpoint *ep, struct xhci_ep_ctx *ep_ctx)
- {
- 	struct mu3h_sch_ep_info *sch_ep;
- 	struct mu3h_sch_tt *tt = NULL;
- 	u32 len_bw_budget_table;
- 	size_t mem_size;
--	struct mu3h_sch_bw_info *bw_info;
--
--	bw_info = get_bw_info(mtk, udev, ep);
--	if (!bw_info)
--		return ERR_PTR(-ENODEV);
- 
- 	if (is_fs_or_ls(udev->speed))
- 		len_bw_budget_table = TT_MICROFRAMES_MAX;
-@@ -277,10 +266,11 @@ static struct mu3h_sch_ep_info *create_sch_ep(struct xhci_hcd_mtk *mtk,
- 		}
- 	}
- 
--	sch_ep->bw_info = bw_info;
- 	sch_ep->sch_tt = tt;
- 	sch_ep->ep = ep;
- 	sch_ep->speed = udev->speed;
-+	INIT_LIST_HEAD(&sch_ep->endpoint);
-+	INIT_LIST_HEAD(&sch_ep->tt_endpoint);
- 
- 	return sch_ep;
- }
-@@ -562,9 +552,9 @@ static void update_sch_tt(struct mu3h_sch_ep_info *sch_ep, bool used)
- 	}
- 
- 	if (used)
--		tt->nr_eps++;
--	else if (!WARN_ONCE(tt->nr_eps < 1, "unbalanced sch_tt's ep count"))
--		tt->nr_eps--;
-+		list_add_tail(&sch_ep->tt_endpoint, &tt->ep_list);
-+	else
-+		list_del(&sch_ep->tt_endpoint);
- }
- 
- static int load_ep_bw(struct mu3h_sch_bw_info *sch_bw,
-@@ -595,9 +585,9 @@ static u32 get_esit_boundary(struct mu3h_sch_ep_info *sch_ep)
- 	return boundary;
- }
- 
--static int check_sch_bw(struct mu3h_sch_ep_info *sch_ep)
-+static int check_sch_bw(struct mu3h_sch_bw_info *sch_bw,
-+			struct mu3h_sch_ep_info *sch_ep)
- {
--	struct mu3h_sch_bw_info *sch_bw = sch_ep->bw_info;
- 	const u32 esit_boundary = get_esit_boundary(sch_ep);
- 	const u32 bw_boundary = get_bw_boundary(sch_ep->speed);
- 	u32 offset;
-@@ -643,33 +633,23 @@ static int check_sch_bw(struct mu3h_sch_ep_info *sch_ep)
- 	return load_ep_bw(sch_bw, sch_ep, true);
- }
- 
--static const struct rhashtable_params sch_ep_table_param = {
--	.key_len	= sizeof(struct usb_host_endpoint *),
--	.key_offset	= offsetof(struct mu3h_sch_ep_info, ep),
--	.head_offset	= offsetof(struct mu3h_sch_ep_info, ep_link),
--};
--
--static void destroy_sch_ep(struct xhci_hcd_mtk *mtk, struct usb_device *udev,
--			   struct mu3h_sch_ep_info *sch_ep)
-+static void destroy_sch_ep(struct usb_device *udev,
-+	struct mu3h_sch_bw_info *sch_bw, struct mu3h_sch_ep_info *sch_ep)
- {
- 	/* only release ep bw check passed by check_sch_bw() */
- 	if (sch_ep->allocated)
--		load_ep_bw(sch_ep->bw_info, sch_ep, false);
-+		load_ep_bw(sch_bw, sch_ep, false);
- 
- 	if (sch_ep->sch_tt)
- 		drop_tt(udev);
- 
- 	list_del(&sch_ep->endpoint);
--	rhashtable_remove_fast(&mtk->sch_ep_table, &sch_ep->ep_link,
--				sch_ep_table_param);
- 	kfree(sch_ep);
- }
- 
--static bool need_bw_sch(struct usb_device *udev,
--			struct usb_host_endpoint *ep)
-+static bool need_bw_sch(struct usb_host_endpoint *ep,
-+	enum usb_device_speed speed, int has_tt)
- {
--	bool has_tt = udev->tt && udev->tt->hub->parent;
--
- 	/* only for periodic endpoints */
- 	if (usb_endpoint_xfer_control(&ep->desc)
- 		|| usb_endpoint_xfer_bulk(&ep->desc))
-@@ -680,7 +660,7 @@ static bool need_bw_sch(struct usb_device *udev,
- 	 * a TT are also ignored, root-hub will schedule them directly,
- 	 * but need set @bpkts field of endpoint context to 1.
- 	 */
--	if (is_fs_or_ls(udev->speed) && !has_tt)
-+	if (is_fs_or_ls(speed) && !has_tt)
- 		return false;
- 
- 	/* skip endpoint with zero maxpkt */
-@@ -695,12 +675,7 @@ int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk)
- 	struct xhci_hcd *xhci = hcd_to_xhci(mtk->hcd);
- 	struct mu3h_sch_bw_info *sch_array;
- 	int num_usb_bus;
--	int ret;
--
--	/* mu3h_sch_ep_info table, 'usb_host_endpoint*' as a key */
--	ret = rhashtable_init(&mtk->sch_ep_table, &sch_ep_table_param);
--	if (ret)
--		return ret;
-+	int i;
- 
- 	/* ss IN and OUT are separated */
- 	num_usb_bus = xhci->usb3_rhub.num_ports * 2 + xhci->usb2_rhub.num_ports;
-@@ -709,6 +684,9 @@ int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk)
- 	if (sch_array == NULL)
- 		return -ENOMEM;
- 
-+	for (i = 0; i < num_usb_bus; i++)
-+		INIT_LIST_HEAD(&sch_array[i].bw_ep_list);
-+
- 	mtk->sch_array = sch_array;
- 
- 	INIT_LIST_HEAD(&mtk->bw_ep_chk_list);
-@@ -718,7 +696,6 @@ int xhci_mtk_sch_init(struct xhci_hcd_mtk *mtk)
- 
- void xhci_mtk_sch_exit(struct xhci_hcd_mtk *mtk)
- {
--	rhashtable_destroy(&mtk->sch_ep_table);
- 	kfree(mtk->sch_array);
- }
- 
-@@ -736,7 +713,9 @@ static int add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 	ep_index = xhci_get_endpoint_index(&ep->desc);
- 	ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
- 
--	if (!need_bw_sch(udev, ep)) {
-+	xhci_dbg(xhci, "%s %s\n", __func__, decode_ep(ep, udev->speed));
-+
-+	if (!need_bw_sch(ep, udev->speed, !!virt_dev->tt_info)) {
- 		/*
- 		 * set @bpkts to 1 if it is LS or FS periodic endpoint, and its
- 		 * device does not connected through an external HS hub
-@@ -748,22 +727,14 @@ static int add_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- 		return 0;
- 	}
- 
--	xhci_dbg(xhci, "%s %s\n", __func__, decode_ep(ep, udev->speed));
--
--	sch_ep = create_sch_ep(mtk, udev, ep, ep_ctx);
-+	sch_ep = create_sch_ep(udev, ep, ep_ctx);
- 	if (IS_ERR_OR_NULL(sch_ep))
- 		return -ENOMEM;
- 
--	if (rhashtable_insert_fast(&mtk->sch_ep_table, &sch_ep->ep_link,
--				   sch_ep_table_param))
--		return -EEXIST;
--
- 	setup_sch_info(ep_ctx, sch_ep);
- 
- 	list_add_tail(&sch_ep->endpoint, &mtk->bw_ep_chk_list);
- 
--	xhci_dbg(xhci, "added sch_ep %p : %p\n", sch_ep, ep);
--
- 	return 0;
- }
- 
-@@ -772,20 +743,25 @@ static void drop_ep_quirk(struct usb_hcd *hcd, struct usb_device *udev,
- {
- 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
--	struct mu3h_sch_ep_info *sch_ep;
--	void *key = ep;
-+	struct xhci_virt_device *virt_dev;
-+	struct mu3h_sch_bw_info *sch_bw;
-+	struct mu3h_sch_ep_info *sch_ep, *tmp;
- 
--	if (!need_bw_sch(udev, ep))
--		return;
-+	virt_dev = xhci->devs[udev->slot_id];
- 
- 	xhci_dbg(xhci, "%s %s\n", __func__, decode_ep(ep, udev->speed));
- 
--	sch_ep = rhashtable_lookup_fast(&mtk->sch_ep_table, &key,
--					sch_ep_table_param);
--	if (sch_ep)
--		destroy_sch_ep(mtk, udev, sch_ep);
--	else
--		xhci_dbg(xhci, "ep %p is not on the bw table\n", ep);
-+	if (!need_bw_sch(ep, udev->speed, !!virt_dev->tt_info))
-+		return;
-+
-+	sch_bw = get_bw_info(mtk, udev, ep);
-+
-+	list_for_each_entry_safe(sch_ep, tmp, &sch_bw->bw_ep_list, endpoint) {
-+		if (sch_ep->ep == ep) {
-+			destroy_sch_ep(udev, sch_bw, sch_ep);
-+			break;
-+		}
-+	}
- }
- 
- int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
-@@ -793,22 +769,30 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
- 	struct xhci_virt_device *virt_dev = xhci->devs[udev->slot_id];
--	struct mu3h_sch_ep_info *sch_ep;
-+	struct mu3h_sch_bw_info *sch_bw;
-+	struct mu3h_sch_ep_info *sch_ep, *tmp;
- 	int ret;
- 
- 	xhci_dbg(xhci, "%s() udev %s\n", __func__, dev_name(&udev->dev));
- 
- 	list_for_each_entry(sch_ep, &mtk->bw_ep_chk_list, endpoint) {
--		struct xhci_ep_ctx *ep_ctx;
--		struct usb_host_endpoint *ep = sch_ep->ep;
--		unsigned int ep_index = xhci_get_endpoint_index(&ep->desc);
-+		sch_bw = get_bw_info(mtk, udev, sch_ep->ep);
- 
--		ret = check_sch_bw(sch_ep);
-+		ret = check_sch_bw(sch_bw, sch_ep);
- 		if (ret) {
- 			xhci_err(xhci, "Not enough bandwidth! (%s)\n",
- 				 sch_error_string(-ret));
- 			return -ENOSPC;
- 		}
-+	}
-+
-+	list_for_each_entry_safe(sch_ep, tmp, &mtk->bw_ep_chk_list, endpoint) {
-+		struct xhci_ep_ctx *ep_ctx;
-+		struct usb_host_endpoint *ep = sch_ep->ep;
-+		unsigned int ep_index = xhci_get_endpoint_index(&ep->desc);
-+
-+		sch_bw = get_bw_info(mtk, udev, ep);
-+		list_move_tail(&sch_ep->endpoint, &sch_bw->bw_ep_list);
- 
- 		ep_ctx = xhci_get_ep_ctx(xhci, virt_dev->in_ctx, ep_index);
- 		ep_ctx->reserved[0] = cpu_to_le32(EP_BPKTS(sch_ep->pkts)
-@@ -822,23 +806,22 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- 			sch_ep->offset, sch_ep->repeat);
- 	}
- 
--	ret = xhci_check_bandwidth(hcd, udev);
--	if (!ret)
--		INIT_LIST_HEAD(&mtk->bw_ep_chk_list);
--
--	return ret;
-+	return xhci_check_bandwidth(hcd, udev);
- }
- 
- void xhci_mtk_reset_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
- {
- 	struct xhci_hcd_mtk *mtk = hcd_to_mtk(hcd);
- 	struct xhci_hcd *xhci = hcd_to_xhci(hcd);
-+	struct mu3h_sch_bw_info *sch_bw;
- 	struct mu3h_sch_ep_info *sch_ep, *tmp;
- 
- 	xhci_dbg(xhci, "%s() udev %s\n", __func__, dev_name(&udev->dev));
- 
--	list_for_each_entry_safe(sch_ep, tmp, &mtk->bw_ep_chk_list, endpoint)
--		destroy_sch_ep(mtk, udev, sch_ep);
-+	list_for_each_entry_safe(sch_ep, tmp, &mtk->bw_ep_chk_list, endpoint) {
-+		sch_bw = get_bw_info(mtk, udev, sch_ep->ep);
-+		destroy_sch_ep(udev, sch_bw, sch_ep);
-+	}
- 
- 	xhci_reset_bandwidth(hcd, udev);
- }
-@@ -867,7 +850,8 @@ int xhci_mtk_drop_ep(struct usb_hcd *hcd, struct usb_device *udev,
- 	if (ret)
- 		return ret;
- 
--	drop_ep_quirk(hcd, udev, ep);
-+	if (ep->hcpriv)
-+		drop_ep_quirk(hcd, udev, ep);
- 
- 	return 0;
- }
-diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
-index ddcf25524f67..ace432356c41 100644
---- a/drivers/usb/host/xhci-mtk.h
-+++ b/drivers/usb/host/xhci-mtk.h
-@@ -10,7 +10,6 @@
- #define _XHCI_MTK_H_
- 
- #include <linux/clk.h>
--#include <linux/rhashtable.h>
- 
- #include "xhci.h"
- 
-@@ -26,34 +25,36 @@
- 
- /**
-  * @fs_bus_bw: array to keep track of bandwidth already used for FS
-- * @nr_eps: number of endpoints using this TT
-+ * @ep_list: Endpoints using this TT
-  */
- struct mu3h_sch_tt {
- 	u32 fs_bus_bw[XHCI_MTK_MAX_ESIT];
--	int nr_eps;
-+	struct list_head ep_list;
- };
- 
- /**
-  * struct mu3h_sch_bw_info: schedule information for bandwidth domain
-  *
-  * @bus_bw: array to keep track of bandwidth already used at each uframes
-+ * @bw_ep_list: eps in the bandwidth domain
-  *
-  * treat a HS root port as a bandwidth domain, but treat a SS root port as
-  * two bandwidth domains, one for IN eps and another for OUT eps.
-  */
- struct mu3h_sch_bw_info {
- 	u32 bus_bw[XHCI_MTK_MAX_ESIT];
-+	struct list_head bw_ep_list;
- };
- 
- /**
-  * struct mu3h_sch_ep_info: schedule information for endpoint
-  *
-- * @bw_info: bandwidth domain which this endpoint belongs
-  * @esit: unit is 125us, equal to 2 << Interval field in ep-context
-  * @num_budget_microframes: number of continuous uframes
-  *		(@repeat==1) scheduled within the interval
-  * @bw_cost_per_microframe: bandwidth cost per microframe
-- * @endpoint: linked into bw_ep_chk_list, used by check_bandwidth hook
-+ * @endpoint: linked into bandwidth domain which it belongs to
-+ * @tt_endpoint: linked into mu3h_sch_tt's list which it belongs to
-  * @sch_tt: mu3h_sch_tt linked into
-  * @ep_type: endpoint type
-  * @maxpkt: max packet size of endpoint
-@@ -81,12 +82,11 @@ struct mu3h_sch_ep_info {
- 	u32 num_budget_microframes;
- 	u32 bw_cost_per_microframe;
- 	struct list_head endpoint;
--	struct mu3h_sch_bw_info *bw_info;
-+	struct list_head tt_endpoint;
- 	struct mu3h_sch_tt *sch_tt;
- 	u32 ep_type;
- 	u32 maxpkt;
- 	struct usb_host_endpoint *ep;
--	struct rhash_head ep_link;
- 	enum usb_device_speed speed;
- 	bool allocated;
- 	/*
-@@ -134,7 +134,6 @@ struct xhci_hcd_mtk {
- 	struct device *dev;
- 	struct usb_hcd *hcd;
- 	struct mu3h_sch_bw_info *sch_array;
--	struct rhashtable sch_ep_table;
- 	struct list_head bw_ep_chk_list;
- 	struct mu3c_ippc_regs __iomem *ippc_regs;
- 	int num_u2_ports;
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
