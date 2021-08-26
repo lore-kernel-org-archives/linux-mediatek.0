@@ -4,17 +4,18 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
 	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 19C2CC432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 00:01:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D9090C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 00:02:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7605360EFE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 00:01:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7605360EFE
+	by mail.kernel.org (Postfix) with ESMTPS id 8C271610A7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Aug 2021 00:02:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8C271610A7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,69 +24,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=59fmZbQFUnK/tD+clk4o9jn2Se5Cw/fT0WSxxf+SF6w=; b=BR2dVhrM81rBTp
-	P2uLZnVM78BAzdMYKwsDyzedtSk7paYhvgrHj88DUbaCbIYbJvKh3KO+YGHKv6gLzrLK0WSmWsm+q
-	ugNOWxpC1p9tB9hdxvQofsLyzZPq4S+OzLTeWYp/W1Azbd6DqM8drq18QuojszQ4NTyBdRcGfUrOa
-	fA24FkJ/qwrkcwnXc7VBo0ZjOBj4W99GT3MagczavBUpRCFg0lt86bV1Ve6oX3Nr3d5++JAW7oeWc
-	n3l7R8NJ2ELi3TMPvDq3rwNcQ0gtUGTQBuJpMhUatNJVb2oPnGDEFIqDgkbLPJ53Qewq/JFDSspN9
-	MUycjjS+t+bC2jUwYAYQ==;
+	List-Owner; bh=L6Tf2MLMDf5f38IrfhExd2PnOPFoUtEhP9c22k0CB9U=; b=3uJFxVx74tu3Nd
+	PNlRezULkXLbPw5GcY1UMOsWvBMmwRmbyBWEZEFcqxgnu0NGdysGnshZ/wBA24J151S4ygHdaHMa/
+	laqOdzi4Fnc1H1aqQmt7qzaioVLUXk5SjuHGSOWLVy61kn2VZHLcs2MPJG08ttiDhfjlqyzMPQDHy
+	APCI7I0/AfZa1GsoztI3UwlM6QpXMeOCBDAzVlU3vb3oYTwkjHrNDIjX6BviLIDScuam3n//dOfFk
+	J06349bA9eeltxIfu+nUgOLH6HVMqnPENuCtzF2pwnDw+/D0/FJA6mWeN6NTJnQZihfKBOwxhSh3W
+	+WAsgVk8tNM6eFqWrQFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJ2p9-008j41-07; Thu, 26 Aug 2021 00:00:51 +0000
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+	id 1mJ2pv-008jCF-PH; Thu, 26 Aug 2021 00:01:39 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJ2ov-008j0k-1b; Thu, 26 Aug 2021 00:00:38 +0000
-Received: by mail-wm1-x330.google.com with SMTP id f10so675503wml.2;
- Wed, 25 Aug 2021 17:00:34 -0700 (PDT)
+ id 1mJ2pg-008j8z-1Z; Thu, 26 Aug 2021 00:01:25 +0000
+Received: by mail-wm1-x331.google.com with SMTP id
+ z9-20020a7bc149000000b002e8861aff59so1374566wmi.0; 
+ Wed, 25 Aug 2021 17:01:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=0Tchv2oY6Cx3fLEGg+fdfAoeAssl1qaeHYeW6E4lQ7Q=;
- b=gc3Iy7HEp9wXG/mB+BJp5EG4H4Pwz07bMEwIxJKOWfozIYqXvlCbd4eKuaCXzmrzVT
- sGKEOZPjrfSgCkPbZpyrmx30hdBuQ/7fZQxP6sI82h3VYrJZqCWYNiBlavh4jdyDUtRR
- IbUt0LxHq/RkPTuJzyStLFdOmHiu3Fo1SFzG5kYZdDBwdLsEPFFZ2qS8mIB+QABG7azh
- L1ldkFxCxhAvPLCMHfIbIwOY+sSONktD3FtlBVVHoxT0tnv4zISg8XaCvhNw+ToQcfme
- Ic/nCsex1MTo4vLATBUG4RkW2QYHbSYf/w2r1wWghna6sYoE4JXHzXsKgjubfU8N3Uqn
- HDBQ==
+ bh=gn0+R/7R58c152OdsQfm46+uKGwqkw5R5Zqn3EfO2Pk=;
+ b=UWblJmUdrjsPOcnJvcY+zYG8DLWSlVT0cYwkUUWPlQFikm27sqluzhjHlp2KaWzLs7
+ SEz0hhFR0DlqHLE7FAq/Iuor8O2E/COWxkLLDEeeMmz4F2jCV4o7Wb+fmCyW+2lJQdnr
+ w1KetvDe5p8Tk9j/6eIUI1Xwj7jmhObjKdOjegBhZ3zF8lr1ebKF5p0QmN4yII8UgR9Y
+ muxq9I++Iss50UCIP0ORghJdAnac5asNaw0qzTFl39OMZ/ol5/WEryFENRKyDkqzpnHM
+ pMaAD1gYgkexorDkVC60yK+uxqzoe30tEAyiZ+YDOOVub7RijQN1NdOmVSqlhpXs1nv0
+ YqYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=0Tchv2oY6Cx3fLEGg+fdfAoeAssl1qaeHYeW6E4lQ7Q=;
- b=jdqXMXyMfdX4KTJNMVPCl4oBoAV5LxzkdYgRi1PM5rdj3D2F3FOoBx6VEaitoFM1Rn
- 6uM2CfZzmfT+KZ2w4gv1/fEfS24nVcLP1xc1Q8N+xp7ah3Sg3rR3IHSMXaafFniIPIov
- NpTGs4n87Gl3IBs3xzrHS9I2YOtUdoQ9GlAgT2qNcpJOVkhyRFd8AyrLo0XZqLJZ/HhN
- WkL/PGlEMBaterJOkfbBNfshqvSFDREC4oi/cGZ3ybHqaRny5hxOkyR3JDXcRwfHpVja
- an6TbUh9Rx7zQMACqHIKjrQikTWs+w0BSnzLlx/Ppc3Ms0TMAO2wmblvq8GgxlmRtUj/
- Jyjw==
-X-Gm-Message-State: AOAM531A5aZE3BDj6POSTy6e4fEvK3V50mp/hgVRR+rTYS6FzxX20vDG
- /CE7W1HYOYxSgB+gP8HXaD4=
-X-Google-Smtp-Source: ABdhPJxDv4UaIWb/Mq2+rTcw8JbYo2WHdxTa485C/RXoXJrSJcf0XsuVcHphfM7W6O/0DfrBU4FcYg==
-X-Received: by 2002:a7b:c041:: with SMTP id u1mr808506wmc.95.1629936031747;
- Wed, 25 Aug 2021 17:00:31 -0700 (PDT)
+ bh=gn0+R/7R58c152OdsQfm46+uKGwqkw5R5Zqn3EfO2Pk=;
+ b=hbkwgFKYS1AnMsMrfigQpgJSN6GFuL8vdUcOFJ3Eo+IYUJ8jDfDmXbkVSYV6FtsTRO
+ b2WaQF/h4id6NpTZ/AQnu7TrKn7ebXvEGCH/g11+VvfImkkRKs/Jpwwv7a7vYQZh69QE
+ yw6ZdeNsi479G3iWulqAwcXGu5wz/aZQE7s4xQsq5ay+3Bo/oklLPqiWP2i/BAV0D3b0
+ DQ61Ufnwxj5aE9/I4m+sGGqs1xosMcCjM2FGNd3mHYMykV4PnbvdHqooCVwvcmElA4eM
+ djb8UwX+NCP57dBkc9fMIudTziFCCqHiYzsBupNtsT23Ak8k4KtAKLTRQeq4j/AY6qVn
+ At/w==
+X-Gm-Message-State: AOAM530rkEpYu87HbruHldSBUk3ZWDojj15/Y2+QDGnUlh/dA/ct106J
+ I+r/L/YBowaKLF4vUagmFkA=
+X-Google-Smtp-Source: ABdhPJxKyb1ON6kX34ngYPEawdE1OTzU9XvKOLg25OBlQqg6Jboa9MJpjBPYcKMAoD38YcmPeLwj4w==
+X-Received: by 2002:a05:600c:3798:: with SMTP id
+ o24mr11403587wmr.18.1629936082544; 
+ Wed, 25 Aug 2021 17:01:22 -0700 (PDT)
 Received: from skbuf ([82.78.148.104])
- by smtp.gmail.com with ESMTPSA id q11sm1281281wrx.85.2021.08.25.17.00.30
+ by smtp.gmail.com with ESMTPSA id x21sm11092wmi.15.2021.08.25.17.01.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Aug 2021 17:00:31 -0700 (PDT)
-Date: Thu, 26 Aug 2021 03:00:30 +0300
+ Wed, 25 Aug 2021 17:01:22 -0700 (PDT)
+Date: Thu, 26 Aug 2021 03:01:20 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: DENG Qingfang <dqfext@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
  Florian Fainelli <f.fainelli@gmail.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [RFC net-next 0/2] DSA slave with customise netdev features
-Message-ID: <20210826000030.dhiwv4puqiqyh3re@skbuf>
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [RFC net-next 1/2] net: dsa: allow taggers to customise netdev
+ features
+Message-ID: <20210826000120.isvbsdjwpvyszglb@skbuf>
 References: <20210825083832.2425886-1-dqfext@gmail.com>
+ <20210825083832.2425886-2-dqfext@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210825083832.2425886-1-dqfext@gmail.com>
+In-Reply-To: <20210825083832.2425886-2-dqfext@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210825_170037_143862_E888743A 
-X-CRM114-Status: GOOD (  28.35  )
+X-CRM114-CacheID: sfid-20210825_170124_160660_EF5966B6 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,87 +108,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 25, 2021 at 04:38:29PM +0800, DENG Qingfang wrote:
-> Some taggers, such as tag_dsa.c, combine VLAN tags with DSA tags, which
-> currently has a few problems:
->
-> 1. Unnecessary reallocation on TX:
->
-> A central TX reallocation has been used since commit a3b0b6479700
-> ("net: dsa: implement a central TX reallocation procedure"), but for
-> VLAN-tagged frames, the actual headroom required for DSA taggers which
-> combine with VLAN tags is smaller.
+On Wed, Aug 25, 2021 at 04:38:30PM +0800, DENG Qingfang wrote:
+> Allow taggers to add netdev features, such as VLAN offload, to slave
+> devices, which will make it possible for taggers to handle VLAN tags
+> themselves.
+> 
+> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+> ---
 
-If true, this would be a major failure of the central TX reallocation idea.
-
-However, for this to fail, it would mean that there is a code path in
-the network stack that routinely allocates skbs with skb_needed_headroom(skb)
-smaller than dev->needed_headroom. That's the only thing that would trigger
-reallocs (beside cloned skbs).
-
-The fact that we ask for a dev->needed_headroom that is a bit larger
-than what is needed in some cases is not an issue. We should declare the
-largest dev->needed_headroom that should cover all cases.
-
-Would you please let me know what is the stack trace when you apply this
-patch?
-
------------------------------[ cut here ]-----------------------------
-diff --git a/net/dsa/slave.c b/net/dsa/slave.c
-index 6d6f1aebf1ca..1924025ac136 100644
---- a/net/dsa/slave.c
-+++ b/net/dsa/slave.c
-@@ -600,6 +600,10 @@ static int dsa_realloc_skb(struct sk_buff *skb, struct net_device *dev)
- 		/* No reallocation needed, yay! */
- 		return 0;
- 
-+	netdev_err(dev, "%s: skb realloc: headroom %u, tailroom %u, cloned %d, needed_headroom %d, needed_tailroom %d\n",
-+		  __func__, skb_headroom(skb), skb_tailroom(skb), skb_cloned(skb), needed_headroom, needed_tailroom);
-+	WARN_ON(!skb_cloned(skb));
-+
- 	return pskb_expand_head(skb, needed_headroom, needed_tailroom,
- 				GFP_ATOMIC);
- }
------------------------------[ cut here ]-----------------------------
-
->
-> 2. Repeated memmoves:
->
-> If a both Marvell EDSA and VLAN tagged frame is received, the current
-> code will move the (DA,SA) twice: the first in dsa_rcv_ll to convert the
-> frame to a normal 802.1Q frame, and the second to strip off the 802.1Q
-> tag. The similar thing happens on TX.
-
-I don't think a lot of people use 8021q uppers with mv88e6xxx. At least
-the error messages I've seen during the few times when I've booted the
-Turris Mox would seem to suggest that.
-
-The code that converts DSA 'tagged' frames to VLAN tags originates from
-Lennert Buytenhek himself.
-
->
-> For these tags, it is better to handle DSA and VLAN tags at the same time
-> in DSA taggers.
-
-No objection there.
-
->
-> This patch set allows taggers to add custom netdev features to DSA
-> slaves so they can advertise VLAN offload, and converts tag_mtk to use
-> the TX VLAN offload.
->
-> DENG Qingfang (2):
->   net: dsa: allow taggers to customise netdev features
->   net: dsa: tag_mtk: handle VLAN tag insertion on TX
->
->  include/net/dsa.h |  2 ++
->  net/dsa/slave.c   |  3 ++-
->  net/dsa/tag_mtk.c | 46 ++++++++++++++++++++++------------------------
->  3 files changed, 26 insertions(+), 25 deletions(-)
->
-> --
-> 2.25.1
->
+Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
 
 _______________________________________________
 Linux-mediatek mailing list
