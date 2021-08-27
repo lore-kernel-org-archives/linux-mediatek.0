@@ -7,76 +7,71 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3727C432BE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 12:04:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF2AAC432BE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 15:04:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A095760E77
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 12:04:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A095760E77
+	by mail.kernel.org (Postfix) with ESMTPS id 7706860EFF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 15:04:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7706860EFF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SSOIfjA8WalyFUueAgh1Nw0Z+L55MFING521lA2cJxE=; b=bOhJj+VOo4vLNM
-	6HdzYLXnNaFnRblUavPVBREfclRPKF6ItsXeHvm2ruZezsPX1h52ZXVfY8Jysuvl3lhX0wYDY1MCG
-	OGXUEhaU8Yj8w5I6cXizlm1DKH7vLdZsQ1MynhQ27ipNzpKxFVynSnXc3KK1zK4PnVLfWkRKkVC2m
-	S1f688Ul+FPhY8NXn6XSD26NxIrJTc8U77/LcCgFj2nVBxu2PSGiohI8wqh9UuOxm+ezvLbOxStHI
-	tB7P9FRQECOitjXE33STGSIthe8sypvMF1wyP940odlwmN+Zh3dmOYbR72rHRcatpMJW8+dOOJCNN
-	6qm/tqIG5JiFGgANT4Vg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+AYYMpR1pSyqgyJ1Mky8PtcHZDniAIjPc19mmknqc+g=; b=0bMjZQvgZOaTTh
+	qk4w4yOuNieXpvEpLGvkEhkQZypAvGkLpaIwa2gjrV28p838ncj8/mTRmRDlyUtOY2Tvd9wkrNfpA
+	1QZ27V6x28JDhBIXn3cDpWQspFT+IQoe3ZXUK/zlI+wyuB2+pmKN5Wi1rIP8oOM3Z0eoMm6RqZp1c
+	MUQNjqqj7wTeUCnyboaxIHvdJzwRwwV+WAbyVKqQPrpPGmU/z5tMgEWmmU4vLmBmSUfqCtXU+FDFV
+	0+V7IHhiQPvxWMeHhu5QJHMui5P0t6PMz0TWRk9ztrFFXCT66lffg5cD0NyNgdOm1EIhcuKBkCcAN
+	WCoOeT26DY1Co69r2yuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJaaR-00CNJU-1F; Fri, 27 Aug 2021 12:03:55 +0000
+	id 1mJdPK-00CdPv-2K; Fri, 27 Aug 2021 15:04:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJaaK-00CNIF-6Z; Fri, 27 Aug 2021 12:03:53 +0000
-X-UUID: 07cdd37400d74c2a87cc7776be019079-20210827
+ id 1mJdPD-00CdMs-SH; Fri, 27 Aug 2021 15:04:36 +0000
+X-UUID: b3c8106bf7234fcb8a3934e20bfabc6d-20210827
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=eXreGiiRkeMad22+4Q7e9Tirkk046npMuat0F4fVs+k=; 
- b=CZ4If85rL5wVvxENNrP0cFC00iv8AhEbg57ypWYb4ynctxcJn859MKt+br5m25kgy5WTsrLz2042OJpRZj2Qw7kXLc1S7R+fyS3V+wtuJY7gSd80HakA0rrfWqWOb/eXyLfHA1tqp/Dr+bRqCtlI87obXWfgSDgXtDhxnX8KsZA=;
-X-UUID: 07cdd37400d74c2a87cc7776be019079-20210827
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <wenbin.mei@mediatek.com>)
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=B0t/WoU6BalITUG68RfLFn2zxxNZyDZtcU6nQ34/02Y=; 
+ b=MCiQL/A/4asBXtdasETjtZBr4CQozzjkATRzeLjcmmyVYVeVqnHz9fJni/n/FZ7Sdz6+hz1UF32uoyOS6NbnhiMIZskRkmAeHjI1FtTOykpLnNiwzXs8CKcOKw9jpjeX3pbRLYYq95nttADCufNIOZtfNzTozALQhnVrhGDDmAo=;
+X-UUID: b3c8106bf7234fcb8a3934e20bfabc6d-20210827
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 85467417; Fri, 27 Aug 2021 05:03:46 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 1856023334; Fri, 27 Aug 2021 08:04:23 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 27 Aug 2021 04:53:44 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 27 Aug 2021 19:53:30 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Fri, 27 Aug 2021 08:04:21 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 27 Aug 2021 23:04:20 +0800
+Received: from localhost.localdomain (10.15.20.246) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 27 Aug 2021 19:53:29 +0800
-From: Wenbin Mei <wenbin.mei@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Chaotian Jing <chaotian.jing@mediatek.com>, Avri Altman
- <avri.altman@wdc.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Linus Walleij
- <linus.walleij@linaro.org>, Yue Hu <huyue2@yulong.com>, Adrian Hunter
- <adrian.hunter@intel.com>, Bean Huo <beanhuo@micron.com>, Wenbin Mei
- <wenbin.mei@mediatek.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH v1 2/2] mmc: mediatek: Add HS400 online tuning support
-Date: Fri, 27 Aug 2021 19:53:25 +0800
-Message-ID: <1630065205-7618-3-git-send-email-wenbin.mei@mediatek.com>
-X-Mailer: git-send-email 1.9.1
-In-Reply-To: <1630065205-7618-1-git-send-email-wenbin.mei@mediatek.com>
-References: <1630065205-7618-1-git-send-email-wenbin.mei@mediatek.com>
+ Transport; Fri, 27 Aug 2021 23:04:19 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, David Ahern
+ <dsahern@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <rocco.yue@gmail.com>, <chao.song@mediatek.com>,
+ <zhuoliang.zhang@mediatek.com>, Rocco Yue <rocco.yue@mediatek.com>
+Subject: [PATCH net-next v6] ipv6: add IFLA_INET6_RA_MTU to expose mtu value
+Date: Fri, 27 Aug 2021 23:04:12 +0800
+Message-ID: <20210827150412.9267-1-rocco.yue@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210827_050348_300156_52401BCE 
-X-CRM114-Status: GOOD (  23.60  )
+X-CRM114-CacheID: sfid-20210827_080432_251842_3ACD05D6 
+X-CRM114-Status: GOOD (  26.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,235 +88,173 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Due to the influence of the corner IC and vcore voltage, for the stability
-of HS400 mode, we Add HS400 mode online tuning support for mediatek mmc
-host.
+The kernel provides a "/proc/sys/net/ipv6/conf/<iface>/mtu"
+file, which can temporarily record the mtu value of the last
+received RA message when the RA mtu value is lower than the
+interface mtu, but this proc has following limitations:
 
-Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+(1) when the interface mtu (/sys/class/net/<iface>/mtu) is
+updeated, mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) will
+be updated to the value of interface mtu;
+(2) mtu6 (/proc/sys/net/ipv6/conf/<iface>/mtu) only affect
+ipv6 connection, and not affect ipv4.
+
+Therefore, when the mtu option is carried in the RA message,
+there will be a problem that the user sometimes cannot obtain
+RA mtu value correctly by reading mtu6.
+
+After this patch set, if a RA message carries the mtu option,
+you can send a netlink msg which nlmsg_type is RTM_GETLINK,
+and then by parsing the attribute of IFLA_INET6_RA_MTU to
+get the mtu value carried in the RA message received on the
+inet6 device. In addition, you can also get a link notification
+when ra_mtu is updated so it doesn't have to poll.
+
+In this way, if the MTU values that the device receives from
+the network in the PCO IPv4 and the RA IPv6 procedures are
+different, the user can obtain the correct ipv6 ra_mtu value
+and compare the value of ra_mtu and ipv4 mtu, then the device
+can use the lower MTU value for both IPv4 and IPv6.
+
+Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
 ---
- drivers/mmc/core/mmc.c    |   8 ++++
- drivers/mmc/host/mtk-sd.c | 118 +++++++++++++++++++++++++++++++++++++++++++++-
- include/linux/mmc/host.h  |   3 ++
- 3 files changed, 127 insertions(+), 2 deletions(-)
+ include/net/if_inet6.h             |  2 ++
+ include/uapi/linux/if_link.h       |  1 +
+ net/ipv6/addrconf.c                | 10 ++++++++++
+ net/ipv6/ndisc.c                   | 17 +++++++++++------
+ tools/include/uapi/linux/if_link.h |  1 +
+ 5 files changed, 25 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 838726b..f06be7f 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -1222,6 +1222,14 @@ static int mmc_select_hs400(struct mmc_card *card)
- 	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
- 	mmc_set_bus_speed(card);
+diff --git a/include/net/if_inet6.h b/include/net/if_inet6.h
+index 42235c178b06..653e7d0f65cb 100644
+--- a/include/net/if_inet6.h
++++ b/include/net/if_inet6.h
+@@ -210,6 +210,8 @@ struct inet6_dev {
  
-+	if (host->ops->execute_hs400_tuning && mmc_can_ext_csd(card)) {
-+		mmc_retune_disable(host);
-+		err = host->ops->execute_hs400_tuning(host, card);
-+		mmc_retune_enable(host);
-+		if (err)
-+			goto out_err;
-+	}
+ 	unsigned long		tstamp; /* ipv6InterfaceTable update timestamp */
+ 	struct rcu_head		rcu;
 +
- 	if (host->ops->hs400_complete)
- 		host->ops->hs400_complete(host);
- 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 4dfc246..f5ac711 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -258,6 +258,7 @@
- #define MSDC_PAD_TUNE_RD_SEL	  (0x1 << 13)   /* RW */
- #define MSDC_PAD_TUNE_CMD_SEL	  (0x1 << 21)   /* RW */
- 
-+#define PAD_DS_TUNE_DLY_SEL       (0x1 << 0)	/* RW */
- #define PAD_DS_TUNE_DLY1	  (0x1f << 2)   /* RW */
- #define PAD_DS_TUNE_DLY2	  (0x1f << 7)   /* RW */
- #define PAD_DS_TUNE_DLY3	  (0x1f << 12)  /* RW */
-@@ -301,6 +302,11 @@
- #define PAD_CMD_RD_RXDLY_SEL    (0x1 << 11)     /* RW */
- #define PAD_CMD_TX_DLY          (0x1f << 12)    /* RW */
- 
-+/* EMMC50_PAD_DS_TUNE mask */
-+#define PAD_DS_DLY_SEL		(0x1 << 16)	/* RW */
-+#define PAD_DS_DLY1		(0x1f << 10)	/* RW */
-+#define PAD_DS_DLY3		(0x1f << 0)	/* RW */
-+
- #define REQ_CMD_EIO  (0x1 << 0)
- #define REQ_CMD_TMO  (0x1 << 1)
- #define REQ_DAT_ERR  (0x1 << 2)
-@@ -448,11 +454,13 @@ struct msdc_host {
- 	bool vqmmc_enabled;
- 	u32 latch_ck;
- 	u32 hs400_ds_delay;
-+	u32 hs400_ds_dly3;
- 	u32 hs200_cmd_int_delay; /* cmd internal delay for HS200/SDR104 */
- 	u32 hs400_cmd_int_delay; /* cmd internal delay for HS400 */
- 	bool hs400_cmd_resp_sel_rising;
- 				 /* cmd response sample selection for HS400 */
- 	bool hs400_mode;	/* current eMMC will run at hs400 mode */
-+	bool hs400_tuning;	/* hs400 mode online tuning */
- 	bool internal_cd;	/* Use internal card-detect logic */
- 	bool cqhci;		/* support eMMC hw cmdq */
- 	struct msdc_save_para save_para; /* used when gate HCLK */
-@@ -1190,7 +1198,8 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- 	if (!sbc_error && !(events & MSDC_INT_CMDRDY)) {
- 		if (events & MSDC_INT_CMDTMO ||
- 		    (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
--		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200))
-+		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200 &&
-+		     (host->hs400_tuning && cmd->opcode != MMC_SEND_EXT_CSD)))
- 			/*
- 			 * should not clear fifo/interrupt as the tune data
- 			 * may have alreay come when cmd19/cmd21 gets response
-@@ -1287,7 +1296,8 @@ static void msdc_cmd_next(struct msdc_host *host,
- 	if ((cmd->error &&
- 	    !(cmd->error == -EILSEQ &&
- 	      (cmd->opcode == MMC_SEND_TUNING_BLOCK ||
--	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200))) ||
-+	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200 ||
-+	       (host->hs400_tuning && cmd->opcode != MMC_SEND_EXT_CSD)))) ||
- 	    (mrq->sbc && mrq->sbc->error))
- 		msdc_request_done(host, mrq);
- 	else if (cmd == mrq->sbc)
-@@ -2251,6 +2261,106 @@ static int msdc_prepare_hs400_tuning(struct mmc_host *mmc, struct mmc_ios *ios)
- 	return 0;
- }
- 
-+static int msdc_send_cxd_data(struct mmc_card *card, struct mmc_host *host)
-+{
-+	struct mmc_request mrq = {};
-+	struct mmc_command cmd = {};
-+	struct mmc_data data = {};
-+	unsigned int len = 512;
-+	struct scatterlist sg;
-+	u8 *ext_csd;
-+
-+	ext_csd = kzalloc(len, GFP_KERNEL);
-+	if (!ext_csd)
-+		return -ENOMEM;
-+
-+	mrq.cmd = &cmd;
-+	mrq.data = &data;
-+
-+	cmd.opcode = MMC_SEND_EXT_CSD;
-+	cmd.arg = 0;
-+	cmd.flags = MMC_RSP_SPI_R1 | MMC_RSP_R1 | MMC_CMD_ADTC;
-+
-+	data.blksz = len;
-+	data.blocks = 1;
-+	data.flags = MMC_DATA_READ;
-+	data.sg = &sg;
-+	data.sg_len = 1;
-+
-+	sg_init_one(&sg, ext_csd, len);
-+	mmc_set_data_timeout(&data, card);
-+	mmc_wait_for_req(host, &mrq);
-+
-+	kfree(ext_csd);
-+
-+	if (cmd.error)
-+		return cmd.error;
-+	if (data.error)
-+		return data.error;
-+
-+	return 0;
-+}
-+
-+static int msdc_execute_hs400_tuning(struct mmc_host *mmc, struct mmc_card *card)
-+{
-+	struct msdc_host *host = mmc_priv(mmc);
-+	struct msdc_delay_phase dly1_delay;
-+	u32 val, result_dly1 = 0;
-+	int i, ret;
-+
-+	if (host->top_base) {
-+		sdr_set_bits(host->top_base + EMMC50_PAD_DS_TUNE,
-+			     PAD_DS_DLY_SEL);
-+		if (host->hs400_ds_dly3)
-+			sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
-+				      PAD_DS_DLY3, host->hs400_ds_dly3);
-+	} else {
-+		sdr_set_bits(host->base + PAD_DS_TUNE, PAD_DS_TUNE_DLY_SEL);
-+		if (host->hs400_ds_dly3)
-+			sdr_set_field(host->base + PAD_DS_TUNE,
-+				      PAD_DS_TUNE_DLY3, host->hs400_ds_dly3);
-+	}
-+
-+	host->hs400_tuning = true;
-+	for (i = 0; i < PAD_DELAY_MAX; i++) {
-+		if (host->top_base)
-+			sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
-+				      PAD_DS_DLY1, i);
-+		else
-+			sdr_set_field(host->base + PAD_DS_TUNE,
-+				      PAD_DS_TUNE_DLY1, i);
-+		ret = msdc_send_cxd_data(card, mmc);
-+		if (!ret)
-+			result_dly1 |= (1 << i);
-+	}
-+	host->hs400_tuning = false;
-+
-+	dly1_delay = get_best_delay(host, result_dly1);
-+	if (dly1_delay.maxlen == 0) {
-+		dev_err(host->dev, "Failed to get DLY1 delay!\n");
-+		goto fail;
-+	}
-+	if (host->top_base)
-+		sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
-+			      PAD_DS_DLY1, dly1_delay.final_phase);
-+	else
-+		sdr_set_field(host->base + PAD_DS_TUNE,
-+			      PAD_DS_TUNE_DLY1, dly1_delay.final_phase);
-+
-+	if (host->top_base)
-+		val = readl(host->top_base + EMMC50_PAD_DS_TUNE);
-+	else
-+		val = readl(host->base + PAD_DS_TUNE);
-+
-+	dev_info(host->dev, "Fianl PAD_DS_TUNE: 0x%x\n", val);
-+
-+	return 0;
-+
-+fail:
-+	dev_err(host->dev, "Failed to tuning DS pin delay!\n");
-+	return -ERANGE;
-+}
-+
- static void msdc_hw_reset(struct mmc_host *mmc)
- {
- 	struct msdc_host *host = mmc_priv(mmc);
-@@ -2377,6 +2487,7 @@ static void msdc_cqe_post_disable(struct mmc_host *mmc)
- 	.card_busy = msdc_card_busy,
- 	.execute_tuning = msdc_execute_tuning,
- 	.prepare_hs400_tuning = msdc_prepare_hs400_tuning,
-+	.execute_hs400_tuning = msdc_execute_hs400_tuning,
- 	.hw_reset = msdc_hw_reset,
++	unsigned int		ra_mtu;
  };
  
-@@ -2396,6 +2507,9 @@ static void msdc_of_property_parse(struct platform_device *pdev,
- 	of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
- 			     &host->hs400_ds_delay);
+ static inline void ipv6_eth_mc_map(const struct in6_addr *addr, char *buf)
+diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
+index 8aad65b69054..eebd3894fe89 100644
+--- a/include/uapi/linux/if_link.h
++++ b/include/uapi/linux/if_link.h
+@@ -417,6 +417,7 @@ enum {
+ 	IFLA_INET6_ICMP6STATS,	/* statistics (icmpv6)		*/
+ 	IFLA_INET6_TOKEN,	/* device token			*/
+ 	IFLA_INET6_ADDR_GEN_MODE, /* implicit address generator mode */
++	IFLA_INET6_RA_MTU,	/* mtu carried in the RA message */
+ 	__IFLA_INET6_MAX
+ };
  
-+	of_property_read_u32(pdev->dev.of_node, "mediatek,hs400-ds-dly3",
-+			     &host->hs400_ds_dly3);
+diff --git a/net/ipv6/addrconf.c b/net/ipv6/addrconf.c
+index 8381288a0d6e..17756f3ed33b 100644
+--- a/net/ipv6/addrconf.c
++++ b/net/ipv6/addrconf.c
+@@ -394,6 +394,7 @@ static struct inet6_dev *ipv6_add_dev(struct net_device *dev)
+ 		ndev->cnf.addr_gen_mode = IN6_ADDR_GEN_MODE_STABLE_PRIVACY;
+ 
+ 	ndev->cnf.mtu6 = dev->mtu;
++	ndev->ra_mtu = 0;
+ 	ndev->nd_parms = neigh_parms_alloc(dev, &nd_tbl);
+ 	if (!ndev->nd_parms) {
+ 		kfree(ndev);
+@@ -3849,6 +3850,7 @@ static int addrconf_ifdown(struct net_device *dev, bool unregister)
+ 	}
+ 
+ 	idev->tstamp = jiffies;
++	idev->ra_mtu = 0;
+ 
+ 	/* Last: Shot the device (if unregistered) */
+ 	if (unregister) {
+@@ -5543,6 +5545,7 @@ static inline size_t inet6_ifla6_size(void)
+ 	     + nla_total_size(ICMP6_MIB_MAX * 8) /* IFLA_INET6_ICMP6STATS */
+ 	     + nla_total_size(sizeof(struct in6_addr)) /* IFLA_INET6_TOKEN */
+ 	     + nla_total_size(1) /* IFLA_INET6_ADDR_GEN_MODE */
++	     + nla_total_size(4) /* IFLA_INET6_RA_MTU */
+ 	     + 0;
+ }
+ 
+@@ -5651,6 +5654,10 @@ static int inet6_fill_ifla6_attrs(struct sk_buff *skb, struct inet6_dev *idev,
+ 	if (nla_put_u8(skb, IFLA_INET6_ADDR_GEN_MODE, idev->cnf.addr_gen_mode))
+ 		goto nla_put_failure;
+ 
++	if (idev->ra_mtu &&
++	    nla_put_u32(skb, IFLA_INET6_RA_MTU, idev->ra_mtu))
++		goto nla_put_failure;
 +
- 	of_property_read_u32(pdev->dev.of_node, "mediatek,hs200-cmd-int-delay",
- 			     &host->hs200_cmd_int_delay);
+ 	return 0;
  
-diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-index ff1a251..7552d5e 100644
---- a/include/linux/mmc/host.h
-+++ b/include/linux/mmc/host.h
-@@ -162,6 +162,9 @@ struct mmc_host_ops {
- 	/* Prepare HS400 target operating frequency depending host driver */
- 	int	(*prepare_hs400_tuning)(struct mmc_host *host, struct mmc_ios *ios);
+ nla_put_failure:
+@@ -5767,6 +5774,9 @@ static int inet6_set_iftoken(struct inet6_dev *idev, struct in6_addr *token,
+ static const struct nla_policy inet6_af_policy[IFLA_INET6_MAX + 1] = {
+ 	[IFLA_INET6_ADDR_GEN_MODE]	= { .type = NLA_U8 },
+ 	[IFLA_INET6_TOKEN]		= { .len = sizeof(struct in6_addr) },
++	[IFLA_INET6_RA_MTU]		= { .type = NLA_REJECT,
++					    .reject_message =
++						"IFLA_INET6_RA_MTU can not be set" },
+ };
  
-+	/* Execute HS400 tuning depending host driver */
-+	int	(*execute_hs400_tuning)(struct mmc_host *host, struct mmc_card *card);
+ static int check_addr_gen_mode(int mode)
+diff --git a/net/ipv6/ndisc.c b/net/ipv6/ndisc.c
+index c467c6419893..4b098521a44c 100644
+--- a/net/ipv6/ndisc.c
++++ b/net/ipv6/ndisc.c
+@@ -1391,12 +1391,6 @@ static void ndisc_router_discovery(struct sk_buff *skb)
+ 		}
+ 	}
+ 
+-	/*
+-	 *	Send a notify if RA changed managed/otherconf flags or timer settings
+-	 */
+-	if (send_ifinfo_notify)
+-		inet6_ifinfo_notify(RTM_NEWLINK, in6_dev);
+-
+ skip_linkparms:
+ 
+ 	/*
+@@ -1496,6 +1490,11 @@ static void ndisc_router_discovery(struct sk_buff *skb)
+ 		memcpy(&n, ((u8 *)(ndopts.nd_opts_mtu+1))+2, sizeof(mtu));
+ 		mtu = ntohl(n);
+ 
++		if (in6_dev->ra_mtu != mtu) {
++			in6_dev->ra_mtu = mtu;
++			send_ifinfo_notify = true;
++		}
 +
- 	/* Prepare switch to DDR during the HS400 init sequence */
- 	int	(*hs400_prepare_ddr)(struct mmc_host *host);
+ 		if (mtu < IPV6_MIN_MTU || mtu > skb->dev->mtu) {
+ 			ND_PRINTK(2, warn, "RA: invalid mtu: %d\n", mtu);
+ 		} else if (in6_dev->cnf.mtu6 != mtu) {
+@@ -1519,6 +1518,12 @@ static void ndisc_router_discovery(struct sk_buff *skb)
+ 		ND_PRINTK(2, warn, "RA: invalid RA options\n");
+ 	}
+ out:
++	/* Send a notify if RA changed managed/otherconf flags or
++	 * timer settings or ra_mtu value
++	 */
++	if (send_ifinfo_notify)
++		inet6_ifinfo_notify(RTM_NEWLINK, in6_dev);
++
+ 	fib6_info_release(rt);
+ 	if (neigh)
+ 		neigh_release(neigh);
+diff --git a/tools/include/uapi/linux/if_link.h b/tools/include/uapi/linux/if_link.h
+index eb15f319aa57..b3610fdd1fee 100644
+--- a/tools/include/uapi/linux/if_link.h
++++ b/tools/include/uapi/linux/if_link.h
+@@ -230,6 +230,7 @@ enum {
+ 	IFLA_INET6_ICMP6STATS,	/* statistics (icmpv6)		*/
+ 	IFLA_INET6_TOKEN,	/* device token			*/
+ 	IFLA_INET6_ADDR_GEN_MODE, /* implicit address generator mode */
++	IFLA_INET6_RA_MTU,	/* mtu carried in the RA message */
+ 	__IFLA_INET6_MAX
+ };
  
 -- 
-1.9.1
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
