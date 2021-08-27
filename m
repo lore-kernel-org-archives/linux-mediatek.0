@@ -2,68 +2,73 @@ Return-Path: <SRS0=sikH=NS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 625DCC432BE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 16:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C1C8C432BE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 17:04:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21CC260FD8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 16:47:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 21CC260FD8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id E2FFD60E52
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Aug 2021 17:04:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E2FFD60E52
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=AnIxvrS0XtyV7KQfCXbpxSnWZeSC5j+6Bt3eGrnAN70=; b=eZuFZ6+Y/MtQfI
-	T7ybG8CX14yU1TV+eCOzyWkCYiuE3gafzOmPdpVbO3cqwSdjQquUggWGUcjGprTNvXTi1QUTrS7h3
-	0z2zgYGC/asDrTM9SVT7Dzmu7lCtSbJec97QaqoNiY4HT5kw6qtIRDTyet8igqWSfNmgxcCXZO2J1
-	zsCwe32QuFiwPxitXgQ/CWmltLYVXUYcKef8x7IfHVqlWvUWAo63uz4KcCo4t/ER++cngWiBcditF
-	1NoulrRbwkqja8gELPfVXLjNv0HLAUXZ5tw6EDx+sQx+p2rUyXvmIBofLRroG25/0DpxBYOt0qdy2
-	lqAE/Qznc3Oj8f1BAFDg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=9wIySACbS5rY1IUE7Zmp4MtyWSv0l8tJ3E8k6OJJ/uA=; b=LpOUTqxxZVsXIuJPM0BNf8tkkv
+	JQxlV8B5kkwZe6VqUaUynRhxe6/IiF8FxoCX30pfIneh/FNo//liARw4XQ5AEtffqJ98lFvE0XlAG
+	Uham8/8bk5VgLGX+LHcbRx5HlsP3azNxg7pF9z4bb4X6n79AP1Ml1nWbc753AgYcqr08W2MGPldIA
+	/CwwTmSaIhxlkQkDnRAvkXy8CLaeHyDQpm/IetK9xw9K/wjxpmbV9MWCTmBjaeqGdcFsJ7sVgEUOL
+	0ElzakWvp63xPBChMRYW5IsnEoA6Kpd3ClcPExdJCBh3VtyEUvGnP92zLzkYqyi5yiBCUjpqOryGn
+	/RYlcc0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJf0D-00Cmav-Q0; Fri, 27 Aug 2021 16:46:49 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mJfGx-00CoY1-Sj; Fri, 27 Aug 2021 17:04:07 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJf00-00CmZf-HT; Fri, 27 Aug 2021 16:46:37 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 67D0960FD8;
- Fri, 27 Aug 2021 16:46:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630082795;
- bh=hMhFii5SEnyesU+J3DnJAqd9NcCDRrvpJCnbR/n6FBY=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=B/tcAg/jio1dncVSKclmFp0GAyYR0lBls+lVdKbgBAHYy6xLf3QSrst94KvbUbKbO
- zgffjO0KvcZAqS1BibHrhskCc5wjfo2WbZvu7Y8k2NGzc6Yw+H2FuttJv7R23dLrZ4
- EZfmEODkqHx/Xre09qo7Wf2QpY7rZLiQoV/S5hsmrIoRu4L+7xI1N3Sx/toGLRHEK9
- btPWBH1NcHlU8uOiLkFLWxkGud9ccL/h0H4fAXwpBETCrcbcn921HenLA02jFjyYYa
- IQgkiSunEAQGswpfPzZUD4RcN1oIMHls85ag4dybbvQmWQHWJXw4pqRPDAu1J1UrwZ
- iEky6AUjHTZvw==
-Date: Fri, 27 Aug 2021 11:46:34 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Chuanjia Liu <chuanjia.liu@mediatek.com>
-Cc: robh+dt@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com,
- lorenzo.pieralisi@arm.com, ryder.lee@mediatek.com,
- jianjun.wang@mediatek.com, yong.wu@mediatek.com,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v12 2/6] PCI: mediatek: Add new method to get shared
- pcie-cfg base address
-Message-ID: <20210827164634.GA3779223@bjorn-Precision-5520>
+ id 1mJfGs-00CoXL-Ri
+ for linux-mediatek@lists.infradead.org; Fri, 27 Aug 2021 17:04:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=Zp2Jx2p4tyFPvaHoFkrRw0ec88lvZ1SKolJlkPGdft8=; b=i2J5Q3kjc5aXG+VEbm2JnxnDAb
+ mzEeEu22XhGhP6CAKVaZW3tuWWjdJIQpJFx4VzPnb8e286EdnvwLxUclpRCyXxzPTcB0oiQljiYzl
+ 5GqJ7byPurzj4ZSpE6Fo2kCgjLd6/kApXMe2l4h/eJh7aZzm880fnWQlS/41nn9AvQRE=;
+Received: from p4ff13206.dip0.t-ipconnect.de ([79.241.50.6] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1mJfGn-0007hd-89; Fri, 27 Aug 2021 19:03:57 +0200
+Subject: Re: [PATCH] mt76: mt7915: add LED support
+To: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Money Wang <money.wang@mediatek.com>
+References: <20210621141430.17577-1-MeiChia.Chiu@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Message-ID: <046a19be-b804-94a1-7c8c-5c4f3bfa8eac@nbd.name>
+Date: Fri, 27 Aug 2021 19:03:56 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210823032800.1660-3-chuanjia.liu@mediatek.com>
+In-Reply-To: <20210621141430.17577-1-MeiChia.Chiu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210827_094636_663456_94AB8E1A 
-X-CRM114-Status: GOOD (  25.52  )
+X-CRM114-CacheID: sfid-20210827_100403_261509_F00D2DE2 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,114 +85,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 23, 2021 at 11:27:56AM +0800, Chuanjia Liu wrote:
-> For the new dts format, add a new method to get
-> shared pcie-cfg base address and use it to configure
-> the PCIECFG controller
 
-Rewrap this to fill 75 columns.
-
-> Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
-> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+On 2021-06-21 16:14, MeiChia Chiu wrote:
+> From: MeiChia Chiu <meichia.chiu@mediatek.com>
+> 
+> Initialize brightness_set and blink_set callbacks to enable LED support.
+> 
+> Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Money Wang <money.wang@mediatek.com>
 > ---
->  drivers/pci/controller/pcie-mediatek.c | 17 +++++++++++++++++
->  1 file changed, 17 insertions(+)
+>  .../net/wireless/mediatek/mt76/mt7915/init.c | 69 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>  .../net/wireless/mediatek/mt76/mt7915/mmio.c |  6 +++--
+>  .../net/wireless/mediatek/mt76/mt7915/regs.h | 19 ++++++++++++++
+>  3 files changed, 92 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 25bee693834f..4296d9e04240 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -14,6 +14,7 @@
->  #include <linux/irqchip/chained_irq.h>
->  #include <linux/irqdomain.h>
->  #include <linux/kernel.h>
-> +#include <linux/mfd/syscon.h>
->  #include <linux/msi.h>
->  #include <linux/module.h>
->  #include <linux/of_address.h>
-> @@ -23,6 +24,7 @@
->  #include <linux/phy/phy.h>
->  #include <linux/platform_device.h>
->  #include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
->  #include <linux/reset.h>
->  
->  #include "../pci.h"
-> @@ -207,6 +209,7 @@ struct mtk_pcie_port {
->   * struct mtk_pcie - PCIe host information
->   * @dev: pointer to PCIe device
->   * @base: IO mapped register base
-> + * @cfg: IO mapped register map for PCIe config
->   * @free_ck: free-run reference clock
->   * @mem: non-prefetchable memory resource
->   * @ports: pointer to PCIe port information
-> @@ -215,6 +218,7 @@ struct mtk_pcie_port {
->  struct mtk_pcie {
->  	struct device *dev;
->  	void __iomem *base;
-> +	struct regmap *cfg;
->  	struct clk *free_ck;
->  
->  	struct list_head ports;
-> @@ -682,6 +686,10 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  		val |= PCIE_CSR_LTSSM_EN(port->slot) |
->  		       PCIE_CSR_ASPM_L1_EN(port->slot);
->  		writel(val, pcie->base + PCIE_SYS_CFG_V2);
-> +	} else if (pcie->cfg) {
-> +		val = PCIE_CSR_LTSSM_EN(port->slot) |
-> +		      PCIE_CSR_ASPM_L1_EN(port->slot);
-> +		regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> index af712a9..43f9245 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> @@ -92,10 +92,12 @@ static u32 __mt7915_reg_addr(struct mt7915_dev *dev, u32 addr)
 >  	}
 >  
->  	/* Assert all reset signals */
-> @@ -985,6 +993,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
->  	struct device *dev = pcie->dev;
->  	struct platform_device *pdev = to_platform_device(dev);
->  	struct resource *regs;
-> +	struct device_node *cfg_node;
->  	int err;
+>  	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
+> -	    (addr >= 0x70000000 && addr < 0x78000000) ||
+> -	    (addr >= 0x7c000000 && addr < 0x7c400000))
+> +	    (addr >= 0x70000000 && addr < 0x78000000))
+>  		return mt7915_reg_map_l1(dev, addr);
 >  
->  	/* get shared registers, which are optional */
-> @@ -995,6 +1004,14 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
->  			return PTR_ERR(pcie->base);
->  	}
->  
-> +	cfg_node = of_find_compatible_node(NULL, NULL,
-> +					   "mediatek,generic-pciecfg");
+> +	if (addr >= 0x7c000000 && addr < 0x7c400000)
+> +		return mt7915_reg_map_l1(dev, addr - 0x64000000);
 
-This looks wrong to me.  IIUC, since we start at NULL, this searches
-the entire device tree for any node with
+This part doesn't make any sense to me. So you're defining registers in
+the 0x7c000000 range, but subtracting 0x64000000 from the address, which
+means we land at 0x18000000, which is already covered by the l1-mapped
+ranges.
+Why not just skip this weird magic trick and define the registers as
+being in the 0x18000000 range?
 
-  compatible = "mediatek,generic-pciecfg"
-
-but we should only care about the specific device/node this driver
-claimed.
-
-Should this be part of the match data, i.e., struct mtk_pcie_soc?
-
-> +	if (cfg_node) {
-> +		pcie->cfg = syscon_node_to_regmap(cfg_node);
-
-Other drivers in drivers/pci/controller/ use
-syscon_regmap_lookup_by_phandle() (j721e, dra7xx, keystone,
-layerscape, artpec6) or syscon_regmap_lookup_by_compatible() (imx6,
-kirin, v3-semi).
-
-You should do it the same way unless there's a need to be different.
-It's also nice if you can use the same struct member name
-("mtk_pcie.cfg") as other drivers.  They're not all consistent, but I
-don't see any other "cfg".
-
-> +		if (IS_ERR(pcie->cfg))
-> +			return PTR_ERR(pcie->cfg);
-> +	}
-> +
->  	pcie->free_ck = devm_clk_get(dev, "free_ck");
->  	if (IS_ERR(pcie->free_ck)) {
->  		if (PTR_ERR(pcie->free_ck) == -EPROBE_DEFER)
-> -- 
-> 2.18.0
-> 
+- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
