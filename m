@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85564C432BE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 10:52:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C58EC432BE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 11:01:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5484760EE5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 10:52:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5484760EE5
+	by mail.kernel.org (Postfix) with ESMTPS id D34FD60E8B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 11:01:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D34FD60E8B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +23,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kUKjfXZ3pzgXcml9RdmdfGcTa9LqwZnPXEZN9uSkT+o=; b=mK5wxCefekXipA
-	0+2QjdyQS3RSv3wcDFcztlxAR3/dppHmIkd+7RfQzcx9IV78JQLnQ0rweOsalSVrNrQLG3kOOXHhL
-	YLCyg4hwlo7avNg95tMzjt2Av4YTYhb7n62+Moitx9fzId6exSRSxkgjHwjTvHah801m2Q25JmEVM
-	lxfeTY6g33okczY36rg7+8rCqo5x2FpniisZ7Mq7TI7DjhZ5ypzYNFbV+bBIhOQu7jHqpGw7h6LWC
-	mkaN5CNqOOEmfNygSrxmsXjF7vOpA7zwkKMyBnEs9oWpNu9y7YNIwPNr2y0iNeGMh9+Le4lvbPDnA
-	Nk7FyKggO9kEPXMPWG0w==;
+	List-Owner; bh=9+U2RTojip1uFBvhMBDUViQFrSoeNFMOQu2+GEIkWiM=; b=T7b+O76O+UTGET
+	bUNsE38VXolgqBOomNRCKinh5of82JPzpkRh0cUTM1nAJDV1jDhHmVKxqObrgVEXIhnVmsOE4+p29
+	rJaALxB+RJEPm0KCm7d8WFNUwZiSQmiG4/zSPd+EcckwKE6tnH2d8rQoxPoKVLan7DLdrkL+KKRY1
+	0tNSBjwvVP+eD8VqbL1z8W0zzQ+rDT0unvT1j7v3bqxsRszf+xQgLQMF2bBPJXYpb65K8oITt0gb5
+	OVFAAQp9wXVhxsWNmu4XPxnGTpT1bKJ+IvqWVueU7L9KFE74Jv6nwXKNlnAZ9Gnh3kDtCp7rFkEgA
+	u/y6wixpllaUYbtNJMRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJvwB-00E2gZ-Sr; Sat, 28 Aug 2021 10:51:47 +0000
+	id 1mJw5Q-00E44l-HB; Sat, 28 Aug 2021 11:01:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJvvi-00E2YA-0i; Sat, 28 Aug 2021 10:51:27 +0000
-X-UUID: 6a266cbb205e460da17a3d12eb51fe84-20210828
+ id 1mJw5L-00E43v-Lm; Sat, 28 Aug 2021 11:01:19 +0000
+X-UUID: ddec68edf1ab43ea8ebc137048b6494a-20210828
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=UxRjaeiWcm3XfePJXtxoFP4OPfO1obmoYMcKTfEX4Wo=; 
- b=OVtvhsn2rBXT6c7R5xMRJ/uZfrdMir9m/3kTruHIDDKI8rmA8eIxrS1OgJvZRvRniIxJ6ntllss6OTDVjEttoHhjRwq0tykVDI1DTYqQCHqiOYSjlTZA/84gn3S2aVCSyjnof2ZLxbZ8VhsFje8Xt4nyHmJy53tw5rFDUFG1j8c=;
-X-UUID: 6a266cbb205e460da17a3d12eb51fe84-20210828
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=13eGGcrrc+3k7DlxRz+/6OEAnPJMNYsBodnim2RV6Yg=; 
+ b=D3YLxHcWUVtfbNmgXh8TpkW8n/74zu1GXIwEn+cPvPOLaXVbbq1+ithxF+47iU2gA3EIp9dUsddDdvF7qRTU5Z45BSTbHtG+iyPLiExQGLD+elym2xsoI2TUXWjDBeJsXBYEfVSEBcWB54TUVwb+LRFg3EsDgxPdqjCyN3dsiOM=;
+X-UUID: ddec68edf1ab43ea8ebc137048b6494a-20210828
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <kewei.xu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 269367844; Sat, 28 Aug 2021 03:51:13 -0700
+ with ESMTP id 1300473815; Sat, 28 Aug 2021 04:01:14 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 28 Aug 2021 03:51:11 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 28 Aug 2021 03:51:15 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 28 Aug 2021 18:51:09 +0800
+ 15.0.1497.2; Sat, 28 Aug 2021 18:51:14 +0800
 Received: from localhost.localdomain (10.17.3.153) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 28 Aug 2021 18:51:08 +0800
+ Transport; Sat, 28 Aug 2021 18:51:13 +0800
 From: Kewei Xu <kewei.xu@mediatek.com>
 To: <wsa@the-dreams.de>
 CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
@@ -65,17 +65,17 @@ CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
  <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
  <ot_daolong.zhu@mediatek.com>, <yuhan.wei@mediatek.com>,
  <kewei.xu@mediatek.com>
-Subject: [PATCH v6 1/7] i2c: mediatek: fixing the incorrect register offset
-Date: Sat, 28 Aug 2021 18:50:53 +0800
-Message-ID: <1630147859-17031-2-git-send-email-kewei.xu@mediatek.com>
+Subject: [PATCH v6 5/7] i2c: mediatek: Add OFFSET_EXT_CONF setting back
+Date: Sat, 28 Aug 2021 18:50:57 +0800
+Message-ID: <1630147859-17031-6-git-send-email-kewei.xu@mediatek.com>
 X-Mailer: git-send-email 1.9.1
 In-Reply-To: <1630147859-17031-1-git-send-email-kewei.xu@mediatek.com>
 References: <1630147859-17031-1-git-send-email-kewei.xu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210828_035119_484686_1ED59DE4 
-X-CRM114-Status: GOOD (  11.93  )
+X-CRM114-CacheID: sfid-20210828_040115_763664_AF23A0EF 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,30 +92,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The reason for the modification here is that the previous
-offset information is incorrect, OFFSET_DEBUGSTAT = 0xE4 is
-the correct value.
+In the commit be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust
+support"), we miss setting OFFSET_EXT_CONF register if
+i2c->dev_comp->timing_adjust is false, now add it back.
 
-Fixes: 25708278f810 ("i2c: mediatek: Add i2c support for MediaTek MT8183")
+Fixes: be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust support")
 Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/i2c/busses/i2c-mt65xx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/i2c/busses/i2c-mt65xx.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 4ca716e..2661ed0 100644
+index 1aa0ba3..6ded82e 100644
 --- a/drivers/i2c/busses/i2c-mt65xx.c
 +++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -193,7 +193,7 @@ enum I2C_REGS_OFFSET {
- 	[OFFSET_CLOCK_DIV] = 0x48,
- 	[OFFSET_SOFTRESET] = 0x50,
- 	[OFFSET_SCL_MIS_COMP_POINT] = 0x90,
--	[OFFSET_DEBUGSTAT] = 0xe0,
-+	[OFFSET_DEBUGSTAT] = 0xe4,
- 	[OFFSET_DEBUGCTRL] = 0xe8,
- 	[OFFSET_FIFO_STAT] = 0xf4,
- 	[OFFSET_FIFO_THRESH] = 0xf8,
+@@ -42,6 +42,8 @@
+ #define I2C_HANDSHAKE_RST		0x0020
+ #define I2C_FIFO_ADDR_CLR		0x0001
+ #define I2C_DELAY_LEN			0x0002
++#define I2C_ST_START_CON		0x8001
++#define I2C_FS_START_CON		0x1800
+ #define I2C_TIME_CLR_VALUE		0x0000
+ #define I2C_TIME_DEFAULT_VALUE		0x0003
+ #define I2C_WRRD_TRANAC_VALUE		0x0002
+@@ -486,6 +488,7 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ {
+ 	u16 control_reg;
+ 	u16 intr_stat_reg;
++	u16 ext_conf_val;
+ 
+ 	mtk_i2c_writew(i2c, I2C_CHN_CLR_FLAG, OFFSET_START);
+ 	intr_stat_reg = mtk_i2c_readw(i2c, OFFSET_INTR_STAT);
+@@ -524,8 +527,13 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ 	if (i2c->dev_comp->ltiming_adjust)
+ 		mtk_i2c_writew(i2c, i2c->ltiming_reg, OFFSET_LTIMING);
+ 
++	if (i2c->speed_hz <= I2C_MAX_STANDARD_MODE_FREQ)
++		ext_conf_val = I2C_ST_START_CON;
++	else
++		ext_conf_val = I2C_FS_START_CON;
++
+ 	if (i2c->dev_comp->timing_adjust) {
+-		mtk_i2c_writew(i2c, i2c->ac_timing.ext, OFFSET_EXT_CONF);
++		ext_conf_val = i2c->ac_timing.ext;
+ 		mtk_i2c_writew(i2c, i2c->ac_timing.inter_clk_div,
+ 			       OFFSET_CLOCK_DIV);
+ 		mtk_i2c_writew(i2c, I2C_SCL_MIS_COMP_VALUE,
+@@ -550,6 +558,7 @@ static void mtk_i2c_init_hw(struct mtk_i2c *i2c)
+ 				       OFFSET_HS_STA_STO_AC_TIMING);
+ 		}
+ 	}
++	mtk_i2c_writew(i2c, ext_conf_val, OFFSET_EXT_CONF);
+ 
+ 	/* If use i2c pin from PMIC mt6397 side, need set PATH_DIR first */
+ 	if (i2c->have_pmic)
 -- 
 1.9.1
 _______________________________________________
