@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D84DCC432BE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 15:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A78E5C4320A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 15:02:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A281F606A5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 15:02:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A281F606A5
+	by mail.kernel.org (Postfix) with ESMTPS id 69148606A5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Aug 2021 15:02:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 69148606A5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,38 +24,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ryrAJ+LB5PywJ5ctBCIb8tnkyldey+u+FaHxUKZg8bk=; b=sD4VmehYfEMN0i
-	WjPB5d8thOgjNgVOY1HKZ/XFvtka+AZXN6KdGonfnPdtizp22sKWbtE9nFKgAqTasJxunspxWQEaE
-	PSCnQHs+u7MAYWYwoliG2qU6luZX/RDxpxQ5PWjUNYkkIsUnPNzYyElzIppl/cHjsdATc/Sr5BcgA
-	o+YaOvdt9vyGIMKS9X73njTAFbmFNgquqdGGDu/IHmQO/rg7zU2UJRwgI2dCttctuaw+maSMBh5GT
-	dD8IRNKHLVibk91893FN+sBvS0AU3kDTZ8gcu6uQqDSjAaDtvymgX2y4tackv+3R0DQlk1ot5lxB2
-	XjyZjmJAD+5ku9P8gNRA==;
+	List-Owner; bh=taajDdq2eRggVow0jqpDKLlzwpMP3IywudCQ8Wk5EQE=; b=RhKU4cSLmKmNkH
+	0FnRLrgqCA6Nx/+PhF6TIGGZRWr9d+4skCJ7e5UMTjHlAFDgxeJYGICJ/a91DXw95MocegJ1tWzYb
+	TGhDiEL0EiNGwzCCsVcbeIGNxnjeEClE94w83SoB8dkksDyw5KGzr6L0ANaGHALay3Ezfl1QT9EMa
+	Z9OLICC3tgi+rlgoqc4Wx61G+bk0mFVKCFBiubLZ7qJE3SDRkMet51RXwgja/h9/Yf24kYdSwoZ8f
+	HGEjdaZZrbzw24SOr2Jk8zYk1R3+e0uGNSeg691/Uxdq11xYSPJQj88IS0x3qhO9HavBM7suKlH8L
+	7JDT90hq/PJf4Lz5e58w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mJzqE-00ENc2-7w; Sat, 28 Aug 2021 15:01:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mJzqF-00ENcD-2l; Sat, 28 Aug 2021 15:01:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mJzpm-00ENX2-5Z; Sat, 28 Aug 2021 15:01:30 +0000
-X-UUID: d9ddb158a2164c64bb3490e165f98194-20210828
+ id 1mJzpm-00ENX5-4T; Sat, 28 Aug 2021 15:01:30 +0000
+X-UUID: e9af15d36a5b4316994f970b0e89c7ca-20210828
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1rdYNLSDcZK4EpIxHQykgJn4EheFgieS/Qvy5O+V+nE=; 
- b=P8E5LFaDPcQkW5b/leQe+q9zFdVXdcSzuW21T5pE4Y2avnX8PuHo6gyGCVbFksAV5h5SC7+Bj4sbYILLAKWFANi3y94jEWihtkKMhOJG/8l2t4At//rgK8Ai1oB1k8YZqbrCieZG7a0q73eECI6pwLGxHdw0t2MT4BOFAI+qtLE=;
-X-UUID: d9ddb158a2164c64bb3490e165f98194-20210828
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=DRyeCUv7TWiMVRHwxcWgboMuFmnkE6FAK0XKTA0OlqI=; 
+ b=PTcZnd67nA9hAwuewrC/w7jJ8l9iNiXjyjEYh8zhhN/M6edexj0SOnHY7pSGATz7chVIXSr9g+9umDkZcklM0NBRaX1eDiHqvxD/1F+g9yJ6FBkon5uLUK7FVHFpI1ZK0uqdHei7Em+vzFXpPzeEvFsSjkGEzBPrcNZE6KJE4E4=;
+X-UUID: e9af15d36a5b4316994f970b0e89c7ca-20210828
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <hector.yuan@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1574201840; Sat, 28 Aug 2021 08:01:20 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 28 Aug 2021 08:01:18 -0700
+ with ESMTP id 1150135041; Sat, 28 Aug 2021 08:01:19 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 28 Aug 2021 08:01:17 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 28 Aug 2021 23:01:17 +0800
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 28 Aug 2021 23:01:16 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 28 Aug 2021 23:01:17 +0800
+ Frontend Transport; Sat, 28 Aug 2021 23:01:16 +0800
 From: Hector Yuan <hector.yuan@mediatek.com>
 To: <linux-mediatek@lists.infradead.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>, "Rafael
@@ -62,17 +63,17 @@ To: <linux-mediatek@lists.infradead.org>,
  Herring" <robh+dt@kernel.org>, <devicetree@vger.kernel.org>
 CC: <linux-kernel@vger.kernel.org>, <wsd_upstream@mediatek.com>,
  <hector.yuan@mediatek.com>
-Subject: [PATCH v14 2/3] cpufreq: Add of_perf_domain_get_sharing_cpumask
-Date: Sat, 28 Aug 2021 23:01:11 +0800
-Message-ID: <1630162872-25452-3-git-send-email-hector.yuan@mediatek.com>
+Subject: [PATCH v14 1/3] ndings: cpufreq: add bindings for MediaTek cpufreq HW
+Date: Sat, 28 Aug 2021 23:01:10 +0800
+Message-ID: <1630162872-25452-2-git-send-email-hector.yuan@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <1630162872-25452-1-git-send-email-hector.yuan@mediatek.com>
 References: <1630162872-25452-1-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210828_080126_260856_47AB3689 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20210828_080126_235519_C33E5A65 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,71 +92,90 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Hector.Yuan" <hector.yuan@mediatek.com>
 
-Add of_perf_domain_get_sharing_cpumask function to group cpu
-to specific performance domain.
+Add devicetree bindings for MediaTek HW driver.
 
 Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
 ---
- include/linux/cpufreq.h |   39 +++++++++++++++++++++++++++++++++++++++
- 1 file changed, 39 insertions(+)
+ .../bindings/cpufreq/cpufreq-mediatek-hw.yaml      |   70 ++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
 
-diff --git a/include/linux/cpufreq.h b/include/linux/cpufreq.h
-index 9fd7194..4916d70 100644
---- a/include/linux/cpufreq.h
-+++ b/include/linux/cpufreq.h
-@@ -13,6 +13,8 @@
- #include <linux/completion.h>
- #include <linux/kobject.h>
- #include <linux/notifier.h>
-+#include <linux/of.h>
-+#include <linux/of_device.h>
- #include <linux/pm_qos.h>
- #include <linux/spinlock.h>
- #include <linux/sysfs.h>
-@@ -1036,6 +1038,43 @@ void arch_set_freq_scale(const struct cpumask *cpus,
- }
- #endif
- 
-+#ifdef CONFIG_CPU_FREQ
-+static inline int of_perf_domain_get_sharing_cpumask(int index, const char *list_name,
-+						     const char *cell_name,
-+						     struct cpumask *cpumask)
-+{
-+	struct device_node *cpu_np;
-+	struct of_phandle_args args;
-+	int cpu, ret;
+diff --git a/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+new file mode 100644
+index 0000000..9cd42a6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/cpufreq/cpufreq-mediatek-hw.yaml
+@@ -0,0 +1,70 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/cpufreq/cpufreq-mediatek-hw.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	for_each_possible_cpu(cpu) {
-+		cpu_np = of_cpu_device_node_get(cpu);
-+		if (!cpu_np)
-+			continue;
++title: MediaTek's CPUFREQ Bindings
 +
-+		ret = of_parse_phandle_with_args(cpu_np, list_name,
-+						 cell_name, 0,
-+						 &args);
++maintainers:
++  - Hector Yuan <hector.yuan@mediatek.com>
 +
-+		of_node_put(cpu_np);
-+		if (ret < 0)
-+			continue;
++description:
++  CPUFREQ HW is a hardware engine used by MediaTek SoCs to
++  manage frequency in hardware. It is capable of controlling
++  frequency for multiple clusters.
 +
-+		if (index == args.args[0])
-+			cpumask_set_cpu(cpu, cpumask);
-+	}
++properties:
++  compatible:
++    const: mediatek,cpufreq-hw
 +
-+	return 0;
-+}
-+#else
-+static inline int of_perf_domain_get_sharing_cpumask(int index, const char *list_name,
-+						     const char *cell_name,
-+						     struct cpumask *cpumask)
-+{
-+	return 0;
-+}
-+#endif
++  reg:
++    minItems: 1
++    maxItems: 2
++    description:
++      Addresses and sizes for the memory of the HW bases in
++      each frequency domain. Each entry corresponds to
++      a register bank for each frequency domain present.
 +
- /* the following are really really optional */
- extern struct freq_attr cpufreq_freq_attr_scaling_available_freqs;
- extern struct freq_attr cpufreq_freq_attr_scaling_boost_freqs;
++  "#performance-domain-cells":
++    description:
++      Number of cells in a performance domain specifier.
++      Set const to 1 here for nodes providing multiple
++      performance domains.
++    const: 1
++
++required:
++  - compatible
++  - reg
++  - "#performance-domain-cells"
++
++additionalProperties: false
++
++examples:
++  - |
++    cpus {
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            cpu0: cpu@0 {
++                device_type = "cpu";
++                compatible = "arm,cortex-a55";
++                enable-method = "psci";
++                performance-domains = <&performance 0>;
++                reg = <0x000>;
++            };
++    };
++
++    /* ... */
++
++    soc {
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        performance: performance-controller@11bc00 {
++            compatible = "mediatek,cpufreq-hw";
++            reg = <0 0x0011bc10 0 0x120>, <0 0x0011bd30 0 0x120>;
++
++            #performance-domain-cells = <1>;
++        };
++    };
 -- 
 1.7.9.5
 _______________________________________________
