@@ -2,75 +2,74 @@ Return-Path: <SRS0=zmqO=NU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-20.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3F308C432BE
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Aug 2021 06:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E940C432BE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Aug 2021 14:13:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E653B60E94
-	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Aug 2021 06:18:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E653B60E94
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C3FFF60E94
+	for <linux-mediatek@archiver.kernel.org>; Sun, 29 Aug 2021 14:13:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C3FFF60E94
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uosJTmT38JlqQISHA8rBMI5Sg2UABJ+jyGeQbJ7jFeA=; b=fTPNOgthdF6IEd
-	xtKcJo7sHSX0cY7S9hAkBcpuwAPIQ46V60xnVY8wt9DMuVLqv5ktI75NWzQ+y8iBmpBhrjTmn4s4L
-	zqlw1HvAb9cL2/IOdfugqKnm7MVPBsEcRXOIBB3ir/pR2lKKKrvaKTwHiw20BT1ZwCIzsxnjlHON4
-	OeNVAQlPLOrJ9gVItXPM0RNj7l1bNzIY6WU9Umm7u9YPpsaFSsw2KmCGGhkSWLht6J2At3pVXDAkn
-	R5hWIyHpTZ7jdWzLLD5pADDm6Jop4cn8B0j5fF1w4l+37z/2yVgZaCCDKDxbsY8VCgoAJxUf8QKsx
-	MiNS4ps5ChU38S/XCZ1A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9T8tMpOqxFzwSgwEL7I8+DgvDuxYDsh6dkEs8R2jQZI=; b=c+36RDlKAU7eaH
+	E5oJO+IG7Mxd/xXkgLUMOq5juPDbT0279eA8BV9QIznz7JtpIOvDt0CyxjCDtzqNzeC2SqNtLKG/K
+	AYQxXGlrcr5K+w4JjUQ1T9OzsewDY/6r4TJ49yjwfLvy/IICnA5MmA/FwxRuGM9fFMkEavcGKWb2X
+	IsdCEFVlnTdoMEwmAs7qsTBcbqs+bgqPbBQj9iy4oK9jy8DKOT9X4F8SxNvA/jQ4hc6wJEyJ0FCf4
+	5jIEXbUQz8WhMBLEiRbn7SEY13FBkx0JFCwqY2JcMqLsi8cfPlvCNfbMML4pMJMJdGDpJqFiXF66u
+	O0BjKy1wglqWDOCsGqdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKE8b-00F7Wl-PH; Sun, 29 Aug 2021 06:17:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mKLYT-00FblD-HD; Sun, 29 Aug 2021 14:13:01 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKE8V-00F7W2-5q
- for linux-mediatek@lists.infradead.org; Sun, 29 Aug 2021 06:17:48 +0000
-X-UUID: 966324d4acca4f558c129324fc8e6fe5-20210828
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=aXHUIMeptOZtLtAXZgcp8SUzyxs9iLmCsdYTIfkdm6Y=; 
- b=rboRrb8BYS103pDTV/fjCjN54fxfVKFCYjKS5V5GIMR0zB9IHktF7kYXloqfKkR5fWPXywdY6ULjC+km6LVJrfhnIoVaQBJB0AuEJjp9pbPviLf9GNDYlCWxQRzu8tHyBIfwP5xNx6o+rQhBZEw1VqFW7hY3eYAVEA0fNxC1PyQ=;
-X-UUID: 966324d4acca4f558c129324fc8e6fe5-20210828
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 7998375; Sat, 28 Aug 2021 23:17:40 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 28 Aug 2021 23:17:38 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 29 Aug 2021 14:17:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 29 Aug 2021 14:17:37 +0800
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- "Ryder Lee" <ryder.lee@mediatek.com>
-Subject: [PATCH v4] mt76: mt7915: introduce mt7915_mcu_beacon_check_caps()
-Date: Sun, 29 Aug 2021 14:17:36 +0800
-Message-ID: <d72dbfa5ce55cfd1e6700979b9f3566edfdae340.1630217348.git.ryder.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mKLYF-00FbjL-HW; Sun, 29 Aug 2021 14:12:49 +0000
+Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
+ [81.101.6.87])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 46D47600AA;
+ Sun, 29 Aug 2021 14:12:34 +0000 (UTC)
+Date: Sun, 29 Aug 2021 15:15:49 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: "hui.liu" <hui.liu@mediatek.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@Huawei.com>, <robh+dt@kernel.org>,
+ <lars@metafoo.de>, <pmeerw@pmeerw.net>, <srv_heupstream@mediatek.com>,
+ <zhiyong.tao@mediatek.com>, <chun-hung.wu@mediatek.com>,
+ <yingjoe.chen@mediatek.com>, <seiya.wang@mediatek.com>,
+ <matthias.bgg@gmail.com>, <s.hauer@pengutronix.de>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v1 1/2] iio: mtk-auxadc: add support IIO_CHAN_INFO_RAW case
+Message-ID: <20210829151549.266c95ab@jic23-huawei>
+In-Reply-To: <9fa19fb18910a593d25fb894237b3c59764db53e.camel@mediatek.com>
+References: <20210812054844.30575-1-hui.liu@mediatek.com>
+ <20210812054844.30575-2-hui.liu@mediatek.com>
+ <20210812190725.00007449@Huawei.com>
+ <042625639032bffe73b60a5c6274511e58e34ef4.camel@mediatek.com>
+ <20210814171007.6892ae94@jic23-huawei>
+ <470d4a7fbbcbcaa35aa9dcbaab6a2b77f98dc528.camel@mediatek.com>
+ <20210817165418.4b1cfdce@jic23-huawei>
+ <a6211ac1b3ab14931499744023ee60c1e82424a8.camel@mediatek.com>
+ <SI2PR03MB56901E5D00D47948BE0E9F989BC69@SI2PR03MB5690.apcprd03.prod.outlook.com>
+ <9fa19fb18910a593d25fb894237b3c59764db53e.camel@mediatek.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210828_231744_658130_F1DAA8D7 
-X-CRM114-Status: GOOD (  16.29  )
+X-CRM114-CacheID: sfid-20210829_071247_677054_FEA82A74 
+X-CRM114-Status: GOOD (  54.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,358 +86,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Beacon elements might be changed by hostapd configuraion, so driver
-should compare both IEs and PHY capabilities to get the least common
-denominator before association.
+On Thu, 26 Aug 2021 10:27:34 +0800
+hui.liu <hui.liu@mediatek.com> wrote:
 
-Co-developed-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
----
-My previous v4 didn't get to patchwork, so resend it.
-v4 - remove extra +.
-v3 - rebase and rework LDPC part.
-v2 - clean up codes.
----
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 164 +++++++++++++-----
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  12 ++
- 2 files changed, 137 insertions(+), 39 deletions(-)
+> Hi Jonathan,
+> 
+> Our internal Kernel module CCCI use _RAW case, we described in the
+> previous mail. Could you give your suggestion?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 39cba8210242..8141a42b2d0b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1317,9 +1317,11 @@ mt7915_mcu_sta_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
- }
- 
- static void
--mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
-+mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
-+		      struct ieee80211_vif *vif)
- {
- 	struct mt7915_sta *msta = (struct mt7915_sta *)sta->drv_priv;
-+	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	struct ieee80211_sta_he_cap *he_cap = &sta->he_cap;
- 	struct ieee80211_he_cap_elem *elem = &he_cap->he_cap_elem;
- 	enum nl80211_band band = msta->vif->phy->mt76->chandef.chan->band;
-@@ -1352,8 +1354,8 @@ mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
- 	     IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_RU_MAPPING_IN_5G))
- 		cap |= STA_REC_HE_CAP_BW20_RU242_SUPPORT;
- 
--	if (elem->phy_cap_info[1] &
--	    IEEE80211_HE_PHY_CAP1_LDPC_CODING_IN_PAYLOAD)
-+	if (mvif->cap.ldpc && (elem->phy_cap_info[1] &
-+			       IEEE80211_HE_PHY_CAP1_LDPC_CODING_IN_PAYLOAD))
- 		cap |= STA_REC_HE_CAP_LDPC;
- 
- 	if (elem->phy_cap_info[1] &
-@@ -1488,8 +1490,10 @@ mt7915_mcu_sta_uapsd_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
- }
- 
- static void
--mt7915_mcu_sta_muru_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
-+mt7915_mcu_sta_muru_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
-+			struct ieee80211_vif *vif)
- {
-+	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	struct ieee80211_sta_he_cap *he_cap = &sta->he_cap;
- 	struct ieee80211_he_cap_elem *elem = &he_cap->he_cap_elem;
- 	struct sta_rec_muru *muru;
-@@ -1499,7 +1503,14 @@ mt7915_mcu_sta_muru_tlv(struct sk_buff *skb, struct ieee80211_sta *sta)
- 
- 	muru = (struct sta_rec_muru *)tlv;
- 	muru->cfg.ofdma_dl_en = true;
--	muru->cfg.mimo_dl_en = true;
-+
-+	/* A non-AP HE station must support MU beamformee */
-+	if (vif->type == NL80211_IFTYPE_STATION && vif->bss_conf.he_support)
-+		muru->cfg.mimo_dl_en = true;
-+	else
-+		muru->cfg.mimo_dl_en = mvif->cap.he_mu_ebfer ||
-+				       mvif->cap.vht_mu_ebfer ||
-+				       mvif->cap.vht_mu_ebfee;
- 
- 	muru->ofdma_dl.punc_pream_rx =
- 		HE_PHY(CAP1_PREAMBLE_PUNC_RX_MASK, elem->phy_cap_info[1]);
-@@ -1598,7 +1609,7 @@ mt7915_mcu_sta_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 
- 	/* starec he */
- 	if (sta->he_cap.has_he)
--		mt7915_mcu_sta_he_tlv(skb, sta);
-+		mt7915_mcu_sta_he_tlv(skb, sta, vif);
- 
- 	/* starec uapsd */
- 	mt7915_mcu_sta_uapsd_tlv(skb, sta, vif);
-@@ -1620,9 +1631,11 @@ mt7915_mcu_wtbl_smps_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
- }
- 
- static void
--mt7915_mcu_wtbl_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
--		       void *sta_wtbl, void *wtbl_tlv)
-+mt7915_mcu_wtbl_ht_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
-+		       struct ieee80211_sta *sta, void *sta_wtbl,
-+		       void *wtbl_tlv)
- {
-+	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
- 	struct wtbl_ht *ht = NULL;
- 	struct tlv *tlv;
- 
-@@ -1631,7 +1644,8 @@ mt7915_mcu_wtbl_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
- 		tlv = mt7915_mcu_add_nested_tlv(skb, WTBL_HT, sizeof(*ht),
- 						wtbl_tlv, sta_wtbl);
- 		ht = (struct wtbl_ht *)tlv;
--		ht->ldpc = !!(sta->ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING);
-+		ht->ldpc = mvif->cap.ldpc &&
-+			   (sta->ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING);
- 		ht->af = sta->ht_cap.ampdu_factor;
- 		ht->mm = sta->ht_cap.ampdu_density;
- 		ht->ht = true;
-@@ -1645,7 +1659,8 @@ mt7915_mcu_wtbl_ht_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
- 		tlv = mt7915_mcu_add_nested_tlv(skb, WTBL_VHT, sizeof(*vht),
- 						wtbl_tlv, sta_wtbl);
- 		vht = (struct wtbl_vht *)tlv;
--		vht->ldpc = !!(sta->vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC);
-+		vht->ldpc = mvif->cap.ldpc &&
-+			    (sta->vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC);
- 		vht->vht = true;
- 
- 		af = FIELD_GET(IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK,
-@@ -1968,7 +1983,7 @@ mt7915_mcu_add_txbf(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 	struct mt7915_phy *phy;
- 	struct sk_buff *skb;
- 	int r, len;
--	bool ebfee = 0, ebf = 0;
-+	bool ebfee = false, ebfer = false;
- 
- 	if (vif->type != NL80211_IFTYPE_STATION &&
- 	    vif->type != NL80211_IFTYPE_AP)
-@@ -1977,42 +1992,32 @@ mt7915_mcu_add_txbf(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 	phy = mvif->band_idx ? mt7915_ext_phy(dev) : &dev->phy;
- 
- 	if (sta->he_cap.has_he) {
--		struct ieee80211_he_cap_elem *pe;
--		const struct ieee80211_he_cap_elem *ve;
--		const struct ieee80211_sta_he_cap *vc;
--
--		pe = &sta->he_cap.he_cap_elem;
--		vc = mt7915_get_he_phy_cap(phy, vif);
--		ve = &vc->he_cap_elem;
--
--		ebfee = !!(HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]) &&
--			   HE_PHY(CAP4_SU_BEAMFORMEE, ve->phy_cap_info[4]));
--		ebf = !!(HE_PHY(CAP3_SU_BEAMFORMER, ve->phy_cap_info[3]) &&
--			 HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]));
--	} else if (sta->vht_cap.vht_supported) {
--		struct ieee80211_sta_vht_cap *pc;
--		struct ieee80211_sta_vht_cap *vc;
-+		struct ieee80211_he_cap_elem *pe = &sta->he_cap.he_cap_elem;
- 
--		pc = &sta->vht_cap;
--		vc = &phy->mt76->sband_5g.sband.vht_cap;
-+		ebfee = mvif->cap.he_su_ebfee &&
-+			HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]);
-+		ebfer = mvif->cap.he_su_ebfer &&
-+			HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]);
-+	} else if (sta->vht_cap.vht_supported) {
-+		u32 cap = sta->vht_cap.cap;
- 
--		ebfee = !!((pc->cap & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE) &&
--			   (vc->cap & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE));
--		ebf = !!((vc->cap & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE) &&
--			 (pc->cap & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE));
-+		ebfee = mvif->cap.vht_su_ebfee &&
-+			(cap & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE);
-+		ebfer = mvif->cap.vht_su_ebfer &&
-+			(cap & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE);
- 	}
- 
- 	/* must keep each tag independent */
- 
- 	/* starec bf */
--	if (ebf || dev->ibf) {
-+	if (ebfer || dev->ibf) {
- 		len = sizeof(struct sta_req_hdr) + sizeof(struct sta_rec_bf);
- 
- 		skb = mt7915_mcu_alloc_sta_req(dev, mvif, msta, len);
- 		if (IS_ERR(skb))
- 			return PTR_ERR(skb);
- 
--		mt7915_mcu_sta_bfer_tlv(skb, sta, vif, phy, enable, ebf);
-+		mt7915_mcu_sta_bfer_tlv(skb, sta, vif, phy, enable, ebfer);
- 
- 		r = mt76_mcu_skb_send_msg(&dev->mt76, skb,
- 					  MCU_EXT_CMD(STA_REC_UPDATE), true);
-@@ -2217,7 +2222,8 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
- 			cap |= STA_CAP_TX_STBC;
- 		if (sta->ht_cap.cap & IEEE80211_HT_CAP_RX_STBC)
- 			cap |= STA_CAP_RX_STBC;
--		if (sta->ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING)
-+		if (mvif->cap.ldpc &&
-+		    (sta->ht_cap.cap & IEEE80211_HT_CAP_LDPC_CODING))
- 			cap |= STA_CAP_LDPC;
- 
- 		mt7915_mcu_set_sta_ht_mcs(sta, ra->ht_mcs,
-@@ -2242,7 +2248,8 @@ mt7915_mcu_sta_rate_ctrl_tlv(struct sk_buff *skb, struct mt7915_dev *dev,
- 			cap |= STA_CAP_VHT_TX_STBC;
- 		if (sta->vht_cap.cap & IEEE80211_VHT_CAP_RXSTBC_1)
- 			cap |= STA_CAP_VHT_RX_STBC;
--		if (sta->vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC)
-+		if (mvif->cap.ldpc &&
-+		    (sta->vht_cap.cap & IEEE80211_VHT_CAP_RXLDPC))
- 			cap |= STA_CAP_VHT_LDPC;
- 
- 		mt7915_mcu_set_sta_vht_mcs(sta, ra->supp_vht_mcs,
-@@ -2276,7 +2283,7 @@ int mt7915_mcu_add_rate_ctrl(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 	 * update sta_rec_he here as well.
- 	 */
- 	if (sta->he_cap.has_he && changed)
--		mt7915_mcu_sta_he_tlv(skb, sta);
-+		mt7915_mcu_sta_he_tlv(skb, sta, vif);
- 
- 	/* sta_rec_ra accommodates BW, NSS and only MCS range format
- 	 * i.e 0-{7,8,9} for VHT.
-@@ -2346,7 +2353,7 @@ mt7915_mcu_add_mu(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 	/* wait until TxBF and MU ready to update stare vht */
- 
- 	/* starec muru */
--	mt7915_mcu_sta_muru_tlv(skb, sta);
-+	mt7915_mcu_sta_muru_tlv(skb, sta, vif);
- 	/* starec vht */
- 	mt7915_mcu_sta_vht_tlv(skb, sta);
- 
-@@ -2405,7 +2412,7 @@ int mt7915_mcu_add_sta(struct mt7915_dev *dev, struct ieee80211_vif *vif,
- 		mt7915_mcu_wtbl_generic_tlv(skb, vif, sta, sta_wtbl, wtbl_hdr);
- 		mt7915_mcu_wtbl_hdr_trans_tlv(skb, vif, sta, sta_wtbl, wtbl_hdr);
- 		if (sta)
--			mt7915_mcu_wtbl_ht_tlv(skb, sta, sta_wtbl, wtbl_hdr);
-+			mt7915_mcu_wtbl_ht_tlv(skb, vif, sta, sta_wtbl, wtbl_hdr);
- 	}
- 
- 	return mt76_mcu_skb_send_msg(&dev->mt76, skb,
-@@ -2499,6 +2506,83 @@ mt7915_mcu_beacon_cont(struct mt7915_dev *dev, struct sk_buff *rskb,
- 	memcpy(buf + MT_TXD_SIZE, skb->data, skb->len);
- }
- 
-+static void
-+mt7915_mcu_beacon_check_caps(struct mt7915_phy *phy, struct ieee80211_vif *vif,
-+			     struct sk_buff *skb)
-+{
-+	struct mt7915_vif *mvif = (struct mt7915_vif *)vif->drv_priv;
-+	struct mt7915_vif_cap *vc = &mvif->cap;
-+	const struct ieee80211_he_cap_elem *he;
-+	const struct ieee80211_vht_cap *vht;
-+	const struct ieee80211_ht_cap *ht;
-+	struct ieee80211_mgmt *mgmt = (struct ieee80211_mgmt *)skb->data;
-+	const u8 *ie;
-+	u32 len, bc;
-+
-+	/* Check missing configuration options to allow AP mode in mac80211
-+	 * to remain in sync with hostapd settings, and get a subset of
-+	 * beacon and hardware capabilities.
-+	 */
-+	if (WARN_ON_ONCE(skb->len <= (mgmt->u.beacon.variable - skb->data)))
-+		return;
-+
-+	memset(vc, 0, sizeof(*vc));
-+
-+	len = skb->len - (mgmt->u.beacon.variable - skb->data);
-+
-+	ie = cfg80211_find_ie(WLAN_EID_HT_CAPABILITY, mgmt->u.beacon.variable,
-+			      len);
-+	if (ie && ie[1] >= sizeof(*ht)) {
-+		ht = (void *)(ie + 2);
-+		bc = le32_to_cpu(ht->cap_info);
-+
-+		vc->ldpc |= !!(bc & IEEE80211_HT_CAP_LDPC_CODING);
-+	}
-+
-+	ie = cfg80211_find_ie(WLAN_EID_VHT_CAPABILITY, mgmt->u.beacon.variable,
-+			      len);
-+	if (ie && ie[1] >= sizeof(*vht)) {
-+		u32 pc = phy->mt76->sband_5g.sband.vht_cap.cap;
-+
-+		vht = (void *)(ie + 2);
-+		bc = le32_to_cpu(vht->vht_cap_info);
-+
-+		vc->ldpc |= !!(bc & IEEE80211_VHT_CAP_RXLDPC);
-+		vc->vht_su_ebfer =
-+			(bc & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE) &&
-+			(pc & IEEE80211_VHT_CAP_SU_BEAMFORMER_CAPABLE);
-+		vc->vht_su_ebfee =
-+			(bc & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE) &&
-+			(pc & IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE);
-+		vc->vht_mu_ebfer =
-+			(bc & IEEE80211_VHT_CAP_MU_BEAMFORMER_CAPABLE) &&
-+			(pc & IEEE80211_VHT_CAP_MU_BEAMFORMER_CAPABLE);
-+		vc->vht_mu_ebfee =
-+			(bc & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE) &&
-+			(pc & IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE);
-+	}
-+
-+	ie = cfg80211_find_ext_ie(WLAN_EID_EXT_HE_CAPABILITY,
-+				  mgmt->u.beacon.variable, len);
-+	if (ie && ie[1] >= sizeof(*he) + 1) {
-+		const struct ieee80211_sta_he_cap *pc =
-+			mt7915_get_he_phy_cap(phy, vif);
-+		const struct ieee80211_he_cap_elem *pe = &pc->he_cap_elem;
-+
-+		he = (void *)(ie + 3);
-+
-+		vc->he_su_ebfer =
-+			HE_PHY(CAP3_SU_BEAMFORMER, he->phy_cap_info[3]) &&
-+			HE_PHY(CAP3_SU_BEAMFORMER, pe->phy_cap_info[3]);
-+		vc->he_su_ebfee =
-+			HE_PHY(CAP4_SU_BEAMFORMEE, he->phy_cap_info[4]) &&
-+			HE_PHY(CAP4_SU_BEAMFORMEE, pe->phy_cap_info[4]);
-+		vc->he_mu_ebfer =
-+			HE_PHY(CAP4_MU_BEAMFORMER, he->phy_cap_info[4]) &&
-+			HE_PHY(CAP4_MU_BEAMFORMER, pe->phy_cap_info[4]);
-+	}
-+}
-+
- int mt7915_mcu_add_beacon(struct ieee80211_hw *hw,
- 			  struct ieee80211_vif *vif, bool en)
- {
-@@ -2539,6 +2623,8 @@ int mt7915_mcu_add_beacon(struct ieee80211_hw *hw,
- 		info->hw_queue |= MT_TX_HW_QUEUE_EXT_PHY;
- 	}
- 
-+	mt7915_mcu_beacon_check_caps(phy, vif, skb);
-+
- 	/* TODO: subtag - bss color count & 11v MBSSID */
- 	mt7915_mcu_beacon_csa(rskb, skb, bcn, &offs);
- 	mt7915_mcu_beacon_cont(dev, rskb, skb, bcn, &offs);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index ab8fc27646e0..e507a34427a1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -83,12 +83,24 @@ struct mt7915_sta {
- 	struct mt7915_sta_key_conf bip;
- };
- 
-+struct mt7915_vif_cap {
-+	bool ldpc:1;
-+	bool vht_su_ebfer:1;
-+	bool vht_su_ebfee:1;
-+	bool vht_mu_ebfer:1;
-+	bool vht_mu_ebfee:1;
-+	bool he_su_ebfer:1;
-+	bool he_su_ebfee:1;
-+	bool he_mu_ebfer:1;
-+}
-+
- struct mt7915_vif {
- 	u16 idx;
- 	u8 omac_idx;
- 	u8 band_idx;
- 	u8 wmm_idx;
- 
-+	struct mt7915_vif_cap cap;
- 	struct mt7915_sta sta;
- 	struct mt7915_phy *phy;
- 
--- 
-2.29.2
+Fix your internal module?  I would have assumed it would want
+calibrated values if available, so it seems a little odd to use _RAW.
+If there is a good reason for it doing so that you can talk about here
+then perhaps we can consider it.
+
+As a general rule we don't put any significant effort into supporting
+out of tree drivers so I'm not very keen on adding _RAW on the basis
+one uses it.
+
+Jonathan
+
+
+> 
+> Thanks.
+> Hui
+> 
+> > 
+> > On Tue, 2021-08-17 at 16:54 +0100, Jonathan Cameron wrote:  
+> > > On Tue, 17 Aug 2021 16:37:52 +0800
+> > > hui.liu <hui.liu@mediatek.com> wrote:
+> > >   
+> > > > On Sat, 2021-08-14 at 17:10 +0100, Jonathan Cameron wrote:  
+> > > > > On Fri, 13 Aug 2021 11:46:24 +0800 hui.liu <  
+> > > > > hui.liu@mediatek.com>   
+> > > > > wrote:
+> > > > >     
+> > > > > > On Thu, 2021-08-12 at 19:07 +0100, Jonathan Cameron wrote:    
+> > > > > > > On Thu, 12 Aug 2021 13:48:43 +0800 Hui Liu 
+> > > > > > > <hui.liu@mediatek.com> wrote:
+> > > > > > >       
+> > > > > > > > Add support IIO_CHAN_INFO_RAW case.      
+> > > > > > > 
+> > > > > > > Why?
+> > > > > > > 
+> > > > > > > We almost never support both RAW and PROCESSED as
+> > > > > > > userspace 
+> > > > > > > should be fine to use either.  There are a few reasons
+> > > > > > > we've 
+> > > > > > > let drivers do this but I would like know why it matters
+> > > > > > > to 
+> > > > > > > you and it definitely needs to be in the patch description.
+> > > > > > >       
+> > > > > > 
+> > > > > > Hi Jonathan,
+> > > > > > 
+> > > > > > 1. To support ADC consumers' different types of requirement:
+> > > > > > some
+> > > > > > consumers want to call iio_read_channel_raw to get raw data,
+> > > > > > the 
+> > > > > > others use iio_read_channel_processed to get voltage.  
+> > > > > 
+> > > > > Give an example of the consumer using the raw channel readback 
+> > > > > (without acess to any scaling information?)
+> > > > >     
+> > > > > > 2. In our origin driver, if consumer call 
+> > > > > > iio_read_channel_processed, read back value is raw data.
+> > > > > > 
+> > > > > > Could we use SCALE instead of PROCESSED in patch for next 
+> > > > > > version, or what's your suggestion?  
+> > > > > 
+> > > > > That would unfortunately be a userspace ABI change.  We can
+> > > > > add 
+> > > > > interfaces but taking them away is normally a problem :(
+> > > > > 
+> > > > > Your reasons here are fine, subject to information on what 
+> > > > > consumer cares about having _RAW, please resend the patch with 
+> > > > > this information added to the description.
+> > > > > 
+> > > > > Thanks,
+> > > > > 
+> > > > > Jonathan  
+> > > > 
+> > > > 1. We found afe/iio-rescale.c, dac/dpot-dac.c and
+> > > > multiplexer/iio- 
+> > > > mux.c call iio_read_channel_raw to get raw data. If they use our
+> > > > ADC 
+> > > > driver, I think we should support _RAW case.
+> > > > If we support _RAW case, we will add more information in v2 
+> > > > description.  
+> > > 
+> > > iio-rescale has recently gained support for processed.
+> > >   
+> > 
+> >   
+> https://git.kernel.org/pub/scm/linux/kernel/git/jic23/iio.git/commit/drivers/iio/afe/iio-rescale.c?h=testing&id=53ebee9499805add3eef630d998c40812e6a1c39
+> > > dpot-dac is a rather obscure special case, so I doubt you actually 
+> > > have one of those.
+> > > If iio-mux is relevant then we should add processed support to
+> > > that 
+> > > driver as well.
+> > > 
+> > > I would rather see those users of the interface fixed than us
+> > > having 
+> > > to tweak lots of drivers to provide _raw when it isn't appropriate
+> > > for 
+> > > that piece of hardware.
+> > > 
+> > > Jonathan
+> > >   
+> > 
+> > Hi Jonathan,
+> > 
+> > For we have an internal use scenario:
+> > Our internal Kernel module CCCI(Communication interface between AP
+> > Core and Modem) would like get raw data from ADC, but CCCI driver
+> > have not do upstream now.
+> > 
+> > If we no need add _RAW, we will only change _PROCESSED readback value
+> > in the next version of patch.
+> >   
+> > > > 
+> > > > 2. Since we change _PROCESSED readback value from raw data to 
+> > > > voltage, our consumer will make the changes synchronously.
+> > > >   
+> > > > > > 
+> > > > > > Thanks.
+> > > > > >     
+> > > > > > > > 
+> > > > > > > > Signed-off-by: Hui Liu <hui.liu@mediatek.com>
+> > > > > > > > ---
+> > > > > > > >  drivers/iio/adc/mt6577_auxadc.c | 16 +++++++++++++++-
+> > > > > > > >  1 file changed, 15 insertions(+), 1 deletion(-)
+> > > > > > > > 
+> > > > > > > > diff --git a/drivers/iio/adc/mt6577_auxadc.c 
+> > > > > > > > b/drivers/iio/adc/mt6577_auxadc.c index 
+> > > > > > > > 79c1dd68b909..e995d43287b2 100644
+> > > > > > > > --- a/drivers/iio/adc/mt6577_auxadc.c
+> > > > > > > > +++ b/drivers/iio/adc/mt6577_auxadc.c
+> > > > > > > > @@ -60,7 +60,8 @@ static const struct
+> > > > > > > > mtk_auxadc_compatible 
+> > > > > > > > mt6765_compat = {
+> > > > > > > >  		.type = IIO_VOLTAGE,				
+> > > > > > > >    
+> > > > > > > >  \
+> > > > > > > >  		.indexed = 1,					
+> > > > > > > >    
+> > > > > > > >  \
+> > > > > > > >  		.channel = (idx),				
+> > > > > > > >     \
+> > > > > > > > -		.info_mask_separate =
+> > > > > > > > BIT(IIO_CHAN_INFO_PROCESSED), \
+> > > > > > > > +		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |	
+> > > > > > > >    
+> > > > > > > >  \
+> > > > > > > > +				      BIT(IIO_CHAN_INFO_PROCESS
+> > > > > > > > ED), \
+> > > > > > > >  }
+> > > > > > > >  
+> > > > > > > >  static const struct iio_chan_spec 
+> > > > > > > > mt6577_auxadc_iio_channels[] = { @@ -181,6 +182,19 @@
+> > > > > > > > static 
+> > > > > > > > int mt6577_auxadc_read_raw(struct iio_dev *indio_dev,
+> > > > > > > >  	struct mt6577_auxadc_device *adc_dev = 
+> > > > > > > > iio_priv(indio_dev);
+> > > > > > > >  
+> > > > > > > >  	switch (info) {
+> > > > > > > > +	case IIO_CHAN_INFO_RAW:
+> > > > > > > > +		*val = mt6577_auxadc_read(indio_dev, chan);
+> > > > > > > > +		if (*val < 0) {
+> > > > > > > > +			dev_notice(indio_dev->dev.parent,
+> > > > > > > > +				"failed to sample data on
+> > > > > > > > channel[%d]\n",
+> > > > > > > > +				chan->channel);
+> > > > > > > > +			return *val;
+> > > > > > > > +		}
+> > > > > > > > +		if (adc_dev->dev_comp->sample_data_cali)
+> > > > > > > > +			*val = mt_auxadc_get_cali_data(*val,
+> > > > > > > > true);
+> > > > > > > > +
+> > > > > > > > +		return IIO_VAL_INT;
+> > > > > > > > +
+> > > > > > > >  	case IIO_CHAN_INFO_PROCESSED:
+> > > > > > > >  		*val = mt6577_auxadc_read(indio_dev, chan);
+> > > > > > > >  		if (*val < 0) {      
+> > > > > > > 
+> > > > > > >       
+> > > > > 
+> > > > >     
+> > > 
+> > >   
+> > 
+> >   
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
