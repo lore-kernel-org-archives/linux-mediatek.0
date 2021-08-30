@@ -5,89 +5,78 @@ X-Spam-Level:
 X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A145BC432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 06:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8DD68C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 07:30:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 50E6E60FA0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 06:08:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 50E6E60FA0
+	by mail.kernel.org (Postfix) with ESMTPS id 44CAD60FD9
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 07:30:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 44CAD60FD9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=08bHExllQi7j7dDmERYDn+sMRPEXEQXnv8020I2k5a4=; b=ddLPP2xnTxZXMW
-	wSRXSxBkqqkuKUxzs9VtSSK5vOgriqPF85yQKi3+yDLmqroHiywWj75NRQL9b6qXcVX7ZTxHeB16h
-	aTwU5kGXY07pi0wfjMahu0TC7IMDPLVtvCtEUW8fTaZzqCwKeipoYUumkjPpLPS0cIbEleOBZ6pxI
-	jxP3ROJFYlIfNwCO4mhwdbWfO6G7wMBIUqBaf2HrzIYa/fRJhKmOUiOW5t9N4lQiz4n8Yx/L+WZhW
-	GOJPom/H+AmYeS9noXMbs40w+oZ47Ev4NBhl0eSzga6G17hWo7O0ufPstgLcsgR4Nal6HKd9gaBSh
-	r3CL5eViG8G3AmKdyUWQ==;
+	List-Archive:List-Unsubscribe:List-Id:Date:MIME-Version:References:
+	In-Reply-To:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=LUrDK2/yFPe+avFMLJKhyvz/frg5zicWuxgrGc+ToDI=; b=y5P6yp6IVZ6rJoU2P0aOeMROq1
+	OAveVUNdDomyezoiIEM2ZZS8N4Vp/BClempiAyFIZtdQnz2J5KuARGEUjpH065pX3TEkUByveZAJE
+	TDa/Nui1uT/htjdkwo4VJLhZdPcpHM9+edbYKF1ks9Txf8XHSDWmPKEClIPO6SosHDixgDqSP6v9a
+	y2EKq0DiR444mlHVZnwjsq4G2kbsmLOAFtXSEUF/COMHzJNsZj77s41YIfsBOjE7w7UsnDtHUAM0G
+	LOe6eBvmfcEfi88CL/7FVrkPLEh6VaPAGEYw65xpBEg+dGB2Gy8vMHzccGnKLAFkL5B7ICqC4Lumz
+	A80O736w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKaSd-00GW4w-F7; Mon, 30 Aug 2021 06:07:59 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mKbjq-00Gc64-Jg; Mon, 30 Aug 2021 07:29:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKaSY-00GW3V-Li; Mon, 30 Aug 2021 06:07:58 +0000
-X-UUID: 592126a46f92421f94d1bdbcc5e8b0ca-20210829
+ id 1mKbjl-00Gc5M-CQ; Mon, 30 Aug 2021 07:29:49 +0000
+X-UUID: 7a889a64fc604a14941eaaaf10fa7be2-20210830
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=yumP0/IwY8D7km3Voc8rlArhIG+mQ1XqIA8K80OLgb0=; 
- b=S01r2tIKTAHpWK6hkfm5NZW2U8nNz+DUgUAaErgDWlNTG+YwLoF11C0QPBMMpvnrpmP7mbe8TlQxVPno8QavpBtzHYv5Aifa95po02jNHfz+ZKLmybQjV7zGylq4OUe1ZzdnGyY14iXbKV22dvn7eWOm2WeBzpdaKxiiXagI7Ac=;
-X-UUID: 592126a46f92421f94d1bdbcc5e8b0ca-20210829
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
+ h=Content-Transfer-Encoding:Date:MIME-Version:Content-Type:References:In-Reply-To:CC:To:From:Subject:Message-ID;
+ bh=ZVvnYNULbD5MSjecvjFcT0NzWEVsC6S/jWzxqMKaweI=; 
+ b=Shdtof7kPoEw9HTESWeHjWG4RhGfWrR+BaIHFeGu5DO4CwUVc+n9gd5Ux9Rxi1pdh9y7IZIxYOTRhmHdR1B/ZjeiUh9T5yOZWMUecTdHFFqJjRnMTAXfYmxU2lS/G7FiftFpcwWKgHg9yssTrxYPiYPOucbHdy1Ieq3RGucwTHg=;
+X-UUID: 7a889a64fc604a14941eaaaf10fa7be2-20210830
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chuanjia.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 673780781; Sun, 29 Aug 2021 23:07:47 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 29 Aug 2021 23:07:45 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 30 Aug 2021 14:07:44 +0800
+ with ESMTP id 373659162; Mon, 30 Aug 2021 00:29:37 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 Aug 2021 00:19:34 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 30 Aug 2021 15:19:27 +0800
 Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 30 Aug 2021 14:07:43 +0800
-Message-ID: <885db6cd26907939511ff132c0fa3ad122c0e588.camel@mediatek.com>
-Subject: Re: [PATCH v5, 13/15] dt-bindings: media: mtk-vcodec: Adds decoder
- dt-bindings for mt8192
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>
-CC: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
- Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>,
- linux-media <linux-media@vger.kernel.org>, devicetree
- <devicetree@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, srv_heupstream
- <srv_heupstream@mediatek.com>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, George Sun
- <george.sun@mediatek.com>
-Date: Mon, 30 Aug 2021 14:07:44 +0800
-In-Reply-To: <CAAEAJfAwUfwK=Cn7ocedhOaPyMqjL6phwSypkKDXGk6EV4D-vg@mail.gmail.com>
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
- <20210811025801.21597-14-yunfei.dong@mediatek.com>
- <YRQQBL8AN0925zj9@pendragon.ideasonboard.com>
- <CAAEAJfAwUfwK=Cn7ocedhOaPyMqjL6phwSypkKDXGk6EV4D-vg@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Mon, 30 Aug 2021 15:19:26 +0800
+Message-ID: <968266ecd5889721aa234c414361bedbe66b9539.camel@mediatek.com>
+Subject: Re: [PATCH v12 2/6] PCI: mediatek: Add new method to get shared
+ pcie-cfg base address
+From: Chuanjia Liu <chuanjia.liu@mediatek.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+CC: <robh+dt@kernel.org>, <bhelgaas@google.com>, <matthias.bgg@gmail.com>,
+ <lorenzo.pieralisi@arm.com>, <ryder.lee@mediatek.com>,
+ <jianjun.wang@mediatek.com>, <yong.wu@mediatek.com>,
+ <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+In-Reply-To: <20210827164634.GA3779223@bjorn-Precision-5520>
+References: <20210827164634.GA3779223@bjorn-Precision-5520>
 MIME-Version: 1.0
+Date: Mon, 30 Aug 2021 15:09:44 +0800
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210829_230754_750109_10D38D79 
-X-CRM114-Status: GOOD (  34.80  )
+X-CRM114-CacheID: sfid-20210830_002945_481092_48B17039 
+X-CRM114-Status: GOOD (  38.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,298 +88,100 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 2021-08-29 at 17:50 -0300, Ezequiel Garcia wrote:
-> On Wed, 11 Aug 2021 at 14:59, Laurent Pinchart
-> <laurent.pinchart@ideasonboard.com> wrote:
-> > 
-> > Hi Yunfei,
-> > 
-> > Thank you for the patch.
-> > 
-> > On Wed, Aug 11, 2021 at 10:57:59AM +0800, Yunfei Dong wrote:
-> > > Adds decoder dt-bindings for mt8192.
-> > > 
-> > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > ---
-> > > v5: no changes
-> > > 
-> > > This patch depends on "Mediatek MT8192 clock support"[1].
-> > > 
-> > > The definition of decoder clocks are in mt8192-clk.h, need to
-> > > include them in case of build fail [1].
-> > > 
-> > > [1]
-> > > https://patchwork.kernel.org/project/linux-mediatek/list/?series=511175
-> > > ---
-> > >  .../media/mediatek,vcodec-comp-decoder.yaml   | 172
-> > > ++++++++++++++++++
-> > >  1 file changed, 172 insertions(+)
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
-> > > decoder.yaml
-> > > 
-> > > diff --git
-> > > a/Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
-> > > decoder.yaml
-> > > b/Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
-> > > decoder.yaml
-> > > new file mode 100644
-> > > index 000000000000..083c89933917
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > > comp-decoder.yaml
-> > > @@ -0,0 +1,172 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id: 
-> > > http://devicetree.org/schemas/iommu/mediatek,vcodec-comp-decoder.yaml#
-> > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > +
-> > > +title: Mediatek Video Decode Accelerator With Component
-> > > +
-> > > +maintainers:
-> > > +  - Yunfei Dong <yunfei.dong@mediatek.com>
-> > > +
-> > > +description: |+
-> > > +  Mediatek Video Decode is the video decode hardware present in
-> > > Mediatek
-> > > +  SoCs which supports high resolution decoding functionalities.
-> > > Required
-> > > +  master and component node.
-> > 
-> > This should explain how the three IP cores relate to each other.
-> > 
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    oneOf:
-> > > +      - enum:
-> > > +          - mediatek,mt8192-vcodec-dec  # for lat hardware
-> > > +          - mediatek,mtk-vcodec-lat     # for core hardware
-> > > +          - mediatek,mtk-vcodec-core
-> > > +
-> > > +  reg:
-> > > +    maxItems: 1
-> > > +
-> > > +  interrupts:
-> > > +    maxItems: 1
-> > > +
-> > > +  clocks:
-> > > +    maxItems: 5
-> > > +
-> > > +  clock-names:
-> > > +    items:
-> > > +      - const: vdec-sel
-> > > +      - const: vdec-soc-vdec
-> > > +      - const: vdec-soc-lat
-> > > +      - const: vdec-vdec
-> > > +      - const: vdec-top
-> > > +
-> > > +  assigned-clocks: true
-> > > +
-> > > +  assigned-clock-parents: true
-> > > +
-> > > +  power-domains:
-> > > +    maxItems: 1
-> > > +
-> > > +  iommus:
-> > > +    minItems: 1
-> > > +    maxItems: 32
-> > > +    description: |
-> > > +      List of the hardware port in respective IOMMU block for
-> > > current Socs.
-> > > +      Refer to bindings/iommu/mediatek,iommu.yaml.
-> > > +
-> > > +  dma-ranges:
-> > > +    maxItems: 1
-> > > +    description: |
-> > > +      Describes the physical address space of IOMMU maps to
-> > > memory.
-> > > +
-> > > +  mediatek,scp:
-> > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > +    maxItems: 1
-> > > +    description:
-> > > +      Describes point to scp.
-> > > +
-> > > +required:
-> > > +      - compatible
-> > > +      - reg
-> > > +      - iommus
-> > > +      - dma-ranges
-> > > +
-> > > +allOf:
-> > > +  - if: #master node
-> > > +      properties:
-> > > +        compatible:
-> > > +          contains:
-> > > +            enum:
-> > > +              - mediatek,mt8192-vcodec-dec  # for lat hardware
-> > > +
-> > > +    then:
-> > > +      required:
-> > > +        - mediatek,scp
-> > > +
-> > > +  - if: #component node
-> > > +      properties:
-> > > +        compatible:
-> > > +          contains:
-> > > +            enum:
-> > > +              - mediatek,mtk-vcodec-lat     # for core hardware
-> > > +              - mediatek,mtk-vcodec-core
-> > > +
-> > > +    then:
-> > > +      required:
-> > > +        - interrupts
-> > > +        - clocks
-> > > +        - clock-names
-> > > +        - assigned-clocks
-> > > +        - assigned-clock-parents
-> > > +        - power-domains
-> > > +
-> > > +
-> > > +additionalProperties: false
-> > > +
-> > > +examples:
-> > > +  - |
-> > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > > +    #include <dt-bindings/memory/mt8192-larb-port.h>
-> > > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > > +    #include <dt-bindings/clock/mt8192-clk.h>
-> > > +    #include <dt-bindings/power/mt8192-power.h>
-> > > +
-> > > +    vcodec_dec: vcodec_dec@16000000 {
-> > > +        compatible = "mediatek,mt8192-vcodec-dec";
-> > > +        reg = <0 0x16000000 0 0x1000>;               /* VDEC_SYS
-> > > */
-> > > +        mediatek,scp = <&scp>;
-> > > +        iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
-> > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-> > > +    };
-> > > +
-> > > +    vcodec_lat: vcodec_lat@0x16010000 {
-> > > +        compatible = "mediatek,mtk-vcodec-lat";
-> > > +        reg = <0 0x16010000 0 0x800>;                /*
-> > > VDEC_MISC */
-> > > +        interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > +        iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
-> > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
-> > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
-> > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
-> > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
-> > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
-> > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
-> > > +             <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
-> > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-> > > +        clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> > > +             <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> > > +             <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-> > > +             <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
-> > > +             <&topckgen CLK_TOP_MAINPLL_D4>;
-> > > +        clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-
-> > > lat",
-> > > +              "vdec-vdec", "vdec-top";
-> > > +        assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-> > > +        assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
-> > > +        power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
-> > > +    };
-> > > +
-> > > +    vcodec_core: vcodec_core@0x16025000 {
-> > > +        compatible = "mediatek,mtk-vcodec-core";
-> > > +        reg = <0 0x16025000 0 0x1000>;               /*
-> > > VDEC_CORE_MISC */
-> > > +        interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > +        iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
-> > > +             <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
-> > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-> > > +        clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> > > +             <&vdecsys CLK_VDEC_VDEC>,
-> > > +             <&vdecsys CLK_VDEC_LAT>,
-> > > +             <&vdecsys CLK_VDEC_LARB1>,
-> > > +             <&topckgen CLK_TOP_MAINPLL_D4>;
-> > > +        clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-
-> > > lat",
-> > > +              "vdec-vdec", "vdec-top";
-> > > +        assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-> > > +        assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
-> > > +        power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
-> > > +    };
-> > 
-> > I'm a bit late in the game, reviewing v5 only, but I'm wondering if
-> > those IP cores need to be modelled in separate nodes. It would be
-> > much
-> > easier, from a software point of view, to have a single node, with
-> > multiple register ranges.
-> > 
-> > Are some of those IP cores used in different SoCs, combined in
-> > different
-> > ways, that make a modular design better ?
-> > 
-> 
-1. Each a node should respect a HW node. Defining a complex node that
-contain multiple register is not better, for they belong to different
-hardware. Different platforms has different hardware count, mt8195 has
-five hardwares.
-2. Another reason is from the IOMMU point, the vcodec HW include core
-and lat hardwares, each of them connect to the independent IOMMU
-hardware for mt8195, can't write all iommu ports together, or hardware
-can't access dram data, so we must separate them.
-> Yeah, I agree with Laurent here. This way of modelling the different
-> parts
-> of the CODEC as different pieces is the reason why you need a
-> framework
-> to pull them together, such as the component API (I guess v4l2-async
-> could have been used as well).
-> 
-We must separate each hardware node, only master need to register video
-and media device, component just used for store clk/power/irq/register
-information for current hardware.
-> I normally don't bother with driver internals, as its up to each
-> driver
-> author to decide what is best. However, I believe this design is too
-> convoluted, and it may lead other developers to follow the same
-> pattern,
-> so please avoid it.
-> 
-According to your information, it looks that component and v4l2 async
-are ok for this architecture, only component is too convoluted(iommu
-driver also use component).
-
-For we are not very familiar with v4l2 async, out architecture is
-designed for component include next forty patches. It is a very big
-change for out driver. I will try to spend a lot of time to change it.
-
-> There are several ways of modelling this and initializing or probing
-> the sub-devices,
-> without using any async framework.
-> 
-You may misunderstand, I'm not objecting your suggestion every time,
-for our driver is designed for component api, need to spend a lot of
-time to change it in many platforms. I will change it if v4l2 async has
-many advantages then component as you said. I will try to use v4l2
-async as compared.
-
-> Thanks,
-> Ezequiel
-
-Thanks for your suggestion.
-Yunfei Dong
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gRnJpLCAyMDIxLTA4LTI3IGF0IDExOjQ2IC0wNTAwLCBCam9ybiBIZWxnYWFzIHdyb3RlOg0K
+PiBPbiBNb24sIEF1ZyAyMywgMjAyMSBhdCAxMToyNzo1NkFNICswODAwLCBDaHVhbmppYSBMaXUg
+d3JvdGU6DQo+ID4gRm9yIHRoZSBuZXcgZHRzIGZvcm1hdCwgYWRkIGEgbmV3IG1ldGhvZCB0byBn
+ZXQNCj4gPiBzaGFyZWQgcGNpZS1jZmcgYmFzZSBhZGRyZXNzIGFuZCB1c2UgaXQgdG8gY29uZmln
+dXJlDQo+ID4gdGhlIFBDSUVDRkcgY29udHJvbGxlcg0KPiANCj4gUmV3cmFwIHRoaXMgdG8gZmls
+bCA3NSBjb2x1bW5zLg0KPiANCj4gPiBTaWduZWQtb2ZmLWJ5OiBDaHVhbmppYSBMaXUgPGNodWFu
+amlhLmxpdUBtZWRpYXRlay5jb20+DQo+ID4gQWNrZWQtYnk6IFJ5ZGVyIExlZSA8cnlkZXIubGVl
+QG1lZGlhdGVrLmNvbT4NCj4gPiAtLS0NCj4gPiAgZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ll
+LW1lZGlhdGVrLmMgfCAxNyArKysrKysrKysrKysrKysrKw0KPiA+ICAxIGZpbGUgY2hhbmdlZCwg
+MTcgaW5zZXJ0aW9ucygrKQ0KPiA+IA0KPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250
+cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYw0KPiA+IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ll
+LW1lZGlhdGVrLmMNCj4gPiBpbmRleCAyNWJlZTY5MzgzNGYuLjQyOTZkOWUwNDI0MCAxMDA2NDQN
+Cj4gPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYw0KPiA+ICsr
+KyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5jDQo+ID4gQEAgLTE0LDYg
+KzE0LDcgQEANCj4gPiAgI2luY2x1ZGUgPGxpbnV4L2lycWNoaXAvY2hhaW5lZF9pcnEuaD4NCj4g
+PiAgI2luY2x1ZGUgPGxpbnV4L2lycWRvbWFpbi5oPg0KPiA+ICAjaW5jbHVkZSA8bGludXgva2Vy
+bmVsLmg+DQo+ID4gKyNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+DQo+ID4gICNpbmNsdWRl
+IDxsaW51eC9tc2kuaD4NCj4gPiAgI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPg0KPiA+ICAjaW5j
+bHVkZSA8bGludXgvb2ZfYWRkcmVzcy5oPg0KPiA+IEBAIC0yMyw2ICsyNCw3IEBADQo+ID4gICNp
+bmNsdWRlIDxsaW51eC9waHkvcGh5Lmg+DQo+ID4gICNpbmNsdWRlIDxsaW51eC9wbGF0Zm9ybV9k
+ZXZpY2UuaD4NCj4gPiAgI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4NCj4gPiArI2luY2x1
+ZGUgPGxpbnV4L3JlZ21hcC5oPg0KPiA+ICAjaW5jbHVkZSA8bGludXgvcmVzZXQuaD4NCj4gPiAg
+DQo+ID4gICNpbmNsdWRlICIuLi9wY2kuaCINCj4gPiBAQCAtMjA3LDYgKzIwOSw3IEBAIHN0cnVj
+dCBtdGtfcGNpZV9wb3J0IHsNCj4gPiAgICogc3RydWN0IG10a19wY2llIC0gUENJZSBob3N0IGlu
+Zm9ybWF0aW9uDQo+ID4gICAqIEBkZXY6IHBvaW50ZXIgdG8gUENJZSBkZXZpY2UNCj4gPiAgICog
+QGJhc2U6IElPIG1hcHBlZCByZWdpc3RlciBiYXNlDQo+ID4gKyAqIEBjZmc6IElPIG1hcHBlZCBy
+ZWdpc3RlciBtYXAgZm9yIFBDSWUgY29uZmlnDQo+ID4gICAqIEBmcmVlX2NrOiBmcmVlLXJ1biBy
+ZWZlcmVuY2UgY2xvY2sNCj4gPiAgICogQG1lbTogbm9uLXByZWZldGNoYWJsZSBtZW1vcnkgcmVz
+b3VyY2UNCj4gPiAgICogQHBvcnRzOiBwb2ludGVyIHRvIFBDSWUgcG9ydCBpbmZvcm1hdGlvbg0K
+PiA+IEBAIC0yMTUsNiArMjE4LDcgQEAgc3RydWN0IG10a19wY2llX3BvcnQgew0KPiA+ICBzdHJ1
+Y3QgbXRrX3BjaWUgew0KPiA+ICAJc3RydWN0IGRldmljZSAqZGV2Ow0KPiA+ICAJdm9pZCBfX2lv
+bWVtICpiYXNlOw0KPiA+ICsJc3RydWN0IHJlZ21hcCAqY2ZnOw0KPiA+ICAJc3RydWN0IGNsayAq
+ZnJlZV9jazsNCj4gPiAgDQo+ID4gIAlzdHJ1Y3QgbGlzdF9oZWFkIHBvcnRzOw0KPiA+IEBAIC02
+ODIsNiArNjg2LDEwIEBAIHN0YXRpYyBpbnQgbXRrX3BjaWVfc3RhcnR1cF9wb3J0X3YyKHN0cnVj
+dA0KPiA+IG10a19wY2llX3BvcnQgKnBvcnQpDQo+ID4gIAkJdmFsIHw9IFBDSUVfQ1NSX0xUU1NN
+X0VOKHBvcnQtPnNsb3QpIHwNCj4gPiAgCQkgICAgICAgUENJRV9DU1JfQVNQTV9MMV9FTihwb3J0
+LT5zbG90KTsNCj4gPiAgCQl3cml0ZWwodmFsLCBwY2llLT5iYXNlICsgUENJRV9TWVNfQ0ZHX1Yy
+KTsNCj4gPiArCX0gZWxzZSBpZiAocGNpZS0+Y2ZnKSB7DQo+ID4gKwkJdmFsID0gUENJRV9DU1Jf
+TFRTU01fRU4ocG9ydC0+c2xvdCkgfA0KPiA+ICsJCSAgICAgIFBDSUVfQ1NSX0FTUE1fTDFfRU4o
+cG9ydC0+c2xvdCk7DQo+ID4gKwkJcmVnbWFwX3VwZGF0ZV9iaXRzKHBjaWUtPmNmZywgUENJRV9T
+WVNfQ0ZHX1YyLCB2YWwsDQo+ID4gdmFsKTsNCj4gPiAgCX0NCj4gPiAgDQo+ID4gIAkvKiBBc3Nl
+cnQgYWxsIHJlc2V0IHNpZ25hbHMgKi8NCj4gPiBAQCAtOTg1LDYgKzk5Myw3IEBAIHN0YXRpYyBp
+bnQgbXRrX3BjaWVfc3Vic3lzX3Bvd2VydXAoc3RydWN0DQo+ID4gbXRrX3BjaWUgKnBjaWUpDQo+
+ID4gIAlzdHJ1Y3QgZGV2aWNlICpkZXYgPSBwY2llLT5kZXY7DQo+ID4gIAlzdHJ1Y3QgcGxhdGZv
+cm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKGRldik7DQo+ID4gIAlzdHJ1Y3Qg
+cmVzb3VyY2UgKnJlZ3M7DQo+ID4gKwlzdHJ1Y3QgZGV2aWNlX25vZGUgKmNmZ19ub2RlOw0KPiA+
+ICAJaW50IGVycjsNCj4gPiAgDQo+ID4gIAkvKiBnZXQgc2hhcmVkIHJlZ2lzdGVycywgd2hpY2gg
+YXJlIG9wdGlvbmFsICovDQo+ID4gQEAgLTk5NSw2ICsxMDA0LDE0IEBAIHN0YXRpYyBpbnQgbXRr
+X3BjaWVfc3Vic3lzX3Bvd2VydXAoc3RydWN0DQo+ID4gbXRrX3BjaWUgKnBjaWUpDQo+ID4gIAkJ
+CXJldHVybiBQVFJfRVJSKHBjaWUtPmJhc2UpOw0KPiA+ICAJfQ0KPiA+ICANCj4gPiArCWNmZ19u
+b2RlID0gb2ZfZmluZF9jb21wYXRpYmxlX25vZGUoTlVMTCwgTlVMTCwNCj4gPiArCQkJCQkgICAi
+bWVkaWF0ZWssZ2VuZXJpYy1wY2llY2ZnIik7DQo+IA0KPiBUaGlzIGxvb2tzIHdyb25nIHRvIG1l
+LiAgSUlVQywgc2luY2Ugd2Ugc3RhcnQgYXQgTlVMTCwgdGhpcyBzZWFyY2hlcw0KPiB0aGUgZW50
+aXJlIGRldmljZSB0cmVlIGZvciBhbnkgbm9kZSB3aXRoDQo+IA0KPiAgIGNvbXBhdGlibGUgPSAi
+bWVkaWF0ZWssZ2VuZXJpYy1wY2llY2ZnIg0KPiANCj4gYnV0IHdlIHNob3VsZCBvbmx5IGNhcmUg
+YWJvdXQgdGhlIHNwZWNpZmljIGRldmljZS9ub2RlIHRoaXMgZHJpdmVyDQo+IGNsYWltZWQuDQo+
+IA0KPiBTaG91bGQgdGhpcyBiZSBwYXJ0IG9mIHRoZSBtYXRjaCBkYXRhLCBpLmUuLCBzdHJ1Y3Qg
+bXRrX3BjaWVfc29jPw0KSGkgQmpvcm4sDQoNClRoYW5rcyBmb3IgeW91ciByZXZpZXcuDQoNCk1h
+bnkgZHJpdmVycyBpbiB0aGUgZHJpdmVycy8gZm9sZGVyIHVzZSBjb21wYXRpYmxlIHRvIHNlYXJj
+aCBkaXJlY3RseS4NCiANCkkgZ3Vlc3MgdGhhdCB3aGVuIGRpZmZlcmVudCBkZXZpY2VzIG5lZWQg
+dG8gc2VhcmNoIGZvciBkaWZmZXJlbnQgbm9kZXMsDQppdCBpcyBuZWNlc3NhcnkgdG8gdXNlIG1h
+dGNoIGRhdGEgdG8gZGV0ZXJtaW5lIHRoZSBjdXJyZW50IG5vZGUgDQppbmZvcm1hdGlvbiB0aGF0
+IG5lZWRzIHRvIGJlIHNlYXJjaGVkLg0KDQpCdXQgaW4gdGhlIGRldmljZXMgc3VwcG9ydGVkIGJ5
+IHRoaXMgZHJpdmVyLCBJIGd1ZXNzIGl0IG5vIG5lZWQgDQp0aHJvdWdoIG1hdGNoIGRhdGEgdG8g
+Y29uZmlybSB0aGUgY29tcGF0aWJsZSBpbmZvcm1hdGlvbu+8jGJlY2F1c2UgaXQgDQphbHdheXMg
+c2VhcmNoIHNhbWUgY29tcGF0aWJsZSAibWVkaWF0ZWssIGdlbmVyaWMtcGNpZWNmZyINCg0KPiAN
+Cj4gPiArCWlmIChjZmdfbm9kZSkgew0KPiA+ICsJCXBjaWUtPmNmZyA9IHN5c2Nvbl9ub2RlX3Rv
+X3JlZ21hcChjZmdfbm9kZSk7DQo+IA0KPiBPdGhlciBkcml2ZXJzIGluIGRyaXZlcnMvcGNpL2Nv
+bnRyb2xsZXIvIHVzZQ0KPiBzeXNjb25fcmVnbWFwX2xvb2t1cF9ieV9waGFuZGxlKCkgKGo3MjFl
+LCBkcmE3eHgsIGtleXN0b25lLA0KPiBsYXllcnNjYXBlLCBhcnRwZWM2KSBvciBzeXNjb25fcmVn
+bWFwX2xvb2t1cF9ieV9jb21wYXRpYmxlKCkgKGlteDYsDQo+IGtpcmluLCB2My1zZW1pKS4NCj4g
+DQo+IFlvdSBzaG91bGQgZG8gaXQgdGhlIHNhbWUgd2F5IHVubGVzcyB0aGVyZSdzIGEgbmVlZCB0
+byBiZSBkaWZmZXJlbnQuDQpJIGhhdmUgdXNlZCBwaGFuZGxlLCBidXQgUm9iIHN1Z2dlc3RlZCB0
+byBzZWFyY2ggZm9yIHRoZSBub2RlIGJ5IA0KY29tcGF0aWJsZS4gVGhlIHJlYXNvbiB3aHkgc3lz
+Y29uX3JlZ21hcF9sb29rdXBfYnlfY29tcGF0aWJsZSgpIGlzIG5vdCANCnVzZWQgaGVyZSBpcyB0
+aGF0IHRoZSBwY2llY2ZnIG5vZGUgaXMgb3B0aW9uYWwsIGFuZCB0aGVyZSBpcyBubyBuZWVkIHRv
+DQpyZXR1cm4gZXJyb3Igd2hlbiB0aGUgbm9kZSBpcyBub3Qgc2VhcmNoZWQuDQoNCj4gSXQncyBh
+bHNvIG5pY2UgaWYgeW91IGNhbiB1c2UgdGhlIHNhbWUgc3RydWN0IG1lbWJlciBuYW1lDQo+ICgi
+bXRrX3BjaWUuY2ZnIikgYXMgb3RoZXIgZHJpdmVycy4gIFRoZXkncmUgbm90IGFsbCBjb25zaXN0
+ZW50LCBidXQgSQ0KPiBkb24ndCBzZWUgYW55IG90aGVyICJjZmciLg0KT3RoZXIgZHJpdmVycyBz
+dHJ1Y3QgbWVtYmVyIG5hbWUgYXJlIGFsc28gZGlmZmVyZW50Lg0KRm9yIGV4YW1wbGUsIHNjZmco
+bGF5ZXJzY2FwZSnvvIxtYXAodjMtc2VtaSksIGNyZ2N0cmwoa2lyaW4pLA0KcmVnbWFwKGFydHBl
+YzYpLk9yIGp1c3QgdXNlIGxvY2FsIHZhcmlhYmxlcywgbmFtZWQgc3lzY29uIG9yIHJlZ21hcC4N
+ClNvIEkgY291bGRuJ3QgYmUgY29uc2lzdGVudCB3aXRoIG90aGVyIGRyaXZlcnMuDQoNClRoYW5r
+cw0KQ2h1YW5qaWENCj4gDQo+ID4gKwkJaWYgKElTX0VSUihwY2llLT5jZmcpKQ0KPiA+ICsJCQly
+ZXR1cm4gUFRSX0VSUihwY2llLT5jZmcpOw0KPiA+ICsJfQ0KPiA+ICsNCj4gPiAgCXBjaWUtPmZy
+ZWVfY2sgPSBkZXZtX2Nsa19nZXQoZGV2LCAiZnJlZV9jayIpOw0KPiA+ICAJaWYgKElTX0VSUihw
+Y2llLT5mcmVlX2NrKSkgew0KPiA+ICAJCWlmIChQVFJfRVJSKHBjaWUtPmZyZWVfY2spID09IC1F
+UFJPQkVfREVGRVIpDQo+ID4gLS0gDQo+ID4gMi4xOC4wDQo+ID4gDQpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
+c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
