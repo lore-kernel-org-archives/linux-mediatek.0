@@ -2,83 +2,71 @@ Return-Path: <SRS0=Uf5e=NV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C5ADC432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 12:36:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5204BC4320A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 14:14:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3F75A60C40
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 12:36:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3F75A60C40
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1BA4060F44
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 14:14:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1BA4060F44
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=fw-web.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g95J7feTUeOruGUK7wGPjxJxZAScKSkCUeVK5n6d+go=; b=z+H5hY21acb7KV
-	WbGcyX7FkIi6MjsleNFbRhZm/7C0Bpqq/bOVq+9+QhtP8ALoinS5HdI+LFARmsi9IL2gspjhE1IVo
-	kNG9B6sbjbJOTscSvLGCaMW2/BbxUXZz6QbxOxXhbX/gyV6RuRecf4BHuSTLSvKEqQnv5Gwh8H+Cv
-	O6seijKsI3XxS2ozTZJi6IjSxcNezMVngutwwG9R6JScwQ56vq7uR/qVHdDHFTCsT9ZiZc4RzWU0S
-	hwqaIyyRIR3PBQt1pVW/bgZYPTrYs18tJVNhAM88WDBA5Ro7y5z1Jkzvrjv8XAyQbnSA89UKQAOWN
-	PdfoGCBLvJOdyHmpr7NA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NtkvjJz24FeGtpdZdhLYuJwwz9cq736VE6QulxCqnIk=; b=2Ud3qPDN6b3CKD
+	Cyj0I+mSKrb+j2E0iK0AkahDIDOoMCmvgRZVesbzI0L85r6BeSTV+KVDI5vXkYfBKjc8thQ3tclEF
+	leoILMLjjWZW662w0NoaxZoByMpmQYTkF4UzCeBq1RbKliC3OhaNdHVfL3kJXNxjhcY4HF/qjzhLw
+	8ruZwUd3QBiHWLSzrKebRRmuPqdZM/ZJuihM16UEVuNVOUiyTO9zJ0OCscXM/JWu9uW2h2f4hqoZk
+	A9YFPK3jtqgN0/p8DoWONWl63XZEWVgWJwGeVSr6CulcdoF9oLvu6zMZHdoBc/3QtQa35/l+v8SfD
+	okVAV4cR53pTaAGAkCMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKgWS-00HFjy-0R; Mon, 30 Aug 2021 12:36:20 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mKi3g-00HPGe-Nq; Mon, 30 Aug 2021 14:14:44 +0000
+Received: from mxout2.routing.net ([2a03:2900:1:a::b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKgWD-00HFhV-A5; Mon, 30 Aug 2021 12:36:06 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 907AB61027;
- Mon, 30 Aug 2021 12:36:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630326964;
- bh=VSnG7ci/z6It+oL6KcTBEhuTf8u1sv3TMd5qXRIvpQw=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=Z9VrAPSYu3o1kLTK5GooxotaEz5m+jtqVGPk8x4/xsNs4xSvwITYKkramNk5d/Ds0
- Teze/fJvUS5JD3p4PamiFqb8HZjoQyXqOhTqZWPGvRcsAursOrRZnb9c31yWhB6kP1
- z7J2AvmUKIV07RunGf8O9elvEyIotC5c1kW9YeGN8AstPmq2X97tMbSCFduB4B7put
- Gjvg/TCjEPgvqzH+1XqWBuZcnDX3l3ZBslHmIwBQ4ginqBAmsCLQGEUmFYThNrvgKJ
- M0cHM01VOqLFW+6ei0XINX0sckimNyiqcvkXgF7RoCI43TdCyB0U20iL6wW7xeU/LQ
- mw9nffcTzgXBA==
-Received: by mail-ed1-f46.google.com with SMTP id i6so21413675edu.1;
- Mon, 30 Aug 2021 05:36:04 -0700 (PDT)
-X-Gm-Message-State: AOAM530qaaIxDA89NB45+5SFmFl0DKFhX0PGSL8FR89rtodZJggE26rU
- GD8K+vEtjLYamMUc1JScKZV/R1eJLn/FIuOxTg==
-X-Google-Smtp-Source: ABdhPJzKe9hTkHckfNaR1ucxYim8h6wVK9o1P5JmQEu+WRbO6Yl0Gq0AZ2KqnNnrX8JgVC8B7aRTlLvuFbVruyQ61UA=
-X-Received: by 2002:a05:6402:70c:: with SMTP id
- w12mr24307350edx.289.1630326963208; 
- Mon, 30 Aug 2021 05:36:03 -0700 (PDT)
+ id 1mKi3P-00HPAL-7A; Mon, 30 Aug 2021 14:14:31 +0000
+Received: from mxbox2.masterlogin.de (unknown [192.168.10.89])
+ by mxout2.routing.net (Postfix) with ESMTP id 7923F5FF41;
+ Mon, 30 Aug 2021 14:14:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
+ s=20200217; t=1630332861;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=HqkVrWRC7EKt3KrlDJ9BJiUPJ234vCZbFseBVJRV4fM=;
+ b=fdxDAbJhGI9SoJ1fk0YpSQfdxuCBKGd4SAmo+gTHWxuI/TAgHXQbrBdeKvo/kQ7Yg1zw2R
+ 9wPCg+6DlLNLrlV0lzy0zG5XIAWqftV41+5pmQX/bnCuoxgomtQYO8dx2DEO3KN0q88WWI
+ Hlg0lgyCkWwbyNdb17zRdLK2x4efIzY=
+Received: from localhost.localdomain (fttx-pool-157.180.227.230.bambit.de
+ [157.180.227.230])
+ by mxbox2.masterlogin.de (Postfix) with ESMTPSA id 9EB44100822;
+ Mon, 30 Aug 2021 14:14:20 +0000 (UTC)
+From: Frank Wunderlich <linux@fw-web.de>
+To: linux-mediatek@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] arm: dts: mt7623: add otg nodes for bpi-r2
+Date: Mon, 30 Aug 2021 16:14:15 +0200
+Message-Id: <20210830141415.106136-1-linux@fw-web.de>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20210819084144.18483-1-trevor.wu@mediatek.com>
- <20210819084144.18483-8-trevor.wu@mediatek.com>
-In-Reply-To: <20210819084144.18483-8-trevor.wu@mediatek.com>
-From: Rob Herring <robh+dt@kernel.org>
-Date: Mon, 30 Aug 2021 07:35:51 -0500
-X-Gmail-Original-Message-ID: <CAL_Jsq+bLVLqqVKfYuXDVYexMojMgZ5p34Pcx7_7LwU40b-2dA@mail.gmail.com>
-Message-ID: <CAL_Jsq+bLVLqqVKfYuXDVYexMojMgZ5p34Pcx7_7LwU40b-2dA@mail.gmail.com>
-Subject: Re: [PATCH v5 07/11] dt-bindings: mediatek: mt8195: add audio afe
- document
-To: Trevor Wu <trevor.wu@mediatek.com>, Mark Brown <broonie@kernel.org>, 
- Stephen Boyd <sboyd@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux-ALSA <alsa-devel@alsa-project.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- devicetree@vger.kernel.org, 
- bicycle.tsai@mediatek.com, Jiaxin Yu <jiaxin.yu@mediatek.com>, 
- Jimmy Cheng-Yi Chiang <cychiang@google.com>, Li-Yu Yu <aaronyu@google.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
+X-Mail-ID: db1bf837-c379-4f08-aad1-a948eac37616
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_053605_422412_3E105BB2 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20210830_071427_637232_9220E87B 
+X-CRM114-Status: UNSURE (   9.24  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,27 +83,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Aug 19, 2021 at 3:43 AM Trevor Wu <trevor.wu@mediatek.com> wrote:
->
-> This patch adds mt8195 audio afe document.
->
-> In order to support dynamic clock reparenting for ADDA and ETDM, PLL
-> and MUX clocks are requested even though they are not consumed by afe
-> directly.
->
-> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> ---
-> This patch depends on the following series that have not been accepted.
->
-> [1] Mediatek MT8195 clock support
-> https://patchwork.kernel.org/project/linux-mediatek/list/?series=501923
-> (dt-bindings/clock/mt8195-clk.h is included)
+From: Frank Wunderlich <frank-w@public-files.de>
 
-This dependency is still not applied, so the example fails. One of the
-following needs to happen: the dependency needs to be applied, this
-patch reverted, or drop the use of the defines in the example.
+Add OTG-Nodes for BananaPi-R2
 
-Rob
+Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+---
+patch is based on
+
+"arm: dts: mt7623: add musb device nodes"
+
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210822041333.5264-2-mans0n@gorani.run/
+---
+ arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 25 +++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+index 8d22aeec91e1..729bc055ffcd 100644
+--- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
++++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+@@ -374,7 +374,14 @@ adie {
+ 				bias-disable;
+ 		};
+ 	};
++
++	musb_pins: musb {
++		pins-musb {
++			pinmux = <MT7623_PIN_237_EXT_SDIO2_FUNC_DRV_VBUS>;
++		};
++	};
+ };
++
+ &consys {
+ 	mediatek,pwrap-regmap = <&pwrap>;
+ 	pinctrl-names = "default";
+@@ -462,3 +469,21 @@ &u3phy1 {
+ &u3phy2 {
+ 	status = "okay";
+ };
++
++&usb0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&musb_pins>;
++	status = "okay";
++	usb-role-switch;
++
++	connector {
++		compatible = "gpio-usb-b-connector", "usb-b-connector";
++		type = "micro";
++		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
++	};
++};
++
++&u2phy1 {
++	status = "okay";
++};
++
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
