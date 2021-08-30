@@ -2,61 +2,94 @@ Return-Path: <SRS0=Uf5e=NV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62F54C432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:05:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C43CC432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:06:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C163600CC
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:05:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2C163600CC
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
+	by mail.kernel.org (Postfix) with ESMTPS id 42C9860462
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:06:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 42C9860462
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gFDM0p9JwqYpzpbsxcsY9JlAHl/xq7I3ickQBC83gQw=; b=2yQTQBohpghwds
-	W/G9EHFtCQxZDDAtsY8VR8/z5Ac/P1a4cSyvo4p4UoE4YHNTMRMdQH4Ow8vyQ8g9x9vd8HIzQVLRU
-	ZhKqz2vTSkIeGeYlFZWmq9nyb3XaQV8XFDUtr2sWp3T3DxLNTp1g8t9pCtx3HKL2024IEsyV5mISJ
-	wj/UPDKyfRGBdhlTbXSnkPBXY0MJopi9I86wyABgT8ouh0h+OWe0JS4OG/Qmd9CG3/vNQCVHYqzxE
-	umwZHyCvlZjB/FEInyluWspOFVtmSN5vT/W6fhmFRiai1fo+pPYcoNuI9dl9I2xqH7PRIBgqHAJMb
-	5WXjF+Uw97azwklxWYAA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xigXLhHUUcfLhiwSXKTtpWPWSpQbO/R/bnLeOjgKKDI=; b=iWFL/7XNtoZ6ZM
+	rBabXrVqVaBuif/bmECBK1VBApO6A5hhG7wo52ncLaBVlnw8cT/onoYxLZq7y+o0W5JVuX0xOEOJQ
+	Q1NCeWIs1TxrV9QamerzHxQJfVl5rHMeVmJILlvuqir8rR+fz3Z8rp8dlFhjk2+qvmbe3WH+U3RjF
+	g6tRAS3yU/754bsl5MfHqZW4vHtqW6yJxsmiCmqoWAZkgvKc1XpTL+KkuZrRxTIMDfzEdfuht+3i/
+	Od1Yt+jgpkttjJXxtpKjAP5+bPcTgHV0IOVH/+A/UAaC0QIk9aDN8z0V5BfDlt7SkkPRa6QCsLZCW
+	dZPeFeV4OHzJdOpylnsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKiqA-00HUk0-PO; Mon, 30 Aug 2021 15:04:50 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKiq8-00HUjO-Cw
- for linux-mediatek@lists.infradead.org; Mon, 30 Aug 2021 15:04:49 +0000
-Received: from smtpclient.apple (p5b3d2185.dip0.t-ipconnect.de [91.61.33.133])
- by mail.holtmann.org (Postfix) with ESMTPSA id 40665CEC82;
- Mon, 30 Aug 2021 17:04:47 +0200 (CEST)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
-Subject: Re: [PATCH 2/2] Bluetooth: btusb: Add protocol for MediaTek bluetooth
- devices(MT7922)
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <20210824154430.27689-2-mark-yw.chen@mediatek.com>
-Date: Mon, 30 Aug 2021 17:04:47 +0200
-Cc: Johan Hedberg <johan.hedberg@gmail.com>, sean.wang@mediatek.com,
- linux-bluetooth@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, michaelfsun@google.com, mcchou@chromium.org
-Message-Id: <3BC55188-B231-4F16-994F-BE0D6E1455B2@holtmann.org>
-References: <20210824154430.27689-1-mark-yw.chen@mediatek.com>
- <20210824154430.27689-2-mark-yw.chen@mediatek.com>
-To: =?utf-8?B?Ik1hcmstWVcgQ2hlbiAo6Zmz5o+a5paHKSI=?=
- <Mark-YW.Chen@mediatek.com>
-X-Mailer: Apple Mail (2.3654.120.0.1.13)
+	id 1mKir7-00HUw4-Q4; Mon, 30 Aug 2021 15:05:49 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mKiqr-00HUrn-IU; Mon, 30 Aug 2021 15:05:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C8D7E60F5C;
+ Mon, 30 Aug 2021 15:05:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1630335932;
+ bh=+w96EgfxB/OnIF4TZZubblNzgSY24akfalBQTQOBFSQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=kCwB0oJQhw9Sx58A5G93DB0VLM6imlaIM/sb/B7vDMY7X22XPdqQnS7BWCZ5Sqq6y
+ Dq8la0BAuDSPiVjYNY6UBGJb2ScyD1ph+kvF7IyVV//+RDgNrUkvFhq784DXfF+I1Q
+ 0xCG0FaUen2RMwYJbNQ9TY3zYh3YTBOP7P7PYGPhwk6b3cVyo1UL3hwb9ELWPw58vt
+ /tZ1Pfszrlnx2ouCcpZrhhsSRk0HVjq9R9L+tcuf8+uEEX1tDJkQOLDYDqbnpEL728
+ pbGAx2Q0KhCCyCbEat8PcupTItksBdrDKJRwBM6Wgb1eDc/MQZ4CQIzmpw9657m+yI
+ LN/w1gYFdT5yQ==
+Received: by mail-ej1-f44.google.com with SMTP id u3so31731910ejz.1;
+ Mon, 30 Aug 2021 08:05:32 -0700 (PDT)
+X-Gm-Message-State: AOAM531GucwiIvlijLQ4Lcd3RfaDRnyKUpOCrbrWa0LYCGO+7fJePick
+ SpHmfbHrokNKSj7x5E21qMMir20CUxT1UFC4Qw==
+X-Google-Smtp-Source: ABdhPJyF3KMiFYr5oMzxYuwKYn4Ft/XJo6sPgysJQrJltM5HoP9Y3XlZs6D0letv4tX1E+fvnmMyrNrRlEjQqFfRe20=
+X-Received: by 2002:a17:906:b4d:: with SMTP id
+ v13mr26149139ejg.468.1630335931267; 
+ Mon, 30 Aug 2021 08:05:31 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210824100027.25989-1-moudy.ho@mediatek.com>
+ <20210824100027.25989-4-moudy.ho@mediatek.com>
+ <YSU0TrfFCsaI1TqV@robh.at.kernel.org>
+ <0092244acd520acac81208b8863b15fba58f4193.camel@mediatek.com>
+In-Reply-To: <0092244acd520acac81208b8863b15fba58f4193.camel@mediatek.com>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 30 Aug 2021 10:05:19 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqJ_cProt35pdd2MjoHsSKtd+0n1Dwq6ooV+CJH5sfOFWg@mail.gmail.com>
+Message-ID: <CAL_JsqJ_cProt35pdd2MjoHsSKtd+0n1Dwq6ooV+CJH5sfOFWg@mail.gmail.com>
+Subject: Re: [PATCH v7 3/5] dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
+To: moudy ho <moudy.ho@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, 
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ devicetree@vger.kernel.org, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>, Nicolas Boichat <drinkcat@chromium.org>,
+ Alexandre Courbot <acourbot@chromium.org>, 
+ Pi-Hsun Shih <pihsun@chromium.org>, menghui.lin@mediatek.com, 
+ Sj Huang <sj.huang@mediatek.com>, ben.lok@mediatek.com, randy.wu@mediatek.com, 
+ srv_heupstream <srv_heupstream@mediatek.com>, Hsin-Yi Wang <hsinyi@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_080448_641554_5FD192D2 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20210830_080533_685720_60A24757 
+X-CRM114-Status: GOOD (  27.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,73 +106,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+On Mon, Aug 30, 2021 at 2:58 AM moudy ho <moudy.ho@mediatek.com> wrote:
+>
+> On Tue, 2021-08-24 at 13:02 -0500, Rob Herring wrote:
+> > On Tue, Aug 24, 2021 at 06:00:25PM +0800, Moudy Ho wrote:
+> > > This patch adds DT binding document for Media Data Path 3 (MDP3)
+> > > a unit in multimedia system used for scaling and color format
+> > > convert.
+> > >
+> > > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > > ---
+> > >  .../bindings/media/mediatek,mdp3-ccorr.yaml   |  57 +++++
+> > >  .../bindings/media/mediatek,mdp3-rdma.yaml    | 207
+> > > ++++++++++++++++++
+> > >  .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++++++
+> > >  .../bindings/media/mediatek,mdp3-wdma.yaml    |  71 ++++++
+> > >  .../bindings/media/mediatek,mdp3-wrot.yaml    |  71 ++++++
+> > >  5 files changed, 471 insertions(+)
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/media/mediatek,mdp3-ccorr.yaml
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/media/mediatek,mdp3-wdma.yaml
+> > >  create mode 100644
+> > > Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+> > >
+> > > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > ccorr.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > ccorr.yaml
+> > > new file mode 100644
+> > > index 000000000000..59fd68b46022
+> > > --- /dev/null
+> > > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > ccorr.yaml
+> > > @@ -0,0 +1,57 @@
+> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > +%YAML 1.2
+> > > +---
+> > > +$id:
+> > > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-ccorr.yaml*__;Iw!!CTRNKA9wMg0ARbw!1C0ChLqzi7Zq8D2d4_S4IqCEei4GXdgy3_VCQg8MdsJP7n8TlxbGyajipusfH8hi$
+> > >
+> > > +$schema:
+> > > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!1C0ChLqzi7Zq8D2d4_S4IqCEei4GXdgy3_VCQg8MdsJP7n8TlxbGyajipi-OInix$
+> > >
+> > > +
+> > > +title: Mediatek Media Data Path 3 CCORR Device Tree Bindings
+> > > +
+> > > +maintainers:
+> > > +  - Daoyuan Huang <daoyuan.huang@mediatek.com>
+> > > +  - Moudy Ho <moudy.ho@mediatek.com>
+> > > +
+> > > +description: |
+> > > +  One of Media Data Path 3 (MDP3) components used to do color
+> > > correction with 3X3 matrix.
+> > > +
+> > > +properties:
+> > > +  compatible:
+> > > +    items:
+> > > +      - enum:
+> > > +        - mediatek,mt8183-mdp3-ccorr
+> > > +
+> > > +  mediatek,mdp3-id:
+> > > +    $ref: /schemas/types.yaml#/definitions/uint32
+> > > +    maxItems: 1
+> > > +    description: |
+> > > +      HW index to distinguish same functionality modules.
+> >
+> > If we wanted h/w indexes in DT, we'd have a standard property. Why
+> > do
+> > you need this?
+> >
+> I'm sorry not quite sure what HW indexes means (something like
+> aliases?)
 
-> The information in /sys/kernel/debug/usb/devices about the MT7922U
-> Bluetooth device is listed as the below.
-> 
-> T: Bus=01 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#= 18 Spd=480 MxCh= 0
-> D: Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs= 1
-> P: Vendor=0e8d ProdID=7922 Rev= 1.00
-> S: Manufacturer=MediaTek Inc.
-> S: Product=Wireless_Device
-> S: SerialNumber=000000000
-> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-> A: FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=81(I) Atr=03(Int.) MxPS= 16 Ivl=125us
-> E: Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> E: Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=83(I) Atr=01(Isoc) MxPS= 0 Ivl=1ms
-> E: Ad=03(O) Atr=01(Isoc) MxPS= 0 Ivl=1ms
-> I: If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=83(I) Atr=01(Isoc) MxPS= 9 Ivl=1ms
-> E: Ad=03(O) Atr=01(Isoc) MxPS= 9 Ivl=1ms
-> I: If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=83(I) Atr=01(Isoc) MxPS= 17 Ivl=1ms
-> E: Ad=03(O) Atr=01(Isoc) MxPS= 17 Ivl=1ms
-> I: If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=83(I) Atr=01(Isoc) MxPS= 25 Ivl=1ms
-> E: Ad=03(O) Atr=01(Isoc) MxPS= 25 Ivl=1ms
-> I: If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=83(I) Atr=01(Isoc) MxPS= 33 Ivl=1ms
-> E: Ad=03(O) Atr=01(Isoc) MxPS= 33 Ivl=1ms
-> I: If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=83(I) Atr=01(Isoc) MxPS= 49 Ivl=1ms
-> E: Ad=03(O) Atr=01(Isoc) MxPS= 49 Ivl=1ms
-> I: If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-> E: Ad=83(I) Atr=01(Isoc) MxPS= 63 Ivl=1ms
-> E: Ad=03(O) Atr=01(Isoc) MxPS= 63 Ivl=1ms
-> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E: Ad=8a(I) Atr=03(Int.) MxPS= 64 Ivl=125us
-> E: Ad=0a(O) Atr=03(Int.) MxPS= 64 Ivl=125us
-> I: If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-> E: Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
-> E: Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
-> 
-> Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
-> ---
-> drivers/bluetooth/btusb.c | 2 ++
-> 1 file changed, 2 insertions(+)
-> 
-> diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-> index 41e7c9f28d82..fe52f7b9548e 100644
-> --- a/drivers/bluetooth/btusb.c
-> +++ b/drivers/bluetooth/btusb.c
-> @@ -2821,6 +2821,8 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
-> 	case 0x7668:
-> 		fwname = FIRMWARE_MT7668;
-> 		break;
-> +	case 0x7922:
-> +		fallthrough;
+It means whatever you said in your description.
 
-The fallthrough is not needed. Multiple case labels in a row are fine.
+And no, I'm not suggesting you use aliases.
 
-Regards
+> It was originally used to mark multiple identical modules in the MDP
+> data path algorithm, so that appropriate paths can be dynamically
+> dispatched.
 
-Marcel
+If they are identical, then why do you need to distinguish them in DT?
+If there's some difference you need to know about such as connections
+to other blocks, then describe that. Another common example is needing
+to know what bits/registers to access in a syscon phandle. For that,
+make the register offset or bits be args to the phandle property.
 
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
