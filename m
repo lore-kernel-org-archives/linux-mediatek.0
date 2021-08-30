@@ -4,79 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A775EC432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 00:37:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DC994C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 02:25:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 610B560F38
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 00:37:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 610B560F38
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9A0A560F46
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 02:25:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9A0A560F46
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=samsung.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xVHoVne9+wqBmz2m21akjLv0Y+fZdwhH8SHuCv3nKz0=; b=kURjOU6dNzb6a7
-	Mb3mZatwPSNO4b5PhtFrMrpl3ZzkzWI5Tq6G6aOGbeXz6hLQtJ0quhmwv+V+igXWk+ltDUV8vg2ji
-	IXkPEf9l1LtbuHAGTeBNJ4eTB0GR6BQXY7fZrbUxjwvSIF8y4AJgvCGfOy+WpD53pVfm/Mj9L9Z0h
-	1ee9sRNinicPqFG6zjkarHFnkq7Fun4V7F7qSmjlI37nYUX4X5kq+keoWEBAXyt++8GR1h+Vubh+A
-	M0cu80JP4AL0IYe1lBKS4jNojkl5JQTSMEFHinww192OucobInPLdQarlkfQVTYXGy+7R5Xm9DsBx
-	ioj+Q5lW/VFuLK/xuQVQ==;
+	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-Id:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	List-Owner; bh=+j5qnRm3kE7/h7S4ltJUuqrULIanqjqmp75ftqmdNiA=; b=xrg0FC/MW13WCU
+	JU0ardcIDSw8f6vDRLHCy21/F/Gc76ONv/v11sOMDlxv8EqQZvoFlZe9/elCxzZVc8NtwuV4J7A7P
+	p5ElEoj/AJAZcOu379cnAwmqxCJAoVmx93U7DQkToG0gjZkRUNysGBoF25GcjyrF6cQ1+wo3TENfD
+	ppJpFtwX/7SPy3oEDML4uXhhyIzKgYgnWkxM4lGchxwy6xlh2F4C2s9wvbAvHf1VqTUkbu9lVzQYq
+	nLUsuQp4/iN2MbkSll8u4dz6yDYOe4v0iksRz1idy4DASDOa0nO2bUmt1vXnxXRlvYUkwdC2UkW7q
+	AQOnhVORCBxbkMQhSKdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKVIb-00GBST-4q; Mon, 30 Aug 2021 00:37:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mKWzR-00GIAf-1j; Mon, 30 Aug 2021 02:25:37 +0000
+Received: from mailout2.samsung.com ([203.254.224.25])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKVHk-00GB9J-HR; Mon, 30 Aug 2021 00:36:27 +0000
-X-UUID: aa852d96cd594c258005c7d86914ec4c-20210829
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=1BsMoWGIpd0qSsmDAB4UAF+H7ImX4RnCtMIBQx2ydiQ=; 
- b=ID3sZFbx9MKhOH/3s9iMeuWNCddQ9ZDrGS/gwLFjhgpu2oJJUovrkDSdDgbM1C5IvuWIkmNAz1czfjlcr3jJ2w3v2MijKpDgmUxF0vkqb+l0c/f4KNTCkklD8yqT3wQdH4+cSa8b6d9peEPkqeIQc2rH5pYVCOSRTufXDALTh6c=;
-X-UUID: aa852d96cd594c258005c7d86914ec4c-20210829
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 470684846; Sun, 29 Aug 2021 17:36:20 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 29 Aug 2021 17:36:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 30 Aug 2021 08:36:17 +0800
-Received: from localhost.localdomain (10.17.3.153) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 30 Aug 2021 08:36:16 +0800
-From: Zhiyong Tao <zhiyong.tao@mediatek.com>
-To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
- <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
-CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
- <hui.liu@mediatek.com>, <eddie.huang@mediatek.com>,
- <light.hsieh@mediatek.com>, <biao.huang@mediatek.com>,
- <hongzhou.yang@mediatek.com>, <sean.wang@mediatek.com>,
- <seiya.wang@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>
-Subject: [PATCH v11 4/4] pinctrl: mediatek: add rsel setting on MT8195
-Date: Mon, 30 Aug 2021 08:36:03 +0800
-Message-ID: <20210830003603.31864-5-zhiyong.tao@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
-References: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
+ id 1mKWz8-00GI4X-Ru
+ for linux-mediatek@lists.infradead.org; Mon, 30 Aug 2021 02:25:22 +0000
+Received: from epcas1p2.samsung.com (unknown [182.195.41.46])
+ by mailout2.samsung.com (KnoxPortal) with ESMTP id
+ 20210830022511epoutp029036b6da419c98dffc8d88c807b86818~f9GaFoocx1896518965epoutp02D
+ for <linux-mediatek@lists.infradead.org>; Mon, 30 Aug 2021 02:25:11 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout2.samsung.com
+ 20210830022511epoutp029036b6da419c98dffc8d88c807b86818~f9GaFoocx1896518965epoutp02D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1630290311;
+ bh=0r3qu4CLNN9tvQl31crOG0KHQGziNPyjpHVWFAuHfzY=;
+ h=From:To:Cc:Subject:Date:References:From;
+ b=vDqlT11uo3nHUellcp3xCx7tH7NkW7KAPRjumQ65cHh913h0Bu+1vEPPa+qp7/RR0
+ ejY4lsnVlZGObN0e7SP2tjUW3OhsECm2mnxqZB/Py+brLoEStce93wpKGqaG9KvRUR
+ LLE+Wab/NSUB4QPa7ZvDdO+R0L/lVLZ2NvZZR7Qs=
+Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
+ epcas1p4.samsung.com (KnoxPortal) with ESMTP id
+ 20210830022510epcas1p427dbdd9fc2b4e465c7f74114b7c988bc~f9GZTeJTR2695126951epcas1p4F;
+ Mon, 30 Aug 2021 02:25:10 +0000 (GMT)
+Received: from epsmges1p5.samsung.com (unknown [182.195.38.247]) by
+ epsnrtp2.localdomain (Postfix) with ESMTP id 4GyZ0h3hQQz4x9QT; Mon, 30 Aug
+ 2021 02:25:08 +0000 (GMT)
+Received: from epcas1p4.samsung.com ( [182.195.41.48]) by
+ epsmges1p5.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 09.BC.09752.4814C216; Mon, 30 Aug 2021 11:25:08 +0900 (KST)
+Received: from epsmtrp1.samsung.com (unknown [182.195.40.13]) by
+ epcas1p4.samsung.com (KnoxPortal) with ESMTPA id
+ 20210830022507epcas1p43b45563c6e36bd00e3b6160bb42605bf~f9GW0P4Jt2694726947epcas1p48;
+ Mon, 30 Aug 2021 02:25:07 +0000 (GMT)
+Received: from epsmgms1p2.samsung.com (unknown [182.195.42.42]) by
+ epsmtrp1.samsung.com (KnoxPortal) with ESMTP id
+ 20210830022507epsmtrp17a9164166ddcff0aaf7b3781310ece33~f9GWzd4l21577215772epsmtrp1-;
+ Mon, 30 Aug 2021 02:25:07 +0000 (GMT)
+X-AuditID: b6c32a39-6a7ff70000002618-ff-612c41846dd8
+Received: from epsmtip1.samsung.com ( [182.195.34.30]) by
+ epsmgms1p2.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 8B.F8.08750.3814C216; Mon, 30 Aug 2021 11:25:07 +0900 (KST)
+Received: from localhost.localdomain (unknown [10.253.100.232]) by
+ epsmtip1.samsung.com (KnoxPortal) with ESMTPA id
+ 20210830022507epsmtip15c3b308268a82bde7c44a7d643ce37fe~f9GWjL1lc2712027120epsmtip1I;
+ Mon, 30 Aug 2021 02:25:07 +0000 (GMT)
+From: Chanwoo Lee <cw9316.lee@samsung.com>
+To: chaotian.jing@mediatek.com, ulf.hansson@linaro.org,
+ matthias.bgg@gmail.com, linux-mmc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: grant.jung@samsung.com, jt77.jang@samsung.com, dh0421.hwang@samsung.com,
+ sh043.lee@samsung.com, ChanWoo Lee <cw9316.lee@samsung.com>
+Subject: [PATCH] mmc: mtk-sd: Remove unused parameters
+Date: Mon, 30 Aug 2021 11:17:49 +0900
+Message-Id: <20210830021749.5947-1-cw9316.lee@samsung.com>
+X-Mailer: git-send-email 2.29.0
 MIME-Version: 1.0
-X-MTK: N
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFprFJsWRmVeSWpSXmKPExsWy7bCmgW6Lo06iwfPtohbXbs1ns5hxqo3V
+ Yt+1k+wWv/6uZ7fY8fwMu8Wmx9dYLS7vmsNmcbn5IqPFkf/9jBZNLcYWTX/2sVgcXxvuwOOx
+ c9Zddo871/aweWxeUu/RcnI/i0ffllWMHp83yQWwRWXbZKQmpqQWKaTmJeenZOal2yp5B8c7
+ x5uaGRjqGlpamCsp5CXmptoqufgE6Lpl5gBdqKRQlphTChQKSCwuVtK3synKLy1JVcjILy6x
+ VUotSMkpMCvQK07MLS7NS9fLSy2xMjQwMDIFKkzIzmi8fpixoI+/YtHF7cwNjFd4uhg5OSQE
+ TCTebmti6WLk4hAS2MEo0b+zhx0kISTwiVHi6ypmiMRnRom+1bPZYTpOdj9hhEjsYpRY09PF
+ AtHxhVHi/X6RLkYODjYBLYnbx7xBakQErjNKvG3bALaCWaCLUeLXQYgGYQEzibuTprKBNLAI
+ qEqsaysHCfMKWEk0XF7PBrFMXuLP/R5miLigxMmZT8BamYHizVtng10nIfCTXWLe1b8sEA0u
+ Etd/nWGCsIUlXh3fAnW1lMTL/jZ2iIZmRolTs89BOS2MEq+v3ICqMpb49PkzI8hFzAKaEut3
+ 6UOEFSV2/p7LCLGZT+Ld1x5WkBIJAV6JjjYhiBIViTld59hgdn288RiqxENi9Uw+SPjESmz/
+ 3sc6gVF+FpJ3ZiF5ZxbC3gWMzKsYxVILinPTU4sNC0zhkZqcn7uJEZxItSx3ME5/+0HvECMT
+ B+MhRgkOZiUR3uw3WolCvCmJlVWpRfnxRaU5qcWHGE2B4TuRWUo0OR+YyvNK4g1NLA1MzIxM
+ LIwtjc2UxHkZX8kkCgmkJ5akZqemFqQWwfQxcXBKNTBNXTVXJbfg6zS/mKpYRQGXHZf/O+62
+ rVW0fGcZpvTWM+bMFI7jJ+d/XflijuNRU7X6aDmtVw9fftjPumjF7sfOvSyb5s4T7VS+Pn0a
+ y8qJsnPkbzwNM1nzkOGHYNImK52CQ/9LK1YUH4/dxjhb4hd/37rmXk9mtWt3l35JjH6+//6L
+ Ut2z2T2apzLk9zfFn72+l+/riS3xmx/vXvNda5LrKvcw7q+XGv2np22WtJQO386T/y4t6Nqq
+ smTH8ntvTnpnPuHLfrVpb6ft6yXHM04b/v3h/Gi9LHf/VP3oz40Xa2ZuLDG1XqN17ODJ2ku8
+ G0+KLg+9nhfYtcHE8t/iaPM5B++8Z3vSln9g1nZDPq7YI0osxRmJhlrMRcWJAJ6fVt4tBAAA
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFjrJLMWRmVeSWpSXmKPExsWy7bCSnG6zo06iQccVVYtrt+azWcw41cZq
+ se/aSXaLX3/Xs1vseH6G3WLT42usFpd3zWGzuNx8kdHiyP9+RoumFmOLpj/7WCyOrw134PHY
+ Oesuu8eda3vYPDYvqfdoObmfxaNvyypGj8+b5ALYorhsUlJzMstSi/TtErgyGq8fZizo469Y
+ dHE7cwPjFZ4uRk4OCQETiZPdTxi7GLk4hAR2MEr8PLyXGSIhJbF7/3m2LkYOIFtY4vDhYoia
+ T4wS3/63M4HE2QS0JG4f8waJiwjcZZQ49PYwO4jDLDCBUWLxlbdgg4QFzCTuTpoKNohFQFVi
+ XVs5SJhXwEqi4fJ6Nohd8hJ/7vcwQ8QFJU7OfMICYjMDxZu3zmaewMg3C0lqFpLUAkamVYyS
+ qQXFuem5xYYFRnmp5XrFibnFpXnpesn5uZsYwaGtpbWDcc+qD3qHGJk4GA8xSnAwK4nwZr/R
+ ShTiTUmsrEotyo8vKs1JLT7EKM3BoiTOe6HrZLyQQHpiSWp2ampBahFMlomDU6qBSV7eao7/
+ eznlwgnsay5zJUX7/pVrOH63uLX578Lz6p+uLjTJS1rbp9wc9kfv8gfea/L6LG3HFF1mab9Y
+ vOye77X5zpGTf2xMeXsiKd75Qi5PcqDttEstnI+urWL5tq32zbPbLuLH5zPvVH5y0e9nRr9i
+ fESpeIaD+Dz2y9M3/qgQW+aVu3DZRNevoqulbj/+sfTgJy/FTX+sF03RO+pjO1fiwfOnzD73
+ TDkLZs+22K16mKdKy0FkzpMrV22mX8n9t+Kqz52eMrHIxLWfp1RYaogt5H2401pDeKFrV2yp
+ Zt/yfw9WTLHkfbrgc6vjduXfzuuSpyyK/FnW2rx2qUyGhqhtW7F5jQwnE9tMg9X515RYijMS
+ DbWYi4oTAW2I4hfcAgAA
+X-CMS-MailID: 20210830022507epcas1p43b45563c6e36bd00e3b6160bb42605bf
+X-Msg-Generator: CA
+X-Sendblock-Type: SVC_REQ_APPROVE
+CMS-TYPE: 101P
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20210830022507epcas1p43b45563c6e36bd00e3b6160bb42605bf
+References: <CGME20210830022507epcas1p43b45563c6e36bd00e3b6160bb42605bf@epcas1p4.samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210829_173624_674179_463BA9BA 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20210829_192519_256342_D967555D 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,557 +146,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch provides rsel setting on MT8195
+From: ChanWoo Lee <cw9316.lee@samsung.com>
 
-Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Remove unused parameters
+1. msdc_start_data() - struct mmc_request *mrq
+2. msdc_track_cmd_data() - struct mmc_data *data
+
+Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
 ---
- drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 133 +++++++++++++
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 181 ++++++++++++++++--
- .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  35 +++-
- drivers/pinctrl/mediatek/pinctrl-paris.c      |  24 ++-
- drivers/pinctrl/mediatek/pinctrl-paris.h      |   2 +-
- 5 files changed, 348 insertions(+), 27 deletions(-)
+ drivers/mmc/host/mtk-sd.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-index 892e79703f98..275b7ba4386d 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
-@@ -779,6 +779,135 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_adv_range[] = {
- 	PIN_FIELD_BASE(45, 45, 1, 0x040, 0x10, 9, 3),
- };
- 
-+static const struct mtk_pin_field_calc mt8195_pin_rsel_range[] = {
-+	PIN_FIELD_BASE(8, 8, 4, 0x0c0, 0x10, 15, 3),
-+	PIN_FIELD_BASE(9, 9, 4, 0x0c0, 0x10, 0, 3),
-+	PIN_FIELD_BASE(10, 10, 4, 0x0c0, 0x10, 18, 3),
-+	PIN_FIELD_BASE(11, 11, 4, 0x0c0, 0x10, 3, 3),
-+	PIN_FIELD_BASE(12, 12, 4, 0x0c0, 0x10, 21, 3),
-+	PIN_FIELD_BASE(13, 13, 4, 0x0c0, 0x10, 6, 3),
-+	PIN_FIELD_BASE(14, 14, 4, 0x0c0, 0x10, 24, 3),
-+	PIN_FIELD_BASE(15, 15, 4, 0x0c0, 0x10, 9, 3),
-+	PIN_FIELD_BASE(16, 16, 4, 0x0c0, 0x10, 27, 3),
-+	PIN_FIELD_BASE(17, 17, 4, 0x0c0, 0x10, 12, 3),
-+	PIN_FIELD_BASE(29, 29, 2, 0x080, 0x10, 0, 3),
-+	PIN_FIELD_BASE(30, 30, 2, 0x080, 0x10, 3, 3),
-+	PIN_FIELD_BASE(34, 34, 1, 0x0e0, 0x10, 0, 3),
-+	PIN_FIELD_BASE(35, 35, 1, 0x0e0, 0x10, 3, 3),
-+	PIN_FIELD_BASE(44, 44, 1, 0x0e0, 0x10, 6, 3),
-+	PIN_FIELD_BASE(45, 45, 1, 0x0e0, 0x10, 9, 3),
-+};
-+
-+static const struct mtk_pin_rsel mt8195_pin_rsel_val_range[] = {
-+	PIN_RSEL(8, 17, 0x0, 75000, 75000),
-+	PIN_RSEL(8, 17, 0x1, 10000, 5000),
-+	PIN_RSEL(8, 17, 0x2, 5000, 75000),
-+	PIN_RSEL(8, 17, 0x3, 4000, 5000),
-+	PIN_RSEL(8, 17, 0x4, 3000, 75000),
-+	PIN_RSEL(8, 17, 0x5, 2000, 5000),
-+	PIN_RSEL(8, 17, 0x6, 1500, 75000),
-+	PIN_RSEL(8, 17, 0x7, 1000, 5000),
-+	PIN_RSEL(29, 30, 0x0, 75000, 75000),
-+	PIN_RSEL(29, 30, 0x1, 10000, 5000),
-+	PIN_RSEL(29, 30, 0x2, 5000, 75000),
-+	PIN_RSEL(29, 30, 0x3, 4000, 5000),
-+	PIN_RSEL(29, 30, 0x4, 3000, 75000),
-+	PIN_RSEL(29, 30, 0x5, 2000, 5000),
-+	PIN_RSEL(29, 30, 0x6, 1500, 75000),
-+	PIN_RSEL(29, 30, 0x7, 1000, 5000),
-+	PIN_RSEL(34, 35, 0x0, 75000, 75000),
-+	PIN_RSEL(34, 35, 0x1, 10000, 5000),
-+	PIN_RSEL(34, 35, 0x2, 5000, 75000),
-+	PIN_RSEL(34, 35, 0x3, 4000, 5000),
-+	PIN_RSEL(34, 35, 0x4, 3000, 75000),
-+	PIN_RSEL(34, 35, 0x5, 2000, 5000),
-+	PIN_RSEL(34, 35, 0x6, 1500, 75000),
-+	PIN_RSEL(34, 35, 0x7, 1000, 5000),
-+	PIN_RSEL(44, 45, 0x0, 75000, 75000),
-+	PIN_RSEL(44, 45, 0x1, 10000, 5000),
-+	PIN_RSEL(44, 45, 0x2, 5000, 75000),
-+	PIN_RSEL(44, 45, 0x3, 4000, 5000),
-+	PIN_RSEL(44, 45, 0x4, 3000, 75000),
-+	PIN_RSEL(44, 45, 0x5, 2000, 5000),
-+	PIN_RSEL(44, 45, 0x6, 1500, 75000),
-+	PIN_RSEL(44, 45, 0x7, 1000, 5000),
-+};
-+
-+static const unsigned int mt8195_pull_type[] = {
-+	MTK_PULL_PUPD_R1R0_TYPE /* 0 */, MTK_PULL_PUPD_R1R0_TYPE /* 1 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 2 */, MTK_PULL_PUPD_R1R0_TYPE /* 3 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 4 */, MTK_PULL_PUPD_R1R0_TYPE /* 5 */,
-+	MTK_PULL_PU_PD_TYPE /* 6 */, MTK_PULL_PU_PD_TYPE /* 7 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 8 */, MTK_PULL_PU_PD_RSEL_TYPE /* 9 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 10 */, MTK_PULL_PU_PD_RSEL_TYPE /* 11 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 12 */, MTK_PULL_PU_PD_RSEL_TYPE /* 13 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 14 */, MTK_PULL_PU_PD_RSEL_TYPE /* 15 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 16 */, MTK_PULL_PU_PD_RSEL_TYPE /* 17 */,
-+	MTK_PULL_PU_PD_TYPE /* 18 */, MTK_PULL_PU_PD_TYPE /* 19 */,
-+	MTK_PULL_PU_PD_TYPE /* 20 */, MTK_PULL_PU_PD_TYPE /* 21 */,
-+	MTK_PULL_PU_PD_TYPE /* 22 */, MTK_PULL_PU_PD_TYPE /* 23 */,
-+	MTK_PULL_PU_PD_TYPE /* 24 */, MTK_PULL_PU_PD_TYPE /* 25 */,
-+	MTK_PULL_PU_PD_TYPE /* 26 */, MTK_PULL_PU_PD_TYPE /* 27 */,
-+	MTK_PULL_PU_PD_TYPE /* 28 */, MTK_PULL_PU_PD_RSEL_TYPE /* 29 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 30 */, MTK_PULL_PU_PD_TYPE /* 31 */,
-+	MTK_PULL_PU_PD_TYPE /* 32 */, MTK_PULL_PU_PD_TYPE /* 33 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 34 */, MTK_PULL_PU_PD_RSEL_TYPE /* 35 */,
-+	MTK_PULL_PU_PD_TYPE /* 36 */, MTK_PULL_PU_PD_TYPE /* 37 */,
-+	MTK_PULL_PU_PD_TYPE /* 38 */, MTK_PULL_PU_PD_TYPE /* 39 */,
-+	MTK_PULL_PU_PD_TYPE /* 40 */, MTK_PULL_PU_PD_TYPE /* 41 */,
-+	MTK_PULL_PU_PD_TYPE /* 42 */, MTK_PULL_PU_PD_TYPE /* 43 */,
-+	MTK_PULL_PU_PD_RSEL_TYPE /* 44 */, MTK_PULL_PU_PD_RSEL_TYPE /* 45 */,
-+	MTK_PULL_PU_PD_TYPE /* 46 */, MTK_PULL_PU_PD_TYPE /* 47 */,
-+	MTK_PULL_PU_PD_TYPE /* 48 */, MTK_PULL_PU_PD_TYPE /* 49 */,
-+	MTK_PULL_PU_PD_TYPE /* 50 */, MTK_PULL_PU_PD_TYPE /* 51 */,
-+	MTK_PULL_PU_PD_TYPE /* 52 */, MTK_PULL_PU_PD_TYPE /* 53 */,
-+	MTK_PULL_PU_PD_TYPE /* 54 */, MTK_PULL_PU_PD_TYPE /* 55 */,
-+	MTK_PULL_PU_PD_TYPE /* 56 */, MTK_PULL_PU_PD_TYPE /* 57 */,
-+	MTK_PULL_PU_PD_TYPE /* 58 */, MTK_PULL_PU_PD_TYPE /* 59 */,
-+	MTK_PULL_PU_PD_TYPE /* 60 */, MTK_PULL_PU_PD_TYPE /* 61 */,
-+	MTK_PULL_PU_PD_TYPE /* 62 */, MTK_PULL_PU_PD_TYPE /* 63 */,
-+	MTK_PULL_PU_PD_TYPE /* 64 */, MTK_PULL_PU_PD_TYPE /* 65 */,
-+	MTK_PULL_PU_PD_TYPE /* 66 */, MTK_PULL_PU_PD_TYPE /* 67 */,
-+	MTK_PULL_PU_PD_TYPE /* 68 */, MTK_PULL_PU_PD_TYPE /* 69 */,
-+	MTK_PULL_PU_PD_TYPE /* 70 */, MTK_PULL_PU_PD_TYPE /* 71 */,
-+	MTK_PULL_PU_PD_TYPE /* 72 */, MTK_PULL_PU_PD_TYPE /* 73 */,
-+	MTK_PULL_PU_PD_TYPE /* 74 */, MTK_PULL_PU_PD_TYPE /* 75 */,
-+	MTK_PULL_PU_PD_TYPE /* 76 */, MTK_PULL_PUPD_R1R0_TYPE /* 77 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 78 */, MTK_PULL_PUPD_R1R0_TYPE /* 79 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 80 */, MTK_PULL_PUPD_R1R0_TYPE /* 81 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 82 */, MTK_PULL_PUPD_R1R0_TYPE /* 83 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 84 */, MTK_PULL_PUPD_R1R0_TYPE /* 85 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 86 */, MTK_PULL_PUPD_R1R0_TYPE /* 87 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 88 */, MTK_PULL_PUPD_R1R0_TYPE /* 89 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 90 */, MTK_PULL_PUPD_R1R0_TYPE /* 91 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 92 */, MTK_PULL_PUPD_R1R0_TYPE /* 93 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 94 */, MTK_PULL_PUPD_R1R0_TYPE /* 95 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 96 */, MTK_PULL_PU_PD_TYPE /* 97 */,
-+	MTK_PULL_PU_PD_TYPE /* 98 */, MTK_PULL_PU_PD_TYPE /* 99 */,
-+	MTK_PULL_PU_PD_TYPE /* 100 */, MTK_PULL_PU_PD_TYPE /* 101 */,
-+	MTK_PULL_PU_PD_TYPE /* 102 */, MTK_PULL_PU_PD_TYPE /* 103 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 104 */, MTK_PULL_PUPD_R1R0_TYPE /* 105 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 106 */, MTK_PULL_PUPD_R1R0_TYPE /* 107 */,
-+	MTK_PULL_PU_PD_TYPE /* 108 */, MTK_PULL_PU_PD_TYPE /* 109 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 110 */, MTK_PULL_PUPD_R1R0_TYPE /* 111 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 112 */, MTK_PULL_PUPD_R1R0_TYPE /* 113 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 114 */, MTK_PULL_PUPD_R1R0_TYPE /* 115 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 116 */, MTK_PULL_PUPD_R1R0_TYPE /* 117 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 118 */, MTK_PULL_PUPD_R1R0_TYPE /* 119 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 120 */, MTK_PULL_PUPD_R1R0_TYPE /* 121 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 122 */, MTK_PULL_PUPD_R1R0_TYPE /* 123 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 124 */, MTK_PULL_PUPD_R1R0_TYPE /* 125 */,
-+	MTK_PULL_PUPD_R1R0_TYPE /* 126 */, MTK_PULL_PUPD_R1R0_TYPE /* 127 */,
-+	MTK_PULL_PU_PD_TYPE /* 128 */, MTK_PULL_PU_PD_TYPE /* 129 */,
-+	MTK_PULL_PU_PD_TYPE /* 130 */, MTK_PULL_PU_PD_TYPE /* 131 */,
-+	MTK_PULL_PU_PD_TYPE /* 132 */, MTK_PULL_PU_PD_TYPE /* 133 */,
-+	MTK_PULL_PU_PD_TYPE /* 134 */, MTK_PULL_PU_PD_TYPE /* 135 */,
-+	MTK_PULL_PU_PD_TYPE /* 136 */, MTK_PULL_PU_PD_TYPE /* 137 */,
-+	MTK_PULL_PU_PD_TYPE /* 138 */, MTK_PULL_PU_PD_TYPE /* 139 */,
-+	MTK_PULL_PU_PD_TYPE /* 140 */, MTK_PULL_PU_PD_TYPE /* 141 */,
-+	MTK_PULL_PU_PD_TYPE /* 142 */, MTK_PULL_PU_PD_TYPE /* 143 */,
-+};
-+
- static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8195_pin_mode_range),
- 	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8195_pin_dir_range),
-@@ -793,6 +922,7 @@ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
- 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8195_pin_r0_range),
- 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8195_pin_r1_range),
- 	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8195_pin_drv_adv_range),
-+	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt8195_pin_rsel_range),
- };
- 
- static const char * const mt8195_pinctrl_register_base_names[] = {
-@@ -817,6 +947,9 @@ static const struct mtk_pin_soc mt8195_data = {
- 	.gpio_m = 0,
- 	.base_names = mt8195_pinctrl_register_base_names,
- 	.nbase_names = ARRAY_SIZE(mt8195_pinctrl_register_base_names),
-+	.pull_type = mt8195_pull_type,
-+	.pin_rsel = mt8195_pin_rsel_val_range,
-+	.npin_rsel = ARRAY_SIZE(mt8195_pin_rsel_val_range),
- 	.bias_set_combo = mtk_pinconf_bias_set_combo,
- 	.bias_get_combo = mtk_pinconf_bias_get_combo,
- 	.drive_set = mtk_pinconf_drive_set_rev1,
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 5b3b048725cc..b6a89d41f040 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -641,6 +641,9 @@ static int mtk_pinconf_bias_set_pupd_r1_r0(struct mtk_pinctrl *hw,
- 	} else if (arg == MTK_PUPD_SET_R1R0_11) {
- 		r0 = 1;
- 		r1 = 1;
-+	} else if (arg == MTK_ENABLE) {
-+		r0 = 1;
-+		r1 = 0;
- 	} else {
- 		err = -EINVAL;
- 		goto out;
-@@ -661,6 +664,75 @@ static int mtk_pinconf_bias_set_pupd_r1_r0(struct mtk_pinctrl *hw,
- 	return err;
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 4dfc246c5f95..a8736067c409 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1043,8 +1043,8 @@ static inline u32 msdc_cmd_prepare_raw_cmd(struct msdc_host *host,
+ 	return rawcmd;
  }
  
-+static int mtk_hw_pin_rsel_lookup(struct mtk_pinctrl *hw,
-+				  const struct mtk_pin_desc *desc,
-+				  u32 pullup, u32 arg, u32 *rsel_val)
-+{
-+	const struct mtk_pin_rsel *rsel;
-+	int check;
-+	bool found = false;
-+
-+	rsel = hw->soc->pin_rsel;
-+
-+	for (check = 0; check <= hw->soc->npin_rsel - 1; check++) {
-+		if (desc->number >= rsel[check].s_pin &&
-+		    desc->number <= rsel[check].e_pin) {
-+			if (pullup) {
-+				if (rsel[check].up_rsel == arg) {
-+					found = true;
-+					*rsel_val = rsel[check].rsel_index;
-+					break;
-+				}
-+			} else {
-+				if (rsel[check].down_rsel == arg) {
-+					found = true;
-+					*rsel_val = rsel[check].rsel_index;
-+					break;
-+				}
-+			}
-+		}
-+	}
-+
-+	if (!found) {
-+		dev_err(hw->dev, "Not support rsel value %d Ohm for pin = %d (%s)\n",
-+			arg, desc->number, desc->name);
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_pinconf_bias_set_rsel(struct mtk_pinctrl *hw,
-+				     const struct mtk_pin_desc *desc,
-+				     u32 pullup, u32 arg)
-+{
-+	int err, rsel_val;
-+
-+	if (hw->soc->pin_rsel) {
-+		/* find pin rsel_index from pin_rsel array*/
-+		err = mtk_hw_pin_rsel_lookup(hw, desc, pullup, arg, &rsel_val);
-+		if (err)
-+			goto out;
-+	} else {
-+		if (arg < MTK_PULL_SET_RSEL_000 ||
-+		    arg > MTK_PULL_SET_RSEL_111) {
-+			err = -EINVAL;
-+			goto out;
-+		}
-+
-+		rsel_val -= MTK_PULL_SET_RSEL_000;
-+	}
-+
-+	err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_RSEL, rsel_val);
-+	if (err)
-+		goto out;
-+
-+	err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, MTK_ENABLE);
-+
-+out:
-+	return err;
-+}
-+
- static int mtk_pinconf_bias_get_pu_pd(struct mtk_pinctrl *hw,
- 				const struct mtk_pin_desc *desc,
- 				u32 *pullup, u32 *enable)
-@@ -742,44 +814,117 @@ static int mtk_pinconf_bias_get_pupd_r1_r0(struct mtk_pinctrl *hw,
- 	return err;
- }
- 
--int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
--				const struct mtk_pin_desc *desc,
--				u32 pullup, u32 arg)
-+static int mtk_pinconf_bias_get_rsel(struct mtk_pinctrl *hw,
-+				     const struct mtk_pin_desc *desc,
-+				     u32 *pullup, u32 *enable)
+-static void msdc_start_data(struct msdc_host *host, struct mmc_request *mrq,
+-			    struct mmc_command *cmd, struct mmc_data *data)
++static void msdc_start_data(struct msdc_host *host, struct mmc_command *cmd,
++		struct mmc_data *data)
  {
--	int err;
-+	int pu, pd, rsel, err;
+ 	bool read;
  
--	err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg);
--	if (!err)
-+	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_RSEL, &rsel);
-+	if (err)
- 		goto out;
- 
--	err = mtk_pinconf_bias_set_pullsel_pullen(hw, desc, pullup, arg);
--	if (!err)
-+	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_PU, &pu);
-+	if (err)
- 		goto out;
- 
--	err = mtk_pinconf_bias_set_pupd_r1_r0(hw, desc, pullup, arg);
-+	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_PD, &pd);
-+
-+	if (pu == 0 && pd == 0) {
-+		*pullup = 0;
-+		*enable = MTK_DISABLE;
-+	} else if (pu == 1 && pd == 0) {
-+		*pullup = 1;
-+		*enable = rsel + MTK_PULL_SET_RSEL_000;
-+	} else if (pu == 0 && pd == 1) {
-+		*pullup = 0;
-+		*enable = rsel + MTK_PULL_SET_RSEL_000;
-+	} else {
-+		err = -EINVAL;
-+		goto out;
-+	}
- 
- out:
- 	return err;
- }
-+
-+int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
-+			       const struct mtk_pin_desc *desc,
-+			       u32 pullup, u32 arg)
-+{
-+	int err = -EOPNOTSUPP;
-+	bool try_all_type;
-+
-+	try_all_type = hw->soc->pull_type ? false : true;
-+
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_RSEL_TYPE)) {
-+		err = mtk_pinconf_bias_set_rsel(hw, desc, pullup, arg);
-+		if (!err)
-+			return err;
-+	}
-+
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_PU_PD_TYPE)) {
-+		err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg);
-+		if (!err)
-+			return err;
-+	}
-+
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_PULLSEL_TYPE)) {
-+		err = mtk_pinconf_bias_set_pullsel_pullen(hw, desc,
-+							  pullup, arg);
-+		if (!err)
-+			return err;
-+	}
-+
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_PUPD_R1R0_TYPE)) {
-+		err = mtk_pinconf_bias_set_pupd_r1_r0(hw, desc, pullup, arg);
-+		if (err)
-+			dev_err(hw->dev, "Invalid pull argument\n");
-+	}
-+
-+	return err;
-+}
- EXPORT_SYMBOL_GPL(mtk_pinconf_bias_set_combo);
- 
- int mtk_pinconf_bias_get_combo(struct mtk_pinctrl *hw,
- 			      const struct mtk_pin_desc *desc,
- 			      u32 *pullup, u32 *enable)
- {
--	int err;
-+	int err = -EOPNOTSUPP;
-+	bool try_all_type;
- 
--	err = mtk_pinconf_bias_get_pu_pd(hw, desc, pullup, enable);
--	if (!err)
--		goto out;
-+	try_all_type = hw->soc->pull_type ? false : true;
- 
--	err = mtk_pinconf_bias_get_pullsel_pullen(hw, desc, pullup, enable);
--	if (!err)
--		goto out;
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_RSEL_TYPE)) {
-+		err = mtk_pinconf_bias_get_rsel(hw, desc, pullup, enable);
-+		if (!err)
-+			return err;
-+	}
-+
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_PU_PD_TYPE)) {
-+		err = mtk_pinconf_bias_get_pu_pd(hw, desc, pullup, enable);
-+		if (!err)
-+			return err;
-+	}
- 
--	err = mtk_pinconf_bias_get_pupd_r1_r0(hw, desc, pullup, enable);
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_PULLSEL_TYPE)) {
-+		err = mtk_pinconf_bias_get_pullsel_pullen(hw, desc,
-+							  pullup, enable);
-+		if (!err)
-+			return err;
-+	}
-+
-+	if (try_all_type ||
-+	    (hw->soc->pull_type[desc->number] & MTK_PULL_PUPD_R1R0_TYPE))
-+		err = mtk_pinconf_bias_get_pupd_r1_r0(hw, desc, pullup, enable);
- 
--out:
- 	return err;
- }
- EXPORT_SYMBOL_GPL(mtk_pinconf_bias_get_combo);
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-index a6f1bdb2083b..a3d73f153efe 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
-@@ -17,6 +17,13 @@
- #define MTK_ENABLE     1
- #define MTK_PULLDOWN   0
- #define MTK_PULLUP     1
-+#define MTK_PULL_PU_PD_TYPE		BIT(0)
-+#define MTK_PULL_PULLSEL_TYPE		BIT(1)
-+#define MTK_PULL_PUPD_R1R0_TYPE		BIT(2)
-+#define MTK_PULL_RSEL_TYPE		BIT(3)
-+#define MTK_PULL_PU_PD_RSEL_TYPE	(MTK_PULL_PU_PD_TYPE \
-+					| MTK_PULL_RSEL_TYPE)
-+
- 
- #define EINT_NA	U16_MAX
- #define NO_EINT_SUPPORT	EINT_NA
-@@ -42,6 +49,14 @@
- 	PIN_FIELD_CALC(_s_pin, _e_pin, 0, _s_addr, _x_addrs, _s_bit,	\
- 		       _x_bits, 32, 1)
- 
-+#define PIN_RSEL(_s_pin, _e_pin, _rsel_index, _up_resl, _down_rsel) {	\
-+		.s_pin = _s_pin,					\
-+		.e_pin = _e_pin,					\
-+		.rsel_index = _rsel_index,				\
-+		.up_rsel = _up_resl,					\
-+		.down_rsel = _down_rsel,				\
-+	}
-+
- /* List these attributes which could be modified for the pin */
- enum {
- 	PINCTRL_PIN_REG_MODE,
-@@ -67,6 +82,7 @@ enum {
- 	PINCTRL_PIN_REG_DRV_E0,
- 	PINCTRL_PIN_REG_DRV_E1,
- 	PINCTRL_PIN_REG_DRV_ADV,
-+	PINCTRL_PIN_REG_RSEL,
- 	PINCTRL_PIN_REG_MAX,
- };
- 
-@@ -129,6 +145,21 @@ struct mtk_pin_field_calc {
- 	u8  fixed;
- };
- 
-+/* struct mtk_pin_rsel - the structure that providing bias resistance selection.
-+ * @s_pin:		the start pin within the rsel range
-+ * @e_pin:		the end pin within the rsel range
-+ * @rsel_index:	the rsel bias resistance index
-+ * @up_rsel:	the pullup rsel bias resistance value
-+ * @down_rsel:	the pulldown rsel bias resistance value
-+ */
-+struct mtk_pin_rsel {
-+	u16 s_pin;
-+	u16 e_pin;
-+	u16 rsel_index;
-+	u32 up_rsel;
-+	u32 down_rsel;
-+};
-+
- /* struct mtk_pin_reg_calc - the structure that holds all ranges used to
-  *			     determine which register the pin would make use of
-  *			     for certain pin attribute.
-@@ -206,6 +237,9 @@ struct mtk_pin_soc {
- 	bool				ies_present;
- 	const char * const		*base_names;
- 	unsigned int			nbase_names;
-+	const unsigned int		*pull_type;
-+	const struct mtk_pin_rsel	*pin_rsel;
-+	unsigned int			npin_rsel;
- 
- 	/* Specific pinconfig operations */
- 	int (*bias_disable_set)(struct mtk_pinctrl *hw,
-@@ -237,7 +271,6 @@ struct mtk_pin_soc {
- 			     const struct mtk_pin_desc *desc, u32 arg);
- 	int (*adv_drive_get)(struct mtk_pinctrl *hw,
- 			     const struct mtk_pin_desc *desc, u32 *val);
--
- 	/* Specific driver data */
- 	void				*driver_data;
- };
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index 85db2e4377f0..8990cfe47d72 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -577,9 +577,9 @@ static int mtk_hw_get_value_wrap(struct mtk_pinctrl *hw, unsigned int gpio, int
- 	mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DRV)
- 
- ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
--	unsigned int gpio, char *buf, unsigned int bufLen)
-+	unsigned int gpio, char *buf, unsigned int buf_len)
- {
--	int pinmux, pullup, pullen, len = 0, r1 = -1, r0 = -1;
-+	int pinmux, pullup, pullen, len = 0, r1 = -1, r0 = -1, rsel = -1;
- 	const struct mtk_pin_desc *desc;
- 
- 	if (gpio >= hw->soc->npins)
-@@ -591,6 +591,8 @@ ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
- 		pinmux -= hw->soc->nfuncs;
- 
- 	mtk_pinconf_bias_get_combo(hw, desc, &pullup, &pullen);
-+
-+	/* Case for: R1R0 */
- 	if (pullen == MTK_PUPD_SET_R1R0_00) {
- 		pullen = 0;
- 		r1 = 0;
-@@ -607,10 +609,16 @@ ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
- 		pullen = 1;
- 		r1 = 1;
- 		r0 = 1;
--	} else if (pullen != MTK_DISABLE && pullen != MTK_ENABLE) {
--		pullen = 0;
+@@ -1112,8 +1112,7 @@ static void msdc_recheck_sdio_irq(struct msdc_host *host)
  	}
--	len += scnprintf(buf + len, bufLen - len,
-+
-+	/* Case for: RSEL */
-+	if (pullen >= MTK_PULL_SET_RSEL_000 &&
-+	    pullen <= MTK_PULL_SET_RSEL_111) {
-+		rsel = pullen - MTK_PULL_SET_RSEL_000;
-+		pullen = 1;
-+	}
-+
-+	len += scnprintf(buf + len, buf_len - len,
- 			"%03d: %1d%1d%1d%1d%02d%1d%1d%1d%1d",
- 			gpio,
- 			pinmux,
-@@ -624,10 +632,12 @@ ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
- 			pullup);
+ }
  
- 	if (r1 != -1) {
--		len += scnprintf(buf + len, bufLen - len, " (%1d %1d)\n",
-+		len += scnprintf(buf + len, buf_len - len, " (%1d %1d)\n",
- 			r1, r0);
-+	} else if (rsel != -1) {
-+		len += scnprintf(buf + len, buf_len - len, " (%1d)\n", rsel);
- 	} else {
--		len += scnprintf(buf + len, bufLen - len, "\n");
-+		len += scnprintf(buf + len, buf_len - len, "\n");
- 	}
+-static void msdc_track_cmd_data(struct msdc_host *host,
+-				struct mmc_command *cmd, struct mmc_data *data)
++static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
+ {
+ 	if (host->error)
+ 		dev_dbg(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
+@@ -1134,7 +1133,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
+ 	host->mrq = NULL;
+ 	spin_unlock_irqrestore(&host->lock, flags);
  
- 	return len;
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.h b/drivers/pinctrl/mediatek/pinctrl-paris.h
-index afb7650fd25b..681267c0e1a4 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.h
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.h
-@@ -61,7 +61,7 @@ int mtk_paris_pinctrl_probe(struct platform_device *pdev,
- 			    const struct mtk_pin_soc *soc);
+-	msdc_track_cmd_data(host, mrq->cmd, mrq->data);
++	msdc_track_cmd_data(host, mrq->cmd);
+ 	if (mrq->data)
+ 		msdc_unprepare_data(host, mrq->data);
+ 	if (host->error)
+@@ -1295,7 +1294,7 @@ static void msdc_cmd_next(struct msdc_host *host,
+ 	else if (!cmd->data)
+ 		msdc_request_done(host, mrq);
+ 	else
+-		msdc_start_data(host, mrq, cmd, cmd->data);
++		msdc_start_data(host, cmd, cmd->data);
+ }
  
- ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
--	unsigned int gpio, char *buf, unsigned int bufLen);
-+	unsigned int gpio, char *buf, unsigned int buf_len);
- 
- extern const struct dev_pm_ops mtk_paris_pinctrl_pm_ops;
- 
+ static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
 -- 
-2.18.0
+2.29.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
