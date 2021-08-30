@@ -2,92 +2,85 @@ Return-Path: <SRS0=Uf5e=NV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F91BC432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 05:11:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 20CA7C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 05:34:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6A8760F12
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 05:11:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E6A8760F12
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id DCBE660F92
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 05:34:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DCBE660F92
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qZYS3gemasUdlO/bthsECqgg0JOCkXOoIEX1vDgk1ek=; b=c+sT1TaH2L1/fU
-	VWfIdGH5697B08+4fNrLOv27NLea9VLgtGfTUSk+It9kj5qNZBqU+h6UwsAqww/Ybu2gi0W2WNMWs
-	Y+h0XvIX4cZ/oJk807iQz8r8C9KNkDV7WgaWgpuUEjZs2bz65q/2dxe8HOeyG8QiDZHBgxd3JEm32
-	wfbm7S3PZiwU6QtYIEIiBELbLHddFr1Xfdzi6of9iQLaXe+Vbz4lO90I4IeanOILDkk4s7WgDR9Rf
-	atWgk3kYwBDhcrHZamDtOWfHVjRUA8UXosC+uBkaZmFFEcPp3tHychR0oOhUyJutci+vRmde71Z++
-	F4UMTVWVsGZpHq/6IYnQ==;
+	List-Owner; bh=9L78Y0ck5pIBQ2BGJn617pUDVop/+u/eH2w/m0AY698=; b=QlTMribEaBPeVc
+	S2Xj8xe8yb22+J58S2zp5nSOKp+U3eDWJA0dTlVshjVYAjSYeU1tnKPNjuz2UlAfCZn9qb8CHe6EM
+	mlpxYR39u08czqpZmlmPbR0a3TWSxgqZSiinVFrHiXpuEyUYM5EvcKEiqHtW4aMsZXTr3s9KdnAEb
+	Jx3DTX42N9kXzIuC8JByjvb5my8x3N/NauNySNnpvnO4YNGWRHT7Zgmt4TAKV2rTY04h99jT9lXu7
+	QBfxltV3Umqf+YOjoHnqubyZ2y/nbVdS6ROUnUWV0DlolOp+FBzkNFAJEzK03RgS2VAnAhoDEJv0g
+	c0zl0BzKl09bQEs4bS3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKZZl-00GS31-6z; Mon, 30 Aug 2021 05:11:17 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1mKZwH-00GTlF-Vv; Mon, 30 Aug 2021 05:34:34 +0000
+Received: from mail-io1-xd2f.google.com ([2607:f8b0:4864:20::d2f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKZZg-00GS20-0O
- for linux-mediatek@lists.infradead.org; Mon, 30 Aug 2021 05:11:15 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id u6so10620738pfi.0
- for <linux-mediatek@lists.infradead.org>; Sun, 29 Aug 2021 22:11:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=cWgVMXSad5yZ3bSOJM1fkZY0lTxqB0etZLZP8BLZWaQ=;
- b=Dvm58Zl/eh6Y1ogYPdZEXoLGCZocbMiYuV4MhZMMRvGkLgoz6LoR1BoePfSII1Lj3C
- a7eu0FRp7nYY6JoY5ko7EEdcBQoRpYYwtLXHNgzvckvM8WPawZhen5cxszM0mrWe8IdE
- 1mxJJ7tsp6tLFbdClK0nmHM7hnsQOLqT3XXkv+lys8t0NLfN3pTESrrY3iNdLQlwBQy4
- voGZtnxgH/TN8mMMztgF62xy6l57HbXhX0b3yh9XIj7VW4PJMsWIbdu39LDfmVzCaEg8
- 0HwaT0UNS6R2IKLAD5xPefpCveIQ20hoAvBqir+0cj8F8gvqIw+KBxmuaoQ7aRmZ3HMp
- A90A==
+ id 1mKZw2-00GTjL-8D; Mon, 30 Aug 2021 05:34:22 +0000
+Received: by mail-io1-xd2f.google.com with SMTP id n24so18294237ion.10;
+ Sun, 29 Aug 2021 22:34:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Iatc6vajkY0MDwzapGj1skQWsvXeM4hcy36GIWGpEW4=;
+ b=LVxShmhA8oScomf8RXUdPHgEs1CGooPT3O642dmOoyDC81k8HM76pDNJcuz7NGT53A
+ 2+H1qbu6agP0IjAjo4C9Iv6WFR2Ajw1yo5KwKBYQIer0OiVvFSvgGkdm/H7JPBQXnOHC
+ GhrwsS6a6vd3/I2ADgN7NWlKls5FQlXzQkeKFb55TzRKsfrwlEJ0VP0QxOQCoMIeTuJZ
+ xdFpOZ/Zl/XHxgm2rdjR6KJHEmlyCbUYC7vZDMn4V16MEoEY8LiYHxC1dXjaRwcft7Ir
+ WqtIepeuZMCdgXCh+mYoNtt9uJ30okb770fO9vvF6kj4XU/wxYarH5IvJ0IY2r4Mk5Pq
+ x71A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=cWgVMXSad5yZ3bSOJM1fkZY0lTxqB0etZLZP8BLZWaQ=;
- b=gnMP2/8WATc5FCJRtEjC0cJkqwJLAfmF3kelh9saIkwZblGdGg3Etuy0B/JgEROuxA
- FiZ/kO3uxMLLs2Ee5dinULFxGU2Jwha4yEhLL5tFZCP1pOulyGUlpY0IF/jXPFm7LS8N
- edzEpCWLUB71bWAE+pnw9h9PS/uTKWC8RYI8l4xkC/ByknDXi/RFwImZW+lrP1BtiLh9
- M1P4V+0XRlRawKPLBEgFxP2UUStQo5ejC+CsVE3RU2Up6DyT0YLwjbhWgX1vn8Rk/hoc
- jZjgu6JNWvPhd1oDjbSibUmfigE+ZkJk5UxGzwoJ0YWJuUE2pnGMA8k8aLba750vob3g
- w05Q==
-X-Gm-Message-State: AOAM5334ykj/RJ6xn/GDAEaxZ2oabzwWIojye3dAsi5xfRFgNbBS1kE8
- Ytq4bgHMcs/j4cHJk25VgrY03w==
-X-Google-Smtp-Source: ABdhPJxVvZKVY4Tk4ROefO4P5N5TZZU6g+xJz7KhOKoLTAr78z/oKOO+sfplxt4Y96r0FgOav2n/rA==
-X-Received: by 2002:a62:a20d:0:b029:35b:73da:dc8d with SMTP id
- m13-20020a62a20d0000b029035b73dadc8dmr21842513pff.54.1630300271022; 
- Sun, 29 Aug 2021 22:11:11 -0700 (PDT)
-Received: from localhost ([122.172.201.85])
- by smtp.gmail.com with ESMTPSA id d5sm2729182pjs.53.2021.08.29.22.11.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 29 Aug 2021 22:11:10 -0700 (PDT)
-Date: Mon, 30 Aug 2021 10:41:08 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Hector Yuan <hector.yuan@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
-Subject: Re: [PATCH v14 3/3] cpufreq: mediatek-hw: Add support for CPUFREQ HW
-Message-ID: <20210830051108.xgfwp2uvh724syeu@vireshk-i7>
-References: <1630162872-25452-1-git-send-email-hector.yuan@mediatek.com>
- <1630162872-25452-4-git-send-email-hector.yuan@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Iatc6vajkY0MDwzapGj1skQWsvXeM4hcy36GIWGpEW4=;
+ b=Vk1X+nUmACo7Y/i7eLTDtVSsYOvuZ0jpTFR6r4LnOW5CY3ixlsb8DyFHkJLAcj+O+2
+ 3d0PtSplZHe3qikhhoW7M6dIxRHAmgpH/fzILXStNFY60q32zmgwFH43syMSt06Wfk+8
+ nhmdoxWLyQo3jM08OhlZZQrHHC2HWDXb5VzkEYwOj54tsQBUMb5XqDa0Nry8O7rUi33q
+ LehJ+8YWZ3A5GcISbPPyYBOz4lqpwkXHSDtNVra3gMNqP42Q9TI0kahP//VZL2zeVQXE
+ 8Z6a5HBn4q1jOb/oDaTuU8HeofHHbdl/PFgOM6ZsPivXGGiWXBId359pDGVUqQPFeZZF
+ Pwsw==
+X-Gm-Message-State: AOAM530vxqVp2jSGO4tSIXnX8FzF1mWoB60SHA3q4f7pPyliMcBhj+z/
+ 4GNgxDf6BMGGVwXqJS0kFYmQkDnwJ32yTGrFaN4=
+X-Google-Smtp-Source: ABdhPJySdhgVn3pG/z4LQSgTkNKL789y+ndUcjN0DNkBlsvtkaFO+0/2QmBSSGQHgFOyjeI4JI8d79g04HUloAEYRdo=
+X-Received: by 2002:a6b:fb03:: with SMTP id h3mr16892442iog.198.1630301653881; 
+ Sun, 29 Aug 2021 22:34:13 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1630162872-25452-4-git-send-email-hector.yuan@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+References: <20210825094120.5005-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20210825094120.5005-1-jason-jh.lin@mediatek.com>
+From: Jassi Brar <jassisinghbrar@gmail.com>
+Date: Mon, 30 Aug 2021 00:34:03 -0500
+Message-ID: <CABb+yY0rTZrM1J7mFbSf0Z5tdwjYsQ8Tff-DnVfxX8P4HRu01w@mail.gmail.com>
+Subject: Re: [PATCH v6 0/5] Add gce support for mt8195
+To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, hsinyi@google.com, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Devicetree List <devicetree@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ nancy.lin@mediatek.com, singo.chang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210829_221112_102019_C2CDB660 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20210829_223418_337289_FCF113B2 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,30 +97,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 28-08-21, 23:01, Hector Yuan wrote:
-> +static int mtk_cpu_resources_init(struct platform_device *pdev,
-> +				  struct cpufreq_policy *policy,
-> +				  const u16 *offsets)
-> +{
-> +	struct mtk_cpufreq_data *data;
-> +	struct device *dev = &pdev->dev;
-> +	void __iomem *base;
-> +	int ret, i;
-> +	int index;
-> +
-> +	data = devm_kzalloc(dev, sizeof(*data), GFP_KERNEL);
-> +	if (!data)
-> +		return -ENOMEM;
-> +
-> +	index = of_perf_domain_get_sharing_cpumask(policy->cpu, "performance-domains",
-> +						   "#performance-domain-cells",
-> +						   policy->cpus);
+On Wed, Aug 25, 2021 at 4:41 AM jason-jh.lin <jason-jh.lin@mediatek.com> wrote:
+>
+> Change in v6:
+> - remove the unused define in GCE header file.
+>
+Please rebase the patches over other previous mtk patchset for mt8192.
+https://git.linaro.org/landing-teams/working/fujitsu/integration.git/log/?h=mailbox-for-next
 
-You pass CPU here, while the first patch accepts index. Does this even work? Or
-work just by chance ?
-
--- 
-viresh
+Thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
