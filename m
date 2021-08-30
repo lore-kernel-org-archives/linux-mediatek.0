@@ -2,94 +2,92 @@ Return-Path: <SRS0=Uf5e=NV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=unavailable autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7C43CC432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:06:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 483C7C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:17:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 42C9860462
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:06:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 42C9860462
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0DE2F60F45
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 15:17:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0DE2F60F45
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xigXLhHUUcfLhiwSXKTtpWPWSpQbO/R/bnLeOjgKKDI=; b=iWFL/7XNtoZ6ZM
-	rBabXrVqVaBuif/bmECBK1VBApO6A5hhG7wo52ncLaBVlnw8cT/onoYxLZq7y+o0W5JVuX0xOEOJQ
-	Q1NCeWIs1TxrV9QamerzHxQJfVl5rHMeVmJILlvuqir8rR+fz3Z8rp8dlFhjk2+qvmbe3WH+U3RjF
-	g6tRAS3yU/754bsl5MfHqZW4vHtqW6yJxsmiCmqoWAZkgvKc1XpTL+KkuZrRxTIMDfzEdfuht+3i/
-	Od1Yt+jgpkttjJXxtpKjAP5+bPcTgHV0IOVH/+A/UAaC0QIk9aDN8z0V5BfDlt7SkkPRa6QCsLZCW
-	dZPeFeV4OHzJdOpylnsw==;
+	List-Owner; bh=8LP94UWw+7OkOYuq2OVtH/Wa4btVb28kSb9n1zvshe8=; b=QgggO3fJ3xA4JJ
+	s+F3ILR1v2/l3B64HWokX/ty3JjKt7nAo9tShghah8W2zYZiXFf1nAXs52nN8HLsYRqDwthLpvDSK
+	NRkA8t82oSzzeqN9pqw5EYq1W/WAGlXGsgjrK/MdBFR8DYFkg84aoa0GP1PXiNBwY2YfZ564slcCW
+	BgHSlUD7V4jRuX+fyvtp+n1yfQypXVol7O1JAjNarGF/LNqsaMDfNaOgFnHAigMEPJh8RYA+9BP+7
+	kNsbRWemprTdiATjp1eBoxJpMhRUDqCfaxKrZzZOrATgds9PUbtWYfP0rFfFDwbPDwIjCCnmUUd66
+	zcATQhHZQIUSMEtmfzfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKir7-00HUw4-Q4; Mon, 30 Aug 2021 15:05:49 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mKj2R-00HW4E-QE; Mon, 30 Aug 2021 15:17:31 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKiqr-00HUrn-IU; Mon, 30 Aug 2021 15:05:37 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C8D7E60F5C;
- Mon, 30 Aug 2021 15:05:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630335932;
- bh=+w96EgfxB/OnIF4TZZubblNzgSY24akfalBQTQOBFSQ=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=kCwB0oJQhw9Sx58A5G93DB0VLM6imlaIM/sb/B7vDMY7X22XPdqQnS7BWCZ5Sqq6y
- Dq8la0BAuDSPiVjYNY6UBGJb2ScyD1ph+kvF7IyVV//+RDgNrUkvFhq784DXfF+I1Q
- 0xCG0FaUen2RMwYJbNQ9TY3zYh3YTBOP7P7PYGPhwk6b3cVyo1UL3hwb9ELWPw58vt
- /tZ1Pfszrlnx2ouCcpZrhhsSRk0HVjq9R9L+tcuf8+uEEX1tDJkQOLDYDqbnpEL728
- pbGAx2Q0KhCCyCbEat8PcupTItksBdrDKJRwBM6Wgb1eDc/MQZ4CQIzmpw9657m+yI
- LN/w1gYFdT5yQ==
-Received: by mail-ej1-f44.google.com with SMTP id u3so31731910ejz.1;
- Mon, 30 Aug 2021 08:05:32 -0700 (PDT)
-X-Gm-Message-State: AOAM531GucwiIvlijLQ4Lcd3RfaDRnyKUpOCrbrWa0LYCGO+7fJePick
- SpHmfbHrokNKSj7x5E21qMMir20CUxT1UFC4Qw==
-X-Google-Smtp-Source: ABdhPJyF3KMiFYr5oMzxYuwKYn4Ft/XJo6sPgysJQrJltM5HoP9Y3XlZs6D0letv4tX1E+fvnmMyrNrRlEjQqFfRe20=
-X-Received: by 2002:a17:906:b4d:: with SMTP id
- v13mr26149139ejg.468.1630335931267; 
- Mon, 30 Aug 2021 08:05:31 -0700 (PDT)
+ id 1mKj2P-00HW3N-1Y; Mon, 30 Aug 2021 15:17:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1630336630;
+ bh=I4E4Rendp4jhii6JjCdLdSOCsheSaYn1ijpWYeUaEGg=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=QOsw9NiUDAuitqrd56V08G2iexnppzgWJSujTvskYkAaEl2e68FC0B/pnWbyY4acp
+ JcuTC2dui9IWp87CS6+kDlcDSprshruxdbBcr9henp/fqbW3BM02a3pXtA/+APZsFQ
+ RJxpFd00q4taH0qoMS9C/nj50LFI+rvfqc8Rh9u8=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [157.180.227.230] ([157.180.227.230]) by web-mail.gmx.net
+ (3c-app-gmx-bap54.server.lan [172.19.172.124]) (via HTTP); Mon, 30 Aug 2021
+ 17:17:10 +0200
 MIME-Version: 1.0
-References: <20210824100027.25989-1-moudy.ho@mediatek.com>
- <20210824100027.25989-4-moudy.ho@mediatek.com>
- <YSU0TrfFCsaI1TqV@robh.at.kernel.org>
- <0092244acd520acac81208b8863b15fba58f4193.camel@mediatek.com>
-In-Reply-To: <0092244acd520acac81208b8863b15fba58f4193.camel@mediatek.com>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 30 Aug 2021 10:05:19 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqJ_cProt35pdd2MjoHsSKtd+0n1Dwq6ooV+CJH5sfOFWg@mail.gmail.com>
-Message-ID: <CAL_JsqJ_cProt35pdd2MjoHsSKtd+0n1Dwq6ooV+CJH5sfOFWg@mail.gmail.com>
-Subject: Re: [PATCH v7 3/5] dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
-To: moudy ho <moudy.ho@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jernej Skrabec <jernej.skrabec@siol.net>, 
- Maoguang Meng <maoguang.meng@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>, 
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>, 
- Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- devicetree@vger.kernel.org, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Tomasz Figa <tfiga@chromium.org>, Nicolas Boichat <drinkcat@chromium.org>,
- Alexandre Courbot <acourbot@chromium.org>, 
- Pi-Hsun Shih <pihsun@chromium.org>, menghui.lin@mediatek.com, 
- Sj Huang <sj.huang@mediatek.com>, ben.lok@mediatek.com, randy.wu@mediatek.com, 
- srv_heupstream <srv_heupstream@mediatek.com>, Hsin-Yi Wang <hsinyi@google.com>
+Message-ID: <trinity-41954850-b71d-433f-9bd2-d5bce8f7e8fd-1630336630739@3c-app-gmx-bap54>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Sungbo Eo <mans0n@gorani.run>
+Cc: linux-mediatek@lists.infradead.org, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Min Guo <min.guo@mediatek.com>,
+ devicetree@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, Sungbo
+ Eo <mans0n@gorani.run>
+Subject: Aw: [PATCH v3 1/1] arm: dts: mt7623: add musb device nodes
+Date: Mon, 30 Aug 2021 17:17:10 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20210822041333.5264-2-mans0n@gorani.run>
+References: <20210808123840.176738-1-mans0n@gorani.run>
+ <20210822041333.5264-1-mans0n@gorani.run>
+ <20210822041333.5264-2-mans0n@gorani.run>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:PVW6ogB5IbVNYXNq4+VxktgDFJueM9d5jQy5Rc1v6z6lh4eyTqTHewYt/atURSDJ+CJFA
+ rN7JrQhEJXZW92ieXxpkeQLMC6AYQp95fO9zjZkWUbXEYNb/T+rT+9yn1xI77qoiadf+vQV+t0m8
+ sEPfs5gJXP9SPaNIPnXEhOORxp1HQxUkGeDhYqdsLYjZD9HoJhlTzX2I2954wG4bSB3P2v/Eld3R
+ 415V93aGmBS9xlJC7ZNzMss/0b/QrRNGHGo4UBStiurfLO8FjVbkAbSK+AfDlALv7rtVDX2C+rBB
+ Fk=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:FTnVLzCX/RQ=:3m5+bh5XwLWE4iT48hrfMw
+ 8UfDFqeGQG+dhulVq1TFTUPelPBz4C9DbBso4DHlrLLmA3Ph55vBrPG6VGSj4uwn4ibHwBlLh
+ GRQ/4uDUGIv0gbQV4tGiCoDO/Ymp0qzVCFqdMtTFvgbmgVkpbCSIAw0OIUPif7a06znjcejQp
+ 82XLP4HqVE9ehbB6v42Pc0sdpV4KU2YQm/MqOHZecC567saXVFSpWJv6hNeIMTqWuaIhLWIqN
+ cip5moBG4n7e1IsuqywKoMZ0ZxGsbNmNa2VFjBDociNneBnQ/nysCTOtuPr7TZtHyq4r1PuIi
+ +SRAN2REc1GPeKnQhHVcOu2986sDjCtuIh9Gd0qmPVy3gfmomO7PxUIiZ7PSbIGwsgKZgwMxs
+ OpRKc/qfVCCgAdvYLYFpMQJbK1ZGUZKgF0HrUOZ1/tTvPYUJRyMP/c0l5LV+cmUFG/KCfe4FH
+ rXg+zbWH8M41rpSbWr3fLekiMob9LV4DPF1pMJVdNd4t8ZjaUjPNWEEpDkc79/i/J8uL4Qzd5
+ j5czFvgcQyRxN1Q7H3yFRpVJVRFMLOrueMnUcokdfhnAvSs+OE7fU1n0SDuTegztqsT4J0c+G
+ IYBnP6xghu4NCC/gcvz1EBIPWhjJ9xTOsO+4pD8N4LvSb8m5AurR4Fn6chPdZlmuqaAU2cVTl
+ hYNal+q4dCTu9nGBQsA6Iq37q8WY+flvdy8Hs7A2oqrUj20iUBtLVLK1uUUgHUOtrX9jBb6gd
+ GyNYsH/3it/6LNSsI3f22meVFTm6/566IXry/rmpROSZxtQGSu7EdaO1yLiHxhad3Zo276JhP
+ +td334ANPRmWZDSLo4d/XymfYwPPmdLdIXs5rZWovA4Mh6iYss=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_080533_685720_60A24757 
-X-CRM114-Status: GOOD (  27.14  )
+X-CRM114-CacheID: sfid-20210830_081729_431034_2DC86871 
+X-CRM114-Status: GOOD (  15.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,97 +104,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 30, 2021 at 2:58 AM moudy ho <moudy.ho@mediatek.com> wrote:
+Tested-by: Frank Wunderlich <frank-w@public-files.de>
+
+after adding nodes for r2
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210830145958.108605-1-linux@fw-web.de/
+
+regards Frank
+
+
+> Gesendet: Sonntag, 22. August 2021 um 06:13 Uhr
+> Von: "Sungbo Eo" <mans0n@gorani.run>
+> An: linux-mediatek@lists.infradead.org
+> Cc: "Chunfeng Yun" <chunfeng.yun@mediatek.com>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rob Herring" <robh+dt@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Min Guo" <min.guo@mediatek.com>, "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Sungbo Eo" <mans0n@gorani.run>
+> Betreff: [PATCH v3 1/1] arm: dts: mt7623: add musb device nodes
 >
-> On Tue, 2021-08-24 at 13:02 -0500, Rob Herring wrote:
-> > On Tue, Aug 24, 2021 at 06:00:25PM +0800, Moudy Ho wrote:
-> > > This patch adds DT binding document for Media Data Path 3 (MDP3)
-> > > a unit in multimedia system used for scaling and color format
-> > > convert.
-> > >
-> > > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > > ---
-> > >  .../bindings/media/mediatek,mdp3-ccorr.yaml   |  57 +++++
-> > >  .../bindings/media/mediatek,mdp3-rdma.yaml    | 207
-> > > ++++++++++++++++++
-> > >  .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++++++
-> > >  .../bindings/media/mediatek,mdp3-wdma.yaml    |  71 ++++++
-> > >  .../bindings/media/mediatek,mdp3-wrot.yaml    |  71 ++++++
-> > >  5 files changed, 471 insertions(+)
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/media/mediatek,mdp3-ccorr.yaml
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/media/mediatek,mdp3-wdma.yaml
-> > >  create mode 100644
-> > > Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-> > >
-> > > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > > ccorr.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > > ccorr.yaml
-> > > new file mode 100644
-> > > index 000000000000..59fd68b46022
-> > > --- /dev/null
-> > > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > > ccorr.yaml
-> > > @@ -0,0 +1,57 @@
-> > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > +%YAML 1.2
-> > > +---
-> > > +$id:
-> > > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-ccorr.yaml*__;Iw!!CTRNKA9wMg0ARbw!1C0ChLqzi7Zq8D2d4_S4IqCEei4GXdgy3_VCQg8MdsJP7n8TlxbGyajipusfH8hi$
-> > >
-> > > +$schema:
-> > > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!1C0ChLqzi7Zq8D2d4_S4IqCEei4GXdgy3_VCQg8MdsJP7n8TlxbGyajipi-OInix$
-> > >
-> > > +
-> > > +title: Mediatek Media Data Path 3 CCORR Device Tree Bindings
-> > > +
-> > > +maintainers:
-> > > +  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-> > > +  - Moudy Ho <moudy.ho@mediatek.com>
-> > > +
-> > > +description: |
-> > > +  One of Media Data Path 3 (MDP3) components used to do color
-> > > correction with 3X3 matrix.
-> > > +
-> > > +properties:
-> > > +  compatible:
-> > > +    items:
-> > > +      - enum:
-> > > +        - mediatek,mt8183-mdp3-ccorr
-> > > +
-> > > +  mediatek,mdp3-id:
-> > > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > > +    maxItems: 1
-> > > +    description: |
-> > > +      HW index to distinguish same functionality modules.
-> >
-> > If we wanted h/w indexes in DT, we'd have a standard property. Why
-> > do
-> > you need this?
-> >
-> I'm sorry not quite sure what HW indexes means (something like
-> aliases?)
-
-It means whatever you said in your description.
-
-And no, I'm not suggesting you use aliases.
-
-> It was originally used to mark multiple identical modules in the MDP
-> data path algorithm, so that appropriate paths can be dynamically
-> dispatched.
-
-If they are identical, then why do you need to distinguish them in DT?
-If there's some difference you need to know about such as connections
-to other blocks, then describe that. Another common example is needing
-to know what bits/registers to access in a syscon phandle. For that,
-make the register offset or bits be args to the phandle property.
-
-Rob
+> MT7623 has an musb controller that is compatible with the one from MT2701.
+>
+> Signed-off-by: Sungbo Eo <mans0n@gorani.run>
+> ---
+> v3:
+> * remove unnecessary status=okay from u2port2
+>
+> v2:
+> * rename usb3 label to usb0
+> * move usb0 & u2phy1 nodes to the right sorted place
+> * disable u2phy1 by default
+> * correct u2port2 node name to match its reg address
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi  | 33 +++++++++++++++++++++++++++++++++
+>  arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
+>  2 files changed, 37 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 3c11f7cfcc40..21c8a291b74e 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -585,6 +585,39 @@ spi2: spi@11017000 {
+>  		status = "disabled";
+>  	};
+>
+> +	usb0: usb@11200000 {
+> +		compatible = "mediatek,mt7623-musb",
+> +			     "mediatek,mtk-musb";
+> +		reg = <0 0x11200000 0 0x1000>;
+> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "mc";
+> +		phys = <&u2port2 PHY_TYPE_USB2>;
+> +		dr_mode = "otg";
+> +		clocks = <&pericfg CLK_PERI_USB0>,
+> +			 <&pericfg CLK_PERI_USB0_MCU>,
+> +			 <&pericfg CLK_PERI_USB_SLV>;
+> +		clock-names = "main","mcu","univpll";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +		status = "disabled";
+> +	};
+> +
+> +	u2phy1: t-phy@11210000 {
+> +		compatible = "mediatek,mt7623-tphy",
+> +			     "mediatek,generic-tphy-v1";
+> +		reg = <0 0x11210000 0 0x0800>;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		status = "disabled";
+> +
+> +		u2port2: usb-phy@11210800 {
+> +			reg = <0 0x11210800 0 0x0100>;
+> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> +			clock-names = "ref";
+> +			#phy-cells = <1>;
+> +		};
+> +	};
+> +
+>  	audsys: clock-controller@11220000 {
+>  		compatible = "mediatek,mt7623-audsys",
+>  			     "mediatek,mt2701-audsys",
+> diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
+> index 0735a1fb8ad9..d304b62d24b5 100644
+> --- a/arch/arm/boot/dts/mt7623a.dtsi
+> +++ b/arch/arm/boot/dts/mt7623a.dtsi
+> @@ -35,6 +35,10 @@ &scpsys {
+>  	clock-names = "ethif";
+>  };
+>
+> +&usb0 {
+> +	power-domains = <&scpsys MT7623A_POWER_DOMAIN_IFR_MSC>;
+> +};
+> +
+>  &usb1 {
+>  	power-domains = <&scpsys MT7623A_POWER_DOMAIN_HIF>;
+>  };
+> --
+> 2.33.0
+>
+>
 
 _______________________________________________
 Linux-mediatek mailing list
