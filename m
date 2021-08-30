@@ -2,155 +2,81 @@ Return-Path: <SRS0=Uf5e=NV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,NICE_REPLY_A,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC73EC432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 10:17:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B76E6C432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 12:12:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B204B610CA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 10:17:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B204B610CA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=amd.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6953A61154
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 12:12:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6953A61154
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m3lWgW1IVTUTCgepoxuYEAq6Fa/xMKA9nYZW0h1Wgxo=; b=HRpOvawKwDe3R7yzTTf+N+K5MH
-	SSm3f9WVKeaKruP+6vu/OD4BgdNPyIijpaFFOutvPmTbCM7K4UIbh+YbNKoTtxde3G0cJoVNwu7//
-	IyLv408M0PXud1+2AeBmsgL+tcpX5YujLmRJVGiHPtYD0CkQ1BfJvGD+UUnap+OJ4a30XtUNV8KPS
-	0dYBuUee8CQ+JZb+NMDoOH1PvdRzdbBOP2a+J0RO8zpSMKd27eTHZTsGDtwDkolfU6SlVW8qGOGWv
-	TfoSOsoxIAYSfdom7Hji60wpkrNOmYgu8bxno1czKu13rQA1Voou9LgD65ciJ7mZ73CBRIzGjgl00
-	iK4R5JCg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=+qjV+rGZUfaEB4ZDEgYxPj+Xx2WDZXGYK2vPYP8yIDc=; b=lTSeYg9V98l71j
+	45ZIAh1oThCXSujyDIW03yzyOA2O6CBT3CzXwWfeNrN/EhdLwYBq5VjkcvfjqFKLXEYGX03L8RriF
+	cuyIcdz/4D0jHIpZ6hHQ3q8ev97vfR+UEzStcBDhXtngaFOjoU+G7xIxISiHslgM7HpKpuFDXftA6
+	wTI2nzTxR6Cw/A84bPEr5TwRjAYc6By/VVP8T/XDnss9MWrdYgG5NQ60f8CQzUwiauroWrfBU59YZ
+	NWQG8c+7XBIbzEAO+/nXNkaVW1B9woRIwnhZS/PxU0sBfPXihyPKsogHPyZzexeniKwPLAehyR1Mi
+	WSpHgoCa+fZFUhv3OKxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKeLO-00Gz05-Am; Mon, 30 Aug 2021 10:16:46 +0000
-Received: from [40.107.92.61]
- (helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+	id 1mKg8h-00HCnA-GK; Mon, 30 Aug 2021 12:11:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKeLI-00Gyyj-GR; Mon, 30 Aug 2021 10:16:44 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LSVgZnOJJKJieA8t/0+WdeU9Tajva23vKpIL4DXqV63+X/upZofkxE0UleT3jRlJwlf3LpxzUKOKQmzqF1I1TqaI4c7GqQL9WTTsvUyeSPQlC8UcXnTfsIFsljKDPTBlf85ywhODSBRMX74famMmh4+FXjeU5n2JevNKdAAciYx2MNUo1DuOTcVRdTDo7E1eIz9I7d0wMYhUSIyYeifru1h/v/AJDmVv90LYhr5kYwdkjsytG5qbALAiT7+tf1i0wG+6KOULNOXBM3aKdQrtBeXPYvFuG0byIEjN0ncYLkwGx80H+J2ypbE2TuqnVfOjN1t8wnPTQ0EL1NYS/u3Ydg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MMUAx9ccDV07lV7BtPeDauhTLcqik+389hsBbqeNKR8=;
- b=dZGIVhMqq+KAEuuH0lZsHIG808fSqH98HK4ubjOJ4Qrnb3KQVkB7mdS6ehoImYMPl6e9u/ohg+/mYPWjamy+Kc5pNte5R+aQLVbdCC7P0Vdk05DAJ9pZ/koGZxqTk/Jxy2LrjzTrdCc5B9ZtbU8/Lgfla9pXS2fienjLPmj0Dcix1Vg2vPVzKvaoKOZ0fd+oswpHEs8vrZTwLsiFxxG0gqoTMtys7sqCW62NFMt7o3nQTeTQjgpmdMhLbYjQ3G3KPQBEj9ahtAmXhfN8XDpy3QgrNe1yV2GFTIkpEVEgw4mAY/N7ydCrJw8M9OBrbnzB5mcC6v2fW9i1bb4ZM9wU5A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=MMUAx9ccDV07lV7BtPeDauhTLcqik+389hsBbqeNKR8=;
- b=B28muxSEla7cGXYnGTb8WODv+pU7OpYgj4d3xm9KtCkg+4abXi1oBQFwfQH8VsJQ2zpsBZQcrA0t5zJTZcmRKwjyXqvTd1w4/n3S7+ektFrqcWoN/beWYmNRhBajVka0FnzF+aPn5b+7KnNdFp1YWr53AH8a8tYFx1F7S3pVDWg=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=amd.com;
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com (2603:10b6:208:159::19)
- by MN2PR12MB4392.namprd12.prod.outlook.com (2603:10b6:208:264::24)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4457.24; Mon, 30 Aug
- 2021 10:16:35 +0000
-Received: from MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::dce2:96e5:aba2:66fe]) by MN2PR12MB3775.namprd12.prod.outlook.com
- ([fe80::dce2:96e5:aba2:66fe%6]) with mapi id 15.20.4457.024; Mon, 30 Aug 2021
- 10:16:35 +0000
-Subject: Re: [PATCH] dma-buf: heaps: remove duplicated cache sync
-To: guangming.cao@mediatek.com, Sumit Semwal <sumit.semwal@linaro.org>,
- Benjamin Gaignard <benjamin.gaignard@linaro.org>,
- Liam Mark <lmark@codeaurora.org>, Laura Abbott <labbott@redhat.com>,
- Brian Starkey <Brian.Starkey@arm.com>, John Stultz <john.stultz@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:DMA-BUF HEAPS FRAMEWORK" <linux-media@vger.kernel.org>,
- "open list:DMA-BUF HEAPS FRAMEWORK" <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA-BUF HEAPS FRAMEWORK" <linaro-mm-sig@lists.linaro.org>,
- open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Cc: wsd_upstream@mediatek.com
-References: <20210830100139.15632-1-guangming.cao@mediatek.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <dd5ba603-8c9d-f6a0-cbcc-dfb353fb6701@amd.com>
-Date: Mon, 30 Aug 2021 12:16:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-In-Reply-To: <20210830100139.15632-1-guangming.cao@mediatek.com>
-Content-Language: en-US
-X-ClientProxiedBy: AM0PR04CA0144.eurprd04.prod.outlook.com
- (2603:10a6:208:55::49) To MN2PR12MB3775.namprd12.prod.outlook.com
- (2603:10b6:208:159::19)
+ id 1mKg8b-00HClt-IK
+ for linux-mediatek@lists.infradead.org; Mon, 30 Aug 2021 12:11:46 +0000
+X-UUID: 65402f66318b45bfbe07b8db6c1c198a-20210830
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=WQh5XrMegI8lghZ21WLZBtBMr6DtReWARCDOo/uomAg=; 
+ b=PO4A6IQEwh0mrRel3qSSqfGs5/ZAfzOkDqEGKCQ7DgaffGQr57eW1Du0fK0ewbjDROC7K2xhKM/9usNHh0+RxF71xb97qYp9q3+wBUM6pMo1RCs0s1lMTlIoBPyY4/hLPjg3JflE0l7uBsku7qRBwv+DzsQPJwv8ZfoqM9O0XR0=;
+X-UUID: 65402f66318b45bfbe07b8db6c1c198a-20210830
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <peter.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1219875255; Mon, 30 Aug 2021 05:11:35 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 Aug 2021 05:11:34 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 Aug 2021 20:11:32 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 30 Aug 2021 20:11:32 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+ <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+ <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+ <alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+ <chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+ <powen.kao@mediatek.com>, <jonathan.hsu@mediatek.com>,
+ <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
+Subject: [PATCH v1] scsi: ufs: ufs-mediatek: Change dbg select by check hw
+ version
+Date: Mon, 30 Aug 2021 20:11:26 +0800
+Message-ID: <1630325486-11741-1-git-send-email-peter.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from [192.168.178.21] (91.14.161.181) by
- AM0PR04CA0144.eurprd04.prod.outlook.com (2603:10a6:208:55::49) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4457.17 via Frontend Transport; Mon, 30 Aug 2021 10:16:33 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 14e4b5b5-f6df-4122-c2d3-08d96b9f3f42
-X-MS-TrafficTypeDiagnostic: MN2PR12MB4392:
-X-Microsoft-Antispam-PRVS: <MN2PR12MB43927CE07B10C47AC8F2919383CB9@MN2PR12MB4392.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:655;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: tfR00fALiHH9wxNxtB3LRLdO8q3k3F2VGP78g21te9IwYV0Zngxv8TanDOZxrAc+03MxahtFNjNYH7pYPjtsPRubvCqQut0ahnqWwwU0fObXdmv2imBPF62K2vL7hb90hXu+GOat0iI1nH+6z7X+1q8JjvjjMQTJO+FuVPdVszT3VEGt7BMOdX2A5JKf3eyyDJwEQKmIejlzz/qQsmJPtTwY8ibHKyTS7pChwi1TF7ipqb7FHe3mYICWT4/nZmhM6jcULxGG+MZRcdXmtk1NzCtoQvrsyMc9hlXnvWn1nBzwI98icL4c/bG6RqqTqWEB9nJ0VI8DERbp/WGplUXUw6Z2mIHcFjOconz8WMTLxuxNuviq+l93IpF881GKtc8/JfM1YwzF1orujrZtzWaVLZeiT7lDYXxgsaDMygrsrvQyCqcDJY4q5e/mCoH523uDY90h5mvT1UV+IYF/As3H7w1nMABg5r/5U/Qj9Y0ychqaAG1eNzcsUDKQL919BnijmHLfw0x4bpZmZ8U/Ri/4vgjRQFI4yLtkJ1emSWiifJiK7svCdIyizeBoxgtaLbn53DLLF6Fy9RE914m2umZToPPL1Gu7e2Pc+1ZPx39pF4QKMO55QUBVMbY/gkqnBHvBkVNeGyzDR+b7OU/tRPcRYNvt0BnsnGDYPk5Lvn3TuN3T7YIZjbxLGme17Xv0iIy07/IM8m4OqCdBooOjiHFF6v1eRLQrBLR3yd2HYt+30mHttf5Wz4lPN6Xzrp/dMT5Z
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR12MB3775.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(376002)(136003)(346002)(39860400002)(366004)(396003)(26005)(186003)(2906002)(956004)(83380400001)(38100700002)(31686004)(4326008)(31696002)(2616005)(66476007)(478600001)(6486002)(8676002)(110136005)(36756003)(16576012)(6666004)(66946007)(86362001)(66556008)(921005)(7416002)(316002)(8936002)(5660300002)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NDI3MUhZMW1URjVmN0hMeUdnVHpieGRWS1ZGcUp2dUMrSFBUODNsamdOMlB4?=
- =?utf-8?B?YkloemFXSWhMaHFFekZNS054RnJqTTlScXFRNGZpdEdQdWJSWk92SktWU3BL?=
- =?utf-8?B?ckNLRURvMWJraUQzdWowcTNKenZ2MVRaOVhBNDl5ZHJHRWREV3MxVzRENngx?=
- =?utf-8?B?cTgranBnNkFCWm53L1hQWjlpN3lza2t4M2xKREJHQUtZU0psVGJvaWVtVVcz?=
- =?utf-8?B?MFB2MXpod3dxVnF2VnZ6MnJ0WTFPZ2oydHU2bUNra0J3Q1poVGN2WlgxUjhB?=
- =?utf-8?B?Y05waVlpMmdtWjFieFNqN0RmNGE0bnRJQ2djRkE0cDVOWTJ6Skk0VXR5cXh1?=
- =?utf-8?B?YldxN05TenhpN01ob2FNWlhUbnpnaUM0L214MUlPY2JjSEtiaUxMWG1kK29v?=
- =?utf-8?B?ZkhUdFNTNUNQeUxCTUlQY1lQVmNuaDlMK2dHbVZZV2hibldCQ1dtNEdzaVht?=
- =?utf-8?B?OWhvMWZpRWEwcGRobXFxQWN0MGRueFl3UTd2QUJzallkTTVLSW1vc0R6UEVp?=
- =?utf-8?B?eExGMVZnM3dBSTJyMG1wYWZjZVBhU1ZVdlZYdy9VWDlvK3RmOW9KMEYwcVNi?=
- =?utf-8?B?OFREWXpiYVprRFFhK1hldmtiSkFOWDVqVlFlbVpiRDl5NHVvc0RhTlN5S3cv?=
- =?utf-8?B?c0ZUV1NOeFVlcEtlenlFeVdYUDQzVnBSV3hKRkswdXJWaFdvdVV4YTNaSTJN?=
- =?utf-8?B?K2UzR2M1K2ZsZDR4c2NaeW5wQlhzbFNoMGNwYms1UGczU2lWZmE3OE0vTzJM?=
- =?utf-8?B?S3pXdEFaUXNKenpQVW9jcEw2RmtheTNVM1RtWVltZ255ZE1TYk9sOExsWWVk?=
- =?utf-8?B?OWpYMURPb1lRMTIvaHBoTzI4dFhZc253S0F1aCtHSEsyWFZXUGQvZ05KVDZG?=
- =?utf-8?B?MEpCaXRIOHQ2SUN0WUIwWnlhMEMzNm9VL2tJY0NzenRTYzRmZHA4anVUN0wy?=
- =?utf-8?B?bFR1Tm5IZXVtbTVxZngzUFEwRTRNQWtvazFkN293NGp1eTBydXlMbDErbUU0?=
- =?utf-8?B?MkpDZDQ2Rjg1K2JEMVUvZHdpaCtBcTdVNFFONVk5M2ExTXJhZmN4OUpFY0Zl?=
- =?utf-8?B?c1ZpUjNqQVNQc3gzSDFoZy9Fczg2WW4wcXFOaHh6SDdrampGM2tTOTZxRHls?=
- =?utf-8?B?c21FeGdMS3ZmV1I3R09FdlV4TzFwbkhEWWRLRGdRM2QvTlJGSEsvQWwwYXJS?=
- =?utf-8?B?cGFrS0h4bUtGY29jY3ArL3o1a3pwZ0FyY29qSXNiRUVGRFlRV2VxK3kzeWdU?=
- =?utf-8?B?ekVlUzAvL0RVTjhnSjJ3K1JiejhXMFJNV2RPLytIc1kydVQ0NjF2OWdYaEpl?=
- =?utf-8?B?S2JIY3pUUlM1NkRpVHhKbE1NNXdZR1VxaXJBS0tDZEowNm1HR1lXZVJBNHlO?=
- =?utf-8?B?TGpBekNPQVh5TUZWQlBoNFR6NGMxSjBwVkZrUzFYV1BUVGQ3bHoxSGlZdytv?=
- =?utf-8?B?d2c0WG9mQ0VaSFN4dU9vMVk2SkgrV2pnQ2lMeUlpV2ljZWtZS2tIL2FLY0lh?=
- =?utf-8?B?aHFWN3lWUGI3NGlJVWhGQXdxNUMybE84bWxDTkI5MGFvc1hUNTYrRnVkalVa?=
- =?utf-8?B?dEkvOG1lSzVFTFlBRXgyK2l2b0xnSEIwYnNOOVlSZEJQQlhSeFk3bGZXZURT?=
- =?utf-8?B?THFPOWh1SXpjR3ZVcUlwNytlU0RBUThEUVRTZGJoMU9KLzR1dGs4clArVmpN?=
- =?utf-8?B?ZVo5SnVwdDRDY1VCYWxFSVNOKzRvNzg2andERUtidzNDL0wvMXFTQmMwK05y?=
- =?utf-8?Q?YKCQxxv6zcQ+cOGCuLBT1WV/KSJ8EpcGW7vGZVV?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 14e4b5b5-f6df-4122-c2d3-08d96b9f3f42
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR12MB3775.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Aug 2021 10:16:35.8166 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: EwLAbmhsQNiLtopzohB7x/Im8WXhUjC+sbGt0GIbp0jJ5EXLXtK0MdF+ZdgsbcST
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4392
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_031640_798151_13A1FCBD 
-X-CRM114-Status: GOOD (  18.34  )
+X-CRM114-CacheID: sfid-20210830_051142_456761_EAAE5278 
+X-CRM114-Status: GOOD (  13.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,68 +88,86 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 30.08.21 um 12:01 schrieb guangming.cao@mediatek.com:
-> From: Guangming Cao <Guangming.Cao@mediatek.com>
->
-> Current flow, one dmabuf maybe call cache sync many times if
-> it has beed mapped more than one time.
+From: Peter Wang <peter.wang@mediatek.com>
 
-Well I'm not an expert on DMA heaps, but this will most likely not work 
-correctly.
+Mediatek UFS dbg select setting is changed in new HW version.
+This patch check the HW version before set dbg select.
 
-> Is there any case that attachments of one dmabuf will points to
-> different memory? If not, seems do sync only one time is more better.
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/scsi/ufs/ufs-mediatek.c |   22 ++++++++++++++++++++--
+ drivers/scsi/ufs/ufs-mediatek.h |    4 ++++
+ 2 files changed, 24 insertions(+), 2 deletions(-)
 
-I think that this can happen, yes.
-
-Christian.
-
-
->
-> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
-> ---
->   drivers/dma-buf/heaps/system_heap.c | 14 ++++++++------
->   1 file changed, 8 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
-> index 23a7e74ef966..909ef652a8c8 100644
-> --- a/drivers/dma-buf/heaps/system_heap.c
-> +++ b/drivers/dma-buf/heaps/system_heap.c
-> @@ -162,9 +162,10 @@ static int system_heap_dma_buf_begin_cpu_access(struct dma_buf *dmabuf,
->   		invalidate_kernel_vmap_range(buffer->vaddr, buffer->len);
->   
->   	list_for_each_entry(a, &buffer->attachments, list) {
-> -		if (!a->mapped)
-> -			continue;
-> -		dma_sync_sgtable_for_cpu(a->dev, a->table, direction);
-> +		if (a->mapped) {
-> +			dma_sync_sgtable_for_cpu(a->dev, a->table, direction);
-> +			break;
-> +		}
->   	}
->   	mutex_unlock(&buffer->lock);
->   
-> @@ -183,9 +184,10 @@ static int system_heap_dma_buf_end_cpu_access(struct dma_buf *dmabuf,
->   		flush_kernel_vmap_range(buffer->vaddr, buffer->len);
->   
->   	list_for_each_entry(a, &buffer->attachments, list) {
-> -		if (!a->mapped)
-> -			continue;
-> -		dma_sync_sgtable_for_device(a->dev, a->table, direction);
-> +		if (!a->mapped) {
-> +			dma_sync_sgtable_for_device(a->dev, a->table, direction);
-> +			break;
-> +		}
->   	}
->   	mutex_unlock(&buffer->lock);
->   
-
-
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index d2c2516..c7c18d8 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -296,6 +296,24 @@ static void ufs_mtk_setup_ref_clk_wait_us(struct ufs_hba *hba,
+ 	host->ref_clk_ungating_wait_us = ungating_us;
+ }
+ 
++static void ufs_mtk_dbg_sel(struct ufs_hba *hba)
++{
++	static u32 hw_ver;
++
++	if (!hw_ver)
++		hw_ver = ufshcd_readl(hba, REG_UFS_MTK_HW_VER);
++
++	if (((hw_ver >> 16) & 0xFF) >= 0x36) {
++		ufshcd_writel(hba, 0x820820, REG_UFS_DEBUG_SEL);
++		ufshcd_writel(hba, 0x0, REG_UFS_DEBUG_SEL_B0);
++		ufshcd_writel(hba, 0x55555555, REG_UFS_DEBUG_SEL_B1);
++		ufshcd_writel(hba, 0xaaaaaaaa, REG_UFS_DEBUG_SEL_B2);
++		ufshcd_writel(hba, 0xffffffff, REG_UFS_DEBUG_SEL_B3);
++	} else {
++		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
++	}
++}
++
+ static int ufs_mtk_wait_link_state(struct ufs_hba *hba, u32 state,
+ 				   unsigned long max_wait_ms)
+ {
+@@ -305,7 +323,7 @@ static int ufs_mtk_wait_link_state(struct ufs_hba *hba, u32 state,
+ 	timeout = ktime_add_ms(ktime_get(), max_wait_ms);
+ 	do {
+ 		time_checked = ktime_get();
+-		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
++		ufs_mtk_dbg_sel(hba);
+ 		val = ufshcd_readl(hba, REG_UFS_PROBE);
+ 		val = val >> 28;
+ 
+@@ -1001,7 +1019,7 @@ static void ufs_mtk_dbg_register_dump(struct ufs_hba *hba)
+ 			 "MPHY Ctrl ");
+ 
+ 	/* Direct debugging information to REG_MTK_PROBE */
+-	ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
++	ufs_mtk_dbg_sel(hba);
+ 	ufshcd_dump_regs(hba, REG_UFS_PROBE, 0x4, "Debug Probe ");
+ }
+ 
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+index 3f0d3bb..10da6e3 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.h
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -18,6 +18,10 @@
+ #define REG_UFS_REJECT_MON          0x22AC
+ #define REG_UFS_DEBUG_SEL           0x22C0
+ #define REG_UFS_PROBE               0x22C8
++#define REG_UFS_DEBUG_SEL_B0        0x22D0
++#define REG_UFS_DEBUG_SEL_B1        0x22D4
++#define REG_UFS_DEBUG_SEL_B2        0x22D8
++#define REG_UFS_DEBUG_SEL_B3        0x22DC
+ 
+ /*
+  * Ref-clk control
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
