@@ -2,81 +2,68 @@ Return-Path: <SRS0=Uf5e=NV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6A90C432BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 18:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7066DC432BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 21:43:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 63E4D60241
-	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 18:43:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 63E4D60241
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 396A660E90
+	for <linux-mediatek@archiver.kernel.org>; Mon, 30 Aug 2021 21:43:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 396A660E90
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KR9Kq8/YnR7v3nZYl5uGTJ9b6g/iyFugCgnkiKhfmE4=; b=BF0mnC8p3Dfbu2
-	fC97YetV2aT8En5mv3ptLWEtzoyfgG3hZN2IAvtqhQmfUrI2gh0WO8ENnmXJB5+nMppSunHVUuY/y
-	N6s5A5yp/1viJAe4bmWgOtdvCeGa0Bpd2GVcCa/JWPJYv5YDZZF3Pd3vf7SR/OOik3HLa6ursD3rM
-	UmBCesikHveZ3Y2/u1BppRH7DQfdBK8Rh9BHOp1CvpG/owphlXVUebw/yXRobg/mgyyEyqtJbVqRe
-	sx+CH0rTKOCBBC7rxckhFPz7aqeLEcClFgrfLG1Vnq7YJnNwaoPEKHFd5RNlI/+Irr6oJXY4Bx6+Y
-	AYp15lTAn9RBSsutRLyA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=FV//9gQR+0+FrRI5PPjRZDEBS6VbC3GPLvhzJf8ySYw=; b=4mNeMDDe8wpWDE
+	zKVQQ4HceippmiAC0S/qq/U5jp6ZOOacxh17mDo4TQrTVZm/fmdTdtjJ2uDp4X3H66D6tp0ifcPne
+	66muPqCHjpEG3BPaEJxlZvX28EU0CREI85fPWmc0uYaPai+qij8hSGoGKnJd8UbYtJFrnX7I5iQi7
+	REzSzxkb6aXusJqeoQ24gAOS1BVm8dDgHB6YE418Usqmrq3hVJHB+KzPOaZDPwjeEW1i4KLevTG73
+	G3tDzYGajIr6t1FbrqRLqiWOVpfweKdtTIBTbaCfp4HqvoivYQA87RwgTwQdfWcJ6KbF6J7ClUVat
+	a+B/NZQDWq8ClpSBt0lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKmFl-000NiA-Hk; Mon, 30 Aug 2021 18:43:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mKp41-000h1D-2i; Mon, 30 Aug 2021 21:43:33 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKmFT-000Nh4-Hn; Mon, 30 Aug 2021 18:43:16 +0000
-X-UUID: 6d8c6b7768e5499b899d0251ac507f03-20210830
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=crEFcIJTwJOrLYU5quGGhCcTCYZ9VLSPd8BGPPPojGA=; 
- b=BSuZvyQw78QfkmkEI6Rrv5Klossyk2XJHBT8hKa5VpcgLWC5/9MyWDcOLQbRsXNSbIeW98kBGIUReWu90oudjM/gpS83yOUH6NGqPEpHldJtqByCwiPnen9ajEAWAd+KKheb1eU7+qCCX3uq9dtf7IwOYlo9VE325CvvfrBf+Hg=;
-X-UUID: 6d8c6b7768e5499b899d0251ac507f03-20210830
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1922846307; Mon, 30 Aug 2021 11:43:06 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 30 Aug 2021 11:43:05 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 31 Aug 2021 02:43:04 +0800
-Received: from [172.21.77.33] (172.21.77.33) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 31 Aug 2021 02:43:04 +0800
-Message-ID: <1630348984.24981.2.camel@mtkswgap22>
-Subject: Re: [RESEND PATCH 3/4] clk: mediatek: support COMMON_CLK_MT6779
- module build
-From: Miles Chen <miles.chen@mediatek.com>
-To: Stephen Boyd <sboyd@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette
- <mturquette@baylibre.com>, Wendell Lin <wendell.lin@mediatek.com>, "Hanks
- Chen" <hanks.chen@mediatek.com>, <linux-clk@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, Lee Jones
- <lee.jones@linaro.org>
-Date: Tue, 31 Aug 2021 02:43:04 +0800
-In-Reply-To: <163021049667.2676726.10138202396240942833@swboyd.mtv.corp.google.com>
-References: <20210813032429.14715-1-miles.chen@mediatek.com>
- <20210813032429.14715-4-miles.chen@mediatek.com>
- <163021049667.2676726.10138202396240942833@swboyd.mtv.corp.google.com>
-X-Mailer: Evolution 3.2.3-0ubuntu6 
+ id 1mKp3n-000gz1-On; Mon, 30 Aug 2021 21:43:21 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B5DBD60E90;
+ Mon, 30 Aug 2021 21:43:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1630359799;
+ bh=zbF3yv3WsPc6wc8t9qfmmgZ/lsdWyqbDW8FcCrDPuyU=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=kBXWL/TQGLTNPzPT5D1t87Hd+gPPA12194U6gqUgTgOFjGN6ii3xJMWicLvkbRmgF
+ XVwshnvVeiN9iMrc4FFbRj59YUQk04lQi6bBCL+2GTo7D+lJfy4hNXsVD5TrAdsyFf
+ VxpmLP+Ct8VykrxQuK8Sheqhu0Ae+P/T6ewQr8vHeAxzwLHRExW+E7YZFwnUI48Ta/
+ WUlU3rCydCVeGmRmiDdW3Jx5N1ha0ke9S5ycXg3eVu2ramZcp9WMShG2qm1prMMBsF
+ kX1hbDVvP/WhP6SwQADep/x4y5OQWKTzrYG64YklfpHiGo9UOZT032NOZCDS6qibdw
+ Sj+Gr6a7gZQYQ==
+Date: Mon, 30 Aug 2021 16:43:17 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Chuanjia Liu <chuanjia.liu@mediatek.com>
+Cc: robh+dt@kernel.org, bhelgaas@google.com, matthias.bgg@gmail.com,
+ lorenzo.pieralisi@arm.com, ryder.lee@mediatek.com,
+ jianjun.wang@mediatek.com, yong.wu@mediatek.com,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v12 2/6] PCI: mediatek: Add new method to get shared
+ pcie-cfg base address
+Message-ID: <20210830214317.GA27606@bjorn-Precision-5520>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <968266ecd5889721aa234c414361bedbe66b9539.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_114313_046061_AE5BBEA4 
-X-CRM114-Status: GOOD (  17.21  )
+X-CRM114-CacheID: sfid-20210830_144319_868149_461A2169 
+X-CRM114-Status: GOOD (  19.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,60 +80,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2021-08-28 at 21:14 -0700, Stephen Boyd wrote:
-> Quoting Miles Chen (2021-08-12 20:24:28)
-> > diff --git a/drivers/clk/mediatek/clk-mt6779-aud.c b/drivers/clk/mediatek/clk-mt6779-aud.c
-> > index 11b209f95e25..439c0bc94b73 100644
-> > --- a/drivers/clk/mediatek/clk-mt6779-aud.c
-> > +++ b/drivers/clk/mediatek/clk-mt6779-aud.c
-> > @@ -4,6 +4,7 @@
-> >   * Author: Wendell Lin <wendell.lin@mediatek.com>
-> >   */
-> >  
-> > +#include <linux/module.h>
-> >  #include <linux/clk-provider.h>
-> >  #include <linux/of.h>
-> >  #include <linux/of_address.h>
-> > @@ -115,3 +116,4 @@ static struct platform_driver clk_mt6779_aud_drv = {
-> >  };
-> >  
-> >  builtin_platform_driver(clk_mt6779_aud_drv);
-> > +MODULE_LICENSE("GPL");
-> 
-> How does this work? builtin_platform_driver() means that it's not
-> modular code. Shouldn't that be module_platform_driver()? Have you tried
-> loading and unloading the module?
+On Mon, Aug 30, 2021 at 03:09:44PM +0800, Chuanjia Liu wrote:
+> On Fri, 2021-08-27 at 11:46 -0500, Bjorn Helgaas wrote:
+> > On Mon, Aug 23, 2021 at 11:27:56AM +0800, Chuanjia Liu wrote:
 
-sorry for my late response. 
+> > > @@ -995,6 +1004,14 @@ static int mtk_pcie_subsys_powerup(struct
+> > > mtk_pcie *pcie)
+> > >  			return PTR_ERR(pcie->base);
+> > >  	}
+> > >  
+> > > +	cfg_node = of_find_compatible_node(NULL, NULL,
+> > > +					   "mediatek,generic-pciecfg");
+> > > +	if (cfg_node) {
+> > > +		pcie->cfg = syscon_node_to_regmap(cfg_node);
+> > 
+> > Other drivers in drivers/pci/controller/ use
+> > syscon_regmap_lookup_by_phandle() (j721e, dra7xx, keystone,
+> > layerscape, artpec6) or syscon_regmap_lookup_by_compatible() (imx6,
+> > kirin, v3-semi).
+> > 
+> > You should do it the same way unless there's a need to be different.
+>
+> I have used phandle, but Rob suggested to search for the node by 
+> compatible.
 
-Thanks for pointing this out. I have the same question when I was
-building this patch. That time I found some examples where
-they are using builtin_platform_driver and can be built as 
-kernel modules:
+> The reason why syscon_regmap_lookup_by_compatible() is not 
+> used here is that the pciecfg node is optional, and there is no need to
+> return error when the node is not searched.
 
-config CLK_IMX8QXP (tristate) && drivers/clk/imx/clk-imx8qxp-lpcg.c
-config CLK_RK3399 (tristate) && drivers/clk/rockchip/clk-rk3399.c
+How about this?
 
-my load test:
-load these moduless and do 'lsmod' on v5.14-rc1/mt6779 environment:
+  regmap = syscon_regmap_lookup_by_compatible("mediatek,generic-pciecfg");
+  if (!IS_ERR(regmap))
+    pcie->cfg = regmap;
 
-clk_mt6779_aud 16384 0 [permanent], Live 0xffff800008fd8000
-clk_mt6779_mfg 16384 0 [permanent], Live 0xffff800008fd0000
-clk_mt6779_venc 16384 0 [permanent], Live 0xffff800008fc8000
-clk_mt6779_vdec 16384 0 [permanent], Live 0xffff800008fc0000
-clk_mt6779_cam 16384 0 [permanent], Live 0xffff800008fb8000
-clk_mt6779_ipe 16384 0 [permanent], Live 0xffff800008fb0000
-clk_mt6779_img 16384 0 [permanent], Live 0xffff800008fa8000
-clk_mt6779_mm 16384 0 [permanent], Live 0xffff800008fa0000
-
-I did not test 'unload' kernel modules because I did not
-define module_exit in this patch.
-
-But as you pointed out, it should be module_platform_driver().
-I will use module_platform_driver() in the next patch.
-
-
-Miles
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
