@@ -2,78 +2,82 @@ Return-Path: <SRS0=bg5C=NW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BAA1FC432BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 16:43:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74903C432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 18:24:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7936E6109D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 16:43:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7936E6109D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3C01B60FE8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 18:24:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3C01B60FE8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HicygIFmPTn8zOS9gEXbMkZmRFjtFisQsw4DjF9sYgE=; b=f4yZS5317n7KuP
-	bE3gjM+sE5RoKcGFuV47bRcv4juugdKpGSw09UKOMDpV9T46cl/wZ/yHmZjpFUV1ObnhEkMcWskId
-	1FqK5VTihQCC8A2q6qXIIw68iPTmn1a4BUwIfqfb0e1was39B8YwhxcAS4L1J1tZoynicrEu3nX3I
-	xcogZDHUuCT7lsLxaTBx4iXXFW2yYEsas33xZIlMDZNl53MItac9ncpPnYApwFWPsdnT6Gmz9kIjM
-	H7dqovBa+bAz6CjzzfuqlvD2degvPfetW9rlUeOIRdCtjrpAkVGHV5HjUdXUx8SsO87ox0gXA0G5g
-	MGbRHFrXjpGrRreJ+6mg==;
+	List-Owner; bh=aR+2jg223HsQu6AajttLZz4lP+UWGkh7cFAqgFBiQrA=; b=MWLkQPp72IPO7A
+	JnlJP2ZDT4+jbzW8UOXd25Xt4GIDldoXTvi0kUN6R6AY3U5u7cpQytT/y4qwjbNXxH68guvC3Nvi9
+	APugmVHDlwnjCPT2NeF95tLIzur8IJpkpiwc+lvQ3CFr+1zZ595W3xY8kDcWzrYkSig/irU5cwJ8U
+	Kr2bJWgCJEozh36l613su107yikDqJEqjQb2xST+VAG62FXX0OrQ75/KsAcz6bzCLBR2McKEkrffu
+	wAtJokAv8YdRRQDY9S44117KSTcsomRcTZHmkR4YOeBsvKWbkh6Iv3VKVEexAYiFjwdBlY1k5bJt/
+	GkawMl36Sy8V6YY5Pkig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mL6rF-002jct-2H; Tue, 31 Aug 2021 16:43:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mL8R2-002ufZ-KT; Tue, 31 Aug 2021 18:24:36 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mL6qA-002j46-O5; Tue, 31 Aug 2021 16:42:29 +0000
-X-UUID: 7d753d267a2a4f4ab74a874ca9a0f72e-20210831
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=3U8w+e3LpKk5cdQ3UDCyyORtv3cZCN2f6D9Cj3TqcEw=; 
- b=ev9zIGTNSyKcDf+tU8vDjNE5P58chWw0hyaIeb2bbDHMC2cjgXwLktPso1G8effmu98cc4MvvwseA1mnlO+8pmW2c/Dl3+13/c8WY157nulQGsEsw+sIsT8Jz0dC1TzUG5DVGMgvsxCcAmkJOHvel8HF9n1FhnOvdIGV74FH9As=;
-X-UUID: 7d753d267a2a4f4ab74a874ca9a0f72e-20210831
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 596015; Tue, 31 Aug 2021 09:42:14 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 31 Aug 2021 09:42:13 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Sep 2021 00:42:12 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 1 Sep 2021 00:42:12 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Wendell Lin <wendell.lin@mediatek.com>, Hanks Chen
- <hanks.chen@mediatek.com>, <linux-clk@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, Miles Chen
- <miles.chen@mediatek.com>, Lee Jones <lee.jones@linaro.org>
-Subject: [PATCH v2 2/4] clk: mediatek: support COMMON_CLK_MEDIATEK module build
-Date: Wed, 1 Sep 2021 00:42:08 +0800
-Message-ID: <20210831164210.15455-3-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210831164210.15455-1-miles.chen@mediatek.com>
-References: <20210831164210.15455-1-miles.chen@mediatek.com>
+ id 1mL8Qo-002ueD-Tf; Tue, 31 Aug 2021 18:24:24 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 875A261056;
+ Tue, 31 Aug 2021 18:24:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1630434262;
+ bh=JppPB/r91xiHliv4KMyg+e4WdWnb/md7Nq5OwRDXCJQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=lM3iIqS0bv/TZAayziHSuifgl2v9HezM8iyfdyKEjuSdK2EPbRzrin7MzBre7U+ow
+ ZsMwfMS7DSxzWhm6UFMVDOp3/L+OqlsHDRhQhiMNj2C2XcTXfdzJpUs+Y1EnnoJDMv
+ OlV+MLef2DrOFUQG9m4kfBSLNlVIdIvV5wRomvHA2EPxUoq71cIYhDG+K+DxdxjZJA
+ GRibCKFSOpqzYumk7jGDlDQgyLRVM69YR/pyXFeZjbq5OHIJyEYv/M0kQ9BIBR+9su
+ hE+KLqybUKR1q9ywtSEyOiJ2bhperswXQxa4Wz/vqDv0TK+A0vnbNCP5mUmsayhoUC
+ 9YLGnaPWMOhLA==
+Received: by mail-ej1-f43.google.com with SMTP id u3so835279ejz.1;
+ Tue, 31 Aug 2021 11:24:22 -0700 (PDT)
+X-Gm-Message-State: AOAM533lGI/lj1Pnee4kDDkzVQsxi5udr6ollchjq5YcVz5QxZ1L4V3i
+ wn9Q08esT4aj04qgrKbQ/MwbxZDkwkQ3biIdFQ==
+X-Google-Smtp-Source: ABdhPJx0bWUTQpVcwF3zUZB8CpqetIM2G7wA1PzLMXQI4MWCrkFokKMqKxjrdpW/NUMoT4LNfTTn7o0aQrfDcpk04lI=
+X-Received: by 2002:a17:907:b06:: with SMTP id
+ h6mr30094347ejl.130.1630434261057; 
+ Tue, 31 Aug 2021 11:24:21 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <CAL_JsqKEvAypWhiaWMhxM7zVkLAFL9=eMU7_vr=ht+uyxYe0qg@mail.gmail.com>
+ <20210831154711.GA107126@bjorn-Precision-5520>
+In-Reply-To: <20210831154711.GA107126@bjorn-Precision-5520>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 31 Aug 2021 13:24:09 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+y=-UTv6B5cGG5p-q-rzzyEuWZ_Q6YKPT=Jej1boZwjQ@mail.gmail.com>
+Message-ID: <CAL_Jsq+y=-UTv6B5cGG5p-q-rzzyEuWZ_Q6YKPT=Jej1boZwjQ@mail.gmail.com>
+Subject: Re: [PATCH v12 2/6] PCI: mediatek: Add new method to get shared
+ pcie-cfg base address
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Chuanjia Liu <chuanjia.liu@mediatek.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Yong Wu <yong.wu@mediatek.com>, PCI <linux-pci@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ devicetree@vger.kernel.org, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210831_094226_863617_9A9E7A66 
-X-CRM114-Status: GOOD (  14.08  )
+X-CRM114-CacheID: sfid-20210831_112423_042576_60D53A02 
+X-CRM114-Status: GOOD (  44.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,216 +94,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-To support COMMON_CLK_MEDIATEK module build,
-add MODULE_LICENSE and export necessary symbols.
+On Tue, Aug 31, 2021 at 10:47 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> On Tue, Aug 31, 2021 at 10:04:40AM -0500, Rob Herring wrote:
+> > On Fri, Aug 27, 2021 at 11:46 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > >
+> > > On Mon, Aug 23, 2021 at 11:27:56AM +0800, Chuanjia Liu wrote:
+> > > > For the new dts format, add a new method to get
+> > > > shared pcie-cfg base address and use it to configure
+> > > > the PCIECFG controller
+> > >
+> > > Rewrap this to fill 75 columns.
+> > >
+> > > > Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
+> > > > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> > > > ---
+> > > >  drivers/pci/controller/pcie-mediatek.c | 17 +++++++++++++++++
+> > > >  1 file changed, 17 insertions(+)
+> > > >
+> > > > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > > > index 25bee693834f..4296d9e04240 100644
+> > > > --- a/drivers/pci/controller/pcie-mediatek.c
+> > > > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > > > @@ -14,6 +14,7 @@
+> > > >  #include <linux/irqchip/chained_irq.h>
+> > > >  #include <linux/irqdomain.h>
+> > > >  #include <linux/kernel.h>
+> > > > +#include <linux/mfd/syscon.h>
+> > > >  #include <linux/msi.h>
+> > > >  #include <linux/module.h>
+> > > >  #include <linux/of_address.h>
+> > > > @@ -23,6 +24,7 @@
+> > > >  #include <linux/phy/phy.h>
+> > > >  #include <linux/platform_device.h>
+> > > >  #include <linux/pm_runtime.h>
+> > > > +#include <linux/regmap.h>
+> > > >  #include <linux/reset.h>
+> > > >
+> > > >  #include "../pci.h"
+> > > > @@ -207,6 +209,7 @@ struct mtk_pcie_port {
+> > > >   * struct mtk_pcie - PCIe host information
+> > > >   * @dev: pointer to PCIe device
+> > > >   * @base: IO mapped register base
+> > > > + * @cfg: IO mapped register map for PCIe config
+> > > >   * @free_ck: free-run reference clock
+> > > >   * @mem: non-prefetchable memory resource
+> > > >   * @ports: pointer to PCIe port information
+> > > > @@ -215,6 +218,7 @@ struct mtk_pcie_port {
+> > > >  struct mtk_pcie {
+> > > >       struct device *dev;
+> > > >       void __iomem *base;
+> > > > +     struct regmap *cfg;
+> > > >       struct clk *free_ck;
+> > > >
+> > > >       struct list_head ports;
+> > > > @@ -682,6 +686,10 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+> > > >               val |= PCIE_CSR_LTSSM_EN(port->slot) |
+> > > >                      PCIE_CSR_ASPM_L1_EN(port->slot);
+> > > >               writel(val, pcie->base + PCIE_SYS_CFG_V2);
+> > > > +     } else if (pcie->cfg) {
+> > > > +             val = PCIE_CSR_LTSSM_EN(port->slot) |
+> > > > +                   PCIE_CSR_ASPM_L1_EN(port->slot);
+> > > > +             regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+> > > >       }
+> > > >
+> > > >       /* Assert all reset signals */
+> > > > @@ -985,6 +993,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+> > > >       struct device *dev = pcie->dev;
+> > > >       struct platform_device *pdev = to_platform_device(dev);
+> > > >       struct resource *regs;
+> > > > +     struct device_node *cfg_node;
+> > > >       int err;
+> > > >
+> > > >       /* get shared registers, which are optional */
+> > > > @@ -995,6 +1004,14 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+> > > >                       return PTR_ERR(pcie->base);
+> > > >       }
+> > > >
+> > > > +     cfg_node = of_find_compatible_node(NULL, NULL,
+> > > > +                                        "mediatek,generic-pciecfg");
+> > >
+> > > This looks wrong to me.  IIUC, since we start at NULL, this searches
+> > > the entire device tree for any node with
+> > >
+> > >   compatible = "mediatek,generic-pciecfg"
+> > >
+> > > but we should only care about the specific device/node this driver
+> > > claimed.
+> > >
+> > > Should this be part of the match data, i.e., struct mtk_pcie_soc?
+> >
+> > What would you put in match data exactly?
+> >
+> > The other way to do this is to have a DT property with the phandle
+> > which people like to do (have everything in the node 'for their
+> > driver'). If there's only 1 possible node (which is almost always the
+> > case), then there is little benefit to having another property. It's
+> > just redundant data. A phandle lookup might be a bit faster with the
+> > caching we do, but on a miss it would still walk all nodes.
+> >
+> > The other thing with these 'extra register bits to twiddle' is that
+> > they tend to be SoC specific and change from chip to chip, so either
+> > way is not very portable. The real question to ask is should there be
+> > a standard interface used or created.
+> >
+> > > > +     if (cfg_node) {
+> > > > +             pcie->cfg = syscon_node_to_regmap(cfg_node);
+> > >
+> > > Other drivers in drivers/pci/controller/ use
+> > > syscon_regmap_lookup_by_phandle() (j721e, dra7xx, keystone,
+> > > layerscape, artpec6) or syscon_regmap_lookup_by_compatible() (imx6,
+> > > kirin, v3-semi).
+> >
+> > There's no phandle to use in this case. As above, I'm trying to break
+> > people of this habit.
+>
+> Thanks!  I was mistaken in lots of ways here.  I first assumed
+> "mediatek,generic-pciecfg" was local to the pcie node, but that's not
+> true.  Then I thought there might be an ownership issue because the
+> regmap is not local to the device, and several drivers look up and use
+> the same regmap.  But it looks like regmap provides some internal
+> locking which mitigates most or all of that concern.
+>
+> Just to check -- you prefer syscon_regmap_lookup_by_compatible() over
+> syscon_regmap_lookup_by_phandle()?
 
-Cc: Stephen Boyd <sboyd@kernel.org>
-Cc: Hanks Chen <hanks.chen@mediatek.com>
-Cc: Wendell Lin <wendell.lin@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
----
- drivers/clk/mediatek/clk-apmixed.c | 3 +++
- drivers/clk/mediatek/clk-cpumux.c  | 3 +++
- drivers/clk/mediatek/clk-gate.c    | 8 ++++++++
- drivers/clk/mediatek/clk-mtk.c     | 8 ++++++++
- drivers/clk/mediatek/clk-mux.c     | 4 ++++
- drivers/clk/mediatek/clk-pll.c     | 4 ++++
- drivers/clk/mediatek/reset.c       | 2 ++
- 7 files changed, 32 insertions(+)
+Yes, unless there is either more than 1 instance of the syscon or some
+additional data specific to the user (e.g. a register offset).
 
-diff --git a/drivers/clk/mediatek/clk-apmixed.c b/drivers/clk/mediatek/clk-apmixed.c
-index 258d128370f2..caa9119413f1 100644
---- a/drivers/clk/mediatek/clk-apmixed.c
-+++ b/drivers/clk/mediatek/clk-apmixed.c
-@@ -5,6 +5,7 @@
-  */
- 
- #include <linux/delay.h>
-+#include <linux/module.h>
- #include <linux/of_address.h>
- #include <linux/slab.h>
- 
-@@ -97,3 +98,5 @@ struct clk * __init mtk_clk_register_ref2usb_tx(const char *name,
- 
- 	return clk;
- }
-+
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-cpumux.c b/drivers/clk/mediatek/clk-cpumux.c
-index 79fe09028742..f85c755c9fc1 100644
---- a/drivers/clk/mediatek/clk-cpumux.c
-+++ b/drivers/clk/mediatek/clk-cpumux.c
-@@ -6,6 +6,7 @@
- 
- #include <linux/clk-provider.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/module.h>
- #include <linux/slab.h>
- 
- #include "clk-mtk.h"
-@@ -106,3 +107,5 @@ int mtk_clk_register_cpumuxes(struct device_node *node,
- 
- 	return 0;
- }
-+
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-gate.c b/drivers/clk/mediatek/clk-gate.c
-index a35cf0b22150..b02d2f74dd0d 100644
---- a/drivers/clk/mediatek/clk-gate.c
-+++ b/drivers/clk/mediatek/clk-gate.c
-@@ -11,6 +11,7 @@
- #include <linux/slab.h>
- #include <linux/delay.h>
- #include <linux/clkdev.h>
-+#include <linux/module.h>
- 
- #include "clk-mtk.h"
- #include "clk-gate.h"
-@@ -122,24 +123,28 @@ const struct clk_ops mtk_clk_gate_ops_setclr = {
- 	.enable		= mtk_cg_enable,
- 	.disable	= mtk_cg_disable,
- };
-+EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_setclr);
- 
- const struct clk_ops mtk_clk_gate_ops_setclr_inv = {
- 	.is_enabled	= mtk_cg_bit_is_set,
- 	.enable		= mtk_cg_enable_inv,
- 	.disable	= mtk_cg_disable_inv,
- };
-+EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_setclr_inv);
- 
- const struct clk_ops mtk_clk_gate_ops_no_setclr = {
- 	.is_enabled	= mtk_cg_bit_is_cleared,
- 	.enable		= mtk_cg_enable_no_setclr,
- 	.disable	= mtk_cg_disable_no_setclr,
- };
-+EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_no_setclr);
- 
- const struct clk_ops mtk_clk_gate_ops_no_setclr_inv = {
- 	.is_enabled	= mtk_cg_bit_is_set,
- 	.enable		= mtk_cg_enable_inv_no_setclr,
- 	.disable	= mtk_cg_disable_inv_no_setclr,
- };
-+EXPORT_SYMBOL_GPL(mtk_clk_gate_ops_no_setclr_inv);
- 
- struct clk *mtk_clk_register_gate(
- 		const char *name,
-@@ -181,3 +186,6 @@ struct clk *mtk_clk_register_gate(
- 
- 	return clk;
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_gate);
-+
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index cec1c8a27211..cb2dabe60aaf 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -11,6 +11,7 @@
- #include <linux/slab.h>
- #include <linux/delay.h>
- #include <linux/clkdev.h>
-+#include <linux/module.h>
- #include <linux/mfd/syscon.h>
- #include <linux/device.h>
- 
-@@ -41,6 +42,7 @@ struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
- 
- 	return NULL;
- }
-+EXPORT_SYMBOL_GPL(mtk_alloc_clk_data);
- 
- void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
- 		int num, struct clk_onecell_data *clk_data)
-@@ -67,6 +69,7 @@ void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
- 			clk_data->clks[rc->id] = clk;
- 	}
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_fixed_clks);
- 
- void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
- 		int num, struct clk_onecell_data *clk_data)
-@@ -93,6 +96,7 @@ void mtk_clk_register_factors(const struct mtk_fixed_factor *clks,
- 			clk_data->clks[ff->id] = clk;
- 	}
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_factors);
- 
- int mtk_clk_register_gates_with_dev(struct device_node *node,
- 		const struct mtk_gate *clks,
-@@ -145,6 +149,7 @@ int mtk_clk_register_gates(struct device_node *node,
- 	return mtk_clk_register_gates_with_dev(node,
- 		clks, num, clk_data, NULL);
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_gates);
- 
- struct clk *mtk_clk_register_composite(const struct mtk_composite *mc,
- 		void __iomem *base, spinlock_t *lock)
-@@ -258,6 +263,7 @@ void mtk_clk_register_composites(const struct mtk_composite *mcs,
- 			clk_data->clks[mc->id] = clk;
- 	}
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_composites);
- 
- void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
- 			int num, void __iomem *base, spinlock_t *lock,
-@@ -286,3 +292,5 @@ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
- 			clk_data->clks[mcd->id] = clk;
- 	}
- }
-+
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-mux.c b/drivers/clk/mediatek/clk-mux.c
-index b0c61709bacc..a507eea26cc7 100644
---- a/drivers/clk/mediatek/clk-mux.c
-+++ b/drivers/clk/mediatek/clk-mux.c
-@@ -8,6 +8,7 @@
- #include <linux/of_address.h>
- #include <linux/slab.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/module.h>
- 
- #include "clk-mtk.h"
- #include "clk-mux.h"
-@@ -190,3 +191,6 @@ int mtk_clk_register_muxes(const struct mtk_mux *muxes,
- 
- 	return 0;
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_muxes);
-+
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f440f2cd0b69..399e7b4297c8 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -7,6 +7,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/io.h>
-+#include <linux/module.h>
- #include <linux/slab.h>
- #include <linux/clkdev.h>
- #include <linux/delay.h>
-@@ -368,3 +369,6 @@ void mtk_clk_register_plls(struct device_node *node,
- 		clk_data->clks[pll->id] = clk;
- 	}
- }
-+EXPORT_SYMBOL_GPL(mtk_clk_register_plls);
-+
-+MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/mediatek/reset.c b/drivers/clk/mediatek/reset.c
-index cb939c071b0c..9079bfc29ec0 100644
---- a/drivers/clk/mediatek/reset.c
-+++ b/drivers/clk/mediatek/reset.c
-@@ -137,3 +137,5 @@ void mtk_register_reset_controller_set_clr(struct device_node *np,
- 	mtk_register_reset_controller_common(np, num_regs, regofs,
- 		&mtk_reset_ops_set_clr);
- }
-+
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
+Rob
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
