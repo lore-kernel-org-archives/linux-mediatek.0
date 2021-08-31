@@ -2,85 +2,73 @@ Return-Path: <SRS0=bg5C=NW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B9A36C432BE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 08:50:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 09B18C4320E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 08:55:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 71F536101B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 08:50:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 71F536101B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id CC2B46101B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 08:55:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CC2B46101B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w0P9Qj4WX496JfG671GNiurokVkeDmXzYRvdzqD7Ot4=; b=pP5gJjojZp6RvK
-	xTbkL9N2mDlZGJuFbvAHiMsHyQFIETTiTxWzMEvUPvKvNjeVJVpXi6VcvWzhUHY5NTkHCep3HqHk1
-	BlS5QCBoBgpaZplGqqfw/+AV4h4QjH9IQmKhv+eiFCRrtYi9gIDNlHRG1m2MZFMtXbFAJp79qfbiN
-	Q42PQryBuTBFmS68yWCFW44D1caZoVpTFymPlWHbWKM0zX6T6dImLexitRZd9+7lvHeNNEepXk1z5
-	fGrSINT6IfdJ19mYk+ltei+eiPfMM86/10lGfeC7lZooYWCWmNNHdBUsn36nMllL6Hl+EqQr7v2sY
-	0ryir18VCKB5ypYeOivA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=Ds5TxU+IsVn+O9BSZPmqiR/lscZu+KVKLwU2h1YnHdk=; b=ydnFEqOGFeFQQW9J2x+1V4ZTtv
+	w15oUOGmEw7bSZlrWaRbo6xBYtEucclUmm8j29Ql3Csw5WyRn5WkQb/MtJ9DhPmhKQEF/QduSkJnL
+	dvXyh8MT9Rq6KFAPTkQ8JiRBvI89+wf6No1nLgwHhItE0dLWwhguEyXXM9QMD3Q71OFPe+sCHKwQ5
+	vL/+d99ZjBGmy1fT7hVisihjPBGKxmZXff8xdKviYFmiq+OsVq1hMKM7viZMwabqmhXcQb+hpYjWc
+	Es7H7tbO3Px49DmwBCS1B3gooq4vIwgDB6a8ALr2UfPstdlTD1VEj99yuZ3BwVkD1sNUMi9TfbIww
+	m8FGLfIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKzTV-001peC-3y; Tue, 31 Aug 2021 08:50:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKzT4-001pbT-CE; Tue, 31 Aug 2021 08:50:10 +0000
-X-UUID: 6d0964bc7c7f4403acf0968761397b7c-20210831
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=sZFVav08zwMRGHECP5b0bRmeLPWcxHvBk2pMalHXz0k=; 
- b=LOt1ereSFfWZ00qyMF8RyI8pn87xXO/hqHGi+jgxr8qEH5U5gT1paYWZjTL12yUuU7e5UZoHZ54N6IS+Feqtb6OIko2o9kt5HZN8kuaNizZbojyrVe9jnQudrL8r0b9GxOqjfsp4gtAufzJojsUoS6nghFXYiBcuW7oRojIwKLc=;
-X-UUID: 6d0964bc7c7f4403acf0968761397b7c-20210831
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <trevor.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 587093507; Tue, 31 Aug 2021 01:50:01 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 31 Aug 2021 01:48:12 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 31 Aug 2021 16:48:10 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 31 Aug 2021 16:48:10 +0800
-Message-ID: <0d73ada63c3c2949a283ac6830ab9cc84a5e4a41.camel@mediatek.com>
-Subject: Re: [PATCH v5 07/11] dt-bindings: mediatek: mt8195: add audio afe
- document
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Mark Brown <broonie@kernel.org>,
- "Stephen Boyd" <sboyd@kernel.org>
-CC: Liam Girdwood <lgirdwood@gmail.com>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Linux-ALSA
- <alsa-devel@alsa-project.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <bicycle.tsai@mediatek.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>, "Jimmy
- Cheng-Yi Chiang" <cychiang@google.com>, Li-Yu Yu <aaronyu@google.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 31 Aug 2021 16:48:10 +0800
-In-Reply-To: <CAL_Jsq+bLVLqqVKfYuXDVYexMojMgZ5p34Pcx7_7LwU40b-2dA@mail.gmail.com>
-References: <20210819084144.18483-1-trevor.wu@mediatek.com>
- <20210819084144.18483-8-trevor.wu@mediatek.com>
- <CAL_Jsq+bLVLqqVKfYuXDVYexMojMgZ5p34Pcx7_7LwU40b-2dA@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1mKzY0-001qUQ-PG; Tue, 31 Aug 2021 08:55:12 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mKzXf-001qNU-Jk; Tue, 31 Aug 2021 08:54:55 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 803EB1FB;
+ Tue, 31 Aug 2021 01:54:44 -0700 (PDT)
+Received: from [192.168.178.6] (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 1FE993F5A1;
+ Tue, 31 Aug 2021 01:54:40 -0700 (PDT)
+Subject: Re: [PATCH V3 0/9] Add callback to register with energy model
+To: Viresh Kumar <viresh.kumar@linaro.org>, Rafael Wysocki
+ <rjw@rjwysocki.net>, Vincent Donnefort <vincent.donnefort@arm.com>,
+ lukasz.luba@arm.com, Quentin Perret <qperret@google.com>,
+ Andy Gross <agross@kernel.org>, Bjorn Andersson
+ <bjorn.andersson@linaro.org>, Cristian Marussi <cristian.marussi@arm.com>,
+ Fabio Estevam <festevam@gmail.com>, Kevin Hilman <khilman@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, NXP Linux Team
+ <linux-imx@nxp.com>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Shawn Guo <shawnguo@kernel.org>,
+ Sudeep Holla <sudeep.holla@arm.com>
+Cc: linux-pm@vger.kernel.org, Vincent Guittot <vincent.guittot@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-omap@vger.kernel.org
+References: <cover.1628742634.git.viresh.kumar@linaro.org>
+From: Dietmar Eggemann <dietmar.eggemann@arm.com>
+Message-ID: <3d5b823f-259a-8fc6-27ab-2a5d5df89844@arm.com>
+Date: Tue, 31 Aug 2021 10:54:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <cover.1628742634.git.viresh.kumar@linaro.org>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210831_015006_473308_377366AC 
-X-CRM114-Status: GOOD (  19.44  )
+X-CRM114-CacheID: sfid-20210831_015451_750957_4839DA69 
+X-CRM114-Status: GOOD (  16.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,44 +85,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-08-30 at 07:35 -0500, Rob Herring wrote:
-> On Thu, Aug 19, 2021 at 3:43 AM Trevor Wu <trevor.wu@mediatek.com>
-> wrote:
-> > 
-> > This patch adds mt8195 audio afe document.
-> > 
-> > In order to support dynamic clock reparenting for ADDA and ETDM,
-> > PLL
-> > and MUX clocks are requested even though they are not consumed by
-> > afe
-> > directly.
-> > 
-> > Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
-> > ---
-> > This patch depends on the following series that have not been
-> > accepted.
-> > 
-> > [1] Mediatek MT8195 clock support
-> > 
-https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/list/?series=501923__;!!CTRNKA9wMg0ARbw!ybm7E80DLLYXs8OujO46SUKYFOUx8gsLZPTE6VDFrGTQ0rAYlJJHOUKhL_ZUSJSLkA$
-> >  
-> > (dt-bindings/clock/mt8195-clk.h is included)
+On 12/08/2021 06:35, Viresh Kumar wrote:
+> Many cpufreq drivers register with the energy model for each policy and
+> do exactly the same thing. Follow the footsteps of thermal-cooling, to
+> get it done from the cpufreq core itself.
 > 
-> This dependency is still not applied, so the example fails. One of
-> the
-> following needs to happen: the dependency needs to be applied, this
-> patch reverted, or drop the use of the defines in the example.
+> Provide a new callback, which will be called, if present, by the cpufreq
+> core at the right moment (more on that in the code's comment). Also
+> provide a generic implementation that uses dev_pm_opp_of_register_em().
 > 
-> Rob
+> This also allows us to register with the EM at a later point of time,
+> compared to ->init(), from where the EM core can access cpufreq policy
+> directly using cpufreq_cpu_get() type of helpers and perform other work,
+> like marking few frequencies inefficient, this will be done separately.
+> 
+> This is build/boot tested by the bot for a couple of boards.
+> 
+> https://gitlab.com/vireshk/pmko/-/pipelines/351965580
+> 
+> FWIW, I have queued up the series for linux-next to get more testing, but your
+> reviews are welcome. Thanks.
+> 
+> V2->V3:
+> - Drop the auto-register part from all logs, this isn't called auto registration
+>   anymore.
+> - Call register_em() only for new policies.
+> - Update scmi driver to register with EM only when required.
+> - Add Rby tags.
 
-Hi Rob,
+LGTM. Tested on TC2 (vexpress-spc), Juno-r0 (scpi-cpufreq and scmi).
 
-I send a patch and drop the use of defines.
+Reviewed-by: Dietmar Eggemann <dietmar.eggemann@arm.com>
 
-https://patchwork.kernel.org/project/alsa-devel/patch/20210831083956.9804-1-trevor.wu@mediatek.com/
 
-Thanks,
-Trevor
 
 _______________________________________________
 Linux-mediatek mailing list
