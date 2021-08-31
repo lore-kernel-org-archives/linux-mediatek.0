@@ -2,87 +2,80 @@ Return-Path: <SRS0=bg5C=NW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-6.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7111FC4320A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 02:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 699FEC432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 02:55:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2FE3161039
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 02:47:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2FE3161039
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	by mail.kernel.org (Postfix) with ESMTPS id ED76060FE8
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 02:55:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ED76060FE8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=seEmYwJBVuIuASK3O4GZja0SPdQSprHDjaFTtLbViVg=; b=kxSvjyKTDLbwpI
-	pBEGfel2IJTgtTdHP3/b+N75aWK/fsFQERnKJb3hcaRqqwmW+kLhtOJf5tmV1ad5GBCQ7y91XVBQ7
-	wwlHUkSPXRp0uCpRbLKtQvphYfBkd5RFIN9h9K+0QPE58wsP1MPpgZLXx2sz6MGbsvPJo1+Yf7irm
-	zEgYAkz+YoR05nUf5mkgFuEMOeVfEpmwu6RL0BmzOO0ZT1oQwRiHQLHbX++WbJ9CNWZ4OoPVNPUI2
-	U60hyrN0jEO6TNGXijaHqlsD86EqDZXCzebUUmqTcOtv+29mjqT/TxWz7wGCeCSA8fDYATa+VP4BL
-	lBFNh/6OIZGaAAzsN2XA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kilL2Wygz+YBi8rmtn9hCpjrzl5/c7lQnEYrK5DnfMg=; b=TgynOSudeSrJXm
+	TX10lhjCTOCTBJNcMN+eBxNnVagD6hYr40PzdjHch2pscQmoNNyn4SjBgr6EkPlnkxTdYyXelNxHf
+	FN1PccGVGl111PizXhjGNrNpJPFT/FzSrkC9fxr5zUHMh8VpAWKaL1v8cCOqarwCxC2mOiRwo8btK
+	L6Ywp8FQqQqIW1Q6eRW4wtGEbmAY+iIv+bXP0mTGQHDe4NGe6QoLyJMrHudHZdGVBRBnJJWuMLkER
+	BM5dPYqwKwWBYOarsVcyUcke8RUIa/d2IK/clIv65LR8sVO0qHrdHWXw4s6ZZozrFDj+Lh8tgd9PL
+	VLtsZsk7SAUUf07u9d0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mKtoN-0011OC-PO; Tue, 31 Aug 2021 02:47:43 +0000
-Received: from mail-pl1-f182.google.com ([209.85.214.182])
+	id 1mKtvH-0011m6-C2; Tue, 31 Aug 2021 02:54:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mKtoK-0011Nf-O7
- for linux-mediatek@lists.infradead.org; Tue, 31 Aug 2021 02:47:42 +0000
-Received: by mail-pl1-f182.google.com with SMTP id u1so5931543plq.5
- for <linux-mediatek@lists.infradead.org>; Mon, 30 Aug 2021 19:47:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=3fg13iXsKn4rqDa733c2qnMua3+XBlp2C+4HCh2lEFU=;
- b=dr3q1/4JdMgAtF1IGhRONuNWgCqn0FTdgP2UzSy1aTCTY8MOxIpByAnE0LNyiXpB+b
- K4mTSqujB/H0yo9y9i57mnCvvp9IzPo3X0i2CKZnsWNFWztftE7dgQ7gnXtttfHbTXPK
- mrkgUblz3ZYYqAhPn2Zn0YEucwFdNfxeB3iAJP8dnMZJKWj5/9VVkFasPnuvoD1yE1sE
- 5N6ZUrFNcyurnPcvZMejAsCBbajyqPUPWuff6EC9mRVHexDaO2YR5bHjCJKU4Xsc7NRP
- wRRJZn+vqGeywv9fIG5srLfedaHyltA1g5QCyIpKZNGmIBiJgMcxV3tLr3wMpIC9JlzY
- n5Kw==
-X-Gm-Message-State: AOAM530kVobjbvC0ltGRDOAjXKceig0QF/9uaDFMuTbDQyGc7+FGETbx
- KZLnmnWWFAvwKeFosg/NK4M=
-X-Google-Smtp-Source: ABdhPJydeiE+yRYPqtoxh5/wunq8epbATPfbfzIL8F9MF3FdZVNTD5RNLWADgGC32kZA5POCn+E//g==
-X-Received: by 2002:a17:902:690a:b0:12d:86cf:d981 with SMTP id
- j10-20020a170902690a00b0012d86cfd981mr2463466plk.39.1630378058879; 
- Mon, 30 Aug 2021 19:47:38 -0700 (PDT)
-Received: from ?IPV6:2601:647:4000:d7:7088:a165:5c26:c716?
- ([2601:647:4000:d7:7088:a165:5c26:c716])
- by smtp.gmail.com with UTF8SMTPSA id p9sm5921179pfq.15.2021.08.30.19.47.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Aug 2021 19:47:38 -0700 (PDT)
-Message-ID: <dda8eb67-fe56-8bc0-5ce8-a62bd4e6b995@acm.org>
-Date: Mon, 30 Aug 2021 19:47:35 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.0.1
-Subject: Re: [PATCH v1] scsi: ufs: ufs-mediatek: Change dbg select by check hw
+ id 1mKtvA-0011lH-Nz
+ for linux-mediatek@lists.infradead.org; Tue, 31 Aug 2021 02:54:49 +0000
+X-UUID: bd6c4d920277471e8a1a497a6babb24b-20210830
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
+ bh=HDHwLyINTssEgwgu+8nzwXj2vo2m1ZOM1KRWet8cJTA=; 
+ b=mxGEDrERJ4twRfSznS31wVBY4WaeY3p6x2prtW7mY82VbitSPSDcd3iLvj7Eo3iuu9BFdGJY9vIYNiQ2rgJ5ipPzGCzUvJDcqkVknF7xkP387ZMLhQPZkEznk3viFxWs+EevHLvAL80i6tOH+4KIHpxCxOEny5n34LbuZdmo7LU=;
+X-UUID: bd6c4d920277471e8a1a497a6babb24b-20210830
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <peter.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 887954722; Mon, 30 Aug 2021 19:54:42 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 30 Aug 2021 19:54:41 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 31 Aug 2021 10:54:39 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 31 Aug 2021 10:54:39 +0800
+From: <peter.wang@mediatek.com>
+To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
+ <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
+ <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
+CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+ <alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+ <chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
+ <powen.kao@mediatek.com>, <jonathan.hsu@mediatek.com>,
+ <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
+Subject: [PATCH v2] scsi: ufs: ufs-mediatek: Change dbg select by check hw
  version
-Content-Language: en-US
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- jonathan.hsu@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com
-References: <1630325486-11741-1-git-send-email-peter.wang@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <1630325486-11741-1-git-send-email-peter.wang@mediatek.com>
+Date: Tue, 31 Aug 2021 10:54:38 +0800
+Message-ID: <1630378478-9793-1-git-send-email-peter.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210830_194740_837811_28A0F90D 
-X-CRM114-Status: UNSURE (   9.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210830_195446_205115_BE6D3E34 
+X-CRM114-Status: GOOD (  13.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,37 +87,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 8/30/21 05:11, peter.wang@mediatek.com wrote:
-> +static void ufs_mtk_dbg_sel(struct ufs_hba *hba)
-> +{
-> +	static u32 hw_ver;
-> +
-> +	if (!hw_ver)
-> +		hw_ver = ufshcd_readl(hba, REG_UFS_MTK_HW_VER);
-> +
-> +	if (((hw_ver >> 16) & 0xFF) >= 0x36) {
-> +		ufshcd_writel(hba, 0x820820, REG_UFS_DEBUG_SEL);
-> +		ufshcd_writel(hba, 0x0, REG_UFS_DEBUG_SEL_B0);
-> +		ufshcd_writel(hba, 0x55555555, REG_UFS_DEBUG_SEL_B1);
-> +		ufshcd_writel(hba, 0xaaaaaaaa, REG_UFS_DEBUG_SEL_B2);
-> +		ufshcd_writel(hba, 0xffffffff, REG_UFS_DEBUG_SEL_B3);
-> +	} else {
-> +		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-> +	}
-> +}
+From: Peter Wang <peter.wang@mediatek.com>
 
-Can ufs_mtk_dbg_sel() be called from multiple threads at the same time? 
-Does the 'hw_ver' variable need to be protected against concurrent writes?
+Mediatek UFS dbg select setting is changed in new HW version.
+This patch check the HW version before set dbg select.
 
-Thanks,
+Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+---
+ drivers/scsi/ufs/ufs-mediatek.c |   22 ++++++++++++++++++++--
+ drivers/scsi/ufs/ufs-mediatek.h |    5 +++++
+ 2 files changed, 25 insertions(+), 2 deletions(-)
 
-Bart.
-
+diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
+index d2c2516..c7c18d8 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.c
++++ b/drivers/scsi/ufs/ufs-mediatek.c
+@@ -296,6 +296,24 @@ static void ufs_mtk_setup_ref_clk_wait_us(struct ufs_hba *hba,
+ 	host->ref_clk_ungating_wait_us = ungating_us;
+ }
+ 
++static void ufs_mtk_dbg_sel(struct ufs_hba *hba)
++{
++	static u32 hw_ver;
++
++	if (!hw_ver)
++		hw_ver = ufshcd_readl(hba, REG_UFS_MTK_HW_VER);
++
++	if (((hw_ver >> 16) & 0xFF) >= 0x36) {
++		ufshcd_writel(hba, 0x820820, REG_UFS_DEBUG_SEL);
++		ufshcd_writel(hba, 0x0, REG_UFS_DEBUG_SEL_B0);
++		ufshcd_writel(hba, 0x55555555, REG_UFS_DEBUG_SEL_B1);
++		ufshcd_writel(hba, 0xaaaaaaaa, REG_UFS_DEBUG_SEL_B2);
++		ufshcd_writel(hba, 0xffffffff, REG_UFS_DEBUG_SEL_B3);
++	} else {
++		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
++	}
++}
++
+ static int ufs_mtk_wait_link_state(struct ufs_hba *hba, u32 state,
+ 				   unsigned long max_wait_ms)
+ {
+@@ -305,7 +323,7 @@ static int ufs_mtk_wait_link_state(struct ufs_hba *hba, u32 state,
+ 	timeout = ktime_add_ms(ktime_get(), max_wait_ms);
+ 	do {
+ 		time_checked = ktime_get();
+-		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
++		ufs_mtk_dbg_sel(hba);
+ 		val = ufshcd_readl(hba, REG_UFS_PROBE);
+ 		val = val >> 28;
+ 
+@@ -1001,7 +1019,7 @@ static void ufs_mtk_dbg_register_dump(struct ufs_hba *hba)
+ 			 "MPHY Ctrl ");
+ 
+ 	/* Direct debugging information to REG_MTK_PROBE */
+-	ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
++	ufs_mtk_dbg_sel(hba);
+ 	ufshcd_dump_regs(hba, REG_UFS_PROBE, 0x4, "Debug Probe ");
+ }
+ 
+diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
+index 3f0d3bb..fc40c05 100644
+--- a/drivers/scsi/ufs/ufs-mediatek.h
++++ b/drivers/scsi/ufs/ufs-mediatek.h
+@@ -15,9 +15,14 @@
+ #define REG_UFS_REFCLK_CTRL         0x144
+ #define REG_UFS_EXTREG              0x2100
+ #define REG_UFS_MPHYCTRL            0x2200
++#define REG_UFS_MTK_HW_VER          0x2240
+ #define REG_UFS_REJECT_MON          0x22AC
+ #define REG_UFS_DEBUG_SEL           0x22C0
+ #define REG_UFS_PROBE               0x22C8
++#define REG_UFS_DEBUG_SEL_B0        0x22D0
++#define REG_UFS_DEBUG_SEL_B1        0x22D4
++#define REG_UFS_DEBUG_SEL_B2        0x22D8
++#define REG_UFS_DEBUG_SEL_B3        0x22DC
+ 
+ /*
+  * Ref-clk control
+-- 
+1.7.9.5
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
