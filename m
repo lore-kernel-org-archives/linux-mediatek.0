@@ -2,69 +2,81 @@ Return-Path: <SRS0=bg5C=NW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 262A8C43214
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 13:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC18AC432BE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 15:05:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E7DB36103A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 13:57:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E7DB36103A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baidu.com
+	by mail.kernel.org (Postfix) with ESMTPS id B0795604D7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 31 Aug 2021 15:05:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B0795604D7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=eqQY8rwILBGXBwxcobNQs8LW/xyeUvgO6lz9Xz+/zT8=; b=b3kgoBkRSq9KwT
-	MxYQiNBZSUXmaSyx73XFJc8CUq7AGT6r9ghtVOSHGRno5bayuaUP5hUM5CLNQr8m5FSOwymiFhTm4
-	W6tlMvyUsDirlpO8MtjJ5BOYYMXGOhiMS3M1kH5/d4/DNhW2zGocPnadMp1OiwZc7B7aTp/rbiCVs
-	bLsuy3cvrRHNEA2JVdBGKvByKOlI5nTphc5FkyPCe+pZuFZ/iQmbh9+U0vBlTIVyhpNttUM99Tn4a
-	JWv+JmVYAHm+kLZ8ravwAer6Hs0c2TE4lO4A/W4J1JVTfLOAayRmxzqkLJCv4CiNZGa1eXCCce7ZY
-	5Ws5fiNyXLWGCnQ1QSyQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2R2Ut4UxJlZwQHsLJqxlGh6SnNBCcyZLjBWBkCDU/iE=; b=F5JLbad+RWvOyT
+	I1cjKpC07KL7/ahpScfV6yXFFSkYdcnnnn2eQH2iZJ1btyQHKQsYQ9cAiQ9VJeEX+bPlhK/9bnO2X
+	6ql4AsN3+mh4zm8zmGRUsFrI6ZHOZE1XIl2yHvJrX3Kh15k/9bxPcxXfXOg3gidbr0k7ohdQXZScl
+	YibCChCwMHi3izw85uENzHdi9uJO5ZkQnQ5cBYwPpbjQlrDJLw0az9dWkKoc8N2+CcT1BdlUaFfAM
+	a7eSHpCIXPziRmCPXf6HvaQcf6Z9i2YYz85drXAfwOFwzXFhEr82SNnYWgigemxY0Ct0VTAk4Ecky
+	8+rQCV4F98H4RkEmuw7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mL4Fs-002ROv-Po; Tue, 31 Aug 2021 13:56:48 +0000
-Received: from mx20.baidu.com ([111.202.115.85] helo=baidu.com)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mL4FV-002RK1-EB; Tue, 31 Aug 2021 13:56:27 +0000
-Received: from Bc-Mail-Ex13.internal.baidu.com (unknown [172.31.51.53])
- by Forcepoint Email with ESMTPS id C04BDD117DA7C720DE6E;
- Tue, 31 Aug 2021 21:56:23 +0800 (CST)
-Received: from BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) by
- Bc-Mail-Ex13.internal.baidu.com (172.31.51.53) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2242.12; Tue, 31 Aug 2021 21:56:23 +0800
-Received: from LAPTOP-UKSR4ENP.internal.baidu.com (172.31.63.8) by
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Tue, 31 Aug 2021 21:56:22 +0800
-From: Cai Huoqing <caihuoqing@baidu.com>
-To: <caihuoqing@baidu.com>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH] drm/mediatek: Make use of the helper function
- devm_platform_ioremap_resource()
-Date: Tue, 31 Aug 2021 21:56:16 +0800
-Message-ID: <20210831135617.4526-1-caihuoqing@baidu.com>
-X-Mailer: git-send-email 2.17.1
+	id 1mL5K0-002azQ-6S; Tue, 31 Aug 2021 15:05:08 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mL5Jm-002axl-TU; Tue, 31 Aug 2021 15:04:56 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 9572D6103D;
+ Tue, 31 Aug 2021 15:04:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1630422294;
+ bh=C3Xs7RdGLh2cMdjlr/NAo11NY+tlBUiaZVO0ueTSglQ=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=GS3gtkoeV4qXKwQmd4bUMERgedQrUWTuFxSyAzmC7v96oqJUPBR0o6fcwM1vCb3Qh
+ isbVAVzB6yDvys72vXZdbHuZByy0ZLcTmKGrtb/QPVK0DPqUK6ME72GiLKjkW8Mt89
+ eh7YpcgaQRDGaDm1Q2CCInQw18tKM0ovSQc41bZd5ZTzRmM68MDeDv/6oSkgUga+nD
+ xgFT4puzZgUcQqdedzDKW/PY3Aaqfjl3+jXmlkq2xdH4nZgPLcy8nocTE9qxiyksXe
+ fPx9IMtOfHfeRZo/DmhfSnfTooXK9rL4kArxThL3RyYX/QfUAjc3k+yyzFO23Ur0si
+ eXCCt2qmaMO/w==
+Received: by mail-ed1-f43.google.com with SMTP id eb14so18079377edb.8;
+ Tue, 31 Aug 2021 08:04:54 -0700 (PDT)
+X-Gm-Message-State: AOAM531RB7SyV5Ny5/TXKnsQ0ePU/Utu+mND7broYBIeVfrv1sFa7SHW
+ VEApD0vNMOMysGUuf12SkYUtl3xgOSEB7CYjtQ==
+X-Google-Smtp-Source: ABdhPJzIMc1+WNRGq8elp8WiVQQ/QZvEnHKttYUctX+V3p0QWutbb1xjXyyvrpXfsncygsOskBw3nTY6jXKx0zawpjs=
+X-Received: by 2002:a50:eb8a:: with SMTP id y10mr30469814edr.137.1630422293211; 
+ Tue, 31 Aug 2021 08:04:53 -0700 (PDT)
 MIME-Version: 1.0
-X-Originating-IP: [172.31.63.8]
-X-ClientProxiedBy: BC-Mail-Ex30.internal.baidu.com (172.31.51.24) To
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42)
+References: <20210823032800.1660-3-chuanjia.liu@mediatek.com>
+ <20210827164634.GA3779223@bjorn-Precision-5520>
+In-Reply-To: <20210827164634.GA3779223@bjorn-Precision-5520>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Tue, 31 Aug 2021 10:04:40 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqKEvAypWhiaWMhxM7zVkLAFL9=eMU7_vr=ht+uyxYe0qg@mail.gmail.com>
+Message-ID: <CAL_JsqKEvAypWhiaWMhxM7zVkLAFL9=eMU7_vr=ht+uyxYe0qg@mail.gmail.com>
+Subject: Re: [PATCH v12 2/6] PCI: mediatek: Add new method to get shared
+ pcie-cfg base address
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Chuanjia Liu <chuanjia.liu@mediatek.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang <jianjun.wang@mediatek.com>, 
+ Yong Wu <yong.wu@mediatek.com>, PCI <linux-pci@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ devicetree@vger.kernel.org, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210831_065625_728498_8EB7676B 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20210831_080455_025621_9096B326 
+X-CRM114-Status: GOOD (  32.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,247 +93,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the devm_platform_ioremap_resource() helper instead of
-calling platform_get_resource() and devm_ioremap_resource()
-separately
+On Fri, Aug 27, 2021 at 11:46 AM Bjorn Helgaas <helgaas@kernel.org> wrote:
+>
+> On Mon, Aug 23, 2021 at 11:27:56AM +0800, Chuanjia Liu wrote:
+> > For the new dts format, add a new method to get
+> > shared pcie-cfg base address and use it to configure
+> > the PCIECFG controller
+>
+> Rewrap this to fill 75 columns.
+>
+> > Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
+> > Acked-by: Ryder Lee <ryder.lee@mediatek.com>
+> > ---
+> >  drivers/pci/controller/pcie-mediatek.c | 17 +++++++++++++++++
+> >  1 file changed, 17 insertions(+)
+> >
+> > diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+> > index 25bee693834f..4296d9e04240 100644
+> > --- a/drivers/pci/controller/pcie-mediatek.c
+> > +++ b/drivers/pci/controller/pcie-mediatek.c
+> > @@ -14,6 +14,7 @@
+> >  #include <linux/irqchip/chained_irq.h>
+> >  #include <linux/irqdomain.h>
+> >  #include <linux/kernel.h>
+> > +#include <linux/mfd/syscon.h>
+> >  #include <linux/msi.h>
+> >  #include <linux/module.h>
+> >  #include <linux/of_address.h>
+> > @@ -23,6 +24,7 @@
+> >  #include <linux/phy/phy.h>
+> >  #include <linux/platform_device.h>
+> >  #include <linux/pm_runtime.h>
+> > +#include <linux/regmap.h>
+> >  #include <linux/reset.h>
+> >
+> >  #include "../pci.h"
+> > @@ -207,6 +209,7 @@ struct mtk_pcie_port {
+> >   * struct mtk_pcie - PCIe host information
+> >   * @dev: pointer to PCIe device
+> >   * @base: IO mapped register base
+> > + * @cfg: IO mapped register map for PCIe config
+> >   * @free_ck: free-run reference clock
+> >   * @mem: non-prefetchable memory resource
+> >   * @ports: pointer to PCIe port information
+> > @@ -215,6 +218,7 @@ struct mtk_pcie_port {
+> >  struct mtk_pcie {
+> >       struct device *dev;
+> >       void __iomem *base;
+> > +     struct regmap *cfg;
+> >       struct clk *free_ck;
+> >
+> >       struct list_head ports;
+> > @@ -682,6 +686,10 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+> >               val |= PCIE_CSR_LTSSM_EN(port->slot) |
+> >                      PCIE_CSR_ASPM_L1_EN(port->slot);
+> >               writel(val, pcie->base + PCIE_SYS_CFG_V2);
+> > +     } else if (pcie->cfg) {
+> > +             val = PCIE_CSR_LTSSM_EN(port->slot) |
+> > +                   PCIE_CSR_ASPM_L1_EN(port->slot);
+> > +             regmap_update_bits(pcie->cfg, PCIE_SYS_CFG_V2, val, val);
+> >       }
+> >
+> >       /* Assert all reset signals */
+> > @@ -985,6 +993,7 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+> >       struct device *dev = pcie->dev;
+> >       struct platform_device *pdev = to_platform_device(dev);
+> >       struct resource *regs;
+> > +     struct device_node *cfg_node;
+> >       int err;
+> >
+> >       /* get shared registers, which are optional */
+> > @@ -995,6 +1004,14 @@ static int mtk_pcie_subsys_powerup(struct mtk_pcie *pcie)
+> >                       return PTR_ERR(pcie->base);
+> >       }
+> >
+> > +     cfg_node = of_find_compatible_node(NULL, NULL,
+> > +                                        "mediatek,generic-pciecfg");
+>
+> This looks wrong to me.  IIUC, since we start at NULL, this searches
+> the entire device tree for any node with
+>
+>   compatible = "mediatek,generic-pciecfg"
+>
+> but we should only care about the specific device/node this driver
+> claimed.
+>
+> Should this be part of the match data, i.e., struct mtk_pcie_soc?
 
-Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
----
- drivers/gpu/drm/mediatek/mtk_cec.c        | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_aal.c   | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_color.c | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_gamma.c | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c   | 4 +---
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c  | 4 +---
- drivers/gpu/drm/mediatek/mtk_dpi.c        | 4 +---
- drivers/gpu/drm/mediatek/mtk_dsi.c        | 4 +---
- drivers/gpu/drm/mediatek/mtk_hdmi.c       | 4 +---
- 10 files changed, 10 insertions(+), 30 deletions(-)
+What would you put in match data exactly?
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
-index e9cef5c0c8f7..7b5f28f63c65 100644
---- a/drivers/gpu/drm/mediatek/mtk_cec.c
-+++ b/drivers/gpu/drm/mediatek/mtk_cec.c
-@@ -183,7 +183,6 @@ static int mtk_cec_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_cec *cec;
--	struct resource *res;
- 	int ret;
- 
- 	cec = devm_kzalloc(dev, sizeof(*cec), GFP_KERNEL);
-@@ -193,8 +192,7 @@ static int mtk_cec_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, cec);
- 	spin_lock_init(&cec->lock);
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	cec->regs = devm_ioremap_resource(dev, res);
-+	cec->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(cec->regs)) {
- 		ret = PTR_ERR(cec->regs);
- 		dev_err(dev, "Failed to ioremap cec: %d\n", ret);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_aal.c b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-index dadd1afed076..3a5bc05a57c1 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_aal.c
-@@ -102,7 +102,6 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_aal *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -115,8 +114,7 @@ static int mtk_disp_aal_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap aal\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-index 141cb36b9c07..3520f735e9e3 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ccorr.c
-@@ -158,7 +158,6 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_ccorr *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -171,8 +170,7 @@ static int mtk_disp_ccorr_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap ccorr\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_color.c b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-index 473f5bb5cbad..3050f6851511 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_color.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_color.c
-@@ -96,7 +96,6 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_color *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -109,8 +108,7 @@ static int mtk_disp_color_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap color\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-index 3a5815ab4079..b891e33d5adc 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_gamma.c
-@@ -129,7 +129,6 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_gamma *priv;
--	struct resource *res;
- 	int ret;
- 
- 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-@@ -142,8 +141,7 @@ static int mtk_disp_gamma_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap gamma\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-index 5326989d5206..da6c09122836 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-@@ -374,7 +374,6 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_ovl *priv;
--	struct resource *res;
- 	int irq;
- 	int ret;
- 
-@@ -392,8 +391,7 @@ static int mtk_disp_ovl_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap ovl\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-index 75d7f45579e2..e1a79db0ee87 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_rdma.c
-@@ -272,7 +272,6 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_disp_rdma *priv;
--	struct resource *res;
- 	int irq;
- 	int ret;
- 
-@@ -290,8 +289,7 @@ static int mtk_disp_rdma_probe(struct platform_device *pdev)
- 		return PTR_ERR(priv->clk);
- 	}
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	priv->regs = devm_ioremap_resource(dev, res);
-+	priv->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(priv->regs)) {
- 		dev_err(dev, "failed to ioremap rdma\n");
- 		return PTR_ERR(priv->regs);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 4554e2de1430..1a226b16ae67 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -827,7 +827,6 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct mtk_dpi *dpi;
--	struct resource *mem;
- 	int ret;
- 
- 	dpi = devm_kzalloc(dev, sizeof(*dpi), GFP_KERNEL);
-@@ -858,8 +857,7 @@ static int mtk_dpi_probe(struct platform_device *pdev)
- 			dev_dbg(&pdev->dev, "Cannot find pinctrl active!\n");
- 		}
- 	}
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	dpi->regs = devm_ioremap_resource(dev, mem);
-+	dpi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(dpi->regs)) {
- 		ret = PTR_ERR(dpi->regs);
- 		dev_err(dev, "Failed to ioremap mem resource: %d\n", ret);
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 93b40c245f00..a5ced78e81fd 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1002,7 +1002,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 	struct mtk_dsi *dsi;
- 	struct device *dev = &pdev->dev;
- 	struct drm_panel *panel;
--	struct resource *regs;
- 	int irq_num;
- 	int ret;
- 
-@@ -1058,8 +1057,7 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 		goto err_unregister_host;
- 	}
- 
--	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	dsi->regs = devm_ioremap_resource(dev, regs);
-+	dsi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(dsi->regs)) {
- 		ret = PTR_ERR(dsi->regs);
- 		dev_err(dev, "Failed to ioremap memory: %d\n", ret);
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-index 5838c44cbf6f..6ff0ae4f3634 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
-@@ -1426,7 +1426,6 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	struct device_node *cec_np, *remote, *i2c_np;
- 	struct platform_device *cec_pdev;
- 	struct regmap *regmap;
--	struct resource *mem;
- 	int ret;
- 
- 	ret = mtk_hdmi_get_all_clk(hdmi, np);
-@@ -1472,8 +1471,7 @@ static int mtk_hdmi_dt_parse_pdata(struct mtk_hdmi *hdmi,
- 	}
- 	hdmi->sys_regmap = regmap;
- 
--	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	hdmi->regs = devm_ioremap_resource(dev, mem);
-+	hdmi->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(hdmi->regs)) {
- 		ret = PTR_ERR(hdmi->regs);
- 		goto put_device;
--- 
-2.25.1
+The other way to do this is to have a DT property with the phandle
+which people like to do (have everything in the node 'for their
+driver'). If there's only 1 possible node (which is almost always the
+case), then there is little benefit to having another property. It's
+just redundant data. A phandle lookup might be a bit faster with the
+caching we do, but on a miss it would still walk all nodes.
 
+The other thing with these 'extra register bits to twiddle' is that
+they tend to be SoC specific and change from chip to chip, so either
+way is not very portable. The real question to ask is should there be
+a standard interface used or created.
+
+>
+> > +     if (cfg_node) {
+> > +             pcie->cfg = syscon_node_to_regmap(cfg_node);
+>
+> Other drivers in drivers/pci/controller/ use
+> syscon_regmap_lookup_by_phandle() (j721e, dra7xx, keystone,
+> layerscape, artpec6) or syscon_regmap_lookup_by_compatible() (imx6,
+> kirin, v3-semi).
+
+There's no phandle to use in this case. As above, I'm trying to break
+people of this habit.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
