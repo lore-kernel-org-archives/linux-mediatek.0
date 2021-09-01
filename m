@@ -2,90 +2,73 @@ Return-Path: <SRS0=BCEy=NX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-4.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4269C432BE
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 04:36:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BDE1EC432BE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 05:32:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7DC9F60724
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 04:36:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7DC9F60724
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8235760F90
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 05:32:50 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8235760F90
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bQa9rC6SA478YGTVeWwLE2kygBNZk6EhS9VfeEgZsW4=; b=3jS9qiKtOgp/KS
-	GkaUF+jYH33b4ojBPR3pBWRkq92N6lDFbZEVp9nQo/pB/n0I6S2thnVqOxdb3UWgYpOcGaNRQXONn
-	FhTfFOIbtH4Tt1n+AJ72WefrLOaQ64aabdjVjhUJK7bPfaXzeoYRzL8pPUn/jeuYesHfRVMaJ1FDq
-	/2r0GJKLCoAas2Bh8wJAO5M7g8d1eNfCfMndD7G/o4umFEdzW7wgrpKUZ5TxfpShzfEN8CfzEt9iD
-	gycFg0jbV8fsHo8b/FgoHMQQrSzQnUXz6SksV0lPNkkR7p0uwT9v7Z5i4+iK151wQTvf+KqvYMAte
-	eu4Ck5u0ino1EmxeSdLg==;
+	List-Owner; bh=8cfQdibPZMhQZzRaASt/Vn6aTKuf22A7K3czy4TwhKs=; b=VANf9IHKKCrc56
+	vQnfNsBbO70FetJSWMTMj4b2DP1/zMWD+BSnZGJK7w8vOdXKOXEZ2HqZVKBi68c/eP89LeLc/dAJ5
+	+aEC1g1ZwXAnLb3xv5WbkSqGM5kzOEkqW3eFEDQJiuCihWAX29RtXmHPQyApZvaV94Gj/c6pCyK2v
+	rGrvdolaEQ59OUJIq177U/dFRmfMV4vVoSiAHO2se7b/INueacJSgE9TKhS0N07BFCPWmY7oXBDxr
+	Uxbg2QX7lF3+LO9q99ITF74QtquXqyg7Oh82a8+yNz9X9yQlRMRJZFc4mP5mGq6T4PyCY9NHONkCH
+	k55X0SLdTaStLcdbESdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLHyt-003mbP-PG; Wed, 01 Sep 2021 04:36:11 +0000
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+	id 1mLIrT-003uKK-NP; Wed, 01 Sep 2021 05:32:35 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLHye-003ma6-9i
- for linux-mediatek@lists.infradead.org; Wed, 01 Sep 2021 04:36:00 +0000
-Received: by mail-lf1-x129.google.com with SMTP id p38so3826786lfa.0
- for <linux-mediatek@lists.infradead.org>; Tue, 31 Aug 2021 21:35:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Lhspy1Lcz1PiiBOGE+v1mcRdMh4tYchPF+3AL6Zubvk=;
- b=J93QWDCZT6uuBqffhguCrmmulYwP0uLkMtoO28ijrPVTOU+0AhmYQRXxSmEtUWr6Jr
- 9MgdRl+11hjg+mUW4dhUv4dTavhx30vBmZgVeQG4qdf3fxJpANvQHaUHm6NaRqE78sho
- qw8ZTRLNXUYvPIxw8vQ8fB6SKwgd5fACA+XHU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Lhspy1Lcz1PiiBOGE+v1mcRdMh4tYchPF+3AL6Zubvk=;
- b=Z/ZO1xPYVLiVJaPFrI5Buq75n2FnedSfMrkmzrdNreHh/YYKrk5Jx7XfIChzYgXyMk
- 7TINE3+7eCVgfVsUe2Ji2adNUYDS8AVUqG8j6y6EPx5mj9lidx/vD0l70fCY+wKRmMoz
- 97FcJNav2nVjPyTJNo+yCwaWl098nBB70NvjsIVsRgmMzA7wsptVqoNR8fm5GJpw15dS
- 6EeQIYhDgx994GOaVfVZTTvdr/RMqSnde687gWUygzYdz6YaV127dKuRPBqH3ZMe+rpn
- qKkecaJgkufhNQNv1aTKqWo0p/IeVkNXTo+VyQWSxgt+jdJAp+7q9yvtTcDdPZZCcsjn
- EGHw==
-X-Gm-Message-State: AOAM532hx/o/LGiKG/bx/BNRFGVFQTofr3E4pNwJJsjp180QmImflGIz
- xCb0COwL8fT6VRg7SLp3ZD1HMD3ZvIuERo5RESVisA==
-X-Google-Smtp-Source: ABdhPJwE4jWrVsnG8qdYIOadYpldVmY+nJaGWsWtd2ijWGWx7vBq3pDPcJJ8hJSsKuUwLelkLoQY0/YgYsZN8Cvigzk=
-X-Received: by 2002:a19:6455:: with SMTP id b21mr24188573lfj.656.1630470954146; 
- Tue, 31 Aug 2021 21:35:54 -0700 (PDT)
+ id 1mLIrG-003uIJ-7F; Wed, 01 Sep 2021 05:32:23 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BCB346101A;
+ Wed,  1 Sep 2021 05:32:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1630474341;
+ bh=N2WVEhIn7g2xqwLHjd0/oieAY8b22yKtkcYybi7KwlY=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=W+VmqvrMQZfk8rutotH03eYCURAchYuizk2DK9nQxPm+pg+z9Kk5zUR6IzSdMHlv2
+ XU5A8i272PxI5WC+5fIYqptS9g43rvC52wgkbzF9mDgvV0Pk/5Cluk0QKs0B0fMjIp
+ ACcRIncd9SjSso/34CiWix2MnxjY39LB/VZqHhuabJqpQilH0MiQG+nr4RW9Vm8jrP
+ do5V5Su8v9Ch8p50pGDf1CLqzcxRE9Zum/fWoo/8IqmlYN2U0WeYjzX+jwvv157vb/
+ 0GhNNmFkw9KQDYbxMWXKfkrSlbND4atg8V1DdqAaE7AU3mz3VrY0GGNoW3/1PZ2D3C
+ T4j6ToIqvt8WQ==
 MIME-Version: 1.0
-References: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
- <20210830003603.31864-2-zhiyong.tao@mediatek.com>
-In-Reply-To: <20210830003603.31864-2-zhiyong.tao@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 1 Sep 2021 12:35:43 +0800
-Message-ID: <CAGXv+5HeNj2Ly-T1bWMvnYXv6nP-Q1kv+D9QEd+5u4xfNVibOg@mail.gmail.com>
-Subject: Re: [PATCH v11 1/4] dt-bindings: pinctrl: mt8195: add rsel define
-To: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
- hui.liu@mediatek.com, 
- Eddie Huang <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
- Biao Huang <biao.huang@mediatek.com>,
- Hongzhou Yang <hongzhou.yang@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
- Devicetree List <devicetree@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
+In-Reply-To: <1630348984.24981.2.camel@mtkswgap22>
+References: <20210813032429.14715-1-miles.chen@mediatek.com>
+ <20210813032429.14715-4-miles.chen@mediatek.com>
+ <163021049667.2676726.10138202396240942833@swboyd.mtv.corp.google.com>
+ <1630348984.24981.2.camel@mtkswgap22>
+Subject: Re: [RESEND PATCH 3/4] clk: mediatek: support COMMON_CLK_MT6779
+ module build
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Wendell Lin <wendell.lin@mediatek.com>, Hanks Chen <hanks.chen@mediatek.com>,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, Lee Jones <lee.jones@linaro.org>
+To: Miles Chen <miles.chen@mediatek.com>
+Date: Tue, 31 Aug 2021 22:32:20 -0700
+Message-ID: <163047434049.42057.5688419707288938766@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210831_213556_418078_48A58EF7 
-X-CRM114-Status: GOOD (  18.72  )
+X-CRM114-CacheID: sfid-20210831_223222_314455_6BF018E8 
+X-CRM114-Status: UNSURE (   7.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,49 +85,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Aug 30, 2021 at 8:36 AM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
->
-> This patch adds rsel define for mt8195.
->
-> Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> ---
->  include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
->  1 file changed, 9 insertions(+)
->
-> diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-bindings/pinctrl/mt65xx.h
-> index 7e16e58fe1f7..f5934abcd1bd 100644
-> --- a/include/dt-bindings/pinctrl/mt65xx.h
-> +++ b/include/dt-bindings/pinctrl/mt65xx.h
-> @@ -16,6 +16,15 @@
->  #define MTK_PUPD_SET_R1R0_10 102
->  #define MTK_PUPD_SET_R1R0_11 103
->
-> +#define MTK_PULL_SET_RSEL_000  200
-> +#define MTK_PULL_SET_RSEL_001  201
-> +#define MTK_PULL_SET_RSEL_010  202
-> +#define MTK_PULL_SET_RSEL_011  203
-> +#define MTK_PULL_SET_RSEL_100  204
-> +#define MTK_PULL_SET_RSEL_101  205
-> +#define MTK_PULL_SET_RSEL_110  206
-> +#define MTK_PULL_SET_RSEL_111  207
+Quoting Miles Chen (2021-08-30 11:43:04)
+> 
+> sorry for my late response. 
+> 
+> Thanks for pointing this out. I have the same question when I was
+> building this patch. That time I found some examples where
+> they are using builtin_platform_driver and can be built as 
+> kernel modules:
+> 
+> config CLK_IMX8QXP (tristate) && drivers/clk/imx/clk-imx8qxp-lpcg.c
+> config CLK_RK3399 (tristate) && drivers/clk/rockchip/clk-rk3399.c
 
-Could you keep the spacing between constants tighter, or have no spacing
-at all? Like having MTK_PULL_SET_RSEL_000 defined as 104 and so on. This
-would reduce the chance of new macro values colliding with actual resistor
-values set in the datasheets, plus a contiguous space would be easy to
-rule as macros.
-
-ChenYu
-
->  #define MTK_DRIVE_2mA  2
->  #define MTK_DRIVE_4mA  4
->  #define MTK_DRIVE_6mA  6
-> --
-> 2.18.0
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+We should fix those drivers. Care to send a patch?
 
 _______________________________________________
 Linux-mediatek mailing list
