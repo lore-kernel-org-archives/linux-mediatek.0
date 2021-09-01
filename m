@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5F283C4320A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 07:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A90B4C432BE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 07:45:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2664061053
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 07:40:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2664061053
+	by mail.kernel.org (Postfix) with ESMTPS id 7552D60249
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 07:45:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7552D60249
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baidu.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mPwvgOqJ+ZMPIFUB5m8BOFdZa83MoFOYYsuxElcJXEo=; b=C3Ec1geYoj5jLV
-	hSnwKC6aDWJmGmrJiFvvHtbJJSlXgEO6qkP4KY5Z1OzTOzloquHzT9G/NHmtEiPx4eF5OEzNxpPNE
-	Pml56I/CHakDS9ovVB1pNwN1HcdiNpnIdQ/+NwcXYKxuncr9gvSRvbSivmOAExT3xocyj43K+yocg
-	hioZc4SFum26tsmJpl0Yqd6xJOKZUf448TKAyFyqa8UmpzZzsbo6CtbsMnBYWQWlYZQjn5v6dkT8L
-	Q+8N9PtDqXT8qJcUfEwPw/MWB3hZLptGPtxXMN7HCA6Zf3VDerhyR+OIWdpdIZkFSpDSdAESI7I5f
-	aoXE99B/C0uIHvNYLGgw==;
+	List-Owner; bh=RK8ynjHv2A1aqO9FmTUJKIWppE+GAArtGnT6Wx0dDik=; b=fUgpxCmanNvBii
+	td43HllIvj075QVLdYCFCTFEoG++v6YAhyuf9lOaA1FjCUkCWEHzy06m007sfeEo0PyYvxeLPCMCV
+	3+9p70o27HBqhfcg4sHi1CC5BrrIKG0wKOOnDJIhoOf0lBIs2T/+BHPD7haBrD2dsEaIcZ4NBqM1m
+	TFfUpbn1FUfXeoA1zIBdLD1XS/OuSlJZ3VAGpMGtajZof9A/VSI9WyLtrqZ/nx08kJNGFq9IcmBwI
+	phHra+mNV9Nd8Urx09IjAY6JNRYvGmRCkF7g3EQeS2d6257s+t76wxcDDPHjVOden5fy6SrN0pNF8
+	UcQUPFU46MFdwHwkXT2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLKrD-004M7y-OM; Wed, 01 Sep 2021 07:40:27 +0000
-Received: from mx21.baidu.com ([220.181.3.85] helo=baidu.com)
+	id 1mLKwA-004OAI-Ls; Wed, 01 Sep 2021 07:45:34 +0000
+Received: from mx20.baidu.com ([111.202.115.85] helo=baidu.com)
  by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLKr0-004M3r-Fw; Wed, 01 Sep 2021 07:40:15 +0000
-Received: from BJHW-Mail-Ex05.internal.baidu.com (unknown [10.127.64.15])
- by Forcepoint Email with ESMTPS id 24362C7D596DE45E233D;
- Wed,  1 Sep 2021 15:40:13 +0800 (CST)
+ id 1mLKsa-004Mg8-VW; Wed, 01 Sep 2021 07:41:54 +0000
+Received: from BJHW-Mail-Ex14.internal.baidu.com (unknown [10.127.64.37])
+ by Forcepoint Email with ESMTPS id 08A95BE5808309AFAC2E;
+ Wed,  1 Sep 2021 15:41:52 +0800 (CST)
 Received: from BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) by
- BJHW-Mail-Ex05.internal.baidu.com (10.127.64.15) with Microsoft SMTP Server
+ BJHW-Mail-Ex14.internal.baidu.com (10.127.64.37) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Wed, 1 Sep 2021 15:40:13 +0800
+ 15.1.2308.14; Wed, 1 Sep 2021 15:41:51 +0800
 Received: from LAPTOP-UKSR4ENP.internal.baidu.com (172.31.63.8) by
  BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Wed, 1 Sep 2021 15:40:12 +0800
+ 15.1.2308.14; Wed, 1 Sep 2021 15:41:51 +0800
 From: Cai Huoqing <caihuoqing@baidu.com>
 To: <caihuoqing@baidu.com>
-CC: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?=
- <kw@linux.com>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-pci@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>
-Subject: [PATCH] PCI: mediatek-gen3: Make use of the helper function
- devm_platform_ioremap_resource_byname()
-Date: Wed, 1 Sep 2021 15:40:06 +0800
-Message-ID: <20210901074006.8783-1-caihuoqing@baidu.com>
+CC: Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger
+ <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-mtd@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH] mtd: rawnand: mtk: Make use of the helper function
+ devm_platform_ioremap_resource()
+Date: Wed, 1 Sep 2021 15:41:44 +0800
+Message-ID: <20210901074145.9183-1-caihuoqing@baidu.com>
 X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
 X-Originating-IP: [172.31.63.8]
 X-ClientProxiedBy: BJHW-Mail-Ex07.internal.baidu.com (10.127.64.17) To
  BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42)
-X-Baidu-BdMsfe-DateCheck: 1_BJHW-Mail-Ex05_2021-09-01 15:40:13:153
+X-Baidu-BdMsfe-DateCheck: 1_BJHW-Mail-Ex14_2021-09-01 15:41:51:936
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210901_004014_753396_405480CB 
-X-CRM114-Status: UNSURE (   9.02  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210901_004153_225752_BE363467 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +82,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the devm_platform_ioremap_resource_byname() helper instead of
-calling platform_get_resource_byname() and devm_ioremap_resource()
+Use the devm_platform_ioremap_resource() helper instead of
+calling platform_get_resource() and devm_ioremap_resource()
 separately
 
 Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
 ---
- drivers/pci/controller/pcie-mediatek-gen3.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/mtd/nand/raw/mtk_nand.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index 17c59b0d6978..014747c6dcd4 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -715,10 +715,7 @@ static int mtk_pcie_parse_port(struct mtk_pcie_port *port)
- 	struct resource *regs;
- 	int ret;
+diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+index 5c5c92132287..66f04c693c87 100644
+--- a/drivers/mtd/nand/raw/mtk_nand.c
++++ b/drivers/mtd/nand/raw/mtk_nand.c
+@@ -1520,7 +1520,6 @@ static int mtk_nfc_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np = dev->of_node;
+ 	struct mtk_nfc *nfc;
+-	struct resource *res;
+ 	int ret, irq;
  
--	regs = platform_get_resource_byname(pdev, IORESOURCE_MEM, "pcie-mac");
--	if (!regs)
--		return -EINVAL;
--	port->base = devm_ioremap_resource(dev, regs);
-+	port->base = devm_platform_ioremap_resource_byname(pdev, "pcie-mac");
- 	if (IS_ERR(port->base)) {
- 		dev_err(dev, "failed to map register base\n");
- 		return PTR_ERR(port->base);
+ 	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
+@@ -1541,8 +1540,7 @@ static int mtk_nfc_probe(struct platform_device *pdev)
+ 	nfc->caps = of_device_get_match_data(dev);
+ 	nfc->dev = dev;
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+-	nfc->regs = devm_ioremap_resource(dev, res);
++	nfc->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(nfc->regs)) {
+ 		ret = PTR_ERR(nfc->regs);
+ 		goto release_ecc;
 -- 
 2.25.1
 
