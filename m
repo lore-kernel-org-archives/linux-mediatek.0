@@ -2,76 +2,71 @@ Return-Path: <SRS0=BCEy=NX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BEA9C4320E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 05:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3BE62C432BE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 05:42:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B88B0610A8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 05:39:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B88B0610A8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
+	by mail.kernel.org (Postfix) with ESMTPS id 033E9610A2
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 05:42:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 033E9610A2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vt8IfqAIrfM4A/Ib7QDs2arZ7rl/fNkJZdPcmivnQYM=; b=b0fdohaMKTIrCv
-	WPENzbdfFaMm3Zd8OXdXdL80/fiES34Ui6FZcZdGEVONBlnmCU6YGjRcwvjChhERXaPHeRJxC9eRb
-	jHiu6CJBZAXil2LN+KQUv2j096jV2nmkozjSHmob7Tlm7Sae5+of/gThE0k+awqE4mVtDKarLs/Uo
-	YBcPuga3e4B/phSQjIc2i6o3uFqu1/JgBWeyLKn96Das1BaQgxpc5gZSeQa3v1P7JyUy7/QWfwmdO
-	g8bVem0+teq3t9HESZtg50lFc6Ds19tZgGKjEuCbigw+x++8N2wu3FNz5IK2Eks/MPZfeS4bGNYaf
-	1ihft9A/KYfyQjrNx0TQ==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RGIInP5HHA7t8tSNxui2mk/73aaeIJqEyA0iA3OMSu8=; b=EsEc9JzmUcfa9c
+	2XEF/zaud0QQGXji+U8cyyLQFYhMTG0PKK8v2v/ovIOaDddxd8oYXYWGZrOzjYZrERv7Xv23PR9Kt
+	DrHmUIl2DE84SAdoRs3qCeJBpceqJiKTTjME90uLfEzkGOAhy/iyZOP5tzvVan/4plAe6pZXhdeKl
+	4QmlfdqVg8QD8sphhcfXBo5U6YUJmygq1HF74rAgWirPzE4VRIwDuUw6p2CmLhrdhqTaIdm1ppd46
+	UHPjwJLQos4Jqnw5WeTFqRVrBsjvcJEbz88fuxHRl7B5WQQcZK+szcWyN+26CRwozgBTijF3j8n5t
+	tkojid4d5QzQ/w1xluQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLIyT-003v8L-TD; Wed, 01 Sep 2021 05:39:49 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1mLJ0s-003vup-5f; Wed, 01 Sep 2021 05:42:18 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLIyR-003v86-NY
- for linux-mediatek@bombadil.infradead.org; Wed, 01 Sep 2021 05:39:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=To:References:Message-Id:
- Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
- Content-Type:Sender:Reply-To:Content-ID:Content-Description;
- bh=/62lZUdUIEDX/hsTd4WszyfnIt7fXgohaInfKpoLciA=; b=RJ/p35mc5pDmPPgY972sVcBFoa
- ItbnnP84pePEL/lea4GXKPSNWry6X75WE8MpUaL6aXMOAurG4lNP9tuduNay6BeXyZqDIcAa3nlVG
- K39jd7GJf64F6WstKguPBR5z+PzrFu82vSsYEUzcP4BnsK1jiYUkGMOKXI/CdZLytUtncPLDQof9T
- ZCuTfthXPZBY6FxYGTZyR5dm/PbL+gPpoLl/am6rSg+3B77d2bw5WMTLwHTepZXH+5rD3S4L4H+L6
- osBBno6R28e4LX18khFMxeDoogBRGgF6erXoiVTnSnHW/gGRLm9ycPxCVadCSgpkn5vbViYwK78Lf
- ZS1KgsAg==;
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by casper.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLIxT-001upm-LR
- for linux-mediatek@lists.infradead.org; Wed, 01 Sep 2021 05:39:08 +0000
-Received: from smtpclient.apple (p5b3d2185.dip0.t-ipconnect.de [91.61.33.133])
- by mail.holtmann.org (Postfix) with ESMTPSA id 2C1BFCECED;
- Wed,  1 Sep 2021 07:38:25 +0200 (CEST)
-Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
-Subject: Re: [PATCH v2 1/2] Bluetooth: btusb: Support public address
- configuration for MediaTek Chip.
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <20210901033226.20693-1-mark-yw.chen@mediatek.com>
-Date: Wed, 1 Sep 2021 07:38:24 +0200
-Cc: Johan Hedberg <johan.hedberg@gmail.com>, chris.lu@mediatek.com,
- "open list:BLUETOOTH SUBSYSTEM" <linux-bluetooth@vger.kernel.org>,
- linux-mediatek@lists.infradead.org,
- open list <linux-kernel@vger.kernel.org>,
- Michael Sun <michaelfsun@google.com>, mcchou@chromium.org
-Message-Id: <3878646A-57BA-47A3-B7C8-884B5AE3DF34@holtmann.org>
-References: <20210901033226.20693-1-mark-yw.chen@mediatek.com>
-To: =?utf-8?B?Ik1hcmstWVcgQ2hlbiAo6Zmz5o+a5paHKSI=?=
- <Mark-YW.Chen@mediatek.com>
-X-Mailer: Apple Mail (2.3654.120.0.1.13)
+ id 1mLIz1-003vG3-1N; Wed, 01 Sep 2021 05:40:24 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8DD1361090;
+ Wed,  1 Sep 2021 05:40:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1630474822;
+ bh=IvDkmizg58kyeyzMs8vObMqP+kT/IvEFz24k7Ro5FkY=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=HE5A0kG1VeoXaAd/L4M1SlrkspDgLL1dqgcKugepYq0CLSQSqGp0CykXBPRezqCb+
+ 7QlWciZRqaLM0ikXufDRIhPqMfH4XPxoUagSJ0+Gg4IPlAVQWES9uEQCq3NpJkbbs1
+ P94NSKZ3r3JrTVGKrKKyyyMJZEtozpzXvHsCSGsri9M04tIxs+3RIlyvnHeNimmbQf
+ 2iMZoFwK75fIlluYTGK5sN7CW+eROyTUOOL4xy9sdm/nTo8YxwRMsQcwSttj1TAyt8
+ fwot77ER6tzXa+/MSWOXuO36mKLRHp8FM2yydBOEMPBPSpWypDSv1LihvICRiFDkd/
+ +/dz0+9xdOkCw==
+MIME-Version: 1.0
+In-Reply-To: <20210831164210.15455-5-miles.chen@mediatek.com>
+References: <20210831164210.15455-1-miles.chen@mediatek.com>
+ <20210831164210.15455-5-miles.chen@mediatek.com>
+Subject: Re: [PATCH v2 4/4] clk: mediatek: use tristate for
+ COMMON_CLK_MEDAITEK and COMMON_CLK_MT6779
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: Wendell Lin <wendell.lin@mediatek.com>,
+ Hanks Chen <hanks.chen@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
+ Miles Chen <miles.chen@mediatek.com>, Lee Jones <lee.jones@linaro.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>,
+ Miles Chen <miles.chen@mediatek.com>
+Date: Tue, 31 Aug 2021 22:40:21 -0700
+Message-ID: <163047482135.42057.4815394359554916322@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210901_063853_916160_AB05EF50 
-X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-CacheID: sfid-20210831_224023_145479_0CCB5683 
+X-CRM114-Status: UNSURE (   7.99  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,24 +84,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
-
-> The MediaTek chip support vendor specific HCI command(0xfc1a) to
-> change the public address. Add hdev->set_bdaddr handler for MediaTek
-> Chip. After doing a power cycle or MediaTek Bluetooth reset, BD_ADDR
-> will bring back the original one.
+Quoting Miles Chen (2021-08-31 09:42:10)
+> Now we have all necessary exported symbols, change
+> COMMON_CLK_MEDAITEK and COMMON_CLK_MT6779* to tristate.
 > 
-> Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
-> ---
-> drivers/bluetooth/btusb.c | 18 ++++++++++++++++++
-> 1 file changed, 18 insertions(+)
 
-patch has been applied to bluetooth-next tree.
+Please squash this with the patch that makes them into modular drivers.
 
-Regards
-
-Marcel
-
+> Cc: Stephen Boyd <sboyd@kernel.org>
+> Cc: Hanks Chen <hanks.chen@mediatek.com>
+> Cc: Wendell Lin <wendell.lin@mediatek.com>
+> Cc: Lee Jones <lee.jones@linaro.org>
+> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 
 _______________________________________________
 Linux-mediatek mailing list
