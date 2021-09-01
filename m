@@ -2,78 +2,104 @@ Return-Path: <SRS0=BCEy=NX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2290C4320A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 11:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28B6DC432BE
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 11:51:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8CA0761054
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 11:33:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8CA0761054
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id D036661008
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Sep 2021 11:51:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D036661008
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4iDrIKLR/Rmtm2TNV24D2O6/qMnkmW3ujFWbywWsmQw=; b=H4iDUxajmjhitM
-	uvJvTIErBnXaC6KJEL+DSWbdcRlsY9RV8PSRR81WYMkuh7g3zn7txpqwkbxfbrZ2ZDhoxsyFqnuW7
-	DR2eqjuxLsREIElwbKbBXGKYfEJ7Ue9b+j1xW8Iu5QvNUUpu4yYFj4gzGikWqYokAdobzkKCmWCMy
-	2TDBN8+CPYoigRV3R0qq41gVXOzkNlgKnzlbs8o6C3pXAnUjOQayHlwshIzZxlDEcwtKF8H8UuyP+
-	W9j2GTNJxjQr+jxZ4sp2iJlW7IAsC88PJqVY46jiUwC58fAI00MI/yr13fYRhUX9M5GbR+Hcsumur
-	9UP/jRIX3YBa/s4TJNIA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UjDtS/Wy3af5nZ9I+ZshdjW7PT2ptgPtkrrRc1iqcsc=; b=d+xwaz6dh23Agr
+	+emUIT0WvGIFLKZcafj1hExQZW59/9mExR2TWnX17ye6l41inYYpOhQ1yf79B+cgLOF93tOuyzKG7
+	lFJwjUwLhi3N0ZENELxgpUbv7ALfbhfy4QbxwNKdUnDl5u+0WrEeWfDxspEqQK1Sw3qIlktL7Gat/
+	VId9wpjdlc5DbsRSNxjRdwGLEy3CLr9dc369YnBCXuzSNmPge0b4PKfWzAmUW2czbVf7OLbjZFcS3
+	ludZq5Z66oNI0fe4dN/0kzfI5oFGoH1nF3bGlSKLM0/hIyDzyHDh9viCt0utawweo1d74Yak1y0HL
+	TLycNax+lBA6gVMcwwbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLOUU-005bu4-J4; Wed, 01 Sep 2021 11:33:14 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mLOlu-005gKO-7U; Wed, 01 Sep 2021 11:51:14 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLORn-005axi-0t
- for linux-mediatek@lists.infradead.org; Wed, 01 Sep 2021 11:30:30 +0000
-X-UUID: ca02c3caa6204cdf88174b8cccb624fd-20210901
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=KSMPOFX12i4eFrx0FqiJ02aPOKuHa8Ow4Atku87jCT8=; 
- b=itOwD2EP0YrcjHIiGkAAtOcLv+ShM4tei8ZQtt4Ick4AtNyEsroFXfWdCWj8Yps9kPKkZ1B6lb+K0ZdZcr6d6C90CNTJc4Y0Ox/agEcb2qDPGI0OLLtJ/7lhmf/3eLqb/Z7XTfORMV88udRQh/rHFGoRiwdSIB07oAgtgzrLbL0=;
-X-UUID: ca02c3caa6204cdf88174b8cccb624fd-20210901
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1048119648; Wed, 01 Sep 2021 04:30:24 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Sep 2021 04:30:22 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 1 Sep 2021 19:30:21 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 1 Sep 2021 19:30:21 +0800
-From: <mark-yw.chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <chris.lu@mediatek.com>, <linux-bluetooth@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <michaelfsun@google.com>, <mcchou@chromium.org>, mark-yw.chen
- <mark-yw.chen@mediatek.com>
-Subject: [PATCH] Bluetooth: btusb: Add support for IMC Networks Mediatek
- Chip(MT7921)
-Date: Wed, 1 Sep 2021 19:30:15 +0800
-Message-ID: <20210901113015.25622-1-mark-yw.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mLOlp-005gIq-4u
+ for linux-mediatek@lists.infradead.org; Wed, 01 Sep 2021 11:51:13 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a25so5999047ejv.6
+ for <linux-mediatek@lists.infradead.org>; Wed, 01 Sep 2021 04:51:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uOKShc+WYnMIyB9CjzG3Z7cKQEUyUYeyvbUWTQN1OA8=;
+ b=A2VXQJcZyRdsMmFVn55x/9V+Wes21QUSR4y2zTr3dlLBLRC4nV3ov0V5JB3Nv2rktX
+ Vj5Es6BLGHEN6UGYgEcZnjy/luVor5j2rGxsyR8e3qRz6TsA5tSGL1LQu6xbDViMYJfB
+ UZd5MuTs2n8nNWPb4SiFnZ7JmsegQa3H7Gi5r8unB3BNkKsb8JKlxczHXyswWD+XSKR3
+ V6A6wz0xB8JwcimJGFXJwkR33UB9JFum2Z6Ezxiq8dOs6rRp6EXHgQDN5P2ITugUW79q
+ uoPMIYSdmolesOPcseqhtPVljinE3Z+m+Nl1ANCBVwZzIuUQRR4YayIACa2KCDEhyJYl
+ r1pQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uOKShc+WYnMIyB9CjzG3Z7cKQEUyUYeyvbUWTQN1OA8=;
+ b=j1777YytlqEWi5R/5JvwyCgEaOkUcJetpIKcnrO2KvpXrbH84j//gDSFsbNyqDYRo9
+ HwqayqoWMkR1Lwwn5OW1laIZVdgCre+EWFbEDAgX6FPW/uLA/kVRnQJq7kYPPs+Nu5hx
+ BhAY9Zv7MmzsMozB1YkqpLrtgHKZY192WkBUgKFFAh6JqcNUZN32btUY41md4fjAtxo4
+ x7kQ44CFKttu9mWLl2sKe4tu2Jj/ywHh6jKfoJAowtUQkc+eYzG04wHEZyvDwgFEUJoN
+ bMhM67lK6IXOnUsTeSQOhmua/5oGl3oJWDBsYL/QB/5IsObyiVxRQGsR+hyOSe4L0SLW
+ L4AQ==
+X-Gm-Message-State: AOAM531BYpVIN3OloSkt1aYw/zrnEkyzyu3iLtpCk+MGy8PjAGwkVO5G
+ ZGLsqgh0isEBrnAt1/G2Pfv0yr+ulfdHd9zK0qxiLw==
+X-Google-Smtp-Source: ABdhPJwjFkys34+/Kq9OTrga8NV7WQe+xOMBu0yoIqzEl2gh/Thkm/Ncu6x6UaVnu4XPasukDVHMUjbCXCYs0832saM=
+X-Received: by 2002:a17:906:408c:: with SMTP id
+ u12mr37218674ejj.413.1630497063860; 
+ Wed, 01 Sep 2021 04:51:03 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
+ <20210811025801.21597-14-yunfei.dong@mediatek.com>
+ <YRQQBL8AN0925zj9@pendragon.ideasonboard.com>
+ <952c219de7595f7f814d3006fbe25b8089a35212.camel@mediatek.com>
+ <CAAEAJfB_qZtVpxk8P=26GkZ1j66v+RzzJTqf3UrfMkWNJ1fmFg@mail.gmail.com>
+ <fb85e6287a0d269593fa72d745dc2c573bcfe7bc.camel@mediatek.com>
+In-Reply-To: <fb85e6287a0d269593fa72d745dc2c573bcfe7bc.camel@mediatek.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Wed, 1 Sep 2021 08:50:52 -0300
+Message-ID: <CAAEAJfBAnvc4cL98aaQgAg1xKSZ3ciCVjbg34raGMOOskDSogg@mail.gmail.com>
+Subject: Re: [PATCH v5, 13/15] dt-bindings: media: mtk-vcodec: Adds decoder
+ dt-bindings for mt8192
+To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Fritz Koenig <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>, 
+ linux-media <linux-media@vger.kernel.org>,
+ devicetree <devicetree@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ srv_heupstream <srv_heupstream@mediatek.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+ George Sun <george.sun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210901_043027_134196_BC6570EA 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210901_045109_225282_B5386603 
+X-CRM114-Status: GOOD (  56.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,72 +116,322 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
+On Wed, 1 Sept 2021 at 00:49, yunfei.dong@mediatek.com
+<yunfei.dong@mediatek.com> wrote:
+>
+> Hi Ezequiel,
+>
+> Thanks for your feedback.
+> On Sun, 2021-08-29 at 17:54 -0300, Ezequiel Garcia wrote:
+> > On Tue, 17 Aug 2021 at 00:52, yunfei.dong@mediatek.com
+> > <yunfei.dong@mediatek.com> wrote:
+> > >
+> > > Hi Laurent,
+> > >
+> > > Thanks for your detail suggestion.
+> > >
+> > > On Wed, 2021-08-11 at 20:59 +0300, Laurent Pinchart wrote:
+> > > > Hi Yunfei,
+> > > >
+> > > > Thank you for the patch.
+> > > >
+> > > > On Wed, Aug 11, 2021 at 10:57:59AM +0800, Yunfei Dong wrote:
+> > > > > Adds decoder dt-bindings for mt8192.
+> > > > >
+> > > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > > ---
+> > > > > v5: no changes
+> > > > >
+> > > > > This patch depends on "Mediatek MT8192 clock support"[1].
+> > > > >
+> > > > > The definition of decoder clocks are in mt8192-clk.h, need to
+> > > > > include them in case of build fail [1].
+> > > > >
+> > > > > [1]
+> > > > >
+> https://patchwork.kernel.org/project/linux-mediatek/list/?series=511175
+> > > > > ---
+> > > > >  .../media/mediatek,vcodec-comp-decoder.yaml   | 172
+> > > > > ++++++++++++++++++
+> > > > >  1 file changed, 172 insertions(+)
+> > > > >  create mode 100644
+> > > > > Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
+> > > > > decoder.yaml
+> > > > >
+> > > > > diff --git
+> > > > > a/Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
+> > > > > decoder.yaml
+> > > > > b/Documentation/devicetree/bindings/media/mediatek,vcodec-comp-
+> > > > > decoder.yaml
+> > > > > new file mode 100644
+> > > > > index 000000000000..083c89933917
+> > > > > --- /dev/null
+> > > > > +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > > > > comp-
+> > > > > decoder.yaml
+> > > > > @@ -0,0 +1,172 @@
+> > > > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > > > +%YAML 1.2
+> > > > > +---
+> > > > > +$id:
+> > > > >
+> http://devicetree.org/schemas/iommu/mediatek,vcodec-comp-decoder.yaml#
+> > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > > > > +
+> > > > > +title: Mediatek Video Decode Accelerator With Component
+> > > > > +
+> > > > > +maintainers:
+> > > > > +  - Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > > +
+> > > > > +description: |+
+> > > > > +  Mediatek Video Decode is the video decode hardware present
+> > > > > in
+> > > > > Mediatek
+> > > > > +  SoCs which supports high resolution decoding
+> > > > > functionalities.
+> > > > > Required
+> > > > > +  master and component node.
+> > > >
+> > > > This should explain how the three IP cores relate to each other.
+> > > >
+> > >
+> > > I will explain it in next patch.
+> > > > > +
+> > > > > +properties:
+> > > > > +  compatible:
+> > > > > +    oneOf:
+> > > > > +      - enum:
+> > > > > +          - mediatek,mt8192-vcodec-dec  # for lat hardware
+> > > > > +          - mediatek,mtk-vcodec-lat     # for core hardware
+> > > > > +          - mediatek,mtk-vcodec-core
+> > > > > +
+> > > > > +  reg:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  interrupts:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  clocks:
+> > > > > +    maxItems: 5
+> > > > > +
+> > > > > +  clock-names:
+> > > > > +    items:
+> > > > > +      - const: vdec-sel
+> > > > > +      - const: vdec-soc-vdec
+> > > > > +      - const: vdec-soc-lat
+> > > > > +      - const: vdec-vdec
+> > > > > +      - const: vdec-top
+> > > > > +
+> > > > > +  assigned-clocks: true
+> > > > > +
+> > > > > +  assigned-clock-parents: true
+> > > > > +
+> > > > > +  power-domains:
+> > > > > +    maxItems: 1
+> > > > > +
+> > > > > +  iommus:
+> > > > > +    minItems: 1
+> > > > > +    maxItems: 32
+> > > > > +    description: |
+> > > > > +      List of the hardware port in respective IOMMU block for
+> > > > > current Socs.
+> > > > > +      Refer to bindings/iommu/mediatek,iommu.yaml.
+> > > > > +
+> > > > > +  dma-ranges:
+> > > > > +    maxItems: 1
+> > > > > +    description: |
+> > > > > +      Describes the physical address space of IOMMU maps to
+> > > > > memory.
+> > > > > +
+> > > > > +  mediatek,scp:
+> > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
+> > > > > +    maxItems: 1
+> > > > > +    description:
+> > > > > +      Describes point to scp.
+> > > > > +
+> > > > > +required:
+> > > > > +      - compatible
+> > > > > +      - reg
+> > > > > +      - iommus
+> > > > > +      - dma-ranges
+> > > > > +
+> > > > > +allOf:
+> > > > > +  - if: #master node
+> > > > > +      properties:
+> > > > > +        compatible:
+> > > > > +          contains:
+> > > > > +            enum:
+> > > > > +              - mediatek,mt8192-vcodec-dec  # for lat hardware
+> > > > > +
+> > > > > +    then:
+> > > > > +      required:
+> > > > > +        - mediatek,scp
+> > > > > +
+> > > > > +  - if: #component node
+> > > > > +      properties:
+> > > > > +        compatible:
+> > > > > +          contains:
+> > > > > +            enum:
+> > > > > +              - mediatek,mtk-vcodec-lat     # for core
+> > > > > hardware
+> > > > > +              - mediatek,mtk-vcodec-core
+> > > > > +
+> > > > > +    then:
+> > > > > +      required:
+> > > > > +        - interrupts
+> > > > > +        - clocks
+> > > > > +        - clock-names
+> > > > > +        - assigned-clocks
+> > > > > +        - assigned-clock-parents
+> > > > > +        - power-domains
+> > > > > +
+> > > > > +
+> > > > > +additionalProperties: false
+> > > > > +
+> > > > > +examples:
+> > > > > +  - |
+> > > > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> > > > > +    #include <dt-bindings/memory/mt8192-larb-port.h>
+> > > > > +    #include <dt-bindings/interrupt-controller/irq.h>
+> > > > > +    #include <dt-bindings/clock/mt8192-clk.h>
+> > > > > +    #include <dt-bindings/power/mt8192-power.h>
+> > > > > +
+> > > > > +    vcodec_dec: vcodec_dec@16000000 {
+> > > > > +        compatible = "mediatek,mt8192-vcodec-dec";
+> > > > > +        reg = <0 0x16000000 0 0x1000>;             /* VDEC_SYS
+> > > > > */
+> > > > > +        mediatek,scp = <&scp>;
+> > > > > +        iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> > > > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+> > > > > +    };
+> > > > > +
+> > > > > +    vcodec_lat: vcodec_lat@0x16010000 {
+> > > > > +        compatible = "mediatek,mtk-vcodec-lat";
+> > > > > +        reg = <0 0x16010000 0 0x800>;              /*
+> > > > > VDEC_MISC */
+> > > > > +        interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > > > +        iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
+> > > > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+> > > > > +        clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> > > > > +             <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
+> > > > > +             <&vdecsys_soc CLK_VDEC_SOC_LAT>,
+> > > > > +             <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
+> > > > > +             <&topckgen CLK_TOP_MAINPLL_D4>;
+> > > > > +        clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-
+> > > > > lat",
+> > > > > +              "vdec-vdec", "vdec-top";
+> > > > > +        assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> > > > > +        assigned-clock-parents = <&topckgen
+> > > > > CLK_TOP_MAINPLL_D4>;
+> > > > > +        power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
+> > > > > +    };
+> > > > > +
+> > > > > +    vcodec_core: vcodec_core@0x16025000 {
+> > > > > +        compatible = "mediatek,mtk-vcodec-core";
+> > > > > +        reg = <0 0x16025000 0 0x1000>;             /*
+> > > > > VDEC_CORE_MISC */
+> > > > > +        interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
+> > > > > +        iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
+> > > > > +             <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
+> > > > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+> > > > > +        clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> > > > > +             <&vdecsys CLK_VDEC_VDEC>,
+> > > > > +             <&vdecsys CLK_VDEC_LAT>,
+> > > > > +             <&vdecsys CLK_VDEC_LARB1>,
+> > > > > +             <&topckgen CLK_TOP_MAINPLL_D4>;
+> > > > > +        clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-
+> > > > > lat",
+> > > > > +              "vdec-vdec", "vdec-top";
+> > > > > +        assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> > > > > +        assigned-clock-parents = <&topckgen
+> > > > > CLK_TOP_MAINPLL_D4>;
+> > > > > +        power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
+> > > > > +    };
+> > > >
+> > > > I'm a bit late in the game, reviewing v5 only, but I'm wondering
+> > > > if
+> > > > those IP cores need to be modelled in separate nodes. It would be
+> > > > much
+> > > > easier, from a software point of view, to have a single node,
+> > > > with
+> > > > multiple register ranges.
+> > > >
+> > > > Are some of those IP cores used in different SoCs, combined in
+> > > > different
+> > > > ways, that make a modular design better ?
+> > > >
+> > >
+> > > Different platform has different hardware, for mt8192 only has
+> > > three
+> > > nodes. but mt8195 will has five nodes. and the clk/power/irq/iommu
+> > > are
+> > > different. It is not easy to manage all hardware at the same time
+> > > in
+> > > one node, need to enable different hardware at the same time, the
+> > > logic
+> > > will be very complex.
+> > > It is much easier to handle different hardware using component,
+> > > enable
+> > > different hardware when we need it.
+> > >
+> > >
+> >
+> > You can still have one device-tree node for each device, which means
+> > you can still manage your resources (clk/power/irq/iommu) easily, but
+> > doing
+> > this so that it avoids an async framework to pull the parts together.
+> >
+> It mean that v4l2 async also can't be used?
 
-Add support for another IMC Networks Mediatek Chip(MT7921)
+No, I don't think it's needed. I will take a look at the device tree
+and see if I can show you an alternative approach that doesn't
+require an async framework.
 
-* /sys/kernel/debug/usb/devices
-T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
-D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
-P:  Vendor=13d3 ProdID=3564 Rev= 1.00
-S:  Manufacturer=MediaTek Inc.
-S:  Product=Wireless_Device
-S:  SerialNumber=000000000
-C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
-A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
-I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
-E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
-I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
-I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
-I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
-I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
-I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
-I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
-I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
-E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
-I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
-I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
-E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
-E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> > I gave you this feedback several times, and you have been objecting
+> > it
+> > every time  without even trying to consider a different approach.
+> >
+> I'm not objecting your suggestion every time, for our driver is
+> designed for component api, need to spend a lot of time to change it in
+> many platforms. We need to get a final solution for this architecture,
+> or it's not easy to change all patches in the feature.
+> > Thanks,
+> > Ezequiel
+> 1. Each a node should respect a HW node. Defining a complex node that
+> contain multiple register is not better, for they belong to different
+> hardware. Different platforms has different hardware count, mt8195 has
+> five hardwares.
+> 2. Another reason is from the IOMMU point, the vcodec HW include core
+> and lat hardwares, each of them connect to the independent IOMMU
+> hardware for mt8195, can't write all iommu ports together, or hardware
+> can't access dram data, so we must separate them.
+>
+> For these limitation, can't combine all hardware together. I will write
+> the hardware diagram in next patch.
+>
 
-Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
----
- drivers/bluetooth/btusb.c | 3 +++
- 1 file changed, 3 insertions(+)
+No need for another patch, you can write that hardware diagram
+now, so we can help with some design ideas.
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 66c8f3cdc0c0..cd961d5977d3 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -410,6 +410,9 @@ static const struct usb_device_id blacklist_table[] = {
- 	{ USB_DEVICE(0x13d3, 0x3563), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
-+	{ USB_DEVICE(0x13d3, 0x3564), .driver_info = BTUSB_MEDIATEK |
-+						     BTUSB_WIDEBAND_SPEECH |
-+						     BTUSB_VALID_LE_STATES },
- 	{ USB_DEVICE(0x0489, 0xe0cd), .driver_info = BTUSB_MEDIATEK |
- 						     BTUSB_WIDEBAND_SPEECH |
- 						     BTUSB_VALID_LE_STATES },
--- 
-2.18.0
+Thanks!
+Ezequiel
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
