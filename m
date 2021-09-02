@@ -2,91 +2,96 @@ Return-Path: <SRS0=hgkd=NY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-19.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 60E1EC432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 12:04:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2DBDEC43214
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 13:39:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1DA91610D0
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 12:04:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1DA91610D0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id CAA73610A0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 13:39:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CAA73610A0
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GWm75UqNsGDib8oQRl7taX+kKUqI/pd0hCVwaQkpWk8=; b=zq3a4g+MBYchvN
-	N7xzewAsVDYnESQbGGYDE8lVcpGBc9JBvUchcD4Z4k+FchI399erNaPGPOdMTJmh7uSivjpcanles
-	/8fB4wn44pVuk25CudCTXVnr1l4byj1DP8Eb/u/ohyHeQ/3Gq8iMrpG4X9XdoJHK4/I8t3NCt7r6i
-	ypnPWknbQ7jSu4Dk4e5HCBo+Ay1YD9F+YtjRRPWEo+qWBpyHWucrMmr/2Rx117eEVunmXCvLB/D6h
-	+9rv+aTcbrk97RD9Gmq5cv/bj5Tg1tZybnABodEfHnqQFXtgP40YPYDyOU6SjLljW7MlXbehJWlxA
-	+fEIDIduhYFsPptdZknw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Dxh4anfjnL7GyxtLOWAFhL5DzC+DdtluZT16UcGD+pA=; b=hj7D2cDqwhJwD34ygVMH9Ku+7g
+	I9ABExGt9DnBdZHRB7hceJwgjKtOV4u9ueQs/otm3hBbXx44JsWCg4ttOrjdgAALJDbtXpImJvhOM
+	84EwdBNDa39xyIBXajMXy9Z8LqDFd5QbWB1q2uugGT699iCN5ws3Lg2LOEajO9r0aWuUHLcfPx9cn
+	70FBzI0N1XAmiayRvkK7yvy04eZm62qLywZj38K1kgD2r6RG4vkNG1nrtk7U+d5FT0EvXeh4zPNBm
+	r2c0emBKodnsHDxw2R7VsrDpQJJA2CZpteN2pSKndnHDqJ9EYKvGD53aQt5G0yyMkmhZZ2yIV4Gjd
+	MgdE3RZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLlS7-009UxB-97; Thu, 02 Sep 2021 12:04:19 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1mLmw4-009jY2-Fr; Thu, 02 Sep 2021 13:39:20 +0000
+Received: from mail-oo1-xc29.google.com ([2607:f8b0:4864:20::c29])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLlRq-009UrU-ON; Thu, 02 Sep 2021 12:04:07 +0000
-Received: by mail-oi1-f173.google.com with SMTP id w144so1655952oie.13;
- Thu, 02 Sep 2021 05:04:01 -0700 (PDT)
+ id 1mLmw2-009jXU-2N; Thu, 02 Sep 2021 13:39:19 +0000
+Received: by mail-oo1-xc29.google.com with SMTP id
+ y16-20020a4ad6500000b0290258a7ff4058so527261oos.10; 
+ Thu, 02 Sep 2021 06:39:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=3i9b/QDZb0cse/arJkVkj0b5E9JeYEobASX++MvsNrs=;
+ b=NfYAO8z9mtmm847ShzIy99zyzotuORd5O5hOaViSCS4pfEiM87XvbYr67wtREsZZQ/
+ OkJ/irNVWESUmnQXvAxZV9FR9ZSTpECRewMRz2LhQioy5Dxa9C3dDVspRT8aN595yDYc
+ ZVxGv0uq8/qD9BIdg7KQN2FzModAbyf0clX1uUwPmQ94Yf5BuZVMe5o3hXk+peBhtPO1
+ XxWiSd66X17EYcD2qctpzkmnSWMiFe7zlytAPbB+Bz65nRk3DWE5NrDsHPTgV9bcWJrH
+ 7BddXBHw7dHINar0EU6Kqbw5rRjgybCOXtuX7ivD6d0jGTVSmKN+mtiKekgO2eoL3zlG
+ YDYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=DqbDBOn9LbPv6mE+TZV/se5KZ66whWGBwMTUDdN1R0w=;
- b=gbaR3B/6Q/tQqatViSgi2Ablmi9bDJW4wAURqJhBSZyaX5nn8P7kXXLYHpopax98Wq
- 4BSihBj/PwVdc3moQL/EYlC9kuTf2Yl0CrPv3ufpnFag5Qwu68Rw+tv7sJlE+KOxrJWK
- yV1ma89ZQZpIaTTr7o0dQh4aQUdhbGl3UQkzNJZn066eBEL3f3q8hwfGej34ti7RNubb
- CwGYYFQgQyHWlFShvRjIt7tt+ntsuaBAg4O9AvoAXSX0Pg2zFRx4mGPXinB6SOao82Wt
- 0CXtwLId6VYOW+TvWbP/taOYHUeOorX0A2u85CGoMk5ExvlfI2VbWFBP4QW/OWODw885
- cuIw==
-X-Gm-Message-State: AOAM532XKPjJ85L+WpgI1PmSuEvrdaeSB8QwNQdkpFR+tyHRx0WbZ4xJ
- HwPvQdeB72tCGglo3SSSXA==
-X-Google-Smtp-Source: ABdhPJy5zHgT3CYbVHjqBlaKAIqyikhF9TQAXsaSbQ2sq9Ke9YuXUA+5Iro8Kv4/IbpBmwXXV+8GSg==
-X-Received: by 2002:a05:6808:d53:: with SMTP id
- w19mr1890899oik.135.1630584240956; 
- Thu, 02 Sep 2021 05:04:00 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id c10sm305218ots.48.2021.09.02.05.03.59
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 02 Sep 2021 05:04:00 -0700 (PDT)
-Received: (nullmailer pid 685596 invoked by uid 1000);
- Thu, 02 Sep 2021 12:03:59 -0000
-From: Rob Herring <robh@kernel.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Tzung-Bi Shih <tzungbi@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, linux-media@vger.kernel.org,
- Tiffany Lin <tiffany.lin@mediatek.com>, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Alexandre Courbot <acourbot@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- devicetree@vger.kernel.org, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, linux-mediatek@lists.infradead.org,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Tomasz Figa <tfiga@google.com>, dri-devel <dri-devel@lists.freedesktop.org>
-In-Reply-To: <20210901083215.25984-14-yunfei.dong@mediatek.com>
-References: <20210901083215.25984-1-yunfei.dong@mediatek.com>
- <20210901083215.25984-14-yunfei.dong@mediatek.com>
-Subject: Re: [PATCH v6,
- 13/15] dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for
- mt8192
-Date: Thu, 02 Sep 2021 07:03:59 -0500
-Message-Id: <1630584239.076177.685595.nullmailer@robh.at.kernel.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=3i9b/QDZb0cse/arJkVkj0b5E9JeYEobASX++MvsNrs=;
+ b=Q+g72i1VP//Dw8Fdvnr09U0POzn8ZYRku7m3fEUAKi3kY0ok+Txb5OCuSrr9C6mM8q
+ knQdnhxjACsQjcissm4jeFMFcLLxK7Jgdn8q6YxAnHZ18qljGSqfvthKDWNK/zvzcxAN
+ 53PN1IxmTcm6IpPAZ34EmhzNkM4JPA6swVT/DGsSzREOFIOWKdK+vLma3yWqzFW2WOCq
+ xRpohr8KJQCfdxE5URtfn/LWxuH604S+q++SyvWlMrhS+KIPUp7aaTGbI78vptDxaf1F
+ bF9IvrC6L3Aoyn71uqWW1HuITlo2r5a4XDbMwEIMNxvEzJiglinVZHyc+OOGU+rw2Wl0
+ TQyw==
+X-Gm-Message-State: AOAM533XEIdEeeBoEergg23Zje9MhjXSnq1bhMwKbcyyhFf0bHiKbobZ
+ K2t7soNDMh7jGv0ZCoHKpXaQKMtkm/4=
+X-Google-Smtp-Source: ABdhPJw6UxVSqB/f6mIJ0rQpsJAWLniTlOizp9qJQDJ94lgl/iCffTkeQbomVaSHwrz0N7O+ZtgJRw==
+X-Received: by 2002:a05:6820:613:: with SMTP id
+ e19mr2630962oow.67.1630589953913; 
+ Thu, 02 Sep 2021 06:39:13 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ n13sm339294otr.11.2021.09.02.06.39.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Sep 2021 06:39:13 -0700 (PDT)
+Subject: Re: [PATCH] watchdog: mtk: add disable_wdt_extrst support
+To: Fengquan Chen <Fengquan.Chen@mediatek.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Cc: tinghan.shen@mediatek.com, randy.wu@mediatek.com,
+ rex-bc.chen@mediatek.com, christine.zhu@mediatek.com, joe.yang@mediatek.com,
+ zhishuang.zhang@mediatek.com
+References: <1630569881-6032-1-git-send-email-Fengquan.Chen@mediatek.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <4a7c1fa7-cd56-54c0-7b3c-ed48ec0e886d@roeck-us.net>
+Date: Thu, 2 Sep 2021 06:39:11 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <1630569881-6032-1-git-send-email-Fengquan.Chen@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210902_050402_822735_66F4EB82 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20210902_063918_170880_11A94540 
+X-CRM114-Status: GOOD (  14.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,65 +103,32 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 01 Sep 2021 16:32:13 +0800, Yunfei Dong wrote:
-> Adds decoder dt-bindings for mt8192.
+On 9/2/21 1:04 AM, Fengquan Chen wrote:
+> From: "fengquan.chen" <fengquan.chen@mediatek.com>
 > 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
-> v6: add decoder block diagram for Laurent's comments.
+> In some cases, we may need watchdog just to trigger an
+> internal soc reset without sending any output signal.
 > 
-> This patch depends on "Mediatek MT8192 clock support"[1].
+> Provide a disable_wdt_extrst parameter for configuration.
+> We can disable or enable it just by configuring dts.
 > 
-> The definition of decoder clocks are in mt8192-clk.h, and this patch already in clk tree[1].
+> fengquan.chen (1):
+>    watchdog: mtk: add disable_wdt_extrst support
 > 
-> [1]https://git.kernel.org/pub/scm/linux/kernel/git/clk/linux.git/commit/?h=clk-next&id=f35f1a23e0e12e3173e9e9dedbc150d139027189
-> ---
->  .../media/mediatek,vcodec-comp-decoder.yaml   | 192 ++++++++++++++++++
->  1 file changed, 192 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml
+>   drivers/watchdog/mtk_wdt.c | 7 +++++++
+>   1 file changed, 7 insertions(+)
 > 
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+A single patch does not require an introductory e-mail.
+Also, if provided, it needed to be numbered (PATCH 0/1)
+to distinguish it from the actual patch.
 
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml: properties:compatible: [{'enum': ['mediatek,mt8192-vcodec-dec', 'mediatek,mtk-vcodec-lat', 'mediatek,mtk-vcodec-core']}] is not of type 'object', 'boolean'
-	from schema $id: http://json-schema.org/draft-07/schema#
-./Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml: $id: relative path/filename doesn't match actual path or filename
-	expected: http://devicetree.org/schemas/media/mediatek,vcodec-comp-decoder.yaml#
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml: ignoring, error in schema: properties: compatible
-warning: no schema found in file: ./Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.yaml
-Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.example.dts:22:18: fatal error: dt-bindings/clock/mt8192-clk.h: No such file or directory
-   22 |         #include <dt-bindings/clock/mt8192-clk.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[1]: *** [scripts/Makefile.lib:380: Documentation/devicetree/bindings/media/mediatek,vcodec-comp-decoder.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1419: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1522931
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Guenter
 
 _______________________________________________
 Linux-mediatek mailing list
