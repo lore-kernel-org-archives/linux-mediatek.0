@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0629BC432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 02:12:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B0A85C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 03:04:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BAF8E610CA
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 02:12:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BAF8E610CA
+	by mail.kernel.org (Postfix) with ESMTPS id 3CA9761056
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 03:04:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3CA9761056
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,61 +23,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RKmFJI+TtvLBTQtmVpbYVP0RZzgnHbv/XAWiAwr58P4=; b=owTIRn2EtGXR5d
-	2GyRzf3C04kezXrcxruCXKUSxXGo+M5h0lLZZMEDupXJcOgXtvVMdmqNqMqWUE2fd9H0lYdHaaeib
-	zVD6/hqnWSwRXm00tcUzWmvVKuSTzPQgmWh0IxGoosi4ILESwt3mzRgWd/yfyvBUex+x07LhoZ/QV
-	86JdWYfdu6bN16P33314LbsNhAkXNOcRVhVP3RbMayntJulvmVGHxfBIGM5zuoXcM/OMAwBg0kFEB
-	BStSVrVA52EC+CJ5bGKxjbdbFYUQYDYY5FLqxctMTMUp9AxSqanuK9jt53xQ+7WiDp9iQsQsiawLC
-	/+L30w8udIXnnhVray0Q==;
+	List-Owner; bh=AiPlaha5gxkZZv3nJyFoveRZym+MSyVy0M1cX0nf5JQ=; b=cm9+PlkPZAVqem
+	f5BOyu8SIUfEJ15lHig5ftuv5kpxXwdaLZ1EsLYyCob76aNPvarqmVIP6w5+KZu/XSFV8IkBZExWG
+	iKsKE9MKQiownFBydTjsasrIFKPRFjUS60nHmBYOi3tbSrcWIuRUz0p214kIUT+OX1Z2X34pqo25Q
+	AUnxG/hzfxOnMgFOQQ8aXLHs9oZBWiwZsst0hfB2x3G7TeqKivK5dkgovdalW4z0Cg6lUsaiYoMkn
+	GfoNpHBt3W4zbGWPw1pGIwAVlhEVJViiOgZTUE99byp2QPPlRX2nnaO/H1bckz1+f+w2QdCWH89I4
+	vn/dQJBUMmySbAroPl2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLcDX-008B2O-DZ; Thu, 02 Sep 2021 02:12:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mLd1w-008Gna-Rb; Thu, 02 Sep 2021 03:04:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLcDS-008B21-Cn
- for linux-mediatek@lists.infradead.org; Thu, 02 Sep 2021 02:12:38 +0000
-X-UUID: 456172215fce4624af4623ab04fd6d05-20210901
+ id 1mLd1p-008Gmb-Ci; Thu, 02 Sep 2021 03:04:42 +0000
+X-UUID: 2263b8dd983e408785dd32097b473a5b-20210901
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=MxPi2Z7fLFbleO5SNvI1Jw/FtsBVdHsC7at62XOVEts=; 
- b=NSTeo069d3sHNYj70549uJbA/Pzv6lExOjjs6O1NzPDG+bybe30J9KZK9E6gz/gzayQ44p/Kszx3dKtmLYSRkdSq24iPDmq8eCoYv5vtIfYlZVM66kdIFv6ZIzkdhiD2VJgiZPdPxFsxkRtJNaatGdcijE3n34DR3F3JLtEc/bE=;
-X-UUID: 456172215fce4624af4623ab04fd6d05-20210901
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <peter.wang@mediatek.com>)
+ bh=oKwi5vQyQUW6ltkazyhgIJ93lF1wrGUFw2P5Zp/Ilm4=; 
+ b=XrZIm3plTUBMC0rGVCKTS7LWzll8MVb+XRJVS/q7lNnpEe9WQs/rMMIGM4u5LGG0ClVgAsLMmO1M2dNhXHL1UNSed3fAVTkKLPOQNAWctCiBe0flBzWWULsWDneuSYWXUVuIsjucSlaBiL8V5P2ZH7XZLrTMCZg1vBad64hhgec=;
+X-UUID: 2263b8dd983e408785dd32097b473a5b-20210901
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 371201761; Wed, 01 Sep 2021 19:12:29 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Sep 2021 19:12:27 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 10:12:26 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 1458139401; Wed, 01 Sep 2021 20:04:30 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Sep 2021 19:54:27 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Sep 2021 10:54:26 +0800
+Received: from [10.17.3.153] (10.17.3.153) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Sep 2021 10:12:26 +0800
-Message-ID: <538eacb7818d011d707e742187a6a96868c5d474.camel@mediatek.com>
-Subject: Re: [PATCH v3] scsi: ufs: ufs-mediatek: Change dbg select by check
- hw version
-From: Peter Wang <peter.wang@mediatek.com>
-To: Stanley Chu <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
- <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
- <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
- <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
- <jiajie.hao@mediatek.com>, <powen.kao@mediatek.com>,
- <jonathan.hsu@mediatek.com>, <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
-Date: Thu, 2 Sep 2021 10:12:26 +0800
-In-Reply-To: <942c222b226a5851df90bbc46bb98f1da16ac07a.camel@mediatek.com>
-References: <1630476252-2031-1-git-send-email-peter.wang@mediatek.com>
- <942c222b226a5851df90bbc46bb98f1da16ac07a.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Thu, 2 Sep 2021 10:54:25 +0800
+Message-ID: <1630551265.2247.11.camel@mhfsdcap03>
+Subject: Re: [PATCH v11 1/4] dt-bindings: pinctrl: mt8195: add rsel define
+From: zhiyong.tao <zhiyong.tao@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: Rob Herring <robh+dt@kernel.org>, Linus Walleij
+ <linus.walleij@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>, "Eddie
+ Huang" <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
+ Biao Huang <biao.huang@mediatek.com>, Hongzhou Yang
+ <hongzhou.yang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "Seiya
+ Wang" <seiya.wang@mediatek.com>, Devicetree List
+ <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, "moderated
+ list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM"
+ <linux-gpio@vger.kernel.org>
+Date: Thu, 2 Sep 2021 10:54:25 +0800
+In-Reply-To: <CAGXv+5HeNj2Ly-T1bWMvnYXv6nP-Q1kv+D9QEd+5u4xfNVibOg@mail.gmail.com>
+References: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
+ <20210830003603.31864-2-zhiyong.tao@mediatek.com>
+ <CAGXv+5HeNj2Ly-T1bWMvnYXv6nP-Q1kv+D9QEd+5u4xfNVibOg@mail.gmail.com>
+X-Mailer: Evolution 3.10.4-0ubuntu2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210901_191234_489593_79DA5FE8 
-X-CRM114-Status: GOOD (  31.80  )
+X-CRM114-CacheID: sfid-20210901_200438_889765_D689F644 
+X-CRM114-Status: GOOD (  23.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,137 +99,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-09-01 at 15:35 +0800, Stanley Chu wrote:
-> Hi Peter,
-> 
-> On Wed, 2021-09-01 at 14:04 +0800, peter.wang@mediatek.com wrote:
-> > From: Peter Wang <peter.wang@mediatek.com>
-> > 
-> > Mediatek UFS dbg select setting is changed in new HW version.
-> > This patch check the HW version before set dbg select.
-> 
-> Nits: This patch checks the HW version before setting dbg select.
-> > 
-> > Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+On Wed, 2021-09-01 at 12:35 +0800, Chen-Yu Tsai wrote:
+> On Mon, Aug 30, 2021 at 8:36 AM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
+> >
+> > This patch adds rsel define for mt8195.
+> >
+> > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
 > > ---
-> >  drivers/scsi/ufs/ufs-mediatek.c |   23 +++++++++++++++++++++--
-> >  drivers/scsi/ufs/ufs-mediatek.h |    5 +++++
-> >  2 files changed, 26 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/scsi/ufs/ufs-mediatek.c
-> > b/drivers/scsi/ufs/ufs-
-> > mediatek.c
-> > index d2c2516..0050e01 100644
-> > --- a/drivers/scsi/ufs/ufs-mediatek.c
-> > +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> > @@ -296,6 +296,25 @@ static void
-> > ufs_mtk_setup_ref_clk_wait_us(struct
-> > ufs_hba *hba,
-> >  	host->ref_clk_ungating_wait_us = ungating_us;
-> >  }
-> >  
-> > +__no_kcsan
+> >  include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> >
+> > diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-bindings/pinctrl/mt65xx.h
+> > index 7e16e58fe1f7..f5934abcd1bd 100644
+> > --- a/include/dt-bindings/pinctrl/mt65xx.h
+> > +++ b/include/dt-bindings/pinctrl/mt65xx.h
+> > @@ -16,6 +16,15 @@
+> >  #define MTK_PUPD_SET_R1R0_10 102
+> >  #define MTK_PUPD_SET_R1R0_11 103
+> >
+> > +#define MTK_PULL_SET_RSEL_000  200
+> > +#define MTK_PULL_SET_RSEL_001  201
+> > +#define MTK_PULL_SET_RSEL_010  202
+> > +#define MTK_PULL_SET_RSEL_011  203
+> > +#define MTK_PULL_SET_RSEL_100  204
+> > +#define MTK_PULL_SET_RSEL_101  205
+> > +#define MTK_PULL_SET_RSEL_110  206
+> > +#define MTK_PULL_SET_RSEL_111  207
 > 
-> This is rarely used in mainstream kernel. According to my grep
-> results,
-> __no_kcsan is only used by kcsan-test itself.
+> Could you keep the spacing between constants tighter, or have no spacing
+> at all? Like having MTK_PULL_SET_RSEL_000 defined as 104 and so on. This
+> would reduce the chance of new macro values colliding with actual resistor
+> values set in the datasheets, plus a contiguous space would be easy to
+> rule as macros.
 > 
-> Besides, dbg select configuration may not be necessary if the mode is
-> already configured before? I just wonder that can we avoid setting
-> these registers every query?
-> 
+> ChenYu
 
-Yes, will remove __no_kcsan and add a ip_ver in mediatek host struct
-to avoid KCSAN warning.
-Dbg select value will clear by hci reset. Maybe we cand add a variable
-in mediatek host sruct to record if need set dbg select.
+Hi chenyu,
+By the current solution, it won't be mixed used by MTK_PULL_SET_RSEL_XXX
+and real  resistor value.
+If user use MTK_PULL_SET_RSEL_XXX, They don't care the define which
+means how much resistor value.
+We think that we don't contiguous macro space for different register. 
+It may increase code complexity to make having MTK_PULL_SET_RSEL_000
+defined as 104.
 
-> > +static void ufs_mtk_dbg_sel(struct ufs_hba *hba)
-> > +{
-> > +	static u32 hw_ver;
-> > +
-> > +	if (!hw_ver)
-> > +		hw_ver = ufshcd_readl(hba, REG_UFS_MTK_HW_VER);
-> 
-> Perhaps you can keep this version in struct host->hw_ver? Maybe you
-> need to add a new member in that struct, for example, ip_ver.
-> 
-> > +
-> > +	if (((hw_ver >> 16) & 0xFF) >= 0x36) {
-> > +		ufshcd_writel(hba, 0x820820, REG_UFS_DEBUG_SEL);
-> > +		ufshcd_writel(hba, 0x0, REG_UFS_DEBUG_SEL_B0);
-> > +		ufshcd_writel(hba, 0x55555555, REG_UFS_DEBUG_SEL_B1);
-> > +		ufshcd_writel(hba, 0xaaaaaaaa, REG_UFS_DEBUG_SEL_B2);
-> > +		ufshcd_writel(hba, 0xffffffff, REG_UFS_DEBUG_SEL_B3);
-> > +	} else {
-> > +		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-> > +	}
-> > +}
-> > +
-> >  static int ufs_mtk_wait_link_state(struct ufs_hba *hba, u32 state,
-> >  				   unsigned long max_wait_ms)
-> >  {
-> > @@ -305,7 +324,7 @@ static int ufs_mtk_wait_link_state(struct
-> > ufs_hba
-> > *hba, u32 state,
-> >  	timeout = ktime_add_ms(ktime_get(), max_wait_ms);
-> >  	do {
-> >  		time_checked = ktime_get();
-> > -		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-> > +		ufs_mtk_dbg_sel(hba);
-> >  		val = ufshcd_readl(hba, REG_UFS_PROBE);
-> >  		val = val >> 28;
-> >  
-> > @@ -1001,7 +1020,7 @@ static void ufs_mtk_dbg_register_dump(struct
-> > ufs_hba *hba)
-> >  			 "MPHY Ctrl ");
-> >  
-> >  	/* Direct debugging information to REG_MTK_PROBE */
-> > -	ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-> > +	ufs_mtk_dbg_sel(hba);
-> >  	ufshcd_dump_regs(hba, REG_UFS_PROBE, 0x4, "Debug Probe ");
-> >  }
-> >  
-> > diff --git a/drivers/scsi/ufs/ufs-mediatek.h
-> > b/drivers/scsi/ufs/ufs-
-> > mediatek.h
-> > index 3f0d3bb..fc40c05 100644
-> > --- a/drivers/scsi/ufs/ufs-mediatek.h
-> > +++ b/drivers/scsi/ufs/ufs-mediatek.h
-> > @@ -15,9 +15,14 @@
-> >  #define REG_UFS_REFCLK_CTRL         0x144
-> >  #define REG_UFS_EXTREG              0x2100
-> >  #define REG_UFS_MPHYCTRL            0x2200
-> > +#define REG_UFS_MTK_HW_VER          0x2240
-> 
-> HW_VER is somehow ambiguous, for example, how about
-> REG_UFS_MTK_IP_VER?
-> 
+Thanks.
 
-Sure, could change naming for easy understand.
+> 
+> >  #define MTK_DRIVE_2mA  2
+> >  #define MTK_DRIVE_4mA  4
+> >  #define MTK_DRIVE_6mA  6
+> > --
+> > 2.18.0
+> > _______________________________________________
+> > Linux-mediatek mailing list
+> > Linux-mediatek@lists.infradead.org
+> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
-> >  #define REG_UFS_REJECT_MON          0x22AC
-> >  #define REG_UFS_DEBUG_SEL           0x22C0
-> >  #define REG_UFS_PROBE               0x22C8
-> > +#define REG_UFS_DEBUG_SEL_B0        0x22D0
-> > +#define REG_UFS_DEBUG_SEL_B1        0x22D4
-> > +#define REG_UFS_DEBUG_SEL_B2        0x22D8
-> > +#define REG_UFS_DEBUG_SEL_B3        0x22DC
-> 
-> Perhaps the debug select design could be simplified in the future,
-> for
-> example, driver can query what it wants by reading only one register
-> without configuring anything first? Although this is beyond the scope
-> of this patch.
-> 
-> Thanks,
-> Stanley Chu
-> 
-> >  
-> >  /*
-> >   * Ref-clk control
-> 
-> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
