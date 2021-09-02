@@ -2,79 +2,63 @@ Return-Path: <SRS0=hgkd=NY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3814C432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 09:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 02598C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 09:39:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8939361059
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 09:39:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8939361059
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C6B6461059
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 09:39:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C6B6461059
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=holtmann.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2CHlsxFM4lMuqqIAb7CzFYrgwzeJdJ12WEWVBBJJXbc=; b=yS2annjrws1mgn
-	FWXpEPuLJTNO/U/0xWEuiPzf56lusQR+6dgRVFQYIyRiUeSVqvNnsn64IMOkfMOtf/Aa3W9f+mGFF
-	BBXIcC1/9UpS+u56rjqxHSx+DqII6104xSEb9Qxi091HvGacYBf29+dnDiN0bFII6VHfWo2t5EaCw
-	7/v4a8BscUkkduW4CQuOGaKVTPRwl5XcMxnb7UdSk3xpkHpbBe0OYwr/henlH7eZ5k6ZZBQ8V4CUv
-	9bW9H+4ALOv/Hl4yjglQcv4cS14599D8cVPVl40eTcjAe9buCioxlFHyWgTKY+M9I5AUHFbVG0lUB
-	QfKpTwZ9WnrYUIkpytxw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DEzYxUJ2EmCTokPG/h7ZR0d/DIg2wWowZQh9YhE805E=; b=mzo/Wrt9FEncAH
+	WDcr45KIVMDbYvXCQ7Hs/6D9CQrB8lDjqCKFRmSms4q4r2sEQEkA2WUoIYLr8ubCbeVaMfAgJZK76
+	sbzb/U1ASOxh+H7MEjsvQo+AtuNu0Il7RtTP0VD03g0Jrfl7pno+R0eQRY0QQDyGASJ861tjYt0zW
+	B8EKTM/vzMb56EOAktZgXeBo4IokdES9dGBRw9rFvqWi7PxdTWf3wSO2mhYesAmQcMlJeseVV+bLq
+	6rygd+4c4DAFuoy1QpornF4fAQaME+Hu+jAfINPqQH4z1JJolQ1YwOVuKC+GGD2/k+1cIVNfRscKw
+	nl/nUBx3UjQytU24xtOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLjBO-0098Rr-Fm; Thu, 02 Sep 2021 09:38:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLjBK-0098Qt-0J; Thu, 02 Sep 2021 09:38:53 +0000
-X-UUID: 368ee2fbc5f34de7bbdc9476532ed5b3-20210902
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=7BMKZ9QUqaKkuTBeVs3pjQYEnvqKsI6RkIvddChwTF0=; 
- b=IhIvjz1RArKyF8VAlT7K6H08pIKZ8z7NgBN7UAU8zDESRIr6PjY4Rd6YNilPffz8FLe4zb5cMtPVTmJkQtVwjLC/JJH7oQ3/qHX9OexEHm8VhdZvGSEJzwYOMQ6pj2yeVKlo4ZCagCYJpCg5An1YaT3TxyvyDwuvTAMKg6NELXs=;
-X-UUID: 368ee2fbc5f34de7bbdc9476532ed5b3-20210902
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chuanjia.liu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 273044904; Thu, 02 Sep 2021 02:38:47 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 02:28:45 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 2 Sep 2021 17:28:44 +0800
-Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Sep 2021 17:28:43 +0800
-Message-ID: <93f44e07917e6e194fdf62bee98f7041e9f2d546.camel@mediatek.com>
-Subject: Re: [PATCH v12 3/6] PCI: mediatek: Add new method to get irq number
-From: Chuanjia Liu <chuanjia.liu@mediatek.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
-CC: <robh+dt@kernel.org>, <bhelgaas@google.com>, <matthias.bgg@gmail.com>,
- <lorenzo.pieralisi@arm.com>, <ryder.lee@mediatek.com>,
- <jianjun.wang@mediatek.com>, <yong.wu@mediatek.com>,
- <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Date: Thu, 2 Sep 2021 17:28:44 +0800
-In-Reply-To: <20210831183022.GA120514@bjorn-Precision-5520>
-References: <20210831183022.GA120514@bjorn-Precision-5520>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
+	id 1mLjBm-0098XL-4L; Thu, 02 Sep 2021 09:39:18 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mLjBi-0098Uk-7t
+ for linux-mediatek@lists.infradead.org; Thu, 02 Sep 2021 09:39:16 +0000
+Received: from smtpclient.apple (p5b3d2185.dip0.t-ipconnect.de [91.61.33.133])
+ by mail.holtmann.org (Postfix) with ESMTPSA id 739C0CECDD;
+ Thu,  2 Sep 2021 11:39:01 +0200 (CEST)
+Mime-Version: 1.0 (Mac OS X Mail 14.0 \(3654.120.0.1.13\))
+Subject: Re: [PATCH] Bluetooth: btusb: Add support for IMC Networks Mediatek
+ Chip(MT7921)
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <20210901113015.25622-1-mark-yw.chen@mediatek.com>
+Date: Thu, 2 Sep 2021 11:39:01 +0200
+Cc: Johan Hedberg <johan.hedberg@gmail.com>, chris.lu@mediatek.com,
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org,
+ open list <linux-kernel@vger.kernel.org>,
+ Michael Sun <michaelfsun@google.com>, mcchou@chromium.org
+Message-Id: <0DE4ACF3-F38A-4C8B-A890-51D24063CE01@holtmann.org>
+References: <20210901113015.25622-1-mark-yw.chen@mediatek.com>
+To: =?utf-8?B?Ik1hcmstWVcgQ2hlbiAo6Zmz5o+a5paHKSI=?=
+ <Mark-YW.Chen@mediatek.com>
+X-Mailer: Apple Mail (2.3654.120.0.1.13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210902_023850_100554_BAC06D1D 
-X-CRM114-Status: GOOD (  31.36  )
+X-CRM114-CacheID: sfid-20210902_023914_483698_088BB742 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,55 +70,69 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIxLTA4LTMxIGF0IDEzOjMwIC0wNTAwLCBCam9ybiBIZWxnYWFzIHdyb3RlOg0K
-PiBPbiBNb24sIEF1ZyAyMywgMjAyMSBhdCAxMToyNzo1N0FNICswODAwLCBDaHVhbmppYSBMaXUg
-d3JvdGU6DQo+ID4gVXNlIHBsYXRmb3JtX2dldF9pcnFfYnluYW1lKCkgdG8gZ2V0IHRoZSBpcnEg
-bnVtYmVyDQo+ID4gaWYgdGhlIHByb3BlcnR5IG9mICJpbnRlcnJ1cHQtbmFtZXMiIGlzIGRlZmlu
-ZWQuDQo+IA0KPiBGcm9tIHBhdGNoIDEvNiwgSSBoYXZlIHRoZSBpbXByZXNzaW9uIHRoYXQgdGhp
-cyBwYXRjaCBpcyBwYXJ0IG9mDQo+IGZpeGluZyBhbiBNU0kgaXNzdWUuICBJZiBzbywgdGhpcyBj
-b21taXQgbG9nIHNob3VsZCBtZW50aW9uIHRoYXQgYXMNCj4gd2VsbC4NCg0KSGkgLEJqb3JuDQpZ
-ZXPvvIxJIHdpbGwgY2hhbmdlIHRoZSBjb21taXQgbWVzc2FnZSBhcyBmb2xsb3cNCiANCkluIG9y
-ZGVyIHRvIHBhcnNlIHRoZSBuZXcgZHRzIGZvcm1hdCB0aGF0IGNvbmZvcm1zIHRvIHRoZSBoYXJk
-d2FyZQ0KZGVzaWduIGFuZCBmaXhlcyB0aGUgTVNJIGlzc3Vl77yMYWRkDQpwbGF0Zm9ybV9nZXRf
-aXJxX2J5bmFtZV9vcHRpb25hbCB0byBnZXQgdGhlIGlycSBudW1iZXIuDQogDQo+IA0KPiA+IFNp
-Z25lZC1vZmYtYnk6IENodWFuamlhIExpdSA8Y2h1YW5qaWEubGl1QG1lZGlhdGVrLmNvbT4NCj4g
-PiBBY2tlZC1ieTogUnlkZXIgTGVlIDxyeWRlci5sZWVAbWVkaWF0ZWsuY29tPg0KPiA+IC0tLQ0K
-PiA+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYyB8IDYgKysrKystDQo+
-ID4gIDEgZmlsZSBjaGFuZ2VkLCA1IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkNCj4gPiAN
-Cj4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMN
-Cj4gPiBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5jDQo+ID4gaW5kZXgg
-NDI5NmQ5ZTA0MjQwLi4xOWUzNWFjNjJkNDMgMTAwNjQ0DQo+ID4gLS0tIGEvZHJpdmVycy9wY2kv
-Y29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMNCj4gPiArKysgYi9kcml2ZXJzL3BjaS9jb250cm9s
-bGVyL3BjaWUtbWVkaWF0ZWsuYw0KPiA+IEBAIC02NTQsNyArNjU0LDExIEBAIHN0YXRpYyBpbnQg
-bXRrX3BjaWVfc2V0dXBfaXJxKHN0cnVjdA0KPiA+IG10a19wY2llX3BvcnQgKnBvcnQsDQo+ID4g
-IAkJcmV0dXJuIGVycjsNCj4gPiAgCX0NCj4gPiAgDQo+ID4gLQlwb3J0LT5pcnEgPSBwbGF0Zm9y
-bV9nZXRfaXJxKHBkZXYsIHBvcnQtPnNsb3QpOw0KPiA+ICsJaWYgKG9mX2ZpbmRfcHJvcGVydHko
-ZGV2LT5vZl9ub2RlLCAiaW50ZXJydXB0LW5hbWVzIiwgTlVMTCkpDQo+ID4gKwkJcG9ydC0+aXJx
-ID0gcGxhdGZvcm1fZ2V0X2lycV9ieW5hbWUocGRldiwgInBjaWVfaXJxIik7DQo+ID4gKwllbHNl
-DQo+ID4gKwkJcG9ydC0+aXJxID0gcGxhdGZvcm1fZ2V0X2lycShwZGV2LCBwb3J0LT5zbG90KTsN
-Cj4gDQo+IFRoaXMgd291bGQgYmUgdGhlIG9ubHkgaW5zdGFuY2Ugb2YgdGhpcyBwYXR0ZXJuLCB3
-aGVyZSB3ZSBsb29rIGZvciBhDQo+IHByb3BlcnR5IGFuZCB1c2UgdGhlIHJlc3VsdCB0byBkZWNp
-ZGUgaG93IHRvIGxvb2sgZm9yIHRoZSBJUlEuDQo+IA0KPiBkd19wY2llX2hvc3RfaW5pdCgpIGRv
-ZXMgc29tZXRoaW5nIGxpa2UgdGhpczoNCj4gDQo+ICAgcG9ydC0+aXJxID0gcGxhdGZvcm1fZ2V0
-X2lycV9ieW5hbWVfb3B0aW9uYWwocGRldiwgInBjaWVfaXJxIik7DQo+ICAgaWYgKHBvcnQtPmly
-cSA8IDApIHsNCj4gICAgIHBvcnQtPmlycSA9IHBsYXRmb3JtX2dldF9pcnEocGRldiwgcG9ydC0+
-c2xvdCk7DQo+ICAgICBpZiAocG9ydC0+aXJxIDwgMCkNCj4gICAgICAgcmV0dXJuIHBvcnQtPmly
-cTsNCj4gICB9DQo+IA0KPiBXb3VsZCB0aGF0IHdvcmsgZm9yIHlvdT8gIElmIG5vdCwgdGhlIGNv
-bW1pdCBsb2cgc2hvdWxkIGV4cGxhaW4gd2h5DQo+IHlvdSBjYW4ndCB1c2UgdGhlIHN0YW5kYXJk
-IHBhdHRlcm4uDQo+IA0KPiBJZiB5b3UgZG8gdGhpbmdzIGRpZmZlcmVudGx5IHRoYW4gb3RoZXIg
-ZHJpdmVycywgaXQgbWFrZXMgdGhpbmdzDQo+IGhhcmRlciB0byByZXZpZXcgYW5kIHNsb3dzIHRo
-aW5ncyBkb3duLiAgSWYgeW91ICpoYXZlKiB0byBkbw0KPiBzb21ldGhpbmcNCj4gZGlmZmVyZW50
-bHkgYW5kIGl0IGFkZHMgcmVhbCB2YWx1ZSB0byBiZSBkaWZmZXJlbnQsIHRoYXQncyBmaW5lLiAg
-QnV0DQo+IHdlIHNob3VsZCBhdm9pZCB1bm5lY2Vzc2FyeSBkaWZmZXJlbmNlcy4NCg0KVGhhbmtz
-IGZvciB5b3VyIGFkdmljZe+8jGl0IGlzIHZlcnkgaGVscGZ1bCB0byBtZSwgSSB3aWxsIHVzZSBz
-dGFuZGFyZA0KcGF0dGVybiB0byBhdm9pZCB1bm5lY2Vzc2FyeSBkaWZmZXJlbmNlcw0KDQpUaGFu
-a3MgYWdhaW4hDQpDaHVhbmppYQ0KDQo+IA0KPiA+ICAJaWYgKHBvcnQtPmlycSA8IDApDQo+ID4g
-IAkJcmV0dXJuIHBvcnQtPmlycTsNCj4gPiAgDQo+ID4gLS0gDQo+ID4gMi4xOC4wDQo+ID4gDQpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
-YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Hi Mark,
+
+> Add support for another IMC Networks Mediatek Chip(MT7921)
+> 
+> * /sys/kernel/debug/usb/devices
+> T:  Bus=05 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  2 Spd=480  MxCh= 0
+> D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+> P:  Vendor=13d3 ProdID=3564 Rev= 1.00
+> S:  Manufacturer=MediaTek Inc.
+> S:  Product=Wireless_Device
+> S:  SerialNumber=000000000
+> C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+> A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+> I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+> E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+> I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+> I:  If#= 1 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=   9 Ivl=1ms
+> I:  If#= 1 Alt= 2 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  17 Ivl=1ms
+> I:  If#= 1 Alt= 3 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  25 Ivl=1ms
+> I:  If#= 1 Alt= 4 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  33 Ivl=1ms
+> I:  If#= 1 Alt= 5 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  49 Ivl=1ms
+> I:  If#= 1 Alt= 6 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+> E:  Ad=83(I) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> E:  Ad=03(O) Atr=01(Isoc) MxPS=  63 Ivl=1ms
+> I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> I:  If#= 2 Alt= 1 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=(none)
+> E:  Ad=8a(I) Atr=03(Int.) MxPS=  64 Ivl=125us
+> E:  Ad=0a(O) Atr=03(Int.) MxPS=  64 Ivl=125us
+> 
+> Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
+> ---
+> drivers/bluetooth/btusb.c | 3 +++
+> 1 file changed, 3 insertions(+)
+
+patch has been applied to bluetooth-next tree.
+
+Regards
+
+Marcel
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
