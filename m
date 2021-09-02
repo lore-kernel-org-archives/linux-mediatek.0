@@ -2,75 +2,79 @@ Return-Path: <SRS0=hgkd=NY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 493B2C432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 08:07:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CB438C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 08:15:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C2A5610C8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 08:07:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1C2A5610C8
+	by mail.kernel.org (Postfix) with ESMTPS id 9432660FC0
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 08:15:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9432660FC0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CMcgyvL9ozMqOzf3pVwVTCKaCTaU81MrRzXswCsZetY=; b=tdNktimCaFR7Rf
-	06z+QORpYollRtfagNIsEGqDmisKDhjcKcJ1E78bFX4cMF6VhUGrQsmhD4WyGlviSs2X/jK4GKdj0
-	GwH64qRK6NifgazybSnLtwWbLBMpDl9RL+oh08zZts4TBknYKXH3MSdEDWCpu9asefC9nF3y9XhVC
-	DlGF+7DtE5QLU+h8J3ocnp01uhBKax5oY5KreTFGjvu5kLgh3AJ6mVsJGE5O8vPu8k47y0GLXzL81
-	Cex8EdUPd3DO6seY5ewVvEaSObc1we947PICfhg1YzfIvwscKdGGk5uHbQtlJ5CplUhFhbH4pfH3A
-	m1C3FsWyRMgvFTRZbWWg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nbW/1X3HCToilGrt3AfQiEYSz4XxUJim4+QQQQfgyo4=; b=pPJsH5DzMidRBL
+	MlyEe9YQbm7HsUzkw0Gbvfiw0lCyUn0rqv8pKRSkmekwst25e1bdeenrL4KkR5sFo9O5dd+KS8tax
+	bQdw4ncWkx5D1QU0WeJyBmNTIZjydGSwqFlBb1mT5Z3L+OM8VqMmSwxdcHnL2baKJyPnhkjtyPl1o
+	7LEGmOYOIVhPijndOYkFlWa53g/1fCD2gXj85OKkLVl9qtRVXw29bDlobbQMojOATPthnCi3Jy2d0
+	hXaopRE0H+W6N59b7m/vfX08kZl5sHPxARZ4CqXHwoqDFtqFt4KDynIXPCl7eajcpgn1sBTXvNdvt
+	I9E0ugUdnEhWdmWQToTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLhkv-008uXq-5A; Thu, 02 Sep 2021 08:07:29 +0000
+	id 1mLhsF-008w7B-JY; Thu, 02 Sep 2021 08:15:03 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLhkp-008uWB-CW; Thu, 02 Sep 2021 08:07:27 +0000
-X-UUID: 9cefad81b6584776a587043137f359a2-20210902
+ id 1mLhsB-008w53-4S; Thu, 02 Sep 2021 08:15:03 +0000
+X-UUID: 282459114270442197eff7c478cea410-20210902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=Ed3WbjULA9Q81oMafnd2cJo2bYcKBwcVenO21abYtW0=; 
- b=A+yWiMgwpCLfJE3DkCVHmZEMjbqTAniujCCYX2sXoUFP+5kmcz6EphYxZRoZ3Mx1hp1kkduo0GhYSqi+O2CvPpgaiyOKzolMkm84B0yWG297JSkh6AdEvNaesWygHKbUr4fJZ7u76KFHBVA0WHHLj2FuTBqgS1/kP/f/2HSdh0I=;
-X-UUID: 9cefad81b6584776a587043137f359a2-20210902
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
+ bh=IZV4PK0aQPL002MqIv0l/ts9TyWjc+WVcj4cDbuTpUg=; 
+ b=Br1YIMvmliKZmuziOMosMQpEHGyOdWT23HqokclsXk1RR2M5FqpVWPFLeGr9vZYGePs0z6/8z5D/u36YS6os1lXKUBVAnzAQ80UfDHJgHDdUZWcRojMrwuODO4dHd5OySGNFBdCc43FKDUVrgzDv1vogOY7TJ9T9EabEG5Jsl2g=;
+X-UUID: 282459114270442197eff7c478cea410-20210902
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
+ (envelope-from <fengquan.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 341629638; Thu, 02 Sep 2021 01:07:19 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 00:57:16 -0700
+ with ESMTP id 802284627; Thu, 02 Sep 2021 01:14:52 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Sep 2021 01:04:49 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 15:57:15 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 2 Sep 2021 15:57:15 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-CC: <linux-clk@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <wsd_upstream@mediatek.com>, Miles Chen
- <miles.chen@mediatek.com>
-Subject: [PATCH] clk: rockchip: use module_platform_driver_probe
-Date: Thu, 2 Sep 2021 15:57:13 +0800
-Message-ID: <20210902075713.7563-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Sep 2021 16:04:48 +0800
+Received: from localhost.localdomain (10.17.3.153) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 2 Sep 2021 16:04:47 +0800
+From: Fengquan Chen <Fengquan.Chen@mediatek.com>
+To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
+ <linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-watchdog@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+CC: <fengquan.chen@mediatek.com>, <tinghan.shen@mediatek.com>,
+ <randy.wu@mediatek.com>, <rex-bc.chen@mediatek.com>,
+ <christine.zhu@mediatek.com>, <joe.yang@mediatek.com>,
+ <zhishuang.zhang@mediatek.com>
+Subject: [PATCH] watchdog: mtk: add disable_wdt_extrst support
+Date: Thu, 2 Sep 2021 16:04:41 +0800
+Message-ID: <1630569881-6032-2-git-send-email-Fengquan.Chen@mediatek.com>
+X-Mailer: git-send-email 1.8.1.1.dirty
+In-Reply-To: <1630569881-6032-1-git-send-email-Fengquan.Chen@mediatek.com>
+References: <1630569881-6032-1-git-send-email-Fengquan.Chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210902_010723_473215_B35605C9 
-X-CRM114-Status: GOOD (  11.38  )
+X-CRM114-CacheID: sfid-20210902_011459_228789_665EE57C 
+X-CRM114-Status: GOOD (  12.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,44 +91,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace builtin_platform_driver_probe with module_platform_driver_probe
-because that rk3399 and rk3568 can be built as kernel modules.
+From: "fengquan.chen" <fengquan.chen@mediatek.com>
 
-Cc: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+In some cases, we may need watchdog just to trigger an
+internal soc reset without sending any output signal.
+
+Provide a disable_wdt_extrst parameter for configuration.
+We can disable or enable it just by configuring dts.
+
+igned-off-by: Fengquan Chen <fengquan.chen@mediatek.com>
 ---
- drivers/clk/rockchip/clk-rk3399.c | 2 +-
- drivers/clk/rockchip/clk-rk3568.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/watchdog/mtk_wdt.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3399.c b/drivers/clk/rockchip/clk-rk3399.c
-index 62a4f2543960..a5169156f1d2 100644
---- a/drivers/clk/rockchip/clk-rk3399.c
-+++ b/drivers/clk/rockchip/clk-rk3399.c
-@@ -1653,7 +1653,7 @@ static struct platform_driver clk_rk3399_driver = {
- 		.suppress_bind_attrs = true,
- 	},
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 97ca993..4824c07 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -63,6 +63,7 @@ struct mtk_wdt_dev {
+ 	void __iomem *wdt_base;
+ 	spinlock_t lock; /* protects WDT_SWSYSRST reg */
+ 	struct reset_controller_dev rcdev;
++	bool disable_wdt_extrst;
  };
--builtin_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
-+module_platform_driver_probe(clk_rk3399_driver, clk_rk3399_probe);
  
- MODULE_DESCRIPTION("Rockchip RK3399 Clock Driver");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/clk/rockchip/clk-rk3568.c b/drivers/clk/rockchip/clk-rk3568.c
-index 75ca855e720d..939e7079c334 100644
---- a/drivers/clk/rockchip/clk-rk3568.c
-+++ b/drivers/clk/rockchip/clk-rk3568.c
-@@ -1719,7 +1719,7 @@ static struct platform_driver clk_rk3568_driver = {
- 		.suppress_bind_attrs = true,
- 	},
- };
--builtin_platform_driver_probe(clk_rk3568_driver, clk_rk3568_probe);
-+module_platform_driver_probe(clk_rk3568_driver, clk_rk3568_probe);
+ struct mtk_wdt_data {
+@@ -240,6 +241,8 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
  
- MODULE_DESCRIPTION("Rockchip RK3568 Clock Driver");
- MODULE_LICENSE("GPL");
+ 	reg = ioread32(wdt_base + WDT_MODE);
+ 	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
++	if (mtk_wdt->disable_wdt_extrst)
++		reg &= ~WDT_MODE_EXRST_EN;
+ 	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
+ 	iowrite32(reg, wdt_base + WDT_MODE);
+ 
+@@ -309,6 +312,10 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+ 		if (err)
+ 			return err;
+ 	}
++
++	mtk_wdt->disable_wdt_extrst =
++		of_property_read_bool(dev->of_node, "disable_extrst");
++
+ 	return 0;
+ }
+ 
 -- 
-2.18.0
+1.8.1.1.dirty
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
