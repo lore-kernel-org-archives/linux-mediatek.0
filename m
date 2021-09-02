@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B327CC432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 06:09:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D0A2C4320E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 06:16:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 691A6610C8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 06:09:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 691A6610C8
+	by mail.kernel.org (Postfix) with ESMTPS id F3E3E61041
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 06:16:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F3E3E61041
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,73 +23,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4nN6iG8ZQWEXH5zgIeOB1zDD6inED57yBwsz8DE+W0A=; b=4TW+Oh66h/4DRw
-	qO4JiOfaxbA2O0WXZ6zc9aXlO2586dzGm1pImONJXDxZLVg4a6r/F2WdpxAqhL5BjxExpVyyqd4L1
-	KfGQeElcf9iexcjnGSE1HUZ0RDYZ4KzG1v1/oh4YQA02W5xEB183ScUV+lx/oAysB7MLE2l5+FuKz
-	GLnWZyAAGbbgibSUYd6jmJ3LxrHjflZdInpsxjyPPlEBhLsc+MHhmdM9nLsniWKUPFlPCMciebCTd
-	vPMOgukpWfcXLVvzB4vVo6cjkw6d9l2TXJvkdWKgUev7eF17eFfgAXz0x3v8B8knBus2wVCS/zk7v
-	PwkKN3BtY2bllP7Hwipw==;
+	List-Owner; bh=bvCyQJ/+DQEEeK70N0ZVpRXquSewe+ggzn0MJYN83m0=; b=SnZMdr+auNhkD2
+	jN1Iz0Nmo2lMqefzF00m3BCOYzRz/mrGssrLj+zcAwQ35ybJRf9z+/Feqb/dlohR5lCBfFyS+udoI
+	3GO1+oB77nS+U67RDus8UGR04cJBtY62nJhzOqYiCX7l3biT7ZJxt319CKmKb4o0WxrcnWuk7MedY
+	oT7cQJPiADPhXqMWoQw0G8DBEYxIQ4hJ8hzUHB5y2yEnIjlIMt64SO8xZQ2IqyqJFDUBGnN+g2OPc
+	QEiRnKz4frcqXGDEStUr6RfOFVTa1AWENQ7te6Vhg7DGknootblGag/XNW1wNNdTIFBq4nMrMfa1G
+	7Fjpaup+e6BjdFiW4pCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLfuW-008fXt-Fy; Thu, 02 Sep 2021 06:09:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mLg0t-008gMo-N4; Thu, 02 Sep 2021 06:15:51 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLfuR-008fWh-8K; Thu, 02 Sep 2021 06:09:15 +0000
-X-UUID: 34e9d09cf88249c894ab249886a4819d-20210901
+ id 1mLg0l-008gLe-SP; Thu, 02 Sep 2021 06:15:49 +0000
+X-UUID: 608bbe09399942db98cf62151bc8b310-20210901
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=c4ZQIzSwpCi6CZJ5uvU1gaGkmJslPf8UcOGha7qRdjk=; 
- b=VGnKHGNwKeCST0T1V9R50VCipIq2hC3bncZdsxyp7qvvwE5gerOkWIYfu3MUJeE0gu4q1k9LiT+X8V57XjDCqXVF96Qjr4tOzImZkW5Axwi75H0a7lDen/IJqZZ7bafCyEtSLc0rPev/mEOzpD7TtRQyTmp1Xd21+9ECpiiqyc0=;
-X-UUID: 34e9d09cf88249c894ab249886a4819d-20210901
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
+ bh=Sauw7Ff3VCsBfO7Xjltt8yo8oYzrSGE/ZQoS3qooMFE=; 
+ b=PsPv4aMmiD3NmlRoH3X5BPiXzs1kodvn2ddSQeVRwXUPZ1DJw0n5wuJ6vap/zbCJ3Cm+lRPOsD39Kod/ceX2wmvual2/1Ys9w2MC5e96rXCNi5KgGCIwG0DFyMB1+3mnOJtby3mi5xv3PI+E4PS0aTiuhlZtVzP8akeWuNF6H2g=;
+X-UUID: 608bbe09399942db98cf62151bc8b310-20210901
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chaotian.jing@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1938150504; Wed, 01 Sep 2021 23:09:05 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Sep 2021 23:09:03 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 14:09:02 +0800
+ with ESMTP id 1631624352; Wed, 01 Sep 2021 23:15:40 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Sep 2021 23:07:21 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkcas07.mediatek.inc
+ (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 2 Sep 2021 14:07:19 +0800
 Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Sep 2021 14:09:01 +0800
-Message-ID: <9c3f871b3b58b8456e40c43fe402a7a4acb66660.camel@mediatek.com>
-Subject: Re: [PATCH v5, 13/15] dt-bindings: media: mtk-vcodec: Adds decoder
- dt-bindings for mt8192
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-CC: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, Irui Wang
- <irui.wang@mediatek.com>, linux-media <linux-media@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, linux-arm-kernel
- <linux-arm-kernel@lists.infradead.org>, srv_heupstream
- <srv_heupstream@mediatek.com>, "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, George Sun
- <george.sun@mediatek.com>
-Date: Thu, 2 Sep 2021 14:09:02 +0800
-In-Reply-To: <CAAEAJfBAnvc4cL98aaQgAg1xKSZ3ciCVjbg34raGMOOskDSogg@mail.gmail.com>
-References: <20210811025801.21597-1-yunfei.dong@mediatek.com>
- <20210811025801.21597-14-yunfei.dong@mediatek.com>
- <YRQQBL8AN0925zj9@pendragon.ideasonboard.com>
- <952c219de7595f7f814d3006fbe25b8089a35212.camel@mediatek.com>
- <CAAEAJfB_qZtVpxk8P=26GkZ1j66v+RzzJTqf3UrfMkWNJ1fmFg@mail.gmail.com>
- <fb85e6287a0d269593fa72d745dc2c573bcfe7bc.camel@mediatek.com>
- <CAAEAJfBAnvc4cL98aaQgAg1xKSZ3ciCVjbg34raGMOOskDSogg@mail.gmail.com>
+ Transport; Thu, 2 Sep 2021 14:07:18 +0800
+Message-ID: <6d6dd9a7ae090ad4601938261de120e6dba6ac11.camel@mediatek.com>
+Subject: Re: [PATCH v2 2/2] mmc: mediatek: Add HS400 online tuning support
+From: Chaotian Jing <chaotian.jing@mediatek.com>
+To: Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+CC: Avri Altman <avri.altman@wdc.com>, Wolfram Sang
+ <wsa+renesas@sang-engineering.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Linus Walleij <linus.walleij@linaro.org>, 
+ Yue Hu <huyue2@yulong.com>, Bean Huo <beanhuo@micron.com>, Adrian Hunter
+ <adrian.hunter@intel.com>, <linux-mmc@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Date: Thu, 2 Sep 2021 14:07:19 +0800
+In-Reply-To: <1630547557-1573-3-git-send-email-wenbin.mei@mediatek.com>
+References: <1630547557-1573-1-git-send-email-wenbin.mei@mediatek.com>
+ <1630547557-1573-3-git-send-email-wenbin.mei@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210901_230911_351614_DE730E94 
-X-CRM114-Status: GOOD (  32.82  )
+X-CRM114-CacheID: sfid-20210901_231543_995275_3825DF99 
+X-CRM114-Status: GOOD (  32.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,373 +94,261 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ezequiel,
-
-Thanks for your suggestion.
-On Wed, 2021-09-01 at 08:50 -0300, Ezequiel Garcia wrote:
-> On Wed, 1 Sept 2021 at 00:49, yunfei.dong@mediatek.com
-> <yunfei.dong@mediatek.com> wrote:
-> > 
-> > Hi Ezequiel,
-> > 
-> > Thanks for your feedback.
-> > On Sun, 2021-08-29 at 17:54 -0300, Ezequiel Garcia wrote:
-> > > On Tue, 17 Aug 2021 at 00:52, yunfei.dong@mediatek.com
-> > > <yunfei.dong@mediatek.com> wrote:
-> > > > 
-> > > > Hi Laurent,
-> > > > 
-> > > > Thanks for your detail suggestion.
-> > > > 
-> > > > On Wed, 2021-08-11 at 20:59 +0300, Laurent Pinchart wrote:
-> > > > > Hi Yunfei,
-> > > > > 
-> > > > > Thank you for the patch.
-> > > > > 
-> > > > > On Wed, Aug 11, 2021 at 10:57:59AM +0800, Yunfei Dong wrote:
-> > > > > > Adds decoder dt-bindings for mt8192.
-> > > > > > 
-> > > > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > > > > > ---
-> > > > > > v5: no changes
-> > > > > > 
-> > > > > > This patch depends on "Mediatek MT8192 clock support"[1].
-> > > > > > 
-> > > > > > The definition of decoder clocks are in mt8192-clk.h, need
-> > > > > > to
-> > > > > > include them in case of build fail [1].
-> > > > > > 
-> > > > > > [1]
-> > > > > > 
-> > 
-> > 
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=511175
-> > > > > > ---
-> > > > > >  .../media/mediatek,vcodec-comp-decoder.yaml   | 172
-> > > > > > ++++++++++++++++++
-> > > > > >  1 file changed, 172 insertions(+)
-> > > > > >  create mode 100644
-> > > > > > Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > > > > > comp-
-> > > > > > decoder.yaml
-> > > > > > 
-> > > > > > diff --git
-> > > > > > a/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > > > > > comp-
-> > > > > > decoder.yaml
-> > > > > > b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > > > > > comp-
-> > > > > > decoder.yaml
-> > > > > > new file mode 100644
-> > > > > > index 000000000000..083c89933917
-> > > > > > --- /dev/null
-> > > > > > +++
-> > > > > > b/Documentation/devicetree/bindings/media/mediatek,vcodec-
-> > > > > > comp-
-> > > > > > decoder.yaml
-> > > > > > @@ -0,0 +1,172 @@
-> > > > > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > > > > > +%YAML 1.2
-> > > > > > +---
-> > > > > > +$id:
-> > > > > > 
-> > 
-> > 
-http://devicetree.org/schemas/iommu/mediatek,vcodec-comp-decoder.yaml#
-> > > > > > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > > > > > +
-> > > > > > +title: Mediatek Video Decode Accelerator With Component
-> > > > > > +
-> > > > > > +maintainers:
-> > > > > > +  - Yunfei Dong <yunfei.dong@mediatek.com>
-> > > > > > +
-> > > > > > +description: |+
-> > > > > > +  Mediatek Video Decode is the video decode hardware
-> > > > > > present
-> > > > > > in
-> > > > > > Mediatek
-> > > > > > +  SoCs which supports high resolution decoding
-> > > > > > functionalities.
-> > > > > > Required
-> > > > > > +  master and component node.
-> > > > > 
-> > > > > This should explain how the three IP cores relate to each
-> > > > > other.
-> > > > > 
-> > > > 
-> > > > I will explain it in next patch.
-> > > > > > +
-> > > > > > +properties:
-> > > > > > +  compatible:
-> > > > > > +    oneOf:
-> > > > > > +      - enum:
-> > > > > > +          - mediatek,mt8192-vcodec-dec  # for lat hardware
-> > > > > > +          - mediatek,mtk-vcodec-lat     # for core
-> > > > > > hardware
-> > > > > > +          - mediatek,mtk-vcodec-core
-> > > > > > +
-> > > > > > +  reg:
-> > > > > > +    maxItems: 1
-> > > > > > +
-> > > > > > +  interrupts:
-> > > > > > +    maxItems: 1
-> > > > > > +
-> > > > > > +  clocks:
-> > > > > > +    maxItems: 5
-> > > > > > +
-> > > > > > +  clock-names:
-> > > > > > +    items:
-> > > > > > +      - const: vdec-sel
-> > > > > > +      - const: vdec-soc-vdec
-> > > > > > +      - const: vdec-soc-lat
-> > > > > > +      - const: vdec-vdec
-> > > > > > +      - const: vdec-top
-> > > > > > +
-> > > > > > +  assigned-clocks: true
-> > > > > > +
-> > > > > > +  assigned-clock-parents: true
-> > > > > > +
-> > > > > > +  power-domains:
-> > > > > > +    maxItems: 1
-> > > > > > +
-> > > > > > +  iommus:
-> > > > > > +    minItems: 1
-> > > > > > +    maxItems: 32
-> > > > > > +    description: |
-> > > > > > +      List of the hardware port in respective IOMMU block
-> > > > > > for
-> > > > > > current Socs.
-> > > > > > +      Refer to bindings/iommu/mediatek,iommu.yaml.
-> > > > > > +
-> > > > > > +  dma-ranges:
-> > > > > > +    maxItems: 1
-> > > > > > +    description: |
-> > > > > > +      Describes the physical address space of IOMMU maps
-> > > > > > to
-> > > > > > memory.
-> > > > > > +
-> > > > > > +  mediatek,scp:
-> > > > > > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > > > > > +    maxItems: 1
-> > > > > > +    description:
-> > > > > > +      Describes point to scp.
-> > > > > > +
-> > > > > > +required:
-> > > > > > +      - compatible
-> > > > > > +      - reg
-> > > > > > +      - iommus
-> > > > > > +      - dma-ranges
-> > > > > > +
-> > > > > > +allOf:
-> > > > > > +  - if: #master node
-> > > > > > +      properties:
-> > > > > > +        compatible:
-> > > > > > +          contains:
-> > > > > > +            enum:
-> > > > > > +              - mediatek,mt8192-vcodec-dec  # for lat
-> > > > > > hardware
-> > > > > > +
-> > > > > > +    then:
-> > > > > > +      required:
-> > > > > > +        - mediatek,scp
-> > > > > > +
-> > > > > > +  - if: #component node
-> > > > > > +      properties:
-> > > > > > +        compatible:
-> > > > > > +          contains:
-> > > > > > +            enum:
-> > > > > > +              - mediatek,mtk-vcodec-lat     # for core
-> > > > > > hardware
-> > > > > > +              - mediatek,mtk-vcodec-core
-> > > > > > +
-> > > > > > +    then:
-> > > > > > +      required:
-> > > > > > +        - interrupts
-> > > > > > +        - clocks
-> > > > > > +        - clock-names
-> > > > > > +        - assigned-clocks
-> > > > > > +        - assigned-clock-parents
-> > > > > > +        - power-domains
-> > > > > > +
-> > > > > > +
-> > > > > > +additionalProperties: false
-> > > > > > +
-> > > > > > +examples:
-> > > > > > +  - |
-> > > > > > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > > > > > +    #include <dt-bindings/memory/mt8192-larb-port.h>
-> > > > > > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > > > > > +    #include <dt-bindings/clock/mt8192-clk.h>
-> > > > > > +    #include <dt-bindings/power/mt8192-power.h>
-> > > > > > +
-> > > > > > +    vcodec_dec: vcodec_dec@16000000 {
-> > > > > > +        compatible = "mediatek,mt8192-vcodec-dec";
-> > > > > > +        reg = <0 0x16000000 0 0x1000>;             /*
-> > > > > > VDEC_SYS
-> > > > > > */
-> > > > > > +        mediatek,scp = <&scp>;
-> > > > > > +        iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
-> > > > > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0
-> > > > > > 0xfff00000>;
-> > > > > > +    };
-> > > > > > +
-> > > > > > +    vcodec_lat: vcodec_lat@0x16010000 {
-> > > > > > +        compatible = "mediatek,mtk-vcodec-lat";
-> > > > > > +        reg = <0 0x16010000 0 0x800>;              /*
-> > > > > > VDEC_MISC */
-> > > > > > +        interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > > > > +        iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
-> > > > > > +             <&iommu0
-> > > > > > M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
-> > > > > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0
-> > > > > > 0xfff00000>;
-> > > > > > +        clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> > > > > > +             <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-> > > > > > +             <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-> > > > > > +             <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
-> > > > > > +             <&topckgen CLK_TOP_MAINPLL_D4>;
-> > > > > > +        clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-
-> > > > > > soc-
-> > > > > > lat",
-> > > > > > +              "vdec-vdec", "vdec-top";
-> > > > > > +        assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-> > > > > > +        assigned-clock-parents = <&topckgen
-> > > > > > CLK_TOP_MAINPLL_D4>;
-> > > > > > +        power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
-> > > > > > +    };
-> > > > > > +
-> > > > > > +    vcodec_core: vcodec_core@0x16025000 {
-> > > > > > +        compatible = "mediatek,mtk-vcodec-core";
-> > > > > > +        reg = <0 0x16025000 0 0x1000>;             /*
-> > > > > > VDEC_CORE_MISC */
-> > > > > > +        interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
-> > > > > > +        iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
-> > > > > > +             <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
-> > > > > > +        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0
-> > > > > > 0xfff00000>;
-> > > > > > +        clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-> > > > > > +             <&vdecsys CLK_VDEC_VDEC>,
-> > > > > > +             <&vdecsys CLK_VDEC_LAT>,
-> > > > > > +             <&vdecsys CLK_VDEC_LARB1>,
-> > > > > > +             <&topckgen CLK_TOP_MAINPLL_D4>;
-> > > > > > +        clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-
-> > > > > > soc-
-> > > > > > lat",
-> > > > > > +              "vdec-vdec", "vdec-top";
-> > > > > > +        assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-> > > > > > +        assigned-clock-parents = <&topckgen
-> > > > > > CLK_TOP_MAINPLL_D4>;
-> > > > > > +        power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
-> > > > > > +    };
-> > > > > 
-> > > > > I'm a bit late in the game, reviewing v5 only, but I'm
-> > > > > wondering
-> > > > > if
-> > > > > those IP cores need to be modelled in separate nodes. It
-> > > > > would be
-> > > > > much
-> > > > > easier, from a software point of view, to have a single node,
-> > > > > with
-> > > > > multiple register ranges.
-> > > > > 
-> > > > > Are some of those IP cores used in different SoCs, combined
-> > > > > in
-> > > > > different
-> > > > > ways, that make a modular design better ?
-> > > > > 
-> > > > 
-> > > > Different platform has different hardware, for mt8192 only has
-> > > > three
-> > > > nodes. but mt8195 will has five nodes. and the
-> > > > clk/power/irq/iommu
-> > > > are
-> > > > different. It is not easy to manage all hardware at the same
-> > > > time
-> > > > in
-> > > > one node, need to enable different hardware at the same time,
-> > > > the
-> > > > logic
-> > > > will be very complex.
-> > > > It is much easier to handle different hardware using component,
-> > > > enable
-> > > > different hardware when we need it.
-> > > > 
-> > > > 
-> > > 
-> > > You can still have one device-tree node for each device, which
-> > > means
-> > > you can still manage your resources (clk/power/irq/iommu) easily,
-> > > but
-> > > doing
-> > > this so that it avoids an async framework to pull the parts
-> > > together.
-> > > 
-> > 
-> > It mean that v4l2 async also can't be used?
+On Thu, 2021-09-02 at 09:52 +0800, Wenbin Mei wrote:
+> Due to the influence of the corner IC and vcore voltage, for the
+> stability
+> of HS400 mode, we Add HS400 mode online tuning support for mediatek
+> mmc
+> host.
 > 
-> No, I don't think it's needed. I will take a look at the device tree
-> and see if I can show you an alternative approach that doesn't
-> require an async framework.
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+  Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> ---
+>  drivers/mmc/core/mmc.c    |   8 ++++
+>  drivers/mmc/host/mtk-sd.c | 118
+> +++++++++++++++++++++++++++++++++++++++++++++-
+>  include/linux/mmc/host.h  |   3 ++
+>  3 files changed, 127 insertions(+), 2 deletions(-)
 > 
-Thanks.
-> > > I gave you this feedback several times, and you have been
-> > > objecting
-> > > it
-> > > every time  without even trying to consider a different approach.
-> > > 
-> > 
-> > I'm not objecting your suggestion every time, for our driver is
-> > designed for component api, need to spend a lot of time to change
-> > it in
-> > many platforms. We need to get a final solution for this
-> > architecture,
-> > or it's not easy to change all patches in the feature.
-> > > Thanks,
-> > > Ezequiel
-> > 
-> > 1. Each a node should respect a HW node. Defining a complex node
-> > that
-> > contain multiple register is not better, for they belong to
-> > different
-> > hardware. Different platforms has different hardware count, mt8195
-> > has
-> > five hardwares.
-> > 2. Another reason is from the IOMMU point, the vcodec HW include
-> > core
-> > and lat hardwares, each of them connect to the independent IOMMU
-> > hardware for mt8195, can't write all iommu ports together, or
-> > hardware
-> > can't access dram data, so we must separate them.
-> > 
-> > For these limitation, can't combine all hardware together. I will
-> > write
-> > the hardware diagram in next patch.
-> > 
-> 
-> No need for another patch, you can write that hardware diagram
-> now, so we can help with some design ideas.
-> 
-You can see the block diagram in patch:
-
-https://patchwork.linuxtv.org/project/linux-media/patch/20210901083215.25984-14-yunfei.dong@mediatek.com/
-
-> Thanks!
-> Ezequiel
+> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
+> index 838726b..0aa72ac 100644
+> --- a/drivers/mmc/core/mmc.c
+> +++ b/drivers/mmc/core/mmc.c
+> @@ -1222,6 +1222,14 @@ static int mmc_select_hs400(struct mmc_card
+> *card)
+>  	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
+>  	mmc_set_bus_speed(card);
+>  
+> +	if (host->ops->execute_hs400_tuning) {
+> +		mmc_retune_disable(host);
+> +		err = host->ops->execute_hs400_tuning(host, card);
+> +		mmc_retune_enable(host);
+> +		if (err)
+> +			goto out_err;
+> +	}
+> +
+>  	if (host->ops->hs400_complete)
+>  		host->ops->hs400_complete(host);
+>  
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 4dfc246..484f5c3 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -258,6 +258,7 @@
+>  #define MSDC_PAD_TUNE_RD_SEL	  (0x1 << 13)   /* RW */
+>  #define MSDC_PAD_TUNE_CMD_SEL	  (0x1 << 21)   /* RW */
+>  
+> +#define PAD_DS_TUNE_DLY_SEL       (0x1 << 0)	/* RW */
+>  #define PAD_DS_TUNE_DLY1	  (0x1f << 2)   /* RW */
+>  #define PAD_DS_TUNE_DLY2	  (0x1f << 7)   /* RW */
+>  #define PAD_DS_TUNE_DLY3	  (0x1f << 12)  /* RW */
+> @@ -301,6 +302,11 @@
+>  #define PAD_CMD_RD_RXDLY_SEL    (0x1 << 11)     /* RW */
+>  #define PAD_CMD_TX_DLY          (0x1f << 12)    /* RW */
+>  
+> +/* EMMC50_PAD_DS_TUNE mask */
+> +#define PAD_DS_DLY_SEL		(0x1 << 16)	/* RW */
+> +#define PAD_DS_DLY1		(0x1f << 10)	/* RW */
+> +#define PAD_DS_DLY3		(0x1f << 0)	/* RW */
+> +
+>  #define REQ_CMD_EIO  (0x1 << 0)
+>  #define REQ_CMD_TMO  (0x1 << 1)
+>  #define REQ_DAT_ERR  (0x1 << 2)
+> @@ -448,11 +454,13 @@ struct msdc_host {
+>  	bool vqmmc_enabled;
+>  	u32 latch_ck;
+>  	u32 hs400_ds_delay;
+> +	u32 hs400_ds_dly3;
+>  	u32 hs200_cmd_int_delay; /* cmd internal delay for HS200/SDR104
+> */
+>  	u32 hs400_cmd_int_delay; /* cmd internal delay for HS400 */
+>  	bool hs400_cmd_resp_sel_rising;
+>  				 /* cmd response sample selection for
+> HS400 */
+>  	bool hs400_mode;	/* current eMMC will run at hs400 mode */
+> +	bool hs400_tuning;	/* hs400 mode online tuning */
+>  	bool internal_cd;	/* Use internal card-detect logic */
+>  	bool cqhci;		/* support eMMC hw cmdq */
+>  	struct msdc_save_para save_para; /* used when gate HCLK */
+> @@ -1190,7 +1198,8 @@ static bool msdc_cmd_done(struct msdc_host
+> *host, int events,
+>  	if (!sbc_error && !(events & MSDC_INT_CMDRDY)) {
+>  		if (events & MSDC_INT_CMDTMO ||
+>  		    (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
+> -		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200))
+> +		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200 &&
+> +		     !host->hs400_tuning))
+>  			/*
+>  			 * should not clear fifo/interrupt as the tune
+> data
+>  			 * may have alreay come when cmd19/cmd21 gets
+> response
+> @@ -1287,7 +1296,8 @@ static void msdc_cmd_next(struct msdc_host
+> *host,
+>  	if ((cmd->error &&
+>  	    !(cmd->error == -EILSEQ &&
+>  	      (cmd->opcode == MMC_SEND_TUNING_BLOCK ||
+> -	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200))) ||
+> +	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200 ||
+> +	       host->hs400_tuning))) ||
+>  	    (mrq->sbc && mrq->sbc->error))
+>  		msdc_request_done(host, mrq);
+>  	else if (cmd == mrq->sbc)
+> @@ -2251,6 +2261,106 @@ static int msdc_prepare_hs400_tuning(struct
+> mmc_host *mmc, struct mmc_ios *ios)
+>  	return 0;
+>  }
+>  
+> +static int msdc_send_cxd_data(struct mmc_card *card, struct mmc_host
+> *host)
+> +{
+> +	struct mmc_request mrq = {};
+> +	struct mmc_command cmd = {};
+> +	struct mmc_data data = {};
+> +	unsigned int len = 512;
+> +	struct scatterlist sg;
+> +	u8 *ext_csd;
+> +
+> +	ext_csd = kzalloc(len, GFP_KERNEL);
+> +	if (!ext_csd)
+> +		return -ENOMEM;
+> +
+> +	mrq.cmd = &cmd;
+> +	mrq.data = &data;
+> +
+> +	cmd.opcode = MMC_SEND_EXT_CSD;
+> +	cmd.arg = 0;
+> +	cmd.flags = MMC_RSP_SPI_R1 | MMC_RSP_R1 | MMC_CMD_ADTC;
+> +
+> +	data.blksz = len;
+> +	data.blocks = 1;
+> +	data.flags = MMC_DATA_READ;
+> +	data.sg = &sg;
+> +	data.sg_len = 1;
+> +
+> +	sg_init_one(&sg, ext_csd, len);
+> +	mmc_set_data_timeout(&data, card);
+> +	mmc_wait_for_req(host, &mrq);
+> +
+> +	kfree(ext_csd);
+> +
+> +	if (cmd.error)
+> +		return cmd.error;
+> +	if (data.error)
+> +		return data.error;
+> +
+> +	return 0;
+> +}
+> +
+> +static int msdc_execute_hs400_tuning(struct mmc_host *mmc, struct
+> mmc_card *card)
+> +{
+> +	struct msdc_host *host = mmc_priv(mmc);
+> +	struct msdc_delay_phase dly1_delay;
+> +	u32 val, result_dly1 = 0;
+> +	int i, ret;
+> +
+> +	if (host->top_base) {
+> +		sdr_set_bits(host->top_base + EMMC50_PAD_DS_TUNE,
+> +			     PAD_DS_DLY_SEL);
+> +		if (host->hs400_ds_dly3)
+> +			sdr_set_field(host->top_base +
+> EMMC50_PAD_DS_TUNE,
+> +				      PAD_DS_DLY3, host-
+> >hs400_ds_dly3);
+> +	} else {
+> +		sdr_set_bits(host->base + PAD_DS_TUNE,
+> PAD_DS_TUNE_DLY_SEL);
+> +		if (host->hs400_ds_dly3)
+> +			sdr_set_field(host->base + PAD_DS_TUNE,
+> +				      PAD_DS_TUNE_DLY3, host-
+> >hs400_ds_dly3);
+> +	}
+> +
+> +	host->hs400_tuning = true;
+> +	for (i = 0; i < PAD_DELAY_MAX; i++) {
+> +		if (host->top_base)
+> +			sdr_set_field(host->top_base +
+> EMMC50_PAD_DS_TUNE,
+> +				      PAD_DS_DLY1, i);
+> +		else
+> +			sdr_set_field(host->base + PAD_DS_TUNE,
+> +				      PAD_DS_TUNE_DLY1, i);
+> +		ret = msdc_send_cxd_data(card, mmc);
+> +		if (!ret)
+> +			result_dly1 |= (1 << i);
+> +	}
+> +	host->hs400_tuning = false;
+> +
+> +	dly1_delay = get_best_delay(host, result_dly1);
+> +	if (dly1_delay.maxlen == 0) {
+> +		dev_err(host->dev, "Failed to get DLY1 delay!\n");
+> +		goto fail;
+> +	}
+> +	if (host->top_base)
+> +		sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
+> +			      PAD_DS_DLY1, dly1_delay.final_phase);
+> +	else
+> +		sdr_set_field(host->base + PAD_DS_TUNE,
+> +			      PAD_DS_TUNE_DLY1,
+> dly1_delay.final_phase);
+> +
+> +	if (host->top_base)
+> +		val = readl(host->top_base + EMMC50_PAD_DS_TUNE);
+> +	else
+> +		val = readl(host->base + PAD_DS_TUNE);
+> +
+> +	dev_info(host->dev, "Fianl PAD_DS_TUNE: 0x%x\n", val);
+> +
+> +	return 0;
+> +
+> +fail:
+> +	dev_err(host->dev, "Failed to tuning DS pin delay!\n");
+> +	return -EIO;
+> +}
+> +
+>  static void msdc_hw_reset(struct mmc_host *mmc)
+>  {
+>  	struct msdc_host *host = mmc_priv(mmc);
+> @@ -2377,6 +2487,7 @@ static void msdc_cqe_post_disable(struct
+> mmc_host *mmc)
+>  	.card_busy = msdc_card_busy,
+>  	.execute_tuning = msdc_execute_tuning,
+>  	.prepare_hs400_tuning = msdc_prepare_hs400_tuning,
+> +	.execute_hs400_tuning = msdc_execute_hs400_tuning,
+>  	.hw_reset = msdc_hw_reset,
+>  };
+>  
+> @@ -2396,6 +2507,9 @@ static void msdc_of_property_parse(struct
+> platform_device *pdev,
+>  	of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
+>  			     &host->hs400_ds_delay);
+>  
+> +	of_property_read_u32(pdev->dev.of_node, "mediatek,hs400-ds-
+> dly3",
+> +			     &host->hs400_ds_dly3);
+> +
+>  	of_property_read_u32(pdev->dev.of_node, "mediatek,hs200-cmd-
+> int-delay",
+>  			     &host->hs200_cmd_int_delay);
+>  
+> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
+> index ff1a251..7552d5e 100644
+> --- a/include/linux/mmc/host.h
+> +++ b/include/linux/mmc/host.h
+> @@ -162,6 +162,9 @@ struct mmc_host_ops {
+>  	/* Prepare HS400 target operating frequency depending host
+> driver */
+>  	int	(*prepare_hs400_tuning)(struct mmc_host *host, struct
+> mmc_ios *ios);
+>  
+> +	/* Execute HS400 tuning depending host driver */
+> +	int	(*execute_hs400_tuning)(struct mmc_host *host, struct
+> mmc_card *card);
+> +
+>  	/* Prepare switch to DDR during the HS400 init sequence */
+>  	int	(*hs400_prepare_ddr)(struct mmc_host *host);
+>  
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
