@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D0A2C4320E
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B524C432BE
 	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 06:16:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F3E3E61041
+	by mail.kernel.org (Postfix) with ESMTPS id F41E6610A2
 	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 06:16:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F3E3E61041
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F41E6610A2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,61 +23,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bvCyQJ/+DQEEeK70N0ZVpRXquSewe+ggzn0MJYN83m0=; b=SnZMdr+auNhkD2
-	jN1Iz0Nmo2lMqefzF00m3BCOYzRz/mrGssrLj+zcAwQ35ybJRf9z+/Feqb/dlohR5lCBfFyS+udoI
-	3GO1+oB77nS+U67RDus8UGR04cJBtY62nJhzOqYiCX7l3biT7ZJxt319CKmKb4o0WxrcnWuk7MedY
-	oT7cQJPiADPhXqMWoQw0G8DBEYxIQ4hJ8hzUHB5y2yEnIjlIMt64SO8xZQ2IqyqJFDUBGnN+g2OPc
-	QEiRnKz4frcqXGDEStUr6RfOFVTa1AWENQ7te6Vhg7DGknootblGag/XNW1wNNdTIFBq4nMrMfa1G
-	7Fjpaup+e6BjdFiW4pCQ==;
+	List-Owner; bh=Q4M5Dui+HVI/REyLfC/LH+sZKQENEXQxjvptiTPOkwk=; b=UI9UOs9gUIg8Pc
+	eCqbVzDQqoE96LFtPK0OnUL7wFgt1BwdJ55+tRNSV30SxWsIOqaOW1EioAw+3P0jAGRGkgm5UkHGl
+	51xaYouJVU6DfKIyN9eG568OVrTDtLvG3ZlROgySak8kmiAWGNgPstQf4G/HAd+t657jUgp1qcfaK
+	JP94C05T70gy+ChfIXemMjQQG84HN7Tn3JIQdiDZVfz5WIsS4GJXcx3st2guQ+P4cOY5COzspBmEU
+	XFjqtokyJosT7hcuOkjwjV3Y8/ymGEoEYg1s4+9/fAh6wO7Wqk0GhDXZ61X4EP4W7vP/P0pB5I+KV
+	tQr08/Lm4DrM91w6WyPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLg0t-008gMo-N4; Thu, 02 Sep 2021 06:15:51 +0000
+	id 1mLg0s-008gMg-R1; Thu, 02 Sep 2021 06:15:50 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLg0l-008gLe-SP; Thu, 02 Sep 2021 06:15:49 +0000
-X-UUID: 608bbe09399942db98cf62151bc8b310-20210901
+ id 1mLg0m-008gLy-L6; Thu, 02 Sep 2021 06:15:49 +0000
+X-UUID: babf8903410b45e4942c23ea9c649c5d-20210901
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Sauw7Ff3VCsBfO7Xjltt8yo8oYzrSGE/ZQoS3qooMFE=; 
- b=PsPv4aMmiD3NmlRoH3X5BPiXzs1kodvn2ddSQeVRwXUPZ1DJw0n5wuJ6vap/zbCJ3Cm+lRPOsD39Kod/ceX2wmvual2/1Ys9w2MC5e96rXCNi5KgGCIwG0DFyMB1+3mnOJtby3mi5xv3PI+E4PS0aTiuhlZtVzP8akeWuNF6H2g=;
-X-UUID: 608bbe09399942db98cf62151bc8b310-20210901
+ bh=ohFoOPX6vLU/Myf5x8JimNMqzG0QHLyjg0Qz2uxY5yc=; 
+ b=ccOHzbIYnZHg1QcqbmjUluy9+G2TmSa9V5bB/GBOuVaQclqx07AFZJAPwZB8acs9LqLFU/6WQYgMgL/pfu6BiwjjsFBBVdkQpcvXjm8MIMcrysv918NP6gO/T6qXcT7KhOMtnmpkh6ZbtF/9PFNpkRmbLjtULH/46DU4UgV8s3E=;
+X-UUID: babf8903410b45e4942c23ea9c649c5d-20210901
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chaotian.jing@mediatek.com>)
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1631624352; Wed, 01 Sep 2021 23:15:40 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ with ESMTP id 1555504542; Wed, 01 Sep 2021 23:15:40 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Sep 2021 23:07:21 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkcas07.mediatek.inc
- (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 2 Sep 2021 14:07:19 +0800
+ 15.0.1497.2; Wed, 1 Sep 2021 23:05:38 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 2 Sep 2021 14:05:36 +0800
 Received: from mhfsdcap04 (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 2 Sep 2021 14:07:18 +0800
-Message-ID: <6d6dd9a7ae090ad4601938261de120e6dba6ac11.camel@mediatek.com>
-Subject: Re: [PATCH v2 2/2] mmc: mediatek: Add HS400 online tuning support
-From: Chaotian Jing <chaotian.jing@mediatek.com>
-To: Wenbin Mei <wenbin.mei@mediatek.com>, Ulf Hansson
- <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>
-CC: Avri Altman <avri.altman@wdc.com>, Wolfram Sang
- <wsa+renesas@sang-engineering.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, Linus Walleij <linus.walleij@linaro.org>, 
- Yue Hu <huyue2@yulong.com>, Bean Huo <beanhuo@micron.com>, Adrian Hunter
- <adrian.hunter@intel.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Date: Thu, 2 Sep 2021 14:07:19 +0800
-In-Reply-To: <1630547557-1573-3-git-send-email-wenbin.mei@mediatek.com>
-References: <1630547557-1573-1-git-send-email-wenbin.mei@mediatek.com>
- <1630547557-1573-3-git-send-email-wenbin.mei@mediatek.com>
+ Transport; Thu, 2 Sep 2021 14:05:35 +0800
+Message-ID: <5d53649c1fe2d6d6942e1dd31cdf7a0def46acab.camel@mediatek.com>
+Subject: Re: [PATCH v6, 15/15] media: mtk-vcodec: Use codec type to separate
+ different hardware
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>
+CC: Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
+ Koenig" <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Thu, 2 Sep 2021 14:05:36 +0800
+In-Reply-To: <cf57148f-430b-2023-5f62-b57b12a960b7@collabora.com>
+References: <20210901083215.25984-1-yunfei.dong@mediatek.com>
+ <20210901083215.25984-16-yunfei.dong@mediatek.com>
+ <cf57148f-430b-2023-5f62-b57b12a960b7@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210901_231543_995275_3825DF99 
-X-CRM114-Status: GOOD (  32.17  )
+X-CRM114-CacheID: sfid-20210901_231544_742603_82C9133A 
+X-CRM114-Status: GOOD (  38.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,261 +100,240 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-09-02 at 09:52 +0800, Wenbin Mei wrote:
-> Due to the influence of the corner IC and vcore voltage, for the
-> stability
-> of HS400 mode, we Add HS400 mode online tuning support for mediatek
-> mmc
-> host.
+On Wed, 2021-09-01 at 14:17 +0200, Dafna Hirschfeld wrote:
+Hi Dafna,
+
+Thanks for your suggestion.
+> Hi
 > 
-> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
-  Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> ---
->  drivers/mmc/core/mmc.c    |   8 ++++
->  drivers/mmc/host/mtk-sd.c | 118
-> +++++++++++++++++++++++++++++++++++++++++++++-
->  include/linux/mmc/host.h  |   3 ++
->  3 files changed, 127 insertions(+), 2 deletions(-)
+> On 01.09.21 10:32, Yunfei Dong wrote:
+> > There are just one core thread, in order to separeate different
+> > hardware, using codec type to separeate it in scp driver.
 > 
-> diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-> index 838726b..0aa72ac 100644
-> --- a/drivers/mmc/core/mmc.c
-> +++ b/drivers/mmc/core/mmc.c
-> @@ -1222,6 +1222,14 @@ static int mmc_select_hs400(struct mmc_card
-> *card)
->  	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
->  	mmc_set_bus_speed(card);
->  
-> +	if (host->ops->execute_hs400_tuning) {
-> +		mmc_retune_disable(host);
-> +		err = host->ops->execute_hs400_tuning(host, card);
-> +		mmc_retune_enable(host);
-> +		if (err)
-> +			goto out_err;
-> +	}
-> +
->  	if (host->ops->hs400_complete)
->  		host->ops->hs400_complete(host);
->  
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 4dfc246..484f5c3 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -258,6 +258,7 @@
->  #define MSDC_PAD_TUNE_RD_SEL	  (0x1 << 13)   /* RW */
->  #define MSDC_PAD_TUNE_CMD_SEL	  (0x1 << 21)   /* RW */
->  
-> +#define PAD_DS_TUNE_DLY_SEL       (0x1 << 0)	/* RW */
->  #define PAD_DS_TUNE_DLY1	  (0x1f << 2)   /* RW */
->  #define PAD_DS_TUNE_DLY2	  (0x1f << 7)   /* RW */
->  #define PAD_DS_TUNE_DLY3	  (0x1f << 12)  /* RW */
-> @@ -301,6 +302,11 @@
->  #define PAD_CMD_RD_RXDLY_SEL    (0x1 << 11)     /* RW */
->  #define PAD_CMD_TX_DLY          (0x1f << 12)    /* RW */
->  
-> +/* EMMC50_PAD_DS_TUNE mask */
-> +#define PAD_DS_DLY_SEL		(0x1 << 16)	/* RW */
-> +#define PAD_DS_DLY1		(0x1f << 10)	/* RW */
-> +#define PAD_DS_DLY3		(0x1f << 0)	/* RW */
-> +
->  #define REQ_CMD_EIO  (0x1 << 0)
->  #define REQ_CMD_TMO  (0x1 << 1)
->  #define REQ_DAT_ERR  (0x1 << 2)
-> @@ -448,11 +454,13 @@ struct msdc_host {
->  	bool vqmmc_enabled;
->  	u32 latch_ck;
->  	u32 hs400_ds_delay;
-> +	u32 hs400_ds_dly3;
->  	u32 hs200_cmd_int_delay; /* cmd internal delay for HS200/SDR104
-> */
->  	u32 hs400_cmd_int_delay; /* cmd internal delay for HS400 */
->  	bool hs400_cmd_resp_sel_rising;
->  				 /* cmd response sample selection for
-> HS400 */
->  	bool hs400_mode;	/* current eMMC will run at hs400 mode */
-> +	bool hs400_tuning;	/* hs400 mode online tuning */
->  	bool internal_cd;	/* Use internal card-detect logic */
->  	bool cqhci;		/* support eMMC hw cmdq */
->  	struct msdc_save_para save_para; /* used when gate HCLK */
-> @@ -1190,7 +1198,8 @@ static bool msdc_cmd_done(struct msdc_host
-> *host, int events,
->  	if (!sbc_error && !(events & MSDC_INT_CMDRDY)) {
->  		if (events & MSDC_INT_CMDTMO ||
->  		    (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
-> -		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200))
-> +		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200 &&
-> +		     !host->hs400_tuning))
->  			/*
->  			 * should not clear fifo/interrupt as the tune
-> data
->  			 * may have alreay come when cmd19/cmd21 gets
-> response
-> @@ -1287,7 +1296,8 @@ static void msdc_cmd_next(struct msdc_host
-> *host,
->  	if ((cmd->error &&
->  	    !(cmd->error == -EILSEQ &&
->  	      (cmd->opcode == MMC_SEND_TUNING_BLOCK ||
-> -	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200))) ||
-> +	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200 ||
-> +	       host->hs400_tuning))) ||
->  	    (mrq->sbc && mrq->sbc->error))
->  		msdc_request_done(host, mrq);
->  	else if (cmd == mrq->sbc)
-> @@ -2251,6 +2261,106 @@ static int msdc_prepare_hs400_tuning(struct
-> mmc_host *mmc, struct mmc_ios *ios)
->  	return 0;
->  }
->  
-> +static int msdc_send_cxd_data(struct mmc_card *card, struct mmc_host
-> *host)
-> +{
-> +	struct mmc_request mrq = {};
-> +	struct mmc_command cmd = {};
-> +	struct mmc_data data = {};
-> +	unsigned int len = 512;
-> +	struct scatterlist sg;
-> +	u8 *ext_csd;
-> +
-> +	ext_csd = kzalloc(len, GFP_KERNEL);
-> +	if (!ext_csd)
-> +		return -ENOMEM;
-> +
-> +	mrq.cmd = &cmd;
-> +	mrq.data = &data;
-> +
-> +	cmd.opcode = MMC_SEND_EXT_CSD;
-> +	cmd.arg = 0;
-> +	cmd.flags = MMC_RSP_SPI_R1 | MMC_RSP_R1 | MMC_CMD_ADTC;
-> +
-> +	data.blksz = len;
-> +	data.blocks = 1;
-> +	data.flags = MMC_DATA_READ;
-> +	data.sg = &sg;
-> +	data.sg_len = 1;
-> +
-> +	sg_init_one(&sg, ext_csd, len);
-> +	mmc_set_data_timeout(&data, card);
-> +	mmc_wait_for_req(host, &mrq);
-> +
-> +	kfree(ext_csd);
-> +
-> +	if (cmd.error)
-> +		return cmd.error;
-> +	if (data.error)
-> +		return data.error;
-> +
-> +	return 0;
-> +}
-> +
-> +static int msdc_execute_hs400_tuning(struct mmc_host *mmc, struct
-> mmc_card *card)
-> +{
-> +	struct msdc_host *host = mmc_priv(mmc);
-> +	struct msdc_delay_phase dly1_delay;
-> +	u32 val, result_dly1 = 0;
-> +	int i, ret;
-> +
-> +	if (host->top_base) {
-> +		sdr_set_bits(host->top_base + EMMC50_PAD_DS_TUNE,
-> +			     PAD_DS_DLY_SEL);
-> +		if (host->hs400_ds_dly3)
-> +			sdr_set_field(host->top_base +
-> EMMC50_PAD_DS_TUNE,
-> +				      PAD_DS_DLY3, host-
-> >hs400_ds_dly3);
-> +	} else {
-> +		sdr_set_bits(host->base + PAD_DS_TUNE,
-> PAD_DS_TUNE_DLY_SEL);
-> +		if (host->hs400_ds_dly3)
-> +			sdr_set_field(host->base + PAD_DS_TUNE,
-> +				      PAD_DS_TUNE_DLY3, host-
-> >hs400_ds_dly3);
-> +	}
-> +
-> +	host->hs400_tuning = true;
-> +	for (i = 0; i < PAD_DELAY_MAX; i++) {
-> +		if (host->top_base)
-> +			sdr_set_field(host->top_base +
-> EMMC50_PAD_DS_TUNE,
-> +				      PAD_DS_DLY1, i);
-> +		else
-> +			sdr_set_field(host->base + PAD_DS_TUNE,
-> +				      PAD_DS_TUNE_DLY1, i);
-> +		ret = msdc_send_cxd_data(card, mmc);
-> +		if (!ret)
-> +			result_dly1 |= (1 << i);
-> +	}
-> +	host->hs400_tuning = false;
-> +
-> +	dly1_delay = get_best_delay(host, result_dly1);
-> +	if (dly1_delay.maxlen == 0) {
-> +		dev_err(host->dev, "Failed to get DLY1 delay!\n");
-> +		goto fail;
-> +	}
-> +	if (host->top_base)
-> +		sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
-> +			      PAD_DS_DLY1, dly1_delay.final_phase);
-> +	else
-> +		sdr_set_field(host->base + PAD_DS_TUNE,
-> +			      PAD_DS_TUNE_DLY1,
-> dly1_delay.final_phase);
-> +
-> +	if (host->top_base)
-> +		val = readl(host->top_base + EMMC50_PAD_DS_TUNE);
-> +	else
-> +		val = readl(host->base + PAD_DS_TUNE);
-> +
-> +	dev_info(host->dev, "Fianl PAD_DS_TUNE: 0x%x\n", val);
-> +
-> +	return 0;
-> +
-> +fail:
-> +	dev_err(host->dev, "Failed to tuning DS pin delay!\n");
-> +	return -EIO;
-> +}
-> +
->  static void msdc_hw_reset(struct mmc_host *mmc)
->  {
->  	struct msdc_host *host = mmc_priv(mmc);
-> @@ -2377,6 +2487,7 @@ static void msdc_cqe_post_disable(struct
-> mmc_host *mmc)
->  	.card_busy = msdc_card_busy,
->  	.execute_tuning = msdc_execute_tuning,
->  	.prepare_hs400_tuning = msdc_prepare_hs400_tuning,
-> +	.execute_hs400_tuning = msdc_execute_hs400_tuning,
->  	.hw_reset = msdc_hw_reset,
->  };
->  
-> @@ -2396,6 +2507,9 @@ static void msdc_of_property_parse(struct
-> platform_device *pdev,
->  	of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
->  			     &host->hs400_ds_delay);
->  
-> +	of_property_read_u32(pdev->dev.of_node, "mediatek,hs400-ds-
-> dly3",
-> +			     &host->hs400_ds_dly3);
-> +
->  	of_property_read_u32(pdev->dev.of_node, "mediatek,hs200-cmd-
-> int-delay",
->  			     &host->hs200_cmd_int_delay);
->  
-> diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-> index ff1a251..7552d5e 100644
-> --- a/include/linux/mmc/host.h
-> +++ b/include/linux/mmc/host.h
-> @@ -162,6 +162,9 @@ struct mmc_host_ops {
->  	/* Prepare HS400 target operating frequency depending host
-> driver */
->  	int	(*prepare_hs400_tuning)(struct mmc_host *host, struct
-> mmc_ios *ios);
->  
-> +	/* Execute HS400 tuning depending host driver */
-> +	int	(*execute_hs400_tuning)(struct mmc_host *host, struct
-> mmc_card *card);
-> +
->  	/* Prepare switch to DDR during the HS400 init sequence */
->  	int	(*hs400_prepare_ddr)(struct mmc_host *host);
->  
+> this code seems to relate to the vpu driver not the scp driver.
+> Is there a corresponding code added to the vpu driver that test the
+> codec_type?
+> 
+Vpu is video processor unit, used to connect with micro processor.
+In mt8173: vdec_vpu_if.c -> mtk_vpu.c -> micro processor
+In mt8192/mt8183: vdec_vpu_if.c -> mtk_scp.c ->micro processor
+
+This init/dec start/dec_end interfaces are the same for vpu and scp.
+> > 
+> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > ---
+> >   .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 12 ++++---
+> >   .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 34
+> > ++++++++++++++++---
+> >   .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  4 +++
+> >   3 files changed, 41 insertions(+), 9 deletions(-)
+> > 
+> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > index 9d8079c4f976..c488f0c40190 100644
+> > --- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > +++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > @@ -35,6 +35,8 @@ enum vdec_ipi_msgid {
+> >    * @msg_id	: vdec_ipi_msgid
+> >    * @vpu_inst_addr : VPU decoder instance address. Used if ABI
+> > version < 2.
+> >    * @inst_id     : instance ID. Used if the ABI version >= 2.
+> > + * @codec_type	: Codec fourcc
+> > + * @reserved	: reserved param
+> >    */
+> >   struct vdec_ap_ipi_cmd {
+> >   	uint32_t msg_id;
+> > @@ -42,6 +44,8 @@ struct vdec_ap_ipi_cmd {
+> >   		uint32_t vpu_inst_addr;
+> >   		uint32_t inst_id;
+> >   	};
+> > +	uint32_t codec_type;
+> > +	uint32_t reserved;
+> >   };
+> >   
+> >   /**
+> > @@ -59,12 +63,12 @@ struct vdec_vpu_ipi_ack {
+> >   /**
+> >    * struct vdec_ap_ipi_init - for AP_IPIMSG_DEC_INIT
+> >    * @msg_id	: AP_IPIMSG_DEC_INIT
+> > - * @reserved	: Reserved field
+> > + * @codec_type	: Codec fourcc
+> >    * @ap_inst_addr	: AP video decoder instance address
+> >    */
+> >   struct vdec_ap_ipi_init {
+> >   	uint32_t msg_id;
+> > -	uint32_t reserved;
+> > +	uint32_t codec_type;
+> >   	uint64_t ap_inst_addr;
+> >   };
+> >   
+> > @@ -77,7 +81,7 @@ struct vdec_ap_ipi_init {
+> >    *	H264 decoder [0]:buf_sz [1]:nal_start
+> >    *	VP8 decoder  [0]:width/height
+> >    *	VP9 decoder  [0]:profile, [1][2] width/height
+> > - * @reserved	: Reserved field
+> > + * @codec_type	: Codec fourcc
+> >    */
+> >   struct vdec_ap_ipi_dec_start {
+> >   	uint32_t msg_id;
+> > @@ -86,7 +90,7 @@ struct vdec_ap_ipi_dec_start {
+> >   		uint32_t inst_id;
+> >   	};
+> >   	uint32_t data[3];
+> > -	uint32_t reserved;
+> > +	uint32_t codec_type;
+> >   };
+> >   
+> >   /**
+> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > index bfd8e87dceff..c84fac52fe26 100644
+> > --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > @@ -100,18 +100,29 @@ static void vpu_dec_ipi_handler(void *data,
+> > unsigned int len, void *priv)
+> >   
+> >   static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void
+> > *msg, int len)
+> >   {
+> > -	int err;
+> > +	int err, id, msgid;
+> >   
+> > -	mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
+> > +	msgid = *(uint32_t *)msg;
+> > +	mtk_vcodec_debug(vpu, "id=%X", msgid);
+> >   
+> >   	vpu->failure = 0;
+> >   	vpu->signaled = 0;
+> >   
+> > -	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, vpu-
+> > >id, msg,
+> > +	if (vpu->ctx->dev->vdec_pdata->hw_arch ==
+> > MTK_VDEC_LAT_SINGLE_CORE) {
+> > +		if (msgid == AP_IPIMSG_DEC_CORE ||
+> > +			msgid == AP_IPIMSG_DEC_CORE_END)
+> > +			id = vpu->core_id;
+> > +		else
+> > +			id = vpu->id;
+> > +	} else {
+> > +		id = vpu->id;
+> > +	}
+> > +
+> > +	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id,
+> > msg,
+> >   				     len, 2000);
+> 
+> so
+> >   	if (err) {
+> >   		mtk_vcodec_err(vpu, "send fail vpu_id=%d msg_id=%X
+> > status=%d",
+> > -			       vpu->id, *(uint32_t *)msg, err);
+> > +			       id, msgid, err);
+> >   		return err;
+> >   	}
+> >   
+> > @@ -131,6 +142,7 @@ static int vcodec_send_ap_ipi(struct
+> > vdec_vpu_inst *vpu, unsigned int msg_id)
+> >   		msg.vpu_inst_addr = vpu->inst_addr;
+> >   	else
+> >   		msg.inst_id = vpu->inst_id;
+> > +	msg.codec_type = vpu->codec_type;
+> >   
+> >   	err = vcodec_vpu_send_msg(vpu, &msg, sizeof(msg));
+> >   	mtk_vcodec_debug(vpu, "- id=%X ret=%d", msg_id, err);
+> > @@ -149,14 +161,25 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
+> >   
+> >   	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
+> > vpu->id,
+> >   					 vpu->handler, "vdec", NULL);
+> > -	if (err != 0) {
+> > +	if (err) {
+> 
+> could be nice to send a patch with other such fixes,
+> anyway it is better to send unrelated fixes in a separate patch
+> 
+will fix in next patch.
+> >   		mtk_vcodec_err(vpu, "vpu_ipi_register fail status=%d",
+> > err);
+> >   		return err;
+> >   	}
+> >   
+> > +	if (vpu->ctx->dev->vdec_pdata->hw_arch ==
+> > MTK_VDEC_LAT_SINGLE_CORE) {
+> > +		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev-
+> > >fw_handler,
+> > +					 vpu->core_id, vpu->handler,
+> > +					 "vdec", NULL);
+> > +		if (err) {
+> > +			mtk_vcodec_err(vpu, "vpu_ipi_register core fail
+> > status=%d", err);
+> > +			return err;
+> > +		}
+> > +	}
+> > +
+> >   	memset(&msg, 0, sizeof(msg));
+> >   	msg.msg_id = AP_IPIMSG_DEC_INIT;
+> >   	msg.ap_inst_addr = (unsigned long)vpu;
+> > +	msg.codec_type = vpu->codec_type;
+> >   
+> >   	mtk_vcodec_debug(vpu, "vdec_inst=%p", vpu);
+> >   
+> > @@ -187,6 +210,7 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu,
+> > uint32_t *data, unsigned int len)
+> >   
+> >   	for (i = 0; i < len; i++)
+> >   		msg.data[i] = data[i];
+> > +	msg.codec_type = vpu->codec_type;
+> 
+> I don't see where is the vpu->codec_type initialzied
+> 
+This patch just add interface to support core hardware decode, in next 
+serial patches based on these will used codec type to separate after
+these base patches are stable.
+> Thanks,
+> Dafna
+> 
+Thanks
+Yunfei Dong
+> >   
+> >   	err = vcodec_vpu_send_msg(vpu, (void *)&msg, sizeof(msg));
+> >   	mtk_vcodec_debug(vpu, "- ret=%d", err);
+> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > index ae24b75d1649..802660770a87 100644
+> > --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > @@ -14,6 +14,7 @@ struct mtk_vcodec_ctx;
+> >   /**
+> >    * struct vdec_vpu_inst - VPU instance for video codec
+> >    * @id          : ipi msg id for each decoder
+> > + * @core_id     : core id used to separate different hardware
+> >    * @vsi         : driver structure allocated by VPU side and
+> > shared to AP side
+> >    *                for control and info share
+> >    * @failure     : VPU execution result status, 0: success,
+> > others: fail
+> > @@ -26,9 +27,11 @@ struct mtk_vcodec_ctx;
+> >    * @dev		: platform device of VPU
+> >    * @wq          : wait queue to wait VPU message ack
+> >    * @handler     : ipi handler for each decoder
+> > + * @codec_type     : used codec type to separate different codecs
+> >    */
+> >   struct vdec_vpu_inst {
+> >   	int id;
+> > +	int core_id;
+> >   	void *vsi;
+> >   	int32_t failure;
+> >   	uint32_t inst_addr;
+> > @@ -38,6 +41,7 @@ struct vdec_vpu_inst {
+> >   	struct mtk_vcodec_ctx *ctx;
+> >   	wait_queue_head_t wq;
+> >   	mtk_vcodec_ipi_handler handler;
+> > +	unsigned int codec_type;
+> >   };
+> >   
+> >   /**
+> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
