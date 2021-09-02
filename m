@@ -2,92 +2,102 @@ Return-Path: <SRS0=hgkd=NY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-3.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0A023C4320E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 03:35:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C63EC432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 05:37:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C6D5060243
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 03:35:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C6D5060243
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 067DB60238
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 05:37:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 067DB60238
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K+x3LcGK4yXsL1xrLormQjkO6BuEYU1vyxTFFgGYLOY=; b=iJhYxlZJU5ahkf
-	qHwmeTK9TpXGs02wOWBIQ0snwqpy6q56ou6qTSrqIaRUcmBf2KaorkbSuA4syhSfiMZTwD7SYgUy8
-	lxk11camvkfn3CO4xBEBtFc9g/mV1L5NMAsUIkyPNuwnw0WPQXR54EOG7QGs7kLHyFUfZMxKCqLdI
-	a54RslbWbyUmfJbMTpWoNuvG2MAbOWD9MDe/EUVxos055s1CGhy7JyzJhX+JK2PKsC1RsZ0xJhJOR
-	u0Dp0ZwVoykaNYKipgibBDGWrfTEhrWbnZ9r1xi8iZW8UQA9COmHpNAve16OsMk0XaPEhxfwTZuXD
-	avbFjqGOztnFouPMKZhw==;
+	List-Owner; bh=NoaCXxFiQYYviFTIZTsvFu8qsxEyUOjY7OPRirJvYz8=; b=2qwjUd/0xSW8Ce
+	KJtxViQSc9EvNPFt222XMW9P+O4kNTxChJstCGJg+95GTJIq5mXmXt1iPu6hgFB3l8aSKorZTgVy5
+	8MS26fL/gurDTKt8gMdtRBKKIyayuRbCFwqTXMEkD6R4myOQrv7b3qJLCQEe8yDTwmG6CO3wRtgSu
+	ufoHySYnjxN+uZdOIuJ7Sw4ZMFg7Yd8CqDlAwKZ76trhHAaKH+yhpf8nt5CaucqBqz5YQM+a9wOS6
+	9rD8f78Ncx9ogteJimuogmS6hLDGltG35lemI9uFlLnmiSlfqDr346D3V2KOXmEjLzI48WbSleFTB
+	0OO3sPI+KP13hRuoXNyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLdVa-008Ldz-1W; Thu, 02 Sep 2021 03:35:22 +0000
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+	id 1mLfP2-008ZUk-5z; Thu, 02 Sep 2021 05:36:44 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLdVU-008LcH-3L
- for linux-mediatek@lists.infradead.org; Thu, 02 Sep 2021 03:35:20 +0000
-Received: by mail-lf1-x130.google.com with SMTP id t19so1047664lfe.13
- for <linux-mediatek@lists.infradead.org>; Wed, 01 Sep 2021 20:35:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7gL2ilJvS9thJPKxvfAwKwluP8VS/DzvajJ4jaGSJwc=;
- b=IRTZFjZoogEmBBaugLy0pzf0q5DcgA5uSZSobTaya5fjXwJUzC/oaRDfW2PJI57wq1
- ZBLPCOC8jN6KWXUZfsU6pMwRya5y/VUp/Qzh6O//ItwBo9cnEW868KU+FCAlMdkIbxuT
- gGGKlCW3txze91xJPv10X0akUda4/uNz21Xoc=
+ id 1mLfOo-008ZSW-Sg; Thu, 02 Sep 2021 05:36:32 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id
+ d3-20020a17090ae28300b0019629c96f25so649256pjz.2; 
+ Wed, 01 Sep 2021 22:36:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-disposition:content-transfer-encoding;
+ bh=AUQQWpdPusKziL81HjIpycnRSPGEY5GISL+U0MCMSmU=;
+ b=JHDFf//yUkiuI37prdgWCjD9R3BX0MF++LeB2tn3JpuX+6C1q9/T+ceQvBcnpO3zhF
+ KqFddP7LZ1WIza6iZtjHkx+HOkhqIrB/Jwe5jYzaAPmoO8PCY0dSbiG7rSs76H6LsE2G
+ 2xWEEIiFb0l4UJCSWFol0RNVwEHkXt8RseGH8qmrzmUOot+xJnb2QL7rTfy5sBb8XB83
+ ReDLFc66swXyMR4O4FI20PtOmbYvqeniHo14wvYKBGZWlw7R4FxYc/IXvHakTLtRxjQu
+ u3bn2PgY2puR6lUbYisAHUOxUJg+3sSrmjqmIz8NxNpRS7P0+kgm9SkUEvBdAwYdati8
+ Mb8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7gL2ilJvS9thJPKxvfAwKwluP8VS/DzvajJ4jaGSJwc=;
- b=mDaJTSaXQ39wcC9Y0+g/XOWiKk4tmQR6wt3Ud+/QUrdVtGBA7pX5gozat+hepCHmwI
- sjxZYdVUwAsMsr0PwHD2x0+ml2X9IeKgqYB7Fl4smlcGN5MeVsqCi3ORoRx9dRL44kYq
- HAc5JqtzOunyilTh6RPMPzPs78bLocJ8+6cmAevIq7p90LV648lDvRINpCc/5iqr9kWi
- HbOgVfqwS0laBhLgHu1MJ4epcZDQ9SEJTaSqO7wpq9IH/E1wORdnD+TEXJuOBtDqZPv7
- DdVP2d3SvvEMqwPe5LNjzehdOMPY30u14gFtxtsKGMAO6+lA8tJB40hxgKJVyURXm1ZG
- yQPg==
-X-Gm-Message-State: AOAM530K1Z6mrr8rar1s8qwbwwq6GAxVAy2z4x7jXJ40NRUyzxoKrLVg
- t66AoFDHvcS1raZT/QUTWRCxxizMeA7ZCXogO72YfQ==
-X-Google-Smtp-Source: ABdhPJwp8Zka/IVZHD5rJYhSAvF9EYBibqi1JlXlE5eSLcADyhgkokl5Wumq+rdTbEutCChOFvC3Elh8L79u+yN5V5g=
-X-Received: by 2002:ac2:4116:: with SMTP id b22mr894820lfi.587.1630553713975; 
- Wed, 01 Sep 2021 20:35:13 -0700 (PDT)
-MIME-Version: 1.0
-References: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
- <20210830003603.31864-2-zhiyong.tao@mediatek.com>
- <CAGXv+5HeNj2Ly-T1bWMvnYXv6nP-Q1kv+D9QEd+5u4xfNVibOg@mail.gmail.com>
- <1630551265.2247.11.camel@mhfsdcap03>
-In-Reply-To: <1630551265.2247.11.camel@mhfsdcap03>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 2 Sep 2021 11:35:02 +0800
-Message-ID: <CAGXv+5E2pmS7Og5bRH8Q8yvXPHkJuL6EXKORkq1-Ye+2qNYQpg@mail.gmail.com>
-Subject: Re: [PATCH v11 1/4] dt-bindings: pinctrl: mt8195: add rsel define
-To: "zhiyong.tao" <zhiyong.tao@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
- hui.liu@mediatek.com, 
- Eddie Huang <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
- Biao Huang <biao.huang@mediatek.com>,
- Hongzhou Yang <hongzhou.yang@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
- Devicetree List <devicetree@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-disposition
+ :content-transfer-encoding;
+ bh=AUQQWpdPusKziL81HjIpycnRSPGEY5GISL+U0MCMSmU=;
+ b=dyMhnoNgz9330O2eHPAq+Ga9WFwOrD8TnuP3AgLj16FMCbgY6UnkC4wGOV4+lSfgVd
+ /8CBOMoLyIZFCvlsMhxyKM1eSqbGWUQaHvioOs68fRKct1y9L8OwA3eEhz3X4RoEoTHi
+ BrFAuwLNlIazKJcDQAWgTURqOLBthtAaAuB5l/Z0HtlDemqo6NPMhj4Ls+qtGayyXRhD
+ 4PwNwKyC7Jz0GMU9koY9bD+4m5UQG1iRPfKRiPJurlyauJRzfSh8oL97pmenlShPIzEu
+ sQfniH7T+mIMwtsZG/N18lYKFwsH3RIPo1olzqabXQuT5nHInh/N+cV6t4B22wnz4wVC
+ cQUQ==
+X-Gm-Message-State: AOAM530ykEaMzlXihsyiWwhASKBMfF0zvq4/I4SURHEQ0YDek9eyWv5J
+ gcU4pxjptcgYhlw2aEs+Y7PJx+4GgrWiGw==
+X-Google-Smtp-Source: ABdhPJxJF8LI4M1O2L1/GWavG28s+l1uKa4//ATjWdcEy8H3VklT/CtTQenaVUqvys4DN29witZiTw==
+X-Received: by 2002:a17:902:7806:b0:138:1eee:c010 with SMTP id
+ p6-20020a170902780600b001381eeec010mr1413056pll.20.1630560989012; 
+ Wed, 01 Sep 2021 22:36:29 -0700 (PDT)
+Received: from haswell-ubuntu20.lan ([138.197.212.246])
+ by smtp.gmail.com with ESMTPSA id f9sm739690pjq.36.2021.09.01.22.36.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 01 Sep 2021 22:36:28 -0700 (PDT)
+From: DENG Qingfang <dqfext@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Sasha Levin <sashal@kernel.org>, stable@vger.kernel.org,
+ Sean Wang <sean.wang@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@savoirfairelinux.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:MEDIATEK SWITCH DRIVER" <netdev@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
  <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 4.19.y] net: dsa: mt7530: disable learning on standalone
+ ports
+Date: Thu,  2 Sep 2021 13:36:19 +0800
+Message-Id: <20210902053619.1824464-1-dqfext@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <YSi8Ky3GqBjnxbhC@kroah.com>
+References: <20210824055509.1316124-1-dqfext@gmail.com>
+ <YSUQV3jhfbhbf5Ct@sashalap>
+ <CALW65ja3hYGmEqcWZzifP2-0WsJOnxcUXsey2ZH5vDbD0-nDeQ@mail.gmail.com>
+ <YSi8Ky3GqBjnxbhC@kroah.com>
+MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210901_203516_213544_B05D3B1C 
-X-CRM114-Status: GOOD (  30.09  )
+X-CRM114-CacheID: sfid-20210901_223630_993846_9E515ED0 
+X-CRM114-Status: GOOD (  18.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,81 +114,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 2, 2021 at 10:54 AM zhiyong.tao <zhiyong.tao@mediatek.com> wrote:
->
-> On Wed, 2021-09-01 at 12:35 +0800, Chen-Yu Tsai wrote:
-> > On Mon, Aug 30, 2021 at 8:36 AM Zhiyong Tao <zhiyong.tao@mediatek.com> wrote:
-> > >
-> > > This patch adds rsel define for mt8195.
-> > >
-> > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > > ---
-> > >  include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
-> > >  1 file changed, 9 insertions(+)
-> > >
-> > > diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-bindings/pinctrl/mt65xx.h
-> > > index 7e16e58fe1f7..f5934abcd1bd 100644
-> > > --- a/include/dt-bindings/pinctrl/mt65xx.h
-> > > +++ b/include/dt-bindings/pinctrl/mt65xx.h
-> > > @@ -16,6 +16,15 @@
-> > >  #define MTK_PUPD_SET_R1R0_10 102
-> > >  #define MTK_PUPD_SET_R1R0_11 103
-> > >
-> > > +#define MTK_PULL_SET_RSEL_000  200
-> > > +#define MTK_PULL_SET_RSEL_001  201
-> > > +#define MTK_PULL_SET_RSEL_010  202
-> > > +#define MTK_PULL_SET_RSEL_011  203
-> > > +#define MTK_PULL_SET_RSEL_100  204
-> > > +#define MTK_PULL_SET_RSEL_101  205
-> > > +#define MTK_PULL_SET_RSEL_110  206
-> > > +#define MTK_PULL_SET_RSEL_111  207
-> >
-> > Could you keep the spacing between constants tighter, or have no spacing
-> > at all? Like having MTK_PULL_SET_RSEL_000 defined as 104 and so on. This
-> > would reduce the chance of new macro values colliding with actual resistor
-> > values set in the datasheets, plus a contiguous space would be easy to
-> > rule as macros.
-> >
-> > ChenYu
->
-> Hi chenyu,
-> By the current solution, it won't be mixed used by MTK_PULL_SET_RSEL_XXX
-> and real  resistor value.
-> If user use MTK_PULL_SET_RSEL_XXX, They don't care the define which
-> means how much resistor value.
+On Fri, Aug 27, 2021 at 12:19:23PM +0200, Greg KH wrote:
+> On Tue, Aug 24, 2021 at 11:57:53PM +0800, DENG Qingfang wrote:
+> > Standalone ports should have address learning disabled, according to
+> > the documentation:
+> > https://www.kernel.org/doc/html/v5.14-rc7/networking/dsa/dsa.html#bridge-layer
+> > dsa_switch_ops on 5.10 or earlier does not have .port_bridge_flags
+> > function so it has to be done differently.
+> > 
+> > I've identified an issue related to this.
+> 
+> What issue is that?  Where was it reported?
 
-What I meant was that by keeping the value space tight, we avoid the
-situation where in some new chip, one of the RSEL resistors happens to
-be 200 or 300 ohms. 100 is already taken, so there's nothing we can
-do if new designs actually do have 100 ohm settings.
+See Florian's message here
+https://lore.kernel.org/stable/20210317003549.3964522-2-f.fainelli@gmail.com/
 
-> We think that we don't contiguous macro space for different register.
-> It may increase code complexity to make having MTK_PULL_SET_RSEL_000
-> defined as 104.
+> 
+> > > 2. A partial backport of this patch?
+> > 
+> > The other part does not actually fix anything.
+> 
+> Then why is it not ok to just take the whole thing?
+> 
+> When backporting not-identical-patches, something almost always goes
+> wrong, so we prefer to take the original commit when ever possible.
 
-Can you elaborate? It is a simple range check and offset handling. Are
-you concerned that a new design would have R2R1R0 and you would like
-the macros to be contiguous?
+Okay. MDB and tag ops can be backported as is, and broadcast/multicast
+flooding can be implemented in .port_egress_floods. 
 
-BTW I don't quite get why decimal base values (100, 200, etc.) were
-chosen. One would think that binary bases are easier to handle in code.
-
-
-ChenYu
-
-> Thanks.
->
-> >
-> > >  #define MTK_DRIVE_2mA  2
-> > >  #define MTK_DRIVE_4mA  4
-> > >  #define MTK_DRIVE_6mA  6
-> > > --
-> > > 2.18.0
-> > > _______________________________________________
-> > > Linux-mediatek mailing list
-> > > Linux-mediatek@lists.infradead.org
-> > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
->
+> 
+> thanks,
+> 
+> greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
