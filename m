@@ -2,20 +2,19 @@ Return-Path: <SRS0=hgkd=NY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=unavailable
-	autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F1EB3C432BE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 07:21:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC157C432BE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 08:02:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A800860FDC
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 07:21:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A800860FDC
+	by mail.kernel.org (Postfix) with ESMTPS id 9FF7A60F11
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Sep 2021 08:02:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9FF7A60F11
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,59 +23,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wxzvEUuTjp3ouuKNEPOgF3DzTfPicZUSVh7O/lj0xEs=; b=dZm7GrQXXTKtcH
-	tqcrxGhWqmbdbLCvQDGh2rEbWv71qEMdoswBqnV2drURkXXYeGsU/gDpvc1ZpALAh0BixN47lSzIT
-	c88223ov7I+UIfpZ3avtJ7yiuxxyyMShyqn928UuUkmym0DKz/bsZcz6bzjUkIM8uD2DvrtFYWsQG
-	xM/Ug0NG11P9hXGj4Q9YEsDsnkxNJyZvdPZH3zb1nKDkbkPtp3s56Lm/qDmFA4JRV+VHBBtOEl0yt
-	64DtQC7xAcKzxRiPmuWRPqMoXsSaStfOqboVVxhamqGbaKEmJuksJ2vPrb+6Ji9s16wrQBOazHyVi
-	wNUXJjR3MPTIfGZDD9tw==;
+	List-Owner; bh=TPOVvwzKxT9JKpFa+tR8rskpX0sSYJCZlOMXvyukpK8=; b=PxAOzbWOCCpSdy
+	pZYLShgC2VSGNnYw9/yWTlKF2xmSE9SlxKyudji7SwOB2cSXtHg3Hj7JnwMnYqebt+a7g7/7nclqE
+	VUWKLCdg2xtxKbYZ7EdKLlAjGdHJNRoCZcGS/KdSgJQdfZ4rID1EMurePqdseBVqWZsCjbJh04uKX
+	VNvvjxyvEUSB4eGGOCCEuA6G46yMpd+Dr6gGFp4ghIpFiDMfQtBYT4DlVoNrYKXOtXoqwXA4JeJxo
+	VwMQexoJAvoHyM+fB4T/mk0HItotLS8gCAYVXWUVSE9qP+RU04u8LUK4EfBP/x8HVjJls8tSC69HG
+	O4gadhm6rwItAv9gX2aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mLh1q-008pst-F9; Thu, 02 Sep 2021 07:20:54 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mLhgA-008tYO-TD; Thu, 02 Sep 2021 08:02:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mLh1l-008psD-LO
- for linux-mediatek@lists.infradead.org; Thu, 02 Sep 2021 07:20:52 +0000
-X-UUID: a43ce86f32854565a394f857101da61d-20210902
+ id 1mLhfv-008tWt-7u; Thu, 02 Sep 2021 08:02:23 +0000
+X-UUID: 9759751f01f347f5b18e59e8949df3a5-20210902
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=tzlA5mP+bVp+Sq9L1xKR3NllCNcLgq+AqnAvkt6gFNA=; 
- b=J8VQzWCcqKpU/ifnfbc0kTuW30uAOvSp/IN9J/wm0xHqCJyFmdZlBwTfG72dg7Dy1pzxGTGG2M2RHUutOaqNsuJFzX97fp/RWcyNvlbEWrt9RnXswErh0XhIIUSOU961XQo1JHEhQL03u+1nINN7dxyEbIuqzk6M5EZZlqlk/sw=;
-X-UUID: a43ce86f32854565a394f857101da61d-20210902
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <peter.wang@mediatek.com>)
+ bh=FzniOpQbnIGE40MoWWHEwgjAIgEORuVsL5yV3k13HYo=; 
+ b=qBxlpEI4/z4D1aWkemcxLqMVWF/1IiCgHqo8tYtsWnff7B7h2R9DSjX7ST2+3O65nS3rpp8RhYd7OMPnBjMnr2jZ9zsNuVuXrMKtt5rb//OWZx3sYwwZYTWW4PtFl8QOnQQ6PtCyovfrGE1oHlsLpXIVCKd1VP8CzY5kkMZLGKE=;
+X-UUID: 9759751f01f347f5b18e59e8949df3a5-20210902
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1768083111; Thu, 02 Sep 2021 00:20:47 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ with ESMTP id 1828788302; Thu, 02 Sep 2021 01:02:15 -0700
+Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 00:17:09 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 15:17:08 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Thu, 2 Sep 2021 01:02:13 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
+ mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Sep 2021 16:02:12 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 2 Sep 2021 15:17:07 +0800
-From: <peter.wang@mediatek.com>
-To: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
- <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
- <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>
-CC: <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
- <alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
- <chaotian.jing@mediatek.com>, <jiajie.hao@mediatek.com>,
- <powen.kao@mediatek.com>, <jonathan.hsu@mediatek.com>,
- <qilin.tan@mediatek.com>, <lin.gui@mediatek.com>
-Subject: [PATCH v4] scsi: ufs: ufs-mediatek: Change dbg select by check IP
- version
-Date: Thu, 2 Sep 2021 15:17:06 +0800
-Message-ID: <1630567026-21661-1-git-send-email-peter.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
+ Frontend Transport; Thu, 2 Sep 2021 16:02:12 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Abel Vesa <abel.vesa@nxp.com>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Shawn Guo
+ <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, "Pengutronix
+ Kernel Team" <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ "NXP Linux Team" <linux-imx@nxp.com>
+CC: <linux-clk@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <wsd_upstream@mediatek.com>, Miles Chen <miles.chen@mediatek.com>
+Subject: [PATCH] clk: imx: use module_platform_driver
+Date: Thu, 2 Sep 2021 16:02:11 +0800
+Message-ID: <20210902080211.7922-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210902_002049_754956_BC071791 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20210902_010219_337011_9B129E63 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,115 +89,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Wang <peter.wang@mediatek.com>
+Replace builtin_platform_driver_probe with module_platform_driver_probe
+because that CONFIG_CLK_IMX8QXP can be set to =m (kernel module).
 
-Mediatek UFS dbg select setting is changed in new IP version.
-This patch check the IP version before set dbg select.
-Only set once after host reset.
-
-Signed-off-by: Peter Wang <peter.wang@mediatek.com>
+Cc: Stephen Boyd <sboyd@kernel.org>
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/scsi/ufs/ufs-mediatek.c |   28 ++++++++++++++++++++++++++--
- drivers/scsi/ufs/ufs-mediatek.h |    7 +++++++
- 2 files changed, 33 insertions(+), 2 deletions(-)
+ drivers/clk/imx/clk-imx8qxp-lpcg.c | 2 +-
+ drivers/clk/imx/clk-imx8qxp.c      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-mediatek.c
-index d2c2516..51c2c52 100644
---- a/drivers/scsi/ufs/ufs-mediatek.c
-+++ b/drivers/scsi/ufs/ufs-mediatek.c
-@@ -138,6 +138,8 @@ static void ufs_mtk_host_reset(struct ufs_hba *hba)
- 	reset_control_deassert(host->unipro_reset);
- 	reset_control_deassert(host->crypto_reset);
- 	reset_control_deassert(host->hci_reset);
-+
-+	host->host_reset = true;
- }
- 
- static void ufs_mtk_init_reset_control(struct ufs_hba *hba,
-@@ -296,6 +298,26 @@ static void ufs_mtk_setup_ref_clk_wait_us(struct ufs_hba *hba,
- 	host->ref_clk_ungating_wait_us = ungating_us;
- }
- 
-+static void ufs_mtk_dbg_sel(struct ufs_hba *hba)
-+{
-+	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-+
-+	if (!host->host_reset)
-+		return;
-+
-+	if (((host->ip_ver >> 16) & 0xFF) >= 0x36) {
-+		ufshcd_writel(hba, 0x820820, REG_UFS_DEBUG_SEL);
-+		ufshcd_writel(hba, 0x0, REG_UFS_DEBUG_SEL_B0);
-+		ufshcd_writel(hba, 0x55555555, REG_UFS_DEBUG_SEL_B1);
-+		ufshcd_writel(hba, 0xaaaaaaaa, REG_UFS_DEBUG_SEL_B2);
-+		ufshcd_writel(hba, 0xffffffff, REG_UFS_DEBUG_SEL_B3);
-+	} else {
-+		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-+	}
-+
-+	host->host_reset = false;
-+}
-+
- static int ufs_mtk_wait_link_state(struct ufs_hba *hba, u32 state,
- 				   unsigned long max_wait_ms)
- {
-@@ -305,7 +327,7 @@ static int ufs_mtk_wait_link_state(struct ufs_hba *hba, u32 state,
- 	timeout = ktime_add_ms(ktime_get(), max_wait_ms);
- 	do {
- 		time_checked = ktime_get();
--		ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-+		ufs_mtk_dbg_sel(hba);
- 		val = ufshcd_readl(hba, REG_UFS_PROBE);
- 		val = val >> 28;
- 
-@@ -689,6 +711,8 @@ static int ufs_mtk_init(struct ufs_hba *hba)
- 	ufs_mtk_mphy_power_on(hba, true);
- 	ufs_mtk_setup_clocks(hba, true, POST_CHANGE);
- 
-+	host->ip_ver = ufshcd_readl(hba, REG_UFS_MTK_IP_VER);
-+
- 	goto out;
- 
- out_variant_clear:
-@@ -1001,7 +1025,7 @@ static void ufs_mtk_dbg_register_dump(struct ufs_hba *hba)
- 			 "MPHY Ctrl ");
- 
- 	/* Direct debugging information to REG_MTK_PROBE */
--	ufshcd_writel(hba, 0x20, REG_UFS_DEBUG_SEL);
-+	ufs_mtk_dbg_sel(hba);
- 	ufshcd_dump_regs(hba, REG_UFS_PROBE, 0x4, "Debug Probe ");
- }
- 
-diff --git a/drivers/scsi/ufs/ufs-mediatek.h b/drivers/scsi/ufs/ufs-mediatek.h
-index 3f0d3bb..f482cbe 100644
---- a/drivers/scsi/ufs/ufs-mediatek.h
-+++ b/drivers/scsi/ufs/ufs-mediatek.h
-@@ -15,9 +15,14 @@
- #define REG_UFS_REFCLK_CTRL         0x144
- #define REG_UFS_EXTREG              0x2100
- #define REG_UFS_MPHYCTRL            0x2200
-+#define REG_UFS_MTK_IP_VER          0x2240
- #define REG_UFS_REJECT_MON          0x22AC
- #define REG_UFS_DEBUG_SEL           0x22C0
- #define REG_UFS_PROBE               0x22C8
-+#define REG_UFS_DEBUG_SEL_B0        0x22D0
-+#define REG_UFS_DEBUG_SEL_B1        0x22D4
-+#define REG_UFS_DEBUG_SEL_B2        0x22D8
-+#define REG_UFS_DEBUG_SEL_B3        0x22DC
- 
- /*
-  * Ref-clk control
-@@ -113,6 +118,8 @@ struct ufs_mtk_host {
- 	bool ref_clk_enabled;
- 	u16 ref_clk_ungating_wait_us;
- 	u16 ref_clk_gating_wait_us;
-+	u32 ip_ver;
-+	bool host_reset;
+diff --git a/drivers/clk/imx/clk-imx8qxp-lpcg.c b/drivers/clk/imx/clk-imx8qxp-lpcg.c
+index d3e905cf867d..b23758083ce5 100644
+--- a/drivers/clk/imx/clk-imx8qxp-lpcg.c
++++ b/drivers/clk/imx/clk-imx8qxp-lpcg.c
+@@ -370,7 +370,7 @@ static struct platform_driver imx8qxp_lpcg_clk_driver = {
+ 	.probe = imx8qxp_lpcg_clk_probe,
  };
  
- #endif /* !_UFS_MEDIATEK_H */
+-builtin_platform_driver(imx8qxp_lpcg_clk_driver);
++module_platform_driver(imx8qxp_lpcg_clk_driver);
+ 
+ MODULE_AUTHOR("Aisheng Dong <aisheng.dong@nxp.com>");
+ MODULE_DESCRIPTION("NXP i.MX8QXP LPCG clock driver");
+diff --git a/drivers/clk/imx/clk-imx8qxp.c b/drivers/clk/imx/clk-imx8qxp.c
+index c53a688d8ccc..40a2efb1329b 100644
+--- a/drivers/clk/imx/clk-imx8qxp.c
++++ b/drivers/clk/imx/clk-imx8qxp.c
+@@ -308,7 +308,7 @@ static struct platform_driver imx8qxp_clk_driver = {
+ 	},
+ 	.probe = imx8qxp_clk_probe,
+ };
+-builtin_platform_driver(imx8qxp_clk_driver);
++module_platform_driver(imx8qxp_clk_driver);
+ 
+ MODULE_AUTHOR("Aisheng Dong <aisheng.dong@nxp.com>");
+ MODULE_DESCRIPTION("NXP i.MX8QXP clock driver");
 -- 
-1.7.9.5
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
