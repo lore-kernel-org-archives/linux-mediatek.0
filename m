@@ -2,19 +2,19 @@ Return-Path: <SRS0=h4nU=NZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CE3BBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 07:01:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0E7E1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 07:20:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 83F34610A2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 07:01:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 83F34610A2
+	by mail.kernel.org (Postfix) with ESMTPS id AD0D3610A2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 07:20:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AD0D3610A2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,59 +23,75 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9HB3VtpgSFfaOiCqBDSspjU8EZuJ9ZEVat6wYhTQUGE=; b=hFqpuroxPl3j2A
-	aycsYZ7pfj91EWtBkAGBtlowNJlFPzTyizpr9b4noyPGI+shnObvwmWuscQyv0BeqJpo6FMQnudx+
-	hWWli2Xotq5Rxk7ZMKcQ3g12JMnmZOlP3Wdf9BScJwNnJYtjIDBNuXl9qDrrDJWNlmRPIWo9FsFTo
-	VhDiUFlYwjGs3XQ0p7YXnsdKQld+/iXSlSwcKYvZb2EesThQ4VON+AdMCndiiNBlUTeJkHfvD4gWb
-	HO39yvc4Klpzd+OfRjjzJ0SXL+VxRRdHa23PHUP57HTCo1cucrrZPSpUi2U+qOaTdXPy8Muyq7Re9
-	v3fp2j2OtXYWg842L5bA==;
+	List-Owner; bh=UGvERppevNn6XPWYVMamT2937npCsBJvVK6gH0f034U=; b=FId104DjmsSp4A
+	TI5gnl1quX2rGrHJSkJdIHHJsCNT70LJBHQCqzY56UBGKc2eSIlvI1DjB/jNJZjajtE8rdVRtIJ7z
+	vMYKJg4Ml03yxISXCEMWPiCm+CRo0WWQeAvScc7X54iRxEiaz4pJMs9tYRxqZ5IUU15X3TRQeJt7p
+	Iw13pMocu/X7PhBQlotfy07twyCpmX5jZqb16yTTR/dE9aVLVYlnQAMrFq/KT5X1Og6jy12Fb8Mnn
+	sYXOVPH45WmGqaE0ejpdTpFZ/zSAVTuOwhB3fYRnjNE4dmlJb0zbXxF+B9E3SeUItpfE6iyqIhbvc
+	dlQZVKKwCsPatfx8uayQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mM3Ck-00B7ge-GB; Fri, 03 Sep 2021 07:01:38 +0000
+	id 1mM3Uf-00BA09-II; Fri, 03 Sep 2021 07:20:09 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mM3Ch-00B7ft-H8; Fri, 03 Sep 2021 07:01:37 +0000
-X-UUID: 027ef5d86c3a4ee0b003d9b520f600ce-20210903
+ id 1mM3Uc-00B9yg-EH; Fri, 03 Sep 2021 07:20:08 +0000
+X-UUID: 0fd6939327e645feb66b27e920c46168-20210903
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=OQWwOb7sQeXF3nnpG4IGI+gbtaCyzmN8HQTZATIqijo=; 
- b=ZpHt3LM5Ix+9r70jkr80b3KSZonyuvp1TTlrUSolxaJ7nTluJXdZ1HTF/NXvY2z4n1KVSNo7GocgByozhIH0jPAV+sSA8wCjPIgrzsh+d7ZVnloe+KmJM3y+r0+rhFCRkgCVGlBxrtm5bC4AZ08TNOJUeQGiUIa9nZkYgMDPN/k=;
-X-UUID: 027ef5d86c3a4ee0b003d9b520f600ce-20210903
+ bh=jkQ8GlgO4m2Y/GUZwg2HJt2/bsPC1xOfAKtALF6ap1s=; 
+ b=RKtMgiOufNtxSzepG+Hjf3nLO70d5ONn9tiG9NI5sNw4cV8xZGXZdsAeOdeSHrw0nez7/70ltbc6von/zUFDAqblDPFJW29WcH5e1aBMFL8wzyCIHl28chLN7LGf9KWPR9/fSvTAJbHo63UKTzz/NeyLpuHLR2pi3vyKMauz2vY=;
+X-UUID: 0fd6939327e645feb66b27e920c46168-20210903
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <fengquan.chen@mediatek.com>)
+ (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1989615561; Fri, 03 Sep 2021 00:01:31 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Sep 2021 23:51:29 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by mtkmbs05n1.mediatek.inc
- (172.21.101.15) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 3 Sep 2021 14:51:28 +0800
-Received: from mhfsdcap04 (10.17.3.154) by MTKCAS32.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 3 Sep 2021 14:51:26 +0800
-Message-ID: <242e9e2ed9c2c071c4b05d11f276642e996e03b6.camel@mediatek.com>
-Subject: Re: [PATCH] watchdog: mtk: add disable_wdt_extrst support
-From: Fengquan Chen <fengquan.chen@mediatek.com>
-To: Guenter Roeck <linux@roeck-us.net>, Wim Van Sebroeck
- <wim@linux-watchdog.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-watchdog@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-CC: <tinghan.shen@mediatek.com>, <randy.wu@mediatek.com>,
- <rex-bc.chen@mediatek.com>, <christine.zhu@mediatek.com>,
- <joe.yang@mediatek.com>, <zhishuang.zhang@mediatek.com>
-Date: Fri, 3 Sep 2021 14:51:28 +0800
-In-Reply-To: <5fe9c774-c619-604e-1f74-12ff6bfe826f@roeck-us.net>
-References: <1630569881-6032-1-git-send-email-Fengquan.Chen@mediatek.com>
- <1630569881-6032-2-git-send-email-Fengquan.Chen@mediatek.com>
- <5fe9c774-c619-604e-1f74-12ff6bfe826f@roeck-us.net>
+ with ESMTP id 1915431275; Fri, 03 Sep 2021 00:20:01 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 3 Sep 2021 00:15:31 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 3 Sep 2021 15:15:30 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 3 Sep 2021 15:15:29 +0800
+Message-ID: <ca5acabdae7b0a9c929c662c35dee10a88646f83.camel@mediatek.com>
+Subject: Re: [PATCH v7 3/5] dt-binding: mt8183: Add Mediatek MDP3 dt-bindings
+From: moudy ho <moudy.ho@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>
+CC: Rob Herring <robh@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>,
+ Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Geert
+ Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Linux Media Mailing
+ List <linux-media@vger.kernel.org>, Devicetree List
+ <devicetree@vger.kernel.org>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, Tomasz Figa <tfiga@chromium.org>, "Nicolas
+ Boichat" <drinkcat@chromium.org>, Alexandre Courbot <acourbot@chromium.org>,
+ Pi-Hsun Shih <pihsun@chromium.org>, <menghui.lin@mediatek.com>, Sj Huang
+ <sj.huang@mediatek.com>, <ben.lok@mediatek.com>, Randy Wu
+ <randy.wu@mediatek.com>, srv_heupstream <srv_heupstream@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@google.com>
+Date: Fri, 3 Sep 2021 15:15:29 +0800
+In-Reply-To: <CAGXv+5GtDNwKpXEnont+UshVrSugQnTPyNF7VF3dVzTX9ruNdw@mail.gmail.com>
+References: <20210824100027.25989-1-moudy.ho@mediatek.com>
+ <20210824100027.25989-4-moudy.ho@mediatek.com>
+ <YSU0TrfFCsaI1TqV@robh.at.kernel.org>
+ <0092244acd520acac81208b8863b15fba58f4193.camel@mediatek.com>
+ <CAL_JsqJ_cProt35pdd2MjoHsSKtd+0n1Dwq6ooV+CJH5sfOFWg@mail.gmail.com>
+ <39cec599a65eeb142cb7e729f954098a25652b2b.camel@mediatek.com>
+ <CAGXv+5GtDNwKpXEnont+UshVrSugQnTPyNF7VF3dVzTX9ruNdw@mail.gmail.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210903_000135_621209_E1698404 
-X-CRM114-Status: GOOD (  23.98  )
+X-CRM114-CacheID: sfid-20210903_002006_517603_431A9456 
+X-CRM114-Status: GOOD (  44.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,82 +108,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-09-02 at 06:43 -0700, Guenter Roeck wrote:
-> On 9/2/21 1:04 AM, Fengquan Chen wrote:
-> > From: "fengquan.chen" <fengquan.chen@mediatek.com>
-> 
-> There should not be such From: line.
-
-Thanks, i have removed it and uploaded a new version:
-https://patchwork.kernel.org/project/linux-mediatek/list/?series=541567
-
-> 
+On Wed, 2021-09-01 at 18:16 +0800, Chen-Yu Tsai wrote:
+> On Wed, Sep 1, 2021 at 5:04 PM moudy ho <moudy.ho@mediatek.com>
+> wrote:
 > > 
-> > In some cases, we may need watchdog just to trigger an
-> > internal soc reset without sending any output signal.
+> > On Mon, 2021-08-30 at 10:05 -0500, Rob Herring wrote:
+> > > On Mon, Aug 30, 2021 at 2:58 AM moudy ho <moudy.ho@mediatek.com>
+> > > wrote:
+> > > > 
+> > > > On Tue, 2021-08-24 at 13:02 -0500, Rob Herring wrote:
+> > > > > On Tue, Aug 24, 2021 at 06:00:25PM +0800, Moudy Ho wrote:
+> > > > > > This patch adds DT binding document for Media Data Path 3
+> > > > > > (MDP3)
+> > > > > > a unit in multimedia system used for scaling and color
+> > > > > > format
+> > > > > > convert.
+> > > > > > 
+> > > > > > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > > > > > ---
+> > > > > >  .../bindings/media/mediatek,mdp3-ccorr.yaml   |  57 +++++
+> > > > > >  .../bindings/media/mediatek,mdp3-rdma.yaml    | 207
+> > > > > > ++++++++++++++++++
+> > > > > >  .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++++++
+> > > > > >  .../bindings/media/mediatek,mdp3-wdma.yaml    |  71 ++++++
+> > > > > >  .../bindings/media/mediatek,mdp3-wrot.yaml    |  71 ++++++
+> > > > > >  5 files changed, 471 insertions(+)
+> > > > > >  create mode 100644
+> > > > > > Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > ccorr.yaml
+> > > > > >  create mode 100644
+> > > > > > Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > rdma.yaml
+> > > > > >  create mode 100644
+> > > > > > Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > rsz.yaml
+> > > > > >  create mode 100644
+> > > > > > Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > wdma.yaml
+> > > > > >  create mode 100644
+> > > > > > Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > wrot.yaml
+> > > > > > 
+> > > > > > diff --git
+> > > > > > a/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > ccorr.yaml
+> > > > > > b/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > ccorr.yaml
+> > > > > > new file mode 100644
+> > > > > > index 000000000000..59fd68b46022
+> > > > > > --- /dev/null
+> > > > > > +++
+> > > > > > b/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > > > > > ccorr.yaml
+> > > > > > @@ -0,0 +1,57 @@
+> > > > > > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > > > > > +%YAML 1.2
+> > > > > > +---
+> > > > > > +$id:
+> > > > > > 
 > > 
-> > Provide a disable_wdt_extrst parameter for configuration.
-> > We can disable or enable it just by configuring dts.
 > > 
-> > igned-off-by: Fengquan Chen <fengquan.chen@mediatek.com>
-> 
-> Missing "S".
-
-Thanks, has been added back in v2.
-
-> 
-> > ---
-> >   drivers/watchdog/mtk_wdt.c | 7 +++++++
-> >   1 file changed, 7 insertions(+)
+https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-ccorr.yaml*__;Iw!!CTRNKA9wMg0ARbw!1C0ChLqzi7Zq8D2d4_S4IqCEei4GXdgy3_VCQg8MdsJP7n8TlxbGyajipusfH8hi$
+> > > > > > 
+> > > > > > +$schema:
+> > > > > > 
 > > 
-> > diff --git a/drivers/watchdog/mtk_wdt.c
-> > b/drivers/watchdog/mtk_wdt.c
-> > index 97ca993..4824c07 100644
-> > --- a/drivers/watchdog/mtk_wdt.c
-> > +++ b/drivers/watchdog/mtk_wdt.c
-> > @@ -63,6 +63,7 @@ struct mtk_wdt_dev {
-> >   	void __iomem *wdt_base;
-> >   	spinlock_t lock; /* protects WDT_SWSYSRST reg */
-> >   	struct reset_controller_dev rcdev;
-> > +	bool disable_wdt_extrst;
-> >   };
-> >   
-> >   struct mtk_wdt_data {
-> > @@ -240,6 +241,8 @@ static int mtk_wdt_start(struct watchdog_device
-> > *wdt_dev)
-> >   
-> >   	reg = ioread32(wdt_base + WDT_MODE);
-> >   	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
-> > +	if (mtk_wdt->disable_wdt_extrst)
-> > +		reg &= ~WDT_MODE_EXRST_EN;
-> >   	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
-> >   	iowrite32(reg, wdt_base + WDT_MODE);
-> >   
-> > @@ -309,6 +312,10 @@ static int mtk_wdt_probe(struct
-> > platform_device *pdev)
-> >   		if (err)
-> >   			return err;
-> >   	}
-> > +
-> > +	mtk_wdt->disable_wdt_extrst =
-> > +		of_property_read_bool(dev->of_node, "disable_extrst");
-> > +
+> > 
+https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!1C0ChLqzi7Zq8D2d4_S4IqCEei4GXdgy3_VCQg8MdsJP7n8TlxbGyajipi-OInix$
+> > > > > > 
+> > > > > > +
+> > > > > > +title: Mediatek Media Data Path 3 CCORR Device Tree
+> > > > > > Bindings
+> > > > > > +
+> > > > > > +maintainers:
+> > > > > > +  - Daoyuan Huang <daoyuan.huang@mediatek.com>
+> > > > > > +  - Moudy Ho <moudy.ho@mediatek.com>
+> > > > > > +
+> > > > > > +description: |
+> > > > > > +  One of Media Data Path 3 (MDP3) components used to do
+> > > > > > color
+> > > > > > correction with 3X3 matrix.
+> > > > > > +
+> > > > > > +properties:
+> > > > > > +  compatible:
+> > > > > > +    items:
+> > > > > > +      - enum:
+> > > > > > +        - mediatek,mt8183-mdp3-ccorr
+> > > > > > +
+> > > > > > +  mediatek,mdp3-id:
+> > > > > > +    $ref: /schemas/types.yaml#/definitions/uint32
+> > > > > > +    maxItems: 1
+> > > > > > +    description: |
+> > > > > > +      HW index to distinguish same functionality modules.
+> > > > > 
+> > > > > If we wanted h/w indexes in DT, we'd have a standard
+> > > > > property.
+> > > > > Why
+> > > > > do
+> > > > > you need this?
+> > > > > 
+> > > > 
+> > > > I'm sorry not quite sure what HW indexes means (something like
+> > > > aliases?)
+> > > 
+> > > It means whatever you said in your description.
+> > > 
+> > > And no, I'm not suggesting you use aliases.
+> > 
+> > Sorry for the inaccuracy described here, the comment i mentioned
+> > before
+> > should be "standard property" instead of "HW index".
+> > 
+> > > > It was originally used to mark multiple identical modules in
+> > > > the
+> > > > MDP
+> > > > data path algorithm, so that appropriate paths can be
+> > > > dynamically
+> > > > dispatched.
+> > > 
+> > > If they are identical, then why do you need to distinguish them
+> > > in
+> > > DT?
+> > > If there's some difference you need to know about such as
+> > > connections
+> > > to other blocks, then describe that. Another common example is
+> > > needing
+> > > to know what bits/registers to access in a syscon phandle. For
+> > > that,
+> > > make the register offset or bits be args to the phandle property.
+> > > 
+> > > Rob
+> > 
+> > Integrating the previous discussion, maybe I can revise the
+> > description
+> > to the following:
+> >     description: |
+> >       There may be multiple blocks with the same function but
+> > different
+> >       addresses in MDP3. In order to distinguish the connection
+> > with
+> >       other blocks, a unique ID is needed to dynamically use one or
+> >       more identical blocks to implement multiple pipelines.
 > 
-> The new property needs to be documented and approved by a DT
-> maintainer
-> (separate patch). Something like "mtk,disable-extrst" would probably
-> be
-> a better property name.
+> With display pipelines it is common to describe the pipeline with an
+> OF
+> graph. With the pipeline drawn out, you also get ways to derive
+> identifiers
+> for otherwise identical blocks, such as from port IDs.
 > 
-> Guenter
+> See Documentation/devicetree/bindings/display/allwinner,sun4i-a10-
+> display-engine.yaml
+> and arch/arm/boot/dts/sun9i-a80.dtsi for such an example.
+> 
+> 
+> ChenYu
 
-Thanks, the property name has been modified, and related dt-binding
-has
-been added,see series 541567
+From the MDP routing table defined in mt8183-mmsys.h
+([v7,2/5] soc: mediatek: mmsys: Add support for MDP),
+It can be seen that each component has its own independent
+one-to-many mapping table, and its next-level receiver may
+have its own multiple inputs and is difficult to briefly
+describe these relationships.
+ 
+In addition, due to hardware limitations, RSZ0 (for example)
+cannot be completely regarded as RSZ1 in mmsys, and must be
+regarded as an independent entity, an example mentioned
+in line #67 from mtk-mdp3-cmdq.c
+([v7,5/5] media: platform: mtk-mdp3: Add Mediatek MDP3 driver).
 
-Best Regards
-Fengquan
-
+Moudy
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
