@@ -5,18 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-16.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B856C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 12:42:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E560DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 14:05:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 10CEF608FB
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 12:42:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 10CEF608FB
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 88DFD610A2
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 14:05:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 88DFD610A2
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=roeck-us.net
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
@@ -24,58 +23,74 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DyNOq7T55JS1jRx8nlclvy0tASzxgVAXp2SYII6/nq8=; b=cJxYDShNfdZGPUTa+PCJYbxbZT
-	WgJZgC7NVgPzArk5hphzBSlwlydw3qeD7bhTzVvV/Lflyc4q7aO8r4DnErlox1SZYHBNHoxRrpqAG
-	IQyOa06PX390FL7/J8JVfAcQBF5o1kf3W4qJpoLcNGVV1D6M7CahXNS0aQsjJ+6axnMuOZn4CWduK
-	3KV5UifKv7l/ETk91DF+Z4BZAdybHDgIdWl5R5XAIqT60Umy7ovjwDAw4tK5WEaKJpB9a3HCpcHNz
-	G+W9Uf2Zbs8x4VbdeOQUixjgQzs0mIkKjr0EOdEyQuHcNc3LQEx+zMkE4n7KQTg3WSKkBizyaxc7/
-	9tl1sTsw==;
+	bh=sJg7dHH8QbP7rYf82zpldPYHLTREVMDbBugV/KnyOx8=; b=VM5pHHzWMwp2VJHSQQqp9a62UL
+	aftoHJyfyv2fhmUjJjwtt6uXb9ESVRAvkRFTkbrzRBCFO6K4ALWW76Ot+UfO8rtcDDsX86M+bz9ex
+	1PRN8hd34LDfEcZOQ1ZnuPTDN24U9LkQVmAzpEPirtXf5zCIJ2eJhUlhYQLO6ylP1kFUzdZEgtqJH
+	rhmcBuzhBZh4o8Y/CIKTUCLbXZzu9/eR2aH93fTVH8/NPXPXj1XQWR6nTxWcKMVth6DTY0hhvdK81
+	NvIY4rRNwnEnbnv/C2fgWD+DrILEwgZOeB0E+43qhebpaWug+ZJtw0J6yLYHQAd32pg1HnUKC/JYL
+	2F59WqGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mM8We-00Bx6L-TL; Fri, 03 Sep 2021 12:42:32 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1mM9od-00C6yM-22; Fri, 03 Sep 2021 14:05:11 +0000
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mM8WR-00Bx3a-99; Fri, 03 Sep 2021 12:42:21 +0000
-Received: from [IPv6:2a02:810a:880:f54:14f0:9e83:10c6:d1a4] (unknown
- [IPv6:2a02:810a:880:f54:14f0:9e83:10c6:d1a4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 860A91F44E0E;
- Fri,  3 Sep 2021 13:42:15 +0100 (BST)
-Subject: Re: [PATCH v6, 15/15] media: mtk-vcodec: Use codec type to separate
- different hardware
-To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20210901083215.25984-1-yunfei.dong@mediatek.com>
- <20210901083215.25984-16-yunfei.dong@mediatek.com>
- <cf57148f-430b-2023-5f62-b57b12a960b7@collabora.com>
- <5d53649c1fe2d6d6942e1dd31cdf7a0def46acab.camel@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <0100e846-7ab0-347e-c737-aa6d86fde4af@collabora.com>
-Date: Fri, 3 Sep 2021 14:42:12 +0200
+ id 1mM9oa-00C6wd-1l; Fri, 03 Sep 2021 14:05:09 +0000
+Received: by mail-oi1-x230.google.com with SMTP id w144so6476096oie.13;
+ Fri, 03 Sep 2021 07:05:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=keqb0lLG5bXN4lNVT0FHbMoFuC2nxIHsD31TOnQa8pE=;
+ b=D/exd8GSx7b96axCyEL+kndKDPAoWoF2EW7JzlK3Kwaq5cV9LvGcjUVLzcL0Nbk3TL
+ Gf0mbr8DlQzVlErDpV+Jbv7NAY/w5hnIb+co+MmIALkL9p1v8X/Nai79r7lfzq/q9SEz
+ WW0U/cWl43Rwyu4zWx2eR1rLTz8DJDUyk2eqDEmwK1K7IfYvPl9JXYFPWDUE1z00i4Mq
+ JMIkIfbndXmnFX5U+Oml9LDbU0UUj4HFZ8uHdjxf1ABGJ1CEisK7huMqmwcClHLX3wFC
+ xr2cFtE6BKWJbQYxrDLm6frklIff40brosW1o33eoX21zG3pLRygcOtmhCw3RVqu/ZMX
+ JEKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=keqb0lLG5bXN4lNVT0FHbMoFuC2nxIHsD31TOnQa8pE=;
+ b=htC9xxoursZ0+88532lC/G8D6cuB7dlO5gGWsBjgtQU5thfpxFn/U2MOruqgAPUwiC
+ GCjwLqHhGE1+XDrIXUjTKKQPm28sx+yu7nfUINpH2R3le2aCKEk9eyTkU2JPEQZ25+oR
+ YM1GoUn0rIaWunfsZwsLW4NWYm+fB0cT8IcNZa4JyKYqzxrbNpPW2lPDNQ6bxIi5YNJJ
+ UGFvK/Jmj38MBo5o0X1Y4cjPDbopM9AjjtEXiFd01WmeowyHgjgOQzAlQ3hPMzamHuBP
+ yh9n+cIsw9Dt1QftezfSMZPlPAfcxy4wuZZzAGp67EffT2fL50bqriWHynQon2qnBU5E
+ xWQg==
+X-Gm-Message-State: AOAM533RnFxTPF2mIaobXdDqg9ORTUSbWwq/ElCf6XJNs0qdHljWT64G
+ xCZdQ5DEsSQSun+e+HTeDxA=
+X-Google-Smtp-Source: ABdhPJx+IRaT9B0hadGHsVNpszS4tQ96KiHprfMCwOHX8K8ad0EU8MWknjv6YjI6IB5Pay70Mpr8CQ==
+X-Received: by 2002:aca:aa88:: with SMTP id t130mr2885592oie.3.1630677905257; 
+ Fri, 03 Sep 2021 07:05:05 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ f126sm1063872oob.9.2021.09.03.07.05.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 Sep 2021 07:05:04 -0700 (PDT)
+Subject: Re: [v2,1/2] watchdog: mtk: add disable_wdt_extrst support
+To: Fengquan Chen <Fengquan.Chen@mediatek.com>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-watchdog@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: tinghan.shen@mediatek.com, randy.wu@mediatek.com,
+ rex-bc.chen@mediatek.com, christine.zhu@mediatek.com, joe.yang@mediatek.com,
+ zhishuang.zhang@mediatek.com
+References: <20210903061623.10715-1-Fengquan.Chen@mediatek.com>
+ <20210903061623.10715-2-Fengquan.Chen@mediatek.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <65cc931f-ba49-19b5-ce25-c49f7b984cec@roeck-us.net>
+Date: Fri, 3 Sep 2021 07:05:01 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-In-Reply-To: <5d53649c1fe2d6d6942e1dd31cdf7a0def46acab.camel@mediatek.com>
+In-Reply-To: <20210903061623.10715-2-Fengquan.Chen@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210903_054219_615759_7AD3A652 
-X-CRM114-Status: GOOD (  32.52  )
+X-CRM114-CacheID: sfid-20210903_070508_163524_59AE9FA3 
+X-CRM114-Status: GOOD (  21.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,249 +107,65 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 02.09.21 08:05, yunfei.dong@mediatek.com wrote:
-> On Wed, 2021-09-01 at 14:17 +0200, Dafna Hirschfeld wrote:
-> Hi Dafna,
+On 9/2/21 11:16 PM, Fengquan Chen wrote:
+> In some cases, we may need watchdog just to trigger an
+> internal soc reset without sending any output signal.
 > 
-> Thanks for your suggestion.
->> Hi
->>
->> On 01.09.21 10:32, Yunfei Dong wrote:
->>> There are just one core thread, in order to separeate different
->>> hardware, using codec type to separeate it in scp driver.
->>
->> this code seems to relate to the vpu driver not the scp driver.
->> Is there a corresponding code added to the vpu driver that test the
->> codec_type?
->>
-> Vpu is video processor unit, used to connect with micro processor.
-> In mt8173: vdec_vpu_if.c -> mtk_vpu.c -> micro processor
-> In mt8192/mt8183: vdec_vpu_if.c -> mtk_scp.c ->micro processor
+> Provide a disable_wdt_extrst parameter for configuration.
+> We can disable or enable it just by configuring dts.
 > 
-> This init/dec start/dec_end interfaces are the same for vpu and scp.
->>>
->>> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
->>> ---
->>>    .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 12 ++++---
->>>    .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 34
->>> ++++++++++++++++---
->>>    .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  4 +++
->>>    3 files changed, 41 insertions(+), 9 deletions(-)
->>>
->>> diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
->>> b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
->>> index 9d8079c4f976..c488f0c40190 100644
->>> --- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
->>> +++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
->>> @@ -35,6 +35,8 @@ enum vdec_ipi_msgid {
->>>     * @msg_id	: vdec_ipi_msgid
->>>     * @vpu_inst_addr : VPU decoder instance address. Used if ABI
->>> version < 2.
->>>     * @inst_id     : instance ID. Used if the ABI version >= 2.
->>> + * @codec_type	: Codec fourcc
->>> + * @reserved	: reserved param
->>>     */
->>>    struct vdec_ap_ipi_cmd {
->>>    	uint32_t msg_id;
->>> @@ -42,6 +44,8 @@ struct vdec_ap_ipi_cmd {
->>>    		uint32_t vpu_inst_addr;
->>>    		uint32_t inst_id;
->>>    	};
->>> +	uint32_t codec_type;
->>> +	uint32_t reserved;
->>>    };
->>>    
->>>    /**
->>> @@ -59,12 +63,12 @@ struct vdec_vpu_ipi_ack {
->>>    /**
->>>     * struct vdec_ap_ipi_init - for AP_IPIMSG_DEC_INIT
->>>     * @msg_id	: AP_IPIMSG_DEC_INIT
->>> - * @reserved	: Reserved field
->>> + * @codec_type	: Codec fourcc
->>>     * @ap_inst_addr	: AP video decoder instance address
->>>     */
->>>    struct vdec_ap_ipi_init {
->>>    	uint32_t msg_id;
->>> -	uint32_t reserved;
->>> +	uint32_t codec_type;
->>>    	uint64_t ap_inst_addr;
->>>    };
->>>    
->>> @@ -77,7 +81,7 @@ struct vdec_ap_ipi_init {
->>>     *	H264 decoder [0]:buf_sz [1]:nal_start
->>>     *	VP8 decoder  [0]:width/height
->>>     *	VP9 decoder  [0]:profile, [1][2] width/height
->>> - * @reserved	: Reserved field
->>> + * @codec_type	: Codec fourcc
->>>     */
->>>    struct vdec_ap_ipi_dec_start {
->>>    	uint32_t msg_id;
->>> @@ -86,7 +90,7 @@ struct vdec_ap_ipi_dec_start {
->>>    		uint32_t inst_id;
->>>    	};
->>>    	uint32_t data[3];
->>> -	uint32_t reserved;
->>> +	uint32_t codec_type;
->>>    };
->>>    
->>>    /**
->>> diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
->>> b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
->>> index bfd8e87dceff..c84fac52fe26 100644
->>> --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
->>> +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
->>> @@ -100,18 +100,29 @@ static void vpu_dec_ipi_handler(void *data,
->>> unsigned int len, void *priv)
->>>    
->>>    static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void
->>> *msg, int len)
->>>    {
->>> -	int err;
->>> +	int err, id, msgid;
->>>    
->>> -	mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
->>> +	msgid = *(uint32_t *)msg;
->>> +	mtk_vcodec_debug(vpu, "id=%X", msgid);
->>>    
->>>    	vpu->failure = 0;
->>>    	vpu->signaled = 0;
->>>    
->>> -	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, vpu-
->>>> id, msg,
->>> +	if (vpu->ctx->dev->vdec_pdata->hw_arch ==
->>> MTK_VDEC_LAT_SINGLE_CORE) {
->>> +		if (msgid == AP_IPIMSG_DEC_CORE ||
->>> +			msgid == AP_IPIMSG_DEC_CORE_END)
->>> +			id = vpu->core_id;
->>> +		else
->>> +			id = vpu->id;
->>> +	} else {
->>> +		id = vpu->id;
->>> +	}
->>> +
->>> +	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id,
->>> msg,
->>>    				     len, 2000);
->>
->> so
->>>    	if (err) {
->>>    		mtk_vcodec_err(vpu, "send fail vpu_id=%d msg_id=%X
->>> status=%d",
->>> -			       vpu->id, *(uint32_t *)msg, err);
->>> +			       id, msgid, err);
->>>    		return err;
->>>    	}
->>>    
->>> @@ -131,6 +142,7 @@ static int vcodec_send_ap_ipi(struct
->>> vdec_vpu_inst *vpu, unsigned int msg_id)
->>>    		msg.vpu_inst_addr = vpu->inst_addr;
->>>    	else
->>>    		msg.inst_id = vpu->inst_id;
->>> +	msg.codec_type = vpu->codec_type;
->>>    
->>>    	err = vcodec_vpu_send_msg(vpu, &msg, sizeof(msg));
->>>    	mtk_vcodec_debug(vpu, "- id=%X ret=%d", msg_id, err);
->>> @@ -149,14 +161,25 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
->>>    
->>>    	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
->>> vpu->id,
->>>    					 vpu->handler, "vdec", NULL);
->>> -	if (err != 0) {
->>> +	if (err) {
->>
->> could be nice to send a patch with other such fixes,
->> anyway it is better to send unrelated fixes in a separate patch
->>
-> will fix in next patch.
->>>    		mtk_vcodec_err(vpu, "vpu_ipi_register fail status=%d",
->>> err);
->>>    		return err;
->>>    	}
->>>    
->>> +	if (vpu->ctx->dev->vdec_pdata->hw_arch ==
->>> MTK_VDEC_LAT_SINGLE_CORE) {
->>> +		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev-
->>>> fw_handler,
->>> +					 vpu->core_id, vpu->handler,
->>> +					 "vdec", NULL);
->>> +		if (err) {
->>> +			mtk_vcodec_err(vpu, "vpu_ipi_register core fail
->>> status=%d", err);
->>> +			return err;
->>> +		}
->>> +	}
->>> +
->>>    	memset(&msg, 0, sizeof(msg));
->>>    	msg.msg_id = AP_IPIMSG_DEC_INIT;
->>>    	msg.ap_inst_addr = (unsigned long)vpu;
->>> +	msg.codec_type = vpu->codec_type;
->>>    
->>>    	mtk_vcodec_debug(vpu, "vdec_inst=%p", vpu);
->>>    
->>> @@ -187,6 +210,7 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu,
->>> uint32_t *data, unsigned int len)
->>>    
->>>    	for (i = 0; i < len; i++)
->>>    		msg.data[i] = data[i];
->>> +	msg.codec_type = vpu->codec_type;
->>
->> I don't see where is the vpu->codec_type initialzied
->>
-> This patch just add interface to support core hardware decode, in next
-> serial patches based on these will used codec type to separate after
-> these base patches are stable.
+> Signed-off-by: fengquan.chen <fengquan.chen@mediatek.com>
 
-Then why not send it on the same series?
+Nit: You should set up git such that it uses "Fengquan Chen", not
+"fengquan.chen".
+
+Other than that, for my reference,
+
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
+
+We'll have to wait for dt property approval before we can apply the patch.
 
 Thanks,
-Dafna
+Guenter
 
->> Thanks,
->> Dafna
->>
-> Thanks
-> Yunfei Dong
->>>    
->>>    	err = vcodec_vpu_send_msg(vpu, (void *)&msg, sizeof(msg));
->>>    	mtk_vcodec_debug(vpu, "- ret=%d", err);
->>> diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
->>> b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
->>> index ae24b75d1649..802660770a87 100644
->>> --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
->>> +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
->>> @@ -14,6 +14,7 @@ struct mtk_vcodec_ctx;
->>>    /**
->>>     * struct vdec_vpu_inst - VPU instance for video codec
->>>     * @id          : ipi msg id for each decoder
->>> + * @core_id     : core id used to separate different hardware
->>>     * @vsi         : driver structure allocated by VPU side and
->>> shared to AP side
->>>     *                for control and info share
->>>     * @failure     : VPU execution result status, 0: success,
->>> others: fail
->>> @@ -26,9 +27,11 @@ struct mtk_vcodec_ctx;
->>>     * @dev		: platform device of VPU
->>>     * @wq          : wait queue to wait VPU message ack
->>>     * @handler     : ipi handler for each decoder
->>> + * @codec_type     : used codec type to separate different codecs
->>>     */
->>>    struct vdec_vpu_inst {
->>>    	int id;
->>> +	int core_id;
->>>    	void *vsi;
->>>    	int32_t failure;
->>>    	uint32_t inst_addr;
->>> @@ -38,6 +41,7 @@ struct vdec_vpu_inst {
->>>    	struct mtk_vcodec_ctx *ctx;
->>>    	wait_queue_head_t wq;
->>>    	mtk_vcodec_ipi_handler handler;
->>> +	unsigned int codec_type;
->>>    };
->>>    
->>>    /**
->>>
+> ---
+>   drivers/watchdog/mtk_wdt.c | 7 +++++++
+>   1 file changed, 7 insertions(+)
+> 
+> diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+> index 97ca993bd009..276b6cb7d225 100644
+> --- a/drivers/watchdog/mtk_wdt.c
+> +++ b/drivers/watchdog/mtk_wdt.c
+> @@ -63,6 +63,7 @@ struct mtk_wdt_dev {
+>   	void __iomem *wdt_base;
+>   	spinlock_t lock; /* protects WDT_SWSYSRST reg */
+>   	struct reset_controller_dev rcdev;
+> +	bool disable_wdt_extrst;
+>   };
+>   
+>   struct mtk_wdt_data {
+> @@ -240,6 +241,8 @@ static int mtk_wdt_start(struct watchdog_device *wdt_dev)
+>   
+>   	reg = ioread32(wdt_base + WDT_MODE);
+>   	reg &= ~(WDT_MODE_IRQ_EN | WDT_MODE_DUAL_EN);
+> +	if (mtk_wdt->disable_wdt_extrst)
+> +		reg &= ~WDT_MODE_EXRST_EN;
+>   	reg |= (WDT_MODE_EN | WDT_MODE_KEY);
+>   	iowrite32(reg, wdt_base + WDT_MODE);
+>   
+> @@ -309,6 +312,10 @@ static int mtk_wdt_probe(struct platform_device *pdev)
+>   		if (err)
+>   			return err;
+>   	}
+> +
+> +	mtk_wdt->disable_wdt_extrst =
+> +		of_property_read_bool(dev->of_node, "mediatek,disable-extrst");
+> +
+>   	return 0;
+>   }
+>   
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
