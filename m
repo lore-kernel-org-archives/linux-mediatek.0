@@ -6,91 +6,93 @@ X-Spam-Status: No, score=-13.1 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 45707C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 10:06:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF6A6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 10:40:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0EF87610CC
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 10:06:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0EF87610CC
+	by mail.kernel.org (Postfix) with ESMTPS id 804E560238
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 10:40:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 804E560238
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Message-ID:Subject:From:References:Cc:To:Reply-To:Content-ID:
 	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
 	:Resent-Message-ID:List-Owner;
-	bh=QT1e+Boil0sm0dNIO9322WHRZ0DaRcbBvkrPU1AkNWc=; b=vwYe6/zyecnydxtuPTd6Vt/NYO
-	2SLh0k5dysGQurj7wkWQY2usQTfePozhTAqe0dVCMToSk5i9m75LAARzgGdfH7cDOurlT/vlYd0kG
-	SB1AEQSU60MoMypGqKfl18UH3wgxVksmIkuNHfZCX028qyzSo6dczA+WWb9AoubASBQ8kq3dKtRCk
-	m6kuUlX9iSAAv1k9ahUclzJ96wvp5jVBcJWdcb42lReh2iW3yPziKvpylw0RUhHJhfUEZhdOUoCeR
-	9y9LzKCFV+uGgoWq3WlDYsAyHwyecFZPMlhm6S7q3Q2bcUhsJ9hRt7ZbmBNlYPV4W6ZFAto7LpR/e
-	ug3jmwrA==;
+	bh=tE1XlOq51Y3fSLj5ff9uTDFUN9E2CtLxtRUYJ5uHxqw=; b=lkLulytpQst/l7b7mDkAGZfeA0
+	2Ml+55mspAI9Q2CGg+8iveFJ4m4l/agzKSZoT2GBNs97hCc9z+vBTTrMARzalEB8HzNNY5I27VEH/
+	drU+0KWlIOEQe8LjLMPYbU7FgfHbaA3M20Tmd4Q1SxOOa5xAnlEdLMhyOhOERKG1L2zpACjhVv2f3
+	YG783N+CUnW9FUbWpdUSiVGSCRQoeAGdd/7vfYdMq8HWlC7LevWv/TcvUKsiivcnQjK38kJcmD4n/
+	W+9n/lJz6rLhuNS3LBrHxF98zUOvOAIj0GYquDhJ3mURSjnRV38mbzv3w2q5uKennqa8E9l/CKu0x
+	o01wANHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mM65V-00Bd9F-45; Fri, 03 Sep 2021 10:06:21 +0000
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+	id 1mM6co-00BgRW-PZ; Fri, 03 Sep 2021 10:40:46 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mM65S-00Bd7O-1P; Fri, 03 Sep 2021 10:06:19 +0000
-Received: by mail-wr1-x42f.google.com with SMTP id x6so7410205wrv.13;
- Fri, 03 Sep 2021 03:06:16 -0700 (PDT)
+ id 1mM6cl-00BgQM-H5; Fri, 03 Sep 2021 10:40:45 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id u9so7551043wrg.8;
+ Fri, 03 Sep 2021 03:40:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=subject:to:cc:references:from:message-id:date:user-agent
+ h=to:cc:references:from:subject:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=iNmWH11IfHfGgA+hr1tDCMgJNkp9fxHtUXct3dWs0WM=;
- b=ghnwOsqiqgmNVkfIqwYH+BiPPQa3gWVNLTPl6O3BMJ4jV054Ys+am8yP0fWf1sUuqf
- hD+XOJ5cJrJeifs8GFp1wprFn3k6erFwWINEs8X7y3BmwmIYLjG5qdMyU3SmHVyf8uwk
- GxIH1h1X6oOHU377BbwgpSWOomBiD98heFDH6Tnws8/7Tlmg2jjVqJAB9nyomBvMMvBL
- 7gFQYwwfC5fJkNkSvk8ZtkJzeHfJo9LTzaRCQqIBUPJAEOL84N3i+BYtg1rceqM/KwMB
- 4Y82A3UJnIE+BR5QZcCnzoDpl9HBcJUaIKq2nkScqnVudyvoz3ugr+MbG1TgjyeMynR6
- qcIw==
+ bh=nRpUBKoD2Qc6noVZ4Y4NpGJIU0gjshS75iBQB9zMpy8=;
+ b=V9DGIMtPYt9W0EUZOwpvvbsDaz13dnCLH2rE+WwNlpWVsU4sQaUwc7zHHuyhls5T6v
+ 6wtZXoLsekCvm79RfEd2jn8BPGRbrWWs5n09EluRcbcq2jGlj0jVZQ9fdf3y7KXCTFpE
+ RT43XKqCmoCabMJ0CIBUb45ogsZ5oyOCsxsz9UpxNuwKKPOhWfsQ/o+pkZlQw6GFguv7
+ 7PHQssHoviWtVkcp3/MaVlYWk9nnXW33At7rQ+5B7hFWm3RBcPoBWbHc/kY59AH7NTOs
+ 7FcJSWPPy3ikCrOMrFQqIY/8tURuT9sT/8fWXz05yDY1Tkg0Kj3ASwFWhWMEg17rW/hS
+ JVEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:to:cc:references:from:subject:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=iNmWH11IfHfGgA+hr1tDCMgJNkp9fxHtUXct3dWs0WM=;
- b=s2PAjSOJFf0oEAGYau284SdThhpaFdkCjBfArrUgkBtM7UitAxkw4FMOxdkXLRIg5k
- 2FgFoPRTXfu5MYkktU6ZzoW59ndZgVgRZUa5+cI+ztjklo2/G4OtUq0B9QYHSq9pvubO
- M/rtz6dSfmr05ez5WVUGGLw0jlgc9MufAcxJyJZJtCrlNfuDF6pELyODmTCko09aolTa
- XyvDotQjqwXB22n4oP6LiSjgJmZPhzl408/jWtypLK+w6tp9chMGpb4NF3AugmkNJIeO
- FjWeoPQuUEbWg1sNEBeAFBlFAR+ABfvboSU8CnBYuGSlIJT/P/juI720cw0TVl0kHuwf
- LV5w==
-X-Gm-Message-State: AOAM5303ytnKgXMgFdDWFcyl64kzVDukUBPDxgMisur+tw3ka5BC3JC0
- 1z1sVyj1bGfex6FdTt2zjrs=
-X-Google-Smtp-Source: ABdhPJwlJP8tBN1TuNmAVwZFdWKz9KdIFxPvHfw+0UDerVYp2oCZxX73DeyPcYhLhTflLW+0x4R1wQ==
-X-Received: by 2002:adf:b748:: with SMTP id n8mr3069436wre.133.1630663575285; 
- Fri, 03 Sep 2021 03:06:15 -0700 (PDT)
+ bh=nRpUBKoD2Qc6noVZ4Y4NpGJIU0gjshS75iBQB9zMpy8=;
+ b=XwIfVN+rPiDmOxXjXPIev80LD5umyUd95UilG9bL+vtL3EO9cX3KM8MjJyrx5cVqhE
+ DmB4xfO9ScqE4J6eHtyY2A904p4uw8OA4fU1YsGBM8KMQbGm4o+x8kqSiMBkPIZ4t6Ld
+ xHqMlZr2fk5Ope8m1R+IR3uASGZJeAI+kH36XbpnN/JSWKfSZqj+DcgK6uyLAXm29y6f
+ zdB86BpquXZUxwmcTEvUJeojuzJuz2Qw1bt2qmnsw/nAqifvc5nA0RNBk2QYryur280c
+ LPeGe2rTNJxOtO/IlJLYXCdRKnK96J++m9b9gzZhhbtc0sFLF3RQHCyxoeBtT4wTsi3u
+ 4Zjw==
+X-Gm-Message-State: AOAM530fLBUl/wGIpeRmtgsimQOpqXVLkJF+QjEUP29MgJxlvMUWAfKq
+ oaX+TtFfIJ9J0XCmfFmNS08=
+X-Google-Smtp-Source: ABdhPJygMcEsTKYxWfkujXhXEo9X8ysv08YMDZ9nnstdTDNHuMVulrfsqK2tQgqJBloNocuiTbaPPQ==
+X-Received: by 2002:adf:eb8d:: with SMTP id t13mr3323097wrn.4.1630665641998;
+ Fri, 03 Sep 2021 03:40:41 -0700 (PDT)
 Received: from ziggy.stardust ([37.223.140.66])
- by smtp.gmail.com with ESMTPSA id d9sm4176444wrm.21.2021.09.03.03.06.14
+ by smtp.gmail.com with ESMTPSA id z9sm4413006wre.11.2021.09.03.03.40.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 Sep 2021 03:06:14 -0700 (PDT)
-Subject: Re: [PATCH v5 2/2] arm64: dts: mt8192: add eFuse support for MT8192
- SoC
-To: Yz.Wu@mediatek.com, Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, 
- Rob Herring <robh+dt@kernel.org>
-Cc: Seiya Wang <seiya.wang@mediatek.com>, devicetree@vger.kernel.org,
+ Fri, 03 Sep 2021 03:40:41 -0700 (PDT)
+To: Michael Kao <michael.kao@mediatek.com>, fan.chen@mediatek.com,
+ Zhang Rui <rui.zhang@intel.com>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ linux-pm@vger.kernel.org, srv_heupstream@mediatek.com
+Cc: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
+ Mark Rutland <mark.rutland@arm.com>, hsinyi@chromium.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
  Tzung-Bi Shih <tzungbi@google.com>
-References: <1618384669-30070-1-git-send-email-Yz.Wu@mediatek.com>
- <1618384669-30070-3-git-send-email-Yz.Wu@mediatek.com>
+References: <20201223074944.2061-1-michael.kao@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Message-ID: <048c7ac6-e91b-14ce-17e7-a291df2763b4@gmail.com>
-Date: Fri, 3 Sep 2021 12:06:13 +0200
+Subject: Re: [PATCH] arm64: dts: mt8192: add thermal zones, cooling map and
+ trips
+Message-ID: <55bdd2fb-1379-4e98-0a78-a18bfb7d0fb8@gmail.com>
+Date: Fri, 3 Sep 2021 12:40:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.12.0
 MIME-Version: 1.0
-In-Reply-To: <1618384669-30070-3-git-send-email-Yz.Wu@mediatek.com>
+In-Reply-To: <20201223074944.2061-1-michael.kao@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210903_030618_134355_DC1077C6 
-X-CRM114-Status: GOOD (  20.46  )
+X-CRM114-CacheID: sfid-20210903_034043_620282_43C0469E 
+X-CRM114-Status: GOOD (  27.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,48 +111,283 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 14/04/2021 09:17, Yz.Wu@mediatek.com wrote:
-> From: Ryan Wu <Yz.Wu@mediatek.com>
+On 23/12/2020 08:49, Michael Kao wrote:
+> Add thermal zone node to support mt8192 read temperature.
+> Thermal throttle will start at 68C and the
+> target temperature is 85C.
 > 
-> Add eFuse node to read Mediatek eFuse
+> This patch depends on [1].
+
+Please provide this kind of information below the three dashes '---'. Otherwise
+this will end up in the commit message.
+
 > 
-> Signed-off-by: Ryan Wu <Yz.Wu@mediatek.com>
+> [1]https://patchwork.kernel.org/project/linux-mediatek/patch/20201221061018.18503-3-Yz.Wu@mediatek.com/
+> 
+> Signed-off-by: Michael Kao <michael.kao@mediatek.com>
 > ---
-> This patch dependents on "arm64: dts: Add Mediatek SoC MT8192 and evaluation board dts and Makefile"[1]
-> 
-> mt8192.dtsi file is needed for this patch.
-> Please also accept this patch together with [1].
-> 
-> [1]http://lists.infradead.org/pipermail/linux-mediatek/2020-November/019378.html
-> ---
->  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 5 +++++
->  1 file changed, 5 insertions(+)
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 169 +++++++++++++++++++++++
+>  1 file changed, 169 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 9757138..4d4e4de 100644
+> index 4a0d941aec30..4020e40a092a 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -436,6 +436,11 @@
->  			status = "disable";
+> @@ -9,6 +9,7 @@
+>  #include <dt-bindings/interrupt-controller/arm-gic.h>
+>  #include <dt-bindings/interrupt-controller/irq.h>
+>  #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
+> +#include <dt-bindings/thermal/thermal.h>
+>  
+>  / {
+>  	compatible = "mediatek,mt8192";
+> @@ -42,6 +43,7 @@
+>  			clock-frequency = <1701000000>;
+>  			next-level-cache = <&l2_0>;
+>  			capacity-dmips-mhz = <530>;
+> +			#cooling-cells = <2>;
 >  		};
 >  
-> +		efuse: efuse@11c10000 {
-> +				compatible = "mediatek,mt8192-efuse",
-> +							 "mediatek,efuse";
-
-Please fix identation.
-Binding description mandates a reg property, please help to make the patch
-better by adding that property.
-
-Thanks a lot,
-Matthias
-
-> +		};
+>  		cpu1: cpu@100 {
+> @@ -52,6 +54,7 @@
+>  			clock-frequency = <1701000000>;
+>  			next-level-cache = <&l2_0>;
+>  			capacity-dmips-mhz = <530>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu2: cpu@200 {
+> @@ -62,6 +65,7 @@
+>  			clock-frequency = <1701000000>;
+>  			next-level-cache = <&l2_0>;
+>  			capacity-dmips-mhz = <530>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu3: cpu@300 {
+> @@ -72,6 +76,7 @@
+>  			clock-frequency = <1701000000>;
+>  			next-level-cache = <&l2_0>;
+>  			capacity-dmips-mhz = <530>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu4: cpu@400 {
+> @@ -82,6 +87,7 @@
+>  			clock-frequency = <2171000000>;
+>  			next-level-cache = <&l2_1>;
+>  			capacity-dmips-mhz = <1024>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu5: cpu@500 {
+> @@ -92,6 +98,7 @@
+>  			clock-frequency = <2171000000>;
+>  			next-level-cache = <&l2_1>;
+>  			capacity-dmips-mhz = <1024>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu6: cpu@600 {
+> @@ -102,6 +109,7 @@
+>  			clock-frequency = <2171000000>;
+>  			next-level-cache = <&l2_1>;
+>  			capacity-dmips-mhz = <1024>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu7: cpu@700 {
+> @@ -112,6 +120,7 @@
+>  			clock-frequency = <2171000000>;
+>  			next-level-cache = <&l2_1>;
+>  			capacity-dmips-mhz = <1024>;
+> +			#cooling-cells = <2>;
+>  		};
+>  
+>  		cpu-map {
+> @@ -178,6 +187,140 @@
+>  		method = "smc";
+>  	};
+>  
+> +	thermal-zones {
+> +		soc_max {
+> +			polling-delay = <1000>; /* milliseconds */
+> +			polling-delay-passive = <1000>; /* milliseconds */
+> +			thermal-sensors = <&lvts 0>;
+> +			sustainable-power = <1500>;
 > +
->  		i2c3: i2c3@11cb0000 {
->  			compatible = "mediatek,mt8192-i2c";
->  			reg = <0 0x11cb0000 0 0x1000>,
-> 
+> +			trips {
+> +				threshold: trip-point@0 {
+> +					temperature = <68000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +
+> +				target: target@1 {
+
+Please review the node names.
+
+> +					temperature = <85000>;
+> +					hysteresis = <2000>;
+> +					type = "passive";
+> +				};
+> +
+> +				soc_max_crit: soc_max_crit@0 {
+> +					temperature = <115000>;
+> +					hysteresis = <2000>;
+> +					type = "critical";
+> +				};
+> +			};
+> +
+> +			cooling-maps {
+> +				map0 {
+> +					trip = <&target>;
+> +					cooling-device = <&cpu0
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>,
+> +							 <&cpu1
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>,
+> +							 <&cpu2
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>,
+> +							 <&cpu3
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>;
+> +					contribution = <3072>;
+
+By binding description value is in per-cent, 3072 does not make sense.
+
+> +				};
+> +				map1 {
+> +					trip = <&target>;
+> +					cooling-device = <&cpu4
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>,
+> +							 <&cpu5
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>,
+> +							 <&cpu6
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>,
+> +							 <&cpu7
+> +						THERMAL_NO_LIMIT
+> +						THERMAL_NO_LIMIT>;
+> +					contribution = <1024>;
+
+Same here.
+
+> +				};
+> +			};
+> +		};
+
+New line here.
+
+> +		cpu_big1 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 1>;
+> +		};
+> +		cpu_big2 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 2>;
+> +		};
+> +		cpu_big3 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 3>;
+> +		};
+> +		cpu_big4 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 4>;
+> +		};
+> +		cci1 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 5>;
+> +		};
+> +		cci2 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 6>;
+> +		};
+> +		cpu_little1 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 7>;
+> +		};
+> +		cpu_little2 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 8>;
+> +		};
+> +		apu {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 9>;
+> +		};
+> +		mlda {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 10>;
+> +		};
+> +		gpu1 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 11>;
+> +		};
+> +		gpu2 {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 12>;
+> +		};
+> +		infra {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 13>;
+> +		};
+> +		camsys {
+> +			polling-delay = <0>; /* milliseconds */
+> +			polling-delay-passive = <0>; /* milliseconds */
+> +			thermal-sensors = <&lvts 14>;
+> +		};
+
+I think I'm missing something. We are creating a whole bunch of thermal zones,
+but no trip points neither cooling maps for them. What are the needed for?
+
+> +	};
+> +
+>  	timer: timer {
+>  		compatible = "arm,armv8-timer";
+>  		interrupt-parent = <&gic>;
+> @@ -224,6 +367,10 @@
+>  			compatible = "mediatek,mt8192-infracfg", "syscon";
+>  			reg = <0 0x10001000 0 0x1000>;
+>  			#clock-cells = <1>;
+> +			ti,reset-bits = <
+> +				0x120 0 0x124 0 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE)
+> +				0x730 12 0x734 12 0 0 (ASSERT_SET | DEASSERT_SET | STATUS_NONE)
+> +			>;
+
+How is that related to the commit message? Looks to me like a separate patch.
+
+>  		};
+>  
+>  		pericfg: syscon@10003000 {
+> @@ -318,6 +465,24 @@
+>  			status = "disabled";
+>  		};
+>  
+> +		lvts: lvts@1100b000 {
+> +			compatible = "mediatek,mt6873-lvts";
+
+This driver is not upstream. Please provide a link to the submission of the
+latest version so that I can track progress.
+
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
