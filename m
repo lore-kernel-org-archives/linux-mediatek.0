@@ -2,77 +2,88 @@ Return-Path: <SRS0=vCgL=N2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-0.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B3B0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 15:30:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1559FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 16:44:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F0BB661051
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 15:30:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F0BB661051
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C041860F55
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 16:44:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C041860F55
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IkElVWTg9ohku+APMaEyRWJCqUhiFCEaZyoDIrtMniU=; b=i0NBIFAi61ENhz
-	Lx1GlfUxpcdQOEWz72uYSU+WCSyud0Dd/K0aN2m6daZLAUPlVXwyQnismvtIG0/SUQm2gMZ2hDClJ
-	L4VSzESjGWpHOmWPe7Sg3ZvowPC1v0eRTZtE3rmA9bTDMBFARHSVp4TtYTKRfewMYrOKmJS4wm3BJ
-	EJNr+Se07qJEjkJnEVdIPhnS55ArK7QoqtmoXHfLbBo7ofi+2daZUs73slk4Xe4yILWRkEVVi1dwl
-	xsG5BCe1xrmCtz+AZJLukxUmZjeuWzaDQks3KRhETZnPoXwJqJnSprKQCHP7kZkfGcZQsjPLlB+nL
-	M5HuDNBvU9pysULODsTA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VGXk+S8IA6SDJTdzVRH7123HWdeAS3KjU8oO0rCf2Uw=; b=lJAEs0gVkLjHbX
+	tZk08g7RuXl2K2zZeupRiTYpcYo0YPANCOCQcwurxvaWr78QPusqdFZsgMhkiXvXxpV4hOVs3VV01
+	c9qF1b7+GMHUCpGK5jtchs3cHLGFEfd+I8Xn7SAZR4KQsJJFsX9Kr3RNSVGTl04zsrhvvnOA2QlM2
+	Q7uWtT3NDkOT5jlxqnJvJafE9tbgJgQZR7+lCedrCFIqMmzzQtAJhx6beWpMsUVA4e8juHP8FRWad
+	blhr/84PUomSYW3UJOm540AaYrf1HDP3546kb50eTSIqJTxSlYUwavredZ4zzc/3jqv/cND7rD7SN
+	XhPo3obDNnuJfRhyW6LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mMXcL-00EO5z-ND; Sat, 04 Sep 2021 15:30:05 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mMYle-00ESXI-Cq; Sat, 04 Sep 2021 16:43:46 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mMXc8-00EO39-N4; Sat, 04 Sep 2021 15:29:54 +0000
-X-UUID: de06b241d1844756bda2c75c775dba61-20210904
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From;
- bh=3gUPL8NBKl0Gs4DzHbPSoMyeEakHEBQFb/PDLyPf9Nc=; 
- b=iERoUJZACannQ0pu8YLB6KuP/k04cdKRWsZxEs/hCpgJVQ+FPealmoqrZEh5WPyjWKQ1iAEtfsoxom5unWNoQHw7rj7FX6ruaPr+EDDffYQmLS2QOufIIRyfjO1Tw0Wn8O5s7xUPyN92Gy242uf+IuLQp3LBIkfLgD6f35xVZOs=;
-X-UUID: de06b241d1844756bda2c75c775dba61-20210904
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2083523936; Sat, 04 Sep 2021 08:29:50 -0700
-Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 4 Sep 2021 08:29:49 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 4 Sep 2021 23:29:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 4 Sep 2021 23:29:47 +0800
-From: Miles Chen <miles.chen@mediatek.com>
-To: Abel Vesa <abel.vesa@nxp.com>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Shawn Guo
- <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, "Pengutronix
- Kernel Team" <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
- "NXP Linux Team" <linux-imx@nxp.com>
-CC: <linux-clk@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <wsd_upstream@mediatek.com>, Miles Chen <miles.chen@mediatek.com>
-Subject: [PATCH v2] clk: imx: use module_platform_driver
-Date: Sat, 4 Sep 2021 23:29:46 +0800
-Message-ID: <20210904152946.32042-1-miles.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mMYlR-00ESW7-3u; Sat, 04 Sep 2021 16:43:34 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id k13so4686427lfv.2;
+ Sat, 04 Sep 2021 09:43:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wh1mYqXbigd70L6uyNc1nuoAq3q+tfDVrUyZbdPnbZg=;
+ b=iXLM08nMa44bOzPVU5aaFVmqvZKrs+Ybnrz+NmNg88DHQv5tvS8yqQWkjL80Wqry1T
+ ExBK71a+BdNdvsuJVFKy9eiahchEbwVZ4jrJxzuyxjjqOZwtW57wdrF1YEzTAli4ouNU
+ OVDw1gYu+lRFtE8FF0msbNC6OdV9SwrDM1zF1Iy6fiCD6jsnMr7saeojM17d3QdPPWML
+ ucxLHdZvULFpx/qqiBhryZ96yZNkS2CYPZVKXnIIhNxA3uj+cNXlbRaZEJIUYmY+9kPG
+ TMXNq+W5dKR4BeXQ3wEs+1Ix/WRRjN54hXoKEJ8A4w6vI1GR5R+QJd3wFhP8jgmHAvDp
+ B96A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wh1mYqXbigd70L6uyNc1nuoAq3q+tfDVrUyZbdPnbZg=;
+ b=OPBeayk+SFjnFzlRlhH+tVuF3QFeVDYhAVAnwPI9ADx3CY2Tv2c+/tzswy/UA2R+dy
+ p3d9cuJ4Y5fi3u4ZkxeSterdNOCKZH5N/cz107JkNLYaCJiXdcFtRVx+x/OEvF1vtbNK
+ ffsd3dtFkya420SUAqpk+u+1CPpXqjjrKRtJYyLKwzIeA5x6PYQhJOTWfsYsGVSLUE6t
+ Q5sUGsSdUBqfo9BoTcvFdPr58bgcqkvSUsqi3V2g+iG1XBVq4xYpZ8Gb5OiGnP5fl3JV
+ nGDVAYfqbenEZqGciB0DUWHbo0LkzZdI9Fk1mn8TNW/CJVi1lOSp/tUg51C5bFFRHeQQ
+ WnVg==
+X-Gm-Message-State: AOAM531RQR1ZidqkF7KKTqOc4Sb2V/droT2eUllyauvVWAQkcvG9SEUe
+ 96FOe8lyvoo3GAYgtT0j2VoMHvfhuq5fa4sBgnk=
+X-Google-Smtp-Source: ABdhPJwZ+0KMEOizcDmymxx6a0MZNPjAp4tyydXooOiL8jAkWr0KSCGNISjKPFpo3S+RDol2iLdbQioP35eJnUnErmQ=
+X-Received: by 2002:a05:6512:108d:: with SMTP id
+ j13mr3483211lfg.113.1630773810406; 
+ Sat, 04 Sep 2021 09:43:30 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210904152946.32042-1-miles.chen@mediatek.com>
+In-Reply-To: <20210904152946.32042-1-miles.chen@mediatek.com>
+From: Fabio Estevam <festevam@gmail.com>
+Date: Sat, 4 Sep 2021 13:43:18 -0300
+Message-ID: <CAOMZO5AE4uGXk47uhWKLch8RDmUrvvw0zDPM+wxgz4uWJD6eGA@mail.gmail.com>
+Subject: Re: [PATCH v2] clk: imx: use module_platform_driver
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: Abel Vesa <abel.vesa@nxp.com>, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Shawn Guo <shawnguo@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ NXP Linux Team <linux-imx@nxp.com>, linux-clk <linux-clk@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210904_082952_800668_0294E784 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20210904_094333_226798_9EE87696 
+X-CRM114-Status: UNSURE (   7.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,52 +100,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Replace builtin_platform_driver_probe with module_platform_driver_probe
-because CONFIG_CLK_IMX8QXP can be set to =m (kernel module).
+Hi Miles,
 
-Fixes: c2cccb6d0b33 ("clk: imx: add imx8qxp clk driver")
-Fixes: 1e3121bfe51a ("clk: imx: add imx8qxp lpcg driver")
-Cc: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+On Sat, Sep 4, 2021 at 12:29 PM Miles Chen <miles.chen@mediatek.com> wrote:
+>
+> Replace builtin_platform_driver_probe with module_platform_driver_probe
+> because CONFIG_CLK_IMX8QXP can be set to =m (kernel module).
+>
+> Fixes: c2cccb6d0b33 ("clk: imx: add imx8qxp clk driver")
+> Fixes: 1e3121bfe51a ("clk: imx: add imx8qxp lpcg driver")
 
----
+The correct Fixes tag would be:
 
-Change since v1:
-Add Fixes tags
+Fixes: e0d0d4d86c766 ("clk: imx8qxp: Support building i.MX8QXP clock
+driver as module")
 
----
- drivers/clk/imx/clk-imx8qxp-lpcg.c | 2 +-
- drivers/clk/imx/clk-imx8qxp.c      | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Thanks
 
-diff --git a/drivers/clk/imx/clk-imx8qxp-lpcg.c b/drivers/clk/imx/clk-imx8qxp-lpcg.c
-index d3e905cf867d..b23758083ce5 100644
---- a/drivers/clk/imx/clk-imx8qxp-lpcg.c
-+++ b/drivers/clk/imx/clk-imx8qxp-lpcg.c
-@@ -370,7 +370,7 @@ static struct platform_driver imx8qxp_lpcg_clk_driver = {
- 	.probe = imx8qxp_lpcg_clk_probe,
- };
- 
--builtin_platform_driver(imx8qxp_lpcg_clk_driver);
-+module_platform_driver(imx8qxp_lpcg_clk_driver);
- 
- MODULE_AUTHOR("Aisheng Dong <aisheng.dong@nxp.com>");
- MODULE_DESCRIPTION("NXP i.MX8QXP LPCG clock driver");
-diff --git a/drivers/clk/imx/clk-imx8qxp.c b/drivers/clk/imx/clk-imx8qxp.c
-index c53a688d8ccc..40a2efb1329b 100644
---- a/drivers/clk/imx/clk-imx8qxp.c
-+++ b/drivers/clk/imx/clk-imx8qxp.c
-@@ -308,7 +308,7 @@ static struct platform_driver imx8qxp_clk_driver = {
- 	},
- 	.probe = imx8qxp_clk_probe,
- };
--builtin_platform_driver(imx8qxp_clk_driver);
-+module_platform_driver(imx8qxp_clk_driver);
- 
- MODULE_AUTHOR("Aisheng Dong <aisheng.dong@nxp.com>");
- MODULE_DESCRIPTION("NXP i.MX8QXP clock driver");
--- 
-2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
