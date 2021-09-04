@@ -1,87 +1,92 @@
-Return-Path: <SRS0=h4nU=NZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=vCgL=N2=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6FE2CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 23:09:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FF55C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 03:01:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 067B161058
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Sep 2021 23:09:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 067B161058
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 55D0960555
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 03:01:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 55D0960555
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o+EaQ9djTewEwlErEWHWu0gYYM9pcBtK0JrnpRFqwCA=; b=HvxtvjuGZGPmzA
-	2DLea/WvDGMwPLWOmjYD29cn7G0aJanHxTV2TkjJ8g+gaPQKEDQRMeGbGaIgIJLpcKapMBKVMdQKm
-	iKU3gOEWVdDGhvGdoDDG4iMKlAuPuONfEqtr06ZxZMRl770mi0wGoQxg/fEqxnBVrDs7Vt9psRJDj
-	A5Vx+5MS49BS55uEKoxuxH6SqN290Sa78hbxhRREB3mwwA4O+uOVwvLNKhzY9M+eB9r04+TH9fEA1
-	h6CDL4aZ8EWhhql0KaGk/XIRx8NzvBPPyVyxVvN+HOO/o2U2MIZj/w2BDbkgF8U/AxOXIPhOgL4u6
-	LWsYaOlls/HaWl9yGK4A==;
+	List-Owner; bh=WpxKg+TxQpmZKoTUVvjyg6eIuFM5D46DkJwNc1ADrUE=; b=3wL6VdmPy3L+Q3
+	n6SnIU2n48UXZDhwx59wC7zW2d6PJqmdA131zjVt7n2hBxTgDmzOhaYhNT4B+fac7GHpUiEECFMLE
+	JrnbhKVYnhIGdIhEboEQx3m6s0j4LuSdh5BV1AG0gUL+7jkWR/5tqd4Y5oRgzt6Ua51Nb9STivGZt
+	uHCV6eMOjg/NtmkWdDsbwhBQ9zuJdJN17px3RHnlqyhtSA8t19TQYx9RuQMWXZ1HzpytFsRxTHxMh
+	6A5d5AJRlBOgaKU6gLvgJCj/xyNoBeEFvl/o7CYDrkWXVqz6rcGNuiq7fDQmdJmwrq7F7E4fGe94E
+	HliF8XOwZVyzzrlEWhug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mMIJC-00D7XH-QD; Fri, 03 Sep 2021 23:09:18 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mMLvB-00DRC6-LR; Sat, 04 Sep 2021 03:00:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mMIIz-00D7Tv-Q2; Fri, 03 Sep 2021 23:09:07 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 187AA610A2;
- Fri,  3 Sep 2021 23:09:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630710545;
- bh=+EPWpGxs3T9Uo/rZCTHnQYWwEXZm+0EO0/1mha6nTa4=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=PsvUU0jeXmTMrj2xAYG7mEtck7BYfJ242ItmR/IqPmPiMvNgjMP1O5dNXTVD3+i7U
- vfhz8jnigKIPx2Ihieu1jVh7u1WWGBx9GwHxcKOpv7xt9L7ywn/jNTBjwOCCMG4m5y
- qoCSeaA9ohL4/SkBqF55sHlA5WZ5d/jRd8n78Pcj6YcDLJURwq6L9t30Dk6031Yqko
- 5f15bFYGYljOq4mnsKWLa7sV1u539MzNRTarBu/jtyAdCSrfOd97cZOlGhVk+8vmS7
- gBw+cgUUVnhWlTTtv288B8n0LNwrISvtEtxgF21jGegWeHTNzTyHG40Shv/aY5GgWz
- UDgSk8TrFsH/w==
-Received: by mail-ed1-f45.google.com with SMTP id g21so974104edw.4;
- Fri, 03 Sep 2021 16:09:05 -0700 (PDT)
-X-Gm-Message-State: AOAM530cecwFa9U1khDW00hND2SHBGztcMth2hGWiO5AdEXLRjhNL1FV
- wjbJQjSwScH4PEfQ04yPVx6M6siOu7ZrKcyZRQ==
-X-Google-Smtp-Source: ABdhPJz4lEEmfpXjdeGrQR0fYR+vvvNDtbaIe409iJr4s/erwwA00YR7R74Biml7KDpYg2YDhsHicxPQb1hlrcxH+as=
-X-Received: by 2002:aa7:d3d1:: with SMTP id o17mr1353761edr.272.1630710543641; 
- Fri, 03 Sep 2021 16:09:03 -0700 (PDT)
+ id 1mMLuw-00DR7N-20; Sat, 04 Sep 2021 03:00:32 +0000
+X-UUID: 8fe2f69939254526baa4c885174dc19f-20210903
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=NvxseD2YWOEeruwk6CSMT0n8VcIDt0xwqzYZMGEFark=; 
+ b=BorB8BXr9h0sr0SPRE+o2oE7Sdthe9ZUQEilFcgDCIL95ckuAkMEe4F42nj1k9rT94MdW9uRg5FgJMdWoxxLoLdbPuXJqZCcfhzFHsFO957vIFJr2zsPqOYTqRctwZ4blAdsQ3wfwEox9zkSORXKMY8UBXLWnaTIjfqOduf0UKY=;
+X-UUID: 8fe2f69939254526baa4c885174dc19f-20210903
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 835972838; Fri, 03 Sep 2021 20:00:25 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 3 Sep 2021 20:00:23 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sat, 4 Sep 2021 11:00:21 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 4 Sep 2021 11:00:20 +0800
+Message-ID: <9208d58f46f5e748daddaa9c96e777985cbbc5c7.camel@mediatek.com>
+Subject: Re: [PATCH v6, 15/15] media: mtk-vcodec: Use codec type to separate
+ different hardware
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>
+CC: Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
+ Koenig" <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Sat, 4 Sep 2021 11:00:22 +0800
+In-Reply-To: <0100e846-7ab0-347e-c737-aa6d86fde4af@collabora.com>
+References: <20210901083215.25984-1-yunfei.dong@mediatek.com>
+ <20210901083215.25984-16-yunfei.dong@mediatek.com>
+ <cf57148f-430b-2023-5f62-b57b12a960b7@collabora.com>
+ <5d53649c1fe2d6d6942e1dd31cdf7a0def46acab.camel@mediatek.com>
+ <0100e846-7ab0-347e-c737-aa6d86fde4af@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20210825144833.7757-1-jason-jh.lin@mediatek.com>
- <20210825144833.7757-4-jason-jh.lin@mediatek.com>
-In-Reply-To: <20210825144833.7757-4-jason-jh.lin@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sat, 4 Sep 2021 07:08:52 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-p8m_rGgQ3=Q9WmuC19LJnT2gSTcJopkgYBpgj-h-T1Q@mail.gmail.com>
-Message-ID: <CAAOTY_-p8m_rGgQ3=Q9WmuC19LJnT2gSTcJopkgYBpgj-h-T1Q@mail.gmail.com>
-Subject: Re: [PATCH v9 03/14] dt-bindings: mediatek: display: split each block
- to individual yaml
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Frank Wunderlich <frank-w@public-files.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Fabien Parent <fparent@baylibre.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, fshao@chromium.org, 
- Yongqiang Niu <yongqiang.niu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
- Nancy Lin <nancy.lin@mediatek.com>, singo.chang@mediatek.com, 
- DTML <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, 
- DRI Development <dri-devel@lists.freedesktop.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210903_160905_922437_8B74A56B 
-X-CRM114-Status: GOOD (  20.09  )
+X-CRM114-CacheID: sfid-20210903_200030_757464_D63B034C 
+X-CRM114-Status: GOOD (  47.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,114 +98,289 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEphc29uOgoKamFzb24tamgubGluIDxqYXNvbi1qaC5saW5AbWVkaWF0ZWsuY29tPiDmlrwg
-MjAyMeW5tDjmnIgyNeaXpSDpgLHkuIkg5LiL5Y2IMTA6NDjlr6vpgZPvvJoKPgo+IDEuIFJlbW92
-ZSBtZWRpYXRlayxkaXNscGF5LnR4dAo+IDIuIFNwbGl0IGVhY2ggZGlzcGxheSBmdW5jdGlvbiBi
-bG9jayB0byBpbmRpdmlkdWFsIHlhbWwgZmlsZS4KPgo+IFNpZ25lZC1vZmYtYnk6IGphc29uLWpo
-LmxpbiA8amFzb24tamgubGluQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiAgLi4uL2Rpc3BsYXkvbWVk
-aWF0ZWsvbWVkaWF0ZWssYWFsLnlhbWwgICAgICAgIHwgIDc1ICsrKysrKwo+ICAuLi4vZGlzcGxh
-eS9tZWRpYXRlay9tZWRpYXRlayxjY29yci55YW1sICAgICAgfCAgNjkgKysrKysrCj4gIC4uLi9k
-aXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGNvbG9yLnlhbWwgICAgICB8ICA4NCArKysrKysrCj4g
-IC4uLi9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0ICAgICAgICB8IDIxOSAtLS0t
-LS0tLS0tLS0tLS0tLS0KPiAgLi4uL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZGl0aGVyLnlh
-bWwgICAgIHwgIDcwICsrKysrKwo+ICAuLi4vZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxnYW1t
-YS55YW1sICAgICAgfCAgNzEgKysrKysrCj4gIC4uLi9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVr
-LG1lcmdlLnlhbWwgICAgICB8ICA2NiArKysrKysKPiAgLi4uL2Rpc3BsYXkvbWVkaWF0ZWsvbWVk
-aWF0ZWssbXV0ZXgueWFtbCAgICAgIHwgIDc3ICsrKysrKwo+ICAuLi4vZGlzcGxheS9tZWRpYXRl
-ay9tZWRpYXRlayxvZC55YW1sICAgICAgICAgfCAgNTIgKysrKysKPiAgLi4uL2Rpc3BsYXkvbWVk
-aWF0ZWsvbWVkaWF0ZWssb3ZsLTJsLnlhbWwgICAgIHwgIDg2ICsrKysrKysKPiAgLi4uL2Rpc3Bs
-YXkvbWVkaWF0ZWsvbWVkaWF0ZWssb3ZsLnlhbWwgICAgICAgIHwgIDk2ICsrKysrKysrCj4gIC4u
-Li9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLHJkbWEueWFtbCAgICAgICB8IDExMCArKysrKysr
-KysKPiAgLi4uL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssc3BsaXQueWFtbCAgICAgIHwgIDU2
-ICsrKysrCj4gIC4uLi9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLHVmb2UueWFtbCAgICAgICB8
-ICA1OSArKysrKwo+ICAuLi4vZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayx3ZG1hLnlhbWwgICAg
-ICAgfCAgODYgKysrKysrKwo+ICAxNSBmaWxlcyBjaGFuZ2VkLCAxMDU3IGluc2VydGlvbnMoKyks
-IDIxOSBkZWxldGlvbnMoLSkKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2
-aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGFhbC55YW1sCj4gIGNy
-ZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxh
-eS9tZWRpYXRlay9tZWRpYXRlayxjY29yci55YW1sCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxj
-b2xvci55YW1sCj4gIGRlbGV0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxkaXNwLnR4dAo+ICBjcmVhdGUgbW9k
-ZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0
-ZWsvbWVkaWF0ZWssZGl0aGVyLnlhbWwKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGdhbW1hLnlh
-bWwKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLG1lcmdlLnlhbWwKPiAgY3JlYXRlIG1vZGUgMTAw
-NjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21l
-ZGlhdGVrLG11dGV4LnlhbWwKCkJlY2F1c2UgbXV0ZXggZG9lcyBub3Qgb25seSBjb250cm9sIGRp
-c3BsYXkgZnVuY3Rpb24gYmxvY2ssIGJ1dCBhbHNvCmNvbnRyb2wgbWRwIGZ1bmN0aW9uIGJsb2Nr
-LCBzbyBtb3ZlIG11dGV4IGJpbmRpbmcgZG9jdW1lbnQgdG8gdGhlIHNhbWUKZm9sZGVyIG9mIG1t
-c3lzLgoKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5k
-aW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLG9kLnlhbWwKPiAgY3JlYXRlIG1vZGUgMTAw
-NjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21l
-ZGlhdGVrLG92bC0ybC55YW1sCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2Rl
-dmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxvdmwueWFtbAo+ICBj
-cmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3Bs
-YXkvbWVkaWF0ZWsvbWVkaWF0ZWsscmRtYS55YW1sCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxz
-cGxpdC55YW1sCj4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUv
-YmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayx1Zm9lLnlhbWwKPiAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
-dGVrL21lZGlhdGVrLHdkbWEueWFtbAo+Cgpbc25pcF0KCj4gZGlmZiAtLWdpdCBhL0RvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLG11dGV4
-LnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRl
-ay9tZWRpYXRlayxtdXRleC55YW1sCj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAw
-MDAwMDAwMDAuLjkzOWRmZjE0ZDk4OQo+IC0tLSAvZGV2L251bGwKPiArKysgYi9Eb2N1bWVudGF0
-aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxtdXRleC55
-YW1sCj4gQEAgLTAsMCArMSw3NyBAQAo+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiAoR1BM
-LTIuMC1vbmx5IE9SIEJTRC0yLUNsYXVzZSkKPiArJVlBTUwgMS4yCj4gKy0tLQo+ICskaWQ6IGh0
-dHA6Ly9kZXZpY2V0cmVlLm9yZy9zY2hlbWFzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssbXV0
-ZXgueWFtbCMKPiArJHNjaGVtYTogaHR0cDovL2RldmljZXRyZWUub3JnL21ldGEtc2NoZW1hcy9j
-b3JlLnlhbWwjCj4gKwo+ICt0aXRsZTogbWVkaWF0ZWsgZGlzcGxheSBtdXRleAo+ICsKPiArbWFp
-bnRhaW5lcnM6Cj4gKyAgLSBDaHVuLUt1YW5nIEh1IDxjaHVua3VhbmcuaHVAa2VybmVsLm9yZz4K
-PiArICAtIFBoaWxpcHAgWmFiZWwgPHAuemFiZWxAcGVuZ3V0cm9uaXguZGU+Cj4gKwo+ICtkZXNj
-cmlwdGlvbjogfAo+ICsgIFRoZSBtZWRpYXRlayBkaXNwbGF5IG11dGV4IGlzIHVzZWQgdG8gc2Vu
-ZCB0aGUgdHJpZ2dlcnMgc2lnbmFscyBjYWxsZWQKPiArICBTdGFydCBPZiBGcmFtZSAoU09GKS8g
-RXJyb3IgT2YgRnJhbWUgKEVPRikgdG8gZWFjaCBzdWItbW9kdWxlcyBvbiB0aGUKCkVPRiBpcyBF
-bmQgb2YgRnJhbWUuCgo+ICsgIGRpc3BsYXkgZGF0YSBwYXRoCgpJbiBzb21lIFNvQywgc3VjaCBh
-cyBtdDI3MDEsIE1VVEVYIGNvdWxkIGJlIGEgaGFyZHdhcmUgbXV0ZXggd2hpY2gKcHJvdGVjdCB0
-aGUgc2hhZG93IHJlZ2lzdGVyLiBQbGVhc2UgZGVzY3JpYmUgdGhpcyBiZWNhdXNlIHRoaXMgaXMg
-YQptYWluIGZ1bmN0aW9uIGFuZCB0aGlzIGlzIHdoeSBpdCdzIGNhbGxlZCBNVVRFWC4KClJlZ2Fy
-ZHMsCkNodW4tS3VhbmcuCi4KPiArICBNVVRFWCBkZXZpY2Ugbm9kZSBtdXN0IGJlIHNpYmxpbmdz
-IHRvIHRoZSBjZW50cmFsIE1NU1lTX0NPTkZJRyBub2RlLgo+ICsgIEZvciBhIGRlc2NyaXB0aW9u
-IG9mIHRoZSBNTVNZU19DT05GSUcgYmluZGluZywgc2VlCj4gKyAgRG9jdW1lbnRhdGlvbi9kZXZp
-Y2V0cmVlL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxtbXN5cy55YW1sIGZvciBkZXRh
-aWxzLgo+ICsKPiArcHJvcGVydGllczoKPiArICBjb21wYXRpYmxlOgo+ICsgICAgb25lT2Y6Cj4g
-KyAgICAgIC0gaXRlbXM6Cj4gKyAgICAgICAgICAtIGNvbnN0OiBtZWRpYXRlayxtdDI3MDEtZGlz
-cC1tdXRleAo+ICsgICAgICAtIGl0ZW1zOgo+ICsgICAgICAgICAgLSBjb25zdDogbWVkaWF0ZWss
-bXQyNzEyLWRpc3AtbXV0ZXgKPiArICAgICAgLSBpdGVtczoKPiArICAgICAgICAgIC0gY29uc3Q6
-IG1lZGlhdGVrLG10ODE2Ny1kaXNwLW11dGV4Cj4gKyAgICAgIC0gaXRlbXM6Cj4gKyAgICAgICAg
-ICAtIGNvbnN0OiBtZWRpYXRlayxtdDgxNzMtZGlzcC1tdXRleAo+ICsgICAgICAtIGl0ZW1zOgo+
-ICsgICAgICAgICAgLSBjb25zdDogbWVkaWF0ZWssbXQ4MTgzLWRpc3AtbXV0ZXgKPiArCj4gKyAg
-cmVnOgo+ICsgICAgbWF4SXRlbXM6IDEKPiArCj4gKyAgaW50ZXJydXB0czoKPiArICAgIG1heEl0
-ZW1zOiAxCj4gKwo+ICsgIHBvd2VyLWRvbWFpbnM6Cj4gKyAgICBkZXNjcmlwdGlvbjogQSBwaGFu
-ZGxlIGFuZCBQTSBkb21haW4gc3BlY2lmaWVyIGFzIGRlZmluZWQgYnkgYmluZGluZ3Mgb2YKPiAr
-ICAgICAgdGhlIHBvd2VyIGNvbnRyb2xsZXIgc3BlY2lmaWVkIGJ5IHBoYW5kbGUuIFNlZQo+ICsg
-ICAgICBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvcG93ZXIvcG93ZXItZG9tYWlu
-LnlhbWwgZm9yIGRldGFpbHMuCj4gKwo+ICsgIGNsb2NrczoKPiArICAgIGl0ZW1zOgo+ICsgICAg
-ICAtIGRlc2NyaXB0aW9uOiBNVVRFWCBDbG9jawo+ICsKPiArICBtZWRpYXRlayxnY2UtZXZlbnRz
-Ogo+ICsgICAgZGVzY3JpcHRpb246Cj4gKyAgICAgIFRoZSBldmVudCBpZCB3aGljaCBpcyBtYXBw
-aW5nIHRvIHRoZSBzcGVjaWZpYyBoYXJkd2FyZSBldmVudCBzaWduYWwgdG8gZ2NlLgo+ICsgICAg
-ICBUaGUgZXZlbnQgaWQgaXMgZGVmaW5lZCBpbiB0aGUgZ2NlIGhlYWRlcgo+ICsgICAgICBpbmNs
-dWRlL2luY2x1ZGUvZHQtYmluZGluZ3MvZ2NlLzxjaGlwPi1nY2UuaCBvZiBlYWNoIGNoaXBzLgo+
-ICsgICAgJHJlZjogL3NjaGVtYXMvdHlwZXMueWFtbCMvZGVmaW5pdGlvbnMvcGhhbmRsZS1hcnJh
-eQo+ICsKPiArcmVxdWlyZWQ6Cj4gKyAgLSBjb21wYXRpYmxlCj4gKyAgLSByZWcKPiArICAtIGlu
-dGVycnVwdHMKPiArICAtIHBvd2VyLWRvbWFpbnMKPiArICAtIGNsb2Nrcwo+ICsKPiArYWRkaXRp
-b25hbFByb3BlcnRpZXM6IGZhbHNlCj4gKwo+ICtleGFtcGxlczoKPiArICAtIHwKPiArCj4gKyAg
-ICBtdXRleDogbXV0ZXhAMTQwMjAwMDAgewo+ICsgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0
-ZWssbXQ4MTczLWRpc3AtbXV0ZXgiOwo+ICsgICAgICAgIHJlZyA9IDwwIDB4MTQwMjAwMDAgMCAw
-eDEwMDA+Owo+ICsgICAgICAgIGludGVycnVwdHMgPSA8R0lDX1NQSSAxNjkgSVJRX1RZUEVfTEVW
-RUxfTE9XPjsKPiArICAgICAgICBwb3dlci1kb21haW5zID0gPCZzcG0gTVQ4MTczX1BPV0VSX0RP
-TUFJTl9NTT47Cj4gKyAgICAgICAgY2xvY2tzID0gPCZtbXN5cyBDTEtfTU1fTVVURVhfMzJLPjsK
-PiArICAgICAgICBtZWRpYXRlayxnY2UtZXZlbnRzID0gPENNRFFfRVZFTlRfTVVURVgwX1NUUkVB
-TV9FT0Y+LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA8Q01EUV9FVkVOVF9NVVRF
-WDFfU1RSRUFNX0VPRj47Cj4gKyAgICB9OwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlh
-dGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Hi Danfa,
+
+Thanks for your suggestion.
+On Fri, 2021-09-03 at 14:42 +0200, Dafna Hirschfeld wrote:
+> 
+> On 02.09.21 08:05, yunfei.dong@mediatek.com wrote:
+> > On Wed, 2021-09-01 at 14:17 +0200, Dafna Hirschfeld wrote:
+> > Hi Dafna,
+> > 
+> > Thanks for your suggestion.
+> > > Hi
+> > > 
+> > > On 01.09.21 10:32, Yunfei Dong wrote:
+> > > > There are just one core thread, in order to separeate different
+> > > > hardware, using codec type to separeate it in scp driver.
+> > > 
+> > > this code seems to relate to the vpu driver not the scp driver.
+> > > Is there a corresponding code added to the vpu driver that test
+> > > the
+> > > codec_type?
+> > > 
+> > 
+> > Vpu is video processor unit, used to connect with micro processor.
+> > In mt8173: vdec_vpu_if.c -> mtk_vpu.c -> micro processor
+> > In mt8192/mt8183: vdec_vpu_if.c -> mtk_scp.c ->micro processor
+> > 
+> > This init/dec start/dec_end interfaces are the same for vpu and
+> > scp.
+> > > > 
+> > > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > > > ---
+> > > >    .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 12 ++++---
+> > > >    .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 34
+> > > > ++++++++++++++++---
+> > > >    .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  4 +++
+> > > >    3 files changed, 41 insertions(+), 9 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > > > b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > > > index 9d8079c4f976..c488f0c40190 100644
+> > > > --- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > > > +++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+> > > > @@ -35,6 +35,8 @@ enum vdec_ipi_msgid {
+> > > >     * @msg_id	: vdec_ipi_msgid
+> > > >     * @vpu_inst_addr : VPU decoder instance address. Used if
+> > > > ABI
+> > > > version < 2.
+> > > >     * @inst_id     : instance ID. Used if the ABI version >= 2.
+> > > > + * @codec_type	: Codec fourcc
+> > > > + * @reserved	: reserved param
+> > > >     */
+> > > >    struct vdec_ap_ipi_cmd {
+> > > >    	uint32_t msg_id;
+> > > > @@ -42,6 +44,8 @@ struct vdec_ap_ipi_cmd {
+> > > >    		uint32_t vpu_inst_addr;
+> > > >    		uint32_t inst_id;
+> > > >    	};
+> > > > +	uint32_t codec_type;
+> > > > +	uint32_t reserved;
+> > > >    };
+> > > >    
+> > > >    /**
+> > > > @@ -59,12 +63,12 @@ struct vdec_vpu_ipi_ack {
+> > > >    /**
+> > > >     * struct vdec_ap_ipi_init - for AP_IPIMSG_DEC_INIT
+> > > >     * @msg_id	: AP_IPIMSG_DEC_INIT
+> > > > - * @reserved	: Reserved field
+> > > > + * @codec_type	: Codec fourcc
+> > > >     * @ap_inst_addr	: AP video decoder instance address
+> > > >     */
+> > > >    struct vdec_ap_ipi_init {
+> > > >    	uint32_t msg_id;
+> > > > -	uint32_t reserved;
+> > > > +	uint32_t codec_type;
+> > > >    	uint64_t ap_inst_addr;
+> > > >    };
+> > > >    
+> > > > @@ -77,7 +81,7 @@ struct vdec_ap_ipi_init {
+> > > >     *	H264 decoder [0]:buf_sz [1]:nal_start
+> > > >     *	VP8 decoder  [0]:width/height
+> > > >     *	VP9 decoder  [0]:profile, [1][2] width/height
+> > > > - * @reserved	: Reserved field
+> > > > + * @codec_type	: Codec fourcc
+> > > >     */
+> > > >    struct vdec_ap_ipi_dec_start {
+> > > >    	uint32_t msg_id;
+> > > > @@ -86,7 +90,7 @@ struct vdec_ap_ipi_dec_start {
+> > > >    		uint32_t inst_id;
+> > > >    	};
+> > > >    	uint32_t data[3];
+> > > > -	uint32_t reserved;
+> > > > +	uint32_t codec_type;
+> > > >    };
+> > > >    
+> > > >    /**
+> > > > diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > > > b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > > > index bfd8e87dceff..c84fac52fe26 100644
+> > > > --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > > > +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+> > > > @@ -100,18 +100,29 @@ static void vpu_dec_ipi_handler(void
+> > > > *data,
+> > > > unsigned int len, void *priv)
+> > > >    
+> > > >    static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu,
+> > > > void
+> > > > *msg, int len)
+> > > >    {
+> > > > -	int err;
+> > > > +	int err, id, msgid;
+> > > >    
+> > > > -	mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
+> > > > +	msgid = *(uint32_t *)msg;
+> > > > +	mtk_vcodec_debug(vpu, "id=%X", msgid);
+> > > >    
+> > > >    	vpu->failure = 0;
+> > > >    	vpu->signaled = 0;
+> > > >    
+> > > > -	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, 
+> > > > vpu-
+> > > > > id, msg,
+> > > > 
+> > > > +	if (vpu->ctx->dev->vdec_pdata->hw_arch ==
+> > > > MTK_VDEC_LAT_SINGLE_CORE) {
+> > > > +		if (msgid == AP_IPIMSG_DEC_CORE ||
+> > > > +			msgid == AP_IPIMSG_DEC_CORE_END)
+> > > > +			id = vpu->core_id;
+> > > > +		else
+> > > > +			id = vpu->id;
+> > > > +	} else {
+> > > > +		id = vpu->id;
+> > > > +	}
+> > > > +
+> > > > +	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, 
+> > > > id,
+> > > > msg,
+> > > >    				     len, 2000);
+> > > 
+> > > so
+> > > >    	if (err) {
+> > > >    		mtk_vcodec_err(vpu, "send fail vpu_id=%d
+> > > > msg_id=%X
+> > > > status=%d",
+> > > > -			       vpu->id, *(uint32_t *)msg, err);
+> > > > +			       id, msgid, err);
+> > > >    		return err;
+> > > >    	}
+> > > >    
+> > > > @@ -131,6 +142,7 @@ static int vcodec_send_ap_ipi(struct
+> > > > vdec_vpu_inst *vpu, unsigned int msg_id)
+> > > >    		msg.vpu_inst_addr = vpu->inst_addr;
+> > > >    	else
+> > > >    		msg.inst_id = vpu->inst_id;
+> > > > +	msg.codec_type = vpu->codec_type;
+> > > >    
+> > > >    	err = vcodec_vpu_send_msg(vpu, &msg, sizeof(msg));
+> > > >    	mtk_vcodec_debug(vpu, "- id=%X ret=%d", msg_id, err);
+> > > > @@ -149,14 +161,25 @@ int vpu_dec_init(struct vdec_vpu_inst
+> > > > *vpu)
+> > > >    
+> > > >    	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev-
+> > > > >fw_handler,
+> > > > vpu->id,
+> > > >    					 vpu->handler, "vdec",
+> > > > NULL);
+> > > > -	if (err != 0) {
+> > > > +	if (err) {
+> > > 
+> > > could be nice to send a patch with other such fixes,
+> > > anyway it is better to send unrelated fixes in a separate patch
+> > > 
+> > 
+> > will fix in next patch.
+> > > >    		mtk_vcodec_err(vpu, "vpu_ipi_register fail
+> > > > status=%d",
+> > > > err);
+> > > >    		return err;
+> > > >    	}
+> > > >    
+> > > > +	if (vpu->ctx->dev->vdec_pdata->hw_arch ==
+> > > > MTK_VDEC_LAT_SINGLE_CORE) {
+> > > > +		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev-
+> > > > > fw_handler,
+> > > > 
+> > > > +					 vpu->core_id, vpu-
+> > > > >handler,
+> > > > +					 "vdec", NULL);
+> > > > +		if (err) {
+> > > > +			mtk_vcodec_err(vpu, "vpu_ipi_register
+> > > > core fail
+> > > > status=%d", err);
+> > > > +			return err;
+> > > > +		}
+> > > > +	}
+> > > > +
+> > > >    	memset(&msg, 0, sizeof(msg));
+> > > >    	msg.msg_id = AP_IPIMSG_DEC_INIT;
+> > > >    	msg.ap_inst_addr = (unsigned long)vpu;
+> > > > +	msg.codec_type = vpu->codec_type;
+> > > >    
+> > > >    	mtk_vcodec_debug(vpu, "vdec_inst=%p", vpu);
+> > > >    
+> > > > @@ -187,6 +210,7 @@ int vpu_dec_start(struct vdec_vpu_inst
+> > > > *vpu,
+> > > > uint32_t *data, unsigned int len)
+> > > >    
+> > > >    	for (i = 0; i < len; i++)
+> > > >    		msg.data[i] = data[i];
+> > > > +	msg.codec_type = vpu->codec_type;
+> > > 
+> > > I don't see where is the vpu->codec_type initialzied
+> > > 
+> > 
+> > This patch just add interface to support core hardware decode, in
+> > next
+> > serial patches based on these will used codec type to separate
+> > after
+> > these base patches are stable.
+> 
+> Then why not send it on the same series?
+> 
+For this patch is the common part, not only one spec(h264/vp9/av1) use
+it. And these specs will send in different patch series, in order to
+avoid patch dependency, so add this patch in this common series.
+
+> Thanks,
+> Dafna
+> 
+Thanks
+Yunfei Dong
+> > > Thanks,
+> > > Dafna
+> > > 
+> > 
+> > Thanks
+> > Yunfei Dong
+> > > >    
+> > > >    	err = vcodec_vpu_send_msg(vpu, (void *)&msg,
+> > > > sizeof(msg));
+> > > >    	mtk_vcodec_debug(vpu, "- ret=%d", err);
+> > > > diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > > > b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > > > index ae24b75d1649..802660770a87 100644
+> > > > --- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > > > +++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+> > > > @@ -14,6 +14,7 @@ struct mtk_vcodec_ctx;
+> > > >    /**
+> > > >     * struct vdec_vpu_inst - VPU instance for video codec
+> > > >     * @id          : ipi msg id for each decoder
+> > > > + * @core_id     : core id used to separate different hardware
+> > > >     * @vsi         : driver structure allocated by VPU side and
+> > > > shared to AP side
+> > > >     *                for control and info share
+> > > >     * @failure     : VPU execution result status, 0: success,
+> > > > others: fail
+> > > > @@ -26,9 +27,11 @@ struct mtk_vcodec_ctx;
+> > > >     * @dev		: platform device of VPU
+> > > >     * @wq          : wait queue to wait VPU message ack
+> > > >     * @handler     : ipi handler for each decoder
+> > > > + * @codec_type     : used codec type to separate different
+> > > > codecs
+> > > >     */
+> > > >    struct vdec_vpu_inst {
+> > > >    	int id;
+> > > > +	int core_id;
+> > > >    	void *vsi;
+> > > >    	int32_t failure;
+> > > >    	uint32_t inst_addr;
+> > > > @@ -38,6 +41,7 @@ struct vdec_vpu_inst {
+> > > >    	struct mtk_vcodec_ctx *ctx;
+> > > >    	wait_queue_head_t wq;
+> > > >    	mtk_vcodec_ipi_handler handler;
+> > > > +	unsigned int codec_type;
+> > > >    };
+> > > >    
+> > > >    /**
+> > > > 
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
