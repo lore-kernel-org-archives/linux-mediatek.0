@@ -2,89 +2,93 @@ Return-Path: <SRS0=vCgL=N2=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3EBE4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 08:40:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30C44C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 12:34:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DA8AC61051
-	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 08:40:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DA8AC61051
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id CD5F160F56
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Sep 2021 12:34:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CD5F160F56
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7bTmCWQs+RjKL/M98edUr1jk3KCOwNpNxd6jx6uI1Ec=; b=eJ4ZrZUWKrmsoy
-	4yi2nYkvW9TdSKaWm2Z9tSJrnBk2ZNezkbQYduu5HznhEH6cfGb0okfLwZ+eqtt/in37uxjecuPdH
-	dGrz2Dj5R7CC4sQNWx/16+1ZIepi0GyzsIf5JFikVRTIzSAdcYAIHjHIyNNXaoyhsvBGc3tZZm2R5
-	Gh83qMhJJsIVTrSErbTr5rIAvVonThJxE2c6cvLuyc0gqmwZM0O9fnbQZJE0NIlhxvNl9MZ+go2qk
-	hssx0ShJXfvuhNDbPmdLr5d/RbhD2+WiYFONnZqzIODVBffDUURwk41NBg5o19IL7kYF/Zkrnr1lZ
-	yCKTNQLeQ4I+3+GerwvA==;
+	List-Owner; bh=EaeIWTCZ+58g0iZ+owWwSJqvRmjdF6liax/iUVk6HTY=; b=Cp/YKBqbOFK192
+	B35W+GQ445NGNwxUKFrxXWNTnemtiA3N6qytKQ+or/2DNb9vviFowmcCR8pi9ScI3onbkOMqc2jEK
+	sBBnAJQIOp/URW6cyu/VqxoECDCwqE9BNUyr7hdWQ9Mbr+KDGlwvNZlCq0ye7N5D6Dh5W9dA6v9gh
+	KX6HfBP/JhdqczgyPfzyLFr7w77xExHly3883CzC7yNkMxjV0hRB6n8ZRcQ6c+Gy2KjxFk8Q+XxRA
+	HXkxW8q+X0JHChIOMnAcVqqcwwM4NdZRIn6qqTc1WanuKguioaob3AiNttIojACFxnQkUoz3SLdIG
+	cc+/ZjSR4LeVOE0gO0TA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mMRDw-00Dqbg-Fw; Sat, 04 Sep 2021 08:40:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mMUsZ-00E7j5-EU; Sat, 04 Sep 2021 12:34:39 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mMRDr-00Dqai-L0; Sat, 04 Sep 2021 08:40:27 +0000
-X-UUID: 9cf38ce73db14d9b9fbc3c536884b675-20210904
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=4nWLAKWd0moWp2KumjlyVBrD/vVxfeBponWObcNvyTg=; 
- b=oZP0qshlzMhvdZE16fGZqAO8jEFLnzS6eTDmEn7GnKvL5nvSTBYQctoV547TFWUYcAMuEBDuxEUcEDcab3o7FCE/8SbljW4jtjBeOaaReLjdEwDLL/j4SKChc2Sf2M0Yepv5ug4diCISL5gHUxRbDxAGiF8hgUXVuD2Vgnsgtuk=;
-X-UUID: 9cf38ce73db14d9b9fbc3c536884b675-20210904
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <zhiyong.tao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 787763427; Sat, 04 Sep 2021 01:40:18 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 4 Sep 2021 01:40:16 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 4 Sep 2021 16:40:15 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 4 Sep 2021 16:40:14 +0800
-Message-ID: <4787120f25e76ed3727e10011522fc075da52e32.camel@mediatek.com>
-Subject: Re: [PATCH v11 1/4] dt-bindings: pinctrl: mt8195: add rsel define
-From: zhiyong.tao <zhiyong.tao@mediatek.com>
-To: Chen-Yu Tsai <wenst@chromium.org>
-CC: Rob Herring <robh+dt@kernel.org>, Linus Walleij
- <linus.walleij@linaro.org>, Mark Rutland <mark.rutland@arm.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>,
- srv_heupstream <srv_heupstream@mediatek.com>, <hui.liu@mediatek.com>, "Eddie
- Huang" <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
- Biao Huang <biao.huang@mediatek.com>, Hongzhou Yang
- <hongzhou.yang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, "Seiya
- Wang" <seiya.wang@mediatek.com>, Devicetree List
- <devicetree@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, "moderated
- list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, "open list:GPIO SUBSYSTEM"
- <linux-gpio@vger.kernel.org>
-Date: Sat, 4 Sep 2021 16:40:16 +0800
-In-Reply-To: <CAGXv+5E2pmS7Og5bRH8Q8yvXPHkJuL6EXKORkq1-Ye+2qNYQpg@mail.gmail.com>
-References: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
- <20210830003603.31864-2-zhiyong.tao@mediatek.com>
- <CAGXv+5HeNj2Ly-T1bWMvnYXv6nP-Q1kv+D9QEd+5u4xfNVibOg@mail.gmail.com>
- <1630551265.2247.11.camel@mhfsdcap03>
- <CAGXv+5E2pmS7Og5bRH8Q8yvXPHkJuL6EXKORkq1-Ye+2qNYQpg@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mMUsL-00E7hM-Qb
+ for linux-mediatek@lists.infradead.org; Sat, 04 Sep 2021 12:34:27 +0000
+Received: by mail-ed1-x531.google.com with SMTP id g21so2689177edw.4
+ for <linux-mediatek@lists.infradead.org>; Sat, 04 Sep 2021 05:34:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=vanguardiasur-com-ar.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5+zo+4Wr/N1+qtO0Bo0/5IH229VcLBJpVABLvaQw9+Y=;
+ b=krzH3n/yLFz4lPCd5+4cvhdNx8SktbX09J5W/CdMMARjeDou9AzW9SqJzGIebu+Ab2
+ MdDRqy34f4ie9SozTFLwUoo+1t/BK2GrDXuYKX28lskqLzd8milT7/L0awCvLzh154ew
+ PPC5pl76KQD75u4Xpkf7Iviu8qcuXpjD30XSk6XBqKY7M2HbFSZRvGMLoyKWwxtvi0AP
+ nO10GPONuy7MSn62griUv8x9flscDyJNmSI17PCzXQ2xy5erSe6tuyq5uEcB5C700n2Q
+ D8rH17FaQ2FLMVneAd7et9prM1nnZHLIlALAcEjTHIOLESHNij8o3S8N3Y937WNUibds
+ xzBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5+zo+4Wr/N1+qtO0Bo0/5IH229VcLBJpVABLvaQw9+Y=;
+ b=rqHFri7b1kJe2uq0egIaFNWIVEEVwSPzNa2HC7yWW8E7S7ebYDB4YdBsUC70g4fEb6
+ YlWIQ236YLGGA1O6rXMeJqAAhUAXXMtoc3j2Um3s3xXxrYN7lUe861PK2flW6QJ10fGM
+ 3vruMHEAgH/Q+UBXGfa9mDQQp35EfMdrv/Hzng9b1wwuElfQ9v3Sfy6FAj2AAOIXc0X1
+ WhBZseHfSGRp2+cShQstxYr2c5B7/PXDAKP/336yjmZX/Z27vZCo2UPee+PoWhcwydsR
+ 7bXCGMcX8mn+nYI+GWRP3mni7jC5J+Cdvv79mVKUZ3CcnSUzpFupNyQNq2jfQAsEJSZD
+ Y2/g==
+X-Gm-Message-State: AOAM531Wt0dRKlzM/NG6RnpS/8mVmm6VJU+bGXu1J4O8K+P5yU4VbRgg
+ SgA7wRRCRsorVI2tS6o7UEBVPXULz7uGqa65i4BUug==
+X-Google-Smtp-Source: ABdhPJxTnsvckyGgNMH1nCQCPjnCx2xmJcfaKIBG5ezGLlI/cFtqEY0Wn5EOslI/SFO5VcI8R4u9GAwp2c4cQxyl6L8=
+X-Received: by 2002:a05:6402:743:: with SMTP id
+ p3mr3988258edy.26.1630758863159; 
+ Sat, 04 Sep 2021 05:34:23 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210825063323.3607738-1-eizan@chromium.org>
+ <20210825163247.v7.2.Ie6d1e6e39cf9b5d6b2108ae1096af34c3d55880b@changeid>
+In-Reply-To: <20210825163247.v7.2.Ie6d1e6e39cf9b5d6b2108ae1096af34c3d55880b@changeid>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Sat, 4 Sep 2021 09:34:11 -0300
+Message-ID: <CAAEAJfDNDXdJFfB-bHhFcqnnKZ0TY--d_wLGddKRymQOLQY4TQ@mail.gmail.com>
+Subject: Re: [PATCH v7 2/7] mtk-mdp: add driver to probe mdp components
+To: Eizan Miyamoto <eizan@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>
+Cc: Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ chunkuang.hu@kernel.org, 
+ Yong Wu <yong.wu@mediatek.com>, wenst@chromium.org, ck.hu@mediatek.com, 
+ houlong.wei@mediatek.com, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ yongqiang.niu@mediatek.com, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ linux-media <linux-media@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210904_014025_142462_88716F4F 
-X-CRM114-Status: GOOD (  38.11  )
+X-CRM114-CacheID: sfid-20210904_053426_101564_10E9D3D2 
+X-CRM114-Status: GOOD (  33.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,101 +105,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-09-02 at 11:35 +0800, Chen-Yu Tsai wrote:
-> On Thu, Sep 2, 2021 at 10:54 AM zhiyong.tao <zhiyong.tao@mediatek.com
-> > wrote:
-> > 
-> > On Wed, 2021-09-01 at 12:35 +0800, Chen-Yu Tsai wrote:
-> > > On Mon, Aug 30, 2021 at 8:36 AM Zhiyong Tao <
-> > > zhiyong.tao@mediatek.com> wrote:
-> > > > 
-> > > > This patch adds rsel define for mt8195.
-> > > > 
-> > > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-> > > > ---
-> > > >  include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
-> > > >  1 file changed, 9 insertions(+)
-> > > > 
-> > > > diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-
-> > > > bindings/pinctrl/mt65xx.h
-> > > > index 7e16e58fe1f7..f5934abcd1bd 100644
-> > > > --- a/include/dt-bindings/pinctrl/mt65xx.h
-> > > > +++ b/include/dt-bindings/pinctrl/mt65xx.h
-> > > > @@ -16,6 +16,15 @@
-> > > >  #define MTK_PUPD_SET_R1R0_10 102
-> > > >  #define MTK_PUPD_SET_R1R0_11 103
-> > > > 
-> > > > +#define MTK_PULL_SET_RSEL_000  200
-> > > > +#define MTK_PULL_SET_RSEL_001  201
-> > > > +#define MTK_PULL_SET_RSEL_010  202
-> > > > +#define MTK_PULL_SET_RSEL_011  203
-> > > > +#define MTK_PULL_SET_RSEL_100  204
-> > > > +#define MTK_PULL_SET_RSEL_101  205
-> > > > +#define MTK_PULL_SET_RSEL_110  206
-> > > > +#define MTK_PULL_SET_RSEL_111  207
-> > > 
-> > > Could you keep the spacing between constants tighter, or have no
-> > > spacing
-> > > at all? Like having MTK_PULL_SET_RSEL_000 defined as 104 and so
-> > > on. This
-> > > would reduce the chance of new macro values colliding with actual
-> > > resistor
-> > > values set in the datasheets, plus a contiguous space would be
-> > > easy to
-> > > rule as macros.
-> > > 
-> > > ChenYu
-> > 
-> > Hi chenyu,
-> > By the current solution, it won't be mixed used by
-> > MTK_PULL_SET_RSEL_XXX
-> > and real  resistor value.
-> > If user use MTK_PULL_SET_RSEL_XXX, They don't care the define which
-> > means how much resistor value.
-> 
-> What I meant was that by keeping the value space tight, we avoid the
-> situation where in some new chip, one of the RSEL resistors happens
-> to
-> be 200 or 300 ohms. 100 is already taken, so there's nothing we can
-> do if new designs actually do have 100 ohm settings.
-> 
-> > We think that we don't contiguous macro space for different
-> > register.
-> > It may increase code complexity to make having
-> > MTK_PULL_SET_RSEL_000
-> > defined as 104.
-> 
-> Can you elaborate? It is a simple range check and offset handling.
-> Are
-> you concerned that a new design would have R2R1R0 and you would like
-> the macros to be contiguous?
-> 
-> BTW I don't quite get why decimal base values (100, 200, etc.) were
-> chosen. One would think that binary bases are easier to handle in
-> code.
-> 
-> 
-> ChenYu
-> 
+Hi Eizan,
 
-Yes,we concerned that a new design would have R2R1R0 and we would like
-the macros to be contiguous in the feature. we reserve it.
+Sorry for seeing this series so late.
 
-We think that decimal and binary base values are the same for the
-feature.
+On Wed, 25 Aug 2021 at 03:35, Eizan Miyamoto <eizan@chromium.org> wrote:
+>
+> Broadly, this patch (1) adds a driver for various MTK MDP components to
+> go alongside the main MTK MDP driver, and (2) hooks them all together
+> using the component framework.
+>
+> (1) Up until now, the MTK MDP driver controls 8 devices in the device
+> tree on its own. When running tests for the hardware video decoder, we
+> found that the iommus and LARBs were not being properly configured.
 
-> > Thanks.
-> > 
-> > > 
-> > > >  #define MTK_DRIVE_2mA  2
-> > > >  #define MTK_DRIVE_4mA  4
-> > > >  #define MTK_DRIVE_6mA  6
-> > > > --
-> > > > 2.18.0
-> > > > _______________________________________________
-> > > > Linux-mediatek mailing list
-> > > > Linux-mediatek@lists.infradead.org
-> > > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Why were not being properly configured? What was the problem?
+Why not fixing that instead?
+
+Does this mean the driver is currently broken and unusable?
+
+> To
+> configure them, a driver for each be added to mtk_mdp_comp so that
+> mtk_iommu_add_device() can (eventually) be called from dma_configure()
+> inside really_probe().
+>
+> (2) The integration into the component framework allows us to defer the
+> registration with the v4l2 subsystem until all the MDP-related devices
+> have been probed, so that the relevant device node does not become
+> available until initialization of all the components is complete.
+>
+> Some notes about how the component framework has been integrated:
+>
+> - The driver for the rdma0 component serves double duty as the "master"
+>   (aggregate) driver as well as a component driver. This is a non-ideal
+>   compromise until a better solution is developed. This device is
+>   differentiated from the rest by checking for a "mediatek,vpu" property
+>   in the device node.
+>
+
+As I have stated in Yunfei, I am not convinced you need an async framework
+at all. It seems all these devices could have been linked together
+in the device tree, and then have a master device to tie them.
+
+I.e. something like
+
+mdp {
+  mdp_rdma0 {
+  }
+  mdp_rsz0 {
+  }
+  mdp_rsz1 {
+  }
+}
+
+All this async games seem like making the driver really obfuscated,
+which will mean harder to debug and maintain.
+I am not sure we want that burden.
+
+Even if we are all fully convinced that you absolutely need
+an async framework, then what's wrong with v4l2-async?
+
+I would start by addressing what is wrong with the IOMMUs
+in the current design.
+
+Thanks,
+Ezequiel
+
+> - The list of mdp components remains hard-coded as mtk_mdp_comp_dt_ids[]
+>   in mtk_mdp_core.c, and as mtk_mdp_comp_driver_dt_match[] in
+>   mtk_mdp_comp.c. This unfortunate duplication of information is
+>   addressed in a following patch in this series.
+>
+> - The component driver calls component_add() for each device that is
+>   probed.
+>
+> - In mtk_mdp_probe (the "master" device), we scan the device tree for
+>   any matching nodes against mtk_mdp_comp_dt_ids, and add component
+>   matches for them. The match criteria is a matching device node
+>   pointer.
+>
+> - When the set of components devices that have been probed corresponds
+>   with the list that is generated by the "master", the callback to
+>   mtk_mdp_master_bind() is made, which then calls the component bind
+>   functions.
+>
+> - Inside mtk_mdp_master_bind(), once all the component bind functions
+>   have been called, we can then register our device to the v4l2
+>   subsystem.
+>
+> - The call to pm_runtime_enable() in the master device is called after
+>   all the components have been registered by their bind() functions
+>   called by mtk_mtp_master_bind(). As a result, the list of components
+>   will not change while power management callbacks mtk_mdp_suspend()/
+>   resume() are accessing the list of components.
+>
+> Signed-off-by: Eizan Miyamoto <eizan@chromium.org>
+> Reviewed-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+> Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+> ---
+>
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
