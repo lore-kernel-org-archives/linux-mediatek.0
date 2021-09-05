@@ -2,86 +2,67 @@ Return-Path: <SRS0=a7PR=N3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AA9E7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Sep 2021 04:28:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 63A6BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Sep 2021 11:17:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6AC0C60F4A
-	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Sep 2021 04:28:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6AC0C60F4A
+	by mail.kernel.org (Postfix) with ESMTPS id 0BB7F608FB
+	for <linux-mediatek@archiver.kernel.org>; Sun,  5 Sep 2021 11:17:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0BB7F608FB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jmsaaf33j3q7UJtKyDj2R2Bjbx+3MFFL+GE91KbA1X8=; b=HHoI/AabwvWerD
-	AoKST9XR5p7hbzZJiI0dEFBNpmboOaMsE4bznJTY6rRgSw5stjzomHHY0z1TRUYDHXTBk63GSUhTx
-	d9BPlmYA1pdq7ODm8Gpy2LPrucDZehe+579W5O8HggtsmgSnEVqOCeZVZL416DGqK5AgKRozt0Juu
-	kJBpQC2b+Y+V87CSmYY5FL62P2EyUaPivd0BnuYr//TRJ+JIqp2tICN5whHVt4antzQv4TXVm0K54
-	bePL2F5aV5M00lx+VlWAnpXKDccgH4mGVDYXtLsKTLkmLwlsYlA+5t0j6minqe58Hr4CNwy7C7jb5
-	IMZ0LCsmI8JLLq7UwNhg==;
+	List-Owner; bh=rdJU13aT7ovlFbDUXS0uPzM96B8pejMsunOTGtMh3VY=; b=RXiVSdZGR6gmqU
+	yhHcy6v4mm75snVPdGMjODJODGesGYorp3BO4BCqFrmp6kwtEQ/H2JYoKBgUkJG/hRj7+X3MFNGqd
+	2zceroEO02UkBPmFJcmF5pF9wEcg8ULk6xzpJEmGFeyF2c7TbMWKeZpl7OKGgyTiisnU7t80c9UKV
+	csX5obvYhmJsFAdYCXWMLK0OrTI47+Lc0SHLqcAkpUY0ghXMmOje5rjaXBH9/iYjwdiqmm9/cStlv
+	5DXOlp746mqCYCmgdy4mHk8clvawFTf+RNrfXrcqx9jt/0t3++Bkg4FgwhvlWRqj9oTZVraKkeEsb
+	8WlWeQf5kYaWhVBzodqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mMjlu-00FERn-Ct; Sun, 05 Sep 2021 04:28:46 +0000
+	id 1mMq9E-00FeKM-Ny; Sun, 05 Sep 2021 11:17:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mMjlg-00FEQ4-Ko; Sun, 05 Sep 2021 04:28:34 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 298ED60FBF;
- Sun,  5 Sep 2021 04:28:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1630816112;
- bh=oXF2m8ZN/+qfmgExG/IQX/SByhUyc1c6YLDBAKpYt6o=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=a06pf4x+7/IFm9agBQ0z2F+ILrKQMCf0XUrNrrupuHFu2uwPbUl92zHUcteO63GQM
- jlPjzHXZJcqiDTrqxT9iB5VEHVnE0mATTxbqY6/kbyu1k3LIRDqtnjL03/NNWmCoSk
- OoSFdDcsiZr32uH3ad0beJUCSns8n1F8zMfRKhGg69zTiIolbc+vG2PiTgeRKYKxdy
- djPukVK+DzbSyzvOCv5kjUYuvNZO5zYijrsfTeegga8Xcat8Q0fJnV5X8qETfrzV4t
- Sy6NWcXGc16eR3YTRdx5rWIdyPzanqPaVSqAujd2vIDAoY0JMPlrmLts6p4bV6ZMCs
- QrvlUY/NiYfOw==
-Received: by mail-ej1-f42.google.com with SMTP id t19so6370820ejr.8;
- Sat, 04 Sep 2021 21:28:32 -0700 (PDT)
-X-Gm-Message-State: AOAM532+H8MYv8E/RLIVJ9gzo/PELxLlBHclCn2mLK3wJXYcgx0vXnrK
- NNwPYEiEcubKVZZPOHu7SXm3TkvtGWhDI4sibg==
-X-Google-Smtp-Source: ABdhPJxENNixysusXbSBhuNA84yWBKYK1t4rBhOx+OYKgpiPg4tes+GHj4Xv3atowVusUcE7eqSgQppFSdE/CcHpQgM=
-X-Received: by 2002:a17:906:158f:: with SMTP id
- k15mr7289338ejd.241.1630816110765; 
- Sat, 04 Sep 2021 21:28:30 -0700 (PDT)
+ id 1mMq91-00FeIc-Lb; Sun, 05 Sep 2021 11:17:04 +0000
+Received: from jic23-huawei (cpc108967-cmbg20-2-0-cust86.5-4.cable.virginm.net
+ [81.101.6.87])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mail.kernel.org (Postfix) with ESMTPSA id 21362608FB;
+ Sun,  5 Sep 2021 11:16:54 +0000 (UTC)
+Date: Sun, 5 Sep 2021 12:20:17 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Hui Liu <hui.liu@mediatek.com>
+Cc: <robh+dt@kernel.org>, <lars@metafoo.de>, <pmeerw@pmeerw.net>,
+ <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
+ <chun-hung.wu@mediatek.com>, <yingjoe.chen@mediatek.com>,
+ <seiya.wang@mediatek.com>, <ben.tseng@mediatek.com>,
+ <matthias.bgg@gmail.com>, <s.hauer@pengutronix.de>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-iio@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2 1/1] iio: mtk-auxadc: update case
+ IIO_CHAN_INFO_PROCESSED
+Message-ID: <20210905122017.645dd9b3@jic23-huawei>
+In-Reply-To: <20210831054207.13236-2-hui.liu@mediatek.com>
+References: <20210831054207.13236-1-hui.liu@mediatek.com>
+ <20210831054207.13236-2-hui.liu@mediatek.com>
+X-Mailer: Claws Mail 4.0.0 (GTK+ 3.24.30; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-References: <20210825144833.7757-1-jason-jh.lin@mediatek.com>
- <20210825144833.7757-13-jason-jh.lin@mediatek.com>
-In-Reply-To: <20210825144833.7757-13-jason-jh.lin@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Sun, 5 Sep 2021 12:28:19 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8EZKJ48Oq6g9uL_cakyuaMmT7h0VqG=QORYVOxqzYriw@mail.gmail.com>
-Message-ID: <CAAOTY_8EZKJ48Oq6g9uL_cakyuaMmT7h0VqG=QORYVOxqzYriw@mail.gmail.com>
-Subject: Re: [PATCH v9 12/14] drm/mediatek: add DSC support for mediatek-drm
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Frank Wunderlich <frank-w@public-files.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Fabien Parent <fparent@baylibre.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, fshao@chromium.org, 
- Yongqiang Niu <yongqiang.niu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
- Nancy Lin <nancy.lin@mediatek.com>, singo.chang@mediatek.com, 
- DTML <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, 
- DRI Development <dri-devel@lists.freedesktop.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210904_212832_762236_12CA3CE8 
-X-CRM114-Status: GOOD (  19.16  )
+X-CRM114-CacheID: sfid-20210905_041703_784356_21C463B9 
+X-CRM114-Status: GOOD (  20.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,106 +74,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEphc29uOgoKamFzb24tamgubGluIDxqYXNvbi1qaC5saW5AbWVkaWF0ZWsuY29tPiDmlrwg
-MjAyMeW5tDjmnIgyNeaXpSDpgLHkuIkg5LiL5Y2IMTA6NDjlr6vpgZPvvJoKPgo+IERTQyBpcyBk
-ZXNpZ25lZCBmb3IgcmVhbC10aW1lIHN5c3RlbXMgd2l0aCByZWFsLXRpbWUgY29tcHJlc3Npb24s
-Cj4gdHJhbnNtaXNzaW9uLCBkZWNvbXByZXNzaW9uIGFuZCBkaXNwbGF5Lgo+IFRoZSBEU0Mgc3Rh
-bmRhcmQgaXMgYSBzcGVjaWZpY2F0aW9uIG9mIHRoZSBhbGdvcml0aG1zIHVzZWQgZm9yCj4gY29t
-cHJlc3NpbmcgYW5kIGRlY29tcHJlc3NpbmcgaW1hZ2UgZGlzcGxheSBzdHJlYW1zLCBpbmNsdWRp
-bmcKPiB0aGUgc3BlY2lmaWNhdGlvbiBvZiB0aGUgc3ludGF4IGFuZCBzZW1hbnRpY3Mgb2YgdGhl
-IGNvbXByZXNzZWQKPiB2aWRlbyBiaXQgc3RyZWFtLgoKUmV2aWV3ZWQtYnk6IENodW4tS3Vhbmcg
-SHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPgo+IFNpZ25lZC1vZmYtYnk6IGphc29uLWpo
-LmxpbiA8amFzb24tamgubGluQG1lZGlhdGVrLmNvbT4KPiAtLS0KPiByZWJhc2Ugb24gWzFdIHNl
-cmllcwo+IFsxXSBkcm0vbWVkaWF0ZWs6IFNlcGFyYXRlIGFhbCBtb2R1bGUKPiAtIGh0dHBzOi8v
-cGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1tZWRpYXRlay9saXN0Lz9zZXJpZXM9
-NTE2NDYzCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21w
-LmMgfCA0NyArKysrKysrKysrKysrKysrKysrKysKPiAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwX2NvbXAuaCB8ICAxICsKPiAgMiBmaWxlcyBjaGFuZ2VkLCA0OCBpbnNlcnRp
-b25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZGRwX2NvbXAuYyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMK
-PiBpbmRleCBlZjBkMjA2NmZhZTEuLjBlM2VjZjk3YTZmYiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gKysrIGIvZHJpdmVycy9ncHUv
-ZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuYwo+IEBAIC00MCw2ICs0MCwxMiBAQAo+ICAj
-ZGVmaW5lIERJVEhFUl9MU0JfRVJSX1NISUZUX0coeCkgICAgICAgICAgICAgICgoKHgpICYgMHg3
-KSA8PCAxMikKPiAgI2RlZmluZSBESVRIRVJfQUREX0xTSElGVF9HKHgpICAgICAgICAgICAgICAg
-ICAoKCh4KSAmIDB4NykgPDwgNCkKPgo+ICsjZGVmaW5lIERJU1BfUkVHX0RTQ19DT04gICAgICAg
-ICAgICAgICAgICAgICAgIDB4MDAwMAo+ICsjZGVmaW5lIERTQ19FTiAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIEJJVCgwKQo+ICsjZGVmaW5lIERTQ19EVUFMX0lOT1VUICAgICAgICAg
-ICAgICAgICAgICAgICAgIEJJVCgyKQo+ICsjZGVmaW5lIERTQ19CWVBBU1MgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIEJJVCg0KQo+ICsjZGVmaW5lIERTQ19VRk9FX1NFTCAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIEJJVCgxNikKPiArCj4gICNkZWZpbmUgRElTUF9SRUdfT0RfRU4gICAg
-ICAgICAgICAgICAgICAgICAgICAgMHgwMDAwCj4gICNkZWZpbmUgRElTUF9SRUdfT0RfQ0ZHICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAweDAwMjAKPiAgI2RlZmluZSBPRF9SRUxBWU1P
-REUgICAgICAgICAgICAgICAgICAgICAgICAgICBCSVQoMCkKPiBAQCAtMTc1LDYgKzE4MSwzNiBA
-QCBzdGF0aWMgdm9pZCBtdGtfZGl0aGVyX3NldChzdHJ1Y3QgZGV2aWNlICpkZXYsIHVuc2lnbmVk
-IGludCBicGMsCj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRElTUF9ESVRIRVJJTkcs
-IGNtZHFfcGt0KTsKPiAgfQo+Cj4gK3N0YXRpYyB2b2lkIG10a19kc2NfY29uZmlnKHN0cnVjdCBk
-ZXZpY2UgKmRldiwgdW5zaWduZWQgaW50IHcsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAg
-dW5zaWduZWQgaW50IGgsIHVuc2lnbmVkIGludCB2cmVmcmVzaCwKPiArICAgICAgICAgICAgICAg
-ICAgICAgICAgICB1bnNpZ25lZCBpbnQgYnBjLCBzdHJ1Y3QgY21kcV9wa3QgKmNtZHFfcGt0KQo+
-ICt7Cj4gKyAgICAgICBzdHJ1Y3QgbXRrX2RkcF9jb21wX2RldiAqcHJpdiA9IGRldl9nZXRfZHJ2
-ZGF0YShkZXYpOwo+ICsKPiArICAgICAgIC8qIGRzYyBieXBhc3MgbW9kZSAqLwo+ICsgICAgICAg
-bXRrX2RkcF93cml0ZV9tYXNrKGNtZHFfcGt0LCBEU0NfQllQQVNTLCAmcHJpdi0+Y21kcV9yZWcs
-IHByaXYtPnJlZ3MsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgRElTUF9SRUdfRFNDX0NP
-TiwgRFNDX0JZUEFTUyk7Cj4gKyAgICAgICBtdGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3QsIERT
-Q19VRk9FX1NFTCwgJnByaXYtPmNtZHFfcmVnLCBwcml2LT5yZWdzLAo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgIERJU1BfUkVHX0RTQ19DT04sIERTQ19VRk9FX1NFTCk7Cj4gKyAgICAgICBt
-dGtfZGRwX3dyaXRlX21hc2soY21kcV9wa3QsIERTQ19EVUFMX0lOT1VULCAmcHJpdi0+Y21kcV9y
-ZWcsIHByaXYtPnJlZ3MsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgRElTUF9SRUdfRFND
-X0NPTiwgRFNDX0RVQUxfSU5PVVQpOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBtdGtfZHNjX3N0
-YXJ0KHN0cnVjdCBkZXZpY2UgKmRldikKPiArewo+ICsgICAgICAgc3RydWN0IG10a19kZHBfY29t
-cF9kZXYgKnByaXYgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiArCj4gKyAgICAgICAvKiB3cml0
-ZSB3aXRoIG1hc2sgdG8gcmVzZXJ2ZSB0aGUgdmFsdWUgc2V0IGluIG10a19kc2NfY29uZmlnICov
-Cj4gKyAgICAgICBtdGtfZGRwX3dyaXRlX21hc2soTlVMTCwgRFNDX0VOLCAmcHJpdi0+Y21kcV9y
-ZWcsIHByaXYtPnJlZ3MsIERJU1BfUkVHX0RTQ19DT04sIERTQ19FTik7Cj4gK30KPiArCj4gK3N0
-YXRpYyB2b2lkIG10a19kc2Nfc3RvcChzdHJ1Y3QgZGV2aWNlICpkZXYpCj4gK3sKPiArICAgICAg
-IHN0cnVjdCBtdGtfZGRwX2NvbXBfZGV2ICpwcml2ID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4g
-Kwo+ICsgICAgICAgd3JpdGVsX3JlbGF4ZWQoMHgwLCBwcml2LT5yZWdzICsgRElTUF9SRUdfRFND
-X0NPTik7Cj4gK30KPiArCj4gIHN0YXRpYyB2b2lkIG10a19vZF9jb25maWcoc3RydWN0IGRldmlj
-ZSAqZGV2LCB1bnNpZ25lZCBpbnQgdywKPiAgICAgICAgICAgICAgICAgICAgICAgICAgIHVuc2ln
-bmVkIGludCBoLCB1bnNpZ25lZCBpbnQgdnJlZnJlc2gsCj4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICB1bnNpZ25lZCBpbnQgYnBjLCBzdHJ1Y3QgY21kcV9wa3QgKmNtZHFfcGt0KQo+IEBAIC0y
-MzgsNiArMjc0LDE0IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIGRk
-cF9kcGkgPSB7Cj4gICAgICAgICAuc3RvcCA9IG10a19kcGlfc3RvcCwKPiAgfTsKPgo+ICtzdGF0
-aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29tcF9mdW5jcyBkZHBfZHNjID0gewo+ICsgICAgICAg
-LmNsa19lbmFibGUgPSBtdGtfZGRwX2Nsa19lbmFibGUsCj4gKyAgICAgICAuY2xrX2Rpc2FibGUg
-PSBtdGtfZGRwX2Nsa19kaXNhYmxlLAo+ICsgICAgICAgLmNvbmZpZyA9IG10a19kc2NfY29uZmln
-LAo+ICsgICAgICAgLnN0YXJ0ID0gbXRrX2RzY19zdGFydCwKPiArICAgICAgIC5zdG9wID0gbXRr
-X2RzY19zdG9wLAo+ICt9Owo+ICsKPiAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBf
-ZnVuY3MgZGRwX2RzaSA9IHsKPiAgICAgICAgIC5zdGFydCA9IG10a19kc2lfZGRwX3N0YXJ0LAo+
-ICAgICAgICAgLnN0b3AgPSBtdGtfZHNpX2RkcF9zdG9wLAo+IEBAIC0yOTksNiArMzQzLDcgQEAg
-c3RhdGljIGNvbnN0IGNoYXIgKiBjb25zdCBtdGtfZGRwX2NvbXBfc3RlbVtNVEtfRERQX0NPTVBf
-VFlQRV9NQVhdID0gewo+ICAgICAgICAgW01US19ESVNQX0NDT1JSXSA9ICJjY29yciIsCj4gICAg
-ICAgICBbTVRLX0RJU1BfQ09MT1JdID0gImNvbG9yIiwKPiAgICAgICAgIFtNVEtfRElTUF9ESVRI
-RVJdID0gImRpdGhlciIsCj4gKyAgICAgICBbTVRLX0RJU1BfRFNDXSA9ICJkc2MiLAo+ICAgICAg
-ICAgW01US19ESVNQX0dBTU1BXSA9ICJnYW1tYSIsCj4gICAgICAgICBbTVRLX0RJU1BfTVVURVhd
-ID0gIm11dGV4IiwKPiAgICAgICAgIFtNVEtfRElTUF9PRF0gPSAib2QiLAo+IEBAIC0zMjgsNiAr
-MzczLDggQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfbWF0Y2ggbXRrX2RkcF9t
-YXRjaGVzW0REUF9DT01QT05FTlRfSURfTUFYXSA9IHsKPiAgICAgICAgIFtERFBfQ09NUE9ORU5U
-X0RJVEhFUl0gID0geyBNVEtfRElTUF9ESVRIRVIsICAgIDAsICZkZHBfZGl0aGVyIH0sCj4gICAg
-ICAgICBbRERQX0NPTVBPTkVOVF9EUEkwXSAgICA9IHsgTVRLX0RQSSwgICAgICAgICAgICAwLCAm
-ZGRwX2RwaSB9LAo+ICAgICAgICAgW0REUF9DT01QT05FTlRfRFBJMV0gICAgPSB7IE1US19EUEks
-ICAgICAgICAgICAgMSwgJmRkcF9kcGkgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX0RTQzBd
-ICAgID0geyBNVEtfRElTUF9EU0MsICAgICAgIDAsICZkZHBfZHNjIH0sCj4gKyAgICAgICBbRERQ
-X0NPTVBPTkVOVF9EU0MxXSAgICA9IHsgTVRLX0RJU1BfRFNDLCAgICAgICAxLCAmZGRwX2RzYyB9
-LAo+ICAgICAgICAgW0REUF9DT01QT05FTlRfRFNJMF0gICAgPSB7IE1US19EU0ksICAgICAgICAg
-ICAgMCwgJmRkcF9kc2kgfSwKPiAgICAgICAgIFtERFBfQ09NUE9ORU5UX0RTSTFdICAgID0geyBN
-VEtfRFNJLCAgICAgICAgICAgIDEsICZkZHBfZHNpIH0sCj4gICAgICAgICBbRERQX0NPTVBPTkVO
-VF9EU0kyXSAgICA9IHsgTVRLX0RTSSwgICAgICAgICAgICAyLCAmZGRwX2RzaSB9LAo+IGRpZmYg
-LS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9kZHBfY29tcC5oIGIvZHJp
-dmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaAo+IGluZGV4IGQzMTdiOTQ0
-ZGY2Ni4uNTYwYmU2YmM5ZDBlIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRl
-ay9tdGtfZHJtX2RkcF9jb21wLmgKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHBfY29tcC5oCj4gQEAgLTIzLDYgKzIzLDcgQEAgZW51bSBtdGtfZGRwX2NvbXBfdHlw
-ZSB7Cj4gICAgICAgICBNVEtfRElTUF9DQ09SUiwKPiAgICAgICAgIE1US19ESVNQX0NPTE9SLAo+
-ICAgICAgICAgTVRLX0RJU1BfRElUSEVSLAo+ICsgICAgICAgTVRLX0RJU1BfRFNDLAo+ICAgICAg
-ICAgTVRLX0RJU1BfR0FNTUEsCj4gICAgICAgICBNVEtfRElTUF9NVVRFWCwKPiAgICAgICAgIE1U
-S19ESVNQX09ELAo+IC0tCj4gMi4xOC4wCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRp
-YXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
-YW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Tue, 31 Aug 2021 13:42:07 +0800
+Hui Liu <hui.liu@mediatek.com> wrote:
+
+> Convert raw data to processed data, the processed data is input voltage.
+> 
+> Signed-off-by: Hui Liu <hui.liu@mediatek.com>
+
+Looks very much to be a fix. Please track down appropriate patch and let
+me know what the Fixes: tag should be.  If you reply to this thread
+I'll add it plus a not saying it is an ABI change, but a necessary one
+as the driver was previously buggy.
+
+Whilst we are here, what is the cali_data() function actually there for?
+Seems to only set *val = *val which is rather pointless.
+
+Thanks,
+
+Jonathan
+
+> ---
+>  drivers/iio/adc/mt6577_auxadc.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+> index 79c1dd68b909..d4fccd52ef08 100644
+> --- a/drivers/iio/adc/mt6577_auxadc.c
+> +++ b/drivers/iio/adc/mt6577_auxadc.c
+> @@ -82,6 +82,10 @@ static const struct iio_chan_spec mt6577_auxadc_iio_channels[] = {
+>  	MT6577_AUXADC_CHANNEL(15),
+>  };
+>  
+> +/* For Voltage calculation */
+> +#define VOLTAGE_FULL_RANGE  1500	/* VA voltage */
+> +#define AUXADC_PRECISE      4096	/* 12 bits */
+> +
+>  static int mt_auxadc_get_cali_data(int rawdata, bool enable_cali)
+>  {
+>  	return rawdata;
+> @@ -191,6 +195,10 @@ static int mt6577_auxadc_read_raw(struct iio_dev *indio_dev,
+>  		}
+>  		if (adc_dev->dev_comp->sample_data_cali)
+>  			*val = mt_auxadc_get_cali_data(*val, true);
+> +
+> +		/* Convert adc raw data to voltage: 0 - 1500 mV */
+> +		*val = *val * VOLTAGE_FULL_RANGE / AUXADC_PRECISE;
+> +
+>  		return IIO_VAL_INT;
+>  
+>  	default:
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
