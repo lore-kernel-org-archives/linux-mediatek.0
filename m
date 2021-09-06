@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 068E1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 11:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E3A27C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 11:45:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BF74960F43
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 11:45:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BF74960F43
+	by mail.kernel.org (Postfix) with ESMTPS id AE2486056B
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 11:45:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AE2486056B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,35 +23,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M7M8uUemMpM+cVfMLYVxbydEC6Dy7zHh8tH90kgfgP4=; b=eJeI3rx8QZN/MK
-	npV2Xy41cU+2ExVwy8XWNNEgfDCT9Vphbe5GWoXITihNaDarg6xpioWgaxljH8NGEPDlfp/4povhd
-	olHepohpciyUwnmWQOv+jgNcrmSOpwonN1cuLj+kpSR8Cu/4CLLMV3XnJZ1j1CTJti63LdoWmGQhy
-	jwqDmCXp1QEJPz3oUFOi8E3wz5cTm3xuiSP9RL48LkW+b6vANOXoavNgv+NXtu5lId5PgMmND5Wvx
-	XqLOX798olB+FnSgOl0eTWdRhEm+zhxKkMb0342Gfr77UGVz7m4ldxp4p/L5fBKil0DOTmhVAy30N
-	3X1bVDzcp4OhfNcOBWGQ==;
+	List-Owner; bh=9JpwFKMUqi9wLqU7DQoipSrVi3ElhXSILBUiXfFpAHg=; b=iqnkaQCskkAlRR
+	8+2KZeyLO5jlr2BdZwj/2pr86MP9uxd7HovqjUVmw+6ToA0X86nZ5ZLGaq2Klef8YyFr1vJWFARSp
+	7gXQv2J7FwM8iyBVob+XlRLJIEPjg77NAAnRf1lQ4QwkhjZEItM2tOGtOO1PHkTbH+pta5cuMInUg
+	V3rFIAKow+OKjFo3ZxHelWVKsJkLH3FhZTLb9AjuWA9w/9ouHW1ykdpGFYBDbf+bHQaPlzAFtjPhJ
+	eAQmcmwo25a/3c1WcPCTgnz8cJzFxj8CIwEpx9ziU6Rq82U3iDSYqmb2OkXpucFn2+Xy2Cy4Cp362
+	cEpbY9FeAA+hCyyFWGLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mND3v-000e0s-Bu; Mon, 06 Sep 2021 11:45:19 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mND3y-000e2F-Dd; Mon, 06 Sep 2021 11:45:22 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mND3s-000dxe-OX
- for linux-mediatek@lists.infradead.org; Mon, 06 Sep 2021 11:45:18 +0000
-X-UUID: 8dd05eca30cd4b8b9a3d1a5970d5fcfc-20210906
+ id 1mND3t-000dy7-4o
+ for linux-mediatek@lists.infradead.org; Mon, 06 Sep 2021 11:45:19 +0000
+X-UUID: 724a794b3f7d406e86fd2e48ceb1c2b5-20210906
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From;
- bh=WPN2dCgQKUmKI84xi/V+TDJkfEaZz3aDtFd289V/1ic=; 
- b=H7UKQNM/dCqU8jLEBXLgrCWGfosz6JSL+8vOWfrrkbFHjqQtI9RlVh2ew+ZG6bF+GiVV9UWFkNLelTnnx4za1ZyGyeAanndIEFR+nbIuAlwbrTQp/wxR046cWSHMau53pQE/HiOsujmihUP2T5CTPGpxEWvznV+BRx1RTXy6hqc=;
-X-UUID: 8dd05eca30cd4b8b9a3d1a5970d5fcfc-20210906
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=Hw1wlL9WXlj6BBOKhtvDTfJRp50QQbnl7hAi8LIqi3c=; 
+ b=k2GWax5wsujUSTp4mMOgnSgcjxO8ihzWtafyvCegZGDbfnwAtudEjrDnVRB+Pb0VKMUX0mAoz/c1SGGjI8LKQVuic24ecLiEMXr+SwpdmexQgIZ1n6hOFA0BVtPjpFmLctUjQE23GfNxofPqp8mB+LH+Uk90GEBuz3Ds5bBOxSI=;
+X-UUID: 724a794b3f7d406e86fd2e48ceb1c2b5-20210906
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1681733671; Mon, 06 Sep 2021 04:45:08 -0700
-Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1893208002; Mon, 06 Sep 2021 04:45:09 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 6 Sep 2021 04:45:07 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 6 Sep 2021 19:45:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -62,17 +62,19 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
  <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v2 7/8] mt76: mt7915: set VTA bit in tx descriptor
-Date: Mon, 6 Sep 2021 19:44:22 +0800
-Message-ID: <20210906114423.13646-7-shayne.chen@mediatek.com>
+Subject: [PATCH v2 6/8] mt76: mt7915: fix muar_idx in
+ mt7915_mcu_alloc_sta_req()
+Date: Mon, 6 Sep 2021 19:44:21 +0800
+Message-ID: <20210906114423.13646-6-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210906114423.13646-1-shayne.chen@mediatek.com>
 References: <20210906114423.13646-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210906_044516_861536_12796AD5 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20210906_044517_229544_F8B91E4D 
+X-CRM114-Status: UNSURE (   9.72  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,30 +91,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The VTA (Valid for Txd Arrival time) bit should be set in tx descriptor,
-which is necessary for WM fw to schedule SPL (station priority list)
-normally before generating txcmd.
-If it's not set, some unexpected wcids may be involved in SPL.
+For broadcast/multicast wcid, the muar_idx should be 0xe.
 
-Suggested-by: Nelson Chang <nelson.chang@mediatek.com>
+Fixes: e57b7901469f ("mt76: add mac80211 driver for MT7915 PCIe-based
+chipsets")
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 1b8e37e265cb..497ae9935116 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1034,7 +1034,7 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
- 	      FIELD_PREP(MT_TXD0_Q_IDX, q_idx);
- 	txwi[0] = cpu_to_le32(val);
- 
--	val = MT_TXD1_LONG_FORMAT |
-+	val = MT_TXD1_LONG_FORMAT | MT_TXD1_VTA |
- 	      FIELD_PREP(MT_TXD1_WLAN_IDX, wcid->idx) |
- 	      FIELD_PREP(MT_TXD1_OWN_MAC, omac_idx);
- 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index a801df6e6996..229ba3c469d1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -571,7 +571,7 @@ mt7915_mcu_alloc_sta_req(struct mt7915_dev *dev, struct mt7915_vif *mvif,
+ 		.bss_idx = mvif->idx,
+ 		.wlan_idx_lo = msta ? to_wcid_lo(msta->wcid.idx) : 0,
+ 		.wlan_idx_hi = msta ? to_wcid_hi(msta->wcid.idx) : 0,
+-		.muar_idx = msta ? mvif->omac_idx : 0,
++		.muar_idx = msta && msta->wcid.sta ? mvif->omac_idx : 0xe,
+ 		.is_tlv_append = 1,
+ 	};
+ 	struct sk_buff *skb;
 -- 
 2.25.1
 _______________________________________________
