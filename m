@@ -2,88 +2,73 @@ Return-Path: <SRS0=cnxW=N4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_SANE_2 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DCCBC4167B
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 17:11:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 861D3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 18:57:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E34560EE6
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 17:11:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3E34560EE6
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 49A6760724
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 18:57:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 49A6760724
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KbeyS/joP5bt45x6EI2X0huHIcANjfexXJf7nRT2I7c=; b=Fbx7hTkpF8DD7S
-	7ppL9POB/Rij141tjzHn8pda8rIHWL2btFvvSPSPXKcg59z+PAkwkYdX29tmGqaRiDhmhuB7aZv64
-	x4x0RU0xOmRF/M+Hofn6TOCV+clWCjfPoc8G7Yhy/lyWMjKrNIhGpf4zKJLZFNQrEr5VmEVd4imIZ
-	r6ZKRNSj6x6U7lJvIfD/uBkrwEpkPTUpT0le2iyan+cScafhlN4FD0AyCDqJPKd2QIQP60WNaR4dC
-	Ju81V/G9nwqiXpM1ULG/FAwAF/7todhd/71ykNw5T0TrcZK9tXpsXABRmFen86isfGWWOFP5huEfb
-	801eBfLYyYezz80Jvcfw==;
+	List-Owner; bh=A2XbtMgqCSTQvcX5LFbkgPWruR2t7/3lv2tbGcL1zk4=; b=tjjZNIV9R7pqra
+	+TdXu5teqdqzWPPymi4tj2j7mzUnTsftdGGdt+pz9je3OpSNi29DFKAmmgS2Lly2a0ddWMIFgh9EX
+	U7bcKXXrCApzzNCl8GHpZfv8MW/32Z6vmVkPj//vzPmO7kii5cDwPvDQsJpQMP7Iv0YLUotpVBfLK
+	ht4U4RNQt82C0bw4qC2DFcC+hzLtd7zxeDjubpETcL4a/mn8iw6cIMgkqhP22nA8+WMaDS8bHDpEl
+	d81IIIvS+XO/LFsJYdKz6y2UXt9z+klM07KzCs74Whbk5nfkb6d1CkoFeaBB+fyXYGboYNyXid76D
+	LLNdl95YxwZdT5753xGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNI95-001Oij-3Z; Mon, 06 Sep 2021 17:10:59 +0000
-Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
+	id 1mNJo3-001ekn-1b; Mon, 06 Sep 2021 18:57:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNI8o-001Ocm-Ns
- for linux-mediatek@lists.infradead.org; Mon, 06 Sep 2021 17:10:44 +0000
-Received: by mail-lj1-x22c.google.com with SMTP id g14so12306978ljk.5
- for <linux-mediatek@lists.infradead.org>; Mon, 06 Sep 2021 10:10:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=g2B76iGb/MvAFL/fqwBXAafaG+ZhGIUwhCY1ak7fyyI=;
- b=Qaq6D5JS3cWjYVjgYxZRkOoXeNX5pjffsV5NAIqydMEoigzxhzJ4Psue87vIspCszS
- vrE7rn4XVI7WeVDTBUKL2E9EGT0rAzkMRfX9MBTDtjNHx2oHkiOp4bkKDsFSY6arpP7g
- OpblIA7orJmsnURtExNxKBU1zFn3oHv24AssgtwnHadNO+TL8tciL0JFnnG6sinH00sN
- +WEIxJsTH+P2AxxT+4XWRzGz6nG+Zno0TLgZ+t/51s6buvrDUYG3npElUi6YcN+aFfHh
- yrItNVsgOaeECRcj51OfDMbJXaX7kqvWseeLswVkpFNl1BvgUkrrF+OhXgQblXWlll8s
- 4TfA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=g2B76iGb/MvAFL/fqwBXAafaG+ZhGIUwhCY1ak7fyyI=;
- b=EWbncLZOAcBgwZl9hrMu4jplM0qopR/prMQhUiFT+L7ZEWGHxA99GLjG4S5HOpyWXe
- j6TlS7Bp6MOm97TSOiau1xK0g0D8s5gQHjMjGGqtSWZQRMNB1ynwPsxpBpaV3VXq8FpL
- InRWqEhpIRtE5XeiOEC7sAo6sIA2dhvGqtJu3RhWd8MsGwUZ2uL3062XaTNFcPHkG61g
- mWAnDK4KjD3yk2emNhE4Gu0i4fqxV0LjXWGpwB/q028CUSubHXcm1oxUyxxT5kUb8hQa
- 41JPfHwZOgN9anbSwtJ/VXiO/DiNVi5sfP4vBE5oMPHbe9wSDMffjU02+dxkQBHpZP1G
- w11w==
-X-Gm-Message-State: AOAM530WiP1xFCmXEJ7WN6j2Ii264/fFG/+k69Jsod79GtqYUjW6VFGl
- 0KEuYpRIzK+yaWKM8NwoF1HSSTAZzr304rVyt+8DBQ==
-X-Google-Smtp-Source: ABdhPJw2WazDx6ltshqgFzZJ15YF3sOJrKyyamAfpMdAE96du0/LoDwinquUUOD4VsO/nUFaNHGbVxIZB0fhs8JEymI=
-X-Received: by 2002:a2e:8495:: with SMTP id b21mr11848281ljh.4.1630948240811; 
- Mon, 06 Sep 2021 10:10:40 -0700 (PDT)
+ id 1mNJn2-001e97-Kk
+ for linux-mediatek@lists.infradead.org; Mon, 06 Sep 2021 18:56:26 +0000
+X-UUID: 944f745a0ba440258af41433edc0b4f0-20210906
+X-UUID: 944f745a0ba440258af41433edc0b4f0-20210906
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1383951219; Mon, 06 Sep 2021 11:56:16 -0700
+Received: from mtkmbs05n1.mediatek.inc (172.21.101.15) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Sep 2021 11:46:14 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs05n1.mediatek.inc (172.21.101.15) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Sep 2021 02:46:12 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 7 Sep 2021 02:46:12 +0800
+Message-ID: <ee67c1ddf6fd87b7faac04d0ba5cad33769bf831.camel@mediatek.com>
+Subject: Re: [PATCH v2 8/8] mt76: mt7915: set muru platform type
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>, "Evelyn Tsai ($Bhq;9|*(B)"
+ <Evelyn.Tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>
+Date: Tue, 7 Sep 2021 02:46:12 +0800
+In-Reply-To: <20210906114423.13646-8-shayne.chen@mediatek.com>
+References: <20210906114423.13646-1-shayne.chen@mediatek.com>
+ <20210906114423.13646-8-shayne.chen@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <CGME20210830022507epcas1p43b45563c6e36bd00e3b6160bb42605bf@epcas1p4.samsung.com>
- <20210830021749.5947-1-cw9316.lee@samsung.com>
-In-Reply-To: <20210830021749.5947-1-cw9316.lee@samsung.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 6 Sep 2021 19:10:05 +0200
-Message-ID: <CAPDyKFot9rL3Vs1g4ZH3QYnqrHL29Or362Ga_nZD3DBBtM+NFw@mail.gmail.com>
-Subject: Re: [PATCH] mmc: mtk-sd: Remove unused parameters
-To: Chanwoo Lee <cw9316.lee@samsung.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- linux-mmc <linux-mmc@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- grant.jung@samsung.com, 
- jt77.jang@samsung.com, DooHyun Hwang <dh0421.hwang@samsung.com>, 
- Seunghui Lee <sh043.lee@samsung.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210906_101042_880888_64A6B201 
-X-CRM114-Status: GOOD (  16.11  )
+X-CRM114-CacheID: sfid-20210906_115620_771564_687F9F73 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,72 +85,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 30 Aug 2021 at 04:25, Chanwoo Lee <cw9316.lee@samsung.com> wrote:
->
-> From: ChanWoo Lee <cw9316.lee@samsung.com>
->
-> Remove unused parameters
-> 1. msdc_start_data() - struct mmc_request *mrq
-> 2. msdc_track_cmd_data() - struct mmc_data *data
->
-> Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
-
-Queued for v5.16 on the temporary devel branch, thanks!
-
-Kind regards
-Uffe
-
-
+On Mon, 2021-09-06 at 19:44 +0800, Shayne Chen wrote:
+> Notify fw to init corresponding muru algorithm.
+> 
+> Suggested-by: Money Wang <money.wang@mediatek.com>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 > ---
->  drivers/mmc/host/mtk-sd.c | 11 +++++------
->  1 file changed, 5 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 4dfc246c5f95..a8736067c409 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1043,8 +1043,8 @@ static inline u32 msdc_cmd_prepare_raw_cmd(struct msdc_host *host,
->         return rawcmd;
+>  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  | 16
+> ++++++++++++++++
+>  drivers/net/wireless/mediatek/mt76/mt7915/mcu.h  |  5 +++++
+>  .../net/wireless/mediatek/mt76/mt7915/testmode.h |  4 ----
+>  3 files changed, 21 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> index 229ba3c469d1..6242d5e11107 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+> @@ -2949,6 +2949,21 @@ static int mt7915_mcu_set_mwds(struct
+> mt7915_dev *dev, bool enabled)
+>                                  sizeof(req), false);
 >  }
->
-> -static void msdc_start_data(struct msdc_host *host, struct mmc_request *mrq,
-> -                           struct mmc_command *cmd, struct mmc_data *data)
-> +static void msdc_start_data(struct msdc_host *host, struct mmc_command *cmd,
-> +               struct mmc_data *data)
+> 
+> +static int mt7915_mcu_set_muru_ptype(struct mt7915_dev *dev)
+> +{
+> +       struct {
+> +               __le32 cmd;
+> +               u8 ptype;
+> +               u8 _rsv[3];
+> +       } __packed req = {
+> +               .cmd = MURU_SET_PLATFORM_TYPE,
+
+cpu_to_le32
+
+> +               .ptype = 2,
+> +       };
+> +
+> +       return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL),
+> &req,
+> +                                sizeof(req), false);
+> +}
+> +
+>  int mt7915_mcu_init(struct mt7915_dev *dev)
 >  {
->         bool read;
->
-> @@ -1112,8 +1112,7 @@ static void msdc_recheck_sdio_irq(struct msdc_host *host)
->         }
+>         static const struct mt76_mcu_ops mt7915_mcu_ops = {
+> @@ -2973,6 +2988,7 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
+>         mt7915_mcu_fw_log_2_host(dev, 0);
+>         mt7915_mcu_set_mwds(dev, 1);
+>         mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
+> MCU_WA_PARAM_RED, 0, 0);
+> +       mt7915_mcu_set_muru_ptype(dev);
+> 
+>         return 0;
 >  }
->
-> -static void msdc_track_cmd_data(struct msdc_host *host,
-> -                               struct mmc_command *cmd, struct mmc_data *data)
-> +static void msdc_track_cmd_data(struct msdc_host *host, struct mmc_command *cmd)
->  {
->         if (host->error)
->                 dev_dbg(host->dev, "%s: cmd=%d arg=%08X; host->error=0x%08X\n",
-> @@ -1134,7 +1133,7 @@ static void msdc_request_done(struct msdc_host *host, struct mmc_request *mrq)
->         host->mrq = NULL;
->         spin_unlock_irqrestore(&host->lock, flags);
->
-> -       msdc_track_cmd_data(host, mrq->cmd, mrq->data);
-> +       msdc_track_cmd_data(host, mrq->cmd);
->         if (mrq->data)
->                 msdc_unprepare_data(host, mrq->data);
->         if (host->error)
-> @@ -1295,7 +1294,7 @@ static void msdc_cmd_next(struct msdc_host *host,
->         else if (!cmd->data)
->                 msdc_request_done(host, mrq);
->         else
-> -               msdc_start_data(host, mrq, cmd, cmd->data);
-> +               msdc_start_data(host, cmd, cmd->data);
->  }
->
->  static void msdc_ops_request(struct mmc_host *mmc, struct mmc_request *mrq)
-> --
-> 2.29.0
->
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+> b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+> index 6344faf3f394..57be9262ec2a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+> @@ -1086,6 +1086,11 @@ enum {
+>         MT_BF_MODULE_UPDATE = 25
+>  };
+> 
+> +enum {
+> +       MURU_SET_ARB_OP_MODE = 14,
+> +       MURU_SET_PLATFORM_TYPE = 25,
+> +};
+> 
+
+I think it's better to use mt7915_mcu_set_muru_cmd(phy, cmd, opcode) in
+the long run to avoid adding duplicated muru_ctrl for future UL
+support.
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
