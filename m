@@ -2,91 +2,92 @@ Return-Path: <SRS0=cnxW=N4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
 	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B842C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 09:44:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 59C25C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 10:10:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD10B60F3A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 09:44:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AD10B60F3A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1E7CC60F70
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 10:10:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1E7CC60F70
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jeucNZClL2qLIT3fbTKfYukgTbAHa0TAKdzpORYf0gg=; b=c8zb8zSpQ8jisp
-	tBiZsChPcPrt1sYUhWi2twMK7jFkRA9vLB3zSqOv3H+BCFBVF6hhQAUq0KQMAdUbCn+tyTRp8+0d7
-	HXeJbhhvc7XnfeNaOzn8Yy6aFBKqZ+q9RgvUE4u8tKw2vGIeIg1gVPDEdH4xzOCLtna04uttT5dRI
-	6th7FzuUVcuiu++hpjD6QkjEO5K3A/6PhFSLgV2B6k2wZNzeBkPNNNu2KdyPBH9ORhpe5kvP63RK0
-	WFFhiI0y9MKhCN1VkrnFDox8W9DWQ63/pScpkAA349wuWDIExtkiZGNvQeCBzMqbZ1EST31JF3AyG
-	moT4yF4N3ji6KfBxXAdQ==;
+	List-Owner; bh=X0ZkSSTyC8cw9FI0D3AAt4WsgKP3WIA1DWyHf6ODAG0=; b=aW5i0j9CVhciLo
+	VASrQCW+WHesTdF9d0BcVS5cuGBsvxck5EwVxJBHSlsLXJk8DrHLr4ix772WgJfgeAF0ReIxwKBVR
+	MjujzdgVIayvmgNZ5poRWzKDu8atDj+8xQBL3dCSb6ZqOfZAE3OMuI85wjMMVmLgZ+de0TXio6MIy
+	CV6m7uW4BQs6tSLNUTUerYOMMqoIcIuennVR3WMvUyqTOtrHzhEOh7m+SVyYfHEvR6skCvGEePvnQ
+	T7Qn5dq2e5WS/IApqE8c8MCqsbL6IOxDsmeaKWSp16OJge+TvnhisUI4Ye+Dp30p4h4SmiZiV1Xuq
+	Qnp+HMOUp9ynpB9LXhUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNBAy-000PM8-8W; Mon, 06 Sep 2021 09:44:28 +0000
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+	id 1mNBZS-000UDB-Q9; Mon, 06 Sep 2021 10:09:46 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNBAk-000PIj-LB
- for linux-mediatek@lists.infradead.org; Mon, 06 Sep 2021 09:44:16 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id x19so5229008pfu.4
- for <linux-mediatek@lists.infradead.org>; Mon, 06 Sep 2021 02:44:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=3fdCtbBYQ/PbhDaRGww8WvWvNG3K6421Ly2OyMudY+g=;
- b=nu6zVxvMTCUcU1kFqIrZtxEIa8LOtsEiLY8/fh67CoszQ/i5N3ehZ4nusDbBcELVoU
- G6d3N/kOC1p0CbFjXTppZQQVk/R7QxYekOi7ydCeLF5JBooZdtaIrC22+nVKZjTSS4EX
- c6fHHwZ8ziA2Cp5M/hzMGqyz1Zzc20DiP8WRn1+r0QNFiimWBQtQQ3Ibk7kx4I0h+ZFm
- Wrurc3mdZsBvUo4/svijHyrPuayLn6jJWoeFtZDXQZy/R8sjJTc7Pn22zILuhU/uZOiK
- WR0QB8xrAVzDJba5IRpF07K3Tkxp9Zui0Zf6EfX5d6d6qW0tWAwnHO7Ida93K+cuL/ab
- IxMw==
+ id 1mNBZN-000U9M-0y
+ for linux-mediatek@lists.infradead.org; Mon, 06 Sep 2021 10:09:44 +0000
+Received: by mail-lj1-x234.google.com with SMTP id s12so10549142ljg.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 06 Sep 2021 03:09:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=337euVifDg52yHPTsnNSlg8iKAhtysohIBdAF3QMEmo=;
+ b=mDr8LfGFgglIY0XXOknwAUGEmly/l2CqS/21Q3m+1t4Cwt+Gq6rgf7J6SjHoewSgT4
+ RpzdWBom+8FCwCVyqpsIDrT8stxVR+XOUE+Bqk9k4rOOpaHmNNXksk3PnrtA8ljOLDsH
+ d1jDBTCskQb8Qx4+R1UAL32fxUcTtJ/p+2gos=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=3fdCtbBYQ/PbhDaRGww8WvWvNG3K6421Ly2OyMudY+g=;
- b=GC48uzuDt86tBXa3aZd8SiulidzmS45edxYIR/ZalTnFB5Agefa4MaEZUd8PiYlp9K
- sMM3p6rW9Vk/9TEjxiZT/KTlLjrxxLDjsWtXBvNgMVqS1kBsgNBU6FezscH03uX+n+pc
- GL34hjOnN1AMymUcDmxrbIHpoTMrJLhUMN0kp8dazHip9D3qhOae4VIXjfAKZmdJ05i/
- BjaGigeqRSwraltJgEi2rZAs+LNzGqi1IXtbn/5y3+/WsuYblKdIVoLSG5uM5xIzmKPa
- 8SWcMtiGprIS7FoIU4jEOmPgGEU3pxCii4nf7rqNSKW3OeTHm7j/h2UNHVROfa8aaLEy
- h1TA==
-X-Gm-Message-State: AOAM533HsZRFjWfOGSkaJ8WZvok2n5Dq5a2sJc2JQrYv5uBsJ6/FR5S0
- /39SXX2rrNRl8hkdsH0j7XIQ+jcUgbJ75g==
-X-Google-Smtp-Source: ABdhPJwfXM4+jjhjXvhIy4LyWObIRTANV0ysLDQeZwmr3hjSYRCZBrmjzwR4mFPjdgmhAUPpJHAGLA==
-X-Received: by 2002:a63:c045:: with SMTP id z5mr11460233pgi.374.1630921453591; 
- Mon, 06 Sep 2021 02:44:13 -0700 (PDT)
-Received: from localhost ([122.172.201.85])
- by smtp.gmail.com with ESMTPSA id g11sm7527702pgn.41.2021.09.06.02.44.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Sep 2021 02:44:13 -0700 (PDT)
-Date: Mon, 6 Sep 2021 15:14:11 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Hector Yuan <hector.yuan@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
- "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
-Subject: Re: [PATCH v15 3/3] cpufreq: mediatek-hw: Add support for CPUFREQ HW
-Message-ID: <20210906094411.q55crm4cfcjpffau@vireshk-i7>
-References: <1630658364-6192-1-git-send-email-hector.yuan@mediatek.com>
- <1630658364-6192-4-git-send-email-hector.yuan@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=337euVifDg52yHPTsnNSlg8iKAhtysohIBdAF3QMEmo=;
+ b=GcKDnksvmyFgXyNcN/QMan3rlecaZm04Kw7OJ5RKbpwxZtNSVyknT9YcuuXHdODwUi
+ LYpH8bRCt+SQpJvTisML2km0sToSuIbQyahHqCTVXo2U0hQIZyna3FfPhKoM0pCd3UhM
+ arNam5bIq1VLG0xMA2c8+MylgQczPob0DBTEM9MD4w3hD3t/Frxenn6TuLbVUh2NwAUr
+ F0dshzMznanImhEc6ACGeDlFTyHnCHcF8DBf0A/3asfXCWynHyc0XNCgCsI2h2Ixx2Sb
+ k5J1LJUFGIaMB0RGeGljWwi6dB1gZYYQqLpUk/2SKR6jxdX6sZiWUvPNHcuNcyZowKre
+ RzEQ==
+X-Gm-Message-State: AOAM5312G3tSZRpkQYuhzwOYgjh7H11ilo7U6qkMJRJpKhlcAMYW/Xe3
+ 581SLSeUAu7UZH6u3qqISnoeY9e9yV5UZToRuWagiw==
+X-Google-Smtp-Source: ABdhPJxrv/ztIBowmhY3T4pST7ejdpl56FEmczI/ls2/yY/5kh4FrmYcjN4+Dm4k6MB629rhJkgHjXQTBV4O8pWztb0=
+X-Received: by 2002:a2e:9a44:: with SMTP id k4mr10025198ljj.201.1630922978792; 
+ Mon, 06 Sep 2021 03:09:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1630658364-6192-4-git-send-email-hector.yuan@mediatek.com>
-User-Agent: NeoMutt/20180716-391-311a52
+References: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
+ <20210830003603.31864-5-zhiyong.tao@mediatek.com>
+ <CAGXv+5H5KnskzBYuqniBGQWBLriyFkBvVXEk1Cyg6XSmKMWP8w@mail.gmail.com>
+ <b82ae857d8a3acf117721bb83d4dbbc44f612565.camel@mediatek.com>
+In-Reply-To: <b82ae857d8a3acf117721bb83d4dbbc44f612565.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 6 Sep 2021 18:09:27 +0800
+Message-ID: <CAGXv+5F=H3C9mB+uYJDmk8vPiKjWixFs8DF3Pk_Xh3x6Jpq6iA@mail.gmail.com>
+Subject: Re: [PATCH v11 4/4] pinctrl: mediatek: add rsel setting on MT8195
+To: "zhiyong.tao" <zhiyong.tao@mediatek.com>,
+ Linus Walleij <linus.walleij@linaro.org>
+Cc: Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang <sean.wang@kernel.org>, 
+ srv_heupstream <srv_heupstream@mediatek.com>, hui.liu@mediatek.com, 
+ Eddie Huang <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
+ Biao Huang <biao.huang@mediatek.com>,
+ Hongzhou Yang <hongzhou.yang@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
+ Devicetree List <devicetree@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210906_024414_747002_6421BFAD 
-X-CRM114-Status: GOOD (  20.92  )
+X-CRM114-CacheID: sfid-20210906_030941_143597_7A8D485B 
+X-CRM114-Status: GOOD (  31.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,139 +104,913 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 03-09-21, 16:39, Hector Yuan wrote:
-> From: "Hector.Yuan" <hector.yuan@mediatek.com>
-> 
-> Introduce cpufreq HW driver which can support
-> CPU frequency adjust in MT6779 platform.
-> 
-> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
-> ---
->  drivers/cpufreq/Kconfig.arm           |   12 ++
->  drivers/cpufreq/Makefile              |    1 +
->  drivers/cpufreq/mediatek-cpufreq-hw.c |  340 +++++++++++++++++++++++++++++++++
->  3 files changed, 353 insertions(+)
->  create mode 100644 drivers/cpufreq/mediatek-cpufreq-hw.c
+On Mon, Sep 6, 2021 at 11:17 AM zhiyong.tao <zhiyong.tao@mediatek.com> wrote:
+>
+> On Wed, 2021-09-01 at 18:10 +0800, Chen-Yu Tsai wrote:
+> > Hi,
+> >
+> > On Mon, Aug 30, 2021 at 8:37 AM Zhiyong Tao <zhiyong.tao@mediatek.com
+> > > wrote:
+> > >
+> > > This patch provides rsel setting on MT8195
+> >
+> > A bit more context, like what is rsel, would be nice.
+> >
+> we will add more context it in the next version.
+> > >
+> > > Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+> > > ---
+> > >  drivers/pinctrl/mediatek/pinctrl-mt8195.c     | 133 +++++++++++++
+> > >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  | 181
+> > > ++++++++++++++++--
+> > >  .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |  35 +++-
+> > >  drivers/pinctrl/mediatek/pinctrl-paris.c      |  24 ++-
+> > >  drivers/pinctrl/mediatek/pinctrl-paris.h      |   2 +-
+> > >  5 files changed, 348 insertions(+), 27 deletions(-)
+> >
+> > Could you split this patch into two, so the common parts are in the
+> > first
+> > patch, and the mt8195 specific changes are in the second?
+> >
+>
+> ok, we will split in the next version.
+>
+> > >
+> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+> > > b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+> > > index 892e79703f98..275b7ba4386d 100644
+> > > --- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+> > > @@ -779,6 +779,135 @@ static const struct mtk_pin_field_calc
+> > > mt8195_pin_drv_adv_range[] = {
+> > >         PIN_FIELD_BASE(45, 45, 1, 0x040, 0x10, 9, 3),
+> > >  };
+> > >
+> > > +static const struct mtk_pin_field_calc mt8195_pin_rsel_range[] = {
+> > > +       PIN_FIELD_BASE(8, 8, 4, 0x0c0, 0x10, 15, 3),
+> > > +       PIN_FIELD_BASE(9, 9, 4, 0x0c0, 0x10, 0, 3),
+> > > +       PIN_FIELD_BASE(10, 10, 4, 0x0c0, 0x10, 18, 3),
+> > > +       PIN_FIELD_BASE(11, 11, 4, 0x0c0, 0x10, 3, 3),
+> > > +       PIN_FIELD_BASE(12, 12, 4, 0x0c0, 0x10, 21, 3),
+> > > +       PIN_FIELD_BASE(13, 13, 4, 0x0c0, 0x10, 6, 3),
+> > > +       PIN_FIELD_BASE(14, 14, 4, 0x0c0, 0x10, 24, 3),
+> > > +       PIN_FIELD_BASE(15, 15, 4, 0x0c0, 0x10, 9, 3),
+> > > +       PIN_FIELD_BASE(16, 16, 4, 0x0c0, 0x10, 27, 3),
+> > > +       PIN_FIELD_BASE(17, 17, 4, 0x0c0, 0x10, 12, 3),
+> > > +       PIN_FIELD_BASE(29, 29, 2, 0x080, 0x10, 0, 3),
+> > > +       PIN_FIELD_BASE(30, 30, 2, 0x080, 0x10, 3, 3),
+> > > +       PIN_FIELD_BASE(34, 34, 1, 0x0e0, 0x10, 0, 3),
+> > > +       PIN_FIELD_BASE(35, 35, 1, 0x0e0, 0x10, 3, 3),
+> > > +       PIN_FIELD_BASE(44, 44, 1, 0x0e0, 0x10, 6, 3),
+> > > +       PIN_FIELD_BASE(45, 45, 1, 0x0e0, 0x10, 9, 3),
+> > > +};
+> > > +
+> > > +static const struct mtk_pin_rsel mt8195_pin_rsel_val_range[] = {
+> > > +       PIN_RSEL(8, 17, 0x0, 75000, 75000),
+> > > +       PIN_RSEL(8, 17, 0x1, 10000, 5000),
+> > > +       PIN_RSEL(8, 17, 0x2, 5000, 75000),
+> > > +       PIN_RSEL(8, 17, 0x3, 4000, 5000),
+> > > +       PIN_RSEL(8, 17, 0x4, 3000, 75000),
+> > > +       PIN_RSEL(8, 17, 0x5, 2000, 5000),
+> > > +       PIN_RSEL(8, 17, 0x6, 1500, 75000),
+> > > +       PIN_RSEL(8, 17, 0x7, 1000, 5000),
+> > > +       PIN_RSEL(29, 30, 0x0, 75000, 75000),
+> > > +       PIN_RSEL(29, 30, 0x1, 10000, 5000),
+> > > +       PIN_RSEL(29, 30, 0x2, 5000, 75000),
+> > > +       PIN_RSEL(29, 30, 0x3, 4000, 5000),
+> > > +       PIN_RSEL(29, 30, 0x4, 3000, 75000),
+> > > +       PIN_RSEL(29, 30, 0x5, 2000, 5000),
+> > > +       PIN_RSEL(29, 30, 0x6, 1500, 75000),
+> > > +       PIN_RSEL(29, 30, 0x7, 1000, 5000),
+> > > +       PIN_RSEL(34, 35, 0x0, 75000, 75000),
+> > > +       PIN_RSEL(34, 35, 0x1, 10000, 5000),
+> > > +       PIN_RSEL(34, 35, 0x2, 5000, 75000),
+> > > +       PIN_RSEL(34, 35, 0x3, 4000, 5000),
+> > > +       PIN_RSEL(34, 35, 0x4, 3000, 75000),
+> > > +       PIN_RSEL(34, 35, 0x5, 2000, 5000),
+> > > +       PIN_RSEL(34, 35, 0x6, 1500, 75000),
+> > > +       PIN_RSEL(34, 35, 0x7, 1000, 5000),
+> > > +       PIN_RSEL(44, 45, 0x0, 75000, 75000),
+> > > +       PIN_RSEL(44, 45, 0x1, 10000, 5000),
+> > > +       PIN_RSEL(44, 45, 0x2, 5000, 75000),
+> > > +       PIN_RSEL(44, 45, 0x3, 4000, 5000),
+> > > +       PIN_RSEL(44, 45, 0x4, 3000, 75000),
+> > > +       PIN_RSEL(44, 45, 0x5, 2000, 5000),
+> > > +       PIN_RSEL(44, 45, 0x6, 1500, 75000),
+> > > +       PIN_RSEL(44, 45, 0x7, 1000, 5000),
+> > > +};
+> > > +
+> > > +static const unsigned int mt8195_pull_type[] = {
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 0 */, MTK_PULL_PUPD_R1R0_TYPE /*
+> > > 1 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 2 */, MTK_PULL_PUPD_R1R0_TYPE /*
+> > > 3 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 4 */, MTK_PULL_PUPD_R1R0_TYPE /*
+> > > 5 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 6 */, MTK_PULL_PU_PD_TYPE /* 7 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 8 */, MTK_PULL_PU_PD_RSEL_TYPE
+> > > /* 9 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 10 */, MTK_PULL_PU_PD_RSEL_TYPE
+> > > /* 11 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 12 */, MTK_PULL_PU_PD_RSEL_TYPE
+> > > /* 13 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 14 */, MTK_PULL_PU_PD_RSEL_TYPE
+> > > /* 15 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 16 */, MTK_PULL_PU_PD_RSEL_TYPE
+> > > /* 17 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 18 */, MTK_PULL_PU_PD_TYPE /* 19 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 20 */, MTK_PULL_PU_PD_TYPE /* 21 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 22 */, MTK_PULL_PU_PD_TYPE /* 23 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 24 */, MTK_PULL_PU_PD_TYPE /* 25 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 26 */, MTK_PULL_PU_PD_TYPE /* 27 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 28 */, MTK_PULL_PU_PD_RSEL_TYPE /*
+> > > 29 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 30 */, MTK_PULL_PU_PD_TYPE /*
+> > > 31 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 32 */, MTK_PULL_PU_PD_TYPE /* 33 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 34 */, MTK_PULL_PU_PD_RSEL_TYPE
+> > > /* 35 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 36 */, MTK_PULL_PU_PD_TYPE /* 37 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 38 */, MTK_PULL_PU_PD_TYPE /* 39 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 40 */, MTK_PULL_PU_PD_TYPE /* 41 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 42 */, MTK_PULL_PU_PD_TYPE /* 43 */,
+> > > +       MTK_PULL_PU_PD_RSEL_TYPE /* 44 */, MTK_PULL_PU_PD_RSEL_TYPE
+> > > /* 45 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 46 */, MTK_PULL_PU_PD_TYPE /* 47 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 48 */, MTK_PULL_PU_PD_TYPE /* 49 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 50 */, MTK_PULL_PU_PD_TYPE /* 51 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 52 */, MTK_PULL_PU_PD_TYPE /* 53 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 54 */, MTK_PULL_PU_PD_TYPE /* 55 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 56 */, MTK_PULL_PU_PD_TYPE /* 57 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 58 */, MTK_PULL_PU_PD_TYPE /* 59 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 60 */, MTK_PULL_PU_PD_TYPE /* 61 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 62 */, MTK_PULL_PU_PD_TYPE /* 63 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 64 */, MTK_PULL_PU_PD_TYPE /* 65 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 66 */, MTK_PULL_PU_PD_TYPE /* 67 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 68 */, MTK_PULL_PU_PD_TYPE /* 69 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 70 */, MTK_PULL_PU_PD_TYPE /* 71 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 72 */, MTK_PULL_PU_PD_TYPE /* 73 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 74 */, MTK_PULL_PU_PD_TYPE /* 75 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 76 */, MTK_PULL_PUPD_R1R0_TYPE /* 77
+> > > */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 78 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 79 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 80 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 81 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 82 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 83 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 84 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 85 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 86 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 87 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 88 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 89 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 90 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 91 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 92 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 93 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 94 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 95 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 96 */, MTK_PULL_PU_PD_TYPE /* 97
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 98 */, MTK_PULL_PU_PD_TYPE /* 99 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 100 */, MTK_PULL_PU_PD_TYPE /* 101
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 102 */, MTK_PULL_PU_PD_TYPE /* 103
+> > > */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 104 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 105 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 106 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 107 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 108 */, MTK_PULL_PU_PD_TYPE /* 109
+> > > */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 110 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 111 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 112 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 113 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 114 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 115 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 116 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 117 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 118 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 119 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 120 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 121 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 122 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 123 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 124 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 125 */,
+> > > +       MTK_PULL_PUPD_R1R0_TYPE /* 126 */, MTK_PULL_PUPD_R1R0_TYPE
+> > > /* 127 */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 128 */, MTK_PULL_PU_PD_TYPE /* 129
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 130 */, MTK_PULL_PU_PD_TYPE /* 131
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 132 */, MTK_PULL_PU_PD_TYPE /* 133
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 134 */, MTK_PULL_PU_PD_TYPE /* 135
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 136 */, MTK_PULL_PU_PD_TYPE /* 137
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 138 */, MTK_PULL_PU_PD_TYPE /* 139
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 140 */, MTK_PULL_PU_PD_TYPE /* 141
+> > > */,
+> > > +       MTK_PULL_PU_PD_TYPE /* 142 */, MTK_PULL_PU_PD_TYPE /* 143
+> > > */,
+> > > +};
+> > > +
+> > >  static const struct mtk_pin_reg_calc
+> > > mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+> > >         [PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8195_pin_mode_range),
+> > >         [PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8195_pin_dir_range),
+> > > @@ -793,6 +922,7 @@ static const struct mtk_pin_reg_calc
+> > > mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+> > >         [PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8195_pin_r0_range),
+> > >         [PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8195_pin_r1_range),
+> > >         [PINCTRL_PIN_REG_DRV_ADV] =
+> > > MTK_RANGE(mt8195_pin_drv_adv_range),
+> > > +       [PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt8195_pin_rsel_range),
+> > >  };
+> > >
+> > >  static const char * const mt8195_pinctrl_register_base_names[] = {
+> > > @@ -817,6 +947,9 @@ static const struct mtk_pin_soc mt8195_data = {
+> > >         .gpio_m = 0,
+> > >         .base_names = mt8195_pinctrl_register_base_names,
+> > >         .nbase_names =
+> > > ARRAY_SIZE(mt8195_pinctrl_register_base_names),
+> > > +       .pull_type = mt8195_pull_type,
+> > > +       .pin_rsel = mt8195_pin_rsel_val_range,
+> > > +       .npin_rsel = ARRAY_SIZE(mt8195_pin_rsel_val_range),
+> > >         .bias_set_combo = mtk_pinconf_bias_set_combo,
+> > >         .bias_get_combo = mtk_pinconf_bias_get_combo,
+> > >         .drive_set = mtk_pinconf_drive_set_rev1,
+> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > > b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > > index 5b3b048725cc..b6a89d41f040 100644
+> > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
+> > > @@ -641,6 +641,9 @@ static int
+> > > mtk_pinconf_bias_set_pupd_r1_r0(struct mtk_pinctrl *hw,
+> > >         } else if (arg == MTK_PUPD_SET_R1R0_11) {
+> > >                 r0 = 1;
+> > >                 r1 = 1;
+> > > +       } else if (arg == MTK_ENABLE) {
+> > > +               r0 = 1;
+> > > +               r1 = 0;
+> >
+> > This change does not seem related. This should be in a separate patch
+> > and why and what this change is should be described in the commit
+> > log.
+> > I assume this is to support "bias-pull-up" or "bias-pull-down"
+> > without
+> > arguments on pins using R1R0?
+>
+> we will separate it in next version.
+> some users want only pull up/down, they don't care about the resistance
+> value. So we support the case which only use "bias-pull-up" or "bias-
+> pull-down" without arguments on pins using R1R0.
 
-Here as well, I have added below diff to the original patch. Lemme
-know if you don't like something.
+I see. This should be added as a separate patch before the RSEL stuff
+then. That way it would also be easier to backport in case it is needed.
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq-hw.c b/drivers/cpufreq/mediatek-cpufreq-hw.c
-index 9c6df1b00f3e..0cf18dd46b92 100644
---- a/drivers/cpufreq/mediatek-cpufreq-hw.c
-+++ b/drivers/cpufreq/mediatek-cpufreq-hw.c
-@@ -33,12 +33,6 @@ enum {
-        REG_ARRAY_SIZE,
- };
+> >
+> > >         } else {
+> > >                 err = -EINVAL;
+> > >                 goto out;
+> > > @@ -661,6 +664,75 @@ static int
+> > > mtk_pinconf_bias_set_pupd_r1_r0(struct mtk_pinctrl *hw,
+> > >         return err;
+> > >  }
+> > >
+> > > +static int mtk_hw_pin_rsel_lookup(struct mtk_pinctrl *hw,
+> > > +                                 const struct mtk_pin_desc *desc,
+> > > +                                 u32 pullup, u32 arg, u32
+> > > *rsel_val)
+> > > +{
+> > > +       const struct mtk_pin_rsel *rsel;
+> > > +       int check;
+> > > +       bool found = false;
+> > > +
+> > > +       rsel = hw->soc->pin_rsel;
+> > > +
+> > > +       for (check = 0; check <= hw->soc->npin_rsel - 1; check++) {
+> > > +               if (desc->number >= rsel[check].s_pin &&
+> > > +                   desc->number <= rsel[check].e_pin) {
+> > > +                       if (pullup) {
+> > > +                               if (rsel[check].up_rsel == arg) {
+> > > +                                       found = true;
+> > > +                                       *rsel_val =
+> > > rsel[check].rsel_index;
+> > > +                                       break;
+> > > +                               }
+> > > +                       } else {
+> > > +                               if (rsel[check].down_rsel == arg) {
+> > > +                                       found = true;
+> > > +                                       *rsel_val =
+> > > rsel[check].rsel_index;
+> > > +                                       break;
+> > > +                               }
+> > > +                       }
+> > > +               }
+> > > +       }
+> > > +
+> > > +       if (!found) {
+> > > +               dev_err(hw->dev, "Not support rsel value %d Ohm for
+> > > pin = %d (%s)\n",
+> > > +                       arg, desc->number, desc->name);
+> > > +               return -EOPNOTSUPP;
+> >
+> > I believe ENOTSUPP is the correct one. EOPNOTSUPP seems to be network
+> > related.
+> >
+>
+> if we change it as "ENOTSUPP", it will report warning"ENOTSUPP is not
+> SUSV4 error code, prefer EOPNOTSUP" when checking patch.
 
--struct mtk_cpufreq_drv;
--
--struct mtk_cpufreq_drv {
--       const u16 *offsets;
--};
--
- struct mtk_cpufreq_data {
-        struct cpufreq_frequency_table *table;
-        void __iomem *reg_bases[REG_ARRAY_SIZE];
-@@ -126,8 +120,8 @@ static int mtk_cpu_create_freq_table(struct platform_device *pdev,
-                                     struct mtk_cpufreq_data *data)
- {
-        struct device *dev = &pdev->dev;
--       void __iomem *base_table;
-        u32 temp, i, freq, prev_freq = 0;
-+       void __iomem *base_table;
+The context surrounding this warning seems to be that ENOTSUPP is hard
+for userspace to understand. AFAIK the return code here does not get
+passed to userspace? And the pinctrl core does check for EINVAL or
+ENOTSUPP, so I think this is a valid use case.
 
-        data->table = devm_kcalloc(dev, LUT_MAX_ENTRIES + 1,
-                                   sizeof(*data->table), GFP_KERNEL);
-@@ -198,15 +192,13 @@ static int mtk_cpu_resources_init(struct platform_device *pdev,
- static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
- {
-        struct platform_device *pdev = cpufreq_get_driver_data();
--       struct mtk_cpufreq_drv *drv = platform_get_drvdata(pdev);
-        int sig, pwr_hw = CPUFREQ_HW_STATUS | SVS_HW_STATUS;
-        struct mtk_cpufreq_data *data;
--       struct device *cpu_dev;
-        unsigned int latency;
-        int ret;
+Linus?
 
-        /* Get the bases of cpufreq for domains */
--       ret = mtk_cpu_resources_init(pdev, policy, drv->offsets);
-+       ret = mtk_cpu_resources_init(pdev, policy, platform_get_drvdata(pdev));
-        if (ret) {
-                dev_info(&pdev->dev, "CPUFreq resource init failed\n");
-                return ret;
-@@ -218,9 +210,7 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
-        if (!latency)
-                latency = CPUFREQ_ETERNAL;
+> > I also think it would make sense to differentiate between the pin not
+> > supporting RSEL (return -ENOTSUPP) vs supporting RSEL but a resistor
+> > value not in the table was requested (return -EINVAL). This might be
+> > easier to do with the two-table design I mentioned.
+>
+> It only support resistor value on the patch on mt8195. we think we need
+> only maintain one-table design.
 
--       /* us convert to ns */
-        policy->cpuinfo.transition_latency = latency;
--
-        policy->fast_switch_possible = true;
+OK. I think there's a possibility that some corner case might happen.
+I guess we'll deal with them if they occur.
 
-        /* HW should be in enabled state to proceed now */
-@@ -237,12 +227,6 @@ static int mtk_cpufreq_hw_cpu_init(struct cpufreq_policy *policy)
-                pr_info("SVS of CPU%d is not enabled\n", policy->cpu);
-        }
+> >
+> > > +       }
+> > > +
+> > > +       return 0;
+> > > +}
+> > > +
+> > > +static int mtk_pinconf_bias_set_rsel(struct mtk_pinctrl *hw,
+> > > +                                    const struct mtk_pin_desc
+> > > *desc,
+> > > +                                    u32 pullup, u32 arg)
+> > > +{
+> > > +       int err, rsel_val;
+> > > +
+> > > +       if (hw->soc->pin_rsel) {
+> > > +               /* find pin rsel_index from pin_rsel array*/
+> > > +               err = mtk_hw_pin_rsel_lookup(hw, desc, pullup, arg,
+> > > &rsel_val);
+> > > +               if (err)
+> > > +                       goto out;
+> > > +       } else {
+> > > +               if (arg < MTK_PULL_SET_RSEL_000 ||
+> > > +                   arg > MTK_PULL_SET_RSEL_111) {
+> > > +                       err = -EINVAL;
+> > > +                       goto out;
+> > > +               }
+> > > +
+> > > +               rsel_val -= MTK_PULL_SET_RSEL_000;
+> > > +       }
+> >
+> > This is not structured correctly. Think about this: on a chip, say
+> > MT8195,
+> > which has hw->soc->pin_rsel defined, but the device tree writer chose
+> > to use the macros instead of SI unit values. This is exactly the
+> > scenario
+> > you discussed privately with me.
+> >
+> > This also fails the case where bias-pull-{up,down} is specified
+> > without
+> > an argument, in which case arg == 1. This does seem to be covered by
+> > falling back to just PU/PD, but it's not exactly obvious, especially
+> > since we are skipping mtk_pinconf_bias_set_pu_pd() just below.
+> >
+> > So you actually need to check for the magic values first, and if arg
+> > doesn't match any of them, assume an SI unit argument and try to do
+> > a lookup.
+> >
+>
+> one very important point of upstream is keeping backward compatibility,
+> since almost all customers of other MTK platforms does not care about
+> resistor values so we leave user to choose MTK_PULL_SET_RSEL_XXX
+> without necessity to know resistor value.
 
--       cpu_dev = get_cpu_device(policy->cpu);
--       if (!cpu_dev) {
--               pr_info("failed to get cpu%d device\n", policy->cpu);
--               return -ENODEV;
--       }
--
-        return 0;
- }
+I'm not sure about the connection to backward compatibility here, given
+that you are just introducing support for RSEL.
 
-@@ -261,9 +245,6 @@ static void mtk_cpufreq_register_em(struct cpufreq_policy *policy)
-        struct em_data_callback em_cb = EM_DATA_CB(mtk_cpufreq_get_cpu_power);
-        struct mtk_cpufreq_data *data = policy->driver_data;
+> Our policy is making most customers/users convenient.
+> Encourage of using SI unit is not in concern.
+>
+> For mt8195, we choose "hw->soc->pin_rsel", so it can support SI unit.
 
--       if (!data->nr_opp)
--               return;
--
-        em_dev_register_perf_domain(get_cpu_device(policy->cpu), data->nr_opp,
-                                    &em_cb, policy->cpus, true);
- }
-@@ -285,22 +266,14 @@ static struct cpufreq_driver cpufreq_mtk_hw_driver = {
+Regarding my concern, there are a lot of moving pieces here, so let's see
+how the next revision turns out and if this is still an issue.
 
- static int mtk_cpufreq_hw_driver_probe(struct platform_device *pdev)
- {
--       struct mtk_cpufreq_drv *drv;
--       const u16 *offsets;
-+       const void *data;
-        int ret;
+> > > +
+> > > +       err = mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_RSEL,
+> > > rsel_val);
+> > > +       if (err)
+> > > +               goto out;
+> > > +
+> > > +       err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup,
+> > > MTK_ENABLE);
+> > > +
+> > > +out:
+> > > +       return err;
+> > > +}
+> > > +
+> > >  static int mtk_pinconf_bias_get_pu_pd(struct mtk_pinctrl *hw,
+> > >                                 const struct mtk_pin_desc *desc,
+> > >                                 u32 *pullup, u32 *enable)
+> > > @@ -742,44 +814,117 @@ static int
+> > > mtk_pinconf_bias_get_pupd_r1_r0(struct mtk_pinctrl *hw,
+> >
+> > This hunk is somewhat whacky. I assume it's because you also fixed up
+> > the indentation for mtk_pinconf_bias_set_combo(). While nice to do,
+> > in this case it actually works against having an easy to read patch.
+> >
+>
+> yes, it's because to fix up
+> the indentation for mtk_pinconf_bias_set_combo().
 
--       offsets = of_device_get_match_data(&pdev->dev);
--       if (!offsets)
-+       data = of_device_get_match_data(&pdev->dev);
-+       if (!data)
-                return -EINVAL;
+I suggest moving that to a separate patch. While whitespace changes are
+sometimes frowned upon, I think this is OK given that it would improve
+readability of the patches following it. You should mention that in the
+commit message to justify the change.
 
--       drv = kzalloc(sizeof(*drv), GFP_KERNEL);
--       if (!drv)
--               return -ENOMEM;
--
--       drv->offsets = offsets;
--
--       platform_set_drvdata(pdev, drv);
--
-+       platform_set_drvdata(pdev, (void *) data);
-        cpufreq_mtk_hw_driver.driver_data = pdev;
+> > >         return err;
+> > >  }
+> > >
+> > > -int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
+> > > -                               const struct mtk_pin_desc *desc,
+> > > -                               u32 pullup, u32 arg)
+> > > +static int mtk_pinconf_bias_get_rsel(struct mtk_pinctrl *hw,
+> > > +                                    const struct mtk_pin_desc
+> > > *desc,
+> > > +                                    u32 *pullup, u32 *enable)
+> > >  {
+> > > -       int err;
+> > > +       int pu, pd, rsel, err;
+> > >
+> > > -       err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup, arg);
+> > > -       if (!err)
+> > > +       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_RSEL,
+> > > &rsel);
+> > > +       if (err)
+> > >                 goto out;
+> > >
+> > > -       err = mtk_pinconf_bias_set_pullsel_pullen(hw, desc, pullup,
+> > > arg);
+> > > -       if (!err)
+> > > +       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_PU, &pu);
+> > > +       if (err)
+> > >                 goto out;
+> > >
+> > > -       err = mtk_pinconf_bias_set_pupd_r1_r0(hw, desc, pullup,
+> > > arg);
+> > > +       err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_PD, &pd);
+> >
+> > Maybe this could reuse mtk_pinconf_bias_get_pu_pd(), much like on the
+> > `set`
+> > side?
+> >
+>
+> we will try to reuse mtk_pinconf_bias_get_pu_pd().
+>
+> > > +
+> > > +       if (pu == 0 && pd == 0) {
+> > > +               *pullup = 0;
+> > > +               *enable = MTK_DISABLE;
+> > > +       } else if (pu == 1 && pd == 0) {
+> > > +               *pullup = 1;
+> > > +               *enable = rsel + MTK_PULL_SET_RSEL_000;
+> > > +       } else if (pu == 0 && pd == 1) {
+> > > +               *pullup = 0;
+> > > +               *enable = rsel + MTK_PULL_SET_RSEL_000;
+> > > +       } else {
+> > > +               err = -EINVAL;
+> > > +               goto out;
+> > > +       }
+> > >
+> > >  out:
+> > >         return err;
+> > >  }
+> > > +
+> > > +int mtk_pinconf_bias_set_combo(struct mtk_pinctrl *hw,
+> > > +                              const struct mtk_pin_desc *desc,
+> > > +                              u32 pullup, u32 arg)
+> > > +{
+> > > +       int err = -EOPNOTSUPP;
+> > > +       bool try_all_type;
+> > > +
+> > > +       try_all_type = hw->soc->pull_type ? false : true;
+> >
+> > Using ternary ops is discouraged. Maybe this could be structured
+> > like:
+> >
+> >     u32 pull_type;
+> >
+> >     if (hw->soc->pull_type)
+> >             pull_type = hw->soc->pull_type[desc->number];
+> >     else
+> >             pull_type = MTK_PULL_TYPE_MASK;
+> >
+> > That way you don't need to test `try_all_type` every time.
+>
+> we will try to change it in next version.
+>
+> >
+> > > +
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_RSEL_TYPE)) {
+> > > +               err = mtk_pinconf_bias_set_rsel(hw, desc, pullup,
+> > > arg);
+> > > +               if (!err)
+> > > +                       return err;
+> > > +       }
+> > > +
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_PU_PD_TYPE)) {
+> > > +               err = mtk_pinconf_bias_set_pu_pd(hw, desc, pullup,
+> > > arg);
+> > > +               if (!err)
+> > > +                       return err;
+> > > +       }
+> > > +
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_PULLSEL_TYPE)) {
+> > > +               err = mtk_pinconf_bias_set_pullsel_pullen(hw, desc,
+> > > +                                                         pullup,
+> > > arg);
+> > > +               if (!err)
+> > > +                       return err;
+> > > +       }
+> > > +
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_PUPD_R1R0_TYPE)) {
+> > > +               err = mtk_pinconf_bias_set_pupd_r1_r0(hw, desc,
+> > > pullup, arg);
+> > > +               if (err)
+> > > +                       dev_err(hw->dev, "Invalid pull
+> > > argument\n");
+> >
+> > The "if (err)" could be moved outside the upper "if" block. That way
+> > the code flow looks more consistent, plus we get an error message
+> > regardless of the pull type supported.
+>
+> we will move "if (err)" outside the upper "if" block in the next
+> version.
+> >
+> > > +       }
+> > > +
+> > > +       return err;
+> > > +}
+> > >  EXPORT_SYMBOL_GPL(mtk_pinconf_bias_set_combo);
+> > >
+> > >  int mtk_pinconf_bias_get_combo(struct mtk_pinctrl *hw,
+> > >                               const struct mtk_pin_desc *desc,
+> > >                               u32 *pullup, u32 *enable)
+> > >  {
+> > > -       int err;
+> > > +       int err = -EOPNOTSUPP;
+> > > +       bool try_all_type;
+> > >
+> > > -       err = mtk_pinconf_bias_get_pu_pd(hw, desc, pullup, enable);
+> > > -       if (!err)
+> > > -               goto out;
+> > > +       try_all_type = hw->soc->pull_type ? false : true;
+> >
+> > Same here.
+> >
+>
+> we will try to change it in next version.
+>
+> > >
+> > > -       err = mtk_pinconf_bias_get_pullsel_pullen(hw, desc, pullup,
+> > > enable);
+> > > -       if (!err)
+> > > -               goto out;
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_RSEL_TYPE)) {
+> > > +               err = mtk_pinconf_bias_get_rsel(hw, desc, pullup,
+> > > enable);
+> > > +               if (!err)
+> > > +                       return err;
+> > > +       }
+> > > +
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_PU_PD_TYPE)) {
+> > > +               err = mtk_pinconf_bias_get_pu_pd(hw, desc, pullup,
+> > > enable);
+> > > +               if (!err)
+> > > +                       return err;
+> > > +       }
+> > >
+> > > -       err = mtk_pinconf_bias_get_pupd_r1_r0(hw, desc, pullup,
+> > > enable);
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_PULLSEL_TYPE)) {
+> > > +               err = mtk_pinconf_bias_get_pullsel_pullen(hw, desc,
+> > > +                                                         pullup,
+> > > enable);
+> > > +               if (!err)
+> > > +                       return err;
+> > > +       }
+> > > +
+> > > +       if (try_all_type ||
+> > > +           (hw->soc->pull_type[desc->number] &
+> > > MTK_PULL_PUPD_R1R0_TYPE))
+> > > +               err = mtk_pinconf_bias_get_pupd_r1_r0(hw, desc,
+> > > pullup, enable);
+> > >
+> > > -out:
+> > >         return err;
+> > >  }
+> > >  EXPORT_SYMBOL_GPL(mtk_pinconf_bias_get_combo);
+> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> > > b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> > > index a6f1bdb2083b..a3d73f153efe 100644
+> > > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> > > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.h
+> > > @@ -17,6 +17,13 @@
+> > >  #define MTK_ENABLE     1
+> > >  #define MTK_PULLDOWN   0
+> > >  #define MTK_PULLUP     1
+> > > +#define MTK_PULL_PU_PD_TYPE            BIT(0)
+> > > +#define MTK_PULL_PULLSEL_TYPE          BIT(1)
+> > > +#define MTK_PULL_PUPD_R1R0_TYPE                BIT(2)
+> > > +#define MTK_PULL_RSEL_TYPE             BIT(3)
+> > > +#define MTK_PULL_PU_PD_RSEL_TYPE       (MTK_PULL_PU_PD_TYPE \
+> > > +                                       | MTK_PULL_RSEL_TYPE)
+> >
+> > MTK_PULL_RSEL_TYPE deserves a comment saying why it should not be
+> > used
+> > on its own.
+> >
+> > But since mtk_pinconf_bias_set_rsel() is already calling
+> > mtk_pinconf_bias_set_pu_pd(), if the former function is reworked,
+> > then
+> > the two types don't need to be combined for the fallback behavior.
+> >
+>
+>
+> MTK_PULL_PU_PD_RSEL_TYPE is type wihch is can be control by
+> MTK_PULL_PU_PD_TYPE or MTK_PULL_RSEL_TYPE. so we combibe them
+> together.
 
-        ret = cpufreq_register_driver(&cpufreq_mtk_hw_driver);
-@@ -312,11 +285,6 @@ static int mtk_cpufreq_hw_driver_probe(struct platform_device *pdev)
+But can RSEL be used without PU/PD? The definitions read like "PU_PD_RSEL"
+means either RSEL or PU/PD can be used, but if I understand the hardware
+correctly, RSEL by itself only selects the resistor value, but doesn't
+turn on/off the bias nor select pull up or down. So RSEL is an extension
+of PU/PD, and by itself won't have any real effect.
 
- static int mtk_cpufreq_hw_driver_remove(struct platform_device *pdev)
- {
--       struct mtk_cpufreq_drv *drv = platform_get_drvdata(pdev);
--
--       kfree(drv->offsets);
--       kfree(drv);
--
-        return cpufreq_unregister_driver(&cpufreq_mtk_hw_driver);
- }
+Since this could be interpreted either way, a comment explaining things
+should be added to document the author's intentions.
 
+> > >  #define EINT_NA        U16_MAX
+> > >  #define NO_EINT_SUPPORT        EINT_NA
+> > > @@ -42,6 +49,14 @@
+> > >         PIN_FIELD_CALC(_s_pin, _e_pin, 0, _s_addr, _x_addrs,
+> > > _s_bit,    \
+> > >                        _x_bits, 32, 1)
+> > >
+> > > +#define PIN_RSEL(_s_pin, _e_pin, _rsel_index, _up_resl,
+> > > _down_rsel) {  \
+> >
+> >                                                     ^ rsel?
+> >
+> > > +               .s_pin =
+> > > _s_pin,                                        \
+> > > +               .e_pin =
+> > > _e_pin,                                        \
+> > > +               .rsel_index =
+> > > _rsel_index,                              \
+> > > +               .up_rsel =
+> > > _up_resl,                                    \
+> > > +               .down_rsel =
+> > > _down_rsel,                                \
+> > > +       }
+> > > +
+> > >  /* List these attributes which could be modified for the pin */
+> > >  enum {
+> > >         PINCTRL_PIN_REG_MODE,
+> > > @@ -67,6 +82,7 @@ enum {
+> > >         PINCTRL_PIN_REG_DRV_E0,
+> > >         PINCTRL_PIN_REG_DRV_E1,
+> > >         PINCTRL_PIN_REG_DRV_ADV,
+> > > +       PINCTRL_PIN_REG_RSEL,
+> > >         PINCTRL_PIN_REG_MAX,
+> > >  };
+> > >
+> > > @@ -129,6 +145,21 @@ struct mtk_pin_field_calc {
+> > >         u8  fixed;
+> > >  };
+> > >
+> > > +/* struct mtk_pin_rsel - the structure that providing bias
+> > > resistance selection.
+> >
+> >                                                ^ provides
+>
+> we will change it in next version.
+>
+>
+> >
+> > > + * @s_pin:             the start pin within the rsel range
+> > > + * @e_pin:             the end pin within the rsel range
+> > > + * @rsel_index:        the rsel bias resistance index
+> > > + * @up_rsel:   the pullup rsel bias resistance value
+> > > + * @down_rsel: the pulldown rsel bias resistance value
+> > > + */
+> > > +struct mtk_pin_rsel {
+> > > +       u16 s_pin;
+> > > +       u16 e_pin;
+> > > +       u16 rsel_index;
+> > > +       u32 up_rsel;
+> > > +       u32 down_rsel;
+> > > +};
+> > > +
+> >
+> > If it were up to me, I would split this into two layers, one for the
+> > register value <-> resistor value mapping, lets call it "rsel table",
+> > and the other for pin <-> "rsel table" mapping.
+> >
+> > I assume most if not all pins that support rsel would have the same
+> > set
+> > of resistor values, so that would trade a level of indirection for
+> > better
+> > usage of space.
+> >
+> > >  /* struct mtk_pin_reg_calc - the structure that holds all ranges
+> > > used to
+> > >   *                          determine which register the pin would
+> > > make use of
+> > >   *                          for certain pin attribute.
+> > > @@ -206,6 +237,9 @@ struct mtk_pin_soc {
+> > >         bool                            ies_present;
+> > >         const char * const              *base_names;
+> > >         unsigned int                    nbase_names;
+> > > +       const unsigned int              *pull_type;
+> > > +       const struct mtk_pin_rsel       *pin_rsel;
+> > > +       unsigned int                    npin_rsel;
+> > >
+> > >         /* Specific pinconfig operations */
+> > >         int (*bias_disable_set)(struct mtk_pinctrl *hw,
+> > > @@ -237,7 +271,6 @@ struct mtk_pin_soc {
+> > >                              const struct mtk_pin_desc *desc, u32
+> > > arg);
+> > >         int (*adv_drive_get)(struct mtk_pinctrl *hw,
+> > >                              const struct mtk_pin_desc *desc, u32
+> > > *val);
+> > > -
+> >
+> > Unrelated whitespace change. Please remove it.
+>
+> we will remove it in next version.
+>
+> >
+> > >         /* Specific driver data */
+> > >         void                            *driver_data;
+> > >  };
+> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> > > b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> > > index 85db2e4377f0..8990cfe47d72 100644
+> > > --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> > > +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> > > @@ -577,9 +577,9 @@ static int mtk_hw_get_value_wrap(struct
+> > > mtk_pinctrl *hw, unsigned int gpio, int
+> > >         mtk_hw_get_value_wrap(hw, gpio, PINCTRL_PIN_REG_DRV)
+> > >
+> > >  ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
+> > > -       unsigned int gpio, char *buf, unsigned int bufLen)
+> > > +       unsigned int gpio, char *buf, unsigned int buf_len)
+> >
+> > Unrelated change.
+>
+> we will sparate it in next version.
+>
+> >
+> > >  {
+> > > -       int pinmux, pullup, pullen, len = 0, r1 = -1, r0 = -1;
+> > > +       int pinmux, pullup, pullen, len = 0, r1 = -1, r0 = -1, rsel
+> > > = -1;
+> > >         const struct mtk_pin_desc *desc;
+> > >
+> > >         if (gpio >= hw->soc->npins)
+> > > @@ -591,6 +591,8 @@ ssize_t mtk_pctrl_show_one_pin(struct
+> > > mtk_pinctrl *hw,
+> > >                 pinmux -= hw->soc->nfuncs;
+> > >
+> > >         mtk_pinconf_bias_get_combo(hw, desc, &pullup, &pullen);
+> > > +
+> > > +       /* Case for: R1R0 */
+> > >         if (pullen == MTK_PUPD_SET_R1R0_00) {
+> > >                 pullen = 0;
+> > >                 r1 = 0;
+> > > @@ -607,10 +609,16 @@ ssize_t mtk_pctrl_show_one_pin(struct
+> > > mtk_pinctrl *hw,
+> > >                 pullen = 1;
+> > >                 r1 = 1;
+> > >                 r0 = 1;
+> > > -       } else if (pullen != MTK_DISABLE && pullen != MTK_ENABLE) {
+> > > -               pullen = 0;
+> > >         }
+> > > -       len += scnprintf(buf + len, bufLen - len,
+> > > +
+> > > +       /* Case for: RSEL */
+> > > +       if (pullen >= MTK_PULL_SET_RSEL_000 &&
+> > > +           pullen <= MTK_PULL_SET_RSEL_111) {
+> > > +               rsel = pullen - MTK_PULL_SET_RSEL_000;
+> > > +               pullen = 1;
+> > > +       }
+> > > +
+> > > +       len += scnprintf(buf + len, buf_len - len,
+> >
+> > Unrelated change.
+>
+> it is used to get rsel debug changes
+> >
+> > >                         "%03d: %1d%1d%1d%1d%02d%1d%1d%1d%1d",
+> > >                         gpio,
+> > >                         pinmux,
+> > > @@ -624,10 +632,12 @@ ssize_t mtk_pctrl_show_one_pin(struct
+> > > mtk_pinctrl *hw,
+> > >                         pullup);
+> > >
+> > >         if (r1 != -1) {
+> > > -               len += scnprintf(buf + len, bufLen - len, " (%1d
+> > > %1d)\n",
+> > > +               len += scnprintf(buf + len, buf_len - len, " (%1d
+> > > %1d)\n",
+> > >                         r1, r0);
+> > > +       } else if (rsel != -1) {
+> > > +               len += scnprintf(buf + len, buf_len - len, "
+> > > (%1d)\n", rsel);
+> > >         } else {
+> > > -               len += scnprintf(buf + len, bufLen - len, "\n");
+> > > +               len += scnprintf(buf + len, buf_len - len, "\n");
+> >
+> > Unrelated changes.
+>
+> it is used to get rsel debug changes
+
+Sorry about the confusion. The unrelated change I meant to point out
+is actually just the "bufLen" to "buf_len" change.
+
+
+Regards
+ChenYu
+
+
+
+
+> >
+> > >         }
+> > >
+> > >         return len;
+> > > diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.h
+> > > b/drivers/pinctrl/mediatek/pinctrl-paris.h
+> > > index afb7650fd25b..681267c0e1a4 100644
+> > > --- a/drivers/pinctrl/mediatek/pinctrl-paris.h
+> > > +++ b/drivers/pinctrl/mediatek/pinctrl-paris.h
+> > > @@ -61,7 +61,7 @@ int mtk_paris_pinctrl_probe(struct
+> > > platform_device *pdev,
+> > >                             const struct mtk_pin_soc *soc);
+> > >
+> > >  ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
+> > > -       unsigned int gpio, char *buf, unsigned int bufLen);
+> > > +       unsigned int gpio, char *buf, unsigned int buf_len);
+> >
+> > Unrelated change.
+> >
+>
+> sparate it in next version.
+>
+> >
+> > Regards
+> > ChenYu
+> >
+> > >
+> > >  extern const struct dev_pm_ops mtk_paris_pinctrl_pm_ops;
+> > >
+> > > --
+> > > 2.18.0
+> > > _______________________________________________
+> > > Linux-mediatek mailing list
+> > > Linux-mediatek@lists.infradead.org
+> > > http://lists.infradead.org/mailman/listinfo/linux-mediatekwe will
+>
+>
+>
 
 _______________________________________________
 Linux-mediatek mailing list
