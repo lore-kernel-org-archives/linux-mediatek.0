@@ -2,75 +2,88 @@ Return-Path: <SRS0=cnxW=N4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D067FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 13:13:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 40B2AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 17:11:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A073E60F14
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 13:13:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A073E60F14
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0C65060ED8
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Sep 2021 17:11:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0C65060ED8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V9cd2VAHUVJ9JTl1UsF8jMRKJX5cwABPG7RGidhCetw=; b=dINGNw/797TOdi
-	O4UervABzo0ESPe+fjn9HLhBG2QTS433wvAuIjwN6pej8TCfEsAZz66EQK/mp75He/QYNL2Rblwlo
-	qWEEVqDnTABo1+W2pxEaDWwool6ZV3WFNu+nKJhO57HJIWNEc9OlR1mSoKwjg/4Jb9u2Bvkz5PA+k
-	gBDLo1mjbufva2QxHb4miezuLVU2dpe02w31ONH4Wmkpa5EZVN90EmDrjnCJ4Nby4E+SypqpV7eDb
-	JRaAHs3c4dk/ZtXj+gIlg6+Dq8XHWfPpGrVsVFL/IxINxsaoja5VARwXpU1I5uzTelV+2y85P/a9P
-	T7N78r7nKbuCApLWm4/Q==;
+	List-Owner; bh=TUJvOYYWMyviGNsm1g4/955OSyt2rcTnJXHpP3syTJA=; b=c5BJftYafzq1la
+	DH5yZQNxdoQMw9Lyn+whG/9jk5V4GzBYi8mk4BhAUIQRc4489lxU779Qq0fr1zRXucgdJ46oKBM+D
+	xsh1hUwPz45+E9qaE4xhDWLrGnTBCgkuQARkbNixCgYOvBeJeveDzgyX1t4hDJzCbhPcVJg2XLKH+
+	ovph48g5TzvJomuHadCKb2E3I2YSHCu7sEuYZTAOr/c4KcikzqQsFopSXnw+dozRxei1un7LhUEDc
+	iM/5PFB4SGIfIQOrsUu9itb8sXy7+3L6s0YbX34JLHSdxoqPS3FStkl/ZXGsHxDV+iuuujTPeCaxy
+	rzgZUsXXWARwYxhjj05g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNERK-000tlr-Mf; Mon, 06 Sep 2021 13:13:34 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mNI8t-001Odr-6m; Mon, 06 Sep 2021 17:10:47 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNERH-000tib-KV; Mon, 06 Sep 2021 13:13:33 +0000
-X-UUID: e3b984d0177d46efa8f9c14b994d959b-20210906
-X-UUID: e3b984d0177d46efa8f9c14b994d959b-20210906
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <hector.yuan@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1729952453; Mon, 06 Sep 2021 06:13:26 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Sep 2021 06:11:57 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Sep 2021 21:11:56 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 6 Sep 2021 21:11:56 +0800
-Message-ID: <6d178fd86ea5874ddcac7515d461d00c441cfadc.camel@mediatek.com>
-Subject: Re: [PATCH v15 2/3] cpufreq: Add of_perf_domain_get_sharing_cpumask
-From: Hector Yuan <hector.yuan@mediatek.com>
-To: Viresh Kumar <viresh.kumar@linaro.org>
-CC: <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-pm@vger.kernel.org>, "Rafael
- J. Wysocki" <rjw@rjwysocki.net>, Rob Herring <robh+dt@kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <wsd_upstream@mediatek.com>
-Date: Mon, 6 Sep 2021 21:11:56 +0800
-In-Reply-To: <20210906094309.rcacbme27zpvdd4a@vireshk-i7>
-References: <1630658364-6192-1-git-send-email-hector.yuan@mediatek.com>
- <1630658364-6192-3-git-send-email-hector.yuan@mediatek.com>
- <20210906094309.rcacbme27zpvdd4a@vireshk-i7>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mNI8k-001Obi-Kf
+ for linux-mediatek@lists.infradead.org; Mon, 06 Sep 2021 17:10:40 +0000
+Received: by mail-lj1-x234.google.com with SMTP id h1so12308340ljl.9
+ for <linux-mediatek@lists.infradead.org>; Mon, 06 Sep 2021 10:10:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=3NzOsAcij7qkGRYYRF+Gk9quH4ScOJdJCPVo4O4v2Iw=;
+ b=GHRGp+FUEkuHWw+ma0xVKQKa3h0umQo2tZK29UHxYju0b6ue16Kq14o9Umrg1V2MzP
+ OQQXLK8KNB+v/BxOIbCyTw0czVpMCwn+5JzpnXPuLMl7EWNQ7sHs3zh9WjxrvQpPpYiZ
+ 8LWWFMoMXZzjIgD/LiK4RPs8rIKwXYvFnw1MxOfktunYrvXWKxEQi+cNLd54jz/QxD82
+ q5LZAvOaV1YZcbxrnCO9UXixRhXWa0Bb2CxeCigV01UXcy2uhxYVs602hEfUK+25gyzr
+ O5FHrFpdUDfVO+z3EN+pb5IA++Pltvth3nAlf/Z4d1qU3iaIikLXoUvP/g8bceHOwcf6
+ WvIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=3NzOsAcij7qkGRYYRF+Gk9quH4ScOJdJCPVo4O4v2Iw=;
+ b=cxMiKZ31DGC2ENKwDkz1gzPv3+W1jDe9xpfbydd54KlMftxNmunFrKziB9ObHIUZqe
+ h0Pbv9EZFFCr+8VJhrgoTXjjCmd8sDbx4xBExKVffXkqHly/Ts/Ts6yAWXLV9addBjeT
+ e+ZLpAJKF7qNR1zOgYW9NFsU6kuZ+mKU8YdWv17sXa9ZIBHjepm+Uo2U4aU+EroUah2e
+ lKA5SJIfan3Gzml8rtLTLtTQtvolpHmKvXiMzuIi/W3xinXbOGTTMawjmX6qCW5CpakC
+ 8UDMzkbhr8QZWhNQIVDLJBZjflG+2xHZVHgoExNfGSl1V/UpRXUsjtH0lFSXYixgNxVV
+ IJDw==
+X-Gm-Message-State: AOAM531Ka04SSRh8yyLPhA/iH2hy8Htgwqs1ySS+0qcBMZeEicZTcZdh
+ yjGAhCZtDfi7UALbAGU36lpJoIFXUmo4wNVoht2S2g==
+X-Google-Smtp-Source: ABdhPJz02lZ2+/F+0r9vZ7g0b7LkWahcgAWP9qXLtKcaYaug81bz1fYecfyuvbPq62onmDQwmmLi7+yTxyKqBDnGYbQ=
+X-Received: by 2002:a2e:7303:: with SMTP id o3mr11093870ljc.273.1630948236659; 
+ Mon, 06 Sep 2021 10:10:36 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <CGME20210827093855epcas1p4ac8e34d779fe30de3e03bcadedcb66c8@epcas1p4.samsung.com>
+ <20210827093119.32481-1-cw9316.lee@samsung.com>
+In-Reply-To: <20210827093119.32481-1-cw9316.lee@samsung.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 6 Sep 2021 19:10:00 +0200
+Message-ID: <CAPDyKFoXtep02GTFgKZmAoa7cN6CMBErf4UukWhrk5jU10Lj_g@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mtk-sd: Remove unused parameters(mrq)
+To: Chanwoo Lee <cw9316.lee@samsung.com>
+Cc: Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-mmc <linux-mmc@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ grant.jung@samsung.com, 
+ jt77.jang@samsung.com, DooHyun Hwang <dh0421.hwang@samsung.com>, 
+ Seunghui Lee <sh043.lee@samsung.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210906_061331_734573_B23FDE1D 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20210906_101038_712317_BEC4F21B 
+X-CRM114-Status: GOOD (  17.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,32 +100,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-09-06 at 15:13 +0530, Viresh Kumar wrote:
-> On 03-09-21, 16:39, Hector Yuan wrote:
-> > From: "Hector.Yuan" <hector.yuan@mediatek.com>
-> > 
-> > Add of_perf_domain_get_sharing_cpumask function to group cpu
-> > to specific performance domain.
-> > 
-> > Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
-> > ---
-> >  include/linux/cpufreq.h |   46
-> > +++++++++++++++++++++++++++++++++++++++++++++-
-> >  1 file changed, 45 insertions(+), 1 deletion(-)
-> 
-> To speed things up, I have applied this with following changes.
-> Please
-> test my branch and see if something breaks:
-> 
-> 
-https://urldefense.com/v3/__https://git.kernel.org/pub/scm/linux/kernel/git/vireshk/pm.git/log/?h=cpufreq*arm*linux-next__;Ly8!!CTRNKA9wMg0ARbw!1FkaXVRm8cyf4CDTMMNDmFZ3X8eLd3gf1jK92brq9m-OryGK_peVZW963ettt0DF588$
->  
-> 
-Hi, Viresh:
+On Fri, 27 Aug 2021 at 11:39, Chanwoo Lee <cw9316.lee@samsung.com> wrote:
+>
+> From: ChanWoo Lee <cw9316.lee@samsung.com>
+>
+> The mmc_request structure(*mrq) is not used. //msdc_cmd_find_resp
+> I remove the unnecessary code related to the mmc_request structure.
+>
+> Signed-off-by: ChanWoo Lee <cw9316.lee@samsung.com>
 
-I've tested the code in your branch and its okay. Thanks for the review
-and your guideness. Thanks.
+Queued for v5.16 on the temporary devel branch, thanks!
 
+Kind regards
+Uffe
+
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 4dfc246c5f95..813f57f6d9cc 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -961,7 +961,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+>  }
+>
+>  static inline u32 msdc_cmd_find_resp(struct msdc_host *host,
+> -               struct mmc_request *mrq, struct mmc_command *cmd)
+> +               struct mmc_command *cmd)
+>  {
+>         u32 resp;
+>
+> @@ -997,7 +997,7 @@ static inline u32 msdc_cmd_prepare_raw_cmd(struct msdc_host *host,
+>          * stop << 14 | rw << 13 | dtype << 11 | rsptyp << 7 | brk << 6 | opcode
+>          */
+>         u32 opcode = cmd->opcode;
+> -       u32 resp = msdc_cmd_find_resp(host, mrq, cmd);
+> +       u32 resp = msdc_cmd_find_resp(host, cmd);
+>         u32 rawcmd = (opcode & 0x3f) | ((resp & 0x7) << 7);
+>
+>         host->cmd_rsp = resp;
+> --
+> 2.29.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
