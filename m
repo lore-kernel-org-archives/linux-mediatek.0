@@ -2,71 +2,103 @@ Return-Path: <SRS0=gwp9=N5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-14.6 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 440DAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 09:18:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B4C1FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 11:53:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 04695610E8
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 09:18:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 04695610E8
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 6AA4F610E8
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 11:53:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6AA4F610E8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wsf5a5+BXpLsNaYLa5Aq6fBb82qihusfAAVCVs2NiAY=; b=i2zFuJHeqRRty+pz/SOnQwZ9bv
-	6zyT7PSHlwBam0nD17sXdrfuna/hSXQDdYGbL2fJUN0bMGCTK+sHNPLEzQmbEqrToLEd3fd31ARg6
-	Mz2RwzrPoiRTIWisWNboX1n+L3Yk1KQt8kQk9JhAwUZfaig94Il6ZOCt31UimLrusMH1MK29SUodH
-	amlJQS5M2lKULaj4OVKz4z1bzn3ypt7RKiEcGHDw8TFbpAu3QqGOt8F2BT6SPIWZe3JE5MRYpW+5V
-	q0iU7rFxWcWhR3kN3G5g9jzgX/4By9uouvOkdcAJIXREfzlcY9itNy4T/OlB/ZAfDFRMOCU8tGMxs
-	CS4CrUGw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FGhea4LLCRhKQGurLXroJhdPsel5a2FCU9Vf06Qtg30=; b=eHZs5DpCCJAxUw
+	syozNbd7TfPafzk1PqVj0S9ulBWtYRV3BFjTdGjhc1StFSFk2O9gp/kj87b1gfEv/xv9/MMHdnuWM
+	FW1Y2XG6Lf2o4BfeGUEx7TbYj3kwQxJuuru5+gLKTtFQKjNuzVyiQ2G4hpx1bbkKM0EK3zM40M6pj
+	VFBnMa7un6inl+o4Rj//Gbsn6/CLUA/6J+vIjjF9bkAq7HUhMg+B2Ds47CZYkr1JzWnRSg6Nfw9Vi
+	hgA/Mg4W84xgEDZ9RqbsXwpiY4oHxqDJ7KMiegd0WAKp95Ti38U3Oo3vIUF8BeziF0i2RXQciVyIV
+	b5ZpY8c+dVzVSNPrI8VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNXEq-00387R-Cz; Tue, 07 Sep 2021 09:17:56 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1mNZf8-003aJo-8w; Tue, 07 Sep 2021 11:53:14 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNXEd-00385m-Qb
- for linux-mediatek@lists.infradead.org; Tue, 07 Sep 2021 09:17:45 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1mNXEW-0006lE-UY; Tue, 07 Sep 2021 11:17:37 +0200
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1mNXEV-0000Jc-Nq; Tue, 07 Sep 2021 11:17:35 +0200
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1mNXEV-0007Nv-MV; Tue, 07 Sep 2021 11:17:35 +0200
-Date: Tue, 7 Sep 2021 11:17:35 +0200
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: zhaoxiao <long870912@gmail.com>
-Cc: thierry.reding@gmail.com, lee.jones@linaro.org, matthias.bgg@gmail.com,
- linux-pwm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] pwm: mediatek: Simplify using devm_pwmchip_add()
-Message-ID: <20210907091735.wfuevpu5a6k4pmlj@pengutronix.de>
-References: <20210906093030.459-1-long870912@gmail.com>
+ id 1mNZeu-003aGI-C3; Tue, 07 Sep 2021 11:53:02 +0000
+Received: by mail-wr1-x431.google.com with SMTP id x6so13951942wrv.13;
+ Tue, 07 Sep 2021 04:52:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:content-language:to:cc
+ :references:from:subject:in-reply-to:content-transfer-encoding;
+ bh=/wAt6Xe+WJv/2BBsBfv7Vtp4QcHzU3Af1LPP3LPYfEI=;
+ b=mVCY/zdq5DbtLgvC60ZOt7bnagQv2UGYF4+KS84uQqimfo0wDJ6jl2Qq/MEFOx9mdF
+ C/QUpslvb+JtyHZ/8k9F8Uph5t2MiTCL6kjMWoKkBDNariNNHINoUwv1O2D2C3Wb5Sng
+ qGuJbOnNl1IV9mUVmmhjfB3p5DGs7ZmcCn04Shr24OuqiwV8xeDBFU0ooBg/x6N/1ujO
+ YGczxBOEx/yVQciWwdnI/ndTbwIpG979gFOms9oWo8syvSyFJmJvDeM0CQKOVMPaJ+fk
+ HM9ngl6MrgBEH7Xdlm2rxcCnOTYFh0lAx3df7zd0JJ1HChyZXnUCT6CvRnNzOvPyW+6c
+ xdJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:subject:in-reply-to
+ :content-transfer-encoding;
+ bh=/wAt6Xe+WJv/2BBsBfv7Vtp4QcHzU3Af1LPP3LPYfEI=;
+ b=r2Sb2rBe/68ll7RvHHQ9o/PEqqAmfpFTM3PhEVGT+jgRQ/9DTn/l7PvaiMPQvsIcIv
+ VR5l/LcSE2pXbqOx0btPRE/CTTiWDug4Y2fGzNMVBRP+uCKgeKgv6qyg82LDuKOEeHwQ
+ XxWTznfXooFfEPQYn+AynSxheP5lGOqFDHRs9cRfHO7Bt58t2MAjkRgHt7JzJFVMj6Br
+ AeidcgkEZw/mCz2ph38jqMGILgilHOXKgTVDVIBzpbAmklnR5QSj/3cs3OipuQFnVJgE
+ 41ophHKEVdPuor0GyVGsiVRsrV4IN+4cFTPnZDJ3MgTtIUll7XonsvHHI5bJylPrzTyt
+ ZtpQ==
+X-Gm-Message-State: AOAM530TBGQ8lucaaJsbzd9ufacyDm0EvUS6GXdTvDbYcQ1ucjDiIqhp
+ ihC0OBiZCQ8c40vsYMqFN1A=
+X-Google-Smtp-Source: ABdhPJxLcc8obN45A+hGgPEc7Vf7WsTsRCbcfbUWNeS9QkDB38DQqjT1v7UoDGypwMUzRtEbqPvgZw==
+X-Received: by 2002:adf:f2c5:: with SMTP id d5mr17694984wrp.223.1631015577780; 
+ Tue, 07 Sep 2021 04:52:57 -0700 (PDT)
+Received: from [192.168.1.145] ([206.204.151.164])
+ by smtp.gmail.com with ESMTPSA id o7sm2069024wmq.36.2021.09.07.04.52.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 07 Sep 2021 04:52:57 -0700 (PDT)
+Message-ID: <01e4d221-0c77-fdcb-0e01-540e315481d8@gmail.com>
+Date: Tue, 7 Sep 2021 13:52:55 +0200
 MIME-Version: 1.0
-In-Reply-To: <20210906093030.459-1-long870912@gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.0.3
+Content-Language: en-US
+To: Moudy Ho <moudy.ho@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Jernej Skrabec <jernej.skrabec@siol.net>
+Cc: Maoguang Meng <maoguang.meng@mediatek.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, tfiga@chromium.org, drinkcat@chromium.org,
+ acourbot@chromium.org, pihsun@chromium.org, menghui.lin@mediatek.com,
+ sj.huang@mediatek.com, ben.lok@mediatek.com, randy.wu@mediatek.com,
+ srv_heupstream@mediatek.com, hsinyi@google.com
+References: <20210824100027.25989-1-moudy.ho@mediatek.com>
+ <20210824100027.25989-2-moudy.ho@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v7 1/5] soc: mediatek: mutex: add support for MDP
+In-Reply-To: <20210824100027.25989-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210907_021743_912240_AEEE94A0 
-X-CRM114-Status: GOOD (  23.39  )
+X-CRM114-CacheID: sfid-20210907_045300_459056_169AA0B4 
+X-CRM114-Status: GOOD (  28.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,117 +110,269 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1878060713775945453=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============1878060713775945453==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cicayrwrycvrz3k2"
-Content-Disposition: inline
 
+On 24/08/2021 12:00, Moudy Ho wrote:
+> Add functions to support MDP:
+>    1. Get mutex function
+>    2. Enable/disable mutex
+>    3. Enable MDP's modules
+>    4. Write register via CMDQ
+> 
+> Add MDP related settings for 8183 SoC
+>    1. Register settings
+> 
 
---cicayrwrycvrz3k2
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Please write some good commit message.
 
-Hello,
-
-On Mon, Sep 06, 2021 at 05:30:30PM +0800, zhaoxiao wrote:
-> With devm_pwmchip_add() we can drop pwmchip_remove() from the device
-> remove callback. The latter can then go away, too and as this is the
-> only user of platform_get_drvdata(), the respective call to
-> platform_set_drvdata() can go, too.
->=20
-> Signed-off-by: zhaoxiao <long870912@gmail.com>
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 > ---
->  drivers/pwm/pwm-mediatek.c | 12 +-----------
->  1 file changed, 1 insertion(+), 11 deletions(-)
->=20
-> diff --git a/drivers/pwm/pwm-mediatek.c b/drivers/pwm/pwm-mediatek.c
-> index b4a31060bcd7..0d4dd80e9f07 100644
-> --- a/drivers/pwm/pwm-mediatek.c
-> +++ b/drivers/pwm/pwm-mediatek.c
-> @@ -253,13 +253,11 @@ static int pwm_mediatek_probe(struct platform_devic=
-e *pdev)
->  		}
->  	}
-> =20
-> -	platform_set_drvdata(pdev, pc);
-> -
->  	pc->chip.dev =3D &pdev->dev;
->  	pc->chip.ops =3D &pwm_mediatek_ops;
->  	pc->chip.npwm =3D pc->soc->num_pwms;
-> =20
-> -	ret =3D pwmchip_add(&pc->chip);
-> +	ret =3D devm_pwmchip_add(&pdev->dev, &pc->chip);
->  	if (ret < 0) {
->  		dev_err(&pdev->dev, "pwmchip_add() failed: %d\n", ret);
->  		return ret;
-> @@ -268,13 +266,6 @@ static int pwm_mediatek_probe(struct platform_device=
- *pdev)
->  	return 0;
->  }
-> =20
-> -static int pwm_mediatek_remove(struct platform_device *pdev)
-> -{
-> -	struct pwm_mediatek_chip *pc =3D platform_get_drvdata(pdev);
-> -
-> -	return pwmchip_remove(&pc->chip);
-> -}
-> -
->  static const struct pwm_mediatek_of_data mt2712_pwm_data =3D {
->  	.num_pwms =3D 8,
->  	.pwm45_fixup =3D false,
-> @@ -335,7 +326,6 @@ static struct platform_driver pwm_mediatek_driver =3D=
- {
->  		.of_match_table =3D pwm_mediatek_of_match,
->  	},
->  	.probe =3D pwm_mediatek_probe,
-> -	.remove =3D pwm_mediatek_remove,
->  };
->  module_platform_driver(pwm_mediatek_driver);
+>   drivers/soc/mediatek/mtk-mutex.c       | 106 +++++++++++++++++++++++--
+>   include/linux/soc/mediatek/mtk-mutex.h |   8 ++
+>   2 files changed, 108 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+> index 2e4bcc300576..935f2849a094 100644
+> --- a/drivers/soc/mediatek/mtk-mutex.c
+> +++ b/drivers/soc/mediatek/mtk-mutex.c
+> @@ -7,9 +7,11 @@
+>   #include <linux/iopoll.h>
+>   #include <linux/module.h>
+>   #include <linux/of_device.h>
+> +#include <linux/of_address.h>
+>   #include <linux/platform_device.h>
+>   #include <linux/regmap.h>
+>   #include <linux/soc/mediatek/mtk-mmsys.h>
+> +#include <linux/soc/mediatek/mtk-cmdq.h>
+>   #include <linux/soc/mediatek/mtk-mutex.h>
+>   
+>   #define MT2701_MUTEX0_MOD0			0x2c
+> @@ -107,6 +109,10 @@
+>   #define MT8183_MUTEX_EOF_DSI0			(MT8183_MUTEX_SOF_DSI0 << 6)
+>   #define MT8183_MUTEX_EOF_DPI0			(MT8183_MUTEX_SOF_DPI0 << 6)
+>   
+> +#define MT8183_MUTEX_MDP_START			5
+> +#define MT8183_MUTEX_MDP_MOD_MASK		0x07FFFFFF
+> +#define MT8183_MUTEX_MDP_SOF_MASK		0x00000007
+> +
+>   struct mtk_mutex {
+>   	int id;
+>   	bool claimed;
+> @@ -123,11 +129,14 @@ enum mtk_mutex_sof_id {
+>   };
+>   
+>   struct mtk_mutex_data {
+> -	const unsigned int *mutex_mod;
+> -	const unsigned int *mutex_sof;
+> -	const unsigned int mutex_mod_reg;
+> -	const unsigned int mutex_sof_reg;
+> -	const bool no_clk;
+> +	const unsigned int	*mutex_mod;
+> +	const unsigned int	*mutex_sof;
+> +	const unsigned int	mutex_mod_reg;
+> +	const unsigned int	mutex_sof_reg;
+> +	const unsigned int	*mutex_mdp_offset;
+> +	const unsigned int	mutex_mdp_mod_mask;
+> +	const unsigned int	mutex_mdp_sof_mask;
+> +	const bool		no_clk;
 
-A patch like this is already in next, see e0150252a6437d12de3db84bb3af12bd5=
-aa5cc70
+Not needed, please drop.
 
-Best regards
-Uwe
+>   };
+>   
+>   struct mtk_mutex_ctx {
+> @@ -136,6 +145,8 @@ struct mtk_mutex_ctx {
+>   	void __iomem			*regs;
+>   	struct mtk_mutex		mutex[10];
+>   	const struct mtk_mutex_data	*data;
+> +	phys_addr_t			addr;
+> +	u8				subsys_id;
+>   };
+>   
+>   static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+> @@ -238,6 +249,14 @@ static const unsigned int mt8183_mutex_sof[MUTEX_SOF_DSI3 + 1] = {
+>   	[MUTEX_SOF_DPI0] = MT8183_MUTEX_SOF_DPI0 | MT8183_MUTEX_EOF_DPI0,
+>   };
+>   
+> +/* indicate which mutex is used by each pipepline */
+> +static const unsigned int mt8183_mutex_mdp_offset[MDP_PIPE_MAX] = {
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+Does this code even compile?
+There is some basic rules for patches, for example that they have to compile, 
+don't break anything etc.
+Please read the documentation and stick to it, before submitting patches:
+https://www.kernel.org/doc/html/latest/process/submitting-patches.html
 
---cicayrwrycvrz3k2
-Content-Type: application/pgp-signature; name="signature.asc"
+Regards,
+Matthias
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmE3LikACgkQwfwUeK3K
-7AlE7Qf/Tlhd8lMXs//42d4oe2KisvZ+Hczlcm2gPRICv/V2NfQ2B8PHnsG/I74z
-AZg8qckIiVoO+WfmYbJWT/W3vVFoZVfXsWIUwaLh8K4N5nNGId2rpAjuN+igSUQW
-9PGBVKv69EAZKfjLkZj+IF5ZQWK/bmlIWk7U8btau8/C0c/VAZTRQAbTybLx5ocr
-iYsnzyIKbBlujEq6pJgGIQXvD0WAeKW2uTf4LH1Ua+GUJkbfMnuDgdZ+/Q/BAy6g
-q377k+Z0pLC8hC+lSn4LZA+VnuYTV0TyNIOz5Fo1WeYRhR2zvbCvVsDn4Ki8EIGR
-IEUObIQ5ov52yHmVc8qbpHCY/2nmvQ==
-=lWLd
------END PGP SIGNATURE-----
-
---cicayrwrycvrz3k2--
-
-
---===============1878060713775945453==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> +	[MDP_PIPE_IMGI] = MT8183_MUTEX_MDP_START,
+> +	[MDP_PIPE_RDMA0] = MT8183_MUTEX_MDP_START + 1,
+> +	[MDP_PIPE_WPEI] = MT8183_MUTEX_MDP_START + 2,
+> +	[MDP_PIPE_WPEI2] = MT8183_MUTEX_MDP_START + 3
+> +};
+> +
+>   static const struct mtk_mutex_data mt2701_mutex_driver_data = {
+>   	.mutex_mod = mt2701_mutex_mod,
+>   	.mutex_sof = mt2712_mutex_sof,
+> @@ -272,6 +291,9 @@ static const struct mtk_mutex_data mt8183_mutex_driver_data = {
+>   	.mutex_sof = mt8183_mutex_sof,
+>   	.mutex_mod_reg = MT8183_MUTEX0_MOD0,
+>   	.mutex_sof_reg = MT8183_MUTEX0_SOF0,
+> +	.mutex_mdp_offset = mt8183_mutex_mdp_offset,
+> +	.mutex_mdp_mod_mask = MT8183_MUTEX_MDP_MOD_MASK,
+> +	.mutex_mdp_sof_mask = MT8183_MUTEX_MDP_SOF_MASK,
+>   	.no_clk = true,
+>   };
+>   
+> @@ -290,6 +312,21 @@ struct mtk_mutex *mtk_mutex_get(struct device *dev)
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mutex_get);
+>   
+> +struct mtk_mutex *mtk_mutex_mdp_get(struct device *dev,
+> +				    enum mtk_mdp_pipe_id id)
+> +{
+> +	struct mtk_mutex_ctx *mtx = dev_get_drvdata(dev);
+> +	int i = mtx->data->mutex_mdp_offset[id];
+> +
+> +	if (!mtx->mutex[i].claimed) {
+> +		mtx->mutex[i].claimed = true;
+> +		return &mtx->mutex[i];
+> +	}
+> +
+> +	return ERR_PTR(-EBUSY);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_mdp_get);
+> +
+>   void mtk_mutex_put(struct mtk_mutex *mutex)
+>   {
+>   	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> @@ -369,6 +406,25 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mutex_add_comp);
+>   
+> +void mtk_mutex_add_mdp_mod(struct mtk_mutex *mutex, u32 mod,
+> +			   struct mmsys_cmdq_cmd *cmd)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +	unsigned int offset;
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg, mutex->id);
+> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id, mtx->addr + offset,
+> +			    mod, mtx->data->mutex_mdp_mod_mask);
+> +
+> +	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id);
+> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id, mtx->addr + offset,
+> +			    0, mtx->data->mutex_mdp_sof_mask);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_add_mdp_mod);
+> +
+>   void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+>   			   enum mtk_ddp_comp_id id)
+>   {
+> @@ -420,6 +476,20 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mutex_enable);
+>   
+> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
+> +			      struct mmsys_cmdq_cmd *cmd)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
+> +			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
+> +			    0x1, 0x00000001);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
+> +
+>   void mtk_mutex_disable(struct mtk_mutex *mutex)
+>   {
+>   	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> @@ -431,6 +501,20 @@ void mtk_mutex_disable(struct mtk_mutex *mutex)
+>   }
+>   EXPORT_SYMBOL_GPL(mtk_mutex_disable);
+>   
+> +void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
+> +			       struct mmsys_cmdq_cmd *cmd)
+> +{
+> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> +						 mutex[mutex->id]);
+> +
+> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +
+> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
+> +			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
+> +			    0x0, 0x00000001);
+> +}
+> +EXPORT_SYMBOL_GPL(mtk_mutex_disable_by_cmdq);
+> +
+>   void mtk_mutex_acquire(struct mtk_mutex *mutex)
+>   {
+>   	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+> @@ -458,7 +542,8 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+>   {
+>   	struct device *dev = &pdev->dev;
+>   	struct mtk_mutex_ctx *mtx;
+> -	struct resource *regs;
+> +	struct cmdq_client_reg cmdq_reg;
+> +	struct resource *regs, addr;
+>   	int i;
+>   
+>   	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
+> @@ -479,6 +564,15 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+>   		}
+>   	}
+>   
+> +	if (of_address_to_resource(dev->of_node, 0, &addr) < 0)
+> +		mtx->addr = 0L;
+> +	else
+> +		mtx->addr = addr.start;
+> +
+> +	if (cmdq_dev_get_client_reg(dev, &cmdq_reg, 0) != 0)
+> +		dev_info(dev, "cmdq subsys id has not been set\n");
+> +	mtx->subsys_id = cmdq_reg.subsys;
+> +
+>   	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>   	mtx->regs = devm_ioremap_resource(dev, regs);
+>   	if (IS_ERR(mtx->regs)) {
+> diff --git a/include/linux/soc/mediatek/mtk-mutex.h b/include/linux/soc/mediatek/mtk-mutex.h
+> index 6fe4ffbde290..d08b98419dd9 100644
+> --- a/include/linux/soc/mediatek/mtk-mutex.h
+> +++ b/include/linux/soc/mediatek/mtk-mutex.h
+> @@ -11,11 +11,19 @@ struct device;
+>   struct mtk_mutex;
+>   
+>   struct mtk_mutex *mtk_mutex_get(struct device *dev);
+> +struct mtk_mutex *mtk_mutex_mdp_get(struct device *dev,
+> +				    enum mtk_mdp_pipe_id id);
+>   int mtk_mutex_prepare(struct mtk_mutex *mutex);
+>   void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+>   			enum mtk_ddp_comp_id id);
+> +void mtk_mutex_add_mdp_mod(struct mtk_mutex *mutex, u32 mod,
+> +			   struct mmsys_cmdq_cmd *cmd);
+>   void mtk_mutex_enable(struct mtk_mutex *mutex);
+> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
+> +			      struct mmsys_cmdq_cmd *cmd);
+>   void mtk_mutex_disable(struct mtk_mutex *mutex);
+> +void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
+> +			       struct mmsys_cmdq_cmd *cmd);
+>   void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+>   			   enum mtk_ddp_comp_id id);
+>   void mtk_mutex_unprepare(struct mtk_mutex *mutex);
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1878060713775945453==--
-
