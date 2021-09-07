@@ -2,67 +2,73 @@ Return-Path: <SRS0=gwp9=N5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D65DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 07:41:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 848C7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 08:01:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6E820610A3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 07:41:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6E820610A3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baidu.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4893B61051
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 08:01:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4893B61051
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fUovnz+BKvC65dxV6+gffmGLJoivfMaVogcjJX3/338=; b=vleUEfGfRaDblA
-	OgZTZMclwlCPii9e3kHHGlQk1Lh6n7p6bsPZUdYRylcWrdAoVOMxxafsn8X1mv5CdZPTPnvwFf+SV
-	PHuYnHVEics2vK/g49skOwdpLpPqWrIygfnHHG4XqMjf9Oj/Jhv6lG00GwYNFDSZXZSC9/mrB6zz1
-	Uyq9GVGNedMkL9ZZdSbY25f9yZTu2AupGod7Tl81idWLmKtEzEiNw/vI1U1Mk3+IiL17sBybMvD3a
-	Q7YOTcu+PMW6TdISCki7KriN0JAuKPVrSNDW4mUPVaLQX1jOOxdv5PSPgLNAWVN5dZgW8nYUH8FD0
-	3fSV3b1b/8Pc0AlHj06w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RR9dA7YwU8pC/4HRntz3wftmpe7PoSGFny1yEvWiqXc=; b=fCLZ0ADKhfNVBp
+	xtOEUXKvSOsiVRgjhTgJudVfBVXvjHPTkvlsch1jO9eb9lYOEHmsmfdlfgQlRDrPnKCwPJ16lw5S6
+	HV588SPNJwCziQxQaBWNJKpvZYB3oQXJ8TTcsPhZc6bf4cnqWoxDyElKVZxaDxWwxRzVOGAUOBqDh
+	pvm94/U8ZIv2qebxZSVcOUPD6pHkiHD9YSmpOdknmNSjq7lGbeauG5JnUgRNMoWXfhGpnR155WJPx
+	mSGou31fSFJcg83Hlo0NfvLH5DwAl+T7QscVrw+wTgCgGz/ZwIvbLgi5ouX/tLRaMLJZuuPSMPZ7/
+	g8hKLuWOAqgeIbxwA7ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNVje-002kju-8G; Tue, 07 Sep 2021 07:41:38 +0000
-Received: from mx21.baidu.com ([220.181.3.85] helo=baidu.com)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNVjR-002kiI-98; Tue, 07 Sep 2021 07:41:26 +0000
-Received: from BC-Mail-Ex06.internal.baidu.com (unknown [172.31.51.46])
- by Forcepoint Email with ESMTPS id 4F49A138808F714EF620;
- Tue,  7 Sep 2021 15:41:24 +0800 (CST)
-Received: from BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) by
- BC-Mail-Ex06.internal.baidu.com (172.31.51.46) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2242.12; Tue, 7 Sep 2021 15:41:24 +0800
-Received: from LAPTOP-UKSR4ENP.internal.baidu.com (172.31.63.8) by
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Tue, 7 Sep 2021 15:41:23 +0800
-From: Cai Huoqing <caihuoqing@baidu.com>
-To: <caihuoqing@baidu.com>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+	id 1mNW2N-002oOe-51; Tue, 07 Sep 2021 08:00:59 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mNW28-002oNQ-8U; Tue, 07 Sep 2021 08:00:47 +0000
+X-UUID: 1d10811026b24436a2383bc4ac050239-20210907
+X-UUID: 1d10811026b24436a2383bc4ac050239-20210907
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <trevor.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1004632168; Tue, 07 Sep 2021 01:00:40 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Sep 2021 01:00:38 -0700
+Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkcas07.mediatek.inc
+ (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 7 Sep 2021 16:00:37 +0800
+Received: from mtksdccf07 (172.21.84.99) by MTKCAS06.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 7 Sep 2021 16:00:37 +0800
+Message-ID: <27ca1a1e99193b543102df03f7c256063468f693.camel@mediatek.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8195: Fix unused initialization of
+ pointer etdm_data
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: Colin King <colin.king@canonical.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
+ <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <alsa-devel@alsa-project.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mailbox: mtk-cmdq: Make use of the helper function
- devm_platform_ioremap_resource()
-Date: Tue, 7 Sep 2021 15:41:17 +0800
-Message-ID: <20210907074118.2247-1-caihuoqing@baidu.com>
-X-Mailer: git-send-email 2.17.1
+CC: <kernel-janitors@vger.kernel.org>, <linux-kernel@vger.kernel.org>
+Date: Tue, 7 Sep 2021 16:00:37 +0800
+In-Reply-To: <20210903114928.11743-1-colin.king@canonical.com>
+References: <20210903114928.11743-1-colin.king@canonical.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-Originating-IP: [172.31.63.8]
-X-ClientProxiedBy: BJHW-Mail-Ex09.internal.baidu.com (10.127.64.32) To
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210907_004125_534667_717ADF73 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20210907_010044_355048_5B5EEE4E 
+X-CRM114-Status: GOOD (  17.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,39 +85,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the devm_platform_ioremap_resource() helper instead of
-calling platform_get_resource() and devm_ioremap_resource()
-separately
+On Fri, 2021-09-03 at 12:49 +0100, Colin King wrote:
+> From: Colin Ian King <colin.king@canonical.com>
+> 
+> The pointer etdm_data is being inintialized with a value that is
+> never
+> read, it is later being re-assigned a new value. Remove the redundant
+> initialization.
+> 
+> Addresses-Coverity: ("Unused value")
+> Signed-off-by: Colin Ian King <colin.king@canonical.com>
+> ---
+>  sound/soc/mediatek/mt8195/mt8195-dai-etdm.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
+> b/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
+> index 7378e42f2766..ac591d453e1e 100644
+> --- a/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
+> +++ b/sound/soc/mediatek/mt8195/mt8195-dai-etdm.c
+> @@ -2094,7 +2094,7 @@ static int mtk_dai_etdm_set_sysclk(struct
+> snd_soc_dai *dai,
+>  {
+>  	struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+>  	struct mt8195_afe_private *afe_priv = afe->platform_priv;
+> -	struct mtk_dai_etdm_priv *etdm_data = afe_priv->dai_priv[dai-
+> >id];
+> +	struct mtk_dai_etdm_priv *etdm_data;
+>  	int dai_id;
+>  
+>  	dev_dbg(dai->dev, "%s id %d freq %u, dir %d\n",
 
-Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Acked-by: Trevor Wu <trevor.wu@mediatek.com>
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 64175a893312..505b4988680b 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -525,7 +525,6 @@ static struct mbox_chan *cmdq_xlate(struct mbox_controller *mbox,
- static int cmdq_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
--	struct resource *res;
- 	struct cmdq *cmdq;
- 	int err, i;
- 	struct gce_plat *plat_data;
-@@ -538,8 +537,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 	if (!cmdq)
- 		return -ENOMEM;
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	cmdq->base = devm_ioremap_resource(dev, res);
-+	cmdq->base = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(cmdq->base))
- 		return PTR_ERR(cmdq->base);
- 
--- 
-2.25.1
+Thanks.
 
 
 _______________________________________________
