@@ -2,97 +2,70 @@ Return-Path: <SRS0=gwp9=N5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E2AFC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 08:40:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CDF21C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 08:48:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1360F6105A
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 08:40:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1360F6105A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6FAC4610FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Sep 2021 08:48:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6FAC4610FE
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=pengutronix.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yYdpT4ZwrcY63om1WeZgGeLboa+CoSEqZC2GKYeZ6zI=; b=sCaXZRaIZ6XDEG
-	iPttSLj6ANvJkm1z04xLDC96925NxLleUsZn7mAspHZDdJHrceKVRirHZ3ObD7cb6F8pLX4YGNRJJ
-	I3H1M1N6wTKaB543UVDMmprkGCSro+IYXaXKHtuAbdXQOxvZYIp8ohR2QBqo6Ncs+HW1Ft95ceLjD
-	BANIxCMEsQdcX5dReE+SjXI8tSGAttnvRSFANfO+HAltPIR43p5mth/mKA2ag893UEvXBxkGh7iVG
-	9V8mLHNE/NvMPwHfiYwgSRICDrWw8dWVlizqOYxbgBfIGI+uWT0w6qRFFk4aUmIXTLotqvFu8FFtX
-	29+AkcrZpHE8zGNUkpxA==;
+	List-Owner; bh=jAbk7IgPesEAcFfM0DVa78Ao7lzuGsJvQnKs9wUv2tI=; b=HsqJhu6tjXxbIa
+	Vl4WLf5fdPcVR+XvbDyuHw5wHv5Apy5cn0gvLuBdALxP1dkZs93Lmuqd9mLO8/2gFi6fu7Lzgv65S
+	Taxn5SbZBaH0aREFVInlXwCJRXYmo3Is3jvPBbcgiqD9/ZkbTrph1AY9C4hXENjMT4wbSAU5EKMhJ
+	tYWhrBE5mZ/2dqBvbqvtKIIAynXsPR7EwwCGD0iAnPHyS4tkmEbJ1PTpw1WSDAqwg6WgROhb3yjlo
+	/awoDpq70nSVahoAi6t+fzazum9NuvGQsn9f3rnUdPWRCVTz77S1jOtk9bSiuQ6s936IAcjcnumDJ
+	fo+rKuX+0gnBVFrhVOrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mNWec-002trn-Sf; Tue, 07 Sep 2021 08:40:30 +0000
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
+	id 1mNWlj-002vpt-Sl; Tue, 07 Sep 2021 08:47:51 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mNWdo-002tRm-6f
- for linux-mediatek@lists.infradead.org; Tue, 07 Sep 2021 08:39:43 +0000
-Received: by mail-wr1-x443.google.com with SMTP id d6so12584703wrc.11
- for <linux-mediatek@lists.infradead.org>; Tue, 07 Sep 2021 01:39:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=tmdXYabHBlH0lzTR2aGEg4jjkPTidI1mG07cS/MQyTc=;
- b=b3dS4AUF3x8YJP0MHj9VQNJzu+5FaEBv2n1zRCv3YXmTXTkGkm+SQIVEeNELn0Ckbi
- S6aAexEhIXCCSetvenP4sRLVOQiZZPluj+9Tojdmc/XdQPToUkLX+WhtHtZqAsVToK9R
- PKS1wKnI7TIigejl8kDKT2AWgebp9s5WaMQTkWEHQRfGdtdh4UcGYFD4jHuJ1p71coHa
- El4whTjb3Qj8bHoRpMKmQp7CWpUgqYCHlI+wSwN/zANsgburryHCFv55vYf0q0eEqDjp
- rl/pSLdm4qvpRm9QMmkWJvbHVa00DnEaeRUnLyeeARI7qWzXs+uKnJIZxrxC9dxXW99j
- qnTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=tmdXYabHBlH0lzTR2aGEg4jjkPTidI1mG07cS/MQyTc=;
- b=ovD0ML0z3KOuOAAjW87g//cTe4KrmAboLQBZbVS4ciiZ8tYLjcmwuPqIccNOALNPFe
- tqS+Y9RK6fM9q2iWLCobOCaJoKwN/t5sTyfvHvGeF25zQb5ayaAqg4KzMbHspLto2FpY
- T7m/s2xbyFwrXtyBnlQOjjR9aaDQ8HypFz19gu15ImpnD7GCRWcxWQ/mLiejH9UGGC6l
- 9mL80c8Ry986TutXy3X0zCNRKleuIf3RuR6chtZYqkC60wlyKFqyrZ4LiIz4+BEblnin
- A1IK5TNYYtH+lGiCcXX8q2bX9iOdUil3PwAT33RENwOggZVTuHuXRCUc+MMkuav6Svxw
- 5TeQ==
-X-Gm-Message-State: AOAM530ggWMkaMc+BLBWy/vuLgVk4UJB2yp2Vhcr1zdPrX33oArUA5hH
- iRC5jC0LphV2IF8f6OegjjW+hQ==
-X-Google-Smtp-Source: ABdhPJyDgiMvPKHxYxRk/TRfiki81RSVnZoaBVGMlrlfdZYclA0TZPFkDpfqZUikhceozNhYswoUCA==
-X-Received: by 2002:adf:9e4d:: with SMTP id v13mr17418975wre.26.1631003979019; 
- Tue, 07 Sep 2021 01:39:39 -0700 (PDT)
-Received: from localhost.localdomain
- (2a02-8440-6141-3317-3074-96af-9642-0002.rev.sfr.net.
- [2a02:8440:6141:3317:3074:96af:9642:2])
- by smtp.gmail.com with ESMTPSA id m186sm1737027wme.48.2021.09.07.01.39.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Sep 2021 01:39:38 -0700 (PDT)
-From: Guillaume Ranquet <granquet@baylibre.com>
-To: 
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org
-Subject: [PATCH 4/4] dt-bindings: display: mediatek: add MT8195 hdmi bindings
-Date: Tue,  7 Sep 2021 10:37:21 +0200
-Message-Id: <20210907083723.7725-5-granquet@baylibre.com>
-X-Mailer: git-send-email 2.31.1
-In-Reply-To: <20210907083723.7725-1-granquet@baylibre.com>
-References: <20210907083723.7725-1-granquet@baylibre.com>
+ id 1mNWlg-002vn7-Gp
+ for linux-mediatek@lists.infradead.org; Tue, 07 Sep 2021 08:47:50 +0000
+Received: from lupine.hi.pengutronix.de
+ ([2001:67c:670:100:3ad5:47ff:feaf:1a17] helo=lupine)
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1mNWla-00021I-Tr; Tue, 07 Sep 2021 10:47:42 +0200
+Received: from pza by lupine with local (Exim 4.92)
+ (envelope-from <p.zabel@pengutronix.de>)
+ id 1mNWlZ-0006Tc-Ea; Tue, 07 Sep 2021 10:47:41 +0200
+Message-ID: <116f1a0283f43f97fdcfc4949e8b3c9cccc08d34.camel@pengutronix.de>
+Subject: Re: [PATCH v1 6/6] drm/mediatek: Add mt8195 DisplayPort driver
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Markus Schneider-Pargmann <msp@baylibre.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>
+Cc: Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Date: Tue, 07 Sep 2021 10:47:41 +0200
+In-Reply-To: <20210906193529.718845-7-msp@baylibre.com>
+References: <20210906193529.718845-1-msp@baylibre.com>
+ <20210906193529.718845-7-msp@baylibre.com>
+User-Agent: Evolution 3.30.5-1.1 
 MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2001:67c:670:100:3ad5:47ff:feaf:1a17
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210907_013940_331938_5772EC85 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20210907_014748_603006_F1C91844 
+X-CRM114-Status: GOOD (  24.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,176 +82,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add Mediatek HDMI and HDMI-DDC bindings for MT8195 SoC.
+Hi Markus,
 
-Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
----
- .../mediatek/mediatek,mt8195-hdmi-ddc.yaml    | 46 +++++++++
- .../mediatek/mediatek,mt8195-hdmi.yaml        | 99 +++++++++++++++++++
- 2 files changed, 145 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
+On Mon, 2021-09-06 at 21:35 +0200, Markus Schneider-Pargmann wrote:
+> This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> 
+> It supports both functional units on the mt8195, the embedded
+> DisplayPort as well as the external DisplayPort units. It offers
+> hot-plug-detection, audio up to 8 channels, and DisplayPort 1.4 with up
+> to 4 lanes.
+> 
+> This driver is based on an initial version by
+> Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
+[...]
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> new file mode 100644
+> index 000000000000..1bd07c8d2f69
+> --- /dev/null
+> +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> @@ -0,0 +1,2881 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2019 MediaTek Inc.
+> + * Copyright (c) 2021 BayLibre
+> + */
+> +
+[...]
+> +#include <linux/component.h>
+[...]
+> +#include <linux/extcon.h>
+> +#include <linux/extcon-provider.h>
+[...]
+> +#include <linux/kthread.h>
+> +#include <linux/mfd/syscon.h>
+[...]
+> +#include <linux/of_gpio.h>
+> +#include <linux/of_graph.h>
+[...]
+> +#include <linux/phy/phy.h>
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
-new file mode 100644
-index 000000000000..ae3cc0ae457f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
-@@ -0,0 +1,46 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek HDMI DDC Device Tree Bindings for mt8195
-+
-+maintainers:
-+  - CK Hu <ck.hu@mediatek.com>
-+  - Jitao shi <jitao.shi@mediatek.com>
-+
-+description: |
-+  The HDMI DDC i2c controller is used to interface with the HDMI DDC pins.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8195-hdmi-ddc
-+
-+  clocks:
-+    maxItems: 1
-+
-+  clock-names:
-+    items:
-+      - const: ddc-i2c
-+
-+required:
-+  - compatible
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    hdmiddc0: ddc_i2c {
-+      compatible = "mediatek,mt8195-hdmi-ddc";
-+      clocks = <&clk26m>;
-+      clock-names = "ddc-i2c";
-+    };
-+
-+...
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
-new file mode 100644
-index 000000000000..b5d5f7f79c71
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
-@@ -0,0 +1,99 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/mediatek/mediatek,mt8195-hdmi.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek HDMI Encoder Device Tree Bindings for mt8195
-+
-+maintainers:
-+  - CK Hu <ck.hu@mediatek.com>
-+  - Jitao shi <jitao.shi@mediatek.com>
-+
-+description: |
-+  The Mediatek HDMI encoder can generate HDMI 1.4a or MHL 2.0 signals from
-+  its parallel input.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8195-hdmi
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: PLL divider
-+      - description: PLL divider
-+      - description: HDCP engine clock
-+      - description: PLL divider
-+      - description: HDCP engine clock
-+      - description: Bus clock
-+      - description: HDMI clock for vpp_split module
-+
-+  clock-names:
-+    items:
-+      - const: univpll_d6_d4
-+      - const: msdcpll_d2
-+      - const: hdmi_apb_sel
-+      - const: univpll_d4_d8
-+      - const: hdcp_sel
-+      - const: hdcp24_sel
-+      - const: split_hdmi
-+
-+  phys:
-+    maxItems: 1
-+
-+  phy-names:
-+    items:
-+      - const: hdmi
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - phys
-+  - phy-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    hdmi0: hdmi@1c300000 {
-+      compatible = "mediatek,mt8195-hdmi";
-+      reg = <0 0x1c300000 0 0x1000>;
-+      power-domains = <&spm MT8195_POWER_DOMAIN_HDMI_TX>;
-+      clocks = <&topckgen CLK_TOP_UNIVPLL_D6_D4>,
-+             <&topckgen CLK_TOP_MSDCPLL_D2>,
-+             <&topckgen CLK_TOP_HDMI_APB>,
-+             <&topckgen CLK_TOP_UNIVPLL_D4_D8>,
-+             <&topckgen CLK_TOP_HDCP>,
-+             <&topckgen CLK_TOP_HDCP_24M>,
-+             <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>;
-+      clock-names = "univpll_d6_d4",
-+        "msdcpll_d2",
-+        "hdmi_apb_sel",
-+        "univpll_d4_d8",
-+        "hdcp_sel",
-+        "hdcp24_sel",
-+        "split_hdmi";
-+      interrupts = <GIC_SPI 677 IRQ_TYPE_LEVEL_HIGH 0>;
-+      pinctrl-names = "default";
-+      pinctrl-0 = <&hdmi_pin>;
-+      phys = <&hdmi_phy>;
-+      phy-names = "hdmi";
-+      cec = <&cec>;
-+      ddc-i2c-bus = <&hdmiddc0>;
-+      status = "disabled";
-+    };
-+
-+...
--- 
-2.31.1
+The list of included headers could be pruned a bit, from a quick look it
+seems like neither of these are actually used.
 
+[...]
+> +static void mtk_dp_ssc_enable(struct mtk_dp *mtk_dp, bool enable)
+> +{
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE, DP_PWR_STATE_BANDGAP,
+> +			   DP_PWR_STATE_MASK);
+> +	mtk_dp_update_bits(mtk_dp, DP_PHY_DIG_PLL_CTL_1,
+> +			   enable ? TPLL_SSC_EN : 0, TPLL_SSC_EN);
+> +	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> +			   DP_PWR_STATE_BANDGAP_TPLL_LANE, DP_PWR_STATE_MASK);
+> +
+> +	udelay(50);
+
+Can usleep_range() be used here? Same for the other delays.
+
+[...]
+> +static void mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+> +{
+[...]
+> +
+> +	if (DP_GET_SINK_COUNT(sink_count) &&
+> +	    (link_status[2] & DP_DOWNSTREAM_PORT_STATUS_CHANGED)) {
+> +		mtk_dp->train_info.check_cap_count = 0;
+> +		kfree(mtk_dp->edid);
+> +		mtk_dp->edid = NULL;
+
+Should this be protect by a lock? This looks like it could race with the
+access in mtk_dp_edid_parse_audio_capabilities() or mtk_dp_get_edid()
+
+[...]
+> +static int mtk_dp_train_handler(struct mtk_dp *mtk_dp)
+> +{
+> +	int ret = 0;
+> +
+> +	ret = mtk_dp_train_hpd_handle(mtk_dp);
+> +
+> +	if (!mtk_dp->train_info.cable_plugged_in)
+> +		return -ENODEV;
+> +
+> +	if (mtk_dp->train_state == MTK_DP_TRAIN_STATE_NORMAL)
+> +		return ret;
+> +
+> +	switch (mtk_dp->train_state) {
+[...]
+> +	case MTK_DP_TRAIN_STATE_TRAINING:
+> +		ret = mtk_dp_train_start(mtk_dp);
+> +		if (!ret) {
+> +			mtk_dp_video_mute(mtk_dp, true);
+> +			mtk_dp_audio_mute(mtk_dp, true);
+> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKTIMING;
+> +			mtk_dp_fec_enable(mtk_dp, mtk_dp->has_fec);
+> +		}  else if (ret != -EAGAIN)
+> +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
+
+A small whitespace issue and missing braces.
+
+Consider running this through checkpatch.pl --strict once for style
+issues.
+
+[...]
+> +static irqreturn_t mtk_dp_hpd_event(int hpd, void *dev)
+> +{
+> +	struct mtk_dp *mtk_dp = dev;
+> +	uint32_t irq_status;
+> +
+> +	irq_status = mtk_dp_read(mtk_dp, MTK_DP_TOP_IRQ_STATUS);
+> +
+> +	if (!irq_status)
+> +		return IRQ_HANDLED;
+
+This check seems superfluous given that only the
+RGS_IRQ_STATUS_TRANSMITTER bit is checked right below:
+
+> +	if (irq_status & RGS_IRQ_STATUS_TRANSMITTER)
+> +		return mtk_dp_hpd_isr_handler(mtk_dp);
+> +
+> +	return IRQ_HANDLED;
+> +}
+[...]
+> +static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+> +				    struct drm_connector *connector)
+> +{
+> +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+> +	bool pre_enabled = mtk_dp->pre_enabled;
+> +
+> +	if (mtk_dp->edid)
+> +		kfree(mtk_dp->edid);
+
+Unnecessary check, kfree() accepts NULL.
+
+regards
+Philipp
 
 _______________________________________________
 Linux-mediatek mailing list
