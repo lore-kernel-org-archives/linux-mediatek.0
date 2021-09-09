@@ -2,73 +2,90 @@ Return-Path: <SRS0=kQJD=N7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
-	version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 64868C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 08:25:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EF90AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 09:16:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A82760FE3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 08:25:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2A82760FE3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A40CA610E9
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 09:16:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A40CA610E9
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ODw186aZ6ggR3yOheJy6gjrNbmTqsQtBYXWF7LSg1EM=; b=iQzQfvyC/ZCL2H
-	xkUhf+ADkiQsFZNHrDS8L6W9cw3bDTr6NBbUsPxdKIfS9NdDXwtXk3KEeKwbtCIhnSZKrXvSU9w4n
-	BcXpwdVH38+/lerz6O/B9gPvpWIERyaPpON8Fn+8HdLT3W1RUMwtDHYYHaVvOpEDaJTDjHwHvVGW2
-	hHnZop8LqVfoyvWS1KNsps7nk7/ievHm8Cqgl50BBB7/0fBuZ7DtwyfCauP6v2hpU8XUXD05tlfvX
-	X4dNvDKSPtlk6yt3e5OXDDbkL/3HGF2BAY1Au/dF+1lDeK/0FdeDn2OCY3+DBM1eV0aj+aF4pnxpp
-	ynCWQ36iDFGO6MeqAfEA==;
+	List-Owner; bh=g8M+Pf4Ee50W24fWX819ob4sybIeqjGpI6JGR7dJzwc=; b=Pe0enk062Kzhha
+	8dBS542kIFreJ5rgMk0uxduHH65kwXdBqbYFAixsJpLkadLBVY3hgz1RwgYtUYAN1s2GBFlghAszK
+	JP8JVC4nhU8W/F1CII16EOYgk00HA+GC8F7evDVrpL3qlFPUeZsUuMxLj4lcLaYwOYVz0LDs5g1UW
+	ADOKtfvN7TvFsEsDimfwsSk5BVPN9DJnuygv7vNzMKCcqHh/lte+KfqGo0NL+SnfH9s0t7C7l4Ft5
+	D7lz2+FNOOQouomo5CIDq56xCN7n11Tqay4YAZHTuIfMOD1x04mmu24hcgMwVEl3rMawj/F2G3PAn
+	XyjrQUo+7u5ZEkXS9qIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOFNF-008ZJj-S6; Thu, 09 Sep 2021 08:25:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mOGAU-008kvN-VW; Thu, 09 Sep 2021 09:16:26 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOFNB-008ZGg-Pl
- for linux-mediatek@lists.infradead.org; Thu, 09 Sep 2021 08:25:31 +0000
-X-UUID: ca14d584d2e345b88b2203d65a88c96c-20210909
-X-UUID: ca14d584d2e345b88b2203d65a88c96c-20210909
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1431638625; Thu, 09 Sep 2021 01:25:21 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Sep 2021 01:15:20 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 9 Sep 2021 16:15:18 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 9 Sep 2021 16:15:18 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v4 3/8] mt76: mt7915: improve starec readability of txbf
-Date: Thu, 9 Sep 2021 16:15:07 +0800
-Message-ID: <20210909081512.5037-3-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210909081512.5037-1-shayne.chen@mediatek.com>
-References: <20210909081512.5037-1-shayne.chen@mediatek.com>
+ id 1mOGAP-008ksH-Py
+ for linux-mediatek@lists.infradead.org; Thu, 09 Sep 2021 09:16:25 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id v10so1522938wrd.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 09 Sep 2021 02:16:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=76Aq48DInSz3hLbeQBFG/znoEWJkoD94GNnnZAOAYKQ=;
+ b=ww/dAfoWzC3IOn8uDg+3ZxxfTdOyupMrlZpCxSR0GLZIJE9jShlU6n95PFiLL129tJ
+ HdmRFEaFTQGsT2bdwWcePBsKYuQs9oIYtnSXh7wkA/xL/tveskXVQECV07xIqBY1kIgQ
+ NA3Yba2k+h9ISzRFvsJDg5mIUdfuNsxBm790gSFvigBgBFEqa6Oo7so7aBOQVLWvk63l
+ dnY4jBZHKID8PQomuJ5uNefz0YBpyEhfR9P+b9GctmL8Vt5YAwFOLzkQ4HqIGTyIeXhv
+ ItbzzUkHs+IY7DID7Lx2DyyAeHFAEOaZlE+C4schySGRI3OVxjq22JWDPwoHQeNBPCzI
+ DCBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=76Aq48DInSz3hLbeQBFG/znoEWJkoD94GNnnZAOAYKQ=;
+ b=FdtMuxuziTaOAL4Y6VVu1SrxCuByUS2SfxLHKpWeNmCIJ719XpO/t0Eqrx+GyyXZhk
+ NjAGyo2Zj95BRVXFaJvqbH77EkhIQhxVbo3CdU9ZnnNF/XF6fyYdf4TkMzGzs1xS2WFn
+ V2pJPB/3JFm/8rdZWZxHAQkpuozaett1hUy/izJy13c+gyB08gCgmyEUzHLZP6jbyNo7
+ KuUfc7HFfvx3VeU7wXTHiND5yA5kqRolG1riSe+3hC3R9yXNVXTOeZIc6dJUZLn04dwh
+ JT7bhTP7LtpxLdPwVELw5pNVPusSke6264crPRv7csJ9ToWyKvNrVHXV/ByVYMHkuk3r
+ cQXw==
+X-Gm-Message-State: AOAM530OTqeL7W0YX83Nx3s6QmVRODxTRnDJIEGenmXJamF8Xzz0u5vQ
+ F1F3Ls/3OfSe0JPjWAb7XKzUMQ==
+X-Google-Smtp-Source: ABdhPJyfuL7O7Hn46zJJoQrhXaeRKXVtbc1XEBYy8jSPKxQhHKvi2gHG2Eb7LWa4ZQAAzoMOIFX20w==
+X-Received: by 2002:adf:de09:: with SMTP id b9mr2308332wrm.114.1631178979247; 
+ Thu, 09 Sep 2021 02:16:19 -0700 (PDT)
+Received: from blmsp ([2a02:2454:3e6:c900::97e])
+ by smtp.gmail.com with ESMTPSA id t7sm1275425wrq.90.2021.09.09.02.16.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 09 Sep 2021 02:16:18 -0700 (PDT)
+Date: Thu, 9 Sep 2021 11:16:17 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v1 6/6] drm/mediatek: Add mt8195 DisplayPort driver
+Message-ID: <20210909091617.bmes2vrxpinixgc4@blmsp>
+References: <20210906193529.718845-1-msp@baylibre.com>
+ <20210906193529.718845-7-msp@baylibre.com>
+ <116f1a0283f43f97fdcfc4949e8b3c9cccc08d34.camel@pengutronix.de>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <116f1a0283f43f97fdcfc4949e8b3c9cccc08d34.camel@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210909_012529_878381_85B0ECA5 
-X-CRM114-Status: GOOD (  14.71  )
+X-CRM114-CacheID: sfid-20210909_021622_000423_2A8FFF1C 
+X-CRM114-Status: GOOD (  36.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,248 +102,169 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Ryder Lee <ryder.lee@mediatek.com>
+Hi Philipp,
 
-1. Drop unnecessary MT_EBF/MT_IBF enum.
-2. Rename fields 'nc'/'nr' to 'ncol'/'nrow'.
+On Tue, Sep 07, 2021 at 10:47:41AM +0200, Philipp Zabel wrote:
+> Hi Markus,
+> 
+> On Mon, 2021-09-06 at 21:35 +0200, Markus Schneider-Pargmann wrote:
+> > This patch adds a DisplayPort driver for the Mediatek mt8195 SoC.
+> > 
+> > It supports both functional units on the mt8195, the embedded
+> > DisplayPort as well as the external DisplayPort units. It offers
+> > hot-plug-detection, audio up to 8 channels, and DisplayPort 1.4 with up
+> > to 4 lanes.
+> > 
+> > This driver is based on an initial version by
+> > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > ---
+> [...]
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+> > new file mode 100644
+> > index 000000000000..1bd07c8d2f69
+> > --- /dev/null
+> > +++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+> > @@ -0,0 +1,2881 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2019 MediaTek Inc.
+> > + * Copyright (c) 2021 BayLibre
+> > + */
+> > +
+> [...]
+> > +#include <linux/component.h>
+> [...]
+> > +#include <linux/extcon.h>
+> > +#include <linux/extcon-provider.h>
+> [...]
+> > +#include <linux/kthread.h>
+> > +#include <linux/mfd/syscon.h>
+> [...]
+> > +#include <linux/of_gpio.h>
+> > +#include <linux/of_graph.h>
+> [...]
+> > +#include <linux/phy/phy.h>
+> 
+> The list of included headers could be pruned a bit, from a quick look it
+> seems like neither of these are actually used.
 
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 81 ++++++++++---------
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 13 +--
- 2 files changed, 45 insertions(+), 49 deletions(-)
+Thank you. I fixed the includes for the next version.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 89df9bcd14e6..da40be8daa6e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -1791,7 +1791,6 @@ mt7915_is_ebf_supported(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- static void
- mt7915_mcu_sta_sounding_rate(struct sta_rec_bf *bf)
- {
--	bf->bf_cap = MT_EBF;
- 	bf->sounding_phy = MT_PHY_TYPE_OFDM;
- 	bf->ndp_rate = 0;				/* mcs0 */
- 	bf->ndpa_rate = MT7915_CFEND_RATE_DEFAULT;	/* ofdm 24m */
-@@ -1806,7 +1805,6 @@ mt7915_mcu_sta_bfer_ht(struct ieee80211_sta *sta, struct mt7915_phy *phy,
- 	u8 n = 0;
- 
- 	bf->tx_mode = MT_PHY_TYPE_HT;
--	bf->bf_cap = MT_IBF;
- 
- 	if (mcs->tx_params & IEEE80211_HT_MCS_TX_RX_DIFF &&
- 	    (mcs->tx_params & IEEE80211_HT_MCS_TX_DEFINED))
-@@ -1819,8 +1817,8 @@ mt7915_mcu_sta_bfer_ht(struct ieee80211_sta *sta, struct mt7915_phy *phy,
- 	else if (mcs->rx_mask[1])
- 		n = 1;
- 
--	bf->nr = hweight8(phy->mt76->chainmask) - 1;
--	bf->nc = min_t(u8, bf->nr, n);
-+	bf->nrow = hweight8(phy->mt76->chainmask) - 1;
-+	bf->ncol = min_t(u8, bf->nrow, n);
- 	bf->ibf_ncol = n;
- }
- 
-@@ -1837,23 +1835,23 @@ mt7915_mcu_sta_bfer_vht(struct ieee80211_sta *sta, struct mt7915_phy *phy,
- 	bf->tx_mode = MT_PHY_TYPE_VHT;
- 
- 	if (explicit) {
--		u8 bfee_nr, bfer_nr;
-+		u8 sts, snd_dim;
- 
- 		mt7915_mcu_sta_sounding_rate(bf);
--		bfee_nr = FIELD_GET(IEEE80211_VHT_CAP_BEAMFORMEE_STS_MASK,
--				    pc->cap);
--		bfer_nr = FIELD_GET(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK,
-+
-+		sts = FIELD_GET(IEEE80211_VHT_CAP_BEAMFORMEE_STS_MASK,
-+				pc->cap);
-+		snd_dim = FIELD_GET(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK,
- 				    vc->cap);
--		bf->nr = min_t(u8, min_t(u8, bfer_nr, bfee_nr), tx_ant);
--		bf->nc = min_t(u8, nss_mcs, bf->nr);
--		bf->ibf_ncol = bf->nc;
-+		bf->nrow = min_t(u8, min_t(u8, snd_dim, sts), tx_ant);
-+		bf->ncol = min_t(u8, nss_mcs, bf->nrow);
-+		bf->ibf_ncol = bf->ncol;
- 
- 		if (sta->bandwidth == IEEE80211_STA_RX_BW_160)
--			bf->nr = 1;
-+			bf->nrow = 1;
- 	} else {
--		bf->bf_cap = MT_IBF;
--		bf->nr = tx_ant;
--		bf->nc = min_t(u8, nss_mcs, bf->nr);
-+		bf->nrow = tx_ant;
-+		bf->ncol = min_t(u8, nss_mcs, bf->nrow);
- 		bf->ibf_ncol = nss_mcs;
- 
- 		if (sta->bandwidth == IEEE80211_STA_RX_BW_160)
-@@ -1871,21 +1869,23 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
- 	const struct ieee80211_he_cap_elem *ve = &vc->he_cap_elem;
- 	u16 mcs_map = le16_to_cpu(pc->he_mcs_nss_supp.rx_mcs_80);
- 	u8 nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
--	u8 bfee_nr, bfer_nr;
-+	u8 snd_dim, sts;
- 
- 	bf->tx_mode = MT_PHY_TYPE_HE_SU;
-+
- 	mt7915_mcu_sta_sounding_rate(bf);
-+
- 	bf->trigger_su = HE_PHY(CAP6_TRIG_SU_BEAMFORMING_FB,
- 				pe->phy_cap_info[6]);
- 	bf->trigger_mu = HE_PHY(CAP6_TRIG_MU_BEAMFORMING_PARTIAL_BW_FB,
- 				pe->phy_cap_info[6]);
--	bfer_nr = HE_PHY(CAP5_BEAMFORMEE_NUM_SND_DIM_UNDER_80MHZ_MASK,
-+	snd_dim = HE_PHY(CAP5_BEAMFORMEE_NUM_SND_DIM_UNDER_80MHZ_MASK,
- 			 ve->phy_cap_info[5]);
--	bfee_nr = HE_PHY(CAP4_BEAMFORMEE_MAX_STS_UNDER_80MHZ_MASK,
--			 pe->phy_cap_info[4]);
--	bf->nr = min_t(u8, bfer_nr, bfee_nr);
--	bf->nc = min_t(u8, nss_mcs, bf->nr);
--	bf->ibf_ncol = bf->nc;
-+	sts = HE_PHY(CAP4_BEAMFORMEE_MAX_STS_UNDER_80MHZ_MASK,
-+		     pe->phy_cap_info[4]);
-+	bf->nrow = min_t(u8, snd_dim, sts);
-+	bf->ncol = min_t(u8, nss_mcs, bf->nrow);
-+	bf->ibf_ncol = bf->ncol;
- 
- 	if (sta->bandwidth != IEEE80211_STA_RX_BW_160)
- 		return;
-@@ -1896,7 +1896,7 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
- 		mcs_map = le16_to_cpu(pc->he_mcs_nss_supp.rx_mcs_160);
- 		nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
- 
--		bf->nc_bw160 = nss_mcs;
-+		bf->ncol_bw160 = nss_mcs;
- 	}
- 
- 	if (pe->phy_cap_info[0] &
-@@ -1904,18 +1904,18 @@ mt7915_mcu_sta_bfer_he(struct ieee80211_sta *sta, struct ieee80211_vif *vif,
- 		mcs_map = le16_to_cpu(pc->he_mcs_nss_supp.rx_mcs_80p80);
- 		nss_mcs = mt7915_mcu_get_sta_nss(mcs_map);
- 
--		if (bf->nc_bw160)
--			bf->nc_bw160 = min_t(u8, bf->nc_bw160, nss_mcs);
-+		if (bf->ncol_bw160)
-+			bf->ncol_bw160 = min_t(u8, bf->ncol_bw160, nss_mcs);
- 		else
--			bf->nc_bw160 = nss_mcs;
-+			bf->ncol_bw160 = nss_mcs;
- 	}
- 
--	bfer_nr = HE_PHY(CAP5_BEAMFORMEE_NUM_SND_DIM_ABOVE_80MHZ_MASK,
-+	snd_dim = HE_PHY(CAP5_BEAMFORMEE_NUM_SND_DIM_ABOVE_80MHZ_MASK,
- 			 ve->phy_cap_info[5]);
--	bfee_nr = HE_PHY(CAP4_BEAMFORMEE_MAX_STS_ABOVE_80MHZ_MASK,
--			 pe->phy_cap_info[4]);
-+	sts = HE_PHY(CAP4_BEAMFORMEE_MAX_STS_ABOVE_80MHZ_MASK,
-+		     pe->phy_cap_info[4]);
- 
--	bf->nr_bw160 = min_t(int, bfer_nr, bfee_nr);
-+	bf->nrow_bw160 = min_t(int, snd_dim, sts);
- }
- 
- static void
-@@ -1956,19 +1956,20 @@ mt7915_mcu_sta_bfer_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 	else
- 		return;
- 
-+	bf->bf_cap = ebf ? ebf : dev->ibf << 1;
- 	bf->bw = sta->bandwidth;
- 	bf->ibf_dbw = sta->bandwidth;
- 	bf->ibf_nrow = tx_ant;
- 
--	if (!ebf && sta->bandwidth <= IEEE80211_STA_RX_BW_40 && !bf->nc)
-+	if (!ebf && sta->bandwidth <= IEEE80211_STA_RX_BW_40 && !bf->ncol)
- 		bf->ibf_timeout = 0x48;
- 	else
- 		bf->ibf_timeout = 0x18;
- 
--	if (ebf && bf->nr != tx_ant)
--		bf->mem_20m = matrix[tx_ant][bf->nc];
-+	if (ebf && bf->nrow != tx_ant)
-+		bf->mem_20m = matrix[tx_ant][bf->ncol];
- 	else
--		bf->mem_20m = matrix[bf->nr][bf->nc];
-+		bf->mem_20m = matrix[bf->nrow][bf->ncol];
- 
- 	switch (sta->bandwidth) {
- 	case IEEE80211_STA_RX_BW_160:
-@@ -1994,7 +1995,7 @@ mt7915_mcu_sta_bfee_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 	int tx_ant = hweight8(phy->mt76->chainmask) - 1;
- 	struct sta_rec_bfee *bfee;
- 	struct tlv *tlv;
--	u8 nr = 0;
-+	u8 nrow = 0;
- 
- 	if (!mt7915_is_ebf_supported(phy, vif, sta, true))
- 		return;
-@@ -2005,17 +2006,17 @@ mt7915_mcu_sta_bfee_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
- 	if (sta->he_cap.has_he) {
- 		struct ieee80211_he_cap_elem *pe = &sta->he_cap.he_cap_elem;
- 
--		nr = HE_PHY(CAP5_BEAMFORMEE_NUM_SND_DIM_UNDER_80MHZ_MASK,
--			    pe->phy_cap_info[5]);
-+		nrow = HE_PHY(CAP5_BEAMFORMEE_NUM_SND_DIM_UNDER_80MHZ_MASK,
-+			      pe->phy_cap_info[5]);
- 	} else if (sta->vht_cap.vht_supported) {
- 		struct ieee80211_sta_vht_cap *pc = &sta->vht_cap;
- 
--		nr = FIELD_GET(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK,
--			       pc->cap);
-+		nrow = FIELD_GET(IEEE80211_VHT_CAP_SOUNDING_DIMENSIONS_MASK,
-+				 pc->cap);
- 	}
- 
- 	/* reply with identity matrix to avoid 2x2 BF negative gain */
--	bfee->fb_identity_matrix = !!(nr == 1 && tx_ant == 2);
-+	bfee->fb_identity_matrix = (nrow == 1 && tx_ant == 2);
- }
- 
- static int
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 158c8e68c59e..d604a39f8413 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -967,8 +967,8 @@ struct sta_rec_bf {
- 	u8 ndp_rate;
- 	u8 rept_poll_rate;
- 	u8 tx_mode;		/* 0: legacy, 1: OFDM, 2: HT, 4: VHT ... */
--	u8 nc;
--	u8 nr;
-+	u8 ncol;
-+	u8 nrow;
- 	u8 bw;			/* 0: 20M, 1: 40M, 2: 80M, 3: 160M */
- 
- 	u8 mem_total;
-@@ -988,8 +988,8 @@ struct sta_rec_bf {
- 	u8 ibf_dbw;
- 	u8 ibf_ncol;
- 	u8 ibf_nrow;
--	u8 nr_bw160;
--	u8 nc_bw160;
-+	u8 nrow_bw160;
-+	u8 ncol_bw160;
- 	u8 ru_start_idx;
- 	u8 ru_end_idx;
- 
-@@ -1080,11 +1080,6 @@ enum {
- 	THERMAL_PROTECT_STATE_ACT,
- };
- 
--enum {
--	MT_EBF = BIT(0),	/* explicit beamforming */
--	MT_IBF = BIT(1)		/* implicit beamforming */
--};
--
- enum {
- 	MT_BF_SOUNDING_ON = 1,
- 	MT_BF_TYPE_UPDATE = 20,
--- 
-2.25.1
+> 
+> [...]
+> > +static void mtk_dp_ssc_enable(struct mtk_dp *mtk_dp, bool enable)
+> > +{
+> > +	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE, DP_PWR_STATE_BANDGAP,
+> > +			   DP_PWR_STATE_MASK);
+> > +	mtk_dp_update_bits(mtk_dp, DP_PHY_DIG_PLL_CTL_1,
+> > +			   enable ? TPLL_SSC_EN : 0, TPLL_SSC_EN);
+> > +	mtk_dp_update_bits(mtk_dp, MTK_DP_TOP_PWR_STATE,
+> > +			   DP_PWR_STATE_BANDGAP_TPLL_LANE, DP_PWR_STATE_MASK);
+> > +
+> > +	udelay(50);
+> 
+> Can usleep_range() be used here? Same for the other delays.
 
+Yes, thanks, I replaced it here and everywhere else.
+
+> 
+> [...]
+> > +static void mtk_dp_hpd_sink_event(struct mtk_dp *mtk_dp)
+> > +{
+> [...]
+> > +
+> > +	if (DP_GET_SINK_COUNT(sink_count) &&
+> > +	    (link_status[2] & DP_DOWNSTREAM_PORT_STATUS_CHANGED)) {
+> > +		mtk_dp->train_info.check_cap_count = 0;
+> > +		kfree(mtk_dp->edid);
+> > +		mtk_dp->edid = NULL;
+> 
+> Should this be protect by a lock? This looks like it could race with the
+> access in mtk_dp_edid_parse_audio_capabilities() or mtk_dp_get_edid()
+
+Completely right, I guarded all edid accesses with a mutex now. Thanks.
+
+> 
+> [...]
+> > +static int mtk_dp_train_handler(struct mtk_dp *mtk_dp)
+> > +{
+> > +	int ret = 0;
+> > +
+> > +	ret = mtk_dp_train_hpd_handle(mtk_dp);
+> > +
+> > +	if (!mtk_dp->train_info.cable_plugged_in)
+> > +		return -ENODEV;
+> > +
+> > +	if (mtk_dp->train_state == MTK_DP_TRAIN_STATE_NORMAL)
+> > +		return ret;
+> > +
+> > +	switch (mtk_dp->train_state) {
+> [...]
+> > +	case MTK_DP_TRAIN_STATE_TRAINING:
+> > +		ret = mtk_dp_train_start(mtk_dp);
+> > +		if (!ret) {
+> > +			mtk_dp_video_mute(mtk_dp, true);
+> > +			mtk_dp_audio_mute(mtk_dp, true);
+> > +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_CHECKTIMING;
+> > +			mtk_dp_fec_enable(mtk_dp, mtk_dp->has_fec);
+> > +		}  else if (ret != -EAGAIN)
+> > +			mtk_dp->train_state = MTK_DP_TRAIN_STATE_DPIDLE;
+> 
+> A small whitespace issue and missing braces.
+
+Thanks for spotting, fixed.
+
+> 
+> Consider running this through checkpatch.pl --strict once for style
+> issues.
+
+Thanks for the tip, I didn't know about --strict. I now added it to my
+editor tooling. Interesting thing: It picked up the missing braces as
+well as all the udelays, but not the extra space before else.
+
+> 
+> [...]
+> > +static irqreturn_t mtk_dp_hpd_event(int hpd, void *dev)
+> > +{
+> > +	struct mtk_dp *mtk_dp = dev;
+> > +	uint32_t irq_status;
+> > +
+> > +	irq_status = mtk_dp_read(mtk_dp, MTK_DP_TOP_IRQ_STATUS);
+> > +
+> > +	if (!irq_status)
+> > +		return IRQ_HANDLED;
+> 
+> This check seems superfluous given that only the
+> RGS_IRQ_STATUS_TRANSMITTER bit is checked right below:
+
+Thanks, I removed it.
+
+> 
+> > +	if (irq_status & RGS_IRQ_STATUS_TRANSMITTER)
+> > +		return mtk_dp_hpd_isr_handler(mtk_dp);
+> > +
+> > +	return IRQ_HANDLED;
+> > +}
+> [...]
+> > +static struct edid *mtk_dp_get_edid(struct drm_bridge *bridge,
+> > +				    struct drm_connector *connector)
+> > +{
+> > +	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
+> > +	bool pre_enabled = mtk_dp->pre_enabled;
+> > +
+> > +	if (mtk_dp->edid)
+> > +		kfree(mtk_dp->edid);
+> 
+> Unnecessary check, kfree() accepts NULL.
+
+Fixed.
+
+Thank you Philipp for the review.
+
+Best,
+Markus
 
 _______________________________________________
 Linux-mediatek mailing list
