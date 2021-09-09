@@ -2,69 +2,104 @@ Return-Path: <SRS0=kQJD=N7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,
+	SPF_PASS,URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3BA5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 15:39:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 58F9DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 19:13:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7B7DE6023D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 15:39:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7B7DE6023D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0D0E160ED8
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Sep 2021 19:13:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0D0E160ED8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jpcfmHmvSyzv/QMo7wccvCFgddqcGq4MJ8IKEynbM5g=; b=F9bnzL7e8jPFYX
-	4HCNtovHOOHRN4B1rtomEBBIMfrED+Fl/IhhN6IbUzeYa0nXTM/suCW+jmwSabIKdmq4uh4UjuV1D
-	uMqmt2XOx2lESMJ1/fK7x2Q2rNR3k3SpRniAv7vYGaPAKgnhPUe29lCNVLDMgRAQGuMeze1+6YCeb
-	xlu4XXfM/zXG7XHhD8BM/Rz7r0y2/KIHDPlvhZ0uB/KV1XlRHPfoIyvm5XDnX3Lf1+Rs8/NRQ5s2t
-	yHqd9eONFuHdJ+Feh5mW0bFRyXunrR4N0FABdNBidkbZYbBonbYJYSL2cx4FPNevWGG6OdFBcKVGk
-	X0taiqUxBsAJEeLdlMyg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=nlmx+wAyxSFdPmsQ19IPN9kT5DN3yt9wl30tIojwh8k=; b=Nmah7ghox1LUXlIzczlLSeKY27
+	msHt/ZtrXRDc4ywcczEHm/7IH3YVw/CkfrgmcNWNkuamrRFTVWiJVxEI4Bn6wv/x6g3J18nVjSQaY
+	7ZD1urGkjbETdizHMnPl43XHx72hNl9gNjJUeZh8IvuvRFVEu6XvF7shyPvQaFb4uOt92pSXcNdbl
+	N6OCPFKY0tjgTNFb53IDxXJKt6NIRvWqL4d3VDTzKHg/COsAcugtD/Jd5ywV5i8kjIr9BQ3fc+JdH
+	ioYZNHG0NqAmMpNGrWHhyk7iHbqkDNDx7q+a1WwYDOmCnoNlkoaH+E0ouUw67iNQLo1NrWnfF331J
+	UhmHkZiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOM9P-00AHkx-0K; Thu, 09 Sep 2021 15:39:43 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mOPTX-00Agkd-Ik; Thu, 09 Sep 2021 19:12:43 +0000
+Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOM9B-00AHhz-Kf; Thu, 09 Sep 2021 15:39:31 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id EAB4761101;
- Thu,  9 Sep 2021 15:39:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631201968;
- bh=tkOzf4SWBI/A4DwsroAtEgpaaPJWTwSJSjBkhkWXmMA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=nJhV9fvfNFeICwBDTUrqTTlfXKOrQ7ggctzbNDG8N1pai6ZW3kD0BiudT68fNafJ0
- nw+xWdmdXcE/rZOTItwmQZFMTEAuN9XPe0Ckvo5A1kA/s1H1yJS9SntciWBfQkscju
- t+Ejk5J2dwsBrLywTaXg5yjTdnM3se9sNUk6vX0QMpFtj9LuqT6D/JOkNsTOOOrUyK
- Sgk4A1T23zChKVB/1ZRKW5/L3v8q3gxB2jedgFRX6/huZlSRKVo1crlbFfTECMegYv
- d0oo1//1Mk4qEJf3d3ZXyEXrb1pynXGWlAzm0P+cnBgUQtezcL/sKMsGN5U5FJzbnA
- a27MmWQhZkD2A==
-From: Mark Brown <broonie@kernel.org>
-To: tiwai@suse.com, Trevor Wu <trevor.wu@mediatek.com>, matthias.bgg@gmail.com
-Cc: Mark Brown <broonie@kernel.org>, wenst@chromium.org,
- linux-mediatek@lists.infradead.org, rdunlap@infradead.org,
- jiaxin.yu@mediatek.com, linux-arm-kernel@lists.infradead.org,
- shane.chien@mediatek.com, alsa-devel@alsa-project.org,
- bicycle.tsai@mediatek.com, geert@linux-m68k.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] ASoC: mediatek: add required config dependency
-Date: Thu,  9 Sep 2021 16:38:49 +0100
-Message-Id: <163120168199.50116.8060254144301490373.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210909065533.2114-1-trevor.wu@mediatek.com>
-References: <20210909065533.2114-1-trevor.wu@mediatek.com>
+ id 1mOPTU-00Agjy-Mq; Thu, 09 Sep 2021 19:12:42 +0000
+Received: by mail-oi1-x22f.google.com with SMTP id n27so3959651oij.0;
+ Thu, 09 Sep 2021 12:12:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=qPQHwAFiSYdLyleAbELrQZ2a09NIC4IXr92lC8k0Z2o=;
+ b=iP93NZjLCWK7wrqXWEzIuyPF1eZNfnZ3JjpCM3RA+qd12seWfFmLUQQbh+/RrxpGmj
+ ENQ8gOluBLG8GHQBb+a97ETd6UUMNun19AFQwNotAQqAdX27mfavG+nw0dNPuLCBqUnj
+ Slj6zu9FeZDMvZgcz51saRw1LklQCwZSjgoemHLLI6hM4s7/i75qfYjqhS+kY/kdG65l
+ a/EUPjXbQjZYFgENdYljH7VsPsAPkSdnX/JDpdMEO9TxVkMY1EDW12ESbmKouOuC4BG1
+ xwWKt8CWA5ypzZ8KgPSxKgDua/+uNGDAhtQsXwO9G5+SjqVMkgRPBCMsyS1PlTQHU7iE
+ m97A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=qPQHwAFiSYdLyleAbELrQZ2a09NIC4IXr92lC8k0Z2o=;
+ b=YhXveV1LndFtCjOdpuLPWsBut/cBBt3jQrxjmjFfGyT78H5csBAyJbiH602BMwJ+7X
+ 5yaYI2B0WywBbShN9hSCdcB9+xq/irE2PDrZHX5t1gzAewoawRDH87h6fKX3NWS+gyDH
+ sPR9BQguaRHxGXzvy1thdin4MdRTboBRi84UbuPvcQZYOvRLVjLlUz+GimAl6h+Rj4IM
+ Lt/QPkXeUbVgz87XMX/S1baDNLXYsQeY4fLwjNPbeQuBKfCohDYpYuJae33ZOduWHHeQ
+ HnXfifk8TFlRsr35qyx0f0NKQBbjYeZBLIBwYe+F9aT6hZj0otyrmvVLBX8ZRJsss0mW
+ bYKg==
+X-Gm-Message-State: AOAM532M10dWmX0BqG+PDLfHhqXdJTZqerQgZRy+C91t7uaBGi3Krc3Z
+ d9DRy5eqLbnoqSzFWlCZu2I=
+X-Google-Smtp-Source: ABdhPJy+SBSctEcaaYBPlw3qORiGmzGEDUEjUOC7t0uGsaCXWESlSTjxPpHMdXVn+rNqPxve9DMoqQ==
+X-Received: by 2002:a05:6808:1481:: with SMTP id
+ e1mr1037664oiw.5.1631214759289; 
+ Thu, 09 Sep 2021 12:12:39 -0700 (PDT)
+Received: from Davids-MacBook-Pro.local ([2601:282:800:dc80:395a:c:3f8e:f434])
+ by smtp.googlemail.com with ESMTPSA id
+ w1sm651917ott.21.2021.09.09.12.12.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 09 Sep 2021 12:12:38 -0700 (PDT)
+Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
+ addr_gen_mode
+To: Lorenzo Colitti <lorenzo@google.com>
+Cc: Rocco Yue <rocco.yue@mediatek.com>, "David S . Miller"
+ <davem@davemloft.net>, Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>,
+ David Ahern <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux NetDev <netdev@vger.kernel.org>, lkml <linux-kernel@vger.kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ wsd_upstream@mediatek.com, rocco.yue@gmail.com, chao.song@mediatek.com,
+ =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>,
+ =?UTF-8?B?Wmh1b2xpYW5nIFpoYW5nICjlvKDljZPkuq4p?=
+ <zhuoliang.zhang@mediatek.com>
+References: <46a9dbf2-9748-330a-963e-57e615a15440@gmail.com>
+ <20210701085117.19018-1-rocco.yue@mediatek.com>
+ <62c9f5b7-84bd-d809-4e33-39fed7a9d780@gmail.com>
+ <CAKD1Yr2aijPe_aq+SRm-xv0ZPoz_gKjYrEX97R1NJyYpSnv4zg@mail.gmail.com>
+From: David Ahern <dsahern@gmail.com>
+Message-ID: <6a8f0e91-225a-e2a8-3745-12ff1710a8df@gmail.com>
+Date: Thu, 9 Sep 2021 13:12:37 -0600
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.14.0
 MIME-Version: 1.0
+In-Reply-To: <CAKD1Yr2aijPe_aq+SRm-xv0ZPoz_gKjYrEX97R1NJyYpSnv4zg@mail.gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210909_083929_747588_E6C54AD9 
-X-CRM114-Status: GOOD (  11.88  )
+X-CRM114-CacheID: sfid-20210909_121240_811976_856C4435 
+X-CRM114-Status: GOOD (  24.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +116,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 9 Sep 2021 14:55:33 +0800, Trevor Wu wrote:
-> Because SND_SOC_MT8195 depends on COMPILE_TEST, it's possible to build
-> MT8195 driver in many different config combinations.
-> Add all dependent config for SND_SOC_MT8195 in case some errors happen
-> when COMPILE_TEST is enabled.
+On 9/9/21 12:20 AM, Lorenzo Colitti wrote:
+>> I think another addr_gen_mode is better than a separate sysctl. It looks
+>> like IN6_ADDR_GEN_MODE_STABLE_PRIVACY and IN6_ADDR_GEN_MODE_RANDOM are
+>> the ones used for RAs, so add something like:
+>>
+>> IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
+>> IN6_ADDR_GEN_MODE_RANDOM_NO_LLA,
 > 
+> I think the real requirement here (which wasn't clear in this thread)
+> is that the network needs to control the interface ID (i.e., the
+> bottom 64 bits) of the link-local address, but the device is free to
+> use whatever interface IDs to form global addresses. See:
+> https://www.etsi.org/deliver/etsi_ts/129000_129099/129061/15.03.00_60/ts_129061v150300p.pdf
 > 
+> How do you think that would best be implemented?
 
-Applied to
+There is an established paradigm for configuring how an IPv6 address is
+created or whether it is created at all - the IFLA_INET6_ADDR_GEN_MODE
+attribute.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+> 
+> 1. The actual interface ID could be passed in using IFLA_INET6_TOKEN,
+> but there is only one token, so that would cause all future addresses
+> to use the token, disabling things like privacy addresses (bad).
+> 2. We could add new IN6_ADDR_GEN_MODE_STABLE_PRIVACY_LL_TOKEN,
+> IN6_ADDR_GEN_MODE_RANDOM_LL_TOKEN, etc., but we'd need to add one such
+> mode for every new mode we add.
+> 3. We could add a separate sysctl for the link-local address, but you
+> said that per-device sysctls aren't free.
 
-Thanks!
+per-device sysctl's are one of primary causes of per netdev memory usage.
 
-[1/1] ASoC: mediatek: add required config dependency
-      commit: 5a80dea93191d55840f42252ed3e4565a125a514
+Besides that there is no reason to add complexity by having a link
+attribute and a sysctl for this feature.
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+> 4. We could change the behaviour so that if the user configures a
+> token and then sets IN6_ADDR_GEN_MODE_*, then we use the token only
+> for the link-local address. But that would impact backwards
+> compatibility.
+> 
+> Thoughts?
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+We can have up to 255 ADDR_GEN_MODEs (GEN_MODE is a u8). There is
+established code for handling the attribute and changes to it. Let's
+reuse it.
 
 _______________________________________________
 Linux-mediatek mailing list
