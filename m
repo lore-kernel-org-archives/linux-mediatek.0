@@ -4,17 +4,17 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 X-Spam-Level: 
 X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 71B6BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83046C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:23:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B9EE611BD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:22:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3B9EE611BD
+	by mail.kernel.org (Postfix) with ESMTPS id 54826611BD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:23:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 54826611BD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,42 +23,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ha0DGzpmggsJEDDAUMV1zm8Yyu/fvCyh8ZoKO8Q6WtQ=; b=ttc5VbBPek0ruJ
-	0OQ9WJjO942cuGG2I7X/gwFA/elEUklEhtJNZkd3rCid+eA9JNnLyqSSDJNgcAyesnkiaMCHf0L+6
-	/Ul+CDzoVTh4I5iXFUZXrYFv2zPiTYYsl+9EEsBOrAIsxkrHBmPle7tqMpkfw0GMtP4oeeus7/3Hf
-	aiK6L5HIgAPjr8ElKPonPHAWgyNNvzHVuA129uCecJaGwJs3kRB+3asJ6e7ZHW3ZBZYiM2BoVHiCf
-	QQfUVW+WV2kwbg3O2EHjb/jLFaF16bGmk/ftPlIDOiH/tm1OfKBMQbLifCFDJysGKQSDsXmSm50ve
-	FxzTm5p49liLa/FPwXbg==;
+	List-Owner; bh=Fh7OFzLcETXeXuoJfxup8PeeafzmtrMY4YxJ5IQ9uyI=; b=emQtJVREkcolTG
+	tYVJ4Qs1aJ+I1wq+isQ9Ld6fvhefztjoT7/ZZ9m+X7ta0OAesJtvdaIJqqXZ3tvy1sUQTviip99B0
+	mHs/qmfGwXVan7U3iIEm9HotRYKgEQhW+6WQsABSFq+c4616ET7gLbJ2rHFe0YRQiA1uQdEOFzsU0
+	B+97CpuGTZmBUUmORjKUeb1E9Pps8hXQ/ksSroFjOlvDTXc3KMJ1hQoy4f2CaRel9M1mDAbZ7JX+c
+	+jAzLY+cL4V0oUS78eWmfj3wxH2wq4Q8KBXUIZ4OmObxP0nRrJLDgMIU6pAY+gL/udIdDdXtc8tmV
+	vcvS0qew1zcviM7E8uQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOUIo-00BG2g-Sm; Fri, 10 Sep 2021 00:21:58 +0000
+	id 1mOUKP-00BGsN-42; Fri, 10 Sep 2021 00:23:37 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOUFk-00BEGF-LB; Fri, 10 Sep 2021 00:18:51 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0DD1A6023D;
- Fri, 10 Sep 2021 00:18:46 +0000 (UTC)
+ id 1mOUFv-00BENx-Ac; Fri, 10 Sep 2021 00:19:01 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 92469611BD;
+ Fri, 10 Sep 2021 00:18:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631233128;
- bh=UeNb57tKzwWRAwXejt0MpMewHQPDGOuLS/1eXFaB9G0=;
+ s=k20201202; t=1631233139;
+ bh=NS44uFGRA29WqPoF5FZLcPOiN6tldwDQo+OPx4WmLws=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=D8YHWDiB7aPj4j8RBXoHR0cFLFD+kG23OeIztZsBoBWlzmTKcbsVeS8UnnUqMD9/p
- utQijMfz+u/DSVj5aMUsMdC4e1vI7LAUNKV3x/ptNxeS89ovsbzx+qlvs2dlrMQdkb
- NrALNK1eTwrqVaF+46Ek8tUq7rZbLaWWdW3bwkmM+dKxBuexy+S2zXml+pmgxp2+67
- LArM13E6didpl3W15eotJfXxabod4xoa2jj44mPdgN+sNBV72Dcl3bknlRDYVns6eP
- 3dIF+le2eY7AS62nAvBml94hyuaiw4rKCSDJthj2N1YEuuRcvNtKwxpVrphEu+kE6U
- ZvP6qL/+FYtpw==
+ b=pTnmPIxypprPG9eCuPvdaZT/MbGnpWz/0HEFY6rVeGRVEbvHLIRP0g0N/+HN4hI6+
+ 1DrOzGnWk7SwkNCTaxixU8XgU2Cu5qkGcP0Q9Ga+MSjG9tnYnkw6zwSUk/TfhhHoSZ
+ P4AwdmLMdwR6QYgfJPSb1/JEIWn408rCsgvIGKURBcCBenToSS4qZEjyYW32rHFoAy
+ dtgxi+YgwGvS5AxWwq51ACAf/4nI30ueCDMoiPHWlveZfYxei9vALkZpenT3ohPihH
+ NiBTQOwCooD60eTbbOrZoFiYb41HnTNbQS4aNkAKe5Ajs7djNlV/tT1jK9e4+DDzZs
+ L8s5ek/VI00XQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Ikjoon Jang <ikjn@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
- Stephen Boyd <sboyd@kernel.org>, Sasha Levin <sashal@kernel.org>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.13 19/88] clk: mediatek: Fix asymmetrical PLL enable
- and disable control
-Date: Thu,  9 Sep 2021 20:17:11 -0400
-Message-Id: <20210910001820.174272-19-sashal@kernel.org>
+Cc: Bart Van Assche <bvanassche@acm.org>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Stanley Chu <stanley.chu@mediatek.com>, Can Guo <cang@codeaurora.org>,
+ Asutosh Das <asutoshd@codeaurora.org>, Avri Altman <avri.altman@wdc.com>,
+ Bean Huo <beanhuo@micron.com>,
+ "Martin K . Petersen" <martin.petersen@oracle.com>,
+ Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.13 26/88] scsi: ufs: Request sense data
+ asynchronously
+Date: Thu,  9 Sep 2021 20:17:18 -0400
+Message-Id: <20210910001820.174272-26-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210910001820.174272-1-sashal@kernel.org>
 References: <20210910001820.174272-1-sashal@kernel.org>
@@ -66,8 +69,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210909_171848_786923_D84A44EA 
-X-CRM114-Status: GOOD (  13.09  )
+X-CRM114-CacheID: sfid-20210909_171859_584637_F6179AB6 
+X-CRM114-Status: GOOD (  13.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,86 +87,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
 
-[ Upstream commit 7cc4e1bbe300c5cf610ece8eca6c6751b8bc74db ]
+[ Upstream commit ac1bc2ba060f9609972fb486073ebd9eab1ef3b6 ]
 
-In fact, the en_mask is a combination of divider enable mask
-and pll enable bit(bit0).
-Before this patch, we enabled both divider mask and bit0 in prepare(),
-but only cleared the bit0 in unprepare().
-In the future, we hope en_mask will only be used as divider enable mask.
-The enable register(CON0) will be set in 2 steps:
-first is divider mask, and then bit0 during prepare(), and vice versa.
-But considering backward compatibility, at this stage we allow en_mask
-to be a combination or a pure divider enable mask.
-And then we will make en_mask a pure divider enable mask in another
-following patch series.
+Clearing a unit attention synchronously from inside the UFS error handler
+may trigger the following deadlock:
 
-Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Link: https://lore.kernel.org/r/20210726105719.15793-7-chun-jie.chen@mediatek.com
-Signed-off-by: Stephen Boyd <sboyd@kernel.org>
+ - ufshcd_err_handler() calls ufshcd_err_handling_unprepare() and the
+   latter function calls ufshcd_clear_ua_wluns().
+
+ - ufshcd_clear_ua_wluns() submits a REQUEST SENSE command and that command
+   activates the SCSI error handler.
+
+ - The SCSI error handler calls ufshcd_host_reset_and_restore().
+
+ - ufshcd_host_reset_and_restore() executes the following code:
+   ufshcd_schedule_eh_work(hba); flush_work(&hba->eh_work);
+
+This sequence results in a deadlock (circular wait). Fix this by requesting
+sense data asynchronously.
+
+Link: https://lore.kernel.org/r/20210722033439.26550-16-bvanassche@acm.org
+Cc: Adrian Hunter <adrian.hunter@intel.com>
+Cc: Stanley Chu <stanley.chu@mediatek.com>
+Cc: Can Guo <cang@codeaurora.org>
+Cc: Asutosh Das <asutoshd@codeaurora.org>
+Cc: Avri Altman <avri.altman@wdc.com>
+Reviewed-by: Bean Huo <beanhuo@micron.com>
+Signed-off-by: Bart Van Assche <bvanassche@acm.org>
+Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/clk/mediatek/clk-pll.c | 20 ++++++++++++++++----
- 1 file changed, 16 insertions(+), 4 deletions(-)
+ drivers/scsi/ufs/ufshcd.c | 64 ++++++++++++++++++++-------------------
+ 1 file changed, 33 insertions(+), 31 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index f440f2cd0b69..11ed5d1d1c36 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -238,6 +238,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-+	u32 div_en_mask;
+diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
+index 469a7be270d6..1f0980a70e3f 100644
+--- a/drivers/scsi/ufs/ufshcd.c
++++ b/drivers/scsi/ufs/ufshcd.c
+@@ -7784,8 +7784,39 @@ static int ufshcd_add_lus(struct ufs_hba *hba)
+ 	return ret;
+ }
  
- 	r = readl(pll->pwr_addr) | CON0_PWR_ON;
- 	writel(r, pll->pwr_addr);
-@@ -247,10 +248,15 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r |= pll->data->en_mask;
-+	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
- 
-+	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
-+	if (div_en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) | div_en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
++static void ufshcd_request_sense_done(struct request *rq, blk_status_t error)
++{
++	if (error != BLK_STS_OK)
++		pr_err("%s: REQUEST SENSE failed (%d)", __func__, error);
++	blk_put_request(rq);
++}
 +
- 	__mtk_pll_tuner_enable(pll);
- 
- 	udelay(20);
-@@ -268,6 +274,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-+	u32 div_en_mask;
- 
- 	if (pll->data->flags & HAVE_RST_BAR) {
- 		r = readl(pll->base_addr + REG_CON0);
-@@ -277,8 +284,13 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 
- 	__mtk_pll_tuner_disable(pll);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r &= ~CON0_BASE_EN;
-+	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
-+	if (div_en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) & ~div_en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
+ static int
+-ufshcd_send_request_sense(struct ufs_hba *hba, struct scsi_device *sdp);
++ufshcd_request_sense_async(struct ufs_hba *hba, struct scsi_device *sdev)
++{
++	/*
++	 * From SPC-6: the REQUEST SENSE command with any allocation length
++	 * clears the sense data.
++	 */
++	static const u8 cmd[6] = {REQUEST_SENSE, 0, 0, 0, 0, 0};
++	struct scsi_request *rq;
++	struct request *req;
 +
-+	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
++	req = blk_get_request(sdev->request_queue, REQ_OP_DRV_IN, /*flags=*/0);
++	if (IS_ERR(req))
++		return PTR_ERR(req);
++
++	rq = scsi_req(req);
++	rq->cmd_len = ARRAY_SIZE(cmd);
++	memcpy(rq->cmd, cmd, rq->cmd_len);
++	rq->retries = 3;
++	req->timeout = 1 * HZ;
++	req->rq_flags |= RQF_PM | RQF_QUIET;
++
++	blk_execute_rq_nowait(/*bd_disk=*/NULL, req, /*at_head=*/true,
++			      ufshcd_request_sense_done);
++	return 0;
++}
  
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
+ static int ufshcd_clear_ua_wlun(struct ufs_hba *hba, u8 wlun)
+ {
+@@ -7813,7 +7844,7 @@ static int ufshcd_clear_ua_wlun(struct ufs_hba *hba, u8 wlun)
+ 	if (ret)
+ 		goto out_err;
+ 
+-	ret = ufshcd_send_request_sense(hba, sdp);
++	ret = ufshcd_request_sense_async(hba, sdp);
+ 	scsi_device_put(sdp);
+ out_err:
+ 	if (ret)
+@@ -8407,35 +8438,6 @@ static void ufshcd_hba_exit(struct ufs_hba *hba)
+ 	}
+ }
+ 
+-static int
+-ufshcd_send_request_sense(struct ufs_hba *hba, struct scsi_device *sdp)
+-{
+-	unsigned char cmd[6] = {REQUEST_SENSE,
+-				0,
+-				0,
+-				0,
+-				UFS_SENSE_SIZE,
+-				0};
+-	char *buffer;
+-	int ret;
+-
+-	buffer = kzalloc(UFS_SENSE_SIZE, GFP_KERNEL);
+-	if (!buffer) {
+-		ret = -ENOMEM;
+-		goto out;
+-	}
+-
+-	ret = scsi_execute(sdp, cmd, DMA_FROM_DEVICE, buffer,
+-			UFS_SENSE_SIZE, NULL, NULL,
+-			msecs_to_jiffies(1000), 3, 0, RQF_PM, NULL);
+-	if (ret)
+-		pr_err("%s: failed with err %d\n", __func__, ret);
+-
+-	kfree(buffer);
+-out:
+-	return ret;
+-}
+-
+ /**
+  * ufshcd_set_dev_pwr_mode - sends START STOP UNIT command to set device
+  *			     power mode
 -- 
 2.30.2
 
