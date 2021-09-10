@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D181C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4CD52C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:31:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4F3EF611BF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:23:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4F3EF611BF
+	by mail.kernel.org (Postfix) with ESMTPS id 0D32E61041
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:31:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0D32E61041
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,54 +23,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sHvjxx2xlScWUAN3WyELmpXfU+PcCtRV+weAxOOD2rg=; b=xGG9j3AH4d/mpQ
-	TDMcJid+viRxA8i2wyrEAf2KWpwJ7+0P1dFqLvG6cRc3MuWtLTyU6ublCOJBv8Bhb+WsIQlaaDS+K
-	DHi9NgmnJAqydBwVz5wXBXL6fmjQKAM7LNXkDfR9iFbzPqMN2EafZfQS0GORETN1SyLFgrt3DDvrD
-	ixGA5pHJPAGqVBKS89Y7dCO7vu7PDG3ZxToms9wtMU3KFp7nfx4k9AFqPt+MSuKlyGmQuiQtJo4GQ
-	QsEiqj9BCSkkiNlD/ZMvdokHeRlccl/EZGHR1nBgzJeWbMCYZyWGBvrXiCo+49Ur/A1MMsf22X3aF
-	itUqpDgv2L797plzFK7Q==;
+	List-Owner; bh=Ha0DGzpmggsJEDDAUMV1zm8Yyu/fvCyh8ZoKO8Q6WtQ=; b=GKbcE8EEE6Tt8R
+	LZB3rxfFXzhBfMEVgiQYEzrAUETiXKMiC/mIgHNCcDzyeYhPzJq+3tc0elh5o712R0px7EQANE5b4
+	E90gdiihLsk2TRZEIoEEEJo0dkf6NcZeDkTKJMlL1rQ1o5+EOnj6Fa5YC3LSJy1Lu70NJKJZvv03m
+	IXoXAiLj1/EFHbFY7Tnay6mZmxkaUTFuVCcBA2Wio4apV7S6PjWzj7mscttpSdQmKwHooJ8CtTMSj
+	7qNpVVHfOk85gJa5NbqbcgiKbDlqLc3OUc8GEECKKwhb3+rTL18jHEFL2wghjQkhqRRclf3h3OpG5
+	cRgzup10zv467g8k7Jpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOUKU-00BGux-5V; Fri, 10 Sep 2021 00:23:43 +0000
+	id 1mOUSC-00BKNj-6a; Fri, 10 Sep 2021 00:31:40 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOUFt-00BELg-Ca; Fri, 10 Sep 2021 00:18:59 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 929B5611CB;
- Fri, 10 Sep 2021 00:18:55 +0000 (UTC)
+ id 1mOUHa-00BFOJ-9c; Fri, 10 Sep 2021 00:20:43 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D9D6E610A3;
+ Fri, 10 Sep 2021 00:20:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631233137;
- bh=pwmbAZbmdzCyX8Mdx4iS9MfYJs7fLCdWt9roV3wMaA8=;
+ s=k20201202; t=1631233241;
+ bh=UeNb57tKzwWRAwXejt0MpMewHQPDGOuLS/1eXFaB9G0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=b9Fn//Kf22k3T5tMdGRgcUqjb/u9GQyK1czHaGadZYoaKI19gHUkh5HGQvlU86dhz
- doOpzDcQnDQV28FpILu8e4YhpRsVRsvS+VurxeAAvrmaYYy4/kIwfveD5vCK31ydsm
- ZPwf8SB91Z36jhW8BR0+tKGFr+C1U+QhZAIh7pShCW88zAQ95/KxXXoBTuXWZqoQML
- EdjTnCaIqooamNBO9u6kYJpAtoxIJeHCBjt6fbfLm8r7bgR5gFtsGR+jaKNqkF7ylR
- GzwVJguAtzjXIoN6WdCTbgk1ZZFA8kXel0mWycNNxg0qFs2Kc65wvn7xC2CzODOhuF
- bTOBuKSz15rSQ==
+ b=SsX+qOKPynB4VpqK+8lJpwyUc7EDDgutRshu1AjE3COPg6tv3ftejwXipQBA+x2vE
+ 6j/qsGG/m5ILTnhGgBwe8E5g7KtPbNejaWXF5R8C5a4b4W+mYjkcbCR1m0GWyi0TlO
+ ciNIfdL2oD59YTSNoqbvznECKCA3AK8DzHHG5RtEYFhPw9/wMnKJsxdf9c53uF8126
+ MrXfDFN82E58Az3Lsu5fUMznTZAAIryPeBN9rDI/UBMV6My5viFrldD9cvL246iVqD
+ uN8cpQDgTbXAbXhEdWjPh4h7yVPjsQENp0b50v5cPRkHzprk3eSNdLKsGyv6osQJd4
+ U5cTd+Qaj1zIA==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Bart Van Assche <bvanassche@acm.org>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Stanley Chu <stanley.chu@mediatek.com>, Can Guo <cang@codeaurora.org>,
- Asutosh Das <asutoshd@codeaurora.org>, Avri Altman <avri.altman@wdc.com>,
- Bean Huo <beanhuo@micron.com>, Daejun Park <daejun7.park@samsung.com>,
- "Martin K . Petersen" <martin.petersen@oracle.com>,
- Sasha Levin <sashal@kernel.org>, linux-scsi@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.13 25/88] scsi: ufs: Verify UIC locking requirements
- at runtime
-Date: Thu,  9 Sep 2021 20:17:17 -0400
-Message-Id: <20210910001820.174272-25-sashal@kernel.org>
+Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Ikjoon Jang <ikjn@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
+ Stephen Boyd <sboyd@kernel.org>, Sasha Levin <sashal@kernel.org>,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 09/53] clk: mediatek: Fix asymmetrical PLL enable
+ and disable control
+Date: Thu,  9 Sep 2021 20:19:44 -0400
+Message-Id: <20210910002028.175174-9-sashal@kernel.org>
 X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210910001820.174272-1-sashal@kernel.org>
-References: <20210910001820.174272-1-sashal@kernel.org>
+In-Reply-To: <20210910002028.175174-1-sashal@kernel.org>
+References: <20210910002028.175174-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210909_171857_638003_04E16A05 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20210909_172042_393476_BBF8CF65 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,106 +84,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bart Van Assche <bvanassche@acm.org>
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 
-[ Upstream commit 35c7d874f5993db04ce3aa310ae088f14b801eda ]
+[ Upstream commit 7cc4e1bbe300c5cf610ece8eca6c6751b8bc74db ]
 
-Instead of documenting the locking requirements of the UIC code as
-comments, use lockdep_assert_held() such that lockdep verifies the lockdep
-requirements at runtime if lockdep is enabled.
+In fact, the en_mask is a combination of divider enable mask
+and pll enable bit(bit0).
+Before this patch, we enabled both divider mask and bit0 in prepare(),
+but only cleared the bit0 in unprepare().
+In the future, we hope en_mask will only be used as divider enable mask.
+The enable register(CON0) will be set in 2 steps:
+first is divider mask, and then bit0 during prepare(), and vice versa.
+But considering backward compatibility, at this stage we allow en_mask
+to be a combination or a pure divider enable mask.
+And then we will make en_mask a pure divider enable mask in another
+following patch series.
 
-Link: https://lore.kernel.org/r/20210722033439.26550-8-bvanassche@acm.org
-Cc: Adrian Hunter <adrian.hunter@intel.com>
-Cc: Stanley Chu <stanley.chu@mediatek.com>
-Cc: Can Guo <cang@codeaurora.org>
-Cc: Asutosh Das <asutoshd@codeaurora.org>
-Reviewed-by: Avri Altman <avri.altman@wdc.com>
-Reviewed-by: Bean Huo <beanhuo@micron.com>
-Reviewed-by: Daejun Park <daejun7.park@samsung.com>
-Signed-off-by: Bart Van Assche <bvanassche@acm.org>
-Signed-off-by: Martin K. Petersen <martin.petersen@oracle.com>
+Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
+Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
+Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Link: https://lore.kernel.org/r/20210726105719.15793-7-chun-jie.chen@mediatek.com
+Signed-off-by: Stephen Boyd <sboyd@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/scsi/ufs/ufshcd.c | 16 +++++++++-------
- drivers/scsi/ufs/ufshcd.h |  2 +-
- 2 files changed, 10 insertions(+), 8 deletions(-)
+ drivers/clk/mediatek/clk-pll.c | 20 ++++++++++++++++----
+ 1 file changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/scsi/ufs/ufshcd.c b/drivers/scsi/ufs/ufshcd.c
-index 72fd41bfbd54..469a7be270d6 100644
---- a/drivers/scsi/ufs/ufshcd.c
-+++ b/drivers/scsi/ufs/ufshcd.c
-@@ -2152,15 +2152,15 @@ static inline u8 ufshcd_get_upmcrs(struct ufs_hba *hba)
- }
- 
- /**
-- * ufshcd_dispatch_uic_cmd - Dispatch UIC commands to unipro layers
-+ * ufshcd_dispatch_uic_cmd - Dispatch an UIC command to the Unipro layer
-  * @hba: per adapter instance
-  * @uic_cmd: UIC command
-- *
-- * Mutex must be held.
-  */
- static inline void
- ufshcd_dispatch_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd)
+diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
+index f440f2cd0b69..11ed5d1d1c36 100644
+--- a/drivers/clk/mediatek/clk-pll.c
++++ b/drivers/clk/mediatek/clk-pll.c
+@@ -238,6 +238,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
  {
-+	lockdep_assert_held(&hba->uic_cmd_mutex);
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	u32 r;
++	u32 div_en_mask;
+ 
+ 	r = readl(pll->pwr_addr) | CON0_PWR_ON;
+ 	writel(r, pll->pwr_addr);
+@@ -247,10 +248,15 @@ static int mtk_pll_prepare(struct clk_hw *hw)
+ 	writel(r, pll->pwr_addr);
+ 	udelay(1);
+ 
+-	r = readl(pll->base_addr + REG_CON0);
+-	r |= pll->data->en_mask;
++	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
+ 	writel(r, pll->base_addr + REG_CON0);
+ 
++	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
++	if (div_en_mask) {
++		r = readl(pll->base_addr + REG_CON0) | div_en_mask;
++		writel(r, pll->base_addr + REG_CON0);
++	}
 +
- 	WARN_ON(hba->active_uic_cmd);
+ 	__mtk_pll_tuner_enable(pll);
  
- 	hba->active_uic_cmd = uic_cmd;
-@@ -2178,11 +2178,10 @@ ufshcd_dispatch_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd)
- }
- 
- /**
-- * ufshcd_wait_for_uic_cmd - Wait complectioin of UIC command
-+ * ufshcd_wait_for_uic_cmd - Wait for completion of an UIC command
-  * @hba: per adapter instance
-  * @uic_cmd: UIC command
-  *
-- * Must be called with mutex held.
-  * Returns 0 only if success.
-  */
- static int
-@@ -2191,6 +2190,8 @@ ufshcd_wait_for_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd)
- 	int ret;
- 	unsigned long flags;
- 
-+	lockdep_assert_held(&hba->uic_cmd_mutex);
-+
- 	if (wait_for_completion_timeout(&uic_cmd->done,
- 					msecs_to_jiffies(UIC_CMD_TIMEOUT))) {
- 		ret = uic_cmd->argument2 & MASK_UIC_COMMAND_RESULT;
-@@ -2220,14 +2221,15 @@ ufshcd_wait_for_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd)
-  * @uic_cmd: UIC command
-  * @completion: initialize the completion only if this is set to true
-  *
-- * Identical to ufshcd_send_uic_cmd() expect mutex. Must be called
-- * with mutex held and host_lock locked.
-  * Returns 0 only if success.
-  */
- static int
- __ufshcd_send_uic_cmd(struct ufs_hba *hba, struct uic_command *uic_cmd,
- 		      bool completion)
+ 	udelay(20);
+@@ -268,6 +274,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
  {
-+	lockdep_assert_held(&hba->uic_cmd_mutex);
-+	lockdep_assert_held(hba->host->host_lock);
+ 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
+ 	u32 r;
++	u32 div_en_mask;
+ 
+ 	if (pll->data->flags & HAVE_RST_BAR) {
+ 		r = readl(pll->base_addr + REG_CON0);
+@@ -277,8 +284,13 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
+ 
+ 	__mtk_pll_tuner_disable(pll);
+ 
+-	r = readl(pll->base_addr + REG_CON0);
+-	r &= ~CON0_BASE_EN;
++	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
++	if (div_en_mask) {
++		r = readl(pll->base_addr + REG_CON0) & ~div_en_mask;
++		writel(r, pll->base_addr + REG_CON0);
++	}
 +
- 	if (!ufshcd_ready_for_uic_cmd(hba)) {
- 		dev_err(hba->dev,
- 			"Controller not ready to accept UIC commands\n");
-diff --git a/drivers/scsi/ufs/ufshcd.h b/drivers/scsi/ufs/ufshcd.h
-index 5eb66a8debc7..589cf7d3031d 100644
---- a/drivers/scsi/ufs/ufshcd.h
-+++ b/drivers/scsi/ufs/ufshcd.h
-@@ -668,7 +668,7 @@ struct ufs_hba_variant_params {
-  * @priv: pointer to variant specific private data
-  * @irq: Irq number of the controller
-  * @active_uic_cmd: handle of active UIC command
-- * @uic_cmd_mutex: mutex for uic command
-+ * @uic_cmd_mutex: mutex for UIC command
-  * @tmf_tag_set: TMF tag set.
-  * @tmf_queue: Used to allocate TMF tags.
-  * @pwr_done: completion for power mode change
++	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
+ 	writel(r, pll->base_addr + REG_CON0);
+ 
+ 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
 -- 
 2.30.2
 
