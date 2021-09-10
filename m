@@ -2,72 +2,55 @@ Return-Path: <SRS0=J3PH=OA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-17.6 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86B2DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D7587C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 01:42:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 434C36109F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 00:39:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 434C36109F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id A39B760E54
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 01:42:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A39B760E54
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=infradead.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/G5aissXqY/JGLnsUEz6JKuAbve4XqE3NdWHb0TI6HQ=; b=cFxhJIyIvOzh6b
-	6ceMl2aGV+Jda/GPFiQV6tvnz8NeJ4nMdsK1z9jVywP4u6Kb00LgUijSzVUtEo8Qj/CNFO4nXptpR
-	9sRmO42qfF5YDfBvdWQYyWfDl27WyDQ2slA0SJfIe3L6mOA2c8+ebb3eZUXq62YwsqxWn8bRZ8EOT
-	EFjaWKrJ7BA+CmA4UiRk7eCKZ+atgUP6ghpTDOYSNlXzn1dq9fD7K9NcV/Xa0yVv2hgePtvHHy3Du
-	8XqsVxskeUcAQvv0HClIwYPPgA+ZyDS+Si0RVhNIcWGoQj+tEnzAzK2hAvbZbAZqv1uImoOwwN4of
-	wQ2OPrBeZMbZutR80QTA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=L5l7udt4kHHOjrqPmtluwQJSfimfhajs6uu5wzzK0jk=; b=0sm/u5wczKmRQ8Seoi5vPR5QaJ
+	fY7oK1VElClz9iWr+2TA+8dhTGiYvoJ9tC9Iwyh/85SK/Al+aow3ItRNylzDn6VMVgy0OkcMCeE2s
+	fyPWgcaP6FP6wIuKj+4oD0TDSYn7k27v/s+0fHaKFPCWoGaGfNik2FQB9Gy7KXJwSPmzEVSmkhiuF
+	jneI58lcj+Uq5dOuzahN3lHtNNN9t9IIrJ4hb/34iL7qZ7QXp1m6RaCRlULaXJYycLJPzzIoJQ/bS
+	2CIQAkr9ljGe/Mxn+A+qigDuIfzcKDr91R49u7D3aZIi4KjJTPe7/QOUKKChj3o818Bo3py10VPYg
+	mYk2DOgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOUZl-00BO3m-FC; Fri, 10 Sep 2021 00:39:29 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOUJU-00BGQ7-R7; Fri, 10 Sep 2021 00:22:42 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 69762611BF;
- Fri, 10 Sep 2021 00:22:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631233360;
- bh=U47agCgVb/nZQrvpnQrv8IvethYNANv3FBnfjKo0iaE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Fh4EpVw2MDs1etp4jFr6a3NqGSAwFbd7v4jEH0FdF25L96aaCz9oET2X+9dDdQ6HW
- xS5cYQmeCeW6STFacB7a1mqgakKUPQW13kbxz669ngOL/A2TYcOUSKg/ZdINHADaPO
- mhig1rhFa/tOU7UkPvB6WH1M+DyymJOp5iNmHFlhuUg9BdVqlGQrrvR6H8mh6ovu1C
- BRFrmUA3ki3xD1WDeSiNw+LnTZMpBj1WZujEcFdrV20/v1zambxF7TP95nhVXv61b1
- bmPbSOf4NLb5dOdJft5m4bdDcoW79eatA51u+uRFrSDDX+8VvHEY28pUsg/mkTkDZg
- BuZyH4ix6ZjUw==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Ikjoon Jang <ikjn@chromium.org>, Weiyi Lu <weiyi.lu@mediatek.com>,
- Stephen Boyd <sboyd@kernel.org>, Sasha Levin <sashal@kernel.org>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 4.19 04/25] clk: mediatek: Fix asymmetrical PLL enable
- and disable control
-Date: Thu,  9 Sep 2021 20:22:12 -0400
-Message-Id: <20210910002234.176125-4-sashal@kernel.org>
-X-Mailer: git-send-email 2.30.2
-In-Reply-To: <20210910002234.176125-1-sashal@kernel.org>
-References: <20210910002234.176125-1-sashal@kernel.org>
+	id 1mOVYZ-00BXbN-QR; Fri, 10 Sep 2021 01:42:19 +0000
+Received: from [2601:1c0:6280:3f0::aa0b]
+ by bombadil.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mOVYL-00BXZP-9T; Fri, 10 Sep 2021 01:42:05 +0000
+Subject: Re: [PATCH] ASoC: mediatek: add required config dependency
+To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org, tiwai@suse.com,
+ matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ geert@linux-m68k.org, wenst@chromium.org, bicycle.tsai@mediatek.com,
+ jiaxin.yu@mediatek.com, shane.chien@mediatek.com
+References: <20210909065533.2114-1-trevor.wu@mediatek.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <46bf2061-7a00-c6f0-d2e9-5605b13f1c3f@infradead.org>
+Date: Thu, 9 Sep 2021 18:42:03 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210909_172241_020753_A289D655 
-X-CRM114-Status: GOOD (  13.09  )
+In-Reply-To: <20210909065533.2114-1-trevor.wu@mediatek.com>
+Content-Language: en-US
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,93 +62,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+On 9/8/21 11:55 PM, Trevor Wu wrote:
+> Because SND_SOC_MT8195 depends on COMPILE_TEST, it's possible to build
+> MT8195 driver in many different config combinations.
+> Add all dependent config for SND_SOC_MT8195 in case some errors happen
+> when COMPILE_TEST is enabled.
+> 
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> Reported-by: Randy Dunlap <rdunlap@infradead.org>
 
-[ Upstream commit 7cc4e1bbe300c5cf610ece8eca6c6751b8bc74db ]
+Acked-by: Randy Dunlap <rdunlap@infradead.org> # build-tested
 
-In fact, the en_mask is a combination of divider enable mask
-and pll enable bit(bit0).
-Before this patch, we enabled both divider mask and bit0 in prepare(),
-but only cleared the bit0 in unprepare().
-In the future, we hope en_mask will only be used as divider enable mask.
-The enable register(CON0) will be set in 2 steps:
-first is divider mask, and then bit0 during prepare(), and vice versa.
-But considering backward compatibility, at this stage we allow en_mask
-to be a combination or a pure divider enable mask.
-And then we will make en_mask a pure divider enable mask in another
-following patch series.
+Thanks.
 
-Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
-Signed-off-by: Weiyi Lu <weiyi.lu@mediatek.com>
-Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Link: https://lore.kernel.org/r/20210726105719.15793-7-chun-jie.chen@mediatek.com
-Signed-off-by: Stephen Boyd <sboyd@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/clk/mediatek/clk-pll.c | 20 ++++++++++++++++----
- 1 file changed, 16 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-pll.c b/drivers/clk/mediatek/clk-pll.c
-index 18842d660317..5ad68205d17d 100644
---- a/drivers/clk/mediatek/clk-pll.c
-+++ b/drivers/clk/mediatek/clk-pll.c
-@@ -247,6 +247,7 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-+	u32 div_en_mask;
- 
- 	r = readl(pll->pwr_addr) | CON0_PWR_ON;
- 	writel(r, pll->pwr_addr);
-@@ -256,10 +257,15 @@ static int mtk_pll_prepare(struct clk_hw *hw)
- 	writel(r, pll->pwr_addr);
- 	udelay(1);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r |= pll->data->en_mask;
-+	r = readl(pll->base_addr + REG_CON0) | CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
- 
-+	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
-+	if (div_en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) | div_en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
-+
- 	__mtk_pll_tuner_enable(pll);
- 
- 	udelay(20);
-@@ -277,6 +283,7 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- {
- 	struct mtk_clk_pll *pll = to_mtk_clk_pll(hw);
- 	u32 r;
-+	u32 div_en_mask;
- 
- 	if (pll->data->flags & HAVE_RST_BAR) {
- 		r = readl(pll->base_addr + REG_CON0);
-@@ -286,8 +293,13 @@ static void mtk_pll_unprepare(struct clk_hw *hw)
- 
- 	__mtk_pll_tuner_disable(pll);
- 
--	r = readl(pll->base_addr + REG_CON0);
--	r &= ~CON0_BASE_EN;
-+	div_en_mask = pll->data->en_mask & ~CON0_BASE_EN;
-+	if (div_en_mask) {
-+		r = readl(pll->base_addr + REG_CON0) & ~div_en_mask;
-+		writel(r, pll->base_addr + REG_CON0);
-+	}
-+
-+	r = readl(pll->base_addr + REG_CON0) & ~CON0_BASE_EN;
- 	writel(r, pll->base_addr + REG_CON0);
- 
- 	r = readl(pll->pwr_addr) | CON0_ISO_EN;
+> ---
+>   sound/soc/mediatek/Kconfig | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+> index 5a2f4667d50b..81ad2dcee9eb 100644
+> --- a/sound/soc/mediatek/Kconfig
+> +++ b/sound/soc/mediatek/Kconfig
+> @@ -1,6 +1,7 @@
+>   # SPDX-License-Identifier: GPL-2.0-only
+>   config SND_SOC_MEDIATEK
+>   	tristate
+> +	select REGMAP_MMIO
+>   
+>   config SND_SOC_MT2701
+>   	tristate "ASoC support for Mediatek MT2701 chip"
+> @@ -188,7 +189,9 @@ config SND_SOC_MT8192_MT6359_RT1015_RT5682
+>   config SND_SOC_MT8195
+>   	tristate "ASoC support for Mediatek MT8195 chip"
+>   	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on COMMON_CLK
+>   	select SND_SOC_MEDIATEK
+> +	select MFD_SYSCON if SND_SOC_MT6359
+>   	help
+>   	  This adds ASoC platform driver support for Mediatek MT8195 chip
+>   	  that can be used with other codecs.
+> 
+
+
 -- 
-2.30.2
+~Randy
 
 
 _______________________________________________
