@@ -1,71 +1,75 @@
-Return-Path: <SRS0=J3PH=OA=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=zBSj=OB=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-8.0 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B533DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 17:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8FCDCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Sep 2021 07:11:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 73CEC611BF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Sep 2021 17:05:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 73CEC611BF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4E03F61212
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Sep 2021 07:11:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4E03F61212
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=HYQAdJbR5/QfYVGI79g8B95xiZJMtl20/Da4/a7VoOo=; b=Cb+rZjCfuOw+HnhfUxmJCMuMa5
-	4NuN5QZCeC5DxZ7H1mXp6UdXk/JOQnezv3xUw7hhZce0+jj2FwkGJQPuruH/I84X6A0+YF4ZMCiEM
-	GjiK/BMQBD2gMF5HPEm/jagK7sRt3xxPggoCjFFkHXRTOIVyMRww3oLxkI/Zikz61Xftw2W/154qK
-	2u9ryYa8mSMu9yqXV+Yd0JEG3Xbld1luYdeR71U+5gimO/G+KuUUMzIRtkZBHnYd1P5n3m3KcYxoB
-	gcwatzf74KknCKBt5cDpCsvzm+gZyDU/m9+sKqtyi4EwMlJGtZQthjpdfesKHlKcZj2tTr4Z9MgFM
-	scOWKcxQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hVIBKga1OUlYFnq3bBYDHcRxUCLZReERSrbUjHUqOmo=; b=bFQcXCrKg1pGxj
+	BLvskjkqBX20fZShbyhfKhXZkpJp7qH9iLYTY6FSdkPrE9+lf3aP98hUDOG/BY3WpwO4rCgFUwv1l
+	evJ00Yor000rpxpZETG0UpUUqRy9bCLRKdOjTEzg6vKGyGfyOLtBi8iLbLzQxhzscuzc006+2wM+U
+	IgbEP1PyFaWxuGfTdVgpO772Oukc8iPoltZh/MBEe4Xmyth0THc6D6urUJnW4CjHfAnbe2iSn2XFv
+	84e+SlPHfmMGLhmazk0fM/Up9rpATSWIbc5auhP1GQDaV0HuQqVkczZo/djiDpEd6W31GBj22TqtU
+	VR7NePoycekDnlzaAEVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mOjxy-00DE3U-LD; Fri, 10 Sep 2021 17:05:30 +0000
-Received: from mga09.intel.com ([134.134.136.24])
+	id 1mOxAM-00EQIj-IU; Sat, 11 Sep 2021 07:11:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mOjxj-00DDze-Ke; Fri, 10 Sep 2021 17:05:18 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10103"; a="221159898"
-X-IronPort-AV: E=Sophos;i="5.85,283,1624345200"; d="scan'208";a="221159898"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2021 10:05:12 -0700
-X-IronPort-AV: E=Sophos;i="5.85,283,1624345200"; d="scan'208";a="467201285"
-Received: from teurias-mobl1.amr.corp.intel.com (HELO [10.213.178.39])
- ([10.213.178.39])
- by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2021 10:05:11 -0700
-Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8195: add machine driver with
- mt6359, rt1011 and rt5682
-To: Trevor Wu <trevor.wu@mediatek.com>, broonie@kernel.org, tiwai@suse.com,
- robh+dt@kernel.org, matthias.bgg@gmail.com
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- aaronyu@google.com, linux-arm-kernel@lists.infradead.org
-References: <20210910104405.11420-1-trevor.wu@mediatek.com>
- <20210910104405.11420-2-trevor.wu@mediatek.com>
-From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Message-ID: <10fc49fa-9791-0225-365d-e3074680596c@linux.intel.com>
-Date: Fri, 10 Sep 2021 11:47:51 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.13.0
+ id 1mOxA9-00EQEU-5x; Sat, 11 Sep 2021 07:10:58 +0000
+X-UUID: 9394b03c1f154263b3b79448c3a24eb3-20210911
+X-UUID: 9394b03c1f154263b3b79448c3a24eb3-20210911
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2117978630; Sat, 11 Sep 2021 00:10:50 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 11 Sep 2021 00:10:48 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 11 Sep 2021 15:10:47 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 11 Sep 2021 15:10:46 +0800
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
+ <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
+CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
+ <hui.liu@mediatek.com>, <light.hsieh@mediatek.com>,
+ <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
+ <sean.wang@mediatek.com>, <seiya.wang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-gpio@vger.kernel.org>
+Subject: [PATCH v1 0/1] Mediatek pinctrl patch on mt8195 
+Date: Sat, 11 Sep 2021 15:10:45 +0800
+Message-ID: <20210911071046.17349-1-zhiyong.tao@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20210910104405.11420-2-trevor.wu@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210910_100515_808260_D6E7E0B9 
-X-CRM114-Status: GOOD (  24.31  )
+X-CRM114-CacheID: sfid-20210911_001057_320240_2E25E08E 
+X-CRM114-Status: UNSURE (   6.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,600 +86,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series includes 1 patches:
+1.add pm_ops on mt8195.
 
-> +static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
-> +					struct snd_pcm_hw_params *params)
-> +{
-> +	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-> +	struct snd_soc_card *card = rtd->card;
-> +	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-> +	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
-> +	unsigned int rate = params_rate(params);
-> +	unsigned int mclk_fs_ratio = 128;
-> +	unsigned int mclk_fs = rate * mclk_fs_ratio;
-> +	int bitwidth;
-> +	int ret;
-> +
-> +	bitwidth = snd_pcm_format_width(params_format(params));
-> +	if (bitwidth < 0) {
-> +		dev_err(card->dev, "invalid bit width: %d\n", bitwidth);
-> +		return bitwidth;
-> +	}
-> +
-> +	ret = snd_soc_dai_set_tdm_slot(codec_dai, 0x00, 0x0, 0x2, bitwidth);
-> +	if (ret) {
-> +		dev_err(card->dev, "failed to set tdm slot\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1,
-> +				  RT5682_PLL1_S_BCLK1,
-> +				  params_rate(params) * 64,
-> +				  params_rate(params) * 512);
-> +	if (ret) {
-> +		dev_err(card->dev, "failed to set pll\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = snd_soc_dai_set_sysclk(codec_dai,
-> +				     RT5682_SCLK_S_PLL1,
-> +				     params_rate(params) * 512,
-> +				     SND_SOC_CLOCK_IN);
-> +	if (ret) {
-> +		dev_err(card->dev, "failed to set sysclk\n");
-> +		return ret;
-> +	}
-> +
-> +	return snd_soc_dai_set_sysclk(cpu_dai, 0, mclk_fs, SND_SOC_CLOCK_OUT);
+Changes in patch v1:
+1)separate from RSEL patch on mt8195.
 
-If you are using params_rate(params) x factor, then it'd be more
-consistent to use:
+Zhiyong Tao (1):
+  pinctrl: mediatek: mt8195: Add pm_ops
 
-return snd_soc_dai_set_sysclk(cpu_dai, 0, params_rate(params) * 128,
-SND_SOC_CLOCK_OUT);
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+--
+2.18.0
 
 
-> +static int mt8195_mt6359_mtkaif_calibration(struct snd_soc_pcm_runtime *rtd)
-> +{
-> +	struct snd_soc_component *cmpnt_afe =
-> +		snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
-> +	struct snd_soc_component *cmpnt_codec =
-> +		asoc_rtd_to_codec(rtd, 0)->component;
-> +	struct mtk_base_afe *afe = snd_soc_component_get_drvdata(cmpnt_afe);
-> +	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-> +	struct mtkaif_param *param = &afe_priv->mtkaif_params;
-> +	int phase;
-> +	unsigned int monitor;
-> +	int mtkaif_calibration_num_phase;
-> +	int test_done_1, test_done_2, test_done_3;
-> +	int cycle_1, cycle_2, cycle_3;
-> +	int prev_cycle_1, prev_cycle_2, prev_cycle_3;
-> +	int chosen_phase_1, chosen_phase_2, chosen_phase_3;
-> +	int counter;
-> +	bool mtkaif_calibration_ok;
-> +	int mtkaif_chosen_phase[MT8195_MTKAIF_MISO_NUM];
-> +	int mtkaif_phase_cycle[MT8195_MTKAIF_MISO_NUM];
-> +	int i;
-
-reverse x-mas style with longer declarations first?
-
-> +
-> +	dev_info(afe->dev, "%s(), start\n", __func__);
-
-dev_dbg
-
-> +
-> +	param->mtkaif_calibration_ok = false;
-> +	for (i = 0; i < MT8195_MTKAIF_MISO_NUM; i++) {
-> +		param->mtkaif_chosen_phase[i] = -1;
-> +		param->mtkaif_phase_cycle[i] = 0;
-> +		mtkaif_chosen_phase[i] = -1;
-> +		mtkaif_phase_cycle[i] = 0;
-> +	}
-> +
-> +	if (IS_ERR(afe_priv->topckgen)) {
-> +		dev_info(afe->dev, "%s() Cannot find topckgen controller\n",
-> +			 __func__);
-> +		return 0;
-
-is this not an error? Why not dev_err() and return -EINVAL or something?
-
-> +	}
-> +
-> +	pm_runtime_get_sync(afe->dev);
-
-test if this worked?
-
-> +	mt6359_mtkaif_calibration_enable(cmpnt_codec);
-> +
-> +	/* set test type to synchronizer pulse */
-> +	regmap_update_bits(afe_priv->topckgen,
-> +			   CKSYS_AUD_TOP_CFG, 0xffff, 0x4);
-> +	mtkaif_calibration_num_phase = 42;	/* mt6359: 0 ~ 42 */
-> +	mtkaif_calibration_ok = true;
-> +
-> +	for (phase = 0;
-> +	     phase <= mtkaif_calibration_num_phase && mtkaif_calibration_ok;
-> +	     phase++) {
-> +		mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
-> +						    phase, phase, phase);
-> +
-> +		regmap_update_bits(afe_priv->topckgen,
-> +				   CKSYS_AUD_TOP_CFG, 0x1, 0x1);
-> +
-> +		test_done_1 = 0;
-> +		test_done_2 = 0;
-> +		test_done_3 = 0;
-> +		cycle_1 = -1;
-> +		cycle_2 = -1;
-> +		cycle_3 = -1;
-> +		counter = 0;
-> +		while (!(test_done_1 & test_done_2 & test_done_3)) {
-> +			regmap_read(afe_priv->topckgen,
-> +				    CKSYS_AUD_TOP_MON, &monitor);
-> +			test_done_1 = (monitor >> 28) & 0x1;
-> +			test_done_2 = (monitor >> 29) & 0x1;
-> +			test_done_3 = (monitor >> 30) & 0x1;
-> +			if (test_done_1 == 1)
-> +				cycle_1 = monitor & 0xf;
-> +
-> +			if (test_done_2 == 1)
-> +				cycle_2 = (monitor >> 4) & 0xf;
-> +
-> +			if (test_done_3 == 1)
-> +				cycle_3 = (monitor >> 8) & 0xf;
-> +
-> +			/* handle if never test done */
-> +			if (++counter > 10000) {
-> +				dev_info(afe->dev, "%s(), test fail, cycle_1 %d, cycle_2 %d, cycle_3 %d, monitor 0x%x\n",
-> +					 __func__,
-> +					 cycle_1, cycle_2, cycle_3, monitor);
-> +				mtkaif_calibration_ok = false;
-> +				break;
-> +			}
-> +		}
-> +
-> +		if (phase == 0) {
-> +			prev_cycle_1 = cycle_1;
-> +			prev_cycle_2 = cycle_2;
-> +			prev_cycle_3 = cycle_3;
-> +		}
-> +
-> +		if (cycle_1 != prev_cycle_1 &&
-> +		    mtkaif_chosen_phase[MT8195_MTKAIF_MISO_0] < 0) {
-> +			mtkaif_chosen_phase[MT8195_MTKAIF_MISO_0] = phase - 1;
-> +			mtkaif_phase_cycle[MT8195_MTKAIF_MISO_0] = prev_cycle_1;
-> +		}
-> +
-> +		if (cycle_2 != prev_cycle_2 &&
-> +		    mtkaif_chosen_phase[MT8195_MTKAIF_MISO_1] < 0) {
-> +			mtkaif_chosen_phase[MT8195_MTKAIF_MISO_1] = phase - 1;
-> +			mtkaif_phase_cycle[MT8195_MTKAIF_MISO_1] = prev_cycle_2;
-> +		}
-> +
-> +		if (cycle_3 != prev_cycle_3 &&
-> +		    mtkaif_chosen_phase[MT8195_MTKAIF_MISO_2] < 0) {
-> +			mtkaif_chosen_phase[MT8195_MTKAIF_MISO_2] = phase - 1;
-> +			mtkaif_phase_cycle[MT8195_MTKAIF_MISO_2] = prev_cycle_3;
-> +		}
-> +
-> +		regmap_update_bits(afe_priv->topckgen,
-> +				   CKSYS_AUD_TOP_CFG, 0x1, 0x0);
-> +
-> +		if (mtkaif_chosen_phase[MT8195_MTKAIF_MISO_0] >= 0 &&
-> +		    mtkaif_chosen_phase[MT8195_MTKAIF_MISO_1] >= 0 &&
-> +		    mtkaif_chosen_phase[MT8195_MTKAIF_MISO_2] >= 0)
-> +			break;
-> +	}
-> +
-> +	if (mtkaif_chosen_phase[MT8195_MTKAIF_MISO_0] < 0) {
-> +		mtkaif_calibration_ok = false;
-> +		chosen_phase_1 = 0;
-> +	} else {
-> +		chosen_phase_1 = mtkaif_chosen_phase[MT8195_MTKAIF_MISO_0];
-> +	}
-> +
-> +	if (mtkaif_chosen_phase[MT8195_MTKAIF_MISO_1] < 0) {
-> +		mtkaif_calibration_ok = false;
-> +		chosen_phase_2 = 0;
-> +	} else {
-> +		chosen_phase_2 = mtkaif_chosen_phase[MT8195_MTKAIF_MISO_1];
-> +	}
-> +
-> +	if (mtkaif_chosen_phase[MT8195_MTKAIF_MISO_2] < 0) {
-> +		mtkaif_calibration_ok = false;
-> +		chosen_phase_3 = 0;
-> +	} else {
-> +		chosen_phase_3 = mtkaif_chosen_phase[MT8195_MTKAIF_MISO_2];
-> +	}
-> +
-> +	mt6359_set_mtkaif_calibration_phase(cmpnt_codec,
-> +					    chosen_phase_1,
-> +					    chosen_phase_2,
-> +					    chosen_phase_3);
-> +
-> +	mt6359_mtkaif_calibration_disable(cmpnt_codec);
-> +	pm_runtime_put(afe->dev);
-> +
-> +	param->mtkaif_calibration_ok = mtkaif_calibration_ok;
-> +	param->mtkaif_chosen_phase[MT8195_MTKAIF_MISO_0] = chosen_phase_1;
-> +	param->mtkaif_chosen_phase[MT8195_MTKAIF_MISO_1] = chosen_phase_2;
-> +	param->mtkaif_chosen_phase[MT8195_MTKAIF_MISO_2] = chosen_phase_3;
-> +	for (i = 0; i < MT8195_MTKAIF_MISO_NUM; i++)
-> +		param->mtkaif_phase_cycle[i] = mtkaif_phase_cycle[i];
-> +
-> +	dev_info(afe->dev, "%s(), end, calibration ok %d\n",
-> +		 __func__, param->mtkaif_calibration_ok);
-
-dev_dbg?
-
-> +
-> +	return 0;
-> +}
-> +
-
-> +static int mt8195_hdmitx_dptx_startup(struct snd_pcm_substream *substream)
-> +{
-> +	static const unsigned int rates[] = {
-> +		48000
-> +	};
-> +	static const unsigned int channels[] = {
-> +		2, 4, 6, 8
-> +	};
-> +	static const struct snd_pcm_hw_constraint_list constraints_rates = {
-> +		.count = ARRAY_SIZE(rates),
-> +		.list  = rates,
-> +		.mask = 0,
-> +	};
-> +	static const struct snd_pcm_hw_constraint_list constraints_channels = {
-> +		.count = ARRAY_SIZE(channels),
-> +		.list  = channels,
-> +		.mask = 0,
-> +	};
-
-you use the same const tables several times, move to a higher scope and
-reuse?
-
-> +	struct snd_soc_pcm_runtime *rtd = asoc_substream_to_rtd(substream);
-> +	struct snd_pcm_runtime *runtime = substream->runtime;
-> +	int ret;
-> +
-> +	ret = snd_pcm_hw_constraint_list(runtime, 0,
-> +					 SNDRV_PCM_HW_PARAM_RATE,
-> +					 &constraints_rates);
-> +	if (ret < 0) {
-> +		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = snd_pcm_hw_constraint_list(runtime, 0,
-> +					 SNDRV_PCM_HW_PARAM_CHANNELS,
-> +					 &constraints_channels);
-> +	if (ret < 0) {
-> +		dev_err(rtd->dev, "hw_constraint_list channel failed\n");
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct snd_soc_ops mt8195_hdmitx_dptx_playback_ops = {
-> +	.startup = mt8195_hdmitx_dptx_startup,
-> +};
-> +
-> +static int mt8195_dptx_hw_params(struct snd_pcm_substream *substream,
-> +				 struct snd_pcm_hw_params *params)
-> +{
-> +	struct snd_soc_pcm_runtime *rtd = substream->private_data;
-> +	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
-> +	unsigned int rate = params_rate(params);
-> +	unsigned int mclk_fs_ratio = 256;
-> +	unsigned int mclk_fs = rate * mclk_fs_ratio;
-> +
-> +	return snd_soc_dai_set_sysclk(cpu_dai, 0, mclk_fs,
-> +				      SND_SOC_CLOCK_OUT);
-
-return snd_soc_dai_set_sysclk(cpu_dai, 0, params_rate(params) * 256,
-SND_SOC_CLOCK_OUT);
-?
-
-
-> +static int mt8195_dptx_codec_init(struct snd_soc_pcm_runtime *rtd)
-> +{
-> +	struct mt8195_mt6359_rt1011_rt5682_priv *priv =
-> +		snd_soc_card_get_drvdata(rtd->card);
-> +	struct snd_soc_component *cmpnt_codec =
-> +		asoc_rtd_to_codec(rtd, 0)->component;
-> +	int ret = 0;
-
-unnecessary init
-
-> +	ret = snd_soc_card_jack_new(rtd->card, "DP Jack", SND_JACK_LINEOUT,
-> +				    &priv->dp_jack, NULL, 0);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return snd_soc_component_set_jack(cmpnt_codec, &priv->dp_jack, NULL);
-> +}
-> +
-> +static int mt8195_hdmi_codec_init(struct snd_soc_pcm_runtime *rtd)
-> +{
-> +	struct mt8195_mt6359_rt1011_rt5682_priv *priv =
-> +		snd_soc_card_get_drvdata(rtd->card);
-> +	struct snd_soc_component *cmpnt_codec =
-> +		asoc_rtd_to_codec(rtd, 0)->component;
-> +	int ret = 0;
-
-unnecessary init
-
-> +	ret = snd_soc_card_jack_new(rtd->card, "HDMI Jack", SND_JACK_LINEOUT,
-> +				    &priv->hdmi_jack, NULL, 0);
-> +	if (ret)
-> +		return ret;
-> +
-> +	return snd_soc_component_set_jack(cmpnt_codec, &priv->hdmi_jack, NULL);
-> +}
-> +
-> +static int mt8195_hdmitx_dptx_hw_params_fixup(struct snd_soc_pcm_runtime *rtd,
-> +					      struct snd_pcm_hw_params *params)
-> +
-
-spurious line?
-
-> +{
-> +	/* fix BE i2s format to 32bit, clean param mask first */
-> +	snd_mask_reset_range(hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT),
-> +			     0, (__force unsigned int)SNDRV_PCM_FORMAT_LAST);
-> +
-> +	params_set_format(params, SNDRV_PCM_FORMAT_S24_LE);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt8195_playback_startup(struct snd_pcm_substream *substream)
-> +{
-> +	static const unsigned int rates[] = {
-> +		48000
-> +	};
-> +	static const unsigned int channels[] = {
-> +		2
-> +	};
-> +	static const struct snd_pcm_hw_constraint_list constraints_rates = {
-> +		.count = ARRAY_SIZE(rates),
-> +		.list  = rates,
-> +		.mask = 0,
-> +	};
-> +	static const struct snd_pcm_hw_constraint_list constraints_channels = {
-> +		.count = ARRAY_SIZE(channels),
-> +		.list  = channels,
-> +		.mask = 0,
-> +	};
-
-actually now I realize it's only the number of channels that differs...
-
-> +
-> +	struct snd_soc_pcm_runtime *rtd = asoc_substream_to_rtd(substream);
-> +	struct snd_pcm_runtime *runtime = substream->runtime;
-> +	int ret;
-> +
-> +	ret = snd_pcm_hw_constraint_list(runtime, 0,
-> +					 SNDRV_PCM_HW_PARAM_RATE,
-> +					 &constraints_rates);
-> +	if (ret < 0) {
-> +		dev_err(rtd->dev, "hw_constraint_list rate failed\n");
-> +		return ret;
-> +	}
-> +
-> +	ret = snd_pcm_hw_constraint_list(runtime, 0,
-> +					 SNDRV_PCM_HW_PARAM_CHANNELS,
-> +					 &constraints_channels);
-> +	if (ret < 0) {
-> +		dev_err(rtd->dev, "hw_constraint_list channel failed\n");
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-
-> +static struct snd_soc_dai_link mt8195_mt6359_rt1011_rt5682_dai_links[] = {
-> +	/* FE */
-> +	[DAI_LINK_DL2_FE] = {
-> +		.name = "DL2_FE",
-> +		.stream_name = "DL2 Playback",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.ops = &mt8195_playback_ops,
-> +		SND_SOC_DAILINK_REG(DL2_FE),
-> +	},
-> +	[DAI_LINK_DL3_FE] = {
-> +		.name = "DL3_FE",
-> +		.stream_name = "DL3 Playback",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.ops = &mt8195_playback_ops,
-> +		SND_SOC_DAILINK_REG(DL3_FE),
-> +	},
-> +	[DAI_LINK_DL6_FE] = {
-> +		.name = "DL6_FE",
-> +		.stream_name = "DL6 Playback",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.ops = &mt8195_playback_ops,
-> +		SND_SOC_DAILINK_REG(DL6_FE),
-> +	},
-> +	[DAI_LINK_DL7_FE] = {
-> +		.name = "DL7_FE",
-> +		.stream_name = "DL7 Playback",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_PRE,
-> +			SND_SOC_DPCM_TRIGGER_PRE,
-> +		},
-
-this is interesting, is it intentional that the trigger order is
-different from all FEs?
-
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-
-also no .ops?
-
-> +		SND_SOC_DAILINK_REG(DL7_FE),
-> +	},
-> +	[DAI_LINK_DL8_FE] = {
-> +		.name = "DL8_FE",
-> +		.stream_name = "DL8 Playback",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.ops = &mt8195_playback_ops,
-> +		SND_SOC_DAILINK_REG(DL8_FE),
-> +	},
-> +	[DAI_LINK_DL10_FE] = {
-> +		.name = "DL10_FE",
-> +		.stream_name = "DL10 Playback",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.ops = &mt8195_hdmitx_dptx_playback_ops,
-> +		SND_SOC_DAILINK_REG(DL10_FE),
-> +	},
-> +	[DAI_LINK_DL11_FE] = {
-> +		.name = "DL11_FE",
-> +		.stream_name = "DL11 Playback",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +			SND_SOC_DPCM_TRIGGER_POST,
-> +		},
-> +		.dynamic = 1,
-> +		.dpcm_playback = 1,
-> +		.ops = &mt8195_playback_ops,
-> +		SND_SOC_DAILINK_REG(DL11_FE),
-> +	},
-> +	[DAI_LINK_UL1_FE] = {
-> +		.name = "UL1_FE",
-> +		.stream_name = "UL1 Capture",
-> +		.trigger = {
-> +			SND_SOC_DPCM_TRIGGER_PRE,
-> +			SND_SOC_DPCM_TRIGGER_PRE,
-
-and again here, why PRE and no ops?
-
-> +static int mt8195_mt6359_rt1011_rt5682_dev_probe(struct platform_device *pdev)
-> +{
-> +	struct snd_soc_card *card = &mt8195_mt6359_rt1011_rt5682_soc_card;
-> +	struct device_node *platform_node;
-> +	struct snd_soc_dai_link *dai_link;
-> +	struct mt8195_mt6359_rt1011_rt5682_priv *priv = NULL;
-
-initialization is not necessary
-
-> +	int ret, i;
-> +
-> +	card->dev = &pdev->dev;
-> +
-> +	platform_node = of_parse_phandle(pdev->dev.of_node,
-> +					 "mediatek,platform", 0);
-> +	if (!platform_node) {
-> +		dev_dbg(&pdev->dev, "Property 'platform' missing or invalid\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	for_each_card_prelinks(card, i, dai_link) {
-> +		if (!dai_link->platforms->name)
-> +			dai_link->platforms->of_node = platform_node;
-> +
-> +		if (strcmp(dai_link->name, "DPTX_BE") == 0) {
-> +			dai_link->codecs->of_node =
-> +				of_parse_phandle(pdev->dev.of_node,
-> +						 "mediatek,dptx-codec", 0);
-> +			if (!dai_link->codecs->of_node) {
-> +				dev_dbg(&pdev->dev, "No property 'dptx-codec'\n");
-> +			} else {
-> +				dai_link->codecs->name = NULL;
-> +				dai_link->codecs->dai_name = "i2s-hifi";
-> +				dai_link->init = mt8195_dptx_codec_init;
-> +			}
-> +		}
-> +
-> +		if (strcmp(dai_link->name, "ETDM3_OUT_BE") == 0) {
-> +			dai_link->codecs->of_node =
-> +				of_parse_phandle(pdev->dev.of_node,
-> +						 "mediatek,hdmi-codec", 0);
-> +			if (!dai_link->codecs->of_node) {
-> +				dev_dbg(&pdev->dev, "No property 'hdmi-codec'\n");
-> +			} else {
-> +				dai_link->codecs->name = NULL;
-> +				dai_link->codecs->dai_name = "i2s-hifi";
-> +				dai_link->init = mt8195_hdmi_codec_init;
-> +			}
-> +		}
-> +	}
-> +
-> +	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
-> +	if (!priv)
-> +		return -ENOMEM;
-> +
-> +	snd_soc_card_set_drvdata(card, priv);
-> +
-> +	ret = devm_snd_soc_register_card(&pdev->dev, card);
-> +	if (ret)
-> +		dev_err(&pdev->dev, "%s snd_soc_register_card fail %d\n",
-> +			__func__, ret);
-> +	return ret;
-> +}
-> +
-> +#ifdef CONFIG_OF
-> +static const struct of_device_id mt8195_mt6359_rt1011_rt5682_dt_match[] = {
-> +	{.compatible = "mediatek,mt8195_mt6359_rt1011_rt5682",},
-> +	{}
-> +};
-> +#endif
-> +
-> +static const struct dev_pm_ops mt8195_mt6359_rt1011_rt5682_pm_ops = {
-> +	.poweroff = snd_soc_poweroff,
-> +	.restore = snd_soc_resume,
-> +};
-> +
-> +static struct platform_driver mt8195_mt6359_rt1011_rt5682_driver = {
-> +	.driver = {
-> +		.name = "mt8195_mt6359_rt1011_rt5682",
-> +#ifdef CONFIG_OF
-> +		.of_match_table = mt8195_mt6359_rt1011_rt5682_dt_match,
-> +#endif
-> +		.pm = &mt8195_mt6359_rt1011_rt5682_pm_ops,
-> +	},
-> +	.probe = mt8195_mt6359_rt1011_rt5682_dev_probe,
-> +};
-> +
-> +module_platform_driver(mt8195_mt6359_rt1011_rt5682_driver);
-> +
-> +/* Module information */
-> +MODULE_DESCRIPTION("MT8195-MT6359-RT1011-RT5682 ALSA SoC machine driver");
-> +MODULE_AUTHOR("Trevor Wu <trevor.wu@mediatek.com>");
-> +MODULE_LICENSE("GPL v2");
-
-"GPL" is enough
-
-> +MODULE_ALIAS("mt8195_mt6359_rt1011_rt5682 soc card");
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
