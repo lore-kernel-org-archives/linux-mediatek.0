@@ -2,96 +2,106 @@ Return-Path: <SRS0=wX2S=OC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=0.8 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
-	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
-	FROM_LOCAL_NOVOWEL,HEADER_FROM_DIFFERENT_DOMAINS,HK_RANDOM_FROM,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77FD4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 15:48:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 18FF3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 16:14:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 20D4461050
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 15:48:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 20D4461050
+	by mail.kernel.org (Postfix) with ESMTPS id A3A78610CE
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 16:14:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A3A78610CE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=42yiuHSHPqPxFw3JrcPL8jG9vKtJPAsXFhLWIgsZFAQ=; b=Gcvxe1j50eCI6f
-	gz0bjCgJ3+klHyL3+Op2Dkb1FO52PRUGwnpwrlPRigh/NtlcCd477Ox9HyaLFxio/EDaXiVdfMgQT
-	5ccqSTWNkLR6LPmqfTCMMTGu0Fe3/DhDfmAGiTJgI+iQ+mw26VjwYGNTiEUAWJd8NUeD4efBGX5Pi
-	YEAtMqG2qlWlry3YFxNoVgKsd3l3MOIH3GvRqY/iW8ixLJupcQEhPZbpBrGHunsWbdqQLAhz/fEdu
-	5riRtUsWyD4tKPWmo9T+1/STPGbU9TEkefs8vmcBkYE02Ms4X+w0wGJ75zx5ur35wDexfmef/Z9L8
-	WPZ6Yz+Y7scaDB6q1Yfg==;
+	List-Owner; bh=9ltw6st3GmmM8OC8UNNBmTpP7s0WUQPa5kOTwx4hoqE=; b=TAAW0k4ejjStPU
+	z8xjTmlWceRAv5Vrui3LKHOvmIl3SDT7TGIimD4fN5N6lVc0KSaA2oiY4enRWBECvSWUN+IH7KTmx
+	Ms44otOa9ruYPEYT4gBOrI/aUxE5t8pjuws7RD+r/OfvlDjFD9l+Zo98dTVyJI32P72SKe14f4cWd
+	HNlznCvGxCCHqmgnMSuAnmFdxkZwr+nf0enDAxlqp6QMTMI/QagghkL4OHFY71BV300f8rEWkZl0t
+	LQuYH7hhRuitc43MqL8Lxb4/yOhrZ8T3RQrf7OBVImcfSJl7jLfOftNf2m5lvfk3pkXhQwXEOQbo/
+	76zxc0xBhbm/qxuWI/qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mPRiH-00Ge66-Oa; Sun, 12 Sep 2021 15:48:13 +0000
-Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
+	id 1mPS7m-00GgW3-KJ; Sun, 12 Sep 2021 16:14:34 +0000
+Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mPRi3-00Ge55-TM; Sun, 12 Sep 2021 15:48:01 +0000
-Received: by mail-il1-x12d.google.com with SMTP id q14so7481985ils.5;
- Sun, 12 Sep 2021 08:47:57 -0700 (PDT)
+ id 1mPS7Z-00GgU4-0A; Sun, 12 Sep 2021 16:14:22 +0000
+Received: by mail-qk1-x735.google.com with SMTP id p4so7912533qki.3;
+ Sun, 12 Sep 2021 09:14:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=8cPkzcfwNwxgJOxDHusgDua/GLlzUyV1sT7cRLrqVIY=;
- b=T0B9UeEXX6XuXChfxeEaa1HyFgsxyOEs0AvFV5fmc6Yl5dxyuQ8npoilTObmTPf07C
- Vz6dqthacOzTAI3kJR9r3U39J9lkkvCr3LGRiiql4QWpOMyC97HMjcxvQQ6LlJA59til
- s1AZetRTeTTNQlfOdM+cNjV/pxj9E4y3W8sZDBqOiLA5U63Fx0z8EfYP/01Oip61qXIP
- tGnsspjmBXHCYlkQksBbzusXi+hT5i/PtBnKS4Quug1OW4Gk9TUwnvvRR1HpTvl1mluS
- D8rJOPJzq5tMd/zONY/asv1nhUnXo3OEQfZ4XdGHdPhGBmtKcCms3Uq31lqe8/vbCZxJ
- 2krQ==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=P60SQ/CsW1eZndcpQR8AR/xrEVIdL+Rao4L2rbgdhaA=;
+ b=HUwk6qnr0kgyqmTOdj14K7PvRl+vIgLwhfa/Soxserjlx37Q0bl82oHT4huLR3WgeI
+ ulPWtV72/igDuyPZofm4nb4dckNhxmprUg38UWVo82a3Ykx8O2lBRxLO3iNi63n2Tu4f
+ HOf9CaMXpjic2WE20hT1aDR7vdocgvMZDfCkWbq6EmVifM3Z54ZbqLU9GGkNE+Bv41S5
+ jHaTArKj1jA2hXTnoF+JnyIZOpCvlyn+m9mau3lq0PprQygy/o20YjltGrBjt31GQEJ+
+ EE7gWGuBUAOOfH/adHuIEKG0qB2zLImFBPmodyG7nJdrHzzSsd3OTUomkJBeeKHlIdR/
+ 9Q1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=8cPkzcfwNwxgJOxDHusgDua/GLlzUyV1sT7cRLrqVIY=;
- b=DQeaad6ZRxiQ46rd7c61cYK/gFFtW6e3L24TqUbrBkdV6TEfbwwQ1eKev+5TCDeh3Z
- YjHO0D/GlLXbQweFKeYMCSFDkX/crI04799CJuPsrIBcfcLX/bW+a2CpmZ1u7qnZaLx6
- X6DJ6F9Q3gJdN/ifa/Pd9Lq+CJtWiZ9fI0MonDzmV4uC7p8hx7Rt2hjH1sARnxtVflVB
- Aw/UWZVDT/Wv/nf2JOYaIsFzcKIBHEI9HK3dkUB+tYNBzzVXSteCvIcNAjNxzCRydAqb
- RANh+30IBwRQwqm+jSxEaNOPzAD7p+JRukAJxYzFIofMYDPSMpek4/eu20VwXt11HHqx
- Jy2Q==
-X-Gm-Message-State: AOAM531vw2Fet8hYEnu+6lIiMtmR0J6BokHU+nx7EyaKM3BvWeCSlACr
- R+Tz0aPJBlx9J+hx3hXDXDxVcJ6++IIEnAC24Cg=
-X-Google-Smtp-Source: ABdhPJx2+2K2twbtnoUH0gCCdBnbXVeSkbhjZE7YqcnTanAlNqyA0bYVUpRhFw4wE40mQOuL1FawwN02PbEtoEqVpU4=
-X-Received: by 2002:a05:6e02:48d:: with SMTP id
- b13mr603680ils.171.1631461676527; 
- Sun, 12 Sep 2021 08:47:56 -0700 (PDT)
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=P60SQ/CsW1eZndcpQR8AR/xrEVIdL+Rao4L2rbgdhaA=;
+ b=wzvPd65Z4lr1P8SFL7cjC6YCmzQbwq/hOjLswvbsHguKParAiGtb88Y8U7I0IDQFXc
+ +DLgf4pj819j0ubZNflel26YJdjNTbCjsmmQRRgP7RIPaOXyO9G9fiR722Rj6xY3oMP8
+ doGDg1YiQK5vPqL4TXSUnPS+dLU4sdqMxIiikPJkKPsf/4t6vqvv22ian+5R/fJgVuHB
+ AWJksWqFxD/aVQi85MAEnkSctvEgD64PYp1FVb3yEaGrSqJ64GwWYR5I/eL7u1VQrpCc
+ h0z1NlfgqshDf0Ud6OPDinAxsJq7YKEr/nVz1CatFwACholnV81d0tsB4kcVaYrY8LhI
+ Xp2Q==
+X-Gm-Message-State: AOAM531J2064ykBuYAoZUMuMWdZMAcRIsoZpUhFA2kPp0BKjjuuNVbgA
+ 4BY1BF4Zo+ipfHj44qnorrk=
+X-Google-Smtp-Source: ABdhPJwCHzJ7tC9DgCi07ahFY8D4qJ10evt3UqKBcCnZz212piHDTdmcK+JNd5y6GzOPE3C02xNDQw==
+X-Received: by 2002:ae9:f40b:: with SMTP id y11mr6289972qkl.107.1631463259134; 
+ Sun, 12 Sep 2021 09:14:19 -0700 (PDT)
+Received: from ?IPV6:2600:1700:dfe0:49f0:b198:60c0:9fe:66c9?
+ ([2600:1700:dfe0:49f0:b198:60c0:9fe:66c9])
+ by smtp.gmail.com with ESMTPSA id y12sm2693999qtj.3.2021.09.12.09.14.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 12 Sep 2021 09:14:18 -0700 (PDT)
+Message-ID: <c745be4c-2b7f-3f36-36ce-75ae8601a697@gmail.com>
+Date: Sun, 12 Sep 2021 09:14:14 -0700
 MIME-Version: 1.0
-References: <46a9dbf2-9748-330a-963e-57e615a15440@gmail.com>
- <20210701085117.19018-1-rocco.yue@mediatek.com>
- <62c9f5b7-84bd-d809-4e33-39fed7a9d780@gmail.com>
- <CAKD1Yr2aijPe_aq+SRm-xv0ZPoz_gKjYrEX97R1NJyYpSnv4zg@mail.gmail.com>
- <6a8f0e91-225a-e2a8-3745-12ff1710a8df@gmail.com>
-In-Reply-To: <6a8f0e91-225a-e2a8-3745-12ff1710a8df@gmail.com>
-From: Mark Smith <markzzzsmith@gmail.com>
-Date: Mon, 13 Sep 2021 01:47:30 +1000
-Message-ID: <CAO42Z2w-N6A4DmubhQsg6WbaApG+7sy2SVRRxMXtaLrTKYyieQ@mail.gmail.com>
-Subject: Re: [PATCH] net: ipv6: don't generate link-local address in any
- addr_gen_mode
-To: David Ahern <dsahern@gmail.com>
-Cc: Lorenzo Colitti <lorenzo@google.com>, Rocco Yue <rocco.yue@mediatek.com>, 
- "David S . Miller" <davem@davemloft.net>,
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, 
- David Ahern <dsahern@kernel.org>, Jakub Kicinski <kuba@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux NetDev <netdev@vger.kernel.org>, 
- lkml <linux-kernel@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com, 
- rocco.yue@gmail.com, chao.song@mediatek.com, 
- =?UTF-8?B?S3VvaG9uZyBXYW5nICjnjovlnIvptLsp?= <kuohong.wang@mediatek.com>, 
- =?UTF-8?B?Wmh1b2xpYW5nIFpoYW5nICjlvKDljZPkuq4p?=
- <zhuoliang.zhang@mediatek.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.0
+Subject: Re: [RFC PATCH net 1/5] net: mdio: introduce a shutdown method to
+ mdio device drivers
+Content-Language: en-US
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, netdev@vger.kernel.org
+Cc: Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
+ Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
+ Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ DENG Qingfang <dqfext@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ George McCollister <george.mccollister@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Oleksij Rempel <linux@rempel-privat.de>,
+ Michael Grzeschik <m.grzeschik@pengutronix.de>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Lino Sanfilippo <LinoSanfilippo@gmx.de>
+References: <20210912120932.993440-1-vladimir.oltean@nxp.com>
+ <20210912120932.993440-2-vladimir.oltean@nxp.com>
+From: Florian Fainelli <f.fainelli@gmail.com>
+In-Reply-To: <20210912120932.993440-2-vladimir.oltean@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210912_084800_013144_495A1608 
-X-CRM114-Status: GOOD (  30.87  )
+X-CRM114-CacheID: sfid-20210912_091421_100209_A549C74F 
+X-CRM114-Status: GOOD (  12.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,74 +113,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is all going in the wrong direction. Link-local addresses are not
-optional on an interface, all IPv6 enabled interfaces are required to
-have one:
-
-RFC4291, "IP Version 6 Addressing Architecture"
-
-"2.1.  Addressing Model
-
-All interfaces are required to have at least one Link-Local unicast
-   address (see Section 2.8 for additional required addresses)."
-
-Regards,
-Mark.
 
 
+On 9/12/2021 5:09 AM, Vladimir Oltean wrote:
+> MDIO-attached devices might have interrupts and other things that might
+> need quiesced when we kexec into a new kernel. Things are even more
+> creepy when those interrupt lines are shared, and in that case it is
+> absolutely mandatory to disable all interrupt sources.
+> 
+> Moreover, MDIO devices might be DSA switches, and DSA needs its own
+> shutdown method to unlink from the DSA master, which is a new
+> requirement that appeared after commit 2f1e8ea726e9 ("net: dsa: link
+> interfaces with the DSA master to get rid of lockdep warnings").
+> 
+> So introduce a ->shutdown method in the MDIO device driver structure.
+> 
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 
-On Fri, 10 Sept 2021 at 05:13, David Ahern <dsahern@gmail.com> wrote:
->
-> On 9/9/21 12:20 AM, Lorenzo Colitti wrote:
-> >> I think another addr_gen_mode is better than a separate sysctl. It looks
-> >> like IN6_ADDR_GEN_MODE_STABLE_PRIVACY and IN6_ADDR_GEN_MODE_RANDOM are
-> >> the ones used for RAs, so add something like:
-> >>
-> >> IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
-> >> IN6_ADDR_GEN_MODE_RANDOM_NO_LLA,
-> >
-> > I think the real requirement here (which wasn't clear in this thread)
-> > is that the network needs to control the interface ID (i.e., the
-> > bottom 64 bits) of the link-local address, but the device is free to
-> > use whatever interface IDs to form global addresses. See:
-> > https://www.etsi.org/deliver/etsi_ts/129000_129099/129061/15.03.00_60/ts_129061v150300p.pdf
-> >
-> > How do you think that would best be implemented?
->
-> There is an established paradigm for configuring how an IPv6 address is
-> created or whether it is created at all - the IFLA_INET6_ADDR_GEN_MODE
-> attribute.
->
-> >
-> > 1. The actual interface ID could be passed in using IFLA_INET6_TOKEN,
-> > but there is only one token, so that would cause all future addresses
-> > to use the token, disabling things like privacy addresses (bad).
-> > 2. We could add new IN6_ADDR_GEN_MODE_STABLE_PRIVACY_LL_TOKEN,
-> > IN6_ADDR_GEN_MODE_RANDOM_LL_TOKEN, etc., but we'd need to add one such
-> > mode for every new mode we add.
-> > 3. We could add a separate sysctl for the link-local address, but you
-> > said that per-device sysctls aren't free.
->
-> per-device sysctl's are one of primary causes of per netdev memory usage.
->
-> Besides that there is no reason to add complexity by having a link
-> attribute and a sysctl for this feature.
->
-> > 4. We could change the behaviour so that if the user configures a
-> > token and then sets IN6_ADDR_GEN_MODE_*, then we use the token only
-> > for the link-local address. But that would impact backwards
-> > compatibility.
-> >
-> > Thoughts?
->
-> We can have up to 255 ADDR_GEN_MODEs (GEN_MODE is a u8). There is
-> established code for handling the attribute and changes to it. Let's
-> reuse it.
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+-- 
+Florian
 
 _______________________________________________
 Linux-mediatek mailing list
