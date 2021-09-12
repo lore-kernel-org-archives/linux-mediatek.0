@@ -2,75 +2,82 @@ Return-Path: <SRS0=wX2S=OC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MSGID_FROM_MTA_HEADER,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-5.7 required=3.0 tests=BAYES_00,DKIM_ADSP_CUSTOM_MED,
+	DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 463BBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 12:13:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 794CAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 13:19:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D3AC610A3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 12:13:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0D3AC610A3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
+	by mail.kernel.org (Postfix) with ESMTPS id 35B0C61211
+	for <linux-mediatek@archiver.kernel.org>; Sun, 12 Sep 2021 13:19:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 35B0C61211
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=btwl52Yrpawk7ThwlGWpq4OsAjqu5R2dYyHHzstQBoI=; b=ZRaulSIc0FXYMY
-	fsZFTpdq/fMSV4LY86xWqg8wMYcT5OwB1d3a6iwtOHILOpL44bgh96HWVdz8uSRzbNCWPK4f56QoY
-	A03vdV66VrEwrY5NlJ1Z5p0IxkXqZMzctmabqT11wHQ10eULhiA/nQdaqMer0Y9xaQcKNa8aJylZJ
-	D53pBmnLfiy5uTySBxEmxlUQtc7qyAbbu/WsYEZykGl4K7JBRaPksE4WfnGwunovwL2S2QLUxvzfv
-	ZFRam7aHeXb1l0yuVr2610gd8XxmxoBboG0HJffwh7vKK1f6GUY8AQCFfuXDq2j+C/2yA/J6L1KaE
-	/qF8nET97vW46b1nfIgg==;
+	List-Owner; bh=XvkohhS13FlIbsea8Q8UO+FSRE2IuxxUKL7LmPT6OHg=; b=YQyeRsVVwpZ5IY
+	rRQPpXdU3yz52gUxXGjD3Lkzb/R6q22m/PayJrDNeVVxu6ndIyGFRhvrzn8Fpr0ogViRkVv0QAB1W
+	Z5wTF3g02x9tSMZDNsG/0iHmx4KLlE3lBcEyI6NPxAP+qgkawyAeLN5fjZZTI17ckOKGpjJ+01nI5
+	RCfGVK4W3cnCKccqJHziic0HffoweniB+OtT9jVis2KYWIEZwsnH9m6/GzpCzMz/H8rklacSNPtkI
+	gg/ylkx4IdZCm4N5A2ggRYrHr+SCmoxRymvOIXqv1PdIFA65636Jg+WjvZBfcoevy3bk+WtXSGDFW
+	yspkgpReaftRAjPcN7OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mPOLy-00GMMs-4v; Sun, 12 Sep 2021 12:12:58 +0000
-Received: from mail-eopbgr40057.outbound.protection.outlook.com ([40.107.4.57]
- helo=EUR03-DB5-obe.outbound.protection.outlook.com)
+	id 1mPPO6-00GSOA-MU; Sun, 12 Sep 2021 13:19:14 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mPOJ9-00GL8k-9f; Sun, 12 Sep 2021 12:10:04 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=BK6gC/+D4KSnhO7Vs9JVDQoclYaAGo25f6NUe7QbtWRXGrTKW/BWfqXWFgUHFiGD8ngGTNbQ9i32ULdioRRzkpAKXBoc2gsMNx4jJf6LLpB0RYmx6A9pJr++oH9p1cKZBDFTUuExXQL25agT4lnkmtGk2Lk+gJDOC76V8UZnFoDLf7xFUA7ga9FzGat5aRsu1+RE/1P1aHGiRmknxpBt9h4n+f7D/Dxa5bWOR8MyiNUI+47PRQ7KAe814Q06iDgdBEa8k/9rS/rxKSgbgYzyZ339BchIVJiozejrnHelF4BNv2JrySqr+5Rj9MeaAgrcGw6x1i9MhXIYavYzpZBAYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=P9pZMiXGVwO5diOksH6Sir5aScxYFqE8gQAMhW0kJwg=;
- b=nOo6BIF+CGyk1bQgt6vK7NFh6uumWb4K72PUz5X1+3vIMmwZlHnMzwZ83t3OgpcEtUv2aBvi/jd+FdP9Yfarad0x9weHQqxbE+8GxQBzr6xe4rGWnP8cjTVepmG394M8efhWR5DJFCqWp0O+h53gtjJJ8yAQ0Q6XXYVy/9ovCrWpxgkgbU5AoOuEKC04tWh0pTR9pJ5HHLccLx/KM8UVEIMKVzb7zAxnadAIllu6VaxpkfPc5JlXh+RSK4NdAaMoKCOKegmWb7dHGTh1nvb6W39ThSSSxwbnM8ZlzTe1SHnr0lYhiaTGQBs3dphahwKAldUvLXuXdyWwHp4y8KeftA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P9pZMiXGVwO5diOksH6Sir5aScxYFqE8gQAMhW0kJwg=;
- b=HU2MX75Y/m2SipnF5InYeAamO8wfhbRi6oe/ItvIX/moBGFDlEECZ0YQPe4pjPUn8ANdYihToEyQjUhmJ1uZlKMBxzvfjdxclp0VjNnimuao5Xl2/Ts+P0bGaBpgnEHc4sxgy6pQ/V0Et/GCsEr87qCsvW+ntVYT9b5pnWWg/FQ=
-Authentication-Results: vger.kernel.org; dkim=none (message not signed)
- header.d=none;vger.kernel.org; dmarc=none action=none header.from=nxp.com;
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com (2603:10a6:803:55::19)
- by VI1PR04MB5854.eurprd04.prod.outlook.com (2603:10a6:803:e2::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4478.19; Sun, 12 Sep
- 2021 12:09:52 +0000
-Received: from VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::109:1995:3e6b:5bd0]) by VI1PR04MB5136.eurprd04.prod.outlook.com
- ([fe80::109:1995:3e6b:5bd0%2]) with mapi id 15.20.4500.018; Sun, 12 Sep 2021
- 12:09:52 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: netdev@vger.kernel.org
-Cc: Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>,
+ id 1mPPNZ-00GSJB-RH; Sun, 12 Sep 2021 13:18:43 +0000
+Received: by mail-ed1-x532.google.com with SMTP id q3so9976886edt.5;
+ Sun, 12 Sep 2021 06:18:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=JjkuUFG8aC+b+dNRAS0GS2+3+6SH7OL6eP6H9dMuzpg=;
+ b=BiD1DLf1/KO0J+5uDPTUYwSBh2enT2UXVgZYGoTFKRywIyeDX5XQIpvnhvAgZHP5st
+ qhz3Wekn2YD6xs+28AmtEaUDMkeK7Jqy9QMk85cd0xF+bNoXh4djm644eAiIK/pNSxRi
+ 0MwT4zb/xuN4r4tF4zLuYDWeYjWUDxDfjdCEGHJaGu7z+pf/Go7zRQRBkebGaxq8BjTl
+ po/wkDpWa07/rXmNVd72uodQMzucaseosATGHRjFK5XzVJ2ixVeNQM7xqjq6vrlH93Ma
+ NYzVzggZ7Px7QBiqd2RGRrVxediX6V3kqAwUOPQpW5JTV+K+E1bSYZy6nxEXEo3kZeGY
+ oh3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=JjkuUFG8aC+b+dNRAS0GS2+3+6SH7OL6eP6H9dMuzpg=;
+ b=0vHRutXO3vGwdu3Xb2JaZL9dwo+gROFP3CUso5HzJurYRZnYSY6MAKwqzkE7zLf9P5
+ bHRifHjIcJzKD/HBz61WNwvWVNXu8oKWlOo43PtIswvmnwvH6W5j/6ORw5tAwTa1lZuq
+ gNJdT9tBk39oB4VKBL/Fu/+LNf6hUOWriap0OEZsl5pb4rncv9SjMcAc0RSnqOG4rBu9
+ +jNYaEbr94EDHkPr0gq0VT4drV4hrSTc01OGh9WqLJBgi9g5agweASi+ZUymqFzTqVps
+ yz9F3VyQtIyC5bdy0BftCrUsFGmAj6M2AgoXzvUnSideB3PKylEsWsopVMMgdUMerC+Z
+ O3cg==
+X-Gm-Message-State: AOAM532QUoSF/vUypPpeeRbOzdEMFYhBhbt1tFNgMq5UbU/P2ZNITMqm
+ Jgum2U/4wEiMnjtVPxu6Xo8=
+X-Google-Smtp-Source: ABdhPJwU34hiWxo3W+6lr2nqbitJVT+uVLKsSOEIKBVD1dGl3QZsS9x7NyNMcwCYUhOZSyIM+lZHtw==
+X-Received: by 2002:a05:6402:5c2:: with SMTP id
+ n2mr8010126edx.239.1631452719669; 
+ Sun, 12 Sep 2021 06:18:39 -0700 (PDT)
+Received: from skbuf ([82.78.148.104])
+ by smtp.gmail.com with ESMTPSA id a15sm2425158edr.2.2021.09.12.06.18.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 12 Sep 2021 06:18:39 -0700 (PDT)
+Date: Sun, 12 Sep 2021 16:18:37 +0300
+From: Vladimir Oltean <olteanv@gmail.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: netdev@vger.kernel.org, Florian Fainelli <f.fainelli@gmail.com>,
+ Andrew Lunn <andrew@lunn.ch>, Vivien Didelot <vivien.didelot@gmail.com>,
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
  Kurt Kanzenbach <kurt@linutronix.de>, Hauke Mehrtens <hauke@hauke-m.de>,
- Woojung Huh <woojung.huh@microchip.com>, UNGLinuxDriver@microchip.com,
- Sean Wang <sean.wang@mediatek.com>, Landen Chao <Landen.Chao@mediatek.com>,
- DENG Qingfang <dqfext@gmail.com>,
+ Woojung Huh <woojung.huh@microchip.com>,
+ UNGLinuxDriver@microchip.com, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, DENG Qingfang <dqfext@gmail.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Claudiu Manoil <claudiu.manoil@nxp.com>,
  Alexandre Belloni <alexandre.belloni@bootlin.com>,
@@ -82,73 +89,17 @@ Cc: Florian Fainelli <f.fainelli@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
  Michael Grzeschik <m.grzeschik@pengutronix.de>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, Lino Sanfilippo <LinoSanfilippo@gmx.de>
-Subject: [RFC PATCH net 5/5] net: dsa: xrs700x: be compatible with masters
- which unregister on shutdown
-Date: Sun, 12 Sep 2021 15:09:32 +0300
-Message-Id: <20210912120932.993440-6-vladimir.oltean@nxp.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210912120932.993440-1-vladimir.oltean@nxp.com>
+Subject: Re: [RFC PATCH net 2/5] net: dsa: be compatible with masters which
+ unregister on shutdown
+Message-ID: <20210912131837.4i6pzwgn573xutmo@skbuf>
 References: <20210912120932.993440-1-vladimir.oltean@nxp.com>
-X-ClientProxiedBy: VI1PR07CA0173.eurprd07.prod.outlook.com
- (2603:10a6:802:3e::21) To VI1PR04MB5136.eurprd04.prod.outlook.com
- (2603:10a6:803:55::19)
+ <20210912120932.993440-3-vladimir.oltean@nxp.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost.localdomain (82.78.148.104) by
- VI1PR07CA0173.eurprd07.prod.outlook.com (2603:10a6:802:3e::21) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4523.9 via Frontend Transport; Sun, 12 Sep 2021 12:09:49 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b6b2ecc0-6a1f-4b0d-0702-08d975e63872
-X-MS-TrafficTypeDiagnostic: VI1PR04MB5854:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <VI1PR04MB5854EE518F940E86DC2CC758E0D89@VI1PR04MB5854.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 2tEDzOUQ8D2AlvHId4iUbbDI8wtXg9seMJLgJADyf+aUFyWlFN4p5YUvreSVWFiUsldYJCTDYeSaCzh8Q+C5NDU3NSaw5V63KMPHlXn8LQtRRPWlCTz1LAnbYIKLEXNraHs2TlQ3xvtkp9ShF5IFtDivodetoSf1Ya+EMp1ul2O330BA/ZDRuZCuYWk79pT6aZes2Kls7wwognROmeMsd90vqeu8RN9OmMk931BXfMT1DtkdktrasXIalsl477iP5qsip8Xs0ZGhR2hCfzYaKXLs825Qg0RnzyiUWQZ6bR7JwvWfqJPupiu9cH4rYUSxYke0Gf4DdCd5O2lfiZxxTn7lkAUF0zkOFOaNDaRMkEWF0Frg2bq5WTufNwqkdu0DXXr6KRaYd1Q7o7Mc0vft27uqfmgpgwXJdVGK/4K5CJGS78retkO38IdGcxkgwcNn8jFWTEnxs+puHGDWTk1kGsT8lAdtvYqucyNKe+whWPg7VuklEhwVTPN+OJ28vwnqBNQ087tmFE59WFZhW8hp+d4Xhtqa+SiWk86Cn2SBDfpMyrkiNYfmVgAYp6j9lJ8yKtuZcNtRlkmDGWeL9LXowJXoArLnAEy+UCGS0BKo3ZZdggtw2V73MvLuW+n+pUe0lG5L6CjL/VEHPxjzmahno7CE9bw9WvkeOBZ/LHHLMZ/6SNiyZ05nBi7+gXY1oiwl7z0EhLNrfjfKkUuj1CrK96SeAoe2QwkM5wFCQq2SdO2tNtWF9DQceOmU+S5nCvsSABusByIW4am/Az4CcPrboocXoyiuYi4S8y0cL+InZ+Q=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:VI1PR04MB5136.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(396003)(366004)(346002)(136003)(376002)(39860400002)(966005)(316002)(83380400001)(4326008)(6506007)(86362001)(6512007)(26005)(44832011)(186003)(38100700002)(8936002)(5660300002)(478600001)(54906003)(2616005)(1076003)(7416002)(36756003)(6486002)(66946007)(2906002)(38350700002)(8676002)(6666004)(66476007)(66556008)(52116002)(6916009)(956004);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?JaqXoF1/ZGN4xofkkJp9Nrpc6tyfk+t9zgwv0tetzXXERR9QbFJI/wgVByCQ?=
- =?us-ascii?Q?lJiIWxuoMR9SGMOIL6iLtjBIft9V2pTzJxbwhQoENYthPYMTYrk+WKIb1W/V?=
- =?us-ascii?Q?bM1vs2vcKqmV9WtNK4+brmY1yc20udP4FoE4UEWfRWx9fmbr97TrD2r7DWy1?=
- =?us-ascii?Q?boY7cpwJ9PPbz1vqVS0jDmw0njQAGg3Dhwv8SJudOVzz8G8DVdJJi/4DfHg0?=
- =?us-ascii?Q?7z1QnTDHYCr1PL7BHUrxjCYWJmvm1/+3Bdms6LT1kT+sDRMxfiT8Xc1v1u6z?=
- =?us-ascii?Q?YylO8am/4yZ2xYRqLMLud+tE//T87owc0sImfh5ewp81dKTBmaYrkwFtpg/D?=
- =?us-ascii?Q?pS4p+gXqQpStfpFckZqsB1RS5I1l8YsoRUnbMw3yxhhH11aLErI32WpYLB25?=
- =?us-ascii?Q?O6uJ2CdM9tDOZfnv8iStGodIciemQ3A9Uyrh8PS98sEquthoruN+1l4tjcyZ?=
- =?us-ascii?Q?8Atmu/8qolF9v1ORvHUScfBPPllolKe8GiNsFAnRpX/xoEhMG7k/8hdWJlxP?=
- =?us-ascii?Q?qzNtrdIEGD/5X0L5L4NeDjlEO9xIc7XdqB3pmv4kRHudDhB81NJrba3UuukZ?=
- =?us-ascii?Q?BneFaSA/h77WhxAzPYkLbzMX9NpgJ8wMjg6aVYSrA8rn0stSfWvClWgMIsV9?=
- =?us-ascii?Q?cJUf0C7QHh7u6yjhG+tOwVkcj9LNscjzzCkGpy6dtlMaxda+D5JTMYW5F2OX?=
- =?us-ascii?Q?PhPGrm1YxvNhK2J3ACQO8aBgSdsZk+itROEfPaf4zf/nDNX23YWfvU99Aifh?=
- =?us-ascii?Q?HetgvRb/HjxYWSeduq/dPGlF/BhWNKqeLmcQnFk3gq8lS6g068qHqSLvUTkb?=
- =?us-ascii?Q?fFoEO3JwKHq6IU3sFHBjr8iiIOSXJgpDmrDJWOaDYdICzZKySGqXB6GBha1X?=
- =?us-ascii?Q?WRlBEuAh3lX+FsvAQXZFPK8NNDFrHNB2XYviR7IqU2GaBYVZiTi6GESqi2/a?=
- =?us-ascii?Q?uHJxIK+nFr9o1GZsTjfg3CJ1Vigzu8YigktsDHC/VnoAo+zzP9kZyet4saIu?=
- =?us-ascii?Q?TpUmbbC38ftQOJyzOzxQPjQbpdv68Pt8ygXz8QosA7MEDLAz0KbkPT+bKNjA?=
- =?us-ascii?Q?fB0Jpy2PPFpENfEo7+yQN7lAUTDbc86h4YwEjRcl6wl5ZsI+fZoWRyfK8Eds?=
- =?us-ascii?Q?7XH4VF3c+igWRpWy6sbmzCk0CjS81xnEPkPzYFZOEiGLQ81b8BOdAZbdEPS2?=
- =?us-ascii?Q?MbVNCOjo2K5tzpRVXv4tX5A3t1xhF0NHrJkZxYHN90ubZyePFkYe3zLfpY8I?=
- =?us-ascii?Q?s0vfb0c7I27Whk73o97Wpf5FKmpKZgaY9IjSNvIF+TvyQ12vVd1Sc05BaE+7?=
- =?us-ascii?Q?d27ScL6q1BI327zf0PVNc49t?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b6b2ecc0-6a1f-4b0d-0702-08d975e63872
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5136.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Sep 2021 12:09:50.1259 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +o89nBIPtxDeRwtT7XwbKAsBsAs9zQo9k4eF8e4g+7VQHMDefgaa69cxoXUmWTKgREXK4CSsvIPq2FUlcnwQvg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB5854
+Content-Disposition: inline
+In-Reply-To: <20210912120932.993440-3-vladimir.oltean@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210912_051003_395156_0E95045E 
-X-CRM114-Status: GOOD (  18.57  )
+X-CRM114-CacheID: sfid-20210912_061841_934601_6A0AC404 
+X-CRM114-Status: GOOD (  18.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,141 +116,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit 2f1e8ea726e9 ("net: dsa: link interfaces with the DSA
-master to get rid of lockdep warnings"), DSA gained a requirement which
-it did not fulfill, which is to unlink itself from the DSA master at
-shutdown time.
+On Sun, Sep 12, 2021 at 03:09:29PM +0300, Vladimir Oltean wrote:
+> +static int b53_mmap_shutdown(struct platform_device *pdev)
+> +{
+> +	struct b53_device *dev = platform_get_drvdata(pdev);
+> +
+> +	if (dev)
+> +		b53_switch_shutdown(dev);
+> +
+> +	platform_set_drvdata(pdev, NULL);
+> +}
+> +
+>  static const struct of_device_id b53_mmap_of_table[] = {
+>  	{ .compatible = "brcm,bcm3384-switch" },
+>  	{ .compatible = "brcm,bcm6328-switch" },
+> @@ -331,6 +343,7 @@ MODULE_DEVICE_TABLE(of, b53_mmap_of_table);
+>  static struct platform_driver b53_mmap_driver = {
+>  	.probe = b53_mmap_probe,
+>  	.remove = b53_mmap_remove,
+> +	.shutdown = b53_mmap_shutdown,
+>  	.driver = {
+>  		.name = "b53-switch",
+>  		.of_match_table = b53_mmap_of_table,
 
-Since the Arrow SpeedChips XRS700x driver was introduced after the bad
-commit, it has never worked with DSA masters which decide to unregister
-their net_device on shutdown, effectively hanging the reboot process.
-To fix that, we need to call dsa_switch_shutdown.
+I forgot to enable all variants of the b53 driver, and as such, the mmap
+version fails to build (the shutdown function should return void, not int).
 
-These devices can be connected by I2C or by MDIO, and if I search for
-I2C or MDIO bus drivers that implement their ->shutdown by redirecting
-it to ->remove I don't see any, however this does not mean it would not
-be possible. To be compatible with that pattern, it is necessary to
-implement an "if this then not that" scheme, to avoid ->remove and
-->shutdown from being called both for the same struct device.
-
-Fixes: ee00b24f32eb ("net: dsa: add Arrow SpeedChips XRS700x driver")
-Link: https://lore.kernel.org/netdev/20210909095324.12978-1-LinoSanfilippo@gmx.de/
-Reported-by: Lino Sanfilippo <LinoSanfilippo@gmx.de>
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
----
- drivers/net/dsa/xrs700x/xrs700x.c      |  6 ++++++
- drivers/net/dsa/xrs700x/xrs700x.h      |  1 +
- drivers/net/dsa/xrs700x/xrs700x_i2c.c  | 18 ++++++++++++++++++
- drivers/net/dsa/xrs700x/xrs700x_mdio.c | 18 ++++++++++++++++++
- 4 files changed, 43 insertions(+)
-
-diff --git a/drivers/net/dsa/xrs700x/xrs700x.c b/drivers/net/dsa/xrs700x/xrs700x.c
-index 130abb0f1438..469420941054 100644
---- a/drivers/net/dsa/xrs700x/xrs700x.c
-+++ b/drivers/net/dsa/xrs700x/xrs700x.c
-@@ -822,6 +822,12 @@ void xrs700x_switch_remove(struct xrs700x *priv)
- }
- EXPORT_SYMBOL(xrs700x_switch_remove);
- 
-+void xrs700x_switch_shutdown(struct xrs700x *priv)
-+{
-+	dsa_switch_shutdown(priv->ds);
-+}
-+EXPORT_SYMBOL(xrs700x_switch_shutdown);
-+
- MODULE_AUTHOR("George McCollister <george.mccollister@gmail.com>");
- MODULE_DESCRIPTION("Arrow SpeedChips XRS700x DSA driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/net/dsa/xrs700x/xrs700x.h b/drivers/net/dsa/xrs700x/xrs700x.h
-index ff62cf61b091..4d58257471d2 100644
---- a/drivers/net/dsa/xrs700x/xrs700x.h
-+++ b/drivers/net/dsa/xrs700x/xrs700x.h
-@@ -40,3 +40,4 @@ struct xrs700x {
- struct xrs700x *xrs700x_switch_alloc(struct device *base, void *devpriv);
- int xrs700x_switch_register(struct xrs700x *priv);
- void xrs700x_switch_remove(struct xrs700x *priv);
-+void xrs700x_switch_shutdown(struct xrs700x *priv);
-diff --git a/drivers/net/dsa/xrs700x/xrs700x_i2c.c b/drivers/net/dsa/xrs700x/xrs700x_i2c.c
-index 489d9385b4f0..6deae388a0d6 100644
---- a/drivers/net/dsa/xrs700x/xrs700x_i2c.c
-+++ b/drivers/net/dsa/xrs700x/xrs700x_i2c.c
-@@ -109,11 +109,28 @@ static int xrs700x_i2c_remove(struct i2c_client *i2c)
- {
- 	struct xrs700x *priv = i2c_get_clientdata(i2c);
- 
-+	if (!priv)
-+		return 0;
-+
- 	xrs700x_switch_remove(priv);
- 
-+	i2c_set_clientdata(i2c, NULL);
-+
- 	return 0;
- }
- 
-+static void xrs700x_i2c_shutdown(struct i2c_client *i2c)
-+{
-+	struct xrs700x *priv = i2c_get_clientdata(i2c);
-+
-+	if (!priv)
-+		return;
-+
-+	xrs700x_switch_shutdown(priv);
-+
-+	i2c_set_clientdata(i2c, NULL);
-+}
-+
- static const struct i2c_device_id xrs700x_i2c_id[] = {
- 	{ "xrs700x-switch", 0 },
- 	{},
-@@ -137,6 +154,7 @@ static struct i2c_driver xrs700x_i2c_driver = {
- 	},
- 	.probe	= xrs700x_i2c_probe,
- 	.remove	= xrs700x_i2c_remove,
-+	.shutdown = xrs700x_i2c_shutdown,
- 	.id_table = xrs700x_i2c_id,
- };
- 
-diff --git a/drivers/net/dsa/xrs700x/xrs700x_mdio.c b/drivers/net/dsa/xrs700x/xrs700x_mdio.c
-index 44f58bee04a4..d01cf1073d49 100644
---- a/drivers/net/dsa/xrs700x/xrs700x_mdio.c
-+++ b/drivers/net/dsa/xrs700x/xrs700x_mdio.c
-@@ -136,7 +136,24 @@ static void xrs700x_mdio_remove(struct mdio_device *mdiodev)
- {
- 	struct xrs700x *priv = dev_get_drvdata(&mdiodev->dev);
- 
-+	if (!priv)
-+		return;
-+
- 	xrs700x_switch_remove(priv);
-+
-+	dev_set_drvdata(&mdiodev->dev, NULL);
-+}
-+
-+static void xrs700x_mdio_shutdown(struct mdio_device *mdiodev)
-+{
-+	struct xrs700x *priv = dev_get_drvdata(&mdiodev->dev);
-+
-+	if (!priv)
-+		return;
-+
-+	xrs700x_switch_shutdown(priv);
-+
-+	dev_set_drvdata(&mdiodev->dev, NULL);
- }
- 
- static const struct of_device_id __maybe_unused xrs700x_mdio_dt_ids[] = {
-@@ -155,6 +172,7 @@ static struct mdio_driver xrs700x_mdio_driver = {
- 	},
- 	.probe	= xrs700x_mdio_probe,
- 	.remove	= xrs700x_mdio_remove,
-+	.shutdown = xrs700x_mdio_shutdown,
- };
- 
- mdio_module_driver(xrs700x_mdio_driver);
--- 
-2.25.1
-
+I will fix this when I send the v2 patch, but I will not send that now,
+as I would like to get some feedback on the approach first.
 
 _______________________________________________
 Linux-mediatek mailing list
