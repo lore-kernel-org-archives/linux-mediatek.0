@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 245AFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 11:38:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD585C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 11:39:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D9BDF60FDA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 11:38:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D9BDF60FDA
+	by mail.kernel.org (Postfix) with ESMTPS id AABBF60F4A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 11:39:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AABBF60F4A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,33 +23,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=++AE4YRVkR1z7DthFlhE/lHJ6LOWpO6+uvJ4Y2K84i8=; b=WrxzaiKrLyXElJ
-	B7RW5ORIhUD8jBx7b6a6MxkivrzzhymX87gqSZbF6LpfEiPvlvqsxTHnkWMUOmh0yKKh8fnZIwHg1
-	e3bOKPN3Uc7ETcU72Cm/KVfor+P+GU6bfxZr+5uKGCoNBsZKAWfryjEWor+tkUWu/iUkgVvm0iOvC
-	APfKDXrto5PC0195zYpfHYmDjBIjQKnKAwr16MEhnw69NRjynjWwCpk9F24XqgzdDOARO8yixak16
-	NUB0QbfF0OzCisR8IlpMfA1DI8Rna0YeleYrUeQK4H7bbuqfSAhm+IeVEJi5HZiPyiQTiwPYdDCvz
-	kZHXhFNUY7RMsfRxEn4Q==;
+	List-Owner; bh=n5Osnz/9syFVNjAtxsWJjhUmIsHCxeNpSUPz46u6oo8=; b=nzS84Tr9xt4b1U
+	J4G8NUecSzha1z1zLFOZVvCpjTK6fPeVcaJIK0uAYfDiXsCrWsV4vJKm0b2DfaD1DSswZLLJy/UmN
+	fhTruF+c9M/zrX5CNhlUyWD/pMxxGeRng6Uv9mm2AbF5sqwsGgRY+SQPrmnuKGYPI6K9ajEcjxYHv
+	XjGWUkWIESRzEhv0vm3mNbTsKm0j4+P1xSoiRNe4/KuW1KcJc5ZHvdhQN5jFL+zybyo+L7KUX87Qq
+	sZ0ye8xLnJLFjT8Ni52obcdHdVBVPCk07QD+NFdhBUxP7E/13/3Xt98DG53UVhn77pmBMpNhjuO0T
+	X/m4IwI+bCmkzUyp4QhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQ6lY-005Ps7-Qo; Tue, 14 Sep 2021 11:38:20 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mQ6m5-005Q6o-9M; Tue, 14 Sep 2021 11:38:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQ6lL-005Pnd-3e; Tue, 14 Sep 2021 11:38:08 +0000
-X-UUID: c26d6b573bbf48128b6445ad0ec97a14-20210914
-X-UUID: c26d6b573bbf48128b6445ad0ec97a14-20210914
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1mQ6lp-005Pz3-5X; Tue, 14 Sep 2021 11:38:38 +0000
+X-UUID: 61d22fc0efba42cfaf811ec00d304c2b-20210914
+X-UUID: 61d22fc0efba42cfaf811ec00d304c2b-20210914
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1486128663; Tue, 14 Sep 2021 04:38:04 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1973529141; Tue, 14 Sep 2021 04:38:33 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Sep 2021 04:38:02 -0700
+ 15.0.1497.2; Tue, 14 Sep 2021 04:38:32 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Sep 2021 19:38:01 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Sep 2021 19:38:30 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 14 Sep 2021 19:38:00 +0800
+ Transport; Tue, 14 Sep 2021 19:38:29 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -62,17 +62,17 @@ CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
  <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
  <ming-fan.chen@mediatek.com>, <yi.kuo@mediatek.com>,
  <anthony.huang@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>
-Subject: [PATCH v4 04/13] memory: mtk-smi: Rename smi_gen to smi_type
-Date: Tue, 14 Sep 2021 19:36:54 +0800
-Message-ID: <20210914113703.31466-5-yong.wu@mediatek.com>
+Subject: [PATCH v4 08/13] memory: mtk-smi: Add clocks for smi-sub-common
+Date: Tue, 14 Sep 2021 19:36:58 +0800
+Message-ID: <20210914113703.31466-9-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210914113703.31466-1-yong.wu@mediatek.com>
 References: <20210914113703.31466-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210914_043807_221070_C58D9AEA 
-X-CRM114-Status: GOOD (  16.57  )
+X-CRM114-CacheID: sfid-20210914_043837_278769_E06F3694 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,101 +89,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prepare for adding smi sub common. Only rename from smi_gen to smi_type.
-No functional change.
-
-About the current "smi_gen", we have gen1/gen2 that stand for the
-generation number for HW. I plan to add a new type(sub_common), then the
-name "gen" is not proper.
+SMI sub common only have one output port. thus it has only one gals
+clocks(gals0). then, smi-sub-common require the three clocks(apb/smi/gals0)
+in has_gals case.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Ikjoon Jang <ikjn@chromium.org>
 ---
- drivers/memory/mtk-smi.c | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ drivers/memory/mtk-smi.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index f91eaf5c3ab0..02a584dfb9b1 100644
+index 5c2bd5795cfd..58d9f7667490 100644
 --- a/drivers/memory/mtk-smi.c
 +++ b/drivers/memory/mtk-smi.c
-@@ -55,7 +55,7 @@
- /* All are MMU0 defaultly. Only specialize mmu1 here. */
- #define F_MMU1_LARB(larbid)		(0x1 << SMI_BUS_LARB_SHIFT(larbid))
+@@ -74,10 +74,12 @@ static const char * const mtk_smi_larb_clks[] = {"apb", "smi", "gals"};
  
--enum mtk_smi_gen {
-+enum mtk_smi_type {
- 	MTK_SMI_GEN1,
- 	MTK_SMI_GEN2
- };
-@@ -75,9 +75,9 @@ static const char * const mtk_smi_common_clks[] = {"apb", "smi", "gals0", "gals1
+ /*
+  * common: Require these four clocks in has_gals case. Otherwise, only apb/smi are required.
++ * sub common: Require apb/smi/gals0 clocks in has_gals case. Otherwise, only apb/smi are required.
+  */
+ static const char * const mtk_smi_common_clks[] = {"apb", "smi", "gals0", "gals1"};
+ #define MTK_SMI_COM_REQ_CLK_NR		2
  #define MTK_SMI_COM_GALS_REQ_CLK_NR	MTK_SMI_CLK_NR_MAX
++#define MTK_SMI_SUB_COM_GALS_REQ_CLK_NR 3
  
  struct mtk_smi_common_plat {
--	enum mtk_smi_gen gen;
--	bool             has_gals;
--	u32              bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
-+	enum mtk_smi_type	type;
-+	bool			has_gals;
-+	u32			bus_sel; /* Balance some larbs to enter mmu0 or mmu1 */
- };
+ 	enum mtk_smi_type	type;
+@@ -467,8 +469,12 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
+ 	common->dev = dev;
+ 	common->plat = of_device_get_match_data(dev);
  
- struct mtk_smi_larb_gen {
-@@ -409,29 +409,29 @@ static struct platform_driver mtk_smi_larb_driver = {
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_common_gen1 = {
--	.gen = MTK_SMI_GEN1,
-+	.type     = MTK_SMI_GEN1,
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_common_gen2 = {
--	.gen = MTK_SMI_GEN2,
-+	.type	  = MTK_SMI_GEN2,
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_common_mt6779 = {
--	.gen		= MTK_SMI_GEN2,
--	.has_gals	= true,
--	.bus_sel	= F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(4) |
--			  F_MMU1_LARB(5) | F_MMU1_LARB(6) | F_MMU1_LARB(7),
-+	.type	  = MTK_SMI_GEN2,
-+	.has_gals = true,
-+	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(4) |
-+		    F_MMU1_LARB(5) | F_MMU1_LARB(6) | F_MMU1_LARB(7),
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
--	.gen      = MTK_SMI_GEN2,
-+	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
- 	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(5) |
- 		    F_MMU1_LARB(7),
- };
- 
- static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
--	.gen      = MTK_SMI_GEN2,
-+	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
- 	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(2) | F_MMU1_LARB(5) |
- 		    F_MMU1_LARB(6),
-@@ -494,7 +494,7 @@ static int mtk_smi_common_probe(struct platform_device *pdev)
- 	 * clock into emi clock domain, but for mtk smi gen2, there's no smi ao
- 	 * base.
- 	 */
--	if (common->plat->gen == MTK_SMI_GEN1) {
-+	if (common->plat->type == MTK_SMI_GEN1) {
- 		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
- 		common->smi_ao_base = devm_ioremap_resource(dev, res);
- 		if (IS_ERR(common->smi_ao_base))
-@@ -534,7 +534,7 @@ static int __maybe_unused mtk_smi_common_resume(struct device *dev)
+-	if (common->plat->has_gals)
+-		clk_required = MTK_SMI_COM_GALS_REQ_CLK_NR;
++	if (common->plat->has_gals) {
++		if (common->plat->type == MTK_SMI_GEN2)
++			clk_required = MTK_SMI_COM_GALS_REQ_CLK_NR;
++		else if (common->plat->type == MTK_SMI_GEN2_SUB_COMM)
++			clk_required = MTK_SMI_SUB_COM_GALS_REQ_CLK_NR;
++	}
+ 	ret = mtk_smi_dts_clk_init(dev, common, mtk_smi_common_clks, clk_required, 0);
  	if (ret)
  		return ret;
- 
--	if (common->plat->gen == MTK_SMI_GEN2 && bus_sel)
-+	if (common->plat->type == MTK_SMI_GEN2 && bus_sel)
- 		writel(bus_sel, common->base + SMI_BUS_SEL);
- 	return 0;
- }
 -- 
 2.18.0
 
