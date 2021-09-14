@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 685C7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 22:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A636DC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 22:18:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3A2466115B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 22:18:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3A2466115B
+	by mail.kernel.org (Postfix) with ESMTPS id 7BD376115B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 22:18:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7BD376115B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,36 +22,35 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7S8aUScs8XwkHUqxyCntNmjPSva68lB0m1x99oPF3n4=; b=gZ8ih7OhkWD4nU
-	iUATrFGYjDoY8p0haGsN+qrjr54x1oYBLqYTeraFwpmR7vKUXNdSmH8ASJCdhs7AVujFsJsPcvMsl
-	jXF5w5gRBDYBxGPtU6S9sBTCeCbyF8KoubhKkcJ6YcvoWu3vJRLWeBsVS5SyhkyoMQ3+j8PshyJDy
-	SsmiIYm/DFC+YgLBVZLReGBiPxbZcYVIQCrQqnsmqVa66+KcjKhnJEmTWlb+fWEJ39nWpVx5IF9CL
-	Jb88+U/viPL1H7d1eMlR0duPvgwe7Tjp3jDKuHXYNq1tXcWDQXisffylYrxoV4TtZVHhEAD66v6xo
-	kZzeDHabytI1ojI+fd/w==;
+	List-Owner; bh=9ewY8cP1Hazm5cZpgxrbOqNQ4yiOfE7U2t7FV67LA7M=; b=qDxLfrXkIS+mN4
+	Bt/hzfdtWkSSSZbVD4jK+d3f2zTwFP27CRwxQrLbddblSt4iik3sPXzTrEydp244nOzlK3NfGfYBD
+	1lOCy81Z2VEliTB0vU/ERItQar5Tgq5dcR2mKnQVMk6tTpYcsp7iClXH4fdVdnxh1gkMbgMdZAcsj
+	Wduq76fNlDtxK2iUQf0B28doLslZAAl9vJi3SiPLyc2THc0MAY4dzp7MiGKl4sumNGR/szFitjwQW
+	D+5+Pt0pf05NYznv/K9GKxrSVI81Dks62kO+sn/5l9SICHP9GDoDc2LeRxNjvBp0q+kTGhdSSP9oq
+	er8ImIHalWI9vb5HMpHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQGkh-007Is7-Hu; Tue, 14 Sep 2021 22:18:07 +0000
+	id 1mQGl0-007Iz4-Ab; Tue, 14 Sep 2021 22:18:26 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQGkQ-007IoJ-TH; Tue, 14 Sep 2021 22:17:52 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 72F8861164;
- Tue, 14 Sep 2021 22:17:50 +0000 (UTC)
+ id 1mQGkW-007Ipi-Tl; Tue, 14 Sep 2021 22:17:58 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 8459B61164;
+ Tue, 14 Sep 2021 22:17:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631657870;
- bh=H3LVFe3o74JDFJmwzbvvC8Hema3SZT1AXDwvppvUE5M=;
+ s=k20201202; t=1631657876;
+ bh=wNbJ3NvMSPTEZMWTTi3XZaFjrIVn2Wyjuyw+PoB32Uo=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=eJpdHrDbnx+3vrF8pnM6ntrAkPZb4titKQ40xqM1cji/VUseuBpY6tGyfgqIBf9U/
- 9KNAy7z/fuPS8hTly36jaW593KK31wnHezJmIX5Ynz8mhxabYUO4gi1qu0GEgigLwo
- Jv7VZgRIc4SpN++K8SdJdCx+w8/nDM7SFGDLB7qwuN10Naig7QdcnqDnIN1mhExSP0
- AVwwsaCSUHWUC12gusEKs3vG1Zo1NihduV2EtFsaQLhESKpryQ9uc5Qp8UULHDyie3
- x3qghHo7aiI2fOxs4FKCsHLkYYXe7q0VcQPWxWOeRO5e1caGwAORHiC9LMaqwP0Chg
- Cf+sEk1WED8AA==
+ b=ls0xKi1rn4rUs0oxUWsWjDefh3N0wuquR0md+0R0ZJTnC0XYqqRfLFPpxF3wuhZ9f
+ l5J8he8/wX297qirGLhpYYKVCXCk2PFzBgwYYF9YqPICri5hlsPm2rBQmjMkKpqpf0
+ h0DKSe/uSrABtJnfsX9ITj6El7vl0f6RHf/EnvOLE3YqyJom2XxfvHAymVpo9e7bsZ
+ xiXG4+DlS8WwBrvR3GkYyedKBksCQewh/fdgEXA2I2vSI33mOjyLWjojXxl9i0Vaha
+ mL8miefPdNj29OIrNwPSGBwWhHW4VKWkrV7+HcLCq+hnPNselbvnRO/yHeWIVJEX8G
+ WyErdc0BmyKGA==
 MIME-Version: 1.0
-In-Reply-To: <20210914021633.26377-2-chun-jie.chen@mediatek.com>
+In-Reply-To: <20210914021633.26377-3-chun-jie.chen@mediatek.com>
 References: <20210914021633.26377-1-chun-jie.chen@mediatek.com>
- <20210914021633.26377-2-chun-jie.chen@mediatek.com>
-Subject: Re: [v3 01/24] dt-bindings: ARM: Mediatek: Add new document bindings
- of MT8195 clock
+ <20210914021633.26377-3-chun-jie.chen@mediatek.com>
+Subject: Re: [v3 02/24] clk: mediatek: Add dt-bindings of MT8195 clocks
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org, linux-clk@vger.kernel.org,
@@ -61,12 +60,12 @@ Cc: linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 To: Chun-Jie Chen <chun-jie.chen@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Nicolas Boichat <drinkcat@chromium.org>, Rob Herring <robh+dt@kernel.org>
-Date: Tue, 14 Sep 2021 15:17:49 -0700
-Message-ID: <163165786922.763609.13079852242605675480@swboyd.mtv.corp.google.com>
+Date: Tue, 14 Sep 2021 15:17:55 -0700
+Message-ID: <163165787533.763609.14713637160945059116@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210914_151751_020073_EA384A0E 
-X-CRM114-Status: UNSURE (   6.74  )
+X-CRM114-CacheID: sfid-20210914_151757_077382_67C09955 
+X-CRM114-Status: UNSURE (   4.81  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,12 +83,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Chun-Jie Chen (2021-09-13 19:16:10)
-> This patch adds the new binding documentation for system clock
-> and functional clock on Mediatek MT8195.
+Quoting Chun-Jie Chen (2021-09-13 19:16:11)
+> Add MT8195 clock dt-bindings, includes topckgen, apmixedsys,
+> infracfg_ao, pericfg_ao and subsystem clocks.
 > 
 > Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> Acked-by: Rob Herring <robh@kernel.org>
 > ---
 
 Applied to clk-next
