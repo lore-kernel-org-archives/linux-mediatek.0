@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
 	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86926C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 17:50:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CF1B1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 17:53:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D32060E52
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 17:50:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4D32060E52
+	by mail.kernel.org (Postfix) with ESMTPS id 96C62610F9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 17:53:43 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 96C62610F9
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,21 +23,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F423jyg8cfJtw4+7RICIDP/LpgHSmCTvAwFHpdtKBR0=; b=JrfQad5b1ZJjr4
-	qMO2/LEVNw2AAI5mrg88ma2eUsr73hw74FgiRYk+wpKBTkcXW0WBUg/A39eQIcDBWdj+rrCy/3Uk6
-	HIzZrDN0H6AhY3o30skatwnDoJsVQDAIlbpc5amFOO8KpqxhxbvCHFxLWNRG7+9f4mHrDjzq5G+I3
-	28/k/tD2Anu4piN4KVC9n/IGUJTbzV4qLnow0bXXEyAmYzIhaIuPZLX/8Bj+UIYWAm4iHaL3wUPfK
-	QzhWVwFp3bJ0NJF/32rwC1yJz3CQTxPyGMHgSK9xZgwTQWypOqHPw80G21BZ1eoBeixhIIKK66uqH
-	aztI2XFQCyU0uV/vYIaQ==;
+	List-Owner; bh=osZcCA/Lh3BEY2rgFqvYSilNC7zzSk2s5d10jmtIUZY=; b=RyXmGkOfvH0rad
+	8qapxnZUGLLRHLE6M8bC/Ht9+S92PuNiQMSfQ1k+e/SwcG2yAf4LyfCwXorGH7KS70nCmnElCXdKC
+	s8bDjr9tGsKwIYZQ3ChBgnFGQYlTtVgNQ5yeYSWzsfS/QQUbTWuruinRcmakn8c/qZgXc8MJYQ1lC
+	8dDUNmU/n2WYCMxxlZleq7+UKTGM7pDG2pD/3+MiUwumHR2jwBKxmq6a7L76pDzzraEd33aXqLEo3
+	/qYbugVhUNyehfj5DQeXtLj2QH2AeK1fYB2n2zghepHSuPnyUWUYYQA64jSSBAjkwQTD82BRoiNjc
+	1OOknxHJHXDBNSf3wUpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQCZA-006cgB-Sk; Tue, 14 Sep 2021 17:49:56 +0000
-Received: from relay4-d.mail.gandi.net ([217.70.183.196])
+	id 1mQCcZ-006dRq-7m; Tue, 14 Sep 2021 17:53:27 +0000
+Received: from relay5-d.mail.gandi.net ([217.70.183.197])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQCPi-006aF8-MQ; Tue, 14 Sep 2021 17:40:12 +0000
+ id 1mQCPn-006aGv-Rw; Tue, 14 Sep 2021 17:40:17 +0000
 Received: (Authenticated sender: miquel.raynal@bootlin.com)
- by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id BFCDCE0006;
- Tue, 14 Sep 2021 17:40:07 +0000 (UTC)
+ by relay5-d.mail.gandi.net (Postfix) with ESMTPSA id 0BE441C0009;
+ Tue, 14 Sep 2021 17:40:12 +0000 (UTC)
 From: Miquel Raynal <miquel.raynal@bootlin.com>
 To: Cai Huoqing <caihuoqing@baidu.com>
 Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
@@ -45,18 +45,18 @@ Cc: Miquel Raynal <miquel.raynal@bootlin.com>,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-mtd@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] mtd: rawnand: mtk_ecc: Make use of the helper function
+Subject: Re: [PATCH] mtd: rawnand: mtk: Make use of the helper function
  devm_platform_ioremap_resource()
-Date: Tue, 14 Sep 2021 19:40:07 +0200
-Message-Id: <20210914174007.301850-1-miquel.raynal@bootlin.com>
+Date: Tue, 14 Sep 2021 19:40:12 +0200
+Message-Id: <20210914174012.301914-1-miquel.raynal@bootlin.com>
 X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20210901074153.9233-1-caihuoqing@baidu.com>
+In-Reply-To: <20210901074145.9183-1-caihuoqing@baidu.com>
 References: 
 MIME-Version: 1.0
 X-linux-mtd-patch-notification: thanks
-X-linux-mtd-patch-commit: b'8826e1107236d8668cfbcf8b31caea3ac943de1e'
+X-linux-mtd-patch-commit: b'5da7bb27a582b8f232c09dd1067eb7a254c4d4ee'
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210914_104010_943605_161DFFE5 
+X-CRM114-CacheID: sfid-20210914_104016_094479_6103BB16 
 X-CRM114-Status: UNSURE (   6.04  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -75,7 +75,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-09-01 at 07:41:52 UTC, Cai Huoqing wrote:
+On Wed, 2021-09-01 at 07:41:44 UTC, Cai Huoqing wrote:
 > Use the devm_platform_ioremap_resource() helper instead of
 > calling platform_get_resource() and devm_ioremap_resource()
 > separately
