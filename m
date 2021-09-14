@@ -2,51 +2,51 @@ Return-Path: <SRS0=LW2f=OE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30561C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 08:52:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BA9EEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 09:02:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E17D260F8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 08:52:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E17D260F8F
+	by mail.kernel.org (Postfix) with ESMTPS id 6CFB561056
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 09:02:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6CFB561056
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=57Sj3YQ/9nqPN7qjfNtmxpWSEvXeEFLJWmVMpnsuUyc=; b=gg7EXk9jaCjWpY
-	9IXZSEz+qNpWDBb6aJO8pdp4y/qGmyXoBwEh47gyW0+KucSvKw+YokXcYineGnvt9csJZ4lSDnD7B
-	Ev1yWq3R07c18jgPcdu4pC4wmSLblABqrPJwSMUUhJSjkvQ1jHSyOWw7Te+nYh/0tH8jtR914uRd+
-	SNZacpWnGOF1CiYJHCkjLYkZvml59/fANRgKxvlAv2GlZqh+BpMp7cNvGJwI1yHd3+W9qTBIlJndm
-	Phon3QXvPqz5H0SvO7/D85raSG1TYEVPXPXyPuOaIecNnuSPSxbWzgk0+kbkJMDsoQN+qEK1LlQmw
-	GmVxi5pDVVu7+pibFt5g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=RrRZNwzkF/vHJNdG5KDJiDQCLrP61juisT503i3DTdw=; b=nPEuhiRDl3T85J
+	A/hE0IHf95EVDRTMHDmJTQylCI/94A7q7VHFNQV6gpyIddJp05VtHE/S+jCf5XMIhBmCxI/9pHSjP
+	nacTci9kEt8JJOtgWbRpmLFrxWKyeTHU4KXWzSUQGsw+ZQJ+ngnfwMcwcxArjpN9c70pwilj+R+P4
+	UilR4AxcMKdQwdHmDwNNXAPN7MxnVJtAx18bFHU4761wHoWo7EYbMiBIOoDmgOP4lG39wYhwujQZi
+	6lwcFSyiunPHpYVL79FAnu7O/Se9amPppSkhCrxjnG2qZwMVoCclhilok+zEuqMs04KsAl0w0ZhCl
+	9yRw3ANB8NkFofKB7btQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQ4B5-004maE-Ss; Tue, 14 Sep 2021 08:52:31 +0000
+	id 1mQ4Jz-004pGW-5c; Tue, 14 Sep 2021 09:01:43 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQ4As-004mW3-VY; Tue, 14 Sep 2021 08:52:22 +0000
-X-UUID: 10643218b58f4ec3a54c2cfe1b04f497-20210914
-X-UUID: 10643218b58f4ec3a54c2cfe1b04f497-20210914
+ id 1mQ4Jw-004pEs-De; Tue, 14 Sep 2021 09:01:41 +0000
+X-UUID: 44ff8bed728c4bff9741bf29d9507791-20210914
+X-UUID: 44ff8bed728c4bff9741bf29d9507791-20210914
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1558429415; Tue, 14 Sep 2021 01:52:13 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Sep 2021 01:51:39 -0700
+ with ESMTP id 1897058350; Tue, 14 Sep 2021 02:01:38 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Sep 2021 16:51:37 +0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Sep 2021 01:51:39 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by mtkcas07.mediatek.inc
+ (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 14 Sep 2021 16:51:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Tue, 14 Sep 2021 16:51:37 +0800
@@ -67,19 +67,15 @@ To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
  <linux-clk@vger.kernel.org>
 CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
  Shih" <sam.shih@mediatek.com>
-Subject: [v3,
- 1/9] dt-bindings: clock: mediatek: document clk bindings for mediatek
- mt7986 SoC
-Date: Tue, 14 Sep 2021 16:51:29 +0800
-Message-ID: <20210914085137.31761-2-sam.shih@mediatek.com>
+Subject: [v3,0/9] Add basic SoC support for mediatek mt7986
+Date: Tue, 14 Sep 2021 16:51:28 +0800
+Message-ID: <20210914085137.31761-1-sam.shih@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210914085137.31761-1-sam.shih@mediatek.com>
-References: <20210914085137.31761-1-sam.shih@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210914_015219_095763_CC7F027B 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20210914_020140_548126_ADEB7E9F 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,84 +92,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds the binding documentation for topckgen, apmixedsys,
-infracfg, and ethernet subsystem clocks.
-
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
+This patch adds basic SoC support for Mediatek's new 4-core SoC,
+MT7986, which is mainly for wifi-router application.
 
 ---
-v3: Added an Acked-by tag
-v2: remove compatiable string 'mt7986-sgmiisys'
----
- .../devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt    | 1 +
- .../devicetree/bindings/arm/mediatek/mediatek,ethsys.txt        | 1 +
- .../devicetree/bindings/arm/mediatek/mediatek,infracfg.txt      | 1 +
- .../devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt      | 2 ++
- .../devicetree/bindings/arm/mediatek/mediatek,topckgen.txt      | 1 +
- 5 files changed, 6 insertions(+)
+v3: updated mt7986 pinctrl releated dt-bindig,
+    updated mt7986 pinctrl driver according to reviewers's suggestion
+    fixed wrong clock ID in mt7986-clock-IDs
+    added Acked-by tag in some patches
+v2: updated mt7986 clock releated IDs, dt-binding, and driver
+    updated mt7986 clock releated dt-binding and driver
+    updated device tree of mt7986a and mt7986b
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-index ea827e8763de..3fa755866528 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,apmixedsys.txt
-@@ -14,6 +14,7 @@ Required Properties:
- 	- "mediatek,mt7622-apmixedsys"
- 	- "mediatek,mt7623-apmixedsys", "mediatek,mt2701-apmixedsys"
- 	- "mediatek,mt7629-apmixedsys"
-+	- "mediatek,mt7986-apmixedsys"
- 	- "mediatek,mt8135-apmixedsys"
- 	- "mediatek,mt8167-apmixedsys", "syscon"
- 	- "mediatek,mt8173-apmixedsys"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
-index 6b7e8067e7aa..0502db73686b 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ethsys.txt
-@@ -10,6 +10,7 @@ Required Properties:
- 	- "mediatek,mt7622-ethsys", "syscon"
- 	- "mediatek,mt7623-ethsys", "mediatek,mt2701-ethsys", "syscon"
- 	- "mediatek,mt7629-ethsys", "syscon"
-+	- "mediatek,mt7986-ethsys", "syscon"
- - #clock-cells: Must be 1
- - #reset-cells: Must be 1
- 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-index eb3523c7a7be..f66bd720571d 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,infracfg.txt
-@@ -15,6 +15,7 @@ Required Properties:
- 	- "mediatek,mt7622-infracfg", "syscon"
- 	- "mediatek,mt7623-infracfg", "mediatek,mt2701-infracfg", "syscon"
- 	- "mediatek,mt7629-infracfg", "syscon"
-+	- "mediatek,mt7986-infracfg", "syscon"
- 	- "mediatek,mt8135-infracfg", "syscon"
- 	- "mediatek,mt8167-infracfg", "syscon"
- 	- "mediatek,mt8173-infracfg", "syscon"
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-index 30cb645c0e54..29ca7a10b315 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,sgmiisys.txt
-@@ -8,6 +8,8 @@ Required Properties:
- - compatible: Should be:
- 	- "mediatek,mt7622-sgmiisys", "syscon"
- 	- "mediatek,mt7629-sgmiisys", "syscon"
-+	- "mediatek,mt7986-sgmiisys_0", "syscon"
-+	- "mediatek,mt7986-sgmiisys_1", "syscon"
- - #clock-cells: Must be 1
- 
- The SGMIISYS controller uses the common clk binding from
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-index 5ce7578cf274..b82422bb717f 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,topckgen.txt
-@@ -14,6 +14,7 @@ Required Properties:
- 	- "mediatek,mt7622-topckgen"
- 	- "mediatek,mt7623-topckgen", "mediatek,mt2701-topckgen"
- 	- "mediatek,mt7629-topckgen"
-+	- "mediatek,mt7986-topckgen", "syscon"
- 	- "mediatek,mt8135-topckgen"
- 	- "mediatek,mt8167-topckgen", "syscon"
- 	- "mediatek,mt8173-topckgen"
+Sam Shih (9):
+  dt-bindings: clock: mediatek: document clk bindings for mediatek
+    mt7986 SoC
+  clk: mediatek: add mt7986 clock IDs
+  clk: mediatek: add mt7986 clock support
+  pinctrl: mediatek: moore: check if pin_desc is valid before use
+  dt-bindings: pinctrl: update bindings for MT7986 SoC
+  pinctrl: mediatek: add support for MT7986 SoC
+  dt-bindings: arm64: dts: mediatek: Add mt7986 series
+  arm64: dts: mediatek: add mt7986a support
+  arm64: dts: mediatek: add mt7986b support
+
+ .../devicetree/bindings/arm/mediatek.yaml     |   8 +
+ .../arm/mediatek/mediatek,apmixedsys.txt      |   1 +
+ .../bindings/arm/mediatek/mediatek,ethsys.txt |   1 +
+ .../arm/mediatek/mediatek,infracfg.txt        |   1 +
+ .../arm/mediatek/mediatek,sgmiisys.txt        |   2 +
+ .../arm/mediatek/mediatek,topckgen.txt        |   1 +
+ .../pinctrl/mediatek,mt7986-pinctrl.txt       | 300 ++++++
+ arch/arm64/boot/dts/mediatek/Makefile         |   2 +
+ arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts  |  49 +
+ arch/arm64/boot/dts/mediatek/mt7986a.dtsi     | 227 +++++
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts  |  21 +
+ arch/arm64/boot/dts/mediatek/mt7986b.dtsi     | 227 +++++
+ drivers/clk/mediatek/Kconfig                  |  17 +
+ drivers/clk/mediatek/Makefile                 |   4 +
+ drivers/clk/mediatek/clk-mt7986-apmixed.c     |  78 ++
+ drivers/clk/mediatek/clk-mt7986-eth.c         | 132 +++
+ drivers/clk/mediatek/clk-mt7986-infracfg.c    | 198 ++++
+ drivers/clk/mediatek/clk-mt7986-topckgen.c    | 319 ++++++
+ drivers/pinctrl/mediatek/Kconfig              |   7 +
+ drivers/pinctrl/mediatek/Makefile             |   1 +
+ drivers/pinctrl/mediatek/pinctrl-moore.c      |  18 +
+ drivers/pinctrl/mediatek/pinctrl-mt7986.c     | 928 ++++++++++++++++++
+ include/dt-bindings/clock/mt7986-clk.h        | 169 ++++
+ 23 files changed, 2711 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.txt
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b.dtsi
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-apmixed.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-eth.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-infracfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-topckgen.c
+ create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7986.c
+ create mode 100644 include/dt-bindings/clock/mt7986-clk.h
+
 -- 
 2.29.2
 
