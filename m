@@ -5,16 +5,17 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+	UPPERCASE_50_75,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5058EC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5583DC433FE
 	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 09:02:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 17C49610F9
+	by mail.kernel.org (Postfix) with ESMTPS id 1CDBF6112E
 	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 09:02:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 17C49610F9
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1CDBF6112E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,34 +24,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IVpGaT5b5/GJLmylOzDGr8jzgx5X7cwnSphDl5ZRV2w=; b=jlObjuhS0F9mga
-	O9Az6EuoJUgTV4rolDjXy4x+9mQNBOQF45BQoi5nFFn19n/ag/l3XdoHQJvxcSNBcTQpIJH+PZDJa
-	HgqWDZCwf40r7jIwseZBhfVWK9clQqQeVv/gSHGlRDMk3bSO1GiRBgU6s0adWFHvv1EXgjk/IxsUz
-	vryXekNos3wUhTIMpxxbZxpwJpqSfmAHx2m/i9Z/SX6HcajK2lEkWTk32AfWZo9rg9Iq2CSlUAhRB
-	rR2um02ImYnyqmK/kbOkEFlq09r0M99+GwSZCnPQYkMwE4rYo/jWYl2pxoWCiQ7QTMbDRn/ZSFUna
-	9zoX8v48m6e1uzUYuOBQ==;
+	List-Owner; bh=jlJVjCtASNSR0RbA79kiOWJr1jDV2id9L2YCsU6KotE=; b=MomJpaFw3O0ITl
+	8qhBmlspsoYUDzH8qap2VUAvQQxaihMOkthhMtqt5Jy0f55MzBQGhAq3pKPyr/Wbq9zWKD7t8PvYq
+	dpAhPH8+QNCu02rRjL0d6pRIAGQnRXcfnBzNAyTwsyT6XDwLky/0hkkltQ/4GlmlAIopEU1kRg4k1
+	gYiRnr/cNuB6+IiPIgCvSqCWlkqbx2/5T654uEIVYzywyT99GX+8WlT47Xgn44huDoJVKWlnCxmvB
+	2KNmpondR9k9wD2w0EwWAdS0mMUrv3Ghz3mSA2L0SZlA2y1nDXFBQ8tiup4jyAdDfvHl19CiQP2R/
+	ZgkNs/WsWVTbJYAw94Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQ4Kf-004pXM-1v; Tue, 14 Sep 2021 09:02:25 +0000
+	id 1mQ4Kg-004pY5-KN; Tue, 14 Sep 2021 09:02:26 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQ4Jx-004pFM-7O; Tue, 14 Sep 2021 09:01:42 +0000
-X-UUID: 22985a5c6d6b49d1b77bba3d31a952fc-20210914
-X-UUID: 22985a5c6d6b49d1b77bba3d31a952fc-20210914
+ id 1mQ4Jx-004pEs-UK; Tue, 14 Sep 2021 09:01:43 +0000
+X-UUID: 60c6071ac2b24b709bd76c2075b9f59a-20210914
+X-UUID: 60c6071ac2b24b709bd76c2075b9f59a-20210914
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1699990687; Tue, 14 Sep 2021 02:01:38 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1953272444; Tue, 14 Sep 2021 02:01:38 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Sep 2021 01:52:46 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 14 Sep 2021 16:52:45 +0800
+ 15.0.1497.2; Tue, 14 Sep 2021 01:52:38 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 14 Sep 2021 16:52:37 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 14 Sep 2021 16:52:44 +0800
+ Frontend Transport; Tue, 14 Sep 2021 16:52:36 +0800
 From: Sam Shih <sam.shih@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
  Walleij" <linus.walleij@linaro.org>, Matthias Brugger
@@ -68,18 +68,17 @@ To: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, "Linus
  <linux-clk@vger.kernel.org>
 CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
  Shih" <sam.shih@mediatek.com>
-Subject: [RESEND, v3,
- 4/9] pinctrl: mediatek: moore: check if pin_desc is valid before use
-Date: Tue, 14 Sep 2021 16:51:32 +0800
-Message-ID: <20210914085137.31761-5-sam.shih@mediatek.com>
+Subject: [v3,2/9] clk: mediatek: add mt7986 clock IDs
+Date: Tue, 14 Sep 2021 16:51:30 +0800
+Message-ID: <20210914085137.31761-3-sam.shih@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210914085137.31761-1-sam.shih@mediatek.com>
 References: <20210914085137.31761-1-sam.shih@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210914_020141_314915_49D09C6D 
-X-CRM114-Status: GOOD (  14.68  )
+X-CRM114-CacheID: sfid-20210914_020142_014352_E363A457 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,99 +95,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Certain SoC are missing the middle part gpios in consecutive pins,
-it's better to check if mtk_pin_desc is a valid pin for the extensibility
+Add MT7986 clock dt-bindings, include topckgen, apmixedsys,
+infracfg, and ethernet subsystem clocks.
 
 Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-Acked-by: Sean Wang <sean.wang@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
 
 ---
-v3: added an Acked-by tag.
-v2: applied the comment suggested by reviewers:
-    - for the pins not ballout, we can fill .name in struct mtk_pin_desc
-      as NULL and return -ENOTSUPP in gpio/pinconf ops.
+v3: Fixed SGMII wrong ID and added an Acked-by tag
+v2: changed to dual licience
+    applied the comment suggested by reviewers:
+    - removed 1:1 factor clock
+    - renamed factor clock for easier to understand
 ---
- drivers/pinctrl/mediatek/pinctrl-moore.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ include/dt-bindings/clock/mt7986-clk.h | 169 +++++++++++++++++++++++++
+ 1 file changed, 169 insertions(+)
+ create mode 100644 include/dt-bindings/clock/mt7986-clk.h
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-moore.c b/drivers/pinctrl/mediatek/pinctrl-moore.c
-index 3a4a23c40a71..ad3b67163973 100644
---- a/drivers/pinctrl/mediatek/pinctrl-moore.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-moore.c
-@@ -60,6 +60,8 @@ static int mtk_pinmux_set_mux(struct pinctrl_dev *pctldev,
- 		int pin = grp->pins[i];
- 
- 		desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
-+		if (!desc->name)
-+			return -ENOTSUPP;
- 
- 		mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_MODE,
- 				 pin_modes[i]);
-@@ -76,6 +78,8 @@ static int mtk_pinmux_gpio_request_enable(struct pinctrl_dev *pctldev,
- 	const struct mtk_pin_desc *desc;
- 
- 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
-+	if (!desc->name)
-+		return -ENOTSUPP;
- 
- 	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_MODE,
- 				hw->soc->gpio_m);
-@@ -89,6 +93,8 @@ static int mtk_pinmux_gpio_set_direction(struct pinctrl_dev *pctldev,
- 	const struct mtk_pin_desc *desc;
- 
- 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
-+	if (!desc->name)
-+		return -ENOTSUPP;
- 
- 	/* hardware would take 0 as input direction */
- 	return mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DIR, !input);
-@@ -103,6 +109,8 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 	const struct mtk_pin_desc *desc;
- 
- 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
-+	if (!desc->name)
-+		return -ENOTSUPP;
- 
- 	switch (param) {
- 	case PIN_CONFIG_BIAS_DISABLE:
-@@ -218,6 +226,8 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 	int cfg, err = 0;
- 
- 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[pin];
-+	if (!desc->name)
-+		return -ENOTSUPP;
- 
- 	for (cfg = 0; cfg < num_configs; cfg++) {
- 		param = pinconf_to_config_param(configs[cfg]);
-@@ -435,6 +445,8 @@ static int mtk_gpio_get(struct gpio_chip *chip, unsigned int gpio)
- 	int value, err;
- 
- 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-+	if (!desc->name)
-+		return -ENOTSUPP;
- 
- 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DI, &value);
- 	if (err)
-@@ -449,6 +461,10 @@ static void mtk_gpio_set(struct gpio_chip *chip, unsigned int gpio, int value)
- 	const struct mtk_pin_desc *desc;
- 
- 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[gpio];
-+	if (!desc->name) {
-+		dev_err(hw->dev, "Failed to set gpio %d\n", gpio);
-+		return;
-+	}
- 
- 	mtk_hw_set_value(hw, desc, PINCTRL_PIN_REG_DO, !!value);
- }
-@@ -490,6 +506,8 @@ static int mtk_gpio_set_config(struct gpio_chip *chip, unsigned int offset,
- 	u32 debounce;
- 
- 	desc = (const struct mtk_pin_desc *)&hw->soc->pins[offset];
-+	if (!desc->name)
-+		return -ENOTSUPP;
- 
- 	if (!hw->eint ||
- 	    pinconf_to_config_param(config) != PIN_CONFIG_INPUT_DEBOUNCE ||
+diff --git a/include/dt-bindings/clock/mt7986-clk.h b/include/dt-bindings/clock/mt7986-clk.h
+new file mode 100644
+index 000000000000..5a9b169324b0
+--- /dev/null
++++ b/include/dt-bindings/clock/mt7986-clk.h
+@@ -0,0 +1,169 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Sam Shih <sam.shih@mediatek.com>
++ */
++
++#ifndef _DT_BINDINGS_CLK_MT7986_H
++#define _DT_BINDINGS_CLK_MT7986_H
++
++/* APMIXEDSYS */
++
++#define CLK_APMIXED_ARMPLL		0
++#define CLK_APMIXED_NET2PLL		1
++#define CLK_APMIXED_MMPLL		2
++#define CLK_APMIXED_SGMPLL		3
++#define CLK_APMIXED_WEDMCUPLL		4
++#define CLK_APMIXED_NET1PLL		5
++#define CLK_APMIXED_MPLL		6
++#define CLK_APMIXED_APLL2		7
++
++/* TOPCKGEN */
++
++#define CLK_TOP_XTAL			0
++#define CLK_TOP_XTAL_D2			1
++#define CLK_TOP_RTC_32K			2
++#define CLK_TOP_RTC_32P7K		3
++#define CLK_TOP_MPLL_D2			4
++#define CLK_TOP_MPLL_D4			5
++#define CLK_TOP_MPLL_D8			6
++#define CLK_TOP_MPLL_D8_D2		7
++#define CLK_TOP_MPLL_D3_D2		8
++#define CLK_TOP_MMPLL_D2		9
++#define CLK_TOP_MMPLL_D4		10
++#define CLK_TOP_MMPLL_D8		11
++#define CLK_TOP_MMPLL_D8_D2		12
++#define CLK_TOP_MMPLL_D3_D8		13
++#define CLK_TOP_MMPLL_U2PHY		14
++#define CLK_TOP_APLL2_D4		15
++#define CLK_TOP_NET1PLL_D4		16
++#define CLK_TOP_NET1PLL_D5		17
++#define CLK_TOP_NET1PLL_D5_D2		18
++#define CLK_TOP_NET1PLL_D5_D4		19
++#define CLK_TOP_NET1PLL_D8_D2		20
++#define CLK_TOP_NET1PLL_D8_D4		21
++#define CLK_TOP_NET2PLL_D4		22
++#define CLK_TOP_NET2PLL_D4_D2		23
++#define CLK_TOP_NET2PLL_D3_D2		24
++#define CLK_TOP_WEDMCUPLL_D5_D2		25
++#define CLK_TOP_NFI1X_SEL		26
++#define CLK_TOP_SPINFI_SEL		27
++#define CLK_TOP_SPI_SEL			28
++#define CLK_TOP_SPIM_MST_SEL		29
++#define CLK_TOP_UART_SEL		30
++#define CLK_TOP_PWM_SEL			31
++#define CLK_TOP_I2C_SEL			32
++#define CLK_TOP_PEXTP_TL_SEL		33
++#define CLK_TOP_EMMC_250M_SEL		34
++#define CLK_TOP_EMMC_416M_SEL		35
++#define CLK_TOP_F_26M_ADC_SEL		36
++#define CLK_TOP_DRAMC_SEL		37
++#define CLK_TOP_DRAMC_MD32_SEL		38
++#define CLK_TOP_SYSAXI_SEL		39
++#define CLK_TOP_SYSAPB_SEL		40
++#define CLK_TOP_ARM_DB_MAIN_SEL		41
++#define CLK_TOP_ARM_DB_JTSEL		42
++#define CLK_TOP_NETSYS_SEL		43
++#define CLK_TOP_NETSYS_500M_SEL		44
++#define CLK_TOP_NETSYS_MCU_SEL		45
++#define CLK_TOP_NETSYS_2X_SEL		46
++#define CLK_TOP_SGM_325M_SEL		47
++#define CLK_TOP_SGM_REG_SEL		48
++#define CLK_TOP_A1SYS_SEL		49
++#define CLK_TOP_CONN_MCUSYS_SEL		50
++#define CLK_TOP_EIP_B_SEL		51
++#define CLK_TOP_PCIE_PHY_SEL		52
++#define CLK_TOP_USB3_PHY_SEL		53
++#define CLK_TOP_F26M_SEL		54
++#define CLK_TOP_AUD_L_SEL		55
++#define CLK_TOP_A_TUNER_SEL		56
++#define CLK_TOP_U2U3_SEL		57
++#define CLK_TOP_U2U3_SYS_SEL		58
++#define CLK_TOP_U2U3_XHCI_SEL		59
++#define CLK_TOP_DA_U2_REFSEL		60
++#define CLK_TOP_DA_U2_CK_1P_SEL		61
++#define CLK_TOP_AP2CNN_HOST_SEL		62
++#define CLK_TOP_JTAG			63
++
++/* INFRACFG */
++
++#define CLK_INFRA_SYSAXI_D2		0
++#define CLK_INFRA_UART0_SEL		1
++#define CLK_INFRA_UART1_SEL		2
++#define CLK_INFRA_UART2_SEL		3
++#define CLK_INFRA_SPI0_SEL		4
++#define CLK_INFRA_SPI1_SEL		5
++#define CLK_INFRA_PWM1_SEL		6
++#define CLK_INFRA_PWM2_SEL		7
++#define CLK_INFRA_PWM_BSEL		8
++#define CLK_INFRA_PCIE_SEL		9
++#define CLK_INFRA_GPT_STA		10
++#define CLK_INFRA_PWM_HCK		11
++#define CLK_INFRA_PWM_STA		12
++#define CLK_INFRA_PWM1_CK		13
++#define CLK_INFRA_PWM2_CK		14
++#define CLK_INFRA_CQ_DMA_CK		15
++#define CLK_INFRA_EIP97_CK		16
++#define CLK_INFRA_AUD_BUS_CK		17
++#define CLK_INFRA_AUD_26M_CK		18
++#define CLK_INFRA_AUD_L_CK		19
++#define CLK_INFRA_AUD_AUD_CK		20
++#define CLK_INFRA_AUD_EG2_CK		21
++#define CLK_INFRA_DRAMC_26M_CK		22
++#define CLK_INFRA_DBG_CK		23
++#define CLK_INFRA_AP_DMA_CK		24
++#define CLK_INFRA_SEJ_CK		25
++#define CLK_INFRA_SEJ_13M_CK		26
++#define CLK_INFRA_THERM_CK		27
++#define CLK_INFRA_I2C0_CK		28
++#define CLK_INFRA_UART0_CK		29
++#define CLK_INFRA_UART1_CK		30
++#define CLK_INFRA_UART2_CK		31
++#define CLK_INFRA_NFI1_CK		32
++#define CLK_INFRA_SPINFI1_CK		33
++#define CLK_INFRA_NFI_HCK_CK		34
++#define CLK_INFRA_SPI0_CK		35
++#define CLK_INFRA_SPI1_CK		36
++#define CLK_INFRA_SPI0_HCK_CK		37
++#define CLK_INFRA_SPI1_HCK_CK		38
++#define CLK_INFRA_FRTC_CK		39
++#define CLK_INFRA_MSDC_CK		40
++#define CLK_INFRA_MSDC_HCK_CK		41
++#define CLK_INFRA_MSDC_133M_CK		42
++#define CLK_INFRA_MSDC_66M_CK		43
++#define CLK_INFRA_ADC_26M_CK		44
++#define CLK_INFRA_ADC_FRC_CK		45
++#define CLK_INFRA_FBIST2FPC_CK		46
++#define CLK_INFRA_IUSB_133_CK		47
++#define CLK_INFRA_IUSB_66M_CK		48
++#define CLK_INFRA_IUSB_SYS_CK		49
++#define CLK_INFRA_IUSB_CK		50
++#define CLK_INFRA_IPCIE_CK		51
++#define CLK_INFRA_IPCIE_PIPE_CK		52
++#define CLK_INFRA_IPCIER_CK		53
++#define CLK_INFRA_IPCIEB_CK		54
++#define CLK_INFRA_TRNG_CK		55
++
++/* SGMIISYS_0 */
++
++#define CLK_SGMII0_TX250M_EN		0
++#define CLK_SGMII0_RX250M_EN		1
++#define CLK_SGMII0_CDR_REF		2
++#define CLK_SGMII0_CDR_FB		3
++
++/* SGMIISYS_1 */
++
++#define CLK_SGMII1_TX250M_EN		0
++#define CLK_SGMII1_RX250M_EN		1
++#define CLK_SGMII1_CDR_REF		2
++#define CLK_SGMII1_CDR_FB		3
++
++/* ETHSYS */
++
++#define CLK_ETH_FE_EN			0
++#define CLK_ETH_GP2_EN			1
++#define CLK_ETH_GP1_EN			2
++#define CLK_ETH_WOCPU1_EN		3
++#define CLK_ETH_WOCPU0_EN		4
++
++#endif /* _DT_BINDINGS_CLK_MT7986_H */
 -- 
 2.29.2
 
