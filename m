@@ -5,16 +5,16 @@ X-Spam-Level:
 X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E8175C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 02:29:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 88DB0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 02:30:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AFEC760E9B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 02:29:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AFEC760E9B
+	by mail.kernel.org (Postfix) with ESMTPS id 5BEFC60E9B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Sep 2021 02:30:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5BEFC60E9B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,33 +23,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6yVaAgMj8ryumqnCzK8B3qsrvFlSzdouzx7yOFjIVOE=; b=Y7LWBEwY6jGDOD
-	dlEE6mZpn40Sx8tKy/PRgFHKGYsQueg3udVQjKgHQd+AA92ERqCN1Wn0P3BFUNp96BtdQhxpQNaQm
-	dZ8QsubTUjI6RQS13PW/afqk6THBOvPDuaAc6BQQl8GfRHeA4lyHpvVLMWFKCjdG8UvjFNowCW9/k
-	PloLpIpPI9i7dzg7HbOZy/Tgfg8/LKM/6tAp7rfHauydrdezyFRwf+vNNZi+X6w1pW8KNkJRT1SO3
-	F/1SGseFxlWD4lpQvtJVxeNfzv4th4PJlJan8GfozFa4s0iAnQaQtKqt7yX0w5oTk698Phz5KwXgg
-	vUCsWX8iYqlc1vsQLKIw==;
+	List-Owner; bh=QqNzZmmfVoL6OtMuEKiZy3OTuyqtnej5KT7N5W52cf4=; b=vqUuTWe6yyHL5W
+	EnijeCdGuji2BCSpgJEQiNJdaf+2+3U21JQY3EJg2pvGckEdo+6qeIdYgB7q9edi8TGkuPieLaVdt
+	zUXvke9DdMSXOEIF0PzkSjD4tkGjMP4GeI41pDoQkWltJWTj+O5ixTg686EW9u6nmrTKDKp5oMXGq
+	5yXZ6h3oUr9wKooS/qjG0qFPRyOGw1wkqtY1Gu1iQjEPENp+cDZdRoBScLW4ezHHJZIa+F3fvC3vd
+	UH2A+FtKNzBSMbUZVDBI83Y092VekPqD45V4zbBWRdJbjS4kXn9VvweXrLDbKffhiCUarfds+R55F
+	iYQqVEfhipQPnrpFicXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mPyCd-003s9H-Hp; Tue, 14 Sep 2021 02:29:43 +0000
+	id 1mPyCh-003sAy-68; Tue, 14 Sep 2021 02:29:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mPyA4-003qju-74; Tue, 14 Sep 2021 02:27:05 +0000
-X-UUID: e9024602b07e42e5896c290c41db2caa-20210913
-X-UUID: e9024602b07e42e5896c290c41db2caa-20210913
+ id 1mPyA4-003qk7-78; Tue, 14 Sep 2021 02:27:05 +0000
+X-UUID: 8a4a6d340eaf4addb6fe95b25943651d-20210913
+X-UUID: 8a4a6d340eaf4addb6fe95b25943651d-20210913
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chun-jie.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 340671999; Mon, 13 Sep 2021 19:26:59 -0700
+ with ESMTP id 841545871; Mon, 13 Sep 2021 19:26:59 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Sep 2021 19:16:57 -0700
+ 15.0.1497.2; Mon, 13 Sep 2021 19:17:48 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Sep 2021 10:16:56 +0800
+ 15.0.1497.2; Tue, 14 Sep 2021 10:17:46 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 14 Sep 2021 10:16:56 +0800
+ Frontend Transport; Tue, 14 Sep 2021 10:17:46 +0800
 From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
  <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
@@ -59,17 +59,17 @@ CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Chun-Jie Chen
  <chun-jie.chen@mediatek.com>
-Subject: [v3 04/24] clk: mediatek: Add API for clock resource recycle
-Date: Tue, 14 Sep 2021 10:16:13 +0800
-Message-ID: <20210914021633.26377-5-chun-jie.chen@mediatek.com>
+Subject: [v3 24/24] clk: mediatek: Add MT8195 apusys clock support
+Date: Tue, 14 Sep 2021 10:16:33 +0800
+Message-ID: <20210914021633.26377-25-chun-jie.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210914021633.26377-1-chun-jie.chen@mediatek.com>
 References: <20210914021633.26377-1-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210913_192704_331276_58C4E660 
-X-CRM114-Status: GOOD (  10.18  )
+X-CRM114-CacheID: sfid-20210913_192704_337792_A3A4ABF2 
+X-CRM114-Status: GOOD (  17.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,48 +86,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order to avoid resource leak when fail clock registration appears,
-so adds the common interface to handle it.
+Add MT8195 apusys clock controller which provides PLLs
+in AI processor Unit.
 
 Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
- drivers/clk/mediatek/clk-mtk.c | 9 +++++++++
- drivers/clk/mediatek/clk-mtk.h | 1 +
- 2 files changed, 10 insertions(+)
+ drivers/clk/mediatek/Makefile                |  3 +-
+ drivers/clk/mediatek/clk-mt8195-apusys_pll.c | 92 ++++++++++++++++++++
+ 2 files changed, 94 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/clk/mediatek/clk-mt8195-apusys_pll.c
 
-diff --git a/drivers/clk/mediatek/clk-mtk.c b/drivers/clk/mediatek/clk-mtk.c
-index 4b6096c44d74..c3d385c0cfcb 100644
---- a/drivers/clk/mediatek/clk-mtk.c
-+++ b/drivers/clk/mediatek/clk-mtk.c
-@@ -43,6 +43,15 @@ struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num)
- 	return NULL;
- }
- 
-+void mtk_free_clk_data(struct clk_onecell_data *clk_data)
-+{
-+	if (!clk_data)
-+		return;
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 3c602af49c0a..dc96038a0155 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -86,6 +86,7 @@ obj-$(CONFIG_COMMON_CLK_MT8195) += clk-mt8195-apmixedsys.o clk-mt8195-topckgen.o
+ 				   clk-mt8195-ipe.o clk-mt8195-mfg.o clk-mt8195-scp_adsp.o \
+ 				   clk-mt8195-vdec.o clk-mt8195-vdo0.o clk-mt8195-vdo1.o \
+ 				   clk-mt8195-venc.o clk-mt8195-vpp0.o clk-mt8195-vpp1.o \
+-				   clk-mt8195-wpe.o clk-mt8195-imp_iic_wrap.o
++				   clk-mt8195-wpe.o clk-mt8195-imp_iic_wrap.o \
++				   clk-mt8195-apusys_pll.o
+ obj-$(CONFIG_COMMON_CLK_MT8516) += clk-mt8516.o
+ obj-$(CONFIG_COMMON_CLK_MT8516_AUDSYS) += clk-mt8516-aud.o
+diff --git a/drivers/clk/mediatek/clk-mt8195-apusys_pll.c b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
+new file mode 100644
+index 000000000000..f1c84186346e
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt8195-apusys_pll.c
+@@ -0,0 +1,92 @@
++// SPDX-License-Identifier: GPL-2.0-only
++//
++// Copyright (c) 2021 MediaTek Inc.
++// Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 +
-+	kfree(clk_data->clks);
-+	kfree(clk_data);
++#include "clk-mtk.h"
++
++#include <dt-bindings/clock/mt8195-clk.h>
++#include <linux/clk-provider.h>
++#include <linux/platform_device.h>
++
++#define MT8195_PLL_FMAX		(3800UL * MHZ)
++#define MT8195_PLL_FMIN		(1500UL * MHZ)
++#define MT8195_INTEGER_BITS	(8)
++#define MT8195_PCW_BITS		(22)
++#define MT8195_POSDIV_SHIFT	(24)
++#define MT8195_PLL_EN_BIT	(0)
++#define MT8195_PCW_SHIFT	(0)
++
++/*
++ * The "en_reg" and "pcw_chg_reg" fields are standard offset register compared
++ * with "reg" field, so set zero to imply it.
++ * No tuner control in apu pll, so set "tuner_XXX" as zero to imply it.
++ * No rst or post divider enable in apu pll, so set "rst_bar_mask" and "en_mask"
++ * as zero to imply it.
++ */
++#define PLL(_id, _name, _reg, _pwr_reg, _pd_reg, _pcw_reg) {		\
++		.id = _id,						\
++		.name = _name,						\
++		.reg = _reg,						\
++		.pwr_reg = _pwr_reg,					\
++		.en_mask = 0,						\
++		.flags = 0,						\
++		.rst_bar_mask = 0,					\
++		.fmax = MT8195_PLL_FMAX,				\
++		.fmin = MT8195_PLL_FMIN,				\
++		.pcwbits = MT8195_PCW_BITS,				\
++		.pcwibits = MT8195_INTEGER_BITS,			\
++		.pd_reg = _pd_reg,					\
++		.pd_shift = MT8195_POSDIV_SHIFT,			\
++		.tuner_reg = 0,						\
++		.tuner_en_reg = 0,					\
++		.tuner_en_bit = 0,					\
++		.pcw_reg = _pcw_reg,					\
++		.pcw_shift = MT8195_PCW_SHIFT,				\
++		.pcw_chg_reg = 0,					\
++		.en_reg = 0,						\
++		.pll_en_bit = MT8195_PLL_EN_BIT,			\
++	}
++
++static const struct mtk_pll_data apusys_plls[] = {
++	PLL(CLK_APUSYS_PLL_APUPLL, "apusys_pll_apupll", 0x008, 0x014, 0x00c, 0x00c),
++	PLL(CLK_APUSYS_PLL_NPUPLL, "apusys_pll_npupll", 0x018, 0x024, 0x01c, 0x01c),
++	PLL(CLK_APUSYS_PLL_APUPLL1, "apusys_pll_apupll1", 0x028, 0x034, 0x02c, 0x02c),
++	PLL(CLK_APUSYS_PLL_APUPLL2, "apusys_pll_apupll2", 0x038, 0x044, 0x03c, 0x03c),
++};
++
++static int clk_mt8195_apusys_pll_probe(struct platform_device *pdev)
++{
++	struct clk_onecell_data *clk_data;
++	struct device_node *node = pdev->dev.of_node;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(CLK_APUSYS_PLL_NR_CLK);
++	if (!clk_data)
++		return -ENOMEM;
++
++	mtk_clk_register_plls(node, apusys_plls, ARRAY_SIZE(apusys_plls), clk_data);
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	if (r)
++		goto free_apusys_pll_data;
++
++	return r;
++
++free_apusys_pll_data:
++	mtk_free_clk_data(clk_data);
++	return r;
 +}
 +
- void mtk_clk_register_fixed_clks(const struct mtk_fixed_clk *clks,
- 		int num, struct clk_onecell_data *clk_data)
- {
-diff --git a/drivers/clk/mediatek/clk-mtk.h b/drivers/clk/mediatek/clk-mtk.h
-index 7de41c3b3206..0ff289d93452 100644
---- a/drivers/clk/mediatek/clk-mtk.h
-+++ b/drivers/clk/mediatek/clk-mtk.h
-@@ -202,6 +202,7 @@ void mtk_clk_register_dividers(const struct mtk_clk_divider *mcds,
- 				struct clk_onecell_data *clk_data);
- 
- struct clk_onecell_data *mtk_alloc_clk_data(unsigned int clk_num);
-+void mtk_free_clk_data(struct clk_onecell_data *clk_data);
- 
- #define HAVE_RST_BAR	BIT(0)
- #define PLL_AO		BIT(1)
++static const struct of_device_id of_match_clk_mt8195_apusys_pll[] = {
++	{ .compatible = "mediatek,mt8195-apusys_pll", },
++	{}
++};
++
++static struct platform_driver clk_mt8195_apusys_pll_drv = {
++	.probe = clk_mt8195_apusys_pll_probe,
++	.driver = {
++		.name = "clk-mt8195-apusys_pll",
++		.of_match_table = of_match_clk_mt8195_apusys_pll,
++	},
++};
++builtin_platform_driver(clk_mt8195_apusys_pll_drv);
 -- 
 2.18.0
 
