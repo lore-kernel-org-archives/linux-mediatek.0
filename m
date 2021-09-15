@@ -6,14 +6,14 @@ X-Spam-Status: No, score=-9.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS,URIBL_BLOCKED autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7496C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:24:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 82B29C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:24:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8378D61166
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:24:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8378D61166
+	by mail.kernel.org (Postfix) with ESMTPS id 4AD8C61164
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:24:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4AD8C61164
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -22,35 +22,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XU9MhLIAfTtd7NyfwZDiwqqOdZJPTXZFgLMTmN4jnIU=; b=JFlGOu3keHWkHZ
-	vygv6ktwFoSIA44mK6WtaLGCNeQWnL52WBDlKpdSYueoCM572a6oHbAiRPk8qfTPgVs3a9+aThFMB
-	nB/++sjIJ5920jIZNgjOvnnz1j8B0sp+pkIQHK+7E+mBmXuFpZy6mXdMyAg+7PB0A4V2pQvCks7iU
-	G9GX7XedjIIkwvIQ2CTz6ue1CfyDa+MZ8B3dQkzP+GLKMkrCMm5QPwqe1H//OPJjiguwVKTshYfcK
-	kSPZndhHgzjo9LzuDZ2FZnfP08+eL+d2lRPsrA2v5uTlq8gLyT060E1k3X9FO+jnSG8jhT1GU8QEk
-	wHerWlFHo3JC0qe0iYSA==;
+	List-Owner; bh=6JiBnVubO04FcBXuw02d+nPFj/HE43J5zZM+fmIfA0E=; b=BPhn8yMDNPzo2t
+	2NkES73/27U6wEjnRIh+o99REm6vCEyPaBBw5wkNBGaf8HEJ3A8gaLITEv6QwrOCaN7ksWGIwEdPP
+	msFW/RO835F8rZInhyc8Jf7XCVMut7Q969EWbojdfaTZWvnH36oewJHQkgYPVH3FLDmUT45NzQVtu
+	Fu/TeKkGo/WkkR1OGYX5/+qoYpNBokgScM5B5nBBgz4QOEZ76kMplNF/PulVrko68UmUnA0MyVAfP
+	7CTZF1kK72h9UFP75Hje0pnX7EgyfRfG7AkN5ryILVIcrNXSRjDtJYuxUVH3/zlceX92/tulVuF79
+	a8ZZyrxtxtnbmI4lSXpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQJeb-007o7L-In; Wed, 15 Sep 2021 01:24:01 +0000
+	id 1mQJeq-007oCF-KJ; Wed, 15 Sep 2021 01:24:16 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQJeL-007o2R-1Z; Wed, 15 Sep 2021 01:23:46 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A439E61166;
- Wed, 15 Sep 2021 01:23:44 +0000 (UTC)
+ id 1mQJeQ-007o3m-FY; Wed, 15 Sep 2021 01:23:51 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 18B0C61164;
+ Wed, 15 Sep 2021 01:23:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631669024;
- bh=6c/HJVFP1YE2hm4UYxB5Uc5g2ys+3LGEZlpE6HA1oTQ=;
+ s=k20201202; t=1631669030;
+ bh=64nXdNaboRHGPiOfE18v9wd+99WndHPRdbRxXUIuN+g=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=trZtis5m21H9aS5vZFObZ9Ac1e8xoyIoLSFkb4Y0pKThjdj2JDQfJf/Ljo9h6F2Gx
- usfcjsilatOf6USFadeAW6obLvECDSwNXXB4u4XLQn0ojOZGDEN3HRIhnj9DOdoqMC
- YgL0w7Vqh9ADWxpbJGxRJ/8EIpIKD/jBR0FK2NMDTgfJYpEFNzsUW/I87Tk9I626Lo
- LwPUlUAOQozQvoadycJZ9nJGIvoJDkzGMzhYcS2gtRAGl6xxpPeyNbWAV428C8z/9U
- U6npT+G+oDglMpsBdtOSwfl2HDZeHJZQa0UyvAFlH74m3QXVb6ipbRlsqGovGn1mll
- dACeBvsGXdpLw==
+ b=GmOFHx8nhiSekvsuh0utn7Luy8tL+mdg1YKFxPgmqZBISrPzO5cqGaYU9yNwbPKoM
+ JaZjitWwKECn+V/ppfNMZIYtBma/z6T26T6KYEZD+0suX5xo5k/Hy7/2ctUdoC3ycU
+ Mt+agjcpT5jBx3SBm6HxmfSwWA8pFo6KyqS4qPn+S36yMxvYUp/cAc4nY2eGevg4dQ
+ rvU4nS81FofZm/kH3pt/yyAlN4tjPHSnmK9icVN/qXvvVQ+9urDS4XENhrwtWhXmlY
+ M9gh349FQTamm7A7jHeRNQXKA+4Bi94TS/eQX1+tgn4Y2K3rxrhUvR6AZh1tpfg2ni
+ Wtcv6wUQjrBhA==
 MIME-Version: 1.0
-In-Reply-To: <20210901222526.31065-2-miles.chen@mediatek.com>
+In-Reply-To: <20210901222526.31065-3-miles.chen@mediatek.com>
 References: <20210901222526.31065-1-miles.chen@mediatek.com>
- <20210901222526.31065-2-miles.chen@mediatek.com>
-Subject: Re: [PATCH v3 1/3] clk: composite: export clk_register_composite
+ <20210901222526.31065-3-miles.chen@mediatek.com>
+Subject: Re: [PATCH v3 2/3] clk: mediatek: support COMMON_CLK_MEDIATEK module
+ build
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: Wendell Lin <wendell.lin@mediatek.com>,
  Hanks Chen <hanks.chen@mediatek.com>, linux-clk@vger.kernel.org,
@@ -60,12 +61,12 @@ Cc: Wendell Lin <wendell.lin@mediatek.com>,
 To: Matthias Brugger <matthias.bgg@gmail.com>,
  Michael Turquette <mturquette@baylibre.com>,
  Miles Chen <miles.chen@mediatek.com>
-Date: Tue, 14 Sep 2021 18:23:43 -0700
-Message-ID: <163166902348.763609.9050267699584062754@swboyd.mtv.corp.google.com>
+Date: Tue, 14 Sep 2021 18:23:48 -0700
+Message-ID: <163166902892.763609.977824990105929862@swboyd.mtv.corp.google.com>
 User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210914_182345_123231_BA25E5D4 
-X-CRM114-Status: UNSURE (   6.22  )
+X-CRM114-CacheID: sfid-20210914_182350_582578_5955E4FD 
+X-CRM114-Status: UNSURE (   6.00  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,9 +84,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Miles Chen (2021-09-01 15:25:24)
-> To support module build of mediatek clk drivers,
-> it is necessary to export clk_register_composite.
+Quoting Miles Chen (2021-09-01 15:25:25)
+> To support COMMON_CLK_MEDIATEK module build,
+> add MODULE_LICENSE and export necessary symbols.
 > 
 > Cc: Stephen Boyd <sboyd@kernel.org>
 > Cc: Hanks Chen <hanks.chen@mediatek.com>
