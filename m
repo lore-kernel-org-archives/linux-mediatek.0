@@ -2,85 +2,77 @@ Return-Path: <SRS0=Ndyv=OF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
-	autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 32C0CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 16:05:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 92169C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 22:32:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED02A611CA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 16:05:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ED02A611CA
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=suse.cz
+	by mail.kernel.org (Postfix) with ESMTPS id 5A99461178
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 22:32:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5A99461178
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ReKfV7vwruvVjegYqDDa2S3gw+DDo2Jy/UC1Hw+GX3k=; b=3FhnH97zdgWuAp
-	8nsxKd82f6zVFPRgM6XXFVmZPMsXcb1i6Ui5thWS8HP5LzjKC1FJzfZa2Ziw0uiP0ezecuAPU3+b0
-	LfqTHHAw2+odLGjnnHbmJL9oBJxrip6QZsowf/kaae+2HCYvI5HNWh7IlYeEoFl0aV4SUXHCPfDnq
-	Ryx+gxMckPd0wXgvqdA4/QGpx5pPsTxN07U0JBfO16qWNKZSmIojGt0l43xrzlJtQlk2iFWP+vXmj
-	jxRJPP9tlMizI2BbXV/J8LPsoJj+z4mt+D+W82QT28LYbHH9Cu1/8QJT/Mru+HREuZXEcGzHjyD8J
-	sp+5/aDOVmArAAoz0ojQ==;
+	List-Owner; bh=QwPY+ba27L5f0Yt8Uy/+gCTsMIJFFynIBmG52Mrnd0M=; b=273rRUb6WT44Cm
+	eSHqipW56NMt+9xX9zU84dypvg1sQbbs4tEbp4ARU0JGoX6yxwBeqE+HyFn1QDLtX/CQ4ZCWF8++7
+	K7jfxOhVXTaUmt7Bx5GJ3Oysxn9KyB/rm4zxAaM8XsNJfuTSLug+2MU70sEXB+OmtKkXbMopUOEtB
+	4egbMR2QKyS5EiPLqjVekhDffZHkq4SbZCWgHJCkqfIvkDV+rZwVp0Y+QlrSaweY5TEYeNNItyvY6
+	Rhf73Sz9+AEtq3fHvaThTvc5EXgA9ga8mcsGIX/c0xvMarHfjIBAY7cdQV2cnOp3ftXEHhri8wL0Z
+	9FR/gyWj0P5zokYRolyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQXPj-009VG4-Kh; Wed, 15 Sep 2021 16:05:35 +0000
-Received: from smtp-out1.suse.de ([195.135.220.28])
+	id 1mQdRl-00A0a5-CQ; Wed, 15 Sep 2021 22:32:05 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQXPf-009VEx-S3; Wed, 15 Sep 2021 16:05:33 +0000
-Received: from relay2.suse.de (relay2.suse.de [149.44.160.134])
- by smtp-out1.suse.de (Postfix) with ESMTP id 073D222296;
- Wed, 15 Sep 2021 16:05:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
- t=1631721928; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=LdcHbBnWgBJkZLhfI91fatjdoluwa+ngRYImj4hNKsw=;
- b=Z2CECb+HpdKgJoPke2KE6qM+CoCoBBotOugtyIC/nOe+NQrTpSmNnshRy78LREFhgDiQBv
- i8YcCivfhW5gDUYu38PbY4u0mo1kX3tUNRjThse906PqkMQNnfHcfbPqxBYO90Yd8JE9bc
- OYV403CIzF+YolxvC9bj31cvjhENQEM=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
- s=susede2_ed25519; t=1631721928;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=LdcHbBnWgBJkZLhfI91fatjdoluwa+ngRYImj4hNKsw=;
- b=72QXXUVdo3RcUbY60/Jor7fuRCZ/SYVWCSP0x42vgHPBahWnRmsxeRai1WgHefivyjMSif
- 9DnJJu1IQaa8+mCA==
-Received: from lion.mk-sys.cz (unknown [10.100.200.14])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by relay2.suse.de (Postfix) with ESMTPS id CD662A3B90;
- Wed, 15 Sep 2021 16:05:26 +0000 (UTC)
-Received: by lion.mk-sys.cz (Postfix, from userid 1000)
- id B2BD7607E0; Wed, 15 Sep 2021 18:05:26 +0200 (CEST)
-Date: Wed, 15 Sep 2021 18:05:26 +0200
-From: Michal Kubecek <mkubecek@suse.cz>
-To: Jisheng Zhang <jszhang3@mail.ustc.edu.cn>
-Cc: Miles Chen <miles.chen@mediatek.com>,
- Paul Walmsley <paul.walmsley@sifive.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Jisheng Zhang <jszhang@kernel.org>, linux-kernel@vger.kernel.org,
- linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
- wsd_upstream@mediatek.com
-Subject: Re: [PATCH] scripts/sorttable: riscv: fix undelcred identifier
- 'EM_RISCV' error
-Message-ID: <20210915160526.tittz3fewddjrqu3@lion.mk-sys.cz>
-References: <20210913030625.4525-1-miles.chen@mediatek.com>
- <20210915215432.02a5e08e@xhacker>
+ id 1mQdRM-00A0WH-IJ; Wed, 15 Sep 2021 22:31:42 +0000
+X-UUID: ca1f964c6f2c41d885dfb45de711d234-20210915
+X-UUID: ca1f964c6f2c41d885dfb45de711d234-20210915
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jitao.shi@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1904553866; Wed, 15 Sep 2021 15:31:33 -0700
+Received: from MTKMBS33N1.mediatek.inc (172.27.4.75) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Sep 2021 15:31:31 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS33N1.mediatek.inc
+ (172.27.4.75) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 16 Sep 2021 06:31:27 +0800
+Received: from mszsdclx1018.gcn.mediatek.inc (10.16.6.18) by
+ MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 16 Sep 2021 06:31:27 +0800
+From: Jitao Shi <jitao.shi@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "Daniel
+ Vetter" <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>
+CC: <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <ck.hu@mediatek.com>,
+ <stonea168@163.com>, <huijuan.xie@mediatek.com>, <rex-bc.chen@mediatek.com>,
+ <shuijing.li@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
+Subject: [PATCH v7 3/3] drm/bridge: anx7625: config hs packets end aligned to
+ avoid screen shift
+Date: Thu, 16 Sep 2021 06:31:17 +0800
+Message-ID: <20210915223117.7857-4-jitao.shi@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210915223117.7857-1-jitao.shi@mediatek.com>
+References: <20210915223117.7857-1-jitao.shi@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20210915215432.02a5e08e@xhacker>
+X-TM-SNTS-SMTP: 1CBBB7F95158FC69DBD6EFE178D63E5FD6817AF989C525D5C38CD30A0E8D35B22000:8
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210915_090532_105643_EEF7DA96 
-X-CRM114-Status: GOOD (  22.66  )
+X-CRM114-CacheID: sfid-20210915_153140_648847_7CE886DE 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,60 +89,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 15, 2021 at 09:54:32PM +0800, Jisheng Zhang wrote:
-> On Mon, 13 Sep 2021 11:06:25 +0800
-> Miles Chen <miles.chen@mediatek.com> wrote:
-> 
-> > Fix the following build break by adding a conditional definition
-> > of EM_RISCV in order to allow cross-compilation on machines
-> > which do not have EM_RISCV definition in their host.
-> > 
-> > build break log from [1]:
-> > scripts/sorttable.c:352:7: error: use of undeclared identifier 'EM_RISCV'
-> 
-> Looks strange I can't reproduce it. FWICT, this may be seen with some old
-> toolchains.
+This device requires the packets on lanes aligned at the end to fix
+screen shift or scroll.
 
-I checked the history and EM_RISCV was added to <elf.h> in glibc 2.24 so
-builds on systems with glibc headers < 2.24 should show this error.
+Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+---
+ drivers/gpu/drm/bridge/analogix/anx7625.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Michal
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index 14d73fb1dd15..d76fb63fa9f7 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -1327,6 +1327,7 @@ static int anx7625_attach_dsi(struct anx7625_data *ctx)
+ 		MIPI_DSI_MODE_VIDEO_SYNC_PULSE	|
+ 		MIPI_DSI_MODE_NO_EOT_PACKET	|
+ 		MIPI_DSI_MODE_VIDEO_HSE;
++	dsi->hs_packet_end_aligned = true;
+ 
+ 	if (mipi_dsi_attach(dsi) < 0) {
+ 		DRM_DEV_ERROR(dev, "fail to attach dsi to host.\n");
+-- 
+2.25.1
 
-> > [1] https://lore.kernel.org/lkml/e8965b25-f15b-c7b4-748c-d207dda9c8e8@i2se.com/
-> > 
-> > Cc: Jisheng Zhang <jszhang@kernel.org>
-> > Reported-by: Stefan Wahren <stefan.wahren@i2se.com>
-> > Fixes: 54fed35fd393 ("riscv: Enable BUILDTIME_TABLE_SORT")
-> > Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> 
-> Reviewed-by: Jisheng Zhang <jszhang@kernel.org>
-> 
-> > ---
-> >  scripts/sorttable.c | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> > 
-> > diff --git a/scripts/sorttable.c b/scripts/sorttable.c
-> > index f355869c65cd..6ee4fa882919 100644
-> > --- a/scripts/sorttable.c
-> > +++ b/scripts/sorttable.c
-> > @@ -54,6 +54,10 @@
-> >  #define EM_ARCV2	195
-> >  #endif
-> >  
-> > +#ifndef EM_RISCV
-> > +#define EM_RISCV	243
-> > +#endif
-> > +
-> >  static uint32_t (*r)(const uint32_t *);
-> >  static uint16_t (*r2)(const uint16_t *);
-> >  static uint64_t (*r8)(const uint64_t *);
-> 
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
