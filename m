@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_PASS,URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 63D06C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 15:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C777C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 15:23:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2A1DA60F5B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 15:23:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2A1DA60F5B
+	by mail.kernel.org (Postfix) with ESMTPS id 3B7C760698
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 15:23:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3B7C760698
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,48 +23,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+skovrzhPU6UGbnluRdbLrE8JQtoYL8UHVVAVCfpp08=; b=rBumzlJE6/8H6p
-	3NzMV/vh71VJrhPrYz4OGwtnqUCOQBiZsC49Q5hiuIaDiJ9tTgq1ZobM6/i30iOn+2KrYmMr1WfIz
-	xoJ3uQrBtASrfUQKxiQ1FQFOUhm0yWaQ+fkoaiWfNZ7jcsYJVwX59/z8eglIgHf41mCOrzUY0fNeV
-	7SZ0CIDjiyP5ygo5oT7AUkvBnMRbn4scVNNjCmmuOuEGpad7JblR2xfNEWXmpautYNw4Oqz/M47Cb
-	mcafQzjoylUDOsJDfJ3Dhq4yNrqviEgGiiqmkeuDY0rQV+Nh3Vz/YrFH0oAXKr7fVLV2H72JH3IBg
-	159iRHCfZHbSJHp2Dzvw==;
+	List-Owner; bh=Baf/S1GCpbOKjqVvc1mTeiew8m76LjesT9NFHitxI3g=; b=nG4Uds1g4pv2ee
+	ZHpxlo/h81cs+5DvjcKv3bRDWtLAbeg6h8Ihu4COH4Ptjhfk7OLvYkcur3HzgCBfutXVekV0Ucsjh
+	1poDYMo+05OX8sGU4K8pjWZ6S+o5j99DNneacWCiR4eZ8ymHv/pR+XtJCeVpNOmy8xK1PobIue3TE
+	XOhWQLTpCJIBmAAf4O08KjMQCKHADFo6Y99v5ROPa6FwJrKzFhcXcvJBQaRnAZtPVCfKcEPGC92iF
+	3kG/cGdL6JFrEst6syYE4hFM9tXiQ22USSmv5MFmcIHzucWM8gd55ErgbF3MSssLCKUbfqAZIn8H2
+	bSlYQV79kK+JnecTQFOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQWkc-009OxB-2u; Wed, 15 Sep 2021 15:23:06 +0000
+	id 1mQWko-009P1b-I6; Wed, 15 Sep 2021 15:23:18 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQWkJ-009OsN-Li; Wed, 15 Sep 2021 15:22:49 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id D3738611C6;
- Wed, 15 Sep 2021 15:22:46 +0000 (UTC)
+ id 1mQWkR-009Ou5-BS; Wed, 15 Sep 2021 15:22:56 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 7458B60F5B;
+ Wed, 15 Sep 2021 15:22:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631719367;
- bh=wfCrkPF9uiip+dMt9hQgVwVQGgywxVqYrYAQt4PemHc=;
+ s=k20201202; t=1631719375;
+ bh=CFcne7+7qHsHstFKZ8q27i5a1vH58yXKDRbZpKDT3Og=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=uS+lULv9jwBDnz23rHC++bq3uxzQPTAOTeaM7Hvgi2cgl/5P9k5vGozDCXPjHhLvF
- oIz+FfbTEOYlfUYzuXXYMDgcsAjpfUilNTPlG+MSHOoZZ+b1rtIbWFKOsVG1NNUd8Y
- gEOtXaFuEIIZf5MkKeo5BFSAHDFcrgIg5joODAAQrPlLrkFplB/4YysjMa2ZRHnhdM
- Fy1hIRyMsYXW0WH3sI9tLTVismpNYEDDU6+V45+XLoy3ebV9KsZwmjdcZS6kFzGgAF
- LXG3QnezUEE6r9R6YvVr20JIZNWznKObj2yiW7xQ9fYWz5Nz0a0AWTzdi2xNDSfe6e
- JiRsmbq6kp6NQ==
+ b=Fh5j1qiGe4lhnNE63fc22HRgRVHmcrVUV4F+dgUD/xmJIWo+wee3Z1YvAqYdPMn+O
+ 43DpfimIewbGTUOWTGWZSBdm/u1LQhzknpmgvLwr7BQWCORbN7Ll7fISiK1VFpdjkR
+ khYfusxqh9SbOWWhu8mpPt98br62xOkNTF3zjBqxa6m5z41AI/akCFqAmb070LSX6J
+ YAVlE+rVhG6ERzVGGZ9UlqAbwEsFbJirULhQNeHxRt0g5io7jT55Y4GINmWrIumZIW
+ OYZoUNq+4ywDdjQzF1TarRoSX4uzA1PZ2QJHZd+5nS+8AxkhozNfRXUwdQCsP3/GSU
+ +qAeubGItaN3Q==
 From: Mark Brown <broonie@kernel.org>
-To: Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- alsa-devel@alsa-project.org, Colin King <colin.king@canonical.com>,
- linux-mediatek@lists.infradead.org, Liam Girdwood <lgirdwood@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>, linux-arm-kernel@lists.infradead.org
-Cc: Mark Brown <broonie@kernel.org>, linux-kernel@vger.kernel.org,
- kernel-janitors@vger.kernel.org
-Subject: Re: [PATCH] ASoC: mediatek: mt8195: make array adda_dai_list static
- const
-Date: Wed, 15 Sep 2021 16:21:47 +0100
-Message-Id: <163171901943.9674.10990878164291138218.b4-ty@kernel.org>
+To: tiwai@suse.com, Trevor Wu <trevor.wu@mediatek.com>, matthias.bgg@gmail.com
+Cc: Mark Brown <broonie@kernel.org>, tzungbi@google.com,
+ alsa-devel@alsa-project.org, chipeng.chang@mediatek.com,
+ linux-mediatek@lists.infradead.org, shane.chien@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ jiaxin.yu@mediatek.com
+Subject: Re: [PATCH] ASoC: mediatek: mt6359: Fix unexpected error in
+ bind/unbind flow
+Date: Wed, 15 Sep 2021 16:21:50 +0100
+Message-Id: <163171901944.9674.15745923942801327979.b4-ty@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210915105027.10805-1-colin.king@canonical.com>
-References: <20210915105027.10805-1-colin.king@canonical.com>
+In-Reply-To: <20210915034659.25044-1-trevor.wu@mediatek.com>
+References: <20210915034659.25044-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210915_082247_773272_4D9D5220 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20210915_082255_462874_74C4B08F 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,15 +81,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 15 Sep 2021 11:50:27 +0100, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
+On Wed, 15 Sep 2021 11:46:59 +0800, Trevor Wu wrote:
+> mt6359-sound is a MFD driver. Because its regmap is retrieved from its
+> parent, it shouldn't be freed in mt6359-sound driver.
 > 
-> Don't populate the array adda_dai_list on the stack but instead it
-> static const. Also makes the object code smaller by 33 bytes:
-> 
-> Before:
->    text	   data	    bss	    dec	    hex	filename
->   28271	  11640	      0	  39911	   9be7	mt8195/mt8195-dai-adda.o
+> snd_soc_component_exit_regmap() will do regmap_exit(), this results in
+> unexpected results if sound card unregister flow is invoked when users
+> try to bind/unbind audio codec.
 > 
 > [...]
 
@@ -99,8 +97,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8195: make array adda_dai_list static const
-      commit: ce3f9357638720f4a78f6a6e481941c37f33bceb
+[1/1] ASoC: mediatek: mt6359: Fix unexpected error in bind/unbind flow
+      commit: 6d66c5ccf5cb8af866fe2bb014098a3dd7bfa3cc
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
