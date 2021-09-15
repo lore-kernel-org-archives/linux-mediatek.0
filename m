@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 659A4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 97B62C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:15:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E84760F23
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:15:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2E84760F23
+	by mail.kernel.org (Postfix) with ESMTPS id 65D2F61164
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Sep 2021 01:15:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 65D2F61164
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,31 +23,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+mttQqM0DW+qwFsCe0pxrAk53BfeJdZt0JfUyCyKjw0=; b=fbQJ2NGntNhw9k
-	KhmRoohmPSp9eOvIIvB1zRNgegCfNad4epwarEk645MXkI5nh/PsUcGgrmpZUexBWHFE1IH9KfFAa
-	gKVWFaz9yigHGBBQWibFPMFAld9AWE41HN4sSuhB226uU2KBiMxsZAYpl2Ui2617/Jyb5HZ4MpnTr
-	237dvfp+uwM2YdBHAdLy75YC36dgJyoBMO3RrLJ6SV0XLope5ySF8yCqUttFVFMxaGUKzm/eanhMN
-	hY8vao1HnsWd4+ZjIBL1Q428cezu+Je38KDwLFGQsLhDtcE/rvorCiR1cb01OvTZQLQRRCjKoBH0L
-	IJBZJbceulvGQVz0IDYQ==;
+	List-Owner; bh=L0zfWdlE3X7fCxOw57NLuZmcjgL4ytnJesAziqE7GZc=; b=OhC5IhTGELfM3i
+	/63F3IiTlTksLHUIClUcK9mYgwSl85ndzQV/OeLZvqccJwaGH0S6y80bXw+xoJfjJUsumT1Nquq4Q
+	KXaGjyGGTUWq/Z1NDKhOKDTAvEdoNAZN7otmHL2JoLjt5VMRLTcjPKWuCMmi8fZHfhx+5XGzA0A6J
+	41ZNslpXeTffdBmAUuWNbsxCykcRWN56V2qhPC8RECM+4hU0ilWXKlJGKbD/IeU944eMGObFtrwV5
+	tF/FEw8h0dE+DiL8Q7JRaKTggfhPyoKFQF/Nn8/4NwqjnaMWmS6syk0l1T5AexDndmtsdg8fmtXiD
+	kseV7/5QsPPVeUshsSIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQJWZ-007mzl-N0; Wed, 15 Sep 2021 01:15:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mQJWb-007n0W-7z; Wed, 15 Sep 2021 01:15:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQJWV-007mxD-Q3
- for linux-mediatek@lists.infradead.org; Wed, 15 Sep 2021 01:15:41 +0000
-X-UUID: b6631003564642f19995ee48aa7a13d6-20210914
-X-UUID: b6631003564642f19995ee48aa7a13d6-20210914
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1mQJWW-007mxZ-6K
+ for linux-mediatek@lists.infradead.org; Wed, 15 Sep 2021 01:15:42 +0000
+X-UUID: c9689b94f53d481ea51e27c2204f7669-20210914
+X-UUID: c9689b94f53d481ea51e27c2204f7669-20210914
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1533946531; Tue, 14 Sep 2021 18:15:39 -0700
+ with ESMTP id 1305748371; Tue, 14 Sep 2021 18:15:36 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Sep 2021 18:15:37 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Sep 2021 18:15:34 -0700
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 15 Sep 2021 09:15:37 +0800
+ Frontend Transport; Wed, 15 Sep 2021 09:15:34 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -57,19 +57,19 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
  <Stella.Chang@mediatek.com>, <steve.lee@mediatek.com>, <jemele@google.com>,
  <shawnku@google.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH v1 11/16] mt76: connac: extend mt76_connac_sdio module to
- support CONNAC2
-Date: Wed, 15 Sep 2021 09:14:44 +0800
-Message-ID: <3bf22843e9d62352fa311f601abb9b1869461d6d.1631667941.git.objelf@gmail.com>
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v1 10/16] mt76: mt7921: use physical addr to unify register
+ access
+Date: Wed, 15 Sep 2021 09:14:43 +0800
+Message-ID: <856edf387e8e7f444d0eaf95ffac0616571146d1.1631667941.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1631667941.git.objelf@gmail.com>
 References: <cover.1631667941.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210914_181539_910437_AB4B1A0A 
-X-CRM114-Status: GOOD (  21.82  )
+X-CRM114-CacheID: sfid-20210914_181540_302914_B2637058 
+X-CRM114-Status: GOOD (  11.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,324 +88,164 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Extend mt76_connac_sdio module to support CONNAC2 hw that mt7921s rely on.
+Use physical address to unify the register access and reorder the
+entries in fixed_map table to accelerate the address lookup for
+MT7921e.
 
 Tested-by: Deren Wu <deren.wu@mediatek.com>
-Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h     |  2 +
- .../net/wireless/mediatek/mt76/mt7615/sdio.c  |  3 +-
- .../wireless/mediatek/mt76/mt76_connac_sdio.c | 34 ++++++++--
- .../wireless/mediatek/mt76/mt76_connac_sdio.h | 52 ++++++++++++++-
- .../mediatek/mt76/mt76_connac_sdio_txrx.c     | 63 ++++++++++++++++---
- 5 files changed, 137 insertions(+), 17 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7921/dma.c   | 19 ++++++++--------
+ .../net/wireless/mediatek/mt76/mt7921/regs.h  | 22 +++++++++----------
+ 2 files changed, 21 insertions(+), 20 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index e76fb04de047..58fd0c7831f4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -505,6 +505,8 @@ struct mt76_sdio {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
+index be24241fb8e6..f31c4aef8b27 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
+@@ -85,6 +85,14 @@ static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
+ 		u32 mapped;
+ 		u32 size;
+ 	} fixed_map[] = {
++		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
++		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
++		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
++		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
++		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
++		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
++		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
++		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
+ 		{ 0x00400000, 0x80000, 0x10000}, /* WF_MCU_SYSRAM */
+ 		{ 0x00410000, 0x90000, 0x10000}, /* WF_MCU_SYSRAM (configure register) */
+ 		{ 0x40000000, 0x70000, 0x10000}, /* WF_UMAC_SYSRAM */
+@@ -99,22 +107,15 @@ static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
+ 		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
+ 		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
+ 		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
+-		{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
++		{ 0x820cc000, 0x0e000, 0x1000 }, /* WF_UMAC_TOP (PP) */
++		{ 0x820cd000, 0x0f000, 0x1000 }, /* WF_MDP_TOP */
+ 		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
+ 		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
+-		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
+ 		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
+ 		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
+-		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
+-		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
+-		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
+-		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
+-		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
+ 		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
+ 		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
+-		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
+ 		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
+-		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
+ 		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
+ 		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
+ 		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+index 26fb11823762..cb6069024320 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+@@ -14,7 +14,7 @@
+ #define MT_MCU_INT_EVENT_SER_TRIGGER	BIT(2)
+ #define MT_MCU_INT_EVENT_RESET_DONE	BIT(3)
  
- 	struct sdio_func *func;
- 	void *intr_data;
-+	int intr_size;
-+	u8 hw_ver;
+-#define MT_PLE_BASE			0x8000
++#define MT_PLE_BASE			0x820c0000
+ #define MT_PLE(ofs)			(MT_PLE_BASE + (ofs))
  
- 	struct {
- 		int pse_data_quota;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
-index 97660262b2de..4506c9ff319e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
-@@ -113,7 +113,8 @@ static int mt7663s_probe(struct sdio_func *func,
- 	if (ret < 0)
- 		goto error;
+ #define MT_PLE_FL_Q0_CTRL		MT_PLE(0x1b0)
+@@ -26,7 +26,7 @@
+ 					       ((n) << 2))
+ #define MT_PLE_AMSDU_PACK_MSDU_CNT(n)	MT_PLE(0x10e0 + ((n) << 2))
  
--	ret = mt76_connac_sdio_hw_init(mdev, func, mt7663s_irq);
-+	ret = mt76_connac_sdio_hw_init(mdev, func, MT76_CONNAC_SDIO,
-+				       mt7663s_irq);
- 	if (ret)
- 		goto error;
+-#define MT_MDP_BASE			0xf000
++#define MT_MDP_BASE			0x820cd000
+ #define MT_MDP(ofs)			(MT_MDP_BASE + (ofs))
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.c
-index d18a66e5445f..c11f044841dd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.c
-@@ -221,11 +221,13 @@ int mt76_connac_sdio_rd_rp(struct mt76_dev *dev, u32 base,
- EXPORT_SYMBOL_GPL(mt76_connac_sdio_rd_rp);
+ #define MT_MDP_DCR0			MT_MDP(0x000)
+@@ -49,7 +49,7 @@
+ #define MT_MDP_TO_WM			1
  
- int mt76_connac_sdio_hw_init(struct mt76_dev *dev, struct sdio_func *func,
--			     sdio_irq_handler_t *irq_handler)
-+			     int hw_ver, sdio_irq_handler_t *irq_handler)
- {
- 	u32 status, ctrl;
- 	int ret;
+ /* TMAC: band 0(0x21000), band 1(0xa1000) */
+-#define MT_WF_TMAC_BASE(_band)		((_band) ? 0xa1000 : 0x21000)
++#define MT_WF_TMAC_BASE(_band)		((_band) ? 0x820f4000 : 0x820e4000)
+ #define MT_WF_TMAC(_band, ofs)		(MT_WF_TMAC_BASE(_band) + (ofs))
  
-+	dev->sdio.hw_ver = hw_ver;
-+
- 	sdio_claim_host(func);
+ #define MT_TMAC_TCR0(_band)		MT_WF_TMAC(_band, 0)
+@@ -74,7 +74,7 @@
+ #define MT_TMAC_TRCR0(_band)		MT_WF_TMAC(_band, 0x09c)
+ #define MT_TMAC_TFCR0(_band)		MT_WF_TMAC(_band, 0x1e0)
  
- 	ret = sdio_enable_func(func);
-@@ -255,12 +257,27 @@ int mt76_connac_sdio_hw_init(struct mt76_dev *dev, struct sdio_func *func,
- 		goto disable_func;
+-#define MT_WF_DMA_BASE(_band)		((_band) ? 0xa1e00 : 0x21e00)
++#define MT_WF_DMA_BASE(_band)		((_band) ? 0x820f7000 : 0x820e7000)
+ #define MT_WF_DMA(_band, ofs)		(MT_WF_DMA_BASE(_band) + (ofs))
  
- 	ctrl = WHIER_RX0_DONE_INT_EN | WHIER_TX_DONE_INT_EN;
-+	if (hw_ver == MT76_CONNAC2_SDIO)
-+		ctrl |= WHIER_RX1_DONE_INT_EN;
- 	sdio_writel(func, ctrl, MCR_WHIER, &ret);
- 	if (ret < 0)
- 		goto disable_func;
+ #define MT_DMA_DCR0(_band)		MT_WF_DMA(_band, 0x000)
+@@ -82,7 +82,7 @@
+ #define MT_DMA_DCR0_RXD_G5_EN		BIT(23)
  
--	/* set WHISR as read clear and Rx aggregation number as 16 */
--	ctrl = FIELD_PREP(MAX_HIF_RX_LEN_NUM, 16);
-+	switch (hw_ver) {
-+	case MT76_CONNAC_SDIO:
-+		/* set WHISR as read clear and Rx aggregation number as 16 */
-+		ctrl = FIELD_PREP(MAX_HIF_RX_LEN_NUM, 16);
-+		break;
-+	default:
-+		ctrl = sdio_readl(func, MCR_WHCR, &ret);
-+		if (ret < 0)
-+			goto disable_func;
-+		ctrl &= ~MAX_HIF_RX_LEN_NUM_CONNAC2;
-+		ctrl &= ~W_INT_CLR_CTRL; /* read clear */
-+		ctrl |= FIELD_PREP(MAX_HIF_RX_LEN_NUM_CONNAC2, 0);
-+		break;
-+	}
-+
- 	sdio_writel(func, ctrl, MCR_WHCR, &ret);
- 	if (ret < 0)
- 		goto disable_func;
-@@ -287,8 +304,17 @@ int mt76_connac_sdio_init(struct mt76_dev *dev,
- {
- 	int i, ret;
+ /* LPON: band 0(0x24200), band 1(0xa4200) */
+-#define MT_WF_LPON_BASE(_band)		((_band) ? 0xa4200 : 0x24200)
++#define MT_WF_LPON_BASE(_band)		((_band) ? 0x820fb000 : 0x820eb000)
+ #define MT_WF_LPON(_band, ofs)		(MT_WF_LPON_BASE(_band) + (ofs))
  
-+	switch (dev->sdio.hw_ver) {
-+	case MT76_CONNAC_SDIO:
-+		dev->sdio.intr_size = sizeof(struct mt76_connac_sdio_intr);
-+		break;
-+	default:
-+		dev->sdio.intr_size = sizeof(struct mt76_connac2_sdio_intr);
-+		break;
-+	}
-+
- 	dev->sdio.intr_data = devm_kmalloc(dev->dev,
--					   sizeof(struct mt76s_intr),
-+					   dev->sdio.intr_size,
- 					   GFP_KERNEL);
- 	if (!dev->sdio.intr_data)
- 		return -ENOMEM;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.h
-index e176d6e562b2..a476e54361cc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio.h
-@@ -21,7 +21,12 @@
- #define MCR_WHCR			0x000C
- #define W_INT_CLR_CTRL			BIT(1)
- #define RECV_MAILBOX_RD_CLR_EN		BIT(2)
-+#define WF_SYS_RSTB			BIT(4) /* supported in CONNAC2 */
-+#define WF_WHOLE_PATH_RSTB		BIT(5) /* supported in CONNAC2 */
-+#define WF_SDIO_WF_PATH_RSTB		BIT(6) /* supported in CONNAC2 */
- #define MAX_HIF_RX_LEN_NUM		GENMASK(13, 8)
-+#define MAX_HIF_RX_LEN_NUM_CONNAC2		GENMASK(14, 8) /* supported in CONNAC2 */
-+#define WF_RST_DONE			BIT(15) /* supported in CONNAC2 */
- #define RX_ENHANCE_MODE			BIT(16)
+ #define MT_LPON_UTTR0(_band)		MT_WF_LPON(_band, 0x080)
+@@ -93,7 +93,7 @@
+ #define MT_LPON_TCR_SW_WRITE		BIT(0)
  
- #define MCR_WHISR			0x0010
-@@ -29,6 +34,7 @@
- #define WHIER_D2H_SW_INT		GENMASK(31, 8)
- #define WHIER_FW_OWN_BACK_INT_EN	BIT(7)
- #define WHIER_ABNORMAL_INT_EN		BIT(6)
-+#define WHIER_WDT_INT_EN		BIT(5) /* supported in CONNAC2 */
- #define WHIER_RX1_DONE_INT_EN		BIT(2)
- #define WHIER_RX0_DONE_INT_EN		BIT(1)
- #define WHIER_TX_DONE_INT_EN		BIT(0)
-@@ -100,7 +106,37 @@
+ /* MIB: band 0(0x24800), band 1(0xa4800) */
+-#define MT_WF_MIB_BASE(_band)		((_band) ? 0xa4800 : 0x24800)
++#define MT_WF_MIB_BASE(_band)		((_band) ? 0x820fd000 : 0x820ed000)
+ #define MT_WF_MIB(_band, ofs)		(MT_WF_MIB_BASE(_band) + (ofs))
  
- #define MCR_SWPCDBGR			0x0154
+ #define MT_MIB_SCR1(_band)		MT_WF_MIB(_band, 0x004)
+@@ -142,7 +142,7 @@
+ #define MT_MIB_ARNG(_band, n)		MT_WF_MIB(_band, 0x0b0 + ((n) << 2))
+ #define MT_MIB_ARNCR_RANGE(val, n)	(((val) >> ((n) << 3)) & GENMASK(7, 0))
  
--struct mt76s_intr {
-+#define MCR_H2DSM2R			0x0160 /* supported in CONNAC2 */
-+#define MCR_H2DSM3R			0x0164 /* supported in CONNAC2 */
-+#define MCR_D2HRM3R			0x0174 /* supported in CONNAC2 */
-+#define MCR_WTQCR8			0x0190 /* supported in CONNAC2 */
-+#define MCR_WTQCR9			0x0194 /* supported in CONNAC2 */
-+#define MCR_WTQCR10			0x0198 /* supported in CONNAC2 */
-+#define MCR_WTQCR11			0x019C /* supported in CONNAC2 */
-+#define MCR_WTQCR12			0x01A0 /* supported in CONNAC2 */
-+#define MCR_WTQCR13			0x01A4 /* supported in CONNAC2 */
-+#define MCR_WTQCR14			0x01A8 /* supported in CONNAC2 */
-+#define MCR_WTQCR15			0x01AC /* supported in CONNAC2 */
-+
-+enum mt76_connac_sdio_ver {
-+	MT76_CONNAC_SDIO,
-+	MT76_CONNAC2_SDIO,
-+};
-+
-+struct mt76_connac2_sdio_intr {
-+	u32 isr;
-+	struct {
-+		u32 wtqcr[16];
-+	} tx;
-+	struct {
-+		u16 num[2];
-+		u16 len0[16];
-+		u16 len1[128];
-+	} rx;
-+	u32 rec_mb[2];
-+} __packed;
-+
-+struct mt76_connac_sdio_intr {
- 	u32 isr;
- 	struct {
- 		u32 wtqcr[8];
-@@ -112,6 +148,18 @@ struct mt76s_intr {
- 	u32 rec_mb[2];
- } __packed;
+-#define MT_WTBLON_TOP_BASE		0x34000
++#define MT_WTBLON_TOP_BASE		0x820d4000
+ #define MT_WTBLON_TOP(ofs)		(MT_WTBLON_TOP_BASE + (ofs))
+ #define MT_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x200)
+ #define MT_WTBLON_TOP_WDUCR_GROUP	GENMASK(2, 0)
+@@ -152,7 +152,7 @@
+ #define MT_WTBL_UPDATE_ADM_COUNT_CLEAR	BIT(12)
+ #define MT_WTBL_UPDATE_BUSY		BIT(31)
  
-+struct mt76s_intr {
-+	u32 isr;
-+	struct {
-+		u32 *wtqcr;
-+	} tx;
-+	struct {
-+		u16 num[2];
-+		u16 *len[2];
-+	} rx;
-+	u32 rec_mb[2];
-+};
-+
- u32 mt76_connac_sdio_read_pcr(struct mt76_dev *dev);
- u32 mt76_connac_sdio_read_mailbox(struct mt76_dev *dev, u32 offset);
- void mt76_connac_sdio_write_mailbox(struct mt76_dev *dev, u32 offset, u32 val);
-@@ -131,7 +179,7 @@ int mt76_connac_sdio_rd_rp(struct mt76_dev *dev, u32 base,
+-#define MT_WTBL_BASE			0x38000
++#define MT_WTBL_BASE			0x820d8000
+ #define MT_WTBL_LMAC_ID			GENMASK(14, 8)
+ #define MT_WTBL_LMAC_DW			GENMASK(7, 2)
+ #define MT_WTBL_LMAC_OFFS(_id, _dw)	(MT_WTBL_BASE | \
+@@ -160,7 +160,7 @@
+ 					FIELD_PREP(MT_WTBL_LMAC_DW, _dw))
  
- void mt76_connac_sdio_txrx(struct mt76_dev *dev);
- int mt76_connac_sdio_hw_init(struct mt76_dev *dev, struct sdio_func *func,
--			     sdio_irq_handler_t *irq_handler);
-+			     int hw_ver, sdio_irq_handler_t *irq_handler);
- int mt76_connac_sdio_init(struct mt76_dev *dev,
- 			  void (*txrx_worker)(struct mt76_worker *));
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio_txrx.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio_txrx.c
-index 3ef42f90f3f5..c6a9d8fb4295 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio_txrx.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_sdio_txrx.c
-@@ -81,7 +81,7 @@ static int mt76_connac_sdio_rx_run_queue(struct mt76_dev *dev,
- 					 enum mt76_rxq_id qid,
- 					 struct mt76s_intr *intr)
- {
--	struct mt76_queue *q = &dev->q_rx[qid];
-+	struct mt76_queue *q = &dev->q_rx[0];
- 	struct mt76_sdio *sdio = &dev->sdio;
- 	int len = 0, err, i;
- 	struct page *page;
-@@ -112,8 +112,10 @@ static int mt76_connac_sdio_rx_run_queue(struct mt76_dev *dev,
- 	for (i = 0; i < intr->rx.num[qid]; i++) {
- 		int index = (q->head + i) % q->ndesc;
- 		struct mt76_queue_entry *e = &q->entry[index];
-+		__le32 *rxd = (__le32 *)buf;
+ /* AGG: band 0(0x20800), band 1(0xa0800) */
+-#define MT_WF_AGG_BASE(_band)		((_band) ? 0xa0800 : 0x20800)
++#define MT_WF_AGG_BASE(_band)		((_band) ? 0x820f2000 : 0x820e2000)
+ #define MT_WF_AGG(_band, ofs)		(MT_WF_AGG_BASE(_band) + (ofs))
  
--		len = intr->rx.len[qid][i];
-+		/* parse rxd to get the actual packet length */
-+		len = FIELD_GET(GENMASK(15, 0), le32_to_cpu(rxd[0]));
- 		e->skb = mt76_connac_sdio_build_rx_skb(buf, len,
- 						       round_up(len + 4, 4));
- 		if (!e->skb)
-@@ -133,35 +135,73 @@ static int mt76_connac_sdio_rx_run_queue(struct mt76_dev *dev,
- 	return i;
- }
+ #define MT_AGG_AWSCR0(_band, _n)	MT_WF_AGG(_band, 0x05c + (_n) * 4)
+@@ -191,7 +191,7 @@
+ #define MT_AGG_ATCR3(_band)		MT_WF_AGG(_band, 0x0f4)
  
-+static void mt76_connac_sdio_intr_parse(struct mt76_dev *dev,
-+					void *data,
-+					struct mt76s_intr *intr)
-+{
-+	struct mt76_connac_sdio_intr *intr_v1;
-+	struct mt76_connac2_sdio_intr *intr_v2;
-+	int i;
-+
-+	switch (dev->sdio.hw_ver) {
-+	case MT76_CONNAC_SDIO:
-+		intr_v1 = data;
-+		intr->isr =  intr_v1->isr;
-+		intr->tx.wtqcr = intr_v1->tx.wtqcr;
-+		for (i = 0; i < 2 ; i++) {
-+			intr->rx.num[i] = intr_v1->rx.num[i];
-+			intr->rx.len[i] = intr_v1->rx.len[i];
-+			intr->rec_mb[i] = intr_v1->rec_mb[i];
-+		}
-+		break;
-+	default:
-+		intr_v2 = data;
-+		intr->isr =  intr_v2->isr;
-+		intr->tx.wtqcr = intr_v2->tx.wtqcr;
-+		for (i = 0; i < 2 ; i++) {
-+			intr->rx.num[i] = intr_v2->rx.num[i];
-+			if (!i)
-+				intr->rx.len[0] = intr_v2->rx.len0;
-+			else
-+				intr->rx.len[1] = intr_v2->rx.len1;
-+			intr->rec_mb[i] = intr_v2->rec_mb[i];
-+		}
-+		break;
-+	}
-+}
-+
- static int mt76_connac_sdio_rx_handler(struct mt76_dev *dev)
- {
- 	struct mt76_sdio *sdio = &dev->sdio;
--	struct mt76s_intr *intr = sdio->intr_data;
-+	void *data = sdio->intr_data;
-+	struct mt76s_intr intr;
- 	int nframes = 0, ret;
+ /* ARB: band 0(0x20c00), band 1(0xa0c00) */
+-#define MT_WF_ARB_BASE(_band)		((_band) ? 0xa0c00 : 0x20c00)
++#define MT_WF_ARB_BASE(_band)		((_band) ? 0x820f3000 : 0x820e3000)
+ #define MT_WF_ARB(_band, ofs)		(MT_WF_ARB_BASE(_band) + (ofs))
  
--	ret = sdio_readsb(sdio->func, intr, MCR_WHISR, sizeof(*intr));
-+	ret = sdio_readsb(sdio->func, data, MCR_WHISR, sdio->intr_size);
- 	if (ret < 0)
- 		return ret;
+ #define MT_ARB_SCR(_band)		MT_WF_ARB(_band, 0x080)
+@@ -201,7 +201,7 @@
+ #define MT_ARB_DRNGR0(_band, _n)	MT_WF_ARB(_band, 0x194 + (_n) * 4)
  
--	trace_dev_irq(dev, intr->isr, 0);
-+	mt76_connac_sdio_intr_parse(dev, data, &intr);
+ /* RMAC: band 0(0x21400), band 1(0xa1400) */
+-#define MT_WF_RMAC_BASE(_band)		((_band) ? 0xa1400 : 0x21400)
++#define MT_WF_RMAC_BASE(_band)		((_band) ? 0x820f5000 : 0x820e5000)
+ #define MT_WF_RMAC(_band, ofs)		(MT_WF_RMAC_BASE(_band) + (ofs))
  
--	if (intr->isr & WHIER_RX0_DONE_INT_EN) {
--		ret = mt76_connac_sdio_rx_run_queue(dev, 0, intr);
-+	trace_dev_irq(dev, intr.isr, 0);
-+
-+	if (intr.isr & WHIER_RX0_DONE_INT_EN) {
-+		ret = mt76_connac_sdio_rx_run_queue(dev, 0, &intr);
- 		if (ret > 0) {
- 			mt76_worker_schedule(&sdio->net_worker);
- 			nframes += ret;
- 		}
- 	}
- 
--	if (intr->isr & WHIER_RX1_DONE_INT_EN) {
--		ret = mt76_connac_sdio_rx_run_queue(dev, 1, intr);
-+	if (intr.isr & WHIER_RX1_DONE_INT_EN) {
-+		ret = mt76_connac_sdio_rx_run_queue(dev, 1, &intr);
- 		if (ret > 0) {
- 			mt76_worker_schedule(&sdio->net_worker);
- 			nframes += ret;
- 		}
- 	}
- 
--	nframes += !!mt76_connac_sdio_refill_sched_quota(dev, intr->tx.wtqcr);
-+	nframes += !!mt76_connac_sdio_refill_sched_quota(dev, intr.tx.wtqcr);
- 
- 	return nframes;
- }
-@@ -174,6 +214,9 @@ static int mt76_connac_sdio_tx_pick_quota(struct mt76_sdio *sdio, bool mcu,
- 
- 	pse_sz = DIV_ROUND_UP(buf_sz + sdio->sched.deficit, MT_PSE_PAGE_SZ);
- 
-+	if (mcu && sdio->hw_ver == MT76_CONNAC2_SDIO)
-+		pse_sz = 1;
-+
- 	if (mcu) {
- 		if (sdio->sched.pse_mcu_quota < *pse_size + pse_sz)
- 			return -EBUSY;
+ #define MT_WF_RFCR(_band)		MT_WF_RMAC(_band, 0x000)
 -- 
 2.25.1
 
