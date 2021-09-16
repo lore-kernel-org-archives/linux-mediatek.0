@@ -2,77 +2,102 @@ Return-Path: <SRS0=M/W3=OG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-9.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6C0D7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Sep 2021 09:56:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A932C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Sep 2021 10:08:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 139DB61185
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Sep 2021 09:56:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 139DB61185
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6DBD061185
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Sep 2021 10:08:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6DBD061185
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FanM8EET+3o1P0+SorJnXOS/O5XGiACdGtpjD2bDrek=; b=hL43knb3RZqkGW
-	WLMSwmbQYWj7c4w9GRwSpiCFrLoclxtDF+O18bnLwSmLU1QC9Gjhfowa1awguWCAeulnIPOZMCKs8
-	7TTysuWrpthLxaM03VYsE+CwWxhzHq3eKLTJD59hsHxRihJVLVKoypAqedu+o/BhAFfAo0Fe9CID6
-	cpDty8e1kV9t2P7Km+fup1td/nRgO5RnaIZF2aZRLb9kAlAcRFFZjMAvpXhejmySsEHaoUo3gLHQ6
-	dyaFnrapDNEtWetX43g3MfpW7oXu0mTT0HKEzYINXkl3NG1UuQTO/jNg9zJKjkf2sicc1dTwAJyPy
-	7P/QDm2ZaayC1rOeKZPQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ESIfAMdPof4lB3EmtqPmQJQogUI6hgPQL5Qog6iwJoY=; b=ApistodKLaWQJ3
+	XJSsqhBDQ3nJtB+LNJ/GLQirVFQHLn/VrpSaX+L2c7KXfqIU4LNR/ECkQRRCQH3TdSKV+jP4Mebk6
+	XQFCVFSDpqp5h/e+PDWRxUny5etiAA9O0ya59ABL7+aHgOFmBEn1GBC0J+DKS4jl4H5qQq/2Eimll
+	iC2FSzQTe8auSNn516/mDRMwCeoaGXaJlTqv0Ef8z/8/JH4XThKj0Eh3GC8hzlApyPs1zTBBL8ADc
+	lX7IW96hA1To1FVZIAinKoY3TfrV4jUroOuJ8DKyFVBVrobQR31dYUQLOMDkNI6pY0C2o1J+Mxt8O
+	k4423cbrKueDiX1olpkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mQo7X-00An3P-Al; Thu, 16 Sep 2021 09:55:55 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mQoJ8-00Aodx-JK; Thu, 16 Sep 2021 10:07:54 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mQo75-00AmoG-B6; Thu, 16 Sep 2021 09:55:31 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 2D6596120F;
- Thu, 16 Sep 2021 09:55:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1631786126;
- bh=75WrKbSFBKg3yzGt07IbXwPNTFQ0wIIFH/Or+OVz1tk=;
- h=From:To:Cc:Subject:Date:From;
- b=uF5yJPv/qiKbXXEFvin6OmfsjMRrph3HNOgVM4VP8l98VyCCn6ZiDH4Vz9ThIa3nO
- /R3BLqZrexnLqAhaLqqje35cJvGT4N3rzjw+tJcda+Ho3iJSy3WwY5wVLASpoPMaG0
- BdVfOxuhSoKonDNgYiYNAV5b+jhnTDG3G0iRsZjuDNsSqouJPu1+uSll78aJKox5Ns
- KwHB376rUBOCM9pslwyGU8l8WVSDWBaAmSdRQHZs7Vn9W0IUzd/0QWauFDPCMtQEHo
- PeyD1wssHY2MBiz2gKKjgNgw/LEq0+KlatdR8BlJsvdBjXO7hPlAu8a1uYbkmb9sPv
- 1LdRPeVp9uZAg==
-Received: by mail.kernel.org with local (Exim 4.94.2)
- (envelope-from <mchehab@kernel.org>)
- id 1mQo72-001vTH-32; Thu, 16 Sep 2021 11:55:24 +0200
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Linux Doc Mailing List <linux-doc@vger.kernel.org>,
- Jonathan Corbet <corbet@lwn.net>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- linux-kernel@vger.kernel.org, Daniel Vetter <daniel@ffwll.ch>,
- David Airlie <airlied@linux.ie>, Evgeniy Polyakov <zbr@ioremap.net>,
- Jakub Kicinski <kuba@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>, KP Singh <kpsingh@kernel.org>,
- Martin KaFai Lau <kafai@fb.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Rob Herring <robh+dt@kernel.org>, Shuah Khan <shuah@kernel.org>,
- Song Liu <songliubraving@fb.com>, Yonghong Song <yhs@fb.com>,
- bpf@vger.kernel.org, devicetree@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-kselftest@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-mmc@vger.kernel.org, linux-omap@vger.kernel.org,
- netdev@vger.kernel.org, sparmaintainer@unisys.com
-Subject: [PATCH v2 00/23] Fix some issues at documentation
-Date: Thu, 16 Sep 2021 11:54:59 +0200
-Message-Id: <cover.1631785820.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.31.1
+ id 1mQoJ5-00AocZ-Lm
+ for linux-mediatek@lists.infradead.org; Thu, 16 Sep 2021 10:07:53 +0000
+Received: by mail-lf1-x131.google.com with SMTP id c8so16418864lfi.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 16 Sep 2021 03:07:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jUO5tSYLVRile5AWlAafA8DmhpHLLp7fGg/YtJNAKkA=;
+ b=kb18yEmDjFeTISL5Cj3f+OE1reEAL0nH5XmyNUxp+vvOyzUcj+l9m5OworF15vyOXF
+ b8YVBrLmGwq/u0XPPb8fk3JaoNhQe+7Ho6ZKojUxfMsvVZB1S+AXaj2bjkGQpTH2BDMF
+ RFKGzdZkL5STdbXuztAsLUi82lROJaEFce1QQBJQFnJ6BNDzh73ydU6twoHnOf/LFIT6
+ m36gdukOrXppQsBrmuso+yADYfJZDVaWVxIsFzYI2GyA9+KlNEDbRQnmoxutZH37cusb
+ kMvPFWujPGOtbzPt0qbQ8UKq9xhYrz+jKKgOqdrQtVAmzqRwqbisq3ed603uxeTFFJJ1
+ 7TrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jUO5tSYLVRile5AWlAafA8DmhpHLLp7fGg/YtJNAKkA=;
+ b=tixVTpPLhtwmqGCNuT1MoNPMNqToWOyG8lhx1RlbO0+Zua9e9ByWgQaQmS+XP2T3ca
+ cmU1oQK03yz3BmyuyNnv1waMFhGvRw/4ISsi5GVyaOYeDPbNxeV4EX2BJyrlf63BQ9Xr
+ iv/4fRe9L82wCMgnBlULxDsBP12YiA1C+y7sPcmKzIeCQ6Pmq6ojPzQ6h03sp00WAPI7
+ fhWI6tOvzOLKToRyFbCIcY3cFQLoV3tk2D3Y6swW73gZIpOQLT+BIF0ZIjUuqOQGXHMM
+ HltGs/vz87OKOrUbWAocJz8bXZtjFexnplrUfLWc6w6L5Zy83vAdoPWHx2agH/r+C76p
+ l4dQ==
+X-Gm-Message-State: AOAM5302xTCaGFl72Paa9B7/9mu1P6mJUbtYxu8Tn0Ulu8QH9kYPYkXN
+ +6Y23L5PTJQ6MelW9QsCepE3dZErZ76SyT2KhYbs3A==
+X-Google-Smtp-Source: ABdhPJytweAIsY0sxsinkWN7FPbeTdhVCteGXtpk0WGBS/7V1nIDt7Ry+vbrBBnhe783d+4wyWb3AQdWBV5/FDYn/9Q=
+X-Received: by 2002:a05:6512:3096:: with SMTP id
+ z22mr3486963lfd.584.1631786869054; 
+ Thu, 16 Sep 2021 03:07:49 -0700 (PDT)
 MIME-Version: 1.0
+References: <20210914085137.31761-1-sam.shih@mediatek.com>
+ <20210914085137.31761-5-sam.shih@mediatek.com>
+In-Reply-To: <20210914085137.31761-5-sam.shih@mediatek.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Thu, 16 Sep 2021 12:07:38 +0200
+Message-ID: <CACRpkdYkvBS5+MHSGBDhNQtvCxRquef1kPHmCSfzruz2N=VCyw@mail.gmail.com>
+Subject: Re: [RESEND,v3,4/9] pinctrl: mediatek: moore: check if pin_desc is
+ valid before use
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: Rob Herring <robh+dt@kernel.org>, Sean Wang <sean.wang@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Matt Mackall <mpm@selenic.com>, 
+ Herbert Xu <herbert@gondor.apana.org.au>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, 
+ Guenter Roeck <linux@roeck-us.net>, Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, 
+ Seiya Wang <seiya.wang@mediatek.com>, 
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>, 
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
+ LINUXWATCHDOG <linux-watchdog@vger.kernel.org>,
+ linux-clk <linux-clk@vger.kernel.org>, 
+ John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210916_025527_431538_E8CBBD32 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20210916_030751_781470_8C2154EC 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,72 +114,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi John,
+On Tue, Sep 14, 2021 at 10:52 AM Sam Shih <sam.shih@mediatek.com> wrote:
 
-Please ignore the previous series I sent today [1].  I forgot that I had
-already submitted a first version of this series.
+> Certain SoC are missing the middle part gpios in consecutive pins,
+> it's better to check if mtk_pin_desc is a valid pin for the extensibility
+>
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> Acked-by: Sean Wang <sean.wang@mediatek.com>
 
-[1]  https://lore.kernel.org/all/cover.1631783482.git.mchehab+huawei@kernel.org/
+This patch applied for v5.16 so we get some stuff merged.
 
-
-The first patch in this series fix a bad character used instead of
-a "(c)" UTF-8 symbol.
-
-The remaining ones fix several broken references to files
-under Documentation/, several due to DT schema conversions
-from .txt to .yaml.
-
----
-
-v2:
-   - Added a couple of extra fixes;
-   - merged two patches touching mtd-physmap.yaml;
-   - added missing tags (acked-by/reviewed-by) received after v1.
-v1: https://lore.kernel.org/all/cover.1626947923.git.mchehab+huawei@kernel.org/
-
-
-
-Mauro Carvalho Chehab (23):
-  visorbus: fix a copyright symbol that was bad encoded
-  dt-bindings: net: dsa: sja1105: update nxp,sja1105.yaml reference
-  dt-bindings: arm: mediatek: mmsys: update mediatek,mmsys.yaml
-    reference
-  dt-bindings: w1: update w1-gpio.yaml reference
-  dt-bindings: mmc: update mmc-card.yaml reference
-  libbpf: update index.rst reference
-  docs: accounting: update delay-accounting.rst reference
-  tools: bpftool: update bpftool-prog.rst reference
-  tools: bpftool: update bpftool-map.rst reference
-  bpftool: update bpftool-cgroup.rst reference
-  MAINTAINERS: update arm,vic.yaml reference
-  MAINTAINERS: update aspeed,i2c.yaml reference
-  MAINTAINERS: update faraday,ftrtc010.yaml reference
-  MAINTAINERS: update fsl,fec.yaml reference
-  MAINTAINERS: update ti,sci.yaml reference
-  MAINTAINERS: update intel,ixp46x-rng.yaml reference
-  MAINTAINERS: update nxp,imx8-jpeg.yaml reference
-  MAINTAINERS: update gemini.yaml reference
-  MAINTAINERS: update brcm,unimac-mdio.yaml reference
-  MAINTAINERS: update chipone,icn8318.yaml reference
-  MAINTAINERS: update silergy,sy8106a.yaml reference
-  MAINTAINERS: update mtd-physmap.yaml reference
-  MAINTAINERS: update ti,am654-hbmc.yaml reference
-
- Documentation/admin-guide/sysctl/kernel.rst   |  2 +-
- Documentation/bpf/index.rst                   |  2 +-
- .../display/mediatek/mediatek,disp.txt        |  2 +-
- Documentation/networking/dsa/sja1105.rst      |  2 +-
- Documentation/w1/masters/w1-gpio.rst          |  2 +-
- MAINTAINERS                                   | 28 +++++++++----------
- drivers/mmc/host/omap_hsmmc.c                 |  2 +-
- drivers/visorbus/visorbus_main.c              |  2 +-
- .../selftests/bpf/test_bpftool_synctypes.py   |  6 ++--
- 9 files changed, 24 insertions(+), 24 deletions(-)
-
--- 
-2.31.1
-
-
+Yours,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
