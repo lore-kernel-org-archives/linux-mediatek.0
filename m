@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4E17DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Sep 2021 12:39:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5B4BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Sep 2021 12:39:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B35161212
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Sep 2021 12:39:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1B35161212
+	by mail.kernel.org (Postfix) with ESMTPS id ADA3761056
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Sep 2021 12:39:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ADA3761056
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,33 +24,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EJ38fRAngoCcpsExB0QkgUY+qpSJhpVOk3HbIyOTiZ4=; b=B51Sb1kvvCRTMK
-	O1UwACdTAD0fgqMEQO5+145OOWa6NuzJc+fGkBslsGq0bqd/5BhThjxuV59DF6rv7ZGQq4c11ZYin
-	0Zrm75IB0Z/iHfXMyXLs1A5wvOODgtaupvWahtB9xnmt35HMdakpVpVBDvBVf9SKymXbI9QrtDTaC
-	kTIq/FyjG2GJEVYMIy5K/ngXdUXkEOElXIYNQAAJN6cQjhYXv9887wy8SpjpFKS0eBUDpPD7I83j2
-	FXLE1B8W1emRX1MW5/QLE1HYIY0sXdV4+zM9TY5wDAYNa9nXZKMnRpUo2p8IbLFRo+FffNmTjxlY3
-	F//XmCPmddEfECIk/dRA==;
+	List-Owner; bh=DWyctMmNHQTQz7S1VekiFVsXn9jLCpxTiNOOzI7E9oE=; b=T6aVV7E+nn2k22
+	+P6LiOjcE71ZIslITV3Zqp+c6FqHcMThVvAOCasgz8uXJgdTix0pTTyrB+Col7RnfUKCA+2vNp+FU
+	XajSPg3AfIad7KsBDisJDaiijhaKqki+vvdgQHpiFi9q3Jgk7AShEU/4EFxwj2LfoVhicTRw941b6
+	cHYrDBsfEib/ZfRxX5GK8u+yIVaC+GrG4b1Dy3K+98BLouVuP2oZRmRkyg0LGiTwKbmBg/yxWMLeO
+	/2naO1MBBwNzOGDk72EO9E8yN9XyuOXZHh/0jjXyAp+tOSwUP/tvNuptXtgoGz65qKz5nAG/9czDM
+	ydhmM175M7oeUgZgfObw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mRD99-00E7pX-OS; Fri, 17 Sep 2021 12:39:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mRD9M-00E7sq-0I; Fri, 17 Sep 2021 12:39:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mRD8t-00E7lE-73; Fri, 17 Sep 2021 12:39:03 +0000
-X-UUID: a47eecdf72824f05b24aa99a1551dbe4-20210917
-X-UUID: a47eecdf72824f05b24aa99a1551dbe4-20210917
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1mRD8x-00E7ll-It; Fri, 17 Sep 2021 12:39:05 +0000
+X-UUID: 9e670567c4b840f6be40cc1b4b5854a9-20210917
+X-UUID: 9e670567c4b840f6be40cc1b4b5854a9-20210917
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <wenbin.mei@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1157751503; Fri, 17 Sep 2021 05:38:57 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 17 Sep 2021 05:38:55 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 17 Sep 2021 20:38:54 +0800
+ with ESMTP id 1607073605; Fri, 17 Sep 2021 05:38:58 -0700
+Received: from MTKMBS06N1.mediatek.inc (172.21.101.129) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 17 Sep 2021 05:38:56 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs06n1.mediatek.inc (172.21.101.129) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 17 Sep 2021 20:38:55 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 17 Sep 2021 20:38:53 +0800
+ Transport; Fri, 17 Sep 2021 20:38:54 +0800
 From: Wenbin Mei <wenbin.mei@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
@@ -62,17 +62,17 @@ CC: Chaotian Jing <chaotian.jing@mediatek.com>, Avri Altman
  <adrian.hunter@intel.com>, <linux-mmc@vger.kernel.org>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Subject: [PATCH 2/3] mmc: core: add tuning support for HS400 mode
-Date: Fri, 17 Sep 2021 20:38:50 +0800
-Message-ID: <20210917123851.22741-3-wenbin.mei@mediatek.com>
+Subject: [PATCH 3/3] mmc: mediatek: Add HS400 online tuning support
+Date: Fri, 17 Sep 2021 20:38:51 +0800
+Message-ID: <20210917123851.22741-4-wenbin.mei@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210917123851.22741-1-wenbin.mei@mediatek.com>
 References: <20210917123851.22741-1-wenbin.mei@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210917_053859_300518_015B6CB6 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20210917_053903_740463_F7B5E043 
+X-CRM114-Status: GOOD (  22.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,73 +89,168 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds the execute_hs400_tuning callback function for HS400 tuning
-operations and move the declaration of mmc_get_ext_csd() to
-include/linux/mmc/host.h.
-
-If execute_hs400_tuning is not implemented then they are not called.
-That means there should be no affect for existing drivers as none implemt
-these ops.
+According to JEDEC Spec, there is no need to do tuning under HS400 mode
+since the Rx signal is aligned with the DS signal. However, MediaTek's
+IC need set its "DS delay" internally to ensure it can latch Rx signal
+correctly.
+In previous version, We provide an "hs400-ds-delay" in device tree to
+cover different chipset/PCB design, and it works fine in most cases.
+But, with the development of process technology and the big VCore
+voltage scale range(may have 0.7V/0.6V/0.55V), it is difficult to find
+a suitable "hs400-ds-delay" to cover all of IC corner
+cases(SSSS/TTTT/FFFF).
+So that We must have the ability to do hs400 online tuning.
 
 Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
 ---
- drivers/mmc/core/mmc.c     | 8 ++++++++
- drivers/mmc/core/mmc_ops.h | 1 -
- include/linux/mmc/host.h   | 4 ++++
- 3 files changed, 12 insertions(+), 1 deletion(-)
+ drivers/mmc/host/mtk-sd.c | 79 ++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 77 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mmc/core/mmc.c b/drivers/mmc/core/mmc.c
-index 838726b68ff3..0aa72acd8612 100644
---- a/drivers/mmc/core/mmc.c
-+++ b/drivers/mmc/core/mmc.c
-@@ -1222,6 +1222,14 @@ static int mmc_select_hs400(struct mmc_card *card)
- 	mmc_set_timing(host, MMC_TIMING_MMC_HS400);
- 	mmc_set_bus_speed(card);
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 4dfc246c5f95..5f98f869545d 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -258,6 +258,7 @@
+ #define MSDC_PAD_TUNE_RD_SEL	  (0x1 << 13)   /* RW */
+ #define MSDC_PAD_TUNE_CMD_SEL	  (0x1 << 21)   /* RW */
  
-+	if (host->ops->execute_hs400_tuning) {
-+		mmc_retune_disable(host);
-+		err = host->ops->execute_hs400_tuning(host, card);
-+		mmc_retune_enable(host);
-+		if (err)
-+			goto out_err;
++#define PAD_DS_TUNE_DLY_SEL       (0x1 << 0)	/* RW */
+ #define PAD_DS_TUNE_DLY1	  (0x1f << 2)   /* RW */
+ #define PAD_DS_TUNE_DLY2	  (0x1f << 7)   /* RW */
+ #define PAD_DS_TUNE_DLY3	  (0x1f << 12)  /* RW */
+@@ -301,6 +302,11 @@
+ #define PAD_CMD_RD_RXDLY_SEL    (0x1 << 11)     /* RW */
+ #define PAD_CMD_TX_DLY          (0x1f << 12)    /* RW */
+ 
++/* EMMC50_PAD_DS_TUNE mask */
++#define PAD_DS_DLY_SEL		(0x1 << 16)	/* RW */
++#define PAD_DS_DLY1		(0x1f << 10)	/* RW */
++#define PAD_DS_DLY3		(0x1f << 0)	/* RW */
++
+ #define REQ_CMD_EIO  (0x1 << 0)
+ #define REQ_CMD_TMO  (0x1 << 1)
+ #define REQ_DAT_ERR  (0x1 << 2)
+@@ -448,11 +454,13 @@ struct msdc_host {
+ 	bool vqmmc_enabled;
+ 	u32 latch_ck;
+ 	u32 hs400_ds_delay;
++	u32 hs400_ds_dly3;
+ 	u32 hs200_cmd_int_delay; /* cmd internal delay for HS200/SDR104 */
+ 	u32 hs400_cmd_int_delay; /* cmd internal delay for HS400 */
+ 	bool hs400_cmd_resp_sel_rising;
+ 				 /* cmd response sample selection for HS400 */
+ 	bool hs400_mode;	/* current eMMC will run at hs400 mode */
++	bool hs400_tuning;	/* hs400 mode online tuning */
+ 	bool internal_cd;	/* Use internal card-detect logic */
+ 	bool cqhci;		/* support eMMC hw cmdq */
+ 	struct msdc_save_para save_para; /* used when gate HCLK */
+@@ -1190,7 +1198,8 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ 	if (!sbc_error && !(events & MSDC_INT_CMDRDY)) {
+ 		if (events & MSDC_INT_CMDTMO ||
+ 		    (cmd->opcode != MMC_SEND_TUNING_BLOCK &&
+-		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200))
++		     cmd->opcode != MMC_SEND_TUNING_BLOCK_HS200 &&
++		     !host->hs400_tuning))
+ 			/*
+ 			 * should not clear fifo/interrupt as the tune data
+ 			 * may have alreay come when cmd19/cmd21 gets response
+@@ -1287,7 +1296,8 @@ static void msdc_cmd_next(struct msdc_host *host,
+ 	if ((cmd->error &&
+ 	    !(cmd->error == -EILSEQ &&
+ 	      (cmd->opcode == MMC_SEND_TUNING_BLOCK ||
+-	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200))) ||
++	       cmd->opcode == MMC_SEND_TUNING_BLOCK_HS200 ||
++	       host->hs400_tuning))) ||
+ 	    (mrq->sbc && mrq->sbc->error))
+ 		msdc_request_done(host, mrq);
+ 	else if (cmd == mrq->sbc)
+@@ -2251,6 +2261,67 @@ static int msdc_prepare_hs400_tuning(struct mmc_host *mmc, struct mmc_ios *ios)
+ 	return 0;
+ }
+ 
++static int msdc_execute_hs400_tuning(struct mmc_host *mmc, struct mmc_card *card)
++{
++	struct msdc_host *host = mmc_priv(mmc);
++	struct msdc_delay_phase dly1_delay;
++	u32 val, result_dly1 = 0;
++	u8 *ext_csd;
++	int i, ret;
++
++	if (host->top_base) {
++		sdr_set_bits(host->top_base + EMMC50_PAD_DS_TUNE,
++			     PAD_DS_DLY_SEL);
++		if (host->hs400_ds_dly3)
++			sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
++				      PAD_DS_DLY3, host->hs400_ds_dly3);
++	} else {
++		sdr_set_bits(host->base + PAD_DS_TUNE, PAD_DS_TUNE_DLY_SEL);
++		if (host->hs400_ds_dly3)
++			sdr_set_field(host->base + PAD_DS_TUNE,
++				      PAD_DS_TUNE_DLY3, host->hs400_ds_dly3);
 +	}
 +
- 	if (host->ops->hs400_complete)
- 		host->ops->hs400_complete(host);
- 
-diff --git a/drivers/mmc/core/mmc_ops.h b/drivers/mmc/core/mmc_ops.h
-index ae25ffc2e870..e5e94567a9a9 100644
---- a/drivers/mmc/core/mmc_ops.h
-+++ b/drivers/mmc/core/mmc_ops.h
-@@ -38,7 +38,6 @@ int mmc_spi_read_ocr(struct mmc_host *host, int highcap, u32 *ocrp);
- int mmc_spi_set_crc(struct mmc_host *host, int use_crc);
- int mmc_bus_test(struct mmc_card *card, u8 bus_width);
- int mmc_can_ext_csd(struct mmc_card *card);
--int mmc_get_ext_csd(struct mmc_card *card, u8 **new_ext_csd);
- int mmc_switch_status(struct mmc_card *card, bool crc_err_fatal);
- bool mmc_prepare_busy_cmd(struct mmc_host *host, struct mmc_command *cmd,
- 			  unsigned int timeout_ms);
-diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-index ff1a251bb0bc..072650aeb2a7 100644
---- a/include/linux/mmc/host.h
-+++ b/include/linux/mmc/host.h
-@@ -162,6 +162,9 @@ struct mmc_host_ops {
- 	/* Prepare HS400 target operating frequency depending host driver */
- 	int	(*prepare_hs400_tuning)(struct mmc_host *host, struct mmc_ios *ios);
- 
-+	/* Execute HS400 tuning depending host driver */
-+	int	(*execute_hs400_tuning)(struct mmc_host *host, struct mmc_card *card);
++	host->hs400_tuning = true;
++	for (i = 0; i < PAD_DELAY_MAX; i++) {
++		if (host->top_base)
++			sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
++				      PAD_DS_DLY1, i);
++		else
++			sdr_set_field(host->base + PAD_DS_TUNE,
++				      PAD_DS_TUNE_DLY1, i);
++		ret = mmc_get_ext_csd(card, &ext_csd);
++		if (!ret)
++			result_dly1 |= (1 << i);
++	}
++	host->hs400_tuning = false;
 +
- 	/* Prepare switch to DDR during the HS400 init sequence */
- 	int	(*hs400_prepare_ddr)(struct mmc_host *host);
++	dly1_delay = get_best_delay(host, result_dly1);
++	if (dly1_delay.maxlen == 0) {
++		dev_err(host->dev, "Failed to get DLY1 delay!\n");
++		goto fail;
++	}
++	if (host->top_base)
++		sdr_set_field(host->top_base + EMMC50_PAD_DS_TUNE,
++			      PAD_DS_DLY1, dly1_delay.final_phase);
++	else
++		sdr_set_field(host->base + PAD_DS_TUNE,
++			      PAD_DS_TUNE_DLY1, dly1_delay.final_phase);
++
++	if (host->top_base)
++		val = readl(host->top_base + EMMC50_PAD_DS_TUNE);
++	else
++		val = readl(host->base + PAD_DS_TUNE);
++
++	dev_info(host->dev, "Fianl PAD_DS_TUNE: 0x%x\n", val);
++
++	return 0;
++
++fail:
++	dev_err(host->dev, "Failed to tuning DS pin delay!\n");
++	return -EIO;
++}
++
+ static void msdc_hw_reset(struct mmc_host *mmc)
+ {
+ 	struct msdc_host *host = mmc_priv(mmc);
+@@ -2377,6 +2448,7 @@ static const struct mmc_host_ops mt_msdc_ops = {
+ 	.card_busy = msdc_card_busy,
+ 	.execute_tuning = msdc_execute_tuning,
+ 	.prepare_hs400_tuning = msdc_prepare_hs400_tuning,
++	.execute_hs400_tuning = msdc_execute_hs400_tuning,
+ 	.hw_reset = msdc_hw_reset,
+ };
  
-@@ -633,5 +636,6 @@ static inline enum dma_data_direction mmc_get_dma_dir(struct mmc_data *data)
+@@ -2396,6 +2468,9 @@ static void msdc_of_property_parse(struct platform_device *pdev,
+ 	of_property_read_u32(pdev->dev.of_node, "hs400-ds-delay",
+ 			     &host->hs400_ds_delay);
  
- int mmc_send_tuning(struct mmc_host *host, u32 opcode, int *cmd_error);
- int mmc_send_abort_tuning(struct mmc_host *host, u32 opcode);
-+int mmc_get_ext_csd(struct mmc_card *card, u8 **new_ext_csd);
++	of_property_read_u32(pdev->dev.of_node, "mediatek,hs400-ds-dly3",
++			     &host->hs400_ds_dly3);
++
+ 	of_property_read_u32(pdev->dev.of_node, "mediatek,hs200-cmd-int-delay",
+ 			     &host->hs200_cmd_int_delay);
  
- #endif /* LINUX_MMC_HOST_H */
 -- 
 2.25.1
 
