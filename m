@@ -7,14 +7,14 @@ X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FF08C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8384C433F5
 	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Sep 2021 03:28:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2108260F43
+	by mail.kernel.org (Postfix) with ESMTPS id A29CC6103C
 	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Sep 2021 03:28:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2108260F43
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A29CC6103C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,30 +23,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n/6xMCqHogKO28H3VKS8rTfeU4CiInXadxb08b1OT+s=; b=QOucAvxbq5FZl7
-	H8Bd6iJwNN6F4R4Tyn60h5BMB//ZAvcEQMvHlSsXgok9l5AhXaaojL6QRf7gWL+vuXNHTqlMAh54m
-	h/lTiCs4VHcrj9yyjCg7QF35Pr5bI7sVxCNSL0yEmCGcrfmyOKzZWo+DJWiHiVKWbWSlNXoIBhVM0
-	/w67a4uPclquMwmW2V+rxuVdg/iA25N5+SA5esRYQ0VSFVwnKKAesztpyyFo7uMDzmVZCdlwiaJFW
-	yryVeJeEfRBqRlceJQcPWVOqVGg5iYCQMWWWoZOS9y5o1q2edCakPaE+eEXZSERmwGkN4Pq2/c9E+
-	VYbuUjOUd9XL8hmRtZZg==;
+	List-Owner; bh=xD20N1s7jHPwRUKCCXD2MfeAH1qwYdagyxoMV/opNX0=; b=uvvGmykwPLtT5o
+	e5UqN0zV3BvbeebvngTl7JJHVoBAHWProgr1CbrY24NFOtnDchP7+ijn6yO1MCHJjnCkIdXw//FQO
+	frJqJoZRblQEpLejzWY9g1Gmm3lAVlgpdZRyV9N247VIbEDQ+bIJBVMA0bRmTYxmMHkrcUNIZWx++
+	Ket/qoUsrbZVpqcemgduyKE/kSqYKCB2pF4m7GX6d/gw6RTedTr86Hex4NrKJxTC5qn8NfRMYPSF+
+	7Zw7HZHTTQ0yg6mnZwBGyfqd6Nl7NxhiSdNkC1oYTC5y4cz/IHI2JJcShslHy5VMrRu7KjxpXZHAJ
+	m4HO8w7R3LLaOc042c8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mR4Xc-00D8c0-6a; Fri, 17 Sep 2021 03:27:56 +0000
+	id 1mR4Xe-00D8cP-8m; Fri, 17 Sep 2021 03:27:58 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mR4XX-00D8aw-6R
- for linux-mediatek@lists.infradead.org; Fri, 17 Sep 2021 03:27:54 +0000
-X-UUID: c5c7eaad10ba4917b1b06a607d3fc31f-20210916
-X-UUID: c5c7eaad10ba4917b1b06a607d3fc31f-20210916
+ id 1mR4XY-00D8ai-TA
+ for linux-mediatek@lists.infradead.org; Fri, 17 Sep 2021 03:27:55 +0000
+X-UUID: 02f4c360057e4b7e99073d164acb62eb-20210916
+X-UUID: 02f4c360057e4b7e99073d164acb62eb-20210916
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <roy-cw.yeh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 753266462; Thu, 16 Sep 2021 20:27:47 -0700
-Received: from mtkmbs05n2.mediatek.inc (172.21.101.140) by
+ with ESMTP id 2018148413; Thu, 16 Sep 2021 20:27:47 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Thu, 16 Sep 2021 20:27:46 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs05n2.mediatek.inc (172.21.101.140) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 17 Sep 2021 11:27:45 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -54,18 +54,18 @@ Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
 From: roy-cw.yeh <roy-cw.yeh@mediatek.com>
 To: "river . cheng" <river.cheng@mediatek.com>
 CC: <linux-mediatek@lists.infradead.org>, Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
-Subject: [PATCH v1 4/9] dt-bindings: media: mediatek: mdp3: add additional
- function block yaml
-Date: Fri, 17 Sep 2021 11:27:23 +0800
-Message-ID: <20210917032728.22367-5-roy-cw.yeh@mediatek.com>
+Subject: [PATCH v1 5/9] arm64: dts: mt8195: add mdp3 node
+Date: Fri, 17 Sep 2021 11:27:24 +0800
+Message-ID: <20210917032728.22367-6-roy-cw.yeh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210917032728.22367-1-roy-cw.yeh@mediatek.com>
 References: <20210917032728.22367-1-roy-cw.yeh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210916_202751_304049_7FA63F6B 
-X-CRM114-Status: GOOD (  13.69  )
+X-CRM114-CacheID: sfid-20210916_202752_991476_E18423C9 
+X-CRM114-Status: UNSURE (   8.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,895 +84,737 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-Add additional function block yaml in mt8195
+Add mdp3 node.
 
 Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
 ---
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |  2 +
- .../bindings/arm/mediatek/mediatek,mutex.yaml |  4 ++
- .../bindings/media/mediatek,mdp3-aal.yaml     | 62 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-color.yaml   | 62 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-fg.yaml      | 61 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-hdr.yaml     | 61 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-merge.yaml   | 62 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-ovl.yaml     | 61 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-pad.yaml     | 62 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-rdma.yaml    | 22 +++++-
- .../bindings/media/mediatek,mdp3-rsz.yaml     |  2 +
- .../bindings/media/mediatek,mdp3-split.yaml   | 67 +++++++++++++++++++
- .../bindings/media/mediatek,mdp3-stitch.yaml  | 62 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-tcc.yaml     | 62 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-tdshp.yaml   | 61 +++++++++++++++++
- .../bindings/media/mediatek,mdp3-wrot.yaml    |  2 +
- 16 files changed, 713 insertions(+), 2 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 672 ++++++++++++++++++++++-
+ 1 file changed, 669 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-index 679437ee2590..7b46b8156a12 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-@@ -33,6 +33,8 @@ properties:
-               - mediatek,mt8365-mmsys
-               - mediatek,mt8195-vdosys0
-               - mediatek,mt8195-vdosys1
-+              - mediatek,mt8195-vppsys0
-+              - mediatek,mt8195-vppsys1
-           - const: syscon
-       - items:
-           - const: mediatek,mt7623-mmsys
-diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml
-index 1a1c049aa929..41dc1383131a 100644
---- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml
-@@ -37,6 +37,10 @@ properties:
-           - const: mediatek,mt8192-disp-mutex
-       - items:
-           - const: mediatek,mt8195-disp-mutex
-+      - items:
-+          - const: mediatek,mt8195-vpp0-mutex
-+      - items:
-+          - const: mediatek,mt8195-vpp1-mutex
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 3a44955350ae..727b78535605 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1002,9 +1002,245 @@
+ 		vppsys0: syscon@14000000 {
+ 			compatible = "mediatek,mt8195-vppsys0", "syscon";
+ 			reg = <0 0x14000000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
  
-   reg:
-     maxItems: 1
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
-new file mode 100644
-index 000000000000..54535aac8942
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-aal.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 AAL Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components is responsible for backlight power saving
-+  and sunlight visibility improving.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+        - mediatek,mt8195-mdp3-aal
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_aal0: mdp_aal0@14005000 {
-+      compatible = "mediatek,mt8195-mdp3-aal";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14005000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x5000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_MDP_AAL>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
-new file mode 100644
-index 000000000000..4eba4505ed26
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-color.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 COLOR Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to adjust hue, luma and saturation
-+  to get better picture quality.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+        - mediatek,mt8195-mdp3-color
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_color0: mdp_color0@14008000 {
-+      compatible = "mediatek,mt8195-mdp3-color";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14008000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x8000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_MDP_COLOR>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
-new file mode 100644
-index 000000000000..8a4ea694c44b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
-@@ -0,0 +1,61 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-fg.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 FG Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to add film grain according to AV1 spec.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8195-mdp3-fg
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_fg0: mdp_fg0@14002000 {
-+      compatible = "mediatek,mt8195-mdp3-fg";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14002000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x2000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
-+    };
-\ No newline at end of file
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
-new file mode 100644
-index 000000000000..4330f2b79697
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
-@@ -0,0 +1,61 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-hdr.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 HDR Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to perform HDR to SDR
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8195-mdp3-hdr
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_hdr0: mdp_hdr0@14004000
-+      compatible = "mediatek,mt8195-mdp3-hdr";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14004000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x4000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_MDP_HDR>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
-new file mode 100644
-index 000000000000..1e48a4636588
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-merge.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 MERGE Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to merge
-+  two slice-per-line inputs into one side-by-side output.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+        - mediatek,mt8195-mdp3-merge
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    svpp2_mdp3_merge: svpp2_mdp_merge@14f1a000 {
-+      compatible = "mediatek,mt8195-mdp3-merge";
-+      mediatek,mdp3-id = <2>;
-+      reg = <0 0x14f1a000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xa000 0x1000>;
-+      clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
-new file mode 100644
-index 000000000000..4e503d79758b
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
-@@ -0,0 +1,61 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-ovl.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 OVL Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to perform alpha blending from the memory.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+        - mediatek,mt8195-mdp3-ovl
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_ovl0: mdp_ovl0@14009000 {
-+      compatible = "mediatek,mt8195-mdp3-ovl";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14009000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x9000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
-new file mode 100644
-index 000000000000..1f990c5ce6ab
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-pad.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 PADDING Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to insert
-+  pre-defined color or alpha value to arbitrary side of image.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+        - mediatek,mt8195-mdp3-pad
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_pad0: mdp_pad0@1400a000 {
-+      compatible = "mediatek,mt8195-mdp3-pad";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x1400a000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xa000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_PADDING>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-index b355d7fe791e..ce023d9fbef7 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
-@@ -20,14 +20,16 @@ properties:
-     oneOf:
-       - items:
-         - enum:
--          # controller node
-           - mediatek,mt8183-mdp3
-+          - mediatek,mt8195-mdp3
-         - enum:
-           - mediatek,mt8183-mdp3-rdma
++		mdp3_rdma0: mdp_rdma0@14001000 {
++			compatible = "mediatek,mt8195-mdp3",
++						"mediatek,mt8183-mdp3-rdma";
++			mediatek,scp = <&scp>;
++			mediatek,mdp3-id = <0>;
++			mdp3-comps = "mediatek,mt8195-mdp3-path1", "mediatek,mt8195-mdp3-path2",
++					 "mediatek,mt8195-mdp3-dl1", "mediatek,mt8195-mdp3-dl2",
++				     "mediatek,mt8195-mdp3-dl3", "mediatek,mt8195-mdp3-dl4",
++				     "mediatek,mt8195-mdp3-dl5", "mediatek,mt8195-mdp3-dl6";
++			mdp3-comp-ids = <0 1 0 1 0 0 0 0>;
++			reg = <0 0x14001000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x1000 0x1000>;
++			interrupts = <GIC_SPI 578 IRQ_TYPE_LEVEL_HIGH 0>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>,
++							<&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++			iommus = <&iommu_vpp M4U_PORT_L4_MDP_RDMA>,
++				 <&iommu_vpp M4U_PORT_L4_MDP_WROT>,
++				 <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>,
++				 <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_RDMA>,
++					<&topckgen CLK_TOP_CFG_VPP0>,
++					<&topckgen CLK_TOP_CFG_26M_VPP0>,
++					<&vppsys0 CLK_VPP0_WARP0_ASYNC_TX>,
++					<&vppsys0 CLK_VPP0_WARP0_RELAY>,
++					<&vppsys0 CLK_VPP0_WARP0_MDP_DL_ASYNC>,
++					<&vppsys0 CLK_VPP0_WARP1_ASYNC_TX>,
++					<&vppsys0 CLK_VPP0_WARP1_RELAY>,
++					<&vppsys0 CLK_VPP0_WARP1_MDP_DL_ASYNC>,
++					<&vppsys0 CLK_VPP0_VPP02VPP1_RELAY>,
++					<&vppsys1 CLK_VPP1_DL_ASYNC>,
++					<&vppsys1 CLK_VPP1_VPP0_DL_ASYNC>,
++					<&vppsys1 CLK_VPP1_VPP0_DL_RELAY>,
++					<&vppsys0 CLK_VPP0_VPP12VPP0_ASYNC>,
++					<&vppsys1 CLK_VPP1_VPP0_DL1_RELAY>,
++					<&vppsys1 CLK_VPP1_SVPP2_VDO0_DL_RELAY>,
++					<&vppsys1 CLK_VPP1_SVPP3_VDO1_DL_RELAY>,
++					<&vppsys1 CLK_VPP1_SVPP2_VDO1_DL_RELAY>,
++					<&vppsys1 CLK_VPP1_SVPP3_VDO0_DL_RELAY>;
++			clock-names = "MDP_RDMA0",
++						"TOP_CFG_VPP0",
++						"TOP_CFG_26M_VPP0",
++						"WARP0_ASYNC_TX",
++						"WARP0_RELAY",
++						"WARP0_MDP_DL_ASYNC",
++						"WARP1_ASYNC_TX",
++						"WARP1_RELAY",
++						"WARP1_MDP_DL_ASYNC",
++						"VPP02VPP1_RELAY",
++						"VPP0_DL_ASYNC_VPP1",
++						"VPP0_DL_ASYNC_VPP0",
++						"VPP0_DL_RELAY",
++						"VPP12VPP0_ASYNC",
++						"VPP0_DL1_RELAY",
++						"SVPP2_VDO0_DL_RELAY",
++						"SVPP3_VDO1_DL_RELAY",
++						"SVPP2_VDO1_DL_RELAY",
++						"SVPP3_VDO0_DL_RELAY";
++			mediatek,mmsys2 = <&vppsys1>;
++			mediatek,mm-mutex2 = <&vpp1_mutex>;
++			mediatek,mmsys = <&vppsys0>;
++			mediatek,mm-mutex   = <&vpp0_mutex>;
++			mboxes =
++				<&gce0 12 CMDQ_THR_PRIO_1>,
++				<&gce0 13 CMDQ_THR_PRIO_1>,
++				<&gce0 14 CMDQ_THR_PRIO_1>,
++				<&gce0 21 CMDQ_THR_PRIO_1>,
++				<&gce0 22 CMDQ_THR_PRIO_1>;
++			mdp3-rdma0  = <&mdp3_rdma0>;
++			mdp3-rdma1  = <&svpp1_mdp3_rdma>;
++			mdp3-rdma2  = <&svpp2_mdp3_rdma>;
++			mdp3-rdma3  = <&svpp3_mdp3_rdma>;
++			mdp3-stitch = <&mdp3_stitch0>;
++			mdp3-rsz0   = <&mdp3_rsz0>;
++			mdp3-rsz1   = <&svpp1_mdp3_rsz>;
++			mdp3-rsz2   = <&svpp2_mdp3_rsz>;
++			mdp3-rsz3   = <&svpp3_mdp3_rsz>;
++			mdp3-wrot0  = <&mdp3_wrot0>;
++			mdp3-wrot1  = <&svpp1_mdp3_wrot>;
++			mdp3-wrot2  = <&svpp2_mdp3_wrot>;
++			mdp3-wrot3  = <&svpp3_mdp3_wrot>;
++			mdp3-tdshp0 = <&mdp3_tdshp0>;
++			mdp3-tdshp1 = <&svpp1_mdp3_tdshp>;
++			mdp3-tdshp2 = <&svpp2_mdp3_tdshp>;
++			mdp3-tdshp3 = <&svpp3_mdp3_tdshp>;
++			mdp3-aal0   = <&mdp3_aal0>;
++			mdp3-aal1   = <&svpp1_mdp3_aal>;
++			mdp3-aal2   = <&svpp2_mdp3_aal>;
++			mdp3-aal3   = <&svpp3_mdp3_aal>;
++			mdp3-color0 = <&mdp3_color0>;
++			mdp3-color1 = <&svpp1_mdp3_color>;
++			mdp3-color2 = <&svpp2_mdp3_color>;
++			mdp3-color3 = <&svpp3_mdp3_color>;
++			mdp3-hdr0   = <&mdp3_hdr0>;
++			mdp3-hdr1   = <&svpp1_mdp3_hdr>;
++			mdp3-hdr2   = <&svpp2_mdp3_hdr>;
++			mdp3-hdr3   = <&svpp3_mdp3_hdr>;
++			mdp3-fg0    = <&mdp3_fg0>;
++			mdp3-fg1    = <&svpp1_mdp3_fg>;
++			mdp3-fg2    = <&svpp2_mdp3_fg>;
++			mdp3-fg3    = <&svpp3_mdp3_fg>;
++			mdp3-tcc0   = <&mdp3_tcc0>;
++			mdp3-tcc1   = <&svpp1_mdp3_tcc>;
++			mdp3-ovl0   = <&mdp3_ovl0>;
++			mdp3-ovl1   = <&svpp1_mdp3_ovl>;
++			mdp3-pad0   = <&mdp3_pad0>;
++			mdp3-pad1   = <&svpp1_mdp3_pad>;
++			mdp3-pad2   = <&svpp2_mdp3_pad>;
++			mdp3-pad3   = <&svpp3_mdp3_pad>;
++			mdp3-split  = <&vpp_split0>;
++			mdp3-merge2 = <&svpp2_mdp3_merge>;
++			mdp3-merge3 = <&svpp3_mdp3_merge>;
++		};
++
++		mdp3_fg0: mdp_fg0@14002000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14002000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x2000 0x1000>;
++			interrupts = <GIC_SPI 579 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
++			clock-names = "MDP_FG0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_stitch0: mdp_stich0@14003000 {
++			compatible = "mediatek,mt8195-mdp3-stitch";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14003000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x3000 0x1000>;
++			interrupts = <GIC_SPI 580 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_STITCH>;
++			clock-names = "MDP_STITCH";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_hdr0: mdp_hdr0@14004000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14004000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x4000 0x1000>;
++			interrupts = <GIC_SPI 581 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_HDR>;
++			clock-names = "MDP_HDR0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_aal0: mdp_aal0@14005000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14005000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x5000 0x1000>;
++			interrupts = <GIC_SPI 582 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_AAL>;
++			clock-names = "MDP_AAL0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_rsz0: mdp_rsz0@14006000 {
++			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14006000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x6000 0x1000>;
++			interrupts = <GIC_SPI 583 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_RSZ>;
++			clock-names = "MDP_RSZ0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_tdshp0: mdp_tdshp0@14007000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14007000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x7000 0x1000>;
++			interrupts = <GIC_SPI 584 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
++			clock-names = "MDP_TDSHP0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_color0: mdp_color0@14008000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14008000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x8000 0x1000>;
++			interrupts = <GIC_SPI 585 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_COLOR>;
++			clock-names = "MDP_COLOR0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_ovl0: mdp_ovl0@14009000 {
++			compatible = "mediatek,mt8195-mdp3-ovl";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x14009000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x9000 0x1000>;
++			interrupts = <GIC_SPI 586 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
++			clock-names = "MDP_OVL0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_pad0: mdp_pad0@1400a000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x1400a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xa000 0x1000>;
++			interrupts = <GIC_SPI 588 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_PADDING>;
++			clock-names = "MDP_PAD0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_tcc0: mdp_tcc0@1400b000 {
++			compatible = "mediatek,mt8195-mdp3-tcc";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x1400b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xb000 0x1000>;
++			interrupts = <GIC_SPI 589 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
++			clock-names = "MDP_TCC0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
++		mdp3_wrot0: mdp_wrot0@1400c000 {
++			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
++			mediatek,mdp3-id = <0>;
++			reg = <0 0x1400c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xc000 0x1000>;
++			interrupts = <GIC_SPI 590 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys0 CLK_VPP0_MDP_WROT>;
++			clock-names = "MDP_WROT0";
++			iommus = <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++		};
++
+ 		smi_common2: smi@1400e000 {
+ 			compatible = "mediatek,mt8195-smi-common";
+ 			mediatek,common-id = <2>;
+@@ -1017,6 +1253,34 @@
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
+ 		};
  
-       - items:
--        - enum:
-           # read DMA
-+        - enum:
-+          - mediatek,mt8195-mdp3-rdma
-+        - enum:
-           - mediatek,mt8183-mdp3-rdma
++		vpp0_mutex: vpp0_mutex@1400f000 {
++			compatible = "mediatek,mt8195-vpp0-mutex";
++			reg = <0 0x1400f000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xf000 0x1000>;
++			interrupts = <GIC_SPI 592 IRQ_TYPE_LEVEL_HIGH 0>;
++			#clocks = <&vppsys0 CLK_VPP0_MUTEX>;
++			#clock-names = "MDP_MUTEX0";
++			clocks = <&vppsys0 CLK_VPP0_MUTEX>;
++			clock-names = "MDP_MUTEX0";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>;
++			mediatek,gce-events = <CMDQ_EVENT_VPP0_MDP_RDMA_SOF>,
++					<CMDQ_EVENT_VPP0_MDP_WROT_SOF>,
++					<CMDQ_EVENT_VPP0_MDP_RDMA_FRAME_DONE>,
++					<CMDQ_EVENT_VPP0_MDP_WROT_VIDO_WDONE>,
++					<CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_SOF>,
++					<CMDQ_EVENT_VPP1_SVPP1_MDP_RDMA_FRAME_DONE>,
++					<CMDQ_EVENT_VPP1_SVPP2_MDP_RDMA_FRAME_DONE>,
++					<CMDQ_EVENT_VPP1_SVPP3_MDP_RDMA_FRAME_DONE>,
++					<CMDQ_EVENT_VPP1_SVPP1_MDP_WROT_FRAME_DONE>,
++					<CMDQ_EVENT_VPP1_SVPP2_MDP_WROT_FRAME_DONE>,
++					<CMDQ_EVENT_VPP1_SVPP3_MDP_WROT_FRAME_DONE>;
++		};
++
+ 		smi_common1: smi@14012000 {
+ 			compatible = "mediatek,mt8195-smi-common";
+ 			mediatek,common-id = <1>;
+@@ -1098,9 +1362,22 @@
+ 		vppsys1: syscon@14f00000 {
+ 			compatible = "mediatek,mt8195-vppsys1", "syscon";
+ 			reg = <0 0x14f00000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
  
-   mediatek,scp:
-@@ -55,12 +57,28 @@ properties:
-           - mediatek,mt8183-mdp3-dl1
-         - enum:
-           - mediatek,mt8183-mdp3-dl2
-+        - enum:
-+          - mediatek,mt8195-mdp3-dl1
-+        - enum:
-+          - mediatek,mt8195-mdp3-dl2
-+        - enum:
-+          - mediatek,mt8195-mdp3-dl3
-+        - enum:
-+          - mediatek,mt8195-mdp3-dl4
-+        - enum:
-+          - mediatek,mt8195-mdp3-dl5
-+        - enum:
-+          - mediatek,mt8195-mdp3-dl6
-         - enum:
-           # MDP direct-link output path selection, create a
-           # component for path connectedness of HW pipe control
-           - mediatek,mt8183-mdp3-path1
-         - enum:
-           - mediatek,mt8183-mdp3-path2
-+        - enum:
-+          - mediatek,mt8195-mdp3-path1
-+        - enum:
-+          - mediatek,mt8195-mdp3-path2
-         - enum:
-           # Input DMA of ISP PASS2 (DIP) module for raw image input
-           - mediatek,mt8183-mdp3-imgi
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-index c55a52cd32b7..eaa487ec58cc 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-@@ -16,6 +16,8 @@ description: |
- properties:
-   compatible:
-     items:
-+      - enum:
-+        - mediatek,mt8195-mdp3-rsz
-       - enum:
-         - mediatek,mt8183-mdp3-rsz
++		vpp1_mutex: vpp1_mutex@14f01000 {
++			compatible = "mediatek,mt8195-vpp1-mutex";
++			reg = <0 0x14f01000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x1000 0x1000>;
++			interrupts = <GIC_SPI 635 IRQ_TYPE_LEVEL_HIGH 0>;
++			#clocks = <&vppsys1 CLK_VPP1_DISP_MUTEX>;
++			#clock-names = "DISP_MUTEX";
++			clocks = <&vppsys1 CLK_VPP1_DISP_MUTEX>;
++			clock-names = "DISP_MUTEX";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
+ 		larb5: larb@14f02000 {
+ 			compatible = "mediatek,mt8195-smi-larb";
+ 			reg = <0 0x14f02000 0 0x1000>;
+@@ -1125,7 +1402,396 @@
+ 			clock-names = "apb", "smi", "gals", "gals1";
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
+ 		};
+-		
++
++		vpp_split0: vpp_split0@14f06000 {
++			compatible = "mediatek,mt8195-mdp3-split";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f06000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x6000 0x1000>;
++			interrupts = <GIC_SPI 605 IRQ_TYPE_LEVEL_HIGH 0>,
++				<GIC_SPI 606 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_VPP_SPLIT>,
++					<&vppsys1 CLK_VPP1_HDMI_META>,
++					<&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>,
++					<&vppsys1 CLK_VPP1_DGI_IN>,
++					<&vppsys1 CLK_VPP1_DGI_OUT>,
++					<&vppsys1 CLK_VPP1_VPP_SPLIT_DGI>,
++					<&vppsys1 CLK_VPP1_VPP_SPLIT_26M>;
++			clock-names = "MDP_SPLIT",
++						"HDMI_META",
++						"SPLIT_HDMI",
++						"DGI_IN",
++						"DGI_OUT",
++						"SPLIT_DGI",
++						"VPP_SPLIT_26M";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_tcc: svpp1_mdp_tcc@14f07000 {
++			compatible = "mediatek,mt8195-mdp3-tcc";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f07000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x7000 0x1000>;
++			interrupts = <GIC_SPI 607 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TCC>;
++			clock-names = "MDP_TCC1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_rdma: svpp1_mdp_rdma@14f08000 {
++			compatible = "mediatek,mt8195-mdp3",
++						"mediatek,mt8183-mdp3-rdma";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f08000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x8000 0x1000>;
++			interrupts = <GIC_SPI 608 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RDMA>,
++					<&topckgen CLK_TOP_CFG_VPP1>,
++					<&topckgen CLK_TOP_CFG_26M_VPP1>;
++			clock-names = "MDP_RDMA1",
++						"TOP_CFG_VPP1",
++						"TOP_CFG_26M_VPP1";
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_RDMA>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_rdma: svpp2_mdp_rdma@14f09000 {
++			compatible = "mediatek,mt8195-mdp3-rdma", "mediatek,mt8183-mdp3-rdma";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f09000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x9000 0x1000>;
++			interrupts = <GIC_SPI 609 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RDMA>,
++					<&topckgen CLK_TOP_CFG_VPP1>,
++					<&topckgen CLK_TOP_CFG_26M_VPP1>;
++			clock-names = "MDP_RDMA2",
++						"TOP_CFG_VPP1",
++						"TOP_CFG_26M_VPP1";
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_rdma: svpp3_mdp_rdma@14f0a000 {
++			compatible = "mediatek,mt8195-mdp3-rdma", "mediatek,mt8183-mdp3-rdma";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f0a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0xa000 0x1000>;
++			interrupts = <GIC_SPI 610 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RDMA>,
++					<&topckgen CLK_TOP_CFG_VPP1>,
++					<&topckgen CLK_TOP_CFG_26M_VPP1>;
++			clock-names = "MDP_RDMA3",
++						"TOP_CFG_VPP1",
++						"TOP_CFG_26M_VPP1";
++			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_fg: svpp1_mdp_fg@14f0b000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f0b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0xb000 0x1000>;
++			interrupts = <GIC_SPI 611 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_FG>;
++			clock-names = "MDP_FG1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_fg: svpp2_mdp_fg@14f0c000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f0c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0xc000 0x1000>;
++			interrupts = <GIC_SPI 612 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_FG>;
++			clock-names = "MDP_FG2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_fg: svpp3_mdp_fg@14f0d000 {
++			compatible = "mediatek,mt8195-mdp3-fg";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f0d000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0xd000 0x1000>;
++			interrupts = <GIC_SPI 613 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_FG>;
++			clock-names = "MDP_FG3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_hdr: svpp1_mdp_hdr@14f0e000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f0e000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0xe000 0x1000>;
++			interrupts = <GIC_SPI 614 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_HDR>;
++			clock-names = "MDP_HDR1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_hdr: svpp2_mdp_hdr@14f0f000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f0f000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0xf000 0x1000>;
++			interrupts = <GIC_SPI 615 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_HDR>;
++			clock-names = "MDP_HDR2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_hdr: svpp3_mdp_hdr@14f10000 {
++			compatible = "mediatek,mt8195-mdp3-hdr";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f10000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0 0x1000>;
++			interrupts = <GIC_SPI 616 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_HDR>;
++			clock-names = "MDP_HDR3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_aal: svpp1_mdp_aal@14f11000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f11000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x1000 0x1000>;
++			interrupts = <GIC_SPI 617 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_AAL>;
++			clock-names = "MDP_AAL1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_aal: svpp2_mdp_aal@14f12000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f12000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x2000 0x1000>;
++			interrupts = <GIC_SPI 618 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_AAL>;
++			clock-names = "MDP_AAL2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_aal: svpp3_mdp_aal@14f13000 {
++			compatible = "mediatek,mt8195-mdp3-aal";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f13000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x3000 0x1000>;
++			interrupts = <GIC_SPI 619 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_AAL>;
++			clock-names = "MDP_AAL3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_rsz: svpp1_mdp_rsz@14f14000 {
++			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f14000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x4000 0x1000>;
++			interrupts = <GIC_SPI 620 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_RSZ>;
++			clock-names = "MDP_RSZ1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_rsz: svpp2_mdp_rsz@14f15000 {
++			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f15000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x5000 0x1000>;
++			interrupts = <GIC_SPI 621 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_RSZ>,
++					<&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++			clock-names = "MDP_RSZ2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_rsz: svpp3_mdp_rsz@14f16000 {
++			compatible = "mediatek,mt8195-mdp3-rsz", "mediatek,mt8183-mdp3-rsz";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f16000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x6000 0x1000>;
++			interrupts = <GIC_SPI 622 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_RSZ>,
++					<&vppsys1 CLK_VPP1_SVPP3_VPP_MERGE>;
++			clock-names = "MDP_RSZ3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_tdshp: svpp1_mdp_tdshp@14f17000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f17000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x7000 0x1000>;
++			interrupts = <GIC_SPI 623 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_TDSHP>;
++			clock-names = "MDP_TDSHP1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_tdshp: svpp2_mdp_tdshp@14f18000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f18000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x8000 0x1000>;
++			interrupts = <GIC_SPI 624 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_TDSHP>;
++			clock-names = "MDP_TDSHP2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_tdshp: svpp3_mdp_tdshp@14f19000 {
++			compatible = "mediatek,mt8195-mdp3-tdshp";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f19000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0x9000 0x1000>;
++			interrupts = <GIC_SPI 625 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_TDSHP>;
++			clock-names = "MDP_TDSHP3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_merge: svpp2_mdp_merge@14f1a000 {
++			compatible = "mediatek,mt8195-mdp3-merge";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f1a000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xa000 0x1000>;
++			interrupts = <GIC_SPI 626 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++			clock-names = "MDP_MERGE2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_merge: svpp3_mdp_merge@14f1b000 {
++			compatible = "mediatek,mt8195-mdp3-merge";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f1b000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xb000 0x1000>;
++			interrupts = <GIC_SPI 627 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_MERGE>;
++			clock-names = "MDP_MERGE3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_color: svpp1_mdp_color@14f1c000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f1c000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xc000 0x1000>;
++			interrupts = <GIC_SPI 628 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_COLOR>;
++			clock-names = "MDP_COLOR1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_color: svpp2_mdp_color@14f1d000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f1d000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xd000 0x1000>;
++			interrupts = <GIC_SPI 629 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_COLOR>;
++			clock-names = "MDP_COLOR2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_color: svpp3_mdp_color@14f1e000 {
++			compatible = "mediatek,mt8195-mdp3-color";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f1e000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xe000 0x1000>;
++			interrupts = <GIC_SPI 630 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_COLOR>;
++			clock-names = "MDP_COLOR3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_ovl: svpp1_mdp_ovl@14f1f000 {
++			compatible = "mediatek,mt8195-mdp3-ovl";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f1f000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xf000 0x1000>;
++			interrupts = <GIC_SPI 631 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_OVL>;
++			clock-names = "MDP_OVL1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_pad: svpp1_mdp_pad@14f20000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f20000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f2XXXX 0 0x1000>;
++			interrupts = <GIC_SPI 632 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_VPP_PAD>;
++			clock-names = "MDP_PAD1";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_pad: svpp2_mdp_pad@14f21000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f21000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f2XXXX 0x1000 0x1000>;
++			interrupts = <GIC_SPI 633 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_PAD>;
++			clock-names = "MDP_PAD2";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_pad: svpp3_mdp_pad@14f22000 {
++			compatible = "mediatek,mt8195-mdp3-pad";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f22000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f2XXXX 0x2000 0x1000>;
++			interrupts = <GIC_SPI 634 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_VPP_PAD>;
++			clock-names = "MDP_PAD3";
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp1_mdp3_wrot: svpp1_mdp_wrot@14f23000 {
++			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
++			mediatek,mdp3-id = <1>;
++			reg = <0 0x14f23000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f2XXXX 0x3000 0x1000>;
++			interrupts = <GIC_SPI 635 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP1_MDP_WROT>;
++			clock-names = "MDP_WROT1";
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp2_mdp3_wrot: svpp2_mdp_wrot@14f24000 {
++			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
++			mediatek,mdp3-id = <2>;
++			reg = <0 0x14f24000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f2XXXX 0x4000 0x1000>;
++			interrupts = <GIC_SPI 636 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP2_MDP_WROT>;
++			clock-names = "MDP_WROT2";
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
++		svpp3_mdp3_wrot: svpp3_mdp_wrot@14f25000 {
++			compatible = "mediatek,mt8195-mdp3-wrot", "mediatek,mt8183-mdp3-wrot";
++			mediatek,mdp3-id = <3>;
++			reg = <0 0x14f25000 0 0x1000>;
++			mediatek,gce-client-reg = <&gce0 SUBSYS_14f2XXXX 0x5000 0x1000>;
++			interrupts = <GIC_SPI 637 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&vppsys1 CLK_VPP1_SVPP3_MDP_WROT>;
++			clock-names = "MDP_WROT3";
++			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
++		};
++
+ 		imgsys: syscon@15000000 {
+ 			compatible = "mediatek,mt8195-imgsys", "syscon";
+ 			reg = <0 0x15000000 0 0x1000>;
+@@ -1557,7 +2223,7 @@
+ 			reg = <0 0x1c100000 0 0x1000>;
+ 			#clock-cells = <1>;
+ 		};
+-		
++
+ 		larb2: larb@1c102000 {
+ 			compatible = "mediatek,mt8195-smi-larb";
+ 			reg = <0 0x1c102000 0 0x1000>;
+@@ -1580,7 +2246,7 @@
+ 				 <&vppsys0 CLK_VPP0_GALS_VDO0_VDO1_VENCSYS_CORE1>;
+ 			clock-names = "apb", "smi", "gals";
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS1>;
+-		};		
++		};
+ 	};
  
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
-new file mode 100644
-index 000000000000..40827d577f74
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
-@@ -0,0 +1,67 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-solit.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 SPLIT Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to split hdmi rx into two stream
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+        - mediatek,mt8195-mdp3-split
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    vpp_split0: vpp_split0@14f06000 {
-+      compatible = "mediatek,mt8195-mdp3-split";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14f06000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x6000 0x1000>;
-+      clocks = <&vppsys1 CLK_VPP1_VPP_SPLIT>,
-+               <&vppsys1 CLK_VPP1_HDMI_META>,
-+               <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>,
-+               <&vppsys1 CLK_VPP1_DGI_IN>,
-+               <&vppsys1 CLK_VPP1_DGI_OUT>,
-+               <&vppsys1 CLK_VPP1_VPP_SPLIT_DGI>,
-+               <&vppsys1 CLK_VPP1_VPP_SPLIT_26M>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
-new file mode 100644
-index 000000000000..038a9519b2de
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-stitch.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 STITCH Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to combine multiple video frame
-+  with overlapping fields of view to produce a segmented panorame.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8195-mdp3-stitch
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_stitch0: mdp_stich0@14003000 {
-+      compatible = "mediatek,mt8195-mdp3-stitch";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14003000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x3000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_STITCH>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
-new file mode 100644
-index 000000000000..63c147cb8d24
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
-@@ -0,0 +1,62 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-tcc.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 TCC Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to support
-+  HDR gamma curve conversion HDR displays.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+        - mediatek,mt8195-mdp3-tcc
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_tcc0: mdp_tcc0@1400b000 {
-+      compatible = "mediatek,mt8195-mdp3-tcc";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x1400b000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xb000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
-new file mode 100644
-index 000000000000..25b4668d93fc
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
-@@ -0,0 +1,61 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,mdp3-tdshp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Media Data Path 3 TDSHP Device Tree Bindings
-+
-+maintainers:
-+  - Daoyuan Huang <daoyuan.huang@mediatek.com>
-+  - Moudy Ho <moudy.ho@mediatek.com>
-+
-+description: |
-+  One of Media Data Path 3 (MDP3) components used to improve image sharpness and contrast.
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - const: mediatek,mt8195-mdp3-tdshp
-+
-+  mediatek,mdp3-id:
-+    $ref: /schemas/types.yaml#/definitions/uint32
-+    maxItems: 1
-+    description: |
-+      HW index to distinguish same functionality modules.
-+
-+  reg:
-+    maxItems: 1
-+
-+  mediatek,gce-client-reg:
-+    $ref: /schemas/types.yaml#/definitions/phandle-array
-+    description: |
-+      sub-system id corresponding to the global command engine (GCE)
-+      register address.
-+      $ref: /schemas/mailbox/mtk-gce.txt
-+
-+  clocks:
-+    minItems: 1
-+
-+required:
-+  - compatible
-+  - mediatek,mdp3-id
-+  - reg
-+  - mediatek,gce-client-reg
-+  - clocks
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8195-clk.h>
-+    #include <dt-bindings/gce/mt8195-gce.h>
-+
-+    mdp3_tdshp0: mdp_tdshp0@14007000 {
-+      compatible = "mediatek,mt8195-mdp3-tdshp";
-+      mediatek,mdp3-id = <0>;
-+      reg = <0 0x14007000 0 0x1000>;
-+      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x7000 0x1000>;
-+      clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-index 2993da04c562..885e0f0f9e1f 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-@@ -16,6 +16,8 @@ description: |
- properties:
-   compatible:
-     items:
-+      - enum:
-+        - mediatek,mt8195-mdp3-wrot
-       - enum:
-         - mediatek,mt8183-mdp3-wrot
- 
+ 	bring-up {
 -- 
 2.18.0
 
