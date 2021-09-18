@@ -2,64 +2,105 @@ Return-Path: <SRS0=6guZ=OI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-17.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D9C47C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Sep 2021 09:14:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7B928C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Sep 2021 10:13:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9B56961100
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Sep 2021 09:14:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9B56961100
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.alibaba.com
+	by mail.kernel.org (Postfix) with ESMTPS id 038E06104F
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Sep 2021 10:13:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 038E06104F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=redhat.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SvCzvLFRx1D+CxNxto9Vs6DXso9brzyo3rGNg7mfn1w=; b=frxjAuN8xbA3fL
-	Wnq9rLvHL3uU56lOGOPdAEcnkDwjAVrFBwLzFBvFvOXYuZhUhd//xHE0XWTuYHRJAI4BDGixiYHb5
-	ImuiQ/IhGgiKHFt7hNKO9vwBB/Un75b4DPM7yfshyec69oG1xoputYAcx7Vz9o2Zj+JuhC3wkbunK
-	9ozyI+wfVse2g74KHa+mqpWGdKcZWhLdpi92UxqWUSvvhk4W+Vdr5FznDqu1wQSv0fTZTXLiQwZZ4
-	9tvTnA2Q7DIWMpe0BCxiopLI3rVbswrPmXAO0xSxhDZZMXsuEi7pB7i+wwb4Pm0gIg+2WenwVjM6Z
-	45Miv3y8OE8PE+IzLRPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WTFsfjstA7MshcbfLNKLg79c5111CSFRJdYRhk1GYQc=; b=WPqt6NpRr8LSOKdKyj3PpgejE6
+	8aaTPLFkOAsBx6FckP4RI/WfwoMeBGbbh19vadC7mBFs+yhOBpjQwy5ZzTAmFQBfdegZff1cvO1Zd
+	ySwzEcJZyQTk6riBKNvtcOqatk0cBCqlRs5r+XY6vHff37Sv/+rjNuRRKS9jc9KTCAxu9XnhA25hm
+	CDHTZFFFWb+nSuGaj3f+Z5iKFicCqyGS/3iMrp0ykO8FCMdzWWnjfRNPWwBKQV2aVd2xfwF+j6fjL
+	LQpxVETidaDyD48dJ8rk1sdCgYPcylxXbjzqKoL74kxz5i47tewdETPSx9fn8AHnovVXsfku4WzUB
+	1Wdia2CA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mRWQ5-00Fgw9-UN; Sat, 18 Sep 2021 09:14:01 +0000
-Received: from out30-44.freemail.mail.aliyun.com ([115.124.30.44])
+	id 1mRXLG-00FkQG-10; Sat, 18 Sep 2021 10:13:06 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mRWPt-00Fgsk-H1; Sat, 18 Sep 2021 09:13:51 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R151e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04395;
- MF=jiapeng.chong@linux.alibaba.com; NM=1; PH=DS; RN=16; SR=0;
- TI=SMTPD_---0Uom.Rp3_1631956417; 
-Received: from
- j63c13417.sqa.eu95.tbsite.net(mailfrom:jiapeng.chong@linux.alibaba.com
- fp:SMTPD_---0Uom.Rp3_1631956417) by smtp.aliyun-inc.com(127.0.0.1);
- Sat, 18 Sep 2021 17:13:43 +0800
-From: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-To: robh@kernel.org
-Cc: tomeu.vizoso@collabora.com, steven.price@arm.com,
- alyssa.rosenzweig@collabora.com, airlied@linux.ie, daniel@ffwll.ch,
- matthias.bgg@gmail.com, sumit.semwal@linaro.org, christian.koenig@amd.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org,
- Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
-Subject: [PATCH] panfrost: make mediatek_mt8183_supplies and
- mediatek_mt8183_pm_domains static
-Date: Sat, 18 Sep 2021 17:13:34 +0800
-Message-Id: <1631956414-85412-1-git-send-email-jiapeng.chong@linux.alibaba.com>
-X-Mailer: git-send-email 1.8.3.1
+ id 1mRXLC-00FkPG-H4
+ for linux-mediatek@lists.infradead.org; Sat, 18 Sep 2021 10:13:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1631959976;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ErL4S0D4uxM5lg5XVPKMl5Pnr+Je0J1R0giUlzEOWOg=;
+ b=Iewhpwv4D7zw0P+8wHBG2IiPLkUJiCvuSDO+ITXn96Iktj+B7xtylHc4Q/2L2QNHuWdL5H
+ weMB6qDgHA8slxClSim9d9pZXqH7tbJV6EXwjyYuWI48YsZ68At8rsQUcnAqOFKsRAkXDi
+ mIo0YiljI62z6rzb3d0NW5N9zKsufEQ=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-327-wnMNf1ayMVecWq58r9ULSw-1; Sat, 18 Sep 2021 06:12:55 -0400
+X-MC-Unique: wnMNf1ayMVecWq58r9ULSw-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ h15-20020aa7de0f000000b003d02f9592d6so11400521edv.17
+ for <linux-mediatek@lists.infradead.org>; Sat, 18 Sep 2021 03:12:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=y4nMxGpufv2fP7kMhMdjZryaQL1kDu62aKamvxoR1/8=;
+ b=7LezRV6sH1Iwx8IGdjZWdSmoUUwl0BEftehNKWRqNa+ALcVlUT/39RP9QRC4i8BIT4
+ SMwCFEjtsMLy1ejkzPFHx5VsAWNJmgKy3L/qX5bFlsOH6Q77BnoFCaj3VzD2IUgZKktM
+ D4BWscstslmbQJvka3tgJjKWaOPR+JHs7tQNyq3k5RtSZ/Alithh281t7RgKM+yurHhh
+ /VmSA3lfqKqMj8lleWfH6ud6RxiX6r9PO0umDIG9tHPerThrfMMZqCzS2ZyC4RcbtrbL
+ 66ymJqqwZx96jMMjEhHSIrQ9cgXo1Wcp21B3vRmqE1hc3zTeHj5UQ5WHT9DDvXQv7i+1
+ V6Lg==
+X-Gm-Message-State: AOAM533rre2xOrFjt7oxnFcZg1R5rcgXUsZxqmqvYyvVHBmhs1lcwb53
+ LKliCBnK/JONApWywwDuCZ5xJrQ4Bzi/xIEee439RUoYSgD8+/M0oLlv4dch8mCnxzKJY+U+o7J
+ XyyEnjaG56bYrMIwckAFMtUiEEULAL2XG
+X-Received: by 2002:a50:bf0f:: with SMTP id f15mr3760745edk.196.1631959973443; 
+ Sat, 18 Sep 2021 03:12:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyk2y+IZWFl+IFEx2P5wgxEEDfuVegBJdAy9f72S6DKYgqFmkRuiHjQtlwzmk5BccwUawmX/w==
+X-Received: by 2002:a50:bf0f:: with SMTP id f15mr3760722edk.196.1631959973163; 
+ Sat, 18 Sep 2021 03:12:53 -0700 (PDT)
+Received: from localhost (net-130-25-199-50.cust.vodafonedsl.it.
+ [130.25.199.50])
+ by smtp.gmail.com with ESMTPSA id u10sm3919626eds.83.2021.09.18.03.12.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 18 Sep 2021 03:12:52 -0700 (PDT)
+Date: Sat, 18 Sep 2021 12:12:49 +0200
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: sean.wang@mediatek.com
+Cc: nbd@nbd.name, Soul.Huang@mediatek.com, YN.Chen@mediatek.com,
+ Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
+ Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+ Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ ted.huang@mediatek.com, Eric.Liang@mediatek.com,
+ Stella.Chang@mediatek.com, steve.lee@mediatek.com,
+ jsiuda@google.com, frankgor@google.com, jemele@google.com,
+ shawnku@google.com, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 05/16] mt76: mt7921: add MT7921_COMMON module
+Message-ID: <YUW7oRGTgw0wmcsj@lore-desk>
+References: <cover.1631918993.git.objelf@gmail.com>
+ <23bf9455d505c19fc484de533098b98b08804935.1631918993.git.objelf@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <23bf9455d505c19fc484de533098b98b08804935.1631918993.git.objelf@gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lorenzo.bianconi@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210918_021349_870317_1E747B22 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20210918_031302_702968_0988C54D 
+X-CRM114-Status: GOOD (  17.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,48 +112,312 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5097016478881662006=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This symbol is not used outside of panfrost_drv.c, so marks it static.
+--===============5097016478881662006==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="7RoTe2vrW1GvaePU"
+Content-Disposition: inline
 
-Fix the following sparse warning:
+--7RoTe2vrW1GvaePU
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-drivers/gpu/drm/panfrost/panfrost_drv.c:641:12: warning: symbol
-'mediatek_mt8183_supplies' was not declared. Should it be static?
+> From: Sean Wang <sean.wang@mediatek.com>
+>=20
+> This is a preliminary patch to introduce mt7921s support.
+>=20
+> MT7921_COMMON module grouping bus independent objects the both mt7921e an=
+d
+> mt7921s can share with and have to rely on.
+>=20
+> Tested-by: Deren Wu <deren.wu@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/Kconfig  | 8 ++++++--
+>  drivers/net/wireless/mediatek/mt76/mt7921/Makefile | 7 ++++---
+>  drivers/net/wireless/mediatek/mt76/mt7921/init.c   | 2 ++
+>  drivers/net/wireless/mediatek/mt76/mt7921/mac.c    | 6 ++++++
+>  drivers/net/wireless/mediatek/mt76/mt7921/main.c   | 7 +++++++
+>  drivers/net/wireless/mediatek/mt76/mt7921/mcu.c    | 9 +++++++++
+>  6 files changed, 34 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig b/drivers/=
+net/wireless/mediatek/mt76/mt7921/Kconfig
+> index 001f2b9cec26..071746809b1c 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/Kconfig
+> @@ -1,8 +1,12 @@
+>  # SPDX-License-Identifier: ISC
+> -config MT7921E
+> -=09tristate "MediaTek MT7921E (PCIe) support"
+> +config MT7921_COMMON
+> +=09tristate
+>  =09select MT76_CONNAC_LIB
+>  =09select WANT_DEV_COREDUMP
+> +
+> +config MT7921E
+> +=09tristate "MediaTek MT7921E (PCIe) support"
+> +=09select MT7921_COMMON
+>  =09depends on MAC80211
+>  =09depends on PCI
+>  =09help
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile b/drivers=
+/net/wireless/mediatek/mt76/mt7921/Makefile
+> index 4cb0b000cfe1..8cea896d5965 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/Makefile
+> @@ -1,9 +1,10 @@
+>  # SPDX-License-Identifier: ISC
+> =20
+> +obj-$(CONFIG_MT7921_COMMON) +=3D mt7921-common.o
+>  obj-$(CONFIG_MT7921E) +=3D mt7921e.o
+> =20
+>  CFLAGS_trace.o :=3D -I$(src)
+> =20
+> -mt7921e-y :=3D pci.o pci_mac.o pci_mcu.o mac.o mcu.o dma.o eeprom.o main=
+.o \
+> -=09     init.o debugfs.o trace.o
+> -mt7921e-$(CONFIG_NL80211_TESTMODE) +=3D testmode.o
+> +mt7921-common-y :=3D mac.o mcu.o eeprom.o main.o init.o debugfs.o trace.=
+o
+> +mt7921-common-$(CONFIG_NL80211_TESTMODE) +=3D testmode.o
+> +mt7921e-y :=3D pci.o pci_mac.o pci_mcu.o dma.o
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/init.c
+> index f0fd32c424c6..d310d6e1e566 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> @@ -145,6 +145,7 @@ int mt7921_mac_init(struct mt7921_dev *dev)
+> =20
+>  =09return mt76_connac_mcu_set_rts_thresh(&dev->mt76, 0x92b, 0);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mac_init);
+> =20
+>  static int __mt7921_init_hardware(struct mt7921_dev *dev)
+>  {
+> @@ -285,3 +286,4 @@ int mt7921_register_device(struct mt7921_dev *dev)
+> =20
+>  =09return 0;
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_register_device);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mac.c
+> index 24f24a2d8395..5812b518a571 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> @@ -39,6 +39,7 @@ static struct mt76_wcid *mt7921_rx_get_wcid(struct mt79=
+21_dev *dev,
+>  void mt7921_sta_ps(struct mt76_dev *mdev, struct ieee80211_sta *sta, boo=
+l ps)
+>  {
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_sta_ps);
+> =20
+>  bool mt7921_mac_wtbl_update(struct mt7921_dev *dev, int idx, u32 mask)
+>  {
+> @@ -169,6 +170,7 @@ void mt7921_mac_sta_poll(struct mt7921_dev *dev)
+> =20
+>  =09rcu_read_unlock();
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mac_sta_poll);
+> =20
+>  static void
+>  mt7921_mac_decode_he_radiotap_ru(struct mt76_rx_status *status,
+> @@ -920,6 +922,7 @@ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __=
+le32 *txwi,
+>  =09=09txwi[3] |=3D cpu_to_le32(MT_TXD3_BA_DISABLE);
+>  =09}
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mac_write_txwi);
+> =20
+>  void mt7921_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi)
+>  {
+> @@ -944,6 +947,7 @@ void mt7921_tx_check_aggr(struct ieee80211_sta *sta, =
+__le32 *txwi)
+>  =09if (!test_and_set_bit(tid, &msta->ampdu_state))
+>  =09=09ieee80211_start_tx_ba_session(sta, tid, 0);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_tx_check_aggr);
+> =20
+>  static bool
+>  mt7921_mac_add_txs_skb(struct mt7921_dev *dev, struct mt76_wcid *wcid, i=
+nt pid,
+> @@ -1132,6 +1136,7 @@ void mt7921_queue_rx_skb(struct mt76_dev *mdev, enu=
+m mt76_rxq_id q,
+>  =09=09break;
+>  =09}
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_queue_rx_skb);
+> =20
+>  void mt7921_mac_reset_counters(struct mt7921_phy *phy)
+>  {
+> @@ -1247,6 +1252,7 @@ void mt7921_update_channel(struct mt76_phy *mphy)
+> =20
+>  =09mt76_connac_power_save_sched(mphy, &dev->pm);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_update_channel);
+> =20
+>  static void
+>  mt7921_vif_connect_iter(void *priv, u8 *mac,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/main.c
+> index c51266e40cb4..cbffa8478329 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -237,6 +237,7 @@ int __mt7921_start(struct mt7921_phy *phy)
+> =20
+>  =09return 0;
+>  }
+> +EXPORT_SYMBOL_GPL(__mt7921_start);
+> =20
+>  static int mt7921_start(struct ieee80211_hw *hw)
+>  {
+> @@ -646,6 +647,7 @@ int mt7921_mac_sta_add(struct mt76_dev *mdev, struct =
+ieee80211_vif *vif,
+> =20
+>  =09return 0;
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mac_sta_add);
+> =20
+>  void mt7921_mac_sta_assoc(struct mt76_dev *mdev, struct ieee80211_vif *v=
+if,
+>  =09=09=09  struct ieee80211_sta *sta)
+> @@ -667,6 +669,7 @@ void mt7921_mac_sta_assoc(struct mt76_dev *mdev, stru=
+ct ieee80211_vif *vif,
+> =20
+>  =09mt7921_mutex_release(dev);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mac_sta_assoc);
+> =20
+>  void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *=
+vif,
+>  =09=09=09   struct ieee80211_sta *sta)
+> @@ -698,6 +701,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, str=
+uct ieee80211_vif *vif,
+> =20
+>  =09mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mac_sta_remove);
+> =20
+>  void mt7921_tx_worker(struct mt76_worker *w)
+>  {
+> @@ -1250,3 +1254,6 @@ const struct ieee80211_ops mt7921_ops =3D {
+>  =09.flush =3D mt7921_flush,
+>  =09.set_sar_specs =3D mt7921_set_sar_specs,
+>  };
+> +EXPORT_SYMBOL_GPL(mt7921_ops);
+> +
+> +MODULE_LICENSE("Dual BSD/GPL");
 
-drivers/gpu/drm/panfrost/panfrost_drv.c:642:12: warning: symbol
-'mediatek_mt8183_pm_domains' was not declared. Should it be static?
+is MODULE_AUTHOR defined?
 
-Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
----
- drivers/gpu/drm/panfrost/panfrost_drv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mcu.c
+> index 5553221b7f5c..866b8797f16e 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> @@ -222,6 +222,8 @@ int mt7921_mcu_parse_response(struct mt76_dev *mdev, =
+int cmd,
+> =20
+>  =09return ret;
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_parse_response);
+> +
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 077cbbf..82ad9a6 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -638,8 +638,8 @@ static int panfrost_remove(struct platform_device *pdev)
- 	.vendor_quirk = panfrost_gpu_amlogic_quirk,
- };
- 
--const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
--const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
-+static const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
-+static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
- static const struct panfrost_compatible mediatek_mt8183_data = {
- 	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies),
- 	.supply_names = mediatek_mt8183_supplies,
--- 
-1.8.3.1
+nit: drop new line here
 
+> =20
+>  int mt7921_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
+>  =09=09=09    int cmd, int *wait_seq)
+> @@ -319,6 +321,7 @@ int mt7921_mcu_send_message(struct mt76_dev *mdev, st=
+ruct sk_buff *skb,
+> =20
+>  =09return mt76_tx_queue_skb_raw(dev, mdev->q_mcu[txq], skb, 0);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_send_message);
+> =20
+>  static void
+>  mt7921_mcu_scan_event(struct mt7921_dev *dev, struct sk_buff *skb)
+> @@ -600,6 +603,7 @@ int mt7921_mcu_restart(struct mt76_dev *dev)
+>  =09return mt76_mcu_send_msg(dev, MCU_CMD_NIC_POWER_CTRL, &req,
+>  =09=09=09=09 sizeof(req), false);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_restart);
+> =20
+>  static u32 mt7921_get_data_mode(struct mt7921_dev *dev, u32 info)
+>  {
+> @@ -903,11 +907,13 @@ int mt7921_run_firmware(struct mt7921_dev *dev)
+> =20
+>  =09return mt76_connac_mcu_get_nic_capability(&dev->mphy);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_run_firmware);
+> =20
+>  void mt7921_mcu_exit(struct mt7921_dev *dev)
+>  {
+>  =09skb_queue_purge(&dev->mt76.mcu.res_q);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_exit);
+> =20
+>  int mt7921_mcu_set_tx(struct mt7921_dev *dev, struct ieee80211_vif *vif)
+>  {
+> @@ -1033,6 +1039,7 @@ int mt7921_mcu_set_eeprom(struct mt7921_dev *dev)
+>  =09return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD_EFUSE_BUFFER_MODE,
+>  =09=09=09=09 &req, sizeof(req), true);
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_set_eeprom);
+> =20
+>  int mt7921_mcu_get_eeprom(struct mt7921_dev *dev, u32 offset)
+>  {
+> @@ -1215,6 +1222,7 @@ int mt7921_mcu_drv_pmctrl(struct mt7921_dev *dev)
+> =20
+>  =09return err;
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_drv_pmctrl);
+> =20
+>  int mt7921_mcu_fw_pmctrl(struct mt7921_dev *dev)
+>  {
+> @@ -1236,6 +1244,7 @@ int mt7921_mcu_fw_pmctrl(struct mt7921_dev *dev)
+> =20
+>  =09return err;
+>  }
+> +EXPORT_SYMBOL_GPL(mt7921_mcu_fw_pmctrl);
+> =20
+>  int mt7921_mcu_set_beacon_filter(struct mt7921_dev *dev,
+>  =09=09=09=09 struct ieee80211_vif *vif,
+> --=20
+> 2.25.1
+>=20
+
+--7RoTe2vrW1GvaePU
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYUW7nwAKCRA6cBh0uS2t
+rI1AAQDYLvi9s4bHKRQTo6iR1+h3pHYCFhVjOjGIybLgzf+iZAD+OYs3y0R8+PnM
+vzkKBLaoliTePfQjdK5x5Xqff0GyUQM=
+=PK9U
+-----END PGP SIGNATURE-----
+
+--7RoTe2vrW1GvaePU--
+
+
+
+--===============5097016478881662006==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5097016478881662006==--
+
+
