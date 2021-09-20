@@ -2,90 +2,95 @@ Return-Path: <SRS0=XaoX=OK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F5DFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 10:49:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74060C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:02:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 43218610FB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 10:49:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 43218610FB
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
+	by mail.kernel.org (Postfix) with ESMTPS id 315B260EE2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:02:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 315B260EE2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
-	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wRl9orfYFYEtPle4XCrTIXnmPxzg7wH8wAUDjAZT8hY=; b=LItLIxvF7n2H6B
-	tqudMFHCKr33AUNN3E6xQpmo/o50CkkyEhFz7PxAuslXvHb2Wcl0RbF77U01rVMvmgw7hTsjfXA+X
-	4kcnkGMGWPkj2ZbK3ziNXS6sN2YaUgTSaSMpVxl4P2IPVKeqwKXB/VXzzRCsqPvF3Ch8XjKOQG0k8
-	M0ZTeD4G2pYrGOWUmU2s44jnWGgcX8kqEkOb/1/oKqu6W7QeXabmVkBCWxq9dX5nj/k5KVVl1D5NT
-	pP3I6fWk977owiwPJI6eF//FMgGVOcBpiIRskfH7UXb2NFA6NTCZ5G9a1OOVtcLq69DuJPS0pqXKf
-	1KjwuW32F4Nkm7LZ58UQ==;
+	List-Owner; bh=0a1Brm6fbcyoyH1g4qOFkZYNlAlR/XjfaAr3OpUrzMc=; b=ugOpbJVy7ADL3g
+	5hHdLcaQyuZrPMMFQRX8GMz2pk9xs8d9hFtWHiaWNqKxE3OY/03LEvAP8HFNPmkHdE4AoozOfCvD/
+	yivbvyz97S2i7pqQMpDRXCbOj/KX2O+eItuhHSG6CNfsry1SxxmjXnUPKNCOdoqniOCyKJvEaJUII
+	bHPdzeAu8LdYKKmMAIW6Gj7rFotV4W2cN+QRIoE0brYGyD1yFJXqjITtVXwjHnq8nQSf1RUBA6f6b
+	Tsp5WbQzMjLIdfHQZnOLj85uswjyjJPDtcqi2y06SWPARAbxa1oKh7GFOlZsmAN3KGDFlmC9pqsRZ
+	Zan4wZ17atW2zUO9kw0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSGrG-001JDk-Mk; Mon, 20 Sep 2021 10:49:10 +0000
-Received: from mout.gmx.net ([212.227.17.21])
+	id 1mSHza-001U2C-Sp; Mon, 20 Sep 2021 12:01:50 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSGr3-001J8y-0e; Mon, 20 Sep 2021 10:48:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
- s=badeba3b8450; t=1632134924;
- bh=UE6JPDxLxhHS8QF+kGYS6SUXXeB3wiXl2OFGWk3OyGs=;
- h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
- b=CPR7SYqbDnEIHf2IgQzx7mMO9xt0ZVNCmAoqCT8yTPy7AB+j/NgIWGZrS42PMIjlO
- NGen88DHV1tnkKIXA2p98IcIz9vujw8ItkZlGPanHfn3y/kBIEH9bVDaMo0jYQjd4s
- pUDfBtpkTeizRdrVCjo21Mpmn5+tJZ/uj58z5M+I=
-X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
-Received: from [80.245.76.103] ([80.245.76.103]) by web-mail.gmx.net
- (3c-app-gmx-bap08.server.lan [172.19.172.78]) (via HTTP); Mon, 20 Sep 2021
- 12:48:44 +0200
+ id 1mSHzW-001U1L-6p; Mon, 20 Sep 2021 12:01:47 +0000
+Received: by mail-wr1-x430.google.com with SMTP id g16so28921470wrb.3;
+ Mon, 20 Sep 2021 05:01:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=/ne40pWRrx2CrzneTyBnCtWRrTGbYgrZIHpswHWcqFg=;
+ b=XQUOGT4c82LgLfAKQHMnG83GjfBn5NbeBgTZySjeCqPbRi/oPAEoMSZRRLjag6+hTP
+ KV6WTUmbgmxWt3zAO7q1YlAud6ZMu8v0ORNJs5Tbd06ExzfdJCqDQ6XxmPBULWEHvKzc
+ 0b/QMImOjgmeJhBce1X3IDuPxmAGmjsI91Lrrzo0wgnuwqoEMvREmRKk8Hx0N/k9Lgsk
+ ypY16GdBGxl3w/CHqtp4+wAVDOWyJCmowywK9hOyJYQtpTfibBFKgnasY8MaRgjwITwh
+ pBn5kMGtDUqArcXygEp9xAvjxovdzHLqsFogf2Rf8uvGhqDDG51uWbzZRBaNxJx/nyX1
+ K+DA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=/ne40pWRrx2CrzneTyBnCtWRrTGbYgrZIHpswHWcqFg=;
+ b=LZt10v/4K+sUQwGVmtV8CABl8fGDTIcEWFIwfF10AzRHW2GVCGv7cvIajM6FKvIklo
+ 1E9NXJ8f9mokyK/i8m4HhftSV2yCNR19a1mWUxIxM6HaAAN7Qhm03YlevjrFNYS1gMWv
+ eGNXuGS8g+f9x9TrlxtVcNXhxl3eVD7+otZkKnv2BJ0hzKQtZqkf/9Qqris4MmkOjUWa
+ P6BrzUORybScHxQeU45RyI487E+7Hh++bHL9nWd8n3vQY1rIF6Qyr4mo72H6YSM97VSS
+ aamvh4WejPBhb2LAk6xbdtk1gJFSfl8I9ePlZJV5GVNOVTQDb/W9Vf2FBGKh+smrIVvA
+ 2G4Q==
+X-Gm-Message-State: AOAM531E0uxlbcopwjldT9i2lio2+IRDhg0zS47kvF9nvnGndaNYQqpj
+ 5z9yVWwhGmYfmGfKuPRDtDE=
+X-Google-Smtp-Source: ABdhPJx69lUhsTXiVkcOUNtmVmoOBPXkrL/CXP1uxgR/bzPlKPCqAwWnBQwLvpTAC3aOmkWxW87b3g==
+X-Received: by 2002:a05:600c:4991:: with SMTP id
+ h17mr29133387wmp.74.1632139303375; 
+ Mon, 20 Sep 2021 05:01:43 -0700 (PDT)
+Received: from [192.168.2.177] ([206.204.146.29])
+ by smtp.gmail.com with ESMTPSA id h8sm18589623wmb.35.2021.09.20.05.01.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Sep 2021 05:01:42 -0700 (PDT)
+Message-ID: <fe15479d-7500-a48e-8658-936eca0fc099@gmail.com>
+Date: Mon, 20 Sep 2021 14:01:41 +0200
 MIME-Version: 1.0
-Message-ID: <trinity-1d1646a2-6fb9-4a81-9edc-45c4d216a279-1632134924710@3c-app-gmx-bap08>
-From: Frank Wunderlich <frank-w@public-files.de>
-To: Sungbo Eo <mans0n@gorani.run>, Matthias Brugger <matthias.bgg@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Bin Liu <b-liu@ti.com>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.0.3
+Subject: Re: [PATCH v4 1/2] arm: dts: mt7623: add musb device nodes
+Content-Language: en-US
+To: Sungbo Eo <mans0n@gorani.run>, linux-mediatek@lists.infradead.org
+Cc: Rob Herring <robh+dt@kernel.org>, Bin Liu <b-liu@ti.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Frank Wunderlich <frank-w@public-files.de>, devicetree@vger.kernel.org,
  linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Sungbo Eo <mans0n@gorani.run>
-Subject: Aw: [PATCH v4 1/2] arm: dts: mt7623: add musb device nodes
-Date: Mon, 20 Sep 2021 12:48:44 +0200
-Importance: normal
-Sensitivity: Normal
-In-Reply-To: <20210830155903.13907-2-mans0n@gorani.run>
+ linux-kernel@vger.kernel.org
 References: <20210822041333.5264-1-mans0n@gorani.run>
  <20210830155903.13907-1-mans0n@gorani.run>
  <20210830155903.13907-2-mans0n@gorani.run>
-X-UI-Message-Type: mail
-X-Priority: 3
-X-Provags-ID: V03:K1:h+4u+2DNNQq/zFxGtQ+E9hroBIiOkc2j+6J/9LOROcecrSGZrwD7KyAje9UTcYe3Adrpf
- wxLLX03FCB+UBYr2y+/6W9mCCXarLsqxkmuTjF27xwVAIzdc4mNtUqnJg3tLkcACjsvPtDueNAAU
- uppDuW4tedE2jjUFJqZtgmf50QAZwbYVlJfS1dnwHK+5h6o4N/zn9Du38NIWLsQp1S84dq4UpgDF
- jOXj5yhXjD0ZCrYfZbDR1QYLn1TjALN1nn0BeIS5Y1a14P4w2iDWXrOmZuRuTcOBX3Dt8jSU/4gN
- pg=
-X-UI-Out-Filterresults: notjunk:1;V03:K0:WPDNJBBn+AY=:MmMNvz3wrtvo0tCZoZfq1U
- GzC4SCvrcWmYzVzP1xpiVVC/DvSfVyzXGrbWeqRx3WbjKyJYO6W/jwJFger6BR1S2drdXTGGq
- C+yHRL4dVfI2tguqvSB7pkI5LbkgCRg8l97GJ5vmghM7Twc7PN/tYYQyojiBOHzY91/uihR3/
- +YzZAg6v+y2aew8+7hmKNnu2qiDRwhEqfHc+eqWjyVQhgGv4dn9JtU10zLot1FhWG/MfVQQoq
- DJNsu/pOrvH6P7asE05CjcDlGIm1ZtlgjcWjeyJQBNSFDgkx4kUSDiSIL5BE2BMWZbYPSOH+o
- MTilrrmAflvhvUsdjZ6BGbsyiALTGxF1abplK3QD58LUkUxzaevUkieZMaXE0OPGnVoLjRZtT
- xULn6UP81Yiyawhtvr5Zugv9iWXtvl/ygWxtSHS97iuObUkqhrQ2KqItNHkD8f9fQoWcehkRk
- SL+7ssffFTOj3QaLf5TchQLWZOVvMYFwScZsG67JNXtF3hqFI0lJhQftXmFiLy9RldYiZDG7i
- /KzV+iwp5cifrEwDl7BZXi3uLlo6SCZQadYi5WpyXaoD4i7NhhEf6pCjgWhZmGOUR716dMOZx
- DaJKo3vMo1rshShJPkLpQSeX117rq5w55BJN33FUGAw347TOtk9l2bY6VOgcZwQQkrq+DYLxY
- NrX3/6jD+2KAXXOAmD7yU6G3XQ9ztzkt6K/7DOweOonb0PfDnwXwb0gqS8NszQMu6BMSXOsnb
- Xam5BBwfOBIpZvcrbMwm1DI84YTCTkK4IYS1XBZSCq+pn7A38qq7otG4+FkwEEgdsfFY99Uyw
- +FVdSbM
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20210830155903.13907-2-mans0n@gorani.run>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210920_034857_381782_F955B9DF 
-X-CRM114-Status: GOOD (  18.44  )
+X-CRM114-CacheID: sfid-20210920_050146_326063_4A07B0CD 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,55 +102,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-just a gentle ping for this patch (second part is already merged to usb-tree) and my followup for bpi-r2
-
-https://patchwork.kernel.org/project/linux-mediatek/patch/20210830145958.108605-1-linux@fw-web.de/
-
-regards Frank
 
 
-> Gesendet: Montag, 30. August 2021 um 17:59 Uhr
-> Von: "Sungbo Eo" <mans0n@gorani.run>
-> An: linux-mediatek@lists.infradead.org
-> Cc: "Rob Herring" <robh+dt@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Bin Liu" <b-liu@ti.com>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Sungbo Eo" <mans0n@gorani.run>
-> Betreff: [PATCH v4 1/2] arm: dts: mt7623: add musb device nodes
->
+On 30/08/2021 17:59, Sungbo Eo wrote:
 > MT7623 has an musb controller that is compatible with the one from MT2701.
->
+> 
 > Signed-off-by: Sungbo Eo <mans0n@gorani.run>
 > Tested-by: Frank Wunderlich <frank-w@public-files.de>
+
+Applied to v5.15-next/dts32
+
+Thanks
+
 > ---
 > v4:
 > * add tested by Frank
->
+> 
 > v3:
 > * remove unnecessary status=okay from u2port2
->
+> 
 > v2:
 > * rename usb3 label to usb0
 > * move usb0 & u2phy1 nodes to the right sorted place
 > * disable u2phy1 by default
 > * correct u2port2 node name to match its reg address
 > ---
->  arch/arm/boot/dts/mt7623.dtsi  | 33 +++++++++++++++++++++++++++++++++
->  arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
->  2 files changed, 37 insertions(+)
->
+>   arch/arm/boot/dts/mt7623.dtsi  | 33 +++++++++++++++++++++++++++++++++
+>   arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
+>   2 files changed, 37 insertions(+)
+> 
 > diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
 > index 3c11f7cfcc40..21c8a291b74e 100644
 > --- a/arch/arm/boot/dts/mt7623.dtsi
 > +++ b/arch/arm/boot/dts/mt7623.dtsi
 > @@ -585,6 +585,39 @@ spi2: spi@11017000 {
->  		status = "disabled";
->  	};
->
+>   		status = "disabled";
+>   	};
+>   
 > +	usb0: usb@11200000 {
 > +		compatible = "mediatek,mt7623-musb",
 > +			     "mediatek,mtk-musb";
@@ -179,33 +177,25 @@ regards Frank
 > +		};
 > +	};
 > +
->  	audsys: clock-controller@11220000 {
->  		compatible = "mediatek,mt7623-audsys",
->  			     "mediatek,mt2701-audsys",
+>   	audsys: clock-controller@11220000 {
+>   		compatible = "mediatek,mt7623-audsys",
+>   			     "mediatek,mt2701-audsys",
 > diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
 > index 0735a1fb8ad9..d304b62d24b5 100644
 > --- a/arch/arm/boot/dts/mt7623a.dtsi
 > +++ b/arch/arm/boot/dts/mt7623a.dtsi
 > @@ -35,6 +35,10 @@ &scpsys {
->  	clock-names = "ethif";
->  };
->
+>   	clock-names = "ethif";
+>   };
+>   
 > +&usb0 {
 > +	power-domains = <&scpsys MT7623A_POWER_DOMAIN_IFR_MSC>;
 > +};
 > +
->  &usb1 {
->  	power-domains = <&scpsys MT7623A_POWER_DOMAIN_HIF>;
->  };
-> --
-> 2.33.0
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
->
+>   &usb1 {
+>   	power-domains = <&scpsys MT7623A_POWER_DOMAIN_HIF>;
+>   };
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
