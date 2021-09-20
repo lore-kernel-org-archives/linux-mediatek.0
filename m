@@ -2,79 +2,67 @@ Return-Path: <SRS0=XaoX=OK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F344EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:55:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 72FEBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 13:34:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C1B8A610A0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:55:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C1B8A610A0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 30E446109D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 13:34:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 30E446109D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jOAvYRhlTkKPfpcZlQaWOqMRXr/GXaIClM/5NfdhlM4=; b=EB/KamIns+7l9s
-	/yjChQJFe1/t7D59DD0vk71n9JSGyjoC1u40KIn84n6EzuHEtRxPmtIsrKXTnEwAQq6VtM3ZFvbte
-	FjI9Acv1qULuwGIeF5im20H7vMqaQnpoEpI1teQoiBsz4DHMusCSJwW/sFJXwDRl6QfuvHE6VaCFA
-	1SbZBpu7pKPetihyAyqvKkm5FQW+Ry4atTzGQLQ1OylyIZezpl3w4UnuCuCe0IpYhy8PNrOqXN7wi
-	tsVwbcqUg2+jfj5LXzZ2EjnVp/aL+q6dQS00wMTTo8r2TYaYVPI22spvcUk1ZUxYZh07s01GPHKUD
-	sI986NMOdJB5FV2mW69Q==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=2OiNE9mHAMsXOKZ/t8LnlBenrLFVe9VgI/U3E292pK8=; b=Jx1Yb2foVrIXWHyD1PvfNTfKzC
+	mW//WP8294hwZhbHxc9yGI1anprdqHGtqCNsRaowBIw8oK3Cyj4BOMqD9HKrwydpD8NFt7b1wzasm
+	5i6N79hVfyTYwHoM9eObx0RKWYkqCaAiAegXotmdaW/Gw/AKOoLC7xSyxH+axgbkFBqRuZ3IQbDuA
+	msQi1j+yJ2iToCm6tV5Apjw4QiZ42BSmBu5a/aVfWLMSrUoR6Oxj2TWtnZ/j95tDt2jvAYYdBvvP/
+	QjT+7e8VrEe5E3AaqzJv9/tMJZxAToDAi79PZVQesWNW0KFxcsTpfAcjCvxSHDZhQC90ICeW/eqPU
+	UDH/KdcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSIov-001gKL-OI; Mon, 20 Sep 2021 12:54:53 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSIo4-001fvy-11; Mon, 20 Sep 2021 12:54:01 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A6C8E610A0;
- Mon, 20 Sep 2021 12:53:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632142439;
- bh=W1eYMmg9H2jFhknPdndD+apjfXD08+jcBBvof7g6zWw=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=S7MJFsqD329nVxBkT3qwZRjVziZdooDG/bJRPvx0Q9Iq3SPPXzDGYDb+9aSViTfS7
- 7SXCE6oiiFvWGI+1XYBiwps+OZoeEXZIVulXjF6zI1a3BuzLgVGtJLEgGRRFi4k5H2
- wvf4P7hbXWrcNIXiU0FL940HN90ryprb+4Qv/w6MUY8kItqxzd0k2iinbx7TW6g/pb
- 4vYAIGMdwbagWgjGpjWTACn0kkA7eDZvVyg1RshPDqgPee6wuvkwNPJw6jSywFuxJr
- LymfjSSgslnzgDwl8eoxu99g5NOfpmNw3DU+7VJczwV4sQRaLkvE+6qxI3gHS76Fv2
- q2S9mgfzC/0vQ==
-Received: by mail-wr1-f54.google.com with SMTP id q11so29384402wrr.9;
- Mon, 20 Sep 2021 05:53:59 -0700 (PDT)
-X-Gm-Message-State: AOAM5302EeXZBvDZAp7QbJf8C110qpAwIyilt/WvR0DjHFFiBrmjRaxs
- G++Sc9w42roqJRFhGgnKt9korWMo0uekr2ScyVY=
-X-Google-Smtp-Source: ABdhPJwgSLeOA+5EYUZWyMXPW6vc2urD0vjnW6PXs7wvXSXhdxd/LtmNdjYm/cajU/C5Q3kNTl/tQUp6tjS8FOlAVrE=
-X-Received: by 2002:a1c:4c14:: with SMTP id z20mr29348860wmf.82.1632142438279; 
- Mon, 20 Sep 2021 05:53:58 -0700 (PDT)
+	id 1mSJR7-001njA-Q2; Mon, 20 Sep 2021 13:34:21 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mSJQl-001nda-9d; Mon, 20 Sep 2021 13:34:01 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 3D0AF11B3;
+ Mon, 20 Sep 2021 06:33:53 -0700 (PDT)
+Received: from [192.168.1.179] (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 27C6B3F719;
+ Mon, 20 Sep 2021 06:33:50 -0700 (PDT)
+Subject: Re: [PATCH] panfrost: make mediatek_mt8183_supplies and
+ mediatek_mt8183_pm_domains static
+To: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>, robh@kernel.org
+Cc: tomeu.vizoso@collabora.com, alyssa.rosenzweig@collabora.com,
+ airlied@linux.ie, daniel@ffwll.ch, matthias.bgg@gmail.com,
+ sumit.semwal@linaro.org, christian.koenig@amd.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-media@vger.kernel.org, linaro-mm-sig@lists.linaro.org
+References: <1631956414-85412-1-git-send-email-jiapeng.chong@linux.alibaba.com>
+From: Steven Price <steven.price@arm.com>
+Message-ID: <616fa113-7718-918c-db07-4826ef61b57f@arm.com>
+Date: Mon, 20 Sep 2021 14:33:49 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-References: <20210920100206.1418649-1-arnd@kernel.org>
- <20210920123542.GA14852@sirena.org.uk>
-In-Reply-To: <20210920123542.GA14852@sirena.org.uk>
-From: Arnd Bergmann <arnd@kernel.org>
-Date: Mon, 20 Sep 2021 14:53:42 +0200
-X-Gmail-Original-Message-ID: <CAK8P3a0uz0Uy1p1Ku9_rqwgh0hnEhWrDqxzgd9cU4Dcd++TMMQ@mail.gmail.com>
-Message-ID: <CAK8P3a0uz0Uy1p1Ku9_rqwgh0hnEhWrDqxzgd9cU4Dcd++TMMQ@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8195: force COMMON_CLK dependency
-To: Mark Brown <broonie@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, Arnd Bergmann <arnd@arndb.de>, 
- Jiaxin Yu <jiaxin.yu@mediatek.com>, Tzung-Bi Shih <tzungbi@google.com>, 
- ALSA Development Mailing List <alsa-devel@alsa-project.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>
+In-Reply-To: <1631956414-85412-1-git-send-email-jiapeng.chong@linux.alibaba.com>
+Content-Language: en-GB
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210920_055400_123339_CA7B5935 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20210920_063359_477349_8285C986 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,22 +79,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 20, 2021 at 2:35 PM Mark Brown <broonie@kernel.org> wrote:
->
-> On Mon, Sep 20, 2021 at 12:01:58PM +0200, Arnd Bergmann wrote:
-> > From: Arnd Bergmann <arnd@arndb.de>
-> >
-> > Without CONFIG_COMMON_CLK, this driver fails to link:
-> >
-> > ERROR: modpost: "clk_unregister_gate" [sound/soc/mediatek/mt8195/snd-soc-mt8195-afe.ko] undefined!
-> > ERROR: modpost: "clk_register_gate" [sound/soc/mediatek/mt8195/snd-soc-mt8195-afe.ko] undefined!
->
-> This doesn't apply against current code, please check and resend.
+On 18/09/2021 10:13, Jiapeng Chong wrote:
+> This symbol is not used outside of panfrost_drv.c, so marks it static.
+> 
+> Fix the following sparse warning:
+> 
+> drivers/gpu/drm/panfrost/panfrost_drv.c:641:12: warning: symbol
+> 'mediatek_mt8183_supplies' was not declared. Should it be static?
+> 
+> drivers/gpu/drm/panfrost/panfrost_drv.c:642:12: warning: symbol
+> 'mediatek_mt8183_pm_domains' was not declared. Should it be static?
+> 
+> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+> Signed-off-by: Jiapeng Chong <jiapeng.chong@linux.alibaba.com>
 
-It's already fixed the way that Geert suggested in your asoc/for-5.15,
-sorry for the dup.
+Reviewed-by: Steven Price <steven.price@arm.com>
 
-        Arnd
+I'll push to drm-misc-next.
+
+Thanks,
+
+Steve
+
+> ---
+>  drivers/gpu/drm/panfrost/panfrost_drv.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index 077cbbf..82ad9a6 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -638,8 +638,8 @@ static int panfrost_remove(struct platform_device *pdev)
+>  	.vendor_quirk = panfrost_gpu_amlogic_quirk,
+>  };
+>  
+> -const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
+> -const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
+> +static const char * const mediatek_mt8183_supplies[] = { "mali", "sram" };
+> +static const char * const mediatek_mt8183_pm_domains[] = { "core0", "core1", "core2" };
+>  static const struct panfrost_compatible mediatek_mt8183_data = {
+>  	.num_supplies = ARRAY_SIZE(mediatek_mt8183_supplies),
+>  	.supply_names = mediatek_mt8183_supplies,
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
