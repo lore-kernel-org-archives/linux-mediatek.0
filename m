@@ -6,16 +6,16 @@ X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
 	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no version=3.4.0
+	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 74060C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:02:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 67BE6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:02:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 315B260EE2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:02:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 315B260EE2
+	by mail.kernel.org (Postfix) with ESMTPS id 1E58060F56
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 12:02:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1E58060F56
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,73 +24,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0a1Brm6fbcyoyH1g4qOFkZYNlAlR/XjfaAr3OpUrzMc=; b=ugOpbJVy7ADL3g
-	5hHdLcaQyuZrPMMFQRX8GMz2pk9xs8d9hFtWHiaWNqKxE3OY/03LEvAP8HFNPmkHdE4AoozOfCvD/
-	yivbvyz97S2i7pqQMpDRXCbOj/KX2O+eItuhHSG6CNfsry1SxxmjXnUPKNCOdoqniOCyKJvEaJUII
-	bHPdzeAu8LdYKKmMAIW6Gj7rFotV4W2cN+QRIoE0brYGyD1yFJXqjITtVXwjHnq8nQSf1RUBA6f6b
-	Tsp5WbQzMjLIdfHQZnOLj85uswjyjJPDtcqi2y06SWPARAbxa1oKh7GFOlZsmAN3KGDFlmC9pqsRZ
-	Zan4wZ17atW2zUO9kw0g==;
+	List-Owner; bh=R5s/9UxKFhYe1BQnF3H5cv/Gu3//T3dmFKo/UfLwnWg=; b=gscVz64CACoOSi
+	UnXCtjUzG9LM2UXOj8Wj0c2lkcDL3hj8zMNF3kiYkSW7d5PbSBbowTPbWGu08RUDSLoZhINygamUl
+	TVSMpF3jlLUUDxYvT+DGcvjF7wW7fifua4AdUu+6gPm/QVEwFPPuAq7lbpALjGFHej4iBeB3GdKYX
+	XiWOcGnDloukC/Ky5z1YaGeEoNX4wtFRuKlJj2RzDQ83kRpSPv2KB+EdbBr0g9936xIyczibn5dUm
+	SfIm6nrVEDy3KgeXzzWMOu+d7Np1aLokErWNhFrEEWj3Sp9gWtLYEE6PEHw/nIvNyBLIPm1JsYa+j
+	bENSGHKR3NAWhAC3qELg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSHza-001U2C-Sp; Mon, 20 Sep 2021 12:01:50 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1mSHzl-001U4T-Le; Mon, 20 Sep 2021 12:02:01 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSHzW-001U1L-6p; Mon, 20 Sep 2021 12:01:47 +0000
-Received: by mail-wr1-x430.google.com with SMTP id g16so28921470wrb.3;
- Mon, 20 Sep 2021 05:01:45 -0700 (PDT)
+ id 1mSHza-001U2D-JX; Mon, 20 Sep 2021 12:01:52 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id i23so28966411wrb.2;
+ Mon, 20 Sep 2021 05:01:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=/ne40pWRrx2CrzneTyBnCtWRrTGbYgrZIHpswHWcqFg=;
- b=XQUOGT4c82LgLfAKQHMnG83GjfBn5NbeBgTZySjeCqPbRi/oPAEoMSZRRLjag6+hTP
- KV6WTUmbgmxWt3zAO7q1YlAud6ZMu8v0ORNJs5Tbd06ExzfdJCqDQ6XxmPBULWEHvKzc
- 0b/QMImOjgmeJhBce1X3IDuPxmAGmjsI91Lrrzo0wgnuwqoEMvREmRKk8Hx0N/k9Lgsk
- ypY16GdBGxl3w/CHqtp4+wAVDOWyJCmowywK9hOyJYQtpTfibBFKgnasY8MaRgjwITwh
- pBn5kMGtDUqArcXygEp9xAvjxovdzHLqsFogf2Rf8uvGhqDDG51uWbzZRBaNxJx/nyX1
- K+DA==
+ bh=Yps8bt2FBtfainwuMRQ1I6tWL0WG1SqRqPwtRgGpER4=;
+ b=JDe7MHo0RI1UpNcpZf39X/27jmaP/aMAWtvE1/dDVxxn/oJ2gAgGx9A1qpGhMmhV79
+ YN70g/+yWW/BtVo85C+RKq51xkDfDSh4wrGzD2DWXZJja7B0G+Mc5AflUCt+aUazZ4Wl
+ a4BfwIdshkv9AImT0hPCUuaUNag85WDXUg34Sv1tXoiwCDAYAzGKnS2SbilLeu97YftR
+ MgPKzyMuDg2AzYBdTBh+rqiBlmGHcqTc6jCIxLmrxae395a3cmGGchcQ5KO87enlREHW
+ zGzfeLhkOw3M67J9yRQAuHFPBYcTJDgyimash9t0fm53QuFdQrSOev4VylpYuC67tkQK
+ NUsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=/ne40pWRrx2CrzneTyBnCtWRrTGbYgrZIHpswHWcqFg=;
- b=LZt10v/4K+sUQwGVmtV8CABl8fGDTIcEWFIwfF10AzRHW2GVCGv7cvIajM6FKvIklo
- 1E9NXJ8f9mokyK/i8m4HhftSV2yCNR19a1mWUxIxM6HaAAN7Qhm03YlevjrFNYS1gMWv
- eGNXuGS8g+f9x9TrlxtVcNXhxl3eVD7+otZkKnv2BJ0hzKQtZqkf/9Qqris4MmkOjUWa
- P6BrzUORybScHxQeU45RyI487E+7Hh++bHL9nWd8n3vQY1rIF6Qyr4mo72H6YSM97VSS
- aamvh4WejPBhb2LAk6xbdtk1gJFSfl8I9ePlZJV5GVNOVTQDb/W9Vf2FBGKh+smrIVvA
- 2G4Q==
-X-Gm-Message-State: AOAM531E0uxlbcopwjldT9i2lio2+IRDhg0zS47kvF9nvnGndaNYQqpj
- 5z9yVWwhGmYfmGfKuPRDtDE=
-X-Google-Smtp-Source: ABdhPJx69lUhsTXiVkcOUNtmVmoOBPXkrL/CXP1uxgR/bzPlKPCqAwWnBQwLvpTAC3aOmkWxW87b3g==
-X-Received: by 2002:a05:600c:4991:: with SMTP id
- h17mr29133387wmp.74.1632139303375; 
- Mon, 20 Sep 2021 05:01:43 -0700 (PDT)
+ bh=Yps8bt2FBtfainwuMRQ1I6tWL0WG1SqRqPwtRgGpER4=;
+ b=crAjFto48RFQAnFM5Wo67YqjIj3f6f1ikM9GesM/nydjHnw39gklm80ZM6j4OpTuvO
+ U8h4GtX+ukLWIhYFAdZZ2RWww8tSYksFg132xy7wpuHZufFEnwSPmpomkhk2+AOh1N85
+ /ymlDx6kr3QqDsnNuqaycMqeqRddSu6Yt98D4pO7M7fj6QFvthZIZ8VMDFftHKJNBywM
+ ZCWsYvXpgjTaFUm9n1WPiuKEoJ0sPvj3EjFuXhv6WJ97vHyHT2iD5eve3cI7fo3/lUKr
+ BrLXl6mDY3tuT/85r3kKuNFQboFBUsuinGSttVYS7u/950PwZ5o3m4qLLearepMArzbf
+ 8XvA==
+X-Gm-Message-State: AOAM5323L3d9eW5aKkVacfhuvo4/0msYQUV4jh2UF+dZiJwrw701o1mp
+ NQx/a0E4tC2N48upce3EATE=
+X-Google-Smtp-Source: ABdhPJyx3C28Wosr1fZfE90gYcZrE47TW0kXFU7wZa3TCVGEDUsYZ4KwRuT0cjqIUbwKpXSJGF73ow==
+X-Received: by 2002:a5d:4212:: with SMTP id n18mr28494785wrq.37.1632139306631; 
+ Mon, 20 Sep 2021 05:01:46 -0700 (PDT)
 Received: from [192.168.2.177] ([206.204.146.29])
- by smtp.gmail.com with ESMTPSA id h8sm18589623wmb.35.2021.09.20.05.01.42
+ by smtp.gmail.com with ESMTPSA id c30sm15963916wrb.74.2021.09.20.05.01.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Sep 2021 05:01:42 -0700 (PDT)
-Message-ID: <fe15479d-7500-a48e-8658-936eca0fc099@gmail.com>
-Date: Mon, 20 Sep 2021 14:01:41 +0200
+ Mon, 20 Sep 2021 05:01:46 -0700 (PDT)
+Message-ID: <a55fca55-78d3-554a-4ad0-f555beac3fa8@gmail.com>
+Date: Mon, 20 Sep 2021 14:01:45 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.0.3
-Subject: Re: [PATCH v4 1/2] arm: dts: mt7623: add musb device nodes
+Subject: Re: [PATCH v2] arm: dts: mt7623: add otg nodes for bpi-r2
 Content-Language: en-US
-To: Sungbo Eo <mans0n@gorani.run>, linux-mediatek@lists.infradead.org
-Cc: Rob Herring <robh+dt@kernel.org>, Bin Liu <b-liu@ti.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Frank Wunderlich <frank-w@public-files.de>, devicetree@vger.kernel.org,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20210822041333.5264-1-mans0n@gorani.run>
- <20210830155903.13907-1-mans0n@gorani.run>
- <20210830155903.13907-2-mans0n@gorani.run>
+To: Frank Wunderlich <linux@fw-web.de>, linux-mediatek@lists.infradead.org
+Cc: Frank Wunderlich <frank-w@public-files.de>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20210830145958.108605-1-linux@fw-web.de>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20210830155903.13907-2-mans0n@gorani.run>
+In-Reply-To: <20210830145958.108605-1-linux@fw-web.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210920_050146_326063_4A07B0CD 
-X-CRM114-Status: GOOD (  17.04  )
+X-CRM114-CacheID: sfid-20210920_050150_698011_33DAC188 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,91 +104,79 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 30/08/2021 17:59, Sungbo Eo wrote:
-> MT7623 has an musb controller that is compatible with the one from MT2701.
+On 30/08/2021 16:59, Frank Wunderlich wrote:
+> From: Frank Wunderlich <frank-w@public-files.de>
 > 
-> Signed-off-by: Sungbo Eo <mans0n@gorani.run>
-> Tested-by: Frank Wunderlich <frank-w@public-files.de>
+> Add OTG-Nodes for BananaPi-R2
+> 
+> Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 
 Applied to v5.15-next/dts32
 
 Thanks
 
 > ---
-> v4:
-> * add tested by Frank
+> patch is based on
 > 
-> v3:
-> * remove unnecessary status=okay from u2port2
+> "arm: dts: mt7623: add musb device nodes"
 > 
-> v2:
-> * rename usb3 label to usb0
-> * move usb0 & u2phy1 nodes to the right sorted place
-> * disable u2phy1 by default
-> * correct u2port2 node name to match its reg address
+> https://patchwork.kernel.org/project/linux-mediatek/patch/20210822041333.5264-2-mans0n@gorani.run/
 > ---
->   arch/arm/boot/dts/mt7623.dtsi  | 33 +++++++++++++++++++++++++++++++++
->   arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
->   2 files changed, 37 insertions(+)
+> v2:
+> 	rebase on plain 5.14, v1 was based on some not upstreamed work
+> ---
+>   arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts | 25 +++++++++++++++++++
+>   1 file changed, 25 insertions(+)
 > 
-> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
-> index 3c11f7cfcc40..21c8a291b74e 100644
-> --- a/arch/arm/boot/dts/mt7623.dtsi
-> +++ b/arch/arm/boot/dts/mt7623.dtsi
-> @@ -585,6 +585,39 @@ spi2: spi@11017000 {
->   		status = "disabled";
->   	};
+> diff --git a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> index e96aa0ed1ebd..027c1b0c6a98 100644
+> --- a/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> +++ b/arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dts
+> @@ -366,6 +366,14 @@ &pcie1_phy {
+>   	status = "okay";
+>   };
 >   
-> +	usb0: usb@11200000 {
-> +		compatible = "mediatek,mt7623-musb",
-> +			     "mediatek,mtk-musb";
-> +		reg = <0 0x11200000 0 0x1000>;
-> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-names = "mc";
-> +		phys = <&u2port2 PHY_TYPE_USB2>;
-> +		dr_mode = "otg";
-> +		clocks = <&pericfg CLK_PERI_USB0>,
-> +			 <&pericfg CLK_PERI_USB0_MCU>,
-> +			 <&pericfg CLK_PERI_USB_SLV>;
-> +		clock-names = "main","mcu","univpll";
-> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
-> +		status = "disabled";
-> +	};
-> +
-> +	u2phy1: t-phy@11210000 {
-> +		compatible = "mediatek,mt7623-tphy",
-> +			     "mediatek,generic-tphy-v1";
-> +		reg = <0 0x11210000 0 0x0800>;
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +		status = "disabled";
-> +
-> +		u2port2: usb-phy@11210800 {
-> +			reg = <0 0x11210800 0 0x0100>;
-> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
-> +			clock-names = "ref";
-> +			#phy-cells = <1>;
+> +&pio {
+> +	musb_pins: musb {
+> +		pins-musb {
+> +			pinmux = <MT7623_PIN_237_EXT_SDIO2_FUNC_DRV_VBUS>;
 > +		};
 > +	};
+> +};
 > +
->   	audsys: clock-controller@11220000 {
->   		compatible = "mediatek,mt7623-audsys",
->   			     "mediatek,mt2701-audsys",
-> diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
-> index 0735a1fb8ad9..d304b62d24b5 100644
-> --- a/arch/arm/boot/dts/mt7623a.dtsi
-> +++ b/arch/arm/boot/dts/mt7623a.dtsi
-> @@ -35,6 +35,10 @@ &scpsys {
->   	clock-names = "ethif";
+>   &pwm {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&pwm_pins_a>;
+> @@ -396,6 +404,19 @@ &uart2 {
+>   	status = "okay";
 >   };
 >   
 > +&usb0 {
-> +	power-domains = <&scpsys MT7623A_POWER_DOMAIN_IFR_MSC>;
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&musb_pins>;
+> +	status = "okay";
+> +	usb-role-switch;
+> +
+> +	connector {
+> +		compatible = "gpio-usb-b-connector", "usb-b-connector";
+> +		type = "micro";
+> +		id-gpios = <&pio 44 GPIO_ACTIVE_HIGH>;
+> +	};
 > +};
 > +
 >   &usb1 {
->   	power-domains = <&scpsys MT7623A_POWER_DOMAIN_HIF>;
+>   	vusb33-supply = <&reg_3p3v>;
+>   	vbus-supply = <&reg_5v>;
+> @@ -408,6 +429,10 @@ &usb2 {
+>   	status = "okay";
+>   };
+>   
+> +&u2phy1 {
+> +	status = "okay";
+> +};
+> +
+>   &u3phy1 {
+>   	status = "okay";
 >   };
 > 
 
