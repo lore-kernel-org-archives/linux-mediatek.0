@@ -1,99 +1,88 @@
-Return-Path: <SRS0=4N1K=OJ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=XaoX=OK=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-5.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3300EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Sep 2021 19:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 240BDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 08:44:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E545760F6B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Sep 2021 19:34:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E545760F6B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id D297360F12
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 08:44:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D297360F12
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p68LdQljCiHEDZHwJY8QQ8+jLrwC2UnN4SxVd4DYnmY=; b=g3apwfwQwHn41T
-	75WD0UATYIkK4dKKJ5Sc3sunAqOJp4Ghukfw55hi3Z/3Cqmz/WPLeW3BxgTz8b3v3bD53Y0fcEM8x
-	n2g39kBjw3E5fMiLvw2WVQQRmkRGeaoSFFER8Y2jXoB17TzUml1mFQVjBe+PV70GnPLnn58oKNrXP
-	zM1T5JdlByUvaxn6JQBG9k6WKukFCNj1BNx1+nGsKs4yg/dYUQfo3aqn2YHDvU/zUGRBTmxUtSDtE
-	vixnmaI5iwTbsIskH8b9Vwnmr7CnMQ+KCV/V03fnAAcwGdLsfXWNT1QEmq3SPa54gq8uJUHUGhCYw
-	rQ9/Otpf1e4pGIX2ozEA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IuFxk8Y9RBjN9QK73V78L63rzTpNocjOHP8Uf6RjrFI=; b=ryRaJAfNI/t7+s
+	aaZTYeKjwAQFNyz59Ebfx0BuG1f7jDZHThekTMDoP1OYgqhCkqSadT5kigkBMDHHtjUAJUsyBnfLo
+	6Z/3JpmLZD17KTJ/A+fmgbWUIc5J3vB0F7zyl11/pcvfm7EF97W8SOMFLDsTj195juF0SSUWlzVOk
+	yVMzROaX5gzzmQ6drCt5itXOkiLb1L2ILWTfDAko5uRY+VV5dbWCaCdB/ql0caJSvmkZEbSRS0KyE
+	1Dyb8kTYADNw5MzvixKLUH0gFXLnYvU9YQcD7lwNzPZG0P5hI/9Mi94INDIa3ae+sojpvfKncRSpF
+	6S/Sz6HlYy/mmjvtGX3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mS2Zc-0006YU-DP; Sun, 19 Sep 2021 19:34:00 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1mSEum-000wmk-Rf; Mon, 20 Sep 2021 08:44:40 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mS2ZQ-0006Ww-CG
- for linux-mediatek@lists.infradead.org; Sun, 19 Sep 2021 19:33:49 +0000
-Received: by mail-lf1-x134.google.com with SMTP id x27so57900312lfu.5
- for <linux-mediatek@lists.infradead.org>; Sun, 19 Sep 2021 12:33:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rwG0cyjmLoqo6KWJPkoebUUL/eGcFniLZjCwbXyHXbY=;
- b=QttFeThvsBKoZD/JJSZUGcnMxxYovmSAcPaoFut8GAFLHLvS3IsTDF2HdKr15LPN9G
- dQm8BvfUECw8XeDSv0m1SrsY5DNjsXO5PhGldlbFPGCmZzLQf5f4vh/pFDbjSFvStSof
- bsHKoK1XDB+jm11SUX3KQZcdBcwrIoJ9zJT7u7lZPKBBvscShFCJI06s8Nc+Cbx5aPk8
- FLEsvge3r+dLL5c8eRyGYCib3lpmVuGEyJOQApoo1BXqM0ORTQDvz1f9o1dc6g3fwHqJ
- sn8PMwx45/tPsdybUcEWbNcsQsIJx3OV8yTmV/E9eKunE7RJcgj2CWzrCIKxFp+jpbCh
- 0Qnw==
+ id 1mSEuh-000wiK-1S
+ for linux-mediatek@lists.infradead.org; Mon, 20 Sep 2021 08:44:37 +0000
+Received: by mail-wr1-x430.google.com with SMTP id t8so20446557wri.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 20 Sep 2021 01:44:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UP5QWfzsaU49KYqjn5I4kDilzjyCt1o6LBhMWE6h2zk=;
+ b=tvBzZUBhhKM/V5Mc+zPF0GHJsAG5N/a4OsO26F2ZWBq2hUWcFwZG2Ja9LCRN4W5cN/
+ 2JCxGyBp1kopW+zQXAkJYZvHUumN5ZrwuNmbjSXtwh0DCymLFu9Ud0zDcmHN87UbGHfg
+ 6PUBTjToIUeQk3YECQIfjaW/RhgmDu78BntPkfMvSG4qAYQxDk/5cSRZ0cPNuAcjdLUW
+ 9TVpEykGJAeQF2TiNwQya1rkoglgQUKzfeUB29rzoasji8k5JAF1NUUAyfL8e5MTz5Ob
+ csVDJGFTAnaKg4TPgXAdrVU4I3a3Pm/NOiWUb1oJ36PN8EivcmX9gpXXvD+wBHXWzLIz
+ Rumw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=rwG0cyjmLoqo6KWJPkoebUUL/eGcFniLZjCwbXyHXbY=;
- b=Z5f2yJVGyUpahbXanN1DemaAamGzuA3EZsHDGZdHlQlfwA2BBDvfS07lu1DSMtdTov
- ZjCl3qyqXOzYYqokODpPeeK9B87HWyWUaeaPhUCntcH9opjCVXa6gj4uKk9/efTsmyaa
- s0te0LhwY3NbJJ4inYp+Q8RJzUs9WsmmstOqBJtD7Xhf0XCb/mqI6IAmVYt9gIgHzNtA
- cbENFa3GxoHF90hWD4A6xbHDr+JEjV/fKLwnNBk13mHnCaVX3o+EG33Lo+P9+1tXUqEC
- dTYadSrtWeKTjpJx3zqJfsAgYM2MlsaP/xuaalBdUSTupkzNMuEtsV3e7NNaAu9mDflw
- XW3Q==
-X-Gm-Message-State: AOAM530nCDVpJgAfgIafU5xx0ce6OhGXOvRDZYodwbI58FT2tPHSgyx8
- 9+xc6yY4lrIMCODsPnnPTVhUVtQUCrBZKl/yuEkKwg==
-X-Google-Smtp-Source: ABdhPJzzLzWh+7RmTbVSRRZX4HMrJdrIe97VWJWO+B8mpVmZZvCUE6yjBm+7MlNH7sV61wIx/Rt//VfW14RHiA0ZsuQ=
-X-Received: by 2002:a05:6512:10cb:: with SMTP id
- k11mr6357275lfg.72.1632080020480; 
- Sun, 19 Sep 2021 12:33:40 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UP5QWfzsaU49KYqjn5I4kDilzjyCt1o6LBhMWE6h2zk=;
+ b=lrDMvMsk1cBZSpI2iQ+xaVG78JZt0yK62qw6oWvcFeo6Xz9ChmuAiOBAy0uOWxkHSb
+ FSWS4jPPRscv7gJA+S2KmAK7hbgC/t7xHy8RVXEq+wBEHYjHNY4D1zE6Cq0PZ5oY7IhX
+ A2S6xsZHj2TUU2Nss0Q0NdVqyqzFPIGXtYybHkkEkhgNKkkc/9TbKS40NY30xKep7TG6
+ M/qJ4x+81chMnFaS9jTCjH/7zanO5BblMZdbj8zjHB5Q+s71GFOXRbBGFAmAu7/CM2VV
+ +h09+lXaclqFMXQ7jZ6c3/ptqAHkE0Rm2OPoqN0qsbtOo+ww9VR3YKDyYlq7HSF+PPgo
+ 1Mmg==
+X-Gm-Message-State: AOAM530hmnMAVCMRHRZqmwGeHV3d1KP37DNYG8D+zLMQ0SItP1RzvJnf
+ Ien3MPLHYqDwL8pbAynRYfnj5g==
+X-Google-Smtp-Source: ABdhPJxiKMhEJInOM2ibVykhU8PPCOv7Ymx0xv/l9nNsd52khYEKtv2XNA5e8Cmba26ySupkVMI3mw==
+X-Received: by 2002:a5d:43d2:: with SMTP id v18mr27021202wrr.98.1632127472956; 
+ Mon, 20 Sep 2021 01:44:32 -0700 (PDT)
+Received: from blmsp.lan ([2a02:2454:3e6:c900::97e])
+ by smtp.gmail.com with ESMTPSA id w1sm18433911wmc.19.2021.09.20.01.44.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Sep 2021 01:44:32 -0700 (PDT)
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Markus Schneider-Pargmann <msp@baylibre.com>
+Subject: [PATCH v2 0/6] drm/mediatek: Add mt8195 DisplayPort driver
+Date: Mon, 20 Sep 2021 10:44:18 +0200
+Message-Id: <20210920084424.231825-1-msp@baylibre.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
-References: <20210830003603.31864-1-zhiyong.tao@mediatek.com>
- <20210830003603.31864-5-zhiyong.tao@mediatek.com>
- <CAGXv+5H5KnskzBYuqniBGQWBLriyFkBvVXEk1Cyg6XSmKMWP8w@mail.gmail.com>
- <b82ae857d8a3acf117721bb83d4dbbc44f612565.camel@mediatek.com>
- <CAGXv+5F=H3C9mB+uYJDmk8vPiKjWixFs8DF3Pk_Xh3x6Jpq6iA@mail.gmail.com>
- <74a3a96745e93c5a2392b8a39822c872fd468466.camel@mediatek.com>
-In-Reply-To: <74a3a96745e93c5a2392b8a39822c872fd468466.camel@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 19 Sep 2021 21:33:29 +0200
-Message-ID: <CACRpkdZjqMk_gVpeZ2SqCijuOiiGfPOXHhBOdyL9Y+j750cGsQ@mail.gmail.com>
-Subject: Re: [PATCH v11 4/4] pinctrl: mediatek: add rsel setting on MT8195
-To: "zhiyong.tao" <zhiyong.tao@mediatek.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@kernel.org>, srv_heupstream <srv_heupstream@mediatek.com>,
- hui.liu@mediatek.com, 
- Eddie Huang <eddie.huang@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>,
- Biao Huang <biao.huang@mediatek.com>,
- Hongzhou Yang <hongzhou.yang@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
- Devicetree List <devicetree@vger.kernel.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210919_123348_488732_B4A3F310 
-X-CRM114-Status: GOOD (  22.90  )
+X-CRM114-CacheID: sfid-20210920_014435_134127_E4FE943F 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,45 +99,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 16, 2021 at 11:31 AM zhiyong.tao <zhiyong.tao@mediatek.com> wrote:
-> On Mon, 2021-09-06 at 18:09 +0800, Chen-Yu Tsai wrote:
+Hi everyone,
 
-> > > > > +       if (!found) {
-> > > > > +               dev_err(hw->dev, "Not support rsel value %d Ohm
-> > > > > for
-> > > > > pin = %d (%s)\n",
-> > > > > +                       arg, desc->number, desc->name);
-> > > > > +               return -EOPNOTSUPP;
-> > > >
-> > > > I believe ENOTSUPP is the correct one. EOPNOTSUPP seems to be
-> > > > network
-> > > > related.
-> > > >
-> > >
-> > > if we change it as "ENOTSUPP", it will report warning"ENOTSUPP is
-> > > not
-> > > SUSV4 error code, prefer EOPNOTSUP" when checking patch.
-> >
-> > The context surrounding this warning seems to be that ENOTSUPP is
-> > hard
-> > for userspace to understand. AFAIK the return code here does not get
-> > passed to userspace? And the pinctrl core does check for EINVAL or
-> > ENOTSUPP, so I think this is a valid use case.
-> >
-> > Linus?
-> >
->
-> Hi Linus,
->
-> Do you have some suggestion for the warning issue?
+this series is built around the DisplayPort driver. The dpi/dpintf driver and
+the added helper functions are required for the DisplayPort driver to work.
 
-Ignore the warning. We use this code in the pinctrl subsystem.
+For v2 I rebased the series on top of v5.15-rc1. There still is a functional
+dependency on many different patches pulled in through the main two
+dependencies, vdosys0 and vdosys1, but I wasn't able to get a clean base with
+these patches yet so to continue improving this series in the meantime, I
+decided to go with v5.15-rc1 as a base. The main potential merge-conflict
+points of this series with other series are mtk_drm_drv.c and
+mtk_drm_ddp_comp.* etc. which should be easy to resolve later on.
 
-The pinctrl subsystem has no userspace API so that is certainly
-not a problem.
+Note: This patch series is currently tested on v5.10 and I am still working on
+testing it on v5.15.
 
-Yours,
-Linus Walleij
+Dependencies:
+- Add Mediatek Soc DRM (vdosys0) support for mt8195
+  https://lore.kernel.org/linux-mediatek/20210825144833.7757-1-jason-jh.lin@mediatek.com/
+- Add MediaTek SoC DRM (vdosys1) support for mt8195
+  https://lore.kernel.org/linux-mediatek/20210825100531.5653-1-nancy.lin@mediatek.com/
+
+Older revisions:
+RFC - https://lore.kernel.org/linux-mediatek/20210816192523.1739365-1-msp@baylibre.com/
+v1  - https://lore.kernel.org/linux-mediatek/20210906193529.718845-1-msp@baylibre.com/
+
+Thanks in advance for any feedback and comments.
+
+Best,
+Markus
+
+
+Markus Schneider-Pargmann (6):
+  dt-bindings: mediatek,dpintf: Add DP_INTF binding
+  dt-bindings: mediatek,dp: Add Display Port binding
+  drm/edid: Add cea_sad helpers for freq/length
+  video/hdmi: Add audio_infoframe packing for DP
+  drm/mediatek: dpi: Add dpintf support
+  drm/mediatek: Add mt8195 DisplayPort driver
+
+ .../display/mediatek/mediatek,dp.yaml         |   89 +
+ .../display/mediatek/mediatek,dpintf.yaml     |   78 +
+ drivers/gpu/drm/drm_edid.c                    |   74 +
+ drivers/gpu/drm/mediatek/Kconfig              |    7 +
+ drivers/gpu/drm/mediatek/Makefile             |    2 +
+ drivers/gpu/drm/mediatek/mtk_dp.c             | 2855 +++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_dp_reg.h         |  498 +++
+ drivers/gpu/drm/mediatek/mtk_dpi.c            |  248 +-
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h       |   12 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   |    4 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |    1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |    6 +-
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |    1 +
+ drivers/phy/mediatek/Kconfig                  |    8 +
+ drivers/phy/mediatek/Makefile                 |    1 +
+ drivers/phy/mediatek/phy-mtk-dp.c             |  218 ++
+ drivers/video/hdmi.c                          |   83 +-
+ include/drm/drm_dp_helper.h                   |    2 +
+ include/drm/drm_edid.h                        |   18 +-
+ include/linux/hdmi.h                          |    7 +-
+ include/linux/soc/mediatek/mtk-mmsys.h        |    2 +
+ 21 files changed, 4140 insertions(+), 74 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpintf.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_dp_reg.h
+ create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
+
+-- 
+2.33.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
