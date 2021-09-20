@@ -7,72 +7,85 @@ X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93398C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 10:05:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F5DFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 10:49:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 63FA660F21
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 10:05:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 63FA660F21
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
+	by mail.kernel.org (Postfix) with ESMTPS id 43218610FB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Sep 2021 10:49:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 43218610FB
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=public-files.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Subject:Cc:
+	To:From:Message-ID:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2TvOfm+2BYOAUXlpGRnl9AWgPd5rBkM7Udl1UK38Fd0=; b=B1ts2vC4upj54t
-	XouyMA59ghxJ2rVziCS+BgN4V/xwG2v0s6KA3251T7B1z8va+L0qp7OD3iyMEFfdx1i8vwKQumVKY
-	WkMn0AgjwbhCcIYkKGnNSKjyDXEKxFHSMbQspKq+hgYwwqk4wnnGV+8F0VYX++YybFVrn3PvW8mpG
-	KMdNqNLdeHjjmaM43j13wIMPMKfvyo8pxyp7KIwUg4GV1aSinzJ1wLOrdvKHllpzqU2Pd35dle0Ty
-	HBLmkazOQaPqIKOWpReMr4/ctDmtHUK1GVh5JeXdE7f/lRkrX0sPanXe11rbPcc5IRrQe29lEeIMZ
-	acy5OwGFqtFalu/KUBrA==;
+	List-Owner; bh=wRl9orfYFYEtPle4XCrTIXnmPxzg7wH8wAUDjAZT8hY=; b=LItLIxvF7n2H6B
+	tqudMFHCKr33AUNN3E6xQpmo/o50CkkyEhFz7PxAuslXvHb2Wcl0RbF77U01rVMvmgw7hTsjfXA+X
+	4kcnkGMGWPkj2ZbK3ziNXS6sN2YaUgTSaSMpVxl4P2IPVKeqwKXB/VXzzRCsqPvF3Ch8XjKOQG0k8
+	M0ZTeD4G2pYrGOWUmU2s44jnWGgcX8kqEkOb/1/oKqu6W7QeXabmVkBCWxq9dX5nj/k5KVVl1D5NT
+	pP3I6fWk977owiwPJI6eF//FMgGVOcBpiIRskfH7UXb2NFA6NTCZ5G9a1OOVtcLq69DuJPS0pqXKf
+	1KjwuW32F4Nkm7LZ58UQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSGBG-001Dtn-CS; Mon, 20 Sep 2021 10:05:46 +0000
-Received: from mail-vk1-f170.google.com ([209.85.221.170])
+	id 1mSGrG-001JDk-Mk; Mon, 20 Sep 2021 10:49:10 +0000
+Received: from mout.gmx.net ([212.227.17.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSGAx-001DoL-1s; Mon, 20 Sep 2021 10:05:28 +0000
-Received: by mail-vk1-f170.google.com with SMTP id g15so968378vke.5;
- Mon, 20 Sep 2021 03:05:25 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=CJlXbAv3u12lESrV/6ZqM6UNLLxRX/MyMpJQH7eW+7g=;
- b=QmSvP2eIROaBcNS8TmuaEMp4D1Gvq54lYF36z///uP7RIiBQt//LFL+kkeowwjTDlC
- RWEtoCNQJnq/MInz7QV3CmwLf9IlxfEAhqKSU+sXUL2tOOUqAGhOfBauIRlkLPBvll/s
- 4ga2JUu4ZVfJ4XYRnvNaKtSZGpVOuTEImWa3qM0vfbIM6lRoqJALgutBjw6EiMit8V3k
- 0EkuoLfbg8DBYy5tGgnCoUJhkK/l02kY2qSSguUaCstVHK1PNsV2yxibjNZj+SOzBc+k
- tnWKVkf95ckQsxW1WpLgZDhuhSoRg8jXnPqTIh6TGLdWIcXRaSwT9x2DJbB/q2qElv0X
- a5KA==
-X-Gm-Message-State: AOAM532hLhuI3wRGGql8ge+GTCqk34S3S9zalMA8fg7IIk049qcLFHyw
- WaZeXmUQP+liXRTRV9uaqhAkasBhbHWBXlO01vU=
-X-Google-Smtp-Source: ABdhPJw21KYJ6+E01J7XKEBzRND+bYGJxtvpgL/KCdlzvGuzKjTv1Xd3XS/lrKcKi3oLR3yuOCRgqcDqibrEOieac7U=
-X-Received: by 2002:a1f:230c:: with SMTP id j12mr13427328vkj.11.1632132324735; 
- Mon, 20 Sep 2021 03:05:24 -0700 (PDT)
+ id 1mSGr3-001J8y-0e; Mon, 20 Sep 2021 10:48:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.net;
+ s=badeba3b8450; t=1632134924;
+ bh=UE6JPDxLxhHS8QF+kGYS6SUXXeB3wiXl2OFGWk3OyGs=;
+ h=X-UI-Sender-Class:From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=CPR7SYqbDnEIHf2IgQzx7mMO9xt0ZVNCmAoqCT8yTPy7AB+j/NgIWGZrS42PMIjlO
+ NGen88DHV1tnkKIXA2p98IcIz9vujw8ItkZlGPanHfn3y/kBIEH9bVDaMo0jYQjd4s
+ pUDfBtpkTeizRdrVCjo21Mpmn5+tJZ/uj58z5M+I=
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from [80.245.76.103] ([80.245.76.103]) by web-mail.gmx.net
+ (3c-app-gmx-bap08.server.lan [172.19.172.78]) (via HTTP); Mon, 20 Sep 2021
+ 12:48:44 +0200
 MIME-Version: 1.0
-References: <20210920100206.1418649-1-arnd@kernel.org>
-In-Reply-To: <20210920100206.1418649-1-arnd@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 20 Sep 2021 12:05:13 +0200
-Message-ID: <CAMuHMdUvb=nCZ=qfeUyUHQJ7TRjMjs4OVtd2q3yQT5SPk6Dx_g@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8195: force COMMON_CLK dependency
-To: Arnd Bergmann <arnd@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Trevor Wu <trevor.wu@mediatek.com>, 
- Geert Uytterhoeven <geert+renesas@glider.be>, Arnd Bergmann <arnd@arndb.de>, 
- Jiaxin Yu <jiaxin.yu@mediatek.com>, Tzung-Bi Shih <tzungbi@google.com>, 
- ALSA Development Mailing List <alsa-devel@alsa-project.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org
+Message-ID: <trinity-1d1646a2-6fb9-4a81-9edc-45c4d216a279-1632134924710@3c-app-gmx-bap08>
+From: Frank Wunderlich <frank-w@public-files.de>
+To: Sungbo Eo <mans0n@gorani.run>, Matthias Brugger <matthias.bgg@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Bin Liu <b-liu@ti.com>, Greg
+ Kroah-Hartman <gregkh@linuxfoundation.org>, devicetree@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Sungbo Eo <mans0n@gorani.run>
+Subject: Aw: [PATCH v4 1/2] arm: dts: mt7623: add musb device nodes
+Date: Mon, 20 Sep 2021 12:48:44 +0200
+Importance: normal
+Sensitivity: Normal
+In-Reply-To: <20210830155903.13907-2-mans0n@gorani.run>
+References: <20210822041333.5264-1-mans0n@gorani.run>
+ <20210830155903.13907-1-mans0n@gorani.run>
+ <20210830155903.13907-2-mans0n@gorani.run>
+X-UI-Message-Type: mail
+X-Priority: 3
+X-Provags-ID: V03:K1:h+4u+2DNNQq/zFxGtQ+E9hroBIiOkc2j+6J/9LOROcecrSGZrwD7KyAje9UTcYe3Adrpf
+ wxLLX03FCB+UBYr2y+/6W9mCCXarLsqxkmuTjF27xwVAIzdc4mNtUqnJg3tLkcACjsvPtDueNAAU
+ uppDuW4tedE2jjUFJqZtgmf50QAZwbYVlJfS1dnwHK+5h6o4N/zn9Du38NIWLsQp1S84dq4UpgDF
+ jOXj5yhXjD0ZCrYfZbDR1QYLn1TjALN1nn0BeIS5Y1a14P4w2iDWXrOmZuRuTcOBX3Dt8jSU/4gN
+ pg=
+X-UI-Out-Filterresults: notjunk:1;V03:K0:WPDNJBBn+AY=:MmMNvz3wrtvo0tCZoZfq1U
+ GzC4SCvrcWmYzVzP1xpiVVC/DvSfVyzXGrbWeqRx3WbjKyJYO6W/jwJFger6BR1S2drdXTGGq
+ C+yHRL4dVfI2tguqvSB7pkI5LbkgCRg8l97GJ5vmghM7Twc7PN/tYYQyojiBOHzY91/uihR3/
+ +YzZAg6v+y2aew8+7hmKNnu2qiDRwhEqfHc+eqWjyVQhgGv4dn9JtU10zLot1FhWG/MfVQQoq
+ DJNsu/pOrvH6P7asE05CjcDlGIm1ZtlgjcWjeyJQBNSFDgkx4kUSDiSIL5BE2BMWZbYPSOH+o
+ MTilrrmAflvhvUsdjZ6BGbsyiALTGxF1abplK3QD58LUkUxzaevUkieZMaXE0OPGnVoLjRZtT
+ xULn6UP81Yiyawhtvr5Zugv9iWXtvl/ygWxtSHS97iuObUkqhrQ2KqItNHkD8f9fQoWcehkRk
+ SL+7ssffFTOj3QaLf5TchQLWZOVvMYFwScZsG67JNXtF3hqFI0lJhQftXmFiLy9RldYiZDG7i
+ /KzV+iwp5cifrEwDl7BZXi3uLlo6SCZQadYi5WpyXaoD4i7NhhEf6pCjgWhZmGOUR716dMOZx
+ DaJKo3vMo1rshShJPkLpQSeX117rq5w55BJN33FUGAw347TOtk9l2bY6VOgcZwQQkrq+DYLxY
+ NrX3/6jD+2KAXXOAmD7yU6G3XQ9ztzkt6K/7DOweOonb0PfDnwXwb0gqS8NszQMu6BMSXOsnb
+ Xam5BBwfOBIpZvcrbMwm1DI84YTCTkK4IYS1XBZSCq+pn7A38qq7otG4+FkwEEgdsfFY99Uyw
+ +FVdSbM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210920_030527_165244_E499F2B9 
-X-CRM114-Status: GOOD (  28.68  )
+X-CRM114-CacheID: sfid-20210920_034857_381782_F955B9DF 
+X-CRM114-Status: GOOD (  18.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,62 +102,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Arnd,
+Hi,
 
-Thanks for your patch!
+just a gentle ping for this patch (second part is already merged to usb-tree) and my followup for bpi-r2
 
-On Mon, Sep 20, 2021 at 12:02 PM Arnd Bergmann <arnd@kernel.org> wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
->
-> Without CONFIG_COMMON_CLK, this driver fails to link:
->
-> ERROR: modpost: "clk_unregister_gate" [sound/soc/mediatek/mt8195/snd-soc-mt8195-afe.ko] undefined!
-> ERROR: modpost: "clk_register_gate" [sound/soc/mediatek/mt8195/snd-soc-mt8195-afe.ko] undefined!
->
-> Add the proper Kconfig dependency for compile testing.
->
-> Fixes: 6746cc858259 ("ASoC: mediatek: mt8195: add platform driver")
-> Fixes: 940ffa194547 ("ASoC: mediatek: SND_SOC_MT8195 should depend on ARCH_MEDIATEK")
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210830145958.108605-1-linux@fw-web.de/
 
-I don't think the second Fixes tag is appropriate, as that commit did not
-relax the dependencies.
+regards Frank
 
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+
+> Gesendet: Montag, 30. August 2021 um 17:59 Uhr
+> Von: "Sungbo Eo" <mans0n@gorani.run>
+> An: linux-mediatek@lists.infradead.org
+> Cc: "Rob Herring" <robh+dt@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Bin Liu" <b-liu@ti.com>, "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Frank Wunderlich" <frank-w@public-files.de>, devicetree@vger.kernel.org, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, "Sungbo Eo" <mans0n@gorani.run>
+> Betreff: [PATCH v4 1/2] arm: dts: mt7623: add musb device nodes
+>
+> MT7623 has an musb controller that is compatible with the one from MT2701.
+>
+> Signed-off-by: Sungbo Eo <mans0n@gorani.run>
+> Tested-by: Frank Wunderlich <frank-w@public-files.de>
 > ---
->  sound/soc/mediatek/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> v4:
+> * add tested by Frank
 >
-> diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
-> index 5a2f4667d50b..268c1f74aa3e 100644
-> --- a/sound/soc/mediatek/Kconfig
-> +++ b/sound/soc/mediatek/Kconfig
-> @@ -187,7 +187,7 @@ config SND_SOC_MT8192_MT6359_RT1015_RT5682
+> v3:
+> * remove unnecessary status=okay from u2port2
 >
->  config SND_SOC_MT8195
->         tristate "ASoC support for Mediatek MT8195 chip"
-> -       depends on ARCH_MEDIATEK || COMPILE_TEST
-> +       depends on ARCH_MEDIATEK || (COMPILE_TEST && COMMON_CLK)
-
-Why not add a second line
-
-    depends on COMMON_CLK
-
-to make a clear distinction between hard and soft dependencies?
-
->         select SND_SOC_MEDIATEK
->         help
->           This adds ASoC platform driver support for Mediatek MT8195 chip
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+> v2:
+> * rename usb3 label to usb0
+> * move usb0 & u2phy1 nodes to the right sorted place
+> * disable u2phy1 by default
+> * correct u2port2 node name to match its reg address
+> ---
+>  arch/arm/boot/dts/mt7623.dtsi  | 33 +++++++++++++++++++++++++++++++++
+>  arch/arm/boot/dts/mt7623a.dtsi |  4 ++++
+>  2 files changed, 37 insertions(+)
+>
+> diff --git a/arch/arm/boot/dts/mt7623.dtsi b/arch/arm/boot/dts/mt7623.dtsi
+> index 3c11f7cfcc40..21c8a291b74e 100644
+> --- a/arch/arm/boot/dts/mt7623.dtsi
+> +++ b/arch/arm/boot/dts/mt7623.dtsi
+> @@ -585,6 +585,39 @@ spi2: spi@11017000 {
+>  		status = "disabled";
+>  	};
+>
+> +	usb0: usb@11200000 {
+> +		compatible = "mediatek,mt7623-musb",
+> +			     "mediatek,mtk-musb";
+> +		reg = <0 0x11200000 0 0x1000>;
+> +		interrupts = <GIC_SPI 32 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "mc";
+> +		phys = <&u2port2 PHY_TYPE_USB2>;
+> +		dr_mode = "otg";
+> +		clocks = <&pericfg CLK_PERI_USB0>,
+> +			 <&pericfg CLK_PERI_USB0_MCU>,
+> +			 <&pericfg CLK_PERI_USB_SLV>;
+> +		clock-names = "main","mcu","univpll";
+> +		power-domains = <&scpsys MT2701_POWER_DOMAIN_IFR_MSC>;
+> +		status = "disabled";
+> +	};
+> +
+> +	u2phy1: t-phy@11210000 {
+> +		compatible = "mediatek,mt7623-tphy",
+> +			     "mediatek,generic-tphy-v1";
+> +		reg = <0 0x11210000 0 0x0800>;
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		status = "disabled";
+> +
+> +		u2port2: usb-phy@11210800 {
+> +			reg = <0 0x11210800 0 0x0100>;
+> +			clocks = <&topckgen CLK_TOP_USB_PHY48M>;
+> +			clock-names = "ref";
+> +			#phy-cells = <1>;
+> +		};
+> +	};
+> +
+>  	audsys: clock-controller@11220000 {
+>  		compatible = "mediatek,mt7623-audsys",
+>  			     "mediatek,mt2701-audsys",
+> diff --git a/arch/arm/boot/dts/mt7623a.dtsi b/arch/arm/boot/dts/mt7623a.dtsi
+> index 0735a1fb8ad9..d304b62d24b5 100644
+> --- a/arch/arm/boot/dts/mt7623a.dtsi
+> +++ b/arch/arm/boot/dts/mt7623a.dtsi
+> @@ -35,6 +35,10 @@ &scpsys {
+>  	clock-names = "ethif";
+>  };
+>
+> +&usb0 {
+> +	power-domains = <&scpsys MT7623A_POWER_DOMAIN_IFR_MSC>;
+> +};
+> +
+>  &usb1 {
+>  	power-domains = <&scpsys MT7623A_POWER_DOMAIN_HIF>;
+>  };
+> --
+> 2.33.0
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+>
 
 _______________________________________________
 Linux-mediatek mailing list
