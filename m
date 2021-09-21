@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 48E6BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:57:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3842DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:58:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 02ACB61090
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:57:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 02ACB61090
+	by mail.kernel.org (Postfix) with ESMTPS id 0122561090
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:58:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0122561090
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,33 +24,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4a6lo8UVRvTK48wfmy4BW1zTj5tQGzRVXtnSYK32Y7o=; b=erDMv//WadzNV1
-	0GL16nq1A1FO2yMtmVI5eSUC+xjyG8p1BCIkVeuuPzvimlxd9ztH84rcoDgu0+bjrTJHhwhggu+FM
-	mAZ2YYGNtB+PSmRVILQcizyTSFx7Y5TgPVODJIJxWk9X/lqX8f7K88JbkMnvWN3caN7PuVI7/cNBH
-	raeImZB+5WZ0pnBg1YwIkYaVeLWIo9vnBFFmBalLP2JL2m/WLa+/x+M6Dpo0PibOdbrxXcTwVPX9H
-	pbj9wPq3TZep4thGX14lU5gNrqdyvx1EzZki0Lusphme1ZFa7fI7Mnm6QGRagj8bcj1XJWKGjIw2c
-	UNmlanpTNTdGD28NSY2g==;
+	List-Owner; bh=l2jBwQMrbzVReuQs+WaM+onfkz3JYlrtfiXg9vIsdSw=; b=LszvxRcDTo62Rk
+	QzWIC+LIpWUsoS25nPAqDFEcgZRMUJPE9sb/oROhXhPLqKIZoMn/yXBQPuNSj8HnP/kBBKeS+Brqp
+	Tdyga/zVm6SvlRDtulLcEKIgdE3eGPe/ckzkzfqMKHxYbjUR+d/rLLI35ZGRZbfm9BgMj921kUgmz
+	/0JpTIWcrzE0EAWVMcJb8KFYmjJoDcICkksZeO+O4WUdIZ0TTZfxxr/NqI70GXFnaHnCordaiUJX8
+	nu/TpJj1Evp5ka8q+yalXDxL0afL+rSmwWckRRA9GaZxjOwt65O+XShxzV31yoOfYz0KMRiKho+Mx
+	rXgh565832tQjdifap+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSi9E-00519q-UC; Tue, 21 Sep 2021 15:57:32 +0000
+	id 1mSi9t-0051VN-B3; Tue, 21 Sep 2021 15:58:13 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSi4b-004yPz-CA; Tue, 21 Sep 2021 15:52:50 +0000
-X-UUID: 5d2f7520691f43acad48901ece9d2f67-20210921
-X-UUID: 5d2f7520691f43acad48901ece9d2f67-20210921
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1mSi4e-004yPi-Bj; Tue, 21 Sep 2021 15:52:51 +0000
+X-UUID: e9792f2fa91e40e282e5e53cfb88dfa3-20210921
+X-UUID: e9792f2fa91e40e282e5e53cfb88dfa3-20210921
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 508756897; Tue, 21 Sep 2021 08:52:32 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 2048857424; Tue, 21 Sep 2021 08:52:31 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 21 Sep 2021 08:52:30 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkcas07.mediatek.inc
- (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 21 Sep 2021 23:52:28 +0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 21 Sep 2021 23:52:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 21 Sep 2021 23:52:28 +0800
+ Frontend Transport; Tue, 21 Sep 2021 23:52:29 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -65,18 +66,18 @@ CC: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Maxime Coquelin
  <devicetree@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v11 07/16] dt-bindings: arm: mediatek: move common module from
- display folder
-Date: Tue, 21 Sep 2021 23:52:09 +0800
-Message-ID: <20210921155218.10387-8-jason-jh.lin@mediatek.com>
+Subject: [PATCH v11 13/16] drm/mediatek: adjust to the alphabetic order for
+ mediatek-drm
+Date: Tue, 21 Sep 2021 23:52:15 +0800
+Message-ID: <20210921155218.10387-14-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
 References: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210921_085245_482373_89777E5F 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20210921_085248_486118_0180153E 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,173 +94,425 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-AAL, COLOR, CCORR, MUTEX, WDMA could be used by other modules,
-such as MDP, so move their binding document into the common folder.
+Adjust to the alphabetic order for the define, function, struct
+and array in mediatek-drm driver
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 ---
- .../{display => arm}/mediatek/mediatek,aal.yaml      |  9 ++++-----
- .../{display => arm}/mediatek/mediatek,ccorr.yaml    |  9 ++++-----
- .../{display => arm}/mediatek/mediatek,color.yaml    | 11 +++++------
- .../{display => arm}/mediatek/mediatek,mutex.yaml    | 12 +++++-------
- .../{display => arm}/mediatek/mediatek,wdma.yaml     |  9 ++++-----
- 5 files changed, 22 insertions(+), 28 deletions(-)
- rename Documentation/devicetree/bindings/{display => arm}/mediatek/mediatek,aal.yaml (88%)
- rename Documentation/devicetree/bindings/{display => arm}/mediatek/mediatek,ccorr.yaml (87%)
- rename Documentation/devicetree/bindings/{display => arm}/mediatek/mediatek,color.yaml (86%)
- rename Documentation/devicetree/bindings/{display => arm}/mediatek/mediatek,mutex.yaml (85%)
- rename Documentation/devicetree/bindings/{display => arm}/mediatek/mediatek,wdma.yaml (90%)
+rebase on series [1]
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,aal.yaml
-similarity index 88%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-rename to Documentation/devicetree/bindings/arm/mediatek/mediatek,aal.yaml
-index 311bbf05a967..ab6eb9b550a4 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,aal.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,aal.yaml
-@@ -1,17 +1,16 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,aal.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,aal.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+[1] drm/mediatek: add support for mediatek SOC MT8192
+- https://patchwork.kernel.org/project/linux-mediatek/list/?series=529489
+---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 126 ++++++++++----------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  24 ++--
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 120 +++++++++----------
+ 3 files changed, 134 insertions(+), 136 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index b46bc0f5d1a5..23c03e550658 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -20,26 +20,30 @@
+ #include "mtk_drm_ddp_comp.h"
+ #include "mtk_drm_crtc.h"
  
--title: Mediatek display adaptive ambient light processor
-+title: MediaTek adaptive ambient light processor
+-#define DISP_REG_OD_EN				0x0000
+-#define DISP_REG_OD_CFG				0x0020
+-#define DISP_REG_OD_SIZE			0x0030
+-#define DISP_REG_DITHER_5			0x0114
+-#define DISP_REG_DITHER_7			0x011c
+-#define DISP_REG_DITHER_15			0x013c
+-#define DISP_REG_DITHER_16			0x0140
+-
+-#define DISP_REG_UFO_START			0x0000
  
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
+ #define DISP_REG_DITHER_EN			0x0000
+ #define DITHER_EN				BIT(0)
+ #define DISP_REG_DITHER_CFG			0x0020
+ #define DITHER_RELAY_MODE			BIT(0)
+ #define DITHER_ENGINE_EN			BIT(1)
++#define DISP_DITHERING				BIT(2)
+ #define DISP_REG_DITHER_SIZE			0x0030
++#define DISP_REG_DITHER_5			0x0114
++#define DISP_REG_DITHER_7			0x011c
++#define DISP_REG_DITHER_15			0x013c
++#define DITHER_LSB_ERR_SHIFT_R(x)		(((x) & 0x7) << 28)
++#define DITHER_ADD_LSHIFT_R(x)			(((x) & 0x7) << 20)
++#define DITHER_NEW_BIT_MODE			BIT(0)
++#define DISP_REG_DITHER_16			0x0140
++#define DITHER_LSB_ERR_SHIFT_B(x)		(((x) & 0x7) << 28)
++#define DITHER_ADD_LSHIFT_B(x)			(((x) & 0x7) << 20)
++#define DITHER_LSB_ERR_SHIFT_G(x)		(((x) & 0x7) << 12)
++#define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
  
- description: |
--  Mediatek display adaptive ambient light processor, namely AAL,
-+  MediaTek adaptive ambient light processor, namely AAL,
-   is responsible for backlight power saving and sunlight visibility improving.
-   AAL device node must be siblings to the central MMSYS_CONFIG node.
-   For a description of the MMSYS_CONFIG binding, see
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
-similarity index 87%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-rename to Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
-index 60752ce45d49..de86e9ae35f3 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,ccorr.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
-@@ -1,17 +1,16 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,ccorr.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,ccorr.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
++#define DISP_REG_OD_EN				0x0000
++#define DISP_REG_OD_CFG				0x0020
+ #define OD_RELAYMODE				BIT(0)
+-
+-#define UFO_BYPASS				BIT(2)
++#define DISP_REG_OD_SIZE			0x0030
  
--title: Mediatek display color correction
-+title: MediaTek color correction
+ #define DISP_REG_POSTMASK_EN			0x0000
+ #define POSTMASK_EN				BIT(0)
+@@ -47,14 +51,8 @@
+ #define POSTMASK_RELAY_MODE			BIT(0)
+ #define DISP_REG_POSTMASK_SIZE			0x0030
  
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
+-#define DISP_DITHERING				BIT(2)
+-#define DITHER_LSB_ERR_SHIFT_R(x)		(((x) & 0x7) << 28)
+-#define DITHER_ADD_LSHIFT_R(x)			(((x) & 0x7) << 20)
+-#define DITHER_NEW_BIT_MODE			BIT(0)
+-#define DITHER_LSB_ERR_SHIFT_B(x)		(((x) & 0x7) << 28)
+-#define DITHER_ADD_LSHIFT_B(x)			(((x) & 0x7) << 20)
+-#define DITHER_LSB_ERR_SHIFT_G(x)		(((x) & 0x7) << 12)
+-#define DITHER_ADD_LSHIFT_G(x)			(((x) & 0x7) << 4)
++#define DISP_REG_UFO_START			0x0000
++#define UFO_BYPASS				BIT(2)
  
- description: |
--  Mediatek display color correction, namely CCORR, reproduces correct color
-+  MediaTek color correction, namely CCORR, reproduces correct color
-   on panels with different color gamut.
-   CCORR device node must be siblings to the central MMSYS_CONFIG node.
-   For a description of the MMSYS_CONFIG binding, see
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,color.yaml
-similarity index 86%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-rename to Documentation/devicetree/bindings/arm/mediatek/mediatek,color.yaml
-index f6636869909c..73be301b50d2 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,color.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,color.yaml
-@@ -1,18 +1,17 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,color.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,color.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+ struct mtk_ddp_comp_dev {
+ 	struct clk *clk;
+@@ -147,8 +145,35 @@ void mtk_dither_set_common(void __iomem *regs, struct cmdq_client_reg *cmdq_reg,
+ 	}
+ }
  
--title: Mediatek display color processor
-+title: MediaTek color processor
++static void mtk_dither_config(struct device *dev, unsigned int w,
++			      unsigned int h, unsigned int vrefresh,
++			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs, DISP_REG_DITHER_SIZE);
++	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg, priv->regs,
++		      DISP_REG_DITHER_CFG);
++	mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc, DISP_REG_DITHER_CFG,
++			      DITHER_ENGINE_EN, cmdq_pkt);
++}
++
++static void mtk_dither_start(struct device *dev)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	writel(DITHER_EN, priv->regs + DISP_REG_DITHER_EN);
++}
++
++static void mtk_dither_stop(struct device *dev)
++{
++	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
++
++	writel_relaxed(0x0, priv->regs + DISP_REG_DITHER_EN);
++}
++
+ static void mtk_dither_set(struct device *dev, unsigned int bpc,
+-		    unsigned int cfg, struct cmdq_pkt *cmdq_pkt)
++			   unsigned int cfg, struct cmdq_pkt *cmdq_pkt)
+ {
+ 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
  
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
+@@ -174,13 +199,6 @@ static void mtk_od_start(struct device *dev)
+ 	writel(1, priv->regs + DISP_REG_OD_EN);
+ }
  
- description: |
--  Mediatek display color processor, namely COLOR, provides hue, luma and
--  saturation adjustments to get better picture quality and to have one panel
-+  MediaTek color processor, namely COLOR, provides hue, luma and saturation
-+  adjustments to get better picture quality and to have one panel
-   resemble the other in their output characteristics.
-   COLOR device node must be siblings to the central MMSYS_CONFIG node.
-   For a description of the MMSYS_CONFIG binding, see
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml
-similarity index 85%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-rename to Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml
-index 6eca525eced0..713c7485e11a 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,mutex.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml
-@@ -1,19 +1,17 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,mutex.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,mutex.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+-static void mtk_ufoe_start(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
+-}
+-
+ static void mtk_postmask_config(struct device *dev, unsigned int w,
+ 			unsigned int h, unsigned int vrefresh,
+ 			unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+@@ -207,31 +225,11 @@ static void mtk_postmask_stop(struct device *dev)
+ 	writel_relaxed(0x0, priv->regs + DISP_REG_POSTMASK_EN);
+ }
  
--title: Mediatek mutex
-+title: MediaTek mutex
+-static void mtk_dither_config(struct device *dev, unsigned int w,
+-			      unsigned int h, unsigned int vrefresh,
+-			      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs, DISP_REG_DITHER_SIZE);
+-	mtk_ddp_write(cmdq_pkt, DITHER_RELAY_MODE, &priv->cmdq_reg, priv->regs,
+-		      DISP_REG_DITHER_CFG);
+-	mtk_dither_set_common(priv->regs, &priv->cmdq_reg, bpc, DISP_REG_DITHER_CFG,
+-			      DITHER_ENGINE_EN, cmdq_pkt);
+-}
+-
+-static void mtk_dither_start(struct device *dev)
+-{
+-	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
+-
+-	writel(DITHER_EN, priv->regs + DISP_REG_DITHER_EN);
+-}
+-
+-static void mtk_dither_stop(struct device *dev)
++static void mtk_ufoe_start(struct device *dev)
+ {
+ 	struct mtk_ddp_comp_dev *priv = dev_get_drvdata(dev);
  
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
+-	writel_relaxed(0x0, priv->regs + DISP_REG_DITHER_EN);
++	writel(UFO_BYPASS, priv->regs + DISP_REG_UFO_START);
+ }
  
- description: |
--  Mediatek mutex, namely MUTEX, is used to send the triggers signals called
--  Start Of Frame (SOF) / End Of Frame (EOF) to each sub-modules on the display
--  data path or MDP data path.
-+  MediaTek mutex, namely MUTEX, is used to send the triggers signals called
-+  Start Of Frame(SOF) / End Of Frame(EOF) to each sub-modules on the data path.
-   In some SoC, such as mt2701, MUTEX could be a hardware mutex which protects
-   the shadow register.
-   MUTEX device node must be siblings to the central MMSYS_CONFIG node.
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,wdma.yaml
-similarity index 90%
-rename from Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
-rename to Documentation/devicetree/bindings/arm/mediatek/mediatek,wdma.yaml
-index 25f9a63fe7af..5222535d98c6 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,wdma.yaml
-@@ -1,17 +1,16 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
- %YAML 1.2
- ---
--$id: http://devicetree.org/schemas/display/mediatek/mediatek,wdma.yaml#
-+$id: http://devicetree.org/schemas/arm/mediatek/mediatek,wdma.yaml#
- $schema: http://devicetree.org/meta-schemas/core.yaml#
+ static const struct mtk_ddp_comp_funcs ddp_aal = {
+@@ -336,23 +334,23 @@ static const struct mtk_ddp_comp_funcs ddp_ufoe = {
+ };
  
--title: Mediatek display WDMA
-+title: MediaTek WDMA
+ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+-	[MTK_DISP_OVL] = "ovl",
+-	[MTK_DISP_OVL_2L] = "ovl-2l",
+-	[MTK_DISP_RDMA] = "rdma",
+-	[MTK_DISP_WDMA] = "wdma",
+-	[MTK_DISP_COLOR] = "color",
+-	[MTK_DISP_CCORR] = "ccorr",
+ 	[MTK_DISP_AAL] = "aal",
+-	[MTK_DISP_GAMMA] = "gamma",
++	[MTK_DISP_BLS] = "bls",
++	[MTK_DISP_CCORR] = "ccorr",
++	[MTK_DISP_COLOR] = "color",
+ 	[MTK_DISP_DITHER] = "dither",
+-	[MTK_DISP_UFOE] = "ufoe",
+-	[MTK_DSI] = "dsi",
+-	[MTK_DPI] = "dpi",
+-	[MTK_DISP_PWM] = "pwm",
++	[MTK_DISP_GAMMA] = "gamma",
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
+-	[MTK_DISP_BLS] = "bls",
++	[MTK_DISP_OVL] = "ovl",
++	[MTK_DISP_OVL_2L] = "ovl-2l",
+ 	[MTK_DISP_POSTMASK] = "postmask",
++	[MTK_DISP_PWM] = "pwm",
++	[MTK_DISP_RDMA] = "rdma",
++	[MTK_DISP_UFOE] = "ufoe",
++	[MTK_DISP_WDMA] = "wdma",
++	[MTK_DPI] = "dpi",
++	[MTK_DSI] = "dsi",
+ };
  
- maintainers:
--  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
--  - Philipp Zabel <p.zabel@pengutronix.de>
-+  - Matthias Brugger <matthias.bgg@gmail.com>
+ struct mtk_ddp_comp_match {
+@@ -510,12 +508,12 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 	    type == MTK_DISP_CCORR ||
+ 	    type == MTK_DISP_COLOR ||
+ 	    type == MTK_DISP_GAMMA ||
+-	    type == MTK_DPI ||
+-	    type == MTK_DSI ||
+ 	    type == MTK_DISP_OVL ||
+ 	    type == MTK_DISP_OVL_2L ||
+ 	    type == MTK_DISP_PWM ||
+-	    type == MTK_DISP_RDMA)
++	    type == MTK_DISP_RDMA ||
++	    type == MTK_DPI ||
++	    type == MTK_DSI)
+ 		return 0;
  
- description: |
--  Mediatek display WDMA stands for Write Direct Memory Access.
-+  MediaTek WDMA stands for Write Direct Memory Access.
-   It can write the data in display pipeline into DRAM.
-   WDMA device node must be siblings to the central MMSYS_CONFIG node.
-   For a description of the MMSYS_CONFIG binding, see
+ 	priv = devm_kzalloc(comp->dev, sizeof(*priv), GFP_KERNEL);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index cd1dec6b4cdf..4c6a98662305 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -18,23 +18,23 @@ struct mtk_plane_state;
+ struct drm_crtc_state;
+ 
+ enum mtk_ddp_comp_type {
+-	MTK_DISP_OVL,
+-	MTK_DISP_OVL_2L,
+-	MTK_DISP_RDMA,
+-	MTK_DISP_WDMA,
+-	MTK_DISP_COLOR,
++	MTK_DISP_AAL,
++	MTK_DISP_BLS,
+ 	MTK_DISP_CCORR,
++	MTK_DISP_COLOR,
+ 	MTK_DISP_DITHER,
+-	MTK_DISP_AAL,
+ 	MTK_DISP_GAMMA,
+-	MTK_DISP_UFOE,
+-	MTK_DSI,
+-	MTK_DPI,
+-	MTK_DISP_POSTMASK,
+-	MTK_DISP_PWM,
+ 	MTK_DISP_MUTEX,
+ 	MTK_DISP_OD,
+-	MTK_DISP_BLS,
++	MTK_DISP_OVL,
++	MTK_DISP_OVL_2L,
++	MTK_DISP_POSTMASK,
++	MTK_DISP_PWM,
++	MTK_DISP_RDMA,
++	MTK_DISP_UFOE,
++	MTK_DISP_WDMA,
++	MTK_DPI,
++	MTK_DSI,
+ 	MTK_DDP_COMP_TYPE_MAX,
+ };
+ 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index fa86485b4b9a..56ff8c57ef8f 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -423,32 +423,14 @@ static const struct component_master_ops mtk_drm_ops = {
+ };
+ 
+ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+-	{ .compatible = "mediatek,mt2701-disp-ovl",
+-	  .data = (void *)MTK_DISP_OVL },
+-	{ .compatible = "mediatek,mt8167-disp-ovl",
+-	  .data = (void *)MTK_DISP_OVL },
+-	{ .compatible = "mediatek,mt8173-disp-ovl",
+-	  .data = (void *)MTK_DISP_OVL },
+-	{ .compatible = "mediatek,mt8183-disp-ovl",
+-	  .data = (void *)MTK_DISP_OVL },
+-	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
+-	  .data = (void *)MTK_DISP_OVL_2L },
+-	{ .compatible = "mediatek,mt8192-disp-ovl",
+-	  .data = (void *)MTK_DISP_OVL },
+-	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
+-	  .data = (void *)MTK_DISP_OVL_2L },
+-	{ .compatible = "mediatek,mt2701-disp-rdma",
+-	  .data = (void *)MTK_DISP_RDMA },
+-	{ .compatible = "mediatek,mt8167-disp-rdma",
+-	  .data = (void *)MTK_DISP_RDMA },
+-	{ .compatible = "mediatek,mt8173-disp-rdma",
+-	  .data = (void *)MTK_DISP_RDMA },
+-	{ .compatible = "mediatek,mt8183-disp-rdma",
+-	  .data = (void *)MTK_DISP_RDMA },
+-	{ .compatible = "mediatek,mt8192-disp-rdma",
+-	  .data = (void *)MTK_DISP_RDMA },
+-	{ .compatible = "mediatek,mt8173-disp-wdma",
+-	  .data = (void *)MTK_DISP_WDMA },
++	{ .compatible = "mediatek,mt8167-disp-aal",
++	  .data = (void *)MTK_DISP_AAL},
++	{ .compatible = "mediatek,mt8173-disp-aal",
++	  .data = (void *)MTK_DISP_AAL},
++	{ .compatible = "mediatek,mt8183-disp-aal",
++	  .data = (void *)MTK_DISP_AAL},
++	{ .compatible = "mediatek,mt8192-disp-aal",
++	  .data = (void *)MTK_DISP_AAL},
+ 	{ .compatible = "mediatek,mt8167-disp-ccorr",
+ 	  .data = (void *)MTK_DISP_CCORR },
+ 	{ .compatible = "mediatek,mt8183-disp-ccorr",
+@@ -461,40 +443,16 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_COLOR },
+ 	{ .compatible = "mediatek,mt8173-disp-color",
+ 	  .data = (void *)MTK_DISP_COLOR },
+-	{ .compatible = "mediatek,mt8167-disp-aal",
+-	  .data = (void *)MTK_DISP_AAL},
+-	{ .compatible = "mediatek,mt8173-disp-aal",
+-	  .data = (void *)MTK_DISP_AAL},
+-	{ .compatible = "mediatek,mt8183-disp-aal",
+-	  .data = (void *)MTK_DISP_AAL},
+-	{ .compatible = "mediatek,mt8192-disp-aal",
+-	  .data = (void *)MTK_DISP_AAL},
++	{ .compatible = "mediatek,mt8167-disp-dither",
++	  .data = (void *)MTK_DISP_DITHER },
++	{ .compatible = "mediatek,mt8183-disp-dither",
++	  .data = (void *)MTK_DISP_DITHER },
+ 	{ .compatible = "mediatek,mt8167-disp-gamma",
+ 	  .data = (void *)MTK_DISP_GAMMA, },
+ 	{ .compatible = "mediatek,mt8173-disp-gamma",
+ 	  .data = (void *)MTK_DISP_GAMMA, },
+ 	{ .compatible = "mediatek,mt8183-disp-gamma",
+ 	  .data = (void *)MTK_DISP_GAMMA, },
+-	{ .compatible = "mediatek,mt8167-disp-dither",
+-	  .data = (void *)MTK_DISP_DITHER },
+-	{ .compatible = "mediatek,mt8183-disp-dither",
+-	  .data = (void *)MTK_DISP_DITHER },
+-	{ .compatible = "mediatek,mt8173-disp-ufoe",
+-	  .data = (void *)MTK_DISP_UFOE },
+-	{ .compatible = "mediatek,mt2701-dsi",
+-	  .data = (void *)MTK_DSI },
+-	{ .compatible = "mediatek,mt8167-dsi",
+-	  .data = (void *)MTK_DSI },
+-	{ .compatible = "mediatek,mt8173-dsi",
+-	  .data = (void *)MTK_DSI },
+-	{ .compatible = "mediatek,mt8183-dsi",
+-	  .data = (void *)MTK_DSI },
+-	{ .compatible = "mediatek,mt2701-dpi",
+-	  .data = (void *)MTK_DPI },
+-	{ .compatible = "mediatek,mt8173-dpi",
+-	  .data = (void *)MTK_DPI },
+-	{ .compatible = "mediatek,mt8183-dpi",
+-	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt2701-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt2712-disp-mutex",
+@@ -507,16 +465,58 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt8192-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
++	{ .compatible = "mediatek,mt8173-disp-od",
++	  .data = (void *)MTK_DISP_OD },
++	{ .compatible = "mediatek,mt2701-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8167-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8173-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8183-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8192-disp-ovl",
++	  .data = (void *)MTK_DISP_OVL },
++	{ .compatible = "mediatek,mt8183-disp-ovl-2l",
++	  .data = (void *)MTK_DISP_OVL_2L },
++	{ .compatible = "mediatek,mt8192-disp-ovl-2l",
++	  .data = (void *)MTK_DISP_OVL_2L },
++	{ .compatible = "mediatek,mt8192-disp-postmask",
++	  .data = (void *)MTK_DISP_POSTMASK },
+ 	{ .compatible = "mediatek,mt2701-disp-pwm",
+ 	  .data = (void *)MTK_DISP_BLS },
+ 	{ .compatible = "mediatek,mt8167-disp-pwm",
+ 	  .data = (void *)MTK_DISP_PWM },
+ 	{ .compatible = "mediatek,mt8173-disp-pwm",
+ 	  .data = (void *)MTK_DISP_PWM },
+-	{ .compatible = "mediatek,mt8173-disp-od",
+-	  .data = (void *)MTK_DISP_OD },
+-	{ .compatible = "mediatek,mt8192-disp-postmask",
+-	  .data = (void *)MTK_DISP_POSTMASK },
++	{ .compatible = "mediatek,mt2701-disp-rdma",
++	  .data = (void *)MTK_DISP_RDMA },
++	{ .compatible = "mediatek,mt8167-disp-rdma",
++	  .data = (void *)MTK_DISP_RDMA },
++	{ .compatible = "mediatek,mt8173-disp-rdma",
++	  .data = (void *)MTK_DISP_RDMA },
++	{ .compatible = "mediatek,mt8183-disp-rdma",
++	  .data = (void *)MTK_DISP_RDMA },
++	{ .compatible = "mediatek,mt8192-disp-rdma",
++	  .data = (void *)MTK_DISP_RDMA },
++	{ .compatible = "mediatek,mt8173-disp-ufoe",
++	  .data = (void *)MTK_DISP_UFOE },
++	{ .compatible = "mediatek,mt8173-disp-wdma",
++	  .data = (void *)MTK_DISP_WDMA },
++	{ .compatible = "mediatek,mt2701-dpi",
++	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt8167-dsi",
++	  .data = (void *)MTK_DSI },
++	{ .compatible = "mediatek,mt8173-dpi",
++	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt8183-dpi",
++	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt2701-dsi",
++	  .data = (void *)MTK_DSI },
++	{ .compatible = "mediatek,mt8173-dsi",
++	  .data = (void *)MTK_DSI },
++	{ .compatible = "mediatek,mt8183-dsi",
++	  .data = (void *)MTK_DSI },
+ 	{ }
+ };
+ 
+@@ -610,8 +610,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		    comp_type == MTK_DISP_OVL ||
+ 		    comp_type == MTK_DISP_OVL_2L ||
+ 		    comp_type == MTK_DISP_RDMA ||
+-		    comp_type == MTK_DSI ||
+-		    comp_type == MTK_DPI) {
++		    comp_type == MTK_DPI ||
++		    comp_type == MTK_DSI) {
+ 			dev_info(dev, "Adding component match for %pOF\n",
+ 				 node);
+ 			drm_of_component_match_add(dev, &match, compare_of,
 -- 
 2.18.0
 
