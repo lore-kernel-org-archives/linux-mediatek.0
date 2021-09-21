@@ -2,80 +2,95 @@ Return-Path: <SRS0=xNtl=OL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+X-Spam-Status: No, score=-12.2 required=3.0 tests=BAYES_00,
+	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,NICE_REPLY_A,SPF_HELO_NONE,SPF_PASS,
+	URIBL_BLOCKED,USER_AGENT_SANE_1 autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C7FE8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 16:11:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E716C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 18:43:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 56EC660ED7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 16:11:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 56EC660ED7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 26F2E61184
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 18:43:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 26F2E61184
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vIb5syuQFRU6qDRKMUepD+ZAKSXKmjUzPBI7SLD0VkU=; b=CRZJ75fumV7WAE
-	6itxlpE1VYiPJwnlOp6YdN75353Ves5SJ0edMYPYqi0y4tI2Po7quakN5xn6orv2/9hHgP8N06cIy
-	JUg52YwICjVCGdnIadYdaMGpArDdiHvPt7iQnvyChz0RuWbZNIGESQouF3gEbFWvFtvJunrHTUnsK
-	SajI65BX05cayYIwqlBOGp97jNeZPrRpUUFbLIFAkL3G4Nhj4ROh1lGbNqh5XTvO27tlx9DXHqM6u
-	OMqZFRJSkQoM3J1PXYOIZyPdNSv9GCHFvfZlCkKIRW2KGq37RnEGHrlIRpn0aRRLXXo/ppLOMbsxQ
-	VHr6E43LaM99ECAromzQ==;
+	List-Owner; bh=bAP7BNwttQWg6itWJAZLVLpvILzQSxx+yLkngdSA6q4=; b=Rzm59lPPhqsin7
+	0dFU0X3moX/cF3e/1ynozX9SKN7x6dluVhVymJr8zxwcrPso6+Ic4vNMPiypPnq3GTf9yp172cj9a
+	bBnA0t+1tERTneMX1I+WOHG/mA/McBki2aI+iqwbiQTSyBPtGCDrnJEc7H4yJMAwHoe+cttchtRhu
+	NN3cf4LpTl0utdp3ft81nOJh/UFSEvQ6ooL3neHEccHDg8XjW1E7rpcYDO9a6K1XGQQV+uFTjeNvv
+	nAEdLUI/CsQq+CDG3Z3G5iSmF6dweBDLbbMo45IOzhwnPmm94hQ/gR+J2YJ9NpUfH/DPGl9WjQkcP
+	LOXDUB1dSKyb/s+bdgNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSiMf-0057Pm-ST; Tue, 21 Sep 2021 16:11:26 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mSkjX-005WW5-NT; Tue, 21 Sep 2021 18:43:11 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSiEJ-0053fL-9U; Tue, 21 Sep 2021 16:02:49 +0000
-X-UUID: 8d89bc210e554382b5af5a4879992f4a-20210921
-X-UUID: 8d89bc210e554382b5af5a4879992f4a-20210921
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1489344368; Tue, 21 Sep 2021 09:02:44 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Sep 2021 08:52:42 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 21 Sep 2021 23:52:30 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 21 Sep 2021 23:52:30 +0800
-From: jason-jh.lin <jason-jh.lin@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>
-CC: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- <hsinyi@chromium.org>, <fshao@chromium.org>, <moudy.ho@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <jason-jh.lin@mediatek.com>, Fabien Parent
- <fparent@baylibre.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v11 15/16] drm/mediatek: add MERGE support for mediatek-drm
-Date: Tue, 21 Sep 2021 23:52:17 +0800
-Message-ID: <20210921155218.10387-16-jason-jh.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
-References: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
+ id 1mSkjU-005WVV-8z; Tue, 21 Sep 2021 18:43:10 +0000
+Received: by mail-wr1-x429.google.com with SMTP id q11so42124038wrr.9;
+ Tue, 21 Sep 2021 11:43:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=rF8wJWBUry98FnALCx856EJXkY0yc8D+oMwQoKs4yAA=;
+ b=Mt01c1h1PCClo1XK44RVGwXotNKp5hq03SPTZ+03EAmVwmS3xtDYoT0G7za7gjceFT
+ aHbsGYmrLAdQCsC19xR601jgE+JstEL3iuROr6YSR0a41Ddx63/QoOtOgn+ck7leq/er
+ I8oQkGE7v5gJ4KuCyPNk3Ps5A7OJms/mkoTnmU1CkJZYax36GGdVBW2GCGbTguhV5cjO
+ pJI3rd5gHrqF3HRTVe+6Ui52OZAJ+UNn+LYRcKr4BPcmJ2sm6sHuet9r82YkFL1+dkJ9
+ ic/197tP2dzfU3Dz5xHMfLO0OzLtB33C0qo2WRn+xcyHKpue7NHsolS5uGDk4M2/XmnP
+ 8Inw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=rF8wJWBUry98FnALCx856EJXkY0yc8D+oMwQoKs4yAA=;
+ b=oYRJ+pG7xQRjVB3QOTYpR+A3KytIuhRh0Kqwv3dwAR6Qk+7znbL1XWEB+vsDdhPOwQ
+ NH1qr5sa9CukCdb13R0kfUwzE/dtuMbqH8Yt6Ks2WO0xOmUeCHBFmd9HtepbfL8ig3aC
+ tWYghowMY/H44b6is9vwfRNaUjv2f7dMrobtSvkUuNwgAFOhTwP+kaaMKCJYQdxQChXJ
+ NHOLElHGbBoDX4mza0LCegqY9DclWPHIIHqb52kim5Vh9rHzE31tKTSahDIXCrVE+h/P
+ DsipLAlGB/uHJ33NOiXV2LQU2h9I3N0N7uXsZQnZ+T8qNKuu1yljf4srCgjfolFswlHF
+ T4aA==
+X-Gm-Message-State: AOAM5337uq+1xwFj/xDCTnYNiT8g1tinL5QIai45cOyyvP9xVkeTWMDl
+ I4Y+TDNr5AHZkz8s2IX3dZ4=
+X-Google-Smtp-Source: ABdhPJwDrbocziC/FxPik10J+mNPbhs7vJCodT4L9Ss/+gg5pYrzfdMAVno4u1IcPJgEayIxHX0cpQ==
+X-Received: by 2002:a5d:59a4:: with SMTP id p4mr36131476wrr.332.1632249785784; 
+ Tue, 21 Sep 2021 11:43:05 -0700 (PDT)
+Received: from [192.168.2.177] ([206.204.146.29])
+ by smtp.gmail.com with ESMTPSA id i9sm3903163wmi.44.2021.09.21.11.43.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Sep 2021 11:43:05 -0700 (PDT)
+Message-ID: <668b6ebb-e929-1305-de64-0b2a5d38391b@gmail.com>
+Date: Tue, 21 Sep 2021 20:43:04 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.0.3
+Subject: Re: [PATCH v12 5/6] arm64: dts: mediatek: Split PCIe node for MT2712
+ and MT7622
+Content-Language: en-US
+To: Chuanjia Liu <chuanjia.liu@mediatek.com>, robh+dt@kernel.org,
+ bhelgaas@google.com, lorenzo.pieralisi@arm.com
+Cc: ryder.lee@mediatek.com, jianjun.wang@mediatek.com, yong.wu@mediatek.com,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20210823032800.1660-1-chuanjia.liu@mediatek.com>
+ <20210823032800.1660-6-chuanjia.liu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20210823032800.1660-6-chuanjia.liu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210921_090247_423117_B2848149 
-X-CRM114-Status: GOOD (  28.42  )
+X-CRM114-CacheID: sfid-20210921_114308_385382_A901C158 
+X-CRM114-Status: GOOD (  20.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,412 +102,349 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MERGE engine file:
-MERGE module is used to merge two slice-per-line inputs
-into one side-by-side output.
 
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
----
-rebase on series [1]
 
-[1] drm/mediatek: add support for mediatek SOC MT8192
-- https://patchwork.kernel.org/project/linux-mediatek/list/?series=529489
----
- drivers/gpu/drm/mediatek/Makefile           |   1 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
- drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 239 ++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  16 ++
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   4 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
- 7 files changed, 269 insertions(+), 1 deletion(-)
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
+On 23/08/2021 05:27, Chuanjia Liu wrote:
+> There are two independent PCIe controllers in MT2712 and MT7622
+> platform. Each of them should contain an independent MSI domain.
+> 
+> In old dts architecture, MSI domain will be inherited from the root
+> bridge, and all of the devices will share the same MSI domain.
+> Hence that, the PCIe devices will not work properly if the irq number
+> which required is more than 32.
+> 
+> Split the PCIe node for MT2712 and MT7622 platform to comply with
+> the hardware design and fix MSI issue.
+> 
+> Signed-off-by: Chuanjia Liu <chuanjia.liu@mediatek.com>
+> Acked-by: Ryder Lee <ryder.lee@mediatek.com>
 
-diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
-index 29098d7c8307..a38e88e82d12 100644
---- a/drivers/gpu/drm/mediatek/Makefile
-+++ b/drivers/gpu/drm/mediatek/Makefile
-@@ -4,6 +4,7 @@ mediatek-drm-y := mtk_disp_aal.o \
- 		  mtk_disp_ccorr.o \
- 		  mtk_disp_color.o \
- 		  mtk_disp_gamma.o \
-+		  mtk_disp_merge.o \
- 		  mtk_disp_ovl.o \
- 		  mtk_disp_rdma.o \
- 		  mtk_drm_crtc.o \
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index 86c3068894b1..a33b13fe2b6e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -55,6 +55,14 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
- void mtk_gamma_start(struct device *dev);
- void mtk_gamma_stop(struct device *dev);
- 
-+int mtk_merge_clk_enable(struct device *dev);
-+void mtk_merge_clk_disable(struct device *dev);
-+void mtk_merge_config(struct device *dev, unsigned int width,
-+		      unsigned int height, unsigned int vrefresh,
-+		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-+void mtk_merge_start(struct device *dev);
-+void mtk_merge_stop(struct device *dev);
-+
- void mtk_ovl_bgclr_in_on(struct device *dev);
- void mtk_ovl_bgclr_in_off(struct device *dev);
- void mtk_ovl_bypass_shadow(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-new file mode 100644
-index 000000000000..b05e1df79c3d
---- /dev/null
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -0,0 +1,239 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
-+
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/of_device.h>
-+#include <linux/of_irq.h>
-+#include <linux/platform_device.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
-+
-+#include "mtk_drm_ddp_comp.h"
-+#include "mtk_drm_drv.h"
-+#include "mtk_disp_drv.h"
-+
-+#define DISP_REG_MERGE_CTRL		0x000
-+#define MERGE_EN				1
-+#define DISP_REG_MERGE_CFG_0		0x010
-+#define DISP_REG_MERGE_CFG_4		0x020
-+#define DISP_REG_MERGE_CFG_10		0x038
-+/* no swap */
-+#define SWAP_MODE				0
-+#define FLD_SWAP_MODE				GENMASK(4, 0)
-+#define DISP_REG_MERGE_CFG_12		0x040
-+#define CFG_10_10_1PI_2PO_BUF_MODE		6
-+#define CFG_10_10_2PI_2PO_BUF_MODE		8
-+#define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
-+#define DISP_REG_MERGE_CFG_24		0x070
-+#define DISP_REG_MERGE_CFG_25		0x074
-+#define DISP_REG_MERGE_CFG_36		0x0a0
-+#define ULTRA_EN				BIT(0)
-+#define PREULTRA_EN				BIT(4)
-+#define DISP_REG_MERGE_CFG_37		0x0a4
-+/* 0: Off, 1: SRAM0, 2: SRAM1, 3: SRAM0 + SRAM1 */
-+#define BUFFER_MODE				3
-+#define FLD_BUFFER_MODE				GENMASK(1, 0)
-+/*
-+ * For the ultra and preultra settings, 6us ~ 9us is experience value
-+ * and the maximum frequency of mmsys clock is 594MHz.
-+ */
-+#define DISP_REG_MERGE_CFG_40		0x0b0
-+/* 6 us, 594M pixel/sec */
-+#define ULTRA_TH_LOW				(6 * 594)
-+/* 8 us, 594M pixel/sec */
-+#define ULTRA_TH_HIGH				(8 * 594)
-+#define FLD_ULTRA_TH_LOW			GENMASK(15, 0)
-+#define FLD_ULTRA_TH_HIGH			GENMASK(31, 16)
-+#define DISP_REG_MERGE_CFG_41		0x0b4
-+/* 8 us, 594M pixel/sec */
-+#define PREULTRA_TH_LOW				(8 * 594)
-+/* 9 us, 594M pixel/sec */
-+#define PREULTRA_TH_HIGH			(9 * 594)
-+#define FLD_PREULTRA_TH_LOW			GENMASK(15, 0)
-+#define FLD_PREULTRA_TH_HIGH			GENMASK(31, 16)
-+
-+struct mtk_disp_merge {
-+	void __iomem *regs;
-+	struct clk *clk;
-+	struct clk *async_clk;
-+	struct cmdq_client_reg		cmdq_reg;
-+	bool				fifo_en;
-+};
-+
-+void mtk_merge_start(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
-+}
-+
-+void mtk_merge_stop(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
-+}
-+
-+static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
-+				   struct cmdq_pkt *cmdq_pkt)
-+{
-+	mtk_ddp_write(cmdq_pkt, ULTRA_EN | PREULTRA_EN,
-+		      &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_36);
-+
-+	mtk_ddp_write_mask(cmdq_pkt, BUFFER_MODE,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_37,
-+			   FLD_BUFFER_MODE);
-+
-+	mtk_ddp_write_mask(cmdq_pkt, ULTRA_TH_LOW | ULTRA_TH_HIGH << 16,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_40,
-+			   FLD_ULTRA_TH_LOW | FLD_ULTRA_TH_HIGH);
-+
-+	mtk_ddp_write_mask(cmdq_pkt, PREULTRA_TH_LOW | PREULTRA_TH_HIGH << 16,
-+			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_41,
-+			   FLD_PREULTRA_TH_LOW | FLD_PREULTRA_TH_HIGH);
-+}
-+
-+void mtk_merge_config(struct device *dev, unsigned int w,
-+		      unsigned int h, unsigned int vrefresh,
-+		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
-+
-+	if (!h || !w) {
-+		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
-+		return;
-+	}
-+
-+	if (priv->fifo_en) {
-+		mtk_merge_fifo_setting(priv, cmdq_pkt);
-+		mode = CFG_10_10_2PI_2PO_BUF_MODE;
-+	}
-+
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_0);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_4);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_24);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_25);
-+	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
-+	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
-+			   DISP_REG_MERGE_CFG_12, FLD_CFG_MERGE_MODE);
-+}
-+
-+int mtk_merge_clk_enable(struct device *dev)
-+{
-+	int ret = 0;
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	ret = clk_prepare_enable(priv->clk);
-+	if (ret)
-+		pr_err("merge clk prepare enable failed\n");
-+	ret = clk_prepare_enable(priv->async_clk);
-+	if (ret)
-+		pr_err("async clk prepare enable failed\n");
-+
-+	return ret;
-+}
-+
-+void mtk_merge_clk_disable(struct device *dev)
-+{
-+	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
-+
-+	clk_disable_unprepare(priv->async_clk);
-+	clk_disable_unprepare(priv->clk);
-+}
-+
-+static int mtk_disp_merge_bind(struct device *dev, struct device *master,
-+			       void *data)
-+{
-+	return 0;
-+}
-+
-+static void mtk_disp_merge_unbind(struct device *dev, struct device *master,
-+				  void *data)
-+{
-+}
-+
-+static const struct component_ops mtk_disp_merge_component_ops = {
-+	.bind	= mtk_disp_merge_bind,
-+	.unbind = mtk_disp_merge_unbind,
-+};
-+
-+static int mtk_disp_merge_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct resource *res;
-+	struct mtk_disp_merge *priv;
-+	int ret;
-+
-+	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
-+	if (!priv)
-+		return -ENOMEM;
-+
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	priv->regs = devm_ioremap_resource(dev, res);
-+	if (IS_ERR(priv->regs)) {
-+		dev_err(dev, "failed to ioremap merge\n");
-+		return PTR_ERR(priv->regs);
-+	}
-+
-+	priv->clk = devm_clk_get(dev, NULL);
-+	if (IS_ERR(priv->clk)) {
-+		dev_err(dev, "failed to get merge clk\n");
-+		return PTR_ERR(priv->clk);
-+	}
-+
-+	priv->async_clk = of_clk_get(dev->of_node, 1);
-+	if (IS_ERR(priv->async_clk)) {
-+		ret = PTR_ERR(priv->async_clk);
-+		dev_dbg(dev, "No merge async clock: %d\n", ret);
-+		priv->async_clk = NULL;
-+	}
-+
-+#if IS_REACHABLE(CONFIG_MTK_CMDQ)
-+	ret = cmdq_dev_get_client_reg(dev, &priv->cmdq_reg, 0);
-+	if (ret)
-+		dev_dbg(dev, "get mediatek,gce-client-reg fail!\n");
-+#endif
-+
-+	priv->fifo_en = of_property_read_bool(dev->of_node,
-+					      "mediatek,merge-fifo-en");
-+
-+	platform_set_drvdata(pdev, priv);
-+
-+	ret = component_add(dev, &mtk_disp_merge_component_ops);
-+	if (ret != 0)
-+		dev_err(dev, "Failed to add component: %d\n", ret);
-+
-+	return ret;
-+}
-+
-+static int mtk_disp_merge_remove(struct platform_device *pdev)
-+{
-+	component_del(&pdev->dev, &mtk_disp_merge_component_ops);
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id mtk_disp_merge_driver_dt_match[] = {
-+	{ .compatible = "mediatek,mt8195-disp-merge", },
-+	{},
-+};
-+
-+MODULE_DEVICE_TABLE(of, mtk_disp_merge_driver_dt_match);
-+
-+struct platform_driver mtk_disp_merge_driver = {
-+	.probe = mtk_disp_merge_probe,
-+	.remove = mtk_disp_merge_remove,
-+	.driver = {
-+		.name = "mediatek-disp-merge",
-+		.owner = THIS_MODULE,
-+		.of_match_table = mtk_disp_merge_driver_dt_match,
-+	},
-+};
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index ce6c90b9edef..eb9835102d79 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -328,6 +328,14 @@ static const struct mtk_ddp_comp_funcs ddp_gamma = {
- 	.stop = mtk_gamma_stop,
- };
- 
-+static const struct mtk_ddp_comp_funcs ddp_merge = {
-+	.clk_enable = mtk_merge_clk_enable,
-+	.clk_disable = mtk_merge_clk_disable,
-+	.start = mtk_merge_start,
-+	.stop = mtk_merge_stop,
-+	.config = mtk_merge_config,
-+};
-+
- static const struct mtk_ddp_comp_funcs ddp_od = {
- 	.clk_enable = mtk_ddp_clk_enable,
- 	.clk_disable = mtk_ddp_clk_disable,
-@@ -385,6 +393,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_DITHER] = "dither",
- 	[MTK_DISP_DSC] = "dsc",
- 	[MTK_DISP_GAMMA] = "gamma",
-+	[MTK_DISP_MERGE] = "merge",
- 	[MTK_DISP_MUTEX] = "mutex",
- 	[MTK_DISP_OD] = "od",
- 	[MTK_DISP_OVL] = "ovl",
-@@ -421,6 +430,12 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_DSI2]		= { MTK_DSI,		2, &ddp_dsi },
- 	[DDP_COMPONENT_DSI3]		= { MTK_DSI,		3, &ddp_dsi },
- 	[DDP_COMPONENT_GAMMA]		= { MTK_DISP_GAMMA,	0, &ddp_gamma },
-+	[DDP_COMPONENT_MERGE0]		= { MTK_DISP_MERGE,	0, &ddp_merge },
-+	[DDP_COMPONENT_MERGE1]		= { MTK_DISP_MERGE,	1, &ddp_merge },
-+	[DDP_COMPONENT_MERGE2]		= { MTK_DISP_MERGE,	2, &ddp_merge },
-+	[DDP_COMPONENT_MERGE3]		= { MTK_DISP_MERGE,	3, &ddp_merge },
-+	[DDP_COMPONENT_MERGE4]		= { MTK_DISP_MERGE,	4, &ddp_merge },
-+	[DDP_COMPONENT_MERGE5]		= { MTK_DISP_MERGE,	5, &ddp_merge },
- 	[DDP_COMPONENT_OD0]		= { MTK_DISP_OD,	0, &ddp_od },
- 	[DDP_COMPONENT_OD1]		= { MTK_DISP_OD,	1, &ddp_od },
- 	[DDP_COMPONENT_OVL0]		= { MTK_DISP_OVL,	0, &ddp_ovl },
-@@ -555,6 +570,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 	    type == MTK_DISP_CCORR ||
- 	    type == MTK_DISP_COLOR ||
- 	    type == MTK_DISP_GAMMA ||
-+	    type == MTK_DISP_MERGE ||
- 	    type == MTK_DISP_OVL ||
- 	    type == MTK_DISP_OVL_2L ||
- 	    type == MTK_DISP_PWM ||
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 5e6ff12f16ad..221e2e3a3c8d 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -25,6 +25,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_DITHER,
- 	MTK_DISP_DSC,
- 	MTK_DISP_GAMMA,
-+	MTK_DISP_MERGE,
- 	MTK_DISP_MUTEX,
- 	MTK_DISP_OD,
- 	MTK_DISP_OVL,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 56ff8c57ef8f..2f33fe8ad46b 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -599,7 +599,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		private->comp_node[comp_id] = of_node_get(node);
- 
- 		/*
--		 * Currently only the AAL, CCORR, COLOR, GAMMA, OVL, RDMA, DSI, and DPI
-+		 * Currently only the AAL, CCORR, COLOR, GAMMA, MERGE, OVL, RDMA, DSI, and DPI
- 		 * blocks have separate component platform drivers and initialize their own
- 		 * DDP component structure. The others are initialized here.
- 		 */
-@@ -607,6 +607,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		    comp_type == MTK_DISP_CCORR ||
- 		    comp_type == MTK_DISP_COLOR ||
- 		    comp_type == MTK_DISP_GAMMA ||
-+		    comp_type == MTK_DISP_MERGE ||
- 		    comp_type == MTK_DISP_OVL ||
- 		    comp_type == MTK_DISP_OVL_2L ||
- 		    comp_type == MTK_DISP_RDMA ||
-@@ -708,6 +709,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
- 	&mtk_disp_ccorr_driver,
- 	&mtk_disp_color_driver,
- 	&mtk_disp_gamma_driver,
-+	&mtk_disp_merge_driver,
- 	&mtk_disp_ovl_driver,
- 	&mtk_disp_rdma_driver,
- 	&mtk_dpi_driver,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.h b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-index 3e7d1e6fbe01..a58cebd01d35 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.h
-@@ -50,6 +50,7 @@ extern struct platform_driver mtk_disp_aal_driver;
- extern struct platform_driver mtk_disp_ccorr_driver;
- extern struct platform_driver mtk_disp_color_driver;
- extern struct platform_driver mtk_disp_gamma_driver;
-+extern struct platform_driver mtk_disp_merge_driver;
- extern struct platform_driver mtk_disp_ovl_driver;
- extern struct platform_driver mtk_disp_rdma_driver;
- extern struct platform_driver mtk_dpi_driver;
--- 
-2.18.0
+Queued in v5.15-next/dts64
 
+Thanks!
+
+> ---
+>   arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  97 +++++++--------
+>   .../dts/mediatek/mt7622-bananapi-bpi-r64.dts  |  16 ++-
+>   arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts  |   6 +-
+>   arch/arm64/boot/dts/mediatek/mt7622.dtsi      | 112 ++++++++++--------
+>   4 files changed, 118 insertions(+), 113 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> index a9cca9c146fd..de16c0d80c30 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> @@ -915,64 +915,67 @@
+>   		};
+>   	};
+>   
+> -	pcie: pcie@11700000 {
+> +	pcie1: pcie@112ff000 {
+>   		compatible = "mediatek,mt2712-pcie";
+>   		device_type = "pci";
+> -		reg = <0 0x11700000 0 0x1000>,
+> -		      <0 0x112ff000 0 0x1000>;
+> -		reg-names = "port0", "port1";
+> +		reg = <0 0x112ff000 0 0x1000>;
+> +		reg-names = "port1";
+> +		linux,pci-domain = <1>;
+>   		#address-cells = <3>;
+>   		#size-cells = <2>;
+> -		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>,
+> -			     <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
+> -		clocks = <&topckgen CLK_TOP_PE2_MAC_P0_SEL>,
+> -			 <&topckgen CLK_TOP_PE2_MAC_P1_SEL>,
+> -			 <&pericfg CLK_PERI_PCIE0>,
+> +		interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-names = "pcie_irq";
+> +		clocks = <&topckgen CLK_TOP_PE2_MAC_P1_SEL>,
+>   			 <&pericfg CLK_PERI_PCIE1>;
+> -		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1";
+> -		phys = <&u3port0 PHY_TYPE_PCIE>, <&u3port1 PHY_TYPE_PCIE>;
+> -		phy-names = "pcie-phy0", "pcie-phy1";
+> +		clock-names = "sys_ck1", "ahb_ck1";
+> +		phys = <&u3port1 PHY_TYPE_PCIE>;
+> +		phy-names = "pcie-phy1";
+>   		bus-range = <0x00 0xff>;
+> -		ranges = <0x82000000 0 0x20000000  0x0 0x20000000  0 0x10000000>;
+> +		ranges = <0x82000000 0 0x11400000  0x0 0x11400000  0 0x300000>;
+> +		status = "disabled";
+>   
+> -		pcie0: pcie@0,0 {
+> -			device_type = "pci";
+> -			status = "disabled";
+> -			reg = <0x0000 0 0 0 0>;
+> -			#address-cells = <3>;
+> -			#size-cells = <2>;
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+> +				<0 0 0 2 &pcie_intc1 1>,
+> +				<0 0 0 3 &pcie_intc1 2>,
+> +				<0 0 0 4 &pcie_intc1 3>;
+> +		pcie_intc1: interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+>   			#interrupt-cells = <1>;
+> -			ranges;
+> -			interrupt-map-mask = <0 0 0 7>;
+> -			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+> -					<0 0 0 2 &pcie_intc0 1>,
+> -					<0 0 0 3 &pcie_intc0 2>,
+> -					<0 0 0 4 &pcie_intc0 3>;
+> -			pcie_intc0: interrupt-controller {
+> -				interrupt-controller;
+> -				#address-cells = <0>;
+> -				#interrupt-cells = <1>;
+> -			};
+>   		};
+> +	};
+>   
+> -		pcie1: pcie@1,0 {
+> -			device_type = "pci";
+> -			status = "disabled";
+> -			reg = <0x0800 0 0 0 0>;
+> -			#address-cells = <3>;
+> -			#size-cells = <2>;
+> +	pcie0: pcie@11700000 {
+> +		compatible = "mediatek,mt2712-pcie";
+> +		device_type = "pci";
+> +		reg = <0 0x11700000 0 0x1000>;
+> +		reg-names = "port0";
+> +		linux,pci-domain = <0>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		interrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-names = "pcie_irq";
+> +		clocks = <&topckgen CLK_TOP_PE2_MAC_P0_SEL>,
+> +			 <&pericfg CLK_PERI_PCIE0>;
+> +		clock-names = "sys_ck0", "ahb_ck0";
+> +		phys = <&u3port0 PHY_TYPE_PCIE>;
+> +		phy-names = "pcie-phy0";
+> +		bus-range = <0x00 0xff>;
+> +		ranges = <0x82000000 0 0x20000000 0x0 0x20000000 0 0x10000000>;
+> +		status = "disabled";
+> +
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+> +				<0 0 0 2 &pcie_intc0 1>,
+> +				<0 0 0 3 &pcie_intc0 2>,
+> +				<0 0 0 4 &pcie_intc0 3>;
+> +		pcie_intc0: interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+>   			#interrupt-cells = <1>;
+> -			ranges;
+> -			interrupt-map-mask = <0 0 0 7>;
+> -			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+> -					<0 0 0 2 &pcie_intc1 1>,
+> -					<0 0 0 3 &pcie_intc1 2>,
+> -					<0 0 0 4 &pcie_intc1 3>;
+> -			pcie_intc1: interrupt-controller {
+> -				interrupt-controller;
+> -				#address-cells = <0>;
+> -				#interrupt-cells = <1>;
+> -			};
+>   		};
+>   	};
+>   
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> index 2f77dc40b9b8..2b9bf8dd14ec 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-bananapi-bpi-r64.dts
+> @@ -257,18 +257,16 @@
+>   	};
+>   };
+>   
+> -&pcie {
+> +&pcie0 {
+>   	pinctrl-names = "default";
+> -	pinctrl-0 = <&pcie0_pins>, <&pcie1_pins>;
+> +	pinctrl-0 = <&pcie0_pins>;
+>   	status = "okay";
+> +};
+>   
+> -	pcie@0,0 {
+> -		status = "okay";
+> -	};
+> -
+> -	pcie@1,0 {
+> -		status = "okay";
+> -	};
+> +&pcie1 {
+> +	pinctrl-names = "default";
+> +	pinctrl-0 = <&pcie1_pins>;
+> +	status = "okay";
+>   };
+>   
+>   &pio {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+> index f2dc850010f1..596c073d8b05 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
+> @@ -234,14 +234,10 @@
+>   	};
+>   };
+>   
+> -&pcie {
+> +&pcie0 {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&pcie0_pins>;
+>   	status = "okay";
+> -
+> -	pcie@0,0 {
+> -		status = "okay";
+> -	};
+>   };
+>   
+>   &pio {
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> index 890a942ec608..6f8cb3ad1e84 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
+> @@ -781,75 +781,83 @@
+>   		#reset-cells = <1>;
+>   	};
+>   
+> -	pcie: pcie@1a140000 {
+> +	pciecfg: pciecfg@1a140000 {
+> +		compatible = "mediatek,generic-pciecfg", "syscon";
+> +		reg = <0 0x1a140000 0 0x1000>;
+> +	};
+> +
+> +	pcie0: pcie@1a143000 {
+>   		compatible = "mediatek,mt7622-pcie";
+>   		device_type = "pci";
+> -		reg = <0 0x1a140000 0 0x1000>,
+> -		      <0 0x1a143000 0 0x1000>,
+> -		      <0 0x1a145000 0 0x1000>;
+> -		reg-names = "subsys", "port0", "port1";
+> +		reg = <0 0x1a143000 0 0x1000>;
+> +		reg-names = "port0";
+> +		linux,pci-domain = <0>;
+>   		#address-cells = <3>;
+>   		#size-cells = <2>;
+> -		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>,
+> -			     <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupts = <GIC_SPI 228 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "pcie_irq";
+>   		clocks = <&pciesys CLK_PCIE_P0_MAC_EN>,
+> -			 <&pciesys CLK_PCIE_P1_MAC_EN>,
+> -			 <&pciesys CLK_PCIE_P0_AHB_EN>,
+>   			 <&pciesys CLK_PCIE_P0_AHB_EN>,
+>   			 <&pciesys CLK_PCIE_P0_AUX_EN>,
+> -			 <&pciesys CLK_PCIE_P1_AUX_EN>,
+>   			 <&pciesys CLK_PCIE_P0_AXI_EN>,
+> -			 <&pciesys CLK_PCIE_P1_AXI_EN>,
+>   			 <&pciesys CLK_PCIE_P0_OBFF_EN>,
+> -			 <&pciesys CLK_PCIE_P1_OBFF_EN>,
+> -			 <&pciesys CLK_PCIE_P0_PIPE_EN>,
+> -			 <&pciesys CLK_PCIE_P1_PIPE_EN>;
+> -		clock-names = "sys_ck0", "sys_ck1", "ahb_ck0", "ahb_ck1",
+> -			      "aux_ck0", "aux_ck1", "axi_ck0", "axi_ck1",
+> -			      "obff_ck0", "obff_ck1", "pipe_ck0", "pipe_ck1";
+> +			 <&pciesys CLK_PCIE_P0_PIPE_EN>;
+> +		clock-names = "sys_ck0", "ahb_ck0", "aux_ck0",
+> +			      "axi_ck0", "obff_ck0", "pipe_ck0";
+> +
+>   		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
+>   		bus-range = <0x00 0xff>;
+> -		ranges = <0x82000000 0 0x20000000 0x0 0x20000000 0 0x10000000>;
+> +		ranges = <0x82000000 0 0x20000000 0x0 0x20000000 0 0x8000000>;
+>   		status = "disabled";
+>   
+> -		pcie0: pcie@0,0 {
+> -			reg = <0x0000 0 0 0 0>;
+> -			#address-cells = <3>;
+> -			#size-cells = <2>;
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+> +				<0 0 0 2 &pcie_intc0 1>,
+> +				<0 0 0 3 &pcie_intc0 2>,
+> +				<0 0 0 4 &pcie_intc0 3>;
+> +		pcie_intc0: interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+>   			#interrupt-cells = <1>;
+> -			ranges;
+> -			status = "disabled";
+> -
+> -			interrupt-map-mask = <0 0 0 7>;
+> -			interrupt-map = <0 0 0 1 &pcie_intc0 0>,
+> -					<0 0 0 2 &pcie_intc0 1>,
+> -					<0 0 0 3 &pcie_intc0 2>,
+> -					<0 0 0 4 &pcie_intc0 3>;
+> -			pcie_intc0: interrupt-controller {
+> -				interrupt-controller;
+> -				#address-cells = <0>;
+> -				#interrupt-cells = <1>;
+> -			};
+>   		};
+> +	};
+>   
+> -		pcie1: pcie@1,0 {
+> -			reg = <0x0800 0 0 0 0>;
+> -			#address-cells = <3>;
+> -			#size-cells = <2>;
+> +	pcie1: pcie@1a145000 {
+> +		compatible = "mediatek,mt7622-pcie";
+> +		device_type = "pci";
+> +		reg = <0 0x1a145000 0 0x1000>;
+> +		reg-names = "port1";
+> +		linux,pci-domain = <1>;
+> +		#address-cells = <3>;
+> +		#size-cells = <2>;
+> +		interrupts = <GIC_SPI 229 IRQ_TYPE_LEVEL_LOW>;
+> +		interrupt-names = "pcie_irq";
+> +		clocks = <&pciesys CLK_PCIE_P1_MAC_EN>,
+> +			 /* designer has connect RC1 with p0_ahb clock */
+> +			 <&pciesys CLK_PCIE_P0_AHB_EN>,
+> +			 <&pciesys CLK_PCIE_P1_AUX_EN>,
+> +			 <&pciesys CLK_PCIE_P1_AXI_EN>,
+> +			 <&pciesys CLK_PCIE_P1_OBFF_EN>,
+> +			 <&pciesys CLK_PCIE_P1_PIPE_EN>;
+> +		clock-names = "sys_ck1", "ahb_ck1", "aux_ck1",
+> +			      "axi_ck1", "obff_ck1", "pipe_ck1";
+> +
+> +		power-domains = <&scpsys MT7622_POWER_DOMAIN_HIF0>;
+> +		bus-range = <0x00 0xff>;
+> +		ranges = <0x82000000 0 0x28000000 0x0 0x28000000 0 0x8000000>;
+> +		status = "disabled";
+> +
+> +		#interrupt-cells = <1>;
+> +		interrupt-map-mask = <0 0 0 7>;
+> +		interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+> +				<0 0 0 2 &pcie_intc1 1>,
+> +				<0 0 0 3 &pcie_intc1 2>,
+> +				<0 0 0 4 &pcie_intc1 3>;
+> +		pcie_intc1: interrupt-controller {
+> +			interrupt-controller;
+> +			#address-cells = <0>;
+>   			#interrupt-cells = <1>;
+> -			ranges;
+> -			status = "disabled";
+> -
+> -			interrupt-map-mask = <0 0 0 7>;
+> -			interrupt-map = <0 0 0 1 &pcie_intc1 0>,
+> -					<0 0 0 2 &pcie_intc1 1>,
+> -					<0 0 0 3 &pcie_intc1 2>,
+> -					<0 0 0 4 &pcie_intc1 3>;
+> -			pcie_intc1: interrupt-controller {
+> -				interrupt-controller;
+> -				#address-cells = <0>;
+> -				#interrupt-cells = <1>;
+> -			};
+>   		};
+>   	};
+>   
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
