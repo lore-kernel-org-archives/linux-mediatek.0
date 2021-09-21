@@ -2,50 +2,51 @@ Return-Path: <SRS0=xNtl=OL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C09FBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:53:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C226AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:53:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88E1261186
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:53:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 88E1261186
+	by mail.kernel.org (Postfix) with ESMTPS id 94C8B61211
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 15:53:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 94C8B61211
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=S2ufS7yeOpjNy0xFvbF1A0DUU6r5IevfW6KDMZkoFcU=; b=RwZwR2wy8BooAZ
-	XX3nXkF76AC9eluWlC1U1151I4E2mNcEX44Rk6kfvMj8rAAxtTRjBHobZ51UjZuxRfYE9MnPMq6Az
-	7C+U8xDTQOgl4Mb9LfG8c4oDN5698pk6L//QzHg0d9J5xgwIRBKvPFJf9cv/PxM02NYlU1caQflO7
-	IR+U8dEJBLtjgrjJgzleZLx/TsZ0Yjvj4F8s3EuGwSrnTC/kYnWAOqbEGO9S15j+wuy3oylpwgmSa
-	uwp/Zj7iuBk2iwhiyuZHcPx35z2YQW3vjcaUgCLbn7WC7sC0MJ8Pe2Nioi9LCgnmcO7toAh7ITYpI
-	CFZ6eev5BDdKRXaPkSYA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qoh/3hBvI6DFIQ2Mt0J6T1zGUPdSxXBGgirwWILRH1g=; b=kvhYZwxZyf/x2T
+	k7aG85iWFbdlCIiEMSWP29riEnQ4euPn64fB3OhTyT8t2z1XoBy84CnzGnLv+rCN3zu6l8nnpHmsD
+	ngBw4ua7MIGb10e2BHE4PnUlZjfnucxJoyCPyySJxmluChvGI5cqBO73+R2een4HjuRI37nmxe7On
+	jrQpyGdEObynXoGH9BMSW3G2ThaOgfcUkjxci1t2GxlKgLDwGfc5oduo3MAF3/EcWdfAlLq86wMZo
+	LCiiaI5VozJr1CHNRapptYev2aB+eLAuh28L6amXVsTgPxIFSvxeeH0i/kty8tl5OBsMlstJqoAGV
+	QnUtwuwNSEPbqax9eRZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSi4y-004yj2-2l; Tue, 21 Sep 2021 15:53:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mSi5G-004yul-Uo; Tue, 21 Sep 2021 15:53:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSi4Q-004yPb-So; Tue, 21 Sep 2021 15:52:38 +0000
-X-UUID: 480df51939da4900acd898b58e4d588d-20210921
-X-UUID: 480df51939da4900acd898b58e4d588d-20210921
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1mSi4R-004yPi-9a; Tue, 21 Sep 2021 15:52:39 +0000
+X-UUID: 31abbcb596954777b85a9fa89d4bffde-20210921
+X-UUID: 31abbcb596954777b85a9fa89d4bffde-20210921
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 350842824; Tue, 21 Sep 2021 08:52:30 -0700
-Received: from MTKMBS06N2.mediatek.inc (172.21.101.130) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 1926348767; Tue, 21 Sep 2021 08:52:30 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 21 Sep 2021 08:52:29 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs06n2.mediatek.inc (172.21.101.130) with Microsoft SMTP Server (TLS) id
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Tue, 21 Sep 2021 23:52:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -64,15 +65,18 @@ CC: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Maxime Coquelin
  <devicetree@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
-Subject: [PATCH v11 00/16] Add Mediatek Soc DRM (vdosys0) support for mt8195
-Date: Tue, 21 Sep 2021 23:52:02 +0800
-Message-ID: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
+Subject: [PATCH v11 01/16] dt-bindings: arm: mediatek: mmsys: add power and
+ gce properties
+Date: Tue, 21 Sep 2021 23:52:03 +0800
+Message-ID: <20210921155218.10387-2-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
+References: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210921_085234_997993_ECCAC93D 
-X-CRM114-Status: GOOD (  18.77  )
+X-CRM114-CacheID: sfid-20210921_085235_404209_D0DEB2DF 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,143 +93,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change in v11:
-- rebase on kernel-5.15-rc1
-- change mbox label to gce0 for dts node of vdosys0
-- change ovl compatibale to mt8192 to set smi_id_en=true in driver data
-- move common module from display folder to common folder,
-  such as AAL, COCLOR, CCORR and MUTEX
+Power:
+1. Add description for power-domains property.
 
-Change in v10:
-- rebase on "drm/mediatek: add support for mediatek SOC MT8192" series
-  https://patchwork.kernel.org/project/linux-mediatek/list/?series=529489
-- rebase on "soc: mediatek: mmsys: add mt8192 mmsys support" series
-  https://patchwork.kernel.org/project/linux-mediatek/list/?series=524857
-- fix some typo and "mediatek" start with capital in every dt-bindings
-- move mutex yaml from dfisplay folder to soc folder
-- separate merge additional propoerties to an individual dt-bindings patch
+GCE:
+1. Add description for mboxes property.
+2. Add description for mediatek,gce-client-reg property.
 
-Change in v9:
-- separate power and gce properties of mmsys into another dt-binding patch
-- rebase on "Separate aal module" series
-  https://patchwork.kernel.org/project/linux-mediatek/list/?series=516463
-- keep mtk_ddp_clk_enable/disable in the same place
-- change mtk_dsc_start config register to mtk_drm_ddp_write_mask
-- remove the 0 setting of merge fifo config function
-- add CCORR driver data for mt8195
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+---
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml | 30 ++++++++++++++++++-
+ 1 file changed, 29 insertions(+), 1 deletion(-)
 
-Change in v8:
-- add DP_INTF0 mux into mmsys routing table
-- add DP_INTF0 mutex mod and enum into add/remove comp function
-- remove bypass DSC enum in mtk_ddp_comp_init
-
-Change in v7:
-- add dt=binding of mmsys and disp path into this series
-- separate th modidfication of alphabetic order, remove unused define and
-  rename the define of register offset to individual patch
-- add comment for MERGE ultra and preultra setting
-
-Change in v6:
-- adjust alphabetic order for mediatek-drm
-- move the patch that add mt8195 support for mediatek-drm as
-  the lastest patch
-- add MERGE define for const varriable 
-
-Change in v5:
-- add power-domain property into vdosys0 and vdosys1 dts node.
-- add MT8195 prifix and remove unused VDO1 define in mt8195-mmsys.h
-
-Change in v4:
-- extract dt-binding patches to another patch series
-  https://patchwork.kernel.org/project/linux-mediatek/list/?series=519597
-- squash DSC module into mtk_drm_ddp_comp.c
-- add coment and simplify MERGE config function
-
-Change in v3:
-- change mmsys and display dt-bindings document from txt to yaml
-- add MERGE additional description in display dt-bindings document
-- fix mboxes-cells number of vdosys0 node in dts
-- drop mutex eof convert define
-- remove pm_runtime apis in DSC and MERGE
-- change DSC and MERGE enum to alphabetic order
-
-Change in v2:
-- add DSC yaml file
-- add mt8195 drm driver porting parts in to one patch
-- remove useless define, variable, structure member and function
-- simplify DSC and MERGE file and switch threre order
-
-jason-jh.lin (16):
-  dt-bindings: arm: mediatek: mmsys: add power and gce properties
-  dt-bindings: arm: mediatek: mmsys: add mt8195 SoC binding
-  dt-bindings: display: mediatek: disp: split each block to individual
-    yaml
-  dt-bindings: display: mediatek: dsc: add yaml for mt8195 SoC binding
-  dt-bindings: display: mediatek: merge: add additional prop for mt8195
-  dt-bindings: display: mediatek: add mt8195 SoC binding for vdosys0
-  dt-bindings: arm: mediatek: move common module from display folder
-  arm64: dts: mt8195: add display node for vdosys0
-  soc: mediatek: add mtk-mmsys support for mt8195 vdosys0
-  soc: mediatek: add mtk-mutex support for mt8195 vdosys0
-  drm/mediatek: remove unused define in mtk_drm_ddp_comp.c
-  drm/mediatek: rename the define of register offset
-  drm/mediatek: adjust to the alphabetic order for mediatek-drm
-  drm/mediatek: add DSC support for mediatek-drm
-  drm/mediatek: add MERGE support for mediatek-drm
-  drm/mediatek: add mediatek-drm of vdosys0 support for mt8195
-
- .../bindings/arm/mediatek/mediatek,aal.yaml   |  79 ++++++
- .../bindings/arm/mediatek/mediatek,ccorr.yaml |  78 ++++++
- .../bindings/arm/mediatek/mediatek,color.yaml |  88 +++++++
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |  32 ++-
- .../bindings/arm/mediatek/mediatek,mutex.yaml |  81 ++++++
- .../bindings/arm/mediatek/mediatek,wdma.yaml  |  88 +++++++
- .../display/mediatek/mediatek,disp.txt        | 219 ----------------
- .../display/mediatek/mediatek,dither.yaml     |  79 ++++++
- .../display/mediatek/mediatek,dsc.yaml        |  71 ++++++
- .../display/mediatek/mediatek,gamma.yaml      |  80 ++++++
- .../display/mediatek/mediatek,merge.yaml      | 102 ++++++++
- .../display/mediatek/mediatek,od.yaml         |  53 ++++
- .../display/mediatek/mediatek,ovl-2l.yaml     |  91 +++++++
- .../display/mediatek/mediatek,ovl.yaml        | 106 ++++++++
- .../display/mediatek/mediatek,postmask.yaml   |  72 ++++++
- .../display/mediatek/mediatek,rdma.yaml       | 120 +++++++++
- .../display/mediatek/mediatek,split.yaml      |  58 +++++
- .../display/mediatek/mediatek,ufoe.yaml       |  61 +++++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 111 ++++++++
- drivers/gpu/drm/mediatek/Makefile             |   1 +
- drivers/gpu/drm/mediatek/mtk_disp_drv.h       |   8 +
- drivers/gpu/drm/mediatek/mtk_disp_merge.c     | 239 ++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |   6 +
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 222 +++++++++-------
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  26 +-
- drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 152 ++++++-----
- drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   1 +
- drivers/soc/mediatek/mt8195-mmsys.h           | 114 +++++++++
- drivers/soc/mediatek/mtk-mmsys.c              |  11 +
- drivers/soc/mediatek/mtk-mutex.c              |  95 ++++++-
- include/linux/soc/mediatek/mtk-mmsys.h        |   9 +
- 31 files changed, 2172 insertions(+), 381 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,aal.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,color.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,mutex.yaml
- create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,wdma.yaml
- delete mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,disp.txt
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dither.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,gamma.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,od.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl-2l.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ovl.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,postmask.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,rdma.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,split.yaml
- create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,ufoe.yaml
- create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
- create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
-
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index f9ffa5b703a5..b78219c83c40 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -40,6 +40,30 @@ properties:
+   reg:
+     maxItems: 1
+ 
++  power-domains:
++    description:
++      A phandle and PM domain specifier as defined by bindings
++      of the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
++
++  mboxes:
++    description:
++      Using mailbox to communicate with GCE, it should have this
++      property and list of phandle, mailbox specifiers. See
++      Documentation/devicetree/bindings/mailbox/mtk-gce.txt for details.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++
++  mediatek,gce-client-reg:
++    description:
++      The register of client driver can be configured by gce with 4 arguments
++      defined in this property, such as phandle of gce, subsys id,
++      register offset and size.
++      Each subsys id is mapping to a base address of display function blocks
++      register which is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
+   "#clock-cells":
+     const: 1
+ 
+@@ -54,6 +78,10 @@ examples:
+   - |
+     mmsys: syscon@14000000 {
+         compatible = "mediatek,mt8173-mmsys", "syscon";
+-        reg = <0x14000000 0x1000>;
++        reg = <0 0x14000000 0 0x1000>;
++        power-domains = <&spm MT8173_POWER_DOMAIN_MM>;
+         #clock-cells = <1>;
++        mboxes = <&gce 0 CMDQ_THR_PRIO_HIGHEST>,
++                 <&gce 1 CMDQ_THR_PRIO_HIGHEST>;
++        mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
+     };
 -- 
 2.18.0
 
