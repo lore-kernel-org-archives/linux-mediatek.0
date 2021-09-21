@@ -2,86 +2,66 @@ Return-Path: <SRS0=xNtl=OL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.7 required=3.0 tests=BAYES_00,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED autolearn=ham
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9E996C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 08:37:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6234C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 09:50:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 559AD611EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 08:37:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 559AD611EF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id A66C5600D3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Sep 2021 09:50:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A66C5600D3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kvU1En3YSo2xgxiJdchBEiVdW1wLGWcguTONNWnLYe4=; b=Kychbpe8+PfVD1
-	Xm/y0E4uqHsX1/PI4Ipglj5cPgchoL1TeqSTYD4oCtRpgQZP1lCSJyiq5BA6kHyD/pvDCgnhn0LjY
-	quISzpHyptFfzzp4s8Ix9Z1GI2hsX0gNoN6DnzxM/zz31+HPWA32zoUeHvFpAGZOa0XMCFtc4xVaY
-	SAqbo9NG/JcMhzJ3aziAgMPfx8no84NZng6+oyjeKdjBULPbkHO/Q+L0bDpz0/iOz4cDXeoNp6YwO
-	wHkLV/pogLKhYbOYhv9XvQetAP6NBbHCUdSc/pODtAPEBF2aXz+Xzkz9ykdZTqhpPKClXm693LUnP
-	h2eyFLCr2ysrN0QN5kuQ==;
+	List-Owner; bh=QyGGrRQX+tGrI4qTMRNevxCKRdpZapMekIbb4V7lNJE=; b=mDv8WfNq8oaWwR
+	nj9uqUt6Hb7yK8EdccaUX/jlGLMEBXrdcCYCMzsMuWuXdS5AoAL6dQ1zvrJoK4V7NKJf7RifxMOS7
+	cNr7n7YLQ28Mn1uJ16EDvRlJmKlvND9tn/uIxLXOyKpsYqgqwxtc5qzy+BKLOZqrAuhXR0tSRCHNx
+	1W74XoV/+Cgoq+lRjGpKgjyDtXtlDGgaw4y0fjH54gAJY0jtVzW3leCqN9eV28dm7RCTTElP4GZEd
+	EcacJmtbN6mSCASM6ajSJDzWY+J8Liihc6xP2LqQCLxXcugnqV6HQsfvB34b7wU+73pYXfJWsSO37
+	tnFFbqkS8MVACwTiFyZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSbGr-003xjI-EI; Tue, 21 Sep 2021 08:36:57 +0000
-Received: from mail-oi1-x22f.google.com ([2607:f8b0:4864:20::22f])
+	id 1mScPQ-0044E2-A0; Tue, 21 Sep 2021 09:49:52 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSbGo-003xi8-GV
- for linux-mediatek@lists.infradead.org; Tue, 21 Sep 2021 08:36:56 +0000
-Received: by mail-oi1-x22f.google.com with SMTP id y201so13952232oie.3
- for <linux-mediatek@lists.infradead.org>; Tue, 21 Sep 2021 01:36:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=bg3GdEDta4alq5EcpFnKMHpnaJigutsFTYZs6RKXRos=;
- b=ZcFBBgvctstgt5BhYORG28cC2JeYUdHavEY11rLRXIZvTkm8Yu5uJVKhUXDjwFImiZ
- r/axHGTlAB+yxUTSTbKqOhuVqpsHspq+986dff4TH6985kUVPib7cXfSjIB+G7pVNBzn
- dMtirIg9a9z4Cg58clgML0lnqbFg9H7GuwArqrNOEowK0V+S3oN75xO8adhAugIfY4Uj
- 2QXgCUbmQGJ2KqCwDfSscJiIn/MWaqf7s69HTZlNS1Eq4zO10K3NSaHZzNYjQ9O4ASoF
- K7VirpStOPOKGScn4nNYRoG2AC6YuDVoR6wEf57DeA0h8DQsGJeKqCQdY+nBxCw55Aey
- IMTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=bg3GdEDta4alq5EcpFnKMHpnaJigutsFTYZs6RKXRos=;
- b=tYpGWGUZzwfDiJrY0oSNWZ7+ajBmXVIORWF0Q06CXxBonxmrZP0Z2P12sGXBuqSWkM
- 1a+1H/iBdPaeqb7R2oASrLxBNHc4w86vYgFx9TbbqnQrQCmeSCb4f/otPkoYb79RyXQN
- NSc47i2QS1fsEF74DCNxn5+tDvZqwVylxJtuoTRZfDAoFs70wZByA7ap95OxtFPS+AbT
- m93QSUqluum1E06QmnQpCzw3CXoMquF/1HR/udrbMN2KAEP2reCRVL31ja0g9ED2k+BY
- x2w6J5U/YhcryjADT99wDyzbaPPS/KB7AdLejDIzOKxF35fiGWF6cXo7dMMUtLO3coJR
- Qmug==
-X-Gm-Message-State: AOAM531Y77feXpM2HYaTdPgSezugxJ6VNIQumgWoB1JmRAnPuHPPJ950
- Xw3+ngvXj4T4AQFO4MYX65yJaPlF5C3PWK6Vnkc=
-X-Google-Smtp-Source: ABdhPJz5b/t20bc16VMoDEDAs3Czo0etpYXIUTXIwcba8wdCT/5iOp8lmpW35rcqNJGzZ/xm3fh6WNrdzNR/tqD3mxs=
-X-Received: by 2002:aca:210d:: with SMTP id 13mr2651010oiz.47.1632213411694;
- Tue, 21 Sep 2021 01:36:51 -0700 (PDT)
+ id 1mScPD-0044Bu-BH; Tue, 21 Sep 2021 09:49:40 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10113"; a="245735163"
+X-IronPort-AV: E=Sophos;i="5.85,310,1624345200"; d="scan'208";a="245735163"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Sep 2021 02:49:38 -0700
+X-IronPort-AV: E=Sophos;i="5.85,310,1624345200"; d="scan'208";a="549418557"
+Received: from unknown (HELO localhost) ([10.251.218.108])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Sep 2021 02:49:34 -0700
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Markus Schneider-Pargmann <msp@baylibre.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Markus Schneider-Pargmann <msp@baylibre.com>
+Subject: Re: [PATCH v2 3/6] drm/edid: Add cea_sad helpers for freq/length
+In-Reply-To: <20210920084424.231825-4-msp@baylibre.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20210920084424.231825-1-msp@baylibre.com>
+ <20210920084424.231825-4-msp@baylibre.com>
+Date: Tue, 21 Sep 2021 12:49:31 +0300
+Message-ID: <87mto6tg0k.fsf@intel.com>
 MIME-Version: 1.0
-References: <20210808234733.14782-1-chunkuang.hu@kernel.org>
- <CAAOTY_9LstZegE_Gyibov5tLo5eEqiPfoAcnyj_uoS=8xLLhnA@mail.gmail.com>
-In-Reply-To: <CAAOTY_9LstZegE_Gyibov5tLo5eEqiPfoAcnyj_uoS=8xLLhnA@mail.gmail.com>
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Date: Tue, 21 Sep 2021 10:36:39 +0200
-Message-ID: <CAFqH_53M2OO8DpkPa3L7cwppVRYiUgEDjrLjK7JJNgKgxnQpVA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/4] CMDQ refinement of Mediatek DRM driver
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- linux-kernel <linux-kernel@vger.kernel.org>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210921_013654_612884_1ACCEC78 
-X-CRM114-Status: GOOD (  19.46  )
+X-CRM114-CacheID: sfid-20210921_024939_438851_0E1AD89C 
+X-CRM114-Status: GOOD (  23.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,52 +73,165 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZywKCihhZ2FpbiB3aXRob3V0IGh0bWwgZm9ybWF0LCBzb3JyeSBmb3IgdGhl
-IG5vaXNlKQoKTWlzc2F0Z2UgZGUgQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1QGtlcm5lbC5v
-cmc+IGRlbCBkaWEgZGouLCAxMgpk4oCZYWcuIDIwMjEgYSBsZXMgMjoxMzoKPgo+IENodW4tS3Vh
-bmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPiDmlrwgMjAyMeW5tDjmnIg55pelIOmAseS4
-gCDkuIrljYg3OjQ35a+r6YGT77yaCj4gPgo+ID4gVGhlc2UgcmVmaW5lbWVudHMgaW5jbHVkZSB1
-c2luZyBzdGFuZGFyZCBtYWlsYm94IGNhbGxiYWNrIGludGVyZmFjZSwKPiA+IHRpbWVvdXQgZGV0
-ZWN0aW9uLCBhbmQgYSBmaXhlZCBjbWRxX2hhbmRsZS4KPgo+IEZvciB0aGlzIHNlcmllcywgYXBw
-bGllZCB0byBtZWRpYXRlay1kcm0tbmV4dCBbMV0uCj4KPiBbMV0gaHR0cHM6Ly9naXQua2VybmVs
-Lm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xpbnV4LmdpdC9sb2cv
-P2g9bWVkaWF0ZWstZHJtLW5leHQKPgoKVGhlc2UgcGF0Y2hlcyBzZWVtIHRvIGJyZWFrIHRoZSBk
-aXNwbGF5IG9uIHRoZSBBY2VyIENocm9tZWJvb2sgUiAxMwooTVQ4MTczKSBpbiB0aGUgY3VycmVu
-dCBtYWlubGluZS4gQWZ0ZXIgcnVubmluZyBhIGJpc2VjdGlvbiBpdCBwb2ludGVkCm1lIHRvIHRo
-ZSBmb2xsb3dpbmcgY29tbWl0Cgpjb21taXQgZjRiZTE3Y2Q1YjE0ZGQ3MzU0NWIwZTAxNGE2M2Vi
-ZTlhYjVlZjgzNwpBdXRob3I6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3Jn
-PgpEYXRlOiAgIFN1biBKdWwgNCAxNTozNjo0OCAyMDIxICswODAwCgogICAgZHJtL21lZGlhdGVr
-OiBSZW1vdmUgc3RydWN0IGNtZHFfY2xpZW50CgpSZXZlcnRpbmcgdGhpcyBwYXRjaCBhbG9uZSBp
-cyBub3QgdHJpdmlhbCwgc28gSSBlbmRlZCB1cCByZXZlcnRpbmcgdGhlCmZ1bGwgc2VyaWVzLCBh
-bmQgSSBjYW4gY29uZmlybSB0aGF0IHJldmVydGluZyB0aGUgZnVsbCBzZXJpZXMgbWFrZXMKdGhl
-IGRpc3BsYXkgd29yayBhZ2Fpbi4KClVuZm9ydHVuYXRlbHksIGFmdGVyIHRoZSBtZXJnZSB3aW5k
-b3csIGRpZmZlcmVudCB0aGluZ3MgYnJva2UgZm9yIHRoaXMKZGV2aWNlLCBhbmQgSSBkaWRuJ3Qg
-ZmluaXNoIGlzb2xhdGluZyB0aGVtLCBhbmQgaXQgaXMgbm90IGNsZWFyIHRvIG1lCnlldCB3aGV0
-aGVyIHRoZSBsb2dzIEknbSBnZXR0aW5nIGFyZSB1c2VmdWwgZm9yIHRoaXMgc3BlY2lmaWMgaXNz
-dWUgb3IKbm90LiBCYXNpY2FsbHkgd2l0aCB0aGlzIHNlcmllcyBtZXJnZWQgdGhlIGtlcm5lbCBz
-ZWVtcyB0byBiZSBzdHVjaywKYW5kIHRoZSBkaXNwbGF5IGlzIG5vdCB3b3JraW5nLiBMYXRlc3Qg
-bWVzc2FnZSBpcwoKWyAgIDEyLjMyOTE3M10gbXRrLWlvbW11IDEwMjA1MDAwLmlvbW11OiBQYXJ0
-aWFsIFRMQiBmbHVzaCB0aW1lZCBvdXQsCmZhbGxpbmcgYmFjayB0byBmdWxsIGZsdXNoCgpXaXRo
-b3V0IHRoZSBzZXJpZXMsIHRoZSBrZXJuZWwgZ29lcyBmYXIgYW5kIGRpc3BsYXkgd29ya3MsIGhv
-d2V2ZXIKdGhlcmUgYXJlIG90aGVyIGlzc3VlcyBhZmZlY3RpbmcgdGhlIGNyb3MtZWMsIGJ1dCBJ
-IHRoaW5rIHRoYXQncwphbm90aGVyIGlzc3VlLgoKSSdsbCB0cnkgdG8gZGlnIGEgYml0IG1vcmUs
-IGJ1dCwgbWVhbndoaWxlLCBpZiB5b3UgaGF2ZSBhbnkgaWRlYQpwbGVhc2UgbGV0IG1lIGtub3cu
-CgpUaGFua3MsCiBFbnJpYwoKCj4gUmVnYXJkcywKPiBDaHVuLUt1YW5nLgo+Cj4gPgo+ID4gQ2hh
-bmdlcyBpbiB2MjoKPiA+IDEuIERlZmluZSBtdGtfZHJtX2NtZHFfcGt0X2NyZWF0ZSgpIGFuZCBt
-dGtfZHJtX2NtZHFfcGt0X2Rlc3Ryb3koKQo+ID4gICAgd2hlbiBDT05GSUdfTVRLX0NNRFEgaXMg
-cmVhY2hhYmxlLgo+ID4KPiA+IENodW4tS3VhbmcgSHUgKDQpOgo+ID4gICBkcm0vbWVkaWF0ZWs6
-IFVzZSBtYWlsYm94IHJ4X2NhbGxiYWNrIGluc3RlYWQgb2YgY21kcV90YXNrX2NiCj4gPiAgIGRy
-bS9tZWRpYXRlazogUmVtb3ZlIHN0cnVjdCBjbWRxX2NsaWVudAo+ID4gICBkcm0vbWVkaWF0ZWs6
-IERldGVjdCBDTURRIGV4ZWN1dGlvbiB0aW1lb3V0Cj4gPiAgIGRybS9tZWRpYXRlazogQWRkIGNt
-ZHFfaGFuZGxlIGluIG10a19jcnRjCj4gPgo+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9t
-dGtfZHJtX2NydGMuYyB8IDExMCArKysrKysrKysrKysrKysrKysrKy0tLS0KPiA+ICAxIGZpbGUg
-Y2hhbmdlZCwgOTEgaW5zZXJ0aW9ucygrKSwgMTkgZGVsZXRpb25zKC0pCj4gPgo+ID4gLS0KPiA+
-IDIuMjUuMQo+ID4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtbWVkaWF0ZWsK
+On Mon, 20 Sep 2021, Markus Schneider-Pargmann <msp@baylibre.com> wrote:
+> This patch adds two helper functions that extract the frequency and word
+> length from a struct cea_sad.
+>
+> For these helper functions new defines are added that help translate the
+> 'freq' and 'byte2' fields into real numbers.
+>
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
+>
+> Notes:
+>     Changes v1 -> v2:
+>     - Use const struct pointers.
+>     - Add a check whether the format is actually uncompressed or not.
+>
+>  drivers/gpu/drm/drm_edid.c | 74 ++++++++++++++++++++++++++++++++++++++
+>  include/drm/drm_edid.h     | 18 ++++++++--
+>  2 files changed, 90 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
+> index 6325877c5fd6..28df422fbc03 100644
+> --- a/drivers/gpu/drm/drm_edid.c
+> +++ b/drivers/gpu/drm/drm_edid.c
+> @@ -4666,6 +4666,80 @@ int drm_edid_to_speaker_allocation(struct edid *edid, u8 **sadb)
+>  }
+>  EXPORT_SYMBOL(drm_edid_to_speaker_allocation);
+>  
+> +/**
+> + * drm_cea_sad_get_sample_rate - Extract the sample rate from cea_sad
+> + * @sad: Pointer to the cea_sad struct
+> + *
+> + * Extracts the cea_sad frequency field and returns the sample rate in Hz.
+> + *
+> + * Return: Sample rate in Hz or a negative errno if parsing failed.
+> + */
+> +int drm_cea_sad_get_sample_rate(const struct cea_sad *sad)
+> +{
+> +	switch (sad->freq) {
+> +	case CEA_SAD_FREQ_32KHZ:
+> +		return 32000;
+> +	case CEA_SAD_FREQ_44KHZ:
+> +		return 44100;
+> +	case CEA_SAD_FREQ_48KHZ:
+> +		return 48000;
+> +	case CEA_SAD_FREQ_88KHZ:
+> +		return 88200;
+> +	case CEA_SAD_FREQ_96KHZ:
+> +		return 96000;
+> +	case CEA_SAD_FREQ_176KHZ:
+> +		return 176400;
+> +	case CEA_SAD_FREQ_192KHZ:
+> +		return 192000;
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +}
+> +EXPORT_SYMBOL(drm_cea_sad_get_sample_rate);
+> +
+> +static bool drm_cea_sad_is_uncompressed(const struct cea_sad *sad)
+> +{
+> +	switch (sad->format) {
+> +	case HDMI_AUDIO_CODING_TYPE_STREAM:
+> +	case HDMI_AUDIO_CODING_TYPE_PCM:
+> +		return true;
+> +	default:
+> +		return false;
+> +	}
+> +}
+> +
+> +/**
+> + * drm_cea_sad_get_uncompressed_word_length - Extract word length
+> + * @sad: Pointer to the cea_sad struct
+> + *
+> + * Extracts the cea_sad byte2 field and returns the word length for an
+> + * uncompressed stream.
+> + *
+> + * Note: This function may only be called for uncompressed audio.
+> + *
+> + * Return: Word length in bits or a negative errno if parsing failed.
+> + */
+> +int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad)
+> +{
+> +	if (!drm_cea_sad_is_uncompressed(sad)) {
+> +		DRM_WARN("Unable to get the uncompressed word length for a compressed format: %u\n",
+> +			 sad->format);
+> +		return -EINVAL;
+> +	}
+> +
+> +	switch (sad->byte2) {
+> +	case CEA_SAD_UNCOMPRESSED_WORD_16BIT:
+> +		return 16;
+> +	case CEA_SAD_UNCOMPRESSED_WORD_20BIT:
+> +		return 20;
+> +	case CEA_SAD_UNCOMPRESSED_WORD_24BIT:
+> +		return 24;
+> +	default:
+> +		return -EINVAL;
+> +	}
+> +}
+> +EXPORT_SYMBOL(drm_cea_sad_get_uncompressed_word_length);
+> +
+>  /**
+>   * drm_av_sync_delay - compute the HDMI/DP sink audio-video sync delay
+>   * @connector: connector associated with the HDMI/DP sink
+> diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
+> index deccfd39e6db..7b7d71a7154d 100644
+> --- a/include/drm/drm_edid.h
+> +++ b/include/drm/drm_edid.h
+> @@ -361,12 +361,24 @@ struct edid {
+>  
+>  /* Short Audio Descriptor */
+>  struct cea_sad {
+> -	u8 format;
+> +	u8 format; /* See HDMI_AUDIO_CODING_TYPE_* */
+>  	u8 channels; /* max number of channels - 1 */
+> -	u8 freq;
+> +	u8 freq; /* See CEA_SAD_FREQ_* */
+>  	u8 byte2; /* meaning depends on format */
+>  };
+>  
+> +#define CEA_SAD_FREQ_32KHZ  BIT(0)
+> +#define CEA_SAD_FREQ_44KHZ  BIT(1)
+> +#define CEA_SAD_FREQ_48KHZ  BIT(2)
+> +#define CEA_SAD_FREQ_88KHZ  BIT(3)
+> +#define CEA_SAD_FREQ_96KHZ  BIT(4)
+> +#define CEA_SAD_FREQ_176KHZ BIT(5)
+> +#define CEA_SAD_FREQ_192KHZ BIT(6)
+> +
+> +#define CEA_SAD_UNCOMPRESSED_WORD_16BIT BIT(0)
+> +#define CEA_SAD_UNCOMPRESSED_WORD_20BIT BIT(1)
+> +#define CEA_SAD_UNCOMPRESSED_WORD_24BIT BIT(2)
+
+I suggest adding DRM_ prefixes here.
+
+BR,
+Jani.
+
+> +
+>  struct drm_encoder;
+>  struct drm_connector;
+>  struct drm_connector_state;
+> @@ -374,6 +386,8 @@ struct drm_display_mode;
+>  
+>  int drm_edid_to_sad(struct edid *edid, struct cea_sad **sads);
+>  int drm_edid_to_speaker_allocation(struct edid *edid, u8 **sadb);
+> +int drm_cea_sad_get_sample_rate(const struct cea_sad *sad);
+> +int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad);
+>  int drm_av_sync_delay(struct drm_connector *connector,
+>  		      const struct drm_display_mode *mode);
+
+-- 
+Jani Nikula, Intel Open Source Graphics Center
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
