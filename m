@@ -2,20 +2,19 @@ Return-Path: <SRS0=6VVk=OM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-15.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	UNWANTED_LANGUAGE_BODY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=3.4.0
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B7B1DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Sep 2021 02:58:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7075C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Sep 2021 02:58:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88FA761156
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Sep 2021 02:58:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 88FA761156
+	by mail.kernel.org (Postfix) with ESMTPS id 8C77961156
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Sep 2021 02:58:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8C77961156
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,33 +23,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7vwSmb+u1AqsxcltorNBsCZ2SmTzaDcJcawD3Zm9V54=; b=dcxFduSGqc756X
-	3Uw+pyjzZguIUbgciVtoB2k954Mf9v4XSUwxUTixniNdGw3XGZXAzn33gNUqva/I8X9jgJSIIWAZ1
-	WBLrRytEZySnL+Pg20Cwc+EocYL68Xt0GVTlmsNFLRrWiR2GqryTPJdbpEF4zaRmx/eWLkHa4ykJ2
-	wPK9T5qamZE41/UAHIVOxLIBEiTbDLG2y6OkmIdQzGn2Iyhy1xOSnC6Qx2kaV32ELqnmhdI/M28/c
-	u9Ahs1osjPQTs7vieoxv9qBg6mw1GM9cV6kgF1y+1rBZTJSNXXQYzS08786vv/ISHtILc8Oz+Va9Y
-	YU9J3p+6AEDYR0/z5k8g==;
+	List-Owner; bh=9D01D8K/mc7173axPO9oINfbHGWmwAgpHI6WJz47I3U=; b=0FNBb9CTG+iL8G
+	aTi4DZ6Crkt7xrDQ9qPzT9Q7nG9xMV1/np6feRJHcZzJUI3SreJCTIpVAzSP3f70DM/BsVC0onvdi
+	n93j57JqrEXHKthW+hnbSKJY5ohX2GPujzhMJqbOA/OOSLopzSDO7GXErhxOo9eJHjvmbkSBLF+Ql
+	K1euektR9cHtU8zr9zZyU1MGe1DzPMg69ZqC6DcDqW15JN55MtbK/lB2efPyhiUqt7yMqWT3y4onx
+	OT3l6CD36JpFO5cbfby6LwGUNIds5cf0dY7NOlHRNLVhPLLQw8JYm7/g1TiZ49ch/3iBGc9zpTmGN
+	7EbjGYMmpupG03GInoQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mSsSE-006kLB-LI; Wed, 22 Sep 2021 02:57:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mSsSH-006kMA-2e; Wed, 22 Sep 2021 02:57:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mSsRE-006jwy-LW; Wed, 22 Sep 2021 02:56:51 +0000
-X-UUID: 1b79e08ce09544b8bf5dd1de74204a2e-20210921
-X-UUID: 1b79e08ce09544b8bf5dd1de74204a2e-20210921
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1mSsRI-006jyQ-Tq; Wed, 22 Sep 2021 02:56:54 +0000
+X-UUID: e382a70616aa4119b1e50c928028d9d8-20210921
+X-UUID: e382a70616aa4119b1e50c928028d9d8-20210921
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <zhiyong.tao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2033669425; Tue, 21 Sep 2021 19:56:45 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1119157794; Tue, 21 Sep 2021 19:56:47 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Sep 2021 19:56:43 -0700
+ 15.0.1497.2; Tue, 21 Sep 2021 19:56:45 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 22 Sep 2021 10:56:42 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Sep 2021 10:56:43 +0800
 Received: from localhost.localdomain (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 22 Sep 2021 10:56:41 +0800
+ Transport; Wed, 22 Sep 2021 10:56:42 +0800
 From: Zhiyong Tao <zhiyong.tao@mediatek.com>
 To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
  <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
@@ -60,19 +59,19 @@ CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
  <sean.wang@mediatek.com>, <seiya.wang@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-gpio@vger.kernel.org>, Rob Herring <robh@kernel.org>
-Subject: [PATCH v13 1/5] dt-bindings: pinctrl: mt8195: add rsel define
-Date: Wed, 22 Sep 2021 10:56:36 +0800
-Message-ID: <20210922025640.11600-2-zhiyong.tao@mediatek.com>
+ <linux-gpio@vger.kernel.org>
+Subject: [PATCH v13 2/5] dt-bindings: pinctrl: mt8195: change pull up/down
+ description
+Date: Wed, 22 Sep 2021 10:56:37 +0800
+Message-ID: <20210922025640.11600-3-zhiyong.tao@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20210922025640.11600-1-zhiyong.tao@mediatek.com>
 References: <20210922025640.11600-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210921_195648_751101_93823988 
-X-CRM114-Status: UNSURE (   9.07  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210921_195653_022357_F116940D 
+X-CRM114-Status: GOOD (  10.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,34 +88,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds rsel define for mt8195.
+For supporting SI units in "bias-pull-down" & "bias-pull-up",
+Change pull up/down description
 
 Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
-Acked-by: Rob Herring <robh@kernel.org>
 ---
- include/dt-bindings/pinctrl/mt65xx.h | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ .../bindings/pinctrl/pinctrl-mt8195.yaml      | 65 ++++++++++++++++++-
+ 1 file changed, 63 insertions(+), 2 deletions(-)
 
-diff --git a/include/dt-bindings/pinctrl/mt65xx.h b/include/dt-bindings/pinctrl/mt65xx.h
-index 7e16e58fe1f7..f5934abcd1bd 100644
---- a/include/dt-bindings/pinctrl/mt65xx.h
-+++ b/include/dt-bindings/pinctrl/mt65xx.h
-@@ -16,6 +16,15 @@
- #define MTK_PUPD_SET_R1R0_10 102
- #define MTK_PUPD_SET_R1R0_11 103
+diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+index 2f12ec59eee5..2f2afabbe4fc 100644
+--- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+@@ -85,9 +85,70 @@ patternProperties:
+           2/4/6/8/10/12/14/16mA in mt8195.
+         enum: [0, 1, 2, 3, 4, 5, 6, 7]
  
-+#define MTK_PULL_SET_RSEL_000  200
-+#define MTK_PULL_SET_RSEL_001  201
-+#define MTK_PULL_SET_RSEL_010  202
-+#define MTK_PULL_SET_RSEL_011  203
-+#define MTK_PULL_SET_RSEL_100  204
-+#define MTK_PULL_SET_RSEL_101  205
-+#define MTK_PULL_SET_RSEL_110  206
-+#define MTK_PULL_SET_RSEL_111  207
-+
- #define MTK_DRIVE_2mA  2
- #define MTK_DRIVE_4mA  4
- #define MTK_DRIVE_6mA  6
+-      bias-pull-down: true
++      bias-pull-down:
++        description: |
++          For pull down type is normal, it don't need add RSEL & R1R0 define
++          and resistance value.
++          For pull down type is PUPD/R0/R1 type, it can add R1R0 define to
++          set different resistance. It can support "MTK_PUPD_SET_R1R0_00" &
++          "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" & "MTK_PUPD_SET_R1R0_11"
++          define in mt8195.
++          For pull down type is RSEL, it can add RSEL define & resistance value(ohm)
++          to set different resistance by identifying property "mediatek,rsel_resistance_in_si_unit".
++          It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
++          & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" & "MTK_PULL_SET_RSEL_100"
++          & "MTK_PULL_SET_RSEL_101" & "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
++          define in mt8195. It can also support resistance value(ohm) "75000" & "5000" in mt8195.
++          An example of using RSEL define:
++          pincontroller {
++            i2c0_pin {
++              pinmux = <PINMUX_GPIO8__FUNC_SDA0>;
++              bias-pull-down = <MTK_PULL_SET_RSEL_001>;
++            };
++          };
++          An example of using si unit resistance value(ohm):
++          &pio {
++            mediatek,rsel_resistance_in_si_unit;
++          }
++          pincontroller {
++            i2c0_pin {
++              pinmux = <PINMUX_GPIO8__FUNC_SDA0>;
++              bias-pull-down = <75000>;
++            };
++          };
+ 
+-      bias-pull-up: true
++      bias-pull-up:
++        description: |
++          For pull up type is normal, it don't need add RSEL & R1R0 define
++          and resistance value.
++          For pull up type is PUPD/R0/R1 type, it can add R1R0 define to
++          set different resistance. It can support "MTK_PUPD_SET_R1R0_00" &
++          "MTK_PUPD_SET_R1R0_01" & "MTK_PUPD_SET_R1R0_10" & "MTK_PUPD_SET_R1R0_11"
++          define in mt8195.
++          For pull up type is RSEL, it can add RSEL define & resistance value(ohm)
++          to set different resistance by identifying property "mediatek,rsel_resistance_in_si_unit".
++          It can support "MTK_PULL_SET_RSEL_000" & "MTK_PULL_SET_RSEL_001"
++          & "MTK_PULL_SET_RSEL_010" & "MTK_PULL_SET_RSEL_011" & "MTK_PULL_SET_RSEL_100"
++          & "MTK_PULL_SET_RSEL_101" & "MTK_PULL_SET_RSEL_110" & "MTK_PULL_SET_RSEL_111"
++          define in mt8195. It can also support resistance value(ohm)
++          "1000" & "1500" & "2000" & "3000" & "4000" & "5000" & "10000" & "75000" in mt8195.
++          An example of using RSEL define:
++          pincontroller {
++            i2c0_pin {
++              pinmux = <PINMUX_GPIO8__FUNC_SDA0>;
++              bias-pull-up = <MTK_PULL_SET_RSEL_001>;
++            };
++          };
++          An example of using si unit resistance value(ohm):
++          &pio {
++            mediatek,rsel_resistance_in_si_unit;
++          }
++          pincontroller {
++            i2c0_pin {
++              pinmux = <PINMUX_GPIO8__FUNC_SDA0>;
++              bias-pull-up = <1000>;
++            };
++          };
+ 
+       bias-disable: true
+ 
 -- 
 2.25.1
 
