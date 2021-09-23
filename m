@@ -2,70 +2,96 @@ Return-Path: <SRS0=soVQ=ON=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,URIBL_BLOCKED
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D54BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 02:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 83561C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 03:31:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B6B361107
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 02:51:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1B6B361107
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baidu.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3CD0261038
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 03:31:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3CD0261038
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=g/BfS8xEVbh7z558d7n6EV66HHa9YtqRd/x4dWtb4Lk=; b=Pxyjv+AMKmsEYC
-	hP1aPzZv3EJHuIBGS4jbTELGgamU/uZ+iyBdJCROOdQO/zaJGoZyh9tSmvt9jt7AaW57MbX4Iq8KW
-	G4rpdY1MN2k7QTjNHiAiUxbIcRrIt/htoa9x0ZWgsojkrX5f1hc4/07WKpOapAOR6G/DVBDFp9uPH
-	5WvKLYFTgEqEjTUjQW4qtjUb4DrZb5ooeQdG7h2pxUOVZkbSM0/nb/S49Iel8uF4qszPBNJeAeV50
-	JyKD3vfnexm/wo02LNuVm/3d6aXh39O7H1Kv55d2yeFzFcAvAn6GhNuJAYH1SSPhtLHPMWaG9xuPV
-	62nRTyOgQQLxdWL7UhwQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8cbrduP2wmB0cRdvmAoK0UCo08KOEhPGrvMq84/Nsfs=; b=JWEcN622NqnuvV
+	wBTeFjRI2RM3fwD+/cHgCkiA5xFn9ylwKlQgFmoxd5Zm3qBbNJYSroi/rSfDRlw6W36dsmw5s3PmV
+	VuCMtsJ7p5lFIW+b30lf2Sm8tB1mgwjwK+vTtVnMtq7UwRrLHmUq9yxElvJgjijBmo6gJBQ13N9e3
+	3COx0JUz4kkO6naOI7aKpllOibYBVvATgCCex6wLvxmi6YpErp3AUOTZm90n7sXYlvcrGbH33EKjd
+	KFs8N2XAaaerOZzYLxuFuv4rVFT/mQgKEKOqZABl+QEM94Th7NaV/U9GvIcMeab4NH1yj7qGYsM7O
+	7Pmilzl8YbqS2dMhjLnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTEp6-00A7Nh-Ue; Thu, 23 Sep 2021 02:50:57 +0000
-Received: from mx24.baidu.com ([111.206.215.185] helo=baidu.com)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTEot-00A7LW-T9; Thu, 23 Sep 2021 02:50:45 +0000
-Received: from BC-Mail-Ex26.internal.baidu.com (unknown [172.31.51.20])
- by Forcepoint Email with ESMTPS id 9EED3CAAFF364093A5D0;
- Thu, 23 Sep 2021 10:50:42 +0800 (CST)
-Received: from BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) by
- BC-Mail-Ex26.internal.baidu.com (172.31.51.20) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2176.2; Thu, 23 Sep 2021 10:50:42 +0800
-Received: from LAPTOP-UKSR4ENP.internal.baidu.com (172.31.63.8) by
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.2308.14; Thu, 23 Sep 2021 10:50:41 +0800
-From: Cai Huoqing <caihuoqing@baidu.com>
-To: <caihuoqing@baidu.com>
-CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
- <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH] phy: mediatek: Kconfig: Add configuration menu for Mediatek
- phy drivers
-Date: Thu, 23 Sep 2021 10:50:35 +0800
-Message-ID: <20210923025036.348-1-caihuoqing@baidu.com>
-X-Mailer: git-send-email 2.17.1
+	id 1mTFS5-00A9jO-NM; Thu, 23 Sep 2021 03:31:13 +0000
+Received: from mail-oi1-x233.google.com ([2607:f8b0:4864:20::233])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mTFS2-00A9iV-OB
+ for linux-mediatek@lists.infradead.org; Thu, 23 Sep 2021 03:31:12 +0000
+Received: by mail-oi1-x233.google.com with SMTP id w19so7703310oik.10
+ for <linux-mediatek@lists.infradead.org>; Wed, 22 Sep 2021 20:31:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=WZnkbDqe35agx+YRdoGtlkEIS1vsNJiYQTbIpjWyLqg=;
+ b=P3kClDnLsxyd8P5md1GK2izJhbgXFpqpxbnKHA/qDWSDqZ1P9e4S93LBbgYC62Yq8T
+ R9UaBvr71Hsdw9Qj0ogvmHgPrs9nA1wIHDSmQSuCmI5BXq1lFS+SXlcuuJMu87sN//ts
+ uoAPab1EJfLPjXzcHCtyOod6MCr36/JsjZGHXkrS08VftM1XbrMnc3oaxktFgmfo0vMJ
+ t3zsbSBGmyNFg8GpXBD4sDxGxAGUUstl+bhic/DrGsf1M8oshxwuxGJQR4jQBkF6tgbQ
+ 9K8Mc5CYg7yqg3huKD7lL3thxynHYPVd6unTn3tlAVKYNZOFsjTVusdqhsqsmGe5Tnii
+ M9Vg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=WZnkbDqe35agx+YRdoGtlkEIS1vsNJiYQTbIpjWyLqg=;
+ b=cUPeD6VwoAtOs6Wo2GgL8nJHGV3lYpWDRM5QfL8adJ56uORqYndcKj7lWGzepqSreU
+ IcczP5rH6NgcpJz6Tps7+lgFRA8QiK3c8KAP+lCZeX/Cpv1HMeBq13ousABXWBznsig5
+ 4L/vashZOH84li9PPHaOP/0VkDMA1I2VOwQD5sfvZAp142alKSKMvxFZYVOkq1sTK5HN
+ YvrQMLcze+XHKuGCD+Tu1NjDdiWVCFcfYkYWOdZtt4FN07vCSGz/RXYJxyEW9Hkdhsji
+ zmuSAztGhwpwi3LJkGZ5IZwzEHdbZnqVZDgf7t4kRSz3datxy6aNdsBJKTxYBzzM+HID
+ 0m/g==
+X-Gm-Message-State: AOAM530WQaue38zh4QJHIHh+ihDzIMQxj+ShIUwE3aEeeIMlTc+cm/IG
+ 4ww8ERA8oVRoXpy+/U91gxTWHg==
+X-Google-Smtp-Source: ABdhPJyEqCFgpzYG5stN1XffFzyyUS7C0XaZxoEnwmEkDrixdgCQQ6CDVf7BYB8h73LGP9V2OIFLXA==
+X-Received: by 2002:a05:6808:618:: with SMTP id
+ y24mr1978169oih.179.1632367868718; 
+ Wed, 22 Sep 2021 20:31:08 -0700 (PDT)
+Received: from yoga (104-57-184-186.lightspeed.austtx.sbcglobal.net.
+ [104.57.184.186])
+ by smtp.gmail.com with ESMTPSA id bf6sm1051367oib.0.2021.09.22.20.31.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 22 Sep 2021 20:31:08 -0700 (PDT)
+Date: Wed, 22 Sep 2021 22:31:06 -0500
+From: Bjorn Andersson <bjorn.andersson@linaro.org>
+To: Alexandre Bailon <abailon@baylibre.com>
+Cc: airlied@linux.ie, daniel@ffwll.ch, robh+dt@kernel.org,
+ matthias.bgg@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, ohad@wizery.com,
+ mathieu.poirier@linaro.org, sumit.semwal@linaro.org,
+ christian.koenig@amd.com, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-remoteproc@vger.kernel.org, linux-media@vger.kernel.org,
+ linaro-mm-sig@lists.linaro.org, khilman@baylibre.com, gpain@baylibre.com
+Subject: Re: [RFC PATCH 3/4] rpmsg: Add support of AI Processor Unit (APU)
+Message-ID: <YUv0+jQ/91QdydkR@yoga>
+References: <20210917125945.620097-1-abailon@baylibre.com>
+ <20210917125945.620097-4-abailon@baylibre.com>
 MIME-Version: 1.0
-X-Originating-IP: [172.31.63.8]
-X-ClientProxiedBy: BC-Mail-Ex31.internal.baidu.com (172.31.51.25) To
- BJHW-MAIL-EX27.internal.baidu.com (10.127.64.42)
+Content-Disposition: inline
+In-Reply-To: <20210917125945.620097-4-abailon@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210922_195044_158663_F0494944 
-X-CRM114-Status: UNSURE (   8.26  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210922_203110_875655_9E04545D 
+X-CRM114-Status: GOOD (  34.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,70 +108,282 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adding a configuration menu to hold many Mediatek phy drivers
-helps to make the menu display more concise.
+On Fri 17 Sep 07:59 CDT 2021, Alexandre Bailon wrote:
 
-Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
----
- drivers/phy/mediatek/Kconfig | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+> Some Mediatek SoC provides hardware accelerator for AI / ML.
+> This driver use the DRM driver to manage the shared memory,
+> and use rpmsg to execute jobs on the APU.
+> 
+> Signed-off-by: Alexandre Bailon <abailon@baylibre.com>
+> ---
+>  drivers/rpmsg/Kconfig     |  10 +++
+>  drivers/rpmsg/Makefile    |   1 +
+>  drivers/rpmsg/apu_rpmsg.c | 184 ++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 195 insertions(+)
+>  create mode 100644 drivers/rpmsg/apu_rpmsg.c
+> 
+> diff --git a/drivers/rpmsg/Kconfig b/drivers/rpmsg/Kconfig
+> index 0b4407abdf138..fc1668f795004 100644
+> --- a/drivers/rpmsg/Kconfig
+> +++ b/drivers/rpmsg/Kconfig
+> @@ -73,4 +73,14 @@ config RPMSG_VIRTIO
+>  	select RPMSG_NS
+>  	select VIRTIO
+>  
+> +config RPMSG_APU
+> +	tristate "APU RPMSG driver"
+> +	select REMOTEPROC
+> +	select RPMSG_VIRTIO
+> +	select DRM_APU
+> +	help
+> +	  This provides a RPMSG driver that provides some facilities to
+> +	  communicate with an accelerated processing unit (APU).
+> +	  This Uses the APU DRM driver to manage memory and job scheduling.
 
-diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
-index 55f8e6c048ab..5da045813b5a 100644
---- a/drivers/phy/mediatek/Kconfig
-+++ b/drivers/phy/mediatek/Kconfig
-@@ -2,9 +2,11 @@
- #
- # Phy drivers for Mediatek devices
- #
-+menu "PHY drivers for Mediatek platforms"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+
- config PHY_MTK_TPHY
- 	tristate "MediaTek T-PHY Driver"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	depends on OF && OF_ADDRESS
- 	depends on HAS_IOMEM
- 	select GENERIC_PHY
-@@ -18,7 +20,6 @@ config PHY_MTK_TPHY
- 
- config PHY_MTK_UFS
- 	tristate "MediaTek UFS M-PHY driver"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	depends on OF
- 	select GENERIC_PHY
- 	help
-@@ -29,7 +30,6 @@ config PHY_MTK_UFS
- 
- config PHY_MTK_XSPHY
- 	tristate "MediaTek XS-PHY Driver"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	depends on OF && OF_ADDRESS
- 	depends on HAS_IOMEM
- 	select GENERIC_PHY
-@@ -40,7 +40,6 @@ config PHY_MTK_XSPHY
- 
- config PHY_MTK_HDMI
- 	tristate "MediaTek HDMI-PHY Driver"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	depends on COMMON_CLK
- 	depends on OF
- 	select GENERIC_PHY
-@@ -49,9 +48,10 @@ config PHY_MTK_HDMI
- 
- config PHY_MTK_MIPI_DSI
- 	tristate "MediaTek MIPI-DSI Driver"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
- 	depends on COMMON_CLK
- 	depends on OF
- 	select GENERIC_PHY
- 	help
- 	  Support MIPI DSI for Mediatek SoCs.
-+
-+endmenu
--- 
-2.25.1
+Similar to how a driver for e.g. an I2C device doesn't live in
+drivers/i2c, this doesn't belong in drivers/rpmsg. Probably rather
+directly in the DRM driver.
 
+> +
+>  endmenu
+> diff --git a/drivers/rpmsg/Makefile b/drivers/rpmsg/Makefile
+> index 8d452656f0ee3..8b336b9a817c1 100644
+> --- a/drivers/rpmsg/Makefile
+> +++ b/drivers/rpmsg/Makefile
+> @@ -9,3 +9,4 @@ obj-$(CONFIG_RPMSG_QCOM_GLINK_RPM) += qcom_glink_rpm.o
+>  obj-$(CONFIG_RPMSG_QCOM_GLINK_SMEM) += qcom_glink_smem.o
+>  obj-$(CONFIG_RPMSG_QCOM_SMD)	+= qcom_smd.o
+>  obj-$(CONFIG_RPMSG_VIRTIO)	+= virtio_rpmsg_bus.o
+> +obj-$(CONFIG_RPMSG_APU)		+= apu_rpmsg.o
+> diff --git a/drivers/rpmsg/apu_rpmsg.c b/drivers/rpmsg/apu_rpmsg.c
+> new file mode 100644
+> index 0000000000000..7e504bd176a4d
+> --- /dev/null
+> +++ b/drivers/rpmsg/apu_rpmsg.c
+> @@ -0,0 +1,184 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright 2020 BayLibre SAS
+> +
+> +#include <asm/cacheflush.h>
+> +
+> +#include <linux/cdev.h>
+> +#include <linux/dma-buf.h>
+> +#include <linux/dma-map-ops.h>
+> +#include <linux/dma-mapping.h>
+> +#include <linux/iommu.h>
+> +#include <linux/iova.h>
+> +#include <linux/mm.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/remoteproc.h>
+> +#include <linux/rpmsg.h>
+> +#include <linux/slab.h>
+> +#include <linux/types.h>
+> +
+> +#include <drm/apu_drm.h>
+> +
+> +#include "rpmsg_internal.h"
+> +
+> +#define APU_RPMSG_SERVICE_MT8183 "rpmsg-mt8183-apu0"
+> +
+> +struct rpmsg_apu {
+> +	struct apu_core *core;
+> +	struct rpmsg_device *rpdev;
+> +};
+> +
+> +static int apu_rpmsg_callback(struct rpmsg_device *rpdev, void *data, int count,
+> +			      void *priv, u32 addr)
+> +{
+> +	struct rpmsg_apu *apu = dev_get_drvdata(&rpdev->dev);
+> +	struct apu_core *apu_core = apu->core;
+> +
+> +	return apu_drm_callback(apu_core, data, count);
+> +}
+> +
+> +static int apu_rpmsg_send(struct apu_core *apu_core, void *data, int len)
+> +{
+> +	struct rpmsg_apu *apu = apu_drm_priv(apu_core);
+> +	struct rpmsg_device *rpdev = apu->rpdev;
+> +
+> +	return rpmsg_send(rpdev->ept, data, len);
+
+The rpmsg API is exposed outside drivers/rpmsg, so as I said above, just
+implement this directly in your driver, no need to lug around a dummy
+wrapper for things like this.
+
+> +}
+> +
+> +static struct apu_drm_ops apu_rpmsg_ops = {
+> +	.send = apu_rpmsg_send,
+> +};
+> +
+> +static int apu_init_iovad(struct rproc *rproc, struct rpmsg_apu *apu)
+> +{
+> +	struct resource_table *table;
+> +	struct fw_rsc_carveout *rsc;
+> +	int i;
+> +
+> +	if (!rproc->table_ptr) {
+> +		dev_err(&apu->rpdev->dev,
+> +			"No resource_table: has the firmware been loaded ?\n");
+> +		return -ENODEV;
+> +	}
+> +
+> +	table = rproc->table_ptr;
+> +	for (i = 0; i < table->num; i++) {
+> +		int offset = table->offset[i];
+> +		struct fw_rsc_hdr *hdr = (void *)table + offset;
+> +
+> +		if (hdr->type != RSC_CARVEOUT)
+> +			continue;
+> +
+> +		rsc = (void *)hdr + sizeof(*hdr);
+> +		if (apu_drm_reserve_iova(apu->core, rsc->da, rsc->len)) {
+> +			dev_err(&apu->rpdev->dev,
+> +				"failed to reserve iova\n");
+> +			return -ENOMEM;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static struct rproc *apu_get_rproc(struct rpmsg_device *rpdev)
+> +{
+> +	/*
+> +	 * To work, the APU RPMsg driver need to get the rproc device.
+> +	 * Currently, we only use virtio so we could use that to find the
+> +	 * remoteproc parent.
+> +	 */
+> +	if (!rpdev->dev.parent && rpdev->dev.parent->bus) {
+> +		dev_err(&rpdev->dev, "invalid rpmsg device\n");
+> +		return ERR_PTR(-EINVAL);
+> +	}
+> +
+> +	if (strcmp(rpdev->dev.parent->bus->name, "virtio")) {
+> +		dev_err(&rpdev->dev, "unsupported bus\n");
+> +		return ERR_PTR(-EINVAL);
+> +	}
+> +
+> +	return vdev_to_rproc(dev_to_virtio(rpdev->dev.parent));
+> +}
+> +
+> +static int apu_rpmsg_probe(struct rpmsg_device *rpdev)
+> +{
+> +	struct rpmsg_apu *apu;
+> +	struct rproc *rproc;
+> +	int ret;
+> +
+> +	apu = devm_kzalloc(&rpdev->dev, sizeof(*apu), GFP_KERNEL);
+> +	if (!apu)
+> +		return -ENOMEM;
+> +	apu->rpdev = rpdev;
+> +
+> +	rproc = apu_get_rproc(rpdev);
+
+I believe that you can replace apu_get_rproc() with:
+
+	rproc = rproc_get_by_child(&rpdev->dev);
+
+> +	if (IS_ERR_OR_NULL(rproc))
+> +		return PTR_ERR(rproc);
+> +
+> +	/* Make device dma capable by inheriting from parent's capabilities */
+> +	set_dma_ops(&rpdev->dev, get_dma_ops(rproc->dev.parent));
+> +
+> +	ret = dma_coerce_mask_and_coherent(&rpdev->dev,
+> +					   dma_get_mask(rproc->dev.parent));
+> +	if (ret)
+> +		goto err_put_device;
+> +
+> +	rpdev->dev.iommu_group = rproc->dev.parent->iommu_group;
+
+Would it be better or you if we have a device_node, so that you could
+specify the iommus property for this compute device?
+
+I'm asking because I've seen cases where multi-purpose remoteproc
+firmware operate using multiple different iommu streams...
+
+> +
+> +	apu->core = apu_drm_register_core(rproc, &apu_rpmsg_ops, apu);
+> +	if (!apu->core) {
+> +		ret = -ENODEV;
+> +		goto err_put_device;
+> +	}
+> +
+> +	ret = apu_init_iovad(rproc, apu);
+> +
+> +	dev_set_drvdata(&rpdev->dev, apu);
+> +
+> +	return ret;
+> +
+> +err_put_device:
+
+This label looks misplaced, and sure enough, if apu_init_iovad() fails
+you're not apu_drm_unregister_core().
+
+But on that note, don't you want to apu_init_iovad() before you
+apu_drm_register_core()?
+
+> +	devm_kfree(&rpdev->dev, apu);
+
+The reason for using devm_kzalloc() is that once you return
+unsuccessfully from probe, or from remove the memory is freed.
+
+So devm_kfree() should go in both cases.
+
+> +
+> +	return ret;
+> +}
+> +
+> +static void apu_rpmsg_remove(struct rpmsg_device *rpdev)
+> +{
+> +	struct rpmsg_apu *apu = dev_get_drvdata(&rpdev->dev);
+> +
+> +	apu_drm_unregister_core(apu);
+> +	devm_kfree(&rpdev->dev, apu);
+
+No need to explicitly free devm resources.
+
+Regards,
+Bjorn
+
+> +}
+> +
+> +static const struct rpmsg_device_id apu_rpmsg_match[] = {
+> +	{ APU_RPMSG_SERVICE_MT8183 },
+> +	{}
+> +};
+> +
+> +static struct rpmsg_driver apu_rpmsg_driver = {
+> +	.probe = apu_rpmsg_probe,
+> +	.remove = apu_rpmsg_remove,
+> +	.callback = apu_rpmsg_callback,
+> +	.id_table = apu_rpmsg_match,
+> +	.drv  = {
+> +		.name  = "apu_rpmsg",
+> +	},
+> +};
+> +
+> +static int __init apu_rpmsg_init(void)
+> +{
+> +	return register_rpmsg_driver(&apu_rpmsg_driver);
+> +}
+> +arch_initcall(apu_rpmsg_init);
+> +
+> +static void __exit apu_rpmsg_exit(void)
+> +{
+> +	unregister_rpmsg_driver(&apu_rpmsg_driver);
+> +}
+> +module_exit(apu_rpmsg_exit);
+> +
+> +MODULE_LICENSE("GPL");
+> +MODULE_DESCRIPTION("APU RPMSG driver");
+> -- 
+> 2.31.1
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
