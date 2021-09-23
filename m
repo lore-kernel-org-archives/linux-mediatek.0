@@ -2,78 +2,74 @@ Return-Path: <SRS0=soVQ=ON=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-16.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	URIBL_BLOCKED,USER_AGENT_SANE_2 autolearn=ham autolearn_force=no version=3.4.0
+	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8558FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 09:13:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11DFFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 09:54:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 278AC6124D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 09:13:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 278AC6124D
+	by mail.kernel.org (Postfix) with ESMTPS id D764C61268
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 09:54:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D764C61268
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sn8suK41wRDSTIQ0w+ZStcsI8szhkt/9b1w5qFwg0tQ=; b=EtjAvaolTd52dQ
-	ugZ5uble8sZrwCJBB8k1IlPLSNrvWiVJ2KUcnQxpGRPKBW5mDu4ta0M/C5gawrSDP2YGaf3weAoTJ
-	Qv7BzGKBBsJulsro1MCYbXXGLrGZLm2BI/5nz/khlsHGJuEr8C0Atms+VDHllkBtLJfw9BomQrsp1
-	VB9ot4rJnz2NJ47SORxgQyCGxrsxITC4gdexz44Qn5nzgG0qUmlB1MD5Z386UHxxbCTP93C3pyeU1
-	jvTYnayhDEpv5IJkrN0Fdoncfu738oRSRgxMmr9RvHO6Yrwj1zcWkmdBhRMlRo3YTdjaM3Q0BWwLz
-	jay4SAcGRPMTb/tYu3XA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Qy8xSPAEVbYTxS6MObFBuo6eqKICc8yYq3CJ4yPSOAI=; b=1jKY+HQnlsUVXc
+	QPi4StVUBSPCTt4ZnfyutI5ahgZ90aY8rGN4YgY/GSmBOub8VqQrN+sKAopj9y9LRXmoOAtNW2dDP
+	poUYeBAQPZkyBJpIUKhB5w4VkdE+ZbwFSWdxaPzLZSSn+8VryJguVXYRmHLDJDg+TaqboVhU7UTv5
+	OITaV4KUqBVPyGmg9cRGFThkkFjI7vT/z2DH5vJD7g9tAiPix73vkpv4Wl4H0wDFt61yeu0CHcQ8w
+	9MshhWYmQK99NHAGE08pzYCsaQHN8VrkqNLqTXxVJy5MAEhYJNSapsrOeSYQMgMSoj3XvkZDv+1p7
+	uUMLqW3lavhBEkUR2m9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTKmh-00Ak6R-JF; Thu, 23 Sep 2021 09:12:51 +0000
+	id 1mTLQj-00Aqgz-Tn; Thu, 23 Sep 2021 09:54:13 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTKmd-00Ak58-Dx; Thu, 23 Sep 2021 09:12:50 +0000
-X-UUID: 22e43b19e01e447485171e54aeac8600-20210923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=/30howK7j/l7YGY93CiAwgCUFI2vv6zdM/0ApO7kiuo=; 
- b=We9c6Iwrv9Jqzzzaqx0HGUw0LYmV2mlIul47NPc3BdcH5GGT2iAqV8MJLHJRVuuJ5l1nuaxRg9LsEE5QAsCsaMzCJW4klSUWD6hrZFT9nibXCZv5Oz1o4Y6rnHeAugoGCB2CoviE8FA2+II17LSxpQLMhV9npogPNvVuCznLB3Y=;
-X-UUID: 22e43b19e01e447485171e54aeac8600-20210923
+ id 1mTLQV-00AqfW-PK; Thu, 23 Sep 2021 09:54:02 +0000
+X-UUID: aff8d886b3b5498890154487b89e1c1b-20210923
+X-UUID: aff8d886b3b5498890154487b89e1c1b-20210923
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ (envelope-from <yee.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1634884345; Thu, 23 Sep 2021 02:12:44 -0700
-Received: from MTKMBS31N1.mediatek.inc (172.27.4.69) by
+ with ESMTP id 978753050; Thu, 23 Sep 2021 02:53:55 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Sep 2021 02:02:42 -0700
-Received: from MTKCAS36.mediatek.inc (172.27.4.186) by MTKMBS31N1.mediatek.inc
- (172.27.4.69) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 23 Sep 2021 17:02:32 +0800
-Received: from mhfsdcap04 (10.17.3.154) by MTKCAS36.mediatek.inc
- (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Sep 2021 17:02:32 +0800
-Message-ID: <cf5a0b929b9600ec3314f1370939a94ee43a5519.camel@mediatek.com>
-Subject: Re: [PATCH] phy: mediatek: Kconfig: Add configuration menu for
- Mediatek phy drivers
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Cai Huoqing <caihuoqing@baidu.com>
-CC: Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Date: Thu, 23 Sep 2021 17:02:34 +0800
-In-Reply-To: <20210923025036.348-1-caihuoqing@baidu.com>
-References: <20210923025036.348-1-caihuoqing@baidu.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ 15.0.1497.2; Thu, 23 Sep 2021 02:53:54 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 23 Sep 2021 17:53:52 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 23 Sep 2021 17:53:52 +0800
+From: <yee.lee@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: <nicholas.Tang@mediatek.com>, <Kuan-Ying.lee@mediatek.com>,
+ <chinwen.chang@mediatek.com>, Yee Lee <yee.lee@mediatek.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, "Sami
+ Tolvanen" <samitolvanen@google.com>, "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] scs: Release kasan vmalloc poison in scs_free process
+Date: Thu, 23 Sep 2021 17:53:12 +0800
+Message-ID: <20210923095316.13867-1-yee.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-TM-SNTS-SMTP: 9A3403D1E5A39C749996F7595B03727C5473FB5913C85F838A9D17F76712A9BE2000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210923_021248_921804_A132474A 
-X-CRM114-Status: GOOD (  13.79  )
+X-CRM114-CacheID: sfid-20210923_025359_871957_5AC43C71 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,73 +86,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-09-23 at 10:50 +0800, Cai Huoqing wrote:
-> Adding a configuration menu to hold many Mediatek phy drivers
-> helps to make the menu display more concise.
-> 
-> Signed-off-by: Cai Huoqing <caihuoqing@baidu.com>
-> ---
->  drivers/phy/mediatek/Kconfig | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/phy/mediatek/Kconfig
-> b/drivers/phy/mediatek/Kconfig
-> index 55f8e6c048ab..5da045813b5a 100644
-> --- a/drivers/phy/mediatek/Kconfig
-> +++ b/drivers/phy/mediatek/Kconfig
-> @@ -2,9 +2,11 @@
->  #
->  # Phy drivers for Mediatek devices
->  #
-> +menu "PHY drivers for Mediatek platforms"
-> +	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +
->  config PHY_MTK_TPHY
->  	tristate "MediaTek T-PHY Driver"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	depends on OF && OF_ADDRESS
->  	depends on HAS_IOMEM
->  	select GENERIC_PHY
-> @@ -18,7 +20,6 @@ config PHY_MTK_TPHY
->  
->  config PHY_MTK_UFS
->  	tristate "MediaTek UFS M-PHY driver"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	depends on OF
->  	select GENERIC_PHY
->  	help
-> @@ -29,7 +30,6 @@ config PHY_MTK_UFS
->  
->  config PHY_MTK_XSPHY
->  	tristate "MediaTek XS-PHY Driver"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	depends on OF && OF_ADDRESS
->  	depends on HAS_IOMEM
->  	select GENERIC_PHY
-> @@ -40,7 +40,6 @@ config PHY_MTK_XSPHY
->  
->  config PHY_MTK_HDMI
->  	tristate "MediaTek HDMI-PHY Driver"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	depends on COMMON_CLK
->  	depends on OF
->  	select GENERIC_PHY
-> @@ -49,9 +48,10 @@ config PHY_MTK_HDMI
->  
->  config PHY_MTK_MIPI_DSI
->  	tristate "MediaTek MIPI-DSI Driver"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
->  	depends on COMMON_CLK
->  	depends on OF
->  	select GENERIC_PHY
->  	help
->  	  Support MIPI DSI for Mediatek SoCs.
-> +
-> +endmenu
+From: Yee Lee <yee.lee@mediatek.com>
 
-Reviewed-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Since scs allocation has been moved to vmalloc region, the
+shadow stack is protected by kasan_posion_vmalloc.
+However, the vfree_atomic operation needs to access
+its context for scs_free process and causes kasan error
+as the dump info below.
 
-Thanks a lot
+This patch Adds kasan_unpoison_vmalloc() before vfree_atomic,
+which aligns to the prior flow as using kmem_cache.
+The vmalloc region will go back posioned in the following
+vumap() operations.
+
+ ==================================================================
+ BUG: KASAN: vmalloc-out-of-bounds in llist_add_batch+0x60/0xd4
+ Write of size 8 at addr ffff8000100b9000 by task kthreadd/2
+
+ CPU: 0 PID: 2 Comm: kthreadd Not tainted 5.15.0-rc2-11681-(skip)
+ Hardware name: linux,dummy-virt (DT)
+ Call trace:
+  dump_backtrace+0x0/0x43c
+  show_stack+0x1c/0x2c
+  dump_stack_lvl+0x68/0x84
+  print_address_description+0x80/0x394
+  kasan_report+0x180/0x1dc
+  __asan_report_store8_noabort+0x48/0x58
+  llist_add_batch+0x60/0xd4
+  vfree_atomic+0x60/0xe0
+  scs_free+0x1dc/0x1fc
+  scs_release+0xa4/0xd4
+  free_task+0x30/0xe4
+  __put_task_struct+0x1ec/0x2e0
+  delayed_put_task_struct+0x5c/0xa0
+  rcu_do_batch+0x62c/0x8a0
+  rcu_core+0x60c/0xc14
+  rcu_core_si+0x14/0x24
+  __do_softirq+0x19c/0x68c
+  irq_exit+0x118/0x2dc
+  handle_domain_irq+0xcc/0x134
+  gic_handle_irq+0x7c/0x1bc
+  call_on_irq_stack+0x40/0x70
+  do_interrupt_handler+0x78/0x9c
+  el1_interrupt+0x34/0x60
+  el1h_64_irq_handler+0x1c/0x2c
+  el1h_64_irq+0x78/0x7c
+  _raw_spin_unlock_irqrestore+0x40/0xcc
+  sched_fork+0x4f0/0xb00
+  copy_process+0xacc/0x3648
+  kernel_clone+0x168/0x534
+  kernel_thread+0x13c/0x1b0
+  kthreadd+0x2bc/0x400
+  ret_from_fork+0x10/0x20
+
+ Memory state around the buggy address:
+  ffff8000100b8f00: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  ffff8000100b8f80: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+ >ffff8000100b9000: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+                    ^
+  ffff8000100b9080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  ffff8000100b9100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+ ==================================================================
+
+CC: Matthias Brugger <matthias.bgg@gmail.com>
+CC: Will Deacon <will@kernel.org>
+CC: Sami Tolvanen <samitolvanen@google.com>
+Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+---
+ kernel/scs.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kernel/scs.c b/kernel/scs.c
+index e2a71fc82fa0..25c0d8e416e6 100644
+--- a/kernel/scs.c
++++ b/kernel/scs.c
+@@ -68,6 +68,7 @@ void scs_free(void *s)
+ 
+ 	__scs_account(s, -1);
+ 
++	kasan_unpoison_vmalloc(s, SCS_SIZE);
+ 	/*
+ 	 * We cannot sleep as this can be called in interrupt context,
+ 	 * so use this_cpu_cmpxchg to update the cache, and vfree_atomic
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
