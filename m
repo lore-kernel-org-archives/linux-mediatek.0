@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C44B7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:18:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7FB1CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:18:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8DD156124B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:18:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DD156124B
+	by mail.kernel.org (Postfix) with ESMTPS id 526CA61216
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:18:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 526CA61216
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,33 +24,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M+ew7m7OloaxTuWxUuDkew9JevAswn1ml5hndNPfAfg=; b=EGCfZaK71EZj7e
-	GTnjTckvYXDQi7kDMu8cdQJNf3bgOeiajfO3k4YAg+/wkWjUiPEzqLfMb28/7kEzphymFFqkjuxuy
-	dLNJWJE0f78uMvGtp1ZPs6fqUeQVMLxsH9ueLs9OAsM2Abf6bmRLSEg36uItd80jPDK/X1xLArNWh
-	DkvJEJz9EfJ1EytpnC3V1WvSxTxljV1+IR9PVOIHy4neI+ZzpjfqymQ2rPGGfKsnpzdQWQZe2p2YN
-	JOaYJ7lL24pNdo7BeZfRqz9y5brB6PkUlQpg6EQAXQE1gFY4OIUI7Wtd+U9ikPyzplONVXvY2Fo9v
-	DZJe3csWLGfPza40Q3pA==;
+	List-Owner; bh=yW7T4veWuAR87WUAMVxf95OC1WPN+S/1BsbGcuNmT/4=; b=ojN9vFdcJOFIeW
+	P1TBPZZ1V7R4k1hgSLFPC8bOIWxu1ZZbaaC+KL3jWODsWwBuJYRE5ksizTXk96XrJLCJ9woQaj0ne
+	ZXtog8zcVLvWtrYzOdt0LbTvOlzbsUEWjiYWeWspZaRy2F8Pe+bYJP8DhE4kQH9CbiCrLiY82giy+
+	yB9sF92Rew9gq1xqXb6BcdQzxzX6qRPZEMpAD/b/Te26GfAcol+X1zRw7yIz1a+lJHkPZWLkLCnJ4
+	ULpx+vJjtOWr2GoDeRbt1SMPly6YqfxlF3k77YqESp2SI18hYl7TYyNTnQPx8TIGj9meFfRWk54eO
+	2COi417kyWLndHH6IeBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTNfn-00BItu-DU; Thu, 23 Sep 2021 12:17:55 +0000
+	id 1mTNfr-00BIvm-2l; Thu, 23 Sep 2021 12:17:59 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTNXk-00BEZk-7o; Thu, 23 Sep 2021 12:09:39 +0000
-X-UUID: 0213cdb76ea24063bb5f766e53d37a60-20210923
-X-UUID: 0213cdb76ea24063bb5f766e53d37a60-20210923
+ id 1mTNXn-00BEZk-VN; Thu, 23 Sep 2021 12:09:41 +0000
+X-UUID: 6b3c9a0353004c7baaee997fc81e43de-20210923
+X-UUID: 6b3c9a0353004c7baaee997fc81e43de-20210923
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1548020466; Thu, 23 Sep 2021 05:09:33 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 561225143; Thu, 23 Sep 2021 05:09:33 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Sep 2021 05:03:12 -0700
+ 15.0.1497.2; Thu, 23 Sep 2021 05:00:39 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Sep 2021 20:03:10 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Sep 2021 20:00:37 +0800
 Received: from localhost.localdomain (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Sep 2021 20:03:09 +0800
+ Transport; Thu, 23 Sep 2021 20:00:36 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
@@ -62,17 +62,17 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
  <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  <yong.wu@mediatek.com>, <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
  <chao.hao@mediatek.com>, <yen-chang.chen@mediatek.com>
-Subject: [PATCH v3 27/33] iommu/mediatek: Initialise bank HW for each a bank
-Date: Thu, 23 Sep 2021 19:58:34 +0800
-Message-ID: <20210923115840.17813-28-yong.wu@mediatek.com>
+Subject: [PATCH v3 10/33] iommu/mediatek: Add tlb_lock in tlb_flush_all
+Date: Thu, 23 Sep 2021 19:58:17 +0800
+Message-ID: <20210923115840.17813-11-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210923115840.17813-1-yong.wu@mediatek.com>
 References: <20210923115840.17813-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210923_050936_434280_A418D86A 
-X-CRM114-Status: GOOD (  19.30  )
+X-CRM114-CacheID: sfid-20210923_050940_099308_D207EB88 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,123 +89,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mt8195 IOMMU HW max support 5 banks, and regarding the banks'
-registers, it looks like:
-
- ----------------------------------------
- |bank0  | bank1 | bank2 | bank3 | bank4|
- ----------------------------------------
- |global |
- |control|         null
- |regs   |
- -----------------------------------------
- |bank   |bank   |bank   |bank   |bank   |
- |regs   |regs   |regs   |regs   |regs   |
- |       |       |       |       |       |
- -----------------------------------------
-
-Each bank has some special bank registers and it share bank0's global
-control registers. this patch initialise the bank hw with the bankid.
-
-In the hw_init, we always initialise bank0's control register since
-we don't know if the bank0 is initialised.
-
-Additionally, About each bank's register base, always delta 0x1000.
-like bank[x + 1] = bank[x] + 0x1000.
+The tlb_flush_all also touches the registers about tlb operations.
+Add spinlock in it to protect the tlb registers. since the tlb_range
+already hold the spinlock, move it a bit outside the spinlock to
+print log.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 28 +++++++++++++++++-----------
- 1 file changed, 17 insertions(+), 11 deletions(-)
+ drivers/iommu/mtk_iommu.c | 25 ++++++++++++++++++-------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 6ef3eb3cad92..c139675d99e6 100644
+index 0b4c30baa864..ab484d20b441 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -152,7 +152,7 @@ struct mtk_iommu_domain {
+@@ -204,15 +204,24 @@ static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
+ 	return container_of(dom, struct mtk_iommu_domain, domain);
+ }
  
- static const struct iommu_ops mtk_iommu_ops;
- 
--static int mtk_iommu_hw_init(const struct mtk_iommu_data *data);
-+static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid);
- 
- #define MTK_IOMMU_TLB_ADDR(iova) ({					\
- 	dma_addr_t _addr = iova;					\
-@@ -520,12 +520,12 @@ static int mtk_iommu_attach_device(struct iommu_domain *domain,
- 		dom->bank = bank;
- 	}
- 
--	if (!bank->m4u_dom) { /* Initialize the M4U HW */
-+	if (!bank->m4u_dom) { /* Initialize the M4U HW for each a BANK */
- 		ret = pm_runtime_resume_and_get(m4udev);
- 		if (ret < 0)
- 			return ret;
- 
--		ret = mtk_iommu_hw_init(data);
-+		ret = mtk_iommu_hw_init(data, bankid);
- 		if (ret) {
- 			pm_runtime_put(m4udev);
- 			return ret;
-@@ -729,11 +729,16 @@ static const struct iommu_ops mtk_iommu_ops = {
- 	.owner		= THIS_MODULE,
- };
- 
--static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
-+static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int bankid)
+-static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
++static void mtk_iommu_tlb_do_flush_all(struct mtk_iommu_data *data)
  {
-+	const struct mtk_iommu_bank_data *bankx = &data->bank[bankid];
- 	const struct mtk_iommu_bank_data *bank0 = &data->bank[0];
- 	u32 regval;
+-	if (pm_runtime_get_if_in_use(data->dev) <= 0)
+-		return;
++	unsigned long flags;
  
-+	/*
-+	 * Global control settings are in bank0. May re-init these global registers
-+	 * since no sure if there is bank0 consumers.
-+	 */
- 	if (data->plat_data->m4u_plat == M4U_MT8173) {
- 		regval = F_MMU_PREFETCH_RT_REPLACE_MOD |
- 			 F_MMU_TF_PROT_TO_PROGRAM_ADDR_MT8173;
-@@ -776,13 +781,14 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 	}
- 	writel_relaxed(regval, bank0->base + REG_MMU_MISC_CTRL);
++	spin_lock_irqsave(&data->tlb_lock, flags);
+ 	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+ 		       data->base + data->plat_data->inv_sel_reg);
+ 	writel_relaxed(F_ALL_INVLD, data->base + REG_MMU_INVALIDATE);
+ 	wmb(); /* Make sure the tlb flush all done */
++	spin_unlock_irqrestore(&data->tlb_lock, flags);
++}
++
++static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
++{
++	if (pm_runtime_get_if_in_use(data->dev) <= 0)
++		return;
++
++	mtk_iommu_tlb_do_flush_all(data);
  
-+	/* Independent settings for each bank */
- 	regval = F_L2_MULIT_HIT_EN |
- 		F_TABLE_WALK_FAULT_INT_EN |
- 		F_PREETCH_FIFO_OVERFLOW_INT_EN |
- 		F_MISS_FIFO_OVERFLOW_INT_EN |
- 		F_PREFETCH_FIFO_ERR_INT_EN |
- 		F_MISS_FIFO_ERR_INT_EN;
--	writel_relaxed(regval, bank0->base + REG_MMU_INT_CONTROL0);
-+	writel_relaxed(regval, bankx->base + REG_MMU_INT_CONTROL0);
+ 	pm_runtime_put(data->dev);
+ }
+@@ -247,14 +256,16 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+ 		/* tlb sync */
+ 		ret = readl_poll_timeout_atomic(data->base + REG_MMU_CPE_DONE,
+ 						tmp, tmp != 0, 10, 1000);
++
++		/* Clear the CPE status */
++		writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
++		spin_unlock_irqrestore(&data->tlb_lock, flags);
++
+ 		if (ret) {
+ 			dev_warn(data->dev,
+ 				 "Partial TLB flush timed out, falling back to full flush\n");
+-			mtk_iommu_tlb_flush_all(data);
++			mtk_iommu_tlb_do_flush_all(data);
+ 		}
+-		/* Clear the CPE status */
+-		writel_relaxed(0, data->base + REG_MMU_CPE_DONE);
+-		spin_unlock_irqrestore(&data->tlb_lock, flags);
  
- 	regval = F_INT_TRANSLATION_FAULT |
- 		F_INT_MAIN_MULTI_HIT_FAULT |
-@@ -791,19 +797,19 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data)
- 		F_INT_TLB_MISS_FAULT |
- 		F_INT_MISS_TRANSACTION_FIFO_FAULT |
- 		F_INT_PRETETCH_TRANSATION_FIFO_FAULT;
--	writel_relaxed(regval, bank0->base + REG_MMU_INT_MAIN_CONTROL);
-+	writel_relaxed(regval, bankx->base + REG_MMU_INT_MAIN_CONTROL);
- 
- 	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_LEGACY_IVRP_PADDR))
- 		regval = (data->protect_base >> 1) | (data->enable_4GB << 31);
- 	else
- 		regval = lower_32_bits(data->protect_base) |
- 			 upper_32_bits(data->protect_base);
--	writel_relaxed(regval, bank0->base + REG_MMU_IVRP_PADDR);
-+	writel_relaxed(regval, bankx->base + REG_MMU_IVRP_PADDR);
- 
--	if (devm_request_irq(bank0->pdev, bank0->irq, mtk_iommu_isr, 0,
--			     dev_name(bank0->pdev), (void *)bank0)) {
--		writel_relaxed(0, bank0->base + REG_MMU_PT_BASE_ADDR);
--		dev_err(bank0->pdev, "Failed @ IRQ-%d Request\n", bank0->irq);
-+	if (devm_request_irq(bankx->pdev, bankx->irq, mtk_iommu_isr, 0,
-+			     dev_name(bankx->pdev), (void *)bankx)) {
-+		writel_relaxed(0, bankx->base + REG_MMU_PT_BASE_ADDR);
-+		dev_err(bankx->pdev, "Failed @ IRQ-%d Request\n", bankx->irq);
- 		return -ENODEV;
- 	}
- 
+ 		if (has_pm)
+ 			pm_runtime_put(data->dev);
 -- 
 2.18.0
 
