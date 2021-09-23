@@ -8,14 +8,14 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	URIBL_BLOCKED,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
 	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77C98C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:01:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B381C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:02:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4FEBE60F11
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:01:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4FEBE60F11
+	by mail.kernel.org (Postfix) with ESMTPS id 13535610A0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Sep 2021 12:02:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 13535610A0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -24,33 +24,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RIankJPFb6XUAjEBYiR04cVOlh49e5suolofjbi/zBA=; b=X0sJgSEz6tReau
-	x0ScfEwKebO+k+h1KXZkwbZknnTHmCZRnPTGRtDtmOsxcM5+mbVbi7rtqqQHcFc+Doy5lEZk7BWpi
-	JGpQHf9BgDfLQvi6FmwsyOqnUH0Zbp0sPMvEoL+sLW+Fr9+IYUEsZHutNnsZQzyGyb3bqUY788Ih8
-	WGRQyX4Az8VoZAFM2u4DTQXEOOSOXQcRve/PQrrSy25t1UkUAK/Od99shRxJZb/IyPDC8VfnSHp1f
-	lzPMFkuQS6Rxk0kPUxlQs8Jq/aBHcIF/wIWqd4O0hNcInN14wpVJh2UNc2X+35BqrjHQPhVxxgYVs
-	OJ4Xj4OhktXth3//OjfA==;
+	List-Owner; bh=khwRVlsHydASY6dAHjAJOitWlmK4yHnOxxqAvtVGkbg=; b=gk+xSuNYiuzBBN
+	mi4PaCbnZmxGBOazouvldvJVkLXha+pGMkjwGapQL4HWWzts2Vg2v3Ts/M1oXlmJO5qYM5jXC7hhQ
+	6KVUPG4j3QRa46SHnx+/eedT4XfaXy5aJbdoNdkHCjsNZni9FRe72v8D8ppNesU1Z9wY9cjUEsz6y
+	Q3Ua3QquleWByYV+y/LiYYSPA+AVei7YGZb+zHvh9RZEa6CgY2+3fYCffhLqO0qvdVhP3FG9WdGZ4
+	MGPa8jUY200cOdvlvr5IeaORQCfDO7redEfMzaz7RTxtYCFM0cYZNetJKvbrWgEubstcV/jVXtrSL
+	9qWnuY1jxPJ75kz1w4iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTNPo-00BBHh-GM; Thu, 23 Sep 2021 12:01:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mTNQs-00BC0Y-PT; Thu, 23 Sep 2021 12:02:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTNPV-00BB6g-7r; Thu, 23 Sep 2021 12:01:06 +0000
-X-UUID: 6d4d8fc2ce4b4c8085c8b234664c0ec3-20210923
-X-UUID: 6d4d8fc2ce4b4c8085c8b234664c0ec3-20210923
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1mTNPy-00BBOP-JM; Thu, 23 Sep 2021 12:01:36 +0000
+X-UUID: 4ab973f24c294b3eb89cedc335bb907b-20210923
+X-UUID: 4ab973f24c294b3eb89cedc335bb907b-20210923
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 233026155; Thu, 23 Sep 2021 05:01:02 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1478817770; Thu, 23 Sep 2021 05:01:30 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Sep 2021 05:01:00 -0700
+ 15.0.1497.2; Thu, 23 Sep 2021 05:01:28 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Sep 2021 20:00:59 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Sep 2021 20:01:27 +0800
 Received: from localhost.localdomain (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 23 Sep 2021 20:00:58 +0800
+ Transport; Thu, 23 Sep 2021 20:01:26 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  "Matthias Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
@@ -62,18 +62,17 @@ CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
  <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
  <yong.wu@mediatek.com>, <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
  <chao.hao@mediatek.com>, <yen-chang.chen@mediatek.com>
-Subject: [PATCH v3 12/33] iommu/mediatek: Always tlb_flush_all when each PM
- resume
-Date: Thu, 23 Sep 2021 19:58:19 +0800
-Message-ID: <20210923115840.17813-13-yong.wu@mediatek.com>
+Subject: [PATCH v3 15/33] iommu/mediatek: Add SUB_COMMON_3BITS flag
+Date: Thu, 23 Sep 2021 19:58:22 +0800
+Message-ID: <20210923115840.17813-16-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210923115840.17813-1-yong.wu@mediatek.com>
 References: <20210923115840.17813-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210923_050105_350135_4540584F 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20210923_050134_755644_FEE48746 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,60 +89,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prepare for 2 HWs that sharing pgtable in different power-domains.
-
-When there are 2 M4U HWs, it may has problem in the flush_range in which
-we get the pm_status via the m4u dev, BUT that function don't reflect the
-real power-domain status of the HW since there may be other HW also use
-that power-domain.
-
-The function dma_alloc_attrs help allocate the iommu buffer which
-need the corresponding power domain since tlb flush is needed when
-preparing iova. BUT this function only is for allocating buffer,
-we have no good reason to request the user always call pm_runtime_get
-before calling dma_alloc_xxx. Therefore, we add a tlb_flush_all
-in the pm_runtime_resume to make sure the tlb always is clean.
-
-Another solution is always call pm_runtime_get in the tlb_flush_range.
-This will trigger pm runtime resume/backup so often when the iommu
-power is not active at some time(means user don't call pm_runtime_get
-before calling dma_alloc_xxx), This may cause the performance drop.
-thus we don't use this.
-
-In other case, the iommu's power should always be active via device
-link with smi.
-
-The previous SoC don't have PM except mt8192. the mt8192 IOMMU is display's
-power-domain which nearly always is enabled. thus no need fix tags here.
-Prepare for mt8195.
+In prevous SoC, the sub common id occupy 2 bits. the mt8195's sub common
+id has 3bits. Add a new flag for this. and rename the prevous flag to
+_2BITS. For readable, I put these two flags together, then move the
+other flags. no functional change.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ drivers/iommu/mtk_iommu.c | 26 ++++++++++++++++----------
+ drivers/iommu/mtk_iommu.h |  2 +-
+ 2 files changed, 17 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 44cf5547d084..e9e94944ed91 100644
+index ef98f19ce86e..d557c3437d67 100644
 --- a/drivers/iommu/mtk_iommu.c
 +++ b/drivers/iommu/mtk_iommu.c
-@@ -984,6 +984,17 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
- 		return ret;
- 	}
+@@ -105,6 +105,8 @@
+ #define REG_MMU1_INT_ID				0x154
+ #define F_MMU_INT_ID_COMM_ID(a)			(((a) >> 9) & 0x7)
+ #define F_MMU_INT_ID_SUB_COMM_ID(a)		(((a) >> 7) & 0x3)
++#define F_MMU_INT_ID_COMM_ID_EXT(a)		(((a) >> 10) & 0x7)
++#define F_MMU_INT_ID_SUB_COMM_ID_EXT(a)		(((a) >> 7) & 0x7)
+ #define F_MMU_INT_ID_LARB_ID(a)			(((a) >> 7) & 0x7)
+ #define F_MMU_INT_ID_PORT_ID(a)			(((a) >> 2) & 0x1f)
  
-+	/*
-+	 * Users may allocate dma buffer before they call pm_runtime_get, then
-+	 * it will lack the necessary tlb flush.
-+	 *
-+	 * We have no good reason to request the users always call dma_alloc_xx
-+	 * after pm_runtime_get_sync.
-+	 *
-+	 * Thus, Make sure the tlb always is clean after each PM resume.
-+	 */
-+	mtk_iommu_tlb_do_flush_all(data);
-+
- 	/*
- 	 * Uppon first resume, only enable the clk and return, since the values of the
- 	 * registers are not yet set.
+@@ -116,13 +118,14 @@
+ #define HAS_VLD_PA_RNG			BIT(2)
+ #define RESET_AXI			BIT(3)
+ #define OUT_ORDER_WR_EN			BIT(4)
+-#define HAS_SUB_COMM			BIT(5)
+-#define WR_THROT_EN			BIT(6)
+-#define HAS_LEGACY_IVRP_PADDR		BIT(7)
+-#define IOVA_34_EN			BIT(8)
+-#define SHARE_PGTABLE			BIT(9) /* 2 HW share pgtable */
+-#define DCM_DISABLE			BIT(10)
+-#define NOT_STD_AXI_MODE		BIT(11)
++#define HAS_SUB_COMM_2BITS		BIT(5)
++#define HAS_SUB_COMM_3BITS		BIT(6)
++#define WR_THROT_EN			BIT(7)
++#define HAS_LEGACY_IVRP_PADDR		BIT(8)
++#define IOVA_34_EN			BIT(9)
++#define SHARE_PGTABLE			BIT(10) /* 2 HW share pgtable */
++#define DCM_DISABLE			BIT(11)
++#define NOT_STD_AXI_MODE		BIT(12)
+ 
+ #define MTK_IOMMU_HAS_FLAG(pdata, _x) \
+ 		((((pdata)->flags) & (_x)) == (_x))
+@@ -296,9 +299,12 @@ static irqreturn_t mtk_iommu_isr(int irq, void *dev_id)
+ 	fault_pa |= (u64)pa34_32 << 32;
+ 
+ 	fault_port = F_MMU_INT_ID_PORT_ID(regval);
+-	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM)) {
++	if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_2BITS)) {
+ 		fault_larb = F_MMU_INT_ID_COMM_ID(regval);
+ 		sub_comm = F_MMU_INT_ID_SUB_COMM_ID(regval);
++	} else if (MTK_IOMMU_HAS_FLAG(data->plat_data, HAS_SUB_COMM_3BITS)) {
++		fault_larb = F_MMU_INT_ID_COMM_ID_EXT(regval);
++		sub_comm = F_MMU_INT_ID_SUB_COMM_ID_EXT(regval);
+ 	} else {
+ 		fault_larb = F_MMU_INT_ID_LARB_ID(regval);
+ 	}
+@@ -1027,7 +1033,7 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+ 
+ static const struct mtk_iommu_plat_data mt6779_data = {
+ 	.m4u_plat      = M4U_MT6779,
+-	.flags         = HAS_SUB_COMM | OUT_ORDER_WR_EN | WR_THROT_EN |
++	.flags         = HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN | WR_THROT_EN |
+ 			 NOT_STD_AXI_MODE,
+ 	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
+ 	.iova_region   = single_domain,
+@@ -1065,7 +1071,7 @@ static const struct mtk_iommu_plat_data mt8183_data = {
+ 
+ static const struct mtk_iommu_plat_data mt8192_data = {
+ 	.m4u_plat       = M4U_MT8192,
+-	.flags          = HAS_BCLK | HAS_SUB_COMM | OUT_ORDER_WR_EN |
++	.flags          = HAS_BCLK | HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN |
+ 			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE,
+ 	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
+ 	.iova_region    = mt8192_multi_dom,
+diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+index 027a42396557..5b32277fee99 100644
+--- a/drivers/iommu/mtk_iommu.h
++++ b/drivers/iommu/mtk_iommu.h
+@@ -20,7 +20,7 @@
+ #include <dt-bindings/memory/mtk-memory-port.h>
+ 
+ #define MTK_LARB_COM_MAX	8
+-#define MTK_LARB_SUBCOM_MAX	4
++#define MTK_LARB_SUBCOM_MAX	8
+ 
+ #define MTK_IOMMU_GROUP_MAX	8
+ 
 -- 
 2.18.0
 
