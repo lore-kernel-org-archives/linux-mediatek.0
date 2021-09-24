@@ -2,78 +2,84 @@ Return-Path: <SRS0=tGyr=OO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D100EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:27:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EC062C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:46:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9142F61211
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:27:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9142F61211
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 82A2760E94
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:46:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 82A2760E94
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sx+tlVV+PjGM/Ev1QZV/SNFHOKPcfdf2VERZ8aXwR80=; b=TywZZ9B6ejjCdu
-	Otjnr9ptfUy4kXFQsJYY6UdzYsMoXEo58lWxnyUe8KAVMiKSvL3uxcpX6OO1IFuAf8NVRzhIa1I1d
-	55bX89p6t/CrL+LGrUb/G4icrNENeFGrrLz1XmQJzNv3QBz6jO/lrkc2q6Q7nplPd9eWBwsJnldyv
-	GMDT0RvOPD7Q5UNeiZgiNWT2fbVm2AmUPQc3U/9FmN4bkNDD1tPSJa7lgn1bVlDq1djboSFhVYEpF
-	9FDj8DFBPHK6wP8K6+95Oaxkb9agAu6ibQhPHhL2cZgOiKGaFcDl26UdguRvwaNhV9rg6cf5kZgJ4
-	X+g4zSgvbogW5cMadSSQ==;
+	List-Owner; bh=nfTa1fvRjuLrXucRVg7VUFXCbWUOnM2ReolY9qTO+vg=; b=HN5P0xv3lI1umn
+	o/sp4rdypBxAS2eGWVyhmACYm6umNz5wgaaTXAJotOfjmcmQUfjfZOkn2Jrc/MrSr3mKfixxJcDtx
+	9sxf2vC0VI9vnE4CvKXjOpt8YpEba7Df846jfT4sGzWSQEDQstH9G1bQAVDVqMfbZ/7QDfTyHdw+F
+	RtHGxEn0WEyAk3BEiE3vgdpqp+P28jCJR68XRXJe1hNhWZDudVtq3H/xGuSWvna6LHOS5nI2/1sju
+	Xf2H5q8KkNo+StLp7OlnEcJhvX9iURS/Blpf1fwW2IMwciRZK4iPAD+bpv2ycpwwiriMDA40JEYmy
+	40zqVtlGQIYw1eyzn0Pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTfcX-00DJ4j-CE; Fri, 24 Sep 2021 07:27:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mTftz-00DMq9-KF; Fri, 24 Sep 2021 07:45:47 +0000
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTfc0-00DIy9-K6; Fri, 24 Sep 2021 07:27:15 +0000
-X-UUID: e88b45a48daa42188f75b78fc5f04bb7-20210924
-X-UUID: e88b45a48daa42188f75b78fc5f04bb7-20210924
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <kyrie.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 819511756; Fri, 24 Sep 2021 00:27:08 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 00:17:05 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 15:17:03 +0800
-Received: from localhost.localdomain (10.17.3.154) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Sep 2021 15:17:03 +0800
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa
- <tfiga@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <xia.jiang@mediatek.com>,
- <maoguang.meng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <kyrie.wu@mediatek.com>
-Subject: [PATCH V3,
- 2/5] media: mtk-jpegenc: Use component framework to manage each
- hardware
-Date: Fri, 24 Sep 2021 15:16:55 +0800
-Message-ID: <1632467818-26753-2-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1632467818-26753-1-git-send-email-kyrie.wu@mediatek.com>
-References: <1632467818-26753-1-git-send-email-kyrie.wu@mediatek.com>
+ id 1mTftv-00DMoS-UH
+ for linux-mediatek@lists.infradead.org; Fri, 24 Sep 2021 07:45:46 +0000
+Received: by mail-lf1-x131.google.com with SMTP id y28so36454581lfb.0
+ for <linux-mediatek@lists.infradead.org>; Fri, 24 Sep 2021 00:45:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6r3n+oMkS+1m9CMR5SVIX92RKOC994J4ZlQbNQONT08=;
+ b=AvPuoD4QHALwEbG+X1yQAGFCZGrqsjLLyufvZXVWb1zxomOQWcA/2hPFQvd1yNgdD4
+ jsQc+qf8czhkwwGhhcF6+gZNk3jd4wum+HxcQaWzq14giETyxdYEXvdfzVRAknreBZYe
+ P/g9pAOz28gFYRlejXxokPyDrdugmMe6VHZH4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6r3n+oMkS+1m9CMR5SVIX92RKOC994J4ZlQbNQONT08=;
+ b=jVvO0lnM+pTqJlJ8TD4dCEi6LDo4jiTImCz6DvYQF2Occ7f8mZh5Asm/nz13VM2wp1
+ Ee+m04RvERaham4c4YeuMI2EX7qmilxLEGID7AaQfkceSrjNI4EAzD/3eSqwiZ4XHcAa
+ p4swMwqOL3uyiSpHSP5+pKXTQur+dnwNOBp4su+oglp7dkO/5r7E5qKOf8zFcL58SNqI
+ BHLhzueqjaE1CYCSNxQKvrU1CoS662Axd886Vgh8iM9zf1H88fsW85XhqiF8Vrk/WdQN
+ 5PDFUCAqGfPuOMjmoLdR49PkEB3udPsQJ7UuiRu9roYu8UDLJnzsE6UtwgG7nC0003AX
+ Ka2A==
+X-Gm-Message-State: AOAM533HxZHvW8Rr7DeaAZ4LfhMnmNRWU3csR7X4wzdc8LaKLN1b/kqN
+ HfMUmQ0cHD0UBjy4rRhnt20AnTigFO4P0qox6IJtRQ==
+X-Google-Smtp-Source: ABdhPJyBhXeIu2Zw33HRgzYkQh64RNnxu61z7lca2fm9gf2t8m7AWUwsUcMaDJgS5Lw3Qn7oNBIJ3kYnk6gg1uZTI58=
+X-Received: by 2002:ac2:4bc1:: with SMTP id o1mr7980659lfq.597.1632469540978; 
+ Fri, 24 Sep 2021 00:45:40 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210922093303.23720-1-seiya.wang@mediatek.com>
+ <20210922093303.23720-2-seiya.wang@mediatek.com>
+In-Reply-To: <20210922093303.23720-2-seiya.wang@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 24 Sep 2021 15:45:29 +0800
+Message-ID: <CAGXv+5GOHVPBEUBEsLnM0NhRP95F1f==uP9CG-qWjztfqTpQ5Q@mail.gmail.com>
+Subject: Re: [PATCH v4 1/1] arm64: dts: Add Mediatek SoC MT8195 and evaluation
+ board dts and Makefile
+To: Seiya Wang <seiya.wang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Devicetree List <devicetree@vger.kernel.org>,
+ LKML <linux-kernel@vger.kernel.org>, 
+ srv_heupstream <srv_heupstream@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_002712_683912_42288B42 
-X-CRM114-Status: GOOD (  27.40  )
+X-CRM114-CacheID: sfid-20210924_004544_000146_40F22AD8 
+X-CRM114-Status: GOOD (  20.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,634 +96,531 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two jpeg encoding hardware inside MT8195, uses component
-framework to manage each hardware so that the two hardwares can be
-used through just one jpeg encoding device node.
+Hi,
 
-In the component framework architecture, for one thing,the component,
-represents the each hardware of jpeg encoding. For another, the master,
-registering a device node, managed all components through the node.
+On Wed, Sep 22, 2021 at 5:43 PM Seiya Wang <seiya.wang@mediatek.com> wrote:
+>
+> Add basic chip support for Mediatek MT8195
+>
+> Signed-off-by: Seiya Wang <seiya.wang@mediatek.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile       |    1 +
+>  arch/arm64/boot/dts/mediatek/mt8195-evb.dts |   29 +
+>  arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 1024 +++++++++++++++++++++++++++
+>  3 files changed, 1054 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+>  create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 4f68ebed2e31..7aa08bb4c078 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -32,4 +32,5 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku0.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-krane-sku176.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-pumpkin.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8192-evb.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt8195-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8516-pumpkin.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+> new file mode 100644
+> index 000000000000..82bb10e9a531
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+> @@ -0,0 +1,29 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Seiya Wang <seiya.wang@mediatek.com>
+> + */
+> +/dts-v1/;
+> +#include "mt8195.dtsi"
+> +
+> +/ {
+> +       model = "MediaTek MT8195 evaluation board";
+> +       compatible = "mediatek,mt8195-evb", "mediatek,mt8195";
+> +
+> +       aliases {
+> +               serial0 = &uart0;
+> +       };
+> +
+> +       chosen {
+> +               stdout-path = "serial0:921600n8";
+> +       };
+> +
+> +       memory@40000000 {
+> +               device_type = "memory";
+> +               reg = <0 0x40000000 0 0x80000000>;
+> +       };
+> +};
+> +
+> +&uart0 {
+> +       status = "okay";
+> +};
 
-Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c   | 175 ++++++++++++---
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h   |  55 +++++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 258 ++++++++++++++++++++++
- 3 files changed, 462 insertions(+), 26 deletions(-)
+Can you enable anything else? I assume there should at least be some
+storage, USB, and PMICs? Even if the hardware isn't publicly available,
+it will give us some idea about what is usable, and if and how they hook
+up to external components.
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index 88a23bc..c39be1e 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -7,6 +7,7 @@
-  */
- 
- #include <linux/clk.h>
-+#include <linux/component.h>
- #include <linux/err.h>
- #include <linux/interrupt.h>
- #include <linux/io.h>
-@@ -1266,6 +1267,87 @@ static int mtk_jpeg_release(struct file *file)
- 	return 0;
- }
- 
-+static const struct of_device_id mtk_jpegenc_drv_ids[] = {
-+	{
-+		.compatible = "mediatek,mt8195-jpgenc0",
-+		.data = (void *)MTK_JPEGENC_HW0,
-+	},
-+	{
-+		.compatible = "mediatek,mt8195-jpgenc1",
-+		.data = (void *)MTK_JPEGENC_HW1,
-+	},
-+	{},
-+};
-+
-+static inline int mtk_vdec_compare_of(struct device *dev, void *data)
-+{
-+	return dev->of_node == data;
-+}
-+
-+static inline void mtk_vdec_release_of(struct device *dev, void *data)
-+{
-+	of_node_put(data);
-+}
-+
-+static inline int mtk_jpegenc_bind(struct device *dev)
-+{
-+	struct mtk_jpeg_dev *data = dev_get_drvdata(dev);
-+
-+	return component_bind_all(dev, data);
-+}
-+
-+static inline void mtk_jpegenc_unbind(struct device *dev)
-+{
-+	struct mtk_jpeg_dev *data = dev_get_drvdata(dev);
-+
-+	component_unbind_all(dev, data);
-+}
-+
-+static const struct component_master_ops mtk_jpegenc_ops = {
-+	.bind = mtk_jpegenc_bind,
-+	.unbind = mtk_jpegenc_unbind,
-+};
-+
-+static struct component_match *mtk_jpegenc_match_add(struct mtk_jpeg_dev *jpeg)
-+{
-+	struct device *dev = jpeg->dev;
-+	struct component_match *match = NULL;
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(mtk_jpegenc_drv_ids); i++) {
-+		struct device_node *comp_node;
-+		enum mtk_jpegenc_hw_id comp_idx;
-+		const struct of_device_id *of_id;
-+
-+		comp_node = of_find_compatible_node(NULL, NULL,
-+			mtk_jpegenc_drv_ids[i].compatible);
-+		if (!comp_node)
-+			continue;
-+
-+		if (!of_device_is_available(comp_node)) {
-+			of_node_put(comp_node);
-+			v4l2_err(&jpeg->v4l2_dev, "Fail to get jpeg enc HW node\n");
-+			continue;
-+		}
-+
-+		of_id = of_match_node(mtk_jpegenc_drv_ids, comp_node);
-+		if (!of_id) {
-+			v4l2_err(&jpeg->v4l2_dev, "Failed to get match node\n");
-+			return ERR_PTR(-EINVAL);
-+		}
-+
-+		comp_idx = (enum mtk_jpegenc_hw_id)of_id->data;
-+		v4l2_info(&jpeg->v4l2_dev,
-+			"Get component:hw_id(%d),jpeg_dev(0x%p),comp_node(0x%p)\n",
-+			comp_idx, jpeg, comp_node);
-+		jpeg->component_node[comp_idx] = comp_node;
-+		component_match_add_release(dev, &match, mtk_vdec_release_of,
-+			mtk_vdec_compare_of, comp_node);
-+	}
-+
-+	return match;
-+}
-+
- static const struct v4l2_file_operations mtk_jpeg_fops = {
- 	.owner          = THIS_MODULE,
- 	.open           = mtk_jpeg_open,
-@@ -1344,6 +1426,7 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 	struct resource *res;
- 	int jpeg_irq;
- 	int ret;
-+	struct component_match *match;
- 
- 	jpeg = devm_kzalloc(&pdev->dev, sizeof(*jpeg), GFP_KERNEL);
- 	if (!jpeg)
-@@ -1353,33 +1436,40 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 	spin_lock_init(&jpeg->hw_lock);
- 	jpeg->dev = &pdev->dev;
- 	jpeg->variant = of_device_get_match_data(jpeg->dev);
--	INIT_DELAYED_WORK(&jpeg->job_timeout_work, mtk_jpeg_job_timeout_work);
- 
--	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--	jpeg->reg_base = devm_ioremap_resource(&pdev->dev, res);
--	if (IS_ERR(jpeg->reg_base)) {
--		ret = PTR_ERR(jpeg->reg_base);
--		return ret;
--	}
-+	if (!jpeg->variant->is_encoder) {
-+		INIT_DELAYED_WORK(&jpeg->job_timeout_work,
-+			mtk_jpeg_job_timeout_work);
- 
--	jpeg_irq = platform_get_irq(pdev, 0);
--	if (jpeg_irq < 0) {
--		dev_err(&pdev->dev, "Failed to get jpeg_irq %d.\n", jpeg_irq);
--		return jpeg_irq;
--	}
-+		res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+		jpeg->reg_base =
-+			devm_platform_ioremap_resource_byname(pdev, pdev->name);
-+		if (IS_ERR(jpeg->reg_base)) {
-+			ret = PTR_ERR(jpeg->reg_base);
-+			return ret;
-+		}
- 
--	ret = devm_request_irq(&pdev->dev, jpeg_irq,
--			       jpeg->variant->irq_handler, 0, pdev->name, jpeg);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
--			jpeg_irq, ret);
--		goto err_req_irq;
--	}
-+		jpeg_irq = platform_get_irq(pdev, 0);
-+		if (jpeg_irq < 0) {
-+			dev_err(&pdev->dev, "Failed to get jpeg_irq %d.\n",
-+				jpeg_irq);
-+			return jpeg_irq;
-+		}
- 
--	ret = mtk_jpeg_clk_init(jpeg);
--	if (ret) {
--		dev_err(&pdev->dev, "Failed to init clk, err %d\n", ret);
--		goto err_clk_init;
-+		ret = devm_request_irq(&pdev->dev, jpeg_irq,
-+			jpeg->variant->irq_handler,
-+			0, pdev->name, jpeg);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Failed to request jpeg_irq %d (%d)\n",
-+				jpeg_irq, ret);
-+			goto err_req_irq;
-+		}
-+
-+		ret = mtk_jpeg_clk_init(jpeg);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Failed to init clk\n");
-+			goto err_clk_init;
-+		}
- 	}
- 
- 	ret = v4l2_device_register(&pdev->dev, &jpeg->v4l2_dev);
-@@ -1428,7 +1518,20 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 
- 	platform_set_drvdata(pdev, jpeg);
- 
--	pm_runtime_enable(&pdev->dev);
-+	if (jpeg->variant->is_encoder) {
-+		match = mtk_jpegenc_match_add(jpeg);
-+		if (IS_ERR_OR_NULL(match))
-+			goto err_vfd_jpeg_register;
-+
-+		video_set_drvdata(jpeg->vdev, jpeg);
-+		platform_set_drvdata(pdev, jpeg);
-+		ret = component_master_add_with_match(&pdev->dev,
-+			&mtk_jpegenc_ops, match);
-+		if (ret < 0)
-+			goto err_vfd_jpeg_register;
-+	} else {
-+		pm_runtime_enable(&pdev->dev);
-+	}
- 
- 	return 0;
- 
-@@ -1525,6 +1628,7 @@ static const struct mtk_jpeg_variant mt8173_jpeg_drvdata = {
- };
- 
- static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
-+	.is_encoder	= true,
- 	.clks = mtk_jpeg_clocks,
- 	.num_clks = ARRAY_SIZE(mtk_jpeg_clocks),
- 	.formats = mtk_jpeg_enc_formats,
-@@ -1539,6 +1643,7 @@ static const struct mtk_jpeg_variant mtk_jpeg_drvdata = {
- 	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
- };
- 
-+#if defined(CONFIG_OF)
- static const struct of_device_id mtk_jpeg_match[] = {
- 	{
- 		.compatible = "mediatek,mt8173-jpgdec",
-@@ -1554,8 +1659,8 @@ static const struct of_device_id mtk_jpeg_match[] = {
- 	},
- 	{},
- };
--
- MODULE_DEVICE_TABLE(of, mtk_jpeg_match);
-+#endif
- 
- static struct platform_driver mtk_jpeg_driver = {
- 	.probe = mtk_jpeg_probe,
-@@ -1567,7 +1672,25 @@ static struct platform_driver mtk_jpeg_driver = {
- 	},
- };
- 
--module_platform_driver(mtk_jpeg_driver);
-+static struct platform_driver * const mtk_jpeg_source_drivers[] = {
-+	&mtk_jpegenc_hw_driver,
-+	&mtk_jpeg_driver,
-+};
-+
-+static int __init mtk_jpeg_init(void)
-+{
-+	return platform_register_drivers(mtk_jpeg_source_drivers,
-+		ARRAY_SIZE(mtk_jpeg_source_drivers));
-+}
-+
-+static void __exit mtk_jpeg_exit(void)
-+{
-+	platform_unregister_drivers(mtk_jpeg_source_drivers,
-+		ARRAY_SIZE(mtk_jpeg_source_drivers));
-+}
-+
-+module_init(mtk_jpeg_init);
-+module_exit(mtk_jpeg_exit);
- 
- MODULE_DESCRIPTION("MediaTek JPEG codec driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 595f7f1..9793ccb 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -60,6 +60,7 @@ enum mtk_jpeg_ctx_state {
-  * @cap_q_default_fourcc:	capture queue default fourcc
-  */
- struct mtk_jpeg_variant {
-+	bool is_encoder;
- 	struct clk_bulk_data *clks;
- 	int num_clks;
- 	struct mtk_jpeg_fmt *formats;
-@@ -74,6 +75,53 @@ struct mtk_jpeg_variant {
- 	u32 cap_q_default_fourcc;
- };
- 
-+enum mtk_jpegenc_hw_id {
-+	MTK_JPEGENC_HW0,
-+	MTK_JPEGENC_HW1,
-+	MTK_JPEGENC_HW_MAX,
-+};
-+
-+/**
-+ * struct mtk_jpegenc_clk_info - Structure used to store clock name
-+ */
-+struct mtk_jpegenc_clk_info {
-+	const char	*clk_name;
-+	struct clk	*jpegenc_clk;
-+};
-+
-+/* struct mtk_vcodec_clk - Structure used to store vcodec clock information */
-+struct mtk_jpegenc_clk {
-+	struct mtk_jpegenc_clk_info	*clk_info;
-+	int	clk_num;
-+};
-+
-+/**
-+ * struct mtk_vcodec_pm - Power management data structure
-+ */
-+struct mtk_jpegenc_pm {
-+	struct mtk_jpegenc_clk	venc_clk;
-+	struct device	*dev;
-+	struct mtk_jpegenc_comp_dev	*mtkdev;
-+};
-+
-+/**
-+ * struct mtk_jpegenc_comp_dev - JPEG COREX abstraction
-+ * @dev:		        JPEG device
-+ * @plat_dev:		    platform device data
-+ * @reg_base:		    JPEG registers mapping
-+ * @master_dev:		    mtk_jpeg_dev device
-+ * @pm:	                mtk_jpegenc_pm
-+ * @jpegenc_irq:	    jpeg encode irq num
-+ */
-+struct mtk_jpegenc_comp_dev {
-+	struct device		*dev;
-+	struct platform_device *plat_dev;
-+	void __iomem		*reg_base;
-+	struct mtk_jpeg_dev *master_dev;
-+	struct mtk_jpegenc_pm pm;
-+	int jpegenc_irq;
-+};
-+
- /**
-  * struct mtk_jpeg_dev - JPEG IP abstraction
-  * @lock:		the mutex protecting this structure
-@@ -102,6 +150,11 @@ struct mtk_jpeg_dev {
- 	struct device		*larb;
- 	struct delayed_work job_timeout_work;
- 	const struct mtk_jpeg_variant *variant;
-+
-+	void __iomem *reg_encbase[MTK_JPEGENC_HW_MAX];
-+	struct mtk_jpegenc_comp_dev *hw_dev[MTK_JPEGENC_HW_MAX];
-+	struct device_node *component_node[MTK_JPEGENC_HW_MAX];
-+	int comp_idx;
- };
- 
- /**
-@@ -162,4 +215,6 @@ struct mtk_jpeg_ctx {
- 	struct v4l2_ctrl_handler ctrl_hdl;
- };
- 
-+extern struct platform_driver mtk_jpegenc_hw_driver;
-+
- #endif /* _MTK_JPEG_CORE_H */
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-index 1cf037b..cf8a706 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-@@ -5,11 +5,29 @@
-  *
-  */
- 
-+#include <linux/clk.h>
-+#include <linux/component.h>
-+#include <linux/interrupt.h>
-+#include <linux/irq.h>
- #include <linux/io.h>
- #include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/of_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/slab.h>
-+#include <media/media-device.h>
- #include <media/videobuf2-core.h>
- #include <media/videobuf2-dma-contig.h>
-+#include <media/videobuf2-v4l2.h>
-+#include <media/v4l2-mem2mem.h>
-+#include <media/v4l2-dev.h>
-+#include <media/v4l2-device.h>
-+#include <media/v4l2-fh.h>
-+#include <media/v4l2-event.h>
- 
-+
-+#include "mtk_jpeg_core.h"
- #include "mtk_jpeg_enc_hw.h"
- 
- static const struct mtk_jpeg_enc_qlt mtk_jpeg_enc_quality[] = {
-@@ -152,3 +170,243 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
- 
- 	writel(ctx->restart_interval, base + JPEG_ENC_RST_MCU_NUM);
- }
-+
-+static int mtk_jpegenc_hw_bind(struct device *dev,
-+	struct device *master, void *data)
-+{
-+	struct mtk_jpegenc_comp_dev *comp_priv = dev_get_drvdata(dev);
-+	struct mtk_jpeg_dev *master_priv = data;
-+	int i;
-+
-+	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
-+		if (dev->of_node != master_priv->component_node[i])
-+			continue;
-+
-+		master_priv->hw_dev[i] = comp_priv;
-+		master_priv->comp_idx = i;
-+		master_priv->reg_encbase[i] =
-+			comp_priv->reg_base;
-+		comp_priv->master_dev = master_priv;
-+		break;
-+	}
-+
-+	if (i == MTK_JPEGENC_HW_MAX) {
-+		dev_err(dev, "Failed to get component node\n");
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static void mtk_jpegenc_hw_unbind(struct device *dev,
-+	struct device *master, void *data)
-+{
-+	struct mtk_jpegenc_comp_dev *comp_priv = dev_get_drvdata(dev);
-+
-+	comp_priv->reg_base = 0;
-+
-+}
-+
-+static const struct component_ops mtk_jpegenc_hw_component_ops = {
-+	.bind = mtk_jpegenc_hw_bind,
-+	.unbind = mtk_jpegenc_hw_unbind,
-+};
-+
-+int mtk_jpegenc_init_pm(struct mtk_jpegenc_comp_dev *mtkdev)
-+{
-+	struct platform_device *pdev;
-+	struct mtk_jpegenc_pm *pm;
-+	struct mtk_jpegenc_clk *jpegenc_clk;
-+	struct mtk_jpegenc_clk_info *clk_info;
-+	int i, ret;
-+
-+	pdev = mtkdev->plat_dev;
-+	pm = &mtkdev->pm;
-+	pm->dev = &pdev->dev;
-+	pm->mtkdev = mtkdev;
-+	jpegenc_clk = &pm->venc_clk;
-+
-+	jpegenc_clk->clk_num =
-+		of_property_count_strings(pdev->dev.of_node, "clock-names");
-+	if (!jpegenc_clk->clk_num) {
-+		dev_err(&pdev->dev, "Failed to get jpegenc clock count\n");
-+		return -EINVAL;
-+	}
-+
-+	jpegenc_clk->clk_info = devm_kcalloc(&pdev->dev,
-+		jpegenc_clk->clk_num,
-+		sizeof(*clk_info),
-+		GFP_KERNEL);
-+	if (!jpegenc_clk->clk_info)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < jpegenc_clk->clk_num; i++) {
-+		clk_info = &jpegenc_clk->clk_info[i];
-+		ret = of_property_read_string_index(pdev->dev.of_node,
-+			"clock-names", i,
-+			&clk_info->clk_name);
-+		if (ret) {
-+			dev_err(&pdev->dev, "Failed to get jpegenc clock name\n");
-+			return ret;
-+		}
-+
-+		clk_info->jpegenc_clk = devm_clk_get(&pdev->dev,
-+			clk_info->clk_name);
-+		if (IS_ERR(clk_info->jpegenc_clk)) {
-+			dev_err(&pdev->dev, "devm_clk_get (%d)%s fail",
-+				i, clk_info->clk_name);
-+			return PTR_ERR(clk_info->jpegenc_clk);
-+		}
-+	}
-+
-+	pm_runtime_enable(&pdev->dev);
-+
-+	return ret;
-+}
-+
-+void mtk_jpegenc_release_pm(struct mtk_jpegenc_comp_dev *mtkdev)
-+{
-+	struct platform_device *pdev = mtkdev->plat_dev;
-+
-+	pm_runtime_disable(&pdev->dev);
-+}
-+
-+static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
-+{
-+	struct mtk_jpegenc_comp_dev *jpeg = priv;
-+	struct mtk_jpeg_dev *master_jpeg = jpeg->master_dev;
-+	u32 irq_status;
-+	struct mtk_jpeg_ctx *ctx;
-+	struct vb2_v4l2_buffer *src_buf, *dst_buf;
-+	enum vb2_buffer_state buf_state;
-+	u32 result_size;
-+
-+	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
-+		     JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
-+	if (irq_status)
-+		writel(0, jpeg->reg_base + JPEG_ENC_INT_STS);
-+
-+	if (!(irq_status & JPEG_ENC_INT_STATUS_DONE))
-+		return IRQ_NONE;
-+
-+	ctx = v4l2_m2m_get_curr_priv(master_jpeg->m2m_dev);
-+	if (!ctx) {
-+		v4l2_err(&master_jpeg->v4l2_dev, "Context is NULL\n");
-+		return IRQ_HANDLED;
-+	}
-+
-+	src_buf = v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	dst_buf = v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+
-+	result_size = mtk_jpeg_enc_get_file_size(jpeg->reg_base);
-+	vb2_set_plane_payload(&dst_buf->vb2_buf, 0, result_size);
-+
-+	buf_state = VB2_BUF_STATE_DONE;
-+
-+	v4l2_m2m_buf_done(src_buf, buf_state);
-+	v4l2_m2m_buf_done(dst_buf, buf_state);
-+	v4l2_m2m_job_finish(master_jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+	pm_runtime_put(ctx->jpeg->dev);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+static int mtk_jpegenc_hw_init_irq(struct mtk_jpegenc_comp_dev *dev)
-+{
-+	struct platform_device *pdev = dev->plat_dev;
-+	int ret;
-+
-+	dev->jpegenc_irq = platform_get_irq(pdev, 0);
-+	if (dev->jpegenc_irq < 0) {
-+		dev_err(&pdev->dev, "Failed to get irq resource");
-+		return dev->jpegenc_irq;
-+	}
-+
-+	ret = devm_request_irq(&pdev->dev, dev->jpegenc_irq,
-+		mtk_jpegenc_hw_irq_handler, 0, pdev->name, dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to devm_request_irq %d (%d)",
-+			dev->jpegenc_irq, ret);
-+		return -ENOENT;
-+	}
-+
-+	return 0;
-+}
-+
-+static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
-+{
-+	struct mtk_jpegenc_comp_dev *dev;
-+	int ret;
-+
-+	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
-+	if (!dev)
-+		return -ENOMEM;
-+
-+	dev->plat_dev = pdev;
-+
-+	ret = mtk_jpegenc_init_pm(dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to get jpeg enc clock source");
-+		return ret;
-+	}
-+
-+	dev->reg_base =
-+		devm_platform_ioremap_resource(pdev, 0);
-+	if (IS_ERR(dev->reg_base)) {
-+		ret = PTR_ERR(dev->reg_base);
-+		goto err;
-+	}
-+
-+	ret = mtk_jpegenc_hw_init_irq(dev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to register JPEGENC irq handler.\n");
-+		goto err;
-+	}
-+
-+	platform_set_drvdata(pdev, dev);
-+
-+	ret = component_add(&pdev->dev, &mtk_jpegenc_hw_component_ops);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Failed to component_add: %d\n", ret);
-+		goto err;
-+	}
-+
-+	return 0;
-+
-+err:
-+	mtk_jpegenc_release_pm(dev);
-+
-+	return ret;
-+}
-+
-+static int mtk_jpegenc_remove(struct platform_device *pdev)
-+{
-+	struct mtk_jpegenc_comp_dev *dev = platform_get_drvdata(pdev);
-+
-+	mtk_jpegenc_release_pm(dev);
-+
-+	return 0;
-+}
-+
-+#if defined(CONFIG_OF)
-+static const struct of_device_id mtk_jpegenc_hw_ids[] = {
-+	{
-+		.compatible = "mediatek,mt8195-jpgenc0",
-+	},
-+	{
-+		.compatible = "mediatek,mt8195-jpgenc1",
-+	},
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_jpegenc_hw_ids);
-+#endif
-+
-+struct platform_driver mtk_jpegenc_hw_driver = {
-+	.probe = mtk_jpegenc_hw_probe,
-+	.remove = mtk_jpegenc_remove,
-+	.driver = {
-+		.name = "mtk-jpegenc-hw",
-+		.of_match_table = of_match_ptr(mtk_jpegenc_hw_ids),
-+	},
-+};
-+
--- 
-2.6.4
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> new file mode 100644
+> index 000000000000..b2ff83882e2e
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+> @@ -0,0 +1,1024 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + * Author: Seiya Wang <seiya.wang@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +
+> +#include <dt-bindings/clock/mt8195-clk.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/phy/phy.h>
+> +#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+> +#include <dt-bindings/reset/ti-syscon.h>
+> +
+> +/ {
+> +       compatible = "mediatek,mt8195";
+> +       interrupt-parent = <&gic>;
+> +       #address-cells = <2>;
+> +       #size-cells = <2>;
+> +
+> +       clocks {
 
+IIRC we have moved away from having a dedicated "clocks" node to group
+clock device nodes. Just move the following two device nodes up one
+level.
+
+> +               clk26m: oscillator0 {
+> +                       compatible = "fixed-clock";
+> +                       #clock-cells = <0>;
+> +                       clock-frequency = <26000000>;
+> +                       clock-output-names = "clk26m";
+> +               };
+> +
+> +               clk32k: oscillator1 {
+> +                       compatible = "fixed-clock";
+> +                       #clock-cells = <0>;
+> +                       clock-frequency = <32768>;
+> +                       clock-output-names = "clk32k";
+> +               };
+> +       };
+> +
+> +       cpus {
+> +               #address-cells = <1>;
+> +               #size-cells = <0>;
+> +
+> +               cpu0: cpu@0 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a55", "arm,armv8";
+> +                       reg = <0x000>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <1701000000>;
+> +                       capacity-dmips-mhz = <578>;
+> +                       cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+> +                       next-level-cache = <&l2_0>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu1: cpu@100 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a55", "arm,armv8";
+> +                       reg = <0x100>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <1701000000>;
+> +                       capacity-dmips-mhz = <578>;
+> +                       cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+> +                       next-level-cache = <&l2_0>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu2: cpu@200 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a55", "arm,armv8";
+> +                       reg = <0x200>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <1701000000>;
+> +                       capacity-dmips-mhz = <578>;
+> +                       cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+> +                       next-level-cache = <&l2_0>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu3: cpu@300 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a55", "arm,armv8";
+> +                       reg = <0x300>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <1701000000>;
+> +                       capacity-dmips-mhz = <578>;
+> +                       cpu-idle-states = <&cpuoff_l &clusteroff_l>;
+> +                       next-level-cache = <&l2_0>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu4: cpu@400 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a78", "arm,armv8";
+> +                       reg = <0x400>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <2171000000>;
+> +                       capacity-dmips-mhz = <1024>;
+> +                       cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+> +                       next-level-cache = <&l2_1>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu5: cpu@500 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a78", "arm,armv8";
+> +                       reg = <0x500>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <2171000000>;
+> +                       capacity-dmips-mhz = <1024>;
+> +                       cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+> +                       next-level-cache = <&l2_1>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu6: cpu@600 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a78", "arm,armv8";
+> +                       reg = <0x600>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <2171000000>;
+> +                       capacity-dmips-mhz = <1024>;
+> +                       cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+> +                       next-level-cache = <&l2_1>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu7: cpu@700 {
+> +                       device_type = "cpu";
+> +                       compatible = "arm,cortex-a78", "arm,armv8";
+> +                       reg = <0x700>;
+> +                       enable-method = "psci";
+> +                       clock-frequency = <2171000000>;
+> +                       capacity-dmips-mhz = <1024>;
+> +                       cpu-idle-states = <&cpuoff_b &clusteroff_b>;
+> +                       next-level-cache = <&l2_1>;
+> +                       #cooling-cells = <2>;
+> +               };
+> +
+> +               cpu-map {
+> +                       cluster0 {
+> +                               core0 {
+> +                                       cpu = <&cpu0>;
+> +                               };
+> +                               core1 {
+> +                                       cpu = <&cpu1>;
+> +                               };
+> +                               core2 {
+> +                                       cpu = <&cpu2>;
+> +                               };
+> +                               core3 {
+> +                                       cpu = <&cpu3>;
+> +                               };
+> +                       };
+> +                       cluster1 {
+> +                               core0 {
+> +                                       cpu = <&cpu4>;
+> +                               };
+> +                               core1 {
+> +                                       cpu = <&cpu5>;
+> +                               };
+> +                               core2 {
+> +                                       cpu = <&cpu6>;
+> +                               };
+> +                               core3 {
+> +                                       cpu = <&cpu7>;
+> +                               };
+> +                       };
+> +               };
+> +
+> +               idle-states {
+> +                       entry-method = "arm,psci";
+> +                       cpuoff_l: cpuoff_l {
+> +                               compatible = "arm,idle-state";
+> +                               arm,psci-suspend-param = <0x00010001>;
+> +                               local-timer-stop;
+> +                               entry-latency-us = <50>;
+> +                               exit-latency-us = <95>;
+> +                               min-residency-us = <580>;
+> +                       };
+> +                       cpuoff_b: cpuoff_b {
+> +                               compatible = "arm,idle-state";
+> +                               arm,psci-suspend-param = <0x00010001>;
+> +                               local-timer-stop;
+> +                               entry-latency-us = <45>;
+> +                               exit-latency-us = <140>;
+> +                               min-residency-us = <740>;
+> +                       };
+> +                       clusteroff_l: clusteroff_l {
+> +                               compatible = "arm,idle-state";
+> +                               arm,psci-suspend-param = <0x01010002>;
+> +                               local-timer-stop;
+> +                               entry-latency-us = <55>;
+> +                               exit-latency-us = <155>;
+> +                               min-residency-us = <840>;
+> +                       };
+> +                       clusteroff_b: clusteroff_b {
+> +                               compatible = "arm,idle-state";
+> +                               arm,psci-suspend-param = <0x01010002>;
+> +                               local-timer-stop;
+> +                               entry-latency-us = <50>;
+> +                               exit-latency-us = <200>;
+> +                               min-residency-us = <1000>;
+> +                       };
+> +               };
+> +
+> +               l2_0: l2-cache0 {
+> +                       compatible = "cache";
+> +                       next-level-cache = <&l3_0>;
+> +               };
+> +
+> +               l2_1: l2-cache1 {
+> +                       compatible = "cache";
+> +                       next-level-cache = <&l3_0>;
+> +               };
+> +
+> +               l3_0: l3-cache {
+> +                       compatible = "cache";
+> +               };
+> +       };
+> +
+> +       dsu-pmu {
+> +               compatible = "arm,dsu-pmu";
+> +               interrupts = <GIC_SPI 18 IRQ_TYPE_LEVEL_HIGH 0>;
+> +               cpus = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>,
+> +                      <&cpu4>, <&cpu5>, <&cpu6>, <&cpu7>;
+> +       };
+> +
+> +       pmu-a55 {
+> +               compatible = "arm,cortex-a55-pmu";
+> +               interrupt-parent = <&gic>;
+> +               interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster0>;
+> +       };
+> +
+> +       pmu-a78 {
+> +               compatible = "arm,cortex-a78-pmu";
+> +               interrupt-parent = <&gic>;
+> +               interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH &ppi_cluster1>;
+> +       };
+> +
+> +       psci {
+> +               compatible = "arm,psci-1.0";
+> +               method = "smc";
+> +       };
+> +
+> +       timer: timer {
+> +               compatible = "arm,armv8-timer";
+> +               interrupt-parent = <&gic>;
+> +               interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                            <GIC_PPI 14 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                            <GIC_PPI 11 IRQ_TYPE_LEVEL_HIGH 0>,
+> +                            <GIC_PPI 10 IRQ_TYPE_LEVEL_HIGH 0>;
+> +               clock-frequency = <13000000>;
+> +       };
+
+The interrupts for the PMUs and arch timer aren't listed, as the interrupt
+table in the datasheet isn't for the GIC, but another interrupt controller
+used in low power modes. It does contain mappings to the GIC for most, but
+not all interrupts.
+
+> +
+> +       soc {
+> +               #address-cells = <2>;
+> +               #size-cells = <2>;
+> +               compatible = "simple-bus";
+> +               ranges;
+> +
+> +               gic: interrupt-controller@c000000 {
+> +                       compatible = "arm,gic-v3";
+> +                       #interrupt-cells = <4>;
+> +                       #redistributor-regions = <1>;
+> +                       interrupt-parent = <&gic>;
+> +                       interrupt-controller;
+> +                       reg = <0 0x0c000000 0 0x40000>,
+> +                             <0 0x0c040000 0 0x200000>;
+> +                       interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH 0>;
+> +
+> +                       ppi-partitions {
+> +                               ppi_cluster0: interrupt-partition-0 {
+> +                                       affinity = <&cpu0 &cpu1 &cpu2 &cpu3>;
+> +                               };
+> +                               ppi_cluster1: interrupt-partition-1 {
+> +                                       affinity = <&cpu4 &cpu5 &cpu6 &cpu7>;
+> +                               };
+> +                       };
+> +               };
+> +
+
+[...]
+
+> +               pio: pinctrl@10005000 {
+> +                       compatible = "mediatek,mt8195-pinctrl";
+> +                       reg = <0 0x10005000 0 0x1000>,
+> +                             <0 0x11d10000 0 0x1000>,
+> +                             <0 0x11d30000 0 0x1000>,
+> +                             <0 0x11d40000 0 0x1000>,
+> +                             <0 0x11e20000 0 0x1000>,
+> +                             <0 0x11eb0000 0 0x1000>,
+> +                             <0 0x11f40000 0 0x1000>,
+> +                             <0 0x1000b000 0 0x1000>;
+> +                       reg-names = "iocfg0", "iocfg_bm", "iocfg_bl",
+> +                                   "iocfg_br", "iocfg_lm", "iocfg_rb",
+> +                                   "iocfg_tl", "eint";
+> +                       gpio-controller;
+> +                       #gpio-cells = <2>;
+> +                       gpio-ranges = <&pio 0 0 144>;
+> +                       interrupt-controller;
+> +                       interrupts = <GIC_SPI 212 IRQ_TYPE_LEVEL_HIGH 0>;
+
+If I am reading the datasheet correctly, this interrupt line is listed as
+reserved. OTOH there are a bunch of EINT interrupts.
+
+> +                       #interrupt-cells = <2>;
+> +
+> +                       pmif_pin: pmif_default_pin {
+> +                               pinmux = <PINMUX_GPIO36__FUNC_RTC32K_CK>,
+> +                                        <PINMUX_GPIO40__FUNC_PWRAP_SPI0_CSN>,
+> +                                        <PINMUX_GPIO41__FUNC_PWRAP_SPI0_CK>,
+> +                                        <PINMUX_GPIO42__FUNC_PWRAP_SPI0_MO>,
+> +                                        <PINMUX_GPIO43__FUNC_PWRAP_SPI0_MI>,
+> +                                        <PINMUX_GPIO44__FUNC_SPMI_M_SCL>,
+> +                                        <PINMUX_GPIO45__FUNC_SPMI_M_SDA>;
+> +                       };
+> +               };
+> +
+> +               pwrap: pwrap@10024000 {
+> +                       compatible = "mediatek,mt8195-pwrap", "syscon";
+> +                       reg = <0 0x10024000 0 0x1000>;
+
+The datasheet I have doesn't provide a memory map, nor is there a section
+for this hardware block. As such I can't verify the register region.
+
+> +                       reg-names = "pwrap";
+> +                       interrupts = <GIC_SPI 243 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                       clocks = <&infracfg_ao CLK_INFRA_AO_PMIC_AP>,
+> +                                <&infracfg_ao CLK_INFRA_AO_PMIC_TMR>;
+> +                       clock-names = "spi", "wrap";
+> +                       assigned-clocks = <&topckgen CLK_TOP_PWRAP_ULPOSC>;
+> +                       assigned-clock-parents = <&topckgen CLK_TOP_ULPOSC1_D10>;
+> +                       pinctrl-names = "default";
+> +                       pinctrl-0 = <&pmif_pin>;
+> +               };
+
+[...]
+
+> +               mmc1: mmc@11240000 {
+> +                       compatible = "mediatek,mt8195-mmc",
+> +                                    "mediatek,mt8192-mmc";
+> +                       reg = <0 0x11240000 0 0x1000>,
+> +                             <0 0x11c70000 0 0x1000>;
+> +                       interrupts = <GIC_SPI 135 IRQ_TYPE_LEVEL_HIGH 0>;
+> +                       clocks = <&topckgen CLK_TOP_MSDC30_1>,
+> +                                <&infracfg_ao CLK_INFRA_AO_MSDC1>,
+> +                                <&infracfg_ao CLK_INFRA_AO_MSDC1_SRC>;
+> +                       clock-names = "source", "hclk", "source_cg";
+> +                       status = "disabled";
+> +               };
+> +
+
+mmc2 missing?
+
+> +               imp_iic_wrap_s: syscon@11d03000 {
+> +                       compatible = "mediatek,mt8195-imp_iic_wrap_s", "syscon";
+> +                       reg = <0 0x11d03000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+
+The datasheet I have doesn't provide a memory map, nor is there a section
+for this hardware block. As such I can't verify the register region.
+
+> +               imp_iic_wrap_w: syscon@11e05000 {
+> +                       compatible = "mediatek,mt8195-imp_iic_wrap_w", "syscon";
+> +                       reg = <0 0x11e05000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+
+The datasheet I have doesn't provide a memory map, nor is there a section
+for this hardware block. As such I can't verify the register region.
+
+[...]
+
+> +               wpesys: syscon@14e00000 {
+> +                       compatible = "mediatek,mt8195-wpesys", "syscon";
+> +                       reg = <0 0x14e00000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+> +
+> +               wpesys_vpp0: syscon@14e02000 {
+> +                       compatible = "mediatek,mt8195-wpesys_vpp0", "syscon";
+> +                       reg = <0 0x14e02000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+> +
+> +               wpesys_vpp1: syscon@14e03000 {
+> +                       compatible = "mediatek,mt8195-wpesys_vpp1", "syscon";
+> +                       reg = <0 0x14e03000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+
+The datasheet I have doesn't provide a memory map, nor is there a section
+for the wpe related hardware blocks. As such I can't verify the register
+region.
+
+[...]
+
+> +               vdecsys_soc: syscon@1800f000 {
+> +                       compatible = "mediatek,mt8195-vdecsys_soc", "syscon";
+> +                       reg = <0 0x1800f000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+> +
+> +               vdecsys: syscon@1802f000 {
+> +                       compatible = "mediatek,mt8195-vdecsys", "syscon";
+> +                       reg = <0 0x1802f000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+> +
+> +               vdecsys_core1: syscon@1803f000 {
+> +                       compatible = "mediatek,mt8195-vdecsys_core1", "syscon";
+> +                       reg = <0 0x1803f000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+
+The datasheet I have doesn't provide a memory map, nor is there a section
+for the vdec related hardware blocks. As such I can't verify the register
+region.
+
+[...]
+
+> +               vencsys: syscon@1a000000 {
+> +                       compatible = "mediatek,mt8195-vencsys", "syscon";
+> +                       reg = <0 0x1a000000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+> +
+> +               vencsys_core1: syscon@1b000000 {
+> +                       compatible = "mediatek,mt8195-vencsys_core1", "syscon";
+> +                       reg = <0 0x1b000000 0 0x1000>;
+> +                       #clock-cells = <1>;
+> +               };
+
+The datasheet I have doesn't provide a memory map, nor is there a section
+for the venc related hardware blocks. As such I can't verify the register
+region.
+
+Besides the aforementioned parts, all the memory ranges, interrupt lines,
+and clocks seem to be in order.
+
+
+ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
