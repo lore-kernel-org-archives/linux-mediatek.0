@@ -2,77 +2,68 @@ Return-Path: <SRS0=tGyr=OO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B6C61C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 09:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 22A89C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 09:43:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 793B161076
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 09:35:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 793B161076
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id EA2ED61250
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 09:43:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EA2ED61250
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jey5WLjDE5erOfhOdP1A/uTZtU0In6VEYyrm+0RE9sE=; b=bPGFw3eBNUEFRu
-	Jsn4TDwAnV3gjXNlhlbUzQH6GTqOCq0qhfh+dJRW+2GU1MpVmFNF/looxonXaDvDTN7ZHJeNXJE8l
-	kFORrQ9snZWbL82sYRsFO8EyZlQxAcFAKD7s/42R6f1HZnawjQbs70Oi9mmtjuUgAaFJZ1RIe20J4
-	HNEIdHFdAVBeTmkTY7TtSrxBj9IlI0H0oBxHz51KZYBN0VBeV0ACAPLi4k2bqod7z06arF6dMq3Ve
-	z0EVc7c5yuxg5uPjS9T+PkuFmYtiqwwF5Mx1hH2RJRCX5BtSBgf0kOZoP13W7yTGnC/xRDH+T5WSa
-	Pv6UpENXddEph3Rt7vKg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ql4P5SwcoR+Bv9IT8yBYb04P/jqBu4o9hbiZycFsq5k=; b=dnhroO22qMeLZU
+	LcWxFsbOs09spOW6DyOchr51LuyzlbYtJyhCqF9gG572rMnksDvdrmX6zklYfCWDy1GZtzJatfWdG
+	0TPDZK7T3n0nV1zkk5XrpO+YSj8iUVwkNf/VGB+Tofo9z8ZqTj21qMDJSTS4pCbvVNEZW311TQGq2
+	Ma+0hvBH5yvT///pkCzbZgB2BAthIE2qsRwXVTkFye90/kV7If4636kH7YB8nJ4xFhFqYHQ2nCgU7
+	RXqp6QuC15Ni6OV5XxwcXRVEhPFikGontzBa+gdSLzdO90X7mtJVI/jUULrbM1lNoDOtqKW9HYZdV
+	dJayhPRgE9ypPTzDO/mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mThbk-00Dtqd-32; Fri, 24 Sep 2021 09:35:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mThjL-00DvIF-6U; Fri, 24 Sep 2021 09:42:55 +0000
+Received: from inva021.nxp.com ([92.121.34.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mThax-00DtaI-Oc; Fri, 24 Sep 2021 09:34:17 +0000
-X-UUID: f4bbe65fb2a742169882b157dfccab9a-20210924
-X-UUID: f4bbe65fb2a742169882b157dfccab9a-20210924
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <kyrie.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 484398922; Fri, 24 Sep 2021 02:34:13 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 02:27:19 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 17:27:17 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Sep 2021 17:27:15 +0800
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa
- <tfiga@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <xia.jiang@mediatek.com>,
- <maoguang.meng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <kyrie.wu@mediatek.com>, <irui.wang@mediatek.com>
-Subject: [PATCH RESEND, V4,
- 4/5] media: mtk-jpegenc: add jpeg encode worker interface
-Date: Fri, 24 Sep 2021 17:27:07 +0800
-Message-ID: <1632475628-29271-5-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1632475628-29271-1-git-send-email-kyrie.wu@mediatek.com>
-References: <1632475628-29271-1-git-send-email-kyrie.wu@mediatek.com>
-MIME-Version: 1.0
-X-MTK: N
+ id 1mThj9-00DvF3-5w; Fri, 24 Sep 2021 09:42:44 +0000
+Received: from inva021.nxp.com (localhost [127.0.0.1])
+ by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id 2A3612030C4;
+ Fri, 24 Sep 2021 11:42:39 +0200 (CEST)
+Received: from aprdc01srsp001v.ap-rdc01.nxp.com
+ (aprdc01srsp001v.ap-rdc01.nxp.com [165.114.16.16])
+ by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id E5A53203095;
+ Fri, 24 Sep 2021 11:42:38 +0200 (CEST)
+Received: from localhost.localdomain (mega.ap.freescale.net [10.192.208.232])
+ by aprdc01srsp001v.ap-rdc01.nxp.com (Postfix) with ESMTP id
+ 273FC183AC8B; Fri, 24 Sep 2021 17:42:36 +0800 (+08)
+From: Xiaoliang Yang <xiaoliang.yang_1@nxp.com>
+To: davem@davemloft.net, linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+Cc: allan.nielsen@microchip.com, joergen.andreasen@microchip.com,
+ UNGLinuxDriver@microchip.com, vinicius.gomes@intel.com,
+ michael.chan@broadcom.com, vishal@chelsio.com, saeedm@mellanox.com,
+ jiri@mellanox.com, idosch@mellanox.com, alexandre.belloni@bootlin.com,
+ kuba@kernel.org, xiaoliang.yang_1@nxp.com, po.liu@nxp.com,
+ vladimir.oltean@nxp.com, leoyang.li@nxp.com, f.fainelli@gmail.com,
+ andrew@lunn.ch, vivien.didelot@gmail.com, claudiu.manoil@nxp.com,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ matthias.bgg@gmail.com, horatiu.vultur@microchip.com
+Subject: [PATCH v5 net-next 0/9] net: dsa: felix: psfp support on vsc9959
+Date: Fri, 24 Sep 2021 17:52:17 +0800
+Message-Id: <20210924095226.38079-1-xiaoliang.yang_1@nxp.com>
+X-Mailer: git-send-email 2.17.1
+X-Virus-Scanned: ClamAV using ClamSMTP
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_023415_827940_E6855DB6 
-X-CRM114-Status: GOOD (  28.92  )
+X-CRM114-CacheID: sfid-20210924_024243_401255_8F2FF4BC 
+X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,400 +75,67 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add jpeg encoding worker to ensure that two HWs
-run in parallel in MT8195.
-1. In the traditional jpeg encode process of a single HW,
-after putting buf to input queue, m2m_dev->curr_ctx
-will be judged is null;
-2. If m2m_dev->curr_ctx == null,
-call the function of mtk_jpeg_enc_device_run for encoding;
-Otherwise, it means that HW is currently
-running and the program returns directly;
-3. m2m_dev->curr_ctx is set to non-null
-before calling mtk_jpeg_enc_device_run,
-and is set to null after encoding is completed
-in irq handler function;
-4. m2m_dev->curr_ctx, defined in v4l2 architecture,
-is a structure pointer variable,
-not a pointer array, and cannot be valued multiple
-times at the same time;
-5. There are two encode HWs in mt8195.
-Because the component framework is used to manage HWs,
-only one v4l2 sub-device is registered,
-so that there is only one m2m_dev->curr_ctx can be used,
-but the two HWs need to run in parallel,
-which is conflicts with the traditional jpeg encoding flow;
-6. Add an encoding worker to solve this conflict.
-The software operation process is as follows:
-1) Only schedule worker operation is
-performed in mtk_jpeg_enc_device_run,
-and all encoding settings are changed to the worker function;
-2) After the completion of encoding setting
-and trigger HW in the worker function,
-set m2m_dev->curr_ctx to null without waiting
-for such operation in irq handler function;
-3) If two HWs are busy at the same time,
-and the program returns directly,
-judge whether the input queue is empty
-in the irq handler function.
-If not, schedule worker ensures
-that each input image will be encoded.
+VSC9959 hardware supports Per-Stream Filtering and Policing(PSFP).
+This patch series add PSFP support on tc flower offload of ocelot
+driver. Use chain 30000 to distinguish PSFP from VCAP blocks. Add gate
+and police set to support PSFP in VSC9959 driver.
 
-Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
----
-V4: new patch
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c   | 176 +++++++++++++++++++---
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h   |  12 ++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c |  17 +++
- 3 files changed, 186 insertions(+), 19 deletions(-)
+v4->v5 changes:
+ - Add MAC table lock patch, and move stream data write in
+   ocelot_mact_learn_streamdata().
+ - Add two sections of VCAP policers to Seville platform.
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index c39be1e..c854cc4 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -111,6 +111,9 @@ struct mtk_jpeg_src_buf {
- 	struct vb2_v4l2_buffer b;
- 	struct list_head list;
- 	struct mtk_jpeg_dec_param dec_param;
-+
-+	struct mtk_jpeg_ctx *curr_ctx;
-+	u32 frame_num;
- };
- 
- static int debug;
-@@ -909,38 +912,145 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
- 	return 0;
- }
- 
--static void mtk_jpeg_enc_device_run(void *priv)
-+static int mtk_jpeg_select_hw(struct mtk_jpeg_ctx *ctx)
- {
--	struct mtk_jpeg_ctx *ctx = priv;
-+	struct mtk_jpegenc_comp_dev *comp_jpeg;
-+	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-+	unsigned long flags;
-+	int hw_id = -1;
-+	int i;
-+
-+	spin_lock_irqsave(&jpeg->hw_lock, flags);
-+	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
-+		comp_jpeg = jpeg->hw_dev[i];
-+		if (comp_jpeg->hw_state == MTK_JPEG_HW_IDLE) {
-+			hw_id = i;
-+			comp_jpeg->hw_state = MTK_JPEG_HW_BUSY;
-+			break;
-+		}
-+	}
-+	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
-+
-+	return hw_id;
-+}
-+
-+static int mtk_jpeg_deselect_hw(struct mtk_jpeg_dev *jpeg, int hw_id)
-+{
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&jpeg->hw_lock, flags);
-+	jpeg->hw_dev[hw_id]->hw_state = MTK_JPEG_HW_IDLE;
-+	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
-+
-+	return 0;
-+}
-+
-+static int mtk_jpeg_set_hw_param(struct mtk_jpeg_ctx *ctx,
-+	int hw_id,
-+	struct vb2_v4l2_buffer *src_buf,
-+	struct vb2_v4l2_buffer *dst_buf)
-+{
-+	struct mtk_jpegenc_comp_dev *jpeg = ctx->jpeg->hw_dev[hw_id];
-+
-+	jpeg->hw_param.curr_ctx = ctx;
-+	jpeg->hw_param.src_buffer = src_buf;
-+	jpeg->hw_param.dst_buffer = dst_buf;
-+
-+	return 0;
-+}
-+
-+static void mtk_jpegenc_worker(struct work_struct *work)
-+{
-+	struct mtk_jpeg_ctx *ctx = container_of(work, struct mtk_jpeg_ctx,
-+		jpeg_work);
- 	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-+	struct mtk_jpegenc_comp_dev *comp_jpeg[MTK_JPEGENC_HW_MAX];
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
- 	unsigned long flags;
--	int ret;
-+	struct mtk_jpeg_src_buf *jpeg_src_buf, *jpeg_dst_buf;
-+	int ret, i, hw_id = 0;
-+	atomic_t *hw_rdy[MTK_JPEGENC_HW_MAX];
-+	struct clk *jpegenc_clk;
-+
-+	for (i = 0; i < MTK_JPEGENC_HW_MAX; i++) {
-+		comp_jpeg[i] = jpeg->hw_dev[i];
-+		hw_rdy[i] = &comp_jpeg[i]->hw_rdy;
-+	}
-+
-+retry_select:
-+	hw_id = mtk_jpeg_select_hw(ctx);
-+	if (hw_id < 0) {
-+		ret = wait_event_interruptible(jpeg->hw_wq,
-+			(atomic_read(hw_rdy[0]) ||
-+			atomic_read(hw_rdy[1])) > 0);
-+		if (ret != 0) {
-+			dev_err(jpeg->dev, "%s : %d, all HW are busy\n",
-+				__func__, __LINE__);
-+			v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+			return;
-+		}
- 
-+		pr_info("%s : %d, NEW HW IDLE, please retry selcet!!!\n",
-+			__func__, __LINE__);
-+		goto retry_select;
-+	}
-+
-+	atomic_dec(&comp_jpeg[hw_id]->hw_rdy);
- 	src_buf = v4l2_m2m_next_src_buf(ctx->fh.m2m_ctx);
-+	if (!src_buf) {
-+		pr_info("%s : %d, get src_buf fail !!!\n", __func__, __LINE__);
-+		goto getbuf_fail;
-+	}
-+
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
-+	if (!dst_buf) {
-+		pr_info("%s : %d, get dst_buf fail !!!\n", __func__, __LINE__);
-+		goto getbuf_fail;
-+	}
- 
--	ret = pm_runtime_get_sync(jpeg->dev);
--	if (ret < 0)
--		goto enc_end;
-+	jpeg_src_buf = mtk_jpeg_vb2_to_srcbuf(&src_buf->vb2_buf);
-+	jpeg_dst_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buf->vb2_buf);
-+	jpeg_src_buf->curr_ctx = ctx;
-+	jpeg_src_buf->frame_num = ctx->total_frame_num;
-+	jpeg_dst_buf->curr_ctx = ctx;
-+	jpeg_dst_buf->frame_num = ctx->total_frame_num;
-+	ctx->total_frame_num++;
- 
--	schedule_delayed_work(&jpeg->job_timeout_work,
--			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-+	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
-+	mtk_jpeg_set_hw_param(ctx, hw_id, src_buf, dst_buf);
-+	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->pm.dev);
-+	if (ret < 0) {
-+		dev_err(jpeg->dev, "%s : %d, pm_runtime_get_sync fail !!!\n",
-+			__func__, __LINE__);
-+		goto enc_end;
-+	}
- 
--	spin_lock_irqsave(&jpeg->hw_lock, flags);
-+	jpegenc_clk = comp_jpeg[hw_id]->pm.venc_clk.clk_info->jpegenc_clk;
-+	ret = clk_prepare_enable(jpegenc_clk);
-+	if (ret) {
-+		dev_err(jpeg->dev, "%s : %d, jpegenc clk_prepare_enable fail\n",
-+			__func__, __LINE__);
-+		goto enc_end;
-+	}
- 
--	/*
--	 * Resetting the hardware every frame is to ensure that all the
--	 * registers are cleared. This is a hardware requirement.
--	 */
--	mtk_jpeg_enc_reset(jpeg->reg_base);
-+	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
-+		msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
-+
-+	spin_lock_irqsave(&comp_jpeg[hw_id]->hw_lock, flags);
-+	mtk_jpeg_enc_reset(comp_jpeg[hw_id]->reg_base);
-+	mtk_jpeg_set_enc_dst(ctx,
-+		comp_jpeg[hw_id]->reg_base,
-+		&dst_buf->vb2_buf);
-+	mtk_jpeg_set_enc_src(ctx,
-+		comp_jpeg[hw_id]->reg_base,
-+		&src_buf->vb2_buf);
-+	mtk_jpeg_set_enc_params(ctx, comp_jpeg[hw_id]->reg_base);
-+	mtk_jpeg_enc_start(comp_jpeg[hw_id]->reg_base);
-+	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+	spin_unlock_irqrestore(&comp_jpeg[hw_id]->hw_lock, flags);
- 
--	mtk_jpeg_set_enc_src(ctx, jpeg->reg_base, &src_buf->vb2_buf);
--	mtk_jpeg_set_enc_dst(ctx, jpeg->reg_base, &dst_buf->vb2_buf);
--	mtk_jpeg_set_enc_params(ctx, jpeg->reg_base);
--	mtk_jpeg_enc_start(jpeg->reg_base);
--	spin_unlock_irqrestore(&jpeg->hw_lock, flags);
- 	return;
- 
- enc_end:
-@@ -948,9 +1058,20 @@ static void mtk_jpeg_enc_device_run(void *priv)
- 	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	v4l2_m2m_buf_done(dst_buf, buf_state);
-+getbuf_fail:
-+	atomic_inc(&comp_jpeg[hw_id]->hw_rdy);
-+	mtk_jpeg_deselect_hw(jpeg, hw_id);
- 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
- }
- 
-+static void mtk_jpeg_enc_device_run(void *priv)
-+{
-+	struct mtk_jpeg_ctx *ctx = priv;
-+	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
-+
-+	queue_work(jpeg->workqueue, &ctx->jpeg_work);
-+}
-+
- static void mtk_jpeg_dec_device_run(void *priv)
- {
- 	struct mtk_jpeg_ctx *ctx = priv;
-@@ -1218,6 +1339,9 @@ static int mtk_jpeg_open(struct file *file)
- 		goto free;
- 	}
- 
-+	if (jpeg->variant->is_encoder)
-+		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
-+
- 	v4l2_fh_init(&ctx->fh, vfd);
- 	file->private_data = &ctx->fh;
- 	v4l2_fh_add(&ctx->fh);
-@@ -1470,6 +1594,16 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 			dev_err(&pdev->dev, "Failed to init clk\n");
- 			goto err_clk_init;
- 		}
-+	} else {
-+		init_waitqueue_head(&jpeg->hw_wq);
-+
-+		jpeg->workqueue = alloc_ordered_workqueue(MTK_JPEG_NAME,
-+			WQ_MEM_RECLAIM | WQ_FREEZABLE);
-+		if (!jpeg->workqueue) {
-+			dev_err(&pdev->dev, "Failed to create jpeg workqueue!\n");
-+			ret = -EINVAL;
-+			goto err_alloc_workqueue;
-+		}
- 	}
- 
- 	ret = v4l2_device_register(&pdev->dev, &jpeg->v4l2_dev);
-@@ -1549,6 +1683,8 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 
- err_clk_init:
- 
-+err_alloc_workqueue:
-+
- err_req_irq:
- 
- 	return ret;
-@@ -1564,6 +1700,8 @@ static int mtk_jpeg_remove(struct platform_device *pdev)
- 	v4l2_m2m_release(jpeg->m2m_dev);
- 	v4l2_device_unregister(&jpeg->v4l2_dev);
- 	mtk_jpeg_clk_release(jpeg);
-+	flush_workqueue(jpeg->workqueue);
-+	destroy_workqueue(jpeg->workqueue);
- 
- 	return 0;
- }
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 0689bcb..a9000da 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -75,6 +75,11 @@ struct mtk_jpeg_variant {
- 	u32 cap_q_default_fourcc;
- };
- 
-+enum mtk_jpeg_hw_state {
-+	MTK_JPEG_HW_IDLE = 0,
-+	MTK_JPEG_HW_BUSY = 1,
-+};
-+
- struct mtk_jpeg_hw_param {
- 	struct vb2_v4l2_buffer *src_buffer;
- 	struct vb2_v4l2_buffer *dst_buffer;
-@@ -128,6 +133,9 @@ struct mtk_jpegenc_comp_dev {
- 	int jpegenc_irq;
- 	struct delayed_work job_timeout_work;
- 	struct mtk_jpeg_hw_param hw_param;
-+	atomic_t hw_rdy;
-+	enum mtk_jpeg_hw_state hw_state;
-+	spinlock_t		hw_lock;
- };
- 
- /**
-@@ -163,6 +171,7 @@ struct mtk_jpeg_dev {
- 	struct mtk_jpegenc_comp_dev *hw_dev[MTK_JPEGENC_HW_MAX];
- 	struct device_node *component_node[MTK_JPEGENC_HW_MAX];
- 	int comp_idx;
-+	wait_queue_head_t hw_wq;
- };
- 
- /**
-@@ -221,6 +230,9 @@ struct mtk_jpeg_ctx {
- 	u8 enc_quality;
- 	u8 restart_interval;
- 	struct v4l2_ctrl_handler ctrl_hdl;
-+
-+	struct work_struct jpeg_work;
-+	u32 total_frame_num;
- };
- 
- extern struct platform_driver mtk_jpegenc_hw_driver;
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-index c3feb3a0..7b758fe 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-@@ -278,6 +278,7 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
- 	struct mtk_jpegenc_comp_dev *cjpeg =
- 		container_of(Pwork, struct mtk_jpegenc_comp_dev,
- 		job_timeout_work);
-+	struct mtk_jpeg_dev *master_jpeg = cjpeg->master_dev;
- 	struct vb2_v4l2_buffer *src_buf;
- 	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
- 
-@@ -286,6 +287,9 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
- 	mtk_jpeg_enc_reset(cjpeg->reg_base);
- 	clk_disable_unprepare(cjpeg->pm.venc_clk.clk_info->jpegenc_clk);
- 	pm_runtime_put(cjpeg->pm.dev);
-+	cjpeg->hw_state = MTK_JPEG_HW_IDLE;
-+	atomic_inc(&cjpeg->hw_rdy);
-+	wake_up(&master_jpeg->hw_wq);
- 
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- }
-@@ -327,7 +331,17 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
- 	v4l2_m2m_buf_done(src_buf, buf_state);
- 	v4l2_m2m_buf_done(dst_buf, buf_state);
- 	v4l2_m2m_job_finish(master_jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+	clk_disable_unprepare(jpeg->pm.venc_clk.clk_info->jpegenc_clk);
- 	pm_runtime_put(ctx->jpeg->dev);
-+	if (ctx->fh.m2m_ctx &&
-+		(!list_empty(&ctx->fh.m2m_ctx->out_q_ctx.rdy_queue) ||
-+		!list_empty(&ctx->fh.m2m_ctx->cap_q_ctx.rdy_queue))) {
-+		queue_work(master_jpeg->workqueue, &ctx->jpeg_work);
-+	}
-+
-+	jpeg->hw_state = MTK_JPEG_HW_IDLE;
-+	wake_up(&master_jpeg->hw_wq);
-+	atomic_inc(&jpeg->hw_rdy);
- 
- 	return IRQ_HANDLED;
- }
-@@ -364,6 +378,9 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
- 		return -ENOMEM;
- 
- 	dev->plat_dev = pdev;
-+	atomic_set(&dev->hw_rdy, 1U);
-+	spin_lock_init(&dev->hw_lock);
-+	dev->hw_state = MTK_JPEG_HW_IDLE;
- 
- 	INIT_DELAYED_WORK(&dev->job_timeout_work, mtk_jpegenc_timeout_work);
- 
+v3->v4 changes:
+ - Introduce vsc9959_psfp_sfi_table_get() function in patch where it is
+   used to fix compile warning.
+ - Store MAC entry type before FRER set, and recover it after FRER
+   disabled.
+
+v2->v3 changes:
+ - Reorder first two patches. Export struct ocelot_mact_entry, then add
+   ocelot_mact_lookup() and ocelot_mact_write() functions.
+ - Add PSFP list to struct ocelot, and init it by using
+   ocelot->ops->psfp_init().
+
+v1->v2 changes:
+ - Use tc flower offload of ocelot driver to support PSFP add and delete.
+ - Add PSFP tables add/del functions in felix_vsc9959.c.
+
+Vladimir Oltean (3):
+  net: mscc: ocelot: serialize access to the MAC table
+  net: mscc: ocelot: export struct ocelot_mact_entry
+  net: mscc: ocelot: add MAC table stream learn and lookup operations
+
+Xiaoliang Yang (6):
+  net: mscc: ocelot: set vcap IS2 chain to goto PSFP chain
+  net: mscc: ocelot: add gate and police action offload to PSFP
+  net: dsa: felix: support psfp filter on vsc9959
+  net: dsa: felix: add stream gate settings for psfp
+  net: mscc: ocelot: use index to set vcap policer
+  net: dsa: felix: use vcap policer to set flow meter for psfp
+
+ drivers/net/dsa/ocelot/felix.c             |   4 +
+ drivers/net/dsa/ocelot/felix.h             |   4 +
+ drivers/net/dsa/ocelot/felix_vsc9959.c     | 695 ++++++++++++++++++++-
+ drivers/net/dsa/ocelot/seville_vsc9953.c   |   8 +
+ drivers/net/ethernet/mscc/ocelot.c         | 112 +++-
+ drivers/net/ethernet/mscc/ocelot.h         |  13 -
+ drivers/net/ethernet/mscc/ocelot_flower.c  |  84 ++-
+ drivers/net/ethernet/mscc/ocelot_vcap.c    | 103 +--
+ drivers/net/ethernet/mscc/ocelot_vsc7514.c |   7 +
+ include/soc/mscc/ocelot.h                  |  54 +-
+ include/soc/mscc/ocelot_ana.h              |  10 +
+ include/soc/mscc/ocelot_vcap.h             |   1 +
+ 12 files changed, 1011 insertions(+), 84 deletions(-)
+
 -- 
-2.6.4
+2.17.1
 
 
 _______________________________________________
