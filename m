@@ -2,76 +2,91 @@ Return-Path: <SRS0=tGyr=OO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
+	autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CB167C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:48:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99CAEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:55:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EB4B60E08
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:48:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8EB4B60E08
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5995060E08
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:55:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5995060E08
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sOPGWujSSPR7LwwC2oWUk118Z+jPdd+3RWbgqePke78=; b=yMcIoE5UrdsHO+
-	eoyNZCITiJ/NAIsauntHaVsgRJLYdyUpycHdbGJ1ZQ6oDOwk+v3UnodmgSaN3HMTT4B1iZcRFoPS/
-	V7SH+AjDprWN95TQv/B5g8HJmW/M4hLx68zrWXEVWh0DbIiVTActGOIJ5KogGjbWORShdgI2imhEm
-	w+4ar7zSmfhwCPreC+Fv+Izy9ooxeiMDWQ8OVIByx9MJhwSPO6Ywz71MOa4SFhdQJNCSXxtaVKLiE
-	bUy1Ak67fT/AU6p+1oDOt6l4yCLTjAeGg8r8L06GlY6immcXR+ZMmTmk5BF7m8/TJDhfkUctPkcL2
-	HzFKhRMFFOkDnriGE9Jw==;
+	List-Owner; bh=m/PTxQ/JpEwMdVhXgzhj65R0BC4Xau+rskLiHFZFEQw=; b=ySfE/Q1xdp257L
+	demzPrwkJL4/fVOKZfa+44kncNVdNYZShbK+uyk7/78j5P18tpbtc0m8VSztCKY/zpwO2kO9ohsf/
+	e8/sKFTLGB5PEOS0prUa3G2L91vSuoNp5QOGrDDYHIDpCxlLgFCXJqFqzD5ZzNPH5QSFUED5ElUvm
+	BsrttSUhPrfHjkeWJT/WE8fRIGwDAQTccTRuA3iQvXvbvZ4Y742OhKuoS4Ihhyw8w+Nt5DgVIFL7D
+	1hloedZeEjlWoPg1fTneNziLYSUpbG5MvVOQOD8KnlXT5DwR5XXF3NqBWY52Bd5r/2xPHJUe4bNUO
+	JWqnu2X3RphjHmWPaiTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTfvz-00DNqS-Fi; Fri, 24 Sep 2021 07:47:51 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mTg3G-00DQ1V-HD; Fri, 24 Sep 2021 07:55:22 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTfuM-00DMyT-1r; Fri, 24 Sep 2021 07:46:11 +0000
-X-UUID: 46142fae03fc455fae89c20415c9fc6b-20210924
-X-UUID: 46142fae03fc455fae89c20415c9fc6b-20210924
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <kyrie.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 608665168; Fri, 24 Sep 2021 00:46:08 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 00:46:06 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 15:46:04 +0800
-Received: from localhost.localdomain (10.17.3.154) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Sep 2021 15:46:03 +0800
-From: kyrie.wu <kyrie.wu@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa
- <tfiga@chromium.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <xia.jiang@mediatek.com>,
- <maoguang.meng@mediatek.com>, <srv_heupstream@mediatek.com>,
- <kyrie.wu@mediatek.com>, <irui.wang@mediatek.com>
-Subject: [PATCH V4,5/5] media: mtk-jpegenc: add output pic reorder interface
-Date: Fri, 24 Sep 2021 15:45:43 +0800
-Message-ID: <1632469543-27345-6-git-send-email-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.6.4
-In-Reply-To: <1632469543-27345-1-git-send-email-kyrie.wu@mediatek.com>
-References: <1632469543-27345-1-git-send-email-kyrie.wu@mediatek.com>
+ id 1mTg3C-00DPzc-MM
+ for linux-mediatek@lists.infradead.org; Fri, 24 Sep 2021 07:55:20 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id x27so36922595lfu.5
+ for <linux-mediatek@lists.infradead.org>; Fri, 24 Sep 2021 00:55:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JGmW9C+VJgClTUsrZKCeV0/J9rVWIZQmzpXvw/rQpIk=;
+ b=Ahrt2ozoHr1F1XaGJc8UFWICEWx8gXzt2P8DnqE+76I7f+qcZ4PJLWcuYI7YYLRuRF
+ 295dBHmchEjQ+f5oiSMLwpl0RZfub+JdzvYGDp7mjQ8AaIXLVPfVNgYDTMO7EVOxbxg1
+ dGIlLtwfrbge+SQVQC4xuZMPe1HxIqWieoegc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JGmW9C+VJgClTUsrZKCeV0/J9rVWIZQmzpXvw/rQpIk=;
+ b=JWbG+TGHYOHT229MnuTix3PywKrbeUDt3jNITWJLcbyQg0dw5s3PM2hsbJdhHMrBHC
+ +OEIlthUVX/Wp6uSTIT1ey8e2yXUqIYur9Ucn/aN+MiVd2ivmFMu7VyPSr+fUMRAr56l
+ 5wFDd93PgpCsgLDQA9yd14jgl5zAAuF70kQHniXNjLpyY86Cc36UGgqht+WnCOuowsiI
+ 3w9aUx6Yj4LVBpBcx4/9qIL9QZTmnX3CdoQjYjpFM+tGoGyyMqMFi5wGTkbVdAONE36G
+ BSDuqShBsfM/mTElyIoP2kTG3iLrc2oOkybW9vD848rujwicgWeayeeFINwu6NJTgNk0
+ VnvA==
+X-Gm-Message-State: AOAM532UEJR94wZQl8b4iTNsxurLgZS1y2K5xz6gAtmlrmo5hjJV+gHS
+ wmz23vsp6fipxQ0AuVj3egphCoQPLFcRQEWhRmclMg==
+X-Google-Smtp-Source: ABdhPJzkFv7HLV5oiZBfchGG412aWLIODM5Pu3aEuCwVKvIU5JXdh28L0/JBma6qNUvVyNbpJPJPjk4Mep/rE15SXIc=
+X-Received: by 2002:a05:651c:1505:: with SMTP id
+ e5mr9964384ljf.9.1632470115670; 
+ Fri, 24 Sep 2021 00:55:15 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <1632469543-27345-1-git-send-email-kyrie.wu@mediatek.com>
+In-Reply-To: <1632469543-27345-1-git-send-email-kyrie.wu@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 24 Sep 2021 15:55:04 +0800
+Message-ID: <CAGXv+5H3MRhSi=x0UA2vsXheDjVR0Cdig0DmEvS5dLLgSBCnvA@mail.gmail.com>
+Subject: Re: [PATCH V4,0/5] Support jpeg encoder for MT8195
+To: "kyrie.wu" <kyrie.wu@mediatek.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@chromium.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
+ Linux Media Mailing List <linux-media@vger.kernel.org>,
+ Devicetree List <devicetree@vger.kernel.org>, 
+ LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ xia.jiang@mediatek.com, Maoguang Meng <maoguang.meng@mediatek.com>,
+ srv_heupstream <srv_heupstream@mediatek.com>, 
+ Irui Wang <irui.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_004610_127332_29AC7718 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20210924_005518_737753_D9A87B67 
+X-CRM114-Status: GOOD (  25.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,124 +103,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are two HWs in mt8195. Since the two HWs run
-in parallel, it is necessary to reorder the output images
-to ensure that the order is consistent with the input images.
+On Fri, Sep 24, 2021 at 3:46 PM kyrie.wu <kyrie.wu@mediatek.com> wrote:
+>
+> MT8195 has two jpeg encoding HW, each one has its own
+> power-domain, clock, interrupt, register base.
+> The two jpeg encoding HW can work together to
+> achieve higher performance.
+>
+> Generally, one HW needs to register one device node,
+> and the APP operates the HW through the device node.
+> If there are multiple HWs, the multiple device node
+> needs to be registered. At this time, the app needs
+> to design software logic to use multiple HWs in parallel,
+> which will undoubtedly increase the difficulty of
+> app development and weaken its compatibility.
+>
+> These serial patches use the component framework
+> to achieve the purpose of using multiple HWs
+> through only one device node. About the component
+> framework Block Diagram, please check below:
+>
+>                 Master(device node)
+>         ________|_________________________
+>         |                      |             |
+> component0(HW0) component1(HW1) component2(HW2) ......
+>
+> As above, the component framework is similar to a
+> master-component two level architecture.
+> Both master and component have the compatible
+> attribute in the device tree, and the corresponding
+> platform driver structure is defined in the driver.
+> Therefore, when the compatible attribute matches,
+> the corresponding probe function will be called.
+>
+> In the probe function of component, operations
+> such as initialization clock, remmap register base,
+> registration interrupt will be performed.
+> And add the component to a component linked
+> list to find the corresponding master.
+>
+> In the probe function of the master, the device
+> node will be registered, and the master will be
+> added to a master linked list to find the
+> corresponding component.
+>
+> After the master matches the component,
+> it will obtain the clock, interrupt, register base
+> and other resources in the component,
+> and operate the HW through these resources.
+> At the same time, multiple HWs software function
+> interfaces are designed in the master driver.
 
-Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
----
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c   | 46 ++++++++++++++++++++++-
- drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h   |  4 ++
- drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c |  4 +-
- 3 files changed, 51 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index c854cc4..eeb2350 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -912,6 +912,48 @@ static int mtk_jpeg_set_dec_dst(struct mtk_jpeg_ctx *ctx,
- 	return 0;
- }
- 
-+void mtk_jpeg_put_buf(struct mtk_jpegenc_comp_dev *jpeg)
-+{
-+	struct mtk_jpeg_ctx *ctx;
-+	struct vb2_v4l2_buffer *dst_buffer;
-+	struct list_head *temp_entry;
-+	struct list_head *pos = NULL;
-+	struct mtk_jpeg_src_buf *dst_done_buf, *tmp_dst_done_buf;
-+	unsigned long flags;
-+
-+	ctx = jpeg->hw_param.curr_ctx;
-+	if (!ctx) {
-+		dev_err(jpeg->dev, "comp_jpeg ctx fail !!!\n");
-+		return;
-+	}
-+	dst_buffer = jpeg->hw_param.dst_buffer;
-+	if (!dst_buffer) {
-+		dev_err(jpeg->dev, "comp_jpeg dst_buffer fail !!!\n");
-+		return;
-+	}
-+
-+	dst_done_buf = mtk_jpeg_vb2_to_srcbuf(&dst_buffer->vb2_buf);
-+	spin_lock_irqsave(&ctx->done_queue_lock, flags);
-+	list_add_tail(&dst_done_buf->list, &ctx->dst_done_queue);
-+
-+	while (!list_empty(&ctx->dst_done_queue) &&
-+		(pos != &ctx->dst_done_queue)) {
-+		list_for_each_prev_safe(pos, temp_entry,
-+			(&ctx->dst_done_queue)) {
-+			tmp_dst_done_buf = list_entry(pos,
-+				struct mtk_jpeg_src_buf, list);
-+			if (tmp_dst_done_buf->frame_num ==
-+				ctx->last_done_frame_num) {
-+				list_del(&tmp_dst_done_buf->list);
-+				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
-+					VB2_BUF_STATE_DONE);
-+				ctx->last_done_frame_num++;
-+			}
-+		}
-+	}
-+	spin_unlock_irqrestore(&ctx->done_queue_lock, flags);
-+}
-+
- static int mtk_jpeg_select_hw(struct mtk_jpeg_ctx *ctx)
- {
- 	struct mtk_jpegenc_comp_dev *comp_jpeg;
-@@ -1339,8 +1381,10 @@ static int mtk_jpeg_open(struct file *file)
- 		goto free;
- 	}
- 
--	if (jpeg->variant->is_encoder)
-+	if (jpeg->variant->is_encoder) {
- 		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
-+		INIT_LIST_HEAD(&ctx->dst_done_queue);
-+	}
- 
- 	v4l2_fh_init(&ctx->fh, vfd);
- 	file->private_data = &ctx->fh;
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index a9000da..a3046f8 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -233,8 +233,12 @@ struct mtk_jpeg_ctx {
- 
- 	struct work_struct jpeg_work;
- 	u32 total_frame_num;
-+	struct list_head dst_done_queue;
-+	spinlock_t done_queue_lock;
-+	u32 last_done_frame_num;
- };
- 
- extern struct platform_driver mtk_jpegenc_hw_driver;
-+void mtk_jpeg_put_buf(struct mtk_jpegenc_comp_dev *jpeg);
- 
- #endif /* _MTK_JPEG_CORE_H */
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-index 7b758fe..6474aba 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-@@ -292,6 +292,7 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
- 	wake_up(&master_jpeg->hw_wq);
- 
- 	v4l2_m2m_buf_done(src_buf, buf_state);
-+	mtk_jpeg_put_buf(cjpeg);
- }
- 
- static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
-@@ -329,8 +330,7 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
- 	buf_state = VB2_BUF_STATE_DONE;
- 
- 	v4l2_m2m_buf_done(src_buf, buf_state);
--	v4l2_m2m_buf_done(dst_buf, buf_state);
--	v4l2_m2m_job_finish(master_jpeg->m2m_dev, ctx->fh.m2m_ctx);
-+	mtk_jpeg_put_buf(jpeg);
- 	clk_disable_unprepare(jpeg->pm.venc_clk.clk_info->jpegenc_clk);
- 	pm_runtime_put(ctx->jpeg->dev);
- 	if (ctx->fh.m2m_ctx &&
--- 
-2.6.4
+Please include a changelog with your cover letter (or in each patch).
+This is the fourth version of the series, and it's unclear what has
+changed between the versions.
 
+
+ChenYu
+
+> kyrie.wu (5):
+>   dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
+>   media: mtk-jpegenc: Use component framework to manage each hardware
+>   media: mtk-jpegenc: add jpegenc timeout func interface
+>   media: mtk-jpegenc: add jpeg encode worker interface
+>   media: mtk-jpegenc: add output pic reorder interface
+>
+>  .../bindings/media/mediatek-jpeg-encoder.yaml      |   3 +
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    | 395 ++++++++++++++++++---
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h    |  79 +++++
+>  drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c  | 298 ++++++++++++++++
+>  4 files changed, 730 insertions(+), 45 deletions(-)
+>
+> --
+> 2.6.4
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
