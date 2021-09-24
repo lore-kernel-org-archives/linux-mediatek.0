@@ -7,49 +7,49 @@ X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF98DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:17:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 010FCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:18:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8EB5460F21
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:17:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8EB5460F21
+	by mail.kernel.org (Postfix) with ESMTPS id BF7D861242
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:18:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BF7D861242
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KmY8lQjuVlETiDIVLVt79Y1rIAnoDTFVziSH7hZQoBU=; b=WbblCLN+I/Mun0
-	UxvNz0tMJJPmGwvKDVNIbqiJF6Yapk2YYk6rry3QfExTl7D3TKeuD+hBbINo0ie8pSQ9q6gR7fIp+
-	AJCLc30tcgYOpi7OytBqRBWz4kf+u3Xp0Sscl5eeLBLiMRAxhtIYnKCBnKY4uZXDiUXiNBolz4OUB
-	uBNHGj9Misv/6dJfFBXRrLSRm4E+dUx2K0sZej/OhLaXEnOnMENTUBq/K26pMP+08j50BTMQ9tB1u
-	AvFK9hIoFV/DL11nMZiNs+TAgASUYzIMaHBen5TS3EQyeNIHfHdfhoo+FpAQg9Iv/ySjZ7hEKgrCP
-	sE9Qg8xdT54q1De0kBYw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Q0f/GFCXbO36DF+I5CS+e6sd5zMoMHFgqebgCmvG8vk=; b=NVeKPIlTKxGWgC
+	FyX/u/gqOvYm6YxMB3nxQ9AKNLrqopWGSkdU7Nhfg4toixQRtAEJaFqIMp8TGnY43tCFsdXEtXOF5
+	joCWbb08LYZzDF5Bxpa3PDCUJ9MNMo03CFQ5UinTMcMIVug9gQMGjoNVJJHT1A2bOuUOqSai1Q9zR
+	kZm857HtmX58F4QC2bLMpo2tJyyJlP4EVI/oUIXJYnbf9nHjSbgVfwTNLT3KrxMDuSLL/bL/EbYYi
+	sWcQKmQXrbRWs6Z2rvCob/8fp5iKknkkp4EE/pZx88v86vRXgO53azhJThmSbJqahT1c094gpRQjJ
+	EjHJw9XkpfrHNeSmEevg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTfSk-00DGZN-9T; Fri, 24 Sep 2021 07:17:38 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mTfTM-00DGsc-RB; Fri, 24 Sep 2021 07:18:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTfSG-00DGK3-LS; Fri, 24 Sep 2021 07:17:10 +0000
-X-UUID: 1ba880eb19184d2db2ccb4b633536445-20210924
-X-UUID: 1ba880eb19184d2db2ccb4b633536445-20210924
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1mTfSN-00DGOf-Sl; Fri, 24 Sep 2021 07:17:17 +0000
+X-UUID: 29890aaab1f74ba5b8473584790d6eca-20210924
+X-UUID: 29890aaab1f74ba5b8473584790d6eca-20210924
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <kyrie.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 291172397; Fri, 24 Sep 2021 00:17:04 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1920644152; Fri, 24 Sep 2021 00:17:10 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 00:17:02 -0700
+ 15.0.1497.2; Fri, 24 Sep 2021 00:17:08 -0700
 Received: from MTKCAS06.mediatek.inc (172.21.101.30) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Sep 2021 15:17:00 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Sep 2021 15:17:07 +0800
 Received: from localhost.localdomain (10.17.3.154) by MTKCAS06.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Sep 2021 15:17:00 +0800
+ Transport; Fri, 24 Sep 2021 15:17:06 +0800
 From: kyrie.wu <kyrie.wu@mediatek.com>
 To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
  <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Tomasz Figa
@@ -61,17 +61,17 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-mediatek@lists.infradead.org>, <xia.jiang@mediatek.com>,
  <maoguang.meng@mediatek.com>, <srv_heupstream@mediatek.com>,
  <kyrie.wu@mediatek.com>
-Subject: [PATCH V3, 1/5] dt-bindings: mediatek: Add mediatek,
- mt8195-jpgenc compatible
-Date: Fri, 24 Sep 2021 15:16:54 +0800
-Message-ID: <1632467818-26753-1-git-send-email-kyrie.wu@mediatek.com>
+Subject: [PATCH V3, 3/5] media: mtk-jpegenc: add jpegenc timeout func interface
+Date: Fri, 24 Sep 2021 15:16:56 +0800
+Message-ID: <1632467818-26753-3-git-send-email-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.6.4
+In-Reply-To: <1632467818-26753-1-git-send-email-kyrie.wu@mediatek.com>
+References: <1632467818-26753-1-git-send-email-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_001708_721923_71A70731 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210924_001715_983806_6184EEAE 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,27 +88,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mediatek, mt8195-jpgenc compatible to binding document
+Generalizes jpegenc timeout func interfaces to handle HW timeout.
 
 Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
 ---
- Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h   |  8 ++++++++
+ drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 23 +++++++++++++++++++++++
+ 2 files changed, 31 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-index fcd9b82..e93ccf5 100644
---- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-@@ -18,6 +18,9 @@ properties:
-       - enum:
-           - mediatek,mt2701-jpgenc
-           - mediatek,mt8183-jpgenc
-+          - mediatek,mt8195-jpgenc
-+          - mediatek,mt8195-jpgenc0
-+          - mediatek,mt8195-jpgenc1
-       - const: mediatek,mtk-jpgenc
-   reg:
-     maxItems: 1
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+index 9793ccb..0689bcb 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
+@@ -75,6 +75,12 @@ struct mtk_jpeg_variant {
+ 	u32 cap_q_default_fourcc;
+ };
+ 
++struct mtk_jpeg_hw_param {
++	struct vb2_v4l2_buffer *src_buffer;
++	struct vb2_v4l2_buffer *dst_buffer;
++	struct mtk_jpeg_ctx *curr_ctx;
++};
++
+ enum mtk_jpegenc_hw_id {
+ 	MTK_JPEGENC_HW0,
+ 	MTK_JPEGENC_HW1,
+@@ -120,6 +126,8 @@ struct mtk_jpegenc_comp_dev {
+ 	struct mtk_jpeg_dev *master_dev;
+ 	struct mtk_jpegenc_pm pm;
+ 	int jpegenc_irq;
++	struct delayed_work job_timeout_work;
++	struct mtk_jpeg_hw_param hw_param;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+index cf8a706..c3feb3a0 100644
+--- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
+@@ -271,6 +271,25 @@ void mtk_jpegenc_release_pm(struct mtk_jpegenc_comp_dev *mtkdev)
+ 	pm_runtime_disable(&pdev->dev);
+ }
+ 
++static void mtk_jpegenc_timeout_work(struct work_struct *work)
++{
++	struct delayed_work *Pwork =
++		container_of(work, struct delayed_work, work);
++	struct mtk_jpegenc_comp_dev *cjpeg =
++		container_of(Pwork, struct mtk_jpegenc_comp_dev,
++		job_timeout_work);
++	struct vb2_v4l2_buffer *src_buf;
++	enum vb2_buffer_state buf_state = VB2_BUF_STATE_ERROR;
++
++	src_buf = cjpeg->hw_param.src_buffer;
++
++	mtk_jpeg_enc_reset(cjpeg->reg_base);
++	clk_disable_unprepare(cjpeg->pm.venc_clk.clk_info->jpegenc_clk);
++	pm_runtime_put(cjpeg->pm.dev);
++
++	v4l2_m2m_buf_done(src_buf, buf_state);
++}
++
+ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ {
+ 	struct mtk_jpegenc_comp_dev *jpeg = priv;
+@@ -281,6 +300,8 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
+ 	enum vb2_buffer_state buf_state;
+ 	u32 result_size;
+ 
++	cancel_delayed_work(&jpeg->job_timeout_work);
++
+ 	irq_status = readl(jpeg->reg_base + JPEG_ENC_INT_STS) &
+ 		     JPEG_ENC_INT_STATUS_MASK_ALLIRQ;
+ 	if (irq_status)
+@@ -344,6 +365,8 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+ 
+ 	dev->plat_dev = pdev;
+ 
++	INIT_DELAYED_WORK(&dev->job_timeout_work, mtk_jpegenc_timeout_work);
++
+ 	ret = mtk_jpegenc_init_pm(dev);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Failed to get jpeg enc clock source");
 -- 
 2.6.4
 
