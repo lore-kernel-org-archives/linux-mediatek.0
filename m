@@ -1,87 +1,80 @@
 Return-Path: <SRS0=tGyr=OO=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-X-Spam-Level: 
-X-Spam-Status: No, score=-15.5 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C457EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 14:00:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 735A3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 14:33:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 88C3A61076
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 14:00:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 88C3A61076
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id ECB6B6124F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 14:32:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ECB6B6124F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6s2Wqdj5+JZzXHqpjWa2IGwyPMSS94DmAXWjk8NtOak=; b=MUo9rx0rBqcN4f
-	f+etYH2EVRHF2eypHI6Tu3t2jxqsZgMOuBlzxAiVOtTR/xvr05NjAQJoMtqgA18rOWYw6eCyaukF8
-	JwbDRlOuHyEyr/I0T/iy7sU+eyuGeP3iwv7smz+MU668H6jHVG6sJNjb9ea1Jw651V9oe6UlM/6rn
-	+p3S+5Cv5EamWXHULki5ykc0NCu3k/LLHIy7FZVLJ8Qlz4Js6A0gxbaM8+JN2GvpQiCJhLgGfTQQZ
-	aRYSBf++6WTScYGifZblXsjyMPRgyj56kcSh7wrEOOPv22hEWPAuALrTA/zPuemYBKNWbz2YT7g6d
-	f2YuAMAyTrJ8bXsnCxAA==;
+	List-Owner; bh=6VrK/eXhBzKoDfSJcmB7jRi81dY9ITQWRR+EMXqNkSs=; b=Z2zBitZNY4ywcN
+	mOLk3H6iodGS8vhQ+RE+A9dFkklVSLbqACsWLBmE+7mvPuqwDqSMBT2LyA6aaygiU7a2wI2QWxyT/
+	ovmVJ5BMfHQLbEp54ZVopFXe25DctyfB6qjz0Jy5d4546u0HPB1g5EqK1NPzRt0vqxRxQ5UfkjpIa
+	2XmtBUNWI/ig83ePJrFdju/ZWRd1p4Kipj+4lajqwa3PI5zysuIKdvMfKmce5ubhQeaGyqOOGJFQz
+	azP27/o+UB4yJaGWB7Tzdz6lsGrqofjpNR21uvIming591oMesQMlNO/FAWXQsD/st7NQ07/C1dO9
+	ClSzzvlaFo8wRc5Hr/lQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTlkG-00Em6r-5G; Fri, 24 Sep 2021 14:00:08 +0000
-Received: from mail-ot1-f45.google.com ([209.85.210.45])
+	id 1mTmFq-00EqRg-3w; Fri, 24 Sep 2021 14:32:46 +0000
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTlja-00ElwD-Gy; Fri, 24 Sep 2021 13:59:29 +0000
-Received: by mail-ot1-f45.google.com with SMTP id
- l7-20020a0568302b0700b0051c0181deebso13174580otv.12; 
- Fri, 24 Sep 2021 06:59:25 -0700 (PDT)
+ id 1mTmFg-00EqPL-5s
+ for linux-mediatek@lists.infradead.org; Fri, 24 Sep 2021 14:32:37 +0000
+Received: by mail-yb1-xb33.google.com with SMTP id m70so6167990ybm.5
+ for <linux-mediatek@lists.infradead.org>; Fri, 24 Sep 2021 07:32:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=PCjQZcVJmjPWZioCoH0GfM/uPKlpTelBzg4TO/HnFhI=;
+ b=UYF+YUVwUcVhe3APQrnO15JByJbbU4EgOO2uJm9IYny9sOz2Wp3B4ktp3/XRxtjVA8
+ LBLncoyj+R0eNm3k6f5LScAiuSvA2alqziPikFWG5qzp8NiIki0ikLwVXSHI7SEEvj9N
+ YHxy21e6PDoCCr+vpzcgFuicZxW9Dgb5vzRVF15J2YkqQ3D3NL/6Z9DD/oVISSgYzRxr
+ NQI8iiMp/cm5D2D6dCMqhGzcOT2lus24afyFKjnYVae+V88oThBgR2fuwpgZfIVnsZmo
+ PGj6j4m6SaiFEMr+vPK3ozX2nHJG445XF08IdhB+bOwbScZc4KcdXDWqnz+asjRexSNY
+ SYsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=WcWh55mrnHlrmpS4bF3C6RTmMv+GgWp8tjxqVJlKmm8=;
- b=pOX7E4cxvpwAsS51ge+BSh5O7mEdxj1vVZJzWFK5kL/5uOvJqgVnbdq6ujz91E4vdn
- eGKwWU8YKqBVzIL0nBP9XU7b6617+xqB9kdBbeT0Yn34XopBhGmHT2HUxueGO9OJ8ly3
- 20wHnqU7DvR5U/qIAss5kvEs1QUhN/QYC9zek/xZjp8OFiMAPHqv25d/7jr7TZCVIIgc
- eh/IjnlihLrMDSSkYSDP4xN1XxLahG5MUfsjT2XmNn84FmQG968MAzrTCmpu3T8zsAQQ
- BxHc72z7mDWmfEY9zvCRh988mtAoJXwWmLlCLX+iP1p1NRKGqLiZSAZmwstPFkGWqEHU
- OS6g==
-X-Gm-Message-State: AOAM531IBT4KgjbT7r0AvbiQ9I8i5KAwD8kr4JKGDWerXvCLW+7DDhni
- SsQiZjiCl/5UkBwBOZLT2w==
-X-Google-Smtp-Source: ABdhPJwu5vf62gkghKqrJp812TiqZCJ5L14q4YY1lFn4pkmkXKCEkfSFSlIERBrP2Win5Yi3GNO6Sw==
-X-Received: by 2002:a9d:4a83:: with SMTP id i3mr4246791otf.385.1632491964290; 
- Fri, 24 Sep 2021 06:59:24 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id d26sm2075540oij.49.2021.09.24.06.59.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Sep 2021 06:59:23 -0700 (PDT)
-Received: (nullmailer pid 1195979 invoked by uid 1000);
- Fri, 24 Sep 2021 13:59:21 -0000
-From: Rob Herring <robh@kernel.org>
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: matthias.bgg@gmail.com, linux-clk@vger.kernel.org, Ryder.Lee@mediatek.com,
- fparent@baylibre.com, linux-crypto@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, seiya.wang@mediatek.com,
- sean.wang@kernel.org, robh+dt@kernel.org, enric.balletbo@collabora.com,
- linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org,
- wim@linux-watchdog.org, linux-mediatek@lists.infradead.org,
- herbert@gondor.apana.org.au, mturquette@baylibre.com,
- linux-watchdog@vger.kernel.org, linux-serial@vger.kernel.org, mpm@selenic.com,
- linux@roeck-us.net, john@phrozen.org, sboyd@kernel.org, hsinyi@chromium.org,
- linus.walleij@linaro.org
-In-Reply-To: <20210924114459.28664-1-sam.shih@mediatek.com>
-References: <9aa66a93-4d0c-176e-ea35-b5aa33751d51@gmail.com>
- <20210924114459.28664-1-sam.shih@mediatek.com>
-Subject: Re: [v4,5/9] dt-bindings: pinctrl: update bindings for MT7986 SoC
-Date: Fri, 24 Sep 2021 08:59:21 -0500
-Message-Id: <1632491961.645727.1195978.nullmailer@robh.at.kernel.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=PCjQZcVJmjPWZioCoH0GfM/uPKlpTelBzg4TO/HnFhI=;
+ b=6Kil2Un+ANJpB6jC8znbVOHQv+vsEDzEmQqEjk7E1KFRwbyvPzZkKeS8FVaxbjNxj9
+ XIHhzWJcao0NRQgqW8P6iEBivDr0Bt/EPg+hfatIj8dIl1d5ZN3zl3IGEMsxN8ShGEFq
+ fDU3L9hMSA4SFGpOXRPgtFucx7O8AHbnusiNG0bFX4ZTX3taJxagUSlQFw/eEPX5WRO9
+ j04qFyZHu2jEfWG13Augiu7dGFlrmuSI0Tf4ZXc3GXPlc4Ey+hbzfbS9vXKDmhJZJlpN
+ x+70VRuX2S5kzLiKhXQt35ID9CDoJXdoj1gM0N8PfwJe7u8JGtZG7HStBoXKXZf/PfAC
+ dORw==
+X-Gm-Message-State: AOAM532ONwBCHgIBWRnpouXdocfZ5DK+wE9Mr6cgzgNIpn9je5tgf36e
+ loC5j8f4CEPV8PDyg2DCXhXXJmEAaX+MHc7c8Irxtw==
+X-Google-Smtp-Source: ABdhPJzIlLF34YGWfPvgQ9nBPguvg4Rp0wtZnARw0kUV7S/YfbpAZoEuMNhdGf3E0DXLWY87heVqiceD4P05RLyXKcU=
+X-Received: by 2002:a5b:286:: with SMTP id x6mr12728856ybl.59.1632493950045;
+ Fri, 24 Sep 2021 07:32:30 -0700 (PDT)
+MIME-Version: 1.0
+References: <20210923095316.13867-1-yee.lee@mediatek.com>
+In-Reply-To: <20210923095316.13867-1-yee.lee@mediatek.com>
+From: Sami Tolvanen <samitolvanen@google.com>
+Date: Fri, 24 Sep 2021 07:32:19 -0700
+Message-ID: <CABCJKudkcxtDX89hXRTv7osFOxqMsvv=OK5BpcO4-xPHrQB9dg@mail.gmail.com>
+Subject: Re: [PATCH] scs: Release kasan vmalloc poison in scs_free process
+To: yee.lee@mediatek.com
+Cc: LKML <linux-kernel@vger.kernel.org>, nicholas.Tang@mediatek.com, 
+ Kuan-Ying.lee@mediatek.com, chinwen.chang@mediatek.com, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, 
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_065926_632297_2916FFA5 
-X-CRM114-Status: GOOD (  14.10  )
+X-CRM114-CacheID: sfid-20210924_073236_233339_481C7312 
+X-CRM114-Status: GOOD (  19.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,90 +86,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 24 Sep 2021 19:44:59 +0800, Sam Shih wrote:
-> This updates bindings for MT7986 pinctrl driver. The
-> difference of pinctrl between mt7986a and mt7986b is that pin-41 to pin-65
-> do not exist on mt7986b
-> 
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> 
+Hi,
+
+On Thu, Sep 23, 2021 at 2:53 AM <yee.lee@mediatek.com> wrote:
+>
+> From: Yee Lee <yee.lee@mediatek.com>
+>
+> Since scs allocation has been moved to vmalloc region, the
+> shadow stack is protected by kasan_posion_vmalloc.
+> However, the vfree_atomic operation needs to access
+> its context for scs_free process and causes kasan error
+> as the dump info below.
+>
+> This patch Adds kasan_unpoison_vmalloc() before vfree_atomic,
+> which aligns to the prior flow as using kmem_cache.
+> The vmalloc region will go back posioned in the following
+> vumap() operations.
+>
+>  ==================================================================
+>  BUG: KASAN: vmalloc-out-of-bounds in llist_add_batch+0x60/0xd4
+>  Write of size 8 at addr ffff8000100b9000 by task kthreadd/2
+>
+>  CPU: 0 PID: 2 Comm: kthreadd Not tainted 5.15.0-rc2-11681-(skip)
+>  Hardware name: linux,dummy-virt (DT)
+>  Call trace:
+>   dump_backtrace+0x0/0x43c
+>   show_stack+0x1c/0x2c
+>   dump_stack_lvl+0x68/0x84
+>   print_address_description+0x80/0x394
+>   kasan_report+0x180/0x1dc
+>   __asan_report_store8_noabort+0x48/0x58
+>   llist_add_batch+0x60/0xd4
+>   vfree_atomic+0x60/0xe0
+>   scs_free+0x1dc/0x1fc
+>   scs_release+0xa4/0xd4
+>   free_task+0x30/0xe4
+>   __put_task_struct+0x1ec/0x2e0
+>   delayed_put_task_struct+0x5c/0xa0
+>   rcu_do_batch+0x62c/0x8a0
+>   rcu_core+0x60c/0xc14
+>   rcu_core_si+0x14/0x24
+>   __do_softirq+0x19c/0x68c
+>   irq_exit+0x118/0x2dc
+>   handle_domain_irq+0xcc/0x134
+>   gic_handle_irq+0x7c/0x1bc
+>   call_on_irq_stack+0x40/0x70
+>   do_interrupt_handler+0x78/0x9c
+>   el1_interrupt+0x34/0x60
+>   el1h_64_irq_handler+0x1c/0x2c
+>   el1h_64_irq+0x78/0x7c
+>   _raw_spin_unlock_irqrestore+0x40/0xcc
+>   sched_fork+0x4f0/0xb00
+>   copy_process+0xacc/0x3648
+>   kernel_clone+0x168/0x534
+>   kernel_thread+0x13c/0x1b0
+>   kthreadd+0x2bc/0x400
+>   ret_from_fork+0x10/0x20
+>
+>  Memory state around the buggy address:
+>   ffff8000100b8f00: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+>   ffff8000100b8f80: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+>  >ffff8000100b9000: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+>                     ^
+>   ffff8000100b9080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+>   ffff8000100b9100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+>  ==================================================================
+>
+> CC: Matthias Brugger <matthias.bgg@gmail.com>
+> CC: Will Deacon <will@kernel.org>
+> CC: Sami Tolvanen <samitolvanen@google.com>
+> Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 > ---
-> v4 : used yaml format instead of txt format document
-> v3 : make mt7986 pinctrl bindings as a separate file
-> v2 : deleted the redundant description of mt7986a/mt7986b
-> ---
->  .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 350 ++++++++++++++++++
->  1 file changed, 350 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-> 
+>  kernel/scs.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/kernel/scs.c b/kernel/scs.c
+> index e2a71fc82fa0..25c0d8e416e6 100644
+> --- a/kernel/scs.c
+> +++ b/kernel/scs.c
+> @@ -68,6 +68,7 @@ void scs_free(void *s)
+>
+>         __scs_account(s, -1);
+>
+> +       kasan_unpoison_vmalloc(s, SCS_SIZE);
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Thanks for the patch! I believe I had this in the original vmap SCS
+series, but Will pointed out that unpoisoning shouldn't be necessary
+before vfree_atomic() and I don't remember seeing this KASAN error
+back then. I wonder if something changed there? Either way, the patch
+looks good to me.
 
-yamllint warnings/errors:
+Reviewed-by: Sami Tolvanen <samitolvanen@google.com>
 
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: 'pin_group_table' is not one of ['$id', '$schema', 'title', 'description', 'examples', 'required', 'allOf', 'anyOf', 'oneOf', 'definitions', '$defs', 'additionalProperties', 'dependencies', 'patternProperties', 'properties', 'if', 'then', 'else', 'unevaluatedProperties', 'deprecated', 'maintainers', 'select']
-	from schema $id: http://devicetree.org/meta-schemas/base.yaml#
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: patternProperties:-[0-9]+$:patternProperties:conf:properties:mediatek,pull-up-adv: 'oneOf' conditional failed, one must be fixed:
-	'type' is a required property
-		hint: A vendor boolean property can use "type: boolean"
-	/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: patternProperties:-[0-9]+$:patternProperties:conf:properties:mediatek,pull-up-adv: 'oneOf' conditional failed, one must be fixed:
-		'enum' is a required property
-		'const' is a required property
-		hint: A vendor string property with exact values has an implicit type
-		from schema $id: http://devicetree.org/meta-schemas/vendor-props.yaml#
-	/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: patternProperties:-[0-9]+$:patternProperties:conf:properties:mediatek,pull-up-adv: 'oneOf' conditional failed, one must be fixed:
-		'$ref' is a required property
-		'allOf' is a required property
-		hint: A vendor property needs a $ref to types.yaml
-		from schema $id: http://devicetree.org/meta-schemas/vendor-props.yaml#
-	hint: Vendor specific properties must have a type and description unless they have a defined, common suffix.
-	from schema $id: http://devicetree.org/meta-schemas/vendor-props.yaml#
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: patternProperties:-[0-9]+$:patternProperties:conf:properties:mediatek,pull-down-adv: 'oneOf' conditional failed, one must be fixed:
-	'type' is a required property
-		hint: A vendor boolean property can use "type: boolean"
-	/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: patternProperties:-[0-9]+$:patternProperties:conf:properties:mediatek,pull-down-adv: 'oneOf' conditional failed, one must be fixed:
-		'enum' is a required property
-		'const' is a required property
-		hint: A vendor string property with exact values has an implicit type
-		from schema $id: http://devicetree.org/meta-schemas/vendor-props.yaml#
-	/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: patternProperties:-[0-9]+$:patternProperties:conf:properties:mediatek,pull-down-adv: 'oneOf' conditional failed, one must be fixed:
-		'$ref' is a required property
-		'allOf' is a required property
-		hint: A vendor property needs a $ref to types.yaml
-		from schema $id: http://devicetree.org/meta-schemas/vendor-props.yaml#
-	hint: Vendor specific properties must have a type and description unless they have a defined, common suffix.
-	from schema $id: http://devicetree.org/meta-schemas/vendor-props.yaml#
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml: ignoring, error in schema: 
-warning: no schema found in file: ./Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-Error: Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dts:37.27-28 syntax error
-FATAL ERROR: Unable to parse input tree
-make[1]: *** [scripts/Makefile.lib:385: Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1441: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1532240
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+Sami
 
 _______________________________________________
 Linux-mediatek mailing list
