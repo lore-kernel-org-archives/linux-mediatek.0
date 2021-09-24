@@ -2,91 +2,76 @@ Return-Path: <SRS0=tGyr=OO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-10.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	UPPERCASE_50_75,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 99CAEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:55:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28797C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 08:07:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5995060E08
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 07:55:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5995060E08
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id E613C60F3A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 08:07:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E613C60F3A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m/PTxQ/JpEwMdVhXgzhj65R0BC4Xau+rskLiHFZFEQw=; b=ySfE/Q1xdp257L
-	demzPrwkJL4/fVOKZfa+44kncNVdNYZShbK+uyk7/78j5P18tpbtc0m8VSztCKY/zpwO2kO9ohsf/
-	e8/sKFTLGB5PEOS0prUa3G2L91vSuoNp5QOGrDDYHIDpCxlLgFCXJqFqzD5ZzNPH5QSFUED5ElUvm
-	BsrttSUhPrfHjkeWJT/WE8fRIGwDAQTccTRuA3iQvXvbvZ4Y742OhKuoS4Ihhyw8w+Nt5DgVIFL7D
-	1hloedZeEjlWoPg1fTneNziLYSUpbG5MvVOQOD8KnlXT5DwR5XXF3NqBWY52Bd5r/2xPHJUe4bNUO
-	JWqnu2X3RphjHmWPaiTg==;
+	List-Owner; bh=4ZRZ08nYtultYsZThGuUfa3i3NAkYNQH47khvkEdUw8=; b=Mwo7bESvHHH1vR
+	2oivioXnE2uLSuGlin+oIe6HMHb1kxz3eXKzLf6kus8GXiBZJCiXSS9PGzHRi+Udqn8MxJ09JNNXZ
+	fF2uHTGrvpVgwQqJP6C+wJb/b6v7dmiRHthJ5UZ7mz6Z7v4aaFh2GtSGLQzplfWwb1lUHVQUzSp93
+	a9u5nRl+wZXxw9P+ebZmcxn8bpGPgIlUVyvq07hjt3Nvvcy5PQ/Q2W4Snl2uN818RN4Z8m2HEH6JZ
+	khNAgp4RC91fGlPRhqIt3xWsvJ3vPEpKoF3Ib6fkfb8+HT7vVVqiQaLQUIInaHqEo6gBksQi6a5T9
+	xUQWE37cFKAdQT/7RjDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTg3G-00DQ1V-HD; Fri, 24 Sep 2021 07:55:22 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1mTgEd-00DREH-8s; Fri, 24 Sep 2021 08:07:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTg3C-00DPzc-MM
- for linux-mediatek@lists.infradead.org; Fri, 24 Sep 2021 07:55:20 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id x27so36922595lfu.5
- for <linux-mediatek@lists.infradead.org>; Fri, 24 Sep 2021 00:55:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JGmW9C+VJgClTUsrZKCeV0/J9rVWIZQmzpXvw/rQpIk=;
- b=Ahrt2ozoHr1F1XaGJc8UFWICEWx8gXzt2P8DnqE+76I7f+qcZ4PJLWcuYI7YYLRuRF
- 295dBHmchEjQ+f5oiSMLwpl0RZfub+JdzvYGDp7mjQ8AaIXLVPfVNgYDTMO7EVOxbxg1
- dGIlLtwfrbge+SQVQC4xuZMPe1HxIqWieoegc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JGmW9C+VJgClTUsrZKCeV0/J9rVWIZQmzpXvw/rQpIk=;
- b=JWbG+TGHYOHT229MnuTix3PywKrbeUDt3jNITWJLcbyQg0dw5s3PM2hsbJdhHMrBHC
- +OEIlthUVX/Wp6uSTIT1ey8e2yXUqIYur9Ucn/aN+MiVd2ivmFMu7VyPSr+fUMRAr56l
- 5wFDd93PgpCsgLDQA9yd14jgl5zAAuF70kQHniXNjLpyY86Cc36UGgqht+WnCOuowsiI
- 3w9aUx6Yj4LVBpBcx4/9qIL9QZTmnX3CdoQjYjpFM+tGoGyyMqMFi5wGTkbVdAONE36G
- BSDuqShBsfM/mTElyIoP2kTG3iLrc2oOkybW9vD848rujwicgWeayeeFINwu6NJTgNk0
- VnvA==
-X-Gm-Message-State: AOAM532UEJR94wZQl8b4iTNsxurLgZS1y2K5xz6gAtmlrmo5hjJV+gHS
- wmz23vsp6fipxQ0AuVj3egphCoQPLFcRQEWhRmclMg==
-X-Google-Smtp-Source: ABdhPJzkFv7HLV5oiZBfchGG412aWLIODM5Pu3aEuCwVKvIU5JXdh28L0/JBma6qNUvVyNbpJPJPjk4Mep/rE15SXIc=
-X-Received: by 2002:a05:651c:1505:: with SMTP id
- e5mr9964384ljf.9.1632470115670; 
- Fri, 24 Sep 2021 00:55:15 -0700 (PDT)
+ id 1mTgEP-00DR9u-7k; Fri, 24 Sep 2021 08:06:55 +0000
+X-UUID: 4f4e9941f27a4affb31a7e41e5e628cc-20210924
+X-UUID: 4f4e9941f27a4affb31a7e41e5e628cc-20210924
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2140976186; Fri, 24 Sep 2021 01:06:52 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Sep 2021 01:06:51 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Sep 2021 16:06:50 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 24 Sep 2021 16:06:49 +0800
+From: Zhiyong Tao <zhiyong.tao@mediatek.com>
+To: <robh+dt@kernel.org>, <linus.walleij@linaro.org>, <mark.rutland@arm.com>, 
+ <matthias.bgg@gmail.com>, <sean.wang@kernel.org>
+CC: <srv_heupstream@mediatek.com>, <zhiyong.tao@mediatek.com>,
+ <hui.liu@mediatek.com>, <light.hsieh@mediatek.com>,
+ <biao.huang@mediatek.com>, <hongzhou.yang@mediatek.com>,
+ <sean.wang@mediatek.com>, <seiya.wang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-gpio@vger.kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+Subject: [PATCH v14 5/5] pinctrl: mediatek: add rsel setting on MT8195
+Date: Fri, 24 Sep 2021 16:06:32 +0800
+Message-ID: <20210924080632.28410-6-zhiyong.tao@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20210924080632.28410-1-zhiyong.tao@mediatek.com>
+References: <20210924080632.28410-1-zhiyong.tao@mediatek.com>
 MIME-Version: 1.0
-References: <1632469543-27345-1-git-send-email-kyrie.wu@mediatek.com>
-In-Reply-To: <1632469543-27345-1-git-send-email-kyrie.wu@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 24 Sep 2021 15:55:04 +0800
-Message-ID: <CAGXv+5H3MRhSi=x0UA2vsXheDjVR0Cdig0DmEvS5dLLgSBCnvA@mail.gmail.com>
-Subject: Re: [PATCH V4,0/5] Support jpeg encoder for MT8195
-To: "kyrie.wu" <kyrie.wu@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@chromium.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tzung-Bi Shih <tzungbi@chromium.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- Devicetree List <devicetree@vger.kernel.org>, 
- LKML <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- xia.jiang@mediatek.com, Maoguang Meng <maoguang.meng@mediatek.com>,
- srv_heupstream <srv_heupstream@mediatek.com>, 
- Irui Wang <irui.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210924_005518_737753_D9A87B67 
-X-CRM114-Status: GOOD (  25.22  )
+X-CRM114-CacheID: sfid-20210924_010653_306351_010F01C7 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,86 +88,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 24, 2021 at 3:46 PM kyrie.wu <kyrie.wu@mediatek.com> wrote:
->
-> MT8195 has two jpeg encoding HW, each one has its own
-> power-domain, clock, interrupt, register base.
-> The two jpeg encoding HW can work together to
-> achieve higher performance.
->
-> Generally, one HW needs to register one device node,
-> and the APP operates the HW through the device node.
-> If there are multiple HWs, the multiple device node
-> needs to be registered. At this time, the app needs
-> to design software logic to use multiple HWs in parallel,
-> which will undoubtedly increase the difficulty of
-> app development and weaken its compatibility.
->
-> These serial patches use the component framework
-> to achieve the purpose of using multiple HWs
-> through only one device node. About the component
-> framework Block Diagram, please check below:
->
->                 Master(device node)
->         ________|_________________________
->         |                      |             |
-> component0(HW0) component1(HW1) component2(HW2) ......
->
-> As above, the component framework is similar to a
-> master-component two level architecture.
-> Both master and component have the compatible
-> attribute in the device tree, and the corresponding
-> platform driver structure is defined in the driver.
-> Therefore, when the compatible attribute matches,
-> the corresponding probe function will be called.
->
-> In the probe function of component, operations
-> such as initialization clock, remmap register base,
-> registration interrupt will be performed.
-> And add the component to a component linked
-> list to find the corresponding master.
->
-> In the probe function of the master, the device
-> node will be registered, and the master will be
-> added to a master linked list to find the
-> corresponding component.
->
-> After the master matches the component,
-> it will obtain the clock, interrupt, register base
-> and other resources in the component,
-> and operate the HW through these resources.
-> At the same time, multiple HWs software function
-> interfaces are designed in the master driver.
+I2C pins's resistance value can be controlled by rsel register.
+This patch provides rsel (resistance selection) setting on MT8195
 
+Signed-off-by: Zhiyong Tao <zhiyong.tao@mediatek.com>
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+---
+ drivers/pinctrl/mediatek/pinctrl-mt8195.c | 133 ++++++++++++++++++++++
+ 1 file changed, 133 insertions(+)
 
-Please include a changelog with your cover letter (or in each patch).
-This is the fourth version of the series, and it's unclear what has
-changed between the versions.
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mt8195.c b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+index a7500e18bb1d..9ba86c80c07a 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mt8195.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mt8195.c
+@@ -779,6 +779,135 @@ static const struct mtk_pin_field_calc mt8195_pin_drv_adv_range[] = {
+ 	PIN_FIELD_BASE(45, 45, 1, 0x040, 0x10, 9, 3),
+ };
+ 
++static const struct mtk_pin_field_calc mt8195_pin_rsel_range[] = {
++	PIN_FIELD_BASE(8, 8, 4, 0x0c0, 0x10, 15, 3),
++	PIN_FIELD_BASE(9, 9, 4, 0x0c0, 0x10, 0, 3),
++	PIN_FIELD_BASE(10, 10, 4, 0x0c0, 0x10, 18, 3),
++	PIN_FIELD_BASE(11, 11, 4, 0x0c0, 0x10, 3, 3),
++	PIN_FIELD_BASE(12, 12, 4, 0x0c0, 0x10, 21, 3),
++	PIN_FIELD_BASE(13, 13, 4, 0x0c0, 0x10, 6, 3),
++	PIN_FIELD_BASE(14, 14, 4, 0x0c0, 0x10, 24, 3),
++	PIN_FIELD_BASE(15, 15, 4, 0x0c0, 0x10, 9, 3),
++	PIN_FIELD_BASE(16, 16, 4, 0x0c0, 0x10, 27, 3),
++	PIN_FIELD_BASE(17, 17, 4, 0x0c0, 0x10, 12, 3),
++	PIN_FIELD_BASE(29, 29, 2, 0x080, 0x10, 0, 3),
++	PIN_FIELD_BASE(30, 30, 2, 0x080, 0x10, 3, 3),
++	PIN_FIELD_BASE(34, 34, 1, 0x0e0, 0x10, 0, 3),
++	PIN_FIELD_BASE(35, 35, 1, 0x0e0, 0x10, 3, 3),
++	PIN_FIELD_BASE(44, 44, 1, 0x0e0, 0x10, 6, 3),
++	PIN_FIELD_BASE(45, 45, 1, 0x0e0, 0x10, 9, 3),
++};
++
++static const struct mtk_pin_rsel mt8195_pin_rsel_val_range[] = {
++	PIN_RSEL(8, 17, 0x0, 75000, 75000),
++	PIN_RSEL(8, 17, 0x1, 10000, 5000),
++	PIN_RSEL(8, 17, 0x2, 5000, 75000),
++	PIN_RSEL(8, 17, 0x3, 4000, 5000),
++	PIN_RSEL(8, 17, 0x4, 3000, 75000),
++	PIN_RSEL(8, 17, 0x5, 2000, 5000),
++	PIN_RSEL(8, 17, 0x6, 1500, 75000),
++	PIN_RSEL(8, 17, 0x7, 1000, 5000),
++	PIN_RSEL(29, 30, 0x0, 75000, 75000),
++	PIN_RSEL(29, 30, 0x1, 10000, 5000),
++	PIN_RSEL(29, 30, 0x2, 5000, 75000),
++	PIN_RSEL(29, 30, 0x3, 4000, 5000),
++	PIN_RSEL(29, 30, 0x4, 3000, 75000),
++	PIN_RSEL(29, 30, 0x5, 2000, 5000),
++	PIN_RSEL(29, 30, 0x6, 1500, 75000),
++	PIN_RSEL(29, 30, 0x7, 1000, 5000),
++	PIN_RSEL(34, 35, 0x0, 75000, 75000),
++	PIN_RSEL(34, 35, 0x1, 10000, 5000),
++	PIN_RSEL(34, 35, 0x2, 5000, 75000),
++	PIN_RSEL(34, 35, 0x3, 4000, 5000),
++	PIN_RSEL(34, 35, 0x4, 3000, 75000),
++	PIN_RSEL(34, 35, 0x5, 2000, 5000),
++	PIN_RSEL(34, 35, 0x6, 1500, 75000),
++	PIN_RSEL(34, 35, 0x7, 1000, 5000),
++	PIN_RSEL(44, 45, 0x0, 75000, 75000),
++	PIN_RSEL(44, 45, 0x1, 10000, 5000),
++	PIN_RSEL(44, 45, 0x2, 5000, 75000),
++	PIN_RSEL(44, 45, 0x3, 4000, 5000),
++	PIN_RSEL(44, 45, 0x4, 3000, 75000),
++	PIN_RSEL(44, 45, 0x5, 2000, 5000),
++	PIN_RSEL(44, 45, 0x6, 1500, 75000),
++	PIN_RSEL(44, 45, 0x7, 1000, 5000),
++};
++
++static const unsigned int mt8195_pull_type[] = {
++	MTK_PULL_PUPD_R1R0_TYPE /* 0 */, MTK_PULL_PUPD_R1R0_TYPE /* 1 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 2 */, MTK_PULL_PUPD_R1R0_TYPE /* 3 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 4 */, MTK_PULL_PUPD_R1R0_TYPE /* 5 */,
++	MTK_PULL_PU_PD_TYPE /* 6 */, MTK_PULL_PU_PD_TYPE /* 7 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 8 */, MTK_PULL_PU_PD_RSEL_TYPE /* 9 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 10 */, MTK_PULL_PU_PD_RSEL_TYPE /* 11 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 12 */, MTK_PULL_PU_PD_RSEL_TYPE /* 13 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 14 */, MTK_PULL_PU_PD_RSEL_TYPE /* 15 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 16 */, MTK_PULL_PU_PD_RSEL_TYPE /* 17 */,
++	MTK_PULL_PU_PD_TYPE /* 18 */, MTK_PULL_PU_PD_TYPE /* 19 */,
++	MTK_PULL_PU_PD_TYPE /* 20 */, MTK_PULL_PU_PD_TYPE /* 21 */,
++	MTK_PULL_PU_PD_TYPE /* 22 */, MTK_PULL_PU_PD_TYPE /* 23 */,
++	MTK_PULL_PU_PD_TYPE /* 24 */, MTK_PULL_PU_PD_TYPE /* 25 */,
++	MTK_PULL_PU_PD_TYPE /* 26 */, MTK_PULL_PU_PD_TYPE /* 27 */,
++	MTK_PULL_PU_PD_TYPE /* 28 */, MTK_PULL_PU_PD_RSEL_TYPE /* 29 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 30 */, MTK_PULL_PU_PD_TYPE /* 31 */,
++	MTK_PULL_PU_PD_TYPE /* 32 */, MTK_PULL_PU_PD_TYPE /* 33 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 34 */, MTK_PULL_PU_PD_RSEL_TYPE /* 35 */,
++	MTK_PULL_PU_PD_TYPE /* 36 */, MTK_PULL_PU_PD_TYPE /* 37 */,
++	MTK_PULL_PU_PD_TYPE /* 38 */, MTK_PULL_PU_PD_TYPE /* 39 */,
++	MTK_PULL_PU_PD_TYPE /* 40 */, MTK_PULL_PU_PD_TYPE /* 41 */,
++	MTK_PULL_PU_PD_TYPE /* 42 */, MTK_PULL_PU_PD_TYPE /* 43 */,
++	MTK_PULL_PU_PD_RSEL_TYPE /* 44 */, MTK_PULL_PU_PD_RSEL_TYPE /* 45 */,
++	MTK_PULL_PU_PD_TYPE /* 46 */, MTK_PULL_PU_PD_TYPE /* 47 */,
++	MTK_PULL_PU_PD_TYPE /* 48 */, MTK_PULL_PU_PD_TYPE /* 49 */,
++	MTK_PULL_PU_PD_TYPE /* 50 */, MTK_PULL_PU_PD_TYPE /* 51 */,
++	MTK_PULL_PU_PD_TYPE /* 52 */, MTK_PULL_PU_PD_TYPE /* 53 */,
++	MTK_PULL_PU_PD_TYPE /* 54 */, MTK_PULL_PU_PD_TYPE /* 55 */,
++	MTK_PULL_PU_PD_TYPE /* 56 */, MTK_PULL_PU_PD_TYPE /* 57 */,
++	MTK_PULL_PU_PD_TYPE /* 58 */, MTK_PULL_PU_PD_TYPE /* 59 */,
++	MTK_PULL_PU_PD_TYPE /* 60 */, MTK_PULL_PU_PD_TYPE /* 61 */,
++	MTK_PULL_PU_PD_TYPE /* 62 */, MTK_PULL_PU_PD_TYPE /* 63 */,
++	MTK_PULL_PU_PD_TYPE /* 64 */, MTK_PULL_PU_PD_TYPE /* 65 */,
++	MTK_PULL_PU_PD_TYPE /* 66 */, MTK_PULL_PU_PD_TYPE /* 67 */,
++	MTK_PULL_PU_PD_TYPE /* 68 */, MTK_PULL_PU_PD_TYPE /* 69 */,
++	MTK_PULL_PU_PD_TYPE /* 70 */, MTK_PULL_PU_PD_TYPE /* 71 */,
++	MTK_PULL_PU_PD_TYPE /* 72 */, MTK_PULL_PU_PD_TYPE /* 73 */,
++	MTK_PULL_PU_PD_TYPE /* 74 */, MTK_PULL_PU_PD_TYPE /* 75 */,
++	MTK_PULL_PU_PD_TYPE /* 76 */, MTK_PULL_PUPD_R1R0_TYPE /* 77 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 78 */, MTK_PULL_PUPD_R1R0_TYPE /* 79 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 80 */, MTK_PULL_PUPD_R1R0_TYPE /* 81 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 82 */, MTK_PULL_PUPD_R1R0_TYPE /* 83 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 84 */, MTK_PULL_PUPD_R1R0_TYPE /* 85 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 86 */, MTK_PULL_PUPD_R1R0_TYPE /* 87 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 88 */, MTK_PULL_PUPD_R1R0_TYPE /* 89 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 90 */, MTK_PULL_PUPD_R1R0_TYPE /* 91 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 92 */, MTK_PULL_PUPD_R1R0_TYPE /* 93 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 94 */, MTK_PULL_PUPD_R1R0_TYPE /* 95 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 96 */, MTK_PULL_PU_PD_TYPE /* 97 */,
++	MTK_PULL_PU_PD_TYPE /* 98 */, MTK_PULL_PU_PD_TYPE /* 99 */,
++	MTK_PULL_PU_PD_TYPE /* 100 */, MTK_PULL_PU_PD_TYPE /* 101 */,
++	MTK_PULL_PU_PD_TYPE /* 102 */, MTK_PULL_PU_PD_TYPE /* 103 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 104 */, MTK_PULL_PUPD_R1R0_TYPE /* 105 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 106 */, MTK_PULL_PUPD_R1R0_TYPE /* 107 */,
++	MTK_PULL_PU_PD_TYPE /* 108 */, MTK_PULL_PU_PD_TYPE /* 109 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 110 */, MTK_PULL_PUPD_R1R0_TYPE /* 111 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 112 */, MTK_PULL_PUPD_R1R0_TYPE /* 113 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 114 */, MTK_PULL_PUPD_R1R0_TYPE /* 115 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 116 */, MTK_PULL_PUPD_R1R0_TYPE /* 117 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 118 */, MTK_PULL_PUPD_R1R0_TYPE /* 119 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 120 */, MTK_PULL_PUPD_R1R0_TYPE /* 121 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 122 */, MTK_PULL_PUPD_R1R0_TYPE /* 123 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 124 */, MTK_PULL_PUPD_R1R0_TYPE /* 125 */,
++	MTK_PULL_PUPD_R1R0_TYPE /* 126 */, MTK_PULL_PUPD_R1R0_TYPE /* 127 */,
++	MTK_PULL_PU_PD_TYPE /* 128 */, MTK_PULL_PU_PD_TYPE /* 129 */,
++	MTK_PULL_PU_PD_TYPE /* 130 */, MTK_PULL_PU_PD_TYPE /* 131 */,
++	MTK_PULL_PU_PD_TYPE /* 132 */, MTK_PULL_PU_PD_TYPE /* 133 */,
++	MTK_PULL_PU_PD_TYPE /* 134 */, MTK_PULL_PU_PD_TYPE /* 135 */,
++	MTK_PULL_PU_PD_TYPE /* 136 */, MTK_PULL_PU_PD_TYPE /* 137 */,
++	MTK_PULL_PU_PD_TYPE /* 138 */, MTK_PULL_PU_PD_TYPE /* 139 */,
++	MTK_PULL_PU_PD_TYPE /* 140 */, MTK_PULL_PU_PD_TYPE /* 141 */,
++	MTK_PULL_PU_PD_TYPE /* 142 */, MTK_PULL_PU_PD_TYPE /* 143 */,
++};
++
+ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+ 	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt8195_pin_mode_range),
+ 	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt8195_pin_dir_range),
+@@ -793,6 +922,7 @@ static const struct mtk_pin_reg_calc mt8195_reg_cals[PINCTRL_PIN_REG_MAX] = {
+ 	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt8195_pin_r0_range),
+ 	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt8195_pin_r1_range),
+ 	[PINCTRL_PIN_REG_DRV_ADV] = MTK_RANGE(mt8195_pin_drv_adv_range),
++	[PINCTRL_PIN_REG_RSEL] = MTK_RANGE(mt8195_pin_rsel_range),
+ };
+ 
+ static const char * const mt8195_pinctrl_register_base_names[] = {
+@@ -817,6 +947,9 @@ static const struct mtk_pin_soc mt8195_data = {
+ 	.gpio_m = 0,
+ 	.base_names = mt8195_pinctrl_register_base_names,
+ 	.nbase_names = ARRAY_SIZE(mt8195_pinctrl_register_base_names),
++	.pull_type = mt8195_pull_type,
++	.pin_rsel = mt8195_pin_rsel_val_range,
++	.npin_rsel = ARRAY_SIZE(mt8195_pin_rsel_val_range),
+ 	.bias_set_combo = mtk_pinconf_bias_set_combo,
+ 	.bias_get_combo = mtk_pinconf_bias_get_combo,
+ 	.drive_set = mtk_pinconf_drive_set_rev1,
+-- 
+2.25.1
 
-
-ChenYu
-
-> kyrie.wu (5):
->   dt-bindings: mediatek: Add mediatek, mt8195-jpgenc compatible
->   media: mtk-jpegenc: Use component framework to manage each hardware
->   media: mtk-jpegenc: add jpegenc timeout func interface
->   media: mtk-jpegenc: add jpeg encode worker interface
->   media: mtk-jpegenc: add output pic reorder interface
->
->  .../bindings/media/mediatek-jpeg-encoder.yaml      |   3 +
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c    | 395 ++++++++++++++++++---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h    |  79 +++++
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c  | 298 ++++++++++++++++
->  4 files changed, 730 insertions(+), 45 deletions(-)
->
-> --
-> 2.6.4
->
->
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
