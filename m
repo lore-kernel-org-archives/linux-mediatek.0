@@ -2,19 +2,19 @@ Return-Path: <SRS0=tGyr=OO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 X-Spam-Level: 
-X-Spam-Status: No, score=-18.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=3.4.0
+X-Spam-Status: No, score=-13.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=3.4.0
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DF8A0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 02:41:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D5330C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 03:40:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9CA9460555
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 02:41:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9CA9460555
+	by mail.kernel.org (Postfix) with ESMTPS id 6DE2E60F9C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Sep 2021 03:40:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6DE2E60F9C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -23,52 +23,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HhXUCxzvi8fPAUggwbULrer4GhrsQ6cpbgn3KbHsdjY=; b=s+VgeHRAYopYPC
-	8GBuQqYqsdN6SOUzFy843pUuMnvkCdZxSglQbUtqb84QlMafYj3Ysj8jR3LahTGQ870M4920WadfP
-	7VrrRgT0jafC0Nwly/f2c/QKmGOKNitbRkTL0pHKIS1853BhugbmCT4AXz/Ekd87a9e/xU2thN07Y
-	/OszgA7gnZni7t7YuTF3Ytl27zrY6OihFvhhwDZTC+TBHTn7yp/4dFdIqDlqRBMeslX3Z9+xhnRZI
-	I74EhGnM73dhUXBLmx4vAevZ0IUhvk4Xqf0e2vJUhM7YItOAw8b/2nyuli2pGgqD/CbQWuPkMvVZ0
-	Ku7Yn+QRbm/Uhi9g22Vw==;
+	List-Owner; bh=BtMJfsKozHKvTNle6ZutELDkmjCYxeEbufMuNZSveco=; b=3V19QJfpRzULK0
+	DTdJV13thZbnuR/sP7zZDJM44LNqWk2nqDxuhDy62IzQI8jAWe+FUtd4cuQs2zlSa0cUHZSfvLO1+
+	5/dFezZYeSCOl5pULZZFrQVtJvDkvy+4jsZH1WQj95+Wv5bImwWXnIS6f7PbA8CewMa+NzEE/WSpG
+	UCS3+9MyGd32t51Z+Sc3JB1DH3qJ6hV5ZYfR+qdhVjZTMYpqlhrtSTeNOnnsW2ZMtb3e2HVubsg/m
+	SBx9YZs2a13jYO9tvsYDh87ejWeldtuXMfOz9HhWFAk6pEGoP23EhRESKrlFEOIHTTiKi5hUU+ye9
+	zDx5NQvDPdromLG7sDPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mTb9Q-00CvY6-Ti; Fri, 24 Sep 2021 02:41:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mTc4H-00D0QA-UW; Fri, 24 Sep 2021 03:40:09 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mTb9C-00CvVt-Kc; Fri, 24 Sep 2021 02:41:13 +0000
-X-UUID: 63a49b3894934f39b10567e603cbf5e6-20210923
-X-UUID: 63a49b3894934f39b10567e603cbf5e6-20210923
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ id 1mTc3u-00D0KQ-5K; Fri, 24 Sep 2021 03:39:47 +0000
+X-UUID: d93edf164ec84f7c9b432bfd26984f71-20210923
+X-UUID: d93edf164ec84f7c9b432bfd26984f71-20210923
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1935781503; Thu, 23 Sep 2021 19:41:06 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Sep 2021 19:37:50 -0700
-Received: from MTKCAS06.mediatek.inc (172.21.101.30) by mtkcas07.mediatek.inc
- (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 24 Sep 2021 10:37:48 +0800
-Received: from localhost.localdomain (10.17.3.154) by MTKCAS06.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Sep 2021 10:37:47 +0800
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: "Rafael J . Wysocki" <rafael@kernel.org>
-CC: Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>, Mathias Nyman <mathias.nyman@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, <linux-pm@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-usb@vger.kernel.org>,
+ with ESMTP id 1464880229; Thu, 23 Sep 2021 20:39:40 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 23 Sep 2021 20:39:39 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Sep 2021 11:39:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 24 Sep 2021 11:39:37 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: <ohad@wizery.com>, <bjorn.andersson@linaro.org>,
+ <mathieu.poirier@linaro.org>, <robh+dt@kernel.org>, <matthias.bgg@gmail.com>
+CC: <linux-remoteproc@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>
-Subject: [PATCH RESEND v3 1/2] PM / wakeirq: support enabling wake-up irq
- after runtime_suspend called
-Date: Fri, 24 Sep 2021 10:37:45 +0800
-Message-ID: <20210924023746.22423-1-chunfeng.yun@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ <linux-kernel@vger.kernel.org>, Tinghan Shen <tinghan.shen@mediatek.com>
+Subject: [PATCH v7 0/6] Mediatek MT8195 SCP support
+Date: Fri, 24 Sep 2021 11:39:29 +0800
+Message-ID: <20210924033935.2127-1-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210923_194110_709937_174FF11F 
-X-CRM114-Status: GOOD (  20.61  )
+X-CRM114-CacheID: sfid-20210923_203946_233645_37AD4CD1 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,228 +81,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the dedicated wake-irq is level trigger, and it uses the
-consumer's sleep status as the wakeup source, that means if the
-consumer is not in sleep state, the wake-irq will be triggered
-when enable it; For this case, need enable the wake-irq after
-invoking the consumer's runtime_suspend() which make the consumer
-enter sleep state.
+Change since v6:
+- no change (rebased to 5.15-rc1)
 
-e.g.
-Assume the wake-irq is a low level trigger type, and the wakeup
-signal comes from the sleep status of consumer.
-The wakeup signal is low level at running time (0), and becomes
-high level when the consumer enters sleep state (runtime_suspend
-(1) is called), a wakeup event at (2) make the consumer exit sleep
-state, then the wakeup signal also becomes low level.
+Change since v5:
+- Drop adding new vendor-prefix
+- Rename rpmsg property from "mtk," to "mediatek," to use the name
+  defined in 
+  vendor-prefix.yaml for Mediatek Co.
 
-                ------------------
-               |           ^     ^|
-----------------           |     | --------------
- |<---(0)--->|<--(1)--|   (3)   (2)    (4)
+Changes since v4:
+- Move clock acquirement to mtk_scp_of_data
+- Add new vendor-prefix for Mediatek SCP
+- Refine mtk,scp.yaml
+  - Remove '|' in 'description'
+  - Add 'items' to replace 'description' in reg-names property
+  - Add 'const' to replace 'description' in clock-names property
+  - Add required property for mt8183 and mt8192
+  - Rewrite 'patternProperties' by 'additionalProperties'
+  - Rewrite example with 1 address and size-cell.
+  - Drop dts label from example 
 
-if enable the wake-irq before calling runtime_suspend during (0),
-an interrupt will arise, it causes resume immediately;
-it works if enable wake-irq ( e.g. at (3) or (4)) after calling
-runtime_suspend.
+Changes since v3:
+- Add missing patch version in mail subject
+- No change to patches.
 
-This patch introduces a new status WAKE_IRQ_DEDICATED_LATE_ENABLED
-to optionally support enabling wake-irq after calling runtime_suspend().
+Changes since v2:
+- Add compatible for mt8192
+- Convert mtk,scp.txt to mtk,scp.yaml 
+- Refine clock checking method
 
-Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
-v3: add new status suggested by Rafael
+Changes since v1:
+- Fix missing 'compatible' line in binding document
 
-v2: add more commit message
+Tinghan Shen (6):
+  dt-bindings: remoteproc: mediatek: Add binding for mt8195 scp
+  dt-bindings: remoteproc: mediatek: Add binding for mt8192 scp
+  dt-bindings: remoteproc: mediatek: Convert mtk,scp to json-schema
+  remoteproc: mediatek: Support mt8195 scp
+  rpmsg: change naming of mediatek rpmsg property
+  arm64: dts: mt8183: change rpmsg property name
 
-  Use the falling edge trigger interrupt suggested by Ikjoon [1], it
-works well at firstly when only use this related wakeup source, but
-encounter issues if use other wakeup sources to wakeup platform as
-below steps:
-1. use another wakeup source to wake up the suspended system;
-2. the consumer's resume() will be called, and exits sleep state;
-3. the consumer's wakeup signal will fall into low level, due to
-   currently the wakeup irq is disabled, the wake-irq is pending;
-4. the consumer tries to enter runtime suspend, but there is a
-   pending wakeup irq, so will resume again, this will repeat
-   endlessly.
+ .../bindings/remoteproc/mtk,scp.txt           | 36 --------
+ .../bindings/remoteproc/mtk,scp.yaml          | 92 +++++++++++++++++++
+ .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  2 +-
+ drivers/remoteproc/mtk_common.h               |  1 +
+ drivers/remoteproc/mtk_scp.c                  | 48 +++++++++-
+ drivers/rpmsg/mtk_rpmsg.c                     |  2 +-
+ 6 files changed, 138 insertions(+), 43 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.txt
+ create mode 100644 Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
 
-  Send out the patch again for further discussion.
-
-[1]: https://patchwork.kernel.org/patch/12190407
-
----
- drivers/base/power/power.h   |  7 ++++--
- drivers/base/power/runtime.c |  6 +++--
- drivers/base/power/wakeirq.c | 49 +++++++++++++++++++++++++++++++++---
- include/linux/pm_wakeirq.h   |  5 ++++
- 4 files changed, 60 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/base/power/power.h b/drivers/base/power/power.h
-index 54292cdd7808..2d5dfc886f0b 100644
---- a/drivers/base/power/power.h
-+++ b/drivers/base/power/power.h
-@@ -25,8 +25,10 @@ extern u64 pm_runtime_active_time(struct device *dev);
- 
- #define WAKE_IRQ_DEDICATED_ALLOCATED	BIT(0)
- #define WAKE_IRQ_DEDICATED_MANAGED	BIT(1)
-+#define WAKE_IRQ_DEDICATED_LATE_ENABLED	BIT(2)
- #define WAKE_IRQ_DEDICATED_MASK		(WAKE_IRQ_DEDICATED_ALLOCATED | \
--					 WAKE_IRQ_DEDICATED_MANAGED)
-+					 WAKE_IRQ_DEDICATED_MANAGED | \
-+					 WAKE_IRQ_DEDICATED_LATE_ENABLED)
- 
- struct wake_irq {
- 	struct device *dev;
-@@ -39,7 +41,8 @@ extern void dev_pm_arm_wake_irq(struct wake_irq *wirq);
- extern void dev_pm_disarm_wake_irq(struct wake_irq *wirq);
- extern void dev_pm_enable_wake_irq_check(struct device *dev,
- 					 bool can_change_status);
--extern void dev_pm_disable_wake_irq_check(struct device *dev);
-+extern void dev_pm_disable_wake_irq_check(struct device *dev, bool skip_enable_late);
-+extern void dev_pm_enable_wake_irq_complete(struct device *dev);
- 
- #ifdef CONFIG_PM_SLEEP
- 
-diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
-index ec94049442b9..e8b807cd7010 100644
---- a/drivers/base/power/runtime.c
-+++ b/drivers/base/power/runtime.c
-@@ -645,6 +645,8 @@ static int rpm_suspend(struct device *dev, int rpmflags)
- 	if (retval)
- 		goto fail;
- 
-+	dev_pm_enable_wake_irq_complete(dev);
-+
-  no_callback:
- 	__update_runtime_status(dev, RPM_SUSPENDED);
- 	pm_runtime_deactivate_timer(dev);
-@@ -690,7 +692,7 @@ static int rpm_suspend(struct device *dev, int rpmflags)
- 	return retval;
- 
-  fail:
--	dev_pm_disable_wake_irq_check(dev);
-+	dev_pm_disable_wake_irq_check(dev, false);
- 	__update_runtime_status(dev, RPM_ACTIVE);
- 	dev->power.deferred_resume = false;
- 	wake_up_all(&dev->power.wait_queue);
-@@ -873,7 +875,7 @@ static int rpm_resume(struct device *dev, int rpmflags)
- 
- 	callback = RPM_GET_CALLBACK(dev, runtime_resume);
- 
--	dev_pm_disable_wake_irq_check(dev);
-+	dev_pm_disable_wake_irq_check(dev, true);
- 	retval = rpm_callback(callback, dev);
- 	if (retval) {
- 		__update_runtime_status(dev, RPM_SUSPENDED);
-diff --git a/drivers/base/power/wakeirq.c b/drivers/base/power/wakeirq.c
-index b91a3a9bf9f6..1acf785ebdcd 100644
---- a/drivers/base/power/wakeirq.c
-+++ b/drivers/base/power/wakeirq.c
-@@ -212,6 +212,24 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
- }
- EXPORT_SYMBOL_GPL(dev_pm_set_dedicated_wake_irq);
- 
-+/**
-+ * dev_pm_wake_irq_set_late_enabled_status - set status WAKE_IRQ_DEDICATED_LATE_ENABLED
-+ * @dev: Device
-+ *
-+ * Set the status of WAKE_IRQ_DEDICATED_LATE_ENABLED to tell rpm_suspend()
-+ * to enable dedicated wake-up interrupt after invoking the runtime_suspend(),
-+ *
-+ * Should be called after setting dedicated wake-up interrupt.
-+ */
-+void dev_pm_wake_irq_set_late_enabled_status(struct device *dev)
-+{
-+	struct wake_irq *wirq = dev->power.wakeirq;
-+
-+	if (wirq && (wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED))
-+		wirq->status |= WAKE_IRQ_DEDICATED_LATE_ENABLED;
-+}
-+EXPORT_SYMBOL_GPL(dev_pm_wake_irq_set_late_enabled_status);
-+
- /**
-  * dev_pm_enable_wake_irq - Enable device wake-up interrupt
-  * @dev: Device
-@@ -282,27 +300,52 @@ void dev_pm_enable_wake_irq_check(struct device *dev,
- 	return;
- 
- enable:
--	enable_irq(wirq->irq);
-+	if (!can_change_status || !(wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED))
-+		enable_irq(wirq->irq);
- }
- 
- /**
-  * dev_pm_disable_wake_irq_check - Checks and disables wake-up interrupt
-  * @dev: Device
-+ * @skip_late_enabled_status: skip checking WAKE_IRQ_DEDICATED_LATE_ENABLED
-  *
-  * Disables wake-up interrupt conditionally based on status.
-  * Should be only called from rpm_suspend() and rpm_resume() path.
-  */
--void dev_pm_disable_wake_irq_check(struct device *dev)
-+void dev_pm_disable_wake_irq_check(struct device *dev, bool skip_late_enabled_status)
- {
- 	struct wake_irq *wirq = dev->power.wakeirq;
- 
- 	if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
- 		return;
- 
--	if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED)
-+	if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
-+	    (skip_late_enabled_status ||
-+	     !(wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED)))
- 		disable_irq_nosync(wirq->irq);
- }
- 
-+/**
-+ * dev_pm_enable_wake_irq_complete - enable wake irq based on status
-+ * @dev: Device
-+ *
-+ * Enable wake-up interrupt conditionally based on status, mainly for
-+ * enabling wake-up interrupt after runtime_suspend() is called.
-+ *
-+ * Should be only called from rpm_suspend() path.
-+ */
-+void dev_pm_enable_wake_irq_complete(struct device *dev)
-+{
-+	struct wake_irq *wirq = dev->power.wakeirq;
-+
-+	if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
-+		return;
-+
-+	if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
-+	    wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED)
-+		enable_irq(wirq->irq);
-+}
-+
- /**
-  * dev_pm_arm_wake_irq - Arm device wake-up
-  * @wirq: Device wake-up interrupt
-diff --git a/include/linux/pm_wakeirq.h b/include/linux/pm_wakeirq.h
-index cd5b62db9084..92f814d583f8 100644
---- a/include/linux/pm_wakeirq.h
-+++ b/include/linux/pm_wakeirq.h
-@@ -22,6 +22,7 @@ extern int dev_pm_set_dedicated_wake_irq(struct device *dev,
- extern void dev_pm_clear_wake_irq(struct device *dev);
- extern void dev_pm_enable_wake_irq(struct device *dev);
- extern void dev_pm_disable_wake_irq(struct device *dev);
-+extern void dev_pm_wake_irq_set_late_enabled_status(struct device *dev);
- 
- #else	/* !CONFIG_PM */
- 
-@@ -47,5 +48,9 @@ static inline void dev_pm_disable_wake_irq(struct device *dev)
- {
- }
- 
-+static inline void dev_pm_wake_irq_set_late_enabled_status(struct device *dev)
-+{
-+}
-+
- #endif	/* CONFIG_PM */
- #endif	/* _LINUX_PM_WAKEIRQ_H */
 -- 
 2.18.0
 
