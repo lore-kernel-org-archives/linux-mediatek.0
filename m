@@ -2,75 +2,65 @@ Return-Path: <SRS0=95qJ=OR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DEBE8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 02:42:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E64F0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 05:00:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 94C6D60F58
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 02:42:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 94C6D60F58
+	by mail.kernel.org (Postfix) with ESMTPS id 88CFA61157
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 05:00:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 88CFA61157
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bArulLVTbb521BE64piYjMn7hffM/J0mnsKmsmLlkrY=; b=kPOmS2ooQZcWAC
-	w314867H1sTviOcDYtGGORgDZ4VWhuGvLYiNc76UkvvbOH8cQtgP6FMO0Gg/LBMkQS3Z0f4djbsXC
-	DXO42Z6F5GTiIU/LL+52GVEbSQeInY2zUFdmiuhjZ6c+J+xA8NBLUXHgqL/h0kueuHQCKEMmy4QW0
-	mqehQRm/NwPPwZcIc2Lyzjbdr+PmuYNF1f63Js/ecsvV/58mTDmSEuSoCcWUB38EI4H0ppgaJQRGO
-	5HKwYmgecR/g5fY4ZcdFpgJZWu3UUIf0+E8NfASge9EAlwgjOP/y55mcmkFjqI/f4rLt2R9GpeneQ
-	OANVrrjQ47cg+jLpYdFw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=n9DjvxFASsr2VhusB/8wejjbhfHISeS0XPIr+K3L7xA=; b=X/SE7Sbh7DUG7X
+	fn/OYpNGyfkkLiIl6nQN/dr6K+ViNe9j/LggjZVQTdau2EpdRRwLikizSBwX9qRD279c3HV5oWuDM
+	P2z/0EFlR2/x2KASCZZ24k40BOAmbkQR+bYy025bp/92PPUMIo+pk23rxDDXSuhS/og3PB7lXxdZN
+	PAyrFMSlHz878u95Ow95s19zlu5UDFbZABP3W4dxdBZj0upjU87gHUz7hs0J2FwhfiqZOeiOLDYO/
+	ZfelorfV7+93kofg+1CrGiPbhYpn92T4SPRgYe4S1nkNmMICyWu/LdFitOIFjLa6v7+EIgMi3EDTY
+	1BIMd523twoDV6U/iLXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUgaz-001RYO-LQ; Mon, 27 Sep 2021 02:42:21 +0000
+	id 1mUikQ-001Zth-Jj; Mon, 27 Sep 2021 05:00:14 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUgau-001RX9-Ih; Mon, 27 Sep 2021 02:42:18 +0000
-X-UUID: c909ec1c4f7944359c8f94d269c7d2d6-20210926
-X-UUID: c909ec1c4f7944359c8f94d269c7d2d6-20210926
+ id 1mUikM-001ZtE-0r
+ for linux-mediatek@lists.infradead.org; Mon, 27 Sep 2021 05:00:12 +0000
+X-UUID: f0985302311646c9ba4cef06bc49bc82-20210926
+X-UUID: f0985302311646c9ba4cef06bc49bc82-20210926
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
+ (envelope-from <ryder.lee@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 441021569; Sun, 26 Sep 2021 19:42:10 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 26 Sep 2021 19:34:34 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 27 Sep 2021 10:34:33 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ with ESMTP id 1785662856; Sun, 26 Sep 2021 21:59:59 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 26 Sep 2021 21:59:52 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 27 Sep 2021 12:59:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 27 Sep 2021 10:34:32 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: <robh@kernel.org>
-CC: <Ryder.Lee@mediatek.com>, <devicetree@vger.kernel.org>,
- <enric.balletbo@collabora.com>, <fparent@baylibre.com>,
- <gregkh@linuxfoundation.org>, <herbert@gondor.apana.org.au>,
- <hsinyi@chromium.org>, <john@phrozen.org>, <linus.walleij@linaro.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
- <linux-crypto@vger.kernel.org>, <linux-gpio@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-serial@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
- <linux@roeck-us.net>, <matthias.bgg@gmail.com>, <mpm@selenic.com>,
- <mturquette@baylibre.com>, <robh+dt@kernel.org>, <sam.shih@mediatek.com>,
- <sboyd@kernel.org>, <sean.wang@kernel.org>, <seiya.wang@mediatek.com>,
- <wim@linux-watchdog.org>
-Subject: [v5,5/9] dt-bindings: pinctrl: update bindings for MT7986 SoC
-Date: Mon, 27 Sep 2021 10:34:19 +0800
-Message-ID: <20210927023419.17994-1-sam.shih@mediatek.com>
+ Frontend Transport; Mon, 27 Sep 2021 12:59:50 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Ryder Lee" <ryder.lee@mediatek.com>
+Subject: [PATCH] mt76: mt7615: fix monitor mode tear down crash
+Date: Mon, 27 Sep 2021 12:59:49 +0800
+Message-ID: <e99a03b5138f7bb3dfd08a260227a32645572db4.1632718372.git.ryder.lee@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <1632491961.645727.1195978.nullmailer@robh.at.kernel.org>
-References: <1632491961.645727.1195978.nullmailer@robh.at.kernel.org>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210926_194216_665384_FEB79745 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20210926_220010_099211_D22C039E 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,381 +77,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This updates bindings for MT7986 pinctrl driver. The
-difference of pinctrl between mt7986a and mt7986b is that pin-41 to pin-65
-do not exist on mt7986b
+[  103.451600] CPU 3 Unable to handle kernel paging request at virtual address 00000003, epc == 8576591c, ra == 857659f0
+[  103.462226] Oops[#1]:
+[  103.464499] CPU: 3 PID: 9247 Comm: ifconfig Tainted: G        W         5.4.143 #0
+[  103.472031] $ 0   : 00000000 00000001 83be3854 00000000
+[  103.477239] $ 4   : 8102a374 8102a374 8102f0b0 00000200
+[  103.482444] $ 8   : 0000002d 000001e4 64373765 5d206337
+[  103.487647] $12   : 00000000 00000005 00000000 0006d1df
+[  103.492853] $16   : 83be3848 853838a8 8743d600 00010000
+[  103.498059] $20   : 00000000 00000000 8553dec0 0000007f
+[  103.503266] $24   : 00000003 80382084
+[  103.508472] $28   : 831d4000 831d5bc0 00000001 857659f0
+[  103.513678] Hi    : 00000122
+[  103.516543] Lo    : d1768000
+[  103.519452] epc   : 8576591c mt7615_mcu_add_bss+0xd0/0x3c0 [mt7615_common]
+[  103.526306] ra    : 857659f0 mt7615_mcu_add_bss+0x1a4/0x3c0 [mt7615_common]
+[  103.533232] Status: 11007c03 KERNEL EXL IE
+[  103.537402] Cause : 40800008 (ExcCode 02)
+[  103.541389] BadVA : 00000003
+[  103.544253] PrId  : 0001992f (MIPS 1004Kc)
+[  103.797086] Call Trace:
+[  103.799562] [<8576591c>] mt7615_mcu_add_bss+0xd0/0x3c0 [mt7615_common]
+[  103.806082] [<85760a14>] mt7615_remove_interface+0x74/0x1e0 [mt7615_common]
+[  103.813280] [<85603fcc>] drv_remove_interface+0x2c/0xa0 [mac80211]
+[  103.819612] [<8561a8e4>] ieee80211_del_virtual_monitor.part.22+0x74/0xe8 [mac80211]
+[  103.827410] [<8561b7f0>] ieee80211_do_stop+0x4a4/0x8a0 [mac80211]
+[  103.833671] [<8561bc00>] ieee80211_stop+0x14/0x24 [mac80211]
+[  103.839405] [<8045a328>] __dev_close_many+0x9c/0x10c
+[  103.844364] [<80463de4>] __dev_change_flags+0x16c/0x1e4
+[  103.849569] [<80463e84>] dev_change_flags+0x28/0x70
+[  103.854440] [<80521e54>] devinet_ioctl+0x280/0x774
+[  103.859222] [<80526248>] inet_ioctl+0xa4/0x1c8
+[  103.863674] [<80436830>] sock_ioctl+0x2d8/0x4bc
+[  103.868201] [<801adbb4>] do_vfs_ioctl+0xb8/0x7c0
+[  103.872804] [<801ae30c>] ksys_ioctl+0x50/0xb4
+[  103.877156] [<80014598>] syscall_common+0x34/0x58
 
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-
+Fixes: 04b8e65922f63 ("mt76: add mac80211 driver for MT7615 PCIe-based chipsets")
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
-v5 : fixed yamllint warnings/errors
-v4 : used yaml format instead of txt format document
-v3 : make mt7986 pinctrl bindings as a separate file
-v2 : deleted the redundant description of mt7986a/mt7986b
----
- .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 353 ++++++++++++++++++
- 1 file changed, 353 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c    | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-new file mode 100644
-index 000000000000..51a13129bcb8
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-@@ -0,0 +1,353 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pinctrl/mediatek,mt7986-pinctrl.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+index a39776833efd..2ba730808f3b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
+@@ -808,7 +808,8 @@ mt7615_mcu_ctrl_pm_state(struct mt7615_dev *dev, int band, int state)
+ 
+ static int
+ mt7615_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+-			 struct ieee80211_sta *sta, bool enable)
++			 struct ieee80211_sta *sta, struct mt7615_phy *phy,
++			 bool enable)
+ {
+ 	struct mt7615_vif *mvif = (struct mt7615_vif *)vif->drv_priv;
+ 	u32 type = vif->p2p ? NETWORK_P2P : NETWORK_INFRA;
+@@ -821,6 +822,7 @@ mt7615_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	switch (vif->type) {
+ 	case NL80211_IFTYPE_MESH_POINT:
+ 	case NL80211_IFTYPE_AP:
++	case NL80211_IFTYPE_MONITOR:
+ 		break;
+ 	case NL80211_IFTYPE_STATION:
+ 		/* TODO: enable BSS_INFO_UAPSD & BSS_INFO_PM */
+@@ -840,14 +842,19 @@ mt7615_mcu_bss_basic_tlv(struct sk_buff *skb, struct ieee80211_vif *vif,
+ 	}
+ 
+ 	bss = (struct bss_info_basic *)tlv;
+-	memcpy(bss->bssid, vif->bss_conf.bssid, ETH_ALEN);
+-	bss->bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int);
+ 	bss->network_type = cpu_to_le32(type);
+-	bss->dtim_period = vif->bss_conf.dtim_period;
+ 	bss->bmc_tx_wlan_idx = wlan_idx;
+ 	bss->wmm_idx = mvif->mt76.wmm_idx;
+ 	bss->active = enable;
+ 
++	if (vif->type != NL80211_IFTYPE_MONITOR) {
++		memcpy(bss->bssid, vif->bss_conf.bssid, ETH_ALEN);
++		bss->bcn_interval = cpu_to_le16(vif->bss_conf.beacon_int);
++		bss->dtim_period = vif->bss_conf.dtim_period;
++	} else {
++		memcpy(bss->bssid, phy->mt76->macaddr, ETH_ALEN);
++	}
 +
-+title: Mediatek MT7986 Pin Controller Device Tree Bindings
-+
-+maintainers:
-+  - Sean Wang <sean.wang@kernel.org>
-+
-+description: |+
-+  The MediaTek's MT7986 Pin controller is used to control SoC pins.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt7986a-pinctrl
-+      - mediatek,mt7986b-pinctrl
-+
-+  reg:
-+    minItems: 8
-+    maxItems: 8
-+
-+  reg-names:
-+    items:
-+      - const: gpio_base
-+      - const: iocfg_rt_base
-+      - const: iocfg_rb_base
-+      - const: iocfg_lt_base
-+      - const: iocfg_lb_base
-+      - const: iocfg_tr_base
-+      - const: iocfg_tl_base
-+      - const: eint
-+
-+  gpio-controller: true
-+
-+  "#gpio-cells":
-+    const: 2
-+    description: |
-+      Number of cells in GPIO specifier. Since the generic GPIO
-+      binding is used, the amount of cells must be specified as 2. See the below
-+      mentioned gpio binding representation for description of particular cells.
-+
-+  interrupt-controller: true
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  "#interrupt-cells":
-+    const: 2
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - gpio-controller
-+  - "#gpio-cells"
-+
-+patternProperties:
-+  '-[0-9]+$':
-+    type: object
-+    additionalProperties: false
-+
-+    patternProperties:
-+      'mux':
-+        type: object
-+        additionalProperties: false
-+        description: |
-+          pinmux configuration nodes.
-+
-+          Valid value	      function    pins (in pin#)
-+          ---------------------------------------------------------------------
-+          "watchdog"        "watchdog"  0
-+          "wifi_led"        "led"       1, 2
-+          "i2c"             "i2c"       3, 4
-+          "uart1_0"         "uart"      7, 8, 9, 10
-+          "pcie_clk"        "pcie"      9
-+          "pcie_wake"       "pcie"      10
-+          "spi1_0"          "spi"       11, 12, 13, 14
-+          "pwm1_1"          "pwm"       20,
-+          "pwm0"            "pwm"       21,
-+          "pwm1_0"          "pwm"       22,
-+          "snfi"            "flash"     23, 24, 25, 26, 27, 28
-+          "spi1_2"          "spi"       29, 30, 31, 32
-+          "emmc_45"         "emmc"      22, 23, 24, 25, 26, 27, 28, 29, 30,
-+                                        31, 32
-+          "spi1_1"          "spi"       23, 24, 25, 26
-+          "uart1_2"         "uart"      29, 30, 31, 32
-+          "uart1_1"         "uart"      23, 24, 25, 26
-+          "uart2_0"         "uart"      29, 30, 31, 32
-+          "spi0"            "spi"       33, 34, 35, 36
-+          "spi0_wp_hold"    "spi"       37, 38
-+          "uart1_3_rx_tx"   "uart"      35, 36
-+          "uart1_3_cts_rts" "uart"      37, 38
-+          "uart2_1"         "uart"      33, 34, 35, 36
-+          "spi1_3"          "spi"       33, 34, 35, 36
-+          "uart0"           "uart"      39, 40
-+          "pcie_pereset"    "pcie"      41
-+          "uart1"           "uart"      42, 43, 44, 45
-+          "uart2"           "uart"      46, 47, 48, 49
-+          "emmc_51"         "emmc"      50, 51, 52, 53, 54, 55, 56, 57, 57,
-+                                        59, 60, 61
-+          "pcm"             "audio"     62, 63, 64, 65
-+          "i2s"             "audio"     62, 63, 64, 65
-+          "switch_int"      "eth"       66
-+          "mdc_mdio"        "eth"       67
-+
-+        $ref: "/schemas/pinctrl/pinmux-node.yaml"
-+        properties:
-+          function:
-+            description: |
-+              A string containing the name of the function to mux to the group.
-+              There is no "audio", "pcie" functions on mt7986b, you can only use
-+              those functions on mt7986a.
-+            enum: [audio, emmc, eth, i2c, led, flash, pcie, pwm, spi, uart,
-+                   watchdog, wifi]
-+          groups:
-+            description: |
-+              An array of strings. Each string contains the name of a group.
-+              There is no "pcie_pereset", "uart1", "uart2" "emmc_51", "pcm",
-+              and "i2s" groups on mt7986b, you can only use those groups on
-+              mt7986a.
-+        required:
-+          - function
-+          - groups
-+
-+        allOf:
-+          - if:
-+              properties:
-+                function:
-+                  const: audio
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pcm, i2s]
-+          - if:
-+              properties:
-+                function:
-+                  const: emmc
-+            then:
-+              properties:
-+                groups:
-+                  enum: [emmc, emmc_rst]
-+          - if:
-+              properties:
-+                function:
-+                  const: eth
-+            then:
-+              properties:
-+                groups:
-+                  enum: [switch_int, mdc_mdio]
-+          - if:
-+              properties:
-+                function:
-+                  const: i2c
-+            then:
-+              properties:
-+                groups:
-+                  enum: [i2c]
-+          - if:
-+              properties:
-+                function:
-+                  const: led
-+            then:
-+              properties:
-+                groups:
-+                  enum: [wifi_led]
-+          - if:
-+              properties:
-+                function:
-+                  const: flash
-+            then:
-+              properties:
-+                groups:
-+                  enum: [snfi]
-+          - if:
-+              properties:
-+                function:
-+                  const: pcie
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pcie_clk, pcie_wake, pcie_pereset]
-+          - if:
-+              properties:
-+                function:
-+                  const: pwm
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pwm0, pwm1_0, pwm1_1]
-+          - if:
-+              properties:
-+                function:
-+                  const: spi
-+            then:
-+              properties:
-+                groups:
-+                  enum: [spi0, spi0_wp_hold, spi1_0, spi1_1, spi1_2, spi1_3]
-+          - if:
-+              properties:
-+                function:
-+                  const: uart
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uart1_0, uart1_1, uart1_2, uart1_3_rx_tx,
-+                         uart1_3_cts_rts, uart2_0, uart2_1, uart0, uart1, uart2]
-+          - if:
-+              properties:
-+                function:
-+                  const: watchdog
-+            then:
-+              properties:
-+                groups:
-+                  enum: [watchdog]
-+          - if:
-+              properties:
-+                function:
-+                  const: wifi
-+            then:
-+              properties:
-+                groups:
-+                  enum: [wf_2g, wf_5g, wf_dbdc]
-+      'conf':
-+        type: object
-+        additionalProperties: false
-+        description: |
-+          pinconf configuration nodes.
-+        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+
-+        properties:
-+          pins:
-+            description: |
-+              An array of strings. Each string contains the name of a pin.
-+              There is no PIN 41 to PIN 65 above on mt7686b, you can only use
-+              those pins on mt7986a.
-+            enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
-+                   GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
-+                   GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
-+                   GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
-+                   SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
-+                   SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
-+                   UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
-+                   UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
-+                   UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
-+                   EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
-+                   EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
-+                   PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-+                   WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
-+                   WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
-+                   WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
-+                   WF0_HB10, WF1_DIG_RESETB, WF1_CBA_RESETB, WF1_XO_REQ,
-+                   WF1_TOP_CLK, WF1_TOP_DATA, WF1_HB1, WF1_HB2, WF1_HB3,
-+                   WF1_HB4, WF1_HB0, WF1_HB0_B, WF1_HB5, WF1_HB6, WF1_HB7,
-+                   WF1_HB8]
-+
-+          bias-disable: true
-+
-+          bias-pull-up: true
-+
-+          bias-pull-down: true
-+
-+          input-enable: true
-+
-+          input-disable: true
-+
-+          output-enable: true
-+
-+          output-low: true
-+
-+          output-high: true
-+
-+          input-schmitt-enable: true
-+
-+          input-schmitt-disable: true
-+
-+          drive-strength:
-+            enum: [2, 4, 6, 8, 10, 12, 14, 16]
-+
-+          mediatek,pull-up-adv:
-+            description: |
-+              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
-+              Pull up setings for 2 pull resistors, R0 and R1. Valid arguments
-+              are described as below:
-+              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-+              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-+              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-+              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
-+            $ref: /schemas/types.yaml#/definitions/uint32
-+            enum: [0, 1, 2, 3]
-+
-+          mediatek,pull-down-adv:
-+            description: |
-+              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
-+              Pull down setings for 2 pull resistors, R0 and R1. Valid arguments
-+              are described as below:
-+              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-+              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-+              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-+              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
-+            $ref: /schemas/types.yaml#/definitions/uint32
-+            enum: [0, 1, 2, 3]
-+
-+        required:
-+          - pins
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    soc {
-+      pio: pinctrl@1001f000 {
-+        compatible = "mediatek,mt7986a-pinctrl";
-+        reg = <0 0x1001f000 0 0x1000>,
-+              <0 0x11c30000 0 0x1000>,
-+              <0 0x11c40000 0 0x1000>,
-+              <0 0x11e20000 0 0x1000>,
-+              <0 0x11e30000 0 0x1000>,
-+              <0 0x11f00000 0 0x1000>,
-+              <0 0x11f10000 0 0x1000>,
-+              <0 0x1000b000 0 0x1000>;
-+        reg-names = "gpio_base", "iocfg_rt_base", "iocfg_rb_base",
-+              "iocfg_lt_base", "iocfg_lb_base", "iocfg_tr_base",
-+              "iocfg_tl_base", "eint";
-+        gpio-controller;
-+        #gpio-cells = <2>;
-+        gpio-ranges = <&pio 0 0 100>;
-+        interrupt-controller;
-+        interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
-+        interrupt-parent = <&gic>;
-+        #interrupt-cells = <2>;
-+
-+        uart1_pins: uart1-pins-42-to-45 {
-+          mux {
-+            function = "uart";
-+            groups = "uart1";
-+          };
-+        };
-+
-+        uart2_pins: uart1-pins-46-to-49 {
-+          mux {
-+            function = "uart";
-+            groups = "uart2";
-+          };
-+        };
-+
-+      };
-+    };
+ 	return 0;
+ }
+ 
+@@ -863,6 +870,7 @@ mt7615_mcu_bss_omac_tlv(struct sk_buff *skb, struct ieee80211_vif *vif)
+ 	tlv = mt76_connac_mcu_add_tlv(skb, BSS_INFO_OMAC, sizeof(*omac));
+ 
+ 	switch (vif->type) {
++	case NL80211_IFTYPE_MONITOR:
+ 	case NL80211_IFTYPE_MESH_POINT:
+ 	case NL80211_IFTYPE_AP:
+ 		if (vif->p2p)
+@@ -929,7 +937,7 @@ mt7615_mcu_add_bss(struct mt7615_phy *phy, struct ieee80211_vif *vif,
+ 	if (enable)
+ 		mt7615_mcu_bss_omac_tlv(skb, vif);
+ 
+-	mt7615_mcu_bss_basic_tlv(skb, vif, sta, enable);
++	mt7615_mcu_bss_basic_tlv(skb, vif, sta, phy, enable);
+ 
+ 	if (enable && mvif->mt76.omac_idx >= EXT_BSSID_START &&
+ 	    mvif->mt76.omac_idx < REPEATER_BSSID_START)
 -- 
 2.29.2
 
