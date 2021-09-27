@@ -2,14 +2,14 @@ Return-Path: <SRS0=95qJ=OR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 457B3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 05:43:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94DF1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 05:44:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F2176610A2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 05:43:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F2176610A2
+	by mail.kernel.org (Postfix) with ESMTPS id 5E51461157
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 05:44:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5E51461157
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,33 +18,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BJ2+7IbJLZXikOTVyG4fF68sHYRI2NiBNkuLhZ4MBIw=; b=Lx5nyasgdxgO8u
-	JIJVhLv97TOh2U07tXyZmYYwymMqy+qX1e79fX+75iyeAQSoeR3+nRRF31+KDWl3K8Mw1Qt1W2Pws
-	BBP47IOOaXIyOSz+YxmJfQHvfzBAKcolBH6VuTibMc2oUTD+3/FnwXIF9nHN6G7U5jzhO67GzgvWq
-	j2E3yLMqN6weWANd8YhOv4wOFG9Iu10NWfrciMlZeDdSgbjmCRtPOKQPAFzltiCdHYu/gb3g7ZVEz
-	HzyUDtfJGlaidpaw4RbFDg1hRCgHQLniqAVIW6BiF9UNaotNgPxXKlb9TN5pxFO1bxeCQvLEvx5cO
-	2B7/ahhILjV4KNWHGwNg==;
+	List-Owner; bh=BJ2+7IbJLZXikOTVyG4fF68sHYRI2NiBNkuLhZ4MBIw=; b=LAawe9MqkqjRI8
+	BnrF93nYOzbNpsyXYIcISkBWyJ/N/eVjgxvT7LNR+mtRVCXgXuA6MRTKitMy+3CBYBGfKCn/iWDBP
+	lAASVHekmBkdDJ7G4hYojsz9ZQxrmlyFGI0ozZkeVLy8G6UMC0R2JeJYPQYTYVg2VXiEZcSaPfWfq
+	gcY7t1VToEIx6v27CWOu23cEGfyOApew8k2Mvb7ogKEuh5NlQHUlBas5TkNr2dN6gNTWSDUoojdCE
+	fciFekoHj1yyuVJtZpbCy1OwC2Fziylq5X6a1bl1thmT3YF6h7PbbvK6eb4zY0fhNb/gfn2023tNH
+	pCt5wWNjk/SzT54oG8kQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUjQ7-001bp5-2C; Mon, 27 Sep 2021 05:43:19 +0000
+	id 1mUjQg-001c46-Bm; Mon, 27 Sep 2021 05:43:54 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUjQ1-001bmL-Gh; Mon, 27 Sep 2021 05:43:15 +0000
-X-UUID: 5bc407a0e6b84162b1714a8a7eabe47b-20210926
-X-UUID: 5bc407a0e6b84162b1714a8a7eabe47b-20210926
+ id 1mUjQ2-001bnE-FP; Mon, 27 Sep 2021 05:43:17 +0000
+X-UUID: ded15de51aec4df9bde567795771f4ae-20210926
+X-UUID: ded15de51aec4df9bde567795771f4ae-20210926
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <xiangsheng.hou@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 86377131; Sun, 26 Sep 2021 22:43:11 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1529679428; Sun, 26 Sep 2021 22:43:11 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 26 Sep 2021 22:42:19 -0700
+ 15.0.1497.2; Sun, 26 Sep 2021 22:36:49 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Sep 2021 13:42:17 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Sep 2021 13:36:47 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 27 Sep 2021 13:42:16 +0800
+ Transport; Mon, 27 Sep 2021 13:36:45 +0800
 From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
 To: <miquel.raynal@bootlin.com>, <broonie@kernel.org>
 CC: <xiangsheng.hou@mediatek.com>, <benliang.zhao@mediatek.com>,
@@ -53,16 +53,16 @@ CC: <xiangsheng.hou@mediatek.com>, <benliang.zhao@mediatek.com>,
  <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
  <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
-Subject: [RFC,v2 1/4] mtd: ecc: move mediatek HW ECC driver
-Date: Mon, 27 Sep 2021 13:42:02 +0800
-Message-ID: <20210927054205.17960-2-xiangsheng.hou@mediatek.com>
+Subject: [RFC,v1 1/4] mtd: ecc: move mediatek HW ECC driver
+Date: Mon, 27 Sep 2021 13:36:26 +0800
+Message-ID: <20210927053629.17847-2-xiangsheng.hou@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20210927054205.17960-1-xiangsheng.hou@mediatek.com>
-References: <20210927054205.17960-1-xiangsheng.hou@mediatek.com>
+In-Reply-To: <20210927053629.17847-1-xiangsheng.hou@mediatek.com>
+References: <20210927053629.17847-1-xiangsheng.hou@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210926_224313_590707_3845DF2C 
+X-CRM114-CacheID: sfid-20210926_224314_545743_DDFE59FF 
 X-CRM114-Status: GOOD (  12.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
