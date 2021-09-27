@@ -2,63 +2,81 @@ Return-Path: <SRS0=95qJ=OR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A5B3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 12:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1775CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 12:23:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5248E61058
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 12:19:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5248E61058
+	by mail.kernel.org (Postfix) with ESMTPS id D40A361058
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 12:23:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D40A361058
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=exFca+bZvMkpfdNlXBhtPe+d7GpieSDWfZFjUVXnZvs=; b=FxQA/yU4qXGHuD
-	MkJ1LW9pgjZtrPO18KYIBW8TofNNkJ40+hGX+oHrCxS9HVf2CKy76D0rTSXfs09OGu5EPmJhfVdXn
-	6CMcOniySGHOXltfBJBeKK4/maV03lndp3C5owQ1Bpvoja7BmXIa68W9cLQYBZscC08tYn9llm/Xt
-	yafJY9UzCgeC2U8EXOKQN0gaVq/D43FrwtT6WFbt9t3HqknJpV12c9Ud0gDzVcoqboZXPqDvtjQfa
-	J5oTQhtHQjSCKs9IXwHhEYJ71Xvvd38lJ+rl7sO2X9J/8NM6KrujktUaMzdGH/GQVq54Rlj9DJ+My
-	KiLMxg7B1rukpcdmhSfQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=90GKCA+mkUARAtoflllfa1HkNtwVAZUxj9gZsvpM4lY=; b=TOz4oPZttAuo1Z
+	r1/PVybtV7ENigszebjAwKzHEuSkKID5pI6dCS24Z8q0/dUf+vsskW5fOtv3Z0cl7qL+rXQggnx1a
+	iV50KswJd6Irb3A38UbNYvTTHDCER1iLAOgIzflm0NopcPpBryptwORUfnGFAN09NEd7o9wxsiEe6
+	sNdGb2JMTEYz+mwe9Y1msLnKd6j2vALMtzlalTJ1yU5msduARq2LN2FcqfE0bp2M3JvZqMwF/wVih
+	kg39td2oXGzmtVUwTgmsV4RZA8ILtjoD649cG8MVyy2ASgaDuBm+YzqxJ+/McfyfORKT2S6xbZ/Et
+	R2bRd7XqR0jvQKtDOMnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUpbG-002asu-47; Mon, 27 Sep 2021 12:19:14 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mUpfV-002bS7-9r; Mon, 27 Sep 2021 12:23:37 +0000
+Received: from mail-ot1-f48.google.com ([209.85.210.48])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUpb4-002arG-PL; Mon, 27 Sep 2021 12:19:04 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id C105F6103B;
- Mon, 27 Sep 2021 12:18:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1632745142;
- bh=F9/Tr9COtm4Stj4bhDIokvzMkSf99FLpUsv9Um0t5FI=;
- h=From:To:Cc:Subject:Date:From;
- b=iQ1cVnEtOm5m5/2kAdPUnsn+F/m6UMiVUTNVuuJVHQzqfCTB37Wh92MSJMucsKtLS
- hE6EEfH26Y7f55flpw2XxZbTXZOaSqx5aWlljUGX/puBub5sCl6FwV6KHrALTMS0fj
- fXJcasgF8W/8SdTAezOjWsJAoAYktTuihAPRjRFtFdXLoXXkfgGk3Sgu1u/jaHthW5
- 2L+vEP9AaPWCp8njdVAzDZLerxAtaI/Cv5lOJ4OTkc1gIyZiiuNgwrdLQCd4QP6O89
- 3HeumoPYO5S/iEZyMKOr9XjdjDictDEY86eIyVDUKsZ2B+AZKZPoYfjJRhaeLjgBbJ
- 5JrGQXrIaY2Fg==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>,
- Tomasz Figa <tfiga@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- llvm@lists.linux.dev
-Subject: [PATCH] iommu/mediatek: fix out-of-range warning with clang
-Date: Mon, 27 Sep 2021 14:18:44 +0200
-Message-Id: <20210927121857.941160-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.29.2
-MIME-Version: 1.0
+ id 1mUpfI-002bOE-74; Mon, 27 Sep 2021 12:23:25 +0000
+Received: by mail-ot1-f48.google.com with SMTP id
+ r43-20020a05683044ab00b0054716b40005so17249563otv.4; 
+ Mon, 27 Sep 2021 05:23:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=M1JxjeIOmKat6HvCouZk2WyJoVDL3ELYlgAx1y+djF4=;
+ b=NDNep+Jrkql3nHxlzGyFoyZSw64hiBNkHrCZrYljfxWCUKpaem34+fub/jEqW35sqa
+ GVUXl6dKS/Cc11jLlSdxhAY+KlA5fUP0lL3nujMfl3XFmlrBsSnU5+bkTnuXW2aNh0oT
+ iHDAo4QRvAkiXk3IDgp7GJl9nSYWiw4PUZN9S3uw0UKrt06r9SzJVfcfem2u4PmhTmLh
+ 9teRLG9JRLFpewNz60VxTnyIYL9jXJEtTEcFwTmXVJAcWDjMmcLNGKE2MSMp1qHgGCvj
+ O8BQ3sDWsGTH00iXRE0HxLjZ41qmke5LRQqAdof/Yhhw9DlhLeuiV3doqrszC8mrV1dy
+ 2jlg==
+X-Gm-Message-State: AOAM5328oGtCeNpooZPEOkJPk1CQAkH6qn6VkKUoNI3ETVccSx9EUadU
+ /bIAcNyH6mIx45TRHtuTHA==
+X-Google-Smtp-Source: ABdhPJxPboMBJ7atlf4V2758iIymolXl+RlULWf5ZVJnB5v+aaNUyKh+KewyhDhEFZ50jt9f77a3wA==
+X-Received: by 2002:a9d:27a4:: with SMTP id c33mr17216398otb.283.1632745401264; 
+ Mon, 27 Sep 2021 05:23:21 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id o126sm3844592oig.21.2021.09.27.05.23.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Sep 2021 05:23:20 -0700 (PDT)
+Received: (nullmailer pid 3097152 invoked by uid 1000);
+ Mon, 27 Sep 2021 12:23:19 -0000
+From: Rob Herring <robh@kernel.org>
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: herbert@gondor.apana.org.au, linux-serial@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux@roeck-us.net, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ hsinyi@chromium.org, mpm@selenic.com, seiya.wang@mediatek.com,
+ enric.balletbo@collabora.com, fparent@baylibre.com, john@phrozen.org,
+ sboyd@kernel.org, devicetree@vger.kernel.org, linux-crypto@vger.kernel.org,
+ gregkh@linuxfoundation.org, mturquette@baylibre.com,
+ linux-watchdog@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, wim@linux-watchdog.org, robh+dt@kernel.org,
+ linus.walleij@linaro.org, sean.wang@kernel.org, Ryder.Lee@mediatek.com
+In-Reply-To: <20210927023419.17994-1-sam.shih@mediatek.com>
+References: <1632491961.645727.1195978.nullmailer@robh.at.kernel.org>
+ <20210927023419.17994-1-sam.shih@mediatek.com>
+Subject: Re: [v5,5/9] dt-bindings: pinctrl: update bindings for MT7986 SoC
+Date: Mon, 27 Sep 2021 07:23:19 -0500
+Message-Id: <1632745399.256353.3097151.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_051902_868358_212B9389 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20210927_052324_279481_2D3FAB6C 
+X-CRM114-Status: GOOD (  13.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,46 +88,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+On Mon, 27 Sep 2021 10:34:19 +0800, Sam Shih wrote:
+> This updates bindings for MT7986 pinctrl driver. The
+> difference of pinctrl between mt7986a and mt7986b is that pin-41 to pin-65
+> do not exist on mt7986b
+> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> 
+> ---
+> v5 : fixed yamllint warnings/errors
+> v4 : used yaml format instead of txt format document
+> v3 : make mt7986 pinctrl bindings as a separate file
+> v2 : deleted the redundant description of mt7986a/mt7986b
+> ---
+>  .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 353 ++++++++++++++++++
+>  1 file changed, 353 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
+> 
 
-clang-14 notices that a comparison is never true when
-CONFIG_PHYS_ADDR_T_64BIT is disabled:
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-drivers/iommu/mtk_iommu.c:553:34: error: result of comparison of constant 5368709120 with expression of type 'phys_addr_t' (aka 'unsigned int') is always false [-Werror,-Wtautological-constant-out-of-range-compare]
-        if (dom->data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
-                                     ~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+yamllint warnings/errors:
 
-Add an explicit check for the type of the variable to skip the check
-and the warning in that case.
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dts:25.13-32.43: Warning (reg_format): /example-0/soc/pinctrl@1001f000:reg: property has invalid length (128 bytes) (#address-cells == 2, #size-cells == 1)
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml: Warning (simple_bus_reg): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dts:23.33-58.13: Warning (avoid_default_addr_size): /example-0/soc/pinctrl@1001f000: Relying on default #address-cells value
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dts:23.33-58.13: Warning (avoid_default_addr_size): /example-0/soc/pinctrl@1001f000: Relying on default #size-cells value
+Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml: Warning (unique_unit_address): Failed prerequisite 'avoid_default_addr_size'
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.example.dt.yaml: pinctrl@1001f000: 'gpio-ranges' does not match any of the regexes: '-[0-9]+$', 'pinctrl-[0-9]+'
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
 
-Fixes: b4dad40e4f35 ("iommu/mediatek: Adjust the PA for the 4GB Mode")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/iommu/mtk_iommu.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+doc reference errors (make refcheckdocs):
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index d837adfd1da5..25b834104790 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -550,7 +550,9 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
- 	phys_addr_t pa;
- 
- 	pa = dom->iop->iova_to_phys(dom->iop, iova);
--	if (dom->data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
-+	if (IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT) &&
-+	    dom->data->enable_4GB &&
-+	    pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
- 		pa &= ~BIT_ULL(32);
- 
- 	return pa;
--- 
-2.29.2
+See https://patchwork.ozlabs.org/patch/1533169
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
