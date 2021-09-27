@@ -1,99 +1,76 @@
-Return-Path: <SRS0=WJkm=OQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=95qJ=OR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3FFB9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Sep 2021 14:52:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DEBE8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 02:42:38 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0742C60F48
-	for <linux-mediatek@archiver.kernel.org>; Sun, 26 Sep 2021 14:52:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0742C60F48
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
+	by mail.kernel.org (Postfix) with ESMTPS id 94C6D60F58
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 02:42:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 94C6D60F58
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kyQQid6CeTA+hod2FikQrHHtEPZIcvy92vt6KgdYee0=; b=LWipv3tbs1bCzf
-	Uy8Lpps1aw3N5KFJEjezNtozD5qgj81z+/VD0om3k6IC8fP4QfRvhl9g+5oRn/CKIk0hi7BihpYFx
-	3KyrFthWr7j82ANwXWYq5k/nZe2C5eZ7FMJX67ZHSnbO0Goz/EQeSqzVKpraDAJWJynddpStIAkSV
-	/8y0BFspIawLHKmjuHOOGVW4/Jb3TE1N8BuyxjUJUuYbg9jOHd4WSIeJBItCNKVXzpenRzFxaaC+I
-	AYErGKsTXlVP3xW5RdU9Nmfrnx7yw8kisFQMnLSZOMBGVNTvKu7uxfir/OwqKt8g2PXZiG05CzrVs
-	atSRqukT2oOjJrJ6dvrw==;
+	List-Owner; bh=bArulLVTbb521BE64piYjMn7hffM/J0mnsKmsmLlkrY=; b=kPOmS2ooQZcWAC
+	w314867H1sTviOcDYtGGORgDZ4VWhuGvLYiNc76UkvvbOH8cQtgP6FMO0Gg/LBMkQS3Z0f4djbsXC
+	DXO42Z6F5GTiIU/LL+52GVEbSQeInY2zUFdmiuhjZ6c+J+xA8NBLUXHgqL/h0kueuHQCKEMmy4QW0
+	mqehQRm/NwPPwZcIc2Lyzjbdr+PmuYNF1f63Js/ecsvV/58mTDmSEuSoCcWUB38EI4H0ppgaJQRGO
+	5HKwYmgecR/g5fY4ZcdFpgJZWu3UUIf0+E8NfASge9EAlwgjOP/y55mcmkFjqI/f4rLt2R9GpeneQ
+	OANVrrjQ47cg+jLpYdFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUVVS-000imx-SC; Sun, 26 Sep 2021 14:51:54 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1mUgaz-001RYO-LQ; Mon, 27 Sep 2021 02:42:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUVVQ-000ilm-7C
- for linux-mediatek@lists.infradead.org; Sun, 26 Sep 2021 14:51:54 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id v10so53209517edj.10
- for <linux-mediatek@lists.infradead.org>; Sun, 26 Sep 2021 07:51:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sLce4anF/Ldxr9zJgqQp47ftX0X/kbCvqATSWd0SLuI=;
- b=S+hw9FjUgdENuVuqSrXHDlFjl4Zr9rPqWNEez8sEdpicMAbHwC2QIRkpRloWZzwpuA
- vcuMX59mB52afIhYL1N6sSE1uki387Gw42gR6DqohyNOmFG9GUak+ALFy6SY2nxvuJCV
- A2csKPZIvtE9OjBsqYJgK5KYHU3GQ5PWrOErJC+AkLR9AMU45iRWE2QcCuMPv9v8DKoy
- qoe95ToLD0LZgt1tjsejG8rlWCzpSokJCGwoxOPRyCCUn7/eZLQrd2YksqMy8/yvhgA/
- Uri7Z7xPRnCKqsMT7fOrkvP9dYwRU1KQ/eI0xQFhBswN1xq+Tq3yra/1IUJWxnPH9inB
- lZ5Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sLce4anF/Ldxr9zJgqQp47ftX0X/kbCvqATSWd0SLuI=;
- b=riFbIgemGxGm4rqTI3PsUbMMFflTXUm+WjKiOUmuarSGmNdaGz9uwEdgx85FroMKDf
- 98jPiPHvOPfYpkUp1B67mlD9nykhDjVGcaQPVw8Oc8xNJGZNd/Jug6TAT/KbqOgoDLb/
- utWQOPt3B3o9c7kOb7D3RlowkIQSsoy1VssqkfcgWgsrby1LVaUsEP/gM7Pk+MkU+gSW
- rYNJ0BTd7DY9amvCRWfyEya2YWj5zfyCK967JoPRRG5iYMkEBCh3O6LI0Eb3WOrQmJYD
- HS5USdE6KLXjedS9/kqIti3m0fBEa75JS34ZhxrXWZG7ZoMyyz65Ez7paCA5wB0mZntT
- R7dA==
-X-Gm-Message-State: AOAM531rPGPtJO4fbPhlmKtSoFFiHjoGHrw+nxJrPOQt+IYy8qhO9Yqb
- Gl6n4Wd95EWtRC1xFaZ81Xv+9P7nJwIPS4YFXUCKMA==
-X-Google-Smtp-Source: ABdhPJwEI9Otw5j+Kubnt1ZjqadmE4duy9lhN+7xJz+VYfyRhHhxfTsqb0Bln6cUv2IXEVGS0gPu4vV4A28m+/m9Cgc=
-X-Received: by 2002:a17:906:e20e:: with SMTP id
- gf14mr22462818ejb.244.1632667909119; 
- Sun, 26 Sep 2021 07:51:49 -0700 (PDT)
+ id 1mUgau-001RX9-Ih; Mon, 27 Sep 2021 02:42:18 +0000
+X-UUID: c909ec1c4f7944359c8f94d269c7d2d6-20210926
+X-UUID: c909ec1c4f7944359c8f94d269c7d2d6-20210926
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sam.shih@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 441021569; Sun, 26 Sep 2021 19:42:10 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 26 Sep 2021 19:34:34 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 27 Sep 2021 10:34:33 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 27 Sep 2021 10:34:32 +0800
+From: Sam Shih <sam.shih@mediatek.com>
+To: <robh@kernel.org>
+CC: <Ryder.Lee@mediatek.com>, <devicetree@vger.kernel.org>,
+ <enric.balletbo@collabora.com>, <fparent@baylibre.com>,
+ <gregkh@linuxfoundation.org>, <herbert@gondor.apana.org.au>,
+ <hsinyi@chromium.org>, <john@phrozen.org>, <linus.walleij@linaro.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <linux-crypto@vger.kernel.org>, <linux-gpio@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-serial@vger.kernel.org>, <linux-watchdog@vger.kernel.org>,
+ <linux@roeck-us.net>, <matthias.bgg@gmail.com>, <mpm@selenic.com>,
+ <mturquette@baylibre.com>, <robh+dt@kernel.org>, <sam.shih@mediatek.com>,
+ <sboyd@kernel.org>, <sean.wang@kernel.org>, <seiya.wang@mediatek.com>,
+ <wim@linux-watchdog.org>
+Subject: [v5,5/9] dt-bindings: pinctrl: update bindings for MT7986 SoC
+Date: Mon, 27 Sep 2021 10:34:19 +0800
+Message-ID: <20210927023419.17994-1-sam.shih@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <1632491961.645727.1195978.nullmailer@robh.at.kernel.org>
+References: <1632491961.645727.1195978.nullmailer@robh.at.kernel.org>
 MIME-Version: 1.0
-References: <20210901083215.25984-1-yunfei.dong@mediatek.com>
- <CAAEAJfDOt_GyDPojcj5P6Wou9HC2GC8YzRt2wYyqdrCOjfeOog@mail.gmail.com>
- <3b9463e88d88ce85205da08f8263252da7726ade.camel@mediatek.com>
- <aba7fb4ffe6e45ac90869b5017468386bce64d28.camel@mediatek.com>
- <b7ed8b71578a98704e9b8ca29cac63c67cc14b3f.camel@mediatek.com>
-In-Reply-To: <b7ed8b71578a98704e9b8ca29cac63c67cc14b3f.camel@mediatek.com>
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-Date: Sun, 26 Sep 2021 11:51:37 -0300
-Message-ID: <CAAEAJfCHEBFc8B7C0bu7UxtJdffvDarqgA-rset1wPjLOiV01A@mail.gmail.com>
-Subject: Re: [PATCH v6, 00/15] Using component framework to support multi
- hardware decode
-To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Tomasz Figa <tfiga@google.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Daniel Vetter <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Irui Wang <irui.wang@mediatek.com>, linux-media <linux-media@vger.kernel.org>, 
- devicetree <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- srv_heupstream <srv_heupstream@mediatek.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210926_075152_555783_C19D2273 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20210926_194216_665384_FEB79745 
+X-CRM114-Status: GOOD (  15.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,28 +87,384 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 26 Sept 2021 at 05:27, yunfei.dong@mediatek.com
-<yunfei.dong@mediatek.com> wrote:
->
-> Hi Ezequiel,
->
-> Could you please help to give some feedback when you are free for iommu
-> limitation?
->
+This updates bindings for MT7986 pinctrl driver. The
+difference of pinctrl between mt7986a and mt7986b is that pin-41 to pin-65
+do not exist on mt7986b
 
-How about you work on the architecture I originally suggested?
+Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 
-As the saying goes, talk is cheap, show us the code.
-So let's see the code and let's discuss the limitations
-with the code.
+---
+v5 : fixed yamllint warnings/errors
+v4 : used yaml format instead of txt format document
+v3 : make mt7986 pinctrl bindings as a separate file
+v2 : deleted the redundant description of mt7986a/mt7986b
+---
+ .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 353 ++++++++++++++++++
+ 1 file changed, 353 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
 
-> According to google's suggestion, it's better not to use v4l2 async
-> also.
+diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
+new file mode 100644
+index 000000000000..51a13129bcb8
+--- /dev/null
++++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
+@@ -0,0 +1,353 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/pinctrl/mediatek,mt7986-pinctrl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek MT7986 Pin Controller Device Tree Bindings
++
++maintainers:
++  - Sean Wang <sean.wang@kernel.org>
++
++description: |+
++  The MediaTek's MT7986 Pin controller is used to control SoC pins.
++
++properties:
++  compatible:
++    enum:
++      - mediatek,mt7986a-pinctrl
++      - mediatek,mt7986b-pinctrl
++
++  reg:
++    minItems: 8
++    maxItems: 8
++
++  reg-names:
++    items:
++      - const: gpio_base
++      - const: iocfg_rt_base
++      - const: iocfg_rb_base
++      - const: iocfg_lt_base
++      - const: iocfg_lb_base
++      - const: iocfg_tr_base
++      - const: iocfg_tl_base
++      - const: eint
++
++  gpio-controller: true
++
++  "#gpio-cells":
++    const: 2
++    description: |
++      Number of cells in GPIO specifier. Since the generic GPIO
++      binding is used, the amount of cells must be specified as 2. See the below
++      mentioned gpio binding representation for description of particular cells.
++
++  interrupt-controller: true
++
++  interrupts:
++    maxItems: 1
++
++  "#interrupt-cells":
++    const: 2
++
++required:
++  - compatible
++  - reg
++  - reg-names
++  - gpio-controller
++  - "#gpio-cells"
++
++patternProperties:
++  '-[0-9]+$':
++    type: object
++    additionalProperties: false
++
++    patternProperties:
++      'mux':
++        type: object
++        additionalProperties: false
++        description: |
++          pinmux configuration nodes.
++
++          Valid value	      function    pins (in pin#)
++          ---------------------------------------------------------------------
++          "watchdog"        "watchdog"  0
++          "wifi_led"        "led"       1, 2
++          "i2c"             "i2c"       3, 4
++          "uart1_0"         "uart"      7, 8, 9, 10
++          "pcie_clk"        "pcie"      9
++          "pcie_wake"       "pcie"      10
++          "spi1_0"          "spi"       11, 12, 13, 14
++          "pwm1_1"          "pwm"       20,
++          "pwm0"            "pwm"       21,
++          "pwm1_0"          "pwm"       22,
++          "snfi"            "flash"     23, 24, 25, 26, 27, 28
++          "spi1_2"          "spi"       29, 30, 31, 32
++          "emmc_45"         "emmc"      22, 23, 24, 25, 26, 27, 28, 29, 30,
++                                        31, 32
++          "spi1_1"          "spi"       23, 24, 25, 26
++          "uart1_2"         "uart"      29, 30, 31, 32
++          "uart1_1"         "uart"      23, 24, 25, 26
++          "uart2_0"         "uart"      29, 30, 31, 32
++          "spi0"            "spi"       33, 34, 35, 36
++          "spi0_wp_hold"    "spi"       37, 38
++          "uart1_3_rx_tx"   "uart"      35, 36
++          "uart1_3_cts_rts" "uart"      37, 38
++          "uart2_1"         "uart"      33, 34, 35, 36
++          "spi1_3"          "spi"       33, 34, 35, 36
++          "uart0"           "uart"      39, 40
++          "pcie_pereset"    "pcie"      41
++          "uart1"           "uart"      42, 43, 44, 45
++          "uart2"           "uart"      46, 47, 48, 49
++          "emmc_51"         "emmc"      50, 51, 52, 53, 54, 55, 56, 57, 57,
++                                        59, 60, 61
++          "pcm"             "audio"     62, 63, 64, 65
++          "i2s"             "audio"     62, 63, 64, 65
++          "switch_int"      "eth"       66
++          "mdc_mdio"        "eth"       67
++
++        $ref: "/schemas/pinctrl/pinmux-node.yaml"
++        properties:
++          function:
++            description: |
++              A string containing the name of the function to mux to the group.
++              There is no "audio", "pcie" functions on mt7986b, you can only use
++              those functions on mt7986a.
++            enum: [audio, emmc, eth, i2c, led, flash, pcie, pwm, spi, uart,
++                   watchdog, wifi]
++          groups:
++            description: |
++              An array of strings. Each string contains the name of a group.
++              There is no "pcie_pereset", "uart1", "uart2" "emmc_51", "pcm",
++              and "i2s" groups on mt7986b, you can only use those groups on
++              mt7986a.
++        required:
++          - function
++          - groups
++
++        allOf:
++          - if:
++              properties:
++                function:
++                  const: audio
++            then:
++              properties:
++                groups:
++                  enum: [pcm, i2s]
++          - if:
++              properties:
++                function:
++                  const: emmc
++            then:
++              properties:
++                groups:
++                  enum: [emmc, emmc_rst]
++          - if:
++              properties:
++                function:
++                  const: eth
++            then:
++              properties:
++                groups:
++                  enum: [switch_int, mdc_mdio]
++          - if:
++              properties:
++                function:
++                  const: i2c
++            then:
++              properties:
++                groups:
++                  enum: [i2c]
++          - if:
++              properties:
++                function:
++                  const: led
++            then:
++              properties:
++                groups:
++                  enum: [wifi_led]
++          - if:
++              properties:
++                function:
++                  const: flash
++            then:
++              properties:
++                groups:
++                  enum: [snfi]
++          - if:
++              properties:
++                function:
++                  const: pcie
++            then:
++              properties:
++                groups:
++                  enum: [pcie_clk, pcie_wake, pcie_pereset]
++          - if:
++              properties:
++                function:
++                  const: pwm
++            then:
++              properties:
++                groups:
++                  enum: [pwm0, pwm1_0, pwm1_1]
++          - if:
++              properties:
++                function:
++                  const: spi
++            then:
++              properties:
++                groups:
++                  enum: [spi0, spi0_wp_hold, spi1_0, spi1_1, spi1_2, spi1_3]
++          - if:
++              properties:
++                function:
++                  const: uart
++            then:
++              properties:
++                groups:
++                  enum: [uart1_0, uart1_1, uart1_2, uart1_3_rx_tx,
++                         uart1_3_cts_rts, uart2_0, uart2_1, uart0, uart1, uart2]
++          - if:
++              properties:
++                function:
++                  const: watchdog
++            then:
++              properties:
++                groups:
++                  enum: [watchdog]
++          - if:
++              properties:
++                function:
++                  const: wifi
++            then:
++              properties:
++                groups:
++                  enum: [wf_2g, wf_5g, wf_dbdc]
++      'conf':
++        type: object
++        additionalProperties: false
++        description: |
++          pinconf configuration nodes.
++        $ref: "/schemas/pinctrl/pincfg-node.yaml"
++
++        properties:
++          pins:
++            description: |
++              An array of strings. Each string contains the name of a pin.
++              There is no PIN 41 to PIN 65 above on mt7686b, you can only use
++              those pins on mt7986a.
++            enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
++                   GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
++                   GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
++                   GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
++                   SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
++                   SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
++                   UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
++                   UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
++                   UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
++                   EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
++                   EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
++                   PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
++                   WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
++                   WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
++                   WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
++                   WF0_HB10, WF1_DIG_RESETB, WF1_CBA_RESETB, WF1_XO_REQ,
++                   WF1_TOP_CLK, WF1_TOP_DATA, WF1_HB1, WF1_HB2, WF1_HB3,
++                   WF1_HB4, WF1_HB0, WF1_HB0_B, WF1_HB5, WF1_HB6, WF1_HB7,
++                   WF1_HB8]
++
++          bias-disable: true
++
++          bias-pull-up: true
++
++          bias-pull-down: true
++
++          input-enable: true
++
++          input-disable: true
++
++          output-enable: true
++
++          output-low: true
++
++          output-high: true
++
++          input-schmitt-enable: true
++
++          input-schmitt-disable: true
++
++          drive-strength:
++            enum: [2, 4, 6, 8, 10, 12, 14, 16]
++
++          mediatek,pull-up-adv:
++            description: |
++              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
++              Pull up setings for 2 pull resistors, R0 and R1. Valid arguments
++              are described as below:
++              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
++              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
++              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
++              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
++            $ref: /schemas/types.yaml#/definitions/uint32
++            enum: [0, 1, 2, 3]
++
++          mediatek,pull-down-adv:
++            description: |
++              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
++              Pull down setings for 2 pull resistors, R0 and R1. Valid arguments
++              are described as below:
++              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
++              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
++              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
++              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
++            $ref: /schemas/types.yaml#/definitions/uint32
++            enum: [0, 1, 2, 3]
++
++        required:
++          - pins
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    soc {
++      pio: pinctrl@1001f000 {
++        compatible = "mediatek,mt7986a-pinctrl";
++        reg = <0 0x1001f000 0 0x1000>,
++              <0 0x11c30000 0 0x1000>,
++              <0 0x11c40000 0 0x1000>,
++              <0 0x11e20000 0 0x1000>,
++              <0 0x11e30000 0 0x1000>,
++              <0 0x11f00000 0 0x1000>,
++              <0 0x11f10000 0 0x1000>,
++              <0 0x1000b000 0 0x1000>;
++        reg-names = "gpio_base", "iocfg_rt_base", "iocfg_rb_base",
++              "iocfg_lt_base", "iocfg_lb_base", "iocfg_tr_base",
++              "iocfg_tl_base", "eint";
++        gpio-controller;
++        #gpio-cells = <2>;
++        gpio-ranges = <&pio 0 0 100>;
++        interrupt-controller;
++        interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
++        interrupt-parent = <&gic>;
++        #interrupt-cells = <2>;
++
++        uart1_pins: uart1-pins-42-to-45 {
++          mux {
++            function = "uart";
++            groups = "uart1";
++          };
++        };
++
++        uart2_pins: uart1-pins-46-to-49 {
++          mux {
++            function = "uart";
++            groups = "uart2";
++          };
++        };
++
++      };
++    };
+-- 
+2.29.2
 
-Hum? I haven't seen such objection on the mailing list.
-
-Thanks,
-Ezequiel
 
 _______________________________________________
 Linux-mediatek mailing list
