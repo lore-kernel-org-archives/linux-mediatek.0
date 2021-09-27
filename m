@@ -2,71 +2,63 @@ Return-Path: <SRS0=95qJ=OR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2680C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 10:55:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A5B3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 12:19:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AB5AF60555
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 10:55:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AB5AF60555
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5248E61058
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Sep 2021 12:19:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5248E61058
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nt0+l47Yp5+oaL3WLncCcwKqQDxQnyLEjCVfKZ5zH+4=; b=p9U7KNqK0ynTT2
-	6LY/1F7K9VztMxlwR1qC8ORZ9SSPRM/fwq0wblOkxnONo1BbhmlN5jdrNYX5IsuqtCoHK33K9cF4j
-	2GQjz8kRxn1OCy33E+e9JaOt+f4cCPDN7b2xDtyARtqhj/y0em3PaIH4CARDVEP9RDhrmqiVwIe1h
-	Dmn5YbMvdwIm2+R6iF8Cf2Wb0gQr1HifAx1mfu3dy8c+cfOWhZG2QUIcWeaeorPX0MHNFbeyufANL
-	Iq8e0pRe+lXNZ2LERber+BagPXTDMq8gvjsUo7C6HQ6U3WOQydCKOa/eYSEqvEzHVqTzP+kGum7NZ
-	5TOLX7kAwJi4Lzbz0vBQ==;
+	List-Owner; bh=exFca+bZvMkpfdNlXBhtPe+d7GpieSDWfZFjUVXnZvs=; b=FxQA/yU4qXGHuD
+	MkJ1LW9pgjZtrPO18KYIBW8TofNNkJ40+hGX+oHrCxS9HVf2CKy76D0rTSXfs09OGu5EPmJhfVdXn
+	6CMcOniySGHOXltfBJBeKK4/maV03lndp3C5owQ1Bpvoja7BmXIa68W9cLQYBZscC08tYn9llm/Xt
+	yafJY9UzCgeC2U8EXOKQN0gaVq/D43FrwtT6WFbt9t3HqknJpV12c9Ud0gDzVcoqboZXPqDvtjQfa
+	J5oTQhtHQjSCKs9IXwHhEYJ71Xvvd38lJ+rl7sO2X9J/8NM6KrujktUaMzdGH/GQVq54Rlj9DJ+My
+	KiLMxg7B1rukpcdmhSfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mUoHu-002Mar-Fl; Mon, 27 Sep 2021 10:55:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mUpbG-002asu-47; Mon, 27 Sep 2021 12:19:14 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mUoHr-002MYE-8w; Mon, 27 Sep 2021 10:55:08 +0000
-X-UUID: 931e587de61b4562aa25911366540ebe-20210927
-X-UUID: 931e587de61b4562aa25911366540ebe-20210927
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <macpaul.lin@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1861691052; Mon, 27 Sep 2021 03:55:04 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Sep 2021 03:45:02 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Sep 2021 18:45:01 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 27 Sep 2021 18:45:00 +0800
-From: Macpaul Lin <macpaul.lin@mediatek.com>
-To: Leon Yu <leoyu@nvidia.com>, "David S . Miller" <davem@davemloft.net>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
- <alexandre.torgue@st.com>, Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, <netdev@vger.kernel.org>,
- <linux-stm32@st-md-mailman.stormreply.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-CC: Miles Chen <miles.chen@mediatek.com>, Bear Wang <bear.wang@mediatek.com>, 
- Pablo Sun <pablo.sun@mediatek.com>, Fabien Parent <fparent@baylibre.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Macpaul Lin <macpaul@gmail.com>,
- <linux-mediatek@lists.infradead.org>, <stable@vger.kernel.org>
-Subject: backport commit ("c739b17a715c net: stmmac: don't attach interface
- until resume finishes") to linux-5.4-stable
-Date: Mon, 27 Sep 2021 18:45:00 +0800
-Message-ID: <20210927104500.1505-1-macpaul.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mUpb4-002arG-PL; Mon, 27 Sep 2021 12:19:04 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C105F6103B;
+ Mon, 27 Sep 2021 12:18:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1632745142;
+ bh=F9/Tr9COtm4Stj4bhDIokvzMkSf99FLpUsv9Um0t5FI=;
+ h=From:To:Cc:Subject:Date:From;
+ b=iQ1cVnEtOm5m5/2kAdPUnsn+F/m6UMiVUTNVuuJVHQzqfCTB37Wh92MSJMucsKtLS
+ hE6EEfH26Y7f55flpw2XxZbTXZOaSqx5aWlljUGX/puBub5sCl6FwV6KHrALTMS0fj
+ fXJcasgF8W/8SdTAezOjWsJAoAYktTuihAPRjRFtFdXLoXXkfgGk3Sgu1u/jaHthW5
+ 2L+vEP9AaPWCp8njdVAzDZLerxAtaI/Cv5lOJ4OTkc1gIyZiiuNgwrdLQCd4QP6O89
+ 3HeumoPYO5S/iEZyMKOr9XjdjDictDEY86eIyVDUKsZ2B+AZKZPoYfjJRhaeLjgBbJ
+ 5JrGQXrIaY2Fg==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Arnd Bergmann <arnd@arndb.de>, Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ Tomasz Figa <tfiga@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ llvm@lists.linux.dev
+Subject: [PATCH] iommu/mediatek: fix out-of-range warning with clang
+Date: Mon, 27 Sep 2021 14:18:44 +0200
+Message-Id: <20210927121857.941160-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.29.2
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210927_035507_337418_6C3A0130 
-X-CRM114-Status: UNSURE (   5.21  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210927_051902_868358_212B9389 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,24 +75,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi reviewers,
+From: Arnd Bergmann <arnd@arndb.de>
 
-I suggest to backport 
-commit "c739b17a715c net: stmmac: don't attach interface until resume finishes"
-to linux-5.4 stable tree.
+clang-14 notices that a comparison is never true when
+CONFIG_PHYS_ADDR_T_64BIT is disabled:
 
-This patch fix resume issue by deferring netif_device_attach().
+drivers/iommu/mtk_iommu.c:553:34: error: result of comparison of constant 5368709120 with expression of type 'phys_addr_t' (aka 'unsigned int') is always false [-Werror,-Wtautological-constant-out-of-range-compare]
+        if (dom->data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
+                                     ~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-However, the patch cannot be cherry-pick directly on to stable-5.4.
-A slightly change to the origin patch is required.
-I'd like to provide the modification to stable-5.4 if it is needed.
+Add an explicit check for the type of the variable to skip the check
+and the warning in that case.
 
-commit: c739b17a715c6a850477189fb7c5f9a6af74f4bb
-subject: net: stmmac: don't attach interface until resume finishes
-kernel version to apply to: Linux-5.4
+Fixes: b4dad40e4f35 ("iommu/mediatek: Adjust the PA for the 4GB Mode")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+ drivers/iommu/mtk_iommu.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Thanks.
-Macpaul Lin
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index d837adfd1da5..25b834104790 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -550,7 +550,9 @@ static phys_addr_t mtk_iommu_iova_to_phys(struct iommu_domain *domain,
+ 	phys_addr_t pa;
+ 
+ 	pa = dom->iop->iova_to_phys(dom->iop, iova);
+-	if (dom->data->enable_4GB && pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
++	if (IS_ENABLED(CONFIG_PHYS_ADDR_T_64BIT) &&
++	    dom->data->enable_4GB &&
++	    pa >= MTK_IOMMU_4GB_MODE_REMAP_BASE)
+ 		pa &= ~BIT_ULL(32);
+ 
+ 	return pa;
+-- 
+2.29.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
