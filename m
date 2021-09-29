@@ -2,74 +2,79 @@ Return-Path: <SRS0=h0C2=OT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B444CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 12:13:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 654E1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 13:46:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C56561406
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 12:13:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C56561406
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 247B2613A0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 13:46:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 247B2613A0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GQ2LXyeZxNmWbuYEs0T026m0Sru4F9FWbG4JF42nufw=; b=HZNTmhtSPMxpxR3B8rfwUT8QOs
-	M6hYY5HBDPv2XPzr3PT9ApvX1POlqrCYcIMyR6noyPDu1kw13YhRv3aw26gdUUTmoUZ7WLVanOivq
-	CFoHJP0yJcXqPSbr99sHKyf7Gl8JlgCqCUhZojnQf6121ltiTSW0780CF4XNexV0ghQ7Mw3m+auj0
-	8xl1jA4IsVIhokVtX6ROemLMJSl0R0CYbJerGMo+YkEDqNutshUCp/PFWkVxtkkLkT4iD45Owjixt
-	FcJDVG9LFontmsKmH+rH470WQ80QC/jvYYzUd1Mw3Km3UG/6KZ/NVKO5AEF9LgdCEsX2Cj1q4L++i
-	HeW8KmKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=u9zt6yPCph7cX+JPZZFTVnW2H7ZDND1AcpxfFRE71oE=; b=Ml3vDLdj2ZtzkQ
+	LbXahOI12WF8PykZREHBGjzR4gnYOhOoG3LrhClV3tjy28hzIpOzEhOf36IYe25QZ4CFV74zCxvP9
+	3o/fb3jYgsZP91ftZNUY8cTUE22ovQRUQyPCNwsLY8QbwjYVpgz7Jfh7tk1z3YtOgYs3SXwoYXjN/
+	qQBTiOk1mpfU/1zCpkRn6/tTBLnYxuSn4EEoHtoRlXIoRwWHsr4D+KbpQ5fXeFR6snWR9omZYkeDn
+	1b5qETqZ/A+QSjyn+85T25+3deQcqE8B+8mvj9P6zte5Vcs5nGlJVHshM3ZAw6ISgxLEzbFk9I6Th
+	eKxEhRlzIn++zkI1XhQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVYSm-00B06O-C4; Wed, 29 Sep 2021 12:13:28 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mVZv1-00BC1j-1W; Wed, 29 Sep 2021 13:46:43 +0000
+Received: from mail-ot1-f53.google.com ([209.85.210.53])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVYSS-00AzzH-Qi; Wed, 29 Sep 2021 12:13:11 +0000
-Received: from [IPv6:2a02:810a:880:f54:fd5c:7cb1:aaa8:78b1] (unknown
- [IPv6:2a02:810a:880:f54:fd5c:7cb1:aaa8:78b1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 67C511F4428D;
- Wed, 29 Sep 2021 13:13:02 +0100 (BST)
-Subject: Re: [PATCH v8 09/12] media: mtk-vcodec: Get rid of
- mtk_smi_larb_get/put
-To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
- youlin.pei@mediatek.com, Matthias Kaehlcke <mka@chromium.org>,
- anan.sun@mediatek.com, yi.kuo@mediatek.com, acourbot@chromium.org,
- linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
- Daniel Vetter <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Tiffany Lin <tiffany.lin@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Eizan Miyamoto <eizan@chromium.org>, anthony.huang@mediatek.com,
- Frank Wunderlich <frank-w@public-files.de>,
- Irui Wang <irui.wang@mediatek.com>
-References: <20210929013719.25120-1-yong.wu@mediatek.com>
- <20210929013719.25120-10-yong.wu@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <02f444d5-9633-3f9c-2d1f-97ce073d1180@collabora.com>
-Date: Wed, 29 Sep 2021 14:13:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <20210929013719.25120-10-yong.wu@mediatek.com>
-Content-Language: en-US
+ id 1mVZuo-00BBy5-DQ; Wed, 29 Sep 2021 13:46:31 +0000
+Received: by mail-ot1-f53.google.com with SMTP id
+ x33-20020a9d37a4000000b0054733a85462so2881336otb.10; 
+ Wed, 29 Sep 2021 06:46:29 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=OCt6A/PQC+USQdnm5J8GnEXuMhJ+RqhU0u1UJM6OlKM=;
+ b=nY5XTRBsA0eTkmv4rP6BDbw3qpN9dhA+atv/Dq5pI90BbuU0o1HqjR4UxAgWbdUQJm
+ vK1pMR6KrvtXcrpVoumMgtPc1gN8zXmoQu1/2/2IH4RdooAqSfjiW3z8RVjU4KYa/rn3
+ SnfoDTfwCfHTkLXr6PbhUiI1DQ1+imaJ0006gDs1MWgPB9ynHFl8Thz//XKkxkx9MdbZ
+ yN32D8+CLXyYsHHheo6JWQXiRVbiaOunuxLNw89Mk6pjIwOSt/ck/0mm31KivCQeol99
+ uII2UgPqNk9/zWakcFMCzHrAkNbv3/obZK2U6dYRlniU2T1b3M+8Ps/hxeucUMt+hB76
+ mQVQ==
+X-Gm-Message-State: AOAM5314VC+y077ZaZTYdeuMqOc0cCJhubrabHSHGeRRLTtpA2knrxCY
+ I0RtEmlpZJRVlOr1iJrNRQ==
+X-Google-Smtp-Source: ABdhPJz/BHhDl0VbMiUoiKubksea3lnYfFtqBu5/Mu6JI4wQMVxRosXYvYLsRHQDW2GiEYK59cdHBA==
+X-Received: by 2002:a9d:6a4c:: with SMTP id h12mr81568otn.336.1632923189057;
+ Wed, 29 Sep 2021 06:46:29 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id o62sm459542ota.14.2021.09.29.06.46.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Sep 2021 06:46:28 -0700 (PDT)
+Received: (nullmailer pid 3674449 invoked by uid 1000);
+ Wed, 29 Sep 2021 13:46:25 -0000
+From: Rob Herring <robh@kernel.org>
+To: Guillaume Ranquet <granquet@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org, chunkuang.hu@kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, p.zabel@pengutronix.de,
+ Daniel Vetter <daniel@ffwll.ch>, CK Hu <ck.hu@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ David Airlie <airlied@linux.ie>, dri-devel@lists.freedesktop.org,
+ Rob Herring <robh+dt@kernel.org>, Jitao shi <jitao.shi@mediatek.com>,
+ devicetree@vger.kernel.org
+In-Reply-To: <20210929094425.745-3-granquet@baylibre.com>
+References: <20210929094425.745-1-granquet@baylibre.com>
+ <20210929094425.745-3-granquet@baylibre.com>
+Subject: Re: [PATCH v1 2/4] dt-bindings: display: mediatek: add MT8195 hdmi
+ bindings
+Date: Wed, 29 Sep 2021 08:46:25 -0500
+Message-Id: <1632923185.744834.3674448.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210929_051309_167034_AE1B5258 
-X-CRM114-Status: GOOD (  28.64  )
+X-CRM114-CacheID: sfid-20210929_064630_473074_43DE993A 
+X-CRM114-Status: GOOD (  12.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,293 +86,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 29.09.21 03:37, Yong Wu wrote:
-> MediaTek IOMMU has already added the device_link between the consumer
-> and smi-larb device. If the vcodec device call the pm_runtime_get_sync,
-> the smi-larb's pm_runtime_get_sync also be called automatically.
+On Wed, 29 Sep 2021 11:44:23 +0200, Guillaume Ranquet wrote:
+> Add Mediatek HDMI and HDMI-DDC bindings for MT8195 SoC.
 > 
-> CC: Tiffany Lin <tiffany.lin@mediatek.com>
-> CC: Irui Wang <irui.wang@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> Reviewed-by: Evan Green <evgreen@chromium.org>
-> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+> Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
 > ---
->   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 37 +++-------------
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
->   .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
->   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 44 +++----------------
->   4 files changed, 10 insertions(+), 75 deletions(-)
+>  .../mediatek/mediatek,mt8195-hdmi-ddc.yaml    | 45 +++++++++
+>  .../mediatek/mediatek,mt8195-hdmi.yaml        | 98 +++++++++++++++++++
+>  2 files changed, 143 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
 > 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> index 6038db96f71c..d0bf9aa3b29d 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
-> @@ -8,14 +8,12 @@
->   #include <linux/of_address.h>
->   #include <linux/of_platform.h>
->   #include <linux/pm_runtime.h>
-> -#include <soc/mediatek/smi.h>
->   
->   #include "mtk_vcodec_dec_pm.h"
->   #include "mtk_vcodec_util.h"
->   
->   int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->   {
-> -	struct device_node *node;
->   	struct platform_device *pdev;
->   	struct mtk_vcodec_pm *pm;
->   	struct mtk_vcodec_clk *dec_clk;
-> @@ -26,18 +24,7 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->   	pm = &mtkdev->pm;
->   	pm->mtkdev = mtkdev;
->   	dec_clk = &pm->vdec_clk;
-> -	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
-> -	if (!node) {
-> -		mtk_v4l2_err("of_parse_phandle mediatek,larb fail!");
-> -		return -1;
-> -	}
->   
-> -	pdev = of_find_device_by_node(node);
-> -	of_node_put(node);
-> -	if (WARN_ON(!pdev)) {
-> -		return -1;
-> -	}
-> -	pm->larbvdec = &pdev->dev;
->   	pdev = mtkdev->plat_dev;
->   	pm->dev = &pdev->dev;
->   
-> @@ -47,14 +34,11 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->   		dec_clk->clk_info = devm_kcalloc(&pdev->dev,
->   			dec_clk->clk_num, sizeof(*clk_info),
->   			GFP_KERNEL);
-> -		if (!dec_clk->clk_info) {
-> -			ret = -ENOMEM;
-> -			goto put_device;
-> -		}
-> +		if (!dec_clk->clk_info)
-> +			return -ENOMEM;
->   	} else {
->   		mtk_v4l2_err("Failed to get vdec clock count");
-> -		ret = -EINVAL;
-> -		goto put_device;
-> +		return -EINVAL;
->   	}
->   
->   	for (i = 0; i < dec_clk->clk_num; i++) {
-> @@ -63,29 +47,24 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
->   			"clock-names", i, &clk_info->clk_name);
->   		if (ret) {
->   			mtk_v4l2_err("Failed to get clock name id = %d", i);
-> -			goto put_device;
-> +			return ret;
->   		}
->   		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
->   			clk_info->clk_name);
->   		if (IS_ERR(clk_info->vcodec_clk)) {
->   			mtk_v4l2_err("devm_clk_get (%d)%s fail", i,
->   				clk_info->clk_name);
-> -			ret = PTR_ERR(clk_info->vcodec_clk);
-> -			goto put_device;
-> +			return PTR_ERR(clk_info->vcodec_clk);
->   		}
->   	}
->   
->   	pm_runtime_enable(&pdev->dev);
->   	return 0;
-> -put_device:
-> -	put_device(pm->larbvdec);
-> -	return ret;
->   }
->   
->   void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
->   {
->   	pm_runtime_disable(dev->pm.dev);
-> -	put_device(dev->pm.larbvdec);
->   }
 
-Now that functions only do  'pm_runtime_disable(dev->pm.dev);' so it will be more
-readable to remove the function mtk_vcodec_release_dec_pm
-and replace with pm_runtime_disable(dev->pm.dev);
-Same for the 'enc' equivalent.
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Thanks,
-Dafna
+yamllint warnings/errors:
 
->   
->   int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
-> @@ -122,11 +101,6 @@ void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
->   		}
->   	}
->   
-> -	ret = mtk_smi_larb_get(pm->larbvdec);
-> -	if (ret) {
-> -		mtk_v4l2_err("mtk_smi_larb_get larbvdec fail %d", ret);
-> -		goto error;
-> -	}>   	return;
->   
->   error:
-> @@ -139,7 +113,6 @@ void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm)
->   	struct mtk_vcodec_clk *dec_clk = &pm->vdec_clk;
->   	int i = 0;
->   
-> -	mtk_smi_larb_put(pm->larbvdec);
->   	for (i = dec_clk->clk_num - 1; i >= 0; i--)
->   		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
->   }
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index c6c7672fecfb..64b73dd880ce 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -189,10 +189,7 @@ struct mtk_vcodec_clk {
->    */
->   struct mtk_vcodec_pm {
->   	struct mtk_vcodec_clk	vdec_clk;
-> -	struct device	*larbvdec;
-> -
->   	struct mtk_vcodec_clk	venc_clk;
-> -	struct device	*larbvenc;
->   	struct device	*dev;
->   	struct mtk_vcodec_dev	*mtkdev;
->   };
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index 416f356af363..9a1515cf862d 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -8,7 +8,6 @@
->   #include <media/v4l2-event.h>
->   #include <media/v4l2-mem2mem.h>
->   #include <media/videobuf2-dma-contig.h>
-> -#include <soc/mediatek/smi.h>
->   #include <linux/pm_runtime.h>
->   
->   #include "mtk_vcodec_drv.h"
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> index 1b2e4930ed27..dffb190267ed 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-> @@ -8,58 +8,36 @@
->   #include <linux/of_address.h>
->   #include <linux/of_platform.h>
->   #include <linux/pm_runtime.h>
-> -#include <soc/mediatek/smi.h>
->   
->   #include "mtk_vcodec_enc_pm.h"
->   #include "mtk_vcodec_util.h"
->   
->   int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
->   {
-> -	struct device_node *node;
->   	struct platform_device *pdev;
->   	struct mtk_vcodec_pm *pm;
->   	struct mtk_vcodec_clk *enc_clk;
->   	struct mtk_vcodec_clk_info *clk_info;
->   	int ret = 0, i = 0;
-> -	struct device *dev;
->   
->   	pdev = mtkdev->plat_dev;
->   	pm = &mtkdev->pm;
->   	memset(pm, 0, sizeof(struct mtk_vcodec_pm));
->   	pm->mtkdev = mtkdev;
->   	pm->dev = &pdev->dev;
-> -	dev = &pdev->dev;
->   	enc_clk = &pm->venc_clk;
->   
-> -	node = of_parse_phandle(dev->of_node, "mediatek,larb", 0);
-> -	if (!node) {
-> -		mtk_v4l2_err("no mediatek,larb found");
-> -		return -ENODEV;
-> -	}
-> -	pdev = of_find_device_by_node(node);
-> -	of_node_put(node);
-> -	if (!pdev) {
-> -		mtk_v4l2_err("no mediatek,larb device found");
-> -		return -ENODEV;
-> -	}
-> -	pm->larbvenc = &pdev->dev;
-> -	pdev = mtkdev->plat_dev;
-> -	pm->dev = &pdev->dev;
-> -
->   	enc_clk->clk_num = of_property_count_strings(pdev->dev.of_node,
->   		"clock-names");
->   	if (enc_clk->clk_num > 0) {
->   		enc_clk->clk_info = devm_kcalloc(&pdev->dev,
->   			enc_clk->clk_num, sizeof(*clk_info),
->   			GFP_KERNEL);
-> -		if (!enc_clk->clk_info) {
-> -			ret = -ENOMEM;
-> -			goto put_larbvenc;
-> -		}
-> +		if (!enc_clk->clk_info)
-> +			return -ENOMEM;
->   	} else {
->   		mtk_v4l2_err("Failed to get venc clock count");
-> -		ret = -EINVAL;
-> -		goto put_larbvenc;
-> +		return -EINVAL;
->   	}
->   
->   	for (i = 0; i < enc_clk->clk_num; i++) {
-> @@ -68,29 +46,23 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
->   			"clock-names", i, &clk_info->clk_name);
->   		if (ret) {
->   			mtk_v4l2_err("venc failed to get clk name %d", i);
-> -			goto put_larbvenc;
-> +			return ret;
->   		}
->   		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
->   			clk_info->clk_name);
->   		if (IS_ERR(clk_info->vcodec_clk)) {
->   			mtk_v4l2_err("venc devm_clk_get (%d)%s fail", i,
->   				clk_info->clk_name);
-> -			ret = PTR_ERR(clk_info->vcodec_clk);
-> -			goto put_larbvenc;
-> +			return PTR_ERR(clk_info->vcodec_clk);
->   		}
->   	}
->   
->   	return 0;
-> -
-> -put_larbvenc:
-> -	put_device(pm->larbvenc);
-> -	return ret;
->   }
->   
->   void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
->   {
->   	pm_runtime_disable(mtkdev->pm.dev);
-> -	put_device(mtkdev->pm.larbvenc);
->   }
->   
->   
-> @@ -108,11 +80,6 @@ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
->   		}
->   	}
->   
-> -	ret = mtk_smi_larb_get(pm->larbvenc);
-> -	if (ret) {
-> -		mtk_v4l2_err("mtk_smi_larb_get larb3 fail %d", ret);
-> -		goto clkerr;
-> -	}
->   	return;
->   
->   clkerr:
-> @@ -125,7 +92,6 @@ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm)
->   	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
->   	int i = 0;
->   
-> -	mtk_smi_larb_put(pm->larbvenc);
->   	for (i = enc_clk->clk_num - 1; i >= 0; i--)
->   		clk_disable_unprepare(enc_clk->clk_info[i].vcodec_clk);
->   }
-> 
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.example.dt.yaml: example-0: hdmi@1c300000:reg:0: [0, 472907776, 0, 4096] is too long
+	From schema: /usr/local/lib/python3.8/dist-packages/dtschema/schemas/reg.yaml
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.example.dt.yaml: hdmi@1c300000: 'ddc-i2c-bus', 'power-domains' do not match any of the regexes: 'pinctrl-[0-9]+'
+	From schema: /builds/robherring/linux-dt-review/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1534287
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
