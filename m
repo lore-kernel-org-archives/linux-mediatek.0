@@ -2,90 +2,84 @@ Return-Path: <SRS0=h0C2=OT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9D41FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 08:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2B5BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 09:47:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2194161407
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 08:15:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2194161407
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=realtek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 70EE5613CD
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 09:47:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 70EE5613CD
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ksFXkYiJZNoUog1jB8l/uef3PvuaOdWhzmprnC0DEg4=; b=UXZ2+O5KeRZ00g
-	QVv6EsQ/Mx8/XeNCpxt1i5n292eKLYSVjOMZtwGs1QtzTuhELm7FlkDUz2k//evaQlyI1rDOqznk7
-	wWJcYBHCFnECj3M8OcsXre9z1JHOpEio8lUtxc5tlWdHfCCKwuA0G+d3VX/rshvRSMKdWohr/SVaJ
-	UjjQ90qx/LgJWWj8E7bar6GjtsS9EPaoApPvDGpkUjcf+QggM8KsUi6CJWajPwFzV6RvT8/qUZgBT
-	E8SByWmFjwbFLYowha1MjKvH5GTEq7EpF/x8fRvNurHaf1JexdPQJ5hlA/bd93QLKbj9nLfODtM6s
-	kLLdcp4EYOanPm+EsVMQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=dlp0ghzLieN9o4BajqQ9dvzxJ/vMF0Dbwk+vQ0A0W3M=; b=xDR5wInLjGHv2t
+	tpQTCoY6OioScfC9RbLODVIFyIDlZBkI2r50iK6diT6q6EfEF43O6JW7MyIUNHooGwvt7goXW0oHG
+	NhPtWR2tUcQwH9hRnlgl9YyCpyFtSy09EQCogmjx49nJt3CvTes8ViOb+kktfyOHqLs8JjnJqcq0Q
+	x6s0E4Q0MLeL5luyGorZKTRxE0WxMN2TxlCZopw6vxGP6wIKH/v/VUanue5LAVAcj8YidpBRickz1
+	SQ1HrW+reRRjSK0C5NTHCv2x6024Ofx++yANsdCCPlJUi6XHrj9OZmM2LE8iag7xwutXt9i9g3x6f
+	kBkvhN+o8WaEbHqjxXHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVUkL-00ALYP-4N; Wed, 29 Sep 2021 08:15:21 +0000
-Received: from rtits2.realtek.com ([211.75.126.72] helo=rtits2.realtek.com.tw)
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat
- Linux)) id 1mVUjR-00ALC3-LL; Wed, 29 Sep 2021 08:14:27 +0000
-Authenticated-By: 
-X-SpamFilter-By: ArmorX SpamTrap 5.73 with qID 18T8EDS40025405,
- This message is accepted by code: ctloc85258
-Received: from mail.realtek.com (rtexh36503.realtek.com.tw[172.21.6.25])
- by rtits2.realtek.com.tw (8.15.2/2.71/5.88) with ESMTPS id 18T8EDS40025405
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT);
- Wed, 29 Sep 2021 16:14:13 +0800
-Received: from RTEXMBS04.realtek.com.tw (172.21.6.97) by
- RTEXH36503.realtek.com.tw (172.21.6.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.14; Wed, 29 Sep 2021 16:14:13 +0800
-Received: from RTEXMBS04.realtek.com.tw (172.21.6.97) by
- RTEXMBS04.realtek.com.tw (172.21.6.97) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2106.2; Wed, 29 Sep 2021 16:14:12 +0800
-Received: from RTEXMBS04.realtek.com.tw ([fe80::cdd5:82a3:e854:7098]) by
- RTEXMBS04.realtek.com.tw ([fe80::cdd5:82a3:e854:7098%5]) with mapi id
- 15.01.2106.013; Wed, 29 Sep 2021 16:14:12 +0800
-From: Hayes Wang <hayeswang@realtek.com>
-To: Jason-ch Chen <jason-ch.chen@mediatek.com>, "matthias.bgg@gmail.com"
- <matthias.bgg@gmail.com>
-CC: "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "Project_Global_Chrome_Upstream_Group@mediatek.com"
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, "hsinyi@google.com"
- <hsinyi@google.com>, nic_swsd <nic_swsd@realtek.com>
-Subject: RE: [PATCH] r8152: stop submitting rx for -EPROTO
-Thread-Topic: [PATCH] r8152: stop submitting rx for -EPROTO
-Thread-Index: AQHXtPF6mRt31KuIqUSf0ySwz113xKu6nqYQ
-Date: Wed, 29 Sep 2021 08:14:12 +0000
-Message-ID: <cbd1591fc03f480c9f08cc55585e2e35@realtek.com>
-References: <20210929051812.3107-1-jason-ch.chen@mediatek.com>
-In-Reply-To: <20210929051812.3107-1-jason-ch.chen@mediatek.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [172.21.177.203]
-x-kse-serverinfo: RTEXMBS04.realtek.com.tw, 9
-x-kse-attachmentfiltering-interceptor-info: no applicable attachment filtering
- rules found
-x-kse-antivirus-interceptor-info: scan successful
-x-kse-antivirus-info: =?us-ascii?Q?Clean,_bases:_2021/9/29_=3F=3F_07:00:00?=
-x-kse-bulkmessagesfiltering-scan-result: protection disabled
+	id 1mVWBD-00AbYQ-1Q; Wed, 29 Sep 2021 09:47:11 +0000
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mVWAv-00AbRO-Fp
+ for linux-mediatek@lists.infradead.org; Wed, 29 Sep 2021 09:46:55 +0000
+Received: by mail-wm1-x335.google.com with SMTP id
+ t16-20020a1c7710000000b003049690d882so4687006wmi.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 29 Sep 2021 02:46:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=f5haxGK3EJ+q+eJBrfkQ+eXhJQ2te14AsLAThAn2/8Q=;
+ b=GziBT42uEBOyxTzL3MaLFLjTSpM5GZ9m2UQOkiE75vbYPWzTSFqMlUjv4x4D5HYAoN
+ QwBr+zUU1XejkIQKWoZnvkT4pFWTECoV3XgIrcEemykomZkZ7xt/WMmqln8eiVubswQq
+ KuG5fmoFhWnutqjVSFovI49AuaLYJ09W76/V3CS0ln9hZ6xgxdZ9xZWYn2iGUpuIjdEZ
+ Bad0A6WN0XbKHA9Kp44/IZhZ/oYdoUq/YNzJYPft46zClckn0whCBWJNnxX8Ly43+EHn
+ 29Kzoakw/o95HU2e5T97r24sDCO9cz3B/c6nSprzQ1AmNSQzgXm57ecT+4Q+RnZFrgkd
+ timQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=f5haxGK3EJ+q+eJBrfkQ+eXhJQ2te14AsLAThAn2/8Q=;
+ b=LoBXKcZDZ++Vh3y4PG4eiOP69l4LO/9R+BknXKXpx8m1whM3k3MuAO/MDI64pk5i7w
+ RE5J4vnDLpjlkq02ie4vVgP/3LRcgY68x50O6pLBDN/cijBanDelGYxhDy7tf3h9weP8
+ xBI9n7PGXS2Ugjd6aZzeLjdZCPl8YF2a0NmPVIZpIrciCGQ1D8vDwt9eJo61DeTihibX
+ UB/25BsOvAhSLZYd652OiOz4qxIrKeAE0J0bLts4uR5y1JjVEIdwto0YhXXD0jHDdEp0
+ 29nPAXY3avdQsgW8EsJqEbLBNi8cEFf1TESw1StA1/RA514zpUajd2eVWrdS5hBzdlSP
+ hc1w==
+X-Gm-Message-State: AOAM532KYE8D8j/x3ecORH0bJpagL563aCOuegBn7kakODv+cbXVBw3M
+ iX8cVYpknSRWYKcAniRSJEmouw==
+X-Google-Smtp-Source: ABdhPJyC3NRopicws5HthIY5FLBG0zqnaCsUFBkWGXqq1xclPoxEY/0J3XYfc2dYChiazXINnZJ7WQ==
+X-Received: by 2002:a1c:4c0d:: with SMTP id z13mr9140521wmf.58.1632908811439; 
+ Wed, 29 Sep 2021 02:46:51 -0700 (PDT)
+Received: from localhost.localdomain
+ (2a02-8440-6240-2cf3-3074-96af-9642-0002.rev.sfr.net.
+ [2a02:8440:6240:2cf3:3074:96af:9642:2])
+ by smtp.gmail.com with ESMTPSA id h7sm1751938wrx.14.2021.09.29.02.46.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Sep 2021 02:46:50 -0700 (PDT)
+From: Guillaume Ranquet <granquet@baylibre.com>
+To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v1 0/4] Mediatek MT8195 HDMI Tx support
+Date: Wed, 29 Sep 2021 11:44:21 +0200
+Message-Id: <20210929094425.745-1-granquet@baylibre.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-X-KSE-ServerInfo: RTEXH36503.realtek.com.tw, 9
-X-KSE-AntiSpam-Interceptor-Info: fallback
-X-KSE-Antivirus-Interceptor-Info: fallback
-X-KSE-AntiSpam-Interceptor-Info: fallback
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210929_011425_874331_567F04F8 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20210929_024653_567625_E2F3922E 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,22 +96,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Jason-ch Chen <jason-ch.chen@mediatek.com>
-> Sent: Wednesday, September 29, 2021 1:18 PM
-[...]
-> When unplugging RTL8152 Fast Ethernet Adapter which is plugged
-> into an USB HUB, the driver would get -EPROTO for bulk transfer.
-> There is a high probability to get the soft/hard lockup
-> information if the driver continues to submit Rx before the HUB
-> completes the detection of all hub ports and issue the
-> disconnect event.
+Hi everyone.
 
-I don't think it is a good idea.
-For the other situations which return the same error code, you would stop the rx, too.
-However, the rx may re-work after being resubmitted for the other cases.
+This is an attempt at porting the HDMI Tx feature from the mediatek
+vendor tree found here:
+https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2912413
 
-Best Regards,
-Hayes
+Note: This patch series is currently tested on v5.10 and I am currently
+working on testing it on v5.15.
+
+This series depends functionally on:
+  https://lore.kernel.org/linux-mediatek/20210825144833.7757-1-jason-jh.lin@mediatek.com/
+  https://lore.kernel.org/linux-mediatek/20210825100531.5653-1-nancy.lin@mediatek.com/
+
+Guillaume Ranquet (4):
+  dt-bindings: phy: Add binding for Mediatek MT8195 HDMI PHY
+  dt-bindings: display: mediatek: add MT8195 hdmi bindings
+  phy: mediatek: add support for phy-mtk-hdmi-mt8195
+  drm/mediatek: add mt8195 hdmi TX support
+
+ .../mediatek/mediatek,mt8195-hdmi-ddc.yaml    |   45 +
+ .../mediatek/mediatek,mt8195-hdmi.yaml        |   98 +
+ .../phy/mediatek,mtk8195-hdmi-phy.yaml        |   70 +
+ drivers/gpu/drm/mediatek/Kconfig              |   10 +
+ drivers/gpu/drm/mediatek/Makefile             |    4 +-
+ drivers/gpu/drm/mediatek/mtk_mt8195_hdmi.c    | 2293 +++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_mt8195_hdmi.h    |  128 +
+ .../gpu/drm/mediatek/mtk_mt8195_hdmi_ddc.c    |  530 ++++
+ .../gpu/drm/mediatek/mtk_mt8195_hdmi_ddc.h    |   20 +
+ .../gpu/drm/mediatek/mtk_mt8195_hdmi_regs.h   |  329 +++
+ drivers/phy/mediatek/Makefile                 |    1 +
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c    |  793 ++++++
+ drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h    |  204 ++
+ 13 files changed, 4524 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi-ddc.yaml
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8195-hdmi.yaml
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mtk8195-hdmi-phy.yaml
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8195_hdmi.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8195_hdmi.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8195_hdmi_ddc.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8195_hdmi_ddc.h
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_mt8195_hdmi_regs.h
+ create mode 100644 drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
+ create mode 100644 drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h
+
+-- 
+2.32.0
 
 
 _______________________________________________
