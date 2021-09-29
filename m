@@ -2,14 +2,14 @@ Return-Path: <SRS0=h0C2=OT=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CF69C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 01:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 95F7BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 01:48:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ED29E61288
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 01:43:42 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ED29E61288
+	by mail.kernel.org (Postfix) with ESMTPS id 4F421613A9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Sep 2021 01:48:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4F421613A9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3p8nnszjr2UjrgI90a74qdvtcfDqBtevM5ytzPBEk7k=; b=vb4t18E1x7FHeK
-	JwF0PLz8+UM7RwzjckkVEOIbV29b70dIYZ59BA1dMqXyH9/zcL8J6jchI+NSD0MOAh0obAXFK5InY
-	8H043WmeYfkUMBdx8iWO9uNI3FIpjwFlNh2P5HnMMfObUQlauZyPpdzz6RaeOOvhf/T96BKmuP8QT
-	VIyT+G9EOf797ZkwgzCXjuvfgisw4BIZ0ZZC3PBCcQvuubJqiF1mnKITl12hfNwhsp+/J53VQLjvv
-	OMzcSdPEIa1FJ6aFGZ1ru9IUDz0recdnF6MhjNOGWtGCybJuD479qAvCGoJsjP3V4PWWqkcUWymVa
-	4MFIHjne27MP2EvcZaUQ==;
+	List-Owner; bh=O+z0GJdcItF5SCxcz3NkINfE7WQeM43L9rwVrueuTRQ=; b=ZuqxIosDCNjC3k
+	wBeWyIe+cMS0HeZmpCoLXvghJwK+6GT6O+jF0trvVmBk425dg+N5BeNREmimdCrFJVOhkxUB9MXo9
+	E1+VbKam8UI9Ljr57z707SoZ/SklxnpIu+6No40ZB3+loJTyk8j0AM8zlIsx+LrgGQBr2kejxsDrq
+	/GFMUqUS8wpTT26mktqvwi0gmSYHl2kDpslUO6bLBSmRVca9OOBNNX6bUoXVyjrhtwkLB+3pe2wFe
+	SIGvfveOUbLaVnbzmRJT7W5UU01iLwD7ERCPcEQoOfrR53HBNuwBDhk6EE2ns4BI7vgii7vWnbFsC
+	0AIAr5axG+JGrO3LY0yQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVOd7-009bse-C1; Wed, 29 Sep 2021 01:43:29 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mVOhx-009dYc-3U; Wed, 29 Sep 2021 01:48:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVObG-009b4r-7G; Wed, 29 Sep 2021 01:41:35 +0000
-X-UUID: 0dae2386071244aca9cf3fcbd2a20d6f-20210928
-X-UUID: 0dae2386071244aca9cf3fcbd2a20d6f-20210928
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1mVOhf-009dV6-Rt; Wed, 29 Sep 2021 01:48:13 +0000
+X-UUID: 670e1008f2cc4aa88663fc83a36b0fa6-20210928
+X-UUID: 670e1008f2cc4aa88663fc83a36b0fa6-20210928
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2115697863; Tue, 28 Sep 2021 18:41:26 -0700
+ with ESMTP id 1775871789; Tue, 28 Sep 2021 18:48:10 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Sep 2021 18:38:17 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 28 Sep 2021 18:38:08 -0700
 Received: from mtkcas07.mediatek.inc (172.21.101.84) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 29 Sep 2021 09:38:15 +0800
+ 15.2.792.15; Wed, 29 Sep 2021 09:38:06 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas07.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 29 Sep 2021 09:38:14 +0800
+ Transport; Wed, 29 Sep 2021 09:38:04 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
  Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
@@ -64,19 +64,19 @@ CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
  <p.zabel@pengutronix.de>, Tiffany Lin <tiffany.lin@mediatek.com>, "Dafna
  Hirschfeld" <dafna.hirschfeld@collabora.com>, Hsin-Yi Wang
  <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- <anthony.huang@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
- Rick Chang <rick.chang@mediatek.com>, Xia Jiang <xia.jiang@mediatek.com>
-Subject: [PATCH v8 05/12] media: mtk-jpeg: Get rid of mtk_smi_larb_get/put
-Date: Wed, 29 Sep 2021 09:37:12 +0800
-Message-ID: <20210929013719.25120-6-yong.wu@mediatek.com>
+ <anthony.huang@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>
+Subject: [PATCH v8 04/12] iommu/mediatek: Add device_link between the consumer
+ and the larb devices
+Date: Wed, 29 Sep 2021 09:37:11 +0800
+Message-ID: <20210929013719.25120-5-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20210929013719.25120-1-yong.wu@mediatek.com>
 References: <20210929013719.25120-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210928_184134_307310_8FD6FD91 
-X-CRM114-Status: GOOD (  19.06  )
+X-CRM114-CacheID: sfid-20210928_184811_921527_8AEFBDAA 
+X-CRM114-Status: GOOD (  22.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,150 +93,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MediaTek IOMMU has already added device_link between the consumer
-and smi-larb device. If the jpg device call the pm_runtime_get_sync,
-the smi-larb's pm_runtime_get_sync also be called automatically.
+MediaTek IOMMU-SMI diagram is like below. all the consumer connect with
+smi-larb, then connect with smi-common.
 
-After removing the larb_get operations, then mtk_jpeg_clk_init is
-also unnecessary. Remove it too.
+        M4U
+         |
+    smi-common
+         |
+  -------------
+  |         |    ...
+  |         |
+larb1     larb2
+  |         |
+vdec       venc
 
-CC: Rick Chang <rick.chang@mediatek.com>
-CC: Xia Jiang <xia.jiang@mediatek.com>
+When the consumer works, it should enable the smi-larb's power which
+also need enable the smi-common's power firstly.
+
+Thus, First of all, use the device link connect the consumer and the
+smi-larbs. then add device link between the smi-larb and smi-common.
+
+This patch adds device_link between the consumer and the larbs.
+
+When device_link_add, I add the flag DL_FLAG_STATELESS to avoid calling
+pm_runtime_xx to keep the original status of clocks. It can avoid two
+issues:
+1) Display HW show fastlogo abnormally reported in [1]. At the beggining,
+all the clocks are enabled before entering kernel, but the clocks for
+display HW(always in larb0) will be gated after clk_enable and clk_disable
+called from device_link_add(->pm_runtime_resume) and rpm_idle. The clock
+operation happened before display driver probe. At that time, the display
+HW will be abnormal.
+
+2) A deadlock issue reported in [2]. Use DL_FLAG_STATELESS to skip
+pm_runtime_xx to avoid the deadlock.
+
+Corresponding, DL_FLAG_AUTOREMOVE_CONSUMER can't be added, then
+device_link_removed should be added explicitly.
+
+[1] https://lore.kernel.org/linux-mediatek/1564213888.22908.4.camel@mhfsdcap03/
+[2] https://lore.kernel.org/patchwork/patch/1086569/
+
+Suggested-by: Tomasz Figa <tfiga@chromium.org>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Reviewed-by: Evan Green <evgreen@chromium.org>
-Acked-by: Rick Chang <rick.chang@mediatek.com>
-Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
 ---
- .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 45 +------------------
- .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  2 -
- 2 files changed, 2 insertions(+), 45 deletions(-)
+ drivers/iommu/mtk_iommu.c    | 22 ++++++++++++++++++++++
+ drivers/iommu/mtk_iommu_v1.c | 20 +++++++++++++++++++-
+ 2 files changed, 41 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-index a89c7b206eef..4fea2c512434 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-@@ -22,7 +22,6 @@
- #include <media/v4l2-ioctl.h>
- #include <media/videobuf2-core.h>
- #include <media/videobuf2-dma-contig.h>
--#include <soc/mediatek/smi.h>
- 
- #include "mtk_jpeg_enc_hw.h"
- #include "mtk_jpeg_dec_hw.h"
-@@ -1055,10 +1054,6 @@ static void mtk_jpeg_clk_on(struct mtk_jpeg_dev *jpeg)
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index d5848f78a677..a2fa55899434 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -560,22 +560,44 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
  {
- 	int ret;
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 	struct mtk_iommu_data *data;
++	struct device_link *link;
++	struct device *larbdev;
++	unsigned int larbid;
  
--	ret = mtk_smi_larb_get(jpeg->larb);
--	if (ret)
--		dev_err(jpeg->dev, "mtk_smi_larb_get larbvdec fail %d\n", ret);
--
- 	ret = clk_bulk_prepare_enable(jpeg->variant->num_clks,
- 				      jpeg->variant->clks);
- 	if (ret)
-@@ -1069,7 +1064,6 @@ static void mtk_jpeg_clk_off(struct mtk_jpeg_dev *jpeg)
- {
- 	clk_bulk_disable_unprepare(jpeg->variant->num_clks,
- 				   jpeg->variant->clks);
--	mtk_smi_larb_put(jpeg->larb);
+ 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+ 		return ERR_PTR(-ENODEV); /* Not a iommu client device */
+ 
+ 	data = dev_iommu_priv_get(dev);
+ 
++	/*
++	 * Link the consumer device with the smi-larb device(supplier)
++	 * The device in each a larb is a independent HW. thus only link
++	 * one larb here.
++	 */
++	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
++	larbdev = data->larb_imu[larbid].dev;
++	link = device_link_add(dev, larbdev,
++			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
++	if (!link)
++		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
+ 	return &data->iommu;
  }
  
- static irqreturn_t mtk_jpeg_enc_done(struct mtk_jpeg_dev *jpeg)
-@@ -1284,35 +1278,6 @@ static struct clk_bulk_data mtk_jpeg_clocks[] = {
- 	{ .id = "jpgenc" },
- };
- 
--static int mtk_jpeg_clk_init(struct mtk_jpeg_dev *jpeg)
--{
--	struct device_node *node;
--	struct platform_device *pdev;
--	int ret;
--
--	node = of_parse_phandle(jpeg->dev->of_node, "mediatek,larb", 0);
--	if (!node)
--		return -EINVAL;
--	pdev = of_find_device_by_node(node);
--	if (WARN_ON(!pdev)) {
--		of_node_put(node);
--		return -EINVAL;
--	}
--	of_node_put(node);
--
--	jpeg->larb = &pdev->dev;
--
--	ret = devm_clk_bulk_get(jpeg->dev, jpeg->variant->num_clks,
--				jpeg->variant->clks);
--	if (ret) {
--		dev_err(&pdev->dev, "failed to get jpeg clock:%d\n", ret);
--		put_device(&pdev->dev);
--		return ret;
--	}
--
--	return 0;
--}
--
- static void mtk_jpeg_job_timeout_work(struct work_struct *work)
+ static void mtk_iommu_release_device(struct device *dev)
  {
- 	struct mtk_jpeg_dev *jpeg = container_of(work, struct mtk_jpeg_dev,
-@@ -1333,11 +1298,6 @@ static void mtk_jpeg_job_timeout_work(struct work_struct *work)
- 	v4l2_m2m_job_finish(jpeg->m2m_dev, ctx->fh.m2m_ctx);
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
++	struct mtk_iommu_data *data;
++	struct device *larbdev;
++	unsigned int larbid;
+ 
+ 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+ 		return;
+ 
++	data = dev_iommu_priv_get(dev);
++	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
++	larbdev = data->larb_imu[larbid].dev;
++	device_link_remove(dev, larbdev);
++
+ 	iommu_fwspec_free(dev);
  }
  
--static inline void mtk_jpeg_clk_release(struct mtk_jpeg_dev *jpeg)
--{
--	put_device(jpeg->larb);
--}
--
- static int mtk_jpeg_probe(struct platform_device *pdev)
- {
- 	struct mtk_jpeg_dev *jpeg;
-@@ -1376,7 +1336,8 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 		goto err_req_irq;
- 	}
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index 4d7809432239..e6f13459470e 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -423,7 +423,9 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
+ 	struct of_phandle_args iommu_spec;
+ 	struct mtk_iommu_data *data;
+-	int err, idx = 0;
++	int err, idx = 0, larbid;
++	struct device_link *link;
++	struct device *larbdev;
  
--	ret = mtk_jpeg_clk_init(jpeg);
-+	ret = devm_clk_bulk_get(jpeg->dev, jpeg->variant->num_clks,
-+				jpeg->variant->clks);
- 	if (ret) {
- 		dev_err(&pdev->dev, "Failed to init clk, err %d\n", ret);
- 		goto err_clk_init;
-@@ -1442,7 +1403,6 @@ static int mtk_jpeg_probe(struct platform_device *pdev)
- 	v4l2_device_unregister(&jpeg->v4l2_dev);
+ 	/*
+ 	 * In the deferred case, free the existed fwspec.
+@@ -453,6 +455,14 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
  
- err_dev_register:
--	mtk_jpeg_clk_release(jpeg);
+ 	data = dev_iommu_priv_get(dev);
  
- err_clk_init:
- 
-@@ -1460,7 +1420,6 @@ static int mtk_jpeg_remove(struct platform_device *pdev)
- 	video_device_release(jpeg->vdev);
- 	v4l2_m2m_release(jpeg->m2m_dev);
- 	v4l2_device_unregister(&jpeg->v4l2_dev);
--	mtk_jpeg_clk_release(jpeg);
- 
- 	return 0;
++	/* Link the consumer device with the smi-larb device(supplier) */
++	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
++	larbdev = data->larb_imu[larbid].dev;
++	link = device_link_add(dev, larbdev,
++			       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
++	if (!link)
++		dev_err(dev, "Unable to link %s\n", dev_name(larbdev));
++
+ 	return &data->iommu;
  }
-diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-index 595f7f10c9fd..3e4811a41ba2 100644
---- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-+++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-@@ -85,7 +85,6 @@ struct mtk_jpeg_variant {
-  * @alloc_ctx:		videobuf2 memory allocator's context
-  * @vdev:		video device node for jpeg mem2mem mode
-  * @reg_base:		JPEG registers mapping
-- * @larb:		SMI device
-  * @job_timeout_work:	IRQ timeout structure
-  * @variant:		driver variant to be used
-  */
-@@ -99,7 +98,6 @@ struct mtk_jpeg_dev {
- 	void			*alloc_ctx;
- 	struct video_device	*vdev;
- 	void __iomem		*reg_base;
--	struct device		*larb;
- 	struct delayed_work job_timeout_work;
- 	const struct mtk_jpeg_variant *variant;
- };
+ 
+@@ -473,10 +483,18 @@ static void mtk_iommu_probe_finalize(struct device *dev)
+ static void mtk_iommu_release_device(struct device *dev)
+ {
+ 	struct iommu_fwspec *fwspec = dev_iommu_fwspec_get(dev);
++	struct mtk_iommu_data *data;
++	struct device *larbdev;
++	unsigned int larbid;
+ 
+ 	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
+ 		return;
+ 
++	data = dev_iommu_priv_get(dev);
++	larbid = mt2701_m4u_to_larb(fwspec->ids[0]);
++	larbdev = data->larb_imu[larbid].dev;
++	device_link_remove(dev, larbdev);
++
+ 	iommu_fwspec_free(dev);
+ }
+ 
 -- 
 2.18.0
 
