@@ -2,14 +2,14 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 23AEFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8421CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:51:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E12AF6142A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:51:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E12AF6142A
+	by mail.kernel.org (Postfix) with ESMTPS id 4B7896142A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:51:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4B7896142A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,28 +18,28 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=auH6U5M6ZtNmhphdBq5HuV6haiWcscAnufEdnfwI4y0=; b=cdSv8mLMfZJ5E9
-	gDT2AQH/riH/jRXE9EICKVFYXTYDUj6HqFv0SQ94JQzJ+2iMJgyH8EuzrZmW4lt9QGq/fuEpZKb2p
-	7gFcRWFlgDgDp0FCZi63REHHiI3Ln4aJAKHeVAJy8ziObPT1ZShBdZpWxYYXia6xKmfYZzsLdoJxE
-	cGS0gXGCmRCQT4KSyzM6++of1MDjm8KyUr99ePgr1+OtcgJZUEpz9C3F32nW9iYSUNqIrYu+YU4Vw
-	zxlehJSW6ip2Wm9L5wyVeyXPetyvd8ChZ5XxUbKDMVUmzTtSie10uCz6x81oHwwhxTDVRicJj3Fdx
-	+qOSgGWxbUrwRWXXXAZQ==;
+	List-Owner; bh=pyxTDuNjz7/5N8iGz51qTU4KEQwzAzTQ2I9hv7KA0aU=; b=HkfPPOASWnqvIW
+	EvOZ8G50G9cWDQchr+8pcai6qydk4r/Fn0oL7hXuJRvmrFYe2dKgZxSyLdQ1m5rPTJ+xlFFzvSrWZ
+	ifkEs4+6QZ2Bb/FnQeNkdTv1ntREoJcp450NRJG0PU5pLuedTA0v8L+lZUlo+VW3dfimpkf8JR2tY
+	/53RDWr2VGzNdXjh4Q+4Gdx1t7e6UDvaW1kJpNA+w9autYbryX52WrVqyiUKqiBBxGjBC5U4QlO7F
+	QuH69IiN63EC3zF0bmWLdKIQcvjxT19iVQiPH/KEmfgNWNZI0tKRBB5YSN21KuqstOziiqppgaxcT
+	Z/jerOzIFMEVz+K/8HSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVqqI-00DESa-Gp; Thu, 30 Sep 2021 07:50:58 +0000
-Received: from inva020.nxp.com ([92.121.34.13])
+	id 1mVqqb-00DEbR-E1; Thu, 30 Sep 2021 07:51:17 +0000
+Received: from inva021.nxp.com ([92.121.34.21])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVqpd-00DED6-4o; Thu, 30 Sep 2021 07:50:18 +0000
-Received: from inva020.nxp.com (localhost [127.0.0.1])
- by inva020.eu-rdc02.nxp.com (Postfix) with ESMTP id DBF841A0B75;
- Thu, 30 Sep 2021 09:50:15 +0200 (CEST)
+ id 1mVqpf-00DEDm-6r; Thu, 30 Sep 2021 07:50:20 +0000
+Received: from inva021.nxp.com (localhost [127.0.0.1])
+ by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id E8E7A2017C0;
+ Thu, 30 Sep 2021 09:50:17 +0200 (CEST)
 Received: from aprdc01srsp001v.ap-rdc01.nxp.com
  (aprdc01srsp001v.ap-rdc01.nxp.com [165.114.16.16])
- by inva020.eu-rdc02.nxp.com (Postfix) with ESMTP id 72A5A1A0B69;
- Thu, 30 Sep 2021 09:50:15 +0200 (CEST)
+ by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id B02532017D6;
+ Thu, 30 Sep 2021 09:50:17 +0200 (CEST)
 Received: from localhost.localdomain (mega.ap.freescale.net [10.192.208.232])
  by aprdc01srsp001v.ap-rdc01.nxp.com (Postfix) with ESMTP id
- BBCA2183AC94; Thu, 30 Sep 2021 15:50:12 +0800 (+08)
+ 04A03183AC89; Thu, 30 Sep 2021 15:50:14 +0800 (+08)
 From: Xiaoliang Yang <xiaoliang.yang_1@nxp.com>
 To: davem@davemloft.net, linux-kernel@vger.kernel.org, netdev@vger.kernel.org
 Cc: allan.nielsen@microchip.com, joergen.andreasen@microchip.com,
@@ -51,17 +51,17 @@ Cc: allan.nielsen@microchip.com, joergen.andreasen@microchip.com,
  andrew@lunn.ch, vivien.didelot@gmail.com, claudiu.manoil@nxp.com,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  matthias.bgg@gmail.com, horatiu.vultur@microchip.com
-Subject: [PATCH v6 net-next 2/8] net: mscc: ocelot: add MAC table stream learn
- and lookup operations
-Date: Thu, 30 Sep 2021 15:59:42 +0800
-Message-Id: <20210930075948.36981-3-xiaoliang.yang_1@nxp.com>
+Subject: [PATCH v6 net-next 3/8] net: mscc: ocelot: set vcap IS2 chain to goto
+ PSFP chain
+Date: Thu, 30 Sep 2021 15:59:43 +0800
+Message-Id: <20210930075948.36981-4-xiaoliang.yang_1@nxp.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210930075948.36981-1-xiaoliang.yang_1@nxp.com>
 References: <20210930075948.36981-1-xiaoliang.yang_1@nxp.com>
 X-Virus-Scanned: ClamAV using ClamSMTP
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_005017_494762_C6EDF50B 
-X-CRM114-Status: GOOD (  15.13  )
+X-CRM114-CacheID: sfid-20210930_005019_550916_45C0DEDC 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,189 +79,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ocelot_mact_learn_streamdata() can be used in VSC9959 to overwrite an
-FDB entry with stream data. The stream data includes SFID and SSID which
-can be used for PSFP and FRER set.
-
-ocelot_mact_lookup() can be used to check if the given {DMAC, VID} FDB
-entry is exist, and also can retrieve the DEST_IDX and entry type for
-the FDB entry.
+Some chips in the ocelot series such as VSC9959 support Per-Stream
+Filtering and Policing(PSFP), which is processing after VCAP blocks.
+We set this block on chain 30000 and set vcap IS2 chain to goto PSFP
+chain if hardware support.
 
 Signed-off-by: Xiaoliang Yang <xiaoliang.yang_1@nxp.com>
+Reviewed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 ---
- drivers/net/ethernet/mscc/ocelot.c | 79 ++++++++++++++++++++++++++++--
- drivers/net/ethernet/mscc/ocelot.h | 13 -----
- include/soc/mscc/ocelot.h          | 22 +++++++++
- 3 files changed, 98 insertions(+), 16 deletions(-)
+ drivers/net/ethernet/mscc/ocelot_flower.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/mscc/ocelot.c b/drivers/net/ethernet/mscc/ocelot.c
-index 61ac49751230..0e07ea5f851c 100644
---- a/drivers/net/ethernet/mscc/ocelot.c
-+++ b/drivers/net/ethernet/mscc/ocelot.c
-@@ -61,9 +61,9 @@ static void ocelot_mact_select(struct ocelot *ocelot,
+diff --git a/drivers/net/ethernet/mscc/ocelot_flower.c b/drivers/net/ethernet/mscc/ocelot_flower.c
+index 8b843d3c9189..ce812194e44c 100644
+--- a/drivers/net/ethernet/mscc/ocelot_flower.c
++++ b/drivers/net/ethernet/mscc/ocelot_flower.c
+@@ -20,6 +20,9 @@
+ 	(1 * VCAP_BLOCK + (lookup) * VCAP_LOOKUP)
+ #define VCAP_IS2_CHAIN(lookup, pag)	\
+ 	(2 * VCAP_BLOCK + (lookup) * VCAP_LOOKUP + (pag))
++/* PSFP chain and block ID */
++#define PSFP_BLOCK_ID			OCELOT_NUM_VCAP_BLOCKS
++#define OCELOT_PSFP_CHAIN		(3 * VCAP_BLOCK)
  
- }
- 
--int ocelot_mact_learn(struct ocelot *ocelot, int port,
--		      const unsigned char mac[ETH_ALEN],
--		      unsigned int vid, enum macaccess_entry_type type)
-+static int __ocelot_mact_learn(struct ocelot *ocelot, int port,
-+			       const unsigned char mac[ETH_ALEN],
-+			       unsigned int vid, enum macaccess_entry_type type)
+ static int ocelot_chain_to_block(int chain, bool ingress)
  {
- 	u32 cmd = ANA_TABLES_MACACCESS_VALID |
- 		ANA_TABLES_MACACCESS_DEST_IDX(port) |
-@@ -96,6 +96,19 @@ int ocelot_mact_learn(struct ocelot *ocelot, int port,
+@@ -46,6 +49,9 @@ static int ocelot_chain_to_block(int chain, bool ingress)
+ 			if (chain == VCAP_IS2_CHAIN(lookup, pag))
+ 				return VCAP_IS2;
  
- 	return err;
++	if (chain == OCELOT_PSFP_CHAIN)
++		return PSFP_BLOCK_ID;
++
+ 	return -EOPNOTSUPP;
  }
-+
-+int ocelot_mact_learn(struct ocelot *ocelot, int port,
-+		      const unsigned char mac[ETH_ALEN],
-+		      unsigned int vid, enum macaccess_entry_type type)
-+{
-+	int ret;
-+
-+	mutex_lock(&ocelot->mact_lock);
-+	ret = __ocelot_mact_learn(ocelot, port, mac, vid, type);
-+	mutex_unlock(&ocelot->mact_lock);
-+
-+	return ret;
-+}
- EXPORT_SYMBOL(ocelot_mact_learn);
  
- int ocelot_mact_forget(struct ocelot *ocelot,
-@@ -120,6 +133,66 @@ int ocelot_mact_forget(struct ocelot *ocelot,
+@@ -84,7 +90,8 @@ static bool ocelot_is_goto_target_valid(int goto_target, int chain,
+ 			goto_target == VCAP_IS1_CHAIN(1) ||
+ 			goto_target == VCAP_IS1_CHAIN(2) ||
+ 			goto_target == VCAP_IS2_CHAIN(0, 0) ||
+-			goto_target == VCAP_IS2_CHAIN(1, 0));
++			goto_target == VCAP_IS2_CHAIN(1, 0) ||
++			goto_target == OCELOT_PSFP_CHAIN);
+ 
+ 	if (chain == VCAP_IS1_CHAIN(0))
+ 		return (goto_target == VCAP_IS1_CHAIN(1));
+@@ -111,7 +118,11 @@ static bool ocelot_is_goto_target_valid(int goto_target, int chain,
+ 		if (chain == VCAP_IS2_CHAIN(0, pag))
+ 			return (goto_target == VCAP_IS2_CHAIN(1, pag));
+ 
+-	/* VCAP IS2 lookup 1 cannot jump anywhere */
++	/* VCAP IS2 lookup 1 can goto to PSFP block if hardware support */
++	for (pag = 0; pag < VCAP_IS2_NUM_PAG; pag++)
++		if (chain == VCAP_IS2_CHAIN(1, pag))
++			return (goto_target == OCELOT_PSFP_CHAIN);
++
+ 	return false;
  }
- EXPORT_SYMBOL(ocelot_mact_forget);
  
-+int ocelot_mact_lookup(struct ocelot *ocelot, int *dst_idx,
-+		       const unsigned char mac[ETH_ALEN],
-+		       unsigned int vid, enum macaccess_entry_type *type)
-+{
-+	int val;
-+
-+	mutex_lock(&ocelot->mact_lock);
-+
-+	ocelot_mact_select(ocelot, mac, vid);
-+
-+	/* Issue a read command with MACACCESS_VALID=1. */
-+	ocelot_write(ocelot, ANA_TABLES_MACACCESS_VALID |
-+		     ANA_TABLES_MACACCESS_MAC_TABLE_CMD(MACACCESS_CMD_READ),
-+		     ANA_TABLES_MACACCESS);
-+
-+	if (ocelot_mact_wait_for_completion(ocelot)) {
-+		mutex_unlock(&ocelot->mact_lock);
-+		return -ETIMEDOUT;
-+	}
-+
-+	/* Read back the entry flags */
-+	val = ocelot_read(ocelot, ANA_TABLES_MACACCESS);
-+
-+	mutex_unlock(&ocelot->mact_lock);
-+
-+	if (!(val & ANA_TABLES_MACACCESS_VALID))
-+		return -ENOENT;
-+
-+	*dst_idx = ANA_TABLES_MACACCESS_DEST_IDX_X(val);
-+	*type = ANA_TABLES_MACACCESS_ENTRYTYPE_X(val);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(ocelot_mact_lookup);
-+
-+int ocelot_mact_learn_streamdata(struct ocelot *ocelot, int dst_idx,
-+				 const unsigned char mac[ETH_ALEN],
-+				 unsigned int vid,
-+				 enum macaccess_entry_type type,
-+				 int sfid, int ssid)
-+{
-+	int ret;
-+
-+	mutex_lock(&ocelot->mact_lock);
-+
-+	ocelot_write(ocelot,
-+		     (sfid < 0 ? 0 : ANA_TABLES_STREAMDATA_SFID_VALID) |
-+		     ANA_TABLES_STREAMDATA_SFID(sfid) |
-+		     (ssid < 0 ? 0 : ANA_TABLES_STREAMDATA_SSID_VALID) |
-+		     ANA_TABLES_STREAMDATA_SSID(ssid),
-+		     ANA_TABLES_STREAMDATA);
-+
-+	ret = __ocelot_mact_learn(ocelot, dst_idx, mac, vid, type);
-+
-+	mutex_unlock(&ocelot->mact_lock);
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL(ocelot_mact_learn_streamdata);
-+
- static void ocelot_mact_init(struct ocelot *ocelot)
- {
- 	/* Configure the learning mode entries attributes:
-diff --git a/drivers/net/ethernet/mscc/ocelot.h b/drivers/net/ethernet/mscc/ocelot.h
-index 1952d6a1b98a..a77050b13d18 100644
---- a/drivers/net/ethernet/mscc/ocelot.h
-+++ b/drivers/net/ethernet/mscc/ocelot.h
-@@ -54,19 +54,6 @@ struct ocelot_dump_ctx {
- 	int idx;
- };
+@@ -353,7 +364,7 @@ static int ocelot_flower_parse_action(struct ocelot *ocelot, int port,
  
--/* MAC table entry types.
-- * ENTRYTYPE_NORMAL is subject to aging.
-- * ENTRYTYPE_LOCKED is not subject to aging.
-- * ENTRYTYPE_MACv4 is not subject to aging. For IPv4 multicast.
-- * ENTRYTYPE_MACv6 is not subject to aging. For IPv6 multicast.
-- */
--enum macaccess_entry_type {
--	ENTRYTYPE_NORMAL = 0,
--	ENTRYTYPE_LOCKED,
--	ENTRYTYPE_MACv4,
--	ENTRYTYPE_MACv6,
--};
--
- /* A (PGID) port mask structure, encoding the 2^ocelot->num_phys_ports
-  * possibilities of egress port masks for L2 multicast traffic.
-  * For a switch with 9 user ports, there are 512 possible port masks, but the
-diff --git a/include/soc/mscc/ocelot.h b/include/soc/mscc/ocelot.h
-index 682cd058096c..d9129b478c6a 100644
---- a/include/soc/mscc/ocelot.h
-+++ b/include/soc/mscc/ocelot.h
-@@ -589,6 +589,19 @@ enum ocelot_sb_pool {
- 	OCELOT_SB_POOL_NUM,
- };
- 
-+/* MAC table entry types.
-+ * ENTRYTYPE_NORMAL is subject to aging.
-+ * ENTRYTYPE_LOCKED is not subject to aging.
-+ * ENTRYTYPE_MACv4 is not subject to aging. For IPv4 multicast.
-+ * ENTRYTYPE_MACv6 is not subject to aging. For IPv6 multicast.
-+ */
-+enum macaccess_entry_type {
-+	ENTRYTYPE_NORMAL = 0,
-+	ENTRYTYPE_LOCKED,
-+	ENTRYTYPE_MACv4,
-+	ENTRYTYPE_MACv6,
-+};
-+
- #define OCELOT_QUIRK_PCS_PERFORMS_RATE_ADAPTATION	BIT(0)
- #define OCELOT_QUIRK_QSGMII_PORTS_MUST_BE_UP		BIT(1)
- 
-@@ -907,6 +920,15 @@ void ocelot_phylink_mac_link_up(struct ocelot *ocelot, int port,
- 				bool tx_pause, bool rx_pause,
- 				unsigned long quirks);
- 
-+int ocelot_mact_lookup(struct ocelot *ocelot, int *dst_idx,
-+		       const unsigned char mac[ETH_ALEN],
-+		       unsigned int vid, enum macaccess_entry_type *type);
-+int ocelot_mact_learn_streamdata(struct ocelot *ocelot, int dst_idx,
-+				 const unsigned char mac[ETH_ALEN],
-+				 unsigned int vid,
-+				 enum macaccess_entry_type type,
-+				 int sfid, int ssid);
-+
- #if IS_ENABLED(CONFIG_BRIDGE_MRP)
- int ocelot_mrp_add(struct ocelot *ocelot, int port,
- 		   const struct switchdev_obj_mrp *mrp);
+ 	if (filter->goto_target == -1) {
+ 		if ((filter->block_id == VCAP_IS2 && filter->lookup == 1) ||
+-		    chain == 0) {
++		    chain == 0 || filter->block_id == PSFP_BLOCK_ID) {
+ 			allow_missing_goto_target = true;
+ 		} else {
+ 			NL_SET_ERR_MSG_MOD(extack, "Missing GOTO action");
 -- 
 2.17.1
 
