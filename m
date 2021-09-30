@@ -2,154 +2,76 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 927DDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 09:30:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id ED42EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 10:58:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 62A9B61880
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 09:30:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 62A9B61880
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=suse.com
+	by mail.kernel.org (Postfix) with ESMTPS id B9CB2619A6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 10:58:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B9CB2619A6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=4E1tVMljVgjVjfyiWRh4E9/N6cNAUqBRbLO1eZsd+Ko=; b=l0uY7E1YrziC2jlEvL2DU2sRU3
-	jGDD8eVMfsSx9qTJoyPphK0sHpsCzTjFOdZyWWl6jrFQF42eciiFCT0yDXlkM2DKsJ62ksDCrhAU8
-	CHeXUitNos93kMoTyXMapqVYzhHJKvCojWppH2afcgYw91AladtWDAfc2KMJdW9YIBE6UZ38N9Hgy
-	NwILqX9O8rRvbXA60k3UJmCDMioLCXUDt3nd5VD/XpMlwMG7r7mzMrL6AnrpsSCI1yAYMPtefdOXa
-	nM6f0RUq01MH/ym9+pZ/rL1UMR2VpS0hD6PjWHd3Ebux4TpXYpF/zJAwGV2SmvpWIVObi2pCQAmT1
-	zjAkJbZQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EP3XB+QoaZ4e08udHCEk0k+4IMo48aYHMQ6EKs4rerI=; b=t7CzJdmAjSJ7Mc87WVTneeqfoM
+	bMBR926Ib2EWitcJ5mYVda95leLF29BS63SIwjsCzcQnPJ7NdwFDsf1tOAa+BMU+vJBSyVsu6Ns+L
+	nNTTs4lzHsknbufGMd357N4vaUf2Hyv0HS6UAiF/bylTovs32erk5/AcXQtgvecvz8k4/zbB7jX+k
+	okGbKce2wNLi1jbwS4vVXoGM9TR5IZQ9goi33i6IgBpU73Zn8SuErEKtjVBOkzqd0/03dqmK+QpEP
+	pqppr8b0F2r/c9amowEO3Q3iKgXEBa/3sVkmVFgbfiz6O0gUnPtNa4OySWCViB3/+5fvtqOECtuyT
+	RE3B0y3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVsOd-00DZRI-6c; Thu, 30 Sep 2021 09:30:31 +0000
-Received: from de-smtp-delivery-102.mimecast.com ([194.104.111.102])
+	id 1mVtlk-00DxQa-Ic; Thu, 30 Sep 2021 10:58:28 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVsOZ-00DZPE-TU
- for linux-mediatek@lists.infradead.org; Thu, 30 Sep 2021 09:30:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com;
- s=mimecast20200619; t=1632994222;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MgMqLc/2CAxXSpqukooo7cR1tG734vgtpKuS+VBBb0A=;
- b=hHn32U3YEVj8Y4fpCzcrhB7W0nSVn/BlUXhxOnOclPBRX5eiFfTVApWhw1jg8bh6u4ezt4
- xBHmWpcTPXSe9Pfh62COX0rr7m55N19Hgcwed1ZMpLhlbF6PUfqjqvsE6sgH5XeOd7Sj06
- 6zpjGRImKcuX6UiSKRUgxnqS6pcmVEI=
-Received: from EUR04-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur04lp2052.outbound.protection.outlook.com [104.47.14.52]) (Using
- TLS) by relay.mimecast.com with ESMTP id de-mta-2-zdXEjLdRPCO6ue2D0zizsw-1;
- Thu, 30 Sep 2021 11:30:21 +0200
-X-MC-Unique: zdXEjLdRPCO6ue2D0zizsw-1
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GDxhHuVyHrpYNB6UQ4ozYVi1EZ37XQ5BHgRxGmjikBvERohn47ETferLAmx+QkQRsnFif+lT/bhvBkW+e1PE+XugmQ3Fl0zyuodfFDkKrGazqvJny2dXwTsfVSjvk23HuGiE1bTb86eQneOWg1/HV12s3GSsP4QTLEQUo5L+vAyYMTl3DOrOpos5ykta57UNyU99xpDJ6fhMizQBZ01sQpR6B7NorU5sCm4WiZys+1ADNZSn2PIwvlzxS658dmdHTJrhYD416Jk3GPCE8AXRVUYc6JI2i8RUV7gED1XpaQ/XfVt3i9GQ6YFH2pNBqUCRli/uFGsdMXZsUbp8cpRMAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version; 
- bh=WA+Wngh51cwpRDWQTKMkMW2yPn621UUyhNrRINcV4GE=;
- b=N+g8BubkCXRefdAq8lXeqOqQWo28zBWaXQ4Mw8SBY5aA5J3apzJTd92Bu3uxyZ1bojHCNVl8TiRR3TrcKefi584QKLhMy6a443/uXfHJ2Xu+6D9N7wXO3E+6IKXY9cEIXtdEzcI2A6k/RraY3eWPPqgDSoJ1RwZUaZq4xRViSLn9ZLBNzEp4iENSKxCpa0SMP71oBSiZAP1IDML1dh8g9lSvUujL8+HNYw1VgvxjxNVAqNs1UnOboH+DkSjVQI9lN9lIS01BGcCowcBqR4PzovC78TmkmN/MonFj8sNkfOL6WyFAKI37iJXI/yfD95wltMuUtV9Xpyz5NWd0xfnRJA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-Authentication-Results: realtek.com; dkim=none (message not signed)
- header.d=none;realtek.com; dmarc=none action=none header.from=suse.com;
-Received: from DB7PR04MB5050.eurprd04.prod.outlook.com (2603:10a6:10:22::23)
- by DB7PR04MB4137.eurprd04.prod.outlook.com (2603:10a6:5:22::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4500.17; Thu, 30 Sep
- 2021 09:30:20 +0000
-Received: from DB7PR04MB5050.eurprd04.prod.outlook.com
- ([fe80::61c5:2592:9e7f:a390]) by DB7PR04MB5050.eurprd04.prod.outlook.com
- ([fe80::61c5:2592:9e7f:a390%5]) with mapi id 15.20.4566.014; Thu, 30 Sep 2021
- 09:30:19 +0000
-Subject: Re: [PATCH] r8152: stop submitting rx for -EPROTO
-To: Jason-ch Chen <jason-ch.chen@mediatek.com>,
- Hayes Wang <hayeswang@realtek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>
-CC: "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "Project_Global_Chrome_Upstream_Group@mediatek.com"
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- "hsinyi@google.com" <hsinyi@google.com>, nic_swsd <nic_swsd@realtek.com>
-References: <20210929051812.3107-1-jason-ch.chen@mediatek.com>
- <cbd1591fc03f480c9f08cc55585e2e35@realtek.com>
- <4c2ad5e4a9747c59a55d92a8fa0c95df5821188f.camel@mediatek.com>
-From: Oliver Neukum <oneukum@suse.com>
-Message-ID: <274ec862-86cf-9d83-7ea7-5786e30ca4a7@suse.com>
-Date: Thu, 30 Sep 2021 11:30:17 +0200
+ id 1mVtlL-00DxJG-Mf; Thu, 30 Sep 2021 10:58:05 +0000
+Received: from [IPv6:2a02:810a:880:f54:fd5c:7cb1:aaa8:78b1] (unknown
+ [IPv6:2a02:810a:880:f54:fd5c:7cb1:aaa8:78b1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id ED32C1F44A9D;
+ Thu, 30 Sep 2021 11:58:00 +0100 (BST)
+Subject: Re: [PATCH v8 09/12] media: mtk-vcodec: Get rid of
+ mtk_smi_larb_get/put
+To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
+ youlin.pei@mediatek.com, Matthias Kaehlcke <mka@chromium.org>,
+ anan.sun@mediatek.com, yi.kuo@mediatek.com, acourbot@chromium.org,
+ linux-media@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ Daniel Vetter <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Eizan Miyamoto <eizan@chromium.org>, anthony.huang@mediatek.com,
+ Frank Wunderlich <frank-w@public-files.de>,
+ Irui Wang <irui.wang@mediatek.com>
+References: <20210929013719.25120-1-yong.wu@mediatek.com>
+ <20210929013719.25120-10-yong.wu@mediatek.com>
+ <02f444d5-9633-3f9c-2d1f-97ce073d1180@collabora.com>
+ <79cbf64491273797f218f417234b8c95936bd3b1.camel@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <f9829a5a-984c-bced-0286-53f9edc8ae3d@collabora.com>
+Date: Thu, 30 Sep 2021 12:57:58 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.12.0
-In-Reply-To: <4c2ad5e4a9747c59a55d92a8fa0c95df5821188f.camel@mediatek.com>
-Content-Language: en-US
-X-ClientProxiedBy: AM6P191CA0050.EURP191.PROD.OUTLOOK.COM
- (2603:10a6:209:7f::27) To DB7PR04MB5050.eurprd04.prod.outlook.com
- (2603:10a6:10:22::23)
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Received: from linux.fritz.box (2001:a61:3b0d:4601:21ab:d1da:15e9:ca07) by
- AM6P191CA0050.EURP191.PROD.OUTLOOK.COM (2603:10a6:209:7f::27) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4566.13 via Frontend Transport; Thu, 30 Sep 2021 09:30:18 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c382a353-cc03-4863-4f7e-08d983f4eb88
-X-MS-TrafficTypeDiagnostic: DB7PR04MB4137:
-X-Microsoft-Antispam-PRVS: <DB7PR04MB41377695F563D92FB4478FD1C7AA9@DB7PR04MB4137.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: H/tLsyWIZCaJTdsYYVXd0gwa85IgqNimJs6DsnpvBj04/jT5ARgNzVXiUmowDBujgdMFSk1QcTiUP4n6vOmZxhPm5FbVPL9/yPPFRYxOzkZwywz6SWt/ikm7s8y1OFo40Y+gZQ379ubUnlPBLpazFn94IESXI7vDYn1QoXmgagdFTwsOv9zzMWQ3/jWweroXBGpEoANyOFY0nEyPpmBsgT8Mffvd2uYvoms9o/IhdBl29HvXFjpiRjitPXLbAwaisBPflY8TKJIkbyPP/eRwhv+VGZLJNFAE6KWjJRorkDdEIDsGKl+lo8X6+CAnNEpKv3ICaTZQTCfmmWdlp+Txp7yox8P3C0hhxssp1kC66vxNelRXwdaLbdltD5O1TNAH1BZy0b5FDKE0j84S10O9E6iI55xhXbtRqDQFhO12hfAjLtycCjyFlsqs37eIk+RFiwU+kMUqtl0f81EQ5WqVTAk4j0mn+KSdKnAEPn+u4uGj9Ep1Hv9h0w+Df6BqnNNGmDbFnpE8y/gSgOwLpoJv2Fd9bJj1nBeOWrrwc8Y7xVKhYW/WMYnVzTSU15yWbUpAV3CvzlRNOrPKPexiY19z2oYUPxWTRT0/Xh06JlySlyWQz2DqK20YEi3euBNTjd0E631UAaWSZ12K2gd2JSe2EILZpLSICKaALtP2ZXHJKAjutpEyaOJOQsh/a4lkPkkf7zLVIXK1wlSPk9yk+sChDbro2G7JK5TKL5jDp6zMF58=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DB7PR04MB5050.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(36756003)(83380400001)(66476007)(66556008)(4744005)(8936002)(66946007)(186003)(2616005)(86362001)(6486002)(508600001)(110136005)(4326008)(7416002)(53546011)(31696002)(8676002)(6512007)(2906002)(6506007)(31686004)(316002)(38100700002)(54906003)(5660300002)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?rhRK09H2EKEGyIUT8VhgEz2Vv1IYMSeBEVoZbYubnKMGv6eIDVIURGo1Zin2?=
- =?us-ascii?Q?xxGSbO/MR2+N/PDPi/TUzE4fkV3nyfsttcG66mkAIRBzgaHo6HFoAnm1xQ6l?=
- =?us-ascii?Q?s7g6RTfXoE2OFI+N+i7J9/g6G95Xsoqutnf3tHOmwNTMku/ekOPRBdts+Pte?=
- =?us-ascii?Q?RDbMQ+47lKlzeypiQWYoJDpaCf5sszN4D4SoZ2mhVi5rEJ0YqqFc9tBwboA9?=
- =?us-ascii?Q?0uqf2udfJSW3r1qUqYF4Y+zi+yrXZZPr2D3xAQ1+k93BzortBxlF4bekUIHL?=
- =?us-ascii?Q?c+8zJDXT1+gDOL9ACvtkpPafMt2KPPq+qyLxhGVtJAQOKrh1fzAEQzN3qnmS?=
- =?us-ascii?Q?40+ulOVRPznxQAt7nJX+AXkiwrwx/ZBeYXnPviAYGfKqVywK2ejdJlvXswAH?=
- =?us-ascii?Q?sAZgP+m2fA/6Y+oK/22U2qrHLeeIZYkYjnY5OpooGZncQ1QipKlu01iuLN5y?=
- =?us-ascii?Q?5w6tIEgaPY5xXm0uEJSJHBgRb74SZWQ+zqKFYAhNIxxfL6GUKKfFdDXXpAh0?=
- =?us-ascii?Q?1bE9sVywspEweIJLvGgKlazpTS97ZO0HgLDs9LY0xiZcA56gbtU5cGamKbxH?=
- =?us-ascii?Q?snyJaHqx70HSNKld527bm4uA5yLCrvzrrgLO57GJ46dTxZxCgShwz9QqB089?=
- =?us-ascii?Q?n6fMBSEu7cpFIABowE8gdQRxLW3Ubad2R/iI5ea2Nue42Ps6Pv8XmbFmB3D6?=
- =?us-ascii?Q?Zf8CB9U53ooxFi7D/H9WGchxPO9AcaRbrPCdm/kk6Hz8lAleHlcV6YFHOueT?=
- =?us-ascii?Q?xS9diz0TtrRGIJ0Gwvv0DEz2PXgM8MfhAP3nROJM42rrY9v1ao3q5+uN/x2T?=
- =?us-ascii?Q?fGShyfMcIB399l3mI4FJu8s40gt2J32otHZt/bSEu40TiM/tF/N87/5cWz10?=
- =?us-ascii?Q?bqONN/5lfdpmee6llS5uBXJk52HYKPo8x5jbqAqdsUzwdsuFXXuQ5JbHInBx?=
- =?us-ascii?Q?Xg0zuILr4JVAykR1+Iw2XxqsxI+8oiOobBnkBqcTce+viWyaIvDojsOfrUqC?=
- =?us-ascii?Q?tabvvXpuZbWvkN7DpgLTtFTBEUOspP1HMac/E34mnWVt/yvy+czs2dSQgVNJ?=
- =?us-ascii?Q?jy4hDMMfQggqZVJt0y+7rlgWnD2KvkHUD8osR0q6mRjbGcmEeL4Qk5aSrwHr?=
- =?us-ascii?Q?RnwQ8ZiEwh8MX7gvOVncJ0YgVEb3TSpsTH2k+aLH0WoZT5/cqEqWcNbA9CUg?=
- =?us-ascii?Q?6Yo8wAYtozzTSKGiGqOOks8Z4KP47NUi4zAewO2Xm9k8Tjdr9KTv62rh3Dcz?=
- =?us-ascii?Q?DtIKzQEj4Vm9xYC5uqOuay64etyKypfA5RGRoWZggDLo01hH9gvhVgyKrWKy?=
- =?us-ascii?Q?DfBuSP4xifmUw7/x0chkJjTSRo6wVat1Z94Yat0WALzrTVQZfnqmmL9Qt0P9?=
- =?us-ascii?Q?cBdQ8nz11LpAbzA52Habu1gfDyUT?=
-X-OriginatorOrg: suse.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c382a353-cc03-4863-4f7e-08d983f4eb88
-X-MS-Exchange-CrossTenant-AuthSource: DB7PR04MB5050.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Sep 2021 09:30:19.8312 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 4oowC6GyiL0nfFj2LEToTxKqklRfTHDMR2Gon4r/D6i/pd5tUz4nV4Kn1ggU4AL/i/TrSUKe6r9LfGMue62U7g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB7PR04MB4137
+In-Reply-To: <79cbf64491273797f218f417234b8c95936bd3b1.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_023028_161810_D781A104 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20210930_035804_043093_0C5DD390 
+X-CRM114-Status: GOOD (  32.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,25 +83,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ck9uIDI5LjA5LjIxIDExOjUyLCBKYXNvbi1jaCBDaGVuIHdyb3RlOgo+IE9uIFdlZCwgMjAyMS0w
-OS0yOSBhdCAwODoxNCArMDAwMCwgSGF5ZXMgV2FuZyB3cm90ZToKPj4KPiBIaSBIYXllcywKPgo+
-IFNvbWV0aW1lcyBSeCBzdWJtaXRzIHJhcGlkbHkgYW5kIHRoZSBVU0Iga2VybmVsIGRyaXZlciBv
-ZiBvcGVuc291cmNlCj4gY2Fubm90IHJlY2VpdmUgYW55IGRpc2Nvbm5lY3QgZXZlbnQgZHVlIHRv
-IENQVSBoZWF2eSBsb2FkaW5nLCB3aGljaAo+IGZpbmFsbHkgY2F1c2VzIGEgc3lzdGVtIGNyYXNo
-Lgo+IERvIHlvdSBoYXZlIGFueSBzdWdnZXN0aW9ucyB0byBtb2RpZnkgdGhlIHI4MTUyIGRyaXZl
-ciB0byBwcmV2ZW50IHRoaXMKPiBzaXR1YXRpb24gaGFwcGVuZWQ/Cj4KPiBSZWdhcmRzLAo+IEph
-c29uCj4KSGksCgpIYXllcyBwcm9wb3NlZCBhIHNvbHV0aW9uLiBCYXNpY2FsbHkgeW91IHNvbHZl
-IHRoaXMgdGhlIHdheSBISUQgb3IgV0RNIGRvIGl0CmRlbGF5aW5nIHJlc3VibWlzc2lvbi4gVGhp
-cyBtYWtlcyBtZSB3b25kZXIgd2hldGhlciB0aGlzIHByb2JsZW0gaXMgc3BlY2lmaWMKdG8gYW55
-IGRyaXZlci4gSWYgaXQgaXMgbm90LCBhcyBJIHdvdWxkIGFyZ3VlLCBkbyB3ZSBoYXZlIGEgZGVm
-aWNpZW5jeQppbiBvdXIgQVBJPwoKU2hvdWxkIHdlIGhhdmUgc29tZXRoaW5nIGxpa2U6IHVzYl9z
-dWJtaXRfZGVsYXllZF91cmIoKSA/CgrCoMKgwqAgUmVnYXJkcwrCoMKgwqAgwqDCoMKgIE9saXZl
-cgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
-dGVrCg==
+
+
+On 30.09.21 05:28, Yong Wu wrote:
+> Hi Dafna,
+> 
+> Thanks very much for the review.
+> 
+> On Wed, 2021-09-29 at 14:13 +0200, Dafna Hirschfeld wrote:
+>>
+>> On 29.09.21 03:37, Yong Wu wrote:
+>>> MediaTek IOMMU has already added the device_link between the
+>>> consumer
+>>> and smi-larb device. If the vcodec device call the
+>>> pm_runtime_get_sync,
+>>> the smi-larb's pm_runtime_get_sync also be called automatically.
+>>>
+>>> CC: Tiffany Lin <tiffany.lin@mediatek.com>
+>>> CC: Irui Wang <irui.wang@mediatek.com>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>> Reviewed-by: Evan Green <evgreen@chromium.org>
+>>> Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
+>>> Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>>> ---
+>>>    .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 37 +++-----------
+>>> --
+>>>    .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
+>>>    .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
+>>>    .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 44 +++-----------
+>>> -----
+>>>    4 files changed, 10 insertions(+), 75 deletions(-)
+>>>
+>>> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+>>> b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+>>> index 6038db96f71c..d0bf9aa3b29d 100644
+>>> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+>>> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+>>> @@ -8,14 +8,12 @@
+>>>    #include <linux/of_address.h>
+>>>    #include <linux/of_platform.h>
+>>>    #include <linux/pm_runtime.h>
+>>> -#include <soc/mediatek/smi.h>
+>>>    
+>>>    #include "mtk_vcodec_dec_pm.h"
+>>>    #include "mtk_vcodec_util.h"
+>>>    
+>>>    int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+>>>    {
+>>> -	struct device_node *node;
+>>>    	struct platform_device *pdev;
+>>>    	struct mtk_vcodec_pm *pm;
+>>>    	struct mtk_vcodec_clk *dec_clk;
+>>> @@ -26,18 +24,7 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev
+>>> *mtkdev)
+>>>    	pm = &mtkdev->pm;
+>>>    	pm->mtkdev = mtkdev;
+>>>    	dec_clk = &pm->vdec_clk;
+>>> -	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
+>>> -	if (!node) {
+>>> -		mtk_v4l2_err("of_parse_phandle mediatek,larb fail!");
+>>> -		return -1;
+>>> -	}
+>>>    
+>>> -	pdev = of_find_device_by_node(node);
+>>> -	of_node_put(node);
+>>> -	if (WARN_ON(!pdev)) {
+>>> -		return -1;
+>>> -	}
+>>> -	pm->larbvdec = &pdev->dev;
+>>>    	pdev = mtkdev->plat_dev;
+>>>    	pm->dev = &pdev->dev;
+>>>    
+>>> @@ -47,14 +34,11 @@ int mtk_vcodec_init_dec_pm(struct
+>>> mtk_vcodec_dev *mtkdev)
+>>>    		dec_clk->clk_info = devm_kcalloc(&pdev->dev,
+>>>    			dec_clk->clk_num, sizeof(*clk_info),
+>>>    			GFP_KERNEL);
+>>> -		if (!dec_clk->clk_info) {
+>>> -			ret = -ENOMEM;
+>>> -			goto put_device;
+>>> -		}
+>>> +		if (!dec_clk->clk_info)
+>>> +			return -ENOMEM;
+>>>    	} else {
+>>>    		mtk_v4l2_err("Failed to get vdec clock count");
+>>> -		ret = -EINVAL;
+>>> -		goto put_device;
+>>> +		return -EINVAL;
+>>>    	}
+>>>    
+>>>    	for (i = 0; i < dec_clk->clk_num; i++) {
+>>> @@ -63,29 +47,24 @@ int mtk_vcodec_init_dec_pm(struct
+>>> mtk_vcodec_dev *mtkdev)
+>>>    			"clock-names", i, &clk_info->clk_name);
+>>>    		if (ret) {
+>>>    			mtk_v4l2_err("Failed to get clock name id =
+>>> %d", i);
+>>> -			goto put_device;
+>>> +			return ret;
+>>>    		}
+>>>    		clk_info->vcodec_clk = devm_clk_get(&pdev->dev,
+>>>    			clk_info->clk_name);
+>>>    		if (IS_ERR(clk_info->vcodec_clk)) {
+>>>    			mtk_v4l2_err("devm_clk_get (%d)%s fail", i,
+>>>    				clk_info->clk_name);
+>>> -			ret = PTR_ERR(clk_info->vcodec_clk);
+>>> -			goto put_device;
+>>> +			return PTR_ERR(clk_info->vcodec_clk);
+>>>    		}
+>>>    	}
+>>>    
+>>>    	pm_runtime_enable(&pdev->dev);
+>>>    	return 0;
+>>> -put_device:
+>>> -	put_device(pm->larbvdec);
+>>> -	return ret;
+>>>    }
+>>>    
+>>>    void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
+>>>    {
+>>>    	pm_runtime_disable(dev->pm.dev);
+>>> -	put_device(dev->pm.larbvdec);
+>>>    }
+>>
+>> Now that functions only do  'pm_runtime_disable(dev->pm.dev);' so it
+>> will be more
+>> readable to remove the function mtk_vcodec_release_dec_pm
+>> and replace with pm_runtime_disable(dev->pm.dev);
+>> Same for the 'enc' equivalent.
+> 
+> Make sense. But It may be not proper if using pm_runtime_disable
+> as the symmetry with mtk_vcodec_init_dec_pm in the mtk_vcodec_probe.
+> 
+> Maybe we should move pm_runtime_enable out from mtk_vcodec_init_dec_pm
+> into mtk_vcodec_probe. I could do a new patch for this. Is this ok for
+> you?
+
+yes, there is also asymettry when calling pm_runtime* in general,
+I see in the decoder it is called from mtk_vcodec_dec_pm.c
+but in the encoder it is called from mtk_vcodec_enc.c,
+
+I think all calls to pm_runtime* should be out of the *_pm.c files
+since for example 'mtk_vcodec_dec_pw_on' also do just one call to
+pm_runtime_resume_and_get so this function can also be removed.
+
+thanks,
+Dafna
+
+> 
+>>
+>> Thanks,
+>> Dafna
+> 
+> [snip]
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
