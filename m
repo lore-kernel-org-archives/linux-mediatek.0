@@ -2,86 +2,67 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 93592C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:16:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B412C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:38:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5B4EB6120D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:16:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5B4EB6120D
+	by mail.kernel.org (Postfix) with ESMTPS id C0FB9617E5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:38:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C0FB9617E5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ho9G0oZgE0roWk53a9H0NZZjCp+RClsKKwX/kQgzX8M=; b=RH9RU8rxpU+zyl
-	UTb9Up1PW3bKoXfZpe0R3HW9ejS2yk9+hd5RCVmhHLgExV/DJM3iXQjhDM6CYC1YTjy38UkCFoAGd
-	Rk38lYrqUeXbnSfhg5FyyoV7bDafnXNjnPKAWWKSXCL4uTE9l4j45CH+k252mQkxM9Hi/e/kM025b
-	Bp7nXDQj8YdEPt7wmiuyNHrkcrS/0oCv8o3w/YJocQ1vRSffKciXHotqbjYjzzNs1h3ZcbNHyKqMx
-	UGIGwTMsjgNG55oWMacwO/TxACy6ZLKv/6yb6qo5odBCtEOfOAlGi9U+HPK462t7WDL4bjZHrafaY
-	Q00nzg3SCv2NVYvwvimw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=xco1mKvRsIxEa4gBglp92fJvV5AsEeSfR75xgg4kKAU=; b=uVAO1oc7YAX0Mg
+	C6iTKDJBKHU2NzyVgib7h5lc54wl02BoImo7TwBdmmNezFS+nOyQkP/syiSZzA0WkDCwS4w0GZR+R
+	ObyuynqmPi718sSEuG+VnV4M6bAM5tnSoTSY3KnXYomiwuIFK4COP7Ro7ZSTlZSoR2VUUOVJxdv8T
+	32Vxv+pEOZCCKJ2UE26Eq43Yr8Wgj+7wJGy5zsKEqIK7FeSz7toLFOghnlUr+s58h7A8mTmppyj6O
+	CxkYhzocVhddb8CkmVcKCT/a3iiakBPV9THQyTS+wUblec3hTpjnPfhi/KmerIRyZ1FEDLbWh29tr
+	o6xsUtuwJu6P8RY902AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVqIh-00DARy-5G; Thu, 30 Sep 2021 07:16:15 +0000
+	id 1mVqdu-00DDCG-Lc; Thu, 30 Sep 2021 07:38:10 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVqIU-00DAQb-4P; Thu, 30 Sep 2021 07:16:03 +0000
-X-UUID: a598c140764d4ea4ab7e897520b97048-20210930
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=W+gAqULzOpfc/ivXZHGg1RcECraPP+WX8duBqllWiWg=; 
- b=q6efus+v6mX5SugaKB9oDbvpcDX3wweSD7qtPf2IR45WzvSCiPikm9UkP3QVbvTgTgLPZDSnAT7wHVIQ2xQIp7xdgzrJmimFYB9auLntLAhrici9R0V3DC6TqxrDFvuFZJtlP6xPLCacUIEC/WOzXMzfNySweY7gwtEkUXD715U=;
-X-UUID: a598c140764d4ea4ab7e897520b97048-20210930
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ id 1mVqdq-00DDBm-Oe
+ for linux-mediatek@lists.infradead.org; Thu, 30 Sep 2021 07:38:08 +0000
+X-UUID: 11b9194e26b6418a8cfd9a4092c66943-20210930
+X-UUID: 11b9194e26b6418a8cfd9a4092c66943-20210930
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <xing.song@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 423571633; Thu, 30 Sep 2021 00:15:59 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 30 Sep 2021 00:14:45 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 30 Sep 2021 15:14:44 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 30 Sep 2021 15:14:42 +0800
-Message-ID: <d3ed2bdef81ce1822b20da9570b5245cc0df6330.camel@mediatek.com>
-Subject: Re: [PATCH v8 03/12] iommu/mediatek: Add probe_defer for smi-larb
-From: Yong Wu <yong.wu@mediatek.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>
-CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- <youlin.pei@mediatek.com>, Matthias Kaehlcke <mka@chromium.org>,
- <anan.sun@mediatek.com>, <yi.kuo@mediatek.com>, <acourbot@chromium.org>,
- <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Daniel
- Vetter" <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- <anthony.huang@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>
-Date: Thu, 30 Sep 2021 15:14:45 +0800
-In-Reply-To: <33a8b313-ad1b-d307-7e8c-2fdebdc6f1a7@collabora.com>
-References: <20210929013719.25120-1-yong.wu@mediatek.com>
- <20210929013719.25120-4-yong.wu@mediatek.com>
- <33a8b313-ad1b-d307-7e8c-2fdebdc6f1a7@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 1517599903; Thu, 30 Sep 2021 00:38:00 -0700
+Received: from MTKMBS31N2.mediatek.inc (172.27.4.87) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Sep 2021 00:37:58 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS31N2.mediatek.inc
+ (172.27.4.87) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 30 Sep 2021 15:37:41 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 30 Sep 2021 15:37:41 +0800
+From: Xing Song <xing.song@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+ <evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Xing Song <xing.song@mediatek.com>
+Subject: [PATCH] mt76: use a separate CCMP PN receive counter for management
+ frames
+Date: Thu, 30 Sep 2021 15:37:37 +0800
+Message-ID: <20210930073737.146789-1-xing.song@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
+X-TM-SNTS-SMTP: 3A44D0BB44E9B51AC5356A502F2DFBDAEF6EBEC57AAB601A95621F9D3F742AC92000:8
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_001602_203831_66DEA7F1 
-X-CRM114-Status: GOOD (  32.51  )
+X-CRM114-CacheID: sfid-20210930_003806_827158_CCFF83E2 
+X-CRM114-Status: GOOD (  14.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,88 +79,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-09-29 at 18:33 +0200, Dafna Hirschfeld wrote:
-> 
-> On 29.09.21 03:37, Yong Wu wrote:
-> > Prepare for adding device_link.
-> > 
-> > The iommu consumer should use device_link to connect with the
-> > smi-larb(supplier). then the smi-larb should run before the iommu
-> > consumer. Here we delay the iommu driver until the smi driver is
-> > ready,
-> > then all the iommu consumers always are after the smi driver.
-> > 
-> > When there is no this patch, if some consumer drivers run before
-> > smi-larb, the supplier link_status is DL_DEV_NO_DRIVER(0) in the
-> > device_link_add, then device_links_driver_bound will use WARN_ON
-> > to complain that the link_status of supplier is not right.
-> > 
-> > device_is_bound may be more elegant here. but it is not allowed to
-> > EXPORT from https://lore.kernel.org/patchwork/patch/1334670/.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-
-> > R2/MT7623
-> > ---
-> >   drivers/iommu/mtk_iommu.c    | 2 +-
-> >   drivers/iommu/mtk_iommu_v1.c | 2 +-
-> >   2 files changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index d837adfd1da5..d5848f78a677 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -844,7 +844,7 @@ static int mtk_iommu_probe(struct
-> > platform_device *pdev)
-> >   			id = i;
-> >   
-> >   		plarbdev = of_find_device_by_node(larbnode);
-> > -		if (!plarbdev) {
-> > +		if (!plarbdev || !plarbdev->dev.driver) {
-> >   			of_node_put(larbnode);
-> >   			return -EPROBE_DEFER;
-> 
-> if plarbdev is null doesn't that mean that the device does not exist?
+When received frame is decryped by hardware, CCMP PN is checked by
+mt76.
 
-This is probe function, Is it possible the platform device is not ready
-at this time?
+When management frame protection (IEEE 802.11w) is used, we must use
+a separate counter for tracking received CCMP packet number for the
+management frames. The previously used counter was shared with data
+frames and that can cause problems in detecting replays incorrectly
+for robust management frames.
 
-I checked the platform device should be created at:
+Add a new counter just for robust management frames to avoid this
+issue.
 
-of_platform_default_populate_init:  arch_initcall_sync
-  ->of_platform_populate
-      ->of_platform_device_create_pdata
+Signed-off-by: Xing Song <xing.song@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mac80211.c | 27 ++++++++++++++++---
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  2 +-
+ 2 files changed, 24 insertions(+), 5 deletions(-)
 
-Not sure if this may be delayed for some device. If not, it should be
-ENODEV here.
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index bbe7ba64ccd2..419b8e75739a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -788,10 +788,17 @@ void mt76_wcid_key_setup(struct mt76_dev *dev, struct mt76_wcid *wcid,
+ 		return;
+ 
+ 	wcid->rx_check_pn = true;
++
++	/* data frame */
+ 	for (i = 0; i < IEEE80211_NUM_TIDS; i++) {
+ 		ieee80211_get_key_rx_seq(key, i, &seq);
+ 		memcpy(wcid->rx_key_pn[i], seq.ccmp.pn, sizeof(seq.ccmp.pn));
+ 	}
++
++	/* robust management frame */
++	ieee80211_get_key_rx_seq(key, -1, &seq);
++	memcpy(wcid->rx_key_pn[i], seq.ccmp.pn, sizeof(seq.ccmp.pn));
++
+ }
+ EXPORT_SYMBOL(mt76_wcid_key_setup);
+ 
+@@ -844,7 +851,7 @@ mt76_check_ccmp_pn(struct sk_buff *skb)
+ 	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
+ 	struct mt76_wcid *wcid = status->wcid;
+ 	struct ieee80211_hdr *hdr;
+-	u8 tidno = status->qos_ctl & IEEE80211_QOS_CTL_TID_MASK;
++	int security_idx;
+ 	int ret;
+ 
+ 	if (!(status->flag & RX_FLAG_DECRYPTED))
+@@ -853,24 +860,36 @@ mt76_check_ccmp_pn(struct sk_buff *skb)
+ 	if (!wcid || !wcid->rx_check_pn)
+ 		return 0;
+ 
++	hdr = mt76_skb_get_hdr(skb);
+ 	if (!(status->flag & RX_FLAG_IV_STRIPPED)) {
+ 		/*
+ 		 * Validate the first fragment both here and in mac80211
+ 		 * All further fragments will be validated by mac80211 only.
+ 		 */
+-		hdr = mt76_skb_get_hdr(skb);
+ 		if (ieee80211_is_frag(hdr) &&
+ 		    !ieee80211_is_first_frag(hdr->frame_control))
+ 			return 0;
+ 	}
+ 
++	/* IEEE 802.11-2020, 12.5.3.4.4 "PN and replay detection" c):
++	 *
++	 * the recipient shall maintain a single replay counter for received
++	 * individually addressed robust Management frames that are received
++	 * with the To DS subfield equal to 0, [...]
++	 */
++	if (ieee80211_is_mgmt(hdr->frame_control) &&
++	    !ieee80211_has_tods(hdr->frame_control))
++		security_idx = IEEE80211_NUM_TIDS;
++	else
++		security_idx = status->qos_ctl & IEEE80211_QOS_CTL_TID_MASK;
++
+ 	BUILD_BUG_ON(sizeof(status->iv) != sizeof(wcid->rx_key_pn[0]));
+-	ret = memcmp(status->iv, wcid->rx_key_pn[tidno],
++	ret = memcmp(status->iv, wcid->rx_key_pn[security_idx],
+ 		     sizeof(status->iv));
+ 	if (ret <= 0)
+ 		return -EINVAL; /* replay */
+ 
+-	memcpy(wcid->rx_key_pn[tidno], status->iv, sizeof(status->iv));
++	memcpy(wcid->rx_key_pn[security_idx], status->iv, sizeof(status->iv));
+ 
+ 	if (status->flag & RX_FLAG_IV_STRIPPED)
+ 		status->flag |= RX_FLAG_PN_VALIDATED;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 783ea555fa60..104a01704208 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -255,7 +255,7 @@ struct mt76_wcid {
+ 	u8 amsdu:1;
+ 
+ 	u8 rx_check_pn;
+-	u8 rx_key_pn[IEEE80211_NUM_TIDS][6];
++	u8 rx_key_pn[IEEE80211_NUM_TIDS + 1][6];
+ 	u16 cipher;
+ 
+ 	u32 tx_info;
+-- 
+2.18.0
 
-> so we should return -ENODEV in that case?
-> 
-> thanks,
-> Dafna
-> 
-> >   		}
-> > diff --git a/drivers/iommu/mtk_iommu_v1.c
-> > b/drivers/iommu/mtk_iommu_v1.c
-> > index 1467ba1e4417..4d7809432239 100644
-> > --- a/drivers/iommu/mtk_iommu_v1.c
-> > +++ b/drivers/iommu/mtk_iommu_v1.c
-> > @@ -602,7 +602,7 @@ static int mtk_iommu_probe(struct
-> > platform_device *pdev)
-> >   		}
-> >   
-> >   		plarbdev = of_find_device_by_node(larbnode);
-> > -		if (!plarbdev) {
-> > +		if (!plarbdev || !plarbdev->dev.driver) {
-> >   			of_node_put(larbnode);
-> >   			return -EPROBE_DEFER;
-> >   		}
-> > 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
