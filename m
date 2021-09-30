@@ -2,64 +2,70 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D257CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 19:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDBF2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 23:54:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 835E761A35
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 19:49:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 835E761A35
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id ABF5C60FC3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 23:54:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ABF5C60FC3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=pQ6qUl20xtA4syvuApByYTLdq9DpFJ/cTC/HF2eCQtM=; b=xf0szPtgQb7AiD
-	Lb2+k0FBJw+v0PeJ0ZeM4XWm5E7Vv2VrXWNz/m2CDNlHhCyc1fVZrnwzCIjzSzXxgmIYpScx46DjO
-	VHpWQVwr8VZ2G7HDwJ2hHDj8prY0X/azQUcMG3+Uv4dCifFl+/aMVz9tdbOuNqiYY2uCvABIvaxGC
-	dPVvt7Fc5t8tcarGG7U1TSdZD3JqlChdg3QpM69efV2PMV0dLGhCqO2HgAzcNYvZsJMVeX/m2cG4+
-	1WQR2W0c/9MiOKo+oHLMmKGViXWseWGIzugEgx21g+oTEOWjBJUtVAhjbV2nu9BshkqTmAPnAyIT0
-	wjQG0TKH1ropHF9izKrw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=76p215ix6J4gZ2Wv8mDypQHzrVLBqoRmpjWFSUJGNSE=; b=oMB14u+ZJK+YSH
+	pw8MUweBIF2n6UYnLyTc/t64Bfr4bqb+TTVbmkXbOrD8cyUU3hy31l1eW+sgLZJhBPvif13i78gam
+	U2S4At2PqGeXVKtEUVsbFyICdYioGkayRLvmycyjZaERUkSPWYv1stZqnoCbqBiw31yE2nXKF+2zs
+	rXpmZmF/TGvN+jewRLOQm/mBV1L0P2mZj6S1jDEXD07gAN6EZnKfkhcePH77jSPSf3IfwZ4yCj3QO
+	pVNbph2CQ2Y8ejJ+0pEvJA2XOfZkZBaOwurDU4W3rD4nk8jvB3D2T7XzUXcBkOE92bfEmM/7kosyQ
+	R1FfIW0npOA6B7ym2zrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mW23K-00FvNF-SQ; Thu, 30 Sep 2021 19:49:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mW5sy-00GBFe-22; Thu, 30 Sep 2021 23:54:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mW237-00FvLe-8b; Thu, 30 Sep 2021 19:48:59 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id F14DC60C51;
- Thu, 30 Sep 2021 19:48:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1633031335;
- bh=hDdTWheoUb4ZPM90BwAajZQdvPLHWOT4OxlEVDwGXig=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=LTGpyZWG7WUD4OlNOPnmQIEH++4rz1slz2w49GSixX+nv5xl1b1QSYUAGOoYF7VyS
- YOp6yIjK1Z9S1oQnXTlCKRBjwxlRJMYFbKIJrvnNF2sP56WeGUIan5USqKFl1/rtPq
- g2BLVFemgMVFe+kCG+2zB2nfYRFNgq7qCWYY1lLRMew9VtGxKj2UjwyfwVtzXgTqIG
- vXAcc0hKdqAVzyrTHXFe3squ+9E/om6esEohzIMs3vyxKZYRj6o5NhpibTbhhc2aQn
- PZdiDO1bRR2X1XaCnSzn/+CNF0duPMQ+HphR79pG4QCv9SLe8Vv5sKHyspuphniaqT
- U8V0lRRv+qY8Q==
-Date: Thu, 30 Sep 2021 14:48:53 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: mingchuang qiao <mingchuang.qiao@mediatek.com>
-Cc: kerun.zhu@mediatek.com, linux-pci@vger.kernel.org,
- lambert.wang@mediatek.com, rjw@rjwysocki.net,
- linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
- alex.williamson@redhat.com, linux-mediatek@lists.infradead.org,
- utkarsh.h.patel@intel.com, haijun.liu@mediatek.com,
- bhelgaas@google.com, mika.westerberg@linux.intel.com,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [v4] PCI: Avoid unsync of LTR mechanism configuration
-Message-ID: <20210930194853.GA903868@bhelgaas>
+ id 1mW5su-00GBDZ-Kh
+ for linux-mediatek@lists.infradead.org; Thu, 30 Sep 2021 23:54:42 +0000
+X-UUID: 3d6c33dce1fa457b89e5c47880befb5a-20210930
+X-UUID: 3d6c33dce1fa457b89e5c47880befb5a-20210930
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 48482420; Thu, 30 Sep 2021 16:54:36 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Sep 2021 16:48:37 -0700
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 1 Oct 2021 07:48:37 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <shawnku@google.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v3 08/16] mt76: mt7921: make all event parser reusable between
+ mt7921s and mt7921e
+Date: Fri, 1 Oct 2021 07:47:55 +0800
+Message-ID: <b90b1edd1f01b8480c084c8f70a13696c6f568eb.1632961096.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <cover.1632961096.git.objelf@gmail.com>
+References: <cover.1632961096.git.objelf@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2d11f5fa62151db0d490ea03e2f8399d784ea522.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_124857_392108_A48E4421 
-X-CRM114-Status: GOOD (  53.37  )
+X-CRM114-CacheID: sfid-20210930_165440_708386_939CF82A 
+X-CRM114-Status: GOOD (  11.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,221 +82,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 30, 2021 at 03:02:24PM +0800, mingchuang qiao wrote:
-> Hi Bjorn,
-> 
-> A friendly ping.
-> Thanks.
+From: Sean Wang <sean.wang@mediatek.com>
 
-I pointed out a couple issues, but you never responded.  See below.
+The longer event such as the event for mcu_get_nic_capability would hold
+the data in paged fragment skb for the SDIO device so we turn the skb to
+be linearized skb before accessing it to reuse the same event parser
+betweem mt7921s and mt7921e.
 
-> On Mon, 2021-09-06 at 13:36 +0800, mingchuang qiao wrote:
-> > Hi Bjorn,
-> > 
-> > On Thu, 2021-02-18 at 10:50 -0600, Bjorn Helgaas wrote:
-> > > On Thu, Feb 04, 2021 at 05:51:25PM +0800, mingchuang.qiao@mediatek.
-> > > co
-> > > m wrote:
-> > > > From: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
-> > > > 
-> > > > In bus scan flow, the "LTR Mechanism Enable" bit of DEVCTL2
-> > > > register is
-> > > > configured in pci_configure_ltr(). If device and bridge both
-> > > > support LTR
-> > > > mechanism, the "LTR Mechanism Enable" bit of device and bridge
-> > > > will
-> > > > be
-> > > > enabled in DEVCTL2 register. And pci_dev->ltr_path will be set as
-> > > > 1.
-> > > > 
-> > > > If PCIe link goes down when device resets, the "LTR Mechanism
-> > > > Enable" bit
-> > > > of bridge will change to 0 according to PCIe r5.0, sec 7.5.3.16.
-> > > > However,
-> > > > the pci_dev->ltr_path value of bridge is still 1.
-> > > > 
-> > > > For following conditions, check and re-configure "LTR Mechanism
-> > > > Enable" bit
-> > > > of bridge to make "LTR Mechanism Enable" bit match ltr_path
-> > > > value.
-> > > >    -before configuring device's LTR for hot-remove/hot-add
-> > > >    -before restoring device's DEVCTL2 register when restore
-> > > > device
-> > > > state
-> > > 
-> > > There's definitely a bug here.  The commit log should say a little
-> > > more about what it is.  I *think* if LTR is enabled and we suspend
-> > > (putting the device in D3cold) and resume, LTR probably doesn't
-> > > work
-> > > after resume because LTR is disabled in the upstream bridge, which
-> > > would be an obvious bug.
+Tested-by: Deren Wu <deren.wu@mediatek.com>
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-Here's one thing.  Above I was asking for more details.  In
-particular, how would a user notice this bug?  How did *you* notice
-the bug?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 95f7866b3d57..94d6c3935fb2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -455,7 +455,12 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ 
+ void mt7921_mcu_rx_event(struct mt7921_dev *dev, struct sk_buff *skb)
+ {
+-	struct mt7921_mcu_rxd *rxd = (struct mt7921_mcu_rxd *)skb->data;
++	struct mt7921_mcu_rxd *rxd;
++
++	if (skb_linearize(skb))
++		return;
++
++	rxd = (struct mt7921_mcu_rxd *)skb->data;
+ 
+ 	if (rxd->eid == 0x6) {
+ 		mt76_mcu_rx_event(&dev->mt76, skb);
+-- 
+2.25.1
 
-> > > Also, if a device with LTR enabled is hot-removed, and we hot-add a
-> > > device, I think LTR will not work on the new device.  Possibly also
-> > > a
-> > > bug, although I'm not convinced we know how to configure LTR on the
-> > > new device anyway.
-> > > 
-> > > So I'd *like* to merge the bug fix for v5.12, but I think I'll wait
-> > > because of the issue below.
-> > > 
-> > 
-> > A friendly ping.
-> > Any further process shall I make to get this patch merged?
-> > 
-> > > > Signed-off-by: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
-> > > > ---
-> > > > changes of v4
-> > > >  -fix typo of commit message
-> > > >  -rename: pci_reconfigure_bridge_ltr()-
-> > > > > pci_bridge_reconfigure_ltr()
-> > > > 
-> > > > changes of v3
-> > > >  -call pci_reconfigure_bridge_ltr() in probe.c
-> > > > changes of v2
-> > > >  -modify patch description
-> > > >  -reconfigure bridge's LTR before restoring device DEVCTL2
-> > > > register
-> > > > ---
-> > > >  drivers/pci/pci.c   | 25 +++++++++++++++++++++++++
-> > > >  drivers/pci/pci.h   |  1 +
-> > > >  drivers/pci/probe.c | 13 ++++++++++---
-> > > >  3 files changed, 36 insertions(+), 3 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-> > > > index b9fecc25d213..6bf65d295331 100644
-> > > > --- a/drivers/pci/pci.c
-> > > > +++ b/drivers/pci/pci.c
-> > > > @@ -1437,6 +1437,24 @@ static int pci_save_pcie_state(struct
-> > > > pci_dev *dev)
-> > > >  	return 0;
-> > > >  }
-> > > >  
-> > > > +void pci_bridge_reconfigure_ltr(struct pci_dev *dev)
-> > > > +{
-> > > > +#ifdef CONFIG_PCIEASPM
-> > > > +	struct pci_dev *bridge;
-> > > > +	u32 ctl;
-> > > > +
-> > > > +	bridge = pci_upstream_bridge(dev);
-> > > > +	if (bridge && bridge->ltr_path) {
-> > > > +		pcie_capability_read_dword(bridge,
-> > > > PCI_EXP_DEVCTL2, &ctl);
-> > > > +		if (!(ctl & PCI_EXP_DEVCTL2_LTR_EN)) {
-> > > > +			pci_dbg(bridge, "re-enabling LTR\n");
-> > > > +			pcie_capability_set_word(bridge,
-> > > > PCI_EXP_DEVCTL2,
-> > > > +						 PCI_EXP_DEVCTL2
-> > > > _L
-> > > > TR_EN);
-> > > 
-> > > This pattern of updating the upstream bridge on behalf of "dev" is
-> > > problematic because it's racy:
-> > > 
-> > >   CPU 1                     CPU 2
-> > >   -------------------       ---------------------
-> > >   ctl = read DEVCTL2        ctl = read(DEVCTL2)
-> > >   ctl |= DEVCTL2_LTR_EN     ctl |= DEVCTL2_ARI
-> > >   write(DEVCTL2, ctl)
-> > >                             write(DEVCTL2, ctl)
-> > > 
-> > > Now the bridge has ARI set, but not LTR_EN.
-> > > 
-> > > We have the same problem in the pci_enable_device() path.  The most
-> > > recent try at fixing it is [1].
-
-I was hoping you would respond with "yes, I understand the problem,
-but don't think it's likely" or "no, this isn't actually a problem
-because ..."
-
-I think it *is* a problem, but we're probably unlikely to hit it, so
-we can probably live with it for now.  
-
-> > > [1] https://lore.kernel.org/linux-pci/20201218174011.340514-2-s.mir
-> > > os
-> > > hnichenko@yadro.com/
-> > > 
-> > > > +		}
-> > > > +	}
-> > > > +#endif
-> > > > +}
-> > > > +
-> > > >  static void pci_restore_pcie_state(struct pci_dev *dev)
-> > > >  {
-> > > >  	int i = 0;
-> > > > @@ -1447,6 +1465,13 @@ static void pci_restore_pcie_state(struct
-> > > > pci_dev *dev)
-> > > >  	if (!save_state)
-> > > >  		return;
-> > > >  
-> > > > +	/*
-> > > > +	 * Downstream ports reset the LTR enable bit when link
-> > > > goes down.
-> > > > +	 * Check and re-configure the bit here before restoring
-> > > > device.
-> > > > +	 * PCIe r5.0, sec 7.5.3.16.
-> > > > +	 */
-> > > > +	pci_bridge_reconfigure_ltr(dev);
-> > > > +
-> > > >  	cap = (u16 *)&save_state->cap.data[0];
-> > > >  	pcie_capability_write_word(dev, PCI_EXP_DEVCTL,
-> > > > cap[i++]);
-> > > >  	pcie_capability_write_word(dev, PCI_EXP_LNKCTL,
-> > > > cap[i++]);
-> > > > diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
-> > > > index 5c59365092fa..b3a5e5287cb7 100644
-> > > > --- a/drivers/pci/pci.h
-> > > > +++ b/drivers/pci/pci.h
-> > > > @@ -111,6 +111,7 @@ void pci_free_cap_save_buffers(struct pci_dev
-> > > > *dev);
-> > > >  bool pci_bridge_d3_possible(struct pci_dev *dev);
-> > > >  void pci_bridge_d3_update(struct pci_dev *dev);
-> > > >  void pci_bridge_wait_for_secondary_bus(struct pci_dev *dev);
-> > > > +void pci_bridge_reconfigure_ltr(struct pci_dev *dev);
-> > > >  
-> > > >  static inline void pci_wakeup_event(struct pci_dev *dev)
-> > > >  {
-> > > > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
-> > > > index 953f15abc850..ade055e9fb58 100644
-> > > > --- a/drivers/pci/probe.c
-> > > > +++ b/drivers/pci/probe.c
-> > > > @@ -2132,9 +2132,16 @@ static void pci_configure_ltr(struct
-> > > > pci_dev
-> > > > *dev)
-> > > >  	 * Complex and all intermediate Switches indicate
-> > > > support
-> > > > for LTR.
-> > > >  	 * PCIe r4.0, sec 6.18.
-> > > >  	 */
-> > > > -	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT ||
-> > > > -	    ((bridge = pci_upstream_bridge(dev)) &&
-> > > > -	      bridge->ltr_path)) {
-> > > > +	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT) {
-> > > > +		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
-> > > > +					 PCI_EXP_DEVCTL2_LTR_EN)
-> > > > ;
-> > > > +		dev->ltr_path = 1;
-> > > > +		return;
-> > > > +	}
-> > > > +
-> > > > +	bridge = pci_upstream_bridge(dev);
-> > > > +	if (bridge && bridge->ltr_path) {
-> > > > +		pci_bridge_reconfigure_ltr(dev);
-> > > >  		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
-> > > >  					 PCI_EXP_DEVCTL2_LTR_EN)
-> > > > ;
-> > > >  		dev->ltr_path = 1;
-> > > > -- 
-> > > > 2.18.0
-> > > 
-> > > _______________________________________________
-> > > Linux-mediatek mailing list
-> > > Linux-mediatek@lists.infradead.org
-> > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
