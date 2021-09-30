@@ -2,14 +2,14 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72CE7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:32:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 69C76C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:33:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 38A05617E5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:32:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 38A05617E5
+	by mail.kernel.org (Postfix) with ESMTPS id 329A161139
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:33:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 329A161139
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,40 +18,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BaogP5yok8KWOCRvD2yAbJmzl1gieS6asWpeqOMaIIY=; b=dzWYGjHhEFo8R3
-	ykMTi+mRWU2JG59womZ9h9rUtMrMR01Wy7wP604yE2aBVsAh/f4YcVkyhuAD4JShrXVU/kwpiv7cZ
-	WavzNGoGJgeEB6UBZ+5v9rl+rraT7Anj6ZJidAJwsji2l932bKdhefxolb8l0AUIsu0PjyaIM3bfN
-	w4S1wUkTa+kh7ptcGJI1oKh3VxCTNrxbHrzG/lNwS9mIdliASbo86mJmYGqZWrDwArg94mN87gG5K
-	g0wdUqXcITXDNiW+BOLJe0DSKMMmQWRNfY5PkQQ9kK0Qd27y1gi/nEKZrhF1Q5ypq4eWRzJDdUyk6
-	nymsG65j+tr3eAv/hGnw==;
+	List-Owner; bh=IQKCvDhsk+dkNJD32Os3Wo7GMcgrA2hnzP+NbE+6DA0=; b=Yp6acwypwq/STw
+	0mOaW8NeZdt4dH69ONMWxEZuRB8CMrkSTsaQlxxkgVuMMum1aJgdQmspABca4ofQ4pyuvJ6cZTmJP
+	KgtHsn2V2sZAwo8B+mf9KuFaCGvtRbmZZ2YqvafCYHfJo6E4SrnOEjcZh9uJ3yZNcVdM9A7/ez9Tc
+	rrMcurkQ1NpGWc9nPdK3NOc3T4pZJkDzEQwwJ0l9TJD9M44IX5x4+9txv/mlA1ZB6opQEvww6ID8q
+	KVeEGmdK56w/qSdJO1pQz6XmmTQdhnBAB2/9QlS15zO0yzMPISOv+eua+GDWAwQyCSt/gGBhUOkL8
+	lR0yy1LoCjqo7WcsLyxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVrUR-00DODu-GF; Thu, 30 Sep 2021 08:32:27 +0000
+	id 1mVrV0-00DOUf-Ll; Thu, 30 Sep 2021 08:33:02 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVrU0-00DO1l-Pv; Thu, 30 Sep 2021 08:32:02 +0000
+ id 1mVrU1-00DO23-8g; Thu, 30 Sep 2021 08:32:03 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id 32D581F449EB
+ (Authenticated sender: eballetbo) with ESMTPSA id 4ABF81F449F0
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: linux-mediatek@lists.infradead.org, eizan@chromium.org,
  kernel@collabora.com, drinkcat@chromium.org, jitao.shi@mediatek.com,
  chunkuang.hu@kernel.org, hsinyi@chromium.org, matthias.bgg@gmail.com,
- Guenter Roeck <linux@roeck-us.net>, Crystal Guo <crystal.guo@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
- Wim Van Sebroeck <wim@linux-watchdog.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-watchdog@vger.kernel.org
-Subject: [PATCH v4 1/7] arm64: dts: mediatek: Move reset controller constants
- into common location
-Date: Thu, 30 Sep 2021 10:31:44 +0200
-Message-Id: <20210930103105.v4.1.I514d9aafff3a062f751b37d3fea7402f67595b86@changeid>
+ Rob Herring <robh@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v4 3/7] dt-bindings: display: mediatek: add dsi reset optional
+ property
+Date: Thu, 30 Sep 2021 10:31:46 +0200
+Message-Id: <20210930103105.v4.3.Ifec72a83f224b62f24cfc967edfe78c5d276b2e3@changeid>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210930083150.3317003-1-enric.balletbo@collabora.com>
 References: <20210930083150.3317003-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_013200_989205_A7AC655D 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20210930_013201_459136_B303A456 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,71 +68,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The DT binding includes for reset controllers are located in
-include/dt-bindings/reset/. Move the Mediatek reset constants in there.
+Update device tree binding documentation for the dsi to add the optional
+property to reset the dsi controller.
 
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Reviewed-by: Guenter Roeck <linux@roeck-us.net>
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+Acked-by: Rob Herring <robh@kernel.org>
 ---
 
 (no changes since v2)
 
 Changes in v2:
-- Fix build test ERROR Reported-by: kernel test robot <lkp@intel.com>
+- Added a new patch to describe the dsi reset optional property.
 
- arch/arm64/boot/dts/mediatek/mt8183.dtsi                    | 2 +-
- drivers/watchdog/mtk_wdt.c                                  | 6 +++---
- .../dt-bindings/{reset-controller => reset}/mt2712-resets.h | 0
- .../dt-bindings/{reset-controller => reset}/mt8183-resets.h | 0
- .../dt-bindings/{reset-controller => reset}/mt8192-resets.h | 0
- 5 files changed, 4 insertions(+), 4 deletions(-)
- rename include/dt-bindings/{reset-controller => reset}/mt2712-resets.h (100%)
- rename include/dt-bindings/{reset-controller => reset}/mt8183-resets.h (100%)
- rename include/dt-bindings/{reset-controller => reset}/mt8192-resets.h (100%)
+ .../devicetree/bindings/display/mediatek/mediatek,dsi.txt   | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index 494f6fdbd603..9639ca17638e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -11,7 +11,7 @@
- #include <dt-bindings/interrupt-controller/irq.h>
- #include <dt-bindings/memory/mt8183-larb-port.h>
- #include <dt-bindings/power/mt8183-power.h>
--#include <dt-bindings/reset-controller/mt8183-resets.h>
-+#include <dt-bindings/reset/mt8183-resets.h>
- #include <dt-bindings/phy/phy.h>
- #include <dt-bindings/thermal/thermal.h>
- #include <dt-bindings/pinctrl/mt8183-pinfunc.h>
-diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
-index 796fbb048cbe..3d208d627fb0 100644
---- a/drivers/watchdog/mtk_wdt.c
-+++ b/drivers/watchdog/mtk_wdt.c
-@@ -9,9 +9,9 @@
-  * Based on sunxi_wdt.c
-  */
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+index d30428b9fb33..36b01458f45c 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsi.txt
+@@ -19,6 +19,11 @@ Required properties:
+   Documentation/devicetree/bindings/graph.txt. This port should be connected
+   to the input port of an attached DSI panel or DSI-to-eDP encoder chip.
  
--#include <dt-bindings/reset-controller/mt2712-resets.h>
--#include <dt-bindings/reset-controller/mt8183-resets.h>
--#include <dt-bindings/reset-controller/mt8192-resets.h>
-+#include <dt-bindings/reset/mt2712-resets.h>
-+#include <dt-bindings/reset/mt8183-resets.h>
-+#include <dt-bindings/reset/mt8192-resets.h>
- #include <dt-bindings/reset/mt8195-resets.h>
- #include <linux/delay.h>
- #include <linux/err.h>
-diff --git a/include/dt-bindings/reset-controller/mt2712-resets.h b/include/dt-bindings/reset/mt2712-resets.h
-similarity index 100%
-rename from include/dt-bindings/reset-controller/mt2712-resets.h
-rename to include/dt-bindings/reset/mt2712-resets.h
-diff --git a/include/dt-bindings/reset-controller/mt8183-resets.h b/include/dt-bindings/reset/mt8183-resets.h
-similarity index 100%
-rename from include/dt-bindings/reset-controller/mt8183-resets.h
-rename to include/dt-bindings/reset/mt8183-resets.h
-diff --git a/include/dt-bindings/reset-controller/mt8192-resets.h b/include/dt-bindings/reset/mt8192-resets.h
-similarity index 100%
-rename from include/dt-bindings/reset-controller/mt8192-resets.h
-rename to include/dt-bindings/reset/mt8192-resets.h
++Optional properties:
++- resets: list of phandle + reset specifier pair, as described in [1].
++
++[1] Documentation/devicetree/bindings/reset/reset.txt
++
+ MIPI TX Configuration Module
+ ============================
+ 
+@@ -45,6 +50,7 @@ dsi0: dsi@1401b000 {
+ 	clocks = <&mmsys MM_DSI0_ENGINE>, <&mmsys MM_DSI0_DIGITAL>,
+ 		 <&mipi_tx0>;
+ 	clock-names = "engine", "digital", "hs";
++	resets = <&mmsys MT8173_MMSYS_SW0_RST_B_DISP_DSI0>;
+ 	phys = <&mipi_tx0>;
+ 	phy-names = "dphy";
+ 
 -- 
 2.30.2
 
