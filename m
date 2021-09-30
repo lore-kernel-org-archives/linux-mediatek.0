@@ -2,86 +2,86 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E85C2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 93592C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:16:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9E07B6187A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:12:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9E07B6187A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 5B4EB6120D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:16:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5B4EB6120D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n5LshohrpTaPHViFqHK0Pfav8AJhaD0VkRXm8FyAsTw=; b=x4mArYpSOeRcDj
-	a3peJus/bMxbUrKuQD2CbwRDodBNixEUrGqPvNrf5TdvgrzHg01HRP3m48sxeFZyL5av/6I111PJK
-	KKcRJggZ+QgnPc6bzJLUOk6FY5V6d9X6AaslmAyuHNBTtWAnHXHp7AzMcPwGnW3Raix6VohYTFD1U
-	haOpMwThdA7gAlxftP6XPg9jQ1qNGZjVNNlzHV1PVRNKpvZg2Um9aKBfTI67v8rkQP0Cw/qVXa1kI
-	sKIy8ocL5iZeMrS24HHwn/g/Hw2hJ0y52J4FWQLU7uQPgMA+Fu84A1q58wG1ikgbcGU93zDqFPl4D
-	E90NIMICUG3GCq/9g5IQ==;
+	List-Owner; bh=ho9G0oZgE0roWk53a9H0NZZjCp+RClsKKwX/kQgzX8M=; b=RH9RU8rxpU+zyl
+	UTb9Up1PW3bKoXfZpe0R3HW9ejS2yk9+hd5RCVmhHLgExV/DJM3iXQjhDM6CYC1YTjy38UkCFoAGd
+	Rk38lYrqUeXbnSfhg5FyyoV7bDafnXNjnPKAWWKSXCL4uTE9l4j45CH+k252mQkxM9Hi/e/kM025b
+	Bp7nXDQj8YdEPt7wmiuyNHrkcrS/0oCv8o3w/YJocQ1vRSffKciXHotqbjYjzzNs1h3ZcbNHyKqMx
+	UGIGwTMsjgNG55oWMacwO/TxACy6ZLKv/6yb6qo5odBCtEOfOAlGi9U+HPK462t7WDL4bjZHrafaY
+	Q00nzg3SCv2NVYvwvimw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVqEq-00D9mb-Vw; Thu, 30 Sep 2021 07:12:17 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+	id 1mVqIh-00DARy-5G; Thu, 30 Sep 2021 07:16:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVqEn-00D9li-Mc; Thu, 30 Sep 2021 07:12:15 +0000
-Received: by mail-ot1-x336.google.com with SMTP id
- e66-20020a9d2ac8000000b0054da8bdf2aeso3898283otb.12; 
- Thu, 30 Sep 2021 00:12:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=lOF0Y3JDOZxaPj0QJbgX2uoE9MrCbAvitKZF6bLpjNQ=;
- b=YokCmknuZngbxHSpDu3yu75O7oK5XAWdoQe+4Z8MMpo9d1xn1brIq1oEA8cFAf6iMa
- qwoZfqP95XSlbsCQryxFXlQto+QlSQBDIsHgi7VTqHhnOmGL+kdR/U+hmBnY9sQ0q/++
- 1s3JW67W+P/Xj/LU1+MOiyHAJri80EANOedKGWpIU1vGJ2OVkV/I6z1XbQG11PsNP8ex
- 1JZKWYSWMWNR6BtKuaoWOiCc1Er/LBCH2lUZbCtibU3NwbXlG/e9VzrGLFk37nt4UgtO
- zV9NM7ahoEurx9gLWvoier/uQ/v8Cnv07R+3YL6ffM10i5cR6chOPQq3cUiZR4BO1SVm
- a59g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=lOF0Y3JDOZxaPj0QJbgX2uoE9MrCbAvitKZF6bLpjNQ=;
- b=0LuifwpbTGKjGs9xuj2avs16aiiQJrrS0TBR8zVI2sXm45wb6miBdWZyULsQvmExD9
- Gg7/fOFWwdOqLeoposElHCiuq6jjUtzqczcYgC/O9+sRnVj22STnog2XN0oht3wUPWep
- h5TFd+L+NyI62ew0+YnTTNB8Yci4uHyzCmVxflhoqX1m7xKOgcrD7sgMXke+CnSIWF/8
- k1qLsJkMNhWIGHjhgNS1RBGKrVkDQEJGvmkDPz0yRsu9EyjkgBkcZ66UNSQtXFtWvdTY
- y5T2KTcwRlYVrkxoK+w+q9AY0LCbvfyOvvSk2xJEJPn4ysH/eRwHtdXax24YYG/3AFTR
- QyOA==
-X-Gm-Message-State: AOAM532HHPzeOhA+6DlrBLzwH8xQ3nQ/WodXt3P+xQOd0Ey+CBkl0gCA
- fTSkbTmHkVnzZuw/tFVvCffEpKOCq0ePnqzAJPw=
-X-Google-Smtp-Source: ABdhPJwmaxs1k8CqJXEC195drKP2OOxFUscJlxxZkQjpoiTP30zgDTZBaODF6yU0VbjXwQ5JqZHRtEmmEpXkcObyhww=
-X-Received: by 2002:a9d:173:: with SMTP id 106mr4063274otu.150.1632985932786; 
- Thu, 30 Sep 2021 00:12:12 -0700 (PDT)
+ id 1mVqIU-00DAQb-4P; Thu, 30 Sep 2021 07:16:03 +0000
+X-UUID: a598c140764d4ea4ab7e897520b97048-20210930
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=W+gAqULzOpfc/ivXZHGg1RcECraPP+WX8duBqllWiWg=; 
+ b=q6efus+v6mX5SugaKB9oDbvpcDX3wweSD7qtPf2IR45WzvSCiPikm9UkP3QVbvTgTgLPZDSnAT7wHVIQ2xQIp7xdgzrJmimFYB9auLntLAhrici9R0V3DC6TqxrDFvuFZJtlP6xPLCacUIEC/WOzXMzfNySweY7gwtEkUXD715U=;
+X-UUID: a598c140764d4ea4ab7e897520b97048-20210930
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 423571633; Thu, 30 Sep 2021 00:15:59 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Sep 2021 00:14:45 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 30 Sep 2021 15:14:44 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 30 Sep 2021 15:14:42 +0800
+Message-ID: <d3ed2bdef81ce1822b20da9570b5245cc0df6330.camel@mediatek.com>
+Subject: Re: [PATCH v8 03/12] iommu/mediatek: Add probe_defer for smi-larb
+From: Yong Wu <yong.wu@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>
+CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ <youlin.pei@mediatek.com>, Matthias Kaehlcke <mka@chromium.org>,
+ <anan.sun@mediatek.com>, <yi.kuo@mediatek.com>, <acourbot@chromium.org>,
+ <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Daniel
+ Vetter" <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
+ <anthony.huang@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>
+Date: Thu, 30 Sep 2021 15:14:45 +0800
+In-Reply-To: <33a8b313-ad1b-d307-7e8c-2fdebdc6f1a7@collabora.com>
+References: <20210929013719.25120-1-yong.wu@mediatek.com>
+ <20210929013719.25120-4-yong.wu@mediatek.com>
+ <33a8b313-ad1b-d307-7e8c-2fdebdc6f1a7@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20210930024704.6966-1-jason-jh.lin@mediatek.com>
- <20210930024704.6966-2-jason-jh.lin@mediatek.com>
-In-Reply-To: <20210930024704.6966-2-jason-jh.lin@mediatek.com>
-From: Enric Balletbo Serra <eballetbo@gmail.com>
-Date: Thu, 30 Sep 2021 09:12:01 +0200
-Message-ID: <CAFqH_52w787DGbVE0WqMjA2y8Psw6XDMp8AFhj=7UMyCA-uv+g@mail.gmail.com>
-Subject: Re: [v2 PATCH 1/3] drm/mediatek: Fix crash at using pkt->cl->chan in
- cmdq_pkt_finalize
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, 
- dri-devel <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- fshao@chromium.org, 
- "Nancy.Lin" <nancy.lin@mediatek.com>, singo.chang@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_001213_770346_0AA48EFC 
-X-CRM114-Status: GOOD (  26.93  )
+X-CRM114-CacheID: sfid-20210930_001602_203831_66DEA7F1 
+X-CRM114-Status: GOOD (  32.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,216 +98,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
+On Wed, 2021-09-29 at 18:33 +0200, Dafna Hirschfeld wrote:
+> 
+> On 29.09.21 03:37, Yong Wu wrote:
+> > Prepare for adding device_link.
+> > 
+> > The iommu consumer should use device_link to connect with the
+> > smi-larb(supplier). then the smi-larb should run before the iommu
+> > consumer. Here we delay the iommu driver until the smi driver is
+> > ready,
+> > then all the iommu consumers always are after the smi driver.
+> > 
+> > When there is no this patch, if some consumer drivers run before
+> > smi-larb, the supplier link_status is DL_DEV_NO_DRIVER(0) in the
+> > device_link_add, then device_links_driver_bound will use WARN_ON
+> > to complain that the link_status of supplier is not right.
+> > 
+> > device_is_bound may be more elegant here. but it is not allowed to
+> > EXPORT from https://lore.kernel.org/patchwork/patch/1334670/.
+> > 
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-
+> > R2/MT7623
+> > ---
+> >   drivers/iommu/mtk_iommu.c    | 2 +-
+> >   drivers/iommu/mtk_iommu_v1.c | 2 +-
+> >   2 files changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index d837adfd1da5..d5848f78a677 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -844,7 +844,7 @@ static int mtk_iommu_probe(struct
+> > platform_device *pdev)
+> >   			id = i;
+> >   
+> >   		plarbdev = of_find_device_by_node(larbnode);
+> > -		if (!plarbdev) {
+> > +		if (!plarbdev || !plarbdev->dev.driver) {
+> >   			of_node_put(larbnode);
+> >   			return -EPROBE_DEFER;
+> 
+> if plarbdev is null doesn't that mean that the device does not exist?
 
+This is probe function, Is it possible the platform device is not ready
+at this time?
 
-Missatge de jason-jh.lin <jason-jh.lin@mediatek.com> del dia dj., 30
-de set. 2021 a les 4:47:
->
-> Because mtk_drm_crtc_create_pkt didn't assign pkt->cl, it will
-> crash at using pkt->cl->chan in cmdq_pkt_finalize.
->
-> So add struct cmdq_client and let mtk_drm_crtc instance define
-> cmdq_client as:
->
-> struct mtk_drm_crtc {
->         /* client instance data */
->         struct cmdq_client cmdq_client;
-> };
->
-> and in rx_callback function can use pkt->cl to get
-> struct cmdq_client.
->
-> Fixes: f4be17cd5b14 ("drm/mediatek: Remove struct cmdq_client")
+I checked the platform device should be created at:
 
-Looking at this patchset looks like you're fixing the above commit by
-reintroducing the 'struct cmdq_client' again, which makes the above
-commit as a non-sense commit. That's confusing and not clear. I'm
-wondering if it wouldn't be more clear if you can just revert that
-patch. Then if there are more changes that need to be done do it with
-a follow up patch and really explain why these changes are needed.
+of_platform_default_populate_init:  arch_initcall_sync
+  ->of_platform_populate
+      ->of_platform_device_create_pdata
 
-Thanks,
-  Enric
+Not sure if this may be delayed for some device. If not, it should be
+ENODEV here.
 
-
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 73 +++++++++++++------------
->  1 file changed, 38 insertions(+), 35 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index 5f81489fc60c..411d99fcbb8f 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -52,8 +52,7 @@ struct mtk_drm_crtc {
->         bool                            pending_async_planes;
->
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> -       struct mbox_client              cmdq_cl;
-> -       struct mbox_chan                *cmdq_chan;
-> +       struct cmdq_client              cmdq_client;
->         struct cmdq_pkt                 cmdq_handle;
->         u32                             cmdq_event;
->         u32                             cmdq_vblank_cnt;
-> @@ -227,8 +226,8 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
->  }
->
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> -static int mtk_drm_cmdq_pkt_create(struct mbox_chan *chan, struct cmdq_pkt *pkt,
-> -                                   size_t size)
-> +static int mtk_drm_cmdq_pkt_create(struct cmdq_client *client, struct cmdq_pkt *pkt,
-> +                                  size_t size)
->  {
->         struct device *dev;
->         dma_addr_t dma_addr;
-> @@ -239,8 +238,9 @@ static int mtk_drm_cmdq_pkt_create(struct mbox_chan *chan, struct cmdq_pkt *pkt,
->                 return -ENOMEM;
->         }
->         pkt->buf_size = size;
-> +       pkt->cl = (void *)client;
->
-> -       dev = chan->mbox->dev;
-> +       dev = client->chan->mbox->dev;
->         dma_addr = dma_map_single(dev, pkt->va_base, pkt->buf_size,
->                                   DMA_TO_DEVICE);
->         if (dma_mapping_error(dev, dma_addr)) {
-> @@ -255,9 +255,11 @@ static int mtk_drm_cmdq_pkt_create(struct mbox_chan *chan, struct cmdq_pkt *pkt,
->         return 0;
->  }
->
-> -static void mtk_drm_cmdq_pkt_destroy(struct mbox_chan *chan, struct cmdq_pkt *pkt)
-> +static void mtk_drm_cmdq_pkt_destroy(struct cmdq_pkt *pkt)
->  {
-> -       dma_unmap_single(chan->mbox->dev, pkt->pa_base, pkt->buf_size,
-> +       struct cmdq_client *client = (struct cmdq_client *)pkt->cl;
-> +
-> +       dma_unmap_single(client->chan->mbox->dev, pkt->pa_base, pkt->buf_size,
->                          DMA_TO_DEVICE);
->         kfree(pkt->va_base);
->         kfree(pkt);
-> @@ -265,8 +267,9 @@ static void mtk_drm_cmdq_pkt_destroy(struct mbox_chan *chan, struct cmdq_pkt *pk
->
->  static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
->  {
-> -       struct mtk_drm_crtc *mtk_crtc = container_of(cl, struct mtk_drm_crtc, cmdq_cl);
->         struct cmdq_cb_data *data = mssg;
-> +       struct cmdq_client *cmdq_cl = container_of(cl, struct cmdq_client, client);
-> +       struct mtk_drm_crtc *mtk_crtc = container_of(cmdq_cl, struct mtk_drm_crtc, cmdq_client);
->         struct mtk_crtc_state *state;
->         unsigned int i;
->
-> @@ -299,7 +302,7 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
->         }
->
->         mtk_crtc->cmdq_vblank_cnt = 0;
-> -       mtk_drm_cmdq_pkt_destroy(mtk_crtc->cmdq_chan, data->pkt);
-> +       mtk_drm_cmdq_pkt_destroy(data->pkt);
->  }
->  #endif
->
-> @@ -550,24 +553,24 @@ static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
->                 mtk_mutex_release(mtk_crtc->mutex);
->         }
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> -       if (mtk_crtc->cmdq_chan) {
-> -               mbox_flush(mtk_crtc->cmdq_chan, 2000);
-> +       if (mtk_crtc->cmdq_client.chan) {
-> +               mbox_flush(mtk_crtc->cmdq_client.chan, 2000);
->                 cmdq_handle->cmd_buf_size = 0;
->                 cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
->                 cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
->                 mtk_crtc_ddp_config(crtc, cmdq_handle);
->                 cmdq_pkt_finalize(cmdq_handle);
-> -               dma_sync_single_for_device(mtk_crtc->cmdq_chan->mbox->dev,
-> -                                           cmdq_handle->pa_base,
-> -                                           cmdq_handle->cmd_buf_size,
-> -                                           DMA_TO_DEVICE);
-> +               dma_sync_single_for_device(mtk_crtc->cmdq_client.chan->mbox->dev,
-> +                                          cmdq_handle->pa_base,
-> +                                          cmdq_handle->cmd_buf_size,
-> +                                          DMA_TO_DEVICE);
->                 /*
->                  * CMDQ command should execute in next vblank,
->                  * If it fail to execute in next 2 vblank, timeout happen.
->                  */
->                 mtk_crtc->cmdq_vblank_cnt = 2;
-> -               mbox_send_message(mtk_crtc->cmdq_chan, cmdq_handle);
-> -               mbox_client_txdone(mtk_crtc->cmdq_chan, 0);
-> +               mbox_send_message(mtk_crtc->cmdq_client.chan, cmdq_handle);
-> +               mbox_client_txdone(mtk_crtc->cmdq_client.chan, 0);
->         }
->  #endif
->         mtk_crtc->config_updating = false;
-> @@ -581,7 +584,7 @@ static void mtk_crtc_ddp_irq(void *data)
->         struct mtk_drm_private *priv = crtc->dev->dev_private;
->
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> -       if (!priv->data->shadow_register && !mtk_crtc->cmdq_chan)
-> +       if (!priv->data->shadow_register && !mtk_crtc->cmdq_client.chan)
->                 mtk_crtc_ddp_config(crtc, NULL);
->         else if (mtk_crtc->cmdq_vblank_cnt > 0 && --mtk_crtc->cmdq_vblank_cnt == 0)
->                 DRM_ERROR("mtk_crtc %d CMDQ execute command timeout!\n",
-> @@ -924,20 +927,20 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->         mutex_init(&mtk_crtc->hw_lock);
->
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
-> -       mtk_crtc->cmdq_cl.dev = mtk_crtc->mmsys_dev;
-> -       mtk_crtc->cmdq_cl.tx_block = false;
-> -       mtk_crtc->cmdq_cl.knows_txdone = true;
-> -       mtk_crtc->cmdq_cl.rx_callback = ddp_cmdq_cb;
-> -       mtk_crtc->cmdq_chan =
-> -                       mbox_request_channel(&mtk_crtc->cmdq_cl,
-> -                                             drm_crtc_index(&mtk_crtc->base));
-> -       if (IS_ERR(mtk_crtc->cmdq_chan)) {
-> +       mtk_crtc->cmdq_client.client.dev = mtk_crtc->mmsys_dev;
-> +       mtk_crtc->cmdq_client.client.tx_block = false;
-> +       mtk_crtc->cmdq_client.client.knows_txdone = true;
-> +       mtk_crtc->cmdq_client.client.rx_callback = ddp_cmdq_cb;
-> +       mtk_crtc->cmdq_client.chan =
-> +                       mbox_request_channel(&mtk_crtc->cmdq_client.client,
-> +                                            drm_crtc_index(&mtk_crtc->base));
-> +       if (IS_ERR(mtk_crtc->cmdq_client.chan)) {
->                 dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
->                         drm_crtc_index(&mtk_crtc->base));
-> -               mtk_crtc->cmdq_chan = NULL;
-> +               mtk_crtc->cmdq_client.chan = NULL;
->         }
->
-> -       if (mtk_crtc->cmdq_chan) {
-> +       if (mtk_crtc->cmdq_client.chan) {
->                 ret = of_property_read_u32_index(priv->mutex_node,
->                                                  "mediatek,gce-events",
->                                                  drm_crtc_index(&mtk_crtc->base),
-> @@ -945,17 +948,17 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->                 if (ret) {
->                         dev_dbg(dev, "mtk_crtc %d failed to get mediatek,gce-events property\n",
->                                 drm_crtc_index(&mtk_crtc->base));
-> -                       mbox_free_channel(mtk_crtc->cmdq_chan);
-> -                       mtk_crtc->cmdq_chan = NULL;
-> +                       mbox_free_channel(mtk_crtc->cmdq_client.chan);
-> +                       mtk_crtc->cmdq_client.chan = NULL;
->                 } else {
-> -                       ret = mtk_drm_cmdq_pkt_create(mtk_crtc->cmdq_chan,
-> -                                                      &mtk_crtc->cmdq_handle,
-> -                                                      PAGE_SIZE);
-> +                       ret = mtk_drm_cmdq_pkt_create(&mtk_crtc->cmdq_client,
-> +                                                     &mtk_crtc->cmdq_handle,
-> +                                                     PAGE_SIZE);
->                         if (ret) {
->                                 dev_dbg(dev, "mtk_crtc %d failed to create cmdq packet\n",
->                                         drm_crtc_index(&mtk_crtc->base));
-> -                               mbox_free_channel(mtk_crtc->cmdq_chan);
-> -                               mtk_crtc->cmdq_chan = NULL;
-> +                               mbox_free_channel(mtk_crtc->cmdq_client.chan);
-> +                               mtk_crtc->cmdq_client.chan = NULL;
->                         }
->                 }
->         }
-> --
-> 2.18.0
->
-
+> so we should return -ENODEV in that case?
+> 
+> thanks,
+> Dafna
+> 
+> >   		}
+> > diff --git a/drivers/iommu/mtk_iommu_v1.c
+> > b/drivers/iommu/mtk_iommu_v1.c
+> > index 1467ba1e4417..4d7809432239 100644
+> > --- a/drivers/iommu/mtk_iommu_v1.c
+> > +++ b/drivers/iommu/mtk_iommu_v1.c
+> > @@ -602,7 +602,7 @@ static int mtk_iommu_probe(struct
+> > platform_device *pdev)
+> >   		}
+> >   
+> >   		plarbdev = of_find_device_by_node(larbnode);
+> > -		if (!plarbdev) {
+> > +		if (!plarbdev || !plarbdev->dev.driver) {
+> >   			of_node_put(larbnode);
+> >   			return -EPROBE_DEFER;
+> >   		}
+> > 
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
