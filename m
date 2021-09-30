@@ -2,68 +2,57 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9992C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:19:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 560E4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:32:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B4B1F6162E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:19:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B4B1F6162E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 20427615A7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:32:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 20427615A7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Sl5rdcViAaRLjygY+zOcjzb7Hw2VWkk+NDGW36NSSeI=; b=w/jok+odsqRugE
-	o8QfPNInqGEd0PzGf0EC0Z7WcVC20uI1liXaYmoP86Xlg7RdLYBontg4BhHKqCjogRw1hPLTuOfrr
-	aaxz7vrOQXpLaYEsKG57HK41T0Iq3JGAVsVcKRWrGS4snMOTAvDV1uxi7667dVi6aOSzOISL1NJd0
-	at95oEsx+GGRzgLh+UncqO0+1jtTl8t/QdJgUMsAsiJvLpD888tRPrEy17ep8KH7d027jSwTGiUlp
-	NfS0r85IX53KL11GlRjqPfvm/iVh9jAcbZdZZ3H7xcS4c9gWpf4T6aa6TKCA4JtJB1nQP+X2g4sQJ
-	mK01eouT9Yv3Nn7IDs9Q==;
+	List-Owner; bh=dxyk7kPEd/0m03cpqXSA+Lc+vND0bwk8ZFjbN8gVzGA=; b=U1guMohEURmtED
+	NR0+/cEueVJ5Aan8dD8zrQxMIh9zD+LYndosufI53OWan1nLMw7p8azUgOEcN9k7jmvA+IkFCcgKR
+	FQDhSxlfi6ZpML44hFstsEZnZ4AlY+bp19kB9E4eshnPMFzmel2FgGr0tcGkmn3psPr3p1v6b3oRZ
+	ULfbFCcERMY2Ci9Mhmr6NPsFQO2rgQaDPzCQrmxb7ZQgHtXtODpjVgfm8rlEH2sPpsLDEhKxoP2/o
+	5xNPf3/6Kvl4BoslyKY49KQTMMR1URTepajOyep1iX2IoYkGEWvPVfGmbCLVmkBwpdR1m3hTLdqLf
+	2S85s9v6O3axHH99kX2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVrHF-00DMM7-PK; Thu, 30 Sep 2021 08:18:49 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mVrUQ-00DODc-H3; Thu, 30 Sep 2021 08:32:26 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVrH2-00DMJP-PC; Thu, 30 Sep 2021 08:18:38 +0000
-X-UUID: 694f1bb1733548f7a681d5c4147c094a-20210930
-X-UUID: 694f1bb1733548f7a681d5c4147c094a-20210930
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yee.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1054442384; Thu, 30 Sep 2021 01:18:30 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 30 Sep 2021 01:16:44 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 30 Sep 2021 16:16:42 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 30 Sep 2021 16:16:42 +0800
-From: <yee.lee@mediatek.com>
-To: <linux-kernel@vger.kernel.org>
-CC: <nicholas.Tang@mediatek.com>, <Kuan-Ying.lee@mediatek.com>,
- <chinwen.chang@mediatek.com>, Yee Lee <yee.lee@mediatek.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, "Sami
- Tolvanen" <samitolvanen@google.com>, "moderated list:ARM/Mediatek SoC
- support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek
- SoC support" <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2] scs: Release kasan vmalloc poison in scs_free process
-Date: Thu, 30 Sep 2021 16:16:13 +0800
-Message-ID: <20210930081619.30091-1-yee.lee@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mVrU0-00DO1e-EG; Thu, 30 Sep 2021 08:32:02 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: eballetbo) with ESMTPSA id C49121F449E9
+From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, eizan@chromium.org,
+ kernel@collabora.com, drinkcat@chromium.org, jitao.shi@mediatek.com,
+ chunkuang.hu@kernel.org, hsinyi@chromium.org, matthias.bgg@gmail.com,
+ Crystal Guo <crystal.guo@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, Fabien Parent <fparent@baylibre.com>,
+ Guenter Roeck <linux@roeck-us.net>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>,
+ Wim Van Sebroeck <wim@linux-watchdog.org>, devicetree@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-watchdog@vger.kernel.org
+Subject: [PATCH v4 0/7] Add support to the mmsys driver to be a reset
+ controller
+Date: Thu, 30 Sep 2021 10:31:43 +0200
+Message-Id: <20210930083150.3317003-1-enric.balletbo@collabora.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_011836_856116_CF19C11A 
-X-CRM114-Status: UNSURE (   9.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210930_013200_655808_60F162C8 
+X-CRM114-Status: GOOD (  18.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,94 +69,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yee Lee <yee.lee@mediatek.com>
+Dear all,
 
-Since scs allocation is moved to vmalloc region, the
-shadow stack is protected by kasan_posion_vmalloc.
-However, the vfree_atomic operation needs to access
-its context for scs_free process and causes kasan error
-as the dump info below.
+The following patchset is a reimplementation of the patch sent by Jitao
+Shi [1] some time ago. As suggested by Chun-Kuang Hu, this time the
+reset is done using the reset API, where the mmsys driver is the reset
+controller and the mtk_dsi driver is the reset consumer.
 
-This patch Adds kasan_unpoison_vmalloc() before vfree_atomic,
-which aligns to the prior flow as using kmem_cache.
-The vmalloc region will go back posioned in the following
-vumap() operations.
+Note that the first patch is kind of unrelated change, it's just a
+cleanup but is needed if you want to apply all the following patches
+cleanly.
 
- ==================================================================
- BUG: KASAN: vmalloc-out-of-bounds in llist_add_batch+0x60/0xd4
- Write of size 8 at addr ffff8000100b9000 by task kthreadd/2
+This patchset is important in order to have the DSI panel working on some
+kukui MT8183 Chromebooks (i.e Lenovo IdeaPad Duet). Without it, you just
+get a black screen.
 
- CPU: 0 PID: 2 Comm: kthreadd Not tainted 5.15.0-rc2-11681-g92477dd1faa6-dirty #1
- Hardware name: linux,dummy-virt (DT)
- Call trace:
-  dump_backtrace+0x0/0x43c
-  show_stack+0x1c/0x2c
-  dump_stack_lvl+0x68/0x84
-  print_address_description+0x80/0x394
-  kasan_report+0x180/0x1dc
-  __asan_report_store8_noabort+0x48/0x58
-  llist_add_batch+0x60/0xd4
-  vfree_atomic+0x60/0xe0
-  scs_free+0x1dc/0x1fc
-  scs_release+0xa4/0xd4
-  free_task+0x30/0xe4
-  __put_task_struct+0x1ec/0x2e0
-  delayed_put_task_struct+0x5c/0xa0
-  rcu_do_batch+0x62c/0x8a0
-  rcu_core+0x60c/0xc14
-  rcu_core_si+0x14/0x24
-  __do_softirq+0x19c/0x68c
-  irq_exit+0x118/0x2dc
-  handle_domain_irq+0xcc/0x134
-  gic_handle_irq+0x7c/0x1bc
-  call_on_irq_stack+0x40/0x70
-  do_interrupt_handler+0x78/0x9c
-  el1_interrupt+0x34/0x60
-  el1h_64_irq_handler+0x1c/0x2c
-  el1h_64_irq+0x78/0x7c
-  _raw_spin_unlock_irqrestore+0x40/0xcc
-  sched_fork+0x4f0/0xb00
-  copy_process+0xacc/0x3648
-  kernel_clone+0x168/0x534
-  kernel_thread+0x13c/0x1b0
-  kthreadd+0x2bc/0x400
-  ret_from_fork+0x10/0x20
+Best regards,
+  Enric
 
- Memory state around the buggy address:
-  ffff8000100b8f00: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
-  ffff8000100b8f80: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
- >ffff8000100b9000: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
-                    ^
-  ffff8000100b9080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
-  ffff8000100b9100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
- ==================================================================
+[1] https://lore.kernel.org/linux-arm-kernel/20210420132614.150242-4-jitao.shi@mediatek.com/
 
-Suggested-by: Kuan-Ying Lee <kuan-ying.lee@mediatek.com>
-Reviewd-by: Will Deacon <will@kernel.org>
-Reviewd-by: Sami Tolvanen <samitolvanen@google.com>
-Signed-off-by: Yee Lee <yee.lee@mediatek.com>
----
-v2:
-- changed the unpoison call to be followed by vfree_atomic 
 
----
- kernel/scs.c | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v4:
+- Remove unnused variable as pointed by Hsin-Yi
 
-diff --git a/kernel/scs.c b/kernel/scs.c
-index e2a71fc82fa0..579841be8864 100644
---- a/kernel/scs.c
-+++ b/kernel/scs.c
-@@ -78,6 +78,7 @@ void scs_free(void *s)
- 		if (this_cpu_cmpxchg(scs_cache[i], 0, s) == NULL)
- 			return;
- 
-+	kasan_unpoison_vmalloc(s, SCS_SIZE);
- 	vfree_atomic(s);
- }
- 
+Changes in v3:
+- Based on top of the patch that converts mmsys to schema
+- Fix typo in the commit description
+
+Changes in v2:
+- Fix build test ERROR Reported-by: kernel test robot <lkp@intel.com>
+- Added a new patch to describe the dsi reset optional property.
+
+Enric Balletbo i Serra (7):
+  arm64: dts: mediatek: Move reset controller constants into common
+    location
+  dt-bindings: mediatek: Add #reset-cells to mmsys system controller
+  dt-bindings: display: mediatek: add dsi reset optional property
+  arm64: dts: mt8173: Add the mmsys reset bit to reset the dsi0
+  arm64: dts: mt8183: Add the mmsys reset bit to reset the dsi0
+  soc: mediatek: mmsys: Add reset controller support
+  drm/mediatek: mtk_dsi: Reset the dsi0 hardware
+
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |  4 ++
+ .../display/mediatek/mediatek,dsi.txt         |  6 ++
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  2 +
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  5 +-
+ drivers/gpu/drm/mediatek/mtk_dsi.c            |  5 +-
+ drivers/soc/mediatek/mtk-mmsys.c              | 68 +++++++++++++++++++
+ drivers/soc/mediatek/mtk-mmsys.h              |  2 +
+ drivers/watchdog/mtk_wdt.c                    |  6 +-
+ .../mt2712-resets.h                           |  0
+ include/dt-bindings/reset/mt8173-resets.h     |  2 +
+ .../mt8183-resets.h                           |  3 +
+ .../mt8192-resets.h                           |  0
+ 12 files changed, 97 insertions(+), 6 deletions(-)
+ rename include/dt-bindings/{reset-controller => reset}/mt2712-resets.h (100%)
+ rename include/dt-bindings/{reset-controller => reset}/mt8183-resets.h (98%)
+ rename include/dt-bindings/{reset-controller => reset}/mt8192-resets.h (100%)
+
 -- 
-2.18.0
+2.30.2
 
 
 _______________________________________________
