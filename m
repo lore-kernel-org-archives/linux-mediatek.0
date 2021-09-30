@@ -2,49 +2,49 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8AE35C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B40B6C433F5
 	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 02:47:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5862A617E6
+	by mail.kernel.org (Postfix) with ESMTPS id 7C67761880
 	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 02:47:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5862A617E6
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C67761880
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3G5+o3W04oKTzhVBxmykgUSTfLuVCMpMmaHWTACjJNk=; b=cEX8zqeMS0S0Hg
-	K0dQRHmwsYQv/TKenNR3GAvXjoL7A9qM6z6Byh4t5ANnNUgFrXQFVKCE4Z9AfMQJqpbyGPZ56X7fk
-	9+mAiPpag9Y6wuPFGYFe5b5e3UQLhzaoIHHYPowZm9tWMsNHO2xyyzFq7okGT0QSQcEnkehsVpv4o
-	821cMRn/1ncx32jese3NK8KyKc+94FWu9N0O/odqhwssBJlt6b3u48YsJ7SaFHD1brNkDZJY2wH2Q
-	9nrgpk01PlGxVzMYVSNC9zCNZrlNFwGebXsLIktswFwSFNqF8qfV6U6hxsflBMd8848sbxY+v0PIo
-	ca18B8F8KUrdPYiCW1Rg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=RtD2yXECzMxbiSNxqhFJunMXU1ErAWEFq9fR+VtHzu0=; b=M+rjesl2/wfAn6
+	DH2+ghh9A5OwVlplLdL7H8yD8T1ks8gQofXMTc/GX/BlSI9+f/B6rIn5+umtrC2WIQl4/cdJcJ/Vm
+	jzB3ta+QpYDWhKFPwNibeihTkhp+vsLXoOGNiTeQnt4nuY/g96eN6iT2Vw86nl011Iq5Gn5cNtG2d
+	vllazLZeEwXMi76gIfCKfSRr0C99cunr+yMMQPedTYODA3KL0Y9bD3xFgk6yzTIf1ptFfEesMJRym
+	PtlRtxlGQaM8h1VgL60/QKmDYkcsAjBwcCMhhwqJ5ZM+VxAt4aLLpYyeiKNuX+9y7K+BEuthdra9P
+	h8Qbvfa8dErGpPGkhRvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVm6l-00Co8h-3x; Thu, 30 Sep 2021 02:47:39 +0000
+	id 1mVm6m-00Co8v-1n; Thu, 30 Sep 2021 02:47:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVm6L-00Co2B-4C; Thu, 30 Sep 2021 02:47:15 +0000
-X-UUID: 521ab7b7397a46f98225bce7c6a394aa-20210929
-X-UUID: 521ab7b7397a46f98225bce7c6a394aa-20210929
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1mVm6K-00Co1q-Oe; Thu, 30 Sep 2021 02:47:15 +0000
+X-UUID: 3ca6389f44f543d8b69dde6d936802fd-20210929
+X-UUID: 3ca6389f44f543d8b69dde6d936802fd-20210929
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1544124513; Wed, 29 Sep 2021 19:47:09 -0700
-Received: from mtkcas07.mediatek.inc (172.21.101.84) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ with ESMTP id 622150006; Wed, 29 Sep 2021 19:47:09 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 29 Sep 2021 19:47:07 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkcas07.mediatek.inc
- (172.21.101.84) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 30 Sep 2021 10:47:05 +0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 30 Sep 2021 10:47:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 30 Sep 2021 10:47:05 +0800
+ Frontend Transport; Thu, 30 Sep 2021 10:47:06 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <p.zabel@pengutronix.de>
@@ -55,16 +55,18 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  <linux-kernel@vger.kernel.org>, <hsinyi@chromium.org>, <fshao@chromium.org>,
  <jason-jh.lin@mediatek.com>, <nancy.lin@mediatek.com>,
  <singo.chang@mediatek.com>
-Subject: [v2 PATCH 0/3] Fix the issues caused by CMDQ refinement of mtk-drm
-Date: Thu, 30 Sep 2021 10:47:01 +0800
-Message-ID: <20210930024704.6966-1-jason-jh.lin@mediatek.com>
+Subject: [v2 PATCH 3/3] drm/mediatek: Fix cursor plane is not config when
+ primary is updating
+Date: Thu, 30 Sep 2021 10:47:04 +0800
+Message-ID: <20210930024704.6966-4-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20210930024704.6966-1-jason-jh.lin@mediatek.com>
+References: <20210930024704.6966-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210929_194713_192730_D45E6FDD 
-X-CRM114-Status: UNSURE (   7.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20210929_194712_836280_98739F42 
+X-CRM114-Status: GOOD (  11.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,19 +83,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change in v2:
-- cmdq_ddp_cb should use struct mbox_clinet to find struct cmdq_client,
-  and then use struct cmdq_clint to find struct mtk_drm_crtc
-- change data.sta checking condition to stadard error checking
+If cursor plane has updated but primary plane config task is not
+finished, mtk_drm_crtc_update_config will call mbox_flush() to clear
+all task in current GCE thread and let cursor plane re-send a new
+GCE task with cursor + primary plane config to replace the unfinished
+GCE task.
 
-jason-jh.lin (3):
-  drm/mediatek: Fix crash at using pkt->cl->chan in cmdq_pkt_finalize
-  drm/mediatek: Fix pkt buf alloc once but free many times
-  drm/mediatek: Fix cursor plane is not config when primary is updating
+So the plane config flag should not be cleared when mailbox callback
+with a error status.
 
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 95 ++++++++++++++-----------
- 1 file changed, 54 insertions(+), 41 deletions(-)
+Fixes: 9efb16c2fdd6 ("drm/mediatek: Clear pending flag when cmdq packet is done")
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 274e5c67507d..b96dbc867890 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -281,6 +281,9 @@ static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+ 	struct mtk_crtc_state *state;
+ 	unsigned int i;
+ 
++	if (data->sta < 0)
++		return;
++
+ 	state = to_mtk_crtc_state(mtk_crtc->base.state);
+ 
+ 	state->pending_config = false;
 -- 
 2.18.0
 
