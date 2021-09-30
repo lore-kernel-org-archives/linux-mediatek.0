@@ -2,14 +2,14 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E203FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:34:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B608C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:34:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A4E65615A7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:34:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A4E65615A7
+	by mail.kernel.org (Postfix) with ESMTPS id 17C7F615A7
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:34:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 17C7F615A7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,37 +18,38 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8SLRGanGgoyFAueeSR35no9iPrHGqxFtWoIpLxZFalw=; b=qjWqY0DI++3NqZ
-	wLYbJ0kl9B4qq3O+KwXZfKA2cv/2MQ0ZVBPM8dYRECMv6l3jEDl89mR1r3dCJgzqzbhx7qDkobBKX
-	GfESdcJC5zP9C0SzEyy/b75d1qbwKTf2byFsGJUTWFIjLItPNUy4Iu3xlGBhLbdXhxQ0N+lVfY/yA
-	VTb7qDvl+uhoUJG+JVJ2fZzCA/UgKPxvk8rwLp+VHMAENdagxgmUjTGoO7ymb+d+Hggsggp7+ihN5
-	OTsrh7SSYuo39BTo5l8jSj1qDW8pXMJTsDsekaPDV5kJYNzRVaUkLFBNZGs1PR4re/annPTpcfGF4
-	qEAjPXqN1sglVsdKRmkQ==;
+	List-Owner; bh=FEUtuGia89n1PQcz43Iub9cJbwijK5TE7XT29DKZEFU=; b=LDlF2/IPSCgdQQ
+	v7KzqsuNW53l546LaJjhU5uItUu0ATg3rNeiW6kKPETlFk1wnaQkGXRgfNQG86LMRKN19JIw0dVB4
+	UhPxPrDRIjNNwFUcIOrLLI76it7syFIkdikcyUfim/QdCGjHh5gjNAqX9DFNvznkmci7DzZsd+W7m
+	d7Y6yyOdP2nFDucG5v05IX4kCFcHVFzyr+JsBijo673Lr+1f/gVzz1E1ZXPpFDPnbqItsjruA8try
+	mAsyx/bcFMtDts0hc8urlpfLIr9Zhaun4QtHZsPJU7+Pqib7ypQzTxcTPm56B8VTaVlg6WuDs79lx
+	tdPPbpRbx4Isca0+VSXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVrW8-00DPJn-Ej; Thu, 30 Sep 2021 08:34:12 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mVrWd-00DPhW-RT; Thu, 30 Sep 2021 08:34:43 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVrU4-00DO4o-CQ; Thu, 30 Sep 2021 08:32:06 +0000
+ id 1mVrU5-00DO5x-Ez; Thu, 30 Sep 2021 08:32:06 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: eballetbo) with ESMTPSA id A49541F449FB
+ (Authenticated sender: eballetbo) with ESMTPSA id 8CAA71F449FE
 From: Enric Balletbo i Serra <enric.balletbo@collabora.com>
 To: linux-kernel@vger.kernel.org
 Cc: linux-mediatek@lists.infradead.org, eizan@chromium.org,
  kernel@collabora.com, drinkcat@chromium.org, jitao.shi@mediatek.com,
  chunkuang.hu@kernel.org, hsinyi@chromium.org, matthias.bgg@gmail.com,
- Philipp Zabel <p.zabel@pengutronix.de>,
+ Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
+ Philipp Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v4 6/7] soc: mediatek: mmsys: Add reset controller support
-Date: Thu, 30 Sep 2021 10:31:49 +0200
-Message-Id: <20210930103105.v4.6.I15e2419141a69b2e5c7e700c34d92a69df47e04d@changeid>
+Subject: [PATCH v4 7/7] drm/mediatek: mtk_dsi: Reset the dsi0 hardware
+Date: Thu, 30 Sep 2021 10:31:50 +0200
+Message-Id: <20210930103105.v4.7.Idbb4727ddf00ba2fe796b630906baff10d994d89@changeid>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <20210930083150.3317003-1-enric.balletbo@collabora.com>
 References: <20210930083150.3317003-1-enric.balletbo@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_013204_591939_668CF7C6 
-X-CRM114-Status: GOOD (  15.93  )
+X-CRM114-CacheID: sfid-20210930_013205_655672_F3354363 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,139 +66,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Among other features the mmsys driver should implement a reset
-controller to be able to reset different bits from their space.
+Reset dsi0 HW to default when power on. This prevents to have different
+settingis between the bootloader and the kernel.
+
+As not all Mediatek boards have the reset consumer configured in their
+board description, also is not needed on all of them, the reset is optional,
+so the change is compatible with all boards.
 
 Cc: Jitao Shi <jitao.shi@mediatek.com>
 Suggested-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+Acked-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
 ---
 
-Changes in v4:
-- Remove unnused variable as pointed by Hsin-Yi.
+(no changes since v3)
 
- drivers/soc/mediatek/mtk-mmsys.c | 68 ++++++++++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.h |  2 +
- 2 files changed, 70 insertions(+)
+Changes in v3:
+- Fix typo in the commit description
 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index d9bbb0721ff4..132302154349 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -4,10 +4,12 @@
-  * Author: James Liao <jamesjj.liao@mediatek.com>
-  */
- 
-+#include <linux/delay.h>
- #include <linux/device.h>
- #include <linux/io.h>
- #include <linux/of_device.h>
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 93b40c245f00..5d90d2eb0019 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -11,6 +11,7 @@
+ #include <linux/of_platform.h>
+ #include <linux/phy/phy.h>
  #include <linux/platform_device.h>
-+#include <linux/reset-controller.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
++#include <linux/reset.h>
  
- #include "mtk-mmsys.h"
-@@ -62,6 +64,8 @@ static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
- struct mtk_mmsys {
- 	void __iomem *regs;
- 	const struct mtk_mmsys_driver_data *data;
-+	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
-+	struct reset_controller_dev rcdev;
- };
+ #include <video/mipi_display.h>
+ #include <video/videomode.h>
+@@ -980,8 +981,10 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+ 	struct mtk_dsi *dsi = dev_get_drvdata(dev);
  
- void mtk_mmsys_ddp_connect(struct device *dev,
-@@ -101,6 +105,58 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
- 
-+static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned long id,
-+				  bool assert)
-+{
-+	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
-+	unsigned long flags;
-+	u32 reg;
-+
-+	spin_lock_irqsave(&mmsys->lock, flags);
-+
-+	reg = readl_relaxed(mmsys->regs + MMSYS_SW0_RST_B);
-+
-+	if (assert)
-+		reg &= ~BIT(id);
-+	else
-+		reg |= BIT(id);
-+
-+	writel_relaxed(reg, mmsys->regs + MMSYS_SW0_RST_B);
-+
-+	spin_unlock_irqrestore(&mmsys->lock, flags);
-+
-+	return 0;
-+}
-+
-+static int mtk_mmsys_reset_assert(struct reset_controller_dev *rcdev, unsigned long id)
-+{
-+	return mtk_mmsys_reset_update(rcdev, id, true);
-+}
-+
-+static int mtk_mmsys_reset_deassert(struct reset_controller_dev *rcdev, unsigned long id)
-+{
-+	return mtk_mmsys_reset_update(rcdev, id, false);
-+}
-+
-+static int mtk_mmsys_reset(struct reset_controller_dev *rcdev, unsigned long id)
-+{
-+	int ret;
-+
-+	ret = mtk_mmsys_reset_assert(rcdev, id);
+ 	ret = mtk_dsi_encoder_init(drm, dsi);
 +	if (ret)
 +		return ret;
-+
-+	usleep_range(1000, 1100);
-+
-+	return mtk_mmsys_reset_deassert(rcdev, id);
-+}
-+
-+static const struct reset_control_ops mtk_mmsys_reset_ops = {
-+	.assert = mtk_mmsys_reset_assert,
-+	.deassert = mtk_mmsys_reset_deassert,
-+	.reset = mtk_mmsys_reset,
-+};
-+
- static int mtk_mmsys_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
-@@ -121,6 +177,18 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 		return ret;
- 	}
  
-+	spin_lock_init(&mmsys->lock);
-+
-+	mmsys->rcdev.owner = THIS_MODULE;
-+	mmsys->rcdev.nr_resets = 32;
-+	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
-+	mmsys->rcdev.of_node = pdev->dev.of_node;
-+	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Couldn't register mmsys reset controller: %d\n", ret);
-+		return ret;
-+	}
-+
- 	mmsys->data = of_device_get_match_data(&pdev->dev);
- 	platform_set_drvdata(pdev, mmsys);
+-	return ret;
++	return device_reset_optional(dev);
+ }
  
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index 9e2b81bd38db..8b0ed05117ea 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -78,6 +78,8 @@
- #define DSI_SEL_IN_RDMA				0x1
- #define DSI_SEL_IN_MASK				0x1
- 
-+#define MMSYS_SW0_RST_B				0x140
-+
- struct mtk_mmsys_routes {
- 	u32 from_comp;
- 	u32 to_comp;
+ static void mtk_dsi_unbind(struct device *dev, struct device *master,
 -- 
 2.30.2
 
