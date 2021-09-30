@@ -2,83 +2,64 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40A3DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 19:41:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D257CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 19:49:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D837E619E7
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 19:41:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D837E619E7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
+	by mail.kernel.org (Postfix) with ESMTPS id 835E761A35
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 19:49:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 835E761A35
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1X67SxpzxsNn8lWnvUu/7JZl4xqKkZhg5Bf2sWy0MbQ=; b=cD0MryQY0oCbp4
-	sjRx+UEj47am7IQK38IGZEcBFuHjMgvdwh0Azr1+BbJCKAJmeazhO8PwqUgFGFX+t/i3sKCBV/xOK
-	UAYtzJ17vwPF7J5xn2Jo6h9wAkCupIwOYdeu/c9Jy+i9gTTHpknoZoLVbZJJrSQJ+aYYgvLCmhtiX
-	IF0K17a81PdZVvhL0ovqbO+2sQy9MNgzIBgUIbY8ksuE5NcRAm9CL1SZNkY9KPW3Ui7xlWJu9lUbn
-	80TU8My3LvgOhwM3egpk0bntZhj6aW15RAj/nV7kvjK6Ia6o+tyDe4layhosHM7SQq40nDFUS+W8f
-	5vkFmOAM+i4oEj3N9vIw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=pQ6qUl20xtA4syvuApByYTLdq9DpFJ/cTC/HF2eCQtM=; b=xf0szPtgQb7AiD
+	Lb2+k0FBJw+v0PeJ0ZeM4XWm5E7Vv2VrXWNz/m2CDNlHhCyc1fVZrnwzCIjzSzXxgmIYpScx46DjO
+	VHpWQVwr8VZ2G7HDwJ2hHDj8prY0X/azQUcMG3+Uv4dCifFl+/aMVz9tdbOuNqiYY2uCvABIvaxGC
+	dPVvt7Fc5t8tcarGG7U1TSdZD3JqlChdg3QpM69efV2PMV0dLGhCqO2HgAzcNYvZsJMVeX/m2cG4+
+	1WQR2W0c/9MiOKo+oHLMmKGViXWseWGIzugEgx21g+oTEOWjBJUtVAhjbV2nu9BshkqTmAPnAyIT0
+	wjQG0TKH1ropHF9izKrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mW1vW-00FtmJ-Lk; Thu, 30 Sep 2021 19:41:06 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1mW23K-00FvNF-SQ; Thu, 30 Sep 2021 19:49:10 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mW1vT-00FtiM-8q
- for linux-mediatek@lists.infradead.org; Thu, 30 Sep 2021 19:41:05 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id d6so11833252wrc.11
- for <linux-mediatek@lists.infradead.org>; Thu, 30 Sep 2021 12:41:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Hx/tBsdkeGhZxG52QWJPz9Kz/HAe/yuuGxlrpK5+Bs0=;
- b=pGEwkWuKW4obTzm9tbCH+Qhm6GafqSky9gPfAPfj9/ZynrhBmRHqkwF+H9EGA74sZ+
- e65f5loIGlF2z9PQbnab4xRbb3yDQJ/km66crhkHwhTxN1awrIBZNo3u0ERqhPwovU9V
- kwegr6/GU7a9cg+KQ7u51n6TXjbYmROF3vCM4TlVy6iwZ60hnen/i7qJMO9rDoaz9kuJ
- TVZulsdDjJ+zcSoGoLkBHB6sLJrs862Qc2Lg43bki0ztoRX7zWsp7EDGcY5JubxtwWcq
- SBlIX2ZRI0c8idL5Vi1z3XNjCaSY1JOPkyx4pqHbKKIJJu94y6LGa5TWmR8Wb9mZLGSB
- MHgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Hx/tBsdkeGhZxG52QWJPz9Kz/HAe/yuuGxlrpK5+Bs0=;
- b=4s9lKEqsGN/NNfUqLmfz2YNP/eLyd+QmHZMx8rI0CscAKSmVTz+jBrDibul6Ioyi2o
- RadM0is+REcH3eSSpskGOYFY6B9RWa4PkvmflrFW0mN8vrDkqCkNi0xIQlTzA0TbhagQ
- TIQ1dJbQ98F3NQF7qN98g+90gPMNxmWxEE2IlIFEAJCLW+12zECBL4ZTqNkASLHF6J+Z
- 1YYBYAqcRBRepz38qi+m2ibi767W5RMXXe7FXkzooEEaJvo3kTPX1gkQVpZ6XgAwAxbN
- sMNXxQqTc8wOD1M+JkFxWQDe+rVGdpxLeexp85hVuTb6D37SYNcMgWHh6F1xbBW/UFN0
- dHyw==
-X-Gm-Message-State: AOAM532wPOLB7cRQ1simQl5RSaHIDOuSKU95oo4EhX9reCInQRopmNZ0
- dLyYm5VsePckXRrEY1bBAeaElA==
-X-Google-Smtp-Source: ABdhPJzTZR4PaIT012/kW9Ejx5+BIO/rLhQdspCqmIHaZLLOGMEi/OxAq8Ai70Wk9pA9FTsQaeEIBw==
-X-Received: by 2002:adf:cf10:: with SMTP id o16mr8056065wrj.12.1633030859457; 
- Thu, 30 Sep 2021 12:40:59 -0700 (PDT)
-Received: from blmsp ([2a02:2454:3e6:c900::97e])
- by smtp.gmail.com with ESMTPSA id l124sm5576156wml.8.2021.09.30.12.40.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Sep 2021 12:40:59 -0700 (PDT)
-Date: Thu, 30 Sep 2021 21:40:58 +0200
-From: Markus Schneider-Pargmann <msp@baylibre.com>
-To: Sean Wang <sean.wang@mediatek.com>,
- Herbert Xu <herbert@gondor.apana.org.au>, Matt Mackall <mpm@selenic.com>
-Cc: linux-mediatek@lists.infradead.org, linux-crypto@vger.kernel.org,
+ id 1mW237-00FvLe-8b; Thu, 30 Sep 2021 19:48:59 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id F14DC60C51;
+ Thu, 30 Sep 2021 19:48:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1633031335;
+ bh=hDdTWheoUb4ZPM90BwAajZQdvPLHWOT4OxlEVDwGXig=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=LTGpyZWG7WUD4OlNOPnmQIEH++4rz1slz2w49GSixX+nv5xl1b1QSYUAGOoYF7VyS
+ YOp6yIjK1Z9S1oQnXTlCKRBjwxlRJMYFbKIJrvnNF2sP56WeGUIan5USqKFl1/rtPq
+ g2BLVFemgMVFe+kCG+2zB2nfYRFNgq7qCWYY1lLRMew9VtGxKj2UjwyfwVtzXgTqIG
+ vXAcc0hKdqAVzyrTHXFe3squ+9E/om6esEohzIMs3vyxKZYRj6o5NhpibTbhhc2aQn
+ PZdiDO1bRR2X1XaCnSzn/+CNF0duPMQ+HphR79pG4QCv9SLe8Vv5sKHyspuphniaqT
+ U8V0lRRv+qY8Q==
+Date: Thu, 30 Sep 2021 14:48:53 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: mingchuang qiao <mingchuang.qiao@mediatek.com>
+Cc: kerun.zhu@mediatek.com, linux-pci@vger.kernel.org,
+ lambert.wang@mediatek.com, rjw@rjwysocki.net,
+ linux-kernel@vger.kernel.org, matthias.bgg@gmail.com,
+ alex.williamson@redhat.com, linux-mediatek@lists.infradead.org,
+ utkarsh.h.patel@intel.com, haijun.liu@mediatek.com,
+ bhelgaas@google.com, mika.westerberg@linux.intel.com,
  linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] hwrng: mediatek - Force runtime pm ops for sleep ops
-Message-ID: <20210930194058.oe5vlqlelilekdde@blmsp>
-References: <20210930191242.2542315-1-msp@baylibre.com>
+Subject: Re: [v4] PCI: Avoid unsync of LTR mechanism configuration
+Message-ID: <20210930194853.GA903868@bhelgaas>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20210930191242.2542315-1-msp@baylibre.com>
+In-Reply-To: <2d11f5fa62151db0d490ea03e2f8399d784ea522.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_124103_354266_3D36C0CE 
-X-CRM114-Status: GOOD (  22.26  )
+X-CRM114-CacheID: sfid-20210930_124857_392108_A48E4421 
+X-CRM114-Status: GOOD (  53.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,59 +76,221 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On Thu, Sep 30, 2021 at 09:12:42PM +0200, Markus Schneider-Pargmann wrote:
-> Currently mtk_rng_runtime_suspend/resume is called for both runtime pm
-> and system sleep operations.
+On Thu, Sep 30, 2021 at 03:02:24PM +0800, mingchuang qiao wrote:
+> Hi Bjorn,
 > 
-> This is wrong as these should only be runtime ops as the name already
-> suggests. Currently freezing the system will lead to a call to
-> mtk_rng_runtime_suspend even if the device currently isn't active. This
-> leads to a clock warning because it is disabled/unprepared although it
-> isn't enabled/prepared currently.
-> 
-> This patch fixes this by only setting the runtime pm ops and forces to
-> call the runtime pm ops from the system sleep ops as well if active but
-> not otherwise.
-> 
-> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> A friendly ping.
+> Thanks.
 
-Fixes: 81d2b34508c6 (hwrng: mtk - add runtime PM support)
+I pointed out a couple issues, but you never responded.  See below.
 
-Sorry, forgot to add this line in the commit message. I can add it for
-the next version.
+> On Mon, 2021-09-06 at 13:36 +0800, mingchuang qiao wrote:
+> > Hi Bjorn,
+> > 
+> > On Thu, 2021-02-18 at 10:50 -0600, Bjorn Helgaas wrote:
+> > > On Thu, Feb 04, 2021 at 05:51:25PM +0800, mingchuang.qiao@mediatek.
+> > > co
+> > > m wrote:
+> > > > From: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
+> > > > 
+> > > > In bus scan flow, the "LTR Mechanism Enable" bit of DEVCTL2
+> > > > register is
+> > > > configured in pci_configure_ltr(). If device and bridge both
+> > > > support LTR
+> > > > mechanism, the "LTR Mechanism Enable" bit of device and bridge
+> > > > will
+> > > > be
+> > > > enabled in DEVCTL2 register. And pci_dev->ltr_path will be set as
+> > > > 1.
+> > > > 
+> > > > If PCIe link goes down when device resets, the "LTR Mechanism
+> > > > Enable" bit
+> > > > of bridge will change to 0 according to PCIe r5.0, sec 7.5.3.16.
+> > > > However,
+> > > > the pci_dev->ltr_path value of bridge is still 1.
+> > > > 
+> > > > For following conditions, check and re-configure "LTR Mechanism
+> > > > Enable" bit
+> > > > of bridge to make "LTR Mechanism Enable" bit match ltr_path
+> > > > value.
+> > > >    -before configuring device's LTR for hot-remove/hot-add
+> > > >    -before restoring device's DEVCTL2 register when restore
+> > > > device
+> > > > state
+> > > 
+> > > There's definitely a bug here.  The commit log should say a little
+> > > more about what it is.  I *think* if LTR is enabled and we suspend
+> > > (putting the device in D3cold) and resume, LTR probably doesn't
+> > > work
+> > > after resume because LTR is disabled in the upstream bridge, which
+> > > would be an obvious bug.
 
-Best,
-Markus
+Here's one thing.  Above I was asking for more details.  In
+particular, how would a user notice this bug?  How did *you* notice
+the bug?
 
-> ---
->  drivers/char/hw_random/mtk-rng.c | 9 +++++++--
->  1 file changed, 7 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/char/hw_random/mtk-rng.c b/drivers/char/hw_random/mtk-rng.c
-> index 8ad7b515a51b..6c00ea008555 100644
-> --- a/drivers/char/hw_random/mtk-rng.c
-> +++ b/drivers/char/hw_random/mtk-rng.c
-> @@ -166,8 +166,13 @@ static int mtk_rng_runtime_resume(struct device *dev)
->  	return mtk_rng_init(&priv->rng);
->  }
->  
-> -static UNIVERSAL_DEV_PM_OPS(mtk_rng_pm_ops, mtk_rng_runtime_suspend,
-> -			    mtk_rng_runtime_resume, NULL);
-> +static const struct dev_pm_ops mtk_rng_pm_ops = {
-> +	SET_RUNTIME_PM_OPS(mtk_rng_runtime_suspend,
-> +			   mtk_rng_runtime_resume, NULL)
-> +	SET_SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend,
-> +				pm_runtime_force_resume)
-> +};
-> +
->  #define MTK_RNG_PM_OPS (&mtk_rng_pm_ops)
->  #else	/* CONFIG_PM */
->  #define MTK_RNG_PM_OPS NULL
-> -- 
-> 2.33.0
-> 
+> > > Also, if a device with LTR enabled is hot-removed, and we hot-add a
+> > > device, I think LTR will not work on the new device.  Possibly also
+> > > a
+> > > bug, although I'm not convinced we know how to configure LTR on the
+> > > new device anyway.
+> > > 
+> > > So I'd *like* to merge the bug fix for v5.12, but I think I'll wait
+> > > because of the issue below.
+> > > 
+> > 
+> > A friendly ping.
+> > Any further process shall I make to get this patch merged?
+> > 
+> > > > Signed-off-by: Mingchuang Qiao <mingchuang.qiao@mediatek.com>
+> > > > ---
+> > > > changes of v4
+> > > >  -fix typo of commit message
+> > > >  -rename: pci_reconfigure_bridge_ltr()-
+> > > > > pci_bridge_reconfigure_ltr()
+> > > > 
+> > > > changes of v3
+> > > >  -call pci_reconfigure_bridge_ltr() in probe.c
+> > > > changes of v2
+> > > >  -modify patch description
+> > > >  -reconfigure bridge's LTR before restoring device DEVCTL2
+> > > > register
+> > > > ---
+> > > >  drivers/pci/pci.c   | 25 +++++++++++++++++++++++++
+> > > >  drivers/pci/pci.h   |  1 +
+> > > >  drivers/pci/probe.c | 13 ++++++++++---
+> > > >  3 files changed, 36 insertions(+), 3 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+> > > > index b9fecc25d213..6bf65d295331 100644
+> > > > --- a/drivers/pci/pci.c
+> > > > +++ b/drivers/pci/pci.c
+> > > > @@ -1437,6 +1437,24 @@ static int pci_save_pcie_state(struct
+> > > > pci_dev *dev)
+> > > >  	return 0;
+> > > >  }
+> > > >  
+> > > > +void pci_bridge_reconfigure_ltr(struct pci_dev *dev)
+> > > > +{
+> > > > +#ifdef CONFIG_PCIEASPM
+> > > > +	struct pci_dev *bridge;
+> > > > +	u32 ctl;
+> > > > +
+> > > > +	bridge = pci_upstream_bridge(dev);
+> > > > +	if (bridge && bridge->ltr_path) {
+> > > > +		pcie_capability_read_dword(bridge,
+> > > > PCI_EXP_DEVCTL2, &ctl);
+> > > > +		if (!(ctl & PCI_EXP_DEVCTL2_LTR_EN)) {
+> > > > +			pci_dbg(bridge, "re-enabling LTR\n");
+> > > > +			pcie_capability_set_word(bridge,
+> > > > PCI_EXP_DEVCTL2,
+> > > > +						 PCI_EXP_DEVCTL2
+> > > > _L
+> > > > TR_EN);
+> > > 
+> > > This pattern of updating the upstream bridge on behalf of "dev" is
+> > > problematic because it's racy:
+> > > 
+> > >   CPU 1                     CPU 2
+> > >   -------------------       ---------------------
+> > >   ctl = read DEVCTL2        ctl = read(DEVCTL2)
+> > >   ctl |= DEVCTL2_LTR_EN     ctl |= DEVCTL2_ARI
+> > >   write(DEVCTL2, ctl)
+> > >                             write(DEVCTL2, ctl)
+> > > 
+> > > Now the bridge has ARI set, but not LTR_EN.
+> > > 
+> > > We have the same problem in the pci_enable_device() path.  The most
+> > > recent try at fixing it is [1].
+
+I was hoping you would respond with "yes, I understand the problem,
+but don't think it's likely" or "no, this isn't actually a problem
+because ..."
+
+I think it *is* a problem, but we're probably unlikely to hit it, so
+we can probably live with it for now.  
+
+> > > [1] https://lore.kernel.org/linux-pci/20201218174011.340514-2-s.mir
+> > > os
+> > > hnichenko@yadro.com/
+> > > 
+> > > > +		}
+> > > > +	}
+> > > > +#endif
+> > > > +}
+> > > > +
+> > > >  static void pci_restore_pcie_state(struct pci_dev *dev)
+> > > >  {
+> > > >  	int i = 0;
+> > > > @@ -1447,6 +1465,13 @@ static void pci_restore_pcie_state(struct
+> > > > pci_dev *dev)
+> > > >  	if (!save_state)
+> > > >  		return;
+> > > >  
+> > > > +	/*
+> > > > +	 * Downstream ports reset the LTR enable bit when link
+> > > > goes down.
+> > > > +	 * Check and re-configure the bit here before restoring
+> > > > device.
+> > > > +	 * PCIe r5.0, sec 7.5.3.16.
+> > > > +	 */
+> > > > +	pci_bridge_reconfigure_ltr(dev);
+> > > > +
+> > > >  	cap = (u16 *)&save_state->cap.data[0];
+> > > >  	pcie_capability_write_word(dev, PCI_EXP_DEVCTL,
+> > > > cap[i++]);
+> > > >  	pcie_capability_write_word(dev, PCI_EXP_LNKCTL,
+> > > > cap[i++]);
+> > > > diff --git a/drivers/pci/pci.h b/drivers/pci/pci.h
+> > > > index 5c59365092fa..b3a5e5287cb7 100644
+> > > > --- a/drivers/pci/pci.h
+> > > > +++ b/drivers/pci/pci.h
+> > > > @@ -111,6 +111,7 @@ void pci_free_cap_save_buffers(struct pci_dev
+> > > > *dev);
+> > > >  bool pci_bridge_d3_possible(struct pci_dev *dev);
+> > > >  void pci_bridge_d3_update(struct pci_dev *dev);
+> > > >  void pci_bridge_wait_for_secondary_bus(struct pci_dev *dev);
+> > > > +void pci_bridge_reconfigure_ltr(struct pci_dev *dev);
+> > > >  
+> > > >  static inline void pci_wakeup_event(struct pci_dev *dev)
+> > > >  {
+> > > > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> > > > index 953f15abc850..ade055e9fb58 100644
+> > > > --- a/drivers/pci/probe.c
+> > > > +++ b/drivers/pci/probe.c
+> > > > @@ -2132,9 +2132,16 @@ static void pci_configure_ltr(struct
+> > > > pci_dev
+> > > > *dev)
+> > > >  	 * Complex and all intermediate Switches indicate
+> > > > support
+> > > > for LTR.
+> > > >  	 * PCIe r4.0, sec 6.18.
+> > > >  	 */
+> > > > -	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT ||
+> > > > -	    ((bridge = pci_upstream_bridge(dev)) &&
+> > > > -	      bridge->ltr_path)) {
+> > > > +	if (pci_pcie_type(dev) == PCI_EXP_TYPE_ROOT_PORT) {
+> > > > +		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
+> > > > +					 PCI_EXP_DEVCTL2_LTR_EN)
+> > > > ;
+> > > > +		dev->ltr_path = 1;
+> > > > +		return;
+> > > > +	}
+> > > > +
+> > > > +	bridge = pci_upstream_bridge(dev);
+> > > > +	if (bridge && bridge->ltr_path) {
+> > > > +		pci_bridge_reconfigure_ltr(dev);
+> > > >  		pcie_capability_set_word(dev, PCI_EXP_DEVCTL2,
+> > > >  					 PCI_EXP_DEVCTL2_LTR_EN)
+> > > > ;
+> > > >  		dev->ltr_path = 1;
+> > > > -- 
+> > > > 2.18.0
+> > > 
+> > > _______________________________________________
+> > > Linux-mediatek mailing list
+> > > Linux-mediatek@lists.infradead.org
+> > > http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
