@@ -2,66 +2,68 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A0C2FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9992C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:19:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7600A61452
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 07:53:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7600A61452
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
+	by mail.kernel.org (Postfix) with ESMTPS id B4B1F6162E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 08:19:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B4B1F6162E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MKiJjknvT8/CXjPEf1FmS4StYRvdFOha1jVKI5ieqXQ=; b=B+GU0TdA1tUJAU
-	TNuwEGz7BrC1vgy2DSryQQNTzXVi4bBLhcyhnyZqKBajFSYYx80+c1NeNMCyaHpGQOwyOiz6BzB1g
-	nVwh+nroJYfT4sen475+giV7EfZ+r7sH0zyDMWfn5JOBt5dC7LMJmtmWG61K53oF7mfiE9DKs0QbU
-	ew06CS8X0RP9gB5bfNni+mTKHJ+wia2i70Ogi8qMkX7qqSAdqqamFkaTcadI6z/Xio8KQKV0Jm4o9
-	uQJHlbALOoWxhRJVMnRm3Xr7Er16TOyBihaF4g8anAJ4ejUpmiE7aSJmgECeg9F6xifpL8UMoRUVC
-	oifBp2QClQpdFDGL+BQQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Sl5rdcViAaRLjygY+zOcjzb7Hw2VWkk+NDGW36NSSeI=; b=w/jok+odsqRugE
+	o8QfPNInqGEd0PzGf0EC0Z7WcVC20uI1liXaYmoP86Xlg7RdLYBontg4BhHKqCjogRw1hPLTuOfrr
+	aaxz7vrOQXpLaYEsKG57HK41T0Iq3JGAVsVcKRWrGS4snMOTAvDV1uxi7667dVi6aOSzOISL1NJd0
+	at95oEsx+GGRzgLh+UncqO0+1jtTl8t/QdJgUMsAsiJvLpD888tRPrEy17ep8KH7d027jSwTGiUlp
+	NfS0r85IX53KL11GlRjqPfvm/iVh9jAcbZdZZ3H7xcS4c9gWpf4T6aa6TKCA4JtJB1nQP+X2g4sQJ
+	mK01eouT9Yv3Nn7IDs9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mVqsm-00DG5N-Fb; Thu, 30 Sep 2021 07:53:32 +0000
-Received: from inva021.nxp.com ([92.121.34.21])
+	id 1mVrHF-00DMM7-PK; Thu, 30 Sep 2021 08:18:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mVqpq-00DEHn-QZ; Thu, 30 Sep 2021 07:50:32 +0000
-Received: from inva021.nxp.com (localhost [127.0.0.1])
- by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id 920832017C0;
- Thu, 30 Sep 2021 09:50:29 +0200 (CEST)
-Received: from aprdc01srsp001v.ap-rdc01.nxp.com
- (aprdc01srsp001v.ap-rdc01.nxp.com [165.114.16.16])
- by inva021.eu-rdc02.nxp.com (Postfix) with ESMTP id 20696200408;
- Thu, 30 Sep 2021 09:50:29 +0200 (CEST)
-Received: from localhost.localdomain (mega.ap.freescale.net [10.192.208.232])
- by aprdc01srsp001v.ap-rdc01.nxp.com (Postfix) with ESMTP id
- 5D3FC183AC94; Thu, 30 Sep 2021 15:50:26 +0800 (+08)
-From: Xiaoliang Yang <xiaoliang.yang_1@nxp.com>
-To: davem@davemloft.net, linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Cc: allan.nielsen@microchip.com, joergen.andreasen@microchip.com,
- UNGLinuxDriver@microchip.com, vinicius.gomes@intel.com,
- michael.chan@broadcom.com, vishal@chelsio.com, saeedm@mellanox.com,
- jiri@mellanox.com, idosch@mellanox.com, alexandre.belloni@bootlin.com,
- kuba@kernel.org, xiaoliang.yang_1@nxp.com, po.liu@nxp.com,
- vladimir.oltean@nxp.com, leoyang.li@nxp.com, f.fainelli@gmail.com,
- andrew@lunn.ch, vivien.didelot@gmail.com, claudiu.manoil@nxp.com,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- matthias.bgg@gmail.com, horatiu.vultur@microchip.com
-Subject: [PATCH v6 net-next 8/8] net: dsa: felix: use vcap policer to set flow
- meter for psfp
-Date: Thu, 30 Sep 2021 15:59:48 +0800
-Message-Id: <20210930075948.36981-9-xiaoliang.yang_1@nxp.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20210930075948.36981-1-xiaoliang.yang_1@nxp.com>
-References: <20210930075948.36981-1-xiaoliang.yang_1@nxp.com>
-X-Virus-Scanned: ClamAV using ClamSMTP
+ id 1mVrH2-00DMJP-PC; Thu, 30 Sep 2021 08:18:38 +0000
+X-UUID: 694f1bb1733548f7a681d5c4147c094a-20210930
+X-UUID: 694f1bb1733548f7a681d5c4147c094a-20210930
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yee.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1054442384; Thu, 30 Sep 2021 01:18:30 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Sep 2021 01:16:44 -0700
+Received: from mtkcas07.mediatek.inc (172.21.101.84) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 30 Sep 2021 16:16:42 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas07.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 30 Sep 2021 16:16:42 +0800
+From: <yee.lee@mediatek.com>
+To: <linux-kernel@vger.kernel.org>
+CC: <nicholas.Tang@mediatek.com>, <Kuan-Ying.lee@mediatek.com>,
+ <chinwen.chang@mediatek.com>, Yee Lee <yee.lee@mediatek.com>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, "Sami
+ Tolvanen" <samitolvanen@google.com>, "moderated list:ARM/Mediatek SoC
+ support" <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek
+ SoC support" <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2] scs: Release kasan vmalloc poison in scs_free process
+Date: Thu, 30 Sep 2021 16:16:13 +0800
+Message-ID: <20210930081619.30091-1-yee.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_005031_164653_B3C3A73A 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20210930_011836_856116_CF19C11A 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,106 +75,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch add police action to set flow meter table which is defined
-in IEEE802.1Qci. Flow metering is two rates two buckets and three color
-marker to policing the frames, we only enable one rate one bucket in
-this patch.
+From: Yee Lee <yee.lee@mediatek.com>
 
-Flow metering shares a same policer pool with VCAP policers, so the PSFP
-policer calls ocelot_vcap_policer_add() and ocelot_vcap_policer_del() to
-set flow meter police.
+Since scs allocation is moved to vmalloc region, the
+shadow stack is protected by kasan_posion_vmalloc.
+However, the vfree_atomic operation needs to access
+its context for scs_free process and causes kasan error
+as the dump info below.
 
-Signed-off-by: Xiaoliang Yang <xiaoliang.yang_1@nxp.com>
+This patch Adds kasan_unpoison_vmalloc() before vfree_atomic,
+which aligns to the prior flow as using kmem_cache.
+The vmalloc region will go back posioned in the following
+vumap() operations.
+
+ ==================================================================
+ BUG: KASAN: vmalloc-out-of-bounds in llist_add_batch+0x60/0xd4
+ Write of size 8 at addr ffff8000100b9000 by task kthreadd/2
+
+ CPU: 0 PID: 2 Comm: kthreadd Not tainted 5.15.0-rc2-11681-g92477dd1faa6-dirty #1
+ Hardware name: linux,dummy-virt (DT)
+ Call trace:
+  dump_backtrace+0x0/0x43c
+  show_stack+0x1c/0x2c
+  dump_stack_lvl+0x68/0x84
+  print_address_description+0x80/0x394
+  kasan_report+0x180/0x1dc
+  __asan_report_store8_noabort+0x48/0x58
+  llist_add_batch+0x60/0xd4
+  vfree_atomic+0x60/0xe0
+  scs_free+0x1dc/0x1fc
+  scs_release+0xa4/0xd4
+  free_task+0x30/0xe4
+  __put_task_struct+0x1ec/0x2e0
+  delayed_put_task_struct+0x5c/0xa0
+  rcu_do_batch+0x62c/0x8a0
+  rcu_core+0x60c/0xc14
+  rcu_core_si+0x14/0x24
+  __do_softirq+0x19c/0x68c
+  irq_exit+0x118/0x2dc
+  handle_domain_irq+0xcc/0x134
+  gic_handle_irq+0x7c/0x1bc
+  call_on_irq_stack+0x40/0x70
+  do_interrupt_handler+0x78/0x9c
+  el1_interrupt+0x34/0x60
+  el1h_64_irq_handler+0x1c/0x2c
+  el1h_64_irq+0x78/0x7c
+  _raw_spin_unlock_irqrestore+0x40/0xcc
+  sched_fork+0x4f0/0xb00
+  copy_process+0xacc/0x3648
+  kernel_clone+0x168/0x534
+  kernel_thread+0x13c/0x1b0
+  kthreadd+0x2bc/0x400
+  ret_from_fork+0x10/0x20
+
+ Memory state around the buggy address:
+  ffff8000100b8f00: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  ffff8000100b8f80: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+ >ffff8000100b9000: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+                    ^
+  ffff8000100b9080: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+  ffff8000100b9100: f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8 f8
+ ==================================================================
+
+Suggested-by: Kuan-Ying Lee <kuan-ying.lee@mediatek.com>
+Reviewd-by: Will Deacon <will@kernel.org>
+Reviewd-by: Sami Tolvanen <samitolvanen@google.com>
+Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 ---
- drivers/net/dsa/ocelot/felix_vsc9959.c | 32 +++++++++++++++++++++++++-
- 1 file changed, 31 insertions(+), 1 deletion(-)
+v2:
+- changed the unpoison call to be followed by vfree_atomic 
 
-diff --git a/drivers/net/dsa/ocelot/felix_vsc9959.c b/drivers/net/dsa/ocelot/felix_vsc9959.c
-index 2856df471cf2..1699d8cd8366 100644
---- a/drivers/net/dsa/ocelot/felix_vsc9959.c
-+++ b/drivers/net/dsa/ocelot/felix_vsc9959.c
-@@ -1343,6 +1343,7 @@ static int vsc9959_port_setup_tc(struct dsa_switch *ds, int port,
+---
+ kernel/scs.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kernel/scs.c b/kernel/scs.c
+index e2a71fc82fa0..579841be8864 100644
+--- a/kernel/scs.c
++++ b/kernel/scs.c
+@@ -78,6 +78,7 @@ void scs_free(void *s)
+ 		if (this_cpu_cmpxchg(scs_cache[i], 0, s) == NULL)
+ 			return;
  
- #define VSC9959_PSFP_SFID_MAX			175
- #define VSC9959_PSFP_GATE_ID_MAX		183
-+#define VSC9959_PSFP_POLICER_BASE		63
- #define VSC9959_PSFP_POLICER_MAX		383
- #define VSC9959_PSFP_GATE_LIST_NUM		4
- #define VSC9959_PSFP_GATE_CYCLETIME_MIN		5000
-@@ -1849,7 +1850,10 @@ static int vsc9959_psfp_filter_add(struct ocelot *ocelot,
- 	struct felix_stream stream = {0};
- 	struct felix_stream_gate *sgi;
- 	struct ocelot_psfp_list *psfp;
-+	struct ocelot_policer pol;
- 	int ret, i, size;
-+	u64 rate, burst;
-+	u32 index;
- 
- 	psfp = &ocelot->psfp;
- 
-@@ -1868,13 +1872,33 @@ static int vsc9959_psfp_filter_add(struct ocelot *ocelot,
- 			ret = vsc9959_psfp_sgi_table_add(ocelot, sgi);
- 			if (ret) {
- 				kfree(sgi);
--				return ret;
-+				goto err;
- 			}
- 			sfi.sg_valid = 1;
- 			sfi.sgid = sgi->index;
- 			kfree(sgi);
- 			break;
- 		case FLOW_ACTION_POLICE:
-+			index = a->police.index + VSC9959_PSFP_POLICER_BASE;
-+			if (index > VSC9959_PSFP_POLICER_MAX) {
-+				ret = -EINVAL;
-+				goto err;
-+			}
-+
-+			rate = a->police.rate_bytes_ps;
-+			burst = rate * PSCHED_NS2TICKS(a->police.burst);
-+			pol = (struct ocelot_policer) {
-+				.burst = div_u64(burst, PSCHED_TICKS_PER_SEC),
-+				.rate = div_u64(rate, 1000) * 8,
-+			};
-+			ret = ocelot_vcap_policer_add(ocelot, index, &pol);
-+			if (ret)
-+				goto err;
-+
-+			sfi.fm_valid = 1;
-+			sfi.fmid = index;
-+			sfi.maxsdu = a->police.mtu;
-+			break;
- 		default:
- 			return -EOPNOTSUPP;
- 		}
-@@ -1911,6 +1935,9 @@ static int vsc9959_psfp_filter_add(struct ocelot *ocelot,
- 	if (sfi.sg_valid)
- 		vsc9959_psfp_sgi_table_del(ocelot, sfi.sgid);
- 
-+	if (sfi.fm_valid)
-+		ocelot_vcap_policer_del(ocelot, sfi.fmid);
-+
- 	return ret;
++	kasan_unpoison_vmalloc(s, SCS_SIZE);
+ 	vfree_atomic(s);
  }
  
-@@ -1934,6 +1961,9 @@ static int vsc9959_psfp_filter_del(struct ocelot *ocelot,
- 	if (sfi->sg_valid)
- 		vsc9959_psfp_sgi_table_del(ocelot, sfi->sgid);
- 
-+	if (sfi->fm_valid)
-+		ocelot_vcap_policer_del(ocelot, sfi->fmid);
-+
- 	vsc9959_psfp_sfi_table_del(ocelot, stream->sfid);
- 
- 	stream->sfid_valid = 0;
 -- 
-2.17.1
+2.18.0
 
 
 _______________________________________________
