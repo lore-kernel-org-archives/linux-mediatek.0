@@ -2,47 +2,47 @@ Return-Path: <SRS0=rLIJ=OU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A067AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 23:58:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 814EBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 23:58:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6114361268
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 23:58:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6114361268
+	by mail.kernel.org (Postfix) with ESMTPS id 467B26135E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Sep 2021 23:58:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 467B26135E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1c7e8+yCSNidkulmEOqe86QjYEhZL8OymuQJDL7XJ1s=; b=WHLkNQBapZziRd
-	yosj27SMcs99LjkMLIkcknCQvX6mJO+yLK/IcBKE9g83mxucWtdjbH4RTZJOvULlCo8DmQb2DhFWm
-	qb7Ow0Yxfc3AT2dR6iQj0AU3tmhnfNws/4L82CVNO4+0IskeWvorddRdr8ZL2IiY7QgzG5ibs3SvC
-	LEN1XLwgtVMcCHp/bTDfcAbhps6C1CQbLGeHM2X4uW2bBbZlw7tpTQeQRZcgL3Ah0lVJ3YGuFlEGz
-	3LUdnR12neKVoGZCY5HDffkD+JFEe6K2RLULPBD7mbEB3r/P/xZ/WdF2iLI+fsFKN2RsrLXQ1q1wA
-	piewHoStVcJvvchmpKSA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CZwHncrcP7Z6GQqWJkFay1R2iGuYSGE1p/W3qwxN9XQ=; b=ClmYo02mFOhMqs
+	Gs21OgoNpzUpvDxwJZsYYqBTMJkGS3lVARhqre/BuQ0mppJL6VCnr4pdw9oI2bDgWeyz6/NiuZ20V
+	9NG7WAHUchz+mgD9PfNtQ23tUwChHCfW/NC52atfNZhXqcx889TAVmm9URRu+HdVdf5+lQow5a9Cj
+	uLlHSnBG6AIbWJbzHpu5TzXN1CrfpEcbwp7c0EfkYN2LlWdTQfLm6Roi4QTIIewaSshIKGZCTjJqR
+	nwdpXCYZYSdOn96UxQcBiGlBOKA+lWewlBVJN7pjkh2Fm8palW0+XDmuGoBrGr63jQg7ObyWzhKs4
+	7g0AuCGHOQrxuVAqWZFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mW5wP-00GCSU-AP; Thu, 30 Sep 2021 23:58:17 +0000
+	id 1mW5wS-00GCTn-GU; Thu, 30 Sep 2021 23:58:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mW5wM-00GCRK-Eh
- for linux-mediatek@lists.infradead.org; Thu, 30 Sep 2021 23:58:16 +0000
-X-UUID: 040cab47855b427584fc7c21b81f2b1d-20210930
-X-UUID: 040cab47855b427584fc7c21b81f2b1d-20210930
+ id 1mW5wO-00GCRK-G8
+ for linux-mediatek@lists.infradead.org; Thu, 30 Sep 2021 23:58:18 +0000
+X-UUID: 4e4d6a3d097c435ab5e5d6eca7a3c678-20210930
+X-UUID: 4e4d6a3d097c435ab5e5d6eca7a3c678-20210930
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 975178965; Thu, 30 Sep 2021 16:58:09 -0700
+ with ESMTP id 680559355; Thu, 30 Sep 2021 16:58:09 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 30 Sep 2021 16:48:42 -0700
+ 15.0.1497.2; Thu, 30 Sep 2021 16:48:07 -0700
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 1 Oct 2021 07:48:41 +0800
+ Frontend Transport; Fri, 1 Oct 2021 07:48:05 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -53,19 +53,16 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
  <jemele@google.com>, <shawnku@google.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 09/16] mt76: mt7921: use physical addr to unify register
- access
-Date: Fri, 1 Oct 2021 07:47:56 +0800
-Message-ID: <fd9ce3e4ead66956c582a3141361734f7372924f.1632961096.git.objelf@gmail.com>
+ <linux-mediatek@lists.infradead.org>, Sean Wang <objelf@gmail.com>
+Subject: [PATCH v3 00/16] Add MT7921 SDIO support
+Date: Fri, 1 Oct 2021 07:47:47 +0800
+Message-ID: <cover.1632961096.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <cover.1632961096.git.objelf@gmail.com>
-References: <cover.1632961096.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20210930_165814_547990_79B27AA1 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20210930_165816_605214_B064E290 
+X-CRM114-Status: GOOD (  17.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,179 +79,136 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Sean Wang <objelf@gmail.com>
 
-Use physical address to unify the register access and reorder the
-entries in fixed_map table to accelerate the address lookup for
-MT7921e. Cosmetics the patch with adding an extra space to make all
-entries in the array style consistent.
+The patchset adds the SDIO support to the MT7921 driver, basically are
+made up of 3 parts.
 
-Tested-by: Deren Wu <deren.wu@mediatek.com>
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7921/dma.c   | 27 ++++++++++---------
- .../net/wireless/mediatek/mt76/mt7921/regs.h  | 22 +++++++--------
- 2 files changed, 25 insertions(+), 24 deletions(-)
+PART 1: patch 1-5, 8-9 and 12-14
+These are preliminary patches for mt7921s driver to refactor and reuse the
+current mt7921e driver as much as possible.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-index 8f29d09179e4..cdff1fd52d93 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-@@ -85,36 +85,37 @@ static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
- 		u32 mapped;
- 		u32 size;
- 	} fixed_map[] = {
--		{ 0x00400000, 0x80000, 0x10000}, /* WF_MCU_SYSRAM */
--		{ 0x00410000, 0x90000, 0x10000}, /* WF_MCU_SYSRAM (configure register) */
--		{ 0x40000000, 0x70000, 0x10000}, /* WF_UMAC_SYSRAM */
-+		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
-+		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
-+		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
-+		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
-+		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
-+		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
-+		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
-+		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
-+		{ 0x00400000, 0x80000, 0x10000 }, /* WF_MCU_SYSRAM */
-+		{ 0x00410000, 0x90000, 0x10000 }, /* WF_MCU_SYSRAM (configure register) */
-+		{ 0x40000000, 0x70000, 0x10000 }, /* WF_UMAC_SYSRAM */
- 		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
- 		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
- 		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
- 		{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
- 		{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
- 		{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
--		{ 0x7c060000, 0xe0000, 0x10000}, /* CONN_INFRA, conn_host_csr_top */
-+		{ 0x7c060000, 0xe0000, 0x10000 }, /* CONN_INFRA, conn_host_csr_top */
- 		{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
- 		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
- 		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
- 		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
--		{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
-+		{ 0x820cc000, 0x0e000, 0x1000 }, /* WF_UMAC_TOP (PP) */
-+		{ 0x820cd000, 0x0f000, 0x1000 }, /* WF_MDP_TOP */
- 		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
- 		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
--		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
- 		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
- 		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
--		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
--		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
--		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
--		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
--		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
- 		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
- 		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
--		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
- 		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
--		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
- 		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
- 		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
- 		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-index 26fb11823762..cb6069024320 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
-@@ -14,7 +14,7 @@
- #define MT_MCU_INT_EVENT_SER_TRIGGER	BIT(2)
- #define MT_MCU_INT_EVENT_RESET_DONE	BIT(3)
- 
--#define MT_PLE_BASE			0x8000
-+#define MT_PLE_BASE			0x820c0000
- #define MT_PLE(ofs)			(MT_PLE_BASE + (ofs))
- 
- #define MT_PLE_FL_Q0_CTRL		MT_PLE(0x1b0)
-@@ -26,7 +26,7 @@
- 					       ((n) << 2))
- #define MT_PLE_AMSDU_PACK_MSDU_CNT(n)	MT_PLE(0x10e0 + ((n) << 2))
- 
--#define MT_MDP_BASE			0xf000
-+#define MT_MDP_BASE			0x820cd000
- #define MT_MDP(ofs)			(MT_MDP_BASE + (ofs))
- 
- #define MT_MDP_DCR0			MT_MDP(0x000)
-@@ -49,7 +49,7 @@
- #define MT_MDP_TO_WM			1
- 
- /* TMAC: band 0(0x21000), band 1(0xa1000) */
--#define MT_WF_TMAC_BASE(_band)		((_band) ? 0xa1000 : 0x21000)
-+#define MT_WF_TMAC_BASE(_band)		((_band) ? 0x820f4000 : 0x820e4000)
- #define MT_WF_TMAC(_band, ofs)		(MT_WF_TMAC_BASE(_band) + (ofs))
- 
- #define MT_TMAC_TCR0(_band)		MT_WF_TMAC(_band, 0)
-@@ -74,7 +74,7 @@
- #define MT_TMAC_TRCR0(_band)		MT_WF_TMAC(_band, 0x09c)
- #define MT_TMAC_TFCR0(_band)		MT_WF_TMAC(_band, 0x1e0)
- 
--#define MT_WF_DMA_BASE(_band)		((_band) ? 0xa1e00 : 0x21e00)
-+#define MT_WF_DMA_BASE(_band)		((_band) ? 0x820f7000 : 0x820e7000)
- #define MT_WF_DMA(_band, ofs)		(MT_WF_DMA_BASE(_band) + (ofs))
- 
- #define MT_DMA_DCR0(_band)		MT_WF_DMA(_band, 0x000)
-@@ -82,7 +82,7 @@
- #define MT_DMA_DCR0_RXD_G5_EN		BIT(23)
- 
- /* LPON: band 0(0x24200), band 1(0xa4200) */
--#define MT_WF_LPON_BASE(_band)		((_band) ? 0xa4200 : 0x24200)
-+#define MT_WF_LPON_BASE(_band)		((_band) ? 0x820fb000 : 0x820eb000)
- #define MT_WF_LPON(_band, ofs)		(MT_WF_LPON_BASE(_band) + (ofs))
- 
- #define MT_LPON_UTTR0(_band)		MT_WF_LPON(_band, 0x080)
-@@ -93,7 +93,7 @@
- #define MT_LPON_TCR_SW_WRITE		BIT(0)
- 
- /* MIB: band 0(0x24800), band 1(0xa4800) */
--#define MT_WF_MIB_BASE(_band)		((_band) ? 0xa4800 : 0x24800)
-+#define MT_WF_MIB_BASE(_band)		((_band) ? 0x820fd000 : 0x820ed000)
- #define MT_WF_MIB(_band, ofs)		(MT_WF_MIB_BASE(_band) + (ofs))
- 
- #define MT_MIB_SCR1(_band)		MT_WF_MIB(_band, 0x004)
-@@ -142,7 +142,7 @@
- #define MT_MIB_ARNG(_band, n)		MT_WF_MIB(_band, 0x0b0 + ((n) << 2))
- #define MT_MIB_ARNCR_RANGE(val, n)	(((val) >> ((n) << 3)) & GENMASK(7, 0))
- 
--#define MT_WTBLON_TOP_BASE		0x34000
-+#define MT_WTBLON_TOP_BASE		0x820d4000
- #define MT_WTBLON_TOP(ofs)		(MT_WTBLON_TOP_BASE + (ofs))
- #define MT_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x200)
- #define MT_WTBLON_TOP_WDUCR_GROUP	GENMASK(2, 0)
-@@ -152,7 +152,7 @@
- #define MT_WTBL_UPDATE_ADM_COUNT_CLEAR	BIT(12)
- #define MT_WTBL_UPDATE_BUSY		BIT(31)
- 
--#define MT_WTBL_BASE			0x38000
-+#define MT_WTBL_BASE			0x820d8000
- #define MT_WTBL_LMAC_ID			GENMASK(14, 8)
- #define MT_WTBL_LMAC_DW			GENMASK(7, 2)
- #define MT_WTBL_LMAC_OFFS(_id, _dw)	(MT_WTBL_BASE | \
-@@ -160,7 +160,7 @@
- 					FIELD_PREP(MT_WTBL_LMAC_DW, _dw))
- 
- /* AGG: band 0(0x20800), band 1(0xa0800) */
--#define MT_WF_AGG_BASE(_band)		((_band) ? 0xa0800 : 0x20800)
-+#define MT_WF_AGG_BASE(_band)		((_band) ? 0x820f2000 : 0x820e2000)
- #define MT_WF_AGG(_band, ofs)		(MT_WF_AGG_BASE(_band) + (ofs))
- 
- #define MT_AGG_AWSCR0(_band, _n)	MT_WF_AGG(_band, 0x05c + (_n) * 4)
-@@ -191,7 +191,7 @@
- #define MT_AGG_ATCR3(_band)		MT_WF_AGG(_band, 0x0f4)
- 
- /* ARB: band 0(0x20c00), band 1(0xa0c00) */
--#define MT_WF_ARB_BASE(_band)		((_band) ? 0xa0c00 : 0x20c00)
-+#define MT_WF_ARB_BASE(_band)		((_band) ? 0x820f3000 : 0x820e3000)
- #define MT_WF_ARB(_band, ofs)		(MT_WF_ARB_BASE(_band) + (ofs))
- 
- #define MT_ARB_SCR(_band)		MT_WF_ARB(_band, 0x080)
-@@ -201,7 +201,7 @@
- #define MT_ARB_DRNGR0(_band, _n)	MT_WF_ARB(_band, 0x194 + (_n) * 4)
- 
- /* RMAC: band 0(0x21400), band 1(0xa1400) */
--#define MT_WF_RMAC_BASE(_band)		((_band) ? 0xa1400 : 0x21400)
-+#define MT_WF_RMAC_BASE(_band)		((_band) ? 0x820f5000 : 0x820e5000)
- #define MT_WF_RMAC(_band, ofs)		(MT_WF_RMAC_BASE(_band) + (ofs))
- 
- #define MT_WF_RFCR(_band)		MT_WF_RMAC(_band, 0x000)
+PART 2: patch 6-7, 10
+These are preliminary patches for mt7921s driver to refactor and reuse the
+current mt7663s driver as much as possible.
+
+PART 3: patch 11 and 15-16
+These are specific patches for mt7921s driver and reset mechanism in the
+same framework where mt7921e have been supported. 
+
+The patchset are built and generated against the current mt76 tree plus
+the extra pending patches [1] expected to be merged to mt76 tree soon to
+help the review and merge process be easier.
+
+The change list from v1 to v2
+1. rework the whole driver according to the new patches added
+   ("mt76: introduce __mt76_mcu_send_firmware routine"),
+   ("mt76: not accounting the MCU header size in __mt76_mcu_send_firmware for mt7915/21") and
+   ("mt76: sdio: move common code in mt76_sdio module")
+2. drop pci_init.c and sdio_init.c by moving the related logic to pci.c and sdio.c, respectively.
+3. cosmetics the patches like removing unnecessary new line, adding an extra space to fixed_map table and so on ...
+4. fix typo in commit message
+
+The change list from v2 to v3
+1. rebase onto the latest mt76 branch
+2. update per Lorenzo comments on v2
+3. fix scheduling while atomic in mt7921_mac_sta_poll for mt7921s driver
+
+[1] The pending patch list prior to add MT7921 SDIO support
+
+3061ff518086 mt76: mt7921s: add reset support
+5de5d96f85ed mt76: mt7921: introduce mt7921s support
+f0571612eebe mt76: mt7921: refactor mt7921_mcu_send_message
+689fcdcd2972 mt76: mt7921: rely on mcu_get_nic_capability
+861f6162e2e5 mt76: connac: extend mcu_get_nic_capability
+a28c493784ce mt76: sdio: extend sdio module to support CONNAC2
+972627da893a mt76: sdio: move common code in mt76_sdio module
+fd9ce3e4ead6 mt76: mt7921: use physical addr to unify register access
+b90b1edd1f01 mt76: mt7921: make all event parser reusable between mt7921s and mt7921e
+85361034e054 mt76: mt7663s: rely on mcu reg access utility
+e9ad71f627da mt76: connac: move mcu reg access utility routines in mt76_connac_lib module
+f4a4f2080162 mt76: mt7921: add MT7921_COMMON module
+29b7682b7659 mt76: mt7921: refactor init.c to be bus independent
+b597ab756ae0 mt76: mt7921: refactor mcu.c to be bus independent
+8c608c4b4569 mt76: mt7921: refactor dma.c to be pcie specific
+dd9b17ee1198 mt76: mt7921: refactor mac.c to be bus independent
+2c3e24c98655 mt76: not accounting the MCU header size in __mt76_mcu_send_firmware for mt7915/21
+527fd6d0a36b mt76: introduce __mt76_mcu_send_firmware routine
+bd16dcf4677d mt76: schedule status timeout at dma completion
+f9a99765d094 mt76: substitute sk_buff_head status_list with spinlock_t status_lock
+7ba08a841137 mt76: remove mt76_wcid pointer from mt76_tx_status_check signature
+77a501a1505d mt76: introduce packet_id idr
+801aa83b77ef mt76: mt7921: add 6GHz support
+672b8f7e615c mt76: add 6GHz support
+53da9785a0c2 mt76: connac: enable hw amsdu @ 6GHz
+d9bcbcb8f6a5 mt76: connac: add 6GHz support to mt76_connac_mcu_uni_add_bss
+4c6b738139a1 mt76: connac: add 6GHz support to mt76_connac_mcu_sta_tlv
+a02b7de86d78 mt76: connac: set 6G phymode in single-sku support
+9c0db900b17f mt76: connac: add 6GHz support to mt76_connac_mcu_set_channel_domain
+188dea0151a7 mt76: connac: enable 6GHz band for hw scan
+
+Lorenzo Bianconi (1):
+  mt76: sdio: move common code in mt76_sdio module
+
+Sean Wang (15):
+  mt76: mt7921: refactor mac.c to be bus independent
+  mt76: mt7921: refactor dma.c to be pcie specific
+  mt76: mt7921: refactor mcu.c to be bus independent
+  mt76: mt7921: refactor init.c to be bus independent
+  mt76: mt7921: add MT7921_COMMON module
+  mt76: connac: move mcu reg access utility routines in mt76_connac_lib
+    module
+  mt76: mt7663s: rely on mcu reg access utility
+  mt76: mt7921: make all event parser reusable between mt7921s and
+    mt7921e
+  mt76: mt7921: use physical addr to unify register access
+  mt76: sdio: extend sdio module to support CONNAC2
+  mt76: connac: extend mcu_get_nic_capability
+  mt76: mt7921: rely on mcu_get_nic_capability
+  mt76: mt7921: refactor mt7921_mcu_send_message
+  mt76: mt7921: introduce mt7921s support
+  mt76: mt7921s: add reset support
+
+ drivers/net/wireless/mediatek/mt76/Makefile   |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  22 +
+ .../wireless/mediatek/mt76/mt7615/Makefile    |   2 +-
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   |  28 --
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |   6 -
+ .../net/wireless/mediatek/mt76/mt7615/sdio.c  | 282 +------------
+ .../wireless/mediatek/mt76/mt7615/sdio_mcu.c  |  11 +-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  93 +++++
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   2 +
+ .../net/wireless/mediatek/mt76/mt7921/Kconfig |  18 +-
+ .../wireless/mediatek/mt76/mt7921/Makefile    |   8 +-
+ .../wireless/mediatek/mt76/mt7921/debugfs.c   |  18 +-
+ .../net/wireless/mediatek/mt76/mt7921/dma.c   |  38 +-
+ .../wireless/mediatek/mt76/mt7921/eeprom.c    | 101 -----
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  51 +--
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 381 ++----------------
+ .../net/wireless/mediatek/mt76/mt7921/mac.h   |   4 +
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |   8 +
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 135 ++-----
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    |  94 ++++-
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |  48 ++-
+ .../wireless/mediatek/mt76/mt7921/pci_mac.c   | 354 ++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/pci_mcu.c   | 115 ++++++
+ .../net/wireless/mediatek/mt76/mt7921/regs.h  |  22 +-
+ .../net/wireless/mediatek/mt76/mt7921/sdio.c  | 285 +++++++++++++
+ .../wireless/mediatek/mt76/mt7921/sdio_mac.c  | 220 ++++++++++
+ .../wireless/mediatek/mt76/mt7921/sdio_mcu.c  | 135 +++++++
+ drivers/net/wireless/mediatek/mt76/sdio.c     | 282 +++++++++++++
+ .../mediatek/mt76/{mt7615 => }/sdio.h         |  50 ++-
+ .../mediatek/mt76/{mt7615 => }/sdio_txrx.c    | 171 +++++---
+ 30 files changed, 1987 insertions(+), 999 deletions(-)
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/eeprom.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+ rename drivers/net/wireless/mediatek/mt76/{mt7615 => }/sdio.h (68%)
+ rename drivers/net/wireless/mediatek/mt76/{mt7615 => }/sdio_txrx.c (59%)
+
 -- 
 2.25.1
 
