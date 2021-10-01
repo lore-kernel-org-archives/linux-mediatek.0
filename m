@@ -2,14 +2,14 @@ Return-Path: <SRS0=cfj9=OV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62C25C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Oct 2021 09:55:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3E8FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Oct 2021 09:55:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 31DB5615A4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Oct 2021 09:55:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 31DB5615A4
+	by mail.kernel.org (Postfix) with ESMTPS id 8DFBD61881
+	for <linux-mediatek@archiver.kernel.org>; Fri,  1 Oct 2021 09:55:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8DFBD61881
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,31 +18,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TEmtcTruB2tPbzGAKrvfw06GwIFBCZMZ7LpdR9PfdJ8=; b=m8liMHBZ5/K1VW
-	dUiD2PRQgldM4Cw1gKipo8bKLr7EuA30w4bs+DEzPt8U3HC+cMH3W6t4EJpdtCvVgQylwvp/usfQG
-	WlTo9sdEffmJXfvUeFHQ30SeWTCG6BzwJzCt4D9+gT4pLreK3tX/aIKIsQlrszg5j0BIbsKM2gWeC
-	a1vWbNCeRMGhnqS2lgNj3h1LT2QhY9qzprbHA8Dg2XFKfeNibA6kdqdFWcRm82HSF6zZfprLmlCS3
-	8+thbSrdPubX37JZxQ/7NbZ3mICBzyhgAIHLU/qTVGfHEscEDvqvh2DWo/P8ulHpZm4nUTfaQj4go
-	/TEsSTmhJdfv6V40lBVg==;
+	List-Owner; bh=sVQWhXPjEBrXPNnHptFSIA8c/q0mcCjGarZoFmIgiH8=; b=oA1668Wa6In/c/
+	g2jidMy0qqEKpqeO61jSh7CpeDhlhh/fl05xmWz8edFcVpwHN8G5A0fXsG8eZPz9sI/01UvXiSusT
+	2AB/2p+7F6VzAgBGZupPI/z3U1SfnBnFQ8fSxNSb+1quq26Zq7+X48k+akelV+IJEjwDFAJOb4zs3
+	4IkvFel3KMRXqw6VsnZelo1EYs3Mfe4oycdqqw8mEavGajWyBJwNidi86vMs6zGl8hzcUlepBTbwq
+	qg/g4O6LZTbIIUQPNBjfASquIhbfPbA5FL2WCaD8k44tsqpluIDxIYXP2GgKnsVS5x7qVIOll3tPV
+	pjFRn9CIN1GMEv+KLR3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mWFGF-00HMye-4U; Fri, 01 Oct 2021 09:55:23 +0000
+	id 1mWFGJ-00HN1W-1N; Fri, 01 Oct 2021 09:55:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mWFF5-00HMPQ-Ep
- for linux-mediatek@lists.infradead.org; Fri, 01 Oct 2021 09:54:12 +0000
-X-UUID: bbcaa124ec23420cb72fbdcf5f7015e1-20211001
-X-UUID: bbcaa124ec23420cb72fbdcf5f7015e1-20211001
+ id 1mWFF6-00HMPQ-S3
+ for linux-mediatek@lists.infradead.org; Fri, 01 Oct 2021 09:54:14 +0000
+X-UUID: 96b635ea317942fbbac4bff445c71e2e-20211001
+X-UUID: 96b635ea317942fbbac4bff445c71e2e-20211001
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1058984021; Fri, 01 Oct 2021 02:54:03 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 978701962; Fri, 01 Oct 2021 02:54:03 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 1 Oct 2021 02:54:02 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 1 Oct 2021 17:54:01 +0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 1 Oct 2021 17:54:01 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 1 Oct 2021 17:54:01 +0800
@@ -52,17 +52,17 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
  <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v5 7/8] mt76: mt7915: set VTA bit in tx descriptor
-Date: Fri, 1 Oct 2021 17:53:54 +0800
-Message-ID: <20211001095355.10598-7-shayne.chen@mediatek.com>
+Subject: [PATCH v5 8/8] mt76: mt7915: set muru platform type
+Date: Fri, 1 Oct 2021 17:53:55 +0800
+Message-ID: <20211001095355.10598-8-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211001095355.10598-1-shayne.chen@mediatek.com>
 References: <20211001095355.10598-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211001_025411_561584_B845A5DA 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20211001_025412_978396_54CB4461 
+X-CRM114-Status: GOOD (  13.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,30 +79,141 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The VTA (Valid for Txd Arrival time) bit should be set in tx descriptor,
-which is necessary for WM fw to schedule SPL (station priority list)
-normally before generating txcmd.
-If it's not set, some unexpected wcids may be involved in SPL.
+Set muru platform type by mcu cmd to notify fw to init corresponding
+algorithm.
 
-Suggested-by: Nelson Chang <nelson.chang@mediatek.com>
+Suggested-by: Money Wang <money.wang@mediatek.com>
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v3: - fix endianess
+    - rework muru ctrl function
+v4: use put_unaligned_le32() to get rid of undefined behavior
+v5: rebase to staging tree
+---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 20 +++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 10 ++++++++++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
+ .../wireless/mediatek/mt76/mt7915/testmode.c  | 16 +++++----------
+ .../wireless/mediatek/mt76/mt7915/testmode.h  |  4 ----
+ 5 files changed, 36 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 5e29707a5464..39c3abad4b1e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1067,7 +1067,7 @@ void mt7915_mac_write_txwi(struct mt7915_dev *dev, __le32 *txwi,
- 	      FIELD_PREP(MT_TXD0_Q_IDX, q_idx);
- 	txwi[0] = cpu_to_le32(val);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index be875f100c6f..6ee9d2dfd930 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2909,6 +2909,21 @@ static int mt7915_mcu_set_mwds(struct mt7915_dev *dev, bool enabled)
+ 				 sizeof(req), false);
+ }
  
--	val = MT_TXD1_LONG_FORMAT |
-+	val = MT_TXD1_LONG_FORMAT | MT_TXD1_VTA |
- 	      FIELD_PREP(MT_TXD1_WLAN_IDX, wcid->idx) |
- 	      FIELD_PREP(MT_TXD1_OWN_MAC, omac_idx);
++int mt7915_mcu_set_muru_ctrl(struct mt7915_dev *dev, u32 cmd, u32 val)
++{
++	struct {
++		__le32 cmd;
++		u8 val[4];
++	} __packed req = {
++		.cmd = cpu_to_le32(cmd),
++	};
++
++	put_unaligned_le32(val, req.val);
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL), &req,
++				 sizeof(req), false);
++}
++
+ int mt7915_mcu_init(struct mt7915_dev *dev)
+ {
+ 	static const struct mt76_mcu_ops mt7915_mcu_ops = {
+@@ -2942,6 +2957,11 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
+ 	if (ret)
+ 		return ret;
  
++	ret = mt7915_mcu_set_muru_ctrl(dev, MURU_SET_PLATFORM_TYPE,
++				       MURU_PLATFORM_TYPE_PERF_LEVEL_2);
++	if (ret)
++		return ret;
++
+ 	return mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
+ 				 MCU_WA_PARAM_RED, 0, 0);
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 23a611873bfa..5d383918a2af 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -1091,6 +1091,16 @@ enum {
+ 	MT_BF_MODULE_UPDATE = 25
+ };
+ 
++enum {
++	MURU_SET_ARB_OP_MODE = 14,
++	MURU_SET_PLATFORM_TYPE = 25,
++};
++
++enum {
++	MURU_PLATFORM_TYPE_PERF_LEVEL_1 = 1,
++	MURU_PLATFORM_TYPE_PERF_LEVEL_2,
++};
++
+ #define MT7915_WTBL_UPDATE_MAX_SIZE	(sizeof(struct wtbl_req_hdr) +	\
+ 					 sizeof(struct wtbl_generic) +	\
+ 					 sizeof(struct wtbl_rx) +	\
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index e68ac8e6e148..904c711d4a3f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -358,6 +358,7 @@ int mt7915_mcu_set_pulse_th(struct mt7915_dev *dev,
+ 			    const struct mt7915_dfs_pulse *pulse);
+ int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, int index,
+ 			    const struct mt7915_dfs_pattern *pattern);
++int mt7915_mcu_set_muru_ctrl(struct mt7915_dev *dev, u32 cmd, u32 val);
+ int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev);
+ int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy);
+ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+index 00dcc46b9082..89aae323d29e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
+@@ -169,22 +169,16 @@ static int
+ mt7915_tm_set_tam_arb(struct mt7915_phy *phy, bool enable, bool mu)
+ {
+ 	struct mt7915_dev *dev = phy->dev;
+-	struct {
+-		__le32 cmd;
+-		u8 op_mode;
+-	} __packed req = {
+-		.cmd = cpu_to_le32(MURU_SET_ARB_OP_MODE),
+-	};
++	u32 op_mode;
+ 
+ 	if (!enable)
+-		req.op_mode = TAM_ARB_OP_MODE_NORMAL;
++		op_mode = TAM_ARB_OP_MODE_NORMAL;
+ 	else if (mu)
+-		req.op_mode = TAM_ARB_OP_MODE_TEST;
++		op_mode = TAM_ARB_OP_MODE_TEST;
+ 	else
+-		req.op_mode = TAM_ARB_OP_MODE_FORCE_SU;
++		op_mode = TAM_ARB_OP_MODE_FORCE_SU;
+ 
+-	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL), &req,
+-				 sizeof(req), false);
++	return mt7915_mcu_set_muru_ctrl(dev, MURU_SET_ARB_OP_MODE, op_mode);
+ }
+ 
+ static int
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
+index 107f0cf2505e..5573ac309363 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
+@@ -102,8 +102,4 @@ enum {
+ 	TAM_ARB_OP_MODE_FORCE_SU = 5,
+ };
+ 
+-enum {
+-	MURU_SET_ARB_OP_MODE = 14,
+-};
+-
+ #endif
 -- 
 2.25.1
 
