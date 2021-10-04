@@ -2,14 +2,14 @@ Return-Path: <SRS0=jwT2=OY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0701C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Oct 2021 10:00:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 840D6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Oct 2021 10:08:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C488361381
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Oct 2021 10:00:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C488361381
+	by mail.kernel.org (Postfix) with ESMTPS id 4DADF61206
+	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Oct 2021 10:08:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4DADF61206
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,31 +18,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Subject:Cc:To:From:Message-ID:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sTMtSGUTOf+nFZE9GyOxvAxqXx+Msnm7WE4r4kP+bIg=; b=RgZrokIpomYzAB
-	iN3mUaHeK1B8/95UbNgYcVYKp7JW1ngW+MxPxtgl94C8hHdInKf7kjKsvaIiE7T9CkNN3qnlgUIbx
-	oUKVN+rttJhrQwx5mcyDmpV/niaroMCrYDhC6B5gnNOyPv54L/BXgC0awV7oZE8p6hADbG3wm8BxX
-	FuQkWuMBIUbcYgFHFEI/qs4OZUCovFNdf5i+Dr3qDTU97I+RlIJSneeixEAztHpJok2Ui2QqGQncG
-	ffmlsXSKQyaTRYSkD6WVeIZHEoZtxmKsDSaUhlXwCPaEbLc1aKtknN1RdyZm0qrJonyT9pvsLJXJA
-	LFsOuaRsr/K4gu2PWyoA==;
+	List-Owner; bh=FEKdAV+QrJ4UbbVM2ODcb0tAszhPM1SOdrWRZVTbtW4=; b=T0+iSq8BftjfpO
+	7GRozppvVd+kWYPmdZPsu0fXNiS/jzhRgj5zhDciJpbChxoBvNT+O0QBoLbDSuAPtJjit6y92+PwV
+	6pFDxLg1B9Ww9VzKRumYpemtso34BQVm5Eq4ZZ7zwGk4HOjmBK4obxveHdBuh03C2rHsZfMEwVSWt
+	l2i+tUflu19XDjoYELLrejZ1um12zMKiIVJU2HrVjwS8ildokq16NtRlKKFEA7NTpyLbBd3MuBVc6
+	yIEPMyvWtSsZavHgAKztD1oAxgFGwcNw+jg9G/cUJs7egeXaqb/zYbqy76++PAy8I4POK5bE0X2Y8
+	PDD38TGqIGWjE6psFrbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mXKm7-005soZ-2I; Mon, 04 Oct 2021 10:00:47 +0000
+	id 1mXKtc-005vEc-51; Mon, 04 Oct 2021 10:08:32 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mXKlt-005sio-01; Mon, 04 Oct 2021 10:00:34 +0000
+ id 1mXKtC-005v73-Oy; Mon, 04 Oct 2021 10:08:07 +0000
 Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
  [51.254.78.96])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id A63BB61373;
- Mon,  4 Oct 2021 10:00:32 +0000 (UTC)
+ by mail.kernel.org (Postfix) with ESMTPSA id 2084B61206;
+ Mon,  4 Oct 2021 10:08:00 +0000 (UTC)
 Received: from sofa.misterjones.org ([185.219.108.64] helo=why.misterjones.org)
  by disco-boy.misterjones.org with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <maz@kernel.org>)
- id 1mXKlq-00EaPO-LI; Mon, 04 Oct 2021 11:00:30 +0100
-Date: Mon, 04 Oct 2021 11:00:30 +0100
-Message-ID: <87a6jprtxd.wl-maz@kernel.org>
+ id 1mXKt4-00EaTe-8C; Mon, 04 Oct 2021 11:07:58 +0100
+Date: Mon, 04 Oct 2021 11:07:57 +0100
+Message-ID: <878rz9rtky.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
 To: Sam Shih <sam.shih@mediatek.com>
 Cc: <matthias.bgg@gmail.com>, <Ryder.Lee@mediatek.com>,
@@ -80,8 +80,8 @@ X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
  SAEximRunCond expanded to false
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211004_030033_085398_74441160 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20211004_030806_864728_377EA01B 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,19 +100,24 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 On Mon, 04 Oct 2021 10:12:08 +0100,
 Sam Shih <sam.shih@mediatek.com> wrote:
-> +
-> +	timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		clock-frequency = <13000000>;
+> 
+> +		gic: interrupt-controller@c000000 {
+> +			compatible = "arm,gic-v3";
+> +			#interrupt-cells = <3>;
+> +			interrupt-parent = <&gic>;
+> +			interrupt-controller;
+> +			reg = <0 0x0c000000 0 0x40000>,  /* GICD */
+> +			      <0 0x0c080000 0 0x80000>,  /* GICR */
+> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
+> +			      <0 0x0c410000 0 0x1000>,   /* GICH */
+> +			      <0 0x0c420000 0 0x2000>;   /* GICV */
+> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> +		};
 
-I mentioned it last time[1] , but you seem to have ignored my comment.
-This property isn't an acceptable workaround on new systems. Please
-fix your firmware and drop this clock-frequency property.
+Also, the GICD region is totally wrong. It is 64kB at all times. I
+don't know where you get this 256kB figure from.
 
 	M.
-
-[1] https://lore.kernel.org/r/0459da08cddc579f069a28e659e614fd@kernel.org
 
 -- 
 Without deviation from the norm, progress is not possible.
