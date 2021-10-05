@@ -2,102 +2,64 @@ Return-Path: <SRS0=zM/7=OZ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 80AA8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Oct 2021 06:14:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D920CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Oct 2021 07:00:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3FB3A61139
-	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Oct 2021 06:14:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3FB3A61139
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id A247161503
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Oct 2021 07:00:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A247161503
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tB2Z6nUT3Fb2edL0uUzMfskDsJ2+kRx8NrJpnYFqxdg=; b=atPk7OeYrGYhBz
-	MkFsYYfyeAXCLPZPgWOzHNxr9DiINe4aDi/BYlQJ2nzUI1Cnhi4PsybBPZopUZY/IWujmofifzrg6
-	5x2SVHM/n0f0u21cctQkszN/yvf4QhbDOgeDSUdPkLN+x5cMNkymBHUD6uRDwQjt/ShrH6rbg6klD
-	/qAhrrhJ6e/pgyyfxbGtC/Ji0uIPr+OxhVDRF1qq/uDrILaiQ65XuZxpueTKaUWijPtdNASQ/s2kC
-	gqrWN9RwYdKplP2+I7TUPDnwhTsxQ+MIoUjESni4UhOZ0pBdz/jol5DVvivtIPePbh0UF78ynvnrT
-	B6zhbjTWdoXDM5B18zEg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=O84YLU1mu9hziBvNLTn/IoiQDgKoH2ws+yA6IHUVH4U=; b=MaCGDTU+LTfyuz
+	dptIcWaeh7nqMAQ7Fpgq9+btUlvsec0vYIWXu7RfRUhr8IN3Q9C12axweE/gHj95YOaft5j9gmQ+1
+	PbcIeHkEdrfuob+X/pvWegx+B6TH5GbQvT1uJNbWYSfo+gnQbEUx8Lt0/JHrft3EkQv6XAMqSzzUc
+	iykJUVmZeG1GkpwDIz4Xh7gPFEtqI/It0kQENxR6x7Z0nBGLdd85UyDpOt0r2kZd+LpoW4PkJqVHa
+	nvqipfI6iMr/ZMG1fU5OycsRNYR6pGJVGqQPciOzijWukPncfen4qkP4OyNyfX/d4r6P7vTqCzHpe
+	o5gcdiP2qoQuc+Oy3Isw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mXdiM-0097ka-53; Tue, 05 Oct 2021 06:14:10 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1mXeRS-009Eex-GS; Tue, 05 Oct 2021 07:00:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mXdiA-0097fJ-MJ
- for linux-mediatek@lists.infradead.org; Tue, 05 Oct 2021 06:13:59 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id
- r4-20020a7bc084000000b0030d6fc48bd2so1180308wmh.1
- for <linux-mediatek@lists.infradead.org>; Mon, 04 Oct 2021 23:13:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=j0gdpa7QFj6JEtxCL0CAkQhhWBN7lylbx+e4M1Vsb7o=;
- b=VSMlRsoRvLnUs/myw52hG6menRckaTpfD/sc8jEUT0jyW5v3NKcZHtBWqWykMD5xpQ
- mFu4QMfCZ9RQ9gHcJ9QFLXWCDQioaZGzCLDj2r3q5cK6Bu/YSHR3txAyRLJylC+4AKLR
- g55PRWGvVR45Df7AB215vAr2ryBVF9UVBNPf2zz3lLIf+C6rBUlNftwFmbW96vlrWdTq
- hCwjH6VQ0tr1DWzEEMjTxsoihIPbk377R7bOZfQPdhVWl10LaMlIoj6UaOF+EZtODQyV
- LwPycfL7e8vNKveuzSRdCDYLP9xDWVdJMnpBwUvvLfFs+gIqIOclKdHk3GCXIwYTLdoB
- y/FQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=j0gdpa7QFj6JEtxCL0CAkQhhWBN7lylbx+e4M1Vsb7o=;
- b=f5qvtC3L8pT5fEx94ggvwBl0mleBkiSD1PmGESzxdSerWTNSNFdiGFKOEnP8enFb1V
- 5Az32mXIZqCpLX16/C9mhG7UncIDmgvDtxv3aN5rp0YCD2TA4wCzhy/vAOm08mwE1xwr
- LSHaRspdycgd00yeG/ApLnFk+HC0LKphPGOO/2DmgBjXonLForj7nbkwKzZENiHdW2gC
- vBBl6EjsF1pfQ0NOIOXTnCDMpWbeRYOBw1Lx9Bnf4/ohSo3Pqo5FjjEeonnE0wmlmzpy
- F4kSIffDJ1QPrynnCFU9EMUrI6QbqqIFROx1CwZcIUdVLL9CFX1eBdvicURXkL+UgfZJ
- bBSg==
-X-Gm-Message-State: AOAM531KxaKOUKvT4Ko/6E9yxXnPhb2CLDZ+qQNBycc2qF6vR6JCWZgp
- MDYq8dv8m7EAsIGR54rAUo2LLZiR3Bb6n4+I7ZUc6A==
-X-Google-Smtp-Source: ABdhPJwvzH04gXiNcjIVGCd6bQFa+g35hTdKUKGTFBM4UFTMR14Ybiy5zm5HBrSroG102mfVLu4iLioSc6A1uZAaB2I=
-X-Received: by 2002:a05:600c:1c9a:: with SMTP id
- k26mr1406845wms.169.1633414423545; 
- Mon, 04 Oct 2021 23:13:43 -0700 (PDT)
+ id 1mXeRQ-009Edy-Eb; Tue, 05 Oct 2021 07:00:45 +0000
+X-UUID: d7ccb3cf6c9e4fbbbef34f95a22e9f71-20211005
+X-UUID: d7ccb3cf6c9e4fbbbef34f95a22e9f71-20211005
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1765693782; Tue, 05 Oct 2021 00:00:40 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 5 Oct 2021 00:00:32 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 5 Oct 2021 15:00:19 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 5 Oct 2021 15:00:18 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <mturquette@baylibre.com>, <sboyd@kernel.org>
+CC: <mark-pk.tsai@mediatek.com>, <yj.chiang@mediatek.com>,
+ <matthias.bgg@gmail.com>, <linux-clk@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] clk: make clk_core_lookup faster by using clk name hash
+Date: Tue, 5 Oct 2021 14:59:49 +0800
+Message-ID: <20211005065948.10092-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20210901083215.25984-1-yunfei.dong@mediatek.com>
- <CAAEAJfDOt_GyDPojcj5P6Wou9HC2GC8YzRt2wYyqdrCOjfeOog@mail.gmail.com>
- <3b9463e88d88ce85205da08f8263252da7726ade.camel@mediatek.com>
- <aba7fb4ffe6e45ac90869b5017468386bce64d28.camel@mediatek.com>
- <b7ed8b71578a98704e9b8ca29cac63c67cc14b3f.camel@mediatek.com>
- <CAAEAJfCHEBFc8B7C0bu7UxtJdffvDarqgA-rset1wPjLOiV01A@mail.gmail.com>
- <CAC-pXoMR=mOwnKqP5SFAfF3Ka5UrG0F8Mj=sJuEziU=uOKftoA@mail.gmail.com>
-In-Reply-To: <CAC-pXoMR=mOwnKqP5SFAfF3Ka5UrG0F8Mj=sJuEziU=uOKftoA@mail.gmail.com>
-From: Tomasz Figa <tfiga@google.com>
-Date: Tue, 5 Oct 2021 15:13:32 +0900
-Message-ID: <CAAFQd5DzLMFarc2fFkrcE4t+T3mk5XJtCoWa8WpHNuOS5++SbA@mail.gmail.com>
-Subject: Re: [PATCH v6, 00/15] Using component framework to support multi
- hardware decode
-To: Steve Cho <stevecho@chromium.org>
-Cc: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- "yunfei.dong@mediatek.com" <Yunfei.Dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, 
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <Andrew-CT.Chen@mediatek.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Daniel Vetter <daniel@ffwll.ch>, 
- dri-devel <dri-devel@lists.freedesktop.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>, Irui Wang <irui.wang@mediatek.com>, 
- linux-media <linux-media@vger.kernel.org>,
- devicetree <devicetree@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- srv_heupstream <srv_heupstream@mediatek.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Project_Global_Chrome_Upstream_Group
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211004_231358_757791_0A4A4320 
-X-CRM114-Status: GOOD (  15.78  )
+X-CRM114-CacheID: sfid-20211005_000044_517679_7ECAD5EF 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,32 +76,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 28, 2021 at 2:02 AM Steve Cho <stevecho@chromium.org> wrote:
->
-> Hi Ezequiel,
->
-> Thank you for reviewing these series from Yunfei!
-> This series is one of the main obstacles for us at the moment for MTK
-> so please continue to help & support reviewing this series.
->
-> > > According to google's suggestion, it's better not to use v4l2 async
-> > > also.
-> >
-> > Hum? I haven't seen such objection on the mailing list.
-> Maybe coming from Tzung-Bi?
-> Yunfei, please let us know.
+Compare hash value before strcmp the full name to make
+clk_core_lookup faster.
 
-I do object to using V4L2 async. It's designed for independent
-components of media pipelines, handled by multiple different drivers
-and also modelled as V4L2 subdevices. We don't have anything like that
-here.
+It make clk driver probe 30 percent faster on the platform
+have 1483 registered clks and average clock name length 20.
 
-How about just open coding something trivial that only fits the needs
-of this specific driver? I think it would be as simple as a linked
-list and registering the V4L2 devices only after all the nodes probe.
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+---
+ drivers/clk/clk.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-Best regards,
-Tomasz
+diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
+index 65508eb89ec9..d5f65fda3db8 100644
+--- a/drivers/clk/clk.c
++++ b/drivers/clk/clk.c
+@@ -89,6 +89,7 @@ struct clk_core {
+ 	struct hlist_node	debug_node;
+ #endif
+ 	struct kref		ref;
++	unsigned int		hash;
+ };
+ 
+ #define CREATE_TRACE_POINTS
+@@ -292,16 +293,17 @@ struct clk_hw *clk_hw_get_parent(const struct clk_hw *hw)
+ EXPORT_SYMBOL_GPL(clk_hw_get_parent);
+ 
+ static struct clk_core *__clk_lookup_subtree(const char *name,
++					     unsigned int hash,
+ 					     struct clk_core *core)
+ {
+ 	struct clk_core *child;
+ 	struct clk_core *ret;
+ 
+-	if (!strcmp(core->name, name))
++	if (hash == core->hash && !strcmp(core->name, name))
+ 		return core;
+ 
+ 	hlist_for_each_entry(child, &core->children, child_node) {
+-		ret = __clk_lookup_subtree(name, child);
++		ret = __clk_lookup_subtree(name, hash, child);
+ 		if (ret)
+ 			return ret;
+ 	}
+@@ -313,20 +315,22 @@ static struct clk_core *clk_core_lookup(const char *name)
+ {
+ 	struct clk_core *root_clk;
+ 	struct clk_core *ret;
++	unsigned int hash;
+ 
+ 	if (!name)
+ 		return NULL;
+ 
++	hash = full_name_hash(NULL, name, strlen(name));
+ 	/* search the 'proper' clk tree first */
+ 	hlist_for_each_entry(root_clk, &clk_root_list, child_node) {
+-		ret = __clk_lookup_subtree(name, root_clk);
++		ret = __clk_lookup_subtree(name, hash, root_clk);
+ 		if (ret)
+ 			return ret;
+ 	}
+ 
+ 	/* if not found, then search the orphan tree */
+ 	hlist_for_each_entry(root_clk, &clk_orphan_list, child_node) {
+-		ret = __clk_lookup_subtree(name, root_clk);
++		ret = __clk_lookup_subtree(name, hash, root_clk);
+ 		if (ret)
+ 			return ret;
+ 	}
+@@ -3827,6 +3831,7 @@ __clk_register(struct device *dev, struct device_node *np, struct clk_hw *hw)
+ 		goto fail_name;
+ 	}
+ 
++	core->hash = full_name_hash(NULL, core->name, strlen(core->name));
+ 	if (WARN_ON(!init->ops)) {
+ 		ret = -EINVAL;
+ 		goto fail_ops;
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
