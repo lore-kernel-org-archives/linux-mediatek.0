@@ -1,78 +1,86 @@
-Return-Path: <SRS0=jwT2=OY=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=zM/7=OZ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ED9AFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Oct 2021 23:53:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0B35C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Oct 2021 04:22:03 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B1D6260F5C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  4 Oct 2021 23:53:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B1D6260F5C
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6179361184
+	for <linux-mediatek@archiver.kernel.org>; Tue,  5 Oct 2021 04:22:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6179361184
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vl2Vsf5zkya2bK7T7fRk5XKMC8gL1gyH34V5QUL6kXU=; b=aBK7b0MRQh2Yi0
-	6HiT2W3p/FOYvDNyEgmNf3PiOL7hy/Y4lmkjML4TQRYLv5yIPOTThNG7oawsn4hMF3GwrLXEnBGRs
-	OvVm/nYSomCeLrqnkvuca5yrI1037Vl5Xgs6F4lbRqORfh3oGDuPb6+9wEkxgxybFy5shdEtzDyHr
-	+33kYMYLsA3nV+e6yKqY9VGVQDQztG67Tb6OceGCEyqncsUIJe3OMK133JCOp4WBM9M5PK4Tn7SP3
-	4wvLtyrac8tA6et1GGvxkwbewhDktzh1afpaL4B0dgE6pf25nATIn9q+4cpc/WGIp1wMEek0CeNLw
-	9AiSCu1uEkjhNgc0c2eQ==;
+	List-Owner; bh=HGIRlNVEnXt7Zu293L0ol2v06UaT7ndDrTxH2fxVFAY=; b=rWlm0NDfxj6//v
+	BzYSra7Mzd8jnhCxkpe2A7QM8i8GC4KrqjJD/CxomYz6GHB2AH//AhicYB/TmEenJtOQ9ixnTp29a
+	BIeJw21KT/0ebl34lay85woTYJMr6s5d7S9kdvLNVNmfy6hmr7Dc2+QhP2tk0jN83gewDZZn5IGgX
+	I3SoMehzIY8d/kqR1z1vs76GwGK2GGojb/oUHlbzsOExButmR+ahfQPwegDXXET7LkLfxJOCqBGbL
+	ch8QezsykbWgfTHFfhFXNvFG5vw7xnG3fM45iBA5WswB+v6DpffPAilRhH9k/IMvPWIIonwSI1MYq
+	OuVwDv+Vd8GhrD8raPOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mXXlx-008PTn-Op; Mon, 04 Oct 2021 23:53:29 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mXbxc-008rif-Mb; Tue, 05 Oct 2021 04:21:48 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mXXll-008PSL-6d; Mon, 04 Oct 2021 23:53:18 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A7B97615A3;
- Mon,  4 Oct 2021 23:53:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1633391596;
- bh=KacuFmoUGvcXzM9fllt69Pg7UBDWLYu7j2eBaHhQ04c=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=t3GtKPhlMlF01/ThMVlitLmMDrfl19dhlT7zN6/NvKndee70E/iTNLDAh2lokJ62O
- ADwVmTCbHSzMXX1Ns6ReI3hD1Fxkcg9YzGKazko9ndwU841j9O7n3m/whWVjD3smN3
- qa4+wp6n/3Qr3j8ONaFHbCKRCRIX4NcmKcQJtgJsFaaLJTr3hnUOVXpzdZ3zcvQ1rK
- S84jpNZks49oyomLxJ25h3pFfKSUU3cPI+s1pvEayUXePzHyktrIx4LY00WKUAhchF
- SDKZdsgcXmeqC1PkIOAdqHGWqVONA+l6FFsZv0WkZWCuo2fo9Gr1KEy3ZOm7PgP2uO
- iWLsbEXhhN0+w==
-Received: by mail-ed1-f46.google.com with SMTP id bm13so21048695edb.8;
- Mon, 04 Oct 2021 16:53:16 -0700 (PDT)
-X-Gm-Message-State: AOAM533fnKya8Pj4alnU+V84K+S8cRFl5I8O2RHa9Proh0M3tnF+7VxX
- tI7Bley3A8x/QoJ0bAmZkuOQSaLRH6OAsZ/CnQ==
-X-Google-Smtp-Source: ABdhPJwGp2DqpTNo0P4lu0bDreSkPUWiH27/pIjz21Rlva5heOvqliI+Up3iksR2Jw2wostBa8zwm00N0d1+Hs27N/U=
-X-Received: by 2002:a17:906:3181:: with SMTP id
- 1mr21316647ejy.388.1633391595236; 
- Mon, 04 Oct 2021 16:53:15 -0700 (PDT)
+ id 1mXbxO-008rgf-Jl
+ for linux-mediatek@lists.infradead.org; Tue, 05 Oct 2021 04:21:36 +0000
+Received: by mail-pf1-x432.google.com with SMTP id m5so3538352pfk.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 04 Oct 2021 21:21:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=6XYDK2OrMAt5LQifO3ckjgLogx91TVAqE/NRbe8lTiQ=;
+ b=OTAbVKDf+Y5TJO2+i6nYPeY7DmH4WHagakuuacBBKky/xgnsEYkv/LFLRKp2COqYK3
+ HpkL9pE/qVkT+PwDnmR/JM79VN/scw7j+BmjqjKLaKz/kaBajfo8Za+QZyewmGke/tFu
+ Ciis62LC9esLcwoQzZzfai94lRDyFuWeOKZ7LYn2U7U4vbHyMwgrFJrpYoeucOtQhVVd
+ Nb4ZxCfEKIMcpG4HPQ2/2gox7Wlm0F+j+BDkIOnFiuTv7qYqNWsvdhFtMKXpOeER9jCj
+ FN4Eup/Y8niobob0RrwRPTYrk6Oe8EW2PM1jDelUgkKzpaux/pevszCtQANfHi42gcMV
+ 6/dg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=6XYDK2OrMAt5LQifO3ckjgLogx91TVAqE/NRbe8lTiQ=;
+ b=Q4wRGQu++0G7B9cEArsQ7BWQwutnYeItCfYY9jXIGXe7qQLGsaQFVk/FODrekqaAio
+ ufWgtHgISeTqBUl7b6uqWMxzDUdjZ5NgGwZX0+VXsGm50HlLXO/mvZRbBCC2ejLdCqpP
+ /CAoJJ47mW+8adt/TdrU2Wk/dbZ3xuMEwLwqPRQ7VhmKlrzuBcg3/tCpguRzO6+3hDGO
+ SVnqdxddIP0sYqf/ljV6OsAwhZk7RT9qsyVRQ1filJ6MYR5zMLEm1ZEybXP38s94zWaQ
+ mGJG7hD/GYbmK6nmOi+WuJn5QQ7wI471XkX5m2rx8DGLWrDeaV6i4sfBv3oEveLgIzQW
+ wl5w==
+X-Gm-Message-State: AOAM533nRHgzAcE4/XVNZ7b31FYxgC+gSrGA7qcFBwGUncE2QdidzPrt
+ LQWyerZGj8psBOCUBQH4R/xIqw==
+X-Google-Smtp-Source: ABdhPJxIDkexXupjkm7UaofuJsbybc7Bj6eXwQj/5/OMNDUKaVWNtmseeaTTDNbzm6h65LNitJJVyg==
+X-Received: by 2002:a63:d456:: with SMTP id i22mr13954080pgj.421.1633407693629; 
+ Mon, 04 Oct 2021 21:21:33 -0700 (PDT)
+Received: from localhost ([122.171.247.18])
+ by smtp.gmail.com with ESMTPSA id g23sm16313352pfu.71.2021.10.04.21.21.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 04 Oct 2021 21:21:32 -0700 (PDT)
+Date: Tue, 5 Oct 2021 09:51:28 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Hector Yuan <hector.yuan@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-pm@vger.kernel.org,
+ "Rafael J. Wysocki" <rjw@rjwysocki.net>,
+ linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com
+Subject: Re: [PATCH v1 1/1] cpufreq:Fix parameter in parse_perf_domain
+Message-ID: <20211005042128.o47qximtibgak33q@vireshk-i7>
+References: <1633358553-2842-1-git-send-email-hector.yuan@mediatek.com>
+ <1633358553-2842-2-git-send-email-hector.yuan@mediatek.com>
 MIME-Version: 1.0
-References: <20210915223117.7857-1-jitao.shi@mediatek.com>
- <20210915223117.7857-2-jitao.shi@mediatek.com>
-In-Reply-To: <20210915223117.7857-2-jitao.shi@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 5 Oct 2021 07:53:04 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_8H=TE8574xB3FFcGVgN_fTb_83+FT8ei1CDuB4k4-Oew@mail.gmail.com>
-Message-ID: <CAAOTY_8H=TE8574xB3FFcGVgN_fTb_83+FT8ei1CDuB4k4-Oew@mail.gmail.com>
-Subject: Re: [PATCH v7 1/3] drm/dsi: transer dsi hs packet aligned
-To: Jitao Shi <jitao.shi@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, 
- David Airlie <airlied@linux.ie>,
- DRI Development <dri-devel@lists.freedesktop.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, CK Hu <ck.hu@mediatek.com>, 
- stonea168@163.com, huijuan.xie@mediatek.com, 
- Rex-BC Chen <rex-bc.chen@mediatek.com>, shuijing.li@mediatek.com
+Content-Disposition: inline
+In-Reply-To: <1633358553-2842-2-git-send-email-hector.yuan@mediatek.com>
+User-Agent: NeoMutt/20180716-391-311a52
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211004_165317_285041_B2989333 
-X-CRM114-Status: GOOD (  15.32  )
+X-CRM114-CacheID: sfid-20211004_212134_738683_40B64748 
+X-CRM114-Status: GOOD (  14.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,33 +92,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIEppdGFvOgoKSml0YW8gU2hpIDxqaXRhby5zaGlAbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
-tDnmnIgxNuaXpSDpgLHlm5sg5LiK5Y2INjozMeWvq+mBk++8mgo+Cj4gU29tZSBEU0kgZGV2aWNl
-cyByZXFpcmUgdGhlIGhzIHBhY2tldCBzdGFydGluZyBhbmQgZW5kaW5nCj4gYXQgc2FtZSB0aW1l
-IG9uIGFsbCBkc2kgbGFuZXMuIFNvIHVzZSBhIGZsYWcgdG8gdGhvc2UgZGV2aWNlcy4KPgoKUmV2
-aWV3ZWQtYnk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoKPiBTaWdu
-ZWQtb2ZmLWJ5OiBKaXRhbyBTaGkgPGppdGFvLnNoaUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGlu
-Y2x1ZGUvZHJtL2RybV9taXBpX2RzaS5oIHwgMiArKwo+ICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNl
-cnRpb25zKCspCj4KPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS9kcm0vZHJtX21pcGlfZHNpLmggYi9p
-bmNsdWRlL2RybS9kcm1fbWlwaV9kc2kuaAo+IGluZGV4IGFmN2JhODA3MWViMC4uOGU4NTYzNzky
-NjgyIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvZHJtL2RybV9taXBpX2RzaS5oCj4gKysrIGIvaW5j
-bHVkZS9kcm0vZHJtX21pcGlfZHNpLmgKPiBAQCAtMTc3LDYgKzE3Nyw3IEBAIHN0cnVjdCBtaXBp
-X2RzaV9kZXZpY2VfaW5mbyB7Cj4gICAqIEBscF9yYXRlOiBtYXhpbXVtIGxhbmUgZnJlcXVlbmN5
-IGZvciBsb3cgcG93ZXIgbW9kZSBpbiBoZXJ0eiwgdGhpcyBzaG91bGQKPiAgICogYmUgc2V0IHRv
-IHRoZSByZWFsIGxpbWl0cyBvZiB0aGUgaGFyZHdhcmUsIHplcm8gaXMgb25seSBhY2NlcHRlZCBm
-b3IKPiAgICogbGVnYWN5IGRyaXZlcnMKPiArICogQGhzX3BhY2tldF9lbmRfYWxpZ25lZDogdHJh
-bnNmZXIgZHNpIGhzIHBhY2tldCBlbmRpbmcgYWxpZ25lZAo+ICAgKi8KPiAgc3RydWN0IG1pcGlf
-ZHNpX2RldmljZSB7Cj4gICAgICAgICBzdHJ1Y3QgbWlwaV9kc2lfaG9zdCAqaG9zdDsKPiBAQCAt
-MTg5LDYgKzE5MCw3IEBAIHN0cnVjdCBtaXBpX2RzaV9kZXZpY2Ugewo+ICAgICAgICAgdW5zaWdu
-ZWQgbG9uZyBtb2RlX2ZsYWdzOwo+ICAgICAgICAgdW5zaWduZWQgbG9uZyBoc19yYXRlOwo+ICAg
-ICAgICAgdW5zaWduZWQgbG9uZyBscF9yYXRlOwo+ICsgICAgICAgYm9vbCBoc19wYWNrZXRfZW5k
-X2FsaWduZWQ7Cj4gIH07Cj4KPiAgI2RlZmluZSBNSVBJX0RTSV9NT0RVTEVfUFJFRklYICJtaXBp
-LWRzaToiCj4gLS0KPiAyLjI1LjEKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+On 04-10-21, 22:42, Hector Yuan wrote:
+> From: "Hector.Yuan" <hector.yuan@mediatek.com>
+> 
+> Should pass per-cpu id to map perf_domain for related_cpus
+> rather than map policy_cpu several times.
+> 
+> Signed-off-by: Hector.Yuan <hector.yuan@mediatek.com>
+> ---
+>  include/linux/cpufreq.h |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/linux/cpufreq.h b/include/linux/cpufreq.h
+> index ff88bb3..66a1f49 100644
+> --- a/include/linux/cpufreq.h
+> +++ b/include/linux/cpufreq.h
+> @@ -1041,7 +1041,7 @@ static inline int of_perf_domain_get_sharing_cpumask(int pcpu, const char *list_
+>  		if (cpu == pcpu)
+>  			continue;
+>  
+> -		ret = parse_perf_domain(pcpu, list_name, cell_name);
+> +		ret = parse_perf_domain(cpu, list_name, cell_name);
+>  		if (ret < 0)
+>  			continue;
+
+Applied. Thanks.
+
+-- 
+viresh
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
