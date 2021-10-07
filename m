@@ -2,14 +2,14 @@ Return-Path: <SRS0=EI02=O3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0DC34C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 02:57:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0B234C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 03:10:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 93CD561177
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 02:57:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 93CD561177
+	by mail.kernel.org (Postfix) with ESMTPS id C2EA06120D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 03:10:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C2EA06120D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,74 +18,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3eHgqFAGTyGM2cQSaUbQLl5LPvc2umJ9I7urzHlaWHk=; b=DM54izqe/iiEbA
-	Vl95eWi4rTp5HnET8bnv5MarSgAO92E9NAEw8dkheF0LfbLA0EXZ2rA9w1Rak3oTlcWUkZryGDNpC
-	10DndL11UF5cDY2IUFhZU51SB6Xqteb5WGtKytUhKCMixgB0BIf9aXpAsABf3iiK1927HlCxvvFRv
-	Z42v3os3IWFVquFEkx7ZEBXAPRfinGcoJpN4DEDDu1irxcfU6Ya5UBP7ycBlNYlTp8NXjZPCzClst
-	e3akzBL/L3CWO1Vk+AJEXjTPO6LKZUNZo4Pr4yJu3NjT6ThVlu/zzMeIy0xEJNj01SKgRBIrkFXve
-	vpIH0wpWYnscf87Bg2ow==;
+	List-Owner; bh=Xw0WKzqpW0BhXDi0uuKa1XbndKVsV8U7eCWfCNWNwZc=; b=pTGRy/+XzCJgqv
+	NZKOb50TM5MM/GnI7A3EwBOF0dZV2brWzkxOZbaylG9U7pXQ+aM7dFdYYM2/wTULCWb/pQA5eR2Vx
+	KSh08fhqs4pjUIV3z0ihYb+ZGqC+62PkxQm/5uBqvfk8qhHfEd6AZvM+qnunMp11M1+b38KJOknfl
+	jNqFB+rrdD9yBmK15xd3VxBqlK+8pXF3BmKacFshidrbwhsVShChDaPgpKB09Qk4GS+PxjFcoEzUP
+	pTltDj0vZn1EZ0kbF0STX0V85q3aKkYb9R39DIelwdSN/VYR91/iz1LanfK9+qluxD7H57tMz6npW
+	WqqFLial/TKiPFMO9oag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mYJaz-00G2E7-Jw; Thu, 07 Oct 2021 02:57:21 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mYJnc-00G3HL-4y; Thu, 07 Oct 2021 03:10:24 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mYJal-00G2Bg-Ux; Thu, 07 Oct 2021 02:57:09 +0000
-X-UUID: 56df245d033c4d079b5957b5e4dfb173-20211006
+ id 1mYJnZ-00G3Gp-2I; Thu, 07 Oct 2021 03:10:22 +0000
+X-UUID: a293ecc73fd247ad85885aacfe0c747c-20211006
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=puAeYVHv80gaLD3QPUVP0U9ZlM4HRv166FTTO6hr2Lk=; 
- b=LqzMu5O1Ak1GXXXZIGexmWg/0ZCTwsSG5We2XLOH6iO7Ba4RPqZF5ht9oZZ69+uMg+JklvO1wEOXebFap0K1/ydqHp0no/CJKw0h7AA/w2OoRanFVNXcLOl70D13Lna3urZ/5YBRsjcFc+CPP8WM5CE1JtRZPqAeGH5mq87dze0=;
-X-UUID: 56df245d033c4d079b5957b5e4dfb173-20211006
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=JFzGo/WxNZB+Ws19Df4O4JzpkbbM9zmDRpzU+60snW8=; 
+ b=P1WfJPTiCRORPrzv8PKqLG5Bb7JH3+uSwGUZed8BBYmRP8W93XyN9WGWHmPo5PaFC5CphRlOsVxCBMOKwQS4fBuXLdwhumhYPeDUT2rBwI/ypfmGzZP77pAi6yEAgtMCeNhkQ3UfgAP2/BkzOY0OGhKo1w8rENFZwBKCXSJx3mc=;
+X-UUID: a293ecc73fd247ad85885aacfe0c747c-20211006
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1683890687; Wed, 06 Oct 2021 19:57:03 -0700
+ with ESMTP id 113419706; Wed, 06 Oct 2021 20:10:20 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 6 Oct 2021 19:57:02 -0700
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 6 Oct 2021 20:00:18 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 7 Oct 2021 10:57:00 +0800
+ Thu, 7 Oct 2021 11:00:17 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 7 Oct 2021 10:56:58 +0800
-Message-ID: <7703076927822fc31d1af37f8fd3bfe5e0513d29.camel@mediatek.com>
-Subject: Re: [PATCH v8 09/12] media: mtk-vcodec: Get rid of
- mtk_smi_larb_get/put
+ Transport; Thu, 7 Oct 2021 11:00:15 +0800
+Message-ID: <111c6f3905f4349e6e30cde60bdc70672ee036b3.camel@mediatek.com>
+Subject: Re: [PATCH v2 11/29] iommu/mediatek: Always pm_runtime_get while
+ tlb flush
 From: Yong Wu <yong.wu@mediatek.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>
-CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- <youlin.pei@mediatek.com>, Matthias Kaehlcke <mka@chromium.org>,
- <anan.sun@mediatek.com>, <yi.kuo@mediatek.com>, <acourbot@chromium.org>,
- <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Daniel
- Vetter" <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- <anthony.huang@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>,
- Irui Wang <irui.wang@mediatek.com>
-Date: Thu, 7 Oct 2021 10:57:01 +0800
-In-Reply-To: <f9829a5a-984c-bced-0286-53f9edc8ae3d@collabora.com>
-References: <20210929013719.25120-1-yong.wu@mediatek.com>
- <20210929013719.25120-10-yong.wu@mediatek.com>
- <02f444d5-9633-3f9c-2d1f-97ce073d1180@collabora.com>
- <79cbf64491273797f218f417234b8c95936bd3b1.camel@mediatek.com>
- <f9829a5a-984c-bced-0286-53f9edc8ae3d@collabora.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Joerg Roedel
+ <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, Robin Murphy
+ <robin.murphy@arm.com>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Evan Green
+ <evgreen@chromium.org>, Tomasz Figa <tfiga@google.com>, Tomasz Figa
+ <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, <youlin.pei@mediatek.com>, "Nicolas
+ Boichat" <drinkcat@chromium.org>, <anan.sun@mediatek.com>,
+ <chao.hao@mediatek.com>
+Date: Thu, 7 Oct 2021 11:00:19 +0800
+In-Reply-To: <11fe281d-4873-245b-f506-452900f33d3b@collabora.com>
+References: <20210813065324.29220-1-yong.wu@mediatek.com>
+ <20210813065324.29220-12-yong.wu@mediatek.com>
+ <11fe281d-4873-245b-f506-452900f33d3b@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211006_195708_010935_FFEF1198 
-X-CRM114-Status: GOOD (  35.11  )
+X-CRM114-CacheID: sfid-20211006_201021_165632_54515964 
+X-CRM114-Status: GOOD (  31.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,94 +94,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2021-09-30 at 12:57 +0200, Dafna Hirschfeld wrote:
+On Thu, 2021-09-30 at 13:26 +0200, Dafna Hirschfeld wrote:
 > 
-> On 30.09.21 05:28, Yong Wu wrote:
-> > Hi Dafna,
+> On 13.08.21 08:53, Yong Wu wrote:
+> > Prepare for 2 HWs that sharing pgtable in different power-domains.
 > > 
-> > Thanks very much for the review.
-> > 
-> > On Wed, 2021-09-29 at 14:13 +0200, Dafna Hirschfeld wrote:
-> > > 
-> > > On 29.09.21 03:37, Yong Wu wrote:
-> > > > MediaTek IOMMU has already added the device_link between the
-> > > > consumer
-> > > > and smi-larb device. If the vcodec device call the
-> > > > pm_runtime_get_sync,
-> > > > the smi-larb's pm_runtime_get_sync also be called
-> > > > automatically.
-> > > > 
-> > > > CC: Tiffany Lin <tiffany.lin@mediatek.com>
-> > > > CC: Irui Wang <irui.wang@mediatek.com>
-> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > Reviewed-by: Evan Green <evgreen@chromium.org>
-> > > > Acked-by: Tiffany Lin <tiffany.lin@mediatek.com>
-> > > > Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > > > ---
-> > > >    .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 37 +++----
-> > > > -------
-> > > > --
-> > > >    .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
-> > > >    .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
-> > > >    .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 44 +++----
-> > > > -------
-
-[snip]
-
-> > > >    void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
-> > > >    {
-> > > >    	pm_runtime_disable(dev->pm.dev);
-> > > > -	put_device(dev->pm.larbvdec);
-> > > >    }
-> > > 
-> > > Now that functions only do  'pm_runtime_disable(dev->pm.dev);' so
-> > > it
-> > > will be more
-> > > readable to remove the function mtk_vcodec_release_dec_pm
-> > > and replace with pm_runtime_disable(dev->pm.dev);
-> > > Same for the 'enc' equivalent.
-> > 
-> > Make sense. But It may be not proper if using pm_runtime_disable
-> > as the symmetry with mtk_vcodec_init_dec_pm in the
-> > mtk_vcodec_probe.
-> > 
-> > Maybe we should move pm_runtime_enable out from
-> > mtk_vcodec_init_dec_pm
-> > into mtk_vcodec_probe. I could do a new patch for this. Is this ok
-> > for
-> > you?
+> > The previous SoC don't have PM. Only mt8192 has power-domain,
+> > and it is display's power-domain which nearly always is enabled.
 > 
-> yes, there is also asymettry when calling pm_runtime* in general,
-> I see in the decoder it is called from mtk_vcodec_dec_pm.c
-> but in the encoder it is called from mtk_vcodec_enc.c,
+> hi, I see that in mt1873.dtsi, many devices that uses the iommu have
+> the
+> 'power-domains' property.
+
+Sorry, I didn't clarify this clear. I mean the iommu device don't have
+this property rather than the other device.
+
 > 
-> I think all calls to pm_runtime* should be out of the *_pm.c files
+> > 
+> > When there are 2 M4U HWs, it may has problem.
+> > In this function, we get the pm_status via the m4u dev, but it
+> > don't
+> > reflect the real power-domain status of the HW since there may be
+> > other
+> > HW also use that power-domain.
+> > 
+> > Currently we could not get the real power-domain status, thus
+> > always
+> > pm_runtime_get here.
+> > 
+> > Prepare for mt8195, thus, no need fix tags here.
+> > 
+> > This patch may drop the performance, we expect the user could
+> > pm_runtime_get_sync before dma_alloc_attrs which need tlb ops.
+> > 
+> 
+> Could you explain this sentence a bit? should the user call
+> pm_runtime_get_sync
+> before calling dma_alloc_attrs?
 
-OK. I will try this.
-
-> since for example 'mtk_vcodec_dec_pw_on' also do just one call to
-> pm_runtime_resume_and_get so this function can also be removed.
-
-I guess this one should be reserved to vcodec guys. I see this function
-is changed at [1]. Let's keep this patchset clean.
+In v3, I have removed this patch. Use [1] instead.
 
 [1] 
-https://patchwork.kernel.org/project/linux-mediatek/patch/20210901083215.25984-10-yunfei.dong@mediatek.com/
+https://lore.kernel.org/linux-mediatek/20210923115840.17813-13-yong.wu@mediatek.com/
+
+Thanks.
 
 > 
-> thanks,
+> Thanks,
 > Dafna
 > 
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >   drivers/iommu/mtk_iommu.c | 5 ++++-
+> >   1 file changed, 4 insertions(+), 1 deletion(-)
 > > 
-> > > 
-> > > Thanks,
-> > > Dafna
-> > 
-> > [snip]
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index add23a36a5e2..abc721a1da21 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -238,8 +238,11 @@ static void
+> > mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+> >   
+> >   	for_each_m4u(data, head) {
+> >   		if (has_pm) {
+> > -			if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> > +			ret = pm_runtime_resume_and_get(data->dev);
+> > +			if (ret < 0) {
+> > +				dev_err(data->dev, "tlb flush: pm get
+> > fail %d.\n", ret);
+> >   				continue;
+> > +			}
+> >   		}
+> >   
+> >   		spin_lock_irqsave(&data->tlb_lock, flags);
 > > 
 _______________________________________________
 Linux-mediatek mailing list
