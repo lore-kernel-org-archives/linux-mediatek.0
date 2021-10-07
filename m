@@ -2,66 +2,77 @@ Return-Path: <SRS0=EI02=O3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0CD34C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 23:45:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B42A2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 23:51:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C8F9A60FD8
-	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 23:45:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C8F9A60FD8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=canonical.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6D7CC61027
+	for <linux-mediatek@archiver.kernel.org>; Thu,  7 Oct 2021 23:51:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6D7CC61027
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=candelatech.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0qjRRLcpEE1lpINsNfkT537x1uCnVOy9EZFmu+JfXIY=; b=dGR6yOi9ja7dK6
-	ODQ48HjPFIEUNhOI5cILVMFEtTwzF6PNv6898t3cq/Sk7REXeriJ7QK3DvYc+acDeOxzjNWBEjHCv
-	2L73tyqmftjNnLfKgD2CXze0arADj4+T1jnHHQk2qO5Ydgdf0+vKJM7CS8DJtUSYkCqu4MqZapAHM
-	VOCCQq+X6CCRugHZsjsK4ooRwVYX5Ncu5g25Vp1kKHGdHbCdwt1o1UEe6UrNqqvxz5mxy/anZRq+8
-	IUwNDODjSWnzMtHPPxMZcEvmeOgeMpDhY/7FJOWnA+hP/4sEC4Czi+0/HXIMkGtaaci+isRxmGv28
-	Ttdn5UqNhxfOwrrbm/cw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gI8efjtu67f9P6pj+63D/zptL73iUJDI1Am/HPcoWUo=; b=AHQMeNqyBDPIbFioKcgwYyq++T
+	x9CXBCJUORSEC9FRoICLTYmHzciI9t11OBz5s7FWv5yrheep5aaOYZOMsnWQSyyUxSdRvqMjHzLZV
+	TPCXlRrcLOtVlD+WxnQPHKcKBko6sa417+IX8N0Bo1zWO0zMAkZKJ/okNWEEpM0e1sXJvcAaOd42T
+	5/MUp0SrSZGVrCdxY2jFvAS2VxI6P5moFw+fubolbOvlego6UV6Of8awKUDNYZ46EWh4JEW1eZtz7
+	uc/2SgIcsLR+a/GHwpylyJP0jMdDYRe80deBNZDqgmbZCAt13hSmYiGeuH7acMFhNSXBPRd9lKYAP
+	/cCKCWpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mYd4g-0012bc-He; Thu, 07 Oct 2021 23:45:18 +0000
-Received: from smtp-relay-canonical-0.canonical.com ([185.125.188.120])
+	id 1mYdA3-0014PG-EB; Thu, 07 Oct 2021 23:50:51 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mYd1U-0011Om-Fi; Thu, 07 Oct 2021 23:42:02 +0000
-Received: from localhost (1.general.cking.uk.vpn [10.172.193.212])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest
- SHA256) (No client certificate requested)
- by smtp-relay-canonical-0.canonical.com (Postfix) with ESMTPSA id BEA443F226; 
- Thu,  7 Oct 2021 23:41:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1633650113;
- bh=xcI8ZGeSFCk6ZEUuzxl7/qYwHZsqf/PSG6Ov6OHHj+c=;
- h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Type;
- b=BQiKBs9mshkGku5TLdxn8jGHo9Yi/4GPqHXGx1oRJUNuRW8z1ZcHZyP5tQZ86tRi6
- TlQb5HDR9kPEYFEfEY6EZT7iAG1vMiZbd+1+YYwU/SWlTjkmquB9O+sjrwtfebBmJI
- Ck5rfbED65Ls+eA5fWWPc752AmcyL2HNWLUCjH26DmqHKwpJxGtN9JrI1opsQUQcAx
- W0nJ9Nn1HurvlZRVkQez9WPti919HJZQMgW5kBRDe+KwgS8znuVMjTbevPqmJAdJlA
- uoXfVOeH1j4khNn+rVZiHJB6p6F5qhUoXeCmyN1CZtHdq8x54DB1vB4QPQFejn+hA8
- 9VDH23jU9oBBg==
-From: Colin King <colin.king@canonical.com>
-To: Jakub Kicinski <kubakici@wp.pl>, Kalle Valo <kvalo@codeaurora.org>,
- "David S . Miller" <davem@davemloft.net>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] mt7601u: Remove redundant initialization of variable ret
-Date: Fri,  8 Oct 2021 00:41:53 +0100
-Message-Id: <20211007234153.31222-1-colin.king@canonical.com>
-X-Mailer: git-send-email 2.32.0
+ id 1mYd9x-0014NR-6c
+ for linux-mediatek@lists.infradead.org; Thu, 07 Oct 2021 23:50:49 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mx1-us1.ppe-hosted.com (unknown [10.7.67.131])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 87C8A2005E; 
+ Thu,  7 Oct 2021 23:50:43 +0000 (UTC)
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
+ 1038E980068; Thu,  7 Oct 2021 23:50:42 +0000 (UTC)
+Received: from [192.168.100.195] (50-251-239-81-static.hfc.comcastbusiness.net
+ [50.251.239.81])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail3.candelatech.com (Postfix) with ESMTPSA id 47EA913C2B0;
+ Thu,  7 Oct 2021 16:50:42 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 47EA913C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+ s=default; t=1633650642;
+ bh=T6vwDbx+pV/hvMObb7NO5tmpk+mAlu0GxmSe7c+x770=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=iM9hpCjHp60OvIAgXA+5DhDX29oHTVCVya2oVGpoDLbaWs/jaypqjtvU2utVG+lzD
+ Y+aO0wz9Sg4JsPf4UbgZdtyH4EsKlczxrsViRovmHZPBzZofI0S48gvc9EpDgXW84P
+ HYKVPBoyAGT21G4Lyxdp1RkdWugLj0HkxPr2lWzI=
+Subject: Re: [PATCH v5 1/8] mt76: mt7915: introduce
+ mt7915_mcu_beacon_check_caps()
+To: Shayne Chen <shayne.chen@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <20211001095355.10598-1-shayne.chen@mediatek.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+Message-ID: <dbe9af7e-dd5a-827b-aedc-c0fa767faf05@candelatech.com>
+Date: Thu, 7 Oct 2021 16:50:41 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
+In-Reply-To: <20211001095355.10598-1-shayne.chen@mediatek.com>
+Content-Language: en-US
+X-MDID: 1633650644-XrS8nWtV6ccy
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211007_164200_724291_E3719C24 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20211007_165045_946375_CFB9BF54 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,38 +84,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Colin Ian King <colin.king@canonical.com>
+On 10/1/21 2:53 AM, Shayne Chen wrote:
+> From: Ryder Lee <ryder.lee@mediatek.com>
+> 
+> Beacon elements might be changed by hostapd configuraion, so driver
+> should compare both IEs and PHY capabilities to get the least common
+> denominator before association.
+> 
+> Co-developed-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+> Signed-off-by: Evelyn Tsai <evelyn.tsai@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> ---
+> v2: modify condition for mimo_dl_en
+> v5: rebase to staging tree
 
-The variable ret is being initialized with a value that is never read,
-it is assigned later on with a different value. The initialization is
-redundant and can be removed.
+Have you tested this in station mode?  I tried merging this into my tree
+and it broke station mode.  Symptom was that it associated, but could not
+get DHCP.  It worked if I disabled AX mode and made it associate as 11ac.
 
-Addresses-Coverity: ("Unused value")
-Signed-off-by: Colin Ian King <colin.king@canonical.com>
----
- drivers/net/wireless/mediatek/mt7601u/dma.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I think root cause is probably that the beacon is never set in STA mode,
+but the code building the MCU messages are unconditionally looking at
+the values derived from the beacon caps when making decisions about bfer/bfee
+and ldpc and such.
 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/dma.c b/drivers/net/wireless/mediatek/mt7601u/dma.c
-index ed78d2cb35e3..457147394edc 100644
---- a/drivers/net/wireless/mediatek/mt7601u/dma.c
-+++ b/drivers/net/wireless/mediatek/mt7601u/dma.c
-@@ -515,7 +515,7 @@ static int mt7601u_alloc_tx(struct mt7601u_dev *dev)
- 
- int mt7601u_dma_init(struct mt7601u_dev *dev)
- {
--	int ret = -ENOMEM;
-+	int ret;
- 
- 	tasklet_setup(&dev->tx_tasklet, mt7601u_tx_tasklet);
- 	tasklet_setup(&dev->rx_tasklet, mt7601u_rx_tasklet);
+Thanks,
+Ben
+
 -- 
-2.32.0
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
 
 
 _______________________________________________
