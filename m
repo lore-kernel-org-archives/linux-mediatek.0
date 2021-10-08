@@ -2,76 +2,77 @@ Return-Path: <SRS0=sTTz=O4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B926C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 02:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A7810C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 06:19:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B83D60FC2
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 02:46:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1B83D60FC2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7662160F5B
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 06:19:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7662160F5B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JAErnzBAOp5e+/BdamF/zcmvTnxMULMxWVWbgYgfeHs=; b=EQsLpZiqqhaI66
-	V3GMNXyK6GfssMHRgKZFN0PJ07y+uQcbetWZOIRoefoJPlCwjcJOcUcsPswwfB4lmnXf7In+96lRv
-	ZOPmbBGjGt8bLpC1r6tl4/NVvSUIEEEAyBVp7qcHN6vN5Hr/2xKtsLDVaA30bohfiG7HKNlgYvXO+
-	mqwcV9qvmziE0QnVrvWui2YciFteBNtte9TNoc+JnjeXSmm3HArXbjZvWmoAe1U/UPi+16xQ4o/9h
-	mVmPGnMXd79KYRJ9nMc7MJ7hT7mAGlherCae1yZB3cE5BS2vs+lID3+im17/xK2iyHPWhT9ZKrxsz
-	zynxZG/Z/ZO8z3U0cySw==;
+	List-Owner; bh=0+J2QO7XVZ8HCUW8p7IfkFxMVSTn/K7ASQ7jv4ixLRQ=; b=2Wg4kCInywb79s
+	nS/ErT9+jX/v998y8VzQGKhUkhlt1SO6qd+SdGZfD/BweQdxS0phrwZt5DVxY7kAqtMwiiBGF5XWb
+	/DETZUgYm/nR459WR001LdJzwmGi2VDymQX1autRp1YeQaumS+gbxDKdq9m9NrVyt1F5RZgUd9eC5
+	tMl0DSfJ+DTw//LYLajPoZzaz3Zaxfff8c/xt2XMZhN64lW9H9/dBunEVm6voxtDhWZ1jq4FjHd90
+	KtzWNbSWFoM64qSRz4juUsknr6/b8YTouqBkquYW8HDPKyYAXpnj6tS+fRpHnbSCwKfES0fR/Cntj
+	06oyepsdhqiiI/2kT5yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mYfu8-001LgG-9C; Fri, 08 Oct 2021 02:46:36 +0000
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+	id 1mYjEG-001gsr-8B; Fri, 08 Oct 2021 06:19:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mYftt-001Lbq-FA; Fri, 08 Oct 2021 02:46:23 +0000
-Received: by mail-ot1-f42.google.com with SMTP id
- r43-20020a05683044ab00b0054716b40005so9976796otv.4; 
- Thu, 07 Oct 2021 19:46:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=WCH/ZvRJ095r2piVpiKap3cip9CDgRowlgzYoYtODk4=;
- b=t0BCowuhT1kT50nhSVo5b0HYkx0VGydMNkqJQ418H04RM769AE5euBWGeIRR+RW0rf
- JesTQRQhvkpx1QdDec56l/4oJjdWLfzAqgAhf4qI09Wz5xU997kWzv72fvs0sVfhBTyi
- js8RrecZBFQ/tFNi7daOkwgd0Wf77iECLvdf4TJnYZtCUYi70AqsNrjejcCwJcDPO/EB
- 37mKtC6g8oIbCPLFYIYaUFUwTksZ4RonhIR0d8Hu1czK7nWkwdO3J4KNRnWz8yTe4Ypg
- ABDw4HvQrFJZGoqaJKSYnDaYc9orvQsrMDnXj63V3yOhA7xmd3WkdIPgn5BFVy7b9oMq
- vL0Q==
-X-Gm-Message-State: AOAM530k/CFSIAiieOVs2arXc1UpLq3V4/IqMBwlDcTgeyL4UKXbX/x5
- tKkoDatswmRWYaDbiP0utA==
-X-Google-Smtp-Source: ABdhPJw8aJTGTodhqaaRkMnbiMqq4zA5AnxSIR1dPlLXmJWPLZqAbAhjdJcXjZcWpq2dhcYcnx7A1w==
-X-Received: by 2002:a05:6830:2781:: with SMTP id
- x1mr6391596otu.349.1633661176215; 
- Thu, 07 Oct 2021 19:46:16 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id h91sm261506otb.38.2021.10.07.19.46.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Oct 2021 19:46:15 -0700 (PDT)
-Received: (nullmailer pid 1409598 invoked by uid 1000);
- Fri, 08 Oct 2021 02:46:12 -0000
-From: Rob Herring <robh@kernel.org>
-To: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Jassi Brar <jassisinghbrar@gmail.com>
-In-Reply-To: <20211007130641.3589-1-Allen-KH.Cheng@mediatek.com>
-References: <20211007130641.3589-1-Allen-KH.Cheng@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: mediatek: add adsp-mbox document
-Date: Thu, 07 Oct 2021 21:46:12 -0500
-Message-Id: <1633661172.621831.1409597.nullmailer@robh.at.kernel.org>
+ id 1mYjE3-001grt-OG; Fri, 08 Oct 2021 06:19:25 +0000
+X-UUID: 19b36eece01c46aa8b97011949810c77-20211007
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=DXaYlcXovTi8AVzeCqHB6o3jCTRK2bXcD3iWckAtv/E=; 
+ b=FFXNRkuW2sVUU64o/3ccYTYeEgQVly/HNW/PlfPmgPDAi51jX3BxSGIhLiwCJx9oaHf5/zQDS5I/OqbUbK1DcoSjHGiSwPcNssnVm9u4RrP4JEZL7fdKHlKgg9xeSxI8TwLdye5x+Lfo1gYZadb2yFuIeQxMfZJ7ZQHcVYyciCI=;
+X-UUID: 19b36eece01c46aa8b97011949810c77-20211007
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <kewei.xu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2068906278; Thu, 07 Oct 2021 23:19:18 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 7 Oct 2021 23:19:16 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 8 Oct 2021 14:19:15 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 8 Oct 2021 14:19:14 +0800
+Message-ID: <72d26b0622538bdfda4e64519d34088e8c21656a.camel@mediatek.com>
+Subject: Re: [PATCH v7 2/7] i2c: mediatek: Reset the handshake signal
+ between i2c and dma
+From: Kewei Xu <kewei.xu@mediatek.com>
+To: Wolfram Sang <wsa@the-dreams.de>
+CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
+ <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>,
+ <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
+ <ot_daolong.zhu@mediatek.com>, <yuhan.wei@mediatek.com>
+Date: Fri, 8 Oct 2021 14:19:17 +0800
+In-Reply-To: <YVf8jQPHoQtbCfth@kunai>
+References: <20210917101416.20760-1-kewei.xu@mediatek.com>
+ <20210917101416.20760-3-kewei.xu@mediatek.com> <YVf8jQPHoQtbCfth@kunai>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211007_194621_541707_D5F567CA 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20211007_231923_836725_ED49D997 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,49 +84,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 07 Oct 2021 21:06:41 +0800, Allen-KH Cheng wrote:
-> This patch adds document for mediatek adsp mbox
+On Sat, 2021-10-02 at 08:30 +0200, Wolfram Sang wrote:
+> > +#define I2C_CLR_DEBUGCTR		0x0000
 > 
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> ---
->  .../bindings/mailbox/mtk,adsp-mbox.yaml       | 71 +++++++++++++++++++
->  1 file changed, 71 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+> Hmm, I don't think that a macro to clear a register helps
+> readability...
 > 
-
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.example.dts:22.44-31.11: ERROR (node_name_format): /example-0/adsp_mailbox@adsp_mailbox@10816000: multiple '@' characters in node name
-ERROR: Input tree has errors, aborting (use -f to force output)
-make[1]: *** [scripts/Makefile.lib:385: Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.example.dt.yaml] Error 2
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1441: dt_binding_check] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1537694
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
-
+> > +		mtk_i2c_writew(i2c, I2C_CLR_DEBUGCTR,
+> > OFFSET_DEBUGCTRL);
+> 
+> ..
+> 
+>  +		mtk_i2c_writew(i2c, 0, OFFSET_DEBUGCTRL);
+> 
+> looks good to me. Anyhow, it is not a big issue. Let me know if you
+> want
+> to change it or keep it.
+> 
+OK, I will use 0x00 instead of macro on V8 version,Thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
