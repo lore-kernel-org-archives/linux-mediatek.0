@@ -2,162 +2,92 @@ Return-Path: <SRS0=sTTz=O4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 83E4BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 13:00:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF520C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 13:17:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3B0F661039
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 13:00:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3B0F661039
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7F8CF60F9C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 13:17:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7F8CF60F9C
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ci1R9n7yqd8z/NKuQztn56XvGdQZPbfmye2MfQrWCu4=; b=fjr9b7wt1BGbZ9
-	PhflR2cn9rubYcy7z5UfL6l4Dv6MBiPPJGstfXEp7ZDdw69hcxc8mSiMQPcuLThc773QSYpUGjlHI
-	uADwe2EVB/piQt8sBSBgiJoN1R8doRd3K6/fuKPswaoDNwpDtRotaHfb2/M3niO0zzRHX5PcOWXvV
-	GF9fp1huvxY+Zx3tNlsiipQNVWF0owXrfU52zvtdYrgZ/7PmRUFhOOX9wi2EmczXQvCCl6bhSKpud
-	RCh999MqmhzctUChPfmzcFEGUUv6VbFkwx1ioGD/Zma/WcNra6nqZGP74FlIH4SfI+lPyNuznOD0Q
-	yOqb9FEWO/yRSQ0VdVXg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=q2gFck2sqQO1l7h63GOhq8BixGBEmtgtGiFTl3O0O2g=; b=PbCgZOnY8i6plk
+	mkuXBQ8X+UjWj1M1P0eIn9yzSuf6wx5mRsTKzlJxi8cHCUJbOTjP+nBFpNpEaTTxeMX3pEERu2K1r
+	u8aacixpf9Ny3rcVLtXpX0WONnS8/qW93RziMzPkE9Ze0CkIEkj+p/Eg8jPBGMuc4wKEG+rwq4c1q
+	/O8Nt0tuGoTaoCMsRXqLdaNMeCJ0IllBGFooLljENghBqkoXq80ESyFtCRYUtg3rXrEzJWqtFpVUs
+	a0lyb9+W8l0VIbYGrJKihsd3KQ4ayg6bNaGxfMs4kEvjsPFmcgI7g/gyzcR4U92B00kGzGvdM0pEr
+	ezRc4mmwbDug4ub2y9OA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mYpUI-002pgv-4i; Fri, 08 Oct 2021 13:00:34 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1mYpk3-002rfq-3R; Fri, 08 Oct 2021 13:16:51 +0000
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mYpUE-002pgN-Ux
- for linux-mediatek@lists.infradead.org; Fri, 08 Oct 2021 13:00:32 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 198CC4OZ001315; 
- Fri, 8 Oct 2021 13:00:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=IRswdLGVu3YGDX1iA1Yi7sYMeikMxoaawbnHL22RkXU=;
- b=ncTIbqlyTQhrXpyPKJe/Pa5c4+I1h0LqkCikYWzVtjuEUXyLrUo80mFzfywEq5llgIUF
- gfa4dREpslY9cJeN23kxfcYG72AIs1qksQyd7CvepHcnIgxwj/aNeMpSD+tRZimDQ9ob
- 9v5iP+rAPkaPuptq4RHcDGesb562/1Xx3gYJVKN5kJrGBveQXIooI6cLfgDpeIXAnY9D
- 0Ljzi++oIpUjKV6lI83UEZTZsLoknHxNQT/68oZS8VOFBU3hflLJAKZTyctEuUI2BnR5
- Dfb4EmcrInY1tYVKuCWj5Y3wyuNd/oZoFJbW0XUHKiw19DKC/uY1PrGo5dHjLDr69bjy 4Q== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by mx0b-00069f02.pphosted.com with ESMTP id 3bj1ecqgr7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 08 Oct 2021 13:00:26 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 198D0Bkg024317;
- Fri, 8 Oct 2021 13:00:25 GMT
-Received: from nam04-bn8-obe.outbound.protection.outlook.com
- (mail-bn8nam08lp2047.outbound.protection.outlook.com [104.47.74.47])
- by aserp3030.oracle.com with ESMTP id 3bev7xy5q9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 08 Oct 2021 13:00:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ZOG18Io4yWtssY8fcRa5P9QXJZLwnE5HyeOdh9/XO36hEpxSt/J+q/e5aaFWZunv0YOTw34OWjQ65zH5NJS/vPT7CXXqH+xNPQMLO1IfyKuo3UK/T8/yv73Y2+Z3EDuOouZm3g7uEMP4MKoE34ps+mPrzAY7/dZmzM4WdvGNbHp86aezglJw6LkERXKhIY2BZiri+rJWv2RtDA/lJ6W46nUvoFO3RgU9KssgeVApfs65EJ8tk2xDBVJ4IAK4iWbD9oMA+bwkyIsPX60ezWvi5lTJb021DROUbCyEfkbsDshlwQlMREjkD5SazSg7apvMYBiM75mB60LwbNDh3xQxgA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=IRswdLGVu3YGDX1iA1Yi7sYMeikMxoaawbnHL22RkXU=;
- b=YP8mHGzyU/j4LYcsgwUFUYGZSRVm1aICOZyDJGF0XuUE6fjG6z020zTZMkKnJXlNbqHyuJSkOVVAfmLOffBT9lv7wpU7yf/ghMKCtPxlJsbWDaJXXRM0AwElSr0eBZIl3fZRtU8cCgVK0iq34xMgaQGhwYsCtw3+ivy6rmJrGhoUKFKwiG21WN1xWWbIKNCOvTfCjqSL6Ds51LMWAMbDcsdsfy1FVZwlYFc4hEO7qvNhUOsJa2NcnDDm5EmJ9ZFM6o7ZYIB81m1Lh8dHJWFdDrbOls7cJAeoa59qPxtifbYdkgjnVH2zY9hA7O9TEY4SZHiFBXR9cX8MWZWibROpFA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=IRswdLGVu3YGDX1iA1Yi7sYMeikMxoaawbnHL22RkXU=;
- b=z1g5Tw7VBSkvaz22rG0wivMG9xDcXH4NaRZGfgA7gYJ30ly73JRj/SIIo3uCCh4Up9SxuUfQ66Duy8jPj9MjBvoqnGV6TM5IxOsds+X5Mxg+KO38qIrHoq9Msvx5JE+NOESSvJsMqB/aAqK8mVDYeRTqO30jgj/CQXBsV01lOXU=
-Authentication-Results: nbd.name; dkim=none (message not signed)
- header.d=none;nbd.name; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MWHPR10MB1999.namprd10.prod.outlook.com
- (2603:10b6:300:10a::22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.18; Fri, 8 Oct
- 2021 13:00:21 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9%5]) with mapi id 15.20.4566.025; Fri, 8 Oct 2021
- 13:00:21 +0000
-Date: Fri, 8 Oct 2021 16:00:07 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: nbd@nbd.name
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: [bug report] mt76: implement functions to get the response skb for
- MCU calls
-Message-ID: <20211008130007.GA23161@kili>
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ClientProxiedBy: ZR0P278CA0084.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::17) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1mYpk0-002ref-H0; Fri, 08 Oct 2021 13:16:50 +0000
+Received: by mail-wr1-x430.google.com with SMTP id r10so29793598wra.12;
+ Fri, 08 Oct 2021 06:16:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=Gr1byabWHn1PUa1m+Lt+dKzXId3ni3LSSa9lwDSa3gk=;
+ b=TJwvim7w+eQFFfurbsl40FGMPwvnfLNLF3mqkVbNUxpugKorDKYZpgJ6ppC/PTEfU/
+ zOILl/qFEGzOdn6zfkCqtCzngeViZPdhvYzMHbM3IFZjQGHrra/zDS/6TMIKgTnVc55t
+ FcMxubz12x29/ajr4yg/4IapyvyKUFNo3xqRhsRdQeIVc4OPAXyzrkZY81y6rOdHomht
+ hqzwPEcVHx/WmerpaSHDHB18z/kd2XNccqlNpJydYkZY9xgv9A3ahUCBrPFCZeng3Ptm
+ jP6ttiHbfEf7muJb0bTHpjXuPa4qjwlq/IFgZ8831A1pXDw+R+PUitOMme4fSBTH9oWk
+ WxPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Gr1byabWHn1PUa1m+Lt+dKzXId3ni3LSSa9lwDSa3gk=;
+ b=KBCn7OHwpKB9Urvre5BLRfHss+e1WY+M58pet0A+Ot4cZcSUmUpbAkEdUgGtn3yv4e
+ EydkmoHqspvPElGyzq3DVpv1ERfNkKm3QehaNgFSH+3QMj6igSMI9Myn7ZBhzJOUiYEb
+ McTyVs45NCKNHWoxfS845LI95BF+eiLu1ojSG17qH11/nq0lYCFrYKaMsedHK6Z5LFMf
+ kTetqIXENb4wZGWaD7RbcyqEo6MjJ2wP6Oc1I5tRo4zCZsIFdm/4xCFXtrRVR8v7HM02
+ 5mM3knSbHAsVRpj/ceQ1No7z60Sb/c1AQe+QodgN0z5ehQO4NLszy8c2JW3mBAnA3z19
+ Ospg==
+X-Gm-Message-State: AOAM530yhzEOZD7IAkW0kO6DctXp37Xtb5Qsurx8ZKZGRK5/KboJx6VL
+ nX61l/xsFWVqwAFqHCrHUOc=
+X-Google-Smtp-Source: ABdhPJwchweLQBjxy6TkxOtLDsNz1AODqVJ3fWsbZRISUfWyoArhAgv4Go21sBR80xsRmqCQwndA7w==
+X-Received: by 2002:a5d:6245:: with SMTP id m5mr4099639wrv.148.1633699006563; 
+ Fri, 08 Oct 2021 06:16:46 -0700 (PDT)
+Received: from [192.168.2.177] ([206.204.146.29])
+ by smtp.gmail.com with ESMTPSA id g2sm2642909wrb.20.2021.10.08.06.16.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Oct 2021 06:16:45 -0700 (PDT)
+Message-ID: <266143bd-6135-adf6-8a80-537f9d6ea3ff@gmail.com>
+Date: Fri, 8 Oct 2021 15:16:43 +0200
 MIME-Version: 1.0
-Received: from kili (62.8.83.99) by ZR0P278CA0084.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::17) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4566.22 via Frontend
- Transport; Fri, 8 Oct 2021 13:00:19 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 882c29ee-a057-4376-2bee-08d98a5b95db
-X-MS-TrafficTypeDiagnostic: MWHPR10MB1999:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MWHPR10MB199916488B4D4C8EFEB36DD28EB29@MWHPR10MB1999.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7691;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Y7iGKSflt+QaL3tbaJfOrCLW+Kxf3WBSICT/y/SGpvVkiBHgeFVMFNkV+IVQDXaumnj6bdWfAyEjh7ZbFjVQdThhvQCqjDN/FeDJAc/0ICn+YkWAIyT5dbgAwc0xoqypfE0/C25SkFC6QM8MVf7wpOae3PAgnD+jz0tSHvcX1y3t5QfINNLbIWUQhRfnxjFbZ5WWprsL6q/IkyfgGnBkkFEpkKLMfb3SuyQ+Q3LQa3kvSDFMw+JI163zdP7GKhwfuNkt5il593RRDDP8+8GccmjaX27FYm8Ubc1fz4NY4d4DuIgFJrTywooFFFHC7qb1IiszPsn6xR/DvYRaaIGHHOjDzCj4PZA1vPUh7htEtNMswmU5QAHbVzmAfEpn2HmYF4HohThPvlbGsdW8oaxwtqNggnKS15PKoJ2oEAtMuWFK+zuZM5TXZ8gHYh3NgHeYBCAxyX5tk48VQEou/xAgSTnWk6EKK1MX/cGvEVJUaXoIy0nU1UkfkbSO1AcZi5j6zlG11g2G7gZ26jEv5WSyjxB97uPO+gVh/YuXpAfisVeEHU2o5Yr9yZkxiCD+XFdF/+d3tqTY1rsCkp3OVKiBNeqoestT6qOHcCaRzXKay05ahG9w0iiB+r7s0IrUHuu/sJn84CTmbwlCWiVouULq2yVtmGu2XhjBUSsg0ZlzWFRmHb42f1SFxM0OrNt+2yBqwcxU0gh8WtTLIN6HHcQsTOBzRQl7+e3pKZuR7MPi1GU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(83380400001)(4326008)(6496006)(2906002)(52116002)(1076003)(44832011)(33716001)(66476007)(8676002)(6916009)(66556008)(33656002)(26005)(956004)(8936002)(186003)(9686003)(508600001)(38350700002)(316002)(38100700002)(86362001)(6666004)(66946007)(5660300002)(9576002)(55016002)(15583001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?iIyW4T5iVYXMMdF6l5NSCl5WGX8AL84Ucwr9OpNX2a14CisGX45DuSLoMq2S?=
- =?us-ascii?Q?aCGd3ObIyCDCP4XeOGZpIQOa2MM2XT4xAGCLwKLEmeglrzqVWVc98m6H9WTL?=
- =?us-ascii?Q?heKj2JxEc+YTACIm4y8sLkURVOQO03TynCVQZcqI/x2zoGMUCBtJHFjg9LRV?=
- =?us-ascii?Q?0y555R7cuRF0tbVJxJURh350Q/zu/6KUJ+9vELQXszc3x7OAOclVkjeAWMN0?=
- =?us-ascii?Q?Mp6dYI2+3EP723POqMglnvvAJGRoZr8Io08pr/S/tCDCJtV7FGx/ZbnujPLM?=
- =?us-ascii?Q?Jw3NLmAReh9s7PdOhPG+aBu0Dc64OJZYB847lqI/JOpN8upiR/g2AWS/D317?=
- =?us-ascii?Q?VE6clZSwvq4ooPJDOlzEfBKviMprc4jA38ZjGOiagjlucL6ymdwA59Xg/n6T?=
- =?us-ascii?Q?TRC86JKjlzL02gkTHe0Z4HPjaJAN1vO65B8rsUXA6MP1benswawvksyEUafT?=
- =?us-ascii?Q?C5cu+8Yfw5RzLgX2B7IV1vWI0dPz9Kqjy/bE2sJre2MruQ1b3wb3fJPPeXHE?=
- =?us-ascii?Q?vAhtu+8WaUC6lX8MNUIc4V6AvEP8N4bis1B+cvdmp/ILy9wbAoK9z8tWiDYB?=
- =?us-ascii?Q?xM6BZsasSIr5CERJCqigmC6oldqJUBsEPzzk6/yU/H3kXkdrXDrFsJOuooFJ?=
- =?us-ascii?Q?dpsNAaq6AQj+Izoc+6vwiA22lG0LrGzIDLmSEYwZdNzwn5wWC5Ooel0byMmp?=
- =?us-ascii?Q?bywB9TQX2NV/0U3eugW0j7kVqpZJVvMIR7VxXX+0Zj3XoFN6URef+oaDKoha?=
- =?us-ascii?Q?KYigui7WG804zmZriOJHyUAJp8ZYcLpZqGrSPiK5YOG2AhmvFk4Kg26FqCBP?=
- =?us-ascii?Q?izJYxoLLIMsqmlmLAPSS4ZxIGfDOa1UXy3XkUK5SSFPUODeODQLA0M/ftJKj?=
- =?us-ascii?Q?nHEwPgiWyE1jU15wCnZChYrezRGyTliHej+Jrwe0VbeyVwv6v75RVScVr4YJ?=
- =?us-ascii?Q?C9fTWL3rKi9UtdZ6eBnVJLkmf7Go1pYY+ijT13NWNuKZblfQuFasA6tR/2my?=
- =?us-ascii?Q?VJrL2VPfDM/y1NdeciMPtIhIbI+YX3KwpurLyPYW9T58fbfR0zw/d5in6DUN?=
- =?us-ascii?Q?u6j+ZqX4ETURhzkpzhPPBgqY+OjAX4fyLCI1+N9+YAZM9ANOPkN6YZdad9h7?=
- =?us-ascii?Q?FJOoQeAFEvsEMGoUb4uWHyjqXEIluT9xBD4Jt5ZffUKjs38p+sGmuI/+BqlJ?=
- =?us-ascii?Q?KhGijWyepGcNc+U72auRXjW2HwUo8YgM7UY3OeAHVTRgLUlNmdCIj6MFOe2v?=
- =?us-ascii?Q?+mxCb1IXDaMBaQYdqYgQOxExoLrIbXGMpnR3mnzv9tOu2V2rAtWQBcykxkcz?=
- =?us-ascii?Q?JmgqjDGiIxKQe6I7XXeGMqrT?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 882c29ee-a057-4376-2bee-08d98a5b95db
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Oct 2021 13:00:21.3859 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7M3ZBqjCdqw7pP5bqffM41WMA3mk/mxGQlDEO2ySm/zx3Dfuh75FD3ljjcyVCHfb21/AO0pKoqXw3H3xBJ6oYz4lyITkKTBix97PS8pXnek=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR10MB1999
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10130
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- mlxlogscore=741 adultscore=0
- bulkscore=0 suspectscore=0 malwarescore=0 spamscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2109230001
- definitions=main-2110080078
-X-Proofpoint-GUID: Rp5o-IG3YSaXRCx7y-imedcosxxWlb-x
-X-Proofpoint-ORIG-GUID: Rp5o-IG3YSaXRCx7y-imedcosxxWlb-x
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.1.2
+Subject: Re: [PATCH v4 0/7] Add support to the mmsys driver to be a reset
+ controller
+Content-Language: en-US
+To: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, eizan@chromium.org,
+ kernel@collabora.com, drinkcat@chromium.org, jitao.shi@mediatek.com,
+ chunkuang.hu@kernel.org, hsinyi@chromium.org,
+ Crystal Guo <crystal.guo@mediatek.com>, Daniel Vetter <daniel@ffwll.ch>,
+ David Airlie <airlied@linux.ie>, Fabien Parent <fparent@baylibre.com>,
+ Guenter Roeck <linux@roeck-us.net>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>, Wim Van Sebroeck <wim@linux-watchdog.org>,
+ devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-watchdog@vger.kernel.org
+References: <20210930083150.3317003-1-enric.balletbo@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20210930083150.3317003-1-enric.balletbo@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211008_060031_243076_8C270A4C 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20211008_061648_606453_34A50E67 
+X-CRM114-Status: GOOD (  27.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,50 +99,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Felix Fietkau,
 
-The patch ae5ad6272d25: "mt76: implement functions to get the
-response skb for MCU calls" from Sep 30, 2020, leads to the following
-Smatch static checker warning:
 
-	drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:1151 mt7921_mcu_get_eeprom()
-	error: potentially dereferencing uninitialized 'skb'.
+On 30/09/2021 10:31, Enric Balletbo i Serra wrote:
+> Dear all,
+> 
+> The following patchset is a reimplementation of the patch sent by Jitao
+> Shi [1] some time ago. As suggested by Chun-Kuang Hu, this time the
+> reset is done using the reset API, where the mmsys driver is the reset
+> controller and the mtk_dsi driver is the reset consumer.
+> 
+> Note that the first patch is kind of unrelated change, it's just a
+> cleanup but is needed if you want to apply all the following patches
+> cleanly.
+> 
+> This patchset is important in order to have the DSI panel working on some
+> kukui MT8183 Chromebooks (i.e Lenovo IdeaPad Duet). Without it, you just
+> get a black screen.
+> 
 
-drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-    1136 int mt7921_mcu_get_eeprom(struct mt7921_dev *dev, u32 offset)
-    1137 {
-    1138         struct mt7921_mcu_eeprom_info req = {
-    1139                 .addr = cpu_to_le32(round_down(offset, 16)),
-    1140         };
-    1141         struct mt7921_mcu_eeprom_info *res;
-    1142         struct sk_buff *skb;
-    1143         int ret;
-    1144         u8 *buf;
-    1145 
-    1146         ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_CMD_EFUSE_ACCESS, &req,
-    1147                                         sizeof(req), true, &skb);
+Patch 1-5 pushed to v5.15-next/dts64
+Patch 6-7 pushed to v5.15-next/soc
 
-If mt76_mcu_send_and_get_msg() calls the dev->mcu_ops->mcu_send_msg()
-then "skb" is not initialized.
+Thanks!
+Matthias
 
-    1148         if (ret)
-    1149                 return ret;
-    1150 
---> 1151         res = (struct mt7921_mcu_eeprom_info *)skb->data;
-    1152         buf = dev->mt76.eeprom.data + le32_to_cpu(res->addr);
-    1153         memcpy(buf, res->data, 16);
-    1154         dev_kfree_skb(skb);
-    1155 
-    1156         return 0;
-    1157 }
-
-regards,
-dan carpenter
+> Best regards,
+>    Enric
+> 
+> [1] https://lore.kernel.org/linux-arm-kernel/20210420132614.150242-4-jitao.shi@mediatek.com/
+> 
+> 
+> Changes in v4:
+> - Remove unnused variable as pointed by Hsin-Yi
+> 
+> Changes in v3:
+> - Based on top of the patch that converts mmsys to schema
+> - Fix typo in the commit description
+> 
+> Changes in v2:
+> - Fix build test ERROR Reported-by: kernel test robot <lkp@intel.com>
+> - Added a new patch to describe the dsi reset optional property.
+> 
+> Enric Balletbo i Serra (7):
+>    arm64: dts: mediatek: Move reset controller constants into common
+>      location
+>    dt-bindings: mediatek: Add #reset-cells to mmsys system controller
+>    dt-bindings: display: mediatek: add dsi reset optional property
+>    arm64: dts: mt8173: Add the mmsys reset bit to reset the dsi0
+>    arm64: dts: mt8183: Add the mmsys reset bit to reset the dsi0
+>    soc: mediatek: mmsys: Add reset controller support
+>    drm/mediatek: mtk_dsi: Reset the dsi0 hardware
+> 
+>   .../bindings/arm/mediatek/mediatek,mmsys.yaml |  4 ++
+>   .../display/mediatek/mediatek,dsi.txt         |  6 ++
+>   arch/arm64/boot/dts/mediatek/mt8173.dtsi      |  2 +
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  5 +-
+>   drivers/gpu/drm/mediatek/mtk_dsi.c            |  5 +-
+>   drivers/soc/mediatek/mtk-mmsys.c              | 68 +++++++++++++++++++
+>   drivers/soc/mediatek/mtk-mmsys.h              |  2 +
+>   drivers/watchdog/mtk_wdt.c                    |  6 +-
+>   .../mt2712-resets.h                           |  0
+>   include/dt-bindings/reset/mt8173-resets.h     |  2 +
+>   .../mt8183-resets.h                           |  3 +
+>   .../mt8192-resets.h                           |  0
+>   12 files changed, 97 insertions(+), 6 deletions(-)
+>   rename include/dt-bindings/{reset-controller => reset}/mt2712-resets.h (100%)
+>   rename include/dt-bindings/{reset-controller => reset}/mt8183-resets.h (98%)
+>   rename include/dt-bindings/{reset-controller => reset}/mt8192-resets.h (100%)
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
