@@ -2,149 +2,64 @@ Return-Path: <SRS0=sTTz=O4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 747C7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 06:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7D20EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 07:14:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3D2A861040
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 06:38:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3D2A861040
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=amd.com
+	by mail.kernel.org (Postfix) with ESMTPS id 421F660FD9
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 07:14:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 421F660FD9
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=239uwT48pMO7oct1axbus8zhtbbyNKUGBfILQlQbkY8=; b=pFi2UrkpXRGF4LJWdHjCVM/P1t
-	CgFBo/XfmCQqW3mFC4mv51yLbtHi+LJ9xc9ub67dxES5ln7JPfL7Flrbqf7Pz0POVb5PM9w4OQHUs
-	4iCzeZJP1NUXpjGg9/Z9u0acOKQHqM2Fq2dTXnlzT/G8PWnyUz1lHLMWFUV0AER9uSQwNVegkn1Gj
-	F2NNSgJARWOJf1uW8GE6a2KGFL1woPG/AcmoTvwF0zok1OR9y7KcHpK0tyatCPaY28PGmkJtw7iAN
-	LMP7QBG44ReRmc8d5+2Sc1K6poAW3bRlXAPO6HdmoBk1hIgyetHZC3tCIIen/egUTo9AioQZ+wKMK
-	H6DUfxIw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZkoFzaJ8XxSMoNQsetfiR0STq74sQireLBACOq6SMlM=; b=zEoSH/sQuhcBTy
+	3RMpOO0MD2YWZpJiCdq3nhyOWHfPN1Sfu7vr1N6xBBudmQoXSWXP9qdMLOWS3oP6Oe2BHtsWocrNn
+	lJXaa6Hl6mfHV/HHVjLSiVK9KjhuingJxdxHkVooS1cDjQPHXbgl/nM6IKJi3P1GMUaYIUidEqTSN
+	/xQPgD4k52FcZUOUjBTnIfKVp+EEFoEffAEL14TIb20PYqYajG3z86Wox67B5E4p0wgEfLCu8aVmW
+	Sfwwc1Af43b/uALRy0vGwD5JRQILGEytJb7aas8k0iul5HF+DpdBmvsJRgKDk0qwLv8HRpS2OMS3u
+	h9g7xNnBo6nPhMyQ5LPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mYjWm-001j1T-8L; Fri, 08 Oct 2021 06:38:44 +0000
-Received: from mail-bn8nam11on2073.outbound.protection.outlook.com
- ([40.107.236.73] helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+	id 1mYk5g-001oqH-0M; Fri, 08 Oct 2021 07:14:48 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mYjWj-001j06-0k; Fri, 08 Oct 2021 06:38:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=caUDA+d98zkWVC1ZMAzFvq9MTYaKBmNwEY3xt2AxaMQGyv9nO+dDRd0bcg6IWEOQiutDGiBEGaCYYwmMwoITAB1VnwxYdYYItZRV2uLEcl1TwCSPu78MdKdXjerlK3MqUV/sODE3L0FJZ63kb27vaD11ezptbdakh7Y84wTZwLEwQY9ct/yp2FSb4aVT9RR4Yv4qKaWnqel89A0XVRUh/LfTO7ZEjUR60iR15JC/x4ApD067d24TovsMm0uF+CFlJjNoDj6t8moZxzmiLGmX422zDpoECWtGeuhZfWM+FepdQG78wGIaM+JdmJQ7va9GzCZD9fEW1B1sw+gYInT6cw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=nfntloW1/8jqQt5frkYyu7KmltIQEdgNm/0O8thuSeQ=;
- b=KIu0WedbtXtLseX+OXfOBgH+Uf/u4b/CVYgUf/Z13LiCl91b67qTOlJqLaimzW5PUmHfXzFan8u37yLNL6MC9MT3GzCXroJqng6dQOX+gDvVsuXjGas/wW5bPWB78l2NIbMCExWAljWD8U/lahp+pHMXc7gsvZMZrDrQ/9wMFSyGQHmynsnh+KgODJY7GBmuPAivRrFX/7tIW30EZN0ULykkwWKQO2+Uy6dzJu+ThouiF6o0Od0sRexP9vIE5+JpwFehWKKNYphxmDJesL85F+C3jBcuEAwsxg1tCqvL6AgoqFWVywlbPX6kE2/X22mTqfWG70Dcx62+aBqmJxMCYw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nfntloW1/8jqQt5frkYyu7KmltIQEdgNm/0O8thuSeQ=;
- b=JFkB8NYuFEetsYEjsc49+fh7Q9WgOEQCW4HAY6PURk9X5tXoCtrGB2O4Z9ndoGugHywva8cUoHsc5gN40H7zL+zcQdJt/cVvZ8FIaQ95oGRwv//tfKt6v/7VYIlQy7G50E3XSBYrYf1o09hg+QrfITp2oa+NOp80pxOg2H9GuT4=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=amd.com;
-Received: from MWHPR1201MB0192.namprd12.prod.outlook.com
- (2603:10b6:301:5a::14) by MW2PR12MB2363.namprd12.prod.outlook.com
- (2603:10b6:907:f::33) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.20; Fri, 8 Oct
- 2021 06:38:36 +0000
-Received: from MWHPR1201MB0192.namprd12.prod.outlook.com
- ([fe80::55c7:6fc9:b2b1:1e6a]) by MWHPR1201MB0192.namprd12.prod.outlook.com
- ([fe80::55c7:6fc9:b2b1:1e6a%10]) with mapi id 15.20.4587.022; Fri, 8 Oct 2021
- 06:38:36 +0000
-Subject: Re: [PATCH] dma-buf: acquire name lock before read/write dma_buf.name
-To: guangming.cao@mediatek.com, Sumit Semwal <sumit.semwal@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:DMA BUFFER SHARING FRAMEWORK" <linux-media@vger.kernel.org>,
- "open list:DMA BUFFER SHARING FRAMEWORK" <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK"
- <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-Cc: wsd_upstream@mediatek.com
-References: <20211008062903.39731-1-guangming.cao@mediatek.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <5b7cdb6c-45f2-6b31-bfdd-5cc68a2fda5e@amd.com>
-Date: Fri, 8 Oct 2021 08:38:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-In-Reply-To: <20211008062903.39731-1-guangming.cao@mediatek.com>
-Content-Language: en-US
-X-ClientProxiedBy: AS9PR05CA0054.eurprd05.prod.outlook.com
- (2603:10a6:20b:489::13) To MWHPR1201MB0192.namprd12.prod.outlook.com
- (2603:10b6:301:5a::14)
+ id 1mYk5S-001ons-4I; Fri, 08 Oct 2021 07:14:36 +0000
+X-UUID: 8a4c7b0e6fc847d7b59ddecacad83782-20211008
+X-UUID: 8a4c7b0e6fc847d7b59ddecacad83782-20211008
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <trevor.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 131924062; Fri, 08 Oct 2021 00:14:30 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Oct 2021 00:04:27 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 8 Oct 2021 15:04:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 8 Oct 2021 15:04:26 +0800
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: <broonie@kernel.org>, <tiwai@suse.com>, <matthias.bgg@gmail.com>
+CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <chun-jie.chen@mediatek.com>
+Subject: [PATCH] ASoC: mediatek: mt8195: update audsys clock parent name
+Date: Fri, 8 Oct 2021 15:04:24 +0800
+Message-ID: <20211008070424.14347-1-trevor.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Received: from [IPv6:2a02:908:1252:fb60:efac:61bc:bb73:d6b5]
- (2a02:908:1252:fb60:efac:61bc:bb73:d6b5) by
- AS9PR05CA0054.eurprd05.prod.outlook.com (2603:10a6:20b:489::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.18 via Frontend
- Transport; Fri, 8 Oct 2021 06:38:33 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 97a6ea0c-4cbd-43fd-f48c-08d98a264128
-X-MS-TrafficTypeDiagnostic: MW2PR12MB2363:
-X-Microsoft-Antispam-PRVS: <MW2PR12MB2363B05B47C78BF4C4406A2083B29@MW2PR12MB2363.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:785;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: wzqws2rV79CaFv56fzgYsWPumi3zaU51mJkmQHeSojxRZHO5FK/NnbeRQWVeKWL4hxcaRXNMUtUG7I72Ni/yJKy+uq6GHXCdIMYToy6o/xaFWkrcGrFeFjbj38fPLzNdGhDbKzHwdVDNOpS5evqcuSxoCBhewhivgPimUexTVCg0HHmMM6LDpHt1ObfdqwW3kuKrwWid7TkspYhLFgRYXZmkXutHgU2sLNbsGLkTNgvTF+DMESiOnIGRELs7DL5mEINwt5mlxl7Q6ub0BJm4ZLX/pAG2L663TtC69Run2ceBLVLxQNDqHMEpcKMKlgWj8b7ahI9k7gD/U/Tf8O/El1ykeS9GVrpHyI8OJqYBzfJ2L+QgRMg0hb6FcKGYCYDxgi2eSGRlKZufCTATZpgf2cNySBHZue6kThbhVhtt2CPRypVD6QO1KxKjoT7H6aLKAv6T2rHAY364sg/jI0DYKI2PykDgBeD/e1g5e5tJa4m5Eks5cGUJlivxhbQHMFPrrJQdALKj0ak36lWyhwzeYtD9PU2Rw0AC22diPGfmha2fmul2AnMHODSxpMqxjDagsC/e4gy7eHFdue0rxr60P9f40kEe/jsRnRmE+g9OPiZS5Gg0WvsNRHVY1i8yr1kgahTNTz1P4Rutk/VRja1WBKxqPshSmAcsvXzUyInZgvxA4eBoSUzUh6JUC0uYemD5iqIPvop+Nfff10iBwGGswlzdQsKZmBAx4rVryhEvgbuDoDL4j7TJREXiADSuG3oH
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1201MB0192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(6666004)(186003)(83380400001)(7416002)(86362001)(38100700002)(2616005)(8676002)(36756003)(31696002)(508600001)(8936002)(316002)(4326008)(66946007)(6486002)(2906002)(5660300002)(66476007)(31686004)(66556008)(110136005)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NGZhWkNGbmRVNlJ3alZYVWVVWGVWL05PdUVUSVNuT2UxMll0U09hWFp6KzVF?=
- =?utf-8?B?UXVGZklJOVY5UWJOeVBrY3ZxcTVHRWZKSURvKzNGanNDSVZhekZxc1RDeG5i?=
- =?utf-8?B?eXZlaW5RdnZaZ0d0dlNTR1EyRitRQ1ZocHBpMk1xcnFBYkhvOUFKcjRQUkpS?=
- =?utf-8?B?S3FrdTkxWEdLb1pVTHVac3U0enVaeEhVUHBXR0pJa283Rm4xTXBjdmw5TDFK?=
- =?utf-8?B?YnYyU28rVUVvQk5zQko1R242VEQ5QjMwSER0MDNnMFRrMzF4TTYwM1l5UmNt?=
- =?utf-8?B?VjdKT3FOVklxd3RqMU52dy9OTUhKbHI0L1dLQjRXTFlwVFJrblM5TlhVVHRF?=
- =?utf-8?B?bEJLdzcvRGlZb1ZKT0RqSWZ5TWJQTDRYUFFidnFLeTFOTldBV0liNTBvR2hr?=
- =?utf-8?B?L1NUczc4QjR5US9WdnVqTkZraTQvY3l3ZUtOeXVVNnZvd2swTExzdm1aTUhU?=
- =?utf-8?B?cHF5OTFESlhDM2Vaek1nYTBZYllzVEVqWHNPZkdOeTUvaFpJRDIvazd1RVVN?=
- =?utf-8?B?Y1M0Y1BFN3p0MHZ0Q3pDdUZpY1VWVnBtUjIyMTNNZmJobHFqY1hmdmtBTzBO?=
- =?utf-8?B?cis2K1U2SW5SWWhIeGNnYUxQVWNBc0xWQTFGVUFTVEtVT3JuWERuck5IQkd6?=
- =?utf-8?B?YWNCbUk1WHBqNVIybXFSQndtWkF4eW9WZVpWUGFTN2pZR0JPTWVqaTBGRm1l?=
- =?utf-8?B?NGM4ZExWZUppVzlobStQS1d4blUxRWNHQ01heXhDZUNDRG5TN0hlZjhzTkJJ?=
- =?utf-8?B?aW1UemcxQzg1bHdMT3ArdTdKUCtRRUVDT29Pa1ZxSDZ5NHd4UllTOGFBaUc4?=
- =?utf-8?B?R0V6bXNyWG0wNXRHUWNkTU80RXhyOEtyaWVhNnpNNkVRK1hjelpWeXg5ZVFG?=
- =?utf-8?B?VEdlb2JNaUlpMmhUNkZ6RURxSHhrcXMyWExrSGNaQ3NKVGtwVXZZWnVkeXFL?=
- =?utf-8?B?YjkyU0hINkNJZURvY21DOUpHdVF3ZTcvTzV1SWdBZU1WK2FqTkpKTjJuZGl4?=
- =?utf-8?B?bGxaVGRPa2pFQW5BcjBtWHoxbGVtVkduUEYwYkxYT0NJSFRzTFE5WXByMWxi?=
- =?utf-8?B?ZkNock5tNlNBVUZmZ0FCdGdJaTBUM3ROd1o5VXR2WjJjOWRZZjZGRE4xdDl3?=
- =?utf-8?B?aWxTWndaQ2ExaitvQ3poSXg1aHhDY3k5Ni9Ma29mLzU1a0N4RHhpWmppdVBv?=
- =?utf-8?B?bmFzMGdJb081TzJEdmc5RUE0R1VzOGNiNUJ1VXNqQnpzaFBIYWNVdVlrWXhR?=
- =?utf-8?B?N0MrSDgvb0pQeFluRlFGTktER2k4T2pGMGhoVEErZ29JSCtTcXNUZW96cWxs?=
- =?utf-8?B?ZjRoZDJTYytmUmlOVDRVcCtUU0g3M3VEbFB0SFNPYmxYQzNIUGFvN0dURVRj?=
- =?utf-8?B?MGpmUDhUZE1la25ncmhjRUV0d0ZUaG9GUTcxcHQvZSt5OEhMWGNHMHdPcVM0?=
- =?utf-8?B?R3paZXpLd2J6eGZ1WGM5VEZHOHhqSEFYWWhyaisrRzZwNFBJUDRTL24zTGZm?=
- =?utf-8?B?dElSKzdhWUU3WWVRbFFMcStJdk1jODBNQXZqcWYwMVhYaE9wV0FHWllsWmVw?=
- =?utf-8?B?TzBxOXpPaXB0aFVjL1RNUFVCZHVPMHRuWW4rcnNKVFFJK3R4a2NjMTBJdjF2?=
- =?utf-8?B?ZkN6Zm0wYjYvY0NqNHFBWXNhWFFOTHFtTDY5NTdSNDZ2azVvOWN3MlN3Nkc3?=
- =?utf-8?B?bldnRTd0NTA3Z3U0TGRhcmRKNWFiYnp0Nml3bGdTSFVZYXhYWEpwcTBwcC82?=
- =?utf-8?B?UytRRlNRR3JOQ21ZVkdIVVFhdW9lK2E3TkRBYjBlZVFZREpHUGtyZWZiN29B?=
- =?utf-8?B?TDZLTkd1a0NYRG4zbW9JZ1ZMY3pKNVY3MDNQQTZSMk8rdjR6MDMveGRuRkVs?=
- =?utf-8?Q?vBANA6SFkUTmD?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 97a6ea0c-4cbd-43fd-f48c-08d98a264128
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1201MB0192.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Oct 2021 06:38:35.9008 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +9tnrYRi2lsFiOcfrrfrBajuVx+ZIuCcDukfW112Rf8zSY9aedAA1A7xsZu52sz5
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW2PR12MB2363
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211007_233841_131399_4E17CCA8 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20211008_001434_199358_B5DDF073 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,63 +71,200 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Am 08.10.21 um 08:29 schrieb guangming.cao@mediatek.com:
-> From: Guangming Cao <Guangming.Cao@mediatek.com>
->
-> Because dma-buf.name can be freed in func: "dma_buf_set_name",
-> so, we need to acquire lock first before we read/write dma_buf.name
-> to prevent Use After Free(UAF) issue.
->
-> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
-> ---
->   drivers/dma-buf/dma-buf.c | 5 +++++
->   1 file changed, 5 insertions(+)
->
-> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
-> index 511fe0d217a0..aebb51b3ff52 100644
-> --- a/drivers/dma-buf/dma-buf.c
-> +++ b/drivers/dma-buf/dma-buf.c
-> @@ -80,7 +80,9 @@ static void dma_buf_release(struct dentry *dentry)
->   		dma_resv_fini(dmabuf->resv);
->   
->   	module_put(dmabuf->owner);
-> +	spin_lock(&dmabuf->name_lock);
->   	kfree(dmabuf->name);
-> +	spin_unlock(&dmabuf->name_lock);
+Because clock names are modified in mediatek CCF driver, sync the updated
+clock names to audsys driver.
 
-That here is certainly a NAK. This is the release function if somebody 
-is changing the name on a released DMA-buf we have much bigger problems.
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+---
+The clock patch is accepted in clk-next branch.
 
->   	kfree(dmabuf);
->   }
->   
-> @@ -1372,6 +1374,8 @@ static int dma_buf_debug_show(struct seq_file *s, void *unused)
->   		if (ret)
->   			goto error_unlock;
->   
-> +
-> +		spin_lock(&dmabuf->name_lock);
->   		seq_printf(s, "%08zu\t%08x\t%08x\t%08ld\t%s\t%08lu\t%s\n",
->   				buf_obj->size,
->   				buf_obj->file->f_flags, buf_obj->file->f_mode,
-> @@ -1379,6 +1383,7 @@ static int dma_buf_debug_show(struct seq_file *s, void *unused)
->   				buf_obj->exp_name,
->   				file_inode(buf_obj->file)->i_ino,
->   				buf_obj->name ?: "");
-> +		spin_unlock(&dmabuf->name_lock);
+clk: mediatek: Add MT8195 topckgen clock support
+https://patchwork.kernel.org/project/linux-mediatek/patch/20210914021633.26377-8-chun-jie.chen@mediatek.com/
+---
+ sound/soc/mediatek/mt8195/mt8195-audsys-clk.c | 152 +++++++++---------
+ 1 file changed, 76 insertions(+), 76 deletions(-)
 
-Yeah, that part looks like a good idea to me as well.
-
-Christian.
-
->   
->   		robj = buf_obj->resv;
->   		fence = dma_resv_excl_fence(robj);
+diff --git a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
+index 740aa6ddda0e..e0670e0dbd5b 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
++++ b/sound/soc/mediatek/mt8195/mt8195-audsys-clk.c
+@@ -59,93 +59,93 @@ struct afe_gate {
+ 
+ static const struct afe_gate aud_clks[CLK_AUD_NR_CLK] = {
+ 	/* AUD0 */
+-	GATE_AUD0(CLK_AUD_AFE, "aud_afe", "a1sys_hp_sel", 2),
+-	GATE_AUD0(CLK_AUD_LRCK_CNT, "aud_lrck_cnt", "a1sys_hp_sel", 4),
+-	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_APLL, "aud_spdifin_tuner_apll", "apll4_sel", 10),
+-	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_DBG, "aud_spdifin_tuner_dbg", "apll4_sel", 11),
+-	GATE_AUD0(CLK_AUD_UL_TML, "aud_ul_tml", "a1sys_hp_sel", 18),
+-	GATE_AUD0(CLK_AUD_APLL1_TUNER, "aud_apll1_tuner", "apll1_sel", 19),
+-	GATE_AUD0(CLK_AUD_APLL2_TUNER, "aud_apll2_tuner", "apll2_sel", 20),
+-	GATE_AUD0(CLK_AUD_TOP0_SPDF, "aud_top0_spdf", "aud_iec_sel", 21),
+-	GATE_AUD0(CLK_AUD_APLL, "aud_apll", "apll1_sel", 23),
+-	GATE_AUD0(CLK_AUD_APLL2, "aud_apll2", "apll2_sel", 24),
+-	GATE_AUD0(CLK_AUD_DAC, "aud_dac", "a1sys_hp_sel", 25),
+-	GATE_AUD0(CLK_AUD_DAC_PREDIS, "aud_dac_predis", "a1sys_hp_sel", 26),
+-	GATE_AUD0(CLK_AUD_TML, "aud_tml", "a1sys_hp_sel", 27),
+-	GATE_AUD0(CLK_AUD_ADC, "aud_adc", "a1sys_hp_sel", 28),
+-	GATE_AUD0(CLK_AUD_DAC_HIRES, "aud_dac_hires", "audio_h_sel", 31),
++	GATE_AUD0(CLK_AUD_AFE, "aud_afe", "top_a1sys_hp", 2),
++	GATE_AUD0(CLK_AUD_LRCK_CNT, "aud_lrck_cnt", "top_a1sys_hp", 4),
++	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_APLL, "aud_spdifin_tuner_apll", "top_apll4", 10),
++	GATE_AUD0(CLK_AUD_SPDIFIN_TUNER_DBG, "aud_spdifin_tuner_dbg", "top_apll4", 11),
++	GATE_AUD0(CLK_AUD_UL_TML, "aud_ul_tml", "top_a1sys_hp", 18),
++	GATE_AUD0(CLK_AUD_APLL1_TUNER, "aud_apll1_tuner", "top_apll1", 19),
++	GATE_AUD0(CLK_AUD_APLL2_TUNER, "aud_apll2_tuner", "top_apll2", 20),
++	GATE_AUD0(CLK_AUD_TOP0_SPDF, "aud_top0_spdf", "top_aud_iec_clk", 21),
++	GATE_AUD0(CLK_AUD_APLL, "aud_apll", "top_apll1", 23),
++	GATE_AUD0(CLK_AUD_APLL2, "aud_apll2", "top_apll2", 24),
++	GATE_AUD0(CLK_AUD_DAC, "aud_dac", "top_a1sys_hp", 25),
++	GATE_AUD0(CLK_AUD_DAC_PREDIS, "aud_dac_predis", "top_a1sys_hp", 26),
++	GATE_AUD0(CLK_AUD_TML, "aud_tml", "top_a1sys_hp", 27),
++	GATE_AUD0(CLK_AUD_ADC, "aud_adc", "top_a1sys_hp", 28),
++	GATE_AUD0(CLK_AUD_DAC_HIRES, "aud_dac_hires", "top_audio_h", 31),
+ 
+ 	/* AUD1 */
+-	GATE_AUD1(CLK_AUD_A1SYS_HP, "aud_a1sys_hp", "a1sys_hp_sel", 2),
+-	GATE_AUD1(CLK_AUD_AFE_DMIC1, "aud_afe_dmic1", "a1sys_hp_sel", 10),
+-	GATE_AUD1(CLK_AUD_AFE_DMIC2, "aud_afe_dmic2", "a1sys_hp_sel", 11),
+-	GATE_AUD1(CLK_AUD_AFE_DMIC3, "aud_afe_dmic3", "a1sys_hp_sel", 12),
+-	GATE_AUD1(CLK_AUD_AFE_DMIC4, "aud_afe_dmic4", "a1sys_hp_sel", 13),
+-	GATE_AUD1(CLK_AUD_AFE_26M_DMIC_TM, "aud_afe_26m_dmic_tm", "a1sys_hp_sel", 14),
+-	GATE_AUD1(CLK_AUD_UL_TML_HIRES, "aud_ul_tml_hires", "audio_h_sel", 16),
+-	GATE_AUD1(CLK_AUD_ADC_HIRES, "aud_adc_hires", "audio_h_sel", 17),
+-	GATE_AUD1(CLK_AUD_ADDA6_ADC, "aud_adda6_adc", "a1sys_hp_sel", 18),
+-	GATE_AUD1(CLK_AUD_ADDA6_ADC_HIRES, "aud_adda6_adc_hires", "audio_h_sel", 19),
++	GATE_AUD1(CLK_AUD_A1SYS_HP, "aud_a1sys_hp", "top_a1sys_hp", 2),
++	GATE_AUD1(CLK_AUD_AFE_DMIC1, "aud_afe_dmic1", "top_a1sys_hp", 10),
++	GATE_AUD1(CLK_AUD_AFE_DMIC2, "aud_afe_dmic2", "top_a1sys_hp", 11),
++	GATE_AUD1(CLK_AUD_AFE_DMIC3, "aud_afe_dmic3", "top_a1sys_hp", 12),
++	GATE_AUD1(CLK_AUD_AFE_DMIC4, "aud_afe_dmic4", "top_a1sys_hp", 13),
++	GATE_AUD1(CLK_AUD_AFE_26M_DMIC_TM, "aud_afe_26m_dmic_tm", "top_a1sys_hp", 14),
++	GATE_AUD1(CLK_AUD_UL_TML_HIRES, "aud_ul_tml_hires", "top_audio_h", 16),
++	GATE_AUD1(CLK_AUD_ADC_HIRES, "aud_adc_hires", "top_audio_h", 17),
++	GATE_AUD1(CLK_AUD_ADDA6_ADC, "aud_adda6_adc", "top_a1sys_hp", 18),
++	GATE_AUD1(CLK_AUD_ADDA6_ADC_HIRES, "aud_adda6_adc_hires", "top_audio_h", 19),
+ 
+ 	/* AUD3 */
+-	GATE_AUD3(CLK_AUD_LINEIN_TUNER, "aud_linein_tuner", "apll5_sel", 5),
+-	GATE_AUD3(CLK_AUD_EARC_TUNER, "aud_earc_tuner", "apll3_sel", 7),
++	GATE_AUD3(CLK_AUD_LINEIN_TUNER, "aud_linein_tuner", "top_apll5", 5),
++	GATE_AUD3(CLK_AUD_EARC_TUNER, "aud_earc_tuner", "top_apll3", 7),
+ 
+ 	/* AUD4 */
+-	GATE_AUD4(CLK_AUD_I2SIN, "aud_i2sin", "a1sys_hp_sel", 0),
+-	GATE_AUD4(CLK_AUD_TDM_IN, "aud_tdm_in", "a1sys_hp_sel", 1),
+-	GATE_AUD4(CLK_AUD_I2S_OUT, "aud_i2s_out", "a1sys_hp_sel", 6),
+-	GATE_AUD4(CLK_AUD_TDM_OUT, "aud_tdm_out", "a1sys_hp_sel", 7),
+-	GATE_AUD4(CLK_AUD_HDMI_OUT, "aud_hdmi_out", "a1sys_hp_sel", 8),
+-	GATE_AUD4(CLK_AUD_ASRC11, "aud_asrc11", "a1sys_hp_sel", 16),
+-	GATE_AUD4(CLK_AUD_ASRC12, "aud_asrc12", "a1sys_hp_sel", 17),
++	GATE_AUD4(CLK_AUD_I2SIN, "aud_i2sin", "top_a1sys_hp", 0),
++	GATE_AUD4(CLK_AUD_TDM_IN, "aud_tdm_in", "top_a1sys_hp", 1),
++	GATE_AUD4(CLK_AUD_I2S_OUT, "aud_i2s_out", "top_a1sys_hp", 6),
++	GATE_AUD4(CLK_AUD_TDM_OUT, "aud_tdm_out", "top_a1sys_hp", 7),
++	GATE_AUD4(CLK_AUD_HDMI_OUT, "aud_hdmi_out", "top_a1sys_hp", 8),
++	GATE_AUD4(CLK_AUD_ASRC11, "aud_asrc11", "top_a1sys_hp", 16),
++	GATE_AUD4(CLK_AUD_ASRC12, "aud_asrc12", "top_a1sys_hp", 17),
+ 	GATE_AUD4(CLK_AUD_MULTI_IN, "aud_multi_in", "mphone_slave_b", 19),
+-	GATE_AUD4(CLK_AUD_INTDIR, "aud_intdir", "intdir_sel", 20),
+-	GATE_AUD4(CLK_AUD_A1SYS, "aud_a1sys", "a1sys_hp_sel", 21),
+-	GATE_AUD4(CLK_AUD_A2SYS, "aud_a2sys", "a2sys_sel", 22),
+-	GATE_AUD4(CLK_AUD_PCMIF, "aud_pcmif", "a1sys_hp_sel", 24),
+-	GATE_AUD4(CLK_AUD_A3SYS, "aud_a3sys", "a3sys_sel", 30),
+-	GATE_AUD4(CLK_AUD_A4SYS, "aud_a4sys", "a4sys_sel", 31),
++	GATE_AUD4(CLK_AUD_INTDIR, "aud_intdir", "top_intdir", 20),
++	GATE_AUD4(CLK_AUD_A1SYS, "aud_a1sys", "top_a1sys_hp", 21),
++	GATE_AUD4(CLK_AUD_A2SYS, "aud_a2sys", "top_a2sys_hf", 22),
++	GATE_AUD4(CLK_AUD_PCMIF, "aud_pcmif", "top_a1sys_hp", 24),
++	GATE_AUD4(CLK_AUD_A3SYS, "aud_a3sys", "top_a3sys_hf", 30),
++	GATE_AUD4(CLK_AUD_A4SYS, "aud_a4sys", "top_a4sys_hf", 31),
+ 
+ 	/* AUD5 */
+-	GATE_AUD5(CLK_AUD_MEMIF_UL1, "aud_memif_ul1", "a1sys_hp_sel", 0),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL2, "aud_memif_ul2", "a1sys_hp_sel", 1),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL3, "aud_memif_ul3", "a1sys_hp_sel", 2),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL4, "aud_memif_ul4", "a1sys_hp_sel", 3),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL5, "aud_memif_ul5", "a1sys_hp_sel", 4),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL6, "aud_memif_ul6", "a1sys_hp_sel", 5),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL8, "aud_memif_ul8", "a1sys_hp_sel", 7),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL9, "aud_memif_ul9", "a1sys_hp_sel", 8),
+-	GATE_AUD5(CLK_AUD_MEMIF_UL10, "aud_memif_ul10", "a1sys_hp_sel", 9),
+-	GATE_AUD5(CLK_AUD_MEMIF_DL2, "aud_memif_dl2", "a1sys_hp_sel", 18),
+-	GATE_AUD5(CLK_AUD_MEMIF_DL3, "aud_memif_dl3", "a1sys_hp_sel", 19),
+-	GATE_AUD5(CLK_AUD_MEMIF_DL6, "aud_memif_dl6", "a1sys_hp_sel", 22),
+-	GATE_AUD5(CLK_AUD_MEMIF_DL7, "aud_memif_dl7", "a1sys_hp_sel", 23),
+-	GATE_AUD5(CLK_AUD_MEMIF_DL8, "aud_memif_dl8", "a1sys_hp_sel", 24),
+-	GATE_AUD5(CLK_AUD_MEMIF_DL10, "aud_memif_dl10", "a1sys_hp_sel", 26),
+-	GATE_AUD5(CLK_AUD_MEMIF_DL11, "aud_memif_dl11", "a1sys_hp_sel", 27),
++	GATE_AUD5(CLK_AUD_MEMIF_UL1, "aud_memif_ul1", "top_a1sys_hp", 0),
++	GATE_AUD5(CLK_AUD_MEMIF_UL2, "aud_memif_ul2", "top_a1sys_hp", 1),
++	GATE_AUD5(CLK_AUD_MEMIF_UL3, "aud_memif_ul3", "top_a1sys_hp", 2),
++	GATE_AUD5(CLK_AUD_MEMIF_UL4, "aud_memif_ul4", "top_a1sys_hp", 3),
++	GATE_AUD5(CLK_AUD_MEMIF_UL5, "aud_memif_ul5", "top_a1sys_hp", 4),
++	GATE_AUD5(CLK_AUD_MEMIF_UL6, "aud_memif_ul6", "top_a1sys_hp", 5),
++	GATE_AUD5(CLK_AUD_MEMIF_UL8, "aud_memif_ul8", "top_a1sys_hp", 7),
++	GATE_AUD5(CLK_AUD_MEMIF_UL9, "aud_memif_ul9", "top_a1sys_hp", 8),
++	GATE_AUD5(CLK_AUD_MEMIF_UL10, "aud_memif_ul10", "top_a1sys_hp", 9),
++	GATE_AUD5(CLK_AUD_MEMIF_DL2, "aud_memif_dl2", "top_a1sys_hp", 18),
++	GATE_AUD5(CLK_AUD_MEMIF_DL3, "aud_memif_dl3", "top_a1sys_hp", 19),
++	GATE_AUD5(CLK_AUD_MEMIF_DL6, "aud_memif_dl6", "top_a1sys_hp", 22),
++	GATE_AUD5(CLK_AUD_MEMIF_DL7, "aud_memif_dl7", "top_a1sys_hp", 23),
++	GATE_AUD5(CLK_AUD_MEMIF_DL8, "aud_memif_dl8", "top_a1sys_hp", 24),
++	GATE_AUD5(CLK_AUD_MEMIF_DL10, "aud_memif_dl10", "top_a1sys_hp", 26),
++	GATE_AUD5(CLK_AUD_MEMIF_DL11, "aud_memif_dl11", "top_a1sys_hp", 27),
+ 
+ 	/* AUD6 */
+-	GATE_AUD6(CLK_AUD_GASRC0, "aud_gasrc0", "asm_h_sel", 0),
+-	GATE_AUD6(CLK_AUD_GASRC1, "aud_gasrc1", "asm_h_sel", 1),
+-	GATE_AUD6(CLK_AUD_GASRC2, "aud_gasrc2", "asm_h_sel", 2),
+-	GATE_AUD6(CLK_AUD_GASRC3, "aud_gasrc3", "asm_h_sel", 3),
+-	GATE_AUD6(CLK_AUD_GASRC4, "aud_gasrc4", "asm_h_sel", 4),
+-	GATE_AUD6(CLK_AUD_GASRC5, "aud_gasrc5", "asm_h_sel", 5),
+-	GATE_AUD6(CLK_AUD_GASRC6, "aud_gasrc6", "asm_h_sel", 6),
+-	GATE_AUD6(CLK_AUD_GASRC7, "aud_gasrc7", "asm_h_sel", 7),
+-	GATE_AUD6(CLK_AUD_GASRC8, "aud_gasrc8", "asm_h_sel", 8),
+-	GATE_AUD6(CLK_AUD_GASRC9, "aud_gasrc9", "asm_h_sel", 9),
+-	GATE_AUD6(CLK_AUD_GASRC10, "aud_gasrc10", "asm_h_sel", 10),
+-	GATE_AUD6(CLK_AUD_GASRC11, "aud_gasrc11", "asm_h_sel", 11),
+-	GATE_AUD6(CLK_AUD_GASRC12, "aud_gasrc12", "asm_h_sel", 12),
+-	GATE_AUD6(CLK_AUD_GASRC13, "aud_gasrc13", "asm_h_sel", 13),
+-	GATE_AUD6(CLK_AUD_GASRC14, "aud_gasrc14", "asm_h_sel", 14),
+-	GATE_AUD6(CLK_AUD_GASRC15, "aud_gasrc15", "asm_h_sel", 15),
+-	GATE_AUD6(CLK_AUD_GASRC16, "aud_gasrc16", "asm_h_sel", 16),
+-	GATE_AUD6(CLK_AUD_GASRC17, "aud_gasrc17", "asm_h_sel", 17),
+-	GATE_AUD6(CLK_AUD_GASRC18, "aud_gasrc18", "asm_h_sel", 18),
+-	GATE_AUD6(CLK_AUD_GASRC19, "aud_gasrc19", "asm_h_sel", 19),
++	GATE_AUD6(CLK_AUD_GASRC0, "aud_gasrc0", "top_asm_h", 0),
++	GATE_AUD6(CLK_AUD_GASRC1, "aud_gasrc1", "top_asm_h", 1),
++	GATE_AUD6(CLK_AUD_GASRC2, "aud_gasrc2", "top_asm_h", 2),
++	GATE_AUD6(CLK_AUD_GASRC3, "aud_gasrc3", "top_asm_h", 3),
++	GATE_AUD6(CLK_AUD_GASRC4, "aud_gasrc4", "top_asm_h", 4),
++	GATE_AUD6(CLK_AUD_GASRC5, "aud_gasrc5", "top_asm_h", 5),
++	GATE_AUD6(CLK_AUD_GASRC6, "aud_gasrc6", "top_asm_h", 6),
++	GATE_AUD6(CLK_AUD_GASRC7, "aud_gasrc7", "top_asm_h", 7),
++	GATE_AUD6(CLK_AUD_GASRC8, "aud_gasrc8", "top_asm_h", 8),
++	GATE_AUD6(CLK_AUD_GASRC9, "aud_gasrc9", "top_asm_h", 9),
++	GATE_AUD6(CLK_AUD_GASRC10, "aud_gasrc10", "top_asm_h", 10),
++	GATE_AUD6(CLK_AUD_GASRC11, "aud_gasrc11", "top_asm_h", 11),
++	GATE_AUD6(CLK_AUD_GASRC12, "aud_gasrc12", "top_asm_h", 12),
++	GATE_AUD6(CLK_AUD_GASRC13, "aud_gasrc13", "top_asm_h", 13),
++	GATE_AUD6(CLK_AUD_GASRC14, "aud_gasrc14", "top_asm_h", 14),
++	GATE_AUD6(CLK_AUD_GASRC15, "aud_gasrc15", "top_asm_h", 15),
++	GATE_AUD6(CLK_AUD_GASRC16, "aud_gasrc16", "top_asm_h", 16),
++	GATE_AUD6(CLK_AUD_GASRC17, "aud_gasrc17", "top_asm_h", 17),
++	GATE_AUD6(CLK_AUD_GASRC18, "aud_gasrc18", "top_asm_h", 18),
++	GATE_AUD6(CLK_AUD_GASRC19, "aud_gasrc19", "top_asm_h", 19),
+ };
+ 
+ int mt8195_audsys_clk_register(struct mtk_base_afe *afe)
+-- 
+2.18.0
 
 
 _______________________________________________
