@@ -2,77 +2,56 @@ Return-Path: <SRS0=sTTz=O4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91900C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 08:47:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3E97EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 09:21:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5D20860F5A
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 08:47:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5D20860F5A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id D865261042
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 09:21:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D865261042
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=bootlin.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=unJMmkjCu5Q2UMOa7+avkrRj/jVZj5bDf+OTX4VE8oM=; b=veSw1114DgyYLJ
-	0F/NSD0sjDyCIcMiHIHTQYK8w1vy78thR+l+reUv21woQFcVB6+9TLogXL/o3EsKZOWpkYWOWQMm+
-	Sna0Aq4BFkt3yg3fgjyPbuNvpaM+/g+Kows/hIsjvKQ5zagFl5/TBYUokiO/DG/VDsEwpV5yhjQ9h
-	HFeeSnvKtxTJ7R6DwsNZubP0rpjSJ0E1SaCFdzB8qDONwUac+bzRpHdE9ELU6IRXJINsZSwJ2iPpf
-	uccbfQK4ywZNTstrG2ZYwmTRwJPdMu8j5hqQwQTS06rqaovtOyU5I8jducQwGjR2o+Ix1P+BrRBQd
-	WLEG7br+VjbrFR/RFPwQ==;
+	List-Owner; bh=7N2ZaBXSlK9evktpp8eIB5AKXa8dWMl28+Bs0OR+Fw8=; b=wTu3sR+pz7eJ2Y
+	5IRIjF3hTLme+wl+PX2ff80K7qgeyY3CPVy1jMi+PS9lS6zBpXiLu2X1frEAOsEiY73CrybQnhrHZ
+	xLDU5WUuwOXJZfGeSzu8M1PIjyhTo5hgqwkwjeDao1n9//zjcuZs3SYAH+k6V6KPZaDdpdULn3i7h
+	aIeV3bycEpxlqhjb18urxhS1r2d5F+Ocu5dwSBKg+Y9Wk9TlRFn5KuqSSx0+lNhheSCYoe42e37vU
+	THB7aHLL2dU1bMYVCHuXImK++Ui73095y+6DYwY9ulbUjR1sZ6Wk+kUewG9HB0ax0opg6g9WRcNnw
+	RUQEus3y1rJeRrFN5jiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mYlXM-0025aB-JH; Fri, 08 Oct 2021 08:47:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mYm3k-002AEo-En; Fri, 08 Oct 2021 09:20:56 +0000
+Received: from relay11.mail.gandi.net ([217.70.178.231])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mYlX9-0025XE-8a; Fri, 08 Oct 2021 08:47:16 +0000
-X-UUID: 12e00d9f7e184aa08ea87cb16d0d247d-20211008
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=pUWaCMKNXz356vlGNAhNLBmgPI/6yLDLRRv6SApHeKk=; 
- b=SSvR4da6L97hLsH633+rp84rPoV2cy9M97Oqe7lZeVhGoie9GRXamONxE/XVyryGAx68CITjjqYRvk5qykJQZqMFthfGGQhNPTBlYvaUh2XZoqK2kax/n0yswdfNgMRp5o6L9iIleR0OFyj80DJOdHHkjDTihG/PVcUncu9x67E=;
-X-UUID: 12e00d9f7e184aa08ea87cb16d0d247d-20211008
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <kewei.xu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 879317550; Fri, 08 Oct 2021 01:47:12 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 8 Oct 2021 01:47:10 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 8 Oct 2021 16:47:09 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 8 Oct 2021 16:47:08 +0800
-Message-ID: <1891acec7f5c417f62081a8b10249b265df7ea62.camel@mediatek.com>
-Subject: Re: [PATCH v7 6/7] i2c: mediatek: Isolate speed setting via dts for
- special devices
-From: Kewei Xu <kewei.xu@mediatek.com>
-To: Wolfram Sang <wsa@the-dreams.de>
-CC: <matthias.bgg@gmail.com>, <robh+dt@kernel.org>,
- <linux-i2c@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <leilk.liu@mediatek.com>, <qii.wang@mediatek.com>,
- <liguo.zhang@mediatek.com>, <caiyu.chen@mediatek.com>,
- <ot_daolong.zhu@mediatek.com>, <yuhan.wei@mediatek.com>
-Date: Fri, 8 Oct 2021 16:47:11 +0800
-In-Reply-To: <YVf+83LdUEPjoLdI@kunai>
-References: <20210917101416.20760-1-kewei.xu@mediatek.com>
- <20210917101416.20760-7-kewei.xu@mediatek.com> <YVf+83LdUEPjoLdI@kunai>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mYm3h-002AEL-Vc; Fri, 08 Oct 2021 09:20:55 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+ by relay11.mail.gandi.net (Postfix) with ESMTPSA id 29A4F100004;
+ Fri,  8 Oct 2021 09:20:46 +0000 (UTC)
+Date: Fri, 8 Oct 2021 11:20:45 +0200
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
+Cc: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
+ <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
+ <bin.zhang@mediatek.com>, <info@bootlin.com>, <sanny.chen@mediatek.com>,
+ <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>,
+ <donghunt@amazon.com>, <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
+Subject: Re: [RFC,v1 0/4] Add a driver for Mediatek SPI Nand controller
+Message-ID: <20211008112045.11e8d148@xps13>
+In-Reply-To: <20210927053629.17847-1-xiangsheng.hou@mediatek.com>
+References: <20210927053629.17847-1-xiangsheng.hou@mediatek.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211008_014715_328171_7207AF65 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20211008_022054_315082_9431CB73 
+X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,42 +63,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2021-10-02 at 08:40 +0200, Wolfram Sang wrote:
-> On Fri, Sep 17, 2021 at 06:14:15PM +0800, Kewei Xu wrote:
-> > In the commit be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing
-> > adjust
-> > support"), the I2C timing calculation has been revised to support
-> > ac-timing adjustment, however that will break on some I2C
-> > components.
-> > As a result we want to introduce a new setting "default-adjust-
-> > timing"
-> > so those components can choose to use the old (default) timing
-> > algorithm.
-> 
-> Why can't the new calculation be updated in a way that it works for
-> all
-> I2C components?
-> 
-Hi, In the commit be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing
-adjust support"), the I2C timing calculation has been revised to
-support ac-timing adjustment.But in our design, it will make
-tSU,STA/tHD,STA/tSU,STO shorter when the slave device have clock-
-stretching feature. Then we upload the commit a80f24945fcf ("i2c:
-mediatek: Use scl_int_delay_ns to compensate clock-stretching") to
-support adjusting tSU,STA/tHD,STA/tSU,STO when the slave device clock-
-stretching. But if the slave device stretch the SCL line for too long
-time, our design still cannot make tSU,STA/tHD,STA/tSU,STO meet spec.
-However in the old (default) timing algorithm before the commit
-be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust support"),
-tSU,STA/tHD,STA/tSU,STO can meet spec. So we want to define a new
-setting "default-adjust-timing" for using the old (default) timing
-algorithm. Thanks~
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGVsbG8sCgp4aWFuZ3NoZW5nLmhvdUBtZWRpYXRlay5jb20gd3JvdGUgb24gTW9uLCAyNyBTZXAg
+MjAyMSAxMzozNjoyNSArMDgwMDoKCj4gQWRkIGEgZHJpdmVyIGZvciBNZWRpYXRlayBTUEkgTmFu
+ZCBjb250cm9sbGVyCj4gCj4gTWVkaWF0ZWsgU1BJIE5hbmQgY29udHJvbGxlciBjb3Npc3RzIG9m
+IHR3byBwYXJ0czogb24taG9zdCBIVyBFQ0MgYW5kCj4gc25maShzdGFuZCBmb3Igc3BpIG5hbmQg
+Zmxhc2ggaW50ZXJmYWNlKS4gVGhleSBjYW4gY293b3JrIHdpdGggaGlnaAo+IHBlcmZvcm1hbmNl
+IHdoaWNoIGNhbGxlZCBFQ0MgbmZpIG1vZGUuIFRoZSBuZmkgc3RhbmQgZm9yIG5hbmQgZmxhc2gK
+PiBpbnRlcmZhY2VpKHNuZmkgYSBvbmUgcGFydCBvZiBuZmkpIHdoaWNoIGNhbiBzdXBwb3J0IFNQ
+SSBOYW5kIGZsYXNoCj4gYW5kIHJhdyBuYW5kIGZsYXNoLgo+IAo+IEhvd2V2ZXIsIHRoZSBzbmZp
+IGRyaXZlciBpbiBzcGkgc3Vic3l0ZW0gbmVlZCB0byBiZSBhd2FyZSBvZiBuYW5kCj4gcGFyYW1l
+dGVyKHBhZ2Uvc3BhcmUgc2l6ZSkgYW5kIGVjYyBzdGF0dXMoZW5hYmxlL2Rpc2FibGUpIHdoZW4g
+d29yawo+IGF0IEVDQyBuZmkgbW9kZS4gVGhlIHNuZmkgZHJpdmVyIGluIHNwaSBzdWJzeXN0ZW0g
+c2VlbXMgZGlmZmljdWx0IHRvCj4ga25vdyB0aGVzZS4KPiAKPiBUaGVyZWZvcmUsIGNvbnNpZGVy
+IHR3byB3YXlzIHRvIGxldCBzbmZpIGNhbiBnZXQgdGhlc2UgaW5mb3JtYXRpb24uCj4gVGhlIFJG
+QyBwYXRjaCBzZW5kIHRvIHJldmlldyB3aGV0aGVyIHRoZXkgYXJlIHN1aXRhYmxlIGFuZCB3aGlj
+aAo+IHNvbHV0aW9uIG1heWJlIGJldHRlci4KPiAKPiBSRkMgcGF0Y2ggdjE6Cj4gQWRkIG5maSBy
+ZWdpc3RlciBiYXNlIGF0IGJjaChlY2MpIGR0cyBub2RlIGFuZCBjb25maWcgbmFuZCBwYXJhbWV0
+ZXIKPiBhbmQgZWNjIHN0YXR1cyBpbnRvIG5maSByZWdpc3RlcnMgaW4gZWNjIGRyaXZlciwgdGhl
+biBwYXJzZSB0aGVzZQo+IGluZm9ybWF0aW9uIGF0IHNuZmkgZHJpdmVyIHRvIHVzZS4KPiAKPiBS
+RkMgcGF0Y2ggdjI6Cj4gRXhwb3J0IHNvbWUgZnVuY3Rpb24gaW4gSFcgRUNDIGRyaXZlciBhbmQg
+c25maSBkcml2ZXIuCj4gSW4gSFcgRUNDIGRyaXZlciwgZXhwb3J0IGZ1bmN0aW9uIGluY2x1ZGUg
+Z2V0IG5hbmQgcGFnZS9zcGFyZSBzaXplLCBIVwo+IEVDQyBzdGF0dXMoZW5hYmxlL2Rpc2FibGUp
+IGFuZCBmZG0ob29iIGZyZWUgcGVyIHNlY3RvciBpbiBvb2JsYXlvdXQpIHNpemUuCj4gSW4gc25m
+aSBkcml2ZXIgbmVlZCBleHBvcnQgZW1wdHkgcGFnZSBzdGF0dXMgd2hpY2ggdGhlIG5maSBjYW4g
+YmUgYXdhcmUKPiB3aGVuIGluIEVDQyBuZmkgbW9kZSh0aGUgc3BpbSBmcmFtZXdvcmsgY2FuIG5v
+dCByZXR1cm4gdGhpcyBpbmZvcm1hdGlvbikuCj4gCgpJJ3ZlIGxvb2tlZCBhdCBib3RoIHZlcnNp
+b25zIHRoYXQgeW91IHByb3ZpZGVkIGFuZCBJIHRob3VnaHQgYWJvdXQgYQpudW1iZXIgb2YgdGhp
+bmdzIHRoYXQgY2Fubm90IGJlIGRvbmUgbGlrZSB0aGlzOgotIEkgYmVsaWV2ZSB0aGUgc25maSBp
+cyBhIHJlZ3VsYXIgU1BJIGNvbnRyb2xsZXIuIEkgd2lsbCBsZXQgTWFyawogIGNvbmZpcm0gYnV0
+IEkgZG8gbm90IHRoaW5rIHdlIHdhbnQgdG8gc3RhcnQgd3JpdGluZyBTUEktTkFORAogIGNvbnRy
+b2xsZXJzLiBJbnN0ZWFkIHdlIHdyaXRlIFNQSSBjb250cm9sbGVycyBhbmQgd2UgcHJvdmlkZSBT
+UEktbWVtCiAgb3BlcmF0aW9ucyAod2UndmUgZXhwbGFpbmVkIHRoaXMgaW4gYSBwcmV2aW91cyBF
+TEMsIHRoZSB2aWRlbyBpcwogIGF2YWlsYWJsZSBvbiBZb3VUdWJlKS4KLSBZb3UgY2Fubm90IGFk
+ZCBhbiBNVEsgRUNDIGFsZ29yaXRobS4gVGhpcyBpcyBkZWRpY2F0ZWQgZm9yIHNvZndhcmUKICBz
+b2x1dGlvbnMgb25seSBhbmQgYXMgZmFyIGFzIEkgdW5kZXJzdGFuZCB5b3VyIGVuZ2luZSB1c2Vz
+IHRoZSBCQ0gKICBhbGdvcml0aG0uCi0gV2hlbiB0aGUgRUNDIGVuZ2luZSBpcyBwaXBlbGluZWQs
+IHRoZXJlIGlzIGFuIGFkZGl0aW9uYWwgY29tcGxleGl0eQogIGluIGludGVyZmFjaW5nIGl0IHdp
+dGggYSBTUEkgY29udHJvbGxlciAodGhhdCdzIHlvdXIgY2FzZSBJIGJlbGlldmUpLgogIEkgaGF2
+ZSBhbiBleGFtcGxlIHRoYXQgaXMgbm90IHlldCB1cHN0cmVhbSBidXQgSSB0aGluayB3b3J0aCBs
+b29raW5nCiAgYXQgdGhhdCBJIHdpbGwgc2VuZCB2ZXJ5IHNvb24gKEkgd2lsbCBDYzogeW91IG9u
+IGl0KS4KLSBUaGUgRFQgZGVzY3JpcHRpb24gZm9yIHRob3NlIGVuZ2luZXMgdGhhdCBoYXMgYmVl
+biBkZXNjcmliZWQgb24gdGhlCiAgbWFpbGluZyBsaXN0IGFuZCB3aWxsIGJlIGVuZm9yY2VkIGlz
+OgoKLy8gRXh0ZXJuYWwgZW5naW5lCgoJJnNwaS1jb250cm9sbGVyIHsKICAgICAgICAgICAgICAg
+IGZsYXNoQDAgewogICAgICAgICAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInNwaS1uYW5k
+IjsKICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPDA+OwogICAgICAgICAgICAgICAgICAg
+ICAgICBuYW5kLWVjYy1lbmdpbmUgPSA8JmVjY19lbmdpbmU+OwogICAgICAgICAgICAgICAgICAg
+ICAgICBzcGktbWF4LWZyZXF1ZW5jeSA9IDw1MDAwMDAwMD47CiAgICAgICAgICAgICAgICAgICAg
+ICAgIHNwaS10eC1idXMtd2lkdGggPSA8ND47CiAgICAgICAgICAgICAgICAgICAgICAgIHNwaS1y
+eC1idXMtd2lkdGggPSA8ND47CiAgICAgICAgICAgICAgICB9OwogICAgICAgIH07CgogICAgICAg
+IGVjY19lbmdpbmU6IGVjY0A0M2M0MDAwMCB7CiAgICAgICAgICAgICAgICBjb21wYXRpYmxlID0g
+Im14aWMsbmFuZC1lY2MtZW5naW5lLXJldjMiOwogICAgICAgICAgICAgICAgcmVnID0gPDB4NDNj
+NDAwMDAgMHgxMDAwMD47CiAgICAgICAgfTsKIAoKLy8gUGlwZWxpbmVkIGVuZ2luZQoKCSZzcGkt
+Y29udHJvbGxlciB7CiAgICAgICAgICAgICAgIG5hbmQtZWNjLWVuZ2luZSA9IDwmZWNjX2VuZ2lu
+ZT47CiAKICAgICAgICAgICAgICAgIGZsYXNoQDAgewogICAgICAgICAgICAgICAgICAgICAgICBj
+b21wYXRpYmxlID0gInNwaS1uYW5kIjsKICAgICAgICAgICAgICAgICAgICAgICAgcmVnID0gPDA+
+OwogICAgICAgICAgICAgICAgICAgICAgICBuYW5kLWVjYy1lbmdpbmUgPSA8JnNwaV9jb250cm9s
+bGVyPjsKICAgICAgICAgICAgICAgICAgICAgICAgc3BpLW1heC1mcmVxdWVuY3kgPSA8NTAwMDAw
+MDA+OwogICAgICAgICAgICAgICAgICAgICAgICBzcGktdHgtYnVzLXdpZHRoID0gPDQ+OwogICAg
+ICAgICAgICAgICAgICAgICAgICBzcGktcngtYnVzLXdpZHRoID0gPDQ+OwogCQl9OwoJfTsKCiAg
+ICAgICAgZWNjX2VuZ2luZTogZWNjQDQzYzQwMDAwIHsKICAgICAgICAgICAgICAgIGNvbXBhdGli
+bGUgPSAibXhpYyxuYW5kLWVjYy1lbmdpbmUtcmV2MyI7CiAgICAgICAgICAgICAgICByZWcgPSA8
+MHg0M2M0MDAwMCAweDEwMDAwPjsKICAgICAgICB9OwoKVGhhbmtzLApNaXF1w6hsCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBt
+YWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
