@@ -2,90 +2,71 @@ Return-Path: <SRS0=sTTz=O4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 91D11C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 16:04:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 42061C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 22:10:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 447D461029
-	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 16:04:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 447D461029
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id E813860FC1
+	for <linux-mediatek@archiver.kernel.org>; Fri,  8 Oct 2021 22:10:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E813860FC1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a7Jw0s6ePvIsgWv0IwCtuldszO8JU3gx8Nx0Hxo6RRI=; b=2Zws3Ww37d0SMi
-	qNyLdO2tNwI8zx3v7gHVSsjbyrx0+2BARJMdS83xiYlRY4MWUhy4NJlNCSvkxS6KJinQ0v6EGVujy
-	M8uqB4ggcZb/EPW5xJeKA6tf6aElTr8Ju0weXdIDt4R+W0OUTQ/y4UmzEsfMdgh2i3lzLI8yLD/B2
-	bozw96GbaHI3l+kgj9/yWWNObZRpA2de0Nns4PQ1YC0k64PjsBpQ0u0keDjlxfNM8wWSnTtMBagHX
-	3vM5kyv/VmN/o4hO1Rydd/2eos1FxPpGr0tJnUzUO21SwQAQmVo+6nIfrqvKuHuMLzpsrZJhO2Zvi
-	vdlm+CyFrmio7LJGb/eA==;
+	List-Owner; bh=3udf1tTwmIpZB32di61uhBo2GseEB7ngLnCfzSEC6co=; b=ZBpFzKqcZbUU6X
+	3aa9AOem2TaSkvUKjhW5L05+tJBhx+BJ6xI3bJdorndGCiYd0qccpc4s6OTjZwmU0XiyEgFYCraRl
+	YRoHAdgbIUHReUAqTApyiHbnmY6IQJPpLKM6odd7Sb/mZcwxJsYXvLrWkncIowvkv2pyMnsCmRB7J
+	Kf44Uejjxx7RTnKzv5Bgc2825BRttBtiiF/rcWqnK2rUatIJ3TaYjZwWBnpJzsFe8ymH5fFXrrh8R
+	rGLbak2a83Xg+eViu1yjbhSds70rj5GSJGgKOtUUxCkAtOD9HNsTydE+a7piw7tE2lbeBLoDjmw0U
+	4kwUFDhSUhgzEcgenHyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mYsM2-003Oua-6O; Fri, 08 Oct 2021 16:04:14 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1mYy4a-004GZ1-TP; Fri, 08 Oct 2021 22:10:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mYsIy-003NHn-Pa
- for linux-mediatek@lists.infradead.org; Fri, 08 Oct 2021 16:01:06 +0000
-Received: by mail-pl1-x631.google.com with SMTP id g5so3405710plg.1
- for <linux-mediatek@lists.infradead.org>; Fri, 08 Oct 2021 09:01:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=mJr70vtcSbn8HkbIjoqrY+nokUtRVQIO9WTnKtmG5ik=;
- b=qJIOqw5PCw7aJXLpxzhrrCUO7UnCMmPBBpJADmTgebLKqc3R6Yt9mvPXF1qhp+cFxK
- UKFkMylm0fZz+4vhhL46VoJoaHCQf6J86LAi2zcTqDw8018Q3pNJZRy5rGH92gCw74E9
- 3oYDDVIwGKvrQjIdEmNpiRH+x9iw3B0d6RHRCGVnwaj7bbYXyb85MrFfOgNUKvPN/5Bh
- EaAR6lHa0EZPg+sw283+W9qmw1ljfzMnFYajJE5gsoPfM+ErTIVcQWYUis6l3dC8VlB1
- 6EimFCaCIuEbt1SGFHI6Ou3TSJDaVwItfIwxhYLWlYGq9p6sr9zdT4q6Y5+BQF9Qqfbh
- sgsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=mJr70vtcSbn8HkbIjoqrY+nokUtRVQIO9WTnKtmG5ik=;
- b=wYHHGosAJ0eJgBamlBad4koDwvB6g4IxDZGVrC/Vz/sNq0cwLbNkUiQhHP4NjcfSwM
- QDVESumaXoYEc+IsCv+BXq2PaSYgW9T0ciqmXXgMgB+gdOI9a+iIjrCB37G10ZOd8W7X
- D9qfhghoY4XbgP0Ah17KVuFlDSpKLh7stEOYgFyfZ4LaYinXUxjhWvD/kmNhyuDjMK91
- AC+VP9VzF/t9nYX/DVKC8x+A8tO9Li7ebl9nDKKo3O9kCe9eFK6luqx5COysf8bNkBnE
- hZhG67+7h5slt3zz1vSIVUtXQgz9kxWF8VNyDfw2BHFmlyBqLqAXx64ChOuu47eyMtpx
- CqvQ==
-X-Gm-Message-State: AOAM531hToziS091mAG3BDx4pJ1pTxmeEzV7b2fhZtBrNabvvo+/sz/M
- sYKJSgu6zG/WKhff0AfVz9gaw/AAiJuZAhi6OBLdOA==
-X-Google-Smtp-Source: ABdhPJw2mT/8VUBkZuHdEM/x3If4KXMLcmxLKFmb5zR9aK5AH+CfwKfkE7xSLXja/Ljm5kmIqRq/mfjTrsf50IcgMZ4=
-X-Received: by 2002:a17:90b:1644:: with SMTP id
- il4mr9831056pjb.179.1633708861847; 
- Fri, 08 Oct 2021 09:01:01 -0700 (PDT)
+ id 1mYy4X-004GYE-Lw
+ for linux-mediatek@lists.infradead.org; Fri, 08 Oct 2021 22:10:35 +0000
+X-UUID: 8f701c00d7bc4d8c9f618d653ce6f7b1-20211008
+X-UUID: 8f701c00d7bc4d8c9f618d653ce6f7b1-20211008
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 859045561; Fri, 08 Oct 2021 15:10:32 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 8 Oct 2021 15:10:30 -0700
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 9 Oct 2021 06:10:29 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
+ <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
+ <mcchou@chromium.org>, <shawnku@google.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v1 02/10] Bluetooth: btmtksido: rely on BT_MTK module
+Date: Sat, 9 Oct 2021 06:10:09 +0800
+Message-ID: <e0a05a23cdc03a15ed35b29f94ea855f93014890.1633728573.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <cover.1633728573.git.objelf@gmail.com>
+References: <cover.1633728573.git.objelf@gmail.com>
 MIME-Version: 1.0
-References: <20211007094723.202330-1-allen.chen@ite.com.tw>
-In-Reply-To: <20211007094723.202330-1-allen.chen@ite.com.tw>
-From: Robert Foss <robert.foss@linaro.org>
-Date: Fri, 8 Oct 2021 18:00:50 +0200
-Message-ID: <CAG3jFyu-nG8jttSfkZ-ZZAg7W9SRFFDWsA9=g7Z1JbNhxBLuyw@mail.gmail.com>
-Subject: Re: [PATCH v9] drm/bridge: add it6505 driver
-To: allen <allen.chen@ite.com.tw>
-Cc: Kenneth Hung <Kenneth.Hung@ite.com.tw>,
- Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>, 
- Hermes Wu <Hermes.Wu@ite.com.tw>, Hsin-Yi Wang <hsinyi@google.com>, 
- Hsin-yi Wang <hsinyi@chromium.org>, Andrzej Hajda <a.hajda@samsung.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- open list <linux-kernel@vger.kernel.org>, 
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211008_090104_917523_FE4E9EA4 
-X-CRM114-Status: UNSURE (   5.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211008_151033_761019_D9D7F0C7 
+X-CRM114-Status: GOOD (  22.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,27 +78,378 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGV5IEFsbGVuLAoKSSB3YXMgcnVubmluZyB0aGUgcHJlLW1lcmdlIGNoZWNrcywgYW5kIGhpdCBz
-b21lIGJ1aWxkIGlzc3Vlcy4gVGhpcwp3YXMgYnVpbHQgYWdhaW5zdCB0b2RheXMgZHJtLW1pc2Mt
-bmV4dCBicmFuY2gsIHdoaWNoIEkgd291bGQgbGlrZSB5b3UKdG8gcmViYXNlIHlvdXIgcGF0Y2gg
-YWdhaW5zdC4KCmRyaXZlcnMvZ3B1L2RybS9icmlkZ2UvaXRlLWl0NjUwNS5jOiBJbiBmdW5jdGlv
-biDigJhpdDY1MDVfYnJpZGdlX2F0b21pY19lbmFibGXigJk6CmRyaXZlcnMvZ3B1L2RybS9icmlk
-Z2UvaXRlLWl0NjUwNS5jOjI5MTk6MTU6IGVycm9yOiBpbXBsaWNpdApkZWNsYXJhdGlvbiBvZiBm
-dW5jdGlvbiDigJhkcm1fYnJpZGdlX25ld19jcnRjX3N0YXRl4oCZOyBkaWQgeW91IG1lYW4K4oCY
-ZHJtX2F0b21pY19nZXRfbmV3X2NydGNfc3RhdGXigJk/ClstV2Vycm9yPWltcGxpY2l0LWZ1bmN0
-aW9uLWRlY2xhcmF0aW9uXQogMjkxOSB8ICBjcnRjX3N0YXRlID0gZHJtX2JyaWRnZV9uZXdfY3J0
-Y19zdGF0ZShicmlkZ2UsIG9sZF9zdGF0ZSk7CiAgICAgIHwgICAgICAgICAgICAgICBefn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+CiAgICAgIHwgICAgICAgICAgICAgICBkcm1fYXRvbWljX2dldF9u
-ZXdfY3J0Y19zdGF0ZQpkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL2l0ZS1pdDY1MDUuYzoyOTE5OjEz
-OiB3YXJuaW5nOiBhc3NpZ25tZW50IHRvCuKAmGNvbnN0IHN0cnVjdCBkcm1fY3J0Y19zdGF0ZSAq
-4oCZIGZyb20g4oCYaW504oCZIG1ha2VzIHBvaW50ZXIgZnJvbSBpbnRlZ2VyCndpdGhvdXQgYSBj
-YXN0IFstV2ludC1jb252ZXJzaW9uXQogMjkxOSB8ICBjcnRjX3N0YXRlID0gZHJtX2JyaWRnZV9u
-ZXdfY3J0Y19zdGF0ZShicmlkZ2UsIG9sZF9zdGF0ZSk7CiAgICAgIHwgICAgICAgICAgICAgXgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+From: Sean Wang <sean.wang@mediatek.com>
+
+Rely on btmtk module to reduce duplicated code
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+ drivers/bluetooth/Kconfig     |   1 +
+ drivers/bluetooth/btmtk.h     |   3 +
+ drivers/bluetooth/btmtksdio.c | 192 +++++-----------------------------
+ 3 files changed, 28 insertions(+), 168 deletions(-)
+
+diff --git a/drivers/bluetooth/Kconfig b/drivers/bluetooth/Kconfig
+index 24c3aea4a7d6..36380e618ba4 100644
+--- a/drivers/bluetooth/Kconfig
++++ b/drivers/bluetooth/Kconfig
+@@ -388,6 +388,7 @@ config BT_ATH3K
+ config BT_MTKSDIO
+ 	tristate "MediaTek HCI SDIO driver"
+ 	depends on MMC
++	select BT_MTK
+ 	help
+ 	  MediaTek Bluetooth HCI SDIO driver.
+ 	  This driver is required if you want to use MediaTek Bluetooth
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 87c25c6cf969..18f43c641b3b 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -9,6 +9,9 @@
+ 
+ enum {
+ 	BTMTK_WMT_PATCH_DWNLD = 0x1,
++	BTMTK_WMT_TEST = 0x2,
++	BTMTK_WMT_WAKEUP = 0x3,
++	BTMTK_WMT_HIF = 0x4,
+ 	BTMTK_WMT_FUNC_CTRL = 0x6,
+ 	BTMTK_WMT_RST = 0x7,
+ 	BTMTK_WMT_SEMAPHORE = 0x17,
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index 9872ef18f9fe..53682a4c2ced 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -12,7 +12,6 @@
+ 
+ #include <asm/unaligned.h>
+ #include <linux/atomic.h>
+-#include <linux/firmware.h>
+ #include <linux/init.h>
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+@@ -28,12 +27,10 @@
+ #include <net/bluetooth/hci_core.h>
+ 
+ #include "h4_recv.h"
++#include "btmtk.h"
+ 
+ #define VERSION "0.1"
+ 
+-#define FIRMWARE_MT7663		"mediatek/mt7663pr2h.bin"
+-#define FIRMWARE_MT7668		"mediatek/mt7668pr2h.bin"
+-
+ #define MTKBTSDIO_AUTOSUSPEND_DELAY	8000
+ 
+ static bool enable_autosuspend;
+@@ -90,69 +87,12 @@ MODULE_DEVICE_TABLE(sdio, btmtksdio_table);
+ 
+ #define BTMTKSDIO_TX_WAIT_VND_EVT	1
+ 
+-enum {
+-	MTK_WMT_PATCH_DWNLD = 0x1,
+-	MTK_WMT_TEST = 0x2,
+-	MTK_WMT_WAKEUP = 0x3,
+-	MTK_WMT_HIF = 0x4,
+-	MTK_WMT_FUNC_CTRL = 0x6,
+-	MTK_WMT_RST = 0x7,
+-	MTK_WMT_SEMAPHORE = 0x17,
+-};
+-
+-enum {
+-	BTMTK_WMT_INVALID,
+-	BTMTK_WMT_PATCH_UNDONE,
+-	BTMTK_WMT_PATCH_DONE,
+-	BTMTK_WMT_ON_UNDONE,
+-	BTMTK_WMT_ON_DONE,
+-	BTMTK_WMT_ON_PROGRESS,
+-};
+-
+ struct mtkbtsdio_hdr {
+ 	__le16	len;
+ 	__le16	reserved;
+ 	u8	bt_type;
+ } __packed;
+ 
+-struct mtk_wmt_hdr {
+-	u8	dir;
+-	u8	op;
+-	__le16	dlen;
+-	u8	flag;
+-} __packed;
+-
+-struct mtk_hci_wmt_cmd {
+-	struct mtk_wmt_hdr hdr;
+-	u8 data[256];
+-} __packed;
+-
+-struct btmtk_hci_wmt_evt {
+-	struct hci_event_hdr hhdr;
+-	struct mtk_wmt_hdr whdr;
+-} __packed;
+-
+-struct btmtk_hci_wmt_evt_funcc {
+-	struct btmtk_hci_wmt_evt hwhdr;
+-	__be16 status;
+-} __packed;
+-
+-struct btmtk_tci_sleep {
+-	u8 mode;
+-	__le16 duration;
+-	__le16 host_duration;
+-	u8 host_wakeup_pin;
+-	u8 time_compensation;
+-} __packed;
+-
+-struct btmtk_hci_wmt_params {
+-	u8 op;
+-	u8 flag;
+-	u16 dlen;
+-	const void *data;
+-	u32 *status;
+-};
+-
+ struct btmtksdio_dev {
+ 	struct hci_dev *hdev;
+ 	struct sdio_func *func;
+@@ -174,27 +114,32 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 	struct btmtk_hci_wmt_evt_funcc *wmt_evt_funcc;
+ 	u32 hlen, status = BTMTK_WMT_INVALID;
+ 	struct btmtk_hci_wmt_evt *wmt_evt;
+-	struct mtk_hci_wmt_cmd wc;
+-	struct mtk_wmt_hdr *hdr;
++	struct btmtk_hci_wmt_cmd *wc;
++	struct btmtk_wmt_hdr *hdr;
+ 	int err;
+ 
++	/* Send the WMT command and wait until the WMT event returns */
+ 	hlen = sizeof(*hdr) + wmt_params->dlen;
+ 	if (hlen > 255)
+ 		return -EINVAL;
+ 
+-	hdr = (struct mtk_wmt_hdr *)&wc;
++	wc = kzalloc(hlen, GFP_KERNEL);
++	if (!wc)
++		return -ENOMEM;
++
++	hdr = &wc->hdr;
+ 	hdr->dir = 1;
+ 	hdr->op = wmt_params->op;
+ 	hdr->dlen = cpu_to_le16(wmt_params->dlen + 1);
+ 	hdr->flag = wmt_params->flag;
+-	memcpy(wc.data, wmt_params->data, wmt_params->dlen);
++	memcpy(wc->data, wmt_params->data, wmt_params->dlen);
+ 
+ 	set_bit(BTMTKSDIO_TX_WAIT_VND_EVT, &bdev->tx_state);
+ 
+-	err = __hci_cmd_send(hdev, 0xfc6f, hlen, &wc);
++	err = __hci_cmd_send(hdev, 0xfc6f, hlen, wc);
+ 	if (err < 0) {
+ 		clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT, &bdev->tx_state);
+-		return err;
++		goto err_free_wc;
+ 	}
+ 
+ 	/* The vendor specific WMT commands are all answered by a vendor
+@@ -211,13 +156,14 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 	if (err == -EINTR) {
+ 		bt_dev_err(hdev, "Execution of wmt command interrupted");
+ 		clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT, &bdev->tx_state);
+-		return err;
++		goto err_free_wc;
+ 	}
+ 
+ 	if (err) {
+ 		bt_dev_err(hdev, "Execution of wmt command timed out");
+ 		clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT, &bdev->tx_state);
+-		return -ETIMEDOUT;
++		err = -ETIMEDOUT;
++		goto err_free_wc;
+ 	}
+ 
+ 	/* Parse and handle the return WMT event */
+@@ -230,13 +176,13 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 	}
+ 
+ 	switch (wmt_evt->whdr.op) {
+-	case MTK_WMT_SEMAPHORE:
++	case BTMTK_WMT_SEMAPHORE:
+ 		if (wmt_evt->whdr.flag == 2)
+ 			status = BTMTK_WMT_PATCH_UNDONE;
+ 		else
+ 			status = BTMTK_WMT_PATCH_DONE;
+ 		break;
+-	case MTK_WMT_FUNC_CTRL:
++	case BTMTK_WMT_FUNC_CTRL:
+ 		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+ 		if (be16_to_cpu(wmt_evt_funcc->status) == 0x404)
+ 			status = BTMTK_WMT_ON_DONE;
+@@ -253,6 +199,8 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ err_free_skb:
+ 	kfree_skb(bdev->evt_skb);
+ 	bdev->evt_skb = NULL;
++err_free_wc:
++	kfree(wc);
+ 
+ 	return err;
+ }
+@@ -663,7 +611,7 @@ static int btmtksdio_func_query(struct hci_dev *hdev)
+ 	u8 param = 0;
+ 
+ 	/* Query whether the function is enabled */
+-	wmt_params.op = MTK_WMT_FUNC_CTRL;
++	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+ 	wmt_params.flag = 4;
+ 	wmt_params.dlen = sizeof(param);
+ 	wmt_params.data = &param;
+@@ -678,96 +626,6 @@ static int btmtksdio_func_query(struct hci_dev *hdev)
+ 	return status;
+ }
+ 
+-static int mtk_setup_firmware(struct hci_dev *hdev, const char *fwname)
+-{
+-	struct btmtk_hci_wmt_params wmt_params;
+-	const struct firmware *fw;
+-	const u8 *fw_ptr;
+-	size_t fw_size;
+-	int err, dlen;
+-	u8 flag, param;
+-
+-	err = request_firmware(&fw, fwname, &hdev->dev);
+-	if (err < 0) {
+-		bt_dev_err(hdev, "Failed to load firmware file (%d)", err);
+-		return err;
+-	}
+-
+-	/* Power on data RAM the firmware relies on. */
+-	param = 1;
+-	wmt_params.op = MTK_WMT_FUNC_CTRL;
+-	wmt_params.flag = 3;
+-	wmt_params.dlen = sizeof(param);
+-	wmt_params.data = &param;
+-	wmt_params.status = NULL;
+-
+-	err = mtk_hci_wmt_sync(hdev, &wmt_params);
+-	if (err < 0) {
+-		bt_dev_err(hdev, "Failed to power on data RAM (%d)", err);
+-		goto free_fw;
+-	}
+-
+-	fw_ptr = fw->data;
+-	fw_size = fw->size;
+-
+-	/* The size of patch header is 30 bytes, should be skip */
+-	if (fw_size < 30) {
+-		err = -EINVAL;
+-		goto free_fw;
+-	}
+-
+-	fw_size -= 30;
+-	fw_ptr += 30;
+-	flag = 1;
+-
+-	wmt_params.op = MTK_WMT_PATCH_DWNLD;
+-	wmt_params.status = NULL;
+-
+-	while (fw_size > 0) {
+-		dlen = min_t(int, 250, fw_size);
+-
+-		/* Tell device the position in sequence */
+-		if (fw_size - dlen <= 0)
+-			flag = 3;
+-		else if (fw_size < fw->size - 30)
+-			flag = 2;
+-
+-		wmt_params.flag = flag;
+-		wmt_params.dlen = dlen;
+-		wmt_params.data = fw_ptr;
+-
+-		err = mtk_hci_wmt_sync(hdev, &wmt_params);
+-		if (err < 0) {
+-			bt_dev_err(hdev, "Failed to send wmt patch dwnld (%d)",
+-				   err);
+-			goto free_fw;
+-		}
+-
+-		fw_size -= dlen;
+-		fw_ptr += dlen;
+-	}
+-
+-	wmt_params.op = MTK_WMT_RST;
+-	wmt_params.flag = 4;
+-	wmt_params.dlen = 0;
+-	wmt_params.data = NULL;
+-	wmt_params.status = NULL;
+-
+-	/* Activate funciton the firmware providing to */
+-	err = mtk_hci_wmt_sync(hdev, &wmt_params);
+-	if (err < 0) {
+-		bt_dev_err(hdev, "Failed to send wmt rst (%d)", err);
+-		goto free_fw;
+-	}
+-
+-	/* Wait a few moments for firmware activation done */
+-	usleep_range(10000, 12000);
+-
+-free_fw:
+-	release_firmware(fw);
+-	return err;
+-}
+-
+ static int btmtksdio_setup(struct hci_dev *hdev)
+ {
+ 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
+@@ -782,7 +640,7 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+ 	calltime = ktime_get();
+ 
+ 	/* Query whether the firmware is already download */
+-	wmt_params.op = MTK_WMT_SEMAPHORE;
++	wmt_params.op = BTMTK_WMT_SEMAPHORE;
+ 	wmt_params.flag = 1;
+ 	wmt_params.dlen = 0;
+ 	wmt_params.data = NULL;
+@@ -800,7 +658,7 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+ 	}
+ 
+ 	/* Setup a firmware which the device definitely requires */
+-	err = mtk_setup_firmware(hdev, bdev->data->fwname);
++	err = btmtk_setup_firmware(hdev, bdev->data->fwname, mtk_hci_wmt_sync);
+ 	if (err < 0)
+ 		return err;
+ 
+@@ -823,7 +681,7 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+ 	}
+ 
+ 	/* Enable Bluetooth protocol */
+-	wmt_params.op = MTK_WMT_FUNC_CTRL;
++	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+ 	wmt_params.flag = 0;
+ 	wmt_params.dlen = sizeof(param);
+ 	wmt_params.data = &param;
+@@ -891,7 +749,7 @@ static int btmtksdio_shutdown(struct hci_dev *hdev)
+ 	pm_runtime_get_sync(bdev->dev);
+ 
+ 	/* Disable the device */
+-	wmt_params.op = MTK_WMT_FUNC_CTRL;
++	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
+ 	wmt_params.flag = 0;
+ 	wmt_params.dlen = sizeof(param);
+ 	wmt_params.data = &param;
+@@ -1112,5 +970,3 @@ MODULE_AUTHOR("Sean Wang <sean.wang@mediatek.com>");
+ MODULE_DESCRIPTION("MediaTek Bluetooth SDIO driver ver " VERSION);
+ MODULE_VERSION(VERSION);
+ MODULE_LICENSE("GPL");
+-MODULE_FIRMWARE(FIRMWARE_MT7663);
+-MODULE_FIRMWARE(FIRMWARE_MT7668);
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
