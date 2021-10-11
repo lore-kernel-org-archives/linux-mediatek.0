@@ -2,14 +2,14 @@ Return-Path: <SRS0=oOjZ=O7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 41F6EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 09:58:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C4ACFC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 09:58:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C50360F21
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 09:58:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0C50360F21
+	by mail.kernel.org (Postfix) with ESMTPS id 8F3BF60F21
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 09:58:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8F3BF60F21
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,53 +18,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O2QHj2pVRke7sO98E9pcOjCv66Ad8y6MAyJahneOJ/s=; b=rV0svU8q31e0kA
-	4GKBBwLIwcEoBtCakPFz4MkIvp+z4NtdG5C7sSC1OjjYeHAfJWU0WaxX1+Ognp8tsqLSDrOBDZ9qV
-	/3PioYaX0+0GV5AEtVm4iZLJ+VW5k7+L1lQjMiEo1OfOBNBBt9ojF8lVsXr9V9Efpnafy2BwhwwzI
-	nk6GEqm6qb7L+Nx+jcCLmr7qbn/FPX4btKWo+J1+jGpnr7AYaLaFdEjLVy0ZhgmYS8f7Auv8DV3ZF
-	M4loAoGZkTBLJe1Bf7PiGWQJP4/4drCVpbInam+hEULATCN/dqc9q3TZSvNveScAFTkt6Bcw0Grqg
-	uOLoAKMjDG9HpZxsdqwA==;
+	List-Owner; bh=HxkLSd9BqQAbiIjWCzzECqPcvX/Opp9X8R9CvP4RBTo=; b=RYYp1ybAOXZ4bh
+	hANcyDVDpsLZeL/3LHSlDaiLGyn/DPlEr18kp9JG9gXtLwfFHcLETKdZ55CLe10x9mPiGKiDOunZH
+	7QtXboSMzm3HqGVWYg64SP234D0IgKved2uXNYEAAMh1OXF3Hp8F4R8RNvUxd1HyPxMEZCWIl8MVh
+	Z6ihTvDxTqEClk9k/zaUbEB8Eef2+oxxyNO2xSwLXeTEZdTc6Sle8sdufO81Z/jUi2zay6UlaoTJz
+	pYjFTiINe5Mlrg6NxtkK6+YkOtMw7NcUQ9R0GE7dHEcCHNMU09688TqbNCWo2hPm14jIOVNcrcySM
+	FUAgPELZ0WhJ7S5xAx5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mZs4A-008hNG-Jb; Mon, 11 Oct 2021 09:57:54 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1mZs4C-008hOZ-Mw; Mon, 11 Oct 2021 09:57:56 +0000
+Received: from desiato.infradead.org ([90.155.92.199])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mZrtC-008cOB-Bw
+ id 1mZrtL-008cVh-WA
+ for linux-mediatek@bombadil.infradead.org; Mon, 11 Oct 2021 09:46:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+ :References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+ Content-Type:Content-ID:Content-Description;
+ bh=z9T3DHrpRqclJltRnjaNoBzqrtLjfGVZHc3xfLgr+fU=; b=KCDNUPEufXU6ZgysCLx/9IklNU
+ NQJg4B8DqRaRaO2eDNhLfK/kp3vHljEzcmHJMOJX7oqqzaPS8cGUgWSjvlHgDeiyDBCVsk++bBoKj
+ islBveyIHR1IiD5iX8vd7rsd6Tu/G9/YuEQo6ciPfSXbFxaUkCxeK16cCIW2/uzF261Ti3vHjXCIt
+ KMkJBnphBoPq1GCg/32uil03XHsO8JcTLTmJ3IEHQ2UpCsbv/95ZpODSlYjxnBPkXzNjUtdps8sYG
+ iYf371x10sPy8CCijXlL0/ecgP/IGeK0rEkEXFEFMLvY/GFJKv/HBIlrfxvHpUIMDQaT1tVT9x/D0
+ LM1aV0SA==;
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ by desiato.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mZrtF-009Brw-AD
  for linux-mediatek@lists.infradead.org; Mon, 11 Oct 2021 09:46:42 +0000
-Received: by mail-wr1-x435.google.com with SMTP id r18so54248800wrg.6
- for <linux-mediatek@lists.infradead.org>; Mon, 11 Oct 2021 02:46:33 -0700 (PDT)
+Received: by mail-wr1-x429.google.com with SMTP id e3so20590997wrc.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 11 Oct 2021 02:46:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=qeDnF7/0L+8b2rsbo3X+Y/DSsOq81VJxq7sH0PX/jgg=;
- b=tpMOIdGryFo1QjiBcb62qTrgRhnPEdQCHHiiPzoeNs9b4KuW4Aqt4HPekNwSHQLYcf
- AXSmtYzqLDFUvjnktArYfNRsrz/NFDWtp01w6diZ8uNpc/v08optqgv7gw4MIK3zCLtl
- cvob0ZXJVhQczg/+uDjXdm4H61HrB8ideu4MjR+8Mjv3C+DEVdj7HM9+eiOa3g2tLw2Q
- YFaWK2hWMvvbHBpHjUfvoOUT3sBm5PFjfuk9B/JkxQkSJlyg0CIpPxZm2b4QlaZete8p
- g5df52gSEWy7Wz4zjekcIfFtTrXTxX9NkKX9+0qjn4RKmsFjDBOqwzv46PtN8mw6n2xy
- 3kQQ==
+ bh=z9T3DHrpRqclJltRnjaNoBzqrtLjfGVZHc3xfLgr+fU=;
+ b=x9Ahr6RE0g4meU9ViaxZ9FvW9nxt15+fp/B3Wwyrk0KqQQSOQa8Ili5dq5SjyceN5+
+ /2XIFaye1dCzAuOBjllLVmrrraWH6c8VWmBXVTsyh4PH9cPvevq/aMyNfKvOhuYQQBte
+ QnB9Hct1QYsL6XqV/ir4sahuugMVt8BoLc7afWYcOhlYliikbOConJXpIhOrU4iR9+tS
+ tWHqUZvLut+u8OewCNt/OPHw0u1AwLbg6ew8Of12LaxvSntq20KTxjofXzpn+wuM5pWd
+ atzreF56EFQCkW9f3Y0yqZeunCad20A5wrKQZFIpM8+IfOm9zThmpvwdFYQgh+ZLGoVX
+ HP6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=qeDnF7/0L+8b2rsbo3X+Y/DSsOq81VJxq7sH0PX/jgg=;
- b=PeKYv/a13iYhSZn4Lhb009cz3Zbh+zgB4dVsCBO4csJNPRv3HXdYVisfTkxiBrGKfd
- r3caZOgaxvJjZdBSkEYl/eDMEDgojEThim2CYEoX5wJym6Zg0TUwPuo/HsITLnoM8SpO
- VElom+qxVvF8GQvGKU0fenw9Qwb8vEiHXV7YegZAfOh9Ljtaef3/N4hpylF35HLfGaI9
- 1K1klPsiJLC4zhF6arQvORCSZYOeQ/jV7wTQWTbnWxnDgsDzk1IP18bYiNddN39VW1PF
- h4CLrRblR/gLaB8wEZsJr8G/q4a+O005ZVuT/CAXvA85AxRnQfIUT+LsTcF5bDU91tCg
- le7g==
-X-Gm-Message-State: AOAM530qGecB9JUTdDgRX3iluXvfNuYFQeiA4DuAxq5U/KNbkV1u2S5e
- t6JN87LpE/tZD/lljvRYLRudWA==
-X-Google-Smtp-Source: ABdhPJwgS6TG+8TotyLRqb3ziVReox2oJ1Z5bPjobcSaB38Y1fdmvoaxDKzu2Sd/pIdIGFJLH4WQ5g==
-X-Received: by 2002:a1c:1b90:: with SMTP id
- b138mr19886387wmb.160.1633945592564; 
- Mon, 11 Oct 2021 02:46:32 -0700 (PDT)
+ bh=z9T3DHrpRqclJltRnjaNoBzqrtLjfGVZHc3xfLgr+fU=;
+ b=AFxC6l9G/xTClxQWxkjpr4WJc8Kh8wZk6UUBPNDk9oPEcKlVL/PGTd3niiq4wv0m/U
+ Tm0QUsOjX5jkmPylmT4nqaETVzhnmyw/qcDN74YC997rUz0stV//1M2ygnGhIimsbBcn
+ LWZknVev3/FHQGmu12571VgFJgTIX7L6RGK1H6tYzJ1X9TAHOPDGnuhTQ0CDdATorfwK
+ sCSZZrQtKFT24hsteVoN0FO8tkb1t6Zv6pW2f8Mjc4GhN0I+l5jOpf20N7WPNYZclZbT
+ 4mYF4eVOK+8DSZCwvuraa6hBPxL9zOBT/YFv+cDTKzyfvexbeP2DIr6JxNqsHHs5Nb2r
+ BAQg==
+X-Gm-Message-State: AOAM533CvKaUFFzfXaPUkfkacaRgEoDU1hKhoTVyNef/oex/NBa1GLA1
+ 3tpMuApYm/SUluOp77g6tk2FEw==
+X-Google-Smtp-Source: ABdhPJzMb/1dkbkm4y4iQL+t+DUKLcYWglietDqGDs8HLm6XVYnzAxYtF/pP7YiLZM6GzKvSleHN+g==
+X-Received: by 2002:a05:600c:a43:: with SMTP id
+ c3mr19741821wmq.193.1633945594439; 
+ Mon, 11 Oct 2021 02:46:34 -0700 (PDT)
 Received: from blmsp.lan ([2a02:2454:3e6:c900::97e])
- by smtp.gmail.com with ESMTPSA id o8sm21349291wme.38.2021.10.11.02.46.31
+ by smtp.gmail.com with ESMTPSA id o8sm21349291wme.38.2021.10.11.02.46.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Oct 2021 02:46:32 -0700 (PDT)
+ Mon, 11 Oct 2021 02:46:34 -0700 (PDT)
 From: Markus Schneider-Pargmann <msp@baylibre.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
@@ -73,16 +87,16 @@ Cc: Sam Ravnborg <sam@ravnborg.org>, dri-devel@lists.freedesktop.org,
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
  Markus Schneider-Pargmann <msp@baylibre.com>
-Subject: [PATCH v4 3/7] drm/edid: Add cea_sad helpers for freq/length
-Date: Mon, 11 Oct 2021 11:46:20 +0200
-Message-Id: <20211011094624.3416029-4-msp@baylibre.com>
+Subject: [PATCH v4 5/7] drm/mediatek: dpi: Add dpintf support
+Date: Mon, 11 Oct 2021 11:46:22 +0200
+Message-Id: <20211011094624.3416029-6-msp@baylibre.com>
 X-Mailer: git-send-email 2.33.0
 In-Reply-To: <20211011094624.3416029-1-msp@baylibre.com>
 References: <20211011094624.3416029-1-msp@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211011_024634_471061_02B443C6 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20211011_104637_515744_46EDACC8 
+X-CRM114-Status: GOOD (  22.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,152 +113,625 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds two helper functions that extract the frequency and word
-length from a struct cea_sad.
+dpintf is the displayport interface hardware unit. This unit is similar
+to dpi and can reuse most of the code.
 
-For these helper functions new defines are added that help translate the
-'freq' and 'byte2' fields into real numbers.
+This patch adds support for mt8195-dpintf to this dpi driver. Main
+differences are:
+ - Some features/functional components are not available for dpintf
+   which are now excluded from code execution once is_dpintf is set
+ - dpintf can and needs to choose between different clockdividers based
+   on the clockspeed. This is done by choosing a different clock parent.
+ - There are two additional clocks that need to be managed. These are
+   only set for dpintf and will be set to NULL if not supplied. The
+   clk_* calls handle these as normal clocks then.
+ - Some register contents differ slightly between the two components. To
+   work around this I added register bits/masks with a DPINTF_ prefix
+   and use them where different.
+
+Based on a separate driver for dpintf created by
+Jason-JH.Lin <jason-jh.lin@mediatek.com>.
 
 Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 ---
 
 Notes:
-    Changes v2 -> v3:
-    - Add DRM_ prefix to the CEA_SAD defines.
-    
-    Changes v1 -> v2:
-    - Use const struct pointers.
-    - Add a check whether the format is actually uncompressed or not.
+    Changes RFC -> v1:
+    - Remove setting parents and fully rely on the clock tree instead which already
+      models a mux at the important place.
+    - Integrated mtk_dpi dpintf changes into the mediatek drm driver.
 
- drivers/gpu/drm/drm_edid.c | 74 ++++++++++++++++++++++++++++++++++++++
- include/drm/drm_edid.h     | 18 ++++++++--
- 2 files changed, 90 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_dpi.c          | 248 ++++++++++++++++----
+ drivers/gpu/drm/mediatek/mtk_dpi_regs.h     |  12 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |   4 +
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   5 +-
+ include/linux/soc/mediatek/mtk-mmsys.h      |   2 +
+ 6 files changed, 220 insertions(+), 52 deletions(-)
 
-diff --git a/drivers/gpu/drm/drm_edid.c b/drivers/gpu/drm/drm_edid.c
-index 6325877c5fd6..c134803e18db 100644
---- a/drivers/gpu/drm/drm_edid.c
-+++ b/drivers/gpu/drm/drm_edid.c
-@@ -4666,6 +4666,80 @@ int drm_edid_to_speaker_allocation(struct edid *edid, u8 **sadb)
- }
- EXPORT_SYMBOL(drm_edid_to_speaker_allocation);
- 
-+/**
-+ * drm_cea_sad_get_sample_rate - Extract the sample rate from cea_sad
-+ * @sad: Pointer to the cea_sad struct
-+ *
-+ * Extracts the cea_sad frequency field and returns the sample rate in Hz.
-+ *
-+ * Return: Sample rate in Hz or a negative errno if parsing failed.
-+ */
-+int drm_cea_sad_get_sample_rate(const struct cea_sad *sad)
-+{
-+	switch (sad->freq) {
-+	case DRM_CEA_SAD_FREQ_32KHZ:
-+		return 32000;
-+	case DRM_CEA_SAD_FREQ_44KHZ:
-+		return 44100;
-+	case DRM_CEA_SAD_FREQ_48KHZ:
-+		return 48000;
-+	case DRM_CEA_SAD_FREQ_88KHZ:
-+		return 88200;
-+	case DRM_CEA_SAD_FREQ_96KHZ:
-+		return 96000;
-+	case DRM_CEA_SAD_FREQ_176KHZ:
-+		return 176400;
-+	case DRM_CEA_SAD_FREQ_192KHZ:
-+		return 192000;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+EXPORT_SYMBOL(drm_cea_sad_get_sample_rate);
-+
-+static bool drm_cea_sad_is_uncompressed(const struct cea_sad *sad)
-+{
-+	switch (sad->format) {
-+	case HDMI_AUDIO_CODING_TYPE_STREAM:
-+	case HDMI_AUDIO_CODING_TYPE_PCM:
-+		return true;
-+	default:
-+		return false;
-+	}
-+}
-+
-+/**
-+ * drm_cea_sad_get_uncompressed_word_length - Extract word length
-+ * @sad: Pointer to the cea_sad struct
-+ *
-+ * Extracts the cea_sad byte2 field and returns the word length for an
-+ * uncompressed stream.
-+ *
-+ * Note: This function may only be called for uncompressed audio.
-+ *
-+ * Return: Word length in bits or a negative errno if parsing failed.
-+ */
-+int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad)
-+{
-+	if (!drm_cea_sad_is_uncompressed(sad)) {
-+		DRM_WARN("Unable to get the uncompressed word length for a compressed format: %u\n",
-+			 sad->format);
-+		return -EINVAL;
-+	}
-+
-+	switch (sad->byte2) {
-+	case DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT:
-+		return 16;
-+	case DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT:
-+		return 20;
-+	case DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT:
-+		return 24;
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+EXPORT_SYMBOL(drm_cea_sad_get_uncompressed_word_length);
-+
- /**
-  * drm_av_sync_delay - compute the HDMI/DP sink audio-video sync delay
-  * @connector: connector associated with the HDMI/DP sink
-diff --git a/include/drm/drm_edid.h b/include/drm/drm_edid.h
-index deccfd39e6db..9d75df652b17 100644
---- a/include/drm/drm_edid.h
-+++ b/include/drm/drm_edid.h
-@@ -361,12 +361,24 @@ struct edid {
- 
- /* Short Audio Descriptor */
- struct cea_sad {
--	u8 format;
-+	u8 format; /* See HDMI_AUDIO_CODING_TYPE_* */
- 	u8 channels; /* max number of channels - 1 */
--	u8 freq;
-+	u8 freq; /* See CEA_SAD_FREQ_* */
- 	u8 byte2; /* meaning depends on format */
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
+index 4554e2de1430..87961ebf5d35 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+@@ -71,6 +71,8 @@ struct mtk_dpi {
+ 	void __iomem *regs;
+ 	struct device *dev;
+ 	struct clk *engine_clk;
++	struct clk *hf_fmm_clk;
++	struct clk *hf_fdp_clk;
+ 	struct clk *pixel_clk;
+ 	struct clk *tvd_clk;
+ 	int irq;
+@@ -125,6 +127,7 @@ struct mtk_dpi_conf {
+ 	bool edge_sel_en;
+ 	const u32 *output_fmts;
+ 	u32 num_output_fmts;
++	bool is_dpintf;
  };
  
-+#define DRM_CEA_SAD_FREQ_32KHZ  BIT(0)
-+#define DRM_CEA_SAD_FREQ_44KHZ  BIT(1)
-+#define DRM_CEA_SAD_FREQ_48KHZ  BIT(2)
-+#define DRM_CEA_SAD_FREQ_88KHZ  BIT(3)
-+#define DRM_CEA_SAD_FREQ_96KHZ  BIT(4)
-+#define DRM_CEA_SAD_FREQ_176KHZ BIT(5)
-+#define DRM_CEA_SAD_FREQ_192KHZ BIT(6)
-+
-+#define DRM_CEA_SAD_UNCOMPRESSED_WORD_16BIT BIT(0)
-+#define DRM_CEA_SAD_UNCOMPRESSED_WORD_20BIT BIT(1)
-+#define DRM_CEA_SAD_UNCOMPRESSED_WORD_24BIT BIT(2)
-+
- struct drm_encoder;
- struct drm_connector;
- struct drm_connector_state;
-@@ -374,6 +386,8 @@ struct drm_display_mode;
+ static void mtk_dpi_mask(struct mtk_dpi *dpi, u32 offset, u32 val, u32 mask)
+@@ -153,30 +156,52 @@ static void mtk_dpi_disable(struct mtk_dpi *dpi)
+ static void mtk_dpi_config_hsync(struct mtk_dpi *dpi,
+ 				 struct mtk_dpi_sync_param *sync)
+ {
+-	mtk_dpi_mask(dpi, DPI_TGEN_HWIDTH,
+-		     sync->sync_width << HPW, HPW_MASK);
+-	mtk_dpi_mask(dpi, DPI_TGEN_HPORCH,
+-		     sync->back_porch << HBP, HBP_MASK);
+-	mtk_dpi_mask(dpi, DPI_TGEN_HPORCH, sync->front_porch << HFP,
+-		     HFP_MASK);
++	if (dpi->conf->is_dpintf) {
++		mtk_dpi_mask(dpi, DPI_TGEN_HWIDTH,
++			     sync->sync_width << HPW, DPINTF_HPW_MASK);
++		mtk_dpi_mask(dpi, DPI_TGEN_HPORCH,
++			     sync->back_porch << HBP, DPINTF_HBP_MASK);
++		mtk_dpi_mask(dpi, DPI_TGEN_HPORCH, sync->front_porch << HFP,
++			     DPINTF_HFP_MASK);
++	} else {
++		mtk_dpi_mask(dpi, DPI_TGEN_HWIDTH,
++			     sync->sync_width << HPW, HPW_MASK);
++		mtk_dpi_mask(dpi, DPI_TGEN_HPORCH,
++			     sync->back_porch << HBP, HBP_MASK);
++		mtk_dpi_mask(dpi, DPI_TGEN_HPORCH, sync->front_porch << HFP,
++			     HFP_MASK);
++	}
+ }
  
- int drm_edid_to_sad(struct edid *edid, struct cea_sad **sads);
- int drm_edid_to_speaker_allocation(struct edid *edid, u8 **sadb);
-+int drm_cea_sad_get_sample_rate(const struct cea_sad *sad);
-+int drm_cea_sad_get_uncompressed_word_length(const struct cea_sad *sad);
- int drm_av_sync_delay(struct drm_connector *connector,
- 		      const struct drm_display_mode *mode);
+ static void mtk_dpi_config_vsync(struct mtk_dpi *dpi,
+ 				 struct mtk_dpi_sync_param *sync,
+ 				 u32 width_addr, u32 porch_addr)
+ {
+-	mtk_dpi_mask(dpi, width_addr,
+-		     sync->sync_width << VSYNC_WIDTH_SHIFT,
+-		     VSYNC_WIDTH_MASK);
+ 	mtk_dpi_mask(dpi, width_addr,
+ 		     sync->shift_half_line << VSYNC_HALF_LINE_SHIFT,
+ 		     VSYNC_HALF_LINE_MASK);
+-	mtk_dpi_mask(dpi, porch_addr,
+-		     sync->back_porch << VSYNC_BACK_PORCH_SHIFT,
+-		     VSYNC_BACK_PORCH_MASK);
+-	mtk_dpi_mask(dpi, porch_addr,
+-		     sync->front_porch << VSYNC_FRONT_PORCH_SHIFT,
+-		     VSYNC_FRONT_PORCH_MASK);
++
++	if (dpi->conf->is_dpintf) {
++		mtk_dpi_mask(dpi, width_addr,
++			     sync->sync_width << VSYNC_WIDTH_SHIFT,
++			     DPINTF_VSYNC_WIDTH_MASK);
++		mtk_dpi_mask(dpi, porch_addr,
++			     sync->back_porch << VSYNC_BACK_PORCH_SHIFT,
++			     DPINTF_VSYNC_BACK_PORCH_MASK);
++		mtk_dpi_mask(dpi, porch_addr,
++			     sync->front_porch << VSYNC_FRONT_PORCH_SHIFT,
++			     DPINTF_VSYNC_FRONT_PORCH_MASK);
++	} else {
++		mtk_dpi_mask(dpi, width_addr,
++			     sync->sync_width << VSYNC_WIDTH_SHIFT,
++			     VSYNC_WIDTH_MASK);
++		mtk_dpi_mask(dpi, porch_addr,
++			     sync->back_porch << VSYNC_BACK_PORCH_SHIFT,
++			     VSYNC_BACK_PORCH_MASK);
++		mtk_dpi_mask(dpi, porch_addr,
++			     sync->front_porch << VSYNC_FRONT_PORCH_SHIFT,
++			     VSYNC_FRONT_PORCH_MASK);
++	}
+ }
  
+ static void mtk_dpi_config_vsync_lodd(struct mtk_dpi *dpi,
+@@ -210,13 +235,20 @@ static void mtk_dpi_config_pol(struct mtk_dpi *dpi,
+ 			       struct mtk_dpi_polarities *dpi_pol)
+ {
+ 	unsigned int pol;
++	unsigned int mask;
+ 
+-	pol = (dpi_pol->ck_pol == MTK_DPI_POLARITY_RISING ? 0 : CK_POL) |
+-	      (dpi_pol->de_pol == MTK_DPI_POLARITY_RISING ? 0 : DE_POL) |
+-	      (dpi_pol->hsync_pol == MTK_DPI_POLARITY_RISING ? 0 : HSYNC_POL) |
++	mask = HSYNC_POL | VSYNC_POL;
++	pol = (dpi_pol->hsync_pol == MTK_DPI_POLARITY_RISING ? 0 : HSYNC_POL) |
+ 	      (dpi_pol->vsync_pol == MTK_DPI_POLARITY_RISING ? 0 : VSYNC_POL);
+-	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, pol,
+-		     CK_POL | DE_POL | HSYNC_POL | VSYNC_POL);
++	if (!dpi->conf->is_dpintf) {
++		mask |= CK_POL | DE_POL;
++		pol |= (dpi_pol->ck_pol == MTK_DPI_POLARITY_RISING ?
++			0 : CK_POL) |
++		       (dpi_pol->de_pol == MTK_DPI_POLARITY_RISING ?
++			0 : DE_POL);
++	}
++
++	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, pol, mask);
+ }
+ 
+ static void mtk_dpi_config_3d(struct mtk_dpi *dpi, bool en_3d)
+@@ -231,8 +263,13 @@ static void mtk_dpi_config_interface(struct mtk_dpi *dpi, bool inter)
+ 
+ static void mtk_dpi_config_fb_size(struct mtk_dpi *dpi, u32 width, u32 height)
+ {
+-	mtk_dpi_mask(dpi, DPI_SIZE, width << HSIZE, HSIZE_MASK);
+-	mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE, VSIZE_MASK);
++	if (dpi->conf->is_dpintf) {
++		mtk_dpi_mask(dpi, DPI_SIZE, width << HSIZE, DPINTF_HSIZE_MASK);
++		mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE, DPINTF_VSIZE_MASK);
++	} else {
++		mtk_dpi_mask(dpi, DPI_SIZE, width << HSIZE, HSIZE_MASK);
++		mtk_dpi_mask(dpi, DPI_SIZE, height << VSIZE, VSIZE_MASK);
++	}
+ }
+ 
+ static void mtk_dpi_config_channel_limit(struct mtk_dpi *dpi,
+@@ -332,12 +369,21 @@ static void mtk_dpi_config_channel_swap(struct mtk_dpi *dpi,
+ 		break;
+ 	}
+ 
+-	mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << CH_SWAP, CH_SWAP_MASK);
++	if (dpi->conf->is_dpintf)
++		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << DPINTF_CH_SWAP,
++			     DPINTF_CH_SWAP_MASK);
++	else
++		mtk_dpi_mask(dpi, DPI_OUTPUT_SETTING, val << CH_SWAP,
++			     CH_SWAP_MASK);
+ }
+ 
+ static void mtk_dpi_config_yuv422_enable(struct mtk_dpi *dpi, bool enable)
+ {
+-	mtk_dpi_mask(dpi, DPI_CON, enable ? YUV422_EN : 0, YUV422_EN);
++	if (dpi->conf->is_dpintf)
++		mtk_dpi_mask(dpi, DPI_CON, enable ? DPINTF_YUV422_EN : 0,
++			     DPINTF_YUV422_EN);
++	else
++		mtk_dpi_mask(dpi, DPI_CON, enable ? YUV422_EN : 0, YUV422_EN);
+ }
+ 
+ static void mtk_dpi_config_csc_enable(struct mtk_dpi *dpi, bool enable)
+@@ -367,19 +413,25 @@ static void mtk_dpi_config_color_format(struct mtk_dpi *dpi,
+ 	if ((format == MTK_DPI_COLOR_FORMAT_YCBCR_444) ||
+ 	    (format == MTK_DPI_COLOR_FORMAT_YCBCR_444_FULL)) {
+ 		mtk_dpi_config_yuv422_enable(dpi, false);
+-		mtk_dpi_config_csc_enable(dpi, true);
+-		mtk_dpi_config_swap_input(dpi, false);
++		if (!dpi->conf->is_dpintf) {
++			mtk_dpi_config_csc_enable(dpi, true);
++			mtk_dpi_config_swap_input(dpi, false);
++		}
+ 		mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_BGR);
+ 	} else if ((format == MTK_DPI_COLOR_FORMAT_YCBCR_422) ||
+ 		   (format == MTK_DPI_COLOR_FORMAT_YCBCR_422_FULL)) {
+ 		mtk_dpi_config_yuv422_enable(dpi, true);
+-		mtk_dpi_config_csc_enable(dpi, true);
+-		mtk_dpi_config_swap_input(dpi, true);
++		if (!dpi->conf->is_dpintf) {
++			mtk_dpi_config_csc_enable(dpi, true);
++			mtk_dpi_config_swap_input(dpi, true);
++		}
+ 		mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
+ 	} else {
+ 		mtk_dpi_config_yuv422_enable(dpi, false);
+-		mtk_dpi_config_csc_enable(dpi, false);
+-		mtk_dpi_config_swap_input(dpi, false);
++		if (!dpi->conf->is_dpintf) {
++			mtk_dpi_config_csc_enable(dpi, false);
++			mtk_dpi_config_swap_input(dpi, false);
++		}
+ 		mtk_dpi_config_channel_swap(dpi, MTK_DPI_OUT_CHANNEL_SWAP_RGB);
+ 	}
+ }
+@@ -410,6 +462,8 @@ static void mtk_dpi_power_off(struct mtk_dpi *dpi)
+ 		pinctrl_select_state(dpi->pinctrl, dpi->pins_gpio);
+ 
+ 	mtk_dpi_disable(dpi);
++	clk_disable_unprepare(dpi->hf_fdp_clk);
++	clk_disable_unprepare(dpi->hf_fmm_clk);
+ 	clk_disable_unprepare(dpi->pixel_clk);
+ 	clk_disable_unprepare(dpi->engine_clk);
+ }
+@@ -433,12 +487,28 @@ static int mtk_dpi_power_on(struct mtk_dpi *dpi)
+ 		goto err_pixel;
+ 	}
+ 
++	ret = clk_prepare_enable(dpi->hf_fmm_clk);
++	if (ret) {
++		dev_err(dpi->dev, "Failed to enable hf_fmm clock: %d\n", ret);
++		goto err_hf_fmm;
++	}
++
++	ret = clk_prepare_enable(dpi->hf_fdp_clk);
++	if (ret) {
++		dev_err(dpi->dev, "Failed to enable hf_fdp clock: %d\n", ret);
++		goto err_hf_fdp;
++	}
++
+ 	if (dpi->pinctrl && dpi->pins_dpi)
+ 		pinctrl_select_state(dpi->pinctrl, dpi->pins_dpi);
+ 
+ 	mtk_dpi_enable(dpi);
+ 	return 0;
+ 
++err_hf_fdp:
++	clk_disable_unprepare(dpi->hf_fmm_clk);
++err_hf_fmm:
++	clk_disable_unprepare(dpi->pixel_clk);
+ err_pixel:
+ 	clk_disable_unprepare(dpi->engine_clk);
+ err_refcount:
+@@ -472,22 +542,30 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	pll_rate = clk_get_rate(dpi->tvd_clk);
+ 
+ 	vm.pixelclock = pll_rate / factor;
+-	if ((dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE) ||
+-	    (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE))
++	if (dpi->conf->is_dpintf)
++		clk_set_rate(dpi->pixel_clk, vm.pixelclock / 4);
++	else if ((dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_LE) ||
++		 (dpi->output_fmt == MEDIA_BUS_FMT_RGB888_2X12_BE))
+ 		clk_set_rate(dpi->pixel_clk, vm.pixelclock * 2);
+ 	else
+ 		clk_set_rate(dpi->pixel_clk, vm.pixelclock);
+ 
+-
+ 	vm.pixelclock = clk_get_rate(dpi->pixel_clk);
+ 
+ 	dev_dbg(dpi->dev, "Got  PLL %lu Hz, pixel clock %lu Hz\n",
+ 		pll_rate, vm.pixelclock);
+ 
+-	limit.c_bottom = 0x0010;
+-	limit.c_top = 0x0FE0;
+-	limit.y_bottom = 0x0010;
+-	limit.y_top = 0x0FE0;
++	if (dpi->conf->is_dpintf) {
++		limit.c_bottom = 0x0000;
++		limit.c_top = 0xFFF;
++		limit.y_bottom = 0x0000;
++		limit.y_top = 0xFFF;
++	} else {
++		limit.c_bottom = 0x0010;
++		limit.c_top = 0x0FE0;
++		limit.y_bottom = 0x0010;
++		limit.y_top = 0x0FE0;
++	}
+ 
+ 	dpi_pol.ck_pol = MTK_DPI_POLARITY_FALLING;
+ 	dpi_pol.de_pol = MTK_DPI_POLARITY_RISING;
+@@ -495,9 +573,15 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+ 	dpi_pol.vsync_pol = vm.flags & DISPLAY_FLAGS_VSYNC_HIGH ?
+ 			    MTK_DPI_POLARITY_FALLING : MTK_DPI_POLARITY_RISING;
+-	hsync.sync_width = vm.hsync_len;
+-	hsync.back_porch = vm.hback_porch;
+-	hsync.front_porch = vm.hfront_porch;
++	if (dpi->conf->is_dpintf) {
++		hsync.sync_width = vm.hsync_len / 4;
++		hsync.back_porch = vm.hback_porch / 4;
++		hsync.front_porch = vm.hfront_porch / 4;
++	} else {
++		hsync.sync_width = vm.hsync_len;
++		hsync.back_porch = vm.hback_porch;
++		hsync.front_porch = vm.hfront_porch;
++	}
+ 	hsync.shift_half_line = false;
+ 	vsync_lodd.sync_width = vm.vsync_len;
+ 	vsync_lodd.back_porch = vm.vback_porch;
+@@ -539,11 +623,16 @@ static int mtk_dpi_set_display_mode(struct mtk_dpi *dpi,
+ 	mtk_dpi_config_channel_limit(dpi, &limit);
+ 	mtk_dpi_config_bit_num(dpi, dpi->bit_num);
+ 	mtk_dpi_config_channel_swap(dpi, dpi->channel_swap);
+-	mtk_dpi_config_yc_map(dpi, dpi->yc_map);
+ 	mtk_dpi_config_color_format(dpi, dpi->color_format);
+-	mtk_dpi_config_2n_h_fre(dpi);
+-	mtk_dpi_dual_edge(dpi);
+-	mtk_dpi_config_disable_edge(dpi);
++	if (dpi->conf->is_dpintf) {
++		mtk_dpi_mask(dpi, DPI_CON, DPINTF_INPUT_2P_EN,
++			     DPINTF_INPUT_2P_EN);
++	} else {
++		mtk_dpi_config_yc_map(dpi, dpi->yc_map);
++		mtk_dpi_config_2n_h_fre(dpi);
++		mtk_dpi_dual_edge(dpi);
++		mtk_dpi_config_disable_edge(dpi);
++	}
+ 	mtk_dpi_sw_reset(dpi, false);
+ 
+ 	return 0;
+@@ -687,6 +776,17 @@ static const struct drm_bridge_funcs mtk_dpi_bridge_funcs = {
+ 	.atomic_reset = drm_atomic_helper_bridge_reset,
+ };
+ 
++static const struct drm_bridge_funcs mtk_dpintf_bridge_funcs = {
++	.attach = mtk_dpi_bridge_attach,
++	.mode_set = mtk_dpi_bridge_mode_set,
++	.disable = mtk_dpi_bridge_disable,
++	.enable = mtk_dpi_bridge_enable,
++	.atomic_check = mtk_dpi_bridge_atomic_check,
++	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
++	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
++	.atomic_reset = drm_atomic_helper_bridge_reset,
++};
++
+ void mtk_dpi_start(struct device *dev)
+ {
+ 	struct mtk_dpi *dpi = dev_get_drvdata(dev);
+@@ -781,6 +881,16 @@ static unsigned int mt8183_calculate_factor(int clock)
+ 		return 2;
+ }
+ 
++static unsigned int mt8195_dpintf_calculate_factor(int clock)
++{
++	if (clock < 70000)
++		return 4;
++	else if (clock < 200000)
++		return 2;
++	else
++		return 1;
++}
++
+ static const u32 mt8173_output_fmts[] = {
+ 	MEDIA_BUS_FMT_RGB888_1X24,
+ };
+@@ -796,6 +906,7 @@ static const struct mtk_dpi_conf mt8173_conf = {
+ 	.max_clock_khz = 300000,
+ 	.output_fmts = mt8173_output_fmts,
+ 	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
++	.is_dpintf = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt2701_conf = {
+@@ -805,6 +916,7 @@ static const struct mtk_dpi_conf mt2701_conf = {
+ 	.max_clock_khz = 150000,
+ 	.output_fmts = mt8173_output_fmts,
+ 	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
++	.is_dpintf = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt8183_conf = {
+@@ -813,6 +925,7 @@ static const struct mtk_dpi_conf mt8183_conf = {
+ 	.max_clock_khz = 100000,
+ 	.output_fmts = mt8183_output_fmts,
+ 	.num_output_fmts = ARRAY_SIZE(mt8183_output_fmts),
++	.is_dpintf = false,
+ };
+ 
+ static const struct mtk_dpi_conf mt8192_conf = {
+@@ -821,6 +934,12 @@ static const struct mtk_dpi_conf mt8192_conf = {
+ 	.max_clock_khz = 150000,
+ 	.output_fmts = mt8173_output_fmts,
+ 	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
++	.is_dpintf = false,
++};
++
++static const struct mtk_dpi_conf mt8195_dpintf_conf = {
++	.cal_factor = mt8195_dpintf_calculate_factor,
++	.is_dpintf = true,
+ };
+ 
+ static int mtk_dpi_probe(struct platform_device *pdev)
+@@ -866,13 +985,16 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	dpi->engine_clk = devm_clk_get(dev, "engine");
+-	if (IS_ERR(dpi->engine_clk)) {
+-		ret = PTR_ERR(dpi->engine_clk);
+-		if (ret != -EPROBE_DEFER)
+-			dev_err(dev, "Failed to get engine clock: %d\n", ret);
++	if (!dpi->conf->is_dpintf) {
++		dpi->engine_clk = devm_clk_get(dev, "engine");
++		if (IS_ERR(dpi->engine_clk)) {
++			ret = PTR_ERR(dpi->engine_clk);
++			if (ret != -EPROBE_DEFER)
++				dev_err(dev, "Failed to get engine clock: %d\n",
++					ret);
+ 
+-		return ret;
++			return ret;
++		}
+ 	}
+ 
+ 	dpi->pixel_clk = devm_clk_get(dev, "pixel");
+@@ -893,6 +1015,24 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
++	dpi->hf_fmm_clk = devm_clk_get_optional(dev, "hf_fmm");
++	if (IS_ERR(dpi->hf_fmm_clk)) {
++		ret = PTR_ERR(dpi->hf_fmm_clk);
++		if (ret != -EPROBE_DEFER)
++			dev_err(dev, "Failed to get hf_fmm clock: %d\n", ret);
++
++		return ret;
++	}
++
++	dpi->hf_fdp_clk = devm_clk_get_optional(dev, "hf_fdp");
++	if (IS_ERR(dpi->hf_fdp_clk)) {
++		ret = PTR_ERR(dpi->hf_fdp_clk);
++		if (ret != -EPROBE_DEFER)
++			dev_err(dev, "Failed to get hf_fdp clock: %d\n", ret);
++
++		return ret;
++	}
++
+ 	dpi->irq = platform_get_irq(pdev, 0);
+ 	if (dpi->irq <= 0)
+ 		return -EINVAL;
+@@ -906,7 +1046,10 @@ static int mtk_dpi_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, dpi);
+ 
+-	dpi->bridge.funcs = &mtk_dpi_bridge_funcs;
++	if (dpi->conf->is_dpintf)
++		dpi->bridge.funcs = &mtk_dpintf_bridge_funcs;
++	else
++		dpi->bridge.funcs = &mtk_dpi_bridge_funcs;
+ 	dpi->bridge.of_node = dev->of_node;
+ 	dpi->bridge.type = DRM_MODE_CONNECTOR_DPI;
+ 
+@@ -945,6 +1088,9 @@ static const struct of_device_id mtk_dpi_of_ids[] = {
+ 	{ .compatible = "mediatek,mt8192-dpi",
+ 	  .data = &mt8192_conf,
+ 	},
++	{ .compatible = "mediatek,mt8195-dpintf",
++	  .data = &mt8195_dpintf_conf,
++	},
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, mtk_dpi_of_ids);
+diff --git a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+index 3a02fabe1662..72efe6ee2584 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
++++ b/drivers/gpu/drm/mediatek/mtk_dpi_regs.h
+@@ -40,10 +40,14 @@
+ #define FAKE_DE_LEVEN			BIT(21)
+ #define FAKE_DE_RODD			BIT(22)
+ #define FAKE_DE_REVEN			BIT(23)
++#define DPINTF_YUV422_EN		BIT(24)
++#define DPINTF_INPUT_2P_EN		BIT(29)
+ 
+ #define DPI_OUTPUT_SETTING	0x14
+ #define CH_SWAP				0
++#define DPINTF_CH_SWAP			BIT(1)
+ #define CH_SWAP_MASK			(0x7 << 0)
++#define DPINTF_CH_SWAP_MASK		(0x7 << 1)
+ #define SWAP_RGB			0x00
+ #define SWAP_GBR			0x01
+ #define SWAP_BRG			0x02
+@@ -80,8 +84,10 @@
+ #define DPI_SIZE		0x18
+ #define HSIZE				0
+ #define HSIZE_MASK			(0x1FFF << 0)
++#define DPINTF_HSIZE_MASK		(0xFFFF << 0)
+ #define VSIZE				16
+ #define VSIZE_MASK			(0x1FFF << 16)
++#define DPINTF_VSIZE_MASK		(0xFFFF << 16)
+ 
+ #define DPI_DDR_SETTING		0x1C
+ #define DDR_EN				BIT(0)
+@@ -93,24 +99,30 @@
+ #define DPI_TGEN_HWIDTH		0x20
+ #define HPW				0
+ #define HPW_MASK			(0xFFF << 0)
++#define DPINTF_HPW_MASK			(0xFFFF << 0)
+ 
+ #define DPI_TGEN_HPORCH		0x24
+ #define HBP				0
+ #define HBP_MASK			(0xFFF << 0)
++#define DPINTF_HBP_MASK			(0xFFFF << 0)
+ #define HFP				16
+ #define HFP_MASK			(0xFFF << 16)
++#define DPINTF_HFP_MASK			(0xFFFF << 16)
+ 
+ #define DPI_TGEN_VWIDTH		0x28
+ #define DPI_TGEN_VPORCH		0x2C
+ 
+ #define VSYNC_WIDTH_SHIFT		0
+ #define VSYNC_WIDTH_MASK		(0xFFF << 0)
++#define DPINTF_VSYNC_WIDTH_MASK		(0xFFFF << 0)
+ #define VSYNC_HALF_LINE_SHIFT		16
+ #define VSYNC_HALF_LINE_MASK		BIT(16)
+ #define VSYNC_BACK_PORCH_SHIFT		0
+ #define VSYNC_BACK_PORCH_MASK		(0xFFF << 0)
++#define DPINTF_VSYNC_BACK_PORCH_MASK	(0xFFFF << 0)
+ #define VSYNC_FRONT_PORCH_SHIFT		16
+ #define VSYNC_FRONT_PORCH_MASK		(0xFFF << 16)
++#define DPINTF_VSYNC_FRONT_PORCH_MASK	(0xFFFF << 16)
+ 
+ #define DPI_BG_HCNTL		0x30
+ #define BG_RIGHT			(0x1FFF << 0)
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+index 99cbf44463e4..da9e059312a5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
+@@ -317,6 +317,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
+ 	[MTK_DISP_UFOE] = "ufoe",
+ 	[MTK_DSI] = "dsi",
+ 	[MTK_DPI] = "dpi",
++	[MTK_DP_INTF] = "dp-intf",
+ 	[MTK_DISP_PWM] = "pwm",
+ 	[MTK_DISP_MUTEX] = "mutex",
+ 	[MTK_DISP_OD] = "od",
+@@ -339,6 +340,8 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DITHER]	= { MTK_DISP_DITHER,	0, &ddp_dither },
+ 	[DDP_COMPONENT_DPI0]	= { MTK_DPI,		0, &ddp_dpi },
+ 	[DDP_COMPONENT_DPI1]	= { MTK_DPI,		1, &ddp_dpi },
++	[DDP_COMPONENT_DP_INTF0]= { MTK_DP_INTF,	0, &ddp_dpi },
++	[DDP_COMPONENT_DP_INTF1]= { MTK_DP_INTF,	1, &ddp_dpi },
+ 	[DDP_COMPONENT_DSI0]	= { MTK_DSI,		0, &ddp_dsi },
+ 	[DDP_COMPONENT_DSI1]	= { MTK_DSI,		1, &ddp_dsi },
+ 	[DDP_COMPONENT_DSI2]	= { MTK_DSI,		2, &ddp_dsi },
+@@ -476,6 +479,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ 	    type == MTK_DISP_COLOR ||
+ 	    type == MTK_DISP_GAMMA ||
+ 	    type == MTK_DPI ||
++	    type == MTK_DP_INTF ||
+ 	    type == MTK_DSI ||
+ 	    type == MTK_DISP_OVL ||
+ 	    type == MTK_DISP_OVL_2L ||
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+index bb914d976cf5..ee9d853cfa1c 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
+@@ -30,6 +30,7 @@ enum mtk_ddp_comp_type {
+ 	MTK_DISP_UFOE,
+ 	MTK_DSI,
+ 	MTK_DPI,
++	MTK_DP_INTF,
+ 	MTK_DISP_PWM,
+ 	MTK_DISP_MUTEX,
+ 	MTK_DISP_OD,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index aec39724ebeb..1ff4e31c8634 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -459,6 +459,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
+ 	  .data = (void *)MTK_DPI },
+ 	{ .compatible = "mediatek,mt8183-dpi",
+ 	  .data = (void *)MTK_DPI },
++	{ .compatible = "mediatek,mt8195-dpintf",
++	  .data = (void *)MTK_DP_INTF },
+ 	{ .compatible = "mediatek,mt2701-disp-mutex",
+ 	  .data = (void *)MTK_DISP_MUTEX },
+ 	{ .compatible = "mediatek,mt2712-disp-mutex",
+@@ -569,7 +571,8 @@ static int mtk_drm_probe(struct platform_device *pdev)
+ 		    comp_type == MTK_DISP_OVL_2L ||
+ 		    comp_type == MTK_DISP_RDMA ||
+ 		    comp_type == MTK_DSI ||
+-		    comp_type == MTK_DPI) {
++		    comp_type == MTK_DPI ||
++		    comp_type == MTK_DP_INTF) {
+ 			dev_info(dev, "Adding component match for %pOF\n",
+ 				 node);
+ 			drm_of_component_match_add(dev, &match, compare_of,
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 2228bf6133da..920e19968f38 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -19,6 +19,8 @@ enum mtk_ddp_comp_id {
+ 	DDP_COMPONENT_DITHER,
+ 	DDP_COMPONENT_DPI0,
+ 	DDP_COMPONENT_DPI1,
++	DDP_COMPONENT_DP_INTF0,
++	DDP_COMPONENT_DP_INTF1,
+ 	DDP_COMPONENT_DSI0,
+ 	DDP_COMPONENT_DSI1,
+ 	DDP_COMPONENT_DSI2,
 -- 
 2.33.0
 
