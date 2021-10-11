@@ -2,68 +2,75 @@ Return-Path: <SRS0=oOjZ=O7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2EE95C43217
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 10:57:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2033CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 11:43:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F170B60C4B
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 10:57:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F170B60C4B
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=the-dreams.de
+	by mail.kernel.org (Postfix) with ESMTPS id B767460F21
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 11:43:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B767460F21
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W9fKtNpvUqU7yjW1Wyrr1RYZOB9CPRjIybzEmcVvSSs=; b=PohO4Zb0T+ZV9nwgOX3pL/FLAd
-	BrSxImGYAP8M+nLdlaFj4qmUGdrAmU0/Y+JusiiI+zOyMALSr/IzLST7+dDFy/BHunI9aiw4kki4R
-	FlTW3l/df7zAMrMjA/rUvi4Ht2inV+Oo2g5RYNVpxP2TdDTZWnVBq8wm8jXOhYGVIdGqJmyHxlVh5
-	/P+yu0917B7nz5tJL1Uzwjd/gJNeYWMfsXaSIfUktf3Oe0MH1wMOCCjMXsQE132EZIxCgqLkHSVIf
-	NhCHi6t5lysjjLTsMVNh7ieBkUdNq49jgy+8Tq0zSfGvhjjlBltTffgsUYNmdsmvQ31auBDbTal8i
-	6udz4gsg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=y8uYFSK0NjVPSC3ekgrycZzt1EuS0LS710Q+NZRL76Q=; b=F/6W/SRBXJlA0C
+	Ic0wX3Q1yCbO9P5zEwqRMnTL+LWUq4xsJwh7eRNNKz7x+BUPB/X3+lC8I7mlpvT8dRjP99oP0EMYJ
+	usCY4k+4/mwBQmXgUHgvxXlqMTMuHI/E2kBbK5vbnSsTb4oK4V3z4TfMF2qq0lQpvCPdd+790lVRG
+	R1lQRgxk72VMSFQOmok8T8ih0iX9QoTG8/CF72MStUIVFkQX1wrkLQMqfDGSxUrm1Zr+GigFRTAXb
+	qxVHbObzzpJss7YeVicS6t+Ve3iKtcrWUBjvAZ0p0dDwg+PK0ObbOAEZ24R/HRhOn1o3z7pboWOQG
+	O+qMokNT54JQKTuWFQQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mZszN-008vyC-4A; Mon, 11 Oct 2021 10:57:01 +0000
-Received: from sauhun.de ([88.99.104.3] helo=pokefinder.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mZsz9-008vuv-40; Mon, 11 Oct 2021 10:56:48 +0000
-Received: from localhost (p54b3315a.dip0.t-ipconnect.de [84.179.49.90])
- by pokefinder.org (Postfix) with ESMTPSA id 45CB42C00A6;
- Mon, 11 Oct 2021 12:56:46 +0200 (CEST)
-Date: Mon, 11 Oct 2021 12:56:45 +0200
-From: Wolfram Sang <wsa@the-dreams.de>
-To: Kewei Xu <kewei.xu@mediatek.com>
-Cc: matthias.bgg@gmail.com, robh+dt@kernel.org, linux-i2c@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
- qii.wang@mediatek.com, liguo.zhang@mediatek.com,
- caiyu.chen@mediatek.com, ot_daolong.zhu@mediatek.com,
- yuhan.wei@mediatek.com
-Subject: Re: [PATCH v7 6/7] i2c: mediatek: Isolate speed setting via dts for
- special devices
-Message-ID: <YWQYbaTIhud2QHNP@kunai>
-Mail-Followup-To: Wolfram Sang <wsa@the-dreams.de>,
- Kewei Xu <kewei.xu@mediatek.com>, matthias.bgg@gmail.com,
- robh+dt@kernel.org, linux-i2c@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, leilk.liu@mediatek.com,
- qii.wang@mediatek.com, liguo.zhang@mediatek.com,
- caiyu.chen@mediatek.com, ot_daolong.zhu@mediatek.com,
- yuhan.wei@mediatek.com
-References: <20210917101416.20760-1-kewei.xu@mediatek.com>
- <20210917101416.20760-7-kewei.xu@mediatek.com>
- <YVf+83LdUEPjoLdI@kunai>
- <1891acec7f5c417f62081a8b10249b265df7ea62.camel@mediatek.com>
+	id 1mZtib-0099xd-Fh; Mon, 11 Oct 2021 11:43:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mZtWp-0095Kc-Dt; Mon, 11 Oct 2021 11:31:38 +0000
+X-UUID: 21f388f8d5cf4898897496b2343afc0d-20211011
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=bIy5c9xV7EHZtVKmnOhK+ZxQ+MVAnoFanpY5LNLZGpY=; 
+ b=i8FQGws4ldDfnK7jemZb2mTTiaD7H55Wm5fOBA8NhDMlnfbeo2Ay5iP1elazqfM+Rbecl++5P6YyyOVsfk7CcRc1VbZza7/WEdWBbU5w7Bjb86hXYAVS9IjjN6h+jMKozZZVi1e7ZxOUwrfWphzGEZxGSa7V1EVReF1wOFxet4Q=;
+X-UUID: 21f388f8d5cf4898897496b2343afc0d-20211011
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xiangsheng.hou@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1411249357; Mon, 11 Oct 2021 04:31:29 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 11 Oct 2021 04:31:27 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 11 Oct 2021 19:31:26 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 11 Oct 2021 19:31:25 +0800
+Message-ID: <cb200da61b942d93a272f3391f756c493cb5a342.camel@mediatek.com>
+Subject: Re: [RFC,v1 0/4] Add a driver for Mediatek SPI Nand controller
+From: xiangsheng.hou <xiangsheng.hou@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+CC: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
+ <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
+ <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
+ <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
+ <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
+Date: Mon, 11 Oct 2021 19:31:28 +0800
+In-Reply-To: <20211008112045.11e8d148@xps13>
+References: <20210927053629.17847-1-xiangsheng.hou@mediatek.com>
+ <20211008112045.11e8d148@xps13>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <1891acec7f5c417f62081a8b10249b265df7ea62.camel@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211011_035647_334812_9FBC8B93 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20211011_043136_924133_993A1DA5 
+X-CRM114-Status: GOOD (  26.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,77 +82,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7897011480295589297=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Miquel,
 
---===============7897011480295589297==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="VEgwt+bxKre9p0ta"
-Content-Disposition: inline
+On Fri, 2021-10-08 at 11:20 +0200, Miquel Raynal wrote:
+> Hello,
+> 
+> xiangsheng.hou@mediatek.com wrote on Mon, 27 Sep 2021 13:36:25 +0800:
+> 
+> > Add a driver for Mediatek SPI Nand controller
+> > 
+> > Mediatek SPI Nand controller cosists of two parts: on-host HW ECC
+> > and
+> > snfi(stand for spi nand flash interface). They can cowork with high
+> > performance which called ECC nfi mode. The nfi stand for nand flash
+> > interfacei(snfi a one part of nfi) which can support SPI Nand flash
+> > and raw nand flash.
+> > 
+> > However, the snfi driver in spi subsytem need to be aware of nand
+> > parameter(page/spare size) and ecc status(enable/disable) when work
+> > at ECC nfi mode. The snfi driver in spi subsystem seems difficult
+> > to
+> > know these.
+> > 
+> > Therefore, consider two ways to let snfi can get these information.
+> > The RFC patch send to review whether they are suitable and which
+> > solution maybe better.
+> > 
+> 
+> I've looked at both versions that you provided and I thought about a
+> number of things that cannot be done like this:
+> - I believe the snfi is a regular SPI controller. I will let Mark
+>   confirm but I do not think we want to start writing SPI-NAND
+>   controllers. Instead we write SPI controllers and we provide SPI-
+> mem
+>   operations (we've explained this in a previous ELC, the video is
+>   available on YouTube).
 
+The snfi controller can support multiple SPI protocols, which can
+support other SPI device in theory. However, the snfi need to know nand
+parameter and ecc status(enable/disable) when work with MTK on-host HW
+BCH ECC engine for nand flash.
 
---VEgwt+bxKre9p0ta
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Therefore, the RFC patch v1/v2 is try the way to get these information.
 
-Hi,
+> - You cannot add an MTK ECC algorithm. This is dedicated for sofware
+>   solutions only and as far as I understand your engine uses the BCH
+>   algorithm.
+> - When the ECC engine is pipelined, there is an additional complexity
+>   in interfacing it with a SPI controller (that's your case I
+> believe).
+>   I have an example tintendhat is not yet upstream but I think worth
+> looking
+>   at that I will send very soon (I will Cc: you on it).
 
-> stretching. But if the slave device stretch the SCL line for too long
-> time, our design still cannot make tSU,STA/tHD,STA/tSU,STO meet spec.
+Thanks for your patch.
 
-Isn't the new algorithm broken if it cannot support clock stretching?
-What was the problem of the old algorithm not meeting the spec?
+MTK HW ECC(bch) algorithm can work in pipelined and external.
+However, the performance worse when work at ecternal which realize and
+verify in local. Therefore, try the pipelined in RFC patch v1/v2.
 
-> However in the old (default) timing algorithm before the commit
-> be5ce0e97cc7 ("i2c: mediatek: Add i2c ac-timing adjust support"),
-> tSU,STA/tHD,STA/tSU,STO can meet spec. So we want to define a new
-> setting "default-adjust-timing" for using the old (default) timing
-> algorithm."
+And also realize the mtd/nand info can be get in spi driver which the
+spi-mxic driver in your patch. This may solve most of difficulty that
+encountered in the snfi driver that the RFC patch v1/v2 try to resolve.
 
-What I still do not get: the old algorithm was able to handle clock
-stretching. Why can't you update the new one to handle clock stretching
-as well. I might be missing something, but what is it?
+I will prepare the RFC patch v3 with correct pipelined ecc engine
+realization for your review.
 
-Happy hacking,
-
-   Wolfram
-
-
---VEgwt+bxKre9p0ta
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEOZGx6rniZ1Gk92RdFA3kzBSgKbYFAmFkGG0ACgkQFA3kzBSg
-KbZD3g//RihGqp/HqgzrerO26mwuF/kpOwfbJAoegQU0RTv+6k2GV/0x7lvxfxmj
-hTRoxrNH+wQYSQLiAwwqPwJ+nXTzoob2WVFXd0+KPeVXm7C84+PIWEg5xth9kpfX
-Kd+ReQezeCfSEthKN43pE0roJmobGBVK43PX2kxRjluZqN4NbmnaaWoV3xY6YJs0
-RWM5gOESUyfAUr1s23uPXPI/+VwA27jpEXhabP5CxciQpJizJ4Agdtx9dkOZuCMF
-TsgXrFj3ZD6EETIQXoNkTkjZyiSVVC5XyAdKVsGxHA966Vi+s9MCbqPZj9Hq1STO
-v03VnlbCyQzL2cy/09XYDS8Mu0Xph1MQg8nbQEsD8SgsrR6BM7Lv6gRbXd//TaSH
-xMz/+kU6B90pBnc+H+wjpwwjMxGTTcwLzRqYB0HsSJ7/kO3vHrXIVe9KyUrRmyHm
-fHwKAkO0SNKjWyrLdhixR9pmgYTKpVKt4zwmEZiqTvbb923yZ9fU1qpnts7rtXZi
-P8g5CaqtG2piS/5VLfRjinMbPH6Tl4KPT4OBMZAuoZ10EL16XjdODrrG6jA1oA5h
-QzWdk8sbQiidCpZG/WGTz9yMQUlZeJZOefsfNyQwOJ5E0kxff+tWFLmF32fusrhm
-Yoyg00b+KULq1E8zb7X9PCn0o0K8bwE3bhrlGdsHcpCR76p2r6E=
-=1ToD
------END PGP SIGNATURE-----
-
---VEgwt+bxKre9p0ta--
-
-
---===============7897011480295589297==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
+Thanks
+Xiangsheng Hou
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7897011480295589297==--
-
