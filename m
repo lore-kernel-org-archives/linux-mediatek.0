@@ -2,91 +2,75 @@ Return-Path: <SRS0=oOjZ=O7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 989EDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 17:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4E75C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 18:42:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6210860F0F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 17:51:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6210860F0F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id A580060EB1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 18:42:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A580060EB1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qvZu8PHawQCLDsT4AoXJcIBa7cQdxi4RkdX9R3kj37M=; b=bcAtLXpj6GHAFF
-	Ysn39j3WKrp7fp5GbuaA3EvUdykdwG4P+wiNFSWyFHljjnnlHFqGYYQU+5/bHwBDLcqtfRs2LdPGD
-	vy4DEIKWncgVnqTIRna7Btry+P8gciS83NmlKEjjnzQulLkx5HmnW2/iEe1BC0sKugJEloBrFhFz5
-	A3n0+h/Kxb06w/zU919SwLMnTpCpQQ6K6dAJv7RwKK3ZVaZqK59hJByslofq83Srnd0vp8+uWO+tm
-	HWoxBEf89sGVjEy+ONS+2FYHjGottnkVHmxG5lBiDt2dW52QAtcCqfivZ2u1nEtxf7E3DK4LgwZtw
-	ocAhjBh2CKbAD9idHpyA==;
+	List-Owner; bh=l9mRyJCrusgBYSwi53JKBDqKln0OcWuXHGz3aPCrMRQ=; b=ntI7X8yhtSvwPp
+	jQsL0b6nTg+XU2YFBTL6y1L3vZ/NHgynHeV798KfriEZWEZ2ea9BlxbJi/1bCLU9T1Re5FDNNQTsY
+	feCdePJtBO4PV48GvmBisos4eKZBMsVylBc36NFHM0M+RCmi9Z5/VnnJAzPXJy28zhncjcs3yWhS1
+	HUQhE1j8CcILo/LIn5eaY8tW9gsJlXA5MGOhZqoBiCOM6JRZSn0oXQVREe/jppwfIG2GNS5fd33Is
+	H3/36N6TxE8hOCTCaq83tqqpAYla7joDBpSgi3rYNo0hPmr49TXBNPd1L9BnVifrjBUbR3CmKmJcU
+	D1IyXmrtYFbBI36SxY/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mZzSg-00AIGX-F2; Mon, 11 Oct 2021 17:51:42 +0000
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+	id 1ma0Fe-00AOsX-6M; Mon, 11 Oct 2021 18:42:18 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mZzSd-00AIFW-LM; Mon, 11 Oct 2021 17:51:40 +0000
-Received: by mail-pf1-x42e.google.com with SMTP id x130so6496706pfd.6;
- Mon, 11 Oct 2021 10:51:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=/eCkgBabqgzZMoeU3aBzDcQBc9kpvi2Lrj2FSZUU1HE=;
- b=YHh9+t/+VTBC4s3ntJ//sJ/3/IIr2caH4VqARETHgUCXzk5AJvktpuzm9dE1uaz8JR
- xfjTOD7aZUQWRjbKXiGclanTMy8FIrFMav39XmnhURFykou9MBA41/JZBhSM+7F4oHLA
- SP02gBaRgAi+oh7QRziQfMLDPOty5vvLh/RP3ivWQn6Y2sB6qtOy64EiNbYPGwDrncay
- C+mDaqnykJqY0eIAz2Iz0OW+V+GdMg/ZeNJtD5NKeLGRVzSxqJEP1uOfrPqA3jU0492d
- fW5eUzfXmMfoZsHp372XsnmCWx3xGZMWZOUwL0mzcXIQAAPaFvY1njIycCdWRu30XZ95
- C7iA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=/eCkgBabqgzZMoeU3aBzDcQBc9kpvi2Lrj2FSZUU1HE=;
- b=wVKoDjJdFHUtUwGzk6dj5qehCPx24e7BkHgSM60IT03YkfjRRQP2ub/B18CzYGA72x
- aKqxhV2yGTL2aDycn1T1jZFhkWG3fiqYbdmUxfrJtF3enR+hkEv+FTrV8lRVoppX+VOd
- jp71anSdVCI0RExC0Nlkac531x444TrNMrD88qb/H6BYupSqn24fAHWvGpreG1q9VIL6
- YADai8AyTLQHOjgpn0qK3Mcum2jqWAw25sgwsRgbYC5AWy/nZfGwI1RLUErhnWAuFo7y
- VkvRloCvnvZ8VF4HJzdW06Xxh5FcDqHxtyMqwPlcXhfka6hmPRp33aNZP7dUG3i8V/IR
- 3RBw==
-X-Gm-Message-State: AOAM531r0CBsem9Oa2sg+d+Jc5nYzU8ts6+QmbEXXVizmz+MW6xxMB+j
- FAyEK8Dkl5I1nFk4C4DKMJ4=
-X-Google-Smtp-Source: ABdhPJyoiL1u1vbuIv3pXSKqdKMc5JLSJ9ySrHxMnxgboUVF/xihVga0exmAZwG6n8zy5S27LTM1tA==
-X-Received: by 2002:aa7:93ca:0:b0:44c:da51:38ac with SMTP id
- y10-20020aa793ca000000b0044cda5138acmr21437391pff.67.1633974698694; 
- Mon, 11 Oct 2021 10:51:38 -0700 (PDT)
-Received: from localhost.localdomain ([2406:7400:63:9f95:848b:7cc8:d852:ad42])
- by smtp.gmail.com with ESMTPSA id y6sm124618pjw.2.2021.10.11.10.51.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 11 Oct 2021 10:51:38 -0700 (PDT)
-From: Naveen Naidu <naveennaidu479@gmail.com>
-To: bhelgaas@google.com
-Cc: Naveen Naidu <naveennaidu479@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, p.zabel@pengutronix.de,
- Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org (open list:PCIE DRIVER FOR MEDIATEK),
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH 05/22] PCI: mediatek: Use SET_PCI_ERROR_RESPONSE() when device
- not found
-Date: Mon, 11 Oct 2021 23:21:22 +0530
-Message-Id: <01f0c358e3ea05510e04384c3fb5edc577523430.1633972263.git.naveennaidu479@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1633972263.git.naveennaidu479@gmail.com>
-References: <cover.1633972263.git.naveennaidu479@gmail.com>
+ id 1ma0FR-00AOqF-SX; Mon, 11 Oct 2021 18:42:07 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 131DD60F4B;
+ Mon, 11 Oct 2021 18:42:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1633977725;
+ bh=hoYSt9zJ7gblctsTD1xqU6UBG1JIdB6IhQ5HhTiGdN4=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=abR3MBV5MYpHe5vwlTDqZFZLxOrA2WTOaCvHYAMinYlmlOrUq4bbZ4Pv8KjX8/Alc
+ E9nJ7YoXAS6ETAWB3r9E+Rf7bMamqGBF78v8Mbn+7Im9MtLbeaumwSL4bOAkwrUirC
+ i1UxLEiQ1tnuHh0l/uVbdV2qBEX9qau32WrkIpDVjezzaOtmqNX8X4epmdIhSEmMo5
+ S2e2K726+24VCEd4GPjglZ5CAdykmTZW8lmevGBG011SeXrHm1//PsomvCU2T2ppwa
+ 43Pw4FqKxm2CEpLynZ++JhbuFx2bKF3RvTc4jUgY1VDwKLCVKWmG6TX+gZndL8kRjX
+ gKbR9bg0FeaKw==
+Received: by mail-ed1-f49.google.com with SMTP id g8so71380804edt.7;
+ Mon, 11 Oct 2021 11:42:04 -0700 (PDT)
+X-Gm-Message-State: AOAM5313bYlnNpq/B/N92vX0K1Y/CG00jvgLOVBNDcwHkVd6dP+0/DyR
+ PcgfkxDAIP392wScp7B2p2afPrvfG1GohgLO0w==
+X-Google-Smtp-Source: ABdhPJywv8fGmhk1mf+HyQ4w9xB10/jc+wD8EAQOzSfHjr1YBOzCjjO57IbflJOw2WQ2NS6iX0NGP79Mcba9uDjgq64=
+X-Received: by 2002:a05:6402:4382:: with SMTP id
+ o2mr8810066edc.271.1633977723437; 
+ Mon, 11 Oct 2021 11:42:03 -0700 (PDT)
 MIME-Version: 1.0
+References: <20211011094624.3416029-1-msp@baylibre.com>
+ <20211011094624.3416029-2-msp@baylibre.com>
+ <1633959378.242329.504943.nullmailer@robh.at.kernel.org>
+ <20211011134301.rkkblnj4bfowghu7@blmsp>
+In-Reply-To: <20211011134301.rkkblnj4bfowghu7@blmsp>
+From: Rob Herring <robh@kernel.org>
+Date: Mon, 11 Oct 2021 13:41:51 -0500
+X-Gmail-Original-Message-ID: <CAL_Jsq+9YLo2hdu4jyAzfZLdUaHYWQMhc7+h0eE9Qf2KU6Vzng@mail.gmail.com>
+Message-ID: <CAL_Jsq+9YLo2hdu4jyAzfZLdUaHYWQMhc7+h0eE9Qf2KU6Vzng@mail.gmail.com>
+Subject: Re: [PATCH v4 1/7] dt-bindings: mediatek,dpintf: Add DP_INTF binding
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>, linux-phy@lists.infradead.org, 
+ Philipp Zabel <p.zabel@pengutronix.de>, devicetree@vger.kernel.org, 
+ Sam Ravnborg <sam@ravnborg.org>, Vinod Koul <vkoul@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211011_105139_733881_8EE71701 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20211011_114205_991791_BE80BAED 
+X-CRM114-Status: GOOD (  21.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,46 +87,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-An MMIO read from a PCI device that doesn't exist or doesn't respond
-causes a PCI error.  There's no real data to return to satisfy the
-CPU read, so most hardware fabricates ~0 data.
+On Mon, Oct 11, 2021 at 8:43 AM Markus Schneider-Pargmann
+<msp@baylibre.com> wrote:
+>
+> Hi,
+>
+> On Mon, Oct 11, 2021 at 08:36:18AM -0500, Rob Herring wrote:
+> > On Mon, 11 Oct 2021 11:46:18 +0200, Markus Schneider-Pargmann wrote:
+> > > DP_INTF is a similar functional block to mediatek,dpi but is different
+> > > in that it serves the DisplayPort controller on mediatek SoCs and uses
+> > > different clocks. Therefore this patch creates a new binding file for
+> > > this functional block.
+> > >
+> > > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > > ---
+> > >
+> > > Notes:
+> > >     Changes v3 -> v4:
+> > >     - Fixed clock names in the example as the clock patch series is merged into
+> > >       next now
+> > >     - Add missing ports decleration to the example
+> > >
+> > >     Changes v1 -> v2:
+> > >     - Move the devicetree binding from mediatek,dpi into its own binding file.
+> > >
+> > >  .../display/mediatek/mediatek,dpintf.yaml     | 86 +++++++++++++++++++
+> > >  1 file changed, 86 insertions(+)
+> > >  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dpintf.yaml
+> > >
+> >
+> > My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+> > on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> >
+> > yamllint warnings/errors:
+> >
+> > dtschema/dtc warnings/errors:
+> > Documentation/devicetree/bindings/display/mediatek/mediatek,dpintf.example.dts:21:18: fatal error: dt-bindings/clock/mt8195-clk.h: No such file or directory
+> >    21 |         #include <dt-bindings/clock/mt8195-clk.h>
+> >       |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>
+> The mt8195 clock series was already merged and is available in
+> linux-next. I checked with make dt_binding_check before sending.
 
-Use SET_PCI_ERROR_RESPONSE() to set the error response, when a faulty
-read occurs.
+The bot has no way of knowing that, and the dependency is not called
+out in this patch for me to know that when reviewing the failures.
 
-This helps unify PCI error response checking and make error check
-consistent and easier to find.
-
-Compile tested only.
-
-Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
----
- drivers/pci/controller/pcie-mediatek.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 2f3f974977a3..aa744ccd1a2a 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -369,13 +369,13 @@ static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
- 
- 	port = mtk_pcie_find_port(bus, devfn);
- 	if (!port) {
--		*val = ~0;
-+		SET_PCI_ERROR_RESPONSE(val);
- 		return PCIBIOS_DEVICE_NOT_FOUND;
- 	}
- 
- 	ret = mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
- 	if (ret)
--		*val = ~0;
-+		SET_PCI_ERROR_RESPONSE(val);
- 
- 	return ret;
- }
--- 
-2.25.1
-
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
