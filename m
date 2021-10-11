@@ -2,77 +2,144 @@ Return-Path: <SRS0=oOjZ=O7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E690FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 07:18:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1CAA7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 08:27:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B3EB660EC0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 07:18:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B3EB660EC0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C83FF608FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 08:27:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C83FF608FE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=amd.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kbhEQ5OXXqtVFn4IUZERx2a5yjUz4qN1HxK1Ux9I4Mc=; b=IfdhbH/PJuJXPq
-	aRPTd/6NaD2WjR50numsywspIjKpM+IGLc87cVLD9NvmQIrElYd4fV3zzkdwHI5BT541OVajUOTat
-	/7LlXIG6WftpmdD2hPCwaVHxXizRjKejOP9ekz9ls63ducrktE2zyCdiYQ4y3OASz3bE4MYlWS7Uo
-	ce0eWaKVhQmx+G6ZzPE8HSjKT0J2U+o+rzeWS3jHGDQwK19po1LQ0NI+bYBZlNWDYouZRkbRuJcD/
-	Em9rsZKi3yZygQIJcF9t41iWOk9uekEE670xohp23VR/ty3nSNGW01bOnwCeMmtcQMspdnkG4yJxS
-	R9yuPuI2iDfeu8XcwSdw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GRw6N9moB9MF9FdTW9xMNUjNOHqIY14bgdtnlvdiXSg=; b=4w3NSE6x/bFpug9el+ysAU4+Dt
+	YdNyyrt8MS3eULI9pBOCxVKvKnk0erMxf+QG+Eh6rAkc7Oz2MfQwsU3mX+omj0DAlSQf+VN+eVGeI
+	61KzWfrcv9n+ZbDzXHeRLeOcQHfp6kSn3shGj0BUZ2adlYvtCXBJQ7Rjo/RxzZqM/2wCDNs/+jcab
+	3qCXkdKs3MEMrjdvy5YvAXIGRPElYkjttwrVpbjn1pDDeRDEI86cpmCFp215+HJh7H9dVYoCqV0PR
+	E4KLG+qFHmdGXiLxRm6qgUInLx11pyyD5glNEPqtLT61DgVZ5No0qnOsYm5KWwpW6l6VN4MmvnIuD
+	vvABJMAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mZpZb-0087Yx-4I; Mon, 11 Oct 2021 07:18:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mZqeT-008Jhd-CM; Mon, 11 Oct 2021 08:27:17 +0000
+Received: from mail-bn1nam07on2059.outbound.protection.outlook.com
+ ([40.107.212.59] helo=NAM02-BN1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mZpUv-0085O6-Vq; Mon, 11 Oct 2021 07:13:23 +0000
-X-UUID: 93807aa870e3422eadff7f2236f16489-20211011
-X-UUID: 93807aa870e3422eadff7f2236f16489-20211011
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2101209387; Mon, 11 Oct 2021 00:13:11 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 11 Oct 2021 00:03:09 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 11 Oct 2021 15:03:08 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 11 Oct 2021 15:03:06 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v7,
- 15/15] media: mtk-vcodec: Use codec type to separate different
- hardware
-Date: Mon, 11 Oct 2021 15:02:47 +0800
-Message-ID: <20211011070247.792-16-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211011070247.792-1-yunfei.dong@mediatek.com>
-References: <20211011070247.792-1-yunfei.dong@mediatek.com>
+ id 1mZqYV-008HQV-Q0; Mon, 11 Oct 2021 08:21:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TbGJBPJ3zcjLShnhYEkpDWbOwkXf2Jyc55grVbv/87biYe8A0L2UDQQwUWzpO4ELoc3x7qNkKVtg7UOrSiVDYi0WQVACJmoIdqpcf5XmBJvMxPMXeI6Bc5eGUhPMwwdAwTIt4d4Jf579T0ebZ+rgCHcWb30shBvKL+b2c5d3he0Uh8p4ix3QnXpCbm7ilZwI9Yxu2/8zPitxh9soGWmbhbwOe1r+UFxmxPenhMNrehk9l2QbA5r/GuvYWT4LuP63Pg1M9s4r/kyydx7SiBV7pwqws5h583IH5qL8f4n2diFrx1d3wkJGhQ7Do7yS360K8PQnmy2jQJF6eC8Y0WNffw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=R7x34sCfMUn2z5eNKSFQ/b+k5Zl2Es7J7sb5Dtzfsws=;
+ b=Z2pJ8yXFuhA14xXw/VaAevFrmacDsIZQjbKoFe/vCiRUtVClvRy0CXOJYMiqlchnZM2TJgpdF9TqwzoGSd3RNMJVXCMf8qoGQmzu8fe/L8ui4umjvKz9wtw/jvyyKwV5/K2y8/VgulPpePWeRSqDVX5f4q5017rJ2lAiBgfNQLAHs+96CPOQeCwboUPlSXEdicaKiyQVsx55qm+v1eUVLY0cYPwnCyZacyhHYXVz6fv/iPcz3UMWFIQ/SyO9N+24LjG9N21eRgd6h5P5NMS7KdhZf9hCGd9k0e4YRyCzDUwBoAWXhPoDZjjwuN266l//DvmjOvXW+8NNG5H/9w0qNw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=R7x34sCfMUn2z5eNKSFQ/b+k5Zl2Es7J7sb5Dtzfsws=;
+ b=AFM4Pb4Tu/TZfXpkVUd95w/9iaHLB+zJg0E+vamWEWMiHje9cmpGP+bNlkzlm295k9Xx9DyqWjOYl6cukPBsDMBmiJw3K64j+ARfj+T4D0o5+O+1MBJWiIomq/z0cKUNUCgTcYfkP+AudPUPkgguzjHu5OzLGy7Oh8ueQdoCYfE=
+Authentication-Results: mediatek.com; dkim=none (message not signed)
+ header.d=none;mediatek.com; dmarc=none action=none header.from=amd.com;
+Received: from MWHPR1201MB0192.namprd12.prod.outlook.com
+ (2603:10b6:301:5a::14) by MWHPR12MB1407.namprd12.prod.outlook.com
+ (2603:10b6:300:15::9) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.19; Mon, 11 Oct
+ 2021 08:21:01 +0000
+Received: from MWHPR1201MB0192.namprd12.prod.outlook.com
+ ([fe80::55c7:6fc9:b2b1:1e6a]) by MWHPR1201MB0192.namprd12.prod.outlook.com
+ ([fe80::55c7:6fc9:b2b1:1e6a%10]) with mapi id 15.20.4587.026; Mon, 11 Oct
+ 2021 08:21:00 +0000
+Subject: Re: [PATCH v2] dma-buf: remove restriction of IOCTL:DMA_BUF_SET_NAME
+To: guangming.cao@mediatek.com, rdunlap@infradead.org
+Cc: dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, sumit.semwal@linaro.org, wsd_upstream@mediatek.com
+References: <c23181a5-b75b-c04b-7cc4-020f2b2b44c1@infradead.org>
+ <20211009055504.68272-1-guangming.cao@mediatek.com>
+From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
+Message-ID: <eba79a76-413b-570c-aec0-899a5f918d38@amd.com>
+Date: Mon, 11 Oct 2021 10:20:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
+In-Reply-To: <20211009055504.68272-1-guangming.cao@mediatek.com>
+Content-Language: en-US
+X-ClientProxiedBy: AS9PR06CA0246.eurprd06.prod.outlook.com
+ (2603:10a6:20b:45f::12) To MWHPR1201MB0192.namprd12.prod.outlook.com
+ (2603:10b6:301:5a::14)
 MIME-Version: 1.0
-X-MTK: N
+Received: from [IPv6:2a02:908:1252:fb60:a75c:41fc:3f29:351c]
+ (2a02:908:1252:fb60:a75c:41fc:3f29:351c) by
+ AS9PR06CA0246.eurprd06.prod.outlook.com (2603:10a6:20b:45f::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.24 via Frontend
+ Transport; Mon, 11 Oct 2021 08:20:57 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: ecb200d7-0221-4dff-300b-08d98c900ee4
+X-MS-TrafficTypeDiagnostic: MWHPR12MB1407:
+X-Microsoft-Antispam-PRVS: <MWHPR12MB140769591EE7C6B3E94A422583B59@MWHPR12MB1407.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4941;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: XH03AXG4o8akzcTE0HGaQClPXe/FCZIQuXXOnRuwow3uyFBSBEjA5V+Y4CQCGWWuxBKtvCnU/0Z0SBCbk2ZU4G4OEoT/cC2K4XSZBQ+ygWlPis1m4noEjfcge1DqC/Nno3AzkGQrCccg2nWar23/QrSIbyo0beLFH9Z5M7wBbganErG2AM/WWtZqpFBHzfaIJ2WyQF8dX1gwBZev8f2duzkLISfjMtRYSvtHxf2NXgPHagzKY1mn+GLiUsr5JJN51uxXZhJs7WDmfGsbDUEDSZ4ZbEgc35aDXTCuE/l6p7NLGogCP5gAKD3Uyv4BglYS7hx+tGlXPMTk4lJ1pH2CW8mLi8bu9EOwf9mXhQlNZ+U/PBUsLtaqT4vvkKQHrB8T5ikFoWHfVjocEm3hXB8+K5T9hNU0YxaCawiz3mqTsqwEoriFg1L4FxBXmN/ZV84H/66xCxv11BGQtyvCLii0ZXhJZYO/GRxzjm+hGI2g1pSccipW8Sey5JJ1xjkLBY+es282f3bt5sNJbAXVGWdulGXZr5kQy5LEkB/XABP0PZwvBXISVlZUQ0M0b/21JgXRh68bORvDMgGIDNvU/Qlw6AzQJXXYIoo+UnwlEt4BqOMcSHc9S9+PKF1R4Wnlw6u3eZPOy7eMoCtUYeN1khcXOcya4u+kr1I3HU+gSTRwm12nIIbGjEMQl9TTw/OHJtGIpzrMzIadv9HVgwmW8UyNxeUnVJB861dJlN/oHKwd1Sgysp+cbYfL2jNdIen5+h+z
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1201MB0192.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(8676002)(4326008)(8936002)(186003)(316002)(2616005)(83380400001)(2906002)(7416002)(31686004)(38100700002)(36756003)(508600001)(31696002)(86362001)(6486002)(5660300002)(6666004)(66556008)(66946007)(66476007)(43740500002)(45980500001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VWxkMTh4SFMwamVHZFQ5OUdqekdsZnJrcTdNTGhMSm1PQnJhL2t2R2VaZjNi?=
+ =?utf-8?B?Sm5qdlozcFdlUHVkTVo4S2VJbDI2RzJIYUFnZnZmVTVHbTg0dXN2R250ZXBy?=
+ =?utf-8?B?RTNmbG82czFXc2wxcXJlQStXWVJyaG9NeGJrZGo0ajR0Q3B0R3c3UHc3TmVl?=
+ =?utf-8?B?aE9TSGJZd1AvdCtOYXBUUGovTEtmZE9mbkVxNHZnamdWU0Q4YVRUVVdJM3pK?=
+ =?utf-8?B?ZlFQUnhYelpBeWR0MXdlMGNEWVdyaktzekV3OFE0cjhlcEFCTWxDaVVmNWFs?=
+ =?utf-8?B?Wk5ueGhFLzZPMTk4WU9mbC9Nekp5QTc4NGF2ZExiNUx5a1JCNmFRL2dXME4x?=
+ =?utf-8?B?MVpKTks0NUpraVhnbWlBNVIrNHlNTXVBaWt2UUVlc3gyVTYzMGkwZVlNUDNO?=
+ =?utf-8?B?Mmhnb0c5bDRacmRDdmsxbkZzUTF4aHJuK0RLMGxvbEJtMUh0SHZLNWJSSjB1?=
+ =?utf-8?B?RWhyUWxRRGd5dkRaY1Z5WGpYdkIydktXSGg2cDRwcW1qOFg3ZFdNYTZESlVq?=
+ =?utf-8?B?dFMzbXdHMWJrL0wwOU5xbVMzV0wyMWU5eWFITVhwWUNJM3laZjNtVm9IWEZT?=
+ =?utf-8?B?cXVaNDFSOXhKVzZCamtrMExHSHQ3dWNpdXZJbnh6Vk5RSkIyaGFKN1N0U1o2?=
+ =?utf-8?B?RVZzTDBQQktkUVZiNUNoTW1iQUhnKzBndU10elVGK0lzZWJvRCtwZmlsWGR2?=
+ =?utf-8?B?VTRqVmx5b2UyNS8xWDNlWWgzKzQwclhlZXIrL0RDeWU4eTFzRTJRWDNuYktI?=
+ =?utf-8?B?eHNMR1ZTaGlWQk1mZHF5VVhqbWp4aUhhaE9wTEdZdGlZZzVBd0p0ZFBManN3?=
+ =?utf-8?B?S3Nadlk2WTloNmQvc2I3VGxscGVKNkJQbDhkY0dlTGRIZzlrQjF1WWNicXND?=
+ =?utf-8?B?SkkrVU96VmVNb09JdDQxZWtveVkrRkdtbUdHWCtEVXJjVktRZWlNQVlKY1Bw?=
+ =?utf-8?B?M0JOdmlOZmE4MFJSdldDdlBLRHgxV3VjcjlNN2lwRGNBRXV6M1AvYkwrSnVz?=
+ =?utf-8?B?OEsxbVE0YWRkanVmbko4b2dQQ2tHd1F3TzZlRjV1bkNRY0kyUG02UUpiYitZ?=
+ =?utf-8?B?Q21ZemVJaWh1OENGd2pRcnFDaFYrNEl2aE9hWjNaQittWXVTTXpOWmVYaDRK?=
+ =?utf-8?B?NnErVzU5T2duYXNQbUozaURzRlVuVVE3Ukh1RTNmUC8vNmg5Q2k2aVhzQ2Nk?=
+ =?utf-8?B?NHJpNHQwejcvMVkvQWdTNFkyWUlsZisvaXh2Y0wvU2JpRDFGYVlXb0Y4K0Vp?=
+ =?utf-8?B?UzRYNjFRcXJBcDJlaERQMnpEbGFKKysySnpza3BkSlpmNkQrWHkyTFlGOXZN?=
+ =?utf-8?B?UDZHbElXQTBYQXV2bUxEL3laeER2eTE3d1FCKzdaNEFLZ2tEOUtHb1I0N1dL?=
+ =?utf-8?B?TkdVc2hhSFMySXFPY0xyb1N2WktydzdDMzYwZjl4TVV6cGhIcy8vR0RnVWpB?=
+ =?utf-8?B?Q3JYaVFNSHdjbHhGbW4wTW1nS3pYaVovTFltNmZ1TWk0cFpkMHBzMjFqT0dL?=
+ =?utf-8?B?cHBvaDBTd1kyMjVXdHIyN3hXdG0vUFJYcHAwcHRnL1RLUDFta3dQelhqQXNC?=
+ =?utf-8?B?Qnc4UVU0VFpUUWlxT2Z2N1VqdXhJS0FjMnlBUnA0Tko2RDRWQkRmUWphbXNN?=
+ =?utf-8?B?MGtwRDR0b1NOMHcxQ0hrcnc4RGlvUUgwS0I2cTRwQUVwZHE2L3oyWURzcE1x?=
+ =?utf-8?B?TTF3ckk3UFkvNjY0cHZIWmFBdHZWTUJ2SzNKdzVFMCtzZkpIYTM4QzhWdkln?=
+ =?utf-8?B?OU80NHl5bWg1MzJFVFRhRUVRZXZ1dzI1SWo0dzV3K0VxbUg3aS9oM3pJZklm?=
+ =?utf-8?B?RzdxRWNBN1ZPSmZjMUtNazM3dStIMVlDVzBzZjdML1RIZlJ6MkRDV1FjSFlC?=
+ =?utf-8?Q?tC+kGXoe8peuJ?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ecb200d7-0221-4dff-300b-08d98c900ee4
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1201MB0192.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Oct 2021 08:21:00.7898 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8dSvrTNMHE0ON+P9aWYn1qsh9ahNYRwPkMY6UF0W/uOK+TW8FZEMXcIQCj5m4It6
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR12MB1407
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211011_001322_071957_1B8A5961 
-X-CRM114-Status: GOOD (  17.96  )
+X-CRM114-CacheID: sfid-20211011_012107_923225_5009504A 
+X-CRM114-Status: GOOD (  28.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,191 +151,78 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are just one core thread, in order to separeate different
-hardware, using codec type to separeate it in scp driver.
+Am 09.10.21 um 07:55 schrieb guangming.cao@mediatek.com:
+> From: Guangming Cao <Guangming.Cao@mediatek.com>
+>
+> If dma-buf don't want userspace users to touch the dmabuf buffer,
+> it seems we should add this restriction into dma_buf_ops.mmap,
+> not in this IOCTL:DMA_BUF_SET_NAME.
+>
+> With this restriction, we can only know the kernel users of the dmabuf
+> by attachments.
+> However, for many userspace users, such as userpsace users of dma_heap,
+> they also need to mark the usage of dma-buf, and they don't care about
+> who attached to this dmabuf, and seems it's no meaning to be waiting for
+> IOCTL:DMA_BUF_SET_NAME rather than mmap.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
----
- .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 12 ++++---
- .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 34 ++++++++++++++++---
- .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  4 +++
- 3 files changed, 41 insertions(+), 9 deletions(-)
+Sounds valid to me, but I have no idea why this restriction was added in 
+the first place.
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-index 9d8079c4f976..c488f0c40190 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-@@ -35,6 +35,8 @@ enum vdec_ipi_msgid {
-  * @msg_id	: vdec_ipi_msgid
-  * @vpu_inst_addr : VPU decoder instance address. Used if ABI version < 2.
-  * @inst_id     : instance ID. Used if the ABI version >= 2.
-+ * @codec_type	: Codec fourcc
-+ * @reserved	: reserved param
-  */
- struct vdec_ap_ipi_cmd {
- 	uint32_t msg_id;
-@@ -42,6 +44,8 @@ struct vdec_ap_ipi_cmd {
- 		uint32_t vpu_inst_addr;
- 		uint32_t inst_id;
- 	};
-+	uint32_t codec_type;
-+	uint32_t reserved;
- };
- 
- /**
-@@ -59,12 +63,12 @@ struct vdec_vpu_ipi_ack {
- /**
-  * struct vdec_ap_ipi_init - for AP_IPIMSG_DEC_INIT
-  * @msg_id	: AP_IPIMSG_DEC_INIT
-- * @reserved	: Reserved field
-+ * @codec_type	: Codec fourcc
-  * @ap_inst_addr	: AP video decoder instance address
-  */
- struct vdec_ap_ipi_init {
- 	uint32_t msg_id;
--	uint32_t reserved;
-+	uint32_t codec_type;
- 	uint64_t ap_inst_addr;
- };
- 
-@@ -77,7 +81,7 @@ struct vdec_ap_ipi_init {
-  *	H264 decoder [0]:buf_sz [1]:nal_start
-  *	VP8 decoder  [0]:width/height
-  *	VP9 decoder  [0]:profile, [1][2] width/height
-- * @reserved	: Reserved field
-+ * @codec_type	: Codec fourcc
-  */
- struct vdec_ap_ipi_dec_start {
- 	uint32_t msg_id;
-@@ -86,7 +90,7 @@ struct vdec_ap_ipi_dec_start {
- 		uint32_t inst_id;
- 	};
- 	uint32_t data[3];
--	uint32_t reserved;
-+	uint32_t codec_type;
- };
- 
- /**
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index bfd8e87dceff..c84fac52fe26 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -100,18 +100,29 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 
- static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
- {
--	int err;
-+	int err, id, msgid;
- 
--	mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
-+	msgid = *(uint32_t *)msg;
-+	mtk_vcodec_debug(vpu, "id=%X", msgid);
- 
- 	vpu->failure = 0;
- 	vpu->signaled = 0;
- 
--	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, vpu->id, msg,
-+	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-+		if (msgid == AP_IPIMSG_DEC_CORE ||
-+			msgid == AP_IPIMSG_DEC_CORE_END)
-+			id = vpu->core_id;
-+		else
-+			id = vpu->id;
-+	} else {
-+		id = vpu->id;
-+	}
-+
-+	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
- 				     len, 2000);
- 	if (err) {
- 		mtk_vcodec_err(vpu, "send fail vpu_id=%d msg_id=%X status=%d",
--			       vpu->id, *(uint32_t *)msg, err);
-+			       id, msgid, err);
- 		return err;
- 	}
- 
-@@ -131,6 +142,7 @@ static int vcodec_send_ap_ipi(struct vdec_vpu_inst *vpu, unsigned int msg_id)
- 		msg.vpu_inst_addr = vpu->inst_addr;
- 	else
- 		msg.inst_id = vpu->inst_id;
-+	msg.codec_type = vpu->codec_type;
- 
- 	err = vcodec_vpu_send_msg(vpu, &msg, sizeof(msg));
- 	mtk_vcodec_debug(vpu, "- id=%X ret=%d", msg_id, err);
-@@ -149,14 +161,25 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
- 
- 	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
- 					 vpu->handler, "vdec", NULL);
--	if (err != 0) {
-+	if (err) {
- 		mtk_vcodec_err(vpu, "vpu_ipi_register fail status=%d", err);
- 		return err;
- 	}
- 
-+	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-+		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
-+					 vpu->core_id, vpu->handler,
-+					 "vdec", NULL);
-+		if (err) {
-+			mtk_vcodec_err(vpu, "vpu_ipi_register core fail status=%d", err);
-+			return err;
-+		}
-+	}
-+
- 	memset(&msg, 0, sizeof(msg));
- 	msg.msg_id = AP_IPIMSG_DEC_INIT;
- 	msg.ap_inst_addr = (unsigned long)vpu;
-+	msg.codec_type = vpu->codec_type;
- 
- 	mtk_vcodec_debug(vpu, "vdec_inst=%p", vpu);
- 
-@@ -187,6 +210,7 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
- 
- 	for (i = 0; i < len; i++)
- 		msg.data[i] = data[i];
-+	msg.codec_type = vpu->codec_type;
- 
- 	err = vcodec_vpu_send_msg(vpu, (void *)&msg, sizeof(msg));
- 	mtk_vcodec_debug(vpu, "- ret=%d", err);
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-index ae24b75d1649..802660770a87 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-@@ -14,6 +14,7 @@ struct mtk_vcodec_ctx;
- /**
-  * struct vdec_vpu_inst - VPU instance for video codec
-  * @id          : ipi msg id for each decoder
-+ * @core_id     : core id used to separate different hardware
-  * @vsi         : driver structure allocated by VPU side and shared to AP side
-  *                for control and info share
-  * @failure     : VPU execution result status, 0: success, others: fail
-@@ -26,9 +27,11 @@ struct mtk_vcodec_ctx;
-  * @dev		: platform device of VPU
-  * @wq          : wait queue to wait VPU message ack
-  * @handler     : ipi handler for each decoder
-+ * @codec_type     : used codec type to separate different codecs
-  */
- struct vdec_vpu_inst {
- 	int id;
-+	int core_id;
- 	void *vsi;
- 	int32_t failure;
- 	uint32_t inst_addr;
-@@ -38,6 +41,7 @@ struct vdec_vpu_inst {
- 	struct mtk_vcodec_ctx *ctx;
- 	wait_queue_head_t wq;
- 	mtk_vcodec_ipi_handler handler;
-+	unsigned int codec_type;
- };
- 
- /**
--- 
-2.25.1
+Can you double check the git history and maybe identify when that was 
+added? Mentioning this change in the commit message then might make 
+things a bit easier to understand.
+
+Thanks,
+Christian.
+
+>
+> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
+> ---
+>   drivers/dma-buf/dma-buf.c | 14 ++------------
+>   1 file changed, 2 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
+> index 511fe0d217a0..db2f4efdec32 100644
+> --- a/drivers/dma-buf/dma-buf.c
+> +++ b/drivers/dma-buf/dma-buf.c
+> @@ -325,10 +325,8 @@ static __poll_t dma_buf_poll(struct file *file, poll_table *poll)
+>   
+>   /**
+>    * dma_buf_set_name - Set a name to a specific dma_buf to track the usage.
+> - * The name of the dma-buf buffer can only be set when the dma-buf is not
+> - * attached to any devices. It could theoritically support changing the
+> - * name of the dma-buf if the same piece of memory is used for multiple
+> - * purpose between different devices.
+> + * It could theoretically support changing the name of the dma-buf if the same
+> + * piece of memory is used for multiple purpose between different devices.
+>    *
+>    * @dmabuf: [in]     dmabuf buffer that will be renamed.
+>    * @buf:    [in]     A piece of userspace memory that contains the name of
+> @@ -346,19 +344,11 @@ static long dma_buf_set_name(struct dma_buf *dmabuf, const char __user *buf)
+>   	if (IS_ERR(name))
+>   		return PTR_ERR(name);
+>   
+> -	dma_resv_lock(dmabuf->resv, NULL);
+> -	if (!list_empty(&dmabuf->attachments)) {
+> -		ret = -EBUSY;
+> -		kfree(name);
+> -		goto out_unlock;
+> -	}
+>   	spin_lock(&dmabuf->name_lock);
+>   	kfree(dmabuf->name);
+>   	dmabuf->name = name;
+>   	spin_unlock(&dmabuf->name_lock);
+>   
+> -out_unlock:
+> -	dma_resv_unlock(dmabuf->resv);
+>   	return ret;
+>   }
+>   
 
 
 _______________________________________________
