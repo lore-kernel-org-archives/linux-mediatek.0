@@ -2,64 +2,61 @@ Return-Path: <SRS0=oOjZ=O7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9BCF0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 14:55:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8888C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 16:03:15 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6BA2A60E98
-	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 14:55:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6BA2A60E98
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 82EE160551
+	for <linux-mediatek@archiver.kernel.org>; Mon, 11 Oct 2021 16:03:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 82EE160551
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=25MXGfrF35GRSL5PhGcHl92K3Il9oJJvqt8D2psnxoQ=; b=W1YU6xWjUfStuF
-	slIAA7q8lNkfxsB5+pRXcacjBkSZLEoE0BkxKb6IRl2h3uFBWSjLhYgT+P7yiAPi8bx8QAmr/CFQ4
-	2Us8Ue7ZnUr4ikFcsl4yIFcYxepiqvf2zDaA5OFqBMrVNhwJ0oQ3UFicUdbOyocda6dANpRioahXR
-	VUQHLA1ItE5Y/4iyEuqSi+iVBIDCPmTZqDYXfk/MJpdOg/wUOQiebHT9nY542Ry7QAIlpc4wyXFuF
-	AeNHa6OiPNkcihR3D7vbxAgTLsboMl+MbTJSPTZ4Wn9LZC6vg9a2SUFjN9qCwzeHm/ymRU4UIdRHA
-	Sym3wTYwSQT8/3ynzRAQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PIBorfjw/h8riz6dPdLEjL8SNF3rVP0d7UY0uWHbO7Y=; b=wl7+y7qi6tqdiM
+	9EEpC9IIaCpsTNlZuxKq3oZ4J29VGArb1rUabhgBWkB8I88GXaXjhYP+vuha44wY9LgpRer3fASWV
+	XmTqEeRJJQZJkjqeEOoliqlOLX+roSjzn68phu6JXnOlvzpQB7iA+Nlm0mKeK9YaaYbk9B+PEb9Fu
+	Ubc/A8kJBD86+1Ihe2TGDLgm4Ck8GfY7LXqLmXdCtvTF+dFAsz9fwWBUTCNAEe9bO3zcbVle2hsAT
+	j3CEAhKiDE+edhzerv/elJoOAsG2wydzmPjjPbFLSmAI2Jw0c1RHidf9k05i67HKENiBN7jQ2IdGz
+	0AlPHw3va4LUbLRpwAAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mZwhd-009q2I-QR; Mon, 11 Oct 2021 14:54:57 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mZxlV-00A0vp-Gm; Mon, 11 Oct 2021 16:03:01 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mZwhO-009pxQ-Ui; Mon, 11 Oct 2021 14:54:44 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 0308160BD3;
- Mon, 11 Oct 2021 14:54:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1633964082;
- bh=gwJSn9/WH7jBGPOAUDejmOq4MucxMh1nnl8hVskmGKg=;
- h=From:List-Id:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=RLXL8JTtS9kxXS/WevrlPHbybeW2+Wj3vREClcrUCBJWTTwurdSVFo4p+j1QWcbUF
- fwg8dtLQWpv7CuRYEjHjh6vm+FxRCC+R7EInaVvaYKD9Z6g7HahhEI1gRMu9RfgqOI
- UZDppynooEe86MhXQMeuBd7B0JwEUnsqilu/qAQ60euugDk6t9Hh7/5cVU1qU5jQvp
- WZpbunu7835k3aDb2E8Jx2uLUkQuZ8DblxbpouZ//MiV9VPxE/pUYrJH8VSRViQoje
- c3l70DsVLVELapC7akV49aOZGkQJWLxjVVrvXJGq/PM/n2BAcJDea+WQE6gjhln6xH
- Ea4iSPcYY+DzQ==
-From: Arnd Bergmann <arnd@kernel.org>
-List-Id: <soc.lore.kernel.org>
-To: arm-soc <arm@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- SoC Team <soc@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>
-Subject: Re: [GIT PULL] soc: mediatek updates for v5.16
-Date: Mon, 11 Oct 2021 16:54:27 +0200
-Message-Id: <163396399141.3170841.8977960189531317594.b4-ty@arndb.de>
-X-Mailer: git-send-email 2.29.2
-In-Reply-To: <b1d364d0-f2ae-488b-b3f7-c694049c20d3@gmail.com>
-References: <b1d364d0-f2ae-488b-b3f7-c694049c20d3@gmail.com>
-MIME-Version: 1.0
+ id 1mZxlI-00A0s5-0N; Mon, 11 Oct 2021 16:02:49 +0000
+Received: from guri.fritz.box (unknown
+ [IPv6:2a02:810a:880:f54:b116:1535:401e:a6ca])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id ACBE71F42A6B;
+ Mon, 11 Oct 2021 17:02:45 +0100 (BST)
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+To: linux-media@vger.kernel.org
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, kernel@collabora.com,
+ acourbot@chromium.org, andrew-ct.chen@mediatek.com, courbot@chromium.org,
+ dafna3@gmail.com, eizan@chromium.org, enric.balletbo@collabora.com,
+ houlong.wei@mediatek.com, hsinyi@chromium.org, hverkuil@xs4all.nl,
+ irui.wang@mediatek.com, maoguang.meng@mediatek.com, matthias.bgg@gmail.com,
+ mchehab@kernel.org, minghsiu.tsai@mediatek.com, tfiga@chromium.org,
+ tiffany.lin@mediatek.com, Rob Herring <robh+dt@kernel.org>,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+ devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
+ BINDINGS)
+Subject: [PATCH] arm64: dts: mediatek: mt8173: remove double 'assigned-clocks'
+ binding
+Date: Mon, 11 Oct 2021 18:02:36 +0200
+Message-Id: <20211011160236.6815-1-dafna.hirschfeld@collabora.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211011_075443_029236_DB5A8669 
-X-CRM114-Status: UNSURE (   7.26  )
+X-CRM114-CacheID: sfid-20211011_090248_200332_0341553B 
+X-CRM114-Status: UNSURE (   9.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,26 +69,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+The clock '<&topckgen CLK_TOP_VENC_LT_SEL>' is declared twice
+in an 'assigned-clocks' list - in vcodec_dec and in
+vcodec_enc_vp8. Fix it to be declared only in vcodec_enc_vp8
 
-On Mon, 11 Oct 2021 12:01:04 +0200, Matthias Brugger wrote:
-> Please have a look on the changes for this round.
-> We have support for mt8192 in the mmsys and mutex driver. Apart mmsys now
-> enables it's integrated reset controller.
-> 
-> Thanks,
-> Matthias
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
 
-Merged into arm/drivers, thanks!
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+index d9e005ae5bb0..51781444cedd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
+@@ -1422,15 +1422,13 @@
+ 				      "vencpll",
+ 				      "venc_lt_sel",
+ 				      "vdec_bus_clk_src";
+-			assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
+-					  <&topckgen CLK_TOP_CCI400_SEL>,
++			assigned-clocks = <&topckgen CLK_TOP_CCI400_SEL>,
+ 					  <&topckgen CLK_TOP_VDEC_SEL>,
+ 					  <&apmixedsys CLK_APMIXED_VCODECPLL>,
+ 					  <&apmixedsys CLK_APMIXED_VENCPLL>;
+-			assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
+-						 <&topckgen CLK_TOP_UNIVPLL_D2>,
++			assigned-clock-parents = <&topckgen CLK_TOP_UNIVPLL_D2>,
+ 						 <&topckgen CLK_TOP_VCODECPLL>;
+-			assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
++			assigned-clock-rates = <0>, <0>, <1482000000>, <800000000>;
+ 		};
+ 
+ 		larb1: larb@16010000 {
+-- 
+2.17.1
 
-merge commit: 24e18b0f45c7830a74400aa599e4e3d67155ae1c
-
-       Arnd
 
 _______________________________________________
 Linux-mediatek mailing list
