@@ -2,175 +2,65 @@ Return-Path: <SRS0=GRN7=PA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EABC3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 17:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F3E00C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 17:55:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A5F0460F3A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 17:42:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A5F0460F3A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id B649261050
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 17:55:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B649261050
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=z3ntu.xyz
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:
-	References:Message-ID:From:Subject:Cc:To:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=V0Aw5pV6V9bLwh/RRJR2qwsD9VL+ErNxfl7GV4QB6Lg=; b=w0dxm+Ms7O0LOa94cV3BFeA2LR
-	ENWOLhWu2TEGQMzEN7x4LCCQbJ6dwulOPW/swtTrE8/UmIBcK+qnfU2vPjZoJKBQS592H6OpNkpey
-	PX3V43vsIClaVIyWHRXd+GrPY5B1LBXF6q2KkWJzw7OYsmbFc5/Yr3hi7qZZIS00ZTEpfr5Yn5fPF
-	oWxaUu7Ca94Qe98p1YEe5jYUXUrc+HmoTZOHTeAroaVZIfRmRyh/QOk3C0iVmuPzk4OLSHSPJJD/7
-	6qxuFk1v3LqUhUPOKV1jmLyMasd4a30sdYY28PfOh9DPDUm3t+et+fYJxKPKRrI1BZYsQVSNMnk7r
-	Cqv3LH2Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6juN2lCoz8Lli820g8HJVxe0b06bXp36Dw6PTqPpeGY=; b=OAA9kyIVPwvUY/
+	O/HXyELG6FOi80yEJYevXq7m5tf0kwyRk2TyW9A5kSoUyU1d1vpphSmRPbSaN2Q7EV5W9esUiILKI
+	1jSzOJ5iBY2vOi9WfsVI83XwC2xLgk2YIp8He1vRI2cQ55rl8xBnW3Ybh7Du4v0cHCf2dbdDt29gp
+	yijA251Qq2pqQTDXiGQHuMAOevNLhQlwO9I6+CA3AxWXVr4tgUdK6BRfhOYSksHUUJcNDYFu5h0GZ
+	an1hUarD6+zYfkfcU4SeoE7xdxa6HaBlQbJyUFyIcN/ZZ1jPvlhK4ySO2WqEmQJlCYH5bOY0McTrH
+	he7cCKA58rDdZfXvHERA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maLmk-00DdlU-OO; Tue, 12 Oct 2021 17:41:54 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1maLzV-00Demq-Fq; Tue, 12 Oct 2021 17:55:05 +0000
+Received: from mail.z3ntu.xyz ([128.199.32.197])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maLmf-00Ddl5-Ne
- for linux-mediatek@lists.infradead.org; Tue, 12 Oct 2021 17:41:51 +0000
-Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 19CGnrdF016792; 
- Tue, 12 Oct 2021 17:41:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=to : cc : subject :
- from : message-id : references : date : in-reply-to : content-type :
- mime-version; s=corp-2021-07-09;
- bh=H9C84P0qbQxeyKTW3tN2L9SuFSvJcdQ7vOTbwTPyut0=;
- b=ug3KsvuLfBkILMmqzHtWboO7HR4hVCsUqA8TvunZbqVJIHaGQ+j9ob2s4L6DeuMVeoAa
- Q85/EUvc2PzrTtgGDcSdwG39pusvbK33PKKFHf3ltzG+nEvxCdrXDu7BvzOrhulfA/gC
- 9mnqCjYtzzaHaRi/U5bajrJY3eCwrQRzRL5cNeXfC8lAoAW6PBPCuIow9t7mEI6B+ggN
- /k1U1Z16b+HdbtC1ZJ64N9FLRezvjHaZXGoEev1CFCuZqg9Bi7zGUY/UnnAdt/sEmAMD
- eOsPRYjlPs7JB5m+OWrcGQcX5CBc34yqULmr88jo6yyKFmS8fmoPsEtaRCQY3afZpQVs yg== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by mx0b-00069f02.pphosted.com with ESMTP id 3bmtmk88wf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 12 Oct 2021 17:41:39 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 19CHeR34094382;
- Tue, 12 Oct 2021 17:41:25 GMT
-Received: from nam12-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam12lp2175.outbound.protection.outlook.com [104.47.59.175])
- by aserp3030.oracle.com with ESMTP id 3bkyxs2sap-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 12 Oct 2021 17:41:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=SZz00PvZWVbRMAirMXP/lba2MXn29Z2fy6pliOaQm4IGqk3Hc6KnFRP7mGsnQkRLYacUNnyEXoWjU+5NIUROcTv3c9HpSi9AQE49zWSJ5x0jlClave2dmO6GVXkKhkXyUnKVhUsiFShUhckiwAK734IVp+KfCMyT3TWIVdVvrHauLGELSC3RTlI3Y55WBpWmgF4ylT3iSL5fj3JbPNfY434O/EsOuLDLdZtNuSbmL27m62W4FkAe3ayXCzq21k0yIGoDf+wP9grhXShQC7RYrgFkAldaKgaIvS2Bz1ymSC0p01/WSgOo4JpCUyrzpIGgoT826q/i2opptJWNaMSdGg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=H9C84P0qbQxeyKTW3tN2L9SuFSvJcdQ7vOTbwTPyut0=;
- b=lrys43pi30PuP9mv5sDbBhQMzLvKfoS18FmYM1fLnjdcUp1EN/ZGttUbGodLJnADANuyBf8MpHF0P4Hazt5fFWfBcNMJNt8fCtq1hVIHIFAjgzUR9Xqk5gkJ/DeiSSm4GMOg5Ti0yB535FDeeQnWrLpFUbA57O/GlZ0s64SWfT3UEmqy6jWny+mhwHn5wi00Osyu9bvHDVuDMmkgT7uFGq7hO6gas+58PKxoZVhrxYRPwIES3QvjSZKC0DugKErIri/15t8K71KpGpBdHGl7TmmJ8AvPVIHFw64Ft+mwoQNTfgTX27CqfZcIWAc0ECLmaBp5eRCxdm5ena+C+q2AtA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=H9C84P0qbQxeyKTW3tN2L9SuFSvJcdQ7vOTbwTPyut0=;
- b=DV2jZrA2DV3TNdGVjA99uiBOUMOmqMM2eqC8zO1bbWgzgNlgEUwjZLYQFEkGaBcus/Up9L85ZP2+9FTWbfkN6S3LwaSSRlSL4MB0d5stkbRPHRp7O+//YEp5yBAHTePyHr0XV+zVVGdy8MldHpODbl+RhLbVH4s++DwPI0/Pewc=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=oracle.com;
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com (2603:10b6:510:3d::12)
- by PH0PR10MB5404.namprd10.prod.outlook.com (2603:10b6:510:eb::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4587.18; Tue, 12 Oct
- 2021 17:41:22 +0000
-Received: from PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::a457:48f2:991f:c349]) by PH0PR10MB4759.namprd10.prod.outlook.com
- ([fe80::a457:48f2:991f:c349%9]) with mapi id 15.20.4587.026; Tue, 12 Oct 2021
- 17:41:22 +0000
-To: <peter.wang@mediatek.com>
-Cc: <stanley.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
- <martin.petersen@oracle.com>, <avri.altman@wdc.com>,
- <alim.akhtar@samsung.com>, <jejb@linux.ibm.com>,
- <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <chun-hung.wu@mediatek.com>, <alice.chao@mediatek.com>,
- <cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
- <jiajie.hao@mediatek.com>, <powen.kao@mediatek.com>,
- <jonathan.hsu@mediatek.com>, <qilin.tan@mediatek.com>,
- <lin.gui@mediatek.com>, <mikebi@micron.com>
-Subject: Re: [PATCH v4] scsi: ufs: support vops pre suspend for mediatek to
- disable auto-hibern8
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-Organization: Oracle Corporation
-Message-ID: <yq1ee8qqgy2.fsf@ca-mkp.ca.oracle.com>
-References: <20211006054705.21885-1-peter.wang@mediatek.com>
-Date: Tue, 12 Oct 2021 13:41:19 -0400
-In-Reply-To: <20211006054705.21885-1-peter.wang@mediatek.com> (peter wang's
- message of "Wed, 6 Oct 2021 13:47:05 +0800")
-X-ClientProxiedBy: SN7P222CA0017.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:124::15) To PH0PR10MB4759.namprd10.prod.outlook.com
- (2603:10b6:510:3d::12)
+ id 1maLzI-00Dek8-JO; Tue, 12 Oct 2021 17:54:54 +0000
+Received: from g550jk.localnet (unknown [62.240.134.74])
+ by mail.z3ntu.xyz (Postfix) with ESMTPSA id 493A6C9740;
+ Tue, 12 Oct 2021 17:54:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=z3ntu.xyz; s=z3ntu;
+ t=1634061284; bh=vw/u1+TRdbPbMlWhcKJ4P6ntQXXSxoIiYsV1GYAXpDs=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=EszIvTl8z/YYB8i9IdSQ7Z76+m2YEuxr3PMJR+fXCfYcDwb2ob5fYnKjks+FvKxZ9
+ BenrzW5z5PIl0OEBejVr2nfL01SYY2R9UekBHsiD38G1bpMqb2xWhdpygoh7gFAut7
+ MdaJmhMQ9XnPcwJSuHVQ+ZpEglW07L7ts5PvFbTw=
+From: Luca Weiss <luca@z3ntu.xyz>
+To: linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+List-Id: <soc.lore.kernel.org>
+Cc: ~postmarketos/upstreaming@lists.sr.ht, Arnd Bergmann <arnd@arndb.de>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Olof Johansson <olof@lixom.net>, Rob Herring <robh+dt@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, soc@kernel.org
+Subject: Re: [PATCH 2/2] arm: dts: mt6589: Add device tree for Fairphone 1
+Date: Tue, 12 Oct 2021 19:54:38 +0200
+Message-ID: <5755444.lOV4Wx5bFT@g550jk>
+In-Reply-To: <686404ce-2e0b-5470-b095-1c1fd7c18250@gmail.com>
+References: <20211005202833.96526-1-luca@z3ntu.xyz>
+ <20211005202833.96526-2-luca@z3ntu.xyz>
+ <686404ce-2e0b-5470-b095-1c1fd7c18250@gmail.com>
 MIME-Version: 1.0
-Received: from ca-mkp.ca.oracle.com (138.3.201.12) by
- SN7P222CA0017.NAMP222.PROD.OUTLOOK.COM (2603:10b6:806:124::15) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4587.19 via Frontend Transport; Tue, 12 Oct 2021 17:41:22 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 4c0a5369-08bc-4d23-ee9a-08d98da781c5
-X-MS-TrafficTypeDiagnostic: PH0PR10MB5404:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <PH0PR10MB5404906B59CC494ED06D71298EB69@PH0PR10MB5404.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2399;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: MmO777fWFEyzsCWbPPix7GboCLeLvTjnWQCscFd99fWdLHo4DjvwMMh0SrfxUbOMjkAEC3mLJapZUOWDsLvbdONhtPMvynSfbmljMpVOZxPSGwXoUWC5WOYSF6gDqtuwJUGYWRR37BFmS8houwyPNRkmzNW2Ni+DDvVxMR33QhNRpYAPPBKH2U/aufN3IzPlGsRrr5zIx0FZ9gm6lvRpPavOtQnIz2b2/h40bj9Y6yLTVy3PmXYDpTDCNBXpD2lbWks08xY5kFl1KOgWEK+ALOOevNY+BBTWEGuL4TWwBGBJczSizx8RYj+AzJCi7fubesPzrCo96W6MDnpHJnpnA8kSuKql3+SviZaEcTJ75XWpxzlSylUoOqX6Q07r8og+ANU6DXNQpbZg117qbk2HnT4tSWI4RM/P3gq+WuCaL5M4Dgdg0UPaafctGjYrmAkHM5iLE/5w1oeQtlrl0asw8u1BFIrF+W7pF9IrSRE/NikoqGwtOi3U5GEGXQDc8WF8t9Q+j9rkH/cfedbDPXvwxQHzLqHsURIQMN948MODyndpuq9hQVp3zVLf94cm0qKlZJbqXRnLfbGOd7VBXKa6WvF70gv13KrK6H/bh8OzhOFO8d3iMVNJrM34Odt65evII4vQmzEdSX6T4ALcPXH59BLduG7rhTGlYHZXh0oh1fLnmiRhMTbRClIqZdZ4ASIsUALJ11o0+kPGnuCuXPHzUQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR10MB4759.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(6916009)(55016002)(6666004)(5660300002)(54906003)(316002)(83380400001)(558084003)(38100700002)(38350700002)(956004)(2906002)(86362001)(4326008)(66556008)(7416002)(26005)(15650500001)(8676002)(508600001)(66946007)(7696005)(186003)(8936002)(36916002)(52116002)(66476007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?EaOLaDcEys/NwH7/2HMMRN9GN4r/9m0y3cMK/6SekALGrpdT32Q3u+mMrcLn?=
- =?us-ascii?Q?ug+snTtZshY3qi3kxd98k9s37yphjCiecfYb/HNu4ukoLex34XwdJcoWR/wX?=
- =?us-ascii?Q?0q2vxLWpani6GWyUagDEbrdN91pxD67REyReG3twKY4NH4+uZGBtSIkvC1LN?=
- =?us-ascii?Q?cQ/lAza+HBX3oP1OOGbVwnwWt4BSfm3KgA6lqqhlq7rvyBdc+nVGfcUDC9c9?=
- =?us-ascii?Q?AhEvFmtifAaBVzLRKjd7Qc0ETdjFw109rPVxjQUkQWaoBxNX7fz3G4KPbXYn?=
- =?us-ascii?Q?09mbBSuqzpG28H8xu6LGmqXKJ2sznMGZf+5+m51L2Ozb5oINXEKu/zwplnDs?=
- =?us-ascii?Q?rmG2F40yz6geqaBgRSsJrGqXXrN+rMdS/zJgranwAU42CI9RgoUhL2COvEUp?=
- =?us-ascii?Q?mXZ8q1jAqZLtzBInYe97deg04hABob7lWd3O2m7BcUcRxFntpGvRdooqm3VE?=
- =?us-ascii?Q?qPFaHXmMw2fIZdzTGNga361BPmMxlAL3W6uuqy/va6L9p8wmt48/ru4lu8Co?=
- =?us-ascii?Q?zKMgxgI+jb2Gop02tMw74bL7i8Ry4O4E4LRdxW7fe/4dHCgK7JFZJejA4VNq?=
- =?us-ascii?Q?6Sl4ma1NSuqLR1SeC0bFYYbXLkY3ZGdRe3xzaDB16ThZ8hsY/BC/nraQpZq0?=
- =?us-ascii?Q?12wnQ8rDUlDTp16jYYZxUfzugxyFfTveE6EbUk4GPO8LuZo+l2BSeyiL83gV?=
- =?us-ascii?Q?/GIo4YihAiCMTuyQs0H63GRMbVlde4xAC9Qk/rUs6iWQsEu1tm5EpzNRFBbM?=
- =?us-ascii?Q?YZB7ihpokKEViWTA9+ncU7pT2k3kkEpiM2kZVvQApT3nirnVbJ6hwHPmbA+h?=
- =?us-ascii?Q?3+1ZiARc0JlSPoOgHQ8dwkt5QznhJ1iROkyw3/GtKC6m2MZCpBf0GVGEQf2K?=
- =?us-ascii?Q?3WdGh7/HWy5FtmG+aLlia69ny1c/5Cic7TRWxq9q/CBqo130aHXYSzAcHM+T?=
- =?us-ascii?Q?i6iZx0xypxIvw90u7LkJvu+yYStqWh7RYhdZg1FFKKAs4gwaWkSR7aUYBm6c?=
- =?us-ascii?Q?lGvvAmE9Ej7LBKjlscaMYnySBXrk8EYfE+EK1ja6Jzb0z1tUO5CwE3Z1KG94?=
- =?us-ascii?Q?JRs+Z4241+uCJacKoCBxQNfzR+X74pR/6fAkvhSdbmgNHVAmeUYxUdDZh+Mf?=
- =?us-ascii?Q?YYcfvVhB9gCY58VmyIc8U2nZyayBWOlXRsVehWVzwVxrtVCtzDgGxk32K844?=
- =?us-ascii?Q?z4uh+OuUlghPtE7r1/1INqWN1rBlFnwrRkj4DxEP1fCvoBntXpOdBhc9wfDE?=
- =?us-ascii?Q?qTACpn2wfw0bXDNFeUsQLuVMWCEe1WcEMICDKE0oxpRzLVqZMe49id6btBXe?=
- =?us-ascii?Q?CLLN7g8DhoLV7ssBfpg4Wf3P?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4c0a5369-08bc-4d23-ee9a-08d98da781c5
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4759.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2021 17:41:22.7526 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: d6s+9qKpjMxBM4POc2MVXQso1+h9nzVVMurLxJTCwHYMUR+gQy6Z3jPynrlLLFL1VXiMLE5ck+8b5CfUQrMScz54jGjCqKDoXXe5rrmpm8w=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB5404
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10135
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
- phishscore=0 suspectscore=0
- mlxlogscore=830 mlxscore=0 bulkscore=0 adultscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2109230001
- definitions=main-2110120096
-X-Proofpoint-GUID: Teo1Zg1tLxJDfgR9WErTec4AKKSyMMG0
-X-Proofpoint-ORIG-GUID: Teo1Zg1tLxJDfgR9WErTec4AKKSyMMG0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211012_104149_936355_B43258A3 
-X-CRM114-Status: UNSURE (   9.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211012_105452_844481_3D1E1049 
+X-CRM114-Status: GOOD (  31.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -187,15 +77,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Matthias,
 
-> Mediatek UFS design need disable auto-hibern8 before suspend.  This
-> patch introduce an solution to do pre suspned before SSU (sleep)
-> command.
+On Freitag, 8. Oktober 2021 13:49:25 CEST Matthias Brugger wrote:
+> On 05/10/2021 22:28, Luca Weiss wrote:
+> > Add rudimentary support for the Fairphone 1, based on MT6589 to boot to
+> > UART console.
+> > 
+> > The recently added SMP support needs to be disabled for this board as
+> > the kernel panics executing /init with it, even though the CPUs seem to
+> > start up fine - maybe a stability issue.
+> > 
+> > [    0.072010] smp: Bringing up secondary CPUs ...
+> > [    0.131888] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+> > [    0.191889] CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
+> > [    0.251890] CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
+> > [    0.251982] smp: Brought up 1 node, 4 CPUs
+> > [    0.254745] SMP: Total of 4 processors activated (7982.28 BogoMIPS).
+> > [    0.255582] CPU: All CPU(s) started in SVC mode.
+> > 
+> > [    0.472039] Run /init as init process
+> > [    0.473317] Kernel panic - not syncing: Attempted to kill init!
+> > exitcode=0x00000004
+> Would be nice to find out why. Did you tried to boot the system with
+> enable-method set but with bringing up just one or two cpus?
 
-Applied to 5.16/scsi-staging, thanks!
+Answered further down.
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+> 
+> > Signed-off-by: Luca Weiss <luca@z3ntu.xyz>
+> > ---
+> > 
+> >   arch/arm/boot/dts/Makefile                 |  1 +
+> >   arch/arm/boot/dts/mt6589-fairphone-fp1.dts | 30 ++++++++++++++++++++++
+> >   2 files changed, 31 insertions(+)
+> >   create mode 100644 arch/arm/boot/dts/mt6589-fairphone-fp1.dts
+> > 
+> > diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+> > index 7e0934180724..24f402db2613 100644
+> > --- a/arch/arm/boot/dts/Makefile
+> > +++ b/arch/arm/boot/dts/Makefile
+> > @@ -1437,6 +1437,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
+> > 
+> >   	mt2701-evb.dtb \
+> >   	mt6580-evbp1.dtb \
+> >   	mt6589-aquaris5.dtb \
+> > 
+> > +	mt6589-fairphone-fp1.dtb \
+> > 
+> >   	mt6592-evb.dtb \
+> >   	mt7623a-rfb-emmc.dtb \
+> >   	mt7623a-rfb-nand.dtb \
+> > 
+> > diff --git a/arch/arm/boot/dts/mt6589-fairphone-fp1.dts
+> > b/arch/arm/boot/dts/mt6589-fairphone-fp1.dts new file mode 100644
+> > index 000000000000..32c14ecf2244
+> > --- /dev/null
+> > +++ b/arch/arm/boot/dts/mt6589-fairphone-fp1.dts
+> > @@ -0,0 +1,30 @@
+> > +// SPDX-License-Identifier: BSD-3-Clause
+> > +/*
+> > + * Copyright (c) 2021, Luca Weiss <luca@z3ntu.xyz>
+> > + */
+> > +
+> > +/dts-v1/;
+> > +#include "mt6589.dtsi"
+> > +
+> > +/ {
+> > +	model = "Fairphone 1";
+> > +	compatible = "fairphone,fp1", "mediatek,mt6589";
+> > +
+> > +	chosen {
+> > +		stdout-path = &uart3;
+> > +	};
+> > +
+> > +	cpus {
+> 
+> I'd expected "&cpus" why can we overwrite delete the node property like this
+> here?
+
+Both results in the same, dtc just merges everything together, so as long as 
+the node name is identical, it works.
+Also I cannot use &cpus because cpus in mt6589.dtsi doesn't have a label set.
+
+Regarding SMP:
+I have tried setting maxcpus=2 in cmdline and that still makes the kernel 
+panic. With maxcpus=1 and leaving the deleting out of the dts the kernel is 
+stable and works properly.
+
+So I think it's better to leave this out of the dts and keep maxcpus=1 in 
+cmdline (until this gets fixed).
+
+I've also heard from the person adding enable-method to mt6589.dtsi that it 
+still works on their board, so something's different, maybe a different SoC 
+revision, different bootloader behavior or whatever.
+
+If that's fine with you, I'll send a v2 with that fixed.
+
+> > +		/* SMP is not stable on this board, makes the kernel 
+panic */
+> > +		/delete-property/ enable-method;
+> > +	};
+> > +
+> > +	memory {
+
+Also I was told off-list that this should be called memory@80000000 because of 
+the reg, will fix in v2.
+
+Regards
+Luca
+
+> > +		device_type = "memory";
+> > +		reg = <0x80000000 0x40000000>;
+> > +	};
+> > +};
+> > +
+> > +&uart3 {
+> > +	status = "okay";
+> > +};
+
+
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
