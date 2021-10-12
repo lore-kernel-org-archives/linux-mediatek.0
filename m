@@ -2,14 +2,14 @@ Return-Path: <SRS0=GRN7=PA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 61EEAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 23:02:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F39E8C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 23:02:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3AB5E60724
-	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 23:02:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3AB5E60724
+	by mail.kernel.org (Postfix) with ESMTPS id B17F2604E9
+	for <linux-mediatek@archiver.kernel.org>; Tue, 12 Oct 2021 23:02:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B17F2604E9
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,31 +18,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BXB3SXy3ymZAqTtIKdidcvs2Cah3B6T3sTV+IojkLAQ=; b=IFbtaWSxS9n3nq
-	oRWu5wYw8Vs2IFIeUrScPAvXkkrZ3ePZD6HGEGThOju+sFkA+1rOWDr6rmpfxFi20c9Zx7x6z0ta+
-	9BfTi8vATYiIfmTTDgcncbR+zRe7PE7Nv3xj3woCcqOeRanJIs+00RYAf+uyiIjkBoyZeJl2FamKV
-	IhMwvsheRQq2JpV+8K95A9YxzrMYzkCXCKype/Y3JURvNqpGnd2JEnqvMA9YVI3lPJwDlkQNZEsHg
-	6/Pq55lDgxNIqm8XRjnWJ5buLuC8m2GfIwCqg7TgJJGrv61XcigEUIwOotSLkbTfeQ97IIQPV6cuf
-	JbgdhNZr7P4j1Y7ndCaQ==;
+	List-Owner; bh=5S3U+HJx+3UAtu2NGcyQvnQoSTEN1mDZzEldqLG6+Ic=; b=y7i2rWahDSF5m+
+	zCdTCdcvdfoFmFldKZNFmDZdIq7HWHTIleCCfdrjKF9bdwyo8vAjU9x8e87QP/yE95YtQBbIxTITh
+	siQ9/v8uI/MKm7mcJcOmul1nUAe3CPgbIZqdMKdwDuXOHI6jdyBoIsakPBNcEIWHp+RZW2IV43mE4
+	lg8lO+sGJpotZOnNl1Kaq3D67TMEYzm5SN8jSnAPtOjJD6pJjfSRd4JeHx7B71vPZGXbqMhqzvcW1
+	VJrzAnBr11LKQlZx1AgyVjbJrluauqrfhrkFM9spCd4ej8w/GHrZAjv5ZwVJWYlGcen/x17tclUJP
+	707WHoULooBWTa+kfzPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maQn7-00E8fy-Qz; Tue, 12 Oct 2021 23:02:37 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1maQn4-00E8cg-Bw; Tue, 12 Oct 2021 23:02:34 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maQn4-00E8cS-RU
- for linux-mediatek@lists.infradead.org; Tue, 12 Oct 2021 23:02:36 +0000
-X-UUID: 0b794a35d2ff43d88cb93d2009ad7925-20211012
-X-UUID: 0b794a35d2ff43d88cb93d2009ad7925-20211012
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1maQn0-00E8Yq-4E
+ for linux-mediatek@lists.infradead.org; Tue, 12 Oct 2021 23:02:32 +0000
+X-UUID: b7b534070f294f87ac9e6e70c2189010-20211012
+X-UUID: b7b534070f294f87ac9e6e70c2189010-20211012
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 594608492; Tue, 12 Oct 2021 16:02:31 -0700
+ with ESMTP id 535838475; Tue, 12 Oct 2021 16:02:23 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 12 Oct 2021 15:52:37 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 12 Oct 2021 15:52:48 -0700
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 13 Oct 2021 06:52:36 +0800
+ Frontend Transport; Wed, 13 Oct 2021 06:52:47 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -54,18 +54,19 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
  <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v4 07/16] mt76: mt7663s: rely on mcu reg access utility
-Date: Wed, 13 Oct 2021 06:52:00 +0800
-Message-ID: <2dc1961473d2965b7334056725d669cac7b1c412.1634077769.git.objelf@gmail.com>
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Deren
+ Wu <deren.wu@mediatek.com>
+Subject: [PATCH v4 11/16] mt76: sdio: extend sdio module to support CONNAC2
+Date: Wed, 13 Oct 2021 06:52:04 +0800
+Message-ID: <654f1b4b4f5c5b566e8a64795a3c8ebcc19a7593.1634077769.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1634077769.git.objelf@gmail.com>
 References: <cover.1634077769.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211012_160234_929039_97989C8E 
-X-CRM114-Status: GOOD (  10.53  )
+X-CRM114-CacheID: sfid-20211012_160230_244058_62821705 
+X-CRM114-Status: GOOD (  21.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,80 +85,314 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-rely on mcu reg access utility and drop the duplicated code.
+Extend sdio module to support CONNAC2 hw that mt7921s rely on.
 
+Tested-by: Deren Wu <deren.wu@mediatek.com>
 Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Co-developed-by: Deren Wu <deren.wu@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7615/mcu.c   | 28 -------------------
- .../wireless/mediatek/mt76/mt7615/mt7615.h    |  2 --
- .../wireless/mediatek/mt76/mt7615/sdio_mcu.c  |  4 +--
- 3 files changed, 2 insertions(+), 32 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  5 +-
+ .../net/wireless/mediatek/mt76/mt7615/sdio.c  |  5 +-
+ drivers/net/wireless/mediatek/mt76/sdio.c     | 23 ++++++-
+ drivers/net/wireless/mediatek/mt76/sdio.h     | 50 ++++++++++++++-
+ .../net/wireless/mediatek/mt76/sdio_txrx.c    | 62 ++++++++++++++++---
+ 5 files changed, 128 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-index 2ba730808f3b..2cb3969e6432 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mcu.c
-@@ -2769,31 +2769,3 @@ int mt7615_mcu_set_roc(struct mt7615_phy *phy, struct ieee80211_vif *vif,
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_CMD_SET_ROC, &req,
- 				 sizeof(req), false);
- }
--
--u32 mt7615_mcu_reg_rr(struct mt76_dev *dev, u32 offset)
--{
--	struct {
--		__le32 addr;
--		__le32 val;
--	} __packed req = {
--		.addr = cpu_to_le32(offset),
--	};
--
--	return mt76_mcu_send_msg(dev, MCU_CMD_REG_READ, &req, sizeof(req),
--				 true);
--}
--EXPORT_SYMBOL_GPL(mt7615_mcu_reg_rr);
--
--void mt7615_mcu_reg_wr(struct mt76_dev *dev, u32 offset, u32 val)
--{
--	struct {
--		__le32 addr;
--		__le32 val;
--	} __packed req = {
--		.addr = cpu_to_le32(offset),
--		.val = cpu_to_le32(val),
--	};
--
--	mt76_mcu_send_msg(dev, MCU_CMD_REG_WRITE, &req, sizeof(req), false);
--}
--EXPORT_SYMBOL_GPL(mt7615_mcu_reg_wr);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-index 58a98b5c0cbc..437f14f06e63 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mt7615.h
-@@ -553,8 +553,6 @@ int mt7615_mac_set_beacon_filter(struct mt7615_phy *phy,
- int mt7615_mcu_set_bss_pm(struct mt7615_dev *dev, struct ieee80211_vif *vif,
- 			  bool enable);
- int __mt7663_load_firmware(struct mt7615_dev *dev);
--u32 mt7615_mcu_reg_rr(struct mt76_dev *dev, u32 offset);
--void mt7615_mcu_reg_wr(struct mt76_dev *dev, u32 offset, u32 val);
- void mt7615_coredump_work(struct work_struct *work);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index e2f33956a122..06f0d1348d52 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -505,6 +505,8 @@ struct mt76_sdio {
  
- void mt7622_trigger_hif_int(struct mt7615_dev *dev, bool en);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7615/sdio_mcu.c
-index 45c1cd3b9f49..517419bb7772 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio_mcu.c
-@@ -137,8 +137,8 @@ int mt7663s_mcu_init(struct mt7615_dev *dev)
- 		.mcu_skb_send_msg = mt7663s_mcu_send_message,
- 		.mcu_parse_response = mt7615_mcu_parse_response,
- 		.mcu_restart = mt7615_mcu_restart,
--		.mcu_rr = mt7615_mcu_reg_rr,
--		.mcu_wr = mt7615_mcu_reg_wr,
-+		.mcu_rr = mt76_connac_mcu_reg_rr,
-+		.mcu_wr = mt76_connac_mcu_reg_wr,
- 	};
- 	struct mt7615_mcu_ops *mcu_ops;
+ 	struct sdio_func *func;
+ 	void *intr_data;
++	int intr_size;
++	u8 hw_ver;
+ 
+ 	struct {
+ 		int pse_data_quota;
+@@ -1249,7 +1251,8 @@ int mt76s_alloc_queues(struct mt76_dev *dev);
+ void mt76s_deinit(struct mt76_dev *dev);
+ void mt76s_sdio_irq(struct sdio_func *func);
+ void mt76s_txrx_worker(struct mt76_sdio *sdio);
+-int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func);
++int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func,
++		  int hw_ver);
+ u32 mt76s_rr(struct mt76_dev *dev, u32 offset);
+ void mt76s_wr(struct mt76_dev *dev, u32 offset, u32 val);
+ u32 mt76s_rmw(struct mt76_dev *dev, u32 offset, u32 mask, u32 val);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+index f47e25f6dedb..a6b5d536d962 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+@@ -100,7 +100,7 @@ static int mt7663s_probe(struct sdio_func *func,
+ 	if (ret < 0)
+ 		goto error;
+ 
+-	ret = mt76s_hw_init(mdev, func);
++	ret = mt76s_hw_init(mdev, func, MT76_CONNAC_SDIO);
+ 	if (ret)
+ 		goto error;
+ 
+@@ -108,8 +108,9 @@ static int mt7663s_probe(struct sdio_func *func,
+ 		    (mt76_rr(dev, MT_HW_REV) & 0xff);
+ 	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
+ 
++	mdev->sdio.intr_size = sizeof(struct mt76_connac_sdio_intr);
+ 	mdev->sdio.intr_data = devm_kmalloc(mdev->dev,
+-					    sizeof(struct mt76s_intr),
++					    mdev->sdio.intr_size,
+ 					    GFP_KERNEL);
+ 	if (!mdev->sdio.intr_data) {
+ 		ret = -ENOMEM;
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
+index 82fb4c110b90..bb40cc3e9c2b 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio.c
+@@ -221,11 +221,13 @@ int mt76s_rd_rp(struct mt76_dev *dev, u32 base,
+ }
+ EXPORT_SYMBOL_GPL(mt76s_rd_rp);
+ 
+-int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func)
++int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func, int hw_ver)
+ {
+ 	u32 status, ctrl;
  	int ret;
+ 
++	dev->sdio.hw_ver = hw_ver;
++
+ 	sdio_claim_host(func);
+ 
+ 	ret = sdio_enable_func(func);
+@@ -255,12 +257,27 @@ int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func)
+ 		goto disable_func;
+ 
+ 	ctrl = WHIER_RX0_DONE_INT_EN | WHIER_TX_DONE_INT_EN;
++	if (hw_ver == MT76_CONNAC2_SDIO)
++		ctrl |= WHIER_RX1_DONE_INT_EN;
+ 	sdio_writel(func, ctrl, MCR_WHIER, &ret);
+ 	if (ret < 0)
+ 		goto disable_func;
+ 
+-	/* set WHISR as read clear and Rx aggregation number as 16 */
+-	ctrl = FIELD_PREP(MAX_HIF_RX_LEN_NUM, 16);
++	switch (hw_ver) {
++	case MT76_CONNAC_SDIO:
++		/* set WHISR as read clear and Rx aggregation number as 16 */
++		ctrl = FIELD_PREP(MAX_HIF_RX_LEN_NUM, 16);
++		break;
++	default:
++		ctrl = sdio_readl(func, MCR_WHCR, &ret);
++		if (ret < 0)
++			goto disable_func;
++		ctrl &= ~MAX_HIF_RX_LEN_NUM_CONNAC2;
++		ctrl &= ~W_INT_CLR_CTRL; /* read clear */
++		ctrl |= FIELD_PREP(MAX_HIF_RX_LEN_NUM_CONNAC2, 0);
++		break;
++	}
++
+ 	sdio_writel(func, ctrl, MCR_WHCR, &ret);
+ 	if (ret < 0)
+ 		goto disable_func;
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio.h b/drivers/net/wireless/mediatek/mt76/sdio.h
+index 03877d89e152..7d2ec044dcb1 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio.h
++++ b/drivers/net/wireless/mediatek/mt76/sdio.h
+@@ -21,7 +21,12 @@
+ #define MCR_WHCR			0x000C
+ #define W_INT_CLR_CTRL			BIT(1)
+ #define RECV_MAILBOX_RD_CLR_EN		BIT(2)
++#define WF_SYS_RSTB			BIT(4) /* supported in CONNAC2 */
++#define WF_WHOLE_PATH_RSTB		BIT(5) /* supported in CONNAC2 */
++#define WF_SDIO_WF_PATH_RSTB		BIT(6) /* supported in CONNAC2 */
+ #define MAX_HIF_RX_LEN_NUM		GENMASK(13, 8)
++#define MAX_HIF_RX_LEN_NUM_CONNAC2	GENMASK(14, 8) /* supported in CONNAC2 */
++#define WF_RST_DONE			BIT(15) /* supported in CONNAC2 */
+ #define RX_ENHANCE_MODE			BIT(16)
+ 
+ #define MCR_WHISR			0x0010
+@@ -29,6 +34,7 @@
+ #define WHIER_D2H_SW_INT		GENMASK(31, 8)
+ #define WHIER_FW_OWN_BACK_INT_EN	BIT(7)
+ #define WHIER_ABNORMAL_INT_EN		BIT(6)
++#define WHIER_WDT_INT_EN		BIT(5) /* supported in CONNAC2 */
+ #define WHIER_RX1_DONE_INT_EN		BIT(2)
+ #define WHIER_RX0_DONE_INT_EN		BIT(1)
+ #define WHIER_TX_DONE_INT_EN		BIT(0)
+@@ -100,7 +106,37 @@
+ 
+ #define MCR_SWPCDBGR			0x0154
+ 
+-struct mt76s_intr {
++#define MCR_H2DSM2R			0x0160 /* supported in CONNAC2 */
++#define MCR_H2DSM3R			0x0164 /* supported in CONNAC2 */
++#define MCR_D2HRM3R			0x0174 /* supported in CONNAC2 */
++#define MCR_WTQCR8			0x0190 /* supported in CONNAC2 */
++#define MCR_WTQCR9			0x0194 /* supported in CONNAC2 */
++#define MCR_WTQCR10			0x0198 /* supported in CONNAC2 */
++#define MCR_WTQCR11			0x019C /* supported in CONNAC2 */
++#define MCR_WTQCR12			0x01A0 /* supported in CONNAC2 */
++#define MCR_WTQCR13			0x01A4 /* supported in CONNAC2 */
++#define MCR_WTQCR14			0x01A8 /* supported in CONNAC2 */
++#define MCR_WTQCR15			0x01AC /* supported in CONNAC2 */
++
++enum mt76_connac_sdio_ver {
++	MT76_CONNAC_SDIO,
++	MT76_CONNAC2_SDIO,
++};
++
++struct mt76_connac2_sdio_intr {
++	u32 isr;
++	struct {
++		u32 wtqcr[16];
++	} tx;
++	struct {
++		u16 num[2];
++		u16 len0[16];
++		u16 len1[128];
++	} rx;
++	u32 rec_mb[2];
++} __packed;
++
++struct mt76_connac_sdio_intr {
+ 	u32 isr;
+ 	struct {
+ 		u32 wtqcr[8];
+@@ -112,4 +148,16 @@ struct mt76s_intr {
+ 	u32 rec_mb[2];
+ } __packed;
+ 
++struct mt76s_intr {
++	u32 isr;
++	struct {
++		u32 *wtqcr;
++	} tx;
++	struct {
++		u16 num[2];
++		u16 *len[2];
++	} rx;
++	u32 rec_mb[2];
++};
++
+ #endif
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
+index ceb3dc0613d6..73289a9845d7 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
+@@ -81,7 +81,7 @@ static int
+ mt76s_rx_run_queue(struct mt76_dev *dev, enum mt76_rxq_id qid,
+ 		   struct mt76s_intr *intr)
+ {
+-	struct mt76_queue *q = &dev->q_rx[qid];
++	struct mt76_queue *q = &dev->q_rx[0];
+ 	struct mt76_sdio *sdio = &dev->sdio;
+ 	int len = 0, err, i;
+ 	struct page *page;
+@@ -112,8 +112,10 @@ mt76s_rx_run_queue(struct mt76_dev *dev, enum mt76_rxq_id qid,
+ 	for (i = 0; i < intr->rx.num[qid]; i++) {
+ 		int index = (q->head + i) % q->ndesc;
+ 		struct mt76_queue_entry *e = &q->entry[index];
++		__le32 *rxd = (__le32 *)buf;
+ 
+-		len = intr->rx.len[qid][i];
++		/* parse rxd to get the actual packet length */
++		len = FIELD_GET(GENMASK(15, 0), le32_to_cpu(rxd[0]));
+ 		e->skb = mt76s_build_rx_skb(buf, len, round_up(len + 4, 4));
+ 		if (!e->skb)
+ 			break;
+@@ -132,35 +134,72 @@ mt76s_rx_run_queue(struct mt76_dev *dev, enum mt76_rxq_id qid,
+ 	return i;
+ }
+ 
++static void mt76s_intr_parse(struct mt76_dev *dev, void *data,
++			     struct mt76s_intr *intr)
++{
++	struct mt76_connac_sdio_intr *intr_v1;
++	struct mt76_connac2_sdio_intr *intr_v2;
++	int i;
++
++	switch (dev->sdio.hw_ver) {
++	case MT76_CONNAC_SDIO:
++		intr_v1 = data;
++		intr->isr =  intr_v1->isr;
++		intr->tx.wtqcr = intr_v1->tx.wtqcr;
++		for (i = 0; i < 2 ; i++) {
++			intr->rx.num[i] = intr_v1->rx.num[i];
++			intr->rx.len[i] = intr_v1->rx.len[i];
++			intr->rec_mb[i] = intr_v1->rec_mb[i];
++		}
++		break;
++	default:
++		intr_v2 = data;
++		intr->isr =  intr_v2->isr;
++		intr->tx.wtqcr = intr_v2->tx.wtqcr;
++		for (i = 0; i < 2 ; i++) {
++			intr->rx.num[i] = intr_v2->rx.num[i];
++			if (!i)
++				intr->rx.len[0] = intr_v2->rx.len0;
++			else
++				intr->rx.len[1] = intr_v2->rx.len1;
++			intr->rec_mb[i] = intr_v2->rec_mb[i];
++		}
++		break;
++	}
++}
++
+ static int mt76s_rx_handler(struct mt76_dev *dev)
+ {
+ 	struct mt76_sdio *sdio = &dev->sdio;
+-	struct mt76s_intr *intr = sdio->intr_data;
++	void *data = sdio->intr_data;
++	struct mt76s_intr intr;
+ 	int nframes = 0, ret;
+ 
+-	ret = sdio_readsb(sdio->func, intr, MCR_WHISR, sizeof(*intr));
++	ret = sdio_readsb(sdio->func, data, MCR_WHISR, sdio->intr_size);
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	trace_dev_irq(dev, intr->isr, 0);
++	mt76s_intr_parse(dev, data, &intr);
+ 
+-	if (intr->isr & WHIER_RX0_DONE_INT_EN) {
+-		ret = mt76s_rx_run_queue(dev, 0, intr);
++	trace_dev_irq(dev, intr.isr, 0);
++
++	if (intr.isr & WHIER_RX0_DONE_INT_EN) {
++		ret = mt76s_rx_run_queue(dev, 0, &intr);
+ 		if (ret > 0) {
+ 			mt76_worker_schedule(&sdio->net_worker);
+ 			nframes += ret;
+ 		}
+ 	}
+ 
+-	if (intr->isr & WHIER_RX1_DONE_INT_EN) {
+-		ret = mt76s_rx_run_queue(dev, 1, intr);
++	if (intr.isr & WHIER_RX1_DONE_INT_EN) {
++		ret = mt76s_rx_run_queue(dev, 1, &intr);
+ 		if (ret > 0) {
+ 			mt76_worker_schedule(&sdio->net_worker);
+ 			nframes += ret;
+ 		}
+ 	}
+ 
+-	nframes += !!mt76s_refill_sched_quota(dev, intr->tx.wtqcr);
++	nframes += !!mt76s_refill_sched_quota(dev, intr.tx.wtqcr);
+ 
+ 	return nframes;
+ }
+@@ -173,6 +212,9 @@ mt76s_tx_pick_quota(struct mt76_sdio *sdio, bool mcu, int buf_sz,
+ 
+ 	pse_sz = DIV_ROUND_UP(buf_sz + sdio->sched.deficit, MT_PSE_PAGE_SZ);
+ 
++	if (mcu && sdio->hw_ver == MT76_CONNAC2_SDIO)
++		pse_sz = 1;
++
+ 	if (mcu) {
+ 		if (sdio->sched.pse_mcu_quota < *pse_size + pse_sz)
+ 			return -EBUSY;
 -- 
 2.25.1
 
