@@ -2,70 +2,90 @@ Return-Path: <SRS0=m4qr=PB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A2DA2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 17:57:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7149BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 18:12:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 559C460174
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 17:57:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 559C460174
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 39F60610CF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 18:12:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 39F60610CF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JNIWROixJ/vpjmo1yM9tv56kaIsd7ACRR7Xvt/FbMmo=; b=OrV2RfhNuDTT88
-	WAn7sJ5GoeIURkHYYOc6xAgG7PzHDAJZxvuwpstY82OLt0nJ/pwbgSa4l0/bntgtrhu3ctxNwR2l2
-	3qau3223K2/rAUmhWUy9hAY1ji4OAwv/tR1Br6ToIwS2tDcaUfIsBkUlTnE75qOAed3OfoqVLrWo3
-	4DgRA4Pf79/VGeSjMHoPILABIdByvfaNOWJ+qYhz53jmj0xLXRO6pQXd5yWqdZtYdF+wpZDLOzRNO
-	JYPZRmVkDpbu5Qwk+JQm9FZo1m2mrmiKKQIsGs8QJbYawHpasjjflQugGDF/lZMrAFIudsZUuS8+0
-	1ITB5WzM4wMUKF/7gv/A==;
+	List-Owner; bh=LsUccXE4CYBkbjkooF4Tvw/DVgHJknDB8hdcpAN0lzk=; b=weH79fJrPW1CCP
+	fF3AcrOKSH4kA5zaZrccdTPbpLdIpgPd7yOmJa8Rz4iqwb2eIRwpopOBOB3pLJcTXDq1NNGKaYkEC
+	4hGd2PyHbNA9wx3hCHOsQJYyg/SG4tZByIZBmaO99mYs1CIGbL4mJA7xSDSh69Y0oxcppLmUBcbnz
+	virJyDysznUOQqHElhy34vN6+eWVO2igmoF+JwQDfyxb5bzwl2SENFERpJezKHEl+PH9uz77IlBjd
+	TMcUYC9ZMQpaPu/EmmTQl66NImaeyqpwOKJdboV75ufjRN1WyBiasyD9sNT3c79U797VTkQ9Nvf6t
+	TovzBhCAkT4fkyYN/cMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maiUv-000ETQ-Hb; Wed, 13 Oct 2021 17:57:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1maik9-000GYv-GP; Wed, 13 Oct 2021 18:12:45 +0000
+Received: from mail-qt1-x832.google.com ([2607:f8b0:4864:20::832])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maiUo-000ESe-Sg
- for linux-mediatek@lists.infradead.org; Wed, 13 Oct 2021 17:56:58 +0000
-X-UUID: 268498dd12ab4336a0856eb7a564f7a8-20211013
-X-UUID: 268498dd12ab4336a0856eb7a564f7a8-20211013
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 943857705; Wed, 13 Oct 2021 10:56:49 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Oct 2021 10:56:46 -0700
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 Oct 2021 01:56:34 +0800
-From: <sean.wang@mediatek.com>
-To: <lorenzo.bianconi@redhat.com>
-CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
- <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
- <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
- <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
- <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v4 11/16] mt76: sdio: extend sdio module to support CONNAC2
-Date: Thu, 14 Oct 2021 01:56:33 +0800
-Message-ID: <1634147793-9956-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <YWcJe27HQMS7B85j@lore-desk--annotate>
-References: <YWcJe27HQMS7B85j@lore-desk--annotate>
+ id 1maik6-000GXw-HI
+ for linux-mediatek@lists.infradead.org; Wed, 13 Oct 2021 18:12:44 +0000
+Received: by mail-qt1-x832.google.com with SMTP id v17so3445120qtp.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 13 Oct 2021 11:12:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=d6D5/IzB04/sRINqDPyMaeFU8sU1rQ5pGr4cDho+SKQ=;
+ b=BojWdLmJ832xQRuCmBl5mubNC5kYrEQRcd/BOgo7OG4cP5tYP5204U0XFBxdtLz24Y
+ Hvdgj3UttPoRwbY3xaE7+Hp9+xzO7c47cziNkV7b8malqY/fLU8aUiXDxg89NccXUnP3
+ QgIAxk5Bjxaf+Stbm406fuQA2mz4meDQsEDz4=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=d6D5/IzB04/sRINqDPyMaeFU8sU1rQ5pGr4cDho+SKQ=;
+ b=W24TpO5xItJTu9iOJsNwUTj3jwok/gwv2kuxVvh2AP1GZLXn0riKKnO6ClBzWVBi1m
+ yWleJAGNuNfCUwTmOi/fADW1wNm8NqPIKFbQVjvxw5cSpVLxtnDBaS3yUBfrSrZ1bNw7
+ a5qdQH2WDL+qgJ1JJeSZ1x7m10FA15KefKBnJAtT9DLTj6JK/XXRhPdg9Ii5jDxIGmTI
+ /yBIkep5RELLjmiMZ6uII5EQNb0meED8BZitnJz4vAtCe64sEWd+CiajjFKsbcEZ5QYm
+ lZEASJqhjsfW3YT3IeoP+eFnnwTwq2HkS4Ra+WCz1SN6mp7lxudCJd5/nHaWyeCYR0KN
+ xdiA==
+X-Gm-Message-State: AOAM532UYn6TyxUxIaQmEtO83M3gTEmwuphAyN14cbVdsGuRXJPSDw25
+ 90DvUhH5e7nayl+RlpxpIse3Bw==
+X-Google-Smtp-Source: ABdhPJxDWukRvC5VLi5XvI+Z7EFdxnKfGco6FCO6EkoXFnJKf2wn0AecstSiwkN5SFkY+6t1dXwqBg==
+X-Received: by 2002:a05:622a:170c:: with SMTP id
+ h12mr106800qtk.6.1634148760232; 
+ Wed, 13 Oct 2021 11:12:40 -0700 (PDT)
+Received: from markyacoub.nyc.corp.google.com
+ ([2620:15c:6c:200:61dd:96a:9268:3c4d])
+ by smtp.gmail.com with ESMTPSA id s203sm160130qke.21.2021.10.13.11.12.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Oct 2021 11:12:39 -0700 (PDT)
+From: Mark Yacoub <markyacoub@chromium.org>
+To: dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+Cc: seanpaul@chromium.org, harry.wentland@amd.com,
+ Mark Yacoub <markyacoub@google.com>, Mark Yacoub <markyacoub@chromium.org>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH 1/2] drm: Add Gamma and Degamma LUT sizes props to drm_crtc to
+ validate.
+Date: Wed, 13 Oct 2021 14:12:20 -0400
+Message-Id: <20211013181228.1578201-1-markyacoub@chromium.org>
+X-Mailer: git-send-email 2.33.0.882.g93a45727a2-goog
+In-Reply-To: <20210929194012.3433306-1-markyacoub@chromium.org>
+References: <20210929194012.3433306-1-markyacoub@chromium.org>
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211013_105654_970929_CAB88351 
-X-CRM114-Status: GOOD (  16.37  )
+X-CRM114-CacheID: sfid-20211013_111242_671387_02757AB5 
+X-CRM114-Status: GOOD (  25.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,237 +102,270 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Mark Yacoub <markyacoub@google.com>
 
->> From: Sean Wang <sean.wang@mediatek.com>
->>
->> Extend sdio module to support CONNAC2 hw that mt7921s rely on.
->>
->> Tested-by: Deren Wu <deren.wu@mediatek.com>
->> Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
->> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
->> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> ---
->>  drivers/net/wireless/mediatek/mt76/mt76.h     |  5 +-
->>  .../net/wireless/mediatek/mt76/mt7615/sdio.c  |  5 +-
->>  drivers/net/wireless/mediatek/mt76/sdio.c     | 23 ++++++-
->>  drivers/net/wireless/mediatek/mt76/sdio.h     | 50 ++++++++++++++-
->>  .../net/wireless/mediatek/mt76/sdio_txrx.c    | 62 ++++++++++++++++---
->>  5 files changed, 128 insertions(+), 17 deletions(-)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h
->> b/drivers/net/wireless/mediatek/mt76/mt76.h
->> index e2f33956a122..06f0d1348d52 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
->> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
->> @@ -505,6 +505,8 @@ struct mt76_sdio {
->>
->>	struct sdio_func *func;
->>	void *intr_data;
->> +	int intr_size;
->> +	u8 hw_ver;
->>
->>	struct {
->>		int pse_data_quota;
->> @@ -1249,7 +1251,8 @@ int mt76s_alloc_queues(struct mt76_dev *dev);
->> void mt76s_deinit(struct mt76_dev *dev);  void mt76s_sdio_irq(struct
->> sdio_func *func);  void mt76s_txrx_worker(struct mt76_sdio *sdio);
->> -int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func);
->> +int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func,
->> +		  int hw_ver);
->>  u32 mt76s_rr(struct mt76_dev *dev, u32 offset);  void mt76s_wr(struct
->> mt76_dev *dev, u32 offset, u32 val);
->>  u32 mt76s_rmw(struct mt76_dev *dev, u32 offset, u32 mask, u32 val);
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
->> b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
->> index f47e25f6dedb..a6b5d536d962 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
->> @@ -100,7 +100,7 @@ static int mt7663s_probe(struct sdio_func *func,
->>	if (ret < 0)
->>		goto error;
->>
->> -	ret = mt76s_hw_init(mdev, func);
->> +	ret = mt76s_hw_init(mdev, func, MT76_CONNAC_SDIO);
->>	if (ret)
->>		goto error;
->>
->> @@ -108,8 +108,9 @@ static int mt7663s_probe(struct sdio_func *func,
->>		    (mt76_rr(dev, MT_HW_REV) & 0xff);
->>	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
->>
->> +	mdev->sdio.intr_size = sizeof(struct mt76_connac_sdio_intr);
->>	mdev->sdio.intr_data = devm_kmalloc(mdev->dev,
->> -					    sizeof(struct mt76s_intr),
->> +					    mdev->sdio.intr_size,
->>					    GFP_KERNEL);
->>	if (!mdev->sdio.intr_data) {
->>		ret = -ENOMEM;
->> diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c
->> b/drivers/net/wireless/mediatek/mt76/sdio.c
->> index 82fb4c110b90..bb40cc3e9c2b 100644
->> --- a/drivers/net/wireless/mediatek/mt76/sdio.c
->> +++ b/drivers/net/wireless/mediatek/mt76/sdio.c
->> @@ -221,11 +221,13 @@ int mt76s_rd_rp(struct mt76_dev *dev, u32 base,
->> }  EXPORT_SYMBOL_GPL(mt76s_rd_rp);
->>
->> -int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func)
->> +int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func, int
->> +hw_ver)
->>  {
->>	u32 status, ctrl;
->>	int ret;
->>
->> +	dev->sdio.hw_ver = hw_ver;
->> +
->>	sdio_claim_host(func);
->>
->>	ret = sdio_enable_func(func);
->> @@ -255,12 +257,27 @@ int mt76s_hw_init(struct mt76_dev *dev, struct sdio_func *func)
->>		goto disable_func;
->>
->>	ctrl = WHIER_RX0_DONE_INT_EN | WHIER_TX_DONE_INT_EN;
->> +	if (hw_ver == MT76_CONNAC2_SDIO)
->> +		ctrl |= WHIER_RX1_DONE_INT_EN;
->>	sdio_writel(func, ctrl, MCR_WHIER, &ret);
->>	if (ret < 0)
->>		goto disable_func;
->>
->> -	/* set WHISR as read clear and Rx aggregation number as 16 */
->> -	ctrl = FIELD_PREP(MAX_HIF_RX_LEN_NUM, 16);
->> +	switch (hw_ver) {
->> +	case MT76_CONNAC_SDIO:
->> +		/* set WHISR as read clear and Rx aggregation number as 16 */
->> +		ctrl = FIELD_PREP(MAX_HIF_RX_LEN_NUM, 16);
->> +		break;
->> +	default:
->> +		ctrl = sdio_readl(func, MCR_WHCR, &ret);
->> +		if (ret < 0)
->> +			goto disable_func;
->> +		ctrl &= ~MAX_HIF_RX_LEN_NUM_CONNAC2;
->> +		ctrl &= ~W_INT_CLR_CTRL; /* read clear */
->> +		ctrl |= FIELD_PREP(MAX_HIF_RX_LEN_NUM_CONNAC2, 0);
->> +		break;
->> +	}
->> +
->>	sdio_writel(func, ctrl, MCR_WHCR, &ret);
->>	if (ret < 0)
->>		goto disable_func;
->> diff --git a/drivers/net/wireless/mediatek/mt76/sdio.h
->> b/drivers/net/wireless/mediatek/mt76/sdio.h
->> index 03877d89e152..7d2ec044dcb1 100644
->> --- a/drivers/net/wireless/mediatek/mt76/sdio.h
->> +++ b/drivers/net/wireless/mediatek/mt76/sdio.h
->> @@ -21,7 +21,12 @@
->>  #define MCR_WHCR			0x000C
->>  #define W_INT_CLR_CTRL			BIT(1)
->>  #define RECV_MAILBOX_RD_CLR_EN		BIT(2)
->> +#define WF_SYS_RSTB			BIT(4) /* supported in CONNAC2 */
->> +#define WF_WHOLE_PATH_RSTB		BIT(5) /* supported in CONNAC2 */
->> +#define WF_SDIO_WF_PATH_RSTB		BIT(6) /* supported in CONNAC2 */
->>  #define MAX_HIF_RX_LEN_NUM		GENMASK(13, 8)
->> +#define MAX_HIF_RX_LEN_NUM_CONNAC2	GENMASK(14, 8) /* supported in CONNAC2 */
->> +#define WF_RST_DONE			BIT(15) /* supported in CONNAC2 */
->>  #define RX_ENHANCE_MODE			BIT(16)
->>
->>  #define MCR_WHISR			0x0010
->> @@ -29,6 +34,7 @@
->>  #define WHIER_D2H_SW_INT		GENMASK(31, 8)
->>  #define WHIER_FW_OWN_BACK_INT_EN	BIT(7)
->>  #define WHIER_ABNORMAL_INT_EN		BIT(6)
->> +#define WHIER_WDT_INT_EN		BIT(5) /* supported in CONNAC2 */
->>  #define WHIER_RX1_DONE_INT_EN		BIT(2)
->>  #define WHIER_RX0_DONE_INT_EN		BIT(1)
->>  #define WHIER_TX_DONE_INT_EN		BIT(0)
->> @@ -100,7 +106,37 @@
->>
->>  #define MCR_SWPCDBGR			0x0154
->>
->> -struct mt76s_intr {
->> +#define MCR_H2DSM2R			0x0160 /* supported in CONNAC2 */
->> +#define MCR_H2DSM3R			0x0164 /* supported in CONNAC2 */
->> +#define MCR_D2HRM3R			0x0174 /* supported in CONNAC2 */
->> +#define MCR_WTQCR8			0x0190 /* supported in CONNAC2 */
->> +#define MCR_WTQCR9			0x0194 /* supported in CONNAC2 */
->> +#define MCR_WTQCR10			0x0198 /* supported in CONNAC2 */
->> +#define MCR_WTQCR11			0x019C /* supported in CONNAC2 */
->> +#define MCR_WTQCR12			0x01A0 /* supported in CONNAC2 */
->> +#define MCR_WTQCR13			0x01A4 /* supported in CONNAC2 */
->> +#define MCR_WTQCR14			0x01A8 /* supported in CONNAC2 */
->> +#define MCR_WTQCR15			0x01AC /* supported in CONNAC2 */
->> +
->> +enum mt76_connac_sdio_ver {
->> +	MT76_CONNAC_SDIO,
->> +	MT76_CONNAC2_SDIO,
->> +};
->> +
->> +struct mt76_connac2_sdio_intr {
->> +	u32 isr;
->> +	struct {
->> +		u32 wtqcr[16];
->> +	} tx;
->> +	struct {
->> +		u16 num[2];
->> +		u16 len0[16];
->> +		u16 len1[128];
->> +	} rx;
->> +	u32 rec_mb[2];
->> +} __packed;
->> +
->> +struct mt76_connac_sdio_intr {
->>	u32 isr;
->>	struct {
->>		u32 wtqcr[8];
->> @@ -112,4 +148,16 @@ struct mt76s_intr {
->>	u32 rec_mb[2];
->>  } __packed;
->>
->> +struct mt76s_intr {
->> +	u32 isr;
->> +	struct {
->> +		u32 *wtqcr;
->> +	} tx;
->> +	struct {
->> +		u16 num[2];
->> +		u16 *len[2];
->> +	} rx;
->> +	u32 rec_mb[2];
->> +};
->> +
->>  #endif
->> diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> index ceb3dc0613d6..73289a9845d7 100644
->> --- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> +++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> @@ -81,7 +81,7 @@ static int
->>  mt76s_rx_run_queue(struct mt76_dev *dev, enum mt76_rxq_id qid,
->>		   struct mt76s_intr *intr)
->>  {
->> -	struct mt76_queue *q = &dev->q_rx[qid];
->> +	struct mt76_queue *q = &dev->q_rx[0];
->
->why qid is always 0 here?
->
+[Why]
+1. drm_atomic_helper_check doesn't check for the LUT sizes of either Gamma
+or Degamma props in the new CRTC state, allowing any invalid size to
+be passed on.
+2. Each driver has its own LUT size, which could also be different for
+legacy users.
 
-In the current driver, we can see we only created one Rx queue (dev->q_rx with qid = 0)
-in mt76s_alloc_queues for processing all incoming packets including MCU events and wifi packets.
+[How]
+1. Create |degamma_lut_size| and |gamma_lut_size| to save the LUT sizes
+assigned by the driver when it's initializing its color and CTM
+management.
+2. Create drm_atomic_helper_check_crtc which is called by
+drm_atomic_helper_check to check the LUT sizes saved in drm_crtc that
+they match the sizes in the new CRTC state.
+3. Rename older lut checks that test for the color channels to indicate
+it's a channel check. It's not included in drm_atomic_helper_check_crtc
+as it's hardware specific and is to be called by the driver.
+4. As the LUT size check now happens in drm_atomic_helper_check, remove
+the lut check in intel_color.c
 
-And from the point of view of the device,
-mt7663s use the hardware queue 0 for all MCU events and wifi packets;
-mt7921s use the hardware queue 1 for all MCU events and wifi packets.
+Fixes: igt@kms_color@pipe-A-invalid-gamma-lut-sizes on MTK
+Tested on Zork(amdgpu) and Jacuzzi(mediatek), volteer(TGL)
 
-So if we don't remap from hardware queue 1 to dev->q_rx[0] for mt7921s to handle incoming packets,
-we will get the kernel panic on accessing the invalid pointer on dev->q_rx[1].
+v1:
+1. Fix typos
+2. Remove the LUT size check from intel driver
+3. Rename old LUT check to indicate it's a channel change
 
-	Sean
+Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
+---
+ drivers/gpu/drm/drm_atomic_helper.c        | 60 ++++++++++++++++++++++
+ drivers/gpu/drm/drm_color_mgmt.c           | 14 ++---
+ drivers/gpu/drm/i915/display/intel_color.c | 14 ++---
+ include/drm/drm_atomic_helper.h            |  1 +
+ include/drm/drm_color_mgmt.h               |  7 +--
+ include/drm/drm_crtc.h                     | 11 ++++
+ 6 files changed, 89 insertions(+), 18 deletions(-)
 
->Regards,
->Lorenzo
->
+diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
+index bc3487964fb5e..5feb2ad0209c3 100644
+--- a/drivers/gpu/drm/drm_atomic_helper.c
++++ b/drivers/gpu/drm/drm_atomic_helper.c
+@@ -929,6 +929,62 @@ drm_atomic_helper_check_planes(struct drm_device *dev,
+ }
+ EXPORT_SYMBOL(drm_atomic_helper_check_planes);
+ 
++/**
++ * drm_atomic_helper_check_crtcs - validate state object for CRTC changes
++ * @state: the driver state object
++ *
++ * Check the CRTC state object such as the Gamma/Degamma LUT sizes if the new
++ * state holds them.
++ *
++ * RETURNS:
++ * Zero for success or -errno
++ */
++int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state)
++{
++	struct drm_crtc *crtc;
++	struct drm_crtc_state *new_crtc_state;
++	int i;
++
++	for_each_new_crtc_in_state (state, crtc, new_crtc_state, i) {
++		if (new_crtc_state->color_mgmt_changed &&
++		    new_crtc_state->gamma_lut) {
++			uint64_t supported_lut_size = crtc->gamma_lut_size;
++			uint32_t supported_legacy_lut_size = crtc->gamma_size;
++			uint32_t new_state_lut_size =
++				drm_color_lut_size(new_crtc_state->gamma_lut);
++
++			if (new_state_lut_size != supported_lut_size &&
++			    new_state_lut_size != supported_legacy_lut_size) {
++				drm_dbg_state(
++					state->dev,
++					"Invalid Gamma LUT size. Should be %u (or %u for legacy) but got %u.\n",
++					supported_lut_size,
++					supported_legacy_lut_size,
++					new_state_lut_size);
++				return -EINVAL;
++			}
++		}
++
++		if (new_crtc_state->color_mgmt_changed &&
++		    new_crtc_state->degamma_lut) {
++			uint32_t new_state_lut_size =
++				drm_color_lut_size(new_crtc_state->degamma_lut);
++			uint64_t supported_lut_size = crtc->degamma_lut_size;
++
++			if (new_state_lut_size != supported_lut_size) {
++				drm_dbg_state(
++					state->dev,
++					"Invalid Degamma LUT size. Should be %u but got %u.\n",
++					supported_lut_size, new_state_lut_size);
++				return -EINVAL;
++			}
++		}
++	}
++
++	return 0;
++}
++EXPORT_SYMBOL(drm_atomic_helper_check_crtcs);
++
+ /**
+  * drm_atomic_helper_check - validate state object
+  * @dev: DRM device
+@@ -974,6 +1030,10 @@ int drm_atomic_helper_check(struct drm_device *dev,
+ 	if (ret)
+ 		return ret;
+ 
++	ret = drm_atomic_helper_check_crtcs(state);
++	if (ret)
++		return ret;
++
+ 	if (state->legacy_cursor_update)
+ 		state->async_update = !drm_atomic_helper_async_check(dev, state);
+ 
+diff --git a/drivers/gpu/drm/drm_color_mgmt.c b/drivers/gpu/drm/drm_color_mgmt.c
+index bb14f488c8f6c..e5b820ce823bf 100644
+--- a/drivers/gpu/drm/drm_color_mgmt.c
++++ b/drivers/gpu/drm/drm_color_mgmt.c
+@@ -166,6 +166,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
+ 	struct drm_mode_config *config = &dev->mode_config;
+ 
+ 	if (degamma_lut_size) {
++		crtc->degamma_lut_size = degamma_lut_size;
+ 		drm_object_attach_property(&crtc->base,
+ 					   config->degamma_lut_property, 0);
+ 		drm_object_attach_property(&crtc->base,
+@@ -178,6 +179,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
+ 					   config->ctm_property, 0);
+ 
+ 	if (gamma_lut_size) {
++		crtc->gamma_lut_size = gamma_lut_size;
+ 		drm_object_attach_property(&crtc->base,
+ 					   config->gamma_lut_property, 0);
+ 		drm_object_attach_property(&crtc->base,
+@@ -585,17 +587,17 @@ int drm_plane_create_color_properties(struct drm_plane *plane,
+ EXPORT_SYMBOL(drm_plane_create_color_properties);
+ 
+ /**
+- * drm_color_lut_check - check validity of lookup table
++ * drm_color_lut_channels_check - check validity of the channels in the lookup table
+  * @lut: property blob containing LUT to check
+  * @tests: bitmask of tests to run
+  *
+- * Helper to check whether a userspace-provided lookup table is valid and
+- * satisfies hardware requirements.  Drivers pass a bitmask indicating which of
+- * the tests in &drm_color_lut_tests should be performed.
++ * Helper to check whether each color channel of userspace-provided lookup table is valid and
++ * satisfies hardware requirements. Drivers pass a bitmask indicating which of in 
++ * &drm_color_lut_channels_tests should be performed.
+  *
+  * Returns 0 on success, -EINVAL on failure.
+  */
+-int drm_color_lut_check(const struct drm_property_blob *lut, u32 tests)
++int drm_color_lut_channels_check(const struct drm_property_blob *lut, u32 tests)
+ {
+ 	const struct drm_color_lut *entry;
+ 	int i;
+@@ -625,4 +627,4 @@ int drm_color_lut_check(const struct drm_property_blob *lut, u32 tests)
+ 
+ 	return 0;
+ }
+-EXPORT_SYMBOL(drm_color_lut_check);
++EXPORT_SYMBOL(drm_color_lut_channels_check);
+diff --git a/drivers/gpu/drm/i915/display/intel_color.c b/drivers/gpu/drm/i915/display/intel_color.c
+index dab892d2251ba..a308fe52746ac 100644
+--- a/drivers/gpu/drm/i915/display/intel_color.c
++++ b/drivers/gpu/drm/i915/display/intel_color.c
+@@ -1285,7 +1285,7 @@ static int check_luts(const struct intel_crtc_state *crtc_state)
+ 	const struct drm_property_blob *gamma_lut = crtc_state->hw.gamma_lut;
+ 	const struct drm_property_blob *degamma_lut = crtc_state->hw.degamma_lut;
+ 	int gamma_length, degamma_length;
+-	u32 gamma_tests, degamma_tests;
++	u32 gamma_channels_tests, degamma_channels_tests;
+ 
+ 	/* Always allow legacy gamma LUT with no further checking. */
+ 	if (crtc_state_is_legacy_gamma(crtc_state))
+@@ -1300,15 +1300,11 @@ static int check_luts(const struct intel_crtc_state *crtc_state)
+ 
+ 	degamma_length = INTEL_INFO(dev_priv)->color.degamma_lut_size;
+ 	gamma_length = INTEL_INFO(dev_priv)->color.gamma_lut_size;
+-	degamma_tests = INTEL_INFO(dev_priv)->color.degamma_lut_tests;
+-	gamma_tests = INTEL_INFO(dev_priv)->color.gamma_lut_tests;
++	degamma_channels_tests = INTEL_INFO(dev_priv)->color.degamma_lut_tests;
++	gamma_channels_tests = INTEL_INFO(dev_priv)->color.gamma_lut_tests;
+ 
+-	if (check_lut_size(degamma_lut, degamma_length) ||
+-	    check_lut_size(gamma_lut, gamma_length))
+-		return -EINVAL;
+-
+-	if (drm_color_lut_check(degamma_lut, degamma_tests) ||
+-	    drm_color_lut_check(gamma_lut, gamma_tests))
++	if (drm_color_lut_channels_check(degamma_lut, degamma_channels_tests) ||
++	    drm_color_lut_channels_check(gamma_lut, gamma_channels_tests))
+ 		return -EINVAL;
+ 
+ 	return 0;
+diff --git a/include/drm/drm_atomic_helper.h b/include/drm/drm_atomic_helper.h
+index 4045e2507e11c..a22d32a7a8719 100644
+--- a/include/drm/drm_atomic_helper.h
++++ b/include/drm/drm_atomic_helper.h
+@@ -38,6 +38,7 @@ struct drm_atomic_state;
+ struct drm_private_obj;
+ struct drm_private_state;
+ 
++int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state);
+ int drm_atomic_helper_check_modeset(struct drm_device *dev,
+ 				struct drm_atomic_state *state);
+ int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_state,
+diff --git a/include/drm/drm_color_mgmt.h b/include/drm/drm_color_mgmt.h
+index 81c298488b0c8..cb1bf361ad3e3 100644
+--- a/include/drm/drm_color_mgmt.h
++++ b/include/drm/drm_color_mgmt.h
+@@ -94,12 +94,12 @@ int drm_plane_create_color_properties(struct drm_plane *plane,
+ 				      enum drm_color_range default_range);
+ 
+ /**
+- * enum drm_color_lut_tests - hw-specific LUT tests to perform
++ * enum drm_color_lut_channels_tests - hw-specific LUT tests to perform
+  *
+  * The drm_color_lut_check() function takes a bitmask of the values here to
+  * determine which tests to apply to a userspace-provided LUT.
+  */
+-enum drm_color_lut_tests {
++enum drm_color_lut_channels_tests {
+ 	/**
+ 	 * @DRM_COLOR_LUT_EQUAL_CHANNELS:
+ 	 *
+@@ -119,5 +119,6 @@ enum drm_color_lut_tests {
+ 	DRM_COLOR_LUT_NON_DECREASING = BIT(1),
+ };
+ 
+-int drm_color_lut_check(const struct drm_property_blob *lut, u32 tests);
++int drm_color_lut_channels_check(const struct drm_property_blob *lut,
++				 u32 tests);
+ #endif
+diff --git a/include/drm/drm_crtc.h b/include/drm/drm_crtc.h
+index 2deb15d7e1610..cabd3ef1a6e32 100644
+--- a/include/drm/drm_crtc.h
++++ b/include/drm/drm_crtc.h
+@@ -1072,6 +1072,17 @@ struct drm_crtc {
+ 	/** @funcs: CRTC control functions */
+ 	const struct drm_crtc_funcs *funcs;
+ 
++	/**
++	 * @degamma_lut_size: Size of degamma LUT.
++	 */
++	uint32_t degamma_lut_size;
++
++	/**
++	 * @gamma_lut_size: Size of Gamma LUT. Not used by legacy userspace such as
++	 * X, which doesn't support large lut sizes.
++	 */
++	uint32_t gamma_lut_size;
++
+ 	/**
+ 	 * @gamma_size: Size of legacy gamma ramp reported to userspace. Set up
+ 	 * by calling drm_mode_crtc_set_gamma_size().
+-- 
+2.33.0.882.g93a45727a2-goog
 
-<snip>
 
 _______________________________________________
 Linux-mediatek mailing list
