@@ -2,82 +2,66 @@ Return-Path: <SRS0=m4qr=PB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 17B9DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 18:19:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 219B5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 18:35:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C89B761154
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 18:19:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C89B761154
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id B8CF960F21
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 18:35:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B8CF960F21
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VpN6tdsVWf4J8K/BoFZwcQqxR4/SnOa92qzWRI1hn1w=; b=OuBWO08ROlnRhA
-	sN8fGvJ6eqc8p7qdP1fDbVuMnwy7DSJrvVd2suFyxu7cOH9VT8EHz/fHfysS23R1aj89D0S7N31b/
-	Qy251AkSpMCwFozBVtYxrea/TAoqc6xPUhQbJdtlz2AvHYIKo9wxRRRDQmsir6XW361MN8KB587IP
-	OzxgahSOt82As697Ykl+jxXmbg8kW0XNUXHaaiBXi/DhjLmvW/hxmPE5sNBBgtYhEL2iAVfiRvP3p
-	8KYHlShx+b5N0e5mpI3fLs/0LixTMJBMpxaQn+fRWIpAuA9pQkaYYyawegnpRC7KwiDaZW2dznjAX
-	LONAfIMlapiT4gwEcR3A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=nWWrwp9Qc5d562GPaRj37u8TSD1P/DTgPHZFijYrIz4=; b=D1rqJ/DCIPPBzo
+	5jHtWr4ARZMkKGSRdb1eIu0S+6NQm6uj245QI+JCsobqB8z1IYqna9wjxdptZLDPLnvSvK+7mFQsh
+	iDRfxW1u0+BArndLY+U3A/VgfkHJ4Vq16hpzDs46PJtJCgrjiUz4bsszlJrNSCaHRqSFG1dXSOgVL
+	z3TCjXMGZtbMXsS3K5BooUZA46fUO/w+C/E0zUov9vKnILpZLmNmOS0Y7D/mRPsusrS2+eZxt02bX
+	IrmwIK5tu2mOKO1gS/WoA5ZchuXGwRTSBrnq+uxK/5XVW93T7EDA7XbRYM8y1hPMQ7eeo88F3/VOm
+	MKoFeBwgcTZn5HpKrsHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maiq7-000HTG-He; Wed, 13 Oct 2021 18:18:55 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1maj6A-000IpV-FV; Wed, 13 Oct 2021 18:35:30 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maiq4-000HSm-Jz
- for linux-mediatek@lists.infradead.org; Wed, 13 Oct 2021 18:18:54 +0000
-Received: by mail-lf1-x136.google.com with SMTP id p16so15841812lfa.2
- for <linux-mediatek@lists.infradead.org>; Wed, 13 Oct 2021 11:18:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sNgBMY1EYvAR4tAnZyZ3ch4hUWrBZvBwo5YqamtcXbc=;
- b=FLFFNc84r4BMCEfdbEVcu+vA1YqaU1yTAF3MB3CyIi2oAF4K35vmpoLfydHizp5GtW
- XsmUKpfWI+o9cK2VOWCTmeolIxGgR+keIoZxSQ9+GmZFRC/AngIkBnOmo2/uuoY2VXGP
- T4dzUVDYE0CltRxbXI/P9x0/NFPSKOiFTYkmU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sNgBMY1EYvAR4tAnZyZ3ch4hUWrBZvBwo5YqamtcXbc=;
- b=xcHwVSuhMeugQ2ptz8FtjFnJ62qs9h+h6hKsNHjiR/K4jPERqFxjH9cs+ooSDdXICC
- fvGorovfWcf7n6Zkq9D7Ki9ighV4Mcg6j2rBCABRLMFuyJGENI2H8LjyOscOByXlh4AW
- CLcvGdgRKFgAMdebZRO9/0VNdKDvsQ1HZw9esIXKHUapnuqQJzBJ/MMNP15VZF2/Dy1B
- rVnUJmJJkjQe2z4Rz7/qlACUhe3HI7oQjr/A0hNVrBnpnghFLt64DjtOg+SkFHYpRZD8
- Gw5RpF+lJ1bVf+VSQoUzU10L3+V2eetq38SPHz5TsxChJ7q1MOhRG4eHIM4L7ciV4BEH
- gBIw==
-X-Gm-Message-State: AOAM530t2y8AnNw5W0dz1EdmpZXEps7OTCuwGwi/eLOxSQeYlrZaBIvW
- +/oJ2chQeInXUAgfck2Wz3hNEZv+LIf6w+N9g8+hOQ==
-X-Google-Smtp-Source: ABdhPJwoX+C04YhsDhO8yVn8Dr+86X4h0AQku4VB7IDCxSx/48LOe1M/zOnFx8J4gSxpHrsZxH05TDajeJhGuoz0T0U=
-X-Received: by 2002:a05:6512:1024:: with SMTP id
- r4mr519678lfr.369.1634149130936; 
- Wed, 13 Oct 2021 11:18:50 -0700 (PDT)
+ id 1maj5x-000InX-R5; Wed, 13 Oct 2021 18:35:19 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D17E560F21;
+ Wed, 13 Oct 2021 18:35:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1634150117;
+ bh=9Otllm2GC3gVjaVzNTWWyjCLCOdkUBQMvbyes4AWr7A=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=TZ1hgMEieNxKVh5cK/xTkyTn161II9RBtSuwzvap2XAIWDC5IRQ+XIIj9OXuRjXU1
+ kOw8PX0y7ksY77hGOZHf4CvA4YMAYkbrw5Bm6fBs6hEJim5geLBFf0HqfiM5XGVC87
+ 5gcaLEKynNJ9osbadNfjvDFDOJJWcxxepQY/jKygG7kBFHwdXqaxLdIPL21fmy3ew4
+ WEdeJ+DfeDfyGJSvznhCur9Mlnmhwcvtv8d5PF8oQ+1dW+1ljZlSJDBVQq321AXfVX
+ DRbYBQKSXydmYylkx3ZKuEurnwWnm9bTC8Ghh2DVZkU650OWxEDcoIZlPJVKH8Wtoi
+ M3SeiMcHbty4g==
+Date: Wed, 13 Oct 2021 13:35:15 -0500
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ qizhong.cheng@mediatek.com, Ryan-JH.Yu@mediatek.com,
+ Tzung-Bi Shih <tzungbi@google.com>
+Subject: Re: [PATCH v2] PCI: mediatek-gen3: Disable DVFSRC voltage request
+Message-ID: <20211013183515.GA1907868@bhelgaas>
 MIME-Version: 1.0
-References: <20210929194012.3433306-1-markyacoub@chromium.org>
- <20211001203434.GY2515@art_vandelay>
-In-Reply-To: <20211001203434.GY2515@art_vandelay>
-From: Mark Yacoub <markyacoub@chromium.org>
-Date: Wed, 13 Oct 2021 14:18:40 -0400
-Message-ID: <CAJUqKUqCkYffX2Pr5sT1OTB2NOHPbz5g9udQRSGV_BoSyr=u9A@mail.gmail.com>
-Subject: Re: [PATCH 1/2] drm: Add Gamma and Degamma LUT sizes props to
- drm_crtc to validate.
-To: Sean Paul <sean@poorly.run>
-Cc: Maling list - DRI developers <dri-devel@lists.freedesktop.org>, 
- amd-gfx list <amd-gfx@lists.freedesktop.org>, Sean Paul <seanpaul@chromium.org>,
- "Siqueira, Rodrigo" <Rodrigo.Siqueira@amd.com>,
- Anson Jacob <anson.jacob@amd.com>, Mark Yacoub <markyacoub@google.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, 
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20211013075328.12273-1-jianjun.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211013_111852_711353_9331F171 
-X-CRM114-Status: GOOD (  46.08  )
+X-CRM114-CacheID: sfid-20211013_113517_924838_C46AAB48 
+X-CRM114-Status: GOOD (  19.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,240 +78,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 1, 2021 at 4:34 PM Sean Paul <sean@poorly.run> wrote:
->
-> On Wed, Sep 29, 2021 at 03:39:25PM -0400, Mark Yacoub wrote:
-> > From: Mark Yacoub <markyacoub@google.com>
-> >
-> > [Why]
-> > 1. drm_atomic_helper_check doesn't check for the LUT sizes of either Gamma
-> > or Degamma props in the new CRTC state, allowing any invalid size to
-> > be passed on.
-> > 2. Each driver has its own LUT size, which could also be different for
-> > legacy users.
-> >
-> > [How]
-> > 1. Create |degamma_lut_size| and |gamma_lut_size| to save the LUT sizes
-> > assigned by the driver when it's initializing its color and CTM
-> > management.
-> > 2. Create drm_atomic_helper_check_crtc which is called by
-> > drm_atomic_helper_check to check the LUT sizes saved in drm_crtc that
-> > they match the sizes in the new CRTC state.
-> >
->
-> Did you consider extending drm_color_lut_check() with the size checks?
-renamed it to be specific to channels. It's HW specific so i thought
-of keeping it a separate check if the driver chooses to check it.
-Removed the LUT size check that intel uses though.
->
-> > Fixes: igt@kms_color@pipe-A-invalid-gamma-lut-sizes on MTK
-> > Tested on Zork(amdgpu) and Jacuzzi(mediatek)
-> >
-> > Signed-off-by: Mark Yacoub<markyacoub@chromium.org>
->
-> nit: missing a space between name and email
->
->
-> > ---
-> >  drivers/gpu/drm/drm_atomic_helper.c | 56 +++++++++++++++++++++++++++++
-> >  drivers/gpu/drm/drm_color_mgmt.c    |  2 ++
-> >  include/drm/drm_atomic_helper.h     |  1 +
-> >  include/drm/drm_crtc.h              | 11 ++++++
-> >  4 files changed, 70 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
-> > index 2c0c6ec928200..265b9747250d1 100644
-> > --- a/drivers/gpu/drm/drm_atomic_helper.c
-> > +++ b/drivers/gpu/drm/drm_atomic_helper.c
-> > @@ -930,6 +930,58 @@ drm_atomic_helper_check_planes(struct drm_device *dev,
-> >  }
-> >  EXPORT_SYMBOL(drm_atomic_helper_check_planes);
-> >
-> > +/**
-> > + * drm_atomic_helper_check_planes - validate state object for CRTC changes
->
-> Ctrl+c/Ctrl+v error here
->
-> > + * @state: the driver state object
-> > + *
-> > + * Check the CRTC state object such as the Gamma/Degamma LUT sizes if the new
->
-> Are there missing words between "object" and "such"?
->
-not really. I was thinking of how to reword it without being too
-verbose and nothing sounded good.
-I mean I'm checking the object, such as the LUT which is part of this object.
-> > + * state holds them.
-> > + *
-> > + * RETURNS:
-> > + * Zero for success or -errno
-> > + */
-> > +int drm_atomic_helper_check_crtc(struct drm_atomic_state *state)
->
-> drm_atomic_helper_check_crtcs to be consistent with
-> drm_atomic_helper_check_planes
->
-> > +{
-> > +     struct drm_crtc *crtc;
-> > +     struct drm_crtc_state *new_crtc_state;
-> > +     int i;
-> > +
-> > +     for_each_new_crtc_in_state (state, crtc, new_crtc_state, i) {
->
-> no space before (
->
-> > +             if (new_crtc_state->gamma_lut) {
->
-> Perhaps gate these with a check of state->color_mgmt_changed first?
-done .  did it for each check so you can easily expand in the future
-and squeeze in more things around those checks as it loops the CRTC
-states.
->
-> > +                     uint64_t supported_lut_size = crtc->gamma_lut_size;
-> > +                     uint32_t supported_legacy_lut_size = crtc->gamma_size;
-> > +                     uint32_t new_state_lut_size =
-> > +                             drm_color_lut_size(new_crtc_state->gamma_lut);
->
-> nit: new_state_lut_size and supported_lut_size can be pulled out to top level scope
-> to avoid re-instantiation on each iteration
->
-CRTC is an iterator, so it changes within the loop.
-> > +
-> > +                     if (new_state_lut_size != supported_lut_size &&
-> > +                         new_state_lut_size != supported_legacy_lut_size) {
->
-> According to the docbook, "If drivers support multiple LUT sizes then they
-> should publish the largest size, and sub-sample smaller sized LUTs". So
-> should this check be > instead of != ?
->
-so IGT tests see it differently, they check for a very specific size,
-rather than a range. so if the legacy size is 256 and regular is 1024,
-1000 isn't a valid size.
-> > +                             DRM_DEBUG_DRIVER(
->
-> drm_dbg_state() is probably more appropriate
->
-> > +                                     "Invalid Gamma LUT size. Should be %u (or %u for legacy) but got %u.\n",
-> > +                                     supported_lut_size,
-> > +                                     supported_legacy_lut_size,
-> > +                                     new_state_lut_size);
-> > +                             return -EINVAL;
-> > +                     }
-> > +             }
-> > +
-> > +             if (new_crtc_state->degamma_lut) {
-> > +                     uint32_t new_state_lut_size =
-> > +                             drm_color_lut_size(new_crtc_state->degamma_lut);
-> > +                     uint64_t supported_lut_size = crtc->degamma_lut_size;
-> > +
-> > +                     if (new_state_lut_size != supported_lut_size) {
-> > +                             DRM_DEBUG_DRIVER(
->
-> drm_dbg_state()
->
-> > +                                     "Invalid Degamma LUT size. Should be %u but got %u.\n",
-> > +                                     supported_lut_size, new_state_lut_size);
-> > +                             return -EINVAL;
-> > +                     }
-> > +             }
-> > +     }
-> > +
-> > +     return 0;
-> > +}
-> > +EXPORT_SYMBOL(drm_atomic_helper_check_crtc);
-> > +
-> >  /**
-> >   * drm_atomic_helper_check - validate state object
-> >   * @dev: DRM device
-> > @@ -975,6 +1027,10 @@ int drm_atomic_helper_check(struct drm_device *dev,
-> >       if (ret)
-> >               return ret;
-> >
-> > +     ret = drm_atomic_helper_check_crtc(state);
-> > +     if (ret)
-> > +             return ret;
-> > +
-> >       if (state->legacy_cursor_update)
-> >               state->async_update = !drm_atomic_helper_async_check(dev, state);
-> >
-> > diff --git a/drivers/gpu/drm/drm_color_mgmt.c b/drivers/gpu/drm/drm_color_mgmt.c
-> > index bb14f488c8f6c..72a1b628e7cdd 100644
-> > --- a/drivers/gpu/drm/drm_color_mgmt.c
-> > +++ b/drivers/gpu/drm/drm_color_mgmt.c
-> > @@ -166,6 +166,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
-> >       struct drm_mode_config *config = &dev->mode_config;
-> >
-> >       if (degamma_lut_size) {
-> > +             crtc->degamma_lut_size = degamma_lut_size;
-> >               drm_object_attach_property(&crtc->base,
-> >                                          config->degamma_lut_property, 0);
-> >               drm_object_attach_property(&crtc->base,
-> > @@ -178,6 +179,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
-> >                                          config->ctm_property, 0);
-> >
-> >       if (gamma_lut_size) {
-> > +             crtc->gamma_lut_size = gamma_lut_size;
-> >               drm_object_attach_property(&crtc->base,
-> >                                          config->gamma_lut_property, 0);
-> >               drm_object_attach_property(&crtc->base,
-> > diff --git a/include/drm/drm_atomic_helper.h b/include/drm/drm_atomic_helper.h
-> > index 4045e2507e11c..3eda13622ca1e 100644
-> > --- a/include/drm/drm_atomic_helper.h
-> > +++ b/include/drm/drm_atomic_helper.h
-> > @@ -38,6 +38,7 @@ struct drm_atomic_state;
-> >  struct drm_private_obj;
-> >  struct drm_private_state;
-> >
-> > +int drm_atomic_helper_check_crtc(struct drm_atomic_state *state);
-> >  int drm_atomic_helper_check_modeset(struct drm_device *dev,
-> >                               struct drm_atomic_state *state);
-> >  int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_state,
-> > diff --git a/include/drm/drm_crtc.h b/include/drm/drm_crtc.h
-> > index 13eeba2a750af..c602be2cafca9 100644
-> > --- a/include/drm/drm_crtc.h
-> > +++ b/include/drm/drm_crtc.h
-> > @@ -1072,6 +1072,17 @@ struct drm_crtc {
-> >       /** @funcs: CRTC control functions */
-> >       const struct drm_crtc_funcs *funcs;
-> >
-> > +     /**
-> > +      * @degamma_lut_size: Size of degamma LUT.
-> > +      */
-> > +     uint32_t degamma_lut_size;
-> > +
-> > +     /**
-> > +      * @gamma_lut_size: Size of Gamma LUT. Not used by legacy userspace such as
-> > +      * X, which doesn't support large lut sizes.
-> > +      */
-> > +     uint32_t gamma_lut_size;
-> > +
->
-> Above, you're checking
->
-> if (new_state_lut_size != gamma_size && new_state_lut_size != gamma_lut_size)
->         fail;
->
-> doesn't that imply that gamma_size and gamma_lut_size must always be equal? If
-> so, perhaps turf this new state and rename degamma_lut_size to degamma_size to
-> be consistent.
->
-> De-duping this and initializing crtc->gamma_size in the initialization would
-> mean the if (crtc->gamma_size) check in drm_crtc_supports_legacy_check() is no
-> longer useful (and possibly other similar checks), so some care will need to be
-> taken to avoid regression. I think the effort is worthwhile to avoid introducing
-> new state.
->
->
->
-> >       /**
-> >        * @gamma_size: Size of legacy gamma ramp reported to userspace. Set up
-> >        * by calling drm_mode_crtc_set_gamma_size().
-> > --
-> > 2.33.0.685.g46640cef36-goog
-> >
->
-> --
-> Sean Paul, Software Engineer, Google / Chromium OS
+On Wed, Oct 13, 2021 at 03:53:28PM +0800, Jianjun Wang wrote:
+> When the DVFSRC feature is not implemented, the MAC layer will
+> assert a voltage request signal when exit from the L1ss state,
+> but cannot receive the voltage ready signal, which will cause
+> the link to fail to exit the L1ss state correctly.
+> 
+> Disable DVFSRC voltage request by default, we need to find
+> a common way to enable it in the future.
+
+Rewrap commit log to fill 75 columns.
+
+Does "L1ss" above refer to L1.1 and L1.2?  If so, please say that
+explicitly or say something like "L1 PM Substates" (the term used in
+the PCIe spec) so it's clear.
+
+This seems on the boundary of PCIe-specified things and Mediatek
+implementation details, so I'm not sure what "DVFSRC," "MAC," and
+"voltage request signal" mean.  Since I don't recognize those terms,
+I'm guessing they are Mediatek-specific things.
+
+But if they are things specified by the PCIe spec, please use the
+exact names used in the spec.
+
+> Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
+> Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+> Tested-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
+> ---
+>  drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
+> index f3aeb8d4eaca..79fb12fca6a9 100644
+> --- a/drivers/pci/controller/pcie-mediatek-gen3.c
+> +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
+> @@ -79,6 +79,9 @@
+>  #define PCIE_ICMD_PM_REG		0x198
+>  #define PCIE_TURN_OFF_LINK		BIT(4)
+>  
+> +#define PCIE_MISC_CTRL_REG		0x348
+> +#define PCIE_DISABLE_DVFSRC_VLT_REQ	BIT(1)
+> +
+>  #define PCIE_TRANS_TABLE_BASE_REG	0x800
+>  #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
+>  #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
+> @@ -297,6 +300,11 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
+>  	val &= ~PCIE_INTX_ENABLE;
+>  	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
+>  
+> +	/* Disable DVFSRC voltage request */
+> +	val = readl_relaxed(port->base + PCIE_MISC_CTRL_REG);
+> +	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
+> +	writel_relaxed(val, port->base + PCIE_MISC_CTRL_REG);
+> +
+>  	/* Assert all reset signals */
+>  	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
+>  	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
+> -- 
+> 2.25.1
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
