@@ -2,65 +2,67 @@ Return-Path: <SRS0=m4qr=PB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5A5EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 16:22:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D1EEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 16:29:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 94FAF61053
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 16:22:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 94FAF61053
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AAB1060D42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 16:29:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AAB1060D42
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CgB/MlRxOxBlTrZzUcyMALzeKSYWkl260SE9Go9vshc=; b=q9e3bVyJ333V0G
-	u9gg7jY6Uxn9tY9DNODUi8BCaroVP9JKyywHmiO/4jMpox3cj446WMRYY5Zr5OvGm63LfEloG/FBA
-	9WzllmVPRqpdyv3CyJgzNVrSRDyXKcus+7YcQnFl1LX4qyaF/Zb5doclPp/vj6CM5ExHTXKOzDK8Z
-	fgaDveWBOUzHnzKy2rjoxb9VuSjeY9Jq3AsxXjfIQbgGXqAfVqKZ2NnRGlkiyZgtE0/WSE6CVHuSi
-	4mKaXzmyLT0Ewx4qNGrhZjvrTzLpNwvj9rWvsCjvYFZO2ZVL9V0dYRHN6kkW95gQt166bR3O6lIBB
-	7hIwKfK2Kd8YU9W6mqnA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=u98eD5d5zA4TZc/2Hkg4hnYbgWjSrxjzigxqWUoUR7k=; b=IFFln070hP/lb1+3RjkzgdpDFQ
+	rbCacu+qLEqzp21tUvTco7V2zph4462Q3z6Yprz9RbBo73Gv+SYqQ2BI0KV/0NCc45sBw+aE2Ilx1
+	QTMVivoiBcZ2HVxwe1nRgNBySSBr7dCMUjcaZnIOUKAxtro/jM2gC8NUdZefnayBEAbUxYUMPq2Uj
+	cJYxbLkbsbnPFJDwjjJqnoz7uHAw8PnjbJNHYLzqhGzkBo2ZDaBNX6fhcDxYd6NRL0YgZoC4aUt98
+	4el3rE5qyA5KwjsxD4i+QKwklCbBeeJG3dhnZfvH1OUVsjT4hwg4PW97a2ZojSBxwQI9ot/hazqOP
+	q5gYVF8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mah1O-00015V-As; Wed, 13 Oct 2021 16:22:26 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mah87-0002aZ-3H; Wed, 13 Oct 2021 16:29:23 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mah1L-000146-Ob
- for linux-mediatek@lists.infradead.org; Wed, 13 Oct 2021 16:22:25 +0000
-X-UUID: e589bf4100514ad3882b023b3e1e6740-20211013
-X-UUID: e589bf4100514ad3882b023b3e1e6740-20211013
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1541849607; Wed, 13 Oct 2021 09:22:19 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 13 Oct 2021 09:22:18 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 14 Oct 2021 00:22:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 Oct 2021 00:22:05 +0800
-From: <mark-yw.chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <mark-yw.chen@mediatek.com>, <will-cy.lee@mediatek.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH] Bluetooth: btusb: fix memory leak in
- btusb_mtk_submit_wmt_recv_urb()
-Date: Thu, 14 Oct 2021 00:22:04 +0800
-Message-ID: <20211013162204.13919-1-mark-yw.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mah84-0002Zi-JM
+ for linux-mediatek@lists.infradead.org; Wed, 13 Oct 2021 16:29:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:
+ MIME-Version:Date:Message-ID:From:References:Cc:To:Subject:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=mlfM8oa9U31hfMXaM65RvOi44aB/+9A6L1iUnZZ3ZTU=; b=dPZcXMu7exADgzHFL+Fc16TfRQ
+ hxzij4CijQnaNlevD46C92byRMnD5t2FmOFNWnEmp0PCcHz9lxjhy7tOOn4wms/UfkRDKi99fcvFt
+ lmFZOUM36z7h4fJHe2SDpV/tyRP4rBf5lAl6UXZgkEfsh3PcqhopqWuQmy0wzmHRnHb0=;
+Received: from p4ff1322b.dip0.t-ipconnect.de ([79.241.50.43] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1mah7y-0000pF-6L; Wed, 13 Oct 2021 18:29:14 +0200
+Subject: Re: [PATCH v2] MAINTAINERS: mt76: update MTK folks
+To: Ryder Lee <ryder.lee@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <eb888ae0e43a980c2c1aaed372a9b5e8098ea4ef.1634107511.git.ryder.lee@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+Message-ID: <fee064c4-b4f8-d6d6-1e9d-397e4050d513@nbd.name>
+Date: Wed, 13 Oct 2021 18:29:13 +0200
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
+ Gecko/20100101 Thunderbird/78.14.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <eb888ae0e43a980c2c1aaed372a9b5e8098ea4ef.1634107511.git.ryder.lee@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211013_092223_834084_C3B2CDCB 
-X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-CacheID: sfid-20211013_092920_899464_F4BDAAA2 
+X-CRM114-Status: UNSURE (   5.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,78 +80,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mark-YW.Chen <mark-yw.chen@mediatek.com>
-
-Driver should free `usb->setup_packet` to avoid the leak.
-
-$ cat /sys/kernel/debug/kmemleak
-unreferenced object 0xffffffa564a58080 (size 128):
-    backtrace:
-        [<000000007eb8dd70>] kmem_cache_alloc_trace+0x22c/0x384
-        [<000000008a44191d>] btusb_mtk_hci_wmt_sync+0x1ec/0x994
-    [btusb]
-        [<00000000ca7189a3>] btusb_mtk_setup+0x6b8/0x13cc
-    [btusb]
-        [<00000000c6105069>] hci_dev_do_open+0x290/0x974
-    [bluetooth]
-        [<00000000a583f8b8>] hci_power_on+0xdc/0x3cc [bluetooth]
-        [<000000005d80e687>] process_one_work+0x514/0xc80
-        [<00000000f4d57637>] worker_thread+0x818/0xd0c
-        [<00000000dc7bdb55>] kthread+0x2f8/0x3b8
-        [<00000000f9999513>] ret_from_fork+0x10/0x30
-
-Signed-off-by: Mark-YW.Chen <mark-yw.chen@mediatek.com>
----
- drivers/bluetooth/btusb.c | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 75c83768c257..1bfcbcabc7d3 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2265,6 +2265,7 @@ static void btusb_mtk_wmt_recv(struct urb *urb)
- 		skb = bt_skb_alloc(HCI_WMT_MAX_EVENT_SIZE, GFP_ATOMIC);
- 		if (!skb) {
- 			hdev->stat.err_rx++;
-+			kfree(urb->setup_packet);
- 			return;
- 		}
- 
-@@ -2285,6 +2286,7 @@ static void btusb_mtk_wmt_recv(struct urb *urb)
- 			data->evt_skb = skb_clone(skb, GFP_ATOMIC);
- 			if (!data->evt_skb) {
- 				kfree_skb(skb);
-+				kfree(urb->setup_packet);
- 				return;
- 			}
- 		}
-@@ -2293,6 +2295,7 @@ static void btusb_mtk_wmt_recv(struct urb *urb)
- 		if (err < 0) {
- 			kfree_skb(data->evt_skb);
- 			data->evt_skb = NULL;
-+			kfree(urb->setup_packet);
- 			return;
- 		}
- 
-@@ -2303,6 +2306,7 @@ static void btusb_mtk_wmt_recv(struct urb *urb)
- 			wake_up_bit(&data->flags,
- 				    BTUSB_TX_WAIT_VND_EVT);
- 		}
-+		kfree(urb->setup_packet);
- 		return;
- 	} else if (urb->status == -ENOENT) {
- 		/* Avoid suspend failed when usb_kill_urb */
-@@ -2323,6 +2327,7 @@ static void btusb_mtk_wmt_recv(struct urb *urb)
- 	usb_anchor_urb(urb, &data->ctrl_anchor);
- 	err = usb_submit_urb(urb, GFP_ATOMIC);
- 	if (err < 0) {
-+		kfree(urb->setup_packet);
- 		/* -EPERM: urb is being killed;
- 		 * -ENODEV: device got disconnected
- 		 */
--- 
-2.18.0
-
+On 2021-10-13 17:56, Ryder Lee wrote:
+> Add more MTK folks to actively maintain the wireless chipsets across
+> segments. The work is becoming increasingly complicated and various
+> and we can provides hardware related perspectives to offload 
+> Felix's workload, especially for the 11ax and upcoming 11be devices
+> 
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Acked-by: Felix Fietkau <nbd@nbd.name>
 
 _______________________________________________
 Linux-mediatek mailing list
