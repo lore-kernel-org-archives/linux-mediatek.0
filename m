@@ -2,74 +2,66 @@ Return-Path: <SRS0=m4qr=PB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 05FDFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 15:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CCB18C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 15:57:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 995D5610EA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 15:54:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 995D5610EA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=mail.ee
+	by mail.kernel.org (Postfix) with ESMTPS id 80EF9610E6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 15:57:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 80EF9610E6
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=L5QTW4MD/BQLJR3n4GNRi/B9bImhS4idRZ0L1PY1oa0=; b=xAZbsm1Wsmlq6l
-	U9jyqKes+lfO4jM2veHlDDLYtEP/JbmpS4zb2G0aFgA27ma0ovTE0PfeZbWhiFOczUQbtzO+SJFk6
-	cydwewKdrgLy+LUHsFsXBv2XEpilz1p0RUERtmbZZWfhwn+Qz3VsTboLgBMZOamie8wyX1hFGXzdh
-	2qTjCg1RkinxT3QoqWf9hBtEcaWxEgu/ddbeeLscDwp0AkZF6ss0SEwrRkmorBKpOKehz67WjbMh0
-	hAV1hVBTaX5jwDl86Y/Hc52YkEninBmVMGPMmqXqs1wfwghLYkIDZuOzWUk8sxK3mi9oDqz8N7NuJ
-	XBtzN3S/4+946+D2llOg==;
+	List-Owner; bh=agnJMU1aPvkkPhyv+41Zbnxh4A/V6EJQEzY6Og0S+Do=; b=zoP2JRsJF48c/m
+	9q3kIVcwx4wajsiGs2dfRgDqxHwE7qz/+iFrqnMffB8/tO510l/+5XtUcK5x2/kfAa2ooAvxGbocU
+	usGt5SdaPCUWsufw4M+d0PAjO4U5/QOkw8ujY0H1MPfr1YBipQHsLPs0iNeP1I1F0uVBZEB+njQhB
+	ByFVT8mjOsapfgd7iU/dnUksGJldF1tlCYNGE84PCQ+fYYMm9wszxEni3me9ONpAp/YaqMHFTvaAr
+	xIIiCfWdg5cjl7su2M64PDOls6/VxMcWyKha0ron6Bs2DExmtqKjqJjhBCaq7l5YATWc6pNcDs+5u
+	axQG1IHeDFdrtUiwvYKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1magaN-00HSTm-RI; Wed, 13 Oct 2021 15:54:31 +0000
-Received: from eu-shark2.inbox.eu ([195.216.236.82])
+	id 1magcx-00HT1s-IX; Wed, 13 Oct 2021 15:57:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mZxNi-009wSe-Ke
- for linux-mediatek@lists.infradead.org; Mon, 11 Oct 2021 15:38:29 +0000
-Received: from eu-shark2.inbox.eu (localhost [127.0.0.1])
- by eu-shark2-out.inbox.eu (Postfix) with ESMTP id 4C0E71E00603;
- Mon, 11 Oct 2021 18:38:21 +0300 (EEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=mail.ee; s=20150108;
- t=1633966701; bh=o7R0Au5IFBkQndLoGctiAVfvFZ84avgC7Sm8RCkpCHk=;
- h=Date:From:To:Cc:Subject;
- b=B0UNSCIfEAkXeD0imeYbLIZ2o3/77naYp9Rc0OxB3p4mxIm2950NAJVsrNwIV9XE/
- b9GNaZZXYIJloxpOmW0BMZnB51D1cc23+41PeYTumkxHoL2Xv9kyovx7F/OoPR7EAv
- B8MGHnN3GjDQrYHf+MFT1rscvze3AersbfroEQeI=
-Received: from localhost (localhost [127.0.0.1])
- by eu-shark2-in.inbox.eu (Postfix) with ESMTP id 42B7B1E00602;
- Mon, 11 Oct 2021 18:38:21 +0300 (EEST)
-Received: from eu-shark2.inbox.eu ([127.0.0.1])
- by localhost (eu-shark2.inbox.eu [127.0.0.1]) (spamfilter, port 35)
- with ESMTP id qsX0R9Y6rPyC; Mon, 11 Oct 2021 18:38:20 +0300 (EEST)
-Received: from mail.inbox.eu (eu-pop1 [127.0.0.1])
- by eu-shark2-in.inbox.eu (Postfix) with ESMTP id 9B5021E00600;
- Mon, 11 Oct 2021 18:38:20 +0300 (EEST)
-Received: from pc (unknown [2.58.44.26])
- (Authenticated sender: arzamas-16@mail.ee)
- by mail.inbox.eu (Postfix) with ESMTPA id E6C001BE01A9;
- Mon, 11 Oct 2021 18:38:19 +0300 (EEST)
-Date: Mon, 11 Oct 2021 18:38:14 +0300
-From: Boris Lysov <arzamas-16@mail.ee>
-To: Kewei Xu <kewei.xu@mediatek.com>
-Cc: <linux-mediatek@lists.infradead.org>, <linux-i2c@vger.kernel.org>,
- <matthias.bgg@gmail.com>, <qii.wang@mediatek.com>
-Subject: Re: [PATCH v8 2/5] i2c: mediatek: Dump i2c/dma register when a
- timeout occurs
-Message-ID: <20211011183814.488ed866@pc>
+ id 1magcu-00HT0q-6w
+ for linux-mediatek@lists.infradead.org; Wed, 13 Oct 2021 15:57:11 +0000
+X-UUID: 2e90026850324c0ab5074b5680449843-20211013
+X-UUID: 2e90026850324c0ab5074b5680449843-20211013
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1565007792; Wed, 13 Oct 2021 08:57:05 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 13 Oct 2021 08:57:03 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 13 Oct 2021 23:56:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 13 Oct 2021 23:56:50 +0800
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ "Ryder Lee" <ryder.lee@mediatek.com>
+Subject: [PATCH v2] MAINTAINERS: mt76: update MTK folks
+Date: Wed, 13 Oct 2021 23:56:41 +0800
+Message-ID: <eb888ae0e43a980c2c1aaed372a9b5e8098ea4ef.1634107511.git.ryder.lee@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-X-Virus-Scanned: OK
-X-ESPOL: +dBm1NUOBlzQh1+kSn3cDQIzqylVPp7o/vvJoxAn4GeDUSOGYE0FThSzg25wUQ==
-X-Bad-Reply: 'Re:' in Subject but no References or In-Reply-To headers
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211011_083827_066341_91457E07 
-X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-CacheID: sfid-20211013_085708_297505_E97F174A 
+X-CRM114-Status: UNSURE (   9.74  )
 X-CRM114-Notice: Please train this message.
-X-Mailman-Approved-At: Wed, 13 Oct 2021 08:54:30 -0700
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,39 +78,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 10 Oct 2021 15:05:13 +0800
-Kewei Xu <kewei.xu@mediatek.com> wrote:
+Add more MTK folks to actively maintain the wireless chipsets across
+segments. The work is becoming increasingly complicated and various
+and we can provides hardware related perspectives to offload 
+Felix's workload, especially for the 11ax and upcoming 11be devices
 
-> When a timeout error occurs in i2c transter, it is usually related
-> to the i2c/dma IP hardware configuration. Therefore, the purpose of
-> this patch is to dump the key register values of i2c/dma when a
-> timeout occurs in i2c for debugging.
-> 
-> Signed-off-by: Kewei Xu <kewei.xu@mediatek.com>
-> Reviewed-by: Qii Wang <qii.wang@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+---
+@Kalle, I explain some more in the commit and hope you can rethink this change.
+The name we list here will definitely take responsibility.
+---
+ MAINTAINERS | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-I would like to test this patchset on one of supported platforms, an
-mt6577-powered device. This driver requires a DMA base...
-> 	i2c->pdmabase = devm_ioremap_resource(&pdev->dev, res);
->	if (IS_ERR(i2c->pdmabase))
->		return PTR_ERR(i2c->pdmabase);
-... however I am not sure what address should I specify in the .dts file. While
-other i2c busses supported by this driver such as mt6589 [1][2] and mt6797 [3]
-have designated DMA for I2C, mt6577 seems to lack dedicated DMA engine for I2C
-[4][5].
+diff --git a/MAINTAINERS b/MAINTAINERS
+index eeb4c70b3d5b..c2ebcf848205 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11818,7 +11818,9 @@ F:	drivers/mmc/host/mtk-sd.c
+ MEDIATEK MT76 WIRELESS LAN DRIVER
+ M:	Felix Fietkau <nbd@nbd.name>
+ M:	Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>
+-R:	Ryder Lee <ryder.lee@mediatek.com>
++M:	Ryder Lee <ryder.lee@mediatek.com>
++R:	Shayne Chen <shayne.chen@mediatek.com>
++R:	Sean Wang <sean.wang@mediatek.com>
+ L:	linux-wireless@vger.kernel.org
+ S:	Maintained
+ F:	drivers/net/wireless/mediatek/mt76/
+-- 
+2.29.2
 
-Do I need to specify the Generic DMA base address [4] instead?
-
-Worth mentioning I brought up this issue in the past [5][6].
-
-[1] ALPS.KK1.MP5.V1.3_EASTAEON89_WET_KK source code (downstream)
-[2] MT6589 HSPA+ Smartphone Application Processor Datasheet v1.0, page 869
-[3] MT6797 LTE-A Smartphone Application Processor Register Table (Part 1) v1.1,
-page 1796
-[4] MT6577 HSPA Smartphone Application Processor Datasheet v0.94, page 547
-[5] ALPS.JB.MP.V1.19_MBK77_TB_JB source code (downstream)
-[6] https://marc.info/?l=devicetree&m=159949247901831&w=2
-[7] https://marc.info/?l=linux-i2c&m=159939730714187&w=2
 
 _______________________________________________
 Linux-mediatek mailing list
