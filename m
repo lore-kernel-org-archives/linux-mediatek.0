@@ -2,66 +2,69 @@ Return-Path: <SRS0=m4qr=PB=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 982D5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 19:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E6A19C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 19:06:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 612AD60E96
-	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 19:02:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 612AD60E96
+	by mail.kernel.org (Postfix) with ESMTPS id AC95B610FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 13 Oct 2021 19:06:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AC95B610FE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=5LOaxF9O9SZNVoEkG7kEoAvSU76JOfH+bXx41KSHdns=; b=q+gRsvlOXobw5s
-	EI9EzN/aMHrMK7H5HwhsFLMlcKRRnvJDfD2LGKGt1IxEHdEw2oC7YPjDxILHm+lpG9QaUz3sJi4IA
-	AinuWgyNY9/FhFr+F1RAFYQ4sxEPnvfubzgEb5wmTE8RL0Q+IC74+rypzK+qvNW+l1/hb3RkgQ3s4
-	9PlU4PukDyrojJ5+J0MTQ3rYcqXgsXlnHvC2YofJxGNty3H8f1fIVRpniTa8TdNdcHAETDYw7+NRY
-	+5RBeeV6kFIN/rzRLw1JTu5rE416tsQldggwPYTkTZi/sUwGeE9db1Z0eEWI21vHfnl9iJS/G14mD
-	85gUzCnoG1Y+YZ5iKyXQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JH051lBfdVIGW/TRxBv3gmLiJZxlUxpxVXh2q8nWJvg=; b=kR8LhcnbyKuRMxz6IgMcfE9Q/L
+	kbIAgilR89SZP1r1dqUjTAbuqgJrfHv2P39cq9FAIP2utVkqGwRXCtVlT0Dt+EYZohqlF+Z8z5X7S
+	xhrvVDue1BDpyG0emIJhBnJd309DZJfMEMhkwwH5emDlYuePQOpjkwKDdv+craLzXyDqGL1ghJPFu
+	hFQ/VAK3bqP31r+C/walzijy6940Mb+wMBpdiAH5u4qC7dfIR5FdK3ow6S80waflbnDFaMklXMGBt
+	umUvAkSFXVD2yekOmIWIU97VqtIpPI+fL4A0HQaJ/V8aVM9ZX8DG5jwAG/UVCrGDzpXt0OrCLI+rW
+	FmiBPuZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1majWT-000OM3-CF; Wed, 13 Oct 2021 19:02:41 +0000
+	id 1majZq-000OvV-Rh; Wed, 13 Oct 2021 19:06:10 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1majWH-000OJh-9J; Wed, 13 Oct 2021 19:02:30 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 6284060E96;
- Wed, 13 Oct 2021 19:02:28 +0000 (UTC)
+ id 1majZl-000Oui-4d
+ for linux-mediatek@lists.infradead.org; Wed, 13 Oct 2021 19:06:09 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 3B5B6610FE;
+ Wed, 13 Oct 2021 19:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1634151749;
- bh=nrpmV2aL7Yyo2rvXkWXL6W7OTMDFqb0qTu+6E6wA2jw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=SOy4uik6jEZWbxmPABrbRogV42T8n5r6jEXXfPGNkk6SIgKDyIO6cbZHoarlAkULH
- kjFBy8PONij7Kl/a60F5hUAIVGNFG9k12KIb2imfqAi2rJcNiU8z+4/0Pb3gpVh9NV
- ZE3BZ4ySVphSPjAHTDam/ZsH5e6jxU/R6OI0hHiCymtbcuanXohqSbDNMLVzpcPMG4
- +ZwTDIG4PZnBHVWK/y0yyxATl1P2Qxh2c1shr3aCXxIkGCWdlLx0vEnrb+FK0vCgIV
- liF96uxIaP05sMPqKAeIkyXUSC0pKpdUh2TTdPkiCAvJs5qPoCYm3v145cEdkU6kNk
- 2BB+INXZ2Oo4Q==
-Date: Wed, 13 Oct 2021 14:02:26 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- qizhong.cheng@mediatek.com, Ryan-JH.Yu@mediatek.com,
- Tzung-Bi Shih <tzungbi@google.com>
-Subject: Re: [PATCH v2] PCI: mediatek-gen3: Disable DVFSRC voltage request
-Message-ID: <20211013190226.GA1910352@bhelgaas>
+ s=k20201202; t=1634151964;
+ bh=d2qwMKyYLa/NzGfeio4asesbymsJzfxOP2NnhD6p3Gg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=jtYy7GvOoPnVTFPXdZJhShOsk8jSrqUnI2Mk1iRsBPODxWtwW55IHeiIoPOTnPOzW
+ bc4UWy4XQwkBjCRgkSyydx/ffR/T9tcLI5OULvsbIzhAbzuxyMVrqTsbjfkUjbvhYQ
+ 1ZdV6b+zq9AI/+uZbzvOOsXEAjKclOJciOb2+qcZwSvK2Pf4w036T70NmGs0THDO00
+ GzHf/Y+Ks9Sg8P2b7M9Ga/sdOd6xiWy+ykcK8bliMl9DkkT7WQY4U9YHbyXg0IAxb0
+ bSTmhxMQqHQb3sR2hqWuHiNUJKlkgxQ+gBmBSCuScrUwQ06twszjBS6kO1y8sw7rse
+ FBO99kZDSr7OA==
+Date: Wed, 13 Oct 2021 21:06:01 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sean.wang@mediatek.com
+Cc: lorenzo.bianconi@redhat.com, nbd@nbd.name, Soul.Huang@mediatek.com,
+ YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Mark-YW.Chen@mediatek.com,
+ Deren.Wu@mediatek.com, km.lin@mediatek.com, robin.chiu@mediatek.com,
+ Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ ted.huang@mediatek.com, Eric.Liang@mediatek.com,
+ Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
+ steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
+ jemele@google.com, abhishekpandit@google.com, shawnku@google.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 11/16] mt76: sdio: extend sdio module to support CONNAC2
+Message-ID: <YWcuGcFPGCtaPh+2@lore-desk>
+References: <YWcJe27HQMS7B85j@lore-desk--annotate>
+ <1634147793-9956-1-git-send-email-sean.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211013183515.GA1907868@bhelgaas>
+In-Reply-To: <1634147793-9956-1-git-send-email-sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211013_120229_379885_BC2DF4E4 
-X-CRM114-Status: GOOD (  26.73  )
+X-CRM114-CacheID: sfid-20211013_120605_239911_9399456D 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,78 +76,165 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5875107677863120742=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 13, 2021 at 01:35:17PM -0500, Bjorn Helgaas wrote:
-> On Wed, Oct 13, 2021 at 03:53:28PM +0800, Jianjun Wang wrote:
-> > When the DVFSRC feature is not implemented, the MAC layer will
-> > assert a voltage request signal when exit from the L1ss state,
-> > but cannot receive the voltage ready signal, which will cause
-> > the link to fail to exit the L1ss state correctly.
-> > 
-> > Disable DVFSRC voltage request by default, we need to find
-> > a common way to enable it in the future.
-> 
-> Rewrap commit log to fill 75 columns.
-> 
-> Does "L1ss" above refer to L1.1 and L1.2?  If so, please say that
-> explicitly or say something like "L1 PM Substates" (the term used in
-> the PCIe spec) so it's clear.
-> 
-> This seems on the boundary of PCIe-specified things and Mediatek
-> implementation details, so I'm not sure what "DVFSRC," "MAC," and
-> "voltage request signal" mean.  Since I don't recognize those terms,
-> I'm guessing they are Mediatek-specific things.
-> 
-> But if they are things specified by the PCIe spec, please use the
-> exact names used in the spec.
-> 
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-> > Tested-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
 
-Krzysztof also pointed out that if this is a bug fix, we may want a
-stable tag here.  And, ideally, a Fixes: tag with the specific commit
-that introduced the bug.
+--===============5875107677863120742==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="QAdqLtfNevhfWH71"
+Content-Disposition: inline
 
-> > ---
-> >  drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > index f3aeb8d4eaca..79fb12fca6a9 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -79,6 +79,9 @@
-> >  #define PCIE_ICMD_PM_REG		0x198
-> >  #define PCIE_TURN_OFF_LINK		BIT(4)
-> >  
-> > +#define PCIE_MISC_CTRL_REG		0x348
-> > +#define PCIE_DISABLE_DVFSRC_VLT_REQ	BIT(1)
-> > +
-> >  #define PCIE_TRANS_TABLE_BASE_REG	0x800
-> >  #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
-> >  #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
-> > @@ -297,6 +300,11 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
-> >  	val &= ~PCIE_INTX_ENABLE;
-> >  	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
-> >  
-> > +	/* Disable DVFSRC voltage request */
-> > +	val = readl_relaxed(port->base + PCIE_MISC_CTRL_REG);
-> > +	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
-> > +	writel_relaxed(val, port->base + PCIE_MISC_CTRL_REG);
-> > +
-> >  	/* Assert all reset signals */
-> >  	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
-> >  	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
-> > -- 
-> > 2.25.1
-> > 
+
+--QAdqLtfNevhfWH71
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+[...]
+>=20
+> In the current driver, we can see we only created one Rx queue (dev->q_rx=
+ with qid =3D 0)
+> in mt76s_alloc_queues for processing all incoming packets including MCU e=
+vents and wifi packets.
+>=20
+> And from the point of view of the device,
+> mt7663s use the hardware queue 0 for all MCU events and wifi packets;
+> mt7921s use the hardware queue 1 for all MCU events and wifi packets.
+>=20
+> So if we don't remap from hardware queue 1 to dev->q_rx[0] for mt7921s to=
+ handle incoming packets,
+> we will get the kernel panic on accessing the invalid pointer on dev->q_r=
+x[1].
+>=20
+> 	Sean
+>=20
+> >Regards,
+> >Lorenzo
+> >
+>=20
+> <snip>
+
+ok, what about doing something like the patch below?
+If it works for you, I will post a formal patch.
+
+Regards,
+Lorenzo
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wirele=
+ss/mediatek/mt76/mt76.h
+index 792573dad2e1..25524a21dffa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1254,7 +1254,8 @@ void mt76u_queues_deinit(struct mt76_dev *dev);
+=20
+ int mt76s_init(struct mt76_dev *dev, struct sdio_func *func,
+ 	       const struct mt76_bus_ops *bus_ops);
+-int mt76s_alloc_queues(struct mt76_dev *dev);
++int mt76s_alloc_rx_queue(struct mt76_dev *dev, enum mt76_rxq_id qid);
++int mt76s_alloc_tx(struct mt76_dev *dev);
+ void mt76s_deinit(struct mt76_dev *dev);
+ void mt76s_sdio_irq(struct sdio_func *func);
+ void mt76s_txrx_worker(struct mt76_sdio *sdio);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c b/drivers/net=
+/wireless/mediatek/mt76/mt7615/sdio.c
+index c3bd163e0278..577561aaee31 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+@@ -147,7 +147,11 @@ static int mt7663s_probe(struct sdio_func *func,
+ 		}
+ 	}
+=20
+-	ret =3D mt76s_alloc_queues(&dev->mt76);
++	ret =3D mt76s_alloc_rx_queue(mdev, MT_RXQ_MAIN);
++	if (ret < 0)
++		goto error;
++
++	ret =3D mt76s_alloc_tx(mdev);
+ 	if (ret)
+ 		goto error;
+=20
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wirele=
+ss/mediatek/mt76/sdio.c
+index bb40cc3e9c2b..c99acc21225e 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio.c
+@@ -299,8 +299,7 @@ int mt76s_hw_init(struct mt76_dev *dev, struct sdio_fun=
+c *func, int hw_ver)
+ }
+ EXPORT_SYMBOL_GPL(mt76s_hw_init);
+=20
+-static int
+-mt76s_alloc_rx_queue(struct mt76_dev *dev, enum mt76_rxq_id qid)
++int mt76s_alloc_rx_queue(struct mt76_dev *dev, enum mt76_rxq_id qid)
+ {
+ 	struct mt76_queue *q =3D &dev->q_rx[qid];
+=20
+@@ -317,6 +316,7 @@ mt76s_alloc_rx_queue(struct mt76_dev *dev, enum mt76_rx=
+q_id qid)
+=20
+ 	return 0;
+ }
++EXPORT_SYMBOL_GPL(mt76s_alloc_rx_queue);
+=20
+ static struct mt76_queue *mt76s_alloc_tx_queue(struct mt76_dev *dev)
+ {
+@@ -338,7 +338,7 @@ static struct mt76_queue *mt76s_alloc_tx_queue(struct m=
+t76_dev *dev)
+ 	return q;
+ }
+=20
+-static int mt76s_alloc_tx(struct mt76_dev *dev)
++int mt76s_alloc_tx(struct mt76_dev *dev)
+ {
+ 	struct mt76_queue *q;
+ 	int i;
+@@ -361,18 +361,7 @@ static int mt76s_alloc_tx(struct mt76_dev *dev)
+=20
+ 	return 0;
+ }
+-
+-int mt76s_alloc_queues(struct mt76_dev *dev)
+-{
+-	int err;
+-
+-	err =3D mt76s_alloc_rx_queue(dev, MT_RXQ_MAIN);
+-	if (err < 0)
+-		return err;
+-
+-	return mt76s_alloc_tx(dev);
+-}
+-EXPORT_SYMBOL_GPL(mt76s_alloc_queues);
++EXPORT_SYMBOL_GPL(mt76s_alloc_tx);
+=20
+ static struct mt76_queue_entry *
+ mt76s_get_next_rx_entry(struct mt76_queue *q)
+
+--QAdqLtfNevhfWH71
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYWcuGQAKCRA6cBh0uS2t
+rJNnAQCwNHMHstCiqQtMr+bDWCW9idvTbolYG9YzPJuyC5fJEwD/Q0pLyoJmQ9Uh
+0TCc/b8PopeGLYKwrPGfSwaCentLTQY=
+=TnM+
+-----END PGP SIGNATURE-----
+
+--QAdqLtfNevhfWH71--
+
+
+--===============5875107677863120742==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============5875107677863120742==--
+
