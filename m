@@ -2,68 +2,69 @@ Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E7733C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 10:04:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C56AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 10:29:51 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B18A4610CC
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 10:04:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B18A4610CC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 08E37610D0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 10:29:51 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 08E37610D0
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1FBTo5vDR5V1iX4T1HYlLdIqzt/QS1IonMc5hnPRH4s=; b=NUAOrQAgeIMBNlH5otDukdEqra
-	dDOgWDqC/5SIr21bZLUVoUzySOYK8kIbBaysIxmxtUiIHL+3MrmIRyjZ+h/u3yyscyAHxewZtNLXD
-	cZTeK7gNB7AMDCNUJJ+/sL3DVdsmPxAruVyEO4xNJ3sFcAAuevB32WvHgIT6UD07L62uNSH2Hv5JI
-	ilju/If4pRqbLEAoft7MJUasHBbrPuJLlwtpj1QhRsJZ3tVpWoM8ebjyJMdIz2TG2g4qWzW9Iu7uq
-	Oaa756aosP8QANeANmcBUs0Apfb1N4TmEXkSVy8m/MJ3y9Q50R++S8V+AvdkbX2siusNrzZbyRfGM
-	XvNPDa0g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=x9/1CmeVyoTm5uPzIhOxcFWmAdxBQhYJHf5DBKjxNyA=; b=A+Fv2T9u38Mn4R
+	yGT+E+NT/D6BPhWAYAQpdej4UYuAirE51fGfFwxn4y2tH3Jdhu2ozA3e2z/ItbBQr7FtoSgFKcTlo
+	qIGF06T3CT+j8XZr0/x9nu+yRg5Fr4k4S6WHUlYAq/ZRe+JLJ8MHUMCKABagCtFJV/Y+r+v61Nizd
+	Sj8FMipNugXz/zNXJuRMmBdSATwtT/7S5X/E0fgbeEHZs/XNNZLOZZW/v301HWzLYZqaMjVEZP3sc
+	6t257mymnq5O4dmt4gkOd/tzIMPlNRWVgl1L+eoxqtXCKtMcujZwC8kXkeUI+WNbTHuxeQ25ezL0N
+	5d2D7FxOm7LFn4RNO5yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1maxbE-002VLx-Fm; Thu, 14 Oct 2021 10:04:32 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1maxzU-002a2H-0C; Thu, 14 Oct 2021 10:29:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1maxav-002VFt-F5; Thu, 14 Oct 2021 10:04:15 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id F09E61F449AE
-Subject: Re: [PATCH v7, 07/15] media: mtk-vcodec: Add irq interface for multi
- hardware
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20211011070247.792-1-yunfei.dong@mediatek.com>
- <20211011070247.792-8-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <3f1885cb-fc4e-5832-52a3-ed1766b17add@collabora.com>
-Date: Thu, 14 Oct 2021 12:04:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1maxw3-002YM9-F2; Thu, 14 Oct 2021 10:26:07 +0000
+X-UUID: 9745472ceb864fd3b56aa82665f7b472-20211014
+X-UUID: 9745472ceb864fd3b56aa82665f7b472-20211014
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <guangming.cao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1538313631; Thu, 14 Oct 2021 03:25:57 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Oct 2021 03:25:55 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 14 Oct 2021 18:25:54 +0800
+Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
+ mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 14 Oct 2021 18:25:53 +0800
+From: <guangming.cao@mediatek.com>
+To: <christian.koenig@amd.com>, <sumit.semwal@linaro.org>
+CC: <dri-devel@lists.freedesktop.org>, <guangming.cao@mediatek.com>,
+ <linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <rdunlap@infradead.org>, <wsd_upstream@mediatek.com>, Guangming Cao
+ <Guangming.Cao@mediatek.com>
+Subject: [PATCH v3] dma-buf: remove restriction of IOCTL:DMA_BUF_SET_NAME
+Date: Thu, 14 Oct 2021 18:25:51 +0800
+Message-ID: <20211014102551.54983-1-guangming.cao@mediatek.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20211012084109.176542-1-guangming.cao@mediatek.com>
+References: <20211012084109.176542-1-guangming.cao@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20211011070247.792-8-yunfei.dong@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_030413_837783_10A8D71D 
-X-CRM114-Status: GOOD (  31.80  )
+X-CRM114-CacheID: sfid-20211014_032603_515048_22F6F03C 
+X-CRM114-Status: GOOD (  17.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,343 +76,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Adds irq interface for multi hardware.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 33 +++++++++++++++++--
->   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   |  2 +-
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      | 25 ++++++++++----
->   .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  4 +--
->   .../platform/mtk-vcodec/mtk_vcodec_intr.c     | 27 +++++++--------
->   .../platform/mtk-vcodec/mtk_vcodec_intr.h     |  4 +--
->   .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |  2 +-
->   .../mtk-vcodec/vdec/vdec_h264_req_if.c        |  2 +-
->   .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |  2 +-
->   .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |  2 +-
->   .../platform/mtk-vcodec/venc/venc_h264_if.c   |  2 +-
->   .../platform/mtk-vcodec/venc/venc_vp8_if.c    |  2 +-
->   12 files changed, 71 insertions(+), 36 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> index 17cb3e3519eb..ff70fa5b34e3 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> @@ -73,6 +73,20 @@ static int mtk_vcodec_comp_device_check(struct mtk_vcodec_ctx *ctx)
->   	return 0;
->   }
->   
-> +static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
-> +{
-> +	switch (dev->vdec_pdata->hw_arch) {
-> +	case MTK_VDEC_PURE_SINGLE_CORE:
-> +		 return MTK_VDEC_ONE_CORE;
-> +	case MTK_VDEC_LAT_SINGLE_CORE:
-> +		return MTK_VDEC_ONE_LAT_ONE_CORE;
-> +	default:
-> +		mtk_v4l2_err("not support hw arch:%d",
-> +			dev->vdec_pdata->hw_arch);
-> +		return MTK_VDEC_NO_HW;
-> +	}
-> +}
-> +
->   static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
->   {
->   	struct mtk_vcodec_dev *dev = priv;
-> @@ -104,7 +118,7 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
->   	writel((readl(vdec_misc_addr) & ~VDEC_IRQ_CLR),
->   		dev->reg_base[VDEC_MISC] + VDEC_IRQ_CFG_REG);
->   
-> -	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-> +	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED, 0);
->   
->   	mtk_v4l2_debug(3,
->   			"mtk_vcodec_dec_irq_handler :wake up ctx %d, dec_done_status=%x",
-> @@ -176,7 +190,7 @@ static int fops_vcodec_open(struct file *file)
->   {
->   	struct mtk_vcodec_dev *dev = video_drvdata(file);
->   	struct mtk_vcodec_ctx *ctx = NULL;
-> -	int ret = 0;
-> +	int ret = 0, i, hw_count;
->   	struct vb2_queue *src_vq;
->   
->   	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-> @@ -190,7 +204,19 @@ static int fops_vcodec_open(struct file *file)
->   	v4l2_fh_add(&ctx->fh);
->   	INIT_LIST_HEAD(&ctx->list);
->   	ctx->dev = dev;
-> -	init_waitqueue_head(&ctx->queue);
-> +
-> +	if (ctx->dev->vdec_pdata->is_comp_supported) {
+From: Guangming Cao <Guangming.Cao@mediatek.com>
 
-As pointed out in the review for patch 04/15 of this series, is_comp_supported
-is always false since you moved away from the component framework.
+In this patch(https://patchwork.freedesktop.org/patch/310349),
+it add a new IOCTL to support dma-buf user to set debug name.
 
-That means that this code can be removed, as nothing ever hits that.
+But it also added a limitation of this IOCTL, it needs the
+attachments of dmabuf should be empty, otherwise it will fail.
 
-Please note that other patches in this series are following similar/same patterns,
-so this comment applies to the entire series.
+For the original series, the idea was that allowing name change
+mid-use could confuse the users about the dma-buf.
+However, the rest of the series also makes sure each dma-buf have a unique
+inode(https://patchwork.freedesktop.org/patch/310387/), and any accounting
+should probably use that, without relying on the name as much.
 
-> +		hw_count = mtk_vcodec_get_hw_count(dev);
-> +		if (!hw_count) {
-> +			ret = -EINVAL;
-> +			goto err_init_queue;
-> +		}
-> +		for (i = 0; i < hw_count; i++)
-> +			init_waitqueue_head(&ctx->queue[i]);
-> +	} else {
-> +			init_waitqueue_head(&ctx->queue[0]);
-> +	}
-> +
->   	mutex_init(&ctx->lock);
->   
->   	ret = mtk_vcodec_comp_device_check(ctx);
-> @@ -253,6 +279,7 @@ static int fops_vcodec_open(struct file *file)
->   err_m2m_ctx_init:
->   	v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
->   err_ctrls_setup:
-> +err_init_queue:
+So, removing this restriction will let dma-buf userspace users to use it
+more comfortably and without any side effect.
 
-...and if that unused component code gets removed, this label can also be removed.
+Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
+---
+ drivers/dma-buf/dma-buf.c | 17 +++--------------
+ 1 file changed, 3 insertions(+), 14 deletions(-)
 
->   	v4l2_fh_del(&ctx->fh);
->   	v4l2_fh_exit(&ctx->fh);
->   	kfree(ctx);
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> index 3752ccaea284..0997a5a08156 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> @@ -56,7 +56,7 @@ static irqreturn_t mtk_vdec_comp_irq_handler(int irq, void *priv)
->   	writel(dec_done_status | VDEC_IRQ_CFG, vdec_misc_addr);
->   	writel(dec_done_status & ~VDEC_IRQ_CLR, vdec_misc_addr);
->   
-> -	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-> +	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED, dev->comp_idx);
->   
->   	mtk_v4l2_debug(3, "wake up ctx %d, dec_done_status=%x",
->   		ctx->id, dec_done_status);
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index 140f1a761942..f8e8b5ba408b 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -104,6 +104,16 @@ enum mtk_vdec_hw_id {
->   	MTK_VDEC_HW_MAX,
->   };
->   
-> +/**
-> + * struct mtk_vdec_hw_count - Supported hardware count
-> + */
-> +enum mtk_vdec_hw_count {
-> +	MTK_VDEC_NO_HW = 0,
-> +	MTK_VDEC_ONE_CORE,
-> +	MTK_VDEC_ONE_LAT_ONE_CORE,
-> +	MTK_VDEC_MAX_HW_COUNT,
-> +};
-> +
->   /*
->    * struct mtk_video_fmt - Structure used to store information about pixelformats
->    */
-> @@ -293,9 +303,9 @@ struct mtk_vcodec_ctx {
->   	struct vdec_pic_info picinfo;
->   	int dpb_size;
->   
-> -	int int_cond;
-> -	int int_type;
-> -	wait_queue_head_t queue;
-> +	int int_cond[MTK_VDEC_HW_MAX];
-> +	int int_type[MTK_VDEC_HW_MAX];
-> +	wait_queue_head_t queue[MTK_VDEC_HW_MAX];
->   	unsigned int irq_status;
->   
->   	struct v4l2_ctrl_handler ctrl_hdl;
-> @@ -505,11 +515,12 @@ static inline struct mtk_vcodec_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
->   }
->   
->   /* Wake up context wait_queue */
-> -static inline void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
-> +static inline void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason,
-> +	unsigned int hw_id)
->   {
-> -	ctx->int_cond = 1;
-> -	ctx->int_type = reason;
-> -	wake_up_interruptible(&ctx->queue);
-> +	ctx->int_cond[hw_id] = 1;
-> +	ctx->int_type[hw_id] = reason;
-> +	wake_up_interruptible(&ctx->queue[hw_id]);
->   }
->   
->   #endif /* _MTK_VCODEC_DRV_H_ */
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> index 2828df77020c..c7540c0cdcea 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-> @@ -114,7 +114,7 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
->   
->   	clean_irq_status(ctx->irq_status, addr);
->   
-> -	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-> +	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED, 0);
->   	return IRQ_HANDLED;
->   }
->   
-> @@ -140,7 +140,7 @@ static int fops_vcodec_open(struct file *file)
->   	v4l2_fh_add(&ctx->fh);
->   	INIT_LIST_HEAD(&ctx->list);
->   	ctx->dev = dev;
-> -	init_waitqueue_head(&ctx->queue);
-> +	init_waitqueue_head(&ctx->queue[0]);
->   
->   	ctx->type = MTK_INST_ENCODER;
->   	ret = mtk_vcodec_enc_ctrls_setup(ctx);
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-> index 70580c2525ba..8147533da98b 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-> @@ -11,34 +11,31 @@
->   #include "mtk_vcodec_intr.h"
->   #include "mtk_vcodec_util.h"
->   
-> -int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx  *ctx, int command,
-> -				 unsigned int timeout_ms)
-> +int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx,
-> +	int command, unsigned int timeout_ms, unsigned hw_id)
->   {
-> -	wait_queue_head_t *waitqueue;
->   	long timeout_jiff, ret;
->   	int status = 0;
->   
-> -	waitqueue = (wait_queue_head_t *)&ctx->queue;
->   	timeout_jiff = msecs_to_jiffies(timeout_ms);
-> -
-> -	ret = wait_event_interruptible_timeout(*waitqueue,
-> -				ctx->int_cond,
-> +	ret = wait_event_interruptible_timeout(ctx->queue[hw_id],
-> +				ctx->int_cond[hw_id],
->   				timeout_jiff);
->   
->   	if (!ret) {
->   		status = -1;	/* timeout */
-> -		mtk_v4l2_err("[%d] ctx->type=%d, cmd=%d, wait_event_interruptible_timeout time=%ums out %d %d!",
-> -			     ctx->id, ctx->type, command, timeout_ms,
-> -			     ctx->int_cond, ctx->int_type);
-> +		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec timeout=%ums (%d %d)",
-> +				ctx->id, command, ctx->type, timeout_ms,
-> +				ctx->int_cond[hw_id], ctx->int_type[hw_id]);
->   	} else if (-ERESTARTSYS == ret) {
-> -		mtk_v4l2_err("[%d] ctx->type=%d, cmd=%d, wait_event_interruptible_timeout interrupted by a signal %d %d",
-> -			     ctx->id, ctx->type, command, ctx->int_cond,
-> -			     ctx->int_type);
->   		status = -1;
-> +		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec inter fail (%d %d)",
-> +				ctx->id, command, ctx->type,
-> +				ctx->int_cond[hw_id], ctx->int_type[hw_id]);
->   	}
->   
-> -	ctx->int_cond = 0;
-> -	ctx->int_type = 0;
-> +	ctx->int_cond[hw_id] = 0;
-> +	ctx->int_type[hw_id] = 0;
->   
->   	return status;
->   }
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-> index 638cd1f3526a..2bf4cabfaa43 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-> @@ -12,7 +12,7 @@
->   struct mtk_vcodec_ctx;
->   
->   /* timeout is ms */
-> -int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *data, int command,
-> -				unsigned int timeout_ms);
-> +int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx,
-> +				int command, unsigned int timeout_ms, unsigned int hw_id);
->   
->   #endif /* _MTK_VCODEC_INTR_H_ */
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> index 40d6e6c5ac7a..481655bb6016 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-> @@ -413,7 +413,7 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
->   		/* wait decoder done interrupt */
->   		err = mtk_vcodec_wait_for_done_ctx(inst->ctx,
->   						   MTK_INST_IRQ_RECEIVED,
-> -						   WAIT_INTR_TIMEOUT_MS);
-> +						   WAIT_INTR_TIMEOUT_MS, 0);
->   		if (err)
->   			goto err_free_fb_out;
->   
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> index 4dde9ee786b4..d23baa364246 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-> @@ -724,7 +724,7 @@ static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
->   	/* wait decoder done interrupt */
->   	err = mtk_vcodec_wait_for_done_ctx(inst->ctx,
->   					   MTK_INST_IRQ_RECEIVED,
-> -					   WAIT_INTR_TIMEOUT_MS);
-> +					   WAIT_INTR_TIMEOUT_MS, 0);
->   	if (err)
->   		goto err_free_fb_out;
->   	vpu_dec_end(vpu);
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> index e5393f841080..88c046731754 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-> @@ -488,7 +488,7 @@ static int vdec_vp8_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
->   
->   	/* wait decoder done interrupt */
->   	mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
-> -				     WAIT_INTR_TIMEOUT_MS);
-> +				     WAIT_INTR_TIMEOUT_MS, 0);
->   
->   	if (inst->vsi->load_data)
->   		load_dec_table(inst);
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> index 71cdc3ddafcb..70b8383f7c8e 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-> @@ -539,7 +539,7 @@ static bool vp9_wait_dec_end(struct vdec_vp9_inst *inst)
->   
->   	mtk_vcodec_wait_for_done_ctx(inst->ctx,
->   			MTK_INST_IRQ_RECEIVED,
-> -			WAIT_INTR_TIMEOUT_MS);
-> +			WAIT_INTR_TIMEOUT_MS, 0);
->   
->   	if (ctx->irq_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
->   		return true;
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> index b6a4f2074fa5..9ae1bd8dbc32 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-> @@ -335,7 +335,7 @@ static unsigned int h264_enc_wait_venc_done(struct venc_h264_inst *inst)
->   	struct mtk_vcodec_ctx *ctx = (struct mtk_vcodec_ctx *)inst->ctx;
->   
->   	if (!mtk_vcodec_wait_for_done_ctx(ctx, MTK_INST_IRQ_RECEIVED,
-> -					  WAIT_INTR_TIMEOUT_MS)) {
-> +					  WAIT_INTR_TIMEOUT_MS, 0)) {
->   		irq_status = ctx->irq_status;
->   		mtk_vcodec_debug(inst, "irq_status %x <-", irq_status);
->   	}
-> diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> index 8267a9c4fd25..f96564277577 100644
-> --- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> +++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-> @@ -222,7 +222,7 @@ static unsigned int vp8_enc_wait_venc_done(struct venc_vp8_inst *inst)
->   	struct mtk_vcodec_ctx *ctx = (struct mtk_vcodec_ctx *)inst->ctx;
->   
->   	if (!mtk_vcodec_wait_for_done_ctx(ctx, MTK_INST_IRQ_RECEIVED,
-> -					  WAIT_INTR_TIMEOUT_MS)) {
-> +					  WAIT_INTR_TIMEOUT_MS, 0)) {
->   		irq_status = ctx->irq_status;
->   		mtk_vcodec_debug(inst, "isr return %x", irq_status);
->   	}
-> 
+diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
+index 511fe0d217a0..5fbb3a2068a3 100644
+--- a/drivers/dma-buf/dma-buf.c
++++ b/drivers/dma-buf/dma-buf.c
+@@ -325,10 +325,8 @@ static __poll_t dma_buf_poll(struct file *file, poll_table *poll)
+ 
+ /**
+  * dma_buf_set_name - Set a name to a specific dma_buf to track the usage.
+- * The name of the dma-buf buffer can only be set when the dma-buf is not
+- * attached to any devices. It could theoritically support changing the
+- * name of the dma-buf if the same piece of memory is used for multiple
+- * purpose between different devices.
++ * It could support changing the name of the dma-buf if the same
++ * piece of memory is used for multiple purpose between different devices.
+  *
+  * @dmabuf: [in]     dmabuf buffer that will be renamed.
+  * @buf:    [in]     A piece of userspace memory that contains the name of
+@@ -341,25 +339,16 @@ static __poll_t dma_buf_poll(struct file *file, poll_table *poll)
+ static long dma_buf_set_name(struct dma_buf *dmabuf, const char __user *buf)
+ {
+ 	char *name = strndup_user(buf, DMA_BUF_NAME_LEN);
+-	long ret = 0;
+ 
+ 	if (IS_ERR(name))
+ 		return PTR_ERR(name);
+ 
+-	dma_resv_lock(dmabuf->resv, NULL);
+-	if (!list_empty(&dmabuf->attachments)) {
+-		ret = -EBUSY;
+-		kfree(name);
+-		goto out_unlock;
+-	}
+ 	spin_lock(&dmabuf->name_lock);
+ 	kfree(dmabuf->name);
+ 	dmabuf->name = name;
+ 	spin_unlock(&dmabuf->name_lock);
+ 
+-out_unlock:
+-	dma_resv_unlock(dmabuf->resv);
+-	return ret;
++	return 0;
+ }
+ 
+ static long dma_buf_ioctl(struct file *file,
+-- 
+2.17.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
