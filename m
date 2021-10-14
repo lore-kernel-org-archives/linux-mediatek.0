@@ -2,65 +2,66 @@ Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C76A1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 967E3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:05:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9731E61056
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:04:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9731E61056
+	by mail.kernel.org (Postfix) with ESMTPS id 688E6610CB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:05:06 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 688E6610CB
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=JT8LpQDbOprUShnAHpYliqFL+rxs9xoJ2sJrKMkomzM=; b=ATylxfl+xY949W
-	f8ahEI368rsLAqzynzUfgRYrimP5FXkcrAmfKEbJund6nK2d7Vm9f9X+r8Qe/NLepM7GlhFSkDs84
-	Op3aRQ8jeUuYtVHEaZZZg9t6QIlpVJu6LeGpKUtOcol6g4CAu/0O/3jAPLJwqAuFCBaniq4ouGT7P
-	3ZRosZONJYhgXEcWm04788bKdACOEzs35ciQuoUJgkypN8pqMR+E1Lt1eeq6RGUvIwvTpBjy5P1tV
-	TKKXPs3gRqaIfb+bu+D/jL+5W7RIvXA50EzbLPf1SdBA4hNeDSVMgM8BLheth4EbL3x4bCopX+I2t
-	KGUS3088V8Xbfz+YS/Ww==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ASSDaYgQVn/Ax9BltNh7EFlbEX6nYKTNhasKyJe39ng=; b=U+5wgyasoEzYI2
+	yKWkj8sKgcg+LkD7DQqIvYm+lCdyxZ2kFqa2l6tRtCkJPFdqYLssCAXkA8zx1GsZkNqQDEzBmlH5w
+	IZGGniHEIIfedpMHGvd9wZfk19XCRNvQuN6d2APIvMfO/qx8o0KJfvsnUpINb9e4AzlWXz2yo+VH0
+	kfvQFYnPArBPh+juS1yEg6SBus31GwqC5PH3SXKOfElLf5FN5NVVNdisHzgfCT2QvInr5vV1bwWCS
+	eOtHsmzgvq2c4FqCnG6z3WfUwEbfPAsK4ljzb75hbLmOF3/3s5F6JbtnncV9RFIWCEBDT7X7QkXeV
+	apIXPQlufATRtNHwuc5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mazTD-002zm5-T2; Thu, 14 Oct 2021 12:04:23 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1mazTe-002zvn-Lx; Thu, 14 Oct 2021 12:04:50 +0000
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mazTB-002zl1-P5
- for linux-mediatek@lists.infradead.org; Thu, 14 Oct 2021 12:04:23 +0000
-Received: by mail-pf1-x433.google.com with SMTP id t184so4403429pfd.0
- for <linux-mediatek@lists.infradead.org>; Thu, 14 Oct 2021 05:04:21 -0700 (PDT)
+ id 1mazTK-002znN-WE
+ for linux-mediatek@lists.infradead.org; Thu, 14 Oct 2021 12:04:32 +0000
+Received: by mail-pg1-x52e.google.com with SMTP id d23so5318963pgh.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 14 Oct 2021 05:04:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=92n0moAabT6AS5dGSdK43zewU3rUGs37H16qpFt37P0=;
- b=M5TGLvDdV5GB7BnmG+6NPyEGICwR4d406PUheHDG9uvyo+imp5sL9SvfgGl6t61z8Q
- ejBWvaTzzlkPDzyk5D0bKK3sYzDSIB3dW7mtOiOkFFZ+ZRDgGBqCdcJgKUFvhSrBCAIu
- dQeQeGXZNjJ8hstscY++totv3/mjlOpIC07b0=
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=ZS8MhlD7ABmZlkxmQInm9HCla87BICXfSMIw1C1cU54=;
+ b=UiaX0lPC+3OXbtfGld9LG1rzAYWJgODKizS41kyTYqH21c+wg6SrSiMTc4xrMfmYc+
+ U9U/FMqL5iI5+rILj//TJliaWtB9bJWrem2Avxh2Jvbe1MzHdyiBfJWoYjN2Cxn9dBr7
+ 5DVSmJjCclkRo1Yrve7gf8CMh6YHZwcIjpEWk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=92n0moAabT6AS5dGSdK43zewU3rUGs37H16qpFt37P0=;
- b=3Ws89BfDJiN9uPRN1MxM90td8CjUcyh9g1HiMbSWemtYFuF5m8rAIMJqNghexWu96X
- 8+abevqsUIlmqQz9RCq9+FqlpvZVx4G297Rea/vevR4wHdVn4AwM4soh9FoAOLfQkSQr
- rJQ/xG8wNdHcNtufITwysASvJOpZFZTU8ipV//HG3MEscbqJyGTD6JOJPaywwopHgV7H
- rjrp3cmzf1QYauEXxVpFhxsWVSk8T4Z+OQAj9MSjn++ap8kgjmue2sXp2G+miTWZNMbm
- GcyezpTm32B3bYVrJbVRPRExZ1MxTo1eXlBDiZFGFkcw/pJ4BzeY1mPF3jlaL0hnJfA7
- ZHGw==
-X-Gm-Message-State: AOAM53223jwW7Caw3y7gY2wb/aiy+Y/8DtPQEPfI9USwLjjP3o4hgMnU
- 8tguQOEkpf2hHmIWPtpVP334dg==
-X-Google-Smtp-Source: ABdhPJwIWotZPHk184vFFep0mQkX2raEyAkHyKCaAGKFVNw83k5U9hsxrtADiEetCitAyE2LbTbplg==
-X-Received: by 2002:a63:7542:: with SMTP id f2mr3918157pgn.64.1634213060611;
- Thu, 14 Oct 2021 05:04:20 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=ZS8MhlD7ABmZlkxmQInm9HCla87BICXfSMIw1C1cU54=;
+ b=YOhaj0uqdawM0/CEx4hzfQjprv3kxd5+WgV6rTgL/0P1cLvW7IsAWkWE3/h2H0lfwK
+ OumbBUFcsR/inCq3UJZQn3vi9QpFrr2IbxkhNUkyuA9NH/YERqpcBPRXqmxTuyAsESfz
+ oPugt8GlV5VTfoFB59WcMfLq0oqQumqEoibz/bZw9fITqP/lRuC/YupM4gAMxV3RA4Rb
+ PnCgjalE86sHXxsAuLZtf/RYvbwDSV0b6o3SwxO8TmbxQ8TnhKaYS+cXvlmH8EjVEL6s
+ JrFaIRXqIb17LKi0KZYoRTjnU6T9F1lamHi4UkMdZwjphcrhDk/TCJlrvlI7zHCcx041
+ TY6w==
+X-Gm-Message-State: AOAM5318gqd3Dx7mVRiADE1r/XT48oPxIXlCruxr4bttWTO4FenPJk3T
+ BdXGx4dsQmJtR9Bdc8BxHobVGw==
+X-Google-Smtp-Source: ABdhPJzdRj4HVkNLgkG/WEqH2RrZtn2ign69xKx2wyK3OiBy2swev3QG5m5927mSi42rQmeqd8Jhug==
+X-Received: by 2002:aa7:824b:0:b0:44c:22ad:2763 with SMTP id
+ e11-20020aa7824b000000b0044c22ad2763mr4913447pfn.63.1634213068837; 
+ Thu, 14 Oct 2021 05:04:28 -0700 (PDT)
 Received: from fshao-glinux.tpe.corp.google.com
  ([2401:fa00:1:10:64c0:3f2d:5152:a6f1])
- by smtp.gmail.com with ESMTPSA id b11sm2300275pge.57.2021.10.14.05.04.18
+ by smtp.gmail.com with ESMTPSA id b11sm2300275pge.57.2021.10.14.05.04.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Oct 2021 05:04:20 -0700 (PDT)
+ Thu, 14 Oct 2021 05:04:28 -0700 (PDT)
 From: Fei Shao <fshao@chromium.org>
 To: Jassi Brar <jaswinder.singh@linaro.org>
 Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -70,15 +71,16 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  "jason-jh.lin" <jason-jh.lin@mediatek.com>,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 0/2] Fixups for mtk-cmdq multi-gce support
-Date: Thu, 14 Oct 2021 20:03:50 +0800
-Message-Id: <20211014120352.1506321-1-fshao@chromium.org>
+Subject: [PATCH v2 1/2] mailbox: mtk-cmdq: Validate alias_id on probe
+Date: Thu, 14 Oct 2021 20:03:51 +0800
+Message-Id: <20211014120352.1506321-2-fshao@chromium.org>
 X-Mailer: git-send-email 2.33.0.882.g93a45727a2-goog
+In-Reply-To: <20211014120352.1506321-1-fshao@chromium.org>
+References: <20211014120352.1506321-1-fshao@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_050421_887117_58B6BB54 
-X-CRM114-Status: UNSURE (   7.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211014_050431_091435_238C187D 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,20 +97,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series includes some fixup patches for 85dfdbfc13ea ("mailbox:
-cmdq: add multi-gce clocks support for mt8195").
+of_alias_get_id() may return -ENODEV which leads to illegal access to
+the cmdq->clocks array.
+Adding a check over alias_id to prevent the unexpected behavior.
+
+Fixes: 85dfdbfc13ea ("mailbox: cmdq: add multi-gce clocks support for
+mt8195")
+Signed-off-by: Fei Shao <fshao@chromium.org>
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+---
 
 Changes in v2:
 - Add Reviewed-by tag
-- Make clock names static
 
-Fei Shao (2):
-  mailbox: mtk-cmdq: Validate alias_id on probe
-  mailbox: mtk-cmdq: Fix local clock ID usage
+ drivers/mailbox/mtk-cmdq-mailbox.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/mailbox/mtk-cmdq-mailbox.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
-
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 64175a893312..f3e52dddd422 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -573,7 +573,7 @@ static int cmdq_probe(struct platform_device *pdev)
+ 			char clk_id[8];
+ 
+ 			alias_id = of_alias_get_id(node, clk_name);
+-			if (alias_id < cmdq->gce_num) {
++			if (alias_id >= 0 && alias_id < cmdq->gce_num) {
+ 				snprintf(clk_id, sizeof(clk_id), "%s%d", clk_name, alias_id);
+ 				cmdq->clocks[alias_id].id = clk_id;
+ 				cmdq->clocks[alias_id].clk = of_clk_get(node, 0);
 -- 
 2.33.0.882.g93a45727a2-goog
 
