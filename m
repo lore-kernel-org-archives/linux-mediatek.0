@@ -2,49 +2,49 @@ Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42EC0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 07:57:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2FE92C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 07:58:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 07FCC61029
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 07:57:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 07FCC61029
+	by mail.kernel.org (Postfix) with ESMTPS id EFEAB61027
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 07:58:03 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EFEAB61027
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pvBf+VnAmkXGuivieJnakwZC5csjUjFLYPjFOXn2S+0=; b=ooFo3H0ZIBfQmC
-	IBuLA5CDsV7Mq7lQ+2jbUSV4LFUSawAZglO0LKB+0FUMINAo7OKc8Ku5e4P4X9KHpk+hykoo6Bzj2
-	KnFHVv0YXr+49JZVqL82g6t7xX24CeY0y46ciSH/iNEzYDhBaKmrgfoGroHpQ4luB5JzM5vqep3ak
-	mFnc82N9hpJ8ldJtY/VUVIp18+YtCZdjxPxo0fGqPLN/gh4m25E4DP17GvhGKs1Cq7sMMOif8fbaf
-	10Z3gu5KDUahyGazbRPva5eY7mgEbffLrxo8iXGpT9la0oHFp6Zly85PYJb0CmQ8HwEh1ddYqoVSc
-	DRrfjhtvqMtDSJDIAfBg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UsHKe+8ZhHW7O2fIZAu36eVPe6G8K7ojpa4dDKJegVE=; b=qzLttYrO4aIsYb
+	Bsbq2ucQBxqFVdMFMV4vvYKWm0gVN429bCPiiF6r2fNWh/U3zTY/94haqVZkOtndbSoEkThHAAwbQ
+	3e9X7ACs7Fffxi+YduRxrY9Ft7Uu2zhVjtHxeKswIrP7eAErD+ZWltjU0VuRKgWKV1d19oRl0CHTR
+	Uc12vMYsxasW6KRN3fZ+Dw00lnnb9hyFXuhE3QG2fZsAqCAQNN1c5CSj8X9jdi7P0/CfzKtTalq2/
+	VrYoIONG3gdMqxnK+ebNO7vbJziLrPQvRRes5CLFswF0BkDRqiPeHeAyf141PTACmkCWI8v/QRbvU
+	VUkKvNJNUFRTi6CMIdmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mavcA-0020dj-Lx; Thu, 14 Oct 2021 07:57:22 +0000
+	id 1mavcd-0020um-42; Thu, 14 Oct 2021 07:57:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mavbM-0020D8-94; Thu, 14 Oct 2021 07:56:34 +0000
-X-UUID: 84c2c8b0f2254cac95acd384d1486634-20211014
-X-UUID: 84c2c8b0f2254cac95acd384d1486634-20211014
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1mavbQ-0020Gh-Gi; Thu, 14 Oct 2021 07:56:41 +0000
+X-UUID: b790569034834172b735e2e1ddd29b49-20211014
+X-UUID: b790569034834172b735e2e1ddd29b49-20211014
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 362209155; Thu, 14 Oct 2021 00:56:27 -0700
+ with ESMTP id 2130693058; Thu, 14 Oct 2021 00:56:34 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 00:56:25 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Oct 2021 00:56:32 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 15:56:24 +0800
+ 15.0.1497.2; Thu, 14 Oct 2021 15:56:29 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 Oct 2021 15:56:24 +0800
+ Frontend Transport; Thu, 14 Oct 2021 15:56:29 +0800
 From: Sam Shih <sam.shih@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
@@ -57,15 +57,17 @@ To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <linux-clk@vger.kernel.org>
 CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
  Shih" <sam.shih@mediatek.com>
-Subject: [PATCH v4 0/5] Mediatek MT7986 basic clock support
-Date: Thu, 14 Oct 2021 15:56:15 +0800
-Message-ID: <20211014075620.17563-1-sam.shih@mediatek.com>
+Subject: [PATCH v4 3/5] clk: mediatek: add mt7986 clock support
+Date: Thu, 14 Oct 2021 15:56:18 +0800
+Message-ID: <20211014075620.17563-4-sam.shih@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211014075620.17563-1-sam.shih@mediatek.com>
+References: <20211014075620.17563-1-sam.shih@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_005632_345999_0CCC1D68 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20211014_005636_646579_11A21A6B 
+X-CRM114-Status: GOOD (  18.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,47 +79,837 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-VGhpcyBwYXRjaCBzZXJpZXMgYWRkIGJhc2ljIGNsb2NrIHN1cHBvcnQgZm9yIG1lZGlhdGVrIG10
-Nzk4NiBTb0MuCkl0IGlzIGJhc2VkIG9uIHBhdGNoIHNlcmllcyAiQWRkIGJhc2ljIFNvQyBzdXBw
-b3J0IGZvciBtZWRpYXRlayBtdDc5ODYiOgpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvMjAy
-MTEwMTQwNzQ0MDMuMTczNDYtMS1zYW0uc2hpaEBtZWRpYXRlay5jb20vCgotLS0KQWNjb3JkaW5n
-IHRvIHRoZSBtYWludGFpbmVy4oCZcyBzdWdnZXN0aW9uLCB0aGlzIHBhdGNoIHNwbGl0cyB0aGUg
-cHJldmlvdXMKdGhyZWFkIGludG8gaW5kZXBlbmRlbnQgcGF0Y2ggc2VyaWVzLgpUaGlzIHBhdGNo
-IGluY2x1ZGUgY2xvY2sgZHJpdmVyIGFuZCBkZXZpY2UgdHJlZSB1cGRhdGUKCk9yaWdpbmFsIHRo
-cmVhZDoKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjEwOTE0MDg1MTM3LjMxNzYxLTEt
-c2FtLnNoaWhAbWVkaWF0ZWsuY29tLwpodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1hcm0t
-a2VybmVsLzIwMjEwOTE0MDg1MTM3LjMxNzYxLTItc2FtLnNoaWhAbWVkaWF0ZWsuY29tLwotLS0K
-ClNhbSBTaGloICg1KToKICBkdC1iaW5kaW5nczogY2xvY2s6IG1lZGlhdGVrOiBkb2N1bWVudCBj
-bGsgYmluZGluZ3MgZm9yIG1lZGlhdGVrCiAgICBtdDc5ODYgU29DCiAgY2xrOiBtZWRpYXRlazog
-YWRkIG10Nzk4NiBjbG9jayBJRHMKICBjbGs6IG1lZGlhdGVrOiBhZGQgbXQ3OTg2IGNsb2NrIHN1
-cHBvcnQKICBhcm02NDogZHRzOiBtZWRpYXRlazogYWRkIGNsb2NrIHN1cHBvcnQgZm9yIG10Nzk4
-NmEKICBhcm02NDogZHRzOiBtZWRpYXRlazogYWRkIGNsb2NrIHN1cHBvcnQgZm9yIG10Nzk4NmIK
-CiAuLi4vYXJtL21lZGlhdGVrL21lZGlhdGVrLGFwbWl4ZWRzeXMudHh0ICAgICAgfCAgIDEgKwog
-Li4uL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxldGhzeXMudHh0IHwgICAxICsKIC4u
-Li9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssaW5mcmFjZmcudHh0ICAgICAgICB8ICAgMSArCiAuLi4v
-YXJtL21lZGlhdGVrL21lZGlhdGVrLHNnbWlpc3lzLnR4dCAgICAgICAgfCAgIDIgKwogLi4uL2Fy
-bS9tZWRpYXRlay9tZWRpYXRlayx0b3Bja2dlbi50eHQgICAgICAgIHwgICAxICsKIGFyY2gvYXJt
-NjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ3OTg2YS5kdHNpICAgICB8ICA2OCArKystCiBhcmNoL2Fy
-bTY0L2Jvb3QvZHRzL21lZGlhdGVrL210Nzk4NmIuZHRzaSAgICAgfCAgNjggKysrLQogZHJpdmVy
-cy9jbGsvbWVkaWF0ZWsvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwgIDE3ICsKIGRyaXZlcnMv
-Y2xrL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgICAgICB8ICAgNCArCiBkcml2ZXJzL2Ns
-ay9tZWRpYXRlay9jbGstbXQ3OTg2LWFwbWl4ZWQuYyAgICAgfCAgNzggKysrKysKIGRyaXZlcnMv
-Y2xrL21lZGlhdGVrL2Nsay1tdDc5ODYtZXRoLmMgICAgICAgICB8IDEzMiArKysrKysrKwogZHJp
-dmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10Nzk4Ni1pbmZyYWNmZy5jICAgIHwgMTk4ICsrKysrKysr
-KysrCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LXRvcGNrZ2VuLmMgICAgfCAzMTkg
-KysrKysrKysrKysrKysrKysrCiBpbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL210Nzk4Ni1jbGsu
-aCAgICAgICAgfCAxNjkgKysrKysrKysrKwogMTQgZmlsZXMgY2hhbmdlZCwgMTA0OSBpbnNlcnRp
-b25zKCspLCAxMCBkZWxldGlvbnMoLSkKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2Nsay9t
-ZWRpYXRlay9jbGstbXQ3OTg2LWFwbWl4ZWQuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
-Y2xrL21lZGlhdGVrL2Nsay1tdDc5ODYtZXRoLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LWluZnJhY2ZnLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
-cml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LXRvcGNrZ2VuLmMKIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBpbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL210Nzk4Ni1jbGsuaAoKLS0KMi4yOS4yCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Add MT7986 clock support, include topckgen, apmixedsys,
+infracfg, and ethernet subsystem clocks.
+
+Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+---
+v4: separate clock part into a single patch series
+
+Original thread:
+https://lore.kernel.org/lkml/20210914085137.31761-4-sam.shih@mediatek.com/
+
+v2: applied the comment suggested by reviewers:
+    - splited basic clock driver to apmixed, topckgen, and infracfg
+    - removed 1:1 factor clock
+    - renamed factor clock for easier to understand
+---
+ drivers/clk/mediatek/Kconfig               |  17 ++
+ drivers/clk/mediatek/Makefile              |   4 +
+ drivers/clk/mediatek/clk-mt7986-apmixed.c  |  78 +++++
+ drivers/clk/mediatek/clk-mt7986-eth.c      | 132 +++++++++
+ drivers/clk/mediatek/clk-mt7986-infracfg.c | 198 +++++++++++++
+ drivers/clk/mediatek/clk-mt7986-topckgen.c | 319 +++++++++++++++++++++
+ 6 files changed, 748 insertions(+)
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-apmixed.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-eth.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-infracfg.c
+ create mode 100644 drivers/clk/mediatek/clk-mt7986-topckgen.c
+
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 439b7c8d0d07..f5f0c0c1012a 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -344,6 +344,23 @@ config COMMON_CLK_MT7629_HIFSYS
+ 	  This driver supports MediaTek MT7629 HIFSYS clocks providing
+ 	  to PCI-E and USB.
+ 
++config COMMON_CLK_MT7986
++	bool "Clock driver for MediaTek MT7986"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	select COMMON_CLK_MEDIATEK
++	default ARCH_MEDIATEK
++	help
++	  This driver supports MediaTek MT7986 basic clocks and clocks
++	  required for various periperals found on MediaTek.
++
++config COMMON_CLK_MT7986_ETHSYS
++	bool "Clock driver for MediaTek MT7986 ETHSYS"
++	depends on COMMON_CLK_MT7986
++	default COMMON_CLK_MT7986
++	help
++	  This driver add support for clocks for Ethernet and SGMII
++	  required on MediaTek MT7986 SoC.
++
+ config COMMON_CLK_MT8135
+ 	bool "Clock driver for MediaTek MT8135"
+ 	depends on (ARCH_MEDIATEK && ARM) || COMPILE_TEST
+diff --git a/drivers/clk/mediatek/Makefile b/drivers/clk/mediatek/Makefile
+index 15bc045f0b71..fec514413c98 100644
+--- a/drivers/clk/mediatek/Makefile
++++ b/drivers/clk/mediatek/Makefile
+@@ -46,6 +46,10 @@ obj-$(CONFIG_COMMON_CLK_MT7622_AUDSYS) += clk-mt7622-aud.o
+ obj-$(CONFIG_COMMON_CLK_MT7629) += clk-mt7629.o
+ obj-$(CONFIG_COMMON_CLK_MT7629_ETHSYS) += clk-mt7629-eth.o
+ obj-$(CONFIG_COMMON_CLK_MT7629_HIFSYS) += clk-mt7629-hif.o
++obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-apmixed.o
++obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-topckgen.o
++obj-$(CONFIG_COMMON_CLK_MT7986) += clk-mt7986-infracfg.o
++obj-$(CONFIG_COMMON_CLK_MT7986_ETHSYS) += clk-mt7986-eth.o
+ obj-$(CONFIG_COMMON_CLK_MT8135) += clk-mt8135.o
+ obj-$(CONFIG_COMMON_CLK_MT8167) += clk-mt8167.o
+ obj-$(CONFIG_COMMON_CLK_MT8167_AUDSYS) += clk-mt8167-aud.o
+diff --git a/drivers/clk/mediatek/clk-mt7986-apmixed.c b/drivers/clk/mediatek/clk-mt7986-apmixed.c
+new file mode 100644
+index 000000000000..0925d61b55f2
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt7986-apmixed.c
+@@ -0,0 +1,78 @@
++// SPDX-License-Identifier: GPL-1.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Sam Shih <sam.shih@mediatek.com>
++ * Author: Wenzhen Yu <wenzhen.yu@mediatek.com>
++ */
++
++#include <linux/clk-provider.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++#include "clk-mtk.h"
++#include "clk-gate.h"
++#include "clk-mux.h"
++
++#include <dt-bindings/clock/mt7986-clk.h>
++#include <linux/clk.h>
++
++#define MT7986_PLL_FMAX (2500UL * MHZ)
++#define CON0_MT7986_RST_BAR BIT(27)
++
++#define PLL_xtal(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,       \
++		 _pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift,         \
++		 _div_table, _parent_name)                                     \
++	{                                                                      \
++		.id = _id, .name = _name, .reg = _reg, .pwr_reg = _pwr_reg,    \
++		.en_mask = _en_mask, .flags = _flags,                          \
++		.rst_bar_mask = CON0_MT7986_RST_BAR, .fmax = MT7986_PLL_FMAX,  \
++		.pcwbits = _pcwbits, .pd_reg = _pd_reg, .pd_shift = _pd_shift, \
++		.tuner_reg = _tuner_reg, .pcw_reg = _pcw_reg,                  \
++		.pcw_shift = _pcw_shift, .div_table = _div_table,              \
++		.parent_name = _parent_name,                                   \
++	}
++
++#define PLL(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits, _pd_reg,   \
++	    _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift)                       \
++	PLL_xtal(_id, _name, _reg, _pwr_reg, _en_mask, _flags, _pcwbits,       \
++		 _pd_reg, _pd_shift, _tuner_reg, _pcw_reg, _pcw_shift, NULL,   \
++		 "clkxtal")
++
++static const struct mtk_pll_data plls[] = {
++	PLL(CLK_APMIXED_ARMPLL, "armpll", 0x0200, 0x020C, 0x00000001, 0, 32,
++	    0x0200, 4, 0, 0x0204, 0),
++	PLL(CLK_APMIXED_NET2PLL, "net2pll", 0x0210, 0x021C, 0x00000001, 0, 32,
++	    0x0210, 4, 0, 0x0214, 0),
++	PLL(CLK_APMIXED_MMPLL, "mmpll", 0x0220, 0x022C, 0x00000001, 0, 32,
++	    0x0220, 4, 0, 0x0224, 0),
++	PLL(CLK_APMIXED_SGMPLL, "sgmpll", 0x0230, 0x023c, 0x00000001, 0, 32,
++	    0x0230, 4, 0, 0x0234, 0),
++	PLL(CLK_APMIXED_WEDMCUPLL, "wedmcupll", 0x0240, 0x024c, 0x00000001, 0,
++	    32, 0x0240, 4, 0, 0x0244, 0),
++	PLL(CLK_APMIXED_NET1PLL, "net1pll", 0x0250, 0x025c, 0x00000001, 0, 32,
++	    0x0250, 4, 0, 0x0254, 0),
++	PLL(CLK_APMIXED_MPLL, "mpll", 0x0260, 0x0270, 0x00000001, 0, 32, 0x0260,
++	    4, 0, 0x0264, 0),
++	PLL(CLK_APMIXED_APLL2, "apll2", 0x0278, 0x0288, 0x00000001, 0, 32,
++	    0x0278, 4, 0, 0x027c, 0),
++};
++
++static void __init mtk_apmixedsys_init(struct device_node *node)
++{
++	struct clk_onecell_data *clk_data;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(plls));
++
++	mtk_clk_register_plls(node, plls, ARRAY_SIZE(plls), clk_data);
++
++	clk_prepare_enable(clk_data->clks[CLK_APMIXED_ARMPLL]);
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	if (r)
++		pr_err("%s(): could not register clock provider: %d\n",
++		       __func__, r);
++}
++CLK_OF_DECLARE(mtk_apmixedsys, "mediatek,mt7986-apmixedsys",
++	       mtk_apmixedsys_init);
+diff --git a/drivers/clk/mediatek/clk-mt7986-eth.c b/drivers/clk/mediatek/clk-mt7986-eth.c
+new file mode 100644
+index 000000000000..495d023ccad7
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt7986-eth.c
+@@ -0,0 +1,132 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Sam Shih <sam.shih@mediatek.com>
++ * Author: Wenzhen Yu <wenzhen.yu@mediatek.com>
++ */
++
++#include <linux/clk-provider.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++
++#include "clk-mtk.h"
++#include "clk-gate.h"
++
++#include <dt-bindings/clock/mt7986-clk.h>
++
++static const struct mtk_gate_regs sgmii0_cg_regs = {
++	.set_ofs = 0xe4,
++	.clr_ofs = 0xe4,
++	.sta_ofs = 0xe4,
++};
++
++#define GATE_SGMII0(_id, _name, _parent, _shift)                               \
++	{                                                                      \
++		.id = _id, .name = _name, .parent_name = _parent,              \
++		.regs = &sgmii0_cg_regs, .shift = _shift,                      \
++		.ops = &mtk_clk_gate_ops_no_setclr_inv,                        \
++	}
++
++static const struct mtk_gate sgmii0_clks[] __initconst = {
++	GATE_SGMII0(CLK_SGMII0_TX250M_EN, "sgmii0_tx250m_en", "top_xtal", 2),
++	GATE_SGMII0(CLK_SGMII0_RX250M_EN, "sgmii0_rx250m_en", "top_xtal", 3),
++	GATE_SGMII0(CLK_SGMII0_CDR_REF, "sgmii0_cdr_ref", "top_xtal", 4),
++	GATE_SGMII0(CLK_SGMII0_CDR_FB, "sgmii0_cdr_fb", "top_xtal", 5),
++};
++
++static const struct mtk_gate_regs sgmii1_cg_regs = {
++	.set_ofs = 0xe4,
++	.clr_ofs = 0xe4,
++	.sta_ofs = 0xe4,
++};
++
++#define GATE_SGMII1(_id, _name, _parent, _shift)                               \
++	{                                                                      \
++		.id = _id, .name = _name, .parent_name = _parent,              \
++		.regs = &sgmii1_cg_regs, .shift = _shift,                      \
++		.ops = &mtk_clk_gate_ops_no_setclr_inv,                        \
++	}
++
++static const struct mtk_gate sgmii1_clks[] __initconst = {
++	GATE_SGMII1(CLK_SGMII1_TX250M_EN, "sgmii1_tx250m_en", "top_xtal", 2),
++	GATE_SGMII1(CLK_SGMII1_RX250M_EN, "sgmii1_rx250m_en", "top_xtal", 3),
++	GATE_SGMII1(CLK_SGMII1_CDR_REF, "sgmii1_cdr_ref", "top_xtal", 4),
++	GATE_SGMII1(CLK_SGMII1_CDR_FB, "sgmii1_cdr_fb", "top_xtal", 5),
++};
++
++static const struct mtk_gate_regs eth_cg_regs = {
++	.set_ofs = 0x30,
++	.clr_ofs = 0x30,
++	.sta_ofs = 0x30,
++};
++
++#define GATE_ETH(_id, _name, _parent, _shift)                                  \
++	{                                                                      \
++		.id = _id, .name = _name, .parent_name = _parent,              \
++		.regs = &eth_cg_regs, .shift = _shift,                         \
++		.ops = &mtk_clk_gate_ops_no_setclr_inv,                        \
++	}
++
++static const struct mtk_gate eth_clks[] __initconst = {
++	GATE_ETH(CLK_ETH_FE_EN, "eth_fe_en", "netsys_2x_sel", 6),
++	GATE_ETH(CLK_ETH_GP2_EN, "eth_gp2_en", "sgm_325m_sel", 7),
++	GATE_ETH(CLK_ETH_GP1_EN, "eth_gp1_en", "sgm_325m_sel", 8),
++	GATE_ETH(CLK_ETH_WOCPU1_EN, "eth_wocpu1_en", "netsys_mcu_sel", 14),
++	GATE_ETH(CLK_ETH_WOCPU0_EN, "eth_wocpu0_en", "netsys_mcu_sel", 15),
++};
++
++static void __init mtk_sgmiisys_0_init(struct device_node *node)
++{
++	struct clk_onecell_data *clk_data;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii0_clks));
++
++	mtk_clk_register_gates(node, sgmii0_clks, ARRAY_SIZE(sgmii0_clks),
++			       clk_data);
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	if (r)
++		pr_err("%s(): could not register clock provider: %d\n",
++		       __func__, r);
++}
++CLK_OF_DECLARE(mtk_sgmiisys_0, "mediatek,mt7986-sgmiisys_0",
++	       mtk_sgmiisys_0_init);
++
++static void __init mtk_sgmiisys_1_init(struct device_node *node)
++{
++	struct clk_onecell_data *clk_data;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(sgmii1_clks));
++
++	mtk_clk_register_gates(node, sgmii1_clks, ARRAY_SIZE(sgmii1_clks),
++			       clk_data);
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++
++	if (r)
++		pr_err("%s(): could not register clock provider: %d\n",
++		       __func__, r);
++}
++CLK_OF_DECLARE(mtk_sgmiisys_1, "mediatek,mt7986-sgmiisys_1",
++	       mtk_sgmiisys_1_init);
++
++static void __init mtk_ethsys_init(struct device_node *node)
++{
++	struct clk_onecell_data *clk_data;
++	int r;
++
++	clk_data = mtk_alloc_clk_data(ARRAY_SIZE(eth_clks));
++
++	mtk_clk_register_gates(node, eth_clks, ARRAY_SIZE(eth_clks), clk_data);
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++
++	if (r)
++		pr_err("%s(): could not register clock provider: %d\n",
++		       __func__, r);
++}
++CLK_OF_DECLARE(mtk_ethsys, "mediatek,mt7986-ethsys_ck", mtk_ethsys_init);
+diff --git a/drivers/clk/mediatek/clk-mt7986-infracfg.c b/drivers/clk/mediatek/clk-mt7986-infracfg.c
+new file mode 100644
+index 000000000000..35e16c28966a
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt7986-infracfg.c
+@@ -0,0 +1,198 @@
++// SPDX-License-Identifier: GPL-1.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Sam Shih <sam.shih@mediatek.com>
++ * Author: Wenzhen Yu <wenzhen.yu@mediatek.com>
++ */
++
++#include <linux/clk-provider.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++#include "clk-mtk.h"
++#include "clk-gate.h"
++#include "clk-mux.h"
++
++#include <dt-bindings/clock/mt7986-clk.h>
++#include <linux/clk.h>
++
++static DEFINE_SPINLOCK(mt7986_clk_lock);
++
++static const struct mtk_fixed_factor infra_divs[] __initconst = {
++	FACTOR(CLK_INFRA_SYSAXI_D2, "infra_sysaxi_d2", "sysaxi_sel", 1, 2),
++};
++
++static const char *const infra_uart_parent[] __initconst = { "csw_f26m_sel",
++							     "uart_sel" };
++
++static const char *const infra_spi_parents[] __initconst = { "i2c_sel",
++							     "spi_sel" };
++
++static const char *const infra_pwm_bsel_parents[] __initconst = {
++	"top_rtc_32p7k", "csw_f26m_sel", "infra_sysaxi_d2", "pwm_sel"
++};
++
++static const char *const infra_pcie_parents[] __initconst = {
++	"top_rtc_32p7k", "csw_f26m_sel", "top_xtal", "pextp_tl_ck_sel"
++};
++
++static const struct mtk_mux infra_muxes[] = {
++	/* MODULE_CLK_SEL_0 */
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_UART0_SEL, "infra_uart0_sel",
++			     infra_uart_parent, 0x0018, 0x0010, 0x0014, 0, 1,
++			     -1, -1, -1),
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_UART1_SEL, "infra_uart1_sel",
++			     infra_uart_parent, 0x0018, 0x0010, 0x0014, 1, 1,
++			     -1, -1, -1),
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_UART2_SEL, "infra_uart2_sel",
++			     infra_uart_parent, 0x0018, 0x0010, 0x0014, 2, 1,
++			     -1, -1, -1),
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_SPI0_SEL, "infra_spi0_sel",
++			     infra_spi_parents, 0x0018, 0x0010, 0x0014, 4, 1,
++			     -1, -1, -1),
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_SPI1_SEL, "infra_spi1_sel",
++			     infra_spi_parents, 0x0018, 0x0010, 0x0014, 5, 1,
++			     -1, -1, -1),
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM1_SEL, "infra_pwm1_sel",
++			     infra_pwm_bsel_parents, 0x0018, 0x0010, 0x0014, 9,
++			     2, -1, -1, -1),
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM2_SEL, "infra_pwm2_sel",
++			     infra_pwm_bsel_parents, 0x0018, 0x0010, 0x0014, 11,
++			     2, -1, -1, -1),
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PWM_BSEL, "infra_pwm_bsel",
++			     infra_pwm_bsel_parents, 0x0018, 0x0010, 0x0014, 13,
++			     2, -1, -1, -1),
++	/* MODULE_CLK_SEL_1 */
++	MUX_GATE_CLR_SET_UPD(CLK_INFRA_PCIE_SEL, "infra_pcie_sel",
++			     infra_pcie_parents, 0x0028, 0x0020, 0x0024, 0, 2,
++			     -1, -1, -1),
++};
++
++static const struct mtk_gate_regs infra0_cg_regs = {
++	.set_ofs = 0x40,
++	.clr_ofs = 0x44,
++	.sta_ofs = 0x48,
++};
++
++static const struct mtk_gate_regs infra1_cg_regs = {
++	.set_ofs = 0x50,
++	.clr_ofs = 0x54,
++	.sta_ofs = 0x58,
++};
++
++static const struct mtk_gate_regs infra2_cg_regs = {
++	.set_ofs = 0x60,
++	.clr_ofs = 0x64,
++	.sta_ofs = 0x68,
++};
++
++#define GATE_INFRA0(_id, _name, _parent, _shift)                               \
++	{                                                                      \
++		.id = _id, .name = _name, .parent_name = _parent,              \
++		.regs = &infra0_cg_regs, .shift = _shift,                      \
++		.ops = &mtk_clk_gate_ops_setclr,                               \
++	}
++
++#define GATE_INFRA1(_id, _name, _parent, _shift)                               \
++	{                                                                      \
++		.id = _id, .name = _name, .parent_name = _parent,              \
++		.regs = &infra1_cg_regs, .shift = _shift,                      \
++		.ops = &mtk_clk_gate_ops_setclr,                               \
++	}
++
++#define GATE_INFRA2(_id, _name, _parent, _shift)                               \
++	{                                                                      \
++		.id = _id, .name = _name, .parent_name = _parent,              \
++		.regs = &infra2_cg_regs, .shift = _shift,                      \
++		.ops = &mtk_clk_gate_ops_setclr,                               \
++	}
++
++static const struct mtk_gate infra_clks[] __initconst = {
++	/* INFRA0 */
++	GATE_INFRA0(CLK_INFRA_GPT_STA, "infra_gpt_sta", "infra_sysaxi_d2", 0),
++	GATE_INFRA0(CLK_INFRA_PWM_HCK, "infra_pwm_hck", "infra_sysaxi_d2", 1),
++	GATE_INFRA0(CLK_INFRA_PWM_STA, "infra_pwm_sta", "infra_pwm_bsel", 2),
++	GATE_INFRA0(CLK_INFRA_PWM1_CK, "infra_pwm1", "infra_pwm1_sel", 3),
++	GATE_INFRA0(CLK_INFRA_PWM2_CK, "infra_pwm2", "infra_pwm2_sel", 4),
++	GATE_INFRA0(CLK_INFRA_CQ_DMA_CK, "infra_cq_dma", "sysaxi_sel", 6),
++	GATE_INFRA0(CLK_INFRA_EIP97_CK, "infra_eip97", "eip_b_sel", 7),
++	GATE_INFRA0(CLK_INFRA_AUD_BUS_CK, "infra_aud_bus", "sysaxi_sel", 8),
++	GATE_INFRA0(CLK_INFRA_AUD_26M_CK, "infra_aud_26m", "csw_f26m_sel", 9),
++	GATE_INFRA0(CLK_INFRA_AUD_L_CK, "infra_aud_l", "aud_l_sel", 10),
++	GATE_INFRA0(CLK_INFRA_AUD_AUD_CK, "infra_aud_aud", "a1sys_sel", 11),
++	GATE_INFRA0(CLK_INFRA_AUD_EG2_CK, "infra_aud_eg2", "a_tuner_sel", 13),
++	GATE_INFRA0(CLK_INFRA_DRAMC_26M_CK, "infra_dramc_26m", "csw_f26m_sel",
++		    14),
++	GATE_INFRA0(CLK_INFRA_DBG_CK, "infra_dbg", "infra_sysaxi_d2", 15),
++	GATE_INFRA0(CLK_INFRA_AP_DMA_CK, "infra_ap_dma", "infra_sysaxi_d2", 16),
++	GATE_INFRA0(CLK_INFRA_SEJ_CK, "infra_sej", "infra_sysaxi_d2", 24),
++	GATE_INFRA0(CLK_INFRA_SEJ_13M_CK, "infra_sej_13m", "csw_f26m_sel", 25),
++	GATE_INFRA0(CLK_INFRA_TRNG_CK, "infra_trng", "sysaxi_sel", 26),
++	/* INFRA1 */
++	GATE_INFRA1(CLK_INFRA_THERM_CK, "infra_therm", "csw_f26m_sel", 0),
++	GATE_INFRA1(CLK_INFRA_I2C0_CK, "infra_i2c0", "i2c_sel", 1),
++	GATE_INFRA1(CLK_INFRA_UART0_CK, "infra_uart0", "infra_uart0_sel", 2),
++	GATE_INFRA1(CLK_INFRA_UART1_CK, "infra_uart1", "infra_uart1_sel", 3),
++	GATE_INFRA1(CLK_INFRA_UART2_CK, "infra_uart2", "infra_uart2_sel", 4),
++	GATE_INFRA1(CLK_INFRA_NFI1_CK, "infra_nfi1", "nfi1x_sel", 8),
++	GATE_INFRA1(CLK_INFRA_SPINFI1_CK, "infra_spinfi1", "spinfi_sel", 9),
++	GATE_INFRA1(CLK_INFRA_NFI_HCK_CK, "infra_nfi_hck", "infra_sysaxi_d2",
++		    10),
++	GATE_INFRA1(CLK_INFRA_SPI0_CK, "infra_spi0", "infra_spi0_sel", 11),
++	GATE_INFRA1(CLK_INFRA_SPI1_CK, "infra_spi1", "infra_spi1_sel", 12),
++	GATE_INFRA1(CLK_INFRA_SPI0_HCK_CK, "infra_spi0_hck", "infra_sysaxi_d2",
++		    13),
++	GATE_INFRA1(CLK_INFRA_SPI1_HCK_CK, "infra_spi1_hck", "infra_sysaxi_d2",
++		    14),
++	GATE_INFRA1(CLK_INFRA_FRTC_CK, "infra_frtc", "top_rtc_32k", 15),
++	GATE_INFRA1(CLK_INFRA_MSDC_CK, "infra_msdc", "emmc_416m_sel", 16),
++	GATE_INFRA1(CLK_INFRA_MSDC_HCK_CK, "infra_msdc_hck", "emmc_250m_sel",
++		    17),
++	GATE_INFRA1(CLK_INFRA_MSDC_133M_CK, "infra_msdc_133m", "sysaxi_sel",
++		    18),
++	GATE_INFRA1(CLK_INFRA_MSDC_66M_CK, "infra_msdc_66m", "infra_sysaxi_d2",
++		    19),
++	GATE_INFRA1(CLK_INFRA_ADC_26M_CK, "infra_adc_26m", "csw_f26m_sel", 20),
++	GATE_INFRA1(CLK_INFRA_ADC_FRC_CK, "infra_adc_frc", "csw_f26m_sel", 21),
++	GATE_INFRA1(CLK_INFRA_FBIST2FPC_CK, "infra_fbist2fpc", "nfi1x_sel", 23),
++	/* INFRA2 */
++	GATE_INFRA2(CLK_INFRA_IUSB_133_CK, "infra_iusb_133", "sysaxi_sel", 0),
++	GATE_INFRA2(CLK_INFRA_IUSB_66M_CK, "infra_iusb_66m", "infra_sysaxi_d2",
++		    1),
++	GATE_INFRA2(CLK_INFRA_IUSB_SYS_CK, "infra_iusb_sys", "u2u3_sys_sel", 2),
++	GATE_INFRA2(CLK_INFRA_IUSB_CK, "infra_iusb", "u2u3_sel", 3),
++	GATE_INFRA2(CLK_INFRA_IPCIE_CK, "infra_ipcie", "pextp_tl_ck_sel", 12),
++	GATE_INFRA2(CLK_INFRA_IPCIE_PIPE_CK, "infra_ipcie_pipe", "top_xtal",
++		    13),
++	GATE_INFRA2(CLK_INFRA_IPCIER_CK, "infra_ipcier", "csw_f26m_sel", 14),
++	GATE_INFRA2(CLK_INFRA_IPCIEB_CK, "infra_ipcieb", "sysaxi_sel", 15),
++};
++
++static void __init mtk_infracfg_init(struct device_node *node)
++{
++	struct clk_onecell_data *clk_data;
++	int r;
++	void __iomem *base;
++	int nr = ARRAY_SIZE(infra_divs) + ARRAY_SIZE(infra_muxes) +
++		 ARRAY_SIZE(infra_clks);
++
++	base = of_iomap(node, 0);
++	if (!base) {
++		pr_err("%s(): ioremap failed\n", __func__);
++		return;
++	}
++
++	clk_data = mtk_alloc_clk_data(nr);
++	mtk_clk_register_factors(infra_divs, ARRAY_SIZE(infra_divs), clk_data);
++	mtk_clk_register_muxes(infra_muxes, ARRAY_SIZE(infra_muxes), node,
++			       &mt7986_clk_lock, clk_data);
++	mtk_clk_register_gates(node, infra_clks, ARRAY_SIZE(infra_clks),
++			       clk_data);
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++	if (r)
++		pr_err("%s(): could not register clock provider: %d\n",
++		       __func__, r);
++}
++CLK_OF_DECLARE(mtk_infracfg, "mediatek,mt7986-infracfg", mtk_infracfg_init);
+diff --git a/drivers/clk/mediatek/clk-mt7986-topckgen.c b/drivers/clk/mediatek/clk-mt7986-topckgen.c
+new file mode 100644
+index 000000000000..0a376044d290
+--- /dev/null
++++ b/drivers/clk/mediatek/clk-mt7986-topckgen.c
+@@ -0,0 +1,319 @@
++// SPDX-License-Identifier: GPL-1.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Sam Shih <sam.shih@mediatek.com>
++ * Author: Wenzhen Yu <wenzhen.yu@mediatek.com>
++ */
++
++#include <linux/clk-provider.h>
++#include <linux/of.h>
++#include <linux/of_address.h>
++#include <linux/of_device.h>
++#include <linux/platform_device.h>
++#include "clk-mtk.h"
++#include "clk-gate.h"
++#include "clk-mux.h"
++
++#include <dt-bindings/clock/mt7986-clk.h>
++#include <linux/clk.h>
++
++static DEFINE_SPINLOCK(mt7986_clk_lock);
++
++static const struct mtk_fixed_clk top_fixed_clks[] = {
++	FIXED_CLK(CLK_TOP_XTAL, "top_xtal", "clkxtal", 40000000),
++	FIXED_CLK(CLK_TOP_JTAG, "top_jtag", "clkxtal", 50000000),
++};
++
++static const struct mtk_fixed_factor top_divs[] __initconst = {
++	/* XTAL */
++	FACTOR(CLK_TOP_XTAL_D2, "top_xtal_d2", "top_xtal", 1, 2),
++	FACTOR(CLK_TOP_RTC_32K, "top_rtc_32k", "top_xtal", 1, 1250),
++	FACTOR(CLK_TOP_RTC_32P7K, "top_rtc_32p7k", "top_xtal", 1, 1220),
++	/* MPLL */
++	FACTOR(CLK_TOP_MPLL_D2, "top_mpll_d2", "mpll", 1, 2),
++	FACTOR(CLK_TOP_MPLL_D4, "top_mpll_d4", "mpll", 1, 4),
++	FACTOR(CLK_TOP_MPLL_D8, "top_mpll_d8", "mpll", 1, 8),
++	FACTOR(CLK_TOP_MPLL_D8_D2, "top_mpll_d8_d2", "mpll", 1, 16),
++	FACTOR(CLK_TOP_MPLL_D3_D2, "top_mpll_d3_d2", "mpll", 1, 6),
++	/* MMPLL */
++	FACTOR(CLK_TOP_MMPLL_D2, "top_mmpll_d2", "mmpll", 1, 2),
++	FACTOR(CLK_TOP_MMPLL_D4, "top_mmpll_d4", "mmpll", 1, 4),
++	FACTOR(CLK_TOP_MMPLL_D8, "top_mmpll_d8", "mmpll", 1, 8),
++	FACTOR(CLK_TOP_MMPLL_D8_D2, "top_mmpll_d8_d2", "mmpll", 1, 16),
++	FACTOR(CLK_TOP_MMPLL_D3_D8, "top_mmpll_d3_d8", "mmpll", 1, 24),
++	FACTOR(CLK_TOP_MMPLL_U2PHY, "top_mmpll_u2phy", "mmpll", 1, 30),
++	/* APLL2 */
++	FACTOR(CLK_TOP_APLL2_D4, "top_apll2_d4", "apll2", 1, 4),
++	/* NET1PLL */
++	FACTOR(CLK_TOP_NET1PLL_D4, "top_net1pll_d4", "net1pll", 1, 4),
++	FACTOR(CLK_TOP_NET1PLL_D5, "top_net1pll_d5", "net1pll", 1, 5),
++	FACTOR(CLK_TOP_NET1PLL_D5_D2, "top_net1pll_d5_d2", "net1pll", 1, 10),
++	FACTOR(CLK_TOP_NET1PLL_D5_D4, "top_net1pll_d5_d4", "net1pll", 1, 20),
++	FACTOR(CLK_TOP_NET1PLL_D8_D2, "top_net1pll_d8_d2", "net1pll", 1, 16),
++	FACTOR(CLK_TOP_NET1PLL_D8_D4, "top_net1pll_d8_d4", "net1pll", 1, 32),
++	/* NET2PLL */
++	FACTOR(CLK_TOP_NET2PLL_D4, "top_net2pll_d4", "net2pll", 1, 4),
++	FACTOR(CLK_TOP_NET2PLL_D4_D2, "top_net2pll_d4_d2", "net2pll", 1, 8),
++	FACTOR(CLK_TOP_NET2PLL_D3_D2, "top_net2pll_d3_d2", "net2pll", 1, 2),
++	/* WEDMCUPLL */
++	FACTOR(CLK_TOP_WEDMCUPLL_D5_D2, "top_wedmcupll_d5_d2", "wedmcupll", 1,
++	       10),
++};
++
++static const char *const nfi1x_parents[] __initconst = { "top_xtal",
++							 "top_mmpll_d8",
++							 "top_net1pll_d8_d2",
++							 "top_net2pll_d3_d2",
++							 "top_mpll_d4",
++							 "top_mmpll_d8_d2",
++							 "top_wedmcupll_d5_d2",
++							 "top_mpll_d8" };
++
++static const char *const spinfi_parents[] __initconst = {
++	"top_xtal_d2",     "top_xtal",	"top_net1pll_d5_d4",
++	"top_mpll_d4",     "top_mmpll_d8_d2", "top_wedmcupll_d5_d2",
++	"top_mmpll_d3_d8", "top_mpll_d8"
++};
++
++static const char *const spi_parents[] __initconst = {
++	"top_xtal",	  "top_mpll_d2",	"top_mmpll_d8",
++	"top_net1pll_d8_d2", "top_net2pll_d3_d2",  "top_net1pll_d5_d4",
++	"top_mpll_d4",       "top_wedmcupll_d5_d2"
++};
++
++static const char *const uart_parents[] __initconst = { "top_xtal",
++							"top_mpll_d8",
++							"top_mpll_d8_d2" };
++
++static const char *const pwm_parents[] __initconst = {
++	"top_xtal", "top_net1pll_d8_d2", "top_net1pll_d5_d4", "top_mpll_d4"
++};
++
++static const char *const i2c_parents[] __initconst = {
++	"top_xtal", "top_net1pll_d5_d4", "top_mpll_d4", "top_net1pll_d8_d4"
++};
++
++static const char *const pextp_tl_ck_parents[] __initconst = {
++	"top_xtal", "top_net1pll_d5_d4", "top_net2pll_d4_d2", "top_rtc_32k"
++};
++
++static const char *const emmc_250m_parents[] __initconst = {
++	"top_xtal", "top_net1pll_d5_d2"
++};
++
++static const char *const emmc_416m_parents[] __initconst = { "top_xtal",
++							     "mpll" };
++
++static const char *const f_26m_adc_parents[] __initconst = { "top_xtal",
++							     "top_mpll_d8_d2" };
++
++static const char *const dramc_md32_parents[] __initconst = { "top_xtal",
++							      "top_mpll_d2" };
++
++static const char *const sysaxi_parents[] __initconst = { "top_xtal",
++							  "top_net1pll_d8_d2",
++							  "top_net2pll_d4" };
++
++static const char *const sysapb_parents[] __initconst = { "top_xtal",
++							  "top_mpll_d3_d2",
++							  "top_net2pll_d4_d2" };
++
++static const char *const arm_db_main_parents[] __initconst = {
++	"top_xtal", "top_net2pll_d3_d2"
++};
++
++static const char *const arm_db_jtsel_parents[] __initconst = { "top_jtag",
++								"top_xtal" };
++
++static const char *const netsys_parents[] __initconst = { "top_xtal",
++							  "top_mmpll_d4" };
++
++static const char *const netsys_500m_parents[] __initconst = {
++	"top_xtal", "top_net1pll_d5"
++};
++
++static const char *const netsys_mcu_parents[] __initconst = {
++	"top_xtal", "wedmcupll", "top_mmpll_d2", "top_net1pll_d4",
++	"top_net1pll_d5"
++};
++
++static const char *const netsys_2x_parents[] __initconst = {
++	"top_xtal", "net2pll", "wedmcupll", "top_mmpll_d2"
++};
++
++static const char *const sgm_325m_parents[] __initconst = { "top_xtal",
++							    "sgmpll" };
++
++static const char *const sgm_reg_parents[] __initconst = {
++	"top_xtal", "top_net1pll_d8_d4"
++};
++
++static const char *const a1sys_parents[] __initconst = { "top_xtal",
++							 "top_apll2_d4" };
++
++static const char *const conn_mcusys_parents[] __initconst = { "top_xtal",
++							       "top_mmpll_d2" };
++
++static const char *const eip_b_parents[] __initconst = { "top_xtal",
++							 "net2pll" };
++
++static const char *const aud_l_parents[] __initconst = { "top_xtal", "apll2",
++							 "top_mpll_d8_d2" };
++
++static const char *const a_tuner_parents[] __initconst = { "top_xtal",
++							   "top_apll2_d4",
++							   "top_mpll_d8_d2" };
++
++static const char *const u2u3_sys_parents[] __initconst = {
++	"top_xtal", "top_net1pll_d5_d4"
++};
++
++static const char *const da_u2_refsel_parents[] __initconst = {
++	"top_xtal", "top_mmpll_u2phy"
++};
++
++static const struct mtk_mux top_muxes[] = {
++	/* CLK_CFG_0 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_NFI1X_SEL, "nfi1x_sel", nfi1x_parents,
++			     0x000, 0x004, 0x008, 0, 3, 7, 0x1C0, 0),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPINFI_SEL, "spinfi_sel", spinfi_parents,
++			     0x000, 0x004, 0x008, 8, 3, 15, 0x1C0, 1),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPI_SEL, "spi_sel", spi_parents, 0x000,
++			     0x004, 0x008, 16, 3, 23, 0x1C0, 2),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_SPIM_MST_SEL, "spim_mst_sel", spi_parents,
++			     0x000, 0x004, 0x008, 24, 3, 31, 0x1C0, 3),
++	/* CLK_CFG_1 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_UART_SEL, "uart_sel", uart_parents, 0x010,
++			     0x014, 0x018, 0, 2, 7, 0x1C0, 4),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_PWM_SEL, "pwm_sel", pwm_parents, 0x010,
++			     0x014, 0x018, 8, 2, 15, 0x1C0, 5),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_I2C_SEL, "i2c_sel", i2c_parents, 0x010,
++			     0x014, 0x018, 16, 2, 23, 0x1C0, 6),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_PEXTP_TL_SEL, "pextp_tl_ck_sel",
++			     pextp_tl_ck_parents, 0x010, 0x014, 0x018, 24, 2,
++			     31, 0x1C0, 7),
++	/* CLK_CFG_2 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_EMMC_250M_SEL, "emmc_250m_sel",
++			     emmc_250m_parents, 0x020, 0x024, 0x028, 0, 1, 7,
++			     0x1C0, 8),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_EMMC_416M_SEL, "emmc_416m_sel",
++			     emmc_416m_parents, 0x020, 0x024, 0x028, 8, 1, 15,
++			     0x1C0, 9),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_F_26M_ADC_SEL, "f_26m_adc_sel",
++			     f_26m_adc_parents, 0x020, 0x024, 0x028, 16, 1, 23,
++			     0x1C0, 10),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_DRAMC_SEL, "dramc_sel", f_26m_adc_parents,
++			     0x020, 0x024, 0x028, 24, 1, 31, 0x1C0, 11),
++	/* CLK_CFG_3 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_DRAMC_MD32_SEL, "dramc_md32_sel",
++			     dramc_md32_parents, 0x030, 0x034, 0x038, 0, 1, 7,
++			     0x1C0, 12),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_SYSAXI_SEL, "sysaxi_sel", sysaxi_parents,
++			     0x030, 0x034, 0x038, 8, 2, 15, 0x1C0, 13),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_SYSAPB_SEL, "sysapb_sel", sysapb_parents,
++			     0x030, 0x034, 0x038, 16, 2, 23, 0x1C0, 14),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_ARM_DB_MAIN_SEL, "arm_db_main_sel",
++			     arm_db_main_parents, 0x030, 0x034, 0x038, 24, 1,
++			     31, 0x1C0, 15),
++	/* CLK_CFG_4 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_ARM_DB_JTSEL, "arm_db_jtsel",
++			     arm_db_jtsel_parents, 0x040, 0x044, 0x048, 0, 1, 7,
++			     0x1C0, 16),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_NETSYS_SEL, "netsys_sel", netsys_parents,
++			     0x040, 0x044, 0x048, 8, 1, 15, 0x1C0, 17),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_NETSYS_500M_SEL, "netsys_500m_sel",
++			     netsys_500m_parents, 0x040, 0x044, 0x048, 16, 1,
++			     23, 0x1C0, 18),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_NETSYS_MCU_SEL, "netsys_mcu_sel",
++			     netsys_mcu_parents, 0x040, 0x044, 0x048, 24, 3, 31,
++			     0x1C0, 19),
++	/* CLK_CFG_5 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_NETSYS_2X_SEL, "netsys_2x_sel",
++			     netsys_2x_parents, 0x050, 0x054, 0x058, 0, 2, 7,
++			     0x1C0, 20),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_SGM_325M_SEL, "sgm_325m_sel",
++			     sgm_325m_parents, 0x050, 0x054, 0x058, 8, 1, 15,
++			     0x1C0, 21),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_SGM_REG_SEL, "sgm_reg_sel",
++			     sgm_reg_parents, 0x050, 0x054, 0x058, 16, 1, 23,
++			     0x1C0, 22),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_A1SYS_SEL, "a1sys_sel", a1sys_parents,
++			     0x050, 0x054, 0x058, 24, 1, 31, 0x1C0, 23),
++	/* CLK_CFG_6 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_CONN_MCUSYS_SEL, "conn_mcusys_sel",
++			     conn_mcusys_parents, 0x060, 0x064, 0x068, 0, 1, 7,
++			     0x1C0, 24),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_EIP_B_SEL, "eip_b_sel", eip_b_parents,
++			     0x060, 0x064, 0x068, 8, 1, 15, 0x1C0, 25),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_PCIE_PHY_SEL, "pcie_phy_sel",
++			     f_26m_adc_parents, 0x060, 0x064, 0x068, 16, 1, 23,
++			     0x1C0, 26),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_USB3_PHY_SEL, "usb3_phy_sel",
++			     f_26m_adc_parents, 0x060, 0x064, 0x068, 24, 1, 31,
++			     0x1C0, 27),
++	/* CLK_CFG_7 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_F26M_SEL, "csw_f26m_sel",
++			     f_26m_adc_parents, 0x070, 0x074, 0x078, 0, 1, 7,
++			     0x1C0, 28),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_AUD_L_SEL, "aud_l_sel", aud_l_parents,
++			     0x070, 0x074, 0x078, 8, 2, 15, 0x1C0, 29),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_A_TUNER_SEL, "a_tuner_sel",
++			     a_tuner_parents, 0x070, 0x074, 0x078, 16, 2, 23,
++			     0x1C0, 30),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_U2U3_SEL, "u2u3_sel", f_26m_adc_parents,
++			     0x070, 0x074, 0x078, 24, 1, 31, 0x1C4, 0),
++	/* CLK_CFG_8 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_U2U3_SYS_SEL, "u2u3_sys_sel",
++			     u2u3_sys_parents, 0x080, 0x084, 0x088, 0, 1, 7,
++			     0x1C4, 1),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_U2U3_XHCI_SEL, "u2u3_xhci_sel",
++			     u2u3_sys_parents, 0x080, 0x084, 0x088, 8, 1, 15,
++			     0x1C4, 2),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_DA_U2_REFSEL, "da_u2_refsel",
++			     da_u2_refsel_parents, 0x080, 0x084, 0x088, 16, 1,
++			     23, 0x1C4, 3),
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_DA_U2_CK_1P_SEL, "da_u2_ck_1p_sel",
++			     da_u2_refsel_parents, 0x080, 0x084, 0x088, 24, 1,
++			     31, 0x1C4, 4),
++	/* CLK_CFG_9 */
++	MUX_GATE_CLR_SET_UPD(CLK_TOP_AP2CNN_HOST_SEL, "ap2cnn_host_sel",
++			     sgm_reg_parents, 0x090, 0x094, 0x098, 0, 1, 7,
++			     0x1C4, 5),
++};
++
++static void __init mtk_topckgen_init(struct device_node *node)
++{
++	struct clk_onecell_data *clk_data;
++	int r;
++	void __iomem *base;
++	int nr = ARRAY_SIZE(top_fixed_clks) + ARRAY_SIZE(top_divs) +
++		 ARRAY_SIZE(top_muxes);
++
++	base = of_iomap(node, 0);
++	if (!base) {
++		pr_err("%s(): ioremap failed\n", __func__);
++		return;
++	}
++
++	clk_data = mtk_alloc_clk_data(nr);
++
++	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
++				    clk_data);
++	mtk_clk_register_factors(top_divs, ARRAY_SIZE(top_divs), clk_data);
++	mtk_clk_register_muxes(top_muxes, ARRAY_SIZE(top_muxes), node,
++			       &mt7986_clk_lock, clk_data);
++
++	clk_prepare_enable(clk_data->clks[CLK_TOP_SYSAXI_SEL]);
++	clk_prepare_enable(clk_data->clks[CLK_TOP_SYSAPB_SEL]);
++	clk_prepare_enable(clk_data->clks[CLK_TOP_DRAMC_SEL]);
++	clk_prepare_enable(clk_data->clks[CLK_TOP_DRAMC_MD32_SEL]);
++	clk_prepare_enable(clk_data->clks[CLK_TOP_F26M_SEL]);
++	clk_prepare_enable(clk_data->clks[CLK_TOP_SGM_REG_SEL]);
++
++	r = of_clk_add_provider(node, of_clk_src_onecell_get, clk_data);
++
++	if (r)
++		pr_err("%s(): could not register clock provider: %d\n",
++		       __func__, r);
++}
++CLK_OF_DECLARE(mtk_topckgen, "mediatek,mt7986-topckgen", mtk_topckgen_init);
+-- 
+2.29.2
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
