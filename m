@@ -2,75 +2,73 @@ Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 283ABC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 08:43:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25360C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 09:20:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D831E610EA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 08:43:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D831E610EA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id DCC196101D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 09:20:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DCC196101D
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=somainline.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IODEZrlr4b9lcz3PBAuIfmlHc4gwVQqtiDP+UCt12OM=; b=HqvyqDgiEXAkwV
-	nLQyFFVJIVLoQOinpYsSawBSpPLgmXJzXGmNq1+UgRRXCUAM4KOrfCN1QLYUjk6Eq9jVxarwIX1pG
-	Gb5HXhRZd/Km9GSAK8IkkHMNLpXSzOnhray3hi6PHFYhcJCWov6RAu6nMTAwB550XI+avGKm/6yqo
-	XEiQ7VGDWZ54ZjJiBm3ZY154RjuDUE/gmdHfK0PAvyP1GbRQnoDA/QC20RIhHVGD4onpfajFLWHPs
-	vDR6I7dh7F0wMcDTOpqn2l0F4X74OJ2qaMWdxjH4CAVtBUJcM3BS7DgyBwfkbWAJXB4GPZBYNVTwm
-	oEr9+nH5H0+Xi6lzDaVQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ei3Vhubobm+F811ZjCUWtcrDRx+hB+7fnqrW10nJeLA=; b=Ci5ujCTys3yOFrouyinJkdeHBn
+	+OcTjxUYtOSyEEsSEuXzY/Cr2EGY3eCEk+iWleegozXRVrtzSJDcS7dWqMH3kvoVYxuj6/IHwTbrE
+	ybLw79e2hcr1AqO+XchI9Z87S5+dIubO5PonnI7F8NdgQ0WAWHj5AlqQHdeKJv+09y8CTKu+E+feG
+	r7K4njQKmteQRR047RRfFZpOnJNxbABhvaIBLrFhFjCqhqCYBiv7Ws10B/ouaLlod270NYJofgJH6
+	5w18W6OmNZ91dTfWa1JnDuF21tVbA3TD2rQsX5Gx0njShRBvkJe4fCSkGT+aa9dFW7PDr0LesaABC
+	HMhYXCQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mawL3-002Eb7-GF; Thu, 14 Oct 2021 08:43:45 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mawud-002L86-Qn; Thu, 14 Oct 2021 09:20:31 +0000
+Received: from relay02.th.seeweb.it ([5.144.164.163])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mawKo-002EYq-2a; Thu, 14 Oct 2021 08:43:33 +0000
-X-UUID: 3a409e95b144490da56e45f1a7ee93aa-20211014
-X-UUID: 3a409e95b144490da56e45f1a7ee93aa-20211014
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 934786405; Thu, 14 Oct 2021 01:43:26 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 01:43:25 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 14 Oct 2021 16:43:17 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 14 Oct 2021 16:43:17 +0800
-Message-ID: <3a07501641da72ea9b3cf528050c9d7516e09497.camel@mediatek.com>
-Subject: Re: [PATCH v7 0/5] media: mediatek: support mdp3 on mt8183 platform
-From: moudy ho <moudy.ho@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Jernej Skrabec <jernej.skrabec@siol.net>
-CC: Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Geert
- Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <acourbot@chromium.org>, <pihsun@chromium.org>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>, <ben.lok@mediatek.com>,
- <randy.wu@mediatek.com>, <srv_heupstream@mediatek.com>, <hsinyi@google.com>
-Date: Thu, 14 Oct 2021 16:43:17 +0800
-In-Reply-To: <0a50c059-bb13-0823-778c-b631ed07d76f@xs4all.nl>
-References: <20210824100027.25989-1-moudy.ho@mediatek.com>
- <0a50c059-bb13-0823-778c-b631ed07d76f@xs4all.nl>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mawuY-002L5i-U0
+ for linux-mediatek@lists.infradead.org; Thu, 14 Oct 2021 09:20:30 +0000
+Received: from IcarusMOD.eternityproject.eu (unknown [2.237.20.237])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by m-r1.th.seeweb.it (Postfix) with ESMTPSA id 89C361F8A3;
+ Thu, 14 Oct 2021 11:20:17 +0200 (CEST)
+Subject: Re: [PATCH v7, 04/15] media: mtk-vcodec: Manage multi hardware
+ information
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20211011070247.792-1-yunfei.dong@mediatek.com>
+ <20211011070247.792-5-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@somainline.org>
+Message-ID: <93a98b65-ada9-437c-6916-27fe1214cdaf@somainline.org>
+Date: Thu, 14 Oct 2021 11:20:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20211011070247.792-5-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_014330_144214_A3B77B2A 
-X-CRM114-Status: GOOD (  28.06  )
+X-CRM114-CacheID: sfid-20211014_022027_350919_401C0423 
+X-CRM114-Status: GOOD (  48.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,328 +80,655 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgSGFucywKClRoYW5rIHlvdSBmb3IgeW91ciBraW5kIGd1aWRhbmNlLCBpdCBpcyByZWFsbHkg
-aGVscGZ1bCBmb3IgdXMgdG8KY29tcHJlaGVuZCBWNEwyIGZyYW1ld29yay4KQWZ0ZXIgbW9kaWZ5
-aW5nIHRoZSBzZXR0aW5ncyB5b3UgbWVudGlvbmVkLCB0aGUgVjRMMi1Db21wbGlhbmNlIHRlc3QK
-cmVzdWx0cyBhbGwgcGFzc2VkIGFuZCBsaXN0ZWQgYmVsb3cuCkFsbCB0aGVzZSBjaGFuZ2VzIHdp
-bGwgYmUgaW50ZWdyYXRlZCBpbnRvIHRoZSBuZXh0IHZlcnNpb24uCgpsb2NhbGhvc3QgfiAjIHY0
-bDItY29tcGxpYW5jZSAtZCAxMQp2NGwyLWNvbXBsaWFuY2UgU0hBOiBub3QgYXZhaWxhYmxlCiwg
-MzIgYml0cywgMzItYml0IHRpbWVfdAoKQ29tcGxpYW5jZSB0ZXN0IGZvciBtdGstbWRwMyBkZXZp
-Y2UgL2Rldi92aWRlbzExOgoKRHJpdmVyIEluZm86CiAgICAgICAgRHJpdmVyIG5hbWUgICAgICA6
-IG10ay1tZHAzCiAgICAgICAgQ2FyZCB0eXBlICAgICAgICA6IDE0MDAxMDAwLm1kcDNfcmRtYTAK
-ICAgICAgICBCdXMgaW5mbyAgICAgICAgIDogcGxhdGZvcm06bXRrLW1kcDMKICAgICAgICBEcml2
-ZXIgdmVyc2lvbiAgIDogNS4xMC42NgogICAgICAgIENhcGFiaWxpdGllcyAgICAgOiAweDg0MjA0
-MDAwCiAgICAgICAgICAgICAgICBWaWRlbyBNZW1vcnktdG8tTWVtb3J5IE11bHRpcGxhbmFyCiAg
-ICAgICAgICAgICAgICBTdHJlYW1pbmcKICAgICAgICAgICAgICAgIEV4dGVuZGVkIFBpeCBGb3Jt
-YXQKICAgICAgICAgICAgICAgIERldmljZSBDYXBhYmlsaXRpZXMKICAgICAgICBEZXZpY2UgQ2Fw
-cyAgICAgIDogMHgwNDIwNDAwMAogICAgICAgICAgICAgICAgVmlkZW8gTWVtb3J5LXRvLU1lbW9y
-eSBNdWx0aXBsYW5hcgogICAgICAgICAgICAgICAgU3RyZWFtaW5nCiAgICAgICAgICAgICAgICBF
-eHRlbmRlZCBQaXggRm9ybWF0CgpSZXF1aXJlZCBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0Nf
-UVVFUllDQVA6IE9LCgpBbGxvdyBmb3IgbXVsdGlwbGUgb3BlbnM6CiAgICAgICAgdGVzdCBzZWNv
-bmQgL2Rldi92aWRlbzExIG9wZW46IE9LCiAgICAgICAgdGVzdCBWSURJT0NfUVVFUllDQVA6IE9L
-CiAgICAgICAgdGVzdCBWSURJT0NfRy9TX1BSSU9SSVRZOiBPSwogICAgICAgIHRlc3QgZm9yIHVu
-bGltaXRlZCBvcGVuczogT0sKCiAgICAgICAgdGVzdCBpbnZhbGlkIGlvY3RsczogT0sKRGVidWcg
-aW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX0RCR19HL1NfUkVHSVNURVI6IE9LIChOb3QgU3Vw
-cG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0xPR19TVEFUVVM6IE9LIChOb3QgU3VwcG9ydGVk
-KQoKSW5wdXQgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX0cvU19UVU5FUi9FTlVNX0ZSRVFf
-QkFORFM6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvU19GUkVRVUVO
-Q1k6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX1NfSFdfRlJFUV9TRUVL
-OiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19FTlVNQVVESU86IE9LIChO
-b3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvUy9FTlVNSU5QVVQ6IE9LIChOb3Qg
-U3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvU19BVURJTzogT0sgKE5vdCBTdXBwb3J0
-ZWQpCiAgICAgICAgSW5wdXRzOiAwIEF1ZGlvIElucHV0czogMCBUdW5lcnM6IDAKCk91dHB1dCBp
-b2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfRy9TX01PRFVMQVRPUjogT0sgKE5vdCBTdXBwb3J0
-ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX0ZSRVFVRU5DWTogT0sgKE5vdCBTdXBwb3J0ZWQp
-CiAgICAgICAgdGVzdCBWSURJT0NfRU5VTUFVRE9VVDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAg
-ICAgdGVzdCBWSURJT0NfRy9TL0VOVU1PVVRQVVQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAg
-IHRlc3QgVklESU9DX0cvU19BVURPVVQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIE91dHB1
-dHM6IDAgQXVkaW8gT3V0cHV0czogMCBNb2R1bGF0b3JzOiAwCgpJbnB1dC9PdXRwdXQgY29uZmln
-dXJhdGlvbiBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfRU5VTS9HL1MvUVVFUllfU1REOiBP
-SyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19FTlVNL0cvUy9RVUVSWV9EVl9U
-SU1JTkdTOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19EVl9USU1JTkdT
-X0NBUDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX0VESUQ6IE9L
-IChOb3QgU3VwcG9ydGVkKQoKQ29udHJvbCBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfUVVF
-UllfRVhUX0NUUkwvUVVFUllNRU5VOiBPSwogICAgICAgIHRlc3QgVklESU9DX1FVRVJZQ1RSTDog
-T0sKICAgICAgICB0ZXN0IFZJRElPQ19HL1NfQ1RSTDogT0sKICAgICAgICB0ZXN0IFZJRElPQ19H
-L1MvVFJZX0VYVF9DVFJMUzogT0sKICAgICAgICB0ZXN0IFZJRElPQ18oVU4pU1VCU0NSSUJFX0VW
-RU5UL0RRRVZFTlQ6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX0pQRUdDT01QOiBPSyAoTm90
-IFN1cHBvcnRlZCkKICAgICAgICBTdGFuZGFyZCBDb250cm9sczogNCBQcml2YXRlIENvbnRyb2xz
-OiAwCgpGb3JtYXQgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX0VOVU1fRk1UL0ZSQU1FU0la
-RVMvRlJBTUVJTlRFUlZBTFM6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX1BBUk06IE9LIChO
-b3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0dfRkJVRjogT0sgKE5vdCBTdXBwb3J0
-ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfR19GTVQ6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfVFJZ
-X0ZNVDogT0sKICAgICAgICB0ZXN0IFZJRElPQ19TX0ZNVDogT0sKICAgICAgICB0ZXN0IFZJRElP
-Q19HX1NMSUNFRF9WQklfQ0FQOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IENyb3Bw
-aW5nOiBPSwogICAgICAgIHRlc3QgQ29tcG9zaW5nOiBPSwogICAgICAgIHRlc3QgU2NhbGluZzog
-T0sKCkNvZGVjIGlvY3RsczoKICAgICAgICB0ZXN0IFZJRElPQ18oVFJZXylFTkNPREVSX0NNRDog
-T0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfR19FTkNfSU5ERVg6IE9LIChO
-b3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DXyhUUllfKURFQ09ERVJfQ01EOiBPSyAo
-Tm90IFN1cHBvcnRlZCkKCkJ1ZmZlciBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfUkVRQlVG
-Uy9DUkVBVEVfQlVGUy9RVUVSWUJVRjogT0sKICAgICAgICB0ZXN0IFZJRElPQ19FWFBCVUY6IE9L
-CiAgICAgICAgdGVzdCBSZXF1ZXN0czogT0sgKE5vdCBTdXBwb3J0ZWQpCgpUb3RhbCBmb3IgbXRr
-LW1kcDMgZGV2aWNlIC9kZXYvdmlkZW8xMTogNDUsIFN1Y2NlZWRlZDogNDUsIEZhaWxlZDogMCwK
-V2FybmluZ3M6IDAKCmxvY2FsaG9zdCB+ICMgdjRsMi1jb21wbGlhbmNlIC1kIDExIC1zIDEKdjRs
-Mi1jb21wbGlhbmNlIFNIQTogbm90IGF2YWlsYWJsZQosIDMyIGJpdHMsIDMyLWJpdCB0aW1lX3QK
-CkNvbXBsaWFuY2UgdGVzdCBmb3IgbXRrLW1kcDMgZGV2aWNlIC9kZXYvdmlkZW8xMToKCkRyaXZl
-ciBJbmZvOgogICAgICAgIERyaXZlciBuYW1lICAgICAgOiBtdGstbWRwMwogICAgICAgIENhcmQg
-dHlwZSAgICAgICAgOiAxNDAwMTAwMC5tZHAzX3JkbWEwCiAgICAgICAgQnVzIGluZm8gICAgICAg
-ICA6IHBsYXRmb3JtOm10ay1tZHAzCiAgICAgICAgRHJpdmVyIHZlcnNpb24gICA6IDUuMTAuNjYK
-ICAgICAgICBDYXBhYmlsaXRpZXMgICAgIDogMHg4NDIwNDAwMAogICAgICAgICAgICAgICAgVmlk
-ZW8gTWVtb3J5LXRvLU1lbW9yeSBNdWx0aXBsYW5hcgogICAgICAgICAgICAgICAgU3RyZWFtaW5n
-CiAgICAgICAgICAgICAgICBFeHRlbmRlZCBQaXggRm9ybWF0CiAgICAgICAgICAgICAgICBEZXZp
-Y2UgQ2FwYWJpbGl0aWVzCiAgICAgICAgRGV2aWNlIENhcHMgICAgICA6IDB4MDQyMDQwMDAKICAg
-ICAgICAgICAgICAgIFZpZGVvIE1lbW9yeS10by1NZW1vcnkgTXVsdGlwbGFuYXIKICAgICAgICAg
-ICAgICAgIFN0cmVhbWluZwogICAgICAgICAgICAgICAgRXh0ZW5kZWQgUGl4IEZvcm1hdAoKUmVx
-dWlyZWQgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX1FVRVJZQ0FQOiBPSwoKQWxsb3cgZm9y
-IG11bHRpcGxlIG9wZW5zOgogICAgICAgIHRlc3Qgc2Vjb25kIC9kZXYvdmlkZW8xMSBvcGVuOiBP
-SwogICAgICAgIHRlc3QgVklESU9DX1FVRVJZQ0FQOiBPSwogICAgICAgIHRlc3QgVklESU9DX0cv
-U19QUklPUklUWTogT0sKICAgICAgICB0ZXN0IGZvciB1bmxpbWl0ZWQgb3BlbnM6IE9LCgogICAg
-ICAgIHRlc3QgaW52YWxpZCBpb2N0bHM6IE9LCkRlYnVnIGlvY3RsczoKICAgICAgICB0ZXN0IFZJ
-RElPQ19EQkdfRy9TX1JFR0lTVEVSOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJ
-RElPQ19MT0dfU1RBVFVTOiBPSyAoTm90IFN1cHBvcnRlZCkKCklucHV0IGlvY3RsczoKICAgICAg
-ICB0ZXN0IFZJRElPQ19HL1NfVFVORVIvRU5VTV9GUkVRX0JBTkRTOiBPSyAoTm90IFN1cHBvcnRl
-ZCkKICAgICAgICB0ZXN0IFZJRElPQ19HL1NfRlJFUVVFTkNZOiBPSyAoTm90IFN1cHBvcnRlZCkK
-ICAgICAgICB0ZXN0IFZJRElPQ19TX0hXX0ZSRVFfU0VFSzogT0sgKE5vdCBTdXBwb3J0ZWQpCiAg
-ICAgICAgdGVzdCBWSURJT0NfRU5VTUFVRElPOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0
-ZXN0IFZJRElPQ19HL1MvRU5VTUlOUFVUOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0
-IFZJRElPQ19HL1NfQVVESU86IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIElucHV0czogMCBB
-dWRpbyBJbnB1dHM6IDAgVHVuZXJzOiAwCgpPdXRwdXQgaW9jdGxzOgogICAgICAgIHRlc3QgVklE
-SU9DX0cvU19NT0RVTEFUT1I6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9D
-X0cvU19GUkVRVUVOQ1k6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0VO
-VU1BVURPVVQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvUy9FTlVN
-T1VUUFVUOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19HL1NfQVVET1VU
-OiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICBPdXRwdXRzOiAwIEF1ZGlvIE91dHB1dHM6IDAg
-TW9kdWxhdG9yczogMAoKSW5wdXQvT3V0cHV0IGNvbmZpZ3VyYXRpb24gaW9jdGxzOgogICAgICAg
-IHRlc3QgVklESU9DX0VOVU0vRy9TL1FVRVJZX1NURDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAg
-ICAgdGVzdCBWSURJT0NfRU5VTS9HL1MvUVVFUllfRFZfVElNSU5HUzogT0sgKE5vdCBTdXBwb3J0
-ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfRFZfVElNSU5HU19DQVA6IE9LIChOb3QgU3VwcG9ydGVk
-KQogICAgICAgIHRlc3QgVklESU9DX0cvU19FRElEOiBPSyAoTm90IFN1cHBvcnRlZCkKCkNvbnRy
-b2wgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX1FVRVJZX0VYVF9DVFJML1FVRVJZTUVOVTog
-T0sKICAgICAgICB0ZXN0IFZJRElPQ19RVUVSWUNUUkw6IE9LCiAgICAgICAgdGVzdCBWSURJT0Nf
-Ry9TX0NUUkw6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRy9TL1RSWV9FWFRfQ1RSTFM6IE9LCiAg
-ICAgICAgdGVzdCBWSURJT0NfKFVOKVNVQlNDUklCRV9FVkVOVC9EUUVWRU5UOiBPSwogICAgICAg
-IHRlc3QgVklESU9DX0cvU19KUEVHQ09NUDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgU3Rh
-bmRhcmQgQ29udHJvbHM6IDQgUHJpdmF0ZSBDb250cm9sczogMAoKRm9ybWF0IGlvY3RsczoKICAg
-ICAgICB0ZXN0IFZJRElPQ19FTlVNX0ZNVC9GUkFNRVNJWkVTL0ZSQU1FSU5URVJWQUxTOiBPSwog
-ICAgICAgIHRlc3QgVklESU9DX0cvU19QQVJNOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0
-ZXN0IFZJRElPQ19HX0ZCVUY6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9D
-X0dfRk1UOiBPSwogICAgICAgIHRlc3QgVklESU9DX1RSWV9GTVQ6IE9LCiAgICAgICAgdGVzdCBW
-SURJT0NfU19GTVQ6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfR19TTElDRURfVkJJX0NBUDogT0sg
-KE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgdGVzdCBDcm9wcGluZzogT0sKICAgICAgICB0ZXN0IENv
-bXBvc2luZzogT0sKICAgICAgICB0ZXN0IFNjYWxpbmc6IE9LCgpDb2RlYyBpb2N0bHM6CiAgICAg
-ICAgdGVzdCBWSURJT0NfKFRSWV8pRU5DT0RFUl9DTUQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAg
-ICAgIHRlc3QgVklESU9DX0dfRU5DX0lOREVYOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0
-ZXN0IFZJRElPQ18oVFJZXylERUNPREVSX0NNRDogT0sgKE5vdCBTdXBwb3J0ZWQpCgpCdWZmZXIg
-aW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX1JFUUJVRlMvQ1JFQVRFX0JVRlMvUVVFUllCVUY6
-IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRVhQQlVGOiBPSwogICAgICAgIHRlc3QgUmVxdWVzdHM6
-IE9LIChOb3QgU3VwcG9ydGVkKQoKVGVzdCBpbnB1dCAwOgoKU3RyZWFtaW5nIGlvY3RsczoKICAg
-ICAgICB0ZXN0IHJlYWQvd3JpdGU6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgYmxv
-Y2tpbmcgd2FpdDogT0sKICAgICAgICBWaWRlbyBDYXB0dXJlIE11bHRpcGxhbmFyOiBDYXB0dXJl
-ZCAxIGJ1ZmZlcnMKICAgICAgICB0ZXN0IE1NQVAgKG5vIHBvbGwpOiBPSwogICAgICAgIFZpZGVv
-IENhcHR1cmUgTXVsdGlwbGFuYXI6IENhcHR1cmVkIDEgYnVmZmVycwogICAgICAgIHRlc3QgTU1B
-UCAoc2VsZWN0KTogT0sKICAgICAgICBWaWRlbyBDYXB0dXJlIE11bHRpcGxhbmFyOiBDYXB0dXJl
-ZCAxIGJ1ZmZlcnMKICAgICAgICB0ZXN0IE1NQVAgKGVwb2xsKTogT0sKICAgICAgICB0ZXN0IFVT
-RVJQVFIgKG5vIHBvbGwpOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFVTRVJQVFIg
-KHNlbGVjdCk6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgRE1BQlVGOiBDYW5ub3Qg
-dGVzdCwgc3BlY2lmeSAtLWV4cGJ1Zi1kZXZpY2UKClRvdGFsIGZvciBtdGstbWRwMyBkZXZpY2Ug
-L2Rldi92aWRlbzExOiA1MiwgU3VjY2VlZGVkOiA1MiwgRmFpbGVkOiAwLApXYXJuaW5nczogMAoK
-VGhhbmtzICYgUmVnYXJkcywKTW91ZHkgSG8KCk9uIEZyaSwgMjAyMS0wOS0wMyBhdCAxMjowMSAr
-MDIwMCwgSGFucyBWZXJrdWlsIHdyb3RlOgo+IEhpIE1vdWR5LAo+IAo+IENhbiB5b3UgcHJvdmlk
-ZSB0aGUgJ3Y0bDItY29tcGxpYW5jZSAtcycgb3V0cHV0Pwo+IAo+IE1ha2Ugc3VyZSB0byBjb21w
-aWxlIHY0bDItY29tcGxpYW5jZSBmcm9tIHRoZSBsYXRlc3QgY29kZSBiYXNlOgo+IApodHRwczov
-L3VybGRlZmVuc2UuY29tL3YzL19faHR0cHM6Ly9naXQubGludXh0di5vcmcvdjRsLXV0aWxzLmdp
-dC9fXzshIUNUUk5LQTl3TWcwQVJidyEyUW1rRmhNb1lCQ1I0TUM1ZF9sOGI3enZkRWR3a2ZkNjgy
-Nm5PWTZXQUhRQ2hVNHJNbDhQOVV0TzZaOFpyY1BEJAo+ICAKPiAKPiBDb21waWxpbmcgb24geDg2
-XzY0IChzbyB1c2luZyBDT01QSUxFX1RFU1QpIGZhaWxzOgo+IAo+ICAgTEQgICAgICAudG1wX3Zt
-bGludXgua2FsbHN5bXMxCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRr
-LW1kcDMtY29yZS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfcHJvYmUnOgo+IG10ay1tZHAzLWNvcmUu
-YzooLnRleHQrMHg0MTUpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvCj4gYG10a19tdXRleF9tZHBf
-Z2V0Jwo+IGxkOiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAu
-bzogaW4gZnVuY3Rpb24KPiBgY29uZmlnX2NhbWluX3N1YmZybSc6Cj4gbXRrLW1kcDMtY29tcC5j
-OigudGV4dCsweDliKTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+IGBtdGtfbW1zeXNfbWRwX2Nh
-bWluX2N0cmwnCj4gbGQ6IG10ay1tZHAzLWNvbXAuYzooLnRleHQrMHhiYyk6IHVuZGVmaW5lZCBy
-ZWZlcmVuY2UgdG8KPiBgbXRrX21tc3lzX21kcF9jYW1pbl9jdHJsJwo+IGxkOiBkcml2ZXJzL21l
-ZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAubzogaW4gZnVuY3Rpb24KPiBgbWRw
-X2NvbXBvbmVudF9kZWluaXQnOgo+IG10ay1tZHAzLWNvbXAuYzooLnRleHQrMHgyNzA3KTogdW5k
-ZWZpbmVkIHJlZmVyZW5jZSB0bwo+IGBtdGtfbXV0ZXhfcHV0Jwo+IGxkOiBkcml2ZXJzL21lZGlh
-L3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAubzogaW4gZnVuY3Rpb24KPiBgaW5pdF9p
-c3AuY29sZCc6Cj4gbXRrLW1kcDMtY29tcC5jOigudGV4dC51bmxpa2VseSsweDRmKTogdW5kZWZp
-bmVkIHJlZmVyZW5jZSB0bwo+IGBtdGtfbW1zeXNfbWRwX2lzcF9jdHJsJwo+IGxkOiBtdGstbWRw
-My1jb21wLmM6KC50ZXh0LnVubGlrZWx5KzB4N2EpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvCj4g
-YG10a19tbXN5c19tZHBfaXNwX2N0cmwnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRr
-LW1kcDMvbXRrLW1kcDMtY21kcS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfYXV0b19yZWxlYXNlX3dv
-cmsnOgo+IG10ay1tZHAzLWNtZHEuYzooLnRleHQrMHgxMyk6IHVuZGVmaW5lZCByZWZlcmVuY2Ug
-dG8KPiBgbXRrX211dGV4X3VucHJlcGFyZScKPiBsZDogZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9t
-dGstbWRwMy9tdGstbWRwMy1jbWRxLm86IGluIGZ1bmN0aW9uCj4gYG1kcF9wYXRoX3N1YmZybV9y
-ZXF1aXJlJzoKPiBtdGstbWRwMy1jbWRxLmM6KC50ZXh0KzB4NDVlKTogdW5kZWZpbmVkIHJlZmVy
-ZW5jZSB0bwo+IGBtdGtfbXV0ZXhfYWRkX21kcF9tb2QnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY21kcS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfcGF0aF9z
-dWJmcm1fcnVuLmlzcmEuMCc6Cj4gbXRrLW1kcDMtY21kcS5jOigudGV4dCsweDc4Yik6IHVuZGVm
-aW5lZCByZWZlcmVuY2UgdG8KPiBgbXRrX211dGV4X2VuYWJsZV9ieV9jbWRxJwo+IGxkOiBkcml2
-ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNtZHEubzogaW4gZnVuY3Rpb24K
-PiBgbWRwX3BhdGhfY29uZmlnX3N1YmZybSc6Cj4gbXRrLW1kcDMtY21kcS5jOigudGV4dCsweGEw
-ZCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8KPiBgbXRrX21tc3lzX21kcF9jb25uZWN0Jwo+IGxk
-OiBtdGstbWRwMy1jbWRxLmM6KC50ZXh0KzB4ZDA4KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+
-IGBtdGtfbW1zeXNfbWRwX2Rpc2Nvbm5lY3QnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-bXRrLW1kcDMvbXRrLW1kcDMtY21kcS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfY21kcV9zZW5kJzoK
-PiAoLnRleHQrMHgxMzU4KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBgbXRrX211dGV4X3ByZXBh
-cmUnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY21kcS5v
-OiBpbiBmdW5jdGlvbgo+IGBtZHBfaGFuZGxlX2NtZHFfY2FsbGJhY2suY29sZCc6Cj4gbXRrLW1k
-cDMtY21kcS5jOigudGV4dC51bmxpa2VseSsweDM0KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+
-IGBtdGtfbXV0ZXhfdW5wcmVwYXJlJwo+IGxkOiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1t
-ZHAzL210ay1tZHAzLWNtZHEubzogaW4gZnVuY3Rpb24KPiBgbWRwX2NtZHFfc2VuZC5jb2xkJzoK
-PiBtdGstbWRwMy1jbWRxLmM6KC50ZXh0LnVubGlrZWx5KzB4ZTMpOiB1bmRlZmluZWQgcmVmZXJl
-bmNlIHRvCj4gYG10a19tdXRleF91bnByZXBhcmUnCj4gbWFrZTogKioqIFtNYWtlZmlsZToxMTc3
-OiB2bWxpbnV4XSBFcnJvciAxCj4gCj4gSSBhbHNvIGdldCBjb21waWxlIHdhcm5pbmdzOgo+IAo+
-IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY29tcC5jOiBJbiBmdW5j
-dGlvbgo+IOKAmG1kcF9zdWJfY29tcHNfY3JlYXRl4oCZOgo+IGRyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vbXRrLW1kcDMvbXRrLW1kcDMtY29tcC5jOjExNTE6Mjk6IHdhcm5pbmc6Cj4gaW1wbGljaXQg
-Y29udmVyc2lvbiBmcm9tIOKAmGVudW0gbXRrX21kcF9jb21wX2lk4oCZIHRvIOKAmGVudW0KPiBt
-ZHBfY29tcF90eXBl4oCZIFstV2VudW0tY29udmVyc2lvbl0KPiAgMTE1MSB8ICAgZW51bSBtZHBf
-Y29tcF90eXBlIHR5cGUgPSBNRFBfQ09NUF9OT05FOwo+ICAgICAgIHwgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn4KPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1t
-ZHAzL210ay1tZHAzLWNvbXAuYzogSW4gZnVuY3Rpb24KPiDigJhtZHBfY29tcG9uZW50X2luaXTi
-gJk6Cj4gZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jb21wLmM6MTIx
-Nzo2OiB3YXJuaW5nOgo+IHVudXNlZCB2YXJpYWJsZSDigJhp4oCZIFstV3VudXNlZC12YXJpYWJs
-ZV0KPiAgMTIxNyB8ICBpbnQgaSwgcmV0Owo+ICAgICAgIHwgICAgICBeCj4gZHJpdmVycy9tZWRp
-YS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jbWRxLmM6IEluIGZ1bmN0aW9uCj4g4oCYbWRw
-X2NtZHFfc2VuZOKAmToKPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAz
-LWNtZHEuYzo0ODk6MTogd2FybmluZzogdGhlCj4gZnJhbWUgc2l6ZSBvZiAxMzEyIGJ5dGVzIGlz
-IGxhcmdlciB0aGFuIDEwMjQgYnl0ZXMgWy1XZnJhbWUtbGFyZ2VyLQo+IHRoYW49XQo+ICAgNDg5
-IHwgfQo+ICAgICAgIHwgXgo+IAo+IFJlZ2FyZHMsCj4gCj4gCUhhbnMKPiAKPiBPbiAyNC8wOC8y
-MDIxIDEyOjAwLCBNb3VkeSBIbyB3cm90ZToKPiA+IENoYW5nZXMgc2luY2UgdjY6Cj4gPiAtIFJl
-ZmFjdG9yIEdDRSBldmVudCB0byBjb3JyZXNwb25kaW5nIG5vZGUuCj4gPiAtIEZpeCBkdF9iaW5k
-aW5nX2NoZWNrIGZhaWwuCj4gPiAtIEZpeCBjb21waWxhdGlvbiBlcnJvcnMuCj4gPiAKPiA+IENo
-YW5nZXMgc2luY2UgdjU6Cj4gPiAtIFJlYmFzZSBvbiB2NS4xNC1yYzYuCj4gPiAtIE1vdmUgTU1T
-WVMvTXV0ZXggc2V0dGluZ3MgdG8gY29ycmVzcG9uZGluZyBkcml2ZXIuCj4gPiAtIFJldmlzZSB0
-aGUgc29mdHdhcmUgbGljZW5zZSBkZXNjcmlwdGlvbiBhbmQgY29weXJpZ2h0Lgo+ID4gLSBSZW1v
-dmUgdW5uZWNlc3NhcnkgZW51bS4gb3IgZGVmaW5pdGlvbnMuCj4gPiAtIE9wdGltaXplIHBsYXRm
-b3JtL2NoaXAgZGVmaW5pdGlvbiBjb25kaXRpb25zLgo+ID4gLSBVc2UgZ2VuZXJhbCBwcmludGlu
-ZyBmdW5jdGlvbnMgaW5zdGVhZCBvZiBNRFAzIHByaXZhdGUgb25lcy4KPiA+IC0gRml4IGNvbXBp
-bGUgd2FybmluZy4KPiA+IAo+ID4gQ2hhbmdlcyBzaW5jZSB2NDoKPiA+IC0gUmViYXNlIG9uIHY1
-LjEzLXJjMS4KPiA+IC0gUmVtb3ZlIHRoZSBDTURRIGZsdXNoIGZsb3cgdG8gbWF0Y2ggdGhlIENN
-RFEgQVBJIGNoYW5nZS4KPiA+IC0gSW50ZWdyYXRlIGZvdXIgb2YgTURQJ3MgZGlyZWN0LWxpbmsg
-c3ViY29tcG9uZW50cyBpbnRvIE1EUAo+ID4gY29udHJvbGxlciBub2RlCj4gPiAgIGZyb20gc3lz
-Y29uIG5vZGUgdG8gYXZvaWQgaWxsZWdhbCBjbG9jayB1c2FnZS4KPiA+IC0gUmV3cml0ZSBkdC1i
-aW5kaW5nIGluIGEgSlNPTiBjb21wYXRpYmxlIHN1YnNldCBvZiBZQU1MCj4gPiAtIEZpeCBhIGJp
-dCBvZiBtYWNybyBhcmd1bWVudCBwcmVjZWRlbmNlLgo+ID4gCj4gPiBDaGFuZ2VzIHNpbmNlIHYz
-Ogo+ID4gLSBSZWJhc2Ugb24gdjUuOS1yYzEuCj4gPiAtIG1vZGlmeSBjb2RlIGZvciByZXZpZXcg
-Y29tbWVudCBmcm9tIFJvYiBIZXJyaW5nLCBjYW5jZWwgbXVsdGlwbGUKPiA+IG5vZGVzIHVzaW5n
-Cj4gPiAgIHNhbWUgcmVnaXN0ZXIgYmFzZSBzaXR1YXRpb24uCj4gPiAtIGNvbnRyb2wgSU9NTVUg
-cG9ydCB0aHJvdWdoIHBtIHJ1bnRpbWUgZ2V0L3B1dCB0byBETUEgY29tcG9uZW50cycKPiA+IGRl
-dmljZS4KPiA+IC0gU0NQKFZQVSkgZHJpdmVyIHJldmlzaW9uLgo+ID4gLSBzdG9wIHF1ZXVpbmcg
-am9icyhyZW1vdmUgZmx1c2hfd29ya3F1ZXVlKCkpIGFmdGVyCj4gPiBtZHBfbTJtX3JlbGVhc2Uo
-KS4KPiA+IC0gYWRkIGNvbXB1dGF0aW9uIG9mIHBsYW5lIGFkZHJlc3Mgd2l0aCBkYXRhX29mZnNl
-dC4KPiA+IC0gZml4IHNjYWxlIHJhdGlvIGNoZWNrIGlzc3VlLgo+ID4gLSBhZGQgZGVmYXVsdCB2
-NGwyX2Zvcm1hdCBzZXR0aW5nLgo+ID4gCj4gPiBDaGFuZ2VzIHNpbmNlIHYyOgo+ID4gLSBtb2Rp
-ZnkgY29kZSBmb3IgcmV2aWV3IGNvbW1lbnQgZnJvbSBUb21hc3ogRmlnYSAmIEFsZXhhbmRyZQo+
-ID4gQ291cmJvdAo+ID4gLSByZXZpZXcgY29tbWVudCBmcm9tIFJvYiBIZXJyaW5nIHdpbGwgb2Zm
-ZXIgY29kZSByZXZpc2lvbiBpbiB2NCwKPiA+IGR1ZSB0bwo+ID4gICBpdCdzIHJlbGF0ZWQgdG8g
-ZGV2aWNlIG5vZGUgbW9kaWZpY2F0aW9uLCB3aWxsIG5lZWQgdG8gbW9kaWZ5Cj4gPiBjb2RlCj4g
-PiAgIGFyY2hpdGVjdHVyZQo+ID4gCj4gPiBDaGFuZ2VzIHNpbmNlIHYxOgo+ID4gLSBtb2RpZnkg
-Y29kZSBmb3IgQ01EUSB2MyBBUEkgc3VwcG9ydAo+ID4gLSBFQyBpcGkgY21kIG1pZ3JhdGlvbgo+
-ID4gLSBmaXggY29tcGxpYW5jZSB0ZXN0IGZhaWwgaXRlbSAobTJtIGNtZCB3aXRoIC1mKSBkdWUg
-dG8gdGhlcmUgaXMKPiA+IHR3byBwcm9ibGVtIGluIHJ1bmluZyBhbGwgZm9ybWF0KC1mKSBjbWQ6
-Cj4gPiAxLiBvdXQgb2YgbWVtb3J5IGJlZm9yZSB0ZXN0IGNvbXBsZXRlCj4gPiAgICAgICAgIER1
-ZSB0byBjYXB0dXJlIGJ1ZmZlciBtbWFwIChyZWZjb3VudCArIDEpIGFmdGVyIHJlcWJ1ZiBidXQK
-PiA+IHNlZW1zCj4gPiAgICAgICAgIG5vIGNvcnJlc3BvbmRpbmcgbXVubWFwIGNhbGxlZCBiZWZv
-cmUgZGV2aWNlIGNsb3NlLgo+ID4gICAgICAgICBUaGVyZSBhcmUgdG90YWwgMTJYWCBpdGVtcyhm
-b3JtYXRzKSBpbiBmb3JtYXQgdGVzdCBhbmQgZWFjaAo+ID4gZm9ybWF0Cj4gPiAgICAgICAgIGFs
-bG9jIDggY2FwdHVyZS9vdXRwdXQgYnVmZmVycy4KPiA+IDIuIHVuY2Vhc2luZ2x5IGNhcHR1cmVC
-dWZzKCkgKHJhbmRvbWx5KQo+ID4gICAgICAgICBTZWVtcyB0aGUgYnJlYWsgc3RhdGVtZW50IGRp
-ZG4ndCBjYXRjaCB0aGUgY291bnQgPT0gMAo+ID4gc2l0dWF0aW9uOgo+ID4gICAgICAgICBJbiB2
-NGwyLXRlc3QtYnVmZmVycy5jcHAsIGZ1bmN0aW9uOiBjYXB0dXJlQnVmcygpCj4gPiAgICAgICAg
-ICAgICAgICAgICAgICAgICAuLi4KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgIGNvdW50LS07
-Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICBpZiAoIW5vZGUtPmlzX20ybSAmJiAhY291bnQp
-Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrOwo+ID4gICAgICAgICBM
-b2cgaXMgYXMgYXR0YWNobWVudAo+ID4gCj4gPiBJIHdpbGwgcGFzdGUgdGhlIHRlc3QgcmVzdWx0
-IHdpdGggcHJvYmxlbSBwYXJ0IGluIGFub3RoZXIgZS1tYWlsCj4gPiAKPiA+IEhpLAo+ID4gCj4g
-PiBUaGlzIGlzIHRoZSBmaXJzdCB2ZXJzaW9uIG9mIFJGQyBwYXRjaCBmb3IgTWVkaWEgRGF0YSBQ
-YXRoIDMKPiA+IChNRFAzKSwKPiA+IE1EUDMgaXMgdXNlZCBmb3Igc2NhbGluZyBhbmQgY29sb3Ig
-Zm9ybWF0IGNvbnZlcnNpb24uCj4gPiBzdXBwb3J0IHVzaW5nIEdDRSB0byB3cml0ZSByZWdpc3Rl
-ciBpbiBjcml0aWNhbCB0aW1lIGxpbWl0YXRpb24uCj4gPiBzdXBwb3J0IFY0TDIgbTJtIGRldmlj
-ZSBjb250cm9sLgo+ID4gCj4gPiBNb3VkeSBIbyAoNSk6Cj4gPiAgIHNvYzogbWVkaWF0ZWs6IG11
-dGV4OiBhZGQgc3VwcG9ydCBmb3IgTURQCj4gPiAgIHNvYzogbWVkaWF0ZWs6IG1tc3lzOiBBZGQg
-c3VwcG9ydCBmb3IgTURQCj4gPiAgIGR0LWJpbmRpbmc6IG10ODE4MzogQWRkIE1lZGlhdGVrIE1E
-UDMgZHQtYmluZGluZ3MKPiA+ICAgZHRzOiBhcm02NDogbXQ4MTgzOiBBZGQgTWVkaWF0ZWsgTURQ
-MyBub2Rlcwo+ID4gICBtZWRpYTogcGxhdGZvcm06IG10ay1tZHAzOiBBZGQgTWVkaWF0ZWsgTURQ
-MyBkcml2ZXIKPiA+IAo+ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxtZHAzLWNjb3Jy
-LnlhbWwgICB8ICAgNTcgKwo+ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxtZHAzLXJk
-bWEueWFtbCAgICB8ICAyMDcgKysrCj4gPiAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG1k
-cDMtcnN6LnlhbWwgICAgIHwgICA2NSArCj4gPiAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVr
-LG1kcDMtd2RtYS55YW1sICAgIHwgICA3MSArCj4gPiAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlh
-dGVrLG1kcDMtd3JvdC55YW1sICAgIHwgICA3MSArCj4gPiAgYXJjaC9hcm02NC9ib290L2R0cy9t
-ZWRpYXRlay9tdDgxODMuZHRzaSAgICAgIHwgIDExMCArKwo+ID4gIGRyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vS2NvbmZpZyAgICAgICAgICAgICAgICB8ICAgMTkgKwo+ID4gIGRyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vTWFrZWZpbGUgICAgICAgICAgICAgICB8ICAgIDIgKwo+ID4gIGRyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vbXRrLW1kcDMvTWFrZWZpbGUgICAgICB8ICAgIDYgKwo+ID4gIC4uLi9tZWRp
-YS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX2Njb3JyLmggICB8ICAgMTkgKwo+ID4gIGRyaXZl
-cnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbWRwX3JlZ19pc3AuaCB8ICAgMjcgKwo+ID4gIC4u
-Li9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3JkbWEuaCAgICB8ICAgNjUgKwo+ID4g
-IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbWRwX3JlZ19yc3ouaCB8ICAgMzkgKwo+
-ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3dkbWEuaCAgICB8ICAgNDcg
-Kwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3dyb3QuaCAgICB8ICAg
-NTUgKwo+ID4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLWltZy1pcGkuaCB8
-ICAyODAgKysrKwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jbWRx
-LmMgICB8ICA1MDcgKysrKysrKwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGst
-bWRwMy1jbWRxLmggICB8ICAgNDYgKwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9t
-dGstbWRwMy1jb21wLmMgICB8IDEzMDcKPiA+ICsrKysrKysrKysrKysrKysrCj4gPiAgLi4uL21l
-ZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAuaCAgIHwgIDE0NyArKwo+ID4gIC4u
-Li9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jb3JlLmMgICB8ICAzMjkgKysrKysK
-PiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY29yZS5oICAgfCAgIDc1
-ICsKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtbTJtLmMgICAgfCAg
-ODAxICsrKysrKysrKysKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMt
-bTJtLmggICAgfCAgIDQxICsKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1k
-cDMtcmVncy5jICAgfCAgNzQ2ICsrKysrKysrKysKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRr
-LW1kcDMvbXRrLW1kcDMtcmVncy5oICAgfCAgMzcyICsrKysrCj4gPiAgLi4uL21lZGlhL3BsYXRm
-b3JtL210ay1tZHAzL210ay1tZHAzLXZwdS5jICAgIHwgIDMxMiArKysrCj4gPiAgLi4uL21lZGlh
-L3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLXZwdS5oICAgIHwgICA3OCArCj4gPiAgZHJpdmVy
-cy9zb2MvbWVkaWF0ZWsvbXQ4MTgzLW1tc3lzLmggICAgICAgICAgIHwgIDIzNSArKysKPiA+ICBk
-cml2ZXJzL3NvYy9tZWRpYXRlay9tdGstbW1zeXMuYyAgICAgICAgICAgICAgfCAgMTY0ICsrKwo+
-ID4gIGRyaXZlcnMvc29jL21lZGlhdGVrL210ay1tbXN5cy5oICAgICAgICAgICAgICB8ICAgIDkg
-Ky0KPiA+ICBkcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstbXV0ZXguYyAgICAgICAgICAgICAgfCAg
-MTA2ICstCj4gPiAgaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmggICAgICAg
-IHwgICA4MSArCj4gPiAgaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW11dGV4LmggICAg
-ICAgIHwgICAgOCArCj4gPiAgMzQgZmlsZXMgY2hhbmdlZCwgNjQ5NSBpbnNlcnRpb25zKCspLCA5
-IGRlbGV0aW9ucygtKQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NAo+ID4gRG9jdW1lbnRhdGlvbi9k
-ZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG1kcDMtY2NvcnIueWFtbAo+ID4gIGNy
-ZWF0ZSBtb2RlIDEwMDY0NAo+ID4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21l
-ZGlhL21lZGlhdGVrLG1kcDMtcmRtYS55YW1sCj4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0Cj4gPiBE
-b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssbWRwMy1yc3ou
-eWFtbAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NAo+ID4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
-L2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG1kcDMtd2RtYS55YW1sCj4gPiAgY3JlYXRlIG1vZGUg
-MTAwNjQ0Cj4gPiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0
-ZWssbWRwMy13cm90LnlhbWwKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9w
-bGF0Zm9ybS9tdGstbWRwMy9NYWtlZmlsZQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L21lZGlhL3BsYXRmb3JtL210ay1tZHAzL21kcF9yZWdfY2NvcnIuaAo+ID4gIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL21kcF9yZWdfaXNwLmgKPiA+
-ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBf
-cmVnX3JkbWEuaAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L210ay1tZHAzL21kcF9yZWdfcnN6LmgKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9t
-ZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3dkbWEuaAo+ID4gIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL21kcF9yZWdfd3JvdC5oCj4gPiAg
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLWlt
-Zy1pcGkuaAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210
-ay1tZHAzL210ay1tZHAzLWNtZHEuYwo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21l
-ZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNtZHEuaAo+ID4gIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAuYwo+ID4g
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1t
-ZHAzLWNvbXAuaAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L210ay1tZHAzL210ay1tZHAzLWNvcmUuYwo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvcmUuaAo+ID4gIGNyZWF0ZSBtb2Rl
-IDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLW0ybS5jCj4g
-PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRr
-LW1kcDMtbTJtLmgKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9y
-bS9tdGstbWRwMy9tdGstbWRwMy1yZWdzLmMKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1yZWdzLmgKPiA+ICBjcmVhdGUgbW9k
-ZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy12cHUuYwo+
-ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210
-ay1tZHAzLXZwdS5oCj4gPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
-ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+> Manage each hardware information which includes irq/power/clk.
+> The hardware includes LAT0, LAT1 and CORE.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> ---
+> v7: Using of_platform_populate not component framework to manage multi hardware.
+> ---
+>   drivers/media/platform/mtk-vcodec/Makefile    |   1 +
+>   .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 151 ++++++++++++----
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 165 ++++++++++++++++++
+>   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  49 ++++++
+>   .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   1 +
+>   .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   1 +
+>   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  23 +++
+>   8 files changed, 359 insertions(+), 33 deletions(-)
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+>   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
+> 
+
+
+
+Hello Yunfei,
+
+thanks for this great series! However, there are a few things to improve...
+
+> diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
+> index ca8e9e7a9c4e..edeb3b66e9e9 100644
+> --- a/drivers/media/platform/mtk-vcodec/Makefile
+> +++ b/drivers/media/platform/mtk-vcodec/Makefile
+> @@ -15,6 +15,7 @@ mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
+>   		mtk_vcodec_dec_stateful.o \
+>   		mtk_vcodec_dec_stateless.o \
+>   		mtk_vcodec_dec_pm.o \
+> +		mtk_vcodec_dec_hw.o \
+>   
+>   mtk-vcodec-enc-y := venc/venc_vp8_if.o \
+>   		venc/venc_h264_if.o \
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
+> index 9fbd24186c1a..c509224cbff4 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
+> @@ -66,6 +66,7 @@ extern const struct v4l2_ioctl_ops mtk_vdec_ioctl_ops;
+>   extern const struct v4l2_m2m_ops mtk_vdec_m2m_ops;
+>   extern const struct media_device_ops mtk_vcodec_media_ops;
+>   
+> +extern struct platform_driver mtk_vdec_comp_driver;
+
+This may be useless... more on that later in this review.
+
+>   
+>   /*
+>    * mtk_vdec_lock/mtk_vdec_unlock are for ctx instance to
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> index dd749d41c75a..17cb3e3519eb 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> @@ -18,19 +18,61 @@
+>   
+>   #include "mtk_vcodec_drv.h"
+>   #include "mtk_vcodec_dec.h"
+> +#include "mtk_vcodec_dec_hw.h"
+>   #include "mtk_vcodec_dec_pm.h"
+>   #include "mtk_vcodec_intr.h"
+> -#include "mtk_vcodec_util.h"
+>   #include "mtk_vcodec_fw.h"
+>   
+> -#define VDEC_HW_ACTIVE	0x10
+> -#define VDEC_IRQ_CFG	0x11
+> -#define VDEC_IRQ_CLR	0x10
+> -#define VDEC_IRQ_CFG_REG	0xa4
+> -
+>   module_param(mtk_v4l2_dbg_level, int, 0644);
+>   module_param(mtk_vcodec_dbg, bool, 0644);
+>   
+> +static struct of_device_id mtk_vdec_drv_ids[] = {
+> +	{
+> +		.compatible = "mediatek,mtk-vcodec-lat",
+> +		.data = (void *)MTK_VDEC_LAT0,
+> +	},
+> +	{
+> +		.compatible = "mediatek,mtk-vcodec-core",
+> +		.data = (void *)MTK_VDEC_CORE,
+> +	},
+> +	{},
+> +};
+
+Is this a duplicate of "mtk_vdec_comp_ids", found in mtk_vcodec_dec_hw.c?!
+
+> +
+> +static int mtk_vcodec_comp_device_check(struct mtk_vcodec_ctx *ctx)
+> + {
+> +	struct mtk_vcodec_dev *vdec_dev = ctx->dev;
+> +	struct platform_device *pdev = vdec_dev->plat_dev;
+> +	struct device_node *comp_node;
+> +	enum mtk_vdec_hw_id comp_idx;
+> +	const struct of_device_id *of_id;
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(mtk_vdec_drv_ids); i++) {
+> +		of_id = &mtk_vdec_drv_ids[i];
+> +		comp_node = of_find_compatible_node(NULL, NULL,
+> +			of_id->compatible);
+> +		if (!comp_node)
+> +			continue;
+> +
+> +		if (!of_device_is_available(comp_node)) {
+> +			of_node_put(comp_node);
+> +			dev_err(&pdev->dev, "Fail to get MMSYS node\n");
+> +			continue;
+> +		}
+> +
+> +		comp_idx = (enum mtk_vdec_hw_id)of_id->data;
+> +		vdec_dev->component_node[comp_idx] = comp_node;
+> +
+> +		if (!test_bit(comp_idx, vdec_dev->hardware_bitmap)) {
+> +			dev_err(&pdev->dev, "Vdec comp_idx is not ready %d.",
+> +				comp_idx);
+> +			return -EINVAL;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>   static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+>   {
+>   	struct mtk_vcodec_dev *dev = priv;
+> @@ -95,6 +137,41 @@ static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
+>   	return 0;
+>   }
+>   
+> +static int mtk_vcodec_init_dec_params(struct mtk_vcodec_dev *dev)
+> +{
+> +	struct platform_device *pdev = dev->plat_dev;
+> +	int ret;
+> +
+> +	ret = mtk_vcodec_get_reg_bases(dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (!dev->vdec_pdata->is_comp_supported) {
+
+component is never supported (is_comp_supported is always false), so this check
+is useless.
+
+> +		dev->dec_irq = platform_get_irq(pdev, 0);
+> +		if (dev->dec_irq < 0) {
+> +			dev_err(&pdev->dev, "failed to get irq number");
+> +			return dev->dec_irq;
+> +		}
+> +
+> +		irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
+> +		ret = devm_request_irq(&pdev->dev, dev->dec_irq,
+> +			mtk_vcodec_dec_irq_handler, 0, pdev->name, dev);
+> +		if (ret) {
+> +			dev_err(&pdev->dev, "failed to install dev->dec_irq %d (%d)",
+> +				dev->dec_irq, ret);
+> +			return ret;
+> +		}
+> +
+> +		ret = mtk_vcodec_init_dec_pm(pdev, &dev->pm);
+> +		if (ret < 0) {
+> +			dev_err(&pdev->dev, "failed to get mt vcodec clock source");
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>   static int fops_vcodec_open(struct file *file)
+>   {
+>   	struct mtk_vcodec_dev *dev = video_drvdata(file);
+> @@ -116,6 +193,12 @@ static int fops_vcodec_open(struct file *file)
+>   	init_waitqueue_head(&ctx->queue);
+>   	mutex_init(&ctx->lock);
+>   
+> +	ret = mtk_vcodec_comp_device_check(ctx);
+
+Are you checking available devices outside of a probe function?
+ From what I can see, you require that the MMSYS device is available at this
+time, but that's something that should be granted if we reach this point.
+
+I would say that this driver probe should be deferred until the MMSYS device
+becomes available, since it's required for this to work and since, once that
+device gets registered and probed successfully, it'll never go away (unless
+module unloaded, but you can't unload module A if module B is using it, or
+depends on it, unless you also unload module B): like this, you will avoid
+performing N useless checks, everytime the userspace opens the vdec device.
+
+> +	if (ret) {
+> +		mtk_v4l2_err("Failed to check vdec comp device.");
+> +		goto err_ctrls_setup;
+> +	}
+> +
+>   	ctx->type = MTK_INST_DECODER;
+>   	ret = dev->vdec_pdata->ctrls_setup(ctx);
+>   	if (ret) {
+> @@ -220,7 +303,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>   {
+>   	struct mtk_vcodec_dev *dev;
+>   	struct video_device *vfd_dec;
+> -	struct resource *res;
+>   	phandle rproc_phandle;
+>   	enum mtk_vcodec_fw_type fw_type;
+>   	int ret;
+> @@ -249,32 +331,10 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>   	if (IS_ERR(dev->fw_handler))
+>   		return PTR_ERR(dev->fw_handler);
+>   
+> -	ret = mtk_vcodec_init_dec_pm(dev->plat_dev, &dev->pm);
+> -	if (ret < 0) {
+> -		dev_err(&pdev->dev, "Failed to get mt vcodec clock source");
+> -		goto err_dec_pm;
+> -	}
+> -
+> -	ret = mtk_vcodec_get_reg_bases(dev);
+> -	if (ret)
+> -		goto err_res;
+> -
+> -	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+> -	if (res == NULL) {
+> -		dev_err(&pdev->dev, "failed to get irq resource");
+> -		ret = -ENOENT;
+> -		goto err_res;
+> -	}
+> -
+> -	dev->dec_irq = platform_get_irq(pdev, 0);
+> -	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
+> -	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
+> -			mtk_vcodec_dec_irq_handler, 0, pdev->name, dev);
+> +	ret = mtk_vcodec_init_dec_params(dev);
+>   	if (ret) {
+> -		dev_err(&pdev->dev, "Failed to install dev->dec_irq %d (%d)",
+> -			dev->dec_irq,
+> -			ret);
+> -		goto err_res;
+> +		dev_err(&pdev->dev, "Failed to init pm and registers");
+> +		goto err_dec_pm;
+>   	}
+>   
+>   	mutex_init(&dev->dec_mutex);
+> @@ -329,6 +389,13 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>   		goto err_event_workq;
+>   	}
+>   
+> +	ret = of_platform_populate(pdev->dev.of_node, NULL, NULL,
+> +		&pdev->dev);
+> +	if (ret) {
+> +		mtk_v4l2_err("Master device of_platform_populate failed.");
+> +		goto err_event_workq;
+> +	}
+> +
+>   	if (dev->vdec_pdata->uses_stateless_api) {
+>   		dev->mdev_dec.dev = &pdev->dev;
+>   		strscpy(dev->mdev_dec.model, MTK_VCODEC_DEC_NAME,
+> @@ -436,7 +503,25 @@ static struct platform_driver mtk_vcodec_dec_driver = {
+>   	},
+>   };
+>   
+> -module_platform_driver(mtk_vcodec_dec_driver);
+> +static struct platform_driver * const mtk_vdec_drivers[] = {
+> +	&mtk_vdec_comp_driver,
+> +	&mtk_vcodec_dec_driver,
+> +};
+
+I would say that this is not a good idea, since you can simply register
+your mtk_vdec_comp_driver in mtk_vcodec_dec_hw.c.
+
+> +
+> +static int __init mtk_vdec_init(void)
+> +{
+> +	return platform_register_drivers(mtk_vdec_drivers,
+> +					 ARRAY_SIZE(mtk_vdec_drivers));
+> +}
+> +
+> +static void __exit mtk_vdec_exit(void)
+> +{
+> +	platform_unregister_drivers(mtk_vdec_drivers,
+> +				    ARRAY_SIZE(mtk_vdec_drivers));
+> +}
+> +
+> +module_init(mtk_vdec_init);
+> +module_exit(mtk_vdec_exit);
+>   
+>   MODULE_LICENSE("GPL v2");
+>   MODULE_DESCRIPTION("Mediatek video codec V4L2 decoder driver");
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+> new file mode 100644
+> index 000000000000..3752ccaea284
+> --- /dev/null
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
+> @@ -0,0 +1,165 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + * Author: Yunfei Dong <yunfei.dong@mediatek.com>
+> + */
+> +
+> +#include <linux/interrupt.h>
+> +#include <linux/irq.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/of_device.h>
+> +#include <linux/slab.h>
+> +
+> +#include "mtk_vcodec_drv.h"
+> +#include "mtk_vcodec_dec.h"
+> +#include "mtk_vcodec_dec_hw.h"
+> +#include "mtk_vcodec_dec_pm.h"
+> +#include "mtk_vcodec_intr.h"
+> +#include "mtk_vcodec_util.h"
+> +
+> +static const struct of_device_id mtk_vdec_comp_ids[] = {
+> +	{
+> +		.compatible = "mediatek,mtk-vcodec-lat",
+> +	},
+> +	{
+> +		.compatible = "mediatek,mtk-vcodec-core",
+> +	},
+> +	{},
+> +};
+
+I think that you forgot some ".data = " here...
+
+> +
+> +static irqreturn_t mtk_vdec_comp_irq_handler(int irq, void *priv)
+> +{
+> +	struct mtk_vdec_comp_dev *dev = priv;
+> +	struct mtk_vcodec_ctx *ctx;
+> +	u32 cg_status;
+> +	unsigned int dec_done_status;
+> +	void __iomem *vdec_misc_addr = dev->reg_base[VDEC_COMP_MISC] +
+> +					VDEC_IRQ_CFG_REG;
+> +
+> +	ctx = mtk_vcodec_get_curr_ctx(dev->master_dev);
+> +
+> +	/* check if HW active or not */
+> +	cg_status = readl(dev->reg_base[VDEC_COMP_SYS]);
+> +	if ((cg_status & VDEC_HW_ACTIVE) != 0) {
+
+The "!= 0" can be dropped here, since cg_status is unsigned.
+
+> +		mtk_v4l2_err("vdec active is not 0x0 (0x%08x)",
+> +			cg_status);
+> +		return IRQ_HANDLED;
+> +	}
+> +
+> +	dec_done_status = readl(vdec_misc_addr);
+> +	if ((dec_done_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS) !=
+> +		MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
+
+I suggest to fix the indentation here to increase human readability, like so:
+
+	if ((dec_done_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS) !=
+
+	    MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
+
+
+> +		return IRQ_HANDLED;
+> +
+> +	/* clear interrupt */
+> +	writel(dec_done_status | VDEC_IRQ_CFG, vdec_misc_addr);
+> +	writel(dec_done_status & ~VDEC_IRQ_CLR, vdec_misc_addr);
+> +
+> +	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
+> +
+> +	mtk_v4l2_debug(3, "wake up ctx %d, dec_done_status=%x",
+> +		ctx->id, dec_done_status);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int mtk_vdec_comp_init_irq(struct mtk_vdec_comp_dev *dev)
+> +{
+> +	struct platform_device *pdev = dev->plat_dev;
+> +	int ret;
+> +
+> +	dev->dec_irq = platform_get_irq(pdev, 0);
+> +	if (dev->dec_irq < 0) {
+> +		dev_err(&pdev->dev, "Failed to get irq resource");
+> +		return dev->dec_irq;
+> +	}
+> +
+> +	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
+> +	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
+> +				mtk_vdec_comp_irq_handler, 0, pdev->name, dev);
+> +	if (ret) {
+> +		dev_err(&pdev->dev, "Failed to install dev->dec_irq %d (%d)",
+> +			dev->dec_irq, ret);
+> +		return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_vdec_comp_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_vdec_comp_dev *comp_dev;
+> +	struct mtk_vcodec_dev *master_dev;
+> +	const struct of_device_id *of_id;
+> +	int comp_idx;
+> +	int ret;
+> +
+> +	if (!dev->parent) {
+> +		dev_err(dev, "Vdec parent prob is not ready.");
+
+This is not an error, since it's not a "critical" error, until it becomes one (so,
+after max deferral count has been reached).
+I would remove this message entirely, however, if you really want this message to
+be here, you should use dev_dbg.
+
+> +		return -EPROBE_DEFER;
+> +	}
+> +
+> +	master_dev = dev_get_drvdata(dev->parent);
+> +	if (!master_dev) {
+> +		dev_err(dev, "Failed to get master device.");
+
+Same here.
+
+> +		return -EPROBE_DEFER;
+> +	}
+> +
+> +	comp_dev = devm_kzalloc(dev, sizeof(*comp_dev), GFP_KERNEL);
+> +	if (!comp_dev)
+> +		return -ENOMEM;
+> +
+> +	comp_dev->plat_dev = pdev;
+> +	ret = mtk_vcodec_init_dec_pm(pdev, &comp_dev->pm);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to get mt vcodec clock source.");
+
+As far as I can see, you have failure prints all over in function 
+mtk_vcodec_init_dec_pm, so there's no need to add another print here:
+you can simply return the error value here.
+
+> +		return ret;
+> +	}
+> +
+> +	comp_dev->reg_base[VDEC_COMP_MISC] =
+> +		devm_platform_ioremap_resource_byname(pdev, "reg-misc");
+> +	if (IS_ERR((__force void *)comp_dev->reg_base[VDEC_COMP_MISC])) {
+> +		ret = PTR_ERR((__force void *)comp_dev->reg_base[VDEC_COMP_MISC]);
+> +		goto err;
+> +	}
+> +
+> +	ret = mtk_vdec_comp_init_irq(comp_dev);
+> +	if (ret) {
+> +		dev_err(dev, "Failed to register irq handler.\n");
+> +		goto err;
+> +	}
+
+...and the same applies here: mtk_vdec_comp_init_irq already prints on its own.
+
+> +
+> +	of_id = of_match_device(mtk_vdec_comp_ids, dev);
+> +	if (!of_id) {
+> +		dev_err(dev, "Can't get vdec comp device id.\n");
+> +		ret = -EINVAL;
+> +		goto err;
+> +	}
+> +
+> +	comp_idx = (enum mtk_vdec_hw_id)of_id->data;
+
+Are you sure that this one is working as expected?
+The only driver that registers compatibles mediatek,mtk-vcodec-lat and
+mediatek,mtk-vcodec-core is exactly this one, but there's no .data assigned
+to any of the of_device_id entries... and this means that your of_id->data
+will not contain the expected value of type enum mtk_vdec_hw_id.
+
+> +	if (comp_idx < MTK_VDEC_HW_MAX) {
+> +		master_dev->comp_dev[comp_idx] = comp_dev;
+> +		comp_dev->comp_idx = comp_idx;
+> +		comp_dev->master_dev = master_dev;
+> +		comp_dev->reg_base[VDEC_COMP_SYS] =
+> +			master_dev->reg_base[VDEC_COMP_SYS];
+> +		set_bit(comp_dev->comp_idx, master_dev->hardware_bitmap);
+> +	}
+> +
+> +	platform_set_drvdata(pdev, comp_dev);
+> +	return 0;
+> +err:
+> +	mtk_vcodec_release_dec_pm(&comp_dev->pm);
+> +	return ret;
+> +}
+> +
+> +MODULE_DEVICE_TABLE(of, mtk_vdec_comp_ids);
+> +struct platform_driver mtk_vdec_comp_driver = {
+
+The `_comp` here is a name that's making a logical reference to that: in this case,
+
+that may confuse developers around. Can you please drop that `_comp`?
+
+That would become `mtk_vdec_driver` instead.
+
+
+Logically, the same applies for the rest - always assuming that it's referencing to
+the Linux component API.
+
+> +	.probe	= mtk_vdec_comp_probe,
+> +	.driver	= {
+> +		.name	= "mtk-vdec-comp",
+> +		.of_match_table = mtk_vdec_comp_ids,
+> +	},
+> +};
+
+Since you're using of_platform_populate, there is no need to register this driver
+externally: you can simply register it here (module_platform_driver) and it will
+be probed at of_platform_populate time in your parent.
+
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
+> new file mode 100644
+> index 000000000000..8d6e818a3474
+> --- /dev/null
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
+> @@ -0,0 +1,49 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + * Author: Yunfei Dong <yunfei.dong@mediatek.com>
+> + */
+> +
+> +#ifndef _MTK_VCODEC_DEC_HW_H_
+> +#define _MTK_VCODEC_DEC_HW_H_
+> +
+> +#include <linux/io.h>
+> +#include <linux/platform_device.h>
+> +
+> +#include "mtk_vcodec_drv.h"
+> +
+> +#define VDEC_HW_ACTIVE	0x10
+> +#define VDEC_IRQ_CFG	0x11
+> +#define VDEC_IRQ_CLR	0x10
+> +#define VDEC_IRQ_CFG_REG	0xa4
+
+Cosmetic nitpick: either all values in the same column, or simply use a space
+instead of tabulations.
+
+> +
+> +/**
+> + * enum mtk_comp_hw_reg_idx - component register base index
+> + */
+> +enum mtk_comp_hw_reg_idx {
+> +	VDEC_COMP_SYS,
+> +	VDEC_COMP_MISC,
+> +	VDEC_COMP_MAX
+> +};
+> +
+> +/**
+> + * struct mtk_vdec_comp_dev - component framwork driver data
+
+You've switched away from the component framework... so this structure's
+description seems to be a bit misleading now...
+
+> + * @plat_dev: platform device
+> + * @master_dev: master device
+> + * @reg_base: Mapped address of MTK Vcodec registers.
+> + *
+> + * @dec_irq: decoder irq resource
+> + * @pm: power management control
+> + * @comp_idx: component index
+> + */
+> +struct mtk_vdec_comp_dev {
+> +	struct platform_device *plat_dev;
+> +	struct mtk_vcodec_dev *master_dev;
+> +	void __iomem *reg_base[VDEC_COMP_MAX];
+> +
+> +	int dec_irq;
+> +	struct mtk_vcodec_pm pm;
+> +	int comp_idx;
+> +};
+> +
+> +#endif /* _MTK_VCODEC_DEC_HW_H_ */
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
+> index 59c24b22ab6d..4f9a80ce15d8 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
+> @@ -623,4 +623,5 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata = {
+>   	.num_framesizes = NUM_SUPPORTED_FRAMESIZE,
+>   	.worker = mtk_vdec_worker,
+>   	.flush_decoder = mtk_vdec_flush_decoder,
+> +	.is_comp_supported = false,
+>   };
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+> index 8f4a1f0a0769..762633572b49 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
+> @@ -357,4 +357,5 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata = {
+>   	.uses_stateless_api = true,
+>   	.worker = mtk_vdec_worker,
+>   	.flush_decoder = mtk_vdec_flush_decoder,
+> +	.is_comp_supported = false,
+
+component is not supported anywhere, since you've switched away from it?!
+
+>   };
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> index 973b0b3649c6..ec3850b4c638 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> @@ -93,6 +93,17 @@ enum mtk_fmt_type {
+>   	MTK_FMT_FRAME = 2,
+>   };
+>   
+> +/**
+> + * struct mtk_vdec_hw_id - Hardware index used to separate
+> + *                         different hardware
+> + */
+> +enum mtk_vdec_hw_id {
+> +	MTK_VDEC_CORE,
+> +	MTK_VDEC_LAT0,
+> +	MTK_VDEC_LAT1,
+> +	MTK_VDEC_HW_MAX,
+> +};
+> +
+>   /*
+>    * struct mtk_video_fmt - Structure used to store information about pixelformats
+>    */
+> @@ -331,6 +342,7 @@ enum mtk_chip {
+>    *
+>    * @chip: chip this decoder is compatible with
+>    *
+> + * @is_comp_supported: true: using compoent framework, false: not support
+>    * @uses_stateless_api: whether the decoder uses the stateless API with requests
+>    */
+>   
+> @@ -352,6 +364,7 @@ struct mtk_vcodec_dec_pdata {
+>   
+>   	enum mtk_chip chip;
+>   
+> +	bool is_comp_supported;
+
+Adding this member looks useless: there's nothing declaring is_comp_supported as
+true... not here, not in any other patch of this entire series!
+
+
+Regards,
+- Angelo
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
