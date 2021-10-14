@@ -2,14 +2,14 @@ Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D6B5AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 14:06:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A0D7FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 14:28:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D760610D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 14:06:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8D760610D2
+	by mail.kernel.org (Postfix) with ESMTPS id 5B80161151
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 14:28:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5B80161151
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,22 +18,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+8E0K5Kay5lB6yncjJ37NYV2diuiaPRmrWwAGnr9m7A=; b=3KpFm4m91690qmg/dix/Z3lInq
-	8OjFeYsS8gwJiNy4pKmGCX5J1dd0NOQtyYgd8aR5AkkzHiDngNnJxpEfJ1Zp/wPPke6VGSazOhXl9
-	tjjwNwes8Qg+VxtXWIz5hMnBqsBug9c5/X9ST1rQkHHpERjRPk8uZjDXbcZZHzl4nHW6UtrefNsX7
-	d8yBNdKEKZOkA0IT314da9zC/nnmUkj1Ugd8Rc2orUt410BJ/Nke+EWkBi4iQlKSF4n55oGV4yqK1
-	7RlZadDcQp2aLGceLO61EQHGwoYV3WqZgOi0x+PYpY+Ctr89ZwZYPk7VnyDcehSTe14oYqqw3btXr
-	sS04EhpQ==;
+	bh=uCKTLNnnv5+grQ1br+AyDr+kN++mjLeZ5SI3sNTb5vs=; b=IiTMlZ7fBDoWE7Vvfja8zQIErx
+	bPEI2RRGPeHZ6u6Z2Jd/dPGdmFj1EKrs0OsrXBV+0luw61Ctetp1RMn1vl/0wqlV52KmHDA9xyoXv
+	WbPe3EHD6XXbAS4Zsa8l07g0KqEMAQ4NdsMOaFnpJh8YQeTG7qhzxUt9lTcjqWiQN3EkXlhY+ax2B
+	pfEezw3P1LMIurYd8nBdzLEIhvgkEPDI+z9KQivTq0OCGRiBJoXHlaDt4c7IQp5fS2Gj7gr90dCM5
+	LrM7UfeHgUE/1nadWG/SINXHLBRfc9mxUUeynh5l2XMAAKSfo/2SfIyX1nAcdua2ympUmGNGyoarr
+	0UhuRqEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mb1Mm-003NVc-AT; Thu, 14 Oct 2021 14:05:52 +0000
+	id 1mb1iE-003RZF-Eh; Thu, 14 Oct 2021 14:28:02 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mb1MX-003NRW-U6; Thu, 14 Oct 2021 14:05:39 +0000
+ id 1mb1hy-003RTf-AU; Thu, 14 Oct 2021 14:27:49 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id DA2C51F44CD7
-Subject: Re: [PATCH v11 09/16] soc: mediatek: add mtk-mmsys support for mt8195
- vdosys0
+ (Authenticated sender: kholk11) with ESMTPSA id 62F1F1F44AD7
+Subject: Re: [PATCH v11 15/16] drm/mediatek: add MERGE support for mediatek-drm
 To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
  Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  Chun-Kuang Hu <chunkuang.hu@kernel.org>,
@@ -50,18 +49,18 @@ Cc: Enric Balletbo i Serra <enric.balletbo@collabora.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 References: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
- <20210921155218.10387-10-jason-jh.lin@mediatek.com>
+ <20210921155218.10387-16-jason-jh.lin@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <8b509551-7cfa-f55c-fc0f-db7d0a3886eb@collabora.com>
-Date: Thu, 14 Oct 2021 16:05:32 +0200
+Message-ID: <3e72dd1e-edf2-6d42-40e7-0c1c72749a20@collabora.com>
+Date: Thu, 14 Oct 2021 16:27:40 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210921155218.10387-10-jason-jh.lin@mediatek.com>
+In-Reply-To: <20210921155218.10387-16-jason-jh.lin@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_070538_147938_B09884AE 
-X-CRM114-Status: GOOD (  21.92  )
+X-CRM114-CacheID: sfid-20211014_072746_695971_063938CC 
+X-CRM114-Status: GOOD (  36.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,92 +77,291 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Add mt8195 vdosys0 clock driver name and routing table to
-> the driver data of mtk-mmsys.
+Il 21/09/21 17:52, jason-jh.lin ha scritto:
+> Add MERGE engine file:
+> MERGE module is used to merge two slice-per-line inputs
+> into one side-by-side output.
 > 
 > Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
 > ---
-> This patch is base on [1]
-> [1] soc: mediatek: mmsys: add mt8192 mmsys support
-> - https://patchwork.kernel.org/project/linux-mediatek/list/?series=524857
+> rebase on series [1]
 > 
-> The vdosys1 impelmentation patch [2]
-> [2] soc: mediatek: add mtk-mmsys support for mt8195 vdosys1
-> - https://patchwork.kernel.org/project/linux-mediatek/patch/20210906071539.12953-7-nancy.lin@mediatek.com/
+> [1] drm/mediatek: add support for mediatek SOC MT8192
+> - https://patchwork.kernel.org/project/linux-mediatek/list/?series=529489
 > ---
-
-Hello Jason,
-thanks for the patch! However, there are a few things to improve:
-
-
->   drivers/soc/mediatek/mt8195-mmsys.h    | 114 +++++++++++++++++++++++++
->   drivers/soc/mediatek/mtk-mmsys.c       |  11 +++
->   include/linux/soc/mediatek/mtk-mmsys.h |   9 ++
->   3 files changed, 134 insertions(+)
->   create mode 100644 drivers/soc/mediatek/mt8195-mmsys.h
+>   drivers/gpu/drm/mediatek/Makefile           |   1 +
+>   drivers/gpu/drm/mediatek/mtk_disp_drv.h     |   8 +
+>   drivers/gpu/drm/mediatek/mtk_disp_merge.c   | 239 ++++++++++++++++++++
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c |  16 ++
+>   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |   1 +
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   4 +-
+>   drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+>   7 files changed, 269 insertions(+), 1 deletion(-)
+>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_merge.c
 > 
-> diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
+> diff --git a/drivers/gpu/drm/mediatek/Makefile b/drivers/gpu/drm/mediatek/Makefile
+> index 29098d7c8307..a38e88e82d12 100644
+> --- a/drivers/gpu/drm/mediatek/Makefile
+> +++ b/drivers/gpu/drm/mediatek/Makefile
+> @@ -4,6 +4,7 @@ mediatek-drm-y := mtk_disp_aal.o \
+>   		  mtk_disp_ccorr.o \
+>   		  mtk_disp_color.o \
+>   		  mtk_disp_gamma.o \
+> +		  mtk_disp_merge.o \
+>   		  mtk_disp_ovl.o \
+>   		  mtk_disp_rdma.o \
+>   		  mtk_drm_crtc.o \
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> index 86c3068894b1..a33b13fe2b6e 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> @@ -55,6 +55,14 @@ void mtk_gamma_set_common(void __iomem *regs, struct drm_crtc_state *state);
+>   void mtk_gamma_start(struct device *dev);
+>   void mtk_gamma_stop(struct device *dev);
+>   
+> +int mtk_merge_clk_enable(struct device *dev);
+> +void mtk_merge_clk_disable(struct device *dev);
+> +void mtk_merge_config(struct device *dev, unsigned int width,
+> +		      unsigned int height, unsigned int vrefresh,
+> +		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
+> +void mtk_merge_start(struct device *dev);
+> +void mtk_merge_stop(struct device *dev);
+> +
+>   void mtk_ovl_bgclr_in_on(struct device *dev);
+>   void mtk_ovl_bgclr_in_off(struct device *dev);
+>   void mtk_ovl_bypass_shadow(struct device *dev);
+> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
 > new file mode 100644
-> index 000000000000..0c97a5f016c1
+> index 000000000000..b05e1df79c3d
 > --- /dev/null
-> +++ b/drivers/soc/mediatek/mt8195-mmsys.h
-> @@ -0,0 +1,114 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
+> +++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
+> @@ -0,0 +1,239 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2021 MediaTek Inc.
+> + */
 > +
-> +#ifndef __SOC_MEDIATEK_MT8195_MMSYS_H
-> +#define __SOC_MEDIATEK_MT8195_MMSYS_H
+> +#include <linux/clk.h>
+> +#include <linux/component.h>
+> +#include <linux/of_device.h>
+> +#include <linux/of_irq.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/soc/mediatek/mtk-cmdq.h>
 > +
-> +#define MT8195_VDO0_OVL_MOUT_EN					0xf14
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_RDMA0			BIT(0)
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_WDMA0			BIT(1)
-> +#define MT8195_MOUT_DISP_OVL0_TO_DISP_OVL1			BIT(2)
-> +#define MT8195_MOUT_DISP_OVL1_TO_DISP_RDMA1			BIT(4)
-> +#define MT8195_MOUT_DISP_OVL1_TO_DISP_WDMA1			BIT(5)
-> +#define MT8195_MOUT_DISP_OVL1_TO_DISP_OVL0			BIT(6)
+> +#include "mtk_drm_ddp_comp.h"
+> +#include "mtk_drm_drv.h"
+> +#include "mtk_disp_drv.h"
 > +
-> +#define MT8195_VDO0_SEL_IN					0xf34
-> +#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT		(0 << 0)
+> +#define DISP_REG_MERGE_CTRL		0x000
+> +#define MERGE_EN				1
+> +#define DISP_REG_MERGE_CFG_0		0x010
+> +#define DISP_REG_MERGE_CFG_4		0x020
+> +#define DISP_REG_MERGE_CFG_10		0x038
+> +/* no swap */
+> +#define SWAP_MODE				0
+> +#define FLD_SWAP_MODE				GENMASK(4, 0)
+> +#define DISP_REG_MERGE_CFG_12		0x040
+> +#define CFG_10_10_1PI_2PO_BUF_MODE		6
+> +#define CFG_10_10_2PI_2PO_BUF_MODE		8
+> +#define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
+> +#define DISP_REG_MERGE_CFG_24		0x070
+> +#define DISP_REG_MERGE_CFG_25		0x074
+> +#define DISP_REG_MERGE_CFG_36		0x0a0
+> +#define ULTRA_EN				BIT(0)
+> +#define PREULTRA_EN				BIT(4)
+> +#define DISP_REG_MERGE_CFG_37		0x0a4
+> +/* 0: Off, 1: SRAM0, 2: SRAM1, 3: SRAM0 + SRAM1 */
+> +#define BUFFER_MODE				3
+> +#define FLD_BUFFER_MODE				GENMASK(1, 0)
+> +/*
+> + * For the ultra and preultra settings, 6us ~ 9us is experience value
+> + * and the maximum frequency of mmsys clock is 594MHz.
+> + */
+> +#define DISP_REG_MERGE_CFG_40		0x0b0
+> +/* 6 us, 594M pixel/sec */
+> +#define ULTRA_TH_LOW				(6 * 594)
+> +/* 8 us, 594M pixel/sec */
+> +#define ULTRA_TH_HIGH				(8 * 594)
+> +#define FLD_ULTRA_TH_LOW			GENMASK(15, 0)
+> +#define FLD_ULTRA_TH_HIGH			GENMASK(31, 16)
+> +#define DISP_REG_MERGE_CFG_41		0x0b4
+> +/* 8 us, 594M pixel/sec */
+> +#define PREULTRA_TH_LOW				(8 * 594)
+> +/* 9 us, 594M pixel/sec */
+> +#define PREULTRA_TH_HIGH			(9 * 594)
+> +#define FLD_PREULTRA_TH_LOW			GENMASK(15, 0)
+> +#define FLD_PREULTRA_TH_HIGH			GENMASK(31, 16)
+> +
+> +struct mtk_disp_merge {
+> +	void __iomem *regs;
+> +	struct clk *clk;
+> +	struct clk *async_clk;
+> +	struct cmdq_client_reg		cmdq_reg;
+> +	bool				fifo_en;
+> +};
+> +
+> +void mtk_merge_start(struct device *dev)
+> +{
+> +	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+> +
+> +	writel(MERGE_EN, priv->regs + DISP_REG_MERGE_CTRL);
+> +}
+> +
+> +void mtk_merge_stop(struct device *dev)
+> +{
+> +	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+> +
+> +	writel(0x0, priv->regs + DISP_REG_MERGE_CTRL);
+> +}
+> +
+> +static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
+> +				   struct cmdq_pkt *cmdq_pkt)
+> +{
+> +	mtk_ddp_write(cmdq_pkt, ULTRA_EN | PREULTRA_EN,
+> +		      &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_36);
+> +
+> +	mtk_ddp_write_mask(cmdq_pkt, BUFFER_MODE,
+> +			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_37,
+> +			   FLD_BUFFER_MODE);
+> +
+> +	mtk_ddp_write_mask(cmdq_pkt, ULTRA_TH_LOW | ULTRA_TH_HIGH << 16,
+> +			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_40,
+> +			   FLD_ULTRA_TH_LOW | FLD_ULTRA_TH_HIGH);
+> +
+> +	mtk_ddp_write_mask(cmdq_pkt, PREULTRA_TH_LOW | PREULTRA_TH_HIGH << 16,
+> +			   &priv->cmdq_reg, priv->regs, DISP_REG_MERGE_CFG_41,
+> +			   FLD_PREULTRA_TH_LOW | FLD_PREULTRA_TH_HIGH);
+> +}
+> +
+> +void mtk_merge_config(struct device *dev, unsigned int w,
+> +		      unsigned int h, unsigned int vrefresh,
+> +		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
+> +{
+> +	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+> +	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
+> +
+> +	if (!h || !w) {
+> +		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
+> +		return;
+> +	}
+> +
+> +	if (priv->fifo_en) {
+> +		mtk_merge_fifo_setting(priv, cmdq_pkt);
+> +		mode = CFG_10_10_2PI_2PO_BUF_MODE;
+> +	}
+> +
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+> +		      DISP_REG_MERGE_CFG_0);
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+> +		      DISP_REG_MERGE_CFG_4);
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+> +		      DISP_REG_MERGE_CFG_24);
+> +	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
+> +		      DISP_REG_MERGE_CFG_25);
+> +	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
+> +			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
+> +	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
+> +			   DISP_REG_MERGE_CFG_12, FLD_CFG_MERGE_MODE);
+> +}
+> +
+> +int mtk_merge_clk_enable(struct device *dev)
+> +{
+> +	int ret = 0;
+> +	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+> +
+> +	ret = clk_prepare_enable(priv->clk);
+> +	if (ret)
+> +		pr_err("merge clk prepare enable failed\n");
 
-Bitshifting 0 by 0 bits == 0, so this is simply 0.
+If you failed to enable this clock, I take it as the hardware won't work or
+won't work as expected, hence you should return a failure before trying to
+call prepare_enable for async_clk.
 
-> +#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1		(1 << 0)
+> +	ret = clk_prepare_enable(priv->async_clk);
+> +	if (ret)
+> +		pr_err("async clk prepare enable failed\n");
+> +
 
-I would write 0x1 here
+You should also return a failure here but, before that, you should clean up
+the state by calling clk_disable_unprepare(priv->clk), or you will leave it
+enabled, eventually getting a hardware fault later on (which may or may not
+result in a board reboot), or other sorts of unexpected states.
 
-> +#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0		(2 << 0)
+At least, you will get issues with the refcount for "clk" and/or "async_clk".
 
-....and 0x2 here: bitshifting of 0 bits makes little sense.
+Please fix that.
 
-> +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0		(0 << 4)
+Also, please use dev_err or, more appropriately, DRM_ERROR instead or pr_err.
 
-Bitshifting 0 by 4 bits is still 0, so this is again 0.
-This is repeated too many times, so I will not list it for all of the occurrences.
+> +	return ret;
+> +}
+> +
+> +void mtk_merge_clk_disable(struct device *dev)
+> +{
+> +	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
+> +
+> +	clk_disable_unprepare(priv->async_clk); > +	clk_disable_unprepare(priv->clk);
+> +}
+> +
+> +static int mtk_disp_merge_bind(struct device *dev, struct device *master,
+> +			       void *data)
+> +{
+> +	return 0;
+> +}
+> +
+> +static void mtk_disp_merge_unbind(struct device *dev, struct device *master,
+> +				  void *data)
+> +{
+> +}
+> +
+> +static const struct component_ops mtk_disp_merge_component_ops = {
+> +	.bind	= mtk_disp_merge_bind,
+> +	.unbind = mtk_disp_merge_unbind,
+> +};
+> +
+> +static int mtk_disp_merge_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct resource *res;
+> +	struct mtk_disp_merge *priv;
+> +	int ret;
+> +
+> +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> +	if (!priv)
+> +		return -ENOMEM;
+> +
+> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+> +	priv->regs = devm_ioremap_resource(dev, res);
+> +	if (IS_ERR(priv->regs)) {
+> +		dev_err(dev, "failed to ioremap merge\n");
+> +		return PTR_ERR(priv->regs);
+> +	}
+> +
+> +	priv->clk = devm_clk_get(dev, NULL);
+> +	if (IS_ERR(priv->clk)) {
+> +		dev_err(dev, "failed to get merge clk\n");
+> +		return PTR_ERR(priv->clk);
+> +	}
+> +
+> +	priv->async_clk = of_clk_get(dev->of_node, 1);
+> +	if (IS_ERR(priv->async_clk)) {
+> +		ret = PTR_ERR(priv->async_clk);
+> +		dev_dbg(dev, "No merge async clock: %d\n", ret);
+> +		priv->async_clk = NULL;
+> +	}
+> +
 
-> +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE		(1 << 4)
+You are using devm_clk_get for the first clock, of_clk_get for the second one:
+what's the reason for that?
 
-This is BIT(4).
+Also, async_clk seems to be optional... and there's the right API for you!
+If you use devm_clk_get_optional(), you won't have to manually assign NULL
+to priv->async_clk, as that's API handled... and you'll get a failure if
+the return value is an error that's not -ENOENT (so, it'll fail if the clock
+was declared in DT, but there was an error acquiring it).
 
-> +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1		(0 << 5) > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE		(1 << 5)
+Please use devm_clk_get_optional() here.
 
-...and this is BIT(5)
-
-> +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE		(0 << 8)
-> +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT		(1 << 8)
-
-BIT(8)
-
-> +#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT		(0 << 9)
-> +#define MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT		(0 << 12)
-> +#define MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE			(1 << 12)
-
-BIT(12)
-
-> +#define MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0		(2 << 12)
-
-BIT(13)
-
-... and please, use the BIT(nr) macro for all these bit definitions, it's way more
-readable like that.
 
 Regards,
 - Angelo
