@@ -2,68 +2,75 @@ Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 901A0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 08:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 283ABC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 08:43:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4E6C9604DA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 08:08:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4E6C9604DA
+	by mail.kernel.org (Postfix) with ESMTPS id D831E610EA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 08:43:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D831E610EA
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aEz8CG3P6nHngCzsbVdyK7ASD6WpTFm0gDicWfYJ2go=; b=Dkzus5FdWzcI1x
-	p/n1/xdznCqKQ0U1uDe9Uo/9b+3WJVPgT6riJ5tgwSB+M3TH8zAkZ26+4+6tArrPR9ViLp1WqS8p+
-	GXYH0yW70abC7Hk5Y52UCgsBv+xORu4grJv9RSz0lm4mSKOLXeTmHZ64GenFMcB4o44cPiLN1Afik
-	nu+XjJCGx7DA/SXmGveYnCDEC4oZcPzk9+fIjKgi377IBLe4uO3j5XDWr+OiCBPDFpctNgHx3whxP
-	yucLmZq1up1Y3rp9wzc6WNTdJAQe6I7Zgw44366M12UurjfV51A+XPR1MLpVa9DdA+BYQBII/EOxF
-	dEthWRIFMUEPRCgoLKlQ==;
+	List-Owner; bh=IODEZrlr4b9lcz3PBAuIfmlHc4gwVQqtiDP+UCt12OM=; b=HqvyqDgiEXAkwV
+	nLQyFFVJIVLoQOinpYsSawBSpPLgmXJzXGmNq1+UgRRXCUAM4KOrfCN1QLYUjk6Eq9jVxarwIX1pG
+	Gb5HXhRZd/Km9GSAK8IkkHMNLpXSzOnhray3hi6PHFYhcJCWov6RAu6nMTAwB550XI+avGKm/6yqo
+	XEiQ7VGDWZ54ZjJiBm3ZY154RjuDUE/gmdHfK0PAvyP1GbRQnoDA/QC20RIhHVGD4onpfajFLWHPs
+	vDR6I7dh7F0wMcDTOpqn2l0F4X74OJ2qaMWdxjH4CAVtBUJcM3BS7DgyBwfkbWAJXB4GPZBYNVTwm
+	oEr9+nH5H0+Xi6lzDaVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mavmd-0026Cn-VE; Thu, 14 Oct 2021 08:08:11 +0000
+	id 1mawL3-002Eb7-GF; Thu, 14 Oct 2021 08:43:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mavlA-0025Z2-N3; Thu, 14 Oct 2021 08:06:46 +0000
-X-UUID: 09b2820f4bf44735b159ab6610c530f4-20211014
-X-UUID: 09b2820f4bf44735b159ab6610c530f4-20211014
+ id 1mawKo-002EYq-2a; Thu, 14 Oct 2021 08:43:33 +0000
+X-UUID: 3a409e95b144490da56e45f1a7ee93aa-20211014
+X-UUID: 3a409e95b144490da56e45f1a7ee93aa-20211014
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
+ (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1941626577; Thu, 14 Oct 2021 01:06:35 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 934786405; Thu, 14 Oct 2021 01:43:26 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 00:58:48 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 15:58:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 14 Oct 2021 15:58:46 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@kernel.org>, <linux-gpio@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
- Shih" <sam.shih@mediatek.com>
-Subject: [PATCH v7 2/4] pinctrl: mediatek: add support for MT7986 SoC
-Date: Thu, 14 Oct 2021 15:58:34 +0800
-Message-ID: <20211014075836.17681-3-sam.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211014075836.17681-1-sam.shih@mediatek.com>
-References: <20211014075836.17681-1-sam.shih@mediatek.com>
+ 15.0.1497.2; Thu, 14 Oct 2021 01:43:25 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 14 Oct 2021 16:43:17 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 14 Oct 2021 16:43:17 +0800
+Message-ID: <3a07501641da72ea9b3cf528050c9d7516e09497.camel@mediatek.com>
+Subject: Re: [PATCH v7 0/5] media: mediatek: support mdp3 on mt8183 platform
+From: moudy ho <moudy.ho@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Jernej Skrabec <jernej.skrabec@siol.net>
+CC: Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
+ <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Geert
+ Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <tfiga@chromium.org>,
+ <drinkcat@chromium.org>, <acourbot@chromium.org>, <pihsun@chromium.org>,
+ <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>, <ben.lok@mediatek.com>,
+ <randy.wu@mediatek.com>, <srv_heupstream@mediatek.com>, <hsinyi@google.com>
+Date: Thu, 14 Oct 2021 16:43:17 +0800
+In-Reply-To: <0a50c059-bb13-0823-778c-b631ed07d76f@xs4all.nl>
+References: <20210824100027.25989-1-moudy.ho@mediatek.com>
+ <0a50c059-bb13-0823-778c-b631ed07d76f@xs4all.nl>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_010640_837196_0AB33BE8 
-X-CRM114-Status: GOOD (  21.78  )
+X-CRM114-CacheID: sfid-20211014_014330_144214_A3B77B2A 
+X-CRM114-Status: GOOD (  28.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,1003 +82,328 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This commit includes pinctrl driver for Mediatek MT7986
-
-The difference of pinctrl between mt7986a and mt7986b
-is that pin-41 to pin-65 do not exist on mt7986b
-
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-
----
-v7: updated register base binding and separate pinctrl part into a
-    single patch series
-v4: fixed warning in mt7986 pinctrl driver
-v3: applied the comment suggested by reviewers:
-    - merge the consecutive entries into one to reduce the table size
-    - set .name to NULL to indicate the pin is not ball out
-v2: applied the comment suggested by reviewers:
-    - for the pins not ballout, we can fill .name in struct mtk_pin_desc
-      as NULL and return -ENOTSUPP in gpio/pinconf ops.
----
- drivers/pinctrl/mediatek/Kconfig          |   7 +
- drivers/pinctrl/mediatek/Makefile         |   1 +
- drivers/pinctrl/mediatek/pinctrl-mt7986.c | 927 ++++++++++++++++++++++
- 3 files changed, 935 insertions(+)
- create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7986.c
-
-diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-index 7040a7a7bd5d..66db4ac5d169 100644
---- a/drivers/pinctrl/mediatek/Kconfig
-+++ b/drivers/pinctrl/mediatek/Kconfig
-@@ -119,6 +119,13 @@ config PINCTRL_MT7622
- 	default ARM64 && ARCH_MEDIATEK
- 	select PINCTRL_MTK_MOORE
- 
-+config PINCTRL_MT7986
-+	bool "Mediatek MT7986 pin control"
-+	depends on OF
-+	depends on ARM64 || COMPILE_TEST
-+	default ARM64 && ARCH_MEDIATEK
-+	select PINCTRL_MTK_MOORE
-+
- config PINCTRL_MT8167
- 	bool "Mediatek MT8167 pin control"
- 	depends on OF
-diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
-index 1bb7f9c65bc2..1e3931d924e7 100644
---- a/drivers/pinctrl/mediatek/Makefile
-+++ b/drivers/pinctrl/mediatek/Makefile
-@@ -17,6 +17,7 @@ obj-$(CONFIG_PINCTRL_MT6797)	+= pinctrl-mt6797.o
- obj-$(CONFIG_PINCTRL_MT7622)	+= pinctrl-mt7622.o
- obj-$(CONFIG_PINCTRL_MT7623)	+= pinctrl-mt7623.o
- obj-$(CONFIG_PINCTRL_MT7629)	+= pinctrl-mt7629.o
-+obj-$(CONFIG_PINCTRL_MT7986)	+= pinctrl-mt7986.o
- obj-$(CONFIG_PINCTRL_MT8167)	+= pinctrl-mt8167.o
- obj-$(CONFIG_PINCTRL_MT8173)	+= pinctrl-mt8173.o
- obj-$(CONFIG_PINCTRL_MT8183)	+= pinctrl-mt8183.o
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-new file mode 100644
-index 000000000000..f26869f1a367
---- /dev/null
-+++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-@@ -0,0 +1,927 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * The MT7986 driver based on Linux generic pinctrl binding.
-+ *
-+ * Copyright (C) 2021 MediaTek Inc.
-+ * Author: Sam Shih <sam.shih@mediatek.com>
-+ */
-+
-+#include "pinctrl-moore.h"
-+
-+#define MT7986_PIN(_number, _name) MTK_PIN(_number, _name, 0, _number, DRV_GRP4)
-+#define MT7986_NOT_BALLOUT_PIN(_number) { .number = _number, .name = NULL }
-+
-+#define PIN_FIELD_BASE(_s_pin, _e_pin, _i_base, _s_addr, _x_addrs, _s_bit,	\
-+			_x_bits)	\
-+		PIN_FIELD_CALC(_s_pin, _e_pin, _i_base, _s_addr, _x_addrs, _s_bit,	\
-+			_x_bits, 32, 0)
-+
-+/**
-+ * enum - Locking variants of the iocfg bases
-+ *
-+ * MT7986 have multiple bases to program pin configuration listed as the below:
-+ * iocfg_rt:0x11c30000, iocfg_rb:0x11c40000, iocfg_lt:0x11e20000,
-+ * iocfg_lb:0x11e30000, iocfg_tr:0x11f00000, iocfg_tl:0x11f10000,
-+ * _i_based could be used to indicate what base the pin should be mapped into.
-+ *
-+ * Each iocfg register base control different group of pads on the SoC
-+ *
-+ *
-+ *  chip carrier
-+ *
-+ *      A  B  C  D  E  F  G  H
-+ *    +------------------------+
-+ *  8 | o  o  o  o  o  o  o  o |
-+ *  7 | o  o  o  o  o  o  o  o |
-+ *  6 | o  o  o  o  o  o  o  o |
-+ *  5 | o  o  o  o  o  o  o  o |
-+ *  4 | o  o  o  o  o  o  o  o |
-+ *  3 | o  o  o  o  o  o  o  o |
-+ *  2 | o  o  o  o  o  o  o  o |
-+ *  1 | o  o  o  o  o  o  o  o |
-+ *    +------------------------+
-+ *
-+ *  inside Chip carrier
-+ *
-+ *      A  B  C  D  E  F  G  H
-+ *    +------------------------+
-+ *  8 |                        |
-+ *  7 |        TL  TR          |
-+ *  6 |      +---------+       |
-+ *  5 |   LT |         | RT    |
-+ *  4 |      |         |       |
-+ *  3 |   LB |         | RB    |
-+ *  2 |      +---------+       |
-+ *  1 |                        |
-+ *    +------------------------+
-+ *
-+ */
-+
-+enum {
-+	GPIO_BASE,
-+	IOCFG_RT_BASE,
-+	IOCFG_RB_BASE,
-+	IOCFG_LT_BASE,
-+	IOCFG_LB_BASE,
-+	IOCFG_TR_BASE,
-+	IOCFG_TL_BASE,
-+};
-+
-+static const char *const mt7986_pinctrl_register_base_names[] = {
-+	"gpio", "iocfg_rt", "iocfg_rb", "iocfg_lt", "iocfg_lb", "iocfg_tr",
-+	"iocfg_tl",
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_mode_range[] = {
-+	PIN_FIELD(0, 100, 0x300, 0x10, 0, 4),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_dir_range[] = {
-+	PIN_FIELD(0, 100, 0x0, 0x10, 0, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_di_range[] = {
-+	PIN_FIELD(0, 100, 0x200, 0x10, 0, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_do_range[] = {
-+	PIN_FIELD(0, 100, 0x100, 0x10, 0, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_ies_range[] = {
-+	PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x40, 0x10, 17, 1),
-+	PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x20, 0x10, 10, 1),
-+	PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x20, 0x10, 0, 1),
-+	PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x40, 0x10, 0, 1),
-+	PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x20, 0x10, 0, 1),
-+	PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x40, 0x10, 8, 1),
-+	PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x40, 0x10, 2, 1),
-+	PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x30, 0x10, 12, 1),
-+	PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x30, 0x10, 18, 1),
-+	PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x30, 0x10, 17, 1),
-+	PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x30, 0x10, 15, 1),
-+	PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x30, 0x10, 19, 1),
-+	PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x30, 0x10, 23, 1),
-+	PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x30, 0x10, 22, 1),
-+	PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x30, 0x10, 21, 1),
-+	PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x20, 0x10, 4, 1),
-+	PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x20, 0x10, 8, 1),
-+	PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x20, 0x10, 7, 1),
-+	PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x20, 0x10, 5, 1),
-+	PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x20, 0x10, 9, 1),
-+	PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x40, 0x10, 18, 1),
-+	PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x40, 0x10, 12, 1),
-+	PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x40, 0x10, 22, 1),
-+	PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x40, 0x10, 20, 1),
-+	PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x40, 0x10, 26, 1),
-+	PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x40, 0x10, 24, 1),
-+	PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x30, 0x10, 2, 1),
-+	PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x30, 0x10, 1, 1),
-+	PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x30, 0x10, 0, 1),
-+	PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x30, 0x10, 10, 1),
-+	PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x40, 0x10, 15, 1),
-+	PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x40, 0x10, 14, 1),
-+	PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x40, 0x10, 13, 1),
-+	PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x40, 0x10, 16, 1),
-+	PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x20, 0x10, 2, 1),
-+	PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x30, 0x10, 1, 1),
-+	PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x30, 0x10, 0, 1),
-+	PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x30, 0x10, 16, 1),
-+	PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x30, 0x10, 14, 1),
-+	PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x30, 0x10, 4, 1),
-+	PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x30, 0x10, 6, 1),
-+	PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x30, 0x10, 2, 1),
-+	PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x30, 0x10, 9, 1),
-+	PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x30, 0x10, 5, 1),
-+	PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x30, 0x10, 1, 1),
-+	PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x30, 0x10, 0, 1),
-+	PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x30, 0x10, 14, 1),
-+	PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x30, 0x10, 12, 1),
-+	PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x30, 0x10, 4, 1),
-+	PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x30, 0x10, 2, 1),
-+	PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x30, 0x10, 8, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_smt_range[] = {
-+	PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0xf0, 0x10, 17, 1),
-+	PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x90, 0x10, 10, 1),
-+	PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x90, 0x10, 0, 1),
-+	PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0xf0, 0x10, 0, 1),
-+	PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x90, 0x10, 0, 1),
-+	PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0xf0, 0x10, 8, 1),
-+	PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0xf0, 0x10, 2, 1),
-+	PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0xc0, 0x10, 12, 1),
-+	PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0xc0, 0x10, 18, 1),
-+	PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0xc0, 0x10, 17, 1),
-+	PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0xc0, 0x10, 15, 1),
-+	PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0xc0, 0x10, 19, 1),
-+	PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0xc0, 0x10, 23, 1),
-+	PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0xc0, 0x10, 22, 1),
-+	PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0xc0, 0x10, 21, 1),
-+	PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x90, 0x10, 4, 1),
-+	PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x90, 0x10, 8, 1),
-+	PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x90, 0x10, 7, 1),
-+	PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x90, 0x10, 5, 1),
-+	PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x90, 0x10, 9, 1),
-+	PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0xf0, 0x10, 18, 1),
-+	PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0xf0, 0x10, 12, 1),
-+	PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0xf0, 0x10, 22, 1),
-+	PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0xf0, 0x10, 20, 1),
-+	PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0xf0, 0x10, 26, 1),
-+	PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0xf0, 0x10, 24, 1),
-+	PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0xc0, 0x10, 2, 1),
-+	PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0xc0, 0x10, 1, 1),
-+	PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0xc0, 0x10, 0, 1),
-+	PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0xc0, 0x10, 10, 1),
-+	PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0xf0, 0x10, 15, 1),
-+	PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0xf0, 0x10, 14, 1),
-+	PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0xf0, 0x10, 13, 1),
-+	PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0xf0, 0x10, 16, 1),
-+	PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x90, 0x10, 2, 1),
-+	PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x80, 0x10, 1, 1),
-+	PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x80, 0x10, 0, 1),
-+	PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x80, 0x10, 16, 1),
-+	PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x80, 0x10, 14, 1),
-+	PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x80, 0x10, 4, 1),
-+	PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x80, 0x10, 6, 1),
-+	PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x80, 0x10, 2, 1),
-+	PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x80, 0x10, 9, 1),
-+	PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x80, 0x10, 5, 1),
-+	PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x70, 0x10, 1, 1),
-+	PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x70, 0x10, 0, 1),
-+	PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x70, 0x10, 14, 1),
-+	PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x70, 0x10, 12, 1),
-+	PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x70, 0x10, 4, 1),
-+	PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x70, 0x10, 2, 1),
-+	PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x70, 0x10, 8, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_pu_range[] = {
-+	PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x50, 0x10, 1, 1),
-+	PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x50, 0x10, 0, 1),
-+	PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x50, 0x10, 16, 1),
-+	PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x50, 0x10, 14, 1),
-+	PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x50, 0x10, 4, 1),
-+	PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x50, 0x10, 6, 1),
-+	PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x50, 0x10, 2, 1),
-+	PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x50, 0x10, 9, 1),
-+	PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x50, 0x10, 5, 1),
-+	PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x50, 0x10, 1, 1),
-+	PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x50, 0x10, 0, 1),
-+	PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x50, 0x10, 14, 1),
-+	PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x50, 0x10, 12, 1),
-+	PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x50, 0x10, 4, 1),
-+	PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x50, 0x10, 2, 1),
-+	PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x50, 0x10, 8, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_pd_range[] = {
-+	PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x40, 0x10, 1, 1),
-+	PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x40, 0x10, 0, 1),
-+	PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x40, 0x10, 16, 1),
-+	PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x40, 0x10, 14, 1),
-+	PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x40, 0x10, 4, 1),
-+	PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x40, 0x10, 6, 1),
-+	PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x40, 0x10, 2, 1),
-+	PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x40, 0x10, 9, 1),
-+	PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x40, 0x10, 5, 1),
-+	PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x40, 0x10, 1, 1),
-+	PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x40, 0x10, 0, 1),
-+	PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x40, 0x10, 14, 1),
-+	PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x40, 0x10, 12, 1),
-+	PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x40, 0x10, 4, 1),
-+	PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x40, 0x10, 2, 1),
-+	PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x40, 0x10, 8, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_drv_range[] = {
-+	PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x10, 0x10, 21, 3),
-+	PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x10, 0x10, 0, 3),
-+	PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x00, 0x10, 0, 1),
-+	PIN_FIELD_BASE(5, 5, IOCFG_RB_BASE, 0x00, 0x10, 0, 3),
-+	PIN_FIELD_BASE(6, 6, IOCFG_RB_BASE, 0x00, 0x10, 21, 3),
-+	PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x00, 0x10, 0, 3),
-+	PIN_FIELD_BASE(11, 12, IOCFG_RB_BASE, 0x00, 0x10, 24, 3),
-+	PIN_FIELD_BASE(13, 14, IOCFG_RB_BASE, 0x10, 0x10, 0, 3),
-+	PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x00, 0x10, 3, 3),
-+	PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x10, 0x10, 6, 3),
-+	PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x10, 0x10, 24, 3),
-+	PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x10, 0x10, 21, 3),
-+	PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x10, 0x10, 15, 3),
-+	PIN_FIELD_BASE(28, 28, IOCFG_RT_BASE, 0x10, 0x10, 27, 3),
-+	PIN_FIELD_BASE(29, 29, IOCFG_RT_BASE, 0x20, 0x10, 0, 3),
-+	PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x20, 0x10, 9, 3),
-+	PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x20, 0x10, 6, 3),
-+	PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x20, 0x10, 3, 3),
-+	PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x00, 0x10, 12, 3),
-+	PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x00, 0x10, 24, 3),
-+	PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x00, 0x10, 21, 3),
-+	PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x00, 0x10, 15, 3),
-+	PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x00, 0x10, 27, 3),
-+	PIN_FIELD_BASE(39, 39, IOCFG_RB_BASE, 0x10, 0x10, 27, 3),
-+	PIN_FIELD_BASE(40, 40, IOCFG_RB_BASE, 0x20, 0x10, 0, 3),
-+	PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x10, 0x10, 6, 3),
-+	PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x20, 0x10, 9, 3),
-+	PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x20, 0x10, 3, 3),
-+	PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x20, 0x10, 21, 3),
-+	PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x20, 0x10, 15, 3),
-+	PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x00, 0x10, 6, 3),
-+	PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x00, 0x10, 3, 3),
-+	PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x00, 0x10, 0, 3),
-+	PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x10, 0x10, 0, 3),
-+	PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x10, 0x10, 15, 3),
-+	PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x10, 0x10, 12, 3),
-+	PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x10, 0x10, 9, 3),
-+	PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x10, 0x10, 18, 3),
-+	PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x00, 0x10, 2, 3),
-+	PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x00, 0x10, 3, 3),
-+	PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x00, 0x10, 0, 3),
-+	PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x10, 0x10, 18, 3),
-+	PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x10, 0x10, 12, 3),
-+	PIN_FIELD_BASE(74, 77, IOCFG_TR_BASE, 0x00, 0x10, 15, 3),
-+	PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x00, 0x10, 6, 3),
-+	PIN_FIELD_BASE(80, 80, IOCFG_TR_BASE, 0x00, 0x10, 27, 3),
-+	PIN_FIELD_BASE(81, 84, IOCFG_TR_BASE, 0x10, 0x10, 0, 3),
-+	PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x00, 0x10, 12, 3),
-+	PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x00, 0x10, 3, 3),
-+	PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x00, 0x10, 0, 3),
-+	PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x10, 0x10, 12, 3),
-+	PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x10, 0x10, 6, 3),
-+	PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x00, 0x10, 12, 3),
-+	PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x00, 0x10, 6, 3),
-+	PIN_FIELD_BASE(97, 98, IOCFG_TL_BASE, 0x00, 0x10, 24, 3),
-+	PIN_FIELD_BASE(99, 100, IOCFG_TL_BASE, 0x10, 0x10, 2, 3),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_pupd_range[] = {
-+	PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x60, 0x10, 17, 1),
-+	PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x30, 0x10, 10, 1),
-+	PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x40, 0x10, 0, 1),
-+	PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x60, 0x10, 0, 1),
-+	PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x30, 0x10, 0, 1),
-+	PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x60, 0x10, 8, 1),
-+	PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x60, 0x10, 2, 1),
-+	PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x40, 0x10, 12, 1),
-+	PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x40, 0x10, 18, 1),
-+	PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x40, 0x10, 17, 1),
-+	PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x40, 0x10, 15, 1),
-+	PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x40, 0x10, 19, 1),
-+	PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x40, 0x10, 23, 1),
-+	PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x40, 0x10, 22, 1),
-+	PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x40, 0x10, 21, 1),
-+	PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x30, 0x10, 4, 1),
-+	PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x30, 0x10, 8, 1),
-+	PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x30, 0x10, 7, 1),
-+	PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x30, 0x10, 5, 1),
-+	PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x30, 0x10, 9, 1),
-+	PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x60, 0x10, 18, 1),
-+	PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x60, 0x10, 12, 1),
-+	PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x60, 0x10, 22, 1),
-+	PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x60, 0x10, 20, 1),
-+	PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x60, 0x10, 26, 1),
-+	PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x60, 0x10, 24, 1),
-+	PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x40, 0x10, 2, 1),
-+	PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x40, 0x10, 1, 1),
-+	PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x40, 0x10, 0, 1),
-+	PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x40, 0x10, 10, 1),
-+	PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x60, 0x10, 15, 1),
-+	PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x60, 0x10, 14, 1),
-+	PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x60, 0x10, 13, 1),
-+	PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x60, 0x10, 16, 1),
-+	PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x40, 0x10, 2, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_r0_range[] = {
-+	PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x70, 0x10, 17, 1),
-+	PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x40, 0x10, 10, 1),
-+	PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x50, 0x10, 0, 1),
-+	PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x70, 0x10, 0, 1),
-+	PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x40, 0x10, 0, 1),
-+	PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x70, 0x10, 8, 1),
-+	PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x70, 0x10, 2, 1),
-+	PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x50, 0x10, 12, 1),
-+	PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x50, 0x10, 18, 1),
-+	PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x50, 0x10, 17, 1),
-+	PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x50, 0x10, 15, 1),
-+	PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x50, 0x10, 19, 1),
-+	PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x50, 0x10, 23, 1),
-+	PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x50, 0x10, 22, 1),
-+	PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x50, 0x10, 21, 1),
-+	PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x40, 0x10, 4, 1),
-+	PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x40, 0x10, 8, 1),
-+	PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x40, 0x10, 7, 1),
-+	PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x40, 0x10, 5, 1),
-+	PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x40, 0x10, 9, 1),
-+	PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x70, 0x10, 18, 1),
-+	PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x70, 0x10, 12, 1),
-+	PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x70, 0x10, 22, 1),
-+	PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x70, 0x10, 20, 1),
-+	PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x70, 0x10, 26, 1),
-+	PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x70, 0x10, 24, 1),
-+	PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x50, 0x10, 2, 1),
-+	PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x50, 0x10, 1, 1),
-+	PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x50, 0x10, 0, 1),
-+	PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x50, 0x10, 10, 1),
-+	PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x70, 0x10, 15, 1),
-+	PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x70, 0x10, 14, 1),
-+	PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x70, 0x10, 13, 1),
-+	PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x70, 0x10, 16, 1),
-+	PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x50, 0x10, 2, 1),
-+};
-+
-+static const struct mtk_pin_field_calc mt7986_pin_r1_range[] = {
-+	PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x80, 0x10, 17, 1),
-+	PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x50, 0x10, 10, 1),
-+	PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x60, 0x10, 0, 1),
-+	PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x80, 0x10, 0, 1),
-+	PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x50, 0x10, 0, 1),
-+	PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x80, 0x10, 8, 1),
-+	PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x80, 0x10, 2, 1),
-+	PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x60, 0x10, 12, 1),
-+	PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x60, 0x10, 18, 1),
-+	PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x60, 0x10, 17, 1),
-+	PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x60, 0x10, 15, 1),
-+	PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x60, 0x10, 19, 1),
-+	PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x60, 0x10, 23, 1),
-+	PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x60, 0x10, 22, 1),
-+	PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x60, 0x10, 21, 1),
-+	PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x50, 0x10, 4, 1),
-+	PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x50, 0x10, 8, 1),
-+	PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x50, 0x10, 7, 1),
-+	PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x50, 0x10, 5, 1),
-+	PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x50, 0x10, 9, 1),
-+	PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x80, 0x10, 18, 1),
-+	PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x80, 0x10, 12, 1),
-+	PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x80, 0x10, 22, 1),
-+	PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x80, 0x10, 20, 1),
-+	PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x80, 0x10, 26, 1),
-+	PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x80, 0x10, 24, 1),
-+	PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x60, 0x10, 2, 1),
-+	PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x60, 0x10, 1, 1),
-+	PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x60, 0x10, 0, 1),
-+	PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x60, 0x10, 10, 1),
-+	PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x80, 0x10, 15, 1),
-+	PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x80, 0x10, 14, 1),
-+	PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x80, 0x10, 13, 1),
-+	PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x80, 0x10, 16, 1),
-+	PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x60, 0x10, 2, 1),
-+};
-+
-+static const struct mtk_pin_reg_calc mt7986_reg_cals[] = {
-+	[PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt7986_pin_mode_range),
-+	[PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt7986_pin_dir_range),
-+	[PINCTRL_PIN_REG_DI] = MTK_RANGE(mt7986_pin_di_range),
-+	[PINCTRL_PIN_REG_DO] = MTK_RANGE(mt7986_pin_do_range),
-+	[PINCTRL_PIN_REG_SMT] = MTK_RANGE(mt7986_pin_smt_range),
-+	[PINCTRL_PIN_REG_IES] = MTK_RANGE(mt7986_pin_ies_range),
-+	[PINCTRL_PIN_REG_DRV] = MTK_RANGE(mt7986_pin_drv_range),
-+	[PINCTRL_PIN_REG_PU] = MTK_RANGE(mt7986_pin_pu_range),
-+	[PINCTRL_PIN_REG_PD] = MTK_RANGE(mt7986_pin_pd_range),
-+	[PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt7986_pin_pupd_range),
-+	[PINCTRL_PIN_REG_R0] = MTK_RANGE(mt7986_pin_r0_range),
-+	[PINCTRL_PIN_REG_R1] = MTK_RANGE(mt7986_pin_r1_range),
-+};
-+
-+static const struct mtk_pin_desc mt7986a_pins[] = {
-+	MT7986_PIN(0, "SYS_WATCHDOG"),
-+	MT7986_PIN(1, "WF2G_LED"),
-+	MT7986_PIN(2, "WF5G_LED"),
-+	MT7986_PIN(3, "I2C_SCL"),
-+	MT7986_PIN(4, "I2C_SDA"),
-+	MT7986_PIN(5, "GPIO_0"),
-+	MT7986_PIN(6, "GPIO_1"),
-+	MT7986_PIN(7, "GPIO_2"),
-+	MT7986_PIN(8, "GPIO_3"),
-+	MT7986_PIN(9, "GPIO_4"),
-+	MT7986_PIN(10, "GPIO_5"),
-+	MT7986_PIN(11, "GPIO_6"),
-+	MT7986_PIN(12, "GPIO_7"),
-+	MT7986_PIN(13, "GPIO_8"),
-+	MT7986_PIN(14, "GPIO_9"),
-+	MT7986_PIN(15, "GPIO_10"),
-+	MT7986_PIN(16, "GPIO_11"),
-+	MT7986_PIN(17, "GPIO_12"),
-+	MT7986_PIN(18, "GPIO_13"),
-+	MT7986_PIN(19, "GPIO_14"),
-+	MT7986_PIN(20, "GPIO_15"),
-+	MT7986_PIN(21, "PWM0"),
-+	MT7986_PIN(22, "PWM1"),
-+	MT7986_PIN(23, "SPI0_CLK"),
-+	MT7986_PIN(24, "SPI0_MOSI"),
-+	MT7986_PIN(25, "SPI0_MISO"),
-+	MT7986_PIN(26, "SPI0_CS"),
-+	MT7986_PIN(27, "SPI0_HOLD"),
-+	MT7986_PIN(28, "SPI0_WP"),
-+	MT7986_PIN(29, "SPI1_CLK"),
-+	MT7986_PIN(30, "SPI1_MOSI"),
-+	MT7986_PIN(31, "SPI1_MISO"),
-+	MT7986_PIN(32, "SPI1_CS"),
-+	MT7986_PIN(33, "SPI2_CLK"),
-+	MT7986_PIN(34, "SPI2_MOSI"),
-+	MT7986_PIN(35, "SPI2_MISO"),
-+	MT7986_PIN(36, "SPI2_CS"),
-+	MT7986_PIN(37, "SPI2_HOLD"),
-+	MT7986_PIN(38, "SPI2_WP"),
-+	MT7986_PIN(39, "UART0_RXD"),
-+	MT7986_PIN(40, "UART0_TXD"),
-+	MT7986_PIN(41, "PCIE_PERESET_N"),
-+	MT7986_PIN(42, "UART1_RXD"),
-+	MT7986_PIN(43, "UART1_TXD"),
-+	MT7986_PIN(44, "UART1_CTS"),
-+	MT7986_PIN(45, "UART1_RTS"),
-+	MT7986_PIN(46, "UART2_RXD"),
-+	MT7986_PIN(47, "UART2_TXD"),
-+	MT7986_PIN(48, "UART2_CTS"),
-+	MT7986_PIN(49, "UART2_RTS"),
-+	MT7986_PIN(50, "EMMC_DATA_0"),
-+	MT7986_PIN(51, "EMMC_DATA_1"),
-+	MT7986_PIN(52, "EMMC_DATA_2"),
-+	MT7986_PIN(53, "EMMC_DATA_3"),
-+	MT7986_PIN(54, "EMMC_DATA_4"),
-+	MT7986_PIN(55, "EMMC_DATA_5"),
-+	MT7986_PIN(56, "EMMC_DATA_6"),
-+	MT7986_PIN(57, "EMMC_DATA_7"),
-+	MT7986_PIN(58, "EMMC_CMD"),
-+	MT7986_PIN(59, "EMMC_CK"),
-+	MT7986_PIN(60, "EMMC_DSL"),
-+	MT7986_PIN(61, "EMMC_RSTB"),
-+	MT7986_PIN(62, "PCM_DTX"),
-+	MT7986_PIN(63, "PCM_DRX"),
-+	MT7986_PIN(64, "PCM_CLK"),
-+	MT7986_PIN(65, "PCM_FS"),
-+	MT7986_PIN(66, "MT7531_INT"),
-+	MT7986_PIN(67, "SMI_MDC"),
-+	MT7986_PIN(68, "SMI_MDIO"),
-+	MT7986_PIN(69, "WF0_DIG_RESETB"),
-+	MT7986_PIN(70, "WF0_CBA_RESETB"),
-+	MT7986_PIN(71, "WF0_XO_REQ"),
-+	MT7986_PIN(72, "WF0_TOP_CLK"),
-+	MT7986_PIN(73, "WF0_TOP_DATA"),
-+	MT7986_PIN(74, "WF0_HB1"),
-+	MT7986_PIN(75, "WF0_HB2"),
-+	MT7986_PIN(76, "WF0_HB3"),
-+	MT7986_PIN(77, "WF0_HB4"),
-+	MT7986_PIN(78, "WF0_HB0"),
-+	MT7986_PIN(79, "WF0_HB0_B"),
-+	MT7986_PIN(80, "WF0_HB5"),
-+	MT7986_PIN(81, "WF0_HB6"),
-+	MT7986_PIN(82, "WF0_HB7"),
-+	MT7986_PIN(83, "WF0_HB8"),
-+	MT7986_PIN(84, "WF0_HB9"),
-+	MT7986_PIN(85, "WF0_HB10"),
-+	MT7986_PIN(86, "WF1_DIG_RESETB"),
-+	MT7986_PIN(87, "WF1_CBA_RESETB"),
-+	MT7986_PIN(88, "WF1_XO_REQ"),
-+	MT7986_PIN(89, "WF1_TOP_CLK"),
-+	MT7986_PIN(90, "WF1_TOP_DATA"),
-+	MT7986_PIN(91, "WF1_HB1"),
-+	MT7986_PIN(92, "WF1_HB2"),
-+	MT7986_PIN(93, "WF1_HB3"),
-+	MT7986_PIN(94, "WF1_HB4"),
-+	MT7986_PIN(95, "WF1_HB0"),
-+	MT7986_PIN(96, "WF1_HB0_B"),
-+	MT7986_PIN(97, "WF1_HB5"),
-+	MT7986_PIN(98, "WF1_HB6"),
-+	MT7986_PIN(99, "WF1_HB7"),
-+	MT7986_PIN(100, "WF1_HB8"),
-+};
-+
-+static const struct mtk_pin_desc mt7986b_pins[] = {
-+	MT7986_PIN(0, "SYS_WATCHDOG"),
-+	MT7986_PIN(1, "WF2G_LED"),
-+	MT7986_PIN(2, "WF5G_LED"),
-+	MT7986_PIN(3, "I2C_SCL"),
-+	MT7986_PIN(4, "I2C_SDA"),
-+	MT7986_PIN(5, "GPIO_0"),
-+	MT7986_PIN(6, "GPIO_1"),
-+	MT7986_PIN(7, "GPIO_2"),
-+	MT7986_PIN(8, "GPIO_3"),
-+	MT7986_PIN(9, "GPIO_4"),
-+	MT7986_PIN(10, "GPIO_5"),
-+	MT7986_PIN(11, "GPIO_6"),
-+	MT7986_PIN(12, "GPIO_7"),
-+	MT7986_PIN(13, "GPIO_8"),
-+	MT7986_PIN(14, "GPIO_9"),
-+	MT7986_PIN(15, "GPIO_10"),
-+	MT7986_PIN(16, "GPIO_11"),
-+	MT7986_PIN(17, "GPIO_12"),
-+	MT7986_PIN(18, "GPIO_13"),
-+	MT7986_PIN(19, "GPIO_14"),
-+	MT7986_PIN(20, "GPIO_15"),
-+	MT7986_PIN(21, "PWM0"),
-+	MT7986_PIN(22, "PWM1"),
-+	MT7986_PIN(23, "SPI0_CLK"),
-+	MT7986_PIN(24, "SPI0_MOSI"),
-+	MT7986_PIN(25, "SPI0_MISO"),
-+	MT7986_PIN(26, "SPI0_CS"),
-+	MT7986_PIN(27, "SPI0_HOLD"),
-+	MT7986_PIN(28, "SPI0_WP"),
-+	MT7986_PIN(29, "SPI1_CLK"),
-+	MT7986_PIN(30, "SPI1_MOSI"),
-+	MT7986_PIN(31, "SPI1_MISO"),
-+	MT7986_PIN(32, "SPI1_CS"),
-+	MT7986_PIN(33, "SPI2_CLK"),
-+	MT7986_PIN(34, "SPI2_MOSI"),
-+	MT7986_PIN(35, "SPI2_MISO"),
-+	MT7986_PIN(36, "SPI2_CS"),
-+	MT7986_PIN(37, "SPI2_HOLD"),
-+	MT7986_PIN(38, "SPI2_WP"),
-+	MT7986_PIN(39, "UART0_RXD"),
-+	MT7986_PIN(40, "UART0_TXD"),
-+	MT7986_NOT_BALLOUT_PIN(41),
-+	MT7986_NOT_BALLOUT_PIN(42),
-+	MT7986_NOT_BALLOUT_PIN(43),
-+	MT7986_NOT_BALLOUT_PIN(44),
-+	MT7986_NOT_BALLOUT_PIN(45),
-+	MT7986_NOT_BALLOUT_PIN(46),
-+	MT7986_NOT_BALLOUT_PIN(47),
-+	MT7986_NOT_BALLOUT_PIN(48),
-+	MT7986_NOT_BALLOUT_PIN(49),
-+	MT7986_NOT_BALLOUT_PIN(50),
-+	MT7986_NOT_BALLOUT_PIN(51),
-+	MT7986_NOT_BALLOUT_PIN(52),
-+	MT7986_NOT_BALLOUT_PIN(53),
-+	MT7986_NOT_BALLOUT_PIN(54),
-+	MT7986_NOT_BALLOUT_PIN(55),
-+	MT7986_NOT_BALLOUT_PIN(56),
-+	MT7986_NOT_BALLOUT_PIN(57),
-+	MT7986_NOT_BALLOUT_PIN(58),
-+	MT7986_NOT_BALLOUT_PIN(59),
-+	MT7986_NOT_BALLOUT_PIN(60),
-+	MT7986_NOT_BALLOUT_PIN(61),
-+	MT7986_NOT_BALLOUT_PIN(62),
-+	MT7986_NOT_BALLOUT_PIN(63),
-+	MT7986_NOT_BALLOUT_PIN(64),
-+	MT7986_NOT_BALLOUT_PIN(65),
-+	MT7986_PIN(66, "MT7531_INT"),
-+	MT7986_PIN(67, "SMI_MDC"),
-+	MT7986_PIN(68, "SMI_MDIO"),
-+	MT7986_PIN(69, "WF0_DIG_RESETB"),
-+	MT7986_PIN(70, "WF0_CBA_RESETB"),
-+	MT7986_PIN(71, "WF0_XO_REQ"),
-+	MT7986_PIN(72, "WF0_TOP_CLK"),
-+	MT7986_PIN(73, "WF0_TOP_DATA"),
-+	MT7986_PIN(74, "WF0_HB1"),
-+	MT7986_PIN(75, "WF0_HB2"),
-+	MT7986_PIN(76, "WF0_HB3"),
-+	MT7986_PIN(77, "WF0_HB4"),
-+	MT7986_PIN(78, "WF0_HB0"),
-+	MT7986_PIN(79, "WF0_HB0_B"),
-+	MT7986_PIN(80, "WF0_HB5"),
-+	MT7986_PIN(81, "WF0_HB6"),
-+	MT7986_PIN(82, "WF0_HB7"),
-+	MT7986_PIN(83, "WF0_HB8"),
-+	MT7986_PIN(84, "WF0_HB9"),
-+	MT7986_PIN(85, "WF0_HB10"),
-+	MT7986_PIN(86, "WF1_DIG_RESETB"),
-+	MT7986_PIN(87, "WF1_CBA_RESETB"),
-+	MT7986_PIN(88, "WF1_XO_REQ"),
-+	MT7986_PIN(89, "WF1_TOP_CLK"),
-+	MT7986_PIN(90, "WF1_TOP_DATA"),
-+	MT7986_PIN(91, "WF1_HB1"),
-+	MT7986_PIN(92, "WF1_HB2"),
-+	MT7986_PIN(93, "WF1_HB3"),
-+	MT7986_PIN(94, "WF1_HB4"),
-+	MT7986_PIN(95, "WF1_HB0"),
-+	MT7986_PIN(96, "WF1_HB0_B"),
-+	MT7986_PIN(97, "WF1_HB5"),
-+	MT7986_PIN(98, "WF1_HB6"),
-+	MT7986_PIN(99, "WF1_HB7"),
-+	MT7986_PIN(100, "WF1_HB8"),
-+};
-+
-+/* List all groups consisting of these pins dedicated to the enablement of
-+ * certain hardware block and the corresponding mode for all of the pins.
-+ * The hardware probably has multiple combinations of these pinouts.
-+ */
-+
-+static int mt7986_watchdog_pins[] = { 0, };
-+static int mt7986_watchdog_funcs[] = { 1, };
-+
-+static int mt7986_wifi_led_pins[] = { 1, 2, };
-+static int mt7986_wifi_led_funcs[] = { 1, 1, };
-+
-+static int mt7986_i2c_pins[] = { 3, 4, };
-+static int mt7986_i2c_funcs[] = { 1, 1, };
-+
-+static int mt7986_uart1_0_pins[] = { 7, 8, 9, 10, };
-+static int mt7986_uart1_0_funcs[] = { 3, 3, 3, 3, };
-+
-+static int mt7986_spi1_0_pins[] = { 11, 12, 13, 14, };
-+static int mt7986_spi1_0_funcs[] = { 3, 3, 3, 3, };
-+
-+static int mt7986_pwm1_1_pins[] = { 20, };
-+static int mt7986_pwm1_1_funcs[] = { 2, };
-+
-+static int mt7986_pwm0_pins[] = { 21, };
-+static int mt7986_pwm0_funcs[] = { 1, };
-+
-+static int mt7986_pwm1_0_pins[] = { 22, };
-+static int mt7986_pwm1_0_funcs[] = { 1, };
-+
-+static int mt7986_emmc_45_pins[] = {
-+	22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, };
-+static int mt7986_emmc_45_funcs[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, };
-+
-+static int mt7986_snfi_pins[] = { 23, 24, 25, 26, 27, 28, };
-+static int mt7986_snfi_funcs[] = { 1, 1, 1, 1, 1, 1, };
-+
-+static int mt7986_spi1_1_pins[] = { 23, 24, 25, 26, };
-+static int mt7986_spi1_1_funcs[] = { 3, 3, 3, 3, };
-+
-+static int mt7986_uart1_1_pins[] = { 23, 24, 25, 26, };
-+static int mt7986_uart1_1_funcs[] = { 4, 4, 4, 4, };
-+
-+static int mt7986_spi1_2_pins[] = { 29, 30, 31, 32, };
-+static int mt7986_spi1_2_funcs[] = { 1, 1, 1, 1, };
-+
-+static int mt7986_uart1_2_pins[] = { 29, 30, 31, 32, };
-+static int mt7986_uart1_2_funcs[] = { 3, 3, 3, 3, };
-+
-+static int mt7986_uart2_0_pins[] = { 29, 30, 31, 32, };
-+static int mt7986_uart2_0_funcs[] = { 4, 4, 4, 4, };
-+
-+static int mt7986_spi0_pins[] = { 33, 34, 35, 36, };
-+static int mt7986_spi0_funcs[] = { 1, 1, 1, 1, };
-+
-+static int mt7986_spi0_wp_hold_pins[] = { 37, 38, };
-+static int mt7986_spi0_wp_hold_funcs[] = { 1, 1, };
-+
-+static int mt7986_uart2_1_pins[] = { 33, 34, 35, 36, };
-+static int mt7986_uart2_1_funcs[] = { 3, 3, 3, 3, };
-+
-+static int mt7986_uart1_3_rx_tx_pins[] = { 35, 36, };
-+static int mt7986_uart1_3_rx_tx_funcs[] = { 2, 2, };
-+
-+static int mt7986_uart1_3_cts_rts_pins[] = { 37, 38, };
-+static int mt7986_uart1_3_cts_rts_funcs[] = { 2, 2, };
-+
-+static int mt7986_spi1_3_pins[] = { 33, 34, 35, 36, };
-+static int mt7986_spi1_3_funcs[] = { 4, 4, 4, 4, };
-+
-+static int mt7986_uart0_pins[] = { 39, 40, };
-+static int mt7986_uart0_funcs[] = { 1, 1, };
-+
-+static int mt7986_pcie_reset_pins[] = { 41, };
-+static int mt7986_pcie_reset_funcs[] = { 1, };
-+
-+static int mt7986_uart1_pins[] = { 42, 43, 44, 45, };
-+static int mt7986_uart1_funcs[] = { 1, 1, 1, 1, };
-+
-+static int mt7986_uart2_pins[] = { 46, 47, 48, 49, };
-+static int mt7986_uart2_funcs[] = { 1, 1, 1, 1, };
-+
-+static int mt7986_emmc_51_pins[] = {
-+	50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, };
-+static int mt7986_emmc_51_funcs[] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
-+
-+static int mt7986_pcm_pins[] = { 62, 63, 64, 65, };
-+static int mt7986_pcm_funcs[] = { 1, 1, 1, 1, };
-+
-+static int mt7986_i2s_pins[] = { 62, 63, 64, 65, };
-+static int mt7986_i2s_funcs[] = { 1, 1, 1, 1, };
-+
-+static int mt7986_switch_int_pins[] = { 66, };
-+static int mt7986_switch_int_funcs[] = { 1, };
-+
-+static int mt7986_mdc_mdio_pins[] = { 67, 68, };
-+static int mt7986_mdc_mdio_funcs[] = { 1, 1, };
-+
-+static int mt7986_wf_2g_pins[] = {74, 75, 76, 77, 78, 79, 80, 81, 82, 83, };
-+static int mt7986_wf_2g_funcs[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
-+
-+static int mt7986_wf_5g_pins[] = {91, 92, 93, 94, 95, 96, 97, 98, 99, 100, };
-+static int mt7986_wf_5g_funcs[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
-+
-+static int mt7986_wf_dbdc_pins[] = {
-+	74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, };
-+static int mt7986_wf_dbdc_funcs[] = {
-+	2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, };
-+
-+static int mt7986_pcie_clk_pins[] = { 9, };
-+static int mt7986_pcie_clk_funcs[] = { 1, };
-+
-+static int mt7986_pcie_wake_pins[] = { 10, };
-+static int mt7986_pcie_wake_funcs[] = { 1, };
-+
-+static const struct group_desc mt7986_groups[] = {
-+	PINCTRL_PIN_GROUP("watchdog", mt7986_watchdog),
-+	PINCTRL_PIN_GROUP("wifi_led", mt7986_wifi_led),
-+	PINCTRL_PIN_GROUP("i2c", mt7986_i2c),
-+	PINCTRL_PIN_GROUP("uart1_0", mt7986_uart1_0),
-+	PINCTRL_PIN_GROUP("pcie_clk", mt7986_pcie_clk),
-+	PINCTRL_PIN_GROUP("pcie_wake", mt7986_pcie_wake),
-+	PINCTRL_PIN_GROUP("spi1_0", mt7986_spi1_0),
-+	PINCTRL_PIN_GROUP("pwm1_1", mt7986_pwm1_1),
-+	PINCTRL_PIN_GROUP("pwm0", mt7986_pwm0),
-+	PINCTRL_PIN_GROUP("pwm1_0", mt7986_pwm1_0),
-+	PINCTRL_PIN_GROUP("emmc_45", mt7986_emmc_45),
-+	PINCTRL_PIN_GROUP("snfi", mt7986_snfi),
-+	PINCTRL_PIN_GROUP("spi1_1", mt7986_spi1_1),
-+	PINCTRL_PIN_GROUP("uart1_1", mt7986_uart1_1),
-+	PINCTRL_PIN_GROUP("spi1_2", mt7986_spi1_2),
-+	PINCTRL_PIN_GROUP("uart1_2", mt7986_uart1_2),
-+	PINCTRL_PIN_GROUP("uart2_0", mt7986_uart2_0),
-+	PINCTRL_PIN_GROUP("spi0", mt7986_spi0),
-+	PINCTRL_PIN_GROUP("spi0_wp_hold", mt7986_spi0_wp_hold),
-+	PINCTRL_PIN_GROUP("uart2_1", mt7986_uart2_1),
-+	PINCTRL_PIN_GROUP("uart1_3_rx_tx", mt7986_uart1_3_rx_tx),
-+	PINCTRL_PIN_GROUP("uart1_3_cts_rts", mt7986_uart1_3_cts_rts),
-+	PINCTRL_PIN_GROUP("spi1_3", mt7986_spi1_3),
-+	PINCTRL_PIN_GROUP("uart0", mt7986_uart0),
-+	PINCTRL_PIN_GROUP("switch_int", mt7986_switch_int),
-+	PINCTRL_PIN_GROUP("mdc_mdio", mt7986_mdc_mdio),
-+	PINCTRL_PIN_GROUP("pcie_pereset", mt7986_pcie_reset),
-+	PINCTRL_PIN_GROUP("uart1", mt7986_uart1),
-+	PINCTRL_PIN_GROUP("uart2", mt7986_uart2),
-+	PINCTRL_PIN_GROUP("emmc_51", mt7986_emmc_51),
-+	PINCTRL_PIN_GROUP("pcm", mt7986_pcm),
-+	PINCTRL_PIN_GROUP("i2s", mt7986_i2s),
-+	PINCTRL_PIN_GROUP("wf_2g", mt7986_wf_2g),
-+	PINCTRL_PIN_GROUP("wf_5g", mt7986_wf_5g),
-+	PINCTRL_PIN_GROUP("wf_dbdc", mt7986_wf_dbdc),
-+};
-+
-+/* Joint those groups owning the same capability in user point of view which
-+ * allows that people tend to use through the device tree.
-+ */
-+
-+static const char *mt7986_audio_groups[] = { "pcm", "i2s" };
-+static const char *mt7986_emmc_groups[] = {
-+	"emmc_45", "emmc_51", };
-+static const char *mt7986_ethernet_groups[] = {
-+	"switch_int", "mdc_mdio", };
-+static const char *mt7986_i2c_groups[] = { "i2c", };
-+static const char *mt7986_led_groups[] = { "wifi_led", };
-+static const char *mt7986_flash_groups[] = { "snfi", };
-+static const char *mt7986_pcie_groups[] = {
-+	"pcie_clk", "pcie_wake", "pcie_pereset" };
-+static const char *mt7986_pwm_groups[] = { "pwm0", "pwm1_0", "pwm1_1", };
-+static const char *mt7986_spi_groups[] = {
-+	"spi0", "spi0_wp_hold", "spi1_0", "spi1_1", "spi1_2", "spi1_3", };
-+static const char *mt7986_uart_groups[] = {
-+	"uart1_0", "uart1_1", "uart1_2", "uart1_3_rx_tx", "uart1_3_cts_rts",
-+	"uart2_0", "uart2_1", "uart0", "uart1", "uart2",
-+};
-+static const char *mt7986_wdt_groups[] = { "watchdog", };
-+static const char *mt7986_wf_groups[] = { "wf_2g", "wf_5g", "wf_dbdc", };
-+
-+static const struct function_desc mt7986_functions[] = {
-+	{"audio", mt7986_audio_groups, ARRAY_SIZE(mt7986_audio_groups)},
-+	{"emmc", mt7986_emmc_groups, ARRAY_SIZE(mt7986_emmc_groups)},
-+	{"eth", mt7986_ethernet_groups, ARRAY_SIZE(mt7986_ethernet_groups)},
-+	{"i2c", mt7986_i2c_groups, ARRAY_SIZE(mt7986_i2c_groups)},
-+	{"led", mt7986_led_groups, ARRAY_SIZE(mt7986_led_groups)},
-+	{"flash", mt7986_flash_groups, ARRAY_SIZE(mt7986_flash_groups)},
-+	{"pcie", mt7986_pcie_groups, ARRAY_SIZE(mt7986_pcie_groups)},
-+	{"pwm", mt7986_pwm_groups, ARRAY_SIZE(mt7986_pwm_groups)},
-+	{"spi", mt7986_spi_groups, ARRAY_SIZE(mt7986_spi_groups)},
-+	{"uart", mt7986_uart_groups, ARRAY_SIZE(mt7986_uart_groups)},
-+	{"watchdog", mt7986_wdt_groups, ARRAY_SIZE(mt7986_wdt_groups)},
-+	{"wifi", mt7986_wf_groups, ARRAY_SIZE(mt7986_wf_groups)},
-+};
-+
-+static const struct mtk_eint_hw mt7986a_eint_hw = {
-+	.port_mask = 7,
-+	.ports = 7,
-+	.ap_num = ARRAY_SIZE(mt7986a_pins),
-+	.db_cnt = 16,
-+};
-+
-+static const struct mtk_eint_hw mt7986b_eint_hw = {
-+	.port_mask = 7,
-+	.ports = 7,
-+	.ap_num = ARRAY_SIZE(mt7986b_pins),
-+	.db_cnt = 16,
-+};
-+
-+static struct mtk_pin_soc mt7986a_data = {
-+	.reg_cal = mt7986_reg_cals,
-+	.pins = mt7986a_pins,
-+	.npins = ARRAY_SIZE(mt7986a_pins),
-+	.grps = mt7986_groups,
-+	.ngrps = ARRAY_SIZE(mt7986_groups),
-+	.funcs = mt7986_functions,
-+	.nfuncs = ARRAY_SIZE(mt7986_functions),
-+	.eint_hw = &mt7986a_eint_hw,
-+	.gpio_m = 0,
-+	.ies_present = false,
-+	.base_names = mt7986_pinctrl_register_base_names,
-+	.nbase_names = ARRAY_SIZE(mt7986_pinctrl_register_base_names),
-+	.bias_set_combo = mtk_pinconf_bias_set_combo,
-+	.bias_get_combo = mtk_pinconf_bias_get_combo,
-+	.drive_set = mtk_pinconf_drive_set_rev1,
-+	.drive_get = mtk_pinconf_drive_get_rev1,
-+	.adv_pull_get = mtk_pinconf_adv_pull_get,
-+	.adv_pull_set = mtk_pinconf_adv_pull_set,
-+};
-+
-+static struct mtk_pin_soc mt7986b_data = {
-+	.reg_cal = mt7986_reg_cals,
-+	.pins = mt7986b_pins,
-+	.npins = ARRAY_SIZE(mt7986b_pins),
-+	.grps = mt7986_groups,
-+	.ngrps = ARRAY_SIZE(mt7986_groups),
-+	.funcs = mt7986_functions,
-+	.nfuncs = ARRAY_SIZE(mt7986_functions),
-+	.eint_hw = &mt7986b_eint_hw,
-+	.gpio_m = 0,
-+	.ies_present = false,
-+	.base_names = mt7986_pinctrl_register_base_names,
-+	.nbase_names = ARRAY_SIZE(mt7986_pinctrl_register_base_names),
-+	.bias_set_combo = mtk_pinconf_bias_set_combo,
-+	.bias_get_combo = mtk_pinconf_bias_get_combo,
-+	.drive_set = mtk_pinconf_drive_set_rev1,
-+	.drive_get = mtk_pinconf_drive_get_rev1,
-+	.adv_pull_get = mtk_pinconf_adv_pull_get,
-+	.adv_pull_set = mtk_pinconf_adv_pull_set,
-+};
-+
-+static const struct of_device_id mt7986a_pinctrl_of_match[] = {
-+	{.compatible = "mediatek,mt7986a-pinctrl",},
-+	{}
-+};
-+
-+static const struct of_device_id mt7986b_pinctrl_of_match[] = {
-+	{.compatible = "mediatek,mt7986b-pinctrl",},
-+	{}
-+};
-+
-+static int mt7986a_pinctrl_probe(struct platform_device *pdev)
-+{
-+	return mtk_moore_pinctrl_probe(pdev, &mt7986a_data);
-+}
-+
-+static int mt7986b_pinctrl_probe(struct platform_device *pdev)
-+{
-+	return mtk_moore_pinctrl_probe(pdev, &mt7986b_data);
-+}
-+
-+static struct platform_driver mt7986a_pinctrl_driver = {
-+	.driver = {
-+		.name = "mt7986a-pinctrl",
-+		.of_match_table = mt7986a_pinctrl_of_match,
-+	},
-+	.probe = mt7986a_pinctrl_probe,
-+};
-+
-+static struct platform_driver mt7986b_pinctrl_driver = {
-+	.driver = {
-+		.name = "mt7986b-pinctrl",
-+		.of_match_table = mt7986b_pinctrl_of_match,
-+	},
-+	.probe = mt7986b_pinctrl_probe,
-+};
-+
-+static int __init mt7986a_pinctrl_init(void)
-+{
-+	return platform_driver_register(&mt7986a_pinctrl_driver);
-+}
-+
-+static int __init mt7986b_pinctrl_init(void)
-+{
-+	return platform_driver_register(&mt7986b_pinctrl_driver);
-+}
-+
-+arch_initcall(mt7986a_pinctrl_init);
-+arch_initcall(mt7986b_pinctrl_init);
--- 
-2.29.2
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgSGFucywKClRoYW5rIHlvdSBmb3IgeW91ciBraW5kIGd1aWRhbmNlLCBpdCBpcyByZWFsbHkg
+aGVscGZ1bCBmb3IgdXMgdG8KY29tcHJlaGVuZCBWNEwyIGZyYW1ld29yay4KQWZ0ZXIgbW9kaWZ5
+aW5nIHRoZSBzZXR0aW5ncyB5b3UgbWVudGlvbmVkLCB0aGUgVjRMMi1Db21wbGlhbmNlIHRlc3QK
+cmVzdWx0cyBhbGwgcGFzc2VkIGFuZCBsaXN0ZWQgYmVsb3cuCkFsbCB0aGVzZSBjaGFuZ2VzIHdp
+bGwgYmUgaW50ZWdyYXRlZCBpbnRvIHRoZSBuZXh0IHZlcnNpb24uCgpsb2NhbGhvc3QgfiAjIHY0
+bDItY29tcGxpYW5jZSAtZCAxMQp2NGwyLWNvbXBsaWFuY2UgU0hBOiBub3QgYXZhaWxhYmxlCiwg
+MzIgYml0cywgMzItYml0IHRpbWVfdAoKQ29tcGxpYW5jZSB0ZXN0IGZvciBtdGstbWRwMyBkZXZp
+Y2UgL2Rldi92aWRlbzExOgoKRHJpdmVyIEluZm86CiAgICAgICAgRHJpdmVyIG5hbWUgICAgICA6
+IG10ay1tZHAzCiAgICAgICAgQ2FyZCB0eXBlICAgICAgICA6IDE0MDAxMDAwLm1kcDNfcmRtYTAK
+ICAgICAgICBCdXMgaW5mbyAgICAgICAgIDogcGxhdGZvcm06bXRrLW1kcDMKICAgICAgICBEcml2
+ZXIgdmVyc2lvbiAgIDogNS4xMC42NgogICAgICAgIENhcGFiaWxpdGllcyAgICAgOiAweDg0MjA0
+MDAwCiAgICAgICAgICAgICAgICBWaWRlbyBNZW1vcnktdG8tTWVtb3J5IE11bHRpcGxhbmFyCiAg
+ICAgICAgICAgICAgICBTdHJlYW1pbmcKICAgICAgICAgICAgICAgIEV4dGVuZGVkIFBpeCBGb3Jt
+YXQKICAgICAgICAgICAgICAgIERldmljZSBDYXBhYmlsaXRpZXMKICAgICAgICBEZXZpY2UgQ2Fw
+cyAgICAgIDogMHgwNDIwNDAwMAogICAgICAgICAgICAgICAgVmlkZW8gTWVtb3J5LXRvLU1lbW9y
+eSBNdWx0aXBsYW5hcgogICAgICAgICAgICAgICAgU3RyZWFtaW5nCiAgICAgICAgICAgICAgICBF
+eHRlbmRlZCBQaXggRm9ybWF0CgpSZXF1aXJlZCBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0Nf
+UVVFUllDQVA6IE9LCgpBbGxvdyBmb3IgbXVsdGlwbGUgb3BlbnM6CiAgICAgICAgdGVzdCBzZWNv
+bmQgL2Rldi92aWRlbzExIG9wZW46IE9LCiAgICAgICAgdGVzdCBWSURJT0NfUVVFUllDQVA6IE9L
+CiAgICAgICAgdGVzdCBWSURJT0NfRy9TX1BSSU9SSVRZOiBPSwogICAgICAgIHRlc3QgZm9yIHVu
+bGltaXRlZCBvcGVuczogT0sKCiAgICAgICAgdGVzdCBpbnZhbGlkIGlvY3RsczogT0sKRGVidWcg
+aW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX0RCR19HL1NfUkVHSVNURVI6IE9LIChOb3QgU3Vw
+cG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0xPR19TVEFUVVM6IE9LIChOb3QgU3VwcG9ydGVk
+KQoKSW5wdXQgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX0cvU19UVU5FUi9FTlVNX0ZSRVFf
+QkFORFM6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvU19GUkVRVUVO
+Q1k6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX1NfSFdfRlJFUV9TRUVL
+OiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19FTlVNQVVESU86IE9LIChO
+b3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvUy9FTlVNSU5QVVQ6IE9LIChOb3Qg
+U3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvU19BVURJTzogT0sgKE5vdCBTdXBwb3J0
+ZWQpCiAgICAgICAgSW5wdXRzOiAwIEF1ZGlvIElucHV0czogMCBUdW5lcnM6IDAKCk91dHB1dCBp
+b2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfRy9TX01PRFVMQVRPUjogT0sgKE5vdCBTdXBwb3J0
+ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX0ZSRVFVRU5DWTogT0sgKE5vdCBTdXBwb3J0ZWQp
+CiAgICAgICAgdGVzdCBWSURJT0NfRU5VTUFVRE9VVDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAg
+ICAgdGVzdCBWSURJT0NfRy9TL0VOVU1PVVRQVVQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAg
+IHRlc3QgVklESU9DX0cvU19BVURPVVQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIE91dHB1
+dHM6IDAgQXVkaW8gT3V0cHV0czogMCBNb2R1bGF0b3JzOiAwCgpJbnB1dC9PdXRwdXQgY29uZmln
+dXJhdGlvbiBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfRU5VTS9HL1MvUVVFUllfU1REOiBP
+SyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19FTlVNL0cvUy9RVUVSWV9EVl9U
+SU1JTkdTOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19EVl9USU1JTkdT
+X0NBUDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX0VESUQ6IE9L
+IChOb3QgU3VwcG9ydGVkKQoKQ29udHJvbCBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfUVVF
+UllfRVhUX0NUUkwvUVVFUllNRU5VOiBPSwogICAgICAgIHRlc3QgVklESU9DX1FVRVJZQ1RSTDog
+T0sKICAgICAgICB0ZXN0IFZJRElPQ19HL1NfQ1RSTDogT0sKICAgICAgICB0ZXN0IFZJRElPQ19H
+L1MvVFJZX0VYVF9DVFJMUzogT0sKICAgICAgICB0ZXN0IFZJRElPQ18oVU4pU1VCU0NSSUJFX0VW
+RU5UL0RRRVZFTlQ6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX0pQRUdDT01QOiBPSyAoTm90
+IFN1cHBvcnRlZCkKICAgICAgICBTdGFuZGFyZCBDb250cm9sczogNCBQcml2YXRlIENvbnRyb2xz
+OiAwCgpGb3JtYXQgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX0VOVU1fRk1UL0ZSQU1FU0la
+RVMvRlJBTUVJTlRFUlZBTFM6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRy9TX1BBUk06IE9LIChO
+b3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0dfRkJVRjogT0sgKE5vdCBTdXBwb3J0
+ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfR19GTVQ6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfVFJZ
+X0ZNVDogT0sKICAgICAgICB0ZXN0IFZJRElPQ19TX0ZNVDogT0sKICAgICAgICB0ZXN0IFZJRElP
+Q19HX1NMSUNFRF9WQklfQ0FQOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IENyb3Bw
+aW5nOiBPSwogICAgICAgIHRlc3QgQ29tcG9zaW5nOiBPSwogICAgICAgIHRlc3QgU2NhbGluZzog
+T0sKCkNvZGVjIGlvY3RsczoKICAgICAgICB0ZXN0IFZJRElPQ18oVFJZXylFTkNPREVSX0NNRDog
+T0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfR19FTkNfSU5ERVg6IE9LIChO
+b3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DXyhUUllfKURFQ09ERVJfQ01EOiBPSyAo
+Tm90IFN1cHBvcnRlZCkKCkJ1ZmZlciBpb2N0bHM6CiAgICAgICAgdGVzdCBWSURJT0NfUkVRQlVG
+Uy9DUkVBVEVfQlVGUy9RVUVSWUJVRjogT0sKICAgICAgICB0ZXN0IFZJRElPQ19FWFBCVUY6IE9L
+CiAgICAgICAgdGVzdCBSZXF1ZXN0czogT0sgKE5vdCBTdXBwb3J0ZWQpCgpUb3RhbCBmb3IgbXRr
+LW1kcDMgZGV2aWNlIC9kZXYvdmlkZW8xMTogNDUsIFN1Y2NlZWRlZDogNDUsIEZhaWxlZDogMCwK
+V2FybmluZ3M6IDAKCmxvY2FsaG9zdCB+ICMgdjRsMi1jb21wbGlhbmNlIC1kIDExIC1zIDEKdjRs
+Mi1jb21wbGlhbmNlIFNIQTogbm90IGF2YWlsYWJsZQosIDMyIGJpdHMsIDMyLWJpdCB0aW1lX3QK
+CkNvbXBsaWFuY2UgdGVzdCBmb3IgbXRrLW1kcDMgZGV2aWNlIC9kZXYvdmlkZW8xMToKCkRyaXZl
+ciBJbmZvOgogICAgICAgIERyaXZlciBuYW1lICAgICAgOiBtdGstbWRwMwogICAgICAgIENhcmQg
+dHlwZSAgICAgICAgOiAxNDAwMTAwMC5tZHAzX3JkbWEwCiAgICAgICAgQnVzIGluZm8gICAgICAg
+ICA6IHBsYXRmb3JtOm10ay1tZHAzCiAgICAgICAgRHJpdmVyIHZlcnNpb24gICA6IDUuMTAuNjYK
+ICAgICAgICBDYXBhYmlsaXRpZXMgICAgIDogMHg4NDIwNDAwMAogICAgICAgICAgICAgICAgVmlk
+ZW8gTWVtb3J5LXRvLU1lbW9yeSBNdWx0aXBsYW5hcgogICAgICAgICAgICAgICAgU3RyZWFtaW5n
+CiAgICAgICAgICAgICAgICBFeHRlbmRlZCBQaXggRm9ybWF0CiAgICAgICAgICAgICAgICBEZXZp
+Y2UgQ2FwYWJpbGl0aWVzCiAgICAgICAgRGV2aWNlIENhcHMgICAgICA6IDB4MDQyMDQwMDAKICAg
+ICAgICAgICAgICAgIFZpZGVvIE1lbW9yeS10by1NZW1vcnkgTXVsdGlwbGFuYXIKICAgICAgICAg
+ICAgICAgIFN0cmVhbWluZwogICAgICAgICAgICAgICAgRXh0ZW5kZWQgUGl4IEZvcm1hdAoKUmVx
+dWlyZWQgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX1FVRVJZQ0FQOiBPSwoKQWxsb3cgZm9y
+IG11bHRpcGxlIG9wZW5zOgogICAgICAgIHRlc3Qgc2Vjb25kIC9kZXYvdmlkZW8xMSBvcGVuOiBP
+SwogICAgICAgIHRlc3QgVklESU9DX1FVRVJZQ0FQOiBPSwogICAgICAgIHRlc3QgVklESU9DX0cv
+U19QUklPUklUWTogT0sKICAgICAgICB0ZXN0IGZvciB1bmxpbWl0ZWQgb3BlbnM6IE9LCgogICAg
+ICAgIHRlc3QgaW52YWxpZCBpb2N0bHM6IE9LCkRlYnVnIGlvY3RsczoKICAgICAgICB0ZXN0IFZJ
+RElPQ19EQkdfRy9TX1JFR0lTVEVSOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJ
+RElPQ19MT0dfU1RBVFVTOiBPSyAoTm90IFN1cHBvcnRlZCkKCklucHV0IGlvY3RsczoKICAgICAg
+ICB0ZXN0IFZJRElPQ19HL1NfVFVORVIvRU5VTV9GUkVRX0JBTkRTOiBPSyAoTm90IFN1cHBvcnRl
+ZCkKICAgICAgICB0ZXN0IFZJRElPQ19HL1NfRlJFUVVFTkNZOiBPSyAoTm90IFN1cHBvcnRlZCkK
+ICAgICAgICB0ZXN0IFZJRElPQ19TX0hXX0ZSRVFfU0VFSzogT0sgKE5vdCBTdXBwb3J0ZWQpCiAg
+ICAgICAgdGVzdCBWSURJT0NfRU5VTUFVRElPOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0
+ZXN0IFZJRElPQ19HL1MvRU5VTUlOUFVUOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0
+IFZJRElPQ19HL1NfQVVESU86IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIElucHV0czogMCBB
+dWRpbyBJbnB1dHM6IDAgVHVuZXJzOiAwCgpPdXRwdXQgaW9jdGxzOgogICAgICAgIHRlc3QgVklE
+SU9DX0cvU19NT0RVTEFUT1I6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9D
+X0cvU19GUkVRVUVOQ1k6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0VO
+VU1BVURPVVQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9DX0cvUy9FTlVN
+T1VUUFVUOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFZJRElPQ19HL1NfQVVET1VU
+OiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICBPdXRwdXRzOiAwIEF1ZGlvIE91dHB1dHM6IDAg
+TW9kdWxhdG9yczogMAoKSW5wdXQvT3V0cHV0IGNvbmZpZ3VyYXRpb24gaW9jdGxzOgogICAgICAg
+IHRlc3QgVklESU9DX0VOVU0vRy9TL1FVRVJZX1NURDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAg
+ICAgdGVzdCBWSURJT0NfRU5VTS9HL1MvUVVFUllfRFZfVElNSU5HUzogT0sgKE5vdCBTdXBwb3J0
+ZWQpCiAgICAgICAgdGVzdCBWSURJT0NfRFZfVElNSU5HU19DQVA6IE9LIChOb3QgU3VwcG9ydGVk
+KQogICAgICAgIHRlc3QgVklESU9DX0cvU19FRElEOiBPSyAoTm90IFN1cHBvcnRlZCkKCkNvbnRy
+b2wgaW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX1FVRVJZX0VYVF9DVFJML1FVRVJZTUVOVTog
+T0sKICAgICAgICB0ZXN0IFZJRElPQ19RVUVSWUNUUkw6IE9LCiAgICAgICAgdGVzdCBWSURJT0Nf
+Ry9TX0NUUkw6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRy9TL1RSWV9FWFRfQ1RSTFM6IE9LCiAg
+ICAgICAgdGVzdCBWSURJT0NfKFVOKVNVQlNDUklCRV9FVkVOVC9EUUVWRU5UOiBPSwogICAgICAg
+IHRlc3QgVklESU9DX0cvU19KUEVHQ09NUDogT0sgKE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgU3Rh
+bmRhcmQgQ29udHJvbHM6IDQgUHJpdmF0ZSBDb250cm9sczogMAoKRm9ybWF0IGlvY3RsczoKICAg
+ICAgICB0ZXN0IFZJRElPQ19FTlVNX0ZNVC9GUkFNRVNJWkVTL0ZSQU1FSU5URVJWQUxTOiBPSwog
+ICAgICAgIHRlc3QgVklESU9DX0cvU19QQVJNOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0
+ZXN0IFZJRElPQ19HX0ZCVUY6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgVklESU9D
+X0dfRk1UOiBPSwogICAgICAgIHRlc3QgVklESU9DX1RSWV9GTVQ6IE9LCiAgICAgICAgdGVzdCBW
+SURJT0NfU19GTVQ6IE9LCiAgICAgICAgdGVzdCBWSURJT0NfR19TTElDRURfVkJJX0NBUDogT0sg
+KE5vdCBTdXBwb3J0ZWQpCiAgICAgICAgdGVzdCBDcm9wcGluZzogT0sKICAgICAgICB0ZXN0IENv
+bXBvc2luZzogT0sKICAgICAgICB0ZXN0IFNjYWxpbmc6IE9LCgpDb2RlYyBpb2N0bHM6CiAgICAg
+ICAgdGVzdCBWSURJT0NfKFRSWV8pRU5DT0RFUl9DTUQ6IE9LIChOb3QgU3VwcG9ydGVkKQogICAg
+ICAgIHRlc3QgVklESU9DX0dfRU5DX0lOREVYOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0
+ZXN0IFZJRElPQ18oVFJZXylERUNPREVSX0NNRDogT0sgKE5vdCBTdXBwb3J0ZWQpCgpCdWZmZXIg
+aW9jdGxzOgogICAgICAgIHRlc3QgVklESU9DX1JFUUJVRlMvQ1JFQVRFX0JVRlMvUVVFUllCVUY6
+IE9LCiAgICAgICAgdGVzdCBWSURJT0NfRVhQQlVGOiBPSwogICAgICAgIHRlc3QgUmVxdWVzdHM6
+IE9LIChOb3QgU3VwcG9ydGVkKQoKVGVzdCBpbnB1dCAwOgoKU3RyZWFtaW5nIGlvY3RsczoKICAg
+ICAgICB0ZXN0IHJlYWQvd3JpdGU6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgYmxv
+Y2tpbmcgd2FpdDogT0sKICAgICAgICBWaWRlbyBDYXB0dXJlIE11bHRpcGxhbmFyOiBDYXB0dXJl
+ZCAxIGJ1ZmZlcnMKICAgICAgICB0ZXN0IE1NQVAgKG5vIHBvbGwpOiBPSwogICAgICAgIFZpZGVv
+IENhcHR1cmUgTXVsdGlwbGFuYXI6IENhcHR1cmVkIDEgYnVmZmVycwogICAgICAgIHRlc3QgTU1B
+UCAoc2VsZWN0KTogT0sKICAgICAgICBWaWRlbyBDYXB0dXJlIE11bHRpcGxhbmFyOiBDYXB0dXJl
+ZCAxIGJ1ZmZlcnMKICAgICAgICB0ZXN0IE1NQVAgKGVwb2xsKTogT0sKICAgICAgICB0ZXN0IFVT
+RVJQVFIgKG5vIHBvbGwpOiBPSyAoTm90IFN1cHBvcnRlZCkKICAgICAgICB0ZXN0IFVTRVJQVFIg
+KHNlbGVjdCk6IE9LIChOb3QgU3VwcG9ydGVkKQogICAgICAgIHRlc3QgRE1BQlVGOiBDYW5ub3Qg
+dGVzdCwgc3BlY2lmeSAtLWV4cGJ1Zi1kZXZpY2UKClRvdGFsIGZvciBtdGstbWRwMyBkZXZpY2Ug
+L2Rldi92aWRlbzExOiA1MiwgU3VjY2VlZGVkOiA1MiwgRmFpbGVkOiAwLApXYXJuaW5nczogMAoK
+VGhhbmtzICYgUmVnYXJkcywKTW91ZHkgSG8KCk9uIEZyaSwgMjAyMS0wOS0wMyBhdCAxMjowMSAr
+MDIwMCwgSGFucyBWZXJrdWlsIHdyb3RlOgo+IEhpIE1vdWR5LAo+IAo+IENhbiB5b3UgcHJvdmlk
+ZSB0aGUgJ3Y0bDItY29tcGxpYW5jZSAtcycgb3V0cHV0Pwo+IAo+IE1ha2Ugc3VyZSB0byBjb21w
+aWxlIHY0bDItY29tcGxpYW5jZSBmcm9tIHRoZSBsYXRlc3QgY29kZSBiYXNlOgo+IApodHRwczov
+L3VybGRlZmVuc2UuY29tL3YzL19faHR0cHM6Ly9naXQubGludXh0di5vcmcvdjRsLXV0aWxzLmdp
+dC9fXzshIUNUUk5LQTl3TWcwQVJidyEyUW1rRmhNb1lCQ1I0TUM1ZF9sOGI3enZkRWR3a2ZkNjgy
+Nm5PWTZXQUhRQ2hVNHJNbDhQOVV0TzZaOFpyY1BEJAo+ICAKPiAKPiBDb21waWxpbmcgb24geDg2
+XzY0IChzbyB1c2luZyBDT01QSUxFX1RFU1QpIGZhaWxzOgo+IAo+ICAgTEQgICAgICAudG1wX3Zt
+bGludXgua2FsbHN5bXMxCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRr
+LW1kcDMtY29yZS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfcHJvYmUnOgo+IG10ay1tZHAzLWNvcmUu
+YzooLnRleHQrMHg0MTUpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvCj4gYG10a19tdXRleF9tZHBf
+Z2V0Jwo+IGxkOiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAu
+bzogaW4gZnVuY3Rpb24KPiBgY29uZmlnX2NhbWluX3N1YmZybSc6Cj4gbXRrLW1kcDMtY29tcC5j
+OigudGV4dCsweDliKTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+IGBtdGtfbW1zeXNfbWRwX2Nh
+bWluX2N0cmwnCj4gbGQ6IG10ay1tZHAzLWNvbXAuYzooLnRleHQrMHhiYyk6IHVuZGVmaW5lZCBy
+ZWZlcmVuY2UgdG8KPiBgbXRrX21tc3lzX21kcF9jYW1pbl9jdHJsJwo+IGxkOiBkcml2ZXJzL21l
+ZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAubzogaW4gZnVuY3Rpb24KPiBgbWRw
+X2NvbXBvbmVudF9kZWluaXQnOgo+IG10ay1tZHAzLWNvbXAuYzooLnRleHQrMHgyNzA3KTogdW5k
+ZWZpbmVkIHJlZmVyZW5jZSB0bwo+IGBtdGtfbXV0ZXhfcHV0Jwo+IGxkOiBkcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAubzogaW4gZnVuY3Rpb24KPiBgaW5pdF9p
+c3AuY29sZCc6Cj4gbXRrLW1kcDMtY29tcC5jOigudGV4dC51bmxpa2VseSsweDRmKTogdW5kZWZp
+bmVkIHJlZmVyZW5jZSB0bwo+IGBtdGtfbW1zeXNfbWRwX2lzcF9jdHJsJwo+IGxkOiBtdGstbWRw
+My1jb21wLmM6KC50ZXh0LnVubGlrZWx5KzB4N2EpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvCj4g
+YG10a19tbXN5c19tZHBfaXNwX2N0cmwnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRr
+LW1kcDMvbXRrLW1kcDMtY21kcS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfYXV0b19yZWxlYXNlX3dv
+cmsnOgo+IG10ay1tZHAzLWNtZHEuYzooLnRleHQrMHgxMyk6IHVuZGVmaW5lZCByZWZlcmVuY2Ug
+dG8KPiBgbXRrX211dGV4X3VucHJlcGFyZScKPiBsZDogZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9t
+dGstbWRwMy9tdGstbWRwMy1jbWRxLm86IGluIGZ1bmN0aW9uCj4gYG1kcF9wYXRoX3N1YmZybV9y
+ZXF1aXJlJzoKPiBtdGstbWRwMy1jbWRxLmM6KC50ZXh0KzB4NDVlKTogdW5kZWZpbmVkIHJlZmVy
+ZW5jZSB0bwo+IGBtdGtfbXV0ZXhfYWRkX21kcF9tb2QnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY21kcS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfcGF0aF9z
+dWJmcm1fcnVuLmlzcmEuMCc6Cj4gbXRrLW1kcDMtY21kcS5jOigudGV4dCsweDc4Yik6IHVuZGVm
+aW5lZCByZWZlcmVuY2UgdG8KPiBgbXRrX211dGV4X2VuYWJsZV9ieV9jbWRxJwo+IGxkOiBkcml2
+ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNtZHEubzogaW4gZnVuY3Rpb24K
+PiBgbWRwX3BhdGhfY29uZmlnX3N1YmZybSc6Cj4gbXRrLW1kcDMtY21kcS5jOigudGV4dCsweGEw
+ZCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8KPiBgbXRrX21tc3lzX21kcF9jb25uZWN0Jwo+IGxk
+OiBtdGstbWRwMy1jbWRxLmM6KC50ZXh0KzB4ZDA4KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+
+IGBtdGtfbW1zeXNfbWRwX2Rpc2Nvbm5lY3QnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
+bXRrLW1kcDMvbXRrLW1kcDMtY21kcS5vOiBpbiBmdW5jdGlvbgo+IGBtZHBfY21kcV9zZW5kJzoK
+PiAoLnRleHQrMHgxMzU4KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBgbXRrX211dGV4X3ByZXBh
+cmUnCj4gbGQ6IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY21kcS5v
+OiBpbiBmdW5jdGlvbgo+IGBtZHBfaGFuZGxlX2NtZHFfY2FsbGJhY2suY29sZCc6Cj4gbXRrLW1k
+cDMtY21kcS5jOigudGV4dC51bmxpa2VseSsweDM0KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0bwo+
+IGBtdGtfbXV0ZXhfdW5wcmVwYXJlJwo+IGxkOiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1t
+ZHAzL210ay1tZHAzLWNtZHEubzogaW4gZnVuY3Rpb24KPiBgbWRwX2NtZHFfc2VuZC5jb2xkJzoK
+PiBtdGstbWRwMy1jbWRxLmM6KC50ZXh0LnVubGlrZWx5KzB4ZTMpOiB1bmRlZmluZWQgcmVmZXJl
+bmNlIHRvCj4gYG10a19tdXRleF91bnByZXBhcmUnCj4gbWFrZTogKioqIFtNYWtlZmlsZToxMTc3
+OiB2bWxpbnV4XSBFcnJvciAxCj4gCj4gSSBhbHNvIGdldCBjb21waWxlIHdhcm5pbmdzOgo+IAo+
+IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY29tcC5jOiBJbiBmdW5j
+dGlvbgo+IOKAmG1kcF9zdWJfY29tcHNfY3JlYXRl4oCZOgo+IGRyaXZlcnMvbWVkaWEvcGxhdGZv
+cm0vbXRrLW1kcDMvbXRrLW1kcDMtY29tcC5jOjExNTE6Mjk6IHdhcm5pbmc6Cj4gaW1wbGljaXQg
+Y29udmVyc2lvbiBmcm9tIOKAmGVudW0gbXRrX21kcF9jb21wX2lk4oCZIHRvIOKAmGVudW0KPiBt
+ZHBfY29tcF90eXBl4oCZIFstV2VudW0tY29udmVyc2lvbl0KPiAgMTE1MSB8ICAgZW51bSBtZHBf
+Y29tcF90eXBlIHR5cGUgPSBNRFBfQ09NUF9OT05FOwo+ICAgICAgIHwgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn4KPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1t
+ZHAzL210ay1tZHAzLWNvbXAuYzogSW4gZnVuY3Rpb24KPiDigJhtZHBfY29tcG9uZW50X2luaXTi
+gJk6Cj4gZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jb21wLmM6MTIx
+Nzo2OiB3YXJuaW5nOgo+IHVudXNlZCB2YXJpYWJsZSDigJhp4oCZIFstV3VudXNlZC12YXJpYWJs
+ZV0KPiAgMTIxNyB8ICBpbnQgaSwgcmV0Owo+ICAgICAgIHwgICAgICBeCj4gZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jbWRxLmM6IEluIGZ1bmN0aW9uCj4g4oCYbWRw
+X2NtZHFfc2VuZOKAmToKPiBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAz
+LWNtZHEuYzo0ODk6MTogd2FybmluZzogdGhlCj4gZnJhbWUgc2l6ZSBvZiAxMzEyIGJ5dGVzIGlz
+IGxhcmdlciB0aGFuIDEwMjQgYnl0ZXMgWy1XZnJhbWUtbGFyZ2VyLQo+IHRoYW49XQo+ICAgNDg5
+IHwgfQo+ICAgICAgIHwgXgo+IAo+IFJlZ2FyZHMsCj4gCj4gCUhhbnMKPiAKPiBPbiAyNC8wOC8y
+MDIxIDEyOjAwLCBNb3VkeSBIbyB3cm90ZToKPiA+IENoYW5nZXMgc2luY2UgdjY6Cj4gPiAtIFJl
+ZmFjdG9yIEdDRSBldmVudCB0byBjb3JyZXNwb25kaW5nIG5vZGUuCj4gPiAtIEZpeCBkdF9iaW5k
+aW5nX2NoZWNrIGZhaWwuCj4gPiAtIEZpeCBjb21waWxhdGlvbiBlcnJvcnMuCj4gPiAKPiA+IENo
+YW5nZXMgc2luY2UgdjU6Cj4gPiAtIFJlYmFzZSBvbiB2NS4xNC1yYzYuCj4gPiAtIE1vdmUgTU1T
+WVMvTXV0ZXggc2V0dGluZ3MgdG8gY29ycmVzcG9uZGluZyBkcml2ZXIuCj4gPiAtIFJldmlzZSB0
+aGUgc29mdHdhcmUgbGljZW5zZSBkZXNjcmlwdGlvbiBhbmQgY29weXJpZ2h0Lgo+ID4gLSBSZW1v
+dmUgdW5uZWNlc3NhcnkgZW51bS4gb3IgZGVmaW5pdGlvbnMuCj4gPiAtIE9wdGltaXplIHBsYXRm
+b3JtL2NoaXAgZGVmaW5pdGlvbiBjb25kaXRpb25zLgo+ID4gLSBVc2UgZ2VuZXJhbCBwcmludGlu
+ZyBmdW5jdGlvbnMgaW5zdGVhZCBvZiBNRFAzIHByaXZhdGUgb25lcy4KPiA+IC0gRml4IGNvbXBp
+bGUgd2FybmluZy4KPiA+IAo+ID4gQ2hhbmdlcyBzaW5jZSB2NDoKPiA+IC0gUmViYXNlIG9uIHY1
+LjEzLXJjMS4KPiA+IC0gUmVtb3ZlIHRoZSBDTURRIGZsdXNoIGZsb3cgdG8gbWF0Y2ggdGhlIENN
+RFEgQVBJIGNoYW5nZS4KPiA+IC0gSW50ZWdyYXRlIGZvdXIgb2YgTURQJ3MgZGlyZWN0LWxpbmsg
+c3ViY29tcG9uZW50cyBpbnRvIE1EUAo+ID4gY29udHJvbGxlciBub2RlCj4gPiAgIGZyb20gc3lz
+Y29uIG5vZGUgdG8gYXZvaWQgaWxsZWdhbCBjbG9jayB1c2FnZS4KPiA+IC0gUmV3cml0ZSBkdC1i
+aW5kaW5nIGluIGEgSlNPTiBjb21wYXRpYmxlIHN1YnNldCBvZiBZQU1MCj4gPiAtIEZpeCBhIGJp
+dCBvZiBtYWNybyBhcmd1bWVudCBwcmVjZWRlbmNlLgo+ID4gCj4gPiBDaGFuZ2VzIHNpbmNlIHYz
+Ogo+ID4gLSBSZWJhc2Ugb24gdjUuOS1yYzEuCj4gPiAtIG1vZGlmeSBjb2RlIGZvciByZXZpZXcg
+Y29tbWVudCBmcm9tIFJvYiBIZXJyaW5nLCBjYW5jZWwgbXVsdGlwbGUKPiA+IG5vZGVzIHVzaW5n
+Cj4gPiAgIHNhbWUgcmVnaXN0ZXIgYmFzZSBzaXR1YXRpb24uCj4gPiAtIGNvbnRyb2wgSU9NTVUg
+cG9ydCB0aHJvdWdoIHBtIHJ1bnRpbWUgZ2V0L3B1dCB0byBETUEgY29tcG9uZW50cycKPiA+IGRl
+dmljZS4KPiA+IC0gU0NQKFZQVSkgZHJpdmVyIHJldmlzaW9uLgo+ID4gLSBzdG9wIHF1ZXVpbmcg
+am9icyhyZW1vdmUgZmx1c2hfd29ya3F1ZXVlKCkpIGFmdGVyCj4gPiBtZHBfbTJtX3JlbGVhc2Uo
+KS4KPiA+IC0gYWRkIGNvbXB1dGF0aW9uIG9mIHBsYW5lIGFkZHJlc3Mgd2l0aCBkYXRhX29mZnNl
+dC4KPiA+IC0gZml4IHNjYWxlIHJhdGlvIGNoZWNrIGlzc3VlLgo+ID4gLSBhZGQgZGVmYXVsdCB2
+NGwyX2Zvcm1hdCBzZXR0aW5nLgo+ID4gCj4gPiBDaGFuZ2VzIHNpbmNlIHYyOgo+ID4gLSBtb2Rp
+ZnkgY29kZSBmb3IgcmV2aWV3IGNvbW1lbnQgZnJvbSBUb21hc3ogRmlnYSAmIEFsZXhhbmRyZQo+
+ID4gQ291cmJvdAo+ID4gLSByZXZpZXcgY29tbWVudCBmcm9tIFJvYiBIZXJyaW5nIHdpbGwgb2Zm
+ZXIgY29kZSByZXZpc2lvbiBpbiB2NCwKPiA+IGR1ZSB0bwo+ID4gICBpdCdzIHJlbGF0ZWQgdG8g
+ZGV2aWNlIG5vZGUgbW9kaWZpY2F0aW9uLCB3aWxsIG5lZWQgdG8gbW9kaWZ5Cj4gPiBjb2RlCj4g
+PiAgIGFyY2hpdGVjdHVyZQo+ID4gCj4gPiBDaGFuZ2VzIHNpbmNlIHYxOgo+ID4gLSBtb2RpZnkg
+Y29kZSBmb3IgQ01EUSB2MyBBUEkgc3VwcG9ydAo+ID4gLSBFQyBpcGkgY21kIG1pZ3JhdGlvbgo+
+ID4gLSBmaXggY29tcGxpYW5jZSB0ZXN0IGZhaWwgaXRlbSAobTJtIGNtZCB3aXRoIC1mKSBkdWUg
+dG8gdGhlcmUgaXMKPiA+IHR3byBwcm9ibGVtIGluIHJ1bmluZyBhbGwgZm9ybWF0KC1mKSBjbWQ6
+Cj4gPiAxLiBvdXQgb2YgbWVtb3J5IGJlZm9yZSB0ZXN0IGNvbXBsZXRlCj4gPiAgICAgICAgIER1
+ZSB0byBjYXB0dXJlIGJ1ZmZlciBtbWFwIChyZWZjb3VudCArIDEpIGFmdGVyIHJlcWJ1ZiBidXQK
+PiA+IHNlZW1zCj4gPiAgICAgICAgIG5vIGNvcnJlc3BvbmRpbmcgbXVubWFwIGNhbGxlZCBiZWZv
+cmUgZGV2aWNlIGNsb3NlLgo+ID4gICAgICAgICBUaGVyZSBhcmUgdG90YWwgMTJYWCBpdGVtcyhm
+b3JtYXRzKSBpbiBmb3JtYXQgdGVzdCBhbmQgZWFjaAo+ID4gZm9ybWF0Cj4gPiAgICAgICAgIGFs
+bG9jIDggY2FwdHVyZS9vdXRwdXQgYnVmZmVycy4KPiA+IDIuIHVuY2Vhc2luZ2x5IGNhcHR1cmVC
+dWZzKCkgKHJhbmRvbWx5KQo+ID4gICAgICAgICBTZWVtcyB0aGUgYnJlYWsgc3RhdGVtZW50IGRp
+ZG4ndCBjYXRjaCB0aGUgY291bnQgPT0gMAo+ID4gc2l0dWF0aW9uOgo+ID4gICAgICAgICBJbiB2
+NGwyLXRlc3QtYnVmZmVycy5jcHAsIGZ1bmN0aW9uOiBjYXB0dXJlQnVmcygpCj4gPiAgICAgICAg
+ICAgICAgICAgICAgICAgICAuLi4KPiA+ICAgICAgICAgICAgICAgICAgICAgICAgIGNvdW50LS07
+Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICBpZiAoIW5vZGUtPmlzX20ybSAmJiAhY291bnQp
+Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJyZWFrOwo+ID4gICAgICAgICBM
+b2cgaXMgYXMgYXR0YWNobWVudAo+ID4gCj4gPiBJIHdpbGwgcGFzdGUgdGhlIHRlc3QgcmVzdWx0
+IHdpdGggcHJvYmxlbSBwYXJ0IGluIGFub3RoZXIgZS1tYWlsCj4gPiAKPiA+IEhpLAo+ID4gCj4g
+PiBUaGlzIGlzIHRoZSBmaXJzdCB2ZXJzaW9uIG9mIFJGQyBwYXRjaCBmb3IgTWVkaWEgRGF0YSBQ
+YXRoIDMKPiA+IChNRFAzKSwKPiA+IE1EUDMgaXMgdXNlZCBmb3Igc2NhbGluZyBhbmQgY29sb3Ig
+Zm9ybWF0IGNvbnZlcnNpb24uCj4gPiBzdXBwb3J0IHVzaW5nIEdDRSB0byB3cml0ZSByZWdpc3Rl
+ciBpbiBjcml0aWNhbCB0aW1lIGxpbWl0YXRpb24uCj4gPiBzdXBwb3J0IFY0TDIgbTJtIGRldmlj
+ZSBjb250cm9sLgo+ID4gCj4gPiBNb3VkeSBIbyAoNSk6Cj4gPiAgIHNvYzogbWVkaWF0ZWs6IG11
+dGV4OiBhZGQgc3VwcG9ydCBmb3IgTURQCj4gPiAgIHNvYzogbWVkaWF0ZWs6IG1tc3lzOiBBZGQg
+c3VwcG9ydCBmb3IgTURQCj4gPiAgIGR0LWJpbmRpbmc6IG10ODE4MzogQWRkIE1lZGlhdGVrIE1E
+UDMgZHQtYmluZGluZ3MKPiA+ICAgZHRzOiBhcm02NDogbXQ4MTgzOiBBZGQgTWVkaWF0ZWsgTURQ
+MyBub2Rlcwo+ID4gICBtZWRpYTogcGxhdGZvcm06IG10ay1tZHAzOiBBZGQgTWVkaWF0ZWsgTURQ
+MyBkcml2ZXIKPiA+IAo+ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxtZHAzLWNjb3Jy
+LnlhbWwgICB8ICAgNTcgKwo+ID4gIC4uLi9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlayxtZHAzLXJk
+bWEueWFtbCAgICB8ICAyMDcgKysrCj4gPiAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG1k
+cDMtcnN6LnlhbWwgICAgIHwgICA2NSArCj4gPiAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVr
+LG1kcDMtd2RtYS55YW1sICAgIHwgICA3MSArCj4gPiAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlh
+dGVrLG1kcDMtd3JvdC55YW1sICAgIHwgICA3MSArCj4gPiAgYXJjaC9hcm02NC9ib290L2R0cy9t
+ZWRpYXRlay9tdDgxODMuZHRzaSAgICAgIHwgIDExMCArKwo+ID4gIGRyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vS2NvbmZpZyAgICAgICAgICAgICAgICB8ICAgMTkgKwo+ID4gIGRyaXZlcnMvbWVkaWEv
+cGxhdGZvcm0vTWFrZWZpbGUgICAgICAgICAgICAgICB8ICAgIDIgKwo+ID4gIGRyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vbXRrLW1kcDMvTWFrZWZpbGUgICAgICB8ICAgIDYgKwo+ID4gIC4uLi9tZWRp
+YS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX2Njb3JyLmggICB8ICAgMTkgKwo+ID4gIGRyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbWRwX3JlZ19pc3AuaCB8ICAgMjcgKwo+ID4gIC4u
+Li9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3JkbWEuaCAgICB8ICAgNjUgKwo+ID4g
+IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbWRwX3JlZ19yc3ouaCB8ICAgMzkgKwo+
+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3dkbWEuaCAgICB8ICAgNDcg
+Kwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3dyb3QuaCAgICB8ICAg
+NTUgKwo+ID4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLWltZy1pcGkuaCB8
+ICAyODAgKysrKwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jbWRx
+LmMgICB8ICA1MDcgKysrKysrKwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGst
+bWRwMy1jbWRxLmggICB8ICAgNDYgKwo+ID4gIC4uLi9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9t
+dGstbWRwMy1jb21wLmMgICB8IDEzMDcKPiA+ICsrKysrKysrKysrKysrKysrCj4gPiAgLi4uL21l
+ZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAuaCAgIHwgIDE0NyArKwo+ID4gIC4u
+Li9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1jb3JlLmMgICB8ICAzMjkgKysrKysK
+PiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtY29yZS5oICAgfCAgIDc1
+ICsKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMtbTJtLmMgICAgfCAg
+ODAxICsrKysrKysrKysKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1kcDMt
+bTJtLmggICAgfCAgIDQxICsKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLW1k
+cDMtcmVncy5jICAgfCAgNzQ2ICsrKysrKysrKysKPiA+ICAuLi4vbWVkaWEvcGxhdGZvcm0vbXRr
+LW1kcDMvbXRrLW1kcDMtcmVncy5oICAgfCAgMzcyICsrKysrCj4gPiAgLi4uL21lZGlhL3BsYXRm
+b3JtL210ay1tZHAzL210ay1tZHAzLXZwdS5jICAgIHwgIDMxMiArKysrCj4gPiAgLi4uL21lZGlh
+L3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLXZwdS5oICAgIHwgICA3OCArCj4gPiAgZHJpdmVy
+cy9zb2MvbWVkaWF0ZWsvbXQ4MTgzLW1tc3lzLmggICAgICAgICAgIHwgIDIzNSArKysKPiA+ICBk
+cml2ZXJzL3NvYy9tZWRpYXRlay9tdGstbW1zeXMuYyAgICAgICAgICAgICAgfCAgMTY0ICsrKwo+
+ID4gIGRyaXZlcnMvc29jL21lZGlhdGVrL210ay1tbXN5cy5oICAgICAgICAgICAgICB8ICAgIDkg
+Ky0KPiA+ICBkcml2ZXJzL3NvYy9tZWRpYXRlay9tdGstbXV0ZXguYyAgICAgICAgICAgICAgfCAg
+MTA2ICstCj4gPiAgaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmggICAgICAg
+IHwgICA4MSArCj4gPiAgaW5jbHVkZS9saW51eC9zb2MvbWVkaWF0ZWsvbXRrLW11dGV4LmggICAg
+ICAgIHwgICAgOCArCj4gPiAgMzQgZmlsZXMgY2hhbmdlZCwgNjQ5NSBpbnNlcnRpb25zKCspLCA5
+IGRlbGV0aW9ucygtKQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NAo+ID4gRG9jdW1lbnRhdGlvbi9k
+ZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG1kcDMtY2NvcnIueWFtbAo+ID4gIGNy
+ZWF0ZSBtb2RlIDEwMDY0NAo+ID4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21l
+ZGlhL21lZGlhdGVrLG1kcDMtcmRtYS55YW1sCj4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0Cj4gPiBE
+b2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWssbWRwMy1yc3ou
+eWFtbAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NAo+ID4gRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVl
+L2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLG1kcDMtd2RtYS55YW1sCj4gPiAgY3JlYXRlIG1vZGUg
+MTAwNjQ0Cj4gPiBEb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvbWVkaWF0
+ZWssbWRwMy13cm90LnlhbWwKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS9tdGstbWRwMy9NYWtlZmlsZQo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL210ay1tZHAzL21kcF9yZWdfY2NvcnIuaAo+ID4gIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL21kcF9yZWdfaXNwLmgKPiA+
+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBf
+cmVnX3JkbWEuaAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3Jt
+L210ay1tZHAzL21kcF9yZWdfcnN6LmgKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tZHBfcmVnX3dkbWEuaAo+ID4gIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL21kcF9yZWdfd3JvdC5oCj4gPiAg
+Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRrLWlt
+Zy1pcGkuaAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210
+ay1tZHAzL210ay1tZHAzLWNtZHEuYwo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21l
+ZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNtZHEuaAo+ID4gIGNyZWF0ZSBtb2RlIDEw
+MDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvbXAuYwo+ID4g
+IGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1t
+ZHAzLWNvbXAuaAo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3Jt
+L210ay1tZHAzL210ay1tZHAzLWNvcmUuYwo+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLWNvcmUuaAo+ID4gIGNyZWF0ZSBtb2Rl
+IDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210ay1tZHAzLW0ybS5jCj4g
+PiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcDMvbXRr
+LW1kcDMtbTJtLmgKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9tdGstbWRwMy9tdGstbWRwMy1yZWdzLmMKPiA+ICBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
+cy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy1yZWdzLmgKPiA+ICBjcmVhdGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwMy9tdGstbWRwMy12cHUuYwo+
+ID4gIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAzL210
+ay1tZHAzLXZwdS5oCj4gPiAKPiAKPiAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
+ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
+L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
