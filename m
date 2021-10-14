@@ -2,101 +2,100 @@ Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EE563C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:30:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 53796C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:39:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AF8B5610EA
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:30:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AF8B5610EA
+	by mail.kernel.org (Postfix) with ESMTPS id 18336610CB
+	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 12:39:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 18336610CB
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=vanguardiasur.com.ar
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jFhzAgn40u0lWRMQbe++GkpWVHDVcWqc1mAnPXfEzfI=; b=e6Nk25jWA9Mdfo
-	mdSvaX6uHixz5abxXQvl233M+qlcUA+8IguPA9Uz6nUOAghSHD4yl72bwXAjvOvp+amX8Nt79hKl/
-	rB3VphQaxl7I07DOHMb5Hc4n0up6Nq7EJqt21Cvbq6xpsz3Dr0F1Sq+7LwWTSTNwwtmt63HmJCfL0
-	Ly7FmIFga9nDPuZG/114GvuqJFijG3QC9bc7H75cis5xU5qGI95iXUWv3KXQhs06TlK6ZW/vNh5cN
-	3Ym64vy06Ho2YGzDmXP6tLKpHqE4kpawffPE4+Wxe6lqQ1kAqFEMQ9pxc5L36HcaonbwyyztaHWoa
-	01wAa6b/ahWFsIDM2vyg==;
+	List-Owner; bh=CaYSXG7RmoVPS0153fysR3noCp136tLwt3i+DeeyK58=; b=NXRDet3nZK32J2
+	cFldbGYTDO/MfLwoViM4VqrOetRvdnHDlhm5/qn4ofyZli24mOfmTq/0vU3rNf4mifT4SODAs5TRn
+	ol59W0OSPnuv21jZ8ImGVWAxV2N/EO1oxcZ0sYIUMKWkVWNoeuyXMnW8mVfUkw4tIG5k5UVPeRJcm
+	U2W7a6SmcuzDzoU4F6y8RJShCU3MZFv/NQ8sh2QqQ92lNzAhN+b+IrF5EOnWcNmlwkqfJECIwNunF
+	itgpcZ8z/n20JzBFeGijrCkroBp9VP1b/VAUhUbsb2IZM7xyT8yaMkb+B2Kn2ICmsRYUYf+soTuAL
+	vJ2wYbkOauZivH46daxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mazru-0034bt-UQ; Thu, 14 Oct 2021 12:29:54 +0000
-Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
+	id 1mb00i-0035r0-JW; Thu, 14 Oct 2021 12:39:00 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mazrs-0034aG-C1
- for linux-mediatek@lists.infradead.org; Thu, 14 Oct 2021 12:29:54 +0000
-Received: by mail-ua1-x92d.google.com with SMTP id e10so6259224uab.3
- for <linux-mediatek@lists.infradead.org>; Thu, 14 Oct 2021 05:29:51 -0700 (PDT)
+ id 1mb00f-0035pd-M0
+ for linux-mediatek@lists.infradead.org; Thu, 14 Oct 2021 12:38:59 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id y12so24228630eda.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 14 Oct 2021 05:38:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=vanguardiasur-com-ar.20210112.gappssmtp.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=bpEt5S2I1jECJZ7RAHxHySVXzboFeasK/FtBe+cjO18=;
- b=yHj0RLsispl3pZOx9OzQRdtNdyJkziqY9hxlNeIeAdjRANYoVp3gT0ZHuJt++TVuLE
- Fs6uvLKVQ3/EfqaX88EnLDmlO8KLYxuYkeCSIiy+O0kLtnQbBr5bAFwsO+DXKyHQGiOa
- HJN/Ucm4pLg4vxoMKuZJJjhAh6HCCjXuzqOdOb/PmWZ/RkzN2ET0KIMgWgisCz/fHkgx
- r4HLxdDuoMCq9Gn7CraNwRXBkENmGDLCg+9DIs5gOlk96PoEcJz6EMJk+YC6BatRNhRE
- sqPuauczqUPyN/RIKpvfOJt9L1aJ704G7BkWwfJ4iHkq7WmmRig6UUW7h7+iknrv26v7
- qkcw==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=8OYfFNdhKlh5vCRuRw3rL+lpyG6Iz3zsndXlWQuOqNI=;
+ b=rO8Cimbu3ArvFcSKskAMaEz7aYPRXYb1TiaXDvaU2b70yNbLMOWMpDmGJFMN1Rnz7G
+ M297CLhdxw2O0YteyYq9YLtuf9NyzJWhkonUS9AlKuTCLX+CrlBF3jbIZ1vLEbv5JyfN
+ cq9XMY7pO8xXwClCitODDk8MvmypSpa56G3dGbCHCnwUA1DHpXSTI+VBZQ5QRFvuARgD
+ rnQqcQgS7V45c7G2eEvq3qx6CxbpHc1h2Zfqt8gRETh7npquNH5NFa9Iv1o2PkOi7Rq2
+ EAzYMngcgh029FfDuYQ8j5b/8ea7PNtfWGsSImewcj1GyCS1CqkK4rdJsai0iuCsWFE0
+ 01UQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=bpEt5S2I1jECJZ7RAHxHySVXzboFeasK/FtBe+cjO18=;
- b=yoju/5eUhvP4j6bCUHfjpfmhjQfc3TwKEGfsPzbmSlythZ4nY+E9vjyb83Unr2D8iy
- 0hNJiQN8xsUEwX+oPsTJTCx1HhlZsnnDRKmuYKjIE9TNdvoBzH3THmZIquW1BkKuM0VA
- 73Kg9GQASVFgvJrs70UcKLRjr4f9Qq0wUFEZWUbEM92c1itHc1734/x5wevuT4ex7BLK
- z32aYoAIUZIbvDLvwlkdMxkdamo27SppspySg2fkGV73qIvCVxXkyeWThHyhJ+7WWPI0
- heJs5kK9T6yYpu7wq6B2Z4WY0YIdPpFwFpOr2JzMuBEKDM9KhBw0B7mqcYophdEpvvEg
- dHvw==
-X-Gm-Message-State: AOAM531JjzS11k2hV9NRElNnepgFKk37ZzFvYqX6a904rkP3V21d5TKT
- WP6TXIaRlERq3aX1jEL1AmdPqA==
-X-Google-Smtp-Source: ABdhPJwpZPIshTtwDQYZynBXVHPTqsAW65pNND3KsVH+Ilc20oOix2EKPoY+nV7xF5rMeic3f2Z8gg==
-X-Received: by 2002:a05:6102:e86:: with SMTP id
- l6mr2706001vst.40.1634214590367; 
- Thu, 14 Oct 2021 05:29:50 -0700 (PDT)
-Received: from fedora ([2803:9800:98c2:8470:9f4:8e2a:88e5:ec01])
- by smtp.gmail.com with ESMTPSA id x125sm1589796vkc.25.2021.10.14.05.29.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 14 Oct 2021 05:29:48 -0700 (PDT)
-Date: Thu, 14 Oct 2021 09:29:42 -0300
-From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v7, 11/15] media: mtk-vcodec: Add core thread
-Message-ID: <YWgitrqT9sWyELpr@fedora>
-References: <20211011070247.792-1-yunfei.dong@mediatek.com>
- <20211011070247.792-12-yunfei.dong@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=8OYfFNdhKlh5vCRuRw3rL+lpyG6Iz3zsndXlWQuOqNI=;
+ b=S3KBMK35MmI5YsXY89FjfBVdBi/AkBjEc86dXNOW0jVGmMJDe2KpTOAUQlHMTIHl55
+ 1Rpw05cLZ7TyaaI8lvi9koQTdOR4pc8wOYUMDBw7y2DoIBJQrbnylS9aSABEr2HwQGeR
+ 6m07I8Efih/bkVQONWC7xQTJKaa+RcEFWgRkK/iaMU+VGM4Dcd/RO4gSv9oaWxurbokK
+ znCRpjceDeGalZVtVl0wfO+2VyWFuPqvMU+VYzr64NGj4XkKlZNKa24v4ErtEpUsdS1u
+ SEdkZreGldEuPqgYoBLY5dc9HHnEqFnQTC2bS/9CS045bCAILQewf+8aryNL53P9lS1Z
+ QmuQ==
+X-Gm-Message-State: AOAM530Qb3pVGuIWmGh0rgNhfO/HEp9frQGap57Kg4jMCQvg4iVy9172
+ L/rtA7a47+WAY2oOb45N45FH9Y39hpwkNLR2W4PMFw==
+X-Google-Smtp-Source: ABdhPJw5RwGlWi8DUKaA9l8+IoPQsOFoPKhiFW27/0Uo29ALZMFUdlPeJGnIjKW+HthuHqOmJG3IW10gLCzTjzFq+d0=
+X-Received: by 2002:a05:6402:40d2:: with SMTP id
+ z18mr8324506edb.362.1634215135566; 
+ Thu, 14 Oct 2021 05:38:55 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211011070247.792-12-yunfei.dong@mediatek.com>
+References: <20210901083215.25984-1-yunfei.dong@mediatek.com>
+ <CAAEAJfDOt_GyDPojcj5P6Wou9HC2GC8YzRt2wYyqdrCOjfeOog@mail.gmail.com>
+ <3b9463e88d88ce85205da08f8263252da7726ade.camel@mediatek.com>
+ <aba7fb4ffe6e45ac90869b5017468386bce64d28.camel@mediatek.com>
+ <b7ed8b71578a98704e9b8ca29cac63c67cc14b3f.camel@mediatek.com>
+ <CAAEAJfCHEBFc8B7C0bu7UxtJdffvDarqgA-rset1wPjLOiV01A@mail.gmail.com>
+ <b3fa00e8b66658e120279e37261cbdb5db7edf52.camel@mediatek.com>
+In-Reply-To: <b3fa00e8b66658e120279e37261cbdb5db7edf52.camel@mediatek.com>
+From: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+Date: Thu, 14 Oct 2021 09:38:43 -0300
+Message-ID: <CAAEAJfD0=0zNOS8ydu-BwpdoCsADAjdpm1LXBzZ2T8D=JQmYtg@mail.gmail.com>
+Subject: Re: [PATCH v6, 00/15] Using component framework to support multi
+ hardware decode
+To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+Cc: Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Tomasz Figa <tfiga@google.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, 
+ Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>, linux-media <linux-media@vger.kernel.org>, 
+ devicetree <devicetree@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ srv_heupstream <srv_heupstream@mediatek.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_052952_588527_5EEB7C9F 
-X-CRM114-Status: GOOD (  26.69  )
+X-CRM114-CacheID: sfid-20211014_053857_740696_E4874376 
+X-CRM114-Status: GOOD (  16.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,143 +114,38 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Yunfei,
 
-On Mon, Oct 11, 2021 at 03:02:43PM +0800, Yunfei Dong wrote:
-> Core thread:
-> 1. Gets lat_buf from core msg queue.
-> 2. Proceeds core decode.
-> 3. Puts the lat_buf back to lat msg queue.
-> 
-> Both H264 and VP9 rely on the core thread.
-> 
+On Tue, 12 Oct 2021 at 22:17, yunfei.dong@mediatek.com
+<yunfei.dong@mediatek.com> wrote:
+>
+> Hi Ezequiel,
+>
+> Thanks for your feedback,
+>
+> The driver can work well now according to your advice with
+> of_platform_populate interface.
+>
+> In order to separate parent node with children node, parent node is
+> master device, children node is component device.
+>
+> The master and component are registered platform device.
+>
+>
+> Could you please help to review the patch again when you are free:
+>
+> https://patchwork.linuxtv.org/project/linux-media/cover/20211011070247.792-1-yunfei.dong@mediatek.com/
+>
 
-Avoid the kthread API and instead go with the workqueue API.
+I'm glad you managed to simplify the driver. I tried applying the patches
+but they don't apply on media master. Please push a branch to gitlab or github
+or somewhere public.
 
-See Documentation/core-api/workqueue.rst and include/linux/workqueue.h.
+Keep in mind that when you need people to review your code,
+it's generally good practice to try to make it easy on them.
+The harder you make it, the less inclined people will be to
+spend time on your work.
 
-Thanks!
+Thanks,
 Ezequiel
-
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> ---
->  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 12 +++++++
->  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  7 ++++
->  .../platform/mtk-vcodec/vdec_msg_queue.c      | 32 +++++++++++++++++++
->  .../platform/mtk-vcodec/vdec_msg_queue.h      |  6 ++++
->  4 files changed, 57 insertions(+)
-> 
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> index e21e0c4bcd86..de83e3b821b4 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> @@ -364,6 +364,18 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->  		goto err_dec_pm;
->  	}
->  
-> +	if (VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch)) {
-> +		vdec_msg_queue_init_ctx(&dev->msg_queue_core_ctx,
-> +			MTK_VDEC_CORE);
-> +		dev->kthread_core = kthread_run(vdec_msg_queue_core_thead, dev,
-> +			"mtk-%s", "core");
-> +		if (IS_ERR(dev->kthread_core)) {
-> +			dev_err(&pdev->dev, "Failed to create core thread");
-> +			ret = PTR_ERR(dev->kthread_core);
-> +			goto err_res;
-> +		}
-> +	}
-> +
->  	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
->  		mutex_init(&dev->dec_mutex[i]);
->  	spin_lock_init(&dev->irqlock);
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> index 9d072c082f73..68a9b1a2d3b3 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> @@ -27,6 +27,7 @@
->  #define MTK_VCODEC_MAX_PLANES	3
->  #define MTK_V4L2_BENCHMARK	0
->  #define WAIT_INTR_TIMEOUT_MS	1000
-> +#define VDEC_LAT_ARCH(hw_arch) ((hw_arch) >= MTK_VDEC_LAT_SINGLE_CORE)
->  
->  /*
->   * enum mtk_hw_reg_idx - MTK hw register base index
-> @@ -466,6 +467,9 @@ struct mtk_vcodec_enc_pdata {
->   * @comp_dev: component hardware device
->   * @component_node: component node
->   *
-> + * @kthread_core: thread used for core hardware decode
-> + * @msg_queue_core_ctx: msg queue context used for core thread
-> + *
->   * @hardware_bitmap: used to record hardware is ready or not
->   */
->  struct mtk_vcodec_dev {
-> @@ -508,6 +512,9 @@ struct mtk_vcodec_dev {
->  	void *comp_dev[MTK_VDEC_HW_MAX];
->  	struct device_node *component_node[MTK_VDEC_HW_MAX];
->  
-> +	struct task_struct *kthread_core;
-> +	struct vdec_msg_queue_ctx msg_queue_core_ctx;
-> +
->  	DECLARE_BITMAP(hardware_bitmap, MTK_VDEC_HW_MAX);
->  };
->  
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> index d66ed98c79a9..665f571eab4b 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> @@ -256,3 +256,35 @@ void vdec_msg_queue_deinit(
->  			kfree(lat_buf->private_data);
->  	}
->  }
-> +
-> +int vdec_msg_queue_core_thead(void *data)
-> +{
-> +	struct mtk_vcodec_dev *dev = data;
-> +	struct vdec_lat_buf *lat_buf;
-> +	struct mtk_vcodec_ctx *ctx;
-> +
-> +	set_freezable();
-> +	for (;;) {
-> +		try_to_freeze();
-> +		if (kthread_should_stop())
-> +			break;
-> +
-> +		lat_buf = vdec_msg_queue_dqbuf(&dev->msg_queue_core_ctx);
-> +		if (!lat_buf)
-> +			continue;
-> +
-> +		ctx = lat_buf->ctx;
-> +		mtk_vcodec_set_curr_ctx(dev, ctx, MTK_VDEC_CORE);
-> +
-> +		if (!lat_buf->core_decode)
-> +			mtk_v4l2_err("Core decode callback func is NULL");
-> +		else
-> +			lat_buf->core_decode(lat_buf);
-> +
-> +		mtk_vcodec_set_curr_ctx(dev, NULL, MTK_VDEC_CORE);
-> +		vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
-> +	}
-> +
-> +	mtk_v4l2_debug(3, "Video Capture Thread End");
-> +	return 0;
-> +}
-> diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> index 1905ce713592..b5745b144140 100644
-> --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> @@ -148,4 +148,10 @@ void vdec_msg_queue_deinit(
->  	struct vdec_msg_queue *msg_queue,
->  	struct mtk_vcodec_ctx *ctx);
->  
-> +/**
-> + * vdec_msg_queue_core_thead - used for core decoder.
-> + * @data: private data used for each codec
-> + */
-> +int vdec_msg_queue_core_thead(void *data);
-> +
->  #endif
-> -- 
-> 2.25.1
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
