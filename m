@@ -2,14 +2,14 @@ Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 72AE4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 06:42:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 13EB5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 07:47:34 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2B11660F36
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 06:42:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2B11660F36
+	by mail.kernel.org (Postfix) with ESMTPS id B6F9461037
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 07:47:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B6F9461037
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,51 +18,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gGCrstrZyN9tc6iN4twX9p5uAg/PVu04bxHKTru5SNk=; b=EWy6c00PsQ70zC
-	IllIzeBstfmK1iBVIcjfnu4RRPl5o4KnwLLumsKHrrWMFPFw0/AZGg33cfsIu+vvbUM7Oo41Ewi6A
-	QiUA/s2ZrbA/GiaOr1s9S9U04jQSO6UfM2l8rXVH1Ed4kCKxEUJ3ODj4sheIcyeXw62b+byrNW7ma
-	i26V8JTunD+xGxwlWyeypJIvR442Nj4/8atkR42RbV9fHl8TblmDrFFMSQWEVB6o38LU2B8tPL/vC
-	edxjFDbd1B5U8+lttVYjXAGj7WwPnKTsjfWMxDb5MD7/VuM0EZ0c6rjGmmexCgMB3MSRmbhRejD5s
-	F0wwvuijAhZNbjtevTxA==;
+	List-Owner; bh=evKPrnqb0avwG+Hde3N35YxmqyUo6AuyxO+QehvKxf0=; b=CgdXReXqWhPuTN
+	Hk6O5f2jk0XKwttwMhdsQjv4asAY0NihC1ILu38tFGZKtRlk6k8LmJZKhBMndbonBHCCfzM0gQfaA
+	5z3p8E+GaXxdOi4XsJgYJhLa7mossO43imq2KL5SmjlVMIM+b9zq2TxWQtww/PIHrKcmMhC9c0HmI
+	l1pyfJIWX9EweNe786GOUP3nThoisAQowpDuWbxH1YAftuMvwah8kpZZQKW3+pEvr7Q4ATE78kX55
+	xbuxgIdHapGKo7qqtY5MTGVXKxz4mpSfLRcoUJpXBPFvf2ob+i7lkuAvJKiIx2MhCdaN0dFCQhR2C
+	nV9jUSrqa2qHwHSz1uSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbGuy-005ZsF-Ir; Fri, 15 Oct 2021 06:42:12 +0000
+	id 1mbHw1-005k6f-5k; Fri, 15 Oct 2021 07:47:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbGuu-005ZqS-E3; Fri, 15 Oct 2021 06:42:11 +0000
-X-UUID: 11573cc123ac44099595d63048c31ddd-20211014
-X-UUID: 11573cc123ac44099595d63048c31ddd-20211014
+ id 1mbHvl-005k2G-GZ; Fri, 15 Oct 2021 07:47:08 +0000
+X-UUID: 70b7d2fb71bf48919acbd6814b865230-20211015
+X-UUID: 70b7d2fb71bf48919acbd6814b865230-20211015
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1259424543; Thu, 14 Oct 2021 23:42:01 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1084566038; Fri, 15 Oct 2021 00:46:59 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 23:36:06 -0700
+ 15.0.1497.2; Fri, 15 Oct 2021 00:46:57 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 15 Oct 2021 14:36:05 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 Oct 2021 14:36:04 +0800
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
- <robh+dt@kernel.org>, =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, 
- Bjorn Helgaas <bhelgaas@google.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- Jianjun Wang <jianjun.wang@mediatek.com>, <qizhong.cheng@mediatek.com>,
- <Ryan-JH.Yu@mediatek.com>, Tzung-Bi Shih <tzungbi@google.com>
-Subject: [PATCH v3] PCI: mediatek-gen3: Disable DVFSRC voltage request
-Date: Fri, 15 Oct 2021 14:36:02 +0800
-Message-ID: <20211015063602.29058-1-jianjun.wang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 15 Oct 2021 15:46:55 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 15 Oct 2021 15:46:55 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: "James E . J . Bottomley" <jejb@linux.ibm.com>, "Martin K . Petersen"
+ <martin.petersen@oracle.com>, Matthias Brugger <matthias.bgg@gmail.com>, Bart
+ Van Assche <bvanassche@acm.org>, Martin Kepplinger <martink@posteo.de>
+CC: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <wsd_upstream@mediatek.com>, Miles Chen <miles.chen@mediatek.com>, "Stanley
+ Chu" <stanley.chu@mediatek.com>
+Subject: [PATCH] scsi: sd: fix crashes in sd_resume_runtime
+Date: Fri, 15 Oct 2021 15:46:54 +0800
+Message-ID: <20211015074654.19615-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_234208_497767_637CD398 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20211015_004705_583591_2888BCBE 
+X-CRM114-Status: GOOD (  14.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,51 +79,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the DVFSRC (dynamic voltage and frequency scaling resource collector)
-feature is not implemented, the PCIe hardware will assert a voltage request
-signal when exit from the L1 PM Substates to request a specific Vcore
-voltage, but cannot receive the voltage ready signal, which will cause
-the link to fail to exit the L1 PM Substates.
+After merging commit ed4246d37f3b ("scsi: sd: REQUEST SENSE for
+BLIST_IGN_MEDIA_CHANGE devices in runtime_resume()"), I hit the
+following crash on my device.
 
-Disable DVFSRC voltage request by default, we need to find a common way to
-enable it in the future.
+static int sd_resume_runtime(struct device *dev)
+{
+        struct scsi_disk *sdkp = dev_get_drvdata(dev);
+        struct scsi_device *sdp = sdkp->device; // sdkp == NULL and crash
 
-Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver for MT8192")
-Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-Tested-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
+        if (sdp->ignore_media_change) {
+	...
+}
+
+I checked sd_resume() and found that sdkp is possbile to be NULL, and
+there is a null pointer test in sd_resume() for this case.
+To fix this crash, follow sd_resume() to test if sdkp is NULL
+before dereferencing it.
+
+Crash:
+[    4.695171][  T151] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000008
+[    4.696591][  T151] Mem abort info:
+[    4.697919][  T151]   ESR = 0x96000005
+[    4.699692][  T151]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    4.701990][  T151]   SET = 0, FnV = 0
+[    4.702513][  T151]   EA = 0, S1PTW = 0
+[    4.704431][  T151]   FSC = 0x05: level 1 translation fault
+[    4.705254][  T151] Data abort info:
+[    4.705806][  T151]   ISV = 0, ISS = 0x00000005
+[    4.706484][  T151]   CM = 0, WnR = 0
+[    4.707048][  T151] [0000000000000008] user address but active_mm is swapper
+[    4.710577][  T151] Internal error: Oops: 96000005 [#1] PREEMPT SMP
+[    4.832361][  T151] Kernel Offset: 0x12acc80000 from 0xffffffc010000000
+[    4.833254][  T151] PHYS_OFFSET: 0x40000000
+[    4.833814][  T151] pstate: 80400005 (Nzcv daif +PAN -UAO)
+[    4.834546][  T151] pc : sd_resume_runtime+0x20/0x14c
+[    4.835227][  T151] lr : scsi_runtime_resume+0x84/0xe4
+[    4.835916][  T151] sp : ffffffc0110db8d0
+[    4.836450][  T151] x29: ffffffc0110db8d0 x28: 0000000000000001
+[    4.837258][  T151] x27: ffffff80c0bd1ac0 x26: ffffff80c0bd1ad0
+[    4.838063][  T151] x25: ffffff80cea7e448 x24: ffffffd2bf961000
+[    4.838867][  T151] x23: ffffffd2be69f838 x22: ffffffd2bd9dfb4c
+[    4.839670][  T151] x21: 0000000000000000 x20: ffffff80cea7e000
+[    4.840474][  T151] x19: ffffff80cea7e260 x18: ffffffc0110dd078
+[    4.841277][  T151] x17: 00000000658783d9 x16: 0000000051469dac
+[    4.842081][  T151] x15: 00000000b87f6327 x14: 0000000068fd680d
+[    4.842885][  T151] x13: ffffff80c0bd2470 x12: ffffffd2bfa7f5f0
+[    4.843688][  T151] x11: 0000000000000078 x10: 0000000000000001
+[    4.844492][  T151] x9 : 00000000000000b1 x8 : ffffffd2be69f88c
+[    4.845295][  T151] x7 : ffffffd2bd9e0e5c x6 : 0000000000000000
+[    4.846099][  T151] x5 : 0000000000000080 x4 : 0000000000000001
+[    4.846902][  T151] x3 : 68fd680dfe4ebe5e x2 : 0000000000000003
+[    4.847706][  T151] x1 : ffffffd2bf7f9380 x0 : ffffff80cea7e260
+[    4.856708][  T151]  die+0x16c/0x59c
+[    4.857191][  T151]  __do_kernel_fault+0x1e8/0x210
+[    4.857833][  T151]  do_page_fault+0xa4/0x654
+[    4.858418][  T151]  do_translation_fault+0x6c/0x1b0
+[    4.859083][  T151]  do_mem_abort+0x68/0x10c
+[    4.859655][  T151]  el1_abort+0x40/0x64
+[    4.860182][  T151]  el1h_64_sync_handler+0x54/0x88
+[    4.860834][  T151]  el1h_64_sync+0x7c/0x80
+[    4.861395][  T151]  sd_resume_runtime+0x20/0x14c
+[    4.862025][  T151]  scsi_runtime_resume+0x84/0xe4
+[    4.862667][  T151]  __rpm_callback+0x1f4/0x8cc
+[    4.863275][  T151]  rpm_resume+0x7e8/0xaa4
+[    4.863836][  T151]  __pm_runtime_resume+0xa0/0x110
+[    4.864489][  T151]  sd_probe+0x30/0x428
+[    4.865016][  T151]  really_probe+0x14c/0x500
+[    4.865602][  T151]  __driver_probe_device+0xb4/0x18c
+[    4.866278][  T151]  driver_probe_device+0x60/0x2c4
+[    4.866931][  T151]  __device_attach_driver+0x228/0x2bc
+[    4.867630][  T151]  __device_attach_async_helper+0x154/0x21c
+[    4.868398][  T151]  async_run_entry_fn+0x5c/0x1c4
+[    4.869038][  T151]  process_one_work+0x3ac/0x590
+[    4.869670][  T151]  worker_thread+0x320/0x758
+[    4.870265][  T151]  kthread+0x2e8/0x35c
+[    4.870792][  T151]  ret_from_fork+0x10/0x20
+
+Cc: Stanley Chu <stanley.chu@mediatek.com>
+Fixes: ed4246d37f3b ("scsi: sd: REQUEST SENSE for BLIST_IGN_MEDIA_CHANGE devices in runtime_resume()")
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 ---
- drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/scsi/sd.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c b/drivers/pci/controller/pcie-mediatek-gen3.c
-index f3aeb8d4eaca..79fb12fca6a9 100644
---- a/drivers/pci/controller/pcie-mediatek-gen3.c
-+++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-@@ -79,6 +79,9 @@
- #define PCIE_ICMD_PM_REG		0x198
- #define PCIE_TURN_OFF_LINK		BIT(4)
- 
-+#define PCIE_MISC_CTRL_REG		0x348
-+#define PCIE_DISABLE_DVFSRC_VLT_REQ	BIT(1)
+diff --git a/drivers/scsi/sd.c b/drivers/scsi/sd.c
+index 523bf2fdc253..fce63335084e 100644
+--- a/drivers/scsi/sd.c
++++ b/drivers/scsi/sd.c
+@@ -3683,7 +3683,12 @@ static int sd_resume(struct device *dev)
+ static int sd_resume_runtime(struct device *dev)
+ {
+ 	struct scsi_disk *sdkp = dev_get_drvdata(dev);
+-	struct scsi_device *sdp = sdkp->device;
++	struct scsi_device *sdp;
 +
- #define PCIE_TRANS_TABLE_BASE_REG	0x800
- #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
- #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
-@@ -297,6 +300,11 @@ static int mtk_pcie_startup_port(struct mtk_pcie_port *port)
- 	val &= ~PCIE_INTX_ENABLE;
- 	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
- 
-+	/* Disable DVFSRC voltage request */
-+	val = readl_relaxed(port->base + PCIE_MISC_CTRL_REG);
-+	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
-+	writel_relaxed(val, port->base + PCIE_MISC_CTRL_REG);
++	if (!sdkp)	/* E.g.: runtime resume at the start of sd_probe() */
++		return 0;
 +
- 	/* Assert all reset signals */
- 	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
- 	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB | PCIE_PE_RSTB;
++	sdp = sdkp->device;
+ 
+ 	if (sdp->ignore_media_change) {
+ 		/* clear the device's sense data */
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
