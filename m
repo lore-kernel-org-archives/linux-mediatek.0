@@ -2,63 +2,83 @@ Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 68BDBC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 99C80C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:31:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 363AC60FDA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:18:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 363AC60FDA
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 633AA610E5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:31:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 633AA610E5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nsLWiUnkxxHmpcBpf5MGinRP9xypk44n0JB5VtgFOmg=; b=LJwlQ/EVoUI0i5HOGBizYvB+Qf
-	+1rKcaxAVKJYktQJ0pkXYcK3jfW7KpaRWqcrO5jSk/eHTYi21EyIUR0IGguFhfixfrC/+ZJ0qPwqb
-	N6jbLuzkIXzq5kmMn0JDYoqkXaQiAqJpPaLt3bz59Tfd3/Xx1aOIAmdYw4a9O0y6QQMhwFePl17G8
-	rbeVLxLuievZQ6uCgwJ1FIr7OaY6fUMpNL6RfoXCTbTHDbiNEKKKA2slRTvHIUByIdC2cHTNaB9Dc
-	Yis9kJH2PJY9n3GazJnQX9oUEFNFhCbuF+TZRDznufBEjQjCoRFPaeLm/3wd53HtFg+U+fi6vPM0/
-	by5GTqkw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=v2BHTBFs6cY/u+9aiLUmmy0j3nYq0+6we/TbUTtqHzY=; b=u4OEtrv2PEhhYr
+	qjDE9QdaNJIwFLYmHWt0Xj2kbPiY3Q+LxJnbEkSPDsdOJkpgTDnMdhDtAInl4BWM0UxMbH2Fivy3V
+	W/Jv3S9u477jlAcCIvDfrpaGtVKMeyqqS+fNrC3LTwX0yfi5Fr2I3vRG54+6e9/NDDG/T+jErAWce
+	1AvbqofEb+8JxVDG1ix5pqePBlPPb5ZNfDJUul4CQeXFY7M9czn18F1Q6DsaypEcIpAJYlrql2+j2
+	2NbhswUhdLCHtOBox4/9JDeCDp6WRkPCoUSJQHNDXwdK6cxAfbKHo2ic6omwAbotPeASaeozF/wJI
+	GHHh9okKot7vw6EP+5ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbO2J-007Wkj-On; Fri, 15 Oct 2021 14:18:15 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1mbOEx-007cJB-Aw; Fri, 15 Oct 2021 14:31:19 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbNYY-007M6r-HH; Fri, 15 Oct 2021 13:47:32 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 869101F4536F
-Subject: Re: [PATCH v4 03/13] memory: mtk-smi: Use clk_bulk clock ops
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
- anan.sun@mediatek.com, ming-fan.chen@mediatek.com, yi.kuo@mediatek.com,
- anthony.huang@mediatek.com, Ikjoon Jang <ikjn@chromium.org>
-References: <20210914113703.31466-1-yong.wu@mediatek.com>
- <20210914113703.31466-4-yong.wu@mediatek.com>
- <e466b3fb-d9fe-bb20-23c2-f9766a35f120@collabora.com>
- <ab5c6dd1-7eed-4515-8781-c79e5317d038@canonical.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <e433d19a-8bb8-8ef5-fce8-4b3535f5bc3e@collabora.com>
-Date: Fri, 15 Oct 2021 15:47:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1mbO7Q-007Z67-Ut
+ for linux-mediatek@lists.infradead.org; Fri, 15 Oct 2021 14:23:34 +0000
+Received: by mail-lf1-x134.google.com with SMTP id z11so41164891lfj.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 15 Oct 2021 07:23:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:from:date:message-id:subject:to:cc;
+ bh=I1yd0Kg3PInoRGoWNvW2I6imujJbF3fiak9H6lsWXX4=;
+ b=A6gREVibTcvNTmVGky9se8S1lvkH2RkTmrzx0uyklyAHNnznIAuwXNsCMXBArO6tuW
+ Ts5Hj6G//NuWsg4XxCr0W6zmdwbDovER6pZr3jxyaq1KOov635aTjdrShrsV1Pn8vJ0+
+ rA1vkK+DDlWjqIoXydA/DIvJ7JCOWrm/aoB5CXJ/PZBt8Qq00wU5bCGKnpzURcC+sKPY
+ tGLgDbPrBmWhM8xm7XHQM8TrhAvOqoHzESWsDNpMtIbNUiLM21ro5rPKFDS89Il75pkQ
+ M95wMgkncoNfS3qsRW6+pTIoo4Pf7dUix4TR4Bb/S1+yqOwMS+iqMf1CPJwh3qLHnm2e
+ yh8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to:cc;
+ bh=I1yd0Kg3PInoRGoWNvW2I6imujJbF3fiak9H6lsWXX4=;
+ b=5+A25O30/IWIokG+KM3dycCXh4X2VQPcvhvO7T3dyuJvqBcXT5Kl55AZdShaFVMch3
+ Welsf9GJHavrAZocnatSKhDHUrWHbUNppIM3F5YZREJokO6KnMN+rw/KQ8bRV5/TVFou
+ OcZtbmh5JQDtpVUb3wOtCdaD5Lb2e6p9Uqjc7zK8QFyjdGouZDwGOpGlhFIfLkHLrZDe
+ lxYSIdx1ZcP5b//BSeDs2/XuFLHs8wHVWxGcwmNsV4zqiWqMwxQmfcJTEXtKks3ugFmP
+ Onn3eyCyT2qdqao5CtRCr4usMqsr5zfddLzFk4tayqJ2Rp1iInxBXfelOHZY9F9OV//H
+ DBtg==
+X-Gm-Message-State: AOAM5304M/YHfRRqlYhOXDpU52ZoMWdy3aTpaAM8i1dfb+npwfH07cAd
+ 5eztvmQLmoefE4hjAS3ACw6jhtGJHD03BsOWC0c=
+X-Google-Smtp-Source: ABdhPJzZJ8TJkviFsYjb2WrxfvYmZctptkQf1LYDEtA2oI9sGpdQwQvqOquaksjkFTUO+sjBQbc7RFGwwkOD3REm54Q=
+X-Received: by 2002:a05:6512:2213:: with SMTP id
+ h19mr11789382lfu.576.1634307809209; 
+ Fri, 15 Oct 2021 07:23:29 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <ab5c6dd1-7eed-4515-8781-c79e5317d038@canonical.com>
-Content-Language: en-US
+From: DENG Qingfang <dqfext@gmail.com>
+Date: Fri, 15 Oct 2021 22:23:17 +0800
+Message-ID: <CALW65jbKsDGTXghqQFQe2CxYbWPakkaeFrr+3vAA4gAPjeeL2w@mail.gmail.com>
+Subject: MT7621 ethernet does not get probed on net-next branch after 5.15
+ merge
+To: netdev <netdev@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Siddhant Gupta <siddhantgupta416@gmail.com>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, 
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Felix Fietkau <nbd@nbd.name>, 
+ John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Russell King <linux@armlinux.org.uk>, 
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>, 
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>
+Cc: openwrt-devel@lists.openwrt.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211015_064730_842465_43B65450 
-X-CRM114-Status: GOOD (  18.84  )
+X-CRM114-CacheID: sfid-20211015_072333_038281_26946DA4 
+X-CRM114-Status: UNSURE (   6.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,82 +90,38 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 15/10/21 15:43, Krzysztof Kozlowski ha scritto:
-> On 15/10/2021 15:38, AngeloGioacchino Del Regno wrote:
->>> Use clk_bulk interface instead of the orginal one to simplify the code.
->>>
->>> For SMI larbs: Require apb/smi clocks while gals is optional.
->>> For SMI common: Require apb/smi/gals0/gal1 in has_gals case. Otherwise,
->>>                   also only require apb/smi, No optional clk here.
->>>
->>> About the "has_gals" flag, for smi larbs, the gals clock also may be
->>> optional even this platform support it. thus it always use
->>> *_bulk_get_optional, then the flag has_gals is unnecessary. Remove it.
->>> The smi_common's has_gals still keep it.
->>>
->>> Also remove clk fail logs since bulk interface already output fail log.
->>>
->>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>
->> Hello Yong,
->> thanks for the patch! However, I have an improvement to point out:
->>
->>> ---
->>>    drivers/memory/mtk-smi.c | 143 +++++++++++++++------------------------
->>>    1 file changed, 55 insertions(+), 88 deletions(-)
->>>
->>> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
->>> index c5fb51f73b34..f91eaf5c3ab0 100644
->>> --- a/drivers/memory/mtk-smi.c
->>> +++ b/drivers/memory/mtk-smi.c
->>> @@ -60,6 +60,20 @@ enum mtk_smi_gen {
->>>    	MTK_SMI_GEN2
->>>    };
->>>    
->>> +#define MTK_SMI_CLK_NR_MAX			4
->>
->> This refers to mtk_smi_common_clks[] and should be probably moved after that.
->> In any case, I don't think that there's any need to manually define this as 4,
->> as you can simply use the macro ARRAY_SIZE(mtk_smi_common_clks).
->> Using that will make you able to not update this definition everytime an update
->> occurs to the mtk_smi_common_clks array.
->>
->>> +
->>> +/* larbs: Require apb/smi clocks while gals is optional. */
->>> +static const char * const mtk_smi_larb_clks[] = {"apb", "smi", "gals"};
->>> +#define MTK_SMI_LARB_REQ_CLK_NR		2
->>> +#define MTK_SMI_LARB_OPT_CLK_NR		1
->>> +
->>> +/*
->>> + * common: Require these four clocks in has_gals case. Otherwise, only apb/smi are required.
->>> + */
->>> +static const char * const mtk_smi_common_clks[] = {"apb", "smi", "gals0", "gals1"};
->>> +#define MTK_SMI_COM_REQ_CLK_NR		2
->>> +#define MTK_SMI_COM_GALS_REQ_CLK_NR	MTK_SMI_CLK_NR_MAX
->>> +
->>
->> Apart from that,
->> Acked-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> The patchset was merged around a month ago:
-> https://lore.kernel.org/lkml/163229303729.7874.4095337797772755570.b4-ty@canonical.com/
-> 
-> 
-> Best regards,
-> Krzysztof
-> 
+Hi,
 
-Whoops. Sorry for that.
-I'll send a patch to address what I pointed out, unless the original author of
-this series wants to.
+After the merge of 5.15.y into net-next, MT7621 ethernet
+(mtk_eth_soc.c) does not get probed at all.
 
-Thanks,
-- Angelo
+Kernel log before 5.15 merge:
+...
+libphy: Fixed MDIO Bus: probed
+libphy: mdio: probed
+mt7530 mdio-bus:1f: MT7530 adapts as multi-chip module
+mtk_soc_eth 1e100000.ethernet eth0: mediatek frame engine at 0xbe100000, irq 20
+mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+...
+
+Kernel log after 5.15 merge:
+...
+libphy: Fixed MDIO Bus: probed
+mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+...
+
+
+I tried adding debug prints into the .mtk_probe function, but it did
+not execute.
+There are no dts changes for MT7621 between 5.14 and 5.15, so I
+believe it should be something else.
+
+Any ideas?
 
 _______________________________________________
 Linux-mediatek mailing list
