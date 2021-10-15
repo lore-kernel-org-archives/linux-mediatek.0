@@ -2,71 +2,70 @@ Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DE26C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 01:56:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 56E24C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 03:31:08 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2E23461090
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 01:56:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2E23461090
+	by mail.kernel.org (Postfix) with ESMTPS id 21A5E60F9F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 03:31:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 21A5E60F9F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OhOkyjO1/iE841gl6BiREZnrIPgrT2W2061EzAZWmAA=; b=IUNCTsayt5mXNq
-	dc+xwYsTHPoD7ZGzR0HOKTLIICKOYOmltedIJLmMMDDDC+q43mU3y0avHznmQ43hNg/smarb7+qUN
-	NL/RiQHhtDbiR/xe2/tAJ3uv/tvGa16vLf1amcAwfM8i2DBgg4cjq7e5wZOwl4IYlu2L9v6eIO5i5
-	erTgT7vdyLHfEe0tPpYz1qG3CdVartJualY+5DQbJBFuRu9Rvzx3RPIt5cRxw9d4rc/rKm8iQHTjv
-	qQs/dgGfS7EC5egXy5aPiraHUqw4/DkRadKr7HCHGTxt1iiVCyuDEBX8b5lUT04cjdvHy4TLFLVrt
-	BWOjNbEov/8KyLZalb+Q==;
+	List-Owner; bh=6oi7gwzLSajE1WWCR+kOqVdwfPWTx3XhGEkEDnZMAlA=; b=QbyCmg34674wXb
+	o9jnavNRfv8//zSCr3+wQTJhbbgvH8OLvqk2y14p1ewjn4wXWeZUdafiXvPJqIZcqgQG/gfrurghV
+	2g4cmf3IcA2h8jg/fHu2PQ4KrLuv05z6IclfwOCs1Ms+MJmYtseMEr/WoA0w2Sn7uUA7nDJu7HsYj
+	9iMdYKE77/MWZqutTVT4F+3kUvzsRVeBJN+3JwPZSlpIKI25E4O4fbjuUuNbifgRsmrnj0DuiH2la
+	1qnhKTwSwIaYbgb4OJ3rjnwcFxhusNcpGzXFf5FHp8CRjSUZzZZrDdoGKhWr2TwkVVHu1N+j/adyV
+	Vv7o3gYniGHaE1WjC63A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbCS4-0050OD-7Q; Fri, 15 Oct 2021 01:56:04 +0000
+	id 1mbDvn-005JUM-DD; Fri, 15 Oct 2021 03:30:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbCS0-0050Mz-Js; Fri, 15 Oct 2021 01:56:02 +0000
-X-UUID: 4350520b1fe448178d3500a0c99dee39-20211014
-X-UUID: 4350520b1fe448178d3500a0c99dee39-20211014
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
+ id 1mbDvi-005JSM-Ij
+ for linux-mediatek@lists.infradead.org; Fri, 15 Oct 2021 03:30:49 +0000
+X-UUID: 2cf561a9f74d4bb584e5db88a0171158-20211014
+X-UUID: 2cf561a9f74d4bb584e5db88a0171158-20211014
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 602987858; Thu, 14 Oct 2021 18:55:58 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 18:45:56 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 15 Oct 2021 09:45:54 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 Oct 2021 09:45:54 +0800
-Message-ID: <e7cb3220b925209d8f5229c207d5efbc42d58794.camel@mediatek.com>
-Subject: Re: [PATCH v7 1/4] dt-bindings: pinctrl: update bindings for MT7986
- SoC
-From: Sam Shih <sam.shih@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Ryder Lee
- <Ryder.Lee@mediatek.com>, <linux-gpio@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, Sean Wang <sean.wang@kernel.org>, "John
- Crispin" <john@phrozen.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Fri, 15 Oct 2021 09:45:54 +0800
-In-Reply-To: <1634221864.165084.3295876.nullmailer@robh.at.kernel.org>
-References: <20211014075836.17681-1-sam.shih@mediatek.com>
- <20211014075836.17681-2-sam.shih@mediatek.com>
- <1634221864.165084.3295876.nullmailer@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 1856528318; Thu, 14 Oct 2021 20:30:42 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 14 Oct 2021 20:30:41 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 15 Oct 2021 11:30:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 15 Oct 2021 11:30:39 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH v6 6/8] mt76: mt7915: fix muar_idx in
+ mt7915_mcu_alloc_sta_req()
+Date: Fri, 15 Oct 2021 11:29:36 +0800
+Message-ID: <20211015032938.7493-6-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211015032938.7493-1-shayne.chen@mediatek.com>
+References: <20211015032938.7493-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_185600_696357_023D351C 
-X-CRM114-Status: GOOD (  25.12  )
+X-CRM114-CacheID: sfid-20211014_203046_661679_BFA3C981 
+X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,94 +82,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi
+For broadcast/multicast wcid, the muar_idx should be 0xe.
 
-On Thu, 2021-10-14 at 09:31 -0500, Rob Herring wrote:
-> On Thu, 14 Oct 2021 15:58:33 +0800, Sam Shih wrote:
-> > This updates bindings for MT7986 pinctrl driver. The
-> > difference of pinctrl between mt7986a and mt7986b is that pin-41 to
-> > pin-65 do not exist on mt7986b
-> > 
-> > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> > 
-> > ---
-> > v7 : updated pinctcl node binding description, and separate pinctrl
-> >      part into a single patch series
-> > 
-> > Original thread:
-> > 
-https://urldefense.com/v3/__https://lore.kernel.org/all/8348ed3e-c561-ad7e-fe9e-a31ed346d8d0@gmail.com/__;!!CTRNKA9wMg0ARbw!yJc1hf6XafeskaOgY8TmMDpGDHuIDhx6AGIpuOiJRl7jCVYcnPmr6I4XKz2iy6O4$
-> >  
-> > 
-> > v6 : fixed yamllint warnings/errors v2
-> > v5 : fixed yamllint warnings/errors v1
-> > v4 : used yaml format instead of txt format document
-> > v3 : make mt7986 pinctrl bindings as a separate file
-> > v2 : deleted the redundant description of mt7986a/mt7986b
-> > ---
-> >  .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 364
-> > ++++++++++++++++++
-> >  1 file changed, 364 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-
-> > pinctrl.yaml
-> > 
-> 
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m
-> dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-
-> pinctrl.example.dts:52.36-57.15: ERROR (duplicate_node_names): 
-> /example-0/soc/pinctrl@1001f000/uart1-pins: Duplicate node name
-> ERROR: Input tree has errors, aborting (use -f to force output)
-> make[1]: *** [scripts/Makefile.lib:385:
-> Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-
-> pinctrl.example.dt.yaml] Error 2
-> make[1]: *** Waiting for unfinished jobs....
-> make: *** [Makefile:1441: dt_binding_check] Error 2
-> 
+Fixes: e57b7901469f ("mt76: add mac80211 driver for MT7915 PCIe-based chipsets")
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+v6: remove line break of fix tag
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Sorry, I took the wrong patch in my local environment for submmit
-
-This should be "uart2_pins: uart2-pins { ... "
-
-I will send next patch to fix this.
-
-+        uart2_pins: uart1-pins {
-+          mux {
-+            function = "uart";
-+            groups = "uart2";
-+          };
-+        };
-
-
-
-> doc reference errors (make refcheckdocs):
-> 
-> See 
-> https://urldefense.com/v3/__https://patchwork.ozlabs.org/patch/1540821__;!!CTRNKA9wMg0ARbw!yJc1hf6XafeskaOgY8TmMDpGDHuIDhx6AGIpuOiJRl7jCVYcnPmr6I4XK9R-t-CX$
->  
-> 
-> This check can fail if there are any dependencies. The base for a
-> patch
-> series is generally the most recent rc1.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up
-> to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit.
-
-Thanks,
-Sam
-> 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index cd31cb1..9ad7e8e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -586,7 +586,7 @@ mt7915_mcu_alloc_sta_req(struct mt7915_dev *dev, struct mt7915_vif *mvif,
+ 		.bss_idx = mvif->idx,
+ 		.wlan_idx_lo = msta ? to_wcid_lo(msta->wcid.idx) : 0,
+ 		.wlan_idx_hi = msta ? to_wcid_hi(msta->wcid.idx) : 0,
+-		.muar_idx = msta ? mvif->omac_idx : 0,
++		.muar_idx = msta && msta->wcid.sta ? mvif->omac_idx : 0xe,
+ 		.is_tlv_append = 1,
+ 	};
+ 	struct sk_buff *skb;
+-- 
+2.25.1
 
 
 _______________________________________________
