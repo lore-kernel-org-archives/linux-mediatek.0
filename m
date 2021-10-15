@@ -1,59 +1,62 @@
-Return-Path: <SRS0=9yZI=PC=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9311AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 18:22:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 997DBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 00:45:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5E20C611C3
-	for <linux-mediatek@archiver.kernel.org>; Thu, 14 Oct 2021 18:22:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5E20C611C3
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=wanadoo.fr
+	by mail.kernel.org (Postfix) with ESMTPS id 5C9046108B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 00:45:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5C9046108B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mgJmrSDwASvJ7lHqmJgpMW6RTikLb1J75bbqNv2AQ2Q=; b=ijX96ZoZIvvVO0
-	/WztM9y2IUsScia/X3bmE9JnKVYUBxs1+i4syZpXgF70vPrYEdNJfMYRUOPy1usEupevDQUEqOXId
-	PQC32QNbHLzbriJ8I9AG1pGtCBmRsxF7RzskvwKZ4HuksCkp74GsD7jVVmcz5AjRFxoX9cAzKVGlB
-	QqPn7x7oZgbG5J9kHSBeNbDdPsULl26dY/KRHohVTwWXQzGdIzUXMmOLdTj+9tVadwyBxafUJjjXB
-	r6gmFFRCliBjxmXR1hNEmmrvH9DmQdVu4OOi7lemCJDVs70EUHxdWFBLwmIgjjyONT/0d3fHQkeG+
-	LYEdAfGetORhG7mIhuBg==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XWTz7p6VFx1JVz6K34QNkU9by7aomXtEkSL1N2nTB04=; b=kVd00olNEBhUJV
+	nsDCOTp9YRETuWRJjmTb8yrl1OYto6x01VswPaMsL4XJU5xZE3/yX8R0vhAAyABpvMr6huUGGrvMH
+	VdC3gcNahA6iZogsXuRhUJZGR7kuG9ZWJlZ8vuV7qCOpqlq3zP6l+rPd/syHcIzPddS3bzjQpZ+2u
+	7QGxqYahZA4+3HpsiQ7LPZa/H1V1/5wRpXX759NSwI+blfeAVApfw+oTP9qN55TNyKKKOSoVMez0V
+	X2J3zkcoEQHTJOX/MQhiCP3hKKIn313p/Dg+5lNC0prcG6NaZ9Wa3wPO+0CgSYoqLove9EFUG6ImT
+	gJxqxTmNj75sfaqi7uHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mb5Mf-0046XG-HJ; Thu, 14 Oct 2021 18:22:01 +0000
-Received: from smtp02.smtpout.orange.fr ([80.12.242.124]
- helo=smtp.smtpout.orange.fr)
+	id 1mbBLN-004nnC-Oq; Fri, 15 Oct 2021 00:45:05 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mb5MS-0046Qz-61
- for linux-mediatek@lists.infradead.org; Thu, 14 Oct 2021 18:21:49 +0000
-Received: from pop-os.home ([92.140.161.106]) by smtp.orange.fr with ESMTPA
- id b5MPmB7sXBazob5MPmY6R9; Thu, 14 Oct 2021 20:21:46 +0200
-X-ME-Helo: pop-os.home
-X-ME-Auth: YWZlNiIxYWMyZDliZWIzOTcwYTEyYzlhMmU3ZiQ1M2U2MzfzZDfyZTMxZTBkMTYyNDBjNDJlZmQ3ZQ==
-X-ME-Date: Thu, 14 Oct 2021 20:21:46 +0200
-X-ME-IP: 92.140.161.106
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-To: minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com,
- andrew-ct.chen@mediatek.com, tiffany.lin@mediatek.com, mchehab@kernel.org,
- matthias.bgg@gmail.com
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel-janitors@vger.kernel.org,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-Subject: [PATCH] media: mtk-vpu: Remove redundant 'flush_workqueue()' calls
-Date: Thu, 14 Oct 2021 20:21:43 +0200
-Message-Id: <9788bdfee564000a1c4d68126d25570c7feb1055.1634235609.git.christophe.jaillet@wanadoo.fr>
-X-Mailer: git-send-email 2.30.2
+ id 1mbBLA-004nl0-Oy; Fri, 15 Oct 2021 00:44:53 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 49747610D1;
+ Fri, 15 Oct 2021 00:44:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1634258692;
+ bh=YFpJ7iKpvybwT0EOJSs+FXxVB2B6kd+iVy4X1DpohAo=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=V5TtEeM8jFsgcGcuBW6Yi1RHRqq5/oODbkcc0S4WZpeDexJoHVu3ALcgDZyVJc1MG
+ 6CIwbC2ZR/3XLrdymbDNipPSk307O8nLu4ExPCEqf7T6DuC4dGH1UFDDUS1K6ERb2T
+ 1FU+l30gsJiFr/LU5tlArESe1Zc83JYofkMviOGkSPLROoTuRjzOjCKU8NiJSHrEzM
+ WwhRnZzp6kBGQijR6YkXHuo2opcUTWULpQIbqcuso3n/atWh9U44xCkgoGk+LizOe1
+ dITQE1VW/HLdoxFCv4xBimgyntfX45zGjTRzA9d5i9nOMflmRAW+pSJCtFPm4hxUED
+ bPJ1w67C9pkNg==
 MIME-Version: 1.0
+In-Reply-To: <20211005065948.10092-1-mark-pk.tsai@mediatek.com>
+References: <20211005065948.10092-1-mark-pk.tsai@mediatek.com>
+Subject: Re: [PATCH] clk: make clk_core_lookup faster by using clk name hash
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: mark-pk.tsai@mediatek.com, yj.chiang@mediatek.com, matthias.bgg@gmail.com,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>, mturquette@baylibre.com
+Date: Thu, 14 Oct 2021 17:44:51 -0700
+Message-ID: <163425869104.1688384.2477307279117424281@swboyd.mtv.corp.google.com>
+User-Agent: alot/0.9.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_112148_393315_D089072A 
-X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-CacheID: sfid-20211014_174452_849413_8F57FA68 
+X-CRM114-Status: UNSURE (   4.40  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,43 +74,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-'destroy_workqueue()' already drains the queue before destroying it, so
-there is no need to flush it explicitly.
+Quoting Mark-PK Tsai (2021-10-04 23:59:49)
+> Compare hash value before strcmp the full name to make
+> clk_core_lookup faster.
+> 
+> It make clk driver probe 30 percent faster on the platform
+> have 1483 registered clks and average clock name length 20.
 
-Remove the redundant 'flush_workqueue()' calls.
-
-This was generated with coccinelle:
-
-@@
-expression E;
-@@
-- 	flush_workqueue(E);
-	destroy_workqueue(E);
-
-Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
----
- drivers/media/platform/mtk-vpu/mtk_vpu.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-index 7f1647da0ade..7bd715fc844d 100644
---- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-+++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-@@ -964,10 +964,8 @@ static int mtk_vpu_remove(struct platform_device *pdev)
- #ifdef CONFIG_DEBUG_FS
- 	debugfs_remove(vpu_debugfs);
- #endif
--	if (vpu->wdt.wq) {
--		flush_workqueue(vpu->wdt.wq);
-+	if (vpu->wdt.wq)
- 		destroy_workqueue(vpu->wdt.wq);
--	}
- 	vpu_free_ext_mem(vpu, P_FW);
- 	vpu_free_ext_mem(vpu, D_FW);
- 	mutex_destroy(&vpu->vpu_mutex);
--- 
-2.30.2
-
+Why is clk_core_lookup() a fast path for you?
 
 _______________________________________________
 Linux-mediatek mailing list
