@@ -2,85 +2,57 @@ Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37F4DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:33:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3A50FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:37:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF13D60E09
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:33:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EF13D60E09
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 020F561073
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:37:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 020F561073
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=s8zuRVghnKYtL4IkRzschPDXzXsd3Y2APTJYNssim80=; b=L+xphcRTk92A1y
-	dhtowWdFtN7+pdQo9POwTqih4VehZ2Wg8AeZE2RoJe1NlAgulorDO9sR3uquqbq01QExARwPraOrQ
-	Bt2U8tAsuMMTZXzPz6CdiP/i90lpipF8pASzyfHriu7i5JHB+Yxe+qNR3e9aPrLr6N/7mwN6SynTY
-	Sgt7kbYbO1pdWOZDzjE2v4r6reMMGV6s+wZ6f4aiZP9qzyU6tzE+B6YrtedRMcfkrt6fBA/94sTpn
-	iizU7gwmwdBlGcCf3/W7GiAadKodFcsga6t+IpF552nrZPjgj9EhxT6xr71dR3KtU2UtHnUI/1IGY
-	oOb/uoW/k8XnhLz/CWow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qsFy07SuLDcrAkPUr3Dj7AtlFepJrId2jIo5+VvfhPk=; b=Mf68RKWnEkDlmH3jE8t9K2q5DJ
+	58K/3xhP/bWmZ77lvztLGiyLkEsQ40ioAm7Goqbsxx+s770Z1l8nFvW+hmAU6dq0MInfVW9sS7a2M
+	pIYg6vaIx2oiaqIsW5x94f0lV1ihlfmuijxaelx7WzI+ivb1HX9H36xYjmmi7mkwyvOFgWBoVY+23
+	syFACVggAJ3R2jrc0S13o4mYt9sKAw9VBcy3RnTjHztb9DsdBuZhAOR79KqTeIaj+xFpOf27LB2L5
+	BOI9FqWeutwiRU8vnFM9dfl61y8L5HHQlbKsOeloYOHClfhQ8Qsl7eHb6++WBF8zjnGDUbRDQQWdj
+	fgBSh5ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbOGQ-007cyw-S1; Fri, 15 Oct 2021 14:32:50 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1mbOKr-007eZk-I5; Fri, 15 Oct 2021 14:37:25 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbOB0-007aaT-Us; Fri, 15 Oct 2021 14:27:17 +0000
-Received: by mail-pf1-x434.google.com with SMTP id 187so8484345pfc.10;
- Fri, 15 Oct 2021 07:27:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=A1+buzEnWHFfl/ZaWbrWJXy+M9IGPXk9SXcGFxZnAfs=;
- b=mW0YwkEYI+SkJyiLxlQX3Zdlu5EyWW8zMrdZ1/82zOBc94fM7nZ5imuO8lI0tb5Mlc
- GJX5XvSWu1L0mHI8nSrIRx+Do7SdcoiQJmua/qyhISbG1tvsgGAtKU2iaSZvTJBb65H4
- yybCzMgblNgOoHva0cf/tJmCf6kFhrzB7ImRJELkl+97pLZdPXanfD/7ui3T8inIbbwi
- STKVz/5qY9Dvta4IbwFgUI2HPfp+DgGS87+bamOPu7vRmCtOakuf4SGBbo8DvAGhvNNk
- uMToZ3PnjDxeoU2qn1wjU0aa9BC12o3ATwUQxwGE8QbXhHsGamQhQZz4miZcGUh7D1CO
- yNxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=A1+buzEnWHFfl/ZaWbrWJXy+M9IGPXk9SXcGFxZnAfs=;
- b=Ta18B5JfVt0N+68883ddT7sepJxocas6lqAaelSjnu1xd83ZjfaEULkNVeMZZewWvq
- n5asFHtiP8xV5JdstxuaQ85h9T/ZUqdrQV5h2uimU1rZFkg2qPk9W8CYkBnGj7qWhaMD
- QIcLI4DjWI3vStirQrdThWFKvScJcP3GWisDGI1MgOiTicnLFo0kVUirkhxRjgN7cBip
- ZVlcrss/Hu9pmUJJ1U39ULzbMVi+ubWCp9FF7jLtPJHNi1xDZtw4nMOAng1jQr20wpnG
- kgEeBnfOTJpb+TieqFbv2pnA1eiAvWJfzwuw9cz2r736CB4X+TyHhJGHqlnhTiboIG2u
- DdGw==
-X-Gm-Message-State: AOAM532LNawnWau73p+OPvnyxhR8L+Wa/Gmfs/CaXzyAos7LBXnChqtr
- /keP0L95z36WM+4LNIS9DAjwfbK23p6D4/nc
-X-Google-Smtp-Source: ABdhPJxFKApjvWHOznC1si5BoWluKZQ8jEGESoKMvikMsJGlwrW7cHZUum4j158SdHMlbo9VkZ0e4A==
-X-Received: by 2002:a62:ab17:0:b0:44c:f727:98cd with SMTP id
- p23-20020a62ab17000000b0044cf72798cdmr12077120pff.35.1634308032813; 
- Fri, 15 Oct 2021 07:27:12 -0700 (PDT)
-Received: from localhost.localdomain ([2405:204:5414:a8c0:67be:6f68:5d31:1ee2])
- by smtp.gmail.com with ESMTPSA id ls7sm5408396pjb.16.2021.10.15.07.27.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Oct 2021 07:27:12 -0700 (PDT)
-From: Naveen Naidu <naveennaidu479@gmail.com>
-To: bhelgaas@google.com
-Cc: Naveen Naidu <naveennaidu479@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hyperv@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>
-Subject: [PATCH v2 00/24] Unify PCI error response checking
-Date: Fri, 15 Oct 2021 19:56:31 +0530
-Message-Id: <cover.1634300660.git.naveennaidu479@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ id 1mbOF1-007cKm-K1; Fri, 15 Oct 2021 14:31:26 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id BEAC21F45383
+Subject: Re: [PATCH v12 3/5] spmi: mediatek: Add support for MT6873/8192
+To: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20210914090338.5945-1-hsin-hsiung.wang@mediatek.com>
+ <20210914090338.5945-4-hsin-hsiung.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <88c1bdfd-a388-bf1c-517c-eecc30649df6@collabora.com>
+Date: Fri, 15 Oct 2021 16:31:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
+In-Reply-To: <20210914090338.5945-4-hsin-hsiung.wang@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211015_072715_090170_32ECA80B 
-X-CRM114-Status: GOOD (  17.51  )
+X-CRM114-CacheID: sfid-20211015_073124_031000_0F86B29F 
+X-CRM114-Status: GOOD (  33.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,119 +64,430 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-An MMIO read from a PCI device that doesn't exist or doesn't respond
-causes a PCI error.  There's no real data to return to satisfy the 
-CPU read, so most hardware fabricates ~0 data.
+> Add spmi support for MT6873/8192.
+> 
+> Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> ---
+> changes since v11:
+> - No change.
+> ---
+>   drivers/spmi/Kconfig         |  10 +
+>   drivers/spmi/Makefile        |   2 +
+>   drivers/spmi/spmi-mtk-pmif.c | 459 +++++++++++++++++++++++++++++++++++
+>   3 files changed, 471 insertions(+)
+>   create mode 100644 drivers/spmi/spmi-mtk-pmif.c
+> 
+> diff --git a/drivers/spmi/Kconfig b/drivers/spmi/Kconfig
+> index 2874b6c26028..ea5703f6e544 100644
+> --- a/drivers/spmi/Kconfig
+> +++ b/drivers/spmi/Kconfig
+> @@ -34,4 +34,14 @@ config SPMI_MSM_PMIC_ARB
+>   	  This is required for communicating with Qualcomm PMICs and
+>   	  other devices that have the SPMI interface.
+>   
+> +config SPMI_MTK_PMIF
+> +	tristate "Mediatek SPMI Controller (PMIC Arbiter)"
 
-This patch series adds PCI_ERROR_RESPONSE definition and other helper
-definition SET_PCI_ERROR_RESPONSE and RESPONSE_IS_PCI_ERROR and uses it
-where appropriate to make these checks consistent and easier to find.
+This driver should be useless without a MediaTek SoC, for which reason, I would
+add here a nice
 
-This helps unify PCI error response checking and make error check
-consistent and easier to find.
+	depends on ARCH_MEDIATEK || COMPILE_TEST
 
-This series also ensures that the error response fabrication now happens
-in the PCI_OP_READ and PCI_USER_READ_CONFIG. This removes the
-responsibility from controller drivers to do the error response setting. 
+> +	help
+> +	  If you say yes to this option, support will be included for the
+> +	  built-in SPMI PMIC Arbiter interface on Mediatek family
+> +	  processors.
+> +
+> +	  This is required for communicating with Mediatek PMICs and
+> +	  other devices that have the SPMI interface.
+> +
+>   endif
+> diff --git a/drivers/spmi/Makefile b/drivers/spmi/Makefile
+> index 6e092e6f290c..0b21aaffcbb9 100644
+> --- a/drivers/spmi/Makefile
+> +++ b/drivers/spmi/Makefile
+> @@ -6,3 +6,5 @@ obj-$(CONFIG_SPMI)	+= spmi.o
+>   
+>   obj-$(CONFIG_SPMI_HISI3670)	+= hisi-spmi-controller.o
+>   obj-$(CONFIG_SPMI_MSM_PMIC_ARB)	+= spmi-pmic-arb.o
+> +obj-$(CONFIG_SPMI_MTK_PMIF)	+= spmi-mtk-pmif.o
+> +
+> diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+> new file mode 100644
+> index 000000000000..35d338a19d76
+> --- /dev/null
+> +++ b/drivers/spmi/spmi-mtk-pmif.c
+> @@ -0,0 +1,459 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +//
+> +// Copyright (c) 2021 MediaTek Inc.
+> +
+> +#include <linux/clk.h>
+> +#include <linux/iopoll.h>
+> +#include <linux/module.h>
+> +#include <linux/of.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/property.h>
+> +#include <linux/spmi.h>
+> +
+> +#define SWINF_IDLE	0x00
+> +#define SWINF_WFVLDCLR	0x06
+> +
+> +#define GET_SWINF(x)	(((x) >> 1) & 0x7)
+> +
+> +#define PMIF_CMD_REG_0		0
+> +#define PMIF_CMD_REG		1
+> +#define PMIF_CMD_EXT_REG	2
+> +#define PMIF_CMD_EXT_REG_LONG	3
+> +
+> +#define PMIF_DELAY_US   10
+> +#define PMIF_TIMEOUT_US (10 * 1000)
+> +
+> +#define PMIF_CHAN_OFFSET 0x5
+> +
+> +#define PMIF_MAX_CLKS	3
+> +
+> +#define SPMI_OP_ST_BUSY 1
+> +
+> +struct ch_reg {
+> +	u32 ch_sta;
+> +	u32 wdata;
+> +	u32 rdata;
+> +	u32 ch_send;
+> +	u32 ch_rdy;
+> +};
+> +
+> +struct pmif_data {
+> +	const u32	*regs;
+> +	const u32	*spmimst_regs;
+> +	u32	soc_chan;
+> +};
+> +
+> +struct pmif {
+> +	void __iomem	*base;
+> +	void __iomem	*spmimst_base;
+> +	struct ch_reg	chan;
+> +	struct clk_bulk_data clks[PMIF_MAX_CLKS];
+> +	size_t nclks;
+> +	const struct pmif_data *data;
+> +};
+> +
+> +static const char * const pmif_clock_names[] = {
+> +	"pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
+> +};
+> +
+> +enum pmif_regs {
+> +	PMIF_INIT_DONE,
+> +	PMIF_INF_EN,
+> +	PMIF_ARB_EN,
+> +	PMIF_CMDISSUE_EN,
+> +	PMIF_TIMER_CTRL,
+> +	PMIF_SPI_MODE_CTRL,
+> +	PMIF_IRQ_EVENT_EN_0,
+> +	PMIF_IRQ_FLAG_0,
+> +	PMIF_IRQ_CLR_0,
+> +	PMIF_IRQ_EVENT_EN_1,
+> +	PMIF_IRQ_FLAG_1,
+> +	PMIF_IRQ_CLR_1,
+> +	PMIF_IRQ_EVENT_EN_2,
+> +	PMIF_IRQ_FLAG_2,
+> +	PMIF_IRQ_CLR_2,
+> +	PMIF_IRQ_EVENT_EN_3,
+> +	PMIF_IRQ_FLAG_3,
+> +	PMIF_IRQ_CLR_3,
+> +	PMIF_IRQ_EVENT_EN_4,
+> +	PMIF_IRQ_FLAG_4,
+> +	PMIF_IRQ_CLR_4,
+> +	PMIF_WDT_EVENT_EN_0,
+> +	PMIF_WDT_FLAG_0,
+> +	PMIF_WDT_EVENT_EN_1,
+> +	PMIF_WDT_FLAG_1,
+> +	PMIF_SWINF_0_STA,
+> +	PMIF_SWINF_0_WDATA_31_0,
+> +	PMIF_SWINF_0_RDATA_31_0,
+> +	PMIF_SWINF_0_ACC,
+> +	PMIF_SWINF_0_VLD_CLR,
+> +	PMIF_SWINF_1_STA,
+> +	PMIF_SWINF_1_WDATA_31_0,
+> +	PMIF_SWINF_1_RDATA_31_0,
+> +	PMIF_SWINF_1_ACC,
+> +	PMIF_SWINF_1_VLD_CLR,
+> +	PMIF_SWINF_2_STA,
+> +	PMIF_SWINF_2_WDATA_31_0,
+> +	PMIF_SWINF_2_RDATA_31_0,
+> +	PMIF_SWINF_2_ACC,
+> +	PMIF_SWINF_2_VLD_CLR,
+> +	PMIF_SWINF_3_STA,
+> +	PMIF_SWINF_3_WDATA_31_0,
+> +	PMIF_SWINF_3_RDATA_31_0,
+> +	PMIF_SWINF_3_ACC,
+> +	PMIF_SWINF_3_VLD_CLR,
+> +};
+> +
+> +static const u32 mt6873_regs[] = {
+> +	[PMIF_INIT_DONE] =	0x0000,
+> +	[PMIF_INF_EN] =		0x0024,
+> +	[PMIF_ARB_EN] =		0x0150,
+> +	[PMIF_CMDISSUE_EN] =	0x03B4,
+> +	[PMIF_TIMER_CTRL] =	0x03E0,
+> +	[PMIF_SPI_MODE_CTRL] =	0x0400,
+> +	[PMIF_IRQ_EVENT_EN_0] =	0x0418,
+> +	[PMIF_IRQ_FLAG_0] =	0x0420,
+> +	[PMIF_IRQ_CLR_0] =	0x0424,
+> +	[PMIF_IRQ_EVENT_EN_1] =	0x0428,
+> +	[PMIF_IRQ_FLAG_1] =	0x0430,
+> +	[PMIF_IRQ_CLR_1] =	0x0434,
+> +	[PMIF_IRQ_EVENT_EN_2] =	0x0438,
+> +	[PMIF_IRQ_FLAG_2] =	0x0440,
+> +	[PMIF_IRQ_CLR_2] =	0x0444,
+> +	[PMIF_IRQ_EVENT_EN_3] =	0x0448,
+> +	[PMIF_IRQ_FLAG_3] =	0x0450,
+> +	[PMIF_IRQ_CLR_3] =	0x0454,
+> +	[PMIF_IRQ_EVENT_EN_4] =	0x0458,
+> +	[PMIF_IRQ_FLAG_4] =	0x0460,
+> +	[PMIF_IRQ_CLR_4] =	0x0464,
+> +	[PMIF_WDT_EVENT_EN_0] =	0x046C,
+> +	[PMIF_WDT_FLAG_0] =	0x0470,
+> +	[PMIF_WDT_EVENT_EN_1] =	0x0474,
+> +	[PMIF_WDT_FLAG_1] =	0x0478,
+> +	[PMIF_SWINF_0_ACC] =	0x0C00,
+> +	[PMIF_SWINF_0_WDATA_31_0] =	0x0C04,
+> +	[PMIF_SWINF_0_RDATA_31_0] =	0x0C14,
+> +	[PMIF_SWINF_0_VLD_CLR] =	0x0C24,
+> +	[PMIF_SWINF_0_STA] =	0x0C28,
+> +	[PMIF_SWINF_1_ACC] =	0x0C40,
+> +	[PMIF_SWINF_1_WDATA_31_0] =	0x0C44,
+> +	[PMIF_SWINF_1_RDATA_31_0] =	0x0C54,
+> +	[PMIF_SWINF_1_VLD_CLR] =	0x0C64,
+> +	[PMIF_SWINF_1_STA] =	0x0C68,
+> +	[PMIF_SWINF_2_ACC] =	0x0C80,
+> +	[PMIF_SWINF_2_WDATA_31_0] =	0x0C84,
+> +	[PMIF_SWINF_2_RDATA_31_0] =	0x0C94,
+> +	[PMIF_SWINF_2_VLD_CLR] =	0x0CA4,
+> +	[PMIF_SWINF_2_STA] =	0x0CA8,
+> +	[PMIF_SWINF_3_ACC] =	0x0CC0,
+> +	[PMIF_SWINF_3_WDATA_31_0] =	0x0CC4,
+> +	[PMIF_SWINF_3_RDATA_31_0] =	0x0CD4,
+> +	[PMIF_SWINF_3_VLD_CLR] =	0x0CE4,
+> +	[PMIF_SWINF_3_STA] =	0x0CE8,
+> +};
 
-Patch 1:
-    - Adds the PCI_ERROR_RESPONSE and other related defintions
-    - All other patches are dependent on this patch. This patch needs to
-      be applied first, before the others
+Hello!
 
-Patch 2:
-    - Error fabrication happens in PCI_OP_READ and PCI_USER_READ_CONFIG
-      whenever the data read via the controller driver fails.
-    - This patch needs to be applied before, Patch 4/24 to Patch 15/24 are
-      applied.
+Can you please either use simply a space, or fix your tabulations indentation?
 
-Patch 3:
-    - Uses SET_PCI_ERROR_RESPONSE() when device is not found and
-      RESPONSE_IS_PCI_ERROR() to check hardware read from the hardware.
+> +
+> +enum spmi_regs {
+> +	SPMI_OP_ST_CTRL,
+> +	SPMI_GRP_ID_EN,
+> +	SPMI_OP_ST_STA,
+> +	SPMI_MST_SAMPL,
+> +	SPMI_MST_REQ_EN,
+> +	SPMI_REC_CTRL,
+> +	SPMI_REC0,
+> +	SPMI_REC1,
+> +	SPMI_REC2,
+> +	SPMI_REC3,
+> +	SPMI_REC4,
+> +	SPMI_MST_DBG,
+> +};
+> +
+> +static const u32 mt6873_spmi_regs[] = {
+> +	[SPMI_OP_ST_CTRL] =	0x0000,
+> +	[SPMI_GRP_ID_EN] =	0x0004,
+> +	[SPMI_OP_ST_STA] =	0x0008,
+> +	[SPMI_MST_SAMPL] =	0x000c,
+> +	[SPMI_MST_REQ_EN] =	0x0010,
+> +	[SPMI_REC_CTRL] =	0x0040,
+> +	[SPMI_REC0] =		0x0044,
+> +	[SPMI_REC1] =		0x0048,
+> +	[SPMI_REC2] =		0x004c,
+> +	[SPMI_REC3] =		0x0050,
+> +	[SPMI_REC4] =		0x0054,
+> +	[SPMI_MST_DBG] =	0x00fc,
+> +};
+> +
+> +static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
+> +{
+> +	return readl(arb->base + arb->data->regs[reg]);
+> +}
+> +
+> +static void pmif_writel(struct pmif *arb, u32 val, enum pmif_regs reg)
+> +{
+> +	writel(val, arb->base + arb->data->regs[reg]);
+> +}
+> +
+> +static void mtk_spmi_writel(struct pmif *arb, u32 val, enum spmi_regs reg)
+> +{
+> +	writel(val, arb->spmimst_base + arb->data->spmimst_regs[reg]);
+> +}
+> +
+> +static bool pmif_is_fsm_vldclr(struct pmif *arb)
+> +{
+> +	u32 reg_rdata;
+> +
+> +	reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
+> +
+> +	return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
+> +}
+> +
+> +static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
+> +{
+> +	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +	u32 rdata, cmd;
+> +	int ret;
+> +
+> +	/* Check the opcode */
+> +	if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
+> +		return -EINVAL;
+> +
+> +	cmd = opc - SPMI_CMD_RESET;
+> +
+> +	mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
+> +	ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
+> +					rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0)
+> +		dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
+> +
+> +	return ret;
+> +}
+> +
+> +static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> +			      u16 addr, u8 *buf, size_t len)
+> +{
+> +	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +	struct ch_reg *inf_reg;
+> +	int ret;
+> +	u32 data, cmd;
+> +
+> +	/* Check for argument validation. */
+> +	if (sid & ~0xf) {
+> +		dev_err(&ctrl->dev, "exceed the max slv id\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (len > 4) {
+> +		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+> +
+> +		return -EINVAL;
+> +	}
+> +
+> +	if (opc >= 0x60 && opc <= 0x7f)
+> +		opc = PMIF_CMD_REG;
+> +	else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
+> +		opc = PMIF_CMD_EXT_REG_LONG;
+> +	else
+> +		return -EINVAL;
+> +
+> +	/* Wait for Software Interface FSM state to be IDLE. */
+> +	inf_reg = &arb->chan;
+> +	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +					data, GET_SWINF(data) == SWINF_IDLE,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0) {
+> +		/* set channel ready if the data has transferred */
+> +		if (pmif_is_fsm_vldclr(arb))
+> +			pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> +		goto out;
 
-Patch 4 - 15:
-    - Removes redundant error fabrication that happens in controller 
-      drivers when the read from a PCI device fails.
-    - These patches are dependent on Patch 2/24 of the series.
-    - These can be applied in any order.
+You can just return ret here, instead of jumping to the out label.
 
-Patch 16 - 22:
-    - Uses RESPONSE_IS_PCI_ERROR() to check the reads from hardware
-    - Patches can be applied in any order.
+> +	}
+> +
+> +	/* Send the command. */
+> +	cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
+> +	pmif_writel(arb, cmd, inf_reg->ch_send);
+> +
+> +	/*
+> +	 * Wait for Software Interface FSM state to be WFVLDCLR,
+> +	 * read the data and clear the valid flag.
+> +	 */
+> +	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +					data, GET_SWINF(data) == SWINF_WFVLDCLR,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0) {
+> +		dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
+> +		goto out;
 
-Patch 23 - 24:
-    - Edits the comments to include PCI_ERROR_RESPONSE alsong with
-      0xFFFFFFFF, so that it becomes easier to grep for faulty 
-      hardware reads.
+Same here
 
-Changelog
-=========
+> +	}
+> +
+> +	data = pmif_readl(arb, inf_reg->rdata);
+> +	memcpy(buf, &data, len);
+> +	pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +
+> +out:
+> +	if (ret < 0)
+> +		return ret;
 
-v2:
-    - Instead of using SET_PCI_ERROR_RESPONSE in all controller drivers
-      to fabricate error response, only use them in PCI_OP_READ and
-      PCI_USER_READ_CONFIG
+...and after the fixes, you won't need this label, nor this check here anymore.
 
-Naveen Naidu (24):
- [PATCH 1/24] PCI: Add PCI_ERROR_RESPONSE and it's related definitions
- [PATCH 2/24] PCI: Set error response in config access defines when ops->read() fails
- [PATCH 3/24] PCI: Unify PCI error response checking
- [PATCH 4/24] PCI: Remove redundant error fabrication when device read fails
- [PATCH 5/24] PCI: thunder: Remove redundant error fabrication when device read fails
- [PATCH 6/24] PCI: iproc: Remove redundant error fabrication when device read fails
- [PATCH 7/24] PCI: mediatek: Remove redundant error fabrication when device read fails
- [PATCH 8/24] PCI: exynos: Remove redundant error fabrication when device read fails
- [PATCH 9/24] PCI: histb: Remove redundant error fabrication when device read fails
- [PATCH 10/24] PCI: kirin: Remove redundant error fabrication when device read fails
- [PATCH 11/24] PCI: aardvark: Remove redundant error fabrication when device read fails
- [PATCH 12/24] PCI: mvebu: Remove redundant error fabrication when device read fails
- [PATCH 13/24] PCI: altera: Remove redundant error fabrication when device read fails
- [PATCH 14/24] PCI: rcar: Remove redundant error fabrication when device read fails
- [PATCH 15/24] PCI: rockchip: Remove redundant error fabrication when device read fails
- [PATCH 16/24] PCI/ERR: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
- [PATCH 17/24] PCI: vmd: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
- [PATCH 18/24] PCI: pciehp: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
- [PATCH 19/24] PCI/DPC: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
- [PATCH 20/24] PCI/PME: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
- [PATCH 21/24] PCI: cpqphp: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
- [PATCH 22/24] PCI: keystone: Use PCI_ERROR_RESPONSE to specify hardware error
- [PATCH 23/24] PCI: hv: Use PCI_ERROR_RESPONSE to specify hardware read error
- [PATCH 24/24] PCI: xgene: Use PCI_ERROR_RESPONSE to specify hardware error
+> +
+> +	return 0;
+> +}
+> +
+> +static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
+> +			       u16 addr, const u8 *buf, size_t len)
+> +{
+> +	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
+> +	struct ch_reg *inf_reg;
+> +	int ret;
+> +	u32 data, cmd;
+> +
+> +	if (len > 4) {
+> +		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
+> +
+> +		return -EINVAL;
+> +	}
+> +
+> +	/* Check the opcode */
+> +	if (opc >= 0x40 && opc <= 0x5F)
+> +		opc = PMIF_CMD_REG;
+> +	else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
+> +		opc = PMIF_CMD_EXT_REG_LONG;
+> +	else if (opc >= 0x80)
+> +		opc = PMIF_CMD_REG_0;
+> +	else
+> +		return -EINVAL;
+> +
+> +	/* Wait for Software Interface FSM state to be IDLE. */
+> +	inf_reg = &arb->chan;
+> +	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
+> +					data, GET_SWINF(data) == SWINF_IDLE,
+> +					PMIF_DELAY_US, PMIF_TIMEOUT_US);
+> +	if (ret < 0) {
+> +		/* set channel ready if the data has transferred */
+> +		if (pmif_is_fsm_vldclr(arb))
+> +			pmif_writel(arb, 1, inf_reg->ch_rdy);
+> +		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
+> +		goto out;
 
- drivers/pci/access.c                        | 36 ++++++++--------
- drivers/pci/controller/dwc/pci-exynos.c     |  4 +-
- drivers/pci/controller/dwc/pci-keystone.c   |  4 +-
- drivers/pci/controller/dwc/pcie-histb.c     |  4 +-
- drivers/pci/controller/dwc/pcie-kirin.c     |  4 +-
- drivers/pci/controller/pci-aardvark.c       | 10 +----
- drivers/pci/controller/pci-hyperv.c         |  2 +-
- drivers/pci/controller/pci-mvebu.c          |  8 +---
- drivers/pci/controller/pci-thunder-ecam.c   | 46 +++++++--------------
- drivers/pci/controller/pci-thunder-pem.c    |  4 +-
- drivers/pci/controller/pci-xgene.c          |  8 ++--
- drivers/pci/controller/pcie-altera.c        |  4 +-
- drivers/pci/controller/pcie-iproc.c         |  4 +-
- drivers/pci/controller/pcie-mediatek.c      | 11 +----
- drivers/pci/controller/pcie-rcar-host.c     |  4 +-
- drivers/pci/controller/pcie-rockchip-host.c |  4 +-
- drivers/pci/controller/vmd.c                |  2 +-
- drivers/pci/hotplug/cpqphp_ctrl.c           |  4 +-
- drivers/pci/hotplug/pciehp_hpc.c            | 10 ++---
- drivers/pci/pci.c                           | 10 ++---
- drivers/pci/pcie/dpc.c                      |  4 +-
- drivers/pci/pcie/pme.c                      |  4 +-
- drivers/pci/probe.c                         | 10 ++---
- include/linux/pci.h                         |  9 ++++
- 24 files changed, 87 insertions(+), 123 deletions(-)
+Just return ret here.
 
--- 
-2.25.1
+> +	}
+> +
+> +	/* Set the write data. */
+> +	memcpy(&data, buf, len);
+> +	pmif_writel(arb, data, inf_reg->wdata);
+> +
+> +	/* Send the command. */
+> +	cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
+> +	pmif_writel(arb, cmd, inf_reg->ch_send);
+> +
+> +out:
 
+...and this label can then also disappear.
+
+After these fixes,
+Acked-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 _______________________________________________
 Linux-mediatek mailing list
