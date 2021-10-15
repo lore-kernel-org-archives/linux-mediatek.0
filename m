@@ -2,86 +2,91 @@ Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CDB4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:48:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 28706C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:56:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 437CE61027
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:48:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 437CE61027
+	by mail.kernel.org (Postfix) with ESMTPS id D172C611CE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:56:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D172C611CE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W7weN168C7HW4gnxfWN3mQTUkl8X/x68f3CYRxsn2xM=; b=q5xKYyjHyhuj05
-	MFsucx9mBhVGcUrXYJFMhGeF37qi+KS+bdZQHmyrCsDgX4PNovqQsP9PPomx3WQeMvR9N6PjglZe2
-	yLGpTXMwHp/QEA82OTk0Ghu/1b8mnfkwXO6YU9i8EmcwwOEo7g5sY8K3e/doEzfj+2Ht1j4MqUUDc
-	LRssi3ZzZvkeYpv9pnGABFZyJF1YhSUU+3tTtfLyOFvV6XI5wFhKinrfEtntIrdao/n2XH7L9epsu
-	I/1DxADbYYbh3bvWppUa3wDNWvrg7rl5RInyvmJWAAFO9eaPzNSiqW8UypY652lj9sVbDQQh27LKx
-	Ck7HlhP6PVYYPr/ZGZFw==;
+	List-Owner; bh=wX5/2kglMgjkTKXecNGaWIGBQI2nlSI5Mh1UTkl1TF0=; b=qU0KL2n/ORob1V
+	S6IfCOvDoS5CTJsmSk45bAnKmjGvjH6Ik3GTzn57FhfJNESPReyjARNZqqqLSav7GakoQ9UlKxqNR
+	oLCAinGXLCIi8Zw60C3OD/q/+TbQ2gUErh27teowpotoPlZguuGb/V2j3AZGu9AR44RQXGo/ZD3Eb
+	x/2h9KTqrEpfE0qG1KGRu9Fm9KVbE7gWM3rO/DJG7mbImRg8Q8g+ku/6xONfeWjXGn6GvWloWQuci
+	EBk8T/4kFh02Fbwr2NN/iu5tRhlaf59gUZG81A933A3Ze3SEJANRtilO2OwmEH0hS/Pp1qFzH1W+S
+	KbH8WDH396zcIfqELvGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbOVc-007iFF-VW; Fri, 15 Oct 2021 14:48:33 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1mbOcw-007kjV-Fj; Fri, 15 Oct 2021 14:56:06 +0000
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbOLw-007exC-Jw; Fri, 15 Oct 2021 14:38:34 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id 133so8819395pgb.1;
- Fri, 15 Oct 2021 07:38:31 -0700 (PDT)
+ id 1mbOQf-007gPa-3g; Fri, 15 Oct 2021 14:43:26 +0000
+Received: by mail-pg1-x534.google.com with SMTP id f5so8788133pgc.12;
+ Fri, 15 Oct 2021 07:43:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=SMQahSuLkYo9QaD+Qhh/rr+IxtoKzA8Nwb2h7pqvaCk=;
- b=f9C5vvm05bjesX8SnDHArhRL/E4xsJyDuEdJdwo5gcUf4ds7/HfzOPqvl9MVE+v0M6
- EH7GnDmywUofusbnWPXVnINbgFSpnQQFZmnzb7QqVieAiT/UdCFWm0GBlTb+mCPv2pun
- OnwPmERB7qtMSDnSi2tlwoSxdk/X8844lFEUBLPCdfpvpxm9nPnCtyJmTIKtP+r2lq+e
- TUO1xQcIQKdBvW9lBgv+/nd24P/tA+7XcGHESXe8RQz3qKZIXlQZm2rppNxQi1ggqxTU
- 84IXAI1DqiTvtEukEhdcxB46Cn/EXGdOEHlI1TqWy75PyBy2naikDOERIKqtUYVj5pam
- 2N8w==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
+ b=eMtI6REOFWix9KtW5tFZKnYJASMZfWRLSZnk5Z3YHrAZfJHAzvFnr8ylXwPFqc2a/a
+ sSZ8UvQq1tqytMA7xvcnnsiLWefZHtOIvyR4w48y0+/FL2UKgIHln+v2qE2m/w+JTFM1
+ 5/mXXW1NrvfbNEM0Kxme6uJJEBTs38ZYlbTHW6Re7rHSajvVurS8Uq1V2v4NCeWCfPhp
+ 0AMJSPYYm2sBLxJatPIFmiVJT/Oh5NHr53JmOewoMKlOnjkfBC7TBlY4MypeOeGa17pJ
+ HGEAOs0d5LPR7Euvw8ZGAQvAt0r8Wbzm43Xw5FKSEaUKTN3vn6bLTxu6DfAsFds4nbK0
+ 6Xag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=SMQahSuLkYo9QaD+Qhh/rr+IxtoKzA8Nwb2h7pqvaCk=;
- b=RautIZh8FWHHzdgos/4cImAC8bfjHYBE/CKDoDWNjzzIyXOCwEW95m8RMw1Zjt8BFu
- lRgZykjhUxrhYqYtBCZMfh7nOk9jCXu2lQ8agzDGcBStjwcxeHwcZS6bUWi+6DZY7dXm
- Y6F2TuCyDxIhA2WfAS7DHh4y44wtU/eqQG2fqVPRVjPp2g0nnrMqm15EwxwhKPrk0lK+
- tMCEGPmt4WAJadatPGx2uACEda7ua3VgnOSSVZr/WapmhJiYZIzQRpVOoIXJcbxgu2tk
- QAIeA15bdIJ6U1Guy52GrSjwk4l12K/yhM+TRnneQNssa3ZJaLD++6fk/okE2YI/cvbI
- IM9A==
-X-Gm-Message-State: AOAM5306EsX9trq5Nrhe8LrKIzcJWwOtwznqgXJYLkuKf9IYUEXw33hR
- lRwTdWIrIw/78BzloMvvPHA=
-X-Google-Smtp-Source: ABdhPJy3KchjBGO6Ql9f4dVlV9jPJcB0Yra/m1Nx/lqa6aj1Bh1ThIeCJpbVbUTEIVBjipN6SfnlEA==
-X-Received: by 2002:aa7:8149:0:b0:44c:916c:1fdb with SMTP id
- d9-20020aa78149000000b0044c916c1fdbmr12465808pfn.34.1634308711265; 
- Fri, 15 Oct 2021 07:38:31 -0700 (PDT)
-Received: from theprophet ([2406:7400:63:4806:9a51:7f4b:9b5c:337a])
- by smtp.gmail.com with ESMTPSA id g14sm11656625pjd.24.2021.10.15.07.38.26
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
+ b=aMHVyXcZRtznhkXw3vE9VKgBBRCsdXjg4wMB2zkw01xGoWPKLOF2debyydGquGR8uJ
+ 3RUNyDZjG0VRMcO8ECkplBmenpoPkC9mYfSM6ci9PmPbu5fUgKVtax21AthqwzJl/60x
+ rmQIUkkNavI4BpOEuraV/JBbQT7AZ8UbVQsSgEJAx34VBK80dJLv/f2EKnqAfCl8f7/w
+ KzZ8BZR/rhKy73PV38M3Y5ejX45PbHUxfDUdy6I0Gt902E3XbSj5wCMayzONnu9R/yQM
+ Gh2GXVw5Hl/TTFbxIA8/dNaCDeixWV/tc7aG1Dvjf4IdZzyAE8AA/L2kLcWpim3SCTpO
+ xD0A==
+X-Gm-Message-State: AOAM533T+je5MNqFcwflTvn1IF7RqQoouRSgw0LXuJ780X2FMfvgZRWE
+ 6E9neQgTV3Kug5nik1gkn0k=
+X-Google-Smtp-Source: ABdhPJznv5Me0M33f8HkD/iBEPi7jNhXlMeZY3pyG0z8AuGV93euaOSAW3r29nVl5vtoWE0qzOFOmg==
+X-Received: by 2002:a62:2f81:0:b0:44b:b390:956b with SMTP id
+ v123-20020a622f81000000b0044bb390956bmr12110659pfv.30.1634309004189; 
+ Fri, 15 Oct 2021 07:43:24 -0700 (PDT)
+Received: from localhost.localdomain ([2406:7400:63:4806:9a51:7f4b:9b5c:337a])
+ by smtp.gmail.com with ESMTPSA id
+ f18sm5293491pfa.60.2021.10.15.07.43.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Oct 2021 07:38:30 -0700 (PDT)
-Date: Fri, 15 Oct 2021 20:08:18 +0530
+ Fri, 15 Oct 2021 07:43:23 -0700 (PDT)
 From: Naveen Naidu <naveennaidu479@gmail.com>
 To: bhelgaas@google.com
-Cc: linux-kernel-mentees@lists.linuxfoundation.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, Rob Herring <robh@kernel.org>,
- Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-Subject: Re: [PATCH v2 00/24] Unify PCI error response checking
-Message-ID: <20211015143818.gvkcs5j6zvdino2r@theprophet>
-References: <cover.1634300660.git.naveennaidu479@gmail.com>
+Cc: Naveen Naidu <naveennaidu479@gmail.com>,
+ linux-kernel-mentees@lists.linuxfoundation.org, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org (open list:PCIE DRIVER FOR MEDIATEK),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v2 07/24] PCI: mediatek: Remove redundant error fabrication
+ when device read fails
+Date: Fri, 15 Oct 2021 20:08:48 +0530
+Message-Id: <4aa74ccd31c42b108b61f2ad274bae59a1d25114.1634306198.git.naveennaidu479@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1634306198.git.naveennaidu479@gmail.com>
+References: <cover.1634306198.git.naveennaidu479@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1634300660.git.naveennaidu479@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211015_073832_753118_150A74FD 
-X-CRM114-Status: GOOD (  26.92  )
+X-CRM114-CacheID: sfid-20211015_074325_195906_622691C0 
+X-CRM114-Status: GOOD (  13.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,118 +103,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/10, Naveen Naidu wrote:
-> An MMIO read from a PCI device that doesn't exist or doesn't respond
-> causes a PCI error.  There's no real data to return to satisfy the 
-> CPU read, so most hardware fabricates ~0 data.
-> 
-> This patch series adds PCI_ERROR_RESPONSE definition and other helper
-> definition SET_PCI_ERROR_RESPONSE and RESPONSE_IS_PCI_ERROR and uses it
-> where appropriate to make these checks consistent and easier to find.
-> 
-> This helps unify PCI error response checking and make error check
-> consistent and easier to find.
-> 
-> This series also ensures that the error response fabrication now happens
-> in the PCI_OP_READ and PCI_USER_READ_CONFIG. This removes the
-> responsibility from controller drivers to do the error response setting. 
-> 
-> Patch 1:
->     - Adds the PCI_ERROR_RESPONSE and other related defintions
->     - All other patches are dependent on this patch. This patch needs to
->       be applied first, before the others
-> 
-> Patch 2:
->     - Error fabrication happens in PCI_OP_READ and PCI_USER_READ_CONFIG
->       whenever the data read via the controller driver fails.
->     - This patch needs to be applied before, Patch 4/24 to Patch 15/24 are
->       applied.
-> 
-> Patch 3:
->     - Uses SET_PCI_ERROR_RESPONSE() when device is not found and
->       RESPONSE_IS_PCI_ERROR() to check hardware read from the hardware.
-> 
-> Patch 4 - 15:
->     - Removes redundant error fabrication that happens in controller 
->       drivers when the read from a PCI device fails.
->     - These patches are dependent on Patch 2/24 of the series.
->     - These can be applied in any order.
-> 
-> Patch 16 - 22:
->     - Uses RESPONSE_IS_PCI_ERROR() to check the reads from hardware
->     - Patches can be applied in any order.
-> 
-> Patch 23 - 24:
->     - Edits the comments to include PCI_ERROR_RESPONSE alsong with
->       0xFFFFFFFF, so that it becomes easier to grep for faulty 
->       hardware reads.
-> 
-> Changelog
-> =========
-> 
-> v2:
->     - Instead of using SET_PCI_ERROR_RESPONSE in all controller drivers
->       to fabricate error response, only use them in PCI_OP_READ and
->       PCI_USER_READ_CONFIG
-> 
-> Naveen Naidu (24):
->  [PATCH 1/24] PCI: Add PCI_ERROR_RESPONSE and it's related definitions
->  [PATCH 2/24] PCI: Set error response in config access defines when ops->read() fails
->  [PATCH 3/24] PCI: Unify PCI error response checking
->  [PATCH 4/24] PCI: Remove redundant error fabrication when device read fails
->  [PATCH 5/24] PCI: thunder: Remove redundant error fabrication when device read fails
->  [PATCH 6/24] PCI: iproc: Remove redundant error fabrication when device read fails
->  [PATCH 7/24] PCI: mediatek: Remove redundant error fabrication when device read fails
->  [PATCH 8/24] PCI: exynos: Remove redundant error fabrication when device read fails
->  [PATCH 9/24] PCI: histb: Remove redundant error fabrication when device read fails
->  [PATCH 10/24] PCI: kirin: Remove redundant error fabrication when device read fails
->  [PATCH 11/24] PCI: aardvark: Remove redundant error fabrication when device read fails
->  [PATCH 12/24] PCI: mvebu: Remove redundant error fabrication when device read fails
->  [PATCH 13/24] PCI: altera: Remove redundant error fabrication when device read fails
->  [PATCH 14/24] PCI: rcar: Remove redundant error fabrication when device read fails
->  [PATCH 15/24] PCI: rockchip: Remove redundant error fabrication when device read fails
->  [PATCH 16/24] PCI/ERR: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
->  [PATCH 17/24] PCI: vmd: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
->  [PATCH 18/24] PCI: pciehp: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
->  [PATCH 19/24] PCI/DPC: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
->  [PATCH 20/24] PCI/PME: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
->  [PATCH 21/24] PCI: cpqphp: Use RESPONSE_IS_PCI_ERROR() to check read from hardware
->  [PATCH 22/24] PCI: keystone: Use PCI_ERROR_RESPONSE to specify hardware error
->  [PATCH 23/24] PCI: hv: Use PCI_ERROR_RESPONSE to specify hardware read error
->  [PATCH 24/24] PCI: xgene: Use PCI_ERROR_RESPONSE to specify hardware error
-> 
->  drivers/pci/access.c                        | 36 ++++++++--------
->  drivers/pci/controller/dwc/pci-exynos.c     |  4 +-
->  drivers/pci/controller/dwc/pci-keystone.c   |  4 +-
->  drivers/pci/controller/dwc/pcie-histb.c     |  4 +-
->  drivers/pci/controller/dwc/pcie-kirin.c     |  4 +-
->  drivers/pci/controller/pci-aardvark.c       | 10 +----
->  drivers/pci/controller/pci-hyperv.c         |  2 +-
->  drivers/pci/controller/pci-mvebu.c          |  8 +---
->  drivers/pci/controller/pci-thunder-ecam.c   | 46 +++++++--------------
->  drivers/pci/controller/pci-thunder-pem.c    |  4 +-
->  drivers/pci/controller/pci-xgene.c          |  8 ++--
->  drivers/pci/controller/pcie-altera.c        |  4 +-
->  drivers/pci/controller/pcie-iproc.c         |  4 +-
->  drivers/pci/controller/pcie-mediatek.c      | 11 +----
->  drivers/pci/controller/pcie-rcar-host.c     |  4 +-
->  drivers/pci/controller/pcie-rockchip-host.c |  4 +-
->  drivers/pci/controller/vmd.c                |  2 +-
->  drivers/pci/hotplug/cpqphp_ctrl.c           |  4 +-
->  drivers/pci/hotplug/pciehp_hpc.c            | 10 ++---
->  drivers/pci/pci.c                           | 10 ++---
->  drivers/pci/pcie/dpc.c                      |  4 +-
->  drivers/pci/pcie/pme.c                      |  4 +-
->  drivers/pci/probe.c                         | 10 ++---
->  include/linux/pci.h                         |  9 ++++
->  24 files changed, 87 insertions(+), 123 deletions(-)
-> 
-> -- 
-> 2.25.1
->
+An MMIO read from a PCI device that doesn't exist or doesn't respond
+causes a PCI error. There's no real data to return to satisfy the
+CPU read, so most hardware fabricates ~0 data.
 
-Please ignore this stray cover letter. I had a wrong message ID written
-for it. Apologies for the inconvenience caused.
+The host controller drivers sets the error response values (~0) and
+returns an error when faulty hardware read occurs. But the error
+response value (~0) is already being set in PCI_OP_READ and
+PCI_USER_READ_CONFIG whenever a read by host controller driver fails.
+
+Thus, it's no longer necessary for the host controller drivers to
+fabricate any error response.
+
+This helps unify PCI error response checking and make error check
+consistent and easier to find.
+
+Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 2f3f974977a3..a19f8ec5d392 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -365,19 +365,12 @@ static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
+ {
+ 	struct mtk_pcie_port *port;
+ 	u32 bn = bus->number;
+-	int ret;
+ 
+ 	port = mtk_pcie_find_port(bus, devfn);
+-	if (!port) {
+-		*val = ~0;
++	if (!port)
+ 		return PCIBIOS_DEVICE_NOT_FOUND;
+-	}
+-
+-	ret = mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
+-	if (ret)
+-		*val = ~0;
+ 
+-	return ret;
++	return mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
+ }
+ 
+ static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
+-- 
+2.25.1
 
 
 _______________________________________________
