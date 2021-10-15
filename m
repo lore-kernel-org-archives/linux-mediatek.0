@@ -2,14 +2,14 @@ Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 89618C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 01:42:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DE26C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 01:56:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 40BC260F23
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 01:42:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 40BC260F23
+	by mail.kernel.org (Postfix) with ESMTPS id 2E23461090
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 01:56:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2E23461090
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,51 +18,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QuNK/4KPOtNx/Fgudqeide4bMFNOkVkleGAgU339QTI=; b=oAkB/jDKyS+6ND
-	j4LPmPiK75Idbd9YKzIez+HXgHoVOQn8FTBAAgRTr1GGOgoodxr1mZ0eOf3tKmK33SUsqC42lyKlR
-	ZulGOxJMZFaB2P/pF98Q9LzJIJXIB/JX+ku1HEp4TdYYaK4ZH6O+Q5jiSz0CKj6K2yOYFAm7joaHd
-	IYxkVXXqjOAr1B65CZqEUoQkDLiUYqclvOMmDBT9gE5MOo3sycBs7LNeOBjoqEwSw9Ygi3JATbFLE
-	U4DNRrLW6rkUCMBa617Nm72FaugwgNpdLX8IZStdSpT9Vc1JS78C/hhWgiqpgorRJbCaEne9koHIq
-	E4E7v/RKHDbUwIJzHQLw==;
+	List-Owner; bh=OhOkyjO1/iE841gl6BiREZnrIPgrT2W2061EzAZWmAA=; b=IUNCTsayt5mXNq
+	dc+xwYsTHPoD7ZGzR0HOKTLIICKOYOmltedIJLmMMDDDC+q43mU3y0avHznmQ43hNg/smarb7+qUN
+	NL/RiQHhtDbiR/xe2/tAJ3uv/tvGa16vLf1amcAwfM8i2DBgg4cjq7e5wZOwl4IYlu2L9v6eIO5i5
+	erTgT7vdyLHfEe0tPpYz1qG3CdVartJualY+5DQbJBFuRu9Rvzx3RPIt5cRxw9d4rc/rKm8iQHTjv
+	qQs/dgGfS7EC5egXy5aPiraHUqw4/DkRadKr7HCHGTxt1iiVCyuDEBX8b5lUT04cjdvHy4TLFLVrt
+	BWOjNbEov/8KyLZalb+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbCEP-004xWD-03; Fri, 15 Oct 2021 01:41:57 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mbCS4-0050OD-7Q; Fri, 15 Oct 2021 01:56:04 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbCEB-004xUB-GI; Fri, 15 Oct 2021 01:41:45 +0000
-X-UUID: 556cb463644740b6b5a9389e9792ddb2-20211014
-X-UUID: 556cb463644740b6b5a9389e9792ddb2-20211014
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1mbCS0-0050Mz-Js; Fri, 15 Oct 2021 01:56:02 +0000
+X-UUID: 4350520b1fe448178d3500a0c99dee39-20211014
+X-UUID: 4350520b1fe448178d3500a0c99dee39-20211014
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 99697527; Thu, 14 Oct 2021 18:41:39 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ with ESMTP id 602987858; Thu, 14 Oct 2021 18:55:58 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 14 Oct 2021 18:41:37 -0700
+ 15.0.1497.2; Thu, 14 Oct 2021 18:45:56 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 15 Oct 2021 09:45:54 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 15 Oct 2021 09:41:37 +0800
-Message-ID: <f1dbe08d6729bbf400e2a683c058333ccde9a8f3.camel@mediatek.com>
-Subject: Re: [PATCH v6 3/3] arm64: dts: mediatek: add basic mt7986b support
+ Transport; Fri, 15 Oct 2021 09:45:54 +0800
+Message-ID: <e7cb3220b925209d8f5229c207d5efbc42d58794.camel@mediatek.com>
+Subject: Re: [PATCH v7 1/4] dt-bindings: pinctrl: update bindings for MT7986
+ SoC
 From: Sam Shih <sam.shih@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, "Enric Balletbo i
- Serra" <enric.balletbo@collabora.com>, Fabien Parent <fparent@baylibre.com>,
- Seiya Wang <seiya.wang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
-Date: Fri, 15 Oct 2021 09:41:37 +0800
-In-Reply-To: <632e8d11-269c-d329-abf4-5d462aac4df4@gmail.com>
-References: <20211014074403.17346-1-sam.shih@mediatek.com>
- <20211014074403.17346-4-sam.shih@mediatek.com>
- <632e8d11-269c-d329-abf4-5d462aac4df4@gmail.com>
+To: Rob Herring <robh@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>, Ryder Lee
+ <Ryder.Lee@mediatek.com>, <linux-gpio@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, Sean Wang <sean.wang@kernel.org>, "John
+ Crispin" <john@phrozen.org>, <linux-arm-kernel@lists.infradead.org>
+Date: Fri, 15 Oct 2021 09:45:54 +0800
+In-Reply-To: <1634221864.165084.3295876.nullmailer@robh.at.kernel.org>
+References: <20211014075836.17681-1-sam.shih@mediatek.com>
+ <20211014075836.17681-2-sam.shih@mediatek.com>
+ <1634221864.165084.3295876.nullmailer@robh.at.kernel.org>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211014_184143_583635_CD493E41 
-X-CRM114-Status: GOOD (  28.00  )
+X-CRM114-CacheID: sfid-20211014_185600_696357_023D351C 
+X-CRM114-Status: GOOD (  25.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,264 +83,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi 
+Hi
 
-On Thu, 2021-10-14 at 17:32 +0200, Matthias Brugger wrote:
-> 
-> On 14/10/2021 09:44, Sam Shih wrote:
-> > Add basic chip support for Mediatek mt7986b, include
-> > basic uart nodes, rng node and watchdog node.
-> > 
-> > Add cpu node, timer node, gic node, psci and reserved-memory node
-> > for ARM Trusted Firmware.
+On Thu, 2021-10-14 at 09:31 -0500, Rob Herring wrote:
+> On Thu, 14 Oct 2021 15:58:33 +0800, Sam Shih wrote:
+> > This updates bindings for MT7986 pinctrl driver. The
+> > difference of pinctrl between mt7986a and mt7986b is that pin-41 to
+> > pin-65 do not exist on mt7986b
 > > 
 > > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > > 
 > > ---
-> > v6: separate basic part into a single patch series
-> > v5: follow reviewr's comment: removed clock freqency node in timer
-> > due to
-> >      we have set CNTFRQ_EL0 in ATF firmware, and also corrected
-> > GICD range
-> > v4: added missing gic register bases, and fixed range of GICR
-> > v3: used the stdout-path instead of console=ttyS0
-> > v2: modified clock and uart node due to clock driver updated
-> > ---
-> >   arch/arm64/boot/dts/mediatek/Makefile        |   1 +
-> >   arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts |  26 ++++
-> >   arch/arm64/boot/dts/mediatek/mt7986b.dtsi    | 149
-> > +++++++++++++++++++
-> >   3 files changed, 176 insertions(+)
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b.dtsi
+> > v7 : updated pinctcl node binding description, and separate pinctrl
+> >      part into a single patch series
 > > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile
-> > b/arch/arm64/boot/dts/mediatek/Makefile
-> > index e6c3a73b9e4a..d555e43d1ccc 100644
-> > --- a/arch/arm64/boot/dts/mediatek/Makefile
-> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> > @@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
-> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
-> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> > b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> > new file mode 100644
-> > index 000000000000..95a202505bb2
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
-> > @@ -0,0 +1,26 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright (C) 2021 MediaTek Inc.
-> > + * Author: Sam.Shih <sam.shih@mediatek.com>
-> > + */
-> > +
-> > +/dts-v1/;
-> > +#include "mt7986b.dtsi"
-> > +
-> > +/ {
-> > +	model = "MediaTek MT7986b RFB";
-> > +	compatible = "mediatek,mt7986b-rfb";
-> > +
-> > +	aliases {
-> > +		serial0 = &uart0;
-> > +	};
-> > +
-> > +	chosen {
-> > +		stdout-path = "serial0:115200n8";
-> > +		bootargs = "earlycon=uart8250,mmio32,0x11002000
-> > swiotlb=512";
-> > +	};
-> > +};
-> > +
-> > +&uart0 {
-> > +	status = "okay";
-> > +};
+> > Original thread:
+> > 
+https://urldefense.com/v3/__https://lore.kernel.org/all/8348ed3e-c561-ad7e-fe9e-a31ed346d8d0@gmail.com/__;!!CTRNKA9wMg0ARbw!yJc1hf6XafeskaOgY8TmMDpGDHuIDhx6AGIpuOiJRl7jCVYcnPmr6I4XKz2iy6O4$
+> >  
+> > 
+> > v6 : fixed yamllint warnings/errors v2
+> > v5 : fixed yamllint warnings/errors v1
+> > v4 : used yaml format instead of txt format document
+> > v3 : make mt7986 pinctrl bindings as a separate file
+> > v2 : deleted the redundant description of mt7986a/mt7986b
+> > ---
+> >  .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 364
+> > ++++++++++++++++++
+> >  1 file changed, 364 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-
+> > pinctrl.yaml
+> > 
 > 
-> We are missing a memory node here. I wonder how the board was able to
-> boot 
-> without memory. Did you test this series?
+> My bot found errors running 'make DT_CHECKER_FLAGS=-m
+> dt_binding_check'
+> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-
+> pinctrl.example.dts:52.36-57.15: ERROR (duplicate_node_names): 
+> /example-0/soc/pinctrl@1001f000/uart1-pins: Duplicate node name
+> ERROR: Input tree has errors, aborting (use -f to force output)
+> make[1]: *** [scripts/Makefile.lib:385:
+> Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-
+> pinctrl.example.dt.yaml] Error 2
+> make[1]: *** Waiting for unfinished jobs....
+> make: *** [Makefile:1441: dt_binding_check] Error 2
 > 
 
-Yes, I have tested this patch series in my local environment,
+Sorry, I took the wrong patch in my local environment for submmit
 
-Our u-boot seems to pass the memory configuration to the kernel
-according to its memory detection mechanism, so it was able to boot.
+This should be "uart2_pins: uart2-pins { ... "
 
-But for the kernel upstream, do you think it is better to
-add the memory node back to the kernel dts?
+I will send next patch to fix this.
 
-If yes, I will send the next patch to add the mermory node back to the
-kernel dts.
++        uart2_pins: uart1-pins {
++          mux {
++            function = "uart";
++            groups = "uart2";
++          };
++        };
 
 
-> Regards,
-> Matthias
+
+> doc reference errors (make refcheckdocs):
 > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-> > new file mode 100644
-> > index 000000000000..2b8e0a382398
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
-> > @@ -0,0 +1,149 @@
-> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> > +/*
-> > + * Copyright (C) 2021 MediaTek Inc.
-> > + * Author: Sam.Shih <sam.shih@mediatek.com>
-> > + */
-> > +
-> > +#include <dt-bindings/interrupt-controller/irq.h>
-> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +
-> > +/ {
-> > +	compatible = "mediatek,mt7986b";
-> > +	interrupt-parent = <&gic>;
-> > +	#address-cells = <2>;
-> > +	#size-cells = <2>;
-> > +
-> > +	system_clk: dummy40m {
-> > +		compatible = "fixed-clock";
-> > +		clock-frequency = <40000000>;
-> > +		#clock-cells = <0>;
-> > +	};
-> > +
-> > +	cpus {
-> > +		#address-cells = <1>;
-> > +		#size-cells = <0>;
-> > +		cpu0: cpu@0 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x0>;
-> > +			#cooling-cells = <2>;
-> > +		};
-> > +
-> > +		cpu1: cpu@1 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x1>;
-> > +			#cooling-cells = <2>;
-> > +		};
-> > +
-> > +		cpu2: cpu@2 {
-> > +			device_type = "cpu";
-> > +			compatible = "arm,cortex-a53";
-> > +			enable-method = "psci";
-> > +			reg = <0x2>;
-> > +			#cooling-cells = <2>;
-> > +		};
-> > +
-> > +		cpu3: cpu@3 {
-> > +			device_type = "cpu";
-> > +			enable-method = "psci";
-> > +			compatible = "arm,cortex-a53";
-> > +			reg = <0x3>;
-> > +			#cooling-cells = <2>;
-> > +		};
-> > +	};
-> > +
-> > +	psci {
-> > +		compatible  = "arm,psci-0.2";
-> > +		method      = "smc";
-> > +	};
-> > +
-> > +	reserved-memory {
-> > +		#address-cells = <2>;
-> > +		#size-cells = <2>;
-> > +		ranges;
-> > +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-> > +		secmon_reserved: secmon@43000000 {
-> > +			reg = <0 0x43000000 0 0x30000>;
-> > +			no-map;
-> > +		};
-> > +	};
-> > +
-> > +	timer {
-> > +		compatible = "arm,armv8-timer";
-> > +		interrupt-parent = <&gic>;
-> > +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-> > +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-> > +	};
-> > +
-> > +	soc {
-> > +		#address-cells = <2>;
-> > +		#size-cells = <2>;
-> > +		compatible = "simple-bus";
-> > +		ranges;
-> > +
-> > +		gic: interrupt-controller@c000000 {
-> > +			compatible = "arm,gic-v3";
-> > +			#interrupt-cells = <3>;
-> > +			interrupt-parent = <&gic>;
-> > +			interrupt-controller;
-> > +			reg = <0 0x0c000000 0 0x10000>,  /* GICD */
-> > +			      <0 0x0c080000 0 0x80000>,  /* GICR */
-> > +			      <0 0x0c400000 0 0x2000>,   /* GICC */
-> > +			      <0 0x0c410000 0 0x1000>,   /* GICH */
-> > +			      <0 0x0c420000 0 0x2000>;   /* GICV */
-> > +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> > +		};
-> > +
-> > +		watchdog: watchdog@1001c000 {
-> > +			compatible = "mediatek,mt7986-wdt",
-> > +				     "mediatek,mt6589-wdt";
-> > +			reg = <0 0x1001c000 0 0x1000>;
-> > +			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-> > +			#reset-cells = <1>;
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +		trng: trng@1020f000 {
-> > +			compatible = "mediatek,mt7986-rng",
-> > +				     "mediatek,mt7623-rng";
-> > +			reg = <0 0x1020f000 0 0x100>;
-> > +			clocks = <&system_clk>;
-> > +			clock-names = "rng";
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +		uart0: serial@11002000 {
-> > +			compatible = "mediatek,mt7986-uart",
-> > +				     "mediatek,mt6577-uart";
-> > +			reg = <0 0x11002000 0 0x400>;
-> > +			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-> > +			clocks = <&system_clk>;
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +		uart1: serial@11003000 {
-> > +			compatible = "mediatek,mt7986-uart",
-> > +				     "mediatek,mt6577-uart";
-> > +			reg = <0 0x11003000 0 0x400>;
-> > +			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-> > +			clocks = <&system_clk>;
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +		uart2: serial@11004000 {
-> > +			compatible = "mediatek,mt7986-uart",
-> > +				     "mediatek,mt6577-uart";
-> > +			reg = <0 0x11004000 0 0x400>;
-> > +			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
-> > +			clocks = <&system_clk>;
-> > +			status = "disabled";
-> > +		};
-> > +
-> > +	};
-> > +
-> > +};
+> See 
+> https://urldefense.com/v3/__https://patchwork.ozlabs.org/patch/1540821__;!!CTRNKA9wMg0ARbw!yJc1hf6XafeskaOgY8TmMDpGDHuIDhx6AGIpuOiJRl7jCVYcnPmr6I4XK9R-t-CX$
+>  
+> 
+> This check can fail if there are any dependencies. The base for a
+> patch
+> series is generally the most recent rc1.
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up
+> to
+> date:
+> 
+> pip3 install dtschema --upgrade
+> 
+> Please check and re-submit.
 
 Thanks,
 Sam
+> 
 
 
 _______________________________________________
