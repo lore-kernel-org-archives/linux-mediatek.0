@@ -2,91 +2,84 @@ Return-Path: <SRS0=QAkp=PD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28706C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:56:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 15B5BC4332F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 15:00:43 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D172C611CE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 14:56:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D172C611CE
+	by mail.kernel.org (Postfix) with ESMTPS id D8096611C3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 15 Oct 2021 15:00:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D8096611C3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wX5/2kglMgjkTKXecNGaWIGBQI2nlSI5Mh1UTkl1TF0=; b=qU0KL2n/ORob1V
-	S6IfCOvDoS5CTJsmSk45bAnKmjGvjH6Ik3GTzn57FhfJNESPReyjARNZqqqLSav7GakoQ9UlKxqNR
-	oLCAinGXLCIi8Zw60C3OD/q/+TbQ2gUErh27teowpotoPlZguuGb/V2j3AZGu9AR44RQXGo/ZD3Eb
-	x/2h9KTqrEpfE0qG1KGRu9Fm9KVbE7gWM3rO/DJG7mbImRg8Q8g+ku/6xONfeWjXGn6GvWloWQuci
-	EBk8T/4kFh02Fbwr2NN/iu5tRhlaf59gUZG81A933A3Ze3SEJANRtilO2OwmEH0hS/Pp1qFzH1W+S
-	KbH8WDH396zcIfqELvGw==;
+	List-Owner; bh=bCbq72uLl48nEH+hL/yzoOapVpMrFG2J79b56mona3A=; b=0cBumF2uTRs9Az
+	pdToITxll0Uqunp+62hM2vJlyepOp4W+hCrCX2xHcqLV3ctGePHvOrsgNrNQhDvzxNiD8nmtdICGi
+	Kvm6nnAOuMo7wCnRDVxqpbQbGKnSJdA0SQxoMDMYm+D/znw3maZPVJ/lKyYyqsuym6bPsU+s4De1S
+	AHpZDpDISqliorU0klvfKlYrm8azubDvOXc+YKrfDnGj8dMIopbzmiPKPg3TLstKDF/247g+JlZVG
+	wAu4lMJGNTTK8Em/QXP0GWt+HoGBBDPhBqr2pKBuLKkj0VEbAXcA9ofQMflSJWfuT+wRlG5JC/xl2
+	1yO9kHgNXghzyVD1vNog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbOcw-007kjV-Fj; Fri, 15 Oct 2021 14:56:06 +0000
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+	id 1mbOhD-007mKl-QZ; Fri, 15 Oct 2021 15:00:31 +0000
+Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbOQf-007gPa-3g; Fri, 15 Oct 2021 14:43:26 +0000
-Received: by mail-pg1-x534.google.com with SMTP id f5so8788133pgc.12;
- Fri, 15 Oct 2021 07:43:24 -0700 (PDT)
+ id 1mbORr-007gmG-2C
+ for linux-mediatek@lists.infradead.org; Fri, 15 Oct 2021 14:44:40 +0000
+Received: by mail-ua1-x930.google.com with SMTP id f4so18495834uad.4
+ for <linux-mediatek@lists.infradead.org>; Fri, 15 Oct 2021 07:44:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
- b=eMtI6REOFWix9KtW5tFZKnYJASMZfWRLSZnk5Z3YHrAZfJHAzvFnr8ylXwPFqc2a/a
- sSZ8UvQq1tqytMA7xvcnnsiLWefZHtOIvyR4w48y0+/FL2UKgIHln+v2qE2m/w+JTFM1
- 5/mXXW1NrvfbNEM0Kxme6uJJEBTs38ZYlbTHW6Re7rHSajvVurS8Uq1V2v4NCeWCfPhp
- 0AMJSPYYm2sBLxJatPIFmiVJT/Oh5NHr53JmOewoMKlOnjkfBC7TBlY4MypeOeGa17pJ
- HGEAOs0d5LPR7Euvw8ZGAQvAt0r8Wbzm43Xw5FKSEaUKTN3vn6bLTxu6DfAsFds4nbK0
- 6Xag==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6NXO5j/QvPweGncoBAgiXUgJMHU7982ggUW1I99+ELI=;
+ b=qQDqhHXvOOt2EigmIUXiWCQKCuVRCjrBtPuU7e6JSBKdRAIr9FunCz0YnNxNZIMeA7
+ aMLe6kS7dqzw1URKahIvNJhM9AuQbeemsIQUSKAiYehsmFtISL3AkdrwAoNS6zIkob/9
+ /KtDkv9XsyMmnftzcffE0mXjzBQe+ld4pQYYOOZVVvjF2ZZo8Y5Phz/EoW+3DSF8Lc1Z
+ JF2KAgPbCApxB3orWhy+gLzKD5rHVWPDu94uqNUBXAE5iIe9QzBVAkZmVHNdfcUo5hFz
+ fpRNNdZgJiSwSuMUwRXdtLMzcZ+zwMygcGsY6DB8uWwxVjt5NwC+kvdtIHvLEYDRDfRS
+ wB5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
- b=aMHVyXcZRtznhkXw3vE9VKgBBRCsdXjg4wMB2zkw01xGoWPKLOF2debyydGquGR8uJ
- 3RUNyDZjG0VRMcO8ECkplBmenpoPkC9mYfSM6ci9PmPbu5fUgKVtax21AthqwzJl/60x
- rmQIUkkNavI4BpOEuraV/JBbQT7AZ8UbVQsSgEJAx34VBK80dJLv/f2EKnqAfCl8f7/w
- KzZ8BZR/rhKy73PV38M3Y5ejX45PbHUxfDUdy6I0Gt902E3XbSj5wCMayzONnu9R/yQM
- Gh2GXVw5Hl/TTFbxIA8/dNaCDeixWV/tc7aG1Dvjf4IdZzyAE8AA/L2kLcWpim3SCTpO
- xD0A==
-X-Gm-Message-State: AOAM533T+je5MNqFcwflTvn1IF7RqQoouRSgw0LXuJ780X2FMfvgZRWE
- 6E9neQgTV3Kug5nik1gkn0k=
-X-Google-Smtp-Source: ABdhPJznv5Me0M33f8HkD/iBEPi7jNhXlMeZY3pyG0z8AuGV93euaOSAW3r29nVl5vtoWE0qzOFOmg==
-X-Received: by 2002:a62:2f81:0:b0:44b:b390:956b with SMTP id
- v123-20020a622f81000000b0044bb390956bmr12110659pfv.30.1634309004189; 
- Fri, 15 Oct 2021 07:43:24 -0700 (PDT)
-Received: from localhost.localdomain ([2406:7400:63:4806:9a51:7f4b:9b5c:337a])
- by smtp.gmail.com with ESMTPSA id
- f18sm5293491pfa.60.2021.10.15.07.43.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 15 Oct 2021 07:43:23 -0700 (PDT)
-From: Naveen Naidu <naveennaidu479@gmail.com>
-To: bhelgaas@google.com
-Cc: Naveen Naidu <naveennaidu479@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org (open list:PCIE DRIVER FOR MEDIATEK),
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH v2 07/24] PCI: mediatek: Remove redundant error fabrication
- when device read fails
-Date: Fri, 15 Oct 2021 20:08:48 +0530
-Message-Id: <4aa74ccd31c42b108b61f2ad274bae59a1d25114.1634306198.git.naveennaidu479@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1634306198.git.naveennaidu479@gmail.com>
-References: <cover.1634306198.git.naveennaidu479@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6NXO5j/QvPweGncoBAgiXUgJMHU7982ggUW1I99+ELI=;
+ b=OZGwOjO/wq7fkLl5eVmbmnv8Dq7b4c3d3D3SIyjxQo9I9MJFE/CazeJ+dRworstyG/
+ WqVyysLZksaKqUtMXutMDaFuok80T6Hv/s0CLXPFecq+0PbUvRN5j8AUmvlkyaY15fIf
+ vemSemnSjrq1FhXOB6REdWqxq5BcDGKnE5mzoVjoF22l82sMttxBc6Gd13I/pgMvsEOf
+ DNnCUYBVHCo2ai5Bo8AJtFfrBtGlHrTs+FDZvCqnDPw57S7zbInEmCzq19kddrgQB6k4
+ 2T3CcLX1EsyKixnFU0aPJidoX4evr1R8TBASyDINJpveNN1Cn4uGIjw5apINDwratDMW
+ EUTA==
+X-Gm-Message-State: AOAM5331JNNALJy02JwlTalOrvewwALDPJyQ0XpbswfEXgpR0jLJtp/A
+ AsN8TsFGICKxpbrxjjG2uSqo9KTvZDDzTvsr574=
+X-Google-Smtp-Source: ABdhPJwTx5WOz/B4JFQIN2LXVYOE6NknltOp91EUdzVCPhuF8CBbkZUp65CtShUv6SVmutruddi0ECLxgD3e4Aj+Ssk=
+X-Received: by 2002:a67:d78c:: with SMTP id q12mr14260184vsj.28.1634309077262; 
+ Fri, 15 Oct 2021 07:44:37 -0700 (PDT)
 MIME-Version: 1.0
+References: <CALW65jbKsDGTXghqQFQe2CxYbWPakkaeFrr+3vAA4gAPjeeL2w@mail.gmail.com>
+In-Reply-To: <CALW65jbKsDGTXghqQFQe2CxYbWPakkaeFrr+3vAA4gAPjeeL2w@mail.gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Fri, 15 Oct 2021 16:44:26 +0200
+Message-ID: <CAMhs-H8-hfR4m4ArUvPO9wCZoE=shV9vbv89yT43mmhMp-LTcA@mail.gmail.com>
+Subject: Re: MT7621 ethernet does not get probed on net-next branch after 5.15
+ merge
+To: DENG Qingfang <dqfext@gmail.com>
+Cc: netdev <netdev@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Siddhant Gupta <siddhantgupta416@gmail.com>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Felix Fietkau <nbd@nbd.name>, 
+ John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Russell King <linux@armlinux.org.uk>, 
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>, 
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>, 
+ OpenWrt Development List <openwrt-devel@lists.openwrt.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211015_074325_195906_622691C0 
-X-CRM114-Status: GOOD (  13.55  )
+X-CRM114-CacheID: sfid-20211015_074439_164283_84976B74 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,55 +96,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-An MMIO read from a PCI device that doesn't exist or doesn't respond
-causes a PCI error. There's no real data to return to satisfy the
-CPU read, so most hardware fabricates ~0 data.
+Hi Qingfang,
 
-The host controller drivers sets the error response values (~0) and
-returns an error when faulty hardware read occurs. But the error
-response value (~0) is already being set in PCI_OP_READ and
-PCI_USER_READ_CONFIG whenever a read by host controller driver fails.
+On Fri, Oct 15, 2021 at 4:23 PM DENG Qingfang <dqfext@gmail.com> wrote:
+>
+> Hi,
+>
+> After the merge of 5.15.y into net-next, MT7621 ethernet
+> (mtk_eth_soc.c) does not get probed at all.
+>
+> Kernel log before 5.15 merge:
+> ...
+> libphy: Fixed MDIO Bus: probed
+> libphy: mdio: probed
+> mt7530 mdio-bus:1f: MT7530 adapts as multi-chip module
+> mtk_soc_eth 1e100000.ethernet eth0: mediatek frame engine at 0xbe100000, irq 20
+> mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+> ...
+>
+> Kernel log after 5.15 merge:
+> ...
+> libphy: Fixed MDIO Bus: probed
+> mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+> ...
+>
+>
+> I tried adding debug prints into the .mtk_probe function, but it did
+> not execute.
+> There are no dts changes for MT7621 between 5.14 and 5.15, so I
+> believe it should be something else.
+>
+> Any ideas?
 
-Thus, it's no longer necessary for the host controller drivers to
-fabricate any error response.
+Maybe you have a chance to try git bisect to see what is the commit
+that introduces that regression and report here?
 
-This helps unify PCI error response checking and make error check
-consistent and easier to find.
-
-Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
----
- drivers/pci/controller/pcie-mediatek.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 2f3f974977a3..a19f8ec5d392 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -365,19 +365,12 @@ static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
- {
- 	struct mtk_pcie_port *port;
- 	u32 bn = bus->number;
--	int ret;
- 
- 	port = mtk_pcie_find_port(bus, devfn);
--	if (!port) {
--		*val = ~0;
-+	if (!port)
- 		return PCIBIOS_DEVICE_NOT_FOUND;
--	}
--
--	ret = mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
--	if (ret)
--		*val = ~0;
- 
--	return ret;
-+	return mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
- }
- 
- static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
--- 
-2.25.1
-
+Best regards,
+    Sergio Paracuellos
 
 _______________________________________________
 Linux-mediatek mailing list
