@@ -2,88 +2,91 @@ Return-Path: <SRS0=DtK5=PE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BE9A5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Oct 2021 14:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CB75CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Oct 2021 20:06:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 77D2D60EDF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Oct 2021 14:19:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 77D2D60EDF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7E55B61040
+	for <linux-mediatek@archiver.kernel.org>; Sat, 16 Oct 2021 20:06:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7E55B61040
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=37XX1etDnKebxxFpC99gLq+6NqNfhfoVCe7Uv/Vn4xk=; b=gLHjc2mg03vmte
-	4EtmRAG98tTJcR4hjPLKssq5nAcGCMks8m3QwhAgLb3JzDGw90nxllejWfibpBQVGGQgZZHrQpWSZ
-	4caUlGzMcVfjujh3aZzuJH0+rI01ux1QisooROLznDx5XtCYEbLGixSK6gs0vda+E3L2wAiKJDJZ7
-	I/wHjgAP+Zs3stlZFr5QEmWjpdq5j148f7omBD60bWyw26fOXqJtYn5VRcbH2i0+P0MpaNuJqH00G
-	AwHTD8o/IzJsWdxhYMh4OiLGJw2Vjaw5zTEPUmNxx3OywCmWAvpAUZrnsMAtjj+1ulEo42fb/NN/x
-	I/3oe88i9LN3HyFS3mkw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=6cg3R/t/lCUgaJ2AGzajXlYFx9Uf5Qe7QpAqs90UZIE=; b=Y/Xk9xQOwKqd2EuubzpAiowlPb
+	vqJNz4D9YSK0agEflg10hTD2jSxVMTmZZdIMOrLk6hKkG9pWKzry8+rA0iLE8DoN5CnKh0r7jo8DC
+	v1NZZvtz3WFeT0U83smmQWMUPi0+s/RyGhPI4TjW5cW1CaZms6QAkhvvEXGHiqOGAPGMfqAoNtJGv
+	UAB7w9ZoL1HaLnT2tCqIKDWM6ROWjKgZg9HAAN2m+45QD+JAcQzJvfW+FdTXoxPPUJ0MFCeuIoXz7
+	RMnBN5A9EKZld4iol8pRSYRti3YwhAbFWI4KkAwZGROP7YliIm9GxGSisLeYplDLvAaF8nxbTY5o5
+	lLgn+NaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mbkWo-00AmJA-So; Sat, 16 Oct 2021 14:19:14 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1mbpwx-00BGB4-LS; Sat, 16 Oct 2021 20:06:35 +0000
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mbkWb-00AmGS-UK; Sat, 16 Oct 2021 14:19:04 +0000
-Received: by mail-oi1-f174.google.com with SMTP id y207so17473323oia.11;
- Sat, 16 Oct 2021 07:19:01 -0700 (PDT)
+ id 1mbpwu-00BGAF-16
+ for linux-mediatek@lists.infradead.org; Sat, 16 Oct 2021 20:06:34 +0000
+Received: by mail-wr1-x429.google.com with SMTP id i12so32738533wrb.7
+ for <linux-mediatek@lists.infradead.org>; Sat, 16 Oct 2021 13:06:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=tqWkVmqraGpT9gt8hOkOwjhPgaiwTxED6JEqS6Skcng=;
+ b=xqKHdteVyd6dnadUU+tepraGJDExm26Otn34G7x4xfrACzTVK6bIFczvMUCLeYRv4F
+ mpv/05LowJ0oTwncA9Au379Jb7f8UVg4+AHxMlGbi/W4i8Ymd6/+eKDsxVLywVeJpIbp
+ YFjWhey0yVxKol2GMj8HndwOKvzhz/JXrqIwUP17yNQodvvuJvecNBOP5nPuTdjVTXJo
+ vDSQ5SU1M5Gs+cFp7R9rw1G9kYCOk+0hAGU7T/QRjGXyFKQCBNAbEwM55X9xNg87hFSV
+ 5eKtz+Z1A0NYjnoJ3Bc9FX5O/5thYcb57jB1QPIq27PigXvEn5kvzsBxaiQFqBVed/gt
+ IGkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=aOytoN8C+U3Rn90b6LRYZACEMLn+/RQ2njWL4ku1AlA=;
- b=y4XRlifqA/PNOyAi1YfC8sYXleLHbBQaDTe1LdyMBWpIDVEJT8+aSmmEbJanwEiqrU
- YK8tUaxQkNVuF6G9ejrhMvyqOnnxQ6JafyHWiO7pstzVog82KEkwkYDXcs50W1HhPK9l
- RHQiIBc9D6aP9btw8iFreJlNmGBeHKwgkryWHdeYbLnG2vZHJAy0h4Gq376amhRyfmPl
- uzCDFnODT+8pGdwPsa5eMLWRGvFsbYbukNE18TPzm12tzEjZ7aXToBGDQ2j0+XUYZOoe
- cdxNxhUhi2JyxIlCDq638eVcWRNuONsT7g428Fm3o2Fx5/a8rvAUDmUu5QY/lBeh28ss
- xdgQ==
-X-Gm-Message-State: AOAM530s6gDAaSnKSMC50UzK/p7/JvhHcB+TQkB8tnV6Rk1Bc8UM7Du8
- Ven77HKjTPT2PwWBEHJSKg==
-X-Google-Smtp-Source: ABdhPJwH6z7wFjfPNxSwD8xSpolT6ZSFgxQdba+N0JtbkHE6D3GikZ06PyB//4Q7ixNJhIi/SWdbHA==
-X-Received: by 2002:a05:6808:301e:: with SMTP id
- ay30mr177018oib.75.1634393940896; 
- Sat, 16 Oct 2021 07:19:00 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id 65sm1874803otd.81.2021.10.16.07.18.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Oct 2021 07:19:00 -0700 (PDT)
-Received: (nullmailer pid 3872759 invoked by uid 1000);
- Sat, 16 Oct 2021 14:18:58 -0000
-Date: Sat, 16 Oct 2021 09:18:58 -0500
-From: Rob Herring <robh@kernel.org>
-To: Moudy Ho <moudy.ho@mediatek.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jernej Skrabec <jernej.skrabec@siol.net>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=tqWkVmqraGpT9gt8hOkOwjhPgaiwTxED6JEqS6Skcng=;
+ b=Xm6xfd81altTXEoaRlniXTGx1jZYkCzPjqCYaaNC+d3ifYivZLae/3QmRydSZ5iWma
+ QeedG1gFloitijb35TM+mW6yEBps4d/p70WQPlhQEaXWLclWly7ykL/vsSDAER9tE4HM
+ xEAeoxoEdCTXMIiDDVM7mJipGg5CGHgVDJrr0EOrpDxk0S2qAcnP5/nHLWvxzNhHdXQB
+ buhQAUVpN4XvXlJAexuQCCKEOH5r9qSRfPR/DFHYZ9c/hX9UONKeVHrjzZG169XB2HHr
+ HoCTw6wihuhHbroGHPtpuQggZiKbuwFR5PBOCaIKch6nAP0sVmwnbu9nYQs3n832Mid2
+ mg+Q==
+X-Gm-Message-State: AOAM532+xsmuU30T1I6Lwn28lXzpvMJZjMMxyN/2WAv/GE0uqSOgHLkd
+ ZXEfQowhF1kGtZxNdHxndglDsQ==
+X-Google-Smtp-Source: ABdhPJxWka+mhCqqZGhBTEGVr2ngGCW9Q5olDSi+tX7UIqvefkLXnAyWINDwWjf9KWX6L+vaiPNrpg==
+X-Received: by 2002:a5d:6d8c:: with SMTP id l12mr23728874wrs.80.1634414790161; 
+ Sat, 16 Oct 2021 13:06:30 -0700 (PDT)
+Received: from ?IPv6:2a01:e34:ed2f:f020:f04d:f65f:efd5:698?
+ ([2a01:e34:ed2f:f020:f04d:f65f:efd5:698])
+ by smtp.googlemail.com with ESMTPSA id
+ f127sm13185359wmf.16.2021.10.16.13.06.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 16 Oct 2021 13:06:29 -0700 (PDT)
+Subject: Re: [PATCH 3/3] thermal: mediatek: add MT8365 thermal driver support
+To: Markus Schneider-Pargmann <msp@baylibre.com>,
+ Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, tfiga@chromium.org, drinkcat@chromium.org,
- acourbot@chromium.org, pihsun@chromium.org, menghui.lin@mediatek.com,
- sj.huang@mediatek.com, allen-kh.cheng@mediatek.com, randy.wu@mediatek.com,
- srv_heupstream@mediatek.com, hsinyi@google.com
-Subject: Re: [PATCH v8 5/7] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
-Message-ID: <YWrfUo73+UegMKYP@robh.at.kernel.org>
-References: <20211015123832.17914-1-moudy.ho@mediatek.com>
- <20211015123832.17914-6-moudy.ho@mediatek.com>
+ fparent@baylibre.com, khilman@baylibre.com
+References: <20211014135636.3644166-1-msp@baylibre.com>
+ <20211014135636.3644166-4-msp@baylibre.com>
+From: Daniel Lezcano <daniel.lezcano@linaro.org>
+Message-ID: <33815817-0f64-836a-5417-c614e66e231e@linaro.org>
+Date: Sat, 16 Oct 2021 22:06:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211015123832.17914-6-moudy.ho@mediatek.com>
+In-Reply-To: <20211014135636.3644166-4-msp@baylibre.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211016_071902_021711_D322185F 
-X-CRM114-Status: GOOD (  33.02  )
+X-CRM114-CacheID: sfid-20211016_130632_163777_7016F805 
+X-CRM114-Status: GOOD (  32.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,376 +98,130 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 15, 2021 at 08:38:30PM +0800, Moudy Ho wrote:
-> This patch adds DT binding document for Media Data Path 3 (MDP3)
-> a unit in multimedia system used for scaling and color format convert.
-> 
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> ---
->  .../bindings/arm/mediatek/mediatek,ccorr.yaml |  59 +++++
->  .../bindings/arm/mediatek/mediatek,rdma.yaml  | 211 ++++++++++++++++++
->  .../bindings/arm/mediatek/mediatek,wdma.yaml  |  70 ++++++
-
-These belong in a functional directory, not 'arm'.
-
->  .../bindings/media/mediatek,mdp3-rsz.yaml     |  68 ++++++
->  .../bindings/media/mediatek,mdp3-wrot.yaml    |  70 ++++++
->  5 files changed, 478 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,rdma.yaml
->  create mode 100644 Documentation/devicetree/bindings/arm/mediatek/mediatek,wdma.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
->  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
-> new file mode 100644
-> index 000000000000..40ea7955efc6
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
-> @@ -0,0 +1,59 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,ccorr.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek color correction
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description: |
-> +  Mediatek color correction with 3X3 matrix.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - enum:
-> +        - mediatek,mt8183-mdp3-ccorr
-> +
-> +  mediatek,mdp3-id:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    maxItems: 1
-
-maxItems is for an array, but you said this is a uint32.
-
-> +    description: |
-> +      There may be multiple blocks with the same function but
-> +      different addresses in MDP3.
-> +      In order to distinguish the connection with other blocks,
-> +      a unique ID is needed to dynamically use one or more identical
-> +      blocks to implement multiple pipelines.
-
-They aren't identical if you need to distinguish them. We should 
-describe the difference rather than make up device indices. Why is this 
-needed?
-
-For connections between components, use the graph binding.
-
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  mediatek,gce-client-reg:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    description: |
-> +      The register of client driver can be configured by gce with 4 arguments
-> +      defined in this property, such as phandle of gce, subsys id,
-> +      register offset and size.
-> +      Each GCE subsys id is mapping to a client defined in the header
-> +      include/dt-bindings/gce/<chip>-gce.h.
-> +
-> +  clocks:
-> +    minItems: 1
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8183-clk.h>
-> +    #include <dt-bindings/gce/mt8183-gce.h>
-> +
-> +    mdp3_ccorr: mdp3_ccorr@1401c000 {
-> +      compatible = "mediatek,mt8183-mdp3-ccorr";
-> +      mediatek,mdp3-id = <0>;
-> +      reg = <0x1401c000 0x1000>;
-> +      mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-> +      clocks = <&mmsys CLK_MM_MDP_CCORR>;
-> +    };
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,rdma.yaml
-> new file mode 100644
-> index 000000000000..ad0e56923494
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,rdma.yaml
-> @@ -0,0 +1,211 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/arm/mediatek/mediatek,rdma.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek Read Direct Memory Access
-> +
-> +maintainers:
-> +  - Matthias Brugger <matthias.bgg@gmail.com>
-> +
-> +description: |
-> +  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
-> +  It contains one line buffer to store the sufficient pixel data, and
-> +  must be siblings to the central MMSYS_CONFIG node.
-> +  For a description of the MMSYS_CONFIG binding, see
-> +  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
-> +  for details.
-> +  The 1st RDMA is also used to be a controller node in Media Data Path 3(MDP3)
-> +  that containing MMSYS, MUTEX, GCE and SCP settings.
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - const: mediatek,mt8183-mdp3
-
-This looks less specific than this:
-
-> +          - const: mediatek,mt8183-mdp3-rdma
-
-Which is the wrong order. But why the 2 values to begin with?
-
-> +      - items:
-> +          - const: mediatek,mt8183-mdp3-rdma
-> +
-> +  mediatek,scp:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
-> +    description: |
-> +      The node of system control processor (SCP), using
-> +      the remoteproc & rpmsg framework.
-> +      $ref: /schemas/remoteproc/mtk,scp.yaml
-> +
-> +  mediatek,mdp3-id:
-> +    $ref: /schemas/types.yaml#/definitions/uint32
-> +    maxItems: 1
-> +    description: |
-> +      There may be multiple blocks with the same function but
-> +      different addresses in MDP3.
-> +      In order to distinguish the connection with other blocks,
-> +      a unique ID is needed to dynamically use one or more identical
-> +      blocks to implement multiple pipelines.
-> +
-> +  mdp3-comps:
-
-vendor prefix needed.
-
-> +    $ref: /schemas/types.yaml#/definitions/string-array
-> +    items:
-> +      - enum:
-> +          # MDP direct-link input path selection, create a
-> +          # component for path connectedness of HW pipe control
-> +          - mediatek,mt8183-mdp3-dl1
-> +      - enum:
-> +          - mediatek,mt8183-mdp3-dl2
-> +      - enum:
-> +          # MDP direct-link output path selection, create a
-> +          # component for path connectedness of HW pipe control
-> +          - mediatek,mt8183-mdp3-path1
-> +      - enum:
-> +          - mediatek,mt8183-mdp3-path2
-> +      - enum:
-> +          # Input DMA of ISP PASS2 (DIP) module for raw image input
-> +          - mediatek,mt8183-mdp3-imgi
-> +      - enum:
-> +          # Output DMA of ISP PASS2 (DIP) module for YUV image output
-> +          - mediatek,mt8183-mdp3-exto
-> +    description: |
-> +      MTK sub-system of direct-link or DIP
-> +
-> +  mdp3-comp-ids:
-> +    maxItems: 1
-> +    $ref: /schemas/types.yaml#/definitions/uint32-array
-
-An array of only 1 item is a 'uint32'
-
-> +    description: |
-> +      Pipeline ID of MDP sub-system.
-
-Needs a better description and possibly constraints. Any value 0-2^32 is 
-valid?
-
-> +
-> +  reg:
-> +    minItems: 1
-> +    maxItems: 5
-> +    description: |
-> +      1st: basic HW address
-> +      2nd: mediatek,mt8183-mdp-dl1, mediatek,mt8183-mdp-dl2
-> +      3rd: mediatek,mt8183-mdp-path1
-> +      4th: mediatek,mt8183-mdp-path2
-> +      5th: mediatek,mt8183-mdp3-imgi, mediatek,mt8183-mdp3-exto
-
-This is better expressed as:
-
-items:
-  - description: ...
-  - description: ...
-  - description: ...
-  - description: ...
-  - description: ...
-
-> +
-> +  mediatek,gce-client-reg:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    description: |
-> +      The register of client driver can be configured by gce with 4 arguments
-
-So 'maxItems: 4'?
-
-> +      defined in this property, such as phandle of gce, subsys id,
-> +      register offset and size.
-> +      Each GCE subsys id is mapping to a client defined in the header
-> +      include/dt-bindings/gce/<chip>-gce.h.
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  clocks:
-> +    minItems: 1
-> +    maxItems: 6
-> +    description: |
-> +      1st: RDMA0 clock
-> +      2nd: RSZ1 clock
-> +      3rd: direck-link TX clock in MDP side
-> +      4th: direck-link RX clock in MDP side
-> +      5th: direck-link TX clock in ISP side
-> +      6th: direck-link RX clock in ISP side
-
-Again, use 'items'.
-
-> +
-> +  iommus:
-> +    maxItems: 1
-> +
-> +  mediatek,mmsys:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
-
-Not an array.
-
-> +    description: |
-
-Don't need '|' when there is no formatting to maintain.
-
-> +      The node of mux(multiplexer) controller for HW connections.
-> +
-> +  mediatek,mm-mutex:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
-> +    description: |
-> +      The node of sof(start of frame) signal controller.
-> +
-> +  mediatek,mailbox-gce:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: |
-> +      The node of global command engine (GCE), used to read/write
-> +      registers with critical time limitation.
-> +
-> +  mboxes:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-
-Already has a type. This is where you need to define how many and what 
-each one is if more than 1.
-
-> +
-> +  gce-subsys:
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    description: |
-> +      sub-system id corresponding to the global command engine (GCE)
-> +      register address.
-> +
-> +if:
-> +  properties:
-> +    compatible:
-> +      contains:
-> +        const: mediatek,mt8183-mdp3
-> +
-> +then:
-> +  required:
-> +    - mediatek,scp
-> +    - mediatek,mmsys
-> +    - mediatek,mm-mutex
-> +    - mediatek,mailbox-gce
-> +    - mboxes
-> +    - gce-subsys
-> +
-> +required:
-> +  - compatible
-> +  - mediatek,mdp3-id
-> +  - reg
-> +  - clocks
-> +  - mediatek,gce-client-reg
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/clock/mt8183-clk.h>
-> +    #include <dt-bindings/gce/mt8183-gce.h>
-> +    #include <dt-bindings/power/mt8183-power.h>
-> +    #include <dt-bindings/memory/mt8183-larb-port.h>
-> +
-> +    mdp3_rdma0: mdp3_rdma0@14001000 {
-> +      compatible = "mediatek,mt8183-mdp3",
-> +                   "mediatek,mt8183-mdp3-rdma";
-> +      mediatek,scp = <&scp>;
-> +      mediatek,mdp3-id = <0>;
-> +      mdp3-comps = "mediatek,mt8183-mdp3-dl1", "mediatek,mt8183-mdp3-dl2",
-> +                   "mediatek,mt8183-mdp3-path1", "mediatek,mt8183-mdp3-path2",
-> +                   "mediatek,mt8183-mdp3-imgi", "mediatek,mt8183-mdp3-exto";
-> +      mdp3-comp-ids = <0 1 0 1 0 1>;
-> +      reg = <0x14001000 0x1000>,
-> +            <0x14000000 0x1000>,
-> +            <0x14005000 0x1000>,
-> +            <0x14006000 0x1000>,
-> +            <0x15020000 0x1000>;
-> +      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>,
-> +                                <&gce SUBSYS_1400XXXX 0 0x1000>,
-> +                                <&gce SUBSYS_1400XXXX 0x5000 0x1000>,
-> +                                <&gce SUBSYS_1400XXXX 0x6000 0x1000>,
-> +                                <&gce SUBSYS_1502XXXX 0 0x1000>;
-> +      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-> +      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-> +               <&mmsys CLK_MM_MDP_RSZ1>,
-> +               <&mmsys CLK_MM_MDP_DL_TXCK>,
-> +               <&mmsys CLK_MM_MDP_DL_RX>,
-> +               <&mmsys CLK_MM_IPU_DL_TXCK>,
-> +               <&mmsys CLK_MM_IPU_DL_RX>;
-> +      iommus = <&iommu>;
-> +      mediatek,mmsys = <&mmsys>;
-> +      mediatek,mm-mutex = <&mutex>;
-> +      mediatek,mailbox-gce = <&gce>;
-> +      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-> +               <&gce 21 CMDQ_THR_PRIO_LOWEST 0>,
-> +               <&gce 22 CMDQ_THR_PRIO_LOWEST 0>,
-> +               <&gce 23 CMDQ_THR_PRIO_LOWEST 0>;
-> +      gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-> +                   <&gce 0x14010000 SUBSYS_1401XXXX>,
-> +                   <&gce 0x14020000 SUBSYS_1402XXXX>,
-> +                   <&gce 0x15020000 SUBSYS_1502XXXX>;
-> +    };
-> \ No newline at end of file
-
-Fix this.
-
-Similar comments on the rest...
-
-Rob
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gMTQvMTAvMjAyMSAxNTo1NiwgTWFya3VzIFNjaG5laWRlci1QYXJnbWFubiB3cm90ZToKPiBG
+cm9tOiBGYWJpZW4gUGFyZW50IDxmcGFyZW50QGJheWxpYnJlLmNvbT4KPiAKPiBtdDgzNjUgaXMg
+c2ltaWxhciB0byB0aGUgb3RoZXIgU29DcyBzdXBwb3J0ZWQgYnkgdGhlIGRyaXZlci4gSXQgaGFz
+IG9ubHkKPiBvbmUgYmFuayBhbmQgMyBzZW5zb3JzIHRoYXQgY2FuIGJlIG11bHRpcGxleGVkLgo+
+IAo+IEFkZGl0aW9uYWxseSB0aGUgYnVmZmVyIGhhcyB0byBiZSBlbmFibGVkIGFuZCBjb25uZWN0
+ZWQgdG8gQVVYQURDCj4gc2ltaWxhciB0byB0aGUgVjIgdmVyc2lvbiBidXQgYXQgYSBkaWZmZXJl
+bnQgcmVnaXN0ZXIgb2Zmc2V0LiBUaGF0J3Mgd2h5Cj4gSSBhZGRlZCB0aHJlZSBuZXcgY29uZmln
+dXJhdGlvbiB2YWx1ZXMgdG8gZGVmaW5lIHRoZSByZWdpc3RlciwgbWFzayBhbmQKPiBiaXRzIHRv
+IGJlIHNldCB0byBiZSBhYmxlIHRvIHVzZSBpdCBmb3IgYm90aCBWMiBhbmQgbXQ4MzY1Lgo+IAo+
+IFNpZ25lZC1vZmYtYnk6IEZhYmllbiBQYXJlbnQgPGZwYXJlbnRAYmF5bGlicmUuY29tPgo+IFtB
+ZGRlZCBhcG1peGVkIGNvbnRyb2wgcmVnaXN0ZXIgbG9naWNdCj4gU2lnbmVkLW9mZi1ieTogTWFy
+a3VzIFNjaG5laWRlci1QYXJnbWFubiA8bXNwQGJheWxpYnJlLmNvbT4KPiAtLS0KPiAgZHJpdmVy
+cy90aGVybWFsL210a190aGVybWFsLmMgfCA5MSArKysrKysrKysrKysrKysrKysrKysrKysrKysr
+KysrKy0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgODUgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMo
+LSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy90aGVybWFsL210a190aGVybWFsLmMgYi9kcml2
+ZXJzL3RoZXJtYWwvbXRrX3RoZXJtYWwuYwo+IGluZGV4IDkzZWUwNDNkNzBkYS4uN2E3NWFlODIz
+MWYyIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9tdGtfdGhlcm1hbC5jCj4gKysrIGIv
+ZHJpdmVycy90aGVybWFsL210a190aGVybWFsLmMKPiBAQCAtMzEsNiArMzEsNyBAQAo+ICAjZGVm
+aW5lIEFVWEFEQ19DT04yX1YJCTB4MDEwCj4gICNkZWZpbmUgQVVYQURDX0RBVEEoY2hhbm5lbCkJ
+KDB4MTQgKyAoY2hhbm5lbCkgKiA0KQo+ICAKPiArI2RlZmluZSBBUE1JWEVEX1NZU19UU19DT04w
+CTB4NjAwCj4gICNkZWZpbmUgQVBNSVhFRF9TWVNfVFNfQ09OMQkweDYwNAo+ICAKPiAgLyogVGhl
+cm1hbCBDb250cm9sbGVyIFJlZ2lzdGVycyAqLwo+IEBAIC0yNDUsNiArMjQ2LDE3IEBAIGVudW0g
+bXRrX3RoZXJtYWxfdmVyc2lvbiB7Cj4gIC8qIFRoZSBjYWxpYnJhdGlvbiBjb2VmZmljaWVudCBv
+ZiBzZW5zb3IgICovCj4gICNkZWZpbmUgTVQ4MTgzX0NBTElCUkFUSU9OCTE1Mwo+ICAKPiArLyog
+TVQ4MzY1ICovCj4gKyNkZWZpbmUgTVQ4MzY1X1RFTVBfQVVYQURDX0NIQU5ORUwgMTEKPiArI2Rl
+ZmluZSBNVDgzNjVfQ0FMSUJSQVRJT04gMTY0Cj4gKyNkZWZpbmUgTVQ4MzY1X05VTV9DT05UUk9M
+TEVSIDEKPiArI2RlZmluZSBNVDgzNjVfTlVNX0JBTktTIDEKPiArI2RlZmluZSBNVDgzNjVfTlVN
+X1NFTlNPUlMgMwo+ICsjZGVmaW5lIE1UODM2NV9OVU1fU0VOU09SU19QRVJfWk9ORSAzCgpZb3Ug
+Y2FuIGdldCByaWQgb2YgdGhlc2UgbWFjcm9zIGJ5IHVzaW5nIEFSUkFZX1NJWkUuCgplZy4KCnN0
+YXRpYyBjb25zdCBpbnQgbXQ4MzY1X2JhbmtfZGF0YVtdID0gewoJTVQ4MzY1X1RTMSwKCU1UODM2
+NV9UUzIsCglNVDgzNjVfVFMzCn07CgouLi4KCgkubnVtX3NlbnNvcnMgPSBBUlJBWV9TSVpFKG10
+ODM2NV9iYW5rX2RhdGEpOwouLi4KCgo+ICsjZGVmaW5lIE1UODM2NV9UUzEgMAo+ICsjZGVmaW5l
+IE1UODM2NV9UUzIgMQo+ICsjZGVmaW5lIE1UODM2NV9UUzMgMgo+ICsKPiAgc3RydWN0IG10a190
+aGVybWFsOwo+ICAKPiAgc3RydWN0IHRoZXJtYWxfYmFua19jZmcgewo+IEBAIC0yNzEsNiArMjgz
+LDkgQEAgc3RydWN0IG10a190aGVybWFsX2RhdGEgewo+ICAJYm9vbCBuZWVkX3N3aXRjaF9iYW5r
+Owo+ICAJc3RydWN0IHRoZXJtYWxfYmFua19jZmcgYmFua19kYXRhW01BWF9OVU1fWk9ORVNdOwo+
+ICAJZW51bSBtdGtfdGhlcm1hbF92ZXJzaW9uIHZlcnNpb247Cj4gKwl1MzIgYXBtaXhlZF9idWZm
+ZXJfY3RsX3JlZzsKPiArCXUzMiBhcG1peGVkX2J1ZmZlcl9jdGxfbWFzazsKPiArCXUzMiBhcG1p
+eGVkX2J1ZmZlcl9jdGxfc2V0Owo+ICB9Owo+ICAKPiAgc3RydWN0IG10a190aGVybWFsIHsKPiBA
+QCAtMzg2LDYgKzQwMSwyNCBAQCBzdGF0aWMgY29uc3QgaW50IG10NzYyMl9tdXhfdmFsdWVzW01U
+NzYyMl9OVU1fU0VOU09SU10gPSB7IDAsIH07Cj4gIHN0YXRpYyBjb25zdCBpbnQgbXQ3NjIyX3Z0
+c19pbmRleFtNVDc2MjJfTlVNX1NFTlNPUlNdID0geyBWVFMxIH07Cj4gIHN0YXRpYyBjb25zdCBp
+bnQgbXQ3NjIyX3RjX29mZnNldFtNVDc2MjJfTlVNX0NPTlRST0xMRVJdID0geyAweDAsIH07Cj4g
+IAo+ICsvKiBNVDgzNjUgdGhlcm1hbCBzZW5zb3IgZGF0YSAqLwo+ICtzdGF0aWMgY29uc3QgaW50
+IG10ODM2NV9iYW5rX2RhdGFbTVQ4MzY1X05VTV9TRU5TT1JTXSA9IHsKPiArCU1UODM2NV9UUzEs
+IE1UODM2NV9UUzIsIE1UODM2NV9UUzMKPiArfTsKPiArCj4gK3N0YXRpYyBjb25zdCBpbnQgbXQ4
+MzY1X21zcltNVDgzNjVfTlVNX1NFTlNPUlNfUEVSX1pPTkVdID0gewo+ICsJVEVNUF9NU1IwLCBU
+RU1QX01TUjEsIFRFTVBfTVNSMgo+ICt9Owo+ICsKPiArc3RhdGljIGNvbnN0IGludCBtdDgzNjVf
+YWRjcG5wW01UODM2NV9OVU1fU0VOU09SU19QRVJfWk9ORV0gPSB7Cj4gKwlURU1QX0FEQ1BOUDAs
+IFRFTVBfQURDUE5QMSwgVEVNUF9BRENQTlAyCj4gK307Cj4gKwo+ICtzdGF0aWMgY29uc3QgaW50
+IG10ODM2NV9tdXhfdmFsdWVzW01UODM2NV9OVU1fU0VOU09SU10gPSB7IDAsIDEsIDIgfTsKPiAr
+c3RhdGljIGNvbnN0IGludCBtdDgzNjVfdGNfb2Zmc2V0W01UODM2NV9OVU1fQ09OVFJPTExFUl0g
+PSB7IDAgfTsKPiArCj4gK3N0YXRpYyBjb25zdCBpbnQgbXQ4MzY1X3Z0c19pbmRleFtNVDgzNjVf
+TlVNX1NFTlNPUlNdID0geyBWVFMxLCBWVFMyLCBWVFMzIH07Cj4gKwo+ICAvKgo+ICAgKiBUaGUg
+TVQ4MTczIHRoZXJtYWwgY29udHJvbGxlciBoYXMgZm91ciBiYW5rcy4gRWFjaCBiYW5rIGNhbiBy
+ZWFkIHVwIHRvCj4gICAqIGZvdXIgdGVtcGVyYXR1cmUgc2Vuc29ycyBzaW11bHRhbmVvdXNseS4g
+VGhlIE1UODE3MyBoYXMgYSB0b3RhbCBvZiA1Cj4gQEAgLTQ2MCw2ICs0OTMsNDAgQEAgc3RhdGlj
+IGNvbnN0IHN0cnVjdCBtdGtfdGhlcm1hbF9kYXRhIG10MjcwMV90aGVybWFsX2RhdGEgPSB7Cj4g
+IAkudmVyc2lvbiA9IE1US19USEVSTUFMX1YxLAo+ICB9Owo+ICAKPiArLyoKPiArICogVGhlIE1U
+ODM2NSB0aGVybWFsIGNvbnRyb2xsZXIgaGFzIG9uZSBiYW5rLCB3aGljaCBjYW4gcmVhZCB1cCB0
+bwo+ICsgKiBmb3VyIHRlbXBlcmF0dXJlIHNlbnNvcnMgc2ltdWx0YW5lb3VzbHkuIFRoZSBNVDgz
+NjUgaGFzIGEgdG90YWwgb2YgMwo+ICsgKiB0ZW1wZXJhdHVyZSBzZW5zb3JzLgo+ICsgKgo+ICsg
+KiBUaGUgdGhlcm1hbCBjb3JlIG9ubHkgZ2V0cyB0aGUgbWF4aW11bSB0ZW1wZXJhdHVyZSBvZiB0
+aGlzIG9uZSBiYW5rLAo+ICsgKiBzbyB0aGUgYmFuayBjb25jZXB0IHdvdWxkbid0IGJlIG5lY2Vz
+c2FyeSBoZXJlLiBIb3dldmVyLCB0aGUgU1ZTIChTbWFydAo+ICsgKiBWb2x0YWdlIFNjYWxpbmcp
+IHVuaXQgbWFrZXMgaXRzIGRlY2lzaW9ucyBiYXNlZCBvbiB0aGUgc2FtZSBiYW5rCj4gKyAqIGRh
+dGEuCj4gKyAqLwo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10a190aGVybWFsX2RhdGEgbXQ4MzY1
+X3RoZXJtYWxfZGF0YSA9IHsKPiArCS5hdXhhZGNfY2hhbm5lbCA9IE1UODM2NV9URU1QX0FVWEFE
+Q19DSEFOTkVMLAo+ICsJLm51bV9iYW5rcyA9IE1UODM2NV9OVU1fQkFOS1MsCj4gKwkubnVtX3Nl
+bnNvcnMgPSBNVDgzNjVfTlVNX1NFTlNPUlMsCj4gKwkudnRzX2luZGV4ID0gbXQ4MzY1X3Z0c19p
+bmRleCwKPiArCS5jYWxpX3ZhbCA9IE1UODM2NV9DQUxJQlJBVElPTiwKPiArCS5udW1fY29udHJv
+bGxlciA9IE1UODM2NV9OVU1fQ09OVFJPTExFUiwKPiArCS5jb250cm9sbGVyX29mZnNldCA9IG10
+ODM2NV90Y19vZmZzZXQsCj4gKwkubmVlZF9zd2l0Y2hfYmFuayA9IGZhbHNlLAo+ICsJLmJhbmtf
+ZGF0YSA9IHsKPiArCQl7Cj4gKwkJCS5udW1fc2Vuc29ycyA9IE1UODM2NV9OVU1fU0VOU09SUywK
+PiArCQkJLnNlbnNvcnMgPSBtdDgzNjVfYmFua19kYXRhCj4gKwkJfSwKPiArCX0sCj4gKwkubXNy
+ID0gbXQ4MzY1X21zciwKPiArCS5hZGNwbnAgPSBtdDgzNjVfYWRjcG5wLAo+ICsJLnNlbnNvcl9t
+dXhfdmFsdWVzID0gbXQ4MzY1X211eF92YWx1ZXMsCj4gKwkudmVyc2lvbiA9IE1US19USEVSTUFM
+X1YxLAo+ICsJLmFwbWl4ZWRfYnVmZmVyX2N0bF9yZWcgPSBBUE1JWEVEX1NZU19UU19DT04wLAo+
+ICsJLmFwbWl4ZWRfYnVmZmVyX2N0bF9tYXNrID0gfih1MzIpR0VOTUFTSygyOSwgMjgpLAo+ICsJ
+LmFwbWl4ZWRfYnVmZmVyX2N0bF9zZXQgPSAwLAo+ICt9Owo+ICsKPiAgLyoKPiAgICogVGhlIE1U
+MjcxMiB0aGVybWFsIGNvbnRyb2xsZXIgaGFzIG9uZSBiYW5rLCB3aGljaCBjYW4gcmVhZCB1cCB0
+bwo+ICAgKiBmb3VyIHRlbXBlcmF0dXJlIHNlbnNvcnMgc2ltdWx0YW5lb3VzbHkuIFRoZSBNVDI3
+MTIgaGFzIGEgdG90YWwgb2YgNAo+IEBAIC01MTQsNiArNTgxLDkgQEAgc3RhdGljIGNvbnN0IHN0
+cnVjdCBtdGtfdGhlcm1hbF9kYXRhIG10NzYyMl90aGVybWFsX2RhdGEgPSB7Cj4gIAkuYWRjcG5w
+ID0gbXQ3NjIyX2FkY3BucCwKPiAgCS5zZW5zb3JfbXV4X3ZhbHVlcyA9IG10NzYyMl9tdXhfdmFs
+dWVzLAo+ICAJLnZlcnNpb24gPSBNVEtfVEhFUk1BTF9WMiwKPiArCS5hcG1peGVkX2J1ZmZlcl9j
+dGxfcmVnID0gQVBNSVhFRF9TWVNfVFNfQ09OMSwKPiArCS5hcG1peGVkX2J1ZmZlcl9jdGxfbWFz
+ayA9IH4weDM3LAo+ICsJLmFwbWl4ZWRfYnVmZmVyX2N0bF9zZXQgPSAweDEsCgpQbGVhc2UgY2hh
+bmdlIHRob3NlIGxpdGVyYWwgaW50byBtYWNyb3MKCj4gIH07Cj4gIAo+ICAvKgo+IEBAIC05NTgs
+MTkgKzEwMjgsMjcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgbXRrX3RoZXJt
+YWxfb2ZfbWF0Y2hbXSA9IHsKPiAgCXsKPiAgCQkuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgx
+ODMtdGhlcm1hbCIsCj4gIAkJLmRhdGEgPSAodm9pZCAqKSZtdDgxODNfdGhlcm1hbF9kYXRhLAo+
+ICsJfSwKPiArCXsKPiArCQkuY29tcGF0aWJsZSA9ICJtZWRpYXRlayxtdDgzNjUtdGhlcm1hbCIs
+Cj4gKwkJLmRhdGEgPSAodm9pZCAqKSZtdDgzNjVfdGhlcm1hbF9kYXRhLAoKSXMgdGhpcyBjYXN0
+IHJlYWxseSBuZWVkZWQgPwoKPiAgCX0sIHsKPiAgCX0sCj4gIH07Cj4gIE1PRFVMRV9ERVZJQ0Vf
+VEFCTEUob2YsIG10a190aGVybWFsX29mX21hdGNoKTsKPiAgCj4gLXN0YXRpYyB2b2lkIG10a190
+aGVybWFsX3R1cm5fb25fYnVmZmVyKHZvaWQgX19pb21lbSAqYXBtaXhlZF9iYXNlKQo+ICtzdGF0
+aWMgdm9pZCBtdGtfdGhlcm1hbF90dXJuX29uX2J1ZmZlcihzdHJ1Y3QgbXRrX3RoZXJtYWwgKm10
+LAo+ICsJCQkJICAgICAgIHZvaWQgX19pb21lbSAqYXBtaXhlZF9iYXNlKQo+ICB7Cj4gIAlpbnQg
+dG1wOwo+ICAKPiAtCXRtcCA9IHJlYWRsKGFwbWl4ZWRfYmFzZSArIEFQTUlYRURfU1lTX1RTX0NP
+TjEpOwo+IC0JdG1wICY9IH4oMHgzNyk7Cj4gLQl0bXAgfD0gMHgxOwo+IC0Jd3JpdGVsKHRtcCwg
+YXBtaXhlZF9iYXNlICsgQVBNSVhFRF9TWVNfVFNfQ09OMSk7Cj4gKwlpZiAoIW10LT5jb25mLT5h
+cG1peGVkX2J1ZmZlcl9jdGxfcmVnKQo+ICsJCXJldHVybjsKPiArCj4gKwl0bXAgPSByZWFkbChh
+cG1peGVkX2Jhc2UgKyBtdC0+Y29uZi0+YXBtaXhlZF9idWZmZXJfY3RsX3JlZyk7Cj4gKwl0bXAg
+Jj0gbXQtPmNvbmYtPmFwbWl4ZWRfYnVmZmVyX2N0bF9tYXNrOwo+ICsJdG1wIHw9IG10LT5jb25m
+LT5hcG1peGVkX2J1ZmZlcl9jdGxfc2V0OwoKV2hhdCBpcyB0aGUgZ29hbCBvZiB0aGVzZSB0d28g
+Yml0cyBvcGVyYXRpb25zID8KCj4gKwl3cml0ZWwodG1wLCBhcG1peGVkX2Jhc2UgKyBtdC0+Y29u
+Zi0+YXBtaXhlZF9idWZmZXJfY3RsX3JlZyk7Cj4gIAl1ZGVsYXkoMjAwKTsKPiAgfQo+ICAKPiBA
+QCAtMTA3MCw4ICsxMTQ4LDkgQEAgc3RhdGljIGludCBtdGtfdGhlcm1hbF9wcm9iZShzdHJ1Y3Qg
+cGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICAJCWdvdG8gZXJyX2Rpc2FibGVfY2xrX2F1eGFkYzsK
+PiAgCX0KPiAgCj4gKwltdGtfdGhlcm1hbF90dXJuX29uX2J1ZmZlcihtdCwgYXBtaXhlZF9iYXNl
+KTsKPiArCj4gIAlpZiAobXQtPmNvbmYtPnZlcnNpb24gPT0gTVRLX1RIRVJNQUxfVjIpIHsKPiAt
+CQltdGtfdGhlcm1hbF90dXJuX29uX2J1ZmZlcihhcG1peGVkX2Jhc2UpOwo+ICAJCW10a190aGVy
+bWFsX3JlbGVhc2VfcGVyaW9kaWNfdHMobXQsIGF1eGFkY19iYXNlKTsKPiAgCX0KPiAgCj4gCgoK
+LS0gCjxodHRwOi8vd3d3LmxpbmFyby5vcmcvPiBMaW5hcm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBz
+b2Z0d2FyZSBmb3IgQVJNIFNvQ3MKCkZvbGxvdyBMaW5hcm86ICA8aHR0cDovL3d3dy5mYWNlYm9v
+ay5jb20vcGFnZXMvTGluYXJvPiBGYWNlYm9vayB8CjxodHRwOi8vdHdpdHRlci5jb20vIyEvbGlu
+YXJvb3JnPiBUd2l0dGVyIHwKPGh0dHA6Ly93d3cubGluYXJvLm9yZy9saW5hcm8tYmxvZy8+IEJs
+b2cKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsK
