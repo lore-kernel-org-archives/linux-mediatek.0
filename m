@@ -2,14 +2,14 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F695C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D6050C433EF
 	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 23:22:29 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 139806108E
+	by mail.kernel.org (Postfix) with ESMTPS id 7AD5B60F9D
 	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 23:22:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 139806108E
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7AD5B60F9D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,31 +18,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vtpJnT3ji9Z1BLSoI9PgCP8x3ziIO1lfN5IsFUR/8dI=; b=pKhVy3t1FEVf3C
-	R5kXvmJXZk75PjRyCZb+w9kp+tV0M7MChmGbhIq0JSIEjS3XW7XtIMGNCqDLTF9xD68unNcu6GhsS
-	GHfCH6ZPq4bg2hYrgYRCXEZnPX0sjVUthuFDlFSYkREb/uCa5KcowGy+8kRI4X0ZyigglWTsxQGUc
-	P1y1ePio0DhOYHN4brD/qh/Z/J9XXDNfJy+xwtRk0kwOfP1m6+fOeNHlw2mk6AgRn1H/413ix2VxJ
-	y+/PY+6t7tQe0OS2idRYQGnmIvChP0PExNjD95lYxnxb+ymTjOurV5bcI1cpwFXHED1ocrmpvWXLD
-	R9ZzzqP7asDJaoY1MoRw==;
+	List-Owner; bh=i9S2gYN/7kOIuatk5DCeZNyuGEd9bwLQgGDVOs9BDs0=; b=MA/r4Z5IxS7v7U
+	5xID9I79cvU6Xm98Vc7kXndrOdHs/jWI74hEYCBhve8LvIrFb1gSt23WeYzG311iEDIeqR7gHTRs3
+	odIcykLGcGstDiI5jSzRr3EU0sp8j8MXxGRGWtz/jF09hMC9JTqvS6nXGgfTmcRj3g7C6iOqlNyjZ
+	NBXihubJ0iIUfL5YDKba952szYZCgEF0xQ4YdqDeyIdlosg+OS14B4jjS5BuBOhVBr7iZxcDWJ6iE
+	cpUEBbOmuQ5r16g+IMO+rdf02FwVkStDc9JjD2Bv8VG9LrNcreC5W61A6XPuJykX5AYjceYcP5RdW
+	boXCwKzbOY9wymA0bS8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcbxR-00HRQp-A2; Mon, 18 Oct 2021 23:22:17 +0000
+	id 1mcbxS-00HRR0-3x; Mon, 18 Oct 2021 23:22:18 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcbxO-00HRPl-Me
+ id 1mcbxP-00HRPx-EB
  for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 23:22:16 +0000
-X-UUID: 633e4eb94b554a438b2cf0d9226a8339-20211018
-X-UUID: 633e4eb94b554a438b2cf0d9226a8339-20211018
+X-UUID: 3015afa09aae47a097e25ab1bf676364-20211018
+X-UUID: 3015afa09aae47a097e25ab1bf676364-20211018
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 199061625; Mon, 18 Oct 2021 16:22:12 -0700
+ with ESMTP id 1964705066; Mon, 18 Oct 2021 16:22:12 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Oct 2021 16:12:09 -0700
+ 15.0.1497.2; Mon, 18 Oct 2021 16:12:34 -0700
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 19 Oct 2021 07:12:09 +0800
+ Frontend Transport; Tue, 19 Oct 2021 07:12:33 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -55,19 +55,17 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
  <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v5 06/17] mt76: connac: move mcu reg access utility routines
- in mt76_connac_lib module
-Date: Tue, 19 Oct 2021 07:11:36 +0800
-Message-ID: <429a4e73846c70944c782acc053f439e283c199f.1634598341.git.objelf@gmail.com>
+Subject: [PATCH v5 15/17] mt76: mt7921: refactor mt7921_mcu_send_message
+Date: Tue, 19 Oct 2021 07:11:45 +0800
+Message-ID: <273c7a880dcc283594cf375fd51cb528a1aad14a.1634598341.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1634598341.git.objelf@gmail.com>
 References: <cover.1634598341.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_162214_790977_DE0B59B1 
-X-CRM114-Status: UNSURE (   9.45  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211018_162215_506964_96FFADDD 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,66 +84,104 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Move mcu reg access shared between mt7663s and mt7921s in mt76_connac_lib
-module.
+This is a preliminary patch to introduce mt7921s support.
+
+Refactor mt7921_mcu_send_message to be sharable between mt7921s and
+mt7921e.
 
 Tested-by: Deren Wu <deren.wu@mediatek.com>
 Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  | 27 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |  2 ++
- 2 files changed, 29 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c    | 11 ++++-------
+ .../net/wireless/mediatek/mt76/mt7921/mt7921.h |  2 +-
+ .../wireless/mediatek/mt76/mt7921/pci_mcu.c    | 18 ++++++++++++++++++
+ 3 files changed, 23 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 9a1af2ba7e8e..70d72dfa239e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -2412,6 +2412,33 @@ void mt76_connac_mcu_set_suspend_iter(void *priv, u8 *mac,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index a95495069a4d..44e74e43ee78 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -224,12 +224,11 @@ int mt7921_mcu_parse_response(struct mt76_dev *mdev, int cmd,
  }
- EXPORT_SYMBOL_GPL(mt76_connac_mcu_set_suspend_iter);
+ EXPORT_SYMBOL_GPL(mt7921_mcu_parse_response);
  
-+u32 mt76_connac_mcu_reg_rr(struct mt76_dev *dev, u32 offset)
-+{
-+	struct {
-+		__le32 addr;
-+		__le32 val;
-+	} __packed req = {
-+		.addr = cpu_to_le32(offset),
-+	};
-+
-+	return mt76_mcu_send_msg(dev, MCU_CMD_REG_READ, &req, sizeof(req),
-+				 true);
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_mcu_reg_rr);
-+
-+void mt76_connac_mcu_reg_wr(struct mt76_dev *dev, u32 offset, u32 val)
-+{
-+	struct {
-+		__le32 addr;
-+		__le32 val;
-+	} __packed req = {
-+		.addr = cpu_to_le32(offset),
-+		.val = cpu_to_le32(val),
-+	};
-+
-+	mt76_mcu_send_msg(dev, MCU_CMD_REG_WRITE, &req, sizeof(req), false);
-+}
-+EXPORT_SYMBOL_GPL(mt76_connac_mcu_reg_wr);
- #endif /* CONFIG_PM */
+-int mt7921_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
++int mt7921_mcu_fill_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 			    int cmd, int *wait_seq)
+ {
+ 	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
+ 	int txd_len, mcu_cmd = cmd & MCU_CMD_MASK;
+-	enum mt76_mcuq_id txq = MT_MCUQ_WM;
+ 	struct mt7921_uni_txd *uni_txd;
+ 	struct mt7921_mcu_txd *mcu_txd;
+ 	__le32 *txd;
+@@ -251,10 +250,8 @@ int mt7921_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 	if (!seq)
+ 		seq = ++dev->mt76.mcu.msg_seq & 0xf;
  
- MODULE_AUTHOR("Lorenzo Bianconi <lorenzo@kernel.org>");
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index 751e621a6f9b..b89faab04996 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1114,4 +1114,6 @@ void mt76_connac_mcu_coredump_event(struct mt76_dev *dev, struct sk_buff *skb,
- int mt76_connac_mcu_set_rate_txpower(struct mt76_phy *phy);
- int mt76_connac_mcu_set_p2p_oppps(struct ieee80211_hw *hw,
- 				  struct ieee80211_vif *vif);
-+u32 mt76_connac_mcu_reg_rr(struct mt76_dev *dev, u32 offset);
-+void mt76_connac_mcu_reg_wr(struct mt76_dev *dev, u32 offset, u32 val);
- #endif /* __MT76_CONNAC_MCU_H */
+-	if (cmd == MCU_CMD_FW_SCATTER) {
+-		txq = MT_MCUQ_FWDL;
++	if (cmd == MCU_CMD_FW_SCATTER)
+ 		goto exit;
+-	}
+ 
+ 	txd_len = cmd & MCU_UNI_PREFIX ? sizeof(*uni_txd) : sizeof(*mcu_txd);
+ 	txd = (__le32 *)skb_push(skb, txd_len);
+@@ -318,9 +315,9 @@ int mt7921_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 	if (wait_seq)
+ 		*wait_seq = seq;
+ 
+-	return mt76_tx_queue_skb_raw(dev, mdev->q_mcu[txq], skb, 0);
++	return 0;
+ }
+-EXPORT_SYMBOL_GPL(mt7921_mcu_send_message);
++EXPORT_SYMBOL_GPL(mt7921_mcu_fill_message);
+ 
+ static void
+ mt7921_mcu_scan_event(struct mt7921_dev *dev, struct sk_buff *skb)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+index 2082b4d2a23d..f4b85ec530bd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+@@ -381,7 +381,7 @@ void mt7921_mac_write_txwi(struct mt7921_dev *dev, __le32 *txwi,
+ 			   bool beacon);
+ void mt7921_tx_check_aggr(struct ieee80211_sta *sta, __le32 *txwi);
+ void mt7921_mac_sta_poll(struct mt7921_dev *dev);
+-int mt7921_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
++int mt7921_mcu_fill_message(struct mt76_dev *mdev, struct sk_buff *skb,
+ 			    int cmd, int *wait_seq);
+ int mt7921_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 			      struct sk_buff *skb, int seq);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+index 9ac3bc25f067..583a89a34734 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+@@ -18,6 +18,24 @@ static int mt7921e_driver_own(struct mt7921_dev *dev)
+ 	return 0;
+ }
+ 
++static int
++mt7921_mcu_send_message(struct mt76_dev *mdev, struct sk_buff *skb,
++			int cmd, int *seq)
++{
++	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
++	enum mt76_mcuq_id txq = MT_MCUQ_WM;
++	int ret;
++
++	ret = mt7921_mcu_fill_message(mdev, skb, cmd, seq);
++	if (ret)
++		return ret;
++
++	if (cmd == MCU_CMD_FW_SCATTER)
++		txq = MT_MCUQ_FWDL;
++
++	return mt76_tx_queue_skb_raw(dev, mdev->q_mcu[txq], skb, 0);
++}
++
+ int mt7921e_mcu_init(struct mt7921_dev *dev)
+ {
+ 	static const struct mt76_mcu_ops mt7921_mcu_ops = {
 -- 
 2.25.1
 
