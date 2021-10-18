@@ -2,14 +2,14 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21D01C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 13:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EE4F9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 13:52:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E3C8A608FB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 13:51:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E3C8A608FB
+	by mail.kernel.org (Postfix) with ESMTPS id B8D46610A5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 13:52:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B8D46610A5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,22 +18,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zHcU107pZDOyEHSm7EkNT8wz8bTCFVTJAt1SDPyExDo=; b=gvf1b8TI8JbtbHpfLtPZsHyMvt
-	ECAVd3oLCJHz6RWP7b1icrKVfMzb+zFPo5kffIA450QS9YukG+1C8Sl9J1bjR5H/6ReqondfKdFZw
-	2hsBsZDA4E78IGW1R7mk7yq1qelURILmGMBZW0ZEA+BFnqJkzkrhFeHI6okIx6a5egwbe7zedLP+Q
-	a7I1pIdbVPQ+ogzCC2aI8qlnX0+D2ZI8F6O4/wBEV/+TTTZzzZOVRnpNP6cuuLfqu9lQWIKDe9lfO
-	1/J1CuA8O5TuRqACmhwKK1WyZuOpUCVgNo+YxNPUXhlcTtNtymsDber17L6adOlqSSG5NJHvqwQsI
-	YouUnLqw==;
+	bh=4R15xRFx1WMUkPj2ODSEkXAiGXIy8ObNqXelWLN4ZGI=; b=zEgXlH93KGldXV2ug79/4O5zAM
+	ZpDsHJrdBHPAXPVEZ6SihRz5cUqnu5jYJFIPaaplwfBK9QoCN3tlDxZSOX6epAi5F8PmkqQtj3XKW
+	57iHPmJUOfp0y8MzynlFsl11AO52S2codqRnzc4J+sw9HMXksTJB5+x9CuE5skekByh4ccFdjJ1iN
+	GLLnxf86q18RAw9p3cwXXaHx1/gulXW5kaFQG+R3aAAAZKEZXvT7BNhwA/i5DKfDyoViHavTg7bDU
+	cLgoxkf1BvG3lgp8DXbwxBZ7/tgNXM+p9ev+s3tTVdvUS2ZiBAb4rcroH1lvGQylG8v0gEcm/UiJ/
+	V0M70kgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcT2v-00FuFE-4Q; Mon, 18 Oct 2021 13:51:21 +0000
+	id 1mcT46-00FuhY-SL; Mon, 18 Oct 2021 13:52:34 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcT1x-00Ftvz-QI; Mon, 18 Oct 2021 13:50:23 +0000
+ id 1mcT29-00FtzY-Am; Mon, 18 Oct 2021 13:50:36 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 27FA91F4167F
-Subject: Re: [PATCH v8 4/7] soc: mediatek: mutex: add functions that operate
- registers by CMDQ
+ (Authenticated sender: kholk11) with ESMTPSA id F3C4F1F4178D
+Subject: Re: [PATCH v8 2/7] soc: mediatek: mmsys: add support for ISP control
 To: Moudy Ho <moudy.ho@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -51,18 +50,18 @@ Cc: Maoguang Meng <maoguang.meng@mediatek.com>,
  sj.huang@mediatek.com, allen-kh.cheng@mediatek.com, randy.wu@mediatek.com,
  srv_heupstream@mediatek.com, hsinyi@google.com
 References: <20211015123832.17914-1-moudy.ho@mediatek.com>
- <20211015123832.17914-5-moudy.ho@mediatek.com>
+ <20211015123832.17914-3-moudy.ho@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <c30de071-0ac4-bbbe-bde3-770c2a15025d@collabora.com>
-Date: Mon, 18 Oct 2021 15:50:17 +0200
+Message-ID: <e78c99b2-1032-8fe9-4100-a108661aa532@collabora.com>
+Date: Mon, 18 Oct 2021 15:50:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211015123832.17914-5-moudy.ho@mediatek.com>
+In-Reply-To: <20211015123832.17914-3-moudy.ho@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_065022_185445_2CF8289D 
-X-CRM114-Status: GOOD (  20.51  )
+X-CRM114-CacheID: sfid-20211018_065033_704424_423A317F 
+X-CRM114-Status: GOOD (  25.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,133 +78,147 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Considering that some functions have timing requirements
-> in specific situation, this patch adds several interface that
-> operate registers by CMDQ.
+> This patch adds 8183 ISP settings in MMSYS domain and interface.
 > 
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 > ---
->   drivers/soc/mediatek/mtk-mutex.c       | 63 +++++++++++++++++++++++++-
->   include/linux/soc/mediatek/mtk-mutex.h |  6 +++
->   2 files changed, 68 insertions(+), 1 deletion(-)
+>   drivers/soc/mediatek/mt8183-mmsys.h    |  16 ++++
+>   drivers/soc/mediatek/mtk-mmsys.c       | 108 +++++++++++++++++++++++++
+>   drivers/soc/mediatek/mtk-mmsys.h       |   1 +
+>   include/linux/soc/mediatek/mtk-mmsys.h |  25 ++++++
+>   4 files changed, 150 insertions(+)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-> index adab4c9edc16..874d4c60b844 100644
-> --- a/drivers/soc/mediatek/mtk-mutex.c
-> +++ b/drivers/soc/mediatek/mtk-mutex.c
-> @@ -7,10 +7,12 @@
->   #include <linux/iopoll.h>
->   #include <linux/module.h>
->   #include <linux/of_device.h>
-> +#include <linux/of_address.h>
->   #include <linux/platform_device.h>
->   #include <linux/regmap.h>
->   #include <linux/soc/mediatek/mtk-mmsys.h>
->   #include <linux/soc/mediatek/mtk-mutex.h>
-> +#include <linux/soc/mediatek/mtk-cmdq.h>
+> diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
+> index 663f196fc4e7..c490cc1b1072 100644
+> --- a/drivers/soc/mediatek/mt8183-mmsys.h
+> +++ b/drivers/soc/mediatek/mt8183-mmsys.h
+> @@ -32,6 +32,13 @@
+>   #define MT8183_MDP_CCORR_SEL_IN			0xff0
+>   #define MT8183_MDP_CCORR_SOUT_SEL		0xff4
 >   
->   #define MT2701_MUTEX0_MOD0			0x2c
->   #define MT2701_MUTEX0_SOF0			0x30
-> @@ -143,6 +145,8 @@ struct mtk_mutex_ctx {
->   	void __iomem			*regs;
->   	struct mtk_mutex		mutex[10];
->   	const struct mtk_mutex_data	*data;
-> +	phys_addr_t			addr;
-> +	u8				subsys_id;
+> +#define MT8183_ISP_CTRL_MMSYS_SW0_RST_B		0x140
+> +#define MT8183_ISP_CTRL_MMSYS_SW1_RST_B		0x144
+> +#define MT8183_ISP_CTRL_MDP_ASYNC_CFG_WD	0x934
+> +#define MT8183_ISP_CTRL_MDP_ASYNC_IPU_CFG_WD	0x93C
+> +#define MT8183_ISP_CTRL_ISP_RELAY_CFG_WD	0x994
+> +#define MT8183_ISP_CTRL_IPU_RELAY_CFG_WD	0x9a0
+> +
+>   #define MT8183_OVL0_MOUT_EN_OVL0_2L		BIT(4)
+>   #define MT8183_OVL0_2L_MOUT_EN_DISP_PATH0	BIT(0)
+>   #define MT8183_OVL1_2L_MOUT_EN_RDMA1		BIT(4)
+> @@ -276,5 +283,14 @@ static const struct mtk_mmsys_routes mmsys_mt8183_mdp_routing_table[] = {
+>   	}
 >   };
 >   
->   static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
-> @@ -442,6 +446,25 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
->   }
->   EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
+> +static const unsigned int mmsys_mt8183_mdp_isp_ctrl_table[ISP_CTRL_MAX] = {
+> +	[ISP_CTRL_MMSYS_SW0_RST_B] = MT8183_ISP_CTRL_MMSYS_SW0_RST_B,
+> +	[ISP_CTRL_MMSYS_SW1_RST_B] = MT8183_ISP_CTRL_MMSYS_SW1_RST_B,
+> +	[ISP_CTRL_MDP_ASYNC_CFG_WD] = MT8183_ISP_CTRL_MDP_ASYNC_CFG_WD,
+> +	[ISP_CTRL_MDP_ASYNC_IPU_CFG_WD] = MT8183_ISP_CTRL_MDP_ASYNC_IPU_CFG_WD,
+> +	[ISP_CTRL_ISP_RELAY_CFG_WD] = MT8183_ISP_CTRL_ISP_RELAY_CFG_WD,
+> +	[ISP_CTRL_IPU_RELAY_CFG_WD] = MT8183_ISP_CTRL_IPU_RELAY_CFG_WD,
+> +};
+> +
+>   #endif /* __SOC_MEDIATEK_MT8183_MMSYS_H */
 >   
-> +void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
-> +			       struct mmsys_cmdq_cmd *cmd)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +	unsigned int offset;
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg, mutex->id);
-> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id, mtx->addr + offset,
-> +			    mod, mtx->data->mutex_mdp_mod_mask);
-> +
-> +	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id);
-> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id, mtx->addr + offset,
-> +			    0, mtx->data->mutex_mdp_sof_mask);
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_add_mod_by_cmdq);
-> +
->   void mtk_mutex_enable(struct mtk_mutex *mutex)
->   {
->   	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> @@ -453,6 +476,20 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
->   }
->   EXPORT_SYMBOL_GPL(mtk_mutex_enable);
+> diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+> index 31fec490617e..f4b1d2fa41b4 100644
+> --- a/drivers/soc/mediatek/mtk-mmsys.c
+> +++ b/drivers/soc/mediatek/mtk-mmsys.c
+> @@ -55,6 +55,7 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+>   	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
+>   	.mdp_routes = mmsys_mt8183_mdp_routing_table,
+>   	.mdp_num_routes = ARRAY_SIZE(mmsys_mt8183_mdp_routing_table),
+> +	.mdp_isp_ctrl = mmsys_mt8183_mdp_isp_ctrl_table,
+>   };
 >   
-> +void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
-> +			      struct mmsys_cmdq_cmd *cmd)
-> +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
-> +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
-> +
-> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
-> +			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-> +			    0x1, 0x00000001);
-
-(don't use this definition name if not appropriate)
-#define MTK_MUTEX_ENABLE	BIT(0)
-
-cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
-
-		    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-
-		    MTK_MUTEX_ENABLE, MTK_MUTEX_ENABLE);
-
-...or anyway remove leading zeros.
-
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
-> +
->   void mtk_mutex_disable(struct mtk_mutex *mutex)
->   {
->   	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> @@ -464,6 +501,20 @@ void mtk_mutex_disable(struct mtk_mutex *mutex)
+>   static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
+> @@ -142,6 +143,113 @@ void mtk_mmsys_mdp_disconnect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
 >   }
->   EXPORT_SYMBOL_GPL(mtk_mutex_disable);
+>   EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_disconnect);
 >   
-> +void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
-> +			       struct mmsys_cmdq_cmd *cmd)
+> +void mtk_mmsys_mdp_isp_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
+> +			    enum mtk_mdp_comp_id id)
 > +{
-> +	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
-> +						 mutex[mutex->id]);
+> +	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+> +	const unsigned int *isp_ctrl = mmsys->data->mdp_isp_ctrl;
+> +	u32 reg;
 > +
-> +	WARN_ON(&mtx->mutex[mutex->id] != mutex);
+> +	WARN_ON(mmsys->subsys_id == 0);
+> +	/* Direct link */
+> +	if (id == MDP_COMP_CAMIN) {
+> +		/* Reset MDP_DL_ASYNC_TX */
+> +		/* Bit  3: MDP_DL_ASYNC_TX / MDP_RELAY */
+> +		if (isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B]) {
+> +			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B];
+> +			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+> +					    0x0, 0x00000008);
+
+This is 				    0, 0x8);
+Please remove leading zeros.
+
+> +			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+> +					    1 << 3, 0x00000008);
+
+1 << 3 is BIT(3)
+Also remove leading zeros.
+
+> +		}
 > +
-> +	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
-> +			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-> +			    0x0, 0x00000001);
+> +		/* Reset MDP_DL_ASYNC_RX */
+> +		/* Bit  10: MDP_DL_ASYNC_RX */
+> +		if (isp_ctrl[ISP_CTRL_MMSYS_SW1_RST_B]) {
+> +			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MMSYS_SW1_RST_B];
+> +			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+> +					    0x0, 0x00000400);
+> +			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+> +					    1 << 10, 0x00000400);
 
-cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
+BIT(10) and leading zeros.
 
-
-		    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
-
-
-		    0, MTK_MUTEX_ENABLE);
-
-> +}
-> +EXPORT_SYMBOL_GPL(mtk_mutex_disable_by_cmdq);
+> +		}
 > +
+> +		/* Enable sof mode */
+> +		if (isp_ctrl[ISP_CTRL_ISP_RELAY_CFG_WD]) {
+> +			reg = mmsys->addr + isp_ctrl[ISP_CTRL_ISP_RELAY_CFG_WD];
+> +			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+> +					    0 << 31, 0x80000000);
+
+Shifting 0 by N bits is still zero, so this is simply 0.
+
+> +		}
+> +	}
+> +
+> +	if (id == MDP_COMP_CAMIN2) {
+> +		/* Reset MDP_DL_ASYNC2_TX */
+> +		/* Bit  4: MDP_DL_ASYNC2_TX / MDP_RELAY2 */
+> +		if (isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B]) {
+> +			reg = mmsys->addr + isp_ctrl[ISP_CTRL_MMSYS_SW0_RST_B];
+> +			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+> +					    0x0, 0x00000010);
+> +			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+> +					    1 << 4, 0x00000010);
+
+Please use the BIT() macro and remove leading zeros, here and everywhere else.
+Also, I would really appreciate if you defined these bits somewhere instead of
+writing "magic values".
+
+For example, here you're documenting what bit 4 is, but it would be better if
+you simply defined (please use appropriate names!)
+#define MY_REGISTER_BIT		BIT(4)
+
+...and then you called your function like that:
+cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+		    0, MY_REGISTER_BIT);
+and then
+cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
+		    MY_REGISTER_BIT, MY_REGISTER_BIT);
+
+So, since you're documenting it with defines, you will also be able to remove
+the comments describing the same thing.
 
 Regards,
 - Angelo
-
-
 
 _______________________________________________
 Linux-mediatek mailing list
