@@ -2,14 +2,14 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E16CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 08:15:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31BC4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 08:15:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D496461076
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 08:15:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D496461076
+	by mail.kernel.org (Postfix) with ESMTPS id EB95960ED4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 08:15:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EB95960ED4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,51 +18,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vLKm58j6VHJjvdNaQDxn9NqdP6gM4qsEEvqPebAzBDg=; b=zM2IaCe+S5pkIE
-	EjB7Cm1d66cZoyF7bT7MqCal3HxH7v0HBiu9iNTnyFZYWtEOhFIs6WbkY6mYRdBtZwYicQOsFc2aA
-	vwwO94FmGO+aAoctsNDX8Yak7ohCHGI43GsBTO6pIXBvalQ92TvqiXAUdD9tKZGf+rmG2lZO3foyd
-	GB+mRt2FuGHqo9xMp3R9GnfItbIaJHFFJhKjg987mtMNrKBxUIX1UkjUw+IxgQZwsKHlzAW3rEGZa
-	esJRVoAhnUPZM03sas0oIHb6q3LF/sHZeqdgXhCIJ+/F2gEaOErJsHo5OHNA1tZMySjZ7TgteZrw6
-	AuqrFzk+/KSYVXGJprKw==;
+	List-Owner; bh=IjvqlIRUifBWRkQmuSdj1ERjhjpokLzC0SExTE8RTG4=; b=dgUaDOT6axRBA3
+	sZv1h954chUxo0ACM6YxXRuwLo3I1Hm+66DSPTnsNm6KiT9gIaO61akLAX+j23Gp1C1hZCmdIKTVh
+	hz4/M0LwBB9nP70jbOW/PXDB/H8k5zRAO9i8tyDPJj06qXHn8ypd6awHaDjHYDoc/SIIGw8ngNEMF
+	nBE9Gc+pIzuL44Zm6NkpdR1lfeEL81I/wlOhF6zNSj6W8qjqcj66Mqy3afN9QCfy8XANjSQuvXGMe
+	NYo4kFrw+uun7wARNjs00LvTJSihYe/NCnYBcTrJcGPG3/QpHwvOxcwvt0AnGfidvoHJ98bwPLDDS
+	wcoggmGxvXcK6yLB4ltQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcNnP-00Ebiu-Su; Mon, 18 Oct 2021 08:14:59 +0000
+	id 1mcNnR-00Ebjx-Lq; Mon, 18 Oct 2021 08:15:01 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcNnJ-00Ebe4-QB
- for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 08:14:55 +0000
-X-UUID: 2a42a641b2cc47948bb02375c969207d-20211018
-X-UUID: 2a42a641b2cc47948bb02375c969207d-20211018
+ id 1mcNnK-00Ebde-SY
+ for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 08:14:56 +0000
+X-UUID: d3e13763170f481f8144c366e4114153-20211018
+X-UUID: d3e13763170f481f8144c366e4114153-20211018
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 562590951; Mon, 18 Oct 2021 01:14:49 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1359529652; Mon, 18 Oct 2021 01:14:49 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Oct 2021 01:08:21 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 18 Oct 2021 16:08:20 +0800
+ 15.0.1497.2; Mon, 18 Oct 2021 01:09:56 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Oct 2021 16:09:54 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 18 Oct 2021 16:08:20 +0800
+ Frontend Transport; Mon, 18 Oct 2021 16:09:54 +0800
 From: Shayne Chen <shayne.chen@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
  <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
  <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v7 8/8] mt76: mt7915: set muru platform type
-Date: Mon, 18 Oct 2021 16:07:06 +0800
-Message-ID: <20211018080706.11401-8-shayne.chen@mediatek.com>
+Subject: [PATCH v3 3/4] mt76: mt7915: fix missing HE phy cap
+Date: Mon, 18 Oct 2021 16:09:40 +0800
+Message-ID: <20211018080941.11443-3-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211018080706.11401-1-shayne.chen@mediatek.com>
-References: <20211018080706.11401-1-shayne.chen@mediatek.com>
+In-Reply-To: <20211018080941.11443-1-shayne.chen@mediatek.com>
+References: <20211018080941.11443-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_011453_898084_2D7BC1B8 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20211018_011454_965063_0EC93E73 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,136 +79,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set muru platform type by mcu cmd to notify fw to init corresponding
-algorithm.
+Fix missing HE phy cap related to vif and starec setting.
 
-Suggested-by: Money Wang <money.wang@mediatek.com>
-Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 20 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   | 10 ++++++++++
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
- .../wireless/mediatek/mt76/mt7915/testmode.c  | 16 +++++----------
- .../wireless/mediatek/mt76/mt7915/testmode.h  |  4 ----
- 5 files changed, 36 insertions(+), 15 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c | 12 +++++++++---
+ drivers/net/wireless/mediatek/mt76/mt7915/mcu.c  |  8 ++++----
+ 2 files changed, 13 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index cedecf2c693d..274b30a58f05 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -626,7 +626,6 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+ 			       int vif, int nss)
+ {
+ 	struct ieee80211_he_cap_elem *elem = &he_cap->he_cap_elem;
+-	struct ieee80211_he_mcs_nss_supp *mcs = &he_cap->he_mcs_nss_supp;
+ 	u8 c;
+ 
+ #ifdef CONFIG_MAC80211_MESH
+@@ -678,8 +677,11 @@ mt7915_set_stream_he_txbf_caps(struct ieee80211_sta_he_cap *he_cap,
+ 	elem->phy_cap_info[3] |= IEEE80211_HE_PHY_CAP3_SU_BEAMFORMER;
+ 	elem->phy_cap_info[4] |= IEEE80211_HE_PHY_CAP4_MU_BEAMFORMER;
+ 
+-	/* num_snd_dim */
+-	c = (nss - 1) | (max_t(int, le16_to_cpu(mcs->tx_mcs_160), 1) << 3);
++	/* num_snd_dim
++	 * for mt7915, max supported nss is 2 for bw > 80MHz
++	 */
++	c = (nss - 1) |
++	    IEEE80211_HE_PHY_CAP5_BEAMFORMEE_NUM_SND_DIM_ABOVE_80MHZ_2;
+ 	elem->phy_cap_info[5] |= c;
+ 
+ 	c = IEEE80211_HE_PHY_CAP6_TRIG_SU_BEAMFORMING_FB |
+@@ -787,7 +789,11 @@ mt7915_init_he_caps(struct mt7915_phy *phy, enum nl80211_band band,
+ 				IEEE80211_HE_PHY_CAP3_DCM_MAX_CONST_TX_QPSK |
+ 				IEEE80211_HE_PHY_CAP3_DCM_MAX_CONST_RX_QPSK;
+ 			he_cap_elem->phy_cap_info[6] |=
++				IEEE80211_HE_PHY_CAP6_PARTIAL_BW_EXT_RANGE |
+ 				IEEE80211_HE_PHY_CAP6_PPE_THRESHOLD_PRESENT;
++			he_cap_elem->phy_cap_info[9] |=
++				IEEE80211_HE_PHY_CAP9_TX_1024_QAM_LESS_THAN_242_TONE_RU |
++				IEEE80211_HE_PHY_CAP9_RX_1024_QAM_LESS_THAN_242_TONE_RU;
+ 			break;
+ 		case NL80211_IFTYPE_STATION:
+ 			he_cap_elem->mac_cap_info[1] |=
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index f32e124b1a0f..d4c8759bedd8 100644
+index 4c687380120e..b4cc4cb35762 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2906,6 +2906,21 @@ static int mt7915_mcu_set_mwds(struct mt7915_dev *dev, bool enabled)
- 				 sizeof(req), false);
- }
+@@ -1396,6 +1396,10 @@ mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
+ 	    IEEE80211_HE_PHY_CAP2_STBC_RX_UNDER_80MHZ)
+ 		cap |= STA_REC_HE_CAP_LE_EQ_80M_RX_STBC;
  
-+int mt7915_mcu_set_muru_ctrl(struct mt7915_dev *dev, u32 cmd, u32 val)
-+{
-+	struct {
-+		__le32 cmd;
-+		u8 val[4];
-+	} __packed req = {
-+		.cmd = cpu_to_le32(cmd),
-+	};
++	if (elem->phy_cap_info[6] &
++	    IEEE80211_HE_PHY_CAP6_TRIG_CQI_FB)
++		cap |= STA_REC_HE_CAP_TRIG_CQI_FK;
 +
-+	put_unaligned_le32(val, req.val);
-+
-+	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL), &req,
-+				 sizeof(req), false);
-+}
-+
- int mt7915_mcu_init(struct mt7915_dev *dev)
- {
- 	static const struct mt76_mcu_ops mt7915_mcu_ops = {
-@@ -2935,6 +2950,11 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
- 	if (ret)
- 		return ret;
+ 	if (elem->phy_cap_info[6] &
+ 	    IEEE80211_HE_PHY_CAP6_PARTIAL_BW_EXT_RANGE)
+ 		cap |= STA_REC_HE_CAP_PARTIAL_BW_EXT_RANGE;
+@@ -1420,10 +1424,6 @@ mt7915_mcu_sta_he_tlv(struct sk_buff *skb, struct ieee80211_sta *sta,
+ 	    IEEE80211_HE_PHY_CAP8_HE_ER_SU_1XLTF_AND_08_US_GI)
+ 		cap |= STA_REC_HE_CAP_ER_SU_PPDU_1LTF_8US_GI;
  
-+	ret = mt7915_mcu_set_muru_ctrl(dev, MURU_SET_PLATFORM_TYPE,
-+				       MURU_PLATFORM_TYPE_PERF_LEVEL_2);
-+	if (ret)
-+		return ret;
-+
- 	return mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET),
- 				 MCU_WA_PARAM_RED, 0, 0);
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index a1a6cc064573..4043cf547c9e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -1092,6 +1092,16 @@ enum {
- 	MT_BF_MODULE_UPDATE = 25
- };
- 
-+enum {
-+	MURU_SET_ARB_OP_MODE = 14,
-+	MURU_SET_PLATFORM_TYPE = 25,
-+};
-+
-+enum {
-+	MURU_PLATFORM_TYPE_PERF_LEVEL_1 = 1,
-+	MURU_PLATFORM_TYPE_PERF_LEVEL_2,
-+};
-+
- #define MT7915_WTBL_UPDATE_MAX_SIZE	(sizeof(struct wtbl_req_hdr) +	\
- 					 sizeof(struct wtbl_generic) +	\
- 					 sizeof(struct wtbl_rx) +	\
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 78c0896f97b9..bb8ef60f1b1e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -443,6 +443,7 @@ int mt7915_mcu_set_pulse_th(struct mt7915_dev *dev,
- 			    const struct mt7915_dfs_pulse *pulse);
- int mt7915_mcu_set_radar_th(struct mt7915_dev *dev, int index,
- 			    const struct mt7915_dfs_pattern *pattern);
-+int mt7915_mcu_set_muru_ctrl(struct mt7915_dev *dev, u32 cmd, u32 val);
- int mt7915_mcu_apply_group_cal(struct mt7915_dev *dev);
- int mt7915_mcu_apply_tx_dpd(struct mt7915_phy *phy);
- int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-index 00dcc46b9082..89aae323d29e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.c
-@@ -169,22 +169,16 @@ static int
- mt7915_tm_set_tam_arb(struct mt7915_phy *phy, bool enable, bool mu)
- {
- 	struct mt7915_dev *dev = phy->dev;
--	struct {
--		__le32 cmd;
--		u8 op_mode;
--	} __packed req = {
--		.cmd = cpu_to_le32(MURU_SET_ARB_OP_MODE),
--	};
-+	u32 op_mode;
- 
- 	if (!enable)
--		req.op_mode = TAM_ARB_OP_MODE_NORMAL;
-+		op_mode = TAM_ARB_OP_MODE_NORMAL;
- 	else if (mu)
--		req.op_mode = TAM_ARB_OP_MODE_TEST;
-+		op_mode = TAM_ARB_OP_MODE_TEST;
- 	else
--		req.op_mode = TAM_ARB_OP_MODE_FORCE_SU;
-+		op_mode = TAM_ARB_OP_MODE_FORCE_SU;
- 
--	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL), &req,
--				 sizeof(req), false);
-+	return mt7915_mcu_set_muru_ctrl(dev, MURU_SET_ARB_OP_MODE, op_mode);
- }
- 
- static int
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
-index 107f0cf2505e..5573ac309363 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/testmode.h
-@@ -102,8 +102,4 @@ enum {
- 	TAM_ARB_OP_MODE_FORCE_SU = 5,
- };
- 
--enum {
--	MURU_SET_ARB_OP_MODE = 14,
--};
+-	if (elem->phy_cap_info[9] &
+-	    IEEE80211_HE_PHY_CAP9_NON_TRIGGERED_CQI_FEEDBACK)
+-		cap |= STA_REC_HE_CAP_TRIG_CQI_FK;
 -
- #endif
+ 	if (elem->phy_cap_info[9] &
+ 	    IEEE80211_HE_PHY_CAP9_TX_1024_QAM_LESS_THAN_242_TONE_RU)
+ 		cap |= STA_REC_HE_CAP_TX_1024QAM_UNDER_RU242;
 -- 
 2.29.2
 
