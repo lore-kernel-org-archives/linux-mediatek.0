@@ -2,76 +2,69 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6E64C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 22:37:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C7ACC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 23:12:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 78A2160F6E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 22:37:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 78A2160F6E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id B448960F59
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 23:12:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B448960F59
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kxTcVbMh+d6k8Jy15c+nEtvy05752wV7CLacOe8/DlE=; b=GL1/AMy6Hz8wtu
-	Q9BK3LWe0vvtXPWtbRPwzCOqNqVhn9YV826eeZL9tLfSky13JSu/Uuz9gqjqe5EvrEVTHhvbB7fkE
-	L9/pDuQRMZXd8JIKxA0c06pUoanJ5JHa0IG0sa9UpsJhnW/4B/N3RCMaXCuh/m+9eak2NPb9GXix1
-	dL0lvZTUuNwfdd62khgGxj7HfBVbUXp5Xyd4xQb4zMqDepzMZtbJKPl6GPtZfHhHYgcprDvA3KK6g
-	R5DqlLrJsNvBMRaENXiiwJGHbvwTpEoFNT3AXA6R2b5cyGSAm9tLancAW9YEwfZ+vuO30CYwWlfUV
-	6pAmh8549Fn2IgIdjSLA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=cOEfehnuHhyXx77ZG+8pBbP2+jafuPjDGKWCZfrXkGg=; b=SUh1pCJjDJZQzI
+	eMVhfxaydGwyzVvW698b0kC4NzqhPXq4PU49YJ5YHTEzq4LL5VD5L4kPhilosrQYnnt7NKaXE2dKU
+	V/dFzhg+AGNJh+EYajiOGrQrdfy95ce/4T2m15D82yX3USHAeekzzY0ZNdmeuareUlpnY5SczF7Z5
+	vQxM7eZM5vraAiJdGC3Y681Q4e2QnmWm+jwmK0sQ6Hr0ie5+XLYYtN+WvmG/k7QFq7f7ObHrIfql9
+	iqMGXZ/ohrvsOS3w0Jz4WEZ0FbtZuQzX8s4EmgST5gJ7CtEYNnDg5yPI/ZQgVC7HKWEV8kf8We6fQ
+	9KIXJqPvbQY0onbDg+SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcbFf-00HOnV-LM; Mon, 18 Oct 2021 22:37:03 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mcbnU-00HQYK-Vb; Mon, 18 Oct 2021 23:12:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcbFP-00HOlT-12; Mon, 18 Oct 2021 22:36:51 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 99EA36115A;
- Mon, 18 Oct 2021 22:36:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1634596605;
- bh=8enkVrYV4BpaQHLJUNwPiZ7K/xmhwaaH+bbzDIues90=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=iMSTUAB8L6FM1V2fT42MGnHM2FsXnD90ISHE2uHijzQLBR8aZsowG1eKK2wXPzrOg
- Yfd8xVnexaT1yGl04TqCaeBQe7P28Z9jE8CQEQZrhAlDhcXjuCctfTIHvVkVsHtGQt
- BcDVX02eM/CsE92hniY7uDjRgdtORvrVgGYOGyzAvU2iYuMeeSnBRewaDZB/5J45Oe
- HnWtg+EIu4KFws/O1PPGI13aFAyVFg5huAoiv8mgWHg2OJ2i9OExfsTSImaL8I6mbM
- WkZtMI8YVXI2IzPnvxx1xUmiCjGtp5SR7Hf91xkDfkPj35jpWWc6DUzw63qpAYlWYQ
- 5rEIMHhxH5jwA==
-Received: by mail-ed1-f52.google.com with SMTP id d3so5219472edp.3;
- Mon, 18 Oct 2021 15:36:45 -0700 (PDT)
-X-Gm-Message-State: AOAM532MLt21XQLOaAq1qSy5QGo62ZIi3K3F9r71tqJ6S/N7luQMMgEB
- moSNjX42qlPPXajOmiDayvGWdO8acCW6zLBBjVs=
-X-Google-Smtp-Source: ABdhPJyhsZA375To2FvrpoZE4CJsaycw2mdYGWuTfjZHlf67qKE8KC1KRgJ7f1Tkf3QaF3/ANHRGQazp6yaBngS6q7A=
-X-Received: by 2002:a05:6402:319a:: with SMTP id
- di26mr49625777edb.84.1634596603767; 
- Mon, 18 Oct 2021 15:36:43 -0700 (PDT)
+ id 1mcbnQ-00HQXh-0S
+ for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 23:11:59 +0000
+X-UUID: 40550ed0a6c8472885f46551333baa62-20211018
+X-UUID: 40550ed0a6c8472885f46551333baa62-20211018
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1776315327; Mon, 18 Oct 2021 16:11:53 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Oct 2021 16:11:51 -0700
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 19 Oct 2021 07:11:50 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
+ <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
+ <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, Sean
+ Wang <objelf@gmail.com>
+Subject: [PATCH v5 00/17] Add MT7921 SDIO WiFi support
+Date: Tue, 19 Oct 2021 07:11:30 +0800
+Message-ID: <cover.1634598341.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
-References: <20211018114739.14026-1-sam.shih@mediatek.com>
- <20211018114739.14026-3-sam.shih@mediatek.com>
-In-Reply-To: <20211018114739.14026-3-sam.shih@mediatek.com>
-From: Sean Wang <sean.wang@kernel.org>
-Date: Mon, 18 Oct 2021 15:36:32 -0700
-X-Gmail-Original-Message-ID: <CAGp9Lzpnng1NeEXxB_ZwawbQ3StjpSGypuThTd8Z7GLSNeJ3Rw@mail.gmail.com>
-Message-ID: <CAGp9Lzpnng1NeEXxB_ZwawbQ3StjpSGypuThTd8Z7GLSNeJ3Rw@mail.gmail.com>
-Subject: Re: [PATCH v8 2/4] pinctrl: mediatek: add support for MT7986 SoC
-To: Sam Shih <sam.shih@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, 
- linux-arm Mailing List <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- lkml <linux-kernel@vger.kernel.org>, 
- John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_153647_196788_FD4ED9E5 
-X-CRM114-Status: GOOD (  28.17  )
+X-CRM114-CacheID: sfid-20211018_161156_092031_750929C5 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,1003 +81,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 18, 2021 at 4:48 AM Sam Shih <sam.shih@mediatek.com> wrote:
->
-> This commit includes pinctrl driver for Mediatek MT7986
->
-> The difference of pinctrl between mt7986a and mt7986b
-> is that pin-41 to pin-65 do not exist on mt7986b
->
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+From: Sean Wang <objelf@gmail.com>
 
-Actually, I have reviewed the driver in v3 and Sam also fixed the
-driver according to the suggestions, so
-Acked-by: Sean Wang <sean.wang@kernel.org>
+The patchset adds the SDIO support to the MT7921 driver, basically are
+made up of 3 parts.
 
->
-> ---
-> v7: updated register base binding and separate pinctrl part into a
->     single patch series
-> v4: fixed warning in mt7986 pinctrl driver
-> v3: applied the comment suggested by reviewers:
->     - merge the consecutive entries into one to reduce the table size
->     - set .name to NULL to indicate the pin is not ball out
-> v2: applied the comment suggested by reviewers:
->     - for the pins not ballout, we can fill .name in struct mtk_pin_desc
->       as NULL and return -ENOTSUPP in gpio/pinconf ops.
-> ---
->  drivers/pinctrl/mediatek/Kconfig          |   7 +
->  drivers/pinctrl/mediatek/Makefile         |   1 +
->  drivers/pinctrl/mediatek/pinctrl-mt7986.c | 927 ++++++++++++++++++++++
->  3 files changed, 935 insertions(+)
->  create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt7986.c
->
-> diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
-> index 7040a7a7bd5d..66db4ac5d169 100644
-> --- a/drivers/pinctrl/mediatek/Kconfig
-> +++ b/drivers/pinctrl/mediatek/Kconfig
-> @@ -119,6 +119,13 @@ config PINCTRL_MT7622
->         default ARM64 && ARCH_MEDIATEK
->         select PINCTRL_MTK_MOORE
->
-> +config PINCTRL_MT7986
-> +       bool "Mediatek MT7986 pin control"
-> +       depends on OF
-> +       depends on ARM64 || COMPILE_TEST
-> +       default ARM64 && ARCH_MEDIATEK
-> +       select PINCTRL_MTK_MOORE
-> +
->  config PINCTRL_MT8167
->         bool "Mediatek MT8167 pin control"
->         depends on OF
-> diff --git a/drivers/pinctrl/mediatek/Makefile b/drivers/pinctrl/mediatek/Makefile
-> index 1bb7f9c65bc2..1e3931d924e7 100644
-> --- a/drivers/pinctrl/mediatek/Makefile
-> +++ b/drivers/pinctrl/mediatek/Makefile
-> @@ -17,6 +17,7 @@ obj-$(CONFIG_PINCTRL_MT6797)  += pinctrl-mt6797.o
->  obj-$(CONFIG_PINCTRL_MT7622)   += pinctrl-mt7622.o
->  obj-$(CONFIG_PINCTRL_MT7623)   += pinctrl-mt7623.o
->  obj-$(CONFIG_PINCTRL_MT7629)   += pinctrl-mt7629.o
-> +obj-$(CONFIG_PINCTRL_MT7986)   += pinctrl-mt7986.o
->  obj-$(CONFIG_PINCTRL_MT8167)   += pinctrl-mt8167.o
->  obj-$(CONFIG_PINCTRL_MT8173)   += pinctrl-mt8173.o
->  obj-$(CONFIG_PINCTRL_MT8183)   += pinctrl-mt8183.o
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-mt7986.c b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-> new file mode 100644
-> index 000000000000..f26869f1a367
-> --- /dev/null
-> +++ b/drivers/pinctrl/mediatek/pinctrl-mt7986.c
-> @@ -0,0 +1,927 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * The MT7986 driver based on Linux generic pinctrl binding.
-> + *
-> + * Copyright (C) 2021 MediaTek Inc.
-> + * Author: Sam Shih <sam.shih@mediatek.com>
-> + */
-> +
-> +#include "pinctrl-moore.h"
-> +
-> +#define MT7986_PIN(_number, _name) MTK_PIN(_number, _name, 0, _number, DRV_GRP4)
-> +#define MT7986_NOT_BALLOUT_PIN(_number) { .number = _number, .name = NULL }
-> +
-> +#define PIN_FIELD_BASE(_s_pin, _e_pin, _i_base, _s_addr, _x_addrs, _s_bit,     \
-> +                       _x_bits)        \
-> +               PIN_FIELD_CALC(_s_pin, _e_pin, _i_base, _s_addr, _x_addrs, _s_bit,      \
-> +                       _x_bits, 32, 0)
-> +
-> +/**
-> + * enum - Locking variants of the iocfg bases
-> + *
-> + * MT7986 have multiple bases to program pin configuration listed as the below:
-> + * iocfg_rt:0x11c30000, iocfg_rb:0x11c40000, iocfg_lt:0x11e20000,
-> + * iocfg_lb:0x11e30000, iocfg_tr:0x11f00000, iocfg_tl:0x11f10000,
-> + * _i_based could be used to indicate what base the pin should be mapped into.
-> + *
-> + * Each iocfg register base control different group of pads on the SoC
-> + *
-> + *
-> + *  chip carrier
-> + *
-> + *      A  B  C  D  E  F  G  H
-> + *    +------------------------+
-> + *  8 | o  o  o  o  o  o  o  o |
-> + *  7 | o  o  o  o  o  o  o  o |
-> + *  6 | o  o  o  o  o  o  o  o |
-> + *  5 | o  o  o  o  o  o  o  o |
-> + *  4 | o  o  o  o  o  o  o  o |
-> + *  3 | o  o  o  o  o  o  o  o |
-> + *  2 | o  o  o  o  o  o  o  o |
-> + *  1 | o  o  o  o  o  o  o  o |
-> + *    +------------------------+
-> + *
-> + *  inside Chip carrier
-> + *
-> + *      A  B  C  D  E  F  G  H
-> + *    +------------------------+
-> + *  8 |                        |
-> + *  7 |        TL  TR          |
-> + *  6 |      +---------+       |
-> + *  5 |   LT |         | RT    |
-> + *  4 |      |         |       |
-> + *  3 |   LB |         | RB    |
-> + *  2 |      +---------+       |
-> + *  1 |                        |
-> + *    +------------------------+
-> + *
-> + */
-> +
-> +enum {
-> +       GPIO_BASE,
-> +       IOCFG_RT_BASE,
-> +       IOCFG_RB_BASE,
-> +       IOCFG_LT_BASE,
-> +       IOCFG_LB_BASE,
-> +       IOCFG_TR_BASE,
-> +       IOCFG_TL_BASE,
-> +};
-> +
-> +static const char *const mt7986_pinctrl_register_base_names[] = {
-> +       "gpio", "iocfg_rt", "iocfg_rb", "iocfg_lt", "iocfg_lb", "iocfg_tr",
-> +       "iocfg_tl",
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_mode_range[] = {
-> +       PIN_FIELD(0, 100, 0x300, 0x10, 0, 4),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_dir_range[] = {
-> +       PIN_FIELD(0, 100, 0x0, 0x10, 0, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_di_range[] = {
-> +       PIN_FIELD(0, 100, 0x200, 0x10, 0, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_do_range[] = {
-> +       PIN_FIELD(0, 100, 0x100, 0x10, 0, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_ies_range[] = {
-> +       PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x40, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x20, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x20, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x40, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x20, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x40, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x40, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x30, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x30, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x30, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x30, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x30, 0x10, 19, 1),
-> +       PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x30, 0x10, 23, 1),
-> +       PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x30, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x30, 0x10, 21, 1),
-> +       PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x20, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x20, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x20, 0x10, 7, 1),
-> +       PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x20, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x20, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x40, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x40, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x40, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x40, 0x10, 20, 1),
-> +       PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x40, 0x10, 26, 1),
-> +       PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x40, 0x10, 24, 1),
-> +       PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x30, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x30, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x30, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x30, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x40, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x40, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x40, 0x10, 13, 1),
-> +       PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x40, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x20, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x30, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x30, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x30, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x30, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x30, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x30, 0x10, 6, 1),
-> +       PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x30, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x30, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x30, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x30, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x30, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x30, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x30, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x30, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x30, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x30, 0x10, 8, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_smt_range[] = {
-> +       PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0xf0, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x90, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x90, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0xf0, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x90, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0xf0, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0xf0, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0xc0, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0xc0, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0xc0, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0xc0, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0xc0, 0x10, 19, 1),
-> +       PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0xc0, 0x10, 23, 1),
-> +       PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0xc0, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0xc0, 0x10, 21, 1),
-> +       PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x90, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x90, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x90, 0x10, 7, 1),
-> +       PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x90, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x90, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0xf0, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0xf0, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0xf0, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0xf0, 0x10, 20, 1),
-> +       PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0xf0, 0x10, 26, 1),
-> +       PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0xf0, 0x10, 24, 1),
-> +       PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0xc0, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0xc0, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0xc0, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0xc0, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0xf0, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0xf0, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0xf0, 0x10, 13, 1),
-> +       PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0xf0, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x90, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x80, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x80, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x80, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x80, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x80, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x80, 0x10, 6, 1),
-> +       PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x80, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x80, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x80, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x70, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x70, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x70, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x70, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x70, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x70, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x70, 0x10, 8, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_pu_range[] = {
-> +       PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x50, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x50, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x50, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x50, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x50, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x50, 0x10, 6, 1),
-> +       PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x50, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x50, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x50, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x50, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x50, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x50, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x50, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x50, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x50, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x50, 0x10, 8, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_pd_range[] = {
-> +       PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x40, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x40, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x40, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x40, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(74, 74, IOCFG_TR_BASE, 0x40, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(75, 77, IOCFG_TR_BASE, 0x40, 0x10, 6, 1),
-> +       PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x40, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(80, 84, IOCFG_TR_BASE, 0x40, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x40, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x40, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x40, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x40, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x40, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x40, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x40, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(97, 100, IOCFG_TL_BASE, 0x40, 0x10, 8, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_drv_range[] = {
-> +       PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x10, 0x10, 21, 3),
-> +       PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x10, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x00, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(5, 5, IOCFG_RB_BASE, 0x00, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(6, 6, IOCFG_RB_BASE, 0x00, 0x10, 21, 3),
-> +       PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x00, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(11, 12, IOCFG_RB_BASE, 0x00, 0x10, 24, 3),
-> +       PIN_FIELD_BASE(13, 14, IOCFG_RB_BASE, 0x10, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x00, 0x10, 3, 3),
-> +       PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x10, 0x10, 6, 3),
-> +       PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x10, 0x10, 24, 3),
-> +       PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x10, 0x10, 21, 3),
-> +       PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x10, 0x10, 15, 3),
-> +       PIN_FIELD_BASE(28, 28, IOCFG_RT_BASE, 0x10, 0x10, 27, 3),
-> +       PIN_FIELD_BASE(29, 29, IOCFG_RT_BASE, 0x20, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x20, 0x10, 9, 3),
-> +       PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x20, 0x10, 6, 3),
-> +       PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x20, 0x10, 3, 3),
-> +       PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x00, 0x10, 12, 3),
-> +       PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x00, 0x10, 24, 3),
-> +       PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x00, 0x10, 21, 3),
-> +       PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x00, 0x10, 15, 3),
-> +       PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x00, 0x10, 27, 3),
-> +       PIN_FIELD_BASE(39, 39, IOCFG_RB_BASE, 0x10, 0x10, 27, 3),
-> +       PIN_FIELD_BASE(40, 40, IOCFG_RB_BASE, 0x20, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x10, 0x10, 6, 3),
-> +       PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x20, 0x10, 9, 3),
-> +       PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x20, 0x10, 3, 3),
-> +       PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x20, 0x10, 21, 3),
-> +       PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x20, 0x10, 15, 3),
-> +       PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x00, 0x10, 6, 3),
-> +       PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x00, 0x10, 3, 3),
-> +       PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x00, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x10, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x10, 0x10, 15, 3),
-> +       PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x10, 0x10, 12, 3),
-> +       PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x10, 0x10, 9, 3),
-> +       PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x10, 0x10, 18, 3),
-> +       PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x00, 0x10, 2, 3),
-> +       PIN_FIELD_BASE(69, 69, IOCFG_TR_BASE, 0x00, 0x10, 3, 3),
-> +       PIN_FIELD_BASE(70, 70, IOCFG_TR_BASE, 0x00, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(71, 71, IOCFG_TR_BASE, 0x10, 0x10, 18, 3),
-> +       PIN_FIELD_BASE(72, 73, IOCFG_TR_BASE, 0x10, 0x10, 12, 3),
-> +       PIN_FIELD_BASE(74, 77, IOCFG_TR_BASE, 0x00, 0x10, 15, 3),
-> +       PIN_FIELD_BASE(78, 79, IOCFG_TR_BASE, 0x00, 0x10, 6, 3),
-> +       PIN_FIELD_BASE(80, 80, IOCFG_TR_BASE, 0x00, 0x10, 27, 3),
-> +       PIN_FIELD_BASE(81, 84, IOCFG_TR_BASE, 0x10, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(85, 85, IOCFG_TR_BASE, 0x00, 0x10, 12, 3),
-> +       PIN_FIELD_BASE(86, 86, IOCFG_TL_BASE, 0x00, 0x10, 3, 3),
-> +       PIN_FIELD_BASE(87, 87, IOCFG_TL_BASE, 0x00, 0x10, 0, 3),
-> +       PIN_FIELD_BASE(88, 88, IOCFG_TL_BASE, 0x10, 0x10, 12, 3),
-> +       PIN_FIELD_BASE(89, 90, IOCFG_TL_BASE, 0x10, 0x10, 6, 3),
-> +       PIN_FIELD_BASE(91, 94, IOCFG_TL_BASE, 0x00, 0x10, 12, 3),
-> +       PIN_FIELD_BASE(95, 96, IOCFG_TL_BASE, 0x00, 0x10, 6, 3),
-> +       PIN_FIELD_BASE(97, 98, IOCFG_TL_BASE, 0x00, 0x10, 24, 3),
-> +       PIN_FIELD_BASE(99, 100, IOCFG_TL_BASE, 0x10, 0x10, 2, 3),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_pupd_range[] = {
-> +       PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x60, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x30, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x40, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x60, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x30, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x60, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x60, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x40, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x40, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x40, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x40, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x40, 0x10, 19, 1),
-> +       PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x40, 0x10, 23, 1),
-> +       PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x40, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x40, 0x10, 21, 1),
-> +       PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x30, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x30, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x30, 0x10, 7, 1),
-> +       PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x30, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x30, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x60, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x60, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x60, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x60, 0x10, 20, 1),
-> +       PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x60, 0x10, 26, 1),
-> +       PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x60, 0x10, 24, 1),
-> +       PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x40, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x40, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x40, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x40, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x60, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x60, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x60, 0x10, 13, 1),
-> +       PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x60, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x40, 0x10, 2, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_r0_range[] = {
-> +       PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x70, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x40, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x50, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x70, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x40, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x70, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x70, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x50, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x50, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x50, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x50, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x50, 0x10, 19, 1),
-> +       PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x50, 0x10, 23, 1),
-> +       PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x50, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x50, 0x10, 21, 1),
-> +       PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x40, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x40, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x40, 0x10, 7, 1),
-> +       PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x40, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x40, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x70, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x70, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x70, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x70, 0x10, 20, 1),
-> +       PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x70, 0x10, 26, 1),
-> +       PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x70, 0x10, 24, 1),
-> +       PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x50, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x50, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x50, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x50, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x70, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x70, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x70, 0x10, 13, 1),
-> +       PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x70, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x50, 0x10, 2, 1),
-> +};
-> +
-> +static const struct mtk_pin_field_calc mt7986_pin_r1_range[] = {
-> +       PIN_FIELD_BASE(0, 0, IOCFG_RB_BASE, 0x80, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(1, 2, IOCFG_LT_BASE, 0x50, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(3, 4, IOCFG_LB_BASE, 0x60, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(5, 6, IOCFG_RB_BASE, 0x80, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(7, 10, IOCFG_LT_BASE, 0x50, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(11, 14, IOCFG_RB_BASE, 0x80, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(15, 20, IOCFG_RB_BASE, 0x80, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(21, 23, IOCFG_RT_BASE, 0x60, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(24, 24, IOCFG_RT_BASE, 0x60, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(25, 25, IOCFG_RT_BASE, 0x60, 0x10, 17, 1),
-> +       PIN_FIELD_BASE(26, 27, IOCFG_RT_BASE, 0x60, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(28, 29, IOCFG_RT_BASE, 0x60, 0x10, 19, 1),
-> +       PIN_FIELD_BASE(30, 30, IOCFG_RT_BASE, 0x60, 0x10, 23, 1),
-> +       PIN_FIELD_BASE(31, 31, IOCFG_RT_BASE, 0x60, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(32, 32, IOCFG_RT_BASE, 0x60, 0x10, 21, 1),
-> +       PIN_FIELD_BASE(33, 33, IOCFG_LT_BASE, 0x50, 0x10, 4, 1),
-> +       PIN_FIELD_BASE(34, 34, IOCFG_LT_BASE, 0x50, 0x10, 8, 1),
-> +       PIN_FIELD_BASE(35, 35, IOCFG_LT_BASE, 0x50, 0x10, 7, 1),
-> +       PIN_FIELD_BASE(36, 37, IOCFG_LT_BASE, 0x50, 0x10, 5, 1),
-> +       PIN_FIELD_BASE(38, 38, IOCFG_LT_BASE, 0x50, 0x10, 9, 1),
-> +       PIN_FIELD_BASE(39, 40, IOCFG_RB_BASE, 0x80, 0x10, 18, 1),
-> +       PIN_FIELD_BASE(41, 41, IOCFG_RB_BASE, 0x80, 0x10, 12, 1),
-> +       PIN_FIELD_BASE(42, 43, IOCFG_RB_BASE, 0x80, 0x10, 22, 1),
-> +       PIN_FIELD_BASE(44, 45, IOCFG_RB_BASE, 0x80, 0x10, 20, 1),
-> +       PIN_FIELD_BASE(46, 47, IOCFG_RB_BASE, 0x80, 0x10, 26, 1),
-> +       PIN_FIELD_BASE(48, 49, IOCFG_RB_BASE, 0x80, 0x10, 24, 1),
-> +       PIN_FIELD_BASE(50, 57, IOCFG_RT_BASE, 0x60, 0x10, 2, 1),
-> +       PIN_FIELD_BASE(58, 58, IOCFG_RT_BASE, 0x60, 0x10, 1, 1),
-> +       PIN_FIELD_BASE(59, 59, IOCFG_RT_BASE, 0x60, 0x10, 0, 1),
-> +       PIN_FIELD_BASE(60, 61, IOCFG_RT_BASE, 0x60, 0x10, 10, 1),
-> +       PIN_FIELD_BASE(62, 62, IOCFG_RB_BASE, 0x80, 0x10, 15, 1),
-> +       PIN_FIELD_BASE(63, 63, IOCFG_RB_BASE, 0x80, 0x10, 14, 1),
-> +       PIN_FIELD_BASE(64, 64, IOCFG_RB_BASE, 0x80, 0x10, 13, 1),
-> +       PIN_FIELD_BASE(65, 65, IOCFG_RB_BASE, 0x80, 0x10, 16, 1),
-> +       PIN_FIELD_BASE(66, 68, IOCFG_LB_BASE, 0x60, 0x10, 2, 1),
-> +};
-> +
-> +static const struct mtk_pin_reg_calc mt7986_reg_cals[] = {
-> +       [PINCTRL_PIN_REG_MODE] = MTK_RANGE(mt7986_pin_mode_range),
-> +       [PINCTRL_PIN_REG_DIR] = MTK_RANGE(mt7986_pin_dir_range),
-> +       [PINCTRL_PIN_REG_DI] = MTK_RANGE(mt7986_pin_di_range),
-> +       [PINCTRL_PIN_REG_DO] = MTK_RANGE(mt7986_pin_do_range),
-> +       [PINCTRL_PIN_REG_SMT] = MTK_RANGE(mt7986_pin_smt_range),
-> +       [PINCTRL_PIN_REG_IES] = MTK_RANGE(mt7986_pin_ies_range),
-> +       [PINCTRL_PIN_REG_DRV] = MTK_RANGE(mt7986_pin_drv_range),
-> +       [PINCTRL_PIN_REG_PU] = MTK_RANGE(mt7986_pin_pu_range),
-> +       [PINCTRL_PIN_REG_PD] = MTK_RANGE(mt7986_pin_pd_range),
-> +       [PINCTRL_PIN_REG_PUPD] = MTK_RANGE(mt7986_pin_pupd_range),
-> +       [PINCTRL_PIN_REG_R0] = MTK_RANGE(mt7986_pin_r0_range),
-> +       [PINCTRL_PIN_REG_R1] = MTK_RANGE(mt7986_pin_r1_range),
-> +};
-> +
-> +static const struct mtk_pin_desc mt7986a_pins[] = {
-> +       MT7986_PIN(0, "SYS_WATCHDOG"),
-> +       MT7986_PIN(1, "WF2G_LED"),
-> +       MT7986_PIN(2, "WF5G_LED"),
-> +       MT7986_PIN(3, "I2C_SCL"),
-> +       MT7986_PIN(4, "I2C_SDA"),
-> +       MT7986_PIN(5, "GPIO_0"),
-> +       MT7986_PIN(6, "GPIO_1"),
-> +       MT7986_PIN(7, "GPIO_2"),
-> +       MT7986_PIN(8, "GPIO_3"),
-> +       MT7986_PIN(9, "GPIO_4"),
-> +       MT7986_PIN(10, "GPIO_5"),
-> +       MT7986_PIN(11, "GPIO_6"),
-> +       MT7986_PIN(12, "GPIO_7"),
-> +       MT7986_PIN(13, "GPIO_8"),
-> +       MT7986_PIN(14, "GPIO_9"),
-> +       MT7986_PIN(15, "GPIO_10"),
-> +       MT7986_PIN(16, "GPIO_11"),
-> +       MT7986_PIN(17, "GPIO_12"),
-> +       MT7986_PIN(18, "GPIO_13"),
-> +       MT7986_PIN(19, "GPIO_14"),
-> +       MT7986_PIN(20, "GPIO_15"),
-> +       MT7986_PIN(21, "PWM0"),
-> +       MT7986_PIN(22, "PWM1"),
-> +       MT7986_PIN(23, "SPI0_CLK"),
-> +       MT7986_PIN(24, "SPI0_MOSI"),
-> +       MT7986_PIN(25, "SPI0_MISO"),
-> +       MT7986_PIN(26, "SPI0_CS"),
-> +       MT7986_PIN(27, "SPI0_HOLD"),
-> +       MT7986_PIN(28, "SPI0_WP"),
-> +       MT7986_PIN(29, "SPI1_CLK"),
-> +       MT7986_PIN(30, "SPI1_MOSI"),
-> +       MT7986_PIN(31, "SPI1_MISO"),
-> +       MT7986_PIN(32, "SPI1_CS"),
-> +       MT7986_PIN(33, "SPI2_CLK"),
-> +       MT7986_PIN(34, "SPI2_MOSI"),
-> +       MT7986_PIN(35, "SPI2_MISO"),
-> +       MT7986_PIN(36, "SPI2_CS"),
-> +       MT7986_PIN(37, "SPI2_HOLD"),
-> +       MT7986_PIN(38, "SPI2_WP"),
-> +       MT7986_PIN(39, "UART0_RXD"),
-> +       MT7986_PIN(40, "UART0_TXD"),
-> +       MT7986_PIN(41, "PCIE_PERESET_N"),
-> +       MT7986_PIN(42, "UART1_RXD"),
-> +       MT7986_PIN(43, "UART1_TXD"),
-> +       MT7986_PIN(44, "UART1_CTS"),
-> +       MT7986_PIN(45, "UART1_RTS"),
-> +       MT7986_PIN(46, "UART2_RXD"),
-> +       MT7986_PIN(47, "UART2_TXD"),
-> +       MT7986_PIN(48, "UART2_CTS"),
-> +       MT7986_PIN(49, "UART2_RTS"),
-> +       MT7986_PIN(50, "EMMC_DATA_0"),
-> +       MT7986_PIN(51, "EMMC_DATA_1"),
-> +       MT7986_PIN(52, "EMMC_DATA_2"),
-> +       MT7986_PIN(53, "EMMC_DATA_3"),
-> +       MT7986_PIN(54, "EMMC_DATA_4"),
-> +       MT7986_PIN(55, "EMMC_DATA_5"),
-> +       MT7986_PIN(56, "EMMC_DATA_6"),
-> +       MT7986_PIN(57, "EMMC_DATA_7"),
-> +       MT7986_PIN(58, "EMMC_CMD"),
-> +       MT7986_PIN(59, "EMMC_CK"),
-> +       MT7986_PIN(60, "EMMC_DSL"),
-> +       MT7986_PIN(61, "EMMC_RSTB"),
-> +       MT7986_PIN(62, "PCM_DTX"),
-> +       MT7986_PIN(63, "PCM_DRX"),
-> +       MT7986_PIN(64, "PCM_CLK"),
-> +       MT7986_PIN(65, "PCM_FS"),
-> +       MT7986_PIN(66, "MT7531_INT"),
-> +       MT7986_PIN(67, "SMI_MDC"),
-> +       MT7986_PIN(68, "SMI_MDIO"),
-> +       MT7986_PIN(69, "WF0_DIG_RESETB"),
-> +       MT7986_PIN(70, "WF0_CBA_RESETB"),
-> +       MT7986_PIN(71, "WF0_XO_REQ"),
-> +       MT7986_PIN(72, "WF0_TOP_CLK"),
-> +       MT7986_PIN(73, "WF0_TOP_DATA"),
-> +       MT7986_PIN(74, "WF0_HB1"),
-> +       MT7986_PIN(75, "WF0_HB2"),
-> +       MT7986_PIN(76, "WF0_HB3"),
-> +       MT7986_PIN(77, "WF0_HB4"),
-> +       MT7986_PIN(78, "WF0_HB0"),
-> +       MT7986_PIN(79, "WF0_HB0_B"),
-> +       MT7986_PIN(80, "WF0_HB5"),
-> +       MT7986_PIN(81, "WF0_HB6"),
-> +       MT7986_PIN(82, "WF0_HB7"),
-> +       MT7986_PIN(83, "WF0_HB8"),
-> +       MT7986_PIN(84, "WF0_HB9"),
-> +       MT7986_PIN(85, "WF0_HB10"),
-> +       MT7986_PIN(86, "WF1_DIG_RESETB"),
-> +       MT7986_PIN(87, "WF1_CBA_RESETB"),
-> +       MT7986_PIN(88, "WF1_XO_REQ"),
-> +       MT7986_PIN(89, "WF1_TOP_CLK"),
-> +       MT7986_PIN(90, "WF1_TOP_DATA"),
-> +       MT7986_PIN(91, "WF1_HB1"),
-> +       MT7986_PIN(92, "WF1_HB2"),
-> +       MT7986_PIN(93, "WF1_HB3"),
-> +       MT7986_PIN(94, "WF1_HB4"),
-> +       MT7986_PIN(95, "WF1_HB0"),
-> +       MT7986_PIN(96, "WF1_HB0_B"),
-> +       MT7986_PIN(97, "WF1_HB5"),
-> +       MT7986_PIN(98, "WF1_HB6"),
-> +       MT7986_PIN(99, "WF1_HB7"),
-> +       MT7986_PIN(100, "WF1_HB8"),
-> +};
-> +
-> +static const struct mtk_pin_desc mt7986b_pins[] = {
-> +       MT7986_PIN(0, "SYS_WATCHDOG"),
-> +       MT7986_PIN(1, "WF2G_LED"),
-> +       MT7986_PIN(2, "WF5G_LED"),
-> +       MT7986_PIN(3, "I2C_SCL"),
-> +       MT7986_PIN(4, "I2C_SDA"),
-> +       MT7986_PIN(5, "GPIO_0"),
-> +       MT7986_PIN(6, "GPIO_1"),
-> +       MT7986_PIN(7, "GPIO_2"),
-> +       MT7986_PIN(8, "GPIO_3"),
-> +       MT7986_PIN(9, "GPIO_4"),
-> +       MT7986_PIN(10, "GPIO_5"),
-> +       MT7986_PIN(11, "GPIO_6"),
-> +       MT7986_PIN(12, "GPIO_7"),
-> +       MT7986_PIN(13, "GPIO_8"),
-> +       MT7986_PIN(14, "GPIO_9"),
-> +       MT7986_PIN(15, "GPIO_10"),
-> +       MT7986_PIN(16, "GPIO_11"),
-> +       MT7986_PIN(17, "GPIO_12"),
-> +       MT7986_PIN(18, "GPIO_13"),
-> +       MT7986_PIN(19, "GPIO_14"),
-> +       MT7986_PIN(20, "GPIO_15"),
-> +       MT7986_PIN(21, "PWM0"),
-> +       MT7986_PIN(22, "PWM1"),
-> +       MT7986_PIN(23, "SPI0_CLK"),
-> +       MT7986_PIN(24, "SPI0_MOSI"),
-> +       MT7986_PIN(25, "SPI0_MISO"),
-> +       MT7986_PIN(26, "SPI0_CS"),
-> +       MT7986_PIN(27, "SPI0_HOLD"),
-> +       MT7986_PIN(28, "SPI0_WP"),
-> +       MT7986_PIN(29, "SPI1_CLK"),
-> +       MT7986_PIN(30, "SPI1_MOSI"),
-> +       MT7986_PIN(31, "SPI1_MISO"),
-> +       MT7986_PIN(32, "SPI1_CS"),
-> +       MT7986_PIN(33, "SPI2_CLK"),
-> +       MT7986_PIN(34, "SPI2_MOSI"),
-> +       MT7986_PIN(35, "SPI2_MISO"),
-> +       MT7986_PIN(36, "SPI2_CS"),
-> +       MT7986_PIN(37, "SPI2_HOLD"),
-> +       MT7986_PIN(38, "SPI2_WP"),
-> +       MT7986_PIN(39, "UART0_RXD"),
-> +       MT7986_PIN(40, "UART0_TXD"),
-> +       MT7986_NOT_BALLOUT_PIN(41),
-> +       MT7986_NOT_BALLOUT_PIN(42),
-> +       MT7986_NOT_BALLOUT_PIN(43),
-> +       MT7986_NOT_BALLOUT_PIN(44),
-> +       MT7986_NOT_BALLOUT_PIN(45),
-> +       MT7986_NOT_BALLOUT_PIN(46),
-> +       MT7986_NOT_BALLOUT_PIN(47),
-> +       MT7986_NOT_BALLOUT_PIN(48),
-> +       MT7986_NOT_BALLOUT_PIN(49),
-> +       MT7986_NOT_BALLOUT_PIN(50),
-> +       MT7986_NOT_BALLOUT_PIN(51),
-> +       MT7986_NOT_BALLOUT_PIN(52),
-> +       MT7986_NOT_BALLOUT_PIN(53),
-> +       MT7986_NOT_BALLOUT_PIN(54),
-> +       MT7986_NOT_BALLOUT_PIN(55),
-> +       MT7986_NOT_BALLOUT_PIN(56),
-> +       MT7986_NOT_BALLOUT_PIN(57),
-> +       MT7986_NOT_BALLOUT_PIN(58),
-> +       MT7986_NOT_BALLOUT_PIN(59),
-> +       MT7986_NOT_BALLOUT_PIN(60),
-> +       MT7986_NOT_BALLOUT_PIN(61),
-> +       MT7986_NOT_BALLOUT_PIN(62),
-> +       MT7986_NOT_BALLOUT_PIN(63),
-> +       MT7986_NOT_BALLOUT_PIN(64),
-> +       MT7986_NOT_BALLOUT_PIN(65),
-> +       MT7986_PIN(66, "MT7531_INT"),
-> +       MT7986_PIN(67, "SMI_MDC"),
-> +       MT7986_PIN(68, "SMI_MDIO"),
-> +       MT7986_PIN(69, "WF0_DIG_RESETB"),
-> +       MT7986_PIN(70, "WF0_CBA_RESETB"),
-> +       MT7986_PIN(71, "WF0_XO_REQ"),
-> +       MT7986_PIN(72, "WF0_TOP_CLK"),
-> +       MT7986_PIN(73, "WF0_TOP_DATA"),
-> +       MT7986_PIN(74, "WF0_HB1"),
-> +       MT7986_PIN(75, "WF0_HB2"),
-> +       MT7986_PIN(76, "WF0_HB3"),
-> +       MT7986_PIN(77, "WF0_HB4"),
-> +       MT7986_PIN(78, "WF0_HB0"),
-> +       MT7986_PIN(79, "WF0_HB0_B"),
-> +       MT7986_PIN(80, "WF0_HB5"),
-> +       MT7986_PIN(81, "WF0_HB6"),
-> +       MT7986_PIN(82, "WF0_HB7"),
-> +       MT7986_PIN(83, "WF0_HB8"),
-> +       MT7986_PIN(84, "WF0_HB9"),
-> +       MT7986_PIN(85, "WF0_HB10"),
-> +       MT7986_PIN(86, "WF1_DIG_RESETB"),
-> +       MT7986_PIN(87, "WF1_CBA_RESETB"),
-> +       MT7986_PIN(88, "WF1_XO_REQ"),
-> +       MT7986_PIN(89, "WF1_TOP_CLK"),
-> +       MT7986_PIN(90, "WF1_TOP_DATA"),
-> +       MT7986_PIN(91, "WF1_HB1"),
-> +       MT7986_PIN(92, "WF1_HB2"),
-> +       MT7986_PIN(93, "WF1_HB3"),
-> +       MT7986_PIN(94, "WF1_HB4"),
-> +       MT7986_PIN(95, "WF1_HB0"),
-> +       MT7986_PIN(96, "WF1_HB0_B"),
-> +       MT7986_PIN(97, "WF1_HB5"),
-> +       MT7986_PIN(98, "WF1_HB6"),
-> +       MT7986_PIN(99, "WF1_HB7"),
-> +       MT7986_PIN(100, "WF1_HB8"),
-> +};
-> +
-> +/* List all groups consisting of these pins dedicated to the enablement of
-> + * certain hardware block and the corresponding mode for all of the pins.
-> + * The hardware probably has multiple combinations of these pinouts.
-> + */
-> +
-> +static int mt7986_watchdog_pins[] = { 0, };
-> +static int mt7986_watchdog_funcs[] = { 1, };
-> +
-> +static int mt7986_wifi_led_pins[] = { 1, 2, };
-> +static int mt7986_wifi_led_funcs[] = { 1, 1, };
-> +
-> +static int mt7986_i2c_pins[] = { 3, 4, };
-> +static int mt7986_i2c_funcs[] = { 1, 1, };
-> +
-> +static int mt7986_uart1_0_pins[] = { 7, 8, 9, 10, };
-> +static int mt7986_uart1_0_funcs[] = { 3, 3, 3, 3, };
-> +
-> +static int mt7986_spi1_0_pins[] = { 11, 12, 13, 14, };
-> +static int mt7986_spi1_0_funcs[] = { 3, 3, 3, 3, };
-> +
-> +static int mt7986_pwm1_1_pins[] = { 20, };
-> +static int mt7986_pwm1_1_funcs[] = { 2, };
-> +
-> +static int mt7986_pwm0_pins[] = { 21, };
-> +static int mt7986_pwm0_funcs[] = { 1, };
-> +
-> +static int mt7986_pwm1_0_pins[] = { 22, };
-> +static int mt7986_pwm1_0_funcs[] = { 1, };
-> +
-> +static int mt7986_emmc_45_pins[] = {
-> +       22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, };
-> +static int mt7986_emmc_45_funcs[] = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, };
-> +
-> +static int mt7986_snfi_pins[] = { 23, 24, 25, 26, 27, 28, };
-> +static int mt7986_snfi_funcs[] = { 1, 1, 1, 1, 1, 1, };
-> +
-> +static int mt7986_spi1_1_pins[] = { 23, 24, 25, 26, };
-> +static int mt7986_spi1_1_funcs[] = { 3, 3, 3, 3, };
-> +
-> +static int mt7986_uart1_1_pins[] = { 23, 24, 25, 26, };
-> +static int mt7986_uart1_1_funcs[] = { 4, 4, 4, 4, };
-> +
-> +static int mt7986_spi1_2_pins[] = { 29, 30, 31, 32, };
-> +static int mt7986_spi1_2_funcs[] = { 1, 1, 1, 1, };
-> +
-> +static int mt7986_uart1_2_pins[] = { 29, 30, 31, 32, };
-> +static int mt7986_uart1_2_funcs[] = { 3, 3, 3, 3, };
-> +
-> +static int mt7986_uart2_0_pins[] = { 29, 30, 31, 32, };
-> +static int mt7986_uart2_0_funcs[] = { 4, 4, 4, 4, };
-> +
-> +static int mt7986_spi0_pins[] = { 33, 34, 35, 36, };
-> +static int mt7986_spi0_funcs[] = { 1, 1, 1, 1, };
-> +
-> +static int mt7986_spi0_wp_hold_pins[] = { 37, 38, };
-> +static int mt7986_spi0_wp_hold_funcs[] = { 1, 1, };
-> +
-> +static int mt7986_uart2_1_pins[] = { 33, 34, 35, 36, };
-> +static int mt7986_uart2_1_funcs[] = { 3, 3, 3, 3, };
-> +
-> +static int mt7986_uart1_3_rx_tx_pins[] = { 35, 36, };
-> +static int mt7986_uart1_3_rx_tx_funcs[] = { 2, 2, };
-> +
-> +static int mt7986_uart1_3_cts_rts_pins[] = { 37, 38, };
-> +static int mt7986_uart1_3_cts_rts_funcs[] = { 2, 2, };
-> +
-> +static int mt7986_spi1_3_pins[] = { 33, 34, 35, 36, };
-> +static int mt7986_spi1_3_funcs[] = { 4, 4, 4, 4, };
-> +
-> +static int mt7986_uart0_pins[] = { 39, 40, };
-> +static int mt7986_uart0_funcs[] = { 1, 1, };
-> +
-> +static int mt7986_pcie_reset_pins[] = { 41, };
-> +static int mt7986_pcie_reset_funcs[] = { 1, };
-> +
-> +static int mt7986_uart1_pins[] = { 42, 43, 44, 45, };
-> +static int mt7986_uart1_funcs[] = { 1, 1, 1, 1, };
-> +
-> +static int mt7986_uart2_pins[] = { 46, 47, 48, 49, };
-> +static int mt7986_uart2_funcs[] = { 1, 1, 1, 1, };
-> +
-> +static int mt7986_emmc_51_pins[] = {
-> +       50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, };
-> +static int mt7986_emmc_51_funcs[] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
-> +
-> +static int mt7986_pcm_pins[] = { 62, 63, 64, 65, };
-> +static int mt7986_pcm_funcs[] = { 1, 1, 1, 1, };
-> +
-> +static int mt7986_i2s_pins[] = { 62, 63, 64, 65, };
-> +static int mt7986_i2s_funcs[] = { 1, 1, 1, 1, };
-> +
-> +static int mt7986_switch_int_pins[] = { 66, };
-> +static int mt7986_switch_int_funcs[] = { 1, };
-> +
-> +static int mt7986_mdc_mdio_pins[] = { 67, 68, };
-> +static int mt7986_mdc_mdio_funcs[] = { 1, 1, };
-> +
-> +static int mt7986_wf_2g_pins[] = {74, 75, 76, 77, 78, 79, 80, 81, 82, 83, };
-> +static int mt7986_wf_2g_funcs[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
-> +
-> +static int mt7986_wf_5g_pins[] = {91, 92, 93, 94, 95, 96, 97, 98, 99, 100, };
-> +static int mt7986_wf_5g_funcs[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, };
-> +
-> +static int mt7986_wf_dbdc_pins[] = {
-> +       74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, };
-> +static int mt7986_wf_dbdc_funcs[] = {
-> +       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, };
-> +
-> +static int mt7986_pcie_clk_pins[] = { 9, };
-> +static int mt7986_pcie_clk_funcs[] = { 1, };
-> +
-> +static int mt7986_pcie_wake_pins[] = { 10, };
-> +static int mt7986_pcie_wake_funcs[] = { 1, };
-> +
-> +static const struct group_desc mt7986_groups[] = {
-> +       PINCTRL_PIN_GROUP("watchdog", mt7986_watchdog),
-> +       PINCTRL_PIN_GROUP("wifi_led", mt7986_wifi_led),
-> +       PINCTRL_PIN_GROUP("i2c", mt7986_i2c),
-> +       PINCTRL_PIN_GROUP("uart1_0", mt7986_uart1_0),
-> +       PINCTRL_PIN_GROUP("pcie_clk", mt7986_pcie_clk),
-> +       PINCTRL_PIN_GROUP("pcie_wake", mt7986_pcie_wake),
-> +       PINCTRL_PIN_GROUP("spi1_0", mt7986_spi1_0),
-> +       PINCTRL_PIN_GROUP("pwm1_1", mt7986_pwm1_1),
-> +       PINCTRL_PIN_GROUP("pwm0", mt7986_pwm0),
-> +       PINCTRL_PIN_GROUP("pwm1_0", mt7986_pwm1_0),
-> +       PINCTRL_PIN_GROUP("emmc_45", mt7986_emmc_45),
-> +       PINCTRL_PIN_GROUP("snfi", mt7986_snfi),
-> +       PINCTRL_PIN_GROUP("spi1_1", mt7986_spi1_1),
-> +       PINCTRL_PIN_GROUP("uart1_1", mt7986_uart1_1),
-> +       PINCTRL_PIN_GROUP("spi1_2", mt7986_spi1_2),
-> +       PINCTRL_PIN_GROUP("uart1_2", mt7986_uart1_2),
-> +       PINCTRL_PIN_GROUP("uart2_0", mt7986_uart2_0),
-> +       PINCTRL_PIN_GROUP("spi0", mt7986_spi0),
-> +       PINCTRL_PIN_GROUP("spi0_wp_hold", mt7986_spi0_wp_hold),
-> +       PINCTRL_PIN_GROUP("uart2_1", mt7986_uart2_1),
-> +       PINCTRL_PIN_GROUP("uart1_3_rx_tx", mt7986_uart1_3_rx_tx),
-> +       PINCTRL_PIN_GROUP("uart1_3_cts_rts", mt7986_uart1_3_cts_rts),
-> +       PINCTRL_PIN_GROUP("spi1_3", mt7986_spi1_3),
-> +       PINCTRL_PIN_GROUP("uart0", mt7986_uart0),
-> +       PINCTRL_PIN_GROUP("switch_int", mt7986_switch_int),
-> +       PINCTRL_PIN_GROUP("mdc_mdio", mt7986_mdc_mdio),
-> +       PINCTRL_PIN_GROUP("pcie_pereset", mt7986_pcie_reset),
-> +       PINCTRL_PIN_GROUP("uart1", mt7986_uart1),
-> +       PINCTRL_PIN_GROUP("uart2", mt7986_uart2),
-> +       PINCTRL_PIN_GROUP("emmc_51", mt7986_emmc_51),
-> +       PINCTRL_PIN_GROUP("pcm", mt7986_pcm),
-> +       PINCTRL_PIN_GROUP("i2s", mt7986_i2s),
-> +       PINCTRL_PIN_GROUP("wf_2g", mt7986_wf_2g),
-> +       PINCTRL_PIN_GROUP("wf_5g", mt7986_wf_5g),
-> +       PINCTRL_PIN_GROUP("wf_dbdc", mt7986_wf_dbdc),
-> +};
-> +
-> +/* Joint those groups owning the same capability in user point of view which
-> + * allows that people tend to use through the device tree.
-> + */
-> +
-> +static const char *mt7986_audio_groups[] = { "pcm", "i2s" };
-> +static const char *mt7986_emmc_groups[] = {
-> +       "emmc_45", "emmc_51", };
-> +static const char *mt7986_ethernet_groups[] = {
-> +       "switch_int", "mdc_mdio", };
-> +static const char *mt7986_i2c_groups[] = { "i2c", };
-> +static const char *mt7986_led_groups[] = { "wifi_led", };
-> +static const char *mt7986_flash_groups[] = { "snfi", };
-> +static const char *mt7986_pcie_groups[] = {
-> +       "pcie_clk", "pcie_wake", "pcie_pereset" };
-> +static const char *mt7986_pwm_groups[] = { "pwm0", "pwm1_0", "pwm1_1", };
-> +static const char *mt7986_spi_groups[] = {
-> +       "spi0", "spi0_wp_hold", "spi1_0", "spi1_1", "spi1_2", "spi1_3", };
-> +static const char *mt7986_uart_groups[] = {
-> +       "uart1_0", "uart1_1", "uart1_2", "uart1_3_rx_tx", "uart1_3_cts_rts",
-> +       "uart2_0", "uart2_1", "uart0", "uart1", "uart2",
-> +};
-> +static const char *mt7986_wdt_groups[] = { "watchdog", };
-> +static const char *mt7986_wf_groups[] = { "wf_2g", "wf_5g", "wf_dbdc", };
-> +
-> +static const struct function_desc mt7986_functions[] = {
-> +       {"audio", mt7986_audio_groups, ARRAY_SIZE(mt7986_audio_groups)},
-> +       {"emmc", mt7986_emmc_groups, ARRAY_SIZE(mt7986_emmc_groups)},
-> +       {"eth", mt7986_ethernet_groups, ARRAY_SIZE(mt7986_ethernet_groups)},
-> +       {"i2c", mt7986_i2c_groups, ARRAY_SIZE(mt7986_i2c_groups)},
-> +       {"led", mt7986_led_groups, ARRAY_SIZE(mt7986_led_groups)},
-> +       {"flash", mt7986_flash_groups, ARRAY_SIZE(mt7986_flash_groups)},
-> +       {"pcie", mt7986_pcie_groups, ARRAY_SIZE(mt7986_pcie_groups)},
-> +       {"pwm", mt7986_pwm_groups, ARRAY_SIZE(mt7986_pwm_groups)},
-> +       {"spi", mt7986_spi_groups, ARRAY_SIZE(mt7986_spi_groups)},
-> +       {"uart", mt7986_uart_groups, ARRAY_SIZE(mt7986_uart_groups)},
-> +       {"watchdog", mt7986_wdt_groups, ARRAY_SIZE(mt7986_wdt_groups)},
-> +       {"wifi", mt7986_wf_groups, ARRAY_SIZE(mt7986_wf_groups)},
-> +};
-> +
-> +static const struct mtk_eint_hw mt7986a_eint_hw = {
-> +       .port_mask = 7,
-> +       .ports = 7,
-> +       .ap_num = ARRAY_SIZE(mt7986a_pins),
-> +       .db_cnt = 16,
-> +};
-> +
-> +static const struct mtk_eint_hw mt7986b_eint_hw = {
-> +       .port_mask = 7,
-> +       .ports = 7,
-> +       .ap_num = ARRAY_SIZE(mt7986b_pins),
-> +       .db_cnt = 16,
-> +};
-> +
-> +static struct mtk_pin_soc mt7986a_data = {
-> +       .reg_cal = mt7986_reg_cals,
-> +       .pins = mt7986a_pins,
-> +       .npins = ARRAY_SIZE(mt7986a_pins),
-> +       .grps = mt7986_groups,
-> +       .ngrps = ARRAY_SIZE(mt7986_groups),
-> +       .funcs = mt7986_functions,
-> +       .nfuncs = ARRAY_SIZE(mt7986_functions),
-> +       .eint_hw = &mt7986a_eint_hw,
-> +       .gpio_m = 0,
-> +       .ies_present = false,
-> +       .base_names = mt7986_pinctrl_register_base_names,
-> +       .nbase_names = ARRAY_SIZE(mt7986_pinctrl_register_base_names),
-> +       .bias_set_combo = mtk_pinconf_bias_set_combo,
-> +       .bias_get_combo = mtk_pinconf_bias_get_combo,
-> +       .drive_set = mtk_pinconf_drive_set_rev1,
-> +       .drive_get = mtk_pinconf_drive_get_rev1,
-> +       .adv_pull_get = mtk_pinconf_adv_pull_get,
-> +       .adv_pull_set = mtk_pinconf_adv_pull_set,
-> +};
-> +
-> +static struct mtk_pin_soc mt7986b_data = {
-> +       .reg_cal = mt7986_reg_cals,
-> +       .pins = mt7986b_pins,
-> +       .npins = ARRAY_SIZE(mt7986b_pins),
-> +       .grps = mt7986_groups,
-> +       .ngrps = ARRAY_SIZE(mt7986_groups),
-> +       .funcs = mt7986_functions,
-> +       .nfuncs = ARRAY_SIZE(mt7986_functions),
-> +       .eint_hw = &mt7986b_eint_hw,
-> +       .gpio_m = 0,
-> +       .ies_present = false,
-> +       .base_names = mt7986_pinctrl_register_base_names,
-> +       .nbase_names = ARRAY_SIZE(mt7986_pinctrl_register_base_names),
-> +       .bias_set_combo = mtk_pinconf_bias_set_combo,
-> +       .bias_get_combo = mtk_pinconf_bias_get_combo,
-> +       .drive_set = mtk_pinconf_drive_set_rev1,
-> +       .drive_get = mtk_pinconf_drive_get_rev1,
-> +       .adv_pull_get = mtk_pinconf_adv_pull_get,
-> +       .adv_pull_set = mtk_pinconf_adv_pull_set,
-> +};
-> +
-> +static const struct of_device_id mt7986a_pinctrl_of_match[] = {
-> +       {.compatible = "mediatek,mt7986a-pinctrl",},
-> +       {}
-> +};
-> +
-> +static const struct of_device_id mt7986b_pinctrl_of_match[] = {
-> +       {.compatible = "mediatek,mt7986b-pinctrl",},
-> +       {}
-> +};
-> +
-> +static int mt7986a_pinctrl_probe(struct platform_device *pdev)
-> +{
-> +       return mtk_moore_pinctrl_probe(pdev, &mt7986a_data);
-> +}
-> +
-> +static int mt7986b_pinctrl_probe(struct platform_device *pdev)
-> +{
-> +       return mtk_moore_pinctrl_probe(pdev, &mt7986b_data);
-> +}
-> +
-> +static struct platform_driver mt7986a_pinctrl_driver = {
-> +       .driver = {
-> +               .name = "mt7986a-pinctrl",
-> +               .of_match_table = mt7986a_pinctrl_of_match,
-> +       },
-> +       .probe = mt7986a_pinctrl_probe,
-> +};
-> +
-> +static struct platform_driver mt7986b_pinctrl_driver = {
-> +       .driver = {
-> +               .name = "mt7986b-pinctrl",
-> +               .of_match_table = mt7986b_pinctrl_of_match,
-> +       },
-> +       .probe = mt7986b_pinctrl_probe,
-> +};
-> +
-> +static int __init mt7986a_pinctrl_init(void)
-> +{
-> +       return platform_driver_register(&mt7986a_pinctrl_driver);
-> +}
-> +
-> +static int __init mt7986b_pinctrl_init(void)
-> +{
-> +       return platform_driver_register(&mt7986b_pinctrl_driver);
-> +}
-> +
-> +arch_initcall(mt7986a_pinctrl_init);
-> +arch_initcall(mt7986b_pinctrl_init);
-> --
-> 2.29.2
->
+PART 1: patch 1-5, 8-9 and 13-15
+These are preliminary patches for mt7921s driver to refactor and reuse the
+current mt7921e driver as much as possible.
+
+PART 2: patch 6-7, 10-11
+These are preliminary patches for mt7921s driver to refactor and reuse the
+current mt7663s driver as much as possible.
+
+PART 3: patch 12 and 16-17
+These are specific patches for mt7921s driver and reset mechanism in the
+same framework where mt7921e have been supported. 
+
+The patchset are built and generated against the current mt76 with the
+tag mt76-for-kvalo-2021-10-12 plus the extra pending patches [1] expected to
+be merged to mt76 tree soon to help the review and merge process be easier.
+
+The change list from v1 to v2
+1. rework the whole driver according to the new patches added
+   ("mt76: introduce __mt76_mcu_send_firmware routine"),
+   ("mt76: not accounting the MCU header size in __mt76_mcu_send_firmware for mt7915/21") and
+   ("mt76: sdio: move common code in mt76_sdio module")
+2. drop pci_init.c and sdio_init.c by moving the related logic to pci.c and sdio.c, respectively.
+3. cosmetics the patches like removing unnecessary new line, adding an extra space to fixed_map table and so on ...
+4. fix typo in commit message
+
+The change list from v2 to v3
+1. rebase onto the latest mt76 branch
+2. update per Lorenzo comments on v2
+3. fix scheduling while atomic in mt7921_mac_sta_poll for mt7921s driver
+
+The change list from v3 to v4
+1. change the title of coverletter
+2. fix the git message in patch 14
+3. rebase onto the mt76-for-kvalo-2021-10-12
+
+The change list from v4 to v5
+1. fix endianess warning in mt76_connac_mcu_parse_tx_resource
+2. rework the driver with the the following additional patches
+   a. mt76: sdio: introduce parse_irq callback
+   b. mt76: sdio: export mt76s_alloc_rx_queue and mt76s_alloc_tx routines
+
+[1] The pending patch list prior to add MT7921 SDIO support
+
+dee0a13bcd6e mt76: mt7921: get rid of unused variable in mt7921_mac_tx_free
+d56281936470 mt76: mt7921: get rid of unused variable in mt7921_tx_complete_skb
+ef853b3f16ef mt76: connac: fix possible NULL pointer dereference in mt76_connac_get_phy_mode_v2
+215246fecd9f mt76: mt7915: improve code readability for xmit-queue handler
+9953a1186155 mt76: mt7915: introduce mt76 debugfs sub-dir for ext-phy
+c7cf56ad8385 mt76: rely on phy pointer in mt76_register_debugfs_fops routine signature
+43366b8cef53 mt76: mt7921: add MU EDCA cmd support
+44c7f544a257 mt76: sdio: export mt76s_alloc_rx_queue and mt76s_alloc_tx routines
+
+Lorenzo Bianconi (2):
+  mt76: sdio: move common code in mt76_sdio module
+  mt76: sdio: introduce parse_irq callback
+
+Sean Wang (15):
+  mt76: mt7921: refactor mac.c to be bus independent
+  mt76: mt7921: refactor dma.c to be pcie specific
+  mt76: mt7921: refactor mcu.c to be bus independent
+  mt76: mt7921: refactor init.c to be bus independent
+  mt76: mt7921: add MT7921_COMMON module
+  mt76: connac: move mcu reg access utility routines in mt76_connac_lib
+    module
+  mt76: mt7663s: rely on mcu reg access utility
+  mt76: mt7921: make all event parser reusable between mt7921s and
+    mt7921e
+  mt76: mt7921: use physical addr to unify register access
+  mt76: sdio: extend sdio module to support CONNAC2
+  mt76: connac: extend mcu_get_nic_capability
+  mt76: mt7921: rely on mcu_get_nic_capability
+  mt76: mt7921: refactor mt7921_mcu_send_message
+  mt76: mt7921: introduce mt7921s support
+  mt76: mt7921s: add reset support
+
+ drivers/net/wireless/mediatek/mt76/Makefile   |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |  24 ++
+ .../wireless/mediatek/mt76/mt7615/Makefile    |   2 +-
+ .../net/wireless/mediatek/mt76/mt7615/mcu.c   |  28 --
+ .../wireless/mediatek/mt76/mt7615/mt7615.h    |  18 +-
+ .../net/wireless/mediatek/mt76/mt7615/sdio.c  | 288 ++------------
+ .../wireless/mediatek/mt76/mt7615/sdio_mcu.c  |  11 +-
+ .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  93 +++++
+ .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   2 +
+ .../net/wireless/mediatek/mt76/mt7921/Kconfig |  18 +-
+ .../wireless/mediatek/mt76/mt7921/Makefile    |   8 +-
+ .../wireless/mediatek/mt76/mt7921/debugfs.c   |  18 +-
+ .../net/wireless/mediatek/mt76/mt7921/dma.c   |  38 +-
+ .../wireless/mediatek/mt76/mt7921/eeprom.c    | 101 -----
+ .../net/wireless/mediatek/mt76/mt7921/init.c  |  51 +--
+ .../net/wireless/mediatek/mt76/mt7921/mac.c   | 375 ++----------------
+ .../net/wireless/mediatek/mt76/mt7921/mac.h   |   4 +
+ .../net/wireless/mediatek/mt76/mt7921/main.c  |   8 +
+ .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 135 ++-----
+ .../wireless/mediatek/mt76/mt7921/mt7921.h    | 107 ++++-
+ .../net/wireless/mediatek/mt76/mt7921/pci.c   |  48 ++-
+ .../wireless/mediatek/mt76/mt7921/pci_mac.c   | 348 ++++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/pci_mcu.c   | 115 ++++++
+ .../net/wireless/mediatek/mt76/mt7921/regs.h  |  22 +-
+ .../net/wireless/mediatek/mt76/mt7921/sdio.c  | 317 +++++++++++++++
+ .../wireless/mediatek/mt76/mt7921/sdio_mac.c  | 220 ++++++++++
+ .../wireless/mediatek/mt76/mt7921/sdio_mcu.c  | 135 +++++++
+ drivers/net/wireless/mediatek/mt76/sdio.c     | 282 +++++++++++++
+ .../mediatek/mt76/{mt7615 => }/sdio.h         |  33 +-
+ .../mediatek/mt76/{mt7615 => }/sdio_txrx.c    | 134 ++++---
+ 30 files changed, 1995 insertions(+), 990 deletions(-)
+ delete mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/eeprom.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7921/sdio_mcu.c
+ rename drivers/net/wireless/mediatek/mt76/{mt7615 => }/sdio.h (72%)
+ rename drivers/net/wireless/mediatek/mt76/{mt7615 => }/sdio_txrx.c (67%)
+
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
