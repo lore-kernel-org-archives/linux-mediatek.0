@@ -2,14 +2,14 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 96FF2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 21:31:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F2A1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 21:41:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 62FEE61027
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 21:31:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 62FEE61027
+	by mail.kernel.org (Postfix) with ESMTPS id DBE286113E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 21:41:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DBE286113E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,31 +18,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C6SUAuhu/YYrSNmeOrDyy5BSp1iru9+kceqKnmZeoA0=; b=XVKbN7adb7bJUy
-	9yDNXEZPEIcTGWDfHPTO9ItY/BIWVsnJgaUrDcm6gszrh0jZdwItwYw3gYQecYMDA4p0owRu88nvM
-	bC0Q/4/+P+aL19gwSbC0LHDzlZsP9GYksIC+/veLBPBS9KllyYZVcZ51+iYUZ/LsQzxbJ6y6ZSTxp
-	EAGoExTNg/YihJFhNNvi38RtFTA/Sc8S0KeAqzTm/wc/dluK5gSsii+vAu2ykACfjEHSI/t0nS3dd
-	3t09at9N7tnPrOTwlARWM8Vo3Fsr5TsDib3tfNxiBPqPE2AHqduUT+BH7TQT3x8GXHA5G0W9WQt+F
-	tlZ/y9sG2JGr4dBPZ2IQ==;
+	List-Owner; bh=g92m4eq1I17CY4r3Hdcw3uXnmB6q6ryK1F5km1yaDo4=; b=vK/9VgAM75NtUb
+	bw3aSRCr0uhjZz72DBjEWSJj55dsIsb14c/t1gzzfw5SVTErm0e6k5mncVAwJfIffZgN4aOmTLKan
+	+f0QZNDn1wjeHmjGXVAIUQ6Z55ht65zk9x4YTWMF8Qd9eefXQsgm0NYk6MdOj6ZIsG/vZ3LpvXEzz
+	ityGEbvtH8RgdGfugPbAn2PgPMRq0nt2hI2m0Dk9RABwvwNP51tChXp14gX+7I3ilRYaLqbgiA0WC
+	VpiTE1cA/5bNnPQMDgq0iHISnJI+096AjFsBhGHuXOQ4bfTlhYEk1zYe1ejVtx1lA7G/nWcGGtQrL
+	7tWVDBBYkBQKBRjCqtbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcaDo-00HKqQ-AB; Mon, 18 Oct 2021 21:31:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mcaNG-00HLNh-HI; Mon, 18 Oct 2021 21:40:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcaDl-00HKoG-8S
- for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 21:31:02 +0000
-X-UUID: 1fd8aafbb6aa4117940d8d28459a6a31-20211018
-X-UUID: 1fd8aafbb6aa4117940d8d28459a6a31-20211018
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1mcaND-00HLMm-DW
+ for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 21:40:48 +0000
+X-UUID: ee7443074e9046e59073396c53b536a0-20211018
+X-UUID: ee7443074e9046e59073396c53b536a0-20211018
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 791438977; Mon, 18 Oct 2021 14:30:55 -0700
+ with ESMTP id 549885064; Mon, 18 Oct 2021 14:40:46 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Oct 2021 14:30:53 -0700
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Oct 2021 14:30:51 -0700
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 19 Oct 2021 05:30:53 +0800
+ Frontend Transport; Tue, 19 Oct 2021 05:30:50 +0800
 From: <sean.wang@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
@@ -56,19 +56,18 @@ CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
  <mcchou@chromium.org>, <shawnku@google.com>,
  <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-kernel@vger.kernel.org>, Mark-yw Chen <mark-yw.chen@mediatek.com>
-Subject: [PATCH v2 09/10] mmc: add MT7921 SDIO identifiers for MediaTek
- Bluetooth devices
-Date: Tue, 19 Oct 2021 05:30:20 +0800
-Message-ID: <bd740b5400dfa75d5dff8ab58916a5cd444c306e.1634592181.git.objelf@gmail.com>
+Subject: [PATCH v2 08/10] Bluetooth: btmtksdio: transmit packet according to
+ status TX_EMPTY
+Date: Tue, 19 Oct 2021 05:30:19 +0800
+Message-ID: <3dccea770a3f656dffbae573b6d2b577af0ca324.1634592181.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1634592181.git.objelf@gmail.com>
 References: <cover.1634592181.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_143101_330116_3D31D7EF 
-X-CRM114-Status: UNSURE (   8.31  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211018_144047_494677_A3637A96 
+X-CRM114-Status: GOOD (  15.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,30 +84,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: Mark-yw Chen <mark-yw.chen@mediatek.com>
 
-The MT7961 SDIO identifier for MediaTek Bluetooth devices were being
-referred in the MediaTek Bluetooth driver.
+Each packet should be sent out until the device emits the TX_EMPTY signal
+to the host, that is firmware people suggested to add to meet the actual
+firmware behavior and that is compatible among all the devices.
 
-Co-developed-by: Mark-yw Chen <mark-yw.chen@mediatek.com>
-Signed-off-by: Mark-yw Chen <mark-yw.chen@mediatek.com>
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Mark-yw Chen <mark-yw.chen@mediatek.com>
 ---
- include/linux/mmc/sdio_ids.h | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/bluetooth/btmtksdio.c | 25 +++++++++++++++----------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
 
-diff --git a/include/linux/mmc/sdio_ids.h b/include/linux/mmc/sdio_ids.h
-index a85c9f0bd470..53f0efa0bccf 100644
---- a/include/linux/mmc/sdio_ids.h
-+++ b/include/linux/mmc/sdio_ids.h
-@@ -105,6 +105,7 @@
- #define SDIO_VENDOR_ID_MEDIATEK			0x037a
- #define SDIO_DEVICE_ID_MEDIATEK_MT7663		0x7663
- #define SDIO_DEVICE_ID_MEDIATEK_MT7668		0x7668
-+#define SDIO_DEVICE_ID_MEDIATEK_MT7961		0x7961
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index f816a7cb0a74..3266c5d83cae 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -103,6 +103,7 @@ struct btmtksdio_dev {
+ 	struct work_struct txrx_work;
+ 	unsigned long tx_state;
+ 	struct sk_buff_head txq;
++	bool hw_tx_ready;
  
- #define SDIO_VENDOR_ID_MICROCHIP_WILC		0x0296
- #define SDIO_DEVICE_ID_MICROCHIP_WILC1000	0x5347
+ 	struct sk_buff *evt_skb;
+ 
+@@ -229,6 +230,7 @@ static int btmtksdio_tx_packet(struct btmtksdio_dev *bdev,
+ 	sdio_hdr->reserved = cpu_to_le16(0);
+ 	sdio_hdr->bt_type = hci_skb_pkt_type(skb);
+ 
++	bdev->hw_tx_ready = false;
+ 	err = sdio_writesb(bdev->func, MTK_REG_CTDR, skb->data,
+ 			   round_up(skb->len, MTK_SDIO_BLOCK_SIZE));
+ 	if (err < 0)
+@@ -417,15 +419,6 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 	/* Disable interrupt */
+ 	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
+ 
+-	while ((skb = skb_dequeue(&bdev->txq))) {
+-		err = btmtksdio_tx_packet(bdev, skb);
+-		if (err < 0) {
+-			bdev->hdev->stat.err_tx++;
+-			skb_queue_head(&bdev->txq, skb);
+-			break;
+-		}
+-	}
+-
+ 	txrx_timeout = jiffies + 5 * HZ;
+ 
+ 	do {
+@@ -446,10 +439,21 @@ static void btmtksdio_txrx_work(struct work_struct *work)
+ 			bt_dev_dbg(bdev->hdev, "Get fw own back");
+ 
+ 		if (int_status & TX_EMPTY)
+-			schedule_work(&bdev->txrx_work);
++			bdev->hw_tx_ready = true;
+ 		else if (unlikely(int_status & TX_FIFO_OVERFLOW))
+ 			bt_dev_warn(bdev->hdev, "Tx fifo overflow");
+ 
++		if (bdev->hw_tx_ready) {
++			skb = skb_dequeue(&bdev->txq);
++			if (skb) {
++				err = btmtksdio_tx_packet(bdev, skb);
++				if (err < 0) {
++					bdev->hdev->stat.err_tx++;
++					skb_queue_head(&bdev->txq, skb);
++				}
++			}
++		}
++
+ 		if (int_status & RX_DONE_INT) {
+ 			rx_size = sdio_readl(bdev->func, MTK_REG_CRPLR, NULL);
+ 			rx_size = (rx_size & RX_PKT_LEN) >> 16;
+@@ -642,6 +646,7 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+ 	u8 param = 0x1;
+ 
+ 	calltime = ktime_get();
++	bdev->hw_tx_ready = true;
+ 
+ 	/* Query whether the firmware is already download */
+ 	wmt_params.op = BTMTK_WMT_SEMAPHORE;
 -- 
 2.25.1
 
