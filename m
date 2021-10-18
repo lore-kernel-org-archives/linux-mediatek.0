@@ -2,14 +2,14 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 742D7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 11:41:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0293EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 11:42:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 41BDA61212
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 11:41:33 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 41BDA61212
+	by mail.kernel.org (Postfix) with ESMTPS id C4A4E60FD8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 11:42:08 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C4A4E60FD8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,30 +18,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q16nE9anS4eifDI54vzqR/k3h2slZFDihE0554DEmNM=; b=b7t2JFKpxQD0Yk
-	JIwIDbFjbXj6fsc8a/faZdCxzgtRYjRWHUiAngikXdWLKD+Iwi9wK5GVs0JETDpNqnQea77BukKto
-	Otc3zcGXbfE3orYfqBxm0VVCY4fGNJ7XLekzjx5Uxgs+RoFwNys0DK8E5KQ3RnxZPCUuPL+l2zNw+
-	14yGnO+a8uP5Gy2iCffBUr6D4qD2Q8Soa1IVwj8BpVU5tzR1Cc8KIIqThDJdivD/27vPbvAj03yo6
-	CFa+vAqIhedGU8Q57oEwKc/s8jYM9g++HabYW+fetw1BEnxt0s3qdgIon//1jU/9Vlg+2iW29JkPk
-	pnvkKOwMdtT8Y5nc+B4Q==;
+	List-Owner; bh=gt1SZgMg2tY/zpY3TKV1EgA9b43xI74OthPaCHmlneg=; b=1RA7RVq1PJtBlx
+	u0X+XY5bsC3Jp+AG3t/NYCLAbulC9FVYag+iy5wxrJNV4AAae03oZq3uicNKV3YWLLmd1kgjGy82k
+	RVpBCB2+Zwvc3SfYo/+xq1PwyDpLR55YWbqd4euAyQMio5f8Mi7aXthdqMwGciWNRbP3+D8cLTAFZ
+	G2hrLHxaPlgdU1TRLouMUt2in1bXon/zCJYG+mabcIyUr7jupOaQI50YrUIoMzOaO2kwqiQsOO22p
+	VHrtKbF5mvtrQrvmfTbyIY3IvZqWmuiV+wvv8U8itvnilxNqH7iPWxx6up2UrJDrbRPunc9HQdhPp
+	S0yQjhTVxKibESMao1WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcR1A-00FO8k-AA; Mon, 18 Oct 2021 11:41:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mcR1h-00FOPf-9u; Mon, 18 Oct 2021 11:41:57 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcR0J-00FNjo-Ji; Mon, 18 Oct 2021 11:40:33 +0000
-X-UUID: 0b67bdaecf00469ab92d6e0540316b68-20211018
-X-UUID: 0b67bdaecf00469ab92d6e0540316b68-20211018
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1mcR0M-00FNls-9j; Mon, 18 Oct 2021 11:40:36 +0000
+X-UUID: a0faa0fcc53b4048b4d91215583af749-20211018
+X-UUID: a0faa0fcc53b4048b4d91215583af749-20211018
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1400416371; Mon, 18 Oct 2021 04:40:28 -0700
+ with ESMTP id 2020813040; Mon, 18 Oct 2021 04:40:30 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Oct 2021 04:40:26 -0700
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Oct 2021 04:40:28 -0700
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 18 Oct 2021 19:40:25 +0800
+ Frontend Transport; Mon, 18 Oct 2021 19:40:28 +0800
 From: Sam Shih <sam.shih@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Enric Balletbo
@@ -51,17 +51,17 @@ To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, Sam
  Shih <sam.shih@mediatek.com>
-Subject: [PATCH v7 2/3] arm64: dts: mediatek: add basic mt7986a support
-Date: Mon, 18 Oct 2021 19:40:08 +0800
-Message-ID: <20211018114009.13350-3-sam.shih@mediatek.com>
+Subject: [PATCH v7 3/3] arm64: dts: mediatek: add basic mt7986b support
+Date: Mon, 18 Oct 2021 19:40:09 +0800
+Message-ID: <20211018114009.13350-4-sam.shih@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211018114009.13350-1-sam.shih@mediatek.com>
 References: <20211018114009.13350-1-sam.shih@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_044031_713908_D23A35C3 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20211018_044034_442043_87052FDA 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,7 +78,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add basic chip support for Mediatek mt7986a, include
+Add basic chip support for Mediatek mt7986b, include
 basic uart nodes, rng node and watchdog node.
 
 Add cpu node, timer node, gic node, psci and reserved-memory node
@@ -88,12 +88,7 @@ Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 
 ---
 v7: added memory node back to dts
-v6: removed clock and pinctrl node, to separate basic part into a single
-    patch series
-
-Original thread:
-https://lore.kernel.org/all/20211004124155.1404-1-sam.shih@mediatek.com/
-
+v6: separate basic part into a single patch series
 v5: follow reviewr's comment: removed clock freqency node in timer due to
     we have set CNTFRQ_EL0 in ATF firmware, and also corrected GICD range
 v4: added missing gic register bases, and fixed range of GICR
@@ -101,30 +96,30 @@ v3: used the stdout-path instead of console=ttyS0
 v2: modified clock and uart node due to clock driver updated
 ---
  arch/arm64/boot/dts/mediatek/Makefile        |   1 +
- arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts |  38 +++++
- arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 149 +++++++++++++++++++
- 3 files changed, 188 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
- create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+ arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts |  30 ++++
+ arch/arm64/boot/dts/mediatek/mt7986b.dtsi    | 149 +++++++++++++++++++
+ 3 files changed, 180 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt7986b.dtsi
 
 diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-index 4f68ebed2e31..e6c3a73b9e4a 100644
+index e6c3a73b9e4a..d555e43d1ccc 100644
 --- a/arch/arm64/boot/dts/mediatek/Makefile
 +++ b/arch/arm64/boot/dts/mediatek/Makefile
-@@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
- dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+@@ -8,6 +8,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-+dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986b-rfb.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
  dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
 new file mode 100644
-index 000000000000..ca074cf8e578
+index 000000000000..0f2f337bef4e
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-@@ -0,0 +1,38 @@
++++ b/arch/arm64/boot/dts/mediatek/mt7986b-rfb.dts
+@@ -0,0 +1,30 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +/*
 + * Copyright (C) 2021 MediaTek Inc.
@@ -132,11 +127,11 @@ index 000000000000..ca074cf8e578
 + */
 +
 +/dts-v1/;
-+#include "mt7986a.dtsi"
++#include "mt7986b.dtsi"
 +
 +/ {
-+	model = "MediaTek MT7986a RFB";
-+	compatible = "mediatek,mt7986a-rfb";
++	model = "MediaTek MT7986b RFB";
++	compatible = "mediatek,mt7986b-rfb";
 +
 +	aliases {
 +		serial0 = &uart0;
@@ -148,26 +143,18 @@ index 000000000000..ca074cf8e578
 +	};
 +
 +	memory {
-+		reg = <0 0x40000000 0 0x40000000>;
++		reg = <0 0x40000000 0 0x10000000>;
 +	};
 +};
 +
 +&uart0 {
 +	status = "okay";
 +};
-+
-+&uart1 {
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+diff --git a/arch/arm64/boot/dts/mediatek/mt7986b.dtsi b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
 new file mode 100644
-index 000000000000..75912bcf6c9c
+index 000000000000..2b8e0a382398
 --- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7986b.dtsi
 @@ -0,0 +1,149 @@
 +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +/*
@@ -179,7 +166,7 @@ index 000000000000..75912bcf6c9c
 +#include <dt-bindings/interrupt-controller/arm-gic.h>
 +
 +/ {
-+	compatible = "mediatek,mt7986a";
++	compatible = "mediatek,mt7986b";
 +	interrupt-parent = <&gic>;
 +	#address-cells = <2>;
 +	#size-cells = <2>;
