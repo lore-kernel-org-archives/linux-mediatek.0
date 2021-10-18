@@ -2,69 +2,78 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6241AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 10:45:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 197A3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 10:45:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2829A61212
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 10:45:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2829A61212
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
+	by mail.kernel.org (Postfix) with ESMTPS id D1E3661212
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 10:45:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D1E3661212
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0sb/cuoGMIiXoiPz3FKXGTQ65EOCnkRuNlp5m6WTLM8=; b=df71Xs3Cf9o6wo
-	4thmDlBLFVjJpMWFxEJERUqUBYptXKk0KeJid0kftm9EaUQCz04XlV8oxxhc/zANBiTIWfQ7chZ21
-	ZKN0Ho/Uwg2rBGiE0LXSu34Y1EZOpUOE4C64akkf0edUGSknGVZv4fiDkJVS/OiN2jCITlY77DvgX
-	EViZUmzlszZhV64+lO9HaIzLPIgoNJdFKFWiq+sDIqPbPQHfkzUwpiX9vK4kiI8R8OkH9Oe9EO0sc
-	ukqhr2/4QLWnBO4emvOWu3O3I6Nvl+MI4R/xW3kFiYVAiRqB7PjVbbi9HNfYDVJxxTyvrqokt73Me
-	+U0ljYf6OE4ju0FVDWbw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:From:Subject:Mime-Version:
+	Message-Id:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
+	References:List-Owner; bh=5JBtdR3dMYV8aZ273NwdcfG7U0kJc3l+sGvnOgAsRYE=; b=0cX
+	t6mMuM75MtEWb2qxM/1NoSlT65lRpK9exnBWDcGtN7ansRbGDmkU0l3zV+6dAj5Y/IrbJ0Aw4BrNB
+	+9zN5cw4A9A2p0sTKUeiZO5QtDG7GjH1xeJGzCHN/VmKXVdyNPsdONrwU3qoGwViVHq3XvHwKI/Gz
+	HvSvmMaMZB4wkQgl635M6SYgDmBpBEiiV7JplgKpZuhZD6LOp2oF42U7Cs6/fUsF9YUa2LBNwxUUc
+	4MhSzQGCponUSXWktEnsfZ6Q4trM7lTodmKlU5ULFxaRh8x/SbUnG/cyglLby3ONDr7PGb3a5sCky
+	k89nGEsNSNFIE1Dw6Iw/XMRM50B47/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcQ8x-00F69Q-Fx; Mon, 18 Oct 2021 10:45:23 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1mcQ92-00F6Ay-TB; Mon, 18 Oct 2021 10:45:28 +0000
+Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcPgg-00EwxT-Ry; Mon, 18 Oct 2021 10:16:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
- References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=iosnmQOJWI7XWNeYhYR243+qqN8R1RCG0Hp7iVJ4bxg=; b=gf2eLeWZLk2w6Vi2AU54sQvFrX
- injMvWZyhfNraHIvhffFnRRdadeqE37Xj62GGt9/Izgpf3dB5/q/mBr51WUuTMBCKsgdlZizPMsT6
- yT4yNeT+JOFR377JuEUf8Z/dw7Q7e74JzYaP1D/Mr30DrH9//0C+RF9X69ZpGqZ+1bX4=;
-Received: from p4ff1322b.dip0.t-ipconnect.de ([79.241.50.43] helo=nf.local)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1mcPgX-0004ZM-2s; Mon, 18 Oct 2021 12:16:01 +0200
-Message-ID: <569d434d-cf5b-6ab0-5931-41b21ab047b7@nbd.name>
-Date: Mon, 18 Oct 2021 12:16:00 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.2.0
-Subject: Re: [RFC v2] mt76: mt7615: mt7622: fix ibss and meshpoint
-Content-Language: en-US
-To: Kalle Valo <kvalo@codeaurora.org>, Nick Hainke <vincent@systemli.org>
-Cc: lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
- davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
- sean.wang@mediatek.com, shayne.chen@mediatek.com,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Robert Foss <robert.foss@linaro.org>
-References: <20211007225725.2615-1-vincent@systemli.org>
- <87czoe61kh.fsf@codeaurora.org>
-From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <87czoe61kh.fsf@codeaurora.org>
+ id 1mcPh1-00Ex6e-BS
+ for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 10:16:32 +0000
+Received: by mail-pj1-x1049.google.com with SMTP id
+ a6-20020a17090aa50600b001a0a81b8664so11644191pjq.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 18 Oct 2021 03:16:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:message-id:mime-version:subject:from:to:cc;
+ bh=oY7miojajBsvdF3HUMaS1feE4pIqN0wiCXEms77CPnU=;
+ b=gocHWodpj1y3RO74fcCC1l5rTkjYEX63jbzk4uPVGXLoZBssxTA641D0KRQ7Px6ol7
+ Uy463QdXHg2f6fow9IKru0iQZrSPCHnLYpcd8hfQ2zKWIzPRdMEf97R3oOcvTNeApZGb
+ ZzdhjXQPNBdXqnn7nrPFJUkaN2UFpowkQ/FACzdsdeYa0xS1QN7y7t5SQAu2MVk8QvUo
+ YTiwGQud5dfd6G7YEOs7Hj162ebHr9v6GPL1J3ctY1m9Gx0I42JV7HOnIwYa06PYCmDp
+ uW8N/ele3Gt1rYLG8Pye2O/ZARSZ0z2PBl7BSG1C4e0Ln1ISfiBeRg7oQSLo/DGfl/DC
+ qw9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
+ bh=oY7miojajBsvdF3HUMaS1feE4pIqN0wiCXEms77CPnU=;
+ b=u28SeEDwoaAX5LzOKorAVyqb/R1yXOG1Q5uK7xb5FxXPd6klXEc16FY/6TjXp2vXIm
+ 5Xuv3MSl0lENUVjDmYoTaaguEIBX4Y60YIvLI0/NRFQyeaZvyLVvH+M4bgWRPvuReC8b
+ 1kB7b3LsWLJu6FIOcKUTZawFNmTx390jJ9SZWUD5eGKZHXvkzmRQSd5WMkjIIM/TKysC
+ T//9mQJZDPmY1348Ks+BkTZxDWKlHjC8MeKJwh4FXGbSWSNOTk9upzU/1olJfj4+jevo
+ gD8yA/I8l7s21CwrNcldttATUcZ9m9V6ZCVs5VdGKI53DdAN2KfeIddcwoAzAer7G+35
+ DCgA==
+X-Gm-Message-State: AOAM530NHEK8upRdnRw3ozGQbbaNx5ZtXs0eUy6zPAHEk0q8V9P4K7gA
+ 8slFpsMgoErhZtjNznDV91fjj2CXTTG+
+X-Google-Smtp-Source: ABdhPJxVXkwD7Z4p19zoY0d6mrWKkV0hcUjQUx0QD9KXka6554CXjU42fH+hYE1xRvsAkQZcAaWr6WHqk0Ff
+X-Received: from tzungbi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:e23e:fe98:6410:7fad])
+ (user=tzungbi job=sendgmr) by 2002:a17:90b:1d85:: with SMTP id
+ pf5mr31883714pjb.64.1634552189741; Mon, 18 Oct 2021 03:16:29 -0700 (PDT)
+Date: Mon, 18 Oct 2021 18:16:08 +0800
+Message-Id: <20211018101608.3818840-1-tzungbi@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.33.0.1079.g6e70778dc9-goog
+Subject: [PATCH] ASoC: dt-bindings: mediatek: rename reset controller headers
+ in DT example
+From: Tzung-Bi Shih <tzungbi@google.com>
+To: broonie@kernel.org, robh+dt@kernel.org, matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org, tzungbi@google.com, 
+ devicetree@vger.kernel.org, enric.balletbo@collabora.com, 
+ linux-watchdog@vger.kernel.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_031611_167219_A99FB567 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211018_031631_456295_6AFDAADE 
+X-CRM114-Status: GOOD (  10.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,44 +85,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2021-10-09 10:32, Kalle Valo wrote:
-> Nick Hainke <vincent@systemli.org> writes:
-> 
->> Fixes: d8d59f66d136 ("mt76: mt7615: support 16 interfaces").
-> 
-> The fixes tag should be in the end, before Signed-off-by tags. But I can
-> fix that during commit.
-> 
->> commit 7f4b7920318b ("mt76: mt7615: add ibss support") introduced IBSS
->> and commit f4ec7fdf7f83 ("mt76: mt7615: enable support for mesh")
->> meshpoint support.
->>
->> Both used in the "get_omac_idx"-function:
->>
->> 	if (~mask & BIT(HW_BSSID_0))
->> 		return HW_BSSID_0;
->>
->> With commit d8d59f66d136 ("mt76: mt7615: support 16 interfaces") the
->> ibss and meshpoint mode should "prefer hw bssid slot 1-3". However,
->> with that change the ibss or meshpoint mode will not send any beacon on
->> the mt7622 wifi anymore. Devices were still able to exchange data but
->> only if a bssid already existed. Two mt7622 devices will never be able
->> to communicate.
->>
->> This commits reverts the preferation of slot 1-3 for ibss and
->> meshpoint. Only NL80211_IFTYPE_STATION will still prefer slot 1-3.
->>
->> Tested on Banana Pi R64.
->>
->> Signed-off-by: Nick Hainke <vincent@systemli.org>
-> 
-> Felix, can I take this to wireless-drivers? Ack?
-Acked-by: Felix Fietkau <nbd@nbd.name>
+Commit f07c776f6d7e ("arm64: dts: mediatek: Move reset controller
+constants into common location") moves the reset controller headers.
+However, it forgot to rename the DT example in mt8192-afe-pcm.yaml.
+
+Renames the DT example to pass dt_binding_check.
+
+Fixes: f07c776f6d7e ("arm64: dts: mediatek: Move reset controller constants into common location")
+Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
+---
+The patch bases on next-20211018.
+
+In Mark's tree[1], the commit f07c776f6d7e hasn't shown up.
+In Matthias's tree[2], mt8192-afe-pcm.yaml hasn't applied.
+
+[1]: https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git/
+[2]: https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+
+Also, I am not sure if the commit hash "f07c776f6d7e" would change
+or not after it applies to mainline.
+
+ Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+index 5e9fe067f440..7a25bc9b8060 100644
+--- a/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8192-afe-pcm.yaml
+@@ -74,7 +74,7 @@ examples:
+     #include <dt-bindings/interrupt-controller/arm-gic.h>
+     #include <dt-bindings/interrupt-controller/irq.h>
+     #include <dt-bindings/power/mt8192-power.h>
+-    #include <dt-bindings/reset-controller/mt8192-resets.h>
++    #include <dt-bindings/reset/mt8192-resets.h>
+ 
+     afe: mt8192-afe-pcm {
+         compatible = "mediatek,mt8192-audio";
+-- 
+2.33.0.1079.g6e70778dc9-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
