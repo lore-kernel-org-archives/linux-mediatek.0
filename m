@@ -2,93 +2,130 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FDF3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 01:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 245D0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 01:34:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0A9D061179
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 01:17:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0A9D061179
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id E036161279
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 01:34:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E036161279
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FZMWDXENFtSnUjELuLZ11Vkp+iOTSb5aJF1rbQX4it4=; b=Q2uk3VEsZcYh2K
-	HPWOigVO3A/XjOAQuMFVNVkfIpY/xhzx8d4Yb1y9m48h+z72vjKf30NmW3NWtbwA686XY9fRkNMfV
-	EJgLbjdhvGqtnPNefeOSXZ7udGcMbO1qublKHAwqr22bw7Z0qVyReJMEBRymzqeIbSM4K/CdN3w+m
-	7NsAGw+fEd4B6LhSDJtw9hqUzPMEmW9kv7+wUP2gS7LQ911rQ1lw8zcMIl3U4+GyY1A5tD9p19L5a
-	658Iyk9iR+VqZVKkd4CuAAcFxlCSsaHA6guQfTULn44jGEELUSgw0gO/OVBiMv8sgJIq0zuN89yrX
-	1bt5tu4y/vjAUJW4zLsw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=P7TRU3TQcXzZl8B6xL7c9oF3jvGFdu9FWBWflCnpuTA=; b=iDbLtFSbVvbhYn
+	TSOVe97O1FxJG4yIu6R9h032ANiwgisABLW0Wa14jB8drcrVjYLTJU5ZS06sybS0yjCNlxE0btNer
+	wsU3Tax4AMa7wtdVmhh69qn1T9vMmCq6nW41TH22qAFKYYXbko8Jxxw2wC/ObDOEENHSAbv7/vxUj
+	kF9C4RWkpJKSUsvlAenJEN9xFKO9xoBSfrz54KHwxQOS63dfVIiCHLDRx+Ag41G2TkA0twfgh6d98
+	mwc7o6Md9oGVPvAodJ0LF4My+o7bGRGLEylu68bOc88xR3BpgzpAoCVtWSx44XpJNlF2KKb7sIExm
+	tRwPBld7hnz3+QkbrhCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcHHD-00DcLb-FT; Mon, 18 Oct 2021 01:17:19 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1mcHXH-00DfYd-Qz; Mon, 18 Oct 2021 01:33:55 +0000
+Received: from mail-eopbgr1310097.outbound.protection.outlook.com
+ ([40.107.131.97] helo=APC01-SG2-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcHH6-00DcJR-My
- for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 01:17:18 +0000
-Received: by mail-ed1-x530.google.com with SMTP id i20so63310705edj.10
- for <linux-mediatek@lists.infradead.org>; Sun, 17 Oct 2021 18:17:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hnqEn1CtLr/NiyhAgmO/8MRbeaoY3H6FysR0WE07eMI=;
- b=CAzzpQc8d6pvPmR8WujIwnG/8mp9OOfW/GJEz0cHJFQGuE8vZAdGMpq7oD2rT8f2jD
- el8GQzh6RWyx9yp8C3agLrBlGNRm/6mrCWeM085GlIU6LOuzzZIXL67R2Ocri5EBx/kW
- jaf4Qk9+6r5KuIqpO7H/L3MXKgoxk+ZJQs65w=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hnqEn1CtLr/NiyhAgmO/8MRbeaoY3H6FysR0WE07eMI=;
- b=xzfD1CeV+J04uKvk6B+5j3VWuwOHFpo9HHLAXxOGbROp1BHlYMGSWIle0HqgUScAGa
- i5q2J9Tg7Q5r0c/zGPXR95i+yrx9ZMvAO8HzwoFpb0cYVJYhBWn+03kpC29sQAfaMT+D
- R9s6YnxFOUNAxGWfwOVK7TCvzuqr+8SrUKFhtJ5PU34/v9Ktert6Nf4YkT5ovsEBd7d8
- Lah6TUOc/Lje5W4SdYnO15YtIYD9HAd1GrnWsUnOe7LTSVOM7FFP+bQ6PWuuqDNELAl5
- pFWf6QX0qK39gLoqcF9n9K3Kle49ZdM8p1/kKRYhQ9AwIhFmj/Tlx6o0nynLe0s3R4Ue
- 82iA==
-X-Gm-Message-State: AOAM53050oNfUHgEN6dZDkMrLaalN3YSwEyI6FBh4WgwPM6HMM6MT1RF
- m88a0vJzQQlg85gvVZyZCxyV9Pr2UaOv/w==
-X-Google-Smtp-Source: ABdhPJzBbBP+gfNLIecdqlKZMX/M3decmZS7bxsZin36LraytTcM4lm3UrIv99tL+HuJzfWcGX1V/g==
-X-Received: by 2002:a17:906:27cb:: with SMTP id
- k11mr25416066ejc.140.1634519827537; 
- Sun, 17 Oct 2021 18:17:07 -0700 (PDT)
-Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com.
- [209.85.208.47])
- by smtp.gmail.com with ESMTPSA id jg21sm4896605ejc.14.2021.10.17.18.17.05
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 17 Oct 2021 18:17:06 -0700 (PDT)
-Received: by mail-ed1-f47.google.com with SMTP id d3so64007720edp.3
- for <linux-mediatek@lists.infradead.org>; Sun, 17 Oct 2021 18:17:05 -0700 (PDT)
-X-Received: by 2002:a17:906:912:: with SMTP id
- i18mr25269308ejd.131.1634519824911; 
- Sun, 17 Oct 2021 18:17:04 -0700 (PDT)
+ id 1mcHX1-00DfSd-C8; Mon, 18 Oct 2021 01:33:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NcMaMvub6GtIxGKlC98PSMMGMJAJjz7d+Q44/JQ2gUCzT6LnQu9qsQjjG38HKQD/O+e7MuyT0oSc7em0xz74+dKKK3gRE4SP4/vlLkcp6jFDzVgwGBFY3NIvrZSH99kNq2cCSMRprAzHOSCSP5WEYMeuqyWpxTP1qWrNhlH1XwF1DH4LZLxh6M+Hl8JswJSA4NhYwkAqzZLnU3mkzoVN7oJ92lzixePQyzLFF8lOCXkgvEsYBs3as6wI11xpXnXLBOek76+3piFQNUccfKweb+49YfnH2hZJ12wGdup+5TCwteBoNQpHIcqMLKMMch+066ZGwvtGUza/YXkM70eBFQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kKyHK6IZw0tIzxhT4TcXRqbiVyGSqCFiBH6ald+cwqU=;
+ b=nJ8xVI40azSJB7eT7+fK7oNo+/WgEi3oLGW5xigzMuJaoTGXlj0/MFUW3BoBAqSi8FKjmK/h76Wx1B3Q33kpJXRCwz4JW5wpQIYofmIUqMzwqNJa4XfdIUlWdDJn5z7ieS71ZvHPUqRpNh04Wko/RTumCQYDgWQLjxAq26BpI2B/ib/4MMcdG0YuOMjaSVVzccti7VfUWAfyyOGZOOdIeP2vMEzmkKnZLl1EkAA/rmZb5HJsHnGiNY27oMVm5SeFMaarE5MtuarIjOHbkdKEm0AURlTgQlqRoqgp+mCdYmewcF8iuITJDoWeLMGhhT6Vd+xgzdaJIAkgOfQUPa/B7w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
+ dkim=pass header.d=vivo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com; 
+ s=selector2-vivo0-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kKyHK6IZw0tIzxhT4TcXRqbiVyGSqCFiBH6ald+cwqU=;
+ b=EtfF2M94hOAgzrCjUnP1uVGKY6RdNQfelkYSh+o7YydV1w2cf5FDjccLgY0LucCMuSaN9wZkGyOFcxbW6l9+zCaXU1lBirrx+063CxfTSYKmVdyizrq0x/FdZkAJBpbVb3jsmStjS8g4VOhfH+wEFmj/XASF9ZsMKrncgEFeM+s=
+Authentication-Results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=vivo.com;
+Received: from SG2PR06MB3367.apcprd06.prod.outlook.com (2603:1096:4:78::19) by
+ SG2PR06MB2523.apcprd06.prod.outlook.com (2603:1096:4:5e::17) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4587.25; Mon, 18 Oct 2021 01:33:32 +0000
+Received: from SG2PR06MB3367.apcprd06.prod.outlook.com
+ ([fe80::fc12:4e1b:cc77:6c0]) by SG2PR06MB3367.apcprd06.prod.outlook.com
+ ([fe80::fc12:4e1b:cc77:6c0%6]) with mapi id 15.20.4608.018; Mon, 18 Oct 2021
+ 01:33:32 +0000
+From: Wan Jiabing <wanjiabing@vivo.com>
+To: Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Cc: kael_w@yeah.net,
+	Wan Jiabing <wanjiabing@vivo.com>
+Subject: [PATCH] mailbox: cmdq: Add of_node_put() before return
+Date: Sun, 17 Oct 2021 21:33:14 -0400
+Message-Id: <20211018013314.4535-1-wanjiabing@vivo.com>
+X-Mailer: git-send-email 2.20.1
+X-ClientProxiedBy: HK2PR03CA0045.apcprd03.prod.outlook.com
+ (2603:1096:202:17::15) To SG2PR06MB3367.apcprd06.prod.outlook.com
+ (2603:1096:4:78::19)
 MIME-Version: 1.0
-References: <20210920170408.1561-1-dafna.hirschfeld@collabora.com>
- <c59b7f40-d99e-370a-b797-5dc72979df46@xs4all.nl>
-In-Reply-To: <c59b7f40-d99e-370a-b797-5dc72979df46@xs4all.nl>
-From: Alexandre Courbot <acourbot@chromium.org>
-Date: Mon, 18 Oct 2021 10:16:54 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MW_i1_Lh2ZaF8jGjcV-4XBhjswtyKkZCk3HxKO7LX79Og@mail.gmail.com>
-Message-ID: <CAPBb6MW_i1_Lh2ZaF8jGjcV-4XBhjswtyKkZCk3HxKO7LX79Og@mail.gmail.com>
-Subject: Re: [PATCH v4] media: mtk-vpu: Ensure alignment of 8 for DTCM buffer
-To: Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- kernel@collabora.com, Enric Balletbo i Serra <enric.balletbo@collabora.com>, 
- Dafna Hirschfeld <dafna3@gmail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, minghsiu.tsai@mediatek.com, 
- houlong.wei@mediatek.com, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>
+Received: from localhost.localdomain (218.213.202.190) by
+ HK2PR03CA0045.apcprd03.prod.outlook.com (2603:1096:202:17::15) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4628.11 via Frontend Transport; Mon, 18 Oct 2021 01:33:31 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a793ecab-29e0-4f06-1830-08d991d74bb1
+X-MS-TrafficTypeDiagnostic: SG2PR06MB2523:
+X-Microsoft-Antispam-PRVS: <SG2PR06MB25234491FA1FF48C80D08153ABBC9@SG2PR06MB2523.apcprd06.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:913;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 6wJ81/C7p171eozBohZz2EEGwstyLk0k40uOGzKR1SCGvOyyfmi2f6pM8wQVu6YrYJ+dNmHWb4GyxaOxtXhIkEXh0kqNDag2ZexbenjaescyntavHnG/mGjDyxK2WY+0zxs2zCT7BwA8bMzNh9D2Aa5GYqW0ilhtipwe9VK7V60u/yje3tRkyVEmthv5Kgo05sQI88GZ9s0+/JN3go1k9WICTDPK5fo8CQm+KxWabTfu1SjKFM6tn+FyvMwlRUfKJrmwgkkBISG/EQ81GplKmClf2vZzleQSzTXM24VIRfRbjbrXEDzdOKVIIXyhfG2GMd1wVrrTJU6k0s3rAhWuCzqSFkeYod9c9EEMJt/cvWjMdehoNX0kAz5Lhg1vQves+jAfWJfq6kBX/Br8s6fPLpFyTlHP++Sf2Faf1oqnpaZozhx3wjl673cBq52ZN7xsszYZCFBAWrHzitfSWlC1gyR2e+8bhAhNcPh6eQNgL6otSSK5JUl8QqWoW9AH7brfxV4FbSdQbZvTJW0vdGopyqIXpsrTyVKqCUoiiaINIEfj2qfwqZ7/px56sWPUMnZGJdYozDxcB4qfdfqn58I9tqMx0HlFk+CP3UBg0YRCkheZspkbrzgRXZeiMFT8Cr8ZRHtZ5lVqqXi/49SyZqIAhMp0TVsBj0xQn6GzqHRo74VEVkSy5tGimPGD4/z9kuO7XXk6sldPaIJcm4Jv3avOCg==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SG2PR06MB3367.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(52116002)(86362001)(6512007)(26005)(316002)(5660300002)(36756003)(186003)(6486002)(6506007)(83380400001)(956004)(38100700002)(38350700002)(4326008)(15650500001)(66556008)(4744005)(66476007)(2906002)(107886003)(66946007)(110136005)(6666004)(2616005)(8676002)(508600001)(8936002)(1076003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?foqm3gmdo5zYt1fWAw3ALBvZltqcWhAna9h3jMjYYq3OAVrhtgX9+FK+bfTu?=
+ =?us-ascii?Q?1gwlKxSW7ahmxlbfspjVi18+PJ3D8xi2PNY1A7y79EGYVCx1ua6gDf3icWoX?=
+ =?us-ascii?Q?95gqd7lEoanqA3wUOaI0l/PkHUOnP8mt8xRUpp5KIO1oyUF3sztlExG8jBAT?=
+ =?us-ascii?Q?h37RScA5GHWfDbunI7woHFhXhou6WsytXna+qfTE10zvyU5RrqYwAL/VrL8j?=
+ =?us-ascii?Q?Zdf5kCJFiiEO9KFe2gqtLfhIDNiIbGCczXo1Z995S+5RkWqiPVO1BRjgiBbI?=
+ =?us-ascii?Q?A/WUwi8spHRpdfcvM8eH4Qz9upqwiAnBGRDaolM0GrE9SuHADLYOfOjhGN71?=
+ =?us-ascii?Q?WUBuGVNUfbo4Fe/44JrBDuWeJWDAV0k13M4uWuBXG1nqKpYkPR0jj4N/z1oX?=
+ =?us-ascii?Q?zM2uSkFH+O4dTwOhevW7ggDEnsgN47m86SvryWvKI4GUBUg1EBl+vfNoWww/?=
+ =?us-ascii?Q?qxquXxbr70i3Rp0JmiUan281eC1letGQOiJ6GYoj1IBXzJWTs76DveBGAxgT?=
+ =?us-ascii?Q?vB1y73/R21XhRSap0CYZJG6RYOlCEdaN09qEJIhWI4sQfVP5XRXou7LXffr4?=
+ =?us-ascii?Q?/U0BFJ/HJDaIF+G0sEzT3XohAdYkKwMaX5X6n6wJJg9OVYnV2NZ8uTn/0Elk?=
+ =?us-ascii?Q?rnZBbxB+s4+40L33L+cpL8MMozxCvA4T26OFbLzpn2UB0spw2LOnpkk6xaae?=
+ =?us-ascii?Q?quzOf32UqROg6vJUQfuzTlKsE8dtdYSgmnxo6+PZeFVNq5/qGHjyRsfuhYMU?=
+ =?us-ascii?Q?8hpGRSekhigXF6WltXHbHCbt5pZHQn/zmeqDRi+EneDSgkoy619H9O7iociK?=
+ =?us-ascii?Q?9ZIPtE/bm/BvmB7FD8tRHZ0deDfB1ZjT4he9ozCw8RVAYRhptqiu8ckOPGVq?=
+ =?us-ascii?Q?eKK3RT2ncnNgqwaVwJUVFNC4edxjy1NTQIi2ne9d6VLndAnw4JP8hAzZ8btg?=
+ =?us-ascii?Q?B8Gt4RZfbd9rEHwTX0OOgFv0k26g7mJmnCHlMwULl9uiMVd2lODwfDkLpU91?=
+ =?us-ascii?Q?sSprq0jYUHU+w3PYzKdlwPO3OPp3vt9SWLWW+1Gf2ZaeabKx5ijiNX9VS/pf?=
+ =?us-ascii?Q?B3axTNL730mpenKrtQirqLA553gcPnRa+2SiH5tvmDWEQ3Kd7/L5LkOsfpTJ?=
+ =?us-ascii?Q?BWNafzv/5qNl3YIMO8jw2CrytdWMMW3er8SBfVVT7ppWG//HIbFKduN0+r0J?=
+ =?us-ascii?Q?osIk9PWkytG08NuU7CmR0PrwuD1fbvuU4GH9uEfTp9hfavzT6V/+qV8cmpMT?=
+ =?us-ascii?Q?XJVUBf5UDYp7iGvQ8hK8NBHCbjgHJdV46EwfaMP22l5V7IYT0eXnG7k9S0tC?=
+ =?us-ascii?Q?B0REsiSxGUXofMAxsjWEG/Q6?=
+X-OriginatorOrg: vivo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a793ecab-29e0-4f06-1830-08d991d74bb1
+X-MS-Exchange-CrossTenant-AuthSource: SG2PR06MB3367.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Oct 2021 01:33:32.5548 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: K09SZG7s9LMOx5sMYOou4+NLFWmmoyumv4tvHLkTEo7DI3PT1NqSK37+BkffPd9hPVHTacnWdvLL6Yw/nLy1zg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB2523
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211017_181712_762336_EBFA3303 
-X-CRM114-Status: GOOD (  29.97  )
+X-CRM114-CacheID: sfid-20211017_183339_472240_5766B5EF 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,88 +142,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hans!
+Fix following coccicheck warning:
+./drivers/mailbox/mtk-cmdq-mailbox.c:572:2-24: WARNING: Function
+for_each_child_of_node should have of_node_put() before return
 
-On Mon, Oct 4, 2021 at 6:37 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
->
-> On 20/09/2021 19:04, Dafna Hirschfeld wrote:
-> > From: Alexandre Courbot <acourbot@chromium.org>
-> >
-> > When running memcpy_toio:
-> > memcpy_toio(send_obj->share_buf, buf, len);
-> > it was found that errors appear if len is not a multiple of 8:
-> >
-> > [58.350841] mtk-mdp 14001000.rdma: processing failed: -22
->
-> Why do errors appear? Is that due to a HW bug? Some other reason?
+Early exits from for_each_child_of_node should decrement the
+node reference counter.
 
-MTK folks would be the best placed to answer this, but since the
-failure is reported by the firmware I'd suspect either a firmware or
-hardware limitation.
+Signed-off-by: Wan Jiabing <wanjiabing@vivo.com>
+---
+ drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
+ 1 file changed, 1 insertion(+)
 
->
-> >
-> > This patch ensures the copy of a multiple of 8 size by calling
-> > round_up(len, 8) when copying
-> >
-> > Fixes: e6599adfad30 ("media: mtk-vpu: avoid unaligned access to DTCM buffer.")
-> > Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> > Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> > Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
-> > ---
-> > changes since v3:
-> > 1. multile -> multiple
-> > 2. add inline doc
-> >
-> > changes since v2:
-> > 1. do the extra copy only if len is not multiple of 8
-> >
-> > changes since v1:
-> > 1. change sign-off-by tags
-> > 2. change values to memset
-> >
-> >  drivers/media/platform/mtk-vpu/mtk_vpu.c | 15 ++++++++++++++-
-> >  1 file changed, 14 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> > index ec290dde59cf..1df031716c8f 100644
-> > --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> > +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> > @@ -349,7 +349,20 @@ int vpu_ipi_send(struct platform_device *pdev,
-> >               }
-> >       } while (vpu_cfg_readl(vpu, HOST_TO_VPU));
-> >
-> > -     memcpy_toio(send_obj->share_buf, buf, len);
-> > +     /*
-> > +      * when copying data to the vpu hardware, the memcpy_toio operation must copy
-> > +      * a multiple of 8. Otherwise the processing fails
->
-> Same here: it needs to explain why the processing fails.
->
-> > +      */
-> > +     if (len % 8 != 0) {
-> > +             unsigned char data[SHARE_BUF_SIZE];
->
-> Wouldn't it be more robust if you say:
->
->                 unsigned char data[sizeof(send_obj->share_buf)];
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 64175a893312..ab4f42cc987d 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -579,6 +579,7 @@ static int cmdq_probe(struct platform_device *pdev)
+ 				cmdq->clocks[alias_id].clk = of_clk_get(node, 0);
+ 				if (IS_ERR(cmdq->clocks[alias_id].clk)) {
+ 					dev_err(dev, "failed to get gce clk: %d\n", alias_id);
++					of_node_put(node);
+ 					return PTR_ERR(cmdq->clocks[alias_id].clk);
+ 				}
+ 			}
+-- 
+2.20.1
 
-Definitely yes.
-
->
-> I also think that the SHARE_BUF_SIZE define needs a comment stating that it must be a
-> multiple of 8, otherwise unexpected things can happen.
->
-> You also noticed that the current SHARE_BUF_SIZE define is too low, but I saw
-> no patch correcting this. Shouldn't that be fixed as well?
-
-AFAICT the firmware expects this exact size on its end, so I don't
-believe it can be changed that easily. But maybe someone from MTK can
-prove me wrong.
-
-Cheers,
-Alex.
 
 _______________________________________________
 Linux-mediatek mailing list
