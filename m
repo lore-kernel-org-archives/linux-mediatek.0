@@ -2,14 +2,14 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1F2A1C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 994CBC433EF
 	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 21:41:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DBE286113E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 21:41:01 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DBE286113E
+	by mail.kernel.org (Postfix) with ESMTPS id 54B7B6112D
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 21:41:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 54B7B6112D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,31 +18,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g92m4eq1I17CY4r3Hdcw3uXnmB6q6ryK1F5km1yaDo4=; b=vK/9VgAM75NtUb
-	bw3aSRCr0uhjZz72DBjEWSJj55dsIsb14c/t1gzzfw5SVTErm0e6k5mncVAwJfIffZgN4aOmTLKan
-	+f0QZNDn1wjeHmjGXVAIUQ6Z55ht65zk9x4YTWMF8Qd9eefXQsgm0NYk6MdOj6ZIsG/vZ3LpvXEzz
-	ityGEbvtH8RgdGfugPbAn2PgPMRq0nt2hI2m0Dk9RABwvwNP51tChXp14gX+7I3ilRYaLqbgiA0WC
-	VpiTE1cA/5bNnPQMDgq0iHISnJI+096AjFsBhGHuXOQ4bfTlhYEk1zYe1ejVtx1lA7G/nWcGGtQrL
-	7tWVDBBYkBQKBRjCqtbQ==;
+	List-Owner; bh=lWqsrIPi6rYXMz/YIN5FRFUAqcupbH2UpS5Uhnplu2Y=; b=aDYrbCM9ZM69sA
+	LAgvDr9r6yEWWkPFbP8AgnqmfCYwS5vAZI8+KR/HUdv9wyKQvNcDQLJjWU4d/xqV0RHkuiO0SmbzA
+	vJWrRq5/06tb24bGlfBYTDo66PGlPW6sCAt2cXzpy+1Fpjm4Hker/ehQdde8X4fPne/DLQlngSNh9
+	58NrdMxOW/uE/8IpwPrcrs7tl47SKXT1Bb6qspU2lmAQpi9Z53/TR+c1WkvNOyaxBuHKK5XPKeF3g
+	jZwtv9wmX/+Sqc1pxYOW4gHAZS7X7Bf3Nq21ohJd6GCO7HIi/3knbDzbnJ/wjbBXtVkNguU2NKZ/w
+	ptq3/qANKtPzBrUwYA/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcaNG-00HLNh-HI; Mon, 18 Oct 2021 21:40:50 +0000
+	id 1mcaNH-00HLO4-BZ; Mon, 18 Oct 2021 21:40:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcaND-00HLMm-DW
- for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 21:40:48 +0000
-X-UUID: ee7443074e9046e59073396c53b536a0-20211018
-X-UUID: ee7443074e9046e59073396c53b536a0-20211018
+ id 1mcaND-00HLN1-Nt
+ for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 21:40:49 +0000
+X-UUID: 860f80ec63be4a7480cfb5bf236d316a-20211018
+X-UUID: 860f80ec63be4a7480cfb5bf236d316a-20211018
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 549885064; Mon, 18 Oct 2021 14:40:46 -0700
+ with ESMTP id 938295602; Mon, 18 Oct 2021 14:40:45 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Oct 2021 14:30:51 -0700
+ 15.0.1497.2; Mon, 18 Oct 2021 14:30:43 -0700
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 19 Oct 2021 05:30:50 +0800
+ Frontend Transport; Tue, 19 Oct 2021 05:30:42 +0800
 From: <sean.wang@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
@@ -56,18 +56,17 @@ CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
  <mcchou@chromium.org>, <shawnku@google.com>,
  <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-kernel@vger.kernel.org>, Mark-yw Chen <mark-yw.chen@mediatek.com>
-Subject: [PATCH v2 08/10] Bluetooth: btmtksdio: transmit packet according to
- status TX_EMPTY
-Date: Tue, 19 Oct 2021 05:30:19 +0800
-Message-ID: <3dccea770a3f656dffbae573b6d2b577af0ca324.1634592181.git.objelf@gmail.com>
+Subject: [PATCH v2 05/10] Bluetooth: btmtksdio: move interrupt service to work
+Date: Tue, 19 Oct 2021 05:30:16 +0800
+Message-ID: <f7dd8cfec4b21c96925b6bc280b6fd766178a974.1634592181.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <cover.1634592181.git.objelf@gmail.com>
 References: <cover.1634592181.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_144047_494677_A3637A96 
-X-CRM114-Status: GOOD (  15.25  )
+X-CRM114-CacheID: sfid-20211018_144047_814887_595AE8B6 
+X-CRM114-Status: GOOD (  21.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +83,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mark-yw Chen <mark-yw.chen@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-Each packet should be sent out until the device emits the TX_EMPTY signal
-to the host, that is firmware people suggested to add to meet the actual
-firmware behavior and that is compatible among all the devices.
+btmtksdio belongs to WIFI/BT combo chip that would serve two radios in one
+sdio_irq so that we have to move interrupt service to worker to ensure ISR
+as short as possible.
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+The worker would serve the both Tx and Rx in a batch to effectively reduce
+many interrupts to the host and to avoid excessive sdio lock contention
+between various context (even from WiFi driver) and help to be more
+efficient to complete command/event transation.
+
+Co-developed-by: Mark-yw Chen <mark-yw.chen@mediatek.com>
 Signed-off-by: Mark-yw Chen <mark-yw.chen@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- drivers/bluetooth/btmtksdio.c | 25 +++++++++++++++----------
- 1 file changed, 15 insertions(+), 10 deletions(-)
+ drivers/bluetooth/btmtksdio.c | 132 ++++++++++++++++------------------
+ 1 file changed, 63 insertions(+), 69 deletions(-)
 
 diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index f816a7cb0a74..3266c5d83cae 100644
+index 57126a95e292..f712b52e5797 100644
 --- a/drivers/bluetooth/btmtksdio.c
 +++ b/drivers/bluetooth/btmtksdio.c
-@@ -103,6 +103,7 @@ struct btmtksdio_dev {
- 	struct work_struct txrx_work;
+@@ -98,7 +98,7 @@ struct btmtksdio_dev {
+ 	struct sdio_func *func;
+ 	struct device *dev;
+ 
+-	struct work_struct tx_work;
++	struct work_struct txrx_work;
  	unsigned long tx_state;
  	struct sk_buff_head txq;
-+	bool hw_tx_ready;
  
- 	struct sk_buff *evt_skb;
+@@ -249,32 +249,6 @@ static u32 btmtksdio_drv_own_query(struct btmtksdio_dev *bdev)
+ 	return sdio_readl(bdev->func, MTK_REG_CHLPCR, NULL);
+ }
  
-@@ -229,6 +230,7 @@ static int btmtksdio_tx_packet(struct btmtksdio_dev *bdev,
- 	sdio_hdr->reserved = cpu_to_le16(0);
- 	sdio_hdr->bt_type = hci_skb_pkt_type(skb);
- 
-+	bdev->hw_tx_ready = false;
- 	err = sdio_writesb(bdev->func, MTK_REG_CTDR, skb->data,
- 			   round_up(skb->len, MTK_SDIO_BLOCK_SIZE));
- 	if (err < 0)
-@@ -417,15 +419,6 @@ static void btmtksdio_txrx_work(struct work_struct *work)
- 	/* Disable interrupt */
- 	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
- 
+-static void btmtksdio_tx_work(struct work_struct *work)
+-{
+-	struct btmtksdio_dev *bdev = container_of(work, struct btmtksdio_dev,
+-						  tx_work);
+-	struct sk_buff *skb;
+-	int err;
+-
+-	pm_runtime_get_sync(bdev->dev);
+-
+-	sdio_claim_host(bdev->func);
+-
 -	while ((skb = skb_dequeue(&bdev->txq))) {
 -		err = btmtksdio_tx_packet(bdev, skb);
 -		if (err < 0) {
@@ -130,40 +138,172 @@ index f816a7cb0a74..3266c5d83cae 100644
 -		}
 -	}
 -
- 	txrx_timeout = jiffies + 5 * HZ;
+-	sdio_release_host(bdev->func);
+-
+-	pm_runtime_mark_last_busy(bdev->dev);
+-	pm_runtime_put_autosuspend(bdev->dev);
+-}
+-
+ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
+ {
+ 	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
+@@ -425,63 +399,81 @@ static int btmtksdio_rx_packet(struct btmtksdio_dev *bdev, u16 rx_size)
+ 	return err;
+ }
  
- 	do {
-@@ -446,10 +439,21 @@ static void btmtksdio_txrx_work(struct work_struct *work)
- 			bt_dev_dbg(bdev->hdev, "Get fw own back");
+-static void btmtksdio_interrupt(struct sdio_func *func)
++static void btmtksdio_txrx_work(struct work_struct *work)
+ {
+-	struct btmtksdio_dev *bdev = sdio_get_drvdata(func);
++	struct btmtksdio_dev *bdev = container_of(work, struct btmtksdio_dev,
++						  txrx_work);
++	unsigned long txrx_timeout;
++	struct sk_buff *skb;
+ 	u32 int_status;
+ 	u16 rx_size;
+-
+-	/* It is required that the host gets ownership from the device before
+-	 * accessing any register, however, if SDIO host is not being released,
+-	 * a potential deadlock probably happens in a circular wait between SDIO
+-	 * IRQ work and PM runtime work. So, we have to explicitly release SDIO
+-	 * host here and claim again after the PM runtime work is all done.
+-	 */
+-	sdio_release_host(bdev->func);
++	int err;
  
- 		if (int_status & TX_EMPTY)
--			schedule_work(&bdev->txrx_work);
-+			bdev->hw_tx_ready = true;
- 		else if (unlikely(int_status & TX_FIFO_OVERFLOW))
- 			bt_dev_warn(bdev->hdev, "Tx fifo overflow");
+ 	pm_runtime_get_sync(bdev->dev);
  
-+		if (bdev->hw_tx_ready) {
-+			skb = skb_dequeue(&bdev->txq);
-+			if (skb) {
-+				err = btmtksdio_tx_packet(bdev, skb);
-+				if (err < 0) {
-+					bdev->hdev->stat.err_tx++;
-+					skb_queue_head(&bdev->txq, skb);
-+				}
-+			}
+ 	sdio_claim_host(bdev->func);
+ 
+ 	/* Disable interrupt */
+-	sdio_writel(func, C_INT_EN_CLR, MTK_REG_CHLPCR, NULL);
++	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
+ 
+-	int_status = sdio_readl(func, MTK_REG_CHISR, NULL);
++	while ((skb = skb_dequeue(&bdev->txq))) {
++		err = btmtksdio_tx_packet(bdev, skb);
++		if (err < 0) {
++			bdev->hdev->stat.err_tx++;
++			skb_queue_head(&bdev->txq, skb);
++			break;
 +		}
++	}
+ 
+-	/* Ack an interrupt as soon as possible before any operation on
+-	 * hardware.
+-	 *
+-	 * Note that we don't ack any status during operations to avoid race
+-	 * condition between the host and the device such as it's possible to
+-	 * mistakenly ack RX_DONE for the next packet and then cause interrupts
+-	 * not be raised again but there is still pending data in the hardware
+-	 * FIFO.
+-	 */
+-	sdio_writel(func, int_status, MTK_REG_CHISR, NULL);
++	txrx_timeout = jiffies + 5 * HZ;
 +
- 		if (int_status & RX_DONE_INT) {
- 			rx_size = sdio_readl(bdev->func, MTK_REG_CRPLR, NULL);
- 			rx_size = (rx_size & RX_PKT_LEN) >> 16;
-@@ -642,6 +646,7 @@ static int btmtksdio_setup(struct hci_dev *hdev)
- 	u8 param = 0x1;
++	do {
++		int_status = sdio_readl(bdev->func, MTK_REG_CHISR, NULL);
++
++		/* Ack an interrupt as soon as possible before any operation on
++		 * hardware.
++		 *
++		 * Note that we don't ack any status during operations to avoid race
++		 * condition between the host and the device such as it's possible to
++		 * mistakenly ack RX_DONE for the next packet and then cause interrupts
++		 * not be raised again but there is still pending data in the hardware
++		 * FIFO.
++		 */
++		sdio_writel(bdev->func, int_status, MTK_REG_CHISR, NULL);
++
++		if (int_status & FW_OWN_BACK_INT)
++			bt_dev_dbg(bdev->hdev, "Get fw own back");
++
++		if (int_status & TX_EMPTY)
++			schedule_work(&bdev->txrx_work);
++		else if (unlikely(int_status & TX_FIFO_OVERFLOW))
++			bt_dev_warn(bdev->hdev, "Tx fifo overflow");
++
++		if (int_status & RX_DONE_INT) {
++			rx_size = (int_status & RX_PKT_LEN) >> 16;
++			if (btmtksdio_rx_packet(bdev, rx_size) < 0)
++				bdev->hdev->stat.err_rx++;
++		}
  
- 	calltime = ktime_get();
-+	bdev->hw_tx_ready = true;
+-	if (unlikely(!int_status))
+-		bt_dev_err(bdev->hdev, "CHISR is 0");
++	} while (int_status || time_is_before_jiffies(txrx_timeout));
  
- 	/* Query whether the firmware is already download */
- 	wmt_params.op = BTMTK_WMT_SEMAPHORE;
+-	if (int_status & FW_OWN_BACK_INT)
+-		bt_dev_dbg(bdev->hdev, "Get fw own back");
++	/* Enable interrupt */
++	sdio_writel(bdev->func, C_INT_EN_SET, MTK_REG_CHLPCR, 0);
+ 
+-	if (int_status & TX_EMPTY)
+-		schedule_work(&bdev->tx_work);
+-	else if (unlikely(int_status & TX_FIFO_OVERFLOW))
+-		bt_dev_warn(bdev->hdev, "Tx fifo overflow");
++	sdio_release_host(bdev->func);
+ 
+-	if (int_status & RX_DONE_INT) {
+-		rx_size = (int_status & RX_PKT_LEN) >> 16;
++	pm_runtime_mark_last_busy(bdev->dev);
++	pm_runtime_put_autosuspend(bdev->dev);
++}
+ 
+-		if (btmtksdio_rx_packet(bdev, rx_size) < 0)
+-			bdev->hdev->stat.err_rx++;
+-	}
++static void btmtksdio_interrupt(struct sdio_func *func)
++{
++	struct btmtksdio_dev *bdev = sdio_get_drvdata(func);
+ 
+-	/* Enable interrupt */
+-	sdio_writel(func, C_INT_EN_SET, MTK_REG_CHLPCR, NULL);
++	/* Disable interrupt */
++	sdio_writel(bdev->func, C_INT_EN_CLR, MTK_REG_CHLPCR, 0);
+ 
+-	pm_runtime_mark_last_busy(bdev->dev);
+-	pm_runtime_put_autosuspend(bdev->dev);
++	schedule_work(&bdev->txrx_work);
+ }
+ 
+ static int btmtksdio_open(struct hci_dev *hdev)
+@@ -583,6 +575,8 @@ static int btmtksdio_close(struct hci_dev *hdev)
+ 
+ 	sdio_release_irq(bdev->func);
+ 
++	cancel_work_sync(&bdev->txrx_work);
++
+ 	/* Return ownership to the device */
+ 	sdio_writel(bdev->func, C_FW_OWN_REQ_SET, MTK_REG_CHLPCR, NULL);
+ 
+@@ -604,7 +598,7 @@ static int btmtksdio_flush(struct hci_dev *hdev)
+ 
+ 	skb_queue_purge(&bdev->txq);
+ 
+-	cancel_work_sync(&bdev->tx_work);
++	cancel_work_sync(&bdev->txrx_work);
+ 
+ 	return 0;
+ }
+@@ -795,7 +789,7 @@ static int btmtksdio_send_frame(struct hci_dev *hdev, struct sk_buff *skb)
+ 
+ 	skb_queue_tail(&bdev->txq, skb);
+ 
+-	schedule_work(&bdev->tx_work);
++	schedule_work(&bdev->txrx_work);
+ 
+ 	return 0;
+ }
+@@ -818,7 +812,7 @@ static int btmtksdio_probe(struct sdio_func *func,
+ 	bdev->dev = &func->dev;
+ 	bdev->func = func;
+ 
+-	INIT_WORK(&bdev->tx_work, btmtksdio_tx_work);
++	INIT_WORK(&bdev->txrx_work, btmtksdio_txrx_work);
+ 	skb_queue_head_init(&bdev->txq);
+ 
+ 	/* Initialize and register HCI device */
 -- 
 2.25.1
 
