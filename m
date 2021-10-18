@@ -2,129 +2,78 @@ Return-Path: <SRS0=fNpG=PG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 245D0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 01:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06055C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 03:39:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E036161279
-	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 01:34:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E036161279
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=vivo.com
+	by mail.kernel.org (Postfix) with ESMTPS id C464A60174
+	for <linux-mediatek@archiver.kernel.org>; Mon, 18 Oct 2021 03:39:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C464A60174
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=P7TRU3TQcXzZl8B6xL7c9oF3jvGFdu9FWBWflCnpuTA=; b=iDbLtFSbVvbhYn
-	TSOVe97O1FxJG4yIu6R9h032ANiwgisABLW0Wa14jB8drcrVjYLTJU5ZS06sybS0yjCNlxE0btNer
-	wsU3Tax4AMa7wtdVmhh69qn1T9vMmCq6nW41TH22qAFKYYXbko8Jxxw2wC/ObDOEENHSAbv7/vxUj
-	kF9C4RWkpJKSUsvlAenJEN9xFKO9xoBSfrz54KHwxQOS63dfVIiCHLDRx+Ag41G2TkA0twfgh6d98
-	mwc7o6Md9oGVPvAodJ0LF4My+o7bGRGLEylu68bOc88xR3BpgzpAoCVtWSx44XpJNlF2KKb7sIExm
-	tRwPBld7hnz3+QkbrhCw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BgxLE22jFUHfE0zBru6g5esfBlPAY9VgWo2HMpLaPS4=; b=CnMvc5SKM2v2q1
+	JHTlBl8EsyV8C82NMkcbA0x0IvGu5bzWHuntJvwHLpTLySjkaiVDdqdLrj67EC5ELzSoWH95Rtsn5
+	1GNziiUguzGLZLH8TPi7d/K6yQFPq6rBdOdWcG8ssEBk9tgTuJwBzy+UX47HxJqxhoiK1rBXukvKe
+	n4F3RG/W8Wk2oenbynfJB9O6cYZN7WHoVAmaYSwBUxIhBK75P2nlkFVxda2o2pD+TEC6TwEUdqkPI
+	DpSiEMDL3azR1EAqP78JIDTEnSwiYR5cA708+y78OhgpZyJNn4eBQap8FLVoQ+OlTpJ2OOXtKjcnb
+	NcEVCZx/3X1oHBSWOt0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcHXH-00DfYd-Qz; Mon, 18 Oct 2021 01:33:55 +0000
-Received: from mail-eopbgr1310097.outbound.protection.outlook.com
- ([40.107.131.97] helo=APC01-SG2-obe.outbound.protection.outlook.com)
+	id 1mcJU7-00DupW-96; Mon, 18 Oct 2021 03:38:47 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcHX1-00DfSd-C8; Mon, 18 Oct 2021 01:33:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NcMaMvub6GtIxGKlC98PSMMGMJAJjz7d+Q44/JQ2gUCzT6LnQu9qsQjjG38HKQD/O+e7MuyT0oSc7em0xz74+dKKK3gRE4SP4/vlLkcp6jFDzVgwGBFY3NIvrZSH99kNq2cCSMRprAzHOSCSP5WEYMeuqyWpxTP1qWrNhlH1XwF1DH4LZLxh6M+Hl8JswJSA4NhYwkAqzZLnU3mkzoVN7oJ92lzixePQyzLFF8lOCXkgvEsYBs3as6wI11xpXnXLBOek76+3piFQNUccfKweb+49YfnH2hZJ12wGdup+5TCwteBoNQpHIcqMLKMMch+066ZGwvtGUza/YXkM70eBFQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kKyHK6IZw0tIzxhT4TcXRqbiVyGSqCFiBH6ald+cwqU=;
- b=nJ8xVI40azSJB7eT7+fK7oNo+/WgEi3oLGW5xigzMuJaoTGXlj0/MFUW3BoBAqSi8FKjmK/h76Wx1B3Q33kpJXRCwz4JW5wpQIYofmIUqMzwqNJa4XfdIUlWdDJn5z7ieS71ZvHPUqRpNh04Wko/RTumCQYDgWQLjxAq26BpI2B/ib/4MMcdG0YuOMjaSVVzccti7VfUWAfyyOGZOOdIeP2vMEzmkKnZLl1EkAA/rmZb5HJsHnGiNY27oMVm5SeFMaarE5MtuarIjOHbkdKEm0AURlTgQlqRoqgp+mCdYmewcF8iuITJDoWeLMGhhT6Vd+xgzdaJIAkgOfQUPa/B7w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com; 
- s=selector2-vivo0-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kKyHK6IZw0tIzxhT4TcXRqbiVyGSqCFiBH6ald+cwqU=;
- b=EtfF2M94hOAgzrCjUnP1uVGKY6RdNQfelkYSh+o7YydV1w2cf5FDjccLgY0LucCMuSaN9wZkGyOFcxbW6l9+zCaXU1lBirrx+063CxfTSYKmVdyizrq0x/FdZkAJBpbVb3jsmStjS8g4VOhfH+wEFmj/XASF9ZsMKrncgEFeM+s=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=vivo.com;
-Received: from SG2PR06MB3367.apcprd06.prod.outlook.com (2603:1096:4:78::19) by
- SG2PR06MB2523.apcprd06.prod.outlook.com (2603:1096:4:5e::17) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4587.25; Mon, 18 Oct 2021 01:33:32 +0000
-Received: from SG2PR06MB3367.apcprd06.prod.outlook.com
- ([fe80::fc12:4e1b:cc77:6c0]) by SG2PR06MB3367.apcprd06.prod.outlook.com
- ([fe80::fc12:4e1b:cc77:6c0%6]) with mapi id 15.20.4608.018; Mon, 18 Oct 2021
- 01:33:32 +0000
-From: Wan Jiabing <wanjiabing@vivo.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kael_w@yeah.net,
-	Wan Jiabing <wanjiabing@vivo.com>
-Subject: [PATCH] mailbox: cmdq: Add of_node_put() before return
-Date: Sun, 17 Oct 2021 21:33:14 -0400
-Message-Id: <20211018013314.4535-1-wanjiabing@vivo.com>
-X-Mailer: git-send-email 2.20.1
-X-ClientProxiedBy: HK2PR03CA0045.apcprd03.prod.outlook.com
- (2603:1096:202:17::15) To SG2PR06MB3367.apcprd06.prod.outlook.com
- (2603:1096:4:78::19)
+ id 1mcJU3-00Duo1-G2
+ for linux-mediatek@lists.infradead.org; Mon, 18 Oct 2021 03:38:44 +0000
+Received: by mail-lf1-x132.google.com with SMTP id y26so64582133lfa.11
+ for <linux-mediatek@lists.infradead.org>; Sun, 17 Oct 2021 20:38:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Viwd7ANX416+8/ScF5bPasbghx1RgTJkrR17d6lCqck=;
+ b=cOss8UMjm8u5At7QCwBuCldQAuU81snSCUVfCFeWgKRMqSf0DCsQz7siTH0U1Ro1IT
+ FIhT7D8sWKBuY3xAqgVXx8PvYWHmK1LT9Ad4iHeYSINobQbkGHRCTSat3nTnACQJHkHI
+ z1biYPooBEMwIRTUxuhj/MLofDV280icyOCC0=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Viwd7ANX416+8/ScF5bPasbghx1RgTJkrR17d6lCqck=;
+ b=EFoAU1VugaVPHapByxUz8rYuBcUEEfPqb401VAx/q+h8rmrXBrroFbkcQnOpH7dDnc
+ tVI7mRvSfA1yx0UzFylXkosN8VTAnw0qyp2arc+KId2VkINTHOcKNsXlk/FqzzERhfV8
+ KIigzl/GuKeUK3C8K2WHHDGcU0f6gmSkvmKqi+fjKKfYdBP0ZwQD94Rf9PcJUiTbAEud
+ VoiGEu7HnkczhlaP0vzZv5puDKgcJAn2WdGMMNbMoJzNGKjx8lWVJbXK8ayUMT86eT0u
+ 9Qs/VYJF2cv+AQ5I8eVKb0IHjW08d5rLOD7+BshjrBRacZt+rLd4x+pF5+e2gRedJnFY
+ S44w==
+X-Gm-Message-State: AOAM530hDoIeBN7lcuEOzzZv1AYlxEtNldhzTOCnias72lG9/jPOI8O6
+ 3q9JTtQfedgoHh4fSttao3feEMYo5HxglRM1ncTVVQ==
+X-Google-Smtp-Source: ABdhPJwbqTTbxycWuW5Xz1CaF6uHYs50lpEYQFXSNoEJO51YoQ1Hbke6gK1K0igAWLtI/xW+tGlUpkeJLW0OObOd3DI=
+X-Received: by 2002:ac2:4c49:: with SMTP id o9mr28370086lfk.482.1634528317739; 
+ Sun, 17 Oct 2021 20:38:37 -0700 (PDT)
 MIME-Version: 1.0
-Received: from localhost.localdomain (218.213.202.190) by
- HK2PR03CA0045.apcprd03.prod.outlook.com (2603:1096:202:17::15) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4628.11 via Frontend Transport; Mon, 18 Oct 2021 01:33:31 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: a793ecab-29e0-4f06-1830-08d991d74bb1
-X-MS-TrafficTypeDiagnostic: SG2PR06MB2523:
-X-Microsoft-Antispam-PRVS: <SG2PR06MB25234491FA1FF48C80D08153ABBC9@SG2PR06MB2523.apcprd06.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:913;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 6wJ81/C7p171eozBohZz2EEGwstyLk0k40uOGzKR1SCGvOyyfmi2f6pM8wQVu6YrYJ+dNmHWb4GyxaOxtXhIkEXh0kqNDag2ZexbenjaescyntavHnG/mGjDyxK2WY+0zxs2zCT7BwA8bMzNh9D2Aa5GYqW0ilhtipwe9VK7V60u/yje3tRkyVEmthv5Kgo05sQI88GZ9s0+/JN3go1k9WICTDPK5fo8CQm+KxWabTfu1SjKFM6tn+FyvMwlRUfKJrmwgkkBISG/EQ81GplKmClf2vZzleQSzTXM24VIRfRbjbrXEDzdOKVIIXyhfG2GMd1wVrrTJU6k0s3rAhWuCzqSFkeYod9c9EEMJt/cvWjMdehoNX0kAz5Lhg1vQves+jAfWJfq6kBX/Br8s6fPLpFyTlHP++Sf2Faf1oqnpaZozhx3wjl673cBq52ZN7xsszYZCFBAWrHzitfSWlC1gyR2e+8bhAhNcPh6eQNgL6otSSK5JUl8QqWoW9AH7brfxV4FbSdQbZvTJW0vdGopyqIXpsrTyVKqCUoiiaINIEfj2qfwqZ7/px56sWPUMnZGJdYozDxcB4qfdfqn58I9tqMx0HlFk+CP3UBg0YRCkheZspkbrzgRXZeiMFT8Cr8ZRHtZ5lVqqXi/49SyZqIAhMp0TVsBj0xQn6GzqHRo74VEVkSy5tGimPGD4/z9kuO7XXk6sldPaIJcm4Jv3avOCg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SG2PR06MB3367.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(52116002)(86362001)(6512007)(26005)(316002)(5660300002)(36756003)(186003)(6486002)(6506007)(83380400001)(956004)(38100700002)(38350700002)(4326008)(15650500001)(66556008)(4744005)(66476007)(2906002)(107886003)(66946007)(110136005)(6666004)(2616005)(8676002)(508600001)(8936002)(1076003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?foqm3gmdo5zYt1fWAw3ALBvZltqcWhAna9h3jMjYYq3OAVrhtgX9+FK+bfTu?=
- =?us-ascii?Q?1gwlKxSW7ahmxlbfspjVi18+PJ3D8xi2PNY1A7y79EGYVCx1ua6gDf3icWoX?=
- =?us-ascii?Q?95gqd7lEoanqA3wUOaI0l/PkHUOnP8mt8xRUpp5KIO1oyUF3sztlExG8jBAT?=
- =?us-ascii?Q?h37RScA5GHWfDbunI7woHFhXhou6WsytXna+qfTE10zvyU5RrqYwAL/VrL8j?=
- =?us-ascii?Q?Zdf5kCJFiiEO9KFe2gqtLfhIDNiIbGCczXo1Z995S+5RkWqiPVO1BRjgiBbI?=
- =?us-ascii?Q?A/WUwi8spHRpdfcvM8eH4Qz9upqwiAnBGRDaolM0GrE9SuHADLYOfOjhGN71?=
- =?us-ascii?Q?WUBuGVNUfbo4Fe/44JrBDuWeJWDAV0k13M4uWuBXG1nqKpYkPR0jj4N/z1oX?=
- =?us-ascii?Q?zM2uSkFH+O4dTwOhevW7ggDEnsgN47m86SvryWvKI4GUBUg1EBl+vfNoWww/?=
- =?us-ascii?Q?qxquXxbr70i3Rp0JmiUan281eC1letGQOiJ6GYoj1IBXzJWTs76DveBGAxgT?=
- =?us-ascii?Q?vB1y73/R21XhRSap0CYZJG6RYOlCEdaN09qEJIhWI4sQfVP5XRXou7LXffr4?=
- =?us-ascii?Q?/U0BFJ/HJDaIF+G0sEzT3XohAdYkKwMaX5X6n6wJJg9OVYnV2NZ8uTn/0Elk?=
- =?us-ascii?Q?rnZBbxB+s4+40L33L+cpL8MMozxCvA4T26OFbLzpn2UB0spw2LOnpkk6xaae?=
- =?us-ascii?Q?quzOf32UqROg6vJUQfuzTlKsE8dtdYSgmnxo6+PZeFVNq5/qGHjyRsfuhYMU?=
- =?us-ascii?Q?8hpGRSekhigXF6WltXHbHCbt5pZHQn/zmeqDRi+EneDSgkoy619H9O7iociK?=
- =?us-ascii?Q?9ZIPtE/bm/BvmB7FD8tRHZ0deDfB1ZjT4he9ozCw8RVAYRhptqiu8ckOPGVq?=
- =?us-ascii?Q?eKK3RT2ncnNgqwaVwJUVFNC4edxjy1NTQIi2ne9d6VLndAnw4JP8hAzZ8btg?=
- =?us-ascii?Q?B8Gt4RZfbd9rEHwTX0OOgFv0k26g7mJmnCHlMwULl9uiMVd2lODwfDkLpU91?=
- =?us-ascii?Q?sSprq0jYUHU+w3PYzKdlwPO3OPp3vt9SWLWW+1Gf2ZaeabKx5ijiNX9VS/pf?=
- =?us-ascii?Q?B3axTNL730mpenKrtQirqLA553gcPnRa+2SiH5tvmDWEQ3Kd7/L5LkOsfpTJ?=
- =?us-ascii?Q?BWNafzv/5qNl3YIMO8jw2CrytdWMMW3er8SBfVVT7ppWG//HIbFKduN0+r0J?=
- =?us-ascii?Q?osIk9PWkytG08NuU7CmR0PrwuD1fbvuU4GH9uEfTp9hfavzT6V/+qV8cmpMT?=
- =?us-ascii?Q?XJVUBf5UDYp7iGvQ8hK8NBHCbjgHJdV46EwfaMP22l5V7IYT0eXnG7k9S0tC?=
- =?us-ascii?Q?B0REsiSxGUXofMAxsjWEG/Q6?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a793ecab-29e0-4f06-1830-08d991d74bb1
-X-MS-Exchange-CrossTenant-AuthSource: SG2PR06MB3367.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Oct 2021 01:33:32.5548 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: K09SZG7s9LMOx5sMYOou4+NLFWmmoyumv4tvHLkTEo7DI3PT1NqSK37+BkffPd9hPVHTacnWdvLL6Yw/nLy1zg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR06MB2523
+References: <20211005065948.10092-1-mark-pk.tsai@mediatek.com>
+ <163425869104.1688384.2477307279117424281@swboyd.mtv.corp.google.com>
+In-Reply-To: <163425869104.1688384.2477307279117424281@swboyd.mtv.corp.google.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Mon, 18 Oct 2021 11:38:26 +0800
+Message-ID: <CAGXv+5HM07is85SyBEQ07TbvpAsi72qYJXtFEsyFcK2WSO=SsA@mail.gmail.com>
+Subject: Re: [PATCH] clk: make clk_core_lookup faster by using clk name hash
+To: Stephen Boyd <sboyd@kernel.org>
+Cc: Mark-PK Tsai <mark-pk.tsai@mediatek.com>,
+ Michael Turquette <mturquette@baylibre.com>, 
+ yj.chiang@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-clk <linux-clk@vger.kernel.org>, LKML <linux-kernel@vger.kernel.org>, 
+ "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211017_183339_472240_5766B5EF 
-X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-CacheID: sfid-20211017_203843_586336_5024E3CE 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -142,33 +91,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix following coccicheck warning:
-./drivers/mailbox/mtk-cmdq-mailbox.c:572:2-24: WARNING: Function
-for_each_child_of_node should have of_node_put() before return
+On Fri, Oct 15, 2021 at 8:44 AM Stephen Boyd <sboyd@kernel.org> wrote:
+>
+> Quoting Mark-PK Tsai (2021-10-04 23:59:49)
+> > Compare hash value before strcmp the full name to make
+> > clk_core_lookup faster.
+> >
+> > It make clk driver probe 30 percent faster on the platform
+> > have 1483 registered clks and average clock name length 20.
+>
+> Why is clk_core_lookup() a fast path for you?
 
-Early exits from for_each_child_of_node should decrement the
-node reference counter.
-
-Signed-off-by: Wan Jiabing <wanjiabing@vivo.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 64175a893312..ab4f42cc987d 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -579,6 +579,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 				cmdq->clocks[alias_id].clk = of_clk_get(node, 0);
- 				if (IS_ERR(cmdq->clocks[alias_id].clk)) {
- 					dev_err(dev, "failed to get gce clk: %d\n", alias_id);
-+					of_node_put(node);
- 					return PTR_ERR(cmdq->clocks[alias_id].clk);
- 				}
- 			}
--- 
-2.20.1
-
+Maybe because the Mediatek clock driver still does global clk name matching
+to resolve parents?
 
 _______________________________________________
 Linux-mediatek mailing list
