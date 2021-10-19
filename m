@@ -2,89 +2,71 @@ Return-Path: <SRS0=SpBb=PH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BA40C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 12:07:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AFB35C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 12:32:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5DE51610E7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 12:07:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5DE51610E7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7E7D461052
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 12:32:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7E7D461052
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kQM0Xy0uZI9k1QkUPr04TW9gufmK5ypZrRebK4ZoFlw=; b=SStxJbp70JmBx6
-	UeEQs4VH/k6M0Tz202zvyuUU/CClo0LE+x6ME9msruuSrLuMYpqD1vNqo6joAG4NPPnqXHpPPWIp4
-	qH9rOQ7J2laVHuUu8puPBSEzdSL7txxr6R3BqxRnxy8LNTEe7WAaNQHH+EIw3PBGp39+v9JJKbuxP
-	+vd98GP7nIsCgjM8KYI17ryspsTNiy6SmD65EcoCd3R5mN1btVrvyqS0qLG2ajAMKhOWoTQIPzwB1
-	jMJ3eOE/2j7MpYtwOrYT/tKk2lgI0AKvkhywQnWH40FR34FdWDd1C6lc6LFxymEn4vnc29hm+x0+A
-	q6977HwJ5zf8wEfVkZ/Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Zp1WZJuNJxzyJD3BMVh6fkf9/GhEIuu0oE914MMH0Lk=; b=W4zw1Qkss8raNd
+	Qc6yyjTo/X5lKd/T3VwSv0VQCA7bp8w12zW0R2wCwvgLJJlni+P6HvSy7hxRAKWvvTKsImylI1NNk
+	LOdjDkhjLGiQKIbRgmF+v3RSBxaHvhT6Fv/uf6Yc/+u4D+3cjjSCPUetW36Iu7XVGzLWA01MD+d0L
+	2QHpsDPPsUrdozOOS8MPyFSiQ70u7MnO1TDGaejF0EfKUQNGjxCyiBP9GyqlG8B6aaFZ9ixDUQVBw
+	EI3+XXWhfUTQMmgzAdXbq0bfJaCwKY6l/ln9CegpHec1n4o71s8g3jUZWCibf07ODiIq5kfEkKeOL
+	uiRs+1/niuA/34stfETA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcnuF-0013Rh-K5; Tue, 19 Oct 2021 12:07:47 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1mcoHg-001D85-V6; Tue, 19 Oct 2021 12:32:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcnu1-0013Kq-I1
- for linux-mediatek@lists.infradead.org; Tue, 19 Oct 2021 12:07:36 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- q2-20020a17090a2e0200b001a0fd4efd49so1808232pjd.1
- for <linux-mediatek@lists.infradead.org>; Tue, 19 Oct 2021 05:07:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=FVIQT82jcRb7GPMNtR+z9+ttpCLcsjQyVlSrcNJwXOo=;
- b=EX+vS61JMITPqLH96+nqUjYjcawuaPHoSesPYtZl1n7rBxiwMf2CPx/+7ad2X7WcuS
- kW8kp5lC6ebvYfNylNrL0KzX3tR0lDDDStyiQC9S9qO7CvZAiy/XJN0LaaebFnT+n3Ns
- E1+rykixHr7OAAQVvKS7e6ZQi53IZ5JY05XqM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=FVIQT82jcRb7GPMNtR+z9+ttpCLcsjQyVlSrcNJwXOo=;
- b=TM69mJEnOehBwTf4bJnpH2gyEO8hYxCeqJCtK/5Z/+8OY+gAZDxL+DeptSjPbTCUL5
- +GK5vrmK8HyYy8GvO0iJ5Bfpa8s56YX22/0i6On9mZPtr51g93mrid4LCZQm1Lp2DOUu
- CmqyIYn0DYvsMYxUVW6jK2oN8S+OqjMD4NUHtxWnk++Q0DYwW4PFw/rHxnPedYOJMjCO
- Jq+zIoKzQEYE+x91pEr5IpildfEN86KTuWAjsYT7mDJSp/nMjzxwHMbd7dgFpr5Z/Qum
- oljQUOeMOt1+n3CMh06wY7zChf6EuxeC75C/KP2yw9c9XTuAEfjj56dbWQ3ggyiF9rbl
- YGaA==
-X-Gm-Message-State: AOAM531eXL6LGHnz/I+Hqylz1Tuu3m79FNGZt+N18/BdqPemTLI95vKO
- LHDwHkRzRhJOQrVlpk1AcfNjpQ==
-X-Google-Smtp-Source: ABdhPJzjbEBfYj1NJaCL6KZizsoAX8NL57PBxlOdEyuR5fwk5opRhttrYLoodMKKcptVYabTjzO6Tw==
-X-Received: by 2002:a17:90b:4f90:: with SMTP id
- qe16mr6333304pjb.137.1634645249158; 
- Tue, 19 Oct 2021 05:07:29 -0700 (PDT)
-Received: from josephsih-z840.tpe.corp.google.com
- ([2401:fa00:1:10:1d7c:b745:dee:c8a4])
- by smtp.gmail.com with ESMTPSA id k16sm5236160pgt.57.2021.10.19.05.07.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 Oct 2021 05:07:28 -0700 (PDT)
-From: Joseph Hwang <josephsih@chromium.org>
-To: linux-bluetooth@vger.kernel.org, marcel@holtmann.org, luiz.dentz@gmail.com,
- pali@kernel.org
-Cc: josephsih@google.com, chromeos-bluetooth-upstreaming@chromium.org,
- Joseph Hwang <josephsih@chromium.org>,
- Miao-chen Chou <mcchou@chromium.org>,
- Mark-YW Chen <mark-yw.chen@mediatek.corp-partner.google.com>,
- Johan Hedberg <johan.hedberg@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v5 3/3] Bluetooth: btusb: enable Mediatek to support AOSP
- extension
-Date: Tue, 19 Oct 2021 20:07:15 +0800
-Message-Id: <20211019200701.v5.3.I257ac5cfaf955d15670479efc311bbab702397f4@changeid>
-X-Mailer: git-send-email 2.33.0.1079.g6e70778dc9-goog
-In-Reply-To: <20211019200701.v5.1.I139e71adfd3f00b88fe9edb63d013f9cd3e24506@changeid>
-References: <20211019200701.v5.1.I139e71adfd3f00b88fe9edb63d013f9cd3e24506@changeid>
+ id 1mco9l-0019ok-Uy; Tue, 19 Oct 2021 12:23:51 +0000
+X-UUID: f8d782999c724382a93cf92047f87e6c-20211019
+X-UUID: f8d782999c724382a93cf92047f87e6c-20211019
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <guangming.cao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1012303689; Tue, 19 Oct 2021 05:23:46 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 19 Oct 2021 05:23:44 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 19 Oct 2021 20:23:43 +0800
+Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
+ mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 19 Oct 2021 20:23:42 +0800
+From: <guangming.cao@mediatek.com>
+To: Sumit Semwal <sumit.semwal@linaro.org>, =?UTF-8?q?Christian=20K=C3=B6nig?=
+ <christian.koenig@amd.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "open
+ list:DMA BUFFER SHARING FRAMEWORK" <linux-media@vger.kernel.org>, "open
+ list:DMA BUFFER SHARING FRAMEWORK" <dri-devel@lists.freedesktop.org>,
+ "moderated list:DMA BUFFER SHARING FRAMEWORK"
+ <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
+ support" <linux-mediatek@lists.infradead.org>
+CC: <wsd_upstream@mediatek.com>, Guangming Cao <Guangming.Cao@mediatek.com>
+Subject: [PATCH] dma-buf: add attachments empty check for dma_buf_release
+Date: Tue, 19 Oct 2021 20:23:45 +0800
+Message-ID: <20211019122345.160555-1-guangming.cao@mediatek.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211019_050733_614805_D853ABE4 
-X-CRM114-Status: GOOD (  10.66  )
+X-CRM114-CacheID: sfid-20211019_052350_096120_C082B6F1 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,39 +83,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch enables Mediatek to support the AOSP extension.
+From: Guangming Cao <Guangming.Cao@mediatek.com>
 
-Reviewed-by: Miao-chen Chou <mcchou@chromium.org>
-Reviewed-by: Mark-YW Chen <mark-yw.chen@mediatek.corp-partner.google.com>
-Signed-off-by: Joseph Hwang <josephsih@chromium.org>
+Since there is no mandatory inspection for attachments in dma_buf_release.
+There will be a case that dma_buf already released but attachment is still
+in use, which can points to the dmabuf, and it maybe cause
+some unexpected issues.
 
+With IOMMU, when this cases occurs, there will have IOMMU address
+translation fault(s) followed by this warning,
+I think it's useful for dma devices to debug issue.
+
+Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
 ---
+ drivers/dma-buf/dma-buf.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-Changes in v5:
-- Let the vendor command in aosp_do_open() to determine what
-  capabilities are supported.
-
-Changes in v4:
-- Call hci_set_aosp_capable in the driver.
-- This patch is added in this Series-changes 4.
-
- drivers/bluetooth/btusb.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 87b71740fad8..30c63031592d 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -3876,6 +3876,7 @@ static int btusb_probe(struct usb_interface *intf,
- 		hdev->set_bdaddr = btusb_set_bdaddr_mtk;
- 		set_bit(HCI_QUIRK_NON_PERSISTENT_SETUP, &hdev->quirks);
- 		data->recv_acl = btusb_recv_acl_mtk;
-+		hci_set_aosp_capable(hdev);
- 	}
+diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
+index 511fe0d217a0..672404857d6a 100644
+--- a/drivers/dma-buf/dma-buf.c
++++ b/drivers/dma-buf/dma-buf.c
+@@ -74,6 +74,29 @@ static void dma_buf_release(struct dentry *dentry)
+ 	 */
+ 	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
  
- 	if (id->driver_info & BTUSB_SWAVE) {
++	/* attachment check */
++	if (dma_resv_trylock(dmabuf->resv) && WARN(!list_empty(&dmabuf->attachments),
++	    "%s err, inode:%08lu size:%08zu name:%s exp_name:%s flags:0x%08x mode:0x%08x, %s\n",
++	    __func__, file_inode(dmabuf->file)->i_ino, dmabuf->size,
++	    dmabuf->name, dmabuf->exp_name,
++	    dmabuf->file->f_flags, dmabuf->file->f_mode,
++	    "Release dmabuf before detach all attachments, dump attach:\n")) {
++		int attach_cnt = 0;
++		dma_addr_t dma_addr;
++		struct dma_buf_attachment *attach_obj;
++		/* dump all attachment info */
++		list_for_each_entry(attach_obj, &dmabuf->attachments, node) {
++			dma_addr = (dma_addr_t)0;
++			if (attach_obj->sgt)
++				dma_addr = sg_dma_address(attach_obj->sgt->sgl);
++			pr_err("attach[%d]: dev:%s dma_addr:0x%-12lx\n",
++			       attach_cnt, dev_name(attach_obj->dev), dma_addr);
++			attach_cnt++;
++		}
++		pr_err("Total %d devices attached\n\n", attach_cnt);
++		dma_resv_unlock(dmabuf->resv);
++	}
++
+ 	dmabuf->ops->release(dmabuf);
+ 
+ 	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
 -- 
-2.33.0.1079.g6e70778dc9-goog
+2.17.1
 
 
 _______________________________________________
