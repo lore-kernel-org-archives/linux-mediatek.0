@@ -2,73 +2,69 @@ Return-Path: <SRS0=SpBb=PH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F22F8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 04:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9FFD8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 06:00:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B6E446128B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 04:47:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B6E446128B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 642C86115B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 06:00:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 642C86115B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W7uRpqs0zbOMKfEnZYm4AXdH8LuHafJlKAs0khwpqGo=; b=CR2+oWuj7f4gja
-	uH2YXOagBhMM5z4G1rtDqUsm6mIShwqx13VjdNaNyYg+VA5ZTtidwQxF7FsAytet4TfqfuRNE7WYl
-	PVP96yRHlUmDgukblsBvWSYs/ReDKQlzako09eC7iyq53IbtEkPy6EgF8YWBC9kv4NwqrPr8W/GIg
-	+3Ypmq8M+9H/VXN+HBChIU8l+G0ogjG0FnxP06g9XJ/fI/rv7bZGQUBvXah7p77h6NyNbvDqwjUFS
-	oRDvf1u7F8U0jZRE8+EH2/CogUccFWYwItLoaI9sZcg4UMNumWCC4BHcRdeSi2vKygnIaTW8baNhd
-	IH4Lr0w21hJTvYx24ldg==;
+	List-Owner; bh=oNNsaCnk8sVoiOfjQnKqBJ5ZQD1DEkLcLtoyGDB6ZM8=; b=cuEZqydUikg07+
+	Z/27F/du+n37pyoFoYfMsEHWiKWuz2SItP8go1RubXYpEeed/WWVJkVHfX5lWJzskJ3KC8GYjiRTV
+	pvHJSBXQjBvCmI9yLp532dGCUY5HRM4lRk8S/Ebnih+AJh5SVmk2WuVGWb8NzG4jfvhq0WOfqiHKl
+	aGKOnOZr5qKb6uvVZxsMDaCgvWg9mrfp1WTaYkTmqG7t0XJg94qerwMZxltU0bhac3cRcQdgH0tma
+	B2kqX8Z7+YQEJDHNJL7gwrA6B1AicfwEeNVuN4jgtFhP8ZLzcx1c80HLxpNuZGV7IFmyxTdH+FH0f
+	FnQsZJO8PtNLXpNYXwzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mch2S-0007DJ-MH; Tue, 19 Oct 2021 04:47:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mciAJ-000Duv-It; Tue, 19 Oct 2021 05:59:59 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mch2H-0007Bk-6I; Tue, 19 Oct 2021 04:47:38 +0000
-X-UUID: 20e31e062ed945b19c142ade30049205-20211018
-X-UUID: 20e31e062ed945b19c142ade30049205-20211018
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <miles.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 177800769; Mon, 18 Oct 2021 21:47:33 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 18 Oct 2021 21:47:32 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 19 Oct 2021 12:47:30 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 19 Oct 2021 12:47:30 +0800
-Message-ID: <6c7879c2db62cad0f6de1452b5d3b39cc8c58a2a.camel@mediatek.com>
-Subject: Re: [PATCH v5 4/5] arm64: dts: mediatek: add clock support for mt7986a
-From: Miles Chen <miles.chen@mediatek.com>
-To: Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Fabien Parent
- <fparent@baylibre.com>, Weiyi Lu <weiyi.lu@mediatek.com>, Chun-Jie Chen
- <chun-jie.chen@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>, "Enric
- Balletbo i Serra" <enric.balletbo@collabora.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-clk@vger.kernel.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
-Date: Tue, 19 Oct 2021 12:47:30 +0800
-In-Reply-To: <20211018114701.13984-5-sam.shih@mediatek.com>
-References: <20211018114701.13984-1-sam.shih@mediatek.com>
- <20211018114701.13984-5-sam.shih@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mciA6-000Dqt-3e; Tue, 19 Oct 2021 05:59:47 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2A9FA6115B;
+ Tue, 19 Oct 2021 05:59:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1634623185;
+ bh=FRG4beuFMc1+FdpIgLOkG3rFrbUvdGSYdFRG5EBVUp8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=t5cPxWcbk5thS6ojbahUasVg3cpLKhCx8hgqiHEHBcHCFhYZGDz3PzTkyV56PThx8
+ C3gRfb/7GiSnBsCQ4+thbCL6jeTWi4Td8oTrT13oEoJE+gNhshpz5odbSJ+vtUo1zC
+ 8x+r/FO7nNsSeNyYjEDbeWzYrpmc2Jidcs+Yajmo=
+Date: Tue, 19 Oct 2021 07:59:43 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Florian Fainelli <f.fainelli@gmail.com>
+Cc: DENG Qingfang <dqfext@gmail.com>, Sean Wang <sean.wang@mediatek.com>,
+ Landen Chao <Landen.Chao@mediatek.com>, Andrew Lunn <andrew@lunn.ch>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
+Subject: Re: [PATCH net] net: dsa: mt7530: correct ds->num_ports
+Message-ID: <YW5ez/PySlH8WsGk@kroah.com>
+References: <20211016062414.783863-1-dqfext@gmail.com>
+ <cd6a03b9-af49-97b4-6869-d51b461bf50a@gmail.com>
+ <20211018084230.6710-1-dqfext@gmail.com>
+ <7b5e5fcf-8e7f-45ec-de3f-57b3da77b479@gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <7b5e5fcf-8e7f-45ec-de3f-57b3da77b479@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_214737_266526_DD5192C1 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211018_225946_191180_6478C311 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,122 +81,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sam,
+On Mon, Oct 18, 2021 at 09:22:49AM -0700, Florian Fainelli wrote:
+> On 10/18/21 1:42 AM, DENG Qingfang wrote:
+> > On Sat, Oct 16, 2021 at 07:36:14PM -0700, Florian Fainelli wrote:
+> >> On 10/15/2021 11:24 PM, DENG Qingfang wrote:
+> >>> Setting ds->num_ports to DSA_MAX_PORTS made DSA core allocate unnecessary
+> >>> dsa_port's and call mt7530_port_disable for non-existent ports.
+> >>>
+> >>> Set it to MT7530_NUM_PORTS to fix that, and dsa_is_user_port check in
+> >>> port_enable/disable is no longer required.
+> >>>
+> >>> Cc: stable@vger.kernel.org
+> >>> Signed-off-by: DENG Qingfang <dqfext@gmail.com>
+> >>
+> >> Do you really want to target the net tree for this change?
+> > 
+> > Yes because I consider this a bug fix.
+> 
+> 
+> OK, why not provide a Fixes tag to help with targeting the back port
+> then? This has been applied anyway, so hopefully the auto selection will
+> do its job and tell you where it stops applying cleanly.
 
-> +		infracfg: infracfg@10001000 {
-> +			compatible = "mediatek,mt7986-infracfg",
-> "syscon";
-> +			reg = <0 0x10001000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		topckgen: topckgen@1001b000 {
-> +			compatible = "mediatek,mt7986-topckgen",
-> "syscon";
-> +			reg = <0 0x1001B000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
+Without a "Fixes:" tag, I just backport things as far are they are easy
+to go and then stop without an email saying anything fails on older
+kernels.
 
-please use lowercase hex value.
-> +
->  		watchdog: watchdog@1001c000 {
->  			compatible = "mediatek,mt7986-wdt",
->  				     "mediatek,mt6589-wdt";
-> @@ -108,11 +122,31 @@ watchdog: watchdog@1001c000 {
->  			status = "disabled";
->  		};
->  
-> +		apmixedsys: apmixedsys@1001e000 {
-> +			compatible = "mediatek,mt7986-apmixedsys";
-> +			reg = <0 0x1001E000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		sgmiisys0: syscon@10060000 {
-> +			compatible = "mediatek,mt7986-sgmiisys_0",
-> +				     "syscon";
-> +			reg = <0 0x10060000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
-> +		sgmiisys1: syscon@10070000 {
-> +			compatible = "mediatek,mt7986-sgmiisys_1",
-> +				     "syscon";
-> +			reg = <0 0x10070000 0 0x1000>;
-> +			#clock-cells = <1>;
-> +		};
-> +
->  		trng: trng@1020f000 {
->  			compatible = "mediatek,mt7986-rng",
->  				     "mediatek,mt7623-rng";
->  			reg = <0 0x1020f000 0 0x100>;
-> -			clocks = <&system_clk>;
-> +			clocks = <&infracfg CLK_INFRA_TRNG_CK>;
->  			clock-names = "rng";
->  			status = "disabled";
->  		};
-> @@ -122,7 +156,13 @@ uart0: serial@11002000 {
->  				     "mediatek,mt6577-uart";
->  			reg = <0 0x11002000 0 0x400>;
->  			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-> -			clocks = <&system_clk>;
-> +			clocks = <&infracfg CLK_INFRA_UART0_SEL>,
-> +				 <&infracfg CLK_INFRA_UART0_CK>;
-> +			clock-names = "baud", "bus";
-> +			assigned-clocks = <&topckgen CLK_TOP_UART_SEL>,
-> +					  <&infracfg
-> CLK_INFRA_UART0_SEL>;
-> +			assigned-clock-parents = <&topckgen
-> CLK_TOP_XTAL>,
-> +						 <&topckgen
-> CLK_TOP_UART_SEL>;
->  			status = "disabled";
->  		};
->  
-> @@ -131,7 +171,11 @@ uart1: serial@11003000 {
->  				     "mediatek,mt6577-uart";
->  			reg = <0 0x11003000 0 0x400>;
->  			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-> -			clocks = <&system_clk>;
-> +			clocks = <&infracfg CLK_INFRA_UART1_SEL>,
-> +				 <&infracfg CLK_INFRA_UART1_CK>;
-> +			clock-names = "baud", "bus";
-> +			assigned-clocks = <&infracfg
-> CLK_INFRA_UART1_SEL>;
-> +			assigned-clock-parents = <&topckgen
-> CLK_TOP_F26M_SEL>;
->  			status = "disabled";
->  		};
->  
-> @@ -140,10 +184,24 @@ uart2: serial@11004000 {
->  				     "mediatek,mt6577-uart";
->  			reg = <0 0x11004000 0 0x400>;
->  			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
-> -			clocks = <&system_clk>;
-> +			clocks = <&infracfg CLK_INFRA_UART2_SEL>,
-> +				 <&infracfg CLK_INFRA_UART2_CK>;
-> +			clock-names = "baud", "bus";
-> +			assigned-clocks = <&infracfg
-> CLK_INFRA_UART2_SEL>;
-> +			assigned-clock-parents = <&topckgen
-> CLK_TOP_F26M_SEL>;
->  			status = "disabled";
->  		};
->  
-> +		ethsys: syscon@15000000 {
-> +			 #address-cells = <1>;
-> +			 #size-cells = <1>;
-> +			 compatible = "mediatek,mt7986-ethsys",
-> +				      "syscon";
-> +			 reg = <0 0x15000000 0 0x1000>;
-> +			 #clock-cells = <1>;
-> +			 #reset-cells = <1>;
-> +		};
-> +
->  	};
->  
->  };
+thanks,
 
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
