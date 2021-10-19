@@ -2,86 +2,74 @@ Return-Path: <SRS0=SpBb=PH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 52966C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 03:44:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 57AE8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 04:41:44 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1CCCE6134F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 03:44:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1CCCE6134F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id 16EEB60F8F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 04:41:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 16EEB60F8F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N2T4p32Fh0f6dKS059KdB3B8kc3HxQhzV0zrqStOSgs=; b=XDDI4J7ewuSZ2h
-	Rf8Ec/GSDyxe1ks9tpITId/efeSh83IvrR/8hWl8NP18B96OyEH+H03mNrsDi1HGIvfnvrjFcQFEg
-	3PIKajsvpudoD9p+ah7QMDeehcYwYS4iFQ9eXtFzzpx7/7DBO7z/Dtb+tfMIahKDzzToY3COPaK8X
-	q1SK0bVrJdHgG5wN1NL6d2MWhFYw1uXblULm+4YB2TB3C/4yP8g9MXYfVoijrZUx7GESJMUqR+xKm
-	UtUpKx9bftafSaVKe1zsuWLzqpmVZ9VSG4lyQUZv6yMvPRJKkGDAwMp58j0+9viU/MzChTikSu2h0
-	Y10hB1+ZzuVa3cvBUNsQ==;
+	List-Owner; bh=kChClDn70IhXESkjOSK+eP7kYgax8kk4jmfE4GvW5MQ=; b=1jk2VMSVcB7kGi
+	z6uSnslv67Nf6QwL1SObc4gumRfkkCNGjh2+WWexst14oYA4kHr9sMF8IntPVmTPs3kAEYLcAnwDT
+	VNr8yxh/HRvSNlyjyuQGTUkBKE+rkCtPs+vFa3619fBYjYzpIaz9PL4mUM0kx4B6tnhYwNt/YrY5d
+	n3EAJjUyRC4LCDdS/+inC4cTYBnrI8Bo33JbpTJOkFuyAw78x8Vu0lD85GB6Y1jfGhhFDPc2PGOJN
+	av8w0W98xzX0YOikTLL0owBAflltRAZVpINfQwBWvCtm4ue9VulgA94RlYvE9WMH7oQbqY5O+lgh6
+	Mnfy93T7O1JMxSUSYreA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcg2e-0004BV-D2; Tue, 19 Oct 2021 03:43:56 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1mcgwG-0006f5-V6; Tue, 19 Oct 2021 04:41:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcg2a-0004AH-UY; Tue, 19 Oct 2021 03:43:54 +0000
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 19J349Re015244; 
- Tue, 19 Oct 2021 03:43:48 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2021-07-09;
- bh=KJiWubGMNyWOQmJE10qT2Q36ZJt5GUJhKqw9DNxgJQ4=;
- b=ZB4zg4rdRs0Vcc+913MwHxrfk5sAq15IHJFAjX9nyws0eep02QnntyJV5phXiBuX1z03
- a7I+hsyjPiAUCvHuAt3R+/FR1nITZy4MOHjyeWBH+Is7f7ZfUJvMDkcGGShg0Otl+4KL
- GMlZ9NCRo2cNyLeO+GpU4T44xEAEiMdBc4pPNjBi4DkP9XSWxM4gxT7qhzlk7JRBfmEk
- 5BifvxWs+63m9FqRc3de5xhrTL5pTIueC4zEYaiJLP3vCADTW8GyewZ6NRK9cWdt6eC/
- SRs8hGvV9iyHDMCHF9ZDrots3VKAjZMVQEUI61FNHo6xISYVn0K4/o8ygViwpRnYy2sQ NA== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by mx0b-00069f02.pphosted.com with ESMTP id 3brnfhqskj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 19 Oct 2021 03:43:48 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 19J3ZT3a077053;
- Tue, 19 Oct 2021 03:43:47 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by userp3020.oracle.com with ESMTP id 3br8grmmtg-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 19 Oct 2021 03:43:47 +0000
-Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 19J3hhHf101685;
- Tue, 19 Oct 2021 03:43:46 GMT
-Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
- by userp3020.oracle.com with ESMTP id 3br8grmmrp-4;
- Tue, 19 Oct 2021 03:43:46 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: Martin Kepplinger <martink@posteo.de>,
- Miles Chen <miles.chen@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Bart Van Assche <bvanassche@acm.org>,
- "James E . J . Bottomley" <jejb@linux.ibm.com>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
- linux-arm-kernel@lists.infradead.org, linux-scsi@vger.kernel.org,
- linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com,
- Stanley Chu <stanley.chu@mediatek.com>, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] scsi: sd: fix crashes in sd_resume_runtime
-Date: Mon, 18 Oct 2021 23:43:40 -0400
-Message-Id: <163461411521.13664.305092538440750987.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20211015074654.19615-1-miles.chen@mediatek.com>
-References: <20211015074654.19615-1-miles.chen@mediatek.com>
+ id 1mcgw2-0006dE-Ja; Tue, 19 Oct 2021 04:41:13 +0000
+X-UUID: 1ee1b109da2342de9c6d764295a9daf7-20211018
+X-UUID: 1ee1b109da2342de9c6d764295a9daf7-20211018
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 155756349; Mon, 18 Oct 2021 21:41:06 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 18 Oct 2021 21:41:04 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 19 Oct 2021 12:41:03 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 19 Oct 2021 12:41:03 +0800
+Message-ID: <5d2a803943ace606d356af2ec0a75bd42aaf7fb5.camel@mediatek.com>
+Subject: Re: [PATCH v5 5/5] arm64: dts: mediatek: add clock support for mt7986b
+From: Miles Chen <miles.chen@mediatek.com>
+To: Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Michael Turquette
+ <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Fabien Parent
+ <fparent@baylibre.com>, Weiyi Lu <weiyi.lu@mediatek.com>, Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>, "Enric
+ Balletbo i Serra" <enric.balletbo@collabora.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-clk@vger.kernel.org>
+CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
+Date: Tue, 19 Oct 2021 12:41:03 +0800
+In-Reply-To: <20211018114701.13984-6-sam.shih@mediatek.com>
+References: <20211018114701.13984-1-sam.shih@mediatek.com>
+ <20211018114701.13984-6-sam.shih@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-Proofpoint-ORIG-GUID: gKb9G-3VbOOMGIm4I_ziIPWhbKimffoM
-X-Proofpoint-GUID: gKb9G-3VbOOMGIm4I_ziIPWhbKimffoM
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_204353_137355_2E3EC172 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20211018_214110_680806_74F3705B 
+X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,26 +86,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 Oct 2021 15:46:54 +0800, Miles Chen wrote:
+Hi Sam,
 
-> After merging commit ed4246d37f3b ("scsi: sd: REQUEST SENSE for
-> BLIST_IGN_MEDIA_CHANGE devices in runtime_resume()"), I hit the
-> following crash on my device.
-> 
-> static int sd_resume_runtime(struct device *dev)
-> {
->         struct scsi_disk *sdkp = dev_get_drvdata(dev);
->         struct scsi_device *sdp = sdkp->device; // sdkp == NULL and crash
-> 
-> [...]
+@@ -99,6 +101,18 @@ gic: interrupt-controller@c000000 {
+>  			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+>  		};
+>  
+> +		infracfg: infracfg@10001000 {
+> +			compatible = "mediatek,mt7986-infracfg",
+> "syscon";
+> +			reg = <0 0x10001000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		topckgen: topckgen@1001b000 {
+> +			compatible = "mediatek,mt7986-topckgen",
+> "syscon";
+> +			reg = <0 0x1001B000 0 0x1000>;
 
-Applied to 5.15/scsi-fixes, thanks!
+please use lowercase hex values (e.g, 0x1001b000)
 
-[1/1] scsi: sd: fix crashes in sd_resume_runtime
-      https://git.kernel.org/mkp/scsi/c/85374b639229
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		watchdog: watchdog@1001c000 {
+>  			compatible = "mediatek,mt7986-wdt",
+>  				     "mediatek,mt6589-wdt";
+> @@ -108,11 +122,31 @@ watchdog: watchdog@1001c000 {
+>  			status = "disabled";
+>  		};
+>  
+> +		apmixedsys: apmixedsys@1001e000 {
+> +			compatible = "mediatek,mt7986-apmixedsys";
+> +			reg = <0 0x1001E000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+Ditto
+
+> +
+> +		sgmiisys0: syscon@10060000 {
+> +			compatible = "mediatek,mt7986-sgmiisys_0",
+> +				     "syscon";
+> +			reg = <0 0x10060000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+> +		sgmiisys1: syscon@10070000 {
+> +			compatible = "mediatek,mt7986-sgmiisys_1",
+> +				     "syscon";
+> +			reg = <0 0x10070000 0 0x1000>;
+> +			#clock-cells = <1>;
+> +		};
+> +
+>  		trng: trng@1020f000 {
+>  			compatible = "mediatek,mt7986-rng",
+>  				     "mediatek,mt7623-rng";
+>  			reg = <0 0x1020f000 0 0x100>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_TRNG_CK>;
+>  			clock-names = "rng";
+>  			status = "disabled";
+>  		};
+> @@ -122,7 +156,13 @@ uart0: serial@11002000 {
+>  				     "mediatek,mt6577-uart";
+>  			reg = <0 0x11002000 0 0x400>;
+>  			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_UART0_SEL>,
+> +				 <&infracfg CLK_INFRA_UART0_CK>;
+> +			clock-names = "baud", "bus";
+> +			assigned-clocks = <&topckgen CLK_TOP_UART_SEL>,
+> +					  <&infracfg
+> CLK_INFRA_UART0_SEL>;
+> +			assigned-clock-parents = <&topckgen
+> CLK_TOP_XTAL>,
+> +						 <&topckgen
+> CLK_TOP_UART_SEL>;
+>  			status = "disabled";
+>  		};
+>  
+> @@ -131,7 +171,11 @@ uart1: serial@11003000 {
+>  				     "mediatek,mt6577-uart";
+>  			reg = <0 0x11003000 0 0x400>;
+>  			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_UART1_SEL>,
+> +				 <&infracfg CLK_INFRA_UART1_CK>;
+> +			clock-names = "baud", "bus";
+> +			assigned-clocks = <&infracfg
+> CLK_INFRA_UART1_SEL>;
+> +			assigned-clock-parents = <&topckgen
+> CLK_TOP_F26M_SEL>;
+>  			status = "disabled";
+>  		};
+>  
+> @@ -140,10 +184,24 @@ uart2: serial@11004000 {
+>  				     "mediatek,mt6577-uart";
+>  			reg = <0 0x11004000 0 0x400>;
+>  			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
+> -			clocks = <&system_clk>;
+> +			clocks = <&infracfg CLK_INFRA_UART2_SEL>,
+> +				 <&infracfg CLK_INFRA_UART2_CK>;
+> +			clock-names = "baud", "bus";
+> +			assigned-clocks = <&infracfg
+> CLK_INFRA_UART2_SEL>;
+> +			assigned-clock-parents = <&topckgen
+> CLK_TOP_F26M_SEL>;
+>  			status = "disabled";
+>  		};
+>  
+> +		ethsys: syscon@15000000 {
+> +			 #address-cells = <1>;
+> +			 #size-cells = <1>;
+> +			 compatible = "mediatek,mt7986-ethsys",
+> +				      "syscon";
+> +			 reg = <0 0x15000000 0 0x1000>;
+> +			 #clock-cells = <1>;
+> +			 #reset-cells = <1>;
+> +		};
+> +
+>  	};
+>  
+>  };
+
 
 _______________________________________________
 Linux-mediatek mailing list
