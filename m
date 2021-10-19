@@ -2,84 +2,85 @@ Return-Path: <SRS0=SpBb=PH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3E33C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 07:20:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EEFBFC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 09:36:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8313760F8F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 07:20:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8313760F8F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id C55816137F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 09:36:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C55816137F
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dr6o3If3uLARGAtiqM/Okh2laap4VG5vmXyheIZZPQc=; b=Pht1VzRrVDJl2z
-	z9ghmWmah2MjJPXRrIWja1r8T9oEMplidlLTieElZzQ+ysY6ES5u7o27LbrEToR9lOn+gJ06Nw/4R
-	KfArYCw3YAVEHtCYW734AZlRaRhilQtJ0FrXfO8kqPDRaZVisNIwDZXazrOJojtihijCQQZfWz832
-	i63wsOdCQO4HcCmQ9bEpFc80nejso9vjIMqmSatPCjL8HXdpZUNXV1hVPxGc5epimCpqzRHY1bDUM
-	D5qJljDCuF8bm/cCr1lMeEj6EW0RzptCGvTvotzhltH5lOnLwjIILNqg5HfgZr+l9sRdFso2eZclZ
-	CR0DFWCXEP/KA1zD1nPA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=J473qh3PvdmaWieGyrEQe3efTKsqq6zWNQYptz0Yp/Q=; b=RtZeYdKJiqUD2b
+	qrPFE/rXKCkZRO27DMyfpyoHAe+C6h6vkHSBgHGofh7hXip5o+rsSPQoZXsFzm+aNbKyg3qZqiQNm
+	Wwq/J/D92dAR2ENbzGVFYhB4SGQtsNFTOzWoXBZ+7seIGjjroRZey1gr7y7PlNDFvZ/1UEA0lOe3p
+	+Pj1+lURGo6Q9BcNhU6lwC27jfNMtFEJEYLPIUCiQvoBeY9lnrlTWkyYF3BFSMBy/lu8qJm9L2VhH
+	nw78VyohgwhTLMZFZ1IPLvO64X693WRnaUweKvL/0zprrHiGfIwrZ108JKcQNc78+EkTAY65pSSaT
+	Rhu0BM2DgoATozFoij5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcjPa-000Nyt-Si; Tue, 19 Oct 2021 07:19:50 +0000
-Received: from so254-9.mailgun.net ([198.61.254.9])
+	id 1mclY2-000gFq-RG; Tue, 19 Oct 2021 09:36:42 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcjPY-000NyZ-2O
- for linux-mediatek@lists.infradead.org; Tue, 19 Oct 2021 07:19:49 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1634627987; h=Content-Type: MIME-Version: Message-ID: Date:
- References: In-Reply-To: Subject: Cc: To: From: Sender;
- bh=uMYO89HCqmvjMOPfezlrMm2RtJkAxmAYfrETwCAbYcI=;
- b=T4XSc148H3b5ZFwcxJXO7TfG8n6I24DnAOLdbbsrbQPXsfmu0dKf8UhVRfNfyFhFfDeaLKuQ
- nyiF6svypKZeHWEb8gKBjezWmhwacW/7ojQcv/8raQEh1kzluUvxqAJFoel7KeEZx1IlAt9z
- rItMmHjKIeak6kCrL+ducb9cX1I=
-X-Mailgun-Sending-Ip: 198.61.254.9
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n01.prod.us-west-2.postgun.com with SMTP id
- 616e719267f107c611cbbb22 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Tue, 19 Oct 2021 07:19:46
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 5D3B0C4360C; Tue, 19 Oct 2021 07:19:46 +0000 (UTC)
-Received: from tykki (tynnyri.adurom.net [51.15.11.48])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 302F4C4338F;
- Tue, 19 Oct 2021 07:19:40 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org 302F4C4338F
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Nick Hainke <vincent@systemli.org>, lorenzo.bianconi83@gmail.com,
- ryder.lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
- matthias.bgg@gmail.com, sean.wang@mediatek.com, shayne.chen@mediatek.com,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ id 1mclXo-000gAA-JD
+ for linux-mediatek@lists.infradead.org; Tue, 19 Oct 2021 09:36:30 +0000
+Received: by mail-wr1-x435.google.com with SMTP id t2so46673304wrb.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 19 Oct 2021 02:36:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pAQ3nDSi7GJKEkpq93Gk3fW3GifCTB9f+3J4xNuNsa8=;
+ b=gP8nU56KZdDX/muBPZFm9b5HoHa1FEeoZNaQ2M517z2vjkHquJFNvDOJ/wxnFuRZmc
+ 6VEiXjBGNq4woQv9vGa6VmWMg4+aelNiIhZGvrtKs8tMVuO/F2zE7q/+GiEcS94XM2Z8
+ tr3k5LODloiPk6Nmx/iMI9cKoOJH3WKCAMso2klC9XoLZ7Nrihxfs03+3KoLxzRkMNHP
+ qZuUrzT9di/B3Ht8J8NWeW2s+llj+fySzAGXtW1t84ZyvjmbfyusOGnGosqJqftB2Y4T
+ dlNIAEKjZpKNmEP/Tvhkr4ZvQAOlgNK2IKNTeO98tcnmXwoPa9xdhptRLpO9uOvWbOq8
+ S98A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=pAQ3nDSi7GJKEkpq93Gk3fW3GifCTB9f+3J4xNuNsa8=;
+ b=cewPKvFVe40ogy00qT2YbTiMJzAaDHQ5FsYSBq9F1cpda6zG+Xxf8hX1WzaxjrKo1D
+ TeqH8LZguu7GBoV7C4AN+Mn7tG4u+degdQv4gcwXY+UgnV2HEEjPXx0dRC5b5kx2AEeE
+ g5ZVcjahP0Q8j7yYDWDtOtPsm2GVi/BRY1gsXHzWesSgWZhMQtZ/zMsiitJ6OwcUSaHQ
+ ohlxIj1KsJjLj/F7U8AfFPtkWDbUrRKGrP6cuZurO/QbVwfHVRm7thJn1M+kwyIeKllN
+ YYu5voUBYNooThUzd54Z+kesLptlz6L4aVGAvvEYz73HC3807nPU18DXoLPBZTyHmBIz
+ 3/IA==
+X-Gm-Message-State: AOAM533vmoMZxRf59qRwDHT2bIsSK7ik0H5RA5XsZbgsnOXixjHlbwXx
+ LTeqiJszEZE5O5rOTgsOaPR8aQ==
+X-Google-Smtp-Source: ABdhPJxOQXjEw6eiRtOB4dRH95sLoz/UAgvA3+DT3VX0bWePwEQwNePyd24CoSoDt1rFoxL8eXWmIA==
+X-Received: by 2002:a5d:6e8d:: with SMTP id k13mr42883919wrz.295.1634636186755; 
+ Tue, 19 Oct 2021 02:36:26 -0700 (PDT)
+Received: from blmsp.lan ([2a02:2454:3e6:c900:5142:5fbb:5821:5dc3])
+ by smtp.gmail.com with ESMTPSA id o23sm1765765wms.18.2021.10.19.02.36.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Oct 2021 02:36:26 -0700 (PDT)
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Zhang Rui <rui.zhang@intel.com>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+Cc: linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Robert Foss <robert.foss@linaro.org>
-Subject: Re: [RFC v2] mt76: mt7615: mt7622: fix ibss and meshpoint
-In-Reply-To: <569d434d-cf5b-6ab0-5931-41b21ab047b7@nbd.name> (Felix Fietkau's
- message of "Mon, 18 Oct 2021 12:16:00 +0200")
-References: <20211007225725.2615-1-vincent@systemli.org>
- <87czoe61kh.fsf@codeaurora.org>
- <569d434d-cf5b-6ab0-5931-41b21ab047b7@nbd.name>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
-Date: Tue, 19 Oct 2021 10:19:35 +0300
-Message-ID: <87bl3lqy60.fsf@codeaurora.org>
+ fparent@baylibre.com, khilman@baylibre.com,
+ Markus Schneider-Pargmann <msp@baylibre.com>
+Subject: [PATCH v2 0/4] thermal: mediatek: Add mt8365 support
+Date: Tue, 19 Oct 2021 11:34:00 +0200
+Message-Id: <20211019093404.1913357-1-msp@baylibre.com>
+X-Mailer: git-send-email 2.33.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211019_001948_204862_9BE4DE26 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20211019_023628_691641_215B5A6D 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,51 +97,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Felix Fietkau <nbd@nbd.name> writes:
+Hi,
 
-> On 2021-10-09 10:32, Kalle Valo wrote:
->> Nick Hainke <vincent@systemli.org> writes:
->>
->>> Fixes: d8d59f66d136 ("mt76: mt7615: support 16 interfaces").
->>
->> The fixes tag should be in the end, before Signed-off-by tags. But I can
->> fix that during commit.
->>
->>> commit 7f4b7920318b ("mt76: mt7615: add ibss support") introduced IBSS
->>> and commit f4ec7fdf7f83 ("mt76: mt7615: enable support for mesh")
->>> meshpoint support.
->>>
->>> Both used in the "get_omac_idx"-function:
->>>
->>> 	if (~mask & BIT(HW_BSSID_0))
->>> 		return HW_BSSID_0;
->>>
->>> With commit d8d59f66d136 ("mt76: mt7615: support 16 interfaces") the
->>> ibss and meshpoint mode should "prefer hw bssid slot 1-3". However,
->>> with that change the ibss or meshpoint mode will not send any beacon on
->>> the mt7622 wifi anymore. Devices were still able to exchange data but
->>> only if a bssid already existed. Two mt7622 devices will never be able
->>> to communicate.
->>>
->>> This commits reverts the preferation of slot 1-3 for ibss and
->>> meshpoint. Only NL80211_IFTYPE_STATION will still prefer slot 1-3.
->>>
->>> Tested on Banana Pi R64.
->>>
->>> Signed-off-by: Nick Hainke <vincent@systemli.org>
->>
->> Felix, can I take this to wireless-drivers? Ack?
->
-> Acked-by: Felix Fietkau <nbd@nbd.name>
+this series adds a compatible to the bindings and a specific part for
+the thermal driver.
 
-Thanks. We are in -rc6 now and I'm not planning to send any more fixes
-to v5.15 (unless very critical), so I'll take this to
-wireless-drivers-next instead.
+In v2 I added a patch to remove unnecessary (void*) casts and fixed the
+comments I received.
+
+Thanks for any feedback or comments.
+
+Best,
+Markus
+
+
+Fabien Parent (1):
+  thermal: mediatek: add MT8365 thermal driver support
+
+Markus Schneider-Pargmann (3):
+  dt-bindings: thermal: mediatek: Add mt8365
+  thermal: mediatek: Fix apmixed error message
+  thermal: mediatek: Remove data void casts
+
+ .../bindings/thermal/mediatek-thermal.txt     |   1 +
+ drivers/thermal/mtk_thermal.c                 | 102 +++++++++++++++---
+ 2 files changed, 91 insertions(+), 12 deletions(-)
 
 -- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+2.33.0
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 _______________________________________________
 Linux-mediatek mailing list
