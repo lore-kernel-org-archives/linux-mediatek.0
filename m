@@ -2,76 +2,95 @@ Return-Path: <SRS0=SpBb=PH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2905DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 15:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CFABC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 15:37:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E169161074
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 15:29:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E169161074
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4193C610A3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 15:37:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4193C610A3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9rFt9D3Rzg/bOiZBgJYrGDNQ0LQR+Jg2pJq7Hw9x3kE=; b=3yx3lqVS3vU6Y3
-	XUtQ7U4BsZqr1KksceRrGWWCWkNviGrFKrCDnJcevx1IG2WZXED/1x7j6nrd2pi0ZXIQ/A+FZLKnm
-	o9zj+7Tqx6DGuqmxZu+NVL6CmDJP2BoKP1fWBn0FNvtl5p6mlvf5yxQgmkMRlBFmR7ieA7OuueLVL
-	IIbIoGz5nNu74v0dXRF86QnOPC7W0s5vA6kstjLfS+zpjS0Jggw7INdzV8LCkD2HUvbTQNazGcCme
-	SZPwd5Cpyb22l4dcCQOH7obDfgdC/rFbQuFcNs96zJ+Uwe/toMd/lIRfmG9et8hfdE4KRzcE+zBsV
-	wazecHkWsZYUzVGzwj5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Thx7gkl6EiETEbbDaGh3Y9QqiE0Yx8GX+2V03NqmYjk=; b=BpYGlZCrhgcIigbSwNvSINId2Q
+	gFIZHjIRXP5dcwpEJkuCjF1mf1B1KEsmAmdO2+Ruo8Mn6QCAEBJqocU20XzcM7xdfMVMCa+zkgib9
+	6x8MN0zBfmwWXyLf4QxPJWUuL3FUNT9Nkumo6e9tW9z+3DIay294fNst7JipohQyhcerunVJ5gGQq
+	JpQyo6kI1K9+P8yUE4dFP2t3uIhxVUSP6q0TJd1ptUv529VD7moh8WDuvwrkNLiqS3EN5NqjHTHVC
+	J1lDg21AH1cmy+Qhi0fFhYN9iRK3TCPV9/I98gWZ1YagGo72/C7cm0lvJYQwFYf8id/D7TxQ66DIV
+	6GE8Rn5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcr35-001h7s-Gq; Tue, 19 Oct 2021 15:29:07 +0000
-Received: from mail-ot1-f54.google.com ([209.85.210.54])
+	id 1mcrBF-001j1S-DM; Tue, 19 Oct 2021 15:37:33 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcr2q-001h36-5Q; Tue, 19 Oct 2021 15:28:54 +0000
-Received: by mail-ot1-f54.google.com with SMTP id
- 34-20020a9d0325000000b00552cae0decbso2844862otv.0; 
- Tue, 19 Oct 2021 08:28:50 -0700 (PDT)
+ id 1mcrBD-001j02-3X; Tue, 19 Oct 2021 15:37:32 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id
+ s198-20020a1ca9cf000000b0030d6986ea9fso3667939wme.1; 
+ Tue, 19 Oct 2021 08:37:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-transfer-encoding:content-language;
+ bh=RgqbMViYrJvJfXSAuMuLBuTv0g/FzYQxy3+96xrZPS0=;
+ b=YmeqlfO34935zN/p6151KhT5q8/n/UAZJ7siGtJq4Wl/hpIasVfuQruYC1O5ImJlHX
+ aqTyJfrXXWKok6ZXNVafOeUcZsces60DF1b1Fs+hOmL1Nv5zNwq325bWiz0I6N737JpF
+ 540P2ri3nDh5djMD2XvSRWdtsbnQ5OQBrYQZmKjV1YnobBOYOOlO6f8R2vSPRn86TjVx
+ Hf6qIxysua0PWBdSCNpOFQSYO/fU4AnVarw1LUW5s7RMhl7UesK76DPvZIdtoTBT1C7Y
+ WL6frWqMP055Ji6qUrDRFDP/pv4z5heB/8V3lJ8TYGIAQLJvrNpZtTT4A4O8iJMKBfv4
+ 9a8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vHf2SXNgvFEN9EG1nkXySGLE14k38If7KxbUxMVZr8Q=;
- b=V5cPmFX0jbSbh6XC2d7NKIBoOSEZQjA7N8mj0iau0CgI0AvllUh7anhI9OFRjGoRat
- iIZ8fV2T8cKDf0/sP4SN9OcnqFYB+NrMGQvCbT3Wy76aIqFP0brW2DZZukNVTyDITWLV
- IWVsl48BB7ciWkXhbeaWIXNCvIG6WcILSJU/VtTT+cb9wTmzgzHC1a6YCiCA/a6lCV7G
- DQCgitM7lgvguhP8KAUaRcyuncKmCT7wv11hjM8VvpQPRlhlYBcyVayi9LNQd5tkKlnM
- CY7eeXkD+fQ0yTPqsYN+UAjzllZRqPG8ThqLxGj/K438i8Z/dh79ug4wv4X9osGx0G07
- dfKA==
-X-Gm-Message-State: AOAM530Fpr3l+315eecjCvio3/OuERo5X8nUDy/BClNoIps9uuWuhPky
- jUi0yCrjYl0CJA2bmT4/vvJHN8uCgospSa9AUss=
-X-Google-Smtp-Source: ABdhPJxaGI2wAHKaZ3Grm/2d2cfd4A0aUYk+aJ/xB/kpO1E5Wkfk74LMwcfKPAOeFPhSTBR9ezSKoJv/fHc5v4T8/gY=
-X-Received: by 2002:a9d:65c1:: with SMTP id z1mr5791180oth.198.1634657329992; 
- Tue, 19 Oct 2021 08:28:49 -0700 (PDT)
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-transfer-encoding
+ :content-language;
+ bh=RgqbMViYrJvJfXSAuMuLBuTv0g/FzYQxy3+96xrZPS0=;
+ b=P8HT5VNYIWG3nmnPtphMixTuUWYh7GnOIL8nTUYFVondB5sRw85q9pViuH0S9+y+vz
+ D4zOCi81HcApD/HmIpLssJDUJDU2y2IGcv74JT/ZaaZdCu6OVD0WLHgMIC8z7nvLJq6A
+ WXfxDKYPVkskYIm8nhHr57TfjEiCNReLj/Af+G2i631pYXTQroPhEOIbmUTzlL8Z0oOZ
+ Ly+0Ze5g679g+u0pbZTXDkdnFnJWX5nQHTaZ4xIlyLT2rD/DuP/RVSERG1J1xeRAQNNE
+ K894cubWdh6ab3MJZKD83ZXypQDoPeFGAiBUYOmuIJTL7lgJT2AYatR3NGn99Mfn1txl
+ Zp9w==
+X-Gm-Message-State: AOAM532biAiUIS482cPvimbTyn70GraoTtOrCLFAgpOPkfd8RNTvhYa3
+ Dk22oJZLNm5gzOCSH7bve2Q=
+X-Google-Smtp-Source: ABdhPJyV3vN0PZ3kgNo2DYsqASVSMxXzcJdOA/Cy11dK5ItxP1hEcHr1ZXlKcn82BkT3iH0l73oVag==
+X-Received: by 2002:adf:f902:: with SMTP id b2mr45955598wrr.265.1634657849077; 
+ Tue, 19 Oct 2021 08:37:29 -0700 (PDT)
+Received: from ?IPv6:2a02:908:1252:fb60:4fc4:fae2:bc41:a808?
+ ([2a02:908:1252:fb60:4fc4:fae2:bc41:a808])
+ by smtp.gmail.com with ESMTPSA id l124sm2611704wml.8.2021.10.19.08.37.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Oct 2021 08:37:28 -0700 (PDT)
+Subject: Re: [Linaro-mm-sig] [PATCH] dma-buf: add attachments empty check for
+ dma_buf_release
+To: guangming.cao@mediatek.com, Sumit Semwal <sumit.semwal@linaro.org>,
+ =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "open list:DMA BUFFER SHARING FRAMEWORK" <linux-media@vger.kernel.org>,
+ "open list:DMA BUFFER SHARING FRAMEWORK" <dri-devel@lists.freedesktop.org>,
+ "moderated list:DMA BUFFER SHARING FRAMEWORK"
+ <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, wsd_upstream@mediatek.com
+References: <20211019122345.160555-1-guangming.cao@mediatek.com>
+ <YW686sIZie4xRUQO@phenom.ffwll.local>
+From: =?UTF-8?Q?Christian_K=c3=b6nig?= <ckoenig.leichtzumerken@gmail.com>
+Message-ID: <8cca7188-6484-d3a5-2b87-400f6500e742@gmail.com>
+Date: Tue, 19 Oct 2021 17:37:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-References: <1628651069-22162-1-git-send-email-chunfeng.yun@mediatek.com>
-In-Reply-To: <1628651069-22162-1-git-send-email-chunfeng.yun@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 19 Oct 2021 17:28:38 +0200
-Message-ID: <CAJZ5v0hTR2mZk7FuUVciX766qq0AwWXFBZoBsV3Sd9ToYuErdQ@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] PM / wakeirq: support enabling wake-up irq after
- runtime_suspend called
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: "Rafael J. Wysocki" <rjw@rjwysocki.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Pavel Machek <pavel@ucw.cz>, Len Brown <len.brown@intel.com>, 
- Mathias Nyman <mathias.nyman@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Linux PM <linux-pm@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ULTRA-WIDEBAND (UWB) SUBSYSTEM:" <linux-usb@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- Eddie Hung <eddie.hung@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>
+In-Reply-To: <YW686sIZie4xRUQO@phenom.ffwll.local>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211019_082852_241483_ECB02E86 
-X-CRM114-Status: GOOD (  50.95  )
+X-CRM114-CacheID: sfid-20211019_083731_215339_D555DDE4 
+X-CRM114-Status: GOOD (  27.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,301 +102,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Aug 11, 2021 at 5:05 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> When the dedicated wake-irq is level trigger, and it uses the
-> consumer's sleep status as the wakeup source, that means if the
-> consumer is not in sleep state, the wake-irq will be triggered
-> when enable it; For this case, need enable the wake-irq after
-> invoking the consumer's runtime_suspend() which make the consumer
-> enter sleep state.
 
-The terminology above is confusing.
 
-As a rule, the term "sleep state" applies to the whole system, not to
-an individual component.  It is better to use the term "low-power
-state" instead.  Also, there may be multiple low-power states per
-device and it is not clear which of them is relevant here.  My guess
-is that the IRQ will trigger unless power is removed from the device
-and you want to remove power from the device in ->runtime_suspend().
+Am 19.10.21 um 14:41 schrieb Daniel Vetter:
+> On Tue, Oct 19, 2021 at 08:23:45PM +0800, guangming.cao@mediatek.com wrote:
+>> From: Guangming Cao <Guangming.Cao@mediatek.com>
+>>
+>> Since there is no mandatory inspection for attachments in dma_buf_release.
+>> There will be a case that dma_buf already released but attachment is still
+>> in use, which can points to the dmabuf, and it maybe cause
+>> some unexpected issues.
+>>
+>> With IOMMU, when this cases occurs, there will have IOMMU address
+>> translation fault(s) followed by this warning,
+>> I think it's useful for dma devices to debug issue.
+>>
+>> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
+> This feels a lot like hand-rolling kobject debugging. If you want to do
+> this then I think adding kobject debug support to
+> dma_buf/dma_buf_attachment would be better than hand-rolling something
+> bespoke here.
 
-Moreover, I'm assuming that "the consumer" means "the device using the
-wake IRQ", but this is not particularly clear either.
-
-Now, the problem is that you need the device using the wake IRQ to be
-in a low-power state in which the IRQ doesn't trigger automatically
-before enabling the IRQ, and so you need to enable the IRQ after
-running ->runtime_suspend() for that device and IMO this is how it
-needs to be described.
-
-> e.g.
-> Assume the wake-irq is a low level trigger type, and the wakeup
-> signal comes from the sleep status of consumer.
-> The wakeup signal is low level at running time (0), and becomes
-> high level when the consumer enters sleep state (runtime_suspend
-> (1) is called), a wakeup event at (2) make the consumer exit sleep
-> state, then the wakeup signal also becomes low level.
->
->                 ------------------
->                |           ^     ^|
-> ----------------           |     | --------------
->  |<---(0)--->|<--(1)--|   (3)   (2)    (4)
->
-> if enable the wake-irq before calling runtime_suspend during (0),
-> an interrupt will arise, it causes resume immediately;
-> it works if enable wake-irq ( e.g. at (3) or (4)) after calling
-> runtime_suspend.
->
-> This patch introduces a new status WAKE_IRQ_DEDICATED_LATE_ENABLED
-> to optionally support enabling wake-irq after calling runtime_suspend().
->
-> Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> v3: add new status suggested by Rafael
->
-> v2: add more commit message
->
->   Use the falling edge trigger interrupt suggested by Ikjoon [1], it
-> works well at firstly when only use this related wakeup source, but
-> encounter issues if use other wakeup sources to wakeup platform as
-> below steps:
-> 1. use another wakeup source to wake up the suspended system;
-> 2. the consumer's resume() will be called, and exits sleep state;
-> 3. the consumer's wakeup signal will fall into low level, due to
->    currently the wakeup irq is disabled, the wake-irq is pending;
-> 4. the consumer tries to enter runtime suspend, but there is a
->    pending wakeup irq, so will resume again, this will repeat
->    endlessly.
->
->   Send out the patch again for further discussion.
->
-> [1]: https://patchwork.kernel.org/patch/12190407
->
-> ---
->  drivers/base/power/power.h   |  7 ++++--
->  drivers/base/power/runtime.c |  6 +++--
->  drivers/base/power/wakeirq.c | 49 +++++++++++++++++++++++++++++++++---
->  include/linux/pm_wakeirq.h   |  5 ++++
->  4 files changed, 60 insertions(+), 7 deletions(-)
->
-> diff --git a/drivers/base/power/power.h b/drivers/base/power/power.h
-> index 54292cdd7808..2d5dfc886f0b 100644
-> --- a/drivers/base/power/power.h
-> +++ b/drivers/base/power/power.h
-> @@ -25,8 +25,10 @@ extern u64 pm_runtime_active_time(struct device *dev);
->
->  #define WAKE_IRQ_DEDICATED_ALLOCATED   BIT(0)
->  #define WAKE_IRQ_DEDICATED_MANAGED     BIT(1)
-> +#define WAKE_IRQ_DEDICATED_LATE_ENABLED        BIT(2)
-
-This name is a bit long and it doesn't reflect the nautre of the
-problem, which is that you need code ordering that is a reverse of the
-usual flow.
-
-WAKE_IRQ_DEDICATED_REVERSE may be a better name.
-
->  #define WAKE_IRQ_DEDICATED_MASK                (WAKE_IRQ_DEDICATED_ALLOCATED | \
-> -                                        WAKE_IRQ_DEDICATED_MANAGED)
-> +                                        WAKE_IRQ_DEDICATED_MANAGED | \
-> +                                        WAKE_IRQ_DEDICATED_LATE_ENABLED)
->
->  struct wake_irq {
->         struct device *dev;
-> @@ -39,7 +41,8 @@ extern void dev_pm_arm_wake_irq(struct wake_irq *wirq);
->  extern void dev_pm_disarm_wake_irq(struct wake_irq *wirq);
->  extern void dev_pm_enable_wake_irq_check(struct device *dev,
->                                          bool can_change_status);
-> -extern void dev_pm_disable_wake_irq_check(struct device *dev);
-> +extern void dev_pm_disable_wake_irq_check(struct device *dev, bool skip_enable_late);
-> +extern void dev_pm_enable_wake_irq_complete(struct device *dev);
->
->  #ifdef CONFIG_PM_SLEEP
->
-> diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
-> index 8a66eaf731e4..97646aa11376 100644
-> --- a/drivers/base/power/runtime.c
-> +++ b/drivers/base/power/runtime.c
-> @@ -645,6 +645,8 @@ static int rpm_suspend(struct device *dev, int rpmflags)
->         if (retval)
->                 goto fail;
->
-> +       dev_pm_enable_wake_irq_complete(dev);
-> +
->   no_callback:
->         __update_runtime_status(dev, RPM_SUSPENDED);
->         pm_runtime_deactivate_timer(dev);
-> @@ -690,7 +692,7 @@ static int rpm_suspend(struct device *dev, int rpmflags)
->         return retval;
->
->   fail:
-> -       dev_pm_disable_wake_irq_check(dev);
-> +       dev_pm_disable_wake_irq_check(dev, false);
->         __update_runtime_status(dev, RPM_ACTIVE);
->         dev->power.deferred_resume = false;
->         wake_up_all(&dev->power.wait_queue);
-> @@ -873,7 +875,7 @@ static int rpm_resume(struct device *dev, int rpmflags)
->
->         callback = RPM_GET_CALLBACK(dev, runtime_resume);
->
-> -       dev_pm_disable_wake_irq_check(dev);
-> +       dev_pm_disable_wake_irq_check(dev, true);
->         retval = rpm_callback(callback, dev);
->         if (retval) {
->                 __update_runtime_status(dev, RPM_SUSPENDED);
-> diff --git a/drivers/base/power/wakeirq.c b/drivers/base/power/wakeirq.c
-> index 3bad3266a2ad..a612f5c26c6c 100644
-> --- a/drivers/base/power/wakeirq.c
-> +++ b/drivers/base/power/wakeirq.c
-> @@ -215,6 +215,24 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
->  }
->  EXPORT_SYMBOL_GPL(dev_pm_set_dedicated_wake_irq);
->
-> +/**
-> + * dev_pm_wake_irq_set_late_enabled_status - set status WAKE_IRQ_DEDICATED_LATE_ENABLED
-> + * @dev: Device
-> + *
-> + * Set the status of WAKE_IRQ_DEDICATED_LATE_ENABLED to tell rpm_suspend()
-> + * to enable dedicated wake-up interrupt after invoking the runtime_suspend(),
-> + *
-> + * Should be called after setting dedicated wake-up interrupt.
-> + */
-> +void dev_pm_wake_irq_set_late_enabled_status(struct device *dev)
-> +{
-> +       struct wake_irq *wirq = dev->power.wakeirq;
-> +
-> +       if (wirq && (wirq->status & WAKE_IRQ_DEDICATED_ALLOCATED))
-> +               wirq->status |= WAKE_IRQ_DEDICATED_LATE_ENABLED;
-> +}
-> +EXPORT_SYMBOL_GPL(dev_pm_wake_irq_set_late_enabled_status);
-
-Instead of doing this, I would provide a special version of
-dev_pm_set_dedicated_wake_irq() for this special use case such that it
-will set WAKE_IRQ_DEDICATED_LATE_ENABLED (or whatever you call it) at
-the allocation time (because this is a property of the IRQ and not
-something that can change).
-
-Maybe call it dev_pm_set_dedicated_wake_irq_reverse() and implemet
-both it and dev_pm_set_dedicated_wake_irq() as wrappers around
-something like __dev_pm_set_dedicated_wake_irq() taking an extra
-argument that will indicate whether or not to set the new flag for
-this IRQ.
-
-> +
->  /**
->   * dev_pm_enable_wake_irq - Enable device wake-up interrupt
->   * @dev: Device
-> @@ -285,27 +303,52 @@ void dev_pm_enable_wake_irq_check(struct device *dev,
->         return;
->
->  enable:
-> -       enable_irq(wirq->irq);
-> +       if (!can_change_status || !(wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED))
-> +               enable_irq(wirq->irq);
->  }
->
->  /**
->   * dev_pm_disable_wake_irq_check - Checks and disables wake-up interrupt
->   * @dev: Device
-> + * @skip_late_enabled_status: skip checking WAKE_IRQ_DEDICATED_LATE_ENABLED
-
-I would call this argument "cond_disable" or similarly to mean that
-the IRQ should be disabled conditionally depending on the new flag.
-
-And the description of it would be "If set, also check
-WAKE_IRQ_DEDICATED_LATE_ENABLED".
-
->   *
->   * Disables wake-up interrupt conditionally based on status.
->   * Should be only called from rpm_suspend() and rpm_resume() path.
->   */
-> -void dev_pm_disable_wake_irq_check(struct device *dev)
-> +void dev_pm_disable_wake_irq_check(struct device *dev, bool skip_late_enabled_status)
-
-Can't this function be static?
-
->  {
->         struct wake_irq *wirq = dev->power.wakeirq;
->
->         if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
->                 return;
-
-And I would just add the following line here:
-
-if (cond_disable && (wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED))
-        return;
+Well I would call that overkill.
 
 >
-> -       if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED)
-> +       if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
-> +           (skip_late_enabled_status ||
-> +            !(wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED)))
->                 disable_irq_nosync(wirq->irq);
->  }
+> Also on the patch itself: You don't need the trylock. For correctly
+> working code non one else can get at the dma-buf, so no locking needed to
+> iterate through the attachment list. For incorrect code the kernel will be
+> on fire pretty soon anyway, trying to do locking won't help :-) And
+> without the trylock we can catch more bugs (e.g. if you also forgot to
+> unlock and not just forgot to detach).
+
+You also don't need the WARN(!list_empty...) because a few line below we 
+already have a "WARN_ON(!list_empty(&dmabuf->attachments));".
+
+Christian.
+
+> -Daniel
 >
-> +/**
-> + * dev_pm_enable_wake_irq_complete - enable wake irq based on status
+>> ---
+>>   drivers/dma-buf/dma-buf.c | 23 +++++++++++++++++++++++
+>>   1 file changed, 23 insertions(+)
+>>
+>> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
+>> index 511fe0d217a0..672404857d6a 100644
+>> --- a/drivers/dma-buf/dma-buf.c
+>> +++ b/drivers/dma-buf/dma-buf.c
+>> @@ -74,6 +74,29 @@ static void dma_buf_release(struct dentry *dentry)
+>>   	 */
+>>   	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
+>>   
+>> +	/* attachment check */
+>> +	if (dma_resv_trylock(dmabuf->resv) && WARN(!list_empty(&dmabuf->attachments),
+>> +	    "%s err, inode:%08lu size:%08zu name:%s exp_name:%s flags:0x%08x mode:0x%08x, %s\n",
+>> +	    __func__, file_inode(dmabuf->file)->i_ino, dmabuf->size,
+>> +	    dmabuf->name, dmabuf->exp_name,
+>> +	    dmabuf->file->f_flags, dmabuf->file->f_mode,
+>> +	    "Release dmabuf before detach all attachments, dump attach:\n")) {
+>> +		int attach_cnt = 0;
+>> +		dma_addr_t dma_addr;
+>> +		struct dma_buf_attachment *attach_obj;
+>> +		/* dump all attachment info */
+>> +		list_for_each_entry(attach_obj, &dmabuf->attachments, node) {
+>> +			dma_addr = (dma_addr_t)0;
+>> +			if (attach_obj->sgt)
+>> +				dma_addr = sg_dma_address(attach_obj->sgt->sgl);
+>> +			pr_err("attach[%d]: dev:%s dma_addr:0x%-12lx\n",
+>> +			       attach_cnt, dev_name(attach_obj->dev), dma_addr);
+>> +			attach_cnt++;
+>> +		}
+>> +		pr_err("Total %d devices attached\n\n", attach_cnt);
+>> +		dma_resv_unlock(dmabuf->resv);
+>> +	}
+>> +
+>>   	dmabuf->ops->release(dmabuf);
+>>   
+>>   	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
+>> -- 
+>> 2.17.1
+>>
 
-"Enable wake IRQ not enabled before"
-
-> + * @dev: Device
-
-"Device using the wake IRQ"
-
-> + *
-> + * Enable wake-up interrupt conditionally based on status, mainly for
-> + * enabling wake-up interrupt after runtime_suspend() is called.
-> + *
-> + * Should be only called from rpm_suspend() path.
-
-This part of the kerneldoc comment needs to be rewritten too, but it
-looks like the function can be static, in which case it won't need the
-kerneldoc comment at all.
-
-> + */
-> +void dev_pm_enable_wake_irq_complete(struct device *dev)
-> +{
-> +       struct wake_irq *wirq = dev->power.wakeirq;
-> +
-> +       if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
-> +               return;
-> +
-> +       if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
-> +           wirq->status & WAKE_IRQ_DEDICATED_LATE_ENABLED)
-> +               enable_irq(wirq->irq);
-> +}
-> +
->  /**
->   * dev_pm_arm_wake_irq - Arm device wake-up
->   * @wirq: Device wake-up interrupt
-> diff --git a/include/linux/pm_wakeirq.h b/include/linux/pm_wakeirq.h
-> index cd5b62db9084..92f814d583f8 100644
-> --- a/include/linux/pm_wakeirq.h
-> +++ b/include/linux/pm_wakeirq.h
-> @@ -22,6 +22,7 @@ extern int dev_pm_set_dedicated_wake_irq(struct device *dev,
->  extern void dev_pm_clear_wake_irq(struct device *dev);
->  extern void dev_pm_enable_wake_irq(struct device *dev);
->  extern void dev_pm_disable_wake_irq(struct device *dev);
-> +extern void dev_pm_wake_irq_set_late_enabled_status(struct device *dev);
->
->  #else  /* !CONFIG_PM */
->
-> @@ -47,5 +48,9 @@ static inline void dev_pm_disable_wake_irq(struct device *dev)
->  {
->  }
->
-> +static inline void dev_pm_wake_irq_set_late_enabled_status(struct device *dev)
-> +{
-> +}
-> +
->  #endif /* CONFIG_PM */
->  #endif /* _LINUX_PM_WAKEIRQ_H */
-> --
 
 _______________________________________________
 Linux-mediatek mailing list
