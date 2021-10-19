@@ -2,95 +2,86 @@ Return-Path: <SRS0=SpBb=PH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CFABC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 15:37:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 858E6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 16:09:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4193C610A3
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 15:37:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4193C610A3
+	by mail.kernel.org (Postfix) with ESMTPS id 5335C60F02
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 16:09:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5335C60F02
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Thx7gkl6EiETEbbDaGh3Y9QqiE0Yx8GX+2V03NqmYjk=; b=BpYGlZCrhgcIigbSwNvSINId2Q
-	gFIZHjIRXP5dcwpEJkuCjF1mf1B1KEsmAmdO2+Ruo8Mn6QCAEBJqocU20XzcM7xdfMVMCa+zkgib9
-	6x8MN0zBfmwWXyLf4QxPJWUuL3FUNT9Nkumo6e9tW9z+3DIay294fNst7JipohQyhcerunVJ5gGQq
-	JpQyo6kI1K9+P8yUE4dFP2t3uIhxVUSP6q0TJd1ptUv529VD7moh8WDuvwrkNLiqS3EN5NqjHTHVC
-	J1lDg21AH1cmy+Qhi0fFhYN9iRK3TCPV9/I98gWZ1YagGo72/C7cm0lvJYQwFYf8id/D7TxQ66DIV
-	6GE8Rn5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Mime-Version:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=8i0JDBuYbuaJvFKBUR2e5d6333Lx5OpoYAkM/V6uuzE=; b=xqjv0ZIVZsO7+e
+	BfPLWdObgBZe47HrYK0voysHV58ujW4ZRaW7773+cbftQL/kxcHpkJNxLm2rWZMoKRzuo2tcycK3O
+	7noyINcMN8FENzmktLya3nXQx5TE9zTwa/+uTfGJ5mv678jOj+l2/tQuec+NhT9QXVfsQGPYUbdWo
+	29kg6xUArFRfW5Yr2iK3B6crq07MwpArrNZUtOar//EmvmGw0YY9j3Po8BACfLFXn4MbbzOnlk1nq
+	TCMtnl9krDFjShIotejGFqGrNbH5swlAyTRMLE1C3RZ7IEbvsv9fZCbFEb5KF/ry8NSchdHI6ITi9
+	5gen/X+oBz1BGdWzd9gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcrBF-001j1S-DM; Tue, 19 Oct 2021 15:37:33 +0000
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	id 1mcrgM-001r6H-Fb; Tue, 19 Oct 2021 16:09:42 +0000
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcrBD-001j02-3X; Tue, 19 Oct 2021 15:37:32 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id
- s198-20020a1ca9cf000000b0030d6986ea9fso3667939wme.1; 
- Tue, 19 Oct 2021 08:37:30 -0700 (PDT)
+ id 1mcre5-001puS-Jm; Tue, 19 Oct 2021 16:07:23 +0000
+Received: by mail-pl1-x634.google.com with SMTP id 21so13969635plo.13;
+ Tue, 19 Oct 2021 09:07:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-transfer-encoding:content-language;
- bh=RgqbMViYrJvJfXSAuMuLBuTv0g/FzYQxy3+96xrZPS0=;
- b=YmeqlfO34935zN/p6151KhT5q8/n/UAZJ7siGtJq4Wl/hpIasVfuQruYC1O5ImJlHX
- aqTyJfrXXWKok6ZXNVafOeUcZsces60DF1b1Fs+hOmL1Nv5zNwq325bWiz0I6N737JpF
- 540P2ri3nDh5djMD2XvSRWdtsbnQ5OQBrYQZmKjV1YnobBOYOOlO6f8R2vSPRn86TjVx
- Hf6qIxysua0PWBdSCNpOFQSYO/fU4AnVarw1LUW5s7RMhl7UesK76DPvZIdtoTBT1C7Y
- WL6frWqMP055Ji6qUrDRFDP/pv4z5heB/8V3lJ8TYGIAQLJvrNpZtTT4A4O8iJMKBfv4
- 9a8Q==
+ h=date:from:to:cc:subject:mime-version:message-id
+ :content-transfer-encoding;
+ bh=9nKO5MBR4+kd0HJ32kWDjjupmN6pRGPGsMDzDplVOvc=;
+ b=OR/bROCSq3bOlD4iij6cTHHxAZvsqvk1aiDeAhj0vVDqc+JYbPlhG4b5aLnKjO9M0F
+ UbJG4CIGlf/EWCDZ0awppV7uGbToiV8/4DS4jRifHiOZScqZjthv3dvaDOgKke04eNwu
+ NwDzcCJm6Ayqk2V+KvG/LiBNbsIWOMy6k33JLPko8+bfxUMc+0EfLU7MARKxCxwnmlwv
+ lvINqNnQeEhvR02vkeApn+KnWtK7khduVgbohP2Q+Qmud1y+0j+OP0LUyIuVw96Nxir8
+ MdXh93/rSeIrlrDxN54xIVIGXH2ApHrxWr3PEHuA1i6mTzqU3Wg+KvMqg1/ugjDvOcki
+ 1SfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-transfer-encoding
- :content-language;
- bh=RgqbMViYrJvJfXSAuMuLBuTv0g/FzYQxy3+96xrZPS0=;
- b=P8HT5VNYIWG3nmnPtphMixTuUWYh7GnOIL8nTUYFVondB5sRw85q9pViuH0S9+y+vz
- D4zOCi81HcApD/HmIpLssJDUJDU2y2IGcv74JT/ZaaZdCu6OVD0WLHgMIC8z7nvLJq6A
- WXfxDKYPVkskYIm8nhHr57TfjEiCNReLj/Af+G2i631pYXTQroPhEOIbmUTzlL8Z0oOZ
- Ly+0Ze5g679g+u0pbZTXDkdnFnJWX5nQHTaZ4xIlyLT2rD/DuP/RVSERG1J1xeRAQNNE
- K894cubWdh6ab3MJZKD83ZXypQDoPeFGAiBUYOmuIJTL7lgJT2AYatR3NGn99Mfn1txl
- Zp9w==
-X-Gm-Message-State: AOAM532biAiUIS482cPvimbTyn70GraoTtOrCLFAgpOPkfd8RNTvhYa3
- Dk22oJZLNm5gzOCSH7bve2Q=
-X-Google-Smtp-Source: ABdhPJyV3vN0PZ3kgNo2DYsqASVSMxXzcJdOA/Cy11dK5ItxP1hEcHr1ZXlKcn82BkT3iH0l73oVag==
-X-Received: by 2002:adf:f902:: with SMTP id b2mr45955598wrr.265.1634657849077; 
- Tue, 19 Oct 2021 08:37:29 -0700 (PDT)
-Received: from ?IPv6:2a02:908:1252:fb60:4fc4:fae2:bc41:a808?
- ([2a02:908:1252:fb60:4fc4:fae2:bc41:a808])
- by smtp.gmail.com with ESMTPSA id l124sm2611704wml.8.2021.10.19.08.37.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Oct 2021 08:37:28 -0700 (PDT)
-Subject: Re: [Linaro-mm-sig] [PATCH] dma-buf: add attachments empty check for
- dma_buf_release
-To: guangming.cao@mediatek.com, Sumit Semwal <sumit.semwal@linaro.org>,
- =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "open list:DMA BUFFER SHARING FRAMEWORK" <linux-media@vger.kernel.org>,
- "open list:DMA BUFFER SHARING FRAMEWORK" <dri-devel@lists.freedesktop.org>,
- "moderated list:DMA BUFFER SHARING FRAMEWORK"
- <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, wsd_upstream@mediatek.com
-References: <20211019122345.160555-1-guangming.cao@mediatek.com>
- <YW686sIZie4xRUQO@phenom.ffwll.local>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <ckoenig.leichtzumerken@gmail.com>
-Message-ID: <8cca7188-6484-d3a5-2b87-400f6500e742@gmail.com>
-Date: Tue, 19 Oct 2021 17:37:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <YW686sIZie4xRUQO@phenom.ffwll.local>
-Content-Language: en-US
+ h=x-gm-message-state:date:from:to:cc:subject:mime-version:message-id
+ :content-transfer-encoding;
+ bh=9nKO5MBR4+kd0HJ32kWDjjupmN6pRGPGsMDzDplVOvc=;
+ b=NmnXodDFZPh32CHAKwiQP/vuO54cUuPglK7ofIDBLPV5+A/sqjYcgj1Z05fF7OQTHW
+ rPNMBS2zH4sCI11DQwcLE2cPX952UAp1aDrhn5NJHy2dTHSrHlic0eTBPio7CMq67u9F
+ hu/AA9puioS6wpGB+3Kv/sdvBSfY9aGoFPYU0VX/meFDESNcKTYK4Iwat4UEsEVau6Ot
+ zAjEZNHP22IqBKYawc68LMZJePdoiwi9BeCyp14B925Nu4gA9QC20y0g1kU8LgNJcPhD
+ mbEv/BqEHiNgSoRPPYAplPC4WsqrUuCEzafZvd/ry36BkPY9oVh1tWJ4TncYzrCGLNhN
+ ydXw==
+X-Gm-Message-State: AOAM53174mlw2KZPzi6WMwH5Z0io/7B2qeQmDexZI1b+sO9MOYFuccgp
+ 7qMNJKNmVa/lysWq3/RPIdQdQClzBhBPqA==
+X-Google-Smtp-Source: ABdhPJznPURueeiRev5x7DrHOelLkHIzxaJ23QRRfr/hyvKHWpOaeYT/A0GkEMuK6vKysLb2eGSpXg==
+X-Received: by 2002:a17:902:6ac4:b0:13f:52e1:8840 with SMTP id
+ i4-20020a1709026ac400b0013f52e18840mr33719062plt.15.1634659638362; 
+ Tue, 19 Oct 2021 09:07:18 -0700 (PDT)
+Received: from DESKTOP-O1J7GSD (211-21-92-117.hinet-ip.hinet.net.
+ [211.21.92.117])
+ by smtp.gmail.com with ESMTPSA id t14sm16062502pga.62.2021.10.19.09.07.15
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 19 Oct 2021 09:07:17 -0700 (PDT)
+Date: Wed, 20 Oct 2021 00:07:16 +0800
+From: "zhaojh329@gmail.com" <zhaojh329@gmail.com>
+To: sr <sr@denx.de>
+Cc: matthias.bgg <matthias.bgg@gmail.com>, 
+ linux-i2c <linux-i2c@vger.kernel.org>, 
+ linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+ linux-mediatek <linux-mediatek@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
+Subject: [PATCH] i2c: mt76xx: add I2C_FUNC_NOSTART and I2C_M_REV_DIR_ADDR
+X-Priority: 3
+X-GUID: 4D9ECA36-F416-4365-8968-CACAFDFE0424
+X-Has-Attach: no
+X-Mailer: Foxmail 7.2.21.453[cn]
+Mime-Version: 1.0
+Message-ID: <202110200007146639874@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211019_083731_215339_D555DDE4 
-X-CRM114-Status: GOOD (  27.08  )
+X-CRM114-CacheID: sfid-20211019_090721_734708_8D8B1CBB 
+X-CRM114-Status: GOOD (  14.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,93 +93,43 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-Am 19.10.21 um 14:41 schrieb Daniel Vetter:
-> On Tue, Oct 19, 2021 at 08:23:45PM +0800, guangming.cao@mediatek.com wrote:
->> From: Guangming Cao <Guangming.Cao@mediatek.com>
->>
->> Since there is no mandatory inspection for attachments in dma_buf_release.
->> There will be a case that dma_buf already released but attachment is still
->> in use, which can points to the dmabuf, and it maybe cause
->> some unexpected issues.
->>
->> With IOMMU, when this cases occurs, there will have IOMMU address
->> translation fault(s) followed by this warning,
->> I think it's useful for dma devices to debug issue.
->>
->> Signed-off-by: Guangming Cao <Guangming.Cao@mediatek.com>
-> This feels a lot like hand-rolling kobject debugging. If you want to do
-> this then I think adding kobject debug support to
-> dma_buf/dma_buf_attachment would be better than hand-rolling something
-> bespoke here.
-
-Well I would call that overkill.
-
->
-> Also on the patch itself: You don't need the trylock. For correctly
-> working code non one else can get at the dma-buf, so no locking needed to
-> iterate through the attachment list. For incorrect code the kernel will be
-> on fire pretty soon anyway, trying to do locking won't help :-) And
-> without the trylock we can catch more bugs (e.g. if you also forgot to
-> unlock and not just forgot to detach).
-
-You also don't need the WARN(!list_empty...) because a few line below we 
-already have a "WARN_ON(!list_empty(&dmabuf->attachments));".
-
-Christian.
-
-> -Daniel
->
->> ---
->>   drivers/dma-buf/dma-buf.c | 23 +++++++++++++++++++++++
->>   1 file changed, 23 insertions(+)
->>
->> diff --git a/drivers/dma-buf/dma-buf.c b/drivers/dma-buf/dma-buf.c
->> index 511fe0d217a0..672404857d6a 100644
->> --- a/drivers/dma-buf/dma-buf.c
->> +++ b/drivers/dma-buf/dma-buf.c
->> @@ -74,6 +74,29 @@ static void dma_buf_release(struct dentry *dentry)
->>   	 */
->>   	BUG_ON(dmabuf->cb_shared.active || dmabuf->cb_excl.active);
->>   
->> +	/* attachment check */
->> +	if (dma_resv_trylock(dmabuf->resv) && WARN(!list_empty(&dmabuf->attachments),
->> +	    "%s err, inode:%08lu size:%08zu name:%s exp_name:%s flags:0x%08x mode:0x%08x, %s\n",
->> +	    __func__, file_inode(dmabuf->file)->i_ino, dmabuf->size,
->> +	    dmabuf->name, dmabuf->exp_name,
->> +	    dmabuf->file->f_flags, dmabuf->file->f_mode,
->> +	    "Release dmabuf before detach all attachments, dump attach:\n")) {
->> +		int attach_cnt = 0;
->> +		dma_addr_t dma_addr;
->> +		struct dma_buf_attachment *attach_obj;
->> +		/* dump all attachment info */
->> +		list_for_each_entry(attach_obj, &dmabuf->attachments, node) {
->> +			dma_addr = (dma_addr_t)0;
->> +			if (attach_obj->sgt)
->> +				dma_addr = sg_dma_address(attach_obj->sgt->sgl);
->> +			pr_err("attach[%d]: dev:%s dma_addr:0x%-12lx\n",
->> +			       attach_cnt, dev_name(attach_obj->dev), dma_addr);
->> +			attach_cnt++;
->> +		}
->> +		pr_err("Total %d devices attached\n\n", attach_cnt);
->> +		dma_resv_unlock(dmabuf->resv);
->> +	}
->> +
->>   	dmabuf->ops->release(dmabuf);
->>   
->>   	if (dmabuf->resv == (struct dma_resv *)&dmabuf[1])
->> -- 
->> 2.17.1
->>
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+wqBUaGlzIHBhdGNoIGFkZHMgSTJDX0ZVTkNfTk9TVEFSVCBhbmQgSTJDX01fUkVWX0RJUl9BRERS
+IHN1cHBvcnQgZm9yCk1lZGlhVGVrIE1UNzYyMS83NjI4Lzc2ODguIFRoaXMgaXMgdXNlZnVsIGZv
+ciBzb21lIEkyQyBzbGF2ZSBjaGlwcywKc3VjaCBhcyAnZHJpdmVycy9pbnB1dC9qb3lzdGljay9h
+czUwMTEuYycuCgpTaWduZWQtb2ZmLWJ5OiBKaWFuaHVpIFpoYW8gPHpoYW9qaDMyOUBnbWFpbC5j
+b20+Ci0tLQogZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDc2MjEuYyB8IDkgKysrKysrKystCiAx
+IGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0
+IGEvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDc2MjEuYyBiL2RyaXZlcnMvaTJjL2J1c3Nlcy9p
+MmMtbXQ3NjIxLmMKaW5kZXggNDVmZTRhN2ZlMGMwLi4zZDI3NjNkOWMwOTAgMTAwNjQ0Ci0tLSBh
+L2RyaXZlcnMvaTJjL2J1c3Nlcy9pMmMtbXQ3NjIxLmMKKysrIGIvZHJpdmVycy9pMmMvYnVzc2Vz
+L2kyYy1tdDc2MjEuYwpAQCAtMTUwLDYgKzE1MCw5IEBAIHN0YXRpYyBpbnQgbXRrX2kyY19tYXN0
+ZXJfeGZlcihzdHJ1Y3QgaTJjX2FkYXB0ZXIgKmFkYXAsIHN0cnVjdCBpMmNfbXNnICptc2dzLAog
+CWZvciAoaSA9IDA7IGkgPCBudW07IGkrKykgewogCQlwbXNnID0gJm1zZ3NbaV07CiAKKwkJaWYg
+KHBtc2ctPmZsYWdzICYgSTJDX01fTk9TVEFSVCkKKwkJCWdvdG8gbm9zdGFydDsKKwogCQkvKiB3
+YWl0IGhhcmR3YXJlIGlkbGUgKi8KIAkJcmV0ID0gbXRrX2kyY193YWl0X2lkbGUoaTJjKTsKIAkJ
+aWYgKHJldCkKQEAgLTE3NCw2ICsxNzcsOCBAQCBzdGF0aWMgaW50IG10a19pMmNfbWFzdGVyX3hm
+ZXIoc3RydWN0IGkyY19hZGFwdGVyICphZGFwLCBzdHJ1Y3QgaTJjX21zZyAqbXNncywKIAkJfSBl
+bHNlIHsKIAkJCS8qIDcgYml0cyBhZGRyZXNzICovCiAJCQlhZGRyID0gaTJjXzhiaXRfYWRkcl9m
+cm9tX21zZyhwbXNnKTsKKwkJCWlmIChwbXNnLT5mbGFncyAmIEkyQ19NX1JFVl9ESVJfQUREUikK
+KwkJCQlhZGRyIF49IDE7CiAJCQlpb3dyaXRlMzIoYWRkciwgaTJjLT5iYXNlICsgUkVHX1NNMEQw
+X1JFRyk7CiAJCQlyZXQgPSBtdGtfaTJjX21hc3Rlcl9jbWQoaTJjLCBTTTBDVEwxX1dSSVRFLCAx
+KTsKIAkJCWlmIChyZXQpCkBAIC0xODcsNiArMTkyLDcgQEAgc3RhdGljIGludCBtdGtfaTJjX21h
+c3Rlcl94ZmVyKHN0cnVjdCBpMmNfYWRhcHRlciAqYWRhcCwgc3RydWN0IGkyY19tc2cgKm1zZ3Ms
+CiAJCQkJZ290byBlcnJfYWNrOwogCQl9CiAKK25vc3RhcnQ6CiAJCS8qIHRyYW5zZmVyIGRhdGEg
+Ki8KIAkJZm9yIChsZW4gPSBwbXNnLT5sZW4sIGogPSAwOyBsZW4gPiAwOyBsZW4gLT0gOCwgaiAr
+PSA4KSB7CiAJCQlwYWdlX2xlbiA9IChsZW4gPj0gOCkgPyA4IDogbGVuOwpAQCAtMjQyLDcgKzI0
+OCw4IEBAIHN0YXRpYyBpbnQgbXRrX2kyY19tYXN0ZXJfeGZlcihzdHJ1Y3QgaTJjX2FkYXB0ZXIg
+KmFkYXAsIHN0cnVjdCBpMmNfbXNnICptc2dzLAogCiBzdGF0aWMgdTMyIG10a19pMmNfZnVuYyhz
+dHJ1Y3QgaTJjX2FkYXB0ZXIgKmEpCiB7Ci0JcmV0dXJuIEkyQ19GVU5DX0kyQyB8IEkyQ19GVU5D
+X1NNQlVTX0VNVUwgfCBJMkNfRlVOQ19QUk9UT0NPTF9NQU5HTElORzsKKwlyZXR1cm4gSTJDX0ZV
+TkNfSTJDIHwgSTJDX0ZVTkNfU01CVVNfRU1VTCB8IEkyQ19GVU5DXzEwQklUX0FERFIKKwkJfCBJ
+MkNfRlVOQ19QUk9UT0NPTF9NQU5HTElORyB8IEkyQ19GVU5DX05PU1RBUlQ7CiB9CiAKIHN0YXRp
+YyBjb25zdCBzdHJ1Y3QgaTJjX2FsZ29yaXRobSBtdGtfaTJjX2FsZ28gPSB7Ci0tIAoyLjI1LjEK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
+ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
