@@ -2,80 +2,86 @@ Return-Path: <SRS0=SpBb=PH=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15120C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 03:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52966C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 03:44:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D15D9611BF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 03:05:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D15D9611BF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1CCCE6134F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 19 Oct 2021 03:44:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1CCCE6134F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yF/GYXxxFZb3R1+hf0pGZXdifF9655Zh0gKaUyJWy9c=; b=mQcSjqQ6KoYoWz
-	8Dkl2zCGDa6UdW63pjqYIxFgnSv/rY663cgQDiWDjpQSjSz8Xn3+H6ChPCH9w33ZQN3TArHgH2F/F
-	jFf3LBx34jL/etvI5cyIiSG8CQeEj9LGNlrYmO3D39ljkLJqTqz6HRpZ1kHHv6wSI+MK5uEShp9Vj
-	0GOHdKHZC5PXkX7Y53nnqy8U+fugsK3gHP0sjarVsk61DSS5aKhmLf0tM/0JMeDIMShtjHDzF/FFm
-	tWUIv3M0yr64Wgewh5V5b9PJLW0Cg1BEJcGKZTD3xXOheenoko/+MpExDsI4OUV6IHfb5bJviN40M
-	I4gBttl2d5DWbIPLV3tw==;
+	List-Owner; bh=N2T4p32Fh0f6dKS059KdB3B8kc3HxQhzV0zrqStOSgs=; b=XDDI4J7ewuSZ2h
+	Rf8Ec/GSDyxe1ks9tpITId/efeSh83IvrR/8hWl8NP18B96OyEH+H03mNrsDi1HGIvfnvrjFcQFEg
+	3PIKajsvpudoD9p+ah7QMDeehcYwYS4iFQ9eXtFzzpx7/7DBO7z/Dtb+tfMIahKDzzToY3COPaK8X
+	q1SK0bVrJdHgG5wN1NL6d2MWhFYw1uXblULm+4YB2TB3C/4yP8g9MXYfVoijrZUx7GESJMUqR+xKm
+	UtUpKx9bftafSaVKe1zsuWLzqpmVZ9VSG4lyQUZv6yMvPRJKkGDAwMp58j0+9viU/MzChTikSu2h0
+	Y10hB1+ZzuVa3cvBUNsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mcfRA-0001sz-2S; Tue, 19 Oct 2021 03:05:12 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1mcg2e-0004BV-D2; Tue, 19 Oct 2021 03:43:56 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mcfR6-0001rE-Gu
- for linux-mediatek@lists.infradead.org; Tue, 19 Oct 2021 03:05:09 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id x27so4188631lfu.5
- for <linux-mediatek@lists.infradead.org>; Mon, 18 Oct 2021 20:05:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2RwHxSx3TiJnEJ/9dbX2TWefdd9wWbyowa5HQ0W9C7Q=;
- b=mNGO7s6puZSQ2VapweLJ0fNTY5XwkSE3LnLZo/QEeCE630qcjlF/cihEYJZW/EVF/5
- CbZj0rMMLs7/50AMBAyFCryuVy8QXuRza6IR2f/QIphmxiEqQtGKaJHDsLXqHxFYyWda
- ymrNT2gwMDK3w6Dnxva0EYDnEa8VwkywyW93o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2RwHxSx3TiJnEJ/9dbX2TWefdd9wWbyowa5HQ0W9C7Q=;
- b=34who3ejsDSTTwtvHkv0s3Ceao3XEjatlG0gK+POFGGIKomcG4UYBtOro7tLjKqtzs
- ygMXjxSsKQ4VdnnLCOqnkzk4lbqpNxhZp/iYem8uAuXdk4cXLe5xgfJ+7dZbQZm+cuQJ
- B7amIR/9764BeWmp/oOtmSkpsjNeP3aGMG+DCsgpI23nUPq8tr+I8PG7zGC7SBZKUoy7
- r/VNZa/M0F+k1M5ApaXyl9ksV3GydU0b3OIxY33jxbox8eCPR+LGNxwtCXXcV9W+WQL1
- j6Y75Tm5QL5n1D3NU+YcCgX6/kwOzRX/OeMm/a0I7RCufyL6WuE/8IdWxOvCxFgbQMtI
- b+jQ==
-X-Gm-Message-State: AOAM531U0l5/bGjQFzl0B/8GsEUj3BqKFZWvh22Mh01ilmm6DaD8rPq+
- zUrxIaKOpSZze3ku+5QlEn5qkOY/u/qhWJij2HIl2A==
-X-Google-Smtp-Source: ABdhPJwD3DifPQ8LZU5dqzif2r7i/5I93Q/94pY/t9RnGIA9JJT3zvS/eJXVikSsp2wvgoZh14V0Jm3BISb9j6i55vs=
-X-Received: by 2002:ac2:58ec:: with SMTP id v12mr3496440lfo.371.1634612706009; 
- Mon, 18 Oct 2021 20:05:06 -0700 (PDT)
-MIME-Version: 1.0
-References: <20211019013759.970600-1-ran.jianping@zte.com.cn>
-In-Reply-To: <20211019013759.970600-1-ran.jianping@zte.com.cn>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Tue, 19 Oct 2021 11:04:55 +0800
-Message-ID: <CAGXv+5G5JAOgvPatqto45daQsxL+OqTHboLXZwCc-nPY9saT6w@mail.gmail.com>
-Subject: Re: [PATCH clk:mediatek] clk:mediatek: remove duplicate include in
- clk-mt8195-imp_iic_wrap.c
-To: cgel.zte@gmail.com
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, 
+ id 1mcg2a-0004AH-UY; Tue, 19 Oct 2021 03:43:54 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 19J349Re015244; 
+ Tue, 19 Oct 2021 03:43:48 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2021-07-09;
+ bh=KJiWubGMNyWOQmJE10qT2Q36ZJt5GUJhKqw9DNxgJQ4=;
+ b=ZB4zg4rdRs0Vcc+913MwHxrfk5sAq15IHJFAjX9nyws0eep02QnntyJV5phXiBuX1z03
+ a7I+hsyjPiAUCvHuAt3R+/FR1nITZy4MOHjyeWBH+Is7f7ZfUJvMDkcGGShg0Otl+4KL
+ GMlZ9NCRo2cNyLeO+GpU4T44xEAEiMdBc4pPNjBi4DkP9XSWxM4gxT7qhzlk7JRBfmEk
+ 5BifvxWs+63m9FqRc3de5xhrTL5pTIueC4zEYaiJLP3vCADTW8GyewZ6NRK9cWdt6eC/
+ SRs8hGvV9iyHDMCHF9ZDrots3VKAjZMVQEUI61FNHo6xISYVn0K4/o8ygViwpRnYy2sQ NA== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3brnfhqskj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 19 Oct 2021 03:43:48 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 19J3ZT3a077053;
+ Tue, 19 Oct 2021 03:43:47 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by userp3020.oracle.com with ESMTP id 3br8grmmtg-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 19 Oct 2021 03:43:47 +0000
+Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 19J3hhHf101685;
+ Tue, 19 Oct 2021 03:43:46 GMT
+Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
+ by userp3020.oracle.com with ESMTP id 3br8grmmrp-4;
+ Tue, 19 Oct 2021 03:43:46 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Martin Kepplinger <martink@posteo.de>,
+ Miles Chen <miles.chen@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, 
- ran.jianping@zte.com.cn, linux-clk <linux-clk@vger.kernel.org>, 
- "moderated list:ARM/FREESCALE IMX / MXC ARM ARCHITECTURE"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- LKML <linux-kernel@vger.kernel.org>, Zeal Robot <zealci@zte.com.cn>
+ Bart Van Assche <bvanassche@acm.org>,
+ "James E . J . Bottomley" <jejb@linux.ibm.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-arm-kernel@lists.infradead.org, linux-scsi@vger.kernel.org,
+ linux-kernel@vger.kernel.org, wsd_upstream@mediatek.com,
+ Stanley Chu <stanley.chu@mediatek.com>, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] scsi: sd: fix crashes in sd_resume_runtime
+Date: Mon, 18 Oct 2021 23:43:40 -0400
+Message-Id: <163461411521.13664.305092538440750987.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20211015074654.19615-1-miles.chen@mediatek.com>
+References: <20211015074654.19615-1-miles.chen@mediatek.com>
+MIME-Version: 1.0
+X-Proofpoint-ORIG-GUID: gKb9G-3VbOOMGIm4I_ziIPWhbKimffoM
+X-Proofpoint-GUID: gKb9G-3VbOOMGIm4I_ziIPWhbKimffoM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211018_200508_615081_D02A029E 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20211018_204353_137355_2E3EC172 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,32 +98,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 19, 2021 at 9:38 AM <cgel.zte@gmail.com> wrote:
->
-> From: Ran Jianping <ran.jianping@zte.com.cn>
->
-> 'dt-bindings/clock/mt8195-clk.h' included in
-> '/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c' is duplicated.It is
-> also included on the 13 line.
->
-> Reported-by: Zeal Robot <zealci@zte.com.cn>
-> Signed-off-by: Ran Jianping <ran.jianping@zte.com.cn>
-> ---
->  drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
-> index 0e2ac0a30aa0..1aa5afc05929 100644
-> --- a/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
-> +++ b/drivers/clk/mediatek/clk-mt8195-imp_iic_wrap.c
-> @@ -10,7 +10,7 @@
->  #include <linux/clk-provider.h>
->  #include <linux/platform_device.h>
->
-> -#include <dt-bindings/clock/mt8195-clk.h>
-> +
+On Fri, 15 Oct 2021 15:46:54 +0800, Miles Chen wrote:
 
-Just drop the line. Don't need the extra empty line.
+> After merging commit ed4246d37f3b ("scsi: sd: REQUEST SENSE for
+> BLIST_IGN_MEDIA_CHANGE devices in runtime_resume()"), I hit the
+> following crash on my device.
+> 
+> static int sd_resume_runtime(struct device *dev)
+> {
+>         struct scsi_disk *sdkp = dev_get_drvdata(dev);
+>         struct scsi_device *sdp = sdkp->device; // sdkp == NULL and crash
+> 
+> [...]
+
+Applied to 5.15/scsi-fixes, thanks!
+
+[1/1] scsi: sd: fix crashes in sd_resume_runtime
+      https://git.kernel.org/mkp/scsi/c/85374b639229
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
