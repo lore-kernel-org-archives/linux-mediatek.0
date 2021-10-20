@@ -2,81 +2,63 @@ Return-Path: <SRS0=QBiq=PI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62A47C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 08:20:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 349CBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 09:29:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C591611C6
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 08:20:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0C591611C6
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=codeaurora.org
+	by mail.kernel.org (Postfix) with ESMTPS id D81EB610EA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 09:29:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D81EB610EA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:Cc:To:References:
-	In-Reply-To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PR//cLIXHSGXrnUvIAcnIEFJIJxvUxdWbBa5pMjC0JU=; b=bF9mQEA5Pak09O
-	g9w7f+4hwKp082kfQev2GKW9neljRxHQxU1dhuORXcHf9lyoEEmtheHLOXOHxM0+cCfqf54Z1v1yw
-	suDfglFOBxXUmow1LhQx37h/rPzgZ8CIkg6hymun4XInlH5f403QuTKWaqe8h3cch6/Vkg8E7IqwN
-	1ARzzRsbtkTKWgPFWP8y1IU0hgM9tGQ5a1ydNgZsh7ys7XVoADqekhFvabYvbn6qWJxdZs63y4TBn
-	IBvjavd2U+9kRx1+KxlkYMPcaJ60IrO6vrwsXRBP8VuIL/o2OOPOkpR9WXoZc3rI/DuQ9OVoJDF7S
-	/mt0rOV4B6q9fex2+ZxA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nBh74zM4NrNN7qHJS7Njd2lSoH1NqNR80iUI1pGdmH8=; b=YJjpw0zab+3Sk9MLG1RrLYMf7q
+	1/A4jTyByG5kDK36voWiyGELuUo8vfM9co8nTfVIKiEIAxSOYgO6n5hXWf48ZohLkSMU0Tbl/Nqvp
+	rHkkFR/qWTyAZ+BaW3Oq7PVBXPLsYlaMzg7xv5XYVnMbFrD9OBlnjGtzNJ7FHHX+F7wMmcnm32yRd
+	aeTBRrfOb0myDV8LH9xK3U87OFWH8l3Xl9md5HvVo+iZMh9Bdsa59NLSIB8FnOYPfc/Ig1cqGlbbR
+	DrxCRGfAyRQz6dcrZ/DJE9GgR/vvyDicc+4I2+JTDSNOH2G5CTRg/k9BiDU1xLqhy2aUcuLton8Om
+	OwQgo/tQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1md6pC-003ouy-RJ; Wed, 20 Oct 2021 08:19:50 +0000
-Received: from so254-9.mailgun.net ([198.61.254.9])
+	id 1md7uL-003zUy-Qq; Wed, 20 Oct 2021 09:29:13 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1md6p9-003ouN-IP
- for linux-mediatek@lists.infradead.org; Wed, 20 Oct 2021 08:19:49 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1634717988; h=Date: Message-ID: Cc: To: References:
- In-Reply-To: From: Subject: Content-Transfer-Encoding: MIME-Version:
- Content-Type: Sender; bh=D8S5MhnZ3N4sT+BKpUxuYDuuO5Lje98JqXz+Bh6vAls=;
- b=RB/3xttP2Mq71cAOeJ5Yz/GcC6b5DRflwVxj8OEVt2f3yfxSVFBzPYG4nUw5bgl+jgGu4dhB
- BaJyHl4NEdzsp40g1mbC7DDVahqH7AU+ZOfW43NIpdS46gHRSZlVu0Qza5SG7TVZkMZUh5lx
- B3x5yFG4Pf5b3chrV8hInngMdKg=
-X-Mailgun-Sending-Ip: 198.61.254.9
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n02.prod.us-east-1.postgun.com with SMTP id
- 616fd11cc75c436a30c63d9a (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Wed, 20 Oct 2021 08:19:40
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 2039EC43617; Wed, 20 Oct 2021 08:19:40 +0000 (UTC)
-Received: from tykki.adurom.net (tynnyri.adurom.net [51.15.11.48])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 70DCAC4338F;
- Wed, 20 Oct 2021 08:19:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org 70DCAC4338F
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=codeaurora.org
+ id 1md7u7-003zR1-MC; Wed, 20 Oct 2021 09:29:02 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 93CD61F43FDB
+Subject: Re: [PATCH v2 9/9] media: platform: mtk-mdp3: Add dual pipe feature
+ support
+To: "roy-cw.yeh" <roy-cw.yeh@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Fabien Parent <fparent@baylibre.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+ "river . cheng" <river.cheng@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20211020071448.14187-1-roy-cw.yeh@mediatek.com>
+ <20211020071448.14187-10-roy-cw.yeh@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <32803b5d-1edb-0305-85e6-651c9806fd89@collabora.com>
+Date: Wed, 20 Oct 2021 11:28:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-Subject: Re: [PATCH v2] MAINTAINERS: mt76: update MTK folks
-From: Kalle Valo <kvalo@codeaurora.org>
-In-Reply-To: <eb888ae0e43a980c2c1aaed372a9b5e8098ea4ef.1634107511.git.ryder.lee@mediatek.com>
-References: <eb888ae0e43a980c2c1aaed372a9b5e8098ea4ef.1634107511.git.ryder.lee@mediatek.com>
-To: Ryder Lee <ryder.lee@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, "Ryder Lee" <ryder.lee@mediatek.com>
-User-Agent: pwcli/0.1.0-git (https://github.com/kvalo/pwcli/) Python/3.7.3
-Message-ID: <163471797545.1743.4401895196553840749.kvalo@codeaurora.org>
-Date: Wed, 20 Oct 2021 08:19:40 +0000 (UTC)
+In-Reply-To: <20211020071448.14187-10-roy-cw.yeh@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_011948_475309_344BF14B 
-X-CRM114-Status: UNSURE (   6.30  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211020_022900_045116_7EA9E836 
+X-CRM114-Status: GOOD (  29.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +70,506 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Ryder Lee <ryder.lee@mediatek.com> wrote:
-
-> Add more MTK folks to actively maintain the wireless chipsets across
-> segments. The work is becoming increasingly complicated and various
-> and we can provides hardware related perspectives to offload 
-> Felix's workload, especially for the 11ax and upcoming 11be devices
+Il 20/10/21 09:14, roy-cw.yeh ha scritto:
+> From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 > 
-> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-> Acked-by: Felix Fietkau <nbd@nbd.name>
+> Add dual pipe feature which uses two svpp to execute dma
+> 
+> Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+> ---
+>   .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   | 191 ++++++++++++++----
+>   .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.h   |   1 +
+>   .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  11 +-
+>   .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |   3 +
+>   .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |   4 +
+>   .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  18 ++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |   4 +
+>   7 files changed, 189 insertions(+), 43 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+> index afa114fe9817..37bd7c4b9ded 100644
+> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+> @@ -10,7 +10,10 @@
+>   #include "mtk-mdp3-core.h"
+>   #include "mtk-mdp3-m2m.h"
+>   
+> -#define MDP_PATH_MAX_COMPS	IMG_MAX_COMPONENTS
+> +#define PATH_0              0
+> +#define PATH_1              1
+> +#define MDP_DUAL_PIPE       2
+> +#define MDP_PATH_MAX_COMPS  IMG_MAX_COMPONENTS
+>   
+>   struct mdp_path {
+>   	struct mdp_dev		*mdp_dev;
+> @@ -30,6 +33,9 @@ struct mdp_path {
+>   #define is_dummy_engine(mdp, id) \
+>   	((mdp)->mdp_data->comp_data[id].match.type == MDP_COMP_TYPE_DUMMY)
+>   
+> +#define is_dual_pipe(scenario) \
+> +	((scenario) == MDP_STREAM_TYPE_DUAL_BITBLT)
+> +
+>   struct mdp_path_subfrm {
+>   	s32	mutex_id;
+>   	u32	mutex_mod;
+> @@ -733,26 +739,31 @@ static void mdp_auto_release_work(struct work_struct *work)
+>   	struct mdp_cmdq_cb_param *cb_param;
+>   	struct mdp_dev *mdp;
+>   	int i;
+> +	bool finalize;
+>   
+>   	cb_param = container_of(work, struct mdp_cmdq_cb_param,
+>   				auto_release_work);
+>   	mdp = cb_param->mdp;
+> +	finalize = cb_param->finalize;
+>   
+> -	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
+> -	mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
+> -
+> -	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA1);
+> -	if (i >= 0)
+> -		mtk_mutex_unprepare(mdp->mdp_mutex2[mdp->mdp_data->pipe_info[i].mutex_id]);
+> +	if (finalize) {
+> +		i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
+> +		mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
+>   
+> +		i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA1);
+> +		if (i >= 0)
+> +			mtk_mutex_unprepare(mdp->mdp_mutex2[mdp->mdp_data->pipe_info[i].mutex_id]);
+> +	}
+>   	mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
+>   			    cb_param->num_comps);
+>   
+>   	kfree(cb_param->comps);
+>   	kfree(cb_param);
+>   
+> -	atomic_dec(&mdp->job_count);
+> -	wake_up(&mdp->callback_wq);
+> +	if (finalize) {
+> +		atomic_dec(&mdp->job_count);
+> +		wake_up(&mdp->callback_wq);
+> +	}
+>   }
+>   
+>   static void mdp_handle_cmdq_callback(struct cmdq_cb_data data)
+> @@ -770,7 +781,9 @@ static void mdp_handle_cmdq_callback(struct cmdq_cb_data data)
+>   	mdp = cb_param->mdp;
+>   	dev = &mdp->pdev->dev;
+>   
+> -	if (cb_param->mdp_ctx)
+> +	cb_param->finalize = (atomic_dec_and_test(&mdp->cmdq_count));
+> +
+> +	if (cb_param->finalize && cb_param->mdp_ctx)
+>   		mdp_m2m_job_finish(cb_param->mdp_ctx);
+>   
+>   	if (cb_param->user_cmdq_cb) {
+> @@ -805,12 +818,15 @@ static void mdp_handle_cmdq_callback(struct cmdq_cb_data data)
+>   
+>   int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+>   {
+> -	struct mmsys_cmdq_cmd cmd;
+> -	struct mdp_path path;
+> +	struct mmsys_cmdq_cmd cmd, cmd_d;
+> +	static struct mdp_path path[MDP_DUAL_PIPE];
+>   	struct mdp_cmdq_cb_param *cb_param = NULL;
+> +	struct mdp_cmdq_cb_param *cb_param_d = NULL;
+>   	struct mdp_comp *comps = NULL;
+> +	struct mdp_comp *comps_d = NULL;
+>   	struct device *dev = &mdp->pdev->dev;
+> -	int i, ret;
+> +	enum mdp_stream_type scenario = param->param->type;
+> +	int i, ret, path_id;
+>   
+>   	if (atomic_read(&mdp->suspended))
+>   		return -ECANCELED;
+> @@ -825,24 +841,39 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+>   	}
+>   	cmd.event = &mdp->event[0];
+>   
+> -	path.mdp_dev = mdp;
+> -	path.config = param->config;
+> -	path.param = param->param;
+> -	for (i = 0; i < param->param->num_outputs; i++) {
+> -		path.bounds[i].left = 0;
+> -		path.bounds[i].top = 0;
+> -		path.bounds[i].width =
+> -			param->param->outputs[i].buffer.format.width;
+> -		path.bounds[i].height =
+> -			param->param->outputs[i].buffer.format.height;
+> -		path.composes[i] = param->composes[i] ?
+> -			param->composes[i] : &path.bounds[i];
+> -	}
+> -
+> -	ret = mdp_path_ctx_init(mdp, &path);
+> -	if (ret) {
+> -		dev_info(dev, "%s mdp_path_ctx_init error\n", __func__);
+> -		goto err_destroy_pkt;
+> +	if (is_dual_pipe(scenario)) {
+> +		cmd_d.pkt = cmdq_pkt_create(mdp->cmdq_d_clt, SZ_16K);
+> +		if (IS_ERR(cmd_d.pkt)) {
+> +			atomic_dec(&mdp->job_count);
+> +			wake_up(&mdp->callback_wq);
+> +			return PTR_ERR(cmd_d.pkt);
+> +		}
+> +		cmd_d.event = &mdp->event[0];
+> +	}
+> +
+> +	for (path_id = 0; path_id < MDP_DUAL_PIPE; path_id++) {
+> +		if (path_id != 0 && (!is_dual_pipe(scenario)))
+> +			break;
+> +
+> +		path[path_id].mdp_dev = mdp;
+> +		path[path_id].config = &param->config[path_id];
+> +		path[path_id].param = param->param;
+> +		for (i = 0; i < param->param->num_outputs; i++) {
+> +			path[path_id].bounds[i].left = 0;
+> +			path[path_id].bounds[i].top = 0;
+> +			path[path_id].bounds[i].width =
+> +				param->param->outputs[i].buffer.format.width;
+> +			path[path_id].bounds[i].height =
+> +				param->param->outputs[i].buffer.format.height;
+> +			path[path_id].composes[i] = param->composes[i] ?
+> +				param->composes[i] : &path[path_id].bounds[i];
+> +		}
+> +
+> +		ret = mdp_path_ctx_init(mdp, &path[path_id]);
+> +		if (ret) {
+> +			dev_info(dev, "%s mdp_path_ctx_init error at path %d\n", __func__, path_id);
 
-Patch applied to wireless-drivers-next.git, thanks.
+This needs to be dev_err(), as this is an error.
 
-026e092c2aa9 MAINTAINERS: mt76: update MTK folks
+> +			goto err_destroy_pkt;
+> +		}
+>   	}
+>   
+>   	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
+> @@ -852,44 +883,61 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+>   	if (i >= 0)
+>   		mtk_mutex_prepare(mdp->mdp_mutex2[mdp->mdp_data->pipe_info[i].mutex_id]);
+>   
+> -	for (i = 0; i < param->config->num_components; i++) {
+> -		if (is_dummy_engine(mdp, path.config->components[i].type))
+> +	for (i = 0; i < param->config[PATH_0].num_components; i++) {
+> +		if (is_dummy_engine(mdp, path[PATH_0].config->components[i].type))
+>   			continue;
+>   
+> -		mdp_comp_clock_on(&mdp->pdev->dev, path.comps[i].comp);
+> +		mdp_comp_clock_on(&mdp->pdev->dev, path[PATH_0].comps[i].comp);
+> +	}
+> +
+> +	if (is_dual_pipe(scenario)) {
+> +		for (i = 0; i < param->config[PATH_1].num_components; i++) {
+> +			if (is_dummy_engine(mdp, path[PATH_1].config->components[i].type))
+> +				continue;
+> +
+> +			mdp_comp_clock_on(&mdp->pdev->dev, path[PATH_1].comps[i].comp);
+> +		}
+>   	}
+>   
+>   	if (mdp->mdp_data->mdp_cfg->version == MTK_MDP_VERSION_8195) {
+>   		/* HYFBC Patch */
+> -		ret = mdp_hyfbc_config(mdp, &cmd, &path, param);
+> +		ret = mdp_hyfbc_config(mdp, &cmd, &path[PATH_0], param);
+>   		if (ret)
+>   			dev_info(dev, "%s:mdp_hyfbc_config fail!\n", __func__);
+>   	}
+>   
+> -	ret = mdp_path_config(mdp, &cmd, &path);
+> +	ret = mdp_path_config(mdp, &cmd, &path[PATH_0]);
+>   	if (ret) {
+> -		dev_info(dev, "%s mdp_path_config error\n", __func__);
+> +		dev_info(dev, "%s path 0 mdp_path_config error\n", __func__);
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/patch/eb888ae0e43a980c2c1aaed372a9b5e8098ea4ef.1634107511.git.ryder.lee@mediatek.com/
+dev_err()
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+>   		goto err_destroy_pkt;
+>   	}
+>   
+> +	if (is_dual_pipe(scenario)) {
+> +		ret = mdp_path_config(mdp, &cmd_d, &path[PATH_1]);
+> +		if (ret) {
+> +			pr_info("%s path 1 mdp_path_config error\n", __func__);
+
+Don't use pr_* here. Also, this is dev_err() too.
+
+> +			goto err_destroy_pkt;
+> +		}
+> +	}
+> +
+>   	cb_param = kzalloc(sizeof(*cb_param), GFP_KERNEL);
+>   	if (!cb_param) {
+>   		ret = -ENOMEM;
+>   		goto err_destroy_pkt;
+>   	}
+>   
+> -	comps = kcalloc(param->config->num_components, sizeof(*comps),
+> +	comps = kcalloc(param->config[PATH_0].num_components, sizeof(*comps),
+>   			GFP_KERNEL);
+>   	if (!comps) {
+>   		ret = -ENOMEM;
+>   		goto err_destroy_pkt;
+>   	}
+>   
+> -	for (i = 0; i < param->config->num_components; i++) {
+> -		if (is_dummy_engine(mdp, path.config->components[i].type))
+> +	for (i = 0; i < param->config[PATH_0].num_components; i++) {
+> +		if (is_dummy_engine(mdp, path[PATH_0].config->components[i].type))
+>   			continue;
+>   
+> -		memcpy(&comps[i], path.comps[i].comp,
+> +		memcpy(&comps[i], path[PATH_0].comps[i].comp,
+>   		       sizeof(struct mdp_comp));
+>   	}
+>   	cb_param->mdp = mdp;
+> @@ -897,10 +945,49 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+>   	cb_param->user_cb_data = param->cb_data;
+>   	cb_param->pkt = cmd.pkt;
+>   	cb_param->comps = comps;
+> -	cb_param->num_comps = param->config->num_components;
+> +	cb_param->num_comps = param->config[PATH_0].num_components;
+>   	cb_param->mdp_ctx = param->mdp_ctx;
+>   
+> +	if (is_dual_pipe(scenario)) {
+> +		cb_param_d = kzalloc(sizeof(*cb_param_d), GFP_KERNEL);
+> +		if (!cb_param_d) {
+> +			ret = -ENOMEM;
+> +			goto err_destroy_pkt;
+> +		}
+> +		comps_d = kcalloc(param->config[PATH_1].num_components, sizeof(*comps_d),
+> +				  GFP_KERNEL);
+> +		if (!comps_d) {
+> +			ret = -ENOMEM;
+> +			goto err_destroy_pkt;
+> +		}
+> +
+> +		for (i = 0; i < param->config[PATH_1].num_components; i++) {
+> +			if (is_dummy_engine(mdp, path[PATH_1].config->components[i].type))
+> +				continue;
+> +
+> +			memcpy(&comps_d[i], path[PATH_1].comps[i].comp,
+> +			       sizeof(struct mdp_comp));
+> +		}
+> +		cb_param_d->mdp = mdp;
+> +		cb_param_d->user_cmdq_cb = param->cmdq_cb;
+> +		cb_param_d->user_cb_data = param->cb_data;
+> +		cb_param_d->pkt = cmd_d.pkt;
+> +		cb_param_d->comps = comps_d;
+> +		cb_param_d->num_comps = param->config[PATH_1].num_components;
+> +		cb_param_d->mdp_ctx = param->mdp_ctx;
+> +	}
+> +
+> +	if (atomic_read(&mdp->cmdq_count))
+> +		pr_info("%s: Warning: cmdq_count:%d !\n", __func__, atomic_read(&mdp->cmdq_count));
+> +
+
+It's a warning, so this is dev_warn()... (and by using that, you can as well drop
+the "Warning" word from the message).
+
+>   	cmdq_pkt_finalize(cmd.pkt);
+> +	atomic_inc(&mdp->cmdq_count);
+> +
+> +	if (is_dual_pipe(scenario)) {
+> +		cmdq_pkt_finalize(cmd_d.pkt);
+> +		atomic_inc(&mdp->cmdq_count);
+> +	}
+> +
+>   	ret = cmdq_pkt_flush_async(cmd.pkt,
+>   				   mdp_handle_cmdq_callback,
+>   				   (void *)cb_param);
+> @@ -908,6 +995,16 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+>   		dev_info(dev, "cmdq_pkt_flush_async fail!\n");
+>   		goto err_clock_off;
+>   	}
+> +
+> +	if (is_dual_pipe(scenario)) {
+> +		ret = cmdq_pkt_flush_async(cmd_d.pkt,
+> +					   mdp_handle_cmdq_callback,
+> +					   (void *)cb_param_d);
+> +		if (ret) {
+> +			dev_err(dev, "cmdq_dual_pkt_flush_async fail!\n");
+> +			goto err_clock_off;
+> +		}
+> +	}
+>   	return 0;
+>   
+>   err_clock_off:
+> @@ -920,12 +1017,22 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
+>   
+>   	mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
+>   			    cb_param->num_comps);
+> +	if (cb_param_d)
+> +		mdp_comp_clocks_off(&mdp->pdev->dev, cb_param_d->comps,
+> +				    cb_param_d->num_comps);
+>   err_destroy_pkt:
+>   	cmdq_pkt_destroy(cmd.pkt);
+> +	if (is_dual_pipe(scenario)) {
+> +		cmdq_pkt_destroy(cmd_d.pkt);
+> +		atomic_inc(&mdp->cmdq_count);
+> +	}
+>   	atomic_dec(&mdp->job_count);
+> +	atomic_dec(&mdp->cmdq_count);
+>   	wake_up(&mdp->callback_wq);
+>   	kfree(comps);
+> +	kfree(comps_d);
+>   	kfree(cb_param);
+> +	kfree(cb_param_d);
+>   
+>   	return ret;
+>   }
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
+> index 16933507333b..0a0e88cef6b5 100644
+> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
+> @@ -37,6 +37,7 @@ struct mdp_cmdq_cb_param {
+>   	struct mdp_comp *comps;
+>   	u8 num_comps;
+>   	void *mdp_ctx;
+> +	bool finalize;
+>   };
+>   
+>   struct mdp_dev;
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+> index 524c852e584b..1c8baa33ecc6 100644
+> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+> @@ -40,6 +40,7 @@ static const struct mdp_platform_config mt8195_plat_cfg = {
+>   	.wrot_filter_constraint         = false,
+>   	.tdshp_1_1                      = true,
+>   	.tdshp_dyn_contrast_version     = 2,
+> +	.support_dual_pipe              = true,
+>   	.gce_event_offset               = 0,
+>   	.version                        = MTK_MDP_VERSION_8195,
+>   };
+> @@ -1263,6 +1264,12 @@ static int mdp_probe(struct platform_device *pdev)
+>   		goto err_put_scp;
+>   	}
+>   
+> +	mdp->cmdq_d_clt = cmdq_mbox_create(dev, 1);
+> +	if (IS_ERR(mdp->cmdq_d_clt)) {
+> +		ret = PTR_ERR(mdp->cmdq_d_clt);
+> +		goto err_mbox_destroy;
+> +	}
+> +
+>   	init_waitqueue_head(&mdp->callback_wq);
+>   	ida_init(&mdp->mdp_ida);
+>   	platform_set_drvdata(pdev, mdp);
+> @@ -1273,7 +1280,7 @@ static int mdp_probe(struct platform_device *pdev)
+>   	if (ret) {
+>   		dev_err(dev, "Failed to register v4l2 device\n");
+>   		ret = -EINVAL;
+> -		goto err_mbox_destroy;
+> +		goto err_dual_mbox_destroy;
+>   	}
+>   
+>   	ret = mdp_m2m_device_register(mdp);
+> @@ -1287,6 +1294,8 @@ static int mdp_probe(struct platform_device *pdev)
+>   
+>   err_unregister_device:
+>   	v4l2_device_unregister(&mdp->v4l2_dev);
+> +err_dual_mbox_destroy:
+> +	cmdq_mbox_destroy(mdp->cmdq_d_clt);
+>   err_mbox_destroy:
+>   	cmdq_mbox_destroy(mdp->cmdq_clt);
+>   err_put_scp:
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+> index 055812140366..5091fdacc5c6 100644
+> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+> @@ -45,6 +45,7 @@ struct mdp_platform_config {
+>   	bool wrot_filter_constraint;
+>   	bool wrot_support_afbc;
+>   	bool wrot_support_10bit;
+> +	bool support_dual_pipe;
+>   	u8 tdshp_dyn_contrast_version;
+>   	u32 gce_event_offset;
+>   	u32 version;
+> @@ -87,6 +88,7 @@ struct mdp_dev {
+>   	u32					id_count;
+>   	struct ida				mdp_ida;
+>   	struct cmdq_client			*cmdq_clt;
+> +	struct cmdq_client			*cmdq_d_clt;
+>   	wait_queue_head_t			callback_wq;
+>   
+>   	struct v4l2_device			v4l2_dev;
+> @@ -96,6 +98,7 @@ struct mdp_dev {
+>   	struct mutex				m2m_lock;
+>   	atomic_t				suspended;
+>   	atomic_t				job_count;
+> +	atomic_t				cmdq_count;
+>   };
+>   
+>   struct mdp_pipe_info {
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+> index 1eaeaf58906a..55384bb812cf 100644
+> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+> @@ -116,6 +116,10 @@ static void mdp_m2m_worker(struct work_struct *work)
+>   	frame = ctx_get_frame(ctx, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
+>   	src_vb = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+>   	mdp_set_src_config(&param.inputs[0], frame, &src_vb->vb2_buf);
+> +	mdp_set_scenario(ctx->mdp_dev, &param, frame);
+> +	if (param.frame_change)
+> +		dev_info(&ctx->mdp_dev->pdev->dev,
+> +			 "MDP Scenario: %d\n", param.type);
+
+This may be spammy. Use dev_dbg(), as this looks like being a debugging print.
+
+>   
+>   	frame = ctx_get_frame(ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+>   	dst_vb = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+> index 7d26c5d8df7f..92f337077411 100644
+> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+> @@ -10,6 +10,8 @@
+>   #include "mtk-mdp3-core.h"
+>   #include "mtk-mdp3-regs.h"
+>   
+> +#define QHD (2560 * 1440)
+> +
+>   static const struct mdp_limit mdp_def_limit = {
+>   	.out_limit = {
+>   		.wmin	= 16,
+> @@ -432,6 +434,22 @@ static u32 mdp_fmt_get_plane_size(const struct mdp_format *fmt,
+>   	return 0;
+>   }
+>   
+> +void mdp_set_scenario(struct mdp_dev *mdp,
+> +		      struct img_ipi_frameparam *param,
+> +		      struct mdp_frame *frame)
+> +{
+> +	u32 width = frame->format.fmt.pix_mp.width;
+> +	u32 height = frame->format.fmt.pix_mp.height;
+> +
+> +	if (!mdp)
+> +		return;
+
+You are calling this function only from mdp_m2m_worker(), which uses mdp_dev
+for at least dev_* prints: this means that mdp cannot be NULL here, so this
+check is useless.
+
+Please drop this check.
+
+> +
+> +	if (mdp->mdp_data->mdp_cfg->support_dual_pipe) {
+> +		if ((width * height) >= QHD)
+> +			param->type = MDP_STREAM_TYPE_DUAL_BITBLT;
+> +	}
+> +}
+> +
+>   static void mdp_prepare_buffer(struct img_image_buffer *b,
+>   			       struct mdp_frame *frame, struct vb2_buffer *vb)
+>   {
+
+As for the rest, it looks like being ok, so, after the requested fixes:
+
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
 
 _______________________________________________
