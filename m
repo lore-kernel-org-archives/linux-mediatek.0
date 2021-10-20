@@ -2,84 +2,75 @@ Return-Path: <SRS0=QBiq=PI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B1FE3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 07:25:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 89876C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 07:27:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7879060524
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 07:25:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7879060524
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3F29660F02
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 07:27:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3F29660F02
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Umd9Pn0NJgJhmgFrrMpI4UJux3YydBSmykEClcfEGLY=; b=DJFqyJi08Vbg8a
-	XzMZRizZkrFLXAEl13xGgS5fxHvMtEowvEesyiXTdFZqetL0hQoMQOXhMVT4NfwKrDMlJDDYegc0q
-	Aa8oNoC1zCSmZ/E5XPesGLzU7lsAhWCxbDilSwPHc2kDfzPxOyXLPCvrCAKrDbXWqayLut//TnOIr
-	dmLDU8O3sRqzHn26HBhz/0YpYAJ7Yh9iMbWc5C2XWgdH1XCu9wnCK+b+ydDcZHEExHuut0RkFWshq
-	+mZbVqkOqXaZfVV3ktcYQ2qRDD6T+Io+Xr4BGJ0ZwwigicEwSn9WE7kAI+MPU/7gkETsZoyTTbpLI
-	Hkf0IYDX9Vd/j0HphNwA==;
+	List-Owner; bh=84vVxBETtW7ToykRYAznIgzwPViiA9yQR0Ioe51DfOw=; b=ItKFe2BqzPlmHB
+	eB0sDbY8ewUiuBUyFN5V74xMtDyWFIGtuZiNbE8rYzW6DU+m3LZcwHCk42AgPjy6E9YZw9AikIQ/+
+	xLv3rA19nK1RGoZgmsFnhRa+v3yiV19FQoC9fRdlNmGEuEEj+FolTByXdJju0Rn/2STM1h+Zw1nkJ
+	2q/7dO2F9Lma1sweEHamd5Ue+uOXHLePxfasGIzheHYzxGcXWj4Ga+3CuJ3mZ9Hz7CFsH+xSWw34w
+	WYmY1EdCD4RDqZcDPdP83BuDurSRLlws0wHxsf+vrxuLtl2QN5a1QkTNj/8ik2/hQvlwHN3kBqxn8
+	lCvEsudnTF81nh2oh6ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1md5y1-003cR8-FA; Wed, 20 Oct 2021 07:24:53 +0000
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+	id 1md60I-003dDa-24; Wed, 20 Oct 2021 07:27:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1md5x3-003c52-Dx
- for linux-mediatek@lists.infradead.org; Wed, 20 Oct 2021 07:23:55 +0000
-Received: by mail-ot1-x329.google.com with SMTP id
- l10-20020a056830154a00b00552b74d629aso5898226otp.5
- for <linux-mediatek@lists.infradead.org>; Wed, 20 Oct 2021 00:23:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kU2IPRL8ftmwSTb+WFMJqCEa8tDzkDYqWbLRrE2BrPc=;
- b=Z9H2n0S4Jqv5TODlbAm7IEoBWEjHonzCDw5KhMOcpgcNdwafYI5hl846Do/Y9Ou8J4
- Nh9OI+lYpQzGZMNfGRO5QbZ3+xMSih4c4Sek/fz3wq3jfaA/UhQ2PmJWPIEmt6QuquOL
- TP0BXd6qyBb1af+2OwX6ri4+SwH+99imu7LTzy8zZbi5ghPzIVwiN653Ye0nq5o+rrrC
- E4zVgo7S5oKkaq+dyNLBBqBDm+vGVzYTAXQ3mV25+maP2TZbNC3ej7WdCTsqIr+v6DVp
- 6eWasHRDjPiSmADHQhTkCVqLTX0SCxJjzT13WM6fvlfGRBPkhyjzxRa1lZ2XjHzTBFeA
- w0zQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kU2IPRL8ftmwSTb+WFMJqCEa8tDzkDYqWbLRrE2BrPc=;
- b=d3apbPqE783zYO/W9/NRELu41hFZjkRKFo12Cpx/PNj5cpOZBQY13+DV5rO8+bXI1s
- B9QdV2W1Sac2Mhcehrox9HtqscCgScdhIEM0eBYIPtLdtnqXpzexunNSJQE7gtpL191y
- bcQR89k2rXbtlmWA3vO2XPso5BcinYtgNg+2zT0N2P9aAAp4dEn44jBJk3kyq23c+LSQ
- lLmnhr4GtSEwesb6WXj7NxxT4ZVGJbY4tIjEKSDrxd9ni3dktBlU6A1R95vLwtcD13+Z
- 6DY/s5pcbpLlWfWllaHbDAdoDbBQj065J2NlJMwuWsCGp8Ippv4fQtg2DmekJ+hVuFIj
- BsHw==
-X-Gm-Message-State: AOAM531/PWPVWVQ2RSrRLNPb784QeU6Oc0QQaeQIOPit5K7mRoTtLlEX
- dNWnkGPIeRb0O1ZjQgXI1hH1Wtm4OVWSt8h9DpCmXw==
-X-Google-Smtp-Source: ABdhPJxYaB/xUITs/EEyisEF1CX0Q9AbBpoCaL8yuO7fy/xV4PTxIosNxyf5PIF+8caN552qxFShQqzctqUgQlFvyzY=
-X-Received: by 2002:a9d:2ac2:: with SMTP id e60mr1361127otb.92.1634714627015; 
- Wed, 20 Oct 2021 00:23:47 -0700 (PDT)
+ id 1md5yf-003ceq-Ir; Wed, 20 Oct 2021 07:25:35 +0000
+X-UUID: 04ac2b30dec640559ebfa179466e1a87-20211020
+X-UUID: 04ac2b30dec640559ebfa179466e1a87-20211020
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <roy-cw.yeh@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1406641701; Wed, 20 Oct 2021 00:25:30 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Oct 2021 00:15:28 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 20 Oct 2021 15:15:26 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 20 Oct 2021 15:15:26 +0800
+From: roy-cw.yeh <roy-cw.yeh@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Fabien Parent
+ <fparent@baylibre.com>, "Roy-CW . Yeh" <roy-cw.yeh@mediatek.com>, "jason-jh .
+ lin" <jason-jh.lin@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+ "river . cheng" <river.cheng@mediatek.com>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 1/9] soc: mediatek: mmsys: expand MDP enum for chip
+ independence architecture
+Date: Wed, 20 Oct 2021 15:14:40 +0800
+Message-ID: <20211020071448.14187-2-roy-cw.yeh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211020071448.14187-1-roy-cw.yeh@mediatek.com>
+References: <20211020071448.14187-1-roy-cw.yeh@mediatek.com>
 MIME-Version: 1.0
-References: <20211020061248.13270-1-Kuan-Ying.Lee@mediatek.com>
-In-Reply-To: <20211020061248.13270-1-Kuan-Ying.Lee@mediatek.com>
-From: Marco Elver <elver@google.com>
-Date: Wed, 20 Oct 2021 09:23:35 +0200
-Message-ID: <CANpmjNNxQRM5rSxcdxNOicpOvwQ=vsutQO3j1hUmGAfS9+pQDA@mail.gmail.com>
-Subject: Re: [PATCH v2] kasan: add kasan mode messages when kasan init
-To: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-Cc: Andrey Ryabinin <ryabinin.a.a@gmail.com>,
- Alexander Potapenko <glider@google.com>, 
- Andrey Konovalov <andreyknvl@gmail.com>, Dmitry Vyukov <dvyukov@google.com>, 
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
- Andrew Morton <akpm@linux-foundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- chinwen.chang@mediatek.com, yee.lee@mediatek.com, nicholas.tang@mediatek.com, 
- kasan-dev@googlegroups.com, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-mm@kvack.org, 
- linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_002353_518319_ECA87AE3 
-X-CRM114-Status: GOOD (  21.55  )
+X-CRM114-CacheID: sfid-20211020_002533_650248_5607C2A2 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,84 +87,147 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 20 Oct 2021 at 08:13, Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com> wrote:
->
-> There are multiple kasan modes. It makes sense that we add some messages
-> to know which kasan mode is when booting up. see [1].
->
-> Link: https://bugzilla.kernel.org/show_bug.cgi?id=212195 [1]
-> Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
-> ---
-> change since v2:
->  - Rebase to linux-next
->  - HW-tags based mode need to consider asymm mode
->  - Thanks for Marco's suggestion
->
->  arch/arm64/mm/kasan_init.c |  2 +-
->  mm/kasan/hw_tags.c         |  4 +++-
->  mm/kasan/kasan.h           | 10 ++++++++++
->  mm/kasan/sw_tags.c         |  2 +-
->  4 files changed, 15 insertions(+), 3 deletions(-)
->
-> diff --git a/arch/arm64/mm/kasan_init.c b/arch/arm64/mm/kasan_init.c
-> index 5b996ca4d996..6f5a6fe8edd7 100644
-> --- a/arch/arm64/mm/kasan_init.c
-> +++ b/arch/arm64/mm/kasan_init.c
-> @@ -309,7 +309,7 @@ void __init kasan_init(void)
->         kasan_init_depth();
->  #if defined(CONFIG_KASAN_GENERIC)
->         /* CONFIG_KASAN_SW_TAGS also requires kasan_init_sw_tags(). */
-> -       pr_info("KernelAddressSanitizer initialized\n");
-> +       pr_info("KernelAddressSanitizer initialized (generic)\n");
->  #endif
->  }
->
-> diff --git a/mm/kasan/hw_tags.c b/mm/kasan/hw_tags.c
-> index dc892119e88f..1d5c89c7cdfe 100644
-> --- a/mm/kasan/hw_tags.c
-> +++ b/mm/kasan/hw_tags.c
-> @@ -177,7 +177,9 @@ void __init kasan_init_hw_tags(void)
->                 break;
->         }
->
-> -       pr_info("KernelAddressSanitizer initialized\n");
-> +       pr_info("KernelAddressSanitizer initialized (hw-tags, mode=%s, stacktrace=%s)\n",
-> +               kasan_mode_info(),
-> +               kasan_stack_collection_enabled() ? "on" : "off");
->  }
->
->  void kasan_alloc_pages(struct page *page, unsigned int order, gfp_t flags)
-> diff --git a/mm/kasan/kasan.h b/mm/kasan/kasan.h
-> index aebd8df86a1f..387ed7b6de37 100644
-> --- a/mm/kasan/kasan.h
-> +++ b/mm/kasan/kasan.h
-> @@ -36,6 +36,16 @@ static inline bool kasan_sync_fault_possible(void)
->  {
->         return kasan_mode == KASAN_MODE_SYNC || kasan_mode == KASAN_MODE_ASYMM;
->  }
-> +
-> +static inline const char *kasan_mode_info(void)
-> +{
-> +       if (kasan_mode == KASAN_MODE_ASYNC)
-> +               return "async";
-> +       else if (kasan_mode == KASAN_MODE_ASYMM)
-> +               return "asymm";
-> +       else
-> +               return "sync";
-> +}
+From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-This creates an inconsistency, because for
-kasan_stack_collection_enabled(), kasan_async_fault_possible(), and
-kasan_sync_fault_possible() there are !KASAN_HW_TAGS stubs.
+Expand mdp related enum for chip independence architecture
 
-A stub for kasan_mode_info() if !KASAN_HW_TAGS appears useless though,
-and I wouldn't know what its return value should be.
+Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+---
+ drivers/soc/mediatek/mtk-mmsys.c       |  2 -
+ include/linux/soc/mediatek/mtk-mmsys.h | 89 ++++++++++++++++++++------
+ 2 files changed, 70 insertions(+), 21 deletions(-)
 
-Do you expect this helper to be used outside hw_tags.c? If not,
-perhaps just move it into hw_tags.c.
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index b16e6a2628c5..cbae8063a187 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -128,7 +128,6 @@ void mtk_mmsys_mdp_connect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
+ 	int i;
+ 
+ 	WARN_ON(!routes);
+-	WARN_ON(mmsys->subsys_id == 0);
+ 	for (i = 0; i < mmsys->data->mdp_num_routes; i++)
+ 		if (cur == routes[i].from_comp && next == routes[i].to_comp)
+ 			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id,
+@@ -145,7 +144,6 @@ void mtk_mmsys_mdp_disconnect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
+ 	const struct mtk_mmsys_routes *routes = mmsys->data->mdp_routes;
+ 	int i;
+ 
+-	WARN_ON(mmsys->subsys_id == 0);
+ 	for (i = 0; i < mmsys->data->mdp_num_routes; i++)
+ 		if (cur == routes[i].from_comp && next == routes[i].to_comp)
+ 			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id,
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index 113d33e2155f..acf4bd3deac1 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -76,33 +76,84 @@ enum mtk_mdp_comp_id {
+ 	/* MDP */
+ 	MDP_COMP_CAMIN,		/* 9 */
+ 	MDP_COMP_CAMIN2,	/* 10 */
+-	MDP_COMP_RDMA0,		/* 11 */
+-	MDP_COMP_AAL0,		/* 12 */
+-	MDP_COMP_CCORR0,	/* 13 */
+-	MDP_COMP_RSZ0,		/* 14 */
+-	MDP_COMP_RSZ1,		/* 15 */
+-	MDP_COMP_TDSHP0,	/* 16 */
+-	MDP_COMP_COLOR0,	/* 17 */
+-	MDP_COMP_PATH0_SOUT,	/* 18 */
+-	MDP_COMP_PATH1_SOUT,	/* 19 */
+-	MDP_COMP_WROT0,		/* 20 */
+-	MDP_COMP_WDMA,		/* 21 */
+-
+-	/* Dummy Engine */
+-	MDP_COMP_RDMA1,		/* 22 */
+-	MDP_COMP_RSZ2,		/* 23 */
+-	MDP_COMP_TDSHP1,	/* 24 */
+-	MDP_COMP_WROT1,		/* 25 */
++	MDP_COMP_SPLIT,           /* 11 */
++	MDP_COMP_SPLIT2,          /* 12 */
++	MDP_COMP_RDMA0,           /* 13 */
++	MDP_COMP_RDMA1,           /* 14 */
++	MDP_COMP_RDMA2,           /* 15 */
++	MDP_COMP_RDMA3,           /* 16 */
++	MDP_COMP_STITCH,          /* 17 */
++	MDP_COMP_FG0,             /* 18 */
++	MDP_COMP_FG1,             /* 19 */
++	MDP_COMP_FG2,             /* 20 */
++	MDP_COMP_FG3,             /* 21 */
++	MDP_COMP_TO_SVPP2MOUT,    /* 22 */
++	MDP_COMP_TO_SVPP3MOUT,    /* 23 */
++	MDP_COMP_TO_WARP0MOUT,    /* 24 */
++	MDP_COMP_TO_WARP1MOUT,    /* 25 */
++	MDP_COMP_VPP0_SOUT,       /* 26 */
++	MDP_COMP_VPP1_SOUT,       /* 27 */
++	MDP_COMP_PQ0_SOUT,        /* 28 */
++	MDP_COMP_PQ1_SOUT,        /* 29 */
++	MDP_COMP_HDR0,            /* 30 */
++	MDP_COMP_HDR1,            /* 31 */
++	MDP_COMP_HDR2,            /* 32 */
++	MDP_COMP_HDR3,            /* 33 */
++	MDP_COMP_AAL0,            /* 34 */
++	MDP_COMP_AAL1,            /* 35 */
++	MDP_COMP_AAL2,            /* 36 */
++	MDP_COMP_AAL3,            /* 37 */
++	MDP_COMP_CCORR0,          /* 38 */
++	MDP_COMP_RSZ0,            /* 39 */
++	MDP_COMP_RSZ1,            /* 40 */
++	MDP_COMP_RSZ2,            /* 41 */
++	MDP_COMP_RSZ3,            /* 42 */
++	MDP_COMP_TDSHP0,          /* 43 */
++	MDP_COMP_TDSHP1,          /* 44 */
++	MDP_COMP_TDSHP2,          /* 45 */
++	MDP_COMP_TDSHP3,          /* 46 */
++	MDP_COMP_COLOR0,          /* 47 */
++	MDP_COMP_COLOR1,          /* 48 */
++	MDP_COMP_COLOR2,          /* 49 */
++	MDP_COMP_COLOR3,          /* 50 */
++	MDP_COMP_OVL0,            /* 51 */
++	MDP_COMP_OVL1,            /* 52 */
++	MDP_COMP_PAD0,            /* 53 */
++	MDP_COMP_PAD1,            /* 54 */
++	MDP_COMP_PAD2,            /* 55 */
++	MDP_COMP_PAD3,            /* 56 */
++	MDP_COMP_TCC0,            /* 56 */
++	MDP_COMP_TCC1,            /* 57 */
++	MDP_COMP_WROT0,           /* 58 */
++	MDP_COMP_WROT1,           /* 59 */
++	MDP_COMP_WROT2,           /* 60 */
++	MDP_COMP_WROT3,           /* 61 */
++	MDP_COMP_WDMA,            /* 62 */
++	MDP_COMP_MERGE2,          /* 63 */
++	MDP_COMP_MERGE3,          /* 64 */
++	MDP_COMP_PATH0_SOUT,      /* 65 */
++	MDP_COMP_PATH1_SOUT,      /* 66 */
++	MDP_COMP_VDO0DL0,         /* 67 */
++	MDP_COMP_VDO1DL0,         /* 68 */
++	MDP_COMP_VDO0DL1,         /* 69 */
++	MDP_COMP_VDO1DL1,         /* 70 */
+ 
+ 	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
+ };
+ 
+ enum mtk_mdp_pipe_id {
++	MDP_PIPE_IMGI = 0,
+ 	MDP_PIPE_RDMA0,
+-	MDP_PIPE_IMGI,
+ 	MDP_PIPE_WPEI,
+ 	MDP_PIPE_WPEI2,
+-	MDP_PIPE_MAX
++	MDP_PIPE_RDMA1,
++	MDP_PIPE_RDMA2,
++	MDP_PIPE_RDMA3,
++	MDP_PIPE_SPLIT,
++	MDP_PIPE_SPLIT2,
++	MDP_PIPE_VPP0_SOUT,
++	MDP_PIPE_VPP1_SOUT,
++	MDP_PIPE_MAX,
+ };
+ 
+ enum mtk_isp_ctrl {
+-- 
+2.18.0
 
-Thanks,
--- Marco
 
 _______________________________________________
 Linux-mediatek mailing list
