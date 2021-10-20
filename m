@@ -2,15 +2,15 @@ Return-Path: <SRS0=QBiq=PI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 85B4FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:30:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DE495C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:31:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E58C461374
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:30:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E58C461374
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=somainline.org
+	by mail.kernel.org (Postfix) with ESMTPS id 9C30561371
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:31:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9C30561371
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
@@ -18,25 +18,20 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RzG0j0Sx//lvsEyCbyULtVlYgFRKhwbJKO5o3jLho9M=; b=scpIl7sR/0M+RheT6c8AOIyQlh
-	5q4SBQnk74SHJIPa/DpLXYcDbMI70ho6IRYQGUaEOyxoOvn4wxpLrbL8eSHY+JJze7gseQWOW7z9O
-	6hPZLf4IctWpK0+o1LFLmLIrRT/bJ396NalfmcM0UzJbhhDj20ENDTXQzzku6BcL+ToS3+IrY8Xrp
-	R7gxaWqZpAQBC3JQ5z6U7EjzF+INxEGvLtvtyjWoOUREx+zh45T0Ke3rJb1TXl++Q5dpD9q3PBiUK
-	oZzCHbsum6t/8fy33r5GkkG3Y9836638E1FwGO8yliBPkjQxMpw+qkpwsn0gHDtWYuxycJ7ksAFfY
-	Tw362w+g==;
+	bh=CsiwGipt5rg+1HEBZalW7H8OF8dOIbhty+bP/V9vtek=; b=K7eNenFFykF/3TAnzlf/ziByIa
+	nY5JUDlPCHJl/iAd3uFy58BeOSDTq7eBUa7ivWzDsD1/skHqadzUyifCsskIFBPycuhoazK7hp1QK
+	5PjYZ9FyCUAHPfuKnYAo7hWBWNgXFR7WHkcBJwx7dvCa6X1OGVxC0z0n+pEQDUrXGoR4JE3QWFwAT
+	Ayic1cxTHHcJfoOADKgdjeYvt7Rd+Q2VUhk+fmPmD4I84+RRCl2pDmf+qG8PsHAXpwea+DJmZs8mZ
+	SN1oSYrKRYVqXj2O64EMOkNxfR5JPvEU1GACp7d7QwaGc4gMdc6b5Rkb2/WpEpatFMIrznJmFS9G1
+	yyr/RvDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdDXM-0052Dp-TB; Wed, 20 Oct 2021 15:29:52 +0000
-Received: from relay06.th.seeweb.it ([5.144.164.167])
+	id 1mdDYp-0052sa-Ch; Wed, 20 Oct 2021 15:31:23 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdDK5-004wzC-AC
- for linux-mediatek@lists.infradead.org; Wed, 20 Oct 2021 15:16:11 +0000
-Received: from IcarusMOD.eternityproject.eu (unknown [2.237.20.237])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by m-r2.th.seeweb.it (Postfix) with ESMTPSA id AA9903F36D;
- Wed, 20 Oct 2021 17:16:00 +0200 (CEST)
+ id 1mdDMj-004xtF-7h; Wed, 20 Oct 2021 15:18:54 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 308141F441DD
 Subject: Re: [PATCH v16 6/7] arm64: dts: mt8192: add svs device information
 To: Roger Lu <roger.lu@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
@@ -54,17 +49,17 @@ Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20210428065440.3704-1-roger.lu@mediatek.com>
  <20210428065440.3704-7-roger.lu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@somainline.org>
-Message-ID: <855e004b-b128-70f7-b1d2-9fe957c94e08@somainline.org>
-Date: Wed, 20 Oct 2021 17:16:00 +0200
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <dec2190e-ce5a-3192-73b4-f4aae772bf2d@collabora.com>
+Date: Wed, 20 Oct 2021 17:18:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
 In-Reply-To: <20210428065440.3704-7-roger.lu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_081609_582590_28EA3C88 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20211020_081853_479002_A223AB14 
+X-CRM114-Status: GOOD (  19.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,6 +86,7 @@ Il 28/04/21 08:54, Roger Lu ha scritto:
 > 
 
 Hello Roger,
+
 thanks for this series! However, there is an issue with this patch:
 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
@@ -109,8 +105,12 @@ thanks for this series! However, there is an issue with this patch:
 > +					0x150 5 0x154 5 0 0     (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* 0: svs */
 
 You are using macros here, which are defined in dt-bindings/reset/ti-syscon.h
+
 hovever, you are not including this header in this devicetree, so it's not
+
 compiling.
+
+
 
 Please fix it.
 
@@ -153,14 +153,21 @@ arch/arm64/boot/dts/mediatek/mt8192.dtsi:510.5-24: Warning (reg_format):
 /soc/efuse@11c10000/data1:reg: property has invalid length (8 bytes) 
 (#address-cells == 2, #size-cells == 1)
 
+
+
 arch/arm64/boot/dts/mediatek/mt8192.dtsi:513.5-24: Warning (reg_format): 
 /soc/efuse@11c10000/calib@580:reg: property has invalid length (8 bytes) 
 (#address-cells == 2, #size-cells == 1)
 
 
+
+
+
 In short, you should add here:
-			#address-cells = <1>;
-			#size-cells = <1>;
+
+             #address-cells = <1>;
+
+             #size-cells = <1>;
 
 > +			lvts_e_data1: data1 {
 > +				reg = <0x1C0 0x58>;
@@ -175,7 +182,12 @@ In short, you should add here:
 >   			reg = <0 0x11cb0000 0 0x1000>,
 > 
 
+P.S.: Sorry for the double email, the previous one got sent with the wrong
+       address.
+
+
 Regards,
+
 - Angelo
 
 _______________________________________________
