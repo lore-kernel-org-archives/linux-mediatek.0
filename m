@@ -2,14 +2,14 @@ Return-Path: <SRS0=QBiq=PI=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DE495C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:31:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3FEFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:32:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9C30561371
-	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:31:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9C30561371
+	by mail.kernel.org (Postfix) with ESMTPS id 911D0610E6
+	for <linux-mediatek@archiver.kernel.org>; Wed, 20 Oct 2021 15:32:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 911D0610E6
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,21 +18,21 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CsiwGipt5rg+1HEBZalW7H8OF8dOIbhty+bP/V9vtek=; b=K7eNenFFykF/3TAnzlf/ziByIa
-	nY5JUDlPCHJl/iAd3uFy58BeOSDTq7eBUa7ivWzDsD1/skHqadzUyifCsskIFBPycuhoazK7hp1QK
-	5PjYZ9FyCUAHPfuKnYAo7hWBWNgXFR7WHkcBJwx7dvCa6X1OGVxC0z0n+pEQDUrXGoR4JE3QWFwAT
-	Ayic1cxTHHcJfoOADKgdjeYvt7Rd+Q2VUhk+fmPmD4I84+RRCl2pDmf+qG8PsHAXpwea+DJmZs8mZ
-	SN1oSYrKRYVqXj2O64EMOkNxfR5JPvEU1GACp7d7QwaGc4gMdc6b5Rkb2/WpEpatFMIrznJmFS9G1
-	yyr/RvDA==;
+	bh=tqVlrftaarARueSaos38YQhYfLBwZxahtQJ7myLdMIg=; b=kVSitXp0cLZXxOI+Qx6LKsuSUX
+	h+Vbkt0wS1ml39d3+NxL7dUEeDTXzELuZlBlXciFzn6DDEDzheAQsBfJiNNbvzn0/B1SeMCnXFwKR
+	y4EJYjDNkJTLKY5aA6b1EjkVYbHyoRW4paH2y+LVD2gjMCxMc/j9ltbS5jsH7yp9EYKzSdkr2/IUM
+	nSHtErLikvHozTlctCSnxvoJHDVLtbIiCm4VQ4nHpPwiPBmrny4Jj/FKUlF9J1Yx6crfRTeVWjdtc
+	3kXJOOsrmX7o36zTGIU8rla5dU9cBVwEwttdNUF8hQi2GLUUW+Kbh1USM1i20M0tJH3e17u0QbAki
+	VmfwyciQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdDYp-0052sa-Ch; Wed, 20 Oct 2021 15:31:23 +0000
+	id 1mdDZa-0053HY-3N; Wed, 20 Oct 2021 15:32:10 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdDMj-004xtF-7h; Wed, 20 Oct 2021 15:18:54 +0000
+ id 1mdDOA-004ySh-3i; Wed, 20 Oct 2021 15:20:23 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 308141F441DD
-Subject: Re: [PATCH v16 6/7] arm64: dts: mt8192: add svs device information
+ (Authenticated sender: kholk11) with ESMTPSA id 1C10F1F441E0
+Subject: Re: [PATCH v16 2/7] arm64: dts: mt8183: add svs device information
 To: Roger Lu <roger.lu@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
@@ -48,18 +48,18 @@ Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20210428065440.3704-1-roger.lu@mediatek.com>
- <20210428065440.3704-7-roger.lu@mediatek.com>
+ <20210428065440.3704-3-roger.lu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <dec2190e-ce5a-3192-73b4-f4aae772bf2d@collabora.com>
-Date: Wed, 20 Oct 2021 17:18:45 +0200
+Message-ID: <70e71210-6d17-92e3-4e3f-01b83380be42@collabora.com>
+Date: Wed, 20 Oct 2021 17:20:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20210428065440.3704-7-roger.lu@mediatek.com>
+In-Reply-To: <20210428065440.3704-3-roger.lu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_081853_479002_A223AB14 
-X-CRM114-Status: GOOD (  19.12  )
+X-CRM114-CacheID: sfid-20211020_082022_343474_17BE50E3 
+X-CRM114-Status: GOOD (  16.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,117 +77,58 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 28/04/21 08:54, Roger Lu ha scritto:
-> add compitable/reg/irq/clock/efuse/reset setting in svs node
+> add compitable/reg/irq/clock/efuse setting in svs node
 > 
 > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 ++++++++++++++++++++++++
->   1 file changed, 34 insertions(+)
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 18 ++++++++++++++++++
+>   1 file changed, 18 insertions(+)
 > 
-
-Hello Roger,
-
-thanks for this series! However, there is an issue with this patch:
-
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index fe24cc66ff7a..e9816a56d87b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -270,6 +270,14 @@
->   			compatible = "mediatek,mt8192-infracfg", "syscon";
->   			reg = <0 0x10001000 0 0x1000>;
->   			#clock-cells = <1>;
-> +
-> +			infracfg_rst: reset-controller {
-> +				compatible = "mediatek,infra-reset", "ti,syscon-reset";
-> +				#reset-cells = <1>;
-> +				ti,reset-bits = <
-> +					0x150 5 0x154 5 0 0     (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* 0: svs */
-
-You are using macros here, which are defined in dt-bindings/reset/ti-syscon.h
-
-hovever, you are not including this header in this devicetree, so it's not
-
-compiling.
-
-
-
-Please fix it.
-
-> +				>;
-> +			};
->   		};
->   
->   		pericfg: syscon@10003000 {
-> @@ -564,6 +572,20 @@
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 80519a145f13..441d617ece43 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -657,6 +657,18 @@
 >   			status = "disabled";
 >   		};
 >   
 > +		svs: svs@1100b000 {
-> +			compatible = "mediatek,mt8192-svs";
+> +			compatible = "mediatek,mt8183-svs";
 > +			reg = <0 0x1100b000 0 0x1000>;
-> +			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
+> +			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
 > +			clocks = <&infracfg CLK_INFRA_THERM>;
 > +			clock-names = "main";
 > +			nvmem-cells = <&svs_calibration>,
-> +				      <&lvts_e_data1>;
+> +				      <&thermal_calibration>;
 > +			nvmem-cell-names = "svs-calibration-data",
 > +					   "t-calibration-data";
-> +			resets = <&infracfg_rst 0>;
-> +			reset-names = "svs_rst";
 > +		};
 > +
->   		spi1: spi@11010000 {
->   			compatible = "mediatek,mt8192-spi",
->   				     "mediatek,mt6765-spi";
-> @@ -681,6 +703,18 @@
->   			#clock-cells = <1>;
+>   		pwm0: pwm@1100e000 {
+>   			compatible = "mediatek,mt8183-disp-pwm";
+>   			reg = <0 0x1100e000 0 0x1000>;
+> @@ -941,9 +953,15 @@
+>   			reg = <0 0x11f10000 0 0x1000>;
+>   			#address-cells = <1>;
+>   			#size-cells = <1>;
+> +			thermal_calibration: calib@180 {
+> +				reg = <0x180 0xc>;
+> +			};
+>   			mipi_tx_calibration: calib@190 {
+>   				reg = <0x190 0xc>;
+>   			};
+> +			svs_calibration: calib@580 {
+> +				reg = <0x580 0x64>;
+> +			};
 >   		};
 >   
-> +		efuse: efuse@11c10000 {
-> +			compatible = "mediatek,efuse";
-> +			reg = <0 0x11c10000 0 0x1000>;
-> +
-
-arch/arm64/boot/dts/mediatek/mt8192.dtsi:510.5-24: Warning (reg_format): 
-/soc/efuse@11c10000/data1:reg: property has invalid length (8 bytes) 
-(#address-cells == 2, #size-cells == 1)
-
-
-
-arch/arm64/boot/dts/mediatek/mt8192.dtsi:513.5-24: Warning (reg_format): 
-/soc/efuse@11c10000/calib@580:reg: property has invalid length (8 bytes) 
-(#address-cells == 2, #size-cells == 1)
-
-
-
-
-
-In short, you should add here:
-
-             #address-cells = <1>;
-
-             #size-cells = <1>;
-
-> +			lvts_e_data1: data1 {
-> +				reg = <0x1C0 0x58>;
-> +			};
-> +			svs_calibration: calib@580 {
-> +				reg = <0x580 0x68>;
-> +			};
-> +		};
-> +
->   		i2c3: i2c3@11cb0000 {
->   			compatible = "mediatek,mt8192-i2c";
->   			reg = <0 0x11cb0000 0 0x1000>,
+>   		u3phy: usb-phy@11f40000 {
 > 
 
-P.S.: Sorry for the double email, the previous one got sent with the wrong
-       address.
+This patch doesn't apply on the latest linux-next due to some new commits in
+mt8183.dtsi, can you please rebase?
 
-
-Regards,
-
+Thanks,
 - Angelo
 
 _______________________________________________
