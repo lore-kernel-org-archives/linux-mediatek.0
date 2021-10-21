@@ -2,14 +2,14 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 33496C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 06:18:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 26E51C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 06:34:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EA9BD611EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 06:18:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EA9BD611EF
+	by mail.kernel.org (Postfix) with ESMTPS id CE34B61284
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 06:34:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CE34B61284
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,52 +18,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gtn9tq/BKJgxmlB64p0bR9wzZLdteJJ2KxLCnlIpe9k=; b=NOxQA7oBgLETVS
-	04XTFgneUcjoOvhE+m74oePqEP7F9CmlC3bx4OWybmqQEwgWN1RP4IMf5srW0jElt4YN9D4yUHpjo
-	8kriAigQDTr4bokvMV4s1FFf5xPepWeK/7rAfjOtQ7wIQseNlNO+e+fs/xdDgONoh2yyvQhI9KeaV
-	E8Pj5qrPkuCz5QUfV9x7ic/a+82AaeAV2R/AyOUaMdTvqokSbiN50U8CxM5r1xgrn967/59k6H7r/
-	xFSTD9N0YCrd9GJ83wwl+pYJfRi4Y6MvXJbK+WTIUwrUT/80o80zf+1OLkXlHfN5MrfeTBfQg4aDK
-	GUs7mWJb9tf3uIPg3Xmg==;
+	List-Owner; bh=bb0sopUDN9j5D0ja26nKdJiid1EChPp6nGdyFaAzT+Q=; b=sUo/vbZNvfatMM
+	nG3dhjX+TAs9huieNWm/IVilnLlV1QT88bfcVkRqVDVtM2MYXVHD1hiECbTcXiy70y66Dl5elBqYg
+	Pv/qvWN8SGz+d5+SDV4/AMc78JODSpz1sfEt+SgUe7NXsLDNiMv6yC63eK5X6zYadQtqdN2it/fWd
+	egwmUnM/3yvUqugGllWT2pLHOLvEOVBd8icnWJkNBApe4/z6u59Slt0ozPUeNe3UsFbYsxMIyohGU
+	89uU1/vqr8MLd8uCjbqVKWxuZylsZfGCmRFWvqVo30FU+fBzsIOZ3CYvqVIiY3sFRUOtlrMRpy75s
+	HzfvTC9tc2UBX2nfT9OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdRPZ-006UuZ-1Y; Thu, 21 Oct 2021 06:18:45 +0000
+	id 1mdRf4-006Wg2-Ns; Thu, 21 Oct 2021 06:34:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdRPU-006UuA-MJ
- for linux-mediatek@lists.infradead.org; Thu, 21 Oct 2021 06:18:42 +0000
-X-UUID: 2794431c4cbc4001afbd02bb5f6ca95e-20211020
-X-UUID: 2794431c4cbc4001afbd02bb5f6ca95e-20211020
+ id 1mdRen-006WZw-Qk; Thu, 21 Oct 2021 06:34:31 +0000
+X-UUID: a06efa8b60b54054a105638b90157a68-20211020
+X-UUID: a06efa8b60b54054a105638b90157a68-20211020
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
+ (envelope-from <roy-cw.yeh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 206006830; Wed, 20 Oct 2021 23:18:38 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Oct 2021 23:08:36 -0700
+ with ESMTP id 1304385899; Wed, 20 Oct 2021 23:34:29 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 20 Oct 2021 23:34:27 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 21 Oct 2021 14:08:35 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Oct 2021 14:34:26 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 21 Oct 2021 14:08:34 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH v4 2/2] mt76: mt7915: add debugfs knobs for MCU utilization
-Date: Thu, 21 Oct 2021 14:07:26 +0800
-Message-ID: <20211021060726.9291-2-shayne.chen@mediatek.com>
+ Frontend Transport; Thu, 21 Oct 2021 14:34:26 +0800
+From: roy-cw.yeh <roy-cw.yeh@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Fabien Parent
+ <fparent@baylibre.com>, "Roy-CW . Yeh" <roy-cw.yeh@mediatek.com>, "jason-jh .
+ lin" <jason-jh.lin@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+ "river . cheng" <river.cheng@mediatek.com>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v1 1/4] arm64: dts: mt8195: Modify svpp rdma node property
+Date: Thu, 21 Oct 2021 14:34:11 +0800
+Message-ID: <20211021063414.23663-2-roy-cw.yeh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211021060726.9291-1-shayne.chen@mediatek.com>
-References: <20211021060726.9291-1-shayne.chen@mediatek.com>
+In-Reply-To: <20211021063414.23663-1-roy-cw.yeh@mediatek.com>
+References: <20211021063414.23663-1-roy-cw.yeh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_231840_781090_7034EB43 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20211020_233429_895786_DAA40DC6 
+X-CRM114-Status: GOOD (  10.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,203 +86,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add debugfs knobs to read MCU utilization, which helps user know
-firmware status more easily to narrow down CPU bottleneck issues.
+From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
----
-v2: abbreviate utilization to util
-v3: rebase to staging tree
-v4: rebase to staging tree
----
- .../wireless/mediatek/mt76/mt7915/debugfs.c   | 49 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   |  5 +-
- .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  2 +
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  |  3 ++
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  1 +
- .../net/wireless/mediatek/mt76/mt7915/regs.h  | 17 +++++++
- 6 files changed, 73 insertions(+), 4 deletions(-)
+Add svpp3/svpp2_mdp_rdma compatible name
+Add dma-range for each svpp rdma node
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-index a829014..6823926 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
-@@ -100,6 +100,12 @@ mt7915_fw_debug_wm_set(void *data, u64 val)
- 	for (debug = DEBUG_TXCMD; debug <= DEBUG_RPT_RX; debug++)
- 		mt7915_mcu_fw_dbg_ctrl(dev, debug, !!dev->fw_debug_wm);
+Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+---
+This patch is based on [1]
+[1] add mdp3 node
+	- https://patchwork.kernel.org/project/linux-mediatek/patch/20211020071448.14187-6-roy-cw.yeh@mediatek.com/
+---
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi | 26 ++++++++++++++----------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index 727b78535605..212930c7b782 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -1022,9 +1022,8 @@
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS0>,
+ 							<&spm MT8195_POWER_DOMAIN_VPPSYS1>;
+ 			iommus = <&iommu_vpp M4U_PORT_L4_MDP_RDMA>,
+-				 <&iommu_vpp M4U_PORT_L4_MDP_WROT>,
+-				 <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>,
+-				 <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
++				 <&iommu_vpp M4U_PORT_L4_MDP_WROT>;
++			dma-ranges = <0x2 0x0 0x0 0x40000000 0x1 0x0>; /* 8G - 12G IOVA*/
+ 			clocks = <&vppsys0 CLK_VPP0_MDP_RDMA>,
+ 					<&topckgen CLK_TOP_CFG_VPP0>,
+ 					<&topckgen CLK_TOP_CFG_26M_VPP0>,
+@@ -1440,7 +1439,7 @@
  
-+	/* WM CPU info record control */
-+	mt76_clear(dev, MT_CPU_UTIL_CTRL, BIT(0));
-+	mt76_wr(dev, MT_DIC_CMD_REG_CMD, BIT(2) | BIT(13) | !dev->fw_debug_wm);
-+	mt76_wr(dev, MT_MCU_WM_CIRQ_IRQ_MASK_CLR_ADDR, BIT(5));
-+	mt76_wr(dev, MT_MCU_WM_CIRQ_IRQ_SOFT_ADDR, BIT(5));
-+
- 	return 0;
- }
+ 		svpp1_mdp3_rdma: svpp1_mdp_rdma@14f08000 {
+ 			compatible = "mediatek,mt8195-mdp3",
+-						"mediatek,mt8183-mdp3-rdma";
++				 "mediatek,mt8183-mdp3-rdma";
+ 			mediatek,mdp3-id = <1>;
+ 			reg = <0 0x14f08000 0 0x1000>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x8000 0x1000>;
+@@ -1452,14 +1451,14 @@
+ 						"TOP_CFG_VPP1",
+ 						"TOP_CFG_26M_VPP1";
+ 			iommus = <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_RDMA>,
+-				 <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>,
+-				 <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>,
+-				 <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
++				 <&iommu_vdo M4U_PORT_L5_SVPP1_MDP_WROT>;
++			dma-ranges = <0x2 0x0 0x0 0x40000000 0x1 0x0>; /* 8G - 12G IOVA*/
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
+ 		};
  
-@@ -123,7 +129,11 @@ mt7915_fw_debug_wa_set(void *data, u64 val)
+ 		svpp2_mdp3_rdma: svpp2_mdp_rdma@14f09000 {
+-			compatible = "mediatek,mt8195-mdp3-rdma", "mediatek,mt8183-mdp3-rdma";
++			compatible = "mediatek,mt8195-mdp3",
++				 "mediatek,mt8183-mdp3-rdma";
+ 			mediatek,mdp3-id = <2>;
+ 			reg = <0 0x14f09000 0 0x1000>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x9000 0x1000>;
+@@ -1470,12 +1469,15 @@
+ 			clock-names = "MDP_RDMA2",
+ 						"TOP_CFG_VPP1",
+ 						"TOP_CFG_26M_VPP1";
+-			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>;
++			iommus = <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_RDMA>,
++				 <&iommu_vdo M4U_PORT_L5_SVPP2_MDP_WROT>;
++			dma-ranges = <0x2 0x0 0x0 0x40000000 0x1 0x0>; /* 8G - 12G IOVA*/
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
+ 		};
  
- 	dev->fw_debug_wa = val ? MCU_FW_LOG_TO_HOST : 0;
+ 		svpp3_mdp3_rdma: svpp3_mdp_rdma@14f0a000 {
+-			compatible = "mediatek,mt8195-mdp3-rdma", "mediatek,mt8183-mdp3-rdma";
++			compatible = "mediatek,mt8195-mdp3",
++				 "mediatek,mt8183-mdp3-rdma";
+ 			mediatek,mdp3-id = <3>;
+ 			reg = <0 0x14f0a000 0 0x1000>;
+ 			mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0xa000 0x1000>;
+@@ -1486,7 +1488,9 @@
+ 			clock-names = "MDP_RDMA3",
+ 						"TOP_CFG_VPP1",
+ 						"TOP_CFG_26M_VPP1";
+-			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>;
++			iommus = <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_RDMA>,
++				 <&iommu_vpp M4U_PORT_L6_SVPP3_MDP_WROT>;
++			dma-ranges = <0x2 0x0 0x0 0x40000000 0x1 0x0>; /* 8G - 12G IOVA*/
+ 			power-domains = <&spm MT8195_POWER_DOMAIN_VPPSYS1>;
+ 		};
  
--	return mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, dev->fw_debug_wa);
-+	mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, dev->fw_debug_wa);
-+	mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(SET), MCU_WA_PARAM_PDMA_RX,
-+			  !!dev->fw_debug_wa, 0);
-+
-+	return 0;
- }
- 
- static int
-@@ -139,6 +149,39 @@ mt7915_fw_debug_wa_get(void *data, u64 *val)
- DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug_wa, mt7915_fw_debug_wa_get,
- 			 mt7915_fw_debug_wa_set, "%lld\n");
- 
-+static int
-+mt7915_fw_util_wm_show(struct seq_file *file, void *data)
-+{
-+	struct mt7915_dev *dev = file->private;
-+
-+	if (dev->fw_debug_wm) {
-+		seq_printf(file, "Busy: %u%%  Peak busy: %u%%\n",
-+			   mt76_rr(dev, MT_CPU_UTIL_BUSY_PCT),
-+			   mt76_rr(dev, MT_CPU_UTIL_PEAK_BUSY_PCT));
-+		seq_printf(file, "Idle count: %u  Peak idle count: %u\n",
-+			   mt76_rr(dev, MT_CPU_UTIL_IDLE_CNT),
-+			   mt76_rr(dev, MT_CPU_UTIL_PEAK_IDLE_CNT));
-+	}
-+
-+	return 0;
-+}
-+
-+DEFINE_SHOW_ATTRIBUTE(mt7915_fw_util_wm);
-+
-+static int
-+mt7915_fw_util_wa_show(struct seq_file *file, void *data)
-+{
-+	struct mt7915_dev *dev = file->private;
-+
-+	if (dev->fw_debug_wa)
-+		mt7915_mcu_wa_cmd(dev, MCU_WA_PARAM_CMD(QUERY),
-+				  MCU_WA_PARAM_CPU_UTIL, 0, 0);
-+
-+	return 0;
-+}
-+
-+DEFINE_SHOW_ATTRIBUTE(mt7915_fw_util_wa);
-+
- static void
- mt7915_ampdu_stat_read_phy(struct mt7915_phy *phy,
- 			   struct seq_file *file)
-@@ -485,6 +528,10 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
- 	debugfs_create_file("tx_stats", 0400, dir, phy, &mt7915_tx_stats_fops);
- 	debugfs_create_file("fw_debug_wm", 0600, dir, dev, &fops_fw_debug_wm);
- 	debugfs_create_file("fw_debug_wa", 0600, dir, dev, &fops_fw_debug_wa);
-+	debugfs_create_file("fw_util_wm", 0400, dir, dev,
-+			    &mt7915_fw_util_wm_fops);
-+	debugfs_create_file("fw_util_wa", 0400, dir, dev,
-+			    &mt7915_fw_util_wa_fops);
- 	debugfs_create_file("implicit_txbf", 0600, dir, dev,
- 			    &fops_implicit_txbf);
- 	debugfs_create_file("txpower_sku", 0400, dir, phy,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 70193bb..56ed550 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -416,8 +416,7 @@ exit:
- 	return mt76_tx_queue_skb_raw(dev, mdev->q_mcu[qid], skb, 0);
- }
- 
--static int
--mt7915_mcu_wa_cmd(struct mt7915_dev *dev, int cmd, u32 a1, u32 a2, u32 a3)
-+int mt7915_mcu_wa_cmd(struct mt7915_dev *dev, int cmd, u32 a1, u32 a2, u32 a3)
- {
- 	struct {
- 		__le32 args[3];
-@@ -429,7 +428,7 @@ mt7915_mcu_wa_cmd(struct mt7915_dev *dev, int cmd, u32 a1, u32 a2, u32 a3)
- 		},
- 	};
- 
--	return mt76_mcu_send_msg(&dev->mt76, cmd, &req, sizeof(req), true);
-+	return mt76_mcu_send_msg(&dev->mt76, cmd, &req, sizeof(req), false);
- }
- 
- static void
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-index 855fbee..f35fa97 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-@@ -310,6 +310,8 @@ enum {
- };
- 
- enum {
-+	MCU_WA_PARAM_PDMA_RX = 0x04,
-+	MCU_WA_PARAM_CPU_UTIL = 0x0b,
- 	MCU_WA_PARAM_RED = 0x0e,
- };
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 7bbb38e..1f6ba30 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -34,6 +34,9 @@ static u32 __mt7915_reg_addr(struct mt7915_dev *dev, u32 addr)
- 		u32 mapped;
- 		u32 size;
- 	} fixed_map[] = {
-+		{ 0x00400000, 0x80000, 0x10000 }, /* WF_MCU_SYSRAM */
-+		{ 0x00410000, 0x90000, 0x10000 }, /* WF_MCU_SYSRAM (configure regs) */
-+		{ 0x40000000, 0x70000, 0x10000 }, /* WF_UMAC_SYSRAM */
- 		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
- 		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
- 		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 070950b..b318b3d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -450,6 +450,7 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
- 			   struct ieee80211_sta *sta, struct rate_info *rate);
- int mt7915_mcu_rdd_cmd(struct mt7915_dev *dev, enum mt7915_rdd_cmd cmd,
- 		       u8 index, u8 rx_sel, u8 val);
-+int mt7915_mcu_wa_cmd(struct mt7915_dev *dev, int cmd, u32 a1, u32 a2, u32 a3);
- int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 type, u8 ctrl);
- int mt7915_mcu_fw_dbg_ctrl(struct mt7915_dev *dev, u32 module, u8 level);
- void mt7915_mcu_rx_event(struct mt7915_dev *dev, struct sk_buff *skb);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index 99574ed..ff71f56 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -528,6 +528,18 @@
- #define MT_HIF_REMAP_L2_BASE		GENMASK(31, 12)
- #define MT_HIF_REMAP_BASE_L2		0x00000
- 
-+#define MT_DIC_CMD_REG_BASE		0x41f000
-+#define MT_DIC_CMD_REG(ofs)		(MT_DIC_CMD_REG_BASE + (ofs))
-+#define MT_DIC_CMD_REG_CMD		MT_DIC_CMD_REG(0x10)
-+
-+#define MT_CPU_UTIL_BASE		0x41f030
-+#define MT_CPU_UTIL(ofs)		(MT_CPU_UTIL_BASE + (ofs))
-+#define MT_CPU_UTIL_BUSY_PCT		MT_CPU_UTIL(0x00)
-+#define MT_CPU_UTIL_PEAK_BUSY_PCT	MT_CPU_UTIL(0x04)
-+#define MT_CPU_UTIL_IDLE_CNT		MT_CPU_UTIL(0x08)
-+#define MT_CPU_UTIL_PEAK_IDLE_CNT	MT_CPU_UTIL(0x0c)
-+#define MT_CPU_UTIL_CTRL		MT_CPU_UTIL(0x1c)
-+
- #define MT_SWDEF_BASE			0x41f200
- #define MT_SWDEF(ofs)			(MT_SWDEF_BASE + (ofs))
- #define MT_SWDEF_MODE			MT_SWDEF(0x3c)
-@@ -591,4 +603,9 @@
- #define MT_WF_PHY_RXTD12_IRPI_SW_CLR_ONLY	BIT(18)
- #define MT_WF_PHY_RXTD12_IRPI_SW_CLR	BIT(29)
- 
-+#define MT_MCU_WM_CIRQ_BASE			0x89010000
-+#define MT_MCU_WM_CIRQ(ofs)			(MT_MCU_WM_CIRQ_BASE + (ofs))
-+#define MT_MCU_WM_CIRQ_IRQ_MASK_CLR_ADDR	MT_MCU_WM_CIRQ(0x80)
-+#define MT_MCU_WM_CIRQ_IRQ_SOFT_ADDR		MT_MCU_WM_CIRQ(0xc0)
-+
- #endif
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
