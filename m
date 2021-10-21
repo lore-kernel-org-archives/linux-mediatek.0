@@ -2,14 +2,14 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 34114C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 10:45:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C1ECCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 11:28:52 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F081461037
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 10:45:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F081461037
+	by mail.kernel.org (Postfix) with ESMTPS id 7CEF560C4D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 11:28:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7CEF560C4D
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,47 +18,40 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qEiH/qBlLYFpd1EC2Me5Dy1yAb/gK3nhgxRyf+l3Y5M=; b=EV1pSWAA0CLNJxv77lYL+VT34n
-	13tMJ913cym7Iv99l7FI1aBxOsLxJfHHSWBJHaarnNbPht1QQawVjH5m38TvNWD2umbOUZ5Wg39xp
-	aUvxyIzOrr6zUQ1MX7W0NuMl1XJ1Knq8OnVbKmguxuH891WNwKUQVWr2+x1Sga8ugdAUB1ysGXTxZ
-	qKzY1wK88qmzNAeIqr2Jp0pPwroUj8mSQ3ZUjbFthDhUvrN15kioCiDrcZp7gECWA49/WQQWx3a1w
-	SuPgaKutIzuuWjq31PA2HGxddcpPIua4EVrAEe3UGfcxie9XcZkOA/MAk5OVfvKB0INjgtnrpwluf
-	Mn+5EpIQ==;
+	bh=lcAMjv4wMfAPkmO7VRogwDEmoxlpRpuBTmbODjput+0=; b=hkvaSXwlzyiworjHjxV+xQkVlJ
+	lZ/zLhB8eqZevijzeGiMw3bxK+Kre+U2lrOouMQnkshWeqS+4Ipz3qUtsDKPPx4CWtMBY7kU5/p0N
+	H3JA5pletSbZH8kD5UYEc9J3ySDIUfdSmVAJG7PAj8+0ymdQeMtSX1XoyPfLKNVPzvH2JY9lXb6kM
+	72UybZXL49UzlFIVeSKqocgYFIwbWkQ9QxTmpNBxb8jwkaSg2KNmoM02e+uIk0JcKW1DXNb6q0mAF
+	p4yrz1xihFpMJS778ToBHB7d0KKFit1htKY925angWJebbd4vo0La18p6oTsAuD8huqENKHIPgNC4
+	Oiuf8Rmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdVZA-007H0s-2N; Thu, 21 Oct 2021 10:44:56 +0000
+	id 1mdWFQ-007Lql-G7; Thu, 21 Oct 2021 11:28:36 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdVYx-007Gyc-SX; Thu, 21 Oct 2021 10:44:45 +0000
+ id 1mdWFC-007Lmg-Az; Thu, 21 Oct 2021 11:28:25 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E9B121F44896
-Subject: Re: [PATCH v1 4/4] media: platform: mtk-mdp3: Set rdma compression
- reg in each frame
-To: "roy-cw.yeh" <roy-cw.yeh@mediatek.com>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Fabien Parent <fparent@baylibre.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
- "river . cheng" <river.cheng@mediatek.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20211021063414.23663-1-roy-cw.yeh@mediatek.com>
- <20211021063414.23663-5-roy-cw.yeh@mediatek.com>
+ (Authenticated sender: kholk11) with ESMTPSA id 2F02D1F449A2
+Subject: Re: [PATCH v2 1/2] ASoC: SOF: mediatek: Add mt8195 dsp clock support
+To: YC Hung <yc.hung@mediatek.com>, broonie@kernel.org, tiwai@suse.com,
+ robh+dt@kernel.org, matthias.bgg@gmail.com
+Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, daniel.baluta@nxp.com, trevor.wu@mediatek.com,
+ allen-kh.cheng@mediatek.com
+References: <20211021035841.2365-1-yc.hung@mediatek.com>
+ <20211021035841.2365-2-yc.hung@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <4154479c-b0cc-dde4-eb73-bc6c65c9beca@collabora.com>
-Date: Thu, 21 Oct 2021 12:44:39 +0200
+Message-ID: <1eed3c3a-61d7-17df-0ec2-01c44f45e226@collabora.com>
+Date: Thu, 21 Oct 2021 13:28:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211021063414.23663-5-roy-cw.yeh@mediatek.com>
+In-Reply-To: <20211021035841.2365-2-yc.hung@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_034444_092277_DC919E2C 
-X-CRM114-Status: GOOD (  19.21  )
+X-CRM114-CacheID: sfid-20211021_042822_688297_8D5D9FDA 
+X-CRM114-Status: GOOD (  33.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,72 +68,355 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/10/21 08:34, roy-cw.yeh ha scritto:
-> From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
+Il 21/10/21 05:58, YC Hung ha scritto:
+> Add adsp clock on/off support on mt8195 platform.
 > 
-> Set rdma compression reg in each frame
-> 
-> Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+> Signed-off-by: YC Hung <yc.hung@mediatek.com>
 > ---
->   drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c | 10 ++++++----
->   drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c |  2 +-
->   2 files changed, 7 insertions(+), 5 deletions(-)
+>   sound/soc/sof/mediatek/mt8195/Makefile     |   2 +-
+>   sound/soc/sof/mediatek/mt8195/mt8195-clk.c | 164 +++++++++++++++++++++
+>   sound/soc/sof/mediatek/mt8195/mt8195-clk.h |  29 ++++
+>   sound/soc/sof/mediatek/mt8195/mt8195.c     |  23 ++-
+>   4 files changed, 215 insertions(+), 3 deletions(-)
+>   create mode 100644 sound/soc/sof/mediatek/mt8195/mt8195-clk.c
+>   create mode 100644 sound/soc/sof/mediatek/mt8195/mt8195-clk.h
 > 
-> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
-> index 12d6c88c68d2..dc0d1b3ff218 100644
-> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
-> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
-> @@ -178,15 +178,17 @@ static int config_rdma_frame(struct mdp_comp_ctx *ctx,
->   			/* Setup Compression Control */
->   			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_COMP_CON,
->   				     rdma->comp_ctrl, write_mask);
-> -		}
-> -
-> -		if (mdp_cfg->rdma_support_afbc &&
-> -		    (MDP_COLOR_IS_COMPRESS(colorformat))) {
-> +		} else if (mdp_cfg->rdma_support_afbc &&
-> +			   (MDP_COLOR_IS_COMPRESS(colorformat))) {
 
-Looks like you're unconditionally writing to the compression control register,
+Hello,
+Thanks for the patch! However, there's something to improve:
 
-so you can just...
-
->   			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_MF_BKGD_SIZE_IN_PXL,
->   				     ((width + 31) >> 5) << 5, 0x001FFFFF);
->   			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_MF_BKGD_H_SIZE_IN_PXL,
->   				     ((height + 7) >> 3) << 3, 0x001FFFFF);
+> diff --git a/sound/soc/sof/mediatek/mt8195/Makefile b/sound/soc/sof/mediatek/mt8195/Makefile
+> index 60fca24c068a..650f4bce99b2 100644
+> --- a/sound/soc/sof/mediatek/mt8195/Makefile
+> +++ b/sound/soc/sof/mediatek/mt8195/Makefile
+> @@ -1,4 +1,4 @@
+>   # SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
+> -snd-sof-mt8195-objs := mt8195.o mt8195-loader.o
+> +snd-sof-mt8195-objs := mt8195.o mt8195-clk.o mt8195-loader.o
+>   obj-$(CONFIG_SND_SOC_SOF_MT8195) += snd-sof-mt8195.o
 >   
+> diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.c b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
+> new file mode 100644
+> index 000000000000..1988421f7f7b
+> --- /dev/null
+> +++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
+> @@ -0,0 +1,164 @@
+> +// SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
+> +//
+> +// Copyright(c) 2021 Mediatek Corporation. All rights reserved.
+> +//
+> +// Author: YC Hung <yc.hung@mediatek.com>
+> +//
+> +// Hardware interface for mt8195 DSP clock
+> +
+> +#include <linux/clk.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/io.h>
+> +#include "mt8195.h"
+> +#include "mt8195-clk.h"
+> +
+> +struct clk *clk_handle[ADSP_CLK_NUM];
+
+I think that this one can be moved to `struct adsp_priv` (or elsewhere, if more
+appropriate) as to not use global variables/handles.
+
+> +
+> +int platform_parse_clock(struct device *dev)
+> +{
+> +	clk_handle[CLK_TOP_ADSP] = devm_clk_get(dev, "adsp_sel");
+> +	if (IS_ERR(clk_handle[CLK_TOP_ADSP])) {
+> +		dev_err(dev, "clk_get(\"adsp_sel\") failed\n");
+> +		return PTR_ERR(clk_handle[CLK_TOP_ADSP]);
+> +	}
+> +
+> +	clk_handle[CLK_TOP_CLK26M] = devm_clk_get(dev, "clk26m_ck");
+> +	if (IS_ERR(clk_handle[CLK_TOP_CLK26M])) {
+> +		dev_err(dev, "clk_get(\"clk26m_ck\") failed\n");
+> +		return PTR_ERR(clk_handle[CLK_TOP_CLK26M]);
+> +	}
+> +
+> +	clk_handle[CLK_TOP_AUDIO_LOCAL_BUS] = devm_clk_get(dev, "audio_local_bus");
+> +	if (IS_ERR(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS])) {
+> +		dev_err(dev, "clk_get(\"audio_local_bus\") failed\n");
+> +		return PTR_ERR(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
+> +	}
+> +
+> +	clk_handle[CLK_TOP_MAINPLL_D7_D2] = devm_clk_get(dev, "mainpll_d7_d2");
+> +	if (IS_ERR(clk_handle[CLK_TOP_MAINPLL_D7_D2])) {
+> +		dev_err(dev, "clk_get(\"mainpll_d7_d2\") failed\n");
+> +		return PTR_ERR(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
+> +	}
+> +
+> +	clk_handle[CLK_SCP_ADSP_AUDIODSP] = devm_clk_get(dev, "scp_adsp_audiodsp");
+> +	if (IS_ERR(clk_handle[CLK_SCP_ADSP_AUDIODSP])) {
+> +		dev_err(dev, "clk_get(\"scp_adsp_audiodsp\") failed\n");
+> +		return PTR_ERR(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
+> +	}
+> +
+> +	clk_handle[CLK_TOP_AUDIO_H] = devm_clk_get(dev, "audio_h");
+> +	if (IS_ERR(clk_handle[CLK_TOP_AUDIO_H])) {
+> +		dev_err(dev, "clk_get(\"audio_h_sel\") failed\n");
+> +		return PTR_ERR(clk_handle[CLK_TOP_AUDIO_H]);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +int adsp_enable_clock(struct device *dev)
+
+You are using this function only in this file, please make it static.
+
+> +{
+> +	int ret;
+> +
+> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
+> +	if (ret) {
+> +		dev_err(dev, "%s clk_prepare_enable(mainpll_d7_d2) fail %d\n",
+> +			__func__, ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_ADSP]);
+> +	if (ret) {
+> +		dev_err(dev, "%s clk_prepare_enable(adsp_sel) fail %d\n",
+> +			__func__, ret);
+> +		goto disable_mainpll_d7_d2_clk;
+> +	}
+> +
+> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
+> +	if (ret) {
+> +		dev_err(dev, "%s clk_prepare_enable(audio_local_bus) fail %d\n",
+> +			__func__, ret);
+> +		goto disable_dsp_sel_clk;
+> +	}
+> +
+> +	ret = clk_prepare_enable(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
+> +	if (ret) {
+> +		dev_err(dev, "%s clk_prepare_enable(scp_adsp_audiodsp) fail %d\n",
+> +			__func__, ret);
+> +		goto disable_audio_local_bus_clk;
+> +	}
+> +
+> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_AUDIO_H]);
+> +	if (ret) {
+> +		dev_err(dev, "%s clk_prepare_enable(audio_h) fail %d\n",
+> +			__func__, ret);
+> +		goto disable_scp_adsp_audiodsp_clk;
+> +	}
+> +
+> +	return 0;
+> +
+> +disable_scp_adsp_audiodsp_clk:
+> +	clk_disable_unprepare(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
+> +disable_audio_local_bus_clk:
+> +	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
+> +disable_dsp_sel_clk:
+> +	clk_disable_unprepare(clk_handle[CLK_TOP_ADSP]);
+> +disable_mainpll_d7_d2_clk:
+> +	clk_disable_unprepare(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
+> +
+> +	return ret;
+> +}
+> +
+> +void adsp_disable_clock(struct device *dev)
+
+Same here...
+
+> +{
+> +	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_H]);
+> +	clk_disable_unprepare(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
+> +	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
+> +	clk_disable_unprepare(clk_handle[CLK_TOP_ADSP]);
+> +	clk_disable_unprepare(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
+> +}
+> +
+> +int adsp_default_clk_init(struct device *dev, int enable)
+
+...and same here.
+
+Also, your `enable` parameter can logically (currently) only have two meanings:
+enable, or disable; I think that it would be better to use a bool instead.
+
+> +{
+> +	int ret = 0;
+> +
+> +	dev_dbg(dev, "%s: %s\n", __func__, enable ? "on" : "off");
+> +
+> +	if (enable) {
+> +		ret = clk_set_parent(clk_handle[CLK_TOP_ADSP],
+> +				     clk_handle[CLK_TOP_CLK26M]);
+> +		if (ret) {
+> +			dev_err(dev, "failed to set dsp_sel to clk26m: %d\n", ret);
+> +			return ret;
+> +		}
+> +
+> +		ret = clk_set_parent(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS],
+> +				     clk_handle[CLK_TOP_MAINPLL_D7_D2]);
+> +		if (ret) {
+> +			dev_err(dev, "set audio_local_bus failed %d\n", ret);
+> +			return ret;
+> +		}
+> +
+
+I think it'd be a good idea to...
+
+> +		ret = adsp_enable_clock(dev);
+> +		if (ret)
+
+		if (ret) {
+
+> +			dev_err(dev, "failed to adsp_enable_clock: %d\n", ret);
+
+			return ret;
 		}
-		/* Setup Compression Control */
 
-		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_COMP_CON,
+> +
+> +		return ret;
 
-			     rdma->comp_ctrl, write_mask);	
+...and remove this return...
 
-... and avoid repeating the same thing over and over in all of the conditionals.
+> +	}
+> +
 
-> +			/* Setup Compression Control */
-> +			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_COMP_CON,
-> +				     rdma->comp_ctrl, write_mask);
-> +		} else {
->   			/* Setup Compression Control */
->   			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_COMP_CON,
->   				     rdma->comp_ctrl, write_mask);
-> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-> index 875326afb686..1a15490d45e7 100644
-> --- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-> @@ -34,7 +34,7 @@ static const struct mdp_platform_config mt8195_plat_cfg = {
->   	.rdma_support_afbc              = true,
->   	.rdma_esl_setting               = true,
->   	.rdma_rsz1_sram_sharing         = false,
-> -	.rdma_upsample_repeat_only      = true,
-> +	.rdma_upsample_repeat_only      = false,
->   	.rsz_disable_dcm_small_sample   = false,
->   	.rsz_etc_control                = true,
->   	.wrot_filter_constraint         = false,
+	} else {
+
+> +	adsp_disable_clock(dev);
+
+	}
+
+> +
+> +	return ret;
+
+...and then, since you are covering all of the error cases before the end of
+this function, here you should just
+
+	return 0;
+
+> +}
+> +
+> +int adsp_clock_on(struct device *dev)
+> +{
+> +	/* Open ADSP clock */
+> +	return adsp_default_clk_init(dev, 1);
+> +}
+> +
+> +int adsp_clock_off(struct device *dev)
+> +{
+> +	/* Close ADSP clock */
+> +	return adsp_default_clk_init(dev, 0);
+> +}
+> +
+> diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.h b/sound/soc/sof/mediatek/mt8195/mt8195-clk.h
+> new file mode 100644
+> index 000000000000..f985d141552a
+> --- /dev/null
+> +++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.h
+> @@ -0,0 +1,29 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +
+> +/*
+> + * Copyright (c) 2021 MediaTek Corporation. All rights reserved.
+> + *
+> + *  Header file for the mt8195 DSP clock  definition
+> + */
+> +
+> +#ifndef __MT8195_CLK_H
+> +#define __MT8195_CLK_H
+> +
+> +/*DSP clock*/
+
+/* DSP clock id */
+
+> +enum ADSP_CLK_ID {
+
+lowercase please: enum adsp_clk_id
+
+> +	CLK_TOP_ADSP,
+> +	CLK_TOP_CLK26M,
+> +	CLK_TOP_AUDIO_LOCAL_BUS,
+> +	CLK_TOP_MAINPLL_D7_D2,
+> +	CLK_SCP_ADSP_AUDIODSP,
+> +	CLK_TOP_AUDIO_H,
+> +	ADSP_CLK_NUM
+
+What about ADSP_CLK_MAX instead?
+Personal preference here, nothing worrying.
+
+> +};
+> +
+> +int platform_parse_clock(struct device *dev);
+> +int adsp_default_clk_init(struct device *dev, int enable);
+> +int adsp_enable_clock(struct device *dev);
+> +void adsp_disable_clock(struct device *dev);
+> +int adsp_clock_on(struct device *dev);
+> +int adsp_clock_off(struct device *dev);
+> +#endif
+> diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
+> index 99075598a35a..f323da58057b 100644
+> --- a/sound/soc/sof/mediatek/mt8195/mt8195.c
+> +++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
+> @@ -25,6 +25,7 @@
+>   #include "../adsp_helper.h"
+>   #include "../mediatek-ops.h"
+>   #include "mt8195.h"
+> +#include "mt8195-clk.h"
+>   
+>   static int platform_parse_resource(struct platform_device *pdev, void *data)
+>   {
+> @@ -231,10 +232,23 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
+>   	if (ret)
+>   		return ret;
+>   
+> +	ret = platform_parse_clock(&pdev->dev);
+> +	if (ret) {
+> +		dev_err(sdev->dev, "platform_parse_clock failed\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	ret = adsp_clock_on(&pdev->dev);
+> +	if (ret) {
+> +		dev_err(sdev->dev, "adsp_clock_on fail!\n");
+> +		return -EINVAL;
+> +	}
+> +
+>   	ret = adsp_sram_power_on(sdev->dev, true);
+>   	if (ret) {
+>   		dev_err(sdev->dev, "adsp_sram_power_on fail!\n");
+> -		return ret;
+> +		ret = -EINVAL;
+> +		goto exit_clk_disable;
+Why are you overriding adsp_sram_power_on()'s return value?
+As of now, this function is supposed to return -ENOMEM or 0.. and you
+shouldn't override the return value with -EINVAL here.
+
+>   	}
+>   
+>   	ret = adsp_memory_remap_init(&pdev->dev, priv->adsp);
+> @@ -282,6 +296,8 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
+>   
+>   err_adsp_sram_power_off:
+>   	adsp_sram_power_on(&pdev->dev, false);
+> +exit_clk_disable:
+> +	adsp_clock_off(&pdev->dev);
+>   
+>   	return ret;
+>   }
+> @@ -290,7 +306,10 @@ static int mt8195_dsp_remove(struct snd_sof_dev *sdev)
+>   {
+>   	struct platform_device *pdev = container_of(sdev->dev, struct platform_device, dev);
+>   
+> -	return adsp_sram_power_on(&pdev->dev, false);
+> +	adsp_sram_power_on(&pdev->dev, false);
+> +	adsp_clock_off(&pdev->dev);
+> +
+> +	return 0;
+>   }
+>   
+>   /* on mt8195 there is 1 to 1 match between type and BAR idx */
 > 
 
+Regards,
+- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
