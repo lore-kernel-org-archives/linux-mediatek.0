@@ -2,14 +2,14 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C63F5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 13:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB970C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 13:30:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9497F611CE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 13:30:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9497F611CE
+	by mail.kernel.org (Postfix) with ESMTPS id AB91C61205
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 13:30:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AB91C61205
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,61 +18,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NAydQRvs2i8BPrRrnUV7f1zqDWBet/UqTKmzZJRCglY=; b=yChLMAoS/y0Ha2
-	dGucjFz74vL/kXZeXzZQs+Fx4skepa2dT1CCM583VTZ2YYQeSTPajUIJbL31VDRdWUvpkdpQLxqal
-	6n0tWxMmzEQPeznHIp4JJgFbqqiB7Qsug1+QrpIlKdZzJXylOGo4kR7Xxf3qjXsWdfTOonLoun31M
-	SlWoZqYZ5SI+J+hxSXaTVIwAY91xcq3/MtXSK27LUphi6C84BJw8r0d5QiDR3fty6ZLRwKaXm4ZEV
-	VsFQ//eXR/N2aeUqcA8FrrLIeG70MLzn8xB7Jy1e7dCVgkSiD2olQysYs2EJqCh56nVBC1Mo+/Cus
-	dkZTtv+OPq6FSoc5nboQ==;
+	List-Owner; bh=RloRbhSXhrQGaJDo1kVXijV4thE0zzcZ4Ips7YSEANI=; b=1nWeLHFGbuuA6Q
+	9SCnPqhLgat+G7l4ISK5oT+hkw1FfEpF90ynUKwo3pQMOHzMfrf2/sFTlQ++BZ7vir7kDrB4Gh9FE
+	c8sdD1RL1N5COKasFvkStIKyTv6UFsEGkzZ7OQulo5o5xFmUl8iobN6akLvxEqV3P5o7MBdo2K9f4
+	brwW3Msx5P6LGe+2sLFCD0G8QWsYTId6c6Xiu6r0D1+0WSItYm+XeWF/3ZRAWvWIDExL9S/2Q4rqO
+	9wZqf5U8A9QPOLWLfDlJhEKMp20xx9eZAdhcGsdEW7K+3XMmWrnVAPQ0Qn1ha/LVhM5vIh6mMAudb
+	VZS4q/CtRdJ188hdkOHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdY9H-007e6N-BC; Thu, 21 Oct 2021 13:30:23 +0000
-Received: from mail-oi1-f176.google.com ([209.85.167.176])
+	id 1mdY9R-007e8X-UT; Thu, 21 Oct 2021 13:30:33 +0000
+Received: from mail-ot1-f50.google.com ([209.85.210.50])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdY93-007e2M-TX; Thu, 21 Oct 2021 13:30:11 +0000
-Received: by mail-oi1-f176.google.com with SMTP id o204so805499oih.13;
- Thu, 21 Oct 2021 06:30:08 -0700 (PDT)
+ id 1mdY97-007e2o-3s; Thu, 21 Oct 2021 13:30:14 +0000
+Received: by mail-ot1-f50.google.com with SMTP id
+ d21-20020a9d4f15000000b0054e677e0ac5so373687otl.11; 
+ Thu, 21 Oct 2021 06:30:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
  :message-id;
- bh=WLIwA5FD/KtHnG54OgwxE3AJ2VLgcGG0qXYDGdPIMCU=;
- b=45HUc8TSBDgiCIuPyxdZBBGRvgQcZ+/eHFYY3s68R+IWNrlVqOJcedE3TCbUz+YEwZ
- UPTuwtnTSOSuxB0o8T7qTIAUDCTGXx8aqJ6+vVbWwsrWMNlr/1tjrd1eOMUVkNpJAKq3
- P8S1JKLTwmkYFfKUIzKWF7/BckjpYJfjkE9NyGZs0yl6JNfjjAvYoL9qOKchXjVPbIt9
- UXFjTDdNqfAxzx+LYvPu1YkjyPO4zDCsRNqtRR2Mlq/ZpJ1mUWCtjwnI0PAXwIb65HmO
- MoDWPzlfdj95Xsq6UkYzT0VMT0JOTmnpZUwrszOh518Pk60oJZ6UWLRTfHxE66Ak7V4x
- RAOQ==
-X-Gm-Message-State: AOAM532JbHRvkWNCpRV0euT6Svyq79eRLc3CZq1w8O6QgyCxYn0BxFIo
- jcpRGQjX7T5SeY0OCcki5Q==
-X-Google-Smtp-Source: ABdhPJzWNqQ82LGFFmXVyboYOunuq36yDADhSjRjBxsMz++SfMFiv9RLtb3gzPemE+KZAIIdxJ6VMw==
-X-Received: by 2002:a05:6808:f8f:: with SMTP id
- o15mr1238476oiw.38.1634823008338; 
- Thu, 21 Oct 2021 06:30:08 -0700 (PDT)
+ bh=0zF0CVmeaIG2Lt62vaRjUU2fLmKXJyBGdl9zYadt9rk=;
+ b=RcQwc7BmMTINHsVpxOEif1VgpdCM5ZVrs4j+4aP0QTwjLvlJ1IIo0Ipw9r9fbgbLR5
+ jUmW2JyqPkfRKsKpf0wZrUKbDPt/iIeogy7HfHGOT5a71sMDqfo+Q0c9hQKalMV+dgoI
+ rGgVqvl4on+/uemqe6HLUG1fkYdgo+p9BPRMEJd93RiYGnPuoquZXeyYYMJPMi5tUx+7
+ ReG4OIxFYZQQxM5g9Jmwi5UzZNurw+PwGFrhGaCan59T0ePapykt3GlyFnoGKzAuHD4z
+ +X9POTS002P6AUGOjkosCuP3O68XLXQkgp9y3CbEuOlSeBbbi8UiGeTmKr63Xgjzqwnw
+ s9pw==
+X-Gm-Message-State: AOAM532d0LBgwEZKULcyts7GXuxJ33fJ2ELB3e8Qnr5IcGQ0IMHnQ9fd
+ yR52SuBZuEA69AUJFn9fuYaVsH7atg==
+X-Google-Smtp-Source: ABdhPJzRAjLuHwIJ9mvQFOPzhmIpXAT6cNcKlAhYHOhqHGtrndKW6FroqvYm4rd8UFGr80VHBXiICA==
+X-Received: by 2002:a9d:764c:: with SMTP id o12mr4966078otl.129.1634823011712; 
+ Thu, 21 Oct 2021 06:30:11 -0700 (PDT)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id 187sm1064082oig.19.2021.10.21.06.30.07
+ by smtp.gmail.com with ESMTPSA id t8sm1070167otc.74.2021.10.21.06.30.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Oct 2021 06:30:07 -0700 (PDT)
-Received: (nullmailer pid 353169 invoked by uid 1000);
+ Thu, 21 Oct 2021 06:30:10 -0700 (PDT)
+Received: (nullmailer pid 353184 invoked by uid 1000);
  Thu, 21 Oct 2021 13:30:05 -0000
 From: Rob Herring <robh@kernel.org>
 To: Markus Schneider-Pargmann <msp@baylibre.com>
-Cc: Sam Ravnborg <sam@ravnborg.org>, linux-arm-kernel@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+Cc: devicetree@vger.kernel.org, Sam Ravnborg <sam@ravnborg.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, linux-mediatek@lists.infradead.org,
+ Vinod Koul <vkoul@kernel.org>, dri-devel@lists.freedesktop.org,
  linux-phy@lists.infradead.org
-In-Reply-To: <20211021092707.3562523-3-msp@baylibre.com>
+In-Reply-To: <20211021092707.3562523-2-msp@baylibre.com>
 References: <20211021092707.3562523-1-msp@baylibre.com>
- <20211021092707.3562523-3-msp@baylibre.com>
-Subject: Re: [PATCH v5 2/7] dt-bindings: mediatek, dp: Add Display Port binding
+ <20211021092707.3562523-2-msp@baylibre.com>
+Subject: Re: [PATCH v5 1/7] dt-bindings: mediatek,dpi: Add DP_INTF compatible
 Date: Thu, 21 Oct 2021 08:30:05 -0500
-Message-Id: <1634823005.099522.353168.nullmailer@robh.at.kernel.org>
+Message-Id: <1634823005.130125.353182.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_063009_980933_F83F6132 
-X-CRM114-Status: GOOD (  15.46  )
+X-CRM114-CacheID: sfid-20211021_063013_187981_A6CEBCF9 
+X-CRM114-Status: GOOD (  14.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,56 +90,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 21 Oct 2021 11:27:02 +0200, Markus Schneider-Pargmann wrote:
-> This controller is present on several mediatek hardware. Currently
-> mt8195 and mt8395 have this controller without a functional difference,
-> so only one compatible field is added.
+On Thu, 21 Oct 2021 11:27:01 +0200, Markus Schneider-Pargmann wrote:
+> DP_INTF is similar to DPI but does not have the exact same feature set
+> or register layouts.
 > 
-> The controller can have two forms, as a normal display port and as an
-> embedded display port.
+> DP_INTF is the sink of the display pipeline that is connected to the
+> DisplayPort controller and encoder unit. It takes the same clocks as
+> DPI.
 > 
 > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 > ---
 > 
 > Notes:
 >     Changes v4 -> v5:
->     - Removed "status" in the example
->     - Remove edp_tx compatible.
->     - Rename dp_tx compatible to dp-tx.
+>     - Newly created patch after realizing that the specific clocks for dpintf were
+>       the same as engine and pixel clocks.
 > 
->  .../display/mediatek/mediatek,dp.yaml         | 87 +++++++++++++++++++
->  1 file changed, 87 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+>  .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
 > 
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Running 'make dtbs_check' with the schema in this patch gives the
+following warnings. Consider if they are expected or the schema is
+incorrect. These may not be new warnings.
 
-yamllint warnings/errors:
+Note that it is not yet a requirement to have 0 warnings for dtbs_check.
+This will change in the future.
 
-dtschema/dtc warnings/errors:
-Documentation/devicetree/bindings/display/mediatek/mediatek,dp.example.dts:20:18: fatal error: dt-bindings/power/mt8195-power.h: No such file or directory
-   20 |         #include <dt-bindings/power/mt8195-power.h>
-      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[1]: *** [scripts/Makefile.lib:385: Documentation/devicetree/bindings/display/mediatek/mediatek,dp.example.dt.yaml] Error 1
-make[1]: *** Waiting for unfinished jobs....
-make: *** [Makefile:1441: dt_binding_check] Error 2
+Full log is available here: https://patchwork.ozlabs.org/patch/1544237
 
-doc reference errors (make refcheckdocs):
 
-See https://patchwork.ozlabs.org/patch/1544239
+dpi@14014000: Additional properties are not allowed ('ports' was unexpected)
+	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
+	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
 
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
+dpi@14014000: compatible: Additional items are not allowed ('mediatek,mt2701-dpi' was unexpected)
+	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
+	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+dpi@14014000: compatible: ['mediatek,mt7623-dpi', 'mediatek,mt2701-dpi'] is too long
+	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
+	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
 
-pip3 install dtschema --upgrade
+dpi@14014000: 'port' is a required property
+	arch/arm/boot/dts/mt7623n-bananapi-bpi-r2.dt.yaml
+	arch/arm/boot/dts/mt7623n-rfb-emmc.dt.yaml
 
-Please check and re-submit.
+dpi@1401d000: Additional properties are not allowed ('power-domains' was unexpected)
+	arch/arm64/boot/dts/mediatek/mt8173-elm.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8173-elm-hana.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8173-elm-hana-rev7.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8173-evb.dt.yaml
 
 
 _______________________________________________
