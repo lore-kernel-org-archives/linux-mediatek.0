@@ -2,14 +2,14 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6552BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 15:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 5B899C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 15:11:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2C00060F57
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 15:10:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2C00060F57
+	by mail.kernel.org (Postfix) with ESMTPS id 21C9F60F57
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 15:11:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 21C9F60F57
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,101 +18,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5wCPHIPA2lwplIUO4sZVwkSrVkG2gPCcQxxjV/AvIGo=; b=eYsgDFPpT3X8fa
-	vM918ptSQcTUU0npZTNSY78dtlsRkVocl4tNY4XiEpPtwhZp8MOJLY9wB1iu0nxJ4wRUqqZ1aIpWp
-	jjKoNoSmSOvcNlFzk/hPmT+L9SCmiIVTO5cbwmWhYRvmIeqvqaRuBNA9fUSIfsJBvRZopBKJpUA3A
-	gEL4d7bFPEzRhGkWEDrn0cPtIIInHv6RGHFNHBZ3LHlgUa6rscQKEFlbKsANEgC+eDPxKkx6NEsy8
-	U+SSvplZRvn8wMIGaKWstsX40xXYbkLNZnnSXnOTCfrR5JLTlHJlNn6mmk5pSfCCjI5ATXErASsEx
-	oD66qc/P/K+59ScLwhPQ==;
+	List-Owner; bh=wX5/2kglMgjkTKXecNGaWIGBQI2nlSI5Mh1UTkl1TF0=; b=OaUpSObsg0Unv1
+	9thtF4Ggy7tz/16NvB6oChFqnLf3PWA4gv2zDjn9SPlh+XpX/ucbC8Ef4ijb1ZcOkFretDnA7afYU
+	xa3UJ2naCggUJ+gju0dG0GHXdcIOvZ5a2zjUO7v8ZuFbUgWsIlL0cPC0H66tmk7pQJWubQOGJbNv8
+	OeVxFMPL5jXaSeiAhox/P+UE9zr20u6Tpclhw/PCiGA3gQDxV54EsnVpbZxucHiGWpFcGV7EnqYjo
+	AfxiOiSEV/Y0VniF3cyvGnmTho9K6jNHu01q47afHHsapnkYCyu8DW3049aGFiJrMJBUVl8N3NoR7
+	WOzz7pYYc3JZtOHYabnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdZhZ-007zIb-45; Thu, 21 Oct 2021 15:09:53 +0000
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+	id 1mdZj3-007zzE-9F; Thu, 21 Oct 2021 15:11:25 +0000
+Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdZhV-007zG5-7m; Thu, 21 Oct 2021 15:09:50 +0000
-Received: by mail-pj1-x1030.google.com with SMTP id
- q10-20020a17090a1b0a00b001a076a59640so5972772pjq.0; 
- Thu, 21 Oct 2021 08:09:48 -0700 (PDT)
+ id 1mdZil-007zsY-MB; Thu, 21 Oct 2021 15:11:09 +0000
+Received: by mail-pg1-x52f.google.com with SMTP id h193so617646pgc.1;
+ Thu, 21 Oct 2021 08:11:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TfHsGP2yi6lWLecTIcZVrIhetTubqUKD7yLErDw3x2w=;
- b=EUZaSbSsvxfgQPDyiZv6K9FvbiaFo8lnIoEmpC0ubPuoqxNOuIOf4K8ZsIh578ws0Z
- 2EDdrEbYHum8lqROFe1C/onYlVaB50CDb5AwppL0LpxiFNIEWdnc8cQjEFdXeAobfidj
- x8qfJAw0gdtPVdlvPc21q9Yxry610dr7WFKlVHFUO1eyzNlo/F03H3hyjJckpZwfON5S
- b21ly6HIsBApY6VwbYgoI1P/Fu0X1AZm7c/Cai3cT3TlLzr9REQ44ISEUK3PawQUbAVm
- ZC1Qe6WDuHchsm5VVBggdsA8zJ1Xgd6h2KTs8gi19LGsz2M2EyYOMMdey6IAUQiBbt/o
- +Ubw==
+ bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
+ b=bzWdSeZQujO32b5BMXmzC0hhRwPksEaiJE/YCATPkO92U0l+nmR4WGg3cVxc0hTdyz
+ FEiwDhNx3vFODZnaOwNJgeNx0e8s9VBE4HACA2WQtqadySltUFMRd4kiTbex9lmpKjce
+ 4OU4FX1VyEsIA2rp6LEjNuvr7zj4dR/48s7cnxdC1nFzwHVkbFVZFqn+L/n6KvocLObi
+ /Xro4uDDTsrKtYwU2fe5EgmulOTv0YFTQt/SrAZ4iN2CbapeYV6/AF9/iayp6Gix1gdW
+ QIyfLJ+azZ1EVH0YzaszjJDw32Rygn46IcE9+H14XdELtLHoCGDulU6jFktpuLeWb6z4
+ Z1hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TfHsGP2yi6lWLecTIcZVrIhetTubqUKD7yLErDw3x2w=;
- b=CyQewIMIcX4q4S5ATHJD3FHrYIJtlD5AKNU+AcQByVyHTvretGyJtoJFv7SGu1WXIU
- sHn45XqbH/31uKmDn712s2Eu7bbJU2JR+OzYFFPq059ruxI8T8Y0ecX7fxBSsoBQm4gK
- ToyTXJ5dPcuaZ1WTL1RjyAuVI47GnPLPoHaluhwHKcI7xTAwByLBdfDEObZbnefpqhFP
- OecxNc03Qfmqrot6WBd9pfAEeFoxL/N6lpEtUQrUl/8+sNgtl7pGDA4981SyI5vSxXBC
- wzcTSD0jbz/RD2jnLw1pjC3JcBE9ggslHH8KfYA08wVNT4sahSbQU/epBV3mnPzx+eRd
- aUWQ==
-X-Gm-Message-State: AOAM5308bSrHpor0w6rIhcX0nXlcyrjzGO1iuiL6rFSirlFLRwVgrYOZ
- F/VLExlLExrrRhoQ/R/j2Bw=
-X-Google-Smtp-Source: ABdhPJxCZzHdSx53dvdDywLg2snzLq3kKzeBkBrose+fBiquWSSELbthuFAJlsRxyfUjW/fn7V8LMg==
-X-Received: by 2002:a17:902:d4d1:b0:13f:af7:9068 with SMTP id
- o17-20020a170902d4d100b0013f0af79068mr5714981plg.20.1634828988016; 
- Thu, 21 Oct 2021 08:09:48 -0700 (PDT)
+ bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
+ b=g1Bsj377q4U4CrW5loc0fVabyiJPXS374haEoTmbO4BuxUFAoagmX6fGOwPfBKvU1t
+ 5+vOMJK/V8/mHmQK2+YOzFpmLSYVh5n7v+kCSa4mBL+RfFa/Z3QLERdNiAUZUWh9qrbq
+ YJJoE8fgfv+RHHYtuWsXkmqdLxEBHLy3MZe1lWKFM1Ihe0G+BhPKoCCNfYap9yR1Cv+c
+ TQXPAABsmnj/5LkiO7vw/nO+JjOVsJQf5v5EhRIQGP+AwP+49V0oCLt+REHV1btrRczZ
+ 6MYnrdUwmpUhJXmkBoYNt/fz7BMqZe8immQnwvounNt3bPreL3/IP1Q5aQecdcu5CM7l
+ qifQ==
+X-Gm-Message-State: AOAM533T33lkmA6af8kg+Sf1fu0AjIidyUoRFWdhFkg2yD8j9c6j1j5Q
+ j14ddx6a0/AQ8Ny1OPznsS4=
+X-Google-Smtp-Source: ABdhPJxg0pcHZ6TPn2MFYXLLISmkE9s8HA75KNL2gwUrIwqR1ZdHdF+RKfas5XSIW73ZAHG7QCE0Lw==
+X-Received: by 2002:a05:6a00:b45:b0:44d:c4c4:409b with SMTP id
+ p5-20020a056a000b4500b0044dc4c4409bmr6124670pfo.3.1634829067053; 
+ Thu, 21 Oct 2021 08:11:07 -0700 (PDT)
 Received: from localhost.localdomain ([2406:7400:63:29a4:d874:a949:6890:f95f])
  by smtp.gmail.com with ESMTPSA id
- c9sm5508027pgq.58.2021.10.21.08.09.30
+ c9sm5508027pgq.58.2021.10.21.08.11.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Oct 2021 08:09:47 -0700 (PDT)
+ Thu, 21 Oct 2021 08:11:06 -0700 (PDT)
 From: Naveen Naidu <naveennaidu479@gmail.com>
 To: bhelgaas@google.com
 Cc: Naveen Naidu <naveennaidu479@gmail.com>,
  linux-kernel-mentees@lists.linuxfoundation.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-hyperv@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linuxppc-dev@lists.ozlabs.org, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>, skhan@linuxfoundation.org,
- Robert Richter <rric@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- bcm-kernel-feedback-list@broadcom.com (maintainer:BROADCOM IPROC ARM
- ARCHITECTURE), Ryder Lee <ryder.lee@mediatek.com>,
+ linux-kernel@vger.kernel.org, skhan@linuxfoundation.org,
+ Ryder Lee <ryder.lee@mediatek.com>,
  Jianjun Wang <jianjun.wang@mediatek.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>,
+ =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Jingoo Han <jingoohan1@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Shawn Guo <shawn.guo@linaro.org>, Xiaowei Song <songxiaowei@hisilicon.com>,
- Binghui Wang <wangbinghui@hisilicon.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Joyce Ooi <joyce.ooi@intel.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Nirmal Patel <nirmal.patel@linux.intel.com>,
- Jonathan Derrick <jonathan.derrick@linux.dev>,
- Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>,
- Lukas Wunner <lukas@wunner.de>, Amey Narkhede <ameynarkhede03@gmail.com>,
- Russell Currey <ruscur@russell.cc>, "Oliver O'Halloran" <oohall@gmail.com>,
- Sean V Kelley <sean.v.kelley@intel.com>, Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
- Marc Zyngier <maz@kernel.org>, "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>, Wei Liu <wei.liu@kernel.org>,
- Dexuan Cui <decui@microsoft.com>, Toan Le <toan@os.amperecomputing.com>
-Subject: [PATCH v3 02/25] PCI: Set error response in config access defines
- when ops->read() fails
-Date: Thu, 21 Oct 2021 20:37:27 +0530
-Message-Id: <56642edd0d6bf8a8e3d20b5fcc088fd6389b827f.1634825082.git.naveennaidu479@gmail.com>
+ linux-mediatek@lists.infradead.org (open list:PCIE DRIVER FOR MEDIATEK),
+ linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH v3 07/25] PCI: mediatek: Remove redundant error fabrication
+ when device read fails
+Date: Thu, 21 Oct 2021 20:37:32 +0530
+Message-Id: <bbd3536dedffb092c82da7cfbbfa7abbe3f3f379.1634825082.git.naveennaidu479@gmail.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1634825082.git.naveennaidu479@gmail.com>
 References: <cover.1634825082.git.naveennaidu479@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_080949_314321_99A0CB1E 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20211021_081107_781721_171F5A59 
+X-CRM114-Status: GOOD (  13.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,52 +104,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Make PCI_OP_READ and PCI_USER_READ_CONFIG set the data value with error
-response (~0), when the PCI device read by a host controller fails.
+An MMIO read from a PCI device that doesn't exist or doesn't respond
+causes a PCI error. There's no real data to return to satisfy the
+CPU read, so most hardware fabricates ~0 data.
 
-This ensures that the controller drivers no longer need to fabricate
-(~0) value when they detect error. It also  gurantees that the error
-response (~0) is always set when the controller drivers fails to read a
-config register from a device.
+The host controller drivers sets the error response values (~0) and
+returns an error when faulty hardware read occurs. But the error
+response value (~0) is already being set in PCI_OP_READ and
+PCI_USER_READ_CONFIG whenever a read by host controller driver fails.
 
-This makes error response fabrication consistent and helps in removal of
-a lot of repeated code.
+Thus, it's no longer necessary for the host controller drivers to
+fabricate any error response.
 
-Suggested-by: Rob Herring <robh@kernel.org>
-Reviewed-by: Rob Herring <robh@kernel.org>
+This helps unify PCI error response checking and make error check
+consistent and easier to find.
+
 Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
 ---
- drivers/pci/access.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ drivers/pci/controller/pcie-mediatek.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/pci/access.c b/drivers/pci/access.c
-index 46935695cfb9..0f732ba2f71a 100644
---- a/drivers/pci/access.c
-+++ b/drivers/pci/access.c
-@@ -42,7 +42,10 @@ int noinline pci_bus_read_config_##size \
- 	if (PCI_##size##_BAD) return PCIBIOS_BAD_REGISTER_NUMBER;	\
- 	pci_lock_config(flags);						\
- 	res = bus->ops->read(bus, devfn, pos, len, &data);		\
--	*value = (type)data;						\
-+	if (res)							\
-+		SET_PCI_ERROR_RESPONSE(value);				\
-+	else								\
-+		*value = (type)data;					\
- 	pci_unlock_config(flags);					\
- 	return res;							\
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index 2f3f974977a3..a19f8ec5d392 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -365,19 +365,12 @@ static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
+ {
+ 	struct mtk_pcie_port *port;
+ 	u32 bn = bus->number;
+-	int ret;
+ 
+ 	port = mtk_pcie_find_port(bus, devfn);
+-	if (!port) {
+-		*val = ~0;
++	if (!port)
+ 		return PCIBIOS_DEVICE_NOT_FOUND;
+-	}
+-
+-	ret = mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
+-	if (ret)
+-		*val = ~0;
+ 
+-	return ret;
++	return mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
  }
-@@ -228,7 +231,10 @@ int pci_user_read_config_##size						\
- 	ret = dev->bus->ops->read(dev->bus, dev->devfn,			\
- 					pos, sizeof(type), &data);	\
- 	raw_spin_unlock_irq(&pci_lock);				\
--	*val = (type)data;						\
-+	if (ret)							\
-+		SET_PCI_ERROR_RESPONSE(val);				\
-+	else								\
-+		*val = (type)data;					\
- 	return pcibios_err_to_errno(ret);				\
- }									\
- EXPORT_SYMBOL_GPL(pci_user_read_config_##size);
+ 
+ static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
 -- 
 2.25.1
 
