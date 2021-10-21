@@ -2,56 +2,77 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C1ECCC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 11:28:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C63F5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 13:30:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7CEF560C4D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 11:28:52 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7CEF560C4D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9497F611CE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 13:30:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9497F611CE
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lcAMjv4wMfAPkmO7VRogwDEmoxlpRpuBTmbODjput+0=; b=hkvaSXwlzyiworjHjxV+xQkVlJ
-	lZ/zLhB8eqZevijzeGiMw3bxK+Kre+U2lrOouMQnkshWeqS+4Ipz3qUtsDKPPx4CWtMBY7kU5/p0N
-	H3JA5pletSbZH8kD5UYEc9J3ySDIUfdSmVAJG7PAj8+0ymdQeMtSX1XoyPfLKNVPzvH2JY9lXb6kM
-	72UybZXL49UzlFIVeSKqocgYFIwbWkQ9QxTmpNBxb8jwkaSg2KNmoM02e+uIk0JcKW1DXNb6q0mAF
-	p4yrz1xihFpMJS778ToBHB7d0KKFit1htKY925angWJebbd4vo0La18p6oTsAuD8huqENKHIPgNC4
-	Oiuf8Rmw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NAydQRvs2i8BPrRrnUV7f1zqDWBet/UqTKmzZJRCglY=; b=yChLMAoS/y0Ha2
+	dGucjFz74vL/kXZeXzZQs+Fx4skepa2dT1CCM583VTZ2YYQeSTPajUIJbL31VDRdWUvpkdpQLxqal
+	6n0tWxMmzEQPeznHIp4JJgFbqqiB7Qsug1+QrpIlKdZzJXylOGo4kR7Xxf3qjXsWdfTOonLoun31M
+	SlWoZqYZ5SI+J+hxSXaTVIwAY91xcq3/MtXSK27LUphi6C84BJw8r0d5QiDR3fty6ZLRwKaXm4ZEV
+	VsFQ//eXR/N2aeUqcA8FrrLIeG70MLzn8xB7Jy1e7dCVgkSiD2olQysYs2EJqCh56nVBC1Mo+/Cus
+	dkZTtv+OPq6FSoc5nboQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdWFQ-007Lql-G7; Thu, 21 Oct 2021 11:28:36 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mdY9H-007e6N-BC; Thu, 21 Oct 2021 13:30:23 +0000
+Received: from mail-oi1-f176.google.com ([209.85.167.176])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdWFC-007Lmg-Az; Thu, 21 Oct 2021 11:28:25 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 2F02D1F449A2
-Subject: Re: [PATCH v2 1/2] ASoC: SOF: mediatek: Add mt8195 dsp clock support
-To: YC Hung <yc.hung@mediatek.com>, broonie@kernel.org, tiwai@suse.com,
- robh+dt@kernel.org, matthias.bgg@gmail.com
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, daniel.baluta@nxp.com, trevor.wu@mediatek.com,
- allen-kh.cheng@mediatek.com
-References: <20211021035841.2365-1-yc.hung@mediatek.com>
- <20211021035841.2365-2-yc.hung@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <1eed3c3a-61d7-17df-0ec2-01c44f45e226@collabora.com>
-Date: Thu, 21 Oct 2021 13:28:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <20211021035841.2365-2-yc.hung@mediatek.com>
-Content-Language: en-US
+ id 1mdY93-007e2M-TX; Thu, 21 Oct 2021 13:30:11 +0000
+Received: by mail-oi1-f176.google.com with SMTP id o204so805499oih.13;
+ Thu, 21 Oct 2021 06:30:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=WLIwA5FD/KtHnG54OgwxE3AJ2VLgcGG0qXYDGdPIMCU=;
+ b=45HUc8TSBDgiCIuPyxdZBBGRvgQcZ+/eHFYY3s68R+IWNrlVqOJcedE3TCbUz+YEwZ
+ UPTuwtnTSOSuxB0o8T7qTIAUDCTGXx8aqJ6+vVbWwsrWMNlr/1tjrd1eOMUVkNpJAKq3
+ P8S1JKLTwmkYFfKUIzKWF7/BckjpYJfjkE9NyGZs0yl6JNfjjAvYoL9qOKchXjVPbIt9
+ UXFjTDdNqfAxzx+LYvPu1YkjyPO4zDCsRNqtRR2Mlq/ZpJ1mUWCtjwnI0PAXwIb65HmO
+ MoDWPzlfdj95Xsq6UkYzT0VMT0JOTmnpZUwrszOh518Pk60oJZ6UWLRTfHxE66Ak7V4x
+ RAOQ==
+X-Gm-Message-State: AOAM532JbHRvkWNCpRV0euT6Svyq79eRLc3CZq1w8O6QgyCxYn0BxFIo
+ jcpRGQjX7T5SeY0OCcki5Q==
+X-Google-Smtp-Source: ABdhPJzWNqQ82LGFFmXVyboYOunuq36yDADhSjRjBxsMz++SfMFiv9RLtb3gzPemE+KZAIIdxJ6VMw==
+X-Received: by 2002:a05:6808:f8f:: with SMTP id
+ o15mr1238476oiw.38.1634823008338; 
+ Thu, 21 Oct 2021 06:30:08 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id 187sm1064082oig.19.2021.10.21.06.30.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 21 Oct 2021 06:30:07 -0700 (PDT)
+Received: (nullmailer pid 353169 invoked by uid 1000);
+ Thu, 21 Oct 2021 13:30:05 -0000
+From: Rob Herring <robh@kernel.org>
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Sam Ravnborg <sam@ravnborg.org>, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, dri-devel@lists.freedesktop.org,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org
+In-Reply-To: <20211021092707.3562523-3-msp@baylibre.com>
+References: <20211021092707.3562523-1-msp@baylibre.com>
+ <20211021092707.3562523-3-msp@baylibre.com>
+Subject: Re: [PATCH v5 2/7] dt-bindings: mediatek, dp: Add Display Port binding
+Date: Thu, 21 Oct 2021 08:30:05 -0500
+Message-Id: <1634823005.099522.353168.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_042822_688297_8D5D9FDA 
-X-CRM114-Status: GOOD (  33.86  )
+X-CRM114-CacheID: sfid-20211021_063009_980933_F83F6132 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,360 +84,63 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 21/10/21 05:58, YC Hung ha scritto:
-> Add adsp clock on/off support on mt8195 platform.
+On Thu, 21 Oct 2021 11:27:02 +0200, Markus Schneider-Pargmann wrote:
+> This controller is present on several mediatek hardware. Currently
+> mt8195 and mt8395 have this controller without a functional difference,
+> so only one compatible field is added.
 > 
-> Signed-off-by: YC Hung <yc.hung@mediatek.com>
+> The controller can have two forms, as a normal display port and as an
+> embedded display port.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
 > ---
->   sound/soc/sof/mediatek/mt8195/Makefile     |   2 +-
->   sound/soc/sof/mediatek/mt8195/mt8195-clk.c | 164 +++++++++++++++++++++
->   sound/soc/sof/mediatek/mt8195/mt8195-clk.h |  29 ++++
->   sound/soc/sof/mediatek/mt8195/mt8195.c     |  23 ++-
->   4 files changed, 215 insertions(+), 3 deletions(-)
->   create mode 100644 sound/soc/sof/mediatek/mt8195/mt8195-clk.c
->   create mode 100644 sound/soc/sof/mediatek/mt8195/mt8195-clk.h
+> 
+> Notes:
+>     Changes v4 -> v5:
+>     - Removed "status" in the example
+>     - Remove edp_tx compatible.
+>     - Rename dp_tx compatible to dp-tx.
+> 
+>  .../display/mediatek/mediatek,dp.yaml         | 87 +++++++++++++++++++
+>  1 file changed, 87 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
 > 
 
-Hello,
-Thanks for the patch! However, there's something to improve:
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-> diff --git a/sound/soc/sof/mediatek/mt8195/Makefile b/sound/soc/sof/mediatek/mt8195/Makefile
-> index 60fca24c068a..650f4bce99b2 100644
-> --- a/sound/soc/sof/mediatek/mt8195/Makefile
-> +++ b/sound/soc/sof/mediatek/mt8195/Makefile
-> @@ -1,4 +1,4 @@
->   # SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
-> -snd-sof-mt8195-objs := mt8195.o mt8195-loader.o
-> +snd-sof-mt8195-objs := mt8195.o mt8195-clk.o mt8195-loader.o
->   obj-$(CONFIG_SND_SOC_SOF_MT8195) += snd-sof-mt8195.o
->   
-> diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.c b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
-> new file mode 100644
-> index 000000000000..1988421f7f7b
-> --- /dev/null
-> +++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
-> @@ -0,0 +1,164 @@
-> +// SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
-> +//
-> +// Copyright(c) 2021 Mediatek Corporation. All rights reserved.
-> +//
-> +// Author: YC Hung <yc.hung@mediatek.com>
-> +//
-> +// Hardware interface for mt8195 DSP clock
-> +
-> +#include <linux/clk.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/io.h>
-> +#include "mt8195.h"
-> +#include "mt8195-clk.h"
-> +
-> +struct clk *clk_handle[ADSP_CLK_NUM];
+yamllint warnings/errors:
 
-I think that this one can be moved to `struct adsp_priv` (or elsewhere, if more
-appropriate) as to not use global variables/handles.
+dtschema/dtc warnings/errors:
+Documentation/devicetree/bindings/display/mediatek/mediatek,dp.example.dts:20:18: fatal error: dt-bindings/power/mt8195-power.h: No such file or directory
+   20 |         #include <dt-bindings/power/mt8195-power.h>
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make[1]: *** [scripts/Makefile.lib:385: Documentation/devicetree/bindings/display/mediatek/mediatek,dp.example.dt.yaml] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make: *** [Makefile:1441: dt_binding_check] Error 2
 
-> +
-> +int platform_parse_clock(struct device *dev)
-> +{
-> +	clk_handle[CLK_TOP_ADSP] = devm_clk_get(dev, "adsp_sel");
-> +	if (IS_ERR(clk_handle[CLK_TOP_ADSP])) {
-> +		dev_err(dev, "clk_get(\"adsp_sel\") failed\n");
-> +		return PTR_ERR(clk_handle[CLK_TOP_ADSP]);
-> +	}
-> +
-> +	clk_handle[CLK_TOP_CLK26M] = devm_clk_get(dev, "clk26m_ck");
-> +	if (IS_ERR(clk_handle[CLK_TOP_CLK26M])) {
-> +		dev_err(dev, "clk_get(\"clk26m_ck\") failed\n");
-> +		return PTR_ERR(clk_handle[CLK_TOP_CLK26M]);
-> +	}
-> +
-> +	clk_handle[CLK_TOP_AUDIO_LOCAL_BUS] = devm_clk_get(dev, "audio_local_bus");
-> +	if (IS_ERR(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS])) {
-> +		dev_err(dev, "clk_get(\"audio_local_bus\") failed\n");
-> +		return PTR_ERR(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-> +	}
-> +
-> +	clk_handle[CLK_TOP_MAINPLL_D7_D2] = devm_clk_get(dev, "mainpll_d7_d2");
-> +	if (IS_ERR(clk_handle[CLK_TOP_MAINPLL_D7_D2])) {
-> +		dev_err(dev, "clk_get(\"mainpll_d7_d2\") failed\n");
-> +		return PTR_ERR(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-> +	}
-> +
-> +	clk_handle[CLK_SCP_ADSP_AUDIODSP] = devm_clk_get(dev, "scp_adsp_audiodsp");
-> +	if (IS_ERR(clk_handle[CLK_SCP_ADSP_AUDIODSP])) {
-> +		dev_err(dev, "clk_get(\"scp_adsp_audiodsp\") failed\n");
-> +		return PTR_ERR(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-> +	}
-> +
-> +	clk_handle[CLK_TOP_AUDIO_H] = devm_clk_get(dev, "audio_h");
-> +	if (IS_ERR(clk_handle[CLK_TOP_AUDIO_H])) {
-> +		dev_err(dev, "clk_get(\"audio_h_sel\") failed\n");
-> +		return PTR_ERR(clk_handle[CLK_TOP_AUDIO_H]);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +int adsp_enable_clock(struct device *dev)
+doc reference errors (make refcheckdocs):
 
-You are using this function only in this file, please make it static.
+See https://patchwork.ozlabs.org/patch/1544239
 
-> +{
-> +	int ret;
-> +
-> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-> +	if (ret) {
-> +		dev_err(dev, "%s clk_prepare_enable(mainpll_d7_d2) fail %d\n",
-> +			__func__, ret);
-> +		return ret;
-> +	}
-> +
-> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_ADSP]);
-> +	if (ret) {
-> +		dev_err(dev, "%s clk_prepare_enable(adsp_sel) fail %d\n",
-> +			__func__, ret);
-> +		goto disable_mainpll_d7_d2_clk;
-> +	}
-> +
-> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-> +	if (ret) {
-> +		dev_err(dev, "%s clk_prepare_enable(audio_local_bus) fail %d\n",
-> +			__func__, ret);
-> +		goto disable_dsp_sel_clk;
-> +	}
-> +
-> +	ret = clk_prepare_enable(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-> +	if (ret) {
-> +		dev_err(dev, "%s clk_prepare_enable(scp_adsp_audiodsp) fail %d\n",
-> +			__func__, ret);
-> +		goto disable_audio_local_bus_clk;
-> +	}
-> +
-> +	ret = clk_prepare_enable(clk_handle[CLK_TOP_AUDIO_H]);
-> +	if (ret) {
-> +		dev_err(dev, "%s clk_prepare_enable(audio_h) fail %d\n",
-> +			__func__, ret);
-> +		goto disable_scp_adsp_audiodsp_clk;
-> +	}
-> +
-> +	return 0;
-> +
-> +disable_scp_adsp_audiodsp_clk:
-> +	clk_disable_unprepare(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-> +disable_audio_local_bus_clk:
-> +	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-> +disable_dsp_sel_clk:
-> +	clk_disable_unprepare(clk_handle[CLK_TOP_ADSP]);
-> +disable_mainpll_d7_d2_clk:
-> +	clk_disable_unprepare(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-> +
-> +	return ret;
-> +}
-> +
-> +void adsp_disable_clock(struct device *dev)
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
 
-Same here...
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
-> +{
-> +	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_H]);
-> +	clk_disable_unprepare(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-> +	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-> +	clk_disable_unprepare(clk_handle[CLK_TOP_ADSP]);
-> +	clk_disable_unprepare(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-> +}
-> +
-> +int adsp_default_clk_init(struct device *dev, int enable)
+pip3 install dtschema --upgrade
 
-...and same here.
+Please check and re-submit.
 
-Also, your `enable` parameter can logically (currently) only have two meanings:
-enable, or disable; I think that it would be better to use a bool instead.
-
-> +{
-> +	int ret = 0;
-> +
-> +	dev_dbg(dev, "%s: %s\n", __func__, enable ? "on" : "off");
-> +
-> +	if (enable) {
-> +		ret = clk_set_parent(clk_handle[CLK_TOP_ADSP],
-> +				     clk_handle[CLK_TOP_CLK26M]);
-> +		if (ret) {
-> +			dev_err(dev, "failed to set dsp_sel to clk26m: %d\n", ret);
-> +			return ret;
-> +		}
-> +
-> +		ret = clk_set_parent(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS],
-> +				     clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-> +		if (ret) {
-> +			dev_err(dev, "set audio_local_bus failed %d\n", ret);
-> +			return ret;
-> +		}
-> +
-
-I think it'd be a good idea to...
-
-> +		ret = adsp_enable_clock(dev);
-> +		if (ret)
-
-		if (ret) {
-
-> +			dev_err(dev, "failed to adsp_enable_clock: %d\n", ret);
-
-			return ret;
-		}
-
-> +
-> +		return ret;
-
-...and remove this return...
-
-> +	}
-> +
-
-	} else {
-
-> +	adsp_disable_clock(dev);
-
-	}
-
-> +
-> +	return ret;
-
-...and then, since you are covering all of the error cases before the end of
-this function, here you should just
-
-	return 0;
-
-> +}
-> +
-> +int adsp_clock_on(struct device *dev)
-> +{
-> +	/* Open ADSP clock */
-> +	return adsp_default_clk_init(dev, 1);
-> +}
-> +
-> +int adsp_clock_off(struct device *dev)
-> +{
-> +	/* Close ADSP clock */
-> +	return adsp_default_clk_init(dev, 0);
-> +}
-> +
-> diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.h b/sound/soc/sof/mediatek/mt8195/mt8195-clk.h
-> new file mode 100644
-> index 000000000000..f985d141552a
-> --- /dev/null
-> +++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.h
-> @@ -0,0 +1,29 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +
-> +/*
-> + * Copyright (c) 2021 MediaTek Corporation. All rights reserved.
-> + *
-> + *  Header file for the mt8195 DSP clock  definition
-> + */
-> +
-> +#ifndef __MT8195_CLK_H
-> +#define __MT8195_CLK_H
-> +
-> +/*DSP clock*/
-
-/* DSP clock id */
-
-> +enum ADSP_CLK_ID {
-
-lowercase please: enum adsp_clk_id
-
-> +	CLK_TOP_ADSP,
-> +	CLK_TOP_CLK26M,
-> +	CLK_TOP_AUDIO_LOCAL_BUS,
-> +	CLK_TOP_MAINPLL_D7_D2,
-> +	CLK_SCP_ADSP_AUDIODSP,
-> +	CLK_TOP_AUDIO_H,
-> +	ADSP_CLK_NUM
-
-What about ADSP_CLK_MAX instead?
-Personal preference here, nothing worrying.
-
-> +};
-> +
-> +int platform_parse_clock(struct device *dev);
-> +int adsp_default_clk_init(struct device *dev, int enable);
-> +int adsp_enable_clock(struct device *dev);
-> +void adsp_disable_clock(struct device *dev);
-> +int adsp_clock_on(struct device *dev);
-> +int adsp_clock_off(struct device *dev);
-> +#endif
-> diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-> index 99075598a35a..f323da58057b 100644
-> --- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-> +++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-> @@ -25,6 +25,7 @@
->   #include "../adsp_helper.h"
->   #include "../mediatek-ops.h"
->   #include "mt8195.h"
-> +#include "mt8195-clk.h"
->   
->   static int platform_parse_resource(struct platform_device *pdev, void *data)
->   {
-> @@ -231,10 +232,23 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
->   	if (ret)
->   		return ret;
->   
-> +	ret = platform_parse_clock(&pdev->dev);
-> +	if (ret) {
-> +		dev_err(sdev->dev, "platform_parse_clock failed\n");
-> +		return -EINVAL;
-> +	}
-> +
-> +	ret = adsp_clock_on(&pdev->dev);
-> +	if (ret) {
-> +		dev_err(sdev->dev, "adsp_clock_on fail!\n");
-> +		return -EINVAL;
-> +	}
-> +
->   	ret = adsp_sram_power_on(sdev->dev, true);
->   	if (ret) {
->   		dev_err(sdev->dev, "adsp_sram_power_on fail!\n");
-> -		return ret;
-> +		ret = -EINVAL;
-> +		goto exit_clk_disable;
-Why are you overriding adsp_sram_power_on()'s return value?
-As of now, this function is supposed to return -ENOMEM or 0.. and you
-shouldn't override the return value with -EINVAL here.
-
->   	}
->   
->   	ret = adsp_memory_remap_init(&pdev->dev, priv->adsp);
-> @@ -282,6 +296,8 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
->   
->   err_adsp_sram_power_off:
->   	adsp_sram_power_on(&pdev->dev, false);
-> +exit_clk_disable:
-> +	adsp_clock_off(&pdev->dev);
->   
->   	return ret;
->   }
-> @@ -290,7 +306,10 @@ static int mt8195_dsp_remove(struct snd_sof_dev *sdev)
->   {
->   	struct platform_device *pdev = container_of(sdev->dev, struct platform_device, dev);
->   
-> -	return adsp_sram_power_on(&pdev->dev, false);
-> +	adsp_sram_power_on(&pdev->dev, false);
-> +	adsp_clock_off(&pdev->dev);
-> +
-> +	return 0;
->   }
->   
->   /* on mt8195 there is 1 to 1 match between type and BAR idx */
-> 
-
-Regards,
-- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
