@@ -2,69 +2,88 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EDA2EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 03:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1E01C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 03:43:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A260561130
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 03:26:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A260561130
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4201660ED3
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 03:43:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4201660ED3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dT1kx0JMukqMG3EVbBf72b9WlnOoR/3mrX5etqpVCs8=; b=RUbHzBbc9z3Vyg
-	HkrWUyE8DFIuI1bDcLOzJLiXlL/EfIxvkYG6GAkqvl7Jx9wDCJGBTEYxHV28AEaMWkaqV5PAENw+E
-	2z4V8FP2dRFGPPejDdmtefUguHUKWCgjYUODhLGGIfECEXQoNts+t5xtBp50PUe9E92DXF1xYX773
-	aOF5BprDuz752UmtzeScyfEJQUlzZvmFztwcaAYUcbpBexd23LCd3FR3UT7MhbHkyRjU8k9nmsL2M
-	YK3nXNjgmbHmRKUiH6WaTJ23pK9ccfUOx82BinUKkUbVL7cFpm2zOCHeoNlLBYDPfda/CBdqezIuy
-	GKi/4Yh2J5UEaTjNF45g==;
+	List-Owner; bh=LMTvBC2N/+OSNtYwYxslOgwqBHA4TB3Y7vCrMJI2xM8=; b=RJr8jiuYDnAFdh
+	rPo1q73Cbd68Jizj7/jeFpiHTl7ODqhN8shJxfdMSOVnsoPP4HNROuXawsES/G+BfMkJ1hkPxsuBQ
+	vbWNoioMqSNDislEUTyiEwiTtDknONbj4+wKTQnr8D0HkLykWfgqUwhOm09wgFg0K/vAsq2gQ42DU
+	pr4em+uhX5YSmuwrW+W1kkcZAKTYQen+09CYI+E0UYyvI3aN/SGuJvc/Gfgax9ruNJNTjhi9F57pL
+	5zV+HYHnyzIVs4qrZXfPnNUWMpEtPMUwP+jGouU24KodlQz7mFny1aouEc36jSvd56OrpdbR/gZ5y
+	BUFLxlX0mpamSWMKQETA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdOiK-006JCJ-VC; Thu, 21 Oct 2021 03:25:56 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mdOz8-006KA1-Lu; Thu, 21 Oct 2021 03:43:18 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdOi8-006JBa-8z; Thu, 21 Oct 2021 03:25:47 +0000
-X-UUID: c30c46bdee864c1f9ee756ced23c610a-20211020
-X-UUID: c30c46bdee864c1f9ee756ced23c610a-20211020
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <peter.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 970433404; Wed, 20 Oct 2021 20:25:39 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Oct 2021 20:18:33 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 21 Oct 2021 11:18:25 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 21 Oct 2021 11:18:25 +0800
-Message-ID: <0c5b8562d49c7e81323b8a34a42385440f33f798.camel@mediatek.com>
-Subject: Re: [PATCH] scsi: ufs: mediatek: avoid sched_clock() misuse
-From: Peter Wang <peter.wang@mediatek.com>
-To: Arnd Bergmann <arnd@kernel.org>, Stanley Chu <stanley.chu@mediatek.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>, "Martin K. Petersen"
- <martin.petersen@oracle.com>
-CC: Arnd Bergmann <arnd@arndb.de>, Alim Akhtar <alim.akhtar@samsung.com>, Avri
- Altman <avri.altman@wdc.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bean Huo <beanhuo@micron.com>, Bart Van Assche <bvanassche@acm.org>,
- <linux-scsi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>
-Date: Thu, 21 Oct 2021 11:18:25 +0800
-In-Reply-To: <20211018132022.2281589-1-arnd@kernel.org>
-References: <20211018132022.2281589-1-arnd@kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mdOz5-006K9N-Ii
+ for linux-mediatek@lists.infradead.org; Thu, 21 Oct 2021 03:43:16 +0000
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 19L3dUmU020876; 
+ Thu, 21 Oct 2021 03:43:11 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2021-07-09;
+ bh=vBz/VBNsTS7CuQkk+j6itYx/A2C9bynTwiXjcF08xFQ=;
+ b=CRjDEYswaD9FjLN7nYOiA6HOS1Jn60BhlOWqlfl8wDhZrA0g6Mdbl2hg0FXrzOAOm9Bm
+ HKETtF3FDdPEZPehGnFkrqJ9XSTz4agrYRuDSaKXCd1Mbuuc50LC9mK1cM5qZrdGmmsg
+ NoYKFAm+Ns4XzWg9leAVCzwI2nW9lSAtwujwdmZDxfnhRL/sIiEs1BaLV1TKzSWCDgLB
+ CfPyRFQpO9Qak0ye2YrTWtP4yGBsjZeATknvGL9wmXvaRrCf2D//MXZAxbyFvY/KPW/r
+ ZcZiCXkRomrx10Y14Pw2YsPKlil4AsKAUDL8sSBKetpaBCF9QHU+ckCteWp+sV2f9vq7 xQ== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3btkx9v8wd-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 21 Oct 2021 03:43:11 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 19L3etSd078167;
+ Thu, 21 Oct 2021 03:43:10 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by aserp3030.oracle.com with ESMTP id 3bqmshem89-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 21 Oct 2021 03:43:10 +0000
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 19L3gu8E082116;
+ Thu, 21 Oct 2021 03:43:09 GMT
+Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
+ by aserp3030.oracle.com with ESMTP id 3bqmshekyd-15;
+ Thu, 21 Oct 2021 03:43:09 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: stanley.chu@mediatek.com, jejb@linux.ibm.com, avri.altman@wdc.com,
+ peter.wang@mediatek.com, alim.akhtar@samsung.com,
+ linux-scsi@vger.kernel.org
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>, cc.chou@mediatek.com, 
+ mikebi@micron.com, qilin.tan@mediatek.com, jonathan.hsu@mediatek.com,
+ alice.chao@mediatek.com, linux-mediatek@lists.infradead.org,
+ lin.gui@mediatek.com, wsd_upstream@mediatek.com,
+ chaotian.jing@mediatek.com, chun-hung.wu@mediatek.com,
+ powen.kao@mediatek.com, jiajie.hao@mediatek.com
+Subject: Re: [PATCH v4] scsi: ufs: support vops pre suspend for mediatek to
+ disable auto-hibern8
+Date: Wed, 20 Oct 2021 23:42:46 -0400
+Message-Id: <163478764101.7011.14536985076205291052.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20211006054705.21885-1-peter.wang@mediatek.com>
+References: <20211006054705.21885-1-peter.wang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+X-Proofpoint-ORIG-GUID: nDl-s5wQYla5k54y0RPFgYOw65fDwy2u
+X-Proofpoint-GUID: nDl-s5wQYla5k54y0RPFgYOw65fDwy2u
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_202544_353055_D6BFC384 
-X-CRM114-Status: GOOD (  22.96  )
+X-CRM114-CacheID: sfid-20211020_204315_646019_C7A30E8E 
+X-CRM114-Status: GOOD (  12.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,58 +100,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-10-18 at 15:20 +0200, Arnd Bergmann wrote:
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> sched_clock() is not meant to be used in portable driver code,
-> and assuming a particular clock frequency is not how this is
-> meant to be used. It also causes a build failure because of
-> a missing header inclusion:
-> 
-> drivers/scsi/ufs/ufs-mediatek.c:321:12: error: implicit declaration
-> of function 'sched_clock' [-Werror,-Wimplicit-function-declaration]
->         timeout = sched_clock() + retry_ms * 1000000UL;
-> 
-> A better interface to use here ktime_get_mono_fast_ns(), which
-> works mostly like ktime_get() but is safe to use inside of a
-> suspend callback.
-> 
-> Fixes: 9561f58442e4 ("scsi: ufs: mediatek: Support vops pre suspend
-> to disable auto-hibern8")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
->  drivers/scsi/ufs/ufs-mediatek.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/scsi/ufs/ufs-mediatek.c b/drivers/scsi/ufs/ufs-
-> mediatek.c
-> index d1696db70ce8..a47241ed0a57 100644
-> --- a/drivers/scsi/ufs/ufs-mediatek.c
-> +++ b/drivers/scsi/ufs/ufs-mediatek.c
-> @@ -318,15 +318,15 @@ static void ufs_mtk_wait_idle_state(struct
-> ufs_hba *hba,
->  	u32 val, sm;
->  	bool wait_idle;
->  
-> -	timeout = sched_clock() + retry_ms * 1000000UL;
-> -
-> +	/* cannot use plain ktime_get() in suspend */
-> +	timeout = ktime_get_mono_fast_ns() + retry_ms * 1000000UL;
+On Wed, 6 Oct 2021 13:47:05 +0800, peter.wang@mediatek.com wrote:
 
-Thanks for this patch.
+> From: Peter Wang <peter.wang@mediatek.com>
+> 
+> Mediatek UFS design need disable auto-hibern8 before suspend.
+> This patch introduce an solution to do pre suspned before SSU
+> (sleep) command.
+> 
+> 
+> [...]
 
->  
->  	/* wait a specific time after check base */
->  	udelay(10);
->  	wait_idle = false;
->  
->  	do {
-> -		time_checked = sched_clock();
-> +		time_checked = ktime_get_mono_fast_ns();
->  		ufs_mtk_dbg_sel(hba);
->  		val = ufshcd_readl(hba, REG_UFS_PROBE);
->  
+Applied to 5.16/scsi-queue, thanks!
 
+[1/1] scsi: ufs: support vops pre suspend for mediatek to disable auto-hibern8
+      https://git.kernel.org/mkp/scsi/c/9561f58442e4
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
 
 _______________________________________________
 Linux-mediatek mailing list
