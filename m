@@ -2,68 +2,66 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 20A27C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 04:09:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E8C47C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 06:09:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id D533C6113D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 04:09:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D533C6113D
+	by mail.kernel.org (Postfix) with ESMTPS id AC9B2610FF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 06:09:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AC9B2610FF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3vXEVKF9EtLgNAyboYm34kUuNzgXPOeh6KkXE6uZizY=; b=LGgFjM6b4SywDX
-	vRBpMIhwik1CSDjXLs+kyb6RhYS4cbDAymkAIUmoEVa2j4cUHobRFCs4+mbE3JEOXBQWyhIdinhDY
-	KKyYVgwjyoln5bJIXoUGM6yLeHsHRIv9faRvNmE9D2apMNfooCISM9kdHV6cA0wS3UrWHGb+sQpwa
-	XfTNoqV9NNi6WzRPEwg1Ijc+x0z1N06jVsf40kzfIO9KIXQkYvQifqiihUtzIWW3lbxVTAAE4lmFb
-	4pXPGLqcHUz2DioenV/Uqa86/mP8tlh15l8MgVnJHm9TC4Wk7MhZPL7OIEC0uOqT47dAM9FAWM22M
-	Srn/BKigtSwf94O3CJvw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7Ssxym8JA1m2i2Aej/+oJJ0a/Wezs4ehfRLmHFr63qo=; b=W+JAuA7x0nrcit
+	uD98YJXYEWP0A1WbzTQzLx2RNRm3FSKrZqnao+pDuMko5cbfLKK1FfXxTekCYmuJdhvrkg10eXPgn
+	AE68SwkvSIN4rDlr5mQ0NonwwIdWjf1ZMh4754kW2w6C9CghRY92F7J9bGFlCuCzfbeMUfdRjKDE/
+	YUfmfDnLwFlqWQ6IYXNhPH/oZHU+FNqEHUifbJcc2n4CrZx1Ro/EU5DSnMoH+eA53YJtaPUprL1DZ
+	p5SZy1SX6hSLf25d4Pd9TagqYn1fNqo4LOdAfPycpd4+Qq3wPZIXkpgucq2t/khnqeQm9CP6uXvre
+	RF1WU5r6H/6+HcUJ+TCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdPOG-006Mko-IT; Thu, 21 Oct 2021 04:09:16 +0000
+	id 1mdRFv-006UM0-CH; Thu, 21 Oct 2021 06:08:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdPNs-006Mh9-LF; Thu, 21 Oct 2021 04:08:54 +0000
-X-UUID: 6b7e78fdf2e24769812cfa609fa163e4-20211020
-X-UUID: 6b7e78fdf2e24769812cfa609fa163e4-20211020
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yc.hung@mediatek.com>)
+ id 1mdRFq-006ULI-Kt
+ for linux-mediatek@lists.infradead.org; Thu, 21 Oct 2021 06:08:45 +0000
+X-UUID: fa86e8f2b5b54dd7a1c77a7cf07bca8c-20211020
+X-UUID: fa86e8f2b5b54dd7a1c77a7cf07bca8c-20211020
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 782037907; Wed, 20 Oct 2021 21:08:50 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 1462289363; Wed, 20 Oct 2021 23:08:38 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 20 Oct 2021 20:58:49 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Oct 2021 11:58:47 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Wed, 20 Oct 2021 23:08:36 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 21 Oct 2021 14:08:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 21 Oct 2021 11:58:47 +0800
-From: YC Hung <yc.hung@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>
-CC: <yc.hung@mediatek.com>, <alsa-devel@alsa-project.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <daniel.baluta@nxp.com>, <trevor.wu@mediatek.com>,
- <allen-kh.cheng@mediatek.com>
-Subject: [PATCH v2 1/2] ASoC: SOF: mediatek: Add mt8195 dsp clock support
-Date: Thu, 21 Oct 2021 11:58:40 +0800
-Message-ID: <20211021035841.2365-2-yc.hung@mediatek.com>
+ Frontend Transport; Thu, 21 Oct 2021 14:08:34 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH v4 1/2] mt76: mt7915: add WA firmware log support
+Date: Thu, 21 Oct 2021 14:07:25 +0800
+Message-ID: <20211021060726.9291-1-shayne.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211021035841.2365-1-yc.hung@mediatek.com>
-References: <20211021035841.2365-1-yc.hung@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211020_210852_712397_4D5882E4 
-X-CRM114-Status: GOOD (  20.65  )
+X-CRM114-CacheID: sfid-20211020_230842_715189_7304680B 
+X-CRM114-Status: GOOD (  13.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,293 +78,181 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add adsp clock on/off support on mt8195 platform.
+Support to turn on/off WA firmware log from debugfs.
 
-Signed-off-by: YC Hung <yc.hung@mediatek.com>
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 ---
- sound/soc/sof/mediatek/mt8195/Makefile     |   2 +-
- sound/soc/sof/mediatek/mt8195/mt8195-clk.c | 164 +++++++++++++++++++++
- sound/soc/sof/mediatek/mt8195/mt8195-clk.h |  29 ++++
- sound/soc/sof/mediatek/mt8195/mt8195.c     |  23 ++-
- 4 files changed, 215 insertions(+), 3 deletions(-)
- create mode 100644 sound/soc/sof/mediatek/mt8195/mt8195-clk.c
- create mode 100644 sound/soc/sof/mediatek/mt8195/mt8195-clk.h
+v3: rebase to staging tree
+v4: rebase to staging tree
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 42 +++++++++++++++----
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 12 +++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  6 +++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  5 ++-
+ 4 files changed, 52 insertions(+), 13 deletions(-)
 
-diff --git a/sound/soc/sof/mediatek/mt8195/Makefile b/sound/soc/sof/mediatek/mt8195/Makefile
-index 60fca24c068a..650f4bce99b2 100644
---- a/sound/soc/sof/mediatek/mt8195/Makefile
-+++ b/sound/soc/sof/mediatek/mt8195/Makefile
-@@ -1,4 +1,4 @@
- # SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
--snd-sof-mt8195-objs := mt8195.o mt8195-loader.o
-+snd-sof-mt8195-objs := mt8195.o mt8195-clk.o mt8195-loader.o
- obj-$(CONFIG_SND_SOC_SOF_MT8195) += snd-sof-mt8195.o
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 4b7f38f..a829014 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -82,7 +82,7 @@ DEFINE_DEBUGFS_ATTRIBUTE(fops_radar_trigger, NULL,
+ 			 mt7915_radar_trigger, "%lld\n");
  
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.c b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
-new file mode 100644
-index 000000000000..1988421f7f7b
---- /dev/null
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.c
-@@ -0,0 +1,164 @@
-+// SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
-+//
-+// Copyright(c) 2021 Mediatek Corporation. All rights reserved.
-+//
-+// Author: YC Hung <yc.hung@mediatek.com>
-+//
-+// Hardware interface for mt8195 DSP clock
-+
-+#include <linux/clk.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/io.h>
-+#include "mt8195.h"
-+#include "mt8195-clk.h"
-+
-+struct clk *clk_handle[ADSP_CLK_NUM];
-+
-+int platform_parse_clock(struct device *dev)
-+{
-+	clk_handle[CLK_TOP_ADSP] = devm_clk_get(dev, "adsp_sel");
-+	if (IS_ERR(clk_handle[CLK_TOP_ADSP])) {
-+		dev_err(dev, "clk_get(\"adsp_sel\") failed\n");
-+		return PTR_ERR(clk_handle[CLK_TOP_ADSP]);
-+	}
-+
-+	clk_handle[CLK_TOP_CLK26M] = devm_clk_get(dev, "clk26m_ck");
-+	if (IS_ERR(clk_handle[CLK_TOP_CLK26M])) {
-+		dev_err(dev, "clk_get(\"clk26m_ck\") failed\n");
-+		return PTR_ERR(clk_handle[CLK_TOP_CLK26M]);
-+	}
-+
-+	clk_handle[CLK_TOP_AUDIO_LOCAL_BUS] = devm_clk_get(dev, "audio_local_bus");
-+	if (IS_ERR(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS])) {
-+		dev_err(dev, "clk_get(\"audio_local_bus\") failed\n");
-+		return PTR_ERR(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-+	}
-+
-+	clk_handle[CLK_TOP_MAINPLL_D7_D2] = devm_clk_get(dev, "mainpll_d7_d2");
-+	if (IS_ERR(clk_handle[CLK_TOP_MAINPLL_D7_D2])) {
-+		dev_err(dev, "clk_get(\"mainpll_d7_d2\") failed\n");
-+		return PTR_ERR(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-+	}
-+
-+	clk_handle[CLK_SCP_ADSP_AUDIODSP] = devm_clk_get(dev, "scp_adsp_audiodsp");
-+	if (IS_ERR(clk_handle[CLK_SCP_ADSP_AUDIODSP])) {
-+		dev_err(dev, "clk_get(\"scp_adsp_audiodsp\") failed\n");
-+		return PTR_ERR(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-+	}
-+
-+	clk_handle[CLK_TOP_AUDIO_H] = devm_clk_get(dev, "audio_h");
-+	if (IS_ERR(clk_handle[CLK_TOP_AUDIO_H])) {
-+		dev_err(dev, "clk_get(\"audio_h_sel\") failed\n");
-+		return PTR_ERR(clk_handle[CLK_TOP_AUDIO_H]);
-+	}
-+
-+	return 0;
-+}
-+
-+int adsp_enable_clock(struct device *dev)
-+{
-+	int ret;
-+
-+	ret = clk_prepare_enable(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-+	if (ret) {
-+		dev_err(dev, "%s clk_prepare_enable(mainpll_d7_d2) fail %d\n",
-+			__func__, ret);
-+		return ret;
-+	}
-+
-+	ret = clk_prepare_enable(clk_handle[CLK_TOP_ADSP]);
-+	if (ret) {
-+		dev_err(dev, "%s clk_prepare_enable(adsp_sel) fail %d\n",
-+			__func__, ret);
-+		goto disable_mainpll_d7_d2_clk;
-+	}
-+
-+	ret = clk_prepare_enable(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-+	if (ret) {
-+		dev_err(dev, "%s clk_prepare_enable(audio_local_bus) fail %d\n",
-+			__func__, ret);
-+		goto disable_dsp_sel_clk;
-+	}
-+
-+	ret = clk_prepare_enable(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-+	if (ret) {
-+		dev_err(dev, "%s clk_prepare_enable(scp_adsp_audiodsp) fail %d\n",
-+			__func__, ret);
-+		goto disable_audio_local_bus_clk;
-+	}
-+
-+	ret = clk_prepare_enable(clk_handle[CLK_TOP_AUDIO_H]);
-+	if (ret) {
-+		dev_err(dev, "%s clk_prepare_enable(audio_h) fail %d\n",
-+			__func__, ret);
-+		goto disable_scp_adsp_audiodsp_clk;
-+	}
-+
-+	return 0;
-+
-+disable_scp_adsp_audiodsp_clk:
-+	clk_disable_unprepare(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-+disable_audio_local_bus_clk:
-+	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-+disable_dsp_sel_clk:
-+	clk_disable_unprepare(clk_handle[CLK_TOP_ADSP]);
-+disable_mainpll_d7_d2_clk:
-+	clk_disable_unprepare(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-+
-+	return ret;
-+}
-+
-+void adsp_disable_clock(struct device *dev)
-+{
-+	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_H]);
-+	clk_disable_unprepare(clk_handle[CLK_SCP_ADSP_AUDIODSP]);
-+	clk_disable_unprepare(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS]);
-+	clk_disable_unprepare(clk_handle[CLK_TOP_ADSP]);
-+	clk_disable_unprepare(clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-+}
-+
-+int adsp_default_clk_init(struct device *dev, int enable)
-+{
-+	int ret = 0;
-+
-+	dev_dbg(dev, "%s: %s\n", __func__, enable ? "on" : "off");
-+
-+	if (enable) {
-+		ret = clk_set_parent(clk_handle[CLK_TOP_ADSP],
-+				     clk_handle[CLK_TOP_CLK26M]);
-+		if (ret) {
-+			dev_err(dev, "failed to set dsp_sel to clk26m: %d\n", ret);
-+			return ret;
-+		}
-+
-+		ret = clk_set_parent(clk_handle[CLK_TOP_AUDIO_LOCAL_BUS],
-+				     clk_handle[CLK_TOP_MAINPLL_D7_D2]);
-+		if (ret) {
-+			dev_err(dev, "set audio_local_bus failed %d\n", ret);
-+			return ret;
-+		}
-+
-+		ret = adsp_enable_clock(dev);
-+		if (ret)
-+			dev_err(dev, "failed to adsp_enable_clock: %d\n", ret);
-+
-+		return ret;
-+	}
-+
-+	adsp_disable_clock(dev);
-+
-+	return ret;
-+}
-+
-+int adsp_clock_on(struct device *dev)
-+{
-+	/* Open ADSP clock */
-+	return adsp_default_clk_init(dev, 1);
-+}
-+
-+int adsp_clock_off(struct device *dev)
-+{
-+	/* Close ADSP clock */
-+	return adsp_default_clk_init(dev, 0);
-+}
-+
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195-clk.h b/sound/soc/sof/mediatek/mt8195/mt8195-clk.h
-new file mode 100644
-index 000000000000..f985d141552a
---- /dev/null
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195-clk.h
-@@ -0,0 +1,29 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+
-+/*
-+ * Copyright (c) 2021 MediaTek Corporation. All rights reserved.
-+ *
-+ *  Header file for the mt8195 DSP clock  definition
-+ */
-+
-+#ifndef __MT8195_CLK_H
-+#define __MT8195_CLK_H
-+
-+/*DSP clock*/
-+enum ADSP_CLK_ID {
-+	CLK_TOP_ADSP,
-+	CLK_TOP_CLK26M,
-+	CLK_TOP_AUDIO_LOCAL_BUS,
-+	CLK_TOP_MAINPLL_D7_D2,
-+	CLK_SCP_ADSP_AUDIODSP,
-+	CLK_TOP_AUDIO_H,
-+	ADSP_CLK_NUM
-+};
-+
-+int platform_parse_clock(struct device *dev);
-+int adsp_default_clk_init(struct device *dev, int enable);
-+int adsp_enable_clock(struct device *dev);
-+void adsp_disable_clock(struct device *dev);
-+int adsp_clock_on(struct device *dev);
-+int adsp_clock_off(struct device *dev);
-+#endif
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index 99075598a35a..f323da58057b 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -25,6 +25,7 @@
- #include "../adsp_helper.h"
- #include "../mediatek-ops.h"
- #include "mt8195.h"
-+#include "mt8195-clk.h"
- 
- static int platform_parse_resource(struct platform_device *pdev, void *data)
+ static int
+-mt7915_fw_debug_set(void *data, u64 val)
++mt7915_fw_debug_wm_set(void *data, u64 val)
  {
-@@ -231,10 +232,23 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
+ 	struct mt7915_dev *dev = data;
+ 	enum {
+@@ -93,28 +93,51 @@ mt7915_fw_debug_set(void *data, u64 val)
+ 		DEBUG_RPT_RX,
+ 	} debug;
+ 
+-	dev->fw_debug = !!val;
++	dev->fw_debug_wm = val ? MCU_FW_LOG_TO_HOST : 0;
+ 
+-	mt7915_mcu_fw_log_2_host(dev, dev->fw_debug ? 2 : 0);
++	mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WM, dev->fw_debug_wm);
+ 
+ 	for (debug = DEBUG_TXCMD; debug <= DEBUG_RPT_RX; debug++)
+-		mt7915_mcu_fw_dbg_ctrl(dev, debug, dev->fw_debug);
++		mt7915_mcu_fw_dbg_ctrl(dev, debug, !!dev->fw_debug_wm);
+ 
+ 	return 0;
+ }
+ 
+ static int
+-mt7915_fw_debug_get(void *data, u64 *val)
++mt7915_fw_debug_wm_get(void *data, u64 *val)
+ {
+ 	struct mt7915_dev *dev = data;
+ 
+-	*val = dev->fw_debug;
++	*val = dev->fw_debug_wm;
+ 
+ 	return 0;
+ }
+ 
+-DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug, mt7915_fw_debug_get,
+-			 mt7915_fw_debug_set, "%lld\n");
++DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug_wm, mt7915_fw_debug_wm_get,
++			 mt7915_fw_debug_wm_set, "%lld\n");
++
++static int
++mt7915_fw_debug_wa_set(void *data, u64 val)
++{
++	struct mt7915_dev *dev = data;
++
++	dev->fw_debug_wa = val ? MCU_FW_LOG_TO_HOST : 0;
++
++	return mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, dev->fw_debug_wa);
++}
++
++static int
++mt7915_fw_debug_wa_get(void *data, u64 *val)
++{
++	struct mt7915_dev *dev = data;
++
++	*val = dev->fw_debug_wa;
++
++	return 0;
++}
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug_wa, mt7915_fw_debug_wa_get,
++			 mt7915_fw_debug_wa_set, "%lld\n");
+ 
+ static void
+ mt7915_ampdu_stat_read_phy(struct mt7915_phy *phy,
+@@ -460,7 +483,8 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
+ 	debugfs_create_file("xmit-queues", 0400, dir, phy,
+ 			    &mt7915_xmit_queues_fops);
+ 	debugfs_create_file("tx_stats", 0400, dir, phy, &mt7915_tx_stats_fops);
+-	debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
++	debugfs_create_file("fw_debug_wm", 0600, dir, dev, &fops_fw_debug_wm);
++	debugfs_create_file("fw_debug_wa", 0600, dir, dev, &fops_fw_debug_wa);
+ 	debugfs_create_file("implicit_txbf", 0600, dir, dev,
+ 			    &fops_implicit_txbf);
+ 	debugfs_create_file("txpower_sku", 0400, dir, phy,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index f98bd8a..70193bb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2864,7 +2864,7 @@ static int mt7915_load_firmware(struct mt7915_dev *dev)
+ 	return 0;
+ }
+ 
+-int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 ctrl)
++int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 type, u8 ctrl)
+ {
+ 	struct {
+ 		u8 ctrl_val;
+@@ -2873,6 +2873,10 @@ int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 ctrl)
+ 		.ctrl_val = ctrl
+ 	};
+ 
++	if (type == MCU_FW_LOG_WA)
++		return mt76_mcu_send_msg(&dev->mt76, MCU_WA_EXT_CMD(FW_LOG_2_HOST),
++					 &data, sizeof(data), true);
++
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(FW_LOG_2_HOST), &data,
+ 				 sizeof(data), true);
+ }
+@@ -2985,7 +2989,11 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
+ 		return ret;
+ 
+ 	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
+-	ret = mt7915_mcu_fw_log_2_host(dev, 0);
++	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WM, 0);
++	if (ret)
++		return ret;
++
++	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, 0);
  	if (ret)
  		return ret;
  
-+	ret = platform_parse_clock(&pdev->dev);
-+	if (ret) {
-+		dev_err(sdev->dev, "platform_parse_clock failed\n");
-+		return -EINVAL;
-+	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 91bf421..855fbee 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -230,6 +230,12 @@ enum {
+ };
+ 
+ 
++enum {
++	MCU_FW_LOG_WM,
++	MCU_FW_LOG_WA,
++	MCU_FW_LOG_TO_HOST,
++};
 +
-+	ret = adsp_clock_on(&pdev->dev);
-+	if (ret) {
-+		dev_err(sdev->dev, "adsp_clock_on fail!\n");
-+		return -EINVAL;
-+	}
-+
- 	ret = adsp_sram_power_on(sdev->dev, true);
- 	if (ret) {
- 		dev_err(sdev->dev, "adsp_sram_power_on fail!\n");
--		return ret;
-+		ret = -EINVAL;
-+		goto exit_clk_disable;
- 	}
+ #define __MCU_CMD_FIELD_ID	GENMASK(7, 0)
+ #define __MCU_CMD_FIELD_EXT_ID	GENMASK(15, 8)
+ #define __MCU_CMD_FIELD_QUERY	BIT(16)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index fff15f6..070950b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -270,8 +270,9 @@ struct mt7915_dev {
  
- 	ret = adsp_memory_remap_init(&pdev->dev, priv->adsp);
-@@ -282,6 +296,8 @@ static int mt8195_dsp_probe(struct snd_sof_dev *sdev)
+ 	bool dbdc_support;
+ 	bool flash_mode;
+-	bool fw_debug;
+ 	bool ibf;
++	u8 fw_debug_wm;
++	u8 fw_debug_wa;
  
- err_adsp_sram_power_off:
- 	adsp_sram_power_on(&pdev->dev, false);
-+exit_clk_disable:
-+	adsp_clock_off(&pdev->dev);
+ 	void *cal;
  
- 	return ret;
- }
-@@ -290,7 +306,10 @@ static int mt8195_dsp_remove(struct snd_sof_dev *sdev)
- {
- 	struct platform_device *pdev = container_of(sdev->dev, struct platform_device, dev);
- 
--	return adsp_sram_power_on(&pdev->dev, false);
-+	adsp_sram_power_on(&pdev->dev, false);
-+	adsp_clock_off(&pdev->dev);
-+
-+	return 0;
- }
- 
- /* on mt8195 there is 1 to 1 match between type and BAR idx */
+@@ -449,7 +450,7 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 			   struct ieee80211_sta *sta, struct rate_info *rate);
+ int mt7915_mcu_rdd_cmd(struct mt7915_dev *dev, enum mt7915_rdd_cmd cmd,
+ 		       u8 index, u8 rx_sel, u8 val);
+-int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 ctrl);
++int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 type, u8 ctrl);
+ int mt7915_mcu_fw_dbg_ctrl(struct mt7915_dev *dev, u32 module, u8 level);
+ void mt7915_mcu_rx_event(struct mt7915_dev *dev, struct sk_buff *skb);
+ void mt7915_mcu_exit(struct mt7915_dev *dev);
 -- 
-2.18.0
+2.25.1
 
 
 _______________________________________________
