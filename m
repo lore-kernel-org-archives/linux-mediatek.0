@@ -2,99 +2,65 @@ Return-Path: <SRS0=9f7n=PJ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92B2EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 16:08:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F133FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 17:39:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 57B8160FC0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 16:08:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 57B8160FC0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id B7B6961205
+	for <linux-mediatek@archiver.kernel.org>; Thu, 21 Oct 2021 17:39:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B7B6961205
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RlVLP/yUN5lSF64acNDY9Bslt79GN1KutqwzxT7bZTw=; b=jnM5jSNVZEnO1V
-	APBHe8U7GQ8PHPR+E1/VGeizRhJqM7kbgqyJurV7UIZEg2RIgn9dYgblyWt+xfbSp0lZ6/8mJsliD
-	ZGJ9qhMzv6TOH33WblL/IK/8SWCz1yWE58Zvr54wSXJTVlxSLECIL8lMwzM6j2y44ZzRArEMamKjP
-	Xef0BvyxQAd3StBzaGWBvx4LIBWv43ePAOYBwG0Ma10FLqoBD2CbvTJjBKhjjfpoa64/KQX5V0DIe
-	rdfkiiWlZlGbyF1i9KbkeO8um06LBoSU3pIw2zXO7ye0mqAM4Xe70uRfdwdNyAtlywD+WAwYvYdAj
-	4jkiZ87VHzbQQDymcoVA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=LdGLWdKFQ4PVf5MyYAZypPbSP6XQzIGDS5jKM1pirW4=; b=v6oXB0ZpKLOB4g
+	kKYmS1AwS6BEtdX3fSFVierGNshssf5de6dE0gB0YVQxAzSwg3GwJmjL3Ot5wJ5t6pCxk7hL9C2gA
+	5rNcjHBm2ZcfVmibcJKI/aZs0VFUSTK5uuJLFdzjT0IVPXQMrDumhxTKd8aiKZLB9h0OY0s2YNb7m
+	NL3jigJWOn2qFXI8BAn3uMVBOg+A+azkI0oKXmR4nLYip6JQ/vryQ4wf1dOYo1BFncMEQVyKeDEkc
+	98vBfZ2lu0Z/yeAkC5proWWgIpOkjKGfwP4vk6/mgecWeH+36TUEqIsOwK8aIK4BolfIOE0XYjtyZ
+	t/5KiXt8cCHzVeZQlR4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdacW-008Iob-Tp; Thu, 21 Oct 2021 16:08:44 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mdc2C-008Vaj-RF; Thu, 21 Oct 2021 17:39:20 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdacT-008InG-Rk; Thu, 21 Oct 2021 16:08:43 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1AEFD611CB;
- Thu, 21 Oct 2021 16:08:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1634832521;
- bh=3wcwNbtDNknQedZoy24cZfK1CiOqshIYIk3e2c4B9Rw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=XWhJ08GGIqTZw+TvT/nMCDAy7quf2FJv33jj0Ily06vxkI8rUxTQELDkeHb0u+NFl
- MD0Lx9+x7lhMM3GIAZfA1T2u0eNmQAG1bqpXTvz67evSI6p28cRymuvwfzx0MmCdPZ
- Eu9kyx0IRx+BQHrjfg6pUkXIBKHVfUT3rJ6PyHjkKsGXSiMQ2s0MWrlq5f/6WPUXfA
- 12KC4ZTUvETH0cKn32kcKsPv7RGUIftWATLF8XYn+cHxWi3nvl7PC2jb98L+8EJMFN
- xtCzC0AmpDoL2r37xWXDC3EUt/EyyEmL8iLEASXb2kkCdjx5XS/xqqOzJAGW3sGtIs
- FzUF2rqmMe78Q==
-Received: by pali.im (Postfix)
- id D8DB085E; Thu, 21 Oct 2021 18:08:38 +0200 (CEST)
-Date: Thu, 21 Oct 2021 18:08:38 +0200
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: Naveen Naidu <naveennaidu479@gmail.com>
-Cc: bhelgaas@google.com, linux-kernel-mentees@lists.linuxfoundation.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-hyperv@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linuxppc-dev@lists.ozlabs.org,
- linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, Rob Herring <robh@kernel.org>,
- skhan@linuxfoundation.org, Robert Richter <rric@kernel.org>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
- "maintainer:BROADCOM IPROC ARM ARCHITECTURE"
- <bcm-kernel-feedback-list@broadcom.com>, 
- Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jingoo Han <jingoohan1@gmail.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Shawn Guo <shawn.guo@linaro.org>, Xiaowei Song <songxiaowei@hisilicon.com>,
- Binghui Wang <wangbinghui@hisilicon.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
- Joyce Ooi <joyce.ooi@intel.com>,
- Marek Vasut <marek.vasut+renesas@gmail.com>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Shawn Lin <shawn.lin@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>,
- Nirmal Patel <nirmal.patel@linux.intel.com>,
- Jonathan Derrick <jonathan.derrick@linux.dev>,
- Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>,
- Lukas Wunner <lukas@wunner.de>, Amey Narkhede <ameynarkhede03@gmail.com>,
- Russell Currey <ruscur@russell.cc>, Oliver O'Halloran <oohall@gmail.com>,
- Sean V Kelley <sean.v.kelley@intel.com>,
- Qiuxu Zhuo <qiuxu.zhuo@intel.com>, Marc Zyngier <maz@kernel.org>,
- "K. Y. Srinivasan" <kys@microsoft.com>,
- Haiyang Zhang <haiyangz@microsoft.com>,
- Stephen Hemminger <sthemmin@microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
- Toan Le <toan@os.amperecomputing.com>
-Subject: Re: [PATCH v3 01/25] PCI: Add PCI_ERROR_RESPONSE and it's related
- definitions
-Message-ID: <20211021160838.r7t7fmmeseaecfac@pali>
-References: <cover.1634825082.git.naveennaidu479@gmail.com>
- <f7960a4dee0e417eedd7d2e031d04ac9016c6686.1634825082.git.naveennaidu479@gmail.com>
+ id 1mdc28-008VZv-1X
+ for linux-mediatek@lists.infradead.org; Thu, 21 Oct 2021 17:39:19 +0000
+X-UUID: aff773a4ba8845b49f8d3de17f9db520-20211021
+X-UUID: aff773a4ba8845b49f8d3de17f9db520-20211021
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <shayne.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1153527938; Thu, 21 Oct 2021 10:39:09 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Oct 2021 10:39:07 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Oct 2021 01:39:06 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 22 Oct 2021 01:39:05 +0800
+From: Shayne Chen <shayne.chen@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
+Subject: [PATCH v5 1/2] mt76: mt7915: add WA firmware log support
+Date: Fri, 22 Oct 2021 01:38:39 +0800
+Message-ID: <20211021173840.6203-1-shayne.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <f7960a4dee0e417eedd7d2e031d04ac9016c6686.1634825082.git.naveennaidu479@gmail.com>
-User-Agent: NeoMutt/20180716
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_090841_964582_5996BEF2 
-X-CRM114-Status: GOOD (  19.33  )
+X-CRM114-CacheID: sfid-20211021_103916_121857_1C12596C 
+X-CRM114-Status: GOOD (  13.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,40 +72,197 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1cnNkYXkgMjEgT2N0b2JlciAyMDIxIDIwOjM3OjI2IE5hdmVlbiBOYWlkdSB3cm90ZToK
-PiBBbiBNTUlPIHJlYWQgZnJvbSBhIFBDSSBkZXZpY2UgdGhhdCBkb2Vzbid0IGV4aXN0IG9yIGRv
-ZXNuJ3QgcmVzcG9uZAo+IGNhdXNlcyBhIFBDSSBlcnJvci4gIFRoZXJlJ3Mgbm8gcmVhbCBkYXRh
-IHRvIHJldHVybiB0byBzYXRpc2Z5IHRoZQo+IENQVSByZWFkLCBzbyBtb3N0IGhhcmR3YXJlIGZh
-YnJpY2F0ZXMgfjAgZGF0YS4KPiAKPiBBZGQgYSBQQ0lfRVJST1JfUkVTUE9OU0UgZGVmaW5pdGlv
-biBmb3IgdGhhdCBhbmQgdXNlIGl0IHdoZXJlCj4gYXBwcm9wcmlhdGUgdG8gbWFrZSB0aGVzZSBj
-aGVja3MgY29uc2lzdGVudCBhbmQgZWFzaWVyIHRvIGZpbmQuCj4gCj4gQWxzbyBhZGQgaGVscGVy
-IGRlZmluaXRpb25zIFNFVF9QQ0lfRVJST1JfUkVTUE9OU0UgYW5kCj4gUkVTUE9OU0VfSVNfUENJ
-X0VSUk9SIHRvIG1ha2UgdGhlIGNvZGUgbW9yZSByZWFkYWJsZS4KPiAKPiBTdWdnZXN0ZWQtYnk6
-IEJqb3JuIEhlbGdhYXMgPGJoZWxnYWFzQGdvb2dsZS5jb20+Cj4gU2lnbmVkLW9mZi1ieTogTmF2
-ZWVuIE5haWR1IDxuYXZlZW5uYWlkdTQ3OUBnbWFpbC5jb20+CgpSZXZpZXdlZC1ieTogUGFsaSBS
-b2jDoXIgPHBhbGlAa2VybmVsLm9yZz4KCj4gLS0tCj4gIGluY2x1ZGUvbGludXgvcGNpLmggfCA5
-ICsrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgOSBpbnNlcnRpb25zKCspCj4gCj4gZGlmZiAt
-LWdpdCBhL2luY2x1ZGUvbGludXgvcGNpLmggYi9pbmNsdWRlL2xpbnV4L3BjaS5oCj4gaW5kZXgg
-Y2Q4YWE2ZmNlMjA0Li42ODljODI3N2M1ODQgMTAwNjQ0Cj4gLS0tIGEvaW5jbHVkZS9saW51eC9w
-Y2kuaAo+ICsrKyBiL2luY2x1ZGUvbGludXgvcGNpLmgKPiBAQCAtMTU0LDYgKzE1NCwxNSBAQCBl
-bnVtIHBjaV9pbnRlcnJ1cHRfcGluIHsKPiAgLyogVGhlIG51bWJlciBvZiBsZWdhY3kgUENJIElO
-VHggaW50ZXJydXB0cyAqLwo+ICAjZGVmaW5lIFBDSV9OVU1fSU5UWAk0Cj4gIAo+ICsvKgo+ICsg
-KiBSZWFkaW5nIGZyb20gYSBkZXZpY2UgdGhhdCBkb2Vzbid0IHJlc3BvbmQgdHlwaWNhbGx5IHJl
-dHVybnMgfjAuICBBCj4gKyAqIHN1Y2Nlc3NmdWwgcmVhZCBmcm9tIGEgZGV2aWNlIG1heSBhbHNv
-IHJldHVybiB+MCwgc28geW91IG5lZWQgYWRkaXRpb25hbAo+ICsgKiBpbmZvcm1hdGlvbiB0byBy
-ZWxpYWJseSBpZGVudGlmeSBlcnJvcnMuCj4gKyAqLwo+ICsjZGVmaW5lIFBDSV9FUlJPUl9SRVNQ
-T05TRSAgICAgKH4wVUxMKQo+ICsjZGVmaW5lIFNFVF9QQ0lfRVJST1JfUkVTUE9OU0UodmFsKSAg
-ICAoKih2YWwpID0gKCh0eXBlb2YoKih2YWwpKSkgUENJX0VSUk9SX1JFU1BPTlNFKSkKPiArI2Rl
-ZmluZSBSRVNQT05TRV9JU19QQ0lfRVJST1IodmFsKSAoKHZhbCkgPT0gKCh0eXBlb2YodmFsKSkg
-UENJX0VSUk9SX1JFU1BPTlNFKSkKPiArCj4gIC8qCj4gICAqIHBjaV9wb3dlcl90IHZhbHVlcyBt
-dXN0IG1hdGNoIHRoZSBiaXRzIGluIHRoZSBDYXBhYmlsaXRpZXMgUE1FX1N1cHBvcnQKPiAgICog
-YW5kIENvbnRyb2wvU3RhdHVzIFBvd2VyU3RhdGUgZmllbGRzIGluIHRoZSBQb3dlciBNYW5hZ2Vt
-ZW50IGNhcGFiaWxpdHkuCj4gLS0gCj4gMi4yNS4xCj4gCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
-dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Support to turn on/off WA firmware log from debugfs.
+
+Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+---
+v3: rebase to staging tree
+v4: rebase to staging tree
+v5: check return value of mcu cmd
+---
+ .../wireless/mediatek/mt76/mt7915/debugfs.c   | 50 +++++++++++++++----
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 12 ++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h   |  5 ++
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  5 +-
+ 4 files changed, 58 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index 4b7f38f..e720958 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -82,7 +82,7 @@ DEFINE_DEBUGFS_ATTRIBUTE(fops_radar_trigger, NULL,
+ 			 mt7915_radar_trigger, "%lld\n");
+ 
+ static int
+-mt7915_fw_debug_set(void *data, u64 val)
++mt7915_fw_debug_wm_set(void *data, u64 val)
+ {
+ 	struct mt7915_dev *dev = data;
+ 	enum {
+@@ -92,29 +92,58 @@ mt7915_fw_debug_set(void *data, u64 val)
+ 		DEBUG_SPL,
+ 		DEBUG_RPT_RX,
+ 	} debug;
++	int ret;
+ 
+-	dev->fw_debug = !!val;
++	dev->fw_debug_wm = val ? MCU_FW_LOG_TO_HOST : 0;
+ 
+-	mt7915_mcu_fw_log_2_host(dev, dev->fw_debug ? 2 : 0);
++	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WM, dev->fw_debug_wm);
++	if (ret)
++		return ret;
+ 
+-	for (debug = DEBUG_TXCMD; debug <= DEBUG_RPT_RX; debug++)
+-		mt7915_mcu_fw_dbg_ctrl(dev, debug, dev->fw_debug);
++	for (debug = DEBUG_TXCMD; debug <= DEBUG_RPT_RX; debug++) {
++		ret = mt7915_mcu_fw_dbg_ctrl(dev, debug, !!dev->fw_debug_wm);
++		if (ret)
++			return ret;
++	}
+ 
+ 	return 0;
+ }
+ 
+ static int
+-mt7915_fw_debug_get(void *data, u64 *val)
++mt7915_fw_debug_wm_get(void *data, u64 *val)
++{
++	struct mt7915_dev *dev = data;
++
++	*val = dev->fw_debug_wm;
++
++	return 0;
++}
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug_wm, mt7915_fw_debug_wm_get,
++			 mt7915_fw_debug_wm_set, "%lld\n");
++
++static int
++mt7915_fw_debug_wa_set(void *data, u64 val)
++{
++	struct mt7915_dev *dev = data;
++
++	dev->fw_debug_wa = val ? MCU_FW_LOG_TO_HOST : 0;
++
++	return mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, dev->fw_debug_wa);
++}
++
++static int
++mt7915_fw_debug_wa_get(void *data, u64 *val)
+ {
+ 	struct mt7915_dev *dev = data;
+ 
+-	*val = dev->fw_debug;
++	*val = dev->fw_debug_wa;
+ 
+ 	return 0;
+ }
+ 
+-DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug, mt7915_fw_debug_get,
+-			 mt7915_fw_debug_set, "%lld\n");
++DEFINE_DEBUGFS_ATTRIBUTE(fops_fw_debug_wa, mt7915_fw_debug_wa_get,
++			 mt7915_fw_debug_wa_set, "%lld\n");
+ 
+ static void
+ mt7915_ampdu_stat_read_phy(struct mt7915_phy *phy,
+@@ -460,7 +489,8 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
+ 	debugfs_create_file("xmit-queues", 0400, dir, phy,
+ 			    &mt7915_xmit_queues_fops);
+ 	debugfs_create_file("tx_stats", 0400, dir, phy, &mt7915_tx_stats_fops);
+-	debugfs_create_file("fw_debug", 0600, dir, dev, &fops_fw_debug);
++	debugfs_create_file("fw_debug_wm", 0600, dir, dev, &fops_fw_debug_wm);
++	debugfs_create_file("fw_debug_wa", 0600, dir, dev, &fops_fw_debug_wa);
+ 	debugfs_create_file("implicit_txbf", 0600, dir, dev,
+ 			    &fops_implicit_txbf);
+ 	debugfs_create_file("txpower_sku", 0400, dir, phy,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index f98bd8a..70193bb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2864,7 +2864,7 @@ static int mt7915_load_firmware(struct mt7915_dev *dev)
+ 	return 0;
+ }
+ 
+-int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 ctrl)
++int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 type, u8 ctrl)
+ {
+ 	struct {
+ 		u8 ctrl_val;
+@@ -2873,6 +2873,10 @@ int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 ctrl)
+ 		.ctrl_val = ctrl
+ 	};
+ 
++	if (type == MCU_FW_LOG_WA)
++		return mt76_mcu_send_msg(&dev->mt76, MCU_WA_EXT_CMD(FW_LOG_2_HOST),
++					 &data, sizeof(data), true);
++
+ 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(FW_LOG_2_HOST), &data,
+ 				 sizeof(data), true);
+ }
+@@ -2985,7 +2989,11 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
+ 		return ret;
+ 
+ 	set_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
+-	ret = mt7915_mcu_fw_log_2_host(dev, 0);
++	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WM, 0);
++	if (ret)
++		return ret;
++
++	ret = mt7915_mcu_fw_log_2_host(dev, MCU_FW_LOG_WA, 0);
+ 	if (ret)
+ 		return ret;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 91bf421..99ff265 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -229,6 +229,11 @@ enum {
+ 	MCU_S2D_H2CN
+ };
+ 
++enum {
++	MCU_FW_LOG_WM,
++	MCU_FW_LOG_WA,
++	MCU_FW_LOG_TO_HOST,
++};
+ 
+ #define __MCU_CMD_FIELD_ID	GENMASK(7, 0)
+ #define __MCU_CMD_FIELD_EXT_ID	GENMASK(15, 8)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index fff15f6..070950b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -270,8 +270,9 @@ struct mt7915_dev {
+ 
+ 	bool dbdc_support;
+ 	bool flash_mode;
+-	bool fw_debug;
+ 	bool ibf;
++	u8 fw_debug_wm;
++	u8 fw_debug_wa;
+ 
+ 	void *cal;
+ 
+@@ -449,7 +450,7 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 			   struct ieee80211_sta *sta, struct rate_info *rate);
+ int mt7915_mcu_rdd_cmd(struct mt7915_dev *dev, enum mt7915_rdd_cmd cmd,
+ 		       u8 index, u8 rx_sel, u8 val);
+-int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 ctrl);
++int mt7915_mcu_fw_log_2_host(struct mt7915_dev *dev, u8 type, u8 ctrl);
+ int mt7915_mcu_fw_dbg_ctrl(struct mt7915_dev *dev, u32 module, u8 level);
+ void mt7915_mcu_rx_event(struct mt7915_dev *dev, struct sk_buff *skb);
+ void mt7915_mcu_exit(struct mt7915_dev *dev);
+-- 
+2.25.1
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
