@@ -2,69 +2,88 @@ Return-Path: <SRS0=WF8g=PK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C0E15C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 12:54:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1BC1CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 13:11:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 784B1610A4
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 12:54:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 784B1610A4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id E26BC610A4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 13:11:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E26BC610A4
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sQca6/WEMeiynl9IzeeEhGKJ7fAa3l9VAiX6huKufYQ=; b=v1MuXnDjhV0Y9q
-	NClMzZOZrAj0DLpEdNTwzc6sdTk+uDwhOVu6xqphKwE8ooofUE/qvYyRax4YEIgahBZ8CLGa43Mf4
-	sWhhj+I2sWsUJm+JxGSquVaFGtmVvdUqH3LT5FPJMxuTrt8CadmyDOeud8hORo/CcZkLwxJBKwQWg
-	uNZzMbyEq39mwhEaPzAvGPb7mQb4015H+2ViXCvipkiGC00Oi9tO6E+fFC8YKZWHVm1IFe9/XUUsM
-	bOCtOKV8Mor+A4XXFvMDm9jE6scq3EiexAKqNlytbsu2R/6Mb2M7DtEUH2xGWdK6xPsS0Z7vKfPxa
-	t+BxB+isqs8blOGw/mAQ==;
+	List-Owner; bh=C/TA2qBs71n/k7SiUjO2f4aunEfOIUQV99uJzOPryW4=; b=sJfTBMo7ubRZf8
+	4jzRKEtpH4lVkeayEf3WBfejpzevdhtaiCI3c1ywoXT5HIG4zTelkK7R6TmbNMm8hREYca8bvRFFG
+	iDtl2NH0bjKO090fvb3mN8NFG8so8F2bkIJReJEl0z26edDrrhUJVHzPlkaR6528HW0x/tJLEkFeE
+	pNuS0PnyVnHTNddl66dNcy2OELIqX3deobud8pqOjnJPyima5hq0/pxmphTKL19tg/hi2Y6K20Kx9
+	LAP43I2gDOv1zxpM+3SZ4/fZpj48DThCKHPl1b8kStMvTXdV5itiz/9ylA0xiN2u+2RBLMBHuNltq
+	WV4DdzAeCdhryb2bIQWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdu3t-00AySN-I6; Fri, 22 Oct 2021 12:54:17 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mduJv-00B2e2-Bj; Fri, 22 Oct 2021 13:10:51 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdu0b-00AxaA-Md; Fri, 22 Oct 2021 12:50:56 +0000
-X-UUID: 3c83bad5544b47faa2338c1deb13f114-20211022
-X-UUID: 3c83bad5544b47faa2338c1deb13f114-20211022
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1779275399; Fri, 22 Oct 2021 05:50:49 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Oct 2021 05:40:46 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 22 Oct 2021 20:40:45 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Oct 2021 20:40:44 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: Linus Walleij <linus.walleij@linaro.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Sean Wang
- <sean.wang@kernel.org>, <linux-gpio@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
- Shih" <sam.shih@mediatek.com>
-Subject: [PATCH v9 1/4] dt-bindings: pinctrl: update bindings for MT7986 SoC
-Date: Fri, 22 Oct 2021 20:40:33 +0800
-Message-ID: <20211022124036.5291-2-sam.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211022124036.5291-1-sam.shih@mediatek.com>
-References: <20211022124036.5291-1-sam.shih@mediatek.com>
+ id 1mduH0-00B1rY-N8
+ for linux-mediatek@lists.infradead.org; Fri, 22 Oct 2021 13:07:54 +0000
+Received: by mail-wr1-x434.google.com with SMTP id o20so493465wro.3
+ for <linux-mediatek@lists.infradead.org>; Fri, 22 Oct 2021 06:07:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=UGjYpSf1suvoAVRlObzio963Ea2jH5VZ7H2sh84EWBI=;
+ b=6BpJXt7YtQEcAYjgIiBbsV3sGe9kkzUlhP7LAcmXAjR+O9ozBayImK4hXyJuh+Ubii
+ OWZ7yvAoqWKoLaDYVs5Maiz62tJmDhI0tYt/FX5QSy/i9aFn1/QI6WgCTu9lNE3MyxPo
+ 6o6TwBtBWCsx2Ol6Yxhz0fNXd9iDruBwVRvZYUwxXbYeEvAUnNWuvfSiAeOURK3TJqoZ
+ HXCGME99q0D0mjVrTj7sQHieetc1rLJjnA4XFrJuMleY6NVRRuFeV/ifG5TBk76Y54RU
+ zy/sn2vxC5cK4/iNRuA5WP/L21/DBrco+kUXgbTdpVubQMpy8ZfJRPx+hFqAuuSTjrCF
+ IqeA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=UGjYpSf1suvoAVRlObzio963Ea2jH5VZ7H2sh84EWBI=;
+ b=zzT6JB0QU6NP7PrdmvVMXYReX3QPRIsne0VZZ3M+84/K1i7b7+oSXxr13XOq3sZfE/
+ xO/WsyEcz3zjFMD3V/CtrBg5TkOXNlPID4ehQGRMDXBGa0dNdYlNr9BnXIrmyf+6Zjo3
+ 6uo+JmpFxROEmck8+zsxgFwouPPhetQbd2TprVN2qRey0fw1vfphj0UjscmRAaSTQuIx
+ JF6nLBNTisO6EpohnyoCO7KWtatix0cXy0oxIrp2EKZYFdOu+s7bzBOd6aDz/BsroGVK
+ Q4n/jzegeqneMYzEfPS7rUvyTRcuRka3lpwaP+7gPaFjb1IX+TC6daNrg2tkQs9kRDfx
+ i3ig==
+X-Gm-Message-State: AOAM531p40cxhTow6YPXmJjk/f2Fe+YhSir+TJ/jEDpsRnctV/FJohnc
+ seWtfta9wpqsFfKugMLMGQKY0Q==
+X-Google-Smtp-Source: ABdhPJzU7AOubtWvY0RAtHRDoCIlaQvtCUqfe0GbkGk3JXb6JITNYUnVWGk6+dXfe4eP5aZ3/K7ZtQ==
+X-Received: by 2002:adf:f192:: with SMTP id h18mr15656560wro.33.1634908057568; 
+ Fri, 22 Oct 2021 06:07:37 -0700 (PDT)
+Received: from blmsp ([2a02:2454:3e6:c900:5142:5fbb:5821:5dc3])
+ by smtp.gmail.com with ESMTPSA id d3sm8164815wrb.36.2021.10.22.06.06.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Oct 2021 06:07:09 -0700 (PDT)
+Date: Fri, 22 Oct 2021 15:06:36 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>, Sam Ravnborg <sam@ravnborg.org>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH v5 6/7] phy: phy-mtk-dp: Add driver for DP phy
+Message-ID: <20211022130636.ncqisltwsvkkc7cg@blmsp>
+References: <20211021092707.3562523-1-msp@baylibre.com>
+ <20211021092707.3562523-7-msp@baylibre.com>
+ <YXJIPu/Ax6qeft03@matsya>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <YXJIPu/Ax6qeft03@matsya>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211022_055053_838920_72F867DC 
-X-CRM114-Status: GOOD (  17.12  )
+X-CRM114-CacheID: sfid-20211022_060750_808860_4BF3F39D 
+X-CRM114-Status: GOOD (  47.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,403 +100,360 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This updates bindings for MT7986 pinctrl driver. The
-difference of pinctrl between mt7986a and mt7986b is that pin-41 to
-pin-65 do not exist on mt7986b
+Hi Vinod,
 
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
----
-v9: added an Reviewed-by tag
-v8: fixed uart node in yaml dts example
-v7: updated pinctcl node binding description, and separate pinctrl
-     part into a single patch series
+On Fri, Oct 22, 2021 at 10:42:30AM +0530, Vinod Koul wrote:
+> On 21-10-21, 11:27, Markus Schneider-Pargmann wrote:
+> > This is a new driver that supports the integrated DisplayPort phy for
+> > mediatek SoCs, especially the mt8195. The phy is integrated into the
+> > DisplayPort controller and will be created by the mtk-dp driver. This
+> > driver expects a struct regmap to be able to work on the same registers
+> > as the DisplayPort controller. It sets the device data to be the struct
+> > phy so that the DisplayPort controller can easily work with it.
+> > 
+> > The driver does not have any devicetree bindings because the datasheet
+> > does not list the controller and the phy as distinct units.
+> > 
+> > The interaction with the controller can be covered by the configure
+> > callback of the phy framework and its displayport parameters.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > ---
+> > 
+> > Notes:
+> >     Changes v3 -> v4:
+> >     - Split DP controller driver and phy driver into separate patches.
+> >     - Add entry to MAINTAINERS for this phy driver
+> > 
+> >  MAINTAINERS                       |   1 +
+> >  drivers/phy/mediatek/Kconfig      |   8 ++
+> >  drivers/phy/mediatek/Makefile     |   1 +
+> >  drivers/phy/mediatek/phy-mtk-dp.c | 219 ++++++++++++++++++++++++++++++
+> >  4 files changed, 229 insertions(+)
+> >  create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
+> > 
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index eeb4c70b3d5b..8a47eb628734 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -6276,6 +6276,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+> >  S:	Supported
+> >  F:	Documentation/devicetree/bindings/display/mediatek/
+> >  F:	drivers/gpu/drm/mediatek/
+> > +F:	drivers/phy/mediatek/phy-mtk-dp.c
+> >  F:	drivers/phy/mediatek/phy-mtk-hdmi*
+> >  F:	drivers/phy/mediatek/phy-mtk-mipi*
+> >  
+> > diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> > index 55f8e6c048ab..f7ec86059049 100644
+> > --- a/drivers/phy/mediatek/Kconfig
+> > +++ b/drivers/phy/mediatek/Kconfig
+> > @@ -55,3 +55,11 @@ config PHY_MTK_MIPI_DSI
+> >  	select GENERIC_PHY
+> >  	help
+> >  	  Support MIPI DSI for Mediatek SoCs.
+> > +
+> > +config PHY_MTK_DP
+> > +	tristate "MediaTek DP-PHY Driver"
+> > +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +	depends on OF
+> > +	select GENERIC_PHY
+> > +	help
+> > +	  Support DisplayPort PHY for Mediatek SoCs.
+> > diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> > index ace660fbed3a..4ba1e0650434 100644
+> > --- a/drivers/phy/mediatek/Makefile
+> > +++ b/drivers/phy/mediatek/Makefile
+> > @@ -3,6 +3,7 @@
+> >  # Makefile for the phy drivers.
+> >  #
+> >  
+> > +obj-$(CONFIG_PHY_MTK_DP)		+= phy-mtk-dp.o
+> >  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+> >  obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+> >  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+> > diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+> > new file mode 100644
+> > index 000000000000..296203e319ac
+> > --- /dev/null
+> > +++ b/drivers/phy/mediatek/phy-mtk-dp.c
+> > @@ -0,0 +1,219 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2021 BayLibre
+> > + * Author: Markus Schneider-Pargmann <msp@baylibre.com>
+> > + */
+> > +
+> > +#include <linux/delay.h>
+> > +#include <linux/io.h>
+> > +#include <linux/of.h>
+> > +#include <linux/phy/phy.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/regmap.h>
+> > +
+> > +#define PHY_OFFSET 0x1000
+> > +
+> > +#define MTK_DP_PHY_DIG_PLL_CTL_1		(PHY_OFFSET + 0x014)
+> > +# define TPLL_SSC_EN				BIT(3)
+> > +
+> > +#define MTK_DP_PHY_DIG_BIT_RATE			(PHY_OFFSET + 0x03C)
+> > +# define BIT_RATE_RBR				0
+> > +# define BIT_RATE_HBR				1
+> > +# define BIT_RATE_HBR2				2
+> > +# define BIT_RATE_HBR3				3
+> > +
+> > +#define MTK_DP_PHY_DIG_SW_RST			(PHY_OFFSET + 0x038)
+> > +# define DP_GLB_SW_RST_PHYD			BIT(0)
+> > +
+> > +#define MTK_DP_LANE0_DRIVING_PARAM_3		(PHY_OFFSET + 0x138)
+> > +#define MTK_DP_LANE1_DRIVING_PARAM_3		(PHY_OFFSET + 0x238)
+> > +#define MTK_DP_LANE2_DRIVING_PARAM_3		(PHY_OFFSET + 0x338)
+> > +#define MTK_DP_LANE3_DRIVING_PARAM_3		(PHY_OFFSET + 0x438)
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT	0x10
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT	(0x14 << 8)
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT	(0x18 << 16)
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT	(0x20 << 24)
+> 
+> Pls use GENMASK() for this?
+> 
+> > +# define DRIVING_PARAM_3_DEFAULT		(XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT)
+> > +
+> > +#define MTK_DP_LANE0_DRIVING_PARAM_4		(PHY_OFFSET + 0x13C)
+> > +#define MTK_DP_LANE1_DRIVING_PARAM_4		(PHY_OFFSET + 0x23C)
+> > +#define MTK_DP_LANE2_DRIVING_PARAM_4		(PHY_OFFSET + 0x33C)
+> > +#define MTK_DP_LANE3_DRIVING_PARAM_4		(PHY_OFFSET + 0x43C)
+> > +# define XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT	0x18
+> > +# define XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT	(0x1e << 8)
+> > +# define XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT	(0x24 << 16)
+> > +# define XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT	(0x20 << 24)
+> > +# define DRIVING_PARAM_4_DEFAULT		(XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT)
+> > +
+> > +#define MTK_DP_LANE0_DRIVING_PARAM_5		(PHY_OFFSET + 0x140)
+> > +#define MTK_DP_LANE1_DRIVING_PARAM_5		(PHY_OFFSET + 0x240)
+> > +#define MTK_DP_LANE2_DRIVING_PARAM_5		(PHY_OFFSET + 0x340)
+> > +#define MTK_DP_LANE3_DRIVING_PARAM_5		(PHY_OFFSET + 0x440)
+> > +# define XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT	0x28
+> > +# define XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT	(0x30 << 8)
+> > +# define DRIVING_PARAM_5_DEFAULT		(XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT)
+> > +
+> > +#define MTK_DP_LANE0_DRIVING_PARAM_6		(PHY_OFFSET + 0x144)
+> > +#define MTK_DP_LANE1_DRIVING_PARAM_6		(PHY_OFFSET + 0x244)
+> > +#define MTK_DP_LANE2_DRIVING_PARAM_6		(PHY_OFFSET + 0x344)
+> > +#define MTK_DP_LANE3_DRIVING_PARAM_6		(PHY_OFFSET + 0x444)
+> > +# define XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT	0x00
+> > +# define XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT	(0x04 << 8)
+> > +# define XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT	(0x08 << 16)
+> > +# define XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT	(0x10 << 24)
+> > +# define DRIVING_PARAM_6_DEFAULT		(XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT)
+> > +
+> > +#define MTK_DP_LANE0_DRIVING_PARAM_7		(PHY_OFFSET + 0x148)
+> > +#define MTK_DP_LANE1_DRIVING_PARAM_7		(PHY_OFFSET + 0x248)
+> > +#define MTK_DP_LANE2_DRIVING_PARAM_7		(PHY_OFFSET + 0x348)
+> > +#define MTK_DP_LANE3_DRIVING_PARAM_7		(PHY_OFFSET + 0x448)
+> > +# define XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT	0x00
+> > +# define XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT	(0x06 << 8)
+> > +# define XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT	(0x0c << 16)
+> > +# define XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT	(0x00 << 24)
+> > +# define DRIVING_PARAM_7_DEFAULT		(XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT)
+> > +
+> > +#define MTK_DP_LANE0_DRIVING_PARAM_8		(PHY_OFFSET + 0x14C)
+> > +#define MTK_DP_LANE1_DRIVING_PARAM_8		(PHY_OFFSET + 0x24C)
+> > +#define MTK_DP_LANE2_DRIVING_PARAM_8		(PHY_OFFSET + 0x34C)
+> > +#define MTK_DP_LANE3_DRIVING_PARAM_8		(PHY_OFFSET + 0x44C)
+> > +# define XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT	0x08
+> > +# define XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT	(0x00 << 8)
+> > +# define DRIVING_PARAM_8_DEFAULT		(XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT | \
+> > +						 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
+> > +
+> > +struct mtk_dp_phy {
+> > +	struct regmap *regs;
+> > +};
+> > +
+> > +static int mtk_dp_phy_init(struct phy *phy)
+> > +{
+> > +	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> > +	u32 driving_params[] = {
+> > +		DRIVING_PARAM_3_DEFAULT,
+> > +		DRIVING_PARAM_4_DEFAULT,
+> > +		DRIVING_PARAM_5_DEFAULT,
+> > +		DRIVING_PARAM_6_DEFAULT,
+> > +		DRIVING_PARAM_7_DEFAULT,
+> > +		DRIVING_PARAM_8_DEFAULT
+> > +	};
+> > +
+> > +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE0_DRIVING_PARAM_3,
+> > +			  driving_params, ARRAY_SIZE(driving_params));
+> > +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE1_DRIVING_PARAM_3,
+> > +			  driving_params, ARRAY_SIZE(driving_params));
+> > +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE2_DRIVING_PARAM_3,
+> > +			  driving_params, ARRAY_SIZE(driving_params));
+> > +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE3_DRIVING_PARAM_3,
+> > +			  driving_params, ARRAY_SIZE(driving_params));
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+> > +{
+> > +	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> > +	u32 val;
+> > +
+> > +	if (opts->dp.set_rate) {
+> > +		switch (opts->dp.link_rate) {
+> > +		default:
+> > +			dev_err(&phy->dev,
+> > +				"Implementation error, unknown linkrate %x\n",
+> > +				opts->dp.link_rate);
+> > +			return -EINVAL;
+> > +		case 1620:
+> > +			val = BIT_RATE_RBR;
+> > +			break;
+> > +		case 2700:
+> > +			val = BIT_RATE_HBR;
+> > +			break;
+> > +		case 5400:
+> > +			val = BIT_RATE_HBR2;
+> > +			break;
+> > +		case 8100:
+> > +			val = BIT_RATE_HBR3;
+> > +			break;
+> > +		}
+> > +		regmap_write(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE, val);
+> > +	}
+> > +
+> > +	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE,
+> > +			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_dp_phy_reset(struct phy *phy)
+> > +{
+> > +	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> > +
+> > +	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
+> > +			   DP_GLB_SW_RST_PHYD, 0);
+> > +	usleep_range(50, 200);
+> > +	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
+> > +			   DP_GLB_SW_RST_PHYD, 1);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static const struct phy_ops mtk_dp_phy_dev_ops = {
+> > +	.init = mtk_dp_phy_init,
+> > +	.configure = mtk_dp_phy_configure,
+> > +	.reset = mtk_dp_phy_reset,
+> > +	.owner = THIS_MODULE,
+> > +};
+> > +
+> > +static int mtk_dp_phy_probe(struct platform_device *pdev)
+> > +{
+> > +	struct device *dev = &pdev->dev;
+> > +	struct mtk_dp_phy *dp_phy;
+> > +	struct phy *phy;
+> > +
+> > +	dp_phy = devm_kzalloc(dev, sizeof(*dp_phy), GFP_KERNEL);
+> > +	if (!dp_phy)
+> > +		return -ENOMEM;
+> > +
+> > +	dp_phy->regs = *(struct regmap **)dev->platform_data;
+> > +	if (!dp_phy->regs) {
+> > +		dev_err(dev, "No data passed, requires struct regmap**\n");
+> > +		return -EINVAL;
+> > +	}
+> 
+> is there a reason to do it this way? Why not set the IORESOURCE_MEM for
+> this device and let the driver map here?
+> 
+> NO clocks?
 
-Original thread:
-https://lore.kernel.org/all/8348ed3e-c561-ad7e-fe9e-a31ed346d8d0@gmail.com/
+As briefly mentioned in the commit message, this phy is not a dedicated
+phy. It is embedded in the DisplayPort controller that is added in patch
+7 of this series. The registerspace of the DisplayPort controller starts
+at offset 0x0, continues with 0x1000 for PHY related functions and goes
+on with encoder related and other registers at 0x2000, 0x3000 and
+0x4000.
 
-v6: fixed yamllint warnings/errors v2
-v5: fixed yamllint warnings/errors v1
-v4: used yaml format instead of txt format document
-v3: make mt7986 pinctrl bindings as a separate file
-v2: deleted the redundant description of mt7986a/mt7986b
----
- .../pinctrl/mediatek,mt7986-pinctrl.yaml      | 363 ++++++++++++++++++
- 1 file changed, 363 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
+As this seems to me to be a single function block (also from what I read
+from the datasheet), I designed the binding documentation so that the
+DisplayPort controller starts at 0x0 and spans all registers. Based on
+that I wanted to share the regmap created in the DisplayPort controller
+with this PHY driver that is a direct child of that driver, similar to
+multi function device drivers.
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-new file mode 100644
-index 000000000000..7602b11e8bce
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt7986-pinctrl.yaml
-@@ -0,0 +1,363 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pinctrl/mediatek,mt7986-pinctrl.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek MT7986 Pin Controller Device Tree Bindings
-+
-+maintainers:
-+  - Sean Wang <sean.wang@kernel.org>
-+
-+description: |+
-+  The MediaTek's MT7986 Pin controller is used to control SoC pins.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt7986a-pinctrl
-+      - mediatek,mt7986b-pinctrl
-+
-+  reg:
-+    minItems: 8
-+    maxItems: 8
-+
-+  reg-names:
-+    items:
-+      - const: gpio
-+      - const: iocfg_rt
-+      - const: iocfg_rb
-+      - const: iocfg_lt
-+      - const: iocfg_lb
-+      - const: iocfg_tr
-+      - const: iocfg_tl
-+      - const: eint
-+
-+  gpio-controller: true
-+
-+  "#gpio-cells":
-+    const: 2
-+    description: |
-+      Number of cells in GPIO specifier. Since the generic GPIO
-+      binding is used, the amount of cells must be specified as 2. See the below
-+      mentioned gpio binding representation for description of particular cells.
-+
-+  gpio-ranges:
-+    minItems: 1
-+    maxItems: 5
-+    description: |
-+      GPIO valid number range.
-+
-+  interrupt-controller: true
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  "#interrupt-cells":
-+    const: 2
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - gpio-controller
-+  - "#gpio-cells"
-+
-+patternProperties:
-+  '-pins$':
-+    type: object
-+    additionalProperties: false
-+
-+    patternProperties:
-+      '.*mux.*':
-+        type: object
-+        additionalProperties: false
-+        description: |
-+          pinmux configuration nodes.
-+
-+          The following table shows the effective values of "group", "function"
-+          properties and chip pinout pins
-+
-+          groups	    function    pins (in pin#)
-+          ---------------------------------------------------------------------
-+          "watchdog"        "watchdog"  0
-+          "wifi_led"        "led"       1, 2
-+          "i2c"             "i2c"       3, 4
-+          "uart1_0"         "uart"      7, 8, 9, 10
-+          "pcie_clk"        "pcie"      9
-+          "pcie_wake"       "pcie"      10
-+          "spi1_0"          "spi"       11, 12, 13, 14
-+          "pwm1_1"          "pwm"       20,
-+          "pwm0"            "pwm"       21,
-+          "pwm1_0"          "pwm"       22,
-+          "snfi"            "flash"     23, 24, 25, 26, 27, 28
-+          "spi1_2"          "spi"       29, 30, 31, 32
-+          "emmc_45"         "emmc"      22, 23, 24, 25, 26, 27, 28, 29, 30,
-+                                        31, 32
-+          "spi1_1"          "spi"       23, 24, 25, 26
-+          "uart1_2"         "uart"      29, 30, 31, 32
-+          "uart1_1"         "uart"      23, 24, 25, 26
-+          "uart2_0"         "uart"      29, 30, 31, 32
-+          "spi0"            "spi"       33, 34, 35, 36
-+          "spi0_wp_hold"    "spi"       37, 38
-+          "uart1_3_rx_tx"   "uart"      35, 36
-+          "uart1_3_cts_rts" "uart"      37, 38
-+          "uart2_1"         "uart"      33, 34, 35, 36
-+          "spi1_3"          "spi"       33, 34, 35, 36
-+          "uart0"           "uart"      39, 40
-+          "pcie_pereset"    "pcie"      41
-+          "uart1"           "uart"      42, 43, 44, 45
-+          "uart2"           "uart"      46, 47, 48, 49
-+          "emmc_51"         "emmc"      50, 51, 52, 53, 54, 55, 56, 57, 57,
-+                                        59, 60, 61
-+          "pcm"             "audio"     62, 63, 64, 65
-+          "i2s"             "audio"     62, 63, 64, 65
-+          "switch_int"      "eth"       66
-+          "mdc_mdio"        "eth"       67
-+
-+        $ref: "/schemas/pinctrl/pinmux-node.yaml"
-+        properties:
-+          function:
-+            description: |
-+              A string containing the name of the function to mux to the group.
-+              There is no "audio", "pcie" functions on mt7986b, you can only use
-+              those functions on mt7986a.
-+            enum: [audio, emmc, eth, i2c, led, flash, pcie, pwm, spi, uart,
-+                   watchdog, wifi]
-+          groups:
-+            description: |
-+              An array of strings. Each string contains the name of a group.
-+              There is no "pcie_pereset", "uart1", "uart2" "emmc_51", "pcm",
-+              and "i2s" groups on mt7986b, you can only use those groups on
-+              mt7986a.
-+        required:
-+          - function
-+          - groups
-+
-+        allOf:
-+          - if:
-+              properties:
-+                function:
-+                  const: audio
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pcm, i2s]
-+          - if:
-+              properties:
-+                function:
-+                  const: emmc
-+            then:
-+              properties:
-+                groups:
-+                  enum: [emmc, emmc_rst]
-+          - if:
-+              properties:
-+                function:
-+                  const: eth
-+            then:
-+              properties:
-+                groups:
-+                  enum: [switch_int, mdc_mdio]
-+          - if:
-+              properties:
-+                function:
-+                  const: i2c
-+            then:
-+              properties:
-+                groups:
-+                  enum: [i2c]
-+          - if:
-+              properties:
-+                function:
-+                  const: led
-+            then:
-+              properties:
-+                groups:
-+                  enum: [wifi_led]
-+          - if:
-+              properties:
-+                function:
-+                  const: flash
-+            then:
-+              properties:
-+                groups:
-+                  enum: [snfi]
-+          - if:
-+              properties:
-+                function:
-+                  const: pcie
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pcie_clk, pcie_wake, pcie_pereset]
-+          - if:
-+              properties:
-+                function:
-+                  const: pwm
-+            then:
-+              properties:
-+                groups:
-+                  enum: [pwm0, pwm1_0, pwm1_1]
-+          - if:
-+              properties:
-+                function:
-+                  const: spi
-+            then:
-+              properties:
-+                groups:
-+                  enum: [spi0, spi0_wp_hold, spi1_0, spi1_1, spi1_2, spi1_3]
-+          - if:
-+              properties:
-+                function:
-+                  const: uart
-+            then:
-+              properties:
-+                groups:
-+                  enum: [uart1_0, uart1_1, uart1_2, uart1_3_rx_tx,
-+                         uart1_3_cts_rts, uart2_0, uart2_1, uart0, uart1, uart2]
-+          - if:
-+              properties:
-+                function:
-+                  const: watchdog
-+            then:
-+              properties:
-+                groups:
-+                  enum: [watchdog]
-+          - if:
-+              properties:
-+                function:
-+                  const: wifi
-+            then:
-+              properties:
-+                groups:
-+                  enum: [wf_2g, wf_5g, wf_dbdc]
-+      '.*conf.*':
-+        type: object
-+        additionalProperties: false
-+        description: |
-+          pinconf configuration nodes.
-+        $ref: "/schemas/pinctrl/pincfg-node.yaml"
-+
-+        properties:
-+          pins:
-+            description: |
-+              An array of strings. Each string contains the name of a pin.
-+              There is no PIN 41 to PIN 65 above on mt7686b, you can only use
-+              those pins on mt7986a.
-+            enum: [SYS_WATCHDOG, WF2G_LED, WF5G_LED, I2C_SCL, I2C_SDA, GPIO_0,
-+                   GPIO_1, GPIO_2, GPIO_3, GPIO_4, GPIO_5, GPIO_6, GPIO_7,
-+                   GPIO_8, GPIO_9, GPIO_10, GPIO_11, GPIO_12, GPIO_13, GPIO_14,
-+                   GPIO_15, PWM0, PWM1, SPI0_CLK, SPI0_MOSI, SPI0_MISO, SPI0_CS,
-+                   SPI0_HOLD, SPI0_WP, SPI1_CLK, SPI1_MOSI, SPI1_MISO, SPI1_CS,
-+                   SPI2_CLK, SPI2_MOSI, SPI2_MISO, SPI2_CS, SPI2_HOLD, SPI2_WP,
-+                   UART0_RXD, UART0_TXD, PCIE_PERESET_N, UART1_RXD, UART1_TXD,
-+                   UART1_CTS, UART1_RTS, UART2_RXD, UART2_TXD, UART2_CTS,
-+                   UART2_RTS, EMMC_DATA_0, EMMC_DATA_1, EMMC_DATA_2,
-+                   EMMC_DATA_3, EMMC_DATA_4, EMMC_DATA_5, EMMC_DATA_6,
-+                   EMMC_DATA_7, EMMC_CMD, EMMC_CK, EMMC_DSL, EMMC_RSTB, PCM_DTX,
-+                   PCM_DRX, PCM_CLK, PCM_FS, MT7531_INT, SMI_MDC, SMI_MDIO,
-+                   WF0_DIG_RESETB, WF0_CBA_RESETB, WF0_XO_REQ, WF0_TOP_CLK,
-+                   WF0_TOP_DATA, WF0_HB1, WF0_HB2, WF0_HB3, WF0_HB4, WF0_HB0,
-+                   WF0_HB0_B, WF0_HB5, WF0_HB6, WF0_HB7, WF0_HB8, WF0_HB9,
-+                   WF0_HB10, WF1_DIG_RESETB, WF1_CBA_RESETB, WF1_XO_REQ,
-+                   WF1_TOP_CLK, WF1_TOP_DATA, WF1_HB1, WF1_HB2, WF1_HB3,
-+                   WF1_HB4, WF1_HB0, WF1_HB0_B, WF1_HB5, WF1_HB6, WF1_HB7,
-+                   WF1_HB8]
-+
-+          bias-disable: true
-+
-+          bias-pull-up: true
-+
-+          bias-pull-down: true
-+
-+          input-enable: true
-+
-+          input-disable: true
-+
-+          output-enable: true
-+
-+          output-low: true
-+
-+          output-high: true
-+
-+          input-schmitt-enable: true
-+
-+          input-schmitt-disable: true
-+
-+          drive-strength:
-+            enum: [2, 4, 6, 8, 10, 12, 14, 16]
-+
-+          mediatek,pull-up-adv:
-+            description: |
-+              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
-+              Pull up setings for 2 pull resistors, R0 and R1. Valid arguments
-+              are described as below:
-+              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-+              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-+              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-+              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
-+            $ref: /schemas/types.yaml#/definitions/uint32
-+            enum: [0, 1, 2, 3]
-+
-+          mediatek,pull-down-adv:
-+            description: |
-+              Valid arguments for 'mediatek,pull-up-adv' are '0', '1', '2', '3'
-+              Pull down setings for 2 pull resistors, R0 and R1. Valid arguments
-+              are described as below:
-+              0: (R1, R0) = (0, 0) which means R1 disabled and R0 disabled.
-+              1: (R1, R0) = (0, 1) which means R1 disabled and R0 enabled.
-+              2: (R1, R0) = (1, 0) which means R1 enabled and R0 disabled.
-+              3: (R1, R0) = (1, 1) which means R1 enabled and R0 enabled.
-+            $ref: /schemas/types.yaml#/definitions/uint32
-+            enum: [0, 1, 2, 3]
-+
-+        required:
-+          - pins
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    soc {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+      pio: pinctrl@1001f000 {
-+        compatible = "mediatek,mt7986a-pinctrl";
-+        reg = <0 0x1001f000 0 0x1000>,
-+              <0 0x11c30000 0 0x1000>,
-+              <0 0x11c40000 0 0x1000>,
-+              <0 0x11e20000 0 0x1000>,
-+              <0 0x11e30000 0 0x1000>,
-+              <0 0x11f00000 0 0x1000>,
-+              <0 0x11f10000 0 0x1000>,
-+              <0 0x1000b000 0 0x1000>;
-+        reg-names = "gpio", "iocfg_rt", "iocfg_rb", "iocfg_lt",
-+                    "iocfg_lb", "iocfg_tr", "iocfg_tl", "eint";
-+        gpio-controller;
-+        #gpio-cells = <2>;
-+        gpio-ranges = <&pio 0 0 100>;
-+        interrupt-controller;
-+        interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
-+        interrupt-parent = <&gic>;
-+        #interrupt-cells = <2>;
-+
-+        uart1_pins: uart1-pins {
-+          mux {
-+            function = "uart";
-+            groups = "uart1";
-+          };
-+        };
-+
-+        uart2_pins: uart2-pins {
-+          mux {
-+            function = "uart";
-+            groups = "uart2";
-+          };
-+        };
-+
-+      };
-+    };
--- 
-2.29.2
+That also means that the PHY does not have any clocks it requires as it
+only exists in the context of the DisplayPort controller. I could pass
+the same clocks to the PHY, but the use of these clocks does not make
+any difference.
 
+As I don't have a piece of devicetree, I struggled with using phy_get
+as, if I understand it correctly, it uses the devicetree to find the
+correct PHY device?
+
+Do you have a suggestion on how I could improve this interaction between
+DP controller and PHY? Maybe some driver that I could look at that has
+similar constraints?
+
+Thank you!
+
+Best,
+Markus
+
+> 
+> > +
+> > +	phy = devm_phy_create(dev, NULL, &mtk_dp_phy_dev_ops);
+> > +	if (IS_ERR(phy)) {
+> > +		dev_err(dev, "Failed to create DP PHY: %ld\n", PTR_ERR(phy));
+> > +		return PTR_ERR(phy);
+> > +	}
+> > +	phy_set_drvdata(phy, dp_phy);
+> > +
+> > +	// Set device data to the phy so that mtk-dp can get it easily
+> 
+> pls change comment style
+> 
+> also why should mtk-dp do it this way, there is very nice API phy_get()
+> to do that, pls use that..
+> 
+> 
+> > +	dev_set_drvdata(dev, phy);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +struct platform_driver mtk_dp_phy_driver = {
+> 
+> who creates this platform device?
+> 
+> > +	.probe = mtk_dp_phy_probe,
+> > +	.driver = {
+> > +		.name = "mediatek-dp-phy",
+> > +	},
+> > +};
+> > +module_platform_driver(mtk_dp_phy_driver);
+> > +
+> > +MODULE_AUTHOR("Markus Schneider-Pargmann <msp@baylibre.com>");
+> > +MODULE_DESCRIPTION("MediaTek DP PHY Driver");
+> > +MODULE_LICENSE("GPL v2");
+> > -- 
+> > 2.33.0
+> 
+> -- 
+> ~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
