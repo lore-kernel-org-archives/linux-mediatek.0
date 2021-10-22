@@ -2,69 +2,65 @@ Return-Path: <SRS0=WF8g=PK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4EA95C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 02:52:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1C13CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 05:13:06 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0412E60720
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 02:52:05 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0412E60720
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id D21B260D07
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 05:13:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D21B260D07
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QOObShy2oOWQ9hvN+MeV4O8zYzWvlpHsOI1M7mSzrpA=; b=kCqJ2hJBfugt5A
-	i8Xz3ov85Zj9zVeFrVB2rCQVu1GERgOxuZnqvwuyuD0NVsmvxXd9eZ9fUtN6xp7i5kBxjNrCbkxyE
-	mOjJ0rhdzdcU9QEAFMqQxE+6UukL9w01KPxPKFkQXqMmB8n4RjZTVI6PcgORZc8eXpUDiDqltK7ch
-	wvvRSaOFkBtHQkx9glzcGM9zItdiA9kFZQMwj50cSsboeVk2rcj25FE75C8uFgH5bQN5gqeZp7s23
-	nm+cYs8rj3oxQ/HJX7f0EbVKfFmAl1Vzl4GjL8f4PRGtvtns13OteNPiFj3Z4fDe7Ot3zxiNqrhuU
-	YEc736K5zHycVlcgCHKA==;
+	List-Owner; bh=uY7yz0FpeNgf+L1fOrBcw7bw/qv2BgHKhSeL31TxCrY=; b=3IsGMe4v83qH82
+	uIbnSBHQAMFVVvuIA3OmQbGXEBZeaJ/RmxEj8wwLkvL9oaIBWpxD50KlvLMlOE3VQPZMIhptnge7z
+	W9wZ5LcCOcQRBBvNGtfK8wRlsyBqJsAsF0PnFSFLFqmhEpAG5rFdrYmtF08ZXK/iTUK8qpcYGAGyq
+	Z/fuInJ1QkA+S8e3irnPbvo+16U6xz2IUgmdn/8onq3guKJy9C7uVRIxiMWsnTgmjk1XCGA3ftUPB
+	SmPU/EAsRm/9Km1QnqsXRfwLCuBvVwu1lviNhv+iTDtcUf9WXuEBeen4EGLVcFO0+OiVzmB9WgtFS
+	98zPZV+IY7cUwKORwWsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdkes-009cpE-5b; Fri, 22 Oct 2021 02:51:50 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mdmrI-009kVr-Tw; Fri, 22 Oct 2021 05:12:48 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdkdt-009cYT-Iz; Fri, 22 Oct 2021 02:50:52 +0000
-X-UUID: 701ce1703ecc4faaac434eef842f3a88-20211021
-X-UUID: 701ce1703ecc4faaac434eef842f3a88-20211021
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xiangsheng.hou@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1509352123; Thu, 21 Oct 2021 19:50:46 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 21 Oct 2021 19:40:44 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 22 Oct 2021 10:40:42 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 22 Oct 2021 10:40:41 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: <miquel.raynal@bootlin.com>, <broonie@kernel.org>
-CC: <xiangsheng.hou@mediatek.com>, <benliang.zhao@mediatek.com>,
- <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
- <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
- <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
- <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
-Subject: [RFC,v3 2/5] mtd: ecc: realize Mediatek HW ECC driver
-Date: Fri, 22 Oct 2021 10:40:18 +0800
-Message-ID: <20211022024021.14665-3-xiangsheng.hou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211022024021.14665-1-xiangsheng.hou@mediatek.com>
-References: <20211022024021.14665-1-xiangsheng.hou@mediatek.com>
+ id 1mdmr5-009kUC-NY; Fri, 22 Oct 2021 05:12:37 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 4CA4060C4D;
+ Fri, 22 Oct 2021 05:12:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1634879555;
+ bh=A4XMXdJXU431FcRhTg+8J9VGDqcp5o/dgGMfstLrLpU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=T+5Tk3CL0BdkssypH7sdPnZ6pAuRZY1mRpu4++XDhpJxNVKazWIPx+MGgDKhGsViL
+ pO1+zJSixQ6r6llRUQ37mSa1mzaWflWs5e2Pb2oWluWPcdP4z2e4uXYTprWdUph6rr
+ YMtVtRZO668AMbN2Unr+XufbRH/3ntUoLVRimRaIgwaX6aDqs0168EqXbOxQndI0L3
+ 2pMw/4LoD4v17C1TcdpEHorYYLUsO/qDu2fjJk/1YmfpGpz/cEPk/a+PI5PCHfOSBf
+ SRrkiRHLffVL/cwYuyD/ToJPkabzl1E7D6cTj3ZGWhdi4tpHmb1JJQ921q7eYW6hzQ
+ LTMICzymMZKoA==
+Date: Fri, 22 Oct 2021 10:42:30 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Rob Herring <robh+dt@kernel.org>, Sam Ravnborg <sam@ravnborg.org>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org
+Subject: Re: [PATCH v5 6/7] phy: phy-mtk-dp: Add driver for DP phy
+Message-ID: <YXJIPu/Ax6qeft03@matsya>
+References: <20211021092707.3562523-1-msp@baylibre.com>
+ <20211021092707.3562523-7-msp@baylibre.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20211021092707.3562523-7-msp@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_195049_721557_D34895C6 
-X-CRM114-Status: GOOD (  25.42  )
+X-CRM114-CacheID: sfid-20211021_221235_845908_50D8007E 
+X-CRM114-Status: GOOD (  36.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,793 +77,324 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The v3 driver realize Mediatek HW ECC engine with pipelined
-case.
+On 21-10-21, 11:27, Markus Schneider-Pargmann wrote:
+> This is a new driver that supports the integrated DisplayPort phy for
+> mediatek SoCs, especially the mt8195. The phy is integrated into the
+> DisplayPort controller and will be created by the mtk-dp driver. This
+> driver expects a struct regmap to be able to work on the same registers
+> as the DisplayPort controller. It sets the device data to be the struct
+> phy so that the DisplayPort controller can easily work with it.
+> 
+> The driver does not have any devicetree bindings because the datasheet
+> does not list the controller and the phy as distinct units.
+> 
+> The interaction with the controller can be covered by the configure
+> callback of the phy framework and its displayport parameters.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
+> 
+> Notes:
+>     Changes v3 -> v4:
+>     - Split DP controller driver and phy driver into separate patches.
+>     - Add entry to MAINTAINERS for this phy driver
+> 
+>  MAINTAINERS                       |   1 +
+>  drivers/phy/mediatek/Kconfig      |   8 ++
+>  drivers/phy/mediatek/Makefile     |   1 +
+>  drivers/phy/mediatek/phy-mtk-dp.c | 219 ++++++++++++++++++++++++++++++
+>  4 files changed, 229 insertions(+)
+>  create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index eeb4c70b3d5b..8a47eb628734 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -6276,6 +6276,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+>  S:	Supported
+>  F:	Documentation/devicetree/bindings/display/mediatek/
+>  F:	drivers/gpu/drm/mediatek/
+> +F:	drivers/phy/mediatek/phy-mtk-dp.c
+>  F:	drivers/phy/mediatek/phy-mtk-hdmi*
+>  F:	drivers/phy/mediatek/phy-mtk-mipi*
+>  
+> diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> index 55f8e6c048ab..f7ec86059049 100644
+> --- a/drivers/phy/mediatek/Kconfig
+> +++ b/drivers/phy/mediatek/Kconfig
+> @@ -55,3 +55,11 @@ config PHY_MTK_MIPI_DSI
+>  	select GENERIC_PHY
+>  	help
+>  	  Support MIPI DSI for Mediatek SoCs.
+> +
+> +config PHY_MTK_DP
+> +	tristate "MediaTek DP-PHY Driver"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on OF
+> +	select GENERIC_PHY
+> +	help
+> +	  Support DisplayPort PHY for Mediatek SoCs.
+> diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> index ace660fbed3a..4ba1e0650434 100644
+> --- a/drivers/phy/mediatek/Makefile
+> +++ b/drivers/phy/mediatek/Makefile
+> @@ -3,6 +3,7 @@
+>  # Makefile for the phy drivers.
+>  #
+>  
+> +obj-$(CONFIG_PHY_MTK_DP)		+= phy-mtk-dp.o
+>  obj-$(CONFIG_PHY_MTK_TPHY)		+= phy-mtk-tphy.o
+>  obj-$(CONFIG_PHY_MTK_UFS)		+= phy-mtk-ufs.o
+>  obj-$(CONFIG_PHY_MTK_XSPHY)		+= phy-mtk-xsphy.o
+> diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+> new file mode 100644
+> index 000000000000..296203e319ac
+> --- /dev/null
+> +++ b/drivers/phy/mediatek/phy-mtk-dp.c
+> @@ -0,0 +1,219 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2021 BayLibre
+> + * Author: Markus Schneider-Pargmann <msp@baylibre.com>
+> + */
+> +
+> +#include <linux/delay.h>
+> +#include <linux/io.h>
+> +#include <linux/of.h>
+> +#include <linux/phy/phy.h>
+> +#include <linux/platform_device.h>
+> +#include <linux/regmap.h>
+> +
+> +#define PHY_OFFSET 0x1000
+> +
+> +#define MTK_DP_PHY_DIG_PLL_CTL_1		(PHY_OFFSET + 0x014)
+> +# define TPLL_SSC_EN				BIT(3)
+> +
+> +#define MTK_DP_PHY_DIG_BIT_RATE			(PHY_OFFSET + 0x03C)
+> +# define BIT_RATE_RBR				0
+> +# define BIT_RATE_HBR				1
+> +# define BIT_RATE_HBR2				2
+> +# define BIT_RATE_HBR3				3
+> +
+> +#define MTK_DP_PHY_DIG_SW_RST			(PHY_OFFSET + 0x038)
+> +# define DP_GLB_SW_RST_PHYD			BIT(0)
+> +
+> +#define MTK_DP_LANE0_DRIVING_PARAM_3		(PHY_OFFSET + 0x138)
+> +#define MTK_DP_LANE1_DRIVING_PARAM_3		(PHY_OFFSET + 0x238)
+> +#define MTK_DP_LANE2_DRIVING_PARAM_3		(PHY_OFFSET + 0x338)
+> +#define MTK_DP_LANE3_DRIVING_PARAM_3		(PHY_OFFSET + 0x438)
+> +# define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT	0x10
+> +# define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT	(0x14 << 8)
+> +# define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT	(0x18 << 16)
+> +# define XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT	(0x20 << 24)
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
----
- drivers/mtd/nand/core.c     |  10 +-
- drivers/mtd/nand/ecc.c      |  88 +++++++
- drivers/mtd/nand/mtk_ecc.c  | 488 ++++++++++++++++++++++++++++++++++++
- include/linux/mtd/mtk_ecc.h |  38 +++
- include/linux/mtd/nand.h    |  11 +
- 5 files changed, 632 insertions(+), 3 deletions(-)
+Pls use GENMASK() for this?
 
-diff --git a/drivers/mtd/nand/core.c b/drivers/mtd/nand/core.c
-index 5e13a03d2b32..b228b4d13b7a 100644
---- a/drivers/mtd/nand/core.c
-+++ b/drivers/mtd/nand/core.c
-@@ -232,7 +232,9 @@ static int nanddev_get_ecc_engine(struct nand_device *nand)
- 		nand->ecc.engine = nand_ecc_get_on_die_hw_engine(nand);
- 		break;
- 	case NAND_ECC_ENGINE_TYPE_ON_HOST:
--		pr_err("On-host hardware ECC engines not supported yet\n");
-+		nand->ecc.engine = nand_ecc_get_on_host_hw_engine(nand);
-+		if (PTR_ERR(nand->ecc.engine) == -EPROBE_DEFER)
-+			return -EPROBE_DEFER;
- 		break;
- 	default:
- 		pr_err("Missing ECC engine type\n");
-@@ -252,7 +254,7 @@ static int nanddev_put_ecc_engine(struct nand_device *nand)
- {
- 	switch (nand->ecc.ctx.conf.engine_type) {
- 	case NAND_ECC_ENGINE_TYPE_ON_HOST:
--		pr_err("On-host hardware ECC engines not supported yet\n");
-+		nand_ecc_put_on_host_hw_engine(nand);
- 		break;
- 	case NAND_ECC_ENGINE_TYPE_NONE:
- 	case NAND_ECC_ENGINE_TYPE_SOFT:
-@@ -297,7 +299,9 @@ int nanddev_ecc_engine_init(struct nand_device *nand)
- 	/* Look for the ECC engine to use */
- 	ret = nanddev_get_ecc_engine(nand);
- 	if (ret) {
--		pr_err("No ECC engine found\n");
-+		if (ret != -EPROBE_DEFER)
-+			pr_err("No ECC engine found\n");
-+
- 		return ret;
- 	}
- 
-diff --git a/drivers/mtd/nand/ecc.c b/drivers/mtd/nand/ecc.c
-index 6c43dfda01d4..55d6946da9c3 100644
---- a/drivers/mtd/nand/ecc.c
-+++ b/drivers/mtd/nand/ecc.c
-@@ -96,7 +96,12 @@
- #include <linux/module.h>
- #include <linux/mtd/nand.h>
- #include <linux/slab.h>
-+#include <linux/of.h>
-+#include <linux/of_device.h>
-+#include <linux/of_platform.h>
- 
-+static LIST_HEAD(on_host_hw_engines);
-+static DEFINE_MUTEX(on_host_hw_engines_mutex);
- /**
-  * nand_ecc_init_ctx - Init the ECC engine context
-  * @nand: the NAND device
-@@ -611,6 +616,89 @@ struct nand_ecc_engine *nand_ecc_get_on_die_hw_engine(struct nand_device *nand)
- }
- EXPORT_SYMBOL(nand_ecc_get_on_die_hw_engine);
- 
-+int nand_ecc_register_on_host_hw_engine(struct nand_ecc_engine *engine)
-+{
-+	struct nand_ecc_engine *item;
-+
-+	if (!engine)
-+		return -ENOTSUPP;
-+
-+	/* Prevent multiple registerations of one engine */
-+	list_for_each_entry(item, &on_host_hw_engines, node)
-+		if (item == engine)
-+			return 0;
-+
-+	mutex_lock(&on_host_hw_engines_mutex);
-+	list_add_tail(&engine->node, &on_host_hw_engines);
-+	mutex_unlock(&on_host_hw_engines_mutex);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(nand_ecc_register_on_host_hw_engine);
-+
-+int nand_ecc_unregister_on_host_hw_engine(struct nand_ecc_engine *engine)
-+{
-+	if (!engine)
-+		return -ENOTSUPP;
-+
-+	mutex_lock(&on_host_hw_engines_mutex);
-+	list_del(&engine->node);
-+	mutex_unlock(&on_host_hw_engines_mutex);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(nand_ecc_unregister_on_host_hw_engine);
-+
-+struct nand_ecc_engine *nand_ecc_match_on_host_hw_engine(struct device *dev)
-+{
-+	struct nand_ecc_engine *item;
-+
-+	list_for_each_entry(item, &on_host_hw_engines, node)
-+		if (item->dev == dev)
-+			return item;
-+
-+	return NULL;
-+}
-+EXPORT_SYMBOL(nand_ecc_match_on_host_hw_engine);
-+
-+struct nand_ecc_engine *nand_ecc_get_on_host_hw_engine(struct nand_device *nand)
-+{
-+	struct nand_ecc_engine *engine = NULL;
-+	struct device *dev = &nand->mtd.dev;
-+	struct platform_device *pdev;
-+	struct device_node *np;
-+
-+	if (list_empty(&on_host_hw_engines))
-+		return NULL;
-+
-+	/* Check for an explicit nand-ecc-engine property */
-+	np = of_parse_phandle(dev->of_node, "nand-ecc-engine", 0);
-+	if (np) {
-+		pdev = of_find_device_by_node(np);
-+		if (!pdev)
-+			return ERR_PTR(-EPROBE_DEFER);
-+
-+		engine = nand_ecc_match_on_host_hw_engine(&pdev->dev);
-+		platform_device_put(pdev);
-+		of_node_put(np);
-+
-+		if (!engine)
-+			return ERR_PTR(-EPROBE_DEFER);
-+	}
-+
-+	if (engine)
-+		get_device(engine->dev);
-+
-+	return engine;
-+}
-+EXPORT_SYMBOL(nand_ecc_get_on_host_hw_engine);
-+
-+void nand_ecc_put_on_host_hw_engine(struct nand_device *nand)
-+{
-+	put_device(nand->ecc.engine->dev);
-+}
-+EXPORT_SYMBOL(nand_ecc_put_on_host_hw_engine);
-+
- MODULE_LICENSE("GPL");
- MODULE_AUTHOR("Miquel Raynal <miquel.raynal@bootlin.com>");
- MODULE_DESCRIPTION("Generic ECC engine");
-diff --git a/drivers/mtd/nand/mtk_ecc.c b/drivers/mtd/nand/mtk_ecc.c
-index ce0f8b491e5d..e0c971d6a443 100644
---- a/drivers/mtd/nand/mtk_ecc.c
-+++ b/drivers/mtd/nand/mtk_ecc.c
-@@ -16,6 +16,7 @@
- #include <linux/of_platform.h>
- #include <linux/mutex.h>
- 
-+#include <linux/mtd/nand.h>
- #include <linux/mtd/mtk_ecc.h>
- 
- #define ECC_IDLE_MASK		BIT(0)
-@@ -41,6 +42,9 @@
- #define ECC_IDLE_REG(op)	((op) == ECC_ENCODE ? ECC_ENCIDLE : ECC_DECIDLE)
- #define ECC_CTL_REG(op)		((op) == ECC_ENCODE ? ECC_ENCCON : ECC_DECCON)
- 
-+#define ECC_FDM_MAX_SIZE 8
-+#define ECC_FDM_MIN_SIZE 1
-+
- struct mtk_ecc_caps {
- 	u32 err_mask;
- 	const u8 *ecc_strength;
-@@ -79,6 +83,10 @@ static const u8 ecc_strength_mt7622[] = {
- 	4, 6, 8, 10, 12, 14, 16
- };
- 
-+static const u8 ecc_strength_mt7986[] = {
-+	4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24
-+};
-+
- enum mtk_ecc_regs {
- 	ECC_ENCPAR00,
- 	ECC_ENCIRQ_EN,
-@@ -115,6 +123,15 @@ static int mt7622_ecc_regs[] = {
- 	[ECC_DECIRQ_STA] =      0x144,
- };
- 
-+static int mt7986_ecc_regs[] = {
-+	[ECC_ENCPAR00] =        0x300,
-+	[ECC_ENCIRQ_EN] =       0x80,
-+	[ECC_ENCIRQ_STA] =      0x84,
-+	[ECC_DECDONE] =         0x124,
-+	[ECC_DECIRQ_EN] =       0x200,
-+	[ECC_DECIRQ_STA] =      0x204,
-+};
-+
- static inline void mtk_ecc_wait_idle(struct mtk_ecc *ecc,
- 				     enum mtk_ecc_operation op)
- {
-@@ -447,6 +464,464 @@ unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc)
- }
- EXPORT_SYMBOL(mtk_ecc_get_parity_bits);
- 
-+static inline int data_off(struct nand_device *nand, int i)
-+{
-+	int eccsize = nand->ecc.ctx.conf.step_size;
-+
-+	return i * eccsize;
-+}
-+
-+static inline int fdm_off(struct nand_device *nand, int i)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	int poi;
-+
-+	if (i < eng->bad_mark.sec)
-+		poi = (i + 1) * eng->fdm_size;
-+	else if (i == eng->bad_mark.sec)
-+		poi = 0;
-+	else
-+		poi = i * eng->fdm_size;
-+
-+	return poi;
-+}
-+
-+static inline int mtk_ecc_data_len(struct nand_device *nand)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	int eccsize = nand->ecc.ctx.conf.step_size;
-+	int eccbytes = eng->oob_ecc;
-+
-+	return eccsize + eng->fdm_size + eccbytes;
-+}
-+
-+static inline u8 *mtk_ecc_sec_ptr(struct nand_device *nand,  int i)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+
-+	return eng->page_buf + i * mtk_ecc_data_len(nand);
-+}
-+
-+static inline u8 *mtk_ecc_fdm_ptr(struct nand_device *nand, int i)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	int eccsize = nand->ecc.ctx.conf.step_size;
-+
-+	return eng->page_buf + i * mtk_ecc_data_len(nand) + eccsize;
-+}
-+
-+static void mtk_ecc_no_bad_mark_swap(struct nand_device *a, u8 *b,
-+							u8 *c)
-+{
-+	/* nop */
-+}
-+
-+static void mtk_ecc_bad_mark_swap(struct nand_device *nand, u8 *databuf,
-+							u8 *oobbuf)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	int step_size = nand->ecc.ctx.conf.step_size;
-+	u32 bad_pos = eng->bad_mark.pos;
-+
-+	bad_pos += eng->bad_mark.sec * step_size;
-+
-+	swap(oobbuf[0], databuf[bad_pos]);
-+}
-+
-+static void mtk_ecc_set_bad_mark_ctl(struct mtk_ecc_bad_mark_ctl *bm_ctl,
-+				     struct mtd_info *mtd)
-+{
-+	struct nand_device *nand = mtd_to_nanddev(mtd);
-+
-+	if (mtd->writesize == 512) {
-+		bm_ctl->bm_swap = mtk_ecc_no_bad_mark_swap;
-+	} else {
-+		bm_ctl->bm_swap = mtk_ecc_bad_mark_swap;
-+		bm_ctl->sec = mtd->writesize / mtk_ecc_data_len(nand);
-+		bm_ctl->pos = mtd->writesize % mtk_ecc_data_len(nand);
-+	}
-+}
-+
-+static int mtk_ecc_ooblayout_free(struct mtd_info *mtd, int section,
-+				  struct mtd_oob_region *oob_region)
-+{
-+	struct nand_device *nand = mtd_to_nanddev(mtd);
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	struct nand_ecc_props *conf = &nand->ecc.ctx.conf;
-+	u32 eccsteps, bbm_bytes = 0;
-+
-+	eccsteps = mtd->writesize / conf->step_size;
-+
-+	if (section >= eccsteps)
-+		return -ERANGE;
-+
-+	/* reserve 1 byte for bad mark only for section 0 */
-+	if (section == 0)
-+		bbm_bytes = 1;
-+
-+	oob_region->length = eng->fdm_size - bbm_bytes;
-+	oob_region->offset = section * eng->fdm_size + bbm_bytes;
-+
-+	return 0;
-+}
-+
-+static int mtk_ecc_ooblayout_ecc(struct mtd_info *mtd, int section,
-+				 struct mtd_oob_region *oob_region)
-+{
-+	struct nand_device *nand = mtd_to_nanddev(mtd);
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+
-+	if (section)
-+		return -ERANGE;
-+
-+	oob_region->offset = eng->fdm_size * eng->nsteps;
-+	oob_region->length = mtd->oobsize - oob_region->offset;
-+
-+	return 0;
-+}
-+
-+static const struct mtd_ooblayout_ops mtk_ecc_ooblayout_ops = {
-+	.free = mtk_ecc_ooblayout_free,
-+	.ecc = mtk_ecc_ooblayout_ecc,
-+};
-+
-+const struct mtd_ooblayout_ops *mtk_ecc_get_ooblayout(void)
-+{
-+	return &mtk_ecc_ooblayout_ops;
-+}
-+
-+static struct device *mtk_ecc_get_engine_dev(struct device *dev)
-+{
-+	struct platform_device *eccpdev;
-+	struct device_node *np;
-+
-+	/*
-+	 * The device node is only the host controller,
-+	 * not the actual ECC engine when pipelined case.
-+	 */
-+	np = of_parse_phandle(dev->of_node, "nand-ecc-engine", 0);
-+	if (!np)
-+		return NULL;
-+
-+	eccpdev = of_find_device_by_node(np);
-+	if (!eccpdev) {
-+		of_node_put(np);
-+		return NULL;
-+	}
-+
-+	platform_device_put(eccpdev);
-+	of_node_put(np);
-+
-+	return &eccpdev->dev;
-+}
-+
-+/*
-+ * mtk_ecc_data_format() - Covert data between ecc format and data/oob buf
-+ *
-+ * Mediatek HW ECC engine organize data/oob free/oob ecc by sector,
-+ * the data format for one page as bellow:
-+ * ||          sector 0         ||          sector 1         || ...
-+ * || data |   fdm    | oob ecc || data ||   fdm   | oob ecc || ...
-+ *
-+ * Terefore, it`s necessary to covert data when read/write in MTD_OPS_RAW.
-+ * These data include bad mark, sector data, fdm data and oob ecc.
-+ */
-+static void mtk_ecc_data_format(struct nand_device *nand,
-+			u8 *databuf, u8 *oobbuf, bool write)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	int step_size = nand->ecc.ctx.conf.step_size;
-+	int i;
-+
-+	if (write) {
-+		for (i = 0; i < eng->nsteps; i++) {
-+			if (i == eng->bad_mark.sec)
-+				eng->bad_mark.bm_swap(nand,
-+						databuf, oobbuf);
-+			memcpy(mtk_ecc_sec_ptr(nand, i),
-+				   databuf + data_off(nand, i), step_size);
-+
-+			memcpy(mtk_ecc_fdm_ptr(nand, i),
-+				   oobbuf + fdm_off(nand, i),
-+				   eng->fdm_size);
-+
-+			memcpy(mtk_ecc_fdm_ptr(nand, i) + eng->fdm_size,
-+				   oobbuf + eng->fdm_size * eng->nsteps +
-+				   i * eng->oob_ecc,
-+				   eng->oob_ecc);
-+
-+			/* swap back when write */
-+			if (i == eng->bad_mark.sec)
-+				eng->bad_mark.bm_swap(nand,
-+						databuf, oobbuf);
-+		}
-+	} else {
-+		for (i = 0; i < eng->nsteps; i++) {
-+			memcpy(databuf + data_off(nand, i),
-+				   mtk_ecc_sec_ptr(nand, i), step_size);
-+
-+			memcpy(oobbuf + fdm_off(nand, i),
-+				   mtk_ecc_sec_ptr(nand, i) + step_size,
-+				   eng->fdm_size);
-+
-+			memcpy(oobbuf + eng->fdm_size * eng->nsteps +
-+				   i * eng->oob_ecc,
-+				   mtk_ecc_sec_ptr(nand, i) + step_size
-+				   + eng->fdm_size,
-+				   eng->oob_ecc);
-+
-+			if (i == eng->bad_mark.sec)
-+				eng->bad_mark.bm_swap(nand,
-+						databuf, oobbuf);
-+		}
-+	}
-+}
-+
-+static void mtk_ecc_fdm_shift(struct nand_device *nand,
-+				u8 *dst_buf, u8 *src_buf)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	u8 *poi;
-+	int i;
-+
-+	for (i = 0; i < eng->nsteps; i++) {
-+		if (i < eng->bad_mark.sec)
-+			poi = src_buf + (i + 1) * eng->fdm_size;
-+		else if (i == eng->bad_mark.sec)
-+			poi = src_buf;
-+		else
-+			poi = src_buf + i * eng->fdm_size;
-+
-+		memcpy(dst_buf + i * eng->fdm_size, poi, eng->fdm_size);
-+	}
-+}
-+
-+int mtk_ecc_prepare_io_req_pipelined(struct nand_device *nand,
-+					  struct nand_page_io_req *req)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	struct mtd_info *mtd = nanddev_to_mtd(nand);
-+	u8 *buf = eng->page_buf;
-+
-+	nand_ecc_tweak_req(&eng->req_ctx, req);
-+
-+	if (req->mode == MTD_OPS_RAW) {
-+		if (req->type == NAND_PAGE_WRITE) {
-+			/* change data/oob buf to MTK HW ECC data format */
-+			mtk_ecc_data_format(nand, req->databuf.in,
-+					req->oobbuf.in, true);
-+			req->databuf.out = buf;
-+			req->oobbuf.out = buf + nand->memorg.pagesize;
-+		}
-+	} else {
-+		eng->ecc_cfg.op = ECC_DECODE;
-+		if (req->type == NAND_PAGE_WRITE) {
-+			memset(eng->oob_buf, 0xff, nand->memorg.oobsize);
-+			mtd_ooblayout_set_databytes(mtd, req->oobbuf.out,
-+							eng->oob_buf,
-+							req->ooboffs,
-+							mtd->oobavail);
-+			eng->bad_mark.bm_swap(nand,
-+						req->databuf.in, eng->oob_buf);
-+			mtk_ecc_fdm_shift(nand, req->oobbuf.in,
-+						eng->oob_buf);
-+
-+			eng->ecc_cfg.op = ECC_ENCODE;
-+		}
-+
-+		eng->ecc_cfg.mode = ECC_NFI_MODE;
-+		eng->ecc_cfg.sectors = eng->nsteps;
-+		return mtk_ecc_enable(eng->ecc, &eng->ecc_cfg);
-+	}
-+
-+	return 0;
-+}
-+
-+int mtk_ecc_finish_io_req_pipelined(struct nand_device *nand,
-+					  struct nand_page_io_req *req)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	struct mtd_info *mtd = nanddev_to_mtd(nand);
-+	struct mtk_ecc_stats stats;
-+	u8 *buf = eng->page_buf;
-+	int ret;
-+
-+	if (req->type == NAND_PAGE_WRITE) {
-+		if (req->mode != MTD_OPS_RAW) {
-+			mtk_ecc_disable(eng->ecc);
-+			mtk_ecc_fdm_shift(nand, eng->oob_buf,
-+					req->oobbuf.in);
-+			eng->bad_mark.bm_swap(nand,
-+					req->databuf.in, eng->oob_buf);
-+		}
-+		nand_ecc_restore_req(&eng->req_ctx, req);
-+
-+		return 0;
-+	}
-+
-+	if (req->mode == MTD_OPS_RAW) {
-+		memcpy(buf, req->databuf.in,
-+			   nand->memorg.pagesize);
-+		memcpy(buf + nand->memorg.pagesize,
-+			   req->oobbuf.in, nand->memorg.oobsize);
-+
-+		/* change MTK HW ECC data format to data/oob buf */
-+		mtk_ecc_data_format(nand, req->databuf.in,
-+				req->oobbuf.in, false);
-+		nand_ecc_restore_req(&eng->req_ctx, req);
-+
-+		return 0;
-+	}
-+
-+	ret = mtk_ecc_wait_done(eng->ecc, ECC_DECODE);
-+	if (ret)
-+		return -ETIMEDOUT;
-+
-+	if (eng->read_empty) {
-+		memset(req->databuf.in, 0xff, nand->memorg.pagesize);
-+		memset(req->oobbuf.in, 0xff, nand->memorg.oobsize);
-+
-+		ret = 0;
-+	} else {
-+		mtk_ecc_get_stats(eng->ecc, &stats, eng->nsteps);
-+		mtd->ecc_stats.corrected += stats.corrected;
-+		mtd->ecc_stats.failed += stats.failed;
-+
-+		/*
-+		 * Return -EBADMSG when exit uncorrect ecc error.
-+		 * Otherwise, return the bitflips.
-+		 */
-+		if (stats.failed)
-+			ret = -EBADMSG;
-+		else
-+			ret = stats.bitflips;
-+
-+		mtk_ecc_fdm_shift(nand, eng->oob_buf, req->oobbuf.in);
-+		eng->bad_mark.bm_swap(nand,
-+					req->databuf.in, eng->oob_buf);
-+		mtd_ooblayout_get_databytes(mtd, req->oobbuf.in,
-+			eng->oob_buf,
-+			0, mtd->oobavail);
-+	}
-+
-+	mtk_ecc_disable(eng->ecc);
-+	nand_ecc_restore_req(&eng->req_ctx, req);
-+
-+	return ret;
-+}
-+
-+int mtk_ecc_init_ctx_pipelined(struct nand_device *nand)
-+{
-+	struct nand_ecc_props *conf = &nand->ecc.ctx.conf;
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+	struct mtd_info *mtd = nanddev_to_mtd(nand);
-+	struct device *dev;
-+	int free, ret;
-+
-+	/*
-+	 * In the case of a pipelined engine, the device registering the ECC
-+	 * engine is not the actual ECC engine device but the host controller.
-+	 */
-+	dev = mtk_ecc_get_engine_dev(nand->ecc.engine->dev);
-+	if (!dev) {
-+		ret = -EINVAL;
-+		goto free_engine;
-+	}
-+
-+	eng->ecc = dev_get_drvdata(dev);
-+
-+	/* calculate oob free bytes except ecc parity data */
-+	free = (conf->strength * mtk_ecc_get_parity_bits(eng->ecc)
-+		+ 7) >> 3;
-+	free = eng->oob_per_sector - free;
-+
-+	/*
-+	 * enhance ecc strength if oob left is bigger than max FDM size
-+	 * or reduce ecc strength if oob size is not enough for ecc
-+	 * parity data.
-+	 */
-+	if (free > ECC_FDM_MAX_SIZE)
-+		eng->oob_ecc = eng->oob_per_sector - ECC_FDM_MAX_SIZE;
-+	else if (free < 0)
-+		eng->oob_ecc = eng->oob_per_sector - ECC_FDM_MIN_SIZE;
-+
-+	/* calculate and adjust ecc strenth based on oob ecc bytes */
-+	conf->strength = (eng->oob_ecc << 3) /
-+				 mtk_ecc_get_parity_bits(eng->ecc);
-+	mtk_ecc_adjust_strength(eng->ecc, &conf->strength);
-+
-+	eng->oob_ecc = DIV_ROUND_UP(conf->strength *
-+				 mtk_ecc_get_parity_bits(eng->ecc), 8);
-+
-+	eng->fdm_size = eng->oob_per_sector - eng->oob_ecc;
-+	if (eng->fdm_size > ECC_FDM_MAX_SIZE)
-+		eng->fdm_size = ECC_FDM_MAX_SIZE;
-+
-+	eng->fdm_ecc_size = ECC_FDM_MIN_SIZE;
-+
-+	eng->oob_ecc = eng->oob_per_sector - eng->fdm_size;
-+
-+	if (!mtd->ooblayout)
-+		mtd_set_ooblayout(mtd, mtk_ecc_get_ooblayout());
-+
-+	ret = nand_ecc_init_req_tweaking(&eng->req_ctx, nand);
-+	if (ret)
-+		goto free_engine;
-+
-+	eng->oob_buf = kzalloc(mtd->oobsize, GFP_KERNEL);
-+	eng->page_buf =
-+		kzalloc(mtd->writesize + mtd->oobsize, GFP_KERNEL);
-+	if (!eng->oob_buf || !eng->page_buf) {
-+		ret = -ENOMEM;
-+		goto free_bufs;
-+	}
-+
-+	mtk_ecc_set_bad_mark_ctl(&eng->bad_mark, mtd);
-+	eng->ecc_cfg.strength = conf->strength;
-+	eng->ecc_cfg.len = conf->step_size + eng->fdm_ecc_size;
-+
-+	return 0;
-+
-+free_bufs:
-+	nand_ecc_cleanup_req_tweaking(&eng->req_ctx);
-+	kfree(eng->oob_buf);
-+	kfree(eng->page_buf);
-+free_engine:
-+	kfree(eng);
-+
-+	return ret;
-+}
-+
-+void mtk_ecc_cleanup_ctx_pipelined(struct nand_device *nand)
-+{
-+	struct mtk_ecc_engine *eng = nand->ecc.ctx.priv;
-+
-+	if (eng) {
-+		nand_ecc_cleanup_req_tweaking(&eng->req_ctx);
-+		kfree(eng->ecc);
-+		kfree(eng->oob_buf);
-+		kfree(eng->page_buf);
-+		kfree(eng);
-+	}
-+}
-+
-+/*
-+ * The on-host mtk HW ECC engine work at pipelined situation,
-+ * will be registered by the drivers that wrap it.
-+ */
-+static struct nand_ecc_engine_ops mtk_ecc_engine_pipelined_ops = {
-+	.init_ctx = mtk_ecc_init_ctx_pipelined,
-+	.cleanup_ctx = mtk_ecc_cleanup_ctx_pipelined,
-+	.prepare_io_req = mtk_ecc_prepare_io_req_pipelined,
-+	.finish_io_req = mtk_ecc_finish_io_req_pipelined,
-+};
-+
-+struct nand_ecc_engine_ops *mtk_ecc_get_pipelined_ops(void)
-+{
-+	return &mtk_ecc_engine_pipelined_ops;
-+}
-+EXPORT_SYMBOL(mtk_ecc_get_pipelined_ops);
-+
- static const struct mtk_ecc_caps mtk_ecc_caps_mt2701 = {
- 	.err_mask = 0x3f,
- 	.ecc_strength = ecc_strength_mt2701,
-@@ -477,6 +952,16 @@ static const struct mtk_ecc_caps mtk_ecc_caps_mt7622 = {
- 	.pg_irq_sel = 0,
- };
- 
-+static const struct mtk_ecc_caps mtk_ecc_caps_mt7986 = {
-+	.err_mask = 0x1f,
-+	.ecc_strength = ecc_strength_mt7986,
-+	.ecc_regs = mt7986_ecc_regs,
-+	.num_ecc_strength = 11,
-+	.ecc_mode_shift = 5,
-+	.parity_bits = 14,
-+	.pg_irq_sel = 1,
-+};
-+
- static const struct of_device_id mtk_ecc_dt_match[] = {
- 	{
- 		.compatible = "mediatek,mt2701-ecc",
-@@ -487,6 +972,9 @@ static const struct of_device_id mtk_ecc_dt_match[] = {
- 	}, {
- 		.compatible = "mediatek,mt7622-ecc",
- 		.data = &mtk_ecc_caps_mt7622,
-+	}, {
-+		.compatible = "mediatek,mt7986-ecc",
-+		.data = &mtk_ecc_caps_mt7986,
- 	},
- 	{},
- };
-diff --git a/include/linux/mtd/mtk_ecc.h b/include/linux/mtd/mtk_ecc.h
-index 0e48c36e6ca0..a286183d16c4 100644
---- a/include/linux/mtd/mtk_ecc.h
-+++ b/include/linux/mtd/mtk_ecc.h
-@@ -33,6 +33,31 @@ struct mtk_ecc_config {
- 	u32 len;
- };
- 
-+struct mtk_ecc_bad_mark_ctl {
-+	void (*bm_swap)(struct nand_device *, u8 *databuf, u8* oobbuf);
-+	u32 sec;
-+	u32 pos;
-+};
-+
-+struct mtk_ecc_engine {
-+	struct nand_ecc_req_tweak_ctx req_ctx;
-+
-+	u32 oob_per_sector;
-+	u32 oob_ecc;
-+	u32 fdm_size;
-+	u32 fdm_ecc_size;
-+
-+	bool read_empty;
-+	u32 nsteps;
-+
-+	u8 *page_buf;
-+	u8 *oob_buf;
-+
-+	struct mtk_ecc *ecc;
-+	struct mtk_ecc_config ecc_cfg;
-+	struct mtk_ecc_bad_mark_ctl bad_mark;
-+};
-+
- int mtk_ecc_encode(struct mtk_ecc *, struct mtk_ecc_config *, u8 *, u32);
- void mtk_ecc_get_stats(struct mtk_ecc *, struct mtk_ecc_stats *, int);
- int mtk_ecc_wait_done(struct mtk_ecc *, enum mtk_ecc_operation);
-@@ -44,4 +69,17 @@ unsigned int mtk_ecc_get_parity_bits(struct mtk_ecc *ecc);
- struct mtk_ecc *of_mtk_ecc_get(struct device_node *);
- void mtk_ecc_release(struct mtk_ecc *);
- 
-+#if IS_ENABLED(CONFIG_MTD_NAND_ECC_MTK)
-+
-+struct nand_ecc_engine_ops *mtk_ecc_get_pipelined_ops(void);
-+
-+#else /* !CONFIG_MTD_NAND_ECC_MTK */
-+
-+struct nand_ecc_engine_ops *mtk_ecc_get_pipelined_ops(void)
-+{
-+	return NULL;
-+}
-+
-+#endif /* CONFIG_MTD_NAND_ECC_MTK */
-+
- #endif
-diff --git a/include/linux/mtd/nand.h b/include/linux/mtd/nand.h
-index 32fc7edf65b3..5ffd3e359515 100644
---- a/include/linux/mtd/nand.h
-+++ b/include/linux/mtd/nand.h
-@@ -265,10 +265,16 @@ struct nand_ecc_engine_ops {
- 
- /**
-  * struct nand_ecc_engine - ECC engine abstraction for NAND devices
-+ * @dev: Host device
-+ * @node: Private field for registration time
-  * @ops: ECC engine operations
-+ * @priv: Private data
-  */
- struct nand_ecc_engine {
-+	struct device *dev;
-+	struct list_head node;
- 	struct nand_ecc_engine_ops *ops;
-+	void *priv;
- };
- 
- void of_get_nand_ecc_user_config(struct nand_device *nand);
-@@ -279,8 +285,13 @@ int nand_ecc_prepare_io_req(struct nand_device *nand,
- int nand_ecc_finish_io_req(struct nand_device *nand,
- 			   struct nand_page_io_req *req);
- bool nand_ecc_is_strong_enough(struct nand_device *nand);
-+int nand_ecc_register_on_host_hw_engine(struct nand_ecc_engine *engine);
-+int nand_ecc_unregister_on_host_hw_engine(struct nand_ecc_engine *engine);
- struct nand_ecc_engine *nand_ecc_get_sw_engine(struct nand_device *nand);
- struct nand_ecc_engine *nand_ecc_get_on_die_hw_engine(struct nand_device *nand);
-+struct nand_ecc_engine *nand_ecc_get_on_host_hw_engine(struct nand_device *nand);
-+struct nand_ecc_engine *nand_ecc_match_on_host_hw_engine(struct device *dev);
-+void nand_ecc_put_on_host_hw_engine(struct nand_device *nand);
- 
- #if IS_ENABLED(CONFIG_MTD_NAND_ECC_SW_HAMMING)
- struct nand_ecc_engine *nand_ecc_sw_hamming_get_engine(void);
+> +# define DRIVING_PARAM_3_DEFAULT		(XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT | \
+> +						 XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT | \
+> +						 XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT | \
+> +						 XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT)
+> +
+> +#define MTK_DP_LANE0_DRIVING_PARAM_4		(PHY_OFFSET + 0x13C)
+> +#define MTK_DP_LANE1_DRIVING_PARAM_4		(PHY_OFFSET + 0x23C)
+> +#define MTK_DP_LANE2_DRIVING_PARAM_4		(PHY_OFFSET + 0x33C)
+> +#define MTK_DP_LANE3_DRIVING_PARAM_4		(PHY_OFFSET + 0x43C)
+> +# define XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT	0x18
+> +# define XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT	(0x1e << 8)
+> +# define XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT	(0x24 << 16)
+> +# define XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT	(0x20 << 24)
+> +# define DRIVING_PARAM_4_DEFAULT		(XTP_LN_TX_LCTXC0_SW1_PRE0_DEFAULT | \
+> +						 XTP_LN_TX_LCTXC0_SW1_PRE1_DEFAULT | \
+> +						 XTP_LN_TX_LCTXC0_SW1_PRE2_DEFAULT | \
+> +						 XTP_LN_TX_LCTXC0_SW2_PRE0_DEFAULT)
+> +
+> +#define MTK_DP_LANE0_DRIVING_PARAM_5		(PHY_OFFSET + 0x140)
+> +#define MTK_DP_LANE1_DRIVING_PARAM_5		(PHY_OFFSET + 0x240)
+> +#define MTK_DP_LANE2_DRIVING_PARAM_5		(PHY_OFFSET + 0x340)
+> +#define MTK_DP_LANE3_DRIVING_PARAM_5		(PHY_OFFSET + 0x440)
+> +# define XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT	0x28
+> +# define XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT	(0x30 << 8)
+> +# define DRIVING_PARAM_5_DEFAULT		(XTP_LN_TX_LCTXC0_SW2_PRE1_DEFAULT | \
+> +						 XTP_LN_TX_LCTXC0_SW3_PRE0_DEFAULT)
+> +
+> +#define MTK_DP_LANE0_DRIVING_PARAM_6		(PHY_OFFSET + 0x144)
+> +#define MTK_DP_LANE1_DRIVING_PARAM_6		(PHY_OFFSET + 0x244)
+> +#define MTK_DP_LANE2_DRIVING_PARAM_6		(PHY_OFFSET + 0x344)
+> +#define MTK_DP_LANE3_DRIVING_PARAM_6		(PHY_OFFSET + 0x444)
+> +# define XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT	0x00
+> +# define XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT	(0x04 << 8)
+> +# define XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT	(0x08 << 16)
+> +# define XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT	(0x10 << 24)
+> +# define DRIVING_PARAM_6_DEFAULT		(XTP_LN_TX_LCTXCP1_SW0_PRE0_DEFAULT | \
+> +						 XTP_LN_TX_LCTXCP1_SW0_PRE1_DEFAULT | \
+> +						 XTP_LN_TX_LCTXCP1_SW0_PRE2_DEFAULT | \
+> +						 XTP_LN_TX_LCTXCP1_SW0_PRE3_DEFAULT)
+> +
+> +#define MTK_DP_LANE0_DRIVING_PARAM_7		(PHY_OFFSET + 0x148)
+> +#define MTK_DP_LANE1_DRIVING_PARAM_7		(PHY_OFFSET + 0x248)
+> +#define MTK_DP_LANE2_DRIVING_PARAM_7		(PHY_OFFSET + 0x348)
+> +#define MTK_DP_LANE3_DRIVING_PARAM_7		(PHY_OFFSET + 0x448)
+> +# define XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT	0x00
+> +# define XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT	(0x06 << 8)
+> +# define XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT	(0x0c << 16)
+> +# define XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT	(0x00 << 24)
+> +# define DRIVING_PARAM_7_DEFAULT		(XTP_LN_TX_LCTXCP1_SW1_PRE0_DEFAULT | \
+> +						 XTP_LN_TX_LCTXCP1_SW1_PRE1_DEFAULT | \
+> +						 XTP_LN_TX_LCTXCP1_SW1_PRE2_DEFAULT | \
+> +						 XTP_LN_TX_LCTXCP1_SW2_PRE0_DEFAULT)
+> +
+> +#define MTK_DP_LANE0_DRIVING_PARAM_8		(PHY_OFFSET + 0x14C)
+> +#define MTK_DP_LANE1_DRIVING_PARAM_8		(PHY_OFFSET + 0x24C)
+> +#define MTK_DP_LANE2_DRIVING_PARAM_8		(PHY_OFFSET + 0x34C)
+> +#define MTK_DP_LANE3_DRIVING_PARAM_8		(PHY_OFFSET + 0x44C)
+> +# define XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT	0x08
+> +# define XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT	(0x00 << 8)
+> +# define DRIVING_PARAM_8_DEFAULT		(XTP_LN_TX_LCTXCP1_SW2_PRE1_DEFAULT | \
+> +						 XTP_LN_TX_LCTXCP1_SW3_PRE0_DEFAULT)
+> +
+> +struct mtk_dp_phy {
+> +	struct regmap *regs;
+> +};
+> +
+> +static int mtk_dp_phy_init(struct phy *phy)
+> +{
+> +	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> +	u32 driving_params[] = {
+> +		DRIVING_PARAM_3_DEFAULT,
+> +		DRIVING_PARAM_4_DEFAULT,
+> +		DRIVING_PARAM_5_DEFAULT,
+> +		DRIVING_PARAM_6_DEFAULT,
+> +		DRIVING_PARAM_7_DEFAULT,
+> +		DRIVING_PARAM_8_DEFAULT
+> +	};
+> +
+> +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE0_DRIVING_PARAM_3,
+> +			  driving_params, ARRAY_SIZE(driving_params));
+> +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE1_DRIVING_PARAM_3,
+> +			  driving_params, ARRAY_SIZE(driving_params));
+> +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE2_DRIVING_PARAM_3,
+> +			  driving_params, ARRAY_SIZE(driving_params));
+> +	regmap_bulk_write(dp_phy->regs, MTK_DP_LANE3_DRIVING_PARAM_3,
+> +			  driving_params, ARRAY_SIZE(driving_params));
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+> +{
+> +	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> +	u32 val;
+> +
+> +	if (opts->dp.set_rate) {
+> +		switch (opts->dp.link_rate) {
+> +		default:
+> +			dev_err(&phy->dev,
+> +				"Implementation error, unknown linkrate %x\n",
+> +				opts->dp.link_rate);
+> +			return -EINVAL;
+> +		case 1620:
+> +			val = BIT_RATE_RBR;
+> +			break;
+> +		case 2700:
+> +			val = BIT_RATE_HBR;
+> +			break;
+> +		case 5400:
+> +			val = BIT_RATE_HBR2;
+> +			break;
+> +		case 8100:
+> +			val = BIT_RATE_HBR3;
+> +			break;
+> +		}
+> +		regmap_write(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE, val);
+> +	}
+> +
+> +	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE,
+> +			   TPLL_SSC_EN, opts->dp.ssc ? TPLL_SSC_EN : 0);
+> +
+> +	return 0;
+> +}
+> +
+> +static int mtk_dp_phy_reset(struct phy *phy)
+> +{
+> +	struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> +
+> +	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
+> +			   DP_GLB_SW_RST_PHYD, 0);
+> +	usleep_range(50, 200);
+> +	regmap_update_bits(dp_phy->regs, MTK_DP_PHY_DIG_SW_RST,
+> +			   DP_GLB_SW_RST_PHYD, 1);
+> +
+> +	return 0;
+> +}
+> +
+> +static const struct phy_ops mtk_dp_phy_dev_ops = {
+> +	.init = mtk_dp_phy_init,
+> +	.configure = mtk_dp_phy_configure,
+> +	.reset = mtk_dp_phy_reset,
+> +	.owner = THIS_MODULE,
+> +};
+> +
+> +static int mtk_dp_phy_probe(struct platform_device *pdev)
+> +{
+> +	struct device *dev = &pdev->dev;
+> +	struct mtk_dp_phy *dp_phy;
+> +	struct phy *phy;
+> +
+> +	dp_phy = devm_kzalloc(dev, sizeof(*dp_phy), GFP_KERNEL);
+> +	if (!dp_phy)
+> +		return -ENOMEM;
+> +
+> +	dp_phy->regs = *(struct regmap **)dev->platform_data;
+> +	if (!dp_phy->regs) {
+> +		dev_err(dev, "No data passed, requires struct regmap**\n");
+> +		return -EINVAL;
+> +	}
+
+is there a reason to do it this way? Why not set the IORESOURCE_MEM for
+this device and let the driver map here?
+
+NO clocks?
+
+> +
+> +	phy = devm_phy_create(dev, NULL, &mtk_dp_phy_dev_ops);
+> +	if (IS_ERR(phy)) {
+> +		dev_err(dev, "Failed to create DP PHY: %ld\n", PTR_ERR(phy));
+> +		return PTR_ERR(phy);
+> +	}
+> +	phy_set_drvdata(phy, dp_phy);
+> +
+> +	// Set device data to the phy so that mtk-dp can get it easily
+
+pls change comment style
+
+also why should mtk-dp do it this way, there is very nice API phy_get()
+to do that, pls use that..
+
+
+> +	dev_set_drvdata(dev, phy);
+> +
+> +	return 0;
+> +}
+> +
+> +struct platform_driver mtk_dp_phy_driver = {
+
+who creates this platform device?
+
+> +	.probe = mtk_dp_phy_probe,
+> +	.driver = {
+> +		.name = "mediatek-dp-phy",
+> +	},
+> +};
+> +module_platform_driver(mtk_dp_phy_driver);
+> +
+> +MODULE_AUTHOR("Markus Schneider-Pargmann <msp@baylibre.com>");
+> +MODULE_DESCRIPTION("MediaTek DP PHY Driver");
+> +MODULE_LICENSE("GPL v2");
+> -- 
+> 2.33.0
+
 -- 
-2.25.1
-
+~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
