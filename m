@@ -2,41 +2,41 @@ Return-Path: <SRS0=WF8g=PK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 26215C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 32749C433EF
 	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 15:04:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EE90260231
+	by mail.kernel.org (Postfix) with ESMTPS id F27196112F
 	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 15:04:48 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EE90260231
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F27196112F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=notMz9tjXDF/GgOH7lf89/QU77yJgLv671r3P7wMskw=; b=ZB923vrJ6BAQw8
-	0TTTRtGfW2uxPbFt8Qu+tde9X76ktauxBXda//MsY+eOo8mjRZK7Vav+cWi0yFNR8D4oMfb3v5qju
-	RR6brhfAUAk2LU188kUPjQ1G2medfG2EvCcfvw7aTPQkpKMGHTkr1PBOGnU/Cf/QBSu+sfp96ac8J
-	R57rU14MfwC69WIGrYRpiTrqhtsG3zmFsU52K2hx+KggWE6DlU91e99vlPJtfPg6SG/n2snEgVfTL
-	PRhG/0kVCq00AY1y8bk+7Naaos0a07hs2oVnV7uDEmKvi4YpGbPWcx2OwuS/XgjzBPFBVuikroa2a
-	ClNO5kHCTHhNem0oerrQ==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Ih690oAY/t7QZVwjqFW7lS4n+wUQr0RTD8tSp/aFI9s=; b=GTdWJQ9VpvgMIN
+	Zc6ZyxtsDD7HuFPl7a3gV5YHrnXzugZsq0/WiiFgd0aytfj++/CuvxgyfwQnr9AsoWDk/t5Vw+jy6
+	08EVWBk61Rs2bOwFuOPXXN4oHKaQGTR9ftjvnXPtz6Gp/bS15hrQaWCK0t9ZX9bVuYR82MZ+wZeb0
+	C94kDOp4ACA35lde11MA9xzPSnsFEaAoVgBvMff5+ejUDDSdGOvgpo35+vHlwZp2Q2ENHJFaryYjj
+	/3Xp0REPT2xslFOVmH3MLYCdWaMzP21ptwwkV8USYL+2RUGvpxBhFuEjmfgtSWXQuYH36CkS6x/tr
+	9p4a5Sig5SszFtdkeTSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdw5y-00BLJk-VH; Fri, 22 Oct 2021 15:04:34 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mdw5x-00BLJO-VI; Fri, 22 Oct 2021 15:04:33 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdw5k-00BLCE-Ns
- for linux-mediatek@lists.infradead.org; Fri, 22 Oct 2021 15:04:23 +0000
+ id 1mdw5k-00BLC8-4F
+ for linux-mediatek@lists.infradead.org; Fri, 22 Oct 2021 15:04:21 +0000
 Received: from guri.fritz.box (unknown
  [IPv6:2a02:810a:880:f54:50fa:5c7d:20f4:e8d3])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 51CDB1F412A8;
- Fri, 22 Oct 2021 16:04:18 +0100 (BST)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 7F37C1F4120F;
+ Fri, 22 Oct 2021 16:04:17 +0100 (BST)
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, kernel@collabora.com,
@@ -46,15 +46,14 @@ Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, kernel@collabora.com,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  maoguang.meng@mediatek.com, matthias.bgg@gmail.com, mchehab@kernel.org,
  minghsiu.tsai@mediatek.com, tfiga@chromium.org, tiffany.lin@mediatek.com
-Subject: [PATCH 1/3] media: mtk-vcodec: enc: add vp8 profile ctrl
-Date: Fri, 22 Oct 2021 17:04:08 +0200
-Message-Id: <20211022150410.29335-2-dafna.hirschfeld@collabora.com>
+Subject: [PATCH 0/3] media: mtk-vcodec: few fixes
+Date: Fri, 22 Oct 2021 17:04:07 +0200
+Message-Id: <20211022150410.29335-1-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20211022150410.29335-1-dafna.hirschfeld@collabora.com>
-References: <20211022150410.29335-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211022_080420_934562_2B1E7AB9 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20211022_080420_344130_C304FB9B 
+X-CRM114-Status: UNSURE (   7.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,44 +71,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In order for the encoder to work with gstreamer
-it needs to have the V4L2_CID_MPEG_VIDEO_VP8_PROFILE
-ctrl. This patch adds that ctrl with only profile 0
-supported.
+3 fixes to mtk-vcodec
 
-Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+1. we found out that the vp8 encoder
+should support the vp8 profile ctrl for the gstreamer to work
+2. some bug fix related the streaming start/stop
+3. some cleanup
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-index 8998244ea671..87a5114bf680 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-@@ -103,6 +103,13 @@ static int vidioc_venc_s_ctrl(struct v4l2_ctrl *ctrl)
- 		p->gop_size = ctrl->val;
- 		ctx->param_change |= MTK_ENCODE_PARAM_GOP_SIZE;
- 		break;
-+	case V4L2_CID_MPEG_VIDEO_VP8_PROFILE:
-+		/*
-+		 * FIXME - what vp8 profiles are actually supported?
-+		 * The ctrl is added (with only profile 0 supported) for now.
-+		 */
-+		mtk_v4l2_debug(2, "V4L2_CID_MPEG_VIDEO_VP8_PROFILE val = %d", ctrl->val);
-+		break;
- 	case V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME:
- 		mtk_v4l2_debug(2, "V4L2_CID_MPEG_VIDEO_FORCE_KEY_FRAME");
- 		p->force_intra = 1;
-@@ -1394,6 +1401,9 @@ int mtk_vcodec_enc_ctrls_setup(struct mtk_vcodec_ctx *ctx)
- 	v4l2_ctrl_new_std_menu(handler, ops, V4L2_CID_MPEG_VIDEO_H264_LEVEL,
- 			       h264_max_level,
- 			       0, V4L2_MPEG_VIDEO_H264_LEVEL_4_0);
-+	v4l2_ctrl_new_std_menu(handler, ops, V4L2_CID_MPEG_VIDEO_VP8_PROFILE,
-+			       V4L2_MPEG_VIDEO_VP8_PROFILE_0, 0, V4L2_MPEG_VIDEO_VP8_PROFILE_0);
-+
- 
- 	if (handler->error) {
- 		mtk_v4l2_err("Init control handler fail %d",
+Dafna Hirschfeld (3):
+  media: mtk-vcodec: enc: add vp8 profile ctrl
+  media: mtk-vcodec: enc: use "stream_started" flag for
+    "stop/start_streaming"
+  meida: mtk-vcodec: remove unused func parameter
+
+ .../media/platform/mtk-vcodec/mtk_vcodec_drv.h |  4 ++++
+ .../media/platform/mtk-vcodec/mtk_vcodec_enc.c | 18 ++++++++++++++++++
+ .../platform/mtk-vcodec/venc/venc_h264_if.c    |  9 +++------
+ .../platform/mtk-vcodec/venc/venc_vp8_if.c     |  3 +--
+ .../media/platform/mtk-vcodec/venc_vpu_if.c    |  1 -
+ .../media/platform/mtk-vcodec/venc_vpu_if.h    |  1 -
+ 6 files changed, 26 insertions(+), 10 deletions(-)
+
 -- 
 2.17.1
 
