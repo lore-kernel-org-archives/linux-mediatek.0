@@ -2,70 +2,65 @@ Return-Path: <SRS0=WF8g=PK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C49E1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 12:20:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 11FCCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 14:04:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8C0D96112F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 12:20:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8C0D96112F
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C0AD960FDA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 14:04:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C0AD960FDA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=o6xn24pCDs1Kyo72ANpS3Mks7/bRP5nJUtFbHyF17yg=; b=G2x7aF5UDqlRlB
-	X34fEvLMKQKf8Syy5djXlxhiZmQ39Mgqymc8ow0uteAx6jGcfzOjlqvAmIYezcl4+o65TP/XU7F3+
-	lB0gpAvXssP8rT4KJncAhWWKOYPcIpDPuY+2DAWSmmC/tSy+5z96pDt7ZE9TKvpJ/8ZVvAmvvRDNb
-	ASZ5KBDEO/Mls9A6WcpAzpHEc3Y7Q32NhmuUDHpAkAM8PhA0m0CbmCZuLlTobKF3SbKLJqRGP6Anx
-	M0fMBwQUDKUVHkUV9YYZI+p/mTcj6R+QNv57OJ+vOTcGUb5M7p2YgpBB7JPXl8z9QawvgTCIx4Drs
-	Pp2iZ16AwRSOHB0fbCCQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XXkHo6Sg6AAhm7r8egJMGA0W/XVy2i6rZRrdWaqNofY=; b=3eY9SbvK2ZZxR32u5Z3jKgXIrL
+	YMtqZUfAWctx8mUDwO+lFxUz6DrUOgwIoHgn5myYZ76FVTFbY+aQKBOJgeCOaapV8HfCJC1tzWye/
+	mPMHwNs63j1kOQ2lTBA4oIwhtf5arPlroCs/PsC4E7LlhTjaHtiTZ1CeGb0FM/7NatdMeeaVwblRq
+	s1kpTJrXIH/GMXtii7CynOP9EzGtqjLQbvkeNwM6fzD8Rq28AXoCAPz/hunFGUlqD/8zzGY5G7wpr
+	WPq7bgY4mcHxxiMbxcDXebN5mPX3s74sotaW67AXvyLriVJKjpTmiybFokFIiRVmfXBUVlCo2Jw0X
+	814mzKEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdtWz-00Ap2W-Ak; Fri, 22 Oct 2021 12:20:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mdv99-00BBKX-5b; Fri, 22 Oct 2021 14:03:47 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdtWh-00AovS-UF; Fri, 22 Oct 2021 12:20:03 +0000
-X-UUID: 8bb5aba5dc5f4fdf9872b3f6860e1600-20211022
-X-UUID: 8bb5aba5dc5f4fdf9872b3f6860e1600-20211022
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2050903468; Fri, 22 Oct 2021 05:19:55 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 22 Oct 2021 05:19:53 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 22 Oct 2021 20:19:52 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 22 Oct 2021 20:19:51 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Fabien Parent <fparent@baylibre.com>, "Weiyi
- Lu" <weiyi.lu@mediatek.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Ikjoon Jang <ikjn@chromium.org>, Miles Chen <miles.chen@mediatek.com>, "Enric
- Balletbo i Serra" <enric.balletbo@collabora.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-clk@vger.kernel.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>, "Sam
- Shih" <sam.shih@mediatek.com>
-Subject: 
-Date: Fri, 22 Oct 2021 20:19:39 +0800
-Message-ID: <20211022121944.25687-1-sam.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mdv8n-00BBHC-EJ; Fri, 22 Oct 2021 14:03:27 +0000
+Received: from [IPv6:2a02:810a:880:f54:50fa:5c7d:20f4:e8d3] (unknown
+ [IPv6:2a02:810a:880:f54:50fa:5c7d:20f4:e8d3])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 3DBD31F454AB;
+ Fri, 22 Oct 2021 15:03:21 +0100 (BST)
+Subject: Re: [PATCH v3 13/33] iommu/mediatek: Remove the power status checking
+ in tlb flush all
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, chao.hao@mediatek.com,
+ yen-chang.chen@mediatek.com, Collabora Kernel ML <kernel@collabora.com>
+References: <20210923115840.17813-1-yong.wu@mediatek.com>
+ <20210923115840.17813-14-yong.wu@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <6cff0b97-b861-e02d-e76f-2510c962c452@collabora.com>
+Date: Fri, 22 Oct 2021 16:03:19 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20210923115840.17813-14-yong.wu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211022_051959_990498_EF30FAC0 
-X-CRM114-Status: GOOD (  11.26  )
+X-CRM114-CacheID: sfid-20211022_070325_672526_BE31A2CE 
+X-CRM114-Status: GOOD (  31.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,56 +72,111 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-U3ViamVjdDogW1BBVENIIHY2IDAvNV0gTWVkaWF0ZWsgTVQ3OTg2IGJhc2ljIGNsb2NrIHN1cHBv
-cnQKClRoaXMgcGF0Y2ggc2VyaWVzIGFkZCBiYXNpYyBjbG9jayBzdXBwb3J0IGZvciBtZWRpYXRl
-ayBtdDc5ODYgU29DLgpJdCBpcyBiYXNlZCBvbiBwYXRjaCBzZXJpZXMgIkFkZCBiYXNpYyBTb0Mg
-c3VwcG9ydCBmb3IgbWVkaWF0ZWsgbXQ3OTg2IgpodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwv
-MjAyMTEwMTgxMTQwMDkuMTMzNTAtMS1zYW0uc2hpaEBtZWRpYXRlay5jb20vCmFuZCAiY2xrOiBt
-ZWRpYXRlazogQWRkIEFQSSBmb3IgY2xvY2sgcmVzb3VyY2UgcmVjeWNsZSIKaHR0cHM6Ly9sb3Jl
-Lmtlcm5lbC5vcmcvbGludXgtYXJtLWtlcm5lbC8yMDIxMDkxNDAyMTYzMy4yNjM3Ny01LWNodW4t
-amllLmNoZW5AbWVkaWF0ZWsuY29tLwoKLS0tCnY2OiBVc2VkIGxvd2VyY2FzZSBoZXggdmFsdWVz
-IGluIGNsb2NrIERUCnY1OiB1c2VkIGJ1aWx0aW5fcGxhdGZvcm1fZHJpdmVyIGluc3RlYWQgb2Yg
-Q0xLX09GX0RFQ0xBUkUKICAgIGZvbGxvdyByZWNlbnQgY2xrLW10ODE5NSBjbG9jayBwYXRjaCBz
-ZXJpZXM6CiAgICBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1hcm0ta2VybmVsLzIwMjEw
-OTE0MDIxNjMzLjI2Mzc3LTEtY2h1bi1qaWUuY2hlbkBtZWRpYXRlay5jb20vCgp2NDoKQWNjb3Jk
-aW5nIHRvIHRoZSBtYWludGFpbmVy4oCZcyBzdWdnZXN0aW9uLCB0aGlzIHBhdGNoIHNwbGl0cyB0
-aGUgcHJldmlvdXMKdGhyZWFkIGludG8gaW5kZXBlbmRlbnQgcGF0Y2ggc2VyaWVzLgpUaGlzIHBh
-dGNoIGluY2x1ZGUgY2xvY2sgZHJpdmVyIGFuZCBkZXZpY2UgdHJlZSB1cGRhdGUKCk9yaWdpbmFs
-IHRocmVhZDoKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjEwOTE0MDg1MTM3LjMxNzYx
-LTEtc2FtLnNoaWhAbWVkaWF0ZWsuY29tLwpodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1h
-cm0ta2VybmVsLzIwMjEwOTE0MDg1MTM3LjMxNzYxLTItc2FtLnNoaWhAbWVkaWF0ZWsuY29tLwot
-LS0KClNhbSBTaGloICg1KToKICBkdC1iaW5kaW5nczogY2xvY2s6IG1lZGlhdGVrOiBkb2N1bWVu
-dCBjbGsgYmluZGluZ3MgZm9yIG1lZGlhdGVrCiAgICBtdDc5ODYgU29DCiAgY2xrOiBtZWRpYXRl
-azogYWRkIG10Nzk4NiBjbG9jayBJRHMKICBjbGs6IG1lZGlhdGVrOiBhZGQgbXQ3OTg2IGNsb2Nr
-IHN1cHBvcnQKICBhcm02NDogZHRzOiBtZWRpYXRlazogYWRkIGNsb2NrIHN1cHBvcnQgZm9yIG10
-Nzk4NmEKICBhcm02NDogZHRzOiBtZWRpYXRlazogYWRkIGNsb2NrIHN1cHBvcnQgZm9yIG10Nzk4
-NmIKCiAuLi4vYXJtL21lZGlhdGVrL21lZGlhdGVrLGFwbWl4ZWRzeXMudHh0ICAgICAgfCAgIDEg
-KwogLi4uL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxldGhzeXMudHh0IHwgICAxICsK
-IC4uLi9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssaW5mcmFjZmcudHh0ICAgICAgICB8ICAgMSArCiAu
-Li4vYXJtL21lZGlhdGVrL21lZGlhdGVrLHNnbWlpc3lzLnR4dCAgICAgICAgfCAgIDIgKwogLi4u
-L2FybS9tZWRpYXRlay9tZWRpYXRlayx0b3Bja2dlbi50eHQgICAgICAgIHwgICAxICsKIGFyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ3OTg2YS5kdHNpICAgICB8ICA2OCArKystCiBhcmNo
-L2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210Nzk4NmIuZHRzaSAgICAgfCAgNjggKysrLQogZHJp
-dmVycy9jbGsvbWVkaWF0ZWsvS2NvbmZpZyAgICAgICAgICAgICAgICAgIHwgIDE3ICsKIGRyaXZl
-cnMvY2xrL21lZGlhdGVrL01ha2VmaWxlICAgICAgICAgICAgICAgICB8ICAgNCArCiBkcml2ZXJz
-L2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LWFwbWl4ZWQuYyAgICAgfCAxMDAgKysrKysKIGRyaXZl
-cnMvY2xrL21lZGlhdGVrL2Nsay1tdDc5ODYtZXRoLmMgICAgICAgICB8IDEzMiArKysrKysrCiBk
-cml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LWluZnJhY2ZnLmMgICAgfCAyMjQgKysrKysr
-KysrKysrCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LXRvcGNrZ2VuLmMgICAgfCAz
-NDIgKysrKysrKysrKysrKysrKysrCiBpbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL210Nzk4Ni1j
-bGsuaCAgICAgICAgfCAxNjkgKysrKysrKysrCiAxNCBmaWxlcyBjaGFuZ2VkLCAxMTIwIGluc2Vy
-dGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvY2xr
-L21lZGlhdGVrL2Nsay1tdDc5ODYtYXBtaXhlZC5jCiBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy9jbGsvbWVkaWF0ZWsvY2xrLW10Nzk4Ni1ldGguYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
-cnMvY2xrL21lZGlhdGVrL2Nsay1tdDc5ODYtaW5mcmFjZmcuYwogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGRyaXZlcnMvY2xrL21lZGlhdGVrL2Nsay1tdDc5ODYtdG9wY2tnZW4uYwogY3JlYXRlIG1vZGUg
-MTAwNjQ0IGluY2x1ZGUvZHQtYmluZGluZ3MvY2xvY2svbXQ3OTg2LWNsay5oCgotLQoyLjI5LjIK
-CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1t
-ZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpo
-dHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVr
-Cg==
+Hi
+
+
+On 23.09.21 13:58, Yong Wu wrote:
+> To simplify the code, Remove the power status checking in the
+> tlb_flush_all, remove this:
+>     if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> 	    continue;
+> 
+> After this patch, the mtk_iommu_tlb_flush_all will be called from
+> a) isr
+> b) pm runtime resume callback
+> c) tlb flush range fail case
+> d) iommu_create_device_direct_mappings
+>     -> iommu_flush_iotlb_all
+> In first three cases, the power and clock always are enabled; d) is direct
+
+Regarding case "c) tlb flush range fail case", I found out that this often happens
+when the iommu is used while it is runtime suspended. For example the mtk-vcodec
+encoder driver calls "pm_runtime_resume_and_get" only when it starts streaming but
+buffers allocation is done in 'v4l2_reqbufs' before "pm_runtime_resume_and_get" is called
+and then I see the warning "Partial TLB flush timed out, falling back to full flush"
+I am not sure how to fix that issue, but it seems that case 'c)' might indicate that
+power and clock are actually not enabled.
+
+> mapping, the tlb flush is unnecessay since we already have tlb_flush_all
+> in the pm_runtime_resume callback. When the iommu's power status is
+> changed to active, the tlb always is clean.
+> 
+> In addition, there still are 2 reasons that don't add PM status checking
+> in the tlb flush all:
+> a) Write tlb flush all register also is ok even though the HW has no
+> power and clocks. Write ignore.
+> b) pm_runtime_get_if_in_use(m4udev) is 0 when the tlb_flush_all
+> is called frm pm_runtime_resume cb. From this point, we can not add
+> this code above in this tlb_flush_all.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 20 +++++++-------------
+>   1 file changed, 7 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index e9e94944ed91..4a33b6c6b1db 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -204,10 +204,14 @@ static struct mtk_iommu_domain *to_mtk_domain(struct iommu_domain *dom)
+>   	return container_of(dom, struct mtk_iommu_domain, domain);
+>   }
+>   
+> -static void mtk_iommu_tlb_do_flush_all(struct mtk_iommu_data *data)
+> +static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+>   {
+>   	unsigned long flags;
+>   
+> +	/*
+> +	 * No need get power status since the HW PM status nearly is active
+> +	 * when entering here.
+> +	 */
+>   	spin_lock_irqsave(&data->tlb_lock, flags);
+>   	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+>   		       data->base + data->plat_data->inv_sel_reg);
+> @@ -216,16 +220,6 @@ static void mtk_iommu_tlb_do_flush_all(struct mtk_iommu_data *data)
+>   	spin_unlock_irqrestore(&data->tlb_lock, flags);
+>   }
+>   
+> -static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+> -{
+> -	if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> -		return;
+> -
+> -	mtk_iommu_tlb_do_flush_all(data);
+> -
+> -	pm_runtime_put(data->dev);
+> -}
+> -
+>   static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+>   					   struct mtk_iommu_data *data)
+>   {
+> @@ -263,7 +257,7 @@ static void mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+>   		if (ret) {
+>   			dev_warn(data->dev,
+>   				 "Partial TLB flush timed out, falling back to full flush\n");
+> -			mtk_iommu_tlb_do_flush_all(data);
+> +			mtk_iommu_tlb_flush_all(data);
+>   		}
+>   
+>   		if (has_pm)
+> @@ -993,7 +987,7 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+>   	 *
+>   	 * Thus, Make sure the tlb always is clean after each PM resume.
+>   	 */
+> -	mtk_iommu_tlb_do_flush_all(data);
+> +	mtk_iommu_tlb_flush_all(data);
+>   
+>   	/*
+>   	 * Uppon first resume, only enable the clk and return, since the values of the
+> 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
