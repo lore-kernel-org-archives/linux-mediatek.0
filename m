@@ -2,59 +2,64 @@ Return-Path: <SRS0=WF8g=PK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0EAEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 06:45:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 65398C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 06:48:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B082E60FE7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 06:45:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B082E60FE7
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=denx.de
+	by mail.kernel.org (Postfix) with ESMTPS id 244E260EE3
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 06:48:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 244E260EE3
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7uTgwb3pFWEsrFXijjh2YLVUuACejxkQr4kcNnlMxJw=; b=i+MBLWQb1zYsdbF8lkL9penrm2
-	N1hCEXE2/JbsgEAuPp1lvHY7el6swSSlacsXG4pa0xEwL9PdjStxiEO4AtEOnsN5QLCLHKESOV3IA
-	7yGrsj2SVT0BCRwDzyEvmDwUrLVchM/zMmD1u5Z/qrs+2NkHZyddc2w1DTOoXR+BKfVP6gIDPC5GF
-	6mPxxoduCYVD7zp56zdlyYzdzwxqOP1TdWeHal4uNFC1Q6gUHUa4507psenKFp6i5TQNuDYHpKyay
-	jDriKE2gAH0+C973DGe4htsDTZ14aOZkenb0SzUe12cOFwnXTrFSNtpQpztDvT9LLae/StLQSKFWX
-	3b2eCaQg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DzHdXchuFBjXpmeKm72W9rd4l4lHM6PaWdK5nl4AEng=; b=qXCl/8nAk4rBJG
+	laoE8VZqte5mC6fZIdRP8Q/sB7exC/1hUawDW6Eat4rpGz2nYjsQc4obxTAl8tNA4S7Vs3f/YciXQ
+	4wx5q6Wbl8H+t3rMx0aNU1V77hmJh4HI0XdJs+EStgM3angGLU5DJZt3bdJ6sds2P5voyFnv9sAAl
+	p1H8B7OA0jGmKJO/wGQNY/NyKaXj0s9xHT0DrPjNHrW4Acm566xu4TNjgA/5kKpudDTQ6RPBj7his
+	2eaKksxOgrHQYoO7xMEVv4kOOMlltRCzdqq+3T2Vd3+2c9WQUERu2Pjp0OuYEahOzKT7UWSs2ovfW
+	Jsz6+5vAvVjCQLj7QUKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mdoIK-009pkf-I0; Fri, 22 Oct 2021 06:44:48 +0000
-Received: from mout-u-107.mailbox.org ([2001:67c:2050:1::465:107])
+	id 1mdoLT-009qDZ-18; Fri, 22 Oct 2021 06:48:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mdoI6-009pjN-Uq; Fri, 22 Oct 2021 06:44:36 +0000
-Received: from smtp102.mailbox.org (smtp102.mailbox.org [80.241.60.233])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (P-384) server-signature RSA-PSS (4096 bits) server-digest
- SHA256) (No client certificate requested)
- by mout-u-107.mailbox.org (Postfix) with ESMTPS id 4HbFFS5mZjzQkB9;
- Fri, 22 Oct 2021 08:44:28 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at heinlein-support.de
-Subject: Re: [PATCH] i2c: mt76xx: add I2C_FUNC_NOSTART and I2C_M_REV_DIR_ADDR
-To: "zhaojh329@gmail.com" <zhaojh329@gmail.com>
-Cc: "matthias.bgg" <matthias.bgg@gmail.com>,
- linux-i2c <linux-i2c@vger.kernel.org>,
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>
-References: <202110200007146639874@gmail.com>
-From: Stefan Roese <sr@denx.de>
-Message-ID: <12006f4c-137c-4d78-fbaa-40776c65f079@denx.de>
-Date: Fri, 22 Oct 2021 08:44:24 +0200
+ id 1mdoLO-009qAa-Nb; Fri, 22 Oct 2021 06:48:01 +0000
+X-UUID: 41dc4b1f4fef4cf1b69d2197f6544922-20211021
+X-UUID: 41dc4b1f4fef4cf1b69d2197f6544922-20211021
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1652010741; Thu, 21 Oct 2021 23:47:53 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 21 Oct 2021 23:47:52 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 22 Oct 2021 14:47:50 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 22 Oct 2021 14:47:50 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <agk@redhat.com>, <snitzer@redhat.com>, <dm-devel@redhat.com>
+CC: <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <tequila.yuang@mediatek.com>, <yj.chiang@mediatek.com>,
+ <mark-pk.tsai@mediatek.com>
+Subject: [PATCH] dm: add module parameter bdev_wait
+Date: Fri, 22 Oct 2021 14:47:47 +0800
+Message-ID: <20211022064748.30136-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <202110200007146639874@gmail.com>
-Content-Language: en-US
-X-Rspamd-Queue-Id: 688E1131C
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211021_234435_182401_35229986 
-X-CRM114-Status: GOOD (  20.25  )
+X-CRM114-CacheID: sfid-20211021_234758_799049_0FDA4144 
+X-CRM114-Status: GOOD (  12.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,48 +71,73 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gMTkuMTAuMjEgMTg6MDcsIHpoYW9qaDMyOUBnbWFpbC5jb20gd3JvdGU6Cj4gIMKgVGhpcyBw
-YXRjaCBhZGRzIEkyQ19GVU5DX05PU1RBUlQgYW5kIEkyQ19NX1JFVl9ESVJfQUREUiBzdXBwb3J0
-IGZvcgo+IE1lZGlhVGVrIE1UNzYyMS83NjI4Lzc2ODguIFRoaXMgaXMgdXNlZnVsIGZvciBzb21l
-IEkyQyBzbGF2ZSBjaGlwcywKPiBzdWNoIGFzICdkcml2ZXJzL2lucHV0L2pveXN0aWNrL2FzNTAx
-MS5jJy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBKaWFuaHVpIFpoYW8gPHpoYW9qaDMyOUBnbWFpbC5j
-b20+Cj4gLS0tCj4gICBkcml2ZXJzL2kyYy9idXNzZXMvaTJjLW10NzYyMS5jIHwgOSArKysrKysr
-Ky0KPiAgIDEgZmlsZSBjaGFuZ2VkLCA4IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAK
-PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDc2MjEuYyBiL2RyaXZlcnMv
-aTJjL2J1c3Nlcy9pMmMtbXQ3NjIxLmMKPiBpbmRleCA0NWZlNGE3ZmUwYzAuLjNkMjc2M2Q5YzA5
-MCAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2kyYy9idXNzZXMvaTJjLW10NzYyMS5jCj4gKysrIGIv
-ZHJpdmVycy9pMmMvYnVzc2VzL2kyYy1tdDc2MjEuYwo+IEBAIC0xNTAsNiArMTUwLDkgQEAgc3Rh
-dGljIGludCBtdGtfaTJjX21hc3Rlcl94ZmVyKHN0cnVjdCBpMmNfYWRhcHRlciAqYWRhcCwgc3Ry
-dWN0IGkyY19tc2cgKm1zZ3MsCj4gICAJZm9yIChpID0gMDsgaSA8IG51bTsgaSsrKSB7Cj4gICAJ
-CXBtc2cgPSAmbXNnc1tpXTsKPiAgIAo+ICsJCWlmIChwbXNnLT5mbGFncyAmIEkyQ19NX05PU1RB
-UlQpCj4gKwkJCWdvdG8gbm9zdGFydDsKPiArCj4gICAJCS8qIHdhaXQgaGFyZHdhcmUgaWRsZSAq
-Lwo+ICAgCQlyZXQgPSBtdGtfaTJjX3dhaXRfaWRsZShpMmMpOwo+ICAgCQlpZiAocmV0KQo+IEBA
-IC0xNzQsNiArMTc3LDggQEAgc3RhdGljIGludCBtdGtfaTJjX21hc3Rlcl94ZmVyKHN0cnVjdCBp
-MmNfYWRhcHRlciAqYWRhcCwgc3RydWN0IGkyY19tc2cgKm1zZ3MsCj4gICAJCX0gZWxzZSB7Cj4g
-ICAJCQkvKiA3IGJpdHMgYWRkcmVzcyAqLwo+ICAgCQkJYWRkciA9IGkyY184Yml0X2FkZHJfZnJv
-bV9tc2cocG1zZyk7Cj4gKwkJCWlmIChwbXNnLT5mbGFncyAmIEkyQ19NX1JFVl9ESVJfQUREUikK
-PiArCQkJCWFkZHIgXj0gMTsKPiAgIAkJCWlvd3JpdGUzMihhZGRyLCBpMmMtPmJhc2UgKyBSRUdf
-U00wRDBfUkVHKTsKPiAgIAkJCXJldCA9IG10a19pMmNfbWFzdGVyX2NtZChpMmMsIFNNMENUTDFf
-V1JJVEUsIDEpOwo+ICAgCQkJaWYgKHJldCkKPiBAQCAtMTg3LDYgKzE5Miw3IEBAIHN0YXRpYyBp
-bnQgbXRrX2kyY19tYXN0ZXJfeGZlcihzdHJ1Y3QgaTJjX2FkYXB0ZXIgKmFkYXAsIHN0cnVjdCBp
-MmNfbXNnICptc2dzLAo+ICAgCQkJCWdvdG8gZXJyX2FjazsKPiAgIAkJfQo+ICAgCj4gK25vc3Rh
-cnQ6Cj4gICAJCS8qIHRyYW5zZmVyIGRhdGEgKi8KPiAgIAkJZm9yIChsZW4gPSBwbXNnLT5sZW4s
-IGogPSAwOyBsZW4gPiAwOyBsZW4gLT0gOCwgaiArPSA4KSB7Cj4gICAJCQlwYWdlX2xlbiA9IChs
-ZW4gPj0gOCkgPyA4IDogbGVuOwo+IEBAIC0yNDIsNyArMjQ4LDggQEAgc3RhdGljIGludCBtdGtf
-aTJjX21hc3Rlcl94ZmVyKHN0cnVjdCBpMmNfYWRhcHRlciAqYWRhcCwgc3RydWN0IGkyY19tc2cg
-Km1zZ3MsCj4gICAKPiAgIHN0YXRpYyB1MzIgbXRrX2kyY19mdW5jKHN0cnVjdCBpMmNfYWRhcHRl
-ciAqYSkKPiAgIHsKPiAtCXJldHVybiBJMkNfRlVOQ19JMkMgfCBJMkNfRlVOQ19TTUJVU19FTVVM
-IHwgSTJDX0ZVTkNfUFJPVE9DT0xfTUFOR0xJTkc7Cj4gKwlyZXR1cm4gSTJDX0ZVTkNfSTJDIHwg
-STJDX0ZVTkNfU01CVVNfRU1VTCB8IEkyQ19GVU5DXzEwQklUX0FERFIKPiArCQl8IEkyQ19GVU5D
-X1BST1RPQ09MX01BTkdMSU5HIHwgSTJDX0ZVTkNfTk9TVEFSVDsKCk5pdDogSSBwcmVmZXIgdG8g
-aGF2ZSB0aGUgInwiIGF0IHRoZSBlbmQgb2YgdGhlIHVwcGVyIGxpbmUgaW5zdGVhZCBvZgphZGRp
-bmcgaXQgaW4gdGhlIDJuZCBsaW5lLgoKT3RoZXIgdGhhdCB0aGlzOgoKUmV2aWV3ZWQtYnk6IFN0
-ZWZhbiBSb2VzZSA8c3JAZGVueC5kZT4KClRoYW5rcywKU3RlZmFuCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
-c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+dm_early_create() fail if the target block device not found in
+the late init stage.
+The block device is created in mmc_rescan() which kernel do
+it async by queue it into system_freezable_wq.
+Add module param bdev_wait to support waiting the block device
+ready before dm_early_create() like prepare_namespace() does.
+
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+---
+ drivers/md/dm-init.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/drivers/md/dm-init.c b/drivers/md/dm-init.c
+index b0c45c6ebe0b..a3d24cafa4f4 100644
+--- a/drivers/md/dm-init.c
++++ b/drivers/md/dm-init.c
+@@ -8,11 +8,13 @@
+  */
+ 
+ #include <linux/ctype.h>
++#include <linux/delay.h>
+ #include <linux/device.h>
+ #include <linux/device-mapper.h>
+ #include <linux/init.h>
+ #include <linux/list.h>
+ #include <linux/moduleparam.h>
++#include <linux/mount.h>
+ 
+ #define DM_MSG_PREFIX "init"
+ #define DM_MAX_DEVICES 256
+@@ -20,6 +22,7 @@
+ #define DM_MAX_STR_SIZE 4096
+ 
+ static char *create;
++static char *bdev_wait;
+ 
+ /*
+  * Format: dm-mod.create=<name>,<uuid>,<minor>,<flags>,<table>[,<table>+][;<name>,<uuid>,<minor>,<flags>,<table>[,<table>+]+]
+@@ -286,6 +289,12 @@ static int __init dm_init_init(void)
+ 	DMINFO("waiting for all devices to be available before creating mapped devices");
+ 	wait_for_device_probe();
+ 
++	if (bdev_wait) {
++		DMINFO("Waiting for block device %s...", bdev_wait);
++		while (!name_to_dev_t(bdev_wait))
++			msleep(5);
++	}
++
+ 	list_for_each_entry(dev, &devices, list) {
+ 		if (dm_early_create(&dev->dmi, dev->table,
+ 				    dev->target_args_array))
+@@ -301,3 +310,5 @@ late_initcall(dm_init_init);
+ 
+ module_param(create, charp, 0);
+ MODULE_PARM_DESC(create, "Create a mapped device in early boot");
++module_param(bdev_wait, charp, 0);
++MODULE_PARM_DESC(bdev_wait, "Wait until the block device ready before dm_early_create");
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
