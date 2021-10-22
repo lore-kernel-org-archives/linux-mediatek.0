@@ -2,15 +2,15 @@ Return-Path: <SRS0=WF8g=PK=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A57F3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 19:47:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 44B33C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 23:19:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 580846054F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 19:47:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 580846054F
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
+	by mail.kernel.org (Postfix) with ESMTPS id 10CF961037
+	for <linux-mediatek@archiver.kernel.org>; Fri, 22 Oct 2021 23:19:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 10CF961037
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -18,64 +18,62 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cE4Y6cTZSVc5XDaqIuQ/NW1lUm3NQpcD9G9DAmWJx0Y=; b=stFPKtOJFRdhVb
-	uMfIrv4CCBO/oehm/r+1zivxJlRwK8DCAT+BLLxdo2nekx0lObvdM+JsrF9UjYbH8tdvOKKUAGSNb
-	g4D3YiaZHSG1R7l1aKv75Z+2tcjHiVcmvSAeMnKQz4miMKZZ/8rleE5RZ17D9EQ2ClapBZhgKPo6t
-	ak707GzZRQ3p6yfbIfEKN3jzjtSdMByDxcPD6JFlzhBlainCuBusrsAm5cHk+VuH1w4kOXxDdOqFu
-	KcPs9PKm5gfVBgYxvj4HmEYzkqqvjWnRVXW4JqyN6wNAVXjDryIIuTa9YJNlX9xc9lGp1TkSavebv
-	kP4f/QuI7/PtQiDk4Mkg==;
+	List-Owner; bh=iaab+9c4QLNpZkfrjya3Jvr8kbmRZXsBM8QezV++Dyg=; b=AjoNMzPCWZSQDe
+	3sezC3sjNNc+CgYe4elFVseK0E8J3AB2IDnxudfle5W4AkUCGQ3wIWdDLHL05eI6HMDrxDeEMLx9Z
+	IDNTHRGmZoufHQzuuL9n2/dIh6qXCYIU4pk+gnd8oljGi0xRHhTcYvpzpQLyKQzY1ElOCfcANQOT3
+	iUVeaACvtMwANf3S15ML6Uitq8059n7f3TdE97Psqo4aDd+1Fsf/eItFGVm99xhs72WOu6WsZgHyf
+	KHT4YBOL1myGIZnUABCio2z8dJ76RlCarQ9uvd3ViKEuMzjji15EW2esIg30eiLWZXTM7Y6aN5bKN
+	ZVcKCeKKb1cP4yPlUHXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1me0VC-00BtOH-CZ; Fri, 22 Oct 2021 19:46:54 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1me3ot-00C6wi-UD; Fri, 22 Oct 2021 23:19:27 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1me0V0-00BtN1-MM; Fri, 22 Oct 2021 19:46:44 +0000
-Received: from pendragon.ideasonboard.com (62-78-145-57.bb.dnainternet.fi
- [62.78.145.57])
- by perceval.ideasonboard.com (Postfix) with ESMTPSA id EA6F051D;
- Fri, 22 Oct 2021 21:46:39 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
- s=mail; t=1634932000;
- bh=j4SmjFaAL4x7t070GpSSrqeme55KAnzdx7CtCprEXHo=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=iO4jRng/aWGnVyPavrWeZGJNKNTo6umLK8LVpvMnq50qa5ruIMokFCaCKlvQrl3fL
- U5sdYJr/qOrPS93lqkC1t4zA31SOQSrixDH3APUcU+vgcphPMA6Q1+XXSQxdjuJcWN
- pNAIs2jNr6csVeJDSbc9Tsi/bDzBFH4Bx6YlBSto=
-Date: Fri, 22 Oct 2021 22:46:20 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Sam Ravnborg <sam@ravnborg.org>
-Cc: dri-devel@lists.freedesktop.org, Andrzej Hajda <andrzej.hajda@intel.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Jitao Shi <jitao.shi@mediatek.com>, Jonas Karlman <jonas@kwiboo.se>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Maxime Ripard <mripard@kernel.org>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Philip Chen <philipchen@chromium.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Robert Foss <robert.foss@linaro.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, Maxime Ripard <maxime@cerno.tech>,
- Andrzej Hajda <a.hajda@samsung.com>
-Subject: Re: [PATCH v2 1/7] drm/bridge: ps8640: Use atomic variants of
- drm_bridge_funcs
-Message-ID: <YXMVDOOJER1VF2JC@pendragon.ideasonboard.com>
-References: <20211020181901.2114645-1-sam@ravnborg.org>
- <20211020181901.2114645-2-sam@ravnborg.org>
- <YXLHlaLfPD4wI7R7@pendragon.ideasonboard.com>
- <YXLsbp+IwiRYfY2a@ravnborg.org> <YXLxVoA133IEes6p@ravnborg.org>
- <YXMGHYY40+aPuDm7@pendragon.ideasonboard.com>
- <YXMRuKkWyF9tGhG3@ravnborg.org>
+ id 1me3oh-00C6v8-Qd; Fri, 22 Oct 2021 23:19:17 +0000
+Received: by mail-ot1-f43.google.com with SMTP id
+ s18-20020a0568301e1200b0054e77a16651so6223831otr.7; 
+ Fri, 22 Oct 2021 16:19:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=/k2usNEoGshbBmL0WitRf7k2ydrC5pjOBlb8rwsXyiA=;
+ b=ZCiHPKwhLdzXzQ1WFwkBcPyD37liPFcbAkRhRNoB4Kf9V/Fee0iBS48WijvsXubq+f
+ 7PuAVe1C9D8i1sc+DZfHbNZ8bBgbtqnjNafA2BA3zbsP2D8/AwYRWe/MrmpnqkdvqjPN
+ b4APoSX8vmz5itCIJ6fCAmQQSZA8gGjsdf8HnA0hNoj7IINz0W3eYXnzqWCwBjAQyUwv
+ 8VvIwLNVIgPn/3/6c83ILs75h10lO/IfyQS4Tvs7/lzqxTpf01A8m6m96RapyDUd8lcO
+ G1wWL5dTNjeAwO4HSmHZlN0wsQq+V1rBgvqqP8SPo0Y3lAp7o7lyp+dnf0EhcNfF1vRB
+ J0Ww==
+X-Gm-Message-State: AOAM53340m59tJSsTbo9RIYVqpFFmkWpu5Fx5HyB181TVktfuMpDpRoW
+ KunzQaP9ydOuW1OhbZL6Zw==
+X-Google-Smtp-Source: ABdhPJyKjGOiqfYmevfk5jD8qcStva/zOLrdn+2YW5JzaLYiTmEg7mycrFTUR15qr1MLkOFVBbrjdg==
+X-Received: by 2002:a9d:2235:: with SMTP id o50mr2178779ota.245.1634944754830; 
+ Fri, 22 Oct 2021 16:19:14 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id 187sm2056997oig.19.2021.10.22.16.19.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 Oct 2021 16:19:14 -0700 (PDT)
+Received: (nullmailer pid 3356287 invoked by uid 1000);
+ Fri, 22 Oct 2021 23:19:13 -0000
+Date: Fri, 22 Oct 2021 18:19:13 -0500
+From: Rob Herring <robh@kernel.org>
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sam Ravnborg <sam@ravnborg.org>,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, Vinod Koul <vkoul@kernel.org>
+Subject: Re: [PATCH v5 2/7] dt-bindings: mediatek, dp: Add Display Port binding
+Message-ID: <YXNG8Qy5jAPdWbHY@robh.at.kernel.org>
+References: <20211021092707.3562523-1-msp@baylibre.com>
+ <20211021092707.3562523-3-msp@baylibre.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <YXMRuKkWyF9tGhG3@ravnborg.org>
+In-Reply-To: <20211021092707.3562523-3-msp@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211022_124642_909866_BB78CE01 
-X-CRM114-Status: GOOD (  31.90  )
+X-CRM114-CacheID: sfid-20211022_161915_891959_1ADA298D 
+X-CRM114-Status: GOOD (  12.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,68 +90,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sam,
-
-On Fri, Oct 22, 2021 at 09:32:08PM +0200, Sam Ravnborg wrote:
-> On Fri, Oct 22, 2021 at 09:42:37PM +0300, Laurent Pinchart wrote:
-> > On Fri, Oct 22, 2021 at 07:13:58PM +0200, Sam Ravnborg wrote:
-> > > Hi Laurent,
-> > > 
-> > > > From a quick look only cadence/cdns-mhdp8546 subclass
-> > > > drm_bridge_state and I wonder if the right thing to do would be to
-> > > > implement fallback to the helpers if the bridge driver do not set
-> > > > any of the .atomic_duplicate_state(), .atomic_destroy_state(), or .atomic_reset().
-> > > > 
-> > > > That would drop the following from a few bridges:
-> > > >         .atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
-> > > >         .atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
-> > > >         .atomic_reset = drm_atomic_helper_bridge_reset,
-> > > 
-> > > To answer myself here. This would create a dependency from the core to
-> > > the helpers which is not OK so idea dropped again.
-> > 
-> > I agree it would be nicer, but the dependency is likely a problem. That
-> > being said, we have multiple types of helpers. The first set is the
-> > modeset helpers, which were designed as one implementation of KMS
-> > operations, with an opt-in API for drivers. The core should not depend
-> > on those. There are however other helpers that are only default
-> > implementations of some operations, without any dependency on other
-> > components. The atomic state helpers fall in this category, they
-> > implement .atomic_* operations of the drm_*_funcs structures, not
-> > drm_*_helper_funcs. It could make sense to move them to the DRM core.
+On Thu, 21 Oct 2021 11:27:02 +0200, Markus Schneider-Pargmann wrote:
+> This controller is present on several mediatek hardware. Currently
+> mt8195 and mt8395 have this controller without a functional difference,
+> so only one compatible field is added.
 > 
-> For now I went with a simple macro:
+> The controller can have two forms, as a normal display port and as an
+> embedded display port.
 > 
-> +/**
-> + * DRM_BRIDGE_STATE_OPS - Default drm_bridge state funcs
-> + *
-> + * Bridge driver that do not subclass &drm_bridge_state can use the helpers
-> + * for reset, duplicate, and destroy. This macro provides a shortcut for
-> + * setting the helpers in the &drm_bridge_funcs structure.
-> + */
-> +#define DRM_BRIDGE_STATE_OPS \
-> +       .atomic_reset = drm_atomic_helper_bridge_reset,                         \
-> +       .atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,     \
-> +       .atomic_destroy_state = drm_atomic_helper_bridge_destroy_state
-> +
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
 > 
-> Thomas Z. is trying to make the core smaller so pulling in these helpers
-> would be counterproductive to that. So I took the simpler approach here
-> which we have already done in several places.
-
-Those helpers are in the same file as the other state helpers, which are
-used by all atomic drivers as far as I can tell, so I'm not sure we can
-really make anything smaller (except if we moved the bridge helpers to a
-separate file, but I don't think it would be worth it).
-
-> It will be part of v3 when I post it.
+> Notes:
+>     Changes v4 -> v5:
+>     - Removed "status" in the example
+>     - Remove edp_tx compatible.
+>     - Rename dp_tx compatible to dp-tx.
 > 
-> Drop a note if you (or any other reader) have better ideas.
+>  .../display/mediatek/mediatek,dp.yaml         | 87 +++++++++++++++++++
+>  1 file changed, 87 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> 
 
--- 
-Regards,
+Reviewed-by: Rob Herring <robh@kernel.org>
 
-Laurent Pinchart
+But can't be applied without the dependent header (or remove the 
+dependency).
 
 _______________________________________________
 Linux-mediatek mailing list
