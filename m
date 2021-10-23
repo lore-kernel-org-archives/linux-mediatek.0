@@ -2,14 +2,14 @@ Return-Path: <SRS0=X6pk=PL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5297CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D4E72C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:16:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1079360E97
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:16:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1079360E97
+	by mail.kernel.org (Postfix) with ESMTPS id 978A160E97
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:16:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 978A160E97
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aW/FGB+5zYXevSuCKlPPiD3ttQJq66T+fbtBYQU1xqI=; b=QqXDP4+Z1quO1G
-	Xjw+Exun1C7oJrs757sMdVlmEBS1QVqj3d0JiA6jEivbz8MUKob2DgBtj5mrY3dyDLSH9NfyT9xYS
-	wPRfhPut+3hLOaDGiYKGt7SCzHOo1ahtlUQa/jan+GcSbM82WI/LkHoRW4pXUZjKmki1rceWI9GsT
-	g5iQduhrwkahlxcpS0eihIOMOx3H9hgJ9Tv9KvEhANMJhSnG0kFFcKscsTOLtkAtkefYMVIFvs17R
-	6qLrpAQ7jG3M7QEX+gc1Xsogeg7QYKbErU9Tp7YBJmNtz/DysldkoxbJ/ZKLYH7KQIvLFOLq1aCuT
-	RRS/SJfs2WIKH8Rht+OA==;
+	List-Owner; bh=zGL1Ygh2kl/z8hFId8ZvrZBNWrrwmybN4VCvXnnoRS8=; b=voAu61S5i7/k28
+	u0Sl7ZOeaQ9p71f2AAIAwBpHUK8P3YJtVa4/MB5aHO5qD9JL4lvdcJ/nFqPkUhkYinkYsaEvdHlCJ
+	7Gb5PXmmnU3wT3MrpReZcAoa0yQGlN0vjblW/OQxpqCj3C4aCYa7V/wk/LWxdb/pQU9uMmjRg9krW
+	OrgkvltGiLONe9AJjBHi5+yQhxZo4UYiVrSDafwT7mu2Q4yG50LeYr0ttKVtdy10nOtN5nQBN/we3
+	dSeCjm7e+wTVC5rwkq4QxrD1Wh85XqQTlfgAvPXyQAjzT3W9hHlNPBYxIeTmIXxCFSoq6XFDKYBEu
+	jrgGJc6TjGMZzS8boQNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1meF0N-00Ccv6-63; Sat, 23 Oct 2021 11:16:03 +0000
+	id 1meF0f-00Cd75-Fw; Sat, 23 Oct 2021 11:16:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1meEzJ-00CcMB-UT; Sat, 23 Oct 2021 11:14:59 +0000
-X-UUID: c9455a2900ee4137b68ecb1ddae13b02-20211023
-X-UUID: c9455a2900ee4137b68ecb1ddae13b02-20211023
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1meEzL-00CcMB-Ky; Sat, 23 Oct 2021 11:15:01 +0000
+X-UUID: be6ad2ec2277401fadd41eedda5535b8-20211023
+X-UUID: be6ad2ec2277401fadd41eedda5535b8-20211023
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <flora.fu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 48087376; Sat, 23 Oct 2021 04:14:55 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 23 Oct 2021 04:14:54 -0700
+ with ESMTP id 79138695; Sat, 23 Oct 2021 04:14:57 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 23 Oct 2021 04:14:55 -0700
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Sat, 23 Oct 2021 19:14:52 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 23 Oct 2021 19:14:54 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 23 Oct 2021 19:14:52 +0800
+ Frontend Transport; Sat, 23 Oct 2021 19:14:54 +0800
 From: Flora Fu <flora.fu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown
  <broonie@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>
@@ -54,17 +54,17 @@ CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>, Flora Fu
  <flora.fu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, Pi-Cheng Chen
  <pi-cheng.chen@mediatek.com>
-Subject: [RFC 04/13] iommu/mediatek: Add APU iommu support
-Date: Sat, 23 Oct 2021 19:14:00 +0800
-Message-ID: <20211023111409.30463-5-flora.fu@mediatek.com>
+Subject: [RFC 06/13] soc: mediatek: apu: Add apu core driver
+Date: Sat, 23 Oct 2021 19:14:02 +0800
+Message-ID: <20211023111409.30463-7-flora.fu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211023111409.30463-1-flora.fu@mediatek.com>
 References: <20211023111409.30463-1-flora.fu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211023_041458_017531_7F43A48D 
-X-CRM114-Status: GOOD (  18.10  )
+X-CRM114-CacheID: sfid-20211023_041459_720435_C5D1E585 
+X-CRM114-Status: GOOD (  22.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,139 +81,172 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-APU IOMMU is a new iommu HW. it use a new pagetable.
-Add support for mt8192 apu iommu.
+Add apu core driver.
+The core driver will init the reset part of apu functions.
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 Signed-off-by: Flora Fu <flora.fu@mediatek.com>
 ---
- drivers/iommu/mtk_iommu.c                     | 57 +++++++++++++++++++
- include/dt-bindings/memory/mt8192-larb-port.h |  4 ++
- 2 files changed, 61 insertions(+)
+ drivers/soc/mediatek/Kconfig           | 18 +++++
+ drivers/soc/mediatek/apusys/Makefile   |  3 +
+ drivers/soc/mediatek/apusys/apu-core.c | 91 ++++++++++++++++++++++++++
+ drivers/soc/mediatek/apusys/apu-core.h | 11 ++++
+ 4 files changed, 123 insertions(+)
+ create mode 100644 drivers/soc/mediatek/apusys/apu-core.c
+ create mode 100644 drivers/soc/mediatek/apusys/apu-core.h
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 90be8ebbc98a..a5f8f19e053a 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -133,6 +133,7 @@
- /* 2 bits: iommu type */
- #define MTK_IOMMU_TYPE_MM		(0x0 << 13)
- #define MTK_IOMMU_TYPE_INFRA		(0x1 << 13)
-+#define MTK_IOMMU_TYPE_APU		(0x2 << 13)
- #define MTK_IOMMU_TYPE_MASK		(0x3 << 13)
- #define IFA_IOMMU_PCIe_SUPPORT		BIT(15)
+diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+index d9bac2710494..074b0cf24c44 100644
+--- a/drivers/soc/mediatek/Kconfig
++++ b/drivers/soc/mediatek/Kconfig
+@@ -24,6 +24,24 @@ config MTK_APU_PM
+ 	  APU power domain shall be enabled before accessing the
+ 	  internal sub modules.
  
-@@ -185,6 +186,7 @@ static int mtk_iommu_hw_init(const struct mtk_iommu_data *data, unsigned int ban
- #define MTK_IOMMU_4GB_MODE_REMAP_BASE	 0x140000000UL
- 
- static LIST_HEAD(m4ulist);	/* List all the M4U HWs */
-+static LIST_HEAD(apulist);	/* List the apu iommu HWs */
- 
- #define for_each_m4u(data, head)  list_for_each_entry(data, head, list)
- 
-@@ -209,6 +211,13 @@ static const struct mtk_iommu_iova_region mt8192_multi_dom[] = {
- 	#endif
- };
- 
-+static const struct mtk_iommu_iova_region mt8192_multi_dom_apu[] = {
-+	{ .iova_base = 0x0,		.size = SZ_4G}, /* APU DATA */
-+	{ .iova_base = 0x4000000ULL,	.size = 0x4000000},  /* APU VLM */
-+	{ .iova_base = 0x10000000ULL,	.size = 0x10000000}, /* APU VPU */
-+	{ .iova_base = 0x70000000ULL,	.size = 0x12600000}, /* APU REG */
++config MTK_APU
++	tristate "MediaTek APUSYS Support"
++	select REGMAP
++	select MTK_APU_PM
++	select MTK_SCP
++	help
++	  Say yes here to add support for the APU tinysys. The tinsys is
++	  running on a micro processor in APU.
++	  Its firmware is load and boot from Kernel side. Kernel and tinysys use
++	  IPI to tx/rx messages.
++
++config MTK_APU_DEBUG
++	tristate "MediaTek APUSYS debug functions"
++	depends on MTK_APU
++	help
++	  Say yes here to enalbe debug on APUSYS.
++	  Disable it if you don't need them.
++
+ config MTK_CMDQ
+ 	tristate "MediaTek CMDQ Support"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/soc/mediatek/apusys/Makefile b/drivers/soc/mediatek/apusys/Makefile
+index 8821c0f0b7b7..6b5249ec7064 100644
+--- a/drivers/soc/mediatek/apusys/Makefile
++++ b/drivers/soc/mediatek/apusys/Makefile
+@@ -1,2 +1,5 @@
+ # SPDX-License-Identifier: GPL-2.0
+ obj-$(CONFIG_MTK_APU_PM) += mtk-apu-pm.o
++
++obj-$(CONFIG_MTK_APU) += apu.o
++apu-objs += apu-core.o
+diff --git a/drivers/soc/mediatek/apusys/apu-core.c b/drivers/soc/mediatek/apusys/apu-core.c
+new file mode 100644
+index 000000000000..c1db2394307f
+--- /dev/null
++++ b/drivers/soc/mediatek/apusys/apu-core.c
+@@ -0,0 +1,91 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++
++#include <linux/debugfs.h>
++#include <linux/kernel.h>
++#include <linux/module.h>
++
++#include "apu-core.h"
++
++#define APUSYS_DEV_NAME "apusys"
++
++static struct apusys_core_info g_core_info;
++
++/*
++ * init function at other modulses
++ * call init function in order at apu.ko init stage
++ */
++static int (*apusys_init_func[])(struct apusys_core_info *) = {
 +};
 +
- /* If 2 M4U share a domain(use the same hwlist), Put the corresponding info in first data.*/
- static struct mtk_iommu_data *mtk_iommu_get_frst_data(struct list_head *hwlist)
- {
-@@ -923,6 +932,37 @@ static int mtk_iommu_mm_dts_parse(struct device *dev,
- 	return 0;
- }
- 
-+static int mtk_iommu_apu_prepare(struct device *dev)
++/*
++ * exit function at other modulses
++ * call exit function in order at apu.ko exit stage
++ */
++static void (*apusys_exit_func[])(void) = {
++};
++
++static void create_dbg_root(void)
 +{
-+	struct device_node *apupower_node;
-+	struct platform_device *apudev;
-+	struct device_link *link;
++	g_core_info.dbg_root = debugfs_create_dir(APUSYS_DEV_NAME, NULL);
 +
-+	apupower_node = of_find_compatible_node(NULL, NULL, "mediatek,apusys-power");
-+	if (!apupower_node) {
-+		dev_warn(dev, "Can't find apu power node!\n");
-+		return -EINVAL;
++	/* check dbg root create status */
++	if (IS_ERR_OR_NULL(g_core_info.dbg_root))
++		pr_info("failed to create debug dir.\n");
++}
++
++static void destroy_dbg_root(void)
++{
++	debugfs_remove_recursive(g_core_info.dbg_root);
++}
++
++static int __init apusys_init(void)
++{
++	int i, j, ret = 0;
++	int func_num = sizeof(apusys_init_func) / sizeof(int *);
++
++	/* init apusys_dev */
++	create_dbg_root();
++
++	/* call init func */
++	for (i = 0; i < func_num; i++) {
++		if (!apusys_init_func[i])
++			break;
++
++		ret = apusys_init_func[i](&g_core_info);
++		if (ret) {
++			pr_info("init function(%d) fail(%d)", i, ret);
++
++			/* exit device */
++			for (j = i - 1; j >= 0; j--)
++				apusys_exit_func[j]();
++
++			destroy_dbg_root();
++			break;
++		}
 +	}
 +
-+	if (!of_device_is_available(apupower_node)) {
-+		of_node_put(apupower_node);
-+		return -EPERM;
-+	}
-+
-+	apudev = of_find_device_by_node(apupower_node);
-+	if (!apudev) {
-+		of_node_put(apupower_node);
-+		return -EPROBE_DEFER;
-+	}
-+
-+	link = device_link_add(&apudev->dev, dev, DL_FLAG_PM_RUNTIME);
-+	if (!link)
-+		dev_err(dev, "Unable link %s.\n", apudev->name);
-+
-+	of_node_put(apupower_node);
 +	return 0;
 +}
 +
- static int mtk_iommu_probe(struct platform_device *pdev)
- {
- 	struct mtk_iommu_data   *data;
-@@ -1021,6 +1061,10 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 		}
- 
- 		data->pericfg = infracfg;
-+	} else if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_APU)) {
-+		ret = mtk_iommu_apu_prepare(dev);
-+		if (ret)
-+			goto out_runtime_disable;
- 	}
- 
- 	platform_set_drvdata(pdev, data);
-@@ -1268,6 +1312,18 @@ static const struct mtk_iommu_plat_data mt8192_data = {
- 			   {0, 14, 16}, {0, 13, 18, 17}},
- };
- 
-+static const struct mtk_iommu_plat_data mt8192_data_apu = {
-+	.m4u_plat       = M4U_MT8192,
-+	.flags          = WR_THROT_EN | DCM_DISABLE | MTK_IOMMU_TYPE_APU |
-+			  SHARE_PGTABLE,
-+	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
-+	.hw_list        = &apulist,
-+	.bank_nr	= 1,
-+	.bank_enable    = {true},
-+	.iova_region    = mt8192_multi_dom_apu,
-+	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom_apu),
++static void __exit apusys_exit(void)
++{
++	int func_num = sizeof(apusys_exit_func) / sizeof(int *);
++	int i;
++
++	/* call release func */
++	for (i = 0; i < func_num; i++) {
++		if (!apusys_exit_func[i])
++			break;
++
++		apusys_exit_func[i]();
++	}
++
++	destroy_dbg_root();
++}
++
++module_init(apusys_init);
++module_exit(apusys_exit);
++MODULE_LICENSE("GPL");
+diff --git a/drivers/soc/mediatek/apusys/apu-core.h b/drivers/soc/mediatek/apusys/apu-core.h
+new file mode 100644
+index 000000000000..bac730bbc7ea
+--- /dev/null
++++ b/drivers/soc/mediatek/apusys/apu-core.h
+@@ -0,0 +1,11 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
++#ifndef APU_CORE_H
++#define APU_CORE_H
++
++struct apusys_core_info {
++	struct dentry *dbg_root;
 +};
-+
- static const struct mtk_iommu_plat_data mt8195_data_infra = {
- 	.m4u_plat	  = M4U_MT8195,
- 	.flags            = WR_THROT_EN | DCM_DISABLE |
-@@ -1323,6 +1379,7 @@ static const struct of_device_id mtk_iommu_of_ids[] = {
- 	{ .compatible = "mediatek,mt8173-m4u", .data = &mt8173_data},
- 	{ .compatible = "mediatek,mt8183-m4u", .data = &mt8183_data},
- 	{ .compatible = "mediatek,mt8192-m4u", .data = &mt8192_data},
-+	{ .compatible = "mediatek,mt8192-iommu-apu",   .data = &mt8192_data_apu},
- 	{ .compatible = "mediatek,mt8195-iommu-infra", .data = &mt8195_data_infra},
- 	{ .compatible = "mediatek,mt8195-iommu-vdo",   .data = &mt8195_data_vdo},
- 	{ .compatible = "mediatek,mt8195-iommu-vpp",   .data = &mt8195_data_vpp},
-diff --git a/include/dt-bindings/memory/mt8192-larb-port.h b/include/dt-bindings/memory/mt8192-larb-port.h
-index 23035a52c675..908d6831bf99 100644
---- a/include/dt-bindings/memory/mt8192-larb-port.h
-+++ b/include/dt-bindings/memory/mt8192-larb-port.h
-@@ -240,4 +240,8 @@
- #define M4U_PORT_L20_IPE_RSC_RDMA0		MTK_M4U_ID(20, 4)
- #define M4U_PORT_L20_IPE_RSC_WDMA		MTK_M4U_ID(20, 5)
- 
-+#define IOMMU_PORT_APU_DATA			MTK_M4U_ID(0, 0)
-+#define IOMMU_PORT_APU_VLM			MTK_M4U_ID(0, 1)
-+#define IOMMU_PORT_APU_VPU			MTK_M4U_ID(0, 2)
-+
- #endif
++#endif
 -- 
 2.18.0
 
