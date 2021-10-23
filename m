@@ -2,14 +2,14 @@ Return-Path: <SRS0=X6pk=PL=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16E02C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:25:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3158CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:25:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B599B60FD8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:25:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B599B60FD8
+	by mail.kernel.org (Postfix) with ESMTPS id F266C60FD8
+	for <linux-mediatek@archiver.kernel.org>; Sat, 23 Oct 2021 11:25:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F266C60FD8
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,33 +18,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zpWLOLgno2o6zf559wsfTTkmI12EYnkPOYQtkHV8vB4=; b=eRf/OeJvWalLTl
-	dXj3yubidDyWAe4A78elCQV4x1SNYHkajSsG8Hfx8Bs14dnwL5xWvMl70AgePoco7z0nlvPLBCnfG
-	76/JdH0j5KcqPEoCfbP0nfGiiqStFUz6pQM6UnH3+7LMQwQmsQMn1B/7hJN6wd7x8EoiOs2pJUZ06
-	IAVHkcTwvGveLBd17eyvZITGxvh1zKTFH8qz9jqcTRS5DqwedoOh4/jHNnUdo8E2h8NhZol3Pz7qU
-	zERMrVrov09OR8LRg/b6bEPgDQeenxmVZjX+HXbIYcovYoWMWdMvEpB0fppfZyj8iThmUJ/kjj4WU
-	EoYSvhGlsN8xOUUPvQ5A==;
+	List-Owner; bh=vT1m28rIFJVrnGDwnspNblPT0zfiK7GZctdkWc42TkA=; b=huT9H4/X+1jxsj
+	X3+jbzaLMXG+72Po8u9DgXGr+lNgI1tLDBfMSwoAF673kI1zMfpSMWD7r9UyD5B7fEC0JeltUI6SJ
+	zA2fuJ/wmocxLDlo6a5eHLhTdPapiXuWXBS2M64KRwNHQRWA6HB1zKhOmbcvRAZRQ4PDqa4zseMiA
+	DeqTqHU5NbK6tmVjibtgsRaclUywK8lA7J1Nt1NqqtTztSEmRsvG+f1C5DyjGdtXio24zmQWYP5Mx
+	Iu29p9XRjUbi/ZigpPYoE1GP3PtBJoPxtyHF91wSI2A1mbEZoG71GUp/Co7PEDauVq2GJjtlfFf/c
+	OxiiZ4dyZkwU8BCEeE4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1meF9B-00CgMz-03; Sat, 23 Oct 2021 11:25:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1meF9N-00CgQY-4R; Sat, 23 Oct 2021 11:25:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1meF98-00CgMT-6W; Sat, 23 Oct 2021 11:25:07 +0000
-X-UUID: 9e9ff560dd1e4765a5e3f108ed10cc58-20211023
-X-UUID: 9e9ff560dd1e4765a5e3f108ed10cc58-20211023
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1meF9E-00CgNM-1o; Sat, 23 Oct 2021 11:25:13 +0000
+X-UUID: ebd0b39309314dfdade58e16cc70435b-20211023
+X-UUID: ebd0b39309314dfdade58e16cc70435b-20211023
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <flora.fu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 982351954; Sat, 23 Oct 2021 04:25:03 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 23 Oct 2021 04:15:01 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 23 Oct 2021 19:15:00 +0800
+ with ESMTP id 1138835637; Sat, 23 Oct 2021 04:25:03 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 23 Oct 2021 04:15:06 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 23 Oct 2021 19:14:53 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 23 Oct 2021 19:15:00 +0800
+ Frontend Transport; Sat, 23 Oct 2021 19:14:53 +0800
 From: Flora Fu <flora.fu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown
  <broonie@kernel.org>, Sumit Semwal <sumit.semwal@linaro.org>
@@ -53,17 +53,17 @@ CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>, Flora Fu
  <flora.fu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, Pi-Cheng Chen
  <pi-cheng.chen@mediatek.com>
-Subject: [RFC 11/13] arm64: dts: mt8192: Add apu power nodes
-Date: Sat, 23 Oct 2021 19:14:07 +0800
-Message-ID: <20211023111409.30463-12-flora.fu@mediatek.com>
+Subject: [RFC 05/13] soc: mediatek: Add command for APU SMC call
+Date: Sat, 23 Oct 2021 19:14:01 +0800
+Message-ID: <20211023111409.30463-6-flora.fu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211023111409.30463-1-flora.fu@mediatek.com>
 References: <20211023111409.30463-1-flora.fu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211023_042506_274811_8793DCE7 
-X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-CacheID: sfid-20211023_042512_139545_C9E85E8C 
+X-CRM114-Status: UNSURE (   8.84  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,86 +81,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add apu power node.
+Add command for APU SMC call.
+The tinyys start and stop sequence will porcess in ATF.
 
 Signed-off-by: Flora Fu <flora.fu@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 62 ++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+ include/linux/soc/mediatek/mtk_sip_svc.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index d5e417a512a7..c505c6926839 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -964,6 +964,68 @@
- 			};
- 		};
+diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
+index 082398e0cfb1..ce44d26a3922 100644
+--- a/include/linux/soc/mediatek/mtk_sip_svc.h
++++ b/include/linux/soc/mediatek/mtk_sip_svc.h
+@@ -22,4 +22,6 @@
+ 	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
+ 			   ARM_SMCCC_OWNER_SIP, fn_id)
  
-+		apusys_power: apusys_power@190f1000 {
-+			compatible = "mediatek,apusys-power",
-+				     "mediatek,mt8192-apu-power";
-+			reg = <0 0x190f1000 0 0x1000>,
-+			      <0 0x19000600 0 0x100>;
-+			reg-names = "apu_pcu",
-+				    "apu_spare";
-+			power-domains = <&apuspm 0>;
-+			clocks = <&topckgen CLK_TOP_DSP_SEL>,
-+				<&topckgen CLK_TOP_DSP1_SEL>,
-+				<&topckgen CLK_TOP_DSP1_NPUPLL_SEL>,
-+				<&topckgen CLK_TOP_DSP2_SEL>,
-+				<&topckgen CLK_TOP_DSP2_NPUPLL_SEL>,
-+				<&topckgen CLK_TOP_DSP5_SEL>,
-+				<&topckgen CLK_TOP_DSP5_APUPLL_SEL>,
-+				<&topckgen CLK_TOP_IPU_IF_SEL>,
-+				<&clk26m>,
-+				<&topckgen CLK_TOP_MAINPLL_D4_D2>,
-+				<&topckgen CLK_TOP_UNIVPLL_D4_D2>,
-+				<&topckgen CLK_TOP_UNIVPLL_D6_D2>,
-+				<&topckgen CLK_TOP_MMPLL_D6>,
-+				<&topckgen CLK_TOP_MMPLL_D5>,
-+				<&topckgen CLK_TOP_MMPLL_D4>,
-+				<&topckgen CLK_TOP_UNIVPLL_D5>,
-+				<&topckgen CLK_TOP_UNIVPLL_D4>,
-+				<&topckgen CLK_TOP_UNIVPLL_D3>,
-+				<&topckgen CLK_TOP_MAINPLL_D6>,
-+				<&topckgen CLK_TOP_MAINPLL_D4>,
-+				<&topckgen CLK_TOP_MAINPLL_D3>,
-+				<&topckgen CLK_TOP_TVDPLL>,
-+				<&topckgen CLK_TOP_APUPLL>,
-+				<&topckgen CLK_TOP_NPUPLL>,
-+				<&apmixedsys CLK_APMIXED_APUPLL>,
-+				<&apmixedsys CLK_APMIXED_NPUPLL>;
-+			clock-names = "clk_top_dsp_sel",
-+				"clk_top_dsp1_sel",
-+				"clk_top_dsp1_npupll_sel",
-+				"clk_top_dsp2_sel",
-+				"clk_top_dsp2_npupll_sel",
-+				"clk_top_dsp5_sel",
-+				"clk_top_dsp5_apupll_sel",
-+				"clk_top_ipu_if_sel",
-+				"clk_top_clk26m",
-+				"clk_top_mainpll_d4_d2",
-+				"clk_top_univpll_d4_d2",
-+				"clk_top_univpll_d6_d2",
-+				"clk_top_mmpll_d6",
-+				"clk_top_mmpll_d5",
-+				"clk_top_mmpll_d4",
-+				"clk_top_univpll_d5",
-+				"clk_top_univpll_d4",
-+				"clk_top_univpll_d3",
-+				"clk_top_mainpll_d6",
-+				"clk_top_mainpll_d4",
-+				"clk_top_mainpll_d3",
-+				"clk_top_tvdpll_ck",
-+				"clk_top_apupll_ck",
-+				"clk_top_npupll_ck",
-+				"clk_apmixed_apupll_rate",
-+				"clk_apmixed_npupll_rate";
-+		};
-+
- 		camsys: clock-controller@1a000000 {
- 			compatible = "mediatek,mt8192-camsys";
- 			reg = <0 0x1a000000 0 0x1000>;
++/* APUSYS SMC call */
++#define MTK_SIP_APUSYS_CONTROL MTK_SIP_SMC_CMD(0x51E)
+ #endif
 -- 
 2.18.0
 
