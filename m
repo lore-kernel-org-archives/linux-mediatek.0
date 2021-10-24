@@ -2,61 +2,88 @@ Return-Path: <SRS0=8pCq=PM=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D3CDDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Oct 2021 08:46:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B1A05C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Oct 2021 15:36:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 90F0D60F9B
-	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Oct 2021 08:46:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 90F0D60F9B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=z3ntu.xyz
+	by mail.kernel.org (Postfix) with ESMTPS id 7DC0060EDF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 24 Oct 2021 15:36:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7DC0060EDF
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ERrzxBN/AzM4C/+Qrpm/h7I91wQc+d4q6MFQOwmu26c=; b=M1HOQtXTvrEVag
-	xezMPSsCSAXm4q1JsJJBIPq+KEAfcsz2Sef993ZCubkyLLJbc72yZATHPOzNnCjd7JuPioEyN0BxA
-	IlOFSgtnSSsdslitknrg+0WrP9kEs6GsXEJMRo8YIhF9MEi+ioWjD9hZLtYvare7673gzTK0Cl0iX
-	OAH631DI7dkgJrkF9pJtCmkE1/dOburV0gcxWXfw64AmhRNtgVKsuWnsST3QNPusblGonPXS4X5RX
-	fXeO9JluRFZ6y9wtXFHhiHd0O7t9Dw0F4eF95LoQGGCDWX+BwLKTo9CbJ5JJN9JHZaCu8wl9KYEuh
-	0abEOYxdC/H4ziXwemmg==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OxEl4WsWIuOvXI7rPTVOw0BhRSPV7f/vEV4b31Bpfls=; b=NDpbVj2uUYzcIy
+	CekXHLi7QXwNESY4CnzAIoF62Exl6HPVhpPpU8lwNPu2ObEzPy0hF30NqopJDtqsJ1BEVnRw3h8w3
+	VX6jvPGIm4zdDEgrrqqe1lv3Cz8j+KKI01vvzbCWKE9qngk++MAxHv5Q0v7ivH2mP8k0filTnFT+k
+	YgISbXheo6VNFPCHm9sKPOSaovs+12Ond999zTHk4zyJl1jMAexdH5y5vijpPPTMehx8NN6ghSWb3
+	+nWyp38cwXRDweqH2MOQdK4DUFhbB3chEfvnx/7WxNB26hsQYwF7h6XEvvs1/tRDSeC+JdY+78EP2
+	J+42PtPUqYMeT10LPlaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1meZ9F-00Dnvu-6k; Sun, 24 Oct 2021 08:46:33 +0000
-Received: from mail.z3ntu.xyz ([128.199.32.197])
+	id 1mefXr-00EBCA-Us; Sun, 24 Oct 2021 15:36:23 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1meZ8z-00Dnum-Lw; Sun, 24 Oct 2021 08:46:19 +0000
-Received: from localhost.localdomain (ip-213-127-63-241.ip.prioritytelecom.net
- [213.127.63.241])
- by mail.z3ntu.xyz (Postfix) with ESMTPSA id 20B91C6C78;
- Sun, 24 Oct 2021 08:46:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=z3ntu.xyz; s=z3ntu;
- t=1635065172; bh=MNGJb5x5e9bvi6TMYXpldSbHD+QFVn7vCYvD1jNOx5g=;
- h=From:To:Cc:Subject:Date;
- b=ZFpGK+m/ztWbYs29/omZeQw80VQNdOgfuyQJl4AqCJN+wG0CbLP0ULFVtYqLFnlw/
- hXbbJZoyzgL/mbDKEMvAXbYf0HoFizw8QUiJsoLev500RU8V7weB/9wwJ0HtZi1duP
- K1zu+G+WuMg5pFK/lQhWMK0HaiR2cdIhE8w3Jlug=
-From: Luca Weiss <luca@z3ntu.xyz>
-To: linux-mediatek@lists.infradead.org
-List-Id: <soc.lore.kernel.org>
-Cc: ~postmarketos/upstreaming@lists.sr.ht, Luca Weiss <luca@z3ntu.xyz>,
- Arnd Bergmann <arnd@arndb.de>, Olof Johansson <olof@lixom.net>,
- soc@kernel.org, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH v2] arm: dts: mt6589: Add device tree for Fairphone 1
-Date: Sun, 24 Oct 2021 10:45:35 +0200
-Message-Id: <20211024084535.30959-1-luca@z3ntu.xyz>
-X-Mailer: git-send-email 2.33.1
+ id 1mefXo-00EBAh-Fc
+ for linux-mediatek@lists.infradead.org; Sun, 24 Oct 2021 15:36:22 +0000
+Received: by mail-wm1-x332.google.com with SMTP id
+ z11-20020a1c7e0b000000b0030db7b70b6bso10214246wmc.1
+ for <linux-mediatek@lists.infradead.org>; Sun, 24 Oct 2021 08:36:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Uo+KZSKbMpCYD2HnQVmUgWBUvnOq/cWI0Zv67K4qsag=;
+ b=yu5Z4gfoU+YC7zzBlq9uJ6PXvotAkI9fzmpdOOfZJqkYYQUBQ7/Z/MTdSwgi4nd5jb
+ B3dyMlOYGV88bSwN1GoOONZ0UT/2ZqC5ShpiUsJKxBtW6vnCE00UhsZcr8Urk7ytx0/S
+ NDdcZXNGmOLXHRjfF6zjYBygT8MkmkWhD/CCxddf844M0hv+4uUkNr4d9WJOAdXOWNI2
+ sWAOU5teuRpYkPKTVpSLWSPndpLuaaAaVlhoAbz63sJx/c/IzZtD7mXjtv9bDca89bA5
+ 1GNLXAbJJLnvKiOAtAE6++GUirONvnRdY8bSlswlBmlY14qE8e7wRWCPqV9F5H+NviO1
+ C9Jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Uo+KZSKbMpCYD2HnQVmUgWBUvnOq/cWI0Zv67K4qsag=;
+ b=xJjjp72sLi3cjBykmCaw+uDKMJ3djejeds77tlfTcHrWKkos7ZK4p1v56o0CDEzE6o
+ kQw56R/UpOCiKtNM0nX5lIz9rB9gUDTsfQb9ekD4mz0bsCTxq95Tx6kNO1w7DhBrpIUZ
+ hJm6RQFvNXiSoO4+6mjTsS0KiQrp/w77DibPyDab0DFgZMpxh0bY32cuvsjBg0XXXsWY
+ 8sIY0kb+lB1zYHj6U2USdDtO9FGDLcrpkbZtMYHtHfljlau82ExJQoANkwxPixZCDp18
+ QU6a4LEbHyBl3kLG4RBtwettGPOkpolNvM09/EZEYLlp1WYhP9IITK0PjREwRi1f7HRs
+ 7EXQ==
+X-Gm-Message-State: AOAM530nOMALwIoJKDEJopyMjBQ7JmWlQ3S8MPEKnt8eW2aowb3Ac0wM
+ h22Kb39HPwn6kr6CvybzmyqH4g==
+X-Google-Smtp-Source: ABdhPJwwN33lxeowWbuondAurMoTKsZYNPHjpTT6hvtmBIMTKVjY9pcuRTU0VfDorky8HCqiHArLDA==
+X-Received: by 2002:a1c:7fd0:: with SMTP id a199mr43354530wmd.96.1635089778344; 
+ Sun, 24 Oct 2021 08:36:18 -0700 (PDT)
+Received: from blmsp ([2a02:2454:3e6:c900:5142:5fbb:5821:5dc3])
+ by smtp.gmail.com with ESMTPSA id w7sm7605993wrm.64.2021.10.24.08.36.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 24 Oct 2021 08:36:18 -0700 (PDT)
+Date: Sun, 24 Oct 2021 17:36:17 +0200
+From: Markus Schneider-Pargmann <msp@baylibre.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Sam Ravnborg <sam@ravnborg.org>,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>,
+ linux-mediatek@lists.infradead.org, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, Vinod Koul <vkoul@kernel.org>
+Subject: Re: [PATCH v5 2/7] dt-bindings: mediatek, dp: Add Display Port binding
+Message-ID: <20211024153617.inkbrjzqjp4mspyh@blmsp>
+References: <20211021092707.3562523-1-msp@baylibre.com>
+ <20211021092707.3562523-3-msp@baylibre.com>
+ <YXNG8Qy5jAPdWbHY@robh.at.kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <YXNG8Qy5jAPdWbHY@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211024_014617_898804_079FC73A 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20211024_083620_600379_FE086486 
+X-CRM114-Status: GOOD (  15.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,96 +100,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add rudimentary support for the Fairphone 1, based on MT6589 to boot to
-UART console.
+On Fri, Oct 22, 2021 at 06:19:13PM -0500, Rob Herring wrote:
+> On Thu, 21 Oct 2021 11:27:02 +0200, Markus Schneider-Pargmann wrote:
+> > This controller is present on several mediatek hardware. Currently
+> > mt8195 and mt8395 have this controller without a functional difference,
+> > so only one compatible field is added.
+> > 
+> > The controller can have two forms, as a normal display port and as an
+> > embedded display port.
+> > 
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > ---
+> > 
+> > Notes:
+> >     Changes v4 -> v5:
+> >     - Removed "status" in the example
+> >     - Remove edp_tx compatible.
+> >     - Rename dp_tx compatible to dp-tx.
+> > 
+> >  .../display/mediatek/mediatek,dp.yaml         | 87 +++++++++++++++++++
+> >  1 file changed, 87 insertions(+)
+> >  create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dp.yaml
+> > 
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> 
+> But can't be applied without the dependent header (or remove the 
+> dependency).
 
-The recently added SMP support needs to be disabled for this board as
-the kernel panics executing /init with it, even though the CPUs seem to
-start up fine - maybe a stability issue.
+Ok, thank you Rob. Maybe I will remove the dependency.
 
-[    0.072010] smp: Bringing up secondary CPUs ...
-[    0.131888] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
-[    0.191889] CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
-[    0.251890] CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
-[    0.251982] smp: Brought up 1 node, 4 CPUs
-[    0.254745] SMP: Total of 4 processors activated (7982.28 BogoMIPS).
-[    0.255582] CPU: All CPU(s) started in SVC mode.
-
-[    0.472039] Run /init as init process
-[    0.473317] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000004
-
-Signed-off-by: Luca Weiss <luca@z3ntu.xyz>
----
- arch/arm/boot/dts/Makefile                 |  1 +
- arch/arm/boot/dts/mt6589-fairphone-fp1.dts | 30 ++++++++++++++++++++++
- arch/arm/boot/dts/mt6589.dtsi              |  2 +-
- 3 files changed, 32 insertions(+), 1 deletion(-)
- create mode 100644 arch/arm/boot/dts/mt6589-fairphone-fp1.dts
-
-diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 7e0934180724..24f402db2613 100644
---- a/arch/arm/boot/dts/Makefile
-+++ b/arch/arm/boot/dts/Makefile
-@@ -1437,6 +1437,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
- 	mt2701-evb.dtb \
- 	mt6580-evbp1.dtb \
- 	mt6589-aquaris5.dtb \
-+	mt6589-fairphone-fp1.dtb \
- 	mt6592-evb.dtb \
- 	mt7623a-rfb-emmc.dtb \
- 	mt7623a-rfb-nand.dtb \
-diff --git a/arch/arm/boot/dts/mt6589-fairphone-fp1.dts b/arch/arm/boot/dts/mt6589-fairphone-fp1.dts
-new file mode 100644
-index 000000000000..c952347981de
---- /dev/null
-+++ b/arch/arm/boot/dts/mt6589-fairphone-fp1.dts
-@@ -0,0 +1,30 @@
-+// SPDX-License-Identifier: BSD-3-Clause
-+/*
-+ * Copyright (c) 2021, Luca Weiss <luca@z3ntu.xyz>
-+ */
-+
-+/dts-v1/;
-+#include "mt6589.dtsi"
-+
-+/ {
-+	model = "Fairphone 1";
-+	compatible = "fairphone,fp1", "mediatek,mt6589";
-+
-+	chosen {
-+		stdout-path = &uart3;
-+	};
-+
-+	memory@80000000 {
-+		device_type = "memory";
-+		reg = <0x80000000 0x40000000>;
-+	};
-+};
-+
-+&cpus {
-+	/* SMP is not stable on this board, makes the kernel panic */
-+	/delete-property/ enable-method;
-+};
-+
-+&uart3 {
-+	status = "okay";
-+};
-diff --git a/arch/arm/boot/dts/mt6589.dtsi b/arch/arm/boot/dts/mt6589.dtsi
-index 70df00a7bb26..c6babc8ad2ba 100644
---- a/arch/arm/boot/dts/mt6589.dtsi
-+++ b/arch/arm/boot/dts/mt6589.dtsi
-@@ -14,7 +14,7 @@ / {
- 	compatible = "mediatek,mt6589";
- 	interrupt-parent = <&sysirq>;
- 
--	cpus {
-+	cpus: cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
- 		enable-method = "mediatek,mt6589-smp";
--- 
-2.33.1
-
+Thanks,
+Markus
 
 _______________________________________________
 Linux-mediatek mailing list
