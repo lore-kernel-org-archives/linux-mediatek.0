@@ -2,62 +2,66 @@ Return-Path: <SRS0=S3hZ=PN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F17A4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 11:07:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CC933C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 11:42:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 822A360EDF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 11:07:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 822A360EDF
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=improbability.net
+	by mail.kernel.org (Postfix) with ESMTPS id 96B0B6044F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 11:42:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 96B0B6044F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:To:From:Subject:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LQc/hgnpbCbRYKQS01ElJWpkGqXMsY6GMiFwhNzf4OE=; b=CwdHMLB6YIWogO
-	H1dQ9x3YTukZGn3eJvggm8VV1cndqUPXXjG3yPrejAdkv3904+x7Qifpji2kmkXqfyxNGI05SJYi7
-	jLw2dAx4AzIcBtiXvHOdcJhepSc0ci3Uk0Ih709esk5oeigfdvVBmVkUbFQ7PgIRvXZkH1X31lk+r
-	ZWclJ6mFpm4O+fQd32v37q+jCQkzGOj0QK5m4+uikECKKal2c4RWlKKFcj0d0dIj6CX8ZkTMmS4Bg
-	kveO4u/PO5P2bX0zOzZgKuSWrrbi8Urix0xFQWh2CeIRMSSSp8fe5wKh1h97bzCfNkemT7DhhPyam
-	oCn5EcuH20jpzBdbD9bw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FgnMkpuxesVs4+6EbpfjAateM+OuWTLOu5ouA94n8OU=; b=KpurgtsgKiq8L1
+	yCYEnd3sWxBMD5g3JvaaU9xZTY8FneDn+HZZd07bJuNC9enPhlRI/H2Wo5v2rraeDLofCShQPlAOc
+	eeGkjdy3V6azlj/CVWmWom6YP2PrZEGgdM7Y5oxv8pmd2DnjAeurIVVUPtxJ70GjorCq0HuzbuPIa
+	eGxB2yQP2lcYg46g/uURNE9mNcBLGMz+Vq7uc9iiEadKYy/aVWfRbfAqIX8OyHPAwERaRma3ui3al
+	+pxiBl6RzDO7eqlynHi7cSidNGmbiC7sl96KS8YYFUiZUD5kvR3OziuhB1oCVAEEs7BPZDzjqHTXr
+	ZbYg3HGOkrhexJiaq/qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mexpG-00GDpt-5c; Mon, 25 Oct 2021 11:07:34 +0000
-Received: from relay2.stackmail.com ([185.151.28.66])
+	id 1meyNK-00GH1l-IT; Mon, 25 Oct 2021 11:42:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mexpD-00GDns-NL
- for linux-mediatek@lists.infradead.org; Mon, 25 Oct 2021 11:07:33 +0000
-Received: from smtp2.mail.stackcp.net ([10.4.72.76] helo=smtp2.n4.stackcp.net)
- by relay2.stackmail.com with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <alan@improbability.net>) id 1mexp8-0008Db-UR
- for linux-mediatek@lists.infradead.org; Mon, 25 Oct 2021 12:07:26 +0100
-Received: from slartibartfast.improbability.net ([51.155.134.81])
- by smtp2.n4.stackcp.net with esmtpsa (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <alan@improbability.net>) id 1mexp8-0000AR-Kr
- for linux-mediatek@lists.infradead.org; Mon, 25 Oct 2021 12:07:26 +0100
-Received: from trillian.improbability.net (trillian.improbability.net
- [192.168.1.20])
- by slartibartfast.improbability.net (Postfix) with ESMTPSA id 4FB0089
- for <linux-mediatek@lists.infradead.org>; Mon, 25 Oct 2021 12:07:25 +0100 (BST)
-Message-ID: <7e20cf11f400462a4fa72c61e0e3a783198d805e.camel@improbability.net>
-Subject: [PATCH] arm64: dts: mt7622: fix cpufreq 300MHz node value
-From: Alan Swanson <reiver@improbability.net>
-To: linux-mediatek@lists.infradead.org
-Date: Mon, 25 Oct 2021 12:07:24 +0100
-User-Agent: Evolution 3.40.4 
+ id 1meyN6-00GGxA-8Y; Mon, 25 Oct 2021 11:42:34 +0000
+X-UUID: 76296bbff3634440a2b936249d2a0906-20211025
+X-UUID: 76296bbff3634440a2b936249d2a0906-20211025
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 584739831; Mon, 25 Oct 2021 04:42:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Oct 2021 04:42:22 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 25 Oct 2021 19:42:20 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 25 Oct 2021 19:42:19 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Mathias Nyman <mathias.nyman@intel.com>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>, Yun-Chien Yu <yun-chien.yu@mediatek.com>
+Subject: [RFC PATCH] usb: xhci: skip re-check pending port event if hibernated
+Date: Mon, 25 Oct 2021 19:42:09 +0800
+Message-ID: <20211025114209.4047-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Authenticated-Sender: alan@improbability.net
-X-Scan-Signature: 20989a9fa3d052d9c6e48bc59dc06a3e
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211025_040731_791059_6DB3F075 
-X-CRM114-Status: UNSURE (   8.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211025_044232_331108_5DD8257B 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,39 +73,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Descriptor is "opp-300000000"=A0but opp-hz value is "30000000"
-missing a zero.
+When xHCI controller hibernated, the root hub lost power, if controller
+support Port Power Control (PPC), PP is not set at xhci_resume() and
+set by hub_reset_resume() later, so no need check pending port event.
+If PPC is not supported, device is disconneced, seems do not send out
+U3 LFPS wake signal, no need re-check again and drop 120ms delay to
+save resume time.
 
-Fixes: a5a80f78657f ("arm64: dts: mt7622: add cpufreq related device
-nodes")
-Signed-off-by: Alan Swanson <reiver@improbability.net>
+Reported-by: Yun-Chien Yu <yun-chien.yu@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt7622.dtsi | 2 +-
- 1 file changed, 1 insertions(+), 1 deletions(-)
+ drivers/usb/host/xhci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff -u a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi	2021-10-25
-11:30:11.000000000 +0100
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi	2021-10-25
-11:30:38.638229331 +0100
-@@ -24,7 +24,7 @@
- 		compatible =3D "operating-points-v2";
- 		opp-shared;
- 		opp-300000000 {
--			opp-hz =3D /bits/ 64 <30000000>;
-+			opp-hz =3D /bits/ 64 <300000000>;
- 			opp-microvolt =3D <950000>;
- 		};
-
--- =
-
-
+diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+index f3dabd02382c..a7a2bf5bc208 100644
+--- a/drivers/usb/host/xhci.c
++++ b/drivers/usb/host/xhci.c
+@@ -1235,7 +1235,7 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
+ 		 * the first wake signalling failed, give it that chance.
+ 		 */
+ 		pending_portevent = xhci_pending_portevent(xhci);
+-		if (!pending_portevent) {
++		if (!pending_portevent && !hibernated) {
+ 			msleep(120);
+ 			pending_portevent = xhci_pending_portevent(xhci);
+ 		}
+-- 
+2.18.0
 
 
 _______________________________________________
