@@ -2,14 +2,14 @@ Return-Path: <SRS0=S3hZ=PN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3574C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 15:03:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 06302C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 16:14:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 918B8604E9
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 15:03:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 918B8604E9
+	by mail.kernel.org (Postfix) with ESMTPS id C901960EBD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 16:14:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C901960EBD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,49 +18,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IiiTsHzpqT9KpVHoXI81NWI95TVHLfByCPH74BwfV9E=; b=fBIUzH7G8Qw0tm
-	jzPX6Ir6aYVdDGO2flzS5pgpb86Mn5o/6YTtcBBtgC0R3YHOLp8bo6RR3s16QGR0ec2o3YZuYMNoU
-	r5S/hqtz6/KriHeqo6k7NVyAVDO9XnnEXSkiQGTjwFpK7jGF2yDqcToydmZy3nupNZjKDoe+VyvXy
-	7XSYJ5K0DvSX6vBgueVXHKBZ2Pg+V7TBOFsYtlPUyXA7xyhsVOzAvyEnyeF5pg/khnrGXZHPsb+mo
-	A9gSlAp/8WDV9dRUGScpcKrLVTqv1rS/04v6UGXGCj5Yj1dyFAdmMRAEZgHkyWhfvp8yLO6G/25L9
-	Va2aGvZOWzXf/5MuaknA==;
+	List-Owner; bh=JF7IzQPkuYtsjahY+/vOY31VfIbsEB9eHj/U9hBhzpU=; b=UJ+iB+CWk5Xe+g
+	t5t6u7zen5bbG4nO7Mh1pZcGQdyEcyPWSNTt0C4342SQpjghgqiNdnRvHBibn5pr61DuevYSfAdui
+	1kohrfvyYuR4YYmkpVvgVWJGHzlm2WvmSkZ/4Uf7FZ2BGtAI2MSlfjYlxlG8gpUTri08rlUAoBGnz
+	1E1Jw0aA0jkaGem8PPVQ/5/AsD/qmbRAGDYul/ikP/ED/9PyExmdXY/xWBe5hlMyReZ+5vO+MNA9u
+	j5HFVrZwmjjrW+t2JTeSVmRn3ma3Ols3cK+EwtwrO9w86C+4OGYSi8i8mwC0nU5GlVQZqRrv8r1vf
+	ecUQPMQxNfYVceug3wIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mf1Vi-00GpsZ-LX; Mon, 25 Oct 2021 15:03:38 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mf2cb-00GzQ2-34; Mon, 25 Oct 2021 16:14:49 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mf1Ve-00Gpqi-AS
- for linux-mediatek@lists.infradead.org; Mon, 25 Oct 2021 15:03:37 +0000
-X-UUID: 212828bbf3c143818701513cbf4b341e-20211025
-X-UUID: 212828bbf3c143818701513cbf4b341e-20211025
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
+ id 1mf2cX-00GzNI-F5; Mon, 25 Oct 2021 16:14:47 +0000
+X-UUID: 1bab3ddbef274314a509427760685978-20211025
+X-UUID: 1bab3ddbef274314a509427760685978-20211025
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 117426623; Mon, 25 Oct 2021 08:03:29 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 242686864; Mon, 25 Oct 2021 09:14:38 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Oct 2021 08:03:27 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Oct 2021 23:03:26 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Mon, 25 Oct 2021 09:14:37 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 26 Oct 2021 00:14:35 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 25 Oct 2021 23:03:25 +0800
-From: <mark-yw.chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <mark-yw.chen@mediatek.com>, <will-cy.lee@mediatek.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH] Bluetooth: btusb: Fix failed to send func ctrl for MediaTek
- devices.
-Date: Mon, 25 Oct 2021 23:03:25 +0800
-Message-ID: <20211025150325.2143-1-mark-yw.chen@mediatek.com>
+ Frontend Transport; Tue, 26 Oct 2021 00:14:35 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "Jassi
+ Brar" <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <hsinyi@chromium.org>, <fshao@chromium.org>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>
+Subject: [PATCH v3 0/5] CMDQ refinement of Mediatek DRM driver
+Date: Tue, 26 Oct 2021 00:14:29 +0800
+Message-ID: <20211025161434.2641-1-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211025_080334_390480_1CBB52C6 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20211025_091445_531716_93DCC625 
+X-CRM114-Status: UNSURE (   7.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,53 +82,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
+These refinements include using standard mailbox callback interface,
+timeout detection, and a fixed cmdq_handle.
 
-* Use usb_autopm_get_interface() and usb_autopm_put_interface()
-  in btusb_mtk_shutdown(), it could send func ctrl after enabling
-  autosuspend.
+Change in v3:
+1. Revert "drm/mediatek: clear pending flag when cmdq packet is done"
+   and add it after the CMDQ refinement pathes.
+2. Change the remove of struct cmdq_client to remove the pointer of
+   struct cmdq_client.
+3. Fix pkt buf alloc once but free many times.
 
-Bluetooth: btusb_mtk_hci_wmt_sync() hci0: Execution of wmt command timed
-out
-Bluetooth: btusb_mtk_shutdown() hci0: Failed to send wmt func ctrl
-(-110)
+Changes in v2:
+1. Define mtk_drm_cmdq_pkt_create() and mtk_drm_cmdq_pkt_destroy()
+   when CONFIG_MTK_CMDQ is reachable.
 
-Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
----
- drivers/bluetooth/btusb.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+Chun-Kuang Hu (4):
+  drm/mediatek: Use mailbox rx_callback instead of cmdq_task_cb
+  drm/mediatek: Remove the pointer of struct cmdq_client
+  drm/mediatek: Detect CMDQ execution timeout
+  drm/mediatek: Add cmdq_handle in mtk_crtc
 
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index 87b71740fad8..9e61395d1ff2 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2973,9 +2973,14 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- static int btusb_mtk_shutdown(struct hci_dev *hdev)
- {
- 	struct btmtk_hci_wmt_params wmt_params;
-+	struct btusb_data *data = hci_get_drvdata(hdev);
- 	u8 param = 0;
- 	int err;
- 
-+	err = usb_autopm_get_interface(data->intf);
-+	if (err < 0)
-+		return err;
-+
- 	/* Disable the device */
- 	wmt_params.op = BTMTK_WMT_FUNC_CTRL;
- 	wmt_params.flag = 0;
-@@ -2986,9 +2991,11 @@ static int btusb_mtk_shutdown(struct hci_dev *hdev)
- 	err = btusb_mtk_hci_wmt_sync(hdev, &wmt_params);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
-+		usb_autopm_put_interface(data->intf);
- 		return err;
- 	}
- 
-+	usb_autopm_put_interface(data->intf);
- 	return 0;
- }
- 
+Yongqiang Niu (1):
+  drm/mediatek: clear pending flag when cmdq packet is done.
+
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 171 ++++++++++++++++++++----
+ 1 file changed, 147 insertions(+), 24 deletions(-)
+
 -- 
 2.18.0
 
