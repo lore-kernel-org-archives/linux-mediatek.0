@@ -2,81 +2,101 @@ Return-Path: <SRS0=S3hZ=PN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 30E28C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 04:04:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8140FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 05:06:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E2B3660F70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 04:04:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E2B3660F70
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3D69161040
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 05:06:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3D69161040
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NIawi9QMPafKOl2c0c5vBoakvmvqy35dC2rIQNuUoSs=; b=roiMAYv3ER/1QT
-	5Ipnev6+O+flwA4fqQa83RbCkjrV8A79UZsJ1H8JEPAaeRjHTOlIv4DQASX61f8+T1/hah2fbMw/+
-	crc7T7RQsTDB6kGA+rqf3PYwrdCM0mFP7hHxrwhyJEXTf+nrn/ssG+jbZB1NsyiCrKvlz9YA+m1p1
-	P4LiNS5W+cxlDz0ujoEYuq59fJhULtZeP+EIBmg7paHv4AaEfu3A2oePsax46FQU6BqRM/5mhKap6
-	FiPhMTlc7hT1Jo9OdlrimAk5DNptWbn55aflQMi6r6IxY51jXydkkpiTMUdcAatbOpp/av4H1eC2X
-	+Q2Vx2b2PgWDqsF2xI2A==;
+	List-Owner; bh=WvBUEt/hpNPRBW+XMNkmN/N8QxafM+jiDLO1jvtqKgk=; b=kJGzzPUYZaX2q4
+	8EbjrdIwXBID+9TuroduVAFaPwKRXW+eq46Uw6ux5AuM7i+RlG904itTjKC111FNgYdd6HPfMLaWI
+	HCdjLu99kpHkTU2WFcliQdrlfdQx1CZN4ECYdvxXpijX0DCAtoQkiTXq2kZOIf30Ok5MUkyK58Uug
+	92qzbC61oLRCjbnrjy4VIwkKx7K7LzwOzyUsKVl33BdmpTF2uz8fbY9JcSun3eJn+3SsZo62+UeMN
+	a65bgJ3TcO5J9KGgLamkLb6ogZ8HhFI4xqBEyH4aIwl2piCDnXlnUCkWlzMjQC64r+lp12/arPEDK
+	x/6b1wTepb+b+ZHbZHtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1merDS-00FEMZ-8C; Mon, 25 Oct 2021 04:04:06 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mesBS-00FI7j-TR; Mon, 25 Oct 2021 05:06:06 +0000
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1merDO-00FEKw-8V; Mon, 25 Oct 2021 04:04:04 +0000
-X-UUID: e250e49a114446e190ca6cc450100054-20211024
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=ccPzK7FNitJAyHQG9gzX9D65Nz6meMuwCPEHC4/A0GA=; 
- b=r5seQ1fGfzsuTK8P0fgBSzHG20y0QJCY6I3lVZpilypgZhQW7W/sJ56QAib/aRno9IthBvuzl8Aym7bKLG7kXC4YrnHSiei8y3P+8Fdqt6iolRRP/ECQKKcmVAAxIZhAPUK5fDgfPuti4Q8DPOdq71dS/GOKfAu93IXb7q1jvss=;
-X-UUID: e250e49a114446e190ca6cc450100054-20211024
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1505719341; Sun, 24 Oct 2021 21:03:57 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Oct 2021 21:03:55 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 25 Oct 2021 12:03:54 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Oct 2021 12:03:53 +0800
-Message-ID: <f0e2ebf98481ee2ae8b88565a337e773532ddffd.camel@mediatek.com>
-Subject: Re: [PATCH v3 13/33] iommu/mediatek: Remove the power status
- checking in tlb flush all
-From: Yong Wu <yong.wu@mediatek.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Joerg Roedel
- <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, Robin Murphy
- <robin.murphy@arm.com>
-CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
- <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <chao.hao@mediatek.com>,
- <yen-chang.chen@mediatek.com>, Collabora Kernel ML <kernel@collabora.com>
-Date: Mon, 25 Oct 2021 12:03:53 +0800
-In-Reply-To: <6cff0b97-b861-e02d-e76f-2510c962c452@collabora.com>
-References: <20210923115840.17813-1-yong.wu@mediatek.com>
- <20210923115840.17813-14-yong.wu@mediatek.com>
- <6cff0b97-b861-e02d-e76f-2510c962c452@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mesBF-00FI6J-M5
+ for linux-mediatek@lists.infradead.org; Mon, 25 Oct 2021 05:05:55 +0000
+Received: by mail-pf1-x430.google.com with SMTP id v8so9572328pfu.11
+ for <linux-mediatek@lists.infradead.org>; Sun, 24 Oct 2021 22:05:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JA+P5A/sB4KzKsxDYjkyZmdfTZPWFEA1bTgclSJrZHw=;
+ b=KiE1qXXhWLLbW4vwLmlblzb3wQokb4W7dv086jJ8+hR4oxplQJsQxQtLqdDFO36jDh
+ yeFPmAygk8PKy/qe22rLWlu9GlOSwHI0wsZHKTmvoCN9nFiQAzj7N/2RgnpRWZChBh5L
+ rF1o1gTosZ1RUTjANl2Mo7CJGeBf5PC0yzWZM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JA+P5A/sB4KzKsxDYjkyZmdfTZPWFEA1bTgclSJrZHw=;
+ b=jM5XX1swidNgFttnfAehYphUIq6bbugD+kUI32MJj/iXfh3njfncNHNdsYHZHLYyFB
+ ZQhTggn6eI3HxxyJ8LhJpXyyBiFrTrBgIBVpEO5shmxK7Bo2xAZlEWSNC9aGexlOvA1c
+ DS4sR1fYImzXJhc6SZMoeBUWJQEs4d+4dLLq2psePCfX8yYdILgrBZ/InKjwoqBDNCyv
+ tnqxSGQKHdsygSeTms2bas29I1ItQN13ODw8JN7qgnSfE6cfaHRTIZSBSDlKwNsy6GwC
+ KRnKxJGf5hTaAa+Yc6cPLhapXFB1OfxObe4+h8sav9xrbcQ6eqeVbKsZIi/ihkQ4Lpxb
+ O66g==
+X-Gm-Message-State: AOAM5334RVnjLrzU87d5BHVGlv3dtfD2gWXR6Vz1TOkMdhaA8SWKOFka
+ SYsrVdytead1HOyy3Z5cnUGNKIxIxS0woQ==
+X-Google-Smtp-Source: ABdhPJyqU3hwJnfdKOxLp3uxn3gpJ/PR9WrDnHIrnhlGHU0CQX3l3seXcjJbhCmVAgZveer/71z7qw==
+X-Received: by 2002:a05:6a00:cc6:b0:44d:e2fb:3ef6 with SMTP id
+ b6-20020a056a000cc600b0044de2fb3ef6mr16158019pfv.54.1635138351588; 
+ Sun, 24 Oct 2021 22:05:51 -0700 (PDT)
+Received: from mail-pg1-f176.google.com (mail-pg1-f176.google.com.
+ [209.85.215.176])
+ by smtp.gmail.com with ESMTPSA id m10sm19934607pjs.21.2021.10.24.22.05.51
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 24 Oct 2021 22:05:51 -0700 (PDT)
+Received: by mail-pg1-f176.google.com with SMTP id m21so9717814pgu.13
+ for <linux-mediatek@lists.infradead.org>; Sun, 24 Oct 2021 22:05:51 -0700 (PDT)
+X-Received: by 2002:a05:6602:2e95:: with SMTP id
+ m21mr9431453iow.21.1635138339804; 
+ Sun, 24 Oct 2021 22:05:39 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
+ <20210921155218.10387-10-jason-jh.lin@mediatek.com>
+ <8b509551-7cfa-f55c-fc0f-db7d0a3886eb@collabora.com>
+ <29992126d39a7f381a516fdb9cd6e39f1e51afdb.camel@mediatek.com>
+In-Reply-To: <29992126d39a7f381a516fdb9cd6e39f1e51afdb.camel@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Mon, 25 Oct 2021 13:05:03 +0800
+X-Gmail-Original-Message-ID: <CAC=S1niq+b4ue6nPLNT5JEiugh5UFDDL3hEYrUua0AzQ_+YeXA@mail.gmail.com>
+Message-ID: <CAC=S1niq+b4ue6nPLNT5JEiugh5UFDDL3hEYrUua0AzQ_+YeXA@mail.gmail.com>
+Subject: Re: [PATCH v11 09/16] soc: mediatek: add mtk-mmsys support for mt8195
+ vdosys0
+To: Jason-JH Lin <jason-jh.lin@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, hsinyi@chromium.org,
+ moudy.ho@mediatek.com, 
+ roy-cw.yeh@mediatek.com, Fabien Parent <fparent@baylibre.com>, 
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, nancy.lin@mediatek.com, 
+ singo.chang@mediatek.com, devicetree@vger.kernel.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211024_210403_410337_5447A69D 
-X-CRM114-Status: GOOD (  38.40  )
+X-CRM114-CacheID: sfid-20211024_220554_012316_22AD4F6D 
+X-CRM114-Status: GOOD (  29.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,138 +113,169 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-10-22 at 16:03 +0200, Dafna Hirschfeld wrote:
-> Hi
-> 
-> 
-> On 23.09.21 13:58, Yong Wu wrote:
-> > To simplify the code, Remove the power status checking in the
-> > tlb_flush_all, remove this:
-> >     if (pm_runtime_get_if_in_use(data->dev) <= 0)
-> > 	    continue;
-> > 
-> > After this patch, the mtk_iommu_tlb_flush_all will be called from
-> > a) isr
-> > b) pm runtime resume callback
-> > c) tlb flush range fail case
-> > d) iommu_create_device_direct_mappings
-> >     -> iommu_flush_iotlb_all
-> > In first three cases, the power and clock always are enabled; d) is
-> > direct
-> 
-> Regarding case "c) tlb flush range fail case", I found out that this
-> often happens when the iommu is used while it is runtime suspended. 
+On Fri, Oct 22, 2021 at 6:13 PM Jason-JH Lin <jason-jh.lin@mediatek.com> wrote:
+>
+> Hi Angelo,
+>
+> Thanks for the reviews.
+>
+>
+> On Thu, 2021-10-14 at 16:05 +0200, AngeloGioacchino Del Regno wrote:
+> > > Add mt8195 vdosys0 clock driver name and routing table to
+> > > the driver data of mtk-mmsys.
+> > >
+>
+> [snip]
+>
+> > >
+> > > ---
+> >
+> > Hello Jason,
+> > thanks for the patch! However, there are a few things to improve:
+> >
+>
+> [snip]
+>
+> > > +#define MT8195_VDO0_SEL_IN                                 0xf34
+> > > +#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT         (0 <<
+> > > 0)
+> >
+> > Bitshifting 0 by 0 bits == 0, so this is simply 0.
+> >
+> > > +#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1          (1 <<
+> > > 0)
+> >
+> > I would write 0x1 here
+> >
+> > > +#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0         (2 <<
+> > > 0)
+> >
+> > ....and 0x2 here: bitshifting of 0 bits makes little sense.
+> >
+> > > +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
+> > > (0 << 4)
+> >
+> > Bitshifting 0 by 4 bits is still 0, so this is again 0.
+> > This is repeated too many times, so I will not list it for all of the
+> > occurrences.
+> >
+> > > +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE          (1 <<
+> > > 4)
+> >
+> > This is BIT(4).
+> >
+> > > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1
+> > > (0 << 5) > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE
+> > >     (1 << 5)
+> >
+> > ...and this is BIT(5)
+> >
+> > > +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE         (0 <<
+> > > 8)
+> > > +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
+> > > (1 << 8)
+> >
+> > BIT(8)
+> >
+> > > +#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
+> > > (0 << 9)
+> > > +#define MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT          (0 <<
+> > > 12)
+> > > +#define MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE
+> > > (1 << 12)
+> >
+> > BIT(12)
+> >
+> > > +#define MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0          (2 <<
+> > > 12)
+> >
+> > BIT(13)
+> >
+> > ... and please, use the BIT(nr) macro for all these bit definitions,
+> > it's way more
+> > readable like that.
+> >
+> > Regards,
+> > - Angelo
+>
+> Because the HW register design of MT8195_VDO0_SEL_IN 0xf34 is like
+> this:
+>
+> bit[1:0] as MT8195_SEL_IN_VPP_MERGE and
+>   value: 0 as MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
+>   value: 1 as MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1
+>   value: 2 as MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0
+> bit[4:4] as MT8195_SEL_IN_DSC_WRAP0_IN and
+>   value 0 as MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
+>   value 1 as MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE
+> bit[5:5] as MT8195_SEL_IN_DSC_WRAP1_IN and
+>   value 0 as
+> MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1
+>   value 1 as
+> MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE
+> and so on...
+>
+> I think using BIT(nr) macro directly is not easy to debug.
+>
+>
+> Is it better to define another MACRO like this?
+>
+> #define BIT_VAL(val, bit)  ((val) << (bit))
+> #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0  BIT_VAL(0, 4)
+> #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE  BIT_VAL(1, 4)
+> ...
+>
+> or
+>
+> #define MT8195_SEL_IN_DSC_WRAP0_IN (4)
+> #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0  (0
+> << MT8195_SEL_IN_DSC_WRAP0_IN)
+> #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE  (1 <<
+> MT8195_SEL_IN_DSC_WRAP0_IN)
+> ...
+>
+> What do you think?
 
-Which SoC and branch are you testing on?
+Hi Jason,
 
-> For example the mtk-vcodec encoder driver calls
-> "pm_runtime_resume_and_get" only when it starts
-> streaming but
-> buffers allocation is done in 'v4l2_reqbufs' before
-> "pm_runtime_resume_and_get" is called
+If that's the case you can still use BIT(nr) for the definitions and
+describe their usage in the comment, so both code readability and the
+ease of maintenance are preserved, and people can easily tell if there
+are duplicated/missing definitions while reading through the code.
+Adding informative comments is never a bad thing.
 
-This is the case I tried to fix in [14/33].
-pm_runtime_get_if_in_use should return when the iommu device's pm is
-not active when vcodec allocate buffer before pm_runtime_resume_and
-get.
+I would do something like this (and further split the definitions into
+sections by their functionalities with blank lines for visual
+comfort):
 
-Do you have the devicelink patchset in your branch? if not, the vcodec
-should call mtk_smi_larb_get to enable the power/clock for larbs, then
-the iommu's device is active via devicelink between smi and iommu
-device.
+/*
+ * MT8195_VDO0_SEL_IN[1:0]: VPP_MERGE
+ *   0x0 : DSC_WRAP0_OUT
+ *   0x1 : DISP_DITHER1
+ *   0x10: VDO1_VIRTUAL0
+ */
+#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT           0
+#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1            BIT(0)
+#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0           BIT(1)
 
-> and then I see the warning "Partial TLB flush timed out, falling back
-> to full flush"
-> I am not sure how to fix that issue, but it seems that case 'c)'
-> might indicate that
-> power and clock are actually not enabled.
-> 
-> > mapping, the tlb flush is unnecessay since we already have
-> > tlb_flush_all
-> > in the pm_runtime_resume callback. When the iommu's power status is
-> > changed to active, the tlb always is clean.
-> > 
-> > In addition, there still are 2 reasons that don't add PM status
-> > checking
-> > in the tlb flush all:
-> > a) Write tlb flush all register also is ok even though the HW has
-> > no
-> > power and clocks. Write ignore.
-> > b) pm_runtime_get_if_in_use(m4udev) is 0 when the tlb_flush_all
-> > is called frm pm_runtime_resume cb. From this point, we can not add
-> > this code above in this tlb_flush_all.
-> > 
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >   drivers/iommu/mtk_iommu.c | 20 +++++++-------------
-> >   1 file changed, 7 insertions(+), 13 deletions(-)
-> > 
-> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index e9e94944ed91..4a33b6c6b1db 100644
-> > --- a/drivers/iommu/mtk_iommu.c
-> > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -204,10 +204,14 @@ static struct mtk_iommu_domain
-> > *to_mtk_domain(struct iommu_domain *dom)
-> >   	return container_of(dom, struct mtk_iommu_domain, domain);
-> >   }
-> >   
-> > -static void mtk_iommu_tlb_do_flush_all(struct mtk_iommu_data
-> > *data)
-> > +static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
-> >   {
-> >   	unsigned long flags;
-> >   
-> > +	/*
-> > +	 * No need get power status since the HW PM status nearly is
-> > active
-> > +	 * when entering here.
-> > +	 */
-> >   	spin_lock_irqsave(&data->tlb_lock, flags);
-> >   	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
-> >   		       data->base + data->plat_data->inv_sel_reg);
-> > @@ -216,16 +220,6 @@ static void mtk_iommu_tlb_do_flush_all(struct
-> > mtk_iommu_data *data)
-> >   	spin_unlock_irqrestore(&data->tlb_lock, flags);
-> >   }
-> >   
-> > -static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
-> > -{
-> > -	if (pm_runtime_get_if_in_use(data->dev) <= 0)
-> > -		return;
-> > -
-> > -	mtk_iommu_tlb_do_flush_all(data);
-> > -
-> > -	pm_runtime_put(data->dev);
-> > -}
-> > -
-> >   static void mtk_iommu_tlb_flush_range_sync(unsigned long iova,
-> > size_t size,
-> >   					   struct mtk_iommu_data *data)
-> >   {
-> > @@ -263,7 +257,7 @@ static void
-> > mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
-> >   		if (ret) {
-> >   			dev_warn(data->dev,
-> >   				 "Partial TLB flush timed out, falling
-> > back to full flush\n");
-> > -			mtk_iommu_tlb_do_flush_all(data);
-> > +			mtk_iommu_tlb_flush_all(data);
-> >   		}
-> >   
-> >   		if (has_pm)
-> > @@ -993,7 +987,7 @@ static int __maybe_unused
-> > mtk_iommu_runtime_resume(struct device *dev)
-> >   	 *
-> >   	 * Thus, Make sure the tlb always is clean after each PM
-> > resume.
-> >   	 */
-> > -	mtk_iommu_tlb_do_flush_all(data);
-> > +	mtk_iommu_tlb_flush_all(data);
-> >   
-> >   	/*
-> >   	 * Uppon first resume, only enable the clk and return, since
-> > the values of the
-> > 
+/*
+ * MT8195_VDO0_SEL_IN[4:4]: DSC_WRAP0_IN
+ *   0x0: DISP_DITHER0
+ *   0x1: VPP_MERGE
+ */
+#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0         0
+#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE            BIT(4)
+... and so on.
+
+Regards,
+Fei
+
+>
+>
+> Regards,
+> Jason-JH Lin <jason-jh.lin@mediatek.com>
+>
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
