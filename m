@@ -2,14 +2,14 @@ Return-Path: <SRS0=S3hZ=PN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C5908C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 03:58:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 30E28C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 04:04:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 756786103D
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 03:58:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 756786103D
+	by mail.kernel.org (Postfix) with ESMTPS id E2B3660F70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 04:04:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E2B3660F70
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,73 +18,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M0zS8b15qQ/pSQjGFyT5nfYTB3oM+o5IVaTlhoM90tM=; b=eW77t3lZkSbkWS
-	UDAI1LdrtNb/J8IgxIYwhsBALii7R1LkY+yHfo5LOyI8Tcjg55uHA7HlAmE5WtN/7is6MxJytXpMg
-	Yo4egfwcWcLrC5cv1FBt0lZIrgIvuS8c7wJpVLyplHTA3s18t9mAVAjcUVMqdOVJ47ltII8gqJWWD
-	O24OVmySoqTpC90DNIE3uroxRd/0bQC+b8C9B9od7SulxXr1564/PJytWLumXsK4T6uKiVWWqliQ/
-	P1tOU4fkU9NQAWd0zpgTuiGmFX/46vSvUYlBklif4Fk1imEPWZWLxX2OMqCkW6/c1iII40adEUK/B
-	RbElWIzuwP3ZmGpN/6Xg==;
+	List-Owner; bh=NIawi9QMPafKOl2c0c5vBoakvmvqy35dC2rIQNuUoSs=; b=roiMAYv3ER/1QT
+	5Ipnev6+O+flwA4fqQa83RbCkjrV8A79UZsJ1H8JEPAaeRjHTOlIv4DQASX61f8+T1/hah2fbMw/+
+	crc7T7RQsTDB6kGA+rqf3PYwrdCM0mFP7hHxrwhyJEXTf+nrn/ssG+jbZB1NsyiCrKvlz9YA+m1p1
+	P4LiNS5W+cxlDz0ujoEYuq59fJhULtZeP+EIBmg7paHv4AaEfu3A2oePsax46FQU6BqRM/5mhKap6
+	FiPhMTlc7hT1Jo9OdlrimAk5DNptWbn55aflQMi6r6IxY51jXydkkpiTMUdcAatbOpp/av4H1eC2X
+	+Q2Vx2b2PgWDqsF2xI2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mer7a-00FDgB-30; Mon, 25 Oct 2021 03:58:02 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1merDS-00FEMZ-8C; Mon, 25 Oct 2021 04:04:06 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mer7N-00FDdH-1Z; Mon, 25 Oct 2021 03:57:50 +0000
-X-UUID: 4b22ebbaa2854463a5c471b3494580d6-20211024
+ id 1merDO-00FEKw-8V; Mon, 25 Oct 2021 04:04:04 +0000
+X-UUID: e250e49a114446e190ca6cc450100054-20211024
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=cV6dg7PsYHB6+UKop/Sg0rROLJ+oreSSfppKhlC8xGE=; 
- b=nBkGbQeC+Sa3c4WFbs6Ky01mc0hcpUC1VdMIVgp0Ci+nREwXGSXct8xkBhX2s3ToXb8z7bOAWuCxF6sm2/w1ZbvpyLWXSZSkGdcufbA7YrxHi4qeoC1Ri9RoqAAxoOpOmRoxjwmLJ+sjifSy3adpDDGLiZMJznJ7HwbTckMDANs=;
-X-UUID: 4b22ebbaa2854463a5c471b3494580d6-20211024
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=ccPzK7FNitJAyHQG9gzX9D65Nz6meMuwCPEHC4/A0GA=; 
+ b=r5seQ1fGfzsuTK8P0fgBSzHG20y0QJCY6I3lVZpilypgZhQW7W/sJ56QAib/aRno9IthBvuzl8Aym7bKLG7kXC4YrnHSiei8y3P+8Fdqt6iolRRP/ECQKKcmVAAxIZhAPUK5fDgfPuti4Q8DPOdq71dS/GOKfAu93IXb7q1jvss=;
+X-UUID: e250e49a114446e190ca6cc450100054-20211024
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 691523356; Sun, 24 Oct 2021 20:57:44 -0700
+ with ESMTP id 1505719341; Sun, 24 Oct 2021 21:03:57 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Oct 2021 20:57:42 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ 15.0.1497.2; Sun, 24 Oct 2021 21:03:55 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 25 Oct 2021 11:57:40 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ Mon, 25 Oct 2021 12:03:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Oct 2021 11:57:39 +0800
-Message-ID: <15d4ccb984f9e3919d6d7535d05aec0332dbe301.camel@mediatek.com>
-Subject: Re: [PATCH v8 04/12] iommu/mediatek: Add device_link between the
- consumer and the larb devices
+ Transport; Mon, 25 Oct 2021 12:03:53 +0800
+Message-ID: <f0e2ebf98481ee2ae8b88565a337e773532ddffd.camel@mediatek.com>
+Subject: Re: [PATCH v3 13/33] iommu/mediatek: Remove the power status
+ checking in tlb flush all
 From: Yong Wu <yong.wu@mediatek.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>
-CC: Evan Green <evgreen@chromium.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, Will Deacon <will.deacon@arm.com>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
- <youlin.pei@mediatek.com>, Matthias Kaehlcke <mka@chromium.org>,
- <anan.sun@mediatek.com>, <yi.kuo@mediatek.com>, <acourbot@chromium.org>,
- <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>, "Daniel
- Vetter" <daniel@ffwll.ch>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Hsin-Yi Wang <hsinyi@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- <anthony.huang@mediatek.com>, Frank Wunderlich <frank-w@public-files.de>
-Date: Mon, 25 Oct 2021 11:57:39 +0800
-In-Reply-To: <da5934de-65ad-4bac-c510-eb0d40d96d70@collabora.com>
-References: <20210929013719.25120-1-yong.wu@mediatek.com>
- <20210929013719.25120-5-yong.wu@mediatek.com>
- <e00b92db-0562-27ca-2f96-1f03ff824988@collabora.com>
- <e4c98036dd73b91b8352a162f80240171e2b3f0f.camel@mediatek.com>
- <da5934de-65ad-4bac-c510-eb0d40d96d70@collabora.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Joerg Roedel
+ <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, Robin Murphy
+ <robin.murphy@arm.com>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
+ <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <chao.hao@mediatek.com>,
+ <yen-chang.chen@mediatek.com>, Collabora Kernel ML <kernel@collabora.com>
+Date: Mon, 25 Oct 2021 12:03:53 +0800
+In-Reply-To: <6cff0b97-b861-e02d-e76f-2510c962c452@collabora.com>
+References: <20210923115840.17813-1-yong.wu@mediatek.com>
+ <20210923115840.17813-14-yong.wu@mediatek.com>
+ <6cff0b97-b861-e02d-e76f-2510c962c452@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211024_205749_101268_937A797C 
-X-CRM114-Status: GOOD (  44.98  )
+X-CRM114-CacheID: sfid-20211024_210403_410337_5447A69D 
+X-CRM114-Status: GOOD (  38.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,153 +93,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-10-18 at 09:13 +0200, Dafna Hirschfeld wrote:
+On Fri, 2021-10-22 at 16:03 +0200, Dafna Hirschfeld wrote:
+> Hi
 > 
-> On 16.10.21 04:23, Yong Wu wrote:
-> > On Mon, 2021-10-11 at 14:36 +0200, Dafna Hirschfeld wrote:
-> > > 
-> > > On 29.09.21 03:37, Yong Wu wrote:
-> > > > MediaTek IOMMU-SMI diagram is like below. all the consumer
-> > > > connect
-> > > > with
-> > > > smi-larb, then connect with smi-common.
-> > > > 
-> > > >           M4U
-> > > >            |
-> > > >       smi-common
-> > > >            |
-> > > >     -------------
-> > > >     |         |    ...
-> > > >     |         |
-> > > > larb1     larb2
-> > > >     |         |
-> > > > vdec       venc
-> > > > 
-> > > > When the consumer works, it should enable the smi-larb's power
-> > > > which
-> > > > also need enable the smi-common's power firstly.
-> > > > 
-> > > > Thus, First of all, use the device link connect the consumer
-> > > > and
-> > > > the
-> > > > smi-larbs. then add device link between the smi-larb and smi-
-> > > > common.
-> > > > 
-> > > > This patch adds device_link between the consumer and the larbs.
-> > > > 
-> > > > When device_link_add, I add the flag DL_FLAG_STATELESS to avoid
-> > > > calling
-> > > > pm_runtime_xx to keep the original status of clocks. It can
-> > > > avoid
-> > > > two
-> > > > issues:
-> > > > 1) Display HW show fastlogo abnormally reported in [1]. At the
-> > > > beggining,
-> > > > all the clocks are enabled before entering kernel, but the
-> > > > clocks
-> > > > for
-> > > > display HW(always in larb0) will be gated after clk_enable and
-> > > > clk_disable
-> > > > called from device_link_add(->pm_runtime_resume) and rpm_idle.
-> > > > The
-> > > > clock
-> > > > operation happened before display driver probe. At that time,
-> > > > the
-> > > > display
-> > > > HW will be abnormal.
-> > > > 
-> > > > 2) A deadlock issue reported in [2]. Use DL_FLAG_STATELESS to
-> > > > skip
-> > > > pm_runtime_xx to avoid the deadlock.
-> > > > 
-> > > > Corresponding, DL_FLAG_AUTOREMOVE_CONSUMER can't be added, then
-> > > > device_link_removed should be added explicitly.
-> > > > 
-> > > > [1]
-> > > > 
-https://lore.kernel.org/linux-mediatek/1564213888.22908.4.camel@mhfsdcap03/
-> > > > [2] https://lore.kernel.org/patchwork/patch/1086569/
-> > > > 
-> > > > Suggested-by: Tomasz Figa <tfiga@chromium.org>
-> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-
-> > > > R2/MT7623
-> > > > ---
-> > > >    drivers/iommu/mtk_iommu.c    | 22 ++++++++++++++++++++++
-> > > >    drivers/iommu/mtk_iommu_v1.c | 20 +++++++++++++++++++-
-> > > >    2 files changed, 41 insertions(+), 1 deletion(-)
-> > > > 
-> > > > diff --git a/drivers/iommu/mtk_iommu.c
-> > > > b/drivers/iommu/mtk_iommu.c
-> > > > index d5848f78a677..a2fa55899434 100644
-> > > > --- a/drivers/iommu/mtk_iommu.c
-> > > > +++ b/drivers/iommu/mtk_iommu.c
-> > > > @@ -560,22 +560,44 @@ static struct iommu_device
-> > > > *mtk_iommu_probe_device(struct device *dev)
-> > > >    {
-> > > >    	struct iommu_fwspec *fwspec =
-> > > > dev_iommu_fwspec_get(dev);
-> > > >    	struct mtk_iommu_data *data;
-> > > > +	struct device_link *link;
-> > > > +	struct device *larbdev;
-> > > > +	unsigned int larbid;
-> > > >    
-> > > >    	if (!fwspec || fwspec->ops != &mtk_iommu_ops)
-> > > >    		return ERR_PTR(-ENODEV); /* Not a iommu client
-> > > > device
-> > > > */
-> > > >    
-> > > >    	data = dev_iommu_priv_get(dev);
-> > > >    
-> > > > +	/*
-> > > > +	 * Link the consumer device with the smi-larb
-> > > > device(supplier)
-> > > > +	 * The device in each a larb is a independent HW. thus
-> > > > only
-> > > > link
-> > > > +	 * one larb here.
-> > > > +	 */
-> > > > +	larbid = MTK_M4U_TO_LARB(fwspec->ids[0]);
-> > > 
-> > > so larbid is always the same for all the ids of a device?
-> > 
-> > Yes. For me, each a dtsi node should represent a HW unit which can
-> > only
-> > connect one larb.
-> > 
-> > > If so maybe it worth testing it and return error if this is not
-> > > the
-> > > case.
-> > 
-> > Thanks for the suggestion. This is very helpful. I did see someone
-> > put
-> > the different larbs in one node. I will check this, and add return
 > 
-> I am working on bugs found on media drivers, could you please point
-> me to
-> that wrong node?
-> Will you send a fix to that node in the dtsi?
+> On 23.09.21 13:58, Yong Wu wrote:
+> > To simplify the code, Remove the power status checking in the
+> > tlb_flush_all, remove this:
+> >     if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> > 	    continue;
+> > 
+> > After this patch, the mtk_iommu_tlb_flush_all will be called from
+> > a) isr
+> > b) pm runtime resume callback
+> > c) tlb flush range fail case
+> > d) iommu_create_device_direct_mappings
+> >     -> iommu_flush_iotlb_all
+> > In first three cases, the power and clock always are enabled; d) is
+> > direct
+> 
+> Regarding case "c) tlb flush range fail case", I found out that this
+> often happens when the iommu is used while it is runtime suspended. 
 
-sorry. I mean it happened in the internal branch and it has already
-been fixed internally,  all the upstream nodes are ok for this.
+Which SoC and branch are you testing on?
 
-Thanks
+> For example the mtk-vcodec encoder driver calls
+> "pm_runtime_resume_and_get" only when it starts
+> streaming but
+> buffers allocation is done in 'v4l2_reqbufs' before
+> "pm_runtime_resume_and_get" is called
+
+This is the case I tried to fix in [14/33].
+pm_runtime_get_if_in_use should return when the iommu device's pm is
+not active when vcodec allocate buffer before pm_runtime_resume_and
+get.
+
+Do you have the devicelink patchset in your branch? if not, the vcodec
+should call mtk_smi_larb_get to enable the power/clock for larbs, then
+the iommu's device is active via devicelink between smi and iommu
+device.
+
+> and then I see the warning "Partial TLB flush timed out, falling back
+> to full flush"
+> I am not sure how to fix that issue, but it seems that case 'c)'
+> might indicate that
+> power and clock are actually not enabled.
 > 
-> 
-> Thanks,
-> Dafna
-> 
-> > EINVAL for this case.
-> 
-> 
-> 
+> > mapping, the tlb flush is unnecessay since we already have
+> > tlb_flush_all
+> > in the pm_runtime_resume callback. When the iommu's power status is
+> > changed to active, the tlb always is clean.
 > > 
-> > > 
-> > > Thanks,
-> > > Dafna
+> > In addition, there still are 2 reasons that don't add PM status
+> > checking
+> > in the tlb flush all:
+> > a) Write tlb flush all register also is ok even though the HW has
+> > no
+> > power and clocks. Write ignore.
+> > b) pm_runtime_get_if_in_use(m4udev) is 0 when the tlb_flush_all
+> > is called frm pm_runtime_resume cb. From this point, we can not add
+> > this code above in this tlb_flush_all.
 > > 
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >   drivers/iommu/mtk_iommu.c | 20 +++++++-------------
+> >   1 file changed, 7 insertions(+), 13 deletions(-)
+> > 
+> > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> > index e9e94944ed91..4a33b6c6b1db 100644
+> > --- a/drivers/iommu/mtk_iommu.c
+> > +++ b/drivers/iommu/mtk_iommu.c
+> > @@ -204,10 +204,14 @@ static struct mtk_iommu_domain
+> > *to_mtk_domain(struct iommu_domain *dom)
+> >   	return container_of(dom, struct mtk_iommu_domain, domain);
+> >   }
 > >   
-> > > > 
+> > -static void mtk_iommu_tlb_do_flush_all(struct mtk_iommu_data
+> > *data)
+> > +static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+> >   {
+> >   	unsigned long flags;
+> >   
+> > +	/*
+> > +	 * No need get power status since the HW PM status nearly is
+> > active
+> > +	 * when entering here.
+> > +	 */
+> >   	spin_lock_irqsave(&data->tlb_lock, flags);
+> >   	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+> >   		       data->base + data->plat_data->inv_sel_reg);
+> > @@ -216,16 +220,6 @@ static void mtk_iommu_tlb_do_flush_all(struct
+> > mtk_iommu_data *data)
+> >   	spin_unlock_irqrestore(&data->tlb_lock, flags);
+> >   }
+> >   
+> > -static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+> > -{
+> > -	if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> > -		return;
+> > -
+> > -	mtk_iommu_tlb_do_flush_all(data);
+> > -
+> > -	pm_runtime_put(data->dev);
+> > -}
+> > -
+> >   static void mtk_iommu_tlb_flush_range_sync(unsigned long iova,
+> > size_t size,
+> >   					   struct mtk_iommu_data *data)
+> >   {
+> > @@ -263,7 +257,7 @@ static void
+> > mtk_iommu_tlb_flush_range_sync(unsigned long iova, size_t size,
+> >   		if (ret) {
+> >   			dev_warn(data->dev,
+> >   				 "Partial TLB flush timed out, falling
+> > back to full flush\n");
+> > -			mtk_iommu_tlb_do_flush_all(data);
+> > +			mtk_iommu_tlb_flush_all(data);
+> >   		}
+> >   
+> >   		if (has_pm)
+> > @@ -993,7 +987,7 @@ static int __maybe_unused
+> > mtk_iommu_runtime_resume(struct device *dev)
+> >   	 *
+> >   	 * Thus, Make sure the tlb always is clean after each PM
+> > resume.
+> >   	 */
+> > -	mtk_iommu_tlb_do_flush_all(data);
+> > +	mtk_iommu_tlb_flush_all(data);
+> >   
+> >   	/*
+> >   	 * Uppon first resume, only enable the clk and return, since
+> > the values of the
+> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
