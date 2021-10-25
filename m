@@ -2,14 +2,14 @@ Return-Path: <SRS0=S3hZ=PN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BFAFFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 02:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id F1297C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 02:44:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 732FE61029
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 02:31:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 732FE61029
+	by mail.kernel.org (Postfix) with ESMTPS id 9710760F9B
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 02:44:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9710760F9B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,58 +18,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QpNM5QejnJytM8VoVN/PJex9pjSpRYV8jdIxA6hMW9A=; b=IkgCve258w8cbt
-	oNqGXNru/trRMq+Iv8VzGl8TSJ9VC+Z1KQJokei3nvJzRDmGCX5ERy4QRs8yWdRKRMEexHvTfkd15
-	5hf+mZK9JiyufK9e3GMLDfKqtnuXkiqaYSZngzbLFD/SyTgkvPanT+nSF+VzQ8w6NghjT/KGofAZk
-	IQRJ2KP9bgC5k83K//dLPqgHM4GdYkghnk/eGNhF8F+9INr19tDhmyIbVEGSx0JeNKIJd5vAoDcrb
-	QeV8noWtf/46Ke1os7zkn4/wXNIc8KxIISiManyhdFWoi7fH6gaNb4mMKiP6nytc7IbkZPK0FDfNf
-	cvjpyncNzxb7Xj+bYRTA==;
+	List-Owner; bh=TzK8XMuw60VBTYbHeMj/tFwEmexxXJldO3XEiim45po=; b=ZOfbRdnSVmNgwW
+	dQeGNtYbAnVktKxJEmm26zlfn7M7UsRDJ3PH5KsuWfwQnRACTKvbzDiycUGaZbGwAeTDj7M0jGmjV
+	9GKLYs5F4bn/jEiy3Op82VakZuEbxB6QdQSiDsAHiH7qgCt7UUZULqgJ9r7RhSK9RIDhCfDISNPzl
+	1OVfX65ufjZj7POpslGjQkHNbcOOwZic4Ptjoqg8aBcRqLqJkc7plgscti0SBEtgxC0Thoj4KNwPX
+	id3SfDxEvOgFv9GmVONAIIX9HJXbdMFmBdVoTM8Wwq0S0y+nozn/U03qDcvVejcrkIYVfA421qw6S
+	/V4FBMmzuZG2ofiPsYHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mepm2-00F1fg-Fm; Mon, 25 Oct 2021 02:31:42 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mepxm-00F2vl-FU; Mon, 25 Oct 2021 02:43:50 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1meply-00F1fG-HS; Mon, 25 Oct 2021 02:31:40 +0000
-X-UUID: 6f09d7a06f1048e98eb512d730484abf-20211024
-X-UUID: 6f09d7a06f1048e98eb512d730484abf-20211024
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1mepxi-00F2v9-Eo; Mon, 25 Oct 2021 02:43:49 +0000
+X-UUID: 0c38548f27434c4a901be924649ebb1e-20211024
+X-UUID: 0c38548f27434c4a901be924649ebb1e-20211024
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1099601627; Sun, 24 Oct 2021 19:31:36 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Oct 2021 19:24:12 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 25 Oct 2021 10:24:11 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 1630638622; Sun, 24 Oct 2021 19:43:40 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Oct 2021 19:42:13 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 25 Oct 2021 10:42:12 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Oct 2021 10:24:11 +0800
-Message-ID: <5c229ae00ab4330dfec01171e41ab1eb9383c231.camel@mediatek.com>
-Subject: Re: [PATCH v6 13/16] drm/mediatek: add ETHDR support for MT8195
+ Transport; Mon, 25 Oct 2021 10:42:11 +0800
+Message-ID: <836ece39af160368ecdbfece2b389143af81c9e9.camel@mediatek.com>
+Subject: Re: [PATCH v6 14/16] drm/mediatek: add ovl_adaptor support for MT8195
 From: Nancy.Lin <nancy.lin@mediatek.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-CC: CK Hu <ck.hu@mediatek.com>, Philipp Zabel <p.zabel@pengutronix.de>, "David
- Airlie" <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "jason-jh .
- lin" <jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>, 
- DRI Development <dri-devel@lists.freedesktop.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, DTML
- <devicetree@vger.kernel.org>, linux-kernel <linux-kernel@vger.kernel.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>, 
- srv_heupstream <srv_heupstream@mediatek.com>
-Date: Mon, 25 Oct 2021 10:24:11 +0800
-In-Reply-To: <CAAOTY_9jz7wnKHm+S5d1NVp+GnPCUBrrGU3sTP9zGJYTfDsM-Q@mail.gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "CK
+ Hu" <ck.hu@mediatek.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>,
+ <srv_heupstream@mediatek.com>
+Date: Mon, 25 Oct 2021 10:42:11 +0800
+In-Reply-To: <8a7c0988-b07c-7972-d85e-065b30ec8a1b@collabora.com>
 References: <20211004062140.29803-1-nancy.lin@mediatek.com>
- <20211004062140.29803-14-nancy.lin@mediatek.com>
- <CAAOTY_9jz7wnKHm+S5d1NVp+GnPCUBrrGU3sTP9zGJYTfDsM-Q@mail.gmail.com>
+ <20211004062140.29803-15-nancy.lin@mediatek.com>
+ <8a7c0988-b07c-7972-d85e-065b30ec8a1b@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211024_193138_597823_C496ADC6 
-X-CRM114-Status: GOOD (  28.84  )
+X-CRM114-CacheID: sfid-20211024_194346_520212_D9D62A18 
+X-CRM114-Status: GOOD (  31.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,196 +82,681 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQ2h1bi1LdWFuZywKClRoYW5rcyBmb3IgdGhlIHJldmlldy4KCk9uIFRodSwgMjAyMS0xMC0y
-MSBhdCAyMzo0NCArMDgwMCwgQ2h1bi1LdWFuZyBIdSB3cm90ZToKPiBIaSwgTmFuY3k6Cj4gCj4g
-TmFuY3kuTGluIDxuYW5jeS5saW5AbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5tDEw5pyINOaXpSDp
-gLHkuIAg5LiL5Y2IMjoyMuWvq+mBk++8mgo+ID4gCj4gPiBFVEhEUiBpcyBhIHBhcnQgb2Ygb3Zs
-X2FkYXB0b3IuCj4gPiBFVEhEUiBpcyBkZXNpZ25lZCBmb3IgSERSIHZpZGVvIGFuZCBncmFwaGlj
-cyBjb252ZXJzaW9uIGluIHRoZQo+ID4gZXh0ZXJuYWwKPiA+IGRpc3BsYXkgcGF0aC4gSXQgaGFu
-ZGxlcyBtdWx0aXBsZSBIRFIgaW5wdXQgdHlwZXMgYW5kIHBlcmZvcm1zIHRvbmUKPiA+IG1hcHBp
-bmcsIGNvbG9yIHNwYWNlL2NvbG9yIGZvcm1hdCBjb252ZXJzaW9uLCBhbmQgdGhlbiBjb21iaW5l
-Cj4gPiBkaWZmZXJlbnQgbGF5ZXJzLCBvdXRwdXQgdGhlIHJlcXVpcmVkIEhEUiBvciBTRFIgc2ln
-bmFsIHRvIHRoZQo+ID4gc3Vic2VxdWVudCBkaXNwbGF5IHBhdGguCj4gPiAKPiA+IFNpZ25lZC1v
-ZmYtYnk6IE5hbmN5LkxpbiA8bmFuY3kubGluQG1lZGlhdGVrLmNvbT4KPiA+IC0tLQo+ID4gIGRy
-aXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZSAgICB8ICAgMSArCj4gPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19ldGhkci5jIHwgNDAzCj4gPiArKysrKysrKysrKysrKysrKysr
-KysrKysrKysKPiA+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2V0aGRyLmggfCAgMjUg
-KysKPiA+ICAzIGZpbGVzIGNoYW5nZWQsIDQyOSBpbnNlcnRpb25zKCspCj4gPiAgY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZXRoZHIuYwo+ID4gIGNyZWF0
-ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2V0aGRyLmgKPiA+IAo+
-ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9NYWtlZmlsZQo+ID4gYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUKPiA+IGluZGV4IDZlNjA0YTkzM2VkMC4u
-ZmIxNThhMWU3ZjA2IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL01h
-a2VmaWxlCj4gPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvTWFrZWZpbGUKPiA+IEBA
-IC0xNCw2ICsxNCw3IEBAIG1lZGlhdGVrLWRybS15IDo9IG10a19kaXNwX2FhbC5vIFwKPiA+ICAg
-ICAgICAgICAgICAgICAgIG10a19kcm1fcGxhbmUubyBcCj4gPiAgICAgICAgICAgICAgICAgICBt
-dGtfZHNpLm8gXAo+ID4gICAgICAgICAgICAgICAgICAgbXRrX2RwaS5vIFwKPiA+ICsgICAgICAg
-ICAgICAgICAgIG10a19ldGhkci5vIFwKPiA+ICAgICAgICAgICAgICAgICAgIG10a19tZHBfcmRt
-YS5vCj4gPiAKPiA+ICBvYmotJChDT05GSUdfRFJNX01FRElBVEVLKSArPSBtZWRpYXRlay1kcm0u
-bwo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZXRoZHIuYwo+
-ID4gYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2V0aGRyLmMKPiA+IG5ldyBmaWxlIG1v
-ZGUgMTAwNjQ0Cj4gPiBpbmRleCAwMDAwMDAwMDAwMDAuLjk5ZTVhOTVhZWJlZAo+ID4gLS0tIC9k
-ZXYvbnVsbAo+ID4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19ldGhkci5jCj4g
-PiBAQCAtMCwwICsxLDQwMyBAQAo+ID4gKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwt
-Mi4wLW9ubHkKPiA+ICsvKgo+ID4gKyAqIENvcHlyaWdodCAoYykgMjAyMSBNZWRpYVRlayBJbmMu
-Cj4gPiArICovCj4gPiArCj4gPiArI2luY2x1ZGUgPGRybS9kcm1fZm91cmNjLmg+Cj4gPiArI2lu
-Y2x1ZGUgPGxpbnV4L2Nsay5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9yZXNldC5oPgo+ID4gKyNp
-bmNsdWRlIDxsaW51eC9jb21wb25lbnQuaD4KPiA+ICsjaW5jbHVkZSA8bGludXgvb2ZfZGV2aWNl
-Lmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L29mX2FkZHJlc3MuaD4KPiA+ICsjaW5jbHVkZSA8bGlu
-dXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L3NvYy9tZWRpYXRlay9t
-dGstY21kcS5oPgo+ID4gKyNpbmNsdWRlIDxsaW51eC9zb2MvbWVkaWF0ZWsvbXRrLW1tc3lzLmg+
-Cj4gPiArCj4gPiArI2luY2x1ZGUgIm10a19kcm1fY3J0Yy5oIgo+ID4gKyNpbmNsdWRlICJtdGtf
-ZHJtX2RkcF9jb21wLmgiCj4gPiArI2luY2x1ZGUgIm10a19kcm1fZHJ2LmgiCj4gPiArI2luY2x1
-ZGUgIm10a19ldGhkci5oIgo+ID4gKwo+ID4gKyNkZWZpbmUgTUlYX0lOVEVOICAgICAgICAgICAg
-ICAweDQKPiA+ICsgICAgICAgI2RlZmluZSBNSVhfRk1FX0NQTF9JTlRFTiAgICAgICBCSVQoMSkK
-PiAKPiBBbGlnbiB0aGUgaW5kZW50IHdpdGggbWRwIHJkbWEgZHJpdmVyLgo+IApPSy4KPiA+ICsj
-ZGVmaW5lIE1JWF9JTlRTVEEgICAgICAgICAgICAgMHg4Cj4gPiArI2RlZmluZSBNSVhfRU4gICAg
-ICAgICAgICAgICAgIDB4Ywo+ID4gKyNkZWZpbmUgTUlYX1JTVCAgICAgICAgICAgICAgICAgICAg
-ICAgIDB4MTQKPiA+ICsjZGVmaW5lIE1JWF9ST0lfU0laRSAgICAgICAgICAgMHgxOAo+ID4gKyNk
-ZWZpbmUgTUlYX0RBVEFQQVRIX0NPTiAgICAgICAweDFjCj4gPiArICAgICAgICNkZWZpbmUgT1VU
-UFVUX05PX1JORCAgIEJJVCgzKQo+ID4gKyAgICAgICAjZGVmaW5lIFNPVVJDRV9SR0JfU0VMICBC
-SVQoNykKPiA+ICsgICAgICAgI2RlZmluZSBCQUNLR1JPVU5EX1JFTEFZICAgICAgICAoNCA8PCA5
-KQo+ID4gKyNkZWZpbmUgTUlYX1JPSV9CR0NMUiAgICAgICAgICAweDIwCj4gPiArICAgICAgICNk
-ZWZpbmUgQkdDTFJfQkxBQ0sgICAgIDB4ZmYwMDAwMDAKPiA+ICsjZGVmaW5lIE1JWF9TUkNfQ09O
-ICAgICAgICAgICAgMHgyNAo+ID4gKyAgICAgICAjZGVmaW5lIE1JWF9TUkNfTDBfRU4gICBCSVQo
-MCkKPiA+ICsjZGVmaW5lIE1JWF9MX1NSQ19DT04obikgICAgICAgKDB4MjggKyAweDE4ICogKG4p
-KQo+ID4gKyAgICAgICAjZGVmaW5lIE5PTl9QUkVNVUxUSV9TT1VSQ0UgKDIgPDwgMTIpCj4gPiAr
-I2RlZmluZSBNSVhfTF9TUkNfU0laRShuKSAgICAgICgweDMwICsgMHgxOCAqIChuKSkKPiA+ICsj
-ZGVmaW5lIE1JWF9MX1NSQ19PRkZTRVQobikgICAgKDB4MzQgKyAweDE4ICogKG4pKQo+ID4gKyNk
-ZWZpbmUgTUlYX0ZVTkNfRENNMCAgICAgICAgICAweDEyMAo+ID4gKyNkZWZpbmUgTUlYX0ZVTkNf
-RENNMSAgICAgICAgICAweDEyNAo+ID4gKyAgICAgICAjZGVmaW5lIE1JWF9GVU5DX0RDTV9FTkFC
-TEUgMHhmZmZmZmZmZgo+ID4gKwo+ID4gKyNkZWZpbmUgSERSX1ZET19GRV8wODA0X0hEUl9ETV9G
-RSAgICAgIDB4ODA0Cj4gPiArICAgICAgICNkZWZpbmUgSERSX1ZET19GRV8wODA0X0JZUEFTU19B
-TEwgICAgICAweGZkCj4gPiArI2RlZmluZSBIRFJfR0ZYX0ZFXzAyMDRfR0ZYX0hEUl9GRSAgICAg
-MHgyMDQKPiA+ICsgICAgICAgI2RlZmluZSBIRFJfR0ZYX0ZFXzAyMDRfQllQQVNTX0FMTCAgICAg
-IDB4ZmQKPiA+ICsjZGVmaW5lIEhEUl9WRE9fQkVfMDIwNF9WRE9fRE1fQkUgICAgICAweDIwNAo+
-ID4gKyAgICAgICAjZGVmaW5lIEhEUl9WRE9fQkVfMDIwNF9CWVBBU1NfQUxMICAgICAgMHg3ZQo+
-ID4gKwo+ID4gKyNkZWZpbmUgTUlYRVJfSU54X01PREVfQllQQVNTIDAKPiAKPiBNSVhFUl9JTlhf
-TU9ERV9CWVBBU1MKPiAKT0suCj4gPiArI2RlZmluZSBNSVhFUl9JTnhfTU9ERV9FVkVOX0VYVEVO
-RCAxCj4gPiArI2RlZmluZSBNSVhFUl9JTnhfTU9ERV9PRERfRVhURU5EIDIKPiA+ICsjZGVmaW5l
-IERFRkFVTFRfOUJJVF9BTFBIQSAgICAgMHgxMDAKPiA+ICsjZGVmaW5lICAgICAgICBNSVhFUl9B
-TFBIQV9BRU4gICAgICAgICBCSVQoOCkKPiA+ICsjZGVmaW5lICAgICAgICBNSVhFUl9BTFBIQSAg
-ICAgICAgICAgICAweGZmCj4gPiArI2RlZmluZSBFVEhEUl9DTEtfTlVNICAgICAgICAgIDEzCj4g
-PiArCj4gPiArZW51bSBtdGtfZXRoZHJfY29tcF9pZCB7Cj4gPiArICAgICAgIEVUSERSX01JWEVS
-LAo+ID4gKyAgICAgICBFVEhEUl9WRE9fRkUwLAo+ID4gKyAgICAgICBFVEhEUl9WRE9fRkUxLAo+
-ID4gKyAgICAgICBFVEhEUl9HRlhfRkUwLAo+ID4gKyAgICAgICBFVEhEUl9HRlhfRkUxLAo+ID4g
-KyAgICAgICBFVEhEUl9WRE9fQkUsCj4gPiArICAgICAgIEVUSERSX0FETF9EUywKPiA+ICsgICAg
-ICAgRVRIRFJfSURfTUFYCj4gPiArfTsKPiA+ICsKPiA+ICtzdHJ1Y3QgbXRrX2V0aGRyX2NvbXAg
-ewo+ID4gKyAgICAgICBzdHJ1Y3QgZGV2aWNlICpkZXY7Cj4gPiArICAgICAgIHZvaWQgX19pb21l
-bSAqcmVnczsKPiA+ICsgICAgICAgc3RydWN0IGNtZHFfY2xpZW50X3JlZyBjbWRxX2Jhc2U7Cj4g
-PiArfTsKPiA+ICsKPiA+ICtzdHJ1Y3QgbXRrX2V0aGRyIHsKPiA+ICsgICAgICAgc3RydWN0IG10
-a19ldGhkcl9jb21wIGV0aGRyX2NvbXBbRVRIRFJfSURfTUFYXTsKPiA+ICsgICAgICAgc3RydWN0
-IGNsa19idWxrX2RhdGEgZXRoZHJfY2xrW0VUSERSX0NMS19OVU1dOwo+ID4gKyAgICAgICBzdHJ1
-Y3QgZGV2aWNlICptbXN5c19kZXY7Cj4gPiArICAgICAgIHNwaW5sb2NrX3QgbG9jazsgLyogcHJv
-dGVjdHMgdmJsYW5rX2NiIGFuZCB2YmxhbmtfY2JfZGF0YQo+ID4gKi8KPiA+ICsgICAgICAgdm9p
-ZCAoKnZibGFua19jYikodm9pZCAqZGF0YSk7Cj4gPiArICAgICAgIHZvaWQgKnZibGFua19jYl9k
-YXRhOwo+ID4gKyAgICAgICBpbnQgaXJxOwo+ID4gK307Cj4gPiArCj4gPiArc3RhdGljIGNvbnN0
-IGNoYXIgKiBjb25zdCBldGhkcl9jb21wX3N0cltdID0gewo+ID4gKyAgICAgICAiRVRIRFJfTUlY
-RVIiLAo+ID4gKyAgICAgICAiRVRIRFJfVkRPX0ZFMCIsCj4gPiArICAgICAgICJFVEhEUl9WRE9f
-RkUxIiwKPiA+ICsgICAgICAgIkVUSERSX0dGWF9GRTAiLAo+ID4gKyAgICAgICAiRVRIRFJfR0ZY
-X0ZFMSIsCj4gPiArICAgICAgICJFVEhEUl9WRE9fQkUiLAo+ID4gKyAgICAgICAiRVRIRFJfQURM
-X0RTIiwKPiA+ICsgICAgICAgIkVUSERSX0lEX01BWCIKPiA+ICt9Owo+ID4gKwo+ID4gK3N0YXRp
-YyBjb25zdCBjaGFyICogY29uc3QgZXRoZHJfY2xrX3N0cltdID0gewo+ID4gKyAgICAgICAiZXRo
-ZHJfdG9wIiwKPiA+ICsgICAgICAgIm1peGVyIiwKPiA+ICsgICAgICAgInZkb19mZTAiLAo+ID4g
-KyAgICAgICAidmRvX2ZlMSIsCj4gPiArICAgICAgICJnZnhfZmUwIiwKPiA+ICsgICAgICAgImdm
-eF9mZTEiLAo+ID4gKyAgICAgICAidmRvX2JlIiwKPiA+ICsgICAgICAgImFkbF9kcyIsCj4gPiAr
-ICAgICAgICJ2ZG9fZmUwX2FzeW5jIiwKPiA+ICsgICAgICAgInZkb19mZTFfYXN5bmMiLAo+ID4g
-KyAgICAgICAiZ2Z4X2ZlMF9hc3luYyIsCj4gPiArICAgICAgICJnZnhfZmUxX2FzeW5jIiwKPiA+
-ICsgICAgICAgInZkb19iZV9hc3luYyIsCj4gPiArfTsKPiA+ICsKPiA+ICt2b2lkIG10a19ldGhk
-cl9lbmFibGVfdmJsYW5rKHN0cnVjdCBkZXZpY2UgKmRldiwKPiA+ICsgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgdm9pZCAoKnZibGFua19jYikodm9pZCAqKSwKPiA+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgdm9pZCAqdmJsYW5rX2NiX2RhdGEpCj4gPiArewo+ID4gKyAgICAgICBz
-dHJ1Y3QgbXRrX2V0aGRyICpwcml2ID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gPiArICAgICAg
-IHVuc2lnbmVkIGxvbmcgZmxhZ3M7Cj4gPiArCj4gPiArICAgICAgIHNwaW5fbG9ja19pcnFzYXZl
-KCZwcml2LT5sb2NrLCBmbGFncyk7Cj4gPiArICAgICAgIHByaXYtPnZibGFua19jYiA9IHZibGFu
-a19jYjsKPiA+ICsgICAgICAgcHJpdi0+dmJsYW5rX2NiX2RhdGEgPSB2YmxhbmtfY2JfZGF0YTsK
-PiA+ICsgICAgICAgc3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmcHJpdi0+bG9jaywgZmxhZ3MpOwo+
-ID4gKwo+ID4gKyAgICAgICB3cml0ZWwoTUlYX0ZNRV9DUExfSU5URU4sIHByaXYtCj4gPiA+ZXRo
-ZHJfY29tcFtFVEhEUl9NSVhFUl0ucmVncyArIE1JWF9JTlRFTik7Cj4gPiArfQo+ID4gKwo+ID4g
-K3ZvaWQgbXRrX2V0aGRyX2Rpc2FibGVfdmJsYW5rKHN0cnVjdCBkZXZpY2UgKmRldikKPiA+ICt7
-Cj4gPiArICAgICAgIHN0cnVjdCBtdGtfZXRoZHIgKnByaXYgPSBkZXZfZ2V0X2RydmRhdGEoZGV2
-KTsKPiA+ICsgICAgICAgdW5zaWduZWQgbG9uZyBmbGFnczsKPiA+ICsKPiA+ICsgICAgICAgc3Bp
-bl9sb2NrX2lycXNhdmUoJnByaXYtPmxvY2ssIGZsYWdzKTsKPiA+ICsgICAgICAgcHJpdi0+dmJs
-YW5rX2NiID0gTlVMTDsKPiA+ICsgICAgICAgcHJpdi0+dmJsYW5rX2NiX2RhdGEgPSBOVUxMOwo+
-ID4gKyAgICAgICBzcGluX3VubG9ja19pcnFyZXN0b3JlKCZwcml2LT5sb2NrLCBmbGFncyk7Cj4g
-PiArCj4gPiArICAgICAgIHdyaXRlbCgweDAsIHByaXYtPmV0aGRyX2NvbXBbRVRIRFJfTUlYRVJd
-LnJlZ3MgKwo+ID4gTUlYX0lOVEVOKTsKPiA+ICt9Cj4gPiArCj4gPiArc3RhdGljIGlycXJldHVy
-bl90IG10a19ldGhkcl9pcnFfaGFuZGxlcihpbnQgaXJxLCB2b2lkICpkZXZfaWQpCj4gPiArewo+
-ID4gKyAgICAgICBzdHJ1Y3QgbXRrX2V0aGRyICpwcml2ID0gZGV2X2lkOwo+ID4gKyAgICAgICB1
-bnNpZ25lZCBsb25nIGZsYWdzOwo+ID4gKwo+ID4gKyAgICAgICB3cml0ZWwoMHgwLCBwcml2LT5l
-dGhkcl9jb21wW0VUSERSX01JWEVSXS5yZWdzICsKPiA+IE1JWF9JTlRTVEEpOwo+ID4gKwo+ID4g
-KyAgICAgICBzcGluX2xvY2tfaXJxc2F2ZSgmcHJpdi0+bG9jaywgZmxhZ3MpOwo+ID4gKyAgICAg
-ICBpZiAoIXByaXYtPnZibGFua19jYikgewo+ID4gKyAgICAgICAgICAgICAgIHNwaW5fdW5sb2Nr
-X2lycXJlc3RvcmUoJnByaXYtPmxvY2ssIGZsYWdzKTsKPiA+ICsgICAgICAgICAgICAgICByZXR1
-cm4gSVJRX05PTkU7Cj4gPiArICAgICAgIH0KPiA+ICsKPiA+ICsgICAgICAgcHJpdi0+dmJsYW5r
-X2NiKHByaXYtPnZibGFua19jYl9kYXRhKTsKPiA+ICsgICAgICAgc3Bpbl91bmxvY2tfaXJxcmVz
-dG9yZSgmcHJpdi0+bG9jaywgZmxhZ3MpOwo+ID4gKwo+ID4gKyAgICAgICByZXR1cm4gSVJRX0hB
-TkRMRUQ7Cj4gPiArfQo+ID4gKwo+ID4gK3ZvaWQgbXRrX2V0aGRyX2xheWVyX2NvbmZpZyhzdHJ1
-Y3QgZGV2aWNlICpkZXYsIHVuc2lnbmVkIGludCBpZHgsCj4gPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgc3RydWN0IG10a19wbGFuZV9zdGF0ZSAqc3RhdGUsCj4gPiArICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgc3RydWN0IGNtZHFfcGt0ICpjbWRxX3BrdCkKPiA+ICt7Cj4gPiArICAg
-ICAgIHN0cnVjdCBtdGtfZXRoZHIgKnByaXYgPSBkZXZfZ2V0X2RydmRhdGEoZGV2KTsKPiA+ICsg
-ICAgICAgc3RydWN0IG10a19ldGhkcl9jb21wICptaXhlciA9ICZwcml2LQo+ID4gPmV0aGRyX2Nv
-bXBbRVRIRFJfTUlYRVJdOwo+ID4gKyAgICAgICBzdHJ1Y3QgbXRrX3BsYW5lX3BlbmRpbmdfc3Rh
-dGUgKnBlbmRpbmcgPSAmc3RhdGUtPnBlbmRpbmc7Cj4gPiArICAgICAgIHVuc2lnbmVkIGludCBv
-ZmZzZXQgPSAocGVuZGluZy0+eCAmIDEpIDw8IDMxIHwgcGVuZGluZy0+eQo+ID4gPDwgMTYgfCBw
-ZW5kaW5nLT54Owo+ID4gKyAgICAgICB1bnNpZ25lZCBpbnQgbWl4ZXJfcGFkX21vZGUgPSBNSVhF
-Ul9JTnhfTU9ERV9CWVBBU1M7Cj4gPiArICAgICAgIHVuc2lnbmVkIGludCBhbHBoYV9jb24gPSAw
-Owo+ID4gKyAgICAgICB1bnNpZ25lZCBpbnQgZm10ID0gMDsKPiAKPiBmbXQgaXMgdXNlbGVzcywg
-c28gcmVtb3ZlLgo+IApPSy4KPiA+ICsKPiA+ICsgICAgICAgZGV2X2RiZyhkZXYsICIlcysgaWR4
-OiVkIiwgX19mdW5jX18sIGlkeCk7Cj4gPiArCj4gPiArICAgICAgIGlmIChpZHggPj0gNCkKPiA+
-ICsgICAgICAgICAgICAgICByZXR1cm47Cj4gPiArCj4gPiArICAgICAgIGlmICghcGVuZGluZy0+
-ZW5hYmxlKSB7Cj4gPiArICAgICAgICAgICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwgMCwg
-Jm1peGVyLT5jbWRxX2Jhc2UsCj4gPiBtaXhlci0+cmVncywgTUlYX0xfU1JDX1NJWkUoaWR4KSk7
-Cj4gPiArICAgICAgICAgICAgICAgbXRrX21tc3lzX2RkcF9jb25maWcocHJpdi0+bW1zeXNfZGV2
-LAo+ID4gTU1TWVNfQ09ORklHX01JWEVSX0lOX01PREUsCj4gPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgaWR4ICsgMSwKPiA+IE1JWEVSX0lOeF9NT0RFX0JZUEFTUywgY21k
-cV9wa3QpOwo+ID4gKyAgICAgICAgICAgICAgIG10a19tbXN5c19kZHBfY29uZmlnKHByaXYtPm1t
-c3lzX2RldiwKPiA+IE1NU1lTX0NPTkZJR19NSVhFUl9JTl9CSVdJRFRILAo+ID4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlkeCArIDEsIDAsIGNtZHFfcGt0KTsKPiA+ICsg
-ICAgICAgICAgICAgICByZXR1cm47Cj4gPiArICAgICAgIH0KPiA+ICsKPiA+ICsgICAgICAgaWYg
-KHBlbmRpbmctPnggJSAyKQo+ID4gKyAgICAgICAgICAgICAgIG1peGVyX3BhZF9tb2RlID0gTUlY
-RVJfSU54X01PREVfRVZFTl9FWFRFTkQ7Cj4gPiArCj4gPiArICAgICAgIG10a19tbXN5c19kZHBf
-Y29uZmlnKHByaXYtPm1tc3lzX2RldiwKPiA+IE1NU1lTX0NPTkZJR19NSVhFUl9JTl9NT0RFLAo+
-ID4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZHggKyAxLCBtaXhlcl9wYWRfbW9kZSwg
-Y21kcV9wa3QpOwo+IAo+IERyb3AgbWl4ZXJfcGFkX21vZGUsIGFuZAo+IAo+IG10a19tbXN5c19k
-ZHBfY29uZmlnKHByaXYtPm1tc3lzX2RldiwgTU1TWVNfQ09ORklHX01JWEVSX0lOX01PREUsIGlk
-eAo+ICsgMSwKPiAgICAgICAgICAgICAgICBwZW5kaW5nLT54ICYgMSA/IE1JWEVSX0lOeF9NT0RF
-X0VWRU5fRVhURU5EIDoKPiBNSVhFUl9JTnhfTU9ERV9CWVBBU1MsCj4gICAgICAgICAgICAgICAg
-IGNtZHFfcGt0KTsKPiAKT0suCj4gUmVnYXJkcywKPiBDaHVuLUt1YW5nLgoKUmVnYXJkcywKTmFu
-Y3kKPiAKPiA+ICsgICAgICAgbXRrX21tc3lzX2RkcF9jb25maWcocHJpdi0+bW1zeXNfZGV2LAo+
-ID4gTU1TWVNfQ09ORklHX01JWEVSX0lOX0JJV0lEVEgsCj4gPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgIGlkeCArIDEsIHBlbmRpbmctPndpZHRoIC8gMiAtIDEsCj4gPiBjbWRxX3BrdCk7
-Cj4gPiArCj4gPiArICAgICAgIGlmIChzdGF0ZS0+YmFzZS5mYiAmJiBzdGF0ZS0+YmFzZS5mYi0+
-Zm9ybWF0LT5oYXNfYWxwaGEpIHsKPiA+ICsgICAgICAgICAgICAgICBhbHBoYV9jb24gPSBNSVhF
-Ul9BTFBIQV9BRU4gfCBNSVhFUl9BTFBIQTsKPiA+ICsgICAgICAgICAgICAgICBtdGtfbW1zeXNf
-ZGRwX2NvbmZpZyhwcml2LT5tbXN5c19kZXYsCj4gPiBNTVNZU19DT05GSUdfSERSX0FMUEhBX1NF
-TCwKPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZHggKyAxLCAwLCBj
-bWRxX3BrdCk7Cj4gPiArICAgICAgIH0gZWxzZSB7Cj4gPiArICAgICAgICAgICAgICAgbXRrX21t
-c3lzX2RkcF9jb25maWcocHJpdi0+bW1zeXNfZGV2LAo+ID4gTU1TWVNfQ09ORklHX0hEUl9BTFBI
-QV9TRUwsCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWR4ICsgMSwg
-MSwgY21kcV9wa3QpOwo+ID4gKyAgICAgICB9Cj4gPiArICAgICAgIG10a19tbXN5c19kZHBfY29u
-ZmlnKHByaXYtPm1tc3lzX2RldiwKPiA+IE1NU1lTX0NPTkZJR19NSVhFUl9JTl9BTFBIQV9PREQs
-IGlkeCArIDEsCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgIERFRkFVTFRfOUJJVF9B
-TFBIQSwgY21kcV9wa3QpOwo+ID4gKyAgICAgICBtdGtfbW1zeXNfZGRwX2NvbmZpZyhwcml2LT5t
-bXN5c19kZXYsCj4gPiBNTVNZU19DT05GSUdfTUlYRVJfSU5fQUxQSEFfRVZFTiwgaWR4ICsgMSwK
-PiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgREVGQVVMVF85QklUX0FMUEhBLCBjbWRx
-X3BrdCk7Cj4gPiArCj4gPiArICAgICAgIG10a19kZHBfd3JpdGUoY21kcV9wa3QsIHBlbmRpbmct
-PmhlaWdodCA8PCAxNiB8IHBlbmRpbmctCj4gPiA+d2lkdGgsICZtaXhlci0+Y21kcV9iYXNlLAo+
-ID4gKyAgICAgICAgICAgICAgICAgICAgIG1peGVyLT5yZWdzLCBNSVhfTF9TUkNfU0laRShpZHgp
-KTsKPiA+ICsgICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwgb2Zmc2V0LCAmbWl4ZXItPmNt
-ZHFfYmFzZSwgbWl4ZXItCj4gPiA+cmVncywgTUlYX0xfU1JDX09GRlNFVChpZHgpKTsKPiA+ICsg
-ICAgICAgbXRrX2RkcF93cml0ZV9tYXNrKGNtZHFfcGt0LCBhbHBoYV9jb24sICZtaXhlci0+Y21k
-cV9iYXNlLAo+ID4gbWl4ZXItPnJlZ3MsIE1JWF9MX1NSQ19DT04oaWR4KSwKPiA+ICsgICAgICAg
-ICAgICAgICAgICAgICAgICAgIDB4MWZmKTsKPiA+ICsgICAgICAgbXRrX2RkcF93cml0ZV9tYXNr
-KGNtZHFfcGt0LCBCSVQoaWR4KSwgJm1peGVyLT5jbWRxX2Jhc2UsCj4gPiBtaXhlci0+cmVncywg
-TUlYX1NSQ19DT04sCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICBCSVQoaWR4KSk7Cj4g
-PiArfQo+ID4gKwoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtbWVkaWF0ZWsK
+Hi Angelo,
+
+Thanks for the review.
+
+On Fri, 2021-10-15 at 09:49 +0200, AngeloGioacchino Del Regno wrote:
+> > Add ovl_adaptor driver for MT8195.
+> > Ovl_adaptor is an encapsulated module and designed for simplified
+> > DRM control flow. This module is composed of 8 RDMAs, 4 MERGEs and
+> > an ETHDR. Two RDMAs merge into one layer, so this module support 4
+> > layers.
+> > 
+> > Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+> > ---
+> >   drivers/gpu/drm/mediatek/Makefile             |   1 +
+> >   drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  16 +
+> >   .../gpu/drm/mediatek/mtk_disp_ovl_adaptor.c   | 498
+> > ++++++++++++++++++
+> >   drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   1 +
+> >   4 files changed, 516 insertions(+)
+> >   create mode 100644
+> > drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> > 
+> > diff --git a/drivers/gpu/drm/mediatek/Makefile
+> > b/drivers/gpu/drm/mediatek/Makefile
+> > index fb158a1e7f06..3abd27d7c91d 100644
+> > --- a/drivers/gpu/drm/mediatek/Makefile
+> > +++ b/drivers/gpu/drm/mediatek/Makefile
+> > @@ -6,6 +6,7 @@ mediatek-drm-y := mtk_disp_aal.o \
+> >   		  mtk_disp_gamma.o \
+> >   		  mtk_disp_merge.o \
+> >   		  mtk_disp_ovl.o \
+> > +		  mtk_disp_ovl_adaptor.o \
+> >   		  mtk_disp_rdma.o \
+> >   		  mtk_drm_crtc.o \
+> >   		  mtk_drm_ddp_comp.o \
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > index 2446ad0a4977..6a4f4c42aedb 100644
+> > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
+> > @@ -113,6 +113,22 @@ void mtk_rdma_enable_vblank(struct device
+> > *dev,
+> >   			    void *vblank_cb_data);
+> >   void mtk_rdma_disable_vblank(struct device *dev);
+> >   
+> > +int mtk_ovl_adaptor_clk_enable(struct device *dev);
+> > +void mtk_ovl_adaptor_clk_disable(struct device *dev);
+> > +void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
+> > +			    unsigned int h, unsigned int vrefresh,
+> > +			    unsigned int bpc, struct cmdq_pkt
+> > *cmdq_pkt);
+> > +void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int
+> > idx,
+> > +				  struct mtk_plane_state *state,
+> > +				  struct cmdq_pkt *cmdq_pkt);
+> > +void mtk_ovl_adaptor_enable_vblank(struct device *dev,
+> > +				   void (*vblank_cb)(void *),
+> > +				   void *vblank_cb_data);
+> > +void mtk_ovl_adaptor_disable_vblank(struct device *dev);
+> > +void mtk_ovl_adaptor_start(struct device *dev);
+> > +void mtk_ovl_adaptor_stop(struct device *dev);
+> > +unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev);
+> > +
+> >   int mtk_mdp_rdma_clk_enable(struct device *dev);
+> >   void mtk_mdp_rdma_clk_disable(struct device *dev);
+> >   void mtk_mdp_rdma_start(struct device *dev, struct cmdq_pkt
+> > *cmdq_pkt);
+> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> > b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> > new file mode 100644
+> > index 000000000000..bfb5a9d29c26
+> > --- /dev/null
+> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl_adaptor.c
+> > @@ -0,0 +1,498 @@
+> > +// SPDX-License-Identifier: GPL-2.0-only
+> > +/*
+> > + * Copyright (c) 2021 MediaTek Inc.
+> > + */
+> > +
+> > +#include <drm/drm_fourcc.h>
+> > +#include <drm/drm_of.h>
+> > +#include <linux/clk.h>
+> > +#include <linux/component.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/of_address.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/pm_runtime.h>
+> > +#include <linux/reset.h>
+> > +#include <linux/soc/mediatek/mtk-mmsys.h>
+> > +#include <linux/soc/mediatek/mtk-cmdq.h>
+> > +
+> > +#include "mtk_drm_drv.h"
+> > +#include "mtk_drm_crtc.h"
+> > +#include "mtk_drm_ddp_comp.h"
+> > +#include "mtk_disp_drv.h"
+> > +#include "mtk_ethdr.h"
+> > +
+> > +#define MTK_OVL_ADAPTOR_RDMA_MAX_WIDTH 1920
+> > +#define MTK_OVL_ADAPTOR_LAYER_NUM 4
+> > +
+> > +enum mtk_ovl_adaptor_comp_type {
+> > +	OVL_ADAPTOR_TYPE_RDMA = 0,
+> > +	OVL_ADAPTOR_TYPE_MERGE,
+> > +	OVL_ADAPTOR_TYPE_ETHDR,
+> > +	OVL_ADAPTOR_TYPE_NUM,
+> > +};
+> > +
+> > +enum mtk_ovl_adaptor_comp_id {
+> > +	OVL_ADAPTOR_MDP_RDMA0,
+> > +	OVL_ADAPTOR_MDP_RDMA1,
+> > +	OVL_ADAPTOR_MDP_RDMA2,
+> > +	OVL_ADAPTOR_MDP_RDMA3,
+> > +	OVL_ADAPTOR_MDP_RDMA4,
+> > +	OVL_ADAPTOR_MDP_RDMA5,
+> > +	OVL_ADAPTOR_MDP_RDMA6,
+> > +	OVL_ADAPTOR_MDP_RDMA7,
+> > +	OVL_ADAPTOR_MERGE0,
+> > +	OVL_ADAPTOR_MERGE1,
+> > +	OVL_ADAPTOR_MERGE2,
+> > +	OVL_ADAPTOR_MERGE3,
+> > +	OVL_ADAPTOR_ETHDR0,
+> > +	OVL_ADAPTOR_ID_MAX
+> > +};
+> > +
+> > +struct ovl_adaptor_comp_match {
+> > +	enum mtk_ovl_adaptor_comp_type type;
+> > +	int alias_id;
+> > +};
+> > +
+> > +struct mtk_disp_ovl_adaptor {
+> > +	struct device *ovl_adaptor_comp[OVL_ADAPTOR_ID_MAX];
+> > +	struct device *mmsys_dev;
+> > +};
+> > +
+> > +static const char * const ovl_adaptor_comp_str[] = {
+> > +	"OVL_ADAPTOR_MDP_RDMA0",
+> > +	"OVL_ADAPTOR_MDP_RDMA1",
+> > +	"OVL_ADAPTOR_MDP_RDMA2",
+> > +	"OVL_ADAPTOR_MDP_RDMA3",
+> > +	"OVL_ADAPTOR_MDP_RDMA4",
+> > +	"OVL_ADAPTOR_MDP_RDMA5",
+> > +	"OVL_ADAPTOR_MDP_RDMA6",
+> > +	"OVL_ADAPTOR_MDP_RDMA7",
+> > +	"OVL_ADAPTOR_MERGE0",
+> > +	"OVL_ADAPTOR_MERGE1",
+> > +	"OVL_ADAPTOR_MERGE2",
+> > +	"OVL_ADAPTOR_MERGE3",
+> > +	"OVL_ADAPTOR_ETHDR",
+> > +	"OVL_ADAPTOR_ID_MAX"
+> > +};
+> > +
+> > +static const char * const private_comp_stem[OVL_ADAPTOR_TYPE_NUM]
+> > = {
+> > +	[OVL_ADAPTOR_TYPE_RDMA] = "vdo1_rdma",
+> > +	[OVL_ADAPTOR_TYPE_MERGE] = "merge",
+> > +	[OVL_ADAPTOR_TYPE_ETHDR] = "ethdr",
+> > +};
+> > +
+> > +static const struct ovl_adaptor_comp_match
+> > comp_matches[OVL_ADAPTOR_ID_MAX] = {
+> > +	[OVL_ADAPTOR_MDP_RDMA0] =	{ OVL_ADAPTOR_TYPE_RDMA, 0 },
+> > +	[OVL_ADAPTOR_MDP_RDMA1] =	{ OVL_ADAPTOR_TYPE_RDMA, 1 },
+> > +	[OVL_ADAPTOR_MDP_RDMA2] =	{ OVL_ADAPTOR_TYPE_RDMA, 2 },
+> > +	[OVL_ADAPTOR_MDP_RDMA3] =	{ OVL_ADAPTOR_TYPE_RDMA, 3 },
+> > +	[OVL_ADAPTOR_MDP_RDMA4] =	{ OVL_ADAPTOR_TYPE_RDMA, 4 },
+> > +	[OVL_ADAPTOR_MDP_RDMA5] =	{ OVL_ADAPTOR_TYPE_RDMA, 5 },
+> > +	[OVL_ADAPTOR_MDP_RDMA6] =	{ OVL_ADAPTOR_TYPE_RDMA, 6 },
+> > +	[OVL_ADAPTOR_MDP_RDMA7] =	{ OVL_ADAPTOR_TYPE_RDMA, 7 },
+> > +	[OVL_ADAPTOR_MERGE0] =	{ OVL_ADAPTOR_TYPE_MERGE, 1 },
+> > +	[OVL_ADAPTOR_MERGE1] =	{ OVL_ADAPTOR_TYPE_MERGE, 2 },
+> > +	[OVL_ADAPTOR_MERGE2] =	{ OVL_ADAPTOR_TYPE_MERGE, 3 },
+> > +	[OVL_ADAPTOR_MERGE3] =	{ OVL_ADAPTOR_TYPE_MERGE, 4 },
+> > +	[OVL_ADAPTOR_ETHDR0] =	{ OVL_ADAPTOR_TYPE_ETHDR, 0 },
+> > +};
+> 
+> nit: can you please fix the indentation here?
+> 
+OK, I will fix it.
+
+> > +
+> > +void mtk_ovl_adaptor_layer_config(struct device *dev, unsigned int
+> > idx,
+> > +				  struct mtk_plane_state *state,
+> > +				  struct cmdq_pkt *cmdq_pkt)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +	struct mtk_plane_pending_state *pending = &state->pending;
+> > +	struct mtk_mdp_rdma_cfg rdma_config = {0};
+> > +	struct device *rdma_l;
+> > +	struct device *rdma_r;
+> > +	struct device *merge;
+> > +	struct device *ethdr;
+> > +	const struct drm_format_info *fmt_info =
+> > drm_format_info(pending->format);
+> > +	bool use_dual_pipe = false;
+> > +	unsigned int l_w = 0;
+> > +	unsigned int r_w = 0;
+> > +
+> > +	dev_dbg(dev, "%s+ idx:%d, enable:%d, fmt:0x%x\n", __func__,
+> > idx,
+> > +		pending->enable, pending->format);
+> > +	dev_dbg(dev, "addr 0x%lx, fb w:%d, {%d,%d,%d,%d}\n",
+> > +		pending->addr, (pending->pitch / fmt_info->cpp[0]),
+> > +		pending->x, pending->y, pending->width, pending-
+> > >height);
+> > +
+> > +	rdma_l = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 +
+> > 2 * idx];
+> > +	rdma_r = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 +
+> > 2 * idx + 1];
+> > +	merge = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 +
+> > idx];
+> > +	ethdr = ovl_adaptor->ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0];
+> > +
+> > +	if (!pending->enable) {
+> > +		mtk_merge_disable(merge, cmdq_pkt);
+> > +		mtk_mdp_rdma_stop(rdma_l, cmdq_pkt);
+> > +		mtk_mdp_rdma_stop(rdma_r, cmdq_pkt);
+> > +		mtk_ethdr_layer_config(ethdr, idx, state, cmdq_pkt);
+> > +		return;
+> > +	}
+> > +
+> > +	/* ETHDR is in 1T2P domain, width needs to be 2 pixels align */
+> > +	pending->width = ALIGN_DOWN(pending->width, 2);
+> > +
+> > +	if (pending->width > MTK_OVL_ADAPTOR_RDMA_MAX_WIDTH)
+> > +		use_dual_pipe = true;
+> > +
+> > +	if (use_dual_pipe) {
+> > +		l_w = (pending->width / 2) + ((pending->width / 2) %
+> > 2);
+> > +		r_w = pending->width - l_w;
+> > +	} else {
+> > +		l_w = pending->width;
+> > +	}
+> > +	mtk_merge_advance_config(merge, l_w, r_w, pending->height, 0,
+> > 0, cmdq_pkt);
+> > +	mtk_mmsys_ddp_config(ovl_adaptor->mmsys_dev,
+> > MMSYS_CONFIG_MERGE_ASYNC_WIDTH,
+> > +			     idx, pending->width / 2, cmdq_pkt);
+> > +	mtk_mmsys_ddp_config(ovl_adaptor->mmsys_dev,
+> > MMSYS_CONFIG_MERGE_ASYNC_HEIGHT,
+> > +			     idx, pending->height, cmdq_pkt);
+> > +
+> > +	rdma_config.width = l_w;
+> > +	rdma_config.height = pending->height;
+> > +	rdma_config.addr0 = pending->addr;
+> > +	rdma_config.pitch = pending->pitch;
+> > +	rdma_config.fmt = pending->format;
+> > +	mtk_mdp_rdma_config(rdma_l, &rdma_config, cmdq_pkt);
+> > +
+> > +	if (use_dual_pipe) {
+> > +		rdma_config.x_left = l_w;
+> > +		rdma_config.width = r_w;
+> > +		mtk_mdp_rdma_config(rdma_r, &rdma_config, cmdq_pkt);
+> > +	}
+> > +
+> > +	mtk_merge_enable(merge, cmdq_pkt);
+> > +	mtk_merge_unmute(merge, cmdq_pkt);
+> > +
+> > +	mtk_mdp_rdma_start(rdma_l, cmdq_pkt);
+> > +	if (use_dual_pipe)
+> > +		mtk_mdp_rdma_start(rdma_r, cmdq_pkt);
+> > +	else
+> > +		mtk_mdp_rdma_stop(rdma_r, cmdq_pkt);
+> > +
+> > +	mtk_ethdr_layer_config(ethdr, idx, state, cmdq_pkt);
+> > +}
+> > +
+> > +void mtk_ovl_adaptor_config(struct device *dev, unsigned int w,
+> > +			    unsigned int h, unsigned int vrefresh,
+> > +			    unsigned int bpc, struct cmdq_pkt
+> > *cmdq_pkt)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +
+> > +	mtk_ethdr_config(ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0], w, h,
+> > +			 vrefresh, bpc, cmdq_pkt);
+> > +}
+> > +
+> > +void mtk_ovl_adaptor_start(struct device *dev)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +
+> > +	mtk_ethdr_start(ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
+> > +}
+> > +
+> > +void mtk_ovl_adaptor_stop(struct device *dev)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +	struct device *rdma_l;
+> > +	struct device *rdma_r;
+> > +	struct device *merge;
+> > +	u32 i;
+> > +
+> > +	for (i = 0; i < MTK_OVL_ADAPTOR_LAYER_NUM; i++) {
+> > +		rdma_l = ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * i];
+> > +		rdma_r = ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_MDP_RDMA0 + 2 * i + 1];
+> > +		merge = ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_MERGE0 + i];
+> > +
+> > +		mtk_mdp_rdma_stop(rdma_l, NULL);
+> > +		mtk_mdp_rdma_stop(rdma_r, NULL);
+> > +		mtk_merge_stop(merge);
+> > +	}
+> > +
+> > +	mtk_ethdr_stop(ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
+> > +}
+> > +
+> > +int mtk_ovl_adaptor_clk_enable(struct device *dev)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +	struct device *comp;
+> > +	int ret;
+> > +	int i;
+> > +
+> > +	for (i = OVL_ADAPTOR_MDP_RDMA0; i < OVL_ADAPTOR_ID_MAX; i++) {
+> > +		comp = ovl_adaptor->ovl_adaptor_comp[i];
+> > +
+> > +		if (i < OVL_ADAPTOR_MERGE0)
+> > +			ret = mtk_mdp_rdma_clk_enable(comp);
+> > +		else if (i < OVL_ADAPTOR_ETHDR0)
+> > +			ret = mtk_merge_clk_enable(comp);
+> > +		else
+> > +			ret = mtk_ethdr_clk_enable(comp);
+> > +		if (ret) {
+> > +			dev_err(dev,
+> > +				"Failed to enable clock %d, err %d-
+> > %s\n",
+> > +				i, ret, ovl_adaptor_comp_str[i]);
+> > +			goto clk_err;
+> > +		}
+> > +	}
+> > +
+> > +	return ret;
+> > +
+> > +clk_err:
+> > +	while (--i >= 0) {
+> > +		comp = ovl_adaptor->ovl_adaptor_comp[i];
+> > +		if (i < OVL_ADAPTOR_MERGE0)
+> > +			mtk_mdp_rdma_clk_disable(comp);
+> > +		else if (i < OVL_ADAPTOR_ETHDR0)
+> > +			mtk_merge_clk_disable(comp);
+> > +		else
+> > +			mtk_ethdr_clk_disable(comp);
+> > +	}
+> > +	return ret;
+> > +}
+> > +
+> > +void mtk_ovl_adaptor_clk_disable(struct device *dev)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +	struct device *comp;
+> > +	int i;
+> > +
+> > +	for (i = OVL_ADAPTOR_MDP_RDMA0; i < OVL_ADAPTOR_ID_MAX; i++) {
+> > +		comp = ovl_adaptor->ovl_adaptor_comp[i];
+> > +
+> > +		if (i < OVL_ADAPTOR_MERGE0)
+> > +			mtk_mdp_rdma_clk_disable(comp);
+> > +		else if (i < OVL_ADAPTOR_ETHDR0)
+> > +			mtk_merge_clk_disable(comp);
+> > +		else
+> > +			mtk_ethdr_clk_disable(comp);
+> > +	}
+> > +}
+> > +
+> > +unsigned int mtk_ovl_adaptor_layer_nr(struct device *dev)
+> > +{
+> > +	return MTK_OVL_ADAPTOR_LAYER_NUM;
+> > +}
+> > +
+> > +void mtk_ovl_adaptor_enable_vblank(struct device *dev, void
+> > (*vblank_cb)(void *),
+> > +				   void *vblank_cb_data)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +
+> > +	mtk_ethdr_enable_vblank(ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0],
+> > +				vblank_cb, vblank_cb_data);
+> > +}
+> > +
+> > +void mtk_ovl_adaptor_disable_vblank(struct device *dev)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *ovl_adaptor =
+> > dev_get_drvdata(dev);
+> > +
+> > +	mtk_ethdr_disable_vblank(ovl_adaptor-
+> > >ovl_adaptor_comp[OVL_ADAPTOR_ETHDR0]);
+> > +}
+> > +
+> > +static int ovl_adaptor_comp_get_id(struct device *dev, struct
+> > device_node *node,
+> > +				   enum mtk_ovl_adaptor_comp_type type)
+> > +{
+> > +	int alias_id = of_alias_get_id(node, private_comp_stem[type]);
+> > +	int ret;
+> > +	int i;
+> > +
+> > +	for (i = 0; i < ARRAY_SIZE(comp_matches); i++)
+> > +		if (comp_matches[i].type == type &&
+> > +		    comp_matches[i].alias_id == alias_id)
+> > +			return i;
+> > +
+> > +	dev_err(dev, "Failed to get id. type: %d, alias: %d\n", type,
+> > alias_id);
+> > +	return -EINVAL;
+> > +}
+> > +
+> > +static const struct of_device_id mtk_ovl_adaptor_comp_dt_ids[] = {
+> > +	{
+> > +		.compatible = "mediatek,mt8195-vdo1-rdma",
+> > +		.data = (void *)OVL_ADAPTOR_TYPE_RDMA,
+> > +	}, {
+> > +		.compatible = "mediatek,mt8195-disp-merge",
+> > +		.data = (void *)OVL_ADAPTOR_TYPE_MERGE,
+> > +	}, {
+> > +		.compatible = "mediatek,mt8195-disp-ethdr",
+> > +		.data = (void *)OVL_ADAPTOR_TYPE_ETHDR,
+> > +	},
+> > +	{},
+> > +};
+> > +
+> > +static int compare_of(struct device *dev, void *data)
+> > +{
+> > +	return dev->of_node == data;
+> > +}
+> > +
+> > +static int ovl_adaptor_comp_init(struct device *dev, struct
+> > component_match **match)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
+> > +	struct device_node *node, *parent;
+> > +	struct platform_device *comp_pdev;
+> > +	int i, ret;
+> > +
+> > +	parent = dev->parent->parent->of_node->parent;
+> > +
+> > +	for_each_child_of_node(parent, node) {
+> > +		const struct of_device_id *of_id;
+> > +		enum mtk_ovl_adaptor_comp_type type;
+> > +		int id;
+> > +
+> > +		of_id = of_match_node(mtk_ovl_adaptor_comp_dt_ids,
+> > node);
+> > +		if (!of_id)
+> > +			continue;
+> > +
+> > +		if (!of_device_is_available(node)) {
+> > +			dev_info(dev, "Skipping disabled component
+> > %pOF\n",
+> > +				 node);
+> 
+> This looks like being a debugging print, use dev_dbg please.
+> 
+OK.
+> > +			continue;
+> > +		}
+> > +
+> > +		type = (enum mtk_ovl_adaptor_comp_type)of_id->data;
+> > +		id = ovl_adaptor_comp_get_id(dev, node, type);
+> > +		if (id < 0) {
+> > +			dev_warn(dev, "Skipping unknown component
+> > %pOF\n",
+> > +				 node);
+> > +			continue;
+> > +		}
+> > +
+> > +		comp_pdev = of_find_device_by_node(node);
+> > +		if (!comp_pdev) {
+> > +			dev_warn(dev, "can't find platform device of
+> > node:%s\n",
+> > +				 node->name);
+> > +			return -ENODEV;
+> > +		}
+> > +		priv->ovl_adaptor_comp[id] = &comp_pdev->dev;
+> > +
+> > +		drm_of_component_match_add(dev, match, compare_of,
+> > node);
+> > +		dev_info(dev, "Adding component match for %pOF\n",
+> > node);
+> 
+> ...and this is another debugging print, imo.
+
+OK.
+> 
+> > +	}
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_disp_ovl_adaptor_comp_bind(struct device *dev,
+> > struct device *master,
+> > +					  void *data)
+> > +{
+> > +	return 0;
+> > +}
+> > +
+> > +static void mtk_disp_ovl_adaptor_comp_unbind(struct device *dev,
+> > struct device *master,
+> > +					     void *data)
+> > +{
+> > +}
+> > +
+> > +static const struct component_ops mtk_disp_ovl_adaptor_comp_ops =
+> > {
+> > +	.bind	= mtk_disp_ovl_adaptor_comp_bind,
+> > +	.unbind = mtk_disp_ovl_adaptor_comp_unbind,
+> > +};
+> > +
+> > +static int mtk_disp_ovl_adaptor_master_bind(struct device *dev)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *priv = dev_get_drvdata(dev);
+> > +
+> > +	dev_info(dev, "%s-%d", __func__, __LINE__);
+> 
+> Printing the line number here isn't giving any valuable information,
+> as this
+> function is almost a one-liner... plus, this is a debug print and, as
+> such,
+> you should either use dev_dbg instead or simply remove it: if
+> anything needs
+> debugging of this part, you'll probably want to use ftrace anyway, so
+> I don't
+> really see the need of having this print in place.
+> 
+OK.
+> > +
+> > +	component_bind_all(dev, priv->mmsys_dev);
+> > +	return 0;
+> > +}
+> > +
+> > +static void mtk_disp_ovl_adaptor_master_unbind(struct device *dev)
+> > +{
+> > +}
+> > +
+> > +static const struct component_master_ops
+> > mtk_disp_ovl_adaptor_master_ops = {
+> > +	.bind		= mtk_disp_ovl_adaptor_master_bind,
+> > +	.unbind		= mtk_disp_ovl_adaptor_master_unbind,
+> > +};
+> > +
+> > +static int mtk_disp_ovl_adaptor_check_comp(struct device *dev)
+> > +{
+> > +	struct device_node *node;
+> > +
+> > +	for_each_child_of_node(dev->parent->parent->of_node->parent,
+> > node) {
+> > +		const struct of_device_id *of_id;
+> > +		struct platform_device *comp_pdev;
+> > +		enum mtk_ovl_adaptor_comp_type type;
+> > +		int id;
+> > +
+> > +		of_id = of_match_node(mtk_ovl_adaptor_comp_dt_ids,
+> > node);
+> > +		if (!of_id)
+> > +			continue;
+> > +
+> > +		if (!of_device_is_available(node))
+> > +			continue;
+> > +
+> > +		type = (enum mtk_ovl_adaptor_comp_type)of_id->data;
+> > +
+> > +		id = ovl_adaptor_comp_get_id(dev, node, type);
+> > +		if (id < 0)
+> > +			continue;
+> > +
+> > +		comp_pdev = of_find_device_by_node(node);
+> > +		if (!comp_pdev)
+> > +			return -EPROBE_DEFER;
+> > +
+> > +		if (!platform_get_drvdata(comp_pdev))
+> > +			return -EPROBE_DEFER;
+> > +	}
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_disp_ovl_adaptor_probe(struct platform_device
+> > *pdev)
+> > +{
+> > +	struct mtk_disp_ovl_adaptor *priv;
+> > +	struct device *dev = &pdev->dev;
+> > +	struct component_match *match = NULL;
+> > +	int ret;
+> > +
+> > +	dev_info(dev, "%s+\n", __func__);
+> 
+> If you want to know when you're hitting a function, you should use
+> ftrace
+> instead of a print. Please remove this message.
+> 
+OK.
+> > +
+> > +	ret = mtk_disp_ovl_adaptor_check_comp(dev);
+> > +	if (ret < 0)
+> > +		return ret;
+> > +
+> > +	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+> > +	if (!priv)
+> > +		return -ENOMEM;
+> > +
+> > +	priv->mmsys_dev = pdev->dev.platform_data;
+> > +
+> > +	platform_set_drvdata(pdev, priv);
+> > +
+> > +	ret = ovl_adaptor_comp_init(dev, &match);
+> > +	if (ret) {
+> > +		dev_notice(dev, "ovl_adaptor comp init fail\n");
+> > +		return ret;
+> > +	}
+> > +	component_master_add_with_match(dev,
+> > &mtk_disp_ovl_adaptor_master_ops, match);
+> > +
+> > +	pm_runtime_enable(dev);
+> > +
+> > +	ret = component_add(dev, &mtk_disp_ovl_adaptor_comp_ops);
+> > +	if (ret != 0) {
+> > +		pm_runtime_disable(dev);
+> > +		dev_err(dev, "Failed to add component: %d\n", ret);
+> > +	}
+> > +
+> > +	dev_info(dev, "%s-\n", __func__);
+> 
+> Also remove this one.
+> 
+OK.
+> > +	return ret;
+> > +}
+> > +
+> > +static int mtk_disp_ovl_adaptor_remove(struct platform_device
+> > *pdev)
+> > +{
+> > +	component_del(&pdev->dev, &mtk_disp_ovl_adaptor_comp_ops);
+> > +	pm_runtime_disable(&pdev->dev);
+> > +	return 0;
+> > +}
+> > +
+> > +struct platform_driver mtk_disp_ovl_adaptor_driver = {
+> > +	.probe = mtk_disp_ovl_adaptor_probe,
+> > +	.remove = mtk_disp_ovl_adaptor_remove,
+> > +	.driver = {
+> > +			.name = "mediatek-disp-ovl-adaptor",
+> > +			.owner = THIS_MODULE,
+> > +		},
+> 
+> Please fix indentation:
+> 	.driver = {
+> 			.......
+> 	},
+> 
+OK.
+
+> Regards,
+> - Angelo
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
