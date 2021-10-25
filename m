@@ -2,14 +2,14 @@ Return-Path: <SRS0=S3hZ=PN=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 203A8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 05:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E0632C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 05:55:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C121560EBD
-	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 05:42:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C121560EBD
+	by mail.kernel.org (Postfix) with ESMTPS id 8C43061002
+	for <linux-mediatek@archiver.kernel.org>; Mon, 25 Oct 2021 05:55:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8C43061002
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,64 +18,59 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LW/U1Uwd+kB0gp9fxdW6il1uIKlxYzbHC1fkJnNvF2A=; b=TQb+Rim2/zuaMh
-	YXMzbKSmFUsgqusVLaMdBaBQ17JMQ+9f8Q4ZgpIysucwk1XXDMCF5QTdy8EDrmSRtLZ3zXdAUw44t
-	Ev80lryKcGEUsU6Zpa9JcQpOALyHZ7wvOiPPQ8pHk/q/RTxfQiDsjki3gD7oV6QpJIYWGimznQzai
-	LHF5qbOD2M9jPC0tp1c+zpBkXgXDJDmchnBqgam50MwwpPeIXqumlqV/+/86NcUNI3+fB1auaxHN4
-	wnvScm2g+TZw+EH1t3xz10NRaSm6XJNZ9OGDPzjJey8wz6jdWCZ8McF9E5Ad4MGSopbEgfExPLt6A
-	XIuG9t/6TMoCZfymzosw==;
+	List-Owner; bh=hRvpD3a+h5CV4aJXCIv6iu78QC0EuxXWbwZiivc8fcE=; b=qyWPLgi8y58A7z
+	u4eeJ29xk1Q1vajGG+aAGqP4qYHuNp9x1PK8KOd/BX/rv9oSaUz1P2QdzFrAeguo9sU9dugmrVs4D
+	+IiywbM+z5WVtXvDRnT5zGk5TztzamH25AxYwP3fjc0rqMgDEyfrIx7dRiLKtbrOlh0JOGdCR7VLt
+	XmqnwWBZ96Icjgm/XOO2LaJtofJCQYuLoGS6yYtwCL94Hz/wgNcfIcpZ+I5P75r5SCFc4lTkByl+x
+	jvEMevotUHygcTZoOSEVtUM4vj0aoJBgRtdMK9lwKGldXSbABwTe9tsm+9jyI3ReMT14XV6aVCOG3
+	HzX2CrJzrjNeNSGouE6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1meskD-00FK7i-6n; Mon, 25 Oct 2021 05:42:01 +0000
+	id 1mesx6-00FLKJ-NK; Mon, 25 Oct 2021 05:55:20 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1meskA-00FK7L-23; Mon, 25 Oct 2021 05:41:59 +0000
-X-UUID: 472fb8789f114297adfb6eb7acc0aa59-20211024
-X-UUID: 472fb8789f114297adfb6eb7acc0aa59-20211024
+ id 1meswu-00FLIk-De; Mon, 25 Oct 2021 05:55:10 +0000
+X-UUID: abc9aea0b81c4e938e36a6b7cf4b55a3-20211024
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=hgypc63DFGmLTnW1m2n7ieTqZKlTu26l24zVzBqPp1s=; 
+ b=pkwU5D34jhofGhg3U6AzYRDhrTyXBrE7AaZ5NJmrUp03iJQ5kQlPdU09xojWSHqXK6w8nkbfuY+epbHnW0R7kwueHWy6OMYlZjrx+zk2bsWK7fEqiHtHB72Kf96Jrk+Kd5ARHTuIDWCi2ohkMdKoXcttVjhQopoazxc61r3pqhk=;
+X-UUID: abc9aea0b81c4e938e36a6b7cf4b55a3-20211024
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jason-jh.lin@mediatek.com>)
+ (envelope-from <chunlei.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 815714043; Sun, 24 Oct 2021 22:41:55 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 24 Oct 2021 22:33:03 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 25 Oct 2021 13:33:02 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 1013400149; Sun, 24 Oct 2021 22:55:02 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 24 Oct 2021 22:55:00 -0700
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 25 Oct 2021 13:54:59 +0800
+Received: from mbjsdccf07 (10.15.20.246) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 25 Oct 2021 13:33:02 +0800
-Message-ID: <d49971c13224bc0fc67ef579347beced2301bee4.camel@mediatek.com>
-Subject: Re: [PATCH v11 09/16] soc: mediatek: add mtk-mmsys support for
- mt8195 vdosys0
-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-To: Fei Shao <fshao@chromium.org>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Rob
- Herring" <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, Enric Balletbo i Serra
- <enric.balletbo@collabora.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, "Alexandre
- Torgue" <alexandre.torgue@foss.st.com>, <hsinyi@chromium.org>,
- <moudy.ho@mediatek.com>, <roy-cw.yeh@mediatek.com>, Fabien Parent
- <fparent@baylibre.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
- <nancy.lin@mediatek.com>, <singo.chang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>
-Date: Mon, 25 Oct 2021 13:33:01 +0800
-In-Reply-To: <CAC=S1niq+b4ue6nPLNT5JEiugh5UFDDL3hEYrUua0AzQ_+YeXA@mail.gmail.com>
-References: <20210921155218.10387-1-jason-jh.lin@mediatek.com>
- <20210921155218.10387-10-jason-jh.lin@mediatek.com>
- <8b509551-7cfa-f55c-fc0f-db7d0a3886eb@collabora.com>
- <29992126d39a7f381a516fdb9cd6e39f1e51afdb.camel@mediatek.com>
- <CAC=S1niq+b4ue6nPLNT5JEiugh5UFDDL3hEYrUua0AzQ_+YeXA@mail.gmail.com>
+ Transport; Mon, 25 Oct 2021 13:54:56 +0800
+Message-ID: <11f00d85b770e676cd0e06d87cc819ce82bb0beb.camel@mediatek.com>
+Subject: [PATCH] Fix prb_next_seq() performance issue
+From: chunlei.wang <Chunlei.wang@mediatek.com>
+To: Petr Mladek <pmladek@suse.com>, Sergey Senozhatsky
+ <senozhatsky@chromium.org>
+CC: Steven Rostedt <rostedt@goodmis.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, John Ogness
+ <john.ogness@linutronix.de>, <wsd_upstream@medaitek.com>, Chunlei Wang
+ <chunlei.wang@mediatek.com>
+Date: Mon, 25 Oct 2021 13:51:07 +0800
+In-Reply-To: <20200424070219.GA543@jagdpanzerIV.localdomain>
+References: <1587709294.9792.5.camel@mbjsdccf07>
+ <20200424070219.GA543@jagdpanzerIV.localdomain>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211024_224158_115763_BEAAA53C 
-X-CRM114-Status: GOOD (  35.90  )
+X-CRM114-CacheID: sfid-20211024_225508_499270_D07BB265 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,194 +87,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Fei,
 
-Thanks for the reviews.
+Subject: [PATCH] Fix prb_next_seq() performance issue.
 
-On Mon, 2021-10-25 at 13:05 +0800, Fei Shao wrote:
-> On Fri, Oct 22, 2021 at 6:13 PM Jason-JH Lin <
-> jason-jh.lin@mediatek.com> wrote:
-> > 
-> > Hi Angelo,
-> > 
-> > Thanks for the reviews.
-> > 
-> > 
-> > On Thu, 2021-10-14 at 16:05 +0200, AngeloGioacchino Del Regno
-> > wrote:
-> > > > Add mt8195 vdosys0 clock driver name and routing table to
-> > > > the driver data of mtk-mmsys.
-> > > > 
-> > 
-> > [snip]
-> > 
-> > > > 
-> > > > ---
-> > > 
-> > > Hello Jason,
-> > > thanks for the patch! However, there are a few things to improve:
-> > > 
-> > 
-> > [snip]
-> > 
-> > > > +#define
-> > > > MT8195_VDO0_SEL_IN                                 0xf34
-> > > > +#define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT         (0
-> > > > <<
-> > > > 0)
-> > > 
-> > > Bitshifting 0 by 0 bits == 0, so this is simply 0.
-> > > 
-> > > > +#define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1          (1
-> > > > <<
-> > > > 0)
-> > > 
-> > > I would write 0x1 here
-> > > 
-> > > > +#define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0         (2
-> > > > <<
-> > > > 0)
-> > > 
-> > > ....and 0x2 here: bitshifting of 0 bits makes little sense.
-> > > 
-> > > > +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
-> > > > (0 << 4)
-> > > 
-> > > Bitshifting 0 by 4 bits is still 0, so this is again 0.
-> > > This is repeated too many times, so I will not list it for all of
-> > > the
-> > > occurrences.
-> > > 
-> > > > +#define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE          (1
-> > > > <<
-> > > > 4)
-> > > 
-> > > This is BIT(4).
-> > > 
-> > > > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1
-> > > > (0 << 5) > +#define MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE
-> > > >     (1 << 5)
-> > > 
-> > > ...and this is BIT(5)
-> > > 
-> > > > +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_VPP_MERGE         (0
-> > > > <<
-> > > > 8)
-> > > > +#define MT8195_SEL_IN_SINA_VIRTUAL0_FROM_DSC_WRAP1_OUT
-> > > > (1 << 8)
-> > > 
-> > > BIT(8)
-> > > 
-> > > > +#define MT8195_SEL_IN_SINB_VIRTUAL0_FROM_DSC_WRAP0_OUT
-> > > > (0 << 9)
-> > > > +#define MT8195_SEL_IN_DP_INTF0_FROM_DSC_WRAP1_OUT          (0
-> > > > <<
-> > > > 12)
-> > > > +#define MT8195_SEL_IN_DP_INTF0_FROM_VPP_MERGE
-> > > > (1 << 12)
-> > > 
-> > > BIT(12)
-> > > 
-> > > > +#define MT8195_SEL_IN_DP_INTF0_FROM_VDO1_VIRTUAL0          (2
-> > > > <<
-> > > > 12)
-> > > 
-> > > BIT(13)
-> > > 
-> > > ... and please, use the BIT(nr) macro for all these bit
-> > > definitions,
-> > > it's way more
-> > > readable like that.
-> > > 
-> > > Regards,
-> > > - Angelo
-> > 
-> > Because the HW register design of MT8195_VDO0_SEL_IN 0xf34 is like
-> > this:
-> > 
-> > bit[1:0] as MT8195_SEL_IN_VPP_MERGE and
-> >   value: 0 as MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT
-> >   value: 1 as MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1
-> >   value: 2 as MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0
-> > bit[4:4] as MT8195_SEL_IN_DSC_WRAP0_IN and
-> >   value 0 as MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0
-> >   value 1 as MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE
-> > bit[5:5] as MT8195_SEL_IN_DSC_WRAP1_IN and
-> >   value 0 as
-> > MT8195_SEL_IN_DSC_WRAP1_IN_FROM_DISP_DITHER1
-> >   value 1 as
-> > MT8195_SEL_IN_DSC_WRAP1_IN_FROM_VPP_MERGE
-> > and so on...
-> > 
-> > I think using BIT(nr) macro directly is not easy to debug.
-> > 
-> > 
-> > Is it better to define another MACRO like this?
-> > 
-> > #define BIT_VAL(val, bit)  ((val) << (bit))
-> > #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0  BIT_VAL(0, 4)
-> > #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE  BIT_VAL(1, 4)
-> > ...
-> > 
-> > or
-> > 
-> > #define MT8195_SEL_IN_DSC_WRAP0_IN (4)
-> > #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0  (0
-> > << MT8195_SEL_IN_DSC_WRAP0_IN)
-> > #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE  (1 <<
-> > MT8195_SEL_IN_DSC_WRAP0_IN)
-> > ...
-> > 
-> > What do you think?
-> 
-> Hi Jason,
-> 
-> If that's the case you can still use BIT(nr) for the definitions and
-> describe their usage in the comment, so both code readability and the
-> ease of maintenance are preserved, and people can easily tell if
-> there
-> are duplicated/missing definitions while reading through the code.
-> Adding informative comments is never a bad thing.
-> 
-> I would do something like this (and further split the definitions
-> into
-> sections by their functionalities with blank lines for visual
-> comfort):
-> 
-> /*
->  * MT8195_VDO0_SEL_IN[1:0]: VPP_MERGE
->  *   0x0 : DSC_WRAP0_OUT
->  *   0x1 : DISP_DITHER1
->  *   0x10: VDO1_VIRTUAL0
->  */
-> #define MT8195_SEL_IN_VPP_MERGE_FROM_DSC_WRAP0_OUT           0
-> #define MT8195_SEL_IN_VPP_MERGE_FROM_DISP_DITHER1            BIT(0)
-> #define MT8195_SEL_IN_VPP_MERGE_FROM_VDO1_VIRTUAL0           BIT(1)
-> 
-> /*
->  * MT8195_VDO0_SEL_IN[4:4]: DSC_WRAP0_IN
->  *   0x0: DISP_DITHER0
->  *   0x1: VPP_MERGE
->  */
-> #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_DISP_DITHER0         0
-> #define MT8195_SEL_IN_DSC_WRAP0_IN_FROM_VPP_MERGE            BIT(4)
-> ... and so on.
-> 
-> Regards,
-> Fei
-> 
+prb_next_seq() function have a performance issue, in bad case it will
+check all the seqs. If log buffer is 256K, the number of while loop
+is 8K, 512K is 16K, 2M is 64K, it will cause performance issue.
+we have a process use do_syslog poll&read method to read kernel log,
+sometime the cpu loading is 50%. So we add old_seq to reduce the
+loop time. It only check new log times.
 
-OK, I'll fix it.
+Signed-off-by: Chunlei Wang <chunlei.wang@mediatek.com>
+---
+ kernel/printk/printk.c            | 12 ++++++------
+ kernel/printk/printk_ringbuffer.c |  4 ++--
+ kernel/printk/printk_ringbuffer.h |  2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-> > 
-> > 
-> > Regards,
-> > Jason-JH Lin <jason-jh.lin@mediatek.com>
-> > 
--- 
-Jason-JH Lin <jason-jh.lin@mediatek.com>
+diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
+index a8d0a58deebc..9c6d4d617a95 100644
+--- a/kernel/printk/printk.c
++++ b/kernel/printk/printk.c
+@@ -801,7 +801,7 @@ static loff_t devkmsg_llseek(struct file *file,
+loff_t offset, int whence)
+                break;
+        case SEEK_END:
+                /* after the last record */
+-               atomic64_set(&user->seq, prb_next_seq(prb));
++               atomic64_set(&user->seq, prb_next_seq(prb,
+latched_seq_read_nolock(&clear_seq)));
+                break;
+        default:
+                ret = -EINVAL;
+@@ -1155,9 +1155,9 @@ void __init setup_log_buf(int early)
+                        free -= text_size;
+        }
 
+-       if (seq != prb_next_seq(&printk_rb_static)) {
++       if (seq != prb_next_seq(&printk_rb_static, seq)) {
+                pr_err("dropped %llu messages\n",
+-                      prb_next_seq(&printk_rb_static) - seq);
++                      prb_next_seq(&printk_rb_static, seq) - seq);
+        }
 
+        pr_info("log_buf_len: %u bytes\n", log_buf_len);
+@@ -1625,7 +1625,7 @@ static int syslog_print_all(char __user *buf, int
+size, bool clear)
+ static void syslog_clear(void)
+ {
+        mutex_lock(&syslog_lock);
+-       latched_seq_write(&clear_seq, prb_next_seq(prb));
++       latched_seq_write(&clear_seq, prb_next_seq(prb, 0));
+        mutex_unlock(&syslog_lock);
+ }
+
+@@ -1714,7 +1714,7 @@ int do_syslog(int type, char __user *buf, int
+len, int source)
+                         * for pending data, not the size; return the
+count of
+                         * records, not the length.
+                         */
+-                       error = prb_next_seq(prb) - syslog_seq;
++                       error = prb_next_seq(prb, syslog_seq) -
+syslog_seq;
+                } else {
+                        bool time = syslog_partial ? syslog_time :
+printk_time;
+                        unsigned int line_count;
+@@ -3573,7 +3573,7 @@ EXPORT_SYMBOL_GPL(kmsg_dump_get_buffer);
+ void kmsg_dump_rewind(struct kmsg_dump_iter *iter)
+ {
+        iter->cur_seq = latched_seq_read_nolock(&clear_seq);
+-       iter->next_seq = prb_next_seq(prb);
++       iter->next_seq = prb_next_seq(prb, iter->cur_seq);
+ }
+ EXPORT_SYMBOL_GPL(kmsg_dump_rewind);
+
+diff --git a/kernel/printk/printk_ringbuffer.c
+b/kernel/printk/printk_ringbuffer.c
+index 8a7b7362c0dd..a910b79d9341 100644
+--- a/kernel/printk/printk_ringbuffer.c
++++ b/kernel/printk/printk_ringbuffer.c
+@@ -2003,9 +2003,9 @@ u64 prb_first_valid_seq(struct printk_ringbuffer
+*rb)
+  * Return: The sequence number of the next newest (not yet available)
+record
+  *         for readers.
+  */
+-u64 prb_next_seq(struct printk_ringbuffer *rb)
++u64 prb_next_seq(struct printk_ringbuffer *rb, u64 old_seq)
+ {
+-       u64 seq = 0;
++       u64 seq = old_seq;
+
+        /* Search forward from the oldest descriptor. */
+        while (_prb_read_valid(rb, &seq, NULL, NULL))
+diff --git a/kernel/printk/printk_ringbuffer.h
+b/kernel/printk/printk_ringbuffer.h
+index 73cc80e01cef..0729b21a9d34 100644
+--- a/kernel/printk/printk_ringbuffer.h
++++ b/kernel/printk/printk_ringbuffer.h
+@@ -377,6 +377,6 @@ bool prb_read_valid_info(struct printk_ringbuffer
+*rb, u64 seq,
+                         struct printk_info *info, unsigned int
+*line_count);
+
+ u64 prb_first_valid_seq(struct printk_ringbuffer *rb);
+-u64 prb_next_seq(struct printk_ringbuffer *rb);
++u64 prb_next_seq(struct printk_ringbuffer *rb, u64 seq);
+
+ #endif /* _KERNEL_PRINTK_RINGBUFFER_H */
+--
+2.18.0
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
