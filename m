@@ -2,57 +2,76 @@ Return-Path: <SRS0=kfxU=PO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5FB4AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:22:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8503EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:40:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1C18860724
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:22:06 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1C18860724
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 37F4760EFF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:40:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 37F4760EFF
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	Cc:To:Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rWzb1rfCwsOgvzc5rKevNUZ5JIEDcvOTNDtwwRPPh0k=; b=L1RkEmDguRjn/dCZoM/U23Fyxe
-	rTMWfiAVyJILTu/5+T0lX/1HcVKLPsIUIGy9pK/j8vOIIAwrUp++BK+W9coE8krTm3Qot/yP8w4P5
-	SKoEhZgoW0njjP2wq8oHKRChhMIAI1VA2K7G0GxO7BgA2Us4lPb81i4bYsUO+U99QxkpkLUm6e9Na
-	Cn9P391KjEgii96T0p+KllzY9II2vczaLL7YNd8oiRoNlHbY23Tt0BYgNufFA90SYkBu1KMLvYczn
-	+jLHAQRvvAZGo8DS6SmDMFOqBeycYi/lnwfVZRHyXVBo38VRRmPOnEsep9i9k0PBzJjBqLdOhvLcP
-	eRaP+LRw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m9YJ/pUVmmdZLqXiHpgXOLm+wf+281xCe7zsPPs/jU8=; b=urtFirsZjNK4ep
+	3ebjxfYweUP5F026o2FSl/ONNZNnuCjSF9+vm8REp00Gme8J2jQ/ErC3neFN8gdiG1ozuEZS8EBte
+	jRRBzLOqId3jd6bS3X2vd9RGz2pFvZxxI5+LHreMlhGNBoS9uei1JgzRCBwOqebu+uC98IbzBwuEC
+	GaZbYIyvRe4KZ9JojM/BzYeb4EmruLUM9Hlh29dliz1HZwi70PbsW4ePnzGlvBw/pTkK3ZrIH6wez
+	3EAYxnkDnxu9MiJBmxqxfew3AmyZJjUdV/lQMMfukHA3Q1gQVFlO/LdNNQMWh39E9UIPZtIZ1w8vP
+	SOiaMA3g+N4KcXN6sPlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfOGt-0029CD-9X; Tue, 26 Oct 2021 15:21:51 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mfOYn-002Cil-4n; Tue, 26 Oct 2021 15:40:21 +0000
+Received: from mail-ot1-f47.google.com ([209.85.210.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfOGc-00297Z-Bc; Tue, 26 Oct 2021 15:21:37 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 718731F43A2F
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [RFC 08/13] soc: mediatek: apu: Add apusys rv driver
-To: Flora Fu <flora.fu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
- Sumit Semwal <sumit.semwal@linaro.org>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- Yong Wu <yong.wu@mediatek.com>, Pi-Cheng Chen <pi-cheng.chen@mediatek.com>
-References: <20211023111409.30463-1-flora.fu@mediatek.com>
- <20211023111409.30463-9-flora.fu@mediatek.com>
-Message-ID: <5a67997f-737a-5bd1-9ba3-25b5330b7dc6@collabora.com>
-Date: Tue, 26 Oct 2021 17:21:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1mfOYZ-002Cgi-Mj; Tue, 26 Oct 2021 15:40:09 +0000
+Received: by mail-ot1-f47.google.com with SMTP id
+ v2-20020a05683018c200b0054e3acddd91so17831020ote.8; 
+ Tue, 26 Oct 2021 08:40:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=LHJn05dFrFSrzp6BE8p0Ogvc76VnimFelZpRceN/kow=;
+ b=xIasQnQ+H6BHo/lEWrIn0vS7Bp17O56ZiocMFjsLh079p1YEhITlr2MXL4rXiF+wWp
+ bPJA67nSh3LyMvMb4utPNnwGqDFAyoLRo+1/MLd/aORoqU1NKD5HsOG6ZgqFfOdGZuu4
+ DBEqg73Hb9nWtYW+4uQaCP1XUSVRB5ezVh4ryiBfga6mriV8Uofc367V94hNf8Qyjckt
+ twDyx98K2psPsjBj4yz1zhC7guQeAzujlHMdNVKFqETjmbXYqAaTMen7MIGdS9CnbD+B
+ eEh6RbQYrzk04OWAljLLgQVNmahNHmZjXfld2RVvemL/IYJVkFilaGr+Cc721T9rrhsF
+ Yy9g==
+X-Gm-Message-State: AOAM531xGv8wEUgj9ecoxqRdUOi0UahwpNcmmnJvoShaqBt/0RnIFRBu
+ 8uzFiLLvDu0e3iGXY9FXqIfVO/tvC54IFumRrzc=
+X-Google-Smtp-Source: ABdhPJwT64HxGvetYBeeAQcCBsq8AdGDlgIRoZ+S8FjnUW77a5Gc2RmixdTVJabKk60LXzUhxJLE6KiCZ/UmVVhMQzc=
+X-Received: by 2002:a05:6830:90b:: with SMTP id
+ v11mr20131207ott.254.1635262804497; 
+ Tue, 26 Oct 2021 08:40:04 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20211023111409.30463-9-flora.fu@mediatek.com>
-Content-Language: en-US
+References: <20211025070155.2995-1-chunfeng.yun@mediatek.com>
+In-Reply-To: <20211025070155.2995-1-chunfeng.yun@mediatek.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Tue, 26 Oct 2021 17:39:53 +0200
+Message-ID: <CAJZ5v0gb6vN9kHeQbgjRQXvOCNaFK8ur7bLDeAVjDqdT2=a+-g@mail.gmail.com>
+Subject: Re: [PATCH v4 1/3] PM / wakeirq: support enabling wake-up irq after
+ runtime_suspend called
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: "Rafael J . Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
+ Pavel Machek <pavel@ucw.cz>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Mathias Nyman <mathias.nyman@intel.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Linux PM <linux-pm@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ "open list:ULTRA-WIDEBAND (UWB) SUBSYSTEM:" <linux-usb@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_082134_728051_BEEDD482 
-X-CRM114-Status: GOOD (  44.61  )
+X-CRM114-CacheID: sfid-20211026_084007_776303_DFAF0172 
+X-CRM114-Status: GOOD (  48.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,751 +83,331 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 23/10/21 13:14, Flora Fu ha scritto:
-> Add driver for control APU tinysys
-> 
-> APU integrated subsystem having MD32RV33 (MD32) that runs tinysys
-> The tinsys is running on a micro processor in APU.
-> Its firmware is load and boot from Kernel side. Kernel and tinysys use
-> IPI to tx/rx messages.
-> 
-> Signed-off-by: Flora Fu <flora.fu@mediatek.com>
+On Mon, Oct 25, 2021 at 9:02 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+> When the dedicated wake IRQ is level trigger, and it uses the
+> device's low-power status as the wakeup source, that means if the
+> device is not in low-power state, the wake IRQ will be triggered
+> if enabled; For this case, need enable the wake IRQ after running
+> the device's ->runtime_suspend() which make it enter low-power state.
+>
+> e.g.
+> Assume the wake IRQ is a low level trigger type, and the wakeup
+> signal comes from the low-power status of the device.
+> The wakeup signal is low level at running time (0), and becomes
+> high level when the device enters low-power state (runtime_suspend
+> (1) is called), a wakeup event at (2) make the device exit low-power
+> state, then the wakeup signal also becomes low level.
+>
+>                 ------------------
+>                |           ^     ^|
+> ----------------           |     | --------------
+>  |<---(0)--->|<--(1)--|   (3)   (2)    (4)
+>
+> if enable the wake IRQ before running runtime_suspend during (0),
+> a wake IRQ will arise, it causes resume immediately;
+> it works if enable wake IRQ ( e.g. at (3) or (4)) after running
+> ->runtime_suspend().
+>
+> This patch introduces a new status WAKE_IRQ_DEDICATED_REVERSE to
+> optionally support enabling wake IRQ after running ->runtime_suspend().
+>
+> Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+
+I don't really have anything to add regarding the code.
+
+The kerneldoc comments could be improved, but I can take care of this
+when applying the patch.
+
+Please collect ACKs for the remaining 2 patches in the series and I
+will pick up all three.
+
+Thanks!
+
 > ---
->   drivers/soc/mediatek/apusys/Makefile        |   6 +
->   drivers/soc/mediatek/apusys/apu-config.h    | 100 +++
->   drivers/soc/mediatek/apusys/apu-core.c      |   2 +
->   drivers/soc/mediatek/apusys/apu-core.h      |   2 +
->   drivers/soc/mediatek/apusys/apu-ipi.c       | 486 ++++++++++++
-
-I'm not sure of that, but your apu-ipi.c may be more suited to be in
-drivers/remoteproc instead.
-
->   drivers/soc/mediatek/apusys/apu-mbox.c      |  83 ++
-
-apu-mbox.c should go to drivers/mailbox/ and you should register it with
-the mailbox API as a mailbox controller instead of what you're currently
-doing...
-
- From what I see, you have functions in there that can be indeed mapped
-to struct mbox_chan_ops .send_data and .peek_data... also your function
-apu_mbox_wait_inbox seems to be waiting on an interrupt, and such irq is
-apparently your "mbox0_irq" (as you named it in the dt).
-In that case, you can also manage that in your drivers/mailbox/ driver.
-+
->   drivers/soc/mediatek/apusys/apu-mbox.h      |  27 +
->   drivers/soc/mediatek/apusys/apu-rproc.c     | 806 ++++++++++++++++++++
-
-The apu-rproc.c driver seems to be a good candidate to be moved away from
-
-drivers/soc/mediatek/apusys/ - as this is indeed a remoteproc driver.
-
-Having it as drivers/remoteproc/mtk_apu.c seems to be a good option.
-
-
-
->   drivers/soc/mediatek/apusys/apu-sw-logger.c | 429 +++++++++++
-
-This one definitely belongs here in drivers/soc/mediatek, and it's a consumer
-of the mailbox driver.
-
->   drivers/soc/mediatek/apusys/apu.h           | 256 +++++++
->   drivers/soc/mediatek/apusys/mt81xx-plat.c   | 320 ++++++++
-
-If we end up keeping to be in need to have a separate mt81xx-plat.c file,
-then I believe this should have another name, so that it becomes one that
-aggregates all of the very-platform-specific functions in one, instead of
-having one file for each platform.
-
-Though, it may also be possible that this file will disappear entirely:
-since most of the things here will be moved around, it may become mostly
-empty... but it's probably too soon to judge.
-
->   11 files changed, 2517 insertions(+)
->   create mode 100644 drivers/soc/mediatek/apusys/apu-config.h
->   create mode 100644 drivers/soc/mediatek/apusys/apu-ipi.c
->   create mode 100644 drivers/soc/mediatek/apusys/apu-mbox.c
->   create mode 100644 drivers/soc/mediatek/apusys/apu-mbox.h
->   create mode 100644 drivers/soc/mediatek/apusys/apu-rproc.c
->   create mode 100644 drivers/soc/mediatek/apusys/apu-sw-logger.c
->   create mode 100644 drivers/soc/mediatek/apusys/apu.h
->   create mode 100644 drivers/soc/mediatek/apusys/mt81xx-plat.c
-> 
-
-snip...
-
-> diff --git a/drivers/soc/mediatek/apusys/apu-ipi.c b/drivers/soc/mediatek/apusys/apu-ipi.c
-> new file mode 100644
-> index 000000000000..547e034b3620
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/apusys/apu-ipi.c
-
-snip...
-
-> +int apu_ipi_init(struct platform_device *pdev, struct mtk_apu *apu)
-> +{
-> +	struct device *dev = apu->dev;
-> +	int i, ret;
+> v4: changes according to Rafael's suggestions
+>     1. rename new flag as WAKE_IRQ_DEDICATED_REVERSE;
+>     2. add __dev_pm_set_dedicated_wake_irq() with flag parameter, then
+>        rebuild dev_pm_set_dedicated_wake_irq() and add new api
+>        dev_pm_set_dedicated_wake_irq_reverse();
+>     3. rename the new added parameter as cond_disable in
+>        dev_pm_disable_wake_irq_check(), and also simplify its flow;
+>     4. modify some comments
+>
+> v3: add new status suggested by Rafael
+>
+> v2: add more commit message
+>
+>   Use the falling edge trigger interrupt suggested by Ikjoon [1], it
+> works well at firstly when only use this related wakeup source, but
+> encounter issues if use other wakeup sources to wakeup platform as
+> below steps:
+> 1. use another wakeup source to wake up the suspended system;
+> 2. the consumer's resume() will be called, and exits sleep state;
+> 3. the consumer's wakeup signal will fall into low level, due to
+>    currently the wakeup irq is disabled, the wake-irq is pending;
+> 4. the consumer tries to enter runtime suspend, but there is a
+>    pending wakeup irq, so will resume again, this will repeat
+>    endlessly.
+>
+>   Send out the patch again for further discussion.
+>
+> [1]: https://patchwork.kernel.org/patch/12190407
+>
+> ---
+>  drivers/base/power/power.h   |   7 ++-
+>  drivers/base/power/runtime.c |   6 ++-
+>  drivers/base/power/wakeirq.c | 101 +++++++++++++++++++++++++++--------
+>  include/linux/pm_wakeirq.h   |   9 +++-
+>  4 files changed, 96 insertions(+), 27 deletions(-)
+>
+> diff --git a/drivers/base/power/power.h b/drivers/base/power/power.h
+> index 54292cdd7808..0eb7f02b3ad5 100644
+> --- a/drivers/base/power/power.h
+> +++ b/drivers/base/power/power.h
+> @@ -25,8 +25,10 @@ extern u64 pm_runtime_active_time(struct device *dev);
+>
+>  #define WAKE_IRQ_DEDICATED_ALLOCATED   BIT(0)
+>  #define WAKE_IRQ_DEDICATED_MANAGED     BIT(1)
+> +#define WAKE_IRQ_DEDICATED_REVERSE     BIT(2)
+>  #define WAKE_IRQ_DEDICATED_MASK                (WAKE_IRQ_DEDICATED_ALLOCATED | \
+> -                                        WAKE_IRQ_DEDICATED_MANAGED)
+> +                                        WAKE_IRQ_DEDICATED_MANAGED | \
+> +                                        WAKE_IRQ_DEDICATED_REVERSE)
+>
+>  struct wake_irq {
+>         struct device *dev;
+> @@ -39,7 +41,8 @@ extern void dev_pm_arm_wake_irq(struct wake_irq *wirq);
+>  extern void dev_pm_disarm_wake_irq(struct wake_irq *wirq);
+>  extern void dev_pm_enable_wake_irq_check(struct device *dev,
+>                                          bool can_change_status);
+> -extern void dev_pm_disable_wake_irq_check(struct device *dev);
+> +extern void dev_pm_disable_wake_irq_check(struct device *dev, bool cond_disable);
+> +extern void dev_pm_enable_wake_irq_complete(struct device *dev);
+>
+>  #ifdef CONFIG_PM_SLEEP
+>
+> diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
+> index ec94049442b9..d504cd4ab3cb 100644
+> --- a/drivers/base/power/runtime.c
+> +++ b/drivers/base/power/runtime.c
+> @@ -645,6 +645,8 @@ static int rpm_suspend(struct device *dev, int rpmflags)
+>         if (retval)
+>                 goto fail;
+>
+> +       dev_pm_enable_wake_irq_complete(dev);
 > +
-> +	tx_serial_no = 0;
-> +	rx_serial_no = 0;
+>   no_callback:
+>         __update_runtime_status(dev, RPM_SUSPENDED);
+>         pm_runtime_deactivate_timer(dev);
+> @@ -690,7 +692,7 @@ static int rpm_suspend(struct device *dev, int rpmflags)
+>         return retval;
+>
+>   fail:
+> -       dev_pm_disable_wake_irq_check(dev);
+> +       dev_pm_disable_wake_irq_check(dev, true);
+>         __update_runtime_status(dev, RPM_ACTIVE);
+>         dev->power.deferred_resume = false;
+>         wake_up_all(&dev->power.wait_queue);
+> @@ -873,7 +875,7 @@ static int rpm_resume(struct device *dev, int rpmflags)
+>
+>         callback = RPM_GET_CALLBACK(dev, runtime_resume);
+>
+> -       dev_pm_disable_wake_irq_check(dev);
+> +       dev_pm_disable_wake_irq_check(dev, false);
+>         retval = rpm_callback(callback, dev);
+>         if (retval) {
+>                 __update_runtime_status(dev, RPM_SUSPENDED);
+> diff --git a/drivers/base/power/wakeirq.c b/drivers/base/power/wakeirq.c
+> index b91a3a9bf9f6..76c163a89104 100644
+> --- a/drivers/base/power/wakeirq.c
+> +++ b/drivers/base/power/wakeirq.c
+> @@ -142,24 +142,7 @@ static irqreturn_t handle_threaded_wake_irq(int irq, void *_wirq)
+>         return IRQ_HANDLED;
+>  }
+>
+> -/**
+> - * dev_pm_set_dedicated_wake_irq - Request a dedicated wake-up interrupt
+> - * @dev: Device entry
+> - * @irq: Device wake-up interrupt
+> - *
+> - * Unless your hardware has separate wake-up interrupts in addition
+> - * to the device IO interrupts, you don't need this.
+> - *
+> - * Sets up a threaded interrupt handler for a device that has
+> - * a dedicated wake-up interrupt in addition to the device IO
+> - * interrupt.
+> - *
+> - * The interrupt starts disabled, and needs to be managed for
+> - * the device by the bus code or the device driver using
+> - * dev_pm_enable_wake_irq() and dev_pm_disable_wake_irq()
+> - * functions.
+> - */
+> -int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
+> +static int __dev_pm_set_dedicated_wake_irq(struct device *dev, int irq, unsigned int flag)
+>  {
+>         struct wake_irq *wirq;
+>         int err;
+> @@ -197,7 +180,7 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
+>         if (err)
+>                 goto err_free_irq;
+>
+> -       wirq->status = WAKE_IRQ_DEDICATED_ALLOCATED;
+> +       wirq->status = WAKE_IRQ_DEDICATED_ALLOCATED | flag;
+>
+>         return err;
+>
+> @@ -210,8 +193,57 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
+>
+>         return err;
+>  }
 > +
-> +	mutex_init(&apu->send_lock);
-> +	spin_lock_init(&apu->usage_cnt_lock);
-> +	for (i = 0; i < APU_IPI_MAX; i++) {
-> +		mutex_init(&apu->ipi_desc[i].lock);
-> +		lockdep_set_class_and_name(&apu->ipi_desc[i].lock,
-> +					   &ipi_lock_key[i],
-> +					   apu->platdata->ipi_attrs[i].name);
-> +	}
 > +
-> +	init_waitqueue_head(&apu->run.wq);
-> +	init_waitqueue_head(&apu->ack_wq);
-> +
-> +	/* APU initialization IPI register */
-> +	ret = apu_ipi_register(apu, APU_IPI_INIT, apu_init_ipi_handler, apu);
-> +	if (ret) {
-> +		dev_err(dev, "failed to register ipi for init, ret=%d\n",
-> +			ret);
-> +		return ret;
-> +	}
-> +
-> +	/* add rpmsg subdev */
-> +	apu_add_rpmsg_subdev(apu);
-> +
-> +	/* register mailbox IRQ */
-> +	apu->mbox0_irq_number = platform_get_irq_byname(pdev, "mbox0_irq");
-> +	dev_info(&pdev->dev, "%s: mbox0_irq = %d\n", __func__,
-> +		 apu->mbox0_irq_number);
-> +
-> +	ret = devm_request_threaded_irq(&pdev->dev, apu->mbox0_irq_number,
-> +					NULL, apu_ipi_handler, IRQF_ONESHOT,
-> +					"apu_ipi", apu);
-
-This is the mailbox interrupt... but it's handled in this driver instead of
-being handler in the mailbox driver... it's a bit confusing.
-
-Is this interrupt supposed to fire as a mailbox doorbell or..?
-In that case, you should request it in the mailbox driver and register an
-interrupt controller (still, in the mailbox driver) so that you can export
-a sw interrupt to this one.
-
-Or, maybe you can use notifiers to catch the mailbox message in this driver?
-
-> +	if (ret < 0)
-> +		goto remove_rpmsg_subdev;
-> +
-> +	apu_mbox_hw_init(apu);
-> +
-> +	return 0;
-> +
-> +remove_rpmsg_subdev:
-> +	apu_remove_rpmsg_subdev(apu);
-> +	apu_ipi_unregister(apu, APU_IPI_INIT);
-> +
-> +	return ret;
-> +}
-
-snip...
-
-> diff --git a/drivers/soc/mediatek/apusys/apu-rproc.c b/drivers/soc/mediatek/apusys/apu-rproc.c
-> new file mode 100644
-> index 000000000000..e2fe63dd6cc1
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/apusys/apu-rproc.c
-> @@ -0,0 +1,806 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2021 MediaTek Inc.
+> +/**
+> + * dev_pm_set_dedicated_wake_irq - Request a dedicated wake-up interrupt
+> + * @dev: Device entry
+> + * @irq: Device wake-up interrupt
+> + *
+> + * Unless your hardware has separate wake-up interrupts in addition
+> + * to the device IO interrupts, you don't need this.
+> + *
+> + * Sets up a threaded interrupt handler for a device that has
+> + * a dedicated wake-up interrupt in addition to the device IO
+> + * interrupt.
+> + *
+> + * The interrupt starts disabled, and needs to be managed for
+> + * the device by the bus code or the device driver using
+> + * dev_pm_enable_wake_irq*() and dev_pm_disable_wake_irq*()
+> + * functions.
 > + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/device.h>
-> +#include <linux/dma-mapping.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/iommu.h>
-> +#include <linux/irq.h>
-> +#include <linux/module.h>
-> +#include <linux/remoteproc.h>
-> +#include <linux/time64.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/pm_domain.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/sched/clock.h>
-> +#include <linux/time64.h>
-> +#include <linux/workqueue.h>
-> +
-> +#include "apu.h"
-> +#include "apu-config.h"
-> +#include "apu-core.h"
-> +
-> +/* cmd */
-> +enum {
-> +	DPIDLE_CMD_LOCK_IPI = 0x5a00,
-> +	DPIDLE_CMD_UNLOCK_IPI = 0x5a01,
-> +	DPIDLE_CMD_PDN_UNLOCK = 0x5a02,
-> +};
-> +
-> +/* ack */
-> +enum {
-> +	DPIDLE_ACK_OK = 0,
-> +	DPIDLE_ACK_LOCK_BUSY,
-> +	DPIDLE_ACK_POWER_DOWN_FAIL,
-> +};
-> +
-> +static struct work_struct *apu_pwr_work;
-> +static struct workqueue_struct *apu_pwr_wq;
-> +static struct dentry *dbg_root;
-> +
-> +static void *apu_da_to_va(struct rproc *rproc, u64 da, size_t len,
-> +			  bool *is_iomem)
+> +int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
 > +{
-> +	void *ptr = NULL;
-> +	struct mtk_apu *apu = (struct mtk_apu *)rproc->priv;
-> +
-> +	if (da >= DRAM_OFFSET && da < DRAM_OFFSET + CODE_BUF_SIZE) {
-> +		ptr = apu->code_buf + (da - DRAM_OFFSET);
-> +	} else {
-> +		dev_err(apu->dev, "%s: invalid da: da = 0x%llx, len = %zu\n",
-> +			__func__, da, len);
-> +	}
-> +	return ptr;
+> +       return __dev_pm_set_dedicated_wake_irq(dev, irq, 0);
 > +}
-> +
-> +static int apu_run(struct rproc *rproc)
-> +{
-> +	struct mtk_apu *apu = (struct mtk_apu *)rproc->priv;
-> +	struct mtk_apu_hw_ops *hw_ops = &apu->platdata->ops;
-> +	struct device *dev = apu->dev;
-> +	struct apu_run *run = &apu->run;
-> +	struct timespec64 begin, end, delta;
-> +	int ret;
-> +
-> +	pm_runtime_get_sync(apu->dev);
-> +	hw_ops->start(apu);
-
-Don't forget to always check return values.....
-
-> +
-> +	/* check if boot success */
-> +	ktime_get_ts64(&begin);
-> +	ret = wait_event_interruptible_timeout(run->wq,
-> +					       run->signaled,
-> +					       msecs_to_jiffies(10000));
-
-#define APU_INIT_TIMEOUT_MS	10000
-
-...but then, does it really need 10 *seconds* for that?! That's a lot of time...
-
-> +	ktime_get_ts64(&end);
-> +	if (ret == 0) {
-> +		dev_info(dev, "APU initialization timeout!!\n");
-> +		ret = -ETIME;
-> +		goto stop;
-> +	}
-> +	if (ret == -ERESTARTSYS) {
-> +		dev_info(dev, "wait APU interrupted by a signal!!\n");
-> +		goto stop;
-> +	}
-> +
-> +	apu->boot_done = true;
-> +	delta = timespec64_sub(end, begin);
-> +	dev_info(dev, "APU uP boot success. boot time: %llu s, %llu ns\n",
-> +		 (u64)delta.tv_sec, (u64)delta.tv_nsec);
-> +
-> +	return 0;
-> +
-> +stop:
-> +	hw_ops->stop(apu);
-> +
-> +	return ret;
-> +}
-> +
-
-
-snip...
-
-
-> +
-> +static int apu_config_setup(struct mtk_apu *apu)
-> +{
-> +	struct device *dev = apu->dev;
-> +	unsigned long flags;
-> +	int ret;
-> +
-> +	apu->conf_buf = dma_alloc_coherent(apu->dev, CONFIG_SIZE,
-> +					   &apu->conf_da, GFP_KERNEL);
-> +
-> +	if (!apu->conf_buf || apu->conf_da == 0) {
-> +		dev_info(dev, "%s: dma_alloc_coherent fail\n", __func__);
-> +		return -ENOMEM;
-> +	}
-> +	memset(apu->conf_buf, 0, CONFIG_SIZE);
-> +
-> +	apu_config_user_ptr_init(apu);
-> +	spin_lock_irqsave(&apu->reg_lock, flags);
-> +	iowrite32((u32)apu->conf_da, apu->apu_mbox + HOST_CONFIG_ADDR);
-> +	spin_unlock_irqrestore(&apu->reg_lock, flags);
-> +
-> +	apu->conf_buf->time_offset = sched_clock();
-> +	ret = apu_ipi_config_init(apu);
-> +	if (ret) {
-> +		dev_info(dev, "apu ipi config init failed\n");
-> +		goto out;
-> +	}
-> +
-> +	ret = sw_logger_config_init(apu);
-
- From what I understand, the sw logger is not critical for functionality... so
-it should probably be a "pluggable" instead.
-Also, since that sw logger seems to be "simply" reading from a mailbox, it
-should be pretty straightforward to make it so, in which case, you wouldn't
-be initializing it here, but as a platform driver instead (if debugging enabled?)
-
-> +	if (ret) {
-> +		dev_err(dev, "sw logger config init failed\n");
-> +		goto err_sw_logger;
-> +	}
-> +
-> +	return 0;
-> +
-> +err_sw_logger:
-> +	apu_ipi_config_remove(apu);
-> +out:
-> +	return ret;
-> +}
-> +
-
-snip...
-
-> diff --git a/drivers/soc/mediatek/apusys/apu.h b/drivers/soc/mediatek/apusys/apu.h
-> new file mode 100644
-> index 000000000000..5bbc46416a19
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/apusys/apu.h
-> @@ -0,0 +1,256 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/*
-> + * Copyright (c) 2021 MediaTek Inc.
+>  EXPORT_SYMBOL_GPL(dev_pm_set_dedicated_wake_irq);
+>
+> +/**
+> + * dev_pm_set_dedicated_wake_irq_reverse - Request a dedicated wake-up interrupt
+> + *       with setting flag WAKE_IRQ_DEDICATED_REVERSE
+> + * @dev: Device entry
+> + * @irq: Device wake-up interrupt
+> + *
+> + * Unless your hardware has separate wake-up interrupts in addition
+> + * to the device IO interrupts, you don't need this.
+> + *
+> + * Sets up a threaded interrupt handler for a device that has a dedicated
+> + * wake-up interrupt in addition to the device IO interrupt. It sets
+> + * the status of WAKE_IRQ_DEDICATED_REVERSE to tell rpm_suspend()
+> + * to enable dedicated wake-up interrupt after running the
+> + * ->runtime_suspend()
+> + *
+> + * The interrupt starts disabled, and needs to be managed for
+> + * the device by the bus code or the device driver using
+> + * dev_pm_enable_wake_irq*() and dev_pm_disable_wake_irq*()
+> + * functions.
 > + */
+> +int dev_pm_set_dedicated_wake_irq_reverse(struct device *dev, int irq)
+> +{
+> +       return __dev_pm_set_dedicated_wake_irq(dev, irq, WAKE_IRQ_DEDICATED_REVERSE);
+> +}
+> +EXPORT_SYMBOL_GPL(dev_pm_set_dedicated_wake_irq_reverse);
 > +
-> +#ifndef APU_H
-> +#define APU_H
-> +#include <linux/platform_device.h>
-> +#include <linux/spinlock.h>
-> +#include <linux/rpmsg/mtk_rpmsg.h>
+>  /**
+>   * dev_pm_enable_wake_irq - Enable device wake-up interrupt
+>   * @dev: Device
+> @@ -282,27 +314,54 @@ void dev_pm_enable_wake_irq_check(struct device *dev,
+>         return;
+>
+>  enable:
+> -       enable_irq(wirq->irq);
+> +       if (!can_change_status || !(wirq->status & WAKE_IRQ_DEDICATED_REVERSE))
+> +               enable_irq(wirq->irq);
+>  }
+>
+>  /**
+>   * dev_pm_disable_wake_irq_check - Checks and disables wake-up interrupt
+>   * @dev: Device
+> + * @cond_disable: if set, also check WAKE_IRQ_DEDICATED_REVERSE
+>   *
+>   * Disables wake-up interrupt conditionally based on status.
+>   * Should be only called from rpm_suspend() and rpm_resume() path.
+>   */
+> -void dev_pm_disable_wake_irq_check(struct device *dev)
+> +void dev_pm_disable_wake_irq_check(struct device *dev, bool cond_disable)
+>  {
+>         struct wake_irq *wirq = dev->power.wakeirq;
+>
+>         if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
+>                 return;
+>
+> +       if (cond_disable && (wirq->status & WAKE_IRQ_DEDICATED_REVERSE))
+> +               return;
 > +
-> +#include "apu-config.h"
-> +
-> +/* setup the SMC command ops */
-> +#define MTK_SIP_APU_START_MCU	0x00
-> +#define MTK_SIP_APU_STOP_MCU	0x01
-> +
-> +/* md32_sysctrl register definition */
-> +#define MD32_SYS_CTRL	0x0
-> +#define MD32_MON_PC		0x838
-> +#define MD32_MON_LR		0x83c
-> +#define MD32_MON_SP		0x840
-> +#define MD32_STATUS		0x844
-> +
-> +/*wdt register */
-> +#define WDT_INT		0x0
-> +#define WDT_CTRL0	0x4
-> +#define WDT_EN		BIT(31)
-> +
-> +/* apu_mbox spare regiter */
-
-/* apu_mbox spare register: mbox 0..6, spare 0..3 */
-#define REG_MBOX_SPARE(mbox, reg) 	((0x40 + (0x100 * mbox)) + (reg * 0x4))
-#define REG_MBOX0_SPARE(n)		REG_MBOX_SPARE(0, n)
-#define REG_MBOX6_SPARE(n)		REG_MBOX_SPARE(6, n)
-
-#define HOST_CONFIG_ADDR		REG_MBOX_SPARE(0, 2)
-
-Would that be better? Granted, mbox1-5 are also accessible and perhaps used
-in the future.
-
-> +#define MBOX0_SPARE0 0x40
-> +#define MBOX0_SPARE1 0x44
-> +#define MBOX0_SPARE2 0x48
-> +#define MBOX0_SPARE3 0x4C
-> +#define MBOX6_SPARE0 0x640
-> +#define MBOX6_SPARE1 0x644
-> +#define MBOX6_SPARE2 0x648
-> +#define MBOX6_SPARE3 0x64C
-> +
-> +#define HOST_CONFIG_ADDR MBOX0_SPARE2
-> +
-> +#define LOG_W_PTR (MBOX0_SPARE0)
-> +#define LOG_R_PTR (MBOX0_SPARE1)
-> +#define LOG_OV_FLG (MBOX0_SPARE3)
-> +
-> +/* rv setup  */
-> +#define F_PRELOAD_FIRMWARE	BIT(0)
-> +#define F_AUTO_BOOT		BIT(1)
-> +
-
-Use SZ_* macros where possible
-
-> +#define TCM_SIZE (128UL * 1024UL)
-> +#define CODE_BUF_SIZE (1024UL * 1024UL)
-> +#define DRAM_DUMP_SIZE (CODE_BUF_SIZE - TCM_SIZE)
-> +#define REG_SIZE (4UL * 151UL)
-> +#define TBUF_SIZE (4UL * 32UL)
-> +#define CACHE_DUMP_SIZE (37UL * 1024UL)
-> +#define DRAM_OFFSET (0x00000UL)
-> +#define DRAM_DUMP_OFFSET (TCM_SIZE)
-> +#define TCM_OFFSET (0x1d700000UL)
-> +#define CODE_BUF_DA (DRAM_OFFSET)
-> +
-> +/* ipi */
-> +#define APU_FW_VER_LEN	       32
-> +#define APU_SHARE_BUFFER_SIZE  256
-> +
-> +#define IPI_LOCKED			1
-> +#define IPI_UNLOCKED		0
-> +
-> +#define IPI_HOST_INITIATE	0
-> +#define IPI_APU_INITIATE	1
-> +#define IPI_WITH_ACK		1
-> +#define IPI_WITHOUT_ACK		0
-> +
-> +enum {
-> +	APU_IPI_INIT = 0,
-> +	APU_IPI_NS_SERVICE,
-> +	APU_IPI_DEEP_IDLE,
-> +	APU_IPI_CTRL_RPMSG,
-> +	APU_IPI_MIDDLEWARE,
-> +	APU_IPI_REVISER_RPMSG,
-> +	APU_IPI_PWR_TX,
-> +	APU_IPI_PWR_RX,
-> +	APU_IPI_MDLA_TX,
-> +	APU_IPI_MDLA_RX,
-> +	APU_IPI_TIMESYNC,
-> +	APU_IPI_EDMA_TX,
-> +	APU_IPI_MNOC_TX,
-> +	APU_IPI_MAX,
-> +};
-> +
-> +struct mtk_apu;
-> +
-> +struct mtk_apu_hw_ops {
-> +	int (*init)(struct mtk_apu *apu);
-> +	int (*exit)(struct mtk_apu *apu);
-> +	int (*start)(struct mtk_apu *apu);
-> +	int (*stop)(struct mtk_apu *apu);
-> +	int (*resume)(struct mtk_apu *apu);
-> +	int (*apu_memmap_init)(struct mtk_apu *apu);
-> +	void (*apu_memmap_remove)(struct mtk_apu *apu);
-> +	void (*cg_gating)(struct mtk_apu *apu);
-> +	void (*cg_ungating)(struct mtk_apu *apu);
-> +	void (*rv_cachedump)(struct mtk_apu *apu);
-> +
-> +	/* power related ops */
-> +	int (*power_init)(struct mtk_apu *apu);
-> +	int (*power_on)(struct mtk_apu *apu);
-> +	int (*power_off)(struct mtk_apu *apu);
-> +};
-> +
-> +struct apu_ipi {
-> +	char *name;
-> +	unsigned int direction:1;
-> +	unsigned int ack:1;
-> +};
-> +
-> +struct mtk_apu_platdata {
-> +	u32 flags;
-> +	struct mtk_apu_hw_ops ops;
-> +	const struct apu_ipi *ipi_attrs;
-> +};
-> +
-> +struct dpidle_msg {
-> +	u32 cmd;
-> +	u32 ack;
-> +};
-> +
-> +struct apu_run {
-> +	s8 fw_ver[APU_FW_VER_LEN];
-> +	u32 signaled;
-> +	wait_queue_head_t wq;
-> +};
-> +
-> +struct apu_ipi_desc {
-> +	struct mutex lock; /*ipi hanlder mutex */
-
-typo
-
-> +	ipi_handler_t handler;
-> +	void *priv;
-> +	/*
-> +	 * positive: host-initiated ipi outstanding count
-> +	 * negative: apu-initiated ipi outstanding count
-> +	 */
-> +	int usage_cnt;
-> +};
-> +
-> +struct mtk_share_obj {
-> +	u8 share_buf[APU_SHARE_BUFFER_SIZE];
-> +};
-> +
-> +struct sw_logger_seq_data {
-> +	u32 w_ptr;
-> +	u32 r_ptr;
-> +	u32 overflow_flg;
-> +	int i;
-> +	int is_finished;
-> +	char *data;
-> +	bool startl_first;
-> +};
-> +
-> +struct mtk_apu {
-> +	struct rproc *rproc;
-> +	struct device *dev;
-> +	void __iomem *apu_mbox;
-> +	void __iomem *md32_sysctrl;
-> +	void __iomem *apu_wdt;
-> +	int mbox0_irq_number;
-> +	int wdt_irq_number;
-> +	spinlock_t reg_lock; /* register r/w lock */
-> +
-> +	/* Buffer to place execution area */
-> +	void *code_buf;
-> +	dma_addr_t code_da;
-> +
-> +	/* Buffer to place config area */
-> +	struct config_v1 *conf_buf;
-> +	dma_addr_t conf_da;
-> +
-> +	/* to synchronize boot status of remote processor */
-> +	struct apu_run run;
-> +
-> +	/* to prevent multiple ipi_send run concurrently */
-> +	struct mutex send_lock;
-> +	spinlock_t usage_cnt_lock; /* ipi occipued lock */
-> +	struct apu_ipi_desc ipi_desc[APU_IPI_MAX];
-> +	bool ipi_id_ack[APU_IPI_MAX]; /* per-ipi ack */
-> +	bool ipi_inbound_locked;
-> +	wait_queue_head_t ack_wq; /* for waiting for ipi ack */
-> +
-> +	/* ipi */
-> +	struct rproc_subdev *rpmsg_subdev;
-> +	dma_addr_t recv_buf_da;
-> +	struct mtk_share_obj *recv_buf;
-> +	dma_addr_t send_buf_da;
-> +	struct mtk_share_obj *send_buf;
-> +
-> +	/* time sync */
-> +	struct work_struct timesync_work;
-> +	struct workqueue_struct *timesync_wq;
-> +	u64 timesync_stamp;
-> +
-> +	/*deep idle */
-> +	struct dpidle_msg recv_msg;
-> +	struct work_struct deepidle_work;
-> +	struct workqueue_struct *apu_deepidle_workq;
-> +	struct work_struct pwron_dbg_wk;
-> +
-> +	struct mtk_apu_platdata	*platdata;
-> +
-> +	/* link power deive */
-> +	struct device *power_dev;
-> +	bool boot_done;
-> +	struct work_struct pwr_work;
-> +
-> +	/* logger and debug */
-> +	struct dentry *dbg_root;
-> +	dma_addr_t handle;
-> +	char *sw_log_buf;
-> +	spinlock_t sw_logger_spinlock; /* logger status update lock */
-> +	struct sw_logger_seq_data pseqdata_lock;
-> +	struct sw_logger_seq_data *pseqdata;
-> +};
-> +
-> +struct apu_coredump {
-> +	char tcmdump[TCM_SIZE];
-> +	char ramdump[DRAM_DUMP_SIZE];
-> +	char regdump[REG_SIZE];
-> +	char tbufdump[TBUF_SIZE];
-> +	u32 cachedump[CACHE_DUMP_SIZE / sizeof(u32)];
-> +} __packed;
-> +
-> +int apu_ipi_config_init(struct mtk_apu *apu);
-> +void apu_ipi_config_remove(struct mtk_apu *apu);
-> +void apu_ipi_remove(struct mtk_apu *apu);
-> +int apu_ipi_init(struct platform_device *pdev, struct mtk_apu *apu);
-> +int apu_ipi_register(struct mtk_apu *apu, u32 id,
-> +		     ipi_handler_t handler, void *priv);
-> +void apu_ipi_unregister(struct mtk_apu *apu, u32 id);
-> +int apu_ipi_send(struct mtk_apu *apu, u32 id, void *data, u32 len,
-> +		 u32 wait_ms);
-> +int apu_ipi_lock(struct mtk_apu *apu);
-> +void apu_ipi_unlock(struct mtk_apu *apu);
-> +
-> +void apu_deepidle_power_on_aputop(struct mtk_apu *apu);
-> +
-> +#if IS_ENABLED(CONFIG_DEBUG_FS)
-> +int sw_logger_config_init(struct mtk_apu *apu);
-> +void sw_logger_config_remove(struct mtk_apu *apu);
-> +int apu_sw_logger_init(struct mtk_apu *apu);
-> +void apu_sw_logger_remove(struct mtk_apu *apu);
-> +#else
-> +static inline int sw_logger_config_init(struct mtk_apu *apu) { return 0; }
-> +static inline void sw_logger_config_remove(struct mtk_apu *apu) { }
-> +static inline int apu_sw_logger_init(struct mtk_apu *apu) { return 0; }
-> +static inline void apu_sw_logger_remove(struct mtk_apu *apu) { }
-> +#endif
-> +
-> +extern const struct mtk_apu_platdata mt8192_platdata;
-> +#endif /* APU_H */
-> diff --git a/drivers/soc/mediatek/apusys/mt81xx-plat.c b/drivers/soc/mediatek/apusys/mt81xx-plat.c
-> new file mode 100644
-> index 000000000000..54f75c8d07c3
-> --- /dev/null
-> +++ b/drivers/soc/mediatek/apusys/mt81xx-plat.c
-> @@ -0,0 +1,320 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/*
-> + * Copyright (c) 2021 MediaTek Inc.
+>         if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED)
+>                 disable_irq_nosync(wirq->irq);
+>  }
+>
+> +/**
+> + * dev_pm_enable_wake_irq_complete - enable wake IRQ not enabled before
+> + * @dev: Device using the wake IRQ
+> + *
+> + * Enable wake IRQ conditionally based on status, mainly used if want to
+> + * enable wake IRQ after running ->runtime_suspend() which depends on
+> + * WAKE_IRQ_DEDICATED_REVERSE.
+> + *
+> + * Should be only called from rpm_suspend() path.
 > + */
-> +
-> +#include <linux/arm-smccc.h>
-> +#include <linux/delay.h>
-> +#include <linux/device.h>
-> +#include <linux/io.h>
-> +#include <linux/iopoll.h>
-> +#include <linux/of_platform.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/sched/clock.h>
-> +#include <linux/soc/mediatek/mtk_sip_svc.h>
-> +
-> +#include "apu.h"
-> +
-> +static const struct apu_ipi mt81xx_ipi_attrs[APU_IPI_MAX] = {
-
-In here, this is used only to pass it to the remoteproc "ipi" driver: it would make
-sense if this was in the ipi driver, associated to a compatible like
-mediatek,mt8192-ipi.
-
-> +		   [APU_IPI_INIT] = {
-> +			   .name = "init",
-> +			   .direction = IPI_APU_INITIATE,
-> +			   .ack = IPI_WITHOUT_ACK,
-> +		   },
-> +		   [APU_IPI_NS_SERVICE] = {
-> +			   .name = "name-service",
-> +			   .direction = IPI_APU_INITIATE,
-> +			   .ack = IPI_WITHOUT_ACK,
-> +		   },
-> +		   [APU_IPI_DEEP_IDLE] = {
-> +			   .name = "deep_idle",
-> +			   .direction = IPI_APU_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_CTRL_RPMSG] = {
-> +			   .name = "apu-ctrl-rpmsg",
-> +			   .direction = IPI_APU_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_MIDDLEWARE] = {
-> +			   .name = "apu-mdw-rpmsg",
-> +			   .direction = IPI_HOST_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_REVISER_RPMSG] = {
-> +			   .name = "apu-reviser-rpmsg",
-> +			   .direction = IPI_HOST_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_PWR_TX] = {
-> +			   .name = "apupwr-tx-rpmsg",
-> +			   .direction = IPI_HOST_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_PWR_RX] = {
-> +			   .name = "apupwr-rx-rpmsg",
-> +			   .direction = IPI_APU_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_MDLA_TX] = {
-> +			   .name = "mdla-tx-rpmsg",
-> +			   .direction = IPI_HOST_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_MDLA_RX] = {
-> +			   .name = "mdla-rx-rpmsg",
-> +			   .direction = IPI_APU_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_TIMESYNC] = {
-> +			   .name = "apu-timesync",
-> +			   .direction = IPI_APU_INITIATE,
-> +			   .ack = IPI_WITH_ACK,
-> +		   },
-> +		   [APU_IPI_EDMA_TX] = {
-> +			   .name = "apu-edma-rpmsg",
-> +			   .direction = IPI_HOST_INITIATE,
-> +			   .ack = IPI_WITHOUT_ACK,
-> +		   },
-> +		   [APU_IPI_MNOC_TX] = {
-> +			   .name = "apu-mnoc-rpmsg",
-> +			   .direction = IPI_HOST_INITIATE,
-> +			   .ack = IPI_WITHOUT_ACK,
-> +		   },
-> +};
-> +
-> +static void apu_reset_mcu(struct mtk_apu *apu)
+> +void dev_pm_enable_wake_irq_complete(struct device *dev)
 > +{
-> +	u32 reg;
+> +       struct wake_irq *wirq = dev->power.wakeirq;
 > +
-> +	/* assert mcu reset */
-> +	reg = ioread32(apu->md32_sysctrl);
-> +	iowrite32(reg & ~0x1, apu->md32_sysctrl);
-> +	mdelay(10);
-> +	iowrite32(reg | 0x1, apu->md32_sysctrl);
+> +       if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
+> +               return;
+> +
+> +       if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
+> +           wirq->status & WAKE_IRQ_DEDICATED_REVERSE)
+> +               enable_irq(wirq->irq);
 > +}
 > +
-> +static int apu_start_mcu(struct mtk_apu *apu)
+>  /**
+>   * dev_pm_arm_wake_irq - Arm device wake-up
+>   * @wirq: Device wake-up interrupt
+> diff --git a/include/linux/pm_wakeirq.h b/include/linux/pm_wakeirq.h
+> index cd5b62db9084..e63a63aa47a3 100644
+> --- a/include/linux/pm_wakeirq.h
+> +++ b/include/linux/pm_wakeirq.h
+> @@ -17,8 +17,8 @@
+>  #ifdef CONFIG_PM
+>
+>  extern int dev_pm_set_wake_irq(struct device *dev, int irq);
+> -extern int dev_pm_set_dedicated_wake_irq(struct device *dev,
+> -                                        int irq);
+> +extern int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq);
+> +extern int dev_pm_set_dedicated_wake_irq_reverse(struct device *dev, int irq);
+>  extern void dev_pm_clear_wake_irq(struct device *dev);
+>  extern void dev_pm_enable_wake_irq(struct device *dev);
+>  extern void dev_pm_disable_wake_irq(struct device *dev);
+> @@ -35,6 +35,11 @@ static inline int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
+>         return 0;
+>  }
+>
+> +static inline int dev_pm_set_dedicated_wake_irq_reverse(struct device *dev, int irq)
 > +{
-> +	struct arm_smccc_res ares;
-> +
-> +	/* initialize IOMMU and ACP config (iommu_tr_en=1, acp_en=0) */
-> +	iowrite32(0xEA9, apu->md32_sysctrl);
-> +
-> +	arm_smccc_smc(MTK_SIP_APUSYS_CONTROL, MTK_SIP_APU_START_MCU,
-> +		      0, 0, 0, 0, 0, 0, &ares);
-> +	if (ares.a0)
-> +		dev_err(apu->dev, "start mcu fail: %lu\n", ares.a0);
-> +
-> +	return 0;
+> +       return 0;
 > +}
 > +
-> +static int apu_stop_mcu(struct mtk_apu *apu)
-> +{
-> +	struct arm_smccc_res ares;
-> +
-> +	arm_smccc_smc(MTK_SIP_APUSYS_CONTROL, MTK_SIP_APU_STOP_MCU,
-> +		      0, 0, 0, 0, 0, 0, &ares);
-> +	if (ares.a0)
-> +		dev_err(apu->dev, "stop mcufail: %lu\n", ares.a0);
-> +
-> +	return 0;
-> +}
-
-Is it expected for other SoCs to have different (or more) secure world calls?
-If it is, then it may be worth it to move this to a different driver in
-drivers/firmware, so that you will be able to map different/more values to
-different compatibles.
-
-Otherwise, keep it here.
-
-> +
-
-Thanks,
-- Angelo
+>  static inline void dev_pm_clear_wake_irq(struct device *dev)
+>  {
+>  }
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
