@@ -2,15 +2,15 @@ Return-Path: <SRS0=kfxU=PO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8503EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:40:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48031C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:41:07 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 37F4760EFF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:40:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 37F4760EFF
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 0AF626109D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 15:41:07 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0AF626109D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -18,60 +18,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m9YJ/pUVmmdZLqXiHpgXOLm+wf+281xCe7zsPPs/jU8=; b=urtFirsZjNK4ep
-	3ebjxfYweUP5F026o2FSl/ONNZNnuCjSF9+vm8REp00Gme8J2jQ/ErC3neFN8gdiG1ozuEZS8EBte
-	jRRBzLOqId3jd6bS3X2vd9RGz2pFvZxxI5+LHreMlhGNBoS9uei1JgzRCBwOqebu+uC98IbzBwuEC
-	GaZbYIyvRe4KZ9JojM/BzYeb4EmruLUM9Hlh29dliz1HZwi70PbsW4ePnzGlvBw/pTkK3ZrIH6wez
-	3EAYxnkDnxu9MiJBmxqxfew3AmyZJjUdV/lQMMfukHA3Q1gQVFlO/LdNNQMWh39E9UIPZtIZ1w8vP
-	SOiaMA3g+N4KcXN6sPlA==;
+	List-Owner; bh=chRs8D01oUuInvW5QoSeHTYj8pb4/2L3A/uf3hI//TU=; b=rwMm4+jS/XmyXo
+	pHx2zQoBOGVHMEpVkAGdZb5wVCx2FNUd6RIO3q1Wf8dCHzPwDweTrSrO2UkPlnnLzR/wEL60cUFet
+	yXaVpHSHQ/vAMis1ZFEaDzfWwtwGvH2fHQ3PlNElniP0jFz5Ut+v+t4LK229nt1dVNDmovxhEVRwq
+	GT4OrlkkuUVQp4UgiBlRIFG366m+0pSrIz9hcoZ07wzqrihKUZW6H5dZSirQdFE38msN7JEuq3vnj
+	bwcGRvmCrZiVlh6WZAC+bO+xtJ1eYcEPgXmRCU0h74QQfK+T7rcNI55S0Ur/ItGKQrNvbuq9UrWla
+	T+MUkAYQ+UHIp8VfL72g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfOYn-002Cil-4n; Tue, 26 Oct 2021 15:40:21 +0000
-Received: from mail-ot1-f47.google.com ([209.85.210.47])
+	id 1mfOZM-002CsB-8B; Tue, 26 Oct 2021 15:40:56 +0000
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfOYZ-002Cgi-Mj; Tue, 26 Oct 2021 15:40:09 +0000
-Received: by mail-ot1-f47.google.com with SMTP id
- v2-20020a05683018c200b0054e3acddd91so17831020ote.8; 
- Tue, 26 Oct 2021 08:40:05 -0700 (PDT)
+ id 1mfOZJ-002CqF-As
+ for linux-mediatek@lists.infradead.org; Tue, 26 Oct 2021 15:40:54 +0000
+Received: by mail-lj1-x232.google.com with SMTP id s19so16597603ljj.11
+ for <linux-mediatek@lists.infradead.org>; Tue, 26 Oct 2021 08:40:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9JGWO5jt5QtIvnBeSd0VahxH9KJ8Ngd7aKYQ3TRmWp4=;
+ b=l2eP8kM2v64pFzuyyl8uOFKlFsPMlKgu6nnHVfMCPdQcboDCBDOmjuw0LUnrnUA68/
+ Y9Du49VrgR8hzTI2lL8jYGRLZ3N/CdAj2UJa//D5Me0NsdW1XrxIUELXxar8F7tQUHFu
+ T9BdjUzWCTFDoNcGquFwDDivn7fM1bRYMrOqW3QpKqpkZ9d2vepoEGz8jmRhH58Woyci
+ VcW/VYfg3j+oRkS8ezSEbsIK9VqX2cRXWU9PXXZRW+x+1gfk05kp1Zi+YGHKjNhwPO42
+ QZSEsV2bLE5Wf7E27EzkFUeqV07DltcwQ47yJa3z1Jz4Di36WWw96qjcs2I02GUBJTvw
+ phqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=LHJn05dFrFSrzp6BE8p0Ogvc76VnimFelZpRceN/kow=;
- b=xIasQnQ+H6BHo/lEWrIn0vS7Bp17O56ZiocMFjsLh079p1YEhITlr2MXL4rXiF+wWp
- bPJA67nSh3LyMvMb4utPNnwGqDFAyoLRo+1/MLd/aORoqU1NKD5HsOG6ZgqFfOdGZuu4
- DBEqg73Hb9nWtYW+4uQaCP1XUSVRB5ezVh4ryiBfga6mriV8Uofc367V94hNf8Qyjckt
- twDyx98K2psPsjBj4yz1zhC7guQeAzujlHMdNVKFqETjmbXYqAaTMen7MIGdS9CnbD+B
- eEh6RbQYrzk04OWAljLLgQVNmahNHmZjXfld2RVvemL/IYJVkFilaGr+Cc721T9rrhsF
- Yy9g==
-X-Gm-Message-State: AOAM531xGv8wEUgj9ecoxqRdUOi0UahwpNcmmnJvoShaqBt/0RnIFRBu
- 8uzFiLLvDu0e3iGXY9FXqIfVO/tvC54IFumRrzc=
-X-Google-Smtp-Source: ABdhPJwT64HxGvetYBeeAQcCBsq8AdGDlgIRoZ+S8FjnUW77a5Gc2RmixdTVJabKk60LXzUhxJLE6KiCZ/UmVVhMQzc=
-X-Received: by 2002:a05:6830:90b:: with SMTP id
- v11mr20131207ott.254.1635262804497; 
- Tue, 26 Oct 2021 08:40:04 -0700 (PDT)
+ bh=9JGWO5jt5QtIvnBeSd0VahxH9KJ8Ngd7aKYQ3TRmWp4=;
+ b=Ljk2XMzBVrD21aBEMisZQj8z8l3cruEKYhz00Hbx7Jp+lrk3j6mCwqD4KRsp1yrECY
+ FPpWJOeKpVc6sGCdii4rrg12hLmWloxqx1YH9KsjJXuGdBHO88puPDTmqDy36biw86RE
+ 09gKcBEe+XGhCg19UAPft0PDjGf3obO9RJbrWVle8OWokLVmecnzmngYmSQEB0+RQuX5
+ h3YKfMb/FRLSQRnKBZxT4rzqm+tToJ6wEw1iuRCcXhDyR1YnJRx7TVq8EQhZ9ZsYZTc/
+ egaNwyRYub7Pry76hQq9xpbH/HCTVAqyBVtBcWaEKLql426WDZvB0YWurBxdHurpxJW7
+ Ek9Q==
+X-Gm-Message-State: AOAM5330CGHjTBYZl9Ok2RY2QHzXmokTAJ8NCAlsftWdMY9qAkCQLkBC
+ utpyzLUCqO7rxQ76VOrejqHCJ3GEOr2SA9TYC6gdhw==
+X-Google-Smtp-Source: ABdhPJxxOsxXey/zZUMsKaDVg3dujNtrb2v5kzU7OfyCjPJ0s85CzbTm/9BZ3RdZ4fBQvppT3W8byIBy4h5Ka655VpI=
+X-Received: by 2002:a05:651c:907:: with SMTP id
+ e7mr28394579ljq.300.1635262849171; 
+ Tue, 26 Oct 2021 08:40:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20211025070155.2995-1-chunfeng.yun@mediatek.com>
-In-Reply-To: <20211025070155.2995-1-chunfeng.yun@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Tue, 26 Oct 2021 17:39:53 +0200
-Message-ID: <CAJZ5v0gb6vN9kHeQbgjRQXvOCNaFK8ur7bLDeAVjDqdT2=a+-g@mail.gmail.com>
-Subject: Re: [PATCH v4 1/3] PM / wakeirq: support enabling wake-up irq after
- runtime_suspend called
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: "Rafael J . Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mathias Nyman <mathias.nyman@intel.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Linux PM <linux-pm@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ULTRA-WIDEBAND (UWB) SUBSYSTEM:" <linux-usb@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
- "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>
+References: <20211026070812.9359-1-wenbin.mei@mediatek.com>
+In-Reply-To: <20211026070812.9359-1-wenbin.mei@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 26 Oct 2021 17:40:12 +0200
+Message-ID: <CAPDyKFpGSrMkFg1PkRaH6zePOqH7aSbjfoCk6AhWgwGnSkoNAw@mail.gmail.com>
+Subject: Re: [PATCH] mmc: cqhci: clear HALT state after CQE enable
+To: Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: Adrian Hunter <adrian.hunter@intel.com>,
+ Ritesh Harjani <riteshh@codeaurora.org>, 
+ Asutosh Das <asutoshd@codeaurora.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ srv_heupstream@mediatek.com, stable@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_084007_776303_DFAF0172 
-X-CRM114-Status: GOOD (  48.01  )
+X-CRM114-CacheID: sfid-20211026_084053_402275_3EEFDEBB 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,325 +93,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 25, 2021 at 9:02 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+On Tue, 26 Oct 2021 at 09:08, Wenbin Mei <wenbin.mei@mediatek.com> wrote:
 >
-> When the dedicated wake IRQ is level trigger, and it uses the
-> device's low-power status as the wakeup source, that means if the
-> device is not in low-power state, the wake IRQ will be triggered
-> if enabled; For this case, need enable the wake IRQ after running
-> the device's ->runtime_suspend() which make it enter low-power state.
+> While mmc0 enter suspend state, we need halt CQE to send legacy cmd(flush
+> cache) and disable cqe, for resume back, we enable CQE and not clear HALT
+> state.
+> In this case MediaTek mmc host controller will keep the value for HALT
+> state after CQE disable/enable flow, so the next CQE transfer after resume
+> will be timeout due to CQE is in HALT state, the log as below:
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: timeout for tag 2
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: ============ CQHCI REGISTER DUMP ===========
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Caps:      0x100020b6 | Version:  0x00000510
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Config:    0x00001103 | Control:  0x00000001
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Int stat:  0x00000000 | Int enab: 0x00000006
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Int sig:   0x00000006 | Int Coal: 0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: TDL base:  0xfd05f000 | TDL up32: 0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Doorbell:  0x8000203c | TCN:      0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Dev queue: 0x00000000 | Dev Pend: 0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Task clr:  0x00000000 | SSC1:     0x00001000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: SSC2:      0x00000001 | DCMD rsp: 0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: RED mask:  0xfdf9a080 | TERRI:    0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: Resp idx:  0x00000000 | Resp arg: 0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: CRNQP:     0x00000000 | CRNQDUN:  0x00000000
+> <4>.(4)[318:kworker/4:1H]mmc0: cqhci: CRNQIS:    0x00000000 | CRNQIE:   0x00000000
 >
-> e.g.
-> Assume the wake IRQ is a low level trigger type, and the wakeup
-> signal comes from the low-power status of the device.
-> The wakeup signal is low level at running time (0), and becomes
-> high level when the device enters low-power state (runtime_suspend
-> (1) is called), a wakeup event at (2) make the device exit low-power
-> state, then the wakeup signal also becomes low level.
+> This change check HALT state after CQE enable, if CQE is in HALT state, we
+> will clear it.
 >
->                 ------------------
->                |           ^     ^|
-> ----------------           |     | --------------
->  |<---(0)--->|<--(1)--|   (3)   (2)    (4)
->
-> if enable the wake IRQ before running runtime_suspend during (0),
-> a wake IRQ will arise, it causes resume immediately;
-> it works if enable wake IRQ ( e.g. at (3) or (4)) after running
-> ->runtime_suspend().
->
-> This patch introduces a new status WAKE_IRQ_DEDICATED_REVERSE to
-> optionally support enabling wake IRQ after running ->runtime_suspend().
->
-> Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> Cc: stable@vger.kernel.org
 
-I don't really have anything to add regarding the code.
+Applied for fixes and by adding a fixes tag, thanks!
 
-The kerneldoc comments could be improved, but I can take care of this
-when applying the patch.
+Fixes: a4080225f51d ("mmc: cqhci: support for command queue enabled host")
 
-Please collect ACKs for the remaining 2 patches in the series and I
-will pick up all three.
+Kind regards
+Uffe
 
-Thanks!
 
 > ---
-> v4: changes according to Rafael's suggestions
->     1. rename new flag as WAKE_IRQ_DEDICATED_REVERSE;
->     2. add __dev_pm_set_dedicated_wake_irq() with flag parameter, then
->        rebuild dev_pm_set_dedicated_wake_irq() and add new api
->        dev_pm_set_dedicated_wake_irq_reverse();
->     3. rename the new added parameter as cond_disable in
->        dev_pm_disable_wake_irq_check(), and also simplify its flow;
->     4. modify some comments
+>  drivers/mmc/host/cqhci-core.c | 3 +++
+>  1 file changed, 3 insertions(+)
 >
-> v3: add new status suggested by Rafael
+> diff --git a/drivers/mmc/host/cqhci-core.c b/drivers/mmc/host/cqhci-core.c
+> index ca8329d55f43..b0d30c35c390 100644
+> --- a/drivers/mmc/host/cqhci-core.c
+> +++ b/drivers/mmc/host/cqhci-core.c
+> @@ -282,6 +282,9 @@ static void __cqhci_enable(struct cqhci_host *cq_host)
 >
-> v2: add more commit message
+>         cqhci_writel(cq_host, cqcfg, CQHCI_CFG);
 >
->   Use the falling edge trigger interrupt suggested by Ikjoon [1], it
-> works well at firstly when only use this related wakeup source, but
-> encounter issues if use other wakeup sources to wakeup platform as
-> below steps:
-> 1. use another wakeup source to wake up the suspended system;
-> 2. the consumer's resume() will be called, and exits sleep state;
-> 3. the consumer's wakeup signal will fall into low level, due to
->    currently the wakeup irq is disabled, the wake-irq is pending;
-> 4. the consumer tries to enter runtime suspend, but there is a
->    pending wakeup irq, so will resume again, this will repeat
->    endlessly.
->
->   Send out the patch again for further discussion.
->
-> [1]: https://patchwork.kernel.org/patch/12190407
->
-> ---
->  drivers/base/power/power.h   |   7 ++-
->  drivers/base/power/runtime.c |   6 ++-
->  drivers/base/power/wakeirq.c | 101 +++++++++++++++++++++++++++--------
->  include/linux/pm_wakeirq.h   |   9 +++-
->  4 files changed, 96 insertions(+), 27 deletions(-)
->
-> diff --git a/drivers/base/power/power.h b/drivers/base/power/power.h
-> index 54292cdd7808..0eb7f02b3ad5 100644
-> --- a/drivers/base/power/power.h
-> +++ b/drivers/base/power/power.h
-> @@ -25,8 +25,10 @@ extern u64 pm_runtime_active_time(struct device *dev);
->
->  #define WAKE_IRQ_DEDICATED_ALLOCATED   BIT(0)
->  #define WAKE_IRQ_DEDICATED_MANAGED     BIT(1)
-> +#define WAKE_IRQ_DEDICATED_REVERSE     BIT(2)
->  #define WAKE_IRQ_DEDICATED_MASK                (WAKE_IRQ_DEDICATED_ALLOCATED | \
-> -                                        WAKE_IRQ_DEDICATED_MANAGED)
-> +                                        WAKE_IRQ_DEDICATED_MANAGED | \
-> +                                        WAKE_IRQ_DEDICATED_REVERSE)
->
->  struct wake_irq {
->         struct device *dev;
-> @@ -39,7 +41,8 @@ extern void dev_pm_arm_wake_irq(struct wake_irq *wirq);
->  extern void dev_pm_disarm_wake_irq(struct wake_irq *wirq);
->  extern void dev_pm_enable_wake_irq_check(struct device *dev,
->                                          bool can_change_status);
-> -extern void dev_pm_disable_wake_irq_check(struct device *dev);
-> +extern void dev_pm_disable_wake_irq_check(struct device *dev, bool cond_disable);
-> +extern void dev_pm_enable_wake_irq_complete(struct device *dev);
->
->  #ifdef CONFIG_PM_SLEEP
->
-> diff --git a/drivers/base/power/runtime.c b/drivers/base/power/runtime.c
-> index ec94049442b9..d504cd4ab3cb 100644
-> --- a/drivers/base/power/runtime.c
-> +++ b/drivers/base/power/runtime.c
-> @@ -645,6 +645,8 @@ static int rpm_suspend(struct device *dev, int rpmflags)
->         if (retval)
->                 goto fail;
->
-> +       dev_pm_enable_wake_irq_complete(dev);
+> +       if (cqhci_readl(cq_host, CQHCI_CTL) & CQHCI_HALT)
+> +               cqhci_writel(cq_host, 0, CQHCI_CTL);
 > +
->   no_callback:
->         __update_runtime_status(dev, RPM_SUSPENDED);
->         pm_runtime_deactivate_timer(dev);
-> @@ -690,7 +692,7 @@ static int rpm_suspend(struct device *dev, int rpmflags)
->         return retval;
+>         mmc->cqe_on = true;
 >
->   fail:
-> -       dev_pm_disable_wake_irq_check(dev);
-> +       dev_pm_disable_wake_irq_check(dev, true);
->         __update_runtime_status(dev, RPM_ACTIVE);
->         dev->power.deferred_resume = false;
->         wake_up_all(&dev->power.wait_queue);
-> @@ -873,7 +875,7 @@ static int rpm_resume(struct device *dev, int rpmflags)
->
->         callback = RPM_GET_CALLBACK(dev, runtime_resume);
->
-> -       dev_pm_disable_wake_irq_check(dev);
-> +       dev_pm_disable_wake_irq_check(dev, false);
->         retval = rpm_callback(callback, dev);
->         if (retval) {
->                 __update_runtime_status(dev, RPM_SUSPENDED);
-> diff --git a/drivers/base/power/wakeirq.c b/drivers/base/power/wakeirq.c
-> index b91a3a9bf9f6..76c163a89104 100644
-> --- a/drivers/base/power/wakeirq.c
-> +++ b/drivers/base/power/wakeirq.c
-> @@ -142,24 +142,7 @@ static irqreturn_t handle_threaded_wake_irq(int irq, void *_wirq)
->         return IRQ_HANDLED;
->  }
->
-> -/**
-> - * dev_pm_set_dedicated_wake_irq - Request a dedicated wake-up interrupt
-> - * @dev: Device entry
-> - * @irq: Device wake-up interrupt
-> - *
-> - * Unless your hardware has separate wake-up interrupts in addition
-> - * to the device IO interrupts, you don't need this.
-> - *
-> - * Sets up a threaded interrupt handler for a device that has
-> - * a dedicated wake-up interrupt in addition to the device IO
-> - * interrupt.
-> - *
-> - * The interrupt starts disabled, and needs to be managed for
-> - * the device by the bus code or the device driver using
-> - * dev_pm_enable_wake_irq() and dev_pm_disable_wake_irq()
-> - * functions.
-> - */
-> -int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
-> +static int __dev_pm_set_dedicated_wake_irq(struct device *dev, int irq, unsigned int flag)
->  {
->         struct wake_irq *wirq;
->         int err;
-> @@ -197,7 +180,7 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
->         if (err)
->                 goto err_free_irq;
->
-> -       wirq->status = WAKE_IRQ_DEDICATED_ALLOCATED;
-> +       wirq->status = WAKE_IRQ_DEDICATED_ALLOCATED | flag;
->
->         return err;
->
-> @@ -210,8 +193,57 @@ int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
->
->         return err;
->  }
-> +
-> +
-> +/**
-> + * dev_pm_set_dedicated_wake_irq - Request a dedicated wake-up interrupt
-> + * @dev: Device entry
-> + * @irq: Device wake-up interrupt
-> + *
-> + * Unless your hardware has separate wake-up interrupts in addition
-> + * to the device IO interrupts, you don't need this.
-> + *
-> + * Sets up a threaded interrupt handler for a device that has
-> + * a dedicated wake-up interrupt in addition to the device IO
-> + * interrupt.
-> + *
-> + * The interrupt starts disabled, and needs to be managed for
-> + * the device by the bus code or the device driver using
-> + * dev_pm_enable_wake_irq*() and dev_pm_disable_wake_irq*()
-> + * functions.
-> + */
-> +int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
-> +{
-> +       return __dev_pm_set_dedicated_wake_irq(dev, irq, 0);
-> +}
->  EXPORT_SYMBOL_GPL(dev_pm_set_dedicated_wake_irq);
->
-> +/**
-> + * dev_pm_set_dedicated_wake_irq_reverse - Request a dedicated wake-up interrupt
-> + *       with setting flag WAKE_IRQ_DEDICATED_REVERSE
-> + * @dev: Device entry
-> + * @irq: Device wake-up interrupt
-> + *
-> + * Unless your hardware has separate wake-up interrupts in addition
-> + * to the device IO interrupts, you don't need this.
-> + *
-> + * Sets up a threaded interrupt handler for a device that has a dedicated
-> + * wake-up interrupt in addition to the device IO interrupt. It sets
-> + * the status of WAKE_IRQ_DEDICATED_REVERSE to tell rpm_suspend()
-> + * to enable dedicated wake-up interrupt after running the
-> + * ->runtime_suspend()
-> + *
-> + * The interrupt starts disabled, and needs to be managed for
-> + * the device by the bus code or the device driver using
-> + * dev_pm_enable_wake_irq*() and dev_pm_disable_wake_irq*()
-> + * functions.
-> + */
-> +int dev_pm_set_dedicated_wake_irq_reverse(struct device *dev, int irq)
-> +{
-> +       return __dev_pm_set_dedicated_wake_irq(dev, irq, WAKE_IRQ_DEDICATED_REVERSE);
-> +}
-> +EXPORT_SYMBOL_GPL(dev_pm_set_dedicated_wake_irq_reverse);
-> +
->  /**
->   * dev_pm_enable_wake_irq - Enable device wake-up interrupt
->   * @dev: Device
-> @@ -282,27 +314,54 @@ void dev_pm_enable_wake_irq_check(struct device *dev,
->         return;
->
->  enable:
-> -       enable_irq(wirq->irq);
-> +       if (!can_change_status || !(wirq->status & WAKE_IRQ_DEDICATED_REVERSE))
-> +               enable_irq(wirq->irq);
->  }
->
->  /**
->   * dev_pm_disable_wake_irq_check - Checks and disables wake-up interrupt
->   * @dev: Device
-> + * @cond_disable: if set, also check WAKE_IRQ_DEDICATED_REVERSE
->   *
->   * Disables wake-up interrupt conditionally based on status.
->   * Should be only called from rpm_suspend() and rpm_resume() path.
->   */
-> -void dev_pm_disable_wake_irq_check(struct device *dev)
-> +void dev_pm_disable_wake_irq_check(struct device *dev, bool cond_disable)
->  {
->         struct wake_irq *wirq = dev->power.wakeirq;
->
->         if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
->                 return;
->
-> +       if (cond_disable && (wirq->status & WAKE_IRQ_DEDICATED_REVERSE))
-> +               return;
-> +
->         if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED)
->                 disable_irq_nosync(wirq->irq);
->  }
->
-> +/**
-> + * dev_pm_enable_wake_irq_complete - enable wake IRQ not enabled before
-> + * @dev: Device using the wake IRQ
-> + *
-> + * Enable wake IRQ conditionally based on status, mainly used if want to
-> + * enable wake IRQ after running ->runtime_suspend() which depends on
-> + * WAKE_IRQ_DEDICATED_REVERSE.
-> + *
-> + * Should be only called from rpm_suspend() path.
-> + */
-> +void dev_pm_enable_wake_irq_complete(struct device *dev)
-> +{
-> +       struct wake_irq *wirq = dev->power.wakeirq;
-> +
-> +       if (!wirq || !(wirq->status & WAKE_IRQ_DEDICATED_MASK))
-> +               return;
-> +
-> +       if (wirq->status & WAKE_IRQ_DEDICATED_MANAGED &&
-> +           wirq->status & WAKE_IRQ_DEDICATED_REVERSE)
-> +               enable_irq(wirq->irq);
-> +}
-> +
->  /**
->   * dev_pm_arm_wake_irq - Arm device wake-up
->   * @wirq: Device wake-up interrupt
-> diff --git a/include/linux/pm_wakeirq.h b/include/linux/pm_wakeirq.h
-> index cd5b62db9084..e63a63aa47a3 100644
-> --- a/include/linux/pm_wakeirq.h
-> +++ b/include/linux/pm_wakeirq.h
-> @@ -17,8 +17,8 @@
->  #ifdef CONFIG_PM
->
->  extern int dev_pm_set_wake_irq(struct device *dev, int irq);
-> -extern int dev_pm_set_dedicated_wake_irq(struct device *dev,
-> -                                        int irq);
-> +extern int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq);
-> +extern int dev_pm_set_dedicated_wake_irq_reverse(struct device *dev, int irq);
->  extern void dev_pm_clear_wake_irq(struct device *dev);
->  extern void dev_pm_enable_wake_irq(struct device *dev);
->  extern void dev_pm_disable_wake_irq(struct device *dev);
-> @@ -35,6 +35,11 @@ static inline int dev_pm_set_dedicated_wake_irq(struct device *dev, int irq)
->         return 0;
->  }
->
-> +static inline int dev_pm_set_dedicated_wake_irq_reverse(struct device *dev, int irq)
-> +{
-> +       return 0;
-> +}
-> +
->  static inline void dev_pm_clear_wake_irq(struct device *dev)
->  {
->  }
+>         if (cq_host->ops->enable)
 > --
-> 2.18.0
+> 2.25.1
 >
 
 _______________________________________________
