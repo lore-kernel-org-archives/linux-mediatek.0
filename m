@@ -2,69 +2,69 @@ Return-Path: <SRS0=kfxU=PO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4477CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 11:53:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2E1EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 12:03:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C2A160F21
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 11:53:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0C2A160F21
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 522FB60F39
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 12:03:30 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 522FB60F39
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=molgen.mpg.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RMmAeSUIWKzxpSoiC0+rX7tblhmuFtWpjC9odF8sjIc=; b=T+SRaGXNlVy+x+
-	yluRhfavi5dmlM9EGwoDXlhOF2+/k5EEo7ewKwYk9ZSH6zPHWkyZfs2hAxcUZV5I7DZc/swNzDlA1
-	7obtT/eDvXhMGXudkzK4WBnHv9LYAYKXRSjYvCVTTrz+huLs1OQO8Hel4SgdDJ6yh53feMcFfJkUh
-	ppwU7qGULTdNIp/HysiCTl3xf9/HzabNosPGTOw3YBLczmr7ASgA99Ur99aHGmPY2b4SsawW9CMTK
-	uhYRjgRfpBqZiaWngp63bYd993l0Zo/fwzipJSwzgE0r7OmPq0x6NBp5lJ4SKUlyVGvnAGpFr5Vkd
-	BggL/9LwvKevLwoqF3Ug==;
+	List-Owner; bh=jov7wG0pw7xab8w18+d07kIV4q2yMEl68LFtbv7Zuo8=; b=WcBnKCxb4igl+W
+	z8L7/Sp7PzM0U+HXMifh1pBTLteVqRycGAq19wFP/0vXrFaOw0r3keLWsxY206sXIpnyxVf5eR70h
+	SSebdtKj67D6qQkpEA8anocgkP0EW/vFww6JK/p9l4IVqcgszNQ2O5BVSojGyznHifZYH5PdfaFq6
+	e3SWMJrw1Cz1LAvROee86nPak6VLY+KAvN9CjJdewpWgsmI1RXjwvUmovDGytQTsK+cx5786GSbj+
+	KyyFzp1+plRftV9QExqqaeYZdvW2Kh0a+HpNNhmyfsUFn80C72Guhe/UzLmB1NRRvwvkmd7Qv4mrH
+	sl4v8tYbxVBIahx1/Sdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfL0p-001hBn-5B; Tue, 26 Oct 2021 11:53:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mfLAk-001jCf-CE; Tue, 26 Oct 2021 12:03:18 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11] helo=mx1.molgen.mpg.de)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfL0b-001h8z-3V; Tue, 26 Oct 2021 11:52:52 +0000
-X-UUID: bb01b352cd654ec6810886721240e19c-20211026
-X-UUID: bb01b352cd654ec6810886721240e19c-20211026
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <guangming.cao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1832746973; Tue, 26 Oct 2021 04:52:45 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Oct 2021 04:52:43 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 26 Oct 2021 19:52:41 +0800
-Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
- mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 26 Oct 2021 19:52:41 +0800
-From: <guangming.cao@mediatek.com>
-To: <christian.koenig@amd.com>
-CC: <dri-devel@lists.freedesktop.org>, <guangming.cao@mediatek.com>,
- <linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
- <rdunlap@infradead.org>, <sumit.semwal@linaro.org>,
- <wsd_upstream@mediatek.com>, Guangming Cao <Guangming.Cao@mediatek.com>
-Subject: Re: [PATCH v3] dma-buf: remove restriction of IOCTL:DMA_BUF_SET_NAME
-Date: Tue, 26 Oct 2021 19:52:48 +0800
-Message-ID: <20211026115248.9564-1-guangming.cao@mediatek.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <0e062f12-7e79-5a05-1e7b-10dda8e353b7@amd.com>
-References: <0e062f12-7e79-5a05-1e7b-10dda8e353b7@amd.com>
+ id 1mfLAV-001j8j-8G; Tue, 26 Oct 2021 12:03:06 +0000
+Received: from [192.168.0.2] (ip5f5aef5c.dynamic.kabel-deutschland.de
+ [95.90.239.92])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 2724E61E64846;
+ Tue, 26 Oct 2021 14:02:47 +0200 (CEST)
+Message-ID: <cb482b45-d98c-1860-6cf2-313b831e6066@molgen.mpg.de>
+Date: Tue, 26 Oct 2021 14:02:46 +0200
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.1
+Subject: Re: [PATCH 1/2] drm: Add Gamma and Degamma LUT sizes props to
+ drm_crtc to validate.
+Content-Language: en-US
+To: Mark Yacoub <markyacoub@chromium.org>
+Cc: seanpaul@chromium.org, harry.wentland@amd.com,
+ Mark Yacoub <markyacoub@google.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ dri-devel@lists.freedesktop.org, amd-gfx@lists.freedesktop.org,
+ intel-gfx@lists.freedesktop.org
+References: <20210929194012.3433306-1-markyacoub@chromium.org>
+ <20211013181228.1578201-1-markyacoub@chromium.org>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20211013181228.1578201-1-markyacoub@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_045249_177482_54712A43 
-X-CRM114-Status: GOOD (  35.28  )
+X-CRM114-CacheID: sfid-20211026_050303_662426_B7D3BBD4 
+X-CRM114-Status: GOOD (  39.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,71 +76,298 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogR3VhbmdtaW5nIENhbyA8R3VhbmdtaW5nLkNhb0BtZWRpYXRlay5jb20+CgpPbiBUdWUs
-IDIwMjEtMTAtMjYgYXQgMTM6MTggKzAyMDAsIENocmlzdGlhbiBLw7ZuaWcgd3JvdGU6Cj4gQW0g
-MTQuMTAuMjEgdW0gMTI6MjUgc2NocmllYiBndWFuZ21pbmcuY2FvQG1lZGlhdGVrLmNvbToKPiA+
-IEZyb206IEd1YW5nbWluZyBDYW8gPEd1YW5nbWluZy5DYW9AbWVkaWF0ZWsuY29tPgo+ID4gCj4g
-PiBJbiB0aGlzIHBhdGNoKGh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNrdG9wLm9yZy9wYXRjaC8z
-MTAzNDkpLAo+ID4gaXQgYWRkIGEgbmV3IElPQ1RMIHRvIHN1cHBvcnQgZG1hLWJ1ZiB1c2VyIHRv
-IHNldCBkZWJ1ZyBuYW1lLgo+ID4gCj4gPiBCdXQgaXQgYWxzbyBhZGRlZCBhIGxpbWl0YXRpb24g
-b2YgdGhpcyBJT0NUTCwgaXQgbmVlZHMgdGhlCj4gPiBhdHRhY2htZW50cyBvZiBkbWFidWYgc2hv
-dWxkIGJlIGVtcHR5LCBvdGhlcndpc2UgaXQgd2lsbCBmYWlsLgo+ID4gCj4gPiBGb3IgdGhlIG9y
-aWdpbmFsIHNlcmllcywgdGhlIGlkZWEgd2FzIHRoYXQgYWxsb3dpbmcgbmFtZSBjaGFuZ2UKPiA+
-IG1pZC11c2UgY291bGQgY29uZnVzZSB0aGUgdXNlcnMgYWJvdXQgdGhlIGRtYS1idWYuCj4gPiBI
-b3dldmVyLCB0aGUgcmVzdCBvZiB0aGUgc2VyaWVzIGFsc28gbWFrZXMgc3VyZSBlYWNoIGRtYS1i
-dWYgaGF2ZSBhCj4gPiB1bmlxdWUKPiA+IGlub2RlKGh0dHBzOi8vcGF0Y2h3b3JrLmZyZWVkZXNr
-dG9wLm9yZy9wYXRjaC8zMTAzODcvKSwgYW5kIGFueQo+ID4gYWNjb3VudGluZwo+ID4gc2hvdWxk
-IHByb2JhYmx5IHVzZSB0aGF0LCB3aXRob3V0IHJlbHlpbmcgb24gdGhlIG5hbWUgYXMgbXVjaC4K
-PiA+IAo+ID4gU28sIHJlbW92aW5nIHRoaXMgcmVzdHJpY3Rpb24gd2lsbCBsZXQgZG1hLWJ1ZiB1
-c2Vyc3BhY2UgdXNlcnMgdG8KPiA+IHVzZSBpdAo+ID4gbW9yZSBjb21mb3J0YWJseSBhbmQgd2l0
-aG91dCBhbnkgc2lkZSBlZmZlY3QuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IEd1YW5nbWluZyBD
-YW8gPEd1YW5nbWluZy5DYW9AbWVkaWF0ZWsuY29tPgo+IAo+IFdlIGNvdWxkIG5vdyBjbGVhbnVw
-IHRoZSByZXR1cm4gdmFsdWUgZnJvbSBkbWFfYnVmX3NldF9uYW1lKCkgaW50byBhIAo+IHZvaWQg
-c2luY2UgdGhhdCBmdW5jdGlvbiBjYW4ndCBmYWlsIGFueSBtb3JlIGFzIGZhciBhcyBJIGNhbiBz
-ZWUuCj4gCj4gQnV0IHRoYXQgaXNuJ3QgbWFuZGF0b3J5IEkgdGhpbmssIHBhdGNoIGlzIFJldmll
-d2VkLWJ5OiBDaHJpc3RpYW4KPiBLw7ZuaWcgCj4gPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4K
-PgoKU28sIGhlcmUgaXMgbm8gbmVlZCB0byBjaGVjayByZXR1cm4gdmFsdWUgb2YgJ3N0cm5kdXBf
-dXNlcicsCmp1c3QgcmV0dXJuIHdpdGhvdXQgZXJyb3IgY29kZSBpZiB0aGUgYWxtb3N0IGltcG9z
-c2libGUgZXJyb3Igb2NjdXJzPwoKR3VhbmdtaW5nLgoKPiBSZWdhcmRzLAo+IENocmlzdGlhbi4K
-PiAKPiA+IC0tLQo+ID4gICBkcml2ZXJzL2RtYS1idWYvZG1hLWJ1Zi5jIHwgMTcgKysrLS0tLS0t
-LS0tLS0tLS0KPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKSwgMTQgZGVsZXRp
-b25zKC0pCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2RtYS1idWYvZG1hLWJ1Zi5jIGIv
-ZHJpdmVycy9kbWEtYnVmL2RtYS1idWYuYwo+ID4gaW5kZXggNTExZmUwZDIxN2EwLi41ZmJiM2Ey
-MDY4YTMgMTAwNjQ0Cj4gPiAtLS0gYS9kcml2ZXJzL2RtYS1idWYvZG1hLWJ1Zi5jCj4gPiArKysg
-Yi9kcml2ZXJzL2RtYS1idWYvZG1hLWJ1Zi5jCj4gPiBAQCAtMzI1LDEwICszMjUsOCBAQCBzdGF0
-aWMgX19wb2xsX3QgZG1hX2J1Zl9wb2xsKHN0cnVjdCBmaWxlCj4gPiAqZmlsZSwgcG9sbF90YWJs
-ZSAqcG9sbCkKPiA+ICAgCj4gPiAgIC8qKgo+ID4gICAgKiBkbWFfYnVmX3NldF9uYW1lIC0gU2V0
-IGEgbmFtZSB0byBhIHNwZWNpZmljIGRtYV9idWYgdG8gdHJhY2sKPiA+IHRoZSB1c2FnZS4KPiA+
-IC0gKiBUaGUgbmFtZSBvZiB0aGUgZG1hLWJ1ZiBidWZmZXIgY2FuIG9ubHkgYmUgc2V0IHdoZW4g
-dGhlIGRtYS1idWYgCj4gPiBpcyBub3QKPiA+IC0gKiBhdHRhY2hlZCB0byBhbnkgZGV2aWNlcy4g
-SXQgY291bGQgdGhlb3JpdGljYWxseSBzdXBwb3J0Cj4gPiBjaGFuZ2luZyB0aGUKPiA+IC0gKiBu
-YW1lIG9mIHRoZSBkbWEtYnVmIGlmIHRoZSBzYW1lIHBpZWNlIG9mIG1lbW9yeSBpcyB1c2VkIGZv
-cgo+ID4gbXVsdGlwbGUKPiA+IC0gKiBwdXJwb3NlIGJldHdlZW4gZGlmZmVyZW50IGRldmljZXMu
-Cj4gPiArICogSXQgY291bGQgc3VwcG9ydCBjaGFuZ2luZyB0aGUgbmFtZSBvZiB0aGUgZG1hLWJ1
-ZiBpZiB0aGUgc2FtZQo+ID4gKyAqIHBpZWNlIG9mIG1lbW9yeSBpcyB1c2VkIGZvciBtdWx0aXBs
-ZSBwdXJwb3NlIGJldHdlZW4gZGlmZmVyZW50Cj4gPiBkZXZpY2VzLgo+ID4gICAgKgo+ID4gICAg
-KiBAZG1hYnVmOiBbaW5dICAgICBkbWFidWYgYnVmZmVyIHRoYXQgd2lsbCBiZSByZW5hbWVkLgo+
-ID4gICAgKiBAYnVmOiAgICBbaW5dICAgICBBIHBpZWNlIG9mIHVzZXJzcGFjZSBtZW1vcnkgdGhh
-dCBjb250YWlucwo+ID4gdGhlIG5hbWUgb2YKPiA+IEBAIC0zNDEsMjUgKzMzOSwxNiBAQCBzdGF0
-aWMgX19wb2xsX3QgZG1hX2J1Zl9wb2xsKHN0cnVjdCBmaWxlCj4gPiAqZmlsZSwgcG9sbF90YWJs
-ZSAqcG9sbCkKPiA+ICAgc3RhdGljIGxvbmcgZG1hX2J1Zl9zZXRfbmFtZShzdHJ1Y3QgZG1hX2J1
-ZiAqZG1hYnVmLCBjb25zdCBjaGFyCj4gPiBfX3VzZXIgKmJ1ZikKPiA+ICAgewo+ID4gICAJY2hh
-ciAqbmFtZSA9IHN0cm5kdXBfdXNlcihidWYsIERNQV9CVUZfTkFNRV9MRU4pOwo+ID4gLQlsb25n
-IHJldCA9IDA7Cj4gPiAgIAo+ID4gICAJaWYgKElTX0VSUihuYW1lKSkKPiA+ICAgCQlyZXR1cm4g
-UFRSX0VSUihuYW1lKTsKPiA+ICAgCj4gPiAtCWRtYV9yZXN2X2xvY2soZG1hYnVmLT5yZXN2LCBO
-VUxMKTsKPiA+IC0JaWYgKCFsaXN0X2VtcHR5KCZkbWFidWYtPmF0dGFjaG1lbnRzKSkgewo+ID4g
-LQkJcmV0ID0gLUVCVVNZOwo+ID4gLQkJa2ZyZWUobmFtZSk7Cj4gPiAtCQlnb3RvIG91dF91bmxv
-Y2s7Cj4gPiAtCX0KPiA+ICAgCXNwaW5fbG9jaygmZG1hYnVmLT5uYW1lX2xvY2spOwo+ID4gICAJ
-a2ZyZWUoZG1hYnVmLT5uYW1lKTsKPiA+ICAgCWRtYWJ1Zi0+bmFtZSA9IG5hbWU7Cj4gPiAgIAlz
-cGluX3VubG9jaygmZG1hYnVmLT5uYW1lX2xvY2spOwo+ID4gICAKPiA+IC1vdXRfdW5sb2NrOgo+
-ID4gLQlkbWFfcmVzdl91bmxvY2soZG1hYnVmLT5yZXN2KTsKPiA+IC0JcmV0dXJuIHJldDsKPiA+
-ICsJcmV0dXJuIDA7Cj4gPiAgIH0KPiA+ICAgCj4gPiAgIHN0YXRpYyBsb25nIGRtYV9idWZfaW9j
-dGwoc3RydWN0IGZpbGUgKmZpbGUsCj4gCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVk
-aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Dear Mark,
+
+
+Thank you for your patch.
+
+On 13.10.21 20:12, Mark Yacoub wrote:
+> From: Mark Yacoub <markyacoub@google.com>
+> 
+> [Why]
+> 1. drm_atomic_helper_check doesn't check for the LUT sizes of either Gamma
+> or Degamma props in the new CRTC state, allowing any invalid size to
+> be passed on.
+> 2. Each driver has its own LUT size, which could also be different for
+> legacy users.
+
+How can the problem be reproduced?
+
+> [How]
+> 1. Create |degamma_lut_size| and |gamma_lut_size| to save the LUT sizes
+> assigned by the driver when it's initializing its color and CTM
+> management.
+> 2. Create drm_atomic_helper_check_crtc which is called by
+> drm_atomic_helper_check to check the LUT sizes saved in drm_crtc that
+> they match the sizes in the new CRTC state.
+> 3. Rename older lut checks that test for the color channels to indicate
+> it's a channel check. It's not included in drm_atomic_helper_check_crtc
+> as it's hardware specific and is to be called by the driver.
+> 4. As the LUT size check now happens in drm_atomic_helper_check, remove
+> the lut check in intel_color.c
+> 
+> Fixes: igt@kms_color@pipe-A-invalid-gamma-lut-sizes on MTK
+
+If I am not mistaken, the Fixes tag is used for commits I believe. Maybe 
+use Resolves or something similar?
+
+> Tested on Zork(amdgpu) and Jacuzzi(mediatek), volteer(TGL)
+
+Please add a space before the (.
+
+How did you test this?
+
+> v1:
+> 1. Fix typos
+> 2. Remove the LUT size check from intel driver
+> 3. Rename old LUT check to indicate it's a channel change
+> 
+> Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
+> ---
+>   drivers/gpu/drm/drm_atomic_helper.c        | 60 ++++++++++++++++++++++
+>   drivers/gpu/drm/drm_color_mgmt.c           | 14 ++---
+>   drivers/gpu/drm/i915/display/intel_color.c | 14 ++---
+>   include/drm/drm_atomic_helper.h            |  1 +
+>   include/drm/drm_color_mgmt.h               |  7 +--
+>   include/drm/drm_crtc.h                     | 11 ++++
+>   6 files changed, 89 insertions(+), 18 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
+> index bc3487964fb5e..5feb2ad0209c3 100644
+> --- a/drivers/gpu/drm/drm_atomic_helper.c
+> +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> @@ -929,6 +929,62 @@ drm_atomic_helper_check_planes(struct drm_device *dev,
+>   }
+>   EXPORT_SYMBOL(drm_atomic_helper_check_planes);
+>   
+> +/**
+> + * drm_atomic_helper_check_crtcs - validate state object for CRTC changes
+> + * @state: the driver state object
+> + *
+> + * Check the CRTC state object such as the Gamma/Degamma LUT sizes if the new
+> + * state holds them.
+> + *
+> + * RETURNS:
+> + * Zero for success or -errno
+> + */
+> +int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state)
+> +{
+> +	struct drm_crtc *crtc;
+> +	struct drm_crtc_state *new_crtc_state;
+> +	int i;
+> +
+> +	for_each_new_crtc_in_state (state, crtc, new_crtc_state, i) {
+> +		if (new_crtc_state->color_mgmt_changed &&
+> +		    new_crtc_state->gamma_lut) {
+> +			uint64_t supported_lut_size = crtc->gamma_lut_size;
+> +			uint32_t supported_legacy_lut_size = crtc->gamma_size;
+> +			uint32_t new_state_lut_size =
+> +				drm_color_lut_size(new_crtc_state->gamma_lut);
+> +
+> +			if (new_state_lut_size != supported_lut_size &&
+> +			    new_state_lut_size != supported_legacy_lut_size) {
+> +				drm_dbg_state(
+> +					state->dev,
+> +					"Invalid Gamma LUT size. Should be %u (or %u for legacy) but got %u.\n",
+> +					supported_lut_size,
+> +					supported_legacy_lut_size,
+> +					new_state_lut_size);
+> +				return -EINVAL;
+> +			}
+> +		}
+> +
+> +		if (new_crtc_state->color_mgmt_changed &&
+> +		    new_crtc_state->degamma_lut) {
+> +			uint32_t new_state_lut_size =
+> +				drm_color_lut_size(new_crtc_state->degamma_lut);
+> +			uint64_t supported_lut_size = crtc->degamma_lut_size;
+> +
+> +			if (new_state_lut_size != supported_lut_size) {
+> +				drm_dbg_state(
+> +					state->dev,
+> +					"Invalid Degamma LUT size. Should be %u but got %u.\n",
+> +					supported_lut_size, new_state_lut_size);
+> +				return -EINVAL;
+> +			}
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(drm_atomic_helper_check_crtcs);
+> +
+>   /**
+>    * drm_atomic_helper_check - validate state object
+>    * @dev: DRM device
+> @@ -974,6 +1030,10 @@ int drm_atomic_helper_check(struct drm_device *dev,
+>   	if (ret)
+>   		return ret;
+>   
+> +	ret = drm_atomic_helper_check_crtcs(state);
+> +	if (ret)
+> +		return ret;
+> +
+>   	if (state->legacy_cursor_update)
+>   		state->async_update = !drm_atomic_helper_async_check(dev, state);
+>   
+> diff --git a/drivers/gpu/drm/drm_color_mgmt.c b/drivers/gpu/drm/drm_color_mgmt.c
+> index bb14f488c8f6c..e5b820ce823bf 100644
+> --- a/drivers/gpu/drm/drm_color_mgmt.c
+> +++ b/drivers/gpu/drm/drm_color_mgmt.c
+> @@ -166,6 +166,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
+>   	struct drm_mode_config *config = &dev->mode_config;
+>   
+>   	if (degamma_lut_size) {
+> +		crtc->degamma_lut_size = degamma_lut_size;
+>   		drm_object_attach_property(&crtc->base,
+>   					   config->degamma_lut_property, 0);
+>   		drm_object_attach_property(&crtc->base,
+> @@ -178,6 +179,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
+>   					   config->ctm_property, 0);
+>   
+>   	if (gamma_lut_size) {
+> +		crtc->gamma_lut_size = gamma_lut_size;
+>   		drm_object_attach_property(&crtc->base,
+>   					   config->gamma_lut_property, 0);
+>   		drm_object_attach_property(&crtc->base,
+> @@ -585,17 +587,17 @@ int drm_plane_create_color_properties(struct drm_plane *plane,
+>   EXPORT_SYMBOL(drm_plane_create_color_properties);
+>   
+>   /**
+> - * drm_color_lut_check - check validity of lookup table
+> + * drm_color_lut_channels_check - check validity of the channels in the lookup table
+>    * @lut: property blob containing LUT to check
+>    * @tests: bitmask of tests to run
+>    *
+> - * Helper to check whether a userspace-provided lookup table is valid and
+> - * satisfies hardware requirements.  Drivers pass a bitmask indicating which of
+> - * the tests in &drm_color_lut_tests should be performed.
+> + * Helper to check whether each color channel of userspace-provided lookup table is valid and
+> + * satisfies hardware requirements. Drivers pass a bitmask indicating which of in
+> + * &drm_color_lut_channels_tests should be performed.
+>    *
+>    * Returns 0 on success, -EINVAL on failure.
+>    */
+> -int drm_color_lut_check(const struct drm_property_blob *lut, u32 tests)
+> +int drm_color_lut_channels_check(const struct drm_property_blob *lut, u32 tests)
+>   {
+>   	const struct drm_color_lut *entry;
+>   	int i;
+> @@ -625,4 +627,4 @@ int drm_color_lut_check(const struct drm_property_blob *lut, u32 tests)
+>   
+>   	return 0;
+>   }
+> -EXPORT_SYMBOL(drm_color_lut_check);
+> +EXPORT_SYMBOL(drm_color_lut_channels_check);
+> diff --git a/drivers/gpu/drm/i915/display/intel_color.c b/drivers/gpu/drm/i915/display/intel_color.c
+> index dab892d2251ba..a308fe52746ac 100644
+> --- a/drivers/gpu/drm/i915/display/intel_color.c
+> +++ b/drivers/gpu/drm/i915/display/intel_color.c
+> @@ -1285,7 +1285,7 @@ static int check_luts(const struct intel_crtc_state *crtc_state)
+>   	const struct drm_property_blob *gamma_lut = crtc_state->hw.gamma_lut;
+>   	const struct drm_property_blob *degamma_lut = crtc_state->hw.degamma_lut;
+>   	int gamma_length, degamma_length;
+> -	u32 gamma_tests, degamma_tests;
+> +	u32 gamma_channels_tests, degamma_channels_tests;
+>   
+>   	/* Always allow legacy gamma LUT with no further checking. */
+>   	if (crtc_state_is_legacy_gamma(crtc_state))
+> @@ -1300,15 +1300,11 @@ static int check_luts(const struct intel_crtc_state *crtc_state)
+>   
+>   	degamma_length = INTEL_INFO(dev_priv)->color.degamma_lut_size;
+>   	gamma_length = INTEL_INFO(dev_priv)->color.gamma_lut_size;
+> -	degamma_tests = INTEL_INFO(dev_priv)->color.degamma_lut_tests;
+> -	gamma_tests = INTEL_INFO(dev_priv)->color.gamma_lut_tests;
+> +	degamma_channels_tests = INTEL_INFO(dev_priv)->color.degamma_lut_tests;
+> +	gamma_channels_tests = INTEL_INFO(dev_priv)->color.gamma_lut_tests;
+>   
+> -	if (check_lut_size(degamma_lut, degamma_length) ||
+> -	    check_lut_size(gamma_lut, gamma_length))
+> -		return -EINVAL;
+> -
+> -	if (drm_color_lut_check(degamma_lut, degamma_tests) ||
+> -	    drm_color_lut_check(gamma_lut, gamma_tests))
+> +	if (drm_color_lut_channels_check(degamma_lut, degamma_channels_tests) ||
+> +	    drm_color_lut_channels_check(gamma_lut, gamma_channels_tests))
+>   		return -EINVAL;
+>   
+>   	return 0;
+> diff --git a/include/drm/drm_atomic_helper.h b/include/drm/drm_atomic_helper.h
+> index 4045e2507e11c..a22d32a7a8719 100644
+> --- a/include/drm/drm_atomic_helper.h
+> +++ b/include/drm/drm_atomic_helper.h
+> @@ -38,6 +38,7 @@ struct drm_atomic_state;
+>   struct drm_private_obj;
+>   struct drm_private_state;
+>   
+> +int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state);
+>   int drm_atomic_helper_check_modeset(struct drm_device *dev,
+>   				struct drm_atomic_state *state);
+>   int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_state,
+> diff --git a/include/drm/drm_color_mgmt.h b/include/drm/drm_color_mgmt.h
+> index 81c298488b0c8..cb1bf361ad3e3 100644
+> --- a/include/drm/drm_color_mgmt.h
+> +++ b/include/drm/drm_color_mgmt.h
+> @@ -94,12 +94,12 @@ int drm_plane_create_color_properties(struct drm_plane *plane,
+>   				      enum drm_color_range default_range);
+>   
+>   /**
+> - * enum drm_color_lut_tests - hw-specific LUT tests to perform
+> + * enum drm_color_lut_channels_tests - hw-specific LUT tests to perform
+>    *
+>    * The drm_color_lut_check() function takes a bitmask of the values here to
+>    * determine which tests to apply to a userspace-provided LUT.
+>    */
+> -enum drm_color_lut_tests {
+> +enum drm_color_lut_channels_tests {
+>   	/**
+>   	 * @DRM_COLOR_LUT_EQUAL_CHANNELS:
+>   	 *
+> @@ -119,5 +119,6 @@ enum drm_color_lut_tests {
+>   	DRM_COLOR_LUT_NON_DECREASING = BIT(1),
+>   };
+>   
+> -int drm_color_lut_check(const struct drm_property_blob *lut, u32 tests);
+> +int drm_color_lut_channels_check(const struct drm_property_blob *lut,
+> +				 u32 tests);
+>   #endif
+> diff --git a/include/drm/drm_crtc.h b/include/drm/drm_crtc.h
+> index 2deb15d7e1610..cabd3ef1a6e32 100644
+> --- a/include/drm/drm_crtc.h
+> +++ b/include/drm/drm_crtc.h
+> @@ -1072,6 +1072,17 @@ struct drm_crtc {
+>   	/** @funcs: CRTC control functions */
+>   	const struct drm_crtc_funcs *funcs;
+>   
+> +	/**
+> +	 * @degamma_lut_size: Size of degamma LUT.
+> +	 */
+> +	uint32_t degamma_lut_size;
+> +
+> +	/**
+> +	 * @gamma_lut_size: Size of Gamma LUT. Not used by legacy userspace such as
+> +	 * X, which doesn't support large lut sizes.
+> +	 */
+> +	uint32_t gamma_lut_size;
+> +
+>   	/**
+>   	 * @gamma_size: Size of legacy gamma ramp reported to userspace. Set up
+>   	 * by calling drm_mode_crtc_set_gamma_size().
+> 
+
+Acked-by: Paul Menzel <pmenzel@molgen.mpg.de>
+
+
+Kind regards,
+
+Paul
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
