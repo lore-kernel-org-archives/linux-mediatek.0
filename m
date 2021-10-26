@@ -2,14 +2,14 @@ Return-Path: <SRS0=kfxU=PO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1B11BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 16:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6D930C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 16:03:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CFEBC60D43
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 16:03:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CFEBC60D43
+	by mail.kernel.org (Postfix) with ESMTPS id 237F860D43
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 16:03:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 237F860D43
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,33 +18,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S8A3bpitHFbNx9KZNQOF4CuViy4Rwps5Q+3ii42hcZM=; b=29f+r3soBHMXhw
-	oS4wim6gNdEOiP6VYYMO4d5iNaaivkAsqhyx1PICX6ej40597oWwmUADCgzT+QCvYVMAfd1MOBstK
-	kZojwm+8Tca3jgUbuFQhZ/E6t8D64MrsCLuKZgCO77DARJNbhn34nkjVMvuxHdFfjFvh8DW1bDjbx
-	9MhGwXfJh9FEvWrZ8zkFVoaq+GVLe8LclCS1sMmcaQOs796Eu0pelnJnOkBs+Costw5bIOfPg4Bb8
-	dZ+25Eimyb9Nl6QVpBctGMOyYQnsR1j4z8ypr7fSdnC5/dIKG4HdClw19BuCLHBi1HlRP/jipaaq/
-	p25FbOjuF0pADLXw6sig==;
+	List-Owner; bh=0fdyXAblAttY3rgPDtVvlzXXXGxZOJM+7bDC1XKTwC4=; b=IRqTpnkDccdolP
+	O5jNLUwMPzy7gsMKEFPqOiCdjj6kwcOB3lSuhSOhXIb0qhUcwHTna0fJNBata6wMzVIupHzQftQ5t
+	vnGWiIZLWDTrlYTC3vBpBcxCqZHEMBAGItgmxC6iWBppT1f6eTXT1tEl35zvZmz7io/av4yZikvlP
+	gWk3z5EenOWV0eljb72r6HFAfo73PbWwky07DlVNGp/K/2IcJrFwLPPm19/thU8vp+Gg8HfSv3Uk3
+	8gBCBA1hT2kmxQdZBk8BvP0iprqG5e0a9sjKUbCJICYRfoXpVdJSHyQuK3OYa7O0QYpulcMO9Ejc6
+	R2NyHDyXVlV268EIk75w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfOue-002JE4-IY; Tue, 26 Oct 2021 16:02:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mfOvC-002JVZ-Py; Tue, 26 Oct 2021 16:03:30 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfOrG-002HVU-4M; Tue, 26 Oct 2021 15:59:28 +0000
-X-UUID: 97c60d20dbbb4d10a1d8293962b7c2f2-20211026
-X-UUID: 97c60d20dbbb4d10a1d8293962b7c2f2-20211026
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1mfOrJ-002HXr-Ne; Tue, 26 Oct 2021 15:59:31 +0000
+X-UUID: 9c07121f14c149b5a9d02cf2f649667b-20211026
+X-UUID: 9c07121f14c149b5a9d02cf2f649667b-20211026
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 920481633; Tue, 26 Oct 2021 08:59:16 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Oct 2021 08:59:15 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Oct 2021 23:59:13 +0800
+ with ESMTP id 1290520054; Tue, 26 Oct 2021 08:59:27 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 26 Oct 2021 08:59:26 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 26 Oct 2021 23:59:13 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 26 Oct 2021 23:59:13 +0800
+ Frontend Transport; Tue, 26 Oct 2021 23:59:12 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
@@ -60,17 +60,18 @@ CC: Enric Balletbo i Serra <enric.balletbo@collabora.com>, Maxime Coquelin
  <devicetree@vger.kernel.org>, <linux-stm32@st-md-mailman.stormreply.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>
-Subject: [PATCH v12 08/16] arm64: dts: mt8195: add display node for vdosys0
-Date: Tue, 26 Oct 2021 23:59:03 +0800
-Message-ID: <20211026155911.17651-9-jason-jh.lin@mediatek.com>
+Subject: [PATCH v12 04/16] dt-bindings: display: mediatek: dsc: add yaml for
+ mt8195 SoC binding
+Date: Tue, 26 Oct 2021 23:58:59 +0800
+Message-ID: <20211026155911.17651-5-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211026155911.17651-1-jason-jh.lin@mediatek.com>
 References: <20211026155911.17651-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_085926_283378_8F390AC7 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20211026_085929_820177_0A47E951 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,147 +88,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add display node for vdosys0.
+1. Add mediatek,dsc.yaml to describe DSC module in details.
+2. Add mt8195 SoC binding to mediatek,dsc.yaml.
 
 Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
-This patch is based on [1][2][3]
+ .../display/mediatek/mediatek,dsc.yaml        | 71 +++++++++++++++++++
+ 1 file changed, 71 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
 
-[1]arm64: dts: Add Mediatek SoC MT8195 and evaluation board dts and Makefile
-- https://patchwork.kernel.org/project/linux-mediatek/patch/20210601075350.31515-2-seiya.wang@mediatek.com/
-[2]arm64: dts: mt8195: add IOMMU and smi nodes
-- https://patchwork.kernel.org/project/linux-mediatek/patch/20210615173233.26682-15-tinghan.shen@mediatek.com/
-[3]arm64: dts: mt8195: add gce node
-- https://patchwork.kernel.org/project/linux-mediatek/patch/20210831070903.8672-4-jason-jh.lin@mediatek.com/
----
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 111 +++++++++++++++++++++++
- 1 file changed, 111 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 35b6022d6fdc..e136761345db 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1115,9 +1115,120 @@
- 			#clock-cells = <1>;
- 		};
- 
-+		ovl0: disp_ovl@1c000000 {
-+			compatible = "mediatek,mt8195-disp-ovl",
-+				     "mediatek,mt8192-disp-ovl";
-+			reg = <0 0x1c000000 0 0x1000>;
-+			interrupts = <GIC_SPI 636 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_OVL0>;
-+			iommus = <&iommu_vdo M4U_PORT_L0_DISP_OVL0_RDMA0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x0000 0x1000>;
-+		};
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+new file mode 100644
+index 000000000000..1ec083eff824
+--- /dev/null
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+@@ -0,0 +1,71 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/display/mediatek/mediatek,dsc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+		rdma0: disp_rdma@1c002000 {
-+			compatible = "mediatek,mt8195-disp-rdma";
-+			reg = <0 0x1c002000 0 0x1000>;
-+			interrupts = <GIC_SPI 638 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_RDMA0>;
-+			iommus = <&iommu_vdo M4U_PORT_L0_DISP_RDMA0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x2000 0x1000>;
-+		};
++title: mediatek display DSC controller
 +
-+		color0: disp_color@1c003000 {
-+			compatible = "mediatek,mt8195-disp-color",
-+				     "mediatek,mt8173-disp-color";
-+			reg = <0 0x1c003000 0 0x1000>;
-+			interrupts = <GIC_SPI 639 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_COLOR0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x3000 0x1000>;
-+		};
++maintainers:
++  - Chun-Kuang Hu <chunkuang.hu@kernel.org>
++  - Philipp Zabel <p.zabel@pengutronix.de>
 +
-+		ccorr0: disp_ccorr@1c004000 {
-+			compatible = "mediatek,mt8195-disp-ccorr",
-+				     "mediatek,mt8192-disp-ccorr";
-+			reg = <0 0x1c004000 0 0x1000>;
-+			interrupts = <GIC_SPI 640 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_CCORR0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x4000 0x1000>;
-+		};
++description: |
++  The DSC standard is a specification of the algorithms used for
++  compressing and decompressing image display streams, including
++  the specification of the syntax and semantics of the compressed
++  video bit stream. DSC is designed for real-time systems with
++  real-time compression, transmission, decompression and Display.
 +
-+		aal0: disp_aal@1c005000 {
-+			compatible = "mediatek,mt8195-disp-aal",
-+				     "mediatek,mt8173-disp-aal";
-+			reg = <0 0x1c005000 0 0x1000>;
-+			interrupts = <GIC_SPI 641 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_AAL0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x5000 0x1000>;
-+		};
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - const: mediatek,mt8195-disp-dsc
 +
-+		gamma0: disp_gamma@1c006000 {
-+			compatible = "mediatek,mt8195-disp-gamma",
-+				     "mediatek,mt8173-disp-gamma";
-+			reg = <0 0x1c006000 0 0x1000>;
-+			interrupts = <GIC_SPI 642 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_GAMMA0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x6000 0x1000>;
-+		};
++  reg:
++    maxItems: 1
 +
-+		dither0: disp_dither@1c007000 {
-+			compatible = "mediatek,mt8195-disp-dither",
-+				     "mediatek,mt8183-disp-dither";
-+			reg = <0 0x1c007000 0 0x1000>;
-+			interrupts = <GIC_SPI 643 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_DITHER0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x7000 0x1000>;
-+		};
++  interrupts:
++    maxItems: 1
 +
-+		dsc0: disp_dsc_wrap@1c009000 {
-+			compatible = "mediatek,mt8195-disp-dsc";
-+			reg = <0 0x1c009000 0 0x1000>;
-+			interrupts = <GIC_SPI 645 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DSC_WRAP0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c00XXXX 0x9000 0x1000>;
-+		};
++  clocks:
++    items:
++      - description: DSC Wrapper Clock
 +
-+		merge0: disp_vpp_merge0@1c014000 {
-+			compatible = "mediatek,mt8195-disp-merge";
-+			reg = <0 0x1c014000 0 0x1000>;
-+			interrupts = <GIC_SPI 656 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_VPP_MERGE0>;
-+			mediatek,gce-client-reg =
-+				 <&gce0 SUBSYS_1c01XXXX 0x4000 0x1000>;
-+		};
++  power-domains:
++    description: A phandle and PM domain specifier as defined by bindings of
++      the power controller specified by phandle. See
++      Documentation/devicetree/bindings/power/power-domain.yaml for details.
 +
-+		mutex: disp_mutex0@1c016000 {
-+			compatible = "mediatek,mt8195-disp-mutex";
-+			reg = <0 0x1c016000 0 0x1000>;
-+			reg-names = "vdo0_mutex";
-+			interrupts = <GIC_SPI 658 IRQ_TYPE_LEVEL_HIGH 0>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
-+			clocks = <&vdosys0 CLK_VDO0_DISP_MUTEX0>;
-+			clock-names = "vdo0_mutex";
-+			mediatek,gce-events =
-+				 <CMDQ_EVENT_VDO0_DISP_STREAM_DONE_0>;
-+		};
++  mediatek,gce-client-reg:
++    description:
++      The register of client driver can be configured by gce with 4 arguments
++      defined in this property, such as phandle of gce, subsys id,
++      register offset and size.
++      Each subsys id is mapping to a base address of display function blocks
++      register which is defined in the gce header
++      include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
 +
- 		vdosys0: syscon@1c01a000 {
- 			compatible = "mediatek,mt8195-vdosys0", "syscon";
- 			reg = <0 0x1c01a000 0 0x1000>;
-+			mboxes = <&gce0 0 CMDQ_THR_PRIO_4>;
- 			#clock-cells = <1>;
- 		};
- 
++required:
++  - compatible
++  - reg
++  - interrupts
++  - power-domains
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++
++    dsc0: disp_dsc_wrap@1c009000 {
++        compatible = "mediatek,mt8195-disp-dsc";
++        reg = <0 0x1c009000 0 0x1000>;
++        interrupts = <GIC_SPI 645 IRQ_TYPE_LEVEL_HIGH 0>;
++        power-domains = <&spm MT8195_POWER_DOMAIN_VDOSYS0>;
++        clocks = <&vdosys0 CLK_VDO0_DSC_WRAP0>;
++        mediatek,gce-client-reg = <&gce1 SUBSYS_1c00XXXX 0x9000 0x1000>;
++    };
 -- 
 2.18.0
 
