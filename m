@@ -2,89 +2,71 @@ Return-Path: <SRS0=kfxU=PO=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DDA34C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 01:29:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 36FB3C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 05:29:59 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A3F5E61078
-	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 01:29:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A3F5E61078
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=poorly.run
+	by mail.kernel.org (Postfix) with ESMTPS id 009B361074
+	for <linux-mediatek@archiver.kernel.org>; Tue, 26 Oct 2021 05:29:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 009B361074
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qogTAuubcXsP26zJFBhPlAmGOyiLg8GF8jowZZ7f5Jc=; b=iVtq7NIkKmNOy5
-	TbpV+DG8PEI87b0XYpCZrl6/aaYLDDD7y2eyiAneM0X3sN8n8reolcF1UwSgIdwKq+GHvs4sbNPiY
-	T6pIoAlQR2PB1YOerEPBckz08Xlplv9UDSR5Vw4hgmzxO60oCb3iJMNtfCr6nSYu69XZxUl+RxdY2
-	TGdr/AyHU9FF4iTVTzNrZG20cO9eNEgu0PVCzagYEbBkfnMy7tE86aXPqLoJtyxj41wnkNkbG7m5l
-	SEiWHdlxDuJGlzXoKvg5r/14MV8n8DSDiHYulYttGSlncnCp09mYIvQYnVoSLwncG3Yzib7/tKHkT
-	ZTQu4AveHrphUqeSy2WQ==;
+	List-Owner; bh=0LuciLPD8sjWuKPXH1JR2H8Gw7C3fJaJaFtWUshNA+s=; b=KEyAwlqm8hwP2F
+	YrzmWuYXNdZ6SPeFjwP1ijH+acnjmjjm4Q8prRO2CqwRT73hh62+/LQmbDXTJMeAYnyp1eR7BXyGN
+	pSZGu4mQV6tv1XvCSkKBdKJYWRql2J+XM8mw8H4sgGs7j/2qJ/EnUvKUz0LXdKauayqw4eUE30pCw
+	sa4rYqPzOYsQ83KJterGVe9nZb1YbAfshAZls7KMske1qWLOK5J/jvtUMcnFvpnFnzWKZHuVtwGsh
+	N0X+TFo0jn6hJKIsqTpWIc/HwgxCkzG+JiDoedk/WQHjbUZgxN+TtwRgkr1BAReE8c4sxAfEcwrNo
+	vDTsjAzyd5C88IBWmMNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfBH1-000RAC-KQ; Tue, 26 Oct 2021 01:29:07 +0000
-Received: from mail-qt1-x833.google.com ([2607:f8b0:4864:20::833])
+	id 1mfF1n-000fWV-Vg; Tue, 26 Oct 2021 05:29:39 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfBGo-000R6z-6T
- for linux-mediatek@lists.infradead.org; Tue, 26 Oct 2021 01:28:55 +0000
-Received: by mail-qt1-x833.google.com with SMTP id z24so12076859qtv.9
- for <linux-mediatek@lists.infradead.org>; Mon, 25 Oct 2021 18:28:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=poorly.run; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=hh45oPDn94gNypIm1FQKgEgGeN239lum/jZyUe6g9nY=;
- b=U2dYK2PV3BxgyM+7d822+Ew8Y5DSy6+gsGjm/wl0fPr+ZF2fi3mJ0IGMLrSZXSuxNn
- qqBGh9pVxQ6I7KBKWXtlf+3sGcm9y4iSx8uLS5V5/oah9ex0fpysu4UGghJCAM4SYXGJ
- FM62r0guNt1biyKMGwfkAUDqX9Rw4xGPLTRDnsnSbjv1Oc2Sin0YLjoSptdYRK+xY7JJ
- Fk7MkGG6yDX9WVesysklP7VAyMb9RG98TFoYnBER2IJElQSEnSwFHiAcxJGIqefMX9AC
- +Z6JUwys1RyJg30ReZKj0RBpc8k1XZfW8esNdah9WY73zuLQpGoqqbHm8WPXl0SZviKp
- jzEg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=hh45oPDn94gNypIm1FQKgEgGeN239lum/jZyUe6g9nY=;
- b=1Gly/riINICeJfXwEr7XDPgNoc4TFXZ947bzjKUWRPAqUoDctD4GcKSDG/qcMpEIfK
- UhtTedZxOY+NLt/EPszO08YGTqjPx7C72mzX4UnLg3CX1upTPpOJag/w6Q9JJcHCzpSr
- LmGUaFEpA7tUdTLQEtMIej+1AM6hwSHlufRuqfGpFqmGedLY06LTam94nddy1pUUznnj
- 3hwasUD9NyjSBf5XzKLBTp7gSTdaZtl1oSP5yH0Yks1f0XLuvQWCBh+eSe/HJ3R/5XH8
- t0XHCydyJbBXDkMKzfu1DVKdDZ3w2JvAH3DUS5ZD9lemUte8+m5vYggSWfiMM2mYhSPn
- 1Bwg==
-X-Gm-Message-State: AOAM5335BMWKJDdukRHHUW+w1l2Jh1aMzjYXXdt0LwLusiOBVT52b2yq
- sQRlGpdFckEKNF2Tutrd5CFCYw==
-X-Google-Smtp-Source: ABdhPJw79deyD9lBHGmREWUAqpL3YQFMBNdQygVadCb4kqmWCWsyXxVF3unQOWHfWut9doYx00CuoQ==
-X-Received: by 2002:a05:622a:199c:: with SMTP id
- u28mr21723399qtc.153.1635211733222; 
- Mon, 25 Oct 2021 18:28:53 -0700 (PDT)
-Received: from localhost ([167.100.64.199])
- by smtp.gmail.com with ESMTPSA id b8sm9463851qtr.82.2021.10.25.18.28.52
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Mon, 25 Oct 2021 18:28:52 -0700 (PDT)
-Date: Mon, 25 Oct 2021 21:28:51 -0400
-From: Sean Paul <sean@poorly.run>
-To: Mark Yacoub <markyacoub@chromium.org>
-Cc: linux-mediatek@lists.infradead.org, seanpaul@chromium.org,
- Mark Yacoub <markyacoub@google.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] drm/mediatek: Set Rotation default value to 1.
-Message-ID: <20211026012851.GH2515@art_vandelay>
-References: <20211022165409.178281-1-markyacoub@chromium.org>
- <20211026011154.GE2515@art_vandelay>
+ id 1mfF1Y-000fSP-CS; Tue, 26 Oct 2021 05:29:27 +0000
+X-UUID: 212523822f074389897a288a3e5c7f28-20211025
+X-UUID: 212523822f074389897a288a3e5c7f28-20211025
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 438200956; Mon, 25 Oct 2021 22:29:20 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 25 Oct 2021 22:29:19 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 26 Oct 2021 13:29:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 26 Oct 2021 13:29:17 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "Jassi
+ Brar" <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <hsinyi@chromium.org>, <fshao@chromium.org>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>
+Subject: [PATCH v4 2/5] drm/mediatek: Remove the pointer of struct cmdq_client
+Date: Tue, 26 Oct 2021 13:29:13 +0800
+Message-ID: <20211026052916.8222-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211026052916.8222-1-jason-jh.lin@mediatek.com>
+References: <20211026052916.8222-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211026011154.GE2515@art_vandelay>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211025_182854_253968_EB70A962 
-X-CRM114-Status: GOOD (  32.06  )
+X-CRM114-CacheID: sfid-20211025_222924_438615_3568E564 
+X-CRM114-Status: GOOD (  13.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,143 +83,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Oct 25, 2021 at 09:11:54PM -0400, Sean Paul wrote:
-> On Fri, Oct 22, 2021 at 12:54:02PM -0400, Mark Yacoub wrote:
-> > From: Mark Yacoub <markyacoub@google.com>
-> > 
-> > [Why]
-> > The Rotation prob is a bitmask value. It must always have a valid value.
-> 
-> nit: s/prob/prop/
-> 
-> > A default NO rotation is equal to 1 not 0.
-> > 
-> > [How]
-> > 1. At the reset hook, call __drm_atomic_helper_plane_reset which is
-> > called at the initialization of the plane and sets the default value of
-> > all planes to DRM_MODE_ROTATE_0 which is equal to 1.
-> > 2. At the ovl layer check, do no overwrite the state->rotation value 0
-> > if DRM_MODE_ROTATE_0 is set. We should not change the value that the
-> > userspace has set, especially if it's an unsupported value.
-> 
-> nit: I would probably split these into 2 patches since they're related but
-> different
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 
-Did you decide not to remove the default value from the plane rotation value? I
-still think we should do that.
+In mailbox rx_callback, it pass struct mbox_client to callback
+function, but it could not map back to mtk_drm_crtc instance
+because struct cmdq_client use a pointer to struct mbox_client:
 
-Sean
+struct cmdq_client {
+	struct mbox_client client;
+	struct mbox_chan *chan;
+};
 
-> 
-> Sean
-> 
-> > 
-> > Tested on Jacuzzi(MTK).
-> > Fixes IGT@kms_properties@plane-properties-{legacy,atomic} and
-> > IGT@kms_properties@get_properties-sanity-{atomic,non-atomic}
-> > 
-> > Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  2 +-
-> >  drivers/gpu/drm/mediatek/mtk_disp_ovl.c     | 20 +++++++-------------
-> >  drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  5 ++---
-> >  drivers/gpu/drm/mediatek/mtk_drm_plane.c    |  3 ++-
-> >  4 files changed, 12 insertions(+), 18 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > index 86c3068894b11..2fc566964f68e 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-> > @@ -64,7 +64,7 @@ void mtk_ovl_config(struct device *dev, unsigned int w,
-> >  		    unsigned int h, unsigned int vrefresh,
-> >  		    unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
-> >  int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
-> > -			struct mtk_plane_state *mtk_state);
-> > +			const struct mtk_plane_state *mtk_state);
-> >  void mtk_ovl_layer_config(struct device *dev, unsigned int idx,
-> >  			  struct mtk_plane_state *state,
-> >  			  struct cmdq_pkt *cmdq_pkt);
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > index ea5760f856ec6..13999564304bc 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
-> > @@ -190,19 +190,15 @@ unsigned int mtk_ovl_supported_rotations(struct device *dev)
-> >  }
-> >  
-> >  int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
-> > -			struct mtk_plane_state *mtk_state)
-> > +			const struct mtk_plane_state *mtk_state)
-> >  {
-> > -	struct drm_plane_state *state = &mtk_state->base;
-> > -	unsigned int rotation = 0;
-> > +	const struct drm_plane_state *state = &mtk_state->base;
-> > +	unsigned int rotation = drm_rotation_simplify(
-> > +		state->rotation,
-> > +		DRM_MODE_ROTATE_0 | DRM_MODE_REFLECT_X | DRM_MODE_REFLECT_Y);
-> >  
-> > -	rotation = drm_rotation_simplify(state->rotation,
-> > -					 DRM_MODE_ROTATE_0 |
-> > -					 DRM_MODE_REFLECT_X |
-> > -					 DRM_MODE_REFLECT_Y);
-> > -	rotation &= ~DRM_MODE_ROTATE_0;
-> > -
-> > -	/* We can only do reflection, not rotation */
-> > -	if ((rotation & DRM_MODE_ROTATE_MASK) != 0)
-> > +	/* We can only do reflection, not non-zero rotation */
-> > +	if (((rotation & ~DRM_MODE_ROTATE_0) & DRM_MODE_ROTATE_MASK) != 0)
-> >  		return -EINVAL;
-> >  
-> >  	/*
-> > @@ -212,8 +208,6 @@ int mtk_ovl_layer_check(struct device *dev, unsigned int idx,
-> >  	if (state->fb->format->is_yuv && rotation != 0)
-> >  		return -EINVAL;
-> >  
-> > -	state->rotation = rotation;
-> > -
-> >  	return 0;
-> >  }
-> >  
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > index 1b582262b682b..530bdd031933f 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-> > @@ -53,9 +53,8 @@ struct mtk_ddp_comp_funcs {
-> >  	void (*disable_vblank)(struct device *dev);
-> >  	unsigned int (*supported_rotations)(struct device *dev);
-> >  	unsigned int (*layer_nr)(struct device *dev);
-> > -	int (*layer_check)(struct device *dev,
-> > -			   unsigned int idx,
-> > -			   struct mtk_plane_state *state);
-> > +	int (*layer_check)(struct device *dev, unsigned int idx,
-> > +			   const struct mtk_plane_state *state);
-> >  	void (*layer_config)(struct device *dev, unsigned int idx,
-> >  			     struct mtk_plane_state *state,
-> >  			     struct cmdq_pkt *cmdq_pkt);
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > index e6dcb34d30522..accd26481b9fb 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-> > @@ -44,9 +44,10 @@ static void mtk_plane_reset(struct drm_plane *plane)
-> >  		state = kzalloc(sizeof(*state), GFP_KERNEL);
-> >  		if (!state)
-> >  			return;
-> > -		plane->state = &state->base;
-> >  	}
-> >  
-> > +	__drm_atomic_helper_plane_reset(plane, &state->base);
-> > +
-> >  	state->base.plane = plane;
-> >  	state->pending.format = DRM_FORMAT_RGB565;
-> >  }
-> > -- 
-> > 2.33.0.1079.g6e70778dc9-goog
-> > 
-> 
-> -- 
-> Sean Paul, Software Engineer, Google / Chromium OS
+struct mtk_drm_crtc {
+	/* client instance data */
+	struct cmdq_client *cmdq_client;
+};
 
+so remove the pointer of struct cmdq_client and let mtk_drm_crtc
+instance define cmdq_client as:
+
+struct mtk_drm_crtc {
+	/* client instance data */
+	struct cmdq_client cmdq_client;
+};
+
+and in rx_callback function, use struct mbox_client to get
+struct mtk_drm_crtc.
+
+Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 37 +++++++++++++------------
+ 1 file changed, 20 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index 369d3e68c0b6..e23e3224ac67 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -52,7 +52,7 @@ struct mtk_drm_crtc {
+ 	bool				pending_async_planes;
+ 
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+-	struct cmdq_client		*cmdq_client;
++	struct cmdq_client		cmdq_client;
+ 	u32				cmdq_event;
+ #endif
+ 
+@@ -472,19 +472,19 @@ static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
+ 		mtk_mutex_release(mtk_crtc->mutex);
+ 	}
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+-	if (mtk_crtc->cmdq_client) {
+-		mbox_flush(mtk_crtc->cmdq_client->chan, 2000);
+-		cmdq_handle = cmdq_pkt_create(mtk_crtc->cmdq_client, PAGE_SIZE);
++	if (mtk_crtc->cmdq_client.chan) {
++		mbox_flush(mtk_crtc->cmdq_client.chan, 2000);
++		cmdq_handle = cmdq_pkt_create(&mtk_crtc->cmdq_client, PAGE_SIZE);
+ 		cmdq_pkt_clear_event(cmdq_handle, mtk_crtc->cmdq_event);
+ 		cmdq_pkt_wfe(cmdq_handle, mtk_crtc->cmdq_event, false);
+ 		mtk_crtc_ddp_config(crtc, cmdq_handle);
+ 		cmdq_pkt_finalize(cmdq_handle);
+-		dma_sync_single_for_device(mtk_crtc->cmdq_client->chan->mbox->dev,
++		dma_sync_single_for_device(mtk_crtc->cmdq_client.chan->mbox->dev,
+ 					   cmdq_handle->pa_base,
+ 					   cmdq_handle->cmd_buf_size,
+ 					   DMA_TO_DEVICE);
+-		mbox_send_message(mtk_crtc->cmdq_client->chan, cmdq_handle);
+-		mbox_client_txdone(mtk_crtc->cmdq_client->chan, 0);
++		mbox_send_message(mtk_crtc->cmdq_client.chan, cmdq_handle);
++		mbox_client_txdone(mtk_crtc->cmdq_client.chan, 0);
+ 	}
+ #endif
+ 	mtk_crtc->config_updating = false;
+@@ -498,7 +498,7 @@ static void mtk_crtc_ddp_irq(void *data)
+ 	struct mtk_drm_private *priv = crtc->dev->dev_private;
+ 
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+-	if (!priv->data->shadow_register && !mtk_crtc->cmdq_client)
++	if (!priv->data->shadow_register && !mtk_crtc->cmdq_client.chan)
+ #else
+ 	if (!priv->data->shadow_register)
+ #endif
+@@ -838,17 +838,20 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 	mutex_init(&mtk_crtc->hw_lock);
+ 
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+-	mtk_crtc->cmdq_client =
+-			cmdq_mbox_create(mtk_crtc->mmsys_dev,
+-					 drm_crtc_index(&mtk_crtc->base));
+-	if (IS_ERR(mtk_crtc->cmdq_client)) {
++	mtk_crtc->cmdq_client.client.dev = mtk_crtc->mmsys_dev;
++	mtk_crtc->cmdq_client.client.tx_block = false;
++	mtk_crtc->cmdq_client.client.knows_txdone = true;
++	mtk_crtc->cmdq_client.client.rx_callback = ddp_cmdq_cb;
++	mtk_crtc->cmdq_client.chan =
++			mbox_request_channel(&mtk_crtc->cmdq_client.client,
++					     drm_crtc_index(&mtk_crtc->base));
++	if (IS_ERR(mtk_crtc->cmdq_client.chan)) {
+ 		dev_dbg(dev, "mtk_crtc %d failed to create mailbox client, writing register by CPU now\n",
+ 			drm_crtc_index(&mtk_crtc->base));
+-		mtk_crtc->cmdq_client = NULL;
++		mtk_crtc->cmdq_client.chan = NULL;
+ 	}
+ 
+-	if (mtk_crtc->cmdq_client) {
+-		mtk_crtc->cmdq_client->client.rx_callback = ddp_cmdq_cb;
++	if (mtk_crtc->cmdq_client.chan) {
+ 		ret = of_property_read_u32_index(priv->mutex_node,
+ 						 "mediatek,gce-events",
+ 						 drm_crtc_index(&mtk_crtc->base),
+@@ -856,8 +859,8 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
+ 		if (ret) {
+ 			dev_dbg(dev, "mtk_crtc %d failed to get mediatek,gce-events property\n",
+ 				drm_crtc_index(&mtk_crtc->base));
+-			cmdq_mbox_destroy(mtk_crtc->cmdq_client);
+-			mtk_crtc->cmdq_client = NULL;
++			mbox_free_channel(mtk_crtc->cmdq_client.chan);
++			mtk_crtc->cmdq_client.chan = NULL;
+ 		}
+ 	}
+ #endif
 -- 
-Sean Paul, Software Engineer, Google / Chromium OS
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
