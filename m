@@ -2,68 +2,84 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0752C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 15:49:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A67C6C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 16:28:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BC299610A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 15:49:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BC299610A0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linutronix.de
+	by mail.kernel.org (Postfix) with ESMTPS id 706A360EB4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 16:28:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 706A360EB4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NZp26MOTkX1/Erlwgpw47UISSpAgsEg9u3HE8jAi+Lc=; b=H4CJOWNh3Sl2oo
-	87b7Qf2AvmaSfX+kOG6L8uZ7wNfghCYkyA3tM4OxpVynqkfVsRw18th8AEamBBTEyhCUK0eJ7JFA7
-	0TShl8yeWSp7Ud2dBGGoAgXeoF88Q3YjYqPV3DA26AOddt1HfzaO1cc68ghFmWDzaVs/4rpi1zEmW
-	O8cfHIoT5FwYAqJOcIRVc3/BSABigbPdGBzw798BXyYcvZ9uufzVpcRWgXO6gV4ACSlwztd0KfUTD
-	LJ+V3d0/GA6ks4j17Ek2ER6b/1iIlQ+jU6svZMgU5Vc1fFyWNwHg81rAI2kO61dhi+LRSyzPrzHTR
-	vMC4luxbY1scCzvWaNXw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3HXBU6mp09i37J6yIxhGUTC9DnXFDfFGbPcTZS4rRWo=; b=htzwdEfzRTSvGK
+	XhqF+/fkcr0rhhww/6N01bq8kfHDc52AZb1FQQxOM9t1hInjcTbykg3vwuS2ota6Izo3M4EbXqI+8
+	m1M+4Vvv46sMJzvHFhd/D9cyfk5zTKcX+JKc+8HTQZJx3KS1HVB0Fl2evDjx/Ge0edTWrmHPkXKWT
+	33zigkC64xluabu/keHh77BRnW2tNQrYg3nCoevii17quDKue/XFpBC93oRdSkpG9y1oPXUcsgL1n
+	2WFCilNH/TVWNXA8c37FRwI+KUCipkWcIa87FQozMrBBdB9bj5n73hPC9HOCEmcppd3HJowV/hJQF
+	20IZnXM0IGW2XDoTE4ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mflAs-005Mx9-LL; Wed, 27 Oct 2021 15:49:10 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1mflmj-005TWx-1d; Wed, 27 Oct 2021 16:28:17 +0000
+Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mflAe-005Mub-Ix; Wed, 27 Oct 2021 15:48:58 +0000
-From: John Ogness <john.ogness@linutronix.de>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020; t=1635349723;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=tkgVdeXd598pY6QU8+NQfjeQPsQIGyv6eN0Glc1LxB8=;
- b=E1mttTQNJGFfAAYzAmlbyJlajz+M1aCHTFA0exSqMApNuSblDEJ/VWVzbUiib9QPsnIDSG
- bqG1p6eHKr32gHH7LUa8Q6gm7GWXtBCoano7f85qDMZU6wimszeQAUxkgoVmuWymqt5g9+
- gkB/aJR5hqmxLjaG+ud4Pmh8pBFBoy8wObsI0NagaE90M1vtHKn/OSm+1id6atWiPHy3qE
- 2jAwkoPAuPLantUo940hSj8BskMyWLcoR12DuYwbcAvPhGg/FAXm8Yu1iq9MGl6r/Wvxch
- SgG9+XVztZfP6u1CV2he2FKpjLX92dXO5RKZBwYEhoKMj/xOElRmQqeo5QtsVQ==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
- s=2020e; t=1635349723;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=tkgVdeXd598pY6QU8+NQfjeQPsQIGyv6eN0Glc1LxB8=;
- b=vFfC/cCfKpiBQYOBxRqi7Tsb/O51LcCf3i/k0yyiJi6iXtBd7cWNLp5srPz34r7Ueikskh
- GZvvGnQTSpWHdTCw==
-To: Petr Mladek <pmladek@suse.com>
-Cc: "chunlei.wang" <Chunlei.wang@mediatek.com>, Sergey Senozhatsky
- <senozhatsky@chromium.org>, Steven Rostedt <rostedt@goodmis.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] printk: ringbuffer: Improve prb_next_seq() performance
-In-Reply-To: <YXlddJxLh77DKfIO@alley>
-References: <YXlddJxLh77DKfIO@alley>
-Date: Wed, 27 Oct 2021 17:54:42 +0206
-Message-ID: <875ytih3j9.fsf@jogness.linutronix.de>
+ id 1mflmg-005TWE-L8
+ for linux-mediatek@lists.infradead.org; Wed, 27 Oct 2021 16:28:15 +0000
+Received: by mail-qk1-x734.google.com with SMTP id bi29so2976918qkb.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 27 Oct 2021 09:28:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Kcaw11fIjDklEqqCtjykwfsrJvW1LW9AxQoWbgSjC4M=;
+ b=Ua/sCb/y9VDGpUgeNnsC/TY1iozBS8HSs8sB4TzNnEPa+6427LOWQi6WL9uSP+9r0f
+ KGOwJodnrSB2fiQhxLQFuuW8O4HKPNi3pVV1x8cV2XHk8wFzt0Z2GsjSi96dOsDPs1pd
+ jAq2oO9A9mstmfyKZ9gWU7sZY5Lj5IMLSkyfA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Kcaw11fIjDklEqqCtjykwfsrJvW1LW9AxQoWbgSjC4M=;
+ b=eUQyU9H9y7/wVComVHZUGIDBcr21gxImQ5KTi1/uXYRVNNmq4HU43pHNHYA/Tlzmsw
+ RbpgfwqxtQxrIGsgaZ2XkLH44jXX5E2OVsM2GFfA8Ow48lWm7inIMAYRk7qNnY0GXgcK
+ Xt0NY+xf3yKO4j0MlozxOxuP6MGPw/7wcZxhUbXRVcY7q0ryf1gKsmwWpG011awsWymo
+ /ZygD6sogqI+VrOQqf+PP+/JwVv/2CzDsxp7eo5Ds0mlDXbTTq6o3LrHLbqB1ug0tBvl
+ vf4dnQsbZrFQ083/UT3X3GZDeU8zl1tEI5gerQjQbMZDNu5q9kuHTVS2vnrA5rfNmjcX
+ tqOQ==
+X-Gm-Message-State: AOAM530JKUeMJ4JHhnHSGeEOFqAvVdA0gMu4LIHvTuWaeZog1RYy8j2p
+ VKCeSt+L9Lf5jMN0Fp80Q7c5oQ==
+X-Google-Smtp-Source: ABdhPJzvDL/hbW8x3WlZ9XGRkGRqMyNVExMy38ru/QmkZqYlZSlc0XaIiKT5o4RWmWJvhzMO0AsrYA==
+X-Received: by 2002:a05:620a:1035:: with SMTP id
+ a21mr8908441qkk.354.1635352093630; 
+ Wed, 27 Oct 2021 09:28:13 -0700 (PDT)
+Received: from markyacoub.nyc.corp.google.com
+ ([2620:0:1003:314:121e:94ae:f1a6:940c])
+ by smtp.gmail.com with ESMTPSA id i22sm311589qkn.80.2021.10.27.09.28.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Oct 2021 09:28:13 -0700 (PDT)
+From: Mark Yacoub <markyacoub@chromium.org>
+To: 
+Cc: seanpaul@chromium.org, Mark Yacoub <markyacoub@google.com>,
+ Mark Yacoub <markyacoub@chromium.org>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] drm/mediatek: Set the default value of rotation to
+ DRM_MODE_ROTATE_0
+Date: Wed, 27 Oct 2021 12:27:51 -0400
+Message-Id: <20211027162806.2014022-1-markyacoub@chromium.org>
+X-Mailer: git-send-email 2.33.0.1079.g6e70778dc9-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211027_084856_811247_09D37BEB 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20211027_092814_740633_B93BBEAC 
+X-CRM114-Status: GOOD (  10.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,44 +96,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2021-10-27, Petr Mladek <pmladek@suse.com> wrote:
-> diff --git a/kernel/printk/printk_ringbuffer.c b/kernel/printk/printk_ringbuffer.c
-> index 8a7b7362c0dd..24f47fbefbb5 100644
-> --- a/kernel/printk/printk_ringbuffer.c
-> +++ b/kernel/printk/printk_ringbuffer.c
-> @@ -474,8 +474,10 @@ static enum desc_state desc_read(struct prb_desc_ring *desc_ring,
->  	 * state has been re-checked. A memcpy() for all of @desc
->  	 * cannot be used because of the atomic_t @state_var field.
->  	 */
-> -	memcpy(&desc_out->text_blk_lpos, &desc->text_blk_lpos,
-> -	       sizeof(desc_out->text_blk_lpos)); /* LMM(desc_read:C) */
-> +	if (desc_out) {
-> +		memcpy(&desc_out->text_blk_lpos, &desc->text_blk_lpos,
-> +		       sizeof(desc_out->text_blk_lpos)); /* LMM(desc_read:C) */
-> +	}
->  	if (seq_out)
->  		*seq_out = info->seq; /* also part of desc_read:C */
->  	if (caller_id_out)
+From: Mark Yacoub <markyacoub@google.com>
 
-You also need this hunk:
+At the reset hook, call __drm_atomic_helper_plane_reset which is
+called at the initialization of the plane and sets the default value of
+rotation on all planes to DRM_MODE_ROTATE_0 which is equal to 1.
 
-@@ -530,7 +530,8 @@ static enum desc_state desc_read(struct prb_desc_ring *desc_ring,
- 	state_val = atomic_long_read(state_var); /* LMM(desc_read:E) */
- 	d_state = get_desc_state(id, state_val);
- out:
--	atomic_long_set(&desc_out->state_var, state_val);
-+	if (desc_out)
-+		atomic_long_set(&desc_out->state_var, state_val);
- 	return d_state;
+Tested on Jacuzzi (MTK).
+Resolves IGT@kms_properties@plane-properties-{legacy,atomic}
+
+Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index e6dcb34d30522..accd26481b9fb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -44,9 +44,10 @@ static void mtk_plane_reset(struct drm_plane *plane)
+ 		state = kzalloc(sizeof(*state), GFP_KERNEL);
+ 		if (!state)
+ 			return;
+-		plane->state = &state->base;
+ 	}
+ 
++	__drm_atomic_helper_plane_reset(plane, &state->base);
++
+ 	state->base.plane = plane;
+ 	state->pending.format = DRM_FORMAT_RGB565;
  }
+-- 
+2.33.0.1079.g6e70778dc9-goog
 
-Sorry, I missed it in my last review. This time I build+boot tested the patch.
-
-With this hunk added:
-
-Reviewed-by: John Ogness <john.ogness@linutronix.de>
-
-John
 
 _______________________________________________
 Linux-mediatek mailing list
