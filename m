@@ -2,93 +2,78 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D15A4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:32:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A1650C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:34:18 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8A67B61056
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:32:53 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8A67B61056
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 639686103B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:34:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 639686103B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RHAxvVczJHu7kZNaaeDYJZOehFJ8Vb9LFsYLagdimCg=; b=4MfBdOJ+pI4C47
-	zh6hhDMRkXromsG0DUQUHZxp0B/fmB4+6+KQ5VMDhG4hy3Cb2J4Kxz/T1qtpy9Ude8CKh3Te2RK/v
-	6P6+FZcdkr2a3b0G2qSI67JlO8C2UYU6GJTTi/0y+Pl25pKnhmtnRr3ieF5JEfhrh+tqzPWu0alig
-	LV5D0Vy/3RQEBwypn28IxEe+/ncSKhQXxQvcD0+add+dNUPSwjhssWqGTEw5zDzHN9IULYEhKjpac
-	b7dpPf5/S+kTHPbVYKlmQymdvhWjRU81xgTiBDg9N+Hwi8ztda8nX4BtGvzTJQmZ0a9QvvoqWctPy
-	vtls7nNmndwjDgjpgx/w==;
+	List-Owner; bh=+WrgvqBKgn7HneG2UUuX//YjBaqyPxU+C41kqJ5rEDQ=; b=AZNQ3F/PoWiqOV
+	8wRH/wOCggIeCO0+LG8Lnp9J/nCmD3sHxwfXLD3GkpKCI9NFhGLmqVPyHjsSQ4SrhMlg2F6wZ09WN
+	sHSKpLTTNd7hdG6lbTy+UKjRqgbkmdrd1AjfnXUHpPQ0FNqsmufCxKIlgnNlN446RNSWcMAABGCng
+	+9NUmI0w1iXMJi+j/V05RcvQDvAfko0Ldprbn7/MTRW6ldUhywkaLsS9NW3XoZzW5KjVZ9a9Y4I8t
+	WIQDAiFCZpYuxl8dcqOmeEW5A5nfecP022F+NVD0uQSKIQQqksiuH75+mtbUzEUxT44nNbj/vqkiM
+	xkHpR5Y1JT1vkAOcD9TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mffIX-004Qp9-9g; Wed, 27 Oct 2021 09:32:41 +0000
-Received: from mail-il1-x131.google.com ([2607:f8b0:4864:20::131])
+	id 1mffJv-004R9o-1S; Wed, 27 Oct 2021 09:34:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mffIK-004Qlv-Bi
- for linux-mediatek@lists.infradead.org; Wed, 27 Oct 2021 09:32:29 +0000
-Received: by mail-il1-x131.google.com with SMTP id j6so2285516ila.1
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Oct 2021 02:32:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7XHjYTJsHtmmMad6y4D14arx8SSI4DLlQcaRHAcm09Q=;
- b=f7moHQylEHJ9KJFRrrluC9FcbdrY48H1HrCI6LgdHxR0ARIgYRHqyz3yKJ0V2VX9fB
- BwcF0KOpJmqgVmTesRjK8vGTilcFhpOBan2BWYH3k7UY1KwCLHyl7B5eekYGAAYyHCDw
- bEB8A5PuJKWeVmuFBzGeKMZO5sg7k5GTZv+uU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7XHjYTJsHtmmMad6y4D14arx8SSI4DLlQcaRHAcm09Q=;
- b=ghC1Z6bDSvHVLQt9eCeNqZdKlCSvvD2WLC67nrBjDukiWpRQ2VgoKCj5eNXKTw1rbw
- gW3237SckcDv5qAlNip+7NihMz4aNxGXTPHJLXmRSfGC/Lhp8EDg0enboZR5KRJYjUVZ
- Uk9QvN3u9lw/2eghIAdWNmZW6LxCQTtiCUBMixA+ty7JaVg1wQd4uha3wwzkNVj8Evat
- 4sTLhecShxS4qbsHpX6u+Ber8txj26/NXSIPd57qIU0zu4mWaapJbpF7f7W3uhLZKe8Q
- KLy4nhuLB83S3p0MYAfzzl+9EnpN7dazce7safk8FtyrvUC9M2uOMc+1s+voqQNO59bL
- rJ1Q==
-X-Gm-Message-State: AOAM531It15/h+IP3fEXXQL7J2pYS8U9/QR5lM8/yP8BVBBtDdQT4etu
- odW2XhLDEON9coUc0O2njGrRmeTVBo7LGw==
-X-Google-Smtp-Source: ABdhPJwlNs/fxSCnsSdpRCmysTjKpp6D5WEBkqUGJ6g/CpkIo5GnOy61SDLhzynKTaOQUdiA9klZ/Q==
-X-Received: by 2002:a05:6e02:20eb:: with SMTP id
- q11mr16997453ilv.70.1635327146748; 
- Wed, 27 Oct 2021 02:32:26 -0700 (PDT)
-Received: from mail-il1-f172.google.com (mail-il1-f172.google.com.
- [209.85.166.172])
- by smtp.gmail.com with ESMTPSA id e11sm8857269ils.34.2021.10.27.02.32.25
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Oct 2021 02:32:26 -0700 (PDT)
-Received: by mail-il1-f172.google.com with SMTP id w15so2255290ilv.5
- for <linux-mediatek@lists.infradead.org>; Wed, 27 Oct 2021 02:32:25 -0700 (PDT)
-X-Received: by 2002:a05:6e02:1747:: with SMTP id
- y7mr18329876ill.95.1635327145411; 
- Wed, 27 Oct 2021 02:32:25 -0700 (PDT)
+ id 1mffJr-004R8P-Ht; Wed, 27 Oct 2021 09:34:05 +0000
+X-UUID: d2badb02323a4e78bd6d30f841b915cb-20211027
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=f5bv2fIAVTo8g215AUeOscF0bRtQ+IqfCg8Dqh6s7F8=; 
+ b=Ht1rMwasipyBtLD0pZr6lCVxdUvE5Cch+kRHS12jmppqDQ4At/W0Nn003/yqKSZyae49QLWmFXLZb6vCYIIEC2eRHe8EdkGmfcEVE0TJ9OfhVY5Uu8mQ/qdehkW9UM/OUa3m092Eu1DvEFxYhWLgN/k8ypS7FZ/tsxhI7SOmoh8=;
+X-UUID: d2badb02323a4e78bd6d30f841b915cb-20211027
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 83106176; Wed, 27 Oct 2021 02:34:02 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 27 Oct 2021 02:33:59 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 27 Oct 2021 17:33:41 +0800
+Received: from mhfsdcap04 (10.17.3.154) by MTKCAS32.mediatek.inc
+ (172.27.4.170) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 27 Oct 2021 17:33:40 +0800
+Message-ID: <fba3246fbc600f06eb40e90283c1cd51bc259804.camel@mediatek.com>
+Subject: Re: [PATCH v4 1/3] PM / wakeirq: support enabling wake-up irq after
+ runtime_suspend called
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+CC: Len Brown <len.brown@intel.com>, Pavel Machek <pavel@ucw.cz>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, Mathias Nyman
+ <mathias.nyman@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, "Linux
+ PM" <linux-pm@vger.kernel.org>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, "open list:ULTRA-WIDEBAND (UWB) SUBSYSTEM:"
+ <linux-usb@vger.kernel.org>, Linux ARM
+ <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC..."
+ <linux-mediatek@lists.infradead.org>, "Rafael J . Wysocki"
+ <rafael.j.wysocki@intel.com>
+Date: Wed, 27 Oct 2021 17:33:39 +0800
+In-Reply-To: <CAJZ5v0gb6vN9kHeQbgjRQXvOCNaFK8ur7bLDeAVjDqdT2=a+-g@mail.gmail.com>
+References: <20211025070155.2995-1-chunfeng.yun@mediatek.com>
+ <CAJZ5v0gb6vN9kHeQbgjRQXvOCNaFK8ur7bLDeAVjDqdT2=a+-g@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20211027021857.20816-1-jason-jh.lin@mediatek.com>
- <20211027021857.20816-4-jason-jh.lin@mediatek.com>
-In-Reply-To: <20211027021857.20816-4-jason-jh.lin@mediatek.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Wed, 27 Oct 2021 17:31:49 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ng2=XRV9s2t2dxQf1a2V2GsFwhfB8tRxnNDp-QD5eR_xQ@mail.gmail.com>
-Message-ID: <CAC=S1ng2=XRV9s2t2dxQf1a2V2GsFwhfB8tRxnNDp-QD5eR_xQ@mail.gmail.com>
-Subject: Re: [PATCH v5 3/6] drm/mediatek: Detect CMDQ execution timeout
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, 
- Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, hsinyi@chromium.org, nancy.lin@mediatek.com, 
- singo.chang@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211027_023228_417015_FE6EC3F6 
-X-CRM114-Status: GOOD (  23.68  )
+X-CRM114-CacheID: sfid-20211027_023403_624908_24C35699 
+X-CRM114-Status: GOOD (  34.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,90 +90,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jason,
+On Tue, 2021-10-26 at 17:39 +0200, Rafael J. Wysocki wrote:
+> On Mon, Oct 25, 2021 at 9:02 AM Chunfeng Yun <
+> chunfeng.yun@mediatek.com> wrote:
+> > 
+> > When the dedicated wake IRQ is level trigger, and it uses the
+> > device's low-power status as the wakeup source, that means if the
+> > device is not in low-power state, the wake IRQ will be triggered
+> > if enabled; For this case, need enable the wake IRQ after running
+> > the device's ->runtime_suspend() which make it enter low-power
+> > state.
+> > 
+> > e.g.
+> > Assume the wake IRQ is a low level trigger type, and the wakeup
+> > signal comes from the low-power status of the device.
+> > The wakeup signal is low level at running time (0), and becomes
+> > high level when the device enters low-power state (runtime_suspend
+> > (1) is called), a wakeup event at (2) make the device exit low-
+> > power
+> > state, then the wakeup signal also becomes low level.
+> > 
+> >                 ------------------
+> >                |           ^     ^|
+> > ----------------           |     | --------------
+> >  |<---(0)--->|<--(1)--|   (3)   (2)    (4)
+> > 
+> > if enable the wake IRQ before running runtime_suspend during (0),
+> > a wake IRQ will arise, it causes resume immediately;
+> > it works if enable wake IRQ ( e.g. at (3) or (4)) after running
+> > ->runtime_suspend().
+> > 
+> > This patch introduces a new status WAKE_IRQ_DEDICATED_REVERSE to
+> > optionally support enabling wake IRQ after running
+> > ->runtime_suspend().
+> > 
+> > Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> 
+> I don't really have anything to add regarding the code.
+> 
+> The kerneldoc comments could be improved, but I can take care of this
+> when applying the patch.
+Ok, thanks
+> 
+> Please collect ACKs for the remaining 2 patches in the series and I
+> will pick up all three.
+The files (mtu3_plat.c, xhci-mtk.c) modified by other 2 patches are
+maintained by myself, please pick up them, thanks a lot.
 
-On Wed, Oct 27, 2021 at 10:19 AM jason-jh.lin <jason-jh.lin@mediatek.com> wrote:
->
-> From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
->
-> CMDQ is used to update display register in vblank period, so
-> it should be execute in next 2 vblank. One vblank interrupt
-> before send message (occasionally) and one vblank interrupt
-> after cmdq done. If it fail to execute in next 3 vblank,
-> tiemout happen.
->
-> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-> ---
->  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 20 ++++++++++++++++++--
->  1 file changed, 18 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> index e23e3224ac67..dad1f85ee315 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-> @@ -54,6 +54,7 @@ struct mtk_drm_crtc {
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
->         struct cmdq_client              cmdq_client;
->         u32                             cmdq_event;
-> +       u32                             cmdq_vblank_cnt;
->  #endif
->
->         struct device                   *mmsys_dev;
-> @@ -227,7 +228,10 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
->  static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
->  {
->         struct cmdq_cb_data *data = mssg;
-> +       struct cmdq_client *cmdq_cl = container_of(cl, struct cmdq_client, client);
-> +       struct mtk_drm_crtc *mtk_crtc = container_of(cmdq_cl, struct mtk_drm_crtc, cmdq_client);
->
-> +       mtk_crtc->cmdq_vblank_cnt = 0;
->         cmdq_pkt_destroy(data->pkt);
->  }
->  #endif
-> @@ -483,6 +487,15 @@ static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
->                                            cmdq_handle->pa_base,
->                                            cmdq_handle->cmd_buf_size,
->                                            DMA_TO_DEVICE);
-> +               /*
-> +                * CMDQ command should execute in next 3 vblank.
-> +                * One vblank interrupt before send message (occasionally)
-> +                * and one vblank interrupt after cmdq done,
-> +                * so it's timeout after 3 vblank interrupt.
-> +                * If it fail to execute in next 3 vblank, timeout happen.
-> +                */
-> +               mtk_crtc->cmdq_vblank_cnt = 3;
-> +
->                 mbox_send_message(mtk_crtc->cmdq_client.chan, cmdq_handle);
->                 mbox_client_txdone(mtk_crtc->cmdq_client.chan, 0);
->         }
-> @@ -499,11 +512,14 @@ static void mtk_crtc_ddp_irq(void *data)
->
->  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
->         if (!priv->data->shadow_register && !mtk_crtc->cmdq_client.chan)
-> +               mtk_crtc_ddp_config(crtc, NULL);
-> +       else if (mtk_crtc->cmdq_vblank_cnt > 0 && --mtk_crtc->cmdq_vblank_cnt == 0)
-I think atomic_dec_and_test() does what you want to do here.
-
-
-
-
-> +               DRM_ERROR("mtk_crtc %d CMDQ execute command timeout!\n",
-> +                         drm_crtc_index(&mtk_crtc->base));
->  #else
->         if (!priv->data->shadow_register)
-> -#endif
->                 mtk_crtc_ddp_config(crtc, NULL);
-> -
-> +#endif
->         mtk_drm_finish_page_flip(mtk_crtc);
->  }
->
-> --
-> 2.18.0
->
-
+> 
+> Thanks!
+> 
+> > ---
+> > v4: changes according to Rafael's suggestions
+> >     1. rename new flag as WAKE_IRQ_DEDICATED_REVERSE;
+> >     2. add __dev_pm_set_dedicated_wake_irq() with flag parameter,
+> > then
+> >        rebuild dev_pm_set_dedicated_wake_irq() and add new api
+> >        dev_pm_set_dedicated_wake_irq_reverse();
+> >     3. rename the new added parameter as cond_disable in
+> >        dev_pm_disable_wake_irq_check(), and also simplify its flow;
+> >     4. modify some comments
+> > 
+> > v3: add new status suggested by Rafael
+> > 
+> > v2: add more commit message
+> > 
+> >   Use the falling edge trigger interrupt suggested by Ikjoon [1],
+> > it
+> > works well at firstly when only use this related wakeup source, but
+> > encounter issues if use other wakeup sources to wakeup platform as
+> > below steps:
+> > 1. use another wakeup source to wake up the suspended system;
+> > 2. the consumer's resume() will be called, and exits sleep state;
+> > 3. the consumer's wakeup signal will fall into low level, due to
+> >    currently the wakeup irq is disabled, the wake-irq is pending;
+> > 4. the consumer tries to enter runtime suspend, but there is a
+> >    pending wakeup irq, so will resume again, this will repeat
+> >    endlessly.
+> > 
+> >   Send out the patch again for further discussion.
+> > 
+> > [1]: https://patchwork.kernel.org/patch/12190407
+> > 
+> > ---
+> >  drivers/base/power/power.h   |   7 ++-
+> >  drivers/base/power/runtime.c |   6 ++-
+> >  drivers/base/power/wakeirq.c | 101 +++++++++++++++++++++++++++--
+> > ------
+> >  include/linux/pm_wakeirq.h   |   9 +++-
+> >  4 files changed, 96 insertions(+), 27 deletions(-)
+[...]
+> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
