@@ -2,67 +2,66 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C977BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 11:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0FE7DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 11:32:56 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 991856103C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 11:32:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 991856103C
+	by mail.kernel.org (Postfix) with ESMTPS id D359D6109E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 11:32:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org D359D6109E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Z5SDRIwsakjXZ/7TXOu8qR3AOMDezHso7cwaYqXLwOI=; b=I9JcSrNvhULKpp
-	saJpMWEKDt6iC5nJ7LtyfGgormtDgcKpsD49lX/GGyvfM/QuF6rL5VTbBnfZ9j42SJh++TMqWgT1B
-	scWDqs4Qgnc/dE/mqWOE/3uouMEG98Xr7HkTdSgCCvy2RswA2Xi1zVBu+fqFVTsK4MHPU9XGmoFKx
-	gwYgor1fvB7YZV/LcXUdKrrDIHDVwfZnUGRuFqREMh7P7yYQfsB7he/nps+F2xiqxZ2zZKyQIFdxI
-	OmzdzpGWrHR47gI28AJ1cA7V37dbfAhlYwiMdq/tZ1qWQ1fYlUmEP4+KSsA9pSht20FXMEWG57i3J
-	hceptk2/FUHTQKSc1aTQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=dYnUqF38ZaDfcAeurVurB9JnbZeZDYLTlpxS2HwPUbk=; b=sVWRvVqPTYTvLh
+	+a16775PQfJqLdA9GF/MFaGuZebD+HlsoosK5xqeI1Z2ZqIRKlF19LXwXZYmp58uwqgQazDlb7dNX
+	4xvc4BcbMu6rcIak63IzEoM3Qa1GqcPVwFRpS6bfn2VpZVSwlG6IhfTlVDPYZuOOWrxdKWuGtZYjG
+	SD6IDm1MVLBgwmIk1UXe+1avXRjwDs4iMKd6+0TRfy4IBZUor4HOStZrr2oz7ORAorl2bcePjuGuN
+	jbgTlqTq6ql6btRfPugikLS8NFl3nCJgPaI5eE7uqFs15Er6+1+9TAYZl8U0ZxO333/9Ji8ZKxFt2
+	22WUCARLc5jyZTc+3bhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfhAV-004iqR-EY; Wed, 27 Oct 2021 11:32:31 +0000
-Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
+	id 1mfhAj-004iut-AK; Wed, 27 Oct 2021 11:32:45 +0000
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfhAE-004ikO-LI; Wed, 27 Oct 2021 11:32:15 +0000
-Received: by mail-oo1-xc34.google.com with SMTP id
- x135-20020a4a418d000000b002b961605657so126616ooa.10; 
- Wed, 27 Oct 2021 04:32:12 -0700 (PDT)
+ id 1mfhAI-004imk-FJ; Wed, 27 Oct 2021 11:32:19 +0000
+Received: by mail-oi1-x230.google.com with SMTP id y128so2982156oie.8;
+ Wed, 27 Oct 2021 04:32:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=PLuqEnTXe47rulVjhxN/gWoxn9OAXwjIoRJGGQuOV8g=;
- b=h8Z8RlLV8LM+pMediEGJWDOLVHznhnkpCSQuXO1FYmE45rAzSX/f863SQmiaeghzNa
- WhWV43HA6pPEupSoPRBFj9ifCmdlhY/P3Cc2D4ZyX3sOI/ZFFGJBlLAv71K/Tj1KD0Xz
- 8pVVqz5qi8ZIiRTsoL4dr3uAN/lveNATuxj0d0Xn/cSS+HxMjRbeImLDEyjdkstOIKtV
- wZXuxmD++hsxEVivGZyst6WtMSs8bsMjEu6nX/h8FE1VrtcjuTcqS9nKPhfkxT/LUb7o
- ZcjL+UkELp0YyOa4FnseLXRCr7IKhTz1rA571q8XfyUGHcXx/780tH2R5AWiFliCKW3L
- NlPA==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=Ulhn4KODo+M8bQOCOaLaS+XZsUOCyPb8RqRWLn0FhBo=;
+ b=NdNt/0mG63IMHrYdKrGRchjJA3NLl73blNkn2CLJ9iW1ZGGJ4MjZszel2piHsEUbqg
+ fgJkDpG5l92TH9cRhCifTd3dJGqR9XvpH/s3lIz3TJQYunHu+bpJkkR5GyuJd4glmzNB
+ MoeygbQ1FmfFSAd4XsZFnkJEpN7S5ohnzRxB9oy340onnnsQ92ug9E0NfVPwaQJM0p2H
+ fkA00Po14HGp91tFWr71+2Cx+EFhyptZPPomx/++zsiPJDHj0OyNQiAhrUB2d5MZ5Lxs
+ WeuOdKgc5Qki/ja4jIgfWIws7UAV5wdOydVxdhtqR8zZuXLxcC8AsaXp5v7b3N5g/F9w
+ Rxzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=PLuqEnTXe47rulVjhxN/gWoxn9OAXwjIoRJGGQuOV8g=;
- b=vIMOb4UeS+ULRNVbT+3hhuV90pc554lX7i42yturdd4Ul3/MsQnAYGLlB15fbg0vzo
- PNF+nf4x5xgyOLay5qMqJ7Yw3KOZaQCQcecTNTWRnSuYVrE4AGhu7KWr0l2wK327F9oX
- mEzr1vP4nYDqczbSmoPuDak6P1VYjJ/DLEDgTHvW4oBtKiPGVtugvOMzcMXwgXCydmxy
- nX48gkaoWKfhdhXJKX6FcrxVWAOFhTp8/XdLfflWbcjBT1y5Nr8JZzoiYTqLKGbOf9SP
- 7pI/fK5WToyNSq+6duuMXiyGy3uy4snA0AIjvOYiGqUYeGA6PsWGJxzyfyON2IL+OjDJ
- L/qQ==
-X-Gm-Message-State: AOAM5305EZrxfCSZ274CXiZIullEmCriARaLdQTByr7nAEGj8UL2vqYF
- WuejPQOHCjFCzDFbw7ZOsp0=
-X-Google-Smtp-Source: ABdhPJyYBY1m3ap3FTqF0Co+JOPNyvzi6NT3ywXO6Cyx7Bb7muZ84qjTwTFjt/pXvvyQN/ioacabnw==
-X-Received: by 2002:a4a:e848:: with SMTP id j8mr3587427ooj.61.1635334331976;
- Wed, 27 Oct 2021 04:32:11 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=Ulhn4KODo+M8bQOCOaLaS+XZsUOCyPb8RqRWLn0FhBo=;
+ b=RTsbpj0HcNx5HsqcVVuwpL6j9hX7NpnvSbC09k56sthWfXsV1c9RZqvTXB/fyb/moW
+ mlBzq77//i0NpGFsfjp2tJ3aodU6G0042L1bVE6q1fuEasaqGuqRdaEXV2S7cm68UYkQ
+ rHXM75cJmfLCvbnB3u4xFTDCr7swS8n1/tbAAy3vf6AjkzCVT5ObQvRVqNojtF4C0/Hl
+ SXWnzTi4vRUo+hp3Etljk5qHP70UVLEdNmqJ32LQE7ul1btAo29wQBYW02jujLtbjzA4
+ sgGUJNnymD+drQolcualfz9JMrDx+wWkazexulSt0tvIyOZ3BrPATCDMomTWjzuEcap7
+ eoyA==
+X-Gm-Message-State: AOAM533aEIWQUP381AQvrbFi/ZDAJ2MFQMWHlnAAXzP1Gr2v6Ez7TIZB
+ TSIBJF/hkoE/0Xf59xvZsHc=
+X-Google-Smtp-Source: ABdhPJyDtqXolJD9smrK9+TJiNjHaGA863agytaUNdu/NWWpgx1LiqcUGcw3mrk5rjhk7cXU0TEVEg==
+X-Received: by 2002:aca:3343:: with SMTP id z64mr3098600oiz.100.1635334337149; 
+ Wed, 27 Oct 2021 04:32:17 -0700 (PDT)
 Received: from localhost.localdomain ([8.26.182.170])
- by smtp.gmail.com with ESMTPSA id e23sm5430106oih.40.2021.10.27.04.32.06
+ by smtp.gmail.com with ESMTPSA id e23sm5430106oih.40.2021.10.27.04.32.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 27 Oct 2021 04:32:11 -0700 (PDT)
+ Wed, 27 Oct 2021 04:32:16 -0700 (PDT)
 From: Yanteng Si <siyanteng01@gmail.com>
 X-Google-Original-From: Yanteng Si <siyanteng@loongson.cn>
 To: sergio.paracuellos@gmail.com
@@ -72,15 +71,17 @@ Cc: Yanteng Si <siyanteng@loongson.cn>, lorenzo.pieralisi@arm.com,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  tsbogend@alpha.franken.de, linux-mips@vger.kernel.org,
  chenhuacai@kernel.org, sterlingteng@gmail.com
-Subject: [PATCH 0/2] drivers/mt7621: Fix build error ERROR: modpost:
-Date: Wed, 27 Oct 2021 19:31:38 +0800
-Message-Id: <cover.1635333327.git.siyanteng@loongson.cn>
+Subject: [PATCH 1/2] PCI: mt7621: Add MODULE_* macros to MT7621 PCIe host
+ controller driver
+Date: Wed, 27 Oct 2021 19:31:39 +0800
+Message-Id: <50f5f509c15251fb10b0c87304d272e2c89841f0.1635333327.git.siyanteng@loongson.cn>
 X-Mailer: git-send-email 2.27.0
+In-Reply-To: <cover.1635333327.git.siyanteng@loongson.cn>
+References: <cover.1635333327.git.siyanteng@loongson.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211027_043214_721100_A324417F 
-X-CRM114-Status: UNSURE (   8.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211027_043218_560716_BEF67894 
+X-CRM114-Status: GOOD (  11.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,27 +100,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Since commit 2bdd5238e756 ("PCI: mt7621: Add MediaTek MT7621 PCIe host controller driver")
 the MT7621 PCIe host controller driver is built as a module but no MODULE_*() attributes
-were specified, causing a build error due to missing license information. At the same time,
-modpost complains once these drivers become modules.
+were specified, causing a build error due to missing license information.
 
 ERROR: modpost: missing MODULE_LICENSE() in drivers/pci/controller/pcie-mt7621.o
-ERROR: modpost: "mips_cm_unlock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-ERROR: modpost: "mips_cpc_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-ERROR: modpost: "mips_cm_lock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-ERROR: modpost: "mips_cm_is64" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-ERROR: modpost: "mips_gcr_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
 
-Let's just fix them.
+Fix this by adding MODULE attributes to the driver.
 
-Yanteng Si (2):
-  PCI: mt7621: Add MODULE_* macros to MT7621 PCIe host controller driver
-  PCI: mt7621: Export mips_cm/cpc/gcr_* to modules
-
- arch/mips/kernel/mips-cm.c           | 5 +++++
- arch/mips/kernel/mips-cpc.c          | 1 +
+Signed-off-by: Yanteng Si <siyanteng@loongson.cn>
+---
  drivers/pci/controller/pcie-mt7621.c | 2 ++
- 3 files changed, 8 insertions(+)
+ 1 file changed, 2 insertions(+)
 
+diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
+index b60dfb45ef7b..668b737f86fb 100644
+--- a/drivers/pci/controller/pcie-mt7621.c
++++ b/drivers/pci/controller/pcie-mt7621.c
+@@ -598,3 +598,5 @@ static struct platform_driver mt7621_pci_driver = {
+ 	},
+ };
+ builtin_platform_driver(mt7621_pci_driver);
++
++MODULE_LICENSE("GPL v2");
+\ No newline at end of file
 -- 
 2.27.0
 
