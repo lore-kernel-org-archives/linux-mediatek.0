@@ -2,71 +2,78 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5792FC43217
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2070AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 03:09:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F383760F92
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:34:24 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F383760F92
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id E048C61074
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 03:09:56 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E048C61074
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CasosUSs4QW+O6dornhDDU3YOhIYgRDmr8Fo4Dqb7Xo=; b=xHghOrrdGLvuIj
-	IxTw4d892kQr8qVolrkOGJC7YCzEtlNOIkxtHAg4bdEwAsBdOW/sXXSr0w9/GjjfVGWUAxJ13AplN
-	5kHfdL1gXU3m3hAR0ADpmCJ83NGpdE3tbr/Jamj6IhrbVw4XEKhT5921eTnElwTMFBWl6yqABQ9ey
-	cmipF4+UZrY4rW7Ensf5g1oktyL9k1s4PP9dPCY2f8MiA4A/rvlfwEhu1zrmmXiOBu0gpOGxUW//L
-	Y7HOohikkdMtBdpyJ0+4HsUiaQLZ8lF8QjsEdUaikXk3RTfm7d4cwM5iW6wndLr0eBMZb5BS+SJBR
-	cGBd6rPUF6smFQCidaQQ==;
+	List-Owner; bh=iTp3o6omLXgclidIL/NyDxLTgeYUQfWa7ZIi0yI2Pic=; b=tRGMcMuHpWjll1
+	F2fYg8FO51TvqjA72IC5k8FbVslZqZX8jIhb4fj7g2LD7ph8r/CxsqHnPX6d7z+a27jZf21m6k2qR
+	aUbtkEoY99O1gqIQXlED+JhSxw0uqHUsLYiuc+3d0VyY1eiUVPl7VgIGudl79jKMNENYZWktv4IPB
+	LU2ECRR0Pa0z2gdEOWE9wZJIX0uLt5UkgdzwXjaUziDH+rVrCoIghmhTgfgcVdLt35T/0wvlDVmYl
+	WTtDDcuapkSIg5Rmfo9b22pB/dtMZ1Nm3U4hZJ4XF12RrbV6tHj7QtHAS4b4qnZsJaPl5MCXMYDtY
+	Rbjm+phNq0jwtwxmtAnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfYld-003e15-RO; Wed, 27 Oct 2021 02:34:17 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mfZJw-003iVM-K3; Wed, 27 Oct 2021 03:09:44 +0000
+Received: from mail-oo1-f49.google.com ([209.85.161.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfYlZ-003dy3-22; Wed, 27 Oct 2021 02:34:16 +0000
-X-UUID: 41f1f71b90cc43c88ae2961c424664bd-20211026
-X-UUID: 41f1f71b90cc43c88ae2961c424664bd-20211026
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 484029442; Tue, 26 Oct 2021 19:34:07 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Oct 2021 19:27:47 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Oct 2021 10:27:45 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 Oct 2021 10:27:45 +0800
-Message-ID: <9e36d2353aadb293ee277329eed84c4015bc0277.camel@mediatek.com>
-Subject: Re: [PATCH] dt-bindings: mfd: change naming of mediatek rpmsg property
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Benson Leung <bleung@chromium.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, Lee Jones <lee.jones@linaro.org>, Enric
- Balletbo i Serra <enric.balletbo@collabora.com>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Guenter
- Roeck" <groeck@chromium.org>, <devicetree@vger.kernel.org>
-Date: Wed, 27 Oct 2021 10:27:45 +0800
-In-Reply-To: <1634578358.531021.2612842.nullmailer@robh.at.kernel.org>
-References: <20211018115111.14096-1-tinghan.shen@mediatek.com>
- <1634578358.531021.2612842.nullmailer@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mfZJk-003iTO-Dq; Wed, 27 Oct 2021 03:09:33 +0000
+Received: by mail-oo1-f49.google.com with SMTP id
+ k11-20020a4aa5cb000000b002b73749f3cdso457308oom.4; 
+ Tue, 26 Oct 2021 20:09:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=fF9QXgLzosjL4TM7VadwMeUj8EchUoSjjtX4csjl1rU=;
+ b=hBL1FbNgssex4YxLSCjP1zEMNtqdiM8BUsO2wgXeULzUmy2rzJlAFe/krbhTBLM3ZJ
+ ysCqFUYgptwRrgYcmSdp1BDBm2T/tQdXRyfUUKuK38bJiSvnUpeA85kjntmJSiEvD9Ym
+ XKG8ZtcxxlGADFhKpd2IBEwpkGt+9e8uauNoR+mup1abVM7RhJRxQRP5qjbVSS7PVprU
+ CGrUO+plHyZexf9F6jB7FdrPpw0pQLIifHqi2zbXpq7sBwP55/CC57NmXIP/96v6qTQ7
+ buji3X8wbPP9O9ATnPdXohCLCkvEUY/JLYC6rWCyZQ0OQHFuPOJLe0O3UmHZLbcg59/x
+ 2R6g==
+X-Gm-Message-State: AOAM533ObPS3BbcFqu5tragm3cTWaQAnr0FUxyA5KPSYftl3G28tVK97
+ OQtWCsBgWj9j1mlLFJnSyw==
+X-Google-Smtp-Source: ABdhPJzP41q/WyN+8LLe8tlwuSoBpsMFovkHFy5Yho2Qv71qtpA7ktzQadUc9hIiXylOeSIXG44skQ==
+X-Received: by 2002:a4a:b307:: with SMTP id m7mr4884736ooo.83.1635304171532;
+ Tue, 26 Oct 2021 20:09:31 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id j6sm4395944oot.18.2021.10.26.20.09.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 26 Oct 2021 20:09:30 -0700 (PDT)
+Received: (nullmailer pid 3941875 invoked by uid 1000);
+ Wed, 27 Oct 2021 03:09:29 -0000
+Date: Tue, 26 Oct 2021 22:09:29 -0500
+From: Rob Herring <robh@kernel.org>
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ khilman@baylibre.com, linux-mediatek@lists.infradead.org, fparent@baylibre.com,
+ linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+ Daniel Lezcano <daniel.lezcano@linaro.org>
+Subject: Re: [PATCH v2 1/4] dt-bindings: thermal: mediatek: Add mt8365
+Message-ID: <YXjC6VkMSrOECEEu@robh.at.kernel.org>
+References: <20211019093404.1913357-1-msp@baylibre.com>
+ <20211019093404.1913357-2-msp@baylibre.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20211019093404.1913357-2-msp@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_193413_188723_C5E91083 
-X-CRM114-Status: GOOD (  22.14  )
+X-CRM114-CacheID: sfid-20211026_200932_492092_6AA45B40 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,75 +90,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-10-18 at 12:32 -0500, Rob Herring wrote:
-> On Mon, 18 Oct 2021 19:51:11 +0800, Tinghan Shen wrote:
-> > Change from "mtk,rpmsg-name" to "mediatek,rpmsg-name" to sync with
-> > the
-> > vendor name defined in vendor-prefixes.yaml.
-> > 
-> > Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> > ---
-> >  Documentation/devicetree/bindings/mfd/google,cros-ec.yaml | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
+On Tue, 19 Oct 2021 11:34:01 +0200, Markus Schneider-Pargmann wrote:
+> This unit is present on the mt8365 SoC as well. But there is a
+> difference in the usage of an apmixed register.
 > 
-> Running 'make dtbs_check' with the schema in this patch gives the
-> following warnings. Consider if they are expected or the schema is
-> incorrect. These may not be new warnings.
+> This patch adds a distinct mt8365 to the list of compatibles.
 > 
-> Note that it is not yet a requirement to have 0 warnings for
-> dtbs_check.
-> This will change in the future.
-> 
-> Full log is available here: 
-> https://urldefense.com/v3/__https://patchwork.ozlabs.org/patch/1542563__;!!CTRNKA9wMg0ARbw!yQGrJgf_q0cFKm4GiKGqWF4eFuMbBE3w_p4r9ipndPFZMOYDBfs0oAwGpZa6mKdIggI$
->  
-> 
-> 
-> cros_ec: 'mtk,rpmsg-name' does not match any of the regexes:
-> '^extcon[0-9]*$', '^i2c-tunnel[0-9]*$', '^regulator@[0-9]+$',
-> 'pinctrl-[0-9]+'
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-
-> burnet.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-
-> fennel14.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> sku1.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-
-> sku6.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-
-> sku16.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> sku0.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-
-> sku1.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dt.yaml
-> 	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dt.yaml
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
+>  Documentation/devicetree/bindings/thermal/mediatek-thermal.txt | 1 +
+>  1 file changed, 1 insertion(+)
 > 
 
-Hi Rob,
-
-Thanks for your reviewing. I'm sorry that forget to mention the
-dependency of this patch.
-
-This patch is introduced because of this change,
-
-https://lore.kernel.org/all/20210924033935.2127-7-tinghan.shen@mediatek.com/
-
-I will resend this patch to mention the dependency.
-
-Best regards,
-TingHan
-
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
