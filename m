@@ -2,14 +2,14 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 55618C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 97736C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:20:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0C16160EFE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:20:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0C16160EFE
+	by mail.kernel.org (Postfix) with ESMTPS id 606CD60EFE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 09:20:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 606CD60EFE
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C3rI4ys2e2nkpXY4g0WTPg0RMYU4L+KgSCMGXQYmA/Q=; b=VAatKz9Z7t4NbV
-	BCB39EKfBAA/hd6ZA2kPfxtUYLBZrpk3cwi6wS6jYBbZO+uANjg8SCHC+hSeW5DfOZX5Zf/7TQa+Y
-	QMnWDE/Vj+lnueOJ3t8wfBBbU2VuoEnhnahq4I91dv3ZxL9RmwfTtNRp3/CeKjgQOZgGFrM5df5T3
-	N2rI18MgDw+IrY8ZXFOAOqzqVP+IiLhCaq5IqEtFQqvSFYADPXDCa04n/cRtGYD3ug5164sqr7Uku
-	6vn+t0jjGzo4GJIDYpSnx7hSpXRIwazBtvFPog0NvsqtM0Bxrc+B/NGobgAqlm5BsrFmVEXyMjinJ
-	cwV97NBFHF2Xs7aR34SA==;
+	List-Owner; bh=T/eEDw9NXwwuExBUkchWhKBdhe9tP9m5uDlMZKEuA80=; b=MB9hFr9byEPBQJ
+	1NxM3ctYqftMxwsongbWZy2NbXVr6Bd0hG9FG9Mr0ffsSC9V5QVXhrgcoCT/8DzfA3pUZJ5Mj9gaQ
+	450ipQ2tzmu3pOy/S9ybOY6GrMhTIRgq3yhqOqP2IC9ACwjixmtlG1jhGzuGomhmf1RxqYDpI6KAq
+	bzQvLIlla8wskWmI9c4hSdr5Iq3uHAEErYMREgRPS5WjC2F1twrU7yBbyQzhT91UwNImgAxy82BTJ
+	+G2yvWkl9keZDvBtNcaD60MQjcK3EHEMBRfA45127/oIU1yXCzBzDMWVWbVtGqin0Dr3pJX65Z1bI
+	BvzwcNtj+qKZn8OyLAfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mff68-004PGC-8F; Wed, 27 Oct 2021 09:19:52 +0000
+	id 1mff6A-004PHJ-DN; Wed, 27 Oct 2021 09:19:54 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mff65-004PF0-7h
- for linux-mediatek@lists.infradead.org; Wed, 27 Oct 2021 09:19:50 +0000
-X-UUID: bc39d591800e4f618309064b59399257-20211027
-X-UUID: bc39d591800e4f618309064b59399257-20211027
+ id 1mff66-004PEl-AN
+ for linux-mediatek@lists.infradead.org; Wed, 27 Oct 2021 09:19:51 +0000
+X-UUID: f792c4fa06364ff599044e5bfae4ad7e-20211027
+X-UUID: f792c4fa06364ff599044e5bfae4ad7e-20211027
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <bo.jiao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 739378208; Wed, 27 Oct 2021 02:19:45 -0700
+ with ESMTP id 372810638; Wed, 27 Oct 2021 02:19:45 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Oct 2021 02:09:45 -0700
+ 15.0.1497.2; Wed, 27 Oct 2021 02:09:42 -0700
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
  Wed, 27 Oct 2021 16:40:38 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 27 Oct 2021 16:40:37 +0800
+ 15.0.1497.2 via Frontend Transport; Wed, 27 Oct 2021 16:40:38 +0800
 From: Bo Jiao <bo.jiao@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
@@ -53,17 +53,17 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
  <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
  <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH 10/11] mt76: mt7915: add mt7916 calibrated data support
-Date: Wed, 27 Oct 2021 16:40:18 +0800
-Message-ID: <cc45b4d1f13df5f1e77041001efcb81f1727dec1.1635323366.git.Bo.Jiao@mediatek.com>
+Subject: [PATCH 11/11] mt76: mt7915: add device id for mt7916
+Date: Wed, 27 Oct 2021 16:40:19 +0800
+Message-ID: <65c8adaa746d711a5aa8d7ec01689001a1bd91fe.1635323366.git.Bo.Jiao@mediatek.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <cover.1635323366.git.Bo.Jiao@mediatek.com>
 References: <cover.1635323366.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211027_021949_305758_93C9F8D5 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20211027_021950_388632_162547B2 
+X-CRM114-Status: GOOD (  11.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,125 +82,69 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-Adjust proper eeprom size and add default calibrated data support
-for mt7916.
+Add pci_device_id to enable mt7916. Note that MT_HW_CHIPID is no
+longer used for further chips, so drop it accordingly.
 
-Co-developed-by: Shayne Chen <shayne.chen@mediatek.com>
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
 Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
-Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c | 11 ++++++++---
- drivers/net/wireless/mediatek/mt76/mt7915/mcu.c    |  7 ++++---
- drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h |  8 ++++++++
- 3 files changed, 20 insertions(+), 6 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7915/mmio.c | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/pci.c  | 7 +++++--
+ 2 files changed, 6 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-index 903fc41..7a44a09 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
-@@ -35,6 +35,7 @@ static int mt7915_check_eeprom(struct mt7915_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+index 4c06ddf..7191790 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+@@ -534,7 +534,7 @@ static int mt7915_mmio_init(struct mt76_dev *mdev,
+ 	bus_ops->rmw = mt7915_rmw;
+ 	dev->mt76.bus = bus_ops;
  
- 	switch (val) {
- 	case 0x7915:
-+	case 0x7916:
- 		return 0;
- 	default:
- 		return -EINVAL;
-@@ -52,6 +53,9 @@ mt7915_eeprom_load_default(struct mt7915_dev *dev)
- 	if (dev->dbdc_support)
- 		default_bin = MT7915_EEPROM_DEFAULT_DBDC;
+-	mdev->rev = (mt76_rr(dev, MT_HW_CHIPID) << 16) |
++	mdev->rev = (device_id << 16) |
+ 		    (mt76_rr(dev, MT_HW_REV) & 0xff);
+ 	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
  
-+	if (!is_mt7915(&dev->mt76))
-+		default_bin = MT7916_EEPROM_DEFAULT;
-+
- 	ret = request_firmware(&fw, default_bin, dev->mt76.dev);
- 	if (ret)
- 		goto out;
-@@ -62,7 +66,7 @@ mt7915_eeprom_load_default(struct mt7915_dev *dev)
- 		goto out;
- 	}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
+index 3134b46..8d1a811 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
+@@ -18,11 +18,13 @@ static u32 hif_idx;
  
--	memcpy(eeprom, fw->data, MT7915_EEPROM_SIZE);
-+	memcpy(eeprom, fw->data, mt7915_eeprom_size(dev));
- 	dev->flash_mode = true;
+ static const struct pci_device_id mt7915_pci_device_table[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7915) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7906) },
+ 	{ },
+ };
  
- out:
-@@ -74,8 +78,9 @@ out:
- static int mt7915_eeprom_load(struct mt7915_dev *dev)
+ static const struct pci_device_id mt7915_hif_device_table[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x7916) },
++	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x790a) },
+ 	{ },
+ };
+ 
+@@ -61,7 +63,8 @@ static void mt7915_put_hif2(struct mt7915_hif *hif)
+ static struct mt7915_hif *mt7915_pci_init_hif2(struct pci_dev *pdev)
  {
- 	int ret;
-+	u16 eeprom_size = mt7915_eeprom_size(dev);
+ 	hif_idx++;
+-	if (!pci_get_device(PCI_VENDOR_ID_MEDIATEK, 0x7916, NULL))
++	if (!pci_get_device(PCI_VENDOR_ID_MEDIATEK, 0x7916, NULL) &&
++	    !pci_get_device(PCI_VENDOR_ID_MEDIATEK, 0x790a, NULL))
+ 		return NULL;
  
--	ret = mt76_eeprom_init(&dev->mt76, MT7915_EEPROM_SIZE);
-+	ret = mt76_eeprom_init(&dev->mt76, eeprom_size);
- 	if (ret < 0)
- 		return ret;
+ 	writel(hif_idx | MT_PCIE_RECOG_ID_SEM,
+@@ -112,7 +115,7 @@ static int mt7915_pci_probe(struct pci_dev *pdev,
  
-@@ -85,7 +90,7 @@ static int mt7915_eeprom_load(struct mt7915_dev *dev)
- 		/* read eeprom data from efuse */
- 		u32 block_num, i;
+ 	mt76_pci_disable_aspm(pdev);
  
--		block_num = DIV_ROUND_UP(MT7915_EEPROM_SIZE,
-+		block_num = DIV_ROUND_UP(eeprom_size,
- 					 MT7915_EEPROM_BLOCK_SIZE);
- 		for (i = 0; i < block_num; i++)
- 			mt7915_mcu_get_eeprom(dev,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index dcd8939..221a779 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3551,7 +3551,8 @@ static int mt7915_mcu_set_eeprom_flash(struct mt7915_dev *dev)
- #define PAGE_IDX_MASK		GENMASK(4, 2)
- #define PER_PAGE_SIZE		0x400
- 	struct mt7915_mcu_eeprom req = { .buffer_mode = EE_MODE_BUFFER };
--	u8 total = DIV_ROUND_UP(MT7915_EEPROM_SIZE, PER_PAGE_SIZE);
-+	u16 eeprom_size = mt7915_eeprom_size(dev);
-+	u8 total = DIV_ROUND_UP(eeprom_size, PER_PAGE_SIZE);
- 	u8 *eep = (u8 *)dev->mt76.eeprom.data;
- 	int eep_len;
- 	int i;
-@@ -3560,8 +3561,8 @@ static int mt7915_mcu_set_eeprom_flash(struct mt7915_dev *dev)
- 		struct sk_buff *skb;
- 		int ret;
+-	if (id->device == 0x7916)
++	if (id->device == 0x7916 || id->device == 0x790a)
+ 		return mt7915_pci_hif2_probe(pdev);
  
--		if (i == total - 1 && !!(MT7915_EEPROM_SIZE % PER_PAGE_SIZE))
--			eep_len = MT7915_EEPROM_SIZE % PER_PAGE_SIZE;
-+		if (i == total - 1 && !!(eeprom_size % PER_PAGE_SIZE))
-+			eep_len = eeprom_size % PER_PAGE_SIZE;
- 		else
- 			eep_len = PER_PAGE_SIZE;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index e8fbe69..4cc2666 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -37,8 +37,11 @@
- 
- #define MT7915_EEPROM_DEFAULT		"mediatek/mt7915_eeprom.bin"
- #define MT7915_EEPROM_DEFAULT_DBDC	"mediatek/mt7915_eeprom_dbdc.bin"
-+#define MT7916_EEPROM_DEFAULT		"mediatek/mt7916_eeprom.bin"
- 
- #define MT7915_EEPROM_SIZE		3584
-+#define MT7916_EEPROM_SIZE		4096
-+
- #define MT7915_EEPROM_BLOCK_SIZE	16
- #define MT7915_TOKEN_SIZE		8192
- 
-@@ -483,6 +486,11 @@ static inline u16 mt7915_wtbl_size(struct mt7915_dev *dev)
- 	return is_mt7915(&dev->mt76) ? MT7915_WTBL_SIZE : MT7916_WTBL_SIZE;
- }
- 
-+static inline u16 mt7915_eeprom_size(struct mt7915_dev *dev)
-+{
-+	return is_mt7915(&dev->mt76) ? MT7915_EEPROM_SIZE : MT7916_EEPROM_SIZE;
-+}
-+
- void mt7915_dual_hif_set_irq_mask(struct mt7915_dev *dev, bool write_reg,
- 				  u32 clear, u32 set);
- 
+ 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
 -- 
 2.18.0
 
