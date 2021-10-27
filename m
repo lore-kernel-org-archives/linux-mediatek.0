@@ -2,82 +2,72 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3B36BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:16:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9A0BDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:25:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0AC05610A0
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:16:04 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0AC05610A0
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 6144360F92
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:25:58 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6144360F92
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m1QObF+TSZJXpB3eU3gs3FnZXzamxIe3JE/QnxU44YA=; b=kUWL85no354yjo
-	5zDmZ/i5TXZ38aJCkN9jkv9JYgsjpjnlglrZoTnZQlu6gi2srDOHfTYHqlrLYJBPgKvKPw0XEHH0T
-	uW/NeiniA+sfDfl+WYql7GcvdTZQ4ozgBPDh8Va2ixkFvVAjoSyONYXLQl8x8uyMAXYUnwPmu1SfW
-	bObEHRu3jDamhi5l2xUNp4lvP35FNPfQjDeyL8RGuOPP3Ye4Mp1UMprwipfokua52Mbfxxn1Wv6yj
-	/CGLw4FXCJVB1Q7afmdFQCYzZEnWexv9JueeX1GFMCZtB7vy9Z/IqdpBxVnqmAZElBwjxwuIRN/Is
-	Wp5BnEmnoULZ9qFNf4EA==;
+	List-Owner; bh=ubDoCU5wfcv2v8G0wbmsOO+2XtW8snITqY968e+T+vc=; b=lG4Iw/74M+DT/B
+	erXKRFTrf9YxNAXM3MjW5Ixy0QM+A0IRDO4Dq/QHR1RPLEDw5ZNhpWgz8j6eBWIJc2iOEC6Fzhn1F
+	b3+qC3u+8SUsZ4wOboYWLZYLf7p+dg7x3n3n9cPNvy8lllC4XySwvO3W0O5E3mW9AO9lLxi3Qnp5O
+	CHXZBSb6QzyK+GKfsEDN3d7cjLK296vsjO69dJEXhM/qfQVu9n8x/y/TZ8OlNkuvS/44PnWcxyx2P
+	ozFRfzRxUVcPZW2xHjf7uFHV9xDOhbIht1IPZ+xchPW1flrz2WngeTP2NjTzekIsZmbZm7YHQ7npX
+	PrfwgE8At0cFomnBsSMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfYTo-003ZRg-CH; Wed, 27 Oct 2021 02:15:52 +0000
-Received: from mail-ot1-f43.google.com ([209.85.210.43])
+	id 1mfYdN-003ahQ-1b; Wed, 27 Oct 2021 02:25:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfYTb-003ZOp-7Y; Wed, 27 Oct 2021 02:15:40 +0000
-Received: by mail-ot1-f43.google.com with SMTP id
- e59-20020a9d01c1000000b00552c91a99f7so1498210ote.6; 
- Tue, 26 Oct 2021 19:15:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=4e48CX0qvtEmKBUWQL7AMrMjdEX7VZo66I22J7xcWhA=;
- b=e1vhqGD2Q1mHIntBfVi6vRUQIDKIJ8faVKWwinPOECijl+GvRawuCZlCUtf28/jW2y
- AbmImVXnWIexO6oRyPf41B6MZ2SohAw/zUQL83FIl0qu6EBFAtP8PHMdI5bfGNQkTQ3n
- OXiaNYAwgnNhcpmPt+nNyGF4QssB5IDrq0QBbtyOf7+7h1fogBsjiuErYNfw9qN8SScw
- rSsCMVyyZZ4278xNoX8ZEXEaLqyfc8jzycJm3hePijPWdfsn+9bAUUrTIRYm1S52vteW
- ecs3Yb1juxpwP2B8IVqk6ZCRt5XLzny3L1Gn96E0Ch9im9lU//okDN8sq4/LUKixDoia
- rOiA==
-X-Gm-Message-State: AOAM530EvbV4sKGW/Mah3cKoYTwVcvi6wqGbO4O8oTC9DCLPjHoKmO0U
- 1rwCAcmoI0K3/5uGb9iTFQ==
-X-Google-Smtp-Source: ABdhPJyChzGuvY5bqBc8KDyGx9en8XmDx9zzO4Uf41ZkubxMcyZGH6scuTsDj6Yr361N81N/JssaGQ==
-X-Received: by 2002:a05:6830:1c2f:: with SMTP id
- f15mr23060547ote.63.1635300937707; 
- Tue, 26 Oct 2021 19:15:37 -0700 (PDT)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id f10sm5521224otc.26.2021.10.26.19.15.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Oct 2021 19:15:37 -0700 (PDT)
-Received: (nullmailer pid 3809599 invoked by uid 1000);
- Wed, 27 Oct 2021 02:15:36 -0000
-Date: Tue, 26 Oct 2021 21:15:36 -0500
-From: Rob Herring <robh@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: Lee Jones <lee.jones@linaro.org>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Benson Leung <bleung@chromium.org>,
- devicetree@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Guenter Roeck <groeck@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH] dt-bindings: mfd: change naming of mediatek rpmsg property
-Message-ID: <YXi2SBjJin9Nw1Rh@robh.at.kernel.org>
-References: <20211018115111.14096-1-tinghan.shen@mediatek.com>
+ id 1mfYcy-003acQ-SK; Wed, 27 Oct 2021 02:25:23 +0000
+X-UUID: a2d35569926945e4967cf35897416314-20211026
+X-UUID: a2d35569926945e4967cf35897416314-20211026
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 109290151; Tue, 26 Oct 2021 19:25:15 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 26 Oct 2021 19:19:01 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 27 Oct 2021 10:19:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 27 Oct 2021 10:19:00 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "Jassi
+ Brar" <jassisinghbrar@gmail.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <hsinyi@chromium.org>, <fshao@chromium.org>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>
+Subject: [PATCH v5 5/6] drm/mediatek: Add mbox_free_channel in
+ mtk_drm_crtc_destroy
+Date: Wed, 27 Oct 2021 10:18:56 +0800
+Message-ID: <20211027021857.20816-6-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211027021857.20816-1-jason-jh.lin@mediatek.com>
+References: <20211027021857.20816-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211018115111.14096-1-tinghan.shen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_191539_293663_605E88F2 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20211026_192520_926913_1EAF00A2 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,17 +84,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 Oct 2021 19:51:11 +0800, Tinghan Shen wrote:
-> Change from "mtk,rpmsg-name" to "mediatek,rpmsg-name" to sync with the
-> vendor name defined in vendor-prefixes.yaml.
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  Documentation/devicetree/bindings/mfd/google,cros-ec.yaml | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+Add mbox_free_channel in mtk_drm_crtc_destroy.
 
-Acked-by: Rob Herring <robh@kernel.org>
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+index ffa54b416ca7..31f05efc1bc0 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+@@ -156,6 +156,10 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
+ 	mtk_mutex_put(mtk_crtc->mutex);
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	mtk_drm_cmdq_pkt_destroy(&mtk_crtc->cmdq_handle);
++
++	if (mtk_crtc->cmdq_client.chan)
++		mbox_free_channel(mtk_crtc->cmdq_client.chan);
++				  mtk_crtc->cmdq_client.chan = NULL;
+ #endif
+ 	drm_crtc_cleanup(crtc);
+ }
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
