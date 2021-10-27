@@ -2,83 +2,87 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62558C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 03:57:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 717A3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 04:00:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0D07161073
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 03:57:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0D07161073
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3DE56610C7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 04:00:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3DE56610C7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4QOH8NcvefTuivMGmrZBhNhp4I1IC8FuY8N59Ozykqs=; b=Z6BDmXwNzYqDC5
-	dSE1C/z5KxA6E2skvNHCUi4eJW0cqkIAffB6GDtTZUKsD7XJbMuJKfUgw+lQNVtjC+e/o6vXxK35x
-	L54XEKdAULbWll65Iy2pSq1NvRZOGQgTHViaTRutcmSxnt/UbzAwOFDmQndFJuOOjjmt6ZszV6oRt
-	hlR5EPgdLr2ZL+897UMwQ2fEhqJ4XGzYFeU4vpRj8IPdrmgsO5umo4Xmrt+a57yrVbBH8YdimZCLC
-	BbrDEujmOJaklv/+GMgkYH3YbUNfBZu6UkpBZdBA0gTQZdARg2mO0d1ynayYnhLrUM7IPJIHsbkrt
-	1AoHGuNvE9u9jDak3wJg==;
+	List-Owner; bh=QjIqfSSYV5PIwJzk4lEQhs845EKC42kApbqorj24RtQ=; b=kpVY6N4S+kdKrl
+	fa0QD0EDweLh5w2FZ6Pu8kf3ecHxx0LwcdsjmklneawEWyH8eSTJu29tMaBg0/XIbO67qf6PH8BNx
+	xliquowoxADzCFHWHEz1uBM8xckWd115hV53xQu4v3OjCyxsKzvCT4R8439X+w6aK7K4kUKtvZHPO
+	zI2kHYU6Mq3SN+zOp22997ptTXmk5Mv+ywClxmNNc8xATVmD6KIubfdLL1VozJRz5o5YakOt2uxqS
+	HM8D2wm4XCPRLqTEsxtlQXxwgT8Q9KOU9lBJMkPdFUqIscK2nAYCLvRauCtFHUHt9rwktbDhCo1ui
+	PV2IbXOPtb+UAGH1obvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfa4R-003nBL-Mp; Wed, 27 Oct 2021 03:57:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mfa7G-003nal-Qg; Wed, 27 Oct 2021 04:00:42 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfa4P-003nAj-Ff; Wed, 27 Oct 2021 03:57:47 +0000
-X-UUID: cb98573603994ef994b903153fa30188-20211026
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=9eSb7qn3/LPscD1cplmBdJDI7Pw9AFl6IDdS5bPuJvA=; 
- b=jnt67Z3XJo7LEPdTOJKjqD6v0bb6TijQeF7gzN9v6Sk62AV9HaSPYhze1+HJbpZ294041neRffpfzbdSqGYOhTciQ9UNtYWGqkjRKnCKL2leH1r6a5ji0h0JToNOnirA15EFM/yk3XisFGHte67fmUJ1JStZ0H/TRtvH3KKdVFE=;
-X-UUID: cb98573603994ef994b903153fa30188-20211026
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1718875898; Tue, 26 Oct 2021 20:57:43 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Oct 2021 20:47:41 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 27 Oct 2021 11:47:33 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 27 Oct 2021 11:47:31 +0800
-Message-ID: <f72354d3d99c22fd02cbcc2894fee2716934e180.camel@mediatek.com>
-Subject: Re: [PATCH v7, 11/15] media: mtk-vcodec: Add core thread
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
- Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Wed, 27 Oct 2021 11:47:31 +0800
-In-Reply-To: <3b7084d4-e530-9a55-11f4-d67c37f8f5fa@collabora.com>
-References: <20211011070247.792-1-yunfei.dong@mediatek.com>
- <20211011070247.792-12-yunfei.dong@mediatek.com>
- <3b7084d4-e530-9a55-11f4-d67c37f8f5fa@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mfa7E-003nYq-2B; Wed, 27 Oct 2021 04:00:41 +0000
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 19R0n0C0015474; 
+ Wed, 27 Oct 2021 04:00:26 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=from : to : cc :
+ subject : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=corp-2021-07-09;
+ bh=+4BgIZY4lR/vnCmrk0RUztBT8gXJqQuyjlRcNq3Iq/A=;
+ b=ZKY4weGxKtTxJlztsUYMbvHGn5ahrKFmfYe5beyTkWs9G2Z6EXk8krTslC0xihftzaBW
+ uu06Yfw8TJVu7ntgFnu9EgqAqFRy/r8dwN7cMheD34M1TK3/5pCnfobv2uzDWOEhcLSz
+ wtz+xjOuj9J+zIbhRHRAakjseLsX/JmWTVxx+FJuqpwV2tCgoHb+nQvXGW84kqNAShQ9
+ Bbcqu4UZY7A0vka2XMHwuFEyvkgVZ04jvho40z50Blv/A/ii5y6KEWWJzNysK17PdCiP
+ Hc7wmYDOfF3DY7bSvUICVg+0RojewKQ5of6LRGIBvrET1CIgwQUnqenBqQel9CkrD//J kg== 
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3bx4fj0tb8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 27 Oct 2021 04:00:26 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+ by userp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 19R400wR068907;
+ Wed, 27 Oct 2021 04:00:25 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by userp3020.oracle.com with ESMTP id 3bx4gqcn9b-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 27 Oct 2021 04:00:25 +0000
+Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 19R40O5C070915;
+ Wed, 27 Oct 2021 04:00:24 GMT
+Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
+ by userp3020.oracle.com with ESMTP id 3bx4gqcn88-1;
+ Wed, 27 Oct 2021 04:00:24 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Arnd Bergmann <arnd@kernel.org>, Stanley Chu <stanley.chu@mediatek.com>,
+ "James E.J. Bottomley" <jejb@linux.ibm.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-scsi@vger.kernel.org,
+ Alim Akhtar <alim.akhtar@samsung.com>,
+ Avri Altman <avri.altman@wdc.com>, Arnd Bergmann <arnd@arndb.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bart Van Assche <bvanassche@acm.org>,
+ Peter Wang <peter.wang@mediatek.com>, Bean Huo <beanhuo@micron.com>
+Subject: Re: [PATCH] scsi: ufs: mediatek: avoid sched_clock() misuse
+Date: Wed, 27 Oct 2021 00:00:19 -0400
+Message-Id: <163530706457.10775.2217918948361073974.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.32.0
+In-Reply-To: <20211018132022.2281589-1-arnd@kernel.org>
+References: <20211018132022.2281589-1-arnd@kernel.org>
 MIME-Version: 1.0
-X-MTK: N
+X-Proofpoint-ORIG-GUID: IxSGowgx6TWOB-i5UsoImQPLxaD-JNJd
+X-Proofpoint-GUID: IxSGowgx6TWOB-i5UsoImQPLxaD-JNJd
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_205745_549695_F58D8706 
-X-CRM114-Status: GOOD (  33.23  )
+X-CRM114-CacheID: sfid-20211026_210040_134091_558F7930 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,156 +99,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+On Mon, 18 Oct 2021 15:20:01 +0200, Arnd Bergmann wrote:
 
-Thanks for your suggestion.
-On Thu, 2021-10-14 at 12:56 +0200, AngeloGioacchino Del Regno wrote:
-> > Core thread:
-> > 1. Gets lat_buf from core msg queue.
-> > 2. Proceeds core decode.
-> > 3. Puts the lat_buf back to lat msg queue.
-> > 
-> > Both H264 and VP9 rely on the core thread.
-> > 
-> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> From: Arnd Bergmann <arnd@arndb.de>
 > 
-> I would be happier to see a better commit message, for example:
-> "Introduce a core thread, responsible for... getting lat_buf from ...
-> which then proceeds core decode by ... and finally, puts the lat_buf
-> back to the lat message queue"
+> sched_clock() is not meant to be used in portable driver code,
+> and assuming a particular clock frequency is not how this is
+> meant to be used. It also causes a build failure because of
+> a missing header inclusion:
 > 
-> > ---
-> >   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 12 +++++++
-> >   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  7 ++++
-> >   .../platform/mtk-vcodec/vdec_msg_queue.c      | 32
-> > +++++++++++++++++++
-> >   .../platform/mtk-vcodec/vdec_msg_queue.h      |  6 ++++
-> >   4 files changed, 57 insertions(+)
-> > 
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c 
-> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > index e21e0c4bcd86..de83e3b821b4 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > @@ -364,6 +364,18 @@ static int mtk_vcodec_probe(struct
-> > platform_device *pdev)
-> >   		goto err_dec_pm;
-> >   	}
-> >   
-> > +	if (VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch)) {
-> > +		vdec_msg_queue_init_ctx(&dev->msg_queue_core_ctx,
-> > +			MTK_VDEC_CORE);
-> 
-> No need to break this line.
-> 
-Fix in v8.
-> > +		dev->kthread_core =
-> > kthread_run(vdec_msg_queue_core_thead, dev,
-> > +			"mtk-%s", "core");
-> 
-> Please fix indentation, like so:
-> 		dev->kthread_core =
-> kthread_run(vdec_msg_queue_core_thead, dev,
-> 
-> 						"mtk-%s", "core");
-> 
-> > +		if (IS_ERR(dev->kthread_core)) {
-> > +			dev_err(&pdev->dev, "Failed to create core
-> > thread");
-> > +			ret = PTR_ERR(dev->kthread_core);
-> > +			goto err_res;
-> > +		}
-> > +	}
-> > +
-> >   	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
-> >   		mutex_init(&dev->dec_mutex[i]);
-> >   	spin_lock_init(&dev->irqlock);
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > index 9d072c082f73..68a9b1a2d3b3 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > @@ -27,6 +27,7 @@
-> >   #define MTK_VCODEC_MAX_PLANES	3
-> >   #define MTK_V4L2_BENCHMARK	0
-> >   #define WAIT_INTR_TIMEOUT_MS	1000
-> > +#define VDEC_LAT_ARCH(hw_arch) ((hw_arch) >=
-> > MTK_VDEC_LAT_SINGLE_CORE)
-> 
-> I'd propose to change this to IS_VDEC_LAT_ARCH(hw_arch): that would
-> increase human
-> readability when using this macro.
-> 
-Fix in v8.
-> >   
-> >   /*
-> >    * enum mtk_hw_reg_idx - MTK hw register base index
-> > @@ -466,6 +467,9 @@ struct mtk_vcodec_enc_pdata {
-> >    * @comp_dev: component hardware device
-> >    * @component_node: component node
-> >    *
-> > + * @kthread_core: thread used for core hardware decode
-> > + * @msg_queue_core_ctx: msg queue context used for core thread
-> > + *
-> >    * @hardware_bitmap: used to record hardware is ready or not
-> >    */
-> >   struct mtk_vcodec_dev {
-> > @@ -508,6 +512,9 @@ struct mtk_vcodec_dev {
-> >   	void *comp_dev[MTK_VDEC_HW_MAX];
-> >   	struct device_node *component_node[MTK_VDEC_HW_MAX];
-> >   
-> > +	struct task_struct *kthread_core;
-> > +	struct vdec_msg_queue_ctx msg_queue_core_ctx;
-> > +
-> >   	DECLARE_BITMAP(hardware_bitmap, MTK_VDEC_HW_MAX);
-> >   };
-> >   
-> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > index d66ed98c79a9..665f571eab4b 100644
-> > --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > @@ -256,3 +256,35 @@ void vdec_msg_queue_deinit(
-> >   			kfree(lat_buf->private_data);
-> >   	}
-> >   }
-> > +
-> > +int vdec_msg_queue_core_thead(void *data)
-> > +{
-> > +	struct mtk_vcodec_dev *dev = data;
-> > +	struct vdec_lat_buf *lat_buf;
-> > +	struct mtk_vcodec_ctx *ctx;
-> > +
-> > +	set_freezable();
-> > +	for (;;) {
-> > +		try_to_freeze();
-> > +		if (kthread_should_stop())
-> > +			break;
-> > +
-> > +		lat_buf = vdec_msg_queue_dqbuf(&dev-
-> > >msg_queue_core_ctx);
-> > +		if (!lat_buf)
-> > +			continue;
-> > +
-> > +		ctx = lat_buf->ctx;
-> > +		mtk_vcodec_set_curr_ctx(dev, ctx, MTK_VDEC_CORE);
-> > +
-> > +		if (!lat_buf->core_decode)
-> > +			mtk_v4l2_err("Core decode callback func is
-> > NULL");
-> 
-> Is this supposed to really happen?
-> I see that this is always initialized in function
-> vdec_msg_queue_init().
-Fix in v8, using work queue instead of create thread.
+> [...]
 
-Thanks
-Yunfei Dong
-> 
-> Regards,
-> - Angelo
-> 
-> 
+Applied to 5.16/scsi-queue, thanks!
+
+[1/1] scsi: ufs: mediatek: avoid sched_clock() misuse
+      https://git.kernel.org/mkp/scsi/c/bb4a8dcb4e94
+
+-- 
+Martin K. Petersen	Oracle Linux Engineering
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
