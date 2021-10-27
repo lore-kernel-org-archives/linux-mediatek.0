@@ -2,77 +2,78 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D38EEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 19:26:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A8BC9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 20:32:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A2D90601FC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 19:26:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A2D90601FC
+	by mail.kernel.org (Postfix) with ESMTPS id 78CBA60FC0
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 20:32:40 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 78CBA60FC0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bx/jJQ0N9W7IjLOGw9OVKppj67mYOV300jAdUAUQ3DE=; b=rWmdDM8UthkmJW
-	/DmwqeEAID9Rzh2319CbtTSJ6QwJVnPcYsomdjoHBwYSsWjXvaXw1lXvLpyAym2vRgY4raGfdYeWM
-	pZX9EPDK6XXBt8mrESQ3Vf8vzFXgRzdq912FwQIRb3O04VqdLN0eoytG6NVu4CcV3Th2Jod1X4dJJ
-	lt9yJCmSsBB6Go2vJhFYsO12vrrYixdDgZLfRZf8WSHfjG6StSaFxsbwKrOA1Nxvl8FxivuQf5uho
-	ORvr/haCzFtY06hjngeXLjOVsSJAWof638iASEysMVk0xj5hKDZ6GpOcdD2LO90d/ovIaX96Yh7EP
-	h7WomHkf5uri/LnA41kA==;
+	List-Owner; bh=jIJ7cF1MFOhrhJkwCNfiAe3im4gfqExWEmWKn7mTB1E=; b=jrN8x98qgYpQhH
+	Bi9l7mfcuEAFHhQe2w92AT1A26wZ1/9+o52i/lI9aHTK7JuwcCHADhsq9egoI5gURlu65A+kDlWM6
+	RrVh50o2rZgiWDCJRIPYj2V4ZrpqBNPTLH9Iyykk0ZAa9522Gw1LpLwDnLFmGgMGjGWQSUVD0ztFt
+	sZ0/sP5qK3+WAmB15GBygTBI3prVKGT4VRoCXoFDsW34ZkjsEUlRCey+bLJA3epcMgIJXG70Wi2ZJ
+	DuplxkMIZVgFpsytlKEUN1qejPrhqPtWXgACzymcbYR8pa356+DMKwO3mxJESweyZ+OnVAJV3vxvm
+	6l4veXtKmr1WCmiQ+EkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfoZ7-005vCI-5X; Wed, 27 Oct 2021 19:26:25 +0000
-Received: from mail-yb1-f176.google.com ([209.85.219.176])
+	id 1mfpb0-00647V-3o; Wed, 27 Oct 2021 20:32:26 +0000
+Received: from mail-oo1-f47.google.com ([209.85.161.47])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfoFi-005n3L-EV; Wed, 27 Oct 2021 19:06:24 +0000
-Received: by mail-yb1-f176.google.com with SMTP id d204so8917600ybb.4;
- Wed, 27 Oct 2021 12:06:21 -0700 (PDT)
+ id 1mfpao-00645S-CY; Wed, 27 Oct 2021 20:32:15 +0000
+Received: by mail-oo1-f47.google.com with SMTP id
+ 64-20020a4a0d43000000b002b866fa13eeso1364754oob.2; 
+ Wed, 27 Oct 2021 13:32:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=twYyXM54JZtknY6kSlEQB2YIbHREslZxx1VWjQb9rKA=;
- b=VhRKTVnSoVwTjPFH9r9AYNubajwJi3l7Pheh33HNQMU58PrIMBFL23U71aS/mgzEEz
- BdBE22KRaNVgAEp3/E8b2eOs3DNq+ga3Tvm9WiWWy7xz/6j68BHDV9vX326W00Bj9/55
- JTtQ9+MWxCaRgI3YhY+YB3fH9oNcz241d+WZ35QvRmQSP4fK9dXmfSAfO0joJdBIxZMW
- pDKf5lxEuTdGSVCtJ52g3tj6nR/s83q86Dv7nIEmGEr7eTLbDSpR++IlqeC2Kw5+cj9Y
- 5/dHVKETrBuNQgprP0ZWdD9xcl0FRWhGK5gauGLyEKEfybM0l5NUcAWt5ovnF3tgtchy
- pT9g==
-X-Gm-Message-State: AOAM5321amkyfCpMO+pY0F8qSKcB12IhB33vy8XZfk0pnQIU9BFwg2hP
- jISaCOpo01VJ01lwf+bIcPbUN6OAVgDO1AWKu9oVy2lV
-X-Google-Smtp-Source: ABdhPJxwyoNvTjXEvWSwEzQkvS3twTW+fZkOH2aK+Tp8JKa7djpi/yo4glrydaOg6ed57ahTO8qmsT3UR7s8ZIDHGmY=
-X-Received: by 2002:a05:6830:1af0:: with SMTP id
- c16mr25814378otd.16.1635361244953; 
- Wed, 27 Oct 2021 12:00:44 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=dCyobkqZQkzSalEez4Iq0YBADjfjqmPa1gmyY2RxB7Y=;
+ b=8MRWymZXh5UT9hZ9MIqJ5s1iDtMBrjmoX7tU6luU5wb4UgVfrMxdjrc/MBxNaiA8M+
+ t4rT1z5d9Da+PpwX9Oc/MzA4gxuKFUlwkZ4FZ9ZjXJ8glNAnXrEE1zXqeOxw30+cg3B8
+ Bxn1bymYIkvItV/yvjfyYzsOzfijItmc5i8epjVoYV9lIPRk+aUIhCi8yFToR/vcufb9
+ gKVC+yjipaOqFljEQnx1Jh7gQifapmX0xSXN//h3xGQG0Zds9zUcQhimHSG7oMLU5+sx
+ +QbWDvMaMO0sX46/loNK/KNncozE8K14urUafw2522y1se1T2dsqWBOGBNN2KKZo8zul
+ uZJA==
+X-Gm-Message-State: AOAM531yHXOIxp/aghjXcggLQ0o9rChosrKr0dJ9L31p9klVGst/vNeo
+ BmTBYAF/RQ6rWMFPSFptNaVHW1vIHQ==
+X-Google-Smtp-Source: ABdhPJzr5mepQbrAdQc0r1ApS1sM4eCK0NSKmmtkdNXQ+AzNpWS64gF5Sod6uTlShQOc1t94rJ5iyQ==
+X-Received: by 2002:a4a:de10:: with SMTP id y16mr23677617oot.4.1635366733450; 
+ Wed, 27 Oct 2021 13:32:13 -0700 (PDT)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id d18sm364711ook.14.2021.10.27.13.32.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 27 Oct 2021 13:32:12 -0700 (PDT)
+Received: (nullmailer pid 2102331 invoked by uid 1000);
+ Wed, 27 Oct 2021 20:32:11 -0000
+Date: Wed, 27 Oct 2021 15:32:11 -0500
+From: Rob Herring <robh@kernel.org>
+To: Markus Schneider-Pargmann <msp@baylibre.com>
+Cc: Sam Ravnborg <sam@ravnborg.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-phy@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ Vinod Koul <vkoul@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v5 1/7] dt-bindings: mediatek,dpi: Add DP_INTF compatible
+Message-ID: <YXm3S4u8KAWjJfXy@robh.at.kernel.org>
+References: <20211021092707.3562523-1-msp@baylibre.com>
+ <20211021092707.3562523-2-msp@baylibre.com>
 MIME-Version: 1.0
-References: <20211025070155.2995-1-chunfeng.yun@mediatek.com>
- <CAJZ5v0gb6vN9kHeQbgjRQXvOCNaFK8ur7bLDeAVjDqdT2=a+-g@mail.gmail.com>
- <fba3246fbc600f06eb40e90283c1cd51bc259804.camel@mediatek.com>
-In-Reply-To: <fba3246fbc600f06eb40e90283c1cd51bc259804.camel@mediatek.com>
-From: "Rafael J. Wysocki" <rafael@kernel.org>
-Date: Wed, 27 Oct 2021 21:00:34 +0200
-Message-ID: <CAJZ5v0hnrr+ZidUMkN837utcKc6otmqaZ+uTX_xMukTUrdHLDQ@mail.gmail.com>
-Subject: Re: [PATCH v4 1/3] PM / wakeirq: support enabling wake-up irq after
- runtime_suspend called
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: "Rafael J. Wysocki" <rafael@kernel.org>, Len Brown <len.brown@intel.com>,
- Pavel Machek <pavel@ucw.cz>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mathias Nyman <mathias.nyman@intel.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Linux PM <linux-pm@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- "open list:ULTRA-WIDEBAND (UWB) SUBSYSTEM:" <linux-usb@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
- "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20211021092707.3562523-2-msp@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211027_120622_514339_A2BE763F 
-X-CRM114-Status: GOOD (  27.80  )
+X-CRM114-CacheID: sfid-20211027_133214_449217_7DB50659 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,57 +90,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Oct 27, 2021 at 11:34 AM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> On Tue, 2021-10-26 at 17:39 +0200, Rafael J. Wysocki wrote:
-> > On Mon, Oct 25, 2021 at 9:02 AM Chunfeng Yun <
-> > chunfeng.yun@mediatek.com> wrote:
-> > >
-> > > When the dedicated wake IRQ is level trigger, and it uses the
-> > > device's low-power status as the wakeup source, that means if the
-> > > device is not in low-power state, the wake IRQ will be triggered
-> > > if enabled; For this case, need enable the wake IRQ after running
-> > > the device's ->runtime_suspend() which make it enter low-power
-> > > state.
-> > >
-> > > e.g.
-> > > Assume the wake IRQ is a low level trigger type, and the wakeup
-> > > signal comes from the low-power status of the device.
-> > > The wakeup signal is low level at running time (0), and becomes
-> > > high level when the device enters low-power state (runtime_suspend
-> > > (1) is called), a wakeup event at (2) make the device exit low-
-> > > power
-> > > state, then the wakeup signal also becomes low level.
-> > >
-> > >                 ------------------
-> > >                |           ^     ^|
-> > > ----------------           |     | --------------
-> > >  |<---(0)--->|<--(1)--|   (3)   (2)    (4)
-> > >
-> > > if enable the wake IRQ before running runtime_suspend during (0),
-> > > a wake IRQ will arise, it causes resume immediately;
-> > > it works if enable wake IRQ ( e.g. at (3) or (4)) after running
-> > > ->runtime_suspend().
-> > >
-> > > This patch introduces a new status WAKE_IRQ_DEDICATED_REVERSE to
-> > > optionally support enabling wake IRQ after running
-> > > ->runtime_suspend().
-> > >
-> > > Suggested-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
-> > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> >
-> > I don't really have anything to add regarding the code.
-> >
-> > The kerneldoc comments could be improved, but I can take care of this
-> > when applying the patch.
-> Ok, thanks
-> >
-> > Please collect ACKs for the remaining 2 patches in the series and I
-> > will pick up all three.
-> The files (mtu3_plat.c, xhci-mtk.c) modified by other 2 patches are
-> maintained by myself, please pick up them, thanks a lot.
+On Thu, 21 Oct 2021 11:27:01 +0200, Markus Schneider-Pargmann wrote:
+> DP_INTF is similar to DPI but does not have the exact same feature set
+> or register layouts.
+> 
+> DP_INTF is the sink of the display pipeline that is connected to the
+> DisplayPort controller and encoder unit. It takes the same clocks as
+> DPI.
+> 
+> Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> ---
+> 
+> Notes:
+>     Changes v4 -> v5:
+>     - Newly created patch after realizing that the specific clocks for dpintf were
+>       the same as engine and pixel clocks.
+> 
+>  .../bindings/display/mediatek/mediatek,dpi.yaml       | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
 
-OK, applied as 5.16 material, thanks!
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
