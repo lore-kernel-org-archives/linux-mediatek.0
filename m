@@ -2,49 +2,50 @@ Return-Path: <SRS0=3cxa=PP=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 208E7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D00E1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:26:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id B30826023F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:25:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B30826023F
+	by mail.kernel.org (Postfix) with ESMTPS id 9C60661074
+	for <linux-mediatek@archiver.kernel.org>; Wed, 27 Oct 2021 02:26:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9C60661074
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W2k+Lu75n9HTtLOt2CB/OBcA4isDb0I863ILPH0u0k8=; b=zhJumD3pnqdyBS
-	Qg3H8Q1J3DzMXqKghiha5J579jE9dcdKn908HvuAhMKqriqeS1VWOVCbjjS6RdJgxby3yG/ikr1XU
-	y+KhOSCU6Y3NzN5iSMnnjg8UuNnCfmST6r+GeZXydd+S1MzENHwvpwq+xdQ56+S7D9XrJEPgncst0
-	GXkCmbKW8SxmgnzkQg4iTUOPZuO6omK7JxY+75oAOkT6onQIrJnJZvSSWWexkV1mnDAOvU18vuYI/
-	BTiW5oveKlwjZYfUuRdex5/W6Ffw5OLIGViRGzc/qb5JsuKR6qVojyeX51Rj+DsgkXgLSLds/j+Qp
-	qWj0aFQyaqpv+EPVbyjw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EOuM+00JfeOZMVlBbkwzUoT5NNBqVzTKH+XO9mSILDo=; b=0HLjp63RVkn4tN
+	dzt9PqxzGXTOIE9Oe0VpyKbLu+n1r/NxmuffJBmK+aWRdd7IFciG8ENf9+Y6IuwZh6WYv+2hTBF8l
+	NYPAXx+irLv/VmgGG5wQ2ZLwZR6EEjS+HWj5ORoIERDv1+icjtlmjE2RyN8cDbjdLvsn5W9rptXmO
+	ryjFLIKzhDlVVnXiE2K6RDLWuFtBZJpnokchFHGvq5EGW8S3IplKMnY2pbBzT6vse++d1Oixe5bah
+	XpQm0+Q+PSoNouieUryeVoH8VHwskCxZKYyBLslnu1gfajlIjC7102Il1iB+RA0qtZiqDC2YJcIZa
+	2bS3uj6SBZNyxbp0hKPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mfYdO-003ahi-3O; Wed, 27 Oct 2021 02:25:46 +0000
+	id 1mfYdf-003apv-13; Wed, 27 Oct 2021 02:26:03 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mfYcy-003ac6-MQ; Wed, 27 Oct 2021 02:25:23 +0000
-X-UUID: 56dcd5efec6444c387e0bb08ecb10b99-20211026
-X-UUID: 56dcd5efec6444c387e0bb08ecb10b99-20211026
+ id 1mfYd1-003ac6-Ge; Wed, 27 Oct 2021 02:25:24 +0000
+X-UUID: 425e0f087cb54f58abd8dbe22a5fb6f9-20211026
+X-UUID: 425e0f087cb54f58abd8dbe22a5fb6f9-20211026
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1700360058; Tue, 26 Oct 2021 19:25:15 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 558072761; Tue, 26 Oct 2021 19:25:15 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 26 Oct 2021 19:19:02 -0700
+ 15.0.1497.2; Tue, 26 Oct 2021 19:19:00 -0700
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 27 Oct 2021 10:19:00 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 27 Oct 2021 10:18:59 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 27 Oct 2021 10:19:00 +0800
+ Frontend Transport; Wed, 27 Oct 2021 10:18:59 +0800
 From: jason-jh.lin <jason-jh.lin@mediatek.com>
 To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, "Jassi
@@ -55,18 +56,16 @@ CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
  <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <hsinyi@chromium.org>, <fshao@chromium.org>, <nancy.lin@mediatek.com>,
  <singo.chang@mediatek.com>
-Subject: [PATCH v5 6/6] drm/mediatek: Clear pending flag when cmdq packet is
- done
-Date: Wed, 27 Oct 2021 10:18:57 +0800
-Message-ID: <20211027021857.20816-7-jason-jh.lin@mediatek.com>
+Subject: [PATCH v5 0/6] CMDQ refinement of Mediatek DRM driver
+Date: Wed, 27 Oct 2021 10:18:51 +0800
+Message-ID: <20211027021857.20816-1-jason-jh.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211027021857.20816-1-jason-jh.lin@mediatek.com>
-References: <20211027021857.20816-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211026_192520_751765_2C1FE9B4 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20211026_192523_571878_63CFC33E 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,105 +82,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Yongqiang Niu <yongqiang.niu@mediatek.com>
+These refinements include using standard mailbox callback interface,
+timeout detection, and a fixed cmdq_handle.
 
-In cmdq mode, packet may be flushed before it is executed, so
-the pending flag should be cleared after cmdq packet is done.
+Change in v5:
+1. Move mbox_free_channel to a independent patch.
 
-Signed-off-by: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 51 ++++++++++++++++++++++---
- 1 file changed, 46 insertions(+), 5 deletions(-)
+Change in v4:
+1. Add cmdq_vblank_cnt initial value to 3.
+2. Move mtk_drm_cmdq_pkt_create to the same define scope with
+   mtk_drm_cmdq_pkt_destroy.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 31f05efc1bc0..ea285795776f 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -275,8 +275,42 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
- static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
- {
-+	struct cmdq_cb_data *data = mssg;
- 	struct cmdq_client *cmdq_cl = container_of(cl, struct cmdq_client, client);
- 	struct mtk_drm_crtc *mtk_crtc = container_of(cmdq_cl, struct mtk_drm_crtc, cmdq_client);
-+	struct mtk_crtc_state *state;
-+	unsigned int i;
-+
-+	if (data->sta < 0)
-+		return;
-+
-+	state = to_mtk_crtc_state(mtk_crtc->base.state);
-+
-+	state->pending_config = false;
-+
-+	if (mtk_crtc->pending_planes) {
-+		for (i = 0; i < mtk_crtc->layer_nr; i++) {
-+			struct drm_plane *plane = &mtk_crtc->planes[i];
-+			struct mtk_plane_state *plane_state;
-+
-+			plane_state = to_mtk_plane_state(plane->state);
-+
-+			plane_state->pending.config = false;
-+		}
-+		mtk_crtc->pending_planes = false;
-+	}
-+
-+	if (mtk_crtc->pending_async_planes) {
-+		for (i = 0; i < mtk_crtc->layer_nr; i++) {
-+			struct drm_plane *plane = &mtk_crtc->planes[i];
-+			struct mtk_plane_state *plane_state;
-+
-+			plane_state = to_mtk_plane_state(plane->state);
-+
-+			plane_state->pending.async_config = false;
-+		}
-+		mtk_crtc->pending_async_planes = false;
-+	}
- 
- 	mtk_crtc->cmdq_vblank_cnt = 0;
- }
-@@ -432,7 +466,8 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc,
- 				    state->pending_vrefresh, 0,
- 				    cmdq_handle);
- 
--		state->pending_config = false;
-+		if (!cmdq_handle)
-+			state->pending_config = false;
- 	}
- 
- 	if (mtk_crtc->pending_planes) {
-@@ -452,9 +487,12 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc,
- 				mtk_ddp_comp_layer_config(comp, local_layer,
- 							  plane_state,
- 							  cmdq_handle);
--			plane_state->pending.config = false;
-+			if (!cmdq_handle)
-+				plane_state->pending.config = false;
- 		}
--		mtk_crtc->pending_planes = false;
-+
-+		if (!cmdq_handle)
-+			mtk_crtc->pending_planes = false;
- 	}
- 
- 	if (mtk_crtc->pending_async_planes) {
-@@ -474,9 +512,12 @@ static void mtk_crtc_ddp_config(struct drm_crtc *crtc,
- 				mtk_ddp_comp_layer_config(comp, local_layer,
- 							  plane_state,
- 							  cmdq_handle);
--			plane_state->pending.async_config = false;
-+			if (!cmdq_handle)
-+				plane_state->pending.async_config = false;
- 		}
--		mtk_crtc->pending_async_planes = false;
-+
-+		if (!cmdq_handle)
-+			mtk_crtc->pending_async_planes = false;
- 	}
- }
- 
+Change in v3:
+1. Revert "drm/mediatek: clear pending flag when cmdq packet is done"
+   and add it after the CMDQ refinement patches.
+2. Change the remove of struct cmdq_client to remove the pointer of
+   struct cmdq_client.
+3. Fix pkt buf alloc once but free many times.
+
+Changes in v2:
+1. Define mtk_drm_cmdq_pkt_create() and mtk_drm_cmdq_pkt_destroy()
+   when CONFIG_MTK_CMDQ is reachable.
+
+Chun-Kuang Hu (4):
+  drm/mediatek: Use mailbox rx_callback instead of cmdq_task_cb
+  drm/mediatek: Remove the pointer of struct cmdq_client
+  drm/mediatek: Detect CMDQ execution timeout
+  drm/mediatek: Add cmdq_handle in mtk_crtc
+
+Yongqiang Niu (1):
+  drm/mediatek: Clear pending flag when cmdq packet is done.
+
+jason-jh.lin (1):
+  drm/mediatek: Add mbox_free_channel in mtk_drm_crtc_destroy
+
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 174 ++++++++++++++++++++----
+ 1 file changed, 150 insertions(+), 24 deletions(-)
+
 -- 
 2.18.0
 
