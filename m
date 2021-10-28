@@ -1,13 +1,13 @@
 Return-Path: <SRS0=IDfX=PQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 42544C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 13:06:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7EE9BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 13:07:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E173360FC4
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 13:06:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E173360FC4
+	by mail.kernel.org (Postfix) with ESMTPS id 234B160FC4
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 13:07:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 234B160FC4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -16,58 +16,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UCIrj1paUEVXX92rphQ9z9FUPHfRAGSsZUK/jZ9BZNA=; b=esf+kZUf8g4W2V
-	ro/zLfbuGZcgYwnFtCp5+pgKoOe76P4imwKvhQWxrc+J236UgfJ221V10PkNCBc+MlRqd1kau76LH
-	DIoDl37j+WFoyMdfvtDK7vVLffR3RKWc2t/PDz/YQKsKKXdfx+A1JS47YKQmnKSu0j27sMg//AIO7
-	hYB0wjMHvJTRzVp1BXusR2EPQ0zyE7TSByMsL/REnZMALf4a9/W7LoMol0RDM58NjxTXTDOqtLb7p
-	QSXNln3+OxZXTOnbYmbfCqXbS6HveC6aKbnN8gaEYmJm+HOjXYpaeDUE1faVFwVhXcxiMMo/AzZdd
-	bc5aJu78bsW/3mYQavcQ==;
+	List-Owner; bh=IRO/R5QsRh8c7c5qiDuGvMhAXqP1qWad1DkKXvS7tJA=; b=xcj3TtArjgscDC
+	nG29eZhliqVj2Qmzp8oe2oUbKaAuW0IKaSQP957cTsKreN2Mv+nYsIUUAKF9ZuTFJMrh+riIbTf5V
+	mt+95Ap57ZBJezXZgbWfKeS3U3UrCZ6MfkswADOUxPfaSq6d7eMAYGFTZkABafNLlB9sEp9L8h7DV
+	Q+/WL4QwznB8mPKjHuPo5/gxiL0+dz0aQbV9f5BBGOMhI1QJKBwdxMhzgnWNd8x6Aayqc0YKVlzvN
+	MAG6GtGfbVrcor/kaq0gmjZcGOH/2h3T48oJz2fit83Nuy51tgs9n2d1fbIETi61HBqFUOWFNTGEc
+	ytZ7REGIXwoIo/wj4PDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mg56u-007t2z-1K; Thu, 28 Oct 2021 13:06:24 +0000
+	id 1mg57h-007tEd-Sz; Thu, 28 Oct 2021 13:07:13 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mg56r-007t2n-25
- for linux-mediatek@lists.infradead.org; Thu, 28 Oct 2021 13:06:21 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id EE76661056
- for <linux-mediatek@lists.infradead.org>; Thu, 28 Oct 2021 13:06:19 +0000 (UTC)
+ id 1mg57e-007tDq-Ll; Thu, 28 Oct 2021 13:07:11 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 1035961108;
+ Thu, 28 Oct 2021 13:07:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1635426380;
- bh=piI8q/43LZW/klXY1Unv1i5C4cH6urJEUa4I31oVISs=;
+ s=k20201202; t=1635426430;
+ bh=+RBgT+5Yzgd2E43NJuMn0yUDqBQ/QXV4p0wq3k9XWq0=;
  h=References:In-Reply-To:From:Date:Subject:To:List-Id:Cc:From;
- b=mEmHOGB9qgc+4sStqXc6aoZ5Py5loLVnhX6gJ/76stNs3Z/u8M9nJsxqSucP2CsA8
- hK+4KG5l1/Z0g9077Y89qZU+mvY3XXnVUL8MbLcC2PVBkU237GM52sPK/Q4rnXBISX
- Dkq5y/ROHt5D0Bzp2gsFmllTbnM835U7AO2DFUNIKkZSQIOudMjEQNkQ+cJXaXGm2f
- QqDmKdXtKBHCeuBD95pHv1T8SYhFpkwBLV/FEqn6RtYkTxXwKZYQKdxRpzxQseObBt
- us1RXmeRPuOo6EFuHY5OHu2KoXv2VhNTAAd1RwzIw0IQPrUBnHS1QFv87aLsOyqcwf
- koogypbJ4H/ug==
-Received: by mail-io1-f42.google.com with SMTP id g8so6653814iob.10
- for <linux-mediatek@lists.infradead.org>; Thu, 28 Oct 2021 06:06:19 -0700 (PDT)
-X-Gm-Message-State: AOAM532CbgalmTi35DVnbajwCEzJH5/b6KlOrpyVyoqxBiCn0wQkOjID
- qUTYHnyvNsYf4mLkdLhqsZLitPwV7u691hU8Uzg=
-X-Google-Smtp-Source: ABdhPJzTn5P6a64sHUdhclVfr4RKIF7GaGX2x9uwVyWetAFfCq3olPn2HIHBIVVbPG/3RTmbFxF/9AxI2cg8HMQ+Sp8=
-X-Received: by 2002:a5d:9d46:: with SMTP id k6mr2916935iok.55.1635426377849;
- Thu, 28 Oct 2021 06:06:17 -0700 (PDT)
+ b=k9cenv0WuN7mh89+tH0usY/Xn76iRmrjCX/vBejtS1KLt77tutdtU87H/X+DAJWGJ
+ ERJ8V46UyJbsQyMbik04Cq+FSEAkgtHQiN4e/K5D/GV+KMbwhvUChBq72zDGKCitTs
+ 4Et5m8o0JpMYCKdGb44cpJT7Dnl9sP0iiDofjaYdbN6vUyEX/Fk3Norq8arfo+S8PS
+ /gPtNVyFKCctq4uWtezAqTXo1SkMggi+6Ayu0OfBz2R7RQvYdgv37+rMTMjbTylflI
+ VNhJrnVpeCtmPb0FDRJO01g5M9KCU0iEDhi1U1gXcWFyBcuWcFNx1EL3vOnWxidf7E
+ ibWH1Twsrrw4g==
+Received: by mail-io1-f45.google.com with SMTP id p8so1473390iod.8;
+ Thu, 28 Oct 2021 06:07:10 -0700 (PDT)
+X-Gm-Message-State: AOAM532H8HdHDKuh1R7WO8KFHTExdhVueQQicDNbERdk6uS+XJcod+4U
+ YVdl0vlWDIm+1bTJ7tnrC2U+xDjo+OCe3pbtUg4=
+X-Google-Smtp-Source: ABdhPJwg+Dt4o8C4wQfWV//PnGWK1qCndqVyF5U9iq9lUq+cAHmZ/1T91CUhyeEQKPLSnoXX5sBC/01VNLQ5Nz7qEMM=
+X-Received: by 2002:a05:6602:2dca:: with SMTP id
+ l10mr2868540iow.175.1635426428008; 
+ Thu, 28 Oct 2021 06:07:08 -0700 (PDT)
 MIME-Version: 1.0
-References: <20211027141325.27962-1-mark-yw.chen@mediatek.com>
-In-Reply-To: <20211027141325.27962-1-mark-yw.chen@mediatek.com>
+References: <0e00e3373c86efae0d8c1dbd3eb2ecf81a239079.1635372703.git.objelf@gmail.com>
+In-Reply-To: <0e00e3373c86efae0d8c1dbd3eb2ecf81a239079.1635372703.git.objelf@gmail.com>
 From: Josh Boyer <jwboyer@kernel.org>
-Date: Thu, 28 Oct 2021 09:06:04 -0400
-X-Gmail-Original-Message-ID: <CA+5PVA5spkA6xmiiymHr9Gef_jOfbjMm+jhgrdzHqp=Mu4Se8Q@mail.gmail.com>
-Message-ID: <CA+5PVA5spkA6xmiiymHr9Gef_jOfbjMm+jhgrdzHqp=Mu4Se8Q@mail.gmail.com>
-Subject: Re: [PATCH] linux-firmware: update frimware for mediatek bluetooth
- chip (MT7921)
-To: Mark-YW Chen <mark-yw.chen@mediatek.com>
+Date: Thu, 28 Oct 2021 09:06:54 -0400
+X-Gmail-Original-Message-ID: <CA+5PVA6HDD0_aprSvWSYsYthjBYTwOf6z3kALT6E3a32oQFptg@mail.gmail.com>
+Message-ID: <CA+5PVA6HDD0_aprSvWSYsYthjBYTwOf6z3kALT6E3a32oQFptg@mail.gmail.com>
+Subject: Re: [PATCH] linux-firmware: Update firmware for MT7921 BT device to
+ 20211018131102
+To: Sean Wang <sean.wang@mediatek.com>
 List-Id: <linux-firmware.lore.kernel.org>
-Cc: Marcel Holtmann <marcel@holtmann.org>,
- Johan Hedberg <johan.hedberg@gmail.com>, 
- BlueZ development <linux-bluetooth@vger.kernel.org>, 
+Cc: David Woodhouse <dwmw2@infradead.org>, Ben Hutchings <ben@decadent.org.uk>,
+ Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>,
+ Mark-YW Chen <Mark-YW.Chen@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, 
+ Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, 
+ CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, 
+ Eric Liang <Eric.Liang@mediatek.com>, Tom.Chou@mediatek.com,
+ steve.lee@mediatek.com, Linux Firmware <linux-firmware@kernel.org>, 
+ BlueZ development <linux-bluetooth@vger.kernel.org>,
+ linux-arm-kernel@lists.infradead.org, 
  linux-mediatek <linux-mediatek@lists.infradead.org>, 
  "Linux-Kernel@Vger. Kernel. Org" <linux-kernel@vger.kernel.org>,
- Linux Firmware <linux-firmware@kernel.org>, 
- koro.chen@mediatek.com, will-cy.lee@mediatek.com
-X-Spam-Note: CRM114 run bypassed due to message size (1032940 bytes)
-X-Spam-Note: SpamAssassin run bypassed due to message size (1032940 bytes)
+ Sean Wang <objelf@gmail.com>
+X-Spam-Note: CRM114 run bypassed due to message size (1033384 bytes)
+X-Spam-Note: SpamAssassin run bypassed due to message size (1033384 bytes)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,31 +90,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Applied and pushed out.
+Mark sent a different patch for the same file.  I just applied it and
+pushed it out.
 
 josh
 
-On Wed, Oct 27, 2021 at 10:13 AM <mark-yw.chen@mediatek.com> wrote:
+On Wed, Oct 27, 2021 at 6:33 PM <sean.wang@mediatek.com> wrote:
 >
-> From: "mark-yw.chen" <mark-yw.chen@mediatek.com>
+> From: Sean Wang <objelf@gmail.com>
 >
 > Update binary firmware for MT7921 BT devices.
-> * Fix wmt func ctrl issue.
 >
 > File: mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
 > Version: 20211018131102
 >
-> Signed-off-by: mark-yw.chen <mark-yw.chen@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 > ---
 >  WHENCE                                  |   2 +-
 >  mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin | Bin 518830 -> 518062 bytes
 >  2 files changed, 1 insertion(+), 1 deletion(-)
 >
 > diff --git a/WHENCE b/WHENCE
-> index 8e3cba6..693a835 100644
+> index 5e89106..2e8e82d 100644
 > --- a/WHENCE
 > +++ b/WHENCE
-> @@ -5196,7 +5196,7 @@ Licence: Redistributable. See LICENCE.mediatek for details.
+> @@ -5202,7 +5202,7 @@ Licence: Redistributable. See LICENCE.mediatek for details.
 >  Driver: mt7921 - MediaTek MT7921 bluetooth chipset
 >
 >  File: mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
@@ -15047,7 +15053,7 @@ On Wed, Oct 27, 2021 at 10:13 AM <mark-yw.chen@mediatek.com> wrote:
 > Cu_ZhJ
 >
 > --
-> 2.18.0
+> 2.25.1
 >
 
 _______________________________________________
