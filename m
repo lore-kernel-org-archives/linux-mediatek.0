@@ -2,15 +2,15 @@ Return-Path: <SRS0=IDfX=PQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C6128C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 09:59:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07C9CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 10:01:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 60141610D2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 09:59:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 60141610D2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id BFCAB610D2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 10:01:34 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BFCAB610D2
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -18,74 +18,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hLeAkrFHF1lGttbs2F/ulFyzFna/HjaixsqQeiTaLyI=; b=0m+NlGxNYcCRgu
-	Wg1qx+vSgsARqqEoHchufSyNWO31eeea9lIDBkNeUBdcL7lOgUrfe3m5qzuBuO9q8tCeStT3n1g84
-	k0eRlKhOcMPZWJMGMP9BtWQrFpErjJgKGNSGU8Z4/NJKdelumqnTRuftjt+VHurrJYRhzJQllsKri
-	lYeClHM3CvKDHKzO9z0rPV4ownW21xHYASxf7yn1DwCoErQzJqSKTkDWfJLiQJEQjCXEvDuLnxfm4
-	Dnu9+FYG2jBn0x69yqQ8MuYFd7VNOeYGPYntrTOfHo2LEwM/YoXV62FVi0bmuS+BTFDBtAbjsuOkS
-	NcPeGdWpXoC0JlqWIDNA==;
+	List-Owner; bh=/MrP7isxO6cbUg5CH/fa1EiVHZ66NBbZLK4P+PTvMo0=; b=zUJSV616/js/w2
+	NV+GtVNmEYtijupM+ZTBiUVov0hLq2iuP6u4gvMDQUjSTpows7AuAzdsYjaOL7FIsSEmphrxB4wkH
+	p+pT6MSlU+iPpfHI8M4BBQlPtaIPC3p74kWn5JatmyIJnJH54SNFF9p0XGpapYn5aj1pmTCP12YlA
+	r18j/uXhEuNa8e6b1xwhTk/a65VKHcFA5BnS32xrNf129uDHYVrvdtWv5r1Mlcr2MyjE99lLaJXiR
+	kx6AxryJmqpfWOVgDphn/Z0zUNq4zmyd1wJ8rIp59fyKa0qtqJRQkYFoBXMyfsOo3/8ZJ0vmzNblN
+	HwReHc3n3SymeGsSko1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mg2CE-007SNU-Bs; Thu, 28 Oct 2021 09:59:42 +0000
-Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
+	id 1mg2Dq-007SmH-UI; Thu, 28 Oct 2021 10:01:22 +0000
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mg2C1-007SLR-LJ; Thu, 28 Oct 2021 09:59:31 +0000
-Received: by mail-ua1-x934.google.com with SMTP id z22so8053835uaq.12;
- Thu, 28 Oct 2021 02:59:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ id 1mg2Dc-007Sgg-V7
+ for linux-mediatek@lists.infradead.org; Thu, 28 Oct 2021 10:01:10 +0000
+Received: by mail-lj1-x234.google.com with SMTP id u5so9689674ljo.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 28 Oct 2021 03:01:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HGGQ7RqFpKeC9CxBW+k8kpLsGeNQocDgaLhurL7DcEI=;
- b=WizV7VgtkLy3fe2e0o1pfzbFecHihzXI0Id4xUaMYbtMTOAMqXIFLdyS9M2duUuMz3
- r4sFwt/CYjnK4bgu+1DyEQBwyR7Q70aPYhsqJjPF996z3shUdkBl967YF0ymWY+a448g
- RTpxrT300XgMMtmHX6u+JD3WXsmClh4yO8nD24YFkfG5hM9kBja7+RxxEAHj7KT+s3in
- OYXDsbbCrU723hxPx87IcrPx+np95xU3p5LQWXav9tDIgrBgEPuXZ2+tr8maaJwA2H51
- q9DJ/uCnkinwqQzQ+hi9u5xE13GOCSClyqmv5hLl+X8gb6qnnZB59b1sNvh6/EGc+1+C
- oNiw==
+ :cc; bh=fSUUXSAFp+U/pzk0ZFFpNl+pmZUQiHZI7Km2UPBgzxo=;
+ b=pyIEuQfNSMvWaNLN4sXO6MGPdFJpMAFX/V8Vn8qMhLNzrgXfippjXKeKDerh0YjsyA
+ 5zJn7MNZHNZ1qb/mkLWiMtNDvLViR3JI/44RxloJPwcBxfyqdZ+YZn3XtnjbxEnWdeCF
+ oH4tqXjy1QIcOtTY6iBFWJaSihr9CGTa7luZZEOj6Fp6qgzZR8vMz4o3Zt/HfvVvazNY
+ g8Wy5QOhBD0LdnPBnL2ZlFko2KwmA+VfMcCgLZeImT46c2F5ifBBlsf4f/hXLAKLaINP
+ RhDXWzKBA/GH1ZdLCh/odbLVryNdOWeYi6/0z0cGAHJL2ZBOOrdQrNH8qqGkstHdDf4m
+ NQoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=HGGQ7RqFpKeC9CxBW+k8kpLsGeNQocDgaLhurL7DcEI=;
- b=R5j24FlEN4t79E5hUKH3rf2ek5ePJAZvuk0r22QBArCle0Bof6bscd3NiiUnCzYe41
- DZcLgZ2vGfAUF/1XlAGP0iZsos3IwJzymEaVnTJyMnOh/hRI/KYcMTjZVsugRQ2k/han
- 48lqoqsvCfluBM5UIWa6ywVNeQYIAVmQbZjTpDAwBASk37t/uL7w3sSNAzqTJS6eZf1F
- jNIzqonC8SySx24sinHpxVSVT46oy1WT1fP456UauZ7moBgNIqUZv60Bs4xngKDjjOaL
- qxP9NvzkXWelChy0dinZI80Naf/lr3NkaTcTQ/SEED5b1aNjhNRyNRBLv874EmLl8MVC
- wTIw==
-X-Gm-Message-State: AOAM531N1iFMhChXxpuuQSmaIm/b1nbvlNmqx7sDkG0Zwi+MPZDA1d3d
- cLV41adp0dgPbQ2IOwqgatO8nq9x8CiYcxb9nVE=
-X-Google-Smtp-Source: ABdhPJzrE18emHRymB8uKvYxaQU2LsVWX8ihdn4v4ExoK4X3tzhQ0bdB6x4Z47vqjrm3sGQ67yZI4DOVVN9myD89gWE=
-X-Received: by 2002:ab0:3cab:: with SMTP id a43mr3208667uax.98.1635415168662; 
- Thu, 28 Oct 2021 02:59:28 -0700 (PDT)
+ bh=fSUUXSAFp+U/pzk0ZFFpNl+pmZUQiHZI7Km2UPBgzxo=;
+ b=y+ZRcKDyhRp4Z5awZPhdTBa5QpQ1p22vuWgmLRro4Tu1XvO56Jm4GCqFe+oFOOJFdd
+ QEUqHeg4IMvxKopFqbZePCg28AlZje6IDm1YBGCBsfevfyKpdAjrfKA9jZ85yz0eLMaL
+ qkzDN9h+fIqkTX4gn3IqmrjM2OvRO3KgPpE8mgM+mTsuz2c4UgC553vmHPBC6ypGc6+e
+ mazEobIfG0B+Z8dhF03eUggc8XzQniQv6ADLUaO8ErQx6xk1NRIXY38t6tgjCJaxk/f3
+ saTtYGBQE7U8+8Jfsfa3CX/CSAsMAnsiwvvHW1HVeXaKhzsS8uLIl0GT0f6Iid66rUmc
+ sMuw==
+X-Gm-Message-State: AOAM532u8hwZnqhEm9n61ZUmtcmknO6XjVB4nPC277vKrN8hzzEu042T
+ 4bgcvpmA8uX1cKQL4Iwmul9x6pzm04kL1EcgQu1y4w==
+X-Google-Smtp-Source: ABdhPJxluntOhxdxK38z3qCSthne3EvWdVhekoNo1AufTq1f5b0lSX4qPbjRU8qzy2AYU+QFtnq4Te9kDWr177reDPc=
+X-Received: by 2002:a05:651c:907:: with SMTP id
+ e7mr3774078ljq.300.1635415267227; 
+ Thu, 28 Oct 2021 03:01:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <cover.1635390750.git.siyanteng@loongson.cn>
- <112fea0c8c1b65a762ac98412216239160721263.1635390750.git.siyanteng@loongson.cn>
- <CAMhs-H9LUQ6Km=sA992LH=+E0MbGuMf9YhM6w2HoyeqE0QbzJQ@mail.gmail.com>
- <20211028092318.GA6574@alpha.franken.de>
- <CAMhs-H_m=pz4jU_cY-A6PRjR3OYy2zKH0=HN=vFDF2XOk60xBg@mail.gmail.com>
-In-Reply-To: <CAMhs-H_m=pz4jU_cY-A6PRjR3OYy2zKH0=HN=vFDF2XOk60xBg@mail.gmail.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Thu, 28 Oct 2021 11:59:17 +0200
-Message-ID: <CAMhs-H8HoO7dsfiTFaTRie1-DB-DF5st-gFmS=AF2tfHP_gsVw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] MIPS: cm/cpc: export some missing symbols to be
- able to use them from driver code
-To: Thomas Bogendoerfer <tsbogend@alpha.franken.de>
-Cc: Yanteng Si <siyanteng01@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- bcm-kernel-feedback-list@broadcom.com, Yanteng Si <siyanteng@loongson.cn>, 
- Stephen Rothwell <sfr@canb.auug.org.au>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
- Rob Herring <robh@kernel.org>, kw@linux.com,
- Bjorn Helgaas <bhelgaas@google.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- linux-pci <linux-pci@vger.kernel.org>, linux-arm-kernel@lists.infradead.org, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:MIPS" <linux-mips@vger.kernel.org>, chenhuacai@kernel.org,
- sterlingteng@gmail.com, 
- Linux Next Mailing List <linux-next@vger.kernel.org>
+References: <20211028022049.22129-1-wenbin.mei@mediatek.com>
+In-Reply-To: <20211028022049.22129-1-wenbin.mei@mediatek.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 28 Oct 2021 12:00:30 +0200
+Message-ID: <CAPDyKFpcPDKmL-MCsXssX2ABVQ3LnMQVM+pG1=z68_b4d6bPBA@mail.gmail.com>
+Subject: Re: [PATCH] mmc: mediatek: move cqhci init behind ungate clock
+To: Wenbin Mei <wenbin.mei@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, 
+ Chun-Hung Wu <chun-hung.wu@mediatek.com>, Yong Mao <yong.mao@mediatek.com>, 
+ linux-mmc@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ srv_heupstream@mediatek.com, stable@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211028_025929_745334_C447C231 
-X-CRM114-Status: GOOD (  27.12  )
+X-CRM114-CacheID: sfid-20211028_030109_013193_CBA2E28B 
+X-CRM114-Status: GOOD (  16.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,63 +92,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 28, 2021 at 11:34 AM Sergio Paracuellos
-<sergio.paracuellos@gmail.com> wrote:
+On Thu, 28 Oct 2021 at 04:20, Wenbin Mei <wenbin.mei@mediatek.com> wrote:
 >
-> Hi Thomas,
+> We must enable clock before cqhci init, because crypto needs
+> read information from CQHCI registers, otherwise, it will hang
+> in MediaTek mmc host controller.
 >
-> On Thu, Oct 28, 2021 at 11:24 AM Thomas Bogendoerfer
-> <tsbogend@alpha.franken.de> wrote:
-> >
-> > On Thu, Oct 28, 2021 at 06:11:18AM +0200, Sergio Paracuellos wrote:
-> > > On Thu, Oct 28, 2021 at 6:05 AM Yanteng Si <siyanteng01@gmail.com> wrote:
-> > > >
-> > > > Since commit 2bdd5238e756 ("PCI: mt7621: Add MediaTek MT7621 PCIe host controller driver")
-> > > > the MT7621 PCIe host controller driver is built as a module but modpost complains once these
-> > > > drivers become modules.
-> > > >
-> > > > ERROR: modpost: "mips_cm_unlock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > ERROR: modpost: "mips_cpc_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > ERROR: modpost: "mips_cm_lock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > ERROR: modpost: "mips_cm_is64" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > ERROR: modpost: "mips_gcr_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > >
-> > > > Let's just export them.
-> > > >
-> > > > Signed-off-by: Yanteng Si <siyanteng@loongson.cn>
-> > > > ---
-> > > >  arch/mips/kernel/mips-cm.c  | 5 +++++
-> > > >  arch/mips/kernel/mips-cpc.c | 1 +
-> > > >  2 files changed, 6 insertions(+)
-> > > >
-> > >
-> > > Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> >
-> > could we instead make the pcie-mt761 driver non modular ? Exporting
-> > all MIPS specific stuff for just making an essential driver modular
-> > doesn't IMHO make much sense.
->
-> The driver is modular because I have been advised other times that new
-> drivers should be able to be compiled as modules and we should avoid
-> using 'bool' in Kconfig for new drivers. That's the only reason. I am
-> also always including as 'y' the driver since for me not having pci in
-> my boards has no sense... I am ok in changing Kconfig to be 'bool'
-> instead of 'tristate', but I don't know what should be the correct
-> thing to do in this case. Thoughts?
+> Signed-off-by: Wenbin Mei <wenbin.mei@mediatek.com>
+> Fixes: 88bd652b3c74 ("mmc: mediatek: command queue support")
+> Cc: stable@vger.kernel.org
 
-I guess we also want the driver to at least be compile tested in
-'allmodconfig' and other similars...
+Applied for fixes, thanks!
 
+Kind regards
+Uffe
+
+
+> ---
+>  drivers/mmc/host/mtk-sd.c | 38 +++++++++++++++++++-------------------
+>  1 file changed, 19 insertions(+), 19 deletions(-)
 >
-> Best regards,
->     Sergio Paracuellos
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index b124cfee05a1..943940b44e83 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -2656,6 +2656,25 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>                 host->dma_mask = DMA_BIT_MASK(32);
+>         mmc_dev(mmc)->dma_mask = &host->dma_mask;
 >
-> >
-> > Thomas.
-> >
-> > --
-> > Crap can work. Given enough thrust pigs will fly, but it's not necessarily a
-> > good idea.                                                [ RFC1925, 2.3 ]
+> +       host->timeout_clks = 3 * 1048576;
+> +       host->dma.gpd = dma_alloc_coherent(&pdev->dev,
+> +                               2 * sizeof(struct mt_gpdma_desc),
+> +                               &host->dma.gpd_addr, GFP_KERNEL);
+> +       host->dma.bd = dma_alloc_coherent(&pdev->dev,
+> +                               MAX_BD_NUM * sizeof(struct mt_bdma_desc),
+> +                               &host->dma.bd_addr, GFP_KERNEL);
+> +       if (!host->dma.gpd || !host->dma.bd) {
+> +               ret = -ENOMEM;
+> +               goto release_mem;
+> +       }
+> +       msdc_init_gpd_bd(host, &host->dma);
+> +       INIT_DELAYED_WORK(&host->req_timeout, msdc_request_timeout);
+> +       spin_lock_init(&host->lock);
+> +
+> +       platform_set_drvdata(pdev, mmc);
+> +       msdc_ungate_clock(host);
+> +       msdc_init_hw(host);
+> +
+>         if (mmc->caps2 & MMC_CAP2_CQE) {
+>                 host->cq_host = devm_kzalloc(mmc->parent,
+>                                              sizeof(*host->cq_host),
+> @@ -2676,25 +2695,6 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>                 mmc->max_seg_size = 64 * 1024;
+>         }
+>
+> -       host->timeout_clks = 3 * 1048576;
+> -       host->dma.gpd = dma_alloc_coherent(&pdev->dev,
+> -                               2 * sizeof(struct mt_gpdma_desc),
+> -                               &host->dma.gpd_addr, GFP_KERNEL);
+> -       host->dma.bd = dma_alloc_coherent(&pdev->dev,
+> -                               MAX_BD_NUM * sizeof(struct mt_bdma_desc),
+> -                               &host->dma.bd_addr, GFP_KERNEL);
+> -       if (!host->dma.gpd || !host->dma.bd) {
+> -               ret = -ENOMEM;
+> -               goto release_mem;
+> -       }
+> -       msdc_init_gpd_bd(host, &host->dma);
+> -       INIT_DELAYED_WORK(&host->req_timeout, msdc_request_timeout);
+> -       spin_lock_init(&host->lock);
+> -
+> -       platform_set_drvdata(pdev, mmc);
+> -       msdc_ungate_clock(host);
+> -       msdc_init_hw(host);
+> -
+>         ret = devm_request_irq(&pdev->dev, host->irq, msdc_irq,
+>                                IRQF_TRIGGER_NONE, pdev->name, host);
+>         if (ret)
+> --
+> 2.25.1
+>
 
 _______________________________________________
 Linux-mediatek mailing list
