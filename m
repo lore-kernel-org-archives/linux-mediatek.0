@@ -2,69 +2,90 @@ Return-Path: <SRS0=IDfX=PQ=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 46A26C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 13:58:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A2191C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 14:18:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0671661056
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 13:58:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0671661056
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 6786461073
+	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 14:18:28 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6786461073
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ndufresne.ca
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mHYeY2ANGnSFShaKrocESg/kpMARUEfjqj25TFbDFzg=; b=424mPlGYrjKvRV
-	fe+AGSwdyOeFlb4xe9ucrGnq9Dw5BNfinyYjogZU4OvxBF8krQTpJwAZBIotqBSi01K7BqG3EuMpD
-	1gZ8Rka7vcyzUM2o8F91fmDcYvaLgEo6ZQgGD+V/aCPkJfunVxuaf+u9R43/NmyM5quxGIWo/zIsJ
-	mVEGfYcpWSuBdl3RtoJMy5G0CmEo8f47h+Xr7bAglksodJPDVRk1Tw4YWMeBQlJC88LEqwude1KJ7
-	zNOiQMfkaVgLn8AWulwDXj5g1PB+AN0MBglkIg5ashpmdoGgaSJhFw9elYT1/ZMYVmE+0/lVLJmbV
-	BSSVNinyjMeLs+vpnJ9g==;
+	List-Owner; bh=bqNbiR69SeLpz2pPynGwxpRF4W/RCL/H2WsbLxfNCdI=; b=LQ2RJK12fp0m9p
+	6tVpKLUhlCXV7GXgLS2zR2ShF+6GngxpNrxbZjBx4dCErQ8V9pfbH6D0uR6ZV+4sodB/UBi4t6dPG
+	fGahzeFm4Icl6NhfZzasxQbkUgdOdCe6JKPiwcbEz0Y0jwjeO7dFQVeCfbt3JdO6b87tTJlGWjmvq
+	FZuzN2pbaf4TmqhVs52O+nMEYKo7LtkSGChrLAJ1uLKkCcW+UHqQ8JaFGBCnLTV3zgsnyISjW2j0X
+	QnUu+HiW6jfI1kz1SBDGRAZTBy2pdewZXjs/UR+tzUvwxNTZFJbzDf4xZH+++Z630rw9BD0VJA9Y+
+	aAwo/pRgdPbR2C4ecPEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mg5vJ-0081lB-5I; Thu, 28 Oct 2021 13:58:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mg6ER-00861Y-Os; Thu, 28 Oct 2021 14:18:15 +0000
+Received: from mail-qv1-xf34.google.com ([2607:f8b0:4864:20::f34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mg5uf-0081Wd-Bz; Thu, 28 Oct 2021 13:57:51 +0000
-X-UUID: 7a7d44b6322d45dea80a10574856cff3-20211028
-X-UUID: 7a7d44b6322d45dea80a10574856cff3-20211028
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yc.hung@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 97421276; Thu, 28 Oct 2021 06:57:47 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Oct 2021 06:57:45 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Oct 2021 21:57:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs10n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 28 Oct 2021 21:57:43 +0800
-From: YC Hung <yc.hung@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>
-CC: <yc.hung@mediatek.com>, <alsa-devel@alsa-project.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <daniel.baluta@nxp.com>, <trevor.wu@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v4 2/2] dt-bindings: dsp: mediatek: Add mt8195 DSP binding
- support
-Date: Thu, 28 Oct 2021 21:57:37 +0800
-Message-ID: <20211028135737.8625-3-yc.hung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211028135737.8625-1-yc.hung@mediatek.com>
-References: <20211028135737.8625-1-yc.hung@mediatek.com>
+ id 1mg6EO-00860j-Uz
+ for linux-mediatek@lists.infradead.org; Thu, 28 Oct 2021 14:18:14 +0000
+Received: by mail-qv1-xf34.google.com with SMTP id v10so4096936qvb.10
+ for <linux-mediatek@lists.infradead.org>; Thu, 28 Oct 2021 07:18:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=nMYUF74sjEpWHuRRud5MO5ghjCJajD1UAWLtkFjebQ8=;
+ b=AcFOcYEDEke9Cr2Fcbyz6T2cnXP+xdgvJ8vghHGrZbzEU3F07oJ/V14ct6GmQNYz3s
+ 6cyUL7cLYDNHnbdk6roOf1RTDn3xyb7P8OS91ur27mmleQQYQptZ+s5WCpDAgH/g0FJ9
+ AYqCyCy9d13ljbw1IxaRE/3E86w9sCVNSvtC9o/wsXM5HDbSqPWiD7tPMx3Yyq8NwpNy
+ Kvm+b7a/94i519ok4wznMccqQOiwdEwi06gJEU84vJRNHbV6k9EOy3H/jscwydkkuJqC
+ qmkhJitRJck0Ztji1DbeBKGPEeu1d6Sr7J9jX2gx5krNOBfdiPtsisZa6AbWjnBA8Lue
+ H6Iw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=nMYUF74sjEpWHuRRud5MO5ghjCJajD1UAWLtkFjebQ8=;
+ b=XgXHY5PUx1UOxgEktdHlBh3AU0cr9VhU1V4H8aeodZdGFUo3lfK+KnF7Sv0UtBCZyV
+ TtrRx7yD+5IpRnW3QoigP9SlD75296s+cTu4WQDdGkFdQJcx3py0EmXy/uOyeWprCCxB
+ 4tOAev6LehduXHBd9go82T8rkOJxf/P1y4lge63HoI5p1AS2lPCQblEQchXDuX+jhRgX
+ RBG7EKkxNIe2EnA0iU7ogcYrsv1mMg4UzhnoutlEP5Qbm3ZxZQgdCn+0Eq1prkYN/0qp
+ 3vGEUPF4kivHFH9depPR0b5ORBOvTDy3Zt79M63IVLxT5T6NmVG1Mfii5ICCXGb84vwW
+ //Gw==
+X-Gm-Message-State: AOAM533OX4mDuHkvjP8FLlf+Lzmp0X+TOjk29JS+zpy/u6yxvD+yI+hw
+ kQf9tyDqCsGGV9BZGZRG8CM9JA==
+X-Google-Smtp-Source: ABdhPJx6zHTHcttN+FeVTgYVhZ3L9lDybi5HnFGUMp6gMgU8UhioTK5yvPn19Ra2Kzh8chqzs12gXA==
+X-Received: by 2002:a0c:b412:: with SMTP id u18mr4729682qve.14.1635430690565; 
+ Thu, 28 Oct 2021 07:18:10 -0700 (PDT)
+Received: from nicolas-tpx395.localdomain (173-246-12-168.qc.cable.ebox.net.
+ [173.246.12.168])
+ by smtp.gmail.com with ESMTPSA id v15sm1406288qtx.54.2021.10.28.07.18.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Oct 2021 07:18:10 -0700 (PDT)
+Message-ID: <34a3f0e40c5248472d072d2a06cc4370e08ea9ff.camel@ndufresne.ca>
+Subject: Re: [PATCH 1/3] media: mtk-vcodec: enc: add vp8 profile ctrl
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
+ linux-media@vger.kernel.org
+Cc: kernel@collabora.com, acourbot@chromium.org,
+ andrew-ct.chen@mediatek.com,  courbot@chromium.org, dafna3@gmail.com,
+ eizan@chromium.org,  houlong.wei@mediatek.com, hsinyi@chromium.org,
+ hverkuil@xs4all.nl,  irui.wang@mediatek.com, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, maoguang.meng@mediatek.com, 
+ matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com, 
+ tfiga@chromium.org, tiffany.lin@mediatek.com
+Date: Thu, 28 Oct 2021 10:18:08 -0400
+In-Reply-To: <20211022150410.29335-2-dafna.hirschfeld@collabora.com>
+References: <20211022150410.29335-1-dafna.hirschfeld@collabora.com>
+ <20211022150410.29335-2-dafna.hirschfeld@collabora.com>
+User-Agent: Evolution 3.40.4 (3.40.4-2.fc34) 
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211028_065749_441486_CD39D13A 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20211028_071813_007541_9077CE11 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,169 +97,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This describes the mt8195 DSP device tree node.
-
-Signed-off-by: YC Hung <yc.hung@mediatek.com>
----
- .../bindings/dsp/mtk,mt8195-dsp.yaml          | 139 ++++++++++++++++++
- 1 file changed, 139 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-
-diff --git a/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml b/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-new file mode 100644
-index 000000000000..f113f71ca094
---- /dev/null
-+++ b/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-@@ -0,0 +1,139 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/dsp/mtk,mt8195-dsp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek mt8195 DSP core
-+
-+maintainers:
-+  - YC Hung <yc.hung@mediatek.com>
-+
-+description: |
-+  Some boards from mt8195 contain a DSP core used for
-+  advanced pre- and post- audio processing.
-+properties:
-+  compatible:
-+    const: mediatek,mt8195-dsp
-+
-+  reg:
-+    maxItems: 2
-+
-+  reg-names:
-+    maxItems: 2
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-names:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: mux for audio dsp clock
-+      - description: 26M clock
-+      - description: mux for audio dsp local bus
-+      - description: default audio dsp local bus clock source
-+      - description: clock gate for audio dsp clock
-+      - description: mux for audio dsp access external bus
-+
-+  clock-names:
-+    items:
-+      - const: adsp_sel
-+      - const: clk26m_ck
-+      - const: audio_local_bus
-+      - const: mainpll_d7_d2
-+      - const: scp_adsp_audiodsp
-+      - const: audio_h
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  mboxes:
-+    maxItems: 2
-+
-+  mbox-names:
-+    description:
-+      Specifies the mailboxes used to communicate with audio DSP
-+    items:
-+      - const: mbox0
-+      - const: mbox1
-+
-+  memory-region:
-+    description:
-+      phandle to a node describing reserved memory (System RAM memory)
-+      used by DSP (see bindings/reserved-memory/reserved-memory.txt)
-+    maxItems: 2
-+
-+  sound:
-+    description:
-+      Sound subnode includes ASoC platform, DPTx codec node, and
-+      HDMI codec node.
-+
-+    type: object
-+
-+    properties:
-+      mediatek,platform:
-+        $ref: "/schemas/types.yaml#/definitions/phandle"
-+        description: The phandle of MT8195 ASoC platform.
-+
-+      mediatek,dptx-codec:
-+        $ref: "/schemas/types.yaml#/definitions/phandle"
-+        description: The phandle of MT8195 Display Port Tx codec node.
-+
-+      mediatek,hdmi-codec:
-+        $ref: "/schemas/types.yaml#/definitions/phandle"
-+        description: The phandle of MT8195 HDMI codec node.
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - interrupts
-+  - interrupt-names
-+  - clocks
-+  - clock-names
-+  - memory-region
-+  - power-domains
-+  - mbox-names
-+  - mboxes
-+  - sound
-+
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    adsp: adsp@10803000 {
-+       compatible =  "mediatek,mt8195-dsp";
-+       reg = <0x10803000  0x1000>,
-+             <0x10840000  0x40000>;
-+       reg-names = "cfg", "sram";
-+       interrupts = <GIC_SPI 694 IRQ_TYPE_LEVEL_HIGH 0>;
-+       interrupt-names = "wdt";
-+       clocks = <&topckgen 10>, //CLK_TOP_ADSP
-+                <&clk26m>,
-+                <&topckgen 107>, //CLK_TOP_AUDIO_LOCAL_BUS
-+                <&topckgen 136>, //CLK_TOP_MAINPLL_D7_D2
-+                <&scp_adsp 0>, //CLK_SCP_ADSP_AUDIODSP
-+                <&topckgen 34>; //CLK_TOP_AUDIO_H
-+       clock-names = "adsp_sel",
-+                     "clk26m_ck",
-+                     "audio_local_bus",
-+                     "mainpll_d7_d2",
-+                     "scp_adsp_audiodsp",
-+                     "audio_h";
-+       memory-region = <&adsp_dma_mem_reserved>,
-+                       <&adsp_mem_reserved>;
-+       power-domains = <&spm 6>; //MT8195_POWER_DOMAIN_ADSP
-+       mbox-names = "mbox0", "mbox1";
-+       mboxes = <&adsp_mailbox 0>, <&adsp_mailbox 1>;
-+       status = "disabled";
-+       sound {
-+              mediatek,dptx-codec = <&dp_tx>;
-+              mediatek,hdmi-codec = <&hdmi0>;
-+              mediatek,platform = <&afe>;
-+             };
-+       };
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+TGUgdmVuZHJlZGkgMjIgb2N0b2JyZSAyMDIxIMOgIDE3OjA0ICswMjAwLCBEYWZuYSBIaXJzY2hm
+ZWxkIGEgw6ljcml0wqA6Cj4gSW4gb3JkZXIgZm9yIHRoZSBlbmNvZGVyIHRvIHdvcmsgd2l0aCBn
+c3RyZWFtZXIKPiBpdCBuZWVkcyB0byBoYXZlIHRoZSBWNEwyX0NJRF9NUEVHX1ZJREVPX1ZQOF9Q
+Uk9GSUxFCj4gY3RybC4gVGhpcyBwYXRjaCBhZGRzIHRoYXQgY3RybCB3aXRoIG9ubHkgcHJvZmls
+ZSAwCj4gc3VwcG9ydGVkLgo+IAo+IFNpZ25lZC1vZmYtYnk6IERhZm5hIEhpcnNjaGZlbGQgPGRh
+Zm5hLmhpcnNjaGZlbGRAY29sbGFib3JhLmNvbT4KCkkgY29uZmlybSBzdGFydGluZyBmcm9tIEdT
+dHJlYW1lciAxLjE4IHByb2ZpbGUgKGFuZCBsZXZlbCBmb3Igb3RoZXIgY29kZWNzKSBhcmUKbmVl
+ZGVkLiBUaGlzIGlzIHRvIGFsbG93IHByb3BlciBmYWxsYmFjayB0byBvdGhlciBkZWNvZGVycyAo
+aW5jbHVkaW5nIHNvZnR3YXJlKQp3aGVuIHRoZSBIVyBpcyBub3QgY2FwYWJsZS4KCkFja2VkLWJ5
+OiBOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1ZnJlc25lQGNvbGxhYm9yYS5jb20+Cgo+IC0t
+LQo+ICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19lbmMuYyB8
+IDEwICsrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKykKPiAKPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNf
+ZW5jLmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19lbmMu
+Ywo+IGluZGV4IDg5OTgyNDRlYTY3MS4uODdhNTExNGJmNjgwIDEwMDY0NAo+IC0tLSBhL2RyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy9tdGtfdmNvZGVjX2VuYy5jCj4gKysrIGIvZHJp
+dmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNfZW5jLmMKPiBAQCAtMTAz
+LDYgKzEwMywxMyBAQCBzdGF0aWMgaW50IHZpZGlvY192ZW5jX3NfY3RybChzdHJ1Y3QgdjRsMl9j
+dHJsICpjdHJsKQo+ICAJCXAtPmdvcF9zaXplID0gY3RybC0+dmFsOwo+ICAJCWN0eC0+cGFyYW1f
+Y2hhbmdlIHw9IE1US19FTkNPREVfUEFSQU1fR09QX1NJWkU7Cj4gIAkJYnJlYWs7Cj4gKwljYXNl
+IFY0TDJfQ0lEX01QRUdfVklERU9fVlA4X1BST0ZJTEU6Cj4gKwkJLyoKPiArCQkgKiBGSVhNRSAt
+IHdoYXQgdnA4IHByb2ZpbGVzIGFyZSBhY3R1YWxseSBzdXBwb3J0ZWQ/Cj4gKwkJICogVGhlIGN0
+cmwgaXMgYWRkZWQgKHdpdGggb25seSBwcm9maWxlIDAgc3VwcG9ydGVkKSBmb3Igbm93Lgo+ICsJ
+CSAqLwo+ICsJCW10a192NGwyX2RlYnVnKDIsICJWNEwyX0NJRF9NUEVHX1ZJREVPX1ZQOF9QUk9G
+SUxFIHZhbCA9ICVkIiwgY3RybC0+dmFsKTsKPiArCQlicmVhazsKPiAgCWNhc2UgVjRMMl9DSURf
+TVBFR19WSURFT19GT1JDRV9LRVlfRlJBTUU6Cj4gIAkJbXRrX3Y0bDJfZGVidWcoMiwgIlY0TDJf
+Q0lEX01QRUdfVklERU9fRk9SQ0VfS0VZX0ZSQU1FIik7Cj4gIAkJcC0+Zm9yY2VfaW50cmEgPSAx
+Owo+IEBAIC0xMzk0LDYgKzE0MDEsOSBAQCBpbnQgbXRrX3Zjb2RlY19lbmNfY3RybHNfc2V0dXAo
+c3RydWN0IG10a192Y29kZWNfY3R4ICpjdHgpCj4gIAl2NGwyX2N0cmxfbmV3X3N0ZF9tZW51KGhh
+bmRsZXIsIG9wcywgVjRMMl9DSURfTVBFR19WSURFT19IMjY0X0xFVkVMLAo+ICAJCQkgICAgICAg
+aDI2NF9tYXhfbGV2ZWwsCj4gIAkJCSAgICAgICAwLCBWNEwyX01QRUdfVklERU9fSDI2NF9MRVZF
+TF80XzApOwo+ICsJdjRsMl9jdHJsX25ld19zdGRfbWVudShoYW5kbGVyLCBvcHMsIFY0TDJfQ0lE
+X01QRUdfVklERU9fVlA4X1BST0ZJTEUsCj4gKwkJCSAgICAgICBWNEwyX01QRUdfVklERU9fVlA4
+X1BST0ZJTEVfMCwgMCwgVjRMMl9NUEVHX1ZJREVPX1ZQOF9QUk9GSUxFXzApOwo+ICsKPiAgCj4g
+IAlpZiAoaGFuZGxlci0+ZXJyb3IpIHsKPiAgCQltdGtfdjRsMl9lcnIoIkluaXQgY29udHJvbCBo
+YW5kbGVyIGZhaWwgJWQiLAoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LW1lZGlhdGVrCg==
