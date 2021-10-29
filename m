@@ -2,14 +2,14 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 857BCC433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D8F25C433FE
 	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 07:53:50 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 50E036115B
+	by mail.kernel.org (Postfix) with ESMTPS id 9DE33610A0
 	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 07:53:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 50E036115B
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9DE33610A0
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CBe8hGjWJZrelpMbOlyDCeSmsWIKQMWaeJiQCZ/5NPM=; b=Z+zfU7B30znBk9
-	XchgOironrTdjRFAzMcj1JON8IWkqKgZJGsl6eHGRAi9dup0/lxuY2GmPAsHzxeucVNHcLoB32h7/
-	hiQSRjV7cMXK03I+hCiNt+H1t/GBinmMicK7P0qSGPu3d03U6QMO73dUw0oop/T2v95Tyf+hID9/h
-	5bC50HUFWXhrbEBNPkeVFOGAgURGkyIwpT+ihSTgqdzwlIztagpRTilhcLJcn2Tr9czRthGQU+tTh
-	gdZWu0f/qrRghe0WXeixBrJLNyuCwz3GUNRy6AnMpU77d/oHZljkLhlKUe3zETFb7wBTQbc0zz+oF
-	ixRgJOuw4dh8b+uXEXyw==;
+	List-Owner; bh=I7J7cvNz8klbF0Dzv6S6wv2p0NhuqK5Q79SRUQWb0VE=; b=k6lLvC2bO247fF
+	mwRFZS4pZW3ZswvvBHzqjbxgbkt5lkfYRYOajH7qdqOIZWZkTuUkq0/Sk7F4hFTW4dIRB3Fp9gypI
+	GV6/kseCR2zuLvZIDhq6d6/QipQicWghtCxo4CwslyfVkPUhXKNQrvMdS91JE1Gmhqecfosfdugd3
+	qE47MLaG1VXR0PXa2WcpEzspHyJ2fKA6UD3YL5Y13ohNsqI3Y1Gl611mWORIvhBv/PJ7u5OZQwfuD
+	9rzuFKB+FEEZI+Mfn8wDmCl55Syg2ZGtQ0vr1jA0PWwTI/81/3nohMFYQbC7cM80Vee/zLxpzm7ap
+	HCKFOAVJcI/hsc+TK/DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgMhk-00A4QO-Tw; Fri, 29 Oct 2021 07:53:36 +0000
+	id 1mgMhm-00A4R6-7Y; Fri, 29 Oct 2021 07:53:38 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgMgV-00A3ks-RN; Fri, 29 Oct 2021 07:52:21 +0000
-X-UUID: 516fffba02604390bfda18d8a46fcc34-20211029
-X-UUID: 516fffba02604390bfda18d8a46fcc34-20211029
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ id 1mgMgV-00A3lR-RL; Fri, 29 Oct 2021 07:52:21 +0000
+X-UUID: d2f4ec7580734680aa0e7c6bf2f7fd5f-20211029
+X-UUID: d2f4ec7580734680aa0e7c6bf2f7fd5f-20211029
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1799879344; Fri, 29 Oct 2021 00:52:09 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Oct 2021 00:52:06 -0700
+ with ESMTP id 2029829923; Fri, 29 Oct 2021 00:52:10 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Fri, 29 Oct 2021 15:52:04 +0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 29 Oct 2021 00:52:08 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 29 Oct 2021 15:52:06 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
  mtkmbs10n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Fri, 29 Oct 2021 15:52:04 +0800
+ 15.2.792.15 via Frontend Transport; Fri, 29 Oct 2021 15:52:06 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>
 CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
@@ -57,18 +57,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v7 02/20] dt-bindings: mediatek: add vdosys1 MERGE property
- for mt8195
-Date: Fri, 29 Oct 2021 15:51:45 +0800
-Message-ID: <20211029075203.17093-3-nancy.lin@mediatek.com>
+Subject: [PATCH v7 09/20] soc: mediatek: mmsys: modify reset controller for
+ MT8195 vdosys1
+Date: Fri, 29 Oct 2021 15:51:52 +0800
+Message-ID: <20211029075203.17093-10-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211029075203.17093-1-nancy.lin@mediatek.com>
 References: <20211029075203.17093-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211029_005219_901468_6BEAFD0A 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20211029_005219_950282_C35B821B 
+X-CRM114-Status: GOOD (  15.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +85,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-MT8195 vdosys1 merge1 to merge4 have HW mute function.
-Add MERGE additional mute property description.
+MT8195 vdosys1 has more than 32 reset bits and a different reset base
+than other chips. Modify mmsys for support 64 bit and different reset
+base.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Acked-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../devicetree/bindings/display/mediatek/mediatek,merge.yaml  | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/soc/mediatek/mt8195-mmsys.h |  1 +
+ drivers/soc/mediatek/mtk-mmsys.c    | 21 ++++++++++++++++-----
+ drivers/soc/mediatek/mtk-mmsys.h    |  2 ++
+ 3 files changed, 19 insertions(+), 5 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-index 28be8ffeb429..f5b1e632bcd5 100644
---- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-+++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
-@@ -61,6 +61,10 @@ properties:
-       command to SMI to speed up the data rate.
-     type: boolean
+diff --git a/drivers/soc/mediatek/mt8195-mmsys.h b/drivers/soc/mediatek/mt8195-mmsys.h
+index 11ba79e3275e..628098260f61 100644
+--- a/drivers/soc/mediatek/mt8195-mmsys.h
++++ b/drivers/soc/mediatek/mt8195-mmsys.h
+@@ -229,6 +229,7 @@
+ #define MT8195_VDO1_MIXER_SOUT_SEL_IN				0xf68
+ #define MT8195_MIXER_SOUT_SEL_IN_FROM_DISP_MIXER			0
  
-+  mediatek,merge-mute:
-+    description: Support mute function. Mute the content of merge output.
-+    type: boolean
++#define MT8195_VDO1_SW0_RST_B		0x1d0
+ #define MT8195_VDO1_MERGE0_ASYNC_CFG_WD	0xe30
+ #define MT8195_VDO1_MERGE1_ASYNC_CFG_WD	0xe40
+ #define MT8195_VDO1_MERGE2_ASYNC_CFG_WD	0xe50
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 868df83eb57d..362609bd244b 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -19,6 +19,8 @@
+ #include "mt8192-mmsys.h"
+ #include "mt8195-mmsys.h"
+ 
++#define MMSYS_SW_RESET_PER_REG 32
 +
-   mediatek,gce-client-reg:
-     description:
-       The register of client driver can be configured by gce with 4 arguments
+ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt2701-mm",
+ 	.routes = mmsys_default_routing_table,
+@@ -49,12 +51,16 @@ static const struct mtk_mmsys_driver_data mt8173_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt8173-mm",
+ 	.routes = mmsys_default_routing_table,
+ 	.num_routes = ARRAY_SIZE(mmsys_default_routing_table),
++	.sw_reset_start = MMSYS_SW0_RST_B,
++	.num_resets = 32,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
+ 	.clk_driver = "clk-mt8183-mm",
+ 	.routes = mmsys_mt8183_routing_table,
+ 	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
++	.sw_reset_start = MMSYS_SW0_RST_B,
++	.num_resets = 32,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
+@@ -75,6 +81,8 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
+ 	.num_routes = ARRAY_SIZE(mmsys_mt8195_routing_table),
+ 	.config = mmsys_mt8195_config_table,
+ 	.num_configs = ARRAY_SIZE(mmsys_mt8195_config_table),
++	.sw_reset_start = MT8195_VDO1_SW0_RST_B,
++	.num_resets = 64,
+ };
+ 
+ static const struct mtk_mmsys_driver_data mt8365_mmsys_driver_data = {
+@@ -133,18 +141,22 @@ static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned l
+ {
+ 	struct mtk_mmsys *mmsys = container_of(rcdev, struct mtk_mmsys, rcdev);
+ 	unsigned long flags;
++	u32 offset;
+ 	u32 reg;
+ 
++	offset = (id / MMSYS_SW_RESET_PER_REG) * sizeof(u32);
++	id = id % MMSYS_SW_RESET_PER_REG;
++
+ 	spin_lock_irqsave(&mmsys->lock, flags);
+ 
+-	reg = readl_relaxed(mmsys->regs + MMSYS_SW0_RST_B);
++	reg = readl_relaxed(mmsys->regs + mmsys->data->sw_reset_start + offset);
+ 
+ 	if (assert)
+ 		reg &= ~BIT(id);
+ 	else
+ 		reg |= BIT(id);
+ 
+-	writel_relaxed(reg, mmsys->regs + MMSYS_SW0_RST_B);
++	writel_relaxed(reg, mmsys->regs + mmsys->data->sw_reset_start + offset);
+ 
+ 	spin_unlock_irqrestore(&mmsys->lock, flags);
+ 
+@@ -240,10 +252,11 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
++	mmsys->data = of_device_get_match_data(&pdev->dev);
+ 	spin_lock_init(&mmsys->lock);
+ 
+ 	mmsys->rcdev.owner = THIS_MODULE;
+-	mmsys->rcdev.nr_resets = 32;
++	mmsys->rcdev.nr_resets = mmsys->data->num_resets;
+ 	mmsys->rcdev.ops = &mtk_mmsys_reset_ops;
+ 	mmsys->rcdev.of_node = pdev->dev.of_node;
+ 	ret = devm_reset_controller_register(&pdev->dev, &mmsys->rcdev);
+@@ -252,8 +265,6 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	mmsys->data = of_device_get_match_data(&pdev->dev);
+-
+ #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+ 	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
+ 	if (ret)
+diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
+index 2694021435d2..4842102cd451 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.h
++++ b/drivers/soc/mediatek/mtk-mmsys.h
+@@ -102,6 +102,8 @@ struct mtk_mmsys_driver_data {
+ 	const unsigned int num_routes;
+ 	const struct mtk_mmsys_config *config;
+ 	const unsigned int num_configs;
++	u32 sw_reset_start;
++	u32 num_resets;
+ };
+ 
+ /*
 -- 
 2.18.0
 
