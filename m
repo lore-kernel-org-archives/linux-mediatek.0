@@ -2,66 +2,57 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21C2BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 16:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 52BCBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 17:00:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E4F4E60FC1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 16:58:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E4F4E60FC1
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 1746860E8B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 17:00:37 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1746860E8B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NmppsleBEzZdmkTtBv52gq03p63lKMSttRMXEDPk8w8=; b=X8FRSgCcDvCtRWeV7ZnDpw3Fpg
-	aMc5EloJ4XBiZJTY1/mIfWgavBGyloXDdO8QMuEm2ZfPxA/1KfPjFPBZACWEjDBU1J1hSNHnluPKw
-	+3BNJU4+LXbpLsCrlR+7R4S1tU4cePXjDCUbeL6NCXt52QOKGZK4RTmBMF5gT/qAO83W9+ozT35U6
-	cNzaJjGxpmtOCdpCpZHIpIp1nwygMAQi/m/YDe6K2lmf0DaX+maM4zdVn+L+fw9NFdxcA/ADcEkKk
-	vTbpd7KLoXWTsXtJ2xrLFxjOT5snLTEvoQysQ3L0GL3z3ycM0mdkIUPLPQREibI5Mlt67peIE4MMl
-	Oa868Nhg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MLPkzsmH+OhllU1xahgqK9J6NCMz1kHZjhlV4LbMhAQ=; b=YakegkVVSkSaGYUanbAlPXgyKD
+	R6Q9Vx3XPqV2j+HFEwdnhlIpObVmM9AWrLQ4lEx2JD0Oia5/Q5XHQgljZnAcBoSVpZfZxCeGObda3
+	QXbNfahXtpd8UdzyIhZh+5F2JXf5O6YkgYM1MNbiH/TbH8z6MU0zalOkKhliMxebUAw/3vvIov+Ef
+	rz11PuLpwNkW3G7g37m8TRdt3+7LrOPEOicG6YWqDMrXit2yJB5p8Zggfkk8otVy1E6EVq/7CKi9K
+	v+fd3rTmselC8k1FMnX3SQ0ALP5GoMcRchAjCNbZRoX3EbJLogTMz+BHHKFOh1NYEEqTN4ZxFDxdv
+	JMLD2GHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgVCe-00BWV0-KK; Fri, 29 Oct 2021 16:58:04 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mgVEw-00BWzg-E9; Fri, 29 Oct 2021 17:00:26 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgVCP-00BWQ0-Pl; Fri, 29 Oct 2021 16:57:50 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 00B5060E8B;
- Fri, 29 Oct 2021 16:57:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1635526669;
- bh=Su9vVSviobYVjYObOCBEe73TcGXWuppnwITxt73nSf8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=OiJMNRwTxy7TtwQvyW++op3MucoWFCDDO3IMRhqz/oqUlVRo7P7fGyId2IOHS6keC
- oeOR0pAalcKXLWbTReztyvIDld5jL4S8erPghdklD5p358ZtyjvbT5arJp7+k3f7G6
- x8nGhyNHUE/8ZOS6uTQyu1An1BDpdP4ihsAJsF/tC1UuocgdmgKKYNoJdfCzifqb4j
- u6Nmg8MTUQsoPBiGZFYRB9U/ONvqL8jNun2THPa2fUJpZqUfi9o/+6I3s04/yLWrtH
- CiGHV30HjvLkDxW+KuFvYBul76atwxcdJsrPISRFShGTBWeGkg+Wn7xV3J36A3GJRI
- E7JGhkWwq67yQ==
-Date: Fri, 29 Oct 2021 17:57:43 +0100
-From: Mark Brown <broonie@kernel.org>
-To: YC Hung <yc.hung@mediatek.com>
-Cc: tiwai@suse.com, robh+dt@kernel.org, matthias.bgg@gmail.com,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, daniel.baluta@nxp.com,
- trevor.wu@mediatek.com, allen-kh.cheng@mediatek.com,
- angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v4 1/2] ASoC: SOF: mediatek: Add mt8195 dsp clock support
-Message-ID: <YXwoB7FtRw0AzgcD@sirena.org.uk>
-References: <20211028135737.8625-1-yc.hung@mediatek.com>
- <20211028135737.8625-2-yc.hung@mediatek.com>
+ id 1mgVEj-00BWxn-Gs; Fri, 29 Oct 2021 17:00:15 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 9A92C1F45BC6
+Subject: Re: [PATCH v2] arm64: defconfig: enable regulator to fix mt8173
+ regression
+To: Adrian Ratiu <adrian.ratiu@collabora.com>, Will Deacon <will@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: linux-kernel@vger.kernel.org, kernel@collabora.com,
+ "kernelci . org bot" <bot@kernelci.org>,
+ Guillaume Tucker <guillaume.tucker@collabora.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>
+References: <20211029153947.225416-1-adrian.ratiu@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <7d2c1339-2580-d9fb-64ce-b2d361944eff@collabora.com>
+Date: Fri, 29 Oct 2021 19:00:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211028135737.8625-2-yc.hung@mediatek.com>
-X-Cookie: QED.
+In-Reply-To: <20211029153947.225416-1-adrian.ratiu@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211029_095749_884541_8BC00627 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211029_100013_730660_32F8A65C 
+X-CRM114-Status: GOOD (  12.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,62 +64,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4217222344875524655=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 29/10/21 17:39, Adrian Ratiu ha scritto:
+> A regression was introduced on some mediatek boards starting with
+> v5.15-rc1 in commit 109fd20601e2 ("arm64: dts: mediatek: mt8173:
+> Add domain supply for mfg_async") which effectively changed the
+> regulator from the always-on dummy to DA9211 without explicitely
+> enabling it, causing failures caught by KernelCI on Hana
+> Chromebooks [1] for previously used dummies like:
+> 
+> mtk-power-controller 10006000.syscon:power-controller: supply domain not found, using dummy regulator
+> mtu3 11271000.usb: supply vbus not found, using dummy regulator
+> xhci-mtk 11270000.usb: supply vbus not found, using dummy regulator
+> 
+> There might be another bug linking these power domains in the
+> mediatek PM driver, but that is a separate issue wich needs
+> addressing, for now just fix the obvious regression due to the
+> new regulator requirement.
+> 
+> [1] https://github.com/kernelci/kernelci-project/issues/66
+> Fixes: 109fd20601e2 ("arm64: dts: mediatek: mt8173: Add domain supply for mfg_async")
+> Reported-by: "kernelci.org bot" <bot@kernelci.org>
+> Cc: Guillaume Tucker <guillaume.tucker@collabora.com>
+> Suggested-by: Enric Balletbo Serra <eballetbo@gmail.com>
+> Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
 
---===============4217222344875524655==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="L+FynStKYfLi0cU9"
-Content-Disposition: inline
+Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-
---L+FynStKYfLi0cU9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Oct 28, 2021 at 09:57:36PM +0800, YC Hung wrote:
-> Add adsp clock on/off support on mt8195 platform.
->=20
-> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora=
-=2Ecom>
-> Signed-off-by: YC Hung <yc.hung@mediatek.com>
-> ---
->  sound/soc/sof/mediatek/adsp_helper.h       |   2 +-
-
-This doesn't apply against current code, there's no such file upstream.
-Please check and resend.
-
---L+FynStKYfLi0cU9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmF8KAYACgkQJNaLcl1U
-h9AoVAf+Lla83sRtVKTqKOk679LT17XuZlBpgOt3NtPFIbvAv9dQFo6vZbhSPUfv
-FNFch9494hJbje4GQNsx+/P8YBAu8B8KT1L9mvI2xfE+R1ififzxOa8KFibsE4ee
-kOaEBLq5sK5K4ujyPS9F6/fq5bih/0+C5YgBJtWYhW4/HwPL2eSp+U/cbLX7hUCV
-Y6WZRE3jA3UDHCl/nTSz9EZAg2BExYI3zDrEINWf26Fs+8rwx/q6y88UQofl0WBK
-kdelvP0X9dFsxgV8T3wug4bRTgfGezFAen3rkQG6I1tliMMb4XO2tvCUQlSyV3zS
-h0KJSKLReUXZNM9ANMySrqQWAFF9wA==
-=slFG
------END PGP SIGNATURE-----
-
---L+FynStKYfLi0cU9--
-
-
---===============4217222344875524655==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4217222344875524655==--
-
