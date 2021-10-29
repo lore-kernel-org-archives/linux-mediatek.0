@@ -2,64 +2,53 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A1716C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 14:59:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BED57C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 15:40:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67C26610FD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 14:59:29 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 67C26610FD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id 8D46761165
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 15:40:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8D46761165
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=I/yMPBENqoOuTcqCk9/KH/EU18jS5ZWSS4PnpzJxmwI=; b=RApzYtP4n/PFGR
-	YbYC/3xiRhnVC50dLos7mLFAtgmKurZTlPngrbiyrvvgr7zQqef9NH3aOnXMCcJS+K3Rb3MmuMFcw
-	A/GBBXmbvdcYArC8PhI935QkR0H1Sf4a+BtQN2Wszf464pq1LzawI5ShVAD8LPg7mNTYW0uEKYAlS
-	yFFIJifL+AOnMmjAGFiWirYi/EqIFDhZ+IBVh+b8+QOqi2gw6/0bSwTmNfziHFIiG6RwtkAw5UhlM
-	O79fZVJycrkzyqCIvUohVO6ClH1u/PMYtz2Nxjp5iOoLQAv0GepRPx1p5/uQeRYX9kwHCWxG9bomF
-	o0ni1vMleMzGVUPmpq5w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EBrcfMG3zB1lB+Hf1H6gnTuOrBrXjaiYnf3ZZtPxtGw=; b=PWL6r/CZyS9zrP
+	piWdSUNX+s2yt00nz7AMxBTEc7fxNb5WmQoZnsAwjKo4rIZ6xDAcqI+Amrt6MVoqDIUz1OU6tinyb
+	FGzh+hPAag7tr1VzPBlqcdgMtPqib16gAQu64iAhXgfs7rAZd9jv3zw2qOtlrvPKrzU5bhYMk1xq6
+	+aKIn1nYZTydRc2GEOw3fyg+ILM0JfRDhjKtV3gFDCurgqhYyL+xqQBP650khmWnAoLOWsUhpemYz
+	W+4wK73v0ZkBbkrTOaStaNXh874tNd9UhN3OTN0ZKycvzK84sGao97pkENfS2JMnGwNvcPGVgVmS4
+	lzYniwlvpsoYmGF74aMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgTLh-00BG4y-3l; Fri, 29 Oct 2021 14:59:17 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mgTzL-00BNGn-Ii; Fri, 29 Oct 2021 15:40:15 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgTLU-00BG38-3A; Fri, 29 Oct 2021 14:59:05 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3E69261184;
- Fri, 29 Oct 2021 14:59:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1635519543;
- bh=mEBIcswgw9632dRuDbJzbqAYM5AZU2vSGumheCQp2Ro=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=KmcYAvjHh68pAorsLxOts9w9lIiC0cES+aC7xR+/bdRa2d1oxoZSbQL6skMh0lVX+
- wqSgXHyc32CziuAP4T9p/VStKo7ceiO9K4Sy+6qvnlcr0ThbfZ6wpZBaGbqzw/aR37
- Z2IBMEACAUyCoeO9w/xdoT7i+wbTqOMq9aRJs0g4TvuKZcYYm0ishvWJkKX2UopdLV
- b8kfvvHMrvIrwf0Ip8R+01By2OH7eRhE38q2acOlU0vUdhzgtTA9RezwN+YTfWjjpR
- LU0omWqDbZzY7qgLEBR9T6HUgkH6tQPdOmpuq4esqxcn5169G4u6fmVqXWngCdmc2T
- ZGbG2AoMyIslQ==
-From: Mark Brown <broonie@kernel.org>
-To: trevor.wu@mediatek.com, arnd@arndb.de, perex@perex.cz,
- matthias.bgg@gmail.com, tzungbi@google.com, tiwai@suse.com,
- jiaxin.yu@mediatek.com, Julian Braha <julianbraha@gmail.com>,
- lgirdwood@gmail.com
-Cc: alsa-devel@alsa-project.org, fazilyildiran@gmail.com,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20211029001225.27218-1-julianbraha@gmail.com>
-References: <20211029001225.27218-1-julianbraha@gmail.com>
-Subject: Re: [PATCH] ASoC: fix unmet dependencies on GPIOLIB for
- SND_SOC_RT1015P
-Message-Id: <163551954099.3555751.4265484307853649135.b4-ty@kernel.org>
-Date: Fri, 29 Oct 2021 15:59:00 +0100
+ id 1mgTz9-00BNEU-2b; Fri, 29 Oct 2021 15:40:04 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: aratiu) with ESMTPSA id 2626E1F45A44
+From: Adrian Ratiu <adrian.ratiu@collabora.com>
+To: Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ "kernelci . org bot" <bot@kernelci.org>,
+ Guillaume Tucker <guillaume.tucker@collabora.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>
+Subject: [PATCH v2] arm64: defconfig: enable regulator to fix mt8173 regression
+Date: Fri, 29 Oct 2021 18:39:47 +0300
+Message-Id: <20211029153947.225416-1-adrian.ratiu@collabora.com>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211029_075904_184681_D02580D1 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20211029_084003_272243_09861D08 
+X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +65,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 Oct 2021 20:12:25 -0400, Julian Braha wrote:
-> When SND_SOC_MT8192_MT6359_RT1015_RT5682,
-> SND_SOC_MT8192_MT6359_RT1015_RT5682,
-> SND_SOC_MT8183_DA7219_MAX98357A, or
-> SND_SOC_MT8183_MT6358_TS3A227E_MAX98357A is selected,
-> and GPIOLIB is not selected, Kbuild gives the following
-> warnings, respectively:
-> 
-> [...]
+A regression was introduced on some mediatek boards starting with
+v5.15-rc1 in commit 109fd20601e2 ("arm64: dts: mediatek: mt8173:
+Add domain supply for mfg_async") which effectively changed the
+regulator from the always-on dummy to DA9211 without explicitely
+enabling it, causing failures caught by KernelCI on Hana
+Chromebooks [1] for previously used dummies like:
 
-Applied to
+mtk-power-controller 10006000.syscon:power-controller: supply domain not found, using dummy regulator
+mtu3 11271000.usb: supply vbus not found, using dummy regulator
+xhci-mtk 11270000.usb: supply vbus not found, using dummy regulator
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+There might be another bug linking these power domains in the
+mediatek PM driver, but that is a separate issue wich needs
+addressing, for now just fix the obvious regression due to the
+new regulator requirement.
 
-Thanks!
+[1] https://github.com/kernelci/kernelci-project/issues/66
+Fixes: 109fd20601e2 ("arm64: dts: mediatek: mt8173: Add domain supply for mfg_async")
+Reported-by: "kernelci.org bot" <bot@kernelci.org>
+Cc: Guillaume Tucker <guillaume.tucker@collabora.com>
+Suggested-by: Enric Balletbo Serra <eballetbo@gmail.com>
+Signed-off-by: Adrian Ratiu <adrian.ratiu@collabora.com>
+---
 
-[1/1] ASoC: fix unmet dependencies on GPIOLIB for SND_SOC_RT1015P
-      commit: 2554877e4b08d258c2def27e3a0fd49d60a9a2c0
+Changes in v2:
+  * Added Fixes tag
+  * Slight rewording of commit msg to improve clarity
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+---
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 545197bc0501..fb82971ff654 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -615,6 +615,7 @@ CONFIG_REGULATOR_FIXED_VOLTAGE=y
+ CONFIG_REGULATOR_AXP20X=y
+ CONFIG_REGULATOR_BD718XX=y
+ CONFIG_REGULATOR_BD9571MWV=y
++CONFIG_REGULATOR_DA9211=y
+ CONFIG_REGULATOR_FAN53555=y
+ CONFIG_REGULATOR_GPIO=y
+ CONFIG_REGULATOR_HI6421V530=y
+-- 
+2.33.1
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-mediatek mailing list
