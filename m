@@ -2,147 +2,67 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F2C68C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 07:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 0ACF1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 07:48:58 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7C5CB61151
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 07:35:17 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7C5CB61151
-Authentication-Results: mail.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=amd.com
+	by mail.kernel.org (Postfix) with ESMTPS id 7B767604DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 07:48:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7B767604DC
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=molgen.mpg.de
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J43LpdhX506sqbAO2Tnl/QBwoh3XMkghRqmsLqvDZOg=; b=D2AjB2BNTQsWSEgGGNkwcvM/Er
-	3duufWck5tBJf/cFvk7Uds3iHwyWeqJOFYZ5Q3i3GH2UAl/5Xkcbv9mv/Z8iKV5uSUCmaw8QLTJqm
-	Ye8OKjZXZdE5Z7qumhY5+A3G6YpuO8OYnl+kJB/RMlQK/kSCThNCMgeMCNOFkf/T3OhLHMY/OdUBd
-	xxuYDUrdfKwYuPq1fEcj27EPXWPcnUQGjTHRA8+INnzgd5lEVfk4SKK1RhVbB80mN43vxtJRWsqAQ
-	Um2gebY+cs3p5MCQKAMacez2eAoo9GySc98eMRcl8d7c9AJ7X7LsC3AOvgTdW15xvJ//El1JKMOO+
-	HxVGfMZw==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=N/qdoxuzPDHnpgAvOzUEtr/viPWnjDGSgMMo/qWr5YU=; b=S9Q7oKQd17CXf6
+	crOYvuqcBV+W2bjKB7wT8aJIzCI0p9Chee8WL2Yr4DgfhtT1sVwuahDU+fOAjgElDYyWoYxPRzTYE
+	08r7ynseH7QQcSlhk/xuJbSAtJyid6B3Q4W/v+i7+x0RQgbU1sx+n4DMUMSa/qP5YP/z/beEUDZG7
+	/qUz+qgS/2G11CL7paWGEPzepzs7V9NlE0OKY8pU8T7pexepfYSoMOmqhcCz8NO9ES1hcYRMHpGdx
+	juRNg3qte9sGEr5YMCedNmYa5ZBFzUoUhfZLiWEtXccPNmIh/omm7gCZErBp7/POoOTuzoGjLgoL3
+	pg1UYWGv3NuWe4tO8VMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgMPr-00A2MO-OC; Fri, 29 Oct 2021 07:35:07 +0000
-Received: from mail-bn8nam12on2074.outbound.protection.outlook.com
- ([40.107.237.74] helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+	id 1mgMcv-00A3Cr-7c; Fri, 29 Oct 2021 07:48:37 +0000
+Received: from mx3.molgen.mpg.de ([141.14.17.11] helo=mx1.molgen.mpg.de)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgMPo-00A2LS-8k; Fri, 29 Oct 2021 07:35:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=cEqFVwVwWu1+oXIXtPvTCKDAFiiL7jFu1JCIoHUWbpjs4O2m4LH/UXM33Z/QGstbi0gQkdbwtfOjN4xIDwAiIssb3B3CossCQGrKBfK0jIY4IXJXX8YhOKf5t/wI3XNypci6wW4x2MKxkAIBBQkCPmNiWr3KtVBX7p/sTM+OSIHxfv3CKxxDgCKUF9CJdjQMLgraW8TS1yXQLtUoUOiPupYP75tNO0flHrG0hnYcoU2D5J6VhIiK1uY5j/RhjkJrgSwEVuWdVI4xfO/ToVP3bC3TZ35GxO15FUu9QuDFOsaKTeH3MQkiBjZ8S7gD+4ehZxShyy/+TY3cH2BtHkErnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=P55RarXZMaGwpDtoV4tVIGNKZTIOr2kIHTkHUb2xiPo=;
- b=R99OZEejtGW0foAOgep02fL8H7ca2MNmtalP85q0KhOYzRRCbRFK8wG7U7x+Ct+yW+NBjxnCSo7GMbCBgRjxPaUTCI5X3syE7Ml3ikkzkBaeIuC7Hq1UDEFo8qbNv4O54/GY3JV+rkUy1e48wNLg0zFyvl5AFRP3wYHVj7M4lqCQ2zDINkkDc6UPvGQwxGu7T6KThyBd7VRPNL8dcvv/d4EYVKSsct+IrbNr4rR0utDUDeDAScahFMCcm4ocuNVqj8yyqbTYfzIkz1Fm7b0lmoLigkdGPT+jIHHMA62JlCwMxs2iRXUNbMp+rpJ3bbVZzFHvEHWPIWp52neqgsg24g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P55RarXZMaGwpDtoV4tVIGNKZTIOr2kIHTkHUb2xiPo=;
- b=oFwa7P/JD6oZ8R6CY3P1yHWjqB9rZddYTO1W8CN+GwuTfetGMqz/M7WjRIN+a5Q0nWPPXmCmXsU0Qz0RqhxnmqSayIMHQIW13cTrknw7WvXie9/IEQe1ANtqJiNuIeUGdzIgzS5H6ppn/UDaZ5L3+HJbcZwIO6eBHJbF40Rv8gc=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=amd.com;
-Received: from DM5PR1201MB0187.namprd12.prod.outlook.com (2603:10b6:4:5b::9)
- by DM6PR12MB4236.namprd12.prod.outlook.com (2603:10b6:5:212::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4649.15; Fri, 29 Oct
- 2021 07:35:00 +0000
-Received: from DM5PR1201MB0187.namprd12.prod.outlook.com
- ([fe80::9d0d:c67d:2610:ae74]) by DM5PR1201MB0187.namprd12.prod.outlook.com
- ([fe80::9d0d:c67d:2610:ae74%10]) with mapi id 15.20.4649.015; Fri, 29 Oct
- 2021 07:35:00 +0000
-Subject: Re: [PATCH v2] dma-buf: acquire name lock before read/write
- dma_buf.name
-To: guangming.cao@mediatek.com
-Cc: dri-devel@lists.freedesktop.org, linaro-mm-sig@lists.linaro.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
- matthias.bgg@gmail.com, sumit.semwal@linaro.org, wsd_upstream@mediatek.com
-References: <169957a7-302b-1de9-39b0-415c4675743a@amd.com>
- <20211029021541.101157-1-guangming.cao@mediatek.com>
-From: =?UTF-8?Q?Christian_K=c3=b6nig?= <christian.koenig@amd.com>
-Message-ID: <ba926a86-1262-00ae-87d3-fa4150a1eb3a@amd.com>
-Date: Fri, 29 Oct 2021 09:34:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-In-Reply-To: <20211029021541.101157-1-guangming.cao@mediatek.com>
-Content-Language: en-US
-X-ClientProxiedBy: AM3PR04CA0134.eurprd04.prod.outlook.com (2603:10a6:207::18)
- To DM5PR1201MB0187.namprd12.prod.outlook.com
- (2603:10b6:4:5b::9)
+ id 1mgMch-00A37v-TN; Fri, 29 Oct 2021 07:48:26 +0000
+Received: from [192.168.0.2] (ip5f5aef83.dynamic.kabel-deutschland.de
+ [95.90.239.131])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 63BBB61E5FE33;
+ Fri, 29 Oct 2021 09:48:07 +0200 (CEST)
+Message-ID: <1fd3dc84-02ee-48fc-1db7-47cdd1ce2e4e@molgen.mpg.de>
+Date: Fri, 29 Oct 2021 09:48:07 +0200
 MIME-Version: 1.0
-Received: from [192.168.178.21] (91.14.161.181) by
- AM3PR04CA0134.eurprd04.prod.outlook.com (2603:10a6:207::18) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4649.15 via Frontend Transport; Fri, 29 Oct 2021 07:34:58 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 47d1d1fd-9547-46c4-45d3-08d99aae9d12
-X-MS-TrafficTypeDiagnostic: DM6PR12MB4236:
-X-Microsoft-Antispam-PRVS: <DM6PR12MB42361C0C0B573932CF846DC083879@DM6PR12MB4236.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1247;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: L5XdYxgtAvS70oE7VEAuMdr1ZFkIo+D0Nof/ZyoSUavHgDqhqexNVMzzuzHlnr3fG/KccuFQTR8Z5sbA+GUumOZews45pWT0mw2OhAviOaD5qeF0QJYv6lFIuipVkhRBO/Yer427Cs1wqiXs/MVMGi4PszHT2MBqKABP5oQrfOhL0ktwV+M1+TO8KEP1TvUOax/6lfJe6et8woVpTSNJm/W1FY87G3zK+CFYfOmKMUc+PZgumrwqckryRQ1oUNYs5Cum5ovyPDPbBLaWnMH8VxGZdH2WZDVwTquEIwZoewzFc75VxPD4mtrPQGWBg3K3vK3aD0LgTB3UPBiGEQPgQDT+HmQ5gHoa/r8iRPpBeI6D5u6m5cVjpx+Vynne8b9G2S1zLnMmdOs6vtDSCPsk+v8MC+X0tenhJdNsEjGRX3DjkAdlefai4ZvVAynqmNY1m1j1+1ignKXmaVZp7oooCv8Pc2w8MklaoHLQEuEgbR7VyhVg7CcrOsBZW/6hHwGiPL0Ad6FXB+RpkM5B59pLwli5gHYEtcEfI0uX0J1/upN4kT1PQx0WAw4x0P2jDkDqKSUD88hhsm65FyBJ6/DOD4v0OQJKmirsYGRpYwQmeYLUOuJZPmBbGdlCPrBVs6WvsxzOh6fYdYzYJkZOAhcjfC4D1zlL1v4t95t+EwKTTkayOx/qGXFBcnF5EPnPhw8uHbA641szAyUMXKQgUKHT6QFeS027foVxmLylzAo/K4WPrNtvSC2IItLGJozZXTnWTACWK9EVkytSZi2nlpYGXjd1FsGD1Av8nOfwY+HFPGFts9GlgBPPll4ENoLfRVPz
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM5PR1201MB0187.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(508600001)(38100700002)(8676002)(966005)(186003)(26005)(6666004)(31696002)(6916009)(86362001)(7416002)(31686004)(316002)(2616005)(956004)(36756003)(16576012)(66946007)(5660300002)(6486002)(66556008)(66476007)(2906002)(83380400001)(4326008)(45080400002)(66574015)(8936002)(45980500001)(43740500002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?R2F5eDNMMDVtSzFtRHlUV2RvcDFWb0lMUHJZZStiL0l6MW16NlN3cVpReEtu?=
- =?utf-8?B?eWkxaE42MUp4ZjVzS0JsR0JMc05MbVVJTDQxcGIzOUN0QU1TUzNJbFdaSXhS?=
- =?utf-8?B?bDZIWDBzaVIxZUo4UGN0UDBhVXQ3SXU5TjJaMVJ0L1FDMzFLbU4vOXFqMUFH?=
- =?utf-8?B?b1RDMnk4NnRBbndYU2VsNThVK0QyNHIwbUkrdVlzNGN2YnFNdHJ4SVBGdFNy?=
- =?utf-8?B?bHdxMkJCdllVNHRqNm83Lyt0RnZkNmJySVlGU2t3TEJZUGlCWkJuQ1lJT1c1?=
- =?utf-8?B?OEJFSXB5cXVCdklUYnNxV3lDTGRjTy9yY3YrRTJ1QjFtS2c5cWZLUEkwZUZ6?=
- =?utf-8?B?THlWWmVQTEs1R2Q2SU5reVZUbzZLVEprTUh2ZU5YdXNnMGg3bmo2Vi9GWXcr?=
- =?utf-8?B?bkg5RkF4dk9VYkloaCtiWnlDbm50VlpxT1I3RkcyTUNIajR6endxS0h4QnpH?=
- =?utf-8?B?b3ZSa0IrYmFQaWVreFZNakQvOG5PeGltTmJIbE4xaFlYZHNQelFMd0pMcEhX?=
- =?utf-8?B?VGR1bFFkYjRHTTBQKzgxTmNhWCtZdU5Tam5FRTI1WFIwL2VCUTcxTHJPUnZW?=
- =?utf-8?B?Wkl6c29yRExHekpjM0NaMjhUV015WTRMRlVER3RDOEV3WGU2YTd6YVZvdGFt?=
- =?utf-8?B?cS9pRTVBcXkzRldwY2dnUkZnREF1N0pwWUEwQUw0cjR4Q3hsdCtWVFNLQUd3?=
- =?utf-8?B?eVBrUlBiWlQ1Ym02MnlFVWN1bDVKOXhyMGl0NHYxMzdXOG45S2xNaVV4WTYw?=
- =?utf-8?B?cUVlUVBTaWpuUTZNRmhtbFlSRGhOWkVFZmtsWGk3QUcvQVVvWW5Ob3RZaWRw?=
- =?utf-8?B?OE5uUk9oOHJVM2JqV1JVVDNOVjFuTnBqR2owZ0pwR0luSjRwTHZaL2dPOG9u?=
- =?utf-8?B?V1RHejRBdkE3MC82U2hvQm14WkRVNE40K1FQYTJFaFEwRW8wV0crdmFUTDJo?=
- =?utf-8?B?QW1rOXhuY2JzeG93VFhxanNSMUh2c1Z2eXJ4Q0VOTWVJOGpUUys2d0pFMnQ5?=
- =?utf-8?B?NjhSYmpIVUFjMU9NeUZFQmNCRkNCSk1LdFM4cTV2aEFXb2ZrOTNOYU03aTlU?=
- =?utf-8?B?QmxBdHNLSnhzTmNMK21URUhudzl4MlB5cFFmaUJ0bWQzOGxReW43ZnkrdE03?=
- =?utf-8?B?R25vR05NNHFsVENiWXZLK1dIQnIyL2p4V1VMS01aQXRkMGgyRWw4UFhvZDNh?=
- =?utf-8?B?c0NvemRDZ01OUWFlelJRbmExRUVlWHpBL3JWMDRkald0ZXd0SDhKRktjaWxl?=
- =?utf-8?B?bUI5SWFPMVVoRng4VDlKL1d0ZnRlN0dKZENzaWlJMW5sTDBuVTRXRXdoUjdi?=
- =?utf-8?B?UFRnY0M5bVhhcHZLZEVZMTRNMDk1VjJFd1RMZGt4dng4Qzd0aS9oY0RudEN0?=
- =?utf-8?B?N0VvUklLYVUwTmtuQ1ZsWGFITmZCNVFQc0NFc01tN21EeFAwWnNVZldUSFdB?=
- =?utf-8?B?SDY2RTZ4WndoYXQvL0lPV0UwQ09adHk5TVFxejRrRUw4NDBjb0VJc1BycEJK?=
- =?utf-8?B?RmpBYmV2YUhyL2RjTXdOdnZuYksvSTZDMVBCV0c3S3lUSm9Vb2RyL3JqWnlY?=
- =?utf-8?B?MmcrRFp4V3pZc2wvTC9KY2M3Z2pObGFHVGZjd3pSZGNhK3VYdU9YcnM5R0RY?=
- =?utf-8?B?bGxIOTJ2QTlPd0JzbEcxVlkxK2VkellnZ044d25tb0FVK3B4c1FlS2dCZkFH?=
- =?utf-8?B?eXRUS0YxK0xBU3JrK2hrTkxScFBoWm1HQ3NoTkVONnN4THdBY1k1TXI4YjZj?=
- =?utf-8?B?N3pxeksxQ0FtT0lmdXQ4RFYwV1E3WWlwNEhzdzF1RWptbDBkZnNCMisxbGps?=
- =?utf-8?B?UkpWL1o0S2lkNW82NE5JVi8zY2JaY2N6Wk1CbXhBd09KMTV1ZDRMQkNkWWFn?=
- =?utf-8?B?aXc0OU5RbHFrQkR0bjZYMkpVeUEyTS9VemdiUS9xMXg2Z0NGUWFtcGNrRzds?=
- =?utf-8?B?ODN3NEczd0QxOGVlK3hrNmhhZmwrRlBvQ3JJNmN1ckZ4cmVLQk5GRTVwTlBC?=
- =?utf-8?B?enVremh5Q3pJNWRmeFlXYlIvejlEbG9oQzFvV2djTHJsTlhkeXhQenpCbHBL?=
- =?utf-8?B?aWVPeVZpeGc5NXlHQk5WalFmQThmSUN4Q0luUEtRWXdIbGtUeVJENDRFbVRY?=
- =?utf-8?Q?5IQs=3D?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 47d1d1fd-9547-46c4-45d3-08d99aae9d12
-X-MS-Exchange-CrossTenant-AuthSource: DM5PR1201MB0187.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Oct 2021 07:35:00.5100 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: XOqZc4CLwfmH6vMrYbHcySvyj8mFCfBzbOwuRlgfSgmBGhh9IY0B++lFaG/59PN+
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4236
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.1
+Subject: Re: [PATCH v3 2/3] drm: Add Gamma and Degamma LUT sizes props to
+ drm_crtc to validate.
+Content-Language: en-US
+To: Mark Yacoub <markyacoub@chromium.org>
+Cc: seanpaul@chromium.org, Mark Yacoub <markyacoub@google.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20211026192104.1860504-1-markyacoub@chromium.org>
+ <20211026192104.1860504-2-markyacoub@chromium.org>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20211026192104.1860504-2-markyacoub@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211029_003504_408987_F62E5C4D 
-X-CRM114-Status: GOOD (  14.03  )
+X-CRM114-CacheID: sfid-20211029_004824_286422_A8960CE7 
+X-CRM114-Status: GOOD (  33.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,53 +74,280 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpBbSAyOS4xMC4yMSB1bSAwNDoxNSBzY2hyaWViIGd1YW5nbWluZy5jYW9AbWVkaWF0ZWsuY29t
-Ogo+IEZyb206IEd1YW5nbWluZyBDYW8gPEd1YW5nbWluZy5DYW9AbWVkaWF0ZWsuY29tPgo+Cj4g
-T24gRnJpLCAyMDIxLTEwLTA4IGF0IDEyOjI0ICswMjAwLCBDaHJpc3RpYW4gS8O2bmlnIHdyb3Rl
-Ogo+PiBBbSAwOC4xMC4yMSB1bSAwOTo1NCBzY2hyaWViIGd1YW5nbWluZy5jYW9AbWVkaWF0ZWsu
-Y29tOgo+Pj4gRnJvbTogR3VhbmdtaW5nIENhbyA8R3VhbmdtaW5nLkNhb0BtZWRpYXRlay5jb20+
-Cj4+Pgo+Pj4gQmVjYXVzZSBkbWEtYnVmLm5hbWUgY2FuIGJlIGZyZWVkIGluIGZ1bmM6ICJkbWFf
-YnVmX3NldF9uYW1lIiwKPj4+IHNvLCB3ZSBuZWVkIHRvIGFjcXVpcmUgbG9jayBmaXJzdCBiZWZv
-cmUgd2UgcmVhZC93cml0ZSBkbWFfYnVmLm5hbWUKPj4+IHRvIHByZXZlbnQgVXNlIEFmdGVyIEZy
-ZWUoVUFGKSBpc3N1ZS4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBHdWFuZ21pbmcgQ2FvIDxHdWFu
-Z21pbmcuQ2FvQG1lZGlhdGVrLmNvbT4KPj4gUmV2aWV3ZWQtYnk6IENocmlzdGlhbiBLw7ZuaWcg
-PGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4KPj4KPj4gR29pbmcgdG8gcHVzaCB0aGF0IHVwc3Ry
-ZWFtIGlmIG5vYm9keSBlbHNlIG9iamVjdHMuCj4+Cj4+IFRoYW5rcywKPj4gQ2hyaXN0aWFuLgo+
-IEp1c3QgYSBnZW50bGUgcGluZyBmb3IgdGhpcyBwYXRjaCwgcGxlYXNlIGtpbmRseSBsZXQgbWUg
-a25vdyBob3cgaXMgaXQgZ29pbmcuCgpBaCwgeWVzLiBUaGFua3MgZm9yIHRoZSByZW1pbmRlci4K
-CkkndmUganVzdCBwdXNoZWQgdGhpcyB0byBkcm0tbWlzYy1maXhlcy4KCkNocmlzdGlhbi4KCj4K
-Pj4+IC0tLQo+Pj4gICAgZHJpdmVycy9kbWEtYnVmL2RtYS1idWYuYyB8IDMgKysrCj4+PiAgICAx
-IGZpbGUgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspCj4+Pgo+Pj4gZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZG1hLWJ1Zi9kbWEtYnVmLmMgYi9kcml2ZXJzL2RtYS1idWYvZG1hLWJ1Zi5jCj4+PiBpbmRl
-eCA1MTFmZTBkMjE3YTAuLmE3ZjZmZDEzYTYzNSAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZG1h
-LWJ1Zi9kbWEtYnVmLmMKPj4+ICsrKyBiL2RyaXZlcnMvZG1hLWJ1Zi9kbWEtYnVmLmMKPj4+IEBA
-IC0xMzcyLDYgKzEzNzIsOCBAQCBzdGF0aWMgaW50IGRtYV9idWZfZGVidWdfc2hvdyhzdHJ1Y3Qg
-c2VxX2ZpbGUKPj4+ICpzLCB2b2lkICp1bnVzZWQpCj4+PiAgICAJCWlmIChyZXQpCj4+PiAgICAJ
-CQlnb3RvIGVycm9yX3VubG9jazsKPj4+ICAgIAo+Pj4gKwo+Pj4gKwkJc3Bpbl9sb2NrKCZidWZf
-b2JqLT5uYW1lX2xvY2spOwo+Pj4gICAgCQlzZXFfcHJpbnRmKHMsCj4+PiAiJTA4enVcdCUwOHhc
-dCUwOHhcdCUwOGxkXHQlc1x0JTA4bHVcdCVzXG4iLAo+Pj4gICAgCQkJCWJ1Zl9vYmotPnNpemUs
-Cj4+PiAgICAJCQkJYnVmX29iai0+ZmlsZS0+Zl9mbGFncywgYnVmX29iai0+ZmlsZS0KPj4+PiBm
-X21vZGUsCj4+PiBAQCAtMTM3OSw2ICsxMzgxLDcgQEAgc3RhdGljIGludCBkbWFfYnVmX2RlYnVn
-X3Nob3coc3RydWN0IHNlcV9maWxlCj4+PiAqcywgdm9pZCAqdW51c2VkKQo+Pj4gICAgCQkJCWJ1
-Zl9vYmotPmV4cF9uYW1lLAo+Pj4gICAgCQkJCWZpbGVfaW5vZGUoYnVmX29iai0+ZmlsZSktPmlf
-aW5vLAo+Pj4gICAgCQkJCWJ1Zl9vYmotPm5hbWUgPzogIiIpOwo+Pj4gKwkJc3Bpbl91bmxvY2so
-JmJ1Zl9vYmotPm5hbWVfbG9jayk7Cj4+PiAgICAKPj4+ICAgIAkJcm9iaiA9IGJ1Zl9vYmotPnJl
-c3Y7Cj4+PiAgICAJCWZlbmNlID0gZG1hX3Jlc3ZfZXhjbF9mZW5jZShyb2JqKTsKPj4KPj4gX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KPj4gTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0Cj4+IExpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
-Pj4gaHR0cHM6Ly9uYW0xMS5zYWZlbGlua3MucHJvdGVjdGlvbi5vdXRsb29rLmNvbS8/dXJsPWh0
-dHAlM0ElMkYlMkZsaXN0cy5pbmZyYWRlYWQub3JnJTJGbWFpbG1hbiUyRmxpc3RpbmZvJTJGbGlu
-dXgtbWVkaWF0ZWsmYW1wO2RhdGE9MDQlN0MwMSU3Q2NocmlzdGlhbi5rb2VuaWclNDBhbWQuY29t
-JTdDOWU5NWFlMDhkNjNkNDQwZmM0ZDEwOGQ5OWE4MjAwYzElN0MzZGQ4OTYxZmU0ODg0ZTYwOGUx
-MWE4MmQ5OTRlMTgzZCU3QzAlN0MwJTdDNjM3NzEwNzA1NTQyODQxNTg2JTdDVW5rbm93biU3Q1RX
-RnBiR1pzYjNkOGV5SldJam9pTUM0d0xqQXdNREFpTENKUUlqb2lWMmx1TXpJaUxDSkJUaUk2SWsx
-aGFXd2lMQ0pYVkNJNk1uMCUzRCU3QzEwMDAmYW1wO3NkYXRhPUhkaUQ4JTJGWDg1M25RMXZEOG4w
-UXNmdjkzTmFIQ0NJSkY2UGIyck9kJTJGTE9RJTNEJmFtcDtyZXNlcnZlZD0wCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFp
-bGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Dear Mark,
+
+
+On 26.10.21 21:21, Mark Yacoub wrote:
+> From: Mark Yacoub <markyacoub@google.com>
+> 
+> [Why]
+> 1. drm_atomic_helper_check doesn't check for the LUT sizes of either Gamma
+> or Degamma props in the new CRTC state, allowing any invalid size to
+> be passed on.
+> 2. Each driver has its own LUT size, which could also be different for
+> legacy users.
+> 
+> [How]
+> 1. Create |degamma_lut_size| and |gamma_lut_size| to save the LUT sizes
+> assigned by the driver when it's initializing its color and CTM
+> management.
+> 2. Create drm_atomic_helper_check_crtc which is called by
+> drm_atomic_helper_check to check the LUT sizes saved in drm_crtc that
+> they match the sizes in the new CRTC state.
+> 3. As the LUT size check now happens in drm_atomic_helper_check, remove
+> the lut check in intel_color.c
+> 
+> Resolves: igt@kms_color@pipe-A-invalid-gamma-lut-sizes on MTK
+> Tested on Zork(amdgpu) and Jacuzzi(mediatek), volteer(TGL)
+
+If you should sent another iteration, only a minor thing, could you 
+please add a space before the (.
+
+> 
+> v2:
+> 1. Remove the rename to a parent commit.
+> 2. Create a drm drm_check_lut_size instead of intel only function.
+> 
+> v1:
+> 1. Fix typos
+> 2. Remove the LUT size check from intel driver
+> 3. Rename old LUT check to indicate it's a channel change
+> 
+> Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
+> ---
+>   drivers/gpu/drm/drm_atomic_helper.c        | 56 ++++++++++++++++++++++
+>   drivers/gpu/drm/drm_color_mgmt.c           |  2 +
+>   drivers/gpu/drm/i915/display/intel_color.c | 39 ++++++++-------
+>   include/drm/drm_atomic_helper.h            |  1 +
+>   include/drm/drm_color_mgmt.h               | 13 +++++
+>   include/drm/drm_crtc.h                     | 11 +++++
+>   6 files changed, 102 insertions(+), 20 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_atomic_helper.c
+> index bc3487964fb5e..c565b3516cce9 100644
+> --- a/drivers/gpu/drm/drm_atomic_helper.c
+> +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> @@ -929,6 +929,58 @@ drm_atomic_helper_check_planes(struct drm_device *dev,
+>   }
+>   EXPORT_SYMBOL(drm_atomic_helper_check_planes);
+>   
+> +/**
+> + * drm_atomic_helper_check_crtcs - validate state object for CRTC changes
+> + * @state: the driver state object
+> + *
+> + * Check the CRTC state object such as the Gamma/Degamma LUT sizes if the new
+> + * state holds them.
+> + *
+> + * RETURNS:
+> + * Zero for success or -errno
+> + */
+> +int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state)
+> +{
+> +	struct drm_crtc *crtc;
+> +	struct drm_crtc_state *new_crtc_state;
+> +	int i;
+> +
+> +	for_each_new_crtc_in_state (state, crtc, new_crtc_state, i) {
+> +		if (new_crtc_state->color_mgmt_changed &&
+> +		    new_crtc_state->gamma_lut) {
+> +			if (drm_check_lut_size(new_crtc_state->gamma_lut,
+> +					       crtc->gamma_lut_size) ||
+> +			    drm_check_lut_size(new_crtc_state->gamma_lut,
+> +					       crtc->gamma_size)) {
+> +				drm_dbg_state(
+> +					state->dev,
+> +					"Invalid Gamma LUT size. Should be %u (or %u for legacy) but got %u.\n",
+> +					crtc->gamma_lut_size, crtc->gamma_size,
+> +					drm_color_lut_size(
+> +						new_crtc_state->gamma_lut));
+> +				return -EINVAL;
+> +			}
+> +		}
+> +
+> +		if (new_crtc_state->color_mgmt_changed &&
+> +		    new_crtc_state->degamma_lut) {
+> +			if (drm_check_lut_size(new_crtc_state->degamma_lut,
+> +					       crtc->degamma_lut_size)) {
+> +				drm_dbg_state(
+> +					state->dev,
+> +					"Invalid DeGamma LUT size. Should be %u but got %u.\n",
+> +					crtc->degamma_lut_size,
+> +					drm_color_lut_size(
+> +						new_crtc_state->degamma_lut));
+> +				return -EINVAL;
+> +			}
+> +		}
+> +	}
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(drm_atomic_helper_check_crtcs);
+> +
+>   /**
+>    * drm_atomic_helper_check - validate state object
+>    * @dev: DRM device
+> @@ -974,6 +1026,10 @@ int drm_atomic_helper_check(struct drm_device *dev,
+>   	if (ret)
+>   		return ret;
+>   
+> +	ret = drm_atomic_helper_check_crtcs(state);
+> +	if (ret)
+> +		return ret;
+> +
+>   	if (state->legacy_cursor_update)
+>   		state->async_update = !drm_atomic_helper_async_check(dev, state);
+>   
+> diff --git a/drivers/gpu/drm/drm_color_mgmt.c b/drivers/gpu/drm/drm_color_mgmt.c
+> index 6f4e04746d90f..6bb59645a75bc 100644
+> --- a/drivers/gpu/drm/drm_color_mgmt.c
+> +++ b/drivers/gpu/drm/drm_color_mgmt.c
+> @@ -166,6 +166,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
+>   	struct drm_mode_config *config = &dev->mode_config;
+>   
+>   	if (degamma_lut_size) {
+> +		crtc->degamma_lut_size = degamma_lut_size;
+>   		drm_object_attach_property(&crtc->base,
+>   					   config->degamma_lut_property, 0);
+>   		drm_object_attach_property(&crtc->base,
+> @@ -178,6 +179,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc,
+>   					   config->ctm_property, 0);
+>   
+>   	if (gamma_lut_size) {
+> +		crtc->gamma_lut_size = gamma_lut_size;
+>   		drm_object_attach_property(&crtc->base,
+>   					   config->gamma_lut_property, 0);
+>   		drm_object_attach_property(&crtc->base,
+> diff --git a/drivers/gpu/drm/i915/display/intel_color.c b/drivers/gpu/drm/i915/display/intel_color.c
+> index 4bb1bc76c4de9..888886d2936f8 100644
+> --- a/drivers/gpu/drm/i915/display/intel_color.c
+> +++ b/drivers/gpu/drm/i915/display/intel_color.c
+> @@ -1262,23 +1262,6 @@ intel_color_add_affected_planes(struct intel_crtc_state *new_crtc_state)
+>   	return 0;
+>   }
+>   
+> -static int check_lut_size(const struct drm_property_blob *lut, int expected)
+> -{
+> -	int len;
+> -
+> -	if (!lut)
+> -		return 0;
+> -
+> -	len = drm_color_lut_size(lut);
+> -	if (len != expected) {
+> -		DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
+> -			      len, expected);
+> -		return -EINVAL;
+> -	}
+> -
+> -	return 0;
+> -}
+> -
+>   static int check_luts(const struct intel_crtc_state *crtc_state)
+>   {
+>   	struct drm_i915_private *dev_priv = to_i915(crtc_state->uapi.crtc->dev);
+> @@ -1303,9 +1286,25 @@ static int check_luts(const struct intel_crtc_state *crtc_state)
+>   	degamma_channels_tests = INTEL_INFO(dev_priv)->color.degamma_lut_tests;
+>   	gamma_channels_tests = INTEL_INFO(dev_priv)->color.gamma_lut_tests;
+>   
+> -	if (check_lut_size(degamma_lut, degamma_length) ||
+> -	    check_lut_size(gamma_lut, gamma_length))
+> -		return -EINVAL;
+> +	if (degamma_lut) {
+> +		if (drm_check_lut_size(degamma_lut, degamma_length)) {
+> +			drm_dbg_state(
+> +				&dev_priv->drm,
+> +				"Invalid DeGamma LUT size. Should be %u but got %u.\n",
+> +				degamma_length,
+> +				drm_color_lut_size(degamma_lut));
+> +			return -EINVAL;
+> +		}
+> +	}
+> +	if (gamma_lut) {
+> +		if (drm_check_lut_size(gamma_lut, degamma_length)) {
+> +			drm_dbg_state(
+> +				&dev_priv->drm,
+> +				"Invalid Gamma LUT size. Should be %u but got %u.\n",
+> +				degamma_length, drm_color_lut_size(gamma_lut));
+> +			return -EINVAL;
+> +		}
+> +	}
+>   
+>   	if (drm_color_lut_channels_check(degamma_lut, degamma_channels_tests) ||
+>   	    drm_color_lut_channels_check(gamma_lut, gamma_channels_tests))
+> diff --git a/include/drm/drm_atomic_helper.h b/include/drm/drm_atomic_helper.h
+> index 4045e2507e11c..a22d32a7a8719 100644
+> --- a/include/drm/drm_atomic_helper.h
+> +++ b/include/drm/drm_atomic_helper.h
+> @@ -38,6 +38,7 @@ struct drm_atomic_state;
+>   struct drm_private_obj;
+>   struct drm_private_state;
+>   
+> +int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state);
+>   int drm_atomic_helper_check_modeset(struct drm_device *dev,
+>   				struct drm_atomic_state *state);
+>   int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_state,
+> diff --git a/include/drm/drm_color_mgmt.h b/include/drm/drm_color_mgmt.h
+> index cb1bf361ad3e3..c214812d1b7a5 100644
+> --- a/include/drm/drm_color_mgmt.h
+> +++ b/include/drm/drm_color_mgmt.h
+> @@ -74,6 +74,19 @@ static inline int drm_color_lut_size(const struct drm_property_blob *blob)
+>   	return blob->length / sizeof(struct drm_color_lut);
+>   }
+>   
+> +/**
+> + * drm_check_lut_size - Checks if LUT size matches the driver expected size.
+> + * @lut: blob containing the LUT
+> + * @expected_size: driver expected LUT size
+> + *
+> + * Returns -EINVAL on mismatch, 0 on match.
+> + */
+> +static inline int drm_check_lut_size(const struct drm_property_blob *lut,
+> +				     uint64_t expected_size)
+> +{
+> +	return drm_color_lut_size(lut) != expected_size ? -EINVAL : 0;
+> +}
+> +
+>   enum drm_color_encoding {
+>   	DRM_COLOR_YCBCR_BT601,
+>   	DRM_COLOR_YCBCR_BT709,
+> diff --git a/include/drm/drm_crtc.h b/include/drm/drm_crtc.h
+> index 2deb15d7e1610..cabd3ef1a6e32 100644
+> --- a/include/drm/drm_crtc.h
+> +++ b/include/drm/drm_crtc.h
+> @@ -1072,6 +1072,17 @@ struct drm_crtc {
+>   	/** @funcs: CRTC control functions */
+>   	const struct drm_crtc_funcs *funcs;
+>   
+> +	/**
+> +	 * @degamma_lut_size: Size of degamma LUT.
+> +	 */
+> +	uint32_t degamma_lut_size;
+
+Why not use size_t?
+
+> +
+> +	/**
+> +	 * @gamma_lut_size: Size of Gamma LUT. Not used by legacy userspace such as
+> +	 * X, which doesn't support large lut sizes.
+> +	 */
+> +	uint32_t gamma_lut_size;
+> +
+>   	/**
+>   	 * @gamma_size: Size of legacy gamma ramp reported to userspace. Set up
+>   	 * by calling drm_mode_crtc_set_gamma_size().
+> 
+
+
+Kind regards,
+
+Paul
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
