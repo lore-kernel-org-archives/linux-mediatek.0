@@ -1,70 +1,83 @@
-Return-Path: <SRS0=IDfX=PQ=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 172FBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 22:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB3CAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 00:12:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CB111610F8
-	for <linux-mediatek@archiver.kernel.org>; Thu, 28 Oct 2021 22:30:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CB111610F8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AA0A2610F8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 00:12:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AA0A2610F8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ea+AVYLXaNCJ59aMLJy+bp+/uPhwfZmmzIRLdU4zYuw=; b=KpcoZ6AWL2BEjM
-	jeQGolOC6QLWD5wJkndL7rQrpCK78icrrNkm6quULNhQRAmUKrori4y9E/vxsJfhbIBPDu9wxTKBp
-	8y9bbMKfpxfAxSOg2JDKk7Qo2IlZnOP9Rys9zMRkAbVqxaV1AJqPHvU412f2M5y63inBLBTWPi0Tg
-	i0IUJsDWrJJETPyB8k9Cmplh+m289roY/2tzJNwlqLfXlR2eSxzAIOIYccU6xpdP6XTkiNZXac4Up
-	xvujNOBaGKB/+R53iaacWhfHE4tOSbtXfS0RvElDPYPeH4PpEnAQuY7ncoIZb/X0qprrFi309RGCz
-	bOxgTJgMJ03K90BCjoyA==;
+	List-Owner; bh=R0MbNe5d3mGa8MudFr/1VbfDYhLBqo0FZOc+/+y5ERY=; b=DIwqF2bwuo1EME
+	bQlgHByeDR3+cPBC+cptf80foYeZJuMOrJF+4u1ajQOwjvLwtMGezBpn8d80vKkL8hk2F39xbXnv2
+	SdPAXcDD/dK6J9huQFm89pp+V7ydte+piTmqxKjQGvbhMmX1u9J0B08chBJZafAeN2xei2hdp087J
+	HAXb7883viZPQCghNLrkL/II2V4Ao8wjNFiAv0S1LXPWZcyY5zQbQubscWfVGZIWH3u0xQgMs/lCy
+	mx/+EYpOBdNL5ZyCzaiCQntwEbTCX/a0JlQbuXQ9ZiSmrADenNu6w+hfgAgRKUHZflqYFOOfgRBtH
+	Kiqyk/2wK+xGilrey+gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgDuT-009FcP-MN; Thu, 28 Oct 2021 22:30:09 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mgFVk-009LLr-Ix; Fri, 29 Oct 2021 00:12:44 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgDuQ-009Fc7-5B
- for linux-mediatek@lists.infradead.org; Thu, 28 Oct 2021 22:30:08 +0000
-X-UUID: dff9b6582b424dee92771e1d80546531-20211028
-X-UUID: dff9b6582b424dee92771e1d80546531-20211028
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1909513646; Thu, 28 Oct 2021 15:30:02 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Oct 2021 15:30:00 -0700
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by
- mtkmbs10n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Fri, 29 Oct 2021 06:30:00 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
- <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
- <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
- <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
- <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
- <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mt76: mt7921: drop offload_flags overwritten
-Date: Fri, 29 Oct 2021 06:29:58 +0800
-Message-ID: <6eb228b938338bc33c9c5b0eb05ea8d0587a704b.1635460021.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1mgFVU-009LJW-VV; Fri, 29 Oct 2021 00:12:32 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id u25so5285529qve.2;
+ Thu, 28 Oct 2021 17:12:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=zCdvHAMPb/U3XpOEmTJBvwKtKMr8OtCBU8SciZQYv0I=;
+ b=Av48rDYAzVf/RSt+M91LSQcSgR2dMlUJhcAugutzpsobYfduotKLHEMV4fMB4NOqoQ
+ igsM0xvRQUi9F+gcG9ys4/HsosHfBGwOl98gJV46c6r2eBGfHYJq3Qx30j0/GDPChDDH
+ yPid3AaULXuqNR8PWnQcMUDcRbIfuMGGrKSWWsOAY2aaEdgfXJZ+N9F8NbyxJ+Y/k/iW
+ jGZQwGDlIHk0a51qogNGras2lEkQgtyijMeaLvA2TtG0Nb5DHcopUknxgmhWmlAmfrRm
+ b3xS5u569mFrUT3EEi7tQn2xj7dzlGqAv3g1sWoHVcBy2ENZArkKWaZUQpK4HpSHNeap
+ KtrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=zCdvHAMPb/U3XpOEmTJBvwKtKMr8OtCBU8SciZQYv0I=;
+ b=OKpS+nZbKCn5RQJFhtYbN9H7W3N3u9CSp6tP+VaKDcgFDrUJgsjI5d6XJGH1Vs2te8
+ PAkaWLLtCW5LdTeTJo5+oWKVO3Wb0BvI9mn8NIHeHc6Yw4WpjflXnpYuD1DVdOnIjbUv
+ UmyMFMdFqd9W+zNZl6xWMw4y/OFEs6w6wcD9eFdSKbaLWbAD1vpUjHdQrLGJmEhqzaU6
+ pj//Iz2jorUZAXHfopITDdqzhnS7h8hy9o6POasACOgpx+ATER0TgeFFw/54eLQEyZWL
+ hrgn/dlkhuMjCkkqUsSQRymYAlZRUrI2QX6UkH4NsF0MBTeSr++dy4AEUGeSRFr7fVtK
+ k8zA==
+X-Gm-Message-State: AOAM532Q7QzBr8X76oIhrEFpS/Z/PE8Hf50Zl8RgqCLw8tnrFrHIn7o8
+ N006XOr0h06/xVGTTjM7syE=
+X-Google-Smtp-Source: ABdhPJy5ntN/HUll1913v6EiH0jp0EXjSai/uspe5ux/XvPebuhBFbYgC/ThsqZ+6FFFGA8m5zfjMw==
+X-Received: by 2002:a05:6214:98d:: with SMTP id
+ dt13mr7478426qvb.13.1635466346900; 
+ Thu, 28 Oct 2021 17:12:26 -0700 (PDT)
+Received: from localhost.localdomain ([67.8.38.84])
+ by smtp.gmail.com with ESMTPSA id f3sm514334qtf.55.2021.10.28.17.12.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 28 Oct 2021 17:12:26 -0700 (PDT)
+From: Julian Braha <julianbraha@gmail.com>
+To: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, jiaxin.yu@mediatek.com,
+ tzungbi@google.com, arnd@arndb.de
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ fazilyildiran@gmail.com
+Subject: [PATCH] ASoC: fix unmet dependencies on GPIOLIB for SND_SOC_RT1015P
+Date: Thu, 28 Oct 2021 20:12:25 -0400
+Message-Id: <20211029001225.27218-1-julianbraha@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211028_153006_256181_EED46345 
-X-CRM114-Status: UNSURE (   8.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211028_171229_050299_428C11D3 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,40 +94,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+When SND_SOC_MT8192_MT6359_RT1015_RT5682,
+SND_SOC_MT8192_MT6359_RT1015_RT5682,
+SND_SOC_MT8183_DA7219_MAX98357A, or
+SND_SOC_MT8183_MT6358_TS3A227E_MAX98357A is selected,
+and GPIOLIB is not selected, Kbuild gives the following
+warnings, respectively:
 
-offload_flags have to be dropped for mt7921 because mt76.omac_idx 0 would
-always run as station mode that would cause Tx encapsulation setting
-is not applied to mac80211.
+WARNING: unmet direct dependencies detected for SND_SOC_DMIC
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && GPIOLIB [=n]
+  Selected by [y]:
+  - SND_SOC_MT8192_MT6359_RT1015_RT5682 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=y] && SND_SOC_MT8192 [=y] && MTK_PMIC_WRAP [=y]
 
-Also, drop IEEE80211_OFFLOAD_ENCAP_4ADDR too because it is not really
-being supported.
+WARNING: unmet direct dependencies detected for SND_SOC_RT1015P
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && GPIOLIB [=n]
+  Selected by [y]:
+  - SND_SOC_MT8192_MT6359_RT1015_RT5682 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=y] && SND_SOC_MT8192 [=y] && MTK_PMIC_WRAP [=y]
 
-Fixes: e0f9fdda81bd ("mt76: mt7921: add ieee80211_ops")
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+WARNING: unmet direct dependencies detected for SND_SOC_RT1015P
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && GPIOLIB [=n]
+  Selected by [y]:
+  - SND_SOC_MT8183_DA7219_MAX98357A [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && SND_SOC_MT8183 [=y] && I2C [=y]
+
+WARNING: unmet direct dependencies detected for SND_SOC_RT1015P
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && GPIOLIB [=n]
+  Selected by [y]:
+  - SND_SOC_MT8183_MT6358_TS3A227E_MAX98357A [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=y] && SND_SOC_MT8183 [=y]
+
+This is because these config options select SND_SOC_RT1015P
+without selecting or depending on GPIOLIB, despite
+SND_SOC_RT1015P depending on GPIOLIB.
+
+These unmet dependency bugs were detected by Kismet,
+a static analysis tool for Kconfig. Please advise if this
+is not the appropriate solution.
+
+Signed-off-by: Julian Braha <julianbraha@gmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 6 ------
- 1 file changed, 6 deletions(-)
+ sound/soc/mediatek/Kconfig | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 633c6d2a57ac..b144f5491798 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -318,12 +318,6 @@ static int mt7921_add_interface(struct ieee80211_hw *hw,
- 		mtxq->wcid = &mvif->sta.wcid;
- 	}
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 81ad2dcee9eb..d10d6a3bf5eb 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -120,7 +120,7 @@ config SND_SOC_MT8183
  
--	if (vif->type != NL80211_IFTYPE_AP &&
--	    (!mvif->mt76.omac_idx || mvif->mt76.omac_idx > 3))
--		vif->offload_flags = 0;
--
--	vif->offload_flags |= IEEE80211_OFFLOAD_ENCAP_4ADDR;
--
- out:
- 	mt7921_mutex_release(dev);
+ config SND_SOC_MT8183_MT6358_TS3A227E_MAX98357A
+ 	tristate "ASoC Audio driver for MT8183 with MT6358 TS3A227E MAX98357A RT1015 codec"
+-	depends on I2C
++	depends on I2C && GPIOLIB
+ 	depends on SND_SOC_MT8183
+ 	select SND_SOC_MT6358
+ 	select SND_SOC_MAX98357A
+@@ -138,7 +138,7 @@ config SND_SOC_MT8183_MT6358_TS3A227E_MAX98357A
  
+ config SND_SOC_MT8183_DA7219_MAX98357A
+ 	tristate "ASoC Audio driver for MT8183 with DA7219 MAX98357A RT1015 codec"
+-	depends on SND_SOC_MT8183 && I2C
++	depends on SND_SOC_MT8183 && I2C && GPIOLIB
+ 	select SND_SOC_MT6358
+ 	select SND_SOC_MAX98357A
+ 	select SND_SOC_RT1015
+@@ -173,7 +173,7 @@ config SND_SOC_MT8192
+ 
+ config SND_SOC_MT8192_MT6359_RT1015_RT5682
+ 	tristate "ASoC Audio driver for MT8192 with MT6359 RT1015 RT5682 codec"
+-	depends on I2C
++	depends on I2C && GPIOLIB
+ 	depends on SND_SOC_MT8192 && MTK_PMIC_WRAP
+ 	select SND_SOC_MT6359
+ 	select SND_SOC_RT1015
+@@ -200,7 +200,7 @@ config SND_SOC_MT8195
+ 
+ config SND_SOC_MT8195_MT6359_RT1019_RT5682
+ 	tristate "ASoC Audio driver for MT8195 with MT6359 RT1019 RT5682 codec"
+-	depends on I2C
++	depends on I2C && GPIOLIB
+ 	depends on SND_SOC_MT8195 && MTK_PMIC_WRAP
+ 	select SND_SOC_MT6359
+ 	select SND_SOC_RT1015P
 -- 
-2.25.1
+2.30.2
 
 
 _______________________________________________
