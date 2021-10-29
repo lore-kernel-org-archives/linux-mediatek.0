@@ -2,14 +2,14 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A38A5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 03:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E269C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 03:30:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 63A0C6103B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 03:25:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 63A0C6103B
+	by mail.kernel.org (Postfix) with ESMTPS id 340E060FC4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 03:30:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 340E060FC4
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,67 +18,68 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e3qv5QraPImGqEs72oy5Vh9Axml7xA3pnis6ELAhhyM=; b=y8yihgreDHmd7H
-	mXWYDUA8hU+XLiZniLGyxAaZeFPSMDBMbLvUgaer0OXlk7nr+Q2Qe90DYBqvoUHZYayIhB3WqiIf2
-	cZMhF8dnG/5uYW/PeaMT1vrHtPqrM+ANC/sjbO1NUH71nIk20T0jq2NU5cDwnAHimKITvBd9gqTUN
-	ZLur40Qkjohb8rat+NhtwZl50VUMMMShrzf73yX5FU2n4+eA453UTwdOqzw9FxJ5Q1/Ww2bkQpLXm
-	AGU2XrgY7M3GQRUY1qR9QfW7FGiXCUOceuUY32tW5whdTJknK9xqLn1H1pp2LRz8Radx1q5vkScb2
-	LWL4M5IyLp2DFNhDoBYQ==;
+	List-Owner; bh=W6cqMBDVZrn0rtZdPbZfXT3ClJRHtx0XAKENH57CJs8=; b=vOPPiYen9SU8qd
+	O6M0MUt4/JL9TcS1iAUGgR1EOQS3knf0QolE65EAYxnXDuJ6LwuxI+DwFfcHi8WOJqe1BogqkJ9hB
+	BAbJYfEZhpmU1Bs9KNfcTFRlDb7dbvcC1XfH4jtmCRoI3Hfxlevk9EEi0nWGro0RaRv71/2KYKEbI
+	2dNITdhiwT/5lejNZAWYdxii2XsOqckrLlEMQeXJtYivO86HWROtDiRqbb0/A9rGzyBU8Prd8sfV3
+	LU3yw9yE7fdCZsZXB3z6d1EXYrp+1E0inWOZb+aZ7kKznckV4Wb7h/gHE7O36/fqlDTqsr8ES+B7M
+	FmqUjyjbVMIrsCHuIUyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgIWL-009dPk-JB; Fri, 29 Oct 2021 03:25:33 +0000
+	id 1mgIah-009e8C-2s; Fri, 29 Oct 2021 03:30:03 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgIW8-009dNm-Jo; Fri, 29 Oct 2021 03:25:22 +0000
-X-UUID: d7fd8763c79c41bcaca3e4051b9347df-20211028
+ id 1mgIaS-009e5u-1C; Fri, 29 Oct 2021 03:29:49 +0000
+X-UUID: 2d16366c6b04405489e69aec06f5749c-20211028
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=xAZ3nAnsOrl8Ct8D2Vi4hu3IaxpDjpE6ODDFPn66SOM=; 
- b=NuouUxrbI7ngrTBRUGkMvAZ6GV17ls9AQH/NYdPPHWs24q5ZjVozKS4b8b+c3S7qItB+M1u7UNeQUSgFQ0VkzNOk+NRetVcBN7dz52NoPiOEWtYZNc+rNgIVCTTU2ZiiAXAOqESj3Js2+fTwPtrQ5ocHrn8/+C2XF9ld0wiI+qk=;
-X-UUID: d7fd8763c79c41bcaca3e4051b9347df-20211028
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ bh=GRAPofEE1i4Ut9H7b86SpQ8uaHtsCBapgHD2WyQaUDw=; 
+ b=pGBseJxxc0gHRTEKgtBtSgLKHmIeZcVlAQqxcMt9TmeqnFiiDm2+OGm+cdfrNSteiHLlSaa354b4amHHOmkzUz0i5Mn+8Sx8OFA6Bib9BuE6M4uaEYYmBC5ii4OA0fsELpmOnkUKJJgZFOmty6UYQNTnG/HzmZ0ZqwDMIYfSbwQ=;
+X-UUID: 2d16366c6b04405489e69aec06f5749c-20211028
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1380819958; Thu, 28 Oct 2021 20:25:17 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Oct 2021 20:25:15 -0700
+ with ESMTP id 1836608755; Thu, 28 Oct 2021 20:29:40 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Fri, 29 Oct 2021 11:25:13 +0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 28 Oct 2021 20:29:38 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Fri, 29 Oct 2021 11:29:37 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkmbs10n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Fri, 29 Oct 2021 11:25:12 +0800
-Message-ID: <31ec034a50949e5859fc10bf8e0dfacdb0b6bd50.camel@mediatek.com>
-Subject: Re: [PATCH v7, 11/15] media: mtk-vcodec: Add core thread
+ Transport; Fri, 29 Oct 2021 11:29:36 +0800
+Message-ID: <ca5381b94941f0925235e70bf1ec97d42b3511fa.camel@mediatek.com>
+Subject: Re: [PATCH v7, 03/15] media: mtk-vcodec: Refactor vcodec pm interface
 From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
-CC: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
- Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Dafna Hirschfeld
- <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 29 Oct 2021 11:25:12 +0800
-In-Reply-To: <YWgitrqT9sWyELpr@fedora>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Daniel Vetter
+ <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
+ <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tzung-Bi Shih
+ <tzungbi@google.com>
+Date: Fri, 29 Oct 2021 11:29:35 +0800
+In-Reply-To: <6f3e94fe-8e02-e79d-858d-620a057b87f2@collabora.com>
 References: <20211011070247.792-1-yunfei.dong@mediatek.com>
- <20211011070247.792-12-yunfei.dong@mediatek.com> <YWgitrqT9sWyELpr@fedora>
+ <20211011070247.792-4-yunfei.dong@mediatek.com>
+ <6f3e94fe-8e02-e79d-858d-620a057b87f2@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211028_202520_680895_80825D56 
-X-CRM114-Status: GOOD (  30.86  )
+X-CRM114-CacheID: sfid-20211028_202948_124357_0BAC5121 
+X-CRM114-Status: GOOD (  29.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,163 +96,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ezequiel,
+Hi Dafna,
 
-   1. Thanks for your suggestion.
-On Thu, 2021-10-14 at 09:29 -0300, Ezequiel Garcia wrote:
-> Hi Yunfei,
+Thanks for your suggestion.
+
+On Thu, 2021-10-14 at 15:44 +0200, Dafna Hirschfeld wrote:
 > 
-> On Mon, Oct 11, 2021 at 03:02:43PM +0800, Yunfei Dong wrote:
-> > Core thread:
-> > 1. Gets lat_buf from core msg queue.
-> > 2. Proceeds core decode.
-> > 3. Puts the lat_buf back to lat msg queue.
-> > 
-> > Both H264 and VP9 rely on the core thread.
+> On 11.10.21 09:02, Yunfei Dong wrote:
+> > Using the needed param for pm init/release function and remove
+> > unused
+> > param mtkdev in 'struct mtk_vcodec_pm'.
 > > 
 > 
-> Avoid the kthread API and instead go with the workqueue API.
+> I see that there is a lot of code duplication between
+> mtk_vcodec_release_dec_pm.c and mtk_vcodec_release_enc_pm.c
+> I think if you bother to factor the decoder you should do the same
+> factor to the encoder, but actually the much better thing to do
+> is to unify all code duplication between these two files, just for
+> example of identical functions:
 > 
-> See Documentation/core-api/workqueue.rst and
-> include/linux/workqueue.h.
+> mtk_vcodec_enc/dec_clock_on/off
+> mtk_vcodec_release_enc_pm
+> mtk_vcodec_init_dec_pm
 > 
-Fix it in patch v8.
-> Thanks!
-> Ezequiel
+> In addition, the function mtk_vcodec_dec_pw_on can be remove since it
+> only calls pm_runtime_resume_and_get.
+> It would be much better to call pm_runtime_resume_and_get directly
+> and not hide it in a different function
 > 
-Thanks
+I will fix it in next patch series. It's not very reasonable in this
+patch  series.
+
+> Thanks,
+> Dafna
+> 
+Thanks,
 Yunfei Dong
+> > Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 > > ---
-> >  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 12 +++++++
-> >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  7 ++++
-> >  .../platform/mtk-vcodec/vdec_msg_queue.c      | 32
-> > +++++++++++++++++++
-> >  .../platform/mtk-vcodec/vdec_msg_queue.h      |  6 ++++
-> >  4 files changed, 57 insertions(+)
+> >   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  6 ++---
+> >   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 22 ++++++++----
+> > -------
+> >   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  5 +++--
+> >   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  1 -
+> >   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |  1 -
+> >   5 files changed, 15 insertions(+), 20 deletions(-)
 > > 
 > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c 
 > > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > index e21e0c4bcd86..de83e3b821b4 100644
+> > index 8db9cdc66043..dd749d41c75a 100644
 > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
 > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > @@ -364,6 +364,18 @@ static int mtk_vcodec_probe(struct
+> > @@ -249,7 +249,7 @@ static int mtk_vcodec_probe(struct
 > > platform_device *pdev)
-> >  		goto err_dec_pm;
-> >  	}
-> >  
-> > +	if (VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch)) {
-> > +		vdec_msg_queue_init_ctx(&dev->msg_queue_core_ctx,
-> > +			MTK_VDEC_CORE);
-> > +		dev->kthread_core =
-> > kthread_run(vdec_msg_queue_core_thead, dev,
-> > +			"mtk-%s", "core");
-> > +		if (IS_ERR(dev->kthread_core)) {
-> > +			dev_err(&pdev->dev, "Failed to create core
-> > thread");
-> > +			ret = PTR_ERR(dev->kthread_core);
-> > +			goto err_res;
-> > +		}
-> > +	}
-> > +
-> >  	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
-> >  		mutex_init(&dev->dec_mutex[i]);
-> >  	spin_lock_init(&dev->irqlock);
+> >   	if (IS_ERR(dev->fw_handler))
+> >   		return PTR_ERR(dev->fw_handler);
+> >   
+> > -	ret = mtk_vcodec_init_dec_pm(dev);
+> > +	ret = mtk_vcodec_init_dec_pm(dev->plat_dev, &dev->pm);
+> >   	if (ret < 0) {
+> >   		dev_err(&pdev->dev, "Failed to get mt vcodec clock
+> > source");
+> >   		goto err_dec_pm;
+> > @@ -379,7 +379,7 @@ static int mtk_vcodec_probe(struct
+> > platform_device *pdev)
+> >   err_dec_alloc:
+> >   	v4l2_device_unregister(&dev->v4l2_dev);
+> >   err_res:
+> > -	mtk_vcodec_release_dec_pm(dev);
+> > +	mtk_vcodec_release_dec_pm(&dev->pm);
+> >   err_dec_pm:
+> >   	mtk_vcodec_fw_release(dev->fw_handler);
+> >   	return ret;
+> > @@ -422,7 +422,7 @@ static int mtk_vcodec_dec_remove(struct
+> > platform_device *pdev)
+> >   		video_unregister_device(dev->vfd_dec);
+> >   
+> >   	v4l2_device_unregister(&dev->v4l2_dev);
+> > -	mtk_vcodec_release_dec_pm(dev);
+> > +	mtk_vcodec_release_dec_pm(&dev->pm);
+> >   	mtk_vcodec_fw_release(dev->fw_handler);
+> >   	return 0;
+> >   }
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> > index 6038db96f71c..20bd157a855c 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+> > @@ -13,18 +13,15 @@
+> >   #include "mtk_vcodec_dec_pm.h"
+> >   #include "mtk_vcodec_util.h"
+> >   
+> > -int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+> > +int mtk_vcodec_init_dec_pm(struct platform_device *pdev,
+> > +	struct mtk_vcodec_pm *pm)
+> >   {
+> >   	struct device_node *node;
+> > -	struct platform_device *pdev;
+> > -	struct mtk_vcodec_pm *pm;
+> > +	struct platform_device *larb_pdev;
+> >   	struct mtk_vcodec_clk *dec_clk;
+> >   	struct mtk_vcodec_clk_info *clk_info;
+> >   	int i = 0, ret = 0;
+> >   
+> > -	pdev = mtkdev->plat_dev;
+> > -	pm = &mtkdev->pm;
+> > -	pm->mtkdev = mtkdev;
+> >   	dec_clk = &pm->vdec_clk;
+> >   	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
+> >   	if (!node) {
+> > @@ -32,13 +29,12 @@ int mtk_vcodec_init_dec_pm(struct
+> > mtk_vcodec_dev *mtkdev)
+> >   		return -1;
+> >   	}
+> >   
+> > -	pdev = of_find_device_by_node(node);
+> > +	larb_pdev = of_find_device_by_node(node);
+> >   	of_node_put(node);
+> > -	if (WARN_ON(!pdev)) {
+> > +	if (WARN_ON(!larb_pdev)) {
+> >   		return -1;
+> >   	}
+> > -	pm->larbvdec = &pdev->dev;
+> > -	pdev = mtkdev->plat_dev;
+> > +	pm->larbvdec = &larb_pdev->dev;
+> >   	pm->dev = &pdev->dev;
+> >   
+> >   	dec_clk->clk_num =
+> > @@ -82,10 +78,10 @@ int mtk_vcodec_init_dec_pm(struct
+> > mtk_vcodec_dev *mtkdev)
+> >   	return ret;
+> >   }
+> >   
+> > -void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
+> > +void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm)
+> >   {
+> > -	pm_runtime_disable(dev->pm.dev);
+> > -	put_device(dev->pm.larbvdec);
+> > +	pm_runtime_disable(pm->dev);
+> > +	put_device(pm->larbvdec);
+> >   }
+> >   
+> >   int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+> > index 280aeaefdb65..a3df6aef6cb9 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+> > @@ -9,8 +9,9 @@
+> >   
+> >   #include "mtk_vcodec_drv.h"
+> >   
+> > -int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *dev);
+> > -void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev);
+> > +int mtk_vcodec_init_dec_pm(struct platform_device *pdev,
+> > +	struct mtk_vcodec_pm *pm);
+> > +void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm);
+> >   
+> >   int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
+> >   void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm);
 > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
 > > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > index 9d072c082f73..68a9b1a2d3b3 100644
+> > index 3b1e5e3a450e..973b0b3649c6 100644
 > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
 > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > @@ -27,6 +27,7 @@
-> >  #define MTK_VCODEC_MAX_PLANES	3
-> >  #define MTK_V4L2_BENCHMARK	0
-> >  #define WAIT_INTR_TIMEOUT_MS	1000
-> > +#define VDEC_LAT_ARCH(hw_arch) ((hw_arch) >=
-> > MTK_VDEC_LAT_SINGLE_CORE)
-> >  
-> >  /*
-> >   * enum mtk_hw_reg_idx - MTK hw register base index
-> > @@ -466,6 +467,9 @@ struct mtk_vcodec_enc_pdata {
-> >   * @comp_dev: component hardware device
-> >   * @component_node: component node
-> >   *
-> > + * @kthread_core: thread used for core hardware decode
-> > + * @msg_queue_core_ctx: msg queue context used for core thread
-> > + *
-> >   * @hardware_bitmap: used to record hardware is ready or not
-> >   */
-> >  struct mtk_vcodec_dev {
-> > @@ -508,6 +512,9 @@ struct mtk_vcodec_dev {
-> >  	void *comp_dev[MTK_VDEC_HW_MAX];
-> >  	struct device_node *component_node[MTK_VDEC_HW_MAX];
-> >  
-> > +	struct task_struct *kthread_core;
-> > +	struct vdec_msg_queue_ctx msg_queue_core_ctx;
-> > +
-> >  	DECLARE_BITMAP(hardware_bitmap, MTK_VDEC_HW_MAX);
-> >  };
-> >  
-> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > index d66ed98c79a9..665f571eab4b 100644
-> > --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > @@ -256,3 +256,35 @@ void vdec_msg_queue_deinit(
-> >  			kfree(lat_buf->private_data);
-> >  	}
-> >  }
-> > +
-> > +int vdec_msg_queue_core_thead(void *data)
-> > +{
-> > +	struct mtk_vcodec_dev *dev = data;
-> > +	struct vdec_lat_buf *lat_buf;
-> > +	struct mtk_vcodec_ctx *ctx;
-> > +
-> > +	set_freezable();
-> > +	for (;;) {
-> > +		try_to_freeze();
-> > +		if (kthread_should_stop())
-> > +			break;
-> > +
-> > +		lat_buf = vdec_msg_queue_dqbuf(&dev-
-> > >msg_queue_core_ctx);
-> > +		if (!lat_buf)
-> > +			continue;
-> > +
-> > +		ctx = lat_buf->ctx;
-> > +		mtk_vcodec_set_curr_ctx(dev, ctx, MTK_VDEC_CORE);
-> > +
-> > +		if (!lat_buf->core_decode)
-> > +			mtk_v4l2_err("Core decode callback func is
-> > NULL");
-> > +		else
-> > +			lat_buf->core_decode(lat_buf);
-> > +
-> > +		mtk_vcodec_set_curr_ctx(dev, NULL, MTK_VDEC_CORE);
-> > +		vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
-> > +	}
-> > +
-> > +	mtk_v4l2_debug(3, "Video Capture Thread End");
-> > +	return 0;
-> > +}
-> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > index 1905ce713592..b5745b144140 100644
-> > --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > @@ -148,4 +148,10 @@ void vdec_msg_queue_deinit(
-> >  	struct vdec_msg_queue *msg_queue,
-> >  	struct mtk_vcodec_ctx *ctx);
-> >  
-> > +/**
-> > + * vdec_msg_queue_core_thead - used for core decoder.
-> > + * @data: private data used for each codec
-> > + */
-> > +int vdec_msg_queue_core_thead(void *data);
-> > +
-> >  #endif
-> > -- 
-> > 2.25.1
+> > @@ -195,7 +195,6 @@ struct mtk_vcodec_pm {
+> >   	struct mtk_vcodec_clk	venc_clk;
+> >   	struct device	*larbvenc;
+> >   	struct device	*dev;
+> > -	struct mtk_vcodec_dev	*mtkdev;
+> >   };
+> >   
+> >   /**
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+> > index 1b2e4930ed27..0c8c8f86788c 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+> > @@ -26,7 +26,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev
+> > *mtkdev)
+> >   	pdev = mtkdev->plat_dev;
+> >   	pm = &mtkdev->pm;
+> >   	memset(pm, 0, sizeof(struct mtk_vcodec_pm));
+> > -	pm->mtkdev = mtkdev;
+> >   	pm->dev = &pdev->dev;
+> >   	dev = &pdev->dev;
+> >   	enc_clk = &pm->venc_clk;
 > > 
 _______________________________________________
 Linux-mediatek mailing list
