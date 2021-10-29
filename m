@@ -2,14 +2,14 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 59EBFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 04:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 26C20C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 04:06:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B60060E8C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 04:06:03 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1B60060E8C
+	by mail.kernel.org (Postfix) with ESMTPS id E07826103B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 04:06:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E07826103B
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,33 +18,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=td1WbkDjdTTfwCK3Qo8m1X9F3B3JOhg1Na1TkLcrGRo=; b=X8cnuO/FoFj1C6
-	PLK6k/EATt36jTO0IZrZh43qWPhl6BQb0Map7aGA3Quo5oNyyEaVj77jy9dx79ySDLtjA+HoeAX85
-	6Ru+lzyJidZavy6MHQA0lRcZ25jVKZhfOsd8jia1pRTaAsf1IcQb8+6R0oftD+F+aeqROl2RENrZ4
-	jpqvNegL7Dy3GJcfpQfSxThtoogxp055eJhWhze12v/tSl36+LvUYMCYRPoYMtyJP2iIcZi9ewXV4
-	kANr7Wz9FprlSnfmV2Wd5RBzK0UXe/jpp3beXq75pdjXkNUTdVcvRLHDtLobIxTSj81hj+SZObV34
-	lGGK3Is3shlYrJ1PQ4dw==;
+	List-Owner; bh=kRQ+SNXSs/sVLH8mtkMu5ljrsmP8FbVlpjIIwdkH4NM=; b=I3m1dmfZ7WKShg
+	2XJHkCiBJ9SbSdH+TvICgYYvHbPCQ7k/FA5eh+ZUf+HTc2iVqs8MfArOLT+DGDXMU5c7v7Hv61j2a
+	6x2MZ5XGoqpRXnKe5qb/TG66qIpcJw+TfNVCXck6ej03POVBTNjxocdBSc+OKK3xyl1Sn7KM9m3pE
+	zLZjKlEaUpMa1/KTHN6D6BHawQYcs7rRpUoddJSkuWjDQjYWwXD3aFiuTjEhAiQPjERfxZSgVW9IF
+	rmkiksHBsO7IIRDT1vud74qXYfXJ2h4LQ6rxAqhktnLIq6B7w9+jpqvuWQWxlvKK+TGYkNoTCi4Ev
+	ZAkE2hcgrerbak4+/L8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgJ9R-009jiI-92; Fri, 29 Oct 2021 04:05:57 +0000
+	id 1mgJ9u-009jrE-9i; Fri, 29 Oct 2021 04:06:26 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgJ99-009jby-R3; Fri, 29 Oct 2021 04:05:41 +0000
-X-UUID: dcf0055a795b488382866c0d56afc8bc-20211028
-X-UUID: dcf0055a795b488382866c0d56afc8bc-20211028
+ id 1mgJ9A-009jba-Lg; Fri, 29 Oct 2021 04:05:42 +0000
+X-UUID: 0797952333974c058595d6311da2bc2c-20211028
+X-UUID: 0797952333974c058595d6311da2bc2c-20211028
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1251815036; Thu, 28 Oct 2021 21:05:34 -0700
+ with ESMTP id 1142640513; Thu, 28 Oct 2021 21:05:34 -0700
 Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 28 Oct 2021 20:55:43 -0700
+ 15.0.1497.2; Thu, 28 Oct 2021 20:55:33 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Oct 2021 11:55:42 +0800
+ 15.0.1497.2; Fri, 29 Oct 2021 11:55:31 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs10n2.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Fri, 29 Oct 2021 11:55:40 +0800
+ Transport; Fri, 29 Oct 2021 11:55:30 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -59,19 +59,20 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, "AngeloGioacchino Del
- Regno" <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v8, 08/17] media: mtk-vcodec: Use pure single core for MT8183
-Date: Fri, 29 Oct 2021 11:55:18 +0800
-Message-ID: <20211029035527.454-9-yunfei.dong@mediatek.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Tzung-Bi Shih
+ <tzungbi@google.com>
+Subject: [PATCH v8,
+ 01/17] media: mtk-vcodec: Get numbers of register bases from DT
+Date: Fri, 29 Oct 2021 11:55:11 +0800
+Message-ID: <20211029035527.454-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211029035527.454-1-yunfei.dong@mediatek.com>
 References: <20211029035527.454-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211028_210539_889341_ECFC6016 
-X-CRM114-Status: GOOD (  13.47  )
+X-CRM114-CacheID: sfid-20211028_210540_748849_A18EB660 
+X-CRM114-Status: GOOD (  17.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,81 +89,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Separates different architecture for hardware: pure_sin_core
-and lat_sin_core. MT8183 is pure single core. Uses .hw_arch to
-distinguish.
+Different platform may has different numbers of register bases. Gets the
+numbers of register bases from DT (sizeof(u32) * 4 bytes for each).
 
+Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../platform/mtk-vcodec/mtk_vcodec_dec_stateful.c      |  1 +
- .../platform/mtk-vcodec/mtk_vcodec_dec_stateless.c     |  2 ++
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 10 ++++++++++
- 3 files changed, 13 insertions(+)
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 37 ++++++++++++++-----
+ 1 file changed, 28 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-index c7f9259ad094..04ca43c77e5f 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-@@ -626,4 +626,5 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata = {
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
- 	.is_subdev_supported = false,
-+	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
- };
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-index 2d285515b625..d98f49fbbc3b 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-@@ -358,6 +358,7 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata = {
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
- 	.is_subdev_supported = false,
-+	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
- };
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index e6e6a8203eeb..59caf2163349 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -78,6 +78,30 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	return IRQ_HANDLED;
+ }
  
- const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata = {
-@@ -375,4 +376,5 @@ const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata = {
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
- 	.is_subdev_supported = true,
-+	.hw_arch = MTK_VDEC_LAT_SINGLE_CORE,
- };
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 0457ebd8ac18..d0a9539f4e6e 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -324,6 +324,14 @@ enum mtk_chip {
- 	MTK_MT8195,
- };
- 
-+/**
-+ * struct mtk_vdec_hw_arch - Used to separate different hardware architecture
-+ */
-+enum mtk_vdec_hw_arch {
-+	MTK_VDEC_PURE_SINGLE_CORE,
-+	MTK_VDEC_LAT_SINGLE_CORE,
-+};
++static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
++{
++	struct platform_device *pdev = dev->plat_dev;
++	int reg_num, i;
 +
- /**
-  * struct mtk_vcodec_dec_pdata - compatible data for each IC
-  * @init_vdec_params: init vdec params
-@@ -342,6 +350,7 @@ enum mtk_chip {
-  * @num_framesizes: count of video decoder frame sizes
-  *
-  * @chip: chip this decoder is compatible with
-+ * @hw_arch: hardware arch is used to separate pure_sin_core and lat_sin_core
-  *
-  * @is_subdev_supported: whether support parent-node architecture(subdev)
-  * @uses_stateless_api: whether the decoder uses the stateless API with requests
-@@ -364,6 +373,7 @@ struct mtk_vcodec_dec_pdata {
- 	const int num_framesizes;
++	/* Sizeof(u32) * 4 bytes for each register base. */
++	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
++		sizeof(u32) * 4);
++	if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE) {
++		dev_err(&pdev->dev, "Invalid register property size: %d\n", reg_num);
++		return -EINVAL;
++	}
++
++	for (i = 0; i < reg_num; i++) {
++		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
++		if (IS_ERR(dev->reg_base[i]))
++			return PTR_ERR(dev->reg_base[i]);
++
++		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
++	}
++
++	return 0;
++}
++
+ static int fops_vcodec_open(struct file *file)
+ {
+ 	struct mtk_vcodec_dev *dev = video_drvdata(file);
+@@ -206,7 +230,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+-	int i, ret;
++	int ret;
  
- 	enum mtk_chip chip;
-+	enum mtk_vdec_hw_arch hw_arch;
+ 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+ 	if (!dev)
+@@ -238,14 +262,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_dec_pm;
+ 	}
  
- 	bool is_subdev_supported;
- 	bool uses_stateless_api;
+-	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
+-		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+-		if (IS_ERR((__force void *)dev->reg_base[i])) {
+-			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+-			goto err_res;
+-		}
+-		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+-	}
++	ret = mtk_vcodec_get_reg_bases(dev);
++	if (ret)
++		goto err_res;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+ 	if (res == NULL) {
 -- 
 2.25.1
 
