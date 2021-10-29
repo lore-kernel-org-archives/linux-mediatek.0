@@ -2,15 +2,15 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 18B87C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 05:29:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2B209C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 05:33:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C687061157
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 05:29:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C687061157
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id E15806108F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 05:33:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E15806108F
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -18,72 +18,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/BBYwAjI1ZEynlYgq5/egFSCS3rGe341MnF+XPgRFug=; b=CZNN9Z1/TuaNlz
-	pT4/Nq71cSFElc33lDj3viqZLY3aTgcAjmWfU+EedOpkaujcdbKLCT7oigctzS9QERzCVHOUNt0Az
-	rnU6u/xUylf+0/g1RJvehIbJP6b4+nYxJemBLAwMKvdp8fpgkWm8ykLP1YlZg0WR4qYYaCSA/T9c1
-	4fJsfR1J6c9temVDZLW29fSVGnQppJ0GjUnM5FBsLBVCk2J/h8IaozrixAAy/d0iftkX6T/Z6UHCM
-	sVlg2e4oyzifsXIjWMtuLda5o2VNOIlZMmrEyCEiSGU9ZanyGWj9RVJ/2lqx1X5xF11EP3bwk/PmL
-	gahl0Tc9X7KAFfCB6wzQ==;
+	List-Owner; bh=U09r4PtCcvQAPoUiZNV3ov0c86+e+vz5bLtP61Qx17E=; b=EVG4cuHwH0dFCc
+	38mjdRQclotqw6wiAb/lToVkxD+eMu7uxHV2lcjjfZ1mcGq2iuwt+Z0zlw9K8E6usr4NJISYTKyFQ
+	fbiCiZta9iI4GQJEZ1P1tWA5boQ4TaQaH+/4QCKprILO4wwPi7p0yn3tRnrrXGAfZJNpx74Fv5wzi
+	yhJhQ6MaDCyCRa35FIlChit6P7njp0q2d6IbZiIToOM7U9z46rVwUqd2QV3xdh806fN030KrjtmR0
+	QBfI3UYkCqfa6ssPKGSHGhHejM6Ts4tsIBM7F/AK6z8U+LpSNcyxiNNBKJNgekuXpaEOuodKFmlt+
+	/0MFrHYLMxKZihxLA5zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgKS7-009qy0-5k; Fri, 29 Oct 2021 05:29:19 +0000
-Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
+	id 1mgKWL-009rOu-Vk; Fri, 29 Oct 2021 05:33:41 +0000
+Received: from mail-io1-xd33.google.com ([2607:f8b0:4864:20::d33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgKRq-009qx4-Eh; Fri, 29 Oct 2021 05:29:08 +0000
-Received: by mail-ua1-x932.google.com with SMTP id q13so16102950uaq.2;
- Thu, 28 Oct 2021 22:28:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ id 1mgKWK-009rN8-1j
+ for linux-mediatek@lists.infradead.org; Fri, 29 Oct 2021 05:33:41 +0000
+Received: by mail-io1-xd33.google.com with SMTP id n67so11166725iod.9
+ for <linux-mediatek@lists.infradead.org>; Thu, 28 Oct 2021 22:33:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3R02g5agze3gTm5Z45MrmlDDVJJ1SjhpJ9wVYHXfFVc=;
- b=dAPzFHqY6a3yuq3WPaxBDLMqDiOOIvbGTScOjWeJ9qYjDnceFbeYAjHCjmG2cdtSt/
- JF2Sh3MpKz+H0WgA2dhV0urNCpDT9IsQJaEkdOg1h6AfroREvG2h/J9t5qpr3xFV5Y6/
- Luj+VxSUsDZk2KOXn+bmj0KnCRWv8z0BYM+ULkYivoL2izRIUAjmePHDr8IYa5njuX/t
- +hzFigJBtBfggVl8QM4sriD8UiUWzEg8+z2AXzEVPvOUEdyEhbue8rLgopr/FYLUtVav
- n2iBAoefklk9UzAs/gNG3stlyB85kiGCLNqjCfTEQ72igNsfST0LQEwdTDkeGpChJrEc
- 1MhA==
+ :cc; bh=FReYOopH02D5COr/NffWZKd+wG9WfCzdcsCckINuOIg=;
+ b=I/Y64zF/ZpuDtCvP7DXWwJDekequNVZ0j0qyEbOjPZjY6DZgEJ+OeniAVKShH5FZGz
+ WjO8IYnAq4i1OFMbDK1L3gz+P/TaKI8Xa+xZyUj7gNBpQm7wD/K0q1oJ9ehrzTCxdCjE
+ O8ZEzctOgSVLLPg2CqXubJ8rei5qxnvHBLlvY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=3R02g5agze3gTm5Z45MrmlDDVJJ1SjhpJ9wVYHXfFVc=;
- b=uxBL/EjEryVFj2NZ0+GpJMmBWSlTrryMI3H3jTIiejbzqYIo6gNcdWnqcEc1LK+XNp
- PUE41tNpm6yixOvizSs3Yi6BJqz1MT6t0ZxaS7AEXPKZQyDXpBdJzZtYASsaQPg6yIt7
- SJwPALnBxn2ofuOatb8ms4dbjTPb036S6C5qQCX3XQR3ghuqgEtNBKz7y3PV3mBMA9b/
- Z9vO+ip+9M8vb0hEXwn7CEMDbYchFOi0E8iQTBCUpiX0W5u2YhKSJkWih8SsnVA8KMhm
- hq+u0FhEFJgM+WGj5e73cvxeYS5L52QKMxkEjF5uk30Pi1Qv//vv4IIHZHItDJOp4op6
- Ne/w==
-X-Gm-Message-State: AOAM533U4HdGIupW6SF2PO4gHl/W1yQtcpfxVgaXkqjUFCpEBG5mXHGl
- 0AH+wXn0WbZPMiqAKWXtrH4L1xE5uTuyCjYALqk=
-X-Google-Smtp-Source: ABdhPJxs1fI3cK3JY0LAlIQGqCHUDGWxH+wj3J2xlepe64o7dHGMQFS10+///IP4btkcLM3sItdX9v4WNeESaNXOQSs=
-X-Received: by 2002:a05:6102:3ec3:: with SMTP id
- n3mr9762236vsv.48.1635485338588; 
- Thu, 28 Oct 2021 22:28:58 -0700 (PDT)
+ bh=FReYOopH02D5COr/NffWZKd+wG9WfCzdcsCckINuOIg=;
+ b=LBlRRvZD2AKAQfSw+vyRo57JuCPLnv2xx+0TG53RjUYu9QdYYD4cXWG/7hVyaQVpia
+ sKw3E/Yu13IBFFtfRTIUhK0cLpfu1/c6cht9zg3MEQ/KYT89qSdjtMQy8EQRnuYG+xAs
+ 0vQpX6zYEbHV2OpC22tCBHLW9C+vRK4rHhYSEzByEC/91JJDw6KjSqRAFAS7wUvDYapm
+ PyEY6m3C4Qmh4Lo80texBzS8XXtj+bZVfJuJ9/mxi/0Qkd+PfmEscmOfzjFGZRhXk5Fv
+ 5o2yxrxVNos7j8zBAVftcGNVlV3GF8tbNSTCtgxp+WuWHQxO9iRqpF8HoUpoDdn2HuC+
+ 4iVw==
+X-Gm-Message-State: AOAM533AZWkAarZn1MFU6HBUkmud4go9VGYASNND5WnS1LnZ71Bxl21K
+ m6XXkQtl3V5AB5IU9WQdFEc5JQbcl2kbig==
+X-Google-Smtp-Source: ABdhPJwkrsjuKanKBSqdpwM64Vowcuzb1ypE2Ul3wTEG2in5gWif4jSRvKqhqK+/2k15HgPrZUD2lQ==
+X-Received: by 2002:a05:6602:3d3:: with SMTP id
+ g19mr6698212iov.42.1635485610702; 
+ Thu, 28 Oct 2021 22:33:30 -0700 (PDT)
+Received: from mail-io1-f53.google.com (mail-io1-f53.google.com.
+ [209.85.166.53])
+ by smtp.gmail.com with ESMTPSA id h1sm2823130iow.12.2021.10.28.22.33.29
+ for <linux-mediatek@lists.infradead.org>
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 28 Oct 2021 22:33:29 -0700 (PDT)
+Received: by mail-io1-f53.google.com with SMTP id q127so10155217iod.12
+ for <linux-mediatek@lists.infradead.org>; Thu, 28 Oct 2021 22:33:29 -0700 (PDT)
+X-Received: by 2002:a05:6638:12cd:: with SMTP id
+ v13mr6826768jas.84.1635485608849; 
+ Thu, 28 Oct 2021 22:33:28 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAMhs-H8HoO7dsfiTFaTRie1-DB-DF5st-gFmS=AF2tfHP_gsVw@mail.gmail.com>
- <20211028204756.GA293663@bhelgaas>
-In-Reply-To: <20211028204756.GA293663@bhelgaas>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 29 Oct 2021 07:28:47 +0200
-Message-ID: <CAMhs-H_a0PqATB3kFO3dcFiq+reR+5z7FW27M=m2MnnYA48NYw@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] MIPS: cm/cpc: export some missing symbols to be
- able to use them from driver code
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
- Yanteng Si <siyanteng01@gmail.com>, 
- Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list@broadcom.com,
- Yanteng Si <siyanteng@loongson.cn>, Stephen Rothwell <sfr@canb.auug.org.au>, 
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>,
- kw@linux.com, 
- Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, linux-pci <linux-pci@vger.kernel.org>, 
- linux-arm-kernel@lists.infradead.org, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "open list:MIPS" <linux-mips@vger.kernel.org>, chenhuacai@kernel.org,
- sterlingteng@gmail.com, 
- Linux Next Mailing List <linux-next@vger.kernel.org>
+References: <20211028101912.4624-1-jason-jh.lin@mediatek.com>
+ <20211028101912.4624-4-jason-jh.lin@mediatek.com>
+In-Reply-To: <20211028101912.4624-4-jason-jh.lin@mediatek.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Fri, 29 Oct 2021 13:32:53 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nhCD-mG-5grj5s3c7NJF1nt=V3v4FN=MvZe2ZMkP9z5_A@mail.gmail.com>
+Message-ID: <CAC=S1nhCD-mG-5grj5s3c7NJF1nt=V3v4FN=MvZe2ZMkP9z5_A@mail.gmail.com>
+Subject: Re: [PATCH v6 3/6] drm/mediatek: Detect CMDQ execution timeout
+To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>, 
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, hsinyi@chromium.org, nancy.lin@mediatek.com, 
+ singo.chang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211028_222902_522751_D2B1F811 
-X-CRM114-Status: GOOD (  37.94  )
+X-CRM114-CacheID: sfid-20211028_223340_122750_F3AD9EED 
+X-CRM114-Status: GOOD (  23.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,82 +105,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 28, 2021 at 10:47 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+On Thu, Oct 28, 2021 at 6:19 PM jason-jh.lin <jason-jh.lin@mediatek.com> wrote:
 >
-> On Thu, Oct 28, 2021 at 11:59:17AM +0200, Sergio Paracuellos wrote:
-> > On Thu, Oct 28, 2021 at 11:34 AM Sergio Paracuellos
-> > <sergio.paracuellos@gmail.com> wrote:
-> > > On Thu, Oct 28, 2021 at 11:24 AM Thomas Bogendoerfer
-> > > <tsbogend@alpha.franken.de> wrote:
-> > > > On Thu, Oct 28, 2021 at 06:11:18AM +0200, Sergio Paracuellos wrote:
-> > > > > On Thu, Oct 28, 2021 at 6:05 AM Yanteng Si <siyanteng01@gmail.com> wrote:
-> > > > > >
-> > > > > > Since commit 2bdd5238e756 ("PCI: mt7621: Add MediaTek MT7621 PCIe host controller driver")
-> > > > > > the MT7621 PCIe host controller driver is built as a module but modpost complains once these
-> > > > > > drivers become modules.
-> > > > > >
-> > > > > > ERROR: modpost: "mips_cm_unlock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > ERROR: modpost: "mips_cpc_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > ERROR: modpost: "mips_cm_lock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > ERROR: modpost: "mips_cm_is64" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > ERROR: modpost: "mips_gcr_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > >
-> > > > > > Let's just export them.
-> > > > > >
-> > > > > > Signed-off-by: Yanteng Si <siyanteng@loongson.cn>
-> > > > > > ---
-> > > > > >  arch/mips/kernel/mips-cm.c  | 5 +++++
-> > > > > >  arch/mips/kernel/mips-cpc.c | 1 +
-> > > > > >  2 files changed, 6 insertions(+)
-> > > > > >
-> > > > >
-> > > > > Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> > > >
-> > > > could we instead make the pcie-mt761 driver non modular ? Exporting
-> > > > all MIPS specific stuff for just making an essential driver modular
-> > > > doesn't IMHO make much sense.
-> > >
-> > > The driver is modular because I have been advised other times that new
-> > > drivers should be able to be compiled as modules and we should avoid
-> > > using 'bool' in Kconfig for new drivers. That's the only reason. I am
-> > > also always including as 'y' the driver since for me not having pci in
-> > > my boards has no sense... I am ok in changing Kconfig to be 'bool'
-> > > instead of 'tristate', but I don't know what should be the correct
-> > > thing to do in this case. Thoughts?
-> >
-> > I guess we also want the driver to at least be compile tested in
-> > 'allmodconfig' and other similars...15692a80d949
+> From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 >
-> Sounds like the systems that actually use this driver require it to be
-> built-in, and the only benefit of exporting these symbols is that we
-> would get better compile test coverage.
+> CMDQ is used to update display register in vblank period, so
+> it should be execute in next 2 vblank. One vblank interrupt
+> before send message (occasionally) and one vblank interrupt
+> after cmdq done. If it fail to execute in next 3 vblank,
+> tiemout happen.
 >
-> If that's the case, I agree that it's better to just make it
-> non-modular.
+> Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+Reviewed-by: Fei Shao <fshao@chromium.org>
 
-I agree and that was my reasoning for sending a patch to also convert
-to bool the phy driver that this PCIe controller uses. When the pull
-request was sent from Vinod to Greg, Greg refused to take it because
-of that commit and the commit was reverted and a new pull request was
-sent including this revert. This is commit 15692a80d949 ("phy: Revert
-"phy: ralink: Kconfig: convert mt7621-pci-phy into 'bool'""). Because
-of this I also changed the PCIe controller Kconfig from bool to
-tristate when I sent v3 of the series which at the end were the ones
-that was finally taken. There are also other ralink related symbols
-that have been exported to allow to compile other drivers as a
-modules, like the watchdog. See the commit fef532ea0cd8 ("MIPS:
-ralink: export rt_sysc_membase for rt2880_wdt.c"). So, as I said, I
-agree and I am using the driver as if it were a bool and also ralink
-systems normally require all drivers built-in, but I think we have to
-take into account also the "historical facts" here. In any case,
-Bjorn, let me know if you want me to send whatever patch might be
-needed.
 
-Best regards,
-    Sergio Paracuellos
 
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 20 ++++++++++++++++++--
+>  1 file changed, 18 insertions(+), 2 deletions(-)
 >
-> Bjorn
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> index e23e3224ac67..a368cbc18923 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
+> @@ -54,6 +54,7 @@ struct mtk_drm_crtc {
+>  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>         struct cmdq_client              cmdq_client;
+>         u32                             cmdq_event;
+> +       u32                             cmdq_vblank_cnt;
+>  #endif
+>
+>         struct device                   *mmsys_dev;
+> @@ -227,7 +228,10 @@ struct mtk_ddp_comp *mtk_drm_ddp_comp_for_plane(struct drm_crtc *crtc,
+>  static void ddp_cmdq_cb(struct mbox_client *cl, void *mssg)
+>  {
+>         struct cmdq_cb_data *data = mssg;
+> +       struct cmdq_client *cmdq_cl = container_of(cl, struct cmdq_client, client);
+> +       struct mtk_drm_crtc *mtk_crtc = container_of(cmdq_cl, struct mtk_drm_crtc, cmdq_client);
+>
+> +       mtk_crtc->cmdq_vblank_cnt = 0;
+>         cmdq_pkt_destroy(data->pkt);
+>  }
+>  #endif
+> @@ -483,6 +487,15 @@ static void mtk_drm_crtc_update_config(struct mtk_drm_crtc *mtk_crtc,
+>                                            cmdq_handle->pa_base,
+>                                            cmdq_handle->cmd_buf_size,
+>                                            DMA_TO_DEVICE);
+> +               /*
+> +                * CMDQ command should execute in next 3 vblank.
+> +                * One vblank interrupt before send message (occasionally)
+> +                * and one vblank interrupt after cmdq done,
+> +                * so it's timeout after 3 vblank interrupt.
+> +                * If it fail to execute in next 3 vblank, timeout happen.
+> +                */
+> +               mtk_crtc->cmdq_vblank_cnt = 3;
+> +
+>                 mbox_send_message(mtk_crtc->cmdq_client.chan, cmdq_handle);
+>                 mbox_client_txdone(mtk_crtc->cmdq_client.chan, 0);
+>         }
+> @@ -499,11 +512,14 @@ static void mtk_crtc_ddp_irq(void *data)
+>
+>  #if IS_REACHABLE(CONFIG_MTK_CMDQ)
+>         if (!priv->data->shadow_register && !mtk_crtc->cmdq_client.chan)
+> +               mtk_crtc_ddp_config(crtc, NULL);
+> +       else if (--mtk_crtc->cmdq_vblank_cnt == 0)
+> +               DRM_ERROR("mtk_crtc %d CMDQ execute command timeout!\n",
+> +                         drm_crtc_index(&mtk_crtc->base));
+>  #else
+>         if (!priv->data->shadow_register)
+> -#endif
+>                 mtk_crtc_ddp_config(crtc, NULL);
+> -
+> +#endif
+>         mtk_drm_finish_page_flip(mtk_crtc);
+>  }
+>
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
