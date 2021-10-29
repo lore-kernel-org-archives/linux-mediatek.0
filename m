@@ -2,14 +2,14 @@ Return-Path: <SRS0=A00R=PR=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A47FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 08:04:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D1516C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 08:05:57 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 204B2610D2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 08:04:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 204B2610D2
+	by mail.kernel.org (Postfix) with ESMTPS id A207B61151
+	for <linux-mediatek@archiver.kernel.org>; Fri, 29 Oct 2021 08:05:57 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A207B61151
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,27 +18,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pV4VEqXJBdKSl2fGKgAtOUlrfZHd1kbfD6jCMyYYpTc=; b=HDZ2mQ5lzhFDrS
-	Jp6gqw+VhHc0go1rfmhdGMILfKTNWXnoUKEZJoPbgYCy3LRUHITgHldhX2dbT1/HjRuE3dfJyota9
-	R6GQx/Al9vAmiS3vwTzcnq7XlexZt3M2LHVHYN6XTgFtnDhB8V6sKv1S4DDJtpfzzgLurvr8KhyYu
-	xIRrDH4EbPo9eEKAXQ34EiYZJKmZz8OKc1+DESIRzWAGrnHayrTR914LfOhiYQzaUasFgxj56Rrxs
-	gWnhg0kpijm6dUCuGxUxfCx1/vzvdcuBSYjIxmdR4zGxaEgAZeBj9ePR5aU8QUDNI55jr8OK3GBq2
-	uNL5FdWcLjD1UtAKYHFg==;
+	List-Owner; bh=qdNxTjiUNEnt6exeUhrWNLgL8l95v8xUiB8itNjMXE4=; b=V0b4xqi0LxekqF
+	Mkpsd4h96pbF7zSg2sZIzw7CDE2IwHWXgt0fIIX9xQTDjB1uM2Ny0f0AaaWeX63mmblhrPEveurIF
+	nFax/3KN6uI921BK9nESqYWjyw0HJKQziyMF/T0cIsS6zVLCD2yxYwbihuTp/+01ShMK7m89SS+rP
+	VgVX/pxWbBNKTcUrQ3FJTkE4paE/00tf+GN9JkAEmRSk++E22WTTJtZRLPRStzXoaS4G4Egw75VUi
+	6JRF5KSn1xpAyRsHrotHe7b6hitviDeN/SKrxoU889rRHgSnrI4SLo4M3Ha52qjlTo5h6FHftsSpf
+	sl6xN2p8i5ftT6c+RKLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mgMsa-00A9kt-7M; Fri, 29 Oct 2021 08:04:48 +0000
+	id 1mgMtV-00AAUP-N0; Fri, 29 Oct 2021 08:05:45 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mgMq9-00A8Gl-VZ; Fri, 29 Oct 2021 08:02:19 +0000
-X-UUID: 32fc07a592044026b816520b48cb2384-20211029
-X-UUID: 32fc07a592044026b816520b48cb2384-20211029
+ id 1mgMqB-00A8Ik-HX; Fri, 29 Oct 2021 08:02:21 +0000
+X-UUID: e96972cc831a4a5da6f583ba6cb343ee-20211029
+X-UUID: e96972cc831a4a5da6f583ba6cb343ee-20211029
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 297710949; Fri, 29 Oct 2021 01:02:10 -0700
+ with ESMTP id 345798334; Fri, 29 Oct 2021 01:02:10 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 29 Oct 2021 00:52:12 -0700
+ 15.0.1497.2; Fri, 29 Oct 2021 00:52:11 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
@@ -57,18 +57,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v7 13/20] drm/mediatek: add display merge advance config API
- for MT8195
-Date: Fri, 29 Oct 2021 15:51:56 +0800
-Message-ID: <20211029075203.17093-14-nancy.lin@mediatek.com>
+Subject: [PATCH v7 11/20] soc: mediatek: add mtk-mutex support for mt8195
+ vdosys1
+Date: Fri, 29 Oct 2021 15:51:54 +0800
+Message-ID: <20211029075203.17093-12-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211029075203.17093-1-nancy.lin@mediatek.com>
 References: <20211029075203.17093-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211029_010218_107459_D3A248AD 
-X-CRM114-Status: GOOD (  18.26  )
+X-CRM114-CacheID: sfid-20211029_010219_599268_8A07AEF3 
+X-CRM114-Status: GOOD (  12.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,125 +85,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add merge new advance config API. The original merge API is
-mtk_ddp_comp_funcs function prototype. The API interface parameters
-cannot be modified, so add a new config API for extension. This is
-the preparation for ovl_adaptor merge control.
+Add mtk-mutex support for mt8195 vdosys1.
+The vdosys1 path component contains ovl_adaptor, merge5,
+and dp_intf1. Ovl_adaptor is composed of several sub-elements.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_drv.h   |  3 ++
- drivers/gpu/drm/mediatek/mtk_disp_merge.c | 52 ++++++++++++++++++++---
- 2 files changed, 48 insertions(+), 7 deletions(-)
+ drivers/soc/mediatek/mtk-mutex.c | 54 ++++++++++++++++++++++++++++++++
+ 1 file changed, 54 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_drv.h b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-index b3a372cab0bd..c2de53a5892e 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_drv.h
-@@ -63,6 +63,9 @@ void mtk_merge_config(struct device *dev, unsigned int width,
- 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt);
- void mtk_merge_start(struct device *dev);
- void mtk_merge_stop(struct device *dev);
-+void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
-+			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
-+			      struct cmdq_pkt *cmdq_pkt);
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index ff2f74668e8a..7767fedbd14f 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -112,6 +112,35 @@
+ #define MT8195_MUTEX_MOD_DISP_PWM0		BIT(27)
+ #define MT8195_MUTEX_MOD_DISP_PWM1		BIT(28)
  
- void mtk_ovl_bgclr_in_on(struct device *dev);
- void mtk_ovl_bgclr_in_off(struct device *dev);
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index 470ebc4b5296..558e0cb2a297 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -17,6 +17,7 @@
- #define DISP_REG_MERGE_CTRL		0x000
- #define MERGE_EN				1
- #define DISP_REG_MERGE_CFG_0		0x010
-+#define DISP_REG_MERGE_CFG_1		0x014
- #define DISP_REG_MERGE_CFG_4		0x020
- #define DISP_REG_MERGE_CFG_10		0x038
- /* no swap */
-@@ -25,9 +26,12 @@
- #define DISP_REG_MERGE_CFG_12		0x040
- #define CFG_10_10_1PI_2PO_BUF_MODE		6
- #define CFG_10_10_2PI_2PO_BUF_MODE		8
-+#define CFG_11_10_1PI_2PO_MERGE			18
- #define FLD_CFG_MERGE_MODE			GENMASK(4, 0)
- #define DISP_REG_MERGE_CFG_24		0x070
- #define DISP_REG_MERGE_CFG_25		0x074
-+#define DISP_REG_MERGE_CFG_26		0x078
-+#define DISP_REG_MERGE_CFG_27		0x07c
- #define DISP_REG_MERGE_CFG_36		0x0a0
- #define ULTRA_EN				BIT(0)
- #define PREULTRA_EN				BIT(4)
-@@ -98,12 +102,19 @@ static void mtk_merge_fifo_setting(struct mtk_disp_merge *priv,
- void mtk_merge_config(struct device *dev, unsigned int w,
- 		      unsigned int h, unsigned int vrefresh,
- 		      unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
-+{
-+	mtk_merge_advance_config(dev, w, 0, h, vrefresh, bpc, cmdq_pkt);
-+}
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA0	BIT(0)
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA1	BIT(1)
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA2	BIT(2)
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA3	BIT(3)
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA4	BIT(4)
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA5	BIT(5)
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA6	BIT(6)
++#define MT8195_MUTEX_MOD_DISP1_MDP_RDMA7	BIT(7)
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE0	BIT(8)
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE1	BIT(9)
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE2	BIT(10)
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE3	BIT(11)
++#define MT8195_MUTEX_MOD_DISP1_VPP_MERGE4	BIT(12)
++#define MT8195_MUTEX_MOD_DISP1_VPP2_DL_RELAY	BIT(13)
++#define MT8195_MUTEX_MOD_DISP1_VPP3_DL_RELAY	BIT(14)
++#define MT8195_MUTEX_MOD_DISP1_VDO0_DSC_DL_ASYNC	BIT(15)
++#define MT8195_MUTEX_MOD_DISP1_VDO0_MERGE_DL_ASYNC	BIT(16)
++#define MT8195_MUTEX_MOD_DISP1_VDO1_OUT_DL_RELAY	BIT(17)
++#define MT8195_MUTEX_MOD_DISP1_DISP_MIXER	BIT(18)
++#define MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE0	BIT(19)
++#define MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE1	BIT(20)
++#define MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE0	BIT(21)
++#define MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE1	BIT(22)
++#define MT8195_MUTEX_MOD_DISP1_HDR_VDO_BE0	BIT(23)
++#define MT8195_MUTEX_MOD_DISP1_HDR_MLOAD	BIT(24)
++#define MT8195_MUTEX_MOD_DISP1_DPI0		BIT(25)
++#define MT8195_MUTEX_MOD_DISP1_DPI1		BIT(26)
++#define MT8195_MUTEX_MOD_DISP1_DP_INTF0		BIT(27)
 +
-+void mtk_merge_advance_config(struct device *dev, unsigned int l_w, unsigned int r_w,
-+			      unsigned int h, unsigned int vrefresh, unsigned int bpc,
-+			      struct cmdq_pkt *cmdq_pkt)
- {
- 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
- 	unsigned int mode = CFG_10_10_1PI_2PO_BUF_MODE;
+ #define MT2712_MUTEX_MOD_DISP_PWM2		BIT(10)
+ #define MT2712_MUTEX_MOD_DISP_OVL0		BIT(11)
+ #define MT2712_MUTEX_MOD_DISP_OVL1		BIT(12)
+@@ -302,6 +331,27 @@ static const unsigned long mt8195_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+ 	[DDP_COMPONENT_DSI0] = MT8195_MUTEX_MOD_DISP_DSI0,
+ 	[DDP_COMPONENT_PWM0] = MT8195_MUTEX_MOD_DISP_PWM0,
+ 	[DDP_COMPONENT_DP_INTF0] = MT8195_MUTEX_MOD_DISP_DP_INTF0,
++	[DDP_COMPONENT_OVL_ADAPTOR] = MT8195_MUTEX_MOD_DISP1_MDP_RDMA0 |
++				      MT8195_MUTEX_MOD_DISP1_MDP_RDMA1 |
++				      MT8195_MUTEX_MOD_DISP1_MDP_RDMA2 |
++				      MT8195_MUTEX_MOD_DISP1_MDP_RDMA3 |
++				      MT8195_MUTEX_MOD_DISP1_MDP_RDMA4 |
++				      MT8195_MUTEX_MOD_DISP1_MDP_RDMA5 |
++				      MT8195_MUTEX_MOD_DISP1_MDP_RDMA6 |
++				      MT8195_MUTEX_MOD_DISP1_MDP_RDMA7 |
++				      MT8195_MUTEX_MOD_DISP1_VPP_MERGE0 |
++				      MT8195_MUTEX_MOD_DISP1_VPP_MERGE1 |
++				      MT8195_MUTEX_MOD_DISP1_VPP_MERGE2 |
++				      MT8195_MUTEX_MOD_DISP1_VPP_MERGE3 |
++				      MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE0 |
++				      MT8195_MUTEX_MOD_DISP1_HDR_VDO_FE1 |
++				      MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE0 |
++				      MT8195_MUTEX_MOD_DISP1_HDR_GFX_FE1 |
++				      MT8195_MUTEX_MOD_DISP1_HDR_VDO_BE0 |
++				      MT8195_MUTEX_MOD_DISP1_HDR_MLOAD |
++				      MT8195_MUTEX_MOD_DISP1_DISP_MIXER,
++	[DDP_COMPONENT_MERGE5] = MT8195_MUTEX_MOD_DISP1_VPP_MERGE4,
++	[DDP_COMPONENT_DP_INTF1] = MT8195_MUTEX_MOD_DISP1_DP_INTF0,
+ };
  
--	if (!h || !w) {
--		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, w, h);
-+	if (!h || !l_w) {
-+		dev_err(dev, "%s: input width(%d) or height(%d) is invalid\n", __func__, l_w, h);
- 		return;
- 	}
- 
-@@ -112,14 +123,41 @@ void mtk_merge_config(struct device *dev, unsigned int w,
- 		mode = CFG_10_10_2PI_2PO_BUF_MODE;
- 	}
- 
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+	if (r_w)
-+		mode = CFG_11_10_1PI_2PO_MERGE;
-+
-+	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CFG_0);
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_1);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | (l_w + r_w), &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CFG_4);
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
-+	/*
-+	 * DISP_REG_MERGE_CFG_24 is merge SRAM0 w/h
-+	 * DISP_REG_MERGE_CFG_25 is merge SRAM1 w/h.
-+	 * If r_w > 0, the merge is in merge mode (input0 and input1 merge together),
-+	 * the input0 goes to SRAM0, and input1 goes to SRAM1.
-+	 * If r_w = 0, the merge is in buffer mode, the input goes through SRAM0 and
-+	 * then to SRAM1. Both SRAM0 and SRAM1 are set to the same size.
-+	 */
-+	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
- 		      DISP_REG_MERGE_CFG_24);
--	mtk_ddp_write(cmdq_pkt, h << 16 | w, &priv->cmdq_reg, priv->regs,
--		      DISP_REG_MERGE_CFG_25);
-+	if (r_w)
-+		mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
-+			      DISP_REG_MERGE_CFG_25);
-+	else
-+		mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
-+			      DISP_REG_MERGE_CFG_25);
-+
-+	/*
-+	 * DISP_REG_MERGE_CFG_26 and DISP_REG_MERGE_CFG_27 is only used in LR merge.
-+	 * Only take effect when the merge is setting to merge mode.
-+	 */
-+	mtk_ddp_write(cmdq_pkt, h << 16 | l_w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_26);
-+	mtk_ddp_write(cmdq_pkt, h << 16 | r_w, &priv->cmdq_reg, priv->regs,
-+		      DISP_REG_MERGE_CFG_27);
-+
- 	mtk_ddp_write_mask(cmdq_pkt, SWAP_MODE, &priv->cmdq_reg, priv->regs,
- 			   DISP_REG_MERGE_CFG_10, FLD_SWAP_MODE);
- 	mtk_ddp_write_mask(cmdq_pkt, mode, &priv->cmdq_reg, priv->regs,
+ static const unsigned int mt2712_mutex_sof[DDP_MUTEX_SOF_MAX] = {
+@@ -466,6 +516,9 @@ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+ 	case DDP_COMPONENT_DP_INTF0:
+ 		sof_id = MUTEX_SOF_DP_INTF0;
+ 		break;
++	case DDP_COMPONENT_DP_INTF1:
++		sof_id = MUTEX_SOF_DP_INTF1;
++		break;
+ 	default:
+ 		if (mtx->data->mutex_mod[id] <= BIT(31)) {
+ 			offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg,
+@@ -506,6 +559,7 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+ 	case DDP_COMPONENT_DPI0:
+ 	case DDP_COMPONENT_DPI1:
+ 	case DDP_COMPONENT_DP_INTF0:
++	case DDP_COMPONENT_DP_INTF1:
+ 		writel_relaxed(MUTEX_SOF_SINGLE_MODE,
+ 			       mtx->regs +
+ 			       DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg,
 -- 
 2.18.0
 
