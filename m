@@ -2,14 +2,14 @@ Return-Path: <SRS0=+UjD=PS=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A95ADC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Oct 2021 05:22:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDE7CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Oct 2021 05:39:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3E1B86023F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Oct 2021 05:22:09 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3E1B86023F
+	by mail.kernel.org (Postfix) with ESMTPS id 94E5A61054
+	for <linux-mediatek@archiver.kernel.org>; Sat, 30 Oct 2021 05:39:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 94E5A61054
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,54 +18,55 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8UDxR2qIRmHFUjMNCji+pU/anhCxpxEkn8cO93C0wLc=; b=JY988nIaN1OD1w
-	/gOnqhTcvtJeqQOYATzto0mP93Cg+DOAyISftrQ/qhrRsRQU+tMMKNIcGOo/mhZlW57XsKjoPdfBs
-	9RcypRXiYor93rCJSXdi0PPHKfxmyvgKXSo/t/dVS7Rawe4YrlMRfU//RckerjLEO5glX7o4eHj/4
-	3lVXl5ioCYTBX0Z+7lwpolmgMQM8KaMNS8+0/oR1/f/QNEX30gfJ2LL8Zy/rmcGOXJAZNF9CQhQSE
-	T9PQHXhzpVNv/CE7SItFFcbnOLlPqlzKVo+b+ipR4XEs/vSjof9ME4osvT6pQsTOrgXZUz0tingea
-	ResnG56ZrfVCAD2WvpdQ==;
+	List-Owner; bh=bTCvDlG6GKripd39SNOur8i//EcqZ8qAo/9zDkKt3AA=; b=AlDxM7f03b++sb
+	UL/aAZ4uQhqKMUHGYelNTyQrtZHGjjx2iWN1X91t8JdhcHPzeNmuryiDgWnNOOutOpqCFbxWImlBd
+	d2pEk4TtG8vmD6QVUAGp2YsLv0gWkRhhoYZt4Pv8Ul4AgklS+wXYXfp5TCf/8Vk2r9scRqWegO51t
+	3lVM8EMQW7fGB6WnIML2Ct6ukut3VwhtwrkCfL1FSps7mcIMS8qExfhCpe7ma7MQElhC1hJql2l8W
+	wZxUSLLUGMnC51HZ5f0wCQGb1lSgqQJamhpk8JlMR9jNy1NJozT1rtN09FdefL+Gl+09z9/GcZSJ0
+	5mseUAxxsPg0BVn9yRag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mggoL-00ClWe-MZ; Sat, 30 Oct 2021 05:21:45 +0000
-Received: from mail-ua1-x92e.google.com ([2607:f8b0:4864:20::92e])
+	id 1mgh4r-00CmBh-BW; Sat, 30 Oct 2021 05:38:49 +0000
+Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mggo8-00ClVi-QV; Sat, 30 Oct 2021 05:21:34 +0000
-Received: by mail-ua1-x92e.google.com with SMTP id u9so22001904uac.8;
- Fri, 29 Oct 2021 22:21:32 -0700 (PDT)
+ id 1mgh4d-00CmAb-UD; Sat, 30 Oct 2021 05:38:38 +0000
+Received: by mail-ua1-x930.google.com with SMTP id h4so22111257uaw.1;
+ Fri, 29 Oct 2021 22:38:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=nIbLE+oP/lbw5Vy5or6sJMeMRE2/awDDYz6URr2nr+8=;
- b=Ms5i5c2nwdS2Zdx3XX7RJjhOHMK1truOdAyj5zbCSBdnH7H326L7zAvvVNpptZiB5Q
- rzpp4xBEOH4AwcXin5rnyTDRIKI+Esb1vPq+KnCKtbOAtMuUZ+D9+MgkAO3TSy/C0WIj
- 6x0GoH1e0F7ZnNUAvj7umyu616YmhQfBv1zADapsKydP6GgSaSfi7+ucFYYx27g8RHDv
- VxI0b8Uje4OKj+1T1sKcgxd1vH+zcEybjBjZCpIh6vWZA2GhGB6FkrPCuOrQYsFfJZxG
- UZ0Mg/QwcByXQkvefXIYzRV1Lu3aY4YEylWuUE8yUMhsOFDL3pr1ctNzYbF9pAr/t2ts
- srAg==
+ :cc; bh=xpY1jCWUL38H7w1Iqqg8cp+XJpBxtgnLdDXTf0nHKis=;
+ b=c7LlnJBZYvQ0vv8D2xeP5qqFgjJJDfzzUGhssCMvt3fyJmifzgvjYubS1zCxxtkn7T
+ D0HZ9D4ykEwJa8S384Xrewk2fWh2RJk0vhIpZDCYTA81pq3Z8akiKTneapaWXJBrygf1
+ heKBDtXkmvXgngqCYI67nd3qC6mTwYsj77HGTaxmkDCzx9GfkHxSKtPmMagBablXRjR0
+ 3Nfg+UAZvlvffBQ9f6aAl8Agqw7HzBTLT1VmU7r/Oquxb/Frevhrvf6hfHvF9cVzWfpD
+ 5Kg8nhDqYk1BnY3xi+3LylmeudLvmzyGHKw99DnRm1+yeQXzV05Mv0uni+a6mP9m3MRI
+ bizw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=nIbLE+oP/lbw5Vy5or6sJMeMRE2/awDDYz6URr2nr+8=;
- b=ZYyuTOdap/T8o1CLuWwf3qITgyCmzUIYBg55Lc2ETTgjZ20BCTnra5q6yNmHM8k/k+
- Eaj4W+HjesMq5YwaN/rZiP0dntNGYFTp5SGaqdtlJtM2HLqd7vAKTGw0QOq0Qrolza88
- I/LyLR+16Xaczl/wYryLBfi72vcRUe0sufVlmbHIDCwOzOeqdhXkqhfCX7BTJWqPAbXw
- g7UN81YMEmxWzaFUU6ejpGu2TJpav55KniCg2LIQBCs0mcr+rozkUf05csaJx+JmKvMZ
- J5b4qC/UUcTwgLzttTUgAqwtb/9dn2OTmldfYNU6mLEkTkGwLFvtW2nC6uTMkqg542Rk
- eN2w==
-X-Gm-Message-State: AOAM533daHa4JtVwhchy+apTy1mdI/givhfpUoZ+3mxzJWpa6G2WW9+1
- favPny+hH84kYiFfh7qyrlsgXpjJBQey1wOf5qCJ91joX6FsKw==
-X-Google-Smtp-Source: ABdhPJz5nwGcIYW5WzCDEVrdarcKfnAyd5iK/4zIsDxFrx8tN27BGsYmYjjLSu9eZkPuIvRlqPdCcwNn+bSpQp8Qx00=
-X-Received: by 2002:a05:6102:242:: with SMTP id
- a2mr17699562vsq.41.1635571291698; 
- Fri, 29 Oct 2021 22:21:31 -0700 (PDT)
+ bh=xpY1jCWUL38H7w1Iqqg8cp+XJpBxtgnLdDXTf0nHKis=;
+ b=YMUcPjGRxls/8CyRILXYzKb/aKASk3hatN74Eqqh+tjvRtTl3biD7s/hQmVqR6i8Mk
+ fVCvqOTpDH+lcn1A0261Pg4LeTj/IkDr85WeLJdpOOU3aY/VpzH6fLsrdUSK4/cOJ5tL
+ LR1SB50KZdLVCJcTofnFAyE/c2W3EOVptqP79Ek+ggCYghUgPdyBzeFEdPgSGasnoihg
+ Sn9+4WHOEyBhLEMjMZRSW/gK0Pl+9FGjL4XxDM2nVy+cwdu5uCcsIrVNZ4opf8AieUyV
+ LPAkj7675DpEETuTCsoI7stm6jq5CpKVtEHUwUTKuIAYlBxFtsfdyYIu/yxG0FapJDel
+ 1DNA==
+X-Gm-Message-State: AOAM531Bw4T+fnngj/4FXqut4LpDFF7kmZr53IqADJP0pEWCkxgaxu2c
+ J1Dk7hqNzBUaBwEFv1Ae88n0YJCkW3xn2O36pBE=
+X-Google-Smtp-Source: ABdhPJyn7ux0VP2fZObP8Z5T3wWFJm4ebOOUnO/RBHE6qVC59H5afXLhIlK/hh2k/UhlfaxN+rv4LItImcC+FCyJNJI=
+X-Received: by 2002:a05:6102:e0d:: with SMTP id
+ o13mr280021vst.13.1635572313373; 
+ Fri, 29 Oct 2021 22:38:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAMhs-H8bjOkwfnYqdhWuwA8vt18naW3DABYN-EyW-gDB2cP7JA@mail.gmail.com>
  <20211029194751.GA349935@bhelgaas>
  <CAMhs-H9ANAP6bsF3AgUTSnaNYxqhxETVwEcL7AC96pFc=WskOg@mail.gmail.com>
-In-Reply-To: <CAMhs-H9ANAP6bsF3AgUTSnaNYxqhxETVwEcL7AC96pFc=WskOg@mail.gmail.com>
+ <CAMhs-H-Ugqr91rceuArjJFG=H9GyX0W5G5xqWzRdUMBjutoxfA@mail.gmail.com>
+In-Reply-To: <CAMhs-H-Ugqr91rceuArjJFG=H9GyX0W5G5xqWzRdUMBjutoxfA@mail.gmail.com>
 From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Sat, 30 Oct 2021 07:21:20 +0200
-Message-ID: <CAMhs-H-Ugqr91rceuArjJFG=H9GyX0W5G5xqWzRdUMBjutoxfA@mail.gmail.com>
+Date: Sat, 30 Oct 2021 07:38:21 +0200
+Message-ID: <CAMhs-H8KmubYpXRxexKo0ahh11p6wU3EwbLQvKVzBACeB8cq7A@mail.gmail.com>
 Subject: Re: [PATCH v2 2/3] MIPS: cm/cpc: export some missing symbols to be
  able to use them from driver code
 To: Bjorn Helgaas <helgaas@kernel.org>
@@ -83,8 +84,8 @@ Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
  sterlingteng@gmail.com, 
  Linux Next Mailing List <linux-next@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211029_222132_890504_B286563D 
-X-CRM114-Status: GOOD (  73.08  )
+X-CRM114-CacheID: sfid-20211029_223836_047264_0B06515B 
+X-CRM114-Status: GOOD (  77.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,179 +102,192 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Bjorn,
-
-On Fri, Oct 29, 2021 at 10:27 PM Sergio Paracuellos
+On Sat, Oct 30, 2021 at 7:21 AM Sergio Paracuellos
 <sergio.paracuellos@gmail.com> wrote:
 >
-> On Fri, Oct 29, 2021 at 9:47 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> >
-> > On Fri, Oct 29, 2021 at 09:37:53PM +0200, Sergio Paracuellos wrote:
-> > > On Fri, Oct 29, 2021 at 8:49 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > > > On Fri, Oct 29, 2021 at 07:28:47AM +0200, Sergio Paracuellos wrote:
-> > > > > On Thu, Oct 28, 2021 at 10:47 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
-> > > > > > On Thu, Oct 28, 2021 at 11:59:17AM +0200, Sergio Paracuellos wrote:
-> > > > > > > On Thu, Oct 28, 2021 at 11:34 AM Sergio Paracuellos
-> > > > > > > <sergio.paracuellos@gmail.com> wrote:
-> > > > > > > > On Thu, Oct 28, 2021 at 11:24 AM Thomas Bogendoerfer
-> > > > > > > > <tsbogend@alpha.franken.de> wrote:
-> > > > > > > > > On Thu, Oct 28, 2021 at 06:11:18AM +0200, Sergio Paracuellos wrote:
-> > > > > > > > > > On Thu, Oct 28, 2021 at 6:05 AM Yanteng Si <siyanteng01@gmail.com> wrote:
-> > > > > > > > > > >
-> > > > > > > > > > > Since commit 2bdd5238e756 ("PCI: mt7621: Add MediaTek MT7621 PCIe host controller driver")
-> > > > > > > > > > > the MT7621 PCIe host controller driver is built as a module but modpost complains once these
-> > > > > > > > > > > drivers become modules.
-> > > > > > > > > > >
-> > > > > > > > > > > ERROR: modpost: "mips_cm_unlock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > > > > > > ERROR: modpost: "mips_cpc_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > > > > > > ERROR: modpost: "mips_cm_lock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > > > > > > ERROR: modpost: "mips_cm_is64" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > > > > > > ERROR: modpost: "mips_gcr_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
-> > > > > > > > > > >
-> > > > > > > > > > > Let's just export them.
-> > > > > > > > > > >
-> > > > > > > > > > > Signed-off-by: Yanteng Si <siyanteng@loongson.cn>
-> > > > > > > > > > > ---
-> > > > > > > > > > >  arch/mips/kernel/mips-cm.c  | 5 +++++
-> > > > > > > > > > >  arch/mips/kernel/mips-cpc.c | 1 +
-> > > > > > > > > > >  2 files changed, 6 insertions(+)
-> > > > > > > > > > >
-> > > > > > > > > >
-> > > > > > > > > > Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-> > > > > > > > >
-> > > > > > > > > could we instead make the pcie-mt761 driver non modular ? Exporting
-> > > > > > > > > all MIPS specific stuff for just making an essential driver modular
-> > > > > > > > > doesn't IMHO make much sense.
-> > > > > > > >
-> > > > > > > > The driver is modular because I have been advised other times that new
-> > > > > > > > drivers should be able to be compiled as modules and we should avoid
-> > > > > > > > using 'bool' in Kconfig for new drivers. That's the only reason. I am
-> > > > > > > > also always including as 'y' the driver since for me not having pci in
-> > > > > > > > my boards has no sense... I am ok in changing Kconfig to be 'bool'
-> > > > > > > > instead of 'tristate', but I don't know what should be the correct
-> > > > > > > > thing to do in this case. Thoughts?
-> > > > > > >
-> > > > > > > I guess we also want the driver to at least be compile tested in
-> > > > > > > 'allmodconfig' and other similars...15692a80d949
-> > > > > >
-> > > > > > Sounds like the systems that actually use this driver require it to be
-> > > > > > built-in, and the only benefit of exporting these symbols is that we
-> > > > > > would get better compile test coverage.
-> > > > > >
-> > > > > > If that's the case, I agree that it's better to just make it
-> > > > > > non-modular.
-> > > > >
-> > > > > I agree and that was my reasoning for sending a patch to also convert
-> > > > > to bool the phy driver that this PCIe controller uses. When the pull
-> > > > > request was sent from Vinod to Greg, Greg refused to take it because
-> > > > > of that commit and the commit was reverted and a new pull request was
-> > > > > sent including this revert. This is commit 15692a80d949 ("phy: Revert
-> > > > > "phy: ralink: Kconfig: convert mt7621-pci-phy into 'bool'""). Because
-> > > > > of this I also changed the PCIe controller Kconfig from bool to
-> > > > > tristate when I sent v3 of the series which at the end were the ones
-> > > > > that was finally taken. There are also other ralink related symbols
-> > > > > that have been exported to allow to compile other drivers as a
-> > > > > modules, like the watchdog. See the commit fef532ea0cd8 ("MIPS:
-> > > > > ralink: export rt_sysc_membase for rt2880_wdt.c"). So, as I said, I
-> > > > > agree and I am using the driver as if it were a bool and also ralink
-> > > > > systems normally require all drivers built-in, but I think we have to
-> > > > > take into account also the "historical facts" here. In any case,
-> > > > > Bjorn, let me know if you want me to send whatever patch might be
-> > > > > needed.
-> > > >
-> > > > I didn't see the conversation with Greg, so I don't know the whole
-> > > > story.
-> > >
-> > > Here it is: https://www.spinics.net/lists/kernel/msg3986821.html
-> > >
-> > > > For pcie-mt7621.c, it looks like the only problem is
-> > > > setup_cm_memory_region(), which does a little coherency-related stuff.
-> > > > If we could move that to arch/mips, we could still make this tristate.
-> > >
-> > > Yes, the only mips specific function used in the driver is
-> > > 'setup_cm_memory_region()'.
-> > >
-> > > > One way might be to implement a pcibios_root_bridge_prepare() for mips
-> > > > and put the setup_cm_memory_region() stuff in there.  It's not *ideal*
-> > > > because that's a strong/weak function arrangement that doesn't allow
-> > > > for multiple host bridges, but that's probably not an issue here.
-> > > >
-> > > > If we can't do that, I think making it bool is probably the right
-> > > > answer, but it would be worth a brief comment in the commit log to
-> > > > explain the issue.
-> > >
-> > > Do you mean to implement 'pcibios_root_bridge_prepare()' for MIPS
-> > > ralink? I guess this means to parse device tree and so on only to get
-> > > memory range addresses to be added to the MIPS I/O coherence regions
-> > > to make things work and then re-parse it again in the driver to do the
-> > > proper PCI setup... We end up in an arch generic driver but at the end
-> > > this controller is only present in ralink MIPS, so I am not sure that
-> > > implementing 'pcibios_root_bridge_prepare()' is worthy here... I can
-> > > explore and try to implement it if you think that it really makes
-> > > sense... but, IMHO if this is the case, just making it bool looks like
-> > > the correct thing to do.
-> >
-> > It should be trivial to put the contents of setup_cm_memory_region()
-> > into a ralink function called pcibios_root_bridge_prepare().
-> >
-> > pcibios_root_bridge_prepare() is called with the same "struct
-> > pci_host_bridge *" argument as setup_cm_memory_region(), and it's
-> > called slightly later, so the window resources are already set up, so
-> > no DT parsing is required.  It looks like a simple move and rename to
-> > me.
+> Hi Bjorn,
 >
-> I see. Thanks Bjorn. I will try the approach during the weekend and
-> report if it works.
+> On Fri, Oct 29, 2021 at 10:27 PM Sergio Paracuellos
+> <sergio.paracuellos@gmail.com> wrote:
+> >
+> > On Fri, Oct 29, 2021 at 9:47 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > >
+> > > On Fri, Oct 29, 2021 at 09:37:53PM +0200, Sergio Paracuellos wrote:
+> > > > On Fri, Oct 29, 2021 at 8:49 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > > > > On Fri, Oct 29, 2021 at 07:28:47AM +0200, Sergio Paracuellos wrote:
+> > > > > > On Thu, Oct 28, 2021 at 10:47 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > > > > > > On Thu, Oct 28, 2021 at 11:59:17AM +0200, Sergio Paracuellos wrote:
+> > > > > > > > On Thu, Oct 28, 2021 at 11:34 AM Sergio Paracuellos
+> > > > > > > > <sergio.paracuellos@gmail.com> wrote:
+> > > > > > > > > On Thu, Oct 28, 2021 at 11:24 AM Thomas Bogendoerfer
+> > > > > > > > > <tsbogend@alpha.franken.de> wrote:
+> > > > > > > > > > On Thu, Oct 28, 2021 at 06:11:18AM +0200, Sergio Paracuellos wrote:
+> > > > > > > > > > > On Thu, Oct 28, 2021 at 6:05 AM Yanteng Si <siyanteng01@gmail.com> wrote:
+> > > > > > > > > > > >
+> > > > > > > > > > > > Since commit 2bdd5238e756 ("PCI: mt7621: Add MediaTek MT7621 PCIe host controller driver")
+> > > > > > > > > > > > the MT7621 PCIe host controller driver is built as a module but modpost complains once these
+> > > > > > > > > > > > drivers become modules.
+> > > > > > > > > > > >
+> > > > > > > > > > > > ERROR: modpost: "mips_cm_unlock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
+> > > > > > > > > > > > ERROR: modpost: "mips_cpc_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
+> > > > > > > > > > > > ERROR: modpost: "mips_cm_lock_other" [drivers/pci/controller/pcie-mt7621.ko] undefined!
+> > > > > > > > > > > > ERROR: modpost: "mips_cm_is64" [drivers/pci/controller/pcie-mt7621.ko] undefined!
+> > > > > > > > > > > > ERROR: modpost: "mips_gcr_base" [drivers/pci/controller/pcie-mt7621.ko] undefined!
+> > > > > > > > > > > >
+> > > > > > > > > > > > Let's just export them.
+> > > > > > > > > > > >
+> > > > > > > > > > > > Signed-off-by: Yanteng Si <siyanteng@loongson.cn>
+> > > > > > > > > > > > ---
+> > > > > > > > > > > >  arch/mips/kernel/mips-cm.c  | 5 +++++
+> > > > > > > > > > > >  arch/mips/kernel/mips-cpc.c | 1 +
+> > > > > > > > > > > >  2 files changed, 6 insertions(+)
+> > > > > > > > > > > >
+> > > > > > > > > > >
+> > > > > > > > > > > Reviewed-by: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+> > > > > > > > > >
+> > > > > > > > > > could we instead make the pcie-mt761 driver non modular ? Exporting
+> > > > > > > > > > all MIPS specific stuff for just making an essential driver modular
+> > > > > > > > > > doesn't IMHO make much sense.
+> > > > > > > > >
+> > > > > > > > > The driver is modular because I have been advised other times that new
+> > > > > > > > > drivers should be able to be compiled as modules and we should avoid
+> > > > > > > > > using 'bool' in Kconfig for new drivers. That's the only reason. I am
+> > > > > > > > > also always including as 'y' the driver since for me not having pci in
+> > > > > > > > > my boards has no sense... I am ok in changing Kconfig to be 'bool'
+> > > > > > > > > instead of 'tristate', but I don't know what should be the correct
+> > > > > > > > > thing to do in this case. Thoughts?
+> > > > > > > >
+> > > > > > > > I guess we also want the driver to at least be compile tested in
+> > > > > > > > 'allmodconfig' and other similars...15692a80d949
+> > > > > > >
+> > > > > > > Sounds like the systems that actually use this driver require it to be
+> > > > > > > built-in, and the only benefit of exporting these symbols is that we
+> > > > > > > would get better compile test coverage.
+> > > > > > >
+> > > > > > > If that's the case, I agree that it's better to just make it
+> > > > > > > non-modular.
+> > > > > >
+> > > > > > I agree and that was my reasoning for sending a patch to also convert
+> > > > > > to bool the phy driver that this PCIe controller uses. When the pull
+> > > > > > request was sent from Vinod to Greg, Greg refused to take it because
+> > > > > > of that commit and the commit was reverted and a new pull request was
+> > > > > > sent including this revert. This is commit 15692a80d949 ("phy: Revert
+> > > > > > "phy: ralink: Kconfig: convert mt7621-pci-phy into 'bool'""). Because
+> > > > > > of this I also changed the PCIe controller Kconfig from bool to
+> > > > > > tristate when I sent v3 of the series which at the end were the ones
+> > > > > > that was finally taken. There are also other ralink related symbols
+> > > > > > that have been exported to allow to compile other drivers as a
+> > > > > > modules, like the watchdog. See the commit fef532ea0cd8 ("MIPS:
+> > > > > > ralink: export rt_sysc_membase for rt2880_wdt.c"). So, as I said, I
+> > > > > > agree and I am using the driver as if it were a bool and also ralink
+> > > > > > systems normally require all drivers built-in, but I think we have to
+> > > > > > take into account also the "historical facts" here. In any case,
+> > > > > > Bjorn, let me know if you want me to send whatever patch might be
+> > > > > > needed.
+> > > > >
+> > > > > I didn't see the conversation with Greg, so I don't know the whole
+> > > > > story.
+> > > >
+> > > > Here it is: https://www.spinics.net/lists/kernel/msg3986821.html
+> > > >
+> > > > > For pcie-mt7621.c, it looks like the only problem is
+> > > > > setup_cm_memory_region(), which does a little coherency-related stuff.
+> > > > > If we could move that to arch/mips, we could still make this tristate.
+> > > >
+> > > > Yes, the only mips specific function used in the driver is
+> > > > 'setup_cm_memory_region()'.
+> > > >
+> > > > > One way might be to implement a pcibios_root_bridge_prepare() for mips
+> > > > > and put the setup_cm_memory_region() stuff in there.  It's not *ideal*
+> > > > > because that's a strong/weak function arrangement that doesn't allow
+> > > > > for multiple host bridges, but that's probably not an issue here.
+> > > > >
+> > > > > If we can't do that, I think making it bool is probably the right
+> > > > > answer, but it would be worth a brief comment in the commit log to
+> > > > > explain the issue.
+> > > >
+> > > > Do you mean to implement 'pcibios_root_bridge_prepare()' for MIPS
+> > > > ralink? I guess this means to parse device tree and so on only to get
+> > > > memory range addresses to be added to the MIPS I/O coherence regions
+> > > > to make things work and then re-parse it again in the driver to do the
+> > > > proper PCI setup... We end up in an arch generic driver but at the end
+> > > > this controller is only present in ralink MIPS, so I am not sure that
+> > > > implementing 'pcibios_root_bridge_prepare()' is worthy here... I can
+> > > > explore and try to implement it if you think that it really makes
+> > > > sense... but, IMHO if this is the case, just making it bool looks like
+> > > > the correct thing to do.
+> > >
+> > > It should be trivial to put the contents of setup_cm_memory_region()
+> > > into a ralink function called pcibios_root_bridge_prepare().
+> > >
+> > > pcibios_root_bridge_prepare() is called with the same "struct
+> > > pci_host_bridge *" argument as setup_cm_memory_region(), and it's
+> > > called slightly later, so the window resources are already set up, so
+> > > no DT parsing is required.  It looks like a simple move and rename to
+> > > me.
+> >
+> > I see. Thanks Bjorn. I will try the approach during the weekend and
+> > report if it works.
+>
+> I have tested the change from 'setup_cm_memory_region()' code into
+> 'pcibios_root_bridge_prepare()' just by moving and renaming it from
+> the PCIe controller code. The function is properly being called.
+> However, it looks like at that point, windows are not setup yet (no
+> windows present at all in bridge->windows) so the system is not able
+> to get the IORESOURCE_MEM resource to set up the IO coherency unit and
+> the PCI failed to start:
+>
+> [   16.785359] mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+> [   16.798719] mt7621-pci 1e140000.pcie:   No bus range found for
+> /pcie@1e140000, using [bus 00-ff]
+> [   16.816248] mt7621-pci 1e140000.pcie:      MEM
+> 0x0060000000..0x006fffffff -> 0x0060000000
+> [   16.861310] mt7621-pci 1e140000.pcie:       IO
+> 0x001e160000..0x001e16ffff -> 0x0000000000
+> [   17.179230] mt7621-pci 1e140000.pcie: PCIE0 enabled
+> [   17.188954] mt7621-pci 1e140000.pcie: PCIE1 enabled
+> [   17.198678] mt7621-pci 1e140000.pcie: PCIE2 enabled
+> [   17.208415] Cannot get memory resource
+> [   17.215884] mt7621-pci 1e140000.pcie: Scanning root bridge failed
+> [   17.228454] mt7621-pci: probe of 1e140000.pcie failed with error -22
+>
+> FWIW, when the function is called, I have also tried to set up
+> hardcoded addresses. Doing that the IO coherency unit was properly set
+> up and PCI properly worked (expected). So, using this
+> 'pcibios_root_bridge_prepare()' funcion looks like a possible way to
+> go but we need the addresses properly being passed into the function.
+> I've also tried to list 'bridge->dma_ranges' and get resources from
+> there instead of using the not already setup 'bridge->windows'. There
+> is nothing inside that list also. 'bridge->bus->resources' is also
+> empty... Am I missing something? I was expecting the bridge passed
+> around to be the same that was in PCIe controller code, and it seems
+> it is (I printed the bridge pointer itself in driver code before
+> calling 'mt7621_pcie_register_host()' and in
+> 'pcibios_root_bridge_prepare()' at the begging of the function and the
+> pointer is the same) but windows and other stuff are not already
+> present there...
 
-I have tested the change from 'setup_cm_memory_region()' code into
-'pcibios_root_bridge_prepare()' just by moving and renaming it from
-the PCIe controller code. The function is properly being called.
-However, it looks like at that point, windows are not setup yet (no
-windows present at all in bridge->windows) so the system is not able
-to get the IORESOURCE_MEM resource to set up the IO coherency unit and
-the PCI failed to start:
+Looking into [0] it looks like resources are temporarily removed from
+the list just before call 'pcibios_root_bridge_prepare()'. Hence the
+behaviour I am seeing when trying to get them...
 
-[   16.785359] mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
-[   16.798719] mt7621-pci 1e140000.pcie:   No bus range found for
-/pcie@1e140000, using [bus 00-ff]
-[   16.816248] mt7621-pci 1e140000.pcie:      MEM
-0x0060000000..0x006fffffff -> 0x0060000000
-[   16.861310] mt7621-pci 1e140000.pcie:       IO
-0x001e160000..0x001e16ffff -> 0x0000000000
-[   17.179230] mt7621-pci 1e140000.pcie: PCIE0 enabled
-[   17.188954] mt7621-pci 1e140000.pcie: PCIE1 enabled
-[   17.198678] mt7621-pci 1e140000.pcie: PCIE2 enabled
-[   17.208415] Cannot get memory resource
-[   17.215884] mt7621-pci 1e140000.pcie: Scanning root bridge failed
-[   17.228454] mt7621-pci: probe of 1e140000.pcie failed with error -22
-
-FWIW, when the function is called, I have also tried to set up
-hardcoded addresses. Doing that the IO coherency unit was properly set
-up and PCI properly worked (expected). So, using this
-'pcibios_root_bridge_prepare()' funcion looks like a possible way to
-go but we need the addresses properly being passed into the function.
-I've also tried to list 'bridge->dma_ranges' and get resources from
-there instead of using the not already setup 'bridge->windows'. There
-is nothing inside that list also. 'bridge->bus->resources' is also
-empty... Am I missing something? I was expecting the bridge passed
-around to be the same that was in PCIe controller code, and it seems
-it is (I printed the bridge pointer itself in driver code before
-calling 'mt7621_pcie_register_host()' and in
-'pcibios_root_bridge_prepare()' at the begging of the function and the
-pointer is the same) but windows and other stuff are not already
-present there...
-
-Thanks in advance for clarification.
+[0]: https://elixir.bootlin.com/linux/latest/source/drivers/pci/probe.c#L915
 
 Best regards,
-     Sergio Paracuellos
+    Sergio Paracuellos
 
 >
+> Thanks in advance for clarification.
+>
 > Best regards,
->     Sergio Paracuellos
+>      Sergio Paracuellos
 >
 > >
-> > Bjorn
+> > Best regards,
+> >     Sergio Paracuellos
+> >
+> > >
+> > > Bjorn
 
 _______________________________________________
 Linux-mediatek mailing list
