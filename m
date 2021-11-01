@@ -2,14 +2,14 @@ Return-Path: <SRS0=DXFh=PU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E5737C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 14:17:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DDB89C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 16:02:12 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 92D1D60ED5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 14:17:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 92D1D60ED5
+	by mail.kernel.org (Postfix) with ESMTPS id 8510F610A5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 16:02:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8510F610A5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,59 +18,64 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SahylsBBX4x48NSrlWdlfrrWHEGRT8X47O7Cx4jbp80=; b=YRBVPKTeEj4KSz
-	Ufg9W99d+y6YLTKNKeutH/8WU9CBADs1QV5RA5FtUpMzNboMc5RZ+gsvEsvZkhMPd2qOaa40fS3jK
-	C4KmuyAYgwgIqZps257ujGoxG1LTGBdn8LRLYGpKhLZjLFuj4pO5P7WLbjdHS9qgT10NbLq35Omm5
-	/XgJNSTTnvn9L1tFacIJqhtzzjYsnG8fMqWB0UUcHIkEw4liLeBHp0D/vocU4418nm0rZK9dQsYUU
-	w3Yu9D8wxwtommhITMmGtZj16RuxhjQuG7xm3gdumbkkLMbrVNF8IhfW3RySlioEv1nqyPNlN3AmM
-	8t+j6S5swdMu91xyL+jA==;
+	List-Owner; bh=Fdj8Qi6yj7+gKzb1TcsntDR7G6yOF4CJMBnHOJbO01Q=; b=CO2ugPr3tyFTHR
+	EZMLisq9pga+sYHX1oXMNpRYpFMo4GX6WxeDpADkKijiO0939GABHD86G6jxE4hhvIvEDKqVvlESx
+	LiRdOLikQGAb211bCdDjeuQbbwmE0jazXjcnnTfLFCCIehIAEEb6ufqaWvufAeOtpvyWc9h0uI2wG
+	x/IsCqWo7ECNu4I1QsEO1HXqal+mth4hOdfaw0jgZX04fw9inM8ymja8jJEVxrSggHRk3M6RJxygB
+	azopn27+M9d+SrNvWftTl3OYyVHyfA/aSK4ueugbRkFy7VBw20KnPDf+0WEpSq3r/BdJIJbbTeX92
+	P7BcPMDA1oSRDivqR8RA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhY82-00GYhj-Hw; Mon, 01 Nov 2021 14:17:38 +0000
+	id 1mhZkx-00GjxA-BO; Mon, 01 Nov 2021 16:01:55 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhY7q-00GYfk-EG; Mon, 01 Nov 2021 14:17:28 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A472D60F46;
- Mon,  1 Nov 2021 14:17:25 +0000 (UTC)
+ id 1mhZkk-00Gjvj-DC; Mon, 01 Nov 2021 16:01:44 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 74FF3610E8;
+ Mon,  1 Nov 2021 16:01:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1635776245;
- bh=YseqVJrHR7rIwk1Wkg7bXw9N3GSGkFjmGgMqZlAIww0=;
+ s=k20201202; t=1635782501;
+ bh=mewaSJNribk3baDdb81clxq+uCKF047JZO5mQfz6eto=;
  h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=qAS4RW253o/aPKrkn/TPqputjRnBTQYs4GdDZS/Kerln6MSUDwbTa1FUJAXfT9bXw
- vp9+coeWw4ZFxBvQWq/ZyHnHf8itNYrCVeSR9VJtziPNoto6KbNhX8yn7dbUkh1znh
- 3l+2WMG1/3ZETyAy2M92C32hSbLxdAW9ovpMJeXivTVW8nE+Ba+mqZV6/c+bOtxydS
- U6y7MHrSBlwXuRzxJoOEIdgISM4hPhYp+zdFNfdhJ+eWV7DZGpCV1FFHlB0pweZpCl
- tCRUZyfE0rRg/aYlD1kpe1j7e3oJsXPfI+5X+iQf17kwyO84twOjBwdRSEaQ+ueYVt
- N1bRlqxbTqlTg==
-Received: by mail-oi1-f170.google.com with SMTP id y207so25068206oia.11;
- Mon, 01 Nov 2021 07:17:25 -0700 (PDT)
-X-Gm-Message-State: AOAM530J4f+KZ1Nl2aM0EBr9CE5KirYFX9rI0WoS4P86ix0yOTDRLq00
- HA+GiKoXboY+Pqgewjpc5BpKrOiy67QzsMwWyQg=
-X-Google-Smtp-Source: ABdhPJxOXIuTNzqz1i2MYTktHa+hdjvUeJScl8qV7kA68t3cZIj0tYQxHF0FaYTt+YNAwRP/dwuEZad0WfxqaUhVXts=
-X-Received: by 2002:a05:6808:4d9:: with SMTP id
- a25mr19998210oie.33.1635776245009; 
- Mon, 01 Nov 2021 07:17:25 -0700 (PDT)
+ b=q2f5LX8vz10IPN3jv/xzPejjGvyBoJP+5tMjvysxuyuKCaxUNZU7h39Ehu+QTtZM7
+ FqwqGjHc+3UhSHfW5ijUQQk5T0INxSCu1AndjXb45hmUmMW4+e6XaKVbP9Of46JBjU
+ eTpaUiXaKyxNxJKf+M+Cye8RbaXlYOmaNyOjKGPvCdgZraD51m4m3aH1/ED7zgqSw4
+ dTQLfGwHqBosYSgiJqapVCOkJ3Gcax6M3nsusH66Ba0L2nxHIDrBkViGeLtDXe7XHs
+ fO42DSv1dmyK7WdpXh9PMsdnDWfm9NodM+wsXWBh3l77jxpzvUpoXt9GHIrpJvxohb
+ O1IL3NDk3u9fw==
+Received: by mail-ed1-f44.google.com with SMTP id h7so66559212ede.8;
+ Mon, 01 Nov 2021 09:01:41 -0700 (PDT)
+X-Gm-Message-State: AOAM533UnaKvcdczm+zllCCHdX5RUg6lGS5zltyQS2rWhTgsYrslCsXb
+ 653DqOlE8Ij1Ct6RRntiuZl+0VQnQ4+j/qaK7Q==
+X-Google-Smtp-Source: ABdhPJytrO4R9UoB72L6vfCTxL0ZQDmOtKvyeIznBKV58Qbh3Wp7pkxQBbhZ+DIPRYS1I89feW0ZBnDkzUg7XAC3WEo=
+X-Received: by 2002:a17:906:974d:: with SMTP id
+ o13mr9277542ejy.105.1635782499809; 
+ Mon, 01 Nov 2021 09:01:39 -0700 (PDT)
 MIME-Version: 1.0
-References: <20211101031558.7184-1-walter-zh.wu@mediatek.com>
- <CAMj1kXGqOzHM+J30TXR3-uZPkjHBCXB4CMkzZjHbbmptyU5W9w@mail.gmail.com>
- <76840b40fcf26a65467931a73f236982ad39989c.camel@mediatek.com>
-In-Reply-To: <76840b40fcf26a65467931a73f236982ad39989c.camel@mediatek.com>
-From: Ard Biesheuvel <ardb@kernel.org>
-Date: Mon, 1 Nov 2021 15:17:12 +0100
-X-Gmail-Original-Message-ID: <CAMj1kXFrUrThJFDJ0Q9qjDemcEovQVMtO20KbdnLccp7VfyVwA@mail.gmail.com>
-Message-ID: <CAMj1kXFrUrThJFDJ0Q9qjDemcEovQVMtO20KbdnLccp7VfyVwA@mail.gmail.com>
-Subject: Re: [PATCH] dma-direct: fix DMA_ATTR_NO_KERNEL_MAPPING
-To: Walter Wu <walter-zh.wu@mediatek.com>
-Cc: Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>,
- Robin Murphy <robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Linux IOMMU <iommu@lists.linux-foundation.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org, 
- Andrew Morton <akpm@linux-foundation.org>
+References: <20211029075203.17093-1-nancy.lin@mediatek.com>
+ <20211029075203.17093-4-nancy.lin@mediatek.com>
+In-Reply-To: <20211029075203.17093-4-nancy.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Tue, 2 Nov 2021 00:01:28 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_969K1tsFW4o15ysyGuGjs89E_UthJVZVT_oEb9RjPhEA@mail.gmail.com>
+Message-ID: <CAAOTY_969K1tsFW4o15ysyGuGjs89E_UthJVZVT_oEb9RjPhEA@mail.gmail.com>
+Subject: Re: [PATCH v7 03/20] dt-bindings: mediatek: add ethdr definition for
+ mt8195
+To: "Nancy.Lin" <nancy.lin@mediatek.com>
+Cc: CK Hu <ck.hu@mediatek.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, 
+ Yongqiang Niu <yongqiang.niu@mediatek.com>, 
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ DTML <devicetree@vger.kernel.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, singo.chang@mediatek.com, 
+ srv_heupstream <srv_heupstream@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211101_071726_604704_E1F356EA 
-X-CRM114-Status: GOOD (  41.48  )
+X-CRM114-CacheID: sfid-20211101_090142_541125_ACC1F25D 
+X-CRM114-Status: GOOD (  19.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,120 +87,135 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 1 Nov 2021 at 13:21, Walter Wu <walter-zh.wu@mediatek.com> wrote:
->
-> Hi Ard,
->
-> On Mon, 2021-11-01 at 09:34 +0100, Ard Biesheuvel wrote:
-> > On Mon, 1 Nov 2021 at 04:17, Walter Wu <walter-zh.wu@mediatek.com>
-> > wrote:
-> > >
-> > > DMA_ATTR_NO_KERNEL_MAPPING is to avoid creating a kernel mapping
-> > > for the allocated buffer, but current implementation is that
-> > > PTE of allocated buffer in kernel page table is valid. So we
-> > > should set invalid for PTE of allocate buffer so that there are
-> > > no kernel mapping for the allocated buffer.
-> > >
-> > > In some cases, we don't hope the allocated buffer to be read
-> > > by cpu or speculative execution, so we use
-> > > DMA_ATTR_NO_KERNEL_MAPPING
-> > > to get no kernel mapping in order to achieve this goal.
-> > >
-> > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> > > Cc: Christoph Hellwig <hch@lst.de>
-> > > Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-> > > Cc: Robin Murphy <robin.murphy@arm.com>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Cc: Andrew Morton <akpm@linux-foundation.org>
-> > > ---
-> > >  kernel/dma/direct.c | 8 ++++++++
-> > >  1 file changed, 8 insertions(+)
-> > >
-> > > diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
-> > > index 4c6c5e0635e3..aa10b4c5d762 100644
-> > > --- a/kernel/dma/direct.c
-> > > +++ b/kernel/dma/direct.c
-> > > @@ -13,6 +13,7 @@
-> > >  #include <linux/vmalloc.h>
-> > >  #include <linux/set_memory.h>
-> > >  #include <linux/slab.h>
-> > > +#include <asm/cacheflush.h>
-> > >  #include "direct.h"
-> > >
-> > >  /*
-> > > @@ -169,6 +170,9 @@ void *dma_direct_alloc(struct device *dev,
-> > > size_t size,
-> > >                 if (!PageHighMem(page))
-> > >                         arch_dma_prep_coherent(page, size);
-> > >                 *dma_handle = phys_to_dma_direct(dev,
-> > > page_to_phys(page));
-> > > +               /* remove kernel mapping for pages */
-> > > +               set_memory_valid((unsigned
-> > > long)phys_to_virt(dma_to_phys(dev, *dma_handle)),
-> > > +                               size >> PAGE_SHIFT, 0);
-> >
-> > This only works if the memory is mapped at page granularity in the
-> > linear region, and you cannot rely on that. Many architectures prefer
-> > block mappings for the linear region, and arm64 will only use page
-> > mappings if rodata=full is set (which is set by default but can be
-> > overridden on the kernel command line)
-> >
->
-> We mainly want to solve arm64 arch.
-
-Solve what?
-
-> RODATA_FULL_DEFAULT_ENABLED should
-> be the arm64 config. If we use CONFIG_RODATA_FULL_DEFAULT_ENABLED to
-> check whether it call set_memory_valid(). It should avoid other
-> architectures. Do you think this method is work?
->
-
-No. Try it with rodata=off (or rodata=on for that matter) and see what happens.
-
-> Thanks for your explaination and suggestion.
->
-
-YW
-
->
-> >
-> > >                 /* return the page pointer as the opaque cookie */
-> > >                 return page;
-> > >         }
-> > > @@ -278,6 +282,10 @@ void dma_direct_free(struct device *dev,
-> > > size_t size,
-> > >
-> > >         if ((attrs & DMA_ATTR_NO_KERNEL_MAPPING) &&
-> > >             !force_dma_unencrypted(dev) &&
-> > > !is_swiotlb_for_alloc(dev)) {
-> > > +               size = PAGE_ALIGN(size);
-> > > +               /* create kernel mapping for pages */
-> > > +               set_memory_valid((unsigned
-> > > long)phys_to_virt(dma_to_phys(dev, dma_addr)),
-> > > +                               size >> PAGE_SHIFT, 1);
-> > >                 /* cpu_addr is a struct page cookie, not a kernel
-> > > address */
-> > >                 dma_free_contiguous(dev, cpu_addr, size);
-> > >                 return;
-> > > --
-> > > 2.18.0
-> > >
-> > >
-> > > _______________________________________________
-> > > linux-arm-kernel mailing list
-> > > linux-arm-kernel@lists.infradead.org
-> > >
-> https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-arm-kernel__;!!CTRNKA9wMg0ARbw!16dLCjnvtRkaRLeCO9AQ7Fund5XL0FicZmeVaU3-WkFymr-0lbITfzwrvoJpiHlqnqIu-g$
-> > >
->
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIE5hbmN5OgoKTmFuY3kuTGluIDxuYW5jeS5saW5AbWVkaWF0ZWsuY29tPiDmlrwgMjAyMeW5
+tDEw5pyIMjnml6Ug6YCx5LqUIOS4i+WNiDM6NTLlr6vpgZPvvJoKPgo+IEFkZCB2ZG9zeXMxIEVU
+SERSIGRlZmluaXRpb24uCgpSZXZpZXdlZC1ieTogQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5nLmh1
+QGtlcm5lbC5vcmc+Cgo+Cj4gU2lnbmVkLW9mZi1ieTogTmFuY3kuTGluIDxuYW5jeS5saW5AbWVk
+aWF0ZWsuY29tPgo+IC0tLQo+ICAuLi4vZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxldGhkci55
+YW1sICAgICAgfCAxNDcgKysrKysrKysrKysrKysrKysrCj4gIDEgZmlsZSBjaGFuZ2VkLCAxNDcg
+aW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi9kZXZpY2V0
+cmVlL2JpbmRpbmdzL2Rpc3BsYXkvbWVkaWF0ZWsvbWVkaWF0ZWssZXRoZHIueWFtbAo+Cj4gZGlm
+ZiAtLWdpdCBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5L21lZGlh
+dGVrL21lZGlhdGVrLGV0aGRyLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGlu
+Z3MvZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxldGhkci55YW1sCj4gbmV3IGZpbGUgbW9kZSAx
+MDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwMDAuLjEzMWVlZDVlZWViNwo+IC0tLSAvZGV2L251bGwK
+PiArKysgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvZGlzcGxheS9tZWRpYXRl
+ay9tZWRpYXRlayxldGhkci55YW1sCj4gQEAgLTAsMCArMSwxNDcgQEAKPiArIyBTUERYLUxpY2Vu
+c2UtSWRlbnRpZmllcjogKEdQTC0yLjAtb25seSBPUiBCU0QtMi1DbGF1c2UpCj4gKyVZQU1MIDEu
+Mgo+ICstLS0KPiArJGlkOiBodHRwOi8vZGV2aWNldHJlZS5vcmcvc2NoZW1hcy9kaXNwbGF5L21l
+ZGlhdGVrL21lZGlhdGVrLGV0aGRyLnlhbWwjCj4gKyRzY2hlbWE6IGh0dHA6Ly9kZXZpY2V0cmVl
+Lm9yZy9tZXRhLXNjaGVtYXMvY29yZS55YW1sIwo+ICsKPiArdGl0bGU6IE1lZGlhdGVrIEV0aGRy
+IERldmljZSBUcmVlIEJpbmRpbmdzCj4gKwo+ICttYWludGFpbmVyczoKPiArICAtIENodW4tS3Vh
+bmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgo+ICsgIC0gUGhpbGlwcCBaYWJlbCA8cC56
+YWJlbEBwZW5ndXRyb25peC5kZT4KPiArCj4gK2Rlc2NyaXB0aW9uOiB8Cj4gKyAgRVRIRFIgaXMg
+ZGVzaWduZWQgZm9yIEhEUiB2aWRlbyBhbmQgZ3JhcGhpY3MgY29udmVyc2lvbiBpbiB0aGUgZXh0
+ZXJuYWwgZGlzcGxheSBwYXRoLgo+ICsgIEl0IGhhbmRsZXMgbXVsdGlwbGUgSERSIGlucHV0IHR5
+cGVzIGFuZCBwZXJmb3JtcyB0b25lIG1hcHBpbmcsIGNvbG9yIHNwYWNlL2NvbG9yCj4gKyAgZm9y
+bWF0IGNvbnZlcnNpb24sIGFuZCB0aGVuIGNvbWJpbmUgZGlmZmVyZW50IGxheWVycywgb3V0cHV0
+IHRoZSByZXF1aXJlZCBIRFIgb3IKPiArICBTRFIgc2lnbmFsIHRvIHRoZSBzdWJzZXF1ZW50IGRp
+c3BsYXkgcGF0aC4gVGhpcyBlbmdpbmUgaXMgY29tcG9zZWQgb2YgdHdvIHZpZGVvCj4gKyAgZnJv
+bnRlbmRzLCB0d28gZ3JhcGhpYyBmcm9udGVuZHMsIG9uZSB2aWRlbyBiYWNrZW5kIGFuZCBhIG1p
+eGVyLiBFVEhEUiBoYXMgdHdvCj4gKyAgRE1BIGZ1bmN0aW9uIGJsb2NrcywgRFMgYW5kIEFETC4g
+VGhlc2UgdHdvIGZ1bmN0aW9uIGJsb2NrcyByZWFkIHRoZSBwcmUtcHJvZ3JhbW1lZAo+ICsgIHJl
+Z2lzdGVycyBmcm9tIERSQU0gYW5kIHNldCB0aGVtIHRvIEhXIGluIHRoZSB2LWJsYW5raW5nIHBl
+cmlvZC4KPiArCj4gK3Byb3BlcnRpZXM6Cj4gKyAgY29tcGF0aWJsZToKPiArICAgIGl0ZW1zOgo+
+ICsgICAgICAtIGNvbnN0OiBtZWRpYXRlayxtdDgxOTUtZGlzcC1ldGhkcgo+ICsgIHJlZzoKPiAr
+ICAgIG1heEl0ZW1zOiA3Cj4gKyAgcmVnLW5hbWVzOgo+ICsgICAgaXRlbXM6Cj4gKyAgICAgIC0g
+Y29uc3Q6IG1peGVyCj4gKyAgICAgIC0gY29uc3Q6IHZkb19mZTAKPiArICAgICAgLSBjb25zdDog
+dmRvX2ZlMQo+ICsgICAgICAtIGNvbnN0OiBnZnhfZmUwCj4gKyAgICAgIC0gY29uc3Q6IGdmeF9m
+ZTEKPiArICAgICAgLSBjb25zdDogdmRvX2JlCj4gKyAgICAgIC0gY29uc3Q6IGFkbF9kcwo+ICsg
+IGludGVycnVwdHM6Cj4gKyAgICBtaW5JdGVtczogMQo+ICsgIGlvbW11czoKPiArICAgIGRlc2Ny
+aXB0aW9uOiBUaGUgY29tcGF0aWJsZSBwcm9wZXJ0eSBpcyBETUEgZnVuY3Rpb24gYmxvY2tzLgo+
+ICsgICAgICBTaG91bGQgcG9pbnQgdG8gdGhlIHJlc3BlY3RpdmUgSU9NTVUgYmxvY2sgd2l0aCBt
+YXN0ZXIgcG9ydCBhcyBhcmd1bWVudCwKPiArICAgICAgc2VlIERvY3VtZW50YXRpb24vZGV2aWNl
+dHJlZS9iaW5kaW5ncy9pb21tdS9tZWRpYXRlayxpb21tdS55YW1sIGZvcgo+ICsgICAgICBkZXRh
+aWxzLgo+ICsgICAgbWluSXRlbXM6IDEKPiArICAgIG1heEl0ZW1zOiAyCj4gKyAgY2xvY2tzOgo+
+ICsgICAgaXRlbXM6Cj4gKyAgICAgIC0gZGVzY3JpcHRpb246IG1peGVyIGNsb2NrCj4gKyAgICAg
+IC0gZGVzY3JpcHRpb246IHZpZGVvIGZyb250ZW5kIDAgY2xvY2sKPiArICAgICAgLSBkZXNjcmlw
+dGlvbjogdmlkZW8gZnJvbnRlbmQgMSBjbG9jawo+ICsgICAgICAtIGRlc2NyaXB0aW9uOiBncmFw
+aGljIGZyb250ZW5kIDAgY2xvY2sKPiArICAgICAgLSBkZXNjcmlwdGlvbjogZ3JhcGhpYyBmcm9u
+dGVuZCAxIGNsb2NrCj4gKyAgICAgIC0gZGVzY3JpcHRpb246IHZpZGVvIGJhY2tlbmQgY2xvY2sK
+PiArICAgICAgLSBkZXNjcmlwdGlvbjogYXV0b2Rvd25sb2FkIGFuZCBtZW51bG9hZCBjbG9jawo+
+ICsgICAgICAtIGRlc2NyaXB0aW9uOiB2aWRlbyBmcm9udGVuZCAwIGFzeW5jIGNsb2NrCj4gKyAg
+ICAgIC0gZGVzY3JpcHRpb246IHZpZGVvIGZyb250ZW5kIDEgYXN5bmMgY2xvY2sKPiArICAgICAg
+LSBkZXNjcmlwdGlvbjogZ3JhcGhpYyBmcm9udGVuZCAwIGFzeW5jIGNsb2NrCj4gKyAgICAgIC0g
+ZGVzY3JpcHRpb246IGdyYXBoaWMgZnJvbnRlbmQgMSBhc3luYyBjbG9jawo+ICsgICAgICAtIGRl
+c2NyaXB0aW9uOiB2aWRlbyBiYWNrZW5kIGFzeW5jIGNsb2NrCj4gKyAgICAgIC0gZGVzY3JpcHRp
+b246IGV0aGRyIHRvcCBjbG9jawo+ICsgIGNsb2NrLW5hbWVzOgo+ICsgICAgaXRlbXM6Cj4gKyAg
+ICAgIC0gY29uc3Q6IG1peGVyCj4gKyAgICAgIC0gY29uc3Q6IHZkb19mZTAKPiArICAgICAgLSBj
+b25zdDogdmRvX2ZlMQo+ICsgICAgICAtIGNvbnN0OiBnZnhfZmUwCj4gKyAgICAgIC0gY29uc3Q6
+IGdmeF9mZTEKPiArICAgICAgLSBjb25zdDogdmRvX2JlCj4gKyAgICAgIC0gY29uc3Q6IGFkbF9k
+cwo+ICsgICAgICAtIGNvbnN0OiB2ZG9fZmUwX2FzeW5jCj4gKyAgICAgIC0gY29uc3Q6IHZkb19m
+ZTFfYXN5bmMKPiArICAgICAgLSBjb25zdDogZ2Z4X2ZlMF9hc3luYwo+ICsgICAgICAtIGNvbnN0
+OiBnZnhfZmUxX2FzeW5jCj4gKyAgICAgIC0gY29uc3Q6IHZkb19iZV9hc3luYwo+ICsgICAgICAt
+IGNvbnN0OiBldGhkcl90b3AKPiArICBwb3dlci1kb21haW5zOgo+ICsgICAgbWF4SXRlbXM6IDEK
+PiArICByZXNldHM6Cj4gKyAgICBtYXhJdGVtczogNQo+ICsgIG1lZGlhdGVrLGdjZS1jbGllbnQt
+cmVnOgo+ICsgICAgJHJlZjogL3NjaGVtYXMvdHlwZXMueWFtbCMvZGVmaW5pdGlvbnMvcGhhbmRs
+ZS1hcnJheQo+ICsgICAgZGVzY3JpcHRpb246IFRoZSByZWdpc3RlciBvZiBkaXNwbGF5IGZ1bmN0
+aW9uIGJsb2NrIHRvIGJlIHNldCBieSBnY2UuCj4gKyAgICAgIFRoZXJlIGFyZSA0IGFyZ3VtZW50
+cyBpbiB0aGlzIHByb3BlcnR5LCBnY2Ugbm9kZSwgc3Vic3lzIGlkLCBvZmZzZXQgYW5kCj4gKyAg
+ICAgIHJlZ2lzdGVyIHNpemUuIFRoZSBzdWJzeXMgaWQgaXMgZGVmaW5lZCBpbiB0aGUgZ2NlIGhl
+YWRlciBvZiBlYWNoIGNoaXBzCj4gKyAgICAgIGluY2x1ZGUvaW5jbHVkZS9kdC1iaW5kaW5ncy9n
+Y2UvPGNoaXA+LWdjZS5oLCBtYXBwaW5nIHRvIHRoZSByZWdpc3RlciBvZgo+ICsgICAgICBkaXNw
+bGF5IGZ1bmN0aW9uIGJsb2NrLgo+ICsKPiArcmVxdWlyZWQ6Cj4gKyAgLSBjb21wYXRpYmxlCj4g
+KyAgLSByZWcKPiArICAtIGNsb2Nrcwo+ICsgIC0gY2xvY2stbmFtZXMKPiArICAtIGludGVycnVw
+dHMKPiArICAtIHBvd2VyLWRvbWFpbnMKPiArCj4gK2FkZGl0aW9uYWxQcm9wZXJ0aWVzOiBmYWxz
+ZQo+ICsKPiArZXhhbXBsZXM6Cj4gKyAgLSB8Cj4gKwo+ICsgICAgZGlzcF9ldGhkckAxYzExNDAw
+MCB7Cj4gKyAgICAgICAgICAgIGNvbXBhdGlibGUgPSAibWVkaWF0ZWssbXQ4MTk1LWRpc3AtZXRo
+ZHIiOwo+ICsgICAgICAgICAgICByZWcgPSA8MCAweDFjMTE0MDAwIDAgMHgxMDAwPiwKPiArICAg
+ICAgICAgICAgICAgICAgPDAgMHgxYzExNTAwMCAwIDB4MTAwMD4sCj4gKyAgICAgICAgICAgICAg
+ICAgIDwwIDB4MWMxMTcwMDAgMCAweDEwMDA+LAo+ICsgICAgICAgICAgICAgICAgICA8MCAweDFj
+MTE5MDAwIDAgMHgxMDAwPiwKPiArICAgICAgICAgICAgICAgICAgPDAgMHgxYzExQTAwMCAwIDB4
+MTAwMD4sCj4gKyAgICAgICAgICAgICAgICAgIDwwIDB4MWMxMUIwMDAgMCAweDEwMDA+LAo+ICsg
+ICAgICAgICAgICAgICAgICA8MCAweDFjMTFDMDAwIDAgMHgxMDAwPjsKPiArICAgICAgICAgICAg
+cmVnLW5hbWVzID0gIm1peGVyIiwgInZkb19mZTAiLCAidmRvX2ZlMSIsICJnZnhfZmUwIiwgImdm
+eF9mZTEiLAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAidmRvX2JlIiwgImFkbF9kcyI7Cj4g
+KyAgICAgICAgICAgIG1lZGlhdGVrLGdjZS1jbGllbnQtcmVnID0gPCZnY2UwIFNVQlNZU18xYzEx
+WFhYWCAweDQwMDAgMHgxMDAwPiwKPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICA8JmdjZTAgU1VCU1lTXzFjMTFYWFhYIDB4NTAwMCAweDEwMDA+LAo+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmZ2NlMCBTVUJTWVNfMWMxMVhYWFggMHg3MDAw
+IDB4MTAwMD4sCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgPCZnY2Uw
+IFNVQlNZU18xYzExWFhYWCAweDkwMDAgMHgxMDAwPiwKPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICA8JmdjZTAgU1VCU1lTXzFjMTFYWFhYIDB4QTAwMCAweDEwMDA+LAo+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDwmZ2NlMCBTVUJTWVNfMWMx
+MVhYWFggMHhCMDAwIDB4MTAwMD4sCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgPCZnY2UwIFNVQlNZU18xYzExWFhYWCAweEMwMDAgMHgxMDAwPjsKPiArICAgICAgICAg
+ICAgY2xvY2tzID0gPCZ2ZG9zeXMxIENMS19WRE8xX0RJU1BfTUlYRVI+LAo+ICsgICAgICAgICAg
+ICAgICAgICAgICA8JnZkb3N5czEgQ0xLX1ZETzFfSERSX1ZET19GRTA+LAo+ICsgICAgICAgICAg
+ICAgICAgICAgICA8JnZkb3N5czEgQ0xLX1ZETzFfSERSX1ZET19GRTE+LAo+ICsgICAgICAgICAg
+ICAgICAgICAgICA8JnZkb3N5czEgQ0xLX1ZETzFfSERSX0dGWF9GRTA+LAo+ICsgICAgICAgICAg
+ICAgICAgICAgICA8JnZkb3N5czEgQ0xLX1ZETzFfSERSX0dGWF9GRTE+LAo+ICsgICAgICAgICAg
+ICAgICAgICAgICA8JnZkb3N5czEgQ0xLX1ZETzFfSERSX1ZET19CRT4sCj4gKyAgICAgICAgICAg
+ICAgICAgICAgIDwmdmRvc3lzMSBDTEtfVkRPMV8yNk1fU0xPVz4sCj4gKyAgICAgICAgICAgICAg
+ICAgICAgIDwmdmRvc3lzMSBDTEtfVkRPMV9IRFJfVkRPX0ZFMF9ETF9BU1lOQz4sCj4gKyAgICAg
+ICAgICAgICAgICAgICAgIDwmdmRvc3lzMSBDTEtfVkRPMV9IRFJfVkRPX0ZFMV9ETF9BU1lOQz4s
+Cj4gKyAgICAgICAgICAgICAgICAgICAgIDwmdmRvc3lzMSBDTEtfVkRPMV9IRFJfR0ZYX0ZFMF9E
+TF9BU1lOQz4sCj4gKyAgICAgICAgICAgICAgICAgICAgIDwmdmRvc3lzMSBDTEtfVkRPMV9IRFJf
+R0ZYX0ZFMV9ETF9BU1lOQz4sCj4gKyAgICAgICAgICAgICAgICAgICAgIDwmdmRvc3lzMSBDTEtf
+VkRPMV9IRFJfVkRPX0JFX0RMX0FTWU5DPiwKPiArICAgICAgICAgICAgICAgICAgICAgPCZ0b3Bj
+a2dlbiBDTEtfVE9QX0VUSERSX1NFTD47Cj4gKyAgICAgICAgICAgIGNsb2NrLW5hbWVzID0gIm1p
+eGVyIiwgInZkb19mZTAiLCAidmRvX2ZlMSIsICJnZnhfZmUwIiwgImdmeF9mZTEiLAo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICJ2ZG9fYmUiLCAiYWRsX2RzIiwgInZkb19mZTBfYXN5bmMi
+LCAidmRvX2ZlMV9hc3luYyIsCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgImdmeF9mZTBf
+YXN5bmMiLCAiZ2Z4X2ZlMV9hc3luYyIsInZkb19iZV9hc3luYyIsCj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgICAgImV0aGRyX3RvcCI7Cj4gKyAgICAgICAgICAgIHBvd2VyLWRvbWFpbnMgPSA8
+JnNwbSBNVDgxOTVfUE9XRVJfRE9NQUlOX1ZET1NZUzE+Owo+ICsgICAgICAgICAgICBpb21tdXMg
+PSA8JmlvbW11X3ZwcCBNNFVfUE9SVF9MM19IRFJfRFM+LAo+ICsgICAgICAgICAgICAgICAgICAg
+ICA8JmlvbW11X3ZwcCBNNFVfUE9SVF9MM19IRFJfQURMPjsKPiArICAgICAgICAgICAgaW50ZXJy
+dXB0cyA9IDxHSUNfU1BJIDUxNyBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+OyAvKiBkaXNwIG1peGVy
+ICovCj4gKyAgICAgICAgICAgIHJlc2V0cyA9IDwmdmRvc3lzMSBNVDgxOTVfVkRPU1lTMV9TVzFf
+UlNUX0JfSERSX1ZET19GRTBfRExfQVNZTkM+LAo+ICsgICAgICAgICAgICAgICAgICAgICA8JnZk
+b3N5czEgTVQ4MTk1X1ZET1NZUzFfU1cxX1JTVF9CX0hEUl9WRE9fRkUxX0RMX0FTWU5DPiwKPiAr
+ICAgICAgICAgICAgICAgICAgICAgPCZ2ZG9zeXMxIE1UODE5NV9WRE9TWVMxX1NXMV9SU1RfQl9I
+RFJfR0ZYX0ZFMF9ETF9BU1lOQz4sCj4gKyAgICAgICAgICAgICAgICAgICAgIDwmdmRvc3lzMSBN
+VDgxOTVfVkRPU1lTMV9TVzFfUlNUX0JfSERSX0dGWF9GRTFfRExfQVNZTkM+LAo+ICsgICAgICAg
+ICAgICAgICAgICAgICA8JnZkb3N5czEgTVQ4MTk1X1ZET1NZUzFfU1cxX1JTVF9CX0hEUl9WRE9f
+QkVfRExfQVNZTkM+Owo+ICsgICAgfTsKPiArCj4gKy4uLgo+IC0tCj4gMi4xOC4wCj4KCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVr
+IG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
