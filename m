@@ -2,57 +2,75 @@ Return-Path: <SRS0=DXFh=PU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 92C04C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 14:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5737C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 14:17:54 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 55A4C61078
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 14:06:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 55A4C61078
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=rowland.harvard.edu
+	by mail.kernel.org (Postfix) with ESMTPS id 92D1D60ED5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 14:17:54 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 92D1D60ED5
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZDf6kvoEo/NnkJQNB+tu1/42NTivMwiUFf2pk/vfm2M=; b=nRQjbpmZTfYL/j
-	pes3TaWWWlrrRiPZjWodcXBVVlsDpc8wAU1Lr63E2GSoL0b/uW8+UIi4p/mirbWNJPwAjbnuzbM8l
-	eEUo64335asmLp3hnihfI6uBBz32my9Z17ltggSZ7AUIKy5xeZOD73XxHczsilZO3Be0qcze7agHb
-	+vADTL4HoWW4c7M44WbUCRt6EK2pcPxf9t/+iv3zSEwVfXX7+MNNUEfwjJEKZVLGTcFCrT/rfvbUT
-	vJrGJrfoQ+tCcUvkWhGQX2XL9srtpoTDr0mFT5bZMG+drU+a8UiMsrgakwesx8VQAR9bc7OvtA7zl
-	LxlsGxwVqh72O+NwJe3w==;
+	List-Owner; bh=SahylsBBX4x48NSrlWdlfrrWHEGRT8X47O7Cx4jbp80=; b=YRBVPKTeEj4KSz
+	Ufg9W99d+y6YLTKNKeutH/8WU9CBADs1QV5RA5FtUpMzNboMc5RZ+gsvEsvZkhMPd2qOaa40fS3jK
+	C4KmuyAYgwgIqZps257ujGoxG1LTGBdn8LRLYGpKhLZjLFuj4pO5P7WLbjdHS9qgT10NbLq35Omm5
+	/XgJNSTTnvn9L1tFacIJqhtzzjYsnG8fMqWB0UUcHIkEw4liLeBHp0D/vocU4418nm0rZK9dQsYUU
+	w3Yu9D8wxwtommhITMmGtZj16RuxhjQuG7xm3gdumbkkLMbrVNF8IhfW3RySlioEv1nqyPNlN3AmM
+	8t+j6S5swdMu91xyL+jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhXxH-00GXQr-UD; Mon, 01 Nov 2021 14:06:31 +0000
-Received: from netrider.rowland.org ([192.131.102.5])
- by bombadil.infradead.org with smtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhXx5-00GXOB-51
- for linux-mediatek@lists.infradead.org; Mon, 01 Nov 2021 14:06:21 +0000
-Received: (qmail 1457560 invoked by uid 1000); 1 Nov 2021 10:06:13 -0400
-Date: Mon, 1 Nov 2021 10:06:13 -0400
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Mathias Nyman <mathias.nyman@intel.com>,
- "Walt Jr. Brake" <mr.yming81@gmail.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Nishad Kamdar <nishadkamdar@gmail.com>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Eddie Hung <eddie.hung@mediatek.com>
-Subject: Re: [PATCH v2] usb: core: reduce power-on-good delay time of root hub
-Message-ID: <20211101140613.GC1456700@rowland.harvard.edu>
-References: <1618017645-12259-1-git-send-email-chunfeng.yun@mediatek.com>
- <5e907ccd-40bb-2ece-fe05-1a65a74f3aa2@gmail.com>
+	id 1mhY82-00GYhj-Hw; Mon, 01 Nov 2021 14:17:38 +0000
+Received: from mail.kernel.org ([198.145.29.99])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mhY7q-00GYfk-EG; Mon, 01 Nov 2021 14:17:28 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id A472D60F46;
+ Mon,  1 Nov 2021 14:17:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1635776245;
+ bh=YseqVJrHR7rIwk1Wkg7bXw9N3GSGkFjmGgMqZlAIww0=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=qAS4RW253o/aPKrkn/TPqputjRnBTQYs4GdDZS/Kerln6MSUDwbTa1FUJAXfT9bXw
+ vp9+coeWw4ZFxBvQWq/ZyHnHf8itNYrCVeSR9VJtziPNoto6KbNhX8yn7dbUkh1znh
+ 3l+2WMG1/3ZETyAy2M92C32hSbLxdAW9ovpMJeXivTVW8nE+Ba+mqZV6/c+bOtxydS
+ U6y7MHrSBlwXuRzxJoOEIdgISM4hPhYp+zdFNfdhJ+eWV7DZGpCV1FFHlB0pweZpCl
+ tCRUZyfE0rRg/aYlD1kpe1j7e3oJsXPfI+5X+iQf17kwyO84twOjBwdRSEaQ+ueYVt
+ N1bRlqxbTqlTg==
+Received: by mail-oi1-f170.google.com with SMTP id y207so25068206oia.11;
+ Mon, 01 Nov 2021 07:17:25 -0700 (PDT)
+X-Gm-Message-State: AOAM530J4f+KZ1Nl2aM0EBr9CE5KirYFX9rI0WoS4P86ix0yOTDRLq00
+ HA+GiKoXboY+Pqgewjpc5BpKrOiy67QzsMwWyQg=
+X-Google-Smtp-Source: ABdhPJxOXIuTNzqz1i2MYTktHa+hdjvUeJScl8qV7kA68t3cZIj0tYQxHF0FaYTt+YNAwRP/dwuEZad0WfxqaUhVXts=
+X-Received: by 2002:a05:6808:4d9:: with SMTP id
+ a25mr19998210oie.33.1635776245009; 
+ Mon, 01 Nov 2021 07:17:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <5e907ccd-40bb-2ece-fe05-1a65a74f3aa2@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20211101031558.7184-1-walter-zh.wu@mediatek.com>
+ <CAMj1kXGqOzHM+J30TXR3-uZPkjHBCXB4CMkzZjHbbmptyU5W9w@mail.gmail.com>
+ <76840b40fcf26a65467931a73f236982ad39989c.camel@mediatek.com>
+In-Reply-To: <76840b40fcf26a65467931a73f236982ad39989c.camel@mediatek.com>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Mon, 1 Nov 2021 15:17:12 +0100
+X-Gmail-Original-Message-ID: <CAMj1kXFrUrThJFDJ0Q9qjDemcEovQVMtO20KbdnLccp7VfyVwA@mail.gmail.com>
+Message-ID: <CAMj1kXFrUrThJFDJ0Q9qjDemcEovQVMtO20KbdnLccp7VfyVwA@mail.gmail.com>
+Subject: Re: [PATCH] dma-direct: fix DMA_ATTR_NO_KERNEL_MAPPING
+To: Walter Wu <walter-zh.wu@mediatek.com>
+Cc: Christoph Hellwig <hch@lst.de>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ Robin Murphy <robin.murphy@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Linux IOMMU <iommu@lists.linux-foundation.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ wsd_upstream <wsd_upstream@mediatek.com>, linux-mediatek@lists.infradead.org, 
+ Andrew Morton <akpm@linux-foundation.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211101_070619_387062_276A42DA 
-X-CRM114-Status: GOOD (  21.85  )
+X-CRM114-CacheID: sfid-20211101_071726_604704_E1F356EA 
+X-CRM114-Status: GOOD (  41.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,90 +82,118 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Oct 30, 2021 at 12:49:37PM +0800, Walt Jr. Brake wrote:
-> This patch make USB 3.1 device cannot be detected, and I report the bug [=
-1]
-> to archlinux three month ago. Yesterday I try to fix it myself, and after=
- I
-> revert this patch, compile the kernel and test, it works.
-> =
+On Mon, 1 Nov 2021 at 13:21, Walter Wu <walter-zh.wu@mediatek.com> wrote:
+>
+> Hi Ard,
+>
+> On Mon, 2021-11-01 at 09:34 +0100, Ard Biesheuvel wrote:
+> > On Mon, 1 Nov 2021 at 04:17, Walter Wu <walter-zh.wu@mediatek.com>
+> > wrote:
+> > >
+> > > DMA_ATTR_NO_KERNEL_MAPPING is to avoid creating a kernel mapping
+> > > for the allocated buffer, but current implementation is that
+> > > PTE of allocated buffer in kernel page table is valid. So we
+> > > should set invalid for PTE of allocate buffer so that there are
+> > > no kernel mapping for the allocated buffer.
+> > >
+> > > In some cases, we don't hope the allocated buffer to be read
+> > > by cpu or speculative execution, so we use
+> > > DMA_ATTR_NO_KERNEL_MAPPING
+> > > to get no kernel mapping in order to achieve this goal.
+> > >
+> > > Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
+> > > Cc: Christoph Hellwig <hch@lst.de>
+> > > Cc: Marek Szyprowski <m.szyprowski@samsung.com>
+> > > Cc: Robin Murphy <robin.murphy@arm.com>
+> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > > Cc: Andrew Morton <akpm@linux-foundation.org>
+> > > ---
+> > >  kernel/dma/direct.c | 8 ++++++++
+> > >  1 file changed, 8 insertions(+)
+> > >
+> > > diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
+> > > index 4c6c5e0635e3..aa10b4c5d762 100644
+> > > --- a/kernel/dma/direct.c
+> > > +++ b/kernel/dma/direct.c
+> > > @@ -13,6 +13,7 @@
+> > >  #include <linux/vmalloc.h>
+> > >  #include <linux/set_memory.h>
+> > >  #include <linux/slab.h>
+> > > +#include <asm/cacheflush.h>
+> > >  #include "direct.h"
+> > >
+> > >  /*
+> > > @@ -169,6 +170,9 @@ void *dma_direct_alloc(struct device *dev,
+> > > size_t size,
+> > >                 if (!PageHighMem(page))
+> > >                         arch_dma_prep_coherent(page, size);
+> > >                 *dma_handle = phys_to_dma_direct(dev,
+> > > page_to_phys(page));
+> > > +               /* remove kernel mapping for pages */
+> > > +               set_memory_valid((unsigned
+> > > long)phys_to_virt(dma_to_phys(dev, *dma_handle)),
+> > > +                               size >> PAGE_SHIFT, 0);
+> >
+> > This only works if the memory is mapped at page granularity in the
+> > linear region, and you cannot rely on that. Many architectures prefer
+> > block mappings for the linear region, and arm64 will only use page
+> > mappings if rodata=full is set (which is set by default but can be
+> > overridden on the kernel command line)
+> >
+>
+> We mainly want to solve arm64 arch.
 
-> [1] https://bugs.archlinux.org/task/71660?project=3D1&pagenum=3D2
-> =
+Solve what?
 
-> =
+> RODATA_FULL_DEFAULT_ENABLED should
+> be the arm64 config. If we use CONFIG_RODATA_FULL_DEFAULT_ENABLED to
+> check whether it call set_memory_valid(). It should avoid other
+> architectures. Do you think this method is work?
+>
 
-> diff --git a/drivers/usb/core/hub.h b/drivers/usb/core/hub.h
-> index 22ea1f4f2d66..73f4482d833a 100644
-> --- a/drivers/usb/core/hub.h
-> +++ b/drivers/usb/core/hub.h
-> @@ -148,10 +148,8 @@ static inline unsigned hub_power_on_good_delay(struct
-> usb_hub *hub)
-> =A0{
-> =A0=A0=A0=A0=A0=A0=A0 unsigned delay =3D hub->descriptor->bPwrOn2PwrGood =
-* 2;
-> =
+No. Try it with rodata=off (or rodata=on for that matter) and see what happens.
 
-> -=A0=A0=A0=A0=A0=A0 if (!hub->hdev->parent) /* root hub */
-> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return delay;
-> -=A0=A0=A0=A0=A0=A0 else /* Wait at least 100 msec for power to become st=
-able */
-> -=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 return max(delay, 100U);
-> +=A0=A0=A0=A0=A0=A0 /* Wait at least 100 msec for power to become stable =
-*/
-> +=A0=A0=A0=A0=A0=A0 return max(delay, 100U);
-> =A0}
+> Thanks for your explaination and suggestion.
+>
 
-Mathias:
+YW
 
-It looks like the bPwrOn2PwrGood value in xhci-hcd's hub descriptor is =
-
-too small for some USB 3.1 devices.
-
-Can you look into this?
-
-Alan Stern
-
-> On 10/4/2021 09:20, Chunfeng Yun wrote:
-> > Return the exactly delay time given by root hub descriptor,
-> > this helps to reduce resume time etc.
-> > =
-
-> > Due to the root hub descriptor is usually provided by the host
-> > controller driver, if there is compatibility for a root hub,
-> > we can fix it easily without affect other root hub
-> > =
-
-> > Acked-by: Alan Stern<stern@rowland.harvard.edu>
-> > Signed-off-by: Chunfeng Yun<chunfeng.yun@mediatek.com>
-> > ---
-> > v2: remove RFC tag, and add acked-by Alan
-> > ---
-> >   drivers/usb/core/hub.h | 6 ++++--
-> >   1 file changed, 4 insertions(+), 2 deletions(-)
-> > =
-
-> > diff --git a/drivers/usb/core/hub.h b/drivers/usb/core/hub.h
-> > index 73f4482d833a..22ea1f4f2d66 100644
-> > --- a/drivers/usb/core/hub.h
-> > +++ b/drivers/usb/core/hub.h
-> > @@ -148,8 +148,10 @@ static inline unsigned hub_power_on_good_delay(str=
-uct usb_hub *hub)
-> >   {
-> >   	unsigned delay =3D hub->descriptor->bPwrOn2PwrGood * 2;
-> > -	/* Wait at least 100 msec for power to become stable */
-> > -	return max(delay, 100U);
-> > +	if (!hub->hdev->parent)	/* root hub */
-> > +		return delay;
-> > +	else /* Wait at least 100 msec for power to become stable */
-> > +		return max(delay, 100U);
-> >   }
-> >   static inline int hub_port_debounce_be_connected(struct usb_hub *hub,
+>
+> >
+> > >                 /* return the page pointer as the opaque cookie */
+> > >                 return page;
+> > >         }
+> > > @@ -278,6 +282,10 @@ void dma_direct_free(struct device *dev,
+> > > size_t size,
+> > >
+> > >         if ((attrs & DMA_ATTR_NO_KERNEL_MAPPING) &&
+> > >             !force_dma_unencrypted(dev) &&
+> > > !is_swiotlb_for_alloc(dev)) {
+> > > +               size = PAGE_ALIGN(size);
+> > > +               /* create kernel mapping for pages */
+> > > +               set_memory_valid((unsigned
+> > > long)phys_to_virt(dma_to_phys(dev, dma_addr)),
+> > > +                               size >> PAGE_SHIFT, 1);
+> > >                 /* cpu_addr is a struct page cookie, not a kernel
+> > > address */
+> > >                 dma_free_contiguous(dev, cpu_addr, size);
+> > >                 return;
+> > > --
+> > > 2.18.0
+> > >
+> > >
+> > > _______________________________________________
+> > > linux-arm-kernel mailing list
+> > > linux-arm-kernel@lists.infradead.org
+> > >
+> https://urldefense.com/v3/__http://lists.infradead.org/mailman/listinfo/linux-arm-kernel__;!!CTRNKA9wMg0ARbw!16dLCjnvtRkaRLeCO9AQ7Fund5XL0FicZmeVaU3-WkFymr-0lbITfzwrvoJpiHlqnqIu-g$
+> > >
+>
 
 _______________________________________________
 Linux-mediatek mailing list
