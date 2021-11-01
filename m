@@ -2,80 +2,66 @@ Return-Path: <SRS0=DXFh=PU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5BD65C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 03:16:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A992BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 03:33:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 21A6D60F42
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 03:16:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 21A6D60F42
+	by mail.kernel.org (Postfix) with ESMTPS id 65DCE60F0F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 03:33:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 65DCE60F0F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gCWyI0bhO6IdRsqaSHuxdnuD9WG5+8VKmYl5guvfHI4=; b=rTIehcLrZj0V+0
-	m8l99tFH/NSFix2bD3YcFX3BnyzLjPVxpAaV2xmPo13LycbgHaTmtQBNwCznVS7uRqd1+galiVqi1
-	ruq47Cns/uZvOflRKHbwgSjlgDV9lisGiZ+BHcZ9VDVDaD7cJ+ig1GIWozRiVpJARjR2/KHLcOzAr
-	thv3oWGBtv+6ROB9x936NPO218lgC+u+psQbB6+z2NhomDs87YT1zTlYuJhkPsTEV3GG9i7Z0HG+1
-	IjcZbR1jSrAZ7m76v4l/bvAEyNPiPRvdQy+o7wRL68Kzaka5PgXUPiJrLZ8kSMT4+oByUDt4qCtoD
-	D286Qh9+10gddz1S6HIw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ffxdnEy8ry3eDYNX+XL7n5kHLDKJQNvRWX3LU/er+P8=; b=wdrVOBMMrwju1F
+	6afdPzk6/TGbGHf8hHnNwVy9U1VK1aEQPnjgpPe/ON6Iy/WdYvT0sWX/3UxwZXOjrJm2NPd5Dc5Wb
+	mzY8v3iQZTo6uo6t9OD4ccWD3sf1j9LEan4ikpMi/NptVVSdUlyUla707+Y6EUgT1yc1gqjPSNLtx
+	1VEX++DnlQvSjx5LNHez7+t7yRnlGCkHZYJRgQhdDeaxFCnSYFrzj9HVor3IJLPJjg+4t74Jn9unQ
+	E6BQDQbcLufhfEgu9tlAb/fom1i9kfmat9/yFq5c8jsqexRdQhmUj0GiYYdFxMnLq7tyILb3Dhgx+
+	mpqFvVKu4NOFmancAV8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhNoB-00F9dd-QU; Mon, 01 Nov 2021 03:16:27 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mhO4a-00FBAz-36; Mon, 01 Nov 2021 03:33:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhNo9-00F9cH-3m; Mon, 01 Nov 2021 03:16:26 +0000
-X-UUID: 2d64e67b398a4ba698a2e2e3ec2de95f-20211031
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=MplEKwNK6OAffXAWeN1ahMfbiWO2NiLp63P/1LmLGmw=; 
- b=GwLjNXSy9y3R8TBI6qDXqnz80ODYYegeSsZ5xWIcRcMN8Yokk0J4LaCQDl0f28JyFayOUTiNri6legOvAlqbuq+DM2RutmdALU+y67KHM1r7/ObUKEvHUem5inSeOtYItalllV8E3F6cjf8ZyXwLtOerYKO5f+7KX5UiPB2r3Gg=;
-X-UUID: 2d64e67b398a4ba698a2e2e3ec2de95f-20211031
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <jitao.shi@mediatek.com>)
+ id 1mhO4X-00FBAd-RU
+ for linux-mediatek@lists.infradead.org; Mon, 01 Nov 2021 03:33:23 +0000
+X-UUID: 907153b45eb746d38463d89e850b3529-20211031
+X-UUID: 907153b45eb746d38463d89e850b3529-20211031
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <xing.song@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 513292720; Sun, 31 Oct 2021 20:16:19 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 31 Oct 2021 20:16:17 -0700
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 1 Nov 2021 11:16:16 +0800
-Received: from mszsdhlt06 (10.16.6.206) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 1 Nov 2021 11:16:15 +0800
-Message-ID: <a16150b6b10dca4bf961b8e02b5e4d940b98468c.camel@mediatek.com>
-Subject: Re: [PATCH v7 3/3] drm/bridge: anx7625: config hs packets end
- aligned to avoid screen shift
-From: Jitao Shi <jitao.shi@mediatek.com>
-To: Andrzej Hajda <a.hajda@samsung.com>, Neil Armstrong
- <narmstrong@baylibre.com>, Robert Foss <robert.foss@linaro.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Xin Ji
- <xji@analogixsemi.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>
-CC: <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <ck.hu@mediatek.com>,
- <stonea168@163.com>, <huijuan.xie@mediatek.com>, <rex-bc.chen@mediatek.com>,
- <shuijing.li@mediatek.com>
-Date: Mon, 1 Nov 2021 11:16:15 +0800
-In-Reply-To: <20210915223117.7857-4-jitao.shi@mediatek.com>
-References: <20210915223117.7857-1-jitao.shi@mediatek.com>
- <20210915223117.7857-4-jitao.shi@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 115158543; Sun, 31 Oct 2021 20:33:18 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 31 Oct 2021 20:33:16 -0700
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 1 Nov 2021 11:33:13 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Mon, 1 Nov 2021 11:33:13 +0800
+From: Xing Song <xing.song@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
+ <evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Xing Song <xing.song@mediatek.com>
+Subject: [PATCH] mt76: do not pass the received frame with decryption error
+Date: Mon, 1 Nov 2021 11:32:58 +0800
+Message-ID: <20211101033258.144962-1-xing.song@mediatek.com>
+X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211031_201625_182445_039B1EFB 
-X-CRM114-Status: GOOD (  15.12  )
+X-CRM114-CacheID: sfid-20211031_203321_921749_6A14E1DB 
+X-CRM114-Status: UNSURE (   9.11  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,33 +78,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Xin,
+Drop the received frame if decryption failed with the given key.
 
-Please help to review the changes in anx7625.c
+Signed-off-by: Xing Song <xing.song@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7603/mac.c | 4 ++++
+ drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 4 ++++
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 4 ++++
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 4 ++++
+ 4 files changed, 16 insertions(+)
 
-On Thu, 2021-09-16 at 06:31 +0800, Jitao Shi wrote:
-> This device requires the packets on lanes aligned at the end to fix
-> screen shift or scroll.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> ---
->  drivers/gpu/drm/bridge/analogix/anx7625.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c
-> b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> index 14d73fb1dd15..d76fb63fa9f7 100644
-> --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-> +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> @@ -1327,6 +1327,7 @@ static int anx7625_attach_dsi(struct
-> anx7625_data *ctx)
->  		MIPI_DSI_MODE_VIDEO_SYNC_PULSE	|
->  		MIPI_DSI_MODE_NO_EOT_PACKET	|
->  		MIPI_DSI_MODE_VIDEO_HSE;
-> +	dsi->hs_packet_end_aligned = true;
->  
->  	if (mipi_dsi_attach(dsi) < 0) {
->  		DRM_DEV_ERROR(dev, "fail to attach dsi to host.\n");
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+index fe03e31989bb..b6f2366d155e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+@@ -525,6 +525,10 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_buff *skb)
+ 	if (rxd2 & MT_RXD2_NORMAL_TKIP_MIC_ERR)
+ 		status->flag |= RX_FLAG_MMIC_ERROR;
+ 
++	/* ICV error or CCMP/BIP/WPI MIC error */
++	if (rxd2 & MT_RXD2_NORMAL_ICV_ERR)
++		return -EINVAL;
++
+ 	if (FIELD_GET(MT_RXD2_NORMAL_SEC_MODE, rxd2) != 0 &&
+ 	    !(rxd2 & (MT_RXD2_NORMAL_CLM | MT_RXD2_NORMAL_CM))) {
+ 		status->flag |= RX_FLAG_DECRYPTED;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+index 423f69015e3e..523214837b99 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
+@@ -286,6 +286,10 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
+ 	if (rxd2 & MT_RXD2_NORMAL_AMSDU_ERR)
+ 		return -EINVAL;
+ 
++	/* ICV error or CCMP/BIP/WPI MIC error */
++	if (rxd2 & MT_RXD2_NORMAL_ICV_ERR)
++		return -EINVAL;
++
+ 	unicast = (rxd1 & MT_RXD1_NORMAL_ADDR_TYPE) == MT_RXD1_NORMAL_U2M;
+ 	idx = FIELD_GET(MT_RXD2_NORMAL_WLAN_IDX, rxd2);
+ 	hdr_trans = rxd1 & MT_RXD1_NORMAL_HDR_TRANS;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 5fcf35f2d9fb..58c99e3d1a2d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -426,6 +426,10 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 	if (rxd2 & MT_RXD2_NORMAL_AMSDU_ERR)
+ 		return -EINVAL;
+ 
++	/* ICV error or CCMP/BIP/WPI MIC error */
++	if (rxd1 & MT_RXD1_NORMAL_ICV_ERR)
++		return -EINVAL;
++
+ 	unicast = FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) == MT_RXD3_NORMAL_U2M;
+ 	idx = FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);
+ 	hdr_trans = rxd2 & MT_RXD2_NORMAL_HDR_TRANS;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index db3302b1576a..9ebd311e395f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -428,6 +428,10 @@ mt7921_mac_fill_rx(struct mt7921_dev *dev, struct sk_buff *skb)
+ 	if (rxd2 & MT_RXD2_NORMAL_AMSDU_ERR)
+ 		return -EINVAL;
+ 
++	/* ICV error or CCMP/BIP/WPI MIC error */
++	if (rxd1 & MT_RXD1_NORMAL_ICV_ERR)
++		return -EINVAL;
++
+ 	chfreq = FIELD_GET(MT_RXD3_NORMAL_CH_FREQ, rxd3);
+ 	unicast = FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) == MT_RXD3_NORMAL_U2M;
+ 	idx = FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);
+-- 
+2.17.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
