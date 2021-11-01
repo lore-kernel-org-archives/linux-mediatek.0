@@ -2,60 +2,79 @@ Return-Path: <SRS0=DXFh=PU=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53834C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 10:29:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5C9AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 10:41:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1A09460ED3
-	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 10:29:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1A09460ED3
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=arm.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9B78060F56
+	for <linux-mediatek@archiver.kernel.org>; Mon,  1 Nov 2021 10:41:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9B78060F56
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FikU1eBEZtakg/K7xt7qWB/eXTd6bfnjlMhFxIZ9np4=; b=dFJMCtGwAJ6+I0
-	Z7CAiVDCz2NIhlSbfeq/9SFcIHwCrWZGMFDwqjiwIGN5ttaeSC/ZCcKG5JELM8g161uFZswCX8/Pr
-	iso9aU6CGwoSD1ML/bHlp+ZHhsqtxtXbGA/5jK+YHl43th8XrA0juJGBU8JRzBlVh2wUOoVzuwrOz
-	g/kKuXcSVXMxaeFKnXaw4P9VkH7vggloIzg6+Kp+DtzBBZfg5Qq3IqungZmE1CCDPCpu1YytZHoMs
-	K4lyCaUmLw8A7fAtG3rMgny4dVjvxXJXeN9uLypZa6vhJQ0al/UnUPJcRSFnKoqWeZiDsgRdlJCPc
-	e+v21gRpJtZ8ANRyeeVQ==;
+	List-Owner; bh=ANVkl7+zZ8CNsLZKb/PSczJ/U5T+In5D6dfl7mGEBGk=; b=ggbFR022TNtMu2
+	awDGAtNdaQtV123boGAlYE01uMErcHSwnnBaihP+i2A0A5TQQWoFw88pEQkBNbHVLopVe7+NCRLqK
+	Av52BOdP6dY08581aqhPO3lwFD96sMnkyWCJH7XoVpkTGzCjrVD65JHGz/udh0mvnN5zyrKPZ5hmX
+	fLVWZnzIoaEXNNJD3qy+xMC7ita7Ayhk7SegQ0xqlPEdoWQEFfZjfdoqIXZvOPC1obSWcfp09Zi9W
+	XldnT7oL806m1j1xCljqgGQZingBvMRYJzGvo9g00y58sQEqcBQ/gI9Br/exxnbHdeSCk/QkA7Pwk
+	qLO8jEf9cumD9YEc4QYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhUZU-00Fwwp-8z; Mon, 01 Nov 2021 10:29:44 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhUZH-00Fwsk-EP; Mon, 01 Nov 2021 10:29:32 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 2382411B3;
- Mon,  1 Nov 2021 03:29:28 -0700 (PDT)
-Received: from [10.57.80.217] (unknown [10.57.80.217])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 21D2B3F719;
- Mon,  1 Nov 2021 03:29:26 -0700 (PDT)
-Message-ID: <0316e4f0-b0ad-c702-676f-36347b4ebcb1@arm.com>
-Date: Mon, 1 Nov 2021 10:29:19 +0000
+	id 1mhUkV-00Fyz9-Jl; Mon, 01 Nov 2021 10:41:07 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mhUkQ-00Fyy8-Ex; Mon, 01 Nov 2021 10:41:05 +0000
+X-UUID: bff1aa55633b45cf91e14ce04fd6582b-20211101
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=0yNRMy91uWzpVLqngjuJ072kcSyVfPnPyUeqGNc4EY0=; 
+ b=XmxLfBfMTgKVUbsXbSZ52y2ZhsMdHCrO5NS23ZQDEa8JI/mphaIc08rVKsaE/vmTlawY+C8zQltUz9zPR//ZABAZbq2uXvkF+I0ZXBd2LBnBcilDgAZTTIzsxl1lxXDudS7pv82NdmfAq6ic745mnDVh4ksXrAYzQHteZKnr564=;
+X-UUID: bff1aa55633b45cf91e14ce04fd6582b-20211101
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 868218066; Mon, 01 Nov 2021 03:40:59 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 1 Nov 2021 03:40:57 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Mon, 1 Nov 2021 18:40:56 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs10n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Mon, 1 Nov 2021 18:40:55 +0800
+Message-ID: <45cc8d0e25bdb73d8262f59166cac6ea3c80770b.camel@mediatek.com>
+Subject: Re: [PATCH] memory: mtk-smi: Fix a null dereference for the ostd
+From: Yong Wu <yong.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
+ Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <yi.kuo@mediatek.com>,
+ <anthony.huang@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+Date: Mon, 1 Nov 2021 18:40:53 +0800
+In-Reply-To: <82835e3d-11a3-32e4-0782-d827a5e3d78e@canonical.com>
+References: <20211028055056.26378-1-yong.wu@mediatek.com>
+ <23b036d1-bdc4-da55-a800-03fc3dabd48e@canonical.com>
+ <9e4f327511fd85ba8613ec27644fbc29bc4ddb6b.camel@mediatek.com>
+ <82835e3d-11a3-32e4-0782-d827a5e3d78e@canonical.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.2.1
-Subject: Re: [PATCH] dma-direct: fix DMA_ATTR_NO_KERNEL_MAPPING
-Content-Language: en-GB
-To: Walter Wu <walter-zh.wu@mediatek.com>, Christoph Hellwig <hch@lst.de>,
- Marek Szyprowski <m.szyprowski@samsung.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- wsd_upstream <wsd_upstream@mediatek.com>,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>
-References: <20211101031558.7184-1-walter-zh.wu@mediatek.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20211101031558.7184-1-walter-zh.wu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211101_032931_628285_FB188059 
-X-CRM114-Status: GOOD (  25.23  )
+X-CRM114-CacheID: sfid-20211101_034103_989693_A167E9FE 
+X-CRM114-Status: GOOD (  45.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,79 +86,142 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2021-11-01 03:15, Walter Wu wrote:
-> DMA_ATTR_NO_KERNEL_MAPPING is to avoid creating a kernel mapping
-> for the allocated buffer, but current implementation is that
-> PTE of allocated buffer in kernel page table is valid. So we
-> should set invalid for PTE of allocate buffer so that there are
-> no kernel mapping for the allocated buffer.
-
-No, the semantic of NO_KERNEL_MAPPING is an indication that the *caller* 
-does not need a mapping, such that the DMA API implementation may choose 
-to optimise for that internally. It has never given any guarantee of any 
-particular behaviour - like most attributes it is only a hint.
-
-> In some cases, we don't hope the allocated buffer to be read
-> by cpu or speculative execution, so we use DMA_ATTR_NO_KERNEL_MAPPING
-> to get no kernel mapping in order to achieve this goal.
-
-If it's important that no CPU accesses to this memory can happen, then I 
-think the only way to absolutely guarantee that is to exclude it from 
-the kernel's memory map in the first place, e.g. as a DT reserved-memory 
-region with the "no-map" property.
-
-Robin.
-
-> Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-> Cc: Christoph Hellwig <hch@lst.de>
-> Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-> Cc: Robin Murphy <robin.murphy@arm.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Andrew Morton <akpm@linux-foundation.org>
-> ---
->   kernel/dma/direct.c | 8 ++++++++
->   1 file changed, 8 insertions(+)
+On Mon, 2021-11-01 at 09:45 +0100, Krzysztof Kozlowski wrote:
+> On 01/11/2021 07:09, Yong Wu wrote:
+> > On Fri, 2021-10-29 at 19:35 +0200, Krzysztof Kozlowski wrote:
+> > > On 28/10/2021 07:50, Yong Wu wrote:
+> > > > We add the ostd setting for mt8195. It introduces a abort for
+> > > > the
+> > > > previous SoC which doesn't have ostd setting. This is the log:
+> > > > 
+> > > > Unable to handle kernel NULL pointer dereference at virtual
+> > > > address
+> > > > 0000000000000080
+> > > > ...
+> > > > pc : mtk_smi_larb_config_port_gen2_general+0x64/0x130
+> > > > lr : mtk_smi_larb_resume+0x54/0x98
+> > > > ...
+> > > > Call trace:
+> > > >  mtk_smi_larb_config_port_gen2_general+0x64/0x130
+> > > >  pm_generic_runtime_resume+0x2c/0x48
+> > > >  __genpd_runtime_resume+0x30/0xa8
+> > > >  genpd_runtime_resume+0x94/0x2c8
+> > > >  __rpm_callback+0x44/0x150
+> > > >  rpm_callback+0x6c/0x78
+> > > >  rpm_resume+0x310/0x558
+> > > >  __pm_runtime_resume+0x3c/0x88
+> > > > 
+> > > > In the code: larbostd = larb->larb_gen->ostd[larb->larbid],
+> > > > if "larb->larb_gen->ostd" is null, the "larbostd" is the
+> > > > offset, it
+> > > > is
+> > > > also a valid value, thus, use the larb->larb_gen->ostd as the
+> > > > condition
+> > > > inside the "for" loop.
+> > > 
+> > > You need to write more clearly, what you are fixing here.
+> > > 
+> > > > 
+> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > > ---
+> > > > Hi Krzysztof,
+> > > > Could you help review and conside this as a fix for the mt8195
+> > > > patchset?
+> > > > The mt8195 patchset are not in mainline, thus, I don't know its
+> > > > sha-id,
+> > > > and don't add Fixes tag.
+> > > > Thanks
+> > > > ---
+> > > >  drivers/memory/mtk-smi.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-
+> > > > smi.c
+> > > > index b883dcc0bbfa..0262a59a2d6e 100644
+> > > > --- a/drivers/memory/mtk-smi.c
+> > > > +++ b/drivers/memory/mtk-smi.c
+> > > > @@ -257,7 +257,7 @@ static void
+> > > > mtk_smi_larb_config_port_gen2_general(struct device *dev)
+> > > >  	if (MTK_SMI_CAPS(flags_general, MTK_SMI_FLAG_SW_FLAG))
+> > > >  		writel_relaxed(SMI_LARB_SW_FLAG_1, larb->base +
+> > > > SMI_LARB_SW_FLAG);
+> > > >  
+> > > > -	for (i = 0; i < SMI_LARB_PORT_NR_MAX && larbostd &&
+> > > > !!larbostd[i]; i++)
+> > > > +	for (i = 0; i < SMI_LARB_PORT_NR_MAX && larb->larb_gen-
+> > > > >ostd &&
+> > > > !!larbostd[i]; i++)
+> > > >  		writel_relaxed(larbostd[i], larb->base +
+> > > > SMI_LARB_OSTDL_PORTx(i));
+> > > 
+> > > The code does not look good. You have already a dereference at
+> > > line
+> > > 244:
+> > > 
+> > > 	const u8 *larbostd = larb->larb_gen->ostd[larb->larbid];
+> > 
+> > if larb->larb_gen->ostd is null, larbostd is the offset, e.g. 0x80
+> > in
+> > the log above. thus, we can not use "larbostd[i]" in the "for"
+> > loop.
+> > 
+> > sorry for the unreadable. In this case, is the change ok?
 > 
-> diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
-> index 4c6c5e0635e3..aa10b4c5d762 100644
-> --- a/kernel/dma/direct.c
-> +++ b/kernel/dma/direct.c
-> @@ -13,6 +13,7 @@
->   #include <linux/vmalloc.h>
->   #include <linux/set_memory.h>
->   #include <linux/slab.h>
-> +#include <asm/cacheflush.h>
->   #include "direct.h"
->   
->   /*
-> @@ -169,6 +170,9 @@ void *dma_direct_alloc(struct device *dev, size_t size,
->   		if (!PageHighMem(page))
->   			arch_dma_prep_coherent(page, size);
->   		*dma_handle = phys_to_dma_direct(dev, page_to_phys(page));
-> +		/* remove kernel mapping for pages */
-> +		set_memory_valid((unsigned long)phys_to_virt(dma_to_phys(dev, *dma_handle)),
-> +				size >> PAGE_SHIFT, 0);
->   		/* return the page pointer as the opaque cookie */
->   		return page;
->   	}
-> @@ -278,6 +282,10 @@ void dma_direct_free(struct device *dev, size_t size,
->   
->   	if ((attrs & DMA_ATTR_NO_KERNEL_MAPPING) &&
->   	    !force_dma_unencrypted(dev) && !is_swiotlb_for_alloc(dev)) {
-> +		size = PAGE_ALIGN(size);
-> +		/* create kernel mapping for pages */
-> +		set_memory_valid((unsigned long)phys_to_virt(dma_to_phys(dev, dma_addr)),
-> +				size >> PAGE_SHIFT, 1);
->   		/* cpu_addr is a struct page cookie, not a kernel address */
->   		dma_free_contiguous(dev, cpu_addr, size);
->   		return;
+> No, it's ok, I did not check the type of ostd and it's confusing a
+> bit
+> that it is defined as a pointer to an array but you actually use it
+> as
+> array of pointers to 32-elemenet arrays... Anyway I was mistaken and
+> there will be indeed no dereference at the assignment, but for code
+> clarity I would still prefer to do the check earlier, so:
 > 
+> > 
+> > or like this:
+> > 
+> > -const u8 *larbostd = larb->larb_gen->ostd[larb->larbid];
+> > +const u8 *larbostd = larb->larb_gen->ostd ? larb->larb_gen-
+> > ostd[larb-
+> > > larbid] : NULL;
+> 
+> Although I think now the proper type should be explicit.
+> mtk_smi_larb_mt8195_ostd is an 28-element array of
+> SMI_LARB_PORT_NR_MAX-element u8 arrays, therefore struct
+> mtk_smi_larb_gen should be:
+> 	const u8 (*ostd)[][SMI_LARB_PORT_NR_MAX];
 
+mt8195_ostd only is a 2 dimensional array,
+static const u8 mtk_smi_larb_mt8195_ostd[][SMI_LARB_PORT_NR_MAX];
+
+If using this, it will cause build fail:
+
+.../drivers/memory/mtk-smi.c:359:23: error: initialization from
+incompatible pointer type [-Werror=incompatible-pointer-types]
+  .ostd              = mtk_smi_larb_mt8195_ostd,
+                       ^~~~~~~~~~~~~~~~~~~~~~~~
+
+More background about this 2 dimensional array:
+The platform have many larbs(up to MTK_LARB_NR_MAX), each a larb have
+many ports(up to SMI_LARB_PORT_NR_MAX). In the
+function(*_config_port_gen2_general), we will update the value for each
+a port inside a larb, thus we need a pointer point to the line of that
+larb.
+
+If I miss something, please tell me. or how to manage this will be
+better.
+
+Thanks.
+
+> 
+> Right?
+> 
+> 
+> Best regards,
+> Krzysztof
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
