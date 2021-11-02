@@ -2,66 +2,52 @@ Return-Path: <SRS0=eBCQ=PV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27F67C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 14:16:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C7470C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 14:43:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E9F77610CC
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 14:16:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E9F77610CC
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 8436360E73
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 14:43:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8436360E73
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FHIPV67W7ZkRvSLQD3sSeOL1vbtfvDsV47jtvrBdc3E=; b=MZ5hXYYr9fy7fE
-	NTXyiyfv3UF4NfptE6rYmYCEUYkB+QGFtJb2CTY6iaFBw2H+iGbli44IQov6w+E0l/SSs819bZUQz
-	v90+LallZwlrligVgX5etepfgAYmiNZCThup24L+4JLpB9QdXtS0ro8vDW00u36bNZeFghoSCDTPp
-	KYWUNfR0bqbJagtDBDc1mlo13RaR9/1Mqb1n1TfJ60zL2I4jsdzPFnPgrLWQOZaXyx1/Jj/1KTLfB
-	zFPnxqx4TGRdHiVwglw7bqttrEDxwnwuO+j9RXm0dvGYw+qp2QhS0Y3QNUfJpuIznkj770ujZThmE
-	1LtCfvT/CdxFaycXII4A==;
+	List-Owner; bh=4hj4XZUeY8BeGm89AODANQLZPNvxTv7diXMlmVMeKdk=; b=sgU46D45GAitxY
+	aqg4iq+SKEuKeBjDO9sRdNPaflRHw4kw6T1OMGLgmejTL1N/J5iBBibVfFCjBRYSYPe2HACMGlqti
+	sDcc+SaceZa7FkslTDbNTufwfutPsYWzwXSMitVrEEeJqYTIHpuxm8pDGXDZ4TBTQpoP+YVQ6+jTD
+	c0fBkFehvBzKv5Jj3WZuiFkKg5GnSWuQeWJs1UDLXDN6OW7pPsQRWMH32LxhnY6Sy46bYhZNOMySv
+	JxD/AoYKTgS8CFiBZcF1LgYE/3vfs7KQPF+tL5kitoJj4QK2hjHiKrjlJH+BfGBcnW7vA2qWGJISJ
+	I1rrm2sSiDdWrHCyPhKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhuaA-001vQK-6D; Tue, 02 Nov 2021 14:16:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mhuzv-001y3r-RV; Tue, 02 Nov 2021 14:42:47 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhuZy-001vP3-8n; Tue, 02 Nov 2021 14:15:59 +0000
-X-UUID: 03e7872435624846a687a4da03b535ad-20211102
-X-UUID: 03e7872435624846a687a4da03b535ad-20211102
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <mark-pk.tsai@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1513574932; Tue, 02 Nov 2021 07:15:53 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Nov 2021 07:15:51 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkexhb02.mediatek.inc (172.21.101.103) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Nov 2021 22:15:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs10n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 2 Nov 2021 22:15:37 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: <ohad@wizery.com>, <bjorn.andersson@linaro.org>,
- <mathieu.poirier@linaro.org>
-CC: <matthias.bgg@gmail.com>, <linux-remoteproc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <mark-pk.tsai@mediatek.com>,
- <yj.chiang@mediatek.com>
-Subject: [PATCH v2] remoteproc: use %pe format string to print return error
- code
-Date: Tue, 2 Nov 2021 22:15:35 +0800
-Message-ID: <20211102141535.28372-1-mark-pk.tsai@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mhuzj-001y1G-J4; Tue, 02 Nov 2021 14:42:36 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 21CA51F44C5A
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: robh+dt@kernel.org
+Cc: matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH 1/2] arm64: dts: mediatek: mt8173-elm: Move pwm pinctrl to
+ pwm0 node
+Date: Tue,  2 Nov 2021 15:42:23 +0100
+Message-Id: <20211102144224.457446-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211102_071558_333904_07261C53 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20211102_074235_777881_46911BD1 
+X-CRM114-Status: UNSURE (   9.08  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +64,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use %pe format string to print return error code which
-make the error message easier to understand.
+The PWM pinctrl belongs to the PWM0 node, as it's strictly pwm related.
 
-Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/remoteproc/remoteproc_core.c | 4 ++--
+ arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
-index 502b6604b757..2242da320368 100644
---- a/drivers/remoteproc/remoteproc_core.c
-+++ b/drivers/remoteproc/remoteproc_core.c
-@@ -575,8 +575,8 @@ static int rproc_handle_vdev(struct rproc *rproc, void *ptr,
- 					   dma_get_mask(rproc->dev.parent));
- 	if (ret) {
- 		dev_warn(dev,
--			 "Failed to set DMA mask %llx. Trying to continue... %x\n",
--			 dma_get_mask(rproc->dev.parent), ret);
-+			 "Failed to set DMA mask %llx. Trying to continue... (%pe)\n",
-+			 dma_get_mask(rproc->dev.parent), ERR_PTR(ret));
- 	}
+diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+index e666ebb28980..f292ca459a9a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
+@@ -27,8 +27,6 @@ backlight: backlight {
+ 		power-supply = <&bl_fixed_reg>;
+ 		enable-gpios = <&pio 95 GPIO_ACTIVE_HIGH>;
  
- 	/* parse the vrings */
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&disp_pwm0_pins>;
+ 		status = "okay";
+ 	};
+ 
+@@ -901,6 +899,8 @@ pins1 {
+ };
+ 
+ &pwm0 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&disp_pwm0_pins>;
+ 	status = "okay";
+ };
+ 
 -- 
-2.18.0
+2.33.1
 
 
 _______________________________________________
