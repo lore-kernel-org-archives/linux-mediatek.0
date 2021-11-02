@@ -2,90 +2,66 @@ Return-Path: <SRS0=eBCQ=PV=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ACE56C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 10:49:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EB081C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 12:08:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6E1EE60E74
-	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 10:49:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6E1EE60E74
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linaro.org
+	by mail.kernel.org (Postfix) with ESMTPS id A191D60F24
+	for <linux-mediatek@archiver.kernel.org>; Tue,  2 Nov 2021 12:08:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A191D60F24
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SemP9BApqW8nzULKW/J6rFVA4APzZBJjHn2i1SjrNJk=; b=dwY72nalIonqAt
-	ddUc/Wgt/JCrsXscOkqyGOPlsMwo7HDT6php0CMSv6juu3df5sdSoqUkg/jYsCk/DqQM7WfT53mIg
-	ASXRjPepW+HjCc83SFpPS9Sex4tiamfvEkcIkuNoNpfuCIBgRHZi1lOUg4/hQMmRC/evFMar78/bs
-	CWpz6QPQfYnRVW94m/tnpXcWWq1x5PRwbQ6DJi+TXm1EYUJUkWHWFmpovdULTLnxV1/9M336ooS02
-	nxtc86k6IZ6lHWze+Q31AphXYC781vmv+Hl799St2f48fgaD507y1q6irv613PD6Vca320BqL8pmG
-	iWJAjawqsbE0HvfLNwbQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=w5RGjkuGkhp+5zR3/n5iuiOcdMC9tduu7hVNhGYg+Eg=; b=qfUjdIQmDIbglk
+	C46g9bL08ef/Fn/TV37otph2CGFNjWa0ECCrBs08MJ4RCuRREr27n+R6yxJIp7EYf+w3h2onk0hgC
+	e68ybbdEJFOhRtiyHRmFxwx2l/NjlYy7H3BbnPTDYQWT1HbMUrWh89kQyYnhcTy65Cx2hUEQOSa7E
+	+DSn/yKA7KULa4yBZmW2V6mX3gOcNIJyQRL+jCNRK1JT3AJWv1YDSIoXchphRfNOkDkp5rOtL7gWt
+	hJ+u3jVlchon5AY96dy2AD4lucp7WTKTHAWAYJrXIKEq0DnQ7w7ukZD+XAgw0DXDZIZCivOckTxk1
+	NoVpFj3UF9eR4aYvwfcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mhrLl-001Nmp-NZ; Tue, 02 Nov 2021 10:49:05 +0000
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+	id 1mhsac-001aVT-Aa; Tue, 02 Nov 2021 12:08:30 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mhrLc-001NkN-Tt
- for linux-mediatek@lists.infradead.org; Tue, 02 Nov 2021 10:48:58 +0000
-Received: by mail-pg1-x52b.google.com with SMTP id m21so19744161pgu.13
- for <linux-mediatek@lists.infradead.org>; Tue, 02 Nov 2021 03:48:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hJF/dHyk/3IQlaukmeK0wLdUdqN/AGJrVLVkId2ki2M=;
- b=xHwLcaZIYZgTQBtnYpAy69BmDS6ZJvi7f1usoT6wyQxHgK0mVnzvc5qCgCu7DAbzaC
- xE0kTXGb37fSqYGVxBcDw21xo/uVjZGDMqbbn31XJfY7jytObUST+tboLp30x4xIa1Xh
- 15lKWjmSHswtL5SfilbBPVoxUKUhw4TRr3gRKwpeK1dPbX6Z531pzSRqG8xPfxgg1wEE
- Vf9lHPNEzERIhxj3nxhWPUOMWShJGybMzpciCQT0xSu8L/oeX1s5ZJmLAoWyWAB9L4IH
- MaA5NnVfx4PGjzFwQLq6iRN2l7Bqe23cdNIuI4Jh8q+vvKvsIw0TZnrecvu3Q5g/qZSI
- 9UCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hJF/dHyk/3IQlaukmeK0wLdUdqN/AGJrVLVkId2ki2M=;
- b=OOXR9H0+B+TYMvyb4UsXqPfBkxb7PVl3nvz6x3OSHxNReuyu31mJaqi0XSrQsBNVqd
- c18/RwleOHEqeKOS3fD9J/UMODWsFuQSImxaWgEZEPn+2sr5nt/or1Jf8Gl3WLh+GmLQ
- vXOOHNMTUpLE7+JdzNpjVmJdrmEy4LOZgpDCRvARjO/WRTLxBxDS2XeLxjWqUoyoAcAE
- lPe466QONdd+EDUbHdx/WJKuYQvJ3b9nWIVoQdFnOWDi70TWAxE6qg2URABIXq7QbpEK
- tff2ZUGhCLYEPDdYPSYMsel1lqYwinowhexX0QM97WzOcqhqFYKHNE2wiRiy7wJmLeQC
- UDWQ==
-X-Gm-Message-State: AOAM532X2R8rauMEjV1Za123lvcWmHOCD4InO9uDkP47YuKSsTfdph9G
- tYsA7AWwpbv8DsCv81HdCvtYlor5b8xDs5DLi22HyA==
-X-Google-Smtp-Source: ABdhPJxf7ODLAmRwZb/6gWx5MMwlIfSbftXWQI/+7QaNqZg+PvaL+AL65TDTHnzYCihEIh32pgIL0MF/oUcUsHDaS10=
-X-Received: by 2002:a63:6c43:: with SMTP id h64mr21356842pgc.306.1635850131950; 
- Tue, 02 Nov 2021 03:48:51 -0700 (PDT)
+ id 1mhsaO-001aRc-8f; Tue, 02 Nov 2021 12:08:19 +0000
+X-UUID: ef40b73c34d1463bb49a0058457d72d2-20211102
+X-UUID: ef40b73c34d1463bb49a0058457d72d2-20211102
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1430002294; Tue, 02 Nov 2021 05:08:10 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Nov 2021 05:08:08 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Tue, 2 Nov 2021 20:08:07 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs10n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Tue, 2 Nov 2021 20:08:07 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <ohad@wizery.com>, <bjorn.andersson@linaro.org>,
+ <mathieu.poirier@linaro.org>
+CC: <matthias.bgg@gmail.com>, <linux-remoteproc@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <mark-pk.tsai@mediatek.com>,
+ <yj.chiang@mediatek.com>
+Subject: [PATCH] remoteproc: use %d format string to print return error code
+Date: Tue, 2 Nov 2021 20:08:05 +0800
+Message-ID: <20211102120805.27137-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20210915223117.7857-1-jitao.shi@mediatek.com>
- <20210915223117.7857-4-jitao.shi@mediatek.com>
- <a16150b6b10dca4bf961b8e02b5e4d940b98468c.camel@mediatek.com>
- <20211102015631.GA2248315@anxtwsw-Precision-3640-Tower>
-In-Reply-To: <20211102015631.GA2248315@anxtwsw-Precision-3640-Tower>
-From: Robert Foss <robert.foss@linaro.org>
-Date: Tue, 2 Nov 2021 11:48:40 +0100
-Message-ID: <CAG3jFyvBRSDHkiVx--H84eoeDvDXYQN4YRvsLhfX7_M+15KVmA@mail.gmail.com>
-Subject: Re: [PATCH v7 3/3] drm/bridge: anx7625: config hs packets end aligned
- to avoid screen shift
-To: Xin Ji <xji@analogixsemi.com>
-Cc: Jitao Shi <jitao.shi@mediatek.com>, Andrzej Hajda <a.hajda@samsung.com>, 
- Neil Armstrong <narmstrong@baylibre.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, 
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Daniel Vetter <daniel@ffwll.ch>, David Airlie <airlied@linux.ie>,
- dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, ck.hu@mediatek.com, stonea168@163.com, 
- huijuan.xie@mediatek.com, rex-bc.chen@mediatek.com, shuijing.li@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211102_034856_972944_0FAB59B9 
-X-CRM114-Status: GOOD (  18.61  )
+X-CRM114-CacheID: sfid-20211102_050816_327382_D2853233 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,38 +78,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2 Nov 2021 at 02:56, Xin Ji <xji@analogixsemi.com> wrote:
->
-> On Mon, Nov 01, 2021 at 11:16:15AM +0800, Jitao Shi wrote:
-> > Hi Xin,
-> >
-> > Please help to review the changes in anx7625.c
-> >
-> > On Thu, 2021-09-16 at 06:31 +0800, Jitao Shi wrote:
-> > > This device requires the packets on lanes aligned at the end to fix
-> > > screen shift or scroll.
-> > >
-> > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > ---
-> > >  drivers/gpu/drm/bridge/analogix/anx7625.c | 1 +
-> > >  1 file changed, 1 insertion(+)
-> > >
-> > > diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c
-> > > b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> > > index 14d73fb1dd15..d76fb63fa9f7 100644
-> > > --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
-> > > +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
-> > > @@ -1327,6 +1327,7 @@ static int anx7625_attach_dsi(struct
-> > > anx7625_data *ctx)
-> > >             MIPI_DSI_MODE_VIDEO_SYNC_PULSE  |
-> > >             MIPI_DSI_MODE_NO_EOT_PACKET     |
-> > >             MIPI_DSI_MODE_VIDEO_HSE;
-> > > +   dsi->hs_packet_end_aligned = true;
->
-> Looks good, it's OK for me.
-> Reviewed-by: Xin Ji <xji@analogixsemi.com>
+Use %d format string to print return error code which
+make the error message easier to understand.
 
-Acked-by: Robert Foss <robert.foss@linaro.org>
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+---
+ drivers/remoteproc/remoteproc_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
+index 502b6604b757..c5cc7f30f06e 100644
+--- a/drivers/remoteproc/remoteproc_core.c
++++ b/drivers/remoteproc/remoteproc_core.c
+@@ -575,7 +575,7 @@ static int rproc_handle_vdev(struct rproc *rproc, void *ptr,
+ 					   dma_get_mask(rproc->dev.parent));
+ 	if (ret) {
+ 		dev_warn(dev,
+-			 "Failed to set DMA mask %llx. Trying to continue... %x\n",
++			 "Failed to set DMA mask %llx. Trying to continue... %d\n",
+ 			 dma_get_mask(rproc->dev.parent), ret);
+ 	}
+ 
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
