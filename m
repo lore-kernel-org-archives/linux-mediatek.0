@@ -2,69 +2,56 @@ Return-Path: <SRS0=yT6o=PW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 27434C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 08:19:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4D346C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 08:52:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E1FBD61175
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 08:19:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E1FBD61175
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id C82D9610E8
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 08:52:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C82D9610E8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=chYpLx+ECTnaIlW3C9wUZ58tdNGBEm1dtVJ5IdqCM04=; b=iPFPXNp1PMadrj
-	TGyd5t6ReKGcUqkS1JD/x2kLGuiXPhBK6PdIFY0bIetPh6kxbTkeyyBKx6UCkWIKkGZqBE1tUYer+
-	zcn5hKKftI6I7wFiguZ2r7aWuL5fmIYB2DtRdrk1TaPnRrySs6I1TkXq+EfDWo8AHmOUqVMIkv3BK
-	tzMqrm7MJanamMIRDJu6bIK9uNe1g7bz2snyfm7srjrP1QPv9lRX61EyOSXnAMs8Yb1hS6GDtP0T+
-	h0mSxycT0l/k9GxZL2RsAfOKs1Yb+Wl4oQS4aNKGEhCE6qQUmtI1c5wUzPHflMgvdo6IdEd6PX+qQ
-	fgmghua0hwHwvTizFLCg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fgukV/PyAec6YhhpMOFz50Ncafv/wV2N/7oFqDHw7iI=; b=QIhqdxdb9zyVHKiCpv02zHXUeo
+	SIVPfLvQ77yudpwvfgZg1+CQij77wpSYvAnxr39laZfjmxAQ8lnFmbffXW/1CXzlN0yd6KGGhGAb3
+	Yjo0vQViiklb2+HpFX0iZ99JgOwDVn7E97y4/J1WeU403Bh/ZVfzQxHwsmTuB+i0PQccQ76ou3AdR
+	OfyMnr+I96tYt6cu/wlBUV+UOjof8vTQ9+Ph1/KvDCPaAoaEmLDrW2MfQnyD7UFAwtTelfbAwbvtK
+	dxG8NGaZjrZkpMuUbpbdJ+q9MrbyfuFzVNk9NMWeASmf4x2ylY32Odi0r5tpHop0Xe3hC69uRE5W2
+	0/zgJgvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miBU8-004Uzo-7t; Wed, 03 Nov 2021 08:19:04 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1miBzt-004b7Q-1P; Wed, 03 Nov 2021 08:51:53 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miBT2-004UTo-Bs; Wed, 03 Nov 2021 08:17:58 +0000
-X-UUID: 137880dc9da7418ba154cb3e3651c2a1-20211103
-X-UUID: 137880dc9da7418ba154cb3e3651c2a1-20211103
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <james.lo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 67730510; Wed, 03 Nov 2021 01:17:46 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Nov 2021 01:10:26 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Wed, 3 Nov 2021 16:10:23 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs10n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 3 Nov 2021 16:10:23 +0800
-From: James Lo <james.lo@mediatek.com>
-To: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, James Lo
- <james.lo@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [RESEND, v13 3/4] spmi: mediatek: Add support for MT6873/8192
-Date: Wed, 3 Nov 2021 16:10:20 +0800
-Message-ID: <20211103081021.9917-4-james.lo@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211103081021.9917-1-james.lo@mediatek.com>
-References: <20211103081021.9917-1-james.lo@mediatek.com>
+ id 1miBzq-004b6n-Iz
+ for linux-mediatek@lists.infradead.org; Wed, 03 Nov 2021 08:51:52 +0000
+Received: from [IPv6:2a01:e0a:120:3210:b6d1:2f0:214:8c2a] (unknown
+ [IPv6:2a01:e0a:120:3210:b6d1:2f0:214:8c2a])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id B80B31F453FB
+ for <linux-mediatek@lists.infradead.org>; Wed,  3 Nov 2021 08:51:46 +0000 (GMT)
+Subject: Re: [PATCH v2] media: mtk-vcodec: Align width and height to 64 bytes
+To: linux-mediatek@lists.infradead.org
+References: <20211103033708.14469-1-yunfei.dong@mediatek.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Message-ID: <e7f4b7e0-7787-9acd-40c6-8f81d9f4bb14@collabora.com>
+Date: Wed, 3 Nov 2021 09:51:44 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20211103033708.14469-1-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211103_011756_441127_BD6DE85F 
-X-CRM114-Status: GOOD (  28.28  )
+X-CRM114-CacheID: sfid-20211103_015150_803883_48034B2F 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,516 +63,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add spmi support for MT6873/8192.
-
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Acked-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/spmi/Kconfig         |  11 +
- drivers/spmi/Makefile        |   1 +
- drivers/spmi/spmi-mtk-pmif.c | 454 +++++++++++++++++++++++++++++++++++
- 3 files changed, 466 insertions(+)
- create mode 100644 drivers/spmi/spmi-mtk-pmif.c
-
-diff --git a/drivers/spmi/Kconfig b/drivers/spmi/Kconfig
-index 2874b6c26028..737802046314 100644
---- a/drivers/spmi/Kconfig
-+++ b/drivers/spmi/Kconfig
-@@ -34,4 +34,15 @@ config SPMI_MSM_PMIC_ARB
- 	  This is required for communicating with Qualcomm PMICs and
- 	  other devices that have the SPMI interface.
- 
-+config SPMI_MTK_PMIF
-+	tristate "Mediatek SPMI Controller (PMIC Arbiter)"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	help
-+	  If you say yes to this option, support will be included for the
-+	  built-in SPMI PMIC Arbiter interface on Mediatek family
-+	  processors.
-+
-+	  This is required for communicating with Mediatek PMICs and
-+	  other devices that have the SPMI interface.
-+
- endif
-diff --git a/drivers/spmi/Makefile b/drivers/spmi/Makefile
-index 6e092e6f290c..9d974424c8c1 100644
---- a/drivers/spmi/Makefile
-+++ b/drivers/spmi/Makefile
-@@ -6,3 +6,4 @@ obj-$(CONFIG_SPMI)	+= spmi.o
- 
- obj-$(CONFIG_SPMI_HISI3670)	+= hisi-spmi-controller.o
- obj-$(CONFIG_SPMI_MSM_PMIC_ARB)	+= spmi-pmic-arb.o
-+obj-$(CONFIG_SPMI_MTK_PMIF)	+= spmi-mtk-pmif.o
-diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
-new file mode 100644
-index 000000000000..3283d0a5903c
---- /dev/null
-+++ b/drivers/spmi/spmi-mtk-pmif.c
-@@ -0,0 +1,454 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2021 MediaTek Inc.
-+
-+#include <linux/clk.h>
-+#include <linux/iopoll.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/spmi.h>
-+
-+#define SWINF_IDLE	0x00
-+#define SWINF_WFVLDCLR	0x06
-+
-+#define GET_SWINF(x)	(((x) >> 1) & 0x7)
-+
-+#define PMIF_CMD_REG_0		0
-+#define PMIF_CMD_REG		1
-+#define PMIF_CMD_EXT_REG	2
-+#define PMIF_CMD_EXT_REG_LONG	3
-+
-+#define PMIF_DELAY_US   10
-+#define PMIF_TIMEOUT_US (10 * 1000)
-+
-+#define PMIF_CHAN_OFFSET 0x5
-+
-+#define PMIF_MAX_CLKS	3
-+
-+#define SPMI_OP_ST_BUSY 1
-+
-+struct ch_reg {
-+	u32 ch_sta;
-+	u32 wdata;
-+	u32 rdata;
-+	u32 ch_send;
-+	u32 ch_rdy;
-+};
-+
-+struct pmif_data {
-+	const u32	*regs;
-+	const u32	*spmimst_regs;
-+	u32	soc_chan;
-+};
-+
-+struct pmif {
-+	void __iomem	*base;
-+	void __iomem	*spmimst_base;
-+	struct ch_reg	chan;
-+	struct clk_bulk_data clks[PMIF_MAX_CLKS];
-+	size_t nclks;
-+	const struct pmif_data *data;
-+};
-+
-+static const char * const pmif_clock_names[] = {
-+	"pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
-+};
-+
-+enum pmif_regs {
-+	PMIF_INIT_DONE,
-+	PMIF_INF_EN,
-+	PMIF_ARB_EN,
-+	PMIF_CMDISSUE_EN,
-+	PMIF_TIMER_CTRL,
-+	PMIF_SPI_MODE_CTRL,
-+	PMIF_IRQ_EVENT_EN_0,
-+	PMIF_IRQ_FLAG_0,
-+	PMIF_IRQ_CLR_0,
-+	PMIF_IRQ_EVENT_EN_1,
-+	PMIF_IRQ_FLAG_1,
-+	PMIF_IRQ_CLR_1,
-+	PMIF_IRQ_EVENT_EN_2,
-+	PMIF_IRQ_FLAG_2,
-+	PMIF_IRQ_CLR_2,
-+	PMIF_IRQ_EVENT_EN_3,
-+	PMIF_IRQ_FLAG_3,
-+	PMIF_IRQ_CLR_3,
-+	PMIF_IRQ_EVENT_EN_4,
-+	PMIF_IRQ_FLAG_4,
-+	PMIF_IRQ_CLR_4,
-+	PMIF_WDT_EVENT_EN_0,
-+	PMIF_WDT_FLAG_0,
-+	PMIF_WDT_EVENT_EN_1,
-+	PMIF_WDT_FLAG_1,
-+	PMIF_SWINF_0_STA,
-+	PMIF_SWINF_0_WDATA_31_0,
-+	PMIF_SWINF_0_RDATA_31_0,
-+	PMIF_SWINF_0_ACC,
-+	PMIF_SWINF_0_VLD_CLR,
-+	PMIF_SWINF_1_STA,
-+	PMIF_SWINF_1_WDATA_31_0,
-+	PMIF_SWINF_1_RDATA_31_0,
-+	PMIF_SWINF_1_ACC,
-+	PMIF_SWINF_1_VLD_CLR,
-+	PMIF_SWINF_2_STA,
-+	PMIF_SWINF_2_WDATA_31_0,
-+	PMIF_SWINF_2_RDATA_31_0,
-+	PMIF_SWINF_2_ACC,
-+	PMIF_SWINF_2_VLD_CLR,
-+	PMIF_SWINF_3_STA,
-+	PMIF_SWINF_3_WDATA_31_0,
-+	PMIF_SWINF_3_RDATA_31_0,
-+	PMIF_SWINF_3_ACC,
-+	PMIF_SWINF_3_VLD_CLR,
-+};
-+
-+static const u32 mt6873_regs[] = {
-+	[PMIF_INIT_DONE] =	0x0000,
-+	[PMIF_INF_EN] =		0x0024,
-+	[PMIF_ARB_EN] =		0x0150,
-+	[PMIF_CMDISSUE_EN] =	0x03B4,
-+	[PMIF_TIMER_CTRL] =	0x03E0,
-+	[PMIF_SPI_MODE_CTRL] =	0x0400,
-+	[PMIF_IRQ_EVENT_EN_0] =	0x0418,
-+	[PMIF_IRQ_FLAG_0] =	0x0420,
-+	[PMIF_IRQ_CLR_0] =	0x0424,
-+	[PMIF_IRQ_EVENT_EN_1] =	0x0428,
-+	[PMIF_IRQ_FLAG_1] =	0x0430,
-+	[PMIF_IRQ_CLR_1] =	0x0434,
-+	[PMIF_IRQ_EVENT_EN_2] =	0x0438,
-+	[PMIF_IRQ_FLAG_2] =	0x0440,
-+	[PMIF_IRQ_CLR_2] =	0x0444,
-+	[PMIF_IRQ_EVENT_EN_3] =	0x0448,
-+	[PMIF_IRQ_FLAG_3] =	0x0450,
-+	[PMIF_IRQ_CLR_3] =	0x0454,
-+	[PMIF_IRQ_EVENT_EN_4] =	0x0458,
-+	[PMIF_IRQ_FLAG_4] =	0x0460,
-+	[PMIF_IRQ_CLR_4] =	0x0464,
-+	[PMIF_WDT_EVENT_EN_0] =	0x046C,
-+	[PMIF_WDT_FLAG_0] =	0x0470,
-+	[PMIF_WDT_EVENT_EN_1] =	0x0474,
-+	[PMIF_WDT_FLAG_1] =	0x0478,
-+	[PMIF_SWINF_0_ACC] =	0x0C00,
-+	[PMIF_SWINF_0_WDATA_31_0] =	0x0C04,
-+	[PMIF_SWINF_0_RDATA_31_0] =	0x0C14,
-+	[PMIF_SWINF_0_VLD_CLR] =	0x0C24,
-+	[PMIF_SWINF_0_STA] =	0x0C28,
-+	[PMIF_SWINF_1_ACC] =	0x0C40,
-+	[PMIF_SWINF_1_WDATA_31_0] =	0x0C44,
-+	[PMIF_SWINF_1_RDATA_31_0] =	0x0C54,
-+	[PMIF_SWINF_1_VLD_CLR] =	0x0C64,
-+	[PMIF_SWINF_1_STA] =	0x0C68,
-+	[PMIF_SWINF_2_ACC] =	0x0C80,
-+	[PMIF_SWINF_2_WDATA_31_0] =	0x0C84,
-+	[PMIF_SWINF_2_RDATA_31_0] =	0x0C94,
-+	[PMIF_SWINF_2_VLD_CLR] =	0x0CA4,
-+	[PMIF_SWINF_2_STA] =	0x0CA8,
-+	[PMIF_SWINF_3_ACC] =	0x0CC0,
-+	[PMIF_SWINF_3_WDATA_31_0] =	0x0CC4,
-+	[PMIF_SWINF_3_RDATA_31_0] =	0x0CD4,
-+	[PMIF_SWINF_3_VLD_CLR] =	0x0CE4,
-+	[PMIF_SWINF_3_STA] =	0x0CE8,
-+};
-+
-+enum spmi_regs {
-+	SPMI_OP_ST_CTRL,
-+	SPMI_GRP_ID_EN,
-+	SPMI_OP_ST_STA,
-+	SPMI_MST_SAMPL,
-+	SPMI_MST_REQ_EN,
-+	SPMI_REC_CTRL,
-+	SPMI_REC0,
-+	SPMI_REC1,
-+	SPMI_REC2,
-+	SPMI_REC3,
-+	SPMI_REC4,
-+	SPMI_MST_DBG,
-+};
-+
-+static const u32 mt6873_spmi_regs[] = {
-+	[SPMI_OP_ST_CTRL] =	0x0000,
-+	[SPMI_GRP_ID_EN] =	0x0004,
-+	[SPMI_OP_ST_STA] =	0x0008,
-+	[SPMI_MST_SAMPL] =	0x000c,
-+	[SPMI_MST_REQ_EN] =	0x0010,
-+	[SPMI_REC_CTRL] =	0x0040,
-+	[SPMI_REC0] =		0x0044,
-+	[SPMI_REC1] =		0x0048,
-+	[SPMI_REC2] =		0x004c,
-+	[SPMI_REC3] =		0x0050,
-+	[SPMI_REC4] =		0x0054,
-+	[SPMI_MST_DBG] =	0x00fc,
-+};
-+
-+static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
-+{
-+	return readl(arb->base + arb->data->regs[reg]);
-+}
-+
-+static void pmif_writel(struct pmif *arb, u32 val, enum pmif_regs reg)
-+{
-+	writel(val, arb->base + arb->data->regs[reg]);
-+}
-+
-+static void mtk_spmi_writel(struct pmif *arb, u32 val, enum spmi_regs reg)
-+{
-+	writel(val, arb->spmimst_base + arb->data->spmimst_regs[reg]);
-+}
-+
-+static bool pmif_is_fsm_vldclr(struct pmif *arb)
-+{
-+	u32 reg_rdata;
-+
-+	reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
-+
-+	return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
-+}
-+
-+static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
-+{
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+	u32 rdata, cmd;
-+	int ret;
-+
-+	/* Check the opcode */
-+	if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
-+		return -EINVAL;
-+
-+	cmd = opc - SPMI_CMD_RESET;
-+
-+	mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
-+	ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
-+					rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0)
-+		dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
-+
-+	return ret;
-+}
-+
-+static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-+			      u16 addr, u8 *buf, size_t len)
-+{
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+	struct ch_reg *inf_reg;
-+	int ret;
-+	u32 data, cmd;
-+
-+	/* Check for argument validation. */
-+	if (sid & ~0xf) {
-+		dev_err(&ctrl->dev, "exceed the max slv id\n");
-+		return -EINVAL;
-+	}
-+
-+	if (len > 4) {
-+		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
-+
-+		return -EINVAL;
-+	}
-+
-+	if (opc >= 0x60 && opc <= 0x7f)
-+		opc = PMIF_CMD_REG;
-+	else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
-+		opc = PMIF_CMD_EXT_REG_LONG;
-+	else
-+		return -EINVAL;
-+
-+	/* Wait for Software Interface FSM state to be IDLE. */
-+	inf_reg = &arb->chan;
-+	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-+					data, GET_SWINF(data) == SWINF_IDLE,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0) {
-+		/* set channel ready if the data has transferred */
-+		if (pmif_is_fsm_vldclr(arb))
-+			pmif_writel(arb, 1, inf_reg->ch_rdy);
-+		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-+		return ret;
-+	}
-+
-+	/* Send the command. */
-+	cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
-+	pmif_writel(arb, cmd, inf_reg->ch_send);
-+
-+	/*
-+	 * Wait for Software Interface FSM state to be WFVLDCLR,
-+	 * read the data and clear the valid flag.
-+	 */
-+	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-+					data, GET_SWINF(data) == SWINF_WFVLDCLR,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0) {
-+		dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
-+		return ret;
-+	}
-+
-+	data = pmif_readl(arb, inf_reg->rdata);
-+	memcpy(buf, &data, len);
-+	pmif_writel(arb, 1, inf_reg->ch_rdy);
-+
-+	return 0;
-+}
-+
-+static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-+			       u16 addr, const u8 *buf, size_t len)
-+{
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+	struct ch_reg *inf_reg;
-+	int ret;
-+	u32 data, cmd;
-+
-+	if (len > 4) {
-+		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
-+
-+		return -EINVAL;
-+	}
-+
-+	/* Check the opcode */
-+	if (opc >= 0x40 && opc <= 0x5F)
-+		opc = PMIF_CMD_REG;
-+	else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
-+		opc = PMIF_CMD_EXT_REG_LONG;
-+	else if (opc >= 0x80)
-+		opc = PMIF_CMD_REG_0;
-+	else
-+		return -EINVAL;
-+
-+	/* Wait for Software Interface FSM state to be IDLE. */
-+	inf_reg = &arb->chan;
-+	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-+					data, GET_SWINF(data) == SWINF_IDLE,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0) {
-+		/* set channel ready if the data has transferred */
-+		if (pmif_is_fsm_vldclr(arb))
-+			pmif_writel(arb, 1, inf_reg->ch_rdy);
-+		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-+		return ret;
-+	}
-+
-+	/* Set the write data. */
-+	memcpy(&data, buf, len);
-+	pmif_writel(arb, data, inf_reg->wdata);
-+
-+	/* Send the command. */
-+	cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
-+	pmif_writel(arb, cmd, inf_reg->ch_send);
-+
-+	return 0;
-+}
-+
-+static const struct pmif_data mt6873_pmif_arb = {
-+	.regs = mt6873_regs,
-+	.spmimst_regs = mt6873_spmi_regs,
-+	.soc_chan = 2,
-+};
-+
-+static int mtk_spmi_probe(struct platform_device *pdev)
-+{
-+	struct pmif *arb;
-+	struct spmi_controller *ctrl;
-+	int err, i;
-+	u32 chan_offset;
-+
-+	ctrl = spmi_controller_alloc(&pdev->dev, sizeof(*arb));
-+	if (!ctrl)
-+		return -ENOMEM;
-+
-+	arb = spmi_controller_get_drvdata(ctrl);
-+	arb->data = device_get_match_data(&pdev->dev);
-+	if (!arb->data) {
-+		err = -EINVAL;
-+		dev_err(&pdev->dev, "Cannot get drv_data\n");
-+		goto err_put_ctrl;
-+	}
-+
-+	arb->base = devm_platform_ioremap_resource_byname(pdev, "pmif");
-+	if (IS_ERR(arb->base)) {
-+		err = PTR_ERR(arb->base);
-+		goto err_put_ctrl;
-+	}
-+
-+	arb->spmimst_base = devm_platform_ioremap_resource_byname(pdev, "spmimst");
-+	if (IS_ERR(arb->spmimst_base)) {
-+		err = PTR_ERR(arb->spmimst_base);
-+		goto err_put_ctrl;
-+	}
-+
-+	arb->nclks = ARRAY_SIZE(pmif_clock_names);
-+	for (i = 0; i < arb->nclks; i++)
-+		arb->clks[i].id = pmif_clock_names[i];
-+
-+	err = devm_clk_bulk_get(&pdev->dev, arb->nclks, arb->clks);
-+	if (err) {
-+		dev_err(&pdev->dev, "Failed to get clocks: %d\n", err);
-+		goto err_put_ctrl;
-+	}
-+
-+	err = clk_bulk_prepare_enable(arb->nclks, arb->clks);
-+	if (err) {
-+		dev_err(&pdev->dev, "Failed to enable clocks: %d\n", err);
-+		goto err_put_ctrl;
-+	}
-+
-+	ctrl->cmd = pmif_arb_cmd;
-+	ctrl->read_cmd = pmif_spmi_read_cmd;
-+	ctrl->write_cmd = pmif_spmi_write_cmd;
-+
-+	chan_offset = PMIF_CHAN_OFFSET * arb->data->soc_chan;
-+	arb->chan.ch_sta = PMIF_SWINF_0_STA + chan_offset;
-+	arb->chan.wdata = PMIF_SWINF_0_WDATA_31_0 + chan_offset;
-+	arb->chan.rdata = PMIF_SWINF_0_RDATA_31_0 + chan_offset;
-+	arb->chan.ch_send = PMIF_SWINF_0_ACC + chan_offset;
-+	arb->chan.ch_rdy = PMIF_SWINF_0_VLD_CLR + chan_offset;
-+
-+	platform_set_drvdata(pdev, ctrl);
-+
-+	err = spmi_controller_add(ctrl);
-+	if (err)
-+		goto err_domain_remove;
-+
-+	return 0;
-+
-+err_domain_remove:
-+	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
-+err_put_ctrl:
-+	spmi_controller_put(ctrl);
-+	return err;
-+}
-+
-+static int mtk_spmi_remove(struct platform_device *pdev)
-+{
-+	struct spmi_controller *ctrl = platform_get_drvdata(pdev);
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+
-+	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
-+	spmi_controller_remove(ctrl);
-+	spmi_controller_put(ctrl);
-+	return 0;
-+}
-+
-+static const struct of_device_id mtk_spmi_match_table[] = {
-+	{
-+		.compatible = "mediatek,mt6873-spmi",
-+		.data = &mt6873_pmif_arb,
-+	}, {
-+		/* sentinel */
-+	},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_spmi_match_table);
-+
-+static struct platform_driver mtk_spmi_driver = {
-+	.driver		= {
-+		.name	= "spmi-mtk",
-+		.of_match_table = of_match_ptr(mtk_spmi_match_table),
-+	},
-+	.probe		= mtk_spmi_probe,
-+	.remove		= mtk_spmi_remove,
-+};
-+module_platform_driver(mtk_spmi_driver);
-+
-+MODULE_AUTHOR("Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>");
-+MODULE_DESCRIPTION("MediaTek SPMI Driver");
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CkxlIDAzLzExLzIwMjEgw6AgMDQ6MzcsIFl1bmZlaSBEb25nIGEgw6ljcml0wqA6Cj4gV2lkdGgg
+YW5kIGhlaWdodCBuZWVkIHRvIDY0IGJ5dGVzIGFsaWduZWQgd2hlbiBzZXR0aW5nIHRoZSBmb3Jt
+YXQuCj4gTmVlZCB0byBtYWtlIHN1cmUgYWxsIGlzIDY0IGJ5dGVzIGFsaWduIHdoZW4gdXNlIHdp
+ZHRoIGFuZCBoZWlnaHQgdG8KPiBjYWxjdWxhdGUgYnVmZmVyIHNpemUuCj4KPiBTaWduZWQtb2Zm
+LWJ5OiBZdW5mZWkgRG9uZyA8eXVuZmVpLmRvbmdAbWVkaWF0ZWsuY29tPgo+IENoYW5nZS1JZDog
+STM5ODg2YjFhNmI0MzNjOTI1NjVkZGJmMjk3ZWIxOTM0NTZlZWMxZDIKClBsZWFzZSByZW1vdmUg
+Q2hhbmdlLUlkIHRhZyB3aXRoIHRoYXQ6ClJldmlld2VkLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8
+YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KCj4gLS0tCj4gICBkcml2ZXJzL21lZGlh
+L3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kZWMuaCAgICAgICAgfCAxICsKPiAgIGRy
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZGVjL3ZkZWNfaDI2NF9yZXFfaWYuYyB8
+IDQgKystLQo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25z
+KC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL210
+a192Y29kZWNfZGVjLmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zj
+b2RlY19kZWMuaAo+IGluZGV4IGUzMDgwNmMxZmFlYS4uNjZjZDZkMjI0MmMzIDEwMDY0NAo+IC0t
+LSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy9tdGtfdmNvZGVjX2RlYy5oCj4g
+KysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNfZGVjLmgK
+PiBAQCAtMTEsNiArMTEsNyBAQAo+ICAgI2luY2x1ZGUgPG1lZGlhL3ZpZGVvYnVmMi1jb3JlLmg+
+Cj4gICAjaW5jbHVkZSA8bWVkaWEvdjRsMi1tZW0ybWVtLmg+Cj4gICAKPiArI2RlZmluZSBWQ09E
+RUNfREVDX0FMSUdORURfNjQgNjQKPiAgICNkZWZpbmUgVkNPREVDX0NBUEFCSUxJVFlfNEtfRElT
+QUJMRUQJMHgxMAo+ICAgI2RlZmluZSBWQ09ERUNfREVDXzRLX0NPREVEX1dJRFRICTQwOTZVCj4g
+ICAjZGVmaW5lIFZDT0RFQ19ERUNfNEtfQ09ERURfSEVJR0hUCTIzMDRVCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZGVjL3ZkZWNfaDI2NF9yZXFfaWYu
+YyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZGVjL3ZkZWNfaDI2NF9yZXFf
+aWYuYwo+IGluZGV4IGQ0MDJmYzRiZGE2OS4uZTFhMzAxMTc3MmE5IDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZGVjL3ZkZWNfaDI2NF9yZXFfaWYuYwo+
+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZGVjL3ZkZWNfaDI2NF9y
+ZXFfaWYuYwo+IEBAIC01NjIsOCArNTYyLDggQEAgc3RhdGljIHZvaWQgZ2V0X3BpY19pbmZvKHN0
+cnVjdCB2ZGVjX2gyNjRfc2xpY2VfaW5zdCAqaW5zdCwKPiAgIHsKPiAgIAlzdHJ1Y3QgbXRrX3Zj
+b2RlY19jdHggKmN0eCA9IGluc3QtPmN0eDsKPiAgIAo+IC0JY3R4LT5waWNpbmZvLmJ1Zl93ID0g
+KGN0eC0+cGljaW5mby5waWNfdyArIDE1KSAmIDB4RkZGRkZGRjA7Cj4gLQljdHgtPnBpY2luZm8u
+YnVmX2ggPSAoY3R4LT5waWNpbmZvLnBpY19oICsgMzEpICYgMHhGRkZGRkZFMDsKPiArCWN0eC0+
+cGljaW5mby5idWZfdyA9IEFMSUdOKGN0eC0+cGljaW5mby5waWNfdywgVkNPREVDX0RFQ19BTElH
+TkVEXzY0KTsKPiArCWN0eC0+cGljaW5mby5idWZfaCA9IEFMSUdOKGN0eC0+cGljaW5mby5waWNf
+aCwgVkNPREVDX0RFQ19BTElHTkVEXzY0KTsKPiAgIAljdHgtPnBpY2luZm8uZmJfc3pbMF0gPSBj
+dHgtPnBpY2luZm8uYnVmX3cgKiBjdHgtPnBpY2luZm8uYnVmX2g7Cj4gICAJY3R4LT5waWNpbmZv
+LmZiX3N6WzFdID0gY3R4LT5waWNpbmZvLmZiX3N6WzBdID4+IDE7Cj4gICAJaW5zdC0+dnNpX2N0
+eC5kZWMuY2FwX251bV9wbGFuZXMgPQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVr
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1tZWRpYXRlawo=
