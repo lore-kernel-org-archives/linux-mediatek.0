@@ -2,14 +2,14 @@ Return-Path: <SRS0=yT6o=PW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2BD32C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 03:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7CA13C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 04:22:00 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id DB6B6610E5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 03:41:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DB6B6610E5
+	by mail.kernel.org (Postfix) with ESMTPS id 27F4C61073
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 04:22:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 27F4C61073
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,55 +18,51 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=sXOrYG1U8q55kXxhSW1jxN4jdOFrzuNAP4X0VC3ZEWg=; b=WpcW23AdqWP/xd
-	7IO/3upy6HUzMBua3U0nVZF9NYCxm7Lsydzcgi3JswG52dyuM6wMeYAVe99te83DE1TF61IHoCeP2
-	xezWe9EDkDk23JDUFZ77t+NNuH4i6Ws91eVTWQdANyl8T1t4l58/lJp5t/TXRa1oqsA2T7FL74qy/
-	OnCn7zHVajGHwD4twINYA0DU+I0axk3aqNsTZlH3+2a7MJJ1j4eN5gc/xq+nmZSiVLTItrO6yKUty
-	8rfigGIPbs7AdJZ2HVY01qmFyyox5oC523bYLNsPTuUmwU7Lyi9fwZa5zAWb1SJcz12mGTZFLoorg
-	ht6N7TtjS4ONYcgDqV2g==;
+	List-Owner; bh=2NSKMZEDBCrhXtkwe19w73GCwojUw5+c52UIJ9ZzSHc=; b=ZQQY4Hl0fS4eXB
+	P1+JsbxUMnnafccG4I0lXS5zWFk+5O0iHWu6YXgNurqYI5WT+hmIp9cFtmrIDrtrGFGXOzlTsDiRm
+	x4WG6QlpScvbPKdm8P+r0AKGqH3dLqnCv8VcBIS6oCgEOng2VdOpZ8FEbgkQ4sWf2YK2StWWneIZ0
+	KBAsXHNtqJEPy8C1rDToKPLsWUUKwbtvzVWnyCjxCH8/x4xvmZ/eSbVv/dQM/P8JutNxDGvQQBgMq
+	XUaf51gUTwLRkN/dsD71RebHyBBVhCqn5iebs5RpG/1tg6rcAUYiEQvRJ5J6XawoW9FyAJapxtQUB
+	ZuPJgiQeIL69OpRzW93w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mi795-003yC0-81; Wed, 03 Nov 2021 03:41:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mi7mW-0043Ke-TJ; Wed, 03 Nov 2021 04:21:48 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mi78s-003y7H-3z; Wed, 03 Nov 2021 03:40:51 +0000
-X-UUID: abeec1f12b7f454dbe5e9c1c7162f9c8-20211102
-X-UUID: abeec1f12b7f454dbe5e9c1c7162f9c8-20211102
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ben.tseng@mediatek.com>)
+ id 1mi7mK-0043HZ-Lv; Wed, 03 Nov 2021 04:21:38 +0000
+X-UUID: 1840992abc0f452ab3c8f8fa64d9dea5-20211102
+X-UUID: 1840992abc0f452ab3c8f8fa64d9dea5-20211102
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <james.lo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 638356002; Tue, 02 Nov 2021 20:40:44 -0700
+ with ESMTP id 460485268; Tue, 02 Nov 2021 21:21:30 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Nov 2021 20:31:01 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 2 Nov 2021 21:21:28 -0700
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Wed, 3 Nov 2021 11:30:59 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs10n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Wed, 3 Nov 2021 11:30:59 +0800
-From: Ben Tseng <ben.tseng@mediatek.com>
-To: Fan Chen <fan.chen@mediatek.com>, Zhang Rui <rui.zhang@intel.com>, "Daniel
- Lezcano" <daniel.lezcano@linaro.org>, <linux-pm@vger.kernel.org>,
- <srv_heupstream@mediatek.com>
-CC: Eduardo Valentin <edubezval@gmail.com>, Rob Herring <robh+dt@kernel.org>, 
- Mark Rutland <mark.rutland@arm.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <hsinyi@chromium.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Ben Tseng
- <ben.tseng@mediatek.com>
-Subject: [PATCH 1/1] arm64: dts: mt8183-kukui: Update Tboard sensor mapping
- table
-Date: Wed, 3 Nov 2021 11:30:44 +0800
-Message-ID: <20211103033044.2777-1-ben.tseng@mediatek.com>
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 3 Nov 2021 12:21:27 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 3 Nov 2021 12:21:27 +0800
+From: James Lo <james.lo@mediatek.com>
+To: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, James Lo
+ <james.lo@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v13 0/4] Add SPMI support for Mediatek SoC IC
+Date: Wed, 3 Nov 2021 12:20:59 +0800
+Message-ID: <20211103042103.4984-1-james.lo@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211102_204050_186597_E9C48F00 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20211102_212136_768036_EB315954 
+X-CRM114-Status: GOOD (  12.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,146 +79,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-According to auxadc change the readback value from raw data to Vsense.
-Update the tboard table that temperature map to Vsense.
+This series adds support for new SoC MT6873/MT8192/MT8195 to the spmi driver.
+This series is based on Chun-Jie's patches[1].
 
-pull-up voltage: 1800 mv
-pull-up resistor: 75K
+[1] https://patchwork.kernel.org/project/linux-mediatek/list/?series=521655
 
-Vsense = pull-up voltage * Rntc / ( pull-up resistor + Rntc )
+changes since v12:
+- rebase to v5.15-rc1.
+- fix yaml error
+- refine Kconfig and spmi-mtk-pmif.c
 
-Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+Henry Chen (1):
+  spmi: mediatek: Add support for MT8195
 
----
- .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 108 +++++++++---------
- 1 file changed, 54 insertions(+), 54 deletions(-)
+Hsin-Hsiung Wang (3):
+  dt-bindings: spmi: modify the constraint of reg property
+  dt-bindings: spmi: document binding for the Mediatek SPMI controller
+  spmi: mediatek: Add support for MT6873/8192
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 8e9cf36a9a41..65447de64f06 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -151,33 +151,33 @@
- 		#thermal-sensor-cells = <0>;
- 		io-channels = <&auxadc 0>;
- 		io-channel-names = "sensor-channel";
--		temperature-lookup-table = <    (-5000) 4241
--						0 4063
--						5000 3856
--						10000 3621
--						15000 3364
--						20000 3091
--						25000 2810
--						30000 2526
--						35000 2247
--						40000 1982
--						45000 1734
--						50000 1507
--						55000 1305
--						60000 1122
--						65000 964
--						70000 827
--						75000 710
--						80000 606
--						85000 519
--						90000 445
--						95000 382
--						100000 330
--						105000 284
--						110000 245
--						115000 213
--						120000 183
--						125000 161>;
-+		temperature-lookup-table = <    (-5000) 1553
-+						0 1488
-+						5000 1412
-+						10000 1326
-+						15000 1232
-+						20000 1132
-+						25000 1029
-+						30000 925
-+						35000 823
-+						40000 726
-+						45000 635
-+						50000 552
-+						55000 478
-+						60000 411
-+						65000 353
-+						70000 303
-+						75000 260
-+						80000 222
-+						85000 190
-+						90000 163
-+						95000 140
-+						100000 121
-+						105000 104
-+						110000 90
-+						115000 78
-+						120000 67
-+						125000 59>;
- 	};
- 
- 	tboard_thermistor2: thermal-sensor2 {
-@@ -185,33 +185,33 @@
- 		#thermal-sensor-cells = <0>;
- 		io-channels = <&auxadc 1>;
- 		io-channel-names = "sensor-channel";
--		temperature-lookup-table = <    (-5000) 4241
--						0 4063
--						5000 3856
--						10000 3621
--						15000 3364
--						20000 3091
--						25000 2810
--						30000 2526
--						35000 2247
--						40000 1982
--						45000 1734
--						50000 1507
--						55000 1305
--						60000 1122
--						65000 964
--						70000 827
--						75000 710
--						80000 606
--						85000 519
--						90000 445
--						95000 382
--						100000 330
--						105000 284
--						110000 245
--						115000 213
--						120000 183
--						125000 161>;
-+		temperature-lookup-table = <    (-5000) 1553
-+						0 1488
-+						5000 1412
-+						10000 1326
-+						15000 1232
-+						20000 1132
-+						25000 1029
-+						30000 925
-+						35000 823
-+						40000 726
-+						45000 635
-+						50000 552
-+						55000 478
-+						60000 411
-+						65000 353
-+						70000 303
-+						75000 260
-+						80000 222
-+						85000 190
-+						90000 163
-+						95000 140
-+						100000 121
-+						105000 104
-+						110000 90
-+						115000 78
-+						120000 67
-+						125000 59>;
- 	};
- };
- 
+ .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      |  76 +++
+ .../devicetree/bindings/spmi/spmi.yaml        |   3 +-
+ drivers/spmi/Kconfig                          |  11 +
+ drivers/spmi/Makefile                         |   1 +
+ drivers/spmi/spmi-mtk-pmif.c                  | 542 ++++++++++++++++++
+ 5 files changed, 632 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+ create mode 100644 drivers/spmi/spmi-mtk-pmif.c
+
 -- 
 2.18.0
 
