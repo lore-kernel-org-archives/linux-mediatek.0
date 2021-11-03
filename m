@@ -2,70 +2,80 @@ Return-Path: <SRS0=yT6o=PW=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4B46EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 04:22:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 89830C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 04:24:47 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 14DFF610E8
-	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 04:22:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 14DFF610E8
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4BDD661073
+	for <linux-mediatek@archiver.kernel.org>; Wed,  3 Nov 2021 04:24:47 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4BDD661073
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OLdy/0h9E7+PhKw9UqEpPJpwfUFm145Kl9TikrzPK58=; b=qr1SC03Do4fMEf
-	X7UZzB/jijfyh9KabWsYgiJU3tDua/Q1EIrNzlj7wm8V1pT/vNH6mLMJgwc4uA1aUITbvMMGaWPGU
-	9pvXysTPam8DAEO1hAFuGtxkWAUsIcWoht5MZzYT3OntvIkiO9ge+mlkeq1fDVkZ7Cwqokk/KqnRO
-	ZmseKRystgdS73Z9fs4kG8OPvntzjKTvX6jNB9W9rwhri2g/CiczDQbxSbA9p9JuJtUBeWp5PuSlm
-	ffP0ePniJVfT35fDgGWSc5+3oFZgJ7SCZm7BF0o14bHEcFUIjtAy4pF29jO/7CP+X6Vtp5CxV2u+0
-	ZvC+mVskoScePyQIPEHQ==;
+	List-Owner; bh=uzqK3FzMaVOtFmb4AkbWlVoq5s6iknZU/fs+v8XMbNI=; b=Ro/xRCV2fTjVnb
+	7CA6gOZDd8098qGb0zGEkbbmzq9zOungrdK6n7YPILSO3tEp0MFQEiOqnu3yfBopHj2Tt/Fs01jpc
+	XixfWgfubssH9lKWHfOY4zyMR61NQPm9FZGZM8PQzfcg7RwV5H0sPAEqbJU/E7gJ0BwL8TEWxUszp
+	p/4MkzYDyq12nc5saDh3lMYzcHeVrdMNlyng5UUM48BUmyogrI5a3gQyNnctSdLaJelSNGEbiF4w8
+	h1dx9fucpOHnMtbJJWddB2Ip9y6JiFD//VTcwfsYkHagelp+OnaVQahCoWcP7MQYMv3j419m8rVRG
+	1WE6O9jQfQ36DScc6AJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mi7ms-0043QJ-7R; Wed, 03 Nov 2021 04:22:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mi7pF-0043uS-Pl; Wed, 03 Nov 2021 04:24:37 +0000
+Received: from mail-il1-x12b.google.com ([2607:f8b0:4864:20::12b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mi7mL-0043Hk-Kh; Wed, 03 Nov 2021 04:21:39 +0000
-X-UUID: 22eb96e231f847899d3abad8867da40e-20211102
-X-UUID: 22eb96e231f847899d3abad8867da40e-20211102
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <james.lo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1957992640; Tue, 02 Nov 2021 21:21:30 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 2 Nov 2021 21:21:29 -0700
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 3 Nov 2021 12:21:27 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 3 Nov 2021 12:21:27 +0800
-From: James Lo <james.lo@mediatek.com>
-To: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, James Lo
- <james.lo@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [v13 2/4] dt-bindings: spmi: document binding for the Mediatek SPMI
- controller
-Date: Wed, 3 Nov 2021 12:21:01 +0800
-Message-ID: <20211103042103.4984-3-james.lo@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211103042103.4984-1-james.lo@mediatek.com>
-References: <20211103042103.4984-1-james.lo@mediatek.com>
+ id 1mi7pC-0043sy-Ap
+ for linux-mediatek@lists.infradead.org; Wed, 03 Nov 2021 04:24:35 +0000
+Received: by mail-il1-x12b.google.com with SMTP id i9so1269006ilu.8
+ for <linux-mediatek@lists.infradead.org>; Tue, 02 Nov 2021 21:24:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qd9niP3KfEBMw4HIl0dxDVF+NpZQ1ObcVJeYPjAsGSc=;
+ b=HPtJMRW5T8UxUkbBR6GaM63fFwANkJW6W9Bif4jilZl+sVzZSwZ1/A0VDVRuvcxg01
+ TeJn8wEHZi8eGbuexfg5M4xTXOhj9T9JpIx+WeE9g2sMuKGHYIuRRTbmZkQt7GQLiEoP
+ rI2LD+XBU5OE14Y19R6r5EqQue09SKki/n10I=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qd9niP3KfEBMw4HIl0dxDVF+NpZQ1ObcVJeYPjAsGSc=;
+ b=EnyBnwwY8ZEUZE71ZOl61G9sIFw3sIFBsslv2hC9+viggFw3ZAl2HbqSnYh95ur4U2
+ qfu3P4fl5g4jQ7cP8a5XJUK27bqHzsf0opLM5CpSUYou9qm3V1HHI/O4ilRWB1tgKhIs
+ ip4wleNUQdDFx75lGCcJxI6GRZdSenlx0Ej8AQrYWbNqmK2AGXLh3E6zDsYP5RBeXyhD
+ YJBLm7CJQ28FqL+Ye7sl0QCu84Y3xrfUXPxPGm3yhWoI2wiHa8jszP4aXuSKyIgEt1NF
+ QJYVBoqdPpTa2Kww7xBRN/8ZgAfEYkG5pe1b3z+WVlgaKilP+tKJ7gL70lBsEv+Zsa/4
+ v70Q==
+X-Gm-Message-State: AOAM5313Q/XA3XLH6B2W6qAf19Ktkgr+Tep5a2t2IWvkEkeiaQsbjvBm
+ BT0wIDCq1TxF9BI1hPgSqxDUHmX+7SCyvAFVuQq5Vw==
+X-Google-Smtp-Source: ABdhPJy3oZIzJMttIMrK4JQVP+jPpcvnejYcs3cfvoEQi/cY6TDF0e9IPwvsIsX+mmqGss9bK7IZIXnvXQrZKbO7xvk=
+X-Received: by 2002:a05:6e02:1aa2:: with SMTP id
+ l2mr17121937ilv.114.1635913472602; 
+ Tue, 02 Nov 2021 21:24:32 -0700 (PDT)
 MIME-Version: 1.0
-X-MTK: N
+References: <20211103033044.2777-1-ben.tseng@mediatek.com>
+In-Reply-To: <20211103033044.2777-1-ben.tseng@mediatek.com>
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+Date: Wed, 3 Nov 2021 12:24:06 +0800
+Message-ID: <CAJMQK-jJYoBLoY2aw=BuhowJ7AENK_8y=GHVq5opHKfq5gD45Q@mail.gmail.com>
+Subject: Re: [PATCH 1/1] arm64: dts: mt8183-kukui: Update Tboard sensor
+ mapping table
+To: Ben Tseng <ben.tseng@mediatek.com>
+Cc: Fan Chen <fan.chen@mediatek.com>, Zhang Rui <rui.zhang@intel.com>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>, linux-pm@vger.kernel.org, 
+ srv_heupstream@mediatek.com, Eduardo Valentin <edubezval@gmail.com>, 
+ Rob Herring <robh+dt@kernel.org>, Mark Rutland <mark.rutland@arm.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211102_212137_709795_782980B9 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20211102_212434_429597_923F94DC 
+X-CRM114-Status: GOOD (  16.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,99 +92,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds documentation for the SPMI controller found on Mediatek SoCs.
+On Wed, Nov 3, 2021 at 11:31 AM Ben Tseng <ben.tseng@mediatek.com> wrote:
+>
+> According to auxadc change the readback value from raw data to Vsense.
+> Update the tboard table that temperature map to Vsense.
+>
+> pull-up voltage: 1800 mv
+> pull-up resistor: 75K
+>
+> Vsense = pull-up voltage * Rntc / ( pull-up resistor + Rntc )
+>
+> Signed-off-by: Ben Tseng <ben.tseng@mediatek.com>
+>
 
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
----
- .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      | 76 +++++++++++++++++++
- 1 file changed, 76 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+Tested-by: Hsin-Yi Wang <hsinyi@chromium.org>
 
-diff --git a/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
-new file mode 100644
-index 000000000000..2445c5e0b0ef
---- /dev/null
-+++ b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
-@@ -0,0 +1,76 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/spmi/mtk,spmi-mtk-pmif.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek SPMI Controller Device Tree Bindings
-+
-+maintainers:
-+  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-+
-+description: |+
-+  On MediaTek SoCs the PMIC is connected via SPMI and the controller allows
-+  for multiple SoCs to control a single SPMI master.
-+
-+allOf:
-+  - $ref: "spmi.yaml"
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt6873-spmi
-+      - mediatek,mt8195-spmi
-+
-+  reg:
-+    maxItems: 2
-+
-+  reg-names:
-+    items:
-+      - const: pmif
-+      - const: spmimst
-+
-+  clocks:
-+    minItems: 3
-+    maxItems: 3
-+
-+  clock-names:
-+    items:
-+      - const: pmif_sys_ck
-+      - const: pmif_tmr_ck
-+      - const: spmimst_clk_mux
-+
-+  assigned-clocks:
-+    maxItems: 1
-+
-+  assigned-clock-parents:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - clocks
-+  - clock-names
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8192-clk.h>
-+
-+    spmi: spmi@10027000 {
-+        compatible = "mediatek,mt6873-spmi";
-+        reg = <0x10027000 0xe00>,
-+              <0x10029000 0x100>;
-+        reg-names = "pmif", "spmimst";
-+        clocks = <&infracfg CLK_INFRA_PMIC_AP>,
-+                 <&infracfg CLK_INFRA_PMIC_TMR>,
-+                 <&topckgen CLK_TOP_SPMI_MST_SEL>;
-+        clock-names = "pmif_sys_ck",
-+                      "pmif_tmr_ck",
-+                      "spmimst_clk_mux";
-+        assigned-clocks = <&topckgen CLK_TOP_PWRAP_ULPOSC_SEL>;
-+        assigned-clock-parents = <&topckgen CLK_TOP_OSC_D10>;
-+    };
-+...
--- 
-2.18.0
-
+> ---
+>  .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 108 +++++++++---------
+>  1 file changed, 54 insertions(+), 54 deletions(-)
+>
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index 8e9cf36a9a41..65447de64f06 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -151,33 +151,33 @@
+>                 #thermal-sensor-cells = <0>;
+>                 io-channels = <&auxadc 0>;
+>                 io-channel-names = "sensor-channel";
+> -               temperature-lookup-table = <    (-5000) 4241
+> -                                               0 4063
+> -                                               5000 3856
+> -                                               10000 3621
+> -                                               15000 3364
+> -                                               20000 3091
+> -                                               25000 2810
+> -                                               30000 2526
+> -                                               35000 2247
+> -                                               40000 1982
+> -                                               45000 1734
+> -                                               50000 1507
+> -                                               55000 1305
+> -                                               60000 1122
+> -                                               65000 964
+> -                                               70000 827
+> -                                               75000 710
+> -                                               80000 606
+> -                                               85000 519
+> -                                               90000 445
+> -                                               95000 382
+> -                                               100000 330
+> -                                               105000 284
+> -                                               110000 245
+> -                                               115000 213
+> -                                               120000 183
+> -                                               125000 161>;
+> +               temperature-lookup-table = <    (-5000) 1553
+> +                                               0 1488
+> +                                               5000 1412
+> +                                               10000 1326
+> +                                               15000 1232
+> +                                               20000 1132
+> +                                               25000 1029
+> +                                               30000 925
+> +                                               35000 823
+> +                                               40000 726
+> +                                               45000 635
+> +                                               50000 552
+> +                                               55000 478
+> +                                               60000 411
+> +                                               65000 353
+> +                                               70000 303
+> +                                               75000 260
+> +                                               80000 222
+> +                                               85000 190
+> +                                               90000 163
+> +                                               95000 140
+> +                                               100000 121
+> +                                               105000 104
+> +                                               110000 90
+> +                                               115000 78
+> +                                               120000 67
+> +                                               125000 59>;
+>         };
+>
+>         tboard_thermistor2: thermal-sensor2 {
+> @@ -185,33 +185,33 @@
+>                 #thermal-sensor-cells = <0>;
+>                 io-channels = <&auxadc 1>;
+>                 io-channel-names = "sensor-channel";
+> -               temperature-lookup-table = <    (-5000) 4241
+> -                                               0 4063
+> -                                               5000 3856
+> -                                               10000 3621
+> -                                               15000 3364
+> -                                               20000 3091
+> -                                               25000 2810
+> -                                               30000 2526
+> -                                               35000 2247
+> -                                               40000 1982
+> -                                               45000 1734
+> -                                               50000 1507
+> -                                               55000 1305
+> -                                               60000 1122
+> -                                               65000 964
+> -                                               70000 827
+> -                                               75000 710
+> -                                               80000 606
+> -                                               85000 519
+> -                                               90000 445
+> -                                               95000 382
+> -                                               100000 330
+> -                                               105000 284
+> -                                               110000 245
+> -                                               115000 213
+> -                                               120000 183
+> -                                               125000 161>;
+> +               temperature-lookup-table = <    (-5000) 1553
+> +                                               0 1488
+> +                                               5000 1412
+> +                                               10000 1326
+> +                                               15000 1232
+> +                                               20000 1132
+> +                                               25000 1029
+> +                                               30000 925
+> +                                               35000 823
+> +                                               40000 726
+> +                                               45000 635
+> +                                               50000 552
+> +                                               55000 478
+> +                                               60000 411
+> +                                               65000 353
+> +                                               70000 303
+> +                                               75000 260
+> +                                               80000 222
+> +                                               85000 190
+> +                                               90000 163
+> +                                               95000 140
+> +                                               100000 121
+> +                                               105000 104
+> +                                               110000 90
+> +                                               115000 78
+> +                                               120000 67
+> +                                               125000 59>;
+>         };
+>  };
+>
+> --
+> 2.18.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
