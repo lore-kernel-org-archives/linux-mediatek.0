@@ -2,68 +2,82 @@ Return-Path: <SRS0=FoZt=PX=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5AF03C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Nov 2021 02:33:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7DC04C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Nov 2021 03:29:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 217436113B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Nov 2021 02:33:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 217436113B
+	by mail.kernel.org (Postfix) with ESMTPS id 35DFE61053
+	for <linux-mediatek@archiver.kernel.org>; Thu,  4 Nov 2021 03:29:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 35DFE61053
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Z8gLCralPgv6TXAjggCC+UFrSHWJxF/XSkq+RZS8wfo=; b=XMWORlDmwSigz+
-	/jJhafgLWZeMttCVtWj5Snh0J3GclP5C5At9Hl1lj2WxmA+7FVZTr7qoi0LPhVIgd1pcfbUKd7zOo
-	pvKSjyPLteawnWQf87bB8aEHPTEuBnEkUZmHwdJz1HTjsRhFN0CO6/y1KpYF4214m0W84w1CqkRgP
-	HLkkGCtwYx/lKPzLCjxdj2kub02e4LHXIYOyjwE7wE2HO+NqmNWgAPXStu8fjij/jvHAhVU7YqzUE
-	TabFhp4wvtfVkBErF7zRQR2YnC0BSDYyDec8Rq13E6utd3N3G9uUvcW56b4x/cxMBQmUH3j8rHlsz
-	vTiETLfmOxFMopPjbj4Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XVIJH4R+RuC3NSyiaObR+tmPWIflWMfFMDFAcnSSsi0=; b=uNhO8rLy7mz9GC
+	sp8KIvTO6LQU83WnE/Q+PukH5kZnwg42VTnjktovPEyri25PPSVCqcVMEXmqN3s3CkRWuUPfeQ84b
+	KiSw3vq5+lzAmWT/A6mkTZhoSjpXuqiPABVPf27awRHKGZ9o6/B/EppxzfptCaRQb5maHilaDJQ1l
+	tDd6cFTSPlt8orAIL6cBtckDM2tRHfwcKomjO27W2Tf80JiaIixjVX+wkQRBMMCWg7WSKzpnp0jAC
+	YiGtxs0bkD3hT6efIT9B8W/ipIs6IL16orgEzc4Q412wOcXKMD9eCVgNd30iZf2ssPZf1Aag1v2Hj
+	7QtmEbQPa2ARXQvZGg4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miSYY-007clB-6R; Thu, 04 Nov 2021 02:32:46 +0000
+	id 1miTQp-007kht-6D; Thu, 04 Nov 2021 03:28:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miSYK-007chO-4s; Thu, 04 Nov 2021 02:32:35 +0000
-X-UUID: a12a9c0f749a4598849fee577b6144d2-20211103
-X-UUID: a12a9c0f749a4598849fee577b6144d2-20211103
+ id 1miTQl-007kgy-Ex; Thu, 04 Nov 2021 03:28:50 +0000
+X-UUID: c2e03e1b9ad247d78187b7485b2b00b0-20211103
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=obhkLKakLCXFFdtMrvJQpCX8waFJ6arRjOpKnMlEJDY=; 
+ b=U6zaoP1mGU96Nokuy8oq1aI2tau0zHNR3Yxt4Y7okHdW2UZR7EqlN9PsDuksG1w2D6vRJw3bVpp4P962Juelz95P5eTZgZnomeBRu5D3Jttd11X3Y0bnZotvFGpy+JauBYOg+BzddzK4f0h6+kMjnk7YTxN0EwBqfSN37+jfPFw=;
+X-UUID: c2e03e1b9ad247d78187b7485b2b00b0-20211103
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <walter-zh.wu@mediatek.com>)
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 667086334; Wed, 03 Nov 2021 19:32:25 -0700
+ with ESMTP id 1586787048; Wed, 03 Nov 2021 20:28:43 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 3 Nov 2021 19:32:23 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 3 Nov 2021 20:28:41 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Thu, 4 Nov 2021 10:32:22 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs10n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Thu, 4 Nov 2021 10:32:22 +0800
-From: Walter Wu <walter-zh.wu@mediatek.com>
-To: Christoph Hellwig <hch@lst.de>, Marek Szyprowski
- <m.szyprowski@samsung.com>, Robin Murphy <robin.murphy@arm.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Ard Biesheuvel <ardb@kernel.org>, "Andrew
- Morton" <akpm@linux-foundation.org>
-CC: <iommu@lists.linux-foundation.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, wsd_upstream
- <wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>, Walter Wu
- <walter-zh.wu@mediatek.com>
-Subject: [PATCH v2] dma-direct: improve DMA_ATTR_NO_KERNEL_MAPPING
-Date: Thu, 4 Nov 2021 10:32:21 +0800
-Message-ID: <20211104023221.16391-1-walter-zh.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ Thu, 4 Nov 2021 11:28:39 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs10n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Thu, 4 Nov 2021 11:28:38 +0800
+Message-ID: <e099c6e8af0b184f8e823fac325ea36329cb5709.camel@mediatek.com>
+Subject: Re: [PATCH v3 13/33] iommu/mediatek: Remove the power status
+ checking in tlb flush all
+From: Yong Wu <yong.wu@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
+ <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <chao.hao@mediatek.com>,
+ <yen-chang.chen@mediatek.com>, Collabora Kernel ML <kernel@collabora.com>,
+ Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, "Robin
+ Murphy" <robin.murphy@arm.com>
+Date: Thu, 4 Nov 2021 11:28:38 +0800
+In-Reply-To: <f0e2ebf98481ee2ae8b88565a337e773532ddffd.camel@mediatek.com>
+References: <20210923115840.17813-1-yong.wu@mediatek.com>
+ <20210923115840.17813-14-yong.wu@mediatek.com>
+ <6cff0b97-b861-e02d-e76f-2510c962c452@collabora.com>
+ <f0e2ebf98481ee2ae8b88565a337e773532ddffd.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211103_193232_224397_F7ABB18D 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20211103_202847_534932_19A0FC22 
+X-CRM114-Status: GOOD (  35.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,111 +94,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When the allocated buffers use dma coherent memory with
-DMA_ATTR_NO_KERNEL_MAPPING, then its kernel mapping is exist.
-The caller use that DMA_ATTR_NO_KERNEL_MAPPING mean they can't
-rely on kernel mapping, but removing kernel mapping have
-some improvements.
+On Mon, 2021-10-25 at 12:03 +0800, Yong Wu wrote:
+> On Fri, 2021-10-22 at 16:03 +0200, Dafna Hirschfeld wrote:
+> > Hi
+> > 
+> > 
+> > On 23.09.21 13:58, Yong Wu wrote:
+> > > To simplify the code, Remove the power status checking in the
+> > > tlb_flush_all, remove this:
+> > >     if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> > > 	    continue;
+> > > 
+> > > After this patch, the mtk_iommu_tlb_flush_all will be called from
+> > > a) isr
+> > > b) pm runtime resume callback
+> > > c) tlb flush range fail case
+> > > d) iommu_create_device_direct_mappings
+> > >     -> iommu_flush_iotlb_all
+> > > In first three cases, the power and clock always are enabled; d)
+> > > is
+> > > direct
+> > 
+> > Regarding case "c) tlb flush range fail case", I found out that
+> > this
+> > often happens when the iommu is used while it is runtime
+> > suspended. 
+> 
+> Which SoC and branch are you testing on?
+> 
+> > For example the mtk-vcodec encoder driver calls
+> > "pm_runtime_resume_and_get" only when it starts
+> > streaming but
+> > buffers allocation is done in 'v4l2_reqbufs' before
+> > "pm_runtime_resume_and_get" is called
+> 
+> This is the case I tried to fix in [14/33].
+> pm_runtime_get_if_in_use should return when the iommu device's pm is
+> not active when vcodec allocate buffer before pm_runtime_resume_and
+> get.
+> 
+> Do you have the devicelink patchset in your branch? if not, the
+> vcodec
+> should call mtk_smi_larb_get to enable the power/clock for larbs,
+> then
+> the iommu's device is active via devicelink between smi and iommu
+> device.
+> 
+> > and then I see the warning "Partial TLB flush timed out, falling
+> > back
+> > to full flush"
+> > I am not sure how to fix that issue, but it seems that case 'c)'
 
-The improvements are:
-a) Security improvement. In some cases, we don't hope the allocated
-   buffer to be read by cpu speculative execution. Therefore, it
-   need to remove kernel mapping, this patch improve
-   DMA_ATTR_NO_KERNEL_MAPPING to remove a page from kernel mapping
-   in order that cpu doesn't read it.
-b) Debugging improvement. If the allocated buffer map into user space,
-   only access it in user space, nobody can access it in kernel space,
-   so we can use this patch to see who try to access it in kernel space.
+Have your issue been fixed? or more information about it.
 
-This patch only works if the memory is mapping at page granularity
-in the linear region, so that current only support for ARM64.
+Thanks.
 
-Signed-off-by: Walter Wu <walter-zh.wu@mediatek.com>
-Suggested-by: Christoph Hellwig <hch@lst.de>
-Suggested-by: Ard Biesheuvel <ardb@kernel.org>
-Cc: Christoph Hellwig <hch@lst.de>
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>
-Cc: Robin Murphy <robin.murphy@arm.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Ard Biesheuvel <ardb@kernel.org>
-Cc: Andrew Morton <akpm@linux-foundation.org>
----
-
-v2:
-1. modify commit message and fix the removing mapping for arm64
-2. fix build error for x86
-
----
- include/linux/set_memory.h |  5 +++++
- kernel/dma/direct.c        | 13 +++++++++++++
- 2 files changed, 18 insertions(+)
-
-diff --git a/include/linux/set_memory.h b/include/linux/set_memory.h
-index f36be5166c19..6c7d1683339c 100644
---- a/include/linux/set_memory.h
-+++ b/include/linux/set_memory.h
-@@ -7,11 +7,16 @@
- 
- #ifdef CONFIG_ARCH_HAS_SET_MEMORY
- #include <asm/set_memory.h>
-+
-+#ifndef CONFIG_RODATA_FULL_DEFAULT_ENABLED
-+static inline int set_memory_valid(unsigned long addr, int numpages, int enable) { return 0; }
-+#endif
- #else
- static inline int set_memory_ro(unsigned long addr, int numpages) { return 0; }
- static inline int set_memory_rw(unsigned long addr, int numpages) { return 0; }
- static inline int set_memory_x(unsigned long addr,  int numpages) { return 0; }
- static inline int set_memory_nx(unsigned long addr, int numpages) { return 0; }
-+static inline int set_memory_valid(unsigned long addr, int numpages, int enable) { return 0; }
- #endif
- 
- #ifndef CONFIG_ARCH_HAS_SET_DIRECT_MAP
-diff --git a/kernel/dma/direct.c b/kernel/dma/direct.c
-index 4c6c5e0635e3..d5d03b51b708 100644
---- a/kernel/dma/direct.c
-+++ b/kernel/dma/direct.c
-@@ -155,6 +155,7 @@ void *dma_direct_alloc(struct device *dev, size_t size,
- 	struct page *page;
- 	void *ret;
- 	int err;
-+	unsigned long kaddr;
- 
- 	size = PAGE_ALIGN(size);
- 	if (attrs & DMA_ATTR_NO_WARN)
-@@ -169,6 +170,11 @@ void *dma_direct_alloc(struct device *dev, size_t size,
- 		if (!PageHighMem(page))
- 			arch_dma_prep_coherent(page, size);
- 		*dma_handle = phys_to_dma_direct(dev, page_to_phys(page));
-+		if (IS_ENABLED(CONFIG_RODATA_FULL_DEFAULT_ENABLED)) {
-+			kaddr = (unsigned long)phys_to_virt(dma_to_phys(dev, *dma_handle));
-+			/* page remove kernel mapping for arm64 */
-+			set_memory_valid(kaddr, size >> PAGE_SHIFT, 0);
-+		}
- 		/* return the page pointer as the opaque cookie */
- 		return page;
- 	}
-@@ -275,9 +281,16 @@ void dma_direct_free(struct device *dev, size_t size,
- 		void *cpu_addr, dma_addr_t dma_addr, unsigned long attrs)
- {
- 	unsigned int page_order = get_order(size);
-+	unsigned long kaddr;
- 
- 	if ((attrs & DMA_ATTR_NO_KERNEL_MAPPING) &&
- 	    !force_dma_unencrypted(dev) && !is_swiotlb_for_alloc(dev)) {
-+		if (IS_ENABLED(CONFIG_RODATA_FULL_DEFAULT_ENABLED)) {
-+			size = PAGE_ALIGN(size);
-+			kaddr = (unsigned long)phys_to_virt(dma_to_phys(dev, dma_addr));
-+			/* page create kernel mapping for arm64 */
-+			set_memory_valid(kaddr, size >> PAGE_SHIFT, 1);
-+		}
- 		/* cpu_addr is a struct page cookie, not a kernel address */
- 		dma_free_contiguous(dev, cpu_addr, size);
- 		return;
--- 
-2.18.0
-
-
+> > might indicate that
+> > power and clock are actually not enabled.
+> > 
+> > > mapping, the tlb flush is unnecessay since we already have
+> > > tlb_flush_all
+> > > in the pm_runtime_resume callback. When the iommu's power status
+> > > is
+> > > changed to active, the tlb always is clean.
+> > > 
+> > > In addition, there still are 2 reasons that don't add PM status
+> > > checking
+> > > in the tlb flush all:
+> > > a) Write tlb flush all register also is ok even though the HW has
+> > > no
+> > > power and clocks. Write ignore.
+> > > b) pm_runtime_get_if_in_use(m4udev) is 0 when the tlb_flush_all
+> > > is called frm pm_runtime_resume cb. From this point, we can not
+> > > add
+> > > this code above in this tlb_flush_all.
+> > > 
+> > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > > ---
+> > >   drivers/iommu/mtk_iommu.c | 20 +++++++-------------
+> > >   1 file changed, 7 insertions(+), 13 deletions(-)
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
