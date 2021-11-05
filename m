@@ -2,69 +2,71 @@ Return-Path: <SRS0=Oz0f=PY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EBE8CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:02:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CFD56C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:11:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD36661244
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:02:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AD36661244
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 9501C6126A
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:11:19 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9501C6126A
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aHw8cDzAF4oVyAnWxpxbJEr47gZELeYykYlvr3x9d5k=; b=QQbqoSmfEhKeZX
-	ZvDLCa6dKhcebUwmAfck+zUhss/Tk6zCoSJefyS4Gt9sj/cI64iEokhFVe48h+yEXZonbq4HFez7b
-	e5YRs9+rBKLuHMMIX+V08Z5uFTXCnk3f1epgElqo1lSNSG4r83pVZI2vWbZZQ2SKnmXo7rgteaXR2
-	bviF81LNyVQjARuBF/3lpE4ggjUjoiaxCICkFgzrL2SaJetbO/iPX90S6xcrsYgNvCL2/PIp4+akY
-	Q4mTZivyE6Q1ABvFY0kOBdwtWPK8eLiSPr2c/RB+UPLcjknZQ4h28FgBVojaMIocZWFA3XpIssUgB
-	vImSOnw80YD6Tm3tr+AQ==;
+	List-Owner; bh=udTu3ifLrFqu3trpeLormXCQ8J/NUruor1l9pR3Pjoo=; b=5ErQINWPIOtZ3d
+	PmYqeMGXmC0P9Pod0bNYyLOj59bpKJAIUv5RKhh6azFwptGIdHkJ/tke65Irsd+2ZQUG/EwDhf0+M
+	CFCS+y0NCH3g3LQdoDzQuhS5L3humeF47D+FbHla019BV/HdW3gkW5LTejtV1IGmZ+w+uXY/0aAif
+	2NnGqfCP7SYshTNKWyow3kWVK0RnuKp+8H1GkUQGCKy9fyP1ZZHLXaJ+UTyt5vilJixPudarvFhXL
+	hxn+1ywwIUQGmRfVS6a5vS5Z1e68MmdJ035o6KKMHTw5pdYWc9k9sfeeOPbBOdJ/tZSOpfz/p7n6b
+	ZeF4dAl2goe7OsnlzVQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miw3I-00B33U-RL; Fri, 05 Nov 2021 10:02:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1miwBe-00B4FY-Cy; Fri, 05 Nov 2021 10:11:06 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miw3F-00B31c-41
- for linux-mediatek@lists.infradead.org; Fri, 05 Nov 2021 10:02:27 +0000
-X-UUID: c9bcccfe93f7499fb4996d2b110ccc46-20211105
-X-UUID: c9bcccfe93f7499fb4996d2b110ccc46-20211105
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <bo.jiao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 988747161; Fri, 05 Nov 2021 03:02:19 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 5 Nov 2021 03:02:17 -0700
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 5 Nov 2021 18:02:13 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 5 Nov 2021 18:02:13 +0800
-From: Bo Jiao <bo.jiao@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
- <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
- <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH v2 01/11] mt76: mt7915: add mt7915_mmio_probe() as a common
- probing function
-Date: Fri, 5 Nov 2021 18:02:00 +0800
-Message-ID: <2db3eac242d412464df001b24f9b8d9f306bebdb.1636105953.git.Bo.Jiao@mediatek.com>
-X-Mailer: git-send-email 2.17.0
-In-Reply-To: <cover.1636105953.git.Bo.Jiao@mediatek.com>
-References: <cover.1636105953.git.Bo.Jiao@mediatek.com>
+ id 1miwBP-00B4CH-U0; Fri, 05 Nov 2021 10:10:53 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10158"; a="230599750"
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="230599750"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Nov 2021 03:10:51 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.87,211,1631602800"; d="scan'208";a="498298132"
+Received: from stinkbox.fi.intel.com (HELO stinkbox) ([10.237.72.171])
+ by fmsmga007.fm.intel.com with SMTP; 05 Nov 2021 03:10:37 -0700
+Received: by stinkbox (sSMTP sendmail emulation);
+ Fri, 05 Nov 2021 12:10:35 +0200
+Date: Fri, 5 Nov 2021 12:10:35 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Ilia Mirkin <imirkin@alum.mit.edu>
+Cc: Mark Yacoub <markyacoub@chromium.org>, pmenzel@molgen.mpg.de,
+ David Airlie <airlied@linux.ie>,
+ Intel Graphics Development <intel-gfx@lists.freedesktop.org>,
+ LKML <linux-kernel@vger.kernel.org>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Sean Paul <seanpaul@chromium.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ Mark Yacoub <markyacoub@google.com>
+Subject: Re: [PATCH v5 2/3] drm: Add Gamma and Degamma LUT sizes props to
+ drm_crtc to validate.
+Message-ID: <YYUDGyA6J4/DRkP2@intel.com>
+References: <20211104200255.63499-1-markyacoub@chromium.org>
+ <20211104200255.63499-2-markyacoub@chromium.org>
+ <CAKb7UvhEH4bwhGr=82zBT5dnHRFsK+pFafHWoS+j+PAE3a9x4Q@mail.gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CAKb7UvhEH4bwhGr=82zBT5dnHRFsK+pFafHWoS+j+PAE3a9x4Q@mail.gmail.com>
+X-Patchwork-Hint: comment
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_030225_210173_B782BD2D 
-X-CRM114-Status: GOOD (  19.10  )
+X-CRM114-CacheID: sfid-20211105_031052_022077_ADAE0FE4 
+X-CRM114-Status: GOOD (  35.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,618 +78,320 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bo Jiao <Bo.Jiao@mediatek.com>
+On Thu, Nov 04, 2021 at 05:15:43PM -0400, Ilia Mirkin wrote:
+> On Thu, Nov 4, 2021 at 4:03 PM Mark Yacoub <markyacoub@chromium.org> wrot=
+e:
+> >
+> > From: Mark Yacoub <markyacoub@google.com>
+> >
+> > [Why]
+> > 1. drm_atomic_helper_check doesn't check for the LUT sizes of either Ga=
+mma
+> > or Degamma props in the new CRTC state, allowing any invalid size to
+> > be passed on.
+> > 2. Each driver has its own LUT size, which could also be different for
+> > legacy users.
+> >
+> > [How]
+> > 1. Create |degamma_lut_size| and |gamma_lut_size| to save the LUT sizes
+> > assigned by the driver when it's initializing its color and CTM
+> > management.
+> > 2. Create drm_atomic_helper_check_crtc which is called by
+> > drm_atomic_helper_check to check the LUT sizes saved in drm_crtc that
+> > they match the sizes in the new CRTC state.
+> > 3. As the LUT size check now happens in drm_atomic_helper_check, remove
+> > the lut check in intel_color.c
+> >
+> > Resolves: igt@kms_color@pipe-A-invalid-gamma-lut-sizes on MTK
+> > Tested on Zork (amdgpu) and Jacuzzi (mediatek), volteer (TGL)
+> >
+> > v3:
+> > 1. Check for lut pointer inside drm_check_lut_size.
+> >
+> > v2:
+> > 1. Remove the rename to a parent commit.
+> > 2. Create a drm drm_check_lut_size instead of intel only function.
+> >
+> > v1:
+> > 1. Fix typos
+> > 2. Remove the LUT size check from intel driver
+> > 3. Rename old LUT check to indicate it's a channel change
+> >
+> > Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
+> > ---
+> >  drivers/gpu/drm/drm_atomic_helper.c        | 52 ++++++++++++++++++++++
+> >  drivers/gpu/drm/drm_color_mgmt.c           | 19 ++++++++
+> >  drivers/gpu/drm/i915/display/intel_color.c | 32 ++++++-------
+> >  include/drm/drm_atomic_helper.h            |  1 +
+> >  include/drm/drm_color_mgmt.h               |  3 ++
+> >  include/drm/drm_crtc.h                     | 11 +++++
+> >  6 files changed, 99 insertions(+), 19 deletions(-)
+> >
+> > diff --git a/drivers/gpu/drm/drm_atomic_helper.c b/drivers/gpu/drm/drm_=
+atomic_helper.c
+> > index bc3487964fb5e..548e5d8221fb4 100644
+> > --- a/drivers/gpu/drm/drm_atomic_helper.c
+> > +++ b/drivers/gpu/drm/drm_atomic_helper.c
+> > @@ -929,6 +929,54 @@ drm_atomic_helper_check_planes(struct drm_device *=
+dev,
+> >  }
+> >  EXPORT_SYMBOL(drm_atomic_helper_check_planes);
+> >
+> > +/**
+> > + * drm_atomic_helper_check_crtcs - validate state object for CRTC chan=
+ges
+> > + * @state: the driver state object
+> > + *
+> > + * Check the CRTC state object such as the Gamma/Degamma LUT sizes if =
+the new
+> > + * state holds them.
+> > + *
+> > + * RETURNS:
+> > + * Zero for success or -errno
+> > + */
+> > +int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state)
+> > +{
+> > +       struct drm_crtc *crtc;
+> > +       struct drm_crtc_state *new_crtc_state;
+> > +       int i;
+> > +
+> > +       for_each_new_crtc_in_state (state, crtc, new_crtc_state, i) {
+> > +               if (!new_crtc_state->color_mgmt_changed)
+> > +                       continue;
+> > +
+> > +               if (drm_check_lut_size(new_crtc_state->gamma_lut,
+> > +                                      crtc->gamma_lut_size) ||
+> > +                   drm_check_lut_size(new_crtc_state->gamma_lut,
+> > +                                      crtc->gamma_size)) {
+> > +                       drm_dbg_state(
+> > +                               state->dev,
+> > +                               "Invalid Gamma LUT size. Expected %u/%u=
+, got %u.\n",
+> > +                               crtc->gamma_lut_size, crtc->gamma_size,
+> > +                               drm_color_lut_size(new_crtc_state->gamm=
+a_lut));
+> > +                       return -EINVAL;
+> > +               }
+> > +
+> > +               if (drm_check_lut_size(new_crtc_state->degamma_lut,
+> > +                                      crtc->degamma_lut_size)) {
+> > +                       drm_dbg_state(
+> > +                               state->dev,
+> > +                               "Invalid Degamma LUT size. Expected %u,=
+ got %u.\n",
+> > +                               crtc->degamma_lut_size,
+> > +                               drm_color_lut_size(
+> > +                                       new_crtc_state->degamma_lut));
+> > +                       return -EINVAL;
+> > +               }
+> > +       }
+> > +
+> > +       return 0;
+> > +}
+> > +EXPORT_SYMBOL(drm_atomic_helper_check_crtcs);
+> > +
+> >  /**
+> >   * drm_atomic_helper_check - validate state object
+> >   * @dev: DRM device
+> > @@ -974,6 +1022,10 @@ int drm_atomic_helper_check(struct drm_device *de=
+v,
+> >         if (ret)
+> >                 return ret;
+> >
+> > +       ret =3D drm_atomic_helper_check_crtcs(state);
+> > +       if (ret)
+> > +               return ret;
+> > +
+> >         if (state->legacy_cursor_update)
+> >                 state->async_update =3D !drm_atomic_helper_async_check(=
+dev, state);
+> >
+> > diff --git a/drivers/gpu/drm/drm_color_mgmt.c b/drivers/gpu/drm/drm_col=
+or_mgmt.c
+> > index 16a07f84948f3..c85094223b535 100644
+> > --- a/drivers/gpu/drm/drm_color_mgmt.c
+> > +++ b/drivers/gpu/drm/drm_color_mgmt.c
+> > @@ -166,6 +166,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *cr=
+tc,
+> >         struct drm_mode_config *config =3D &dev->mode_config;
+> >
+> >         if (degamma_lut_size) {
+> > +               crtc->degamma_lut_size =3D degamma_lut_size;
+> >                 drm_object_attach_property(&crtc->base,
+> >                                            config->degamma_lut_property=
+, 0);
+> >                 drm_object_attach_property(&crtc->base,
+> > @@ -178,6 +179,7 @@ void drm_crtc_enable_color_mgmt(struct drm_crtc *cr=
+tc,
+> >                                            config->ctm_property, 0);
+> >
+> >         if (gamma_lut_size) {
+> > +               crtc->gamma_lut_size =3D gamma_lut_size;
+> >                 drm_object_attach_property(&crtc->base,
+> >                                            config->gamma_lut_property, =
+0);
+> >                 drm_object_attach_property(&crtc->base,
+> > @@ -506,6 +508,23 @@ const char *drm_get_color_range_name(enum drm_colo=
+r_range range)
+> >         return color_range_name[range];
+> >  }
+> >
+> > +/**
+> > + * drm_check_lut_size - Checks if LUT size matches the driver expected=
+ size.
+> > + * @lut: blob containing the LUT
+> > + * @expected_size: driver expected LUT size
+> > + *
+> > + * Returns -EINVAL on mismatch, 0 on match.
+> > + */
+> > +int drm_check_lut_size(const struct drm_property_blob *lut,
+> > +                      uint32_t expected_size)
+> > +{
+> > +       if (!lut)
+> > +               return 0;
+> > +
+> > +       return drm_color_lut_size(lut) !=3D expected_size ? -EINVAL : 0;
+> > +}
+> > +EXPORT_SYMBOL(drm_check_lut_size);
+> > +
+> >  /**
+> >   * drm_plane_create_color_properties - color encoding related plane pr=
+operties
+> >   * @plane: plane object
+> > diff --git a/drivers/gpu/drm/i915/display/intel_color.c b/drivers/gpu/d=
+rm/i915/display/intel_color.c
+> > index 1469871d21ff9..0fe4b2359812a 100644
+> > --- a/drivers/gpu/drm/i915/display/intel_color.c
+> > +++ b/drivers/gpu/drm/i915/display/intel_color.c
+> > @@ -1262,23 +1262,6 @@ intel_color_add_affected_planes(struct intel_crt=
+c_state *new_crtc_state)
+> >         return 0;
+> >  }
+> >
+> > -static int check_lut_size(const struct drm_property_blob *lut, int exp=
+ected)
+> > -{
+> > -       int len;
+> > -
+> > -       if (!lut)
+> > -               return 0;
+> > -
+> > -       len =3D drm_color_lut_size(lut);
+> > -       if (len !=3D expected) {
+> > -               DRM_DEBUG_KMS("Invalid LUT size; got %d, expected %d\n",
+> > -                             len, expected);
+> > -               return -EINVAL;
+> > -       }
+> > -
+> > -       return 0;
+> > -}
+> > -
+> >  static int test_luts(const struct drm_property_blob *lut, u32 tests)
+> >  {
+> >         const struct drm_color_lut *entry;
+> > @@ -1336,9 +1319,20 @@ static int check_luts(const struct intel_crtc_st=
+ate *crtc_state)
+> >         degamma_channels_tests =3D INTEL_INFO(dev_priv)->color.degamma_=
+lut_tests;
+> >         gamma_channels_tests =3D INTEL_INFO(dev_priv)->color.gamma_lut_=
+tests;
+> >
+> > -       if (check_lut_size(degamma_lut, degamma_length) ||
+> > -           check_lut_size(gamma_lut, gamma_length))
+> > +       if (drm_check_lut_size(degamma_lut, degamma_length)) {
+> > +               drm_dbg_state(
+> > +                       &dev_priv->drm,
+> > +                       "Invalid Degamma LUT size. Expected %u, got %u.=
+\n",
+> > +                       degamma_length, drm_color_lut_size(degamma_lut)=
+);
+> >                 return -EINVAL;
+> > +       }
+> > +
+> > +       if (drm_check_lut_size(gamma_lut, gamma_length)) {
+> > +               drm_dbg_state(&dev_priv->drm,
+> > +                             "Invalid Gamma LUT size. Expected %u, got=
+ %u.\n",
+> > +                             degamma_length, drm_color_lut_size(gamma_=
+lut));
+> > +               return -EINVAL;
+> > +       }
+> >
+> >         if (test_luts(degamma_lut, degamma_channels_tests) ||
+> >             test_luts(gamma_lut, gamma_channels_tests))
+> > diff --git a/include/drm/drm_atomic_helper.h b/include/drm/drm_atomic_h=
+elper.h
+> > index 4045e2507e11c..a22d32a7a8719 100644
+> > --- a/include/drm/drm_atomic_helper.h
+> > +++ b/include/drm/drm_atomic_helper.h
+> > @@ -38,6 +38,7 @@ struct drm_atomic_state;
+> >  struct drm_private_obj;
+> >  struct drm_private_state;
+> >
+> > +int drm_atomic_helper_check_crtcs(struct drm_atomic_state *state);
+> >  int drm_atomic_helper_check_modeset(struct drm_device *dev,
+> >                                 struct drm_atomic_state *state);
+> >  int drm_atomic_helper_check_plane_state(struct drm_plane_state *plane_=
+state,
+> > diff --git a/include/drm/drm_color_mgmt.h b/include/drm/drm_color_mgmt.h
+> > index 3537f3eeb3872..cb2d74719f2d5 100644
+> > --- a/include/drm/drm_color_mgmt.h
+> > +++ b/include/drm/drm_color_mgmt.h
+> > @@ -74,6 +74,9 @@ static inline int drm_color_lut_size(const struct drm=
+_property_blob *blob)
+> >         return blob->length / sizeof(struct drm_color_lut);
+> >  }
+> >
+> > +int drm_check_lut_size(const struct drm_property_blob *lut,
+> > +                      uint32_t expected_size);
+> > +
+> >  enum drm_color_encoding {
+> >         DRM_COLOR_YCBCR_BT601,
+> >         DRM_COLOR_YCBCR_BT709,
+> > diff --git a/include/drm/drm_crtc.h b/include/drm/drm_crtc.h
+> > index 2deb15d7e1610..4fd1c9a4bbba8 100644
+> > --- a/include/drm/drm_crtc.h
+> > +++ b/include/drm/drm_crtc.h
+> > @@ -1072,6 +1072,17 @@ struct drm_crtc {
+> >         /** @funcs: CRTC control functions */
+> >         const struct drm_crtc_funcs *funcs;
+> >
+> > +       /**
+> > +        * @degamma_lut_size: Size of degamma LUT.
+> > +        */
+> > +       size_t degamma_lut_size;
+> > +
+> > +       /**
+> > +        * @gamma_lut_size: Size of Gamma LUT. Not used by legacy users=
+pace such as
+> > +        * X, which doesn't support large lut sizes.
+> > +        */
+> > +       size_t gamma_lut_size;
+> > +
+> =
 
-Add mt7915_mmio_probe() which will be used for the upcoming devices.
-This is an intermediate patch to add mt7916 support.
+> On NVIDIA hardware, multiple LUT sizes are supported. We do this check in=
+ e.g.
+> =
 
-Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
-Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
-Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
----
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  | 232 ++++++++++++++++-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |   7 +-
- .../net/wireless/mediatek/mt76/mt7915/pci.c   | 233 ++----------------
- 3 files changed, 255 insertions(+), 217 deletions(-)
+> drivers/gpu/drm/nouveau/dispnv50/base907c.c:base907c_ilut
+> =
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 1f6ba30..2f8b72b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -1,7 +1,14 @@
- // SPDX-License-Identifier: ISC
- /* Copyright (C) 2020 MediaTek Inc. */
- 
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/pci.h>
-+
- #include "mt7915.h"
-+#include "mac.h"
-+#include "../trace.h"
- 
- static u32 mt7915_reg_map_l1(struct mt7915_dev *dev, u32 addr)
- {
-@@ -125,7 +132,9 @@ static u32 mt7915_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
- 	return dev->bus_ops->rmw(mdev, addr, mask, val);
- }
- 
--int mt7915_mmio_init(struct mt76_dev *mdev, void __iomem *mem_base, int irq)
-+static int mt7915_mmio_init(struct mt76_dev *mdev,
-+			    void __iomem *mem_base,
-+			    u32 device_id)
- {
- 	struct mt76_bus_ops *bus_ops;
- 	struct mt7915_dev *dev;
-@@ -148,7 +157,228 @@ int mt7915_mmio_init(struct mt76_dev *mdev, void __iomem *mem_base, int irq)
- 		    (mt76_rr(dev, MT_HW_REV) & 0xff);
- 	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
- 
-+	return 0;
-+}
-+
-+void mt7915_dual_hif_set_irq_mask(struct mt7915_dev *dev,
-+				  bool write_reg,
-+				  u32 clear, u32 set)
-+{
-+	struct mt76_dev *mdev = &dev->mt76;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&mdev->mmio.irq_lock, flags);
-+
-+	mdev->mmio.irqmask &= ~clear;
-+	mdev->mmio.irqmask |= set;
-+
-+	if (write_reg) {
-+		mt76_wr(dev, MT_INT_MASK_CSR, mdev->mmio.irqmask);
-+		mt76_wr(dev, MT_INT1_MASK_CSR, mdev->mmio.irqmask);
-+	}
-+
-+	spin_unlock_irqrestore(&mdev->mmio.irq_lock, flags);
-+}
-+
-+static void mt7915_rx_poll_complete(struct mt76_dev *mdev,
-+				    enum mt76_rxq_id q)
-+{
-+	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
-+	static const u32 rx_irq_mask[] = {
-+		[MT_RXQ_MAIN] = MT_INT_RX_DONE_DATA0,
-+		[MT_RXQ_EXT] = MT_INT_RX_DONE_DATA1,
-+		[MT_RXQ_MCU] = MT_INT_RX_DONE_WM,
-+		[MT_RXQ_MCU_WA] = MT_INT_RX_DONE_WA,
-+		[MT_RXQ_EXT_WA] = MT_INT_RX_DONE_WA_EXT,
-+	};
-+
-+	mt7915_irq_enable(dev, rx_irq_mask[q]);
-+}
-+
-+/* TODO: support 2/4/6/8 MSI-X vectors */
-+static void mt7915_irq_tasklet(struct tasklet_struct *t)
-+{
-+	struct mt7915_dev *dev = from_tasklet(dev, t, irq_tasklet);
-+	u32 intr, intr1, mask;
-+
- 	mt76_wr(dev, MT_INT_MASK_CSR, 0);
-+	if (dev->hif2)
-+		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
-+
-+	intr = mt76_rr(dev, MT_INT_SOURCE_CSR);
-+	intr &= dev->mt76.mmio.irqmask;
-+	mt76_wr(dev, MT_INT_SOURCE_CSR, intr);
-+
-+	if (dev->hif2) {
-+		intr1 = mt76_rr(dev, MT_INT1_SOURCE_CSR);
-+		intr1 &= dev->mt76.mmio.irqmask;
-+		mt76_wr(dev, MT_INT1_SOURCE_CSR, intr1);
-+
-+		intr |= intr1;
-+	}
-+
-+	trace_dev_irq(&dev->mt76, intr, dev->mt76.mmio.irqmask);
-+
-+	mask = intr & MT_INT_RX_DONE_ALL;
-+	if (intr & MT_INT_TX_DONE_MCU)
-+		mask |= MT_INT_TX_DONE_MCU;
-+
-+	mt7915_irq_disable(dev, mask);
-+
-+	if (intr & MT_INT_TX_DONE_MCU)
-+		napi_schedule(&dev->mt76.tx_napi);
-+
-+	if (intr & MT_INT_RX_DONE_DATA0)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_MAIN]);
-+
-+	if (intr & MT_INT_RX_DONE_DATA1)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT]);
-+
-+	if (intr & MT_INT_RX_DONE_WM)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU]);
-+
-+	if (intr & MT_INT_RX_DONE_WA)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU_WA]);
-+
-+	if (intr & MT_INT_RX_DONE_WA_EXT)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT_WA]);
-+
-+	if (intr & MT_INT_MCU_CMD) {
-+		u32 val = mt76_rr(dev, MT_MCU_CMD);
-+
-+		mt76_wr(dev, MT_MCU_CMD, val);
-+		if (val & MT_MCU_CMD_ERROR_MASK) {
-+			dev->reset_state = val;
-+			ieee80211_queue_work(mt76_hw(dev), &dev->reset_work);
-+			wake_up(&dev->reset_wait);
-+		}
-+	}
-+}
-+
-+static irqreturn_t mt7915_irq_handler(int irq, void *dev_instance)
-+{
-+	struct mt7915_dev *dev = dev_instance;
-+
-+	mt76_wr(dev, MT_INT_MASK_CSR, 0);
-+	if (dev->hif2)
-+		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
-+
-+	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
-+		return IRQ_NONE;
-+
-+	tasklet_schedule(&dev->irq_tasklet);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+int mt7915_mmio_probe(struct device *pdev,
-+		      void __iomem *mem_base,
-+		      u32 device_id,
-+		      int irq, struct mt7915_hif *hif2)
-+{
-+	static const struct mt76_driver_ops drv_ops = {
-+		/* txwi_size = txd size + txp size */
-+		.txwi_size = MT_TXD_SIZE + sizeof(struct mt7915_txp),
-+		.drv_flags = MT_DRV_TXWI_NO_FREE | MT_DRV_HW_MGMT_TXQ,
-+		.survey_flags = SURVEY_INFO_TIME_TX |
-+				SURVEY_INFO_TIME_RX |
-+				SURVEY_INFO_TIME_BSS_RX,
-+		.token_size = MT7915_TOKEN_SIZE,
-+		.tx_prepare_skb = mt7915_tx_prepare_skb,
-+		.tx_complete_skb = mt7915_tx_complete_skb,
-+		.rx_skb = mt7915_queue_rx_skb,
-+		.rx_poll_complete = mt7915_rx_poll_complete,
-+		.sta_ps = mt7915_sta_ps,
-+		.sta_add = mt7915_mac_sta_add,
-+		.sta_remove = mt7915_mac_sta_remove,
-+		.update_survey = mt7915_update_channel,
-+	};
-+	struct ieee80211_ops *ops;
-+	struct mt7915_dev *dev;
-+	struct mt76_dev *mdev;
-+	int ret;
-+
-+	ops = devm_kmemdup(pdev, &mt7915_ops, sizeof(mt7915_ops), GFP_KERNEL);
-+	if (!ops)
-+		return -ENOMEM;
-+
-+	mdev = mt76_alloc_device(pdev, sizeof(*dev), ops, &drv_ops);
-+	if (!mdev)
-+		return -ENOMEM;
-+
-+	dev = container_of(mdev, struct mt7915_dev, mt76);
-+
-+	ret = mt7915_mmio_init(mdev, mem_base, device_id);
-+	if (ret)
-+		goto error;
-+
-+	tasklet_setup(&dev->irq_tasklet, mt7915_irq_tasklet);
-+
-+	mt76_wr(dev, MT_INT_MASK_CSR, 0);
-+	/* master switch of PCIe tnterrupt enable */
-+	if (dev_is_pci(pdev))
-+		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-+
-+	ret = devm_request_irq(mdev->dev, irq, mt7915_irq_handler,
-+			       IRQF_SHARED, KBUILD_MODNAME, dev);
-+	if (ret)
-+		goto error;
-+
-+	if (hif2) {
-+		dev->hif2 = hif2;
-+
-+		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
-+		/* master switch of PCIe tnterrupt enable */
-+		if (dev_is_pci(pdev))
-+			mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0xff);
-+
-+		ret = devm_request_irq(mdev->dev, dev->hif2->irq,
-+				       mt7915_irq_handler, IRQF_SHARED,
-+				       KBUILD_MODNAME "-hif", dev);
-+		if (ret) {
-+			put_device(dev->hif2->dev);
-+			goto free_irq;
-+		}
-+	}
-+
-+	ret = mt7915_register_device(dev);
-+	if (ret)
-+		goto free_hif2_irq;
- 
- 	return 0;
-+
-+free_hif2_irq:
-+	if (dev->hif2)
-+		devm_free_irq(mdev->dev, dev->hif2->irq, dev);
-+free_irq:
-+	devm_free_irq(mdev->dev, irq, dev);
-+error:
-+	mt76_free_device(&dev->mt76);
-+
-+	return ret;
- }
-+
-+static int __init mt7915_init(void)
-+{
-+	int ret;
-+
-+	ret = pci_register_driver(&mt7915_hif_driver);
-+	if (ret)
-+		return ret;
-+
-+	ret = pci_register_driver(&mt7915_pci_driver);
-+	if (ret)
-+		pci_unregister_driver(&mt7915_hif_driver);
-+
-+	return ret;
-+}
-+
-+static void __exit mt7915_exit(void)
-+{
-+	pci_unregister_driver(&mt7915_pci_driver);
-+	pci_unregister_driver(&mt7915_hif_driver);
-+}
-+
-+module_init(mt7915_init);
-+module_exit(mt7915_exit);
-+MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index c6c846d..05a28c2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -369,7 +369,13 @@ static inline u8 mt7915_lmac_mapping(struct mt7915_dev *dev, u8 ac)
- 
- extern const struct ieee80211_ops mt7915_ops;
- extern const struct mt76_testmode_ops mt7915_testmode_ops;
-+extern struct pci_driver mt7915_pci_driver;
-+extern struct pci_driver mt7915_hif_driver;
- 
-+int mt7915_mmio_probe(struct device *pdev,
-+		      void __iomem *mem_base,
-+		      u32 device_id,
-+		      int irq, struct mt7915_hif *hif2);
- u32 mt7915_reg_map(struct mt7915_dev *dev, u32 addr);
- u64 __mt7915_get_tsf(struct ieee80211_hw *hw, struct mt7915_vif *mvif);
- int mt7915_register_device(struct mt7915_dev *dev);
-@@ -503,7 +509,6 @@ void mt7915_mac_work(struct work_struct *work);
- void mt7915_mac_reset_work(struct work_struct *work);
- void mt7915_mac_sta_rc_work(struct work_struct *work);
- void mt7915_mac_update_stats(struct mt7915_phy *phy);
--int mt7915_mmio_init(struct mt76_dev *mdev, void __iomem *mem_base, int irq);
- void mt7915_mac_twt_teardown_flow(struct mt7915_dev *dev,
- 				  struct mt7915_sta *msta,
- 				  u8 flowid);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-index 0af4cdb..2aba79a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-@@ -26,27 +26,7 @@ static const struct pci_device_id mt7915_hif_device_table[] = {
- 	{ },
- };
- 
--void mt7915_dual_hif_set_irq_mask(struct mt7915_dev *dev, bool write_reg,
--				  u32 clear, u32 set)
--{
--	struct mt76_dev *mdev = &dev->mt76;
--	unsigned long flags;
--
--	spin_lock_irqsave(&mdev->mmio.irq_lock, flags);
--
--	mdev->mmio.irqmask &= ~clear;
--	mdev->mmio.irqmask |= set;
--
--	if (write_reg) {
--		mt76_wr(dev, MT_INT_MASK_CSR, mdev->mmio.irqmask);
--		mt76_wr(dev, MT_INT1_MASK_CSR, mdev->mmio.irqmask);
--	}
--
--	spin_unlock_irqrestore(&mdev->mmio.irq_lock, flags);
--}
--
--static struct mt7915_hif *
--mt7915_pci_get_hif2(struct mt7915_dev *dev)
-+static struct mt7915_hif *mt7915_pci_get_hif2(u32 idx)
- {
- 	struct mt7915_hif *hif;
- 	u32 val;
-@@ -56,7 +36,7 @@ mt7915_pci_get_hif2(struct mt7915_dev *dev)
- 	list_for_each_entry(hif, &hif_list, list) {
- 		val = readl(hif->regs + MT_PCIE_RECOG_ID);
- 		val &= MT_PCIE_RECOG_ID_MASK;
--		if (val != dev->hif_idx)
-+		if (val != idx)
- 			continue;
- 
- 		get_device(hif->dev);
-@@ -78,123 +58,16 @@ static void mt7915_put_hif2(struct mt7915_hif *hif)
- 	put_device(hif->dev);
- }
- 
--static void
--mt7915_rx_poll_complete(struct mt76_dev *mdev, enum mt76_rxq_id q)
--{
--	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
--	static const u32 rx_irq_mask[] = {
--		[MT_RXQ_MAIN] = MT_INT_RX_DONE_DATA0,
--		[MT_RXQ_EXT] = MT_INT_RX_DONE_DATA1,
--		[MT_RXQ_MCU] = MT_INT_RX_DONE_WM,
--		[MT_RXQ_MCU_WA] = MT_INT_RX_DONE_WA,
--		[MT_RXQ_EXT_WA] = MT_INT_RX_DONE_WA_EXT,
--	};
--
--	mt7915_irq_enable(dev, rx_irq_mask[q]);
--}
--
--/* TODO: support 2/4/6/8 MSI-X vectors */
--static void mt7915_irq_tasklet(struct tasklet_struct *t)
--{
--	struct mt7915_dev *dev = from_tasklet(dev, t, irq_tasklet);
--	u32 intr, intr1, mask;
--
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--	if (dev->hif2)
--		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
--
--	intr = mt76_rr(dev, MT_INT_SOURCE_CSR);
--	intr &= dev->mt76.mmio.irqmask;
--	mt76_wr(dev, MT_INT_SOURCE_CSR, intr);
--
--	if (dev->hif2) {
--		intr1 = mt76_rr(dev, MT_INT1_SOURCE_CSR);
--		intr1 &= dev->mt76.mmio.irqmask;
--		mt76_wr(dev, MT_INT1_SOURCE_CSR, intr1);
--
--		intr |= intr1;
--	}
--
--	trace_dev_irq(&dev->mt76, intr, dev->mt76.mmio.irqmask);
--
--	mask = intr & MT_INT_RX_DONE_ALL;
--	if (intr & MT_INT_TX_DONE_MCU)
--		mask |= MT_INT_TX_DONE_MCU;
--
--	mt7915_irq_disable(dev, mask);
--
--	if (intr & MT_INT_TX_DONE_MCU)
--		napi_schedule(&dev->mt76.tx_napi);
--
--	if (intr & MT_INT_RX_DONE_DATA0)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_MAIN]);
--
--	if (intr & MT_INT_RX_DONE_DATA1)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT]);
--
--	if (intr & MT_INT_RX_DONE_WM)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU]);
--
--	if (intr & MT_INT_RX_DONE_WA)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU_WA]);
--
--	if (intr & MT_INT_RX_DONE_WA_EXT)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT_WA]);
--
--	if (intr & MT_INT_MCU_CMD) {
--		u32 val = mt76_rr(dev, MT_MCU_CMD);
--
--		mt76_wr(dev, MT_MCU_CMD, val);
--		if (val & MT_MCU_CMD_ERROR_MASK) {
--			dev->reset_state = val;
--			ieee80211_queue_work(mt76_hw(dev), &dev->reset_work);
--			wake_up(&dev->reset_wait);
--		}
--	}
--}
--
--static irqreturn_t mt7915_irq_handler(int irq, void *dev_instance)
--{
--	struct mt7915_dev *dev = dev_instance;
--
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--	if (dev->hif2)
--		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
--
--	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
--		return IRQ_NONE;
--
--	tasklet_schedule(&dev->irq_tasklet);
--
--	return IRQ_HANDLED;
--}
--
--static void mt7915_pci_init_hif2(struct mt7915_dev *dev)
-+static struct mt7915_hif *mt7915_pci_init_hif2(struct pci_dev *pdev)
- {
--	struct mt7915_hif *hif;
--
--	dev->hif_idx = ++hif_idx;
-+	hif_idx++;
- 	if (!pci_get_device(PCI_VENDOR_ID_MEDIATEK, 0x7916, NULL))
--		return;
--
--	mt76_wr(dev, MT_PCIE_RECOG_ID, dev->hif_idx | MT_PCIE_RECOG_ID_SEM);
--
--	hif = mt7915_pci_get_hif2(dev);
--	if (!hif)
--		return;
-+		return NULL;
- 
--	dev->hif2 = hif;
-+	writel(hif_idx | MT_PCIE_RECOG_ID_SEM,
-+	       pcim_iomap_table(pdev)[0] + MT_PCIE_RECOG_ID);
- 
--	mt76_wr(dev, MT_INT1_MASK_CSR, 0);
--
--	if (devm_request_irq(dev->mt76.dev, hif->irq, mt7915_irq_handler,
--			     IRQF_SHARED, KBUILD_MODNAME "-hif", dev)) {
--		mt7915_put_hif2(hif);
--		hif = NULL;
--	}
--
--	/* master switch of PCIe tnterrupt enable */
--	mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0xff);
-+	return mt7915_pci_get_hif2(hif_idx);
- }
- 
- static int mt7915_pci_hif2_probe(struct pci_dev *pdev)
-@@ -219,25 +92,8 @@ static int mt7915_pci_hif2_probe(struct pci_dev *pdev)
- static int mt7915_pci_probe(struct pci_dev *pdev,
- 			    const struct pci_device_id *id)
- {
--	static const struct mt76_driver_ops drv_ops = {
--		/* txwi_size = txd size + txp size */
--		.txwi_size = MT_TXD_SIZE + sizeof(struct mt7915_txp),
--		.drv_flags = MT_DRV_TXWI_NO_FREE | MT_DRV_HW_MGMT_TXQ,
--		.survey_flags = SURVEY_INFO_TIME_TX |
--				SURVEY_INFO_TIME_RX |
--				SURVEY_INFO_TIME_BSS_RX,
--		.token_size = MT7915_TOKEN_SIZE,
--		.tx_prepare_skb = mt7915_tx_prepare_skb,
--		.tx_complete_skb = mt7915_tx_complete_skb,
--		.rx_skb = mt7915_queue_rx_skb,
--		.rx_poll_complete = mt7915_rx_poll_complete,
--		.sta_ps = mt7915_sta_ps,
--		.sta_add = mt7915_mac_sta_add,
--		.sta_remove = mt7915_mac_sta_remove,
--		.update_survey = mt7915_update_channel,
--	};
--	struct mt7915_dev *dev;
--	struct mt76_dev *mdev;
-+	struct mt7915_hif *hif2;
-+
- 	int ret;
- 
- 	ret = pcim_enable_device(pdev);
-@@ -259,46 +115,18 @@ static int mt7915_pci_probe(struct pci_dev *pdev,
- 	if (id->device == 0x7916)
- 		return mt7915_pci_hif2_probe(pdev);
- 
--	mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), &mt7915_ops,
--				 &drv_ops);
--	if (!mdev)
--		return -ENOMEM;
--
--	dev = container_of(mdev, struct mt7915_dev, mt76);
--
- 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
- 	if (ret < 0)
--		goto free;
--
--	ret = mt7915_mmio_init(mdev, pcim_iomap_table(pdev)[0], pdev->irq);
--	if (ret)
--		goto error;
--
--	tasklet_setup(&dev->irq_tasklet, mt7915_irq_tasklet);
--
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--
--	/* master switch of PCIe tnterrupt enable */
--	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-+		return ret;
- 
--	ret = devm_request_irq(mdev->dev, pdev->irq, mt7915_irq_handler,
--			       IRQF_SHARED, KBUILD_MODNAME, dev);
--	if (ret)
--		goto error;
-+	hif2 = mt7915_pci_init_hif2(pdev);
- 
--	mt7915_pci_init_hif2(dev);
-+	ret = mt7915_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0],
-+				id->device, pdev->irq, hif2);
-+	if (!ret)
-+		return 0;
- 
--	ret = mt7915_register_device(dev);
--	if (ret)
--		goto free_irq;
--
--	return 0;
--free_irq:
--	devm_free_irq(mdev->dev, pdev->irq, dev);
--error:
- 	pci_free_irq_vectors(pdev);
--free:
--	mt76_free_device(&dev->mt76);
- 
- 	return ret;
- }
-@@ -321,47 +149,22 @@ static void mt7915_pci_remove(struct pci_dev *pdev)
- 	mt7915_unregister_device(dev);
- }
- 
--static struct pci_driver mt7915_hif_driver = {
-+struct pci_driver mt7915_hif_driver = {
- 	.name		= KBUILD_MODNAME "_hif",
- 	.id_table	= mt7915_hif_device_table,
- 	.probe		= mt7915_pci_probe,
- 	.remove		= mt7915_hif_remove,
- };
- 
--static struct pci_driver mt7915_pci_driver = {
-+struct pci_driver mt7915_pci_driver = {
- 	.name		= KBUILD_MODNAME,
- 	.id_table	= mt7915_pci_device_table,
- 	.probe		= mt7915_pci_probe,
- 	.remove		= mt7915_pci_remove,
- };
- 
--static int __init mt7915_init(void)
--{
--	int ret;
--
--	ret = pci_register_driver(&mt7915_hif_driver);
--	if (ret)
--		return ret;
--
--	ret = pci_register_driver(&mt7915_pci_driver);
--	if (ret)
--		pci_unregister_driver(&mt7915_hif_driver);
--
--	return ret;
--}
--
--static void __exit mt7915_exit(void)
--{
--    pci_unregister_driver(&mt7915_pci_driver);
--    pci_unregister_driver(&mt7915_hif_driver);
--}
--
--module_init(mt7915_init);
--module_exit(mt7915_exit);
--
- MODULE_DEVICE_TABLE(pci, mt7915_pci_device_table);
- MODULE_DEVICE_TABLE(pci, mt7915_hif_device_table);
- MODULE_FIRMWARE(MT7915_FIRMWARE_WA);
- MODULE_FIRMWARE(MT7915_FIRMWARE_WM);
- MODULE_FIRMWARE(MT7915_ROM_PATCH);
--MODULE_LICENSE("Dual BSD/GPL");
--- 
-2.18.0
+> So I don't think a single sizes at the CRTC level makes sense.
 
+Same on i915. While atm we do restrict things to just two LUT sizes per
+crtc (for legacy vs. GAMMA_LUT) there are plans to potentially expose
+an arbitrary number of LUT modes.
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-mediatek mailing list
