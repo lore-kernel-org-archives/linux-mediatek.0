@@ -2,70 +2,90 @@ Return-Path: <SRS0=Oz0f=PY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BA94C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 16:42:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 03675C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 17:33:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D44E6103E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 16:42:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4D44E6103E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id CADB260EB4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 17:33:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CADB260EB4
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oJizVN/SW1/CKeUJNN0aJkBLwp1M9G2mi0//U7Sb+0I=; b=sLr6uDX+4JplETAXs2zKVc/qyc
-	64YxmXvnkT3flD5gWlB5VStBhc4hIShWczd9Jzw7DzNrOCUnMDY8APsxF5ntnuxD/7gyLywzL3d1P
-	u/XO5AhQRvHEIXDLl0IXKEndpZROKSk1KwWxzx3N2ZHDUSs/JZARkcKwOqvRKGE/TG8jJuAnjKBa5
-	RKhtlQ4O5aPcXjLyJi9op6vBQvtchUojn02lw1C5jpDq7Xpw8xTIC+DBKfbVlMSX1as9ynMmrL9LN
-	1Uu5yozpkKjqVe9VNR6mgGRSVbOm3zYiyilmONXreSsFlDENqILW79f4dMEKKrRHX0Qah69vVKTHl
-	+GI+Ch3A==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=iXW8tXqmGpFtg+2cPrcwRCSiskxuswqHRk0k0onm0Xg=; b=EUyO7etPhTr+xU
+	FCAyxy+PeDvrY2Akx5ktpnmR1O96i5woRnpiugX1HUMLlUURl0lFwdWcoudhibvpgD9sSiJb4IaGk
+	fHJHpl8GAi9n1q47GgGH/IVPWkVfp8rI822s320qq898bbstESM0PXzkpzB6Di3oUtm87ZMnOtlbR
+	oV3R1HPV/HNGVsr5JcTCd8KqkHpxLoBsNbHJv7Kb32SzPlGuweLsyt+x4f4JBVRzvu/uQ8LvbcnqK
+	7qxVr5CHN760RYtDIiXcPxlsQ36pLLXCGaQobB1Agw8gYWyv9RDfiaGBNyHh2QMaWAQ2nL2CMo19l
+	+ba7wiOm1izWIOiFvibQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mj2I6-00BzUj-Hb; Fri, 05 Nov 2021 16:42:10 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mj35C-00C4yu-US; Fri, 05 Nov 2021 17:32:54 +0000
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mj2Ht-00BzSW-Tq; Fri, 05 Nov 2021 16:41:59 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E46006125F;
- Fri,  5 Nov 2021 16:41:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1636130517;
- bh=ocA+aw4pirZGTHGgqV169WIEms5jSzs7du1qenb+eZ4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=X0CrHeWXPSgOGxW1ABfOZe5F7iB9LiCCXc1YpXOPxUUw6gyKyCvDhXkyyWXCsSaz/
- Nc22Q44HTYx2dW5mblxoy0pSUOf3OexNeLYU7GnugM5i6eXQG+7mJZ4hP41FkdnDrl
- TsPFi3OY02thxiKa4A5MWAIcUwM/PsakN08TPiLuRddw6NmojaF8HzOnQrlun07jZR
- s2FXx4uO1+suYZlEYeC1T1a1BvfjNK1CHdLodhUruXzUXElsDVo9ntdWcw3RbPRxTp
- 7CIcxE6ghriTf1J3ZpSnt3E0Z40dgJbskVanPYkGje0Nk9UGVl9SjxPUFZLt59PElG
- ncqqOIWv351HA==
-Date: Fri, 5 Nov 2021 16:41:51 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Cc: Trevor Wu <trevor.wu@mediatek.com>, devicetree@vger.kernel.org,
- alsa-devel@alsa-project.org, tiwai@suse.com,
- linux-kernel@vger.kernel.org, robh+dt@kernel.org,
- linux-mediatek@lists.infradead.org, yc.hung@mediatek.com,
- matthias.bgg@gmail.com, daniel.baluta@nxp.com,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 3/4] ASoC: mediatek: mt8195: separate the common code
- from machine driver
-Message-ID: <YYVez/V9ocCXhYmg@sirena.org.uk>
-References: <20211103100040.11933-1-trevor.wu@mediatek.com>
- <20211103100040.11933-4-trevor.wu@mediatek.com>
- <YYP+l7tMofYoB+aC@sirena.org.uk>
- <b4360ea17c3045759e85ee13fa9c001afe73c93c.camel@mediatek.com>
- <YYVQC7KLZx8oxdXT@sirena.org.uk>
- <e404d241-0685-643b-4b9d-d85bb8783385@linux.intel.com>
+ id 1mj350-00C4wh-4Y; Fri, 05 Nov 2021 17:32:43 +0000
+Received: by mail-pg1-x531.google.com with SMTP id r28so8966141pga.0;
+ Fri, 05 Nov 2021 10:32:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=2OWM37nBksJ7gayzdgOjUg6cXZHlid4wQ9drsluV0C8=;
+ b=DQRxCNEXF7tlNikiQLw63G8Y+Dsn+L66+H84HjfKEy4BscuewNUkH2sgfXMLDJHfAn
+ 70hvD+26uYuolr0JBLTX7LtSCK6egOPeJcWkkXSUqR47XBKqYXNzph3T2TD/mTuAlTFs
+ lSnLFZ6A7rH74GeBag2mVNjv5gEry5gBlqYGUO+rQKkDtTrT559Rxam15FBmwuh7s7M5
+ QLsW7fuznfV9dng22XiNlj+vpyAL6rnI5cnRTja8k7MrhEX22LWkKABdX4Dnj87Nfrly
+ 8XKsVaHG3cvhJMfAKbLZlnEEYT5fXydHJ+ZzsJMDbF//OLuIrxEZEkMCcJwQ0c96nr7M
+ ZtqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=2OWM37nBksJ7gayzdgOjUg6cXZHlid4wQ9drsluV0C8=;
+ b=AYFLvGODHZ3VpSWu1Z309Zu0rBF4QdYROPvxDAbD09kw0eCFVet7CgUNgl/N0NmX7q
+ wWbHbT1DG3KQXP3Fgti9x8AcOoeM21+hbpph70gZp9Vn+Bpb66mQ7c6v2b9FpQcV/XPn
+ LWaQjsqwxCneYUHgMjwHzXeOnzN36LMOwRG3jPFkBRACUFZxBxXZZBvXteSELJuOKU1w
+ erpglTVY2GkO7bWJ8JgOmY9T6moZUXVwpt9ALhMBQghk4w+jf0njuyHRr6bMXWOB/qyq
+ d2gtiszy4kFmTTextVKgRCrXFaoWDu2gvG1s3hihpDCYbdxJcuhpF87P2+aCfehDjNtH
+ s1Ew==
+X-Gm-Message-State: AOAM533H7Q58fOW2GSdmmqIf6j+pAs1pMS/eg0aX4jbF+9GFbqYDvWZU
+ fpdgIXJXGGUWwtZYPRiEpog=
+X-Google-Smtp-Source: ABdhPJykHZw2/9QJGdkoo4Kk9zk/Gp1KOr83+sK4tkJl24z/KpiwOjB5LZro7ajFk49kLCes0PrJww==
+X-Received: by 2002:a65:62c4:: with SMTP id m4mr46146521pgv.453.1636133560906; 
+ Fri, 05 Nov 2021 10:32:40 -0700 (PDT)
+Received: from [192.168.50.188] (67.218.130.61.16clouds.com. [67.218.130.61])
+ by smtp.gmail.com with ESMTPSA id
+ s25sm7683062pfm.138.2021.11.05.10.32.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 05 Nov 2021 10:32:40 -0700 (PDT)
+Message-ID: <8301c7f7-4c63-5681-af53-9edc67d96d17@gmail.com>
+Date: Sat, 6 Nov 2021 01:32:32 +0800
 MIME-Version: 1.0
-In-Reply-To: <e404d241-0685-643b-4b9d-d85bb8783385@linux.intel.com>
-X-Cookie: For recreational use only.
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH] xhci: Fix USB 3.1 enumeration issues by increasing
+ roothub power-on-good delay
+Content-Language: en-US
+To: Mathias Nyman <mathias.nyman@linux.intel.com>
+Cc: chunfeng.yun@mediatek.com, matthias.bgg@gmail.com,
+ nishadkamdar@gmail.com, linux-usb@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, eddie.hung@mediatek.com,
+ Alan Stern <stern@rowland.harvard.edu>, Greg KH <gregkh@linuxfoundation.org>
+References: <20211105133050.GA1590803@rowland.harvard.edu>
+ <20211105160036.549516-1-mathias.nyman@linux.intel.com>
+ <96925c96-0f87-f110-e279-5b669337948a@linux.intel.com>
+From: "Walt Jr. Brake" <mr.yming81@gmail.com>
+In-Reply-To: <96925c96-0f87-f110-e279-5b669337948a@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_094158_031588_70753C55 
-X-CRM114-Status: GOOD (  23.00  )
+X-CRM114-CacheID: sfid-20211105_103242_214869_91EA7AFF 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,84 +97,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8541381400956270860=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 6/11/2021 00:09, Mathias Nyman wrote:
+> On 5.11.2021 18.00, Mathias Nyman wrote:
+>> Some USB 3.1 enumeration issues were reported after the hub driver removed
+>> the minimum 100ms limit for the power-on-good delay.
+>>
+>> Since commit 90d28fb53d4a ("usb: core: reduce power-on-good delay time of
+>> root hub") the hub driver sets the power-on-delay based on the
+>> bPwrOn2PwrGood value in the hub descriptor.
+>>
+>> xhci driver has a 20ms bPwrOn2PwrGood value for both roothubs based
+>> on xhci spec section 5.4.8, but it's clearly not enough for the
+>> USB 3.1 devices, causing enumeration issues.
+>>
+>> Tests indicate full 100ms delay is needed.
+>>
+>> Reported-by: Walt Jr. Brake <mr.yming81@gmail.com>
+>> Signed-off-by: Mathias Nyman <mathias.nyman@linux.intel.com>
+>>
+> Walt Jr Brake, just to be sure could you test this one as well?
+>
+> As Alan suggested this sets 100ms for the USB 3 roothub but
+> keeps the 20ms for the USB 2 roothub.
+>
+> Thanks
+> -Mathias
 
---===============8541381400956270860==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xu7RSJUInac+5dPD"
-Content-Disposition: inline
+Yes I tested, it works too.
 
-
---xu7RSJUInac+5dPD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Fri, Nov 05, 2021 at 11:16:05AM -0500, Pierre-Louis Bossart wrote:
-> On 11/5/21 10:38 AM, Mark Brown wrote:
-
-> > We shouldn't be requiring people to load completely different drivers
-> > based on software configuration, what if a system wants to bypass the
-> > DSP in some but not all configurations?  Can we not just have controls
-> > allowing users to route round the DSP where appropriate?
-
-> It was my understanding the card relies on separate components
-
-> - a SOF-based component to provide support for DSP-managed interfaces
-> - a 'non-SOF' component for 'regular' interfaces not handled by the DSP.
-
-> this was the basis for the changes discussed in
-> https://github.com/thesofproject/linux/pull/3217 and
-> https://github.com/thesofproject/linux/pull/3236
-
-So it's actually supposed to end up as two different cards which can't
-possibly be interlinked?  That doesn't seem to add up entirely given
-that there's stuff being moved out of the current card, and I thought
-these systems had a fairly comprehensive audio muxing capability.
-Trevor, could you be a bit more specific about what's actually going on
-here physically please?
-
-> But indeed if the same interface can be managed by the DSP or not,
-> depending on software choices it's a different problem altogether.
-
-> We've looked into this recently, if the choice to involve the DSP or not
-> is at the interface level, it might be better to have both components
-> expose different DAIs for the same interface, with some sort of run-time
-> mutual exclusion, so that all possible/allowed permutations are allowed.
-
-Yes, if the interface can optionally be completely hidden by the DSP
-that's adding another layer of complication.
-
---xu7RSJUInac+5dPD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmGFXs4ACgkQJNaLcl1U
-h9BRSAf/SkjWUf/cCKGy0zPR/tNt3CMqLlX0YCzYqYiswj6dKfU0LWjOlsXEClp2
-xvBonvHD9Ni048rh/n5re028LssK5IYCcxqNfi3WMM+g1nTe7msKcRWanYElCx1U
-vmZUv5k7H/1aYktEU5/KjPhz6YlGi4eJqGPLl397gC0fQX9GReu4b9tdipO+AJ+p
-UzDeHJ+pP/rvbpSiUcRKxA4MrFXYq17gd0xaRuUbrdOvNH6yKUfaeDcz8MBW29ex
-c5gA39zLIqFq9VsEmww6uDWqX0WattYGTzErTm2y2unLpvoxVdsidUgEESNtimpS
-AXlgO4XPiIZSX96+ACgiOB/MBzFFsg==
-=iro5
------END PGP SIGNATURE-----
-
---xu7RSJUInac+5dPD--
-
-
---===============8541381400956270860==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8541381400956270860==--
-
