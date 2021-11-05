@@ -2,67 +2,63 @@ Return-Path: <SRS0=Oz0f=PY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5C5AEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 19:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5C82C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 20:14:42 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 2631361053
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 19:55:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2631361053
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id AFBF561183
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 20:14:42 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AFBF561183
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:Subject:From:References:Cc:To:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=QoKOTiFgpGXP8G0+P6hbWS58CYW79vJW76BqmAezomY=; b=BHtM83otRnmsGe+UUzeTKG2hHd
-	YiwdS4PlvzwuK+mLyUCk+pLaHZXLEHnq9uKjElz7Z5qH1Zhs4zrhpJYFf8isM3cSxN0lznssRXbQ5
-	VwbJxeTJGlMHk2cCQin4LqB5JXrpxJ0uJGv4jbRJu+sisa/wOe8oeEWuwPt+kdglJVbqRUNlQi8lL
-	4Rg9vMNSYifYLEcN1wFvWf1gVHsNai00BNrUMSEoMs8GiiavLORNouAzO/wD20bJdTEgQ1wOLn6iA
-	NVRtf9hMrgnUsC6kwyg/rmvATUL8J1fDqz90YwccdLMdZBptPNbb67aIfPrGQd+eP8FglLlAGdQej
-	d+T9fZtg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=osFPQLTnOqo24LPNrdkGHPwuZZKSAeWjJOFp/RsGGqc=; b=mC1QcNviqf5w/l
+	WLNClpsAO8WjTUqJR0R5qsgtGPHov5Je5TuKXz2C5DIso2Y6VlmBL2XxPq3RgtE4kvd31cXuN95MZ
+	ptAAjQF27X+9hTQa2fs8J1xP10EVEUYpVm0Swkqvc4znkc3kuGEbBVDKVHKHo7N/Wwuf1Fqcx+/ac
+	syPdCOVzB3uLymj5toVE3D2Tk8uLAIHm3VPnZfRPwXUyg/zus3YmUXNq7AI2CCdzJyZgdo6MwxBM3
+	3yaaBbgRXJ+O1QVqqE4gAQXjIEWTe5tSecuWLXV/n7F0AnnF3Ax00ZE2z9Lk0uhDAcfv/O1h99zq2
+	pL9ZWSzIULLk0zkvCT0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mj5JM-00CFIz-Rd; Fri, 05 Nov 2021 19:55:40 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1mj5bX-00CGP2-AF; Fri, 05 Nov 2021 20:14:27 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mj5JK-00CFI1-2p; Fri, 05 Nov 2021 19:55:39 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10159"; a="255625085"
-X-IronPort-AV: E=Sophos;i="5.87,212,1631602800"; d="scan'208";a="255625085"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2021 12:55:36 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,212,1631602800"; d="scan'208";a="639913030"
-Received: from mattu-haswell.fi.intel.com (HELO [10.237.72.199])
- ([10.237.72.199])
- by fmsmga001.fm.intel.com with ESMTP; 05 Nov 2021 12:55:33 -0700
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: stern@rowland.harvard.edu, mr.yming81@gmail.com,
- chunfeng.yun@mediatek.com, matthias.bgg@gmail.com, nishadkamdar@gmail.com,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- eddie.hung@mediatek.com
-References: <20211105133050.GA1590803@rowland.harvard.edu>
- <20211105160036.549516-1-mathias.nyman@linux.intel.com>
- <YYVYrksU5/aCB3Fd@kroah.com>
-From: Mathias Nyman <mathias.nyman@linux.intel.com>
-Subject: Re: [PATCH] xhci: Fix USB 3.1 enumeration issues by increasing
- roothub power-on-good delay
-Message-ID: <b5b59fb7-40ce-929e-479a-d0605994cb53@linux.intel.com>
-Date: Fri, 5 Nov 2021 21:56:59 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.8.1
+ id 1mj5bK-00CGNb-CM; Fri, 05 Nov 2021 20:14:15 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 95DD56108F;
+ Fri,  5 Nov 2021 20:14:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1636143253;
+ bh=BfJkmp/zQUz58AjoefSLkKZ/YEytniomZ7ATR4zR/dk=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=neJH8bauoAdPDOcCsijwl4LUlljFlHGa6hlx/RGRvD81oLSiHUFYAYb8vR1GLk3oa
+ gCI2fpW3IGK0SWqCXJQCRkBzlCLrWA3aERn39UuttW4lrbF4CTYtknU0hepaXmpT7O
+ G40+YRqq6hbCO2fs49deGTimDZThoqK8b8Besbj5hIT4XTsvXUGA4yuOR0+d8iY+Gs
+ c/UozEcRJK4ywA6hxN9yOdUmeLCsca924RYw9Y9Ip2jZsKsXoesK3ndna+tbdap32t
+ 90PjjJOhw2VwMP7M/mveTlZpdwTkKkQdoiR6MLiIGVsQe4JdsRmTGbnWwgJnRQe7s3
+ x3wFHU6rYk7iw==
+From: Mark Brown <broonie@kernel.org>
+To: lgirdwood@gmail.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, tiwai@suse.com,
+ matthias.bgg@gmail.com, perex@perex.cz, kernel@collabora.com,
+ linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org,
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20211105152013.75252-1-angelogioacchino.delregno@collabora.com>
+References: <20211105152013.75252-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8173-rt5650: Rename Speaker control to
+ Ext Spk
+Message-Id: <163614325129.3446536.8434137401670448140.b4-ty@kernel.org>
+Date: Fri, 05 Nov 2021 20:14:11 +0000
 MIME-Version: 1.0
-In-Reply-To: <YYVYrksU5/aCB3Fd@kroah.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_125538_155508_3ABE85C4 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20211105_131414_487915_19D6AB05 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,36 +75,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 5.11.2021 18.15, Greg KH wrote:
-> On Fri, Nov 05, 2021 at 06:00:36PM +0200, Mathias Nyman wrote:
->> Some USB 3.1 enumeration issues were reported after the hub driver removed
->> the minimum 100ms limit for the power-on-good delay.
->>
->> Since commit 90d28fb53d4a ("usb: core: reduce power-on-good delay time of
->> root hub") the hub driver sets the power-on-delay based on the
->> bPwrOn2PwrGood value in the hub descriptor.
->>
->> xhci driver has a 20ms bPwrOn2PwrGood value for both roothubs based
->> on xhci spec section 5.4.8, but it's clearly not enough for the
->> USB 3.1 devices, causing enumeration issues.
->>
->> Tests indicate full 100ms delay is needed.
->>
->> Reported-by: Walt Jr. Brake <mr.yming81@gmail.com>
->> Signed-off-by: Mathias Nyman <mathias.nyman@linux.intel.com>
+On Fri, 5 Nov 2021 16:20:13 +0100, AngeloGioacchino Del Regno wrote:
+> Some RT5645 and RT5650 powered platforms are using "Ext Spk"
+> instead of "Speaker", and this is also reflected in alsa-lib
+> configurations for the generic RT5645 usecase manager configs.
 > 
-> So this needs:
-> 	Fixes: 90d28fb53d4a ("usb: core: reduce power-on-good delay time of root hub")
-> right?
+> Rename the "Speaker" control to "Ext Spk" in order to be able
+> to make the userspace reuse/inherit the same configurations also
+> for this machine, along with the others.
+> 
+> [...]
 
-I guess so, not sure on "Fixes" policy here.
+Applied to
 
-This patch fixes an xhci issue revealed by ("usb: core: reduce power-on-good delay time of root hub")
-That original patch itself looks correct, but these two patches should really go together to
-avoid any enumeration issues.  
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-linus
 
-Thanks
--Mathias
+Thanks!
+
+[1/1] ASoC: mediatek: mt8173-rt5650: Rename Speaker control to Ext Spk
+      commit: 0a8facac0d1e38dc8b86ade6d3f0d8b33dae7c58
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
