@@ -2,14 +2,14 @@ Return-Path: <SRS0=Oz0f=PY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id ACEDBC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AB0ADC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:12:45 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 72F5D61244
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:12:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 72F5D61244
+	by mail.kernel.org (Postfix) with ESMTPS id 7CAA860EBC
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 10:12:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7CAA860EBC
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yO0xQBnX5l7IItw9vlh8U7t9L4EKfiNKmiXU5erRoJk=; b=xw81sGxC+DyN/e
-	xYz2skGL4Ah1xQioMKZ7ml6BRNtOSUG06EBoZNT5mYswZ4FkJZSEJyYH6lL+853o3Qd7ADny/sR3+
-	zkNi2rr+4r3oX28FQBP3prhXVtSL9vq5X2T2VJ+rkT8yhG5svkTBXb09tAcY1YE2wdJ4zmOHttrSa
-	f3jVDFWpqurjLg+kpmGmSCCjWvcrOkzlbbJoX7EQHnYlB0C3RadBiZOIGLu6A4MZGGsB8nx0kaSnp
-	4ZpGq/2rTnLJsyTSd5eQa84k8v4N5j9p171/8RxDeDxVyBnHgoPpk6JeLjjLS2XEkV779tWPJeUyo
-	eO13IQQFlxIicr/G4Jiw==;
+	List-Owner; bh=khf3fhUd1noBVDQ1E52vtrZ/gD+dMK8NhO9n5Ihfzr4=; b=swFLiOZ8Xd3nmV
+	UFI8tmd/7Vun2+7+wCTObqy8vur9cbs8NtYQEMGhhw4CrXQQNUR4j4NtI7ejPhvPFmwqVN+ylBwMs
+	Q5X1nJXg5vO29M777xG5KsNWv7duiY7vck2To4+OniMryxLM/zgEQF83QCzofs5UcSuiWSzhOgRE7
+	gDPYKkmsezA7RuXsSVG5nE5GtgkYCZp83lS/cp2FT6QkIvDx8EnN+ViCLh4JRFhWHA1WozDOYPUGJ
+	kHNxDq/YV1t0naA9/O3RlrS/W9kHK1gPSnxRRAH0h0M41y0zjy++g6oGOZVs5exsVgjTPxscOjhij
+	BVhm57QHwBvrXvLwhF0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1miwD4-00B4fb-FW; Fri, 05 Nov 2021 10:12:34 +0000
+	id 1miwD6-00B4gN-Ae; Fri, 05 Nov 2021 10:12:36 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1miwCy-00B4ad-BK
- for linux-mediatek@lists.infradead.org; Fri, 05 Nov 2021 10:12:30 +0000
-X-UUID: 58adcf4c05ad4ea799d3044900d3ccdc-20211105
-X-UUID: 58adcf4c05ad4ea799d3044900d3ccdc-20211105
+ id 1miwCz-00B4aJ-S3
+ for linux-mediatek@lists.infradead.org; Fri, 05 Nov 2021 10:12:31 +0000
+X-UUID: 5becf8942cf142cc98e1484ccd390df3-20211105
+X-UUID: 5becf8942cf142cc98e1484ccd390df3-20211105
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <bo.jiao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 347730505; Fri, 05 Nov 2021 03:12:21 -0700
+ with ESMTP id 169658132; Fri, 05 Nov 2021 03:12:21 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 5 Nov 2021 03:02:21 -0700
+ 15.0.1497.2; Fri, 5 Nov 2021 03:02:23 -0700
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 5 Nov 2021 18:02:15 +0800
+ Fri, 5 Nov 2021 18:02:16 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 5 Nov 2021 18:02:14 +0800
+ 15.0.1497.2 via Frontend Transport; Fri, 5 Nov 2021 18:02:16 +0800
 From: Bo Jiao <bo.jiao@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
@@ -53,17 +53,17 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
  <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
  <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH v2 04/11] mt76: mt7915: add firmware support for mt7916
-Date: Fri, 5 Nov 2021 18:02:03 +0800
-Message-ID: <694291893593fce99a3ba485fe691e49bd7cf4a7.1636105953.git.Bo.Jiao@mediatek.com>
+Subject: [PATCH v2 06/11] mt76: mt7915: enlarge wcid size to 544
+Date: Fri, 5 Nov 2021 18:02:05 +0800
+Message-ID: <12494e24664dd5920fcc263986cf8052ce6a96fa.1636105953.git.Bo.Jiao@mediatek.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <cover.1636105953.git.Bo.Jiao@mediatek.com>
 References: <cover.1636105953.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_031228_449990_13B899DA 
-X-CRM114-Status: GOOD (  18.45  )
+X-CRM114-CacheID: sfid-20211105_031229_953740_2A31E251 
+X-CRM114-Status: GOOD (  12.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,7 +82,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-Update firmware initialization for mt7916.
+The mt7916 can support up to 544 wcid entries.
 This is an intermediate patch to add mt7916 support.
 
 Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
@@ -91,239 +91,76 @@ Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7915/init.c  |  6 --
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 78 +++++++++++++++----
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |  4 +
- .../net/wireless/mediatek/mt76/mt7915/pci.c   |  3 +
- .../net/wireless/mediatek/mt76/mt7915/regs.h  |  5 +-
- 5 files changed, 72 insertions(+), 24 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h          | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/init.c   | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mac.c    | 2 +-
+ drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h | 8 +++++++-
+ 4 files changed, 10 insertions(+), 4 deletions(-)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 8fd6890..814ed21 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -225,7 +225,7 @@ enum mt76_wcid_flags {
+ 	MT_WCID_FLAG_HDR_TRANS,
+ };
+ 
+-#define MT76_N_WCIDS 288
++#define MT76_N_WCIDS 544
+ 
+ /* stored in ieee80211_tx_info::hw_queue */
+ #define MT_TX_HW_QUEUE_EXT_PHY		BIT(3)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index f455c12..a4e2d85 100644
+index 92b13ee..86f2062 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -567,12 +567,6 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
+@@ -430,7 +430,7 @@ static void mt7915_mac_init(struct mt7915_dev *dev)
+ 	/* enable hardware de-agg */
+ 	mt76_set(dev, MT_MDP_DCR0, MT_MDP_DCR0_DAMSDU_EN);
  
- 	set_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
- 
--	/*
--	 * force firmware operation mode into normal state,
--	 * which should be set before firmware download stage.
--	 */
--	mt76_wr(dev, MT_SWDEF_MODE, MT_SWDEF_NORMAL_MODE);
--
- 	ret = mt7915_mcu_init(dev);
- 	if (ret) {
- 		/* Reset and try again */
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index ee9952d..43ddbc1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2713,16 +2713,20 @@ static int mt7915_mcu_start_patch(struct mt7915_dev *dev)
- 				 sizeof(req), true);
- }
- 
--static int mt7915_driver_own(struct mt7915_dev *dev)
-+static int mt7915_driver_own(struct mt7915_dev *dev, u8 band)
- {
--	mt76_wr(dev, MT_TOP_LPCR_HOST_BAND0, MT_TOP_LPCR_HOST_DRV_OWN);
--	if (!mt76_poll_msec(dev, MT_TOP_LPCR_HOST_BAND0,
-+	mt76_wr(dev, MT_TOP_LPCR_HOST_BAND(band), MT_TOP_LPCR_HOST_DRV_OWN);
-+	if (!mt76_poll_msec(dev, MT_TOP_LPCR_HOST_BAND(band),
- 			    MT_TOP_LPCR_HOST_FW_OWN_STAT,
- 			    0, 500)) {
- 		dev_err(dev->mt76.dev, "Timeout for driver own\n");
- 		return -EIO;
- 	}
- 
-+	/* clear irq when the driver own success */
-+	mt76_wr(dev, MT_TOP_LPCR_HOST_BAND_IRQ_STAT(band),
-+		MT_TOP_LPCR_HOST_BAND_STAT);
-+
- 	return 0;
- }
- 
-@@ -2752,6 +2756,7 @@ static int mt7915_load_patch(struct mt7915_dev *dev)
- {
- 	const struct mt7915_patch_hdr *hdr;
- 	const struct firmware *fw = NULL;
-+	const char *patch;
- 	int i, ret, sem;
- 
- 	sem = mt7915_mcu_patch_sem_ctrl(dev, 1);
-@@ -2765,7 +2770,8 @@ static int mt7915_load_patch(struct mt7915_dev *dev)
- 		return -EAGAIN;
- 	}
- 
--	ret = request_firmware(&fw, MT7915_ROM_PATCH, dev->mt76.dev);
-+	patch = is_mt7915(&dev->mt76) ? MT7915_ROM_PATCH : MT7916_ROM_PATCH;
-+	ret = request_firmware(&fw, patch, dev->mt76.dev);
- 	if (ret)
- 		goto out;
- 
-@@ -2896,9 +2902,11 @@ static int mt7915_load_ram(struct mt7915_dev *dev)
- {
- 	const struct mt7915_fw_trailer *hdr;
- 	const struct firmware *fw;
-+	const char *mcu;
- 	int ret;
- 
--	ret = request_firmware(&fw, MT7915_FIRMWARE_WM, dev->mt76.dev);
-+	mcu = is_mt7915(&dev->mt76) ? MT7915_FIRMWARE_WM : MT7916_FIRMWARE_WM;
-+	ret = request_firmware(&fw, mcu, dev->mt76.dev);
- 	if (ret)
- 		return ret;
- 
-@@ -2922,7 +2930,8 @@ static int mt7915_load_ram(struct mt7915_dev *dev)
- 
- 	release_firmware(fw);
- 
--	ret = request_firmware(&fw, MT7915_FIRMWARE_WA, dev->mt76.dev);
-+	mcu = is_mt7915(&dev->mt76) ? MT7915_FIRMWARE_WA : MT7916_FIRMWARE_WA;
-+	ret = request_firmware(&fw, mcu, dev->mt76.dev);
- 	if (ret)
- 		return ret;
- 
-@@ -2954,10 +2963,36 @@ out:
- 	return ret;
- }
- 
-+static int
-+mt7915_firmware_state(struct mt7915_dev *dev, bool wa)
-+{
-+	u32 state = FIELD_PREP(MT_TOP_MISC_FW_STATE,
-+			       wa ? FW_STATE_WACPU_RDY : FW_STATE_FW_DOWNLOAD);
-+
-+	if (!mt76_poll_msec(dev, MT_TOP_MISC, MT_TOP_MISC_FW_STATE,
-+			    state, 1000)) {
-+		dev_err(dev->mt76.dev, "Timeout for initializing firmware\n");
-+		return -EIO;
-+	}
-+	return 0;
-+}
-+
- static int mt7915_load_firmware(struct mt7915_dev *dev)
- {
- 	int ret;
- 
-+	/* make sure fw is download state */
-+	if (mt7915_firmware_state(dev, false)) {
-+		/* restart firmware once */
-+		__mt76_mcu_restart(&dev->mt76);
-+		ret = mt7915_firmware_state(dev, false);
-+		if (ret) {
-+			dev_err(dev->mt76.dev,
-+				"Firmware is not ready for download\n");
-+			return ret;
-+		}
-+	}
-+
- 	ret = mt7915_load_patch(dev);
- 	if (ret)
- 		return ret;
-@@ -2966,12 +3001,9 @@ static int mt7915_load_firmware(struct mt7915_dev *dev)
- 	if (ret)
- 		return ret;
- 
--	if (!mt76_poll_msec(dev, MT_TOP_MISC, MT_TOP_MISC_FW_STATE,
--			    FIELD_PREP(MT_TOP_MISC_FW_STATE,
--				       FW_STATE_WACPU_RDY), 1000)) {
--		dev_err(dev->mt76.dev, "Timeout for initializing firmware\n");
--		return -EIO;
--	}
-+	ret = mt7915_firmware_state(dev, true);
-+	if (ret)
-+		return ret;
- 
- 	mt76_queue_tx_cleanup(dev, dev->mt76.q_mcu[MT_MCUQ_FWDL], false);
- 
-@@ -3096,9 +3128,20 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
- 
- 	dev->mt76.mcu_ops = &mt7915_mcu_ops;
- 
--	ret = mt7915_driver_own(dev);
-+	/* force firmware operation mode into normal state,
-+	 * which should be set before firmware download stage.
-+	 */
-+	mt76_wr(dev, MT_SWDEF_MODE, MT_SWDEF_NORMAL_MODE);
-+
-+	ret = mt7915_driver_own(dev, 0);
- 	if (ret)
- 		return ret;
-+	/* set driver own for band1 when two hif exist */
-+	if (dev->hif2) {
-+		ret = mt7915_driver_own(dev, 1);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	ret = mt7915_load_firmware(dev);
- 	if (ret)
-@@ -3133,14 +3176,15 @@ int mt7915_mcu_init(struct mt7915_dev *dev)
- void mt7915_mcu_exit(struct mt7915_dev *dev)
- {
- 	__mt76_mcu_restart(&dev->mt76);
--	if (!mt76_poll_msec(dev, MT_TOP_MISC, MT_TOP_MISC_FW_STATE,
--			    FIELD_PREP(MT_TOP_MISC_FW_STATE,
--				       FW_STATE_FW_DOWNLOAD), 1000)) {
-+	if (mt7915_firmware_state(dev, false)) {
- 		dev_err(dev->mt76.dev, "Failed to exit mcu\n");
+-	for (i = 0; i < MT7915_WTBL_SIZE; i++)
++	for (i = 0; i < mt7915_wtbl_size(dev); i++)
+ 		mt7915_mac_wtbl_update(dev, i,
+ 				       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
+ 	for (i = 0; i < 2; i++)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index ba39f3d..4212dbb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -1492,7 +1492,7 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
+ 	if (pid < MT_PACKET_ID_FIRST)
  		return;
- 	}
  
--	mt76_wr(dev, MT_TOP_LPCR_HOST_BAND0, MT_TOP_LPCR_HOST_FW_OWN);
-+	mt76_wr(dev, MT_TOP_LPCR_HOST_BAND(0), MT_TOP_LPCR_HOST_FW_OWN);
-+	if (dev->hif2)
-+		mt76_wr(dev, MT_TOP_LPCR_HOST_BAND(1),
-+			MT_TOP_LPCR_HOST_FW_OWN);
- 	skb_queue_purge(&dev->mt76.mcu.res_q);
- }
+-	if (wcidx >= MT7915_WTBL_SIZE)
++	if (wcidx >= mt7915_wtbl_size(dev))
+ 		return;
  
+ 	rcu_read_lock();
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 8adb069..cee719f 100644
+index 3e2e900..e8fbe69 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -30,6 +30,10 @@
- #define MT7915_FIRMWARE_WM		"mediatek/mt7915_wm.bin"
- #define MT7915_ROM_PATCH		"mediatek/mt7915_rom_patch.bin"
+@@ -12,7 +12,8 @@
+ #define MT7915_MAX_INTERFACES		19
+ #define MT7915_MAX_WMM_SETS		4
+ #define MT7915_WTBL_SIZE		288
+-#define MT7915_WTBL_RESERVED		(MT7915_WTBL_SIZE - 1)
++#define MT7916_WTBL_SIZE		544
++#define MT7915_WTBL_RESERVED		(mt7915_wtbl_size(dev) - 1)
+ #define MT7915_WTBL_STA			(MT7915_WTBL_RESERVED - \
+ 					 MT7915_MAX_INTERFACES)
  
-+#define MT7916_FIRMWARE_WA		"mediatek/mt7916_wa.bin"
-+#define MT7916_FIRMWARE_WM		"mediatek/mt7916_wm.bin"
-+#define MT7916_ROM_PATCH		"mediatek/mt7916_rom_patch.bin"
+@@ -477,6 +478,11 @@ static inline bool is_mt7915(struct mt76_dev *dev)
+ 	return mt76_chip(dev) == 0x7915;
+ }
+ 
++static inline u16 mt7915_wtbl_size(struct mt7915_dev *dev)
++{
++	return is_mt7915(&dev->mt76) ? MT7915_WTBL_SIZE : MT7916_WTBL_SIZE;
++}
 +
- #define MT7915_EEPROM_DEFAULT		"mediatek/mt7915_eeprom.bin"
- #define MT7915_EEPROM_DEFAULT_DBDC	"mediatek/mt7915_eeprom_dbdc.bin"
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-index 2aba79a..3134b46 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-@@ -168,3 +168,6 @@ MODULE_DEVICE_TABLE(pci, mt7915_hif_device_table);
- MODULE_FIRMWARE(MT7915_FIRMWARE_WA);
- MODULE_FIRMWARE(MT7915_FIRMWARE_WM);
- MODULE_FIRMWARE(MT7915_ROM_PATCH);
-+MODULE_FIRMWARE(MT7916_FIRMWARE_WA);
-+MODULE_FIRMWARE(MT7916_FIRMWARE_WM);
-+MODULE_FIRMWARE(MT7916_ROM_PATCH);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-index 4745e3f..caad6bb 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/regs.h
-@@ -787,11 +787,14 @@ enum bit_rev {
- #define MT_TOP_BASE			0x18060000
- #define MT_TOP(ofs)			(MT_TOP_BASE + (ofs))
- 
--#define MT_TOP_LPCR_HOST_BAND0		MT_TOP(0x10)
-+#define MT_TOP_LPCR_HOST_BAND(_band)	MT_TOP(0x10 + ((_band) * 0x10))
- #define MT_TOP_LPCR_HOST_FW_OWN		BIT(0)
- #define MT_TOP_LPCR_HOST_DRV_OWN	BIT(1)
- #define MT_TOP_LPCR_HOST_FW_OWN_STAT	BIT(2)
- 
-+#define MT_TOP_LPCR_HOST_BAND_IRQ_STAT(_band)	MT_TOP(0x14 + ((_band) * 0x10))
-+#define MT_TOP_LPCR_HOST_BAND_STAT	BIT(0)
-+
- #define MT_TOP_MISC			MT_TOP(0xf0)
- #define MT_TOP_MISC_FW_STATE		GENMASK(2, 0)
+ void mt7915_dual_hif_set_irq_mask(struct mt7915_dev *dev, bool write_reg,
+ 				  u32 clear, u32 set);
  
 -- 
 2.18.0
