@@ -2,69 +2,70 @@ Return-Path: <SRS0=Oz0f=PY=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id CC045C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 16:18:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BA94C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 16:42:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97772611C4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 16:18:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 97772611C4
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linux.intel.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4D44E6103E
+	for <linux-mediatek@archiver.kernel.org>; Fri,  5 Nov 2021 16:42:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4D44E6103E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=CKKxQSSbsAkW3UJj5ScjW6TpXKg15LuOvehz0JfhfZ0=; b=iFw0XH50Yq+najuQVkpDxI7RK2
-	UtwRnw1jq4zF+3XzS1lp6/kRyKMzcZTpl9iz42MAEoQETOvMNmqg1gXsgwqXgDQqllCrJMiOVSC24
-	WYRMj4WEYIkwl+WX5oJDFzX+i7+5riZ2aGWC1D0Q2L2hYTvobkaP3PxNEaAwV4NYlCPfa9OzAUOrz
-	GmRlPK6n/1d+PlDMMo473+rzLsXUloDOj5I2LQnGfj9+ohI6DCkzz8Mo7EtjmwJSKH/H2bh3j/beV
-	g2HWV2v8pz2LO2YiCOeeZmpyZk/+Pe68g+Zh2swohr6wTYH9qp8/J/Hi0+QRxwNV0FTV15r0rPyCU
-	gAZSJg5w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oJizVN/SW1/CKeUJNN0aJkBLwp1M9G2mi0//U7Sb+0I=; b=sLr6uDX+4JplETAXs2zKVc/qyc
+	64YxmXvnkT3flD5gWlB5VStBhc4hIShWczd9Jzw7DzNrOCUnMDY8APsxF5ntnuxD/7gyLywzL3d1P
+	u/XO5AhQRvHEIXDLl0IXKEndpZROKSk1KwWxzx3N2ZHDUSs/JZARkcKwOqvRKGE/TG8jJuAnjKBa5
+	RKhtlQ4O5aPcXjLyJi9op6vBQvtchUojn02lw1C5jpDq7Xpw8xTIC+DBKfbVlMSX1as9ynMmrL9LN
+	1Uu5yozpkKjqVe9VNR6mgGRSVbOm3zYiyilmONXreSsFlDENqILW79f4dMEKKrRHX0Qah69vVKTHl
+	+GI+Ch3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mj1vM-00BwEy-Og; Fri, 05 Nov 2021 16:18:40 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1mj2I6-00BzUj-Hb; Fri, 05 Nov 2021 16:42:10 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mj1v6-00BwB0-Mi; Fri, 05 Nov 2021 16:18:26 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10159"; a="229396981"
-X-IronPort-AV: E=Sophos;i="5.87,212,1631602800"; d="scan'208";a="229396981"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2021 09:16:09 -0700
-X-IronPort-AV: E=Sophos;i="5.87,212,1631602800"; d="scan'208";a="502004186"
-Received: from yanbiaoc-mobl.amr.corp.intel.com (HELO [10.209.173.63])
- ([10.209.173.63])
- by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Nov 2021 09:16:08 -0700
-Subject: Re: [PATCH 3/4] ASoC: mediatek: mt8195: separate the common code from
- machine driver
-To: Mark Brown <broonie@kernel.org>, Trevor Wu <trevor.wu@mediatek.com>
-Cc: devicetree@vger.kernel.org, alsa-devel@alsa-project.org, tiwai@suse.com,
+ id 1mj2Ht-00BzSW-Tq; Fri, 05 Nov 2021 16:41:59 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E46006125F;
+ Fri,  5 Nov 2021 16:41:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1636130517;
+ bh=ocA+aw4pirZGTHGgqV169WIEms5jSzs7du1qenb+eZ4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=X0CrHeWXPSgOGxW1ABfOZe5F7iB9LiCCXc1YpXOPxUUw6gyKyCvDhXkyyWXCsSaz/
+ Nc22Q44HTYx2dW5mblxoy0pSUOf3OexNeLYU7GnugM5i6eXQG+7mJZ4hP41FkdnDrl
+ TsPFi3OY02thxiKa4A5MWAIcUwM/PsakN08TPiLuRddw6NmojaF8HzOnQrlun07jZR
+ s2FXx4uO1+suYZlEYeC1T1a1BvfjNK1CHdLodhUruXzUXElsDVo9ntdWcw3RbPRxTp
+ 7CIcxE6ghriTf1J3ZpSnt3E0Z40dgJbskVanPYkGje0Nk9UGVl9SjxPUFZLt59PElG
+ ncqqOIWv351HA==
+Date: Fri, 5 Nov 2021 16:41:51 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Cc: Trevor Wu <trevor.wu@mediatek.com>, devicetree@vger.kernel.org,
+ alsa-devel@alsa-project.org, tiwai@suse.com,
  linux-kernel@vger.kernel.org, robh+dt@kernel.org,
  linux-mediatek@lists.infradead.org, yc.hung@mediatek.com,
  matthias.bgg@gmail.com, daniel.baluta@nxp.com,
  linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH 3/4] ASoC: mediatek: mt8195: separate the common code
+ from machine driver
+Message-ID: <YYVez/V9ocCXhYmg@sirena.org.uk>
 References: <20211103100040.11933-1-trevor.wu@mediatek.com>
  <20211103100040.11933-4-trevor.wu@mediatek.com>
  <YYP+l7tMofYoB+aC@sirena.org.uk>
  <b4360ea17c3045759e85ee13fa9c001afe73c93c.camel@mediatek.com>
  <YYVQC7KLZx8oxdXT@sirena.org.uk>
-From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Message-ID: <e404d241-0685-643b-4b9d-d85bb8783385@linux.intel.com>
-Date: Fri, 5 Nov 2021 11:16:05 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.13.0
+ <e404d241-0685-643b-4b9d-d85bb8783385@linux.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <YYVQC7KLZx8oxdXT@sirena.org.uk>
-Content-Language: en-US
+In-Reply-To: <e404d241-0685-643b-4b9d-d85bb8783385@linux.intel.com>
+X-Cookie: For recreational use only.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211105_091824_846079_5032C480 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20211105_094158_031588_70753C55 
+X-CRM114-Status: GOOD (  23.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,50 +77,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8541381400956270860=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
+--===============8541381400956270860==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="xu7RSJUInac+5dPD"
+Content-Disposition: inline
 
-On 11/5/21 10:38 AM, Mark Brown wrote:
-> On Fri, Nov 05, 2021 at 12:11:55PM +0800, Trevor Wu wrote:
->> On Thu, 2021-11-04 at 15:39 +0000, Mark Brown wrote:
-> 
->>> I don't follow why the DSP support requires a new driver?  Shouldn't
->>> all
->>> systems with the DSP present be using it?
-> 
->> We need to keep the solution without DSP, so we can replace DSP
->> solution with non-DSP when it's required. But when we introduce SOF for
->> DSP control, there will be more routes in machine driver and device
->> tree usage is different from the original. So it's hard to share the
->> same driver for these two solutions.
-> 
-> We shouldn't be requiring people to load completely different drivers
-> based on software configuration, what if a system wants to bypass the
-> DSP in some but not all configurations?  Can we not just have controls
-> allowing users to route round the DSP where appropriate?
 
-It was my understanding the card relies on separate components
+--xu7RSJUInac+5dPD
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-- a SOF-based component to provide support for DSP-managed interfaces
-- a 'non-SOF' component for 'regular' interfaces not handled by the DSP.
+On Fri, Nov 05, 2021 at 11:16:05AM -0500, Pierre-Louis Bossart wrote:
+> On 11/5/21 10:38 AM, Mark Brown wrote:
 
-this was the basis for the changes discussed in
-https://github.com/thesofproject/linux/pull/3217 and
-https://github.com/thesofproject/linux/pull/3236
+> > We shouldn't be requiring people to load completely different drivers
+> > based on software configuration, what if a system wants to bypass the
+> > DSP in some but not all configurations?  Can we not just have controls
+> > allowing users to route round the DSP where appropriate?
 
-But indeed if the same interface can be managed by the DSP or not,
-depending on software choices it's a different problem altogether.
+> It was my understanding the card relies on separate components
 
-We've looked into this recently, if the choice to involve the DSP or not
-is at the interface level, it might be better to have both components
-expose different DAIs for the same interface, with some sort of run-time
-mutual exclusion, so that all possible/allowed permutations are allowed.
+> - a SOF-based component to provide support for DSP-managed interfaces
+> - a 'non-SOF' component for 'regular' interfaces not handled by the DSP.
+
+> this was the basis for the changes discussed in
+> https://github.com/thesofproject/linux/pull/3217 and
+> https://github.com/thesofproject/linux/pull/3236
+
+So it's actually supposed to end up as two different cards which can't
+possibly be interlinked?  That doesn't seem to add up entirely given
+that there's stuff being moved out of the current card, and I thought
+these systems had a fairly comprehensive audio muxing capability.
+Trevor, could you be a bit more specific about what's actually going on
+here physically please?
+
+> But indeed if the same interface can be managed by the DSP or not,
+> depending on software choices it's a different problem altogether.
+
+> We've looked into this recently, if the choice to involve the DSP or not
+> is at the interface level, it might be better to have both components
+> expose different DAIs for the same interface, with some sort of run-time
+> mutual exclusion, so that all possible/allowed permutations are allowed.
+
+Yes, if the interface can optionally be completely hidden by the DSP
+that's adding another layer of complication.
+
+--xu7RSJUInac+5dPD
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmGFXs4ACgkQJNaLcl1U
+h9BRSAf/SkjWUf/cCKGy0zPR/tNt3CMqLlX0YCzYqYiswj6dKfU0LWjOlsXEClp2
+xvBonvHD9Ni048rh/n5re028LssK5IYCcxqNfi3WMM+g1nTe7msKcRWanYElCx1U
+vmZUv5k7H/1aYktEU5/KjPhz6YlGi4eJqGPLl397gC0fQX9GReu4b9tdipO+AJ+p
+UzDeHJ+pP/rvbpSiUcRKxA4MrFXYq17gd0xaRuUbrdOvNH6yKUfaeDcz8MBW29ex
+c5gA39zLIqFq9VsEmww6uDWqX0WattYGTzErTm2y2unLpvoxVdsidUgEESNtimpS
+AXlgO4XPiIZSX96+ACgiOB/MBzFFsg==
+=iro5
+-----END PGP SIGNATURE-----
+
+--xu7RSJUInac+5dPD--
+
+
+--===============8541381400956270860==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8541381400956270860==--
+
