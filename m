@@ -2,69 +2,75 @@ Return-Path: <SRS0=Hr4j=P3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BF1A2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 14:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DF4E4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 15:53:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7A3D061075
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 14:53:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7A3D061075
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id A628361163
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 15:53:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A628361163
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=linux.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=uX6S6oOghzxVbVIwh/yJjXi/jSu1MRjcrjx6L08nh20=; b=swgSKlV2Mkof6u
-	p5V0ax+dVur6WoxNxvgZd+5o+nvo2NWp5aTFsPJvz3iiYfUIQZmd88Rec2/sal//AikpzrUcKPehs
-	JEnQS8CHqMcMx1bzIs1nIAyusxeJkirv45Cb6MOsqCYAmiOBOekhgpD8J2B9ooTs2BhIStADltBan
-	Q7yjiNyDJ95bsRW2nmb/7ieQbZ1rKGCzVlfJtkJ8lCTGGVx3kw2tOHt1Cmezn35QmSL2mkPFM6nmj
-	GgnZW2VBsVrxEW1aBSG+GDTOxcWSwBFqhh54vnJkJes4OEqtVQ8QSUuTM61MvU2y/XqLnu2GuBHxq
-	7wm1JY80Tim9LTmxM70g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aMgbPPYi4lbUvg98P9XRCe8Cr/kigk4QsIvtifeGvMU=; b=e42cu1CiV131QM
+	VMCTuwiteE013KviwS4r8Lxrlq0oYHb2aKn1+1lqCTf0CcKe/jGsVUIVec0Gv4oxSOs4YI84+a8A3
+	y1J7pwU3qA9w/v0wKwLt8lh9IrUQI97KKGmRuj8KWUbtextyn3XG+nytyq1H55H6gSFkN38lqqLxG
+	mwXP0NmMG2cwPep9Qp2KvpaLy2qsnmEFuR09MObH/rz9PIdxlDlg/O2DaSXTyWfVA1mNziIBnoauo
+	a3IktnrVqVS90dlYRehV1YaEnPYOGTAApDdaTZu/tVZiIHP7YDMiwcVcG0CMoRa+QFPKvLyYwhP9W
+	fEQYpXkDhBXCOyIUtnjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mk61Y-00GjQS-HZ; Mon, 08 Nov 2021 14:53:28 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mk6x5-00GtBV-3k; Mon, 08 Nov 2021 15:52:55 +0000
+Received: from mail-lj1-f174.google.com ([209.85.208.174])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mk61T-00GjP6-OI
- for linux-mediatek@lists.infradead.org; Mon, 08 Nov 2021 14:53:26 +0000
-X-UUID: dabd920064e0424290998b53806c8d97-20211108
-X-UUID: dabd920064e0424290998b53806c8d97-20211108
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 548870245; Mon, 08 Nov 2021 07:53:16 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 8 Nov 2021 06:43:14 -0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs10n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.15 via Frontend Transport; Mon, 8 Nov 2021 22:43:12 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, Eric-SY
- Chang <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, Evelyn
- Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Shayne
- Chen <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH v2] mt76: mt7921: introduce 160 MHz channel bandwidth support
-Date: Mon, 8 Nov 2021 22:41:53 +0800
-Message-ID: <66edc3125e9a12dedeba1a61697d46322b0c004d.1636374449.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mk6x1-00Gt9N-LJ
+ for linux-mediatek@lists.infradead.org; Mon, 08 Nov 2021 15:52:54 +0000
+Received: by mail-lj1-f174.google.com with SMTP id 207so12178253ljf.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 08 Nov 2021 07:52:49 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=E0F5Onblgfh+hTQ7up79bIDtJeB0teDKjpuol7uq/EA=;
+ b=A1y14POtouMEMYk5wjGlWNfEkK6lC98BeUu4bxqVXu/FN+5V/KktqHJ/Vs0RbzNlKX
+ NwxRpDLmksQQwk0FxhoL7vB+R9xeA3C1DunzkxE1fuY8CywYy+qSWiad/g754IfDhpNo
+ QvcWZweE2u7snI8HBF/GUVhbybCpwaCn8USHF+1BixZK78dK3UzkDOOouecazsh5DsXL
+ X2wj4dFqVFwYtbnT4oIxUZ3c4DZw0O6PYABGhNG2VK8d/mob8b9B+KRG/e7H6JTYfwKw
+ XdtPR605xuT0c1IHSC4aGmE+whyh5ZsUp+X7u0/jIDIsLkoadZpEh2NDqsEuYgvuyhyC
+ LI6Q==
+X-Gm-Message-State: AOAM5313rB1X72Oad2L8XpdPdUpSCMFWaNVrDIazKyHzsjutcfTgxzug
+ 9gY1bMQ14Fz0hBKudsWlrUM=
+X-Google-Smtp-Source: ABdhPJxaKGQ6wmr7NL1saDbAGoy4zj7BN4FjL2UXNdC0ccOd+U/mL7ZTVymd8wV/GKj57dtUPdkUCg==
+X-Received: by 2002:a2e:9dc8:: with SMTP id x8mr12607ljj.502.1636386765659;
+ Mon, 08 Nov 2021 07:52:45 -0800 (PST)
+Received: from rocinante ([95.155.85.46])
+ by smtp.gmail.com with ESMTPSA id m8sm205531lfq.27.2021.11.08.07.52.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Nov 2021 07:52:45 -0800 (PST)
+Date: Mon, 8 Nov 2021 16:52:44 +0100
+From: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>
+To: Jianjun Wang <jianjun.wang@mediatek.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>, Fan Fei <ffclaire1224@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org
+Subject: Re: Distinguish mediatek drivers
+Message-ID: <YYlHzMGAdO1eOQLn@rocinante>
+References: <20211105202913.GA944432@bhelgaas>
+ <98d237693bc618cba62e93495b7b3379c18ac6b5.camel@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <98d237693bc618cba62e93495b7b3379c18ac6b5.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211108_065323_850232_3F6AD6A6 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20211108_075251_755640_CC01D526 
+X-CRM114-Status: GOOD (  10.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,88 +87,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Hello,
 
-Introduce the basic configuration for chips with BW160 capability
+[...]
+> > Both drivers are also named "mtk-pcie" and use the same internal
+> > "mtk_" prefix on structs and functions.  Not a *huge* problem, but
+> > not really ideal either.
+[...]
+> Thanks for the reminder, I will send patches to update these entries.
 
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76.h            |  1 +
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c |  1 +
- drivers/net/wireless/mediatek/mt76/mt7921/init.c     |  4 ++++
- drivers/net/wireless/mediatek/mt76/mt7921/main.c     | 12 ++++++++++++
- 4 files changed, 18 insertions(+)
+Perhaps a silly question, but would it be possible to combine both drivers
+into a single one that handless devices across all generations?
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index e2da720a91b6..babca8086027 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -346,6 +346,7 @@ struct mt76_hw_cap {
- 	bool has_2ghz;
- 	bool has_5ghz;
- 	bool has_6ghz;
-+	bool has_bw160;
- };
- 
- #define MT_DRV_TXWI_NO_FREE		BIT(0)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 26b4b875dcc0..3b42e1e8e970 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -1775,6 +1775,7 @@ static void mt76_connac_mcu_parse_phy_cap(struct mt76_dev *dev,
- 	dev->phy.chainmask = dev->phy.antenna_mask;
- 	dev->phy.cap.has_2ghz = cap->hw_path & BIT(WF0_24G);
- 	dev->phy.cap.has_5ghz = cap->hw_path & BIT(WF0_5G);
-+	dev->phy.cap.has_bw160 = cap->max_bw == IEEE80211_STA_RX_BW_160;
- }
- 
- int mt76_connac_mcu_get_nic_capability(struct mt76_phy *phy)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 210998f086ab..30c0246fba3a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -264,6 +264,10 @@ int mt7921_register_device(struct mt7921_dev *dev)
- 			IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE |
- 			IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE |
- 			(3 << IEEE80211_VHT_CAP_BEAMFORMEE_STS_SHIFT);
-+	if (dev->mt76.phy.cap.has_bw160)
-+		dev->mphy.sband_5g.sband.vht_cap.cap |=
-+			IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160MHZ |
-+			IEEE80211_VHT_CAP_SHORT_GI_160;
- 
- 	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
- 	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 633c6d2a57ac..af8c675f909f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -128,11 +128,23 @@ mt7921_init_he_caps(struct mt7921_phy *phy, enum nl80211_band band,
- 				IEEE80211_HE_PHY_CAP9_RX_1024_QAM_LESS_THAN_242_TONE_RU |
- 				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USING_MU_WITH_COMP_SIGB |
- 				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USING_MU_WITH_NON_COMP_SIGB;
-+
-+			if (phy->mt76->cap.has_bw160) {
-+				he_cap_elem->phy_cap_info[0] |=
-+					IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_160MHZ_IN_5G;
-+				he_cap_elem->phy_cap_info[8] |=
-+					IEEE80211_HE_PHY_CAP8_20MHZ_IN_160MHZ_HE_PPDU |
-+					IEEE80211_HE_PHY_CAP8_80MHZ_IN_160MHZ_HE_PPDU;
-+			}
- 			break;
- 		}
- 
- 		he_mcs->rx_mcs_80 = cpu_to_le16(mcs_map);
- 		he_mcs->tx_mcs_80 = cpu_to_le16(mcs_map);
-+		if (phy->mt76->cap.has_bw160) {
-+			he_mcs->rx_mcs_160 = cpu_to_le16(mcs_map);
-+			he_mcs->tx_mcs_160 = cpu_to_le16(mcs_map);
-+		}
- 
- 		memset(he_cap->ppe_thres, 0, sizeof(he_cap->ppe_thres));
- 		if (he_cap_elem->phy_cap_info[6] &
--- 
-2.18.0
-
+	Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
