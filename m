@@ -2,14 +2,14 @@ Return-Path: <SRS0=Hr4j=P3=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B82BAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 01:54:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 257D4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 03:17:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 74B4561390
-	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 01:54:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 74B4561390
+	by mail.kernel.org (Postfix) with ESMTPS id DDCAD60EDF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  8 Nov 2021 03:17:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DDCAD60EDF
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,62 +18,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8sD51NeJe1AM3FdNFlp4ujntZkvdJ7EJsbvK411xzHQ=; b=maZGId8P6UQ/Va
-	xsp9NzPbEFvTl/JrtAcWSXO+CrKKhchhOdagxNlkHTrrm3sb8vqgoLXl+w85QRr6uJjSCXtyeEF+W
-	Hu/R4D+psE+bxonTY3g6TKgi54fSXvJLAHaSS3ugS0WcxzcOaAC3t9ZAwCgij1UQKVYf+Si2d92Qy
-	/7HisvVZ8AMbTrgo1VHZU5YdsQau26cWA/mw+foFAmBtiHQTackQ8+bGqmW/uTnzH6dSCigTdRjHp
-	xmdFbCuKPua80Ce/Hg1rSLOYQJbAwDeoTbr2LwUySfjGLpHuVC0M7e+zyUPPNrDvKjFNwtb31eJt8
-	y19HHS6/809wwzYGakFg==;
+	List-Owner; bh=cwJbc9pUm7OM/mJob5dupuSoH9lV0ECl0wCUnVE9JEo=; b=0fsB+5DMUu4XlI
+	sbuMGs7LhW5QrO3+4v6OWO+eDEc9TprBtzRh02yRaKmre500T+JoXbJdTGrVsIDzGaS18HDXIr/t9
+	75GSPNB4JJWTmCxQnfgHWE7vFayChQryvXiRFPC9dRxA24lZe8AQCnUiv2nrYj84nea0p8W/XhUB1
+	HcPj+x0m3jx1PjnQSoZPaAEizPZ+aaXZ8n7S0LME0uqLJFQ7lW1BgpY5pmp5mhYCduAgptB+o0HRU
+	BhygZwA90RyVaOyHnHcfQUyh19iMRKJ8Ht3NDsRoogeGVdK5PWK/8VsTORuxyEH1y24Tc2qtrjA77
+	uRe3XdVaAIs+gNyFdDqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mjtrl-00FHWn-8w; Mon, 08 Nov 2021 01:54:33 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mjv9s-00FMV6-I5; Mon, 08 Nov 2021 03:17:20 +0000
+Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mjtrW-00FHSq-P7; Mon, 08 Nov 2021 01:54:21 +0000
-X-UUID: 4ef576da5a3f4c98b29b864af70d17c7-20211107
+ id 1mjv9q-00FMTl-0u
+ for linux-mediatek@lists.infradead.org; Mon, 08 Nov 2021 03:17:19 +0000
+X-UUID: 22fb5b1f6ffc48b0960ba8caf6dc00db-20211107
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=SXkG4NjbYJJgNkjrAZEd7/3hvt2eAwcw3HNQYVZE3eA=; 
- b=KxtdPx4feXr/lKem4Z2UkdgU7jSu7xMUDl375DV2zqjywon/q/X0FybMXVJHTJcUaFtA8Zas1wVG4AmMBljAOBUepLS2dFnSVxUpRl7tx5RwBFikocbe+q4kUnLkTaKIjYCMfXL8VbZmWjL9PCB22iwVnm4p2WDQAnGnxfqm/Sk=;
-X-UUID: 4ef576da5a3f4c98b29b864af70d17c7-20211107
+ bh=84PdMly+vcryJAJZDzAQe575ojQCAqKQN4WPuKV+zz4=; 
+ b=hvrfFZUbuyEu11x6aAPwv77vj01uqPEr+55P5ReHIpgTsLztYH4/6wYZxCP0sxH64E5psZ2KZPyHuhxMwmTuEW/KqcjyW57OmN3OLBEXAKQ0mNP+hsX4YV/mZE+v/c9PKv12XcewWVNLjqn5CBXnirnh+LvxKmwXIg6DLX1qbKI=;
+X-UUID: 22fb5b1f6ffc48b0960ba8caf6dc00db-20211107
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yongqiang.niu@mediatek.com>)
+ (envelope-from <jianjun.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 250321373; Sun, 07 Nov 2021 18:54:13 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 466910734; Sun, 07 Nov 2021 20:17:08 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 7 Nov 2021 17:54:11 -0800
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 8 Nov 2021 09:54:10 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs10n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Mon, 8 Nov 2021 09:54:09 +0800
-Message-ID: <ad3abc26caaa5de5cc11b06b687e3d4e2c995a07.camel@mediatek.com>
-Subject: Re: [PATCH v11, 0/2] soc: mediatek: mmsys: add mt8192 mmsys support
-From: yongqiang.niu <yongqiang.niu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Chun-Kuang Hu
- <chunkuang.hu@kernel.org>
-CC: Rob Herring <robh+dt@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Jassi Brar
- <jassisinghbrar@gmail.com>, Fabien Parent <fparent@baylibre.com>, "Dennis YC
- Hsieh" <dennis-yc.hsieh@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Yi Wang
- <hsinyi@chromium.org>
-Date: Mon, 8 Nov 2021 09:54:09 +0800
-In-Reply-To: <e3f30009-31ae-f37d-5016-bc8677d8d364@gmail.com>
-References: <20211008020504.1678-1-yongqiang.niu@mediatek.com>
- <e3f30009-31ae-f37d-5016-bc8677d8d364@gmail.com>
+ 15.0.1497.2; Sun, 7 Nov 2021 19:17:06 -0800
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Mon, 8 Nov 2021 11:17:05 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs10n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Mon, 8 Nov 2021 11:17:05 +0800
+Message-ID: <98d237693bc618cba62e93495b7b3379c18ac6b5.camel@mediatek.com>
+Subject: Re: Distinguish mediatek drivers
+From: Jianjun Wang <jianjun.wang@mediatek.com>
+To: Bjorn Helgaas <helgaas@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>
+CC: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?= <kw@linux.com>, "Fan
+ Fei" <ffclaire1224@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-mediatek@lists.infradead.org>, <linux-pci@vger.kernel.org>
+Date: Mon, 8 Nov 2021 11:17:05 +0800
+In-Reply-To: <20211105202913.GA944432@bhelgaas>
+References: <20211105202913.GA944432@bhelgaas>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211107_175420_291735_EBD77719 
-X-CRM114-Status: GOOD (  17.94  )
+X-CRM114-CacheID: sfid-20211107_191718_093273_D74544D3 
+X-CRM114-Status: GOOD (  15.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,56 +85,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-10-08 at 13:37 +0200, Matthias Brugger wrote:
-> 
-> On 08/10/2021 04:05, Yongqiang Niu wrote:
-> > base v5.15
-> > 
-> > Yongqiang Niu (2):
-> >    soc: mediatek: mmsys: add comp OVL_2L2/POSTMASK/RDMA4
-> >    soc: mediatek: mmsys: Add mt8192 mmsys routing table
-> 
-> I'm a bit puzzled that you keep on sending this series while I
-> accepted an older 
-> one long time ago:
-> 
-https://lore.kernel.org/lkml/e4afa712-9936-15fc-ad43-576948758f6c@gmail.com/
-> 
-> As you don't provide a changelog I'm not able to find out what has
-> changed. I 
-> also asked you to double check if the fixup I did was correct, but
-> you never 
-> answered.
-> 
-> If there are anything to fix for this series that's not in my tree
-> yet, please 
-> send a follow-up patch.
-> 
-> Regards,
-> Matthias
-> 
+Hi Bjorn,
 
-the fixup you have add is correct.
-this version only adjust the header filer include sequence in mtk-
-mmsys.c
+Thanks for the reminder, I will send patches to update these entries.
 
-original version
+Thanks.
 
-#include "mt8365-mmsys.h"
-#include "mt8192-mmsys.h"
-
-new version
-#include "mt8192-mmsys.h"
-#include "mt8365-mmsys.h"
-
-> > 
-> >   drivers/soc/mediatek/mt8192-mmsys.h    | 77
-> > ++++++++++++++++++++++++++
-> >   drivers/soc/mediatek/mtk-mmsys.c       | 11 ++++
-> >   include/linux/soc/mediatek/mtk-mmsys.h |  3 +
-> >   3 files changed, 91 insertions(+)
-> >   create mode 100644 drivers/soc/mediatek/mt8192-mmsys.h
-> > 
+On Fri, 2021-11-05 at 15:29 -0500, Bjorn Helgaas wrote:
+> We have two MediaTek drivers: pcie-mediatek.c, which claims:
+> 
+>   .compatible = "mediatek,mt2701-pcie"
+>   .compatible = "mediatek,mt7623-pcie"
+>   .compatible = "mediatek,mt2712-pcie"
+>   .compatible = "mediatek,mt7622-pcie"
+>   .compatible = "mediatek,mt7629-pcie"
+> 
+> and pcie-mediatek-gen3.c, which claims:
+> 
+>   .compatible = "mediatek,mt8192-pcie"
+> 
+> The Kconfig text does not distinguish them.  Can somebody update
+> these
+> entries so they do?  It's nice if we can mention model numbers or
+> product names that a user would recognize.
+> 
+>   config PCIE_MEDIATEK
+>         tristate "MediaTek PCIe controller"
+>         depends on ARCH_MEDIATEK || COMPILE_TEST
+>         depends on OF
+>         depends on PCI_MSI_IRQ_DOMAIN
+>         help
+>           Say Y here if you want to enable PCIe controller support on
+>           MediaTek SoCs.
+> 
+>   config PCIE_MEDIATEK_GEN3
+>         tristate "MediaTek Gen3 PCIe controller"
+>         depends on ARCH_MEDIATEK || COMPILE_TEST
+>         depends on PCI_MSI_IRQ_DOMAIN
+>         help
+>           Adds support for PCIe Gen3 MAC controller for MediaTek
+> SoCs.
+>           This PCIe controller is compatible with Gen3, Gen2 and Gen1
+> speed,
+>           and support up to 256 MSI interrupt numbers for
+>           multi-function devices.
+> 
+>           Say Y here if you want to enable Gen3 PCIe controller
+> support on
+>           MediaTek SoCs.
+> 
+> Both drivers are also named "mtk-pcie" and use the same internal
+> "mtk_" prefix on structs and functions.  Not a *huge* problem, but
+> not
+> really ideal either.
+> 
+> Bjorn
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
