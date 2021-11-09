@@ -2,65 +2,80 @@ Return-Path: <SRS0=Xaha=P4=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1919FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Nov 2021 04:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8BF95C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Nov 2021 05:33:53 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ABA5F61105
-	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Nov 2021 04:18:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ABA5F61105
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3EBF260E75
+	for <linux-mediatek@archiver.kernel.org>; Tue,  9 Nov 2021 05:33:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3EBF260E75
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jODCTNKzpqbnXSkm3OgC+gSfK+0OzVz2lrY3pb0llCk=; b=Gj3F74zgwfxMDa
-	LO0aOg35o+jSdqcGvLKoi5w8K7fdocDSbDme29VYIyRyQRrWRp4xLCWMPlXn7ZJLTMcx51yXODxij
-	3ggHFygNhdHLAQSvpZ4NalPVoTkNyUbcIy1x5jBV0lFgj3CM1CjDBKIQhQzcn/26Y/OT+dBUy2c2U
-	+nH0jU9P+PIO3vJAoBCYKi67uXB4trTkkGvGnzvwW6/jO/cLfNIsO7lK3jDGM2J0sWRKuEQDmGjus
-	4W4LCQ0Sp73CZLCnLdOMe/CmwyE9NO9A0UPgX/yiv/eoeZ77b843UaNcQd3EyXIv38dzv3ZS26TBX
-	lv3dttGoA3g4LeQ3MRsw==;
+	List-Owner; bh=nmgJS5WGEiZxvRBTj5UkdsAzOMuqVPN6mtBrzniOYrI=; b=BOWOB95vDXjIMO
+	Y1OTyx3UYwpuYGMCIiQLprNdi4ALDPgtdEZKnCsc1/nBmtejiB2KvTkJUD6wYGkS2QAobbK4jW42l
+	In88zb/blL0tmVVFldedjJeydNGoL5pVVKxqT6L9AGVm4deM0CrabRq5r+36mG9Uqazs4dtWoizZA
+	60y+JvlsqVFBzlPUkYNS5YY83Pxmzc5x5QL25mKU0avwiy9Z7A/syHkPYTBgxCYpgowRtmq/D48Qr
+	F6a+qmFdx4AwTM+najI0z0mnRPF3I3h1Dwoj8EELHg/ubcgzapBI8kYIRoofspuzJDq0QxSMQt5NR
+	M05JJ0WH4T6EBDtjTkmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkIat-000ehV-DY; Tue, 09 Nov 2021 04:18:47 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mkJlO-000hvX-Ju; Tue, 09 Nov 2021 05:33:42 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkIap-000efv-HG
- for linux-mediatek@lists.infradead.org; Tue, 09 Nov 2021 04:18:46 +0000
-X-UUID: 74efd67f1ddd4dc587c9437762853abf-20211108
-X-UUID: 74efd67f1ddd4dc587c9437762853abf-20211108
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <shayne.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1569062318; Mon, 08 Nov 2021 21:18:38 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 8 Nov 2021 20:08:36 -0800
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Nov 2021 12:08:34 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
- mtkmbs10n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.792.3 via Frontend Transport; Tue, 9 Nov 2021 12:08:34 +0800
-From: Shayne Chen <shayne.chen@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: linux-wireless <linux-wireless@vger.kernel.org>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>, Ryder Lee <ryder.lee@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Shayne Chen <shayne.chen@mediatek.com>
-Subject: [PATCH] mt76: testmode: add support to set MAC
-Date: Tue, 9 Nov 2021 12:08:30 +0800
-Message-ID: <20211109040830.27536-1-shayne.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mkJlM-000htf-9o
+ for linux-mediatek@lists.infradead.org; Tue, 09 Nov 2021 05:33:41 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id y1so18855727plk.10
+ for <linux-mediatek@lists.infradead.org>; Mon, 08 Nov 2021 21:33:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RLjicxNmNpYNSdlDLoBw1hRqse8yPujz3RAWyTpfEac=;
+ b=odKCJ6d7H5bH4EsvYJwQsBe08JB8jHarQYqDI5Kfwc2NLU+hySWtFgWDhQox7QAke/
+ 9UTGnVcsxADRJFMy3iVKlsYAdiG/6ChqgO4Iqd/v2O91diGHSJajZrEL0t6N6N7373wQ
+ C59FjlO9LlxmwUN4zx8GIG6KKQPHA2yIrygYg=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=RLjicxNmNpYNSdlDLoBw1hRqse8yPujz3RAWyTpfEac=;
+ b=mBSYby67Sn6DtlPRCtKaPz2Q2Cvtzi/yAYnWm4T1uHeGOHMBKavABrjyU5iInQ43bg
+ RXvxIfqcIwLlEipvsOOaTHfGppIMe1S+cVvXOIiXXFqD9COk9uqZCVMlM590XdF4t2i3
+ wqDaEd/T2nQYbtCuY23e6z1senlgMFcfRHaqAyWxu+lSUNwG3HIwL0UE+3jMI37lz8i8
+ jynjyKg8EghmEX5yjaK42zsQm4mkV/K0QC/M6oYsthWulFooKCnt5o0sG7fgW0s+Oa5f
+ 1xOX79h29N3U/2QDR5yG32OCL18HdSIPJp4PEetafUHFMrFPkWxKxPc7VQl19sa6iaFw
+ gLXA==
+X-Gm-Message-State: AOAM531XgAatOz5vhmabm1iVy3jYVXgfaziaT/vbEp4QQQbsOmPcUuAj
+ qmt/Is8YobAJImHRUQcneLHIRQ==
+X-Google-Smtp-Source: ABdhPJz7orF7lfNNUIyXu6Own8rdIu7+OsJ5fOjCVqxqThwEdRZ8ZBjzbGsTPGx6uq8/Cofpfn2h5g==
+X-Received: by 2002:a17:90b:1e0e:: with SMTP id
+ pg14mr4240138pjb.143.1636436018094; 
+ Mon, 08 Nov 2021 21:33:38 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:cc3e:b71b:e327:fb32])
+ by smtp.gmail.com with ESMTPSA id w5sm13741479pgp.79.2021.11.08.21.33.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 08 Nov 2021 21:33:37 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/7] arm64: dts: mt8183: jacuzzi: remove unused ddc-i2c-bus
+Date: Tue,  9 Nov 2021 13:33:28 +0800
+Message-Id: <20211109053334.1840273-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.34.0.rc0.344.g81b53c2807-goog
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211108_201843_603103_6B11E7E0 
-X-CRM114-Status: GOOD (  15.70  )
+X-CRM114-CacheID: sfid-20211108_213340_385304_68642841 
+X-CRM114-Status: UNSURE (   9.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,124 +92,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support to set SA/DA/BSSID in testmode.
-During mass production stage, some test scripts or test equipments need
-to set fixed addresses to detect or parse if a test is passed.
-Also, MAC setting is necessary for some tx/rx tests with rx filter,
-to make sure rx site only receives expected packets.
+EDID is read from bridge, so the ddc-i2c-bus is unused.
 
-Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h     |  2 ++
- drivers/net/wireless/mediatek/mt76/testmode.c | 36 +++++++++++++++++--
- drivers/net/wireless/mediatek/mt76/testmode.h |  4 +++
- 3 files changed, 39 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index e2da720..e7ced94 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -599,6 +599,8 @@ struct mt76_testmode_data {
- 	u8 tx_power[4];
- 	u8 tx_power_control;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+index d8826c82bcda29..8f7bf33f607da2 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi.dtsi
+@@ -9,7 +9,6 @@ / {
+ 	panel: panel {
+ 		compatible = "auo,b116xw03";
+ 		power-supply = <&pp3300_panel>;
+-		ddc-i2c-bus = <&i2c4>;
+ 		backlight = <&backlight_lcd0>;
  
-+	u8 addr[3][ETH_ALEN];
-+
- 	u32 tx_pending;
- 	u32 tx_queued;
- 	u16 tx_queued_limit;
-diff --git a/drivers/net/wireless/mediatek/mt76/testmode.c b/drivers/net/wireless/mediatek/mt76/testmode.c
-index 66afc2b..74621b9 100644
---- a/drivers/net/wireless/mediatek/mt76/testmode.c
-+++ b/drivers/net/wireless/mediatek/mt76/testmode.c
-@@ -126,9 +126,9 @@ int mt76_testmode_alloc_skb(struct mt76_phy *phy, u32 len)
- 
- 	hdr = __skb_put_zero(head, head_len);
- 	hdr->frame_control = cpu_to_le16(fc);
--	memcpy(hdr->addr1, phy->macaddr, sizeof(phy->macaddr));
--	memcpy(hdr->addr2, phy->macaddr, sizeof(phy->macaddr));
--	memcpy(hdr->addr3, phy->macaddr, sizeof(phy->macaddr));
-+	ether_addr_copy(hdr->addr1, td->addr[0]);
-+	ether_addr_copy(hdr->addr2, td->addr[1]);
-+	ether_addr_copy(hdr->addr3, td->addr[2]);
- 	skb_set_queue_mapping(head, IEEE80211_AC_BE);
- 
- 	info = IEEE80211_SKB_CB(head);
-@@ -318,6 +318,10 @@ mt76_testmode_init_defaults(struct mt76_phy *phy)
- 	td->tx_count = 1;
- 	td->tx_rate_mode = MT76_TM_TX_MODE_OFDM;
- 	td->tx_rate_nss = 1;
-+
-+	ether_addr_copy(td->addr[0], phy->macaddr);
-+	ether_addr_copy(td->addr[1], phy->macaddr);
-+	ether_addr_copy(td->addr[2], phy->macaddr);
- }
- 
- static int
-@@ -493,6 +497,20 @@ int mt76_testmode_cmd(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
- 		}
- 	}
- 
-+	if (tb[MT76_TM_ATTR_MAC_ADDRS]) {
-+		struct nlattr *cur;
-+		int idx = 0;
-+		int rem;
-+
-+		nla_for_each_nested(cur, tb[MT76_TM_ATTR_MAC_ADDRS], rem) {
-+			if (nla_len(cur) != ETH_ALEN || idx >= 3)
-+				goto out;
-+
-+			memcpy(td->addr[idx], nla_data(cur), ETH_ALEN);
-+			idx++;
-+		}
-+	}
-+
- 	if (dev->test_ops->set_params) {
- 		err = dev->test_ops->set_params(phy, tb, state);
- 		if (err)
-@@ -635,6 +653,18 @@ int mt76_testmode_dump(struct ieee80211_hw *hw, struct sk_buff *msg,
- 		nla_nest_end(msg, a);
- 	}
- 
-+	if (mt76_testmode_param_present(td, MT76_TM_ATTR_MAC_ADDRS)) {
-+		a = nla_nest_start(msg, MT76_TM_ATTR_MAC_ADDRS);
-+		if (!a)
-+			goto out;
-+
-+		for (i = 0; i < 3 ; i++)
-+			if (nla_put(msg, i, ETH_ALEN, td->addr[i]))
-+				goto out;
-+
-+		nla_nest_end(msg, a);
-+	}
-+
- 	err = 0;
- 
- out:
-diff --git a/drivers/net/wireless/mediatek/mt76/testmode.h b/drivers/net/wireless/mediatek/mt76/testmode.h
-index d1f9c03..5e2792d 100644
---- a/drivers/net/wireless/mediatek/mt76/testmode.h
-+++ b/drivers/net/wireless/mediatek/mt76/testmode.h
-@@ -45,6 +45,8 @@
-  * @MT76_TM_ATTR_TX_TIME: packet transmission time, in unit of us (u32)
-  *
-  * @MT76_TM_ATTR_DRV_DATA: driver specific netlink attrs (nested)
-+ *
-+ * @MT76_TM_ATTR_MAC_ADDRS: array of nested MAC addresses (nested)
-  */
- enum mt76_testmode_attr {
- 	MT76_TM_ATTR_UNSPEC,
-@@ -81,6 +83,8 @@ enum mt76_testmode_attr {
- 
- 	MT76_TM_ATTR_DRV_DATA,
- 
-+	MT76_TM_ATTR_MAC_ADDRS,
-+
- 	/* keep last */
- 	NUM_MT76_TM_ATTRS,
- 	MT76_TM_ATTR_MAX = NUM_MT76_TM_ATTRS - 1,
+ 		port {
 -- 
-2.25.1
+2.34.0.rc0.344.g81b53c2807-goog
 
 
 _______________________________________________
