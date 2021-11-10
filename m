@@ -2,14 +2,14 @@ Return-Path: <SRS0=x/8t=P5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 87799C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C0B4C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:52:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 5C1096113E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:51:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5C1096113E
+	by mail.kernel.org (Postfix) with ESMTPS id DE9F76113E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:52:26 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DE9F76113E
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,70 +18,67 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8O72NscS5Q3pCyYEu4iD4EOcw3Cbje2+79apu7OWUz8=; b=nk3FPbik5UJIXF
-	2EaAlYQWpNpa7XYA+xB7LzvD1zwHn+9WBfdwbf+Xz1d8Rgr1Wcntu9VAdtrDU7AZ2gX5FMk24Uowg
-	mfzIEpoo2p+sDN1ltkz2F298SNiZGgSYS7VO9Y5VugFiVp1H4l9P2SJAsTBwSHXDPApnyRsDy9OtY
-	kcbwSKu+2lxkHNBtjpfIU6Gwnv2d6Xa6BGCCp4ed/qCF/1gtcAwP8StoJX0hmcq588qNepSfQ06R1
-	VT0T1KPPJaR7HkAJZWTArb+nfkyLihthh1vfoCRl8rS9QYcYMw+n3bw11hUth+TmG7s7o0eH4Q4cQ
-	OMsmaO4jjk8cqvVD7mYA==;
+	List-Owner; bh=j2oUflZmsYUbOHm9oBbHxgnfr26Rn0QvOCro1ZW35rQ=; b=vo71MI+8LDn9hJ
+	NF19+M85lairxq1a6UK0lBIXHysfz74RVhQlBRmuYiq+D1qNPXMLsKGITQkbkBn/LYCJlsj7FhImZ
+	/5QMN3t/Pvj1HY9l0nmN10uvCZBz91JLVUUIZ9nIB07NInjSZEy1EHvBBYldXHSuAtspwz5Ke0jNL
+	uBvWtPpob6z5mlZ2O1+fN29J1nfZVpdDJPIMhcbbs1wcXB0mXL3e/Q02TXg3LvfAUKHUWTVZCCMVC
+	xYWNBTY7f27nEyrxMRPmbEVDiMv12WO1e1j+pwwjT7lxhWQXfSEolv1FEAIoYXMoVIVElrJ4bto0U
+	OpS1N92PiKk2piJH6zjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mktdA-006DVJ-9B; Wed, 10 Nov 2021 19:51:36 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1mktdr-006DtD-7u; Wed, 10 Nov 2021 19:52:19 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mktbv-006Csq-2i
- for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 19:50:20 +0000
-Received: by mail-wm1-x333.google.com with SMTP id
- az33-20020a05600c602100b00333472fef04so4803021wmb.5
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 11:50:18 -0800 (PST)
+ id 1mktbw-006Cti-Cy
+ for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 19:50:22 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id d5so5984326wrc.1
+ for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 11:50:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9v/p3H16Q1aF+/gSoivdZVyJ3IG44fQPKhtZ36YoWUc=;
- b=VjKbv2Zpc6bphwYBa6CnzuQ3EBlY7cT8fnqQxmtxi5dfMNOmVdkC6ZVNssGO9IbeeH
- FuPTyHp2SsTUWNCXoX+EjvpCyIUJb4Ctn4OZ4ezvBPsOUl0PViSncqzsGEiwnekHBLZw
- bcwcXhZp2JjtoOuP/UjB9JFcE4FVXaygmhzj/RJLR2/YjpFsFF7j36RKtN1LeKtEf+d+
- WtjmbgCehRd5LQUwErc0V9by2F30IkDUsnBgi5Hawi4Pt9v/mETFuDa9iVx4egfygdmx
- 9Esz9+Ozc3BI9trSnkX9bDfduBlSEu6KRIkL6joNzj07/fxY7TUZfdIGrulE0dYOKOQQ
- nK/A==
+ bh=fi1SQ0650VpnUBsZivmkkBhDo1jhzZgEKHW44G9Rwtw=;
+ b=h3AI7I6ru3Nn/MCBCN35cPu4WE47fz6h+EIjb1eXtPS/nC4egSJFdDxGFcHv0KaE7p
+ gt2ox2xz4q/bE6vbUm4+C5y1y1axolM+2MKnGJyp33JG1q5EcxX+mDca6A1MdDAPjH14
+ Iw2YT7/zeUur84LG9TKKpGcjdr+t3eoiuYsae9Y5PI2E686+j47lM6po+zm/iif9+2td
+ G1gnU1A6G8zFUJMo/eoIoeo8ivhQSrcHpol52F5NQYnWb2OoacJU89GqL63cfQlvR8HB
+ qp7IoZjwOuXLDV9bFLm1IgT/dZWW8QzbUJamQ+Rq1MqR8bGTdkRObjNsq73lwQHgNYmn
+ kCiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9v/p3H16Q1aF+/gSoivdZVyJ3IG44fQPKhtZ36YoWUc=;
- b=4juh72SnzfLGKsPjNKmj02vy0HfiTJDEaujSvz5YDVb7yhi0xtqp4jX7Tyh7guXoZ+
- vjbxvEa5ixnxZJJW18n8s5GutVp3grXnYuMuc0OQwQDC+/FnCQtC4Vq6+k3b4Yo5GRfs
- +uE9W39f9iJQBVdHT6NshGAn7oFZa167g5OVsJjt1F/fogUY078QwV2dRZMmC+ROKf61
- FcjEWCzF/b16fvnFV5ha9y0HLoyJ6tlvA6LOqfGiFz87RQ+mkzlxiJTgMh6SqqVsqXlA
- qNWQWJijmcT87sGf2uoWP1Iuhuwr1espx613BYFyDzkXdOUlpAFAhoHwl2Tg4Zil4v+d
- 7Nfw==
-X-Gm-Message-State: AOAM532Ry0jkg0jn4cACKDqk3f25bfswHoV+ojFxY2x/13wmIWSTIcUH
- nd++JpzEUSR9rAeYZumDZvqx8g==
-X-Google-Smtp-Source: ABdhPJwSPWVHGUSXAVFDBKRAJSOPw7HbTj6ZnnxeadITSc2hD6wRJTXTJzEv97AJwaIDDHZMAUsYmA==
-X-Received: by 2002:a05:600c:4f8a:: with SMTP id
- n10mr1937772wmq.54.1636573817648; 
- Wed, 10 Nov 2021 11:50:17 -0800 (PST)
+ bh=fi1SQ0650VpnUBsZivmkkBhDo1jhzZgEKHW44G9Rwtw=;
+ b=Kn5bOqyEiPbDMcg6pc1MYps4WRf5IYuoKqWuWlcjKwpxUHIR5h0DQOWgDmrzog0oHE
+ f7bQAzykIfiwuG3Ko7LXnwra88drOa2QLPLBs78+yhC9cbz0LA50h1iGwhjlJ8qn1iUL
+ FJP98XI3A6Fbanq45DsR3TwhbxHwpFph40f15LiK9NUBQ/UTlWYWmxghYMf8oHbcwvkm
+ LEiSWaC2q20fY1c2gT12tpxQtrhDbZFrIY11rV50++qijm8Wxq2q2zfAQhdScoGhP7C8
+ WC2IKWtWGI3WZCll/3B5HorXR2zrf3N3z8qD1MD7+G8KdZt1Wz2P/7Tcebzy7ZgYBSRt
+ X03w==
+X-Gm-Message-State: AOAM530G3/S13ZUKWQdj28Fqjl9gE7xdpuuoDYfT83MLYiAPiXSjOwTo
+ d355tZyakVTf+02s6J3vSky3jw==
+X-Google-Smtp-Source: ABdhPJyNwAHNRfrXhmSz0qWblbyRi1RZjAletdfZItDgstEuKD8EM5XYNkrrljsACKRpt8B1eOaSzA==
+X-Received: by 2002:a5d:6043:: with SMTP id j3mr1857692wrt.375.1636573818895; 
+ Wed, 10 Nov 2021 11:50:18 -0800 (PST)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id k15sm750935wrx.53.2021.11.10.11.50.16
+ by smtp.gmail.com with ESMTPSA id k15sm750935wrx.53.2021.11.10.11.50.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Nov 2021 11:50:17 -0800 (PST)
+ Wed, 10 Nov 2021 11:50:18 -0800 (PST)
 From: Fabien Parent <fparent@baylibre.com>
-To: Qii Wang <qii.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Fabien Parent <fparent@baylibre.com>, linux-i2c@vger.kernel.org,
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v3 3/4] i2c: i2c-mt65xx: add MT8365 SoC support
-Date: Wed, 10 Nov 2021 20:49:58 +0100
-Message-Id: <20211110194959.20611-3-fparent@baylibre.com>
+Subject: [PATCH v3 4/4] arm64: dts: mediatek: mt8192: fix i2c node names
+Date: Wed, 10 Nov 2021 20:49:59 +0100
+Message-Id: <20211110194959.20611-4-fparent@baylibre.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20211110194959.20611-1-fparent@baylibre.com>
 References: <20211110194959.20611-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211110_115019_148884_72243A20 
-X-CRM114-Status: UNSURE (   9.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211110_115020_478097_4C59A948 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,49 +95,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for I2C on MT8365 SoCs.
+Fix the i2c node names to be compliant to the YAML schema. The
+I2C node name should match the following pattern: "^i2c@[0-9a-f]+$".
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
 
 v3: rebased
-v2: No change
+v2: new patch
 
- drivers/i2c/busses/i2c-mt65xx.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/i2c/busses/i2c-mt65xx.c b/drivers/i2c/busses/i2c-mt65xx.c
-index 9ea427f53083..a0249ebe7c7a 100644
---- a/drivers/i2c/busses/i2c-mt65xx.c
-+++ b/drivers/i2c/busses/i2c-mt65xx.c
-@@ -411,6 +411,19 @@ static const struct mtk_i2c_compatible mt8192_compat = {
- 	.max_dma_support = 36,
- };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index c7c7d4e017ae..53d790c335f9 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -479,7 +479,7 @@ audsys: clock-controller@11210000 {
+ 			#clock-cells = <1>;
+ 		};
  
-+static const struct mtk_i2c_compatible mt8365_compat = {
-+	.regs = mt_i2c_regs_v1,
-+	.pmic_i2c = 0,
-+	.dcm = 1,
-+	.auto_restart = 1,
-+	.aux_len_reg = 1,
-+	.timing_adjust = 1,
-+	.dma_sync = 1,
-+	.ltiming_adjust = 0,
-+	.apdma_sync = 0,
-+	.max_dma_support = 33,
-+};
-+
- static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt2712-i2c", .data = &mt2712_compat },
- 	{ .compatible = "mediatek,mt6577-i2c", .data = &mt6577_compat },
-@@ -419,6 +432,7 @@ static const struct of_device_id mtk_i2c_of_match[] = {
- 	{ .compatible = "mediatek,mt8173-i2c", .data = &mt8173_compat },
- 	{ .compatible = "mediatek,mt8183-i2c", .data = &mt8183_compat },
- 	{ .compatible = "mediatek,mt8192-i2c", .data = &mt8192_compat },
-+	{ .compatible = "mediatek,mt8365-i2c", .data = &mt8365_compat },
- 	{}
- };
- MODULE_DEVICE_TABLE(of, mtk_i2c_of_match);
+-		i2c3: i2c3@11cb0000 {
++		i2c3: i2c@11cb0000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11cb0000 0 0x1000>,
+ 			      <0 0x10217300 0 0x80>;
+@@ -498,7 +498,7 @@ imp_iic_wrap_e: clock-controller@11cb1000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
+-		i2c7: i2c7@11d00000 {
++		i2c7: i2c@11d00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d00000 0 0x1000>,
+ 			      <0 0x10217600 0 0x180>;
+@@ -511,7 +511,7 @@ i2c7: i2c7@11d00000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c8: i2c8@11d01000 {
++		i2c8: i2c@11d01000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d01000 0 0x1000>,
+ 			      <0 0x10217780 0 0x180>;
+@@ -524,7 +524,7 @@ i2c8: i2c8@11d01000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c9: i2c9@11d02000 {
++		i2c9: i2c@11d02000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d02000 0 0x1000>,
+ 			      <0 0x10217900 0 0x180>;
+@@ -543,7 +543,7 @@ imp_iic_wrap_s: clock-controller@11d03000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
+-		i2c1: i2c1@11d20000 {
++		i2c1: i2c@11d20000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d20000 0 0x1000>,
+ 			      <0 0x10217100 0 0x80>;
+@@ -556,7 +556,7 @@ i2c1: i2c1@11d20000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c2: i2c2@11d21000 {
++		i2c2: i2c@11d21000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d21000 0 0x1000>,
+ 			      <0 0x10217180 0 0x180>;
+@@ -569,7 +569,7 @@ i2c2: i2c2@11d21000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c4: i2c4@11d22000 {
++		i2c4: i2c@11d22000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11d22000 0 0x1000>,
+ 			      <0 0x10217380 0 0x180>;
+@@ -588,7 +588,7 @@ imp_iic_wrap_ws: clock-controller@11d23000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
+-		i2c5: i2c5@11e00000 {
++		i2c5: i2c@11e00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11e00000 0 0x1000>,
+ 			      <0 0x10217500 0 0x80>;
+@@ -607,7 +607,7 @@ imp_iic_wrap_w: clock-controller@11e01000 {
+ 			#clock-cells = <1>;
+ 		};
+ 
+-		i2c0: i2c0@11f00000 {
++		i2c0: i2c@11f00000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11f00000 0 0x1000>,
+ 			      <0 0x10217080 0 0x80>;
+@@ -620,7 +620,7 @@ i2c0: i2c0@11f00000 {
+ 			status = "disabled";
+ 		};
+ 
+-		i2c6: i2c6@11f01000 {
++		i2c6: i2c@11f01000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11f01000 0 0x1000>,
+ 			      <0 0x10217580 0 0x80>;
 -- 
 2.33.1
 
