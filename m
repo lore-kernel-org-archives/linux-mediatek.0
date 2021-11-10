@@ -2,65 +2,88 @@ Return-Path: <SRS0=x/8t=P5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 0C1F2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 03:04:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 31064C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 03:22:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 97BE4611BF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 03:04:28 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 97BE4611BF
+	by mail.kernel.org (Postfix) with ESMTPS id E66A061105
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 03:22:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E66A061105
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=YtdZWqoYU2HUsOqqVPKnlkR6C+6QZIAr+jIda3ttlEk=; b=V9f3FAV6Kzr+jd
-	lqm7sB8amfr5Ax5sB1z0Q+cZt6w07O0BSxXtzZMwXv8Male7fP2/VPWOVqa6T9LxWtposOuKjGoMI
-	h7ysUUZLhZr2lPBDXsWP9J52vM7J37uz9KFVdkiOkQm1A2oKJ1JcPgwg0Ipxvj4MKftnSTwKSz34z
-	NkCfzBUpmkHie1kzz21PuhKHH/TKVE7aOE8jGMXLGBaSHTuRR5oPoAvAAS5f7qll50XyWpS5uaqve
-	LCdnWL2d51kMTr3FW2mt31EReKXAA1LXcPKZ4m+zUsPH02+/BinsxCfSvl4Xz10I3DEyEindQW83K
-	vXvQATGZmz7DB76UVRaQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ic6pkhdG0AI+XLHjxHpeurqrSKz93Y27FN6m3gBV7rQ=; b=f+FHcECalx0dYN
+	aUsm2yvj00bWYN0p/hIzsNSr8A9bGY8uqH2TbotVdm8r0UDs8pHPRc7MXLUhfRc5PLKzvrFRkzPHd
+	sj/zPez35ccj/EZLul5TL0Z/WillAntCB7HqeJdDkoxQ5AMdQLkzrvJB1rHHpaeCffyPDDGje74Be
+	UgGWotrjnge8Of44GoE0+dXZydRtt/MMsDRd5MFZ58f0lfEybrc8vComKbGDEBgBblsmCVnZbokIm
+	2DagtH74Q0wZ45kCbh76y7/PNVAmvrlO9sGeu5usYWW2Z7A1URF5iwbqmy/VC+N1quBwUEmUf+B+V
+	ubs5lTP8YzTDL/lgl/Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkduO-004MiX-6z; Wed, 10 Nov 2021 03:04:20 +0000
+	id 1mkeBM-004Nnr-Ot; Wed, 10 Nov 2021 03:21:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkduL-004Mhs-Mu
- for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 03:04:19 +0000
-X-UUID: 618d4239d8cf4f8ba63b71ab71c9449f-20211109
-X-UUID: 618d4239d8cf4f8ba63b71ab71c9449f-20211109
+ id 1mkeBI-004NnC-Vs
+ for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 03:21:51 +0000
+X-UUID: 24001f84447049bb821f2ad1d7ed236c-20211109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=FW4lI1nxmNtd/IT/tY+A90HGfKmb4Gx1XGsdWrcaA6c=; 
+ b=R0acouXnqanx4lKCd/5tPLPqmFPnxQB14944XAlVsSYbjs9A4eLEgPZH6qOEQNnS0UccZ8zAZA/SL4Ndg4e+gkRz8bF/H+9uzdL9LKp+nBgbYx/qg218yQN0d3k4D7FiDInCLaZumslNQPlgt2+9kSSYIfAMOYkjv+VpG7qcICU=;
+X-UUID: 24001f84447049bb821f2ad1d7ed236c-20211109
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xing.song@mediatek.com>)
+ (envelope-from <irui.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 74394796; Tue, 09 Nov 2021 20:04:13 -0700
-Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ with ESMTP id 679033251; Tue, 09 Nov 2021 20:21:44 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Nov 2021 18:54:11 -0800
-Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
- (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 10 Nov 2021 10:54:07 +0800
-Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
- MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 10 Nov 2021 10:54:07 +0800
-From: Xing Song <xing.song@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>
-CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
- <shayne.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
- <evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Xing Song <xing.song@mediatek.com>
-Subject: [PATCH v2] mt76: do not pass the received frame with decryption error
-Date: Wed, 10 Nov 2021 10:54:04 +0800
-Message-ID: <20211110025404.174080-1-xing.song@mediatek.com>
-X-Mailer: git-send-email 2.17.0
+ 15.0.1497.2; Tue, 9 Nov 2021 19:11:41 -0800
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 10 Nov 2021 11:11:31 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkmbs10n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
+ Transport; Wed, 10 Nov 2021 11:11:31 +0800
+Message-ID: <054260428d9d7718f630ecc1b2bdec34ecf1f799.camel@mediatek.com>
+Subject: Re: [PATCH v4] media: mtk-vpu: Ensure alignment of 8 for DTCM buffer
+From: Irui Wang <irui.wang@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, houlong wei
+ <houlong.wei@mediatek.com>, Alexandre Courbot <acourbot@chromium.org>, "Hans
+ Verkuil" <hverkuil@xs4all.nl>
+CC: Linux Media Mailing List <linux-media@vger.kernel.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, LKML
+ <linux-kernel@vger.kernel.org>, "kernel@collabora.com"
+ <kernel@collabora.com>, Dafna Hirschfeld <dafna3@gmail.com>, Tiffany Lin
+ =?UTF-8?Q?=28=E6=9E=97=E6=85=A7=E7=8F=8A=29?= <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen =?UTF-8?Q?=28=E9=99=B3=E6=99=BA=E8=BF=AA=29?=
+ <Andrew-CT.Chen@mediatek.com>, Minghsiu Tsai
+ =?UTF-8?Q?=28=E8=94=A1=E6=98=8E=E4=BF=AE=29?= <Minghsiu.Tsai@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+Date: Wed, 10 Nov 2021 11:11:30 +0800
+In-Reply-To: <428f216d-cdff-e22d-b96e-f9dd9cc158e3@collabora.com>
+References: <20210920170408.1561-1-dafna.hirschfeld@collabora.com>
+ <c59b7f40-d99e-370a-b797-5dc72979df46@xs4all.nl>
+ <CAPBb6MW_i1_Lh2ZaF8jGjcV-4XBhjswtyKkZCk3HxKO7LX79Og@mail.gmail.com>
+ <9475ac5b-79fe-da0e-ed1c-a91275cad46e@collabora.com>
+ <c01c2c6e2351c915fb6e55b025bf2ab5c449f045.camel@mediatek.com>
+ <8dfc07306b853126e8109fc953fd6388b63c65d2.camel@mediatek.com>
+ <4e7ff420-f67d-5d4a-8733-f4b83d80af13@collabora.com>
+ <428f216d-cdff-e22d-b96e-f9dd9cc158e3@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_190417_794278_4D779AC1 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20211109_192149_048335_C2F9C578 
+X-CRM114-Status: GOOD (  56.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,102 +100,209 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Drop the received frame if decryption failed and mac80211 can not
-handle it.
+Hi, Dafna,
 
-Signed-off-by: Xing Song <xing.song@mediatek.com>
----
-v2: check for cipher mismatch or frame format error
----
- drivers/net/wireless/mediatek/mt76/mt7603/mac.c | 4 ++++
- drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 8 +++++++-
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c | 8 +++++++-
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 8 +++++++-
- 4 files changed, 25 insertions(+), 3 deletions(-)
+Thanks for the patch.
+On Tue, 2021-11-09 at 10:46 +0200, Dafna Hirschfeld wrote:
+> 
+> On 03.11.21 13:04, Dafna Hirschfeld wrote:
+> > 
+> > 
+> > On 03.11.21 10:19, Irui Wang wrote:
+> > > Hi,
+> > > 
+> > > The "len" of share_buf copied should be always 8 alignment;
+> > > do you have other logs to prove the len is not 8 alignment when
+> > > errors
+> > > appear?
+> > 
+> > Hi, I found out that "sizeof(mdp_ipi_comm) = 20"
+> > this is due to the macro #pragma pack(push, 4) in mtk_mdp_ipi.h
+> > 
+> > see [1]
+> > 
+> > [1] http://lkml.iu.edu/hypermail/linux/kernel/2109.2/04978.html
+> > 
+> 
+> Hi Irui Wang,
+> Any update regarding that patch?
+> Can you give more explanation for that errors that we see
+> when the buffer size is not a multiple of 8?
+> 
+> Thanks,
+> Dafna
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-index fe03e31989bb..b6f2366d155e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-@@ -525,6 +525,10 @@ mt7603_mac_fill_rx(struct mt7603_dev *dev, struct sk_buff *skb)
- 	if (rxd2 & MT_RXD2_NORMAL_TKIP_MIC_ERR)
- 		status->flag |= RX_FLAG_MMIC_ERROR;
- 
-+	/* ICV error or CCMP/BIP/WPI MIC error */
-+	if (rxd2 & MT_RXD2_NORMAL_ICV_ERR)
-+		return -EINVAL;
-+
- 	if (FIELD_GET(MT_RXD2_NORMAL_SEC_MODE, rxd2) != 0 &&
- 	    !(rxd2 & (MT_RXD2_NORMAL_CLM | MT_RXD2_NORMAL_CM))) {
- 		status->flag |= RX_FLAG_DECRYPTED;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-index 423f69015e3e..10896cb35dd5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/mac.c
-@@ -286,9 +286,15 @@ static int mt7615_mac_fill_rx(struct mt7615_dev *dev, struct sk_buff *skb)
- 	if (rxd2 & MT_RXD2_NORMAL_AMSDU_ERR)
- 		return -EINVAL;
- 
-+	hdr_trans = rxd1 & MT_RXD1_NORMAL_HDR_TRANS;
-+
-+	/* MT_RXD2_NORMAL_ICV_ERR: ICV error or CCMP/BIP/WPI MIC error */
-+	if ((rxd2 & MT_RXD2_NORMAL_ICV_ERR) ||
-+	    (hdr_trans && (rxd2 & (MT_RXD2_NORMAL_CLM | MT_RXD2_NORMAL_CM))))
-+		return -EINVAL;
-+
- 	unicast = (rxd1 & MT_RXD1_NORMAL_ADDR_TYPE) == MT_RXD1_NORMAL_U2M;
- 	idx = FIELD_GET(MT_RXD2_NORMAL_WLAN_IDX, rxd2);
--	hdr_trans = rxd1 & MT_RXD1_NORMAL_HDR_TRANS;
- 	status->wcid = mt7615_rx_get_wcid(dev, idx, unicast);
- 
- 	if (status->wcid) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 5fcf35f2d9fb..02e5ce4cc71d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -426,9 +426,15 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
- 	if (rxd2 & MT_RXD2_NORMAL_AMSDU_ERR)
- 		return -EINVAL;
- 
-+	hdr_trans = rxd2 & MT_RXD2_NORMAL_HDR_TRANS;
-+
-+	/* MT_RXD1_NORMAL_ICV_ERR: ICV error or CCMP/BIP/WPI MIC error */
-+	if ((rxd1 & MT_RXD1_NORMAL_ICV_ERR) ||
-+	    (hdr_trans && (rxd1 & (MT_RXD1_NORMAL_CLM | MT_RXD1_NORMAL_CM))))
-+		return -EINVAL;
-+
- 	unicast = FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) == MT_RXD3_NORMAL_U2M;
- 	idx = FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);
--	hdr_trans = rxd2 & MT_RXD2_NORMAL_HDR_TRANS;
- 	status->wcid = mt7915_rx_get_wcid(dev, idx, unicast);
- 
- 	if (status->wcid) {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index db3302b1576a..9c814ef9c0ba 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -428,10 +428,16 @@ mt7921_mac_fill_rx(struct mt7921_dev *dev, struct sk_buff *skb)
- 	if (rxd2 & MT_RXD2_NORMAL_AMSDU_ERR)
- 		return -EINVAL;
- 
-+	hdr_trans = rxd2 & MT_RXD2_NORMAL_HDR_TRANS;
-+
-+	/* MT_RXD1_NORMAL_ICV_ERR: ICV error or CCMP/BIP/WPI MIC error */
-+	if ((rxd1 & MT_RXD1_NORMAL_ICV_ERR) ||
-+	    (hdr_trans && (rxd1 & (MT_RXD1_NORMAL_CLM | MT_RXD1_NORMAL_CM))))
-+		return -EINVAL;
-+
- 	chfreq = FIELD_GET(MT_RXD3_NORMAL_CH_FREQ, rxd3);
- 	unicast = FIELD_GET(MT_RXD3_NORMAL_ADDR_TYPE, rxd3) == MT_RXD3_NORMAL_U2M;
- 	idx = FIELD_GET(MT_RXD1_NORMAL_WLAN_IDX, rxd1);
--	hdr_trans = rxd2 & MT_RXD2_NORMAL_HDR_TRANS;
- 	status->wcid = mt7921_rx_get_wcid(dev, idx, unicast);
- 
- 	if (status->wcid) {
--- 
-2.18.0
+share_buf is a mapped memory by ioremap, it should be better use
+memcpy_to/fromio instead of memcpy because of alignment.
 
+As for memcpy_toio, it may also have requirements for alignment, we can
+also get such information from:
 
+https://elixir.bootlin.com/linux/v5.15/source/drivers/mtd/spi-nor/controllers/aspeed-smc.c#L207
+.
+
+So, it's not VPU HW bug or limitation, it's memcpy_toio requirements,
+maybe we can modify IPI message to do alignment, but it need modify
+both kernel and vpu firmware, which will break upstream backward
+compatible, we think it's unacceptale.
+
+If this patch can solve the issue, we think it's OK.
+
+Thanks
+> 
+> > Thanks,
+> > Dafna
+> > 
+> > > > > [58.350841] mtk-mdp 14001000.rdma: processing failed: -22
+> > > 
+> > > On Wed, 2021-11-03 at 16:03 +0800, houlong wei wrote:
+> > > > Add mtk-vpu driver expert irui.wang in the loop.
+> > > > 
+> > > > On Mon, 2021-10-18 at 15:07 +0800, Dafna Hirschfeld wrote:
+> > > > > 
+> > > > > On 18.10.21 03:16, Alexandre Courbot wrote:
+> > > > > > Hi Hans!
+> > > > > > 
+> > > > > > On Mon, Oct 4, 2021 at 6:37 PM Hans Verkuil <
+> > > > > > hverkuil@xs4all.nl>
+> > > > > > wrote:
+> > > > > > > 
+> > > > > > > On 20/09/2021 19:04, Dafna Hirschfeld wrote:
+> > > > > > > > From: Alexandre Courbot <acourbot@chromium.org>
+> > > > > > > > 
+> > > > > > > > When running memcpy_toio:
+> > > > > > > > memcpy_toio(send_obj->share_buf, buf, len);
+> > > > > > > > it was found that errors appear if len is not a
+> > > > > > > > multiple of
+> > > > > > > > 8:
+> > > > > > > > 
+> > > > > > > > [58.350841] mtk-mdp 14001000.rdma: processing failed:
+> > > > > > > > -22
+> > > > > > > 
+> > > > > > > Why do errors appear? Is that due to a HW bug? Some other
+> > > > > > > reason?
+> > > > > > 
+> > > > > > MTK folks would be the best placed to answer this, but
+> > > > > > since the
+> > > > > > failure is reported by the firmware I'd suspect either a
+> > > > > > firmware
+> > > > > > or
+> > > > > > hardware limitation.
+> > > > > > 
+> > > > > > > 
+> > > > > > > > 
+> > > > > > > > This patch ensures the copy of a multiple of 8 size by
+> > > > > > > > calling
+> > > > > > > > round_up(len, 8) when copying
+> > > > > > > > 
+> > > > > > > > Fixes: e6599adfad30 ("media: mtk-vpu: avoid unaligned
+> > > > > > > > access
+> > > > > > > > to
+> > > > > > > > DTCM buffer.")
+> > > > > > > > Signed-off-by: Alexandre Courbot <acourbot@chromium.org
+> > > > > > > > >
+> > > > > > > > Signed-off-by: Enric Balletbo i Serra <
+> > > > > > > > enric.balletbo@collabora.com>
+> > > > > > > > Signed-off-by: Dafna Hirschfeld <
+> > > > > > > > dafna.hirschfeld@collabora.com
+> > > > > > > > > 
+> > > > > > > > 
+> > > > > > > > Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+> > > > > > > > ---
+> > > > > > > > changes since v3:
+> > > > > > > > 1. multile -> multiple
+> > > > > > > > 2. add inline doc
+> > > > > > > > 
+> > > > > > > > changes since v2:
+> > > > > > > > 1. do the extra copy only if len is not multiple of 8
+> > > > > > > > 
+> > > > > > > > changes since v1:
+> > > > > > > > 1. change sign-off-by tags
+> > > > > > > > 2. change values to memset
+> > > > > > > > 
+> > > > > > > >    drivers/media/platform/mtk-vpu/mtk_vpu.c | 15
+> > > > > > > > ++++++++++++++-
+> > > > > > > >    1 file changed, 14 insertions(+), 1 deletion(-)
+> > > > > > > > 
+> > > > > > > > diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> > > > > > > > b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> > > > > > > > index ec290dde59cf..1df031716c8f 100644
+> > > > > > > > --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> > > > > > > > +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
+> > > > > > > > @@ -349,7 +349,20 @@ int vpu_ipi_send(struct
+> > > > > > > > platform_device
+> > > > > > > > *pdev,
+> > > > > > > >                 }
+> > > > > > > >         } while (vpu_cfg_readl(vpu, HOST_TO_VPU));
+> > > > > > > > 
+> > > > > > > > -     memcpy_toio(send_obj->share_buf, buf, len);
+> > > > > > > > +     /*
+> > > > > > > > +      * when copying data to the vpu hardware, the
+> > > > > > > > memcpy_toio
+> > > > > > > > operation must copy
+> > > > > > > > +      * a multiple of 8. Otherwise the processing
+> > > > > > > > fails
+> > > > > > > 
+> > > > > > > Same here: it needs to explain why the processing fails.
+> > > > > 
+> > > > > Is writing 'due to hardware or firmware limitation' enough?
+> > > > > If not, then we should wait for mediatek people's response to
+> > > > > explain
+> > > > > if they know more
+> > > > > 
+> > > > > > > 
+> > > > > > > > +      */
+> > > > > > > > +     if (len % 8 != 0) {
+> > > > > > > > +             unsigned char data[SHARE_BUF_SIZE];
+> > > > > > > 
+> > > > > > > Wouldn't it be more robust if you say:
+> > > > > > > 
+> > > > > > >                   unsigned char data[sizeof(send_obj-
+> > > > > > > > share_buf)];
+> > > > > > 
+> > > > > > Definitely yes.
+> > > > > 
+> > > > > I'll send v5 fixing this
+> > > > > 
+> > > > > > 
+> > > > > > > 
+> > > > > > > I also think that the SHARE_BUF_SIZE define needs a
+> > > > > > > comment
+> > > > > > > stating that it must be a
+> > > > > > > multiple of 8, otherwise unexpected things can happen.
+> > > > > > > 
+> > > > > > > You also noticed that the current SHARE_BUF_SIZE define
+> > > > > > > is too
+> > > > > > > low, but I saw
+> > > > > > > no patch correcting this. Shouldn't that be fixed as
+> > > > > > > well?
+> > > > > > 
+> > > > > > AFAICT the firmware expects this exact size on its end, so
+> > > > > > I
+> > > > > > don't
+> > > > > > believe it can be changed that easily. But maybe someone
+> > > > > > from MTK
+> > > > > > can
+> > > > > > prove me wrong.
+> > > > > > 
+> > > > > 
+> > > > > I looked further and noted that the structs that are larger
+> > > > > than
+> > > > > 'SHARE_BUF_SIZE'
+> > > > > (venc_ap_ipi_msg_enc_ext venc_ap_ipi_msg_set_param_ext)
+> > > > > are used by drivers that don't use this vpu api, so actually
+> > > > > SHARE_BUF_SIZE is
+> > > > > not too low and as Corurbot worte probably not changeable.
+> > > > > 
+> > > > > 
+> > > > > Thanks,
+> > > > > Dafna
+> > > > > 
+> > > > > > Cheers,
+> > > > > > Alex.
+> > > > > > 
+> > > > 
+> > > > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
