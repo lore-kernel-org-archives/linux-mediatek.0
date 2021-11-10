@@ -2,14 +2,14 @@ Return-Path: <SRS0=x/8t=P5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C4427C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:24:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E5A54C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:25:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7F3C561205
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:24:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7F3C561205
+	by mail.kernel.org (Postfix) with ESMTPS id B040861159
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 19:25:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org B040861159
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=baylibre.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,68 +18,69 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iC6tUUD4NUOCb8Ud7CfDgpUK64Lw8TnGtC4dCTgbMWY=; b=aa4HGy6W1ldlud
-	PjIHlRk+IJIi1NTmFZIu97Jte4le77tBS/bNaeVeEIAN1udqm5QnQQ3mPjoL9dbuXEBY6QH9O117g
-	WHuDfU/2VIej5AvGpas7veTVOFITQSkLOKsHle84QIJ2CG4vUffaJ3+Rob6Ir0/U/+9oaqUciImyl
-	UvUonzacHGYT1EOFT0lZLESpVXuHIMZ3XaJG2dME/8/EtRGXpMuWSsLY8txa7RGG8JzuLtoRmFEz1
-	NViquUyoZ4M+o4QSBTXujTPMY4IaoMK0qNmS9G+SgWMMcDCDeKTYXRFFP2yjg+fnFvr5+L9lSQx3/
-	vpiiW/tf1+E42+Kdm/AA==;
+	List-Owner; bh=N7O1c7iWVopCQuVeHgzLWKzdgzPBVsowOkpF9E9RjUw=; b=1YzucEBDUjnsIm
+	SODp12fMXnINjiPS12Sl5VksawPxztv0BM716ZSyApA1lrkgrjmxvMAcHKqLkTRPjVTCZoPWHWtvG
+	CU0m7OvRJQVtmPWwrJ6DtIQNSaRKniOSlzynhMRT2CPHlJXvDM3DTtAA1ZcwfmRC1bxBbV2plfTR6
+	ZwtrrKhzP+07xnfttnaH+Whbd6vCqQk1gPGaFsZ2r5lXebaCflT6lVxr23BdPloUgH8yHkW5CAUcs
+	vVHWjHioUUPmbAIvdMi71NRe0s618fQi4/KGLK0s1D4w2I5lDUGYjZXZe7dHxXGV7Lxx7wFgH8AhW
+	XI8+wmFwM/yBZeLYVjXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mktDI-0068JM-Ob; Wed, 10 Nov 2021 19:24:52 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1mktDf-0068QC-QX; Wed, 10 Nov 2021 19:25:15 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mktD3-0068E0-Ii
- for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 19:24:39 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id
- 67-20020a1c1946000000b0030d4c90fa87so2769451wmz.2
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 11:24:36 -0800 (PST)
+ id 1mktD6-0068Ea-KX
+ for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 19:24:41 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id
+ az33-20020a05600c602100b00333472fef04so4757013wmb.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 11:24:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=baylibre-com.20210112.gappssmtp.com; s=20210112;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=TkI4GyDCSIwmbXr9V/MQ9+7DcTXEuCd0g4gBgL+0EyA=;
- b=i7Z1Pn8QdFKfxUDCIMDU7Nl9er7l71NiK2V1C90wAjvXBpTR0hSMvTNt2R+6QFxiZc
- B9NzrWeTGyq9I1dGtU6DW9LmHuWZaQ8YqHkROyvYY5z6D9YUHiDs+bfg/nCilHhvZE+H
- 8v0G7m8bOqLOhSUx3RG/nR6sxnmclH1TjGzbxs158ez2Ig5k22E/oRoz1V4HsYBz+L65
- B51Q0GyZ8VwUtJY3k9R4oHTgz/oVV3fjU5Ib1UeoQasvv4dO7KvguV77bIO6Kg8Rv5W9
- ALMO+d9fLuS3+Z5ddKtCfzLjKSeiSyu7CXvW+9ZBdzkHLQBSNrJ3UCrEn230+xVjreqB
- qdUg==
+ bh=hGC5vbTP7eVhWvQa6obMxUPyW7fE6TkeuAmRY62poPc=;
+ b=o8YgN3Yr2RJVNTOVw0QWOGogKTBQMT4+qFJOEYABx2bj6SGGv63pxe/SJ4WVcCC3jn
+ S05I4wPHD8+z79WW8vHnLfVOVCRrvtfEbM0/n3C7vWEAhsPrY0b4qbqwJixF8XZ6zP5U
+ t9iCkujPvC/hTFn2vw7e85oBE8a126iesSSEPM7b21YMhn2y7EXSS5A7k/Lm4H6EI3VQ
+ D9NTMrB8kCHJgzWX/9+4BDtAepVPqgHEJBSpZGf6y6io+5o3D1ucoHi3oeUB8Ko8aXpy
+ AMIRhMvdNEHXMpDoABTqi5nFy1ORDwR4ZjebDc2S0fEpdHIvzVLWIaQEBZb8sdP2GT1u
+ eSEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=TkI4GyDCSIwmbXr9V/MQ9+7DcTXEuCd0g4gBgL+0EyA=;
- b=LRIUS8j+LHUTcLgbhiWbw75ENfEYFG+xXwHrLwTCMf9UQ0zj2zDyMnX+lsqrsmne5x
- GpoMcFrxs/sQHLQba0SmniEwDoUfcGMnD4SE8fhuxf6jbwwoiayhyrPw39w9LEeKXVcA
- eUMg+YYN1ZqpcUzRRbEOJpwapbp3f/1OCKu1t/4z2uGRHOkfXB3A4FJVRATNPz+pfzxV
- OJi9hpEDMpSh+U1xK2sYa1osMNyGIZU4u6VinRY3Y55tulvOqZJ/RnCiuiVJDb60XD+1
- buQAPAsHqXcrDaLcuF5ISyIa+wwOzXo6P36nlG9PyfH8PROuE9DUIvkSuMQyyVaL5h5/
- TtJg==
-X-Gm-Message-State: AOAM531t7IZZ18Q+VMp0zfc7h0bA6YvpxremNeIe1ftwasJRdcqDS0Je
- BiRNbWnCqY9VGm1NNnNKY9WTlA==
-X-Google-Smtp-Source: ABdhPJzRUmYbyJGZmJg6Yqk42aKpyaRMUXbxlNPTEK2WhaJfvzp/Rwxnr7av9EPW/dLsGsYFs6jjjQ==
-X-Received: by 2002:a1c:f219:: with SMTP id s25mr19188607wmc.31.1636572275780; 
- Wed, 10 Nov 2021 11:24:35 -0800 (PST)
+ bh=hGC5vbTP7eVhWvQa6obMxUPyW7fE6TkeuAmRY62poPc=;
+ b=5DUBm7jmvcGcyrqVTfhuojUlhUcf8gig2DEhNanT9lLeZrk8VU51oKybmIPBCq0u04
+ mjejPPG4J/k9ZboUVIp8N73E1n8ZMBDVLoO9XVD+3EOMyvofKwIZVeyB0Vpj+59XNtL+
+ 7IBOnslNiYPjA0FZofsuXNK/d4iyvwoO3kH1xguyKRcBzYAYe3OrCZzw6WS0p0+dOKJ3
+ yD/YsTzB/vdAFmLtoBQhFAKMTiJ/6SewKNuTS4nP8mXWVh5xAOeKsXFYn6WU/D2CVKOM
+ YlBfB/Y6Jh4u7JFc1YkDF06cMYsY1sqTks2dxBzy3TklinXffhiZ6A8Q8AM6t+hquCag
+ coXw==
+X-Gm-Message-State: AOAM532d9AfL8Eb+Cz+uBRXT7z0cCQQxuP4z9fk7hK+fOayl00oRQ05K
+ 7vH80LdEy2skCyZuxv9a8Or99KX54LwN4w==
+X-Google-Smtp-Source: ABdhPJwaqqXQvPtpGCJMftdZKiPsBPV2gDWdi4b770EA4FIRU+mVpBnIMR/wI0wlnRlRhRDKVUbAUw==
+X-Received: by 2002:a1c:3546:: with SMTP id c67mr1721206wma.43.1636572277143; 
+ Wed, 10 Nov 2021 11:24:37 -0800 (PST)
 Received: from localhost.localdomain ([88.160.162.107])
- by smtp.gmail.com with ESMTPSA id d16sm6250113wmb.37.2021.11.10.11.24.34
+ by smtp.gmail.com with ESMTPSA id d16sm6250113wmb.37.2021.11.10.11.24.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 10 Nov 2021 11:24:35 -0800 (PST)
+ Wed, 10 Nov 2021 11:24:36 -0800 (PST)
 From: Fabien Parent <fparent@baylibre.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Fabien Parent <fparent@baylibre.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH 2/3] arm64: dts: mediatek: mt8183-pumpkin: add HDMI support
-Date: Wed, 10 Nov 2021 20:24:16 +0100
-Message-Id: <20211110192417.4177741-2-fparent@baylibre.com>
+Subject: [PATCH 3/3] arm64: dts: mediatek: mt8183-pumpkin: add USB host support
+Date: Wed, 10 Nov 2021 20:24:17 +0100
+Message-Id: <20211110192417.4177741-3-fparent@baylibre.com>
 X-Mailer: git-send-email 2.33.1
 In-Reply-To: <20211110192417.4177741-1-fparent@baylibre.com>
 References: <20211110192417.4177741-1-fparent@baylibre.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211110_112437_647282_68D16B1C 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20211110_112440_698220_8FB59513 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,159 +97,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8183 Pumpkin board has a micro-HDMI connector. HDMI support is
-provided by an IT66121 DPI <-> HDMI bridge.
-
-This commit enables DPI and add the node for the IT66121 bridge.
+The MT8183 Pumpkin board provides USB host support through 2 type-A
+ports. In addition the board provides Ethernet support
+with the LAN9512 IP connected on the USB bus.
 
 Signed-off-by: Fabien Parent <fparent@baylibre.com>
 ---
- .../boot/dts/mediatek/mt8183-pumpkin.dts      | 115 ++++++++++++++++++
- 1 file changed, 115 insertions(+)
+ .../boot/dts/mediatek/mt8183-pumpkin.dts      | 26 +++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-index ee912825cfc6..d5a6628e9c5b 100644
+index d5a6628e9c5b..541b382c0e81 100644
 --- a/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
 +++ b/arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dts
-@@ -62,6 +62,18 @@ ntc {
- 		pulldown-ohm = <0>;
- 		io-channels = <&auxadc 0>;
- 	};
-+
-+	connector {
-+		compatible = "hdmi-connector";
-+		label = "hdmi";
-+		type = "d";
-+
-+		port {
-+			hdmi_connector_in: endpoint {
-+				remote-endpoint = <&hdmi_connector_out>;
-+			};
-+		};
-+	};
- };
- 
- &auxadc {
-@@ -120,6 +132,41 @@ &i2c6 {
- 	pinctrl-0 = <&i2c6_pins>;
- 	status = "okay";
- 	clock-frequency = <100000>;
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+
-+	it66121hdmitx: hdmitx@4c {
-+		compatible = "ite,it66121";
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&ite_pins>;
-+		vcn33-supply = <&mt6358_vcn33_wifi_reg>;
-+		vcn18-supply = <&mt6358_vcn18_reg>;
-+		vrf12-supply = <&mt6358_vrf12_reg>;
-+		reset-gpios = <&pio 160 GPIO_ACTIVE_LOW>;
-+		interrupt-parent = <&pio>;
-+		interrupts = <4 IRQ_TYPE_LEVEL_LOW>;
-+		reg = <0x4c>;
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			port@0 {
-+				reg = <0>;
-+				it66121_in: endpoint {
-+					bus-width = <12>;
-+					remote-endpoint = <&dpi_out>;
-+				};
-+			};
-+
-+			port@1 {
-+				reg = <1>;
-+				hdmi_connector_out: endpoint {
-+					remote-endpoint = <&hdmi_connector_in>;
-+				};
-+			};
-+		};
-+	};
- };
- 
- &mmc0 {
-@@ -332,6 +379,61 @@ pins_clk {
- 			input-enable;
+@@ -434,6 +434,18 @@ pins_gpio {
+ 				 <PINMUX_GPIO28__FUNC_GPIO28>;
  		};
  	};
 +
-+	ite_pins: ite-pins {
-+		pins_rst {
-+			pinmux = <PINMUX_GPIO160__FUNC_GPIO160>;
-+			output-high;
++	usb_pins: usb-pins {
++		pins_usb {
++			pinmux = <PINMUX_GPIO42__FUNC_GPIO42>;
++			output-low;
 +		};
-+	};
 +
-+	dpi_pins_func: dpi-pins-func {
-+		pins_dpi {
-+			pinmux = <PINMUX_GPIO12__FUNC_I2S5_BCK>,
-+				 <PINMUX_GPIO46__FUNC_I2S5_LRCK>,
-+				 <PINMUX_GPIO47__FUNC_I2S5_DO>,
-+				 <PINMUX_GPIO13__FUNC_DBPI_D0>,
-+				 <PINMUX_GPIO14__FUNC_DBPI_D1>,
-+				 <PINMUX_GPIO15__FUNC_DBPI_D2>,
-+				 <PINMUX_GPIO16__FUNC_DBPI_D3>,
-+				 <PINMUX_GPIO17__FUNC_DBPI_D4>,
-+				 <PINMUX_GPIO18__FUNC_DBPI_D5>,
-+				 <PINMUX_GPIO19__FUNC_DBPI_D6>,
-+				 <PINMUX_GPIO20__FUNC_DBPI_D7>,
-+				 <PINMUX_GPIO21__FUNC_DBPI_D8>,
-+				 <PINMUX_GPIO22__FUNC_DBPI_D9>,
-+				 <PINMUX_GPIO23__FUNC_DBPI_D10>,
-+				 <PINMUX_GPIO24__FUNC_DBPI_D11>,
-+				 <PINMUX_GPIO25__FUNC_DBPI_HSYNC>,
-+				 <PINMUX_GPIO26__FUNC_DBPI_VSYNC>,
-+				 <PINMUX_GPIO27__FUNC_DBPI_DE>,
-+				 <PINMUX_GPIO28__FUNC_DBPI_CK>;
-+		};
-+	};
-+
-+	dpi_pins_idle: dpi-pins-idle {
-+		pins_gpio {
-+			pinmux = <PINMUX_GPIO12__FUNC_GPIO12>,
-+				 <PINMUX_GPIO46__FUNC_GPIO46>,
-+				 <PINMUX_GPIO47__FUNC_GPIO47>,
-+				 <PINMUX_GPIO13__FUNC_GPIO13>,
-+				 <PINMUX_GPIO14__FUNC_GPIO14>,
-+				 <PINMUX_GPIO15__FUNC_GPIO15>,
-+				 <PINMUX_GPIO16__FUNC_GPIO16>,
-+				 <PINMUX_GPIO17__FUNC_GPIO17>,
-+				 <PINMUX_GPIO18__FUNC_GPIO18>,
-+				 <PINMUX_GPIO19__FUNC_GPIO19>,
-+				 <PINMUX_GPIO20__FUNC_GPIO20>,
-+				 <PINMUX_GPIO21__FUNC_GPIO21>,
-+				 <PINMUX_GPIO22__FUNC_GPIO22>,
-+				 <PINMUX_GPIO23__FUNC_GPIO23>,
-+				 <PINMUX_GPIO24__FUNC_GPIO24>,
-+				 <PINMUX_GPIO25__FUNC_GPIO25>,
-+				 <PINMUX_GPIO26__FUNC_GPIO26>,
-+				 <PINMUX_GPIO27__FUNC_GPIO27>,
-+				 <PINMUX_GPIO28__FUNC_GPIO28>;
++		pins_hub_rst {
++			pinmux = <PINMUX_GPIO9__FUNC_GPIO9>;
++			output-low;
 +		};
 +	};
  };
  
  &mfg {
-@@ -381,3 +483,16 @@ &scp {
- &dsi0 {
- 	status = "disabled";
+@@ -496,3 +508,17 @@ dpi_out: endpoint {
+ 		};
+ 	};
  };
 +
-+&dpi0 {
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&dpi_pins_func>;
-+	pinctrl-1 = <&dpi_pins_idle>;
++&ssusb {
++	pinctrl-names = "default";
++	pinctrl-0 = <&usb_pins>;
++	maximum-speed = "high-speed";
++	dr_mode = "host";
++	vusb33-supply = <&mt6358_vusb_reg>;
 +	status = "okay";
++};
 +
-+	port {
-+		dpi_out: endpoint {
-+			remote-endpoint = <&it66121_in>;
-+		};
-+	};
++&usb_host {
++	vusb33-supply = <&mt6358_vusb_reg>;
++	status = "okay";
 +};
 -- 
 2.33.1
