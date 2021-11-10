@@ -2,14 +2,14 @@ Return-Path: <SRS0=x/8t=P5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id AB3BCC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:30:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 81996C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:30:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 733B56115A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:30:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 733B56115A
+	by mail.kernel.org (Postfix) with ESMTPS id 527296115A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:30:46 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 527296115A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,54 +18,56 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Dt8eJzNtATYhyfPNn+3+Ji8pUrjaApuC2WsPMxjq1Pw=; b=VW9f+BLTQ7COpC
-	whBV9OiiUD6c6E+oueQ12pRpqVLPSPF0btT5PIoJRvT84GprYZyy6tUCCtHaAqiz9W1rix79ZUw11
-	m70LjRqKQzrwumFTC2HzKtQqb3LezHAUnFwq/ZhUbnlq3kKn92EyV5aaINGvZD8nJMRjlg1139gno
-	zml1Ie5sksV4Eh0Hk2c79XoGWRCu8PNa77yMl0fXx7JaesuFJI/tjqp0phUSFF7CLiA/7kDOYiIUf
-	c9ImudKcSTrQpF/FcSw72sTrqjpUuVg4gUNaI23Be+MTjDBC1VGTUyoBaY+wKXVqWv0Stq85CXvYA
-	B3rjX28vkCrv9RNvPnpQ==;
+	List-Owner; bh=z+Q3No9KgvvzfHvFGnIdQImeEpIzdKxmOggR4GvxoT8=; b=GnYokZ2OfCyVV6
+	TWgPIlcBfQcSZVoWCo/+/LvUp2onLlAWxv5FS1wZODtoUoLESsTmJ0LGeQmyEEdh3+jnJaO6v1hDK
+	cNgCgabyADBklJrhUch4b970SWH1VtZzYWxntT8FaS8tT12+I9G6mC1AKpv1fEHVqLpN9SUXCrvx3
+	AIHXBO8BTIY9X1+YGJHy4ZierDfu1QozzRGnMfj9GFlE1dgjEtLw8fnUke2XHh9qysXftvu1iD8Nv
+	GnyAu3Mt/2hfTFDRtOpEOkZT13QIjFqXqFDVMrx/cDo16VTqm2cA5OGRDruL47W1cAGCJI0Q4I/1r
+	7zKOjZ8HSjcqNd63E7aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkks0-00574h-6i; Wed, 10 Nov 2021 10:30:20 +0000
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+	id 1mkksI-0057FP-4B; Wed, 10 Nov 2021 10:30:38 +0000
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkkrp-0056zH-C2
- for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 10:30:11 +0000
-Received: by mail-pf1-x42d.google.com with SMTP id o4so2233166pfp.13
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 02:30:06 -0800 (PST)
+ id 1mkkrz-00573L-AK
+ for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 10:30:21 +0000
+Received: by mail-pl1-x62d.google.com with SMTP id u11so2652683plf.3
+ for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 02:30:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=rtnO7Bm6moxapJOpDmqW3UadGBsmBZSmf1oZQVTs5BY=;
- b=P3Zjx0Hyq+32RzMf/e+0TH7R6bZPDc1VQVGRm6mJklPXjJ3E2y7zll3a/h5hwzInd2
- d63C9cHfkm618jGYGz2nEbxTURHcRncu7AQy7kda908zmtTJmYdpod2M+GxzBQkOgAaW
- 3pyJW9FPadAoWPwK/fx0Dc1zYve3/+A99znjsQy0RNF26CBDA/mW1FQOyXjer+8hdQVg
- KHPaswheEtKBH09v60AmcUAH3/2TMbbowGDQYdmswgZ4HnwD6jwN7jpBmhO36SZb2VhP
- uAzn+IF5SvZbDi5vO8caloxssl1Sqt0FspfoohNqFJyd62Cg6vs5JINLSu6arcJ/cviJ
- L0bg==
+ :cc; bh=/H97nPqB7O+Ha49bdQqeIeu5pMRHp/3DE9p9icaUgqM=;
+ b=PUuEyw9XBots469I4b/mSNfuAjfpd7qQMzH59EqV6M8zrGuW5q/CfOy/XJM/r7hsaF
+ ndro4ZRi2k2UFXbYR7Y2TD+wsPKHpZaqWMHSaQC5u0vRq/R4W4M75LnQ6wwHqTSRhgjA
+ gNhSq0Dc8jWZWpqCIgVAsX8h+/O3mbrRqDeGIUv2lwZ2U3bRdIAyjPOH7bVnTrFrFM5/
+ FjN72YqxEMlv/SAj8JL4+P+sZFmb9ZhnqE0y/Dg5uFA/hcBKG1196tdQW2bAJXYHe/fz
+ wZWqGkamOre8skZ1KLmAgmEvyTB8aiEzTVhVd5dmXMR4WSLYYi9i0jUTIq125egaczwZ
+ gM+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=rtnO7Bm6moxapJOpDmqW3UadGBsmBZSmf1oZQVTs5BY=;
- b=Cy2xwiId9DQ1iTQK+3bwhsiF42B9La081uqmKVd1LpqLoipPSxz4LRjjltnUawqwen
- PXdWgqUQQR2ShuSVJpjYoUI8zS5D/hX8VXT42BxWcyDtZtFCEC86VO9iRBzgQMONBQFO
- f2RmyfPqrIW/M1IU488qVfFibGmZLzpS+caWaaLUOFg5yPRp5HYeXYr8Vh7e3MGqwe4N
- rkDVcurfiHwo/CjSwxyOq27560uaOOLpzD43mrX2qCeOZ9DcQa3FCEaaBQCPqgm2jwRY
- +qlJXv7Kf8cEJdLQW38tG12o1RHgrUMw9cbG9EBNXM8Vdj2OuMu2DvK2TiB6HkHuomYS
- 80mg==
-X-Gm-Message-State: AOAM531fXq96/O88PL823rhue6/GpABaBntEI9tqkK6bqAvSyn5SjO/h
- I4lLXEF3Svvkt3EQmfLK1DzMNYs1sfVb+631B+6SpA==
-X-Google-Smtp-Source: ABdhPJybXxLo5OYv4x3FX2EtYjPECd+qMB38G5dsYqeB2wevijTEozvPGP7GKTPKRoWDFUr1d6wpqdx/mT+1NE8lE1U=
-X-Received: by 2002:a63:9518:: with SMTP id p24mr11113932pgd.80.1636540205425; 
- Wed, 10 Nov 2021 02:30:05 -0800 (PST)
+ bh=/H97nPqB7O+Ha49bdQqeIeu5pMRHp/3DE9p9icaUgqM=;
+ b=27k/YmOM1g9i6LjPboDnTNvZLp//rd0mH/zVMuKK8tZkgm1/Fa0T4EzKC5jEF8MwII
+ hbRWT6wCFD5KMAlK6mgkNO4H8ZG/xKHdELh2vreyUVgC9lS6ps4QUZg9pqdED5hi/9BP
+ Jcs0hrNhjnSJGrHoRBwq6gyWA75POab0NAkyKQwy1W5TF6xzLWhQR/d6bpHy2hEeLBYz
+ c9HNdJ+0ZfZcSZq/ChS2rvFlbNbrF/N+KZ0gnhSyi4D+iu58uN8jjbvd2kKphi3omYHf
+ pSQNOe0BMSLxrQPLTgQjUdzpk7fZVosUX1pnS+8t25V7dY68H6AykyzNW4eDCYVXw0OB
+ k7HA==
+X-Gm-Message-State: AOAM532IcvlLjVypB20IX9hqmVaksVhHFq8kkhc4bInCuEe59iCAAZB3
+ L44rmTgUcRTsrQftAIg2Guq/2xt+ovu8k8UhxzU+vA==
+X-Google-Smtp-Source: ABdhPJz1qeQBdRPNXYe0xOwKF+EIkcWuZ9iABV9TtnSScZMDJCzYb6hg0DTj4FGiTtJpUHr1yfmX7QThpigva/yBGZE=
+X-Received: by 2002:a17:90b:4ac1:: with SMTP id
+ mh1mr15543616pjb.30.1636540217454; 
+ Wed, 10 Nov 2021 02:30:17 -0800 (PST)
 MIME-Version: 1.0
 References: <20211109125030.26299-1-yunfei.dong@mediatek.com>
- <20211109125030.26299-4-yunfei.dong@mediatek.com>
-In-Reply-To: <20211109125030.26299-4-yunfei.dong@mediatek.com>
+ <20211109125030.26299-5-yunfei.dong@mediatek.com>
+In-Reply-To: <20211109125030.26299-5-yunfei.dong@mediatek.com>
 From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Wed, 10 Nov 2021 18:29:54 +0800
-Message-ID: <CA+Px+wXw96jDAbtuJ-Mt5MnY9D4xPX-6wGZq5U_hwhrg+5UNPA@mail.gmail.com>
-Subject: Re: [PATCH v9, 03/19] media: mtk-vcodec: Refactor vcodec pm interface
+Date: Wed, 10 Nov 2021 18:30:06 +0800
+Message-ID: <CA+Px+wU6iwjisS1_Mdxdt6eb4pjLQp_Z16bA_ewEhCe80worKw@mail.gmail.com>
+Subject: Re: [PATCH v9,
+ 04/19] media: mtk-vcodec: Build decoder pm file as module
 To: Yunfei Dong <Yunfei.Dong@mediatek.com>
 Cc: Alexandre Courbot <acourbot@chromium.org>,
  Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
@@ -84,8 +86,8 @@ Cc: Alexandre Courbot <acourbot@chromium.org>,
  srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
  Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211110_023009_426221_FD764A96 
-X-CRM114-Status: UNSURE (   6.50  )
+X-CRM114-CacheID: sfid-20211110_023019_373096_A6D95BFF 
+X-CRM114-Status: UNSURE (   8.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,12 +105,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 09, 2021 at 08:50:14PM +0800, Yunfei Dong wrote:
-> Reviewed-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Tue, Nov 09, 2021 at 08:50:15PM +0800, Yunfei Dong wrote:
+> Need to build decoder pm file as module for main device
+> and subdev use the same pm interface.
 
-s/B/b/, the suggested tag name is "Reviewed-by"[1].
-
-[1]: https://www.kernel.org/doc/html/latest/process/submitting-patches.html#using-reported-by-tested-by-reviewed-by-suggested-by-and-fixes
+Why does it need to be a module?  Could you provide more explanation
+in the commit message?  For example, any compile errors under some
+circumstances?
 
 _______________________________________________
 Linux-mediatek mailing list
