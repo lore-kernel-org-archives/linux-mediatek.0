@@ -2,92 +2,163 @@ Return-Path: <SRS0=x/8t=P5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DF7CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B2DB7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:43:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6A5126115A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:31:34 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6A5126115A
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 66D9061168
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 10:43:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 66D9061168
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kLVnJQOkAFDgs4MhaCoM+JlvX1ujIk3MqdVVbXcElHU=; b=H4LxABBTyCfAou
-	RgLrrzYnDXrBn/w12QbiofnIME4Vs/URYjMTuX9XdAR3E3CXI/lwucJ/Ioq4mOIDJgu7cjvNZvPYI
-	fDEO+6u4axQ+GQJUnrfOtIzyLEiTq2Je8er2S6fSxtgoQRatjbbTVaNr7CHTK/7I6ytAwrJ9AkKtB
-	rnLvZIOn8AzT9HzVxYxMZO2EEkm06+JiK0tVGpaW5PJYkGQqAVssnolYzOFSG/6TOTTgT5Lpe5xfZ
-	Zn09z+ca0UDUkSWy/4dk/VAEjB2NVYI5nWI8mX9pC/+7dbegxUSL1RhsiHavMdjlcO05uShhA5OjX
-	tIuImh5xb8mv7040zC+A==;
+	List-Owner; bh=4PA+DZbYhgwKfzXs7Wmzm8+mh6U7/ila0TXNR/PJl9o=; b=MwRjlKEQqB7cXO
+	aBPhT43K1YDZDcDC+VgoZYvJ3A3AgHZ24MO2g+dbZ9f5tmt4YTw2yC/NVmzDHtREygVPy6wZioSwi
+	oz9tq1fHuFoD53gQeEpvOZe64xlj3mW9jj4PuYsXJRBsa0yVjjrVCKTKMVqeHVXo3ehtA22oYkW2f
+	oHtHOzktafHpn3VZn2GZFVoKil34NLq1VhG2ZhoSyUS59lqt21Ubpnpv26/l+QeN5/YsjiqmCSpij
+	FPMnQIvpu5jprCs0+rres9pK9l5xMj+JbeIvx89a9dwukRsx/0vzbj7di7Dpzz5YVYEbTMvVrqmz7
+	wRir8kTcVcIJeQRwqixA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkkt4-0057eX-UR; Wed, 10 Nov 2021 10:31:26 +0000
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+	id 1mkl4j-005AJf-Su; Wed, 10 Nov 2021 10:43:29 +0000
+Received: from mail-am6eur05on2087.outbound.protection.outlook.com
+ ([40.107.22.87] helo=EUR05-AM6-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkksJ-0057FS-1I
- for linux-mediatek@lists.infradead.org; Wed, 10 Nov 2021 10:30:40 +0000
-Received: by mail-pg1-x52d.google.com with SMTP id 188so1863815pgb.7
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 02:30:38 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=r5DQX2VbHiiinpBFvGUn9gkRcEjjrEuvSqSjaWfXcDI=;
- b=cy/1KPVoDrOt4yjIxt1Buip+V8mWgNg6UYmtGHHJ08/DKQEPhwaYkgH2lsyQyAln8/
- R8GzPx7X8b2yG5twg9UIjYkDsDTwEQEEADIN1kg/Ah5oK+dFzF3R9/S2UAdl7RbbyFDU
- 6MERQjvvntRYiXZoMQDWLQPPCf4BU+6LB2Cp61t9N7538FW3qkal5Dm+9kF681JbqjU+
- JWhcuXUT8RXNemHk5gN/Op5Lm0JoIL2A418gG3D3qUH250dSGLbCF/rVRFZ1XUmKVmrt
- LLoi8vFEeipVLd3+GIwBPfDiMw9XNbfJ/vkKCvkgqpmCnYjC7hbqgA6gqXJ7Qr2og0DJ
- PEpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=r5DQX2VbHiiinpBFvGUn9gkRcEjjrEuvSqSjaWfXcDI=;
- b=ME8TJsissqtUNHHuxOmR8RmB7/LutNsJePYMe/WXc2j4fNW9isMooH+tjKyYHxK/2Z
- tFas5B6nn+6eCd7GVHSZWzyshmPiiuWzGSiwdEsna2fwF25SlyXG0p1WbBOudSNWhwEL
- maCJXNiy/JWAYLpgjbazFwRb+W5glnxVBA8XFG/YElL1WmnCsvpYD8/mhSHfctP7i3Xp
- Veq4EortOomFBeVCeX/6BgFYx2QiDXl3VkRIAtDVAzsKHUSr7PSCjuv2UVQfz9lagsuR
- 9E5sg1HgG0Zk0Z8u0wwHXcwIT5/ebDU8oNt8yD+5uGX6TX7ORBPF6RlSoRw6FeS1O3EA
- yNgA==
-X-Gm-Message-State: AOAM5310mg4/yCA0KaORKhfgjibSQYUaC8lkCfnaGcoW6eSsDsUa8bBZ
- u0pfKmFMIUs1Szeigk3TvC8aFfHqqsamJEoqMTRjnA==
-X-Google-Smtp-Source: ABdhPJykmPLJ6N71IANWCRh+gpwVTmAkjoBw+f7+zlBkb5XKdRfh/Qb9D78+HxTdnDoFhcUKj8MzfOQAbs+Oli9R2pw=
-X-Received: by 2002:a05:6a00:2387:b0:49f:af00:d5d0 with SMTP id
- f7-20020a056a00238700b0049faf00d5d0mr14945380pfc.1.1636540237554; Wed, 10 Nov
- 2021 02:30:37 -0800 (PST)
+ id 1mkl4g-005AIO-Oz; Wed, 10 Nov 2021 10:43:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Wgn3xIjGbKdvvlgZs0L5U1Yi0+sgMnM93wZsSDfCvfBBGCW+UznL9iASjxR2KK/5csqX72MEss76DwNIIkkRiHgwjPV6JCP8Z6lPjpDfX9w/w89DoS6wjQUwKD+kL+TMJR2FG9FIRhistv3RtZCDZ3tHUTXAODgcm9JA5xHI/vh7xd9szL67OC1pT3q3BkiypRJArc72sz4faPmrT+wjiuuPuhggNtS/KxEt8ljkE0zmvneJZHZsP4Q9m5zOhEaOKkV7aacxasLRKoUJBoLGt2GqDyYjE+UHw3vp5jMmDhtsRFkFBJreMT3dSzB+byJ9AUpDkwikl2aOpPNub9jdhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A7KN6Ko3gZTz/V6d2kyvcG8qXqRZuFZZsYLDqqk2k78=;
+ b=HVQj5/+rnNJ2198+ltNmP41EGNLRCy8m9DddakIYTk3MpgjOEi1vXqB1bij6kTNNA9uFxFs5xtQgn83ZD7QbiC5Wz1K65JdI7/oqiR2mVdg1bgjb5PDVE5mTVsdJ4Ab5Z19w2o4J1d5bEbJTxB3AxvB6NB9Afg52CjDN4OA92Sj9aiNayYL0K7U2csUgJdQ5zAS6aIppe8GNnX9NqlHsTqC7gDV/hg+RoIByOG2DWMid9Zh10ZR01ShpYBo4KjjjNSv37cAiaFOwM0W9i00YAlqHjmSKOKbRfbo9faj179612QTxZlskanOd5rZGCTcvioKCBXR/MwWzXvM5JHhZ3A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=A7KN6Ko3gZTz/V6d2kyvcG8qXqRZuFZZsYLDqqk2k78=;
+ b=nJF2276Xx70MBO85I7RSY5NjKwwSe5KIXLwMpiU5K/vUjnPzjrWOqEuX49xSYlL9qZAd23xxuFPl4Clinzc8QycMOw/tWGE/h7BHJg33FVMhCAyv2GL6iLf3rju37CsmzllXP65E4QPAVCypSHoiimnTXTJ8orGkfLxKtd7Xp0g=
+Received: from DB8PR04MB5785.eurprd04.prod.outlook.com (2603:10a6:10:b0::22)
+ by DB6PR0402MB2901.eurprd04.prod.outlook.com (2603:10a6:4:99::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.15; Wed, 10 Nov
+ 2021 10:43:20 +0000
+Received: from DB8PR04MB5785.eurprd04.prod.outlook.com
+ ([fe80::4490:a7e9:37cb:99f8]) by DB8PR04MB5785.eurprd04.prod.outlook.com
+ ([fe80::4490:a7e9:37cb:99f8%3]) with mapi id 15.20.4690.016; Wed, 10 Nov 2021
+ 10:43:20 +0000
+From: Xiaoliang Yang <xiaoliang.yang_1@nxp.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+CC: "davem@davemloft.net" <davem@davemloft.net>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "allan.nielsen@microchip.com" <allan.nielsen@microchip.com>,
+ "joergen.andreasen@microchip.com" <joergen.andreasen@microchip.com>,
+ "UNGLinuxDriver@microchip.com" <UNGLinuxDriver@microchip.com>,
+ "vinicius.gomes@intel.com" <vinicius.gomes@intel.com>,
+ "michael.chan@broadcom.com" <michael.chan@broadcom.com>, "vishal@chelsio.com"
+ <vishal@chelsio.com>, "saeedm@mellanox.com" <saeedm@mellanox.com>,
+ "jiri@mellanox.com" <jiri@mellanox.com>, "idosch@mellanox.com"
+ <idosch@mellanox.com>, "alexandre.belloni@bootlin.com"
+ <alexandre.belloni@bootlin.com>, "kuba@kernel.org" <kuba@kernel.org>, Po Liu
+ <po.liu@nxp.com>, Leo Li <leoyang.li@nxp.com>, "f.fainelli@gmail.com"
+ <f.fainelli@gmail.com>, "andrew@lunn.ch" <andrew@lunn.ch>,
+ "vivien.didelot@gmail.com" <vivien.didelot@gmail.com>, Claudiu Manoil
+ <claudiu.manoil@nxp.com>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "matthias.bgg@gmail.com"
+ <matthias.bgg@gmail.com>, "horatiu.vultur@microchip.com"
+ <horatiu.vultur@microchip.com>
+Subject: RE: [PATCH v6 net-next 5/8] net: dsa: felix: support psfp filter on
+ vsc9959
+Thread-Topic: [PATCH v6 net-next 5/8] net: dsa: felix: support psfp filter on
+ vsc9959
+Thread-Index: AQHXtc/Tz1JX9fjSAUSptjPa61SVr6vF/CgAgDbU4pA=
+Date: Wed, 10 Nov 2021 10:43:20 +0000
+Message-ID: <DB8PR04MB5785610A137B7DA78B3F8B1CF0939@DB8PR04MB5785.eurprd04.prod.outlook.com>
+References: <20210930075948.36981-1-xiaoliang.yang_1@nxp.com>
+ <20210930075948.36981-6-xiaoliang.yang_1@nxp.com>
+ <20211006131301.tx42h4kcoacat2jm@skbuf>
+In-Reply-To: <20211006131301.tx42h4kcoacat2jm@skbuf>
+Accept-Language: zh-CN, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 1e52bbd7-0f09-43b4-c4bc-08d9a436e997
+x-ms-traffictypediagnostic: DB6PR0402MB2901:
+x-microsoft-antispam-prvs: <DB6PR0402MB2901BE42C4E77419DB0CCFE9F0939@DB6PR0402MB2901.eurprd04.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:10000;
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: RDCHzcCRbF7XWa7zTMzl4+Q/nvUKSKE+5DdJEEjLqroI78FAlEhXJFDQTISoBWT16MXblF1GiQcGCSTj4/OUK8X+nHyGMgqpbK73m2Y+FtIq7V/0CtbEC0+9APNJd4o1NqUolRcdYGqs0eqzwMYQPUHgWEHNUp55tCvZIZNKzXvHmxYlvIhP1TVgUnLlnEOkZK6OvUtRPiFYwoV7K31699UhbWZWphGdqSqtt0sFWJB0U0bdSLvMtuUec7K7wqH5qtIRsRrcj95RQju+crBeglNyYz40vV7wYhbIpip7/4tO5Ew4lJnYhwv51CY6Nim8Wv0oHNkz2xbnfwLyJaZLK/9T2LmS4LiYZUUzHVj7r4KYqcmYdWIwb5A5yu0safbOrOdizWS9FM4wZW7vKXDsv3FN83S/EHdBCfoUQ069Jb192wAK+h1SgRvTfGx7kFjvhIjuxJ4H1PfOOO5m5vyKQSzxtsKyMcrDNH5+asRHDNuxQrwBpiXWlyr2iuSI4+pkRCKFUSF92lRQmghaiJc86sxUkTbEtzqiyVWKFnFzJWK7P7odFLfLbFSpEiwf40VWo+G/tIQVWV7VcenD3jrQZ71jNE1aXFcfAVtDtBFXeIKM1cEYoDrEiOb8EI9Ah1C+BKBZf4EB8kvpwsJ4iAJubxDl5Mrl0+5/dQhzaojCDz2jk48mvIhb8kcEYfUuAzIUHbKSzhOMpxA5ede+p8WvOg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DB8PR04MB5785.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(122000001)(71200400001)(7696005)(186003)(316002)(8936002)(38070700005)(66556008)(66946007)(53546011)(508600001)(2906002)(7416002)(6636002)(52536014)(9686003)(54906003)(6862004)(83380400001)(8676002)(86362001)(33656002)(55016002)(38100700002)(5660300002)(6506007)(64756008)(4326008)(66446008)(76116006)(66476007)(26005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?gb2312?B?c3Q3SUlBQWs5czZsOHE3UFFwSktab05vVlVTanpURXJkeG85M3RCNDdhdzU3?=
+ =?gb2312?B?bG10T256UVNtTjh4aEdOYU9NQ3QyK3Nxb3pBb1A5Zlk5TUZ1L2hjUVZWZDln?=
+ =?gb2312?B?RE8xWXNRL0drNFRKaTBZbUR1L1IrampydVo2NUxIRWJGTElzSVoxV05ud2FQ?=
+ =?gb2312?B?UkwvK293Wjg4KzN4YU41dTFTRllQelkrYTg3MGFFNW8wVi9PRGxGd29WalBX?=
+ =?gb2312?B?N3BxVGRYS1Jjd0ZtY2dyVVArejAxdWszd3BVRlRpamFOTzArQS9kdmsxR1Ru?=
+ =?gb2312?B?c3ducXBXdkp4SDZVWVE2ck9lc3NFRnRrTURvSnpFK2gwSkUwOE9QNzNrR3Nv?=
+ =?gb2312?B?aDc3dUZJdCtDZUdMWmR4RW54YlNlMkUxSDNiWUxWb0k2L210MmtxM2ZvWDAr?=
+ =?gb2312?B?NGR2cEpRWTdmS0lxTHQrTlBlckwwUy8rNmExbUg4RUtDM0ZoeWFwQTJQcjNl?=
+ =?gb2312?B?YmF2SHVTQUJZNkRKdlpFSVd3MG5iTlI3b3BheWJwMWNKaVdabjZUMkNiQ29E?=
+ =?gb2312?B?OWZxWCtLY1lpTlB1V2JaaW1Sa2Jvc1hlVkRFbmkrWkZzdFpZSGZtUUtYdEk2?=
+ =?gb2312?B?c2RaYXMzMHh3SC9NLzVZQktrUWNXK25DeEdJSVQ0WHNQdWxqKyt4ZVdxWGty?=
+ =?gb2312?B?WjM3S0p4MmlBZllxdHJleStKandHUFhPdzlmWm1WTEdFeENDRC9vODk4QmZM?=
+ =?gb2312?B?dEhJazhaeFdGS1dFTkZzc0tQQjZzSDEvb2w4czRFdHVZQVhoekpEWXFOWXVN?=
+ =?gb2312?B?ZE1tOXM0RmV1b09RQkZ4aEF2QUVUQVMwNVNHT04vN25EUjRXcm1lazB6QkhI?=
+ =?gb2312?B?SithVUdsTDVCUWlqckxpK3pCdHI3TXFHNHdPYXZhREsvdERBdkhzSHNBd3lx?=
+ =?gb2312?B?czA3bHRXakxFUHNiY0VDYUdaK1NJb3M1SUQxZGhiVUZRVFZFb0lLNWxudnBE?=
+ =?gb2312?B?Sm5YK2IyMlVEVGxOTVVFV3dHb291VDhyK3pYQyt1U01IeE5XM2J3aURGRWxS?=
+ =?gb2312?B?TDY2SlNvVXdaMEVDV3psWkNqNlpHeEEvTkhGZklIU0RnVXNTNitOTTdoS3Zo?=
+ =?gb2312?B?aUhNeDV2ZWoxOVJCZ0VKVjBBOXJJM0xLOWpmR2RxSDdDbUVUcFR2bUZVK0ZJ?=
+ =?gb2312?B?WjhySzRWc2tWNmtXRTF3SnY5WUpkSjI1NjUrUmRQSlpwOTlCbEMyWklha0Jh?=
+ =?gb2312?B?a2tKdnA0eENwR3FadVRaNWZhS3QzbS9RNTkxNXAvTTNNdXVRRFM2TnpIeVph?=
+ =?gb2312?B?WmNMQ1FlOCtMTDFiamhiaExaK3c2S1lOVURHa285RXRLUHVnNEtWQlNscjNv?=
+ =?gb2312?B?cUIyS2oxeUxJTlFTNklJL0JKMUpSSzNMMzJwYVI2aEdZWGh5UkdheUJzQUU1?=
+ =?gb2312?B?QVhDZnRmR0V6QzlIb1JWTkJrK0hxbHFaMi9oak5yNTdMVTRlazNHb3JDZGtQ?=
+ =?gb2312?B?WWl5dWg0bnEvRXhsTm5TU1Vkc0QwN1ljTjMwL2xSZEI5VUhIaTlOU1FZQ0VK?=
+ =?gb2312?B?VnJoSjROYXdjWER4eTYzMXpHVVFHUVhZN3RscG90alN1b0tNVnJSaWNqbjRE?=
+ =?gb2312?B?UUZnMHVuWi9paEdwclJaY0RFOTN0UG1DSzJFTzN3VS9XaDJ5RHdXWUZkcWJj?=
+ =?gb2312?B?RFIyTzdnMU4xd1ZuQlVvQ2xHR29QTzk3a0R6V3A3a2Rnb0dQcU5wQzQ4M3BE?=
+ =?gb2312?B?dEt6QmxsajVJUDdaYVE2c3AyUVFBQnJ4WHUzcW5lVFZwR2N6SzEzUW9KRys5?=
+ =?gb2312?B?aDU3RDhoZFpudkh5RTZsa0VIMThhQXhHWlBoNlJTcjhqUFM3cXhhbnZOWEdY?=
+ =?gb2312?B?cWVEeHFHNGhpeXpNYm4yc1czL29kU2Mra1pia2dyV29IWTJsdXdwc0ZsdEZD?=
+ =?gb2312?B?U1ZkeVdsOVpQODYvWlBNVXJYTEI3aFhuUEd5cUJJT0dwQzBoYlFkSElzalVC?=
+ =?gb2312?B?MlFndm9wYlFsQ3RyeGFKQ1dXTlNILytHVGxOVzhUNFduSlFpRHJZeGMyRVA5?=
+ =?gb2312?B?a0E0MWR3dDFSRlA1bUE4NUxtRTA5eTJsZmtZb0VtK09xNHRCQXo5WTNteStz?=
+ =?gb2312?B?dWF5VFBrMWpMRG9JdkVsN2FjbGt3MDlPNlFIaVo1S3pQMmZJRElveHJsYjJH?=
+ =?gb2312?B?N2xpM1pPYVdieEhhZW5hNldMWW5KTWRpQkpzYW13cHVvREFySk5qbk1WTlht?=
+ =?gb2312?B?aExkYU9JcGdjZGtPbmo2TWQ5VWh2bEIwSXdmRzNORXFKUlE4ZS9Jb0ZMSEpX?=
+ =?gb2312?B?NDhwbGxVUFBucDVKNHMwRm4zeGtRPT0=?=
 MIME-Version: 1.0
-References: <20211109125030.26299-1-yunfei.dong@mediatek.com>
- <20211109125030.26299-7-yunfei.dong@mediatek.com>
-In-Reply-To: <20211109125030.26299-7-yunfei.dong@mediatek.com>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Wed, 10 Nov 2021 18:30:26 +0800
-Message-ID: <CA+Px+wXSFkK1o__7YWntGwFXtfWKH65VoSq=783fEPoEH-MwGw@mail.gmail.com>
-Subject: Re: [PATCH v9,
- 06/19] media: mtk-vcodec: Manage multi hardware information
-To: Yunfei Dong <Yunfei.Dong@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
- Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
- Fritz Koenig <frkoenig@chromium.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, 
- dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DB8PR04MB5785.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1e52bbd7-0f09-43b4-c4bc-08d9a436e997
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Nov 2021 10:43:20.1843 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 6N0OPJMxyZUZYl6/Coi+sy8qjGHublRdRHmokc4bCgjxjOPLA11CaKoRfZHyUKFRUtF2miNdjOdV5S/8/2eKcSIyfKSJWYdvnMNv+6iDnQQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB6PR0402MB2901
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211110_023039_132266_C81254DF 
-X-CRM114-Status: GOOD (  35.60  )
+X-CRM114-CacheID: sfid-20211110_024326_868377_7B7A604C 
+X-CRM114-Status: GOOD (  19.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,228 +170,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="gb2312"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 09, 2021 at 08:50:17PM +0800, Yunfei Dong wrote:
-> Manage each hardware information which includes irq/power/clk.
-> The hardware includes LAT0, LAT1 and CORE.
-
-The commit message doesn't explain the code.  Could you provide some
-explanations about how the async mechanism works?  (e.g. A bitmap for
-all sub-devices' readiness ...)
-
-> Reported-by: kernel test robot <lkp@intel.com>
-
-Apparently wrong tag.
-
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> index b7a51e96d4ba..eb2af42aa102 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> @@ -18,19 +18,49 @@
->
->  #include "mtk_vcodec_drv.h"
->  #include "mtk_vcodec_dec.h"
-> +#include "mtk_vcodec_dec_hw.h"
->  #include "mtk_vcodec_dec_pm.h"
->  #include "mtk_vcodec_intr.h"
-> -#include "mtk_vcodec_util.h"
-
-Why does mtk_vcodec_util.h need to remove?
-
-> +static int mtk_vcodec_subdev_device_check(struct mtk_vcodec_ctx *ctx)
-> + {
-
-Remove the extra space.
-
-> +     struct mtk_vcodec_dev *vdec_dev = ctx->dev;
-> +     struct platform_device *pdev = vdec_dev->plat_dev;
-> +     struct device_node *subdev_node;
-> +     enum mtk_vdec_hw_id hw_idx;
-> +     const struct of_device_id *of_id;
-> +     int i;
-> +
-> +     for (i = 0; i < ARRAY_SIZE(mtk_vdec_hw_match); i++) {
-> +             of_id = &mtk_vdec_hw_match[i];
-> +             subdev_node = of_find_compatible_node(NULL, NULL,
-> +                     of_id->compatible);
-> +             if (!subdev_node)
-> +                     continue;
-> +
-> +             if (!of_device_is_available(subdev_node)) {
-> +                     of_node_put(subdev_node);
-> +                     dev_err(&pdev->dev, "Fail to get MMSYS node\n");
-
-I am not sure if the error message makes sense about mentioning MMSYS here.
-
-> +                     continue;
-> +             }
-> +
-> +             hw_idx = (enum mtk_vdec_hw_id)(uintptr_t)of_id->data;
-
-Does it really need to cast twice?
-
-> +             vdec_dev->subdev_node[hw_idx] = subdev_node;
-> +
-> +             if (!test_bit(hw_idx, vdec_dev->hardware_bitmap)) {
-> +                     dev_err(&pdev->dev, "Vdec hw_idx is not ready %d.",
-> +                             hw_idx);
-
-I would prefer "Vdec %d is not ready\n".
-
-> +                     return -EINVAL;
-
--EAGAIN makes more sense.
-
-> +             }
-> +     }
-> +
-> +     return 0;
-> +}
-
-Would it need to call of_node_put() in the error handling path?
-
-> +static int mtk_vcodec_init_dec_params(struct mtk_vcodec_dev *dev)
-> +{
-
-I would rather not call them "params".  They are more like "resources".
-
-> +     struct platform_device *pdev = dev->plat_dev;
-> +     int ret;
-> +
-> +     ret = mtk_vcodec_get_reg_bases(dev);
-> +     if (ret)
-> +             return ret;
-> +
-> +     if (!dev->vdec_pdata->is_subdev_supported) {
-> +             dev->dec_irq = platform_get_irq(pdev, 0);
-> +             if (dev->dec_irq < 0) {
-> +                     dev_err(&pdev->dev, "failed to get irq number");
-> +                     return dev->dec_irq;
-> +             }
-> +
-> +             irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
-> +             ret = devm_request_irq(&pdev->dev, dev->dec_irq,
-> +                     mtk_vcodec_dec_irq_handler, 0, pdev->name, dev);
-> +             if (ret) {
-> +                     dev_err(&pdev->dev, "failed to install dev->dec_irq %d (%d)",
-> +                             dev->dec_irq, ret);
-> +                     return ret;
-> +             }
-> +
-> +             ret = mtk_vcodec_init_dec_pm(pdev, &dev->pm);
-> +             if (ret < 0) {
-> +                     dev_err(&pdev->dev, "failed to get mt vcodec clock source");
-> +                     return ret;
-> +             }
-> +     }
-
-I would prefer:
-
-if (dev->vdec_pdata->is_subdev_supported)
-    return 0;
-
-And decrease the indent level by 1 for the following blocks.
-
-> @@ -329,6 +377,13 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
->               goto err_event_workq;
->       }
->
-> +     ret = of_platform_populate(pdev->dev.of_node, NULL, NULL,
-> +             &pdev->dev);
-> +     if (ret) {
-> +             mtk_v4l2_err("Master device of_platform_populate failed.");
-
-s/Master/Main/
-
-Doesn't it need to reference `is_subdev_supported` before populating?
-
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-> new file mode 100644
-> index 000000000000..745be12548ef
-[...]
-> +const struct of_device_id mtk_vdec_hw_match[] = {
-> +     {
-> +             .compatible = "mediatek,mtk-vcodec-lat",
-> +             .data = (void *)MTK_VDEC_LAT0,
-> +     },
-> +     {
-> +             .compatible = "mediatek,mtk-vcodec-core",
-> +             .data = (void *)MTK_VDEC_CORE,
-> +     },
-> +     {},
-> +};
-> +EXPORT_SYMBOL_GPL(mtk_vdec_hw_match);
-
-Introducing new compatible strings.  Need a dt-bindings patch for them.
-
-> +static int mtk_vdec_hw_probe(struct platform_device *pdev)
-> +{
-[...]
-> +     subdev_dev->reg_base[VDEC_HW_MISC] =
-> +             devm_platform_ioremap_resource_byname(pdev, "misc");
-> +     if (IS_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC])) {
-> +             ret = PTR_ERR((__force void *)subdev_dev->reg_base[VDEC_HW_MISC]);
-> +             goto err;
-> +     }
-
-Resource "misc" needs a dt-bindings patch to explain how to use/specify it.
-
-> +     hw_idx = (enum mtk_vdec_hw_id)(uintptr_t)of_id->data;
-
-Does it really need to cast twice?
-
-> +     if (hw_idx < MTK_VDEC_HW_MAX) {
-> +             main_dev->subdev_dev[hw_idx] = subdev_dev;
-> +             subdev_dev->hw_idx = hw_idx;
-> +             subdev_dev->main_dev = main_dev;
-> +             subdev_dev->reg_base[VDEC_HW_SYS] =
-> +                     main_dev->reg_base[VDEC_HW_SYS];
-> +             set_bit(subdev_dev->hw_idx, main_dev->hardware_bitmap);
-> +     }
-
-mtk_vcodec_subdev_device_check() doesn't check the value of
-of_id->data.  Does it make more sense to align the implementation?  If
-hw_idx is equal to or bigger than MTK_VDEC_HW_MAX, shall it print
-warning messages for example.
-
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
-[...]
-> +#define VDEC_HW_ACTIVE 0x10
-> +#define VDEC_IRQ_CFG 0x11
-> +#define VDEC_IRQ_CLR 0x10
-> +#define VDEC_IRQ_CFG_REG 0xa4
-
-If only mtk_vcodec_dec_hw.c uses them, could they move to the file?
-
-> @@ -423,6 +436,11 @@ struct mtk_vcodec_enc_pdata {
->   * @pm: power management control
->   * @dec_capability: used to identify decode capability, ex: 4k
->   * @enc_capability: used to identify encode capability
-> + *
-> + * @subdev_dev: subdev hardware device
-> + * @subdev_node: subdev node
-> + *
-> + * @hardware_bitmap: used to record hardware is ready or not
->   */
->  struct mtk_vcodec_dev {
->       struct v4l2_device v4l2_dev;
-> @@ -460,6 +478,11 @@ struct mtk_vcodec_dev {
->       struct mtk_vcodec_pm pm;
->       unsigned int dec_capability;
->       unsigned int enc_capability;
-> +
-> +     void *subdev_dev[MTK_VDEC_HW_MAX];
-> +     struct device_node *subdev_node[MTK_VDEC_HW_MAX];
-> +
-> +     DECLARE_BITMAP(hardware_bitmap, MTK_VDEC_HW_MAX);
-
-I would prefer to use name `subdev_bitmap`.
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgVmxhZGltaXIsDQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogVmxh
+ZGltaXIgT2x0ZWFuIDx2bGFkaW1pci5vbHRlYW5AbnhwLmNvbT4NCj4gU2VudDogMjAyMcTqMTDU
+wjbI1SAyMToxMw0KPiBUbzogWGlhb2xpYW5nIFlhbmcgPHhpYW9saWFuZy55YW5nXzFAbnhwLmNv
+bT4NCj4gQ2M6IGRhdmVtQGRhdmVtbG9mdC5uZXQ7IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5v
+cmc7DQo+IG5ldGRldkB2Z2VyLmtlcm5lbC5vcmc7IGFsbGFuLm5pZWxzZW5AbWljcm9jaGlwLmNv
+bTsNCj4gam9lcmdlbi5hbmRyZWFzZW5AbWljcm9jaGlwLmNvbTsgVU5HTGludXhEcml2ZXJAbWlj
+cm9jaGlwLmNvbTsNCj4gdmluaWNpdXMuZ29tZXNAaW50ZWwuY29tOyBtaWNoYWVsLmNoYW5AYnJv
+YWRjb20uY29tOw0KPiB2aXNoYWxAY2hlbHNpby5jb207IHNhZWVkbUBtZWxsYW5veC5jb207IGpp
+cmlAbWVsbGFub3guY29tOw0KPiBpZG9zY2hAbWVsbGFub3guY29tOyBhbGV4YW5kcmUuYmVsbG9u
+aUBib290bGluLmNvbTsga3ViYUBrZXJuZWwub3JnOyBQbw0KPiBMaXUgPHBvLmxpdUBueHAuY29t
+PjsgTGVvIExpIDxsZW95YW5nLmxpQG54cC5jb20+OyBmLmZhaW5lbGxpQGdtYWlsLmNvbTsNCj4g
+YW5kcmV3QGx1bm4uY2g7IHZpdmllbi5kaWRlbG90QGdtYWlsLmNvbTsgQ2xhdWRpdSBNYW5vaWwN
+Cj4gPGNsYXVkaXUubWFub2lsQG54cC5jb20+OyBsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRl
+YWQub3JnOw0KPiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmc7IG1hdHRoaWFz
+LmJnZ0BnbWFpbC5jb207DQo+IGhvcmF0aXUudnVsdHVyQG1pY3JvY2hpcC5jb20NCj4gU3ViamVj
+dDogUmU6IFtQQVRDSCB2NiBuZXQtbmV4dCA1LzhdIG5ldDogZHNhOiBmZWxpeDogc3VwcG9ydCBw
+c2ZwIGZpbHRlciBvbg0KPiB2c2M5OTU5DQo+IA0KPiBPbiBUaHUsIE9jdCA2LCAyMDIxIGF0IDIx
+OjEzOjQ1ICswMzAwLCBWbGFkaW1pciBPbHRlYW4gd3JvdGU6DQo+ID4gK3N0YXRpYyBpbnQgdnNj
+OTk1OV9wc2ZwX2ZpbHRlcl9hZGQoc3RydWN0IG9jZWxvdCAqb2NlbG90LA0KPiA+ICsJCQkJICAg
+c3RydWN0IGZsb3dfY2xzX29mZmxvYWQgKmYpDQo+ID4gK3sNCj4gDQo+IE5laXRoZXIgdGhlIHZz
+Yzk5NTlfcHNmcF9maWx0ZXJfYWRkIG5vciB2c2M5OTU5X3BzZnBfZmlsdGVyX2RlbA0KPiBpbXBs
+ZW1lbnRhdGlvbnMgdGFrZSBhbiAiaW50IHBvcnQiIGFzIGFyZ3VtZW50LiBUaGVyZWZvcmUsIHdo
+ZW4gdGhlIFNGSUQgaXMNCj4gcHJvZ3JhbW1lZCBpbiB0aGUgTUFDIHRhYmxlLCBpdCBtYXRjaGVz
+IG9uIGFueSBpbmdyZXNzIHBvcnQgdGhhdCBpcyBpbiB0aGUNCj4gc2FtZSBicmlkZ2luZyBkb21h
+aW4gYXMgdGhlIHBvcnQgcG9pbnRlZCB0b3dhcmRzIGJ5IHRoZSBNQUMgdGFibGUgKGFuZCB0aGUN
+Cj4gTUFDIHRhYmxlIHNlbGVjdHMgdGhlIF9kZXN0aW5hdGlvbl8gcG9ydCkuDQo+IA0KPiBPdGhl
+cndpc2Ugc2FpZCwgaW4gdGhpcyBzZXR1cDoNCj4gDQo+ICAgICAgICAgICAgICAgICAgICAgIGJy
+MA0KPiAgICAgICAgICAgICAgICAgICAgLyAgfCAgXA0KPiAgICAgICAgICAgICAgICAgICAvICAg
+fCAgIFwNCj4gICAgICAgICAgICAgICAgICAvICAgIHwgICAgXA0KPiAgICAgICAgICAgICAgIHN3
+cDAgICBzd3AxICAgc3dwMg0KPiANCj4gYnJpZGdlIHZsYW4gYWRkIGRldiBzd3AwIHZpZCAxMDAN
+Cj4gYnJpZGdlIHZsYW4gYWRkIGRldiBzd3AxIHZpZCAxMDANCj4gYnJpZGdlIHZsYW4gYWRkIGRl
+diBzd3AyIHZpZCAxMDANCj4gYnJpZGdlIGZkYiBhZGQgZGV2IHN3cDIgMDA6MDE6MDI6MDM6MDQ6
+MDUgdmxhbiAxMDAgc3RhdGljIG1hc3RlciB0YyBmaWx0ZXIgYWRkDQo+IGRldiBzd3AwIGluZ3Jl
+c3MgY2hhaW4gMCBwcmVmIDQ5MTUyIGZsb3dlciBcDQo+IAlza2lwX3N3IGFjdGlvbiBnb3RvIGNo
+YWluIDMwMDAwDQo+IHRjIGZpbHRlciBhZGQgZGV2IHN3cDAgaW5ncmVzcyBjaGFpbiAzMDAwMCBw
+cmVmIDEgXA0KPiAJcHJvdG9jb2wgODAyLjFRIGZsb3dlciBza2lwX3N3IFwNCj4gCWRzdF9tYWMg
+MDA6MDE6MDI6MDM6MDQ6MDUgdmxhbl9pZCAxMDAgXA0KPiAJYWN0aW9uIGdhdGUgYmFzZS10aW1l
+IDAuMDAwMDAwMDAwIFwNCj4gCXNjaGVkLWVudHJ5IE9QRU4gIDUwMDAwMDAgLTEgLTEgXA0KPiAJ
+c2NoZWQtZW50cnkgQ0xPU0UgNTAwMDAwMCAtMSAtMQ0KPiANCj4gVGhlICJmaWx0ZXIiIGFib3Zl
+IHdpbGwgbWF0Y2ggbm90IG9ubHkgb24gc3dwMCwgYnV0IGFsc28gb24gcGFja2V0cyBpbmdyZXNz
+ZWQNCj4gZnJvbSBzd3AxLg0KPiANCj4gVGhlIGhhcmR3YXJlIHByb3ZpZGVzIElHUl9TUkNQT1JU
+X01BVENIX0VOQSBhbmQgSUdSX1BPUlRfTUFTSyBiaXRzDQo+IGluIHRoZSBTdHJlYW0gRmlsdGVy
+IFJBTSAoQU5BOkFOQV9UQUJMRVM6U0ZJRF9NQVNLKS4gTWF5YmUgeW91IGNvdWxkDQo+IHByb2dy
+YW0gYSBTRklEIHRvIG1hdGNoIG9ubHkgb24gdGhlIHBvcnRzIG9uIHdoaWNoIHRoZSB1c2VyIGlu
+dGVuZGVkPw0KPiANClllcywgeW91IGFyZSByaWdodC4gSSBoYXZlIHRlc3RlZCB0aGF0IHVzZSBJ
+R1JfU1JDUE9SVF9NQVRDSF9FTkEgYW5kIElHUl9QT1JUX01BU0sgYml0cyBjYW4gbGV0IGEgU0ZJ
+RCB0bw0KbWF0Y2ggb25seSBvbiB0aGUgZGVzaWduYXRlZCBwb3J0cy4gQnV0IHRoaXMgb25seSBj
+YW4gbWF0Y2ggdG8gdHdvIHBvcnRzIGZvciBlYWNoIFNGSUQsIHR3byBwb3J0cyB1c2UgdGhlIHNm
+aWQsDQpzZmlkKzEgYXMgU0ZJRCBpbmRleC4gSSBjYW4gdHJ5IHRvIGFkZCBpdCBpbiBkcml2ZXIs
+IGJ1dCBpdCB3aWxsIGxpbWl0IHVzZXIgb25seSB0byBtYXRjaCBvbmUgb3IgdHdvIHBvcnRzIGZv
+ciBhIHNhbWUNCnN0cmVhbS4NCg0KVGhhbmtzLA0KWGlhb2xpYW5nDQpfX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxp
+c3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
+ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
