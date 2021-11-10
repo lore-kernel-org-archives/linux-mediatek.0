@@ -2,85 +2,73 @@ Return-Path: <SRS0=x/8t=P5=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3D47C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 07:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 450D2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 08:40:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 98A27611BF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 07:52:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 98A27611BF
+	by mail.kernel.org (Postfix) with ESMTPS id 06C1C61106
+	for <linux-mediatek@archiver.kernel.org>; Wed, 10 Nov 2021 08:40:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 06C1C61106
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1rtJ/Dlam8ojNsM/0talbt0xSlqBjSlhnMRVXcvdKw0=; b=1qovqV/MdLhrWf
-	SHLARv8t9rXoCeyG9EfLF00th2k+1xBUFNaVnbHHp3AlTbGQfuKPVjx/D2/tFeG8mc3P1pf0ctCfC
-	RhLS9qq3lGUglZi73tCVZOlCtqWzeJakM+yjKSJ0dGi6KOnu9IaPCVSLM08/j0uI//pwZ8hHcqobM
-	OKnkeCJL/2Nh2dsv32YWmAz1U0HbgW2qVnGL0BkqZzaBBvg2/pC7FZV4QOWgeqvBCRZt7iQlQLjH4
-	sLotrS2VPPBcp24GJVL0MiVh2uPoFX1HQ7dBN5gXk7u7YYAVv1SJe6U+EEURWridlF8BncFMliUbl
-	o6R9/EYEfn0smQJ4z0yQ==;
+	List-Owner; bh=3WI+Mkvb49IgO84OWlU5y2YNYdcwgTZWDOyEhblVIog=; b=gHFNv3xYAkoaX0
+	kVAOlVsDhgNrwT1hX1ZTZjDRPYH5IaqUPDFsTtC/8KaJaDBoCoZHmycTguckwU2R2LMv2h8JVGAqz
+	xKBdC+O1w2TPKyoaS1akPt+M8xdFwG8XsAQlcpW1caIFjsGD934t8sAOfzmHXFTum4leHax+x/ozC
+	w14x5bTji72uPLM573dB6XQ0FU3QYe/72g+MASZWNuwvzBZqvdo60sJHbAYSBAmy6X78AFrWII7tc
+	6YxtPDZ/PijOu7p4vV25Bzjjve9B7x9x4IV+40V1b97EhofbxsetSuVPVfIJS6D0SLV6Gf1HX0BXw
+	aJRSrdoK8K3czlZ0X0+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mkiPY-004i5R-KK; Wed, 10 Nov 2021 07:52:48 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mkj9k-004q3y-JI; Wed, 10 Nov 2021 08:40:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mkiPL-004i4K-3X; Wed, 10 Nov 2021 07:52:37 +0000
-X-UUID: eb82e5a0f4b5425984f0d47a158617eb-20211110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=/1TqjzBPrVnDfHluNmOR1PKD5KL7XLPSyUrvjjeeBGU=; 
- b=raoSaaXfYpHdufSaRygm0z2rFU90ys0L4RxA9R1VrYpg2fPg2eNVAJXQqSyuYFdz+KSBp0QDJZMMKFDvHetc6j/tAFwvjlkcFX/L3jAPp8uTUuhY2O9B3/i2+Bihe8qguNiVnVe5QE56EHF4asUK/IWZAktYmuiJ9k3i1rp7j6U=;
-X-UUID: eb82e5a0f4b5425984f0d47a158617eb-20211110
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ id 1mkj9X-004pyr-7T; Wed, 10 Nov 2021 08:40:20 +0000
+X-UUID: 2e4c521224414136a76b98a1f3a7f448-20211110
+X-UUID: 2e4c521224414136a76b98a1f3a7f448-20211110
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 141922222; Wed, 10 Nov 2021 00:52:32 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 9 Nov 2021 23:50:27 -0800
+ with ESMTP id 1113778785; Wed, 10 Nov 2021 01:40:13 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
- Wed, 10 Nov 2021 15:50:26 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkmbs10n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via Frontend
- Transport; Wed, 10 Nov 2021 15:50:25 +0800
-Message-ID: <c69e03b4781dd9014393e0ff47767c58c846a722.camel@mediatek.com>
-Subject: Re: [PATCH v3 12/33] iommu/mediatek: Always tlb_flush_all when each
- PM resume
-From: Yong Wu <yong.wu@mediatek.com>
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
- <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
- <yen-chang.chen@mediatek.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Fabien Parent
- <fparent@baylibre.com>, <sebastian.reichel@collabora.com>, "Collabora Kernel
- ML" <kernel@collabora.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Will
- Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>
-Date: Wed, 10 Nov 2021 15:50:25 +0800
-In-Reply-To: <4dd4cf8d-0f52-afae-f7d9-8e3cfdf3b729@collabora.com>
-References: <20210923115840.17813-1-yong.wu@mediatek.com>
- <20210923115840.17813-13-yong.wu@mediatek.com>
- <c4be1a14-c257-81b7-4a2b-f7e68c32de88@collabora.com>
- <5c4dd67ae7c81721d8cfd2c3b23b7c6df493cb5a.camel@mediatek.com>
- <4dd4cf8d-0f52-afae-f7d9-8e3cfdf3b729@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Nov 2021 00:40:12 -0800
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.792.15; Wed, 10 Nov 2021 16:40:11 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs10n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via
+ Frontend Transport; Wed, 10 Nov 2021 16:40:10 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>
+Subject: [PATCH 5/5] arm64: dts: mt8195: add ethernet device node
+Date: Wed, 10 Nov 2021 16:39:48 +0800
+Message-ID: <20211110083948.6082-6-biao.huang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211110083948.6082-1-biao.huang@mediatek.com>
+References: <20211110083948.6082-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211109_235235_195938_43792CED 
-X-CRM114-Status: GOOD (  57.46  )
+X-CRM114-CacheID: sfid-20211110_004019_304086_1811214E 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,167 +85,209 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2021-11-10 at 07:29 +0200, Dafna Hirschfeld wrote:
-> 
-> On 10.11.21 04:20, Yong Wu wrote:
-> > On Tue, 2021-11-09 at 14:21 +0200, Dafna Hirschfeld wrote:
-> > > Hi
-> > > This patch is needed in order to update the tlb when a device is
-> > > powered on.
-> > > Could you send this patch alone without the whole series so it
-> > > get
-> > > accepted easier?
-> > 
-> > Which SoC are you testing on? In previous SoC, the IOMMU HW don't
-> > have
-> > power-domain, and we have a "has_pm"[1] in the tlb function for
-> > that
-> > case. The "has_pm" should be always 0 for the previous SoC like
-> > mt8173,
-> > it should always tlb synchronize.
-> > 
-> > thus, Could you help share more about your issue? In which case it
-> > lack
-> > the necessary tlb operation. At least, We need confirm if it needs
-> > a
-> > "Fixes" tags if sending this patch alone.
-> 
-> Hi,
-> I work with the mtk-vcodec driver on mt8173. As you wrote, the iommu
-> doesn't
-> have a power-domain and so when allocating buffers before the device
-> is powered
-> on, there is the warning
-> "Partial TLB flush timed out, falling back to full flush"
-> flooding the log buf.
+This patch adds device node for mt8195 ethernet.
 
-oh. Thanks very much for your information. Get it now.
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8195-evb.dts | 92 +++++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 70 ++++++++++++++++
+ 2 files changed, 162 insertions(+)
 
-This issue should be introduced by the:
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+index 5cce9a5d3163..d90308f80229 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+@@ -5,6 +5,8 @@
+  */
+ /dts-v1/;
+ #include "mt8195.dtsi"
++#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
++#include <dt-bindings/gpio/gpio.h>
+ 
+ / {
+ 	model = "MediaTek MT8195 evaluation board";
+@@ -32,6 +34,96 @@ reserved_memory: reserved-memory {
+ 	};
+ };
+ 
++&eth {
++	phy-mode ="rgmii-rxid";
++	phy-handle = <&eth_phy0>;
++	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
++	snps,reset-delays-us = <0 10000 10000>;
++	mediatek,tx-delay-ps = <2030>;
++	pinctrl-names = "default", "sleep";
++	pinctrl-0 = <&eth_default>;
++	pinctrl-1 = <&eth_sleep>;
++	status = "okay";
++
++	mdio {
++		compatible = "snps,dwmac-mdio";
++		#address-cells = <1>;
++		#size-cells = <0>;
++		eth_phy0: eth_phy0@1 {
++			compatible = "ethernet-phy-id001c.c916";
++			reg = <0x1>;
++		};
++	};
++};
++
++&pio {
++	eth_default: eth_default {
++		txd_pins {
++			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
++				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
++				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
++				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++		cc_pins {
++			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
++				 <PINMUX_GPIO88__FUNC_GBE_TXEN>,
++				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
++				 <PINMUX_GPIO86__FUNC_GBE_RXC>;
++			drive-strength = <MTK_DRIVE_8mA>;
++		};
++		rxd_pins {
++			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
++				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
++				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
++				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
++		};
++		mdio_pins {
++			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
++				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
++			input-enable;
++		};
++		power_pins {
++			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
++				 <PINMUX_GPIO92__FUNC_GPIO92>;
++			output-high;
++		};
++	};
++
++	eth_sleep: eth_sleep {
++		txd_pins {
++			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
++				 <PINMUX_GPIO78__FUNC_GPIO78>,
++				 <PINMUX_GPIO79__FUNC_GPIO79>,
++				 <PINMUX_GPIO80__FUNC_GPIO80>;
++		};
++		cc_pins {
++			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
++				 <PINMUX_GPIO88__FUNC_GPIO88>,
++				 <PINMUX_GPIO87__FUNC_GPIO87>,
++				 <PINMUX_GPIO86__FUNC_GPIO86>;
++		};
++		rxd_pins {
++			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
++				 <PINMUX_GPIO82__FUNC_GPIO82>,
++				 <PINMUX_GPIO83__FUNC_GPIO83>,
++				 <PINMUX_GPIO84__FUNC_GPIO84>;
++		};
++		mdio_pins {
++			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
++				 <PINMUX_GPIO90__FUNC_GPIO90>;
++			input-disable;
++			bias-disable;
++		};
++		power_pins {
++			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
++				 <PINMUX_GPIO92__FUNC_GPIO92>;
++			input-disable;
++			bias-disable;
++		};
++	};
++};
++
+ &uart0 {
+ 	status = "okay";
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+index a59c0e9d1fc2..f30a60dca5ef 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
+@@ -823,6 +823,76 @@ spis1: spi@1101e000 {
+ 			status = "disabled";
+ 		};
+ 
++		eth: ethernet@11021000 {
++			compatible = "mediatek,mt8195-gmac", "snps,dwmac-5.10a";
++			reg = <0 0x11021000 0 0x4000>;
++			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH 0>;
++			interrupt-names = "macirq";
++			mac-address = [00 55 7b b5 7d f7];
++			clock-names = "axi",
++				      "apb",
++				      "mac_cg",
++				      "mac_main",
++				      "ptp_ref",
++				      "rmii_internal";
++			clocks = <&pericfg_ao CLK_PERI_AO_ETHERNET>,
++				 <&pericfg_ao CLK_PERI_AO_ETHERNET_BUS>,
++				 <&pericfg_ao CLK_PERI_AO_ETHERNET_MAC>,
++				 <&topckgen CLK_TOP_SNPS_ETH_250M>,
++				 <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
++				 <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
++			assigned-clocks = <&topckgen CLK_TOP_SNPS_ETH_250M>,
++					  <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
++					  <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
++			assigned-clock-parents = <&topckgen CLK_TOP_ETHPLL_D2>,
++						 <&topckgen CLK_TOP_ETHPLL_D8>,
++						 <&topckgen CLK_TOP_ETHPLL_D10>;
++			power-domains = <&spm MT8195_POWER_DOMAIN_ETHER>;
++			mediatek,pericfg = <&infracfg_ao>;
++			snps,axi-config = <&stmmac_axi_setup>;
++			snps,mtl-rx-config = <&mtl_rx_setup>;
++			snps,mtl-tx-config = <&mtl_tx_setup>;
++			snps,txpbl = <16>;
++			snps,rxpbl = <16>;
++			clk_csr = <0>;
++			status = "disabled";
++
++			stmmac_axi_setup: stmmac-axi-config {
++				snps,wr_osr_lmt = <0x7>;
++				snps,rd_osr_lmt = <0x7>;
++				snps,blen = <0 0 0 0 16 8 4>;
++			};
++
++			mtl_rx_setup: rx-queues-config {
++				snps,rx-queues-to-use = <1>;
++				snps,rx-sched-sp;
++				queue0 {
++					snps,dcb-algorithm;
++					snps,map-to-dma-channel = <0x0>;
++					snps,priority = <0x0>;
++				};
++			};
++			mtl_tx_setup: tx-queues-config {
++				snps,tx-queues-to-use = <3>;
++				snps,tx-sched-wrr;
++				queue0 {
++					snps,weight = <0x10>;
++					snps,dcb-algorithm;
++					snps,priority = <0x0>;
++				};
++				queue1 {
++					snps,weight = <0x11>;
++					snps,dcb-algorithm;
++					snps,priority = <0x1>;
++				};
++				queue2 {
++					snps,weight = <0x12>;
++					snps,dcb-algorithm;
++					snps,priority = <0x2>;
++				};
++			};
++		};
++
+ 		mmc0: mmc@11230000 {
+ 			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
+ 			reg = <0 0x11230000 0 0x10000>,
+-- 
+2.25.1
 
-b34ea31fe013 ("iommu/mediatek: Always enable the clk on resume")
 
-tlb failed due to the bclk is not enabled. Could you help try that
-after reverting this?
-
-> 
-> Sebastian Reichel suggested to remove the 'if(has_pm)' check to avoid
-> this warning,
-> and avoid flushing the tlb if the device is off:
-> 
-> [1] http://ix.io/3Eyr
-> 
-> This fixes the warning, but then the tlb is not flushed in sync,
-> Therefore the tlb should be flushed when the device is resumed.
-> 
-> So the two patches (the one suggested in the link [1] and this patch)
-> should be sent together as a 2-patch series.
-
-then this is reasonable. You could help this into a new patchset if you
-are free(add Fixes tag).
-
-Thanks.
-
-> 
-> Thanks,
-> Dafna
-> 
-> > 
-> > Thanks.
-> > 
-> > [1]
-> > 
-https://elixir.bootlin.com/linux/v5.15/source/drivers/iommu/mtk_iommu.c#L236
-> > 
-> > > I can resend the patch on your behalf if you want.
-> > > 
-> > > Thanks,
-> > > Dafna
-> > > 
-> > > On 23.09.21 14:58, Yong Wu wrote:
-> > > > Prepare for 2 HWs that sharing pgtable in different power-
-> > > > domains.
-> > > > 
-> > > > When there are 2 M4U HWs, it may has problem in the flush_range
-> > > > in
-> > > > which
-> > > > we get the pm_status via the m4u dev, BUT that function don't
-> > > > reflect the
-> > > > real power-domain status of the HW since there may be other HW
-> > > > also
-> > > > use
-> > > > that power-domain.
-> > > > 
-> > > > The function dma_alloc_attrs help allocate the iommu buffer
-> > > > which
-> > > > need the corresponding power domain since tlb flush is needed
-> > > > when
-> > > > preparing iova. BUT this function only is for allocating
-> > > > buffer,
-> > > > we have no good reason to request the user always call
-> > > > pm_runtime_get
-> > > > before calling dma_alloc_xxx. Therefore, we add a tlb_flush_all
-> > > > in the pm_runtime_resume to make sure the tlb always is clean.
-> > > > 
-> > > > Another solution is always call pm_runtime_get in the
-> > > > tlb_flush_range.
-> > > > This will trigger pm runtime resume/backup so often when the
-> > > > iommu
-> > > > power is not active at some time(means user don't call
-> > > > pm_runtime_get
-> > > > before calling dma_alloc_xxx), This may cause the performance
-> > > > drop.
-> > > > thus we don't use this.
-> > > > 
-> > > > In other case, the iommu's power should always be active via
-> > > > device
-> > > > link with smi.
-> > > > 
-> > > > The previous SoC don't have PM except mt8192. the mt8192 IOMMU
-> > > > is
-> > > > display's
-> > > > power-domain which nearly always is enabled. thus no need fix
-> > > > tags
-> > > > here.
-> > > > Prepare for mt8195.
-> > > > 
-> > > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > > > ---
-> > > >    drivers/iommu/mtk_iommu.c | 11 +++++++++++
-> > > >    1 file changed, 11 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/iommu/mtk_iommu.c
-> > > > b/drivers/iommu/mtk_iommu.c
-> > > > index 44cf5547d084..e9e94944ed91 100644
-> > > > --- a/drivers/iommu/mtk_iommu.c
-> > > > +++ b/drivers/iommu/mtk_iommu.c
-> > > > @@ -984,6 +984,17 @@ static int __maybe_unused
-> > > > mtk_iommu_runtime_resume(struct device *dev)
-> > > >    		return ret;
-> > > >    	}
-> > > >    
-> > > > +	/*
-> > > > +	 * Users may allocate dma buffer before they call
-> > > > pm_runtime_get, then
-> > > > +	 * it will lack the necessary tlb flush.
-> > > > +	 *
-> > > > +	 * We have no good reason to request the users always
-> > > > call
-> > > > dma_alloc_xx
-> > > > +	 * after pm_runtime_get_sync.
-> > > > +	 *
-> > > > +	 * Thus, Make sure the tlb always is clean after each
-> > > > PM
-> > > > resume.
-> > > > +	 */
-> > > > +	mtk_iommu_tlb_do_flush_all(data);
-> > > > +
-> > > >    	/*
-> > > >    	 * Uppon first resume, only enable the clk and return,
-> > > > since
-> > > > the values of the
-> > > >    	 * registers are not yet set.
-> > > > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
