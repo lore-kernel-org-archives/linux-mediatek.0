@@ -2,14 +2,14 @@ Return-Path: <SRS0=RaJc=P6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E3F3EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 07:13:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 100C5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 07:13:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id A8B5661269
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 07:13:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A8B5661269
+	by mail.kernel.org (Postfix) with ESMTPS id C97026124C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 07:13:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C97026124C
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3WI+Mkvb49IgO84OWlU5y2YNYdcwgTZWDOyEhblVIog=; b=ebjPNQq8gEQesY
-	pqDW9gzSrqR/s+2hB+VfwHDGYO7tR13D5Q3RqMHL0GHzG/QtOXZzQan+Zz9Cn0Z9vXZTQY8HO357O
-	0Emkx3vzDZfK2ClUNGJHis/B9mhZ+YkW1lIY7KGH5YMNHN08WL1tjnl+QOvSovpLcrgtNK1TvX+8g
-	miBQkogtEcrEOPci2RE5N+qLdRbMZO+Dwhy3f8BXyNeOTD4+lj7dxUkPphxbghWIen/iFxovmfrnj
-	XDXzggIWU5s99TQhVyzlISqAnCxN/2B2VbMQKzr89jldpMoZKdpCVFbV9qdGeCBS6yEqRMOJNZ29I
-	+3MkpaPLLVE3ssJRgvtA==;
+	List-Owner; bh=o35qzTEoORU3VK4WDWOzvz3A7SSPPO13hdbmYow1pS0=; b=ABAygwUQ+tYSpy
+	AWVXDyErkj2v2VXNwpLsOTlLYYMX3TZaT56deTof8RSwwjnjES/sh2OWzijqyuskXmvzj7ks+FJCF
+	yCd46nZniWWnoENRbLUNJfuB+6eIIaAuVXAXsj0LNJ7T413eWbDa/4LhM0yj9U3aWE07pSgRs4Myl
+	4JWXj9wwUqMKKLYoUEEXS6YUnbXHuB6f9dxoXAJ10xN0IaVQaoIba4krXKX9fusGi5WrHe7H0npvo
+	tn+u8JpH/X5K9DHwtfpRT3aDSpkWSgt2+bxrxB6q2U8zw4SDGh+ijWbrpsb5wcZbr32soibLCsgu5
+	WIgQGIvLfryNwg0XNmEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ml4Gp-007KpI-2F; Thu, 11 Nov 2021 07:13:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ml4H3-007Kwr-2D; Thu, 11 Nov 2021 07:13:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ml4G5-007Ka3-KS; Thu, 11 Nov 2021 07:12:31 +0000
-X-UUID: d344d64df637418487015c4e7ff95a0e-20211111
-X-UUID: d344d64df637418487015c4e7ff95a0e-20211111
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1ml4G5-007KbI-5F; Thu, 11 Nov 2021 07:12:31 +0000
+X-UUID: ca31f220200745b198dc793db6549d7b-20211111
+X-UUID: ca31f220200745b198dc793db6549d7b-20211111
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 983694684; Thu, 11 Nov 2021 00:12:27 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 2094294272; Thu, 11 Nov 2021 00:12:26 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 10 Nov 2021 23:12:25 -0800
+ 15.0.1497.2; Wed, 10 Nov 2021 23:12:24 -0800
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.792.15; Thu, 11 Nov 2021 15:12:24 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Thu, 11 Nov 2021 15:12:23 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkmbs10n1.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.2.792.15 via
- Frontend Transport; Thu, 11 Nov 2021 15:12:23 +0800
+ Frontend Transport; Thu, 11 Nov 2021 15:12:22 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
  <robh+dt@kernel.org>
@@ -58,17 +58,18 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
  <linux-mediatek@lists.infradead.org>,
  <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
  <macpaul.lin@mediatek.com>
-Subject: [PATCH v2 5/5] arm64: dts: mt8195: add ethernet device node
-Date: Thu, 11 Nov 2021 15:12:14 +0800
-Message-ID: <20211111071214.21027-6-biao.huang@mediatek.com>
+Subject: [PATCH v2 4/5] dt-bindings: net: dwmac: Convert mediatek-dwmac to DT
+ schema
+Date: Thu, 11 Nov 2021 15:12:13 +0800
+Message-ID: <20211111071214.21027-5-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211111071214.21027-1-biao.huang@mediatek.com>
 References: <20211111071214.21027-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211110_231229_726615_A0E92C87 
-X-CRM114-Status: GOOD (  11.76  )
+X-CRM114-CacheID: sfid-20211110_231229_241449_E3BAF86E 
+X-CRM114-Status: GOOD (  23.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,205 +86,330 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds device node for mt8195 ethernet.
+Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8195-evb.dts | 92 +++++++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi    | 70 ++++++++++++++++
- 2 files changed, 162 insertions(+)
+ .../bindings/net/mediatek-dwmac.txt           |  91 --------
+ .../bindings/net/mediatek-dwmac.yaml          | 211 ++++++++++++++++++
+ 2 files changed, 211 insertions(+), 91 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-index 5cce9a5d3163..d90308f80229 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-@@ -5,6 +5,8 @@
-  */
- /dts-v1/;
- #include "mt8195.dtsi"
-+#include <dt-bindings/pinctrl/mt8195-pinfunc.h>
-+#include <dt-bindings/gpio/gpio.h>
- 
- / {
- 	model = "MediaTek MT8195 evaluation board";
-@@ -32,6 +34,96 @@ reserved_memory: reserved-memory {
- 	};
- };
- 
-+&eth {
-+	phy-mode ="rgmii-rxid";
-+	phy-handle = <&eth_phy0>;
-+	snps,reset-gpio = <&pio 93 GPIO_ACTIVE_HIGH>;
-+	snps,reset-delays-us = <0 10000 10000>;
-+	mediatek,tx-delay-ps = <2030>;
-+	pinctrl-names = "default", "sleep";
-+	pinctrl-0 = <&eth_default>;
-+	pinctrl-1 = <&eth_sleep>;
-+	status = "okay";
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+deleted file mode 100644
+index afbcaebf062e..000000000000
+--- a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
++++ /dev/null
+@@ -1,91 +0,0 @@
+-MediaTek DWMAC glue layer controller
+-
+-This file documents platform glue layer for stmmac.
+-Please see stmmac.txt for the other unchanged properties.
+-
+-The device node has following properties.
+-
+-Required properties:
+-- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
+-- reg:  Address and length of the register set for the device
+-- interrupts:  Should contain the MAC interrupts
+-- interrupt-names: Should contain a list of interrupt names corresponding to
+-	the interrupts in the interrupts property, if available.
+-	Should be "macirq" for the main MAC IRQ
+-- clocks: Must contain a phandle for each entry in clock-names.
+-- clock-names: The name of the clock listed in the clocks property. These are
+-	"axi", "apb", "mac_main", "ptp_ref", "rmii_internal" for MT2712 SoC.
+-- mac-address: See ethernet.txt in the same directory
+-- phy-mode: See ethernet.txt in the same directory
+-- mediatek,pericfg: A phandle to the syscon node that control ethernet
+-	interface and timing delay.
+-
+-Optional properties:
+-- mediatek,tx-delay-ps: TX clock delay macro value. Default is 0.
+-	It should be defined for RGMII/MII interface.
+-	It should be defined for RMII interface when the reference clock is from MT2712 SoC.
+-- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
+-	It should be defined for RGMII/MII interface.
+-	It should be defined for RMII interface.
+-Both delay properties need to be a multiple of 170 for RGMII interface,
+-or will round down. Range 0~31*170.
+-Both delay properties need to be a multiple of 550 for MII/RMII interface,
+-or will round down. Range 0~31*550.
+-
+-- mediatek,rmii-rxc: boolean property, if present indicates that the RMII
+-	reference clock, which is from external PHYs, is connected to RXC pin
+-	on MT2712 SoC.
+-	Otherwise, is connected to TXC pin.
+-- mediatek,rmii-clk-from-mac: boolean property, if present indicates that
+-	MT2712 SoC provides the RMII reference clock, which outputs to TXC pin only.
+-- mediatek,txc-inverse: boolean property, if present indicates that
+-	1. tx clock will be inversed in MII/RGMII case,
+-	2. tx clock inside MAC will be inversed relative to reference clock
+-	   which is from external PHYs in RMII case, and it rarely happen.
+-	3. the reference clock, which outputs to TXC pin will be inversed in RMII case
+-	   when the reference clock is from MT2712 SoC.
+-- mediatek,rxc-inverse: boolean property, if present indicates that
+-	1. rx clock will be inversed in MII/RGMII case.
+-	2. reference clock will be inversed when arrived at MAC in RMII case, when
+-	   the reference clock is from external PHYs.
+-	3. the inside clock, which be sent to MAC, will be inversed in RMII case when
+-	   the reference clock is from MT2712 SoC.
+-- assigned-clocks: mac_main and ptp_ref clocks
+-- assigned-clock-parents: parent clocks of the assigned clocks
+-
+-Example:
+-	eth: ethernet@1101c000 {
+-		compatible = "mediatek,mt2712-gmac";
+-		reg = <0 0x1101c000 0 0x1300>;
+-		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+-		interrupt-names = "macirq";
+-		phy-mode ="rgmii-rxid";
+-		mac-address = [00 55 7b b5 7d f7];
+-		clock-names = "axi",
+-			      "apb",
+-			      "mac_main",
+-			      "ptp_ref",
+-			      "rmii_internal";
+-		clocks = <&pericfg CLK_PERI_GMAC>,
+-			 <&pericfg CLK_PERI_GMAC_PCLK>,
+-			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
+-			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+-		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
+-				  <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+-		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
+-					 <&topckgen CLK_TOP_APLL1_D3>,
+-					 <&topckgen CLK_TOP_ETHERPLL_50M>;
+-		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
+-		mediatek,pericfg = <&pericfg>;
+-		mediatek,tx-delay-ps = <1530>;
+-		mediatek,rx-delay-ps = <1530>;
+-		mediatek,rmii-rxc;
+-		mediatek,txc-inverse;
+-		mediatek,rxc-inverse;
+-		snps,txpbl = <1>;
+-		snps,rxpbl = <1>;
+-		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
+-		snps,reset-active-low;
+-	};
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+new file mode 100644
+index 000000000000..b27566ed01c6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+@@ -0,0 +1,211 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/mediatek-dwmac.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	mdio {
-+		compatible = "snps,dwmac-mdio";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		eth_phy0: eth_phy0@1 {
-+			compatible = "ethernet-phy-id001c.c916";
-+			reg = <0x1>;
-+		};
-+	};
-+};
++title: MediaTek DWMAC glue layer controller
 +
-+&pio {
-+	eth_default: eth_default {
-+		txd_pins {
-+			pinmux = <PINMUX_GPIO77__FUNC_GBE_TXD3>,
-+				 <PINMUX_GPIO78__FUNC_GBE_TXD2>,
-+				 <PINMUX_GPIO79__FUNC_GBE_TXD1>,
-+				 <PINMUX_GPIO80__FUNC_GBE_TXD0>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+		};
-+		cc_pins {
-+			pinmux = <PINMUX_GPIO85__FUNC_GBE_TXC>,
-+				 <PINMUX_GPIO88__FUNC_GBE_TXEN>,
-+				 <PINMUX_GPIO87__FUNC_GBE_RXDV>,
-+				 <PINMUX_GPIO86__FUNC_GBE_RXC>;
-+			drive-strength = <MTK_DRIVE_8mA>;
-+		};
-+		rxd_pins {
-+			pinmux = <PINMUX_GPIO81__FUNC_GBE_RXD3>,
-+				 <PINMUX_GPIO82__FUNC_GBE_RXD2>,
-+				 <PINMUX_GPIO83__FUNC_GBE_RXD1>,
-+				 <PINMUX_GPIO84__FUNC_GBE_RXD0>;
-+		};
-+		mdio_pins {
-+			pinmux = <PINMUX_GPIO89__FUNC_GBE_MDC>,
-+				 <PINMUX_GPIO90__FUNC_GBE_MDIO>;
-+			input-enable;
-+		};
-+		power_pins {
-+			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
-+				 <PINMUX_GPIO92__FUNC_GPIO92>;
-+			output-high;
-+		};
-+	};
++maintainers:
++  - Biao Huang <biao.huang@mediatek.com>
 +
-+	eth_sleep: eth_sleep {
-+		txd_pins {
-+			pinmux = <PINMUX_GPIO77__FUNC_GPIO77>,
-+				 <PINMUX_GPIO78__FUNC_GPIO78>,
-+				 <PINMUX_GPIO79__FUNC_GPIO79>,
-+				 <PINMUX_GPIO80__FUNC_GPIO80>;
-+		};
-+		cc_pins {
-+			pinmux = <PINMUX_GPIO85__FUNC_GPIO85>,
-+				 <PINMUX_GPIO88__FUNC_GPIO88>,
-+				 <PINMUX_GPIO87__FUNC_GPIO87>,
-+				 <PINMUX_GPIO86__FUNC_GPIO86>;
-+		};
-+		rxd_pins {
-+			pinmux = <PINMUX_GPIO81__FUNC_GPIO81>,
-+				 <PINMUX_GPIO82__FUNC_GPIO82>,
-+				 <PINMUX_GPIO83__FUNC_GPIO83>,
-+				 <PINMUX_GPIO84__FUNC_GPIO84>;
-+		};
-+		mdio_pins {
-+			pinmux = <PINMUX_GPIO89__FUNC_GPIO89>,
-+				 <PINMUX_GPIO90__FUNC_GPIO90>;
-+			input-disable;
-+			bias-disable;
-+		};
-+		power_pins {
-+			pinmux = <PINMUX_GPIO91__FUNC_GPIO91>,
-+				 <PINMUX_GPIO92__FUNC_GPIO92>;
-+			input-disable;
-+			bias-disable;
-+		};
-+	};
-+};
++description:
++  This file documents platform glue layer for stmmac.
 +
- &uart0 {
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index a59c0e9d1fc2..f30a60dca5ef 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -823,6 +823,76 @@ spis1: spi@1101e000 {
- 			status = "disabled";
- 		};
- 
-+		eth: ethernet@11021000 {
-+			compatible = "mediatek,mt8195-gmac", "snps,dwmac-5.10a";
-+			reg = <0 0x11021000 0 0x4000>;
-+			interrupts = <GIC_SPI 716 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names = "macirq";
-+			mac-address = [00 55 7b b5 7d f7];
-+			clock-names = "axi",
-+				      "apb",
-+				      "mac_cg",
-+				      "mac_main",
-+				      "ptp_ref",
-+				      "rmii_internal";
-+			clocks = <&pericfg_ao CLK_PERI_AO_ETHERNET>,
-+				 <&pericfg_ao CLK_PERI_AO_ETHERNET_BUS>,
-+				 <&pericfg_ao CLK_PERI_AO_ETHERNET_MAC>,
-+				 <&topckgen CLK_TOP_SNPS_ETH_250M>,
-+				 <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
-+				 <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
-+			assigned-clocks = <&topckgen CLK_TOP_SNPS_ETH_250M>,
-+					  <&topckgen CLK_TOP_SNPS_ETH_62P4M_PTP>,
-+					  <&topckgen CLK_TOP_SNPS_ETH_50M_RMII>;
-+			assigned-clock-parents = <&topckgen CLK_TOP_ETHPLL_D2>,
-+						 <&topckgen CLK_TOP_ETHPLL_D8>,
-+						 <&topckgen CLK_TOP_ETHPLL_D10>;
-+			power-domains = <&spm MT8195_POWER_DOMAIN_ETHER>;
-+			mediatek,pericfg = <&infracfg_ao>;
-+			snps,axi-config = <&stmmac_axi_setup>;
-+			snps,mtl-rx-config = <&mtl_rx_setup>;
-+			snps,mtl-tx-config = <&mtl_tx_setup>;
-+			snps,txpbl = <16>;
-+			snps,rxpbl = <16>;
-+			clk_csr = <0>;
-+			status = "disabled";
++# We need a select here so we don't match all nodes with 'snps,dwmac'
++select:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - mediatek,mt2712-gmac
++          - mediatek,mt8195-gmac
++  required:
++    - compatible
 +
-+			stmmac_axi_setup: stmmac-axi-config {
-+				snps,wr_osr_lmt = <0x7>;
-+				snps,rd_osr_lmt = <0x7>;
-+				snps,blen = <0 0 0 0 16 8 4>;
-+			};
++allOf:
++  - $ref: "snps,dwmac.yaml#"
++  - $ref: "ethernet-controller.yaml#"
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt2712-gmac
 +
-+			mtl_rx_setup: rx-queues-config {
-+				snps,rx-queues-to-use = <1>;
-+				snps,rx-sched-sp;
-+				queue0 {
-+					snps,dcb-algorithm;
-+					snps,map-to-dma-channel = <0x0>;
-+					snps,priority = <0x0>;
-+				};
-+			};
-+			mtl_tx_setup: tx-queues-config {
-+				snps,tx-queues-to-use = <3>;
-+				snps,tx-sched-wrr;
-+				queue0 {
-+					snps,weight = <0x10>;
-+					snps,dcb-algorithm;
-+					snps,priority = <0x0>;
-+				};
-+				queue1 {
-+					snps,weight = <0x11>;
-+					snps,dcb-algorithm;
-+					snps,priority = <0x1>;
-+				};
-+				queue2 {
-+					snps,weight = <0x12>;
-+					snps,dcb-algorithm;
-+					snps,priority = <0x2>;
-+				};
-+			};
-+		};
++    then:
++      properties:
++        clocks:
++          minItems: 5
++          items:
++            - description: AXI clock
++            - description: APB clock
++            - description: MAC Main clock
++            - description: PTP clock
++            - description: RMII reference clock provided by MAC
 +
- 		mmc0: mmc@11230000 {
- 			compatible = "mediatek,mt8195-mmc", "mediatek,mt8192-mmc";
- 			reg = <0 0x11230000 0 0x10000>,
++        clock-names:
++          minItems: 5
++          items:
++            - const: axi
++            - const: apb
++            - const: mac_main
++            - const: ptp_ref
++            - const: rmii_internal
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8195-gmac
++
++    then:
++      properties:
++        clocks:
++          minItems: 6
++          items:
++            - description: AXI clock
++            - description: APB clock
++            - description: MAC clock gate
++            - description: MAC Main clock
++            - description: PTP clock
++            - description: RMII reference clock provided by MAC
++
++        clock-names:
++          minItems: 6
++          items:
++            - const: axi
++            - const: apb
++            - const: mac_cg
++            - const: mac_main
++            - const: ptp_ref
++            - const: rmii_internal
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt2712-gmac
++          - const: snps,dwmac-4.20a
++      - items:
++          - enum:
++              - mediatek,mt8195-gmac
++          - const: snps,dwmac-5.10a
++
++  mediatek,pericfg:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      The phandle to the syscon node that control ethernet
++      interface and timing delay.
++
++  mediatek,tx-delay-ps:
++    description:
++      The internal TX clock delay (provided by this driver) in nanoseconds.
++      For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
++      or will round down. Range 0~31*170.
++      For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
++      or will round down. Range 0~31*550.
++      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
++      or will round down. Range 0~31*290.
++
++  mediatek,rx-delay-ps:
++    description:
++      The internal RX clock delay (provided by this driver) in nanoseconds.
++      For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
++      or will round down. Range 0~31*170.
++      For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
++      or will round down. Range 0~31*550.
++      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
++      of 290, or will round down. Range 0~31*290.
++
++  mediatek,rmii-rxc:
++    type: boolean
++    description:
++      If present, indicates that the RMII reference clock, which is from external
++      PHYs, is connected to RXC pin. Otherwise, is connected to TXC pin.
++
++  mediatek,rmii-clk-from-mac:
++    type: boolean
++    description:
++      If present, indicates that MAC provides the RMII reference clock, which
++      outputs to TXC pin only.
++
++  mediatek,txc-inverse:
++    type: boolean
++    description:
++      If present, indicates that
++      1. tx clock will be inversed in MII/RGMII case,
++      2. tx clock inside MAC will be inversed relative to reference clock
++         which is from external PHYs in RMII case, and it rarely happen.
++      3. the reference clock, which outputs to TXC pin will be inversed in RMII case
++         when the reference clock is from MAC.
++
++  mediatek,rxc-inverse:
++    type: boolean
++    description:
++      If present, indicates that
++      1. rx clock will be inversed in MII/RGMII case.
++      2. reference clock will be inversed when arrived at MAC in RMII case, when
++         the reference clock is from external PHYs.
++      3. the inside clock, which be sent to MAC, will be inversed in RMII case when
++         the reference clock is from MAC.
++
++  mediatek,mac-wol:
++    type: boolean
++    description:
++      If present, indicates that MAC supports WOL(Wake-On-LAN), and MAC WOL will be enabled.
++      Otherwise, PHY WOL is perferred.
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - interrupt-names
++  - clocks
++  - clock-names
++  - phy-mode
++  - mediatek,pericfg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt2712-clk.h>
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mt2712-power.h>
++
++    eth: ethernet@1101c000 {
++        compatible = "mediatek,mt2712-gmac", "snps,dwmac-4.20a";
++        reg = <0x1101c000 0x1300>;
++        interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++        interrupt-names = "macirq";
++        phy-mode ="rgmii-rxid";
++        mac-address = [00 55 7b b5 7d f7];
++        clock-names = "axi",
++                      "apb",
++                      "mac_main",
++                      "ptp_ref",
++                      "rmii_internal";
++        clocks = <&pericfg CLK_PERI_GMAC>,
++                 <&pericfg CLK_PERI_GMAC_PCLK>,
++                 <&topckgen CLK_TOP_ETHER_125M_SEL>,
++                 <&topckgen CLK_TOP_ETHER_50M_SEL>,
++                 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
++        assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
++                          <&topckgen CLK_TOP_ETHER_50M_SEL>,
++                          <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
++        assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
++                                 <&topckgen CLK_TOP_APLL1_D3>,
++                                 <&topckgen CLK_TOP_ETHERPLL_50M>;
++        power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
++        mediatek,pericfg = <&pericfg>;
++        mediatek,tx-delay-ps = <1530>;
++        snps,txpbl = <1>;
++        snps,rxpbl = <1>;
++        snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
++        snps,reset-delays-us = <0 10000 10000>;
++    };
 -- 
 2.25.1
 
