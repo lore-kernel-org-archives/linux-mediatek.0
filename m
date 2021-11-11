@@ -2,90 +2,76 @@ Return-Path: <SRS0=RaJc=P6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 12D5CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:00:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BA45FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:15:21 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C7E3161260
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:00:56 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C7E3161260
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=chromium.org
+	by mail.kernel.org (Postfix) with ESMTPS id 7EB62619E8
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:15:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7EB62619E8
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5FoMoWeb3Ix8wELotv8veSmLvl2+jmepGed+KQL9AIM=; b=yZXj21I8wY50+f
-	XqZZPHwVMjtSGF6y5Ym1ddLv6LkiW0SjiXr0C6x3qOqc3ayNMTPtg+E6/HX01JXQijQNdZg9oSiED
-	VdghOOlanwx3ds8ZLcn0EDI5ZSdHO7/yFHnmZa1FFiG6pbC8Zwtt4dDmNspXQNeKYKNRQ3SEZ5E5n
-	7cH7I7ob/Pwjow5lRjFblord4cO2RFM7wPA6cY/Y/ES35usSyoA67MqCkI37TuezOcH8oDDacYObN
-	HC4vrD+rwlT3uo20JoIHiIaXa1SzcnEaGge3tDvk67y1TcEr5trMVZ1uWD3Po/2KYdurMHiJs1M9m
-	Kk/BAapGIwnkb/tBEIbg==;
+	List-Owner; bh=kRQ+SNXSs/sVLH8mtkMu5ljrsmP8FbVlpjIIwdkH4NM=; b=k6iEQ8N2Nbv7Vb
+	K4G3VTtJ/RvIBACKVUEzNloUblvH6IUVYUurd4BsPw68mECtP2K5ntHvigt3DRsmU4hbqLHXm3ULZ
+	kJULPLfayhThOJzLtpKDujPTCnaUlyyReDQQKyQ2403CNdeLpaeur1dhcBHUSldKhrhMmHL/DEMkQ
+	W4yoG9UGGTqEWAiZJZvdcvcRERVGxYBe2xyxLAwe46FqcrQNUJAUAsVfnVUooxDFsM+bqkR4qkEVj
+	OjCEOqzV6xyJoPYAvxg0ns3RexrF9PI+gim2ny8lEJ4KhMknffsorPds8jZA5DeY25xwnrHKmkUuu
+	ofDGtvYhkd+4QT1WkmMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ml1Gc-006xzP-9q; Thu, 11 Nov 2021 04:00:50 +0000
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+	id 1ml1UX-006zmv-6I; Thu, 11 Nov 2021 04:15:13 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ml1GZ-006xxs-Sj
- for linux-mediatek@lists.infradead.org; Thu, 11 Nov 2021 04:00:49 +0000
-Received: by mail-lj1-x229.google.com with SMTP id u22so2544605lju.7
- for <linux-mediatek@lists.infradead.org>; Wed, 10 Nov 2021 20:00:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yH8ja7VP8p1VDclBmMvhEHUQneOCn8LZqdo+2OSyMiI=;
- b=eIzx/Cbomp+USxMUIAGgS7bftEgwznfBZbwgi6p4YI3FRo9gi/vdaBoUWKoHxfuyPB
- mw/y2pXpzxA6+5/d3+P7aH4bDsvbQSASCDLhGn5I2TrT5CpqK6ecRSNkPQN28wcFGADP
- 9k8FnQxcE8jpHpctExcK3AVkY4qB7d6gviJy0=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yH8ja7VP8p1VDclBmMvhEHUQneOCn8LZqdo+2OSyMiI=;
- b=VNvWVzK8aBd6FlXnQs7A+Mr2dTDTTlkgHjh5Uk9QC0e2yZHCv/mLCfSOPW3mu9I89a
- IvNa95AxgTU39F+dhKiD08Ov80e5sNS/YASpyWKiepl7Yo2WOGa8dP74NPX4pHTvBiQb
- mXLCRTow7cHVPqacTlX4Njsa7G5UWHqmVLSm19f6dY4bvXa4iC0BKEyNSw+CfAkc8bhd
- vEBnw3gixztvbwkY9rof+/OWSUraLFRu2WEuBeWef6JYVCAUEXPp946yJf22owL0ju1A
- 8B4jfWJBLev1KozLj+BBFbkEJkNmG8HwAas5ZNuN20TPc6JGAKPw8VkL2ZhgF9i0gCBz
- 7c0Q==
-X-Gm-Message-State: AOAM530QLdsFYo6NRQqLrNFsVifCmlvoAE9mrKX2k7Danv4QmitHfclw
- 1B96wn2kiN3KAGVBXbCzMMUYK9JbwDYpYoksQHdYIw==
-X-Google-Smtp-Source: ABdhPJxlV4gGg9kn82P4bK9eQigBUtH7JDNyQemvY5ujecR55RWBtQDaP9XzaDlfxT0NgRx3QJkfO5CE0wqzHMnZrAc=
-X-Received: by 2002:a2e:9ed3:: with SMTP id h19mr4294059ljk.392.1636603245859; 
- Wed, 10 Nov 2021 20:00:45 -0800 (PST)
+ id 1ml1UU-006zkI-3O; Thu, 11 Nov 2021 04:15:11 +0000
+X-UUID: 90604bf64c7d4182b6c9c4f1fcc25461-20211110
+X-UUID: 90604bf64c7d4182b6c9c4f1fcc25461-20211110
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 133407389; Wed, 10 Nov 2021 21:15:05 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Nov 2021 20:15:04 -0800
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 11 Nov 2021 12:15:03 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkmbs10n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
+ Transport; Thu, 11 Nov 2021 12:15:02 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v10,
+ 01/19] media: mtk-vcodec: Get numbers of register bases from DT
+Date: Thu, 11 Nov 2021 12:14:42 +0800
+Message-ID: <20211111041500.17363-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211111041500.17363-1-yunfei.dong@mediatek.com>
+References: <20211111041500.17363-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-References: <20211109125030.26299-1-yunfei.dong@mediatek.com>
- <20211109125030.26299-7-yunfei.dong@mediatek.com>
- <CA+Px+wXSFkK1o__7YWntGwFXtfWKH65VoSq=783fEPoEH-MwGw@mail.gmail.com>
- <19a4cb1cc774f98bd79a1b3e4d25acfbd190ae28.camel@mediatek.com>
-In-Reply-To: <19a4cb1cc774f98bd79a1b3e4d25acfbd190ae28.camel@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Thu, 11 Nov 2021 12:00:34 +0800
-Message-ID: <CAGXv+5GYLSxrmqMEpDx0aE1N1Wp7vHdDFDp9Ly0c=2f+njVpGQ@mail.gmail.com>
-Subject: Re: [PATCH v9,
- 06/19] media: mtk-vcodec: Manage multi hardware information
-To: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-Cc: Tzung-Bi Shih <tzungbi@google.com>,
- Alexandre Courbot <acourbot@chromium.org>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, 
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, 
- dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211110_200047_967338_CD90969F 
-X-CRM114-Status: GOOD (  17.63  )
+X-CRM114-CacheID: sfid-20211110_201510_176269_879E475F 
+X-CRM114-Status: GOOD (  17.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,53 +88,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 11, 2021 at 11:49 AM yunfei.dong@mediatek.com
-<yunfei.dong@mediatek.com> wrote:
->
-> Hi Tzung-Bi,
->
-> Thanks for your suggestion.
-> On Wed, 2021-11-10 at 18:30 +0800, Tzung-Bi Shih wrote:
-> > On Tue, Nov 09, 2021 at 08:50:17PM +0800, Yunfei Dong wrote:
-> > > Manage each hardware information which includes irq/power/clk.
-> > > The hardware includes LAT0, LAT1 and CORE.
-> >
-> > The commit message doesn't explain the code.  Could you provide some
-> > explanations about how the async mechanism works?  (e.g. A bitmap for
-> > all sub-devices' readiness ...)
-> >
-> add more detail description for commit message.
-> > > Reported-by: kernel test robot <lkp@intel.com>
-> >
-> > Apparently wrong tag.
-> >
-> Remove
-> > > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > > index b7a51e96d4ba..eb2af42aa102 100644
-> > > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > > @@ -18,19 +18,49 @@
-> > >
-> > >  #include "mtk_vcodec_drv.h"
-> > >  #include "mtk_vcodec_dec.h"
-> > > +#include "mtk_vcodec_dec_hw.h"
-> > >  #include "mtk_vcodec_dec_pm.h"
-> > >  #include "mtk_vcodec_intr.h"
-> > > -#include "mtk_vcodec_util.h"
-> >
-> > Why does mtk_vcodec_util.h need to remove?
-> >
-> Put #include "mtk_vcodec_util.h" in mtk_vcodec_dec_hw.h.
+Different platform may has different numbers of register bases. Gets the
+numbers of register bases from DT (sizeof(u32) * 4 bytes for each).
 
-If this file directly uses anything from that header file, it should
-include it directly, instead of depending on some transitive inclusion.
+Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 37 ++++++++++++++-----
+ 1 file changed, 28 insertions(+), 9 deletions(-)
 
-This would avoid having to deal with breakage if/when the includes from
-header files change beneath you.
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index e6e6a8203eeb..59caf2163349 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -78,6 +78,30 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	return IRQ_HANDLED;
+ }
+ 
++static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
++{
++	struct platform_device *pdev = dev->plat_dev;
++	int reg_num, i;
++
++	/* Sizeof(u32) * 4 bytes for each register base. */
++	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
++		sizeof(u32) * 4);
++	if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE) {
++		dev_err(&pdev->dev, "Invalid register property size: %d\n", reg_num);
++		return -EINVAL;
++	}
++
++	for (i = 0; i < reg_num; i++) {
++		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
++		if (IS_ERR(dev->reg_base[i]))
++			return PTR_ERR(dev->reg_base[i]);
++
++		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
++	}
++
++	return 0;
++}
++
+ static int fops_vcodec_open(struct file *file)
+ {
+ 	struct mtk_vcodec_dev *dev = video_drvdata(file);
+@@ -206,7 +230,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+-	int i, ret;
++	int ret;
+ 
+ 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+ 	if (!dev)
+@@ -238,14 +262,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_dec_pm;
+ 	}
+ 
+-	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
+-		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+-		if (IS_ERR((__force void *)dev->reg_base[i])) {
+-			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+-			goto err_res;
+-		}
+-		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+-	}
++	ret = mtk_vcodec_get_reg_bases(dev);
++	if (ret)
++		goto err_res;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+ 	if (res == NULL) {
+-- 
+2.25.1
 
-
-ChenYu
 
 _______________________________________________
 Linux-mediatek mailing list
