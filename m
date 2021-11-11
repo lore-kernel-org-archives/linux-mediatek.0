@@ -2,14 +2,14 @@ Return-Path: <SRS0=RaJc=P6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id D219AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:39:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 25E66C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:54:22 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8D74061212
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:39:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8D74061212
+	by mail.kernel.org (Postfix) with ESMTPS id DD80C61152
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 04:54:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DD80C61152
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,61 +18,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KBhNnOwO16g/qBXYxsdrDmDrv5+G1S1b+/Xp5oXyAS4=; b=LF0TSKvDtNuOjz
-	UrnnBl+a/+F9O4P46MrStdDik3DQjhnxWatk1Tv9+eniJ4hIyxcaROPk0FJOyGKWuVcdoz9BD/6ac
-	XAX95pd1YH4W1CQRosbLHqXg8nwf+cugOYVjEqVymM4Xzxedb9C3p2PewiSZuDFNnwvBGhPGKfDXC
-	BeFupBydfCNMx6khQa6ZI6U6ipNMccDv+AtaAFQTH/1Qk1YbBOLcwNex9retrQwUposF4mV4JRjrL
-	eIhDH1rCnqLU7ZYSKBGeCvML3zRu1rjZwQ+R/JERUDsZLiAyT/C2JB9LyWlNcXeigq6JSXikufUPZ
-	gatL3MyAHSImSs6Fyu0Q==;
+	List-Owner; bh=82qp4HfgQEV/WhTS8hHLyxfaXfi4eTYTOeJbgl18zB4=; b=Zc5ZYI1h3jU4Gf
+	MAIAF4TTo+AKP3mos2tzX2/ORsDCBjBbKy2wMbaLilpEmYLjWuG1/8fuMOIAVik+Km2YiN7pp4IDi
+	D1U4TJz1fKBHOBBJKB09DRiOvXQcLVP6OBzghYnezXoGI9iWl9ERnL6yS8mPvuOmXvWL2vTurjb6K
+	DC0NWKoqm7OS1NUnHGTDtMXGDxddh0Vsz+mARgv/WB9KIX4dkcWuCjez9O6bi48sAMDsuz8sIh4qW
+	A9WLGIwZzho6qzL3Y8GHgW0gu96R8lVxIwBs8Nh27oNL6iHNmAv2gSRzT2xaWugjMtjE9O5m177A6
+	pjxVxPB+2oeSZHN5w78w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ml1rd-0079xM-6b; Thu, 11 Nov 2021 04:39:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1ml26F-007Dns-CS; Thu, 11 Nov 2021 04:54:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ml1eX-0074wq-NW; Thu, 11 Nov 2021 04:25:35 +0000
-X-UUID: cbe3efffd6904933ba14d38db8a4e954-20211110
-X-UUID: cbe3efffd6904933ba14d38db8a4e954-20211110
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
+ id 1ml261-007DgC-12; Thu, 11 Nov 2021 04:53:59 +0000
+X-UUID: d9dc4edcf05d402c8dee0d875d7c0a3c-20211110
+X-UUID: d9dc4edcf05d402c8dee0d875d7c0a3c-20211110
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <james.lo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1600314201; Wed, 10 Nov 2021 21:25:29 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 10 Nov 2021 20:15:27 -0800
+ with ESMTP id 834754579; Wed, 10 Nov 2021 21:53:52 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- mtkexhb02.mediatek.inc (172.21.101.103) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 11 Nov 2021 12:15:25 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkmbs10n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.792.3 via Frontend
- Transport; Thu, 11 Nov 2021 12:15:24 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v10,
- 17/19] media: mtk-vcodec: Use codec type to separate different
- hardware
-Date: Thu, 11 Nov 2021 12:14:58 +0800
-Message-ID: <20211111041500.17363-18-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211111041500.17363-1-yunfei.dong@mediatek.com>
-References: <20211111041500.17363-1-yunfei.dong@mediatek.com>
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 10 Nov 2021 20:53:51 -0800
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.792.3; 
+ Thu, 11 Nov 2021 12:53:47 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by
+ mtkmbs10n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.792.15 via Frontend Transport; Thu, 11 Nov 2021 12:53:47 +0800
+From: James Lo <james.lo@mediatek.com>
+To: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, James Lo
+ <james.lo@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Henry Chen
+ <henryc.chen@mediatek.com>
+Subject: [PATCH v14 3/3] spmi: mediatek: Add support for MT8195
+Date: Thu, 11 Nov 2021 12:53:44 +0800
+Message-ID: <20211111045344.11664-4-james.lo@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211111045344.11664-1-james.lo@mediatek.com>
+References: <20211111045344.11664-1-james.lo@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211110_202533_878753_E58062B4 
-X-CRM114-Status: GOOD (  18.71  )
+X-CRM114-CacheID: sfid-20211110_205357_525965_9ACA5E3B 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,187 +82,256 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There is just one core thread, in order to separate different
-hardware, using codec type to separeate it in scp driver.
+Add spmi support for MT8195.
+Refine indent in spmi-mtk-pmif.c.
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Signed-off-by: James Lo <james.lo@mediatek.com>
+Signed-off-by: Henry Chen <henryc.chen@mediatek.com>
+Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+Acked-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 12 ++++---
- .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 34 ++++++++++++++++---
- .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  4 +++
- 3 files changed, 41 insertions(+), 9 deletions(-)
+ drivers/spmi/spmi-mtk-pmif.c | 202 +++++++++++++++++++++++++----------
+ 1 file changed, 145 insertions(+), 57 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-index 9d8079c4f976..5daca8d52ebb 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-@@ -35,6 +35,8 @@ enum vdec_ipi_msgid {
-  * @msg_id	: vdec_ipi_msgid
-  * @vpu_inst_addr : VPU decoder instance address. Used if ABI version < 2.
-  * @inst_id     : instance ID. Used if the ABI version >= 2.
-+ * @codec_type	: codec fourcc
-+ * @reserved	: reserved param
-  */
- struct vdec_ap_ipi_cmd {
- 	uint32_t msg_id;
-@@ -42,6 +44,8 @@ struct vdec_ap_ipi_cmd {
- 		uint32_t vpu_inst_addr;
- 		uint32_t inst_id;
- 	};
-+	uint32_t codec_type;
-+	uint32_t reserved;
+diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
+index 3283d0a5903c..ad511f2c3324 100644
+--- a/drivers/spmi/spmi-mtk-pmif.c
++++ b/drivers/spmi/spmi-mtk-pmif.c
+@@ -105,51 +105,99 @@ enum pmif_regs {
  };
  
- /**
-@@ -59,12 +63,12 @@ struct vdec_vpu_ipi_ack {
- /**
-  * struct vdec_ap_ipi_init - for AP_IPIMSG_DEC_INIT
-  * @msg_id	: AP_IPIMSG_DEC_INIT
-- * @reserved	: Reserved field
-+ * @codec_type	: codec fourcc
-  * @ap_inst_addr	: AP video decoder instance address
-  */
- struct vdec_ap_ipi_init {
- 	uint32_t msg_id;
--	uint32_t reserved;
-+	uint32_t codec_type;
- 	uint64_t ap_inst_addr;
+ static const u32 mt6873_regs[] = {
+-	[PMIF_INIT_DONE] =	0x0000,
+-	[PMIF_INF_EN] =		0x0024,
+-	[PMIF_ARB_EN] =		0x0150,
+-	[PMIF_CMDISSUE_EN] =	0x03B4,
+-	[PMIF_TIMER_CTRL] =	0x03E0,
+-	[PMIF_SPI_MODE_CTRL] =	0x0400,
+-	[PMIF_IRQ_EVENT_EN_0] =	0x0418,
+-	[PMIF_IRQ_FLAG_0] =	0x0420,
+-	[PMIF_IRQ_CLR_0] =	0x0424,
+-	[PMIF_IRQ_EVENT_EN_1] =	0x0428,
+-	[PMIF_IRQ_FLAG_1] =	0x0430,
+-	[PMIF_IRQ_CLR_1] =	0x0434,
+-	[PMIF_IRQ_EVENT_EN_2] =	0x0438,
+-	[PMIF_IRQ_FLAG_2] =	0x0440,
+-	[PMIF_IRQ_CLR_2] =	0x0444,
+-	[PMIF_IRQ_EVENT_EN_3] =	0x0448,
+-	[PMIF_IRQ_FLAG_3] =	0x0450,
+-	[PMIF_IRQ_CLR_3] =	0x0454,
+-	[PMIF_IRQ_EVENT_EN_4] =	0x0458,
+-	[PMIF_IRQ_FLAG_4] =	0x0460,
+-	[PMIF_IRQ_CLR_4] =	0x0464,
+-	[PMIF_WDT_EVENT_EN_0] =	0x046C,
+-	[PMIF_WDT_FLAG_0] =	0x0470,
+-	[PMIF_WDT_EVENT_EN_1] =	0x0474,
+-	[PMIF_WDT_FLAG_1] =	0x0478,
+-	[PMIF_SWINF_0_ACC] =	0x0C00,
+-	[PMIF_SWINF_0_WDATA_31_0] =	0x0C04,
+-	[PMIF_SWINF_0_RDATA_31_0] =	0x0C14,
+-	[PMIF_SWINF_0_VLD_CLR] =	0x0C24,
+-	[PMIF_SWINF_0_STA] =	0x0C28,
+-	[PMIF_SWINF_1_ACC] =	0x0C40,
+-	[PMIF_SWINF_1_WDATA_31_0] =	0x0C44,
+-	[PMIF_SWINF_1_RDATA_31_0] =	0x0C54,
+-	[PMIF_SWINF_1_VLD_CLR] =	0x0C64,
+-	[PMIF_SWINF_1_STA] =	0x0C68,
+-	[PMIF_SWINF_2_ACC] =	0x0C80,
+-	[PMIF_SWINF_2_WDATA_31_0] =	0x0C84,
+-	[PMIF_SWINF_2_RDATA_31_0] =	0x0C94,
+-	[PMIF_SWINF_2_VLD_CLR] =	0x0CA4,
+-	[PMIF_SWINF_2_STA] =	0x0CA8,
+-	[PMIF_SWINF_3_ACC] =	0x0CC0,
+-	[PMIF_SWINF_3_WDATA_31_0] =	0x0CC4,
+-	[PMIF_SWINF_3_RDATA_31_0] =	0x0CD4,
+-	[PMIF_SWINF_3_VLD_CLR] =	0x0CE4,
+-	[PMIF_SWINF_3_STA] =	0x0CE8,
++	[PMIF_INIT_DONE] = 0x0000,
++	[PMIF_INF_EN] = 0x0024,
++	[PMIF_ARB_EN] = 0x0150,
++	[PMIF_CMDISSUE_EN] = 0x03B4,
++	[PMIF_TIMER_CTRL] = 0x03E0,
++	[PMIF_SPI_MODE_CTRL] = 0x0400,
++	[PMIF_IRQ_EVENT_EN_0] = 0x0418,
++	[PMIF_IRQ_FLAG_0] = 0x0420,
++	[PMIF_IRQ_CLR_0] = 0x0424,
++	[PMIF_IRQ_EVENT_EN_1] = 0x0428,
++	[PMIF_IRQ_FLAG_1] = 0x0430,
++	[PMIF_IRQ_CLR_1] = 0x0434,
++	[PMIF_IRQ_EVENT_EN_2] = 0x0438,
++	[PMIF_IRQ_FLAG_2] = 0x0440,
++	[PMIF_IRQ_CLR_2] = 0x0444,
++	[PMIF_IRQ_EVENT_EN_3] = 0x0448,
++	[PMIF_IRQ_FLAG_3] = 0x0450,
++	[PMIF_IRQ_CLR_3] = 0x0454,
++	[PMIF_IRQ_EVENT_EN_4] = 0x0458,
++	[PMIF_IRQ_FLAG_4] = 0x0460,
++	[PMIF_IRQ_CLR_4] = 0x0464,
++	[PMIF_WDT_EVENT_EN_0] = 0x046C,
++	[PMIF_WDT_FLAG_0] = 0x0470,
++	[PMIF_WDT_EVENT_EN_1] = 0x0474,
++	[PMIF_WDT_FLAG_1] = 0x0478,
++	[PMIF_SWINF_0_ACC] = 0x0C00,
++	[PMIF_SWINF_0_WDATA_31_0] = 0x0C04,
++	[PMIF_SWINF_0_RDATA_31_0] = 0x0C14,
++	[PMIF_SWINF_0_VLD_CLR] = 0x0C24,
++	[PMIF_SWINF_0_STA] = 0x0C28,
++	[PMIF_SWINF_1_ACC] = 0x0C40,
++	[PMIF_SWINF_1_WDATA_31_0] = 0x0C44,
++	[PMIF_SWINF_1_RDATA_31_0] = 0x0C54,
++	[PMIF_SWINF_1_VLD_CLR] = 0x0C64,
++	[PMIF_SWINF_1_STA] = 0x0C68,
++	[PMIF_SWINF_2_ACC] = 0x0C80,
++	[PMIF_SWINF_2_WDATA_31_0] = 0x0C84,
++	[PMIF_SWINF_2_RDATA_31_0] = 0x0C94,
++	[PMIF_SWINF_2_VLD_CLR] = 0x0CA4,
++	[PMIF_SWINF_2_STA] = 0x0CA8,
++	[PMIF_SWINF_3_ACC] = 0x0CC0,
++	[PMIF_SWINF_3_WDATA_31_0] = 0x0CC4,
++	[PMIF_SWINF_3_RDATA_31_0] = 0x0CD4,
++	[PMIF_SWINF_3_VLD_CLR] = 0x0CE4,
++	[PMIF_SWINF_3_STA] = 0x0CE8,
++};
++
++static const u32 mt8195_regs[] = {
++	[PMIF_INIT_DONE] = 0x0000,
++	[PMIF_INF_EN] = 0x0024,
++	[PMIF_ARB_EN] = 0x0150,
++	[PMIF_CMDISSUE_EN] = 0x03B8,
++	[PMIF_TIMER_CTRL] = 0x03E4,
++	[PMIF_SPI_MODE_CTRL] = 0x0408,
++	[PMIF_IRQ_EVENT_EN_0] = 0x0420,
++	[PMIF_IRQ_FLAG_0] = 0x0428,
++	[PMIF_IRQ_CLR_0] = 0x042C,
++	[PMIF_IRQ_EVENT_EN_1] = 0x0430,
++	[PMIF_IRQ_FLAG_1] = 0x0438,
++	[PMIF_IRQ_CLR_1] = 0x043C,
++	[PMIF_IRQ_EVENT_EN_2] = 0x0440,
++	[PMIF_IRQ_FLAG_2] = 0x0448,
++	[PMIF_IRQ_CLR_2] = 0x044C,
++	[PMIF_IRQ_EVENT_EN_3] = 0x0450,
++	[PMIF_IRQ_FLAG_3] = 0x0458,
++	[PMIF_IRQ_CLR_3] = 0x045C,
++	[PMIF_IRQ_EVENT_EN_4] = 0x0460,
++	[PMIF_IRQ_FLAG_4] = 0x0468,
++	[PMIF_IRQ_CLR_4] = 0x046C,
++	[PMIF_WDT_EVENT_EN_0] = 0x0474,
++	[PMIF_WDT_FLAG_0] = 0x0478,
++	[PMIF_WDT_EVENT_EN_1] = 0x047C,
++	[PMIF_WDT_FLAG_1] = 0x0480,
++	[PMIF_SWINF_0_ACC] = 0x0800,
++	[PMIF_SWINF_0_WDATA_31_0] = 0x0804,
++	[PMIF_SWINF_0_RDATA_31_0] = 0x0814,
++	[PMIF_SWINF_0_VLD_CLR] = 0x0824,
++	[PMIF_SWINF_0_STA] = 0x0828,
++	[PMIF_SWINF_1_ACC] = 0x0840,
++	[PMIF_SWINF_1_WDATA_31_0] = 0x0844,
++	[PMIF_SWINF_1_RDATA_31_0] = 0x0854,
++	[PMIF_SWINF_1_VLD_CLR] = 0x0864,
++	[PMIF_SWINF_1_STA] = 0x0868,
++	[PMIF_SWINF_2_ACC] = 0x0880,
++	[PMIF_SWINF_2_WDATA_31_0] = 0x0884,
++	[PMIF_SWINF_2_RDATA_31_0] = 0x0894,
++	[PMIF_SWINF_2_VLD_CLR] = 0x08A4,
++	[PMIF_SWINF_2_STA] = 0x08A8,
++	[PMIF_SWINF_3_ACC] = 0x08C0,
++	[PMIF_SWINF_3_WDATA_31_0] = 0x08C4,
++	[PMIF_SWINF_3_RDATA_31_0] = 0x08D4,
++	[PMIF_SWINF_3_VLD_CLR] = 0x08E4,
++	[PMIF_SWINF_3_STA] = 0x08E8,
  };
  
-@@ -77,7 +81,7 @@ struct vdec_ap_ipi_init {
-  *	H264 decoder [0]:buf_sz [1]:nal_start
-  *	VP8 decoder  [0]:width/height
-  *	VP9 decoder  [0]:profile, [1][2] width/height
-- * @reserved	: Reserved field
-+ * @codec_type	: codec fourcc
-  */
- struct vdec_ap_ipi_dec_start {
- 	uint32_t msg_id;
-@@ -86,7 +90,7 @@ struct vdec_ap_ipi_dec_start {
- 		uint32_t inst_id;
- 	};
- 	uint32_t data[3];
--	uint32_t reserved;
-+	uint32_t codec_type;
+ enum spmi_regs {
+@@ -165,21 +213,52 @@ enum spmi_regs {
+ 	SPMI_REC3,
+ 	SPMI_REC4,
+ 	SPMI_MST_DBG,
++
++	/* MT8195 spmi regs */
++	SPMI_MST_RCS_CTRL,
++	SPMI_SLV_3_0_EINT,
++	SPMI_SLV_7_4_EINT,
++	SPMI_SLV_B_8_EINT,
++	SPMI_SLV_F_C_EINT,
++	SPMI_REC_CMD_DEC,
++	SPMI_DEC_DBG,
  };
  
- /**
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index bfd8e87dceff..c84fac52fe26 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -100,18 +100,29 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ static const u32 mt6873_spmi_regs[] = {
+-	[SPMI_OP_ST_CTRL] =	0x0000,
+-	[SPMI_GRP_ID_EN] =	0x0004,
+-	[SPMI_OP_ST_STA] =	0x0008,
+-	[SPMI_MST_SAMPL] =	0x000c,
+-	[SPMI_MST_REQ_EN] =	0x0010,
+-	[SPMI_REC_CTRL] =	0x0040,
+-	[SPMI_REC0] =		0x0044,
+-	[SPMI_REC1] =		0x0048,
+-	[SPMI_REC2] =		0x004c,
+-	[SPMI_REC3] =		0x0050,
+-	[SPMI_REC4] =		0x0054,
+-	[SPMI_MST_DBG] =	0x00fc,
++	[SPMI_OP_ST_CTRL] = 0x0000,
++	[SPMI_GRP_ID_EN] = 0x0004,
++	[SPMI_OP_ST_STA] = 0x0008,
++	[SPMI_MST_SAMPL] = 0x000c,
++	[SPMI_MST_REQ_EN] = 0x0010,
++	[SPMI_REC_CTRL] = 0x0040,
++	[SPMI_REC0] = 0x0044,
++	[SPMI_REC1] = 0x0048,
++	[SPMI_REC2] = 0x004c,
++	[SPMI_REC3] = 0x0050,
++	[SPMI_REC4] = 0x0054,
++	[SPMI_MST_DBG] = 0x00fc,
++};
++
++static const u32 mt8195_spmi_regs[] = {
++	[SPMI_OP_ST_CTRL] = 0x0000,
++	[SPMI_GRP_ID_EN] = 0x0004,
++	[SPMI_OP_ST_STA] = 0x0008,
++	[SPMI_MST_SAMPL] = 0x000C,
++	[SPMI_MST_REQ_EN] = 0x0010,
++	[SPMI_MST_RCS_CTRL] = 0x0014,
++	[SPMI_SLV_3_0_EINT] = 0x0020,
++	[SPMI_SLV_7_4_EINT] = 0x0024,
++	[SPMI_SLV_B_8_EINT] = 0x0028,
++	[SPMI_SLV_F_C_EINT] = 0x002C,
++	[SPMI_REC_CTRL] = 0x0040,
++	[SPMI_REC0] = 0x0044,
++	[SPMI_REC1] = 0x0048,
++	[SPMI_REC2] = 0x004C,
++	[SPMI_REC3] = 0x0050,
++	[SPMI_REC4] = 0x0054,
++	[SPMI_REC_CMD_DEC] = 0x005C,
++	[SPMI_DEC_DBG] = 0x00F8,
++	[SPMI_MST_DBG] = 0x00FC,
+ };
  
- static int vcodec_vpu_send_msg(struct vdec_vpu_inst *vpu, void *msg, int len)
+ static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
+@@ -345,6 +424,12 @@ static const struct pmif_data mt6873_pmif_arb = {
+ 	.soc_chan = 2,
+ };
+ 
++static const struct pmif_data mt8195_pmif_arb = {
++	.regs = mt8195_regs,
++	.spmimst_regs = mt8195_spmi_regs,
++	.soc_chan = 2,
++};
++
+ static int mtk_spmi_probe(struct platform_device *pdev)
  {
--	int err;
-+	int err, id, msgid;
- 
--	mtk_vcodec_debug(vpu, "id=%X", *(uint32_t *)msg);
-+	msgid = *(uint32_t *)msg;
-+	mtk_vcodec_debug(vpu, "id=%X", msgid);
- 
- 	vpu->failure = 0;
- 	vpu->signaled = 0;
- 
--	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, vpu->id, msg,
-+	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-+		if (msgid == AP_IPIMSG_DEC_CORE ||
-+			msgid == AP_IPIMSG_DEC_CORE_END)
-+			id = vpu->core_id;
-+		else
-+			id = vpu->id;
-+	} else {
-+		id = vpu->id;
-+	}
-+
-+	err = mtk_vcodec_fw_ipi_send(vpu->ctx->dev->fw_handler, id, msg,
- 				     len, 2000);
- 	if (err) {
- 		mtk_vcodec_err(vpu, "send fail vpu_id=%d msg_id=%X status=%d",
--			       vpu->id, *(uint32_t *)msg, err);
-+			       id, msgid, err);
- 		return err;
- 	}
- 
-@@ -131,6 +142,7 @@ static int vcodec_send_ap_ipi(struct vdec_vpu_inst *vpu, unsigned int msg_id)
- 		msg.vpu_inst_addr = vpu->inst_addr;
- 	else
- 		msg.inst_id = vpu->inst_id;
-+	msg.codec_type = vpu->codec_type;
- 
- 	err = vcodec_vpu_send_msg(vpu, &msg, sizeof(msg));
- 	mtk_vcodec_debug(vpu, "- id=%X ret=%d", msg_id, err);
-@@ -149,14 +161,25 @@ int vpu_dec_init(struct vdec_vpu_inst *vpu)
- 
- 	err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler, vpu->id,
- 					 vpu->handler, "vdec", NULL);
--	if (err != 0) {
-+	if (err) {
- 		mtk_vcodec_err(vpu, "vpu_ipi_register fail status=%d", err);
- 		return err;
- 	}
- 
-+	if (vpu->ctx->dev->vdec_pdata->hw_arch == MTK_VDEC_LAT_SINGLE_CORE) {
-+		err = mtk_vcodec_fw_ipi_register(vpu->ctx->dev->fw_handler,
-+					 vpu->core_id, vpu->handler,
-+					 "vdec", NULL);
-+		if (err) {
-+			mtk_vcodec_err(vpu, "vpu_ipi_register core fail status=%d", err);
-+			return err;
-+		}
-+	}
-+
- 	memset(&msg, 0, sizeof(msg));
- 	msg.msg_id = AP_IPIMSG_DEC_INIT;
- 	msg.ap_inst_addr = (unsigned long)vpu;
-+	msg.codec_type = vpu->codec_type;
- 
- 	mtk_vcodec_debug(vpu, "vdec_inst=%p", vpu);
- 
-@@ -187,6 +210,7 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
- 
- 	for (i = 0; i < len; i++)
- 		msg.data[i] = data[i];
-+	msg.codec_type = vpu->codec_type;
- 
- 	err = vcodec_vpu_send_msg(vpu, (void *)&msg, sizeof(msg));
- 	mtk_vcodec_debug(vpu, "- ret=%d", err);
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-index ae24b75d1649..4cb3c7f5a3ad 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-@@ -14,6 +14,7 @@ struct mtk_vcodec_ctx;
- /**
-  * struct vdec_vpu_inst - VPU instance for video codec
-  * @id          : ipi msg id for each decoder
-+ * @core_id     : core id used to separate different hardware
-  * @vsi         : driver structure allocated by VPU side and shared to AP side
-  *                for control and info share
-  * @failure     : VPU execution result status, 0: success, others: fail
-@@ -26,9 +27,11 @@ struct mtk_vcodec_ctx;
-  * @dev		: platform device of VPU
-  * @wq          : wait queue to wait VPU message ack
-  * @handler     : ipi handler for each decoder
-+ * @codec_type     : use codec type to separate different codecs
-  */
- struct vdec_vpu_inst {
- 	int id;
-+	int core_id;
- 	void *vsi;
- 	int32_t failure;
- 	uint32_t inst_addr;
-@@ -38,6 +41,7 @@ struct vdec_vpu_inst {
- 	struct mtk_vcodec_ctx *ctx;
- 	wait_queue_head_t wq;
- 	mtk_vcodec_ipi_handler handler;
-+	unsigned int codec_type;
- };
- 
- /**
+ 	struct pmif *arb;
+@@ -433,6 +518,9 @@ static const struct of_device_id mtk_spmi_match_table[] = {
+ 	{
+ 		.compatible = "mediatek,mt6873-spmi",
+ 		.data = &mt6873_pmif_arb,
++	}, {
++		.compatible = "mediatek,mt8195-spmi",
++		.data = &mt8195_pmif_arb,
+ 	}, {
+ 		/* sentinel */
+ 	},
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
