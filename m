@@ -2,63 +2,76 @@ Return-Path: <SRS0=RaJc=P6=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C1A8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 13:56:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B57B1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 14:57:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 67AD96135E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 13:56:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 67AD96135E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
+	by mail.kernel.org (Postfix) with ESMTPS id 79B7360FDA
+	for <linux-mediatek@archiver.kernel.org>; Thu, 11 Nov 2021 14:57:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 79B7360FDA
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=soQXsHBYpJQ2tz7QvghEfBgYuzyUPqggaapaBs+MGDE=; b=mbfEKKlqZpHJJ+Mjx16/hDLfnq
-	DFxKTSFH2zqPznuQbFsBXkciGAqVdZo4TZxbmD7t8Vk9+pkG4ebqrzhRVisWvT9wuflHjWZbEZjkx
-	yUUfkKZYezf0mXqLJCztjq4ZARxWKFO5cllM6zUNAp65SS1ZmUW9HLRBUB8C1CMqHi2s4dMXth3EC
-	WhY1DdtDWGbzIrq3KQJ/W76DFT1mc0ul7ysySjxMc1HxxyKpWeOaBqsrmG5bhJTbcOmkLXqdERLKl
-	UK4JcJIZY5vxML7/aVAgMMlSrWcsHBZ7kKZH0xjVvQqahDA3Svr0LfpqVhwCU3PLdCVuJsNqvg1hh
-	cm1DNs+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wa8Gemy5SunzW7Q7blQ7/ExDRq75oRI++9owYBqfCr0=; b=g8CJdxA16N0r1M
+	sCbf79qXbZOdgMBUBkGkaC5H1GD5Oh4+moVy9ZHlutRCchAHJfM0aB7FfH1U6yd9yv5WZEZt3Cr5w
+	dzx2ysY2IQdpucIdtYp/bmYTnKNTS+8Pf77oPvTaOzFA/wn6cwUrhmZjWX79ohoVi8bYBONI3RPj/
+	tVgafJp6Q6+CYRpqNy6qBAXpUnhxokusLA5lt/FGS7wiD4oeg7557If9k5MGMzgOMFFV8wXBiUARH
+	c4T0oXRo6rYf5UT29Uv77Gg3VXBvJ5JQhMIXWqO+i8k5qDjwzoL5jD8uEqo2CBTZyG7ku/1WvoMWQ
+	e+4HvcA6ZBcIQQjesGUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlAZB-0085Ej-4m; Thu, 11 Nov 2021 13:56:37 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mlBWN-008COE-Ly; Thu, 11 Nov 2021 14:57:47 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlAYy-0085Ca-6D; Thu, 11 Nov 2021 13:56:25 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 8FEFE1F45C72
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1636638982; bh=KL910SP64J7G4Wb7kjnHDqpyVus2MRcEbakn+kqdIos=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=U8XhgZf2aG7UA6FkTnLmxTDwrgfC2Tz/rnIRee255WLCLeL3/pCWUYD8a6clcyhhc
- 0JfDUkVdl3PrpypTjoPk+wJxJO+FHvb9iOY16HBynUhzC7HUspx4IzAAK/097BcW7F
- ZssPgbrv6V5XNf1IfE3z8FI9FvBb91mFb1YI7wFFHy0qBfPTskRALq1uUHmo+C0zkt
- +fLKPWj0QIK3SuARD1n4+W+joLWjGLBDjxnhFZxtncAkcqp/qm88NF6AEthYZtGykR
- f4EJxAve32QAjlXtMwCNqrzgN2+oHml+wDlgpvC/jf9qXNzx31FLnjnkX1AqH5jwzK
- W2ybNjaMFjeMA==
-Subject: Re: [RFC PATCH] soc: mediatek: Add support always on flag
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-References: <20211102072058.4107-1-chunfeng.yun@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <e6ebf764-b94a-7b77-df17-1cb8e4b14635@collabora.com>
-Date: Thu, 11 Nov 2021 14:56:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <20211102072058.4107-1-chunfeng.yun@mediatek.com>
-Content-Language: en-US
+ id 1mlBWB-008CLW-28; Thu, 11 Nov 2021 14:57:36 +0000
+Received: by mail-ot1-f43.google.com with SMTP id
+ r10-20020a056830080a00b0055c8fd2cebdso9219922ots.6; 
+ Thu, 11 Nov 2021 06:57:32 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=64/gMeluDh46xQANFHjT+1DBqKjidRINOKcAP65+XLA=;
+ b=OEpcbEFzXzlEMX2YbppyUa7pIrs/GUgJGVObNZ2dFnXJ6QSU0FaJ7eDHVAOhemaO1F
+ HRlCgLmiOPL6uqLqOHNLpqyNi8MK58NpNGA3/Ni8NA/Ap30M1Jpt2QxaEQFpznUZVCcP
+ qohhrrN+WebSVkmSKS7SZ2Px30EKLLrq1HBBYIPnN1wHgJDgWLqPT9s3ejGyS8yqpuZd
+ 6nCWIpOe9JbGZrWZCuyWQdg82VsZXnC87xyT5f3bSXa56i4BKPy9ypELyluguhI4YJ+/
+ CnSySppGQHyOM40/fSWISJ/kWwf+Z3jFRyY1R4cBOISrxA7KXuzjYMTojGVrjRVzll2T
+ gRFA==
+X-Gm-Message-State: AOAM530TiCeFK9c6mWphewsd5gzQauI17hFD4kIw22bQT4F0oodkmo1n
+ 2rr6xrlb2wJVuvYopTUokQ==
+X-Google-Smtp-Source: ABdhPJw/R+Mjewhuy/cboJpMNmZlgIh2IRZTJ82ScnNL4x3sE567kKqKxWKBtD27mha3LodQ/D2z+g==
+X-Received: by 2002:a05:6830:1dab:: with SMTP id
+ z11mr5974863oti.103.1636642652099; 
+ Thu, 11 Nov 2021 06:57:32 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id 9sm695269oij.16.2021.11.11.06.57.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Nov 2021 06:57:31 -0800 (PST)
+Received: (nullmailer pid 3774083 invoked by uid 1000);
+ Thu, 11 Nov 2021 14:57:26 -0000
+From: Rob Herring <robh@kernel.org>
+To: Fabien Parent <fparent@baylibre.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Qii Wang <qii.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-i2c@vger.kernel.org
+In-Reply-To: <20211110194959.20611-1-fparent@baylibre.com>
+References: <20211110194959.20611-1-fparent@baylibre.com>
+Subject: Re: [PATCH v3 1/4] dt-bindings: i2c: i2c-mt65xx: convert doc to yaml
+ schema format
+Date: Thu, 11 Nov 2021 08:57:26 -0600
+Message-Id: <1636642646.887422.3774082.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211111_055624_399792_E1A44197 
-X-CRM114-Status: GOOD (  19.52  )
+X-CRM114-CacheID: sfid-20211111_065735_128132_DFD8D823 
+X-CRM114-Status: GOOD (  16.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,41 +83,71 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 02/11/21 08:20, Chunfeng Yun ha scritto:
-> There is a t-phy shared by PCIe and USB3 on mt8195, if the t-phy is
-> used by PCIe, when power off its mtcmos, need software reset it
-> (workaround way, usually hardware do it, but has an issue on mt8195),
-> but it has side effect to USB2 phy(works with USB3 phy to support
-> USB3.2 Gen1), so add support GENPD_FLAG_ALWAYS_ON flag, and make its
-> power always on;
-> Another reason is that USB3.2 Gen1/2 need keep power always on when
-> support runtime-pm due to hardware limitation until now;
+On Wed, 10 Nov 2021 20:49:56 +0100, Fabien Parent wrote:
+> Convert the binding documentation for i2c-mt65xx driver to the
+> YAML schema format.
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Signed-off-by: Fabien Parent <fparent@baylibre.com>
 > ---
->   drivers/soc/mediatek/mt8195-pm-domains.h | 2 +-
->   drivers/soc/mediatek/mtk-pm-domains.c    | 2 ++
->   drivers/soc/mediatek/mtk-pm-domains.h    | 1 +
->   3 files changed, 4 insertions(+), 1 deletion(-)
+> 
+> v3:
+> 	* rebased: added new compatible since last revision + added vbus-supply
+> 		description
+> 	* added clock-div description
+> 
+> v2:
+> 	* write compatibles in a more compact way
+> 	* set the node pattern to be "^i2c@[0-9a-f]+$" instead of
+> 		"^i2c[0-9]*@[0-9a-f]+"$
+> 
+>  .../devicetree/bindings/i2c/i2c-mt65xx.txt    |  51 ---------
+>  .../devicetree/bindings/i2c/i2c-mt65xx.yaml   | 106 ++++++++++++++++++
+>  2 files changed, 106 insertions(+), 51 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+>  create mode 100644 Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
 > 
 
-Hello Chunfeng,
-what are are the side effects on the USB2 PHY? Can you please expand?
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Also, wouldn't it be possible to also reset the USB2 PHY when resetting the t-phy
-in order to get it back up and running?
+yamllint warnings/errors:
 
-Moreover, as for the USB3.2 hardware limitation... I would say that this is more
-like something that has to be accounted for in the USB driver, instead of the PM
-domains driver... unless there's some reason that stops you from doing that?
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml: properties:vbus-supply: '$ref' is not one of ['description', 'deprecated']
+	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml: properties:clocks: {'minItems': 2, 'maxItems': 4, 'items': [{'description': 'Controller clock'}, {'description': 'DMA clock'}, {'description': 'ARB clock for multi-master when a bus has more than one i2c controllers'}, {'description': 'PMIC clock. Only when mediatek,have-pmic is set.'}]} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml: properties:clock-names: {'minItems': 2, 'maxItems': 4, 'items': [{'const': 'main'}, {'const': 'dma'}, {'const': 'arb'}, {'const': 'pmic'}]} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml: ignoring, error in schema: properties: vbus-supply
+warning: no schema found in file: ./Documentation/devicetree/bindings/i2c/i2c-mt65xx.yaml
+Documentation/devicetree/bindings/i2c/i2c-mt65xx.example.dt.yaml:0:0: /example-0/i2c@1100d000: failed to match any schema with compatible: ['mediatek,mt6577-i2c']
 
-Thanks,
-- Angelo
+doc reference errors (make refcheckdocs):
+Warning: MAINTAINERS references a file that doesn't exist: Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+MAINTAINERS: Documentation/devicetree/bindings/i2c/i2c-mt65xx.txt
+
+See https://patchwork.ozlabs.org/patch/1553583
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
