@@ -2,14 +2,14 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E28C8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:49:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 014A5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:53:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8F4CF60F5B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:49:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8F4CF60F5B
+	by mail.kernel.org (Postfix) with ESMTPS id 7067B60EBD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:53:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7067B60EBD
 Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=nbd.name
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,50 +18,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kS001uPLG3T54tHcc+eIZvGdsA1uHUoaopm8Wh8GSjY=; b=br+jChplI0f+77
-	ocTnomyXsGVGRR29wIKeaFC6XDjPp3v1oY8OxcK1JEtZT1bNzxTrVte/Lzws9LhA43PsYTXGlmuVO
-	PBTqz7P0iqT/zaNvMkN1CV5+Y+BO3P6Ijt6WkmvpN8zX9OTwnelVH0335y1u0BSnvtswZZOssQhHr
-	+wKQ6hy/8CVFl5KaQ2pooenhNUF6EE8LSkh+UAf8UQ4+UmvWNQC3YpfOQx5UH4y8gN3etUIchrCt7
-	hC+zlm/0PYIvFBbKeKmV0y4xFKUwD9a5gI0tcGg9/eE/Gpbi864FN12rqzZtBPN0U8vAQVjRZ8vO4
-	XJUdvqbw44SL1VipNLWg==;
+	List-Owner; bh=cJkRr8tD2pz0sQHz4Ej2TIuSQwiEgK4F5upR9l8phK8=; b=inAJYfnZwOWyWj
+	cBL7j4/jAqa0ZVldzZBB/VD1tekTVYCtyGMAAk27wLJ1/Myp08WAsKXN5xfhB7y1OL4tSoE5FXUQi
+	YZkOA8hynqMSAawTJn36oj3e6yTnFvLwK1UezZHwsBKOlstA83p7ERS0TN5/m2i12Ba/qtv8XAQ/Q
+	TXw3lQj8B5WTO+AkWOfO1d3nEyvyFDBSUm6IGBFwEosFwnq/2EP7WZShVnj039GaVvh0qmhrUCAtr
+	EdkIQWOJJxQ2zkIfoSr7CqYEBzIbmGM1MkZ0ZKNtLrmUiKHEiYkQeu/amSs9qPFjykP291h1YI1kR
+	3BWbi7DvbqUHLvHZzzIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlV3r-00AAeM-39; Fri, 12 Nov 2021 11:49:39 +0000
+	id 1mlV71-00ABfQ-0y; Fri, 12 Nov 2021 11:52:55 +0000
 Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlV3n-00AAbp-6g
- for linux-mediatek@lists.infradead.org; Fri, 12 Nov 2021 11:49:36 +0000
+ id 1mlV6y-00ABdW-89
+ for linux-mediatek@lists.infradead.org; Fri, 12 Nov 2021 11:52:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
  s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
  References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
  Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
  Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
  List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=aPu9bJ2jZ0pubJHiaKKzG7VSJ4NPO4ZFlM3h75YeXAc=; b=NQ3fFLmgkhDFDeHxmxVW/DQ0NU
- 68SgwFb3Y/YepfV0k85KYYpxGVX6YC2I5EqYtU6gnAdXG2o0DNTKCRMVKA2Lk5bW0UTLX/Kq3feSi
- /EAK8QWT3sVx49E0ssLRHhhSbJ82HjsCkSH1mADLkim5OtTY5EOZ7uGLcTdiFYLua7gg=;
+ bh=5Z7UVge4oAfupyRsAkMMB5dJhahHzHNxbOi2lNb0kE8=; b=pihKnAr7tXPDpRZvyNwzYzUNSa
+ wDMjaCBSpt2ItB5dov95kQllx/jpLcyH8B8ZcrCFtn8oqraP5pPmfaiOAP62NP+FZPZykkOfUA/Lh
+ horuRffjNOr896DnVm94RXkl1qmJ6p2mCPv4+rMxf40IKmfKPdnZtWxn97cmrfUrhz9o=;
 Received: from p54ae9f3f.dip0.t-ipconnect.de ([84.174.159.63] helo=nf.local)
  by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1mlV3Z-0003R5-Hf; Fri, 12 Nov 2021 12:49:21 +0100
-Message-ID: <36a7513b-2912-f46f-1a88-a07946ef703f@nbd.name>
-Date: Fri, 12 Nov 2021 12:49:20 +0100
+ id 1mlV6q-0003ZF-Ps; Fri, 12 Nov 2021 12:52:44 +0100
+Message-ID: <9b087a78-fb5f-40f4-378b-77ca53de3aab@nbd.name>
+Date: Fri, 12 Nov 2021 12:52:44 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
  Gecko/20100101 Thunderbird/91.3.0
-Subject: Re: [PATCH] mt76: testmode: add support to set MAC
+Subject: Re: [PATCH v2] mt76: do not pass the received frame with decryption
+ error
 Content-Language: en-US
-To: Shayne Chen <shayne.chen@mediatek.com>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <20211109040830.27536-1-shayne.chen@mediatek.com>
+To: Xing Song <xing.song@mediatek.com>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20211110025404.174080-1-xing.song@mediatek.com>
 From: Felix Fietkau <nbd@nbd.name>
-In-Reply-To: <20211109040830.27536-1-shayne.chen@mediatek.com>
+In-Reply-To: <20211110025404.174080-1-xing.song@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_034935_449058_E98EC357 
-X-CRM114-Status: GOOD (  14.83  )
+X-CRM114-CacheID: sfid-20211112_035252_512597_26BC0334 
+X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +80,15 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On 2021-11-09 05:08, Shayne Chen wrote:
-> Add support to set SA/DA/BSSID in testmode.
-> During mass production stage, some test scripts or test equipments need
-> to set fixed addresses to detect or parse if a test is passed.
-> Also, MAC setting is necessary for some tx/rx tests with rx filter,
-> to make sure rx site only receives expected packets.
+On 2021-11-10 03:54, Xing Song wrote:
+> Drop the received frame if decryption failed and mac80211 can not
+> handle it.
 > 
-> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
-> ---
->   drivers/net/wireless/mediatek/mt76/mt76.h     |  2 ++
->   drivers/net/wireless/mediatek/mt76/testmode.c | 36 +++++++++++++++++--
->   drivers/net/wireless/mediatek/mt76/testmode.h |  4 +++
->   3 files changed, 39 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-> index e2da720..e7ced94 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -599,6 +599,8 @@ struct mt76_testmode_data {
->   	u8 tx_power[4];
->   	u8 tx_power_control;
->   
-> +	u8 addr[3][ETH_ALEN];
-> +
->   	u32 tx_pending;
->   	u32 tx_queued;
->   	u16 tx_queued_limit;
-> diff --git a/drivers/net/wireless/mediatek/mt76/testmode.c b/drivers/net/wireless/mediatek/mt76/testmode.c
-> index 66afc2b..74621b9 100644
-> --- a/drivers/net/wireless/mediatek/mt76/testmode.c
-> +++ b/drivers/net/wireless/mediatek/mt76/testmode.c
-> @@ -126,9 +126,9 @@ int mt76_testmode_alloc_skb(struct mt76_phy *phy, u32 len)
->   
->   	hdr = __skb_put_zero(head, head_len);
->   	hdr->frame_control = cpu_to_le16(fc);
-> -	memcpy(hdr->addr1, phy->macaddr, sizeof(phy->macaddr));
-> -	memcpy(hdr->addr2, phy->macaddr, sizeof(phy->macaddr));
-> -	memcpy(hdr->addr3, phy->macaddr, sizeof(phy->macaddr));
-> +	ether_addr_copy(hdr->addr1, td->addr[0]);
-> +	ether_addr_copy(hdr->addr2, td->addr[1]);
-> +	ether_addr_copy(hdr->addr3, td->addr[2]);
-ether_addr_copy assumes that source and destination are u16 aligned. I'm 
-not sure that's guaranteed for td->addr.
-I think you either need to stick to memcpy or make the alignment of 
-td->addr explicit.
+> Signed-off-by: Xing Song <xing.song@mediatek.com>
+What happens if decryption failed? Do we receive the encrypted packets?
+If so, I think we should return -EINVAL only if we don't have any 
+monitor mode interfaces. If monitor mode is active, we should probably 
+just clear RX_FLAG_DECRYPTED instead.
 
 - Felix
 
