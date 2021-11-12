@@ -2,78 +2,64 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DBF74C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:15:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2D6E2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 21:27:46 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9837C60F93
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:15:30 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9837C60F93
+	by mail.kernel.org (Postfix) with ESMTPS id EAC386112E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 21:27:45 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EAC386112E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=go96nKrUmh9B/Uw0vIaV0cTp9z+LFnFMV9rqnDCOQg8=; b=II1f+HK0MMReTp
-	eG6dO8ecljhSuPhy6IzyDY4ducTwlmripD/td5HSpbj8ns6wVtGm12iyOlSc5OfeDvteuVOAr+N9Q
-	vG+u0xHz0X43C0lkYTSEYhhZoedOroHLomkr7uuliw+ulqJbbF4yBtg6AnbF4AQEb3JH5ic/CaIhe
-	FwEbnMoR+lJGPVH3UacMDuJdm+11OfqblPgn99yefn4/Sv9mQ5jMZyvSNkppIoyE7mzp1qvgww1Pp
-	OuT6TRKC8riJYNWhICYggJ4mecPKoMIoEaXYz17Wkk6ni5S3bV9ZDMqgf0xYPKa3fgIiX4d7wHkdN
-	uqErOI0t0UTanJVA2X6g==;
+	List-Owner; bh=kQ/7KT9nXe3n6q3c1yzaZJqgbsk7IgG79tzjMKzK6aQ=; b=gKLidVFHNk6YvH
+	GPUu1D69Bxk7NRaNG2litAga4p74rZ5kFSzveLKFWhCFEQqNPaoTzBKqBOMNcyN0H0YjT8bpQQIiv
+	W5N7GSH3EfKqLQsXVPdFiMi2chUXo02sPctPvCciHbaVYq6PqOx8P1KyUjgFSTXdGjpeBFwOq2nT1
+	lzc3rzUIm165pI/Of4Q1inJbt13QZrxv+ySShE/5ByQ1RMJsHC2zUPFh2404o6HA7pmhApkL2qTPo
+	SUsn1m6RcpeFM2xvrnIQsyfeeHlrSLAb2lXkpjUDOtUmJ6ogkypX8vBX9XWkcKOt3GWX7c3Yi7myv
+	cfIYJfwfKQVI1vFUhSOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlcxG-00BWjD-Af; Fri, 12 Nov 2021 20:15:22 +0000
-Received: from mail-ot1-f52.google.com ([209.85.210.52])
+	id 1mle5D-00BbHy-Nr; Fri, 12 Nov 2021 21:27:39 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlcxD-00BWiB-HS; Fri, 12 Nov 2021 20:15:21 +0000
-Received: by mail-ot1-f52.google.com with SMTP id
- v15-20020a9d604f000000b0056cdb373b82so7574727otj.7; 
- Fri, 12 Nov 2021 12:15:15 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=keLT6GqkBxKBg5E7mpziqAGsje8UnIi4oJ/70fWYsOk=;
- b=sSMx9szugp//jHUzZnyKAQxX/hkcU5Djvbzti8fJPYL93EUt7mP33ggDokE/fTP8x1
- SRBjN08z+oAbFNwgFufSTpIHIzv+XO39FyGErMnPgAEyY2ECiNiC1fMtg+2/0ja72X5e
- oMfYp2zf12P1nEFQFyMlgYGpvuOaYkN58O6vhqjueFMTi1BkkDB7Yes6HAlEjSEy19iD
- oTeFYxQpkimCmF2Fx9D9fVK73iQ65zq0R6XVHkwzBRej4eS7Bpd7WkhJwiHnuY/gY0lP
- OhLUziXLgagtLUrYgnL9K5I6ojXe5pkDTffkj0fB+rLcLLEAosrJFF9KUlCnlSDuOSy8
- TcSQ==
-X-Gm-Message-State: AOAM531emvZcXz/FYUuQK4POIjNt3kzVpzPCLO5w7z0Q63Im9PrbJCG1
- 6sQX3WLfw84P3T0gvFv5tw==
-X-Google-Smtp-Source: ABdhPJz0IgudO9I+dADfCJrqhnAcSXUvXv7srFOWzM/tpxDv/VcAcn13Yy2W70rZqXpm+7Y/UoSzNQ==
-X-Received: by 2002:a9d:6307:: with SMTP id q7mr14945920otk.83.1636748115023; 
- Fri, 12 Nov 2021 12:15:15 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id y9sm1235608oon.8.2021.11.12.12.15.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Nov 2021 12:15:14 -0800 (PST)
-Received: (nullmailer pid 3294254 invoked by uid 1000);
- Fri, 12 Nov 2021 20:15:13 -0000
-Date: Fri, 12 Nov 2021 14:15:13 -0600
-From: Rob Herring <robh@kernel.org>
-To: YC Hung <yc.hung@mediatek.com>
-Cc: broonie@kernel.org, tiwai@suse.com, matthias.bgg@gmail.com,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, daniel.baluta@nxp.com, trevor.wu@mediatek.com,
- allen-kh.cheng@mediatek.com, angelogioacchino.delregno@collabora.com
-Subject: Re: [PATCH v5] dt-bindings: dsp: mediatek: Add mt8195 DSP binding
- support
-Message-ID: <YY7LUWS5YDBBl/Kp@robh.at.kernel.org>
-References: <20211103102607.12277-1-yc.hung@mediatek.com>
+ id 1mle50-00BbGH-Ne; Fri, 12 Nov 2021 21:27:28 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 25BF0610FF;
+ Fri, 12 Nov 2021 21:27:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1636752446;
+ bh=eoAl5B/8h3ZtzbA9rB3nBcwncqWuJUxuT/UFumATqZQ=;
+ h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+ b=PyDHCooH3k3+HIQuMCsauOX0epOaMV29t1rOZWKdBiawNsX7KVbHe0BZDf+VJwlvD
+ 3nCRB1RWAkUvTKWfOjJQ7k+Gic5ysfd64D7RTx1Iotg8FUvzvEKiKXxZiaI9OODWFk
+ rJQXpWhFujB8vhG+H46Vpwcioq5p1II9amfUdXHq+yqiicVTulezO69s8llcFmmQIo
+ tqQjP8G40R9SwbuQPcLVEMNoYRCAYEkPKmrJyk3O4TkHR0xk3SIA4EtHKJ84k/zW8G
+ XZ8phQJ+dNfrJ6b37g79SH3cxZg+lTAQ7jS+sCr41cmfZ+YXLMSMJqdkHbCRKJOPKh
+ mgpxORkd/4lUw==
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ lgirdwood@gmail.com
+Cc: linux-mediatek@lists.infradead.org, tiwai@suse.com,
+ linux-kernel@vger.kernel.org, pierre-louis.bossart@linux.intel.com,
+ linux-arm-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+ dafna.hirschfeld@collabora.com, perex@perex.cz, matthias.bgg@gmail.com,
+ kuninori.morimoto.gx@renesas.com, kernel@collabora.com
+In-Reply-To: <20211111161108.502344-1-angelogioacchino.delregno@collabora.com>
+References: <20211111161108.502344-1-angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8173: Fix debugfs registration for
+ components
+Message-Id: <163675244389.742274.1874559646597511024.b4-ty@kernel.org>
+Date: Fri, 12 Nov 2021 21:27:23 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211103102607.12277-1-yc.hung@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_121519_614326_A5BBEC35 
-X-CRM114-Status: GOOD (  20.36  )
+X-CRM114-CacheID: sfid-20211112_132726_807155_4639566A 
+X-CRM114-Status: GOOD (  10.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,123 +76,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 03, 2021 at 06:26:08PM +0800, YC Hung wrote:
-> From: "yc.hung" <yc.hung@mediatek.com>
+On Thu, 11 Nov 2021 17:11:08 +0100, AngeloGioacchino Del Regno wrote:
+> When registering the mt8173-afe-pcm driver, we are also adding two
+> components: one is for the PCM DAIs and one is for the HDMI DAIs, but
+> when debugfs is enabled, we're getting the following issue:
 > 
-> This describes the mt8195 DSP device tree node.
+> [   17.279176] debugfs: Directory '11220000.audio-controller' with parent 'mtk-rt5650' already present!
+> [   17.288345] debugfs: Directory '11220000.audio-controller' with parent 'mtk-rt5650' already present!
 > 
-> Signed-off-by: yc.hung <yc.hung@mediatek.com>
-> ---
-> Changes since v4:
->   - remove patch 1 with clocks as it will be reviewed and merged to SOF tree.
->     https://github.com/thesofproject/linux/pull/3237
->   - refine DT file binding files with Rob's comments.
-> 
->  .../bindings/dsp/mtk,mt8195-dsp.yaml          | 142 ++++++++++++++++++
->  1 file changed, 142 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml b/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-> new file mode 100644
-> index 000000000000..aeeb7af69625
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-> @@ -0,0 +1,142 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/dsp/mtk,mt8195-dsp.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek mt8195 DSP core
-> +
-> +maintainers:
-> +  - YC Hung <yc.hung@mediatek.com>
-> +
-> +description: |
-> +  Some boards from mt8195 contain a DSP core used for
-> +  advanced pre- and post- audio processing.
-> +properties:
-> +  compatible:
-> +    const: mediatek,mt8195-dsp
-> +
-> +  reg:
-> +    items:
-> +      - description: Address and size of the DSP Cfg registers
-> +      - description: Address and size of the DSP SRAM
-> +
-> +  reg-names:
-> +    items:
-> +      - const: cfg
-> +      - const: sram
-> +
-> +  interrupts:
-> +    items:
-> +      - description: watchdog interrupt
-> +
-> +  interrupt-names:
-> +    items:
-> +      - const: wdt
-> +
-> +  clocks:
-> +    items:
-> +      - description: mux for audio dsp clock
-> +      - description: 26M clock
-> +      - description: mux for audio dsp local bus
-> +      - description: default audio dsp local bus clock source
-> +      - description: clock gate for audio dsp clock
-> +      - description: mux for audio dsp access external bus
-> +
-> +  clock-names:
-> +    items:
-> +      - const: adsp_sel
-> +      - const: clk26m_ck
-> +      - const: audio_local_bus
-> +      - const: mainpll_d7_d2
-> +      - const: scp_adsp_audiodsp
-> +      - const: audio_h
-> +
-> +  power-domains:
-> +    maxItems: 1
-> +
-> +  mboxes:
-> +    items:
-> +      - description: a mailbox is ised for ipc reply between host and audio DSP.
-> +      - description: a mailbox is ised for ipc reuqest between host and audio DSP.
-> +
-> +  mbox-names:
-> +    items:
-> +      - const: mbox0
-> +      - const: mbox1
-> +
-> +  memory-region:      
-> +    items:
-> +      - description: A phandle to a reserved memory region is used for dma buffer between host and DSP.   
-> +      - description: A phandle to a reserved memory region is used for DSP system memory.
-> +
-> +  sound:
-> +    description:
-> +      Sound subnode includes ASoC platform, DPTx codec node, and
-> +      HDMI codec node.
-> +
-> +    type: object
+> [...]
 
-Same question as v4, why do you need a sub-node here. Just move these 
-properties up a level.
+Applied to
 
-> +
-> +    properties:
-> +      mediatek,platform:
-> +        $ref: "/schemas/types.yaml#/definitions/phandle"
-> +        description: The phandle of MT8195 ASoC platform.
-> +
-> +      mediatek,dptx-codec:
-> +        $ref: "/schemas/types.yaml#/definitions/phandle"
-> +        description: The phandle of MT8195 Display Port Tx codec node.
-> +
-> +      mediatek,hdmi-codec:
-> +        $ref: "/schemas/types.yaml#/definitions/phandle"
-> +        description: The phandle of MT8195 HDMI codec node.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-linus
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8173: Fix debugfs registration for components
+      commit: 8c32984bc7da29828260ac514d5d4967f7e8f62d
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 _______________________________________________
 Linux-mediatek mailing list
