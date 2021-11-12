@@ -2,77 +2,75 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5334EC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 16:58:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 16CD2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 19:13:26 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1092561073
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 16:58:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1092561073
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id AE26560FE7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 19:13:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AE26560FE7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=euczCg3lm9aJNhRYiqPec0lRiP5zNHQ0QxptAE5dcwo=; b=AqeA8eyIzwvMtv
-	ri0NRHCNO9WxrL056z+6kPGNYnJjgc0+vUgbMx0Wzdiyoyvw7v+q8k85koLdvYrtm98rXki+Ei14/
-	ae845tmrkymrLhaqVHiDKZS/wFEc62iEWnh8Rcwlpnpn0IAcBOS2XV2wafTH/8jmhTS8yuSqWGIAW
-	Sxd8Rb+qaBhank1dUI3BH3COcvs828vIKZCOKOmcoc9wT2K1j2YnN+go+x4Cm2YcpjAGCgTGwFje2
-	VEHr7RSEVlSGT0tHqhhm9jV6Rr8qlQ2I5ZMJjBcrzWl1vaPuMb23ji8owAsJmef9hVc0LvybIcsTt
-	xC7dGb+OH7oqNVereZ3Q==;
+	List-Owner; bh=Spb8rO8ZHtI0Kl4z1cYYNsJgSJICo1i2wPQ8DgTxf3o=; b=Vq146UkN2vN3t5
+	LNINplird5jYpF2O4+yZIF3dQvMdhY2wtKMFrswf150KbloMO4Z6NJRy5wxgvdpawPkNEPtO+gKch
+	LOVEoTHt9U6OlPiOzM6PadgL+bEw9BXb9WOjBsXEysRa468Y8P9BVBdBw8tnddEc1xjE2z3uqeZTi
+	/J9tfV8lGwuZ22pak160VfxeT541iWz7n0SjWfxvpCPm+MYhZLbXjzjpmQcpXmMVrgGi7sOAIyS7X
+	aoCsyu9x5J1NBdFz3382tB5g3CL8hpx9t8EuZLz0cyTVmnsLJ0OtDjEcg39UbYBZPxGylIKmJtp2B
+	VqVCwhMaDf0u4B+LZPYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlZsB-00BHTN-PY; Fri, 12 Nov 2021 16:57:55 +0000
-Received: from mail-oi1-f177.google.com ([209.85.167.177])
+	id 1mlbzA-00BSrt-LU; Fri, 12 Nov 2021 19:13:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlZrw-00BHQ7-0n; Fri, 12 Nov 2021 16:57:41 +0000
-Received: by mail-oi1-f177.google.com with SMTP id m6so19067569oim.2;
- Fri, 12 Nov 2021 08:57:39 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=n9OxRMPgp6pk93jZ1YlEjSWdjPyoXU189+XIXwiTYRw=;
- b=m+Nt3XDfo9uZDWBaW+INt+GGZmFwBUveWHY6qL9wu/AvA4t09LfPMxuiODkVlif+BW
- i9213B5ddARnfqiigOM1XcCj/Tr7V24SvG0NsnU7MZVFlr0S9le1thfFJWE4e3PX+kmH
- JElb5DM/loV6K7Zl0D5mEsmurqzdCZ+MdJsb1VmkZmhYqEx0gLAwJ8deuA29xDSogVEA
- ppg3QeLdRiQlbb1yT5wh7GaWw0ZSeshjuOE7pKD1iK7v/1Iidua/lk7EdVR0iXkyHenm
- THb/sZ9/JZKpYwOs1TAjOkbehcpfia58dFyz6SBWrFI3BBOiBDLN+a4KkFT9v+eWCNCz
- AHvQ==
-X-Gm-Message-State: AOAM53386iUg4YRISOu0BQ//ZIv+DSeYVxW0NJP5jeSgR7yIptwQDeAY
- D/f05tlh1A6h010tqaj6SAIPybBDNA==
-X-Google-Smtp-Source: ABdhPJw55ryGR39q61JJpTyvJsied/FtWSJDgs9l5hCvlD+IouVp9dNd0acwh0y+I9393pbRkbSMFw==
-X-Received: by 2002:a54:4584:: with SMTP id z4mr27648506oib.158.1636736259168; 
- Fri, 12 Nov 2021 08:57:39 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id y203sm1407807oia.1.2021.11.12.08.57.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Nov 2021 08:57:38 -0800 (PST)
-Received: (nullmailer pid 3004958 invoked by uid 1000);
- Fri, 12 Nov 2021 16:57:37 -0000
-Date: Fri, 12 Nov 2021 10:57:37 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] dt-bindings: usb: mtk-xhci: add support ip-sleep for
- mt8195
-Message-ID: <YY6dAT3OHbu0CO/J@robh.at.kernel.org>
-References: <20211102060049.1843-1-chunfeng.yun@mediatek.com>
+ id 1mlbz6-00BSrE-5f
+ for linux-mediatek@lists.infradead.org; Fri, 12 Nov 2021 19:13:15 +0000
+X-UUID: d6e894330f154c4593db897eca20a53d-20211112
+X-UUID: d6e894330f154c4593db897eca20a53d-20211112
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <ryder.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1312917234; Fri, 12 Nov 2021 12:13:07 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Nov 2021 11:13:05 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 13 Nov 2021 03:12:51 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 13 Nov 2021 03:12:51 +0800
+Message-ID: <c622447038b06d8a4068ec8126c7ec674fafe383.camel@mediatek.com>
+Subject: Re: [PATCH v2] mt76: mt7921: introduce 160 MHz channel bandwidth
+ support
+From: Ryder Lee <ryder.lee@mediatek.com>
+To: Deren Wu <Deren.Wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>, "Lorenzo
+ Bianconi" <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+ Robin Chiu
+ <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun
+ <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, Stella Chang
+ <Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>
+Date: Sat, 13 Nov 2021 03:12:51 +0800
+In-Reply-To: <66edc3125e9a12dedeba1a61697d46322b0c004d.1636374449.git.deren.wu@mediatek.com>
+References: <66edc3125e9a12dedeba1a61697d46322b0c004d.1636374449.git.deren.wu@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211102060049.1843-1-chunfeng.yun@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_085740_082981_553B5213 
-X-CRM114-Status: GOOD (  16.73  )
+X-CRM114-CacheID: sfid-20211112_111312_273783_8FE9B8DC 
+X-CRM114-Status: GOOD (  16.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,39 +87,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 02, 2021 at 02:00:47PM +0800, Chunfeng Yun wrote:
-> There are 4 USB controllers on MT8195, each controller's wakeup control is
-> different, add some spicific versions for them.
-
-specific
-
+On Mon, 2021-11-08 at 22:41 +0800, Deren Wu wrote:
+> From: Deren Wu <deren.wu@mediatek.com>
 > 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> Introduce the basic configuration for chips with BW160 capability
+> 
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 > ---
->  .../devicetree/bindings/usb/mediatek,mtk-xhci.yaml          | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
+>  drivers/net/wireless/mediatek/mt76/mt76.h            |  1 +
+>  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c |  1 +
+>  drivers/net/wireless/mediatek/mt76/mt7921/init.c     |  4 ++++
+>  drivers/net/wireless/mediatek/mt76/mt7921/main.c     | 12
+> ++++++++++++
+>  4 files changed, 18 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> index 11f7bacd4e2b..41efb51638d1 100644
-> --- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
-> @@ -146,7 +146,11 @@ properties:
->              2 - used by mt2712 etc, revision 2 following IPM rule;
->              101 - used by mt8183, specific 1.01;
->              102 - used by mt8192, specific 1.02;
-> -          enum: [1, 2, 101, 102]
-> +            103 - used by mt8195, IP0, specific 1.03;
-> +            104 - used by mt8195, IP1, specific 1.04;
-> +            105 - used by mt8195, IP2, specific 1.05;
-> +            106 - used by mt8195, IP3, specific 1.06;
-> +          enum: [1, 2, 101, 102, 103, 104, 105, 106]
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h
+> b/drivers/net/wireless/mediatek/mt76/mt76.h
+> index e2da720a91b6..babca8086027 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -346,6 +346,7 @@ struct mt76_hw_cap {
+>  	bool has_2ghz;
+>  	bool has_5ghz;
+>  	bool has_6ghz;
+> +	bool has_bw160;
+>  };
 >  
->    mediatek,u3p-dis-msk:
->      $ref: /schemas/types.yaml#/definitions/uint32
-> -- 
-> 2.18.0
-> 
-> 
+>  #define MT_DRV_TXWI_NO_FREE		BIT(0)
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> index 26b4b875dcc0..3b42e1e8e970 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+> @@ -1775,6 +1775,7 @@ static void
+> mt76_connac_mcu_parse_phy_cap(struct mt76_dev *dev,
+>  	dev->phy.chainmask = dev->phy.antenna_mask;
+>  	dev->phy.cap.has_2ghz = cap->hw_path & BIT(WF0_24G);
+>  	dev->phy.cap.has_5ghz = cap->hw_path & BIT(WF0_5G);
+> +	dev->phy.cap.has_bw160 = cap->max_bw ==
+> IEEE80211_STA_RX_BW_160;
+>  }
+>  
+>  int mt76_connac_mcu_get_nic_capability(struct mt76_phy *phy)
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> index 210998f086ab..30c0246fba3a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+> @@ -264,6 +264,10 @@ int mt7921_register_device(struct mt7921_dev
+> *dev)
+>  			IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE |
+>  			IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE |
+>  			(3 << IEEE80211_VHT_CAP_BEAMFORMEE_STS_SHIFT);
+> +	if (dev->mt76.phy.cap.has_bw160)
+> +		dev->mphy.sband_5g.sband.vht_cap.cap |=
+> +			IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160MHZ |
+> +			IEEE80211_VHT_CAP_SHORT_GI_160;
+>  
+>  	dev->mphy.hw->wiphy->available_antennas_rx = dev-
+> >mphy.chainmask;
+>  	dev->mphy.hw->wiphy->available_antennas_tx = dev-
+> >mphy.chainmask;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> index 633c6d2a57ac..af8c675f909f 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -128,11 +128,23 @@ mt7921_init_he_caps(struct mt7921_phy *phy,
+> enum nl80211_band band,
+>  				IEEE80211_HE_PHY_CAP9_RX_1024_QAM_LESS_
+> THAN_242_TONE_RU |
+>  				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USI
+> NG_MU_WITH_COMP_SIGB |
+>  				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USI
+> NG_MU_WITH_NON_COMP_SIGB;
+> +
+> +			if (phy->mt76->cap.has_bw160) {
+> +				he_cap_elem->phy_cap_info[0] |=
+> +					IEEE80211_HE_PHY_CAP0_CHANNEL_W
+> IDTH_SET_160MHZ_IN_5G;
+> +				he_cap_elem->phy_cap_info[8] |=
+> +					IEEE80211_HE_PHY_CAP8_20MHZ_IN_
+> 160MHZ_HE_PPDU |
+> +					IEEE80211_HE_PHY_CAP8_80MHZ_IN_
+> 160MHZ_HE_PPDU;
+> +			}
+>  			break;
+>  		}
+>  
+>  		he_mcs->rx_mcs_80 = cpu_to_le16(mcs_map);
+>  		he_mcs->tx_mcs_80 = cpu_to_le16(mcs_map);
+> +		if (phy->mt76->cap.has_bw160) {
+> +			he_mcs->rx_mcs_160 = cpu_to_le16(mcs_map);
+> +			he_mcs->tx_mcs_160 = cpu_to_le16(mcs_map);
+> +		}
+>  
+
+But what about 80p80Mhz case?
+
+Ryder
+
 
 _______________________________________________
 Linux-mediatek mailing list
