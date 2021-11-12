@@ -2,72 +2,64 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3294BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 09:49:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 582E8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 10:55:48 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id EF70160F51
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 09:49:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EF70160F51
+	by mail.kernel.org (Postfix) with ESMTPS id 219EA60EFD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 10:55:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 219EA60EFD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=38A+1c6YaGWTI8LZHFAKW8tcGggSQKyCci7JOiU7/cA=; b=AyAcDUbBq2FAbf
-	tsIk4X0p5RoDuDCL45rzy4yh0QXlhFxMyb58HAQogsXRkjYSTKQ2JG3XJBqNHzGN6gtIJWXUFii5s
-	QTDtbItbBQ56kg9+OAPnjuUKj42BzmQxlA6G9k63YaoIhKQJMQKkRIm7BHPGUoIlSQdYC/gyyuL/6
-	HCm3w6rTcRuLzygouAEmTePAzqcbfEbMrKkiXzny6M/nyc8aQoecdGnK/Uvf994UB1jGOC8Rc8sgl
-	UbtEbHNBg98ahLZ5T1+itbegmppMoZAgPiqKP3ZQp5oSYw8bnkYlUrWbVRp6RZNFt2Nxk5vUoayc6
-	vzR1QV/HCDVMU3PKDymw==;
+	List-Owner; bh=8BWYXpMFScHKaAZH4Rc1ftosEfIBMjIObPRxZyWxBws=; b=KmprWJj9Hez1s8
+	AESgchxkAFkfTc973VXNzc6OFO0bpKrV8XlObRA1B0U96sVs6XHL4ne1ZEAumVVthUGaZL6b4erc9
+	YxqXq83zNJehIiyh0SsJlGcPkbqISD6kFPQVG9j1kQWH8EMRDGmm5bru11ef8FQmhuem1dQ5HBa6C
+	GaZVuxE31v6+NtdDWnAwjT0hMKmMC9Wjd1yscxSXDPlWq7S21ySsnJ25mzZCqM8heNdHrfqlKiuqx
+	G2eWSZhQZ4Hc5qLgFaSp24NKX5/e57i/COD1e40STfKUYwY/9VNbgRVLeQ0Ci+vpRy3swNABjVadN
+	6UFEvv7WwL49DgmIGKuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlTBt-009tEi-Tj; Fri, 12 Nov 2021 09:49:49 +0000
+	id 1mlUDb-009zf2-2R; Fri, 12 Nov 2021 10:55:39 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlTBg-009tAt-If; Fri, 12 Nov 2021 09:49:37 +0000
-X-UUID: 1425364efcee48fc8b665f37fe98cb61-20211112
-X-UUID: 1425364efcee48fc8b665f37fe98cb61-20211112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <biao.huang@mediatek.com>)
+ id 1mlUDL-009zaE-NM; Fri, 12 Nov 2021 10:55:27 +0000
+X-UUID: b06299ee3452410995f2845beab89d82-20211112
+X-UUID: b06299ee3452410995f2845beab89d82-20211112
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1406671502; Fri, 12 Nov 2021 02:49:31 -0700
+ with ESMTP id 844287990; Fri, 12 Nov 2021 03:55:20 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Nov 2021 01:39:29 -0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 12 Nov 2021 02:55:18 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 12 Nov 2021 17:39:27 +0800
+ 15.2.792.15; Fri, 12 Nov 2021 18:55:16 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Nov 2021 17:39:20 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
- <robh+dt@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
- <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
- <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
- <dkirjanov@suse.de>
-Subject: [PATCH v3 0/7] MediaTek Ethernet Patches on MT8195
-Date: Fri, 12 Nov 2021 17:39:11 +0800
-Message-ID: <20211112093918.11061-1-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ Transport; Fri, 12 Nov 2021 18:55:15 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
+ Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>
+Subject: [PATCH v9 00/15] Clean up "mediatek,larb"
+Date: Fri, 12 Nov 2021 18:54:54 +0800
+Message-ID: <20211112105509.12010-1-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_014936_658688_88D708B6 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20211112_025523_834227_9444C651 
+X-CRM114-Status: GOOD (  21.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,52 +71,166 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
+ dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
+ anthony.huang@mediatek.com, youlin.pei@mediatek.com,
+ Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
+ Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ mingyuan.ma@mediatek.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ libo.kang@mediatek.com, yi.kuo@mediatek.com,
+ linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, yong.wu@mediatek.com,
+ anan.sun@mediatek.com, srv_heupstream@mediatek.com, acourbot@chromium.org,
+ linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
+ Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v3:
-1. Add prefix "net-next" to support new IC as Denis's suggestion.
-2. Split dt-bindings to two patches, one for convertion, and the other for
-   new IC.
-3. add a new patch to update device node in mt2712-evb.dts to accommodate to
-   changes in driver.
-4. remove unnecessary wrapper as Angelo's suggestion.
-5. Add acked-by in "net-next: stmmac: dwmac-mediatek: Reuse more common
-   features" patch.
+MediaTek IOMMU block diagram always like below:
 
-Changes in v2:
-1. fix errors/warnings in mediatek-dwmac.yaml with upgraded dtschema tools
+        M4U
+         |
+    smi-common
+         |
+  -------------
+  |         |  ...
+  |         |
+larb1     larb2
+  |         |
+vdec       venc
 
-This series include 5 patches:
-1. add platform level clocks management for dwmac-mediatek
-2. resue more common features defined in stmmac_platform.c
-3. add ethernet entry for mt8195
-4. convert mediatek-dwmac.txt to mediatek-dwmac.yaml
-5. add ethernet device node for mt8195
+All the consumer connect with smi-larb, then connect with smi-common.
 
-Biao Huang (7):
-  net-next: stmmac: dwmac-mediatek: add platform level clocks management
-  net-next: stmmac: dwmac-mediatek: Reuse more common features
-  arm64: dts: mt2712: update ethernet device node
-  net-next: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema
-  net-next: stmmac: dwmac-mediatek: add support for mt8195
-  arm64: dts: mt8195: add ethernet device node
-  net-next: dt-bindings: dwmac: add support for mt8195
+When the consumer works, it should enable the smi-larb's power which also
+need enable the smi-common's power firstly.
 
- .../bindings/net/mediatek-dwmac.txt           |  91 ------
- .../bindings/net/mediatek-dwmac.yaml          | 211 ++++++++++++
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |   1 +
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  14 +-
- arch/arm64/boot/dts/mediatek/mt8195-evb.dts   |  92 ++++++
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  70 ++++
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 305 ++++++++++++++++--
- 7 files changed, 666 insertions(+), 118 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
- create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+Thus, Firstly, use the device link connect the consumer and the
+smi-larbs. then add device link between the smi-larb and smi-common.
 
---
+After adding the device_link, then "mediatek,larb" property can be removed.
+the iommu consumer don't need call the mtk_smi_larb_get/put to enable
+the power and clock of smi-larb and smi-common.
+
+Base on a jpeg dt-bing patchset[1] that already got the necessary R-b.
+
+This patchset cross several tree, From [2], the media tree should be a good choice.
+
+[1] https://lore.kernel.org/linux-mediatek/20210702102304.3346429-1-hsinyi@chromium.org/
+[2] https://lore.kernel.org/linux-mediatek/e7269c80-5437-6ab9-c1db-df0b94eb97d8@gmail.com/
+
+Change notes:
+v9: 1) Add return -ENODEV when the dev is null.
+    2) Add more strict about the case that a iommu consume device use the ports in
+    different larbs. Don't allow this case.
+    3) Remove two codec interface: mtk_vcodec_release_enc/dec_pm since it only has one
+    line now.
+
+v8: https://lore.kernel.org/linux-mediatek/20210929013719.25120-1-yong.wu@mediatek.com/
+    1) Rebase on v5.15-rc1.
+    2) Don't rebase the below mdp patchset that may still need more discuss.
+    https://lore.kernel.org/linux-mediatek/20210709022324.1607884-1-eizan@chromium.org/
+    3) Add Frank's Tested-by. Remove Dafna's Tested-by as he requested.
+
+v7: https://lore.kernel.org/linux-mediatek/20210730025238.22456-1-yong.wu@mediatek.com/
+    1) Fix a arm32 boot fail issue. reported from Frank.
+    2) Add a return fail in the mtk drm. suggested by Dafna.
+
+v6: https://lore.kernel.org/linux-mediatek/20210714025626.5528-1-yong.wu@mediatek.com/
+    1) rebase on v5.14-rc1.
+    2) Fix the issue commented in v5 from Dafna and Hsin-Yi.
+    3) Remove the patches about using pm_runtime_resume_and_get since they have
+       already been merged by other patches.
+
+v5: https://lore.kernel.org/linux-mediatek/20210410091128.31823-1-yong.wu@mediatek.com/
+    1) Base v5.12-rc2.
+    2) Remove changing the mtk-iommu to module_platform_driver patch, It have already been a
+    independent patch.
+
+v4: https://lore.kernel.org/linux-mediatek/1590826218-23653-1-git-send-email-yong.wu@mediatek.com/ 
+    base on v5.7-rc1.
+  1) Move drm PM patch before smi patchs.
+  2) Change builtin_platform_driver to module_platform_driver since we may need
+     build as module.
+  3) Rebase many patchset as above.
+
+v3: https://lore.kernel.org/linux-iommu/1567503456-24725-1-git-send-email-yong.wu@mediatek.com/
+    1) rebase on v5.3-rc1 and the latest mt8183 patchset.
+    2) Use device_is_bound to check whether the driver is ready from Matthias.    
+    3) Add DL_FLAG_STATELESS flag when calling device_link_add and explain the
+   reason in the commit message[3/14].
+    4) Add a display patch[12/14] into this series. otherwise it may affect
+   display HW fastlogo even though it don't happen in mt8183.
+   
+v2: https://lore.kernel.org/linux-iommu/1560171313-28299-1-git-send-email-yong.wu@mediatek.com/
+   1) rebase on v5.2-rc1.
+   2) Move adding device_link between the consumer and smi-larb into
+iommu_add_device from Robin.
+   3) add DL_FLAG_AUTOREMOVE_CONSUMER even though the smi is built-in from Evan.
+   4) Remove the shutdown callback in iommu.   
+
+v1: https://lore.kernel.org/linux-iommu/1546318276-18993-1-git-send-email-yong.wu@mediatek.com/
+
+Yong Wu (14):
+  dt-binding: mediatek: Get rid of mediatek, larb for multimedia HW
+  iommu/mediatek-v1: Free the existed fwspec if the master dev already
+    has
+  iommu/mediatek: Return ENODEV if the device is NULL
+  iommu/mediatek: Add probe_defer for smi-larb
+  iommu/mediatek: Add device_link between the consumer and the larb
+    devices
+  media: mtk-jpeg: Get rid of mtk_smi_larb_get/put
+  media: mtk-mdp: Get rid of mtk_smi_larb_get/put
+  drm/mediatek: Get rid of mtk_smi_larb_get/put
+  media: mtk-vcodec: Get rid of mtk_smi_larb_get/put
+  media: mtk-vcodec: dec: Remove mtk_vcodec_release_dec_pm
+  media: mtk-vcodec: enc: Remove mtk_vcodec_release_enc_pm
+  memory: mtk-smi: Get rid of mtk_smi_larb_get/put
+  arm: dts: mediatek: Get rid of mediatek, larb for MM nodes
+  arm64: dts: mediatek: Get rid of mediatek, larb for MM nodes
+
+Yongqiang Niu (1):
+  drm/mediatek: Add pm runtime support for ovl and rdma
+
+ .../display/mediatek/mediatek,disp.txt        |  9 ----
+ .../bindings/media/mediatek-jpeg-decoder.yaml |  9 ----
+ .../bindings/media/mediatek-jpeg-encoder.yaml |  9 ----
+ .../bindings/media/mediatek-mdp.txt           |  8 ---
+ .../bindings/media/mediatek-vcodec.txt        |  4 --
+ arch/arm/boot/dts/mt2701.dtsi                 |  2 -
+ arch/arm/boot/dts/mt7623n.dtsi                |  5 --
+ arch/arm64/boot/dts/mediatek/mt8173.dtsi      | 16 ------
+ arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  6 ---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  8 ++-
+ drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |  9 +++-
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 15 +++---
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 36 +------------
+ drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  1 -
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  5 +-
+ drivers/iommu/mtk_iommu.c                     | 34 ++++++++++++
+ drivers/iommu/mtk_iommu_v1.c                  | 42 ++++++++++++++-
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 45 +---------------
+ .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  2 -
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 40 --------------
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.h |  2 -
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c |  1 -
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  8 +--
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 46 +++-------------
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  3 +-
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  6 +--
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 52 +++----------------
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   |  3 +-
+ drivers/memory/mtk-smi.c                      | 14 -----
+ include/soc/mediatek/smi.h                    | 20 -------
+ 32 files changed, 125 insertions(+), 339 deletions(-)
+
+-- 
 2.18.0
 
 
