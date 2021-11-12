@@ -2,14 +2,14 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E228C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2CE1EC433FE
 	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 13:49:19 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E308C61075
+	by mail.kernel.org (Postfix) with ESMTPS id 0137D61076
 	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 13:49:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E308C61075
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0137D61076
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,67 +18,66 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Mw472g3RXlfCDInxRS+LcbWCWvgwK2cPi2noWWAoRoA=; b=suuYrfr+FKHyxN
-	v5fzTpyFMKmRSNfY+/I1PyhJyJ3+IdCnxHTspqGv7RRW1fMhI8yZRdTOtOyknnK//2P4QLp+JtkL5
-	bAEvbP3eSBU/KhksEr7ouVQN60x3Z8yMJyND8xO1EjdnpiDOdRmogGe8BwXB+k+VbE6dsyT57LfXS
-	4SbnyabHfPKKBhaYKNYS7izdrRQpUOvVIfG3Zt99bQ/DIBmgMr7vFh0XMKy505VOQ0aVNPaZZfPXB
-	cimacSVWFbUzRLMBDGix43pYpSAqSfReC9qEaL+NcnDOFkmkrTf/LnIAdiAOVqLbi4Rkm75UnYf3M
-	aUWreZsOXqEHkySkun5A==;
+	List-Owner; bh=aRerId72IazddTIWhqH4FiC92gifKpr/MxK+LuKC1sc=; b=rz9UL3yy2gzrMi
+	S79N/J0YdTjF2+AZeXp+rqt7v1003u4zAvSr31BCS/AeGbNJU4r6erRlH8MCJ/LMpGdo19hndYmdw
+	wGeMZ+98ykIR9wht7J124KxaeaRaXBuu7ItENq2UCBOs328cIpjR3rNTZaTaBsH3qP0byEND+Ci8O
+	Wq9Ghaewxt5i1z2JHmcmat7ncJ/gVXQq81CobrAATWGSyfdyXXyjc5WuVQuzkHSumw3+uTh6UfCsU
+	kAeUL+HGsPfo/mIWwOC9r6A1aYpMXJOzFKfHvmDommtVkm6fEq82F5WKbZPtf1LuvJ4MsfH0N5tI2
+	zxLiTQA2w0Z6Oy87sSkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlWvV-00Adzc-JG; Fri, 12 Nov 2021 13:49:09 +0000
-Received: from mail-ot1-f53.google.com ([209.85.210.53])
+	id 1mlWvY-00Ae0x-CQ; Fri, 12 Nov 2021 13:49:12 +0000
+Received: from mail-oi1-f178.google.com ([209.85.167.178])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlWvG-00Adsl-MJ; Fri, 12 Nov 2021 13:48:56 +0000
-Received: by mail-ot1-f53.google.com with SMTP id
- h16-20020a9d7990000000b0055c7ae44dd2so13860376otm.10; 
- Fri, 12 Nov 2021 05:48:49 -0800 (PST)
+ id 1mlWvL-00Ads1-L0; Fri, 12 Nov 2021 13:49:01 +0000
+Received: by mail-oi1-f178.google.com with SMTP id u74so17952963oie.8;
+ Fri, 12 Nov 2021 05:48:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
  :message-id;
- bh=6pHca0PIi6BrRjpQqaAzxuZW0QOl0VIRadxfTfhPAkQ=;
- b=Nl9CrmSrphJ+kQu9B6p7MQWPTCM8KTSj19b6Bbrp1AMbss8yy9ILD6mc/CH/BYeP7o
- +5Qb6aVf8LCLxp6IZJG++/NUoO8I0fNZ9rJxpH8E5YNz5LKdjP1B7BoMXghNE2M9gqfI
- mM3N1C6Ru40cEDcDVi9GEbsIP6kj401U59CEoP/L9pRHzmga61uyGlXjXAE3jKWrJ1R0
- KP2bt8+TGaB20ZIUhs2Qi6HZBf6aTgIlRwElIWz3v4Rpe5njoA+Lq4VVPlXG7jr/AIWB
- RRUfqWohYUmxewgU+nWSnAStrlO/YqMGiLfKN1qKsNQ2UDz50LEcKP1smCEwlcqcOE6e
- vufQ==
-X-Gm-Message-State: AOAM530urj87lfWuQJn9dvkGy+sKVYKlB5TjLMi8+r1AWZKg6aFWrPvz
- DSLiSlgc99FuNOzpXxb3bA==
-X-Google-Smtp-Source: ABdhPJwly26891iEK8vtNTXyQVNzHORW9lkbyk3RQPIGYIxK3HMgQYC5n3VkFR/ORX4G7j567JV10A==
-X-Received: by 2002:a05:6830:1e57:: with SMTP id
- e23mr12025731otj.16.1636724928903; 
- Fri, 12 Nov 2021 05:48:48 -0800 (PST)
+ bh=lfnFk0Vk2nlPX6zE3Xuo6uqEuasd9Rkq/bqEgF/SFTA=;
+ b=onCcLmykyO9p+95r10LaXMGqRoiIdSXne2c+iurkjU//k/7JH0EsJf1rm1f29vysKD
+ UfKfo8fWNmMOnQokTSWcGFyRnPfbVYnluCL9VTR5iR8FUIdqFc+qf/MqxgIw5WixuieN
+ 3pkCnzXCxM1V0ZZNPCOGn+WVloxYhv7lVRBivkLOX/hXeYYlcv7LgPgYjqPaPxmP7JX9
+ qem8n0Ul2K3rpDDnCzcZzqg3cl7jxT2OcAf02MJx7eyzKCoFPXS+OcuB/iYqfAcUjLNa
+ YQc710PQIycR5D7qM4/Jnv6qzVUNHV6Y2iVbuBgwhiepnPYg8yMA9yBOrIkZZnLefMJ0
+ zNsw==
+X-Gm-Message-State: AOAM532nOxR2cxbGFjigOxPhajyaqTb21fRGH7WF/jcLeQH4sdQxQsk3
+ 9Tynhfq8Wien5f72xFvYMQ==
+X-Google-Smtp-Source: ABdhPJwYvgxWt2U6crFb5cYgShEcV2k6Ksx10uPU+Y41+QNrwmhXTQw/q/at2PcM13hNbmCaEt2ZHA==
+X-Received: by 2002:a05:6808:14e:: with SMTP id
+ h14mr23166380oie.28.1636724925287; 
+ Fri, 12 Nov 2021 05:48:45 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id a23sm1053194ool.3.2021.11.12.05.48.47
+ by smtp.gmail.com with ESMTPSA id h3sm11658ooe.13.2021.11.12.05.48.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Nov 2021 05:48:48 -0800 (PST)
-Received: (nullmailer pid 2463375 invoked by uid 1000);
+ Fri, 12 Nov 2021 05:48:44 -0800 (PST)
+Received: (nullmailer pid 2463377 invoked by uid 1000);
  Fri, 12 Nov 2021 13:48:37 -0000
 From: Rob Herring <robh@kernel.org>
 To: Biao Huang <biao.huang@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- davem@davemloft.net, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Jakub Kicinski <kuba@kernel.org>, linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
- Jose Abreu <joabreu@synopsys.com>, macpaul.lin@mediatek.com,
- linux-mediatek@lists.infradead.org, angelogioacchino.delregno@collabora.com,
- srv_heupstream@mediatek.com, Matthias Brugger <matthias.bgg@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Rob Herring <robh+dt@kernel.org>, dkirjanov@suse.de,
- devicetree@vger.kernel.org
-In-Reply-To: <20211112093918.11061-5-biao.huang@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, angelogioacchino.delregno@collabora.com,
+ davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>,
+ srv_heupstream@mediatek.com, Jakub Kicinski <kuba@kernel.org>,
+ dkirjanov@suse.de, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ macpaul.lin@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ linux-stm32@st-md-mailman.stormreply.com
+In-Reply-To: <20211112093918.11061-8-biao.huang@mediatek.com>
 References: <20211112093918.11061-1-biao.huang@mediatek.com>
- <20211112093918.11061-5-biao.huang@mediatek.com>
-Subject: Re: [PATCH v3 4/7] net-next: dt-bindings: dwmac: Convert
- mediatek-dwmac to DT schema
+ <20211112093918.11061-8-biao.huang@mediatek.com>
+Subject: Re: [PATCH v3 7/7] net-next: dt-bindings: dwmac: add support for
+ mt8195
 Date: Fri, 12 Nov 2021 07:48:37 -0600
-Message-Id: <1636724917.159298.2463374.nullmailer@robh.at.kernel.org>
+Message-Id: <1636724917.173620.2463376.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_054854_764290_E9BF8499 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20211112_054859_742576_D56C4CE5 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,16 +95,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 12 Nov 2021 17:39:15 +0800, Biao Huang wrote:
-> Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
+On Fri, 12 Nov 2021 17:39:18 +0800, Biao Huang wrote:
+> Add binding document for the ethernet on mt8195.
 > 
 > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 > ---
->  .../bindings/net/mediatek-dwmac.txt           |  91 ----------
->  .../bindings/net/mediatek-dwmac.yaml          | 157 ++++++++++++++++++
->  2 files changed, 157 insertions(+), 91 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
->  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+>  .../bindings/net/mediatek-dwmac.yaml          | 86 +++++++++++++++----
+>  1 file changed, 70 insertions(+), 16 deletions(-)
 > 
 
 Running 'make dtbs_check' with the schema in this patch gives the
@@ -115,7 +111,7 @@ incorrect. These may not be new warnings.
 Note that it is not yet a requirement to have 0 warnings for dtbs_check.
 This will change in the future.
 
-Full log is available here: https://patchwork.ozlabs.org/patch/1554228
+Full log is available here: https://patchwork.ozlabs.org/patch/1554230
 
 
 ethernet@1101c000: clock-names: ['axi', 'apb', 'mac_main', 'ptp_ref'] is too short
