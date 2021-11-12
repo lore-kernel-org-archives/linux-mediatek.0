@@ -2,14 +2,14 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C2141C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 09:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C5AAEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 09:49:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8815C60F51
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 09:49:46 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8815C60F51
+	by mail.kernel.org (Postfix) with ESMTPS id 939CC60F4F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 09:49:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 939CC60F4F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9HR6uBr54ZOHxhwbm9TDTiC5jCaUGCyQPn2zL+ZlFGk=; b=Jssq3B9Z8m+J2F
-	1Lby7w4CvZIv/ep5pc+hSPbHooYbCeDfl82eDbp7Ij5gESeZYKRNF0AaI8tUCo0cZoSZeqmyhOoeb
-	n1pOeuWgSrprDghKEi31MR0jIDyeRvz3lHJNdL/BFcMpLVTIZaQHO3CldCFABzMssrehI/+Is9Ac3
-	mitucLKBnYdK9hEVE2rglez9Fkm88+CLolkDQ0qgvEHTIvseUkECRpryS1kpiuFrPMCcuYKhWPHrM
-	OhP+M5tLQPzyPP3XIZmCk3+zzDTYIPKK8U5YHkS0XhVNIW6tKpZgcptTfGDX8YSN/me6uQgyN/dWL
-	gjHOkD/o9mG3sjhWkhaw==;
+	List-Owner; bh=CY02ARrMcpk+EHrkuG4HDCmlNGbJ7hSqrGxG73+2Fys=; b=f91KdCVqFmPLcV
+	8lt6kJ3worFkhTbSOiY2dIkTBi5afjwtvp3GNH/VcMqsx8ZIJBF4rormyqB3BhzOn7JXlu0mLO5M5
+	ZX4cR68K5EkHFemafb8HWYYx5hnbaveKqVUSPE5uMVH34fkFb1PtqL9fHus3sKoK6dgZyX1dx2geX
+	BKTVjhij/rX/GNamFAbsogc/swvkBgFfjCg9kdMtZK9EycJlEQUuVY/npGxRuBV7VoS3qIGJ8+MxI
+	jD+Z/9k51aT3X3evU3s7UdDEa4xdXjrmmCYBN/O+7N/POdbaBfzVVBGvSJWRKki76dhpBDLuVqLNP
+	TsEAzxNMkPn0W4PccXJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlTBi-009tCK-8A; Fri, 12 Nov 2021 09:49:38 +0000
+	id 1mlTBt-009tEX-3M; Fri, 12 Nov 2021 09:49:49 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlTBf-009tAt-2t; Fri, 12 Nov 2021 09:49:36 +0000
-X-UUID: 27a0fcfba29645edbe8818fe9d7376c6-20211112
-X-UUID: 27a0fcfba29645edbe8818fe9d7376c6-20211112
+ id 1mlTBf-009tBM-Jb; Fri, 12 Nov 2021 09:49:37 +0000
+X-UUID: 09b23a9e251d4d0f93fb5bd7c05e722a-20211112
+X-UUID: 09b23a9e251d4d0f93fb5bd7c05e722a-20211112
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 731522385; Fri, 12 Nov 2021 02:49:31 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 2044826938; Fri, 12 Nov 2021 02:49:31 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Nov 2021 01:39:37 -0800
+ 15.0.1497.2; Fri, 12 Nov 2021 01:39:30 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 12 Nov 2021 17:39:35 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 12 Nov 2021 17:39:28 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Nov 2021 17:39:34 +0800
+ Transport; Fri, 12 Nov 2021 17:39:27 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
  <robh+dt@kernel.org>
@@ -59,17 +59,18 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
  <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
  <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
  <dkirjanov@suse.de>
-Subject: [PATCH v3 7/7] net-next: dt-bindings: dwmac: add support for mt8195
-Date: Fri, 12 Nov 2021 17:39:18 +0800
-Message-ID: <20211112093918.11061-8-biao.huang@mediatek.com>
+Subject: [PATCH v3 1/7] net-next: stmmac: dwmac-mediatek: add platform level
+ clocks management
+Date: Fri, 12 Nov 2021 17:39:12 +0800
+Message-ID: <20211112093918.11061-2-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211112093918.11061-1-biao.huang@mediatek.com>
 References: <20211112093918.11061-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_014935_156286_D86231E6 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20211112_014935_673848_EA97CA13 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,144 +87,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add binding document for the ethernet on mt8195.
+This patch implements clks_config callback for dwmac-mediatek platform,
+which could support platform level clocks management.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- .../bindings/net/mediatek-dwmac.yaml          | 86 +++++++++++++++----
- 1 file changed, 70 insertions(+), 16 deletions(-)
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 24 ++++++++++++++-----
+ 1 file changed, 18 insertions(+), 6 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-index 2eb4781536f7..b27566ed01c6 100644
---- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-@@ -19,12 +19,68 @@ select:
-       contains:
-         enum:
-           - mediatek,mt2712-gmac
-+          - mediatek,mt8195-gmac
-   required:
-     - compatible
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+index 58c0feaa8131..157ff655c85e 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+@@ -359,9 +359,6 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
+ 		return ret;
+ 	}
  
- allOf:
-   - $ref: "snps,dwmac.yaml#"
-   - $ref: "ethernet-controller.yaml#"
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt2712-gmac
-+
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 5
-+          items:
-+            - description: AXI clock
-+            - description: APB clock
-+            - description: MAC Main clock
-+            - description: PTP clock
-+            - description: RMII reference clock provided by MAC
-+
-+        clock-names:
-+          minItems: 5
-+          items:
-+            - const: axi
-+            - const: apb
-+            - const: mac_main
-+            - const: ptp_ref
-+            - const: rmii_internal
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8195-gmac
-+
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 6
-+          items:
-+            - description: AXI clock
-+            - description: APB clock
-+            - description: MAC clock gate
-+            - description: MAC Main clock
-+            - description: PTP clock
-+            - description: RMII reference clock provided by MAC
-+
-+        clock-names:
-+          minItems: 6
-+          items:
-+            - const: axi
-+            - const: apb
-+            - const: mac_cg
-+            - const: mac_main
-+            - const: ptp_ref
-+            - const: rmii_internal
- 
- properties:
-   compatible:
-@@ -33,22 +89,10 @@ properties:
-           - enum:
-               - mediatek,mt2712-gmac
-           - const: snps,dwmac-4.20a
+-	pm_runtime_enable(&pdev->dev);
+-	pm_runtime_get_sync(&pdev->dev);
 -
--  clocks:
--    items:
--      - description: AXI clock
--      - description: APB clock
--      - description: MAC Main clock
--      - description: PTP clock
--      - description: RMII reference clock provided by MAC
+ 	return 0;
+ }
+ 
+@@ -370,11 +367,25 @@ static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
+ 	struct mediatek_dwmac_plat_data *plat = priv;
+ 
+ 	clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
 -
--  clock-names:
--    items:
--      - const: axi
--      - const: apb
--      - const: mac_main
--      - const: ptp_ref
--      - const: rmii_internal
-+      - items:
-+          - enum:
-+              - mediatek,mt8195-gmac
-+          - const: snps,dwmac-5.10a
+-	pm_runtime_put_sync(&pdev->dev);
+-	pm_runtime_disable(&pdev->dev);
+ }
  
-   mediatek,pericfg:
-     $ref: /schemas/types.yaml#/definitions/phandle
-@@ -63,6 +107,8 @@ properties:
-       or will round down. Range 0~31*170.
-       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-       or will round down. Range 0~31*550.
-+      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
-+      or will round down. Range 0~31*290.
- 
-   mediatek,rx-delay-ps:
-     description:
-@@ -71,6 +117,8 @@ properties:
-       or will round down. Range 0~31*170.
-       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-       or will round down. Range 0~31*550.
-+      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
-+      of 290, or will round down. Range 0~31*290.
- 
-   mediatek,rmii-rxc:
-     type: boolean
-@@ -104,6 +152,12 @@ properties:
-       3. the inside clock, which be sent to MAC, will be inversed in RMII case when
-          the reference clock is from MAC.
- 
-+  mediatek,mac-wol:
-+    type: boolean
-+    description:
-+      If present, indicates that MAC supports WOL(Wake-On-LAN), and MAC WOL will be enabled.
-+      Otherwise, PHY WOL is perferred.
++static int mediatek_dwmac_clks_config(void *priv, bool enabled)
++{
++	struct mediatek_dwmac_plat_data *plat = priv;
++	int ret = 0;
 +
- required:
-   - compatible
-   - reg
++	if (enabled) {
++		ret = clk_bulk_prepare_enable(plat->num_clks_to_config, plat->clks);
++		if (ret) {
++			dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
++			return ret;
++		}
++	} else {
++		clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
++	}
++
++	return ret;
++}
+ static int mediatek_dwmac_probe(struct platform_device *pdev)
+ {
+ 	struct mediatek_dwmac_plat_data *priv_plat;
+@@ -420,6 +431,7 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
+ 	plat_dat->bsp_priv = priv_plat;
+ 	plat_dat->init = mediatek_dwmac_init;
+ 	plat_dat->exit = mediatek_dwmac_exit;
++	plat_dat->clks_config = mediatek_dwmac_clks_config;
+ 	mediatek_dwmac_init(pdev, priv_plat);
+ 
+ 	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
 -- 
 2.25.1
 
