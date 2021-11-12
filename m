@@ -2,79 +2,78 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 07F44C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:05:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 62C3CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:11:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AD38D60F4B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:05:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AD38D60F4B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=candelatech.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0B69660F4B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:11:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0B69660F4B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vg+UpWXpEEmutC8O/jmZly7nUiN5uQuLAudiakJ7rmM=; b=d6akMqYDMbtZx0meOelMdTEcuo
-	QamSpDqav/04/37kQzYUtMZeytetTAVcwen6706FqULbo7HAYzareMAKp1NsPXzPC5ORy9tNOY+ke
-	b78tWEww6V1ITiACagL9eNzO9Gw1GyWbFcNwRxxsgYVLaQF+6Hva2qm+VP8gaOUegg6AkhEuqNIXM
-	lomWW2/qkX3QGqJk1lnj2w4A838vHg5VmFRKlM3spkwXnd5Qvq6D5oih3+Vusvwpqv+jP/+mM+tZm
-	pSWeiWEBeyP6RAVo4MiXFP/zbeo3xfGHt2v+MXHB3mTuGl+kX3Vwn1VcZ+o9xKrlVDqZHw4aUnzWP
-	nVKy5wLA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KsjOkuFsFks3DWCMtX6g/uXsMUFPXlnV05uImBk/fes=; b=QcEeSdp3pwb5KS
+	Y1GUSOprTcOlOlcTcZlSxAkoXWQikrzPzkisISqjZ83X86KVby4+zH7UPK85hjM9J9Ca2hZ1+c2cr
+	GdyHLX5tx7SP2vR7Mqw2r5ztLJwrAUNI+6gzwMdBmfeSsmvKTqpe9DLasUg/rN+MNvxnV7MJwtOn/
+	JrAnqL79P7TTaElwwpvfLl2L3TxtoCq3HYD+nstnXkej4I98fXyYJOJe/UCoQRndkwclk49+TdymN
+	9C2T9e2Z2Q0ngLGmtCAzFTDxuSBOk+NN/f7j+llcpBnLRp+x14KZ2Ln9/5pn+RLhmhw2Vs/S3nS9y
+	Kgige1G9l4rjF/lBBOCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlcnY-00BW4j-U8; Fri, 12 Nov 2021 20:05:20 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.48])
+	id 1mlcsz-00BWKp-1x; Fri, 12 Nov 2021 20:10:57 +0000
+Received: from mail-oi1-f177.google.com ([209.85.167.177])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlcnW-00BW4K-3c
- for linux-mediatek@lists.infradead.org; Fri, 12 Nov 2021 20:05:19 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mx1-us1.ppe-hosted.com (unknown [10.7.67.120])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 1B82F1C0085;
- Fri, 12 Nov 2021 20:05:15 +0000 (UTC)
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
- 89BEF34007D; Fri, 12 Nov 2021 20:05:14 +0000 (UTC)
-Received: from [192.168.100.195] (50-251-239-81-static.hfc.comcastbusiness.net
- [50.251.239.81])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail3.candelatech.com (Postfix) with ESMTPSA id E9D4E13C2B0;
- Fri, 12 Nov 2021 12:05:13 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com E9D4E13C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
- s=default; t=1636747514;
- bh=XGlTOe8h47eDgp5pmwvtG6/41tLvJLctvUBvj+ENyXo=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=JiKW9PSloP2I88/0MqcizcCd/z8v1/MAFWBdwpt4CBjMykUm677ysVt04WvFUKfUR
- hZYEoi+vebtuvu9jz3T3fYARiDUDstUFk1Bvz9mR7koFUTjIwrmoiSKCbfoOO+oOhX
- nYFd50rz9WUmN4XvPy8CxQt3+TBT4kvDvqIZkkYA=
-Subject: Re: [PATCH v2 02/11] mt76: mt7915: refine register definition
-To: Bo Jiao <bo.jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: linux-wireless <linux-wireless@vger.kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-References: <cover.1636105953.git.Bo.Jiao@mediatek.com>
- <3ba42e47ae9cc7630e1f9b82955871fb90349f94.1636105953.git.Bo.Jiao@mediatek.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-Message-ID: <a11f6064-6886-1cfc-38e3-6fe9bf6ea2d7@candelatech.com>
-Date: Fri, 12 Nov 2021 12:05:13 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+ id 1mlcsm-00BWJT-OI; Fri, 12 Nov 2021 20:10:45 +0000
+Received: by mail-oi1-f177.google.com with SMTP id bf8so19936106oib.6;
+ Fri, 12 Nov 2021 12:10:44 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=9WhJ/EjNNePoaOZvGJkmcFbg7yvTKkxsOk56AmN7Y+s=;
+ b=ZeCI/8QA1mS4iu/Ai5Ox8hoSb5G+sJGNfLCFykfonujidjPoy78LM2hP+s9qTHxOOd
+ XbgpQ7Fy8DXZO28Th2lyS9JnWGiTR6Vn09NvtiJ/twmacjMHSau02azAfk+h4MqOEVU0
+ XG5iVcWsq97+3MCBhdK9cWgyIFKOKqf8TEqFNF56KPComwsfVYVy4bOicmRiPwuv0YK5
+ ehbcTW07hhoaXgqJ7r/zhkKlmgLRyBQAPIjw3/jlW75A4VvbdLD5Z7+5MFwBMI8S3Gnt
+ 6RHhUgRHmmF3AKk53VMu04V7cLgjoZJRoAybQDkeyYnLD95DysYCLAISzvAaApiSup3q
+ +d5Q==
+X-Gm-Message-State: AOAM533xo3UdPJQFeHkp6OGs3d9AraqIdO46umAMppLLxsUqk/poPA+/
+ /r0y77UEyIjGP5Fn1DiSdA==
+X-Google-Smtp-Source: ABdhPJz5m+fIBjpw5F5peYuJ09KQImnLYi9vaCrFoMWMk0nUKJK3nt3vBV8Ay7r+mVs5n1Db2c5vBQ==
+X-Received: by 2002:a05:6808:120e:: with SMTP id
+ a14mr28430803oil.122.1636747843746; 
+ Fri, 12 Nov 2021 12:10:43 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id t5sm1221415ool.10.2021.11.12.12.10.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 12 Nov 2021 12:10:43 -0800 (PST)
+Received: (nullmailer pid 3287649 invoked by uid 1000);
+ Fri, 12 Nov 2021 20:10:42 -0000
+Date: Fri, 12 Nov 2021 14:10:42 -0600
+From: Rob Herring <robh@kernel.org>
+To: Trevor Wu <trevor.wu@mediatek.com>
+Cc: matthias.bgg@gmail.com, alsa-devel@alsa-project.org, tiwai@suse.com,
+ yc.hung@mediatek.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ daniel.baluta@nxp.com, robh+dt@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ broonie@kernel.org
+Subject: Re: [PATCH 2/4] dt-bindings: mediatek: mt8195: add model property
+Message-ID: <YY7KQi6KN4KzVvh1@robh.at.kernel.org>
+References: <20211103100040.11933-1-trevor.wu@mediatek.com>
+ <20211103100040.11933-3-trevor.wu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <3ba42e47ae9cc7630e1f9b82955871fb90349f94.1636105953.git.Bo.Jiao@mediatek.com>
-Content-Language: en-US
-X-MDID: 1636747515-9_5RKMg9bbMM
+Content-Disposition: inline
+In-Reply-To: <20211103100040.11933-3-trevor.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_120518_221328_129F13F4 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20211112_121044_808694_FA90BEE6 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,53 +85,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/5/21 3:02 AM, Bo Jiao wrote:
-> From: Bo Jiao <Bo.Jiao@mediatek.com>
+On Wed, 03 Nov 2021 18:00:38 +0800, Trevor Wu wrote:
+> This patch adds the description of model property used to specify card
+> name from dts.
 > 
-> Add mt7915_reg_desc to differentiate chip generations.
-> This is an intermediate patch to introduce mt7916 support.
+> Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+> ---
+>  .../bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml           | 4 ++++
+>  .../bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml           | 4 ++++
+>  2 files changed, 8 insertions(+)
+> 
 
-While merging this into my patched tree, I noticed this discrepency,
-it seems this patch is changing the value for SDR32/33 and/or confusing
-SDR32 with SDR33.
-
-Is this on purpose?
-
-[greearb@ben-dt4 linux-5.16.dev.y]$ git am --show-current-patch|grep 088
-+	[MIB_SDR32]		= { INVALID_BASE, 0x088 },
--#define MT_MIB_SDR32(_band)		MT_WF_MIB(_band, 0x088)
-+#define MT_MIB_SDR33(_band)		MT_WF_MIB(_band, 0x088)
-[greearb@ben-dt4 linux-5.16.dev.y]$ git am --show-current-patch|grep SDR32
-  	cnt = mt76_rr(dev, MT_MIB_SDR32(ext_phy));
-  	mib->tx_pkt_ebf_cnt += FIELD_GET(MT_MIB_SDR32_TX_PKT_EBF_CNT_MASK, cnt);
-+	[MIB_SDR32]		= { INVALID_BASE, 0x088 },
-+	[MIB_SDR32]		= { INVALID_BASE, 0x7a8 },
-+	MIB_SDR32,
--#define MT_MIB_SDR32(_band)		MT_WF_MIB(_band, 0x088)
-+#define MT_MIB_SDR32(_band)		MT_WF_MIB(_band, __REG_OFFS(dev, MIB_SDR32))
-  #define MT_MIB_SDR32_TX_PKT_EBF_CNT_MASK	GENMASK(15, 0)
-+#define MT_MIB_SDR32_TX_PKT_IBF_CNT_MASK	__MASK(dev, MIB_BF_TX_CNT)
-[greearb@ben-dt4 linux-5.16.dev.y]$ git am --show-current-patch|grep SDR33
--	cnt = mt76_rr(dev, MT_MIB_SDR33(ext_phy));
--	mib->tx_pkt_ibf_cnt += FIELD_GET(MT_MIB_SDR33_TX_PKT_IBF_CNT_MASK, cnt);
-+		cnt = mt76_rr(dev, MT_MIB_SDR33(ext_phy));
--#define MT_MIB_SDR33(_band)		MT_WF_MIB(_band, 0x08c)
--#define MT_MIB_SDR33_TX_PKT_IBF_CNT_MASK	GENMASK(15, 0)
-+#define MT_MIB_SDR33(_band)		MT_WF_MIB(_band, 0x088)
-
-Thanks,
-Ben
-
-
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
-
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
