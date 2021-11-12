@@ -2,14 +2,14 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A9F7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:08:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B8E3EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:08:41 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4D7B060F90
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:08:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4D7B060F90
+	by mail.kernel.org (Postfix) with ESMTPS id 7A33060F90
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 11:08:41 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7A33060F90
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,50 +18,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JH7czZt2UALR6scFovfRYHoM1ELl7v7IPfjqoHsAToM=; b=O/I5x76RyENF8/
-	v4HFssNIfxkipa0/C/FW9SbEN4dJPma3hxyV3e4pAfjv9xy0dUhKMtpwtIrktpzv5ozAwk2PhTXGW
-	piceElnHg7bqyc4PDIPgNTAiQ2oIZwXLvtlE4eKTtZp9qYJOP3q9c8p0hEHQtjHtpNwz1ERPv8lGy
-	as7Ld8cJRwDjYf/kzNYHStI2K5v3h/5DDcKD6fu2V/SR1FLyC4lOBQbbEdfE/Z8IpHY/CKYxCHcWq
-	NVR6O3pvazDo5ENW3ANGStcWctrHbHePYI2o6N4AhATyDqsv/APLhPpmuWLOZaRFFsoBP3wrSlSwA
-	X2Nhf56e/Mf7nB+VwMcw==;
+	List-Owner; bh=T7f7nfb8nBctTs83eYZAL/2DCSUCpGJ7iy2eesUG90Q=; b=DAtHGnXjtlV1nY
+	BAQM4jRCSSN/79dnRo1HI2JE9PQHcTLSnv4DERlWND1hIvZe4dJXNPZBXQA9wKBVzgbMTT/nZO8aN
+	8mNJ5tINtacn8RmRNEa94DUaYnERC+r95h76cTZ/fH335Eer3YxItmkZiPVw2AeQpCc2zz3ST6LSs
+	aCcn1DqUHXuofA81T9R0dCkV/UWzvpGHMEqv4IvttHO0xjfCJ20JkDYO+Z60diH4RfEimQD3CWVDf
+	W9vDagCTDVhUMUjt2c40+OyRCPVOHfrJD0ZlQ44eo3pFkWWKeAbP9xYaJtQH/ys99/sTkguguXLPV
+	LTFqOdhsfebrp5BENLeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlUQ1-00A5U7-9Y; Fri, 12 Nov 2021 11:08:29 +0000
+	id 1mlUQ5-00A5W0-Sq; Fri, 12 Nov 2021 11:08:33 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlUNy-00A4kW-4Q; Fri, 12 Nov 2021 11:06:23 +0000
-X-UUID: 5b52ab992db243868846cf61a072f114-20211112
-X-UUID: 5b52ab992db243868846cf61a072f114-20211112
+ id 1mlUNy-00A4jx-UL; Fri, 12 Nov 2021 11:06:24 +0000
+X-UUID: 2126af450b2e4121ba58cfef10c16218-20211112
+X-UUID: 2126af450b2e4121ba58cfef10c16218-20211112
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1747801274; Fri, 12 Nov 2021 04:06:17 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 832969841; Fri, 12 Nov 2021 04:06:17 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Nov 2021 02:56:15 -0800
+ 15.0.1497.2; Fri, 12 Nov 2021 02:56:48 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 12 Nov 2021 18:56:13 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 12 Nov 2021 18:56:47 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 12 Nov 2021 18:56:11 +0800
+ Transport; Fri, 12 Nov 2021 18:56:45 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>, 
  Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
  <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
  Carvalho Chehab" <mchehab@kernel.org>
-Subject: [PATCH v9 04/15] iommu/mediatek: Add probe_defer for smi-larb
-Date: Fri, 12 Nov 2021 18:54:58 +0800
-Message-ID: <20211112105509.12010-5-yong.wu@mediatek.com>
+Subject: [PATCH v9 07/15] media: mtk-mdp: Get rid of mtk_smi_larb_get/put
+Date: Fri, 12 Nov 2021 18:55:01 +0800
+Message-ID: <20211112105509.12010-8-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211112105509.12010-1-yong.wu@mediatek.com>
 References: <20211112105509.12010-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_030622_226134_55590591 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20211112_030623_031317_D00373F3 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,9 +82,10 @@ Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  mingyuan.ma@mediatek.com, linux-media@vger.kernel.org,
  devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
  libo.kang@mediatek.com, yi.kuo@mediatek.com,
- linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>, yong.wu@mediatek.com,
- anan.sun@mediatek.com, srv_heupstream@mediatek.com, acourbot@chromium.org,
+ linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ yong.wu@mediatek.com, anan.sun@mediatek.com, srv_heupstream@mediatek.com,
+ acourbot@chromium.org, Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
  linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
  iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
  Robin Murphy <robin.murphy@arm.com>
@@ -93,58 +94,131 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Prepare for adding device_link.
+MediaTek IOMMU has already added the device_link between the consumer
+and smi-larb device. If the mdp device call the pm_runtime_get_sync,
+the smi-larb's pm_runtime_get_sync also be called automatically.
 
-The iommu consumer should use device_link to connect with the
-smi-larb(supplier). then the smi-larb should run before the iommu
-consumer. Here we delay the iommu driver until the smi driver is ready,
-then all the iommu consumers always are after the smi driver.
-
-When there is no this patch, if some consumer drivers run before
-smi-larb, the supplier link_status is DL_DEV_NO_DRIVER(0) in the
-device_link_add, then device_links_driver_bound will use WARN_ON
-to complain that the link_status of supplier is not right.
-
-device_is_bound may be more elegant here. but it is not allowed to
-EXPORT from https://lore.kernel.org/patchwork/patch/1334670/.
-
+CC: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+CC: Houlong Wei <houlong.wei@mediatek.com>
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
+Reviewed-by: Evan Green <evgreen@chromium.org>
+Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- drivers/iommu/mtk_iommu.c    | 4 ++++
- drivers/iommu/mtk_iommu_v1.c | 4 ++++
- 2 files changed, 8 insertions(+)
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 40 -------------------
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.h |  2 -
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c |  1 -
+ 3 files changed, 43 deletions(-)
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 8f566d2e72e5..0033c0634e5e 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -848,6 +848,10 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			of_node_put(larbnode);
- 			return -ENODEV;
- 		}
-+		if (!plarbdev->dev.driver) {
-+			of_node_put(larbnode);
-+			return -EPROBE_DEFER;
-+		}
- 		data->larb_imu[id].dev = &plarbdev->dev;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+index b3426a551bea..1e3833f1c9ae 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+@@ -9,7 +9,6 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/of_platform.h>
+-#include <soc/mediatek/smi.h>
  
- 		component_match_add_release(dev, &match, release_of,
-diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
-index 68bf02f87cfd..4089077256f4 100644
---- a/drivers/iommu/mtk_iommu_v1.c
-+++ b/drivers/iommu/mtk_iommu_v1.c
-@@ -606,6 +606,10 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 			of_node_put(larbnode);
- 			return -ENODEV;
- 		}
-+		if (!plarbdev->dev.driver) {
-+			of_node_put(larbnode);
-+			return -EPROBE_DEFER;
-+		}
- 		data->larb_imu[i].dev = &plarbdev->dev;
+ #include "mtk_mdp_comp.h"
  
- 		component_match_add_release(dev, &match, release_of,
+@@ -18,14 +17,6 @@ void mtk_mdp_comp_clock_on(struct device *dev, struct mtk_mdp_comp *comp)
+ {
+ 	int i, err;
+ 
+-	if (comp->larb_dev) {
+-		err = mtk_smi_larb_get(comp->larb_dev);
+-		if (err)
+-			dev_err(dev,
+-				"failed to get larb, err %d. type:%d\n",
+-				err, comp->type);
+-	}
+-
+ 	for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
+ 		if (IS_ERR(comp->clk[i]))
+ 			continue;
+@@ -46,17 +37,12 @@ void mtk_mdp_comp_clock_off(struct device *dev, struct mtk_mdp_comp *comp)
+ 			continue;
+ 		clk_disable_unprepare(comp->clk[i]);
+ 	}
+-
+-	if (comp->larb_dev)
+-		mtk_smi_larb_put(comp->larb_dev);
+ }
+ 
+ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
+ 		      struct mtk_mdp_comp *comp,
+ 		      enum mtk_mdp_comp_type comp_type)
+ {
+-	struct device_node *larb_node;
+-	struct platform_device *larb_pdev;
+ 	int ret;
+ 	int i;
+ 
+@@ -77,32 +63,6 @@ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
+ 			break;
+ 	}
+ 
+-	/* Only DMA capable components need the LARB property */
+-	comp->larb_dev = NULL;
+-	if (comp->type != MTK_MDP_RDMA &&
+-	    comp->type != MTK_MDP_WDMA &&
+-	    comp->type != MTK_MDP_WROT)
+-		return 0;
+-
+-	larb_node = of_parse_phandle(node, "mediatek,larb", 0);
+-	if (!larb_node) {
+-		dev_err(dev,
+-			"Missing mediadek,larb phandle in %pOF node\n", node);
+-		ret = -EINVAL;
+-		goto put_dev;
+-	}
+-
+-	larb_pdev = of_find_device_by_node(larb_node);
+-	if (!larb_pdev) {
+-		dev_warn(dev, "Waiting for larb device %pOF\n", larb_node);
+-		of_node_put(larb_node);
+-		ret = -EPROBE_DEFER;
+-		goto put_dev;
+-	}
+-	of_node_put(larb_node);
+-
+-	comp->larb_dev = &larb_pdev->dev;
+-
+ 	return 0;
+ 
+ put_dev:
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+index 7897766c96bb..ae41dd3cd72a 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+@@ -26,14 +26,12 @@ enum mtk_mdp_comp_type {
+  * @node:	list node to track sibing MDP components
+  * @dev_node:	component device node
+  * @clk:	clocks required for component
+- * @larb_dev:	SMI device required for component
+  * @type:	component type
+  */
+ struct mtk_mdp_comp {
+ 	struct list_head	node;
+ 	struct device_node	*dev_node;
+ 	struct clk		*clk[2];
+-	struct device		*larb_dev;
+ 	enum mtk_mdp_comp_type	type;
+ };
+ 
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+index 976aa1f4829b..70a8eab16863 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+@@ -17,7 +17,6 @@
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/workqueue.h>
+-#include <soc/mediatek/smi.h>
+ 
+ #include "mtk_mdp_core.h"
+ #include "mtk_mdp_m2m.h"
 -- 
 2.18.0
 
