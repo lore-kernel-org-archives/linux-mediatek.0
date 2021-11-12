@@ -2,14 +2,14 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 485D7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 22:42:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 33EF2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 22:44:02 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 166EA61073
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 22:42:54 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 166EA61073
+	by mail.kernel.org (Postfix) with ESMTPS id 0551D60F4F
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 22:44:02 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0551D60F4F
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,65 +18,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hT/YkJioMPZjsu0D2QHldwMVQz9nxFHUahJDjUTRkao=; b=LT9ntDsVY82IS1
-	nx+QN3IHw3Vp/HN4PTR0SvZVuLjGoDqWoMXyGuVnHzdWPmmVHq05+OyoKyqzmkaFa9HhJIhueuA5U
-	yzBBecnFt9tg6SAjdxMcIk7zyifu+emj0wF/1lFj8gcp5Rivs9Y0is3KWp5bNAJhmsP01WV3dyfPJ
-	OrL7/07E8G2g4mC58kBM3Wk0XOmGsH7M+kHCAwo1XygmXuFysywYP9z2cnJK33isUpA1MG1JtJOxS
-	Fc5gIA1qqjmbjmB9mlJu2PrwmAppBNC6+yIBH5+3cKrvtRNm2wu+gTejgFQIjITJyKgmQNYRwoeQa
-	/4xl6+nVKEp0PtYQwqwQ==;
+	List-Owner; bh=szWvn1VNQKXRG266AHtqMWiFl2gZNJ24t9lyMd5ZfSU=; b=ABGB1YLJlUty46
+	XVj9xoYwqpi4kBfrZRm5gV0ryU623D3gbfnCq+bYAZA6czJ452Z083KGCWzWiLwP/TrgNdk/WRSuH
+	RF000dF/3FJos93y4mHj+vLbs9yDmq1a5EkU6bpZCKGjXA4IY8tpWQRg2zJlQD1imXO4cD/1LbRQI
+	XdcvPb8Sz4cPF3BBajxlc4r10H2NkGjK8pEmOLithIDShY36lHf439Id7T4NBUTLoQ42bryS4r45O
+	clL/5tYu4PknO5v8yogb2cYtgxATopLxn1mbaRd7LLQxd2XJS9Z2l/o0qWuQIV5rQRKEWmCyOcBT9
+	j+f/ZZi00OWEUhAd/6Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlfFu-00BmQI-8M; Fri, 12 Nov 2021 22:42:46 +0000
-Received: from mail-ot1-f49.google.com ([209.85.210.49])
+	id 1mlfH0-00Bmso-C0; Fri, 12 Nov 2021 22:43:54 +0000
+Received: from mail-oo1-f45.google.com ([209.85.161.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlfF4-00Bm5m-Hj; Fri, 12 Nov 2021 22:41:55 +0000
-Received: by mail-ot1-f49.google.com with SMTP id
- h19-20020a9d3e53000000b0056547b797b2so15150079otg.4; 
- Fri, 12 Nov 2021 14:41:53 -0800 (PST)
+ id 1mlfFC-00Bm9f-MH; Fri, 12 Nov 2021 22:42:03 +0000
+Received: by mail-oo1-f45.google.com with SMTP id
+ p2-20020a4adfc2000000b002c2676904fdso3392085ood.13; 
+ Fri, 12 Nov 2021 14:42:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=7sz3TOFRSclMOhQuNheMU/d1++ANZOcSK5SUiv/6PVA=;
- b=I91Y48SQ/w2Lf5qGv4aBQ0bOhby13RiTJ/Lwwt+sJYSP/RbGfyDvG9CrnXltOapE/X
- yHWgeLyifCQNcZJ/Z9n2OF0wIQMwOWDi4PYmzadbaGyJ5bLCuT8khm2nI21tfLEeI2cb
- qFEQI2kKtLQWwgPmZ37N3NwFvBoOu5lFfRco4y3rtO9byn0YBgx9pUibLW9zjt+EvpJ6
- txqoU3/4Tx+IelMDlPfOTKm+suMnMYS8xglAWH0m7Gn83ksO5Q6JcEaAJNgb4hO9Vps3
- KGguUzPa6q6yiNIS9wp4JJBWmXfrn3nzuUyQ1BXTHSUmuknI7r0oP0LzhbmLTOhigEPh
- AYxw==
-X-Gm-Message-State: AOAM533QcNp5hwVGF3QPbCScnmHjgtL2sI4NC5HsrWgCcL6iBaRx47Lr
- uPiVmBmpkw8sZD+OU8liiWbxxnP5qw==
-X-Google-Smtp-Source: ABdhPJyBz7vyBfHFcHNXt6yZHSdVRM049pmejrMXMiHVLcKXJWruespk5icFKeEfqSflmThC3IazhA==
-X-Received: by 2002:a9d:6405:: with SMTP id h5mr15227306otl.90.1636756913194; 
- Fri, 12 Nov 2021 14:41:53 -0800 (PST)
+ bh=5bCqd7sIMFGA5KFCBzhnXm+TAVQSLDZFleUsssSJUQs=;
+ b=2ZIlWjZEiyrOdgj3sd+5T71VHuBf0eMnjpffzN52fNYcxrZC0WiA3DCyZtxz3/H/0L
+ nVUfHuNcLr5Pjh4N4FgLmgcDnGizSWgAci3Cp6Cre+Nlm90RuzbFN42BeYihG7Ep6vZE
+ SLI8b7Jgd8GV/Z4igRHgEk1U3WBPOXQh8LmrTXKPkeTW9W6v51k0MpDQOQjKnIejeiUS
+ ex1qbgOD3Uh6ZbH64T7UUItxJBC9VtRukJogKDHpqt4Qp/cHaS5yrqDJRYKc/BSzgP3v
+ pjMoxmg6DtkKEQRsbs4t2q+vrkQSEaEqtFSzq6I/PY9eMlvQY+fLZCjeh2eXUTa4kO0I
+ mf8Q==
+X-Gm-Message-State: AOAM5320wiRuGgtXtcqxTWyaVNcIJniITdeKmdEywOriuzW7x4gBZ0aC
+ wry6YJGHiHWcmxFML3gmXg==
+X-Google-Smtp-Source: ABdhPJwj7xNclVwnawiBK0OBO6kEdrva2JPF0+s/zDJlVUjRW9F1boBX09kJBKF/3ZTGyPW4h0MVEA==
+X-Received: by 2002:a4a:6342:: with SMTP id r2mr10458399oof.54.1636756921106; 
+ Fri, 12 Nov 2021 14:42:01 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id h14sm1530253ots.22.2021.11.12.14.41.52
+ by smtp.gmail.com with ESMTPSA id a13sm1591533oiy.9.2021.11.12.14.41.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 12 Nov 2021 14:41:52 -0800 (PST)
-Received: (nullmailer pid 3509128 invoked by uid 1000);
- Fri, 12 Nov 2021 22:41:51 -0000
-Date: Fri, 12 Nov 2021 16:41:51 -0600
+ Fri, 12 Nov 2021 14:42:00 -0800 (PST)
+Received: (nullmailer pid 3509395 invoked by uid 1000);
+ Fri, 12 Nov 2021 22:41:59 -0000
+Date: Fri, 12 Nov 2021 16:41:59 -0600
 From: Rob Herring <robh@kernel.org>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- Yz Wu <yz.wu@mediatek.com>, Eddie Hung <eddie.hung@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
- linux-phy@lists.infradead.org,
+Cc: linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ Yz Wu <yz.wu@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ devicetree@vger.kernel.org, linux-phy@lists.infradead.org,
+ Eddie Hung <eddie.hung@mediatek.com>,
  Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- linux-mediatek@lists.infradead.org, Kishon Vijay Abraham I <kishon@ti.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-Subject: Re: [PATCH 1/6] dt-bindings: nvmem: mediatek: add support bits
- property
-Message-ID: <YY7tr3frW8yZTmje@robh.at.kernel.org>
+ linux-kernel@vger.kernel.org, Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+Subject: Re: [PATCH 2/6] dt-bindings: nvmem: mediatek: add support for mt8195
+Message-ID: <YY7tt9k/pnTuqno9@robh.at.kernel.org>
 References: <20211107075646.4366-1-chunfeng.yun@mediatek.com>
+ <20211107075646.4366-2-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20211107075646.4366-1-chunfeng.yun@mediatek.com>
+In-Reply-To: <20211107075646.4366-2-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_144154_629024_F32FDD39 
-X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-CacheID: sfid-20211112_144202_773145_D79C1F12 
+X-CRM114-Status: UNSURE (   9.55  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,12 +94,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 07 Nov 2021 15:56:41 +0800, Chunfeng Yun wrote:
-> Add support bits property, will satisfy more consumers.
+On Sun, 07 Nov 2021 15:56:42 +0800, Chunfeng Yun wrote:
+> Add compatible for mt8195
 > 
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
-> Need convert mtk-efuse.txt into yaml first?
 > ---
 >  Documentation/devicetree/bindings/nvmem/mtk-efuse.txt | 1 +
 >  1 file changed, 1 insertion(+)
