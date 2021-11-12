@@ -2,75 +2,79 @@ Return-Path: <SRS0=l5E7=P7=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 16CD2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 19:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 07F44C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:05:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id AE26560FE7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 19:13:25 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AE26560FE7
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id AD38D60F4B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 12 Nov 2021 20:05:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org AD38D60F4B
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=candelatech.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Spb8rO8ZHtI0Kl4z1cYYNsJgSJICo1i2wPQ8DgTxf3o=; b=Vq146UkN2vN3t5
-	LNINplird5jYpF2O4+yZIF3dQvMdhY2wtKMFrswf150KbloMO4Z6NJRy5wxgvdpawPkNEPtO+gKch
-	LOVEoTHt9U6OlPiOzM6PadgL+bEw9BXb9WOjBsXEysRa468Y8P9BVBdBw8tnddEc1xjE2z3uqeZTi
-	/J9tfV8lGwuZ22pak160VfxeT541iWz7n0SjWfxvpCPm+MYhZLbXjzjpmQcpXmMVrgGi7sOAIyS7X
-	aoCsyu9x5J1NBdFz3382tB5g3CL8hpx9t8EuZLz0cyTVmnsLJ0OtDjEcg39UbYBZPxGylIKmJtp2B
-	VqVCwhMaDf0u4B+LZPYQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=vg+UpWXpEEmutC8O/jmZly7nUiN5uQuLAudiakJ7rmM=; b=d6akMqYDMbtZx0meOelMdTEcuo
+	QamSpDqav/04/37kQzYUtMZeytetTAVcwen6706FqULbo7HAYzareMAKp1NsPXzPC5ORy9tNOY+ke
+	b78tWEww6V1ITiACagL9eNzO9Gw1GyWbFcNwRxxsgYVLaQF+6Hva2qm+VP8gaOUegg6AkhEuqNIXM
+	lomWW2/qkX3QGqJk1lnj2w4A838vHg5VmFRKlM3spkwXnd5Qvq6D5oih3+Vusvwpqv+jP/+mM+tZm
+	pSWeiWEBeyP6RAVo4MiXFP/zbeo3xfGHt2v+MXHB3mTuGl+kX3Vwn1VcZ+o9xKrlVDqZHw4aUnzWP
+	nVKy5wLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mlbzA-00BSrt-LU; Fri, 12 Nov 2021 19:13:16 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mlcnY-00BW4j-U8; Fri, 12 Nov 2021 20:05:20 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([148.163.129.48])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mlbz6-00BSrE-5f
- for linux-mediatek@lists.infradead.org; Fri, 12 Nov 2021 19:13:15 +0000
-X-UUID: d6e894330f154c4593db897eca20a53d-20211112
-X-UUID: d6e894330f154c4593db897eca20a53d-20211112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <ryder.lee@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1312917234; Fri, 12 Nov 2021 12:13:07 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 12 Nov 2021 11:13:05 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 13 Nov 2021 03:12:51 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sat, 13 Nov 2021 03:12:51 +0800
-Message-ID: <c622447038b06d8a4068ec8126c7ec674fafe383.camel@mediatek.com>
-Subject: Re: [PATCH v2] mt76: mt7921: introduce 160 MHz channel bandwidth
- support
-From: Ryder Lee <ryder.lee@mediatek.com>
-To: Deren Wu <Deren.Wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>, "Lorenzo
- Bianconi" <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
- Robin Chiu
- <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun
- <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, Stella Chang
- <Stella.Chang@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>
-Date: Sat, 13 Nov 2021 03:12:51 +0800
-In-Reply-To: <66edc3125e9a12dedeba1a61697d46322b0c004d.1636374449.git.deren.wu@mediatek.com>
-References: <66edc3125e9a12dedeba1a61697d46322b0c004d.1636374449.git.deren.wu@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mlcnW-00BW4K-3c
+ for linux-mediatek@lists.infradead.org; Fri, 12 Nov 2021 20:05:19 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mx1-us1.ppe-hosted.com (unknown [10.7.67.120])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 1B82F1C0085;
+ Fri, 12 Nov 2021 20:05:15 +0000 (UTC)
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
+ 89BEF34007D; Fri, 12 Nov 2021 20:05:14 +0000 (UTC)
+Received: from [192.168.100.195] (50-251-239-81-static.hfc.comcastbusiness.net
+ [50.251.239.81])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail3.candelatech.com (Postfix) with ESMTPSA id E9D4E13C2B0;
+ Fri, 12 Nov 2021 12:05:13 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com E9D4E13C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+ s=default; t=1636747514;
+ bh=XGlTOe8h47eDgp5pmwvtG6/41tLvJLctvUBvj+ENyXo=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=JiKW9PSloP2I88/0MqcizcCd/z8v1/MAFWBdwpt4CBjMykUm677ysVt04WvFUKfUR
+ hZYEoi+vebtuvu9jz3T3fYARiDUDstUFk1Bvz9mR7koFUTjIwrmoiSKCbfoOO+oOhX
+ nYFd50rz9WUmN4XvPy8CxQt3+TBT4kvDvqIZkkYA=
+Subject: Re: [PATCH v2 02/11] mt76: mt7915: refine register definition
+To: Bo Jiao <bo.jiao@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>,
+ Sujuan Chen <sujuan.chen@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <cover.1636105953.git.Bo.Jiao@mediatek.com>
+ <3ba42e47ae9cc7630e1f9b82955871fb90349f94.1636105953.git.Bo.Jiao@mediatek.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+Message-ID: <a11f6064-6886-1cfc-38e3-6fe9bf6ea2d7@candelatech.com>
+Date: Fri, 12 Nov 2021 12:05:13 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <3ba42e47ae9cc7630e1f9b82955871fb90349f94.1636105953.git.Bo.Jiao@mediatek.com>
+Content-Language: en-US
+X-MDID: 1636747515-9_5RKMg9bbMM
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211112_111312_273783_8FE9B8DC 
-X-CRM114-Status: GOOD (  16.94  )
+X-CRM114-CacheID: sfid-20211112_120518_221328_129F13F4 
+X-CRM114-Status: GOOD (  12.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,110 +86,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-11-08 at 22:41 +0800, Deren Wu wrote:
-> From: Deren Wu <deren.wu@mediatek.com>
+On 11/5/21 3:02 AM, Bo Jiao wrote:
+> From: Bo Jiao <Bo.Jiao@mediatek.com>
 > 
-> Introduce the basic configuration for chips with BW160 capability
-> 
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt76.h            |  1 +
->  drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c |  1 +
->  drivers/net/wireless/mediatek/mt76/mt7921/init.c     |  4 ++++
->  drivers/net/wireless/mediatek/mt76/mt7921/main.c     | 12
-> ++++++++++++
->  4 files changed, 18 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h
-> b/drivers/net/wireless/mediatek/mt76/mt76.h
-> index e2da720a91b6..babca8086027 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-> @@ -346,6 +346,7 @@ struct mt76_hw_cap {
->  	bool has_2ghz;
->  	bool has_5ghz;
->  	bool has_6ghz;
-> +	bool has_bw160;
->  };
->  
->  #define MT_DRV_TXWI_NO_FREE		BIT(0)
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> index 26b4b875dcc0..3b42e1e8e970 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-> @@ -1775,6 +1775,7 @@ static void
-> mt76_connac_mcu_parse_phy_cap(struct mt76_dev *dev,
->  	dev->phy.chainmask = dev->phy.antenna_mask;
->  	dev->phy.cap.has_2ghz = cap->hw_path & BIT(WF0_24G);
->  	dev->phy.cap.has_5ghz = cap->hw_path & BIT(WF0_5G);
-> +	dev->phy.cap.has_bw160 = cap->max_bw ==
-> IEEE80211_STA_RX_BW_160;
->  }
->  
->  int mt76_connac_mcu_get_nic_capability(struct mt76_phy *phy)
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> index 210998f086ab..30c0246fba3a 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-> @@ -264,6 +264,10 @@ int mt7921_register_device(struct mt7921_dev
-> *dev)
->  			IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE |
->  			IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE |
->  			(3 << IEEE80211_VHT_CAP_BEAMFORMEE_STS_SHIFT);
-> +	if (dev->mt76.phy.cap.has_bw160)
-> +		dev->mphy.sband_5g.sband.vht_cap.cap |=
-> +			IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160MHZ |
-> +			IEEE80211_VHT_CAP_SHORT_GI_160;
->  
->  	dev->mphy.hw->wiphy->available_antennas_rx = dev-
-> >mphy.chainmask;
->  	dev->mphy.hw->wiphy->available_antennas_tx = dev-
-> >mphy.chainmask;
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> index 633c6d2a57ac..af8c675f909f 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-> @@ -128,11 +128,23 @@ mt7921_init_he_caps(struct mt7921_phy *phy,
-> enum nl80211_band band,
->  				IEEE80211_HE_PHY_CAP9_RX_1024_QAM_LESS_
-> THAN_242_TONE_RU |
->  				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USI
-> NG_MU_WITH_COMP_SIGB |
->  				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USI
-> NG_MU_WITH_NON_COMP_SIGB;
-> +
-> +			if (phy->mt76->cap.has_bw160) {
-> +				he_cap_elem->phy_cap_info[0] |=
-> +					IEEE80211_HE_PHY_CAP0_CHANNEL_W
-> IDTH_SET_160MHZ_IN_5G;
-> +				he_cap_elem->phy_cap_info[8] |=
-> +					IEEE80211_HE_PHY_CAP8_20MHZ_IN_
-> 160MHZ_HE_PPDU |
-> +					IEEE80211_HE_PHY_CAP8_80MHZ_IN_
-> 160MHZ_HE_PPDU;
-> +			}
->  			break;
->  		}
->  
->  		he_mcs->rx_mcs_80 = cpu_to_le16(mcs_map);
->  		he_mcs->tx_mcs_80 = cpu_to_le16(mcs_map);
-> +		if (phy->mt76->cap.has_bw160) {
-> +			he_mcs->rx_mcs_160 = cpu_to_le16(mcs_map);
-> +			he_mcs->tx_mcs_160 = cpu_to_le16(mcs_map);
-> +		}
->  
+> Add mt7915_reg_desc to differentiate chip generations.
+> This is an intermediate patch to introduce mt7916 support.
 
-But what about 80p80Mhz case?
+While merging this into my patched tree, I noticed this discrepency,
+it seems this patch is changing the value for SDR32/33 and/or confusing
+SDR32 with SDR33.
 
-Ryder
+Is this on purpose?
+
+[greearb@ben-dt4 linux-5.16.dev.y]$ git am --show-current-patch|grep 088
++	[MIB_SDR32]		= { INVALID_BASE, 0x088 },
+-#define MT_MIB_SDR32(_band)		MT_WF_MIB(_band, 0x088)
++#define MT_MIB_SDR33(_band)		MT_WF_MIB(_band, 0x088)
+[greearb@ben-dt4 linux-5.16.dev.y]$ git am --show-current-patch|grep SDR32
+  	cnt = mt76_rr(dev, MT_MIB_SDR32(ext_phy));
+  	mib->tx_pkt_ebf_cnt += FIELD_GET(MT_MIB_SDR32_TX_PKT_EBF_CNT_MASK, cnt);
++	[MIB_SDR32]		= { INVALID_BASE, 0x088 },
++	[MIB_SDR32]		= { INVALID_BASE, 0x7a8 },
++	MIB_SDR32,
+-#define MT_MIB_SDR32(_band)		MT_WF_MIB(_band, 0x088)
++#define MT_MIB_SDR32(_band)		MT_WF_MIB(_band, __REG_OFFS(dev, MIB_SDR32))
+  #define MT_MIB_SDR32_TX_PKT_EBF_CNT_MASK	GENMASK(15, 0)
++#define MT_MIB_SDR32_TX_PKT_IBF_CNT_MASK	__MASK(dev, MIB_BF_TX_CNT)
+[greearb@ben-dt4 linux-5.16.dev.y]$ git am --show-current-patch|grep SDR33
+-	cnt = mt76_rr(dev, MT_MIB_SDR33(ext_phy));
+-	mib->tx_pkt_ibf_cnt += FIELD_GET(MT_MIB_SDR33_TX_PKT_IBF_CNT_MASK, cnt);
++		cnt = mt76_rr(dev, MT_MIB_SDR33(ext_phy));
+-#define MT_MIB_SDR33(_band)		MT_WF_MIB(_band, 0x08c)
+-#define MT_MIB_SDR33_TX_PKT_IBF_CNT_MASK	GENMASK(15, 0)
++#define MT_MIB_SDR33(_band)		MT_WF_MIB(_band, 0x088)
+
+Thanks,
+Ben
+
+
+-- 
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
 
 
 _______________________________________________
