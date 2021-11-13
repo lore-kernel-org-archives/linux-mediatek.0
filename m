@@ -2,58 +2,76 @@ Return-Path: <SRS0=uv63=QA=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 423F4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Nov 2021 13:37:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 85CC2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Nov 2021 14:00:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E51626056B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Nov 2021 13:37:12 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E51626056B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=linuxfoundation.org
+	by mail.kernel.org (Postfix) with ESMTPS id 4FDBD6108E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 13 Nov 2021 14:00:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4FDBD6108E
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=pku.edu.cn
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A+ifM+ZzDrxyv1Rfnz9lSKqkWu1PJw1qHQAeHSPDRyk=; b=rbxv2cNVPoXheX
-	bErcrFDZwCemk7m46yUBH/eOLywKbFbOZit8czv2vmZ0MNZu7W/voMNEIvOaaqf59l8opVjF385i8
-	s0YCL4E9wy+kU7wh7RDZj5t/9OlSR7uCvs8HNuHZjlqTE1I/AXZBFCeHYTPTCt5WWVQ1ObCpTjEz5
-	YrEXoezUYNkCTsrdglLypV+L9BtbxVdwp842GYwGPj02D6725Sfj9/Wn85tSZrb7ltvBc97Zz+Ho+
-	vj80E6bTVqIk6mdoH5Ugi2xCoQCHA1qfU69YnVjhahN2dyXy9N0ltzvm12oJCc3B+2pNJvynNsCuV
-	/Mq7CTs6WOAvGMvpC4Iw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=s1QTm21kFONQVE+UHMFI0vJ/r7tS62uKgsDISkGkLd0=; b=Ed6KSPCkxUn8c0
+	VGzzZgOnoLgIy89+UtybcsoYpxzvv2yV0CKo7bps4ssL+GE9WGfTbWEFwyDRamiuA3UU+rj5GMdLe
+	M712jg3IfkQ2d1w0n56JmLQpQDEvn8qfrj1EGTHIQ32OCdUwvEIGkVBXbxKYUsC/u/SSnvyc4jDk6
+	Kw1BWB7AH2J00zWM8Q/lwTYBoBe4qeXcAAAlRCFKqM8bEl2fZUdqb3Y/7u3w8GYZwBZo8IYHcXzRw
+	W7JxoRtAIPfilneYHNpaiMI2SSQXWhh07kW8GQLjyeFzd43dlKa3upbzdi1AjcJXOgz47q6Ywo3f1
+	vfvOh59d4bNjD25onv3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mltDM-00ChqA-PZ; Sat, 13 Nov 2021 13:37:04 +0000
-Received: from mail.kernel.org ([198.145.29.99])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mltDA-00ChoV-D1; Sat, 13 Nov 2021 13:36:53 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A3DBE61051;
- Sat, 13 Nov 2021 13:36:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1636810612;
- bh=fp6UseD2UeNDrdF0AZQ9E0WNms+itCAHyBOMUPTn4FQ=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PBCtDT2M2sXX9130lKj2Ls0vno8Q2iCDjF/EErvEKGcdLEbn9KMHYSPUpWU09DGuk
- AujUccIyaHKbdgqh4R3Q64An23gJyJHpbKdR/7KyOisltux/PNITj3EiVb31Vb4gU8
- 7cEDyEzDzWepb1dVy8d0Qj3F5tKec/xcehMMxPoI=
-Date: Sat, 13 Nov 2021 14:36:49 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Liu Junqi <liujunqi@pku.edu.cn>
+	id 1mltZk-00Cj7f-JM; Sat, 13 Nov 2021 14:00:12 +0000
+Received: from mx18.pku.edu.cn ([162.105.129.181] helo=pku.edu.cn)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mltZf-00Cj5O-QD; Sat, 13 Nov 2021 14:00:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=pku.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:Date:
+ Message-Id:MIME-Version:Content-Transfer-Encoding; bh=+Uv1cnCExL
+ x+NRoiml5Lx7hRNX6/2bMWQ2RWbNb2WNY=; b=gGaMcbvQX/vFg1/jUBFIVb5FqX
+ A0zLzrYWoLBz4FKYjARRZ30lfIlW6AqLHGSjJMwMRxIZVkZdo+FhtJLQZaAQYXdu
+ gZ0PUpD8xx/bsVNOSZxkMRNDyUN0E9KLFjK5P1bPiu/c5PZW7O83F/lBIa39QGEs
+ /vQpvl1pYM588upWw=
+Received: from junqi-virtual-machine (unknown [10.2.70.49])
+ by front02 (Coremail) with SMTP id 54FpogD3_U3gxI9hUPcDAw--.8445S2;
+ Sat, 13 Nov 2021 22:00:01 +0800 (CST)
+From: Liu Junqi <liujunqi@pku.edu.cn>
+To: gregkh@linuxfoundation.org
 Cc: linux-staging@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] staging: mt7621-dma: reindent to avoid '(' at the end
- of line
-Message-ID: <YY+/cflE5fowvTg+@kroah.com>
-References: <20211113132033.363916-1-liujunqi@pku.edu.cn>
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Liu Junqi <liujunqi@pku.edu.cn>
+Subject: [PATCH v3] staging: mt7621-dma: reindent to avoid '(' at the end of
+ line
+Date: Sat, 13 Nov 2021 21:59:52 +0800
+Message-Id: <20211113135952.365607-1-liujunqi@pku.edu.cn>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211113132033.363916-1-liujunqi@pku.edu.cn>
+X-CM-TRANSID: 54FpogD3_U3gxI9hUPcDAw--.8445S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7tF1fGw4DKr1rurWxGFyDJrb_yoW8GFy3pF
+ Wrt34YkrWUtFy5Ww47Cw4fur1F93WfGryIgrWUA39agr1jv3WfZFyayay3Z3WkKa93GFyS
+ yFyUta45Ga1UuFUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+ 9KBjDU0xBIdaVrnRJUUUkK1xkIjI8I6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AE
+ w4v_Jr0_Jr4l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2
+ IY67AKxVWDJVCq3wA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr1UM28EF7xvwVC2
+ z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s0DM2AIxVAIcxkEcV
+ Aq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j
+ 6r18McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64
+ vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkIecxEwVCm-wCF04k20xvY0x0EwIxGrwCF
+ 04k20xvE74AGY7Cv6cx26w4UJr1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrV
+ AFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCI
+ c40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267
+ AKxVWUJVW8JwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_
+ Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUb0D73
+ UUUUU==
+X-CM-SenderInfo: arzqiiirtqlmo6sn3hxhgxhubq/1tbiAwECD1Py7tTfDgAdsY
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211113_053652_487367_225E3303 
-X-CRM114-Status: GOOD (  23.36  )
+X-CRM114-CacheID: sfid-20211113_060008_232381_7524CCC2 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,63 +88,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Nov 13, 2021 at 09:20:34PM +0800, Liu Junqi wrote:
-> A change to make the code more like typical coding style.
-> 
-> Signed-off-by: Liu Junqi <liujunqi@pku.edu.cn>
-> ---
->  drivers/staging/mt7621-dma/hsdma-mt7621.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/mt7621-dma/hsdma-mt7621.c b/drivers/staging/mt7621-dma/hsdma-mt7621.c
-> index 1424d01d434b..f303579bd1a2 100644
-> --- a/drivers/staging/mt7621-dma/hsdma-mt7621.c
-> +++ b/drivers/staging/mt7621-dma/hsdma-mt7621.c
-> @@ -455,9 +455,9 @@ static void mtk_hsdma_issue_pending(struct dma_chan *c)
->  	spin_unlock_bh(&chan->vchan.lock);
->  }
->  
-> -static struct dma_async_tx_descriptor *mtk_hsdma_prep_dma_memcpy(
-> -		struct dma_chan *c, dma_addr_t dest, dma_addr_t src,
-> -		size_t len, unsigned long flags)
-> +static struct dma_async_tx_descriptor *
-> +mtk_hsdma_prep_dma_memcpy(struct dma_chan *c, dma_addr_t dest, dma_addr_t src,
-> +			  size_t len, unsigned long flags)
->  {
->  	struct mtk_hsdma_chan *chan = to_mtk_hsdma_chan(c);
->  	struct mtk_hsdma_desc *desc;
-> -- 
-> 2.32.0
-> 
-> 
+A change to make the code more like typical coding style.
 
-Hi,
+Signed-off-by: Liu Junqi <liujunqi@pku.edu.cn>
+---
+I'm a kernel newbie and it's my first time to send a patch following the "Write and Submit your first Linux kernel Patch" video on youtube.
+The first version was rejected because of putting a '*' at the beginning of a line, and this version is exactly what Joe Perches advised in the reply to the original patch email.
+Please let me know if I got anything wrong ^_^
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+ drivers/staging/mt7621-dma/hsdma-mt7621.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+diff --git a/drivers/staging/mt7621-dma/hsdma-mt7621.c b/drivers/staging/mt7621-dma/hsdma-mt7621.c
+index 1424d01d434b..f303579bd1a2 100644
+--- a/drivers/staging/mt7621-dma/hsdma-mt7621.c
++++ b/drivers/staging/mt7621-dma/hsdma-mt7621.c
+@@ -455,9 +455,9 @@ static void mtk_hsdma_issue_pending(struct dma_chan *c)
+ 	spin_unlock_bh(&chan->vchan.lock);
+ }
+ 
+-static struct dma_async_tx_descriptor *mtk_hsdma_prep_dma_memcpy(
+-		struct dma_chan *c, dma_addr_t dest, dma_addr_t src,
+-		size_t len, unsigned long flags)
++static struct dma_async_tx_descriptor *
++mtk_hsdma_prep_dma_memcpy(struct dma_chan *c, dma_addr_t dest, dma_addr_t src,
++			  size_t len, unsigned long flags)
+ {
+ 	struct mtk_hsdma_chan *chan = to_mtk_hsdma_chan(c);
+ 	struct mtk_hsdma_desc *desc;
+-- 
+2.32.0
 
-- This looks like a new version of a previously submitted patch, but you
-  did not list below the --- line any changes from the previous version.
-  Please read the section entitled "The canonical patch format" in the
-  kernel file, Documentation/SubmittingPatches for what needs to be done
-  here to properly describe this.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
 
 _______________________________________________
 Linux-mediatek mailing list
