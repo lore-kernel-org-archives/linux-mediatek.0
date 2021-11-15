@@ -2,90 +2,88 @@ Return-Path: <SRS0=W1mV=QC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 77356C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 16:28:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9CB71C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 16:42:35 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 3D37961221
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 16:28:10 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3D37961221
+	by mail.kernel.org (Postfix) with ESMTPS id 58EF861AAD
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 16:42:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 58EF861AAD
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/XfYlNCobuzHYZd3gy4ks+vRn83GRXt2qPimGH3W8Qo=; b=zVP6OTO+7iMqb+
-	qnJaheUGtWN9zN2IZiZ7RexWZab6M+r+2F7STIg897P+zQnBwEvaNxWelvs/BRwlSHBAkpDozmmn0
-	Rgz1qkJf05WuSgGCYvVjgRl1Jvv4A0yB7jT0/M1XoPWqZ2H8VeBwK9WKMdo1hWgXO1/Dy1hlxBSdp
-	CyiJZsMhyoHIzYc0Elt/9edS8Iq7z3JUCipLA+HL3N+kucLyHVhv2qFSgy5qiiC1VrKZ6KGCiQoA/
-	cfKBqJKdLrU6znYauxFC12K43+QbSryxupnsU40G/8VxVHs6w66zOPo/lWdgpcgcSWKNvq9T0CUYx
-	XAi9tR8quvNOeJXJuIiw==;
+	List-Owner; bh=YQyfK8bPRGc0JTCXNC+QvMAX1SbarOS4dmWGr6UmUmY=; b=rrAD8UXgTgvlRJ
+	VqFPvMGVLMwc602dk5TS6lL0cbcIKN8CX9gDVhT8MBvwLb+STpbUZCQcwwHnZBmrxYD7ZOkAWHu2i
+	HhTgU6alAIe4bKvxNiEvpHovNg+G7lGYhVSLP15hmnaO/iI5oaWVKyWKQU97CgCA29lcTHzCtQIR3
+	6GGpOyEnLgNttE9I7l8SDLW4ETVd5LFGpRw4zox0bQemFl31uFg9XrmAkCX7tTectbr6CntlUimdR
+	CPa2GCwmR9+Z6RjQ2RX3ffb7jNS0xqI/DyHccP7rn7VcbNlOaampCiIO/G7wXpoEUePCBpigF4921
+	loBr8RKJrN6lXcAhp3ZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmepr-00GJrZ-Hl; Mon, 15 Nov 2021 16:27:59 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1mmf3r-00GNDV-S6; Mon, 15 Nov 2021 16:42:27 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmep4-00GJcd-Nk; Mon, 15 Nov 2021 16:27:12 +0000
-Received: by mail-wr1-x433.google.com with SMTP id c4so31778255wrd.9;
- Mon, 15 Nov 2021 08:27:09 -0800 (PST)
+ id 1mmf3o-00GNCM-50; Mon, 15 Nov 2021 16:42:25 +0000
+Received: by mail-wm1-x333.google.com with SMTP id
+ c71-20020a1c9a4a000000b0032cdcc8cbafso283174wme.3; 
+ Mon, 15 Nov 2021 08:42:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=nAJZ/8qBlkSeumTdsWvf6jWRnWI5SJHgxgMuaAAXq3o=;
- b=BXS3nKzWpOZD+Xhwu4uHcArysuwKdApgrodmIaA2LaYXzSAxIAUlegzcKtQ8ZBsHrE
- e5te+Xf9Nx0OeRH04kcXrWlIIsXbOMbHdHRnOAF7aM2GiH2BHXtWvzsof8Cil5D923n2
- gusBkFSEvt/GXgrg7fNI5/4Ogy6dFAnIYoTrLd3VVcJQ8HJvhzb6SWLHmbvxlHiNRAuD
- oR/R2eGjw2eBnjSsvyEVlVVPZZ1zYXFIAUQ2b7KwNDOyFMx5mGFc5h6LEtJpwANCar6p
- d53OBflD8F37uMzh9mueJ2jaAfyhRChBnnLt8zn00aeU4eG2xpOJA/Ayzwc/TILlVg7I
- 5xag==
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=JuqPZpJkmVPxr1XEd2xmER6X+Ym/lgTGuP07ml9bU0g=;
+ b=GJUKEGDKs7KpQ/B8MSIsEkzPmGD9HaDBMQ/7KfepUnjJ4QIuJ2U4i5lEKz2HLUwjIF
+ 49iPrAkz1V7h60hhJ0uSWSuS2utkMm1n8Tx7HrijpwI4oJwvYg5HcF7F/AGoDIv+hyPe
+ XE9LDsTth53plL96TWa6QRbA63N0tJ0RIBsghoDuPprc9XYvGjCNi4qmckFaQvoW6+lF
+ LQtGZWmW/xTfoKBXq3WVZ7DPptprQvRKQWYQnOApM8xZQ6H0SFyuA1DBokbdWvjZ8WDV
+ 713hzutv++iddTkcWPejXBCK2u4v7IECLNl9sTHyDpa/zlE1SbZbZjmUWgmmpwd6VUEt
+ 0Vdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=nAJZ/8qBlkSeumTdsWvf6jWRnWI5SJHgxgMuaAAXq3o=;
- b=Vc4M7TjaoK0ZonhifwR4LlnTr07dDSboyy7ETTJHIyqYAZL80PNq+DFpYia1wWkxdG
- 45d8MRRzpO2Cd1ZPJ0fUMUX4s3lgOAMAXvboR83QrmcIt73utrkPWpS4/DeSnUBy3xwN
- YKG7FjE65/2XSpzQMB7z7TVBkaoeqU3ONzF0HwTRMgSzFY8SIZQKU1BEXr9eXttA+ejZ
- qLlrv+fQ2s1xGs2HYhq4ZoiK2PYzorD0sZXdE+NkquICY+bTUcdROBXusVtQ/69eq2FA
- SQe6yUEMISHYv9DzFoQVJanBwz2PwJETvy2dzJXDDBU7mnNzH4y414BjAp5bltx4FG+J
- uguw==
-X-Gm-Message-State: AOAM533GtbUlsvvwS3VtaRcmsu/Ly1Gaftv3CedYnrwtEQvZ5n5woIdg
- xEutWkIf4jSk8CENiBpxb+k=
-X-Google-Smtp-Source: ABdhPJzzAKpVTkRMgFqXkIwX+JryWBKs/hcZHsMQlUjkbZOR+Zu2WitCf3UVQuX2X30tgKDlb5+VPQ==
-X-Received: by 2002:adf:f9d2:: with SMTP id w18mr247969wrr.303.1636993625973; 
- Mon, 15 Nov 2021 08:27:05 -0800 (PST)
+ bh=JuqPZpJkmVPxr1XEd2xmER6X+Ym/lgTGuP07ml9bU0g=;
+ b=WTsnkTXmWRUX/7jM5usk/xz95yrheNzX9um0xZ+2pTAlCe26r4ABOOa1HMSaU5bnkF
+ JJrVCCFn3xtgHvh6fhg/k+BSs7/aUQKEzyTXcE1Hqk5c1czLgWb0f1QvYGaeFcJTSckd
+ M10lLU5Vp085W/qE3Of/iAWfVg+h5UjjXFpQhBes8w2/F3iLUyP6d5a12bXNfss7mWOY
+ JurZoeFbR4LTPCLaXa+Izk7/4dQUOkrPqHMxk/DF7fNC73v6SaggfM/kPiSel8ON/Ip3
+ K9stWlgA4hbdOIwDcbiHgTOTQ9sAXgFpmdKX2l/Aymnb/jWEOaRHdE9BY/nkpVw7VpTs
+ KSsg==
+X-Gm-Message-State: AOAM530ufhIwHPO3NW1RCENYBbHkottq4Q3ckH4v3/ujvWvRj2OLbzvk
+ cNq2NfS1g7gvTl3jK/jBO5jJCW6ybfo=
+X-Google-Smtp-Source: ABdhPJwok9H8xlFto8+eTwjCwgKcKtmnfgk3TO4CGlesnBQIwE8v1bZMANd9k7yeOeUrVOnuk1RzJg==
+X-Received: by 2002:a7b:ce8a:: with SMTP id q10mr59313728wmj.55.1636994542287; 
+ Mon, 15 Nov 2021 08:42:22 -0800 (PST)
 Received: from [192.168.0.18] (static-160-219-86-188.ipcom.comunitel.net.
  [188.86.219.160])
- by smtp.gmail.com with ESMTPSA id m22sm16377559wmq.38.2021.11.15.08.27.04
+ by smtp.gmail.com with ESMTPSA id j11sm14944511wrt.3.2021.11.15.08.42.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 15 Nov 2021 08:27:05 -0800 (PST)
-Message-ID: <d411aec5-efa8-c71d-8179-54ff52c17039@gmail.com>
-Date: Mon, 15 Nov 2021 17:27:04 +0100
+ Mon, 15 Nov 2021 08:42:21 -0800 (PST)
+Message-ID: <62e52ffc-09e5-6b83-540f-f6347fca7adf@gmail.com>
+Date: Mon, 15 Nov 2021 17:42:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
+Subject: Re: [PATCH v2] arm: dts: mt6589: Add device tree for Fairphone 1
 Content-Language: en-US
-To: Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, Seiya Wang <seiya.wang@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
-References: <20211018114009.13350-1-sam.shih@mediatek.com>
- <20211018114009.13350-3-sam.shih@mediatek.com>
+To: Luca Weiss <luca@z3ntu.xyz>, linux-mediatek@lists.infradead.org
+List-Id: <soc.lore.kernel.org>
+Cc: ~postmarketos/upstreaming@lists.sr.ht, Arnd Bergmann <arnd@arndb.de>,
+ Olof Johansson <olof@lixom.net>, soc@kernel.org,
+ Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20211024084535.30959-1-luca@z3ntu.xyz>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v7 2/3] arm64: dts: mediatek: add basic mt7986a support
-In-Reply-To: <20211018114009.13350-3-sam.shih@mediatek.com>
+In-Reply-To: <20211024084535.30959-1-luca@z3ntu.xyz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211115_082710_855535_1662D26E 
-X-CRM114-Status: GOOD (  24.46  )
+X-CRM114-CacheID: sfid-20211115_084224_228531_7392009B 
+X-CRM114-Status: GOOD (  23.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,267 +100,101 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On 18/10/2021 13:40, Sam Shih wrote:
-> Add basic chip support for Mediatek mt7986a, include
-> basic uart nodes, rng node and watchdog node.
+
+On 24/10/2021 10:45, Luca Weiss wrote:
+> Add rudimentary support for the Fairphone 1, based on MT6589 to boot to
+> UART console.
 > 
-> Add cpu node, timer node, gic node, psci and reserved-memory node
-> for ARM Trusted Firmware.
+> The recently added SMP support needs to be disabled for this board as
+> the kernel panics executing /init with it, even though the CPUs seem to
+> start up fine - maybe a stability issue.
 > 
-
-What is the exact difference between mt7986a and mt7986b? Right now, it's only 
-the compatible, for that it makes no sense to split them.
-
-It would be good to see what the exact differences are, so that we can see if it 
-makes sense to have one of the alternatives:
-1) use a common mt7986.dtsi which get included by mt7986[a,b].dtsi
-2) Use on mt7986.dtsi and only add one mt7986a.dtsi or mt7986b.dtsi which has 
-add-ons.
-
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> [    0.072010] smp: Bringing up secondary CPUs ...
+> [    0.131888] CPU1: thread -1, cpu 1, socket 0, mpidr 80000001
+> [    0.191889] CPU2: thread -1, cpu 2, socket 0, mpidr 80000002
+> [    0.251890] CPU3: thread -1, cpu 3, socket 0, mpidr 80000003
+> [    0.251982] smp: Brought up 1 node, 4 CPUs
+> [    0.254745] SMP: Total of 4 processors activated (7982.28 BogoMIPS).
+> [    0.255582] CPU: All CPU(s) started in SVC mode.
 > 
+> [    0.472039] Run /init as init process
+> [    0.473317] Kernel panic - not syncing: Attempted to kill init! exitcode=0x00000004
+> 
+> Signed-off-by: Luca Weiss <luca@z3ntu.xyz>
+
+Now part of v5.16-next/dts32
+
+Thanks
+
 > ---
-> v7: added memory node back to dts
-> v6: removed clock and pinctrl node, to separate basic part into a single
->      patch series
+>   arch/arm/boot/dts/Makefile                 |  1 +
+>   arch/arm/boot/dts/mt6589-fairphone-fp1.dts | 30 ++++++++++++++++++++++
+>   arch/arm/boot/dts/mt6589.dtsi              |  2 +-
+>   3 files changed, 32 insertions(+), 1 deletion(-)
+>   create mode 100644 arch/arm/boot/dts/mt6589-fairphone-fp1.dts
 > 
-> Original thread:
-> https://lore.kernel.org/all/20211004124155.1404-1-sam.shih@mediatek.com/
-> 
-> v5: follow reviewr's comment: removed clock freqency node in timer due to
->      we have set CNTFRQ_EL0 in ATF firmware, and also corrected GICD range
-> v4: added missing gic register bases, and fixed range of GICR
-> v3: used the stdout-path instead of console=ttyS0
-> v2: modified clock and uart node due to clock driver updated
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile        |   1 +
->   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts |  38 +++++
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 149 +++++++++++++++++++
->   3 files changed, 188 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 4f68ebed2e31..e6c3a73b9e4a 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+> index 7e0934180724..24f402db2613 100644
+> --- a/arch/arm/boot/dts/Makefile
+> +++ b/arch/arm/boot/dts/Makefile
+> @@ -1437,6 +1437,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += \
+>   	mt2701-evb.dtb \
+>   	mt6580-evbp1.dtb \
+>   	mt6589-aquaris5.dtb \
+> +	mt6589-fairphone-fp1.dtb \
+>   	mt6592-evb.dtb \
+>   	mt7623a-rfb-emmc.dtb \
+>   	mt7623a-rfb-nand.dtb \
+> diff --git a/arch/arm/boot/dts/mt6589-fairphone-fp1.dts b/arch/arm/boot/dts/mt6589-fairphone-fp1.dts
 > new file mode 100644
-> index 000000000000..ca074cf8e578
+> index 000000000000..c952347981de
 > --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> @@ -0,0 +1,38 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +++ b/arch/arm/boot/dts/mt6589-fairphone-fp1.dts
+> @@ -0,0 +1,30 @@
+> +// SPDX-License-Identifier: BSD-3-Clause
 > +/*
-> + * Copyright (C) 2021 MediaTek Inc.
-> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + * Copyright (c) 2021, Luca Weiss <luca@z3ntu.xyz>
 > + */
 > +
 > +/dts-v1/;
-> +#include "mt7986a.dtsi"
+> +#include "mt6589.dtsi"
 > +
 > +/ {
-> +	model = "MediaTek MT7986a RFB";
-> +	compatible = "mediatek,mt7986a-rfb";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
+> +	model = "Fairphone 1";
+> +	compatible = "fairphone,fp1", "mediatek,mt6589";
 > +
 > +	chosen {
-> +		stdout-path = "serial0:115200n8";
-> +		bootargs = "earlycon=uart8250,mmio32,0x11002000 swiotlb=512";
-
-We normally don't add earlycon parameter to the normal bootargs, as it's only 
-for debugging. Also what do we need the swiotlb? Are there any limitation in the 
-HW that makes us need it?
-
-Regards,
-Matthias
-
+> +		stdout-path = &uart3;
 > +	};
 > +
-> +	memory {
-> +		reg = <0 0x40000000 0 0x40000000>;
+> +	memory@80000000 {
+> +		device_type = "memory";
+> +		reg = <0x80000000 0x40000000>;
 > +	};
 > +};
 > +
-> +&uart0 {
+> +&cpus {
+> +	/* SMP is not stable on this board, makes the kernel panic */
+> +	/delete-property/ enable-method;
+> +};
+> +
+> +&uart3 {
 > +	status = "okay";
 > +};
-> +
-> +&uart1 {
-> +	status = "okay";
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> new file mode 100644
-> index 000000000000..75912bcf6c9c
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -0,0 +1,149 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2021 MediaTek Inc.
-> + * Author: Sam.Shih <sam.shih@mediatek.com>
-> + */
-> +
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +/ {
-> +	compatible = "mediatek,mt7986a";
-> +	interrupt-parent = <&gic>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	system_clk: dummy40m {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <40000000>;
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		cpu0: cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x0>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu1: cpu@1 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x1>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu2: cpu@2 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x2>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu3: cpu@3 {
-> +			device_type = "cpu";
-> +			enable-method = "psci";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x3>;
-> +			#cooling-cells = <2>;
-> +		};
-> +	};
-> +
-> +	psci {
-> +		compatible  = "arm,psci-0.2";
-> +		method      = "smc";
-> +	};
-> +
-> +	reserved-memory {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-> +		secmon_reserved: secmon@43000000 {
-> +			reg = <0 0x43000000 0 0x30000>;
-> +			no-map;
-> +		};
-> +	};
-> +
-> +	timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		gic: interrupt-controller@c000000 {
-> +			compatible = "arm,gic-v3";
-> +			#interrupt-cells = <3>;
-> +			interrupt-parent = <&gic>;
-> +			interrupt-controller;
-> +			reg = <0 0x0c000000 0 0x10000>,  /* GICD */
-> +			      <0 0x0c080000 0 0x80000>,  /* GICR */
-> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
-> +			      <0 0x0c410000 0 0x1000>,   /* GICH */
-> +			      <0 0x0c420000 0 0x2000>;   /* GICV */
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +		};
-> +
-> +		watchdog: watchdog@1001c000 {
-> +			compatible = "mediatek,mt7986-wdt",
-> +				     "mediatek,mt6589-wdt";
-> +			reg = <0 0x1001c000 0 0x1000>;
-> +			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-> +			#reset-cells = <1>;
-> +			status = "disabled";
-> +		};
-> +
-> +		trng: trng@1020f000 {
-> +			compatible = "mediatek,mt7986-rng",
-> +				     "mediatek,mt7623-rng";
-> +			reg = <0 0x1020f000 0 0x100>;
-> +			clocks = <&system_clk>;
-> +			clock-names = "rng";
-> +			status = "disabled";
-> +		};
-> +
-> +		uart0: serial@11002000 {
-> +			compatible = "mediatek,mt7986-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11002000 0 0x400>;
-> +			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&system_clk>;
-> +			status = "disabled";
-> +		};
-> +
-> +		uart1: serial@11003000 {
-> +			compatible = "mediatek,mt7986-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11003000 0 0x400>;
-> +			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&system_clk>;
-> +			status = "disabled";
-> +		};
-> +
-> +		uart2: serial@11004000 {
-> +			compatible = "mediatek,mt7986-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11004000 0 0x400>;
-> +			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&system_clk>;
-> +			status = "disabled";
-> +		};
-> +
-> +	};
-> +
-> +};
+> diff --git a/arch/arm/boot/dts/mt6589.dtsi b/arch/arm/boot/dts/mt6589.dtsi
+> index 70df00a7bb26..c6babc8ad2ba 100644
+> --- a/arch/arm/boot/dts/mt6589.dtsi
+> +++ b/arch/arm/boot/dts/mt6589.dtsi
+> @@ -14,7 +14,7 @@ / {
+>   	compatible = "mediatek,mt6589";
+>   	interrupt-parent = <&sysirq>;
+>   
+> -	cpus {
+> +	cpus: cpus {
+>   		#address-cells = <1>;
+>   		#size-cells = <0>;
+>   		enable-method = "mediatek,mt6589-smp";
 > 
 
 _______________________________________________
