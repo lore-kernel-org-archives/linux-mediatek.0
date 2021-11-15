@@ -2,69 +2,89 @@ Return-Path: <SRS0=W1mV=QC=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 15BD9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 04:23:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 758ECC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 08:18:05 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CF7F663222
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 04:23:23 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CF7F663222
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 2DC4461407
+	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 08:18:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 2DC4461407
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JJhNEII8iOQZx+8EtlRdJXKgTwWQcjjT6S8PVZ8jwSI=; b=FsdpY8kWhT0Zrj
-	t9xD52jlXkeykm3K+gumocsSKMPAC13buw0yhurdADe6Ezc8UvGjO8pBjPhFCgnbC5BSw2sCoT21q
-	/c58upLfFXqZqdzaEil7Z+lOtiO/QP4RoR0wMqMa5ifTvLKQMBY5cf5nS1DYCgsDP0WgB6qxCxm3n
-	725MebN0ak8BkXdcGikd6xu52gydXXAUK95z3RFPfQoTMbfxBpy7omwqKlo7Wn5SbKRbcXOjjLMTP
-	UpTC8gHY1dxxmpqllXCzj6PkWbou4uaScA0Sl3tAMa1WaTSmYQr+fSh5mn5nq5ZWZ73mjeMa0PEff
-	BMmsLVY6j5a9mCALVznQ==;
+	List-Owner; bh=6sai/cHOAMVGsQUoKSCFygI7VvywBqll5Yc8OfnXePc=; b=BCNyhiL2dbXxZl
+	YJpGppWT6GHMLeZTcw0Ob8cl9DCvyEyggQ/MXGWFXYtuWDx2/nujxPLqHLi0zhtYBMup5nrXW8viG
+	TjhuXNYjxQp6kyI/d3XwLhXnrNNHAzF4N42G/tZcMiElI1iM0yGuP4aq1H9CNXqtP+UgSbndGeWxe
+	E6G0DUdL6QogJYEgppcgSDINUZJRstXgCcUiPCV2ull3prw58Z88v29/xFB0q3iHXcQt+GZFqDlr9
+	LfxLktVh9xtv8QuFOgBvc+DGf/9c2EX3Hdr5/UpEZ9fQdkS+QlXzBVAB+j24nnw6J/Bip4mIAFgkj
+	LZFwLp5ZnBn8FVOC0Cjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmTWU-00EL6t-KV; Mon, 15 Nov 2021 04:23:14 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mmXBa-00Ef0W-3j; Mon, 15 Nov 2021 08:17:54 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmTVa-00EKo2-0r; Mon, 15 Nov 2021 04:22:20 +0000
-X-UUID: c19eff0bbc3f44f3b7023cbc51bb2eba-20211114
-X-UUID: c19eff0bbc3f44f3b7023cbc51bb2eba-20211114
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <james.lo@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1668913218; Sun, 14 Nov 2021 21:22:10 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 14 Nov 2021 20:20:35 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 15 Nov 2021 12:20:33 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 15 Nov 2021 12:20:33 +0800
-From: James Lo <james.lo@mediatek.com>
-To: Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, James Lo
- <james.lo@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v15 3/4] spmi: mediatek: Add support for MT6873/8192
-Date: Mon, 15 Nov 2021 12:20:29 +0800
-Message-ID: <20211115042030.30293-4-james.lo@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211115042030.30293-1-james.lo@mediatek.com>
-References: <20211115042030.30293-1-james.lo@mediatek.com>
+ id 1mmXBL-00Eez8-MJ; Mon, 15 Nov 2021 08:17:41 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id v3so33012984uam.10;
+ Mon, 15 Nov 2021 00:17:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=By5p3l+jvofWAWLaVcfc5GGtkfLeIUKs4HOwKe1fAbQ=;
+ b=o+MwRDcIniziU8P5DIs8Mw1EpQFSmOrSRj2SdSxBx5nQIGrDhxE1WpelTOIpA4NJss
+ ScK3MoCOrKp8mCmC/njdlOqnsYHZ7fpWf22jksyERImZrD2j82UQnZ8tH/FW30fT9bEw
+ pQj5TaLwbrlSUsc6l7PI9btf6SS8tiMnPGPQGzV4FTJ+TaW8WWr8OAZnM9pSxVuHxRZS
+ 6LNJ5UCzjtcUvxWAQ0PsM+CoZWgQN69C9LjLv+E0U+EYcQqusXZqEBpabYlUFXFJsuc7
+ 2SfZ/K96GYc1R8nrGXiC3atiCSlvpUtfk+3/AHDexrAzOpPrjS3Ts7kM5zIq9p3elSxG
+ yTTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=By5p3l+jvofWAWLaVcfc5GGtkfLeIUKs4HOwKe1fAbQ=;
+ b=O+j2Z73d8Pv8CvBz55GghTwIdGH7FyiZ0oHaE+jZhK/U4/qNYpEZ7nfUc14xplhoG3
+ wmpe6x/orC6gDdBaGSqkmCRslNiDpwbWmUO2sUEfpT7t7pnvlufd5MuMmR5p3ZGV24y7
+ QjE7LCerWf99bHrnKN4qAfMmNEBo9Xi/4Kw0TUi22VNz7aN4nUueQb2uVpjZIZgKzvSj
+ UAiwKB3Z0fdKA3lvYx88lFlN1R/zStW2OlN5Hfl8FscJKutIwreJA1yHXAmIsJrkfkN6
+ JD4QmEpSWivUddXf4Z53NidJGfbfEim/SyoajK8k1TEaw5R2LC8CRrnjNUQj2dlDuXID
+ LDaA==
+X-Gm-Message-State: AOAM532YSLwGoUMGCifT8V22EYr8RMbBzq2c8jrc20L7UXJPMoQGxQy7
+ D7YOwv4AEUpQnlrJ1ox6AzKKPjAgyxKUQpdrWf0=
+X-Google-Smtp-Source: ABdhPJwFUsFJGu/gCVF5SWWbPfhqhjOI0GwyDbuiYTOf/NdNTyxvnsUkr/Up3XP+GRhPN+hr/fRC9qHFdnrMwANqQZE=
+X-Received: by 2002:ab0:39cf:: with SMTP id g15mr57149296uaw.0.1636964257513; 
+ Mon, 15 Nov 2021 00:17:37 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <CAMhs-H8ShoaYiFOOzJaGC68nZz=V365RXN_Kjuj=fPFENGJiiw@mail.gmail.com>
+ <20211109224138.GA1180875@bhelgaas>
+ <CAMhs-H9zpjg64Y-VAdM16FXwwzObB1+npDcGXD484hXzyEPtdg@mail.gmail.com>
+In-Reply-To: <CAMhs-H9zpjg64Y-VAdM16FXwwzObB1+npDcGXD484hXzyEPtdg@mail.gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Mon, 15 Nov 2021 09:17:26 +0100
+Message-ID: <CAMhs-H8C5i5RFiMw49ukmNaAeDQzzBd3SK+4TGi9z39_81TrOA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/3] MIPS: cm/cpc: export some missing symbols to be
+ able to use them from driver code
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
+ Yanteng Si <siyanteng01@gmail.com>, 
+ Florian Fainelli <f.fainelli@gmail.com>, bcm-kernel-feedback-list@broadcom.com,
+ Yanteng Si <siyanteng@loongson.cn>, Stephen Rothwell <sfr@canb.auug.org.au>, 
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>,
+ kw@linux.com, 
+ Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, linux-pci <linux-pci@vger.kernel.org>, 
+ linux-arm-kernel@lists.infradead.org, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ "open list:MIPS" <linux-mips@vger.kernel.org>, chenhuacai@kernel.org,
+ sterlingteng@gmail.com, 
+ Linux Next Mailing List <linux-next@vger.kernel.org>,
+ Arnd Bergmann <arnd@arndb.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211114_202218_112779_EADF994B 
-X-CRM114-Status: GOOD (  27.44  )
+X-CRM114-CacheID: sfid-20211115_001739_795252_2048B543 
+X-CRM114-Status: GOOD (  77.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,510 +101,198 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add spmi support for MT6873/8192.
+On Wed, Nov 10, 2021 at 7:00 AM Sergio Paracuellos
+<sergio.paracuellos@gmail.com> wrote:
+>
+> On Tue, Nov 9, 2021 at 11:41 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> >
+> > [+cc Arnd]
+> >
+> > On Sun, Nov 07, 2021 at 08:00:56AM +0100, Sergio Paracuellos wrote:
+> > > On Sat, Oct 30, 2021 at 7:38 AM Sergio Paracuellos
+> > > <sergio.paracuellos@gmail.com> wrote:
+> > > > On Sat, Oct 30, 2021 at 7:21 AM Sergio Paracuellos
+> > > > <sergio.paracuellos@gmail.com> wrote:
+> > > > > On Fri, Oct 29, 2021 at 10:27 PM Sergio Paracuellos
+> > > > > <sergio.paracuellos@gmail.com> wrote:
+> > > > > > On Fri, Oct 29, 2021 at 9:47 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> > > > > > > On Fri, Oct 29, 2021 at 09:37:53PM +0200, Sergio Paracuellos wrote:
+> > > > > > > > On Fri, Oct 29, 2021 at 8:49 PM Bjorn Helgaas <helgaas@kernel.org> wrote:
+> >
+> > > > > > > > > One way might be to implement a
+> > > > > > > > > pcibios_root_bridge_prepare() for mips and put the
+> > > > > > > > > setup_cm_memory_region() stuff in there.  It's not
+> > > > > > > > > *ideal* because that's a strong/weak function
+> > > > > > > > > arrangement that doesn't allow for multiple host
+> > > > > > > > > bridges, but that's probably not an issue here.
+> > > > > > > > >
+> > > > > > > > > If we can't do that, I think making it bool is probably
+> > > > > > > > > the right answer, but it would be worth a brief comment
+> > > > > > > > > in the commit log to explain the issue.
+> > > > > > > >
+> > > > > > > > Do you mean to implement 'pcibios_root_bridge_prepare()'
+> > > > > > > > for MIPS ralink? I guess this means to parse device tree
+> > > > > > > > and so on only to get memory range addresses to be added
+> > > > > > > > to the MIPS I/O coherence regions to make things work and
+> > > > > > > > then re-parse it again in the driver to do the proper PCI
+> > > > > > > > setup... We end up in an arch generic driver but at the
+> > > > > > > > end this controller is only present in ralink MIPS, so I
+> > > > > > > > am not sure that implementing
+> > > > > > > > 'pcibios_root_bridge_prepare()' is worthy here... I can
+> > > > > > > > explore and try to implement it if you think that it
+> > > > > > > > really makes sense... but, IMHO if this is the case, just
+> > > > > > > > making it bool looks like the correct thing to do.
+> > > > > > >
+> > > > > > > It should be trivial to put the contents of
+> > > > > > > setup_cm_memory_region() into a ralink function called
+> > > > > > > pcibios_root_bridge_prepare().
+> > > > > > >
+> > > > > > > pcibios_root_bridge_prepare() is called with the same
+> > > > > > > "struct pci_host_bridge *" argument as
+> > > > > > > setup_cm_memory_region(), and it's called slightly later, so
+> > > > > > > the window resources are already set up, so no DT parsing is
+> > > > > > > required.  It looks like a simple move and rename to me.
+> > > > > >
+> > > > > > I see. Thanks Bjorn. I will try the approach during the
+> > > > > > weekend and report if it works.
+> > > > >
+> > > > > I have tested the change from 'setup_cm_memory_region()' code
+> > > > > into 'pcibios_root_bridge_prepare()' just by moving and renaming
+> > > > > it from the PCIe controller code. The function is properly being
+> > > > > called.  However, it looks like at that point, windows are not
+> > > > > setup yet (no windows present at all in bridge->windows) so the
+> > > > > system is not able to get the IORESOURCE_MEM resource to set up
+> > > > > the IO coherency unit and the PCI failed to start:
+> > > > >
+> > > > > [   16.785359] mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+> > > > > [   16.798719] mt7621-pci 1e140000.pcie:   No bus range found for
+> > > > > /pcie@1e140000, using [bus 00-ff]
+> > > > > [   16.816248] mt7621-pci 1e140000.pcie:      MEM
+> > > > > 0x0060000000..0x006fffffff -> 0x0060000000
+> > > > > [   16.861310] mt7621-pci 1e140000.pcie:       IO
+> > > > > 0x001e160000..0x001e16ffff -> 0x0000000000
+> > > > > [   17.179230] mt7621-pci 1e140000.pcie: PCIE0 enabled
+> > > > > [   17.188954] mt7621-pci 1e140000.pcie: PCIE1 enabled
+> > > > > [   17.198678] mt7621-pci 1e140000.pcie: PCIE2 enabled
+> > > > > [   17.208415] Cannot get memory resource
+> > > > > [   17.215884] mt7621-pci 1e140000.pcie: Scanning root bridge failed
+> > > > > [   17.228454] mt7621-pci: probe of 1e140000.pcie failed with error -22
+> > > > >
+> > > > > FWIW, when the function is called, I have also tried to set up
+> > > > > hardcoded addresses. Doing that the IO coherency unit was
+> > > > > properly set up and PCI properly worked (expected). So, using
+> > > > > this 'pcibios_root_bridge_prepare()' funcion looks like a
+> > > > > possible way to go but we need the addresses properly being
+> > > > > passed into the function.  I've also tried to list
+> > > > > 'bridge->dma_ranges' and get resources from there instead of
+> > > > > using the not already setup 'bridge->windows'. There is nothing
+> > > > > inside that list also. 'bridge->bus->resources' is also empty...
+> > > > > Am I missing something? I was expecting the bridge passed around
+> > > > > to be the same that was in PCIe controller code, and it seems it
+> > > > > is (I printed the bridge pointer itself in driver code before
+> > > > > calling 'mt7621_pcie_register_host()' and in
+> > > > > 'pcibios_root_bridge_prepare()' at the begging of the function
+> > > > > and the pointer is the same) but windows and other stuff are not
+> > > > > already present there...
+> > > >
+> > > > Looking into [0] it looks like resources are temporarily removed
+> > > > from the list just before call 'pcibios_root_bridge_prepare()'.
+> > > > Hence the behaviour I am seeing when trying to get them...
+> > > >
+> > > > [0]:
+> > > > https://elixir.bootlin.com/linux/latest/source/drivers/pci/probe.c#L915
+> > >
+> > > Can you explain to me, why are resources temporarily removed from
+> > > the 'bridge->windows' list?
+> > >
+> > > Would moving that list split to be done after
+> > > 'pcibios_root_bridge_prepare()' is called a possibility?
+> >
+> > I don't know why the windows are managed that way.  That was added by
+> > 37d6a0a6f470 ("PCI: Add pci_register_host_bridge() interface").   I
+> > cc'd Arnd just in case he remembers, but that was a long time ago.
+>
+> Thanks, 2016 is not so far to already remember why things were done :)).
+>
+> >
+> > I don't see any use of bridge->windows in any of the
+> > pcibios_root_bridge_prepare() functions.  It doesn't *look* like it
+> > should be used until the coalesce/add code near the end.
+>
+> I checked them also, and nobody uses 'bridge->windows' there but all the
+> information is already there from dt parsing process when the
+> 'pci_register_host_bridge()'
+> is called and we are putting temporally in a 'resources' list to add
+> again all of them at the end.
+> All the calls before 'pcibios_root_bridge_prepare()' don't do anything
+> related with windows
+> either, that's why I asked to move the split after calling it since,
+> at a first glance, it does not
+> look harmful. Let's wait for Arnd explanation about why things are
+> being doing in this way
+> and if is this a possible way to proceed.
+>
+> Best regards,
+>      Sergio Paracuellos
+>
+> >
+> > > diff --git a/drivers/pci/probe.c b/drivers/pci/probe.c
+> > > index 4289030b0fff..2132df91ad8b 100644
+> > > --- a/drivers/pci/probe.c
+> > > +++ b/drivers/pci/probe.c
+> > > @@ -891,8 +891,6 @@ static int pci_register_host_bridge(struct
+> > > pci_host_bridge *bridge)
+> > >
+> > >         bridge->bus = bus;
+> > >
+> > > -       /* Temporarily move resources off the list */
+> > > -       list_splice_init(&bridge->windows, &resources);
+> > >         bus->sysdata = bridge->sysdata;
+> > >         bus->msi = bridge->msi;
+> > >         bus->ops = bridge->ops;
+> > > @@ -916,6 +914,8 @@ static int pci_register_host_bridge(struct
+> > > pci_host_bridge *bridge)
+> > >         if (err)
+> > >                 goto free;
+> > >
+> > > +       /* Temporarily move resources off the list */
+> > > +       list_splice_init(&bridge->windows, &resources);
+> > >         err = device_add(&bridge->dev);
+> > >         if (err) {
+> > >                 put_device(&bridge->dev);
+> > >
+> > > Obviously doing this works and windows are passed into mips ralink
+> > > specific 'pcibios_root_bridge_prepare()' and the PCIe subsystem is
+> > > properly working.
+> > >
+> > > The advantages I see to this approach are that doing in this way lets us to:
+> > > - Remove specific mips code from the driver controller.
+> > > - Allow the driver to be compile tested for any architecture.
+> > >
+> > > And the changes would be the following patches:
+> > > 1) Small 'drivers/pci/probe.c' change.
+> > > 2) Move mips specific code into 'arch/mips/ralink/mt76721.c' (since
+> > > other mips ralink stuff haven't got IO coherency units) to be inside
+> > > 'pcibios_root_bridge_prepare()'.
+> > > 3) Add MODULE_LICENSE macro to the PCIe controller driver to avoid
+> > > complaints when the driver is compiled as a module .
+> > > 4) Update PCIe controller driver's Kconfig to avoid MIPS COMPILE_TEST
+> > > conditional and completely enable it for COMPILE_TEST.
 
-Signed-off-by: James Lo <james.lo@mediatek.com>
-Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-Acked-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/spmi/Kconfig         |  11 +
- drivers/spmi/Makefile        |   1 +
- drivers/spmi/spmi-mtk-pmif.c | 454 +++++++++++++++++++++++++++++++++++
- 3 files changed, 466 insertions(+)
- create mode 100644 drivers/spmi/spmi-mtk-pmif.c
+I have sent this just to a clear image of a possible way to go:
 
-diff --git a/drivers/spmi/Kconfig b/drivers/spmi/Kconfig
-index 2874b6c26028..737802046314 100644
---- a/drivers/spmi/Kconfig
-+++ b/drivers/spmi/Kconfig
-@@ -34,4 +34,15 @@ config SPMI_MSM_PMIC_ARB
- 	  This is required for communicating with Qualcomm PMICs and
- 	  other devices that have the SPMI interface.
- 
-+config SPMI_MTK_PMIF
-+	tristate "Mediatek SPMI Controller (PMIC Arbiter)"
-+	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	help
-+	  If you say yes to this option, support will be included for the
-+	  built-in SPMI PMIC Arbiter interface on Mediatek family
-+	  processors.
-+
-+	  This is required for communicating with Mediatek PMICs and
-+	  other devices that have the SPMI interface.
-+
- endif
-diff --git a/drivers/spmi/Makefile b/drivers/spmi/Makefile
-index 6e092e6f290c..9d974424c8c1 100644
---- a/drivers/spmi/Makefile
-+++ b/drivers/spmi/Makefile
-@@ -6,3 +6,4 @@ obj-$(CONFIG_SPMI)	+= spmi.o
- 
- obj-$(CONFIG_SPMI_HISI3670)	+= hisi-spmi-controller.o
- obj-$(CONFIG_SPMI_MSM_PMIC_ARB)	+= spmi-pmic-arb.o
-+obj-$(CONFIG_SPMI_MTK_PMIF)	+= spmi-mtk-pmif.o
-diff --git a/drivers/spmi/spmi-mtk-pmif.c b/drivers/spmi/spmi-mtk-pmif.c
-new file mode 100644
-index 000000000000..3283d0a5903c
---- /dev/null
-+++ b/drivers/spmi/spmi-mtk-pmif.c
-@@ -0,0 +1,454 @@
-+// SPDX-License-Identifier: GPL-2.0
-+//
-+// Copyright (c) 2021 MediaTek Inc.
-+
-+#include <linux/clk.h>
-+#include <linux/iopoll.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/property.h>
-+#include <linux/spmi.h>
-+
-+#define SWINF_IDLE	0x00
-+#define SWINF_WFVLDCLR	0x06
-+
-+#define GET_SWINF(x)	(((x) >> 1) & 0x7)
-+
-+#define PMIF_CMD_REG_0		0
-+#define PMIF_CMD_REG		1
-+#define PMIF_CMD_EXT_REG	2
-+#define PMIF_CMD_EXT_REG_LONG	3
-+
-+#define PMIF_DELAY_US   10
-+#define PMIF_TIMEOUT_US (10 * 1000)
-+
-+#define PMIF_CHAN_OFFSET 0x5
-+
-+#define PMIF_MAX_CLKS	3
-+
-+#define SPMI_OP_ST_BUSY 1
-+
-+struct ch_reg {
-+	u32 ch_sta;
-+	u32 wdata;
-+	u32 rdata;
-+	u32 ch_send;
-+	u32 ch_rdy;
-+};
-+
-+struct pmif_data {
-+	const u32	*regs;
-+	const u32	*spmimst_regs;
-+	u32	soc_chan;
-+};
-+
-+struct pmif {
-+	void __iomem	*base;
-+	void __iomem	*spmimst_base;
-+	struct ch_reg	chan;
-+	struct clk_bulk_data clks[PMIF_MAX_CLKS];
-+	size_t nclks;
-+	const struct pmif_data *data;
-+};
-+
-+static const char * const pmif_clock_names[] = {
-+	"pmif_sys_ck", "pmif_tmr_ck", "spmimst_clk_mux",
-+};
-+
-+enum pmif_regs {
-+	PMIF_INIT_DONE,
-+	PMIF_INF_EN,
-+	PMIF_ARB_EN,
-+	PMIF_CMDISSUE_EN,
-+	PMIF_TIMER_CTRL,
-+	PMIF_SPI_MODE_CTRL,
-+	PMIF_IRQ_EVENT_EN_0,
-+	PMIF_IRQ_FLAG_0,
-+	PMIF_IRQ_CLR_0,
-+	PMIF_IRQ_EVENT_EN_1,
-+	PMIF_IRQ_FLAG_1,
-+	PMIF_IRQ_CLR_1,
-+	PMIF_IRQ_EVENT_EN_2,
-+	PMIF_IRQ_FLAG_2,
-+	PMIF_IRQ_CLR_2,
-+	PMIF_IRQ_EVENT_EN_3,
-+	PMIF_IRQ_FLAG_3,
-+	PMIF_IRQ_CLR_3,
-+	PMIF_IRQ_EVENT_EN_4,
-+	PMIF_IRQ_FLAG_4,
-+	PMIF_IRQ_CLR_4,
-+	PMIF_WDT_EVENT_EN_0,
-+	PMIF_WDT_FLAG_0,
-+	PMIF_WDT_EVENT_EN_1,
-+	PMIF_WDT_FLAG_1,
-+	PMIF_SWINF_0_STA,
-+	PMIF_SWINF_0_WDATA_31_0,
-+	PMIF_SWINF_0_RDATA_31_0,
-+	PMIF_SWINF_0_ACC,
-+	PMIF_SWINF_0_VLD_CLR,
-+	PMIF_SWINF_1_STA,
-+	PMIF_SWINF_1_WDATA_31_0,
-+	PMIF_SWINF_1_RDATA_31_0,
-+	PMIF_SWINF_1_ACC,
-+	PMIF_SWINF_1_VLD_CLR,
-+	PMIF_SWINF_2_STA,
-+	PMIF_SWINF_2_WDATA_31_0,
-+	PMIF_SWINF_2_RDATA_31_0,
-+	PMIF_SWINF_2_ACC,
-+	PMIF_SWINF_2_VLD_CLR,
-+	PMIF_SWINF_3_STA,
-+	PMIF_SWINF_3_WDATA_31_0,
-+	PMIF_SWINF_3_RDATA_31_0,
-+	PMIF_SWINF_3_ACC,
-+	PMIF_SWINF_3_VLD_CLR,
-+};
-+
-+static const u32 mt6873_regs[] = {
-+	[PMIF_INIT_DONE] =	0x0000,
-+	[PMIF_INF_EN] =		0x0024,
-+	[PMIF_ARB_EN] =		0x0150,
-+	[PMIF_CMDISSUE_EN] =	0x03B4,
-+	[PMIF_TIMER_CTRL] =	0x03E0,
-+	[PMIF_SPI_MODE_CTRL] =	0x0400,
-+	[PMIF_IRQ_EVENT_EN_0] =	0x0418,
-+	[PMIF_IRQ_FLAG_0] =	0x0420,
-+	[PMIF_IRQ_CLR_0] =	0x0424,
-+	[PMIF_IRQ_EVENT_EN_1] =	0x0428,
-+	[PMIF_IRQ_FLAG_1] =	0x0430,
-+	[PMIF_IRQ_CLR_1] =	0x0434,
-+	[PMIF_IRQ_EVENT_EN_2] =	0x0438,
-+	[PMIF_IRQ_FLAG_2] =	0x0440,
-+	[PMIF_IRQ_CLR_2] =	0x0444,
-+	[PMIF_IRQ_EVENT_EN_3] =	0x0448,
-+	[PMIF_IRQ_FLAG_3] =	0x0450,
-+	[PMIF_IRQ_CLR_3] =	0x0454,
-+	[PMIF_IRQ_EVENT_EN_4] =	0x0458,
-+	[PMIF_IRQ_FLAG_4] =	0x0460,
-+	[PMIF_IRQ_CLR_4] =	0x0464,
-+	[PMIF_WDT_EVENT_EN_0] =	0x046C,
-+	[PMIF_WDT_FLAG_0] =	0x0470,
-+	[PMIF_WDT_EVENT_EN_1] =	0x0474,
-+	[PMIF_WDT_FLAG_1] =	0x0478,
-+	[PMIF_SWINF_0_ACC] =	0x0C00,
-+	[PMIF_SWINF_0_WDATA_31_0] =	0x0C04,
-+	[PMIF_SWINF_0_RDATA_31_0] =	0x0C14,
-+	[PMIF_SWINF_0_VLD_CLR] =	0x0C24,
-+	[PMIF_SWINF_0_STA] =	0x0C28,
-+	[PMIF_SWINF_1_ACC] =	0x0C40,
-+	[PMIF_SWINF_1_WDATA_31_0] =	0x0C44,
-+	[PMIF_SWINF_1_RDATA_31_0] =	0x0C54,
-+	[PMIF_SWINF_1_VLD_CLR] =	0x0C64,
-+	[PMIF_SWINF_1_STA] =	0x0C68,
-+	[PMIF_SWINF_2_ACC] =	0x0C80,
-+	[PMIF_SWINF_2_WDATA_31_0] =	0x0C84,
-+	[PMIF_SWINF_2_RDATA_31_0] =	0x0C94,
-+	[PMIF_SWINF_2_VLD_CLR] =	0x0CA4,
-+	[PMIF_SWINF_2_STA] =	0x0CA8,
-+	[PMIF_SWINF_3_ACC] =	0x0CC0,
-+	[PMIF_SWINF_3_WDATA_31_0] =	0x0CC4,
-+	[PMIF_SWINF_3_RDATA_31_0] =	0x0CD4,
-+	[PMIF_SWINF_3_VLD_CLR] =	0x0CE4,
-+	[PMIF_SWINF_3_STA] =	0x0CE8,
-+};
-+
-+enum spmi_regs {
-+	SPMI_OP_ST_CTRL,
-+	SPMI_GRP_ID_EN,
-+	SPMI_OP_ST_STA,
-+	SPMI_MST_SAMPL,
-+	SPMI_MST_REQ_EN,
-+	SPMI_REC_CTRL,
-+	SPMI_REC0,
-+	SPMI_REC1,
-+	SPMI_REC2,
-+	SPMI_REC3,
-+	SPMI_REC4,
-+	SPMI_MST_DBG,
-+};
-+
-+static const u32 mt6873_spmi_regs[] = {
-+	[SPMI_OP_ST_CTRL] =	0x0000,
-+	[SPMI_GRP_ID_EN] =	0x0004,
-+	[SPMI_OP_ST_STA] =	0x0008,
-+	[SPMI_MST_SAMPL] =	0x000c,
-+	[SPMI_MST_REQ_EN] =	0x0010,
-+	[SPMI_REC_CTRL] =	0x0040,
-+	[SPMI_REC0] =		0x0044,
-+	[SPMI_REC1] =		0x0048,
-+	[SPMI_REC2] =		0x004c,
-+	[SPMI_REC3] =		0x0050,
-+	[SPMI_REC4] =		0x0054,
-+	[SPMI_MST_DBG] =	0x00fc,
-+};
-+
-+static u32 pmif_readl(struct pmif *arb, enum pmif_regs reg)
-+{
-+	return readl(arb->base + arb->data->regs[reg]);
-+}
-+
-+static void pmif_writel(struct pmif *arb, u32 val, enum pmif_regs reg)
-+{
-+	writel(val, arb->base + arb->data->regs[reg]);
-+}
-+
-+static void mtk_spmi_writel(struct pmif *arb, u32 val, enum spmi_regs reg)
-+{
-+	writel(val, arb->spmimst_base + arb->data->spmimst_regs[reg]);
-+}
-+
-+static bool pmif_is_fsm_vldclr(struct pmif *arb)
-+{
-+	u32 reg_rdata;
-+
-+	reg_rdata = pmif_readl(arb, arb->chan.ch_sta);
-+
-+	return GET_SWINF(reg_rdata) == SWINF_WFVLDCLR;
-+}
-+
-+static int pmif_arb_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid)
-+{
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+	u32 rdata, cmd;
-+	int ret;
-+
-+	/* Check the opcode */
-+	if (opc < SPMI_CMD_RESET || opc > SPMI_CMD_WAKEUP)
-+		return -EINVAL;
-+
-+	cmd = opc - SPMI_CMD_RESET;
-+
-+	mtk_spmi_writel(arb, (cmd << 0x4) | sid, SPMI_OP_ST_CTRL);
-+	ret = readl_poll_timeout_atomic(arb->spmimst_base + arb->data->spmimst_regs[SPMI_OP_ST_STA],
-+					rdata, (rdata & SPMI_OP_ST_BUSY) == SPMI_OP_ST_BUSY,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0)
-+		dev_err(&ctrl->dev, "timeout, err = %d\n", ret);
-+
-+	return ret;
-+}
-+
-+static int pmif_spmi_read_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-+			      u16 addr, u8 *buf, size_t len)
-+{
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+	struct ch_reg *inf_reg;
-+	int ret;
-+	u32 data, cmd;
-+
-+	/* Check for argument validation. */
-+	if (sid & ~0xf) {
-+		dev_err(&ctrl->dev, "exceed the max slv id\n");
-+		return -EINVAL;
-+	}
-+
-+	if (len > 4) {
-+		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
-+
-+		return -EINVAL;
-+	}
-+
-+	if (opc >= 0x60 && opc <= 0x7f)
-+		opc = PMIF_CMD_REG;
-+	else if ((opc >= 0x20 && opc <= 0x2f) || (opc >= 0x38 && opc <= 0x3f))
-+		opc = PMIF_CMD_EXT_REG_LONG;
-+	else
-+		return -EINVAL;
-+
-+	/* Wait for Software Interface FSM state to be IDLE. */
-+	inf_reg = &arb->chan;
-+	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-+					data, GET_SWINF(data) == SWINF_IDLE,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0) {
-+		/* set channel ready if the data has transferred */
-+		if (pmif_is_fsm_vldclr(arb))
-+			pmif_writel(arb, 1, inf_reg->ch_rdy);
-+		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-+		return ret;
-+	}
-+
-+	/* Send the command. */
-+	cmd = (opc << 30) | (sid << 24) | ((len - 1) << 16) | addr;
-+	pmif_writel(arb, cmd, inf_reg->ch_send);
-+
-+	/*
-+	 * Wait for Software Interface FSM state to be WFVLDCLR,
-+	 * read the data and clear the valid flag.
-+	 */
-+	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-+					data, GET_SWINF(data) == SWINF_WFVLDCLR,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0) {
-+		dev_err(&ctrl->dev, "failed to wait for SWINF_WFVLDCLR\n");
-+		return ret;
-+	}
-+
-+	data = pmif_readl(arb, inf_reg->rdata);
-+	memcpy(buf, &data, len);
-+	pmif_writel(arb, 1, inf_reg->ch_rdy);
-+
-+	return 0;
-+}
-+
-+static int pmif_spmi_write_cmd(struct spmi_controller *ctrl, u8 opc, u8 sid,
-+			       u16 addr, const u8 *buf, size_t len)
-+{
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+	struct ch_reg *inf_reg;
-+	int ret;
-+	u32 data, cmd;
-+
-+	if (len > 4) {
-+		dev_err(&ctrl->dev, "pmif supports 1..4 bytes per trans, but:%zu requested", len);
-+
-+		return -EINVAL;
-+	}
-+
-+	/* Check the opcode */
-+	if (opc >= 0x40 && opc <= 0x5F)
-+		opc = PMIF_CMD_REG;
-+	else if ((opc <= 0xF) || (opc >= 0x30 && opc <= 0x37))
-+		opc = PMIF_CMD_EXT_REG_LONG;
-+	else if (opc >= 0x80)
-+		opc = PMIF_CMD_REG_0;
-+	else
-+		return -EINVAL;
-+
-+	/* Wait for Software Interface FSM state to be IDLE. */
-+	inf_reg = &arb->chan;
-+	ret = readl_poll_timeout_atomic(arb->base + arb->data->regs[inf_reg->ch_sta],
-+					data, GET_SWINF(data) == SWINF_IDLE,
-+					PMIF_DELAY_US, PMIF_TIMEOUT_US);
-+	if (ret < 0) {
-+		/* set channel ready if the data has transferred */
-+		if (pmif_is_fsm_vldclr(arb))
-+			pmif_writel(arb, 1, inf_reg->ch_rdy);
-+		dev_err(&ctrl->dev, "failed to wait for SWINF_IDLE\n");
-+		return ret;
-+	}
-+
-+	/* Set the write data. */
-+	memcpy(&data, buf, len);
-+	pmif_writel(arb, data, inf_reg->wdata);
-+
-+	/* Send the command. */
-+	cmd = (opc << 30) | BIT(29) | (sid << 24) | ((len - 1) << 16) | addr;
-+	pmif_writel(arb, cmd, inf_reg->ch_send);
-+
-+	return 0;
-+}
-+
-+static const struct pmif_data mt6873_pmif_arb = {
-+	.regs = mt6873_regs,
-+	.spmimst_regs = mt6873_spmi_regs,
-+	.soc_chan = 2,
-+};
-+
-+static int mtk_spmi_probe(struct platform_device *pdev)
-+{
-+	struct pmif *arb;
-+	struct spmi_controller *ctrl;
-+	int err, i;
-+	u32 chan_offset;
-+
-+	ctrl = spmi_controller_alloc(&pdev->dev, sizeof(*arb));
-+	if (!ctrl)
-+		return -ENOMEM;
-+
-+	arb = spmi_controller_get_drvdata(ctrl);
-+	arb->data = device_get_match_data(&pdev->dev);
-+	if (!arb->data) {
-+		err = -EINVAL;
-+		dev_err(&pdev->dev, "Cannot get drv_data\n");
-+		goto err_put_ctrl;
-+	}
-+
-+	arb->base = devm_platform_ioremap_resource_byname(pdev, "pmif");
-+	if (IS_ERR(arb->base)) {
-+		err = PTR_ERR(arb->base);
-+		goto err_put_ctrl;
-+	}
-+
-+	arb->spmimst_base = devm_platform_ioremap_resource_byname(pdev, "spmimst");
-+	if (IS_ERR(arb->spmimst_base)) {
-+		err = PTR_ERR(arb->spmimst_base);
-+		goto err_put_ctrl;
-+	}
-+
-+	arb->nclks = ARRAY_SIZE(pmif_clock_names);
-+	for (i = 0; i < arb->nclks; i++)
-+		arb->clks[i].id = pmif_clock_names[i];
-+
-+	err = devm_clk_bulk_get(&pdev->dev, arb->nclks, arb->clks);
-+	if (err) {
-+		dev_err(&pdev->dev, "Failed to get clocks: %d\n", err);
-+		goto err_put_ctrl;
-+	}
-+
-+	err = clk_bulk_prepare_enable(arb->nclks, arb->clks);
-+	if (err) {
-+		dev_err(&pdev->dev, "Failed to enable clocks: %d\n", err);
-+		goto err_put_ctrl;
-+	}
-+
-+	ctrl->cmd = pmif_arb_cmd;
-+	ctrl->read_cmd = pmif_spmi_read_cmd;
-+	ctrl->write_cmd = pmif_spmi_write_cmd;
-+
-+	chan_offset = PMIF_CHAN_OFFSET * arb->data->soc_chan;
-+	arb->chan.ch_sta = PMIF_SWINF_0_STA + chan_offset;
-+	arb->chan.wdata = PMIF_SWINF_0_WDATA_31_0 + chan_offset;
-+	arb->chan.rdata = PMIF_SWINF_0_RDATA_31_0 + chan_offset;
-+	arb->chan.ch_send = PMIF_SWINF_0_ACC + chan_offset;
-+	arb->chan.ch_rdy = PMIF_SWINF_0_VLD_CLR + chan_offset;
-+
-+	platform_set_drvdata(pdev, ctrl);
-+
-+	err = spmi_controller_add(ctrl);
-+	if (err)
-+		goto err_domain_remove;
-+
-+	return 0;
-+
-+err_domain_remove:
-+	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
-+err_put_ctrl:
-+	spmi_controller_put(ctrl);
-+	return err;
-+}
-+
-+static int mtk_spmi_remove(struct platform_device *pdev)
-+{
-+	struct spmi_controller *ctrl = platform_get_drvdata(pdev);
-+	struct pmif *arb = spmi_controller_get_drvdata(ctrl);
-+
-+	clk_bulk_disable_unprepare(arb->nclks, arb->clks);
-+	spmi_controller_remove(ctrl);
-+	spmi_controller_put(ctrl);
-+	return 0;
-+}
-+
-+static const struct of_device_id mtk_spmi_match_table[] = {
-+	{
-+		.compatible = "mediatek,mt6873-spmi",
-+		.data = &mt6873_pmif_arb,
-+	}, {
-+		/* sentinel */
-+	},
-+};
-+MODULE_DEVICE_TABLE(of, mtk_spmi_match_table);
-+
-+static struct platform_driver mtk_spmi_driver = {
-+	.driver		= {
-+		.name	= "spmi-mtk",
-+		.of_match_table = of_match_ptr(mtk_spmi_match_table),
-+	},
-+	.probe		= mtk_spmi_probe,
-+	.remove		= mtk_spmi_remove,
-+};
-+module_platform_driver(mtk_spmi_driver);
-+
-+MODULE_AUTHOR("Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>");
-+MODULE_DESCRIPTION("MediaTek SPMI Driver");
-+MODULE_LICENSE("GPL");
--- 
-2.18.0
+https://lkml.org/lkml/2021/11/15/48
 
+Thanks,
+    Sergio Paracuellos
+
+> > >
+> > > When you have time, please, let me know your thoughts about this.
+> > >
+> > > Thanks in advance for your time.
+> > >
+> > > Best regards,
+> > >     Sergio Paracuellos
 
 _______________________________________________
 Linux-mediatek mailing list
