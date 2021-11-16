@@ -2,72 +2,73 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7A197C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 10:06:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DC2D2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 10:07:20 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 330A4613AD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 10:06:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 330A4613AD
+	by mail.kernel.org (Postfix) with ESMTPS id A5ED7619E3
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 10:07:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A5ED7619E3
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=armlinux.org.uk
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=0oDSYM8NYP5m/2fQ64MbJpCa3q4/QMbQutp7Sk0cGKU=; b=FwxgDf1xgRv71w
-	WQrZ8S14ZBjUTVjLqoRfusetCs7X0JaJ2xDvHCieQegQIVponEEK/ZPQKjx0cC334XyOvop89W9T7
-	WJd+GOi+jf1ZdeCFbmO3y91WYGr3LdlkdjOyfXfCbtLN2vMiD9vvFvgJZjgz65R9voDlgKLoZAulE
-	luUQrsQAXfpqV/EmMamDlxU6qBEWI0MaOXMSi9ht8XQ17KmDhPxT5LhEHZ69T/WcC95rgbdQfGi37
-	FKwmp0BS2QpoTrH5pKDnx9WB53qkmkCyaw8OwndE6aMZvDo5BPXsUrXTTCG8T5M8c7xoM1IMWaP1L
-	a6bMOutwNH7XogkuLshg==;
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cOEuFjGNE752obMEQYYvNJyVmdpFZEw/P3HTLTxTtO8=; b=SBEbdj8kNNzW05
+	edmr1I/FvSoL2mJS0dzjYmdd5JLecb6XNJYkxjB9IShq5gQ7lWwfRTyvUYLpdQodC+Ip4acgFS7Xu
+	++LQ1rzWp/vFTWUbL+R88HOhYOEtS7fnhMu0whBdBiGMh5i4TiEFq0hHyMCnujEzvG/4EHnrfxBRZ
+	/fqhsK/HSKF/drGA61HSupMbUQeQHD/O+qqBPEDvReBD41ggbYlYu4nBbY55J9Kr7tdLBAWwQbkru
+	xr01tUSqDG2+StMLnU0nw2IzCTrNZhDQjCVA75+2ySW+4+gyL7yGPiOX2pIGsUoWgsbmVogISb2yQ
+	0dnBD7ku1WFH329ptKeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmvMZ-0015a0-F2; Tue, 16 Nov 2021 10:06:51 +0000
+	id 1mmvMv-0015jV-Oh; Tue, 16 Nov 2021 10:07:13 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmvMJ-0015UQ-Cx; Tue, 16 Nov 2021 10:06:36 +0000
+ id 1mmvMV-0015Y2-0P; Tue, 16 Nov 2021 10:06:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
- Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=v4EyiamS3qEDk/bFSW7Mh8VEL5uiE8CqhMTbRBvandw=; b=DCE3MBVNXDN2bbtu+KNiKwPC6+
- j7wg1tXrVwTRno05bIbEVjz2zXeMcZPVJw84746Qsjw6u+AsSeAmrTfr+3XTx3Y3k4rnwK1+JPGSV
- ZlGfxh/CUTtSI1mORZdI8Q8C49gc5cI7PyVieANZS1K2ePy3kO7sQF5PqLyX5TgtQqr9X78T4B+j+
- 8eRtkuJMKEAfA0lkC3iLJEflSWJ4D5+ETAMyAR3HyRDW6YCjhZE4wSSwCBcmfMH3AP1b3HY6XIAM7
- ZajkwjXRkGqGb/RSv/NHLKgHhiW2AwuG8/wxU77s52ExrzBl9pcJdhbReX2qawBjggg68gI0aVqyb
- YLsHG+Hg==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55654)
+ d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+ In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=/xVCdcDW8Mbm2vM87DhKbJgb/YxbcKCCa5R3z5x+TQM=; b=A2CMIytkS9zbOYYtzLVOC6emci
+ r6ySneX9dY8Abwi8MHJ3ieDwErIvk9Cbhfrdcx2zy4jHiqj+wjDvk/UQjIv+P9jbBGu2iQJWkrKsU
+ 4iXpSTZeoaXUkfiMJnDdBq06CzPVD4Qz0PnhiVyOy3QwTmI5Kbp/1mcHeDtC5cJyEvDLC87l2V0I5
+ svX+dxpQsuQfkzRyz/TVurtPbUCbn7cOis4KyQXlZOV45j4vmWpxPY1le1mhba9Zm45B5uVIN9MN3
+ 8j9NyWQn20AC2QgvEqu87HZGr2JCpM13U9lqwb1pOZBbTgYLa897+0TH5ZCxfNcuj4oJOxq7WuEjw
+ iOf3gvmA==;
+Received: from e0022681537dd.dyn.armlinux.org.uk
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:39838 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1mmvMA-0000La-9V; Tue, 16 Nov 2021 10:06:26 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1mmvM7-0001uh-1l; Tue, 16 Nov 2021 10:06:23 +0000
-Date: Tue, 16 Nov 2021 10:06:23 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1mmvMR-0000Ln-Ve; Tue, 16 Nov 2021 10:06:43 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1mmvMR-0078bF-Hd; Tue, 16 Nov 2021 10:06:43 +0000
+In-Reply-To: <YZOCn1vMUAbhq3j0@shell.armlinux.org.uk>
+References: <YZOCn1vMUAbhq3j0@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 To: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  Sean Wang <sean.wang@mediatek.com>
 Cc: "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: [PATCH net-next 0/4] net: mtk_eth_soc: phylink validate
- implementation updates
-Message-ID: <YZOCn1vMUAbhq3j0@shell.armlinux.org.uk>
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next 1/4] net: mtk_eth_soc: populate supported_interfaces
+ member
 MIME-Version: 1.0
 Content-Disposition: inline
+Message-Id: <E1mmvMR-0078bF-Hd@rmk-PC.armlinux.org.uk>
+Date: Tue, 16 Nov 2021 10:06:43 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_020635_473769_DC875EDC 
-X-CRM114-Status: UNSURE (   6.07  )
+X-CRM114-CacheID: sfid-20211116_020647_085996_0C4DE99B 
+X-CRM114-Status: UNSURE (   8.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,18 +86,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Populate the phy interface mode bitmap for the Mediatek driver with
+interfaces modes supported by the MAC.
 
-This series converts mtk_eth_soc to fill in the supported_interfaces
-member of phylink_config, cleans up the validate() implementation, and
-then converts to phylink_generic_validate().
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 111 ++++++----------------------
- 1 file changed, 24 insertions(+), 87 deletions(-)
-
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index 75d67d1b5f6b..7f62298bc983 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -3009,6 +3009,26 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+ 
+ 	mac->phylink_config.dev = &eth->netdev[id]->dev;
+ 	mac->phylink_config.type = PHYLINK_NETDEV;
++	__set_bit(PHY_INTERFACE_MODE_MII,
++		  mac->phylink_config.supported_interfaces);
++	__set_bit(PHY_INTERFACE_MODE_GMII,
++		  mac->phylink_config.supported_interfaces);
++
++	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_RGMII))
++		phy_interface_set_rgmii(mac->phylink_config.supported_interfaces);
++
++	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_TRGMII) && !mac->id)
++		__set_bit(PHY_INTERFACE_MODE_TRGMII,
++			  mac->phylink_config.supported_interfaces);
++
++	if (MTK_HAS_CAPS(mac->hw->soc->caps, MTK_SGMII)) {
++		__set_bit(PHY_INTERFACE_MODE_SGMII,
++			  mac->phylink_config.supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_1000BASEX,
++			  mac->phylink_config.supported_interfaces);
++		__set_bit(PHY_INTERFACE_MODE_2500BASEX,
++			  mac->phylink_config.supported_interfaces);
++	}
+ 
+ 	phylink = phylink_create(&mac->phylink_config,
+ 				 of_fwnode_handle(mac->of_node),
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
