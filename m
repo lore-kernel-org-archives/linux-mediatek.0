@@ -1,80 +1,72 @@
-Return-Path: <SRS0=W1mV=QC=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 28210C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 23:37:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 33B8EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 01:40:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E22CF61A40
-	for <linux-mediatek@archiver.kernel.org>; Mon, 15 Nov 2021 23:37:07 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E22CF61A40
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id E7A0361A0D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 01:40:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E7A0361A0D
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3/MvKTNx911jBzMd1wPyKOUwgv2aLlXZfheIyjzJeQ8=; b=cIi+aBaSBn6SMZ
-	tasT6kR/vnrMTXRgtWchIp0WL29QgMd8ejif4HRIqLk5dPXiJnHyEc5qlkHkoAjTYWTjf61d3pvuT
-	dVi0Kzn+4u5yOeKtIqKlurkBNX0Jk645xFSMncXvg7xkHTtcQdCnB6S/9EIWt+59GsVzMinnjJ7lC
-	uZqc9ptDAIW961y92imJy3wYsshf+sM34XptTrUrtcsB5DSKHjvdA3y0DUuykWUY2FuRVP5tHbrpZ
-	JzmIDy4/7dFtaAJTKqutc5wdn/xpF/93DIES5tUzYQQjkMsMOqdUThD9OreTiKkqpMOBplLHkykWy
-	itxo5DMAwreHVogCbJPw==;
+	List-Owner; bh=vqqMFOq+dI6q81dXruVD7BFlFyBd6JddVU9MM+Woigk=; b=WNNJLsAIECYH/Q
+	jFVDAA/D8+Vi8s5GGzpRMAVrBcovwDgLZLK3TktkN+lPX3c0esy7uK8VoW9qRjLcfCRK5iYx+0gH9
+	Zv1kyJJCkTbuqkspY+fuEUXkk0FGJrFqHtflCSZXeeSoBgJPsehX2c76kVu0FyEpYLXQw/qTclNZR
+	qR7yd9eTTTHDYmjEM0ECG95Ha6r2/l0utb5HLul9ilXRHtY09m2tyf1ynEyrIZNuhjEI6zMBTdSOC
+	qBKxrl283q5FYIttCsLcvk2C7AkdCxIkCrCdoOkuCMG5xGi+aaHpLcDV0xHsH5qiae8aWMrb8yJVj
+	wH+DD9NVETXax7pR1B9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmlX3-00HJjg-Bk; Mon, 15 Nov 2021 23:37:01 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mmnSG-00HZt4-Jh; Tue, 16 Nov 2021 01:40:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmlWp-00HJe1-9A; Mon, 15 Nov 2021 23:36:49 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id E7CA36326D;
- Mon, 15 Nov 2021 23:36:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637019406;
- bh=cctpZu5Y6zldBTQH9BYecYmoFJAIKu/tEYPP+N2ifkg=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=BUm+Or9GZUEVDVDQzn5Avd+95mdVhm4Ue+D7E4a+p7ajRCd5/l6Ays9aEhEEd8+Gg
- thA2uLAZJD9ZVWzlqZvL/WFoGabVcwiynnUswgq40HjdebxPBO+XwPoQhDa6wey8rJ
- zrrr/oLf7UjiMhWh7+3f0uSpgbnTofAjQLfpck/naZHMhtCvwsfMmhDMEB+e7srKqO
- k0Rdc5GNWGFGIQPC4ZJ9oh++gp9Rq/XyTpzNfVynSZBEU/5rJxDQLuBGyx2yr/8Utv
- fnG6HhVuGI2AMXi7ZdPmPLwMlw8uv5D+NBZxqc7AeXUMy9EO1MVcPDJV7fnDwCnHbD
- UtbAx+QWfJyWQ==
-Received: by mail-ed1-f46.google.com with SMTP id y13so4233668edd.13;
- Mon, 15 Nov 2021 15:36:46 -0800 (PST)
-X-Gm-Message-State: AOAM532HyN11qACPwsw1bfwk1S+IZfwhb6jofdnb7Z0KrN1zwCD58+y1
- DHbqWznu3C7B9sTZT1JvOuCY9zGdER61sKASYQ==
-X-Google-Smtp-Source: ABdhPJxBF8uXp/soiWJMvx1BBMQh38TTql9xsdOjCMlzFG/WKZ34mL89epAie4tWiEUIrY4Yg2UkZ8zuSWFa0MXJF2Y=
-X-Received: by 2002:aa7:c415:: with SMTP id j21mr3624586edq.357.1637019405373; 
- Mon, 15 Nov 2021 15:36:45 -0800 (PST)
+ id 1mmnS2-00HZpp-2y; Tue, 16 Nov 2021 01:40:02 +0000
+X-UUID: ce98be07c4994a3b935444f5ba1a2397-20211115
+X-UUID: ce98be07c4994a3b935444f5ba1a2397-20211115
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <sam.shih@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1158665244; Mon, 15 Nov 2021 18:39:52 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 15 Nov 2021 17:39:50 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 16 Nov 2021 09:39:49 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 16 Nov 2021 09:39:49 +0800
+Message-ID: <d299493d8fec0f34f527942f2cdedf15f2136c9a.camel@mediatek.com>
+Subject: Re: [PATCH v7 2/3] arm64: dts: mediatek: add basic mt7986a support
+From: Sam Shih <sam.shih@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, "Enric Balletbo i
+ Serra" <enric.balletbo@collabora.com>, Fabien Parent <fparent@baylibre.com>,
+ Seiya Wang <seiya.wang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
+Date: Tue, 16 Nov 2021 09:39:49 +0800
+In-Reply-To: <d411aec5-efa8-c71d-8179-54ff52c17039@gmail.com>
+References: <20211018114009.13350-1-sam.shih@mediatek.com>
+ <20211018114009.13350-3-sam.shih@mediatek.com>
+ <d411aec5-efa8-c71d-8179-54ff52c17039@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20210930155222.5861-1-yongqiang.niu@mediatek.com>
- <20210930155222.5861-3-yongqiang.niu@mediatek.com>
-In-Reply-To: <20210930155222.5861-3-yongqiang.niu@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 16 Nov 2021 07:36:34 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_9R+=VPXMLEo0QTuzJSePyVNi6hmHUoCe8ctbKYKLDU1g@mail.gmail.com>
-Message-ID: <CAAOTY_9R+=VPXMLEo0QTuzJSePyVNi6hmHUoCe8ctbKYKLDU1g@mail.gmail.com>
-Subject: Re: [PATCH v10, 2/5] drm/mediatek: add component POSTMASK
-To: Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- Jassi Brar <jassisinghbrar@gmail.com>, Fabien Parent <fparent@baylibre.com>, 
- Dennis YC Hsieh <dennis-yc.hsieh@mediatek.com>,
- DTML <devicetree@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- Project_Global_Chrome_Upstream_Group@mediatek.com, 
- Hsin-Yi Wang <hsinyi@chromium.org>, CK Hu <ck.hu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211115_153647_379778_75122272 
-X-CRM114-Status: GOOD (  18.04  )
+X-CRM114-CacheID: sfid-20211115_173958_180833_735A6528 
+X-CRM114-Status: GOOD (  36.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,168 +78,315 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIFlvbmdxaWFuZzoKCllvbmdxaWFuZyBOaXUgPHlvbmdxaWFuZy5uaXVAbWVkaWF0ZWsuY29t
-PiDmlrwgMjAyMeW5tDnmnIgzMOaXpSDpgLHlm5sg5LiL5Y2IMTE6NTLlr6vpgZPvvJoKPgo+IFRo
-aXMgcGF0Y2ggYWRkIGNvbXBvbmVudCBQT1NUTUFTSy4KCkFwcGxpZWQgdG8gbWVkaWF0ZWstZHJt
-LW5leHQgWzFdLCB0aGFua3MuCgpbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xp
-bnV4L2tlcm5lbC9naXQvY2h1bmt1YW5nLmh1L2xpbnV4LmdpdC9sb2cvP2g9bWVkaWF0ZWstZHJt
-LW5leHQKClJlZ2FyZHMsCkNodW4tS3VhbmcuCgo+Cj4gU2lnbmVkLW9mZi1ieTogWW9uZ3FpYW5n
-IE5pdSA8eW9uZ3FpYW5nLm5pdUBtZWRpYXRlay5jb20+Cj4gU2lnbmVkLW9mZi1ieTogSHNpbi1Z
-aSBXYW5nIDxoc2lueWlAY2hyb21pdW0ub3JnPgo+IFJldmlld2VkLWJ5OiBDSyBIdSA8Y2suaHVA
-bWVkaWF0ZWsuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9k
-ZHBfY29tcC5jIHwgMTAyICsrKysrKysrKysrKysrLS0tLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmggfCAgIDEgKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDcz
-IGluc2VydGlvbnMoKyksIDMwIGRlbGV0aW9ucygtKQo+Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVk
-aWF0ZWsvbXRrX2RybV9kZHBfY29tcC5jCj4gaW5kZXggNGEyYWJjZjNlNWY5Li44OTE3MGFkODI1
-ZmQgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2Nv
-bXAuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmMK
-PiBAQCAtNjIsNiArNjIsMTIgQEAKPiAgI2RlZmluZSBESVRIRVJfQUREX0xTSElGVF9HKHgpICAg
-ICAgICAgICAgICAgICAoKCh4KSAmIDB4NykgPDwgNCkKPiAgI2RlZmluZSBESVRIRVJfQUREX1JT
-SElGVF9HKHgpICAgICAgICAgICAgICAgICAoKCh4KSAmIDB4NykgPDwgMCkKPgo+ICsjZGVmaW5l
-IERJU1BfUE9TVE1BU0tfRU4gICAgICAgICAgICAgICAgICAgICAgIDB4MDAwMAo+ICsjZGVmaW5l
-IFBPU1RNQVNLX0VOICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQklUKDApCj4g
-KyNkZWZpbmUgRElTUF9QT1NUTUFTS19DRkcgICAgICAgICAgICAgICAgICAgICAgMHgwMDIwCj4g
-KyNkZWZpbmUgUE9TVE1BU0tfUkVMQVlfTU9ERSAgICAgICAgICAgICAgICAgICAgICAgICAgICBC
-SVQoMCkKPiArI2RlZmluZSBESVNQX1BPU1RNQVNLX1NJWkUgICAgICAgICAgICAgICAgICAgICAw
-eDAwMzAKPiArCj4gIHN0cnVjdCBtdGtfZGRwX2NvbXBfZGV2IHsKPiAgICAgICAgIHN0cnVjdCBj
-bGsgKmNsazsKPiAgICAgICAgIHZvaWQgX19pb21lbSAqcmVnczsKPiBAQCAtMjE0LDYgKzIyMCwz
-MiBAQCBzdGF0aWMgdm9pZCBtdGtfZGl0aGVyX3N0b3Aoc3RydWN0IGRldmljZSAqZGV2KQo+ICAg
-ICAgICAgd3JpdGVsX3JlbGF4ZWQoMHgwLCBwcml2LT5yZWdzICsgRElTUF9ESVRIRVJfRU4pOwo+
-ICB9Cj4KPiArc3RhdGljIHZvaWQgbXRrX3Bvc3RtYXNrX2NvbmZpZyhzdHJ1Y3QgZGV2aWNlICpk
-ZXYsIHVuc2lnbmVkIGludCB3LAo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdW5z
-aWduZWQgaW50IGgsIHVuc2lnbmVkIGludCB2cmVmcmVzaCwKPiArICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIHVuc2lnbmVkIGludCBicGMsIHN0cnVjdCBjbWRxX3BrdCAqY21kcV9wa3Qp
-Cj4gK3sKPiArICAgICAgIHN0cnVjdCBtdGtfZGRwX2NvbXBfZGV2ICpwcml2ID0gZGV2X2dldF9k
-cnZkYXRhKGRldik7Cj4gKwo+ICsgICAgICAgbXRrX2RkcF93cml0ZShjbWRxX3BrdCwgdyA8PCAx
-NiB8IGgsICZwcml2LT5jbWRxX3JlZywgcHJpdi0+cmVncywKPiArICAgICAgICAgICAgICAgICAg
-ICAgRElTUF9QT1NUTUFTS19TSVpFKTsKPiArICAgICAgIG10a19kZHBfd3JpdGUoY21kcV9wa3Qs
-IFBPU1RNQVNLX1JFTEFZX01PREUsICZwcml2LT5jbWRxX3JlZywKPiArICAgICAgICAgICAgICAg
-ICAgICAgcHJpdi0+cmVncywgRElTUF9QT1NUTUFTS19DRkcpOwo+ICt9Cj4gKwo+ICtzdGF0aWMg
-dm9pZCBtdGtfcG9zdG1hc2tfc3RhcnQoc3RydWN0IGRldmljZSAqZGV2KQo+ICt7Cj4gKyAgICAg
-ICBzdHJ1Y3QgbXRrX2RkcF9jb21wX2RldiAqcHJpdiA9IGRldl9nZXRfZHJ2ZGF0YShkZXYpOwo+
-ICsKPiArICAgICAgIHdyaXRlbChQT1NUTUFTS19FTiwgcHJpdi0+cmVncyArIERJU1BfUE9TVE1B
-U0tfRU4pOwo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBtdGtfcG9zdG1hc2tfc3RvcChzdHJ1Y3Qg
-ZGV2aWNlICpkZXYpCj4gK3sKPiArICAgICAgIHN0cnVjdCBtdGtfZGRwX2NvbXBfZGV2ICpwcml2
-ID0gZGV2X2dldF9kcnZkYXRhKGRldik7Cj4gKwo+ICsgICAgICAgd3JpdGVsX3JlbGF4ZWQoMHgw
-LCBwcml2LT5yZWdzICsgRElTUF9QT1NUTUFTS19FTik7Cj4gK30KPiArCj4gIHN0YXRpYyBjb25z
-dCBzdHJ1Y3QgbXRrX2RkcF9jb21wX2Z1bmNzIGRkcF9hYWwgPSB7Cj4gICAgICAgICAuY2xrX2Vu
-YWJsZSA9IG10a19hYWxfY2xrX2VuYWJsZSwKPiAgICAgICAgIC5jbGtfZGlzYWJsZSA9IG10a19h
-YWxfY2xrX2Rpc2FibGUsCj4gQEAgLTI4OSw2ICszMjEsMTQgQEAgc3RhdGljIGNvbnN0IHN0cnVj
-dCBtdGtfZGRwX2NvbXBfZnVuY3MgZGRwX292bCA9IHsKPiAgICAgICAgIC5iZ2Nscl9pbl9vZmYg
-PSBtdGtfb3ZsX2JnY2xyX2luX29mZiwKPiAgfTsKPgo+ICtzdGF0aWMgY29uc3Qgc3RydWN0IG10
-a19kZHBfY29tcF9mdW5jcyBkZHBfcG9zdG1hc2sgPSB7Cj4gKyAgICAgICAuY2xrX2VuYWJsZSA9
-IG10a19kZHBfY2xrX2VuYWJsZSwKPiArICAgICAgIC5jbGtfZGlzYWJsZSA9IG10a19kZHBfY2xr
-X2Rpc2FibGUsCj4gKyAgICAgICAuY29uZmlnID0gbXRrX3Bvc3RtYXNrX2NvbmZpZywKPiArICAg
-ICAgIC5zdGFydCA9IG10a19wb3N0bWFza19zdGFydCwKPiArICAgICAgIC5zdG9wID0gbXRrX3Bv
-c3RtYXNrX3N0b3AsCj4gK307Cj4gKwo+ICBzdGF0aWMgY29uc3Qgc3RydWN0IG10a19kZHBfY29t
-cF9mdW5jcyBkZHBfcmRtYSA9IHsKPiAgICAgICAgIC5jbGtfZW5hYmxlID0gbXRrX3JkbWFfY2xr
-X2VuYWJsZSwKPiAgICAgICAgIC5jbGtfZGlzYWJsZSA9IG10a19yZG1hX2Nsa19kaXNhYmxlLAo+
-IEBAIC0zMjQsNiArMzY0LDcgQEAgc3RhdGljIGNvbnN0IGNoYXIgKiBjb25zdCBtdGtfZGRwX2Nv
-bXBfc3RlbVtNVEtfRERQX0NPTVBfVFlQRV9NQVhdID0gewo+ICAgICAgICAgW01US19ESVNQX01V
-VEVYXSA9ICJtdXRleCIsCj4gICAgICAgICBbTVRLX0RJU1BfT0RdID0gIm9kIiwKPiAgICAgICAg
-IFtNVEtfRElTUF9CTFNdID0gImJscyIsCj4gKyAgICAgICBbTVRLX0RJU1BfUE9TVE1BU0tdID0g
-InBvc3RtYXNrIiwKPiAgfTsKPgo+ICBzdHJ1Y3QgbXRrX2RkcF9jb21wX21hdGNoIHsKPiBAQCAt
-MzMzLDM2ICszNzQsMzcgQEAgc3RydWN0IG10a19kZHBfY29tcF9tYXRjaCB7Cj4gIH07Cj4KPiAg
-c3RhdGljIGNvbnN0IHN0cnVjdCBtdGtfZGRwX2NvbXBfbWF0Y2ggbXRrX2RkcF9tYXRjaGVzW0RE
-UF9DT01QT05FTlRfSURfTUFYXSA9IHsKPiAtICAgICAgIFtERFBfQ09NUE9ORU5UX0FBTDBdICAg
-ID0geyBNVEtfRElTUF9BQUwsICAgICAgIDAsICZkZHBfYWFsIH0sCj4gLSAgICAgICBbRERQX0NP
-TVBPTkVOVF9BQUwxXSAgICA9IHsgTVRLX0RJU1BfQUFMLCAgICAgICAxLCAmZGRwX2FhbCB9LAo+
-IC0gICAgICAgW0REUF9DT01QT05FTlRfQkxTXSAgICAgPSB7IE1US19ESVNQX0JMUywgICAgICAg
-MCwgTlVMTCB9LAo+IC0gICAgICAgW0REUF9DT01QT05FTlRfQ0NPUlJdICAgPSB7IE1US19ESVNQ
-X0NDT1JSLCAgICAgMCwgJmRkcF9jY29yciB9LAo+IC0gICAgICAgW0REUF9DT01QT05FTlRfQ09M
-T1IwXSAgPSB7IE1US19ESVNQX0NPTE9SLCAgICAgMCwgJmRkcF9jb2xvciB9LAo+IC0gICAgICAg
-W0REUF9DT01QT05FTlRfQ09MT1IxXSAgPSB7IE1US19ESVNQX0NPTE9SLCAgICAgMSwgJmRkcF9j
-b2xvciB9LAo+IC0gICAgICAgW0REUF9DT01QT05FTlRfRElUSEVSXSAgPSB7IE1US19ESVNQX0RJ
-VEhFUiwgICAgMCwgJmRkcF9kaXRoZXIgfSwKPiAtICAgICAgIFtERFBfQ09NUE9ORU5UX0RQSTBd
-ICAgID0geyBNVEtfRFBJLCAgICAgICAgICAgIDAsICZkZHBfZHBpIH0sCj4gLSAgICAgICBbRERQ
-X0NPTVBPTkVOVF9EUEkxXSAgICA9IHsgTVRLX0RQSSwgICAgICAgICAgICAxLCAmZGRwX2RwaSB9
-LAo+IC0gICAgICAgW0REUF9DT01QT05FTlRfRFNJMF0gICAgPSB7IE1US19EU0ksICAgICAgICAg
-ICAgMCwgJmRkcF9kc2kgfSwKPiAtICAgICAgIFtERFBfQ09NUE9ORU5UX0RTSTFdICAgID0geyBN
-VEtfRFNJLCAgICAgICAgICAgIDEsICZkZHBfZHNpIH0sCj4gLSAgICAgICBbRERQX0NPTVBPTkVO
-VF9EU0kyXSAgICA9IHsgTVRLX0RTSSwgICAgICAgICAgICAyLCAmZGRwX2RzaSB9LAo+IC0gICAg
-ICAgW0REUF9DT01QT05FTlRfRFNJM10gICAgPSB7IE1US19EU0ksICAgICAgICAgICAgMywgJmRk
-cF9kc2kgfSwKPiAtICAgICAgIFtERFBfQ09NUE9ORU5UX0dBTU1BXSAgID0geyBNVEtfRElTUF9H
-QU1NQSwgICAgIDAsICZkZHBfZ2FtbWEgfSwKPiAtICAgICAgIFtERFBfQ09NUE9ORU5UX09EMF0g
-ICAgID0geyBNVEtfRElTUF9PRCwgICAgICAgIDAsICZkZHBfb2QgfSwKPiAtICAgICAgIFtERFBf
-Q09NUE9ORU5UX09EMV0gICAgID0geyBNVEtfRElTUF9PRCwgICAgICAgIDEsICZkZHBfb2QgfSwK
-PiAtICAgICAgIFtERFBfQ09NUE9ORU5UX09WTDBdICAgID0geyBNVEtfRElTUF9PVkwsICAgICAg
-IDAsICZkZHBfb3ZsIH0sCj4gLSAgICAgICBbRERQX0NPTVBPTkVOVF9PVkwxXSAgICA9IHsgTVRL
-X0RJU1BfT1ZMLCAgICAgICAxLCAmZGRwX292bCB9LAo+IC0gICAgICAgW0REUF9DT01QT05FTlRf
-T1ZMXzJMMF0gPSB7IE1US19ESVNQX09WTF8yTCwgICAgMCwgJmRkcF9vdmwgfSwKPiAtICAgICAg
-IFtERFBfQ09NUE9ORU5UX09WTF8yTDFdID0geyBNVEtfRElTUF9PVkxfMkwsICAgIDEsICZkZHBf
-b3ZsIH0sCj4gLSAgICAgICBbRERQX0NPTVBPTkVOVF9PVkxfMkwyXSA9IHsgTVRLX0RJU1BfT1ZM
-XzJMLCAgICAyLCAmZGRwX292bCB9LAo+IC0gICAgICAgW0REUF9DT01QT05FTlRfUFdNMF0gICAg
-PSB7IE1US19ESVNQX1BXTSwgICAgICAgMCwgTlVMTCB9LAo+IC0gICAgICAgW0REUF9DT01QT05F
-TlRfUFdNMV0gICAgPSB7IE1US19ESVNQX1BXTSwgICAgICAgMSwgTlVMTCB9LAo+IC0gICAgICAg
-W0REUF9DT01QT05FTlRfUFdNMl0gICAgPSB7IE1US19ESVNQX1BXTSwgICAgICAgMiwgTlVMTCB9
-LAo+IC0gICAgICAgW0REUF9DT01QT05FTlRfUkRNQTBdICAgPSB7IE1US19ESVNQX1JETUEsICAg
-ICAgMCwgJmRkcF9yZG1hIH0sCj4gLSAgICAgICBbRERQX0NPTVBPTkVOVF9SRE1BMV0gICA9IHsg
-TVRLX0RJU1BfUkRNQSwgICAgICAxLCAmZGRwX3JkbWEgfSwKPiAtICAgICAgIFtERFBfQ09NUE9O
-RU5UX1JETUEyXSAgID0geyBNVEtfRElTUF9SRE1BLCAgICAgIDIsICZkZHBfcmRtYSB9LAo+IC0g
-ICAgICAgW0REUF9DT01QT05FTlRfVUZPRV0gICAgPSB7IE1US19ESVNQX1VGT0UsICAgICAgMCwg
-JmRkcF91Zm9lIH0sCj4gLSAgICAgICBbRERQX0NPTVBPTkVOVF9XRE1BMF0gICA9IHsgTVRLX0RJ
-U1BfV0RNQSwgICAgICAwLCBOVUxMIH0sCj4gLSAgICAgICBbRERQX0NPTVBPTkVOVF9XRE1BMV0g
-ICA9IHsgTVRLX0RJU1BfV0RNQSwgICAgICAxLCBOVUxMIH0sCj4gKyAgICAgICBbRERQX0NPTVBP
-TkVOVF9BQUwwXSAgICAgICAgICAgID0geyBNVEtfRElTUF9BQUwsICAgICAgIDAsICZkZHBfYWFs
-IH0sCj4gKyAgICAgICBbRERQX0NPTVBPTkVOVF9BQUwxXSAgICAgICAgICAgID0geyBNVEtfRElT
-UF9BQUwsICAgICAgIDEsICZkZHBfYWFsIH0sCj4gKyAgICAgICBbRERQX0NPTVBPTkVOVF9CTFNd
-ICAgICAgICAgICAgID0geyBNVEtfRElTUF9CTFMsICAgICAgIDAsIE5VTEwgfSwKPiArICAgICAg
-IFtERFBfQ09NUE9ORU5UX0NDT1JSXSAgICAgICAgICAgPSB7IE1US19ESVNQX0NDT1JSLCAgICAg
-MCwgJmRkcF9jY29yciB9LAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfQ09MT1IwXSAgICAgICAg
-ICA9IHsgTVRLX0RJU1BfQ09MT1IsICAgICAwLCAmZGRwX2NvbG9yIH0sCj4gKyAgICAgICBbRERQ
-X0NPTVBPTkVOVF9DT0xPUjFdICAgICAgICAgID0geyBNVEtfRElTUF9DT0xPUiwgICAgIDEsICZk
-ZHBfY29sb3IgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX0RJVEhFUl0gICAgICAgICAgPSB7
-IE1US19ESVNQX0RJVEhFUiwgICAgMCwgJmRkcF9kaXRoZXIgfSwKPiArICAgICAgIFtERFBfQ09N
-UE9ORU5UX0RQSTBdICAgICAgICAgICAgPSB7IE1US19EUEksICAgICAgICAgICAgMCwgJmRkcF9k
-cGkgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX0RQSTFdICAgICAgICAgICAgPSB7IE1US19E
-UEksICAgICAgICAgICAgMSwgJmRkcF9kcGkgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX0RT
-STBdICAgICAgICAgICAgPSB7IE1US19EU0ksICAgICAgICAgICAgMCwgJmRkcF9kc2kgfSwKPiAr
-ICAgICAgIFtERFBfQ09NUE9ORU5UX0RTSTFdICAgICAgICAgICAgPSB7IE1US19EU0ksICAgICAg
-ICAgICAgMSwgJmRkcF9kc2kgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX0RTSTJdICAgICAg
-ICAgICAgPSB7IE1US19EU0ksICAgICAgICAgICAgMiwgJmRkcF9kc2kgfSwKPiArICAgICAgIFtE
-RFBfQ09NUE9ORU5UX0RTSTNdICAgICAgICAgICAgPSB7IE1US19EU0ksICAgICAgICAgICAgMywg
-JmRkcF9kc2kgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX0dBTU1BXSAgICAgICAgICAgPSB7
-IE1US19ESVNQX0dBTU1BLCAgICAgMCwgJmRkcF9nYW1tYSB9LAo+ICsgICAgICAgW0REUF9DT01Q
-T05FTlRfT0QwXSAgICAgICAgICAgICA9IHsgTVRLX0RJU1BfT0QsICAgICAgICAwLCAmZGRwX29k
-IH0sCj4gKyAgICAgICBbRERQX0NPTVBPTkVOVF9PRDFdICAgICAgICAgICAgID0geyBNVEtfRElT
-UF9PRCwgICAgICAgIDEsICZkZHBfb2QgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX09WTDBd
-ICAgICAgICAgICAgPSB7IE1US19ESVNQX09WTCwgICAgICAgMCwgJmRkcF9vdmwgfSwKPiArICAg
-ICAgIFtERFBfQ09NUE9ORU5UX09WTDFdICAgICAgICAgICAgPSB7IE1US19ESVNQX09WTCwgICAg
-ICAgMSwgJmRkcF9vdmwgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX09WTF8yTDBdICAgICAg
-ICAgPSB7IE1US19ESVNQX09WTF8yTCwgICAgMCwgJmRkcF9vdmwgfSwKPiArICAgICAgIFtERFBf
-Q09NUE9ORU5UX09WTF8yTDFdICAgICAgICAgPSB7IE1US19ESVNQX09WTF8yTCwgICAgMSwgJmRk
-cF9vdmwgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5UX09WTF8yTDJdICAgICAgICAgPSB7IE1U
-S19ESVNQX09WTF8yTCwgICAgMiwgJmRkcF9vdmwgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5U
-X1BPU1RNQVNLMF0gICAgICAgPSB7IE1US19ESVNQX1BPU1RNQVNLLCAgMCwgJmRkcF9wb3N0bWFz
-ayB9LAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfUFdNMF0gICAgICAgICAgICA9IHsgTVRLX0RJ
-U1BfUFdNLCAgICAgICAwLCBOVUxMIH0sCj4gKyAgICAgICBbRERQX0NPTVBPTkVOVF9QV00xXSAg
-ICAgICAgICAgID0geyBNVEtfRElTUF9QV00sICAgICAgIDEsIE5VTEwgfSwKPiArICAgICAgIFtE
-RFBfQ09NUE9ORU5UX1BXTTJdICAgICAgICAgICAgPSB7IE1US19ESVNQX1BXTSwgICAgICAgMiwg
-TlVMTCB9LAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfUkRNQTBdICAgICAgICAgICA9IHsgTVRL
-X0RJU1BfUkRNQSwgICAgICAwLCAmZGRwX3JkbWEgfSwKPiArICAgICAgIFtERFBfQ09NUE9ORU5U
-X1JETUExXSAgICAgICAgICAgPSB7IE1US19ESVNQX1JETUEsICAgICAgMSwgJmRkcF9yZG1hIH0s
-Cj4gKyAgICAgICBbRERQX0NPTVBPTkVOVF9SRE1BMl0gICAgICAgICAgID0geyBNVEtfRElTUF9S
-RE1BLCAgICAgIDIsICZkZHBfcmRtYSB9LAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfVUZPRV0g
-ICAgICAgICAgICA9IHsgTVRLX0RJU1BfVUZPRSwgICAgICAwLCAmZGRwX3Vmb2UgfSwKPiArICAg
-ICAgIFtERFBfQ09NUE9ORU5UX1dETUEwXSAgICAgICAgICAgPSB7IE1US19ESVNQX1dETUEsICAg
-ICAgMCwgTlVMTCB9LAo+ICsgICAgICAgW0REUF9DT01QT05FTlRfV0RNQTFdICAgICAgICAgICA9
-IHsgTVRLX0RJU1BfV0RNQSwgICAgICAxLCBOVUxMIH0sCj4gIH07Cj4KPiAgc3RhdGljIGJvb2wg
-bXRrX2RybV9maW5kX2NvbXBfaW5fZGRwKHN0cnVjdCBkZXZpY2UgKmRldiwKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fZGRwX2NvbXAuaCBiL2RyaXZlcnMv
-Z3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmgKPiBpbmRleCBiYjkxNGQ5NzZjZjUu
-LmNkMWRlYzZiNGNkZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRr
-X2RybV9kZHBfY29tcC5oCj4gKysrIGIvZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1f
-ZGRwX2NvbXAuaAo+IEBAIC0zMCw2ICszMCw3IEBAIGVudW0gbXRrX2RkcF9jb21wX3R5cGUgewo+
-ICAgICAgICAgTVRLX0RJU1BfVUZPRSwKPiAgICAgICAgIE1US19EU0ksCj4gICAgICAgICBNVEtf
-RFBJLAo+ICsgICAgICAgTVRLX0RJU1BfUE9TVE1BU0ssCj4gICAgICAgICBNVEtfRElTUF9QV00s
-Cj4gICAgICAgICBNVEtfRElTUF9NVVRFWCwKPiAgICAgICAgIE1US19ESVNQX09ELAo+IC0tCj4g
-Mi4yNS4xCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-CkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRl
-YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
-bWVkaWF0ZWsK
+Hi,
+
+On Mon, 2021-11-15 at 17:27 +0100, Matthias Brugger wrote:
+> Hi,
+> 
+> On 18/10/2021 13:40, Sam Shih wrote:
+> > Add basic chip support for Mediatek mt7986a, include
+> > basic uart nodes, rng node and watchdog node.
+> > 
+> > Add cpu node, timer node, gic node, psci and reserved-memory node
+> > for ARM Trusted Firmware.
+> > 
+> 
+> What is the exact difference between mt7986a and mt7986b? Right now,
+> it's only 
+> the compatible, for that it makes no sense to split them.
+> 
+
+The difference between mt7986a and mt7986b is pinout which described
+in our pinctrl patch series 
+https://lore.kernel.org/all/20211022124036.5291-3-sam.shih@mediatek.com/
+
+You are right, in this "basic SoC support" patch series, only show
+compatible differences
+
+> It would be good to see what the exact differences are, so that we
+> can see if it 
+> makes sense to have one of the alternatives:
+> 1) use a common mt7986.dtsi which get included by mt7986[a,b].dtsi
+> 2) Use on mt7986.dtsi and only add one mt7986a.dtsi or mt7986b.dtsi
+> which has 
+> add-ons.
+> 
+
+In this case, can we use solution (1) to create a generic mt7986.dtsi
+in this patch series, and add mt7986[a,b].dtsi to the dts part of the
+pinctrl patch series to separate the difference nodes?
+
+> > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> > 
+> > ---
+> > v7: added memory node back to dts
+> > v6: removed clock and pinctrl node, to separate basic part into a
+> > single
+> >      patch series
+> > 
+> > Original thread:
+> > 
+https://urldefense.com/v3/__https://lore.kernel.org/all/20211004124155.1404-1-sam.shih@mediatek.com/__;!!CTRNKA9wMg0ARbw!xCEW0lwTKx4k272sWASoi90y_yRyQdAx0oNJC-jSAIWnIEkprJD-gAc1ugCvo0ex$
+> >  
+> > 
+> > v5: follow reviewr's comment: removed clock freqency node in timer
+> > due to
+> >      we have set CNTFRQ_EL0 in ATF firmware, and also corrected
+> > GICD range
+> > v4: added missing gic register bases, and fixed range of GICR
+> > v3: used the stdout-path instead of console=ttyS0
+> > v2: modified clock and uart node due to clock driver updated
+> > ---
+> >   arch/arm64/boot/dts/mediatek/Makefile        |   1 +
+> >   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts |  38 +++++
+> >   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 149
+> > +++++++++++++++++++
+> >   3 files changed, 188 insertions(+)
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> >   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/Makefile
+> > b/arch/arm64/boot/dts/mediatek/Makefile
+> > index 4f68ebed2e31..e6c3a73b9e4a 100644
+> > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > @@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+> > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
+> >   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > new file mode 100644
+> > index 000000000000..ca074cf8e578
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > @@ -0,0 +1,38 @@
+> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > +/*
+> > + * Copyright (C) 2021 MediaTek Inc.
+> > + * Author: Sam.Shih <sam.shih@mediatek.com>
+> > + */
+> > +
+> > +/dts-v1/;
+> > +#include "mt7986a.dtsi"
+> > +
+> > +/ {
+> > +	model = "MediaTek MT7986a RFB";
+> > +	compatible = "mediatek,mt7986a-rfb";
+> > +
+> > +	aliases {
+> > +		serial0 = &uart0;
+> > +	};
+> > +
+> > +	chosen {
+> > +		stdout-path = "serial0:115200n8";
+> > +		bootargs = "earlycon=uart8250,mmio32,0x11002000
+> > swiotlb=512";
+> 
+> We normally don't add earlycon parameter to the normal bootargs, as
+> it's only 
+> for debugging. Also what do we need the swiotlb? Are there any
+> limitation in the 
+> HW that makes us need it?
+> 
+
+Thank you for your suggestion, as far as I know, it should not have
+hardware limitations. This bootargs is just inherent from mt7622-
+rfb.dts, I will delete it and test again on our development board.
+
+> Regards,
+> Matthias
+> 
+> > +	};
+> > +
+> > +	memory {
+> > +		reg = <0 0x40000000 0 0x40000000>;
+> > +	};
+> > +};
+> > +
+> > +&uart0 {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&uart1 {
+> > +	status = "okay";
+> > +};
+> > +
+> > +&uart2 {
+> > +	status = "okay";
+> > +};
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > new file mode 100644
+> > index 000000000000..75912bcf6c9c
+> > --- /dev/null
+> > +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > @@ -0,0 +1,149 @@
+> > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > +/*
+> > + * Copyright (C) 2021 MediaTek Inc.
+> > + * Author: Sam.Shih <sam.shih@mediatek.com>
+> > + */
+> > +
+> > +#include <dt-bindings/interrupt-controller/irq.h>
+> > +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> > +
+> > +/ {
+> > +	compatible = "mediatek,mt7986a";
+> > +	interrupt-parent = <&gic>;
+> > +	#address-cells = <2>;
+> > +	#size-cells = <2>;
+> > +
+> > +	system_clk: dummy40m {
+> > +		compatible = "fixed-clock";
+> > +		clock-frequency = <40000000>;
+> > +		#clock-cells = <0>;
+> > +	};
+> > +
+> > +	cpus {
+> > +		#address-cells = <1>;
+> > +		#size-cells = <0>;
+> > +		cpu0: cpu@0 {
+> > +			device_type = "cpu";
+> > +			compatible = "arm,cortex-a53";
+> > +			enable-method = "psci";
+> > +			reg = <0x0>;
+> > +			#cooling-cells = <2>;
+> > +		};
+> > +
+> > +		cpu1: cpu@1 {
+> > +			device_type = "cpu";
+> > +			compatible = "arm,cortex-a53";
+> > +			enable-method = "psci";
+> > +			reg = <0x1>;
+> > +			#cooling-cells = <2>;
+> > +		};
+> > +
+> > +		cpu2: cpu@2 {
+> > +			device_type = "cpu";
+> > +			compatible = "arm,cortex-a53";
+> > +			enable-method = "psci";
+> > +			reg = <0x2>;
+> > +			#cooling-cells = <2>;
+> > +		};
+> > +
+> > +		cpu3: cpu@3 {
+> > +			device_type = "cpu";
+> > +			enable-method = "psci";
+> > +			compatible = "arm,cortex-a53";
+> > +			reg = <0x3>;
+> > +			#cooling-cells = <2>;
+> > +		};
+> > +	};
+> > +
+> > +	psci {
+> > +		compatible  = "arm,psci-0.2";
+> > +		method      = "smc";
+> > +	};
+> > +
+> > +	reserved-memory {
+> > +		#address-cells = <2>;
+> > +		#size-cells = <2>;
+> > +		ranges;
+> > +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
+> > +		secmon_reserved: secmon@43000000 {
+> > +			reg = <0 0x43000000 0 0x30000>;
+> > +			no-map;
+> > +		};
+> > +	};
+> > +
+> > +	timer {
+> > +		compatible = "arm,armv8-timer";
+> > +		interrupt-parent = <&gic>;
+> > +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
+> > +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
+> > +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
+> > +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+> > +	};
+> > +
+> > +	soc {
+> > +		#address-cells = <2>;
+> > +		#size-cells = <2>;
+> > +		compatible = "simple-bus";
+> > +		ranges;
+> > +
+> > +		gic: interrupt-controller@c000000 {
+> > +			compatible = "arm,gic-v3";
+> > +			#interrupt-cells = <3>;
+> > +			interrupt-parent = <&gic>;
+> > +			interrupt-controller;
+> > +			reg = <0 0x0c000000 0 0x10000>,  /* GICD */
+> > +			      <0 0x0c080000 0 0x80000>,  /* GICR */
+> > +			      <0 0x0c400000 0 0x2000>,   /* GICC */
+> > +			      <0 0x0c410000 0 0x1000>,   /* GICH */
+> > +			      <0 0x0c420000 0 0x2000>;   /* GICV */
+> > +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> > +		};
+> > +
+> > +		watchdog: watchdog@1001c000 {
+> > +			compatible = "mediatek,mt7986-wdt",
+> > +				     "mediatek,mt6589-wdt";
+> > +			reg = <0 0x1001c000 0 0x1000>;
+> > +			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
+> > +			#reset-cells = <1>;
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		trng: trng@1020f000 {
+> > +			compatible = "mediatek,mt7986-rng",
+> > +				     "mediatek,mt7623-rng";
+> > +			reg = <0 0x1020f000 0 0x100>;
+> > +			clocks = <&system_clk>;
+> > +			clock-names = "rng";
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		uart0: serial@11002000 {
+> > +			compatible = "mediatek,mt7986-uart",
+> > +				     "mediatek,mt6577-uart";
+> > +			reg = <0 0x11002000 0 0x400>;
+> > +			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+> > +			clocks = <&system_clk>;
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		uart1: serial@11003000 {
+> > +			compatible = "mediatek,mt7986-uart",
+> > +				     "mediatek,mt6577-uart";
+> > +			reg = <0 0x11003000 0 0x400>;
+> > +			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+> > +			clocks = <&system_clk>;
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +		uart2: serial@11004000 {
+> > +			compatible = "mediatek,mt7986-uart",
+> > +				     "mediatek,mt6577-uart";
+> > +			reg = <0 0x11004000 0 0x400>;
+> > +			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
+> > +			clocks = <&system_clk>;
+> > +			status = "disabled";
+> > +		};
+> > +
+> > +	};
+> > +
+> > +};
+> > 
+
+Regards,
+Sam
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
