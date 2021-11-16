@@ -2,71 +2,60 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 40505C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 06:15:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 95693C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 08:52:14 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F336461AD2
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 06:15:16 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F336461AD2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
+	by mail.kernel.org (Postfix) with ESMTPS id 59D2D63214
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 08:52:14 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 59D2D63214
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=bizjoindeal.pl
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3h8nftBx/WZCELAh0jrlODCnokBFaRHsTJ86jQk/mj4=; b=Wjj1x/TQIfnmhv
-	TgjJRcsPkoFuQq91uMPOv494ayNTDBVHqwvteF3y1GrRfvHgqjN8BfYllCVlYDAji2E+io6R6K3ab
-	6hHOdroLZOTwJyve+ELgTpzAe2g/fSul/9HNLvN8Tjrc8cLDb0KGNy+Lv3QLcR5gwozE0oL5lcx7f
-	s8Dq/HcDPVw966eZnJ0sWviWNj8AtVhCr7lhKDQs0ix2JTkFxGDxRBGvxlVDz8mcwnqX4wSB0P9SQ
-	FKKeCMAdEGnwh8B0h5LMaAVkMQld38r9vHXOmfKQC/Ni44KNASCJftN1A0tL4NMoS6FUMMjXfQBsP
-	rZMhzATcuP30mgsOC15g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4Vc3/FVBZvobCTo/QMWWINQZNfr8CyVRDs+foeaH210=; b=RBr3C0AdaJjwCx
+	LxgXMH805AuC5GApaJt/gSPEakBXNiqM/bMaJKuqFETbJn41vY/oVXXETqo5ZqWgHfi+pj1YDIYN6
+	LiF/iczGzIuUVU9V5j+gOQW1caZ5T75j6PcVXl/K2VDxT8O/xl5FlVq0fBkwhxsUdP5v18v58aDHk
+	asgGhIxyswtPUFeDPn16WHZLsOLki9wB/dYkjK+39kbVoHIJfl+dxllGnZTA+GNxgt/wkbpkfu7g+
+	elYvVZllcv6rDqtF0taQyQ+Ku1K5c6o4/vQye0iqJWEZINnEFLaK98gXaTIwCHAgQ9Y0w7ZufJxdj
+	XuVp5x9Hmj20D2+NYiNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmrkK-000MNW-Ue; Tue, 16 Nov 2021 06:15:08 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mmuCF-000oHM-5B; Tue, 16 Nov 2021 08:52:07 +0000
+Received: from mail.bizjoindeal.pl ([80.211.97.164])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmrkG-000MM4-JO; Tue, 16 Nov 2021 06:15:07 +0000
-X-UUID: ecf08cbc562f410ebb13a2dbed7a5421-20211115
-X-UUID: ecf08cbc562f410ebb13a2dbed7a5421-20211115
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <rocco.yue@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1413274528; Mon, 15 Nov 2021 23:15:00 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 15 Nov 2021 22:14:58 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 16 Nov 2021 14:14:57 +0800
-Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 16 Nov 2021 14:14:54 +0800
-From: Rocco Yue <rocco.yue@mediatek.com>
-To: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
- <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>
-CC: <netdev@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <Rocco.Yue@gmail.com>, <chao.song@mediatek.com>, <yanjie.jiang@mediatek.com>, 
- <kuohong.wang@mediatek.com>, <zhuoliang.zhang@mediatek.com>,
- <lorenzo@google.com>, <maze@google.com>, <markzzzsmith@gmail.com>, Rocco Yue
- <rocco.yue@mediatek.com>
-Subject: [PATCH net-next v2] ipv6: don't generate link-local addr in random or
- privacy mode
-Date: Tue, 16 Nov 2021 14:09:59 +0800
-Message-ID: <20211116060959.32746-1-rocco.yue@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mmuBx-000oAg-14
+ for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 08:51:50 +0000
+Received: by mail.bizjoindeal.pl (Postfix, from userid 1001)
+ id A1C0DA25C8; Tue, 16 Nov 2021 08:51:27 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizjoindeal.pl;
+ s=mail; t=1637052707;
+ bh=JZuQ1fK7zFtz2oeUB7Xfid9vb7kUywdmDd2OluR8ywA=;
+ h=Date:From:To:Subject:From;
+ b=ciTmjkPDRsvWErH2ZJstTCqu7IVs7WjWbFacJeOvlG0ZSNatn1I3jvajB2Y0TXpA7
+ 1qdX4fUWeH+umr8GP1mX5hC34nk+kdKEi9MVDgBrNz6sAiB9UO4/AlihIbAd9lf4QG
+ tYQTqU5drgDNRgMK59R2a6iDBm+MmE600KbSik6abp09A20Pw8WkrVL1A7+zqHhPGU
+ ou8bOqlgxu8qRhrYIcngNRpN33J39jN9YfCiQhCZyp9if771qapQEmUQhU5UTs3zrj
+ nZVvF7znnZk9SQptYmsg3PMoIZ7tbqSVMlc7VIcCqWVRgcegjb8E5Bd2g80Ut6EG0c
+ hL0PP1aRm8R7A==
+Received: by mail.bizjoindeal.pl for <linux-mediatek@lists.infradead.org>;
+ Tue, 16 Nov 2021 08:51:12 GMT
+Message-ID: <20211116074500-0.1.60.f0wv.0.qslyikj140@bizjoindeal.pl>
+Date: Tue, 16 Nov 2021 08:51:12 GMT
+From: "Dorian Kwiatkowski" <dorian.kwiatkowski@bizjoindeal.pl>
+To: <linux-mediatek@lists.infradead.org>
+Subject: Fotowoltaika dla firm
+X-Mailer: mail.bizjoindeal.pl
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211115_221504_683776_163EAC67 
-X-CRM114-Status: GOOD (  17.76  )
+X-CRM114-CacheID: sfid-20211116_005149_232194_707102EC 
+X-CRM114-Status: UNSURE (   1.58  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,151 +67,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In the 3GPP TS 29.061, here is a description as follows:
-"In order to avoid any conflict between the link-local address
-of the MS and that of the GGSN, the Interface-Identifier used by
-the MS to build its link-local address shall be assigned by the
-GGSN. The GGSN ensures the uniqueness of this Interface-Identifier.
-The MT shall then enforce the use of this Interface-Identifier by
-the TE"
-
-In other words, in the cellular network, GGSN determines whether
-to reply a solicited RA message by identifying the bottom 64 bits
-of the source address of the received RS message. Therefore,
-cellular network device's ipv6 link-local address should be set
-as the format of fe80::(GGSN assigned IID).
-
-To meet the above spec requirement, this patch adds two new
-addr_gen_mode:
-
-1) IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA, this mode is suitable
-for cellular networks that support RFC7217. In this mode, the
-kernel doesn't generate a link-local address for the cellular
-NIC, and generates an ipv6 stable privacy global address after
-receiving the RA message.
-
-2) IN6_ADDR_GEN_MODE_RANDOM_NO_LLA, in this mode, the kernel
-doesn't generate a link-local address for the cellular NIC,
-and will use the bottom 64 bits of the link-local address(same
-as the IID assigned by GGSN) to form an ipv6 global address
-after receiveing the RA message.
-
-Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
----
-v1->v2: Add new addr_gen_mode instead of adding a separate sysctl.
-
-v1 link:
-https://patchwork.kernel.org/patch/12353465
-
----
- include/uapi/linux/if_link.h       |  2 ++
- net/ipv6/addrconf.c                | 22 ++++++++++++++++------
- tools/include/uapi/linux/if_link.h |  2 ++
- 3 files changed, 20 insertions(+), 6 deletions(-)
-
-diff --git a/include/uapi/linux/if_link.h b/include/uapi/linux/if_link.h
-index eebd3894fe89..9c5695744c7d 100644
---- a/include/uapi/linux/if_link.h
-+++ b/include/uapi/linux/if_link.h
-@@ -428,6 +428,8 @@ enum in6_addr_gen_mode {
- 	IN6_ADDR_GEN_MODE_NONE,
- 	IN6_ADDR_GEN_MODE_STABLE_PRIVACY,
- 	IN6_ADDR_GEN_MODE_RANDOM,
-+	IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
-+	IN6_ADDR_GEN_MODE_RANDOM_NO_LLA,
- };
- 
- /* Bridge section */
-diff --git a/net/ipv6/addrconf.c b/net/ipv6/addrconf.c
-index 3445f8017430..0045de10f4b5 100644
---- a/net/ipv6/addrconf.c
-+++ b/net/ipv6/addrconf.c
-@@ -392,7 +392,8 @@ static struct inet6_dev *ipv6_add_dev(struct net_device *dev)
- 	timer_setup(&ndev->rs_timer, addrconf_rs_timer, 0);
- 	memcpy(&ndev->cnf, dev_net(dev)->ipv6.devconf_dflt, sizeof(ndev->cnf));
- 
--	if (ndev->cnf.stable_secret.initialized)
-+	if (ndev->cnf.stable_secret.initialized &&
-+	    ndev->cnf.addr_gen_mode != IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA)
- 		ndev->cnf.addr_gen_mode = IN6_ADDR_GEN_MODE_STABLE_PRIVACY;
- 
- 	ndev->cnf.mtu6 = dev->mtu;
-@@ -2578,7 +2579,8 @@ static void manage_tempaddrs(struct inet6_dev *idev,
- static bool is_addr_mode_generate_stable(struct inet6_dev *idev)
- {
- 	return idev->cnf.addr_gen_mode == IN6_ADDR_GEN_MODE_STABLE_PRIVACY ||
--	       idev->cnf.addr_gen_mode == IN6_ADDR_GEN_MODE_RANDOM;
-+	       idev->cnf.addr_gen_mode == IN6_ADDR_GEN_MODE_RANDOM ||
-+	       idev->cnf.addr_gen_mode == IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA;
- }
- 
- int addrconf_prefix_rcv_add_addr(struct net *net, struct net_device *dev,
-@@ -3331,6 +3333,8 @@ static void addrconf_addr_gen(struct inet6_dev *idev, bool prefix_route)
- 					      0, 0, GFP_KERNEL);
- 		break;
- 	case IN6_ADDR_GEN_MODE_NONE:
-+	case IN6_ADDR_GEN_MODE_RANDOM_NO_LLA:
-+	case IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA:
- 	default:
- 		/* will not add any link local address */
- 		break;
-@@ -5798,7 +5802,9 @@ static int check_addr_gen_mode(int mode)
- 	if (mode != IN6_ADDR_GEN_MODE_EUI64 &&
- 	    mode != IN6_ADDR_GEN_MODE_NONE &&
- 	    mode != IN6_ADDR_GEN_MODE_STABLE_PRIVACY &&
--	    mode != IN6_ADDR_GEN_MODE_RANDOM)
-+	    mode != IN6_ADDR_GEN_MODE_RANDOM &&
-+	    mode != IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA &&
-+	    mode != IN6_ADDR_GEN_MODE_RANDOM_NO_LLA)
- 		return -EINVAL;
- 	return 1;
- }
-@@ -6428,15 +6434,19 @@ static int addrconf_sysctl_stable_secret(struct ctl_table *ctl, int write,
- 		for_each_netdev(net, dev) {
- 			struct inet6_dev *idev = __in6_dev_get(dev);
- 
--			if (idev) {
-+			if (idev && idev->cnf.addr_gen_mode !=
-+			    IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA) {
- 				idev->cnf.addr_gen_mode =
- 					IN6_ADDR_GEN_MODE_STABLE_PRIVACY;
- 			}
- 		}
- 	} else {
- 		struct inet6_dev *idev = ctl->extra1;
--
--		idev->cnf.addr_gen_mode = IN6_ADDR_GEN_MODE_STABLE_PRIVACY;
-+		if (idev->cnf.addr_gen_mode !=
-+		    IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA) {
-+			idev->cnf.addr_gen_mode =
-+				IN6_ADDR_GEN_MODE_STABLE_PRIVACY;
-+		}
- 	}
- 
- out:
-diff --git a/tools/include/uapi/linux/if_link.h b/tools/include/uapi/linux/if_link.h
-index b3610fdd1fee..fb69137aea89 100644
---- a/tools/include/uapi/linux/if_link.h
-+++ b/tools/include/uapi/linux/if_link.h
-@@ -241,6 +241,8 @@ enum in6_addr_gen_mode {
- 	IN6_ADDR_GEN_MODE_NONE,
- 	IN6_ADDR_GEN_MODE_STABLE_PRIVACY,
- 	IN6_ADDR_GEN_MODE_RANDOM,
-+	IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA,
-+	IN6_ADDR_GEN_MODE_RANDOM_NO_LLA,
- };
- 
- /* Bridge section */
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RHppZcWEIGRvYnJ5LAoKa29udGFrdHVqxJkgc2nEmSB6IFBhxYRzdHdlbSwgcG9uaWV3YcW8IGRv
+c3RyemVnYW0gbW/FvGxpd2/Fm8SHIHJlZHVrY2ppIG9wxYJhdCB6YSBwcsSFZC4KCk9kcG93aWVk
+bmlvIGRvYnJhbmEgaW5zdGFsYWNqYSBmb3Rvd29sdGFpY3puYSB0byByb3p3acSFemFuaWUsIGt0
+w7NyZSBwb3p3YWxhIHd5Z2VuZXJvd2HEhyBzcG9yZSBvc3pjesSZZG5vxZtjaSB3IHNrYWxpIHJv
+a3UuCgpDaGNpYcWCYnltIHBvcm96bWF3aWHEhyB6IFBhxYRzdHdlbSBvIHRlZ28gdHlwdSByb3p3
+acSFemFuaXUsIGEgdGFrxbxlIHByemVkc3Rhd2nEhyB3c3TEmXBuZSBrYWxrdWxhY2plLgoKQ3p5
+IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaT8KClBvemRyYXdpYW0sCkRvcmlhbiBLd2lhdGtv
+d3NraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
+YXRlawo=
