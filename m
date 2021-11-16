@@ -2,166 +2,86 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7F371C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 11:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 4FC73C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 11:43:09 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 47FF761A4E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 11:34:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 47FF761A4E
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oracle.com
+	by mail.kernel.org (Postfix) with ESMTPS id 1A395633A7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 11:43:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1A395633A7
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HGWxev6ND8AGWRo9jP/49Wfv0I+7GfTa0jHC3fl5jaA=; b=iNXSG3uxUAUzw3
-	Hv2TFIjwD9ZkQad3f6Jw8UKeyk85BXJIGinKH2YAarmWLAVCc+pZhCDTQDHmcVyh0wb/zmZsgjl26
-	NYBjiQKFh3++G67gYTW3HFBkfKQRQkqGJeuks6Vp7RRvAoR1BSIlMu2bR3Xy6nJkZ/2tO7fBR91JN
-	muoTgdMeCTJzLwE5BDWc52UmRzFsHGQD3gwnv1iIBiaatapOKxldpYb5MlfiYJL3HlZ/B1KyX66Ls
-	sjnfHE3KPLxrSGEoDUuLmMZO4WOR/gwI+EELifHeZ5/fEqhliGQFd17k82nW/gxdQJn2QfU+HGYer
-	uZ4y+nAMhTr2kDDrOPQQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=sq2lFZow5wGtqGf7bSKK4WOS6AgRR8r5lSdsWaSpKw0=; b=EH7F2DCGh8u167
+	VSdY2wdLQJnR5qqqo5u7ozY7JujUQw8XK8R2+UTHYdpMQ87r1bDsPdZnR+TB9YC2H+9KmWZ7AmMfL
+	abvhRP+pN/AfYxPHTlJqfMiqSTFmmSP64BFmHYV4bi6CndNjKltsClx3aVwPIM03N9+DC7YTt35RO
+	9ez/tYWRhh6OUo3m7IZgTFS1QFXrQY/T3CaBoOn6xeSRN4qp2csfXFs0ZZQbuOJxzfphk8AGjkzDR
+	PKIudMoCOJ1IFTwS4d/5GEZIbTdLnD5qYM9LvYXhA50RHELHWMSflRiKsGBkfeu+1XBRfagBusZ/U
+	Cowtld/L6eHz/07rB8AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmwir-001TBx-Un; Tue, 16 Nov 2021 11:33:58 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1mmwrc-001VxD-3w; Tue, 16 Nov 2021 11:43:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmwiZ-001T45-FH
- for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 11:33:41 +0000
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1AGBDb7L016946; 
- Tue, 16 Nov 2021 11:33:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=QTQCm+Wmv3wMxn9iqxXB/MJwex5Tmx+KHGPgOg/jyQE=;
- b=Zb3j7/lduRjcRVLa2McLR2uopfUrN+RbkX5shzvt13GuCuWc4z03zHlW2wTZm+p/5ZEK
- ZtrxT//gsvu21ag4CrDKkcpEDF9Nw5baexMoFEKFXCJ1IM+W81k2V4BAB766f0bnOk+P
- n0WHoXW5v0PesKyOYhrrEl/Ng5LLrk3+/nLneU32yQnt7+ShKSj3jDs35jtcY42eEqPH
- ZwFY5l5s61mWDz4VN9IeTPVqYCnVRu/rDXuX0H4uF6Dtj951z5vg2mrHiRUHVih7qvIm
- Ylbalb2YxYX8+DNqc/0+f3B7l3uJ9178CncXNUQQIhXcSRPesGmfzIcgWR/Y78eFRgy1 /Q== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by mx0b-00069f02.pphosted.com with ESMTP id 3cbh3e0pur-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 16 Nov 2021 11:33:35 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1AGBGdif104123;
- Tue, 16 Nov 2021 11:33:34 GMT
-Received: from nam12-bn8-obe.outbound.protection.outlook.com
- (mail-bn8nam12lp2175.outbound.protection.outlook.com [104.47.55.175])
- by aserp3020.oracle.com with ESMTP id 3ca5659m18-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 16 Nov 2021 11:33:34 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=no5or8bDFp+KrJDbDMio+LZCTTzor/2aiKRJzW1hM9c6C8Sy408qLNtxBYjBhTSA4Sf89Q5tv9avYLgAM6UFV7SJ6QmMirIWa5kKl6kV5zD937LnYnav4Jv08KAoYRt723MBcnFMaNkIKpy87rm4vPhgrpWpbjna8MJa7z64uIujaqLuuRqTNYLF1Z7v3lG9sVJ+3cpnoFbyBWMDOBgwwSSFmAYxEchPtA5Iwd7UMURifcnZunhKeqFq1owm7qUncqG31YgI2ARUahRmBKiJDxHuzKnu/DAtYccdn0jHIHz1bdAV29IeSRyPv/o0ya/q4VQmdsG4l0PtcC/BzwPtSg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QTQCm+Wmv3wMxn9iqxXB/MJwex5Tmx+KHGPgOg/jyQE=;
- b=J0rZg5oqf7oHTWsc8/Jit7n8skQSKuRfT3cXjbSdq+LT/syH+fFWbvUN0+CMZCFzWMy1m1oPkpaOprD2xM/IbM4bP7QKG5ynMNMEZrgyeTQ4oO8eWGZrvdMTBu4fHCfXP/L0VshbK0V2iZzwvsLISoyy6EWNK/kgRIOkyn0hwPsA+XptJ1aSi8b+Gw/laGTym1c2xdzxj98W9T4prfVUpeB+yD7ITfqqEvGba1qAtzs/Kq13R0ZyqhaxyRGM5ouUu4wVl8pdD4Tfal26pU4fl8u097q3LBKE7h7nN5wBj0DF4mHoHXsl2KsSIxVcSPSH29W3lOod3KBQ7fMlA4VX7A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QTQCm+Wmv3wMxn9iqxXB/MJwex5Tmx+KHGPgOg/jyQE=;
- b=lhtFpahQtB4PUAQFdyAhKAEVZduGFSXPuimYd7SLp3tJCdtmiNOTpF3+Tppwv41bDcjwIG0flciT6287xuQ8niZrUp+yWWqiY61r0hlDJFUcKI2EDj73rvQoqoLac7h+ixdcdv2onpCdsYMP7mHqPiz36NYMaJWm87IgnEoKEoA=
-Authentication-Results: mediatek.com; dkim=none (message not signed)
- header.d=none;mediatek.com; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MW4PR10MB5680.namprd10.prod.outlook.com
- (2603:10b6:303:18e::11) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.16; Tue, 16 Nov
- 2021 11:33:32 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9%5]) with mapi id 15.20.4690.016; Tue, 16 Nov 2021
- 11:33:32 +0000
-Date: Tue, 16 Nov 2021 14:33:21 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: ryder.lee@mediatek.com
-Cc: linux-mediatek@lists.infradead.org
-Subject: [bug report] mt76: add support for setting mcast rate
-Message-ID: <20211116113321.GA11194@kili>
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ClientProxiedBy: ZR0P278CA0085.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::18) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1mmwrX-001VuQ-D1; Tue, 16 Nov 2021 11:42:57 +0000
+X-UUID: d7d7167799ce4336af0e37ac63c10520-20211116
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=ehLRWIvN/Vbo7MUdogH2RR6ce82KmTl9eWn+pnC8mhk=; 
+ b=E8gxBOPXHCKp2seIEaCadtJirspZ4xjqA+bLDHrf79ETHNO//tG6DyozzeT08PtoJ+CGi34XkUxMpLtS7ahLzO5gTviXOwx1bCrWGEk+sgMG8hZ562EINSS6FADNath1VH0k93WP8y8c9doTfvdHwJz2zo0f7/WZSv+RNOO6iqs=;
+X-UUID: d7d7167799ce4336af0e37ac63c10520-20211116
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 578893570; Tue, 16 Nov 2021 04:42:50 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Nov 2021 03:42:48 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 16 Nov 2021 19:42:45 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 16 Nov 2021 19:42:44 +0800
+Message-ID: <3090aba86fbe22c014c0df0f5ce933fdf19b3952.camel@mediatek.com>
+Subject: Re: [PATCH v10, 00/19] Support multi hardware decode using
+ of_platform_populate
+From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>
+CC: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
+ <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
+ Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>, Irui Wang <irui.wang@mediatek.com>, "Benjamin
+ Gaignard" <benjamin.gaignard@collabora.com>, srv_heupstream
+ <srv_heupstream@mediatek.com>, devicetree <devicetree@vger.kernel.org>, Linux
+ Kernel Mailing List <linux-kernel@vger.kernel.org>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Project_Global_Chrome_Upstream_Group
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "Hsin-Yi
+ Wang" <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, "Dafna
+ Hirschfeld" <dafna.hirschfeld@collabora.com>, linux-arm-kernel
+ <linux-arm-kernel@lists.infradead.org>, linux-media
+ <linux-media@vger.kernel.org>
+Date: Tue, 16 Nov 2021 19:42:44 +0800
+In-Reply-To: <CAAEAJfDrCihxPEnV8K=Unj7ejzqgcUOrP9pZO71DYDHCtWDdVQ@mail.gmail.com>
+References: <20211111041500.17363-1-yunfei.dong@mediatek.com>
+ <CAAEAJfDrCihxPEnV8K=Unj7ejzqgcUOrP9pZO71DYDHCtWDdVQ@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Received: from kili (102.222.70.114) by ZR0P278CA0085.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4713.19 via Frontend
- Transport; Tue, 16 Nov 2021 11:33:30 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 3a11b4d9-2bec-4043-f44d-08d9a8f4eb79
-X-MS-TrafficTypeDiagnostic: MW4PR10MB5680:
-X-Microsoft-Antispam-PRVS: <MW4PR10MB56803156B985EC79381C45708E999@MW4PR10MB5680.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: hW6VVV0ASLtFK8DUuZrydcM/Fdpn+8BE9kuAYphX2D+MXHBKX/W9S+NQtNpK76cKtd34lkyz6GhGxSytoBxJ8SeuTStwoaqzhWeLpKpD8UKQPfTlXZ+MwKhBSHoh7qjWuXNLHaxtKf/OWeSMY09AL8tXOhVRbwiUGdwyb53f9+lvLnBsfAKUcfM+fQWQ1FSKV0BO9P3A+9AijN3YgP+L/xCCPtXxkaYmxMmvc9FCf8QT2Vy9K2bTsB8PIJsdHby+E1y8GKgjEot/vsPdgL4sr092rnsiLtNgTnUd5fW0PsfTiIb4mNWBHdEJmb0TGU3yB8/ynWhnAW49FqbOEJKcQAd8HGIQvcouMtjamYXuqFPcF+2RndOEdCj0tDt2le60BgIkZW8EVvdDXJRNbDR9PJmxp2mghF9E3mOR7Megpq3LZ8hnvF4okXuoiY15xDWwbj+c+LdZgidyOxwYy5IcPNSHNRkjh3YTaJsjqHkr6jy14580vpZ8IMcQg+GLbDeeATbLm63PdGwQQGFbvwpz+t2sFPPGyXNmM001JEiWsTv0xlzdBvbecSD4hPCHOi642RVgy0pypNH+m8nFZOO1XKa6dORA1cmWfMHSDXpYKiU/M6NJU1T8SN21eoNF+/Scrt/WvMIuG2tiXh+XFWFLbxwTMof1ZRpc7QqSzdjpmgNBFcZjeucq0420jIdAH3wL7r7VQ5HYB3Vy2Ui0mKwCxQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(26005)(55016002)(316002)(9686003)(33716001)(1076003)(4326008)(5660300002)(2906002)(52116002)(8936002)(6496006)(66476007)(66946007)(9576002)(66556008)(186003)(6666004)(8676002)(33656002)(38350700002)(38100700002)(86362001)(44832011)(508600001)(83380400001)(956004)(6916009);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1KoTQQb7SFTt0sJ91IWnO/FlpRICrqkzwXRKlExAioZweGKkqQWEUb4g+TrI?=
- =?us-ascii?Q?fDZ1x1pq6l8435btQM+Pw2ncCb/1FyQ99hFshvkOQbcsu+J7mmA3nocqJfq/?=
- =?us-ascii?Q?4GbJT9GdMCUjqWLcXnuY3C4bHDBxYwsNxw29KcUJOmFgRP6YH0yY+HcTmGT4?=
- =?us-ascii?Q?AM2n1+4Y8E0Ah1szoBpa6iAJ46hA9ydF+89POrHWwWdTBrB+N+JTqvr1LoX1?=
- =?us-ascii?Q?QSloVixj959XWl/uj/fHD4m5tnyXteQ5VIb/3QbWYMowsAyQo5N6oaTpnTHd?=
- =?us-ascii?Q?6MRtzGHQypQOUNPBDmnrQjvemeiU6Ysi78lKW2Scm5iy1+H7303KIvTpczau?=
- =?us-ascii?Q?2/Y3lf6mEElI7xa0LHk23hjETI9z/egplLCBtJwERiQNA+SseYLw41H033a6?=
- =?us-ascii?Q?SpV9JxR7cOLDMUfZiZE7mlqvOZ3zXGY9ScPGyKdzEU850aTUwh5+e4/y0Ntc?=
- =?us-ascii?Q?SxoZXQOHNjzuqndH5XU4YQn9G239A7aORzSe7dcaUcCzNzgCbZaSwtlSUrIZ?=
- =?us-ascii?Q?5s7UfNIoct9UoLepBR0J+cassoPliR34A1YrURqtWVct+ly4U+N3KIjS6Kcr?=
- =?us-ascii?Q?4JqI4d0lfNtcH0tPijEBgfYoFrovdT8yZobCiqlwuT64nZVH0RPHF9X1tLTs?=
- =?us-ascii?Q?VkuYP4/vUagM/Ll44X1HsI+9YFQPo/pmG6SYVZz66Lw67p3NHW/0VptUPuYG?=
- =?us-ascii?Q?rQBNZqPM6Zsbtn7Hnw0v9eEYJ4esMJPcqAMt2QFUd0NAwAHbDi11bh/AY0iA?=
- =?us-ascii?Q?1AQJAp4EEWnsipo96Cdudg8vbKhI4eY7VMMJri0slRfJIancDIKrGpXs/qp/?=
- =?us-ascii?Q?N607/F/TE8lLVr6zjrFvMz7BT6/90i6AXz5m4jHTOKd3L6tT9VhSPKpp9TMN?=
- =?us-ascii?Q?mMlVRLoCpjWzU3R+unm4sLvahnTk+soEK/nQS4pQ0HI9PhygO9Z2FTXZLPyQ?=
- =?us-ascii?Q?mk1UvBqmpYb3CNh/maMdW5pv03jFq78blDUQxl//mV6om9Opfrk9P09mN1/o?=
- =?us-ascii?Q?BDdPUWn5TVugAlPQp2GtIgq2jp9DwHFW18c9Pv/Zbm44vARu8N21g8/MIZms?=
- =?us-ascii?Q?WTevNYr4gO6FsFWQiF+Xw7DHats585BOQ5mLQcplIe+YdFAqQ3H8gkUhgRgf?=
- =?us-ascii?Q?TngwGV1gMWJoRa4vzTRu9WrnmVTtOe+L/2zOX0IuZB6jrYsxzqvGqt4geOKq?=
- =?us-ascii?Q?/7XfQPLKaWOyFPrsuy10/xM0/w00yNDAbBUUmrCbmV4C47wxd//s5UqsXGef?=
- =?us-ascii?Q?Tg5b/W/kTsVqHtm3lHmXJ2TM7TCdZwxe5ng9+vPf9SoYURpqrsLkI771T+45?=
- =?us-ascii?Q?SYr55QffLZJafGjHZYYLCDV7AVY/1wvQTr/RL5dDZzmT/H+maMd1I59jKabM?=
- =?us-ascii?Q?BqtMpz4G6c8aLLRFLniCfpnyuTdXRRb8DEM/KYZ7WgVWmI5xVVY+7T8KB9eQ?=
- =?us-ascii?Q?cQayPOrJeAi37sgQpooh2wt+vEf28ubz5Mdtk1wwbFQ9Aoj8I9bDm4pqTKg8?=
- =?us-ascii?Q?v7gOVB7WYNTXr0eEsTwEZh0ArotVLewzpL/DTW3iLwE+7C7NHmgNa4mLYIyH?=
- =?us-ascii?Q?2JaclrQlkZM2eLs/I1Qwvwb8SZ9WXZvAUk0Sh7a3tk6nPc/N3/ZWDq7dpRZB?=
- =?us-ascii?Q?dHAjQf7q2EAnw+JjSV/LfrrSEfvSQHqR/cUvfIzNaveG05Ur0LGymk+5XMYS?=
- =?us-ascii?Q?uzbxsC0/ByY0FQ3WB5bgy4feL2I=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3a11b4d9-2bec-4043-f44d-08d9a8f4eb79
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Nov 2021 11:33:32.7289 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /aalXy7ZS4WPeESG8FYgW+BQs+bGQqEK7UU1AJG0vD/iinrw2bUi8hPDeKbXYwDH+ao27JHpPw6vIl33DiFNATmQ3xCvdHJd7II52i7qWGQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR10MB5680
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10169
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=775
- adultscore=0 mlxscore=0
- spamscore=0 malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111160058
-X-Proofpoint-GUID: tf3u7MXp3nM-_AsOyntCtAAbjuTIRHZG
-X-Proofpoint-ORIG-GUID: tf3u7MXp3nM-_AsOyntCtAAbjuTIRHZG
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_033339_747942_B06AE335 
-X-CRM114-Status: GOOD (  12.09  )
+X-CRM114-CacheID: sfid-20211116_034255_500460_A74F2929 
+X-CRM114-Status: GOOD (  41.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,85 +98,285 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Ryder Lee,
+Hi Ezequiel,
 
-This is a semi-automatic email about new static checker warnings.
+Thanks for you suggestion.
+On Sun, 2021-11-14 at 19:04 -0300, Ezequiel Garcia wrote:
+> Hi Yunfei,
+> 
+> On Thu, 11 Nov 2021 at 01:15, Yunfei Dong <yunfei.dong@mediatek.com>
+> wrote:
+> > 
+> > This series adds support for multi hardware decode into mtk-vcodec, 
+> > by first adding use
+> > of_platform_populate to manage each hardware information:
+> > interrupt, clock, register
+> > bases and power. Secondly add core work queue to deal with core
+> > hardware message,
+> > at the same time, add msg queue for different hardware share
+> > messages. Lastly, the
+> > architecture of different specs are not the same, using specs type
+> > to separate them.
+> > 
+> > This series has been tested with both MT8183 and MT8173. Decoding
+> > was working for both chips.
+> > 
+> 
+> How are you testing Decoding? If you are running some test suite, it
+> would
+> be good to add such information.
+> 
+For 8183 and 8173, these patches don't have influence for them, can
+work well.
 
-The patch 33920b2bf048: "mt76: add support for setting mcast rate"
-from Jul 21, 2021, leads to the following Smatch complaint:
-
-    drivers/net/wireless/mediatek/mt76/mt7921/mac.c:906 mt7921_mac_write_txwi()
-    error: we previously assumed 'vif' could be null (see line 852)
-
-drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-   851	
-   852		if (vif) {
-                    ^^^
-At the start of the function it assumes that "vif" can be NULL
-
-   853			struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
-   854	
-   855			omac_idx = mvif->omac_idx;
-   856			wmm_idx = mvif->wmm_idx;
-   857		}
-   858	
-   859		if (beacon) {
-   860			p_fmt = MT_TX_TYPE_FW;
-   861			q_idx = MT_LMAC_BCN0;
-   862		} else if (skb_get_queue_mapping(skb) >= MT_TXQ_PSD) {
-   863			p_fmt = is_mmio ? MT_TX_TYPE_CT : MT_TX_TYPE_SF;
-   864			q_idx = MT_LMAC_ALTX0;
-   865		} else {
-   866			p_fmt = is_mmio ? MT_TX_TYPE_CT : MT_TX_TYPE_SF;
-   867			q_idx = wmm_idx * MT7921_MAX_WMM_SETS +
-   868				mt7921_lmac_mapping(dev, skb_get_queue_mapping(skb));
-   869		}
-   870	
-   871		val = FIELD_PREP(MT_TXD0_TX_BYTES, skb->len + sz_txd) |
-   872		      FIELD_PREP(MT_TXD0_PKT_FMT, p_fmt) |
-   873		      FIELD_PREP(MT_TXD0_Q_IDX, q_idx);
-   874		txwi[0] = cpu_to_le32(val);
-   875	
-   876		val = MT_TXD1_LONG_FORMAT |
-   877		      FIELD_PREP(MT_TXD1_WLAN_IDX, wcid->idx) |
-   878		      FIELD_PREP(MT_TXD1_OWN_MAC, omac_idx);
-   879	
-   880		txwi[1] = cpu_to_le32(val);
-   881		txwi[2] = 0;
-   882	
-   883		val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, tx_count);
-   884		if (key)
-   885			val |= MT_TXD3_PROTECT_FRAME;
-   886		if (info->flags & IEEE80211_TX_CTL_NO_ACK)
-   887			val |= MT_TXD3_NO_ACK;
-   888	
-   889		txwi[3] = cpu_to_le32(val);
-   890		txwi[4] = 0;
-   891	
-   892		val = FIELD_PREP(MT_TXD5_PID, pid);
-   893		if (pid >= MT_PACKET_ID_FIRST)
-   894			val |= MT_TXD5_TX_STATUS_HOST;
-   895		txwi[5] = cpu_to_le32(val);
-   896	
-   897		txwi[6] = 0;
-   898		txwi[7] = wcid->amsdu ? cpu_to_le32(MT_TXD7_HW_AMSDU) : 0;
-   899	
-   900		if (is_8023)
-   901			mt7921_mac_write_txwi_8023(dev, txwi, skb, wcid);
-   902		else
-   903			mt7921_mac_write_txwi_80211(dev, txwi, skb, key);
-   904	
-   905		if (txwi[2] & cpu_to_le32(MT_TXD2_FIX_RATE)) {
-   906			int rateidx = ffs(vif->bss_conf.basic_rates) - 1;
-                                          ^^^^^
-But the patch adds a new unchecked dereference
-
-   907			u16 rate, mode;
-   908	
-
-regards,
-dan carpenter
-
+These patches are used for mt8192 and 8195. We do cts/gts/stress test
+to check our drivers.
+> Are you testing some edge-cases such as parallel/concurrent decoding,
+> removing the driver while streaming, and so on? This should help
+> catch
+> some typical issues.
+> 
+> Thanks,
+> Ezequiel
+> 
+Thanks,
+Yunfei Dong
+> > Patches 1~3 rewrite get register bases and power on/off interface.
+> > Patches 4 export decoder pm interfaces.
+> > Patches 5 add to support 8192.
+> > Patch 6 support multi hardware.
+> > Patch 7 separate video encoder and decoder document
+> > Patch 8-17 add interfaces to support core hardware.
+> > Patch 18-19 remove mtk_vcodec_release_dec/enc_pm interfaces.
+> > ---
+> > changes compared with v9:
+> > - need not to build ko, just export pm interfaces for patch 04/19.
+> > - fix comments for patch 06/19
+> > 
+> > changes compared with v8:
+> > - add new patch 18~19 to remove mtk_vcodec_release_de/enc_pm
+> > interfaces.
+> > - fix spelling mistakes for patch 17/19
+> > - fix yaml comments for patch 15/19
+> > 
+> > Changes compared with v7:
+> > - add new patch 4 to build decoder pm file as module
+> > - add new patch 5 to support 8192
+> > - fix comments for patch 6/17
+> > - change some logic for using work queue instead of create thread
+> > for core hardware decode for patch 10/17
+> > - using work queue for hardware decode instead of create thread for
+> > patch 13/17
+> > - add returen value for patch 14/17
+> > - fix yaml check fail 15/17
+> > 
+> > Changes compared with v6:
+> > - Use of_platform_populate to manage multi hardware, not component
+> > framework for patch 4/15
+> > - Re-write dtsi document for hardware architecture changed for
+> > patch 13/15 -The dtsi will write like below in patch 13/15:
+> >     vcodec_dec: vcodec_dec@16000000 {
+> >         compatible = "mediatek,mt8192-vcodec-dec";
+> >         #address-cells = <2>;
+> >         #size-cells = <2>;
+> >         ranges;
+> >         reg = <0 0x16000000 0 0x1000>;          /* VDEC_SYS */
+> >         mediatek,scp = <&scp>;
+> >         iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
+> >         dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
+> >         vcodec_lat {
+> >             compatible = "mediatek,mtk-vcodec-lat";
+> >             reg = <0 0x16010000 0 0x800>;               /*
+> > VDEC_MISC */
+> >             reg-name = "reg-misc";
+> >             interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
+> >             iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
+> >                  <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
+> >                  <&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
+> >                  <&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
+> >                  <&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
+> >                  <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
+> >                  <&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
+> >                  <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
+> >             clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> >                  <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
+> >                  <&vdecsys_soc CLK_VDEC_SOC_LAT>,
+> >                  <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
+> >                  <&topckgen CLK_TOP_MAINPLL_D4>;
+> >             clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-
+> > lat",
+> >                   "vdec-vdec", "vdec-top";
+> >             assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> >             assigned-clock-parents = <&topckgen
+> > CLK_TOP_MAINPLL_D4>;
+> >             power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
+> >         };
+> > 
+> >         vcodec_core {
+> >             compatible = "mediatek,mtk-vcodec-core";
+> >             reg = <0 0x16025000 0 0x1000>;              /*
+> > VDEC_CORE_MISC */
+> >             reg-names = "reg-misc";
+> >             interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
+> >             iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
+> >                  <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
+> >             clocks = <&topckgen CLK_TOP_VDEC_SEL>,
+> >                  <&vdecsys CLK_VDEC_VDEC>,
+> >                  <&vdecsys CLK_VDEC_LAT>,
+> >                  <&vdecsys CLK_VDEC_LARB1>,
+> >                  <&topckgen CLK_TOP_MAINPLL_D4>;
+> >             clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-
+> > lat",
+> >                   "vdec-vdec", "vdec-top";
+> >             assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
+> >             assigned-clock-parents = <&topckgen
+> > CLK_TOP_MAINPLL_D4>;
+> >             power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
+> >         };
+> >     };
+> > 
+> > Changes compared with v5:
+> > - Add decoder hardware block diagram for patch 13/15
+> > 
+> > Changes compared with v4:
+> > - Fix comments for patch 4/15
+> >   >> +     if (dev->is_comp_supported) {
+> >   >> +             ret = mtk_vcodec_init_master(dev);
+> >   >> +             if (ret < 0)
+> >   >> +                     goto err_component_match;
+> >   >> +     } else {
+> >   >> +             platform_set_drvdata(pdev, dev);
+> >   >> +     }
+> >   Fix platform_set_drvdata.
+> > - Fix build error for patch 9/15
+> > - Add depend patch in case of error header file for patch 13/15
+> > 
+> > Changes compared with v3:
+> > - Fix return value for patch 1/15
+> > - Fix comments for patch 4/15
+> >   > Looking up "mediatek,mtk-vcodec-core" to determine if it uses
+> > component framwork sounds like...
+> >   Add prameter in pdata, for all platform will use compoent after
+> > mt8183
+> > 
+> >   >> +     if (dev->is_comp_supported) {
+> >   >> +             ret = mtk_vcodec_init_master(dev);
+> >   >> +             if (ret < 0)
+> >   >> +                     goto err_component_match;
+> >   >> +     } else {
+> >   >> +             platform_set_drvdata(pdev, dev);
+> >   >> +     }
+> >   > + Has asked the same question in [1].  Why it removes the
+> >   > +platform_set_drvdata() above?  mtk_vcodec_init_master() also
+> > calls platform_set_drvdata().
+> >   Must call component_master_add_with_match after
+> > platform_set_drvdata for component architecture.
+> > - Fix yaml files check fail for patch 5/15
+> > - Fix yaml file check fail for patch 14/15
+> > 
+> > Changes compared with v1:
+> > - Fix many comments for patch 3/14
+> > - Remove unnecessary code for patch 4/14
+> > - Using enum mtk_vdec_hw_count instead of magic numbers for patch
+> > 6/14
+> > - Reconstructed get/put lat buffer for lat and core hardware for
+> > patch 7/14
+> > - Using yaml format to instead of txt file for patch 12/14
+> > 
+> > Yunfei Dong (19):
+> >   media: mtk-vcodec: Get numbers of register bases from DT
+> >   media: mtk-vcodec: Align vcodec wake up interrupt interface
+> >   media: mtk-vcodec: Refactor vcodec pm interface
+> >   media: mtk-vcodec: export decoder pm functions
+> >   media: mtk-vcodec: Support MT8192
+> >   media: mtk-vcodec: Manage multi hardware information
+> >   dt-bindings: media: mtk-vcodec: Separate video encoder and
+> > decoder
+> >     dt-bindings
+> >   media: mtk-vcodec: Use pure single core for MT8183
+> >   media: mtk-vcodec: Add irq interface for multi hardware
+> >   media: mtk-vcodec: Add msg queue feature for lat and core
+> > architecture
+> >   media: mtk-vcodec: Generalize power and clock on/off interfaces
+> >   media: mtk-vcodec: Add new interface to lock different hardware
+> >   media: mtk-vcodec: Add work queue for core hardware decode
+> >   media: mtk-vcodec: Support 34bits dma address for vdec
+> >   dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for
+> > mt8192
+> >   media: mtk-vcodec: Add core dec and dec end ipi msg
+> >   media: mtk-vcodec: Use codec type to separate different hardware
+> >   media: mtk-vcodec: Remove mtk_vcodec_release_dec_pm
+> >   media: mtk-vcodec: Remove mtk_vcodec_release_enc_pm
+> > 
+> >  .../media/mediatek,vcodec-decoder.yaml        | 176 +++++++++++
+> >  .../media/mediatek,vcodec-encoder.yaml        | 187 ++++++++++++
+> >  .../media/mediatek,vcodec-subdev-decoder.yaml | 261
+> > ++++++++++++++++
+> >  .../bindings/media/mediatek-vcodec.txt        | 131 --------
+> >  drivers/media/platform/mtk-vcodec/Makefile    |   6 +-
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 219 +++++++++++---
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 172 +++++++++++
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  55 ++++
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 104 +++++--
+> >  .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  12 +-
+> >  .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   2 +
+> >  .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |  20 ++
+> >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  75 ++++-
+> >  .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  21 +-
+> >  .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |  10 +-
+> >  .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   |   3 +-
+> >  .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  27 +-
+> >  .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
+> >  .../platform/mtk-vcodec/mtk_vcodec_util.c     |  87 +++++-
+> >  .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
+> >  .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   2 +-
+> >  .../mtk-vcodec/vdec/vdec_h264_req_if.c        |   2 +-
+> >  .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   2 +-
+> >  .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   2 +-
+> >  .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
+> >  .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
+> >  .../platform/mtk-vcodec/vdec_msg_queue.c      | 286
+> > ++++++++++++++++++
+> >  .../platform/mtk-vcodec/vdec_msg_queue.h      | 148 +++++++++
+> >  .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
+> >  .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
+> >  .../platform/mtk-vcodec/venc/venc_h264_if.c   |   2 +-
+> >  .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   2 +-
+> >  34 files changed, 1841 insertions(+), 295 deletions(-)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > decoder.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,vcodec-
+> > encoder.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-
+> > decoder.yaml
+> >  delete mode 100644
+> > Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+> >  create mode 100644 drivers/media/platform/mtk-
+> > vcodec/mtk_vcodec_dec_hw.c
+> >  create mode 100644 drivers/media/platform/mtk-
+> > vcodec/mtk_vcodec_dec_hw.h
+> >  create mode 100644 drivers/media/platform/mtk-
+> > vcodec/vdec_msg_queue.c
+> >  create mode 100644 drivers/media/platform/mtk-
+> > vcodec/vdec_msg_queue.h
+> > 
+> > --
+> > 2.25.1
+> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
