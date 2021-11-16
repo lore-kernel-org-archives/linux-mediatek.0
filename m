@@ -2,68 +2,73 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 86D3EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 13:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id EBF05C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 14:32:36 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 585AB61B9F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 13:57:36 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 585AB61B9F
+	by mail.kernel.org (Postfix) with ESMTPS id E658361BF5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 14:32:35 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E658361BF5
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TbZ/Hwya7poNfNql0UdPDJx0jPRadAh12lW6zhfzFDk=; b=LaYOwoX19SEzid
-	3MTxMdjJQ86G/COpHLOCg7kg3leq+DT561voFY6SrcP7ftzYsy2N7lErDlYEqcp2YdnQtXRUZczJZ
-	sT4ObrCyMmSATWjflTTcj2MkAtRCN/Dwzo5kZwDSVaYuzZKHK6rTK2RkZlKBTCq4jUxiaJ663VpBs
-	Ce8i46H9OVgOBOe59HCc6jZCV5pSUzWN3pJMpok8Qs4N/mm2YYpqSJ1sotUcpCOHUMKyayrzlmXC8
-	PYUc6JKA0nrgZ2gONKlyUiuC9K5tj9K37pKr+b7+J3rR+GTHrI3S5TEkVnaq+CdgNnlT9WJmzgq+E
-	JvHYQLTsiQwJJjGC+FjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NvU5tQCIGEX1sluAMXYwvLITMLR5ct17sNUxoC7HMs8=; b=3/DShSS97TG/rY
+	rzzmkV7s7esZ1Vizm2kTvGFcIZu1EsdZU98wVXMcaiNWsTWaatl6tr+8pXRI4RXbifCuzcu0jw1g7
+	g+n74ctMCYlntLSSfniuA1ZKfR+xovaXc4vrUC6hBTn5cJ4v8EXyfEpW2TYHVKcRa0djRGwEa0+sH
+	+hkwd8T1/IlgPvrHFeow2RJNQnvbAcoLzsuS+SQipjTZhjM2aTHPuY1nY/xrOlTd5Ak6d/vB1phJi
+	FsiSnk4X1t8QSvwtNWdYOd9G4bip2L5CTJ3m2EY5lI+UkjbcSGLCm2Tw7Q5/eQpNXhw8iPKqP307l
+	hRhWoDlyDiu58zWtnuSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmyxl-001ptV-85; Tue, 16 Nov 2021 13:57:29 +0000
+	id 1mmzVd-001uES-JJ; Tue, 16 Nov 2021 14:32:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmyxW-001pr1-3O; Tue, 16 Nov 2021 13:57:17 +0000
-X-UUID: 651c4597ce234c9da81c20977e47723a-20211116
-X-UUID: 651c4597ce234c9da81c20977e47723a-20211116
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <mark-pk.tsai@mediatek.com>)
+ id 1mmzVY-001uDO-Vl
+ for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 14:32:27 +0000
+X-UUID: ddad392f6e5f48498cb2f6baebfc5c34-20211116
+X-UUID: ddad392f6e5f48498cb2f6baebfc5c34-20211116
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 989367316; Tue, 16 Nov 2021 06:57:06 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 16 Nov 2021 05:57:04 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 16 Nov 2021 21:57:03 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ with ESMTP id 1377976819; Tue, 16 Nov 2021 07:32:19 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Nov 2021 06:32:18 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Nov 2021 22:32:17 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 16 Nov 2021 21:57:03 +0800
-From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-To: <mathieu.poirier@linaro.org>
-CC: <bjorn.andersson@linaro.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-remoteproc@vger.kernel.org>, <mark-pk.tsai@mediatek.com>,
- <matthias.bgg@gmail.com>, <ohad@wizery.com>, <yj.chiang@mediatek.com>
-Subject: Re: [PATCH v2] remoteproc: use %pe format string to print return
- error code
-Date: Tue, 16 Nov 2021 21:57:03 +0800
-Message-ID: <20211116135703.19432-1-mark-pk.tsai@mediatek.com>
+ Frontend Transport; Tue, 16 Nov 2021 22:32:16 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH v3] mt76: mt7921: introduce 160 MHz channel bandwidth support
+Date: Tue, 16 Nov 2021 22:31:18 +0800
+Message-ID: <6bdc71ea1d5977e31717efaddc70092871be1a4b.1637072707.git.deren.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <CANLsYkzsoXw8vCC-OBqHyQv216Rbjf9ZR7FuFK-zxC7gMzt9Kg@mail.gmail.com>
-References: <CANLsYkzsoXw8vCC-OBqHyQv216Rbjf9ZR7FuFK-zxC7gMzt9Kg@mail.gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_055714_176410_98F57781 
-X-CRM114-Status: GOOD (  25.81  )
+X-CRM114-CacheID: sfid-20211116_063225_062621_85E42EBE 
+X-CRM114-Status: UNSURE (   8.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,54 +85,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> > > > Use %pe format string to print return error code which
-> > > > make the error message easier to understand.
-> > > >
-> > > > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> > > > ---
-> > > >  drivers/remoteproc/remoteproc_core.c | 4 ++--
-> > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > >
-> > > > diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
-> > > > index 502b6604b757..2242da320368 100644
-> > > > --- a/drivers/remoteproc/remoteproc_core.c
-> > > > +++ b/drivers/remoteproc/remoteproc_core.c
-> > > > @@ -575,8 +575,8 @@ static int rproc_handle_vdev(struct rproc *rproc, void *ptr,
-> > > >                                            dma_get_mask(rproc->dev.parent));
-> > > >         if (ret) {
-> > > >                 dev_warn(dev,
-> > > > -                        "Failed to set DMA mask %llx. Trying to continue... %x\n",
-> > > > -                        dma_get_mask(rproc->dev.parent), ret);
-> > > > +                        "Failed to set DMA mask %llx. Trying to continue... (%pe)\n",
-> > > > +                        dma_get_mask(rproc->dev.parent), ERR_PTR(ret));
-> > >
-> > > Macro ERR_PTR() is used to convert error codes to pointer type when
-> > > returning from a function - I fail to see how doing so in a dev_warn()
-> > > context can make the message easier to understand.  Can you provide an
-> > > example?
-> >
-> > Hi,
-> >
-> > When dma_coerce_mask_and_coherent() fail, the output log will be as following.
-> >
-> > format          log
-> > %x              Trying to continue... fffffffb
-> > %d              Trying to continue... -5
-> > %pe             Trying to continue... -5        (if CONFIG_SYMBOLIC_ERRNAME is not set)
-> > %pe             Trying to continue... -EIO      (if CONFIG_SYMBOLIC_ERRNAME=y)
->
-> When failing, functions dma_coerce_mask_and_coherent() returns -EIO.
-> Casting that to a (void *) with ERR_PTR() does not change that value.
-> Since variable @ret is already declared as "int" the real fix is to
-> change "%x" to "%d".
+From: Deren Wu <deren.wu@mediatek.com>
 
-There're some other drivers do the same thing in the recent kernel, so I think
-it's fine to casting the `ret` to a (void *) for more user friendly.
-But I suppose it would depend on the maintainer's opinion.
+Introduce the basic configuration for BW160 capability in 7922
 
-So how about previous patch I sent, which also fix this issue by using %d.
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+v3: remove .has_bw160 field in mt76_hw_cap. Check bw160 by chip ID
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c |  4 ++++
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 12 ++++++++++++
+ 2 files changed, 16 insertions(+)
 
-https://lore.kernel.org/lkml/20211102120805.27137-1-mark-pk.tsai@mediatek.com/
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 210998f086ab..b23067a8326c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -264,6 +264,10 @@ int mt7921_register_device(struct mt7921_dev *dev)
+ 			IEEE80211_VHT_CAP_SU_BEAMFORMEE_CAPABLE |
+ 			IEEE80211_VHT_CAP_MU_BEAMFORMEE_CAPABLE |
+ 			(3 << IEEE80211_VHT_CAP_BEAMFORMEE_STS_SHIFT);
++	if (is_mt7922(&dev->mt76))
++		dev->mphy.sband_5g.sband.vht_cap.cap |=
++			IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160MHZ |
++			IEEE80211_VHT_CAP_SHORT_GI_160;
+ 
+ 	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
+ 	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 633c6d2a57ac..6b005db64ad3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -128,11 +128,23 @@ mt7921_init_he_caps(struct mt7921_phy *phy, enum nl80211_band band,
+ 				IEEE80211_HE_PHY_CAP9_RX_1024_QAM_LESS_THAN_242_TONE_RU |
+ 				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USING_MU_WITH_COMP_SIGB |
+ 				IEEE80211_HE_PHY_CAP9_RX_FULL_BW_SU_USING_MU_WITH_NON_COMP_SIGB;
++
++			if (is_mt7922(phy->mt76->dev)) {
++				he_cap_elem->phy_cap_info[0] |=
++					IEEE80211_HE_PHY_CAP0_CHANNEL_WIDTH_SET_160MHZ_IN_5G;
++				he_cap_elem->phy_cap_info[8] |=
++					IEEE80211_HE_PHY_CAP8_20MHZ_IN_160MHZ_HE_PPDU |
++					IEEE80211_HE_PHY_CAP8_80MHZ_IN_160MHZ_HE_PPDU;
++			}
+ 			break;
+ 		}
+ 
+ 		he_mcs->rx_mcs_80 = cpu_to_le16(mcs_map);
+ 		he_mcs->tx_mcs_80 = cpu_to_le16(mcs_map);
++		if (is_mt7922(phy->mt76->dev)) {
++			he_mcs->rx_mcs_160 = cpu_to_le16(mcs_map);
++			he_mcs->tx_mcs_160 = cpu_to_le16(mcs_map);
++		}
+ 
+ 		memset(he_cap->ppe_thres, 0, sizeof(he_cap->ppe_thres));
+ 		if (he_cap_elem->phy_cap_info[6] &
+-- 
+2.18.0
 
 
 _______________________________________________
