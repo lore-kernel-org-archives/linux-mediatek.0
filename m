@@ -2,60 +2,102 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 95693C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 08:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 94676C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 09:24:27 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 59D2D63214
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 08:52:14 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 59D2D63214
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=bizjoindeal.pl
+	by mail.kernel.org (Postfix) with ESMTPS id 499CA61268
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 09:24:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 499CA61268
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4Vc3/FVBZvobCTo/QMWWINQZNfr8CyVRDs+foeaH210=; b=RBr3C0AdaJjwCx
-	LxgXMH805AuC5GApaJt/gSPEakBXNiqM/bMaJKuqFETbJn41vY/oVXXETqo5ZqWgHfi+pj1YDIYN6
-	LiF/iczGzIuUVU9V5j+gOQW1caZ5T75j6PcVXl/K2VDxT8O/xl5FlVq0fBkwhxsUdP5v18v58aDHk
-	asgGhIxyswtPUFeDPn16WHZLsOLki9wB/dYkjK+39kbVoHIJfl+dxllGnZTA+GNxgt/wkbpkfu7g+
-	elYvVZllcv6rDqtF0taQyQ+Ku1K5c6o4/vQye0iqJWEZINnEFLaK98gXaTIwCHAgQ9Y0w7ZufJxdj
-	XuVp5x9Hmj20D2+NYiNQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Tp8cgsxfCeNoEoCR08bF4bzO4z0VP8K/Wnbh4eNq99I=; b=AtU5I1R0vZgoUp
+	gyHHreOSM1V+qQcwiOFmxTPveHK8s3Qi1wpbRe2rAbZZNjFvemmkhRhSTOJ/pA6gUHHC27z/qkL8f
+	j4FH5i2fJjzI7vvdlZwo7mo/QbaSuXgafvsL6vGAF1gqH2nOHbcMf0rXwgI7z8c8a2jgPEIVzXyeh
+	o4yIbQOq7LmRSWztJs312cGrAl34J6lkueEQOTKq7/xnvTovf57d/NBMUjz7HdHeq3dhBIljODlpP
+	+HHgMAVoIf6RjpUG4o06J1MnrL8zr4rMl4YSDJXt2SXGab9QRXQLS6jzFVabh+jAUZY96uJNVhM16
+	TxifSHkYcVe0KqQSYQYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmuCF-000oHM-5B; Tue, 16 Nov 2021 08:52:07 +0000
-Received: from mail.bizjoindeal.pl ([80.211.97.164])
+	id 1mmuhN-000vxo-PJ; Tue, 16 Nov 2021 09:24:17 +0000
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmuBx-000oAg-14
- for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 08:51:50 +0000
-Received: by mail.bizjoindeal.pl (Postfix, from userid 1001)
- id A1C0DA25C8; Tue, 16 Nov 2021 08:51:27 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=bizjoindeal.pl;
- s=mail; t=1637052707;
- bh=JZuQ1fK7zFtz2oeUB7Xfid9vb7kUywdmDd2OluR8ywA=;
- h=Date:From:To:Subject:From;
- b=ciTmjkPDRsvWErH2ZJstTCqu7IVs7WjWbFacJeOvlG0ZSNatn1I3jvajB2Y0TXpA7
- 1qdX4fUWeH+umr8GP1mX5hC34nk+kdKEi9MVDgBrNz6sAiB9UO4/AlihIbAd9lf4QG
- tYQTqU5drgDNRgMK59R2a6iDBm+MmE600KbSik6abp09A20Pw8WkrVL1A7+zqHhPGU
- ou8bOqlgxu8qRhrYIcngNRpN33J39jN9YfCiQhCZyp9if771qapQEmUQhU5UTs3zrj
- nZVvF7znnZk9SQptYmsg3PMoIZ7tbqSVMlc7VIcCqWVRgcegjb8E5Bd2g80Ut6EG0c
- hL0PP1aRm8R7A==
-Received: by mail.bizjoindeal.pl for <linux-mediatek@lists.infradead.org>;
- Tue, 16 Nov 2021 08:51:12 GMT
-Message-ID: <20211116074500-0.1.60.f0wv.0.qslyikj140@bizjoindeal.pl>
-Date: Tue, 16 Nov 2021 08:51:12 GMT
-From: "Dorian Kwiatkowski" <dorian.kwiatkowski@bizjoindeal.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Fotowoltaika dla firm
-X-Mailer: mail.bizjoindeal.pl
+ id 1mmuhD-000vtj-Gc
+ for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 09:24:09 +0000
+Received: by mail-pj1-x1034.google.com with SMTP id
+ j5-20020a17090a318500b001a6c749e697so1746601pjb.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 16 Nov 2021 01:24:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=owaydA/9dfzXygkoQ9b5wC+OlGrAMOC9LEkh/lAzv5I=;
+ b=QMKycX4ZEQaoqQ026VxDUHwe+VqargI4Q56Ls7vof5Ssrt3G/nOSh2dyyoY6Cw02WF
+ iFzhEy4rRt7z1+q0UupwntE3f0SNtv/+2FFKLmpIe9QX6rPKknymUxkADWNvKQ7UfQoc
+ 1I+c/UYXvuoyS+f9aI27LrnNpGTn7VKPJ8jKnYU2ns2Bw6y6Flc8J9w3nG/EkE/0nBxQ
+ 1+dMPFwBSyZHN3e+ZgOKTxa/qv2dqzO5wdeh7W8mVlHoAVUajMA1qeQ5HmOsWq9+NqOU
+ iYO/LWu6lF15XzeRug5Q37kFz1sFMP942j6nzvnuqZqElH7Gy8dqO6Rusxak5WLORwOX
+ nZ9Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=owaydA/9dfzXygkoQ9b5wC+OlGrAMOC9LEkh/lAzv5I=;
+ b=dtIKMBVbJMB0ahCKkEFOYMCw02pyES83uwYip+3q6M/RA+AyV4u8VHLuLAWeta15Za
+ HVfw1rJ0HFDKfmfMhSFpDsEbt7pHqlv+Zq9u3UUuiXqBYFemYDgMTC7G3TpgYBLypL7x
+ e0xuTo7iuwVEYW+1XK2AG0pCKSHNFuV4lzRg24oo1S8k/MvfNT/H7Gjzr3UsCCofVvm9
+ sQ0E9xfyVbUWJfkmbX1gm94yo7iROzNMStO+ztY2KVSR74dnj3GWJexaMMHfa7uTtyjy
+ nEpNnycaa5fXd24m0B133yqqgGzFcHQ7xktp19YSDIqdU365msR9ezsSBMC9BVMGxegh
+ wLUg==
+X-Gm-Message-State: AOAM5321AV3sxyrmdSndZoMBWSaSVeZf6AboMHU2gxbfQfRWtFEeV7rh
+ vckznmBafpixyIudFxKhJBMc9A==
+X-Google-Smtp-Source: ABdhPJw4Q0VPOvcNLCMaHO78tfO9Z0o0vrEmI1ogL6v9qranzZOGcmxPrHs+6HbKgj/geyrRdmBzNA==
+X-Received: by 2002:a17:90a:9907:: with SMTP id
+ b7mr71543402pjp.137.1637054646807; 
+ Tue, 16 Nov 2021 01:24:06 -0800 (PST)
+Received: from google.com ([2401:fa00:1:10:f590:685a:7893:90be])
+ by smtp.gmail.com with ESMTPSA id d2sm12436413pfu.203.2021.11.16.01.24.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 16 Nov 2021 01:24:06 -0800 (PST)
+Date: Tue, 16 Nov 2021 17:24:01 +0800
+From: Tzung-Bi Shih <tzungbi@google.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Tzung-Bi Shih <tzungbi@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Fritz Koenig <frkoenig@chromium.org>,
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel <dri-devel@lists.freedesktop.org>,
+ Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH v10, 11/19] media: mtk-vcodec: Generalize power and clock
+ on/off interfaces
+Message-ID: <YZN4se+Ihm2H20GG@google.com>
+References: <20211111041500.17363-1-yunfei.dong@mediatek.com>
+ <20211111041500.17363-12-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211111041500.17363-12-yunfei.dong@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_005149_232194_707102EC 
-X-CRM114-Status: UNSURE (   1.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211116_012407_754684_5A1389FC 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,19 +109,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKa29udGFrdHVqxJkgc2nEmSB6IFBhxYRzdHdlbSwgcG9uaWV3YcW8IGRv
-c3RyemVnYW0gbW/FvGxpd2/Fm8SHIHJlZHVrY2ppIG9wxYJhdCB6YSBwcsSFZC4KCk9kcG93aWVk
-bmlvIGRvYnJhbmEgaW5zdGFsYWNqYSBmb3Rvd29sdGFpY3puYSB0byByb3p3acSFemFuaWUsIGt0
-w7NyZSBwb3p3YWxhIHd5Z2VuZXJvd2HEhyBzcG9yZSBvc3pjesSZZG5vxZtjaSB3IHNrYWxpIHJv
-a3UuCgpDaGNpYcWCYnltIHBvcm96bWF3aWHEhyB6IFBhxYRzdHdlbSBvIHRlZ28gdHlwdSByb3p3
-acSFemFuaXUsIGEgdGFrxbxlIHByemVkc3Rhd2nEhyB3c3TEmXBuZSBrYWxrdWxhY2plLgoKQ3p5
-IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaT8KClBvemRyYXdpYW0sCkRvcmlhbiBLd2lhdGtv
-d3NraQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
-dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
-cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
-YXRlawo=
+On Thu, Nov 11, 2021 at 12:14:52PM +0800, Yunfei Dong wrote:
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
+[...]
+> +void *mtk_vcodec_get_hw_dev(struct mtk_vcodec_dev *dev, int hw_idx)
+>  {
+[...]
+> +
+> +	if (dev->subdev_dev[hw_idx])
+> +		return dev->subdev_dev[hw_idx];
+> +
+> +	node = dev->subdev_node[hw_idx];
+> +	if (!node) {
+> +		mtk_v4l2_err("Get lat node fail:%d", hw_idx);
+> +		return NULL;
+> +	}
+> +
+> +	hw_pdev = of_find_device_by_node(node);
+> +	of_node_put(node);
+
+Raised the question in [v10,06/19] media: mtk-vcodec: Manage multi hardware information[1], is the reference count borrowed from mtk_vcodec_subdev_device_check?  If so, it needs comments for documentation.
+
+[1]: https://patchwork.linuxtv.org/project/linux-media/patch/20211111041500.17363-7-yunfei.dong@mediatek.com/
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
