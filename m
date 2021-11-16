@@ -2,83 +2,92 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 317B9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 17:28:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C9EFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 20:21:40 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E3E5561A3A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 17:28:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E3E5561A3A
-Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
+	by mail.kernel.org (Postfix) with ESMTPS id ECFEB61ABD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 20:21:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ECFEB61ABD
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EfjNzUM/Ddd2wKFG/2qz3ttc2+g4doiOmBx8GNFblvY=; b=O9ZE79puzzS9vC
-	3ijbUTb7M5BdKEYR2j05UobFZRc5+j3AknBMrvpI3+DzGuVg2xeso4zLqmWfUpg8+qhefVGaBCEFW
-	TOwSEcwX651DTBzoqUL/nEnWe4qchxRuAPq8qnvuCL9jGMEcnHyCY9MaWtmts8GsT52RyV+rMguBW
-	SABl67JBWmNGw5OLsGE0i5eugA946UNmrL2CDNqwfNyUT4Ot/46JG0QKxa9JxSypY2ou0HdMcglE4
-	gWo1xsf03wjeZH7VPUss6V65gTYLeNqz1rnyxFrRpmvIMXyAcNuPg2+2cq9zTX8HK0QVaYBJf6zmG
-	QkpwGuRY9zgWmvFWCwAw==;
+	List-Owner; bh=rGFJe3rItleb9377h1QfOERMHer689F7OXGSu7tpQEY=; b=HRrh6Z6m0r0k7h
+	CrOQILdH57tG0D5muVWKXmZeoYarJ+ZLZGQfO1phzGUPCdnp6uiWZt4HGecItWdkFWh5nnJd1yYq0
+	qNlLN7TriLzwV2RVkVo7NLlk5ziBssjwniX+eAABRyZpsP1DeTtqtV6szK+cIWoGXJlhVowuQijBH
+	BdhN9EMk2QzoFi8+gxjAP7r0v9TGe9QS9T9QRtt+Nmfo86SbTOAbwLD5CLp7485xeFRjuMuc1HFS5
+	BqD2KIJXtLKJyVqXCLYH0zaStWCC6iFQgXyJjY1L8/qp3jybIdz1mx6EbcDofN20ZTlS6TN3/pw0d
+	FqS4uuE9ivHphYECg+1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mn2Fl-002SSu-Ec; Tue, 16 Nov 2021 17:28:17 +0000
-Received: from mail-pg1-f169.google.com ([209.85.215.169])
+	id 1mn4xP-002iF8-EL; Tue, 16 Nov 2021 20:21:31 +0000
+Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mn2Fj-002SS3-09
- for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 17:28:16 +0000
-Received: by mail-pg1-f169.google.com with SMTP id p17so18249472pgj.2
- for <linux-mediatek@lists.infradead.org>; Tue, 16 Nov 2021 09:28:14 -0800 (PST)
+ id 1mn4xB-002iD9-GY; Tue, 16 Nov 2021 20:21:19 +0000
+Received: by mail-ot1-x32c.google.com with SMTP id
+ g91-20020a9d12e4000000b0055ae68cfc3dso428568otg.9; 
+ Tue, 16 Nov 2021 12:21:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=MNU5uPxjn+7slB6v30//uhSN/kHUFZf1pbWCXTfuxkc=;
+ b=Kc5EtmkLFgfVOPPFngYcV9Xh0dWQDXhWHuD90qOVAZCEwOKRWeEpYW5zyIcjBnGmBL
+ h8IOX0Fh0uvGoeJz7at7JCjAlmKT9aub+jcuYkkYBJsruZ9K5L2i5qUOkxvfHNk8iQsG
+ z/4LArJ+Ll/8ASGgsNmljeur/kMPH5ZKZIHDPza3bALzBZLvowTjUSDyv72rNWtViqaS
+ FuDBGBwkNHt2NBmCUWXSih0EsOx1kZ/wQ5IZ89Fv74Hd12+YGcdIDTpXVbRfe3Dtwh7p
+ +srecF2UDDbEpDFvRhN0MrJZJ9zqhRCVZ32xB5QLj9nyXeRhao+QgPFkrUxKX12/l3EY
+ RK3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=NnBat/piQk+CrxO4bvowT9cpNN621Mj8K7d5Tfaa/N4=;
- b=BSik4UcmJVGOVsDeuifvJ+ywDYUnpte+t/zB+vNGq/fFoWWCpJ2wkL3M+gYrdJHJWb
- Bjk9/cwHOBnCFj9sZ9xugoUgJvIlC8u75cYbWeu9U6Qy/Zze11Jn/IcDf+pEOHhAqiQb
- FgkRjDMNKHKHteZw3X1GYGkJPQedLUjJQsfouzlHyq4J5JSQ2LSiQDhqWwU+aZs6/tE0
- aZnZpEX1wbJ06W6tl9FdDXP77KDOVKYr34/z0pFm6C0RWD/oE3MUu3Ba/cF4/1adDKec
- Zvot42mAlBnZZPPeZgydqMpTkZdtZYVNGy+GaumIKHKK68b46cBteGzpdWUZWlxN5kP/
- M6OQ==
-X-Gm-Message-State: AOAM530g8zd+0BUFFDA0iyAWTJ1TFTxO2O9NDLJFKq8U7gOYt/e9lANR
- HrDjI1OyXKUtNTHJCBAx1FY=
-X-Google-Smtp-Source: ABdhPJyGYen8t2lqhjhwyGs9XUkeL3jAqV0YqS082ul0kH2I4m3xoQFg+gL8pZfj6lyp8mx7rr/UkQ==
-X-Received: by 2002:a63:d74a:: with SMTP id w10mr387586pgi.341.1637083693686; 
- Tue, 16 Nov 2021 09:28:13 -0800 (PST)
-Received: from ?IPV6:2601:647:4000:d7:feaa:14ff:fe9d:6dbd?
- ([2601:647:4000:d7:feaa:14ff:fe9d:6dbd])
- by smtp.gmail.com with ESMTPSA id p43sm8988391pfw.4.2021.11.16.09.28.11
+ bh=MNU5uPxjn+7slB6v30//uhSN/kHUFZf1pbWCXTfuxkc=;
+ b=kwY82uc0PTEg/FHRtTT4CpoS0dUcamLjQ0tPMgQWw+XRyP/zL/mLKcB8zPm6A7Z5an
+ 78+qXeWUVhRNk0gB6MBNd+mHHtdalkBlyp+u9D4AzBNsQ8lSBekjvsGPqWUO9H6iylKP
+ DXg5vW6NMBX69iFPw28lfvWPp3rw9OLs6Ci2azrWlG/lEuCRx51EHBUXxf80nk7+Cp1K
+ 3xmR4cncK9yz/y7h3P7jtCFFJuXzvMXMHT7oZ5VPlYq/b1oqXGDhBYTDyh7aR54ouY+J
+ +rOvwKs8IXi5zag13urVj33bIpKhQBt5J0oiXeBpSseinD24YqrV4Wzus4jcWySdSlbr
+ Q+oA==
+X-Gm-Message-State: AOAM5301bAwh+ZhZxji4ltmMIgbo6a8yRhDRoGHW1Am2UTVLI/TICn9l
+ lKU1PjMTosmXfkW+GdrwQrg=
+X-Google-Smtp-Source: ABdhPJwDvm24qITUfktAE3pnK4QPKqP6e7by0HDu9aSWX/Pt5/6meUIhZfFtzlEmiot/XUyXB3vnTg==
+X-Received: by 2002:a9d:6254:: with SMTP id i20mr8441556otk.343.1637094076083; 
+ Tue, 16 Nov 2021 12:21:16 -0800 (PST)
+Received: from [172.16.0.2] ([8.48.134.30])
+ by smtp.googlemail.com with ESMTPSA id r11sm3915874oth.48.2021.11.16.12.21.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Nov 2021 09:28:12 -0800 (PST)
-Message-ID: <5c041d7f-dedb-f450-9ba8-683f36a55b30@acm.org>
-Date: Tue, 16 Nov 2021 09:28:10 -0800
+ Tue, 16 Nov 2021 12:21:15 -0800 (PST)
+Message-ID: <14eee606-427b-e0e4-abe2-de4e166c1585@gmail.com>
+Date: Tue, 16 Nov 2021 13:21:12 -0700
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.0
-Subject: Re: [PATCH v1] scsi: ufs: fix tm cmd timeout/ISR racing issue
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.3.1
+Subject: Re: [PATCH net-next v2] ipv6: don't generate link-local addr in
+ random or privacy mode
 Content-Language: en-US
-To: Peter Wang <peter.wang@mediatek.com>, stanley.chu@mediatek.com,
- linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
- alim.akhtar@samsung.com, jejb@linux.ibm.com
-Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
- chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
- chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
- jonathan.hsu@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
- mikebi@micron.com
-References: <20211111094939.14991-1-peter.wang@mediatek.com>
- <08cff383-d944-56f3-e61e-ad6fdf4bb885@acm.org>
- <f58d107c-df83-0293-dc26-cbaa30ee691f@mediatek.com>
-From: Bart Van Assche <bvanassche@acm.org>
-In-Reply-To: <f58d107c-df83-0293-dc26-cbaa30ee691f@mediatek.com>
+To: Rocco Yue <rocco.yue@mediatek.com>, "David S . Miller"
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Rocco.Yue@gmail.com, chao.song@mediatek.com, yanjie.jiang@mediatek.com,
+ kuohong.wang@mediatek.com, zhuoliang.zhang@mediatek.com, lorenzo@google.com,
+ maze@google.com, markzzzsmith@gmail.com
+References: <20211116060959.32746-1-rocco.yue@mediatek.com>
+From: David Ahern <dsahern@gmail.com>
+In-Reply-To: <20211116060959.32746-1-rocco.yue@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_092815_072412_2CD7B83E 
-X-CRM114-Status: UNSURE (   7.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211116_122117_593542_EBE460FA 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,22 +99,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/15/21 22:57, Peter Wang wrote:
-> By the way, we observe that 100ms TMC timeout value may not enough for
-> some device, maybe we need enlarge this value?
+On 11/15/21 11:09 PM, Rocco Yue wrote:
+> In the 3GPP TS 29.061, here is a description as follows:
+> "In order to avoid any conflict between the link-local address
+> of the MS and that of the GGSN, the Interface-Identifier used by
+> the MS to build its link-local address shall be assigned by the
+> GGSN. The GGSN ensures the uniqueness of this Interface-Identifier.
+> The MT shall then enforce the use of this Interface-Identifier by
+> the TE"
+> 
+> In other words, in the cellular network, GGSN determines whether
+> to reply a solicited RA message by identifying the bottom 64 bits
+> of the source address of the received RS message. Therefore,
+> cellular network device's ipv6 link-local address should be set
+> as the format of fe80::(GGSN assigned IID).
+> 
+> To meet the above spec requirement, this patch adds two new
+> addr_gen_mode:
+> 
+> 1) IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA, this mode is suitable
+> for cellular networks that support RFC7217. In this mode, the
+> kernel doesn't generate a link-local address for the cellular
+> NIC, and generates an ipv6 stable privacy global address after
+> receiving the RA message.
+> 
+> 2) IN6_ADDR_GEN_MODE_RANDOM_NO_LLA, in this mode, the kernel
+> doesn't generate a link-local address for the cellular NIC,
+> and will use the bottom 64 bits of the link-local address(same
+> as the IID assigned by GGSN) to form an ipv6 global address
+> after receiveing the RA message.
+> 
+> Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
+> ---
+> v1->v2: Add new addr_gen_mode instead of adding a separate sysctl.
+> 
+> v1 link:
+> https://patchwork.kernel.org/patch/12353465
+> 
+> ---
+>  include/uapi/linux/if_link.h       |  2 ++
+>  net/ipv6/addrconf.c                | 22 ++++++++++++++++------
+>  tools/include/uapi/linux/if_link.h |  2 ++
+>  3 files changed, 20 insertions(+), 6 deletions(-)
+> 
 
-Is that the TM_CMD_TIMEOUT constant? It surprises me that 100 ms is not 
-enough. Will increasing that constant have a negative impact on the 
-error handler in case it hits a task management timeout?
+Reviewed-by: David Ahern <dsahern@kernel.org>
 
-Thanks,
-
-Bart.
+you should add tests under tools/testing/selftests/net.
 
 _______________________________________________
 Linux-mediatek mailing list
