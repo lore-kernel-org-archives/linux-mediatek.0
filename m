@@ -2,102 +2,75 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F3575C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 09:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 869E2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 09:34:23 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 9F19361268
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 09:24:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9F19361268
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 3E5AC61B29
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 09:34:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 3E5AC61B29
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q05OfZ2wPGOEfqOwk8wbBIMkBi7DcSM3jiRlSxcl0A0=; b=lWpdlstzHGWQUo
-	TE9thrHcV57kl8iND0LGm5kSZc71ufUnGQXLPh1sxqgNbg/nnb/77X8XYkMZecvcQ84AYRnuDCv2b
-	/9sT/PbjUV+RvSX6VE4JE1F1I7mtmEHMRDRPMgLwSlw9jCtK1/DiXfmObswfOW3JtSl+avFAwlP+L
-	Px0tQ7SHCGzjK/u+prY00991KzIz7aXtMGDGnxMkL+ZiHeBV3Cuoqhn4uq0ds7I8diOtik16fl1WU
-	nsiES7jQEnglvYMG6ZWKqAimG7vCKMjfOzDz317RNq0sGlPuA1PA5vYn/UCmRVonVxT/iZDqjeMHe
-	Xx5wOC0jBq9QMhPpBmCA==;
+	List-Owner; bh=+XGFh7uXiRY5TNiQhL3QXh+3AGdSlXTqXj2UzTDyJHk=; b=cfPSOh9N2EcL9T
+	FR0Jt1ILE2vtGo3Oz9fXQILt0RggGvpGynslZRDYbjuPq4ysZpvJo2WD64pUXPSf+NKwRjf2kxGI5
+	XJpNV02mQbzayPXjSSwHP0TN1cs57cwrNDLeCYa8O/Yfj+6iyR4m/bFtTQFJ5/ePN6/GRIHzJGAp/
+	DnEH7aUo/VR+HexXawMG9aKEGVYC1PQawAE0rzrSRvtsDwGW88VX1s0S/or2okzBzMGB5GxmqYsPz
+	xlFK4j8gUmUKReycWOtmJYjqVdAe44aeJGIARoomaSD6AnD54JI8sFHXJvq++2Fd21HzU/FTLuTMb
+	5eddGYI/BVPd1Fz9vhAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mmuhM-000vxM-Hn; Tue, 16 Nov 2021 09:24:16 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1mmur1-000xsB-Ln; Tue, 16 Nov 2021 09:34:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mmuh4-000vp8-7S
- for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 09:24:00 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id
- gx15-20020a17090b124f00b001a695f3734aso2347693pjb.0
- for <linux-mediatek@lists.infradead.org>; Tue, 16 Nov 2021 01:23:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=JdEMwmLbE8ijaOcyvInpNB1TS9ZsRB8t990UrAoOL8A=;
- b=fe0ZGJQeN7Url5AKk+j2zdvAGruKSYNai39pEaFWqHnJIOnKJfV/kTo8Wh8lh59xiH
- 8/o1hU4Yz7FcLQ9rcWAjYaCZODWFNhVJ2EGY/q/jBeNmYO6Ca+Vmaqd7CP8vlWdE4tU+
- jLCk7z7BdgnZOFjo2wg7H8JTkzMqm3Yk/7jnN4o24X/YVKjSUPnzhIbY6Knb4cWejE00
- HPJ8NTmmPeI8G4YIGLPNUIFi8FA/KGcD8Acpgy3ewMqijMqOE1Ks/XzF49rBq3v3YJia
- MnEtL4HctRPmUJ/8hu6Ey8ymUpkD/lcR877YuoKVogHqp8TaazOvhjA8Bw960iKP9D7E
- UXeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=JdEMwmLbE8ijaOcyvInpNB1TS9ZsRB8t990UrAoOL8A=;
- b=tfVCtLy7L8TOJ9neNIzTpXIAO3InVSgMQR0ANW0obbO0qyL+9I+TcLzliamZUi0xyP
- dTNyRtxafnxRpUstmd/F/h+bEX11t0zDrEiIZmhZs3hg28Q//vN6ubnGjWKg4+KVkGiP
- bxgqAL9l2lamB8TFwSfrqs/7/jS+wtP3dugSrUR/qCw6iNMVJbCKcZAjiHWgZGlIY6nL
- fOEak/gjydRyAIfKCNedEqMg/io57hxwZ1Q9YaxcMkP5k+S2Qr1JjTdKFEbE6nTdAPyv
- uPL4XJ1hTyTd/B1Z/Dw7cwSmNSAsdDkCIkHSI7lEyyJg8qGT6zYyMVzxPBhtXl0l1OAJ
- ryEA==
-X-Gm-Message-State: AOAM531o2lFxXJBnLYFnDjx/bS28ab+mG6wujxjWOBt4VRBKMW1GQblr
- 2VWsS6+l9Oy2tlOUzuy2yhEOHQ==
-X-Google-Smtp-Source: ABdhPJy5ql8s235iv7snHx2jySPMAYbzM52dbYj6ER4JLWiOJSaMhOef0AUaH+R8AtGl27WB7+3O7w==
-X-Received: by 2002:a17:90b:4b09:: with SMTP id
- lx9mr74396151pjb.100.1637054635286; 
- Tue, 16 Nov 2021 01:23:55 -0800 (PST)
-Received: from google.com ([2401:fa00:1:10:f590:685a:7893:90be])
- by smtp.gmail.com with ESMTPSA id p2sm1760784pja.55.2021.11.16.01.23.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 16 Nov 2021 01:23:54 -0800 (PST)
-Date: Tue, 16 Nov 2021 17:23:49 +0800
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>
-Cc: Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>,
- dri-devel <dri-devel@lists.freedesktop.org>,
- Irui Wang <irui.wang@mediatek.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [PATCH v10, 06/19] media: mtk-vcodec: Manage multi hardware
- information
-Message-ID: <YZN4pVLDfAU2O893@google.com>
-References: <20211111041500.17363-1-yunfei.dong@mediatek.com>
- <20211111041500.17363-7-yunfei.dong@mediatek.com>
+ id 1mmuqy-000xrF-BQ; Tue, 16 Nov 2021 09:34:14 +0000
+X-UUID: 3ecb68a4b85248f5819977e129257652-20211116
+X-UUID: 3ecb68a4b85248f5819977e129257652-20211116
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <trevor.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1316953904; Tue, 16 Nov 2021 02:34:02 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Nov 2021 01:34:01 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 16 Nov 2021 17:33:48 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 16 Nov 2021 17:33:48 +0800
+Message-ID: <f915d1090abf2b6d188ce27068919a181828e463.camel@mediatek.com>
+Subject: Re: [PATCH 3/4] ASoC: mediatek: mt8195: separate the common code
+ from machine driver
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: YC Hung <yc.hung@mediatek.com>, Mark Brown <broonie@kernel.org>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+CC: <devicetree@vger.kernel.org>, <alsa-devel@alsa-project.org>,
+ <tiwai@suse.com>, <linux-kernel@vger.kernel.org>, <robh+dt@kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <matthias.bgg@gmail.com>,
+ <daniel.baluta@nxp.com>, <linux-arm-kernel@lists.infradead.org>
+Date: Tue, 16 Nov 2021 17:33:48 +0800
+In-Reply-To: <4e876c89ee58cd1408511a34573005e3df359cd0.camel@mediatek.com>
+References: <20211103100040.11933-1-trevor.wu@mediatek.com>
+ <20211103100040.11933-4-trevor.wu@mediatek.com>
+ <YYP+l7tMofYoB+aC@sirena.org.uk>
+ <b4360ea17c3045759e85ee13fa9c001afe73c93c.camel@mediatek.com>
+ <YYVQC7KLZx8oxdXT@sirena.org.uk>
+ <e404d241-0685-643b-4b9d-d85bb8783385@linux.intel.com>
+ <YYVez/V9ocCXhYmg@sirena.org.uk>
+ <4e876c89ee58cd1408511a34573005e3df359cd0.camel@mediatek.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211111041500.17363-7-yunfei.dong@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_012358_294301_40BDC5EC 
-X-CRM114-Status: GOOD (  37.16  )
+X-CRM114-CacheID: sfid-20211116_013412_437120_27208A2F 
+X-CRM114-Status: GOOD (  36.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,145 +87,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 11, 2021 at 12:14:47PM +0800, Yunfei Dong wrote:
-> Register each hardware(subdev) as platform device used to manage each
-> hardware information which includes irq/power/clk. The hardware includes
-> LAT0, LAT1 and CORE. And call of_platform_populate in main device.
+On Mon, 2021-11-08 at 17:40 +0800, YC Hung wrote:
+> Hi Mark,
 > 
-> Using subdev_bitmap to record whether each device is register done. Then check
-> whether all subdev are register done before open main device.
+> I am YC Hung from Mediatek. Let me show our block diagram as the link
+> below for the sound card which support SOF.
+> 
+> 
+https://user-images.githubusercontent.com/62316/132476344-923dfe3a-5305-43e5-9fc8-c63d9ab2c58f.png
+> In this sound card, there are two components , one is SOF based
+> component and another is non-SOF based component(called Normal in the
+> block).
+> We want to reuse some BEs of Normal which can control Mediatek Audio
+> Front End hardware power, clock , and DAI module and still keep some
+> FEs(e.g. DPTX) then we can use it on the same sound card.
+> Therefore, we use late_probe callback function
+> "mt8195_mt6359_rt1019_rt5682_card_late_probe" to add route path from
+> SOF widget to non-SOF BEs.
+> For two patches https://github.com/thesofproject/linux/pull/3217 and 
+> https://github.com/thesofproject/linux/pull/3236, we want to keep FEs
+> of non-SOF components and can reuse them. Please let me know if I am
+> not clear enough.Thanks.
+> 
+> On Fri, 2021-11-05 at 16:41 +0000, Mark Brown wrote:
+> > On Fri, Nov 05, 2021 at 11:16:05AM -0500, Pierre-Louis Bossart
+> > wrote:
+> > > On 11/5/21 10:38 AM, Mark Brown wrote:
+> > > > We shouldn't be requiring people to load completely different
+> > > > drivers
+> > > > based on software configuration, what if a system wants to
+> > > > bypass
+> > > > the
+> > > > DSP in some but not all configurations?  Can we not just have
+> > > > controls
+> > > > allowing users to route round the DSP where appropriate?
+> > > 
+> > > It was my understanding the card relies on separate components
+> > > - a SOF-based component to provide support for DSP-managed
+> > > interfaces
+> > > - a 'non-SOF' component for 'regular' interfaces not handled by
+> > > the
+> > > DSP.
+> > > this was the basis for the changes discussed in
+> > > https://github.com/thesofproject/linux/pull/3217 and
+> > > https://github.com/thesofproject/linux/pull/3236
+> > 
+> > So it's actually supposed to end up as two different cards which
+> > can't
+> > possibly be interlinked?  That doesn't seem to add up entirely
+> > given
+> > that there's stuff being moved out of the current card, and I
+> > thought
+> > these systems had a fairly comprehensive audio muxing capability.
+> > Trevor, could you be a bit more specific about what's actually
+> > going
+> > on
+> > here physically please?+++++++++
+> > 
 
-I can somehow understand what the patch is trying to do but the commit message needs to be rephrased for people to understand the patch.
+Hi Mark,
 
-> --- a/drivers/media/platform/mtk-vcodec/Makefile
-> +++ b/drivers/media/platform/mtk-vcodec/Makefile
-> @@ -2,7 +2,8 @@
->  
->  obj-$(CONFIG_VIDEO_MEDIATEK_VCODEC) += mtk-vcodec-dec.o \
->  				       mtk-vcodec-enc.o \
-> -				       mtk-vcodec-common.o
-> +				       mtk-vcodec-common.o \
-> +					   mtk-vcodec-dec-hw.o
+Is the reply from YC clear? Any suggestion would be appreciated. If you
+need more information, please let us know. 
 
-Looks better to align to previous lines.
+Additionally, it was my understanding you suggested that DSP routes
+should be configurable in some ways, and we should not just add a new
+driver for SOF in case we need to support some other interface
+combinations in the future. If I'm wrong, please kindly correct me.
 
-> +static int mtk_vcodec_subdev_device_check(struct mtk_vcodec_ctx *ctx)
-> +{
-> +	struct mtk_vcodec_dev *vdec_dev = ctx->dev;
+Thanks,
+Trevor
 
-ctx isn't used in other places.  Looks like the function can accept "struct mtk_vcodec_dev *vdec_dev" as the only argument.
 
-> +	for (i = 0; i < ARRAY_SIZE(mtk_vdec_hw_match); i++) {
-> +		of_id = &mtk_vdec_hw_match[i];
-> +		subdev_node = of_find_compatible_node(NULL, NULL,
-> +			of_id->compatible);
-> +		if (!subdev_node)
-> +			continue;
-
-Does it really need to continue if one of the sub-devices is not ready?
-
-It depends on whether mtk_vdec_hw_match is a must list or not.  For example, if mtk_vdec_hw_match has 4 entries but the DT only has 2 entries, shall it return an error about the entry count mismatch?
-
-> +		if (!of_device_is_available(subdev_node)) {
-> +			of_node_put(subdev_node);
-> +			dev_err(&pdev->dev, "Fail to get subdev node\n");
-> +			continue;
-
-The error message shouldn't be "Fail to get ...".  Also the same question: does it really need to continue?
-
-> +		hw_idx = (enum mtk_vdec_hw_id)(uintptr_t)of_id->data;
-> +		vdec_dev->subdev_node[hw_idx] = subdev_node;
-
-I am wondering if it wouldn't need subdev_node.  Isn't vdec_dev->subdev_dev sufficient to clue all the things?
-
-> +		if (!test_bit(hw_idx, vdec_dev->subdev_bitmap)) {
-> +			of_node_put(subdev_node);
-> +			dev_err(&pdev->dev, "Vdec %d is not ready", hw_idx);
-> +			return -EAGAIN;
-> +		}
-> +		of_node_put(subdev_node);
-> +	}
-> +
-> +	return 0;
-> +}
-
-In addition to the question for subdev_node.  The function calls of_node_put() for every paths.  I am not sure if the function should call of_node_put() in non-error-handling paths (i.e. I thought it needs someone to hold the reference count).
-
-By reading [v10,11/19] media: mtk-vcodec: Generalize power and clock on/off interfaces[1], the mtk_vcodec_get_hw_dev() calls of_node_put() after it gets the hw_pdev.  Looks like the code is meant to borrow the reference count to mtk_vcodec_get_hw_dev().
-
-In short, if the subdev_node is designed to borrow reference count to others, mtk_vcodec_subdev_device_check() shouldn't call of_node_put() in non-error-handling paths.
-
-[1]: https://patchwork.linuxtv.org/project/linux-media/patch/20211111041500.17363-12-yunfei.dong@mediatek.com/
-
-> @@ -249,32 +322,10 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
-[...]
-> +	ret = mtk_vcodec_init_dec_resources(dev);
->  	if (ret) {
-> -		dev_err(&pdev->dev, "Failed to install dev->dec_irq %d (%d)",
-> -			dev->dec_irq,
-> -			ret);
-> -		goto err_res;
-> +		dev_err(&pdev->dev, "Failed to init pm and registers");
-
-The error message makes less sense about mentioning pm and registers.
-
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-[...]
-> +static int mtk_vdec_hw_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_vdec_hw_dev *subdev_dev;
-> +	struct mtk_vcodec_dev *main_dev;
-> +	const struct of_device_id *of_id;
-> +	int hw_idx;
-> +	int ret;
-> +
-> +	if (!dev->parent)
-> +		return -EPROBE_DEFER;
-
-IIUC, it shouldn't happen because the deivce is populated from main device.  Moreover, would it help to defer the probe if dev->parent is NULL?
-
-> +	main_dev = dev_get_drvdata(dev->parent);
-> +	if (!main_dev)
-> +		return -EPROBE_DEFER;
-
-Share the same concern with comment above.
-
-> +static struct platform_driver mtk_vdec_driver = {
-> +	.probe	= mtk_vdec_hw_probe,
-> +	.driver	= {
-> +		.name	= "mtk-vdec-comp",
-> +		.of_match_table = mtk_vdec_hw_match,
-> +	},
-> +};
-> +
-> +module_platform_driver(mtk_vdec_driver);
-
-I prefer to remove the blank line in between mtk_vdec_driver and module_platform_driver.
-
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-[...]
-> @@ -423,6 +436,11 @@ struct mtk_vcodec_enc_pdata {
->   * @pm: power management control
->   * @dec_capability: used to identify decode capability, ex: 4k
->   * @enc_capability: used to identify encode capability
-> + *
-> + * @subdev_dev: subdev hardware device
-> + * @subdev_node: subdev node
-> + *
-> + * @subdev_bitmap: used to record hardware is ready or not
->   */
->  struct mtk_vcodec_dev {
->  	struct v4l2_device v4l2_dev;
-> @@ -460,6 +478,11 @@ struct mtk_vcodec_dev {
->  	struct mtk_vcodec_pm pm;
->  	unsigned int dec_capability;
->  	unsigned int enc_capability;
-> +
-> +	void *subdev_dev[MTK_VDEC_HW_MAX];
-> +	struct device_node *subdev_node[MTK_VDEC_HW_MAX];
-
-The same question: if it already has subdev_dev, does it still need subdev_node?
 
 _______________________________________________
 Linux-mediatek mailing list
