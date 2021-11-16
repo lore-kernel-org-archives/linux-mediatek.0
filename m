@@ -2,78 +2,83 @@ Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 21B4BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 16:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 317B9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 17:28:28 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E6BF661A52
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 16:50:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E6BF661A52
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id E3E5561A3A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 17:28:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E3E5561A3A
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=acm.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jk+B9aZjc+eBh/LZ/yiHCG2kHdCiOyk608icmRJkzvM=; b=bOuwaQBtTBZgON
-	eV42dzTh/5wD5AvChK9Sx1qrDO+jn+rINhJjrwiJiSjJGRKp43Y3HRcrad03Y5MIjRYAxvsdrtHEi
-	wawa/CJFw1SfWZzzao1gdiyJqr9HReqlorutmPhEAucx4WGvazLJUDTF0fSTixrFOLmz/O1jLvYRw
-	LsQbST3lKEp+zbnOYWXpA73N5k41J3n26PB6s6i/p0HF/4iE+ZmsNR7dWwmS/Zgp7yruWHmowmLno
-	+suDwyCzdki76WfeK7xFe2++7/PHTcI8mCIW9o6mbceIcF5+QDZTA8ZE/sfOrAhtfJPvFQNfA2agJ
-	Q0jUCVLoffg498/19rlg==;
+	List-Owner; bh=EfjNzUM/Ddd2wKFG/2qz3ttc2+g4doiOmBx8GNFblvY=; b=O9ZE79puzzS9vC
+	3ijbUTb7M5BdKEYR2j05UobFZRc5+j3AknBMrvpI3+DzGuVg2xeso4zLqmWfUpg8+qhefVGaBCEFW
+	TOwSEcwX651DTBzoqUL/nEnWe4qchxRuAPq8qnvuCL9jGMEcnHyCY9MaWtmts8GsT52RyV+rMguBW
+	SABl67JBWmNGw5OLsGE0i5eugA946UNmrL2CDNqwfNyUT4Ot/46JG0QKxa9JxSypY2ou0HdMcglE4
+	gWo1xsf03wjeZH7VPUss6V65gTYLeNqz1rnyxFrRpmvIMXyAcNuPg2+2cq9zTX8HK0QVaYBJf6zmG
+	QkpwGuRY9zgWmvFWCwAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mn1fF-002PJ7-Ri; Tue, 16 Nov 2021 16:50:33 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mn2Fl-002SSu-Ec; Tue, 16 Nov 2021 17:28:17 +0000
+Received: from mail-pg1-f169.google.com ([209.85.215.169])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mn1f4-002PGP-3S; Tue, 16 Nov 2021 16:50:23 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 8C1EB619BB;
- Tue, 16 Nov 2021 16:50:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637081421;
- bh=mariJGJLRCU1V8U+1zEQDC5Ctn63ipS/SXz7gKdrEJY=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=URYP1lNgzTC7I0AONpafX2DmXTz/LIpjEjSlEj6zUe6r98sT1Uq5Q8TVH0nR6Y6hj
- PxSYXxaxYEYy3AWKu0e27AcRZdELlwc64BRZsbYfU0f0mItA32Z+aYxKSTvRGua5nW
- +l/16Zc5umP+RVX+1AC7hwjiWfBS0HaACNqSqExEh9pzqStgjAIjD3IabAuGV3gdWz
- 7tb/+Mf/6lF2Jxg58V0JxhO7foZJAyPP5/BWvnby69wes1OXhN2mXMaSCtRqtpeLi4
- s21SNqlBuNAXp4EiNRUPxkRvhQYra7FIms6cQQXmhVUN2GCchZ8wtzFd7nzCJLUV+/
- FJecgFbodz2mw==
-Received: by mail-ed1-f51.google.com with SMTP id m20so44911666edc.5;
- Tue, 16 Nov 2021 08:50:21 -0800 (PST)
-X-Gm-Message-State: AOAM53078ornqsIPpvYnNJr9qYuGqjykvxjsqTcK28ZmKf9VM0RxqRW2
- Kfw0YsyWuhWNinabmLWh1Pp8h2tvHjispAIhqg==
-X-Google-Smtp-Source: ABdhPJwpeeor9bitplv96OWutWrM/OLr2WsQy9llndEbBRodAS9WBBUdGUQgDXJ0BT5D5eEOLQjQxhlVbVhuQKqgH9g=
-X-Received: by 2002:a17:907:16ac:: with SMTP id
- hc44mr11230766ejc.363.1637081419992; 
- Tue, 16 Nov 2021 08:50:19 -0800 (PST)
+ id 1mn2Fj-002SS3-09
+ for linux-mediatek@lists.infradead.org; Tue, 16 Nov 2021 17:28:16 +0000
+Received: by mail-pg1-f169.google.com with SMTP id p17so18249472pgj.2
+ for <linux-mediatek@lists.infradead.org>; Tue, 16 Nov 2021 09:28:14 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=NnBat/piQk+CrxO4bvowT9cpNN621Mj8K7d5Tfaa/N4=;
+ b=BSik4UcmJVGOVsDeuifvJ+ywDYUnpte+t/zB+vNGq/fFoWWCpJ2wkL3M+gYrdJHJWb
+ Bjk9/cwHOBnCFj9sZ9xugoUgJvIlC8u75cYbWeu9U6Qy/Zze11Jn/IcDf+pEOHhAqiQb
+ FgkRjDMNKHKHteZw3X1GYGkJPQedLUjJQsfouzlHyq4J5JSQ2LSiQDhqWwU+aZs6/tE0
+ aZnZpEX1wbJ06W6tl9FdDXP77KDOVKYr34/z0pFm6C0RWD/oE3MUu3Ba/cF4/1adDKec
+ Zvot42mAlBnZZPPeZgydqMpTkZdtZYVNGy+GaumIKHKK68b46cBteGzpdWUZWlxN5kP/
+ M6OQ==
+X-Gm-Message-State: AOAM530g8zd+0BUFFDA0iyAWTJ1TFTxO2O9NDLJFKq8U7gOYt/e9lANR
+ HrDjI1OyXKUtNTHJCBAx1FY=
+X-Google-Smtp-Source: ABdhPJyGYen8t2lqhjhwyGs9XUkeL3jAqV0YqS082ul0kH2I4m3xoQFg+gL8pZfj6lyp8mx7rr/UkQ==
+X-Received: by 2002:a63:d74a:: with SMTP id w10mr387586pgi.341.1637083693686; 
+ Tue, 16 Nov 2021 09:28:13 -0800 (PST)
+Received: from ?IPV6:2601:647:4000:d7:feaa:14ff:fe9d:6dbd?
+ ([2601:647:4000:d7:feaa:14ff:fe9d:6dbd])
+ by smtp.gmail.com with ESMTPSA id p43sm8988391pfw.4.2021.11.16.09.28.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 16 Nov 2021 09:28:12 -0800 (PST)
+Message-ID: <5c041d7f-dedb-f450-9ba8-683f36a55b30@acm.org>
+Date: Tue, 16 Nov 2021 09:28:10 -0800
 MIME-Version: 1.0
-References: <20210716081731.80118-1-gene.chen.richtek@gmail.com>
- <20210716081731.80118-3-gene.chen.richtek@gmail.com>
- <20211115140343.GA13493@duo.ucw.cz>
-In-Reply-To: <20211115140343.GA13493@duo.ucw.cz>
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 16 Nov 2021 10:50:08 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqJRMVE163LaHTbtFARc4f_qg33bfQx+sD3ukce_xQF+gA@mail.gmail.com>
-Message-ID: <CAL_JsqJRMVE163LaHTbtFARc4f_qg33bfQx+sD3ukce_xQF+gA@mail.gmail.com>
-Subject: Re: [PATCH v15 2/2] leds: mt6360: Add LED driver for MT6360
-To: Pavel Machek <pavel@ucw.cz>, Gene Chen <gene.chen.richtek@gmail.com>
-Cc: Jacek Anaszewski <jacek.anaszewski@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Dan Murphy <dmurphy@ti.com>, Linux LED Subsystem <linux-leds@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Gene Chen <gene_chen@richtek.com>, Wilma.Wu@mediatek.com,
- =?UTF-8?B?c2h1ZmFuX2xlZSjmnY7mm7jluIYp?= <shufan_lee@richtek.com>, 
- =?UTF-8?B?Y3lfaHVhbmco6buD5ZWf5Y6fKQ==?= <cy_huang@richtek.com>, 
- benjamin.chao@mediatek.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.0
+Subject: Re: [PATCH v1] scsi: ufs: fix tm cmd timeout/ISR racing issue
+Content-Language: en-US
+To: Peter Wang <peter.wang@mediatek.com>, stanley.chu@mediatek.com,
+ linux-scsi@vger.kernel.org, martin.petersen@oracle.com, avri.altman@wdc.com,
+ alim.akhtar@samsung.com, jejb@linux.ibm.com
+Cc: wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org,
+ chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com,
+ chaotian.jing@mediatek.com, jiajie.hao@mediatek.com, powen.kao@mediatek.com,
+ jonathan.hsu@mediatek.com, qilin.tan@mediatek.com, lin.gui@mediatek.com,
+ mikebi@micron.com
+References: <20211111094939.14991-1-peter.wang@mediatek.com>
+ <08cff383-d944-56f3-e61e-ad6fdf4bb885@acm.org>
+ <f58d107c-df83-0293-dc26-cbaa30ee691f@mediatek.com>
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <f58d107c-df83-0293-dc26-cbaa30ee691f@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_085022_206393_BF9186DA 
-X-CRM114-Status: GOOD (  10.98  )
+X-CRM114-CacheID: sfid-20211116_092815_072412_2CD7B83E 
+X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,38 +90,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 15, 2021 at 8:04 AM Pavel Machek <pavel@ucw.cz> wrote:
->
-> On Fri 2021-07-16 16:17:31, Gene Chen wrote:
-> > From: Gene Chen <gene_chen@richtek.com>
-> >
-> > Add MT6360 LED driver include 2-channel Flash LED with torch/strobe mode,
-> > 3-channel RGB LED support Register/Flash/Breath Mode, and 1-channel for
-> > moonlight LED.
-> >
-> > Signed-off-by: Gene Chen <gene_chen@richtek.com>
-> > Acked-by: Jacek Anaszewski <jacek.anaszewski@gmail.com>
->
-> Thanks, applied.
+On 11/15/21 22:57, Peter Wang wrote:
+> By the way, we observe that 100ms TMC timeout value may not enough for
+> some device, maybe we need enlarge this value?
 
-Now linux-next is broken:
+Is that the TM_CMD_TIMEOUT constant? It surprises me that 100 ms is not 
+enough. Will increasing that constant have a negative impact on the 
+error handler in case it hits a task management timeout?
 
-Error: Documentation/devicetree/bindings/leds/leds-mt6360.example.dts:114.24-25
-syntax error
-FATAL ERROR: Unable to parse input tree
-make[1]: *** [scripts/Makefile.lib:385:
-Documentation/devicetree/bindings/leds/leds-mt6360.example.dt.yaml]
-Error 1
+Thanks,
 
-I may have reviewed this, but the last 2 versions didn't go to DT list
-and no checks ran.
-
-Rob
+Bart.
 
 _______________________________________________
 Linux-mediatek mailing list
