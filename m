@@ -2,14 +2,14 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5A3E3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E2270C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:18:33 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 26B3863214
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:17:31 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 26B3863214
+	by mail.kernel.org (Postfix) with ESMTPS id A94ED63244
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:18:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A94ED63244
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,24 +18,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d3fAEXT5DarZomTpMKbGceP1BBTNaMc8b7xQszb+y30=; b=OS5ROyhy/oAotl
-	UW5Jowjb9YI+r/4jHJpmQNxZzk6mYhGr3TJoP3WyNXYtDTycpFyzbcORX0YnsHWek7krPFcpqq6ip
-	gsaYDUGA5aqw9yi3zCJfGYPtClcsGd5ym0HonkWf1cz+qH6nbLx0qltXOvFElL0fvISYV/l/VcZYN
-	EnjVQr6L9l+0BfWOQ0XW6Q35YJMWbg70xvoUaHl+zX/fz/xIBtXPR2qJj/dpb4U8IWnyBD+WmzLQs
-	2DrWtUCJu4JtnBiRfOTy3CeVV304HliaLkOBxTIcbJ59uObAno1toEn10Cc4aQV3/3Uun5NonzNTs
-	tP2Hs+1/COQi1wNKZ4yw==;
+	List-Owner; bh=mbEXez6fJNM4IegAy5nqnUmKQqXV0krOEnNFobL+4dI=; b=30BZV/AOuJPBrC
+	yoSE52u4JTZ9S+I4zgnLO4QgtPP6uixaTN6h4JTh6yAXtlcP2+mGahRpitEqSgtvWGdoqQPak7wXk
+	H3IWuEkA4MaB/Vq4gZCV0UdRLcUTeszD19ujFIgdR6KWIMGTjkllLu1dRFb/Kuy32lxnmv54HoGuA
+	QtsgmsXLAjtSnL14qvCuAhkd9Xc+meiqCz69Wi3Te2X2XPbYiWrnRSo/6ISH2E9lAtTMbAR4F1pVT
+	UqX1ehGaBJcl1M88x8cCTTya99c5A1xiTvs3faw743G1kdJxodxAOfptNgjcWbtIhmlrPdqPbK0fJ
+	o5uyMEerQm0Ho7fZ/awg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnH4G-004AQo-C4; Wed, 17 Nov 2021 09:17:24 +0000
+	id 1mnH5G-004Ay4-AS; Wed, 17 Nov 2021 09:18:26 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnGwn-00473a-Nw; Wed, 17 Nov 2021 09:09:43 +0000
-X-UUID: 6be24f76f056464e845b553cd6a0d1bd-20211117
-X-UUID: 6be24f76f056464e845b553cd6a0d1bd-20211117
+ id 1mnGwo-00474U-Ep; Wed, 17 Nov 2021 09:09:43 +0000
+X-UUID: 8d214f5043834c0e8b1df1db93220cec-20211117
+X-UUID: 8d214f5043834c0e8b1df1db93220cec-20211117
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2052931026; Wed, 17 Nov 2021 02:09:30 -0700
+ with ESMTP id 306481718; Wed, 17 Nov 2021 02:09:30 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 17 Nov 2021 00:59:28 -0800
@@ -57,17 +57,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v8 16/22] drm/mediatek: add display merge async reset control
-Date: Wed, 17 Nov 2021 16:59:13 +0800
-Message-ID: <20211117085919.28691-17-nancy.lin@mediatek.com>
+Subject: [PATCH v8 18/22] drm/mediatek: add mediatek-drm plane color encoding
+ info
+Date: Wed, 17 Nov 2021 16:59:15 +0800
+Message-ID: <20211117085919.28691-19-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211117085919.28691-1-nancy.lin@mediatek.com>
 References: <20211117085919.28691-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_010941_839097_9ABF62A2 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20211117_010942_552195_DB5E41FC 
+X-CRM114-Status: GOOD (  11.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,37 +85,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add merge async reset control in mtk_merge_stop. Async hw doesn't do self
-reset on each sof signal(start of frame), so need to reset the async to
-clear the hw status for the next merge start.
+Add plane color encoding information for color space conversion.
+It's a preparation for adding support for mt8195 ovl_adaptor mdp_rdma
+csc control.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_disp_merge.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_drm_plane.c | 1 +
+ drivers/gpu/drm/mediatek/mtk_drm_plane.h | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_disp_merge.c b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-index dff2797a2f68..d64846c38fe1 100644
---- a/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-+++ b/drivers/gpu/drm/mediatek/mtk_disp_merge.c
-@@ -8,6 +8,7 @@
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
- #include <linux/platform_device.h>
-+#include <linux/reset.h>
- #include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk_drm_ddp_comp.h"
-@@ -79,6 +80,9 @@ void mtk_merge_stop(struct device *dev)
- 	struct mtk_disp_merge *priv = dev_get_drvdata(dev);
- 
- 	mtk_merge_stop_cmdq(dev, NULL);
-+
-+	if (priv->async_clk)
-+		device_reset_optional(dev);
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+index 734a1fb052df..81bd5d6e8df5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
+@@ -137,6 +137,7 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
+ 	mtk_plane_state->pending.width = drm_rect_width(&new_state->dst);
+ 	mtk_plane_state->pending.height = drm_rect_height(&new_state->dst);
+ 	mtk_plane_state->pending.rotation = new_state->rotation;
++	mtk_plane_state->pending.color_encoding = new_state->color_encoding;
  }
  
- void mtk_merge_start_cmdq(struct device *dev, struct cmdq_pkt *cmdq_pkt)
+ static void mtk_plane_atomic_async_update(struct drm_plane *plane,
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+index d454bece9535..2d5ec66e3df1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
++++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
+@@ -24,6 +24,7 @@ struct mtk_plane_pending_state {
+ 	bool				dirty;
+ 	bool				async_dirty;
+ 	bool				async_config;
++	enum drm_color_encoding		color_encoding;
+ };
+ 
+ struct mtk_plane_state {
 -- 
 2.18.0
 
