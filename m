@@ -2,81 +2,73 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 7E3ABC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 07:22:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BDF05C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 07:23:01 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 447B861B08
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 07:22:58 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 447B861B08
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id 84CE161B08
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 07:23:01 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 84CE161B08
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4t2sJz2ES/nZGwUS80uDqctrM+cSbwyw5UNbvlqW+qw=; b=rWGp/eaWScAgoG
-	XOhiMcul2aPciHrsMiLWol3EBzCgJh3hjbqmWZ+OUFdYr2vhxL/20xDksyDTg9Jw59ZXhff/fLVh1
-	ZypzyXDHkqgfHKKWR9fBCf1W5jQyqDT08UkvknIay8MfhAKsYW+44RYH3D1P2dfSi7L6VIRIq2coT
-	AvFxthrdHaNvxleM0b18JNcXyBT/4ZA9Y9uwyyAXQgdBLNvkvvHC9sTJ42bkKLgSQAaygMKyp+6RU
-	CV0rooWUkn8VeJ49rzD7KdcONyfXvRvgOfKgseD7hV6bQ+pK+7I0bP5Smn4+kfgl1SYvHRZIB1vrR
-	RbQrjkBjqZpKflY7A/pQ==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=OK5xgEvJP40/P0AxDwbqSANLArxb/3PB+sKWuEo41eE=; b=KQCE25QldsP6iL
+	OfZfgB9ySGpypuTSbAqGhObCUF/T6CD8f61CQhtI7HZ8yehQztgM/bhYa4KL06tZW498UASLUGJP2
+	11ovTibgQXJbGoXv10ouqPx1T03lhaqngbh03vBI8V4bQHPrAZKBAjzb7eVnenfeO/7ed4LChViIR
+	8fXpEJw+oS2NgO9YMAFjSAhW08JPXQCO02ngn52bVX50KDADo+6AACw9VejGEXMCzREpsc2Sohnxk
+	pue89DSBco2Qw7WlE73X/k8MZARMwyQeubYw81KEx73cqGvZMQ0TVFPmoFqKoXnSbJLRSjzm/6oB6
+	oA/Mbk76EqyDTtflIy2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnFHN-003ksH-Og; Wed, 17 Nov 2021 07:22:49 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1mnFHR-003ktw-Nf; Wed, 17 Nov 2021 07:22:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnFGr-003kg6-Ge; Wed, 17 Nov 2021 07:22:19 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id
- gb13-20020a17090b060d00b001a674e2c4a8so1772450pjb.4; 
- Tue, 16 Nov 2021 23:22:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id;
- bh=7jRgBWTRy1eLb6DRqg23yOdyOHyiRAeibkRflYaMCB0=;
- b=X2XhAkOQ6fIdWuQf0YFcTjb8AQJO2IJThIq97n19kyy6wUbIn7VdonBtNj6HBSFxJV
- ORh46IwC+kXXqvCnmFFzUtlimHlFDFMxZVtqUNkqbRYJH5g9D8zEn+lWSG4stWQoEKmx
- GTbevLFWcFTIKtLEYSdqcWa1td3nT/neMp7EfAOdpC258jCV7HeNN2tqpRnfMl1LmnH2
- h5mBeBULZ4/feLG+pBpX7j/kFVQ2FIVLyB7OmU5SGU4577FlpLRJRMdC4yvZgy2rFcrF
- l5SZvs4YmTJq6PjCC6oAFCUPm51KXIc5I/qucAUzpYHZzTYMoiLQPt+AHYtSWJWhaRhr
- cTKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=7jRgBWTRy1eLb6DRqg23yOdyOHyiRAeibkRflYaMCB0=;
- b=E+tBHokZbuN1mtgKFkTqpR5S45r4VRqv7mzHa52b045JojM0OfsH279zgoqT5HijKq
- etWs7wq6KYYsJTa0EYkUs8Bp6kS9J7+1DOi25OQTdo3iR8aU/0470HMK7x4dStm/uboH
- E4U3tbv2iCHPNZWR/Y1xo+ciO2WpCbfCD09VLQ9HwQuHhgZU1vBh2WAt7W0Z3Ox4F689
- 4sU143ltOQ707OIfBDRnJ5TQrL9VymQUtEDGlJ/QIoCwGhWi/uITTzftPHaiIjO6dhul
- 5Mkl3FMeLJgC0/w+IYxF/MUyIs7YLngA8tIY4jDRMe8RCCr+805ZWBphGPe9oi8ZRWMY
- /hrA==
-X-Gm-Message-State: AOAM531ncKZFYKnvGDFlC7GF/6frlYFQyPmXVS13Or7t+iyOfob4tCCF
- EAwbz7VebSa+iB/ZwxhFjNBaTI4bUC0=
-X-Google-Smtp-Source: ABdhPJzvfQBytyPSPR+HGwlMO6bXHPwbmKUSuv3ywsWOEwC9hwenFulm7iIIC+WawwzXU2Y+GZTyvQ==
-X-Received: by 2002:a17:903:18d:b0:142:8ab:d11f with SMTP id
- z13-20020a170903018d00b0014208abd11fmr52691800plg.47.1637133735254; 
- Tue, 16 Nov 2021 23:22:15 -0800 (PST)
-Received: from localhost.localdomain ([2402:7500:488:df8b:ccd3:9aaa:2280:e065])
- by smtp.gmail.com with ESMTPSA id k91sm4445325pja.19.2021.11.16.23.22.11
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 16 Nov 2021 23:22:14 -0800 (PST)
-From: cy_huang <u0084500@gmail.com>
-To: pavel@ucw.cz, robh+dt@kernel.org, matthias.bgg@gmail.com,
- gene.chen.richtek@gmail.com
-Cc: linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, gene_chen@richtek.com, wilma.wu@mediatek.com,
- benjamin.chao@mediatek.com, ChiYuan Huang <cy_huang@richtek.com>
-Subject: [PATCH] dt-bindings: leds: Replace moonlight with indicator in mt6360
- example
-Date: Wed, 17 Nov 2021 15:22:06 +0800
-Message-Id: <1637133726-6581-1-git-send-email-u0084500@gmail.com>
-X-Mailer: git-send-email 2.7.4
+ id 1mnFGs-003kgw-3z; Wed, 17 Nov 2021 07:22:20 +0000
+X-UUID: b990692390a74b31b17753dc2b2ce653-20211117
+X-UUID: b990692390a74b31b17753dc2b2ce653-20211117
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <rocco.yue@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1425235276; Wed, 17 Nov 2021 00:22:14 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 16 Nov 2021 23:22:12 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Nov 2021 15:22:11 +0800
+Received: from mbjsdccf07.mediatek.inc (10.15.20.246) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 17 Nov 2021 15:22:10 +0800
+From: Rocco Yue <rocco.yue@mediatek.com>
+To: <lorenzo@google.com>, <dsahern@gmail.com>
+CC: "David S . Miller" <davem@davemloft.net>, Jakub Kicinski
+ <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <netdev@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <Rocco.Yue@gmail.com>,
+ <chao.song@mediatek.com>, <yanjie.jiang@mediatek.com>,
+ <kuohong.wang@mediatek.com>, <zhuoliang.zhang@mediatek.com>,
+ <maze@google.com>, <markzzzsmith@gmail.com>, Rocco Yue
+ <rocco.yue@mediatek.com>
+Subject: Re: [PATCH net-next] ipv6: don't generate link-local addr in random
+ or privacy mode
+Date: Wed, 17 Nov 2021 15:17:32 +0800
+Message-ID: <20211117071732.7455-1-rocco.yue@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <CAKD1Yr02W-WuLx8ouvP+wTtkxeyTBW_dp1deo9sim7wfLA2LXQ@mail.gmail.com>
+References: <CAKD1Yr02W-WuLx8ouvP+wTtkxeyTBW_dp1deo9sim7wfLA2LXQ@mail.gmail.com>
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_232217_622158_68CD6F32 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20211116_232218_208166_B2204A01 
+X-CRM114-Status: GOOD (  25.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,52 +80,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: ChiYuan Huang <cy_huang@richtek.com>
+On Wed, 2021-11-17 at 13:09 +0800, Lorenzo Colitti wrote:
+> On Tue, Nov 16, 2021 at 3:15 PM Rocco Yue <rocco.yue@mediatek.com>
+> wrote:
+>> 
+>> In the 3GPP TS 29.061, here is a description as follows:
+>> "In order to avoid any conflict between the link-local address
+>> of the MS and that of the GGSN, the Interface-Identifier used by
+>> the MS to build its link-local address shall be assigned by the
+>> GGSN.
+>> [...]
+>> 1) IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA, this mode is suitable
+>> for cellular networks that support RFC7217. In this mode, the
+>> kernel doesn't generate a link-local address for the cellular
+>> NIC, and generates an ipv6 stable privacy global address after
+>> receiving the RA message.
+> 
+> 
+> It sounds like this would violate RFC 4291 section 2.1 which says
+> "All
+> interfaces are required to have at least one Link-Local unicast
+> address. It is also not what 3GPP requires. 3GPP *does* require a
+> link-local address. It just requires that that the bottom 64 bits of
+> that link-local address be assigned by the network, not randomly.
+>
 
-Replace moonlight with indicator in mt6360 example to prevent the below
-build error:
+Hi Lorenzo,
 
-Error: Documentation/devicetree/bindings/leds/leds-mt6360.example.dts:114.24-25
-syntax error
-FATAL ERROR: Unable to parse input tree
-make[1]: *** [scripts/Makefile.lib:385:
-Documentation/devicetree/bindings/leds/leds-mt6360.example.dt.yaml]
-Error 1
+Thanks for your reply. :-)
 
-Link: https://lore.kernel.org/lkml/CAL_JsqJRMVE163LaHTbtFARc4f_qg33bfQx+sD3ukce_xQF+gA@mail.gmail.com/
-Signed-off-by: ChiYuan Huang <cy_huang@richtek.com>
----
-Hi, Gene:
+Disabling the kernel's automatic link-local address generation
+doesn't mean that it violates RFC 4291, because an appropriate
+link-local addr can be added to the cellulal NIC through ioctl.
 
-I saw you have removed LED_FUNCTION_MOONLIGHT in v14.
-But you may forget to remove it from the binding example.
+In fact, the current kernel has similar precedents. For example,
+when device type is ARPHRD_NONE, and its addr_gen_mode is NONE,
+the kernel will never generate a link-local addr for such interface.
 
-Please help to review this change.
----
- Documentation/devicetree/bindings/leds/leds-mt6360.yaml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Given that the kernel already supports tokenized interface addresses,
+> a better option here would be to add new addrgen modes where the
+> link-local address is formed from the interface token (idev->token),
+> and the other addresses are formed randomly or via RFC7217. These
+> modes could be called IN6_ADDR_GEN_MODE_RANDOM_LL_TOKEN and
+> IN6_ADDR_GEN_MODE_STABLE_PRIVACY_LL_TOKEN. When setting up the
+> interface, userspace could set disable_ipv6 to 1, then set the
+> interface token and the address generation mode via RTM_SETLINK, then
+> set disable_ipv6 to 0 to start autoconf. The kernel would then form
+> the link-local address via the token (which comes from the network),
+> and then set the global addresses either randomly or via RFC 7217.
 
-diff --git a/Documentation/devicetree/bindings/leds/leds-mt6360.yaml b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
-index 2353155..b2fe6eb 100644
---- a/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
-+++ b/Documentation/devicetree/bindings/leds/leds-mt6360.yaml
-@@ -133,7 +133,7 @@ examples:
-      };
-      led@3 {
-        reg = <3>;
--       function = LED_FUNCTION_MOONLIGHT;
-+       function = LED_FUNCTION_INDICATOR;
-        color = <LED_COLOR_ID_WHITE>;
-        led-max-microamp = <150000>;
-      };
--- 
-2.7.4
+The method you mentioned can also solve the current problem, but it
+seems to introduce more logic: 
+  (1) set the cellular interface addr_gen_mode to RANDOM_LL_TOKEN or PRIVACY_LL_TOKEN;
+  (2) set the cellular interface up;
+  (3) disable ipv6 first;
+  (4) set token addr through netlink;
+  (5) autoconf through the kernel;
+  (6) kernel trigger send RS message;
+
+For the current patch, it is simpler, the configure process as follows:
+  (1) set the cellular NIC addr_gen_mode to RANDOM_NO_LLA or PRIVACY_NO_LLA;
+  (2) set the cellular interface up;
+  (3) configure the link-local addr for the NIC by ioctl;
+  (4) kernel trigger send RS message;
+
+I wonder to hear what you and David think.
+
+Thanks,
+
+Rocco
 
 
 _______________________________________________
