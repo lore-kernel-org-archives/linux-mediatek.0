@@ -2,14 +2,14 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 1E08AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:11:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3B14C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:11:49 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id CEA2463212
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:11:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org CEA2463212
+	by mail.kernel.org (Postfix) with ESMTPS id 76D4563212
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:11:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 76D4563212
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,34 +18,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3ZfjClor9TjaVKQAMdhdgfDQTY7L7cp/h1ifXh9aqQE=; b=ExRfRgxWe5Dmhd
-	C9oS+FbbZkiR7yShC3v0h6CX7Losq1q0YxqJFonHSoR3aiL+L0bAkVcB2Cs01o+CSFK/4Gtk+BGfQ
-	t+lc2YkvPWJwE7qK5Qtsxrb5DUlQ69DWRob7xMyxYaJNoDOKPGAHuQWRvvV9QTXdo4+3RqUaLhjtw
-	c8vAeq+numx0A77PYwm9HTKDp10dIyLbIcKRHJE8juxhREh6dGOLV7RV48MrQo0PXsM3L1MiJr/uq
-	ugqgzWD49iiTegurvT4OubUORlzs+TzFCOSyzLz7tixbh4C2Is3CH8MekSMjDntkEIPDMEjZeu9LO
-	cRNEv1LjFu13m5X+eQlw==;
+	List-Owner; bh=k1YddsiHYHfTynLrP3VLDG+hZLYp93p/f0IixjMcQh0=; b=RbAYTBhyotSElS
+	5Lr04Y/LZmIiT5T9Mr/0cooMqbH3+I5A4JHj1cjC04MrChMrKvFVkSmyICJE7+Aa3/MoebVUpbNTd
+	/SPMqb7faMyrFSxlPDeAeRreEoNvKMIXgPXlLpchSwCvPzAiraLoYAmVliNuXLazFfuISnnLQj229
+	CtxjDS1JXWZ5dVdft1tDG15iC1lsPB9SaOE3YZQklUipMpVSS2GrUf7E7ki3mRccqMpNGzKpRJz5q
+	UYA5HpqhdCRxDA8i0z9YMk0b8mjTgwt9JbG5bZfcZq3daEtYghTvRZNOP8SSFQzcF7t1+nSn8vAnx
+	oNljK6RpZqDUSEjOUHdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnGyg-0047o4-DH; Wed, 17 Nov 2021 09:11:38 +0000
+	id 1mnGyj-0047pJ-NN; Wed, 17 Nov 2021 09:11:41 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnGwe-00473a-Jl; Wed, 17 Nov 2021 09:09:34 +0000
-X-UUID: 13318038e0c34af0a5151e0b7b512456-20211117
-X-UUID: 13318038e0c34af0a5151e0b7b512456-20211117
+ id 1mnGwg-00474U-UU; Wed, 17 Nov 2021 09:09:36 +0000
+X-UUID: 7c8609debef94b0ab3449c4105362af5-20211117
+X-UUID: 7c8609debef94b0ab3449c4105362af5-20211117
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 115767745; Wed, 17 Nov 2021 02:09:27 -0700
+ with ESMTP id 1883610306; Wed, 17 Nov 2021 02:09:27 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Nov 2021 00:59:29 -0800
+ 15.0.1497.2; Wed, 17 Nov 2021 00:59:25 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 17 Nov 2021 16:59:24 +0800
+ Wed, 17 Nov 2021 16:59:22 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 17 Nov 2021 16:59:23 +0800
+ Frontend Transport; Wed, 17 Nov 2021 16:59:21 +0800
 From: Nancy.Lin <nancy.lin@mediatek.com>
 To: CK Hu <ck.hu@mediatek.com>
 CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
@@ -57,18 +57,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
  <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v8 21/22] drm/mediatek: add drm ovl_adaptor sub driver for
- MT8195
-Date: Wed, 17 Nov 2021 16:59:18 +0800
-Message-ID: <20211117085919.28691-22-nancy.lin@mediatek.com>
+Subject: [PATCH v8 08/22] soc: mediatek: add cmdq support of mtk-mmsys config
+ API for mt8195 vdosys1
+Date: Wed, 17 Nov 2021 16:59:05 +0800
+Message-ID: <20211117085919.28691-9-nancy.lin@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211117085919.28691-1-nancy.lin@mediatek.com>
 References: <20211117085919.28691-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_010932_713808_DEC0298B 
-X-CRM114-Status: GOOD (  22.45  )
+X-CRM114-CacheID: sfid-20211117_010935_038953_3A981414 
+X-CRM114-Status: GOOD (  19.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,245 +85,116 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add drm ovl_adaptor sub driver. Bring up ovl_adaptor sub driver if
-the component exists in the path.
+Add cmdq support for mtk-mmsys config API.
+The mmsys config register settings need to take effect with the other
+HW settings(like OVL_ADAPTOR...) at the same vblanking time.
+
+If we use CPU to write the mmsys reg, we can't guarantee all the
+settings can be written in the same vblanking time.
+Cmdq is used for this purpose. We prepare all the related HW settings
+in one cmdq packet. The first command in the packet is "wait stream done",
+and then following with all the HW settings. After the cmdq packet is
+flush to GCE HW. The GCE waits for the "stream done event" to coming
+and then starts flushing all the HW settings. This can guarantee all
+the settings flush in the same vblanking.
 
 Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 16 ++++----
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 30 ++++++++++++---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  1 +
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 41 +++++++++++++++------
- 4 files changed, 62 insertions(+), 26 deletions(-)
+ drivers/soc/mediatek/mtk-mmsys.c       | 29 ++++++++++++++++++++------
+ include/linux/soc/mediatek/mtk-mmsys.h |  6 +++++-
+ 2 files changed, 28 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 17c590e3f922..b1721ef7257c 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -876,15 +876,13 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
- 		node = priv->comp_node[comp_id];
- 		comp = &priv->ddp_comp[comp_id];
- 
--		if (!node) {
--			dev_info(dev,
--				 "Not creating crtc %d because component %d is disabled or missing\n",
--				 crtc_i, comp_id);
--			return 0;
--		}
--
--		if (!comp->dev) {
--			dev_err(dev, "Component %pOF not initialized\n", node);
-+		/* Not all drm components have a DTS device node, such as ovl_adaptor,
-+		 * which is the drm bring up sub driver
-+		 */
-+		if (!node && !comp->dev) {
-+			dev_err(dev,
-+				"Not creating crtc %d because component %d is disabled, missing or not initialized\n",
-+				crtc_i, comp_id);
- 			return -ENODEV;
- 		}
- 	}
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-index eb9835102d79..279087ae889b 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c
-@@ -385,6 +385,18 @@ static const struct mtk_ddp_comp_funcs ddp_ufoe = {
- 	.start = mtk_ufoe_start,
+diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
+index 545a9cee8b7b..868df83eb57d 100644
+--- a/drivers/soc/mediatek/mtk-mmsys.c
++++ b/drivers/soc/mediatek/mtk-mmsys.c
+@@ -88,6 +88,7 @@ struct mtk_mmsys {
+ 	const struct mtk_mmsys_driver_data *data;
+ 	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
+ 	struct reset_controller_dev rcdev;
++	struct cmdq_client_reg cmdq_base;
  };
  
-+static const struct mtk_ddp_comp_funcs ddp_ovl_adaptor = {
-+	.clk_enable = mtk_ovl_adaptor_clk_enable,
-+	.clk_disable = mtk_ovl_adaptor_clk_disable,
-+	.config = mtk_ovl_adaptor_config,
-+	.start = mtk_ovl_adaptor_start,
-+	.stop = mtk_ovl_adaptor_stop,
-+	.layer_nr = mtk_ovl_adaptor_layer_nr,
-+	.layer_config = mtk_ovl_adaptor_layer_config,
-+	.enable_vblank = mtk_ovl_adaptor_enable_vblank,
-+	.disable_vblank = mtk_ovl_adaptor_disable_vblank,
-+};
-+
- static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_AAL] = "aal",
- 	[MTK_DISP_BLS] = "bls",
-@@ -398,6 +410,7 @@ static const char * const mtk_ddp_comp_stem[MTK_DDP_COMP_TYPE_MAX] = {
- 	[MTK_DISP_OD] = "od",
- 	[MTK_DISP_OVL] = "ovl",
- 	[MTK_DISP_OVL_2L] = "ovl-2l",
-+	[MTK_DISP_OVL_ADAPTOR] = "ovl_adaptor",
- 	[MTK_DISP_POSTMASK] = "postmask",
- 	[MTK_DISP_PWM] = "pwm",
- 	[MTK_DISP_RDMA] = "rdma",
-@@ -443,6 +456,7 @@ static const struct mtk_ddp_comp_match mtk_ddp_matches[DDP_COMPONENT_ID_MAX] = {
- 	[DDP_COMPONENT_OVL_2L0]		= { MTK_DISP_OVL_2L,	0, &ddp_ovl },
- 	[DDP_COMPONENT_OVL_2L1]		= { MTK_DISP_OVL_2L,	1, &ddp_ovl },
- 	[DDP_COMPONENT_OVL_2L2]		= { MTK_DISP_OVL_2L,    2, &ddp_ovl },
-+	[DDP_COMPONENT_OVL_ADAPTOR]	= { MTK_DISP_OVL_ADAPTOR,	0, &ddp_ovl_adaptor },
- 	[DDP_COMPONENT_POSTMASK0]	= { MTK_DISP_POSTMASK,	0, &ddp_postmask },
- 	[DDP_COMPONENT_PWM0]		= { MTK_DISP_PWM,	0, NULL },
- 	[DDP_COMPONENT_PWM1]		= { MTK_DISP_PWM,	1, NULL },
-@@ -548,12 +562,17 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
+ void mtk_mmsys_ddp_connect(struct device *dev,
+@@ -180,7 +181,7 @@ static const struct reset_control_ops mtk_mmsys_reset_ops = {
+ };
  
- 	comp->id = comp_id;
- 	comp->funcs = mtk_ddp_matches[comp_id].funcs;
--	comp_pdev = of_find_device_by_node(node);
--	if (!comp_pdev) {
--		DRM_INFO("Waiting for device %s\n", node->full_name);
--		return -EPROBE_DEFER;
-+	/* Not all drm components have a DTS device node, such as ovl_adaptor,
-+	 * which is the drm bring up sub driver
-+	 */
-+	if (node) {
-+		comp_pdev = of_find_device_by_node(node);
-+		if (!comp_pdev) {
-+			DRM_INFO("Waiting for device %s\n", node->full_name);
-+			return -EPROBE_DEFER;
-+		}
-+		comp->dev = &comp_pdev->dev;
- 	}
--	comp->dev = &comp_pdev->dev;
- 
- 	/* Only DMA capable components need the LARB property */
- 	if (type == MTK_DISP_OVL ||
-@@ -573,6 +592,7 @@ int mtk_ddp_comp_init(struct device_node *node, struct mtk_ddp_comp *comp,
- 	    type == MTK_DISP_MERGE ||
- 	    type == MTK_DISP_OVL ||
- 	    type == MTK_DISP_OVL_2L ||
-+	    type == MTK_DISP_OVL_ADAPTOR ||
- 	    type == MTK_DISP_PWM ||
- 	    type == MTK_DISP_RDMA ||
- 	    type == MTK_DPI ||
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-index 221e2e3a3c8d..5e1404dc20c4 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h
-@@ -30,6 +30,7 @@ enum mtk_ddp_comp_type {
- 	MTK_DISP_OD,
- 	MTK_DISP_OVL,
- 	MTK_DISP_OVL_2L,
-+	MTK_DISP_OVL_ADAPTOR,
- 	MTK_DISP_POSTMASK,
- 	MTK_DISP_PWM,
- 	MTK_DISP_RDMA,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 6d792c621e70..96f505b2e571 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -354,9 +354,7 @@ static int mtk_drm_kms_init(struct drm_device *drm)
+ void mtk_mmsys_ddp_config(struct device *dev, enum mtk_mmsys_config_type config,
+-			  u32 id, u32 val)
++			  u32 id, u32 val, struct cmdq_pkt *cmdq_pkt)
  {
- 	struct mtk_drm_private *private = drm->dev_private;
- 	struct mtk_drm_private *priv_n;
--	struct platform_device *pdev;
--	struct device_node *np = NULL;
--	struct device *dma_dev;
-+	struct device *dma_dev = NULL;
- 	int ret, i, j;
- 
- 	ret = drmm_mode_config_init(drm);
-@@ -403,8 +401,8 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 				if (ret)
- 					goto err_component_unbind;
- 
--				if (!np)
--					np = priv_n->comp_node[priv_n->data->main_path[0]];
-+				if (!dma_dev)
-+					dma_dev = priv_n->ddp_comp[priv_n->data->main_path[0]].dev;
- 
- 				continue;
- 			} else if (i == 1 && priv_n->data->ext_len) {
-@@ -413,8 +411,8 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 				if (ret)
- 					goto err_component_unbind;
- 
--				if (!np)
--					np = priv_n->comp_node[priv_n->data->ext_path[0]];
-+				if (!dma_dev)
-+					dma_dev = priv_n->ddp_comp[priv_n->data->ext_path[0]].dev;
- 
- 				continue;
- 			} else if (i == 2 && priv_n->data->third_len) {
-@@ -423,22 +421,20 @@ static int mtk_drm_kms_init(struct drm_device *drm)
- 				if (ret)
- 					goto err_component_unbind;
- 
--				if (!np)
--					np = priv_n->comp_node[priv_n->data->third_path[0]];
-+				if (!dma_dev)
-+					dma_dev = priv_n->ddp_comp[priv_n->data->third_path[0]].dev;
- 
- 				continue;
- 			}
- 		}
- 	}
- 
--	pdev = of_find_device_by_node(np);
--	if (!pdev) {
-+	if (!dma_dev) {
- 		ret = -ENODEV;
- 		dev_err(drm->dev, "Need at least one OVL device\n");
- 		goto err_component_unbind;
- 	}
- 
--	dma_dev = &pdev->dev;
- 	for (i = 0; i < private->data->mmsys_dev_num; i++)
- 		private->all_drm_private[i]->dma_dev = dma_dev;
- 
-@@ -517,6 +513,11 @@ static int compare_of(struct device *dev, void *data)
- 	return dev->of_node == data;
- }
- 
-+static int compare_dev(struct device *dev, void *data)
-+{
-+	return dev == (struct device *)data;
-+}
-+
- static int mtk_drm_bind(struct device *dev)
- {
- 	struct mtk_drm_private *private = dev_get_drvdata(dev);
-@@ -705,6 +706,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 	struct mtk_drm_private *private;
- 	struct device_node *node;
- 	struct component_match *match = NULL;
-+	struct platform_device *ovl_adaptor;
- 	int ret;
+ 	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
+ 	const struct mtk_mmsys_config *mmsys_config = mmsys->data->config;
+@@ -188,7 +189,6 @@ void mtk_mmsys_ddp_config(struct device *dev, enum mtk_mmsys_config_type config,
+ 	u32 mask;
+ 	u32 offset;
  	int i;
+-	u32 tmp;
  
-@@ -730,6 +732,19 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		return -ENODEV;
+ 	if (!mmsys->data->num_configs)
+ 		return;
+@@ -204,10 +204,20 @@ void mtk_mmsys_ddp_config(struct device *dev, enum mtk_mmsys_config_type config,
+ 	mask = mmsys_config[i].mask;
+ 	reg_val = val << mmsys_config[i].shift;
+ 
+-	tmp = readl(mmsys->regs + offset);
+-
+-	tmp = (tmp & ~mask) | reg_val;
+-	writel(tmp, mmsys->regs + offset);
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	if (cmdq_pkt && mmsys->cmdq_base.size) {
++		cmdq_pkt_write_mask(cmdq_pkt, mmsys->cmdq_base.subsys,
++				    mmsys->cmdq_base.offset + offset, reg_val,
++				    mask);
++	} else {
++#endif
++		u32 tmp = readl(mmsys->regs + offset);
++
++		tmp = (tmp & ~mask) | reg_val;
++		writel(tmp, mmsys->regs + offset);
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	}
++#endif
+ }
+ EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_config);
+ 
+@@ -243,6 +253,13 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
  	}
  
-+	/* Bringup ovl_adaptor */
-+	if (mtk_drm_find_mmsys_comp(private, DDP_COMPONENT_OVL_ADAPTOR)) {
-+		ovl_adaptor = platform_device_register_data(dev, "mediatek-disp-ovl-adaptor",
-+							    PLATFORM_DEVID_AUTO,
-+							    (void *)private->mmsys_dev,
-+							    sizeof(*private->mmsys_dev));
-+		private->ddp_comp[DDP_COMPONENT_OVL_ADAPTOR].dev = &ovl_adaptor->dev;
-+		private->comp_node[DDP_COMPONENT_OVL_ADAPTOR] = ovl_adaptor->dev.of_node;
-+		mtk_ddp_comp_init(NULL, &private->ddp_comp[DDP_COMPONENT_OVL_ADAPTOR],
-+				  DDP_COMPONENT_OVL_ADAPTOR);
-+		component_match_add(dev, &match, compare_dev, &ovl_adaptor->dev);
-+	}
+ 	mmsys->data = of_device_get_match_data(&pdev->dev);
 +
- 	/* Iterate over sibling DISP function blocks */
- 	for_each_child_of_node(phandle->parent, node) {
- 		const struct of_device_id *of_id;
-@@ -783,6 +798,7 @@ static int mtk_drm_probe(struct platform_device *pdev)
- 		    comp_type == MTK_DISP_MERGE ||
- 		    comp_type == MTK_DISP_OVL ||
- 		    comp_type == MTK_DISP_OVL_2L ||
-+		    comp_type == MTK_DISP_OVL_ADAPTOR ||
- 		    comp_type == MTK_DISP_RDMA ||
- 		    comp_type == MTK_DPI ||
- 		    comp_type == MTK_DSI) {
-@@ -885,6 +901,7 @@ static struct platform_driver * const mtk_drm_drivers[] = {
- 	&mtk_disp_color_driver,
- 	&mtk_disp_gamma_driver,
- 	&mtk_disp_merge_driver,
-+	&mtk_disp_ovl_adaptor_driver,
- 	&mtk_disp_ovl_driver,
- 	&mtk_disp_rdma_driver,
- 	&mtk_dpi_driver,
++#if IS_REACHABLE(CONFIG_MTK_CMDQ)
++	ret = cmdq_dev_get_client_reg(dev, &mmsys->cmdq_base, 0);
++	if (ret)
++		dev_dbg(dev, "No mediatek,gce-client-reg!\n");
++#endif
++
+ 	platform_set_drvdata(pdev, mmsys);
+ 
+ 	clks = platform_device_register_data(&pdev->dev, mmsys->data->clk_driver,
+diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
+index b2d2310d7e7a..3e998bfb795a 100644
+--- a/include/linux/soc/mediatek/mtk-mmsys.h
++++ b/include/linux/soc/mediatek/mtk-mmsys.h
+@@ -6,6 +6,10 @@
+ #ifndef __MTK_MMSYS_H
+ #define __MTK_MMSYS_H
+ 
++#include <linux/mailbox_controller.h>
++#include <linux/mailbox/mtk-cmdq-mailbox.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
++
+ enum mtk_ddp_comp_id;
+ struct device;
+ 
+@@ -78,6 +82,6 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
+ 			      enum mtk_ddp_comp_id next);
+ 
+ void mtk_mmsys_ddp_config(struct device *dev, enum mtk_mmsys_config_type config,
+-			  u32 id, u32 val);
++			  u32 id, u32 val, struct cmdq_pkt *cmdq_pkt);
+ 
+ #endif /* __MTK_MMSYS_H */
 -- 
 2.18.0
 
