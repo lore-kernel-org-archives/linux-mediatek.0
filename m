@@ -2,83 +2,73 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 166ACC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 08:37:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F906C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 08:59:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C949661BF9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 08:37:19 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C949661BF9
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 4E97E62F90
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 08:59:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4E97E62F90
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fhnJchziVlN2AmlGoF4EhJySnGMFhOPwX6skP72JLOA=; b=YhCNu9OUCDqEte
-	MBFYTT/tpfZIMgWk9JMCqnr+D0NtEen7FnAFbUyjriqEyQ/ig5/kSedMl4NcOMW6w7ecDHa6CVEmg
-	QRXm7NWSSvRv8CjgfBhI01es5XmGo3W+yKMA6blfzMUT4WqUm9DPhmalCa38ceCq94x1q5ZjC2yk8
-	zli4byYqNSaOqjrh2Ijoxt8PNu2HDnCE3vv6x9jFInEI801mcWfmWI4BLFczfEg9hMYw5Vh4Lyfip
-	OVWHgDV6yoJUHE4tN/Ik1HcBWLYUGTQoUw1dsTpA3z5diGpFxCe7m1LAVjIV8fpF5ggToXSTQGLBq
-	NF1Rn6MJim2eAh+CEnZA==;
+	List-Owner; bh=CBe8hGjWJZrelpMbOlyDCeSmsWIKQMWaeJiQCZ/5NPM=; b=K6Gm0/fNonNxJG
+	viV7tWIudAIRTQ8/+inClDvEzvE2dQlEXxAFzTl9hN22umRXjDHGsWXgrRAfyYs19tJvtQG4woQM3
+	8C4SR794Tj7kzLO8x3wmGqN9H7hA7kqjrsqtj9X6wk+j95dUoIF/p8xjwh3qGxWhViXbvIHRoeWhH
+	vrz93RNu8sMSoTnHwOw8010voT/SFRjg6tYfDMxbnZGAdFotMxhvwry7FrnwjlWJLf3q5t3wg0nbK
+	kh+S0o9kaGdANNR596tt0TQigDs/sKQpNltbjLSaD1Rqidj+lKAOoyn6SuMYz/jz3DPzqHhmMia4u
+	DAdEv18RTHebmjoDBFNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnGRL-003yHK-3F; Wed, 17 Nov 2021 08:37:11 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1mnGmx-00425y-7k; Wed, 17 Nov 2021 08:59:31 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnGR8-003yDl-L9
- for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 08:37:00 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id t30so3024244wra.10
- for <linux-mediatek@lists.infradead.org>; Wed, 17 Nov 2021 00:36:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WrPEvEbWf6Wc0DXft8xWpwNHryeVDMkAQS+5Bf1seZQ=;
- b=Rd51I7u6tzAIugOkmci8FtxptCl14VCBCDb6jJFoovrmWDH0iwZXNjmaPZnEmwGHB7
- w72ZBxf27jaCOtqb58DxUYnlcqiVFDRteNX2hZjDkqikexdq9zY8qFmJL60i0CYki3QD
- X9AUTtQ7351p7c+fOqHxRmC9YJy6mOquiKUw6didobc2+/sMQSG35P0qyqB1PAPtnYu6
- lniKzdhUFjxVi2BurMR1evX1WltkWpjTQHo60fKPgciofbGIRdLywt8znfsPKg9Q/OAC
- A/zLFZV3heNlL2xnW+IVAZjbMw9m+vYJXrcyDLH9/h1WCxh44tFaiO0oG38pzlCK9LII
- q+mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WrPEvEbWf6Wc0DXft8xWpwNHryeVDMkAQS+5Bf1seZQ=;
- b=g1XHd1SZGI4okffA7OV6mpt3pZHwOpr073y9qAhqHWGcyiY0OzQgA8l67hZpMBY/Fw
- ArUSxpepXmREbiX4ms4XXEBSY7EIYGa2XdwkAWW1NzX1RuMa/Ox0U6HgwFuNKIffh/oy
- QaV90h3TTOZw+xZ1gik0QhChwxoADus8Is2L2zjHT4nFiylcVDF4geHOFWkaeX99XZHx
- GYv7amLbp3/2raqG7iv9zTI3vOy+tz9ZAr1slYDXHn9wArFSdR2Vh1QnM+XnbgCDm0Gt
- grlgmsJulid0i1Lkpk0siLLsudUkh7CkTf6qORqfkojGjybCxJHnvvALswmejj9w+4Od
- xrtA==
-X-Gm-Message-State: AOAM531xxzfnlr37LvOJ95zrtxLH347MqIeIIMSsU0o/G6qKJBifP6hQ
- OVvv8xD5TpJT8V/H9YEC6hAjOQQWwXZBKDHGQi3w5w==
-X-Google-Smtp-Source: ABdhPJyttg1bVl2qBGNNhXrWHmcwegsT28FZnB6NKWXtHkaTk8EOWeGGvP1WXHR4QqR/ZZ1eg9EHTJJxDmxDy6c+SF4=
-X-Received: by 2002:a5d:6d07:: with SMTP id e7mr17009629wrq.311.1637138216539; 
- Wed, 17 Nov 2021 00:36:56 -0800 (PST)
+ id 1mnGms-00423v-Gr; Wed, 17 Nov 2021 08:59:29 +0000
+X-UUID: a18c92c813154c1f848a4fbca521ea8b-20211117
+X-UUID: a18c92c813154c1f848a4fbca521ea8b-20211117
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <nancy.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2142539594; Wed, 17 Nov 2021 01:59:24 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Nov 2021 00:59:23 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 17 Nov 2021 16:59:21 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 17 Nov 2021 16:59:21 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ "Nancy . Lin" <nancy.lin@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [PATCH v8 02/22] dt-bindings: mediatek: add vdosys1 MERGE property
+ for mt8195
+Date: Wed, 17 Nov 2021 16:58:59 +0800
+Message-ID: <20211117085919.28691-3-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211117085919.28691-1-nancy.lin@mediatek.com>
+References: <20211117085919.28691-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
-References: <CAKD1Yr02W-WuLx8ouvP+wTtkxeyTBW_dp1deo9sim7wfLA2LXQ@mail.gmail.com>
- <20211117071732.7455-1-rocco.yue@mediatek.com>
-In-Reply-To: <20211117071732.7455-1-rocco.yue@mediatek.com>
-From: Lorenzo Colitti <lorenzo@google.com>
-Date: Wed, 17 Nov 2021 17:36:44 +0900
-Message-ID: <CAKD1Yr3CMPWMmNNU6YvpBiaXVttS9T8qGVgmddijYfLSfK-Rog@mail.gmail.com>
-Subject: Re: [PATCH net-next] ipv6: don't generate link-local addr in random
- or privacy mode
-To: Rocco Yue <rocco.yue@mediatek.com>
-Cc: dsahern@gmail.com, "David S . Miller" <davem@davemloft.net>, 
- Jakub Kicinski <kuba@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
- Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, rocco.yue@gmail.com, 
- chao.song@mediatek.com, yanjie.jiang@mediatek.com, kuohong.wang@mediatek.com, 
- Zhuoliang.Zhang@mediatek.com, maze@google.com, markzzzsmith@gmail.com
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_003658_713211_5184D7EA 
-X-CRM114-Status: GOOD (  15.17  )
+X-CRM114-CacheID: sfid-20211117_005926_587287_D188E15C 
+X-CRM114-Status: GOOD (  10.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,40 +85,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 17, 2021 at 4:22 PM Rocco Yue <rocco.yue@mediatek.com> wrote:
-> Disabling the kernel's automatic link-local address generation
-> doesn't mean that it violates RFC 4291, because an appropriate
-> link-local addr can be added to the cellulal NIC through ioctl.
+MT8195 vdosys1 merge1 to merge4 have HW mute function.
+Add MERGE additional mute property description.
 
-Well, it would mean that the kernel requires additional work from
-userspace to respect the RFC.
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
+Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Acked-By: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,merge.yaml  | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-> The method you mentioned can also solve the current problem, but it
-> seems to introduce more logic:
->   (1) set the cellular interface addr_gen_mode to RANDOM_LL_TOKEN or PRIVACY_LL_TOKEN;
->   (2) set the cellular interface up;
->   (3) disable ipv6 first;
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+index 28be8ffeb429..f5b1e632bcd5 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,merge.yaml
+@@ -61,6 +61,10 @@ properties:
+       command to SMI to speed up the data rate.
+     type: boolean
+ 
++  mediatek,merge-mute:
++    description: Support mute function. Mute the content of merge output.
++    type: boolean
++
+   mediatek,gce-client-reg:
+     description:
+       The register of client driver can be configured by gce with 4 arguments
+-- 
+2.18.0
 
-I don't think you need to set the interface up to disable IPv6. Also I
-think that if the interface is down autoconf won't run so you don't
-actually need to do this.
-
->   (4) set token addr through netlink;
-
-Can't 4 be the same as 3? The same netlink message can configure both
-the addr_gen_mode and the token, no?
-
-It seems to me that the following should work, and would be much simpler.
-
-1. Bring the interface down. All addresses are deleted.
-2. Send a netlink request to set addr_gen_mode RANDOM_LL_TOKEN or
-PRIVACY_LL_TOKEN and set the token.
-3. Bring the interface up. Autoconf runs. The link-local address is
-generated from the token. An RS is sent. When the RA is received, the
-global address is generated using RFC 7217 or randomly.
-
-Cheers,
-Lorenzo
 
 _______________________________________________
 Linux-mediatek mailing list
