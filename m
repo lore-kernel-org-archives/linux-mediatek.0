@@ -2,14 +2,14 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 53BFAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C82BC433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:38:55 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 153F660E8E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:38:50 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 153F660E8E
+	by mail.kernel.org (Postfix) with ESMTPS id 54CC860C4A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:38:55 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 54CC860C4A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oss.nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,46 +18,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bsa5d9Tv8R6ieUHQsVhTEVWwWO8BUlKBxCsaplvEUF0=; b=bi1GEFm0hlKnbb
-	upB8SUBfrgb4t2PsTbZwS4xAG2ahGH4uKLicDIaDbaNR9cbBa+8O+k/qYVy1vI6grS18lOMLe7goM
-	N17CnC2bAQ8z6+u7QKfQ/kfxw8goE0DEObmFmGfwC4KY07hOjmPKvL3ONHuPZ0z9+lSPoMbj0uT6P
-	hbwA4jh5K/7NUqiKa37H5ay5Ci3DtmxSFCGPwXcMBzZkhhFCzmmLq8v8ZDZXPcDSRQSYVUO9mg1//
-	pD5PLlfPzhFwWpfmw/IuZ2ZobUf/L8FB2Xa28BryGEtjlHSu5nPsUe4LlHAM70eX148AAHg7xC+N7
-	0wbxCYVrsREm8xGB5QUQ==;
+	List-Owner; bh=aJGfnWQ1PRmDiA5mK2HgXGahR1U05/hSFUs9sepNXss=; b=FGfl/SsGTy230Y
+	Ruty7kM3B7MXAZcxJH6+kGBk4yKf1cGSA7FZ0v9hsyI7+NuduWeIGPziRh+bkHRL+lVZILjl3937S
+	vuCMIUZ27je2/YLRxcoWX2tROcQE00GDG2kJgYi7U/mfmB2PmxSKNFpLDi/4hPuJC+YITY/JAVPIw
+	6mAMhldGCC6ZrTo0zk7WQ62AUVoEXKNTNcBrCkuExCQ8maGdxEGJ+y9WibdEVlakKtaFE8qLr9u4y
+	J4ZMpx74WGJRtFRK4ApEXoInZ/s/9JpnBA2ze42aNd0D/cD+Udue9hdd1rpB9b2JkzVJMJAfomJaR
+	9hR45Y3KNJN/D8Ir4tnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnHOo-004J4v-Sr; Wed, 17 Nov 2021 09:38:39 +0000
-Received: from mail-db8eur05on2078.outbound.protection.outlook.com
- ([40.107.20.78] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1mnHOu-004J97-LR; Wed, 17 Nov 2021 09:38:44 +0000
+Received: from mail-eopbgr80089.outbound.protection.outlook.com ([40.107.8.89]
+ helo=EUR04-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnHOa-004Io1-4o
- for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:25 +0000
+ id 1mnHOa-004ItJ-SX
+ for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:27 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Buy2PEMKtpjCdCwzoFpDuUG7+Px8GyRkkLprT73RyxpLtHQ2C4fk6gM6fOBaBNpy3CUw1Z6fLbVP7wNGLSMKYYw6PafSKlQRD5E7NKtYbzvhTEnctfVQX0+aJLKkYo1al2bwzSV2xRL7tWUICQJj1rrNij7jkRc/hd/fN1gMKS/AVHyDnWIcgtXCxJFZqmzGUMXvYc6glwo3XpHdTN0BW0+NTshbFpNFQF9QD4uGffdXrVvw+ic9oW9VAUcTiT53vKvYP/CDARFdjmPb1KpUGYPVPVVi6Ln8YGNjR7VC/+AHA7RcqyLUmZvOEdpEF6O9LFOD2RADfabm3jmvXdpuyQ==
+ b=kNjKRxYEWOOQNV6fnLVBeIxsd8fky/8WjWM67zaSk6LWLMh6tFZr+Nb3gie7UB4xeSeAUt8dcfTvRZAyb9dtvHCprsh5wMVqEhcCLbxNCxoJSoBCxKyo8PCU8F+gYsM3CGKsosDVyVaFHgBLK9wEah+XXC3/my2Nh30r7clnvktP0z2KIkTbplKbDyLpkaG9ohsEq07CsbsQIzGlRIisDNcqC/P/67YA6K7ldBY2S9BpWZPni4NOkGR3jhYcYMcaesm5UAv1Y53hHfBQZuze2txOOkYbntGQ7bCQaDGI20qpIBZgnSA2d+KsXwP8tV+agq2ky3euVQJ+Fk8CbxHAVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WE2DuIgSwafx0IAlBrYGbF4rgLWbl+ebjRJgRANfPik=;
- b=fAOjuEvTwq1xItrSg04YrmMcCQ4CVJEoZqoHwusUPIYuFYnTtp4oY0IUECAY/eksdsd2mQZ3bHusN2IA/vdlQVD4e1Snr4H5z9jrtLUR5Lv+mC8A8UfCWeba3VKgya2OaTYzxFQGnZYqnD3k05cgVhDsRVMnRpW078yMSQziX60s6jQBwCh6YCU6LQcknPDk7rxzYfFqU/GWazp+onQt7q9P0x14fYsAHD6WG5eq74OpIDg25C+zXTSLeQztzpELfqHIE8ep+DEmn8vnoiSOKG++iPYuv2qGAn3py3+qCQDMr2riJmWWEgKIf22GkFCTTg28zuTkW2G9nhhzJ/T/8Q==
+ bh=7LqjUUO5qv84gjPhhIR8SitLrMEkMICo5WShMvZ18tY=;
+ b=QpD/0sWOR0QWbRxxQg650XULi4RYVDDxqXNceHZjCuC7jqVJtqN9mKX3XB5c2LwdelXcb9WPueKrDhZGW4uCjMYb3e0Rk872bsdwHOhy7I32KxYieNVHBYIgKeP6Skp3+jQsgr2kOL5k+RA4rp+AS/94nNpD0QOV/KjasHoHLMIRAJlwfmWo1YA4ifphGcjcCFJ3kX99Bnwknz+DiOCMqVZr1ZeqbXIcryDvMyOmg3W9WBTzNhkD/DRRuZWyKim4K1BFnQ2Ip+3bb1m38t+n/xwiA+cINCSlgiI5ixpgXbxys+heb2dSiibZGsglUS0xA1hjiUoFE7m2Rqdg+pey3Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
  dkim=pass header.d=oss.nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
  s=selector2-NXP1-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WE2DuIgSwafx0IAlBrYGbF4rgLWbl+ebjRJgRANfPik=;
- b=ATKNykq9tsyOR8PnQeLlAZO2d6RDNHS+S+DQtoCbrGYKrH8zkAJJvSbzzIpjAnNx0bpmBtBkZrMn2vRXQKTi/i4PijvEvMKfAVQ/Vtz2UKYXj4jZtzrURot8hDuXEdm8k56Dq0bj2/ukKN2OJ0erVEiP/hg23YfVgNrXX7Bn++I=
+ bh=7LqjUUO5qv84gjPhhIR8SitLrMEkMICo5WShMvZ18tY=;
+ b=a2XVBiUyHxPCdiV2dH4fs24SlivRhgNRVc8v9QQEv9nj44myXB+ODM8o1FB0o1u/VNtwPx9ghD05Uoenqc01yGdR0NquWignOzteNy/nHQlgcqsm4t9GeWiRPsshBgyvybBwo25XKIzCPeii6Ey4SjmW1YDAorfxUxKBxVehF/0=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=oss.nxp.com;
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com (2603:10a6:803:61::28)
- by VI1PR04MB5807.eurprd04.prod.outlook.com (2603:10a6:803:ec::21)
+ by VE1PR04MB6623.eurprd04.prod.outlook.com (2603:10a6:803:125::29)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.27; Wed, 17 Nov
- 2021 09:38:13 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.26; Wed, 17 Nov
+ 2021 09:38:21 +0000
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f]) by VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f%3]) with mapi id 15.20.4690.027; Wed, 17 Nov 2021
- 09:38:13 +0000
+ 09:38:20 +0000
 From: Daniel Baluta <daniel.baluta@oss.nxp.com>
 To: broonie@kernel.org,
 	alsa-devel@alsa-project.org
@@ -68,10 +68,9 @@ Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
  yc.hung@mediatek.com, linux-mediatek@lists.infradead.org,
  Bard Liao <bard.liao@intel.com>,
  Kai Vehmanen <kai.vehmanen@linux.intel.com>
-Subject: [PATCH 05/21] ASoC: SOF: amd: Add dai driver dsp ops callback for
- Renoir
-Date: Wed, 17 Nov 2021 11:37:18 +0200
-Message-Id: <20211117093734.17407-6-daniel.baluta@oss.nxp.com>
+Subject: [PATCH 09/21] ASoC: SOF: amd: Add Renoir PCI driver interface
+Date: Wed, 17 Nov 2021 11:37:22 +0200
+Message-Id: <20211117093734.17407-10-daniel.baluta@oss.nxp.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
 References: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
@@ -84,64 +83,64 @@ Received: from localhost.localdomain (2a02:2f08:5706:b700:22bb:b216:ffff:73e1)
  by AM3PR03CA0060.eurprd03.prod.outlook.com (2603:10a6:207:5::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.19 via Frontend
- Transport; Wed, 17 Nov 2021 09:38:11 +0000
+ Transport; Wed, 17 Nov 2021 09:38:18 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: cecbaa9d-6ee4-4130-c28d-08d9a9adf94f
-X-MS-TrafficTypeDiagnostic: VI1PR04MB5807:
+X-MS-Office365-Filtering-Correlation-Id: 5740da27-42fc-4690-f730-08d9a9adfe1f
+X-MS-TrafficTypeDiagnostic: VE1PR04MB6623:
 X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-Microsoft-Antispam-PRVS: <VI1PR04MB58078533EB27B1614884BD5BB89A9@VI1PR04MB5807.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4502;
+X-Microsoft-Antispam-PRVS: <VE1PR04MB662325CDDF06833DA08F7FD6B89A9@VE1PR04MB6623.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4941;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 2J2CoGVWRcSoc07vWp9IN+1kzMn3jdXuGoXuvaO1VoPijl7o6xEMcPwrhDrVW/ue4GA6aBR17T6XftR8Z+9iQK/zqwyTijgMrBnpXEieo4l6fgIldaFEpnKaivqrI+nlXWnaz0/AM2liST3hGlzw95mj3tIUbvJmz80PCX3Omnxc5bUgz66GO4dIbUEHZvKNfD1jsVLY5GDyglyeYtLLM2RK/yeavLadibNZI5Y+z5moqaJt9RvbyAAg47rG68bRcccomRkqPSOVO86aDN1tdzw//NC+M8bydW6M2kx0Tmvkm2o8/v8fDXft4zEaD8P+7YXIssV5jC0gFUe/DBI/ucpnhyuZNR9+EsCgD0R1Shnw4uC5ibtF43SE+P8wBhrdOTUUdgzSTGEXcmHMipVmqZK4tw/85uwCZTzYP2tH1lctgbVp9QgWZ6vC4V9MA6Jd3pJGxb1paTqUiRHK3YcBDxGmO59nb+bsiQ4SDdv3vEbJXrvgMJ4/IBMLdz43KmATISWBiaANEf3TSR1AAcMPgDNOVzpBEIOvQl/smdW/xkGX9kbAbpTfmQGaXgGUgNjjCNE+9BVk+GNw6pGcJ/IXDtg8G9QLGeE9Iqz3f3AP8bd0+VzpFzS2Zwglar8uSR2wMkM2PEnYYQin2kDhOd0FZQ==
+X-Microsoft-Antispam-Message-Info: Kl+2yyslrH3UUP08RbverIm7V1sDX7HPf1mgjdKZHSEJ8+JuEtuLzf6JgTp8Kg1v5oAyGgXwrLwm9qNNvPuEKJtX0MIKXt2WBesQ3i7gQHhyIi0j0oAsp83DHBjSHp2JISKReuDJRgpDaYW9xVBD+0MRxOLsgovZINQil0s4FikeVom5vjkAGLIXLmubBnc+SSmc8asTfo4CfVx00hipBj1wXt8Lw3DXB56R6Aa2yRN9iVKPkAhHMgd7hBwP2U85gyfBcFoUwW9qYMTAk1r7vux6d6g3u1MSI1mU3kQD8uCrKrVaA6jD9O6t/7Xne+3Sn3Jp9bctIJbINA/WjoBBzlx0wVN2LL+OHvel5Xl6zWcEZYAaSkVA3WMO7kKaJYB/nDl9+b25ahFdqhU+lTTVIR+ff/ZA2x1MLoXFtNHgmbilhozer/0aS959LOBCvzi8d1BRkzeEx9SmNd4zrU3TrPqgfk8shHDwFiY43/Lo5BhJ4rBEvJGBEAZffQa2tAwXPst1mQo4WV/LTCW9/Pz+d57lJUuTMWDm96Y5MtJSmyHDoo2u7je85JSkpyoXe9ls+EBdY1nA8Q0E8yYsmCillO6JFdd51zkgTbb2hhUQutLBnzbV/kdLXKrZHlZ2opX+mDp1dZOevfC5b1GkzoBvRQ==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:VI1PR04MB5151.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(316002)(5660300002)(508600001)(52116002)(86362001)(8676002)(54906003)(8936002)(66946007)(186003)(6512007)(2906002)(6486002)(7416002)(6506007)(1076003)(2616005)(66556008)(66476007)(44832011)(83380400001)(38100700002)(4326008);
+ SFS:(4636009)(366004)(8936002)(1076003)(52116002)(6506007)(5660300002)(54906003)(8676002)(508600001)(186003)(86362001)(6666004)(2616005)(6512007)(7416002)(83380400001)(44832011)(66556008)(66476007)(4326008)(66946007)(316002)(38100700002)(6486002)(2906002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mk+4TpztP4jRpq3rdK1jzO9B1WRK0B+oS1ozYDNgCJQr058YQtTfWjiSJTKz?=
- =?us-ascii?Q?iWO8WLK4EwdJf4XHx2D6IUUyCH9MxEZEXfO3EH1j5a8vTw2ZuSXCUNecJAlI?=
- =?us-ascii?Q?gybdCWqqLHXEpKwr7Ch/tbkPAomo61/IVGkbO68a+dpPoKtRujz20OfjurYr?=
- =?us-ascii?Q?/LUaHljx+y7njhxjEp39PhjBnJwLHmBAu5dpt3dbwzGMSZwQBeJqig0rgcLi?=
- =?us-ascii?Q?t7hWtIb1NV/ij/0wECeUzWYaRMKZLIDrp3uan/wqF81UkUwTmUG9BCMDxJnT?=
- =?us-ascii?Q?WOSn6ZouLS3SExmKZJ5+MhFmgGIaZ6xfnw9U/58/T+xcrdk3ijU8O7YFYhxR?=
- =?us-ascii?Q?i5/8ZeT5+AthS91hzv42oCZWUywU5b2f2hYlhKXNjuP3EpEel8iVhUU1j1BA?=
- =?us-ascii?Q?HUjVtQvOgNMcGMXu/yer+lXo67OVIHrWDht/HVtSntsCqwzaOLFuVpSoc8hl?=
- =?us-ascii?Q?PEJ2+U2HhZIUmNN7XGfzsVdF1i3PDfOwnOLHRmTcuBJKmrA1ytRHAIL5C+F4?=
- =?us-ascii?Q?i9H1T0JUnWlgEHXgGmqcZumgYP0rgieIuvC6uHd1V+OY1f1sOtrSt1LgOGSt?=
- =?us-ascii?Q?+TRtgykWbfSncXe8D7nYIgPRU5RfRhaAqBfQKmMukhp9KqSHZVKCpTTtWrqw?=
- =?us-ascii?Q?uTbtRT/CC3udVahdNr+TQDVGDaPvE2cLvrtaRsVGKyXY9754BAosmAaM2tut?=
- =?us-ascii?Q?nakNFZUdpfFW23ysLAD/LbFYV3lVrHBcIGO0eF2IQZiQQ9Yt+xdEsc8+6vav?=
- =?us-ascii?Q?fdzYmPj7Z9SbPxP5m1ljQfoEUKoxET1AHLhx/R/TLxMYtTLYbxE0+hDDQ03H?=
- =?us-ascii?Q?yy32ahH0+oHEoG8gP8j0uMdK2am1tlApSzPfep46cqKyqSOVndguOS9Lw0A1?=
- =?us-ascii?Q?yqaZhgDfULoKvNSnutmFBRa2zKGW9o+sO1canlq+ABnhn7p1LL8z5/gUI3pS?=
- =?us-ascii?Q?eBfaSB+MQe2rz1TyYzWPwnxExcwFYQnZUfOCtmlBM+76+G4672CpFpXMmWbJ?=
- =?us-ascii?Q?3XzGkSziAbvNrnRttD/3gyJ1Vfs56eG7cqqJKT9ITtrYBFksETKRE0SY/wAc?=
- =?us-ascii?Q?wjMye2V7MCSUoCZKoNyvIgKQGhcuYvwOTuVB4ER3sCQsXtQno5wR1KzCg2Tz?=
- =?us-ascii?Q?u9QQxjo0NLOKuVK0d7r9pFsLowoVtB/Xbd8oj1AIRwQen3l03i8Ay+ikmODE?=
- =?us-ascii?Q?AwTVFw0NoO4u0wkQNWHY5tkEEIs3OqHIThIvMnvqpmIxBk3JXmJrH8pmavIB?=
- =?us-ascii?Q?yae0B8DnZdkEl+hgNhhmoZsQ7XvC5RuG0yeaMnD15eCGDBvByva1w3M/n8Gx?=
- =?us-ascii?Q?jPc2ic62kdJw6lOw+9JnaVH1IJuUyn4t87VFW9PdDX4vIG0NH8Cxz1BwIjh5?=
- =?us-ascii?Q?o24GhXQZ/+56NCLH7ckrVL1T49XC4YksojsZ2djBdviYUNnQvJI9LIedLrBU?=
- =?us-ascii?Q?SSO7eL5KhhiSDbOkzmTqlF/p1zR3oexzQ84yXJZqN5MXCRRB1sS8nyDNTYqW?=
- =?us-ascii?Q?xtlfvVgCEHMdlyP86hBq06m28HMXqz4246fe8V2RpeCsj2TxF9LYmMcJ+gsT?=
- =?us-ascii?Q?a+STtogBCjk4WFpg7Id5/DQofqjtqbEwBWGVeD8o92vR612afQZqlMin/pZ+?=
- =?us-ascii?Q?xAl06accz3god6jPeRfdCU4Jd0HMl9LPeR3JLHA4lzRpBe8WKPgqnJEofXYH?=
- =?us-ascii?Q?TWT2i6GIH+d5iVm3A3k7KHoQH62t/WVZSv5TtTizyC+HRvDG?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7mae2ih/ny87wuzM9tGD1YOFKdcxjsCWXbOhuCSiyZlI8zj/UbgiK3Gy0U0Z?=
+ =?us-ascii?Q?lsl0BRSdCIyeICVKizgQ+gs4HAV5HpFZq18SssGDcsbcFSysbR3cm4pCxZt0?=
+ =?us-ascii?Q?0oei5ISs77PewV3YkRGsIxo8HP1BVpm7f87D8ijw21Fr7K62IMfOX3ufjf6r?=
+ =?us-ascii?Q?nHK6aIcfs+TsI4oQ+ARTGOo7zbaSF0HGp/PWMR3IQryCSwBd6BjJNRQWNvF5?=
+ =?us-ascii?Q?ujISycODGAhPFqb7YS8L5AmtGWV3dw+yZsk49hdmzz3DUvMTens5dnn3SuDG?=
+ =?us-ascii?Q?amYbBIwSoRtPEWGATs/4E46Y8G+FTFn3qgyk1zueCw/f04g9y0d7iu2ERuXc?=
+ =?us-ascii?Q?CHJQtOHejsMSrZftAq539IT7AcaNvEnhJY3fFXMj0f3x6Iw7nNoabub64rzc?=
+ =?us-ascii?Q?dLFriWXiIan6SWNkY0sEEIkFgkwYe9kEqflL9kAODr02McGXWla34ae+KbMV?=
+ =?us-ascii?Q?Mr5VV9HAzvZGnfSmz2YgZvfKSyPOtacu8HnfY6iq5+8g7WahXr/wGOPpZ3uW?=
+ =?us-ascii?Q?3bLsDvbKuDSCjs5KxV7XOLJiPTMRRP1217DXs93KHbwqySFwTNT9RxlsYRIt?=
+ =?us-ascii?Q?AzUAZQQebiVYF0Hi9WzLBnMXw/pI9N5tskk+olLbZOpY6We8agwwUuWknU8S?=
+ =?us-ascii?Q?2CJLMZ3CYINxCqvLOPRMfYrHLC+D+Nbb6STaz1J2gIF9R2uvnYj1Wj/EVHnG?=
+ =?us-ascii?Q?CoeXTHpwq5Ed9batKng3QI3S8dQVtMolj25Qrcz8sCJozCHXLtVjuGyV4/PA?=
+ =?us-ascii?Q?qZx1v1GOaVfgYWnroHooJIcmI532y9rwDiFLE5SJZbPOfQterg7+jU7Qgd4S?=
+ =?us-ascii?Q?lelE2eGk2YZfzy6P0Wje5m1WhE6ifFY8nJkFjyTQRIwnjsy5x45YOAegwTnj?=
+ =?us-ascii?Q?WFqJ1YA+7xFoMWhz950nAby5ltCWSo2zUUZ5Zp8SYHUfW9ppLp/vw5lSCYT8?=
+ =?us-ascii?Q?5qyDgzXoNioP1GMJYwBlFzYDnUpyATGjLmPgxFF2LNJ/2c3EpC5Nu19OO4P3?=
+ =?us-ascii?Q?IPHJcQOU1mY/G8LMHu1umD5LTisx101lkDX075xCVeLvghasjpFp4E07deYx?=
+ =?us-ascii?Q?BxhM2NS7ouO2R0xEQ7ABTnFc2LcSkccRAFJ2EyNmZ+5lZ5cyn7M3NgtbBAF0?=
+ =?us-ascii?Q?TR1H2TVcZFP2Pj3nAzi1S6XPiFszqFSRgD83kiigqUbj4k3r55Tz6vnFxSE7?=
+ =?us-ascii?Q?W665AHngkS0IsGqHfWfxVFqygucTV06rehpe0UF2Tr5Xz7BOo3eFM83ezlXy?=
+ =?us-ascii?Q?csEcbGtYQOgKy/OG0bs07xGCPRlEKImJAdfGTE012oIy4vzKI5Lkoanm0MOZ?=
+ =?us-ascii?Q?8X2q4sGoMdoAWTm0GwRoqT36/Mgh+xdZrhIPsSlWRwYLlSn6OYAWIPSAY8Bi?=
+ =?us-ascii?Q?IJeGxWMkm7JvxiV3dAWYd3mdlh4DvhvLTbgnE5/JApQ55QNFm1Gf/C6Ivs1h?=
+ =?us-ascii?Q?fSJC9ydP4MHLbdMsQk3sGhA7E1lLdZdrpZ8KayXMwnsDCzNMzfv3fZjL5C+R?=
+ =?us-ascii?Q?BFQGRoFtFagUx6eC0YA7CX0gU4ELcuadJ6/RE3lcRj/gBjY0+O7vVDw/CzE6?=
+ =?us-ascii?Q?+lUmBIejao1pGsr927tSqtfagrLHdxrGy3ojktuxNwYqaTUUV8f3nWazuly5?=
+ =?us-ascii?Q?+wQ3EpTs3C2POt0StFCdN9HXyVL3WNbLLrldfRPxNj8LSrgN6fGftbgmD7VT?=
+ =?us-ascii?Q?ieSe+4qO5fZlO7Qv+/qr7kyyJ4Q=3D?=
 X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: cecbaa9d-6ee4-4130-c28d-08d9a9adf94f
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5740da27-42fc-4690-f730-08d9a9adfe1f
 X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5151.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:12.8954 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:20.9159 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: roKnawi7Gd2JH2mxdS7IX75WDvZjrx8Sf8bWVEdZ1VVY78mvM5qHzsZwJ0Nf6y2fLUICG7JhViatDUiLwaw5Cg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB5807
+X-MS-Exchange-CrossTenant-UserPrincipalName: k3IBgQebVRe8xYTZTwNRmN+U17NedR8QJFzzK2Cdr3vc/CI43H9hAS3xL7jauZ8nC5R2N5YSN5P6oVj5+GqG1w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR04MB6623
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_013824_240656_48CDD570 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20211117_013825_162718_0ABB8251 
+X-CRM114-Status: GOOD (  25.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,140 +159,238 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 
-Add dsp ops callback to register I2S and DMIC sof dai's with ALSA
+Add PCI driver module to enable sof pci device support for Renoir.
+If machine flag set to FLAG_SOF_ONLY_DMIC this pci driver register
+platform device for non dsp based I2S platform device. If machine
+flag is not enabled for SOF pci probe will return without invoking
+sof device probe and registration
 
 Signed-off-by: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 Reviewed-by: Bard Liao <bard.liao@intel.com>
 Reviewed-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
 ---
- sound/soc/sof/amd/acp-dsp-offset.h |  2 +
- sound/soc/sof/amd/renoir.c         | 91 ++++++++++++++++++++++++++++++
- 2 files changed, 93 insertions(+)
+ sound/soc/sof/amd/Kconfig  |   5 +-
+ sound/soc/sof/amd/Makefile |   2 +-
+ sound/soc/sof/amd/acp.h    |   3 +
+ sound/soc/sof/amd/pci-rn.c | 160 +++++++++++++++++++++++++++++++++++++
+ 4 files changed, 168 insertions(+), 2 deletions(-)
+ create mode 100644 sound/soc/sof/amd/pci-rn.c
 
-diff --git a/sound/soc/sof/amd/acp-dsp-offset.h b/sound/soc/sof/amd/acp-dsp-offset.h
-index 3a1c848020ca..1d11e9d69dce 100644
---- a/sound/soc/sof/amd/acp-dsp-offset.h
-+++ b/sound/soc/sof/amd/acp-dsp-offset.h
-@@ -47,6 +47,8 @@
- #define ACPAXI2AXI_ATU_CTRL			0xC40
- #define ACP_SOFT_RESET				0x1000
+diff --git a/sound/soc/sof/amd/Kconfig b/sound/soc/sof/amd/Kconfig
+index 400dd5a24ae6..085232e04582 100644
+--- a/sound/soc/sof/amd/Kconfig
++++ b/sound/soc/sof/amd/Kconfig
+@@ -17,14 +17,17 @@ if SND_SOC_SOF_AMD_TOPLEVEL
+ config SND_SOC_SOF_AMD_COMMON
+ 	tristate
+ 	select SND_SOC_SOF
++	select SND_SOC_SOF_PCI_DEV
++	select SND_AMD_ACP_CONFIG
++	select SND_SOC_ACPI if ACPI
+ 	help
+ 	  This option is not user-selectable but automatically handled by
+ 	  'select' statements at a higher level
  
-+#define ACP_I2S_PIN_CONFIG			0x1400
-+
- /* Registers from ACP_PGFSM block */
- #define ACP_PGFSM_CONTROL			0x141C
- #define ACP_PGFSM_STATUS			0x1420
-diff --git a/sound/soc/sof/amd/renoir.c b/sound/soc/sof/amd/renoir.c
-index 9d95ea66f867..ca5582b3f82d 100644
---- a/sound/soc/sof/amd/renoir.c
-+++ b/sound/soc/sof/amd/renoir.c
-@@ -15,7 +15,94 @@
- #include <linux/module.h>
+ config SND_SOC_SOF_AMD_RENOIR
+ 	tristate "SOF support for RENOIR"
++	depends on SND_SOC_SOF_PCI
+ 	select SND_SOC_SOF_AMD_COMMON
+ 	help
+ 	  Select this option for SOF support on AMD Renoir platform
+-
+ endif
+diff --git a/sound/soc/sof/amd/Makefile b/sound/soc/sof/amd/Makefile
+index 7b88db9c5fb7..b27ce50014b8 100644
+--- a/sound/soc/sof/amd/Makefile
++++ b/sound/soc/sof/amd/Makefile
+@@ -5,7 +5,7 @@
+ # Copyright(c) 2021 Advanced Micro Devices, Inc. All rights reserved.
  
- #include "../ops.h"
-+#include "../sof-audio.h"
- #include "acp.h"
-+#include "acp-dsp-offset.h"
+ snd-sof-amd-acp-objs := acp.o acp-loader.o acp-ipc.o acp-pcm.o acp-stream.o
+-snd-sof-amd-renoir-objs := renoir.o
++snd-sof-amd-renoir-objs := pci-rn.o renoir.o
+ 
+ obj-$(CONFIG_SND_SOC_SOF_AMD_COMMON) += snd-sof-amd-acp.o
+ obj-$(CONFIG_SND_SOC_SOF_AMD_RENOIR) +=snd-sof-amd-renoir.o
+diff --git a/sound/soc/sof/amd/acp.h b/sound/soc/sof/amd/acp.h
+index 36d000c3f792..5f6e9eff116a 100644
+--- a/sound/soc/sof/amd/acp.h
++++ b/sound/soc/sof/amd/acp.h
+@@ -194,4 +194,7 @@ int acp_pcm_hw_params(struct snd_sof_dev *sdev, struct snd_pcm_substream *substr
+ 		      struct snd_pcm_hw_params *params, struct sof_ipc_stream_params *ipc_params);
+ 
+ extern const struct snd_sof_dsp_ops sof_renoir_ops;
 +
-+#define I2S_BT_INSTANCE		0
-+#define I2S_SP_INSTANCE		1
-+#define PDM_DMIC_INSTANCE	2
++/* Machine configuration */
++int snd_amd_acp_find_config(struct pci_dev *pci);
+ #endif
+diff --git a/sound/soc/sof/amd/pci-rn.c b/sound/soc/sof/amd/pci-rn.c
+new file mode 100644
+index 000000000000..3c379a5ef231
+--- /dev/null
++++ b/sound/soc/sof/amd/pci-rn.c
+@@ -0,0 +1,160 @@
++// SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
++//
++// This file is provided under a dual BSD/GPLv2 license. When using or
++// redistributing this file, you may do so under either license.
++//
++// Copyright(c) 2021 Advanced Micro Devices, Inc. All rights reserved.
++//
++// Authors: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 +
-+#define I2S_MODE		0x04
++/*
++ * PCI interface for Renoir ACP device
++ */
 +
-+static int renoir_dai_probe(struct snd_soc_dai *dai)
-+{
-+	struct snd_sof_dev *sdev = snd_soc_component_get_drvdata(dai->component);
-+	unsigned int val;
++#include <linux/module.h>
++#include <linux/pci.h>
++#include <linux/platform_device.h>
++#include <sound/sof.h>
++#include <sound/soc-acpi.h>
 +
-+	val = snd_sof_dsp_read(sdev, ACP_DSP_BAR, ACP_I2S_PIN_CONFIG);
-+	if (val != I2S_MODE) {
-+		dev_err(sdev->dev, "I2S Mode is not supported (I2S_PIN_CONFIG: %#x)\n", val);
-+		return -EINVAL;
-+	}
++#include "../ops.h"
++#include "../sof-pci-dev.h"
++#include "../../amd/mach-config.h"
++#include "acp.h"
 +
-+	return 0;
-+}
++#define ACP3x_REG_START		0x1240000
++#define ACP3x_REG_END		0x125C000
 +
-+static struct snd_soc_dai_driver renoir_sof_dai[] = {
-+	[I2S_BT_INSTANCE] = {
-+		.id = I2S_BT_INSTANCE,
-+		.name = "acp-sof-bt",
-+		.playback = {
-+			.rates = SNDRV_PCM_RATE_8000_96000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S8 |
-+				   SNDRV_PCM_FMTBIT_U8 | SNDRV_PCM_FMTBIT_S32_LE,
-+			.channels_min = 2,
-+			.channels_max = 8,
-+			.rate_min = 8000,
-+			.rate_max = 96000,
-+		},
-+		.capture = {
-+			.rates = SNDRV_PCM_RATE_8000_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S8 |
-+				   SNDRV_PCM_FMTBIT_U8 | SNDRV_PCM_FMTBIT_S32_LE,
-+			/* Supporting only stereo for I2S BT controller capture */
-+			.channels_min = 2,
-+			.channels_max = 2,
-+			.rate_min = 8000,
-+			.rate_max = 48000,
-+		},
-+		.probe = &renoir_dai_probe,
++static struct platform_device *dmic_dev;
++static struct platform_device *pdev;
++
++static const struct resource renoir_res[] = {
++	{
++		.start = 0,
++		.end = ACP3x_REG_END - ACP3x_REG_START,
++		.name = "acp_mem",
++		.flags = IORESOURCE_MEM,
 +	},
-+
-+	[I2S_SP_INSTANCE] = {
-+		.id = I2S_SP_INSTANCE,
-+		.name = "acp-sof-sp",
-+		.playback = {
-+			.rates = SNDRV_PCM_RATE_8000_96000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S8 |
-+				   SNDRV_PCM_FMTBIT_U8 | SNDRV_PCM_FMTBIT_S32_LE,
-+			.channels_min = 2,
-+			.channels_max = 8,
-+			.rate_min = 8000,
-+			.rate_max = 96000,
-+		},
-+		.capture = {
-+			.rates = SNDRV_PCM_RATE_8000_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S16_LE | SNDRV_PCM_FMTBIT_S8 |
-+				   SNDRV_PCM_FMTBIT_U8 | SNDRV_PCM_FMTBIT_S32_LE,
-+			/* Supporting only stereo for I2S SP controller capture */
-+			.channels_min = 2,
-+			.channels_max = 2,
-+			.rate_min = 8000,
-+			.rate_max = 48000,
-+		},
-+		.probe = &renoir_dai_probe,
-+	},
-+
-+	[PDM_DMIC_INSTANCE] = {
-+		.id = PDM_DMIC_INSTANCE,
-+		.name = "acp-sof-dmic",
-+		.capture = {
-+			.rates = SNDRV_PCM_RATE_8000_48000,
-+			.formats = SNDRV_PCM_FMTBIT_S32_LE,
-+			.channels_min = 2,
-+			.channels_max = 4,
-+			.rate_min = 8000,
-+			.rate_max = 48000,
-+		},
++	{
++		.start = 0,
++		.end = 0,
++		.name = "acp_dai_irq",
++		.flags = IORESOURCE_IRQ,
 +	},
 +};
- 
- /* AMD Renoir DSP ops */
- const struct snd_sof_dsp_ops sof_renoir_ops = {
-@@ -49,6 +136,10 @@ const struct snd_sof_dsp_ops sof_renoir_ops = {
- 	.get_mailbox_offset	= acp_sof_ipc_get_mailbox_offset,
- 	.irq_thread		= acp_sof_ipc_irq_thread,
- 	.fw_ready		= sof_fw_ready,
 +
-+	/* DAI drivers */
-+	.drv			= renoir_sof_dai,
-+	.num_drv		= ARRAY_SIZE(renoir_sof_dai),
- };
- EXPORT_SYMBOL(sof_renoir_ops);
- 
++static const struct sof_dev_desc renoir_desc = {
++	.machines		= snd_soc_acpi_amd_sof_machines,
++	.resindex_lpe_base	= 0,
++	.resindex_pcicfg_base	= -1,
++	.resindex_imr_base	= -1,
++	.irqindex_host_ipc	= -1,
++	.default_fw_path	= "amd/sof",
++	.default_tplg_path	= "amd/sof-tplg",
++	.default_fw_filename	= "sof-rn.ri",
++	.nocodec_tplg_filename	= "sof-acp.tplg",
++	.ops			= &sof_renoir_ops,
++};
++
++static int acp_pci_rn_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
++{
++	struct platform_device_info pdevinfo;
++	struct device *dev = &pci->dev;
++	const struct resource *res_i2s;
++	struct resource *res;
++	unsigned int flag, i, addr;
++	int ret;
++
++	flag = snd_amd_acp_find_config(pci);
++	if (flag != FLAG_AMD_SOF && flag != FLAG_AMD_SOF_ONLY_DMIC)
++		return -ENODEV;
++
++	ret = sof_pci_probe(pci, pci_id);
++	if (ret != 0)
++		return ret;
++
++	dmic_dev = platform_device_register_data(dev, "dmic-codec", PLATFORM_DEVID_NONE, NULL, 0);
++	if (IS_ERR(dmic_dev)) {
++		dev_err(dev, "failed to create DMIC device\n");
++		sof_pci_remove(pci);
++		return PTR_ERR(dmic_dev);
++	}
++
++	/* Register platform device only if flag set to FLAG_AMD_SOF_ONLY_DMIC */
++	if (flag != FLAG_AMD_SOF_ONLY_DMIC)
++		return 0;
++
++	addr = pci_resource_start(pci, 0);
++	res = devm_kzalloc(&pci->dev, sizeof(struct resource) * ARRAY_SIZE(renoir_res), GFP_KERNEL);
++	if (!res) {
++		sof_pci_remove(pci);
++		return -ENOMEM;
++	}
++
++	res_i2s = renoir_res;
++	for (i = 0; i < ARRAY_SIZE(renoir_res); i++, res_i2s++) {
++		res[i].name = res_i2s->name;
++		res[i].flags = res_i2s->flags;
++		res[i].start = addr + res_i2s->start;
++		res[i].end = addr + res_i2s->end;
++		if (res_i2s->flags == IORESOURCE_IRQ) {
++			res[i].start = pci->irq;
++			res[i].end = res[i].start;
++		}
++	}
++
++	memset(&pdevinfo, 0, sizeof(pdevinfo));
++
++	/*
++	 * We have common PCI driver probe for ACP device but we have to support I2S without SOF
++	 * for some distributions. Register platform device that will be used to support non dsp
++	 * ACP's audio ends points on some machines.
++	 */
++
++	pdevinfo.name = "acp_asoc_renoir";
++	pdevinfo.id = 0;
++	pdevinfo.parent = &pci->dev;
++	pdevinfo.num_res = ARRAY_SIZE(renoir_res);
++	pdevinfo.res = &res[0];
++
++	pdev = platform_device_register_full(&pdevinfo);
++	if (IS_ERR(pdev)) {
++		dev_err(&pci->dev, "cannot register %s device\n", pdevinfo.name);
++		sof_pci_remove(pci);
++		platform_device_unregister(dmic_dev);
++		ret = PTR_ERR(pdev);
++	}
++
++	return ret;
++};
++
++static void acp_pci_rn_remove(struct pci_dev *pci)
++{
++	if (dmic_dev)
++		platform_device_unregister(dmic_dev);
++	if (pdev)
++		platform_device_unregister(pdev);
++
++	return sof_pci_remove(pci);
++}
++
++/* PCI IDs */
++static const struct pci_device_id rn_pci_ids[] = {
++	{ PCI_DEVICE(PCI_VENDOR_ID_AMD, ACP_PCI_DEV_ID),
++	.driver_data = (unsigned long)&renoir_desc},
++	{ 0, }
++};
++MODULE_DEVICE_TABLE(pci, rn_pci_ids);
++
++/* pci_driver definition */
++static struct pci_driver snd_sof_pci_amd_rn_driver = {
++	.name = KBUILD_MODNAME,
++	.id_table = rn_pci_ids,
++	.probe = acp_pci_rn_probe,
++	.remove = acp_pci_rn_remove,
++};
++module_pci_driver(snd_sof_pci_amd_rn_driver);
++
++MODULE_LICENSE("Dual BSD/GPL");
++MODULE_IMPORT_NS(SND_SOC_SOF_AMD_COMMON);
++MODULE_IMPORT_NS(SND_SOC_SOF_PCI_DEV);
 -- 
 2.27.0
 
