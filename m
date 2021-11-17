@@ -2,14 +2,14 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id EC38DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id C3B62C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:25 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id BD0BC60C4A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org BD0BC60C4A
+	by mail.kernel.org (Postfix) with ESMTPS id 9102E60E8E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 9102E60E8E
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oss.nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,46 +18,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zpwDzxxRb41vj8D7v8gm901vaUXKJSnc2tJuw+x3o3c=; b=053sbPq/ZLi8Zx
-	YrQWonzY8ZDikr7t1eP5CjE2JA4SSRROK9wFG7kk0iN3uLi3mBpqzKm0Y1UhprhjVF8JH3OFpaKEX
-	R5bJzQtp2ip2BtgQpG6j9F7+eSoHoUZGIxe+ebxMgzGeLvo8FNARqeo7pkaMwH3kj0jvVII6rcqc0
-	u94uzDcj2DOPz+pvEMXntczvVUjD0dPk3qwlq7W1f6q7ZrY3P+gTTsgeAj4LPsQ/L3WOuk45rbbsB
-	KVq8g/M3DKgYoa0Qj10KwKQP609ex7Z1cMSMkG55TSWF+BteGbt15RfoMjVZjll23HTY/AA5JDLtO
-	SSXarQERPx1rhr3v4MvA==;
+	List-Owner; bh=ZJeJ65oyBR2jqKLXXaplIUAYZLIIfGSUupLgLwlu11E=; b=Ua3O17VUfDXt5Q
+	t6oWxeYSHwIG2SFTxXoapiwwbc3iJBpzPs/uBvk/9p99bGm0rAZDpjSi1f0FM+G0nLGc7PYcDaQQC
+	6cnAKqhp76GGBZ1z2u8fFirwGjaaFMT11wqFZs7roaZpgsQPmLMGsqL23rAsJjDNakDCCpfnxmzU1
+	QIQbgQ+Co5nXFk5eD7aqjJcGeGGlRjYIgG1z2jwQAt8RfTeSbtnMwhVBHR9WyHGo80IceHgG8fu58
+	JUxo27Ah6wdg466ojCK2KlzeLlFEtfzNXp1QVdCTi74Ii9CYtPgZK6+DrwY3QFsE4SqARsIVRifgd
+	zyn35QsB0MHKle3FybpQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnHPL-004JO0-Kl; Wed, 17 Nov 2021 09:39:11 +0000
-Received: from mail-db8eur05on2078.outbound.protection.outlook.com
- ([40.107.20.78] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1mnHPO-004JPz-Lg; Wed, 17 Nov 2021 09:39:14 +0000
+Received: from mail-vi1eur05on2072.outbound.protection.outlook.com
+ ([40.107.21.72] helo=EUR05-VI1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnHOh-004Io1-3V
- for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:34 +0000
+ id 1mnHOi-004IyU-Ax
+ for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:35 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=iqidAvOO8nyiinpv+cnIskB3DBCr8OS8JWKvR4SkLwZBiAepu1yshPSMURJN81/n7KQpfjyf3Gcl8OJ82h+nRJuulOP/Vqe3kVO00U7WLdb9iazKwSkEX6sZxOGcuuBUt4DP6C8ko7ZChOy2Z6UVSRcbtYk/E0yTqK7jX9PDn2OdhLP0jqd3z0/qUIT60HlVdmD+Xep0hRKg+/9k7r+3cOSQBj/XS7nOkCNsRtd+FMT5OMwlF99X/KalzaE/opfra7P5PAjoSoK8eVys4zFyPBEXnl6awjd0NEzVDfJ+gHJJbcEU1P1MulrlTso8MneNfiarAR02jia2KmVnuDl2VQ==
+ b=dedfFeg5LVfA4fxqKHa2bSeDj+RO51mfUJzF/S5qZgjLbBJtVY1Z4GeiyrshIw0PWHaX7HB5v6y0de/NL0UdQQXYXCKuT9hM/xAsG64w82CyQB7m6uSHslNzesM81Y1Dz45wHtVCyUgKMj4zlUvgSosc0+yiKwg7RS5DF23fYAOeVUOtSSq5vd88Oxt4waUhwNNRJ6RVEWgUVvSs78InrhkHDnXLtoaBS4X94bwSsj3t3AjC4GafDYRxSPMuIezwxI5Ro94S9buFAhFeSS5i6xoYr2xN4mKSvemIjOdTd71d+AfjNm2+yt9wu/kzrv6vhwN/mMtjEA9BlY7NICC0oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qETs5pmNyjuaBLj+49Mq3BcTs04Xkehh/3KstmMEV3k=;
- b=BigAi9lyvm/hBVdz7IR2SSbmEXqy7J9ji2Jfd+QYWOa1C0ndbJY4qS+mHXF6agO5SWEhcqHjlDpLn8SSMe1qjpDA6o3i0E3/xk3QepCClg1dZVItYGlYmZXCX3pwpgrUiXI5B3DtzPwFtWdzn2IrPPC4QyTgmxKI7P6/hQx+SjV4URnZ50hiyiQsGHnJEDPGIacq2ucKuVeFDAfaIn9nreYaaOJV9e0tQjZmUr2vnuZNFYFac36VfoQjJkGyd+Q3y3yS+xH2G7Q1mDjpUmmjtyydd/e0XslXlkqSfdNuZMjsPdDJNAIopB21QpJ2RZrVV7W0FQLVQ0mVJz1QtUhMWA==
+ bh=rdtHZDIv5NASSCwbbXRs5IgvOG61UBHZDcX4eipvbRI=;
+ b=KoiGVcZSwElI3L7VVGlzALHvCfSajklzchkVDHZjFZ+41fFefcSnkpIXTfb9kFxmGlUdFJhVe87NzpXWMRBSazjohwVZ3pzVZg4cW8Zlc1HekUM9ZZibHRRo2RdF1I/nr5sodu9atTk3pFU8OaRB3edHulb1S3peqrVSQXPWs0cGafcLK1LJgjNSD4Jq6F8YsY1AEB46R+sDqTJqdteudNDSNxbGav4IuW1Tyt5peB4rMKmigmCGsqD098bvHEssnBM7NEy2Yl5HS1X+dgPWqtnsZPtPVp6mL2mX9DFurS66s6JwNRkH8IuSFftj38fiiAyjf2P8KKEX3cLof3Ph/g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
  dkim=pass header.d=oss.nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
  s=selector2-NXP1-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qETs5pmNyjuaBLj+49Mq3BcTs04Xkehh/3KstmMEV3k=;
- b=FVW/b9oNh+Ysnz+RVl1NkcoIR2E2iR+0EPxymLedWUOeM7/EtaEuRNpKFyZ5Vp87xL0tN1DpBS4cr8fQ9XOFlWGYatkylMHy33pPvoLEWqCWcjKohpC94E+NFIi15VOrDwTZnmX+74jXdgQk/GtGltKSV34bTqkfCFvr0FIlrU4=
+ bh=rdtHZDIv5NASSCwbbXRs5IgvOG61UBHZDcX4eipvbRI=;
+ b=IHtNgfzToBGio2KUE21Z9AGyM1NeItqlaGcOTUK5Q9YwS5gj1DMDOCccCbO8zhGvtIm+9/lExxk+tFGurx6tzucBlQSygWyQ86Vcabj4GPdZtQ5FPpJ7mgxUW2d9oDpC8x4gM+SayRW1vX9/jcwxAjyqOakEJKyPTGIFUiSA9Cg=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=oss.nxp.com;
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com (2603:10a6:803:61::28)
- by VI1PR04MB5807.eurprd04.prod.outlook.com (2603:10a6:803:ec::21)
+ by VE1PR04MB6623.eurprd04.prod.outlook.com (2603:10a6:803:125::29)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.27; Wed, 17 Nov
- 2021 09:38:18 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.26; Wed, 17 Nov
+ 2021 09:38:28 +0000
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f]) by VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f%3]) with mapi id 15.20.4690.027; Wed, 17 Nov 2021
- 09:38:18 +0000
+ 09:38:27 +0000
 From: Daniel Baluta <daniel.baluta@oss.nxp.com>
 To: broonie@kernel.org,
 	alsa-devel@alsa-project.org
@@ -66,12 +66,12 @@ Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
  Balakishore.pati@amd.com, vsreddy@amd.com, Julian.Schroeder@amd.com,
  vishnuvardhanrao.ravulapati@amd.com, linux-kernel@vger.kernel.org,
  yc.hung@mediatek.com, linux-mediatek@lists.infradead.org,
- Bard Liao <bard.liao@intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>
-Subject: [PATCH 08/21] ASoC: SOF: amd: Add machine driver dsp ops for Renoir
- platform
-Date: Wed, 17 Nov 2021 11:37:21 +0200
-Message-Id: <20211117093734.17407-9-daniel.baluta@oss.nxp.com>
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Curtis Malainey <curtis@malainey.com>
+Subject: [PATCH 13/21] ASoC: SOF: amd: Add support for SOF firmware
+ authentication
+Date: Wed, 17 Nov 2021 11:37:26 +0200
+Message-Id: <20211117093734.17407-14-daniel.baluta@oss.nxp.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
 References: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
@@ -84,64 +84,64 @@ Received: from localhost.localdomain (2a02:2f08:5706:b700:22bb:b216:ffff:73e1)
  by AM3PR03CA0060.eurprd03.prod.outlook.com (2603:10a6:207:5::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.19 via Frontend
- Transport; Wed, 17 Nov 2021 09:38:16 +0000
+ Transport; Wed, 17 Nov 2021 09:38:26 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 6beb1744-f0e0-4322-305c-08d9a9adfca1
-X-MS-TrafficTypeDiagnostic: VI1PR04MB5807:
+X-MS-Office365-Filtering-Correlation-Id: 019c06fe-ee48-4f0c-fc46-08d9a9ae0233
+X-MS-TrafficTypeDiagnostic: VE1PR04MB6623:
 X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-Microsoft-Antispam-PRVS: <VI1PR04MB58079B76AE2CE7DFB26FB193B89A9@VI1PR04MB5807.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:1775;
+X-Microsoft-Antispam-PRVS: <VE1PR04MB66234B969E60A12B1CEFF27FB89A9@VE1PR04MB6623.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:4125;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Zu+hQ9iK5kM3HEeQ4xUH5MHF2nsZvfLS9fL5lVv5uSpHNkEChuPTUsJEODInuDxH5zhfJtDowacc/XzGXRtGWTXYtsrUC1f0fqTZ1hWhhoOwwhJcAm90SvlSgTaSFFNmtxv24oITacR+zp1Gn5mPI/O8KAJD19YOkDUQIsrjXoo+oaoYO2YCGbhJpxZpyUArrG+lPp+cQROGJJ2d4TYpmywxrAoxYq58298Av01DSbVpA3j5kxouo+I8W1UgIRDdI11u3GaqPybpNWaER5TrofaVRfaoLE4MFm8Ft6QnBkjR43z4i1L+CE5me8Qd1HGn6xZYgbzqaN//3wdVNwKtEmtvInFXNLlyjGYsVdIkpnpznCzvK4Q2zH3rDFnFLFfQTFbY2/l4hhfluSx8D2HKqBvJWQVoPeY/jkjQX1PKO616Ebb85v+dur1fpbWvaxkG9s1IE6ao1qSvbLdDMv/kggLg+z19frNsdkZhON2e9cpWRJoXunALxZJ1clNfzQ/f47bNGZYdFQUMZrSCAy72TLKQsCuC8cczXCwNjoZUPPulUN85RJILxz1Ckuw5QDe7edFvrHA7Fsu0ogo1Da+VltJMX/D3ZavjLimMb2pUQ7RJrZCFkNqndmiAzMX4DZ9Bcn307pPThwncYYsxVG+sIQ==
+X-Microsoft-Antispam-Message-Info: Cb6EmpcMBgfA9DQ/8OOWpq4vZBD7x1Uce7AN4HkQQNf9+xisZBXkKFftc/HJSJcb3ZdPQ4qPDa9ChX9a0DClEHGMTI4PZFf3W1WWg2Ug3nRtYH4B0Te6Cf36c1QKQbzp6uiGsFjZ2iZLFq60npfdHlVPzI63VfiizHWnDL1VZKxM8Lwx5+dpACRuIMgF1DT5DtLFdBy3DORTtA0vhHg5ZjlJMGIxkmFc5a0+spkIgfp9htiDi/RKawC0gmSJXLOGbZJK8nRYkXwt71f+tSMK7Qh598dRJIfS0piwEEUq8C7DPxyWQeFSxXLeYjrs3ja3EKJsjC8E5ccBj405X8Y2f9cclsZYYFsCYpgbj7NQokbwD+vB+ZQf2rTkiyAZEbmqaXQgMOZ8AkicF29k601uKE3Wtf/TLbAvJYDzFqDCyaQRVpGi924gyvgjW5P3AHcGY0FuQ5BtA5cIH1vjCs5yPhe3uvj4m4rRNs7oX7T7Yta/ezWg4MeO8pWG+OVTX9S1g0S7Xg4r4UHdAPR1OgVoDyDgIb8kX3aTa3uCs6/IDU7M9Y6rip/M/ClLdMiEfT1CjXezdld8gNP+EtXUHw3wDqG2gNEF07RX9LZREcEVuFdVCUJKev29fO66Ap7zFJaHn0ZoXr5c6oobzNGgphFi5w==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:VI1PR04MB5151.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(316002)(5660300002)(508600001)(52116002)(86362001)(8676002)(54906003)(8936002)(66946007)(186003)(6512007)(2906002)(6666004)(6486002)(7416002)(6506007)(1076003)(2616005)(66556008)(66476007)(44832011)(38100700002)(4326008);
+ SFS:(4636009)(366004)(8936002)(1076003)(52116002)(6506007)(5660300002)(54906003)(8676002)(508600001)(186003)(86362001)(2616005)(6512007)(7416002)(83380400001)(44832011)(66556008)(66476007)(4326008)(66946007)(316002)(38100700002)(6486002)(2906002);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?h7rFmaVKnQjnqBbzyMo+JPAps9nd+lDz0TY/HfRM9k9KZ+ZDxrppP3SEYBzr?=
- =?us-ascii?Q?SsIu6m7v5YNNF41Qyi+V3w6Sd1/OYapdMbms70ENcJhZxqZYfhsqQnrzkhBS?=
- =?us-ascii?Q?ryosJKZT7vtnO4aEjPEyLWzvRYwLLc4porvp6QREuLhQ6s0vnBkYOsm7rhsz?=
- =?us-ascii?Q?t2ZIyfOU9VPb7MVIYjv5ABZiAmib6p/bSUjP00Kfs5S6TdoCTnimCeYA+urn?=
- =?us-ascii?Q?6Pa61wMqqwHCljLz+jnozU6HCUX+ub1LsaIIkcphU9699+PPfTG4AJK/iNt7?=
- =?us-ascii?Q?g8ttPgMf96FU2UrY6pQZinXEkUiW1Ff3e8HkzIU4a6W5GAxUJscKl1plsOND?=
- =?us-ascii?Q?y06wLkZQQ07x57fZunSgn4zo5TtKPiEvTCng8eqGRil4kgcSBDZBkKM2X/JD?=
- =?us-ascii?Q?lABPRvNyfVpdhkRFt9WyVaOJQ1yEl6QnlNkMax76aYWW1QlyD9UNUNTH9UZ1?=
- =?us-ascii?Q?7xlHYoKz2BT4WNKn0x9riDTfnedJ3CNL/Wa60c6dY+yWhlvAm6wgg+Z2HkSj?=
- =?us-ascii?Q?altW1Mw34K6LP8g8fIxstnjHtv3/UWtNMDaESjLKaffSvDn0zS6Xdjx+ltGy?=
- =?us-ascii?Q?oi3Rn4XfwKhAcNLzwP55I+iPzcxDSRNkz1xm/Qds4vXWwbP1+tBTgoq6cf7u?=
- =?us-ascii?Q?d/JJwzYjABfn732789XYjAXigXSPWxQ8HKx0mEvTjKCViAzr1KzYHDjOJrs+?=
- =?us-ascii?Q?n2d0L6YN2XwpbZ/lTi9+BNZha/7AYSgO2XrtGCNePbhWH2mejnP4q0OWrXyR?=
- =?us-ascii?Q?nmfDzgPUicH0GOVT6Wo4HWpOQWhH3L+TzXuyadLA8yqEEa1qRXUfLrVflGmd?=
- =?us-ascii?Q?lgwhwtIpKsVQRDTLBa5PXONFG5e2jPx6ItEiakBXI4dVdSlLqE/ZY1fBJZSE?=
- =?us-ascii?Q?sHizpoM4QX1AYvpfByBRJHxXvMloYo1vkR9w4HC8QhObgXDsuFW8eI4OWL1F?=
- =?us-ascii?Q?48RvYgC9/tbXl69wNCdZBxKK0oNlQCy1c31vnGvcs0o0Gi7WgV3uunAo1ieR?=
- =?us-ascii?Q?am8llupzbxD0jd6O6dpTBqjKR8Tg9tV6QpiiXcytADAfcCL8RRABUfwJ6TY9?=
- =?us-ascii?Q?5X0DPtOn2bCapuQDkktRKL+1DtV3BDK6zxx+Zb9xGtqXLcrBy7t7j1holI9C?=
- =?us-ascii?Q?AH0AzPLnJS9HfeS1c70xdxHkVwbWn8v13ccfBPRDbjjZ+8P9tpsD2INpgK0O?=
- =?us-ascii?Q?xTdrtE4hRnGHjP30pc336UPDnH8mtDlvWEr48aebKuEHjNEP9eRYIs0baYgm?=
- =?us-ascii?Q?Aqj9HjacnkWjxd8uSFppUkk9as1ZEUykaRhyFcbmu2jqIn0N5sQeBTgtmHWj?=
- =?us-ascii?Q?Rk0qlfIApE8dYm9kDQx5vDbWrkzEEXpxsukONm6X4s0BCqcfrBxKIuC51d0g?=
- =?us-ascii?Q?T4Bi6tzDbaEPL0FReoXM6z4Cq5qfh8OORBpQKKu1AwaT4MmOChl6zmaNxys6?=
- =?us-ascii?Q?GUGWf5lPeL1RMYlvw7UZQ3QRVeRWXPAtBTfjv6TSeULvIyzb17/vLxsQxEU5?=
- =?us-ascii?Q?M621qg2ZIk89XhR4seHA92Chd6z7a5cSLDRhOYLyM5YEDfaqD888eVf4Tk+W?=
- =?us-ascii?Q?mKGBekqV60sl1q0sGsbNFwRKuB4QioRoX9wp/utL4cb4uI9DSkTA2fk0YNI5?=
- =?us-ascii?Q?1dnWZnT1qttdzXSSIFb9bv0ERhjwR9o39uP70y5M4/Gm2fPn5O2/YcnUYvft?=
- =?us-ascii?Q?Ls/q6pbXBuAl/kz915Fy1IqNDFZbL48xgpI/OzhFYPhkrWze?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1xNlSoOCSHxXtiqracHEaFqUtxPToYrnxFxfhMaKKJvmB/S+yaP31ZaVLOdK?=
+ =?us-ascii?Q?IiRYMyfDJtpLnLJ/aZqbQDgpPTi8pOXqE5Gpoi6OVQYtzWBUNs5wccNXAhDl?=
+ =?us-ascii?Q?MWQCG8dmqHfi2k8bqa6aQ/DV0HrUIOJIHVhZel6aksjKxy9FAwy1QvTgI6I6?=
+ =?us-ascii?Q?/4GXMD/rijR2xqXLfsQ1TVwA6ag5dpIJ/LAjrOnhGbycO1srmqzyX8f9m+3k?=
+ =?us-ascii?Q?Wc2sQRkMtWyxg0Y3+5+CfV+aPZqivhW5FeipEafnBofLNxau7tt1IHi0nG0b?=
+ =?us-ascii?Q?p6dCOp92jmcIyRhiCq/LUK2Za5M2a98zHHKN/Ow17Sw4xNCTYBv/ti58oKBT?=
+ =?us-ascii?Q?qPXnUp/YgwZb+fPvv8PyIN1bt2cKxFQkqqr5GNA9rWrIaIGljk7WsqCeej7m?=
+ =?us-ascii?Q?A+TLhLYI8Mbc1h0smONLYiIqqrd2CXK2X7kwGoPJTt4eC614XybYh+RK6AKp?=
+ =?us-ascii?Q?gwdfI/qkGbGwtCr4occY0tRYJMV8wKtlh3UavdxX/riQ7CyCahjDeIeHMvCH?=
+ =?us-ascii?Q?AI+PPLqYa5sHEc8Nd8WISBdAh6pO+9+wohbrWMbWNoSnXpWMnxPSLrUYaqnO?=
+ =?us-ascii?Q?0mYDW00wOxf7NhSA9IviyYT9MC0FsTkL26us8JEWnxkbfiaEIoYMpvvIVdO5?=
+ =?us-ascii?Q?inTXS6bc0fZ5FwOyj4C5gVoZRKNYQ5UboWtQNZG6atAval8QUZ+bpytsJ0t3?=
+ =?us-ascii?Q?qhnCRgKJrXLQVyaXsPjlCx0Jf74y+cVEW9j3KaeywZOZtFMIyo8vURcFMZPt?=
+ =?us-ascii?Q?HZHzsGsuHClEgGJJJqHapNhDTHH7oahZs1GDBjUCjOfnYyZd6KP/I0/3Ozy6?=
+ =?us-ascii?Q?B44R2mwcwhaSnStCGbpCl2TXpLNXkfO4kWQXylcYlFkLjk/urV9DWvG0JAcG?=
+ =?us-ascii?Q?YwU3+G/1yYW6WJQAYOYrHmC8lfKZ1PPUvspmOaXMk/PiDlbzysmaSzUPNNCb?=
+ =?us-ascii?Q?oJf92Uq/4JTIaAffIaagreNKzrCKhAnx3R/t+/54VV3Y18vtYzf2lZXXCAqv?=
+ =?us-ascii?Q?8CS4my+KQHofq87ScYV6W2b2avIgbblX67MTXk/FU5aN3Wu4RAW8Q7IBYMaP?=
+ =?us-ascii?Q?iYCW5hSYxXnetCrq24631arHUgIFh42hSVaFFOnrFWVV/+fIJzLkpUhFC6ah?=
+ =?us-ascii?Q?Unv7iSSWRPcU1X0RJHsd6cjIts563z/9l1o5E6npVZZ0FfQevmssp6UaJnKb?=
+ =?us-ascii?Q?6fZERXwMS5ZcYsMUZYG/Yukh4Ou2Lm9SoXAmEEiZtL/z3D0LKRH/alSbEGvT?=
+ =?us-ascii?Q?Jdf+F7naOtuvTHmH8KX+zv/b4B8OhaPx2U2fR0BXUapDICfevoUOaJNeayxr?=
+ =?us-ascii?Q?vUGBHXBqm+jj61D9LAKV1uVrspwULMXHovRMKS06PDo4Pv1zwpUhg3IiS5DJ?=
+ =?us-ascii?Q?fudMKCML1W4T9QX+6P6H7VJAayqrCqvPDw0o1jPyMlWVSLsq0abWaP30xH0A?=
+ =?us-ascii?Q?aKYq9cmzjhx6rg88WM2Up1iKIcxR431GEF7q31noojBrCB3F7cmOQzMfFTUh?=
+ =?us-ascii?Q?jzoxKIpsbS2j1DI3c1rpyrx3tionGfMyqu0YDJ6cG/XquvLg6AUsmvEjZDpZ?=
+ =?us-ascii?Q?FHn7Ljh5eVMTmjQVXxV9e8J83B9hFRvDYLaHP5N9W/tjbYkfyG/+pbhStMHg?=
+ =?us-ascii?Q?8DEJh3kgU583uVY+03c8uLbLaZbrxaNwuzaXA/id/rU4/Eixq0ugpubWNCXt?=
+ =?us-ascii?Q?qWG3WstAdyQOPmWFsFtkEmb1xTXwgK7XOOhUoQLhFQxfkeYE?=
 X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6beb1744-f0e0-4322-305c-08d9a9adfca1
+X-MS-Exchange-CrossTenant-Network-Message-Id: 019c06fe-ee48-4f0c-fc46-08d9a9ae0233
 X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5151.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:18.5972 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:27.8679 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7WdFty6i87FY55yJnLaZu9i2DRvYUg10Q48dWcX8GI/kjjxa0pNDj6NSEfmLDyD8uBvckYP7zZGyA94JZflzkA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB5807
+X-MS-Exchange-CrossTenant-UserPrincipalName: u3gzlR7eqxefjJkFPd6FRs13ykwBkSRJpqJ5S6HaDzF0RhOKKn0wG50clvg49kKJEbyLXhPHXRK3T1C9PgzKtg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR04MB6623
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_013831_242400_6AFE17DC 
-X-CRM114-Status: GOOD (  10.61  )
+X-CRM114-CacheID: sfid-20211117_013832_641125_C49EFECD 
+X-CRM114-Status: GOOD (  19.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,56 +160,242 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 
-Add dsp ops callback to select and register machine driver.
+Add callback to notify PSP after loading firmware on DSP. PSP will
+validate the loaded firmware and set qualifier bit to run firmware
+on secured AMD systems.
 
+Signed-off-by: Julian Schroeder <Julian.Schroeder@amd.com>
 Signed-off-by: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
-Reviewed-by: Bard Liao <bard.liao@intel.com>
-Reviewed-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Reviewed-by: Ranjani Sridharan <ranjani.sridharan@linux.intel.com>
+Reviewed-by: Curtis Malainey <curtis@malainey.com>
 Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
 ---
- sound/soc/sof/amd/renoir.c | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ sound/soc/sof/amd/acp-dsp-offset.h |  4 ++
+ sound/soc/sof/amd/acp.c            | 66 +++++++++++++++++++++++++++++-
+ sound/soc/sof/amd/acp.h            | 21 ++++++++++
+ sound/soc/sof/amd/pci-rn.c         |  5 +++
+ 4 files changed, 95 insertions(+), 1 deletion(-)
 
-diff --git a/sound/soc/sof/amd/renoir.c b/sound/soc/sof/amd/renoir.c
-index 0241c5dce156..3cd269bfe75d 100644
---- a/sound/soc/sof/amd/renoir.c
-+++ b/sound/soc/sof/amd/renoir.c
-@@ -104,6 +104,23 @@ static struct snd_soc_dai_driver renoir_sof_dai[] = {
+diff --git a/sound/soc/sof/amd/acp-dsp-offset.h b/sound/soc/sof/amd/acp-dsp-offset.h
+index 1d11e9d69dce..63f13c111b24 100644
+--- a/sound/soc/sof/amd/acp-dsp-offset.h
++++ b/sound/soc/sof/amd/acp-dsp-offset.h
+@@ -54,6 +54,9 @@
+ #define ACP_PGFSM_STATUS			0x1420
+ 
+ /* Registers from ACP_INTR block */
++#define ACP_EXTERNAL_INTR_ENB			0x1800
++#define ACP_EXTERNAL_INTR_CNTL			0x1804
++#define ACP_EXTERNAL_INTR_STAT			0x1808
+ #define ACP_DSP_SW_INTR_CNTL			0x1814
+ #define ACP_DSP_SW_INTR_STAT                    0x1818
+ #define ACP_SW_INTR_TRIG                        0x181C
+@@ -68,6 +71,7 @@
+ #define ACP_SHA_DMA_CMD_STS			0x1CC0
+ #define ACP_SHA_DMA_ERR_STATUS			0x1CC4
+ #define ACP_SHA_TRANSFER_BYTE_CNT		0x1CC8
++#define ACP_SHA_PSP_ACK                         0x1C74
+ 
+ #define ACP_SCRATCH_REG_0			0x10000
+ 
+diff --git a/sound/soc/sof/amd/acp.c b/sound/soc/sof/amd/acp.c
+index 74ede28aa8d8..4c5550e8d364 100644
+--- a/sound/soc/sof/amd/acp.c
++++ b/sound/soc/sof/amd/acp.c
+@@ -20,6 +20,22 @@
+ #include "acp.h"
+ #include "acp-dsp-offset.h"
+ 
++static int smn_write(struct pci_dev *dev, u32 smn_addr, u32 data)
++{
++	pci_write_config_dword(dev, 0x60, smn_addr);
++	pci_write_config_dword(dev, 0x64, data);
++
++	return 0;
++}
++
++static int smn_read(struct pci_dev *dev, u32 smn_addr, u32 *data)
++{
++	pci_write_config_dword(dev, 0x60, smn_addr);
++	pci_read_config_dword(dev, 0x64, data);
++
++	return 0;
++}
++
+ static void configure_acp_groupregisters(struct acp_dev_data *adata)
+ {
+ 	struct snd_sof_dev *sdev = adata->dev;
+@@ -135,6 +151,25 @@ int configure_and_run_dma(struct acp_dev_data *adata, unsigned int src_addr,
+ 	return ret;
+ }
+ 
++static int psp_fw_validate(struct acp_dev_data *adata)
++{
++	struct snd_sof_dev *sdev = adata->dev;
++	int timeout;
++	u32 data;
++
++	smn_write(adata->smn_dev, MP0_C2PMSG_26_REG, MBOX_ACP_SHA_DMA_COMMAND);
++
++	for (timeout = ACP_PSP_TIMEOUT_COUNTER; timeout > 0; timeout--) {
++		msleep(20);
++		smn_read(adata->smn_dev, MP0_C2PMSG_26_REG, &data);
++		if (data & MBOX_READY_MASK)
++			return 0;
++	}
++
++	dev_err(sdev->dev, "FW validation timedout: status %x\n", data & MBOX_STATUS_MASK);
++	return -ETIMEDOUT;
++}
++
+ int configure_and_run_sha_dma(struct acp_dev_data *adata, void *image_addr,
+ 			      unsigned int start_addr, unsigned int dest_addr,
+ 			      unsigned int image_length)
+@@ -174,7 +209,9 @@ int configure_and_run_sha_dma(struct acp_dev_data *adata, void *image_addr,
+ 		return ret;
+ 	}
+ 
+-	snd_sof_dsp_write(sdev, ACP_DSP_BAR, ACP_SHA_DSP_FW_QUALIFIER, DSP_FW_RUN_ENABLE);
++	ret = psp_fw_validate(adata);
++	if (ret)
++		return ret;
+ 
+ 	fw_qualifier = snd_sof_dsp_read(sdev, ACP_DSP_BAR, ACP_SHA_DSP_FW_QUALIFIER);
+ 	if (!(fw_qualifier & DSP_FW_RUN_ENABLE)) {
+@@ -238,6 +275,13 @@ static irqreturn_t acp_irq_thread(int irq, void *context)
+ 	struct snd_sof_dev *sdev = context;
+ 	unsigned int val;
+ 
++	val = snd_sof_dsp_read(sdev, ACP_DSP_BAR, ACP_EXTERNAL_INTR_STAT);
++	if (val & ACP_SHA_STAT) {
++		/* Clear SHA interrupt raised by PSP */
++		snd_sof_dsp_write(sdev, ACP_DSP_BAR, ACP_EXTERNAL_INTR_STAT, val);
++		return IRQ_HANDLED;
++	}
++
+ 	val = snd_sof_dsp_read(sdev, ACP_DSP_BAR, ACP_DSP_SW_INTR_STAT);
+ 	if (val & ACP_DSP_TO_HOST_IRQ) {
+ 		sof_ops(sdev)->irq_thread(irq, sdev);
+@@ -326,6 +370,7 @@ int amd_sof_acp_probe(struct snd_sof_dev *sdev)
+ {
+ 	struct pci_dev *pci = to_pci_dev(sdev->dev);
+ 	struct acp_dev_data *adata;
++	const struct sof_amd_acp_desc *chip;
+ 	unsigned int addr;
+ 	int ret;
+ 
+@@ -346,18 +391,32 @@ int amd_sof_acp_probe(struct snd_sof_dev *sdev)
+ 
+ 	sdev->pdata->hw_pdata = adata;
+ 
++	chip = get_chip_info(sdev->pdata);
++	if (!chip) {
++		dev_err(sdev->dev, "no such device supported, chip id:%x\n", pci->device);
++		return -EIO;
++	}
++
++	adata->smn_dev = pci_get_device(PCI_VENDOR_ID_AMD, chip->host_bridge_id, NULL);
++	if (!adata->smn_dev) {
++		dev_err(sdev->dev, "Failed to get host bridge device\n");
++		return -ENODEV;
++	}
++
+ 	sdev->ipc_irq = pci->irq;
+ 	ret = request_threaded_irq(sdev->ipc_irq, acp_irq_handler, acp_irq_thread,
+ 				   IRQF_SHARED, "AudioDSP", sdev);
+ 	if (ret < 0) {
+ 		dev_err(sdev->dev, "failed to register IRQ %d\n",
+ 			sdev->ipc_irq);
++		pci_dev_put(adata->smn_dev);
+ 		return ret;
+ 	}
+ 
+ 	ret = acp_init(sdev);
+ 	if (ret < 0) {
+ 		free_irq(sdev->ipc_irq, sdev);
++		pci_dev_put(adata->smn_dev);
+ 		return ret;
+ 	}
+ 
+@@ -371,6 +430,11 @@ EXPORT_SYMBOL_NS(amd_sof_acp_probe, SND_SOC_SOF_AMD_COMMON);
+ 
+ int amd_sof_acp_remove(struct snd_sof_dev *sdev)
+ {
++	struct acp_dev_data *adata = sdev->pdata->hw_pdata;
++
++	if (adata->smn_dev)
++		pci_dev_put(adata->smn_dev);
++
+ 	if (sdev->ipc_irq)
+ 		free_irq(sdev->ipc_irq, sdev);
+ 
+diff --git a/sound/soc/sof/amd/acp.h b/sound/soc/sof/amd/acp.h
+index fd923f72a01a..a2f8e4219066 100644
+--- a/sound/soc/sof/amd/acp.h
++++ b/sound/soc/sof/amd/acp.h
+@@ -52,6 +52,15 @@
+ 
+ #define ACP_DSP_TO_HOST_IRQ			0x04
+ 
++#define HOST_BRIDGE_CZN				0x1630
++#define ACP_SHA_STAT				0x8000
++#define ACP_PSP_TIMEOUT_COUNTER			5
++#define ACP_EXT_INTR_ERROR_STAT			0x20000000
++#define MP0_C2PMSG_26_REG			0x03810570
++#define MBOX_ACP_SHA_DMA_COMMAND		0x330000
++#define MBOX_READY_MASK				0x80000000
++#define MBOX_STATUS_MASK			0xFFFF
++
+ struct  acp_atu_grp_pte {
+ 	u32 low;
+ 	u32 high;
+@@ -140,6 +149,7 @@ struct acp_dev_data {
+ 	struct dma_descriptor dscr_info[ACP_MAX_DESC];
+ 	struct acp_dsp_stream stream_buf[ACP_MAX_STREAM];
+ 	struct acp_dsp_stream *dtrace_stream;
++	struct pci_dev *smn_dev;
+ };
+ 
+ void memcpy_to_scratch(struct snd_sof_dev *sdev, u32 offset, unsigned int *src, size_t bytes);
+@@ -202,4 +212,15 @@ int snd_amd_acp_find_config(struct pci_dev *pci);
+ /* Trace */
+ int acp_sof_trace_init(struct snd_sof_dev *sdev, u32 *stream_tag);
+ int acp_sof_trace_release(struct snd_sof_dev *sdev);
++
++struct sof_amd_acp_desc {
++	unsigned int host_bridge_id;
++};
++
++static inline const struct sof_amd_acp_desc *get_chip_info(struct snd_sof_pdata *pdata)
++{
++	const struct sof_dev_desc *desc = pdata->desc;
++
++	return desc->chip_info;
++}
+ #endif
+diff --git a/sound/soc/sof/amd/pci-rn.c b/sound/soc/sof/amd/pci-rn.c
+index 3c379a5ef231..392ffbdf6417 100644
+--- a/sound/soc/sof/amd/pci-rn.c
++++ b/sound/soc/sof/amd/pci-rn.c
+@@ -43,12 +43,17 @@ static const struct resource renoir_res[] = {
  	},
  };
  
-+static void amd_sof_machine_select(struct snd_sof_dev *sdev)
-+{
-+	struct snd_sof_pdata *sof_pdata = sdev->pdata;
-+	const struct sof_dev_desc *desc = sof_pdata->desc;
-+	struct snd_soc_acpi_mach *mach;
++static const struct sof_amd_acp_desc renoir_chip_info = {
++	.host_bridge_id = HOST_BRIDGE_CZN,
++};
 +
-+	mach = snd_soc_acpi_find_machine(desc->machines);
-+	if (!mach) {
-+		dev_warn(sdev->dev, "No matching ASoC machine driver found\n");
-+		return;
-+	}
-+
-+	sof_pdata->tplg_filename = mach->sof_tplg_filename;
-+	sof_pdata->fw_filename = mach->fw_filename;
-+	sof_pdata->machine = mach;
-+}
-+
- /* AMD Renoir DSP ops */
- const struct snd_sof_dsp_ops sof_renoir_ops = {
- 	/* probe and remove */
-@@ -151,6 +168,11 @@ const struct snd_sof_dsp_ops sof_renoir_ops = {
- 				  SNDRV_PCM_INFO_INTERLEAVED |
- 				  SNDRV_PCM_INFO_PAUSE |
- 				  SNDRV_PCM_INFO_NO_PERIOD_WAKEUP,
-+
-+	/* Machine driver callbacks */
-+	.machine_select		= amd_sof_machine_select,
-+	.machine_register	= sof_machine_register,
-+	.machine_unregister	= sof_machine_unregister,
- };
- EXPORT_SYMBOL(sof_renoir_ops);
- 
+ static const struct sof_dev_desc renoir_desc = {
+ 	.machines		= snd_soc_acpi_amd_sof_machines,
+ 	.resindex_lpe_base	= 0,
+ 	.resindex_pcicfg_base	= -1,
+ 	.resindex_imr_base	= -1,
+ 	.irqindex_host_ipc	= -1,
++	.chip_info		= &renoir_chip_info,
+ 	.default_fw_path	= "amd/sof",
+ 	.default_tplg_path	= "amd/sof-tplg",
+ 	.default_fw_filename	= "sof-rn.ri",
 -- 
 2.27.0
 
