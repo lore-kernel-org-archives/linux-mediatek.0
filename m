@@ -1,93 +1,70 @@
-Return-Path: <SRS0=fhAu=QD=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 3C9EFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 20:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2C381C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 03:35:39 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id ECFEB61ABD
-	for <linux-mediatek@archiver.kernel.org>; Tue, 16 Nov 2021 20:21:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org ECFEB61ABD
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id F31F4615E1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 03:35:38 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F31F4615E1
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rGFJe3rItleb9377h1QfOERMHer689F7OXGSu7tpQEY=; b=HRrh6Z6m0r0k7h
-	CrOQILdH57tG0D5muVWKXmZeoYarJ+ZLZGQfO1phzGUPCdnp6uiWZt4HGecItWdkFWh5nnJd1yYq0
-	qNlLN7TriLzwV2RVkVo7NLlk5ziBssjwniX+eAABRyZpsP1DeTtqtV6szK+cIWoGXJlhVowuQijBH
-	BdhN9EMk2QzoFi8+gxjAP7r0v9TGe9QS9T9QRtt+Nmfo86SbTOAbwLD5CLp7485xeFRjuMuc1HFS5
-	BqD2KIJXtLKJyVqXCLYH0zaStWCC6iFQgXyJjY1L8/qp3jybIdz1mx6EbcDofN20ZTlS6TN3/pw0d
-	FqS4uuE9ivHphYECg+1A==;
+	List-Owner; bh=765Gy1GH9Bwrqztb0vAfgI//KmDAMHS0qR7OLypsmvs=; b=wEQDGEXWZjR+U1
+	wboZsC5HAHkAqW1iN+cfWf8chZTnj3SfrDOmKU5M/H+PypkhnaRh+h5AvsbYAok09hJXdaGIK7i1v
+	tPJap9rJfk5cyudLa91SS0tDGEn7E4G0PMueDyRSV2Ie0BqRmd+81VC0A4klrJ0uNDRcQ8BNVvATM
+	NEuYv+xSOgA04ZYgRcjPhIVczDasVsdOTGKrvb0LU+eliKb9SXP3O53+F5a8lVGquOUfMaqnIFia5
+	gZO65FsfD5B99ds22SwEsW3ai6rTBJZdmqdPeNwn9czSUHqbooEFblaoyvIrrqc7+BEsEeOLDCs0Y
+	jNmW8Qz1HD85im877ayw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mn4xP-002iF8-EL; Tue, 16 Nov 2021 20:21:31 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1mnBjN-003CIn-G4; Wed, 17 Nov 2021 03:35:29 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mn4xB-002iD9-GY; Tue, 16 Nov 2021 20:21:19 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id
- g91-20020a9d12e4000000b0055ae68cfc3dso428568otg.9; 
- Tue, 16 Nov 2021 12:21:16 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=MNU5uPxjn+7slB6v30//uhSN/kHUFZf1pbWCXTfuxkc=;
- b=Kc5EtmkLFgfVOPPFngYcV9Xh0dWQDXhWHuD90qOVAZCEwOKRWeEpYW5zyIcjBnGmBL
- h8IOX0Fh0uvGoeJz7at7JCjAlmKT9aub+jcuYkkYBJsruZ9K5L2i5qUOkxvfHNk8iQsG
- z/4LArJ+Ll/8ASGgsNmljeur/kMPH5ZKZIHDPza3bALzBZLvowTjUSDyv72rNWtViqaS
- FuDBGBwkNHt2NBmCUWXSih0EsOx1kZ/wQ5IZ89Fv74Hd12+YGcdIDTpXVbRfe3Dtwh7p
- +srecF2UDDbEpDFvRhN0MrJZJ9zqhRCVZ32xB5QLj9nyXeRhao+QgPFkrUxKX12/l3EY
- RK3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=MNU5uPxjn+7slB6v30//uhSN/kHUFZf1pbWCXTfuxkc=;
- b=kwY82uc0PTEg/FHRtTT4CpoS0dUcamLjQ0tPMgQWw+XRyP/zL/mLKcB8zPm6A7Z5an
- 78+qXeWUVhRNk0gB6MBNd+mHHtdalkBlyp+u9D4AzBNsQ8lSBekjvsGPqWUO9H6iylKP
- DXg5vW6NMBX69iFPw28lfvWPp3rw9OLs6Ci2azrWlG/lEuCRx51EHBUXxf80nk7+Cp1K
- 3xmR4cncK9yz/y7h3P7jtCFFJuXzvMXMHT7oZ5VPlYq/b1oqXGDhBYTDyh7aR54ouY+J
- +rOvwKs8IXi5zag13urVj33bIpKhQBt5J0oiXeBpSseinD24YqrV4Wzus4jcWySdSlbr
- Q+oA==
-X-Gm-Message-State: AOAM5301bAwh+ZhZxji4ltmMIgbo6a8yRhDRoGHW1Am2UTVLI/TICn9l
- lKU1PjMTosmXfkW+GdrwQrg=
-X-Google-Smtp-Source: ABdhPJwDvm24qITUfktAE3pnK4QPKqP6e7by0HDu9aSWX/Pt5/6meUIhZfFtzlEmiot/XUyXB3vnTg==
-X-Received: by 2002:a9d:6254:: with SMTP id i20mr8441556otk.343.1637094076083; 
- Tue, 16 Nov 2021 12:21:16 -0800 (PST)
-Received: from [172.16.0.2] ([8.48.134.30])
- by smtp.googlemail.com with ESMTPSA id r11sm3915874oth.48.2021.11.16.12.21.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Nov 2021 12:21:15 -0800 (PST)
-Message-ID: <14eee606-427b-e0e4-abe2-de4e166c1585@gmail.com>
-Date: Tue, 16 Nov 2021 13:21:12 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
- Gecko/20100101 Thunderbird/91.3.1
+ id 1mnBit-003CAW-60; Wed, 17 Nov 2021 03:35:01 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 2AD32615E1;
+ Wed, 17 Nov 2021 03:34:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1637120097;
+ bh=VUmTIC5BCyZ67w3qyjsYJF8UTcuEeggLjE43jAsZRD8=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=TpRtqW9K38XsKt2Jsswp3oGgIz8moVJ/FoKwYK6BnhVVFh5py0AAmx2OAXafjgYTF
+ i2hnSzbu0NpUAewcSc+kqOn7J4v6gG4/zOuxi6De07zFSYGlkg/twBCmzBbe1sVUcF
+ U8G8C10a45A2SFCkrMpb+2F0AQjuor8eBaEraNyT+o21Bv4Bj8tMj3ODKrnGz9OWYJ
+ TYUH1k8z0zftZikYRj6KjSEkLV8GnygVyMNjSmcGIXJCd/P+VdSJo5rrkFf9Y06teK
+ bArTFlLdREii0nzt/Bt5eXvgTWpIUFNVRrnUnUcLKr20O4jpoW/AYJ1PuM4oMUNQed
+ aRDdVCxM4C8MQ==
+Date: Tue, 16 Nov 2021 19:34:56 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Rocco Yue <rocco.yue@mediatek.com>
+Cc: David Ahern <dsahern@gmail.com>, "David S . Miller"
+ <davem@davemloft.net>, Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
+ <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Rocco.Yue@gmail.com,
+ chao.song@mediatek.com, yanjie.jiang@mediatek.com,
+ kuohong.wang@mediatek.com, zhuoliang.zhang@mediatek.com,
+ lorenzo@google.com, maze@google.com, markzzzsmith@gmail.com
 Subject: Re: [PATCH net-next v2] ipv6: don't generate link-local addr in
  random or privacy mode
-Content-Language: en-US
-To: Rocco Yue <rocco.yue@mediatek.com>, "David S . Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Hideaki YOSHIFUJI
- <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Rocco.Yue@gmail.com, chao.song@mediatek.com, yanjie.jiang@mediatek.com,
- kuohong.wang@mediatek.com, zhuoliang.zhang@mediatek.com, lorenzo@google.com,
- maze@google.com, markzzzsmith@gmail.com
+Message-ID: <20211116193456.54436652@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+In-Reply-To: <14eee606-427b-e0e4-abe2-de4e166c1585@gmail.com>
 References: <20211116060959.32746-1-rocco.yue@mediatek.com>
-From: David Ahern <dsahern@gmail.com>
-In-Reply-To: <20211116060959.32746-1-rocco.yue@mediatek.com>
+ <14eee606-427b-e0e4-abe2-de4e166c1585@gmail.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211116_122117_593542_EBE460FA 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20211116_193459_296658_547F3DF9 
+X-CRM114-Status: UNSURE (   6.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,53 +81,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 11/15/21 11:09 PM, Rocco Yue wrote:
-> In the 3GPP TS 29.061, here is a description as follows:
-> "In order to avoid any conflict between the link-local address
-> of the MS and that of the GGSN, the Interface-Identifier used by
-> the MS to build its link-local address shall be assigned by the
-> GGSN. The GGSN ensures the uniqueness of this Interface-Identifier.
-> The MT shall then enforce the use of this Interface-Identifier by
-> the TE"
+On Tue, 16 Nov 2021 13:21:12 -0700 David Ahern wrote:
+> Reviewed-by: David Ahern <dsahern@kernel.org>
 > 
-> In other words, in the cellular network, GGSN determines whether
-> to reply a solicited RA message by identifying the bottom 64 bits
-> of the source address of the received RS message. Therefore,
-> cellular network device's ipv6 link-local address should be set
-> as the format of fe80::(GGSN assigned IID).
-> 
-> To meet the above spec requirement, this patch adds two new
-> addr_gen_mode:
-> 
-> 1) IN6_ADDR_GEN_MODE_STABLE_PRIVACY_NO_LLA, this mode is suitable
-> for cellular networks that support RFC7217. In this mode, the
-> kernel doesn't generate a link-local address for the cellular
-> NIC, and generates an ipv6 stable privacy global address after
-> receiving the RA message.
-> 
-> 2) IN6_ADDR_GEN_MODE_RANDOM_NO_LLA, in this mode, the kernel
-> doesn't generate a link-local address for the cellular NIC,
-> and will use the bottom 64 bits of the link-local address(same
-> as the IID assigned by GGSN) to form an ipv6 global address
-> after receiveing the RA message.
-> 
-> Signed-off-by: Rocco Yue <rocco.yue@mediatek.com>
-> ---
-> v1->v2: Add new addr_gen_mode instead of adding a separate sysctl.
-> 
-> v1 link:
-> https://patchwork.kernel.org/patch/12353465
-> 
-> ---
->  include/uapi/linux/if_link.h       |  2 ++
->  net/ipv6/addrconf.c                | 22 ++++++++++++++++------
->  tools/include/uapi/linux/if_link.h |  2 ++
->  3 files changed, 20 insertions(+), 6 deletions(-)
-> 
+> you should add tests under tools/testing/selftests/net.
 
-Reviewed-by: David Ahern <dsahern@kernel.org>
-
-you should add tests under tools/testing/selftests/net.
+Please keep David's review tag and repost with a selftest.
 
 _______________________________________________
 Linux-mediatek mailing list
