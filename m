@@ -2,14 +2,14 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9C82BC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DD768C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:04 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 54CC860C4A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:38:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 54CC860C4A
+	by mail.kernel.org (Postfix) with ESMTPS id A3C6E60C4A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:04 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A3C6E60C4A
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oss.nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,46 +18,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aJGfnWQ1PRmDiA5mK2HgXGahR1U05/hSFUs9sepNXss=; b=FGfl/SsGTy230Y
-	Ruty7kM3B7MXAZcxJH6+kGBk4yKf1cGSA7FZ0v9hsyI7+NuduWeIGPziRh+bkHRL+lVZILjl3937S
-	vuCMIUZ27je2/YLRxcoWX2tROcQE00GDG2kJgYi7U/mfmB2PmxSKNFpLDi/4hPuJC+YITY/JAVPIw
-	6mAMhldGCC6ZrTo0zk7WQ62AUVoEXKNTNcBrCkuExCQ8maGdxEGJ+y9WibdEVlakKtaFE8qLr9u4y
-	J4ZMpx74WGJRtFRK4ApEXoInZ/s/9JpnBA2ze42aNd0D/cD+Udue9hdd1rpB9b2JkzVJMJAfomJaR
-	9hR45Y3KNJN/D8Ir4tnw==;
+	List-Owner; bh=xBvKNATlaq/cWoMLMkuWmO7JOpUZaSBzGjfKpXXP/sA=; b=03Bnu4NZ5E7sna
+	w8FXrn8StuV4aSlnBkUSbg0fTuKDv/AMyQSp2q9t3Mv2KBD+8LCUrHl9KywPo+UZerTSN/rhQ8cJ7
+	IBmKlgnOMcwlEAM7Y/z8TjRazsgA72uzW82/vDayvZmQ4NutMonMjogE/mFdIPXTGz5EHKQOore0E
+	yiw6mEF55K+bGrFzqRHHroi+2CsW8RcNd9Uc8rXT68WGGByYTNQR1X5T+9SyR0DJp9aiFCIpYVREV
+	tf/6juArpOpZuAkFstYdRwXW0XrOE84lM4Q+kGPumWgs5gDJTP5z7+uaJuTBEVvAoyowI6AUCm6PE
+	8EIM/rrysrTbZSjU7elg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnHOu-004J97-LR; Wed, 17 Nov 2021 09:38:44 +0000
-Received: from mail-eopbgr80089.outbound.protection.outlook.com ([40.107.8.89]
- helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	id 1mnHP0-004JCg-R0; Wed, 17 Nov 2021 09:38:50 +0000
+Received: from mail-db8eur05on2078.outbound.protection.outlook.com
+ ([40.107.20.78] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnHOa-004ItJ-SX
- for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:27 +0000
+ id 1mnHOc-004Io1-68
+ for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:28 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kNjKRxYEWOOQNV6fnLVBeIxsd8fky/8WjWM67zaSk6LWLMh6tFZr+Nb3gie7UB4xeSeAUt8dcfTvRZAyb9dtvHCprsh5wMVqEhcCLbxNCxoJSoBCxKyo8PCU8F+gYsM3CGKsosDVyVaFHgBLK9wEah+XXC3/my2Nh30r7clnvktP0z2KIkTbplKbDyLpkaG9ohsEq07CsbsQIzGlRIisDNcqC/P/67YA6K7ldBY2S9BpWZPni4NOkGR3jhYcYMcaesm5UAv1Y53hHfBQZuze2txOOkYbntGQ7bCQaDGI20qpIBZgnSA2d+KsXwP8tV+agq2ky3euVQJ+Fk8CbxHAVw==
+ b=Ft4FWtSkAIFYkOqVGbZM0EqMtUC3I3KR+f8vz1STMAU4OvGnHwvliYtAdwVe24CXDnvJMYrxr5f1x9fTlDYfH0QXV1/WVXbt4wpGBbSlSsCqrVUno7qGZPLR8eL3zJxngNO5wleTlt0fQQB0v1USUVFKwQB1s5GQFs3AGiKFK3hbImiwMWAklp+NtkTgzTkFXFyi+9dMmD9BThgiDQlpqBn31c0IU6l7K5FQtqe/NFhmLjGGAJsG2mPOxIQhvRqLqRLNSeKfDyXnprL4LOcgodaUuCUHn31aGjhz8O3N19tjHEp4iHj2zi4iICTIimOzeoRtovsKYW9AoBCSyu5/dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7LqjUUO5qv84gjPhhIR8SitLrMEkMICo5WShMvZ18tY=;
- b=QpD/0sWOR0QWbRxxQg650XULi4RYVDDxqXNceHZjCuC7jqVJtqN9mKX3XB5c2LwdelXcb9WPueKrDhZGW4uCjMYb3e0Rk872bsdwHOhy7I32KxYieNVHBYIgKeP6Skp3+jQsgr2kOL5k+RA4rp+AS/94nNpD0QOV/KjasHoHLMIRAJlwfmWo1YA4ifphGcjcCFJ3kX99Bnwknz+DiOCMqVZr1ZeqbXIcryDvMyOmg3W9WBTzNhkD/DRRuZWyKim4K1BFnQ2Ip+3bb1m38t+n/xwiA+cINCSlgiI5ixpgXbxys+heb2dSiibZGsglUS0xA1hjiUoFE7m2Rqdg+pey3Q==
+ bh=B4qRUmATwCb+HVITmZk8a5kV43TQ8HJCX1OlKEbFy+A=;
+ b=gWHQXmUIo/wN8yHrcRgbTgQjbwQ3VmbaC6Liaik7RlAHhhz7MQOOTwu8/4wNIBdBwcxpNpy3N1HslUuYOWz85BVwZLshClcClkEMsZosp/m+oYkgRuIpa7FCfj5AYW74JOmrAMiYcKksV+TlXqvO8nTblnWErrAzuMYivNd9wTWldH91vIHmsRBYxqjoH0+BbuZaRjhVwy9PCmTL6dtyPhBxKGz2ZPUoXHNCxBKeW9ReBl03sjQazpuXDpm/vN2Y3K/1SSQDPwUMjAJ9tIiCMABBm5QBC/jxmfEZxTBeA2wQMRAQ+ZjepGv4ZHiWczPtZWiJOb88C1CQIAXVVTU8Kg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
  dkim=pass header.d=oss.nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
  s=selector2-NXP1-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7LqjUUO5qv84gjPhhIR8SitLrMEkMICo5WShMvZ18tY=;
- b=a2XVBiUyHxPCdiV2dH4fs24SlivRhgNRVc8v9QQEv9nj44myXB+ODM8o1FB0o1u/VNtwPx9ghD05Uoenqc01yGdR0NquWignOzteNy/nHQlgcqsm4t9GeWiRPsshBgyvybBwo25XKIzCPeii6Ey4SjmW1YDAorfxUxKBxVehF/0=
+ bh=B4qRUmATwCb+HVITmZk8a5kV43TQ8HJCX1OlKEbFy+A=;
+ b=BzJr9IzuBlf+VeUgDJWACIctUycmpRA+URA2iIL8nWZ9Mhz2DTWd8O2NiAuJLJhhvV/t1PmkdR/uMuNIssPGMJPqV6vsyO4BnV20OYa09DmMc/eUyidtYwkqtVybhY7+1BNRBoaxk1Wv9FqAny3dunSzBFoAabQqMhwZSCCtotQ=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=oss.nxp.com;
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com (2603:10a6:803:61::28)
- by VE1PR04MB6623.eurprd04.prod.outlook.com (2603:10a6:803:125::29)
+ by VI1PR04MB5807.eurprd04.prod.outlook.com (2603:10a6:803:ec::21)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.26; Wed, 17 Nov
- 2021 09:38:21 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.27; Wed, 17 Nov
+ 2021 09:38:14 +0000
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f]) by VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f%3]) with mapi id 15.20.4690.027; Wed, 17 Nov 2021
- 09:38:20 +0000
+ 09:38:14 +0000
 From: Daniel Baluta <daniel.baluta@oss.nxp.com>
 To: broonie@kernel.org,
 	alsa-devel@alsa-project.org
@@ -68,9 +68,9 @@ Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
  yc.hung@mediatek.com, linux-mediatek@lists.infradead.org,
  Bard Liao <bard.liao@intel.com>,
  Kai Vehmanen <kai.vehmanen@linux.intel.com>
-Subject: [PATCH 09/21] ASoC: SOF: amd: Add Renoir PCI driver interface
-Date: Wed, 17 Nov 2021 11:37:22 +0200
-Message-Id: <20211117093734.17407-10-daniel.baluta@oss.nxp.com>
+Subject: [PATCH 06/21] ASoC: SOF: amd: Add PCM stream callback for Renoir dai's
+Date: Wed, 17 Nov 2021 11:37:19 +0200
+Message-Id: <20211117093734.17407-7-daniel.baluta@oss.nxp.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
 References: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
@@ -83,64 +83,64 @@ Received: from localhost.localdomain (2a02:2f08:5706:b700:22bb:b216:ffff:73e1)
  by AM3PR03CA0060.eurprd03.prod.outlook.com (2603:10a6:207:5::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.19 via Frontend
- Transport; Wed, 17 Nov 2021 09:38:18 +0000
+ Transport; Wed, 17 Nov 2021 09:38:13 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 5740da27-42fc-4690-f730-08d9a9adfe1f
-X-MS-TrafficTypeDiagnostic: VE1PR04MB6623:
+X-MS-Office365-Filtering-Correlation-Id: bc7299ad-3495-464c-06b5-08d9a9adfa5a
+X-MS-TrafficTypeDiagnostic: VI1PR04MB5807:
 X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-Microsoft-Antispam-PRVS: <VE1PR04MB662325CDDF06833DA08F7FD6B89A9@VE1PR04MB6623.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4941;
+X-Microsoft-Antispam-PRVS: <VI1PR04MB5807BAB865C074AFB9032983B89A9@VI1PR04MB5807.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Kl+2yyslrH3UUP08RbverIm7V1sDX7HPf1mgjdKZHSEJ8+JuEtuLzf6JgTp8Kg1v5oAyGgXwrLwm9qNNvPuEKJtX0MIKXt2WBesQ3i7gQHhyIi0j0oAsp83DHBjSHp2JISKReuDJRgpDaYW9xVBD+0MRxOLsgovZINQil0s4FikeVom5vjkAGLIXLmubBnc+SSmc8asTfo4CfVx00hipBj1wXt8Lw3DXB56R6Aa2yRN9iVKPkAhHMgd7hBwP2U85gyfBcFoUwW9qYMTAk1r7vux6d6g3u1MSI1mU3kQD8uCrKrVaA6jD9O6t/7Xne+3Sn3Jp9bctIJbINA/WjoBBzlx0wVN2LL+OHvel5Xl6zWcEZYAaSkVA3WMO7kKaJYB/nDl9+b25ahFdqhU+lTTVIR+ff/ZA2x1MLoXFtNHgmbilhozer/0aS959LOBCvzi8d1BRkzeEx9SmNd4zrU3TrPqgfk8shHDwFiY43/Lo5BhJ4rBEvJGBEAZffQa2tAwXPst1mQo4WV/LTCW9/Pz+d57lJUuTMWDm96Y5MtJSmyHDoo2u7je85JSkpyoXe9ls+EBdY1nA8Q0E8yYsmCillO6JFdd51zkgTbb2hhUQutLBnzbV/kdLXKrZHlZ2opX+mDp1dZOevfC5b1GkzoBvRQ==
+X-Microsoft-Antispam-Message-Info: Zree7ayPcWzKGjTz5e1RIaP/AgVxO1HuTXMhEbzUO0sleas2fv2N/3EUpmrTUkpo8kjKYYwQGVFFPyalGxPMLtiDD1HhsQ7laL+42nQ0BkxFOyo2W6Ub70Me56Nd7EnahEoOPCKI1ppCjynHUJ35RzQxgcYZtWQGWIXlVeJUBRmDZpH6N6gcgUwimm3/43Pcf/Xzir83/OqntwqNL3I+U7W0Ri7VZbInDn/01yCY0PgDZBaHhe1KO5tPSoEqCLSqKbGwDYOLbpP7IUlziR8coSih3RhwRT41qn2M1bsJFwckFwYUO8bvSSiCuErzdO/hctZfsTd0AHZQYV/1LMcvFTOuzVpowVcEh0BL4HM4CWv0b2d11VYIV7z8iM47X3cbT07M7CYznstWI8Ap0ZoCVWh/40qLDJQy/w5qJfzN+zkqJyJoTjYQg7PkCyknKeJ+Sps5NW1XBis+EWr9R4+x4KQaD32oGwor8ReZlUCG23s9untNtget0rXNDeVdvKVibgQRRWNQJ16Vk6qG8AhODyMYr1Zs9+K2PZnwPYeB0/EkexK9ITZj2VtFBHuZIHKMsGYnzn4mVdZ2Flr5PjogFQlmarWgn6RBiakzT1EfzLP2BjDeoOJWQdhCCuyXqmbfd+hCVmxq4Yk+MySKidIesA==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:VI1PR04MB5151.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(8936002)(1076003)(52116002)(6506007)(5660300002)(54906003)(8676002)(508600001)(186003)(86362001)(6666004)(2616005)(6512007)(7416002)(83380400001)(44832011)(66556008)(66476007)(4326008)(66946007)(316002)(38100700002)(6486002)(2906002);
+ SFS:(4636009)(366004)(316002)(5660300002)(508600001)(52116002)(86362001)(8676002)(54906003)(8936002)(66946007)(186003)(6512007)(2906002)(6486002)(7416002)(6506007)(30864003)(1076003)(2616005)(66556008)(66476007)(44832011)(83380400001)(38100700002)(4326008);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7mae2ih/ny87wuzM9tGD1YOFKdcxjsCWXbOhuCSiyZlI8zj/UbgiK3Gy0U0Z?=
- =?us-ascii?Q?lsl0BRSdCIyeICVKizgQ+gs4HAV5HpFZq18SssGDcsbcFSysbR3cm4pCxZt0?=
- =?us-ascii?Q?0oei5ISs77PewV3YkRGsIxo8HP1BVpm7f87D8ijw21Fr7K62IMfOX3ufjf6r?=
- =?us-ascii?Q?nHK6aIcfs+TsI4oQ+ARTGOo7zbaSF0HGp/PWMR3IQryCSwBd6BjJNRQWNvF5?=
- =?us-ascii?Q?ujISycODGAhPFqb7YS8L5AmtGWV3dw+yZsk49hdmzz3DUvMTens5dnn3SuDG?=
- =?us-ascii?Q?amYbBIwSoRtPEWGATs/4E46Y8G+FTFn3qgyk1zueCw/f04g9y0d7iu2ERuXc?=
- =?us-ascii?Q?CHJQtOHejsMSrZftAq539IT7AcaNvEnhJY3fFXMj0f3x6Iw7nNoabub64rzc?=
- =?us-ascii?Q?dLFriWXiIan6SWNkY0sEEIkFgkwYe9kEqflL9kAODr02McGXWla34ae+KbMV?=
- =?us-ascii?Q?Mr5VV9HAzvZGnfSmz2YgZvfKSyPOtacu8HnfY6iq5+8g7WahXr/wGOPpZ3uW?=
- =?us-ascii?Q?3bLsDvbKuDSCjs5KxV7XOLJiPTMRRP1217DXs93KHbwqySFwTNT9RxlsYRIt?=
- =?us-ascii?Q?AzUAZQQebiVYF0Hi9WzLBnMXw/pI9N5tskk+olLbZOpY6We8agwwUuWknU8S?=
- =?us-ascii?Q?2CJLMZ3CYINxCqvLOPRMfYrHLC+D+Nbb6STaz1J2gIF9R2uvnYj1Wj/EVHnG?=
- =?us-ascii?Q?CoeXTHpwq5Ed9batKng3QI3S8dQVtMolj25Qrcz8sCJozCHXLtVjuGyV4/PA?=
- =?us-ascii?Q?qZx1v1GOaVfgYWnroHooJIcmI532y9rwDiFLE5SJZbPOfQterg7+jU7Qgd4S?=
- =?us-ascii?Q?lelE2eGk2YZfzy6P0Wje5m1WhE6ifFY8nJkFjyTQRIwnjsy5x45YOAegwTnj?=
- =?us-ascii?Q?WFqJ1YA+7xFoMWhz950nAby5ltCWSo2zUUZ5Zp8SYHUfW9ppLp/vw5lSCYT8?=
- =?us-ascii?Q?5qyDgzXoNioP1GMJYwBlFzYDnUpyATGjLmPgxFF2LNJ/2c3EpC5Nu19OO4P3?=
- =?us-ascii?Q?IPHJcQOU1mY/G8LMHu1umD5LTisx101lkDX075xCVeLvghasjpFp4E07deYx?=
- =?us-ascii?Q?BxhM2NS7ouO2R0xEQ7ABTnFc2LcSkccRAFJ2EyNmZ+5lZ5cyn7M3NgtbBAF0?=
- =?us-ascii?Q?TR1H2TVcZFP2Pj3nAzi1S6XPiFszqFSRgD83kiigqUbj4k3r55Tz6vnFxSE7?=
- =?us-ascii?Q?W665AHngkS0IsGqHfWfxVFqygucTV06rehpe0UF2Tr5Xz7BOo3eFM83ezlXy?=
- =?us-ascii?Q?csEcbGtYQOgKy/OG0bs07xGCPRlEKImJAdfGTE012oIy4vzKI5Lkoanm0MOZ?=
- =?us-ascii?Q?8X2q4sGoMdoAWTm0GwRoqT36/Mgh+xdZrhIPsSlWRwYLlSn6OYAWIPSAY8Bi?=
- =?us-ascii?Q?IJeGxWMkm7JvxiV3dAWYd3mdlh4DvhvLTbgnE5/JApQ55QNFm1Gf/C6Ivs1h?=
- =?us-ascii?Q?fSJC9ydP4MHLbdMsQk3sGhA7E1lLdZdrpZ8KayXMwnsDCzNMzfv3fZjL5C+R?=
- =?us-ascii?Q?BFQGRoFtFagUx6eC0YA7CX0gU4ELcuadJ6/RE3lcRj/gBjY0+O7vVDw/CzE6?=
- =?us-ascii?Q?+lUmBIejao1pGsr927tSqtfagrLHdxrGy3ojktuxNwYqaTUUV8f3nWazuly5?=
- =?us-ascii?Q?+wQ3EpTs3C2POt0StFCdN9HXyVL3WNbLLrldfRPxNj8LSrgN6fGftbgmD7VT?=
- =?us-ascii?Q?ieSe+4qO5fZlO7Qv+/qr7kyyJ4Q=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mrH0KFGyFOzKUQ5k7AJa5ksV3QQbDYOzcSPLLj/8QC2OfoFHia+rH8If+N2O?=
+ =?us-ascii?Q?wZb/ZN7dzR02rDHNYyG6ZZLFpI0dVb20F+h2BYIGFxP8flC2FkMiJp4ZlBZd?=
+ =?us-ascii?Q?ihWzda6zsn7d6ubi5wBiZHUTWS4ShTB6NC1ZjkjCCXv3WujT2sWeTlVEFqkk?=
+ =?us-ascii?Q?1nGyOKRM3hToh5vwUg2Gm/J7Kr6jAY9QyTOTqRGiHqzV8d6m9tqeYy2dv2kf?=
+ =?us-ascii?Q?LdsKPqtTTGieLGju0tJQeL4CEIReZxaJcVBhBvpxGUp9P42WYCK/xm4okC//?=
+ =?us-ascii?Q?VAo5HhLthz9jFTAcbyui6nk5xN+fgjEQPaJLiGb1GNGf/sFTawJH81gKwChG?=
+ =?us-ascii?Q?Bo5AL3Pyg8kSD2ddlxVISbbWxYHBeD4oRoq4wV3z0W8E1cus0nRr5fGwRIJf?=
+ =?us-ascii?Q?5BJWNuK/GM67kJ5VcSjIBGYmm55wQ1GZsYbm4UonP/PmeMzfeYsoxhryrPsP?=
+ =?us-ascii?Q?7SF7W6pfoE7QIHr3lMX3VPaNMO9+iLf2nfxj5KuXlTdQ6Ca+bROp77Fi0DnF?=
+ =?us-ascii?Q?GtumiDlHFsgctvVCtqe3diQzirJlcHLU9GptJbm8W4Nh5hjuZF7XFrweQo5z?=
+ =?us-ascii?Q?zJeoO+oObhCFuy+E9wdhr1EVlp6EklGv940EvD54SE1obEQAS0+1Kxh5gf9q?=
+ =?us-ascii?Q?K2Zer8+4JTmOk17IX1ojnQ1gRI4b2oTFeRssXMuR9qh75OCNYW9Upy+Rxb8D?=
+ =?us-ascii?Q?M+kP7/DiF/l7kn3+BAvVdApZRSk75MbDou51kE3GpISByrFqM7e8+Sf5zWwZ?=
+ =?us-ascii?Q?/eOZ2+GZtWnJKV4nmwqRaTkC/+GoKGa29FYPH1JfA97CyONRp4+dZ+GpOwpy?=
+ =?us-ascii?Q?y4Ri9Yoo7HNPHTukd1D+6R0aK0P7KW12XVS7AY+tByjFV0CBkn+xFsCxzC/A?=
+ =?us-ascii?Q?exixDPpG+0rgua0cX732Bh8J9TXm2bg+LwRziz4xybxKZDK1ypilEshpJhKo?=
+ =?us-ascii?Q?lAO+Dm4uwN7zjb6GTTHMXd5DlP3arr/Zy1tRGl5EjpYnkXFr0gzHq0F+ajlD?=
+ =?us-ascii?Q?7xl+pG+FBjm9UWaih+lMY+SC39zhhnIFr4kJeRIRuy3VmCN+uXVns2P980Jg?=
+ =?us-ascii?Q?Yo8VQ3stkILrLBaP7Tpc8H71Fb03WtbULjKPM/bR2Q0sKXJEH8Y7QMql+Cge?=
+ =?us-ascii?Q?AZV2OBMAqnacF5E5AxbnujCTUj3gNoBIegxQeG5HlYH0I7vQPrdXe5VeBzJK?=
+ =?us-ascii?Q?sUEbTuKB9apzLuI0amgvy3L61q5KQccIjpd/99jG4lBy6CemuFk/efBLeLFO?=
+ =?us-ascii?Q?q9ozgYymyIIqJ6HNFMu4NJjS/9GgOsd7Z0TON6XHyScYRorEecsbucvzatkf?=
+ =?us-ascii?Q?8IOoBT0WJcrGp2Mjr75cI+95pjpRYPVWe+ZHsSWzftfHxZte294tKTWq5Hos?=
+ =?us-ascii?Q?V866oH2FUnmlOtTDezAA40XiozosEQ+03XtYYHuWIno2yM2xaVVR+eIg3/ua?=
+ =?us-ascii?Q?QUqIDx5PZ35FTluCOKboIM59+FCzCFAnsigqVTK8geQwezllYSbpHuP7iYJF?=
+ =?us-ascii?Q?ET+QrlPDiuzmwYDsXksAAks91eHbIUAIrk4JNev9BYrBkrhWdj3kYDQgiOEP?=
+ =?us-ascii?Q?N2Dblnwxd3sgtSH/8OckM9lvPkyTo5lwSF80XZt9OJRSKzu1cMb0Kvfc1Tee?=
+ =?us-ascii?Q?6qncOCe2iywQe5ixIh4vwbwJASvMaPwjp+9HZr1mHYLfrk+CTeA+Bh36/kfz?=
+ =?us-ascii?Q?jYVBbTMg6Jj+V6QoxVnQap99krCWhSDDHqlI84YB0KDoZNdt?=
 X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5740da27-42fc-4690-f730-08d9a9adfe1f
+X-MS-Exchange-CrossTenant-Network-Message-Id: bc7299ad-3495-464c-06b5-08d9a9adfa5a
 X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5151.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:20.9159 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:14.7114 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: k3IBgQebVRe8xYTZTwNRmN+U17NedR8QJFzzK2Cdr3vc/CI43H9hAS3xL7jauZ8nC5R2N5YSN5P6oVj5+GqG1w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR04MB6623
+X-MS-Exchange-CrossTenant-UserPrincipalName: BK5xY9q8JSSPHKBwYP+MH1wtlN4m0JQJ19qlXs9KuwAqk04V+4o2VeO50ZKjQCJtt19NUTfswCcWhgrE3dP/VQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB5807
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_013825_162718_0ABB8251 
-X-CRM114-Status: GOOD (  25.84  )
+X-CRM114-CacheID: sfid-20211117_013826_319412_59ED8AAF 
+X-CRM114-Status: GOOD (  19.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,238 +159,406 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 
-Add PCI driver module to enable sof pci device support for Renoir.
-If machine flag set to FLAG_SOF_ONLY_DMIC this pci driver register
-platform device for non dsp based I2S platform device. If machine
-flag is not enabled for SOF pci probe will return without invoking
-sof device probe and registration
+Add module to support ALSA pcm stream configurations for ACP I2S
+and DMIC endpoints
 
 Signed-off-by: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 Reviewed-by: Bard Liao <bard.liao@intel.com>
 Reviewed-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
 ---
- sound/soc/sof/amd/Kconfig  |   5 +-
- sound/soc/sof/amd/Makefile |   2 +-
- sound/soc/sof/amd/acp.h    |   3 +
- sound/soc/sof/amd/pci-rn.c | 160 +++++++++++++++++++++++++++++++++++++
- 4 files changed, 168 insertions(+), 2 deletions(-)
- create mode 100644 sound/soc/sof/amd/pci-rn.c
+ sound/soc/sof/amd/Makefile     |   2 +-
+ sound/soc/sof/amd/acp-pcm.c    |  82 +++++++++++++++
+ sound/soc/sof/amd/acp-stream.c | 181 +++++++++++++++++++++++++++++++++
+ sound/soc/sof/amd/acp.c        |   2 +
+ sound/soc/sof/amd/acp.h        |  28 +++++
+ sound/soc/sof/amd/renoir.c     |  11 ++
+ 6 files changed, 305 insertions(+), 1 deletion(-)
+ create mode 100644 sound/soc/sof/amd/acp-pcm.c
+ create mode 100644 sound/soc/sof/amd/acp-stream.c
 
-diff --git a/sound/soc/sof/amd/Kconfig b/sound/soc/sof/amd/Kconfig
-index 400dd5a24ae6..085232e04582 100644
---- a/sound/soc/sof/amd/Kconfig
-+++ b/sound/soc/sof/amd/Kconfig
-@@ -17,14 +17,17 @@ if SND_SOC_SOF_AMD_TOPLEVEL
- config SND_SOC_SOF_AMD_COMMON
- 	tristate
- 	select SND_SOC_SOF
-+	select SND_SOC_SOF_PCI_DEV
-+	select SND_AMD_ACP_CONFIG
-+	select SND_SOC_ACPI if ACPI
- 	help
- 	  This option is not user-selectable but automatically handled by
- 	  'select' statements at a higher level
- 
- config SND_SOC_SOF_AMD_RENOIR
- 	tristate "SOF support for RENOIR"
-+	depends on SND_SOC_SOF_PCI
- 	select SND_SOC_SOF_AMD_COMMON
- 	help
- 	  Select this option for SOF support on AMD Renoir platform
--
- endif
 diff --git a/sound/soc/sof/amd/Makefile b/sound/soc/sof/amd/Makefile
-index 7b88db9c5fb7..b27ce50014b8 100644
+index 29928b16002f..7b88db9c5fb7 100644
 --- a/sound/soc/sof/amd/Makefile
 +++ b/sound/soc/sof/amd/Makefile
-@@ -5,7 +5,7 @@
+@@ -4,7 +4,7 @@
+ #
  # Copyright(c) 2021 Advanced Micro Devices, Inc. All rights reserved.
  
- snd-sof-amd-acp-objs := acp.o acp-loader.o acp-ipc.o acp-pcm.o acp-stream.o
--snd-sof-amd-renoir-objs := renoir.o
-+snd-sof-amd-renoir-objs := pci-rn.o renoir.o
+-snd-sof-amd-acp-objs := acp.o acp-loader.o acp-ipc.o
++snd-sof-amd-acp-objs := acp.o acp-loader.o acp-ipc.o acp-pcm.o acp-stream.o
+ snd-sof-amd-renoir-objs := renoir.o
  
  obj-$(CONFIG_SND_SOC_SOF_AMD_COMMON) += snd-sof-amd-acp.o
- obj-$(CONFIG_SND_SOC_SOF_AMD_RENOIR) +=snd-sof-amd-renoir.o
-diff --git a/sound/soc/sof/amd/acp.h b/sound/soc/sof/amd/acp.h
-index 36d000c3f792..5f6e9eff116a 100644
---- a/sound/soc/sof/amd/acp.h
-+++ b/sound/soc/sof/amd/acp.h
-@@ -194,4 +194,7 @@ int acp_pcm_hw_params(struct snd_sof_dev *sdev, struct snd_pcm_substream *substr
- 		      struct snd_pcm_hw_params *params, struct sof_ipc_stream_params *ipc_params);
- 
- extern const struct snd_sof_dsp_ops sof_renoir_ops;
-+
-+/* Machine configuration */
-+int snd_amd_acp_find_config(struct pci_dev *pci);
- #endif
-diff --git a/sound/soc/sof/amd/pci-rn.c b/sound/soc/sof/amd/pci-rn.c
+diff --git a/sound/soc/sof/amd/acp-pcm.c b/sound/soc/sof/amd/acp-pcm.c
 new file mode 100644
-index 000000000000..3c379a5ef231
+index 000000000000..5b23830cb1f3
 --- /dev/null
-+++ b/sound/soc/sof/amd/pci-rn.c
-@@ -0,0 +1,160 @@
++++ b/sound/soc/sof/amd/acp-pcm.c
+@@ -0,0 +1,82 @@
 +// SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
 +//
 +// This file is provided under a dual BSD/GPLv2 license. When using or
 +// redistributing this file, you may do so under either license.
 +//
-+// Copyright(c) 2021 Advanced Micro Devices, Inc. All rights reserved.
++// Copyright(c) 2021 Advanced Micro Devices, Inc.
 +//
 +// Authors: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 +
 +/*
-+ * PCI interface for Renoir ACP device
++ * PCM interface for generic AMD audio ACP DSP block
 + */
-+
-+#include <linux/module.h>
-+#include <linux/pci.h>
-+#include <linux/platform_device.h>
-+#include <sound/sof.h>
-+#include <sound/soc-acpi.h>
++#include <sound/pcm_params.h>
 +
 +#include "../ops.h"
-+#include "../sof-pci-dev.h"
-+#include "../../amd/mach-config.h"
 +#include "acp.h"
++#include "acp-dsp-offset.h"
 +
-+#define ACP3x_REG_START		0x1240000
-+#define ACP3x_REG_END		0x125C000
-+
-+static struct platform_device *dmic_dev;
-+static struct platform_device *pdev;
-+
-+static const struct resource renoir_res[] = {
-+	{
-+		.start = 0,
-+		.end = ACP3x_REG_END - ACP3x_REG_START,
-+		.name = "acp_mem",
-+		.flags = IORESOURCE_MEM,
-+	},
-+	{
-+		.start = 0,
-+		.end = 0,
-+		.name = "acp_dai_irq",
-+		.flags = IORESOURCE_IRQ,
-+	},
-+};
-+
-+static const struct sof_dev_desc renoir_desc = {
-+	.machines		= snd_soc_acpi_amd_sof_machines,
-+	.resindex_lpe_base	= 0,
-+	.resindex_pcicfg_base	= -1,
-+	.resindex_imr_base	= -1,
-+	.irqindex_host_ipc	= -1,
-+	.default_fw_path	= "amd/sof",
-+	.default_tplg_path	= "amd/sof-tplg",
-+	.default_fw_filename	= "sof-rn.ri",
-+	.nocodec_tplg_filename	= "sof-acp.tplg",
-+	.ops			= &sof_renoir_ops,
-+};
-+
-+static int acp_pci_rn_probe(struct pci_dev *pci, const struct pci_device_id *pci_id)
++int acp_pcm_hw_params(struct snd_sof_dev *sdev, struct snd_pcm_substream *substream,
++		      struct snd_pcm_hw_params *params, struct sof_ipc_stream_params *ipc_params)
 +{
-+	struct platform_device_info pdevinfo;
-+	struct device *dev = &pci->dev;
-+	const struct resource *res_i2s;
-+	struct resource *res;
-+	unsigned int flag, i, addr;
++	struct acp_dsp_stream *stream = substream->runtime->private_data;
++	unsigned int buf_offset, index;
++	u32 size;
 +	int ret;
 +
-+	flag = snd_amd_acp_find_config(pci);
-+	if (flag != FLAG_AMD_SOF && flag != FLAG_AMD_SOF_ONLY_DMIC)
++	size = ipc_params->buffer.size;
++	stream->num_pages = ipc_params->buffer.pages;
++	stream->dmab = substream->runtime->dma_buffer_p;
++
++	ret = acp_dsp_stream_config(sdev, stream);
++	if (ret < 0) {
++		dev_err(sdev->dev, "stream configuration failed\n");
++		return ret;
++	}
++
++	ipc_params->buffer.phy_addr = stream->reg_offset;
++	ipc_params->stream_tag = stream->stream_tag;
++
++	/* write buffer size of stream in scratch memory */
++
++	buf_offset = offsetof(struct scratch_reg_conf, buf_size);
++	index = stream->stream_tag - 1;
++	buf_offset = buf_offset + index * 4;
++
++	snd_sof_dsp_write(sdev, ACP_DSP_BAR, ACP_SCRATCH_REG_0 + buf_offset, size);
++
++	return 0;
++}
++EXPORT_SYMBOL_NS(acp_pcm_hw_params, SND_SOC_SOF_AMD_COMMON);
++
++int acp_pcm_open(struct snd_sof_dev *sdev, struct snd_pcm_substream *substream)
++{
++	struct acp_dsp_stream *stream;
++
++	stream = acp_dsp_stream_get(sdev, 0);
++	if (!stream)
 +		return -ENODEV;
 +
-+	ret = sof_pci_probe(pci, pci_id);
-+	if (ret != 0)
-+		return ret;
++	substream->runtime->private_data = stream;
++	stream->substream = substream;
 +
-+	dmic_dev = platform_device_register_data(dev, "dmic-codec", PLATFORM_DEVID_NONE, NULL, 0);
-+	if (IS_ERR(dmic_dev)) {
-+		dev_err(dev, "failed to create DMIC device\n");
-+		sof_pci_remove(pci);
-+		return PTR_ERR(dmic_dev);
++	return 0;
++}
++EXPORT_SYMBOL_NS(acp_pcm_open, SND_SOC_SOF_AMD_COMMON);
++
++int acp_pcm_close(struct snd_sof_dev *sdev, struct snd_pcm_substream *substream)
++{
++	struct acp_dsp_stream *stream;
++
++	stream = substream->runtime->private_data;
++	if (!stream) {
++		dev_err(sdev->dev, "No open stream\n");
++		return -EINVAL;
 +	}
 +
-+	/* Register platform device only if flag set to FLAG_AMD_SOF_ONLY_DMIC */
-+	if (flag != FLAG_AMD_SOF_ONLY_DMIC)
-+		return 0;
++	stream->substream = NULL;
++	substream->runtime->private_data = NULL;
 +
-+	addr = pci_resource_start(pci, 0);
-+	res = devm_kzalloc(&pci->dev, sizeof(struct resource) * ARRAY_SIZE(renoir_res), GFP_KERNEL);
-+	if (!res) {
-+		sof_pci_remove(pci);
-+		return -ENOMEM;
++	return acp_dsp_stream_put(sdev, stream);
++}
++EXPORT_SYMBOL_NS(acp_pcm_close, SND_SOC_SOF_AMD_COMMON);
+diff --git a/sound/soc/sof/amd/acp-stream.c b/sound/soc/sof/amd/acp-stream.c
+new file mode 100644
+index 000000000000..f2837bfbdb20
+--- /dev/null
++++ b/sound/soc/sof/amd/acp-stream.c
+@@ -0,0 +1,181 @@
++// SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
++//
++// This file is provided under a dual BSD/GPLv2 license. When using or
++// redistributing this file, you may do so under either license.
++//
++// Copyright(c) 2021 Advanced Micro Devices, Inc.
++//
++// Authors: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
++
++/*
++ * Hardware interface for generic AMD audio DSP ACP IP
++ */
++
++#include "../ops.h"
++#include "acp-dsp-offset.h"
++#include "acp.h"
++
++#define PTE_GRP1_OFFSET		0x00000000
++#define PTE_GRP2_OFFSET		0x00800000
++#define PTE_GRP3_OFFSET		0x01000000
++#define PTE_GRP4_OFFSET		0x01800000
++#define PTE_GRP5_OFFSET		0x02000000
++#define PTE_GRP6_OFFSET		0x02800000
++#define PTE_GRP7_OFFSET		0x03000000
++#define PTE_GRP8_OFFSET		0x03800000
++
++int acp_dsp_stream_config(struct snd_sof_dev *sdev, struct acp_dsp_stream *stream)
++{
++	unsigned int pte_reg, pte_size, phy_addr_offset, index;
++	int stream_tag = stream->stream_tag;
++	u32 low, high, offset, reg_val;
++	dma_addr_t addr;
++	int page_idx;
++
++	switch (stream_tag) {
++	case 1:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_1;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_1;
++		offset = offsetof(struct scratch_reg_conf, grp1_pte);
++		stream->reg_offset = PTE_GRP1_OFFSET;
++		break;
++	case 2:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_2;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_2;
++		offset = offsetof(struct scratch_reg_conf, grp2_pte);
++		stream->reg_offset = PTE_GRP2_OFFSET;
++		break;
++	case 3:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_3;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_3;
++		offset = offsetof(struct scratch_reg_conf, grp3_pte);
++		stream->reg_offset = PTE_GRP3_OFFSET;
++		break;
++	case 4:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_4;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_4;
++		offset = offsetof(struct scratch_reg_conf, grp4_pte);
++		stream->reg_offset = PTE_GRP4_OFFSET;
++		break;
++	case 5:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_5;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_5;
++		offset = offsetof(struct scratch_reg_conf, grp5_pte);
++		stream->reg_offset = PTE_GRP5_OFFSET;
++		break;
++	case 6:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_6;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_6;
++		offset = offsetof(struct scratch_reg_conf, grp6_pte);
++		stream->reg_offset = PTE_GRP6_OFFSET;
++		break;
++	case 7:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_7;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_7;
++		offset = offsetof(struct scratch_reg_conf, grp7_pte);
++		stream->reg_offset = PTE_GRP7_OFFSET;
++		break;
++	case 8:
++		pte_reg = ACPAXI2AXI_ATU_BASE_ADDR_GRP_8;
++		pte_size = ACPAXI2AXI_ATU_PAGE_SIZE_GRP_8;
++		offset = offsetof(struct scratch_reg_conf, grp8_pte);
++		stream->reg_offset = PTE_GRP8_OFFSET;
++		break;
++	default:
++		dev_err(sdev->dev, "Invalid stream tag %d\n", stream_tag);
++		return -EINVAL;
 +	}
 +
-+	res_i2s = renoir_res;
-+	for (i = 0; i < ARRAY_SIZE(renoir_res); i++, res_i2s++) {
-+		res[i].name = res_i2s->name;
-+		res[i].flags = res_i2s->flags;
-+		res[i].start = addr + res_i2s->start;
-+		res[i].end = addr + res_i2s->end;
-+		if (res_i2s->flags == IORESOURCE_IRQ) {
-+			res[i].start = pci->irq;
-+			res[i].end = res[i].start;
++	/* write phy_addr in scratch memory */
++
++	phy_addr_offset = offsetof(struct scratch_reg_conf, reg_offset);
++	index = stream_tag - 1;
++	phy_addr_offset = phy_addr_offset + index * 4;
++
++	snd_sof_dsp_write(sdev, ACP_DSP_BAR, ACP_SCRATCH_REG_0 +
++			  phy_addr_offset, stream->reg_offset);
++
++	/* Group Enable */
++	reg_val = ACP_SRAM_PTE_OFFSET + offset;
++	snd_sof_dsp_write(sdev, ACP_DSP_BAR, pte_reg, reg_val | BIT(31));
++	snd_sof_dsp_write(sdev, ACP_DSP_BAR, pte_size, PAGE_SIZE_4K_ENABLE);
++
++	for (page_idx = 0; page_idx < stream->num_pages; page_idx++) {
++		addr = snd_sgbuf_get_addr(stream->dmab, page_idx * PAGE_SIZE);
++
++		/* Load the low address of page int ACP SRAM through SRBM */
++		low = lower_32_bits(addr);
++		high = upper_32_bits(addr);
++
++		snd_sof_dsp_write(sdev, ACP_DSP_BAR, ACP_SCRATCH_REG_0 + offset, low);
++
++		high |= BIT(31);
++		snd_sof_dsp_write(sdev, ACP_DSP_BAR, ACP_SCRATCH_REG_0 + offset + 4, high);
++		/* Move to next physically contiguous page */
++		offset += 8;
++	}
++
++	return 0;
++}
++
++struct acp_dsp_stream *acp_dsp_stream_get(struct snd_sof_dev *sdev, int tag)
++{
++	struct acp_dev_data *adata = sdev->pdata->hw_pdata;
++	struct acp_dsp_stream *stream = adata->stream_buf;
++	int i;
++
++	for (i = 0; i < ACP_MAX_STREAM; i++, stream++) {
++		if (stream->active)
++			continue;
++
++		/* return stream if tag not specified*/
++		if (!tag) {
++			stream->active = 1;
++			return stream;
++		}
++
++		/* check if this is the requested stream tag */
++		if (stream->stream_tag == tag) {
++			stream->active = 1;
++			return stream;
 +		}
 +	}
 +
-+	memset(&pdevinfo, 0, sizeof(pdevinfo));
++	dev_err(sdev->dev, "stream %d active or no inactive stream\n", tag);
++	return NULL;
++}
++EXPORT_SYMBOL_NS(acp_dsp_stream_get, SND_SOC_SOF_AMD_COMMON);
 +
-+	/*
-+	 * We have common PCI driver probe for ACP device but we have to support I2S without SOF
-+	 * for some distributions. Register platform device that will be used to support non dsp
-+	 * ACP's audio ends points on some machines.
-+	 */
++int acp_dsp_stream_put(struct snd_sof_dev *sdev,
++		       struct acp_dsp_stream *acp_stream)
++{
++	struct acp_dev_data *adata = sdev->pdata->hw_pdata;
++	struct acp_dsp_stream *stream = adata->stream_buf;
++	int i;
 +
-+	pdevinfo.name = "acp_asoc_renoir";
-+	pdevinfo.id = 0;
-+	pdevinfo.parent = &pci->dev;
-+	pdevinfo.num_res = ARRAY_SIZE(renoir_res);
-+	pdevinfo.res = &res[0];
-+
-+	pdev = platform_device_register_full(&pdevinfo);
-+	if (IS_ERR(pdev)) {
-+		dev_err(&pci->dev, "cannot register %s device\n", pdevinfo.name);
-+		sof_pci_remove(pci);
-+		platform_device_unregister(dmic_dev);
-+		ret = PTR_ERR(pdev);
++	/* Free an active stream */
++	for (i = 0; i < ACP_MAX_STREAM; i++, stream++) {
++		if (stream == acp_stream) {
++			stream->active = 0;
++			return 0;
++		}
 +	}
 +
-+	return ret;
-+};
-+
-+static void acp_pci_rn_remove(struct pci_dev *pci)
-+{
-+	if (dmic_dev)
-+		platform_device_unregister(dmic_dev);
-+	if (pdev)
-+		platform_device_unregister(pdev);
-+
-+	return sof_pci_remove(pci);
++	dev_err(sdev->dev, "Cannot find active stream tag %d\n", acp_stream->stream_tag);
++	return -EINVAL;
 +}
++EXPORT_SYMBOL_NS(acp_dsp_stream_put, SND_SOC_SOF_AMD_COMMON);
 +
-+/* PCI IDs */
-+static const struct pci_device_id rn_pci_ids[] = {
-+	{ PCI_DEVICE(PCI_VENDOR_ID_AMD, ACP_PCI_DEV_ID),
-+	.driver_data = (unsigned long)&renoir_desc},
-+	{ 0, }
++int acp_dsp_stream_init(struct snd_sof_dev *sdev)
++{
++	struct acp_dev_data *adata = sdev->pdata->hw_pdata;
++	int i;
++
++	for (i = 0; i < ACP_MAX_STREAM; i++) {
++		adata->stream_buf[i].sdev = sdev;
++		adata->stream_buf[i].active = 0;
++		adata->stream_buf[i].stream_tag = i + 1;
++	}
++	return 0;
++}
++EXPORT_SYMBOL_NS(acp_dsp_stream_init, SND_SOC_SOF_AMD_COMMON);
+diff --git a/sound/soc/sof/amd/acp.c b/sound/soc/sof/amd/acp.c
+index 43a57d15e3ca..74ede28aa8d8 100644
+--- a/sound/soc/sof/amd/acp.c
++++ b/sound/soc/sof/amd/acp.c
+@@ -363,6 +363,8 @@ int amd_sof_acp_probe(struct snd_sof_dev *sdev)
+ 
+ 	acp_memory_init(sdev);
+ 
++	acp_dsp_stream_init(sdev);
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_NS(amd_sof_acp_probe, SND_SOC_SOF_AMD_COMMON);
+diff --git a/sound/soc/sof/amd/acp.h b/sound/soc/sof/amd/acp.h
+index ac8340119125..36d000c3f792 100644
+--- a/sound/soc/sof/amd/acp.h
++++ b/sound/soc/sof/amd/acp.h
+@@ -13,6 +13,8 @@
+ 
+ #include "../sof-priv.h"
+ 
++#define ACP_MAX_STREAM	8
++
+ #define ACP_DSP_BAR	0
+ 
+ #define ACP_REG_POLL_INTERVAL                   500
+@@ -114,6 +116,17 @@ struct  scratch_reg_conf {
+ 	unsigned int    reserve[];
+ };
+ 
++struct acp_dsp_stream {
++	struct list_head list;
++	struct snd_sof_dev *sdev;
++	struct snd_pcm_substream *substream;
++	struct snd_dma_buffer *dmab;
++	int num_pages;
++	int stream_tag;
++	int active;
++	unsigned int reg_offset;
 +};
-+MODULE_DEVICE_TABLE(pci, rn_pci_ids);
 +
-+/* pci_driver definition */
-+static struct pci_driver snd_sof_pci_amd_rn_driver = {
-+	.name = KBUILD_MODNAME,
-+	.id_table = rn_pci_ids,
-+	.probe = acp_pci_rn_probe,
-+	.remove = acp_pci_rn_remove,
-+};
-+module_pci_driver(snd_sof_pci_amd_rn_driver);
+ /* Common device data struct for ACP devices */
+ struct acp_dev_data {
+ 	struct snd_sof_dev  *dev;
+@@ -125,6 +138,7 @@ struct acp_dev_data {
+ 	dma_addr_t dma_addr;
+ 	u8 *data_buf;
+ 	struct dma_descriptor dscr_info[ACP_MAX_DESC];
++	struct acp_dsp_stream stream_buf[ACP_MAX_STREAM];
+ };
+ 
+ void memcpy_to_scratch(struct snd_sof_dev *sdev, u32 offset, unsigned int *src, size_t bytes);
+@@ -165,5 +179,19 @@ int acp_sof_ipc_pcm_params(struct snd_sof_dev *sdev, struct snd_pcm_substream *s
+ void acp_mailbox_write(struct snd_sof_dev *sdev, u32 offset, void *message, size_t bytes);
+ void acp_mailbox_read(struct snd_sof_dev *sdev, u32 offset, void *message, size_t bytes);
+ 
++/* ACP - DSP  stream callbacks */
++int acp_dsp_stream_config(struct snd_sof_dev *sdev, struct acp_dsp_stream *stream);
++int acp_dsp_stream_init(struct snd_sof_dev *sdev);
++struct acp_dsp_stream *acp_dsp_stream_get(struct snd_sof_dev *sdev, int tag);
++int acp_dsp_stream_put(struct snd_sof_dev *sdev, struct acp_dsp_stream *acp_stream);
 +
-+MODULE_LICENSE("Dual BSD/GPL");
-+MODULE_IMPORT_NS(SND_SOC_SOF_AMD_COMMON);
-+MODULE_IMPORT_NS(SND_SOC_SOF_PCI_DEV);
++/*
++ * DSP PCM Operations.
++ */
++int acp_pcm_open(struct snd_sof_dev *sdev, struct snd_pcm_substream *substream);
++int acp_pcm_close(struct snd_sof_dev *sdev, struct snd_pcm_substream *substream);
++int acp_pcm_hw_params(struct snd_sof_dev *sdev, struct snd_pcm_substream *substream,
++		      struct snd_pcm_hw_params *params, struct sof_ipc_stream_params *ipc_params);
++
+ extern const struct snd_sof_dsp_ops sof_renoir_ops;
+ #endif
+diff --git a/sound/soc/sof/amd/renoir.c b/sound/soc/sof/amd/renoir.c
+index ca5582b3f82d..0241c5dce156 100644
+--- a/sound/soc/sof/amd/renoir.c
++++ b/sound/soc/sof/amd/renoir.c
+@@ -140,6 +140,17 @@ const struct snd_sof_dsp_ops sof_renoir_ops = {
+ 	/* DAI drivers */
+ 	.drv			= renoir_sof_dai,
+ 	.num_drv		= ARRAY_SIZE(renoir_sof_dai),
++
++	/* stream callbacks */
++	.pcm_open		= acp_pcm_open,
++	.pcm_close		= acp_pcm_close,
++	.pcm_hw_params		= acp_pcm_hw_params,
++
++	.hw_info		= SNDRV_PCM_INFO_MMAP |
++				  SNDRV_PCM_INFO_MMAP_VALID |
++				  SNDRV_PCM_INFO_INTERLEAVED |
++				  SNDRV_PCM_INFO_PAUSE |
++				  SNDRV_PCM_INFO_NO_PERIOD_WAKEUP,
+ };
+ EXPORT_SYMBOL(sof_renoir_ops);
+ 
 -- 
 2.27.0
 
