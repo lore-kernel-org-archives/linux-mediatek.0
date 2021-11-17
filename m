@@ -2,14 +2,14 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 252B6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id AEE5DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id E57C660E8E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:11 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org E57C660E8E
+	by mail.kernel.org (Postfix) with ESMTPS id 7D76E61AE2
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:39:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7D76E61AE2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oss.nxp.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,46 +18,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hNXifEXM+eS3X8mwvNl4GIGaIWIr3nr0zXTP1dknARA=; b=t7/iBuFcEd0MLl
-	HAXUEpUgXEiZIaTiGDqGh3rH7B4FKC1R5TWp+7Se5DFPuxZytXC0mwJdYnEAeTl6D3DqFl88hH/nZ
-	lob2tn0KJHmZE4gNirOkZWA2afGNv7eJnX5LP2WRMGxnNBVVM/cEnk0Dlg6EqkiguSLG44tBzOmEv
-	J47D0ywinaVej5uG5rwRRy14+xSf5GKdHRkPh4DToNjMtstera71/ri0Ah2qfHkr5keJYcleNmfEl
-	xjAtcZsus2COgeo0kY3hBcK71VMb9NyqwCkmjWUxjj5hbUaMLGJri218BBS0YbCxbR12SdvRSu4LD
-	8eSxVn2vDAMB9JGG7CTw==;
+	List-Owner; bh=juy06ltLSSAMxDNYvly3bCed3uT2SCmZxnQX0BNKdlY=; b=j9G1Ru18tO6Mdd
+	KJokjN5geJrkwIiBmPnrBfaqGwdIvERzsAEunt7U3sX/k5+5t8e/nOzsIvL6pZTAF0d11lTPEquFE
+	AI1z3aFgZ0zuNFMT4AVOtxb6+OfNJiAxbBl0lGX03GwMwho9yLQWL9leh8SIOCLyU84BIgY/Otahl
+	458n6alIUL3exe8b1AWJ293t2BooSQceEwLDRksWfDkP1S7Eyx+QEAI/IQBH09AJHwWO7gZGGsV7E
+	DtkSY27Hr+WOAmb6ZYCX+SXTTHoqb3fIGAImfwNRNk4JEbXplwdAJ//XRJlsEzvj4FCGkX1G8vC/Q
+	xlGxC+sNDEuTDND/WH8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnHPB-004JI5-Dy; Wed, 17 Nov 2021 09:39:01 +0000
-Received: from mail-db8eur05on2078.outbound.protection.outlook.com
- ([40.107.20.78] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1mnHPG-004JKt-HJ; Wed, 17 Nov 2021 09:39:06 +0000
+Received: from mail-db8eur05on2058.outbound.protection.outlook.com
+ ([40.107.20.58] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnHOe-004Io1-Sq
- for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:30 +0000
+ id 1mnHOg-004Ivr-B1
+ for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:32 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VolrQBIJVrZYBIY13S+4V9Wc5AINwojFsfAtWFyr1plGpt+xc625c7YQUHeedkn0BcVJXoefZlBB9woCc7/vviPbKi4WolEn0XLP8QoL9SVllzpDtgsN7LplHpsOvDB656K6gS0SDG1qXSPrvuzBU7OQ0J2v82IlZmvsl+8xIXbNyfhNLFNv+Z4XKNmQTuE4uV1e5LXtR7aBJ4bvEXd0nEDdfh2OfNq+86ceL9wxo0VSyY8qhOp2/9OptV21dHEbfGbm3hnJjPiJCLHmLJH2rCix8RYUuczf8m/BHNdZCiMKmztigTWTJHC0ktTaWL7X3UnjFZdAhIdFuKAlkk3Ifg==
+ b=NdHXcVl9FYGmpN8iW6jO0QS4vSnKbE2BAWPMXZYkR9DTCePK7A0VQn5bFhFyBfQSqv8vZQAkPXBbG8cVamIkFvj5m3/gpvj+scxmFA9/0FTVXoX21GWhqJ47Batm/Ve5lCXeG9QI6gQuGSHBH1nwxcPrv+ZbTJXORSrDsbsve7G7SNOE8wHY+ikb/P+TWdtljDxffQuzEhRpOTwKu8Dd6u+YEdmZMawHbN/ovcPMdZ2Wp9MNMTMEXm1ONHTJgrUYKBSY1OSRF18oDROdsLCVW0X14TA8UGBbVaf5O6umEbNkxig4t6REuDBcvqVDEGZDb+VhnLEnxOIw78zSfDlmKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=a2Ggpnh3r5i2lWYEnSpFogjWi34SGFMejbH6vPzJUwU=;
- b=PnjAQj5xJEjzCFhVDEa3Fwi3QTFtBOmKnuBAhV7gPEun5VBsQtgdyXKzCNAhoAzBod9ZmDJSEpklaOJeFjza2HQ8FUZpfhDadbxz/GCTmpyiXJkU5gMqhgNueyaphecwsQuS1Ty7DFWgxRT0BbHhcfuh4Lw3E5QMCrgqK+jZL4GBTSp0Ryayiru0/4RMDu0RaF5um/4XgdRU7fE42flG4aZGDaaWvB2+LB4gaPaY7/Z8IpR6xo8FW4XDssgoShCnlNIIGsNJ7wUEg+H/XE8YW8h04tEBCaGFxTofVKuggfTciN3sAQVxSLr+2g/49ealXMPY3vDwnb9vxQJLxGfZeg==
+ bh=+gwhM+p/Qh9MxUQBcZKdscXRpH21CmBKxMOedlU7EjA=;
+ b=bRbyiZB4zo+iiA2ZOvobCT4YuuQRckQqNhBfDYKKZ6Q/beDppzOFlFtBgP7xXzgrPNOllMqxE4ESB6hEEqHQWMQkXDQP4kCXSgj8MHYSz+UN+zKLpwCTQZpQMgPlA+jrVj8f36OUUGqZE3sbpcEZptbqjfJ0u1BNvOWlCT/MkhjYaoWlttmCbTxv4W22WI76bZjeQw4emcPEbj5HJID6wPa5seeUzhNDVS8kgqK+DAFrHaUfKEkQcfnz9+wOohRJodxYimuHmUA9OWPZycBsB5VN7gqc+33j41CDs52gwM9m7/nmbKwXI5KPoP8wtf0eIw/JQNgmX9FUJiN7xlt1NQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
  dkim=pass header.d=oss.nxp.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
  s=selector2-NXP1-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=a2Ggpnh3r5i2lWYEnSpFogjWi34SGFMejbH6vPzJUwU=;
- b=AJcMzu2qH/wZSHr6wLZaobQxIpGxBCJooEQg2nhMKDeK4VKYTrQuaqQeVRdJzSYanRJsCwsDIDl4ycbeLRMHeA3JNJn/ab88VAD1iH2bzQOTrQdcByFeouf4LDi7CThWmZanOerx8OZ4YcDktjEn42fBS4f3XRuylWKdNZpaKaw=
+ bh=+gwhM+p/Qh9MxUQBcZKdscXRpH21CmBKxMOedlU7EjA=;
+ b=g/wJomUEZvGVvq1KrA4zHF8ROxW53k8M+Jo+ipNQUQENeUA5EEW5/Z6ATnQeUxHK3u+QZXUR531nOlLVLabQr0S27LJrnUNdZMdkWEdNmMkrORfqEUuah3FP1JxJBXnV4ehD5J26yl8ZFH4thkWClrBJDu3E2x/KnaPqSfJ7eH4=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=oss.nxp.com;
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com (2603:10a6:803:61::28)
- by VI1PR04MB5807.eurprd04.prod.outlook.com (2603:10a6:803:ec::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.27; Wed, 17 Nov
- 2021 09:38:16 +0000
+ by VI1PR04MB3039.eurprd04.prod.outlook.com (2603:10a6:802:b::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.16; Wed, 17 Nov
+ 2021 09:38:24 +0000
 Received: from VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f]) by VI1PR04MB5151.eurprd04.prod.outlook.com
  ([fe80::85af:f8be:aa99:ba5f%3]) with mapi id 15.20.4690.027; Wed, 17 Nov 2021
- 09:38:16 +0000
+ 09:38:24 +0000
 From: Daniel Baluta <daniel.baluta@oss.nxp.com>
 To: broonie@kernel.org,
 	alsa-devel@alsa-project.org
@@ -68,9 +68,9 @@ Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
  yc.hung@mediatek.com, linux-mediatek@lists.infradead.org,
  Bard Liao <bard.liao@intel.com>,
  Kai Vehmanen <kai.vehmanen@linux.intel.com>
-Subject: [PATCH 07/21] ASoC: amd: Add module to determine ACP configuration
-Date: Wed, 17 Nov 2021 11:37:20 +0200
-Message-Id: <20211117093734.17407-8-daniel.baluta@oss.nxp.com>
+Subject: [PATCH 11/21] ASoC: SOF: topology: Add support for AMD ACP DAIs
+Date: Wed, 17 Nov 2021 11:37:24 +0200
+Message-Id: <20211117093734.17407-12-daniel.baluta@oss.nxp.com>
 X-Mailer: git-send-email 2.27.0
 In-Reply-To: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
 References: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
@@ -83,64 +83,64 @@ Received: from localhost.localdomain (2a02:2f08:5706:b700:22bb:b216:ffff:73e1)
  by AM3PR03CA0060.eurprd03.prod.outlook.com (2603:10a6:207:5::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.19 via Frontend
- Transport; Wed, 17 Nov 2021 09:38:14 +0000
+ Transport; Wed, 17 Nov 2021 09:38:22 +0000
 X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: ecf7d978-0b2b-43d9-9001-08d9a9adfb68
-X-MS-TrafficTypeDiagnostic: VI1PR04MB5807:
+X-MS-Office365-Filtering-Correlation-Id: 9ca7d98a-2e1b-4779-8d95-08d9a9ae0025
+X-MS-TrafficTypeDiagnostic: VI1PR04MB3039:
 X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-Microsoft-Antispam-PRVS: <VI1PR04MB580734B77F3F1413E5A2BCC4B89A9@VI1PR04MB5807.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2449;
+X-Microsoft-Antispam-PRVS: <VI1PR04MB30399B3DEFAC358627F46799B89A9@VI1PR04MB3039.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:3383;
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 2YgQDgS+PQC/6Gq0kn42ZnQdA71v9EMTzljqNYZsxhcNqhNFI2/mgraOvQG8lnVBOx6cxKHAC+ZPuEb10w5WdRWd0ALI5CD2E/HKewyg7ZOaton5Nwzresd1qFpqhymEm6wp6pP2TNinDj+dVCBSAOrrKB3F61BsCEjqjR0ogh5DoeG6ysp4KfvzHziR0VIPtEOX7uZ+++0xpUiSzCSjyaC8059nTWu/BFOsF1VigfPsuSJhVeSRFMeiBGsuGP7WpmFveIakErr/B46mBYsPdgZCriZu0rMnHk9XRc288FuKHRBGAhy5OG9+zOZ9lgnvPMMnZarcb3eNHEAzseeErn/unwccu91ZJxxPIQ5E0nAMtpyWX9HMSVhXm8NLJmTvAWd69eLxt2OPqL5tiwT4VBXkYQih5Do1+o97YKT2Ylkg5uCsbKupG9MyAWRj2SwmOLP6MeHH2nfdlLlEpvtCs1LRK9Rgo+/1JPGhm5GqpBkpmz1bm6+FsZ6S8RcylnimS6Wxl9BjncHc0acPOljTQd3sbmS4eeF9KnwrUinB7fvHIhhzJuhH7InN6G0B0/0LqE/7bPry7uTjd07m3/V+G4u3I4YV0h9S2Bg33xAjjO5/2PVwkiE2+/jhTOUwyCMxXN0+Vesx7h8lAT69vgA8Og==
+X-Microsoft-Antispam-Message-Info: xaqcBDat9FgOb1agwmUzW8V0TZ4gGmgsPQhIbmrOZD8PdtJUESSSZ0f1af2Eel19cPcI3/Awwr3E9oIJLkMI3XCXUjz931gChD4qN25fzZyLw1U+ZGsP3qYAMdtI5pZPE3vVbIFFsxUzkzlo2whDhh4IO3ex1llKBqO2XElrYkr7sOcYKznEyU/fRXA39xKpc18YAKtyvNouO+H2c1fyLO2DeJYBmLedoV+0h6dZiaps78jY4OSnwjYVWl0JCbW4GFA0wP1GlUwp2Fbd9WBnUKPYg+keWTJUoI0hof8pAB6+Aa4LZ+SoK80+oE+ql4J9eMvGeuyYhW0uz+MFRzinI7BUwdHC/uDeYc4qTVz3UAt/RmL4aOebugP/8C+o8yMIeG3oANxQ7IsPDu80zyA+geyPFnNEo2QQXkgA0QeyBOh8q8/R65V2ImQoM9zeuW8AiBT9LbXUQeRr5DjuVTUaRU2FErgRFJz8VOPdbqjdYR0rDmfC33Md034E+vqvSvge7N6vo/oA3phbe+pz/22mWl8ygBf6CiVfkJy3pIirVjAanBQDEufxSb4XQg5WVNyUCgheCCbBPg3iLe4pLraEpU335NhDiM5r2MakbNNfFmv17cCNEvt33pYLjheGJzRrM6KLC4SFjocnAi1xq9y8yQ==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:VI1PR04MB5151.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(316002)(5660300002)(508600001)(52116002)(86362001)(8676002)(54906003)(8936002)(66946007)(186003)(6512007)(2906002)(6666004)(6486002)(7416002)(6506007)(1076003)(2616005)(66556008)(66476007)(44832011)(83380400001)(38100700002)(4326008);
+ SFS:(4636009)(366004)(66476007)(186003)(44832011)(52116002)(6486002)(5660300002)(66556008)(6512007)(6506007)(4326008)(7416002)(2616005)(8936002)(8676002)(1076003)(2906002)(66946007)(83380400001)(508600001)(86362001)(316002)(38100700002)(54906003);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?alHuqOEwWc96+xycJx6HANBDoG9T7BUG7dEu8q/HH62wl+tJhM7hSp7+0dxn?=
- =?us-ascii?Q?DpIz1VNDhoLLO8W8vUO1Ug/6sHaUM4udXuuA0Iaw7B9AP6EZ0t8/y9A8rakD?=
- =?us-ascii?Q?+erDyplrN4/rNjUXHNfWUFPK9DM+iygJi4vzpeE8NBQRSlF4T6j+cytVQcvP?=
- =?us-ascii?Q?hORYd/VVuXnxXNigY3MwM0SSrMQtdizuUhoFbCLoIhrqQVlwYjozvvFh67CW?=
- =?us-ascii?Q?mXuwm/OSyj3wnbhyjdgqQRrGiHOuexCsVy4gegD+x3QgE8Wc+QBuPxlQsMdm?=
- =?us-ascii?Q?xmlXUWF9iBvWyVChC8YfW/BypGlw0mjo6sNkSNLrVpI1Xx/iOgr5AEkssyNu?=
- =?us-ascii?Q?Tf3mEXN79dtZx2XPo5NEt8tNsyUtp4+TCj03n2bDflD695HfPrjlk7YfcUig?=
- =?us-ascii?Q?6GqQ5HTw6eFNF5YPqwfEmyHDEqcGO1whEraTgvpG7Qcarqvr9HZO2aQSLts3?=
- =?us-ascii?Q?Co5edE6jSekSq3WF4ADMNTSoZQxhvpIAHKKm/Lt6WZAKc/9a1MDIC4ghFT7S?=
- =?us-ascii?Q?+XnL6aAib0qJI4DTRsfhYxvu3YktNBUgwQZ/1f6KAbHe92Bpi7U45jkwUvZq?=
- =?us-ascii?Q?RIqbhTUDjbgUXqdRoGhJdah9svOmHK8I3ZP4mXLsMZfkR57ohlfcPIWOYb3S?=
- =?us-ascii?Q?x7y42KVCBAVtNy30onkSkEU53RWyg6lP2lsBh+HVO6LvSJzTZnogPnIPOZuf?=
- =?us-ascii?Q?+DCwnFA4anQz0XtiPovnMFOn1WmbkYIeBuHmbzDLf1t07oLjpgjIqaj0p7ML?=
- =?us-ascii?Q?KVIp5LG8DZMdIeUQkjUUrxSbgg6IkySdnIPktIR+7bQKtPGyv4pIg9tIP4og?=
- =?us-ascii?Q?BJnAK0qsj6KJQ7vU2P+4B5aUodSEjehUeV1NtONsh6E0+SeBvWrXmA/1AvCP?=
- =?us-ascii?Q?Hts6kQNAsJJq/7QeQHz7dCxcFmcZfsDVYDdHw1lZ7+h9Y2a+VqtdS4w1n3B5?=
- =?us-ascii?Q?OnkcKTNvn4oa7MzkoO/TfTVeKmUedtkGKuF9lnXCDxAHA02A6if4nJNGn7S7?=
- =?us-ascii?Q?POFsjsF2UerNjIL6o3bNlpAJhUpnv3hJFkJ8Y8jECwRz2Mlv+FW5ZLCAI4Jv?=
- =?us-ascii?Q?ANzXyhw3zK4EzJpJD+5JxIArouWRZ7z1xHrBYA9RhIH3vHW6okVgeHb4vZEg?=
- =?us-ascii?Q?EvhthTWFm4mxwvy56U+L0XnqkLAkU5gSvCDkuS2kndy6Om/W142MwoHPrBFy?=
- =?us-ascii?Q?cPMlVNaLf96Q1g7HgnFlvwNZoc8XL7RUYYNQhlQQ8XWUy4ifHWqxLPOqIgVX?=
- =?us-ascii?Q?77xBFjFg5+QrGvP64uWj+qvKhbSZcs3LHGIfux0ThjMUndK+adR7s/EYHXO4?=
- =?us-ascii?Q?5wOQl/tie1hrJOgxI6XBAqTtdu8t7ZTY0oHk/tcO4YNVDbm2QGl1NanRHnMy?=
- =?us-ascii?Q?CUQcPebpt/pPXKgm+Unyt2Wcv/sPPc0J19cvb7Nm9uOS/2f6+e+RTi45kk35?=
- =?us-ascii?Q?hFGYjjhDqlQAatak+FFXCK0MwWgSz6QTZDIpD4/xMwes8knY1oJFug2iQh2w?=
- =?us-ascii?Q?WllA9UCuIT+lpGnLOsJZvpidX4Z+ASJY+dY5hucc8U/1jQneiJkCS/emPjis?=
- =?us-ascii?Q?vxC5rMxqmYS3V8lZ6yBpVWTdVJPhVjbyHpn7kua/SJsEaXbWQZm4otBLiiLx?=
- =?us-ascii?Q?VxLXDrR3LJ18WycOuWwQgH2dqJ0PWQ/s+DsUQmF/RjMNEZ7ea3EQY2RHLzJ8?=
- =?us-ascii?Q?ZfSFygIeknTBtz442dQZCo/6+SuH9CCIJ0FEVchScLNmqbJj?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?DvI8s5bdm3Olj1ByBm0//mbZRntLjj/HYT6GlZF4XcjDdu7duG6+/ameNYuK?=
+ =?us-ascii?Q?z/+FGywlWPeZWZRTiRJL/Fiz+sH0coPd/ncBpI9D7XaEQibCTCX7FAHFnUKr?=
+ =?us-ascii?Q?6MyeO6l68IiZuJbrM+T5wDF06xTErlT9YbN5xVfPFj+uVNkQrhiFvXZRfKUy?=
+ =?us-ascii?Q?IZ0hIszpmEjpMjJr6svJMqULnLdeuKzwsKh0DIwnnRlWDig1cbw8hDZ78TI/?=
+ =?us-ascii?Q?BseJPfl1MQbF6uIaRqA8M2O8mBaESQO8Lj2G9Ch2NvzyTP5Oal1Ct+3W76J9?=
+ =?us-ascii?Q?KN+/Gb/1Uiwjh4sUmU4W5LzgWEWk7C+z4wgGv7hYkTEBXYlXSljIwvazEt+J?=
+ =?us-ascii?Q?I3co6hTHRiLx1JhOwVA0K8Vkups2cUDL9Xc8Uiams2AeKF1j34j2UzP8g38i?=
+ =?us-ascii?Q?kMurvJW7Xkbscf84rMaK1z7sxY0gybK629MeU29o2Xxf/SJvqQJX8BnDkMd0?=
+ =?us-ascii?Q?GjkjDSRILxmrX9wsg8A5K3t9klJYRcRqAaHwbNe5BidmImEBqWceIrL2QGKu?=
+ =?us-ascii?Q?Ws/AeUTr3eQCcwSzCgh1GQ/tOZoZoPoEH+9tSn9YS9dN2VGH6l6jT47jPw1X?=
+ =?us-ascii?Q?A1+ZkKKpsNdKWM7bFjm0cekdwdCJ1rbwlaNOxLHxfuRg9rpPWhVuR5abccDZ?=
+ =?us-ascii?Q?fQmBBJ7KUW6Mqbr4+U71BXEIxtD8XIlwlpGsNDhiCuQDcejFmiqcHYb8+qEO?=
+ =?us-ascii?Q?dnDb97sTyG57sIIoMuokTzROgxeqCt1nQpP1rhAzKaHTpZ98xn7dO+cgRAaM?=
+ =?us-ascii?Q?ZmUkT4jRLP5ZPoovfL6SiTd9mzDWi6DERHK/9+bj3JRnxgFhF7g2F4GEVmNn?=
+ =?us-ascii?Q?kWIJsIMOc9rKoildt8HgpT8VrVk5EZOjIG690a1RlfiXKgQtT2EMK231L9IY?=
+ =?us-ascii?Q?7mHG4UARN0KLISG/on3gPgRXSPXK6/2MTnJQfRNVBo9bP4PIsaVHBYVrVFxJ?=
+ =?us-ascii?Q?lT7lIW3sj5a2PElp/2AqgGAUm3gZipARsVw4MqFSf0ebt5dcu/L4E7LC7pCE?=
+ =?us-ascii?Q?6+oBX2wbC8UiBGgSW1/DOKtcFyr3wTDdmJZqLUEcmH9RBE6WHcqRq+RE39Dg?=
+ =?us-ascii?Q?XWqyfE/X5WYDMJts1dScTQflSwXPpB4Tyz1SxYLk5JI6GmlE6GGVGKTgmsaN?=
+ =?us-ascii?Q?go0mphrmRYWM1Asx4FGUEq/UIv7b2AlQvZITHRk42G/m7dNLe/1ODJk2ysbh?=
+ =?us-ascii?Q?6NJka1Y2WT9lKG67Goyzw3Fj6+dRb3BEb0f7ZZ4kKxtBG6uh2LKSZjpE/blG?=
+ =?us-ascii?Q?aaBaIWgkm4nd0THELPL49AYwzB/8+iWgbRzLKXrKBHAzNBNSnOpJPxIGE9wG?=
+ =?us-ascii?Q?90jaMWw+yilYYVH5/GNkojtVDqlCl5Tsa9rt/Qr+rNZUsnAXroi81HxT7WlN?=
+ =?us-ascii?Q?oVQqVRmPX5fYdRMkUamRJer8SH0kQs5zXlr+NJoR9+wSjT2wwposR94z5OlC?=
+ =?us-ascii?Q?a2Uc8qv7MVDDnXzDT92U1Pl2uGGFMi89NEgrWJ2c0YlUGywrl6gpAc6zfnBn?=
+ =?us-ascii?Q?2NDWRItoitcq+E7Q6VmbZnRDFfHH/5UB7B0HpgekLmNOmvrGUtR47ur7glVi?=
+ =?us-ascii?Q?YsfNhjs8wGUNM2YtmEjJmYLWr2dhZIrJXQTVe0CUuFyrv6jEsrWXgj4S9rK1?=
+ =?us-ascii?Q?nxpB7dRTLD2D7RgVOJgN0TyovsqLHkBQSZv6Buf66azQD/As29+Z9V+PXa62?=
+ =?us-ascii?Q?A1hmYkw3vLdO5+eItwMXEPgcBUOqRTzgkrmj/Fudz6mG8KNL?=
 X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ecf7d978-0b2b-43d9-9001-08d9a9adfb68
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9ca7d98a-2e1b-4779-8d95-08d9a9ae0025
 X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5151.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:16.4524 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:24.3579 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AU52seh5GvanwKFYf2Nhx0n0z2pG7barkm6GJr/Isx7iC4eO5SQM6e+EaL77HRyGoWVeWwiD7VaEExACjrocdg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB5807
+X-MS-Exchange-CrossTenant-UserPrincipalName: sTidUK08MVGs0n22NVaTM/ri6q0H8M80/d+iTAmgpAVtW5J6uIRT4D/TC7R7rM5RMILFqliF4zT9J2fn3djt/w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB3039
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_013829_002084_618EBE08 
-X-CRM114-Status: GOOD (  20.08  )
+X-CRM114-CacheID: sfid-20211117_013830_448506_21A27495 
+X-CRM114-Status: GOOD (  18.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,188 +159,263 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 
-ACP hw block configuration differs across various distributions
-and hence it's required to register different drivers module for
-distributions. For now we support three ACP drivers:
-
-* ACP without SOF use case
-* ACP with SOF use case
-* ACP with SOF use case for DMIC and non SOF for I2S endpoints
-
-As all above driver registers with common PCI ID for ACP hw block
-we need code to determine ACP configuration and auto select driver
-module. This patch expose function that return configuration flag
-based on dmi checks for a system. ACP driver module probe register
-platform device based on such configuration flag to avoid conflict
-with other ACP drivers probed for same PCI ID.
+Add new sof dais and config to pass topology file configuration
+to SOF firmware running on ACP's DSP core. ACP firmware support
+I2S_BT, I2S_SP and DMIC controller hence add three new dais to
+the list of supported sof_dais
 
 Signed-off-by: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
 Reviewed-by: Bard Liao <bard.liao@intel.com>
 Reviewed-by: Kai Vehmanen <kai.vehmanen@linux.intel.com>
 Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
 ---
- sound/soc/amd/Kconfig       |  6 +++
- sound/soc/amd/Makefile      |  2 +
- sound/soc/amd/acp-config.c  | 81 +++++++++++++++++++++++++++++++++++++
- sound/soc/amd/mach-config.h | 29 +++++++++++++
- 4 files changed, 118 insertions(+)
- create mode 100644 sound/soc/amd/acp-config.c
- create mode 100644 sound/soc/amd/mach-config.h
+ include/sound/sof/dai-amd.h |  21 +++++++
+ include/sound/sof/dai.h     |   7 +++
+ sound/soc/sof/pcm.c         |  36 ++++++++++++
+ sound/soc/sof/topology.c    | 109 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 173 insertions(+)
+ create mode 100644 include/sound/sof/dai-amd.h
 
-diff --git a/sound/soc/amd/Kconfig b/sound/soc/amd/Kconfig
-index 2c6af3f8f296..092966ff5ea7 100644
---- a/sound/soc/amd/Kconfig
-+++ b/sound/soc/amd/Kconfig
-@@ -96,4 +96,10 @@ config SND_SOC_AMD_YC_MACH
- 	  Say m if you have such a device.
- 	  If unsure select "N".
- 
-+config SND_AMD_ACP_CONFIG
-+	tristate "AMD ACP configuration selection"
-+	help
-+	 This option adds an auto detection to determine which ACP
-+	 driver modules to use
-+
- source "sound/soc/amd/acp/Kconfig"
-diff --git a/sound/soc/amd/Makefile b/sound/soc/amd/Makefile
-index f1d42bbda709..4b1f77930a4a 100644
---- a/sound/soc/amd/Makefile
-+++ b/sound/soc/amd/Makefile
-@@ -3,6 +3,7 @@ acp_audio_dma-objs := acp-pcm-dma.o
- snd-soc-acp-da7219mx98357-mach-objs := acp-da7219-max98357a.o
- snd-soc-acp-rt5645-mach-objs := acp-rt5645.o
- snd-soc-acp-rt5682-mach-objs := acp3x-rt5682-max9836.o
-+snd-acp-config-objs := acp-config.o
- 
- obj-$(CONFIG_SND_SOC_AMD_ACP) += acp_audio_dma.o
- obj-$(CONFIG_SND_SOC_AMD_CZ_DA7219MX98357_MACH) += snd-soc-acp-da7219mx98357-mach.o
-@@ -13,3 +14,4 @@ obj-$(CONFIG_SND_SOC_AMD_RENOIR) += renoir/
- obj-$(CONFIG_SND_SOC_AMD_ACP5x) += vangogh/
- obj-$(CONFIG_SND_SOC_AMD_ACP6x) += yc/
- obj-$(CONFIG_SND_SOC_AMD_ACP_COMMON) += acp/
-+obj-$(CONFIG_SND_AMD_ACP_CONFIG) += snd-acp-config.o
-diff --git a/sound/soc/amd/acp-config.c b/sound/soc/amd/acp-config.c
+diff --git a/include/sound/sof/dai-amd.h b/include/sound/sof/dai-amd.h
 new file mode 100644
-index 000000000000..c9abbb46b6f5
+index 000000000000..90d09dbdd709
 --- /dev/null
-+++ b/sound/soc/amd/acp-config.c
-@@ -0,0 +1,81 @@
-+// SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause)
-+//
-+// This file is provided under a dual BSD/GPLv2 license. When using or
-+// redistributing this file, you may do so under either license.
-+//
-+// Copyright(c) 2021 Advanced Micro Devices, Inc.
-+//
-+// Authors: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
-+//
-+
-+/* ACP machine configuration module */
-+
-+#include <linux/acpi.h>
-+#include <linux/bits.h>
-+#include <linux/dmi.h>
-+#include <linux/module.h>
-+#include <linux/pci.h>
-+
-+#include "../sof/amd/acp.h"
-+#include "mach-config.h"
-+
-+static int acp_quirk_data;
-+
-+static const struct config_entry config_table[] = {
-+	{
-+		.flags = FLAG_AMD_SOF,
-+		.device = ACP_PCI_DEV_ID,
-+		.dmi_table = (const struct dmi_system_id []) {
-+			{
-+				.matches = {
-+					DMI_MATCH(DMI_SYS_VENDOR, "AMD"),
-+					DMI_MATCH(DMI_PRODUCT_NAME, "Majolica-CZN"),
-+				},
-+			},
-+			{}
-+		},
-+	},
-+};
-+
-+int snd_amd_acp_find_config(struct pci_dev *pci)
-+{
-+	const struct config_entry *table = config_table;
-+	u16 device = pci->device;
-+	int i;
-+
-+	for (i = 0; i < ARRAY_SIZE(config_table); i++, table++) {
-+		if (table->device != device)
-+			continue;
-+		if (table->dmi_table && !dmi_check_system(table->dmi_table))
-+			continue;
-+		acp_quirk_data = table->flags;
-+		return table->flags;
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(snd_amd_acp_find_config);
-+
-+struct snd_soc_acpi_mach snd_soc_acpi_amd_sof_machines[] = {
-+	{
-+		.id = "AMDI1019",
-+		.drv_name = "renoir-dsp",
-+		.pdata = (void *)&acp_quirk_data,
-+		.fw_filename = "sof-rn.ri",
-+		.sof_tplg_filename = "sof-acp.tplg",
-+	},
-+	{},
-+};
-+EXPORT_SYMBOL(snd_soc_acpi_amd_sof_machines);
-+
-+struct snd_soc_acpi_mach snd_soc_acpi_amd_acp_machines[] = {
-+	{
-+		.id = "AMDI1019",
-+		.drv_name = "renoir-acp",
-+		.pdata = (void *)&acp_quirk_data,
-+	},
-+	{},
-+};
-+EXPORT_SYMBOL(snd_soc_acpi_amd_acp_machines);
-+
-+MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/sound/soc/amd/mach-config.h b/sound/soc/amd/mach-config.h
-new file mode 100644
-index 000000000000..608f1e199775
---- /dev/null
-+++ b/sound/soc/amd/mach-config.h
-@@ -0,0 +1,29 @@
++++ b/include/sound/sof/dai-amd.h
+@@ -0,0 +1,21 @@
 +/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-3-Clause) */
 +/*
 + * This file is provided under a dual BSD/GPLv2 license. When using or
 + * redistributing this file, you may do so under either license.
 + *
-+ * Copyright(c) 2021 Advanced Micro Devices, Inc. All rights reserved.
-+ *
-+ * Author: Ajit Kumar Pandey <AjitKumar.Pandey@amd.com>
++ * Copyright(c) 2021 Advanced Micro Devices, Inc.. All rights reserved.
 + */
-+#ifndef __AMD_MACH_CONFIG_H
-+#define __AMD_MACH_CONFIG_H
 +
-+#include <sound/soc-acpi.h>
++#ifndef __INCLUDE_SOUND_SOF_DAI_AMD_H__
++#define __INCLUDE_SOUND_SOF_DAI_AMD_H__
 +
-+#define FLAG_AMD_SOF			BIT(1)
-+#define FLAG_AMD_SOF_ONLY_DMIC		BIT(2)
++#include <sound/sof/header.h>
 +
-+#define ACP_PCI_DEV_ID			0x15E2
++/* ACP Configuration Request - SOF_IPC_DAI_AMD_CONFIG */
++struct sof_ipc_dai_acp_params {
++	struct sof_ipc_hdr hdr;
 +
-+extern struct snd_soc_acpi_mach snd_soc_acpi_amd_sof_machines[];
-+extern struct snd_soc_acpi_mach snd_soc_acpi_amd_acp_machines[];
-+
-+struct config_entry {
-+	u32 flags;
-+	u16 device;
-+	const struct dmi_system_id *dmi_table;
-+};
-+
++	uint32_t fsync_rate;    /* FSYNC frequency in Hz */
++	uint32_t tdm_slots;
++} __packed;
 +#endif
+diff --git a/include/sound/sof/dai.h b/include/sound/sof/dai.h
+index 9625f47557b8..3782127a7095 100644
+--- a/include/sound/sof/dai.h
++++ b/include/sound/sof/dai.h
+@@ -12,6 +12,7 @@
+ #include <sound/sof/header.h>
+ #include <sound/sof/dai-intel.h>
+ #include <sound/sof/dai-imx.h>
++#include <sound/sof/dai-amd.h>
+ 
+ /*
+  * DAI Configuration.
+@@ -66,6 +67,9 @@ enum sof_ipc_dai_type {
+ 	SOF_DAI_INTEL_ALH,		/**< Intel ALH  */
+ 	SOF_DAI_IMX_SAI,		/**< i.MX SAI */
+ 	SOF_DAI_IMX_ESAI,		/**< i.MX ESAI */
++	SOF_DAI_AMD_BT,			/**< AMD ACP BT*/
++	SOF_DAI_AMD_SP,			/**< AMD ACP SP */
++	SOF_DAI_AMD_DMIC,		/**< AMD ACP DMIC */
+ };
+ 
+ /* general purpose DAI configuration */
+@@ -90,6 +94,9 @@ struct sof_ipc_dai_config {
+ 		struct sof_ipc_dai_alh_params alh;
+ 		struct sof_ipc_dai_esai_params esai;
+ 		struct sof_ipc_dai_sai_params sai;
++		struct sof_ipc_dai_acp_params acpbt;
++		struct sof_ipc_dai_acp_params acpsp;
++		struct sof_ipc_dai_acp_params acpdmic;
+ 	};
+ } __packed;
+ 
+diff --git a/sound/soc/sof/pcm.c b/sound/soc/sof/pcm.c
+index fa0bfcd2474e..8d313c9862cb 100644
+--- a/sound/soc/sof/pcm.c
++++ b/sound/soc/sof/pcm.c
+@@ -826,6 +826,42 @@ int sof_pcm_dai_link_fixup(struct snd_soc_pcm_runtime *rtd, struct snd_pcm_hw_pa
+ 			"channels_min: %d channels_max: %d\n",
+ 			channels->min, channels->max);
+ 		break;
++	case SOF_DAI_AMD_BT:
++		rate->min = dai->dai_config->acpbt.fsync_rate;
++		rate->max = dai->dai_config->acpbt.fsync_rate;
++		channels->min = dai->dai_config->acpbt.tdm_slots;
++		channels->max = dai->dai_config->acpbt.tdm_slots;
++
++		dev_dbg(component->dev,
++			"AMD_BT rate_min: %d rate_max: %d\n", rate->min, rate->max);
++		dev_dbg(component->dev,
++			"AMD_BT channels_min: %d channels_max: %d\n",
++			channels->min, channels->max);
++		break;
++	case SOF_DAI_AMD_SP:
++		rate->min = dai->dai_config->acpsp.fsync_rate;
++		rate->max = dai->dai_config->acpsp.fsync_rate;
++		channels->min = dai->dai_config->acpsp.tdm_slots;
++		channels->max = dai->dai_config->acpsp.tdm_slots;
++
++		dev_dbg(component->dev,
++			"AMD_SP rate_min: %d rate_max: %d\n", rate->min, rate->max);
++		dev_dbg(component->dev,
++			"AMD_SP channels_min: %d channels_max: %d\n",
++			channels->min, channels->max);
++		break;
++	case SOF_DAI_AMD_DMIC:
++		rate->min = dai->dai_config->acpdmic.fsync_rate;
++		rate->max = dai->dai_config->acpdmic.fsync_rate;
++		channels->min = dai->dai_config->acpdmic.tdm_slots;
++		channels->max = dai->dai_config->acpdmic.tdm_slots;
++
++		dev_dbg(component->dev,
++			"AMD_DMIC rate_min: %d rate_max: %d\n", rate->min, rate->max);
++		dev_dbg(component->dev,
++			"AMD_DMIC channels_min: %d channels_max: %d\n",
++			channels->min, channels->max);
++		break;
+ 	default:
+ 		dev_err(component->dev, "error: invalid DAI type %d\n",
+ 			dai->dai_config->type);
+diff --git a/sound/soc/sof/topology.c b/sound/soc/sof/topology.c
+index bb9e62bbe5db..72e671c15a34 100644
+--- a/sound/soc/sof/topology.c
++++ b/sound/soc/sof/topology.c
+@@ -376,6 +376,9 @@ static const struct sof_dai_types sof_dais[] = {
+ 	{"ALH", SOF_DAI_INTEL_ALH},
+ 	{"SAI", SOF_DAI_IMX_SAI},
+ 	{"ESAI", SOF_DAI_IMX_ESAI},
++	{"ACP", SOF_DAI_AMD_BT},
++	{"ACPSP", SOF_DAI_AMD_SP},
++	{"ACPDMIC", SOF_DAI_AMD_DMIC},
+ };
+ 
+ static enum sof_ipc_dai_type find_dai(const char *name)
+@@ -2992,6 +2995,102 @@ static int sof_link_esai_load(struct snd_soc_component *scomp, int index,
+ 	return ret;
+ }
+ 
++static int sof_link_acp_dmic_load(struct snd_soc_component *scomp, int index,
++				  struct snd_soc_dai_link *link,
++				  struct snd_soc_tplg_link_config *cfg,
++				  struct snd_soc_tplg_hw_config *hw_config,
++				  struct sof_ipc_dai_config *config)
++{
++	struct snd_sof_dev *sdev = snd_soc_component_get_drvdata(scomp);
++	u32 size = sizeof(*config);
++	int ret;
++
++       /* handle master/slave and inverted clocks */
++	sof_dai_set_format(hw_config, config);
++
++	/* init IPC */
++	memset(&config->acpdmic, 0, sizeof(struct sof_ipc_dai_acp_params));
++	config->hdr.size = size;
++
++	config->acpdmic.fsync_rate = le32_to_cpu(hw_config->fsync_rate);
++	config->acpdmic.tdm_slots = le32_to_cpu(hw_config->tdm_slots);
++
++	dev_info(scomp->dev, "ACP_DMIC config ACP%d channel %d rate %d\n",
++		 config->dai_index, config->acpdmic.tdm_slots,
++		 config->acpdmic.fsync_rate);
++
++	/* set config for all DAI's with name matching the link name */
++	ret = sof_set_dai_config(sdev, size, link, config);
++	if (ret < 0)
++		dev_err(scomp->dev, "ACP_DMIC failed to save DAI config for ACP%d\n",
++			config->dai_index);
++	return ret;
++}
++
++static int sof_link_acp_bt_load(struct snd_soc_component *scomp, int index,
++				struct snd_soc_dai_link *link,
++				struct snd_soc_tplg_link_config *cfg,
++				struct snd_soc_tplg_hw_config *hw_config,
++				struct sof_ipc_dai_config *config)
++{
++	struct snd_sof_dev *sdev = snd_soc_component_get_drvdata(scomp);
++	u32 size = sizeof(*config);
++	int ret;
++
++	/* handle master/slave and inverted clocks */
++	sof_dai_set_format(hw_config, config);
++
++	/* init IPC */
++	memset(&config->acpbt, 0, sizeof(struct sof_ipc_dai_acp_params));
++	config->hdr.size = size;
++
++	config->acpbt.fsync_rate = le32_to_cpu(hw_config->fsync_rate);
++	config->acpbt.tdm_slots = le32_to_cpu(hw_config->tdm_slots);
++
++	dev_info(scomp->dev, "ACP_BT config ACP%d channel %d rate %d\n",
++		 config->dai_index, config->acpbt.tdm_slots,
++		 config->acpbt.fsync_rate);
++
++	/* set config for all DAI's with name matching the link name */
++	ret = sof_set_dai_config(sdev, size, link, config);
++	if (ret < 0)
++		dev_err(scomp->dev, "ACP_BT failed to save DAI config for ACP%d\n",
++			config->dai_index);
++	return ret;
++}
++
++static int sof_link_acp_sp_load(struct snd_soc_component *scomp, int index,
++				struct snd_soc_dai_link *link,
++				struct snd_soc_tplg_link_config *cfg,
++				struct snd_soc_tplg_hw_config *hw_config,
++				struct sof_ipc_dai_config *config)
++{
++	struct snd_sof_dev *sdev = snd_soc_component_get_drvdata(scomp);
++	u32 size = sizeof(*config);
++	int ret;
++
++	/* handle master/slave and inverted clocks */
++	sof_dai_set_format(hw_config, config);
++
++	/* init IPC */
++	memset(&config->acpsp, 0, sizeof(struct sof_ipc_dai_acp_params));
++	config->hdr.size = size;
++
++	config->acpsp.fsync_rate = le32_to_cpu(hw_config->fsync_rate);
++	config->acpsp.tdm_slots = le32_to_cpu(hw_config->tdm_slots);
++
++	dev_info(scomp->dev, "ACP_SP config ACP%d channel %d rate %d\n",
++		 config->dai_index, config->acpsp.tdm_slots,
++		 config->acpsp.fsync_rate);
++
++	/* set config for all DAI's with name matching the link name */
++	ret = sof_set_dai_config(sdev, size, link, config);
++	if (ret < 0)
++		dev_err(scomp->dev, "ACP_SP failed to save DAI config for ACP%d\n",
++			config->dai_index);
++	return ret;
++}
++
+ static int sof_link_dmic_load(struct snd_soc_component *scomp, int index,
+ 			      struct snd_soc_dai_link *link,
+ 			      struct snd_soc_tplg_link_config *cfg,
+@@ -3277,6 +3376,16 @@ static int sof_link_load(struct snd_soc_component *scomp, int index,
+ 	case SOF_DAI_IMX_ESAI:
+ 		ret = sof_link_esai_load(scomp, index, link, cfg, hw_config + curr_conf, config);
+ 		break;
++	case SOF_DAI_AMD_BT:
++		ret = sof_link_acp_bt_load(scomp, index, link, cfg, hw_config + curr_conf, config);
++		break;
++	case SOF_DAI_AMD_SP:
++		ret = sof_link_acp_sp_load(scomp, index, link, cfg, hw_config + curr_conf, config);
++		break;
++	case SOF_DAI_AMD_DMIC:
++		ret = sof_link_acp_dmic_load(scomp, index, link, cfg, hw_config + curr_conf,
++					     config);
++		break;
+ 	default:
+ 		dev_err(scomp->dev, "error: invalid DAI type %d\n", common_config.type);
+ 		ret = -EINVAL;
 -- 
 2.27.0
 
