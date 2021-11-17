@@ -2,14 +2,14 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B0887C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 13:07:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 12354C433FE
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 13:07:11 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7112561BF9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 13:07:08 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7112561BF9
+	by mail.kernel.org (Postfix) with ESMTPS id C23A661C12
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 13:07:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C23A661C12
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=collabora.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,30 +18,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QMKk/ZkUqkULv2p7jhRQVsubP8yGAPIPvMgf1P2x8S4=; b=flODCkdJ4E+laL
-	sOfc/YNT7VFTudflFxVHT8Jj1Yp8pcDB85l3Yb0sd4yrv9qgWesKF5r/Bp5ZZf4lVVzMxDL7553HP
-	bpPVbT3dgRjon9LYJf8wS6EgCGM+mARFXr0saUrkwlTJBp9/Rxv3CJqvuyvub8r23Ba5lrYR6+t7c
-	cOzNrQ+GbCdhJNePBBmA7dmQ1t98GmJt74J3tojP2WFnNdx+voGhTgbtOG/PCHztfFYecUOFASSNI
-	9SY75oIKiUicfB87ga2l1GtmmNRKFlgttswKT4SX46xsSb8rlqWoPP5VDQvRIvbpY3n8XIs01ZFRv
-	jUP7TmMogzlvEOzbcFzg==;
+	List-Owner; bh=5KW9Ifa57mlw5JOE6dz+NnPSqegveRhSdJu3++9Asss=; b=WPQdVquJvtBsG+
+	GA2tiLn6qaWtbp43qIodyN6BSombhBEYu7QOC/z/9FIC6FpAh5BK//ubbfUfXa1WJb/tsMm5lEreS
+	AAdqT0vImB75I/KzyJNZBn/iLiaOrbljclB7xfcAkLqvmRD4yD0258ZDav1TG9Hgo4CuIyTFk8bjf
+	t0DS/oXCVuzmeZusiIIATWVSc6CgPdtKOh67EhU9jNpZB2fD/pnZ+cCfCyy8bnFfJbXGUOQqbuevA
+	hiDgscnc/QIxSdjlY+xjEopTJsNBpixo9Ad3wDxgqcDMAj9lLxjF/81dWhJu4QaT2kvZPPS8Xti+O
+	kmM9PtRA0AepZc6j/h3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnKeS-004mlL-Jh; Wed, 17 Nov 2021 13:07:00 +0000
+	id 1mnKeU-004mnV-SY; Wed, 17 Nov 2021 13:07:02 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnKeP-004mi9-8V
- for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 13:06:59 +0000
+ id 1mnKeR-004mjw-EC
+ for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 13:07:01 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id F11221F45D0A
+ (Authenticated sender: dafna) with ESMTPSA id 622681F45D07
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1637154416; bh=WrZFRJgosj8fXeCgZOypKOsxmSubLEsYuflu3+uxlJs=;
+ t=1637154418; bh=u270ohJ7t6uCbX7fIMH88BVsQ8r478APACiXzxz20dw=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=elNBWQorW3hIx6mwp2URppQhCyKR2rVRynaFhMibqCmp4aQKnybKhXdeJv5kZhxgv
- AGAroByy0hDkGvTu+X6BGWdXLhGx7EA/skNIeaiJ42f4/CvbEUtEOXKoKn5aw0bBEx
- LnGPhAl8UAkOzpwrLJO3v4sD4xEU8oCE/MQWJiJLyAZH5tNVQASq9twg8IugUENzNq
- HEDw4GPOWEA4FwulhQudr9AV1uXwgZ3DpE2hwTIg7iIx5ERlEZUZUs1oaHVfWThtDZ
- /D+PQN+4mkcUypPN79eWWcqpADfIScgIjEhGBjrrECtRlOqxuKDMOSkcK8x95AB054
- qWTEjT/u1Y10g==
+ b=WB3t/tzldWxoDzT1GV4ai4x6hhHSiXabCwqXUw+4ipXx3j92nhqTZpelnJhRkIkfB
+ fCF1QvukWmFQoC4SUew/TFjhECccg6kHdOfvBhJwuLugztw5ReqKzK/oxsiT3izIjT
+ 9JPPxddCLMEIT2pBsn1tTpidWIYLWksP24dFpQBb3X/DUg3P81qHbnD9lt33lpWrQQ
+ dyA9IB98BsDJeMHzDv1fVRhVjCgcONPoyqR6bOkA6VlygMf+BEoM0YavY0CnGXlA32
+ qkxpcOMx6nE4W7wZ9W5Z2r6nrLn1KYvAlPZvrPuv33GoNK/kgXowAt+GUdMMbETTYe
+ qJKFPUikMo2ag==
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: linux-media@vger.kernel.org
 Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, kernel@collabora.com,
@@ -51,15 +51,16 @@ Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, kernel@collabora.com,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  maoguang.meng@mediatek.com, matthias.bgg@gmail.com, mchehab@kernel.org,
  minghsiu.tsai@mediatek.com, tfiga@chromium.org, tiffany.lin@mediatek.com
-Subject: [PATCH v2 4/7] media: mtk-vcodec: fix debugging defines
-Date: Wed, 17 Nov 2021 15:06:32 +0200
-Message-Id: <20211117130635.11633-5-dafna.hirschfeld@collabora.com>
+Subject: [PATCH v2 5/7] media: mtk-vcodec: replace func vidioc_try_fmt with
+ two funcs for out/cap
+Date: Wed, 17 Nov 2021 15:06:33 +0200
+Message-Id: <20211117130635.11633-6-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20211117130635.11633-1-dafna.hirschfeld@collabora.com>
 References: <20211117130635.11633-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_050657_586322_B3A3BF99 
-X-CRM114-Status: GOOD (  15.96  )
+X-CRM114-CacheID: sfid-20211117_050659_766957_46022856 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,172 +78,214 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The mtk-vcodec uses some internal defined debug formats for
-printing. This patch fixes some things in those defines:
-
-1. use the 'pr_fmt' define to print function name and line.
-
-2. remove 'if(DEBUG)' condition for the defines. This condition
-prevents the debugs from being shown in case of dynamic debugs.
-Instead replace 'pr_info' with 'pr_debug'
-
-3. remove module parameters that enable/disable debug.
-There is no reason for the driver to have those params. Having
-those params require the user to explicitly set them when user
-wants to see debug prints instead of using the global debugs
-setting as expected by drivers to conform.
-
-In addition to that, fix some warnings about debug formatting
+The function vidioc_try_fmt has a big 'if-else' for
+the capture and output cases. There is hardly any code
+outside of that condition. It is therefore better to split
+that functions into two different functions, one for each case.
 
 Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 ---
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  3 --
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  3 --
- .../platform/mtk-vcodec/mtk_vcodec_util.c     | 10 -----
- .../platform/mtk-vcodec/mtk_vcodec_util.h     | 45 +++++--------------
- .../mtk-vcodec/vdec/vdec_h264_req_if.c        |  4 +-
- 5 files changed, 12 insertions(+), 53 deletions(-)
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 149 +++++++++---------
+ 1 file changed, 72 insertions(+), 77 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index e6e6a8203eeb..f3610a338a01 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -28,9 +28,6 @@
- #define VDEC_IRQ_CLR	0x10
- #define VDEC_IRQ_CFG_REG	0xa4
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+index fb3cf804c96a..be28f2401839 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
+@@ -263,87 +263,82 @@ static struct mtk_q_data *mtk_venc_get_q_data(struct mtk_vcodec_ctx *ctx,
+ 	return &ctx->q_data[MTK_Q_DATA_DST];
+ }
  
--module_param(mtk_v4l2_dbg_level, int, 0644);
--module_param(mtk_vcodec_dbg, bool, 0644);
--
- /* Wake up context wait_queue */
- static void wake_up_ctx(struct mtk_vcodec_ctx *ctx)
++static void vidioc_try_fmt_cap(struct v4l2_format *f)
++{
++	f->fmt.pix_mp.field = V4L2_FIELD_NONE;
++	f->fmt.pix_mp.num_planes = 1;
++	f->fmt.pix_mp.plane_fmt[0].bytesperline = 0;
++	f->fmt.pix_mp.flags = 0;
++}
++
+ /* V4L2 specification suggests the driver corrects the format struct if any of
+  * the dimensions is unsupported
+  */
+-static int vidioc_try_fmt(struct mtk_vcodec_ctx *ctx, struct v4l2_format *f,
+-			  const struct mtk_video_fmt *fmt)
++static int vidioc_try_fmt_out(struct mtk_vcodec_ctx *ctx, struct v4l2_format *f,
++			      const struct mtk_video_fmt *fmt)
  {
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index f898226fc53e..ec5ee337c1fd 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -23,9 +23,6 @@
- #include "mtk_vcodec_util.h"
- #include "mtk_vcodec_fw.h"
+ 	struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
++	int tmp_w, tmp_h;
++	unsigned int max_width, max_height;
  
--module_param(mtk_v4l2_dbg_level, int, S_IRUGO | S_IWUSR);
--module_param(mtk_vcodec_dbg, bool, S_IRUGO | S_IWUSR);
+ 	pix_fmt_mp->field = V4L2_FIELD_NONE;
+ 
+-	if (f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
+-		pix_fmt_mp->num_planes = 1;
+-		pix_fmt_mp->plane_fmt[0].bytesperline = 0;
+-	} else if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
+-		int tmp_w, tmp_h;
+-		unsigned int max_width, max_height;
 -
- static const struct mtk_video_fmt mtk_video_formats_output[] = {
- 	{
- 		.fourcc = V4L2_PIX_FMT_NV12M,
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-index ac5973b6735f..5bac820a47fc 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.c
-@@ -10,16 +10,6 @@
- #include "mtk_vcodec_drv.h"
- #include "mtk_vcodec_util.h"
+-		if (ctx->dev->enc_capability & MTK_VENC_4K_CAPABILITY_ENABLE) {
+-			max_width = MTK_VENC_4K_MAX_W;
+-			max_height = MTK_VENC_4K_MAX_H;
+-		} else {
+-			max_width = MTK_VENC_HD_MAX_W;
+-			max_height = MTK_VENC_HD_MAX_H;
+-		}
++	if (ctx->dev->enc_capability & MTK_VENC_4K_CAPABILITY_ENABLE) {
++		max_width = MTK_VENC_4K_MAX_W;
++		max_height = MTK_VENC_4K_MAX_H;
++	} else {
++		max_width = MTK_VENC_HD_MAX_W;
++		max_height = MTK_VENC_HD_MAX_H;
++	}
  
--/* For encoder, this will enable logs in venc/*/
--bool mtk_vcodec_dbg;
--EXPORT_SYMBOL(mtk_vcodec_dbg);
+-		pix_fmt_mp->height = clamp(pix_fmt_mp->height,
+-					MTK_VENC_MIN_H,
+-					max_height);
+-		pix_fmt_mp->width = clamp(pix_fmt_mp->width,
+-					MTK_VENC_MIN_W,
+-					max_width);
++	pix_fmt_mp->height = clamp(pix_fmt_mp->height, MTK_VENC_MIN_H, max_height);
++	pix_fmt_mp->width = clamp(pix_fmt_mp->width, MTK_VENC_MIN_W, max_width);
+ 
+-		/* find next closer width align 16, heign align 32, size align
+-		 * 64 rectangle
+-		 */
+-		tmp_w = pix_fmt_mp->width;
+-		tmp_h = pix_fmt_mp->height;
+-		v4l_bound_align_image(&pix_fmt_mp->width,
+-					MTK_VENC_MIN_W,
+-					max_width, 4,
+-					&pix_fmt_mp->height,
+-					MTK_VENC_MIN_H,
+-					max_height, 5, 6);
 -
--/* The log level of v4l2 encoder or decoder driver.
-- * That is, files under mtk-vcodec/.
-- */
--int mtk_v4l2_dbg_level;
--EXPORT_SYMBOL(mtk_v4l2_dbg_level);
+-		if (pix_fmt_mp->width < tmp_w &&
+-			(pix_fmt_mp->width + 16) <= max_width)
+-			pix_fmt_mp->width += 16;
+-		if (pix_fmt_mp->height < tmp_h &&
+-			(pix_fmt_mp->height + 32) <= max_height)
+-			pix_fmt_mp->height += 32;
 -
- void __iomem *mtk_vcodec_get_reg_addr(struct mtk_vcodec_ctx *data,
- 					unsigned int reg_idx)
- {
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-index b999d7b84ed1..87c3d6d4bfa7 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_util.h
-@@ -25,54 +25,29 @@ struct mtk_vcodec_fb {
- struct mtk_vcodec_ctx;
- struct mtk_vcodec_dev;
- 
--extern int mtk_v4l2_dbg_level;
--extern bool mtk_vcodec_dbg;
+-		mtk_v4l2_debug(0,
+-			"before resize width=%d, height=%d, after resize width=%d, height=%d, sizeimage=%d %d",
+-			tmp_w, tmp_h, pix_fmt_mp->width,
+-			pix_fmt_mp->height,
+-			pix_fmt_mp->plane_fmt[0].sizeimage,
+-			pix_fmt_mp->plane_fmt[1].sizeimage);
 -
-+#undef pr_fmt
-+#define pr_fmt(fmt) "%s(),%d: " fmt, __func__, __LINE__
- 
- #define mtk_v4l2_err(fmt, args...)                \
--	pr_err("[MTK_V4L2][ERROR] %s:%d: " fmt "\n", __func__, __LINE__, \
--	       ##args)
+-		pix_fmt_mp->num_planes = fmt->num_planes;
+-		pix_fmt_mp->plane_fmt[0].sizeimage =
+-				pix_fmt_mp->width * pix_fmt_mp->height +
+-				((ALIGN(pix_fmt_mp->width, 16) * 2) * 16);
+-		pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
 -
--#define mtk_vcodec_err(h, fmt, args...)					\
--	pr_err("[MTK_VCODEC][ERROR][%d]: %s() " fmt "\n",		\
--	       ((struct mtk_vcodec_ctx *)h->ctx)->id, __func__, ##args)
-+	pr_err("[MTK_V4L2][ERROR] " fmt "\n", ##args)
+-		if (pix_fmt_mp->num_planes == 2) {
+-			pix_fmt_mp->plane_fmt[1].sizeimage =
+-				(pix_fmt_mp->width * pix_fmt_mp->height) / 2 +
+-				(ALIGN(pix_fmt_mp->width, 16) * 16);
+-			pix_fmt_mp->plane_fmt[2].sizeimage = 0;
+-			pix_fmt_mp->plane_fmt[1].bytesperline =
+-							pix_fmt_mp->width;
+-			pix_fmt_mp->plane_fmt[2].bytesperline = 0;
+-		} else if (pix_fmt_mp->num_planes == 3) {
+-			pix_fmt_mp->plane_fmt[1].sizeimage =
+-			pix_fmt_mp->plane_fmt[2].sizeimage =
+-				(pix_fmt_mp->width * pix_fmt_mp->height) / 4 +
+-				((ALIGN(pix_fmt_mp->width, 16) / 2) * 16);
+-			pix_fmt_mp->plane_fmt[1].bytesperline =
+-				pix_fmt_mp->plane_fmt[2].bytesperline =
+-				pix_fmt_mp->width / 2;
+-		}
++	/* find next closer width align 16, heign align 32, size align
++	 * 64 rectangle
++	 */
++	tmp_w = pix_fmt_mp->width;
++	tmp_h = pix_fmt_mp->height;
++	v4l_bound_align_image(&pix_fmt_mp->width,
++			      MTK_VENC_MIN_W,
++			      max_width, 4,
++			      &pix_fmt_mp->height,
++			      MTK_VENC_MIN_H,
++			      max_height, 5, 6);
++
++	if (pix_fmt_mp->width < tmp_w && (pix_fmt_mp->width + 16) <= max_width)
++		pix_fmt_mp->width += 16;
++	if (pix_fmt_mp->height < tmp_h && (pix_fmt_mp->height + 32) <= max_height)
++		pix_fmt_mp->height += 32;
++
++	mtk_v4l2_debug(0, "before resize w=%d, h=%d, after resize w=%d, h=%d, sizeimage=%d %d",
++		       tmp_w, tmp_h, pix_fmt_mp->width,
++		       pix_fmt_mp->height,
++		       pix_fmt_mp->plane_fmt[0].sizeimage,
++		       pix_fmt_mp->plane_fmt[1].sizeimage);
++
++	pix_fmt_mp->num_planes = fmt->num_planes;
++	pix_fmt_mp->plane_fmt[0].sizeimage =
++			pix_fmt_mp->width * pix_fmt_mp->height +
++			((ALIGN(pix_fmt_mp->width, 16) * 2) * 16);
++	pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
++
++	if (pix_fmt_mp->num_planes == 2) {
++		pix_fmt_mp->plane_fmt[1].sizeimage =
++			(pix_fmt_mp->width * pix_fmt_mp->height) / 2 +
++			(ALIGN(pix_fmt_mp->width, 16) * 16);
++		pix_fmt_mp->plane_fmt[2].sizeimage = 0;
++		pix_fmt_mp->plane_fmt[1].bytesperline =
++						pix_fmt_mp->width;
++		pix_fmt_mp->plane_fmt[2].bytesperline = 0;
++	} else if (pix_fmt_mp->num_planes == 3) {
++		pix_fmt_mp->plane_fmt[1].sizeimage =
++		pix_fmt_mp->plane_fmt[2].sizeimage =
++			(pix_fmt_mp->width * pix_fmt_mp->height) / 4 +
++			((ALIGN(pix_fmt_mp->width, 16) / 2) * 16);
++		pix_fmt_mp->plane_fmt[1].bytesperline =
++			pix_fmt_mp->plane_fmt[2].bytesperline =
++			pix_fmt_mp->width / 2;
+ 	}
  
-+#define mtk_vcodec_err(h, fmt, args...)				\
-+	pr_err("[MTK_VCODEC][ERROR][%d]: " fmt "\n",		\
-+	       ((struct mtk_vcodec_ctx *)(h)->ctx)->id, ##args)
+ 	pix_fmt_mp->flags = 0;
+@@ -432,9 +427,7 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
+ 	}
  
--#if defined(DEBUG)
+ 	q_data->fmt = fmt;
+-	ret = vidioc_try_fmt(ctx, f, q_data->fmt);
+-	if (ret)
+-		return ret;
++	vidioc_try_fmt_cap(f);
  
--#define mtk_v4l2_debug(level, fmt, args...)				 \
--	do {								 \
--		if (mtk_v4l2_dbg_level >= level)			 \
--			pr_info("[MTK_V4L2] level=%d %s(),%d: " fmt "\n",\
--				level, __func__, __LINE__, ##args);	 \
--	} while (0)
-+#define mtk_v4l2_debug(level, fmt, args...) pr_debug(fmt, ##args)
+ 	q_data->coded_width = f->fmt.pix_mp.width;
+ 	q_data->coded_height = f->fmt.pix_mp.height;
+@@ -494,7 +487,7 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
+ 		f->fmt.pix.pixelformat = fmt->fourcc;
+ 	}
  
- #define mtk_v4l2_debug_enter()  mtk_v4l2_debug(3, "+")
- #define mtk_v4l2_debug_leave()  mtk_v4l2_debug(3, "-")
+-	ret = vidioc_try_fmt(ctx, f, fmt);
++	ret = vidioc_try_fmt_out(ctx, f, fmt);
+ 	if (ret)
+ 		return ret;
  
--#define mtk_vcodec_debug(h, fmt, args...)				\
--	do {								\
--		if (mtk_vcodec_dbg)					\
--			pr_info("[MTK_VCODEC][%d]: %s() " fmt "\n",	\
--				((struct mtk_vcodec_ctx *)h->ctx)->id, \
--				__func__, ##args);			\
--	} while (0)
-+#define mtk_vcodec_debug(h, fmt, args...)			\
-+	pr_debug("[MTK_VCODEC][%d]: " fmt "\n",			\
-+		((struct mtk_vcodec_ctx *)(h)->ctx)->id, ##args)
+@@ -572,7 +565,9 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
+ 	f->fmt.pix_mp.quantization = ctx->quantization;
+ 	f->fmt.pix_mp.xfer_func = ctx->xfer_func;
  
- #define mtk_vcodec_debug_enter(h)  mtk_vcodec_debug(h, "+")
- #define mtk_vcodec_debug_leave(h)  mtk_vcodec_debug(h, "-")
+-	return vidioc_try_fmt(ctx, f, fmt);
++	vidioc_try_fmt_cap(f);
++
++	return 0;
+ }
  
--#else
--
--#define mtk_v4l2_debug(level, fmt, args...) {}
--#define mtk_v4l2_debug_enter() {}
--#define mtk_v4l2_debug_leave() {}
--
--#define mtk_vcodec_debug(h, fmt, args...) {}
--#define mtk_vcodec_debug_enter(h) {}
--#define mtk_vcodec_debug_leave(h) {}
--
--#endif
--
- void __iomem *mtk_vcodec_get_reg_addr(struct mtk_vcodec_ctx *data,
- 				unsigned int reg_idx);
- int mtk_vcodec_mem_alloc(struct mtk_vcodec_ctx *data,
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-index 946c23088308..88f2e8f9bfe1 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-@@ -527,7 +527,7 @@ static int alloc_mv_buf(struct vdec_h264_slice_inst *inst,
- 	struct mtk_vcodec_mem *mem = NULL;
- 	unsigned int buf_sz = get_mv_buf_size(pic->buf_w, pic->buf_h);
+ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
+@@ -594,7 +589,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
+ 		f->fmt.pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
+ 	}
  
--	mtk_v4l2_debug(3, "size = 0x%lx", buf_sz);
-+	mtk_v4l2_debug(3, "size = 0x%x", buf_sz);
- 	for (i = 0; i < H264_MAX_MV_NUM; i++) {
- 		mem = &inst->mv_buf[i];
- 		if (mem->va)
-@@ -637,7 +637,7 @@ static int vdec_h264_slice_init(struct mtk_vcodec_ctx *ctx)
- 	if (err)
- 		goto error_deinit;
+-	return vidioc_try_fmt(ctx, f, fmt);
++	return vidioc_try_fmt_out(ctx, f, fmt);
+ }
  
--	mtk_vcodec_debug(inst, "struct size = %d,%d,%d,%d\n",
-+	mtk_vcodec_debug(inst, "struct size = %lu,%lu,%lu,%lu\n",
- 			 sizeof(struct mtk_h264_sps_param),
- 			 sizeof(struct mtk_h264_pps_param),
- 			 sizeof(struct mtk_h264_dec_slice_param),
+ static int vidioc_venc_g_selection(struct file *file, void *priv,
 -- 
 2.17.1
 
