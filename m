@@ -2,144 +2,85 @@ Return-Path: <SRS0=BaWb=QE=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B4A1EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:40:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1AB08C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:51:30 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 6EF7E61357
-	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:40:18 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6EF7E61357
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oss.nxp.com
+	by mail.kernel.org (Postfix) with ESMTPS id C40A461B42
+	for <linux-mediatek@archiver.kernel.org>; Wed, 17 Nov 2021 09:51:29 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C40A461B42
+Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A/5Hr168FC6VaqbM2boN6yKRMZGgRtR/BH72KBTXwlc=; b=dWkLQjhH35NPd1
-	UG4TSvl2dQbneXvOcLhbAQb/5IiCTtDS+yFyeMW6WuxK1C8i2jv4nxVW8zgDkTCMSCTNoVUJAnHjq
-	HS9pE/DM9g9t3XhrQ8IF780tXZgqFrcEFkCXrcWzSDOM26UpnNomh3OWBtZn+brnyGXFPKqiQbw2j
-	TROEhw5QnGY/uABJYWvMsevde/BGTYIO1keFPOhZ6OdyP1rPkWQY+FwONKJVmkBuJuGkc/j02kMfL
-	c0f0+NnBx0SWk6Q4jWcaEOJ+Tpkqb88NillMLd1dEmEMwLpbRtdWW5x2X0+PNhfGWd5XKrb9+/+h5
-	m5HyQV01BCDnm5jpmS2g==;
+	List-Owner; bh=XE/s1Ksrtajfo5b16bX5bs1g2mlbLSeJElTlsGwtdJo=; b=S6yfVMsV6frh3z
+	Q7uDGBiGB3ZLWxCuPYpbS2QeKA8dKkhbmPpai2wBDrlyTjTBEJnfwmGHrGuY+JmwwYjQfrlEP+mEx
+	fFldsd6zJobMdrD95ziR6h1pvc7nvSLBcHE47M5J0fRDJ6CKQkAZYDuK0R2IOR4ELkOR3MmowIIta
+	djrWyYe1VzZYRnvd0gQa0+2WMZ/KrbT04PaDvtHWgtQ+HndOioqdAelxJ4FHLYvNfFwusIGUpoMRa
+	IX9fZP0zXaCV0mxaG8RSrIU8B+SNEAhRc2B86oGrNtGETNipESrioaNZPBn/y8NNZsWeHi2OsKOlN
+	C66gkGnfJP5u21wzz8AQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnHQG-004K1N-7j; Wed, 17 Nov 2021 09:40:08 +0000
-Received: from mail-db8eur05on2065.outbound.protection.outlook.com
- ([40.107.20.65] helo=EUR05-DB8-obe.outbound.protection.outlook.com)
+	id 1mnHb7-004MFj-LM; Wed, 17 Nov 2021 09:51:21 +0000
+Received: from mail-ua1-x932.google.com ([2607:f8b0:4864:20::932])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnHP0-004J61-Lc
- for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:38:52 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MEc9SNJVNVeNgewzUMrWfnVRwnm89LU1VBzU7BYz2BHX9F1Icb7Mact1Cw0pj0p8ROhEB2kdAMUq4ZYnCYMutqO56jRTZ5Piux94W7lNEKgexpawtcFE99PcmXZwbskEjJ58MGmZJItj3wv/zIcHPRPVyy9yVt+Q6EkkaRBJ/vv9Yz3UX4IN0LonXlaHvRcthKArympw3C8jUDogKKsGblMkju6A5gATnsF/WCUzad3tv3r0yPgHJGZ6nnx8drEa3X8On0+0D/9GvEuC7bgJqKSerkNO0flG3sqxrCeeWyVlIhc3cPsIvl3u9UrO/ZI9M3yTs2QQq+3/6hvo9XNO8w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9qA+AKWCWzOd4laj79fwXpT4DlJBt/zadXCV9ubK1x4=;
- b=B0Lj16ClSGrCd3CMHwl5iT1Uh3rxFwK6vclxPJqsaJUgR4FyMzmGo+64i+1u9dzDsL85VJdiU0wJ9XT8WYMg8J0ef/AgkTkqJjqGOYlOaINL0KICXEBQcqsahdghEwjOclmuRDie/jisC9kt3fTh4VTvYt5/h3EXgxoiuc5Q0k6WPswTAGupx++NDLuAs+9qfsSlrtitQ2xF5nK3kQYKeezIxX3BjyLwA8NQvdj9+MwqlAhqmocYda2+3mD47ITth5f7H742bGBqYrVwH5mS1lNSE1U4kS+kcRgy5o6AqobcBssGVH3pYdqBIoc1gVoqQ+8ZG3eRA8X8b03o+4pYaQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
- s=selector2-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9qA+AKWCWzOd4laj79fwXpT4DlJBt/zadXCV9ubK1x4=;
- b=Ik1Ay2MVX5tyqMHgT0NlPnORamMrFqb47j/GbE0crJ0Uk584f/edyj+2TqzsY1nbQ5FchWZ5xLez1RCcD9X65Bc2u85kSzPhV34f/urj+HjOeecr/lslS/fI0Gp7RjfqFWWv3K/vR5Ga9A+E3ey9tUFUO5lx1/ecI1sIAmLL8e8=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from VI1PR04MB5151.eurprd04.prod.outlook.com (2603:10a6:803:61::28)
- by VI1PR04MB3039.eurprd04.prod.outlook.com (2603:10a6:802:b::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.16; Wed, 17 Nov
- 2021 09:38:46 +0000
-Received: from VI1PR04MB5151.eurprd04.prod.outlook.com
- ([fe80::85af:f8be:aa99:ba5f]) by VI1PR04MB5151.eurprd04.prod.outlook.com
- ([fe80::85af:f8be:aa99:ba5f%3]) with mapi id 15.20.4690.027; Wed, 17 Nov 2021
- 09:38:46 +0000
-From: Daniel Baluta <daniel.baluta@oss.nxp.com>
-To: broonie@kernel.org,
-	alsa-devel@alsa-project.org
-Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
- daniel.baluta@nxp.com, daniel.baluta@gmail.com, AjitKumar.Pandey@amd.com,
- Balakishore.pati@amd.com, vsreddy@amd.com, Julian.Schroeder@amd.com,
- vishnuvardhanrao.ravulapati@amd.com, linux-kernel@vger.kernel.org,
- yc.hung@mediatek.com, linux-mediatek@lists.infradead.org
-Subject: [PATCH 21/21] ASoC: SOF: mediatek: Add DSP system PM callback for
- mt8195
-Date: Wed, 17 Nov 2021 11:37:34 +0200
-Message-Id: <20211117093734.17407-22-daniel.baluta@oss.nxp.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
-References: <20211117093734.17407-1-daniel.baluta@oss.nxp.com>
-X-ClientProxiedBy: AM3PR03CA0060.eurprd03.prod.outlook.com
- (2603:10a6:207:5::18) To VI1PR04MB5151.eurprd04.prod.outlook.com
- (2603:10a6:803:61::28)
+ id 1mnHav-004MC3-5a
+ for linux-mediatek@lists.infradead.org; Wed, 17 Nov 2021 09:51:11 +0000
+Received: by mail-ua1-x932.google.com with SMTP id ay21so4480857uab.12
+ for <linux-mediatek@lists.infradead.org>; Wed, 17 Nov 2021 01:51:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6oHxCHdQqk1gh3FI9+RJPzkWEREzp+khMC/c8pj77v0=;
+ b=YcoRJxjwrtTyqW2qbj7FcIlHAZHzUpSqJD3/jwPU17gBIgwXX8bClDU4AGEa6CsGcW
+ SQPY9DvEJiMxr34YDITdg7chA6y4IfS+AOYqb5HtS1uOYLY+YlJKF15ocuXn1w6hwBdP
+ ZubXsmXuLlLks+zSTc8HlZycwcUQQsDPqCt20e+vf/2uxEKVZu/CFMw8UuyiVyH6ZGuE
+ 0ouB7pwpJezqDbAR9M9NO8rm2C8R0AmOmRWNArG2q0Nk9ePetXThkZcDAdHCtycJ7v0C
+ ggR242uBjrTkh9wKQPObQ37WFcMYKxYxXmf5N3rdrthB/ZwGA2gk0gqIVPgQsynKWtWo
+ PUMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6oHxCHdQqk1gh3FI9+RJPzkWEREzp+khMC/c8pj77v0=;
+ b=5LeqVHxEo58WsME6cout13uSr9Zxvp+CjQOoL+2aMYyVtiOq1JvhzkORT3SHtJJoN9
+ X1MWjTiOsV3XBJk+4x3dP+UDdMJY5jC5rW8hZEUqrqIHgkpf0bdtRSfBsjUtq1lYaecv
+ OoY0ErkTbMbJ60xb5dbkyS+Qt1yD34ZYqYCR3ImxCn+3E47yRagzonsccQSdL0rw3lUu
+ V+EZ2Ydce6vj9whxFyEhiJoBWbkxkNM4hbSpHahVaTBSHmCqw/vslhwY17Q3LqO/x8ol
+ BEAMfAdoA+nhni1/Za2WEsPAytVJvi6rbGZfiI+Gmd1qSSUQy8LxJL0VSspujQERii0t
+ HO+A==
+X-Gm-Message-State: AOAM5317Fx4nZrK4/hYbtEkL+vxch/aUecclkqq7w3rRuzD0emEZVQat
+ l29pTVs3BRTARqKhuw21/JlpKd4Pisx76PIiQ7CKeA==
+X-Google-Smtp-Source: ABdhPJxSidgB1PW9yP9u9BdHEQuv2rP1drUYCBdYh8is5tDtH4wIN5ovaQZc3DJK07EXhI6g5X/uImaIFGytGxx1GLM=
+X-Received: by 2002:ab0:6998:: with SMTP id t24mr21846787uaq.60.1637142666659; 
+ Wed, 17 Nov 2021 01:51:06 -0800 (PST)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost.localdomain (2a02:2f08:5706:b700:22bb:b216:ffff:73e1)
- by AM3PR03CA0060.eurprd03.prod.outlook.com (2603:10a6:207:5::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4690.19 via Frontend
- Transport; Wed, 17 Nov 2021 09:38:44 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7d3d8225-4339-4d01-8a4d-08d9a9ae0caf
-X-MS-TrafficTypeDiagnostic: VI1PR04MB3039:
-X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-Microsoft-Antispam-PRVS: <VI1PR04MB3039994C2A00140B4D40B35DB89A9@VI1PR04MB3039.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6790;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: VM1Ni1qqInNFquIlVq4wSafqdaeNYiApKz+wBG1bYC8GhPNwi8WkHgi9MBaPmwrP91x0XDfCbPFE1fGBmhWlPxCpS9A5Bere1waD4FgUHpyUUbAuxT80/w8tMAlDcMVyEw8KE6Y1+mN5/XxP4GQFPcYFlpbqUlv/51XqR0XEyvvmU2m/VdM5cbDEmxcV52SBFaDZRQOOz+5oANx/sxMiHmvMF2DwLluBNtyDhuP9kwWai4mVNzhOy00Z7dVge1CD7kAIoewjHv0yCFEFxUi3C2lQ8I2oPeLefbyGsEP7+17mvPs87jSquumboItV7GjycwgyfhiBqjx8QdW08Ba8l1z9Ux5lCbUxVkHU4KEqBf69Ga8mqMegSTgrykx26rX65h8mqlCIueQVxplsfRt354bNOt7AAm9Avj061XIliOpTagryOm+12ICAtbR8qh5xWfKL+nDD1dBGAf4juvRWz1YokA0A++Iiwkb3wxFQfnd/gZ+5/T95ehkCfCRxjv/j6A6JHRb4sg/K6bnrSMiyy+OlWjJtWAi3PdJy1ch9gibr35vSkeqZO18nomUjxVxBN1rL4EZBeSfa8NgWscotSa15UVX9soAcXEZYbN0A84sPIxY8ABr7+y1vfdj0EgdXKY5GhI3EqOQRXHvdnY61WQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:VI1PR04MB5151.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(66476007)(186003)(6666004)(44832011)(52116002)(6486002)(5660300002)(66556008)(6512007)(6506007)(4326008)(7416002)(2616005)(8936002)(8676002)(1076003)(2906002)(66946007)(83380400001)(508600001)(86362001)(316002)(38100700002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fUwRz3VSlUnbXLwoG/tAB5GUuN1VzmTARqxpnKo7ezc9CPdJ4MsRM1CdPxLY?=
- =?us-ascii?Q?xgfHK7thisfBZPWgwdneHhoAlURiIXcptCLxh712fZkxYEZXOSR6DvkoaEBN?=
- =?us-ascii?Q?qlw23+PSs/iB8dtkZXvWLXl/QegTgStcOBID+KX+Yp0oGNaa+sJvDN+tFCet?=
- =?us-ascii?Q?h2x3kkInBwBtYtiD5mrQMbGh7SnapMP7o5A7A6CvEr4tO/Aag81BjXbV4kZk?=
- =?us-ascii?Q?efB5oA/Ih65ilplUS2BXLEzwdMA6Kl1id/vwp7GV6mEIo1j7G3HFoZwlTOHj?=
- =?us-ascii?Q?Xfw0si3mNjQJC5wjymAsqRjJWRiE57+tw+Ve6FyFbiTKjYvDZgI7y+WkJcSm?=
- =?us-ascii?Q?JftkrQvbDSuPponCqRpAhbIigmtuxuDY/mTn5wCBChuksKMjct14uVCn6ECQ?=
- =?us-ascii?Q?KgYemONu8/H/pHg8QtXdjSDdSIhP6cxw2blEOGnqSwtR+bK9/awEb9USwRBN?=
- =?us-ascii?Q?E8s+p45fTg6VDq088blVZ3+XYPVTRBLxAMD5W/22WHu9yO90B3hAlCtISPN0?=
- =?us-ascii?Q?dbQsQe5iYM5NK7NX/4kTlmBdSo4Og+hTsu0wRNPc7h6tmT97qUiIqunDtKhe?=
- =?us-ascii?Q?KRwk1s6+XY2edRvGFXRWLM+yFEN1vl6nSvEtB045FIoP6qr6G6x26GfiIW04?=
- =?us-ascii?Q?F3aREd97M+MIvBbJScrkR4VjfHr1WoMiPLwJfRzt1VzEQ4yRvp2S2EAooeAL?=
- =?us-ascii?Q?D6qsNnx2zhNiXK9kxGjBbZyhpSwfARVuCcZOeMVRmuhSKAGZHgzcGvdYdUQq?=
- =?us-ascii?Q?1/UOrBtCm6XCwUmiXo2rxj+5dGbsDSP1/ofp6OgVWGMR1/x9J9k/149skC+8?=
- =?us-ascii?Q?2iwMnE7trDbMlrbMhqFcty8ZpmdOa9pWrcVLA8L1S6ZdfrghMCy50FaYiceO?=
- =?us-ascii?Q?J44sYjo7dq1PWUiW/hlyjcXMCyhqhA9VacBBNd9NhEuUV5xbj1aCr25jIPEt?=
- =?us-ascii?Q?7+p4LXhyRWoPmPcx/aD+ZIrL2es65S7J0i/m+QrPOyMVviusPP9EdHdQq9RN?=
- =?us-ascii?Q?zzWwPpE3b6UuYOHydfYioiIPvWlq+Smnw8atV9dDMLKx+Usm9zv/EVIPuwj1?=
- =?us-ascii?Q?F3VZi5zYz02f/WCQ4Hg8RXy4QZLD542HWrLsDXd1iFDivwWO2Yu6w2oVjVOC?=
- =?us-ascii?Q?6R+z6gcXyQn0w4zF/vqzr52pg4jidPRfsr6HXwFsIAr5iJvvV6JJg8G20t4h?=
- =?us-ascii?Q?anF/ASud4dHwI8YDF+XhW4KfA4JVfsOoPUOvverXFzIv99C8aQ5bLn1ysdw8?=
- =?us-ascii?Q?HStp5h7XxgUZbOSUq5XnhI2m3PpymIfMigTV96l3g+LjhGMe7tOaLvQeXfPf?=
- =?us-ascii?Q?lMkeXWtigqIqrORhVbb0GPqgU/rEeHju9sbUo3q0fQumLiYcW/GPz76qigqX?=
- =?us-ascii?Q?DMVdLst7jZVVklXt+VV9oeIHkwSccDALyhNnABs3FBlKL+KUGieJV04uVCSx?=
- =?us-ascii?Q?ugyZjbDYgGyG/eJJJUZJnRBLqlSfL/9jnEADXDcUVYfYgdVdeDQE3/NzLGle?=
- =?us-ascii?Q?oGbhv/GkNETZCbmZ/cNP+i/aOnN3wWFEOaVBdX+EnUnYAnCHKaq+KYTD4Ha9?=
- =?us-ascii?Q?GebVxDltYdXVAYdxTTDnEEvwuFsUvWF5EqUpy7lSNPkFd43wVIB0uuo4FnMc?=
- =?us-ascii?Q?FqybEjISwpcEOqxOE05AmvLS5Idv2OjVQ6nfQjLasBrn+Hhdw3IHXUTUSEMy?=
- =?us-ascii?Q?Vb2NvSQt4gsLQs+0DOD0SxzW+ig=3D?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7d3d8225-4339-4d01-8a4d-08d9a9ae0caf
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5151.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Nov 2021 09:38:45.9915 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: OsOo6R9iDsrFx1yF54xjK+o/vahOQIOSWOmPGIcdUf4f4nTTlUhFWgWtPW3Eidlmu/Ep81A0sSao10DU2ZKfdQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB3039
+References: <CAKD1Yr02W-WuLx8ouvP+wTtkxeyTBW_dp1deo9sim7wfLA2LXQ@mail.gmail.com>
+ <20211117071732.7455-1-rocco.yue@mediatek.com>
+ <CAKD1Yr3CMPWMmNNU6YvpBiaXVttS9T8qGVgmddijYfLSfK-Rog@mail.gmail.com>
+In-Reply-To: <CAKD1Yr3CMPWMmNNU6YvpBiaXVttS9T8qGVgmddijYfLSfK-Rog@mail.gmail.com>
+From: =?UTF-8?Q?Maciej_=C5=BBenczykowski?= <maze@google.com>
+Date: Wed, 17 Nov 2021 01:50:54 -0800
+Message-ID: <CANP3RGdrhrSYOnRRq1r6Uq6a4hK90f_KsUW2VOYQGW0GHMv-oQ@mail.gmail.com>
+Subject: Re: [PATCH net-next] ipv6: don't generate link-local addr in random
+ or privacy mode
+To: Lorenzo Colitti <lorenzo@google.com>
+Cc: Rocco Yue <rocco.yue@mediatek.com>, dsahern@gmail.com, 
+ "David S . Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, 
+ Hideaki YOSHIFUJI <yoshfuji@linux-ipv6.org>, David Ahern <dsahern@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, rocco.yue@gmail.com, 
+ chao.song@mediatek.com, yanjie.jiang@mediatek.com, kuohong.wang@mediatek.com, 
+ Zhuoliang.Zhang@mediatek.com, markzzzsmith@gmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_013850_778667_30BC0B67 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20211117_015109_234390_78F7A8EA 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,81 +97,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: YC Hung <yc.hung@mediatek.com>
+> Can't 4 be the same as 3? The same netlink message can configure both
+> the addr_gen_mode and the token, no?
+>
+> It seems to me that the following should work, and would be much simpler.
+>
+> 1. Bring the interface down. All addresses are deleted.
+> 2. Send a netlink request to set addr_gen_mode RANDOM_LL_TOKEN or
+> PRIVACY_LL_TOKEN and set the token.
+> 3. Bring the interface up. Autoconf runs. The link-local address is
+> generated from the token. An RS is sent. When the RA is received, the
+> global address is generated using RFC 7217 or randomly.
 
-Add DSP system PM callback for suspend and resume
-
-Signed-off-by: YC Hung <yc.hung@mediatek.com>
-Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Reviewed-by: Daniel Baluta <daniel.baluta@nxp.com>
-Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
----
- sound/soc/sof/mediatek/mt8195/mt8195.c | 42 ++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
-
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index 5bfae9379ac8..40e5a25875a6 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -311,6 +311,44 @@ static int mt8195_dsp_remove(struct snd_sof_dev *sdev)
- 	return 0;
- }
- 
-+static int mt8195_dsp_suspend(struct snd_sof_dev *sdev, u32 target_state)
-+{
-+	struct platform_device *pdev = container_of(sdev->dev, struct platform_device, dev);
-+	int ret;
-+
-+	/* stall and reset dsp */
-+	sof_hifixdsp_shutdown(sdev);
-+
-+	/* power down adsp sram */
-+	ret = adsp_sram_power_on(&pdev->dev, false);
-+	if (ret) {
-+		dev_err(sdev->dev, "adsp_sram_power_off fail!\n");
-+		return ret;
-+	}
-+
-+	/* turn off adsp clock */
-+	return adsp_clock_off(sdev);
-+}
-+
-+static int mt8195_dsp_resume(struct snd_sof_dev *sdev)
-+{
-+	int ret;
-+
-+	/* turn on adsp clock */
-+	ret = adsp_clock_on(sdev);
-+	if (ret) {
-+		dev_err(sdev->dev, "adsp_clock_on fail!\n");
-+		return ret;
-+	}
-+
-+	/* power on adsp sram */
-+	ret = adsp_sram_power_on(sdev->dev, true);
-+	if (ret)
-+		dev_err(sdev->dev, "adsp_sram_power_on fail!\n");
-+
-+	return ret;
-+}
-+
- /* on mt8195 there is 1 to 1 match between type and BAR idx */
- static int mt8195_get_bar_index(struct snd_sof_dev *sdev, u32 type)
- {
-@@ -382,6 +420,10 @@ const struct snd_sof_dsp_ops sof_mt8195_ops = {
- 	.drv = mt8195_dai,
- 	.num_drv = ARRAY_SIZE(mt8195_dai),
- 
-+	/* PM */
-+	.suspend	= mt8195_dsp_suspend,
-+	.resume		= mt8195_dsp_resume,
-+
- 	/* ALSA HW info flags */
- 	.hw_info =	SNDRV_PCM_INFO_MMAP |
- 			SNDRV_PCM_INFO_MMAP_VALID |
--- 
-2.27.0
-
+Could you simply manually add an ipv6 link local address to the
+interface while it is down (ip -6 addr add fe80::..../64 dev X), then
+bring the interface up (ip link set dev X up)...
+All that would need to happen is the automatic link local generation
+would need to be suppressed if there's already a link local ip
+configured - which sounds like a good idea anyway, since why have two?
+(btw. even a manually added link local ip will get deleted when the
+interface gets brought back down)
 
 _______________________________________________
 Linux-mediatek mailing list
