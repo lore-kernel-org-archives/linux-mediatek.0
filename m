@@ -2,61 +2,56 @@ Return-Path: <SRS0=mmGE=QF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B5BAAC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 19:08:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 2055EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 19:47:37 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 7BFCD61179
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 19:08:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 7BFCD61179
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=kernel.org
+	by mail.kernel.org (Postfix) with ESMTPS id DCA9F61A56
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 19:47:36 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org DCA9F61A56
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ucw.cz
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hmZ8607J11zOLFJuN1I7xyLMWfXYih6I+oM3XevcmhA=; b=RdQPRWUYqn9FIj
-	AlmDVs/2XZI5/3yG+sUs6CzDhcsQfdw/WRuoRc6EUqiNV4CNO1fk1bSHGKtERSYzkUs4XSJGuLpI5
-	zu8t7E1K923MT9S+bcQP+IiYn16i3zNF9IhqbILFvD/7BByC4g5Vi8ANlkEyt2VCNqhKcF79VFPj/
-	v8a3IIAMQ1QJsk8FLnN5vq1/x3GRNWmDmEcZ37Vn0tZAin2e+vRsL64JrjYGgTTKBC79JvXcIOWOZ
-	v5EpcqXSkuhf4xXrmv7iCwujZOXt3bb2CLF2L9HfUFWYxb+NG8WFV8JYsdJTJmYNzWAHQzMLcgwWq
-	CiN7194NQaKqWyjuuC+g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=42OU5VM4OT2NRYu+nSOws/B1w8Vtx8UuyPe2tfSKHd4=; b=uUz8ZcdgP6N91VrNfqBJhXFKJK
+	cFy9C/IYZ8gQtkQhm7+F4+DffCOuXHbrOSW+F8OODmLKHzg40yK2hv9fzQtDo7o2+EJ/VRowYeu9i
+	mjX3fQjdCFsrTUlBCn42YKxWz4TXQa8TFRcwc7yQrqxOTzDXAdWCcPVqCGXj2OHOJ9PsG8MWO095c
+	3nhDcuIzkfi2oagF1jSsXyUoGu4y6UEv8Rm0Qx72jmLrOQl3+XHncpkvBXOY+1fuQzgdjJOwgwEkO
+	7IkrDgXoSePC79VRZ1QCBNZ1+MdkDxiGSkAEoFo19vVUogd0UwUGWZvcsaGiM91SQF1a4Butxb2hL
+	sQARIOpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnmm2-008iWo-6m; Thu, 18 Nov 2021 19:08:42 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mnnNX-008mBy-5W; Thu, 18 Nov 2021 19:47:27 +0000
+Received: from jabberwock.ucw.cz ([46.255.230.98])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnmjd-008hna-9P
- for linux-mediatek@lists.infradead.org; Thu, 18 Nov 2021 19:06:14 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id F38AF61AFF;
- Thu, 18 Nov 2021 19:06:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637262373;
- bh=1p374rqm2yFecVw91tYzgWhh9jitE6ft6AgdASjdY8E=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=DLzxW8cFoNvz9pU5J9KMn16xzIERY5PXKT0NMtWYdulf926rXwl6G+IeQs5fJ3Oea
- LbQ6DtBq++T+CpGi80H5nmKHdTDcVhiPrc50EgBnSqayfxSECvQexLF2OsesULCy2/
- RzsnElCPB8/Vt0z7cl4WLBxU9hrEm3OjkFSqFMnZStu9qmVHdoJ+6JYPC/FFF0RZr3
- VHnmx6rJWWm10cwR5kNryAinQpkKCRYMdHTN4xh8ao2rc4vT8IlKsXKVujP3tAM9oa
- GePClmr5Y1dT27Ce1CpSPXhfZ2NjxjZFv+GIN/x/uOsNLIlolEv4mhOb0/pMMSyPHj
- ZkGuvCTAxU3NA==
-From: Mark Brown <broonie@kernel.org>
-To: alsa-devel@alsa-project.org, Daniel Baluta <daniel.baluta@oss.nxp.com>
-Cc: linux-mediatek@lists.infradead.org, pierre-louis.bossart@linux.intel.com,
- yc.hung@mediatek.com, daniel.baluta@gmail.com, lgirdwood@gmail.com,
- daniel.baluta@nxp.com, linux-kernel@vger.kernel.org
-In-Reply-To: <20211118100749.54628-1-daniel.baluta@oss.nxp.com>
-References: <20211118100749.54628-1-daniel.baluta@oss.nxp.com>
-Subject: Re: [PATCH v2 0/8] ASoC: SOF: Add support for Mediatek MT8195
-Message-Id: <163726237074.96213.1724001387708213857.b4-ty@kernel.org>
-Date: Thu, 18 Nov 2021 19:06:10 +0000
+ id 1mnnNJ-008m8S-W8; Thu, 18 Nov 2021 19:47:15 +0000
+Received: by jabberwock.ucw.cz (Postfix, from userid 1017)
+ id 73D8D1C0B76; Thu, 18 Nov 2021 20:47:08 +0100 (CET)
+Date: Thu, 18 Nov 2021 20:47:07 +0100
+From: Pavel Machek <pavel@ucw.cz>
+To: cy_huang <u0084500@gmail.com>
+Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, gene.chen.richtek@gmail.com,
+ linux-leds@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ gene_chen@richtek.com, wilma.wu@mediatek.com,
+ benjamin.chao@mediatek.com, ChiYuan Huang <cy_huang@richtek.com>
+Subject: Re: [PATCH] dt-bindings: leds: Replace moonlight with indicator in
+ mt6360 example
+Message-ID: <20211118172232.GB30480@amd>
+References: <1637133726-6581-1-git-send-email-u0084500@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <1637133726-6581-1-git-send-email-u0084500@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_110613_372021_F779C726 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20211118_114714_214556_5BFA0DDE 
+X-CRM114-Status: UNSURE (   8.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,66 +63,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============1638253356010652160=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 18 Nov 2021 12:07:41 +0200, Daniel Baluta wrote:
-> From: Daniel Baluta <daniel.baluta@nxp.com>
-> 
-> This adds sound open firmware driver support for MT8915 platform.
-> 
-> Changes since v1:
-> - removed AMD patches since they were already applied
-> - fixed compilation error reported by Mark, generated by the fact that
->   mt8195_run was declared too early in the series.
-> 
-> [...]
 
-Applied to
+--===============1638253356010652160==
+Content-Type: multipart/signed; micalg=pgp-sha1;
+	protocol="application/pgp-signature"; boundary="mYCpIKhGyMATD0i+"
+Content-Disposition: inline
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Thanks!
+--mYCpIKhGyMATD0i+
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-[1/8] ASoC: SOF: mediatek: Add mt8195 hardware support
-      commit: 32d7e03d26fd93187c87ed0fbf59ec7023a61404
-[2/8] ASoC: SOF: tokens: add token for Mediatek AFE
-      commit: e6feefa541f309afed8aa54431681261bc57bcde
-[3/8] ASoC: SOF: topology: Add support for Mediatek AFE DAI
-      commit: b72bfcffcfc11858a8fc92998733372606db485e
-[4/8] ASoC: SOF: mediatek: Add fw loader and mt8195 dsp ops to load firmware
-      commit: b7f6503830cd8f3f7076635409460861b5ff6310
-[5/8] ASoC: SOF: Add mt8195 device descriptor
-      commit: 24281bc2bf1884e665dfbcd17aaaabbc5872e501
-[6/8] ASoC: SOF: mediatek: Add dai driver dsp ops callback for mt8195
-      commit: 24d75049c5ed5193bd12ce0d43c355c4ef74a7fa
-[7/8] ASoC: SOF: mediatek: Add mt8195 dsp clock support
-      commit: 424d6d1a9a51b7e6ab397132700a237082d64cf4
-[8/8] ASoC: SOF: mediatek: Add DSP system PM callback for mt8195
-      commit: 163fa3a5927e1d8f948ea1fc16c897944933a06a
+Hi!
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+> Replace moonlight with indicator in mt6360 example to prevent the below
+> build error:
+>=20
+> Error: Documentation/devicetree/bindings/leds/leds-mt6360.example.dts:114=
+=2E24-25
+> syntax error
+> FATAL ERROR: Unable to parse input tree
+> make[1]: *** [scripts/Makefile.lib:385:
+> Documentation/devicetree/bindings/leds/leds-mt6360.example.dt.yaml]
+> Error 1
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Thanks, applied, hopefully it makes the checker happy.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Best regards,
+							Pavel
+--=20
+http://www.livejournal.com/~pavelmachek
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+--mYCpIKhGyMATD0i+
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Thanks,
-Mark
+-----BEGIN PGP SIGNATURE-----
+
+iF0EABECAB0WIQRPfPO7r0eAhk010v0w5/Bqldv68gUCYZatuwAKCRAw5/Bqldv6
+8mlKAJ90vIi/sBn9q2sGJqCTPZFZYHji5gCglAM3pvcMIDm3gdkd/95Ylnf6wiI=
+=N/xf
+-----END PGP SIGNATURE-----
+
+--mYCpIKhGyMATD0i+--
+
+
+--===============1638253356010652160==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============1638253356010652160==--
+
