@@ -1,121 +1,73 @@
 Return-Path: <SRS0=mmGE=QF=lists.infradead.org=linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@kernel.org>
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 37ACBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 05:55:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 453BDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 06:28:10 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id F1D8661B3D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 05:55:49 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F1D8661B3D
-Authentication-Results: mail.kernel.org; dmarc=fail (p=reject dis=none) header.from=google.com
+	by mail.kernel.org (Postfix) with ESMTPS id 0FB1F61B62
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 06:28:10 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0FB1F61B62
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bJS40aJqUNCcBXELt1FVL76sCtQWSudrlGWeFwVm8WQ=; b=nfwTcByGBMs+Mp
-	MtdrjYX6DtLXiI0gV3zOwXQDAwMTl/GaVvYFhZyU3kqn2jucHBpp/JjIhnw3SjvjnaKpW+h46IfzX
-	y3qRoZMPQ5rqLcjt/6YRq93z5NJMDX/NiBOGCpMiJDko/1AzuTJXM/cZATmZgIJAdL03UFTJavvtl
-	xF1hjc/MjwdvnGyPxRHCLXU9/gQzCQNnJABW3RLGzD5ZAqFDqLVUqtkWb82Xr029M6AMa1TvRofs/
-	oBw3P62RRYS66uVEVz/Htal5umHEfzzROpFhb02FKgo5qfhg49h8b7HFW/AKD0JfM8SrscsK8iddT
-	GVQspDYkIJTQRXEUtsfA==;
+	List-Owner; bh=iwClKnZsF5NMVXr7yOXzm5C5lZsxb057RoMa8kezxmY=; b=aBS6kwQ0jZspO4
+	oiFtzYG5CmU0or9S6rzyqtzBT3G3L+TW7xrfYoLnSxlD5RSfF79F3nLhn9tjTp3vhKlK2Yd/guGEm
+	7O+PHFSU3inRdn52i/uvF9t1yHtz/kGZhYS6Kvb43JbVmV+kNeUkE93vq2djRf6bQrw6IioNIYPro
+	GJoQYtpUIMNrHigK8kQ8cZBFjsMMF4WufVT8VUoN2TrV/Y78fU+tyYTvqZX6z+GCyA7cQBcDPmlhV
+	SPRL/uhoB10FjIPnjvxLm+Yp/brDihGy5/GVAMfUAUwJEvjFJBh2ES+8iu7dhf5l95bWPUuls64GJ
+	jHocVo3KzG+mdjwgMOpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnaOd-006wEC-KN; Thu, 18 Nov 2021 05:55:43 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+	id 1mnatv-006ywQ-HX; Thu, 18 Nov 2021 06:28:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnaOS-006w9c-Qp
- for linux-mediatek@lists.infradead.org; Thu, 18 Nov 2021 05:55:34 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id 200so4412320pga.1
- for <linux-mediatek@lists.infradead.org>; Wed, 17 Nov 2021 21:55:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=M6fU9HCOMXaAwWu55zqsqx8GoNSHTp7qVG4HyvmThLM=;
- b=UHufCLPWyoOczeZ10rpOHREDHnb3KpiCBx3l1fTQm5RvUKFPfoiV3nIdNI1zko70SG
- /rKe8N7G0c0n05WH2WbNalEhgCbNcRUSas8ntyCf23nZUCkn6i9wCai27/OIwEMEJyOv
- ThePhBf4AWclUuOtatuS2nfw5iiz775JEIGgnd/uYe4rXrmhZLY9uVjezatexQW9zJlr
- f/ua1KJym4YKdxaoZO7i5Sm2rmE52E/ZEveHM3ZGMEyCS4qLoJEPYgizR4iGB0ez384E
- 65/JeZxmXvJ2XZODMZNCnYNZLTvHyi9Vh/6xPx5IAmj5cvI8gu2XavIl9F9ECYt2hs+g
- UB9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=M6fU9HCOMXaAwWu55zqsqx8GoNSHTp7qVG4HyvmThLM=;
- b=N0WrgKzUwYH4AC8Gphxm9jboQnwsvKevZ+DZlfpLzGrZHdghcYdI3NIvo7mBkMU1WO
- Z+nuSBt8Lz/plAkYzhQ1vLEXXmHbxUSqVA6n9nrEjaGSXvAaUvmC5xDcl7BJwgaFxCAK
- Qu+VK9uXeg4yuSsh2mm2m1ZW38G4buqqr+cyrIrgrw4zmC7jOI143cdXLiZ79nczzd90
- F0LyWK4NIYrzONci4z08CRoTrF37mK5LFQuYA3rwbVAFUuBC+w4UOhRuIsrA9Vb/bxul
- sAw87UE8/Fp6zbtHSjcDMi+0+mDDMQoj/YXtN77aL7RG17vvX0eR7z7fMQmH/iClzBj1
- K90g==
-X-Gm-Message-State: AOAM531HmYw8tuwjDHEG/8LhXIJL2OnUC2edwAbF/eLoieAU6uwbJ/Ge
- CQyBjcBHJmr0pv9qjVorUFjoFg==
-X-Google-Smtp-Source: ABdhPJw1U92hefuFRAL0GmhDcNMuPQUVRaJ5rI4xhjzGg+pVLc+xkbJYl2Vby+uLLS0FJI1gYbeHXQ==
-X-Received: by 2002:a05:6a00:23c8:b0:49f:e054:84d7 with SMTP id
- g8-20020a056a0023c800b0049fe05484d7mr53924075pfc.50.1637214931490; 
- Wed, 17 Nov 2021 21:55:31 -0800 (PST)
-Received: from google.com ([2401:fa00:1:10:8f8:11d:a96a:74d2])
- by smtp.gmail.com with ESMTPSA id u9sm1547277pfi.23.2021.11.17.21.55.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 17 Nov 2021 21:55:31 -0800 (PST)
-Date: Thu, 18 Nov 2021 13:55:27 +0800
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jassi Brar <jassisinghbrar@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- hsinyi@chromium.org, fshao@chromium.org, nancy.lin@mediatek.com,
- singo.chang@mediatek.com
-Subject: Re: [PATCH 3/3] drm/mediatek: add devlink to cmdq dev
-Message-ID: <YZXqz6XDChwscDC0@google.com>
-References: <20211117064158.27451-1-jason-jh.lin@mediatek.com>
- <20211117064158.27451-4-jason-jh.lin@mediatek.com>
+ id 1mnatg-006yrg-7I; Thu, 18 Nov 2021 06:27:51 +0000
+X-UUID: afb5551a02a54f848c918f69e80da18b-20211117
+X-UUID: afb5551a02a54f848c918f69e80da18b-20211117
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <james.lo@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 202133130; Wed, 17 Nov 2021 23:27:44 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Nov 2021 22:27:42 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 18 Nov 2021 14:27:40 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 18 Nov 2021 14:27:40 +0800
+Message-ID: <f4a008ef426eacc7ec13b8f30e12d6cddc79536e.camel@mediatek.com>
+Subject: Re: [PATCH v15 2/4] dt-bindings: spmi: document binding for the
+ Mediatek SPMI controller
+From: James Lo <james.lo@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, Stephen Boyd <sboyd@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Hsin-Hsiung Wang
+ <hsin-hsiung.wang@mediatek.com>, <linux-mediatek@lists.infradead.org>, "Rob
+ Herring" <robh+dt@kernel.org>
+Date: Thu, 18 Nov 2021 14:27:37 +0800
+In-Reply-To: <1636983755.172933.595907.nullmailer@robh.at.kernel.org>
+References: <20211115042030.30293-1-james.lo@mediatek.com>
+ <20211115042030.30293-3-james.lo@mediatek.com>
+ <1636983755.172933.595907.nullmailer@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211117064158.27451-4-jason-jh.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_215532_937042_0E526C0A 
-X-CRM114-Status: GOOD (  13.32  )
-X-Spam-Score: -15.7 (---------------)
-X-Spam-Report: Spam detection software,
- running on the system "bombadil.infradead.org", 
- has NOT identified this incoming email as spam.  The original
- message has been attached to this so you can view it or label
- similar future email.  If you have any questions, see
- the administrator of that system for details.
- Content preview:  On Wed, Nov 17, 2021 at 02:41:58PM +0800, jason-jh.lin wrote:
- > @@ -158, 6 +159, 7 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
- > mtk_drm_cmdq_pkt_destroy(&mtk_crtc->cmdq_handle); > > if ( [...] 
- Content analysis details:   (-15.7 points, 5.0 required)
- pts rule name              description
- ---- ---------------------- --------------------------------------------------
- -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
- no trust [2607:f8b0:4864:20:0:0:0:52c listed in]
- [list.dnswl.org]
- -0.0 SPF_PASS               SPF: sender matches SPF record
- 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
- -7.5 USER_IN_DEF_DKIM_WL    From: address is in the default DKIM
- white-list
- -7.5 USER_IN_DEF_SPF_WL     From: address is in the default SPF
- white-list
- -0.1 DKIM_VALID_AU          Message has a valid DKIM or DK signature from
- author's domain
- -0.1 DKIM_VALID Message has at least one valid DKIM or DK signature
- 0.1 DKIM_SIGNED            Message has a DKIM or DK signature, not necessarily
- valid
- -0.1 DKIM_VALID_EF          Message has a valid DKIM or DK signature from
- envelope-from domain
- -0.5 ENV_AND_HDR_SPF_MATCH  Env and Hdr From used in default SPF WL
- Match
- -0.0 DKIMWL_WL_MED          DKIMwl.org - Medium trust sender
+X-CRM114-CacheID: sfid-20211117_222748_302072_3FC3CE3B 
+X-CRM114-Status: GOOD (  19.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,34 +84,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 17, 2021 at 02:41:58PM +0800, jason-jh.lin wrote:
-> @@ -158,6 +159,7 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
->  	mtk_drm_cmdq_pkt_destroy(&mtk_crtc->cmdq_handle);
+On Mon, 2021-11-15 at 07:42 -0600, Rob Herring wrote:
+> On Mon, 15 Nov 2021 12:20:28 +0800, James Lo wrote:
+> > This adds documentation for the SPMI controller found on Mediatek
+> > SoCs.
+> > 
+> > Signed-off-by: James Lo <james.lo@mediatek.com>
+> > Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
+> > ---
+> >  .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      | 76
+> > +++++++++++++++++++
+> >  1 file changed, 76 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+> > 
+> 
+> My bot found errors running 'make DT_CHECKER_FLAGS=-m
+> dt_binding_check'
+> on your patch (DT_CHECKER_FLAGS is new in v5.13):
+> 
+> yamllint warnings/errors:
+> 
+> dtschema/dtc warnings/errors:
+> /builds/robherring/linux-dt-
+> review/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-
+> pmif.example.dt.yaml: spmi@10027000: reg: [[268595200, 3584],
+> [268603392, 256]] is too long
+> 	From schema: /builds/robherring/linux-dt-
+> review/Documentation/devicetree/bindings/spmi/spmi.yaml
+> /builds/robherring/linux-dt-
+> review/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-
+> pmif.example.dt.yaml: spmi@10027000: reg: [[268595200, 3584],
+> [268603392, 256]] is too long
+> 	From schema: /builds/robherring/linux-dt-
+> review/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+> 
+> doc reference errors (make refcheckdocs):
+> 
+> See 
+> https://urldefense.com/v3/__https://patchwork.ozlabs.org/patch/1555114__;!!CTRNKA9wMg0ARbw!0y2jw2KWA7dbbFP4B9bbycyT0PxWYrQ0KAUovVW46dRLqIfXI2maZrfVt1KSWIC1$
 >  
->  	if (mtk_crtc->cmdq_client.chan) {
-> +		device_link_remove(mtk_crtc->drm_dev, mtk_crtc->cmdq_client.chan->mbox->dev);
->  		mbox_free_channel(mtk_crtc->cmdq_client.chan);
->  		mtk_crtc->cmdq_client.chan = NULL;
->  	}
-[...]
-> @@ -956,6 +959,16 @@ int mtk_drm_crtc_create(struct drm_device *drm_dev,
->  	}
->  
->  	if (mtk_crtc->cmdq_client.chan) {
-> +		struct device_link *link;
-> +
-> +		/* add devlink to cmdq dev to make sure suspend/resume order is correct */
-> +		link = device_link_add(dev, mtk_crtc->cmdq_client.chan->mbox->dev,
-> +				       DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-> +		if (!link) {
-> +			dev_err(dev, "Unable to link dev=%s\n",
-> +				dev_name(mtk_crtc->cmdq_client.chan->mbox->dev));
-> +		}
-> +
+> 
+> This check can fail if there are any dependencies. The base for a
+> patch
+> series is generally the most recent rc1.
+> 
+> If you already ran 'make dt_binding_check' and didn't see the above
+> error(s), then make sure 'yamllint' is installed and dt-schema is up
+> to
+> date:
+> 
+> pip3 install dtschema --upgrade
+> 
+> Please check and re-submit.
+> 
 
-If device_link_add() failed, doesn't mtk_drm_crtc_create() need to return an error and exit?
+Dear Rob,
 
-OTOH, if device_link_add() failed, won't it bring any side effects to call device_link_remove()?
+Due to [2/4] depends on [1/4], 
+
+Can I only send [1/4] first ?
+
+(After [1/4] is approved, and I will send [2/4][3/4][4/4] as V16.)
+
+Or, could you please give us other suggestion ?
+
+Many thanks
+
 
 _______________________________________________
 Linux-mediatek mailing list
