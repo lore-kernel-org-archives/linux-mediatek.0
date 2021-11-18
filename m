@@ -2,91 +2,91 @@ Return-Path: <SRS0=mmGE=QF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 4F111C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 14:06:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 37F8AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 14:35:32 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 1B6E961AE2
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 14:06:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 1B6E961AE2
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
+	by mail.kernel.org (Postfix) with ESMTPS id F28A16115B
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 14:35:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org F28A16115B
+Authentication-Results: mail.kernel.org; dmarc=none (p=none dis=none) header.from=ndufresne.ca
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wX5/2kglMgjkTKXecNGaWIGBQI2nlSI5Mh1UTkl1TF0=; b=dbsQatyKV9u9k3
-	uGsS6HqJjEcc6gkKaNNfmMBnqccMWOngLZ7o3kKA1VdoRj77f8lmGqOmeaO8pzhvrrAzfyEf3WNH7
-	SI8kFu0iPMb05ygo7YeDPnbWuN1e4zGd7/b7qhfhhtSW1T7jZ83ruiFiUmog1twwwWUHZwSghK1UW
-	7uq2ikkWYcM7KVQd/NqQqtXa27C/J/UG+E7PTMnBLVyxjCahc2yWyh3JWUNVTlM+TiCMIzFB7Asao
-	iI+/KvG1fC0T+0aaC56b5RrrihUjKAgHhnGo7cmBJTIKRWrx9rKtdIIWHhy9yh54DSJrDLd2lFRRg
-	bvMWam6L/YnoOOn/B3vg==;
+	List-Owner; bh=PK7t5UWC32ku6z6EeZ+LPP5vIUbxziFoWicgPlwtgjg=; b=jnvt2DQnXLEYB5
+	NZuued85NoAJuAnFwGlTTHIeQGnr28bfRPHclrmtv5NSGYAewWV0spCGEpbY6+0LVosNWIPfbF0AD
+	+4VBkW+Zkz/tT1YJfiSjYpQPSkNhes7GYUrW97sXv70Xz9JJcNEbkj836VJbD0KeevLn4EcJ9wrn9
+	gx1iBYG3l1y0iRxEoxCN2kj7ynFiUxV9gAVhGJzafrw3GN2t4B3pUAw/QlnZsWSH1DdZzgR61cloA
+	KlrZg00WfCXmb3SvTHZwfVufyeCQhKnNvoUXoWg8DZLs0Hg9KQDEISzK7+iwehYdK9l7379KaWGZv
+	uwB5lMhgo1ZzQx/qL6aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mni3C-0080ar-1s; Thu, 18 Nov 2021 14:06:06 +0000
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+	id 1mniVY-0088ky-V3; Thu, 18 Nov 2021 14:35:24 +0000
+Received: from mail-il1-x130.google.com ([2607:f8b0:4864:20::130])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mni2z-0080W4-6t; Thu, 18 Nov 2021 14:05:55 +0000
-Received: by mail-pg1-x531.google.com with SMTP id q12so5415853pgh.5;
- Thu, 18 Nov 2021 06:05:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
- b=jmYMhdUPtwXlk7YxNRrEY39ARKEZzJckayE37oIVTUa4nPyIslNcR6XMOv+FjMg22s
- S/2TjPlBw5NarH79TxwrLYnoAVvWIZ0ppI9goUKtPGdcd0slD6cnqVcnAcmR2QXi6HrW
- 8+7CI+lO7fFXcHknuE0JmXhZ9a5KqyZcFnX4cBMhbOQxCVWJJNIZaMOHFOcmYvr6vB1w
- pltr2d5RvAkg0R5l+YmyEilG8etz39ddfm+YhEh18pVpohNq8By50UkP5pvHXKBFDxd3
- 9HBmaDizaekYvA2ywKzrnX+8OKZJm2K/jRoIj7A8oOVDYNxiGAyi68IMrf7PY9dIX6YG
- g3qQ==
+ id 1mniVV-0088iF-BA
+ for linux-mediatek@lists.infradead.org; Thu, 18 Nov 2021 14:35:22 +0000
+Received: by mail-il1-x130.google.com with SMTP id e8so6629810ilu.9
+ for <linux-mediatek@lists.infradead.org>; Thu, 18 Nov 2021 06:35:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ndufresne-ca.20210112.gappssmtp.com; s=20210112;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=5x6WOv0CKzpTKeVpOGLcGQsyAj8+hoUmQ/3ATUXLpb8=;
+ b=2MjgmgAmYj3REgChVDTJNGL8QHEsE3+PPtuxSgy8vINofW4UBAhQVUcw4UOU+d8RrC
+ a+o1tqz/hCpB5Io69nP6zofw75T3ZIYm6pMlzC58nltc6hmvlzVj+qSxaLROmDMJ3lNl
+ ndAA2rW6VoMneSsjVXvkzg5W4VGDGgyg07TRjaj7XrfUxY2Nny9b2ly8pmP2D03Bmt6E
+ inHnNp6UPRKLQD1ObvQbTZoUFp5y2hhMX1m4dOrgEYK2YxKhF0qegikWVdiB5t1rs1r/
+ ASfO/0pXelf/7EPCloQv1ThLO3dne7GKkbE/GHlaLoncdi8DRfRL2nqvsJYSVPnuPIDx
+ +4eQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=E2kMW7De0WUTFR8R6pbmw+v+DfoEFjJfFZEPmx6TpIo=;
- b=VQL84gFGeirsrQ7qVT1gi2NZxDf29mF+gIoDWyHi49bNIkfPA2aHKKS1C/P1TxZL1C
- jFUH0Bqof8fbY6k0/8Ims0UxNvZlLYr8Zd2DmJNBcmYYOyI/bIzzmnY+BCEi1Njws43a
- 1M+FeF5lp74Q5avdHexjjT5VSqZKmijBWQoCyPX4KC5wmee/oGqjGmUgjvFSx0TJMBjH
- QR0vS/0Uevqj328SzPLSrNk2sg5sp+j29JFAs9Yfp2iD0jLReA0GCmr4bo/CY1WQxwkR
- huVZcZrYkJfFdSGQGS4/7Xf9SSRfz9TRy2vkIlFW3J8YodbTtKmS1QUJ2hPzJ+n8G8gw
- SyVw==
-X-Gm-Message-State: AOAM531hoFV8rOY2qmTk+yNHZpTD7tDeG53ogMsvohKuDUYvD4Ixwy0N
- p2BalS7Odjgu8JMheHFHo2SBboS6QmI5pBgK
-X-Google-Smtp-Source: ABdhPJyV+0mLAR5xy7BosKaOERagEd3ZKVQwr7/RwK2rniXrlnNRhEmZz+hP+50EUyrGGs3nj1a7sw==
-X-Received: by 2002:a63:b0d:: with SMTP id 13mr11503398pgl.190.1637244351963; 
- Thu, 18 Nov 2021 06:05:51 -0800 (PST)
-Received: from localhost.localdomain ([2406:7400:63:2c47:5ffe:fc34:61f0:f1ea])
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=5x6WOv0CKzpTKeVpOGLcGQsyAj8+hoUmQ/3ATUXLpb8=;
+ b=SDQ1pS43jG8PTS7fn/Fe0nPF2adG+3ZwP5NVKb06oIyJodbsk5Vg+JzICf1iWC7N03
+ ecY8muIPzhD2afJI9WEXOVRgbX1t73UPTFuVK/TYFsbKY4wB0CB2ulUNlRsXNdcT2cMo
+ IYo0UbppN9oYLjEtkRWB8zHt1DCp/xzxT/qAOdgJAQIM8F4ftl/1SB4PgfpCRfUKcJXB
+ 0L+kMj1JwyeK/NrEBcDS4GvV6iSQnPx9vp+LnDsvEYQPVKsP35UX4ymwqJ+4WQB9//BG
+ 7+/xwHc9jsdvbbV5UFg5W+WwVCjVXWi3LKgsYHb8sEUSas4KH5hEDdA6f4yL5s7+R3JZ
+ Q/zw==
+X-Gm-Message-State: AOAM532vvr7yKieIfS0iWz+/CO2LAGsl1UDv6O1ZUrp1Q4CrUH274DLy
+ zB5LQfnnRo3unhMufICYdEdmkg==
+X-Google-Smtp-Source: ABdhPJymz8ch3wnyxVw+4PkayYCDASDgAlJyqmmui95LJS0hfJMxUv7Ja6tfW2gCUadmUgqQ6wiY2w==
+X-Received: by 2002:a05:6e02:1d9e:: with SMTP id
+ h30mr16455668ila.138.1637246120025; 
+ Thu, 18 Nov 2021 06:35:20 -0800 (PST)
+Received: from nicolas-tpx395.localdomain (mtl.collabora.ca. [66.171.169.34])
  by smtp.gmail.com with ESMTPSA id
- x14sm2822878pjl.27.2021.11.18.06.05.46
+ f2sm2476811ilu.54.2021.11.18.06.35.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 18 Nov 2021 06:05:51 -0800 (PST)
-From: Naveen Naidu <naveennaidu479@gmail.com>
-To: bhelgaas@google.com
-Cc: Naveen Naidu <naveennaidu479@gmail.com>,
- linux-kernel-mentees@lists.linuxfoundation.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, skhan@linuxfoundation.org,
- Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org (open list:PCIE DRIVER FOR MEDIATEK),
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH v4 07/25] PCI: mediatek: Remove redundant error fabrication
- when device read fails
-Date: Thu, 18 Nov 2021 19:33:17 +0530
-Message-Id: <666127469482f9ca177805ff52aeb7bccb26e4c9.1637243717.git.naveennaidu479@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1637243717.git.naveennaidu479@gmail.com>
-References: <cover.1637243717.git.naveennaidu479@gmail.com>
+ Thu, 18 Nov 2021 06:35:19 -0800 (PST)
+Message-ID: <873eced9623809200c2d97e488a2a14df070d8f9.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 7/7] meida: mtk-vcodec: remove unused func parameter
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
+ linux-media@vger.kernel.org
+Cc: kernel@collabora.com, acourbot@chromium.org,
+ andrew-ct.chen@mediatek.com,  courbot@chromium.org, dafna3@gmail.com,
+ eizan@chromium.org,  houlong.wei@mediatek.com, hsinyi@chromium.org,
+ hverkuil@xs4all.nl,  irui.wang@mediatek.com, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, maoguang.meng@mediatek.com, 
+ matthias.bgg@gmail.com, mchehab@kernel.org, minghsiu.tsai@mediatek.com, 
+ tfiga@chromium.org, tiffany.lin@mediatek.com
+Date: Thu, 18 Nov 2021 09:35:17 -0500
+In-Reply-To: <20211117130635.11633-8-dafna.hirschfeld@collabora.com>
+References: <20211117130635.11633-1-dafna.hirschfeld@collabora.com>
+ <20211117130635.11633-8-dafna.hirschfeld@collabora.com>
+User-Agent: Evolution 3.42.1 (3.42.1-1.fc35) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_060553_284146_EF181005 
-X-CRM114-Status: GOOD (  13.46  )
+X-CRM114-CacheID: sfid-20211118_063521_425039_D6B694B2 
+X-CRM114-Status: GOOD (  12.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,62 +98,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-An MMIO read from a PCI device that doesn't exist or doesn't respond
-causes a PCI error. There's no real data to return to satisfy the
-CPU read, so most hardware fabricates ~0 data.
-
-The host controller drivers sets the error response values (~0) and
-returns an error when faulty hardware read occurs. But the error
-response value (~0) is already being set in PCI_OP_READ and
-PCI_USER_READ_CONFIG whenever a read by host controller driver fails.
-
-Thus, it's no longer necessary for the host controller drivers to
-fabricate any error response.
-
-This helps unify PCI error response checking and make error check
-consistent and easier to find.
-
-Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
----
- drivers/pci/controller/pcie-mediatek.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index 2f3f974977a3..a19f8ec5d392 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -365,19 +365,12 @@ static int mtk_pcie_config_read(struct pci_bus *bus, unsigned int devfn,
- {
- 	struct mtk_pcie_port *port;
- 	u32 bn = bus->number;
--	int ret;
- 
- 	port = mtk_pcie_find_port(bus, devfn);
--	if (!port) {
--		*val = ~0;
-+	if (!port)
- 		return PCIBIOS_DEVICE_NOT_FOUND;
--	}
--
--	ret = mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
--	if (ret)
--		*val = ~0;
- 
--	return ret;
-+	return mtk_pcie_hw_rd_cfg(port, bn, devfn, where, size, val);
- }
- 
- static int mtk_pcie_config_write(struct pci_bus *bus, unsigned int devfn,
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SnVzdCBub3RpY2VkIHRoZSBoZWFkbGluZSB0eXBvOiBtZWlkYSAtPiBtZWRpYQoKY2hlZXJzLApO
+aWNvbGFzCgpMZSBtZXJjcmVkaSAxNyBub3ZlbWJyZSAyMDIxIMOgIDE1OjA2ICswMjAwLCBEYWZu
+YSBIaXJzY2hmZWxkIGEgw6ljcml0wqA6Cj4gVGhlIHByYXJhbWV0ZXIgYnNfc2l6ZSB0byBmdW5j
+dGlvbiB2cHVfZW5jX2VuY29kZQo+IGlzIG5vdCB1c2VkLiBSZW1vdmUgaXQuCj4gCj4gU2lnbmVk
+LW9mZi1ieTogRGFmbmEgSGlyc2NoZmVsZCA8ZGFmbmEuaGlyc2NoZmVsZEBjb2xsYWJvcmEuY29t
+Pgo+IC0tLQo+ICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvdmVuYy92ZW5jX2gy
+NjRfaWYuYyB8IDkgKysrLS0tLS0tCj4gIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2Rl
+Yy92ZW5jL3ZlbmNfdnA4X2lmLmMgIHwgMyArLS0KPiAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9t
+dGstdmNvZGVjL3ZlbmNfdnB1X2lmLmMgICAgICAgfCAxIC0KPiAgZHJpdmVycy9tZWRpYS9wbGF0
+Zm9ybS9tdGstdmNvZGVjL3ZlbmNfdnB1X2lmLmggICAgICAgfCAxIC0KPiAgNCBmaWxlcyBjaGFu
+Z2VkLCA0IGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvdmVuYy92ZW5jX2gyNjRfaWYuYyBiL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZW5jL3ZlbmNfaDI2NF9pZi5jCj4gaW5k
+ZXggYjZhNGYyMDc0ZmE1Li5iZjAzODg4YTgyNGYgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9tZWRp
+YS9wbGF0Zm9ybS9tdGstdmNvZGVjL3ZlbmMvdmVuY19oMjY0X2lmLmMKPiArKysgYi9kcml2ZXJz
+L21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvdmVuYy92ZW5jX2gyNjRfaWYuYwo+IEBAIC0zNjcs
+OCArMzY3LDcgQEAgc3RhdGljIGludCBoMjY0X2VuY29kZV9zcHMoc3RydWN0IHZlbmNfaDI2NF9p
+bnN0ICppbnN0LAo+ICAKPiAgCW10a192Y29kZWNfZGVidWdfZW50ZXIoaW5zdCk7Cj4gIAo+IC0J
+cmV0ID0gdnB1X2VuY19lbmNvZGUoJmluc3QtPnZwdV9pbnN0LCBIMjY0X0JTX01PREVfU1BTLCBO
+VUxMLAo+IC0JCQkgICAgIGJzX2J1ZiwgYnNfc2l6ZSwgTlVMTCk7Cj4gKwlyZXQgPSB2cHVfZW5j
+X2VuY29kZSgmaW5zdC0+dnB1X2luc3QsIEgyNjRfQlNfTU9ERV9TUFMsIE5VTEwsIGJzX2J1Ziwg
+TlVMTCk7Cj4gIAlpZiAocmV0KQo+ICAJCXJldHVybiByZXQ7Cj4gIAo+IEBAIC0zOTQsOCArMzkz
+LDcgQEAgc3RhdGljIGludCBoMjY0X2VuY29kZV9wcHMoc3RydWN0IHZlbmNfaDI2NF9pbnN0ICpp
+bnN0LAo+ICAKPiAgCW10a192Y29kZWNfZGVidWdfZW50ZXIoaW5zdCk7Cj4gIAo+IC0JcmV0ID0g
+dnB1X2VuY19lbmNvZGUoJmluc3QtPnZwdV9pbnN0LCBIMjY0X0JTX01PREVfUFBTLCBOVUxMLAo+
+IC0JCQkgICAgIGJzX2J1ZiwgYnNfc2l6ZSwgTlVMTCk7Cj4gKwlyZXQgPSB2cHVfZW5jX2VuY29k
+ZSgmaW5zdC0+dnB1X2luc3QsIEgyNjRfQlNfTU9ERV9QUFMsIE5VTEwsIGJzX2J1ZiwgTlVMTCk7
+Cj4gIAlpZiAocmV0KQo+ICAJCXJldHVybiByZXQ7Cj4gIAo+IEBAIC00NTEsOCArNDQ5LDcgQEAg
+c3RhdGljIGludCBoMjY0X2VuY29kZV9mcmFtZShzdHJ1Y3QgdmVuY19oMjY0X2luc3QgKmluc3Qs
+Cj4gIAltdGtfdmNvZGVjX2RlYnVnKGluc3QsICJmcm1fY291bnQgPSAlZCxza2lwX2ZybV9jb3Vu
+dCA9JWQsZnJtX3R5cGU9JWQuXG4iLAo+ICAJCQkgZnJhbWVfaW5mby5mcm1fY291bnQsIGZyYW1l
+X2luZm8uc2tpcF9mcm1fY291bnQsCj4gIAkJCSBmcmFtZV9pbmZvLmZybV90eXBlKTsKPiAtCXJl
+dCA9IHZwdV9lbmNfZW5jb2RlKCZpbnN0LT52cHVfaW5zdCwgSDI2NF9CU19NT0RFX0ZSQU1FLCBm
+cm1fYnVmLAo+IC0JCQkgICAgIGJzX2J1ZiwgYnNfc2l6ZSwgJmZyYW1lX2luZm8pOwo+ICsJcmV0
+ID0gdnB1X2VuY19lbmNvZGUoJmluc3QtPnZwdV9pbnN0LCBIMjY0X0JTX01PREVfRlJBTUUsIGZy
+bV9idWYsIGJzX2J1ZiwgJmZyYW1lX2luZm8pOwo+ICAJaWYgKHJldCkKPiAgCQlyZXR1cm4gcmV0
+Owo+ICAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL3Zl
+bmMvdmVuY192cDhfaWYuYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZW5j
+L3ZlbmNfdnA4X2lmLmMKPiBpbmRleCA4MjY3YTljNGZkMjUuLjZiNjY5NTdkNTE5MiAxMDA2NDQK
+PiAtLS0gYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvdmVuYy92ZW5jX3ZwOF9p
+Zi5jCj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL3ZlbmMvdmVuY192
+cDhfaWYuYwo+IEBAIC0zMDIsOCArMzAyLDcgQEAgc3RhdGljIGludCB2cDhfZW5jX2VuY29kZV9m
+cmFtZShzdHJ1Y3QgdmVuY192cDhfaW5zdCAqaW5zdCwKPiAgCj4gIAltdGtfdmNvZGVjX2RlYnVn
+KGluc3QsICItPmZybV9jbnQ9JWQiLCBpbnN0LT5mcm1fY250KTsKPiAgCj4gLQlyZXQgPSB2cHVf
+ZW5jX2VuY29kZSgmaW5zdC0+dnB1X2luc3QsIDAsIGZybV9idWYsIGJzX2J1ZiwgYnNfc2l6ZSwK
+PiAtCQkJICAgICBOVUxMKTsKPiArCXJldCA9IHZwdV9lbmNfZW5jb2RlKCZpbnN0LT52cHVfaW5z
+dCwgMCwgZnJtX2J1ZiwgYnNfYnVmLCBOVUxMKTsKPiAgCWlmIChyZXQpCj4gIAkJcmV0dXJuIHJl
+dDsKPiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92
+ZW5jX3ZwdV9pZi5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL3ZlbmNfdnB1
+X2lmLmMKPiBpbmRleCBiZTZkODc5MGE0MWUuLmU3ODk5ZDhhM2U0ZSAxMDA2NDQKPiAtLS0gYS9k
+cml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvdmVuY192cHVfaWYuYwo+ICsrKyBiL2Ry
+aXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZW5jX3ZwdV9pZi5jCj4gQEAgLTIyNSw3
+ICsyMjUsNiBAQCBpbnQgdnB1X2VuY19zZXRfcGFyYW0oc3RydWN0IHZlbmNfdnB1X2luc3QgKnZw
+dSwKPiAgaW50IHZwdV9lbmNfZW5jb2RlKHN0cnVjdCB2ZW5jX3ZwdV9pbnN0ICp2cHUsIHVuc2ln
+bmVkIGludCBic19tb2RlLAo+ICAJCSAgIHN0cnVjdCB2ZW5jX2ZybV9idWYgKmZybV9idWYsCj4g
+IAkJICAgc3RydWN0IG10a192Y29kZWNfbWVtICpic19idWYsCj4gLQkJICAgdW5zaWduZWQgaW50
+ICpic19zaXplLAo+ICAJCSAgIHN0cnVjdCB2ZW5jX2ZyYW1lX2luZm8gKmZyYW1lX2luZm8pCj4g
+IHsKPiAgCWNvbnN0IGJvb2wgaXNfZXh0ID0gTVRLX0VOQ19DVFhfSVNfRVhUKHZwdS0+Y3R4KTsK
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL3ZlbmNfdnB1
+X2lmLmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvdmVuY192cHVfaWYuaAo+
+IGluZGV4IGY5YmU5Y2FiN2ZmNy4uZjgzYmMxYjNmMmJmIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMv
+bWVkaWEvcGxhdGZvcm0vbXRrLXZjb2RlYy92ZW5jX3ZwdV9pZi5oCj4gKysrIGIvZHJpdmVycy9t
+ZWRpYS9wbGF0Zm9ybS9tdGstdmNvZGVjL3ZlbmNfdnB1X2lmLmgKPiBAQCAtNDUsNyArNDUsNiBA
+QCBpbnQgdnB1X2VuY19zZXRfcGFyYW0oc3RydWN0IHZlbmNfdnB1X2luc3QgKnZwdSwKPiAgaW50
+IHZwdV9lbmNfZW5jb2RlKHN0cnVjdCB2ZW5jX3ZwdV9pbnN0ICp2cHUsIHVuc2lnbmVkIGludCBi
+c19tb2RlLAo+ICAJCSAgIHN0cnVjdCB2ZW5jX2ZybV9idWYgKmZybV9idWYsCj4gIAkJICAgc3Ry
+dWN0IG10a192Y29kZWNfbWVtICpic19idWYsCj4gLQkJICAgdW5zaWduZWQgaW50ICpic19zaXpl
+LAo+ICAJCSAgIHN0cnVjdCB2ZW5jX2ZyYW1lX2luZm8gKmZyYW1lX2luZm8pOwo+ICBpbnQgdnB1
+X2VuY19kZWluaXQoc3RydWN0IHZlbmNfdnB1X2luc3QgKnZwdSk7Cj4gIAoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
+bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
