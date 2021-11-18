@@ -2,143 +2,117 @@ Return-Path: <SRS0=mmGE=QF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 006ABC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 10:08:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 3225BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 13:31:13 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id C0E0E6108B
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 10:08:45 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org C0E0E6108B
-Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=oss.nxp.com
+	by mail.kernel.org (Postfix) with ESMTPS id EF56E61350
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 13:31:12 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org EF56E61350
+Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A/5Hr168FC6VaqbM2boN6yKRMZGgRtR/BH72KBTXwlc=; b=gm2ivrbNbXBbBO
-	LSRwPOSnqx7gODS4JZGHlAutmlFJ9rNPV3ZcnZcap1NMwOnXo8xdn14YSHzD8+RWKxI6fhwPZi3S0
-	2gSPR+qapQD6UM3hFOmlJ1qsNw1KZWqb7M+6C98MdxgYbjfss5V1KXwoIxnvy0V0Ii4/NjueJ2mpb
-	+x+Lr2Oz9Rw/yiwxlbs3SISpLTl/anovdk69W0VsJb494DdpSp3Z/8FxPn4yvnuaE7jNhvL34GFaE
-	ZZZIjPpVCQhJGWMNdazEkZFg9t68iPNugbS/6qpTQ19TtHCU5jeXqtcwNcVodSNNiwZPwIGN3DGgu
-	k5Hhmb/FCSjVNMgV73XA==;
+	List-Owner; bh=Gmh288tX5K/8eTAA6eqEAe54KSIwajMiuuhDjOub5Nc=; b=Vk7DBdFWW2yePs
+	Lb9VfzLwaOMAyEoFaClqJXbJwbUBilSONEDGMnaQEXAhf5ssCJMIyOarhOmTybOrtWxbar3tkrCUW
+	lU9KveFZamJUnYUwn/0B7aOXyqCv3AxMmesbtvk77Hx8KKGow2+/1TJ7sECThAQMWlUJeW4qQUGHB
+	oxNr/X+ecVl+V9/fOz5udWwILExqbPupliUvg6cT+PX9klssXVCBCI0fnRxLMGh3iyXXJRG9/ASNE
+	3th0Y0fUZ+jHiZzwZunK4UYu94FstTv+v9SUG1O5p4XJb03UeASjBuo107BiMESMAj0o9VYT40ZtM
+	MpaSNvW5QWqI4Jad9pLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mneLO-007Qad-8G; Thu, 18 Nov 2021 10:08:38 +0000
-Received: from mail-eopbgr80081.outbound.protection.outlook.com ([40.107.8.81]
- helo=EUR04-VI1-obe.outbound.protection.outlook.com)
+	id 1mnhVH-007vJA-9r; Thu, 18 Nov 2021 13:31:03 +0000
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mneLI-007QM6-AZ
- for linux-mediatek@lists.infradead.org; Thu, 18 Nov 2021 10:08:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jNr/EDEktVeFK6ECm1rX6TxiDJuIbL4iacFa4PQ8bjoSQc9COR/+jB7Oppo9TS0kS3UNKcuzaTg3ESY4I2D52Gnb/zslaIgdup/xMlLYTw+x6D826R6GzgGWKcxVufDwJTZdCpNUVbWjfLDOPdYoaCKU0mjCahRB12maWiUMamyNoV6HU8X9UM0EX9JnwdddWC7SER+fEAlBXuaYNNySF1BIC/iOxFyNufTI3/aTJrgKE2S9nvxTrSrjfSTa/XpxaeHHxVD/c8rNk5WF/3ILDw6nqbdEWEoLv9HLkYtT+dWwUwhKaTussY//nlN1X+80RkKC90f9znTVT8ix2DQZWg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9qA+AKWCWzOd4laj79fwXpT4DlJBt/zadXCV9ubK1x4=;
- b=cojsfRs9zDZqLXnAkdQatW8ZscJYz5DSn1ySOCaL5hpF9fGXw58wARfiW2M6ChWUYzxA6K+XSCEr3jMQ6Tj+vZoc1ck2aUzXhqBVYIx5XqgGZfjbrCB0tKBfWFrMuYWXFHBRMtZMWdO1+VisdvIo3f7AV4nGDn1R6DQ/jtHm0rf/7AGLNH18MANIkGaGpGlCRFNMEcDUB5ox0cqXj4JQHsu5WXDOAAFJ+I5BGKmu5wLYIY8eaDZ6fKmkQaKUgVYui+qoVhs+/S0UJPLBSxELLlE25IWdbssPNTU6wGo+e4sRKO4rmqtKF0R8y/QUT3uTJ0fbdS39G3A91Onj5yPPHg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com; 
- s=selector2-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9qA+AKWCWzOd4laj79fwXpT4DlJBt/zadXCV9ubK1x4=;
- b=b+T3jkI/zUmYAgBOcheD/pAkRqtKqAY3PFJG33UeRhFWSwNAgquZnl325LRa5SsoqPS6tH1kZxyJUpfh63++KuqvlMxAq3dFExESMH8xI2MeMcTIMJD8EWz5twXiM7Jh0DKQxltQfO5rBmFG7tj8TmNTov219H5f9T0ONly7+QY=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from VI1PR04MB5151.eurprd04.prod.outlook.com (2603:10a6:803:61::28)
- by VI1PR04MB4285.eurprd04.prod.outlook.com (2603:10a6:803:4a::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4713.19; Thu, 18 Nov
- 2021 10:08:22 +0000
-Received: from VI1PR04MB5151.eurprd04.prod.outlook.com
- ([fe80::85af:f8be:aa99:ba5f]) by VI1PR04MB5151.eurprd04.prod.outlook.com
- ([fe80::85af:f8be:aa99:ba5f%3]) with mapi id 15.20.4690.027; Thu, 18 Nov 2021
- 10:08:22 +0000
-From: Daniel Baluta <daniel.baluta@oss.nxp.com>
-To: broonie@kernel.org,
-	alsa-devel@alsa-project.org
-Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
- daniel.baluta@nxp.com, daniel.baluta@gmail.com,
- linux-kernel@vger.kernel.org, yc.hung@mediatek.com,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 8/8] ASoC: SOF: mediatek: Add DSP system PM callback for
- mt8195
-Date: Thu, 18 Nov 2021 12:07:49 +0200
-Message-Id: <20211118100749.54628-9-daniel.baluta@oss.nxp.com>
-X-Mailer: git-send-email 2.27.0
-In-Reply-To: <20211118100749.54628-1-daniel.baluta@oss.nxp.com>
-References: <20211118100749.54628-1-daniel.baluta@oss.nxp.com>
-X-ClientProxiedBy: AM4PR0902CA0008.eurprd09.prod.outlook.com
- (2603:10a6:200:9b::18) To VI1PR04MB5151.eurprd04.prod.outlook.com
- (2603:10a6:803:61::28)
+ id 1mnhVC-007vHJ-J3; Thu, 18 Nov 2021 13:31:00 +0000
+Received: by mail-pl1-x631.google.com with SMTP id v19so5242426plo.7;
+ Thu, 18 Nov 2021 05:30:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Rri8CgMU3iUgw+czpevbWjMbr1UWm75xhAwXD02I6xU=;
+ b=FDEnvL+UtpoLRk6Q1zJ5TWKgN3pkejoc+c1lfiUwMmvGmldi6KxwZO1grB8bUwgggl
+ NxymJ9lCNeYeShRKPCEoAFb/qyeXIlHXW6H9LhjrDZVVUGNirPbyJuI24LirczSzl/Na
+ OK380QfTTMyJLsiytjnQRYSmo9aAci9N0vFC8VP0JB29tQt8eoW/ggKIxCPmK5+dxsXW
+ XwurEenZVOh5wEwUMaPPAASeHd9USOigFhhHFenuvMmC1EPdDlgUL2LZwm9an0CE8meS
+ Rv6YcVKeQnHd4N1kacEKQoyflUzVHPAi/1nTgQ8d8eBhHJHyNrVBYPckBm/kGT11HH/L
+ 8L/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Rri8CgMU3iUgw+czpevbWjMbr1UWm75xhAwXD02I6xU=;
+ b=2aLDb7JiUmgJYhxoWjB/siG3rS9CpSXVlChTZ7Klytb54bODR58GX1wTsv5Gej/Pzn
+ /pKIDJoYDrwWVyAU17AnuugESrlC+ek9ivlnqYDPtZOZ0/JniEHuFuGpSWGoZMM0OWne
+ fmItbnct6VNuHJeoMPGV0q82K98rOQKAY/PO1lNDlRZ+AfENTriMMK5HXXTEWIRtg5ne
+ NUnDz+AnfxCCTUqOmAV3xItP+rnoIhaUazPDEJRfbRoef/tLCOz70wZ7GaiCnExjv1xo
+ W2UqD5njHiviqpVZAAcjO2PlI0SY6nV88RbkrXOH69yxSMJ1hWqLsD0j4jWiSRMghVFx
+ jTbQ==
+X-Gm-Message-State: AOAM533Z4Fgaatjch6/MAd055fDIjZf8C2BxHIoLhwLDIfw6lgSS29OE
+ fadrdvyWE3EHDIEVLkmy0fM=
+X-Google-Smtp-Source: ABdhPJw603nbU+O/fPHP8RoT4nn8P5boytORpwShOu3KLVJrVk3lFo3z0RQCNEqj18u5XFcu5Q1lpg==
+X-Received: by 2002:a17:90a:df14:: with SMTP id
+ gp20mr10690696pjb.186.1637242256451; 
+ Thu, 18 Nov 2021 05:30:56 -0800 (PST)
+Received: from theprophet ([2406:7400:63:2c47:5ffe:fc34:61f0:f1ea])
+ by smtp.gmail.com with ESMTPSA id z19sm3624615pfe.181.2021.11.18.05.30.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 18 Nov 2021 05:30:56 -0800 (PST)
+Date: Thu, 18 Nov 2021 19:00:20 +0530
+From: Naveen Naidu <naveennaidu479@gmail.com>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Cc: bhelgaas@google.com, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+ linux-hyperv@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>,
+ linux-pci@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>,
+ Binghui Wang <wangbinghui@hisilicon.com>,
+ Kuppuswamy Sathyanarayanan <sathyanarayanan.kuppuswamy@linux.intel.com>,
+ Oliver O'Halloran <oohall@gmail.com>,
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Russell Currey <ruscur@russell.cc>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Toan Le <toan@os.amperecomputing.com>,
+ "K. Y. Srinivasan" <kys@microsoft.com>,
+ Nirmal Patel <nirmal.patel@linux.intel.com>,
+ Marek Vasut <marek.vasut+renesas@gmail.com>,
+ Rob Herring <robh@kernel.org>, Wei Liu <wei.liu@kernel.org>,
+ linux-samsung-soc@vger.kernel.org, Marc Zyngier <maz@kernel.org>,
+ Joyce Ooi <joyce.ooi@intel.com>, Dexuan Cui <decui@microsoft.com>,
+ Jianjun Wang <jianjun.wang@mediatek.com>,
+ linux-rockchip@lists.infradead.org,
+ "maintainer:BROADCOM IPROC ARM ARCHITECTURE"
+ <bcm-kernel-feedback-list@broadcom.com>, 
+ Jonathan Derrick <jonathan.derrick@linux.dev>,
+ Xiaowei Song <songxiaowei@hisilicon.com>,
+ linux-kernel-mentees@lists.linuxfoundation.org,
+ Robert Richter <rric@kernel.org>, Sean V Kelley <sean.v.kelley@intel.com>,
+ Ray Jui <rjui@broadcom.com>, Haiyang Zhang <haiyangz@microsoft.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, linux-mediatek@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Stephen Hemminger <sthemmin@microsoft.com>,
+ linux-arm-kernel@lists.infradead.org, Qiuxu Zhuo <qiuxu.zhuo@intel.com>,
+ Scott Branden <sbranden@broadcom.com>, linuxppc-dev@lists.ozlabs.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ linux-kernel@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ Lukas Wunner <lukas@wunner.de>, Jingoo Han <jingoohan1@gmail.com>,
+ Shawn Guo <shawn.guo@linaro.org>,
+ Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
+Subject: Re: [PATCH v3 01/25] PCI: Add PCI_ERROR_RESPONSE and it's related
+ definitions
+Message-ID: <20211118133020.nkr3xzbzonxtrqbw@theprophet>
+References: <f7960a4dee0e417eedd7d2e031d04ac9016c6686.1634825082.git.naveennaidu479@gmail.com>
+ <20211117235812.GA1786428@bhelgaas>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from localhost.localdomain (2a02:2f08:5706:b700:863d:d4f3:969f:6fa)
- by AM4PR0902CA0008.eurprd09.prod.outlook.com (2603:10a6:200:9b::18) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4713.19 via Frontend
- Transport; Thu, 18 Nov 2021 10:08:20 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 37125a9c-68a6-47f9-91e1-08d9aa7b5a0a
-X-MS-TrafficTypeDiagnostic: VI1PR04MB4285:
-X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-Microsoft-Antispam-PRVS: <VI1PR04MB428521705DF3C263560129ACB89B9@VI1PR04MB4285.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:6790;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: BtDiLpb0DzPA+LjLsSZw9w7rNm+dkwEXNP5RNrvyNHU+oJOwIx2GJR4UHOXvdSv/Xqkoo4PukO5mT8M7p3r4Kf7RsRM/UXzj6JrEBbkPs0t73/ii8cPeCff/V25D6aQgEApP5Lk/ULxYETb2Mr1zriuYSur+pP9ua88lok4coBWyhpg0qzd2gOa/Q8imBktpe2Xt8K0H6IfHEuiwFgEADUFKzDAyVRgq4lNe02F2BwVr6FaPFM4p6BXqCHBbrVM6/zMCLRiabvJSZIi1b3su4PlbPcSs4+bmK/bU762q8O+8JBO1nNqwyx97Z9MnO4i83s9GBsLgoApi8LSA8bA8O/gDBdL4+TNIdpD1k9Yhszc6bZOtza1sQiPfR3sgOMwU+ZPOFOuDwwXwXVm36eBFjOEW9GAmATv/tb3cWxKN0Hd7yK7OertPH+reSVMhE/BkltVxT59ad5hvhkDUXkfDuhQC6FwfvWXtv9un5cXioxroQH8rO9YTNW1OawLHFvwtLLC3lIP78Pu8fVcU5bK/GzJdbQLdP2tXR6hqOwf0yJux+HnwobWnrJhrkueqVtqXxC2fuPYOKfs2ErgJjb1IRQXJM0Vy73WntZmDKGyWIPap6bHWNsGzy0s55RChUoWuCvFWmNgxdimiFZG55Iey5g==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:VI1PR04MB5151.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(186003)(8676002)(2616005)(4326008)(44832011)(86362001)(38100700002)(316002)(508600001)(2906002)(52116002)(6506007)(6486002)(1076003)(6666004)(66556008)(8936002)(83380400001)(66946007)(66476007)(5660300002)(6512007);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YJh3SwtL0XWr/6xhGr59nVTXQDWLjpp1vSBR+DRvTdZJMB5zc+t5aXkOpq/d?=
- =?us-ascii?Q?N0dBiLaR9oZKqQB6neJYNh1SsoEYjzlWFkyQeaJSfpxyEg+ilsY0Q7eOWwj7?=
- =?us-ascii?Q?AfzLd4hKZPP9TyM73LEF0YNzTDdoMxWLVOYUoPTrsF/hyZcbGXOCfp9HAj/N?=
- =?us-ascii?Q?2hdLgeiEiHcgOxg0CwyzVA02tztNbed683wydWvP1N0etyGKb9y+oDzYTSKa?=
- =?us-ascii?Q?JsQoU+JidOh0YxdOMVPL40qTif+Wf5raX/2oeUC+nOe3ui5XsS0Lx4uRT4uP?=
- =?us-ascii?Q?cCjCJFfEdczEqe3f1Zt4Q+fYksIYvy4tCf+SwIysHnM66H36QJh8Sbvi3ZKX?=
- =?us-ascii?Q?7lhj7HFqkgPzoIDUs+i71GhcD//gbzTcCD5qS68jMIENETjTMCu2wznEjp63?=
- =?us-ascii?Q?HIdNqvm4yTpAIaIVCuewPTISL1gFVU8n1J2yluJFuftzNkTUODUKxeTr2CY5?=
- =?us-ascii?Q?JbwbCSklOYAaAdJZXejRI0YNmDX3yH0lkdOEeQj7KbvQ0RKDwAmXxwYvXZaD?=
- =?us-ascii?Q?QYF3kf5sFIbj0fvYk8aUHkzhg0tKAvFzKUzd9FK5tQ6seT7oWstbxGuq3Xo1?=
- =?us-ascii?Q?S49vNIPGPMCJvyqqITKKT/oTwmgpzd8uqHrSm2VTK9nOc70ayiE8P+AtLSqf?=
- =?us-ascii?Q?fJvpVGoGbiWQAkoQ+wrBkxAxbX17PYkngT8LbYnlfx9FmT3PQVcevuNHbqMd?=
- =?us-ascii?Q?l2mL5Bi1apAGWtpv4utm/HuNxeECtafhpaD8X5+X1ceBKUvWo6DbTF7UsJv1?=
- =?us-ascii?Q?YqtbkvHvUMCvd9IT2VKutE1JZEF5CTQIpUjBq+VaMObhMz9DOPdmTgz+q7ko?=
- =?us-ascii?Q?4mhTFtIIeyiB0uvsoqdoTwQEzHaBv87ZT+SWdRZIpVQQ5E+/nwB2BHPo+nlO?=
- =?us-ascii?Q?FbpdjStvbqV22caDGnkpm3CJ9xX8c+PlMTrQextHkvdFsF6zIj5UG0gyImDt?=
- =?us-ascii?Q?NHpCWfish74hsGoaxeIc4R8f/CXnrw+FHWmMnzdocddN72Jje0ETh+V1wdf+?=
- =?us-ascii?Q?pZW9b/8HlFy5rApF7m9C2t50U3HUpT2ZipoiCfO3U1czI6NQhQR8xMUKdl6I?=
- =?us-ascii?Q?6nlODphvGnf0QB18LcPZlV/vQ8X5OpRPGk7fMTay41GzogMoJZgouZcP6KnQ?=
- =?us-ascii?Q?hpBQ1QSxo4Q5nRyWIsu71JGtYRxv2UiAmwefIFpolpBWtK5c1KatKMH2Cko4?=
- =?us-ascii?Q?m49HP85lGfQpgEvYOlt5KFG18JHcUwtMp0e5HeoPVxVD+cNkFltfxq0nXepj?=
- =?us-ascii?Q?H3SfF1GDwv9w2/20IPW0xdg2nzDCc/jIcD08+SgeI5oGEAxlm8JPQ7MwQ1+v?=
- =?us-ascii?Q?n1UTCIQZv1pIekladAl4aq4MgrQXf7sIWBTlw039UT84WQsMwh9qhVfclXY/?=
- =?us-ascii?Q?8ZWzpq+TVLQGiziT6uheIq6yN6noAXChE6/6IbAFW3yterWIuQ8uLPKgiCOO?=
- =?us-ascii?Q?ZH6oAvEK9zKNRziLvlccuOLnBJ0qmZJ2rUnGSS3WtZArrgPNbNJRfRDj6SaV?=
- =?us-ascii?Q?rTGaTxh4Hglr0JcmnUhR1jSX0xTrS7hvT2GrtNqO7DKwOlge8qdlgJiky0/R?=
- =?us-ascii?Q?oM2mm1X2homFkzMY4TY2asJJ4e1TT3GcrjNA3x93rHKJLIWGCgW52n20f7Aa?=
- =?us-ascii?Q?p/7veawW/J6YLeuOSrAHft2+ufdXxkJnaKGO+lVB7gruS6NAmm3KEvjuNDup?=
- =?us-ascii?Q?OGjJMDryooOK9BhnQ98nBsq906o=3D?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 37125a9c-68a6-47f9-91e1-08d9aa7b5a0a
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5151.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Nov 2021 10:08:22.0625 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +8i5Ubp9v8rWqPUmuLONgX4GRaV9XyEa1Qi/kh+fQnGd+aF6P2UelgXLOEma7+KicDMQ0tz2mfXLHSo98gdO7A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB4285
+Content-Disposition: inline
+In-Reply-To: <20211117235812.GA1786428@bhelgaas>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_020832_448102_81E47358 
-X-CRM114-Status: GOOD (  11.35  )
+X-CRM114-CacheID: sfid-20211118_053058_686170_E6AC3C72 
+X-CRM114-Status: GOOD (  42.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -155,81 +129,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: YC Hung <yc.hung@mediatek.com>
+On 17/11, Bjorn Helgaas wrote:
+> On Thu, Oct 21, 2021 at 08:37:26PM +0530, Naveen Naidu wrote:
+> > An MMIO read from a PCI device that doesn't exist or doesn't respond
+> > causes a PCI error.  There's no real data to return to satisfy the
+> > CPU read, so most hardware fabricates ~0 data.
+> > 
+> > Add a PCI_ERROR_RESPONSE definition for that and use it where
+> > appropriate to make these checks consistent and easier to find.
+> > 
+> > Also add helper definitions SET_PCI_ERROR_RESPONSE and
+> > RESPONSE_IS_PCI_ERROR to make the code more readable.
+> > 
+> > Suggested-by: Bjorn Helgaas <bhelgaas@google.com>
+> > Signed-off-by: Naveen Naidu <naveennaidu479@gmail.com>
+> > ---
+> >  include/linux/pci.h | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> > 
+> > diff --git a/include/linux/pci.h b/include/linux/pci.h
+> > index cd8aa6fce204..689c8277c584 100644
+> > --- a/include/linux/pci.h
+> > +++ b/include/linux/pci.h
+> > @@ -154,6 +154,15 @@ enum pci_interrupt_pin {
+> >  /* The number of legacy PCI INTx interrupts */
+> >  #define PCI_NUM_INTX	4
+> >  
+> > +/*
+> > + * Reading from a device that doesn't respond typically returns ~0.  A
+> > + * successful read from a device may also return ~0, so you need additional
+> > + * information to reliably identify errors.
+> > + */
+> > +#define PCI_ERROR_RESPONSE     (~0ULL)
+> > +#define SET_PCI_ERROR_RESPONSE(val)    (*(val) = ((typeof(*(val))) PCI_ERROR_RESPONSE))
+> > +#define RESPONSE_IS_PCI_ERROR(val) ((val) == ((typeof(val)) PCI_ERROR_RESPONSE))
+> 
+> Beautiful!  I really like this.
+>
 
-Add DSP system PM callback for suspend and resume
+Thank you very much for the review ^^
 
-Signed-off-by: YC Hung <yc.hung@mediatek.com>
-Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Reviewed-by: Daniel Baluta <daniel.baluta@nxp.com>
-Signed-off-by: Daniel Baluta <daniel.baluta@nxp.com>
----
- sound/soc/sof/mediatek/mt8195/mt8195.c | 42 ++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+> I would prefer the macros to start with "PCI_", e.g.,
+> PCI_SET_ERROR_RESPONSE().
+> 
 
-diff --git a/sound/soc/sof/mediatek/mt8195/mt8195.c b/sound/soc/sof/mediatek/mt8195/mt8195.c
-index 5bfae9379ac8..40e5a25875a6 100644
---- a/sound/soc/sof/mediatek/mt8195/mt8195.c
-+++ b/sound/soc/sof/mediatek/mt8195/mt8195.c
-@@ -311,6 +311,44 @@ static int mt8195_dsp_remove(struct snd_sof_dev *sdev)
- 	return 0;
- }
- 
-+static int mt8195_dsp_suspend(struct snd_sof_dev *sdev, u32 target_state)
-+{
-+	struct platform_device *pdev = container_of(sdev->dev, struct platform_device, dev);
-+	int ret;
-+
-+	/* stall and reset dsp */
-+	sof_hifixdsp_shutdown(sdev);
-+
-+	/* power down adsp sram */
-+	ret = adsp_sram_power_on(&pdev->dev, false);
-+	if (ret) {
-+		dev_err(sdev->dev, "adsp_sram_power_off fail!\n");
-+		return ret;
-+	}
-+
-+	/* turn off adsp clock */
-+	return adsp_clock_off(sdev);
-+}
-+
-+static int mt8195_dsp_resume(struct snd_sof_dev *sdev)
-+{
-+	int ret;
-+
-+	/* turn on adsp clock */
-+	ret = adsp_clock_on(sdev);
-+	if (ret) {
-+		dev_err(sdev->dev, "adsp_clock_on fail!\n");
-+		return ret;
-+	}
-+
-+	/* power on adsp sram */
-+	ret = adsp_sram_power_on(sdev->dev, true);
-+	if (ret)
-+		dev_err(sdev->dev, "adsp_sram_power_on fail!\n");
-+
-+	return ret;
-+}
-+
- /* on mt8195 there is 1 to 1 match between type and BAR idx */
- static int mt8195_get_bar_index(struct snd_sof_dev *sdev, u32 type)
- {
-@@ -382,6 +420,10 @@ const struct snd_sof_dsp_ops sof_mt8195_ops = {
- 	.drv = mt8195_dai,
- 	.num_drv = ARRAY_SIZE(mt8195_dai),
- 
-+	/* PM */
-+	.suspend	= mt8195_dsp_suspend,
-+	.resume		= mt8195_dsp_resume,
-+
- 	/* ALSA HW info flags */
- 	.hw_info =	SNDRV_PCM_INFO_MMAP |
- 			SNDRV_PCM_INFO_MMAP_VALID |
--- 
-2.27.0
+ACK
 
+> I think "RESPONSE_IS_PCI_ERROR()" is too strong because (as the
+> comment says), ~0 *may* indicate an error.  Or it may be a successful
+> read of a register that happens to contain ~0.
+> 
+> Possibilities to convey the idea that this isn't definitive:
+> 
+>   PCI_POSSIBLE_ERROR_RESPONSE(val)  # a little long
+>   PCI_LIKELY_ERROR(val)             # we really have no idea whether
+>   PCI_PROBABLE_ERROR(val)           #   likely or probable
+>   PCI_POSSIBLE_ERROR(val)           # promising?
+>
+
+ACK. Will use PCI_POSSIBLE_ERROR()
+
+> Can you rebase to my "main" branch (v5.16-rc1), tweak the above, and
+> collect up the acks/reviews?
+> 
+
+ACK
+
+> We should also browse drivers outside drivers/pci for places we could
+> use these.  Not necessarily as part of this series, although if
+> authors there object, it would be good to learn that earlier than
+> later.
+> 
+> Drivers that implement pci_error_handlers might be a fruitful place to
+> start.  But you've done a great job finding users of ~0 and 0xffff...
+> in drivers/pci/, too.
+> 
+
+A quick grep showed that there are around 80 drivers which have
+pci_error_handlers. I was thinking that it would be better if we handle
+these drivers in another patch series since the current patch series is
+itself 25 patches long. And in my short tenure reading LKML, I gathered
+that folks generally are not so kind to a long list of patches in a
+single patch series ^^' (I might be wrong though, Apologies)
+
+The consensus on the patch series does seem slightly positive so
+ideally, I was hoping that we would not have the case where a author
+does not like the way we are handling this patch. Then again, I'm
+pretty sure that I might be wrong ^^'
+
+I hope it would be okay that I send in a new patch series with the
+suggested changes and handle the other changes in another patch series
+^^
+
+Thanks,
+Naveen
+> > +
+> >  /*
+> >   * pci_power_t values must match the bits in the Capabilities PME_Support
+> >   * and Control/Status PowerState fields in the Power Management capability.
+> > -- 
+> > 2.25.1
+> > 
+> > _______________________________________________
+> > Linux-kernel-mentees mailing list
+> > Linux-kernel-mentees@lists.linuxfoundation.org
+> > https://lists.linuxfoundation.org/mailman/listinfo/linux-kernel-mentees
 
 _______________________________________________
 Linux-mediatek mailing list
