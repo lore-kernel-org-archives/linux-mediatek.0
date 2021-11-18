@@ -2,14 +2,14 @@ Return-Path: <SRS0=mmGE=QF=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C1BFCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 03:10:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DC68C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 03:59:24 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 8372F61B39
-	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 03:10:21 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 8372F61B39
+	by mail.kernel.org (Postfix) with ESMTPS id 6529D61AE2
+	for <linux-mediatek@archiver.kernel.org>; Thu, 18 Nov 2021 03:59:24 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 6529D61AE2
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,64 +18,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wYlcpNt2Td79LgxaqCM70GXweeENkSF0v/V4/b6XU40=; b=RXeL5ExwB9Obh1
-	O4rDNKU9ce7M3HskGJcz7PD1KWm3wi9rEJIfnjCJEVWYwU76pwAwZUmp7iRsn/onzfacmm3rTnKZc
-	J9cmZE8bH6sJNbVrkGOEIRlak8ptcVxylPEbn3WbxNYqKEMmwaF6m/G80T6DeAFHgrUsmR6/INt4t
-	pyNIeI7ZLYYX/wvv8FHG1B2ROdqKm/bQ92KqzOrUGDYzcdEFqstqvJpz+4YIENFPChMUZWhi+y0sa
-	IvXE1YHg/3h9rxRYQql+Va3Pph8YaykiYooOV3pcH0XBFF0lCUyDljucpYSYeGORu9Eksjgfn/PU0
-	I2iK0Ce4r0dMXFrLIosA==;
+	List-Owner; bh=jErF49UadEiLJfpLDtDPjmc78ulavG0YWJ8y07HMjIk=; b=SvuImNIQD/mtEo
+	pvYVVlYL/KWmXdM1DcG2LHzOkOxq6mvoz35VmXUbkmTLJw7OAfHaCjZa4z4TlJGx0Y9rGsES6Phgc
+	E/hODMRU43n1lNzXwM8AV+ket0FenGf7AfHSmCWWmkoD1z+cacBduJEkEgKD5NrpWfSl6HbHYNvEQ
+	zGMiwewFbah9EPSEurKqCPscB680ULC6NrIBABl4BZKrWnBH9LXDloZNM5b9Tp8oObnirSE0GBK7g
+	IVd2/YaOGX5hcz9vNZzjSXE46Jcng0Bpbkw//UVg5+dYucUAvXKOYzcDzAVToRAyNoizsyHQJdcU1
+	iMg0hN+0SWbVitYh7x4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnXoR-006ozf-TM; Thu, 18 Nov 2021 03:10:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mnYZq-006sxG-1e; Thu, 18 Nov 2021 03:59:10 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnXoM-006oyZ-Ny; Thu, 18 Nov 2021 03:10:10 +0000
-X-UUID: b5c2862b34674ecc8acae051326b516b-20211117
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=eiZG4F1mIiW90Szr5u/pQmwRwrGim6XkRI3sYIZIuno=; 
- b=lthtNhD1mFIvd20wvbTy3MB2VDdLU+X+Ul+BN+wDMFSMUcMr/Fp/hdQSK4ms0AzH4tLCq3RglSrA4Ub0e/xtP9jbt9zOk1vfJ2xAVkJPAYkBRa/RE3v2K4Ej82IO8Rl0KJxGNCD2n0htzWOOohAtnORlpVIvHSKQ0oKRT/TJb/0=;
-X-UUID: b5c2862b34674ecc8acae051326b516b-20211117
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <biao.huang@mediatek.com>)
+ id 1mnYZa-006svi-Gy; Thu, 18 Nov 2021 03:58:58 +0000
+X-UUID: ff170de039244074855280c0a58c1326-20211117
+X-UUID: ff170de039244074855280c0a58c1326-20211117
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <sam.shih@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1957045220; Wed, 17 Nov 2021 20:09:59 -0700
+ with ESMTP id 528353075; Wed, 17 Nov 2021 20:58:50 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 17 Nov 2021 19:09:57 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 17 Nov 2021 19:48:48 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 18 Nov 2021 11:09:56 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ 15.2.792.15; Thu, 18 Nov 2021 11:48:46 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 18 Nov 2021 11:09:55 +0800
-Message-ID: <5f6fec21ef9f2bca6007283b37e35301cfe745ed.camel@mediatek.com>
-Subject: Re: [PATCH v3 4/7] net-next: dt-bindings: dwmac: Convert
- mediatek-dwmac to DT schema
-From: Biao Huang <biao.huang@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, <davem@davemloft.net>, "Jakub
- Kicinski" <kuba@kernel.org>, Rob Herring <robh+dt@kernel.org>
-CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, "Maxime
- Coquelin" <mcoquelin.stm32@gmail.com>, <netdev@vger.kernel.org>,
+ Transport; Thu, 18 Nov 2021 11:48:46 +0800
+Message-ID: <59963509ec833009f5c10f0a1aee91670224c6c7.camel@mediatek.com>
+Subject: Re: [PATCH v7 2/3] arm64: dts: mediatek: add basic mt7986a support
+From: Sam Shih <sam.shih@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, "Enric Balletbo i
+ Serra" <enric.balletbo@collabora.com>, Fabien Parent <fparent@baylibre.com>,
+ Seiya Wang <seiya.wang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
- <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
- <dkirjanov@suse.de>
-Date: Thu, 18 Nov 2021 11:09:55 +0800
-In-Reply-To: <04051f18-a955-9397-d94e-0c61fc8f595b@gmail.com>
-References: <20211112093918.11061-1-biao.huang@mediatek.com>
- <20211112093918.11061-5-biao.huang@mediatek.com>
- <04051f18-a955-9397-d94e-0c61fc8f595b@gmail.com>
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
+Date: Thu, 18 Nov 2021 11:48:46 +0800
+In-Reply-To: <c5c0849d-a95a-25a0-11f8-9156770afc10@gmail.com>
+References: <20211018114009.13350-1-sam.shih@mediatek.com>
+ <20211018114009.13350-3-sam.shih@mediatek.com>
+ <d411aec5-efa8-c71d-8179-54ff52c17039@gmail.com>
+ <d299493d8fec0f34f527942f2cdedf15f2136c9a.camel@mediatek.com>
+ <c5c0849d-a95a-25a0-11f8-9156770afc10@gmail.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211117_191006_824480_EF0F9C6E 
-X-CRM114-Status: GOOD (  41.97  )
+X-CRM114-CacheID: sfid-20211117_195854_616413_E4BE8D3B 
+X-CRM114-Status: GOOD (  52.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,359 +85,385 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Dear Matthias,
-	Agree, converting and changes should be seperated.
+Hi
 
-	There are some changes in the driver, but mediatek-dwmac.txt
-	
-is not updated for a long time, and is not accurate enough.
-
-	So this patch is more like a new yaml replace the old txt,
-	than a word-to-word converting.
-
-	
-Anyway, only 3 little changes compare to old mediate-dwmac.txt, 	others
-almost keep the same:
-	1. compatible " const: snps,dwmac-4.20"
-	2. delete "snps,reset-active-low;" in example, since driver
-remove this property long ago.
-	3. add "snps,reset-delays-us = <0 10000 10000>;" in example, 
-
-	Should I split this patch? 
-	If yes, I'll split in next send.
-	Thanks.
-
-Regards!
-
-On Wed, 2021-11-17 at 16:11 +0100, Matthias Brugger wrote:
+On Tue, 2021-11-16 at 12:18 +0100, Matthias Brugger wrote:
 > 
-> On 12/11/2021 10:39, Biao Huang wrote:
-> > Convert mediatek-dwmac to DT schema, and delete old mediatek-
-> > dwmac.txt.
+> On 16/11/2021 02:39, Sam Shih wrote:
+> > Hi,
 > > 
-> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> > ---
-> >   .../bindings/net/mediatek-dwmac.txt           |  91 ----------
-> >   .../bindings/net/mediatek-dwmac.yaml          | 157
-> > ++++++++++++++++++
-> >   2 files changed, 157 insertions(+), 91 deletions(-)
-> >   delete mode 100644
-> > Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-> >   create mode 100644
-> > Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+> > On Mon, 2021-11-15 at 17:27 +0100, Matthias Brugger wrote:
+> > > Hi,
+> > > 
+> > > On 18/10/2021 13:40, Sam Shih wrote:
+> > > > Add basic chip support for Mediatek mt7986a, include
+> > > > basic uart nodes, rng node and watchdog node.
+> > > > 
+> > > > Add cpu node, timer node, gic node, psci and reserved-memory
+> > > > node
+> > > > for ARM Trusted Firmware.
+> > > > 
+> > > 
+> > > What is the exact difference between mt7986a and mt7986b? Right
+> > > now,
+> > > it's only
+> > > the compatible, for that it makes no sense to split them.
+> > > 
+> > 
+> > The difference between mt7986a and mt7986b is pinout which
+> > described
+> > in our pinctrl patch series
+> > 
+https://urldefense.com/v3/__https://lore.kernel.org/all/20211022124036.5291-3-sam.shih@mediatek.com/__;!!CTRNKA9wMg0ARbw!0kseU8x1KnHHXDErh6Yj6MKqecufPEfGyeumtTBism47e99UFO2Gs-HfWjL1_jUv$
+> >  
+> > 
+> > You are right, in this "basic SoC support" patch series, only show
+> > compatible differences
+> > 
+> > > It would be good to see what the exact differences are, so that
+> > > we
+> > > can see if it
+> > > makes sense to have one of the alternatives:
+> > > 1) use a common mt7986.dtsi which get included by
+> > > mt7986[a,b].dtsi
+> > > 2) Use on mt7986.dtsi and only add one mt7986a.dtsi or
+> > > mt7986b.dtsi
+> > > which has
+> > > add-ons.
+> > > 
+> > 
+> > In this case, can we use solution (1) to create a generic
+> > mt7986.dtsi
+> > in this patch series, and add mt7986[a,b].dtsi to the dts part of
+> > the
+> > pinctrl patch series to separate the difference nodes?
 > > 
 > 
->  From a quick look you are converting the binding to yaml and in the
-> same patch 
-> change the binding. Please do that in two different patches as
-> otherwise it's 
-> dificult to review.
+> If the only difference is the GPIO controller then why not go with
+> solution 2. 
+> Create a mt7986.dtsi which holds e.g. the node for pincontroller
+> mt7986a and 
+> then create a mt7986b.dtsi that just changes compatible and gpio-
+> ranges:
+> 
+> &pio {
+>     compatible = "mediatek,mt7986b-pinctrl";
+>     gpio-ranges = <&pio 0 0 41>, <&pio 66 66 35>;
+> }
+> 
+> What do you think?
+
+Ok,
+
+For this basic patch series DTS, I will send the next version:
+- Use "mt7986.dtsi" instead of "mt7986[a,b].dtsi",
+  And make"mt7986.dtsi" get included by "mt7986[a,b]-rfb.dts" 
+  (No dedicated uart1/uart2 pinout for mt7986b-rfb, status of dts node
+shoud be set to "disabled")
+
+
+For the pinctrl patch series DTS, I will send th next version:
+- Add "mt7986b.dtsi" according to your suggestion,
+  the new include
+chain will be:
+  mt7986a-rfb.dts <-- mt7986.dtsi (mt7986a pinctrl)
+ 
+mt7986b-rfb.dts <-- mt7986b.dtsi (mt7986b pinctrl) <-- mt7986.dtsi
+(mt7986a pinctrl)
+
+Do you agree above proposal?
+
+Regards,
+Sam
+
 > 
 > Regards,
 > Matthias
 > 
-> > diff --git a/Documentation/devicetree/bindings/net/mediatek-
-> > dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-
-> > dwmac.txt
-> > deleted file mode 100644
-> > index afbcaebf062e..000000000000
-> > --- a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-> > +++ /dev/null
-> > @@ -1,91 +0,0 @@
-> > -MediaTek DWMAC glue layer controller
-> > -
-> > -This file documents platform glue layer for stmmac.
-> > -Please see stmmac.txt for the other unchanged properties.
-> > -
-> > -The device node has following properties.
-> > -
-> > -Required properties:
-> > -- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
-> > -- reg:  Address and length of the register set for the device
-> > -- interrupts:  Should contain the MAC interrupts
-> > -- interrupt-names: Should contain a list of interrupt names
-> > corresponding to
-> > -	the interrupts in the interrupts property, if available.
-> > -	Should be "macirq" for the main MAC IRQ
-> > -- clocks: Must contain a phandle for each entry in clock-names.
-> > -- clock-names: The name of the clock listed in the clocks
-> > property. These are
-> > -	"axi", "apb", "mac_main", "ptp_ref", "rmii_internal" for MT2712
-> > SoC.
-> > -- mac-address: See ethernet.txt in the same directory
-> > -- phy-mode: See ethernet.txt in the same directory
-> > -- mediatek,pericfg: A phandle to the syscon node that control
-> > ethernet
-> > -	interface and timing delay.
-> > -
-> > -Optional properties:
-> > -- mediatek,tx-delay-ps: TX clock delay macro value. Default is 0.
-> > -	It should be defined for RGMII/MII interface.
-> > -	It should be defined for RMII interface when the reference
-> > clock is from MT2712 SoC.
-> > -- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
-> > -	It should be defined for RGMII/MII interface.
-> > -	It should be defined for RMII interface.
-> > -Both delay properties need to be a multiple of 170 for RGMII
-> > interface,
-> > -or will round down. Range 0~31*170.
-> > -Both delay properties need to be a multiple of 550 for MII/RMII
-> > interface,
-> > -or will round down. Range 0~31*550.
-> > -
-> > -- mediatek,rmii-rxc: boolean property, if present indicates that
-> > the RMII
-> > -	reference clock, which is from external PHYs, is connected to
-> > RXC pin
-> > -	on MT2712 SoC.
-> > -	Otherwise, is connected to TXC pin.
-> > -- mediatek,rmii-clk-from-mac: boolean property, if present
-> > indicates that
-> > -	MT2712 SoC provides the RMII reference clock, which outputs to
-> > TXC pin only.
-> > -- mediatek,txc-inverse: boolean property, if present indicates
-> > that
-> > -	1. tx clock will be inversed in MII/RGMII case,
-> > -	2. tx clock inside MAC will be inversed relative to reference
-> > clock
-> > -	   which is from external PHYs in RMII case, and it rarely
-> > happen.
-> > -	3. the reference clock, which outputs to TXC pin will be
-> > inversed in RMII case
-> > -	   when the reference clock is from MT2712 SoC.
-> > -- mediatek,rxc-inverse: boolean property, if present indicates
-> > that
-> > -	1. rx clock will be inversed in MII/RGMII case.
-> > -	2. reference clock will be inversed when arrived at MAC in RMII
-> > case, when
-> > -	   the reference clock is from external PHYs.
-> > -	3. the inside clock, which be sent to MAC, will be inversed in
-> > RMII case when
-> > -	   the reference clock is from MT2712 SoC.
-> > -- assigned-clocks: mac_main and ptp_ref clocks
-> > -- assigned-clock-parents: parent clocks of the assigned clocks
-> > -
-> > -Example:
-> > -	eth: ethernet@1101c000 {
-> > -		compatible = "mediatek,mt2712-gmac";
-> > -		reg = <0 0x1101c000 0 0x1300>;
-> > -		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-> > -		interrupt-names = "macirq";
-> > -		phy-mode ="rgmii-rxid";
-> > -		mac-address = [00 55 7b b5 7d f7];
-> > -		clock-names = "axi",
-> > -			      "apb",
-> > -			      "mac_main",
-> > -			      "ptp_ref",
-> > -			      "rmii_internal";
-> > -		clocks = <&pericfg CLK_PERI_GMAC>,
-> > -			 <&pericfg CLK_PERI_GMAC_PCLK>,
-> > -			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> > -			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> > -			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
-> > -		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> > -				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> > -				  <&topckgen
-> > CLK_TOP_ETHER_50M_RMII_SEL>;
-> > -		assigned-clock-parents = <&topckgen
-> > CLK_TOP_ETHERPLL_125M>,
-> > -					 <&topckgen CLK_TOP_APLL1_D3>,
-> > -					 <&topckgen
-> > CLK_TOP_ETHERPLL_50M>;
-> > -		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
-> > -		mediatek,pericfg = <&pericfg>;
-> > -		mediatek,tx-delay-ps = <1530>;
-> > -		mediatek,rx-delay-ps = <1530>;
-> > -		mediatek,rmii-rxc;
-> > -		mediatek,txc-inverse;
-> > -		mediatek,rxc-inverse;
-> > -		snps,txpbl = <1>;
-> > -		snps,rxpbl = <1>;
-> > -		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
-> > -		snps,reset-active-low;
-> > -	};
-> > diff --git a/Documentation/devicetree/bindings/net/mediatek-
-> > dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-
-> > dwmac.yaml
-> > new file mode 100644
-> > index 000000000000..2eb4781536f7
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> > @@ -0,0 +1,157 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/net/mediatek-dwmac.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: MediaTek DWMAC glue layer controller
-> > +
-> > +maintainers:
-> > +  - Biao Huang <biao.huang@mediatek.com>
-> > +
-> > +description:
-> > +  This file documents platform glue layer for stmmac.
-> > +
-> > +# We need a select here so we don't match all nodes with
-> > 'snps,dwmac'
-> > +select:
-> > +  properties:
-> > +    compatible:
-> > +      contains:
-> > +        enum:
-> > +          - mediatek,mt2712-gmac
-> > +  required:
-> > +    - compatible
-> > +
-> > +allOf:
-> > +  - $ref: "snps,dwmac.yaml#"
-> > +  - $ref: "ethernet-controller.yaml#"
-> > +
-> > +properties:
-> > +  compatible:
-> > +    oneOf:
-> > +      - items:
-> > +          - enum:
-> > +              - mediatek,mt2712-gmac
-> > +          - const: snps,dwmac-4.20a
-> > +
-> > +  clocks:
-> > +    items:
-> > +      - description: AXI clock
-> > +      - description: APB clock
-> > +      - description: MAC Main clock
-> > +      - description: PTP clock
-> > +      - description: RMII reference clock provided by MAC
-> > +
-> > +  clock-names:
-> > +    items:
-> > +      - const: axi
-> > +      - const: apb
-> > +      - const: mac_main
-> > +      - const: ptp_ref
-> > +      - const: rmii_internal
-> > +
-> > +  mediatek,pericfg:
-> > +    $ref: /schemas/types.yaml#/definitions/phandle
-> > +    description:
-> > +      The phandle to the syscon node that control ethernet
-> > +      interface and timing delay.
-> > +
-> > +  mediatek,tx-delay-ps:
-> > +    description:
-> > +      The internal TX clock delay (provided by this driver) in
-> > nanoseconds.
-> > +      For MT2712 RGMII interface, Allowed value need to be a
-> > multiple of 170,
-> > +      or will round down. Range 0~31*170.
-> > +      For MT2712 RMII/MII interface, Allowed value need to be a
-> > multiple of 550,
-> > +      or will round down. Range 0~31*550.
-> > +
-> > +  mediatek,rx-delay-ps:
-> > +    description:
-> > +      The internal RX clock delay (provided by this driver) in
-> > nanoseconds.
-> > +      For MT2712 RGMII interface, Allowed value need to be a
-> > multiple of 170,
-> > +      or will round down. Range 0~31*170.
-> > +      For MT2712 RMII/MII interface, Allowed value need to be a
-> > multiple of 550,
-> > +      or will round down. Range 0~31*550.
-> > +
-> > +  mediatek,rmii-rxc:
-> > +    type: boolean
-> > +    description:
-> > +      If present, indicates that the RMII reference clock, which
-> > is from external
-> > +      PHYs, is connected to RXC pin. Otherwise, is connected to
-> > TXC pin.
-> > +
-> > +  mediatek,rmii-clk-from-mac:
-> > +    type: boolean
-> > +    description:
-> > +      If present, indicates that MAC provides the RMII reference
-> > clock, which
-> > +      outputs to TXC pin only.
-> > +
-> > +  mediatek,txc-inverse:
-> > +    type: boolean
-> > +    description:
-> > +      If present, indicates that
-> > +      1. tx clock will be inversed in MII/RGMII case,
-> > +      2. tx clock inside MAC will be inversed relative to
-> > reference clock
-> > +         which is from external PHYs in RMII case, and it rarely
-> > happen.
-> > +      3. the reference clock, which outputs to TXC pin will be
-> > inversed in RMII case
-> > +         when the reference clock is from MAC.
-> > +
-> > +  mediatek,rxc-inverse:
-> > +    type: boolean
-> > +    description:
-> > +      If present, indicates that
-> > +      1. rx clock will be inversed in MII/RGMII case.
-> > +      2. reference clock will be inversed when arrived at MAC in
-> > RMII case, when
-> > +         the reference clock is from external PHYs.
-> > +      3. the inside clock, which be sent to MAC, will be inversed
-> > in RMII case when
-> > +         the reference clock is from MAC.
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - interrupts
-> > +  - interrupt-names
-> > +  - clocks
-> > +  - clock-names
-> > +  - phy-mode
-> > +  - mediatek,pericfg
-> > +
-> > +unevaluatedProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/clock/mt2712-clk.h>
-> > +    #include <dt-bindings/gpio/gpio.h>
-> > +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +    #include <dt-bindings/power/mt2712-power.h>
-> > +
-> > +    eth: ethernet@1101c000 {
-> > +        compatible = "mediatek,mt2712-gmac", "snps,dwmac-4.20a";
-> > +        reg = <0x1101c000 0x1300>;
-> > +        interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-> > +        interrupt-names = "macirq";
-> > +        phy-mode ="rgmii-rxid";
-> > +        mac-address = [00 55 7b b5 7d f7];
-> > +        clock-names = "axi",
-> > +                      "apb",
-> > +                      "mac_main",
-> > +                      "ptp_ref",
-> > +                      "rmii_internal";
-> > +        clocks = <&pericfg CLK_PERI_GMAC>,
-> > +                 <&pericfg CLK_PERI_GMAC_PCLK>,
-> > +                 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> > +                 <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> > +                 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
-> > +        assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> > +                          <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> > +                          <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
-> > +        assigned-clock-parents = <&topckgen
-> > CLK_TOP_ETHERPLL_125M>,
-> > +                                 <&topckgen CLK_TOP_APLL1_D3>,
-> > +                                 <&topckgen CLK_TOP_ETHERPLL_50M>;
-> > +        power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
-> > +        mediatek,pericfg = <&pericfg>;
-> > +        mediatek,tx-delay-ps = <1530>;
-> > +        snps,txpbl = <1>;
-> > +        snps,rxpbl = <1>;
-> > +        snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
-> > +        snps,reset-delays-us = <0 10000 10000>;
-> > +    };
+> > > > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> > > > 
+> > > > ---
+> > > > v7: added memory node back to dts
+> > > > v6: removed clock and pinctrl node, to separate basic part into
+> > > > a
+> > > > single
+> > > >       patch series
+> > > > 
+> > > > Original thread:
+> > > > 
 > > 
+> > 
+https://urldefense.com/v3/__https://lore.kernel.org/all/20211004124155.1404-1-sam.shih@mediatek.com/__;!!CTRNKA9wMg0ARbw!xCEW0lwTKx4k272sWASoi90y_yRyQdAx0oNJC-jSAIWnIEkprJD-gAc1ugCvo0ex$
+> > > >   
+> > > > 
+> > > > v5: follow reviewr's comment: removed clock freqency node in
+> > > > timer
+> > > > due to
+> > > >       we have set CNTFRQ_EL0 in ATF firmware, and also
+> > > > corrected
+> > > > GICD range
+> > > > v4: added missing gic register bases, and fixed range of GICR
+> > > > v3: used the stdout-path instead of console=ttyS0
+> > > > v2: modified clock and uart node due to clock driver updated
+> > > > ---
+> > > >    arch/arm64/boot/dts/mediatek/Makefile        |   1 +
+> > > >    arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts |  38 +++++
+> > > >    arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 149
+> > > > +++++++++++++++++++
+> > > >    3 files changed, 188 insertions(+)
+> > > >    create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-
+> > > > rfb.dts
+> > > >    create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > > > 
+> > > > diff --git a/arch/arm64/boot/dts/mediatek/Makefile
+> > > > b/arch/arm64/boot/dts/mediatek/Makefile
+> > > > index 4f68ebed2e31..e6c3a73b9e4a 100644
+> > > > --- a/arch/arm64/boot/dts/mediatek/Makefile
+> > > > +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> > > > @@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+> > > >    dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+> > > >    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+> > > >    dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+> > > > +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+> > > >    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+> > > >    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
+> > > >    dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
+> > > > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > > > b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > > > new file mode 100644
+> > > > index 000000000000..ca074cf8e578
+> > > > --- /dev/null
+> > > > +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> > > > @@ -0,0 +1,38 @@
+> > > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > > > +/*
+> > > > + * Copyright (C) 2021 MediaTek Inc.
+> > > > + * Author: Sam.Shih <sam.shih@mediatek.com>
+> > > > + */
+> > > > +
+> > > > +/dts-v1/;
+> > > > +#include "mt7986a.dtsi"
+> > > > +
+> > > > +/ {
+> > > > +	model = "MediaTek MT7986a RFB";
+> > > > +	compatible = "mediatek,mt7986a-rfb";
+> > > > +
+> > > > +	aliases {
+> > > > +		serial0 = &uart0;
+> > > > +	};
+> > > > +
+> > > > +	chosen {
+> > > > +		stdout-path = "serial0:115200n8";
+> > > > +		bootargs = "earlycon=uart8250,mmio32,0x11002000
+> > > > swiotlb=512";
+> > > 
+> > > We normally don't add earlycon parameter to the normal bootargs,
+> > > as
+> > > it's only
+> > > for debugging. Also what do we need the swiotlb? Are there any
+> > > limitation in the
+> > > HW that makes us need it?
+> > > 
+> > 
+> > Thank you for your suggestion, as far as I know, it should not have
+> > hardware limitations. This bootargs is just inherent from mt7622-
+> > rfb.dts, I will delete it and test again on our development board.
+> > 
+> > > Regards,
+> > > Matthias
+> > > 
+> > > > +	};
+> > > > +
+> > > > +	memory {
+> > > > +		reg = <0 0x40000000 0 0x40000000>;
+> > > > +	};
+> > > > +};
+> > > > +
+> > > > +&uart0 {
+> > > > +	status = "okay";
+> > > > +};
+> > > > +
+> > > > +&uart1 {
+> > > > +	status = "okay";
+> > > > +};
+> > > > +
+> > > > +&uart2 {
+> > > > +	status = "okay";
+> > > > +};
+> > > > diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > > > b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > > > new file mode 100644
+> > > > index 000000000000..75912bcf6c9c
+> > > > --- /dev/null
+> > > > +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> > > > @@ -0,0 +1,149 @@
+> > > > +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> > > > +/*
+> > > > + * Copyright (C) 2021 MediaTek Inc.
+> > > > + * Author: Sam.Shih <sam.shih@mediatek.com>
+> > > > + */
+> > > > +
+> > > > +#include <dt-bindings/interrupt-controller/irq.h>
+> > > > +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> > > > +
+> > > > +/ {
+> > > > +	compatible = "mediatek,mt7986a";
+> > > > +	interrupt-parent = <&gic>;
+> > > > +	#address-cells = <2>;
+> > > > +	#size-cells = <2>;
+> > > > +
+> > > > +	system_clk: dummy40m {
+> > > > +		compatible = "fixed-clock";
+> > > > +		clock-frequency = <40000000>;
+> > > > +		#clock-cells = <0>;
+> > > > +	};
+> > > > +
+> > > > +	cpus {
+> > > > +		#address-cells = <1>;
+> > > > +		#size-cells = <0>;
+> > > > +		cpu0: cpu@0 {
+> > > > +			device_type = "cpu";
+> > > > +			compatible = "arm,cortex-a53";
+> > > > +			enable-method = "psci";
+> > > > +			reg = <0x0>;
+> > > > +			#cooling-cells = <2>;
+> > > > +		};
+> > > > +
+> > > > +		cpu1: cpu@1 {
+> > > > +			device_type = "cpu";
+> > > > +			compatible = "arm,cortex-a53";
+> > > > +			enable-method = "psci";
+> > > > +			reg = <0x1>;
+> > > > +			#cooling-cells = <2>;
+> > > > +		};
+> > > > +
+> > > > +		cpu2: cpu@2 {
+> > > > +			device_type = "cpu";
+> > > > +			compatible = "arm,cortex-a53";
+> > > > +			enable-method = "psci";
+> > > > +			reg = <0x2>;
+> > > > +			#cooling-cells = <2>;
+> > > > +		};
+> > > > +
+> > > > +		cpu3: cpu@3 {
+> > > > +			device_type = "cpu";
+> > > > +			enable-method = "psci";
+> > > > +			compatible = "arm,cortex-a53";
+> > > > +			reg = <0x3>;
+> > > > +			#cooling-cells = <2>;
+> > > > +		};
+> > > > +	};
+> > > > +
+> > > > +	psci {
+> > > > +		compatible  = "arm,psci-0.2";
+> > > > +		method      = "smc";
+> > > > +	};
+> > > > +
+> > > > +	reserved-memory {
+> > > > +		#address-cells = <2>;
+> > > > +		#size-cells = <2>;
+> > > > +		ranges;
+> > > > +		/* 192 KiB reserved for ARM Trusted Firmware
+> > > > (BL31) */
+> > > > +		secmon_reserved: secmon@43000000 {
+> > > > +			reg = <0 0x43000000 0 0x30000>;
+> > > > +			no-map;
+> > > > +		};
+> > > > +	};
+> > > > +
+> > > > +	timer {
+> > > > +		compatible = "arm,armv8-timer";
+> > > > +		interrupt-parent = <&gic>;
+> > > > +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
+> > > > +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
+> > > > +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
+> > > > +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+> > > > +	};
+> > > > +
+> > > > +	soc {
+> > > > +		#address-cells = <2>;
+> > > > +		#size-cells = <2>;
+> > > > +		compatible = "simple-bus";
+> > > > +		ranges;
+> > > > +
+> > > > +		gic: interrupt-controller@c000000 {
+> > > > +			compatible = "arm,gic-v3";
+> > > > +			#interrupt-cells = <3>;
+> > > > +			interrupt-parent = <&gic>;
+> > > > +			interrupt-controller;
+> > > > +			reg = <0 0x0c000000 0 0x10000>,  /*
+> > > > GICD */
+> > > > +			      <0 0x0c080000 0 0x80000>,  /*
+> > > > GICR */
+> > > > +			      <0 0x0c400000 0 0x2000>,   /*
+> > > > GICC */
+> > > > +			      <0 0x0c410000 0 0x1000>,   /*
+> > > > GICH */
+> > > > +			      <0 0x0c420000 0 0x2000>;   /*
+> > > > GICV */
+> > > > +			interrupts = <GIC_PPI 9
+> > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > +		};
+> > > > +
+> > > > +		watchdog: watchdog@1001c000 {
+> > > > +			compatible = "mediatek,mt7986-wdt",
+> > > > +				     "mediatek,mt6589-wdt";
+> > > > +			reg = <0 0x1001c000 0 0x1000>;
+> > > > +			interrupts = <GIC_SPI 110
+> > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > +			#reset-cells = <1>;
+> > > > +			status = "disabled";
+> > > > +		};
+> > > > +
+> > > > +		trng: trng@1020f000 {
+> > > > +			compatible = "mediatek,mt7986-rng",
+> > > > +				     "mediatek,mt7623-rng";
+> > > > +			reg = <0 0x1020f000 0 0x100>;
+> > > > +			clocks = <&system_clk>;
+> > > > +			clock-names = "rng";
+> > > > +			status = "disabled";
+> > > > +		};
+> > > > +
+> > > > +		uart0: serial@11002000 {
+> > > > +			compatible = "mediatek,mt7986-uart",
+> > > > +				     "mediatek,mt6577-uart";
+> > > > +			reg = <0 0x11002000 0 0x400>;
+> > > > +			interrupts = <GIC_SPI 123
+> > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > +			clocks = <&system_clk>;
+> > > > +			status = "disabled";
+> > > > +		};
+> > > > +
+> > > > +		uart1: serial@11003000 {
+> > > > +			compatible = "mediatek,mt7986-uart",
+> > > > +				     "mediatek,mt6577-uart";
+> > > > +			reg = <0 0x11003000 0 0x400>;
+> > > > +			interrupts = <GIC_SPI 124
+> > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > +			clocks = <&system_clk>;
+> > > > +			status = "disabled";
+> > > > +		};
+> > > > +
+> > > > +		uart2: serial@11004000 {
+> > > > +			compatible = "mediatek,mt7986-uart",
+> > > > +				     "mediatek,mt6577-uart";
+> > > > +			reg = <0 0x11004000 0 0x400>;
+> > > > +			interrupts = <GIC_SPI 125
+> > > > IRQ_TYPE_LEVEL_HIGH>;
+> > > > +			clocks = <&system_clk>;
+> > > > +			status = "disabled";
+> > > > +		};
+> > > > +
+> > > > +	};
+> > > > +
+> > > > +};
+> > > > 
+> > 
+> > Regards,
+> > Sam
+> > 
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
