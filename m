@@ -2,14 +2,14 @@ Return-Path: <SRS0=YoiY=QG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 33617C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 03:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id D92B6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 03:47:16 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 0217E61AA7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 03:47:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 0217E61AA7
+	by mail.kernel.org (Postfix) with ESMTPS id A2A8E61AA7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 03:47:16 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org A2A8E61AA7
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,31 +18,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tQ/QBERF20nQPX/WP8WkGHy5+X8RS3eTX4I5o4+Hr2Y=; b=pe66B+l9vY6HwX
-	KI8K1Dwja8DrL5p4E+Al8rbDM7fm0Ay3wINZuQ9Ache6jQyhvElMkqBFtYw+K/bC6e8rE+s1kJjfP
-	ecAlgsFpviciHbiP6BLT+Z61Ks14x+9+s/Kzwe701FNJi+ekby21ZcDzYWZmbCSaSRkUhv+bnXl6K
-	pSiWGtDug98B17it2Ni7thJuqT+mqzp+MfLFjKOt59LUXZcjanbr8Je9YWZfgUC9Rlsf4LufyG9av
-	sVqZj2L3lzteGu77gXS8+VGP1Hg38tWSZndQYOQ9vN4dL+ILLenCR+EzoO/UYdSWGy55nstNnUJCF
-	3JoAOjGQXKw3Q6UldzzQ==;
+	List-Owner; bh=A5G5hfQkGPlnb2A1BA4AoK/FIPNkoNdW/5lH+CFM6QA=; b=wbBE0D69tddsHN
+	32bdCoqvlJf0ESXpTGZsmXIlOctyk9yy7q5rYRPEgnEnXrKuYEWxnW00i27BErTD0WA1gK5BGV3f0
+	hjy8VXzQizZAUFqqdGYhKEEvt7PJdDH7ly96BTm7Tq6wkqcsCi3N8yGpslsq1R8oIAIN4+UiM0C/8
+	uiOy5WtWpa/UlNdW1J7bm/Un/2QJU/z4oluRK6mdEY/Epl8z2mk8a3Ifc5ipdKda74kRg1Gt5hjgN
+	1lZa5fYLBAi1a/ZeRbEJKqqea3gzEWUPmCmFlDkcsdkjxB5N6LaeGpYj9OptVahIdVC++7O40T/+k
+	S3OkkyNgAVg5jOLja/0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnurR-009M2P-V9; Fri, 19 Nov 2021 03:46:49 +0000
+	id 1mnurd-009M6q-Vf; Fri, 19 Nov 2021 03:47:01 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnur2-009Lx9-J2; Fri, 19 Nov 2021 03:46:27 +0000
-X-UUID: aaf4d45fd28e47ecbd90b7f5adc01014-20211118
-X-UUID: aaf4d45fd28e47ecbd90b7f5adc01014-20211118
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1mnur5-009Lx5-Pz; Fri, 19 Nov 2021 03:46:29 +0000
+X-UUID: 54002027c3e64279b84b4a9ed987e602-20211118
+X-UUID: 54002027c3e64279b84b4a9ed987e602-20211118
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <james.lo@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1581811220; Thu, 18 Nov 2021 20:46:18 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Nov 2021 19:46:17 -0800
+ with ESMTP id 1472266399; Thu, 18 Nov 2021 20:46:18 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Nov 2021 19:46:16 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 19 Nov 2021 11:46:15 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 19 Nov 2021 11:46:15 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 19 Nov 2021 11:46:15 +0800
@@ -54,18 +54,19 @@ CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>, James Lo
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v16 2/4] dt-bindings: spmi: document binding for the Mediatek
- SPMI controller
-Date: Fri, 19 Nov 2021 11:46:11 +0800
-Message-ID: <20211119034613.32489-3-james.lo@mediatek.com>
+Subject: [PATCH v16 1/4] dt-bindings: spmi: remove the constraint of reg
+ property
+Date: Fri, 19 Nov 2021 11:46:10 +0800
+Message-ID: <20211119034613.32489-2-james.lo@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211119034613.32489-1-james.lo@mediatek.com>
 References: <20211119034613.32489-1-james.lo@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_194624_683331_9CC378BF 
-X-CRM114-Status: GOOD (  13.60  )
+X-CRM114-CacheID: sfid-20211118_194627_909794_7107F0DA 
+X-CRM114-Status: UNSURE (   8.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,98 +83,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This adds documentation for the SPMI controller found on Mediatek SoCs.
+'reg' is controller specific so we shouldn't even be specifying it here.
+Just remove it.
 
 Signed-off-by: James Lo <james.lo@mediatek.com>
 Signed-off-by: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
 Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/spmi/mtk,spmi-mtk-pmif.yaml      | 76 +++++++++++++++++++
- 1 file changed, 76 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
+ Documentation/devicetree/bindings/spmi/spmi.yaml | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
-new file mode 100644
-index 000000000000..2445c5e0b0ef
---- /dev/null
-+++ b/Documentation/devicetree/bindings/spmi/mtk,spmi-mtk-pmif.yaml
-@@ -0,0 +1,76 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/spmi/mtk,spmi-mtk-pmif.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek SPMI Controller Device Tree Bindings
-+
-+maintainers:
-+  - Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>
-+
-+description: |+
-+  On MediaTek SoCs the PMIC is connected via SPMI and the controller allows
-+  for multiple SoCs to control a single SPMI master.
-+
-+allOf:
-+  - $ref: "spmi.yaml"
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt6873-spmi
-+      - mediatek,mt8195-spmi
-+
-+  reg:
-+    maxItems: 2
-+
-+  reg-names:
-+    items:
-+      - const: pmif
-+      - const: spmimst
-+
-+  clocks:
-+    minItems: 3
-+    maxItems: 3
-+
-+  clock-names:
-+    items:
-+      - const: pmif_sys_ck
-+      - const: pmif_tmr_ck
-+      - const: spmimst_clk_mux
-+
-+  assigned-clocks:
-+    maxItems: 1
-+
-+  assigned-clock-parents:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - clocks
-+  - clock-names
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt8192-clk.h>
-+
-+    spmi: spmi@10027000 {
-+        compatible = "mediatek,mt6873-spmi";
-+        reg = <0x10027000 0xe00>,
-+              <0x10029000 0x100>;
-+        reg-names = "pmif", "spmimst";
-+        clocks = <&infracfg CLK_INFRA_PMIC_AP>,
-+                 <&infracfg CLK_INFRA_PMIC_TMR>,
-+                 <&topckgen CLK_TOP_SPMI_MST_SEL>;
-+        clock-names = "pmif_sys_ck",
-+                      "pmif_tmr_ck",
-+                      "spmimst_clk_mux";
-+        assigned-clocks = <&topckgen CLK_TOP_PWRAP_ULPOSC_SEL>;
-+        assigned-clock-parents = <&topckgen CLK_TOP_OSC_D10>;
-+    };
-+...
+diff --git a/Documentation/devicetree/bindings/spmi/spmi.yaml b/Documentation/devicetree/bindings/spmi/spmi.yaml
+index 1d243faef2f8..c1b06fa5c631 100644
+--- a/Documentation/devicetree/bindings/spmi/spmi.yaml
++++ b/Documentation/devicetree/bindings/spmi/spmi.yaml
+@@ -24,9 +24,6 @@ properties:
+   $nodename:
+     pattern: "^spmi@.*"
+ 
+-  reg:
+-    maxItems: 1
+-
+   "#address-cells":
+     const: 2
+ 
 -- 
 2.18.0
 
