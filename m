@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91A45C433FE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E4F6C433EF
 	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 23:22:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=naRAagB1o/dSvEWMZVE6BhTRSWADs5b9GEeQHJa6pBo=; b=NS11hP2hjtG9NR
-	8lvZPRMOG1saYBhuHCLnnIIUTAXxaIcOPMDb/LGuApItJ5iCYOD3yuy9fjB6Mnu1CNG59rF2PfdEc
-	U+Y7Yu0OgrOM+YKd62tSnAGfMXNVoS87HafuSZ8tLceU3c4ddvS4TwndGCBWpcdxl8jj1XtSJJOqk
-	Dqi5MQGfNLu/gq5b0nR1FqTwgWBlT8GuAlmxVI2nDlka1B+3Ioj9rbYyCyii2a7wxTLCA0jlhI05e
-	hnQ3oJz8POaacpcYIaUngehFV8dpxGZL+9UzgUN5MRL4ZRiG1jvz1zIDb31P29Hq5vFEaYTs5tPfy
-	FO1FTt68XkbznVq6pu1Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=VI3cMMukz1vAiXKrI5r8/XTNr+c+ywKUvAZodsXC3+c=; b=vo4ZNyGhhZCUvR
+	R/CoPLHvrMRRePOBJAMP4OrLYovHpXeEajzeisYrR8+GYWY3Hgl/JDZKXrizu3etaBqCyOR6EpL2/
+	4JIlsNJ9zVnJ2NemuTCyP/Erf8QERR9iawQMq8HDG503os0GQQXKTOQDS0NG6KWfb6GhmSfcwiZZg
+	MGCVSr/PtudcnQHFjgq7f4kcgzs4pvm5OfkWeZ0eEVtlVTOjtciNNwP7/aTkPZUVRde7ICVGUDNsK
+	twfMfYzjhpFvm1nGPEKRDj5m7TzaFHNOElVcxWabYfiXJ4xtjj4UTislr03AmRvZ1DW52eVvWLADN
+	C/15RRFyik31mJNTl6JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1moDD7-00Bmpc-DN; Fri, 19 Nov 2021 23:22:25 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1moDD6-00BmpW-KP; Fri, 19 Nov 2021 23:22:24 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1moDD1-00Bmok-SI
+ id 1moDD1-00Bmol-SI
  for linux-mediatek@lists.infradead.org; Fri, 19 Nov 2021 23:22:23 +0000
-X-UUID: dfafa521ec20451a945b024b975aa711-20211119
-X-UUID: dfafa521ec20451a945b024b975aa711-20211119
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+X-UUID: b11b62eb68e54fd29d73cf63e23d73c5-20211119
+X-UUID: b11b62eb68e54fd29d73cf63e23d73c5-20211119
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 433454834; Fri, 19 Nov 2021 16:22:18 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 19 Nov 2021 15:22:16 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 20 Nov 2021 07:22:14 +0800
+ with ESMTP id 290395825; Fri, 19 Nov 2021 16:22:16 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 19 Nov 2021 15:22:14 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sat, 20 Nov 2021 07:22:13 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 20 Nov 2021 07:22:14 +0800
+ Frontend Transport; Sat, 20 Nov 2021 07:22:13 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -52,18 +53,16 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
  <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 2/2] mt76: mt7921s: fix the device cannot sleep deeply in
- suspend
-Date: Sat, 20 Nov 2021 07:22:11 +0800
-Message-ID: <a00f3858dd6896f56a5b730c457a8e825c664028.1637363831.git.objelf@gmail.com>
+Subject: [PATCH 1/2] mt76: mt7921: move mt76_connac_mcu_set_hif_suspend to
+ bus-related files
+Date: Sat, 20 Nov 2021 07:22:10 +0800
+Message-ID: <92851c34c3758b7d50f3eaa24b1a27adccde2b1a.1637363831.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <92851c34c3758b7d50f3eaa24b1a27adccde2b1a.1637363831.git.objelf@gmail.com>
-References: <92851c34c3758b7d50f3eaa24b1a27adccde2b1a.1637363831.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211119_152219_978138_C9F0A348 
-X-CRM114-Status: GOOD (  18.98  )
+X-CRM114-CacheID: sfid-20211119_152219_977959_3E32D756 
+X-CRM114-Status: GOOD (  16.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,173 +81,173 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-According to the MT7921S firmware, the cmd MCU_UNI_CMD_HIF_CTRL have to
-be last MCU command to execute in suspend handler and all data traffic
-have to be stopped before the cmd MCU_UNI_CMD_HIF_CTRL starts as well
-in order that mt7921 can successfully fall into the deep sleep mode.
+This is a preliminary patch for the following patch
+("mt76: mt7921s: fix the device cannot sleep deeply in suspend).
 
-Where we reuse the flag MT76_STATE_SUSPEND and avoid creating
-another global flag to stop all of the traffic onto the SDIO bus.
+mt76_connac_mcu_set_hif_suspend eventually would be handled in each
+bus-level suspend/resume handler in either mt7921/sdio.c or mt7921/pci.c
+depending on what type of the bus the device is running on. We can move
+mt76_connac_mcu_set_hif_suspend to bus-related files to simplify the logic.
 
-Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
-Reported-by: Leon Yen <leon.yen@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  2 +-
- .../net/wireless/mediatek/mt76/mt7921/main.c  |  3 --
- .../net/wireless/mediatek/mt76/mt7921/sdio.c  | 34 ++++++++++++-------
- drivers/net/wireless/mediatek/mt76/sdio.c     |  3 +-
- .../net/wireless/mediatek/mt76/sdio_txrx.c    |  3 +-
- 5 files changed, 27 insertions(+), 18 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7921/main.c   | 13 ++-----------
+ .../net/wireless/mediatek/mt76/mt7921/pci.c    | 18 +++++-------------
+ .../net/wireless/mediatek/mt76/mt7921/sdio.c   | 18 +++++-------------
+ 3 files changed, 12 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index 26b4b875dcc0..61c4c86e79c8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -2461,7 +2461,7 @@ void mt76_connac_mcu_set_suspend_iter(void *priv, u8 *mac,
- 				      struct ieee80211_vif *vif)
- {
- 	struct mt76_phy *phy = priv;
--	bool suspend = test_bit(MT76_STATE_SUSPEND, &phy->state);
-+	bool suspend = !test_bit(MT76_STATE_RUNNING, &phy->state);
- 	struct ieee80211_hw *hw = phy->hw;
- 	struct cfg80211_wowlan *wowlan = hw->wiphy->wowlan_config;
- 	int i;
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index e022251b4006..0b2a6b7f22ea 100644
+index b144f5491798..e022251b4006 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -1242,8 +1242,6 @@ static int mt7921_suspend(struct ieee80211_hw *hw,
- 	mt7921_mutex_acquire(dev);
+@@ -1232,7 +1232,6 @@ static int mt7921_suspend(struct ieee80211_hw *hw,
+ {
+ 	struct mt7921_dev *dev = mt7921_hw_dev(hw);
+ 	struct mt7921_phy *phy = mt7921_hw_phy(hw);
+-	int err;
  
- 	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
+ 	cancel_delayed_work_sync(&phy->scan_work);
+ 	cancel_delayed_work_sync(&phy->mt76->mac_work);
+@@ -1250,25 +1249,18 @@ static int mt7921_suspend(struct ieee80211_hw *hw,
+ 					    mt76_connac_mcu_set_suspend_iter,
+ 					    &dev->mphy);
+ 
+-	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, true);
 -
--	set_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt76_connac_mcu_set_suspend_iter,
-@@ -1262,7 +1260,6 @@ static int mt7921_resume(struct ieee80211_hw *hw)
+ 	mt7921_mutex_release(dev);
+ 
+-	return err;
++	return 0;
+ }
+ 
+ static int mt7921_resume(struct ieee80211_hw *hw)
+ {
+ 	struct mt7921_dev *dev = mt7921_hw_dev(hw);
+ 	struct mt7921_phy *phy = mt7921_hw_phy(hw);
+-	int err;
+ 
  	mt7921_mutex_acquire(dev);
  
+-	err = mt76_connac_mcu_set_hif_suspend(&dev->mt76, false);
+-	if (err < 0)
+-		goto out;
+-
  	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
--	clear_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
+ 	clear_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
  	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
- 					    mt76_connac_mcu_set_suspend_iter,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-index 5fee489c7a99..5c88b6b8d097 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-@@ -206,6 +206,8 @@ static int mt7921s_suspend(struct device *__dev)
- 	int err;
+@@ -1278,11 +1270,10 @@ static int mt7921_resume(struct ieee80211_hw *hw)
+ 
+ 	ieee80211_queue_delayed_work(hw, &phy->mt76->mac_work,
+ 				     MT7921_WATCHDOG_TIME);
+-out:
+ 
+ 	mt7921_mutex_release(dev);
+ 
+-	return err;
++	return 0;
+ }
+ 
+ static void mt7921_set_wakeup(struct ieee80211_hw *hw, bool enabled)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 305b63fa1a8a..c29dde23d4ab 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -235,7 +235,6 @@ static int mt7921_pci_suspend(struct pci_dev *pdev, pm_message_t state)
+ 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
+ 	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
+ 	struct mt76_connac_pm *pm = &dev->pm;
+-	bool hif_suspend;
+ 	int i, err;
  
  	pm->suspended = true;
-+	set_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
-+
- 	cancel_delayed_work_sync(&pm->ps_work);
- 	cancel_work_sync(&pm->wake_work);
- 
-@@ -213,10 +215,6 @@ static int mt7921s_suspend(struct device *__dev)
+@@ -246,12 +245,9 @@ static int mt7921_pci_suspend(struct pci_dev *pdev, pm_message_t state)
  	if (err < 0)
  		goto restore_suspend;
  
--	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
--	if (err)
--		goto restore_suspend;
--
+-	hif_suspend = !test_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
+-	if (hif_suspend) {
+-		err = mt76_connac_mcu_set_hif_suspend(mdev, true);
+-		if (err)
+-			goto restore_suspend;
+-	}
++	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
++	if (err)
++		goto restore_suspend;
+ 
  	/* always enable deep sleep during suspend to reduce
  	 * power consumption
- 	 */
-@@ -224,34 +222,45 @@ static int mt7921s_suspend(struct device *__dev)
+@@ -302,8 +298,7 @@ static int mt7921_pci_suspend(struct pci_dev *pdev, pm_message_t state)
+ 	if (!pm->ds_enable)
+ 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
  
- 	mt76_txq_schedule_all(&dev->mphy);
- 	mt76_worker_disable(&mdev->tx_worker);
--	mt76_worker_disable(&mdev->sdio.txrx_worker);
- 	mt76_worker_disable(&mdev->sdio.status_worker);
--	mt76_worker_disable(&mdev->sdio.net_worker);
- 	cancel_work_sync(&mdev->sdio.stat_work);
- 	clear_bit(MT76_READING_STATS, &dev->mphy.state);
--
- 	mt76_tx_status_check(mdev, true);
- 
--	err = mt7921_mcu_fw_pmctrl(dev);
-+	mt76_worker_schedule(&mdev->sdio.txrx_worker);
-+	wait_event_timeout(dev->mt76.sdio.wait,
-+			   mt76s_txqs_empty(&dev->mt76), 5 * HZ);
-+
-+	/* It is supposed that SDIO bus is idle at the point */
-+	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
- 	if (err)
- 		goto restore_worker;
- 
-+	mt76_worker_disable(&mdev->sdio.txrx_worker);
-+	mt76_worker_disable(&mdev->sdio.net_worker);
-+
-+	err = mt7921_mcu_fw_pmctrl(dev);
-+	if (err)
-+		goto restore_txrx_worker;
-+
- 	sdio_set_host_pm_flags(func, MMC_PM_KEEP_POWER);
- 
- 	return 0;
- 
-+restore_txrx_worker:
-+	mt76_worker_enable(&mdev->sdio.net_worker);
-+	mt76_worker_enable(&mdev->sdio.txrx_worker);
+-	if (hif_suspend)
+-		mt76_connac_mcu_set_hif_suspend(mdev, false);
 +	mt76_connac_mcu_set_hif_suspend(mdev, false);
-+
- restore_worker:
- 	mt76_worker_enable(&mdev->tx_worker);
--	mt76_worker_enable(&mdev->sdio.txrx_worker);
- 	mt76_worker_enable(&mdev->sdio.status_worker);
--	mt76_worker_enable(&mdev->sdio.net_worker);
  
+ restore_suspend:
+ 	pm->suspended = false;
+@@ -356,10 +351,7 @@ static int mt7921_pci_resume(struct pci_dev *pdev)
+ 	if (!pm->ds_enable)
+ 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
+ 
+-	if (!test_bit(MT76_STATE_SUSPEND, &dev->mphy.state))
+-		err = mt76_connac_mcu_set_hif_suspend(mdev, false);
+-
+-	return err;
++	return mt76_connac_mcu_set_hif_suspend(mdev, false);
+ }
+ #endif /* CONFIG_PM */
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+index ddf0eeb8b688..5fee489c7a99 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+@@ -203,7 +203,6 @@ static int mt7921s_suspend(struct device *__dev)
+ 	struct mt7921_dev *dev = sdio_get_drvdata(func);
+ 	struct mt76_connac_pm *pm = &dev->pm;
+ 	struct mt76_dev *mdev = &dev->mt76;
+-	bool hif_suspend;
+ 	int err;
+ 
+ 	pm->suspended = true;
+@@ -214,12 +213,9 @@ static int mt7921s_suspend(struct device *__dev)
+ 	if (err < 0)
+ 		goto restore_suspend;
+ 
+-	hif_suspend = !test_bit(MT76_STATE_SUSPEND, &dev->mphy.state);
+-	if (hif_suspend) {
+-		err = mt76_connac_mcu_set_hif_suspend(mdev, true);
+-		if (err)
+-			goto restore_suspend;
+-	}
++	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
++	if (err)
++		goto restore_suspend;
+ 
+ 	/* always enable deep sleep during suspend to reduce
+ 	 * power consumption
+@@ -253,8 +249,7 @@ static int mt7921s_suspend(struct device *__dev)
  	if (!pm->ds_enable)
  		mt76_connac_mcu_set_deep_sleep(mdev, false);
  
--	mt76_connac_mcu_set_hif_suspend(mdev, false);
--
+-	if (hif_suspend)
+-		mt76_connac_mcu_set_hif_suspend(mdev, false);
++	mt76_connac_mcu_set_hif_suspend(mdev, false);
+ 
  restore_suspend:
-+	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
  	pm->suspended = false;
+@@ -285,10 +280,7 @@ static int mt7921s_resume(struct device *__dev)
+ 	if (!pm->ds_enable)
+ 		mt76_connac_mcu_set_deep_sleep(mdev, false);
  
- 	return err;
-@@ -266,6 +275,7 @@ static int mt7921s_resume(struct device *__dev)
- 	int err;
+-	if (!test_bit(MT76_STATE_SUSPEND, &dev->mphy.state))
+-		err = mt76_connac_mcu_set_hif_suspend(mdev, false);
+-
+-	return err;
++	return mt76_connac_mcu_set_hif_suspend(mdev, false);
+ }
  
- 	pm->suspended = false;
-+	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
- 
- 	err = mt7921_mcu_drv_pmctrl(dev);
- 	if (err < 0)
-diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
-index c99acc21225e..b0bc7be0fb1f 100644
---- a/drivers/net/wireless/mediatek/mt76/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/sdio.c
-@@ -479,7 +479,8 @@ static void mt76s_status_worker(struct mt76_worker *w)
- 			resched = true;
- 
- 		if (dev->drv->tx_status_data &&
--		    !test_and_set_bit(MT76_READING_STATS, &dev->phy.state))
-+		    !test_and_set_bit(MT76_READING_STATS, &dev->phy.state) &&
-+		    !test_bit(MT76_STATE_SUSPEND, &dev->phy.state))
- 			queue_work(dev->wq, &dev->sdio.stat_work);
- 	} while (nframes > 0);
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-index 649a56790b89..801590a0a334 100644
---- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-+++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-@@ -317,7 +317,8 @@ void mt76s_txrx_worker(struct mt76_sdio *sdio)
- 		if (ret > 0)
- 			nframes += ret;
- 
--		if (test_bit(MT76_MCU_RESET, &dev->phy.state)) {
-+		if (test_bit(MT76_MCU_RESET, &dev->phy.state) ||
-+		    test_bit(MT76_STATE_SUSPEND, &dev->phy.state)) {
- 			if (!mt76s_txqs_empty(dev))
- 				continue;
- 			else
+ static const struct dev_pm_ops mt7921s_pm_ops = {
 -- 
 2.25.1
 
