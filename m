@@ -2,14 +2,14 @@ Return-Path: <SRS0=YoiY=QG=lists.infradead.org=linux-mediatek-bounces+linux-medi
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from mail.kernel.org (mail.kernel.org [198.145.29.99])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A71E1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 05:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B3CE5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 06:37:31 +0000 (UTC)
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPS id 4988461B2B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 05:56:26 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 4988461B2B
+	by mail.kernel.org (Postfix) with ESMTPS id 5438261A79
+	for <linux-mediatek@archiver.kernel.org>; Fri, 19 Nov 2021 06:37:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.1 mail.kernel.org 5438261A79
 Authentication-Results: mail.kernel.org; dmarc=fail (p=none dis=none) header.from=mediatek.com
 Authentication-Results: mail.kernel.org; spf=none smtp.mailfrom=lists.infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
@@ -18,49 +18,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=bXCxpj5oe2pvMQ9kQa8R4sZKiArVNBuwjPGME82hpVM=; b=Bi1TR9AKFY3gnu
-	/9J78syCKf8vsqI2sTRIx62wtjbg5Jl9FuS8vCuuYhVN5fetiZF9VyMlraMaARK573nD+mr9G/ij0
-	nXcmCs2LoMo8YD0IdnIpomUJZ4i0fMrOO6HpDUOkY0Il/3tHtwJxLAPhxcKgyRLzws67yzjo5JMWL
-	P1b8onE3NlQMdJ3jS8cWRi+Q5EYyPaNd95Y1oEzssU+8jYADeSZ3CeQFRbvwa5PjGt2t95/WiDh7m
-	DT86XXpJ7yzm68NG50NIl3oKM1mm2hsD6FMXCUeBVxBToPruerZSEFl8HAN7F6Xn1Fg3msBaukWCx
-	cKej8mX2jp43t4S0oIJw==;
+	List-Owner; bh=z3PG/fPE1bLjxhuvSMtLh8sBZZctZDNW7koTmzkL3ic=; b=DjU0kSu8ofrgkB
+	Mn0xJ05wHmN2BKnAthLl0EQ4M76RyDivGHgbSl38PxCnmeGU+JK1fyAqQKqvYP+P4MelVT5VPLdJQ
+	DSc1ocRx2LC8OdUBRyHT7/hZSXb07ldBsWTM1ZHgqxtThnRWtUbTxQF8817hYSiRE8CwmgrHdGm0+
+	x0S4xID/b+uMKfsQFOgmk/wKpzSTF7lRnh6HMd3Bjzvm92toHUtApMe1KBZV4/fnMy3DqBHJKNRq4
+	5AJ7ajTiT+Wt3SI0GxtIfCbV9w0H8H7732YcO+C2v4MMtrOD0ykAwyBqtlbuqBNpbjUjdc9dozUgU
+	orduV+gxl3/7hUiyKolw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mnwse-009VhS-Tz; Fri, 19 Nov 2021 05:56:12 +0000
+	id 1mnxWW-009YNX-4J; Fri, 19 Nov 2021 06:37:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mnwsb-009Vgs-BL
- for linux-mediatek@lists.infradead.org; Fri, 19 Nov 2021 05:56:11 +0000
-X-UUID: 7a089e481b1042ef8ac8b0376efa2081-20211118
-X-UUID: 7a089e481b1042ef8ac8b0376efa2081-20211118
+ id 1mnxWR-009YNA-76
+ for linux-mediatek@lists.infradead.org; Fri, 19 Nov 2021 06:37:20 +0000
+X-UUID: 6390876865c4486fa3d8b9512b62f00c-20211118
+X-UUID: 6390876865c4486fa3d8b9512b62f00c-20211118
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <xing.song@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1691847413; Thu, 18 Nov 2021 22:56:05 -0700
+ with ESMTP id 2097958362; Thu, 18 Nov 2021 23:37:12 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 18 Nov 2021 21:49:08 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 18 Nov 2021 22:37:10 -0800
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 19 Nov 2021 13:49:04 +0800
+ Fri, 19 Nov 2021 14:37:08 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 19 Nov 2021 13:49:04 +0800
+ 15.0.1497.2 via Frontend Transport; Fri, 19 Nov 2021 14:37:08 +0800
 From: Xing Song <xing.song@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
  <shayne.chen@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai
  <evelyn.tsai@mediatek.com>, <linux-wireless@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, Xing Song <xing.song@mediatek.com>
-Subject: [PATCH v3] mt76: do not pass the received frame with decryption error
-Date: Fri, 19 Nov 2021 13:49:01 +0800
-Message-ID: <20211119054901.15765-1-xing.song@mediatek.com>
+Subject: [PATCH v4] mt76: do not pass the received frame with decryption error
+Date: Fri, 19 Nov 2021 14:37:06 +0800
+Message-ID: <20211119063706.17643-1-xing.song@mediatek.com>
 X-Mailer: git-send-email 2.17.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211118_215609_426952_2856A412 
-X-CRM114-Status: GOOD (  13.52  )
+X-CRM114-CacheID: sfid-20211118_223719_293909_E1DFA7BB 
+X-CRM114-Status: GOOD (  14.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,8 +80,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 MAC80211 doesn't care any decryption error in 802.3 path, so received
 frame will be dropped if HW tell us that the cipher configuration is not
 matched as well as the header has been translated to 802.3. This case only
-appears when IEEE80211_FCTL_PROTECTED is 1 and cipher suit is none in the
-corresponding HW entry.
+appears when IEEE80211_FCTL_PROTECTED is 0 and cipher suit is not none in
+the corresponding HW entry.
 
 The received frame is only reported to monitor interface if HW decryption
 block tell us there is ICV error or CCMP/BIP/WPI MIC error. Note in this
@@ -93,6 +93,8 @@ Signed-off-by: Xing Song <xing.song@mediatek.com>
 v2: check for cipher mismatch or frame format error
 v3: remove the always false case (hdr_trans && MT_RXD*_NORMAL_CLM)
     report the 802.11 frame with decryption error to monitor interface
+v4: fix the commit as below, sorry about that
+    "IEEE80211_FCTL_PROTECTED is (0) and cipher suit is (not) none"
 ---
  drivers/net/wireless/mediatek/mt76/mt7603/mac.c | 4 ++++
  drivers/net/wireless/mediatek/mt76/mt7615/mac.c | 9 ++++++++-
