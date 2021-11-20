@@ -4,64 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6766C4332F
-	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Nov 2021 20:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ABA6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 20 Nov 2021 20:37:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3Zf+kJgvkeJtt7TfuBqVg1++O78S30255W5+m3TcQyM=; b=n2SxTUk2GkGefi
-	uFiR34HQszCtoMfkVawySUPO9+iXhen8KCif2SdwH48WvU7tX13VKmBmK5qBZRxMb9M9muRWfVOTM
-	PZ3FB3+aFa326L7MNrv4FcD6YCE0ndsc1IiOmHrAoHdoCEFvZNNUVnBBmWQ7Hmb/vQki13HKdZx24
-	6Fr/0SRiuzDZEfhQlXsMlQ5bN8NRYLnX1NPhOZjHEc//8gzmQh+BROizUgX5ugQjZSbnXK+sA/m20
-	4ECCGxE3DwF1qLu644L4uOBcauQ4RK8sNv/HTwAmts7qEq7v/oqi/utw5+cTINuADSG43QD7yfWsQ
-	ERxu+4utLVc7CzUPRiZg==;
+	List-Owner; bh=mrvr5tC9ZiJP+t/VH00sNc/pNcXMvdnq7YzIZ72G4fY=; b=Bzqd763CWTRGsg
+	mqqGTrjzyAH7Voq2jJJqKO8z1yFKwY7kz3HFybBweiuZk62kNcIX4nHDMo6lUjrqo/+DJqoFd304r
+	8nBY41kUrTwNdMRa29cl9z0SxbQI1kHFrVYckpQUiSfNmTcX/qcPOhp4i+DBE3dLdi+BR1pFhH4hT
+	o8LBkjreM0Tkt3QyF9qMft/loeu5a5nmI5s1eZ6dsnt8QDFezMjutTFTWdeUJxeI8QBvQgZlz0zXY
+	F0ugfBiZPuZdVAhgbvYxWnqMbh5iJbpeEOnDcKF5iia8IBQV6kHyW7O1WZOCyQnpg8LNPYUjG6tmk
+	GsRbrimT2WEJ1tBjN5+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1moWzQ-00CwV2-4L; Sat, 20 Nov 2021 20:29:36 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1moX7I-00Cx6u-63; Sat, 20 Nov 2021 20:37:44 +0000
+Received: from mail-eopbgr70078.outbound.protection.outlook.com ([40.107.7.78]
+ helo=EUR04-HE1-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1moWzL-00CwUD-5E
- for linux-mediatek@lists.infradead.org; Sat, 20 Nov 2021 20:29:34 +0000
-X-UUID: 81cd273617ef436d825bccd4eda52c52-20211120
-X-UUID: 81cd273617ef436d825bccd4eda52c52-20211120
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 553635234; Sat, 20 Nov 2021 13:29:25 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 20 Nov 2021 12:29:24 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 21 Nov 2021 04:29:22 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sun, 21 Nov 2021 04:29:22 +0800
-From: <sean.wang@mediatek.com>
-To: <lorenzo.bianconi@redhat.com>
-CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
- <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
- <Stella.Chang@mediatek.com>, <steve.lee@mediatek.com>, <jsiuda@google.com>,
- <frankgor@google.com>, <jemele@google.com>, <shawnku@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 2/2] mt76: mt7921s: fix the device cannot sleep deeply in
- suspend
-Date: Sun, 21 Nov 2021 04:29:21 +0800
-Message-ID: <1637440161-1946-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <YZkDmDIqnePjIF+O@lore-desk--annotate>
-References: <YZkDmDIqnePjIF+O@lore-desk--annotate>
+ id 1moX74-00Cx4m-0Q; Sat, 20 Nov 2021 20:37:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jU5S4qGkrcnVlp73AX5h4EXyX7m+zciFieOWOa1pkjwFPPIqQm/DQpFmT0MjrxUxfUC9OTi/2Em71Btzt/hlf2s31TGJbEes/N+jAqP0MdRVaCWtuaC+tI1IQmEOx217+PXRSMrX9TXx6cIW4RT+JGl/mYm3zb/0nEJFxYefNxBKyE201cWQzxbiviAbOcbhuwjgorf/aO84gQrSysnYGYuUYZkPr+x5odYo43GxHpmQGvDVBx6WM+pQL5LcDSxa98dzB3MAg5y6plCY8ectHaq56mvQt9aQi4TVjDbUjfV1/gHupcZJaOad2SGemovz/ps9dWS3WeU7kwVS//+CCQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6o77xnjLx+cuN15w/SbjqCiBor6gVJDUOmaHt0xQRQA=;
+ b=hL1mmE8uuf5Fh2eMqmsJGJFAyBwXrWcMl/MeOYQD4I3tNNj/2il1VaNCWawccfajfyqcl8WLO6OOrJ9YASuJLwROWnWevMk9lVlMa9dj+fEfDXoXyeW6R3xubtMx3HWuyYfL9PoKRsWfsNwZofzgHpo0J+xfsJeQmfyEKaKn88m9dTJPMV/ry0bxbfANhkrGVaz9bYLerM5UTM54FQ1o1Tck1CkqOkAz/6Ph7Mrl5EGsWMEtl3SPNU6kOqU//y1tYzbsp29nPwhYMmzWxJlRcEuSzJgGlX7nWPyp65wqGvsABzrjGxHWkvKzdhOTqw2vKzhgY7pqNJNtGF37dP8umA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector2; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=6o77xnjLx+cuN15w/SbjqCiBor6gVJDUOmaHt0xQRQA=;
+ b=U9TDvVxOxiXBNeadAA6N2BZk5nMYpTBRHnttsTx7LAAibewlcLO2bHpgj3V1VKon07HjoSt7SZtrmyJ7e6IXZFKncFno2TYDR5vYD1A1OjefljrvYUt0/DYq2+VrWAwTVPSaf/35hgthrP/ra816t/TC9Tt6y4zeoAvbA7Oao8s=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from VI1PR04MB4688.eurprd04.prod.outlook.com (2603:10a6:803:6a::30)
+ by VE1PR04MB6703.eurprd04.prod.outlook.com (2603:10a6:803:129::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4713.22; Sat, 20 Nov
+ 2021 20:37:26 +0000
+Received: from VI1PR04MB4688.eurprd04.prod.outlook.com
+ ([fe80::d0eb:49aa:2a9:9fc4]) by VI1PR04MB4688.eurprd04.prod.outlook.com
+ ([fe80::d0eb:49aa:2a9:9fc4%4]) with mapi id 15.20.4713.024; Sat, 20 Nov 2021
+ 20:37:26 +0000
+Date: Sat, 20 Nov 2021 22:37:24 +0200
+From: Abel Vesa <abel.vesa@nxp.com>
+To: miles.chen@mediatek.com
+Cc: sboyd@kernel.org, festevam@gmail.com, kernel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-imx@nxp.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, mturquette@baylibre.com,
+ s.hauer@pengutronix.de, shawnguo@kernel.org, wsd_upstream@mediatek.com
+Subject: Re: [PATCH v3] clk: imx: use module_platform_driver
+Message-ID: <YZlchKnEqWN8nKQk@ryzen>
+References: <163087455086.405991.14496690646389782129@swboyd.mtv.corp.google.com>
+ <20211105055932.3432-1-miles.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20211105055932.3432-1-miles.chen@mediatek.com>
+X-ClientProxiedBy: VI1PR0701CA0039.eurprd07.prod.outlook.com
+ (2603:10a6:800:90::25) To VI1PR04MB4688.eurprd04.prod.outlook.com
+ (2603:10a6:803:6a::30)
 MIME-Version: 1.0
-X-MTK: N
+Received: from ryzen (5.12.226.136) by
+ VI1PR0701CA0039.eurprd07.prod.outlook.com (2603:10a6:800:90::25) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.13 via Frontend
+ Transport; Sat, 20 Nov 2021 20:37:25 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f4468373-0b03-4f36-c6e2-08d9ac65903b
+X-MS-TrafficTypeDiagnostic: VE1PR04MB6703:
+X-Microsoft-Antispam-PRVS: <VE1PR04MB6703E3FCC8CE5D87578C43BEF69D9@VE1PR04MB6703.eurprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: YD5L2JU+piX7c18K0NmYcEQ6IZA6DcD69/7+INz8o3Woetvh2K4Ihom2/SFNc/mj67QpD0xqE4aLi64a6qRU+XjTJiZLrLVXyp0IH4Cn/7M6YY8sWKKkAB5koMo1C/AIgWm9+XrKpu3KYNYL7o3lOxMqfAmyNXtmdl8SCujGpOjiAVgcFzE8uXEKU+/7YNHOaJN1uPqZKwwn3XWLPk5LucdOyEs9p3Jl+lA2/kylGH4e31OvfY0jcCyvK4sVrb854Yw+3TolfyNUD9wWZrvd6ScYmz9rHXrB657j2l7TfHvgn3+k6t9MQ2GK2GiLJ0EZ6NmES+I7XooaX68AfJ/0I/0vmkEB7J2LQ/KC+y2bLFw2b0Q1LXESojkgEI1KnhhjjdCJsaJhbd4gqQvM238iFMT0BBTfLC0x5I2uoiWXZ8mj+/swyrHwKQPnonjn0u3vIKc9ehLplNj3HIz9jVVpBS1mTZ9pxJVfBgrRF85kTpvI1MgjhPFu5KQ9+0kZQTLqiff7oAw0XD6q3uR8wsV0A39YEPEvH+O0gXjQYyFSrtLPux16N8LXwGYGfw8HE+pmwfM+2ISIL0eMqt+DpiV9bvujwUgxLAkkcOTanyF9SPStPvg4BOuux+snLXkJZGgiqTPIaIOu0Vvs4ffI56YZzRpHPvm+MLvdA5RipszphJQA5Oc0NKx26KOMIeUFyeTFwGZXOw4wP+FUwePATpnSzA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR04MB4688.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(9576002)(52116002)(316002)(6496006)(66476007)(6916009)(2906002)(4326008)(26005)(38350700002)(33716001)(4744005)(186003)(53546011)(7416002)(508600001)(38100700002)(66556008)(83380400001)(8676002)(44832011)(86362001)(66946007)(5660300002)(8936002)(55016002)(9686003)(956004);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NzygtBfPDcKZi5wMtkHxGHPEb0eGS1eNJZ1OJSqPpM51wujbz319GBqrRiSF?=
+ =?us-ascii?Q?gJP3aXB8S5JyiEE15LVVl/TXxLGTRxe7BRqCUhuBwiuMxwtrX3BAyiXdtJ+x?=
+ =?us-ascii?Q?hc9wScluHl8KyF9AL4x7KV3Sm4Ta/meItb6KIGCXiz51wvhqM6jE/ncEby0i?=
+ =?us-ascii?Q?qJycPdugsrngLbipdzB9Yx9JS9bL8sY6VXpC9ObbFERyXRrebiGGeO+wMKdG?=
+ =?us-ascii?Q?DiMkSdEFPyNqny5I9Kwzy9dQ9+Yn1PjMVw3V9XHepwo/f1LsqFQird+j3Ck3?=
+ =?us-ascii?Q?uYxVELXzQX6TKg/3v3ZUeSCncYt0HLvgg9czGMZK/I7JKdK1W4unN972MB1u?=
+ =?us-ascii?Q?6iR5Mk03TkSdom8oke5Ft/2X6xJC+QTbAC04LUfMiwnUlrXE1SCS9m427tDz?=
+ =?us-ascii?Q?PU19GGKzkhukHNNXPED7ECGYgsJFVeQmRUBgvhmX48U7mBFTzwKHMZUNOpWg?=
+ =?us-ascii?Q?ELd3tH2RWqsgwe962gsh2Pc08UfdFkHsq5gLP1hPbTsnLwt5R8gblVbScaTx?=
+ =?us-ascii?Q?XR8itAJmp1Sv+IMADRIbVvMTTFZdrml6avUFHKBNrcQ2OGdwA7hx8RtMI1wa?=
+ =?us-ascii?Q?owRZOP2T+r8AVd000dnRPDcI1dagMY8KDy0b1vF4Opi4DiRvloHo5rrSS0nj?=
+ =?us-ascii?Q?CcNd0O9iY6ewq2T3++Wwfe/pzL2jjztRdkvN9WIT6gojKDmUCFgnHOIdW1G6?=
+ =?us-ascii?Q?/lvOVPIn/lWSw8cSv8dbhPvxRFOl1NJxLHmKGFNtOAWivVHTQjhYsm/a+n/A?=
+ =?us-ascii?Q?dhRKaz8XJyxbcURwmK8CCu6ZerbaOAnrnnSz2BIxGK4BFMbbA56gEoupfpxx?=
+ =?us-ascii?Q?i0c4oG2AfQbnCQroXtw81foZnObNTD1SYQGPpis202KtLDnXZsmynvRytq3z?=
+ =?us-ascii?Q?4zCbvwMkJ/brsvzXjLVT4YlUFNsrbfvOYwcjQuxCYMlLSSAUzipGSwvlehrO?=
+ =?us-ascii?Q?QxkT5qLnK373GVjFuYfWQGX4MDCEat1Rk+zxfIhbLE2tR2MpiE0QqKu0C1h7?=
+ =?us-ascii?Q?lwVXU/Sh3mEmv+yDSDD0Vit61Gk6CHLJrAb+qJc8giPHZ5m/lVxy0LoyU4YT?=
+ =?us-ascii?Q?oja2plPbZnInpyU4Xill32MkP+bFuE7x20SyiP/yrHIRrn0JpUOPJM/i/6Bn?=
+ =?us-ascii?Q?fq76Lxqqmm4I5ldEcUqr/INk2xavFackr7pKJZ7AsrFWNOxpJg9SusNAzwMC?=
+ =?us-ascii?Q?joihIZBFts/rz3dTujLFkoFCUiGTySTKq0Cc7GUAvsYIFLelsb3v8v66dKlb?=
+ =?us-ascii?Q?oQGNImqJFG0Ysrdlwf+Vt5PekAyo84OHZUd0TxfG1Pq1b1BGJCiRvQ++BTHh?=
+ =?us-ascii?Q?0KGgR2jlp5kQpwjBeH441NAILFPkmU0+6AHK887htqyY9kiGFA9wB24sOtFI?=
+ =?us-ascii?Q?73RpZRY8v/F9/4jT3uzPSE3ykmfEmBzXk3dEG0JFMRz/DLQLPHgCgtwI5F/m?=
+ =?us-ascii?Q?pxgkmfrVInwDGj1eYRwjO1BXxj6nzZ6kVFfg07NJOMsKszZ7K0DHO7ZIBsW4?=
+ =?us-ascii?Q?TQ+YZZf5aQhU0crETdxlpDf2osvpyBNW93JFpzgfL5KZqbNK8P3TaR+pAkGR?=
+ =?us-ascii?Q?fUqBRzqNWGI8+Qks9QUlCjTL2V4HTMzCTK8ARJge5D1sItgawVloMxUqGXkE?=
+ =?us-ascii?Q?cbphD4EJNV7vRALYysjJGkY=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f4468373-0b03-4f36-c6e2-08d9ac65903b
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB4688.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Nov 2021 20:37:26.2715 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: JXJ5zXrJFeVgk/1E+9rknWBfUIcdBZb/1f4dV6O1No5iQ5dWpmhHJnrNNOJb4rxdOPH/cQIoJtJluXSn22iIzw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR04MB6703
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211120_122931_244810_C7FC0147 
-X-CRM114-Status: GOOD (  30.49  )
+X-CRM114-CacheID: sfid-20211120_123730_080359_EE45272A 
+X-CRM114-Status: GOOD (  10.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,247 +144,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On 21-11-05 13:59:32, miles.chen@mediatek.com wrote:
+> From: Miles Chen <miles.chen@mediatek.com>
+> 
+> Hi Stephen,
+> 
+> >> Fixes: e0d0d4d86c766 ("clk: imx8qxp: Support building i.MX8QXP clock driver as module")
+> >> Cc: Fabio Estevam <festevam@gmail.com>
+> >> Cc: Stephen Boyd <sboyd@kernel.org>
+> >> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> 
+> > Reviewed-by: Stephen Boyd <sboyd@kernel.org>
+> 
+> Thanks for doing the review, I cannot find this patch in clk-imx tree,
+> Would you pick this patch, please?
 
->> > From: Sean Wang <sean.wang@mediatek.com>
->> >
->> > According to the MT7921S firmware, the cmd MCU_UNI_CMD_HIF_CTRL have
->> > to be last MCU command to execute in suspend handler and all data
->> > traffic have to be stopped before the cmd MCU_UNI_CMD_HIF_CTRL
->> > starts as well in order that mt7921 can successfully fall into the deep sleep mode.
->> >
->> > Where we reuse the flag MT76_STATE_SUSPEND and avoid creating
->> > another global flag to stop all of the traffic onto the SDIO bus.
->> >
->> > Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
->> > Reported-by: Leon Yen <leon.yen@mediatek.com>
->> > Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> > ---
->> >  .../wireless/mediatek/mt76/mt76_connac_mcu.c  |  2 +-
->> > .../net/wireless/mediatek/mt76/mt7921/main.c  |  3 --
->> > .../net/wireless/mediatek/mt76/mt7921/sdio.c  | 34 ++++++++++++-------
->> >  drivers/net/wireless/mediatek/mt76/sdio.c     |  3 +-
->> >  .../net/wireless/mediatek/mt76/sdio_txrx.c    |  3 +-
->> >  5 files changed, 27 insertions(+), 18 deletions(-)
->> >
->> > diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> > b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> > index 26b4b875dcc0..61c4c86e79c8 100644
->> > --- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> > +++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
->> > @@ -2461,7 +2461,7 @@ void mt76_connac_mcu_set_suspend_iter(void *priv, u8 *mac,
->> >				      struct ieee80211_vif *vif)  {
->> >	struct mt76_phy *phy = priv;
->> > -	bool suspend = test_bit(MT76_STATE_SUSPEND, &phy->state);
->> > +	bool suspend = !test_bit(MT76_STATE_RUNNING, &phy->state);
->> >	struct ieee80211_hw *hw = phy->hw;
->> >	struct cfg80211_wowlan *wowlan = hw->wiphy->wowlan_config;
->> >	int i;
->> > diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > index e022251b4006..0b2a6b7f22ea 100644
->> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> > @@ -1242,8 +1242,6 @@ static int mt7921_suspend(struct ieee80211_hw *hw,
->> >	mt7921_mutex_acquire(dev);
->> >
->> >	clear_bit(MT76_STATE_RUNNING, &phy->mt76->state);
->> > -
->> > -	set_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
->> >	ieee80211_iterate_active_interfaces(hw,
->> >					    IEEE80211_IFACE_ITER_RESUME_ALL,
->> >					    mt76_connac_mcu_set_suspend_iter, @@ -1262,7 +1260,6 @@
->> > static int mt7921_resume(struct ieee80211_hw *hw)
->> >	mt7921_mutex_acquire(dev);
->> >
->> >	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
->> > -	clear_bit(MT76_STATE_SUSPEND, &phy->mt76->state);
->> >	ieee80211_iterate_active_interfaces(hw,
->> >					    IEEE80211_IFACE_ITER_RESUME_ALL,
->> >					    mt76_connac_mcu_set_suspend_iter, diff --git
->> > a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
->> > b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
->> > index 5fee489c7a99..5c88b6b8d097 100644
->> > --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
->> > +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
->> > @@ -206,6 +206,8 @@ static int mt7921s_suspend(struct device *__dev)
->> >	int err;
->> >
->> >	pm->suspended = true;
->> > +	set_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
->> > +
->> >	cancel_delayed_work_sync(&pm->ps_work);
->> >	cancel_work_sync(&pm->wake_work);
->> >
->> > @@ -213,10 +215,6 @@ static int mt7921s_suspend(struct device *__dev)
->> >	if (err < 0)
->> >		goto restore_suspend;
->> >
->> > -	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
->> > -	if (err)
->> > -		goto restore_suspend;
->> > -
->> >	/* always enable deep sleep during suspend to reduce
->> >	 * power consumption
->> >	 */
->> > @@ -224,34 +222,45 @@ static int mt7921s_suspend(struct device
->> > *__dev)
->> >
->> >	mt76_txq_schedule_all(&dev->mphy);
->> >	mt76_worker_disable(&mdev->tx_worker);
->> > -	mt76_worker_disable(&mdev->sdio.txrx_worker);
->> >	mt76_worker_disable(&mdev->sdio.status_worker);
->> > -	mt76_worker_disable(&mdev->sdio.net_worker);
->> >	cancel_work_sync(&mdev->sdio.stat_work);
->> >	clear_bit(MT76_READING_STATS, &dev->mphy.state);
->> > -
->> >	mt76_tx_status_check(mdev, true);
->> >
->> > -	err = mt7921_mcu_fw_pmctrl(dev);
->> > +	mt76_worker_schedule(&mdev->sdio.txrx_worker);
->>
->> I guess mt76_worker_disable() is supposed to do it, right?
->> I guess we can assume txrx_worker is no longer running here, right?
->
->I can see it now, txrx_worker can be running on the different cpu.
->I guess we need to add just the wait_event_timeout() and move
->mt76_connac_mcu_set_hif_suspend() below. What do you think?
->Can you please try the chunk below?
+Sorry for the delay. 
 
-mt76_connac_mcu_set_hif_suspend have to rely on txrx_worker and net_worker to
-send the command MCU_UNI_CMD_HIF_CTRL and receive the corresponding event,
-so that is why we cannnot disable txrx_worker and net_worker with mt76_worker_disable
-until the mt76_connac_mcu_set_hif_suspend is done.
+Fixes are usually picked up directly by Stephen, 
+therefore they're not going through clk-imx tree.
 
->
->Regards,
->Lorenzo
->
->>
->> > +	wait_event_timeout(dev->mt76.sdio.wait,
->> > +			   mt76s_txqs_empty(&dev->mt76), 5 * HZ);
->> > +
->> > +	/* It is supposed that SDIO bus is idle at the point */
->> > +	err = mt76_connac_mcu_set_hif_suspend(mdev, true);
->> >	if (err)
->> >		goto restore_worker;
->> >
->> > +	mt76_worker_disable(&mdev->sdio.txrx_worker);
->> > +	mt76_worker_disable(&mdev->sdio.net_worker);
->> > +
->> > +	err = mt7921_mcu_fw_pmctrl(dev);
->> > +	if (err)
->> > +		goto restore_txrx_worker;
->> > +
->> >	sdio_set_host_pm_flags(func, MMC_PM_KEEP_POWER);
->> >
->> >	return 0;
->> >
->> > +restore_txrx_worker:
->> > +	mt76_worker_enable(&mdev->sdio.net_worker);
->> > +	mt76_worker_enable(&mdev->sdio.txrx_worker);
->> > +	mt76_connac_mcu_set_hif_suspend(mdev, false);
->> > +
->> >  restore_worker:
->> >	mt76_worker_enable(&mdev->tx_worker);
->> > -	mt76_worker_enable(&mdev->sdio.txrx_worker);
->> >	mt76_worker_enable(&mdev->sdio.status_worker);
->> > -	mt76_worker_enable(&mdev->sdio.net_worker);
->> >
->> >	if (!pm->ds_enable)
->> >		mt76_connac_mcu_set_deep_sleep(mdev, false);
->> >
->> > -	mt76_connac_mcu_set_hif_suspend(mdev, false);
->> > -
->> >  restore_suspend:
->> > +	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
->> >	pm->suspended = false;
->> >
->> >	return err;
->> > @@ -266,6 +275,7 @@ static int mt7921s_resume(struct device *__dev)
->> >	int err;
->> >
->> >	pm->suspended = false;
->> > +	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
->> >
->> >	err = mt7921_mcu_drv_pmctrl(dev);
->> >	if (err < 0)
->> > diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c
->> > b/drivers/net/wireless/mediatek/mt76/sdio.c
->> > index c99acc21225e..b0bc7be0fb1f 100644
->> > --- a/drivers/net/wireless/mediatek/mt76/sdio.c
->> > +++ b/drivers/net/wireless/mediatek/mt76/sdio.c
->> > @@ -479,7 +479,8 @@ static void mt76s_status_worker(struct mt76_worker *w)
->> >			resched = true;
->> >
->> >		if (dev->drv->tx_status_data &&
->> > -		    !test_and_set_bit(MT76_READING_STATS, &dev->phy.state))
->> > +		    !test_and_set_bit(MT76_READING_STATS, &dev->phy.state) &&
->> > +		    !test_bit(MT76_STATE_SUSPEND, &dev->phy.state))
->> >			queue_work(dev->wq, &dev->sdio.stat_work);
->> >	} while (nframes > 0);
->> >
->> > diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> > b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> > index 649a56790b89..801590a0a334 100644
->> > --- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> > +++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> > @@ -317,7 +317,8 @@ void mt76s_txrx_worker(struct mt76_sdio *sdio)
->> >		if (ret > 0)
->> >			nframes += ret;
->> >
->> > -		if (test_bit(MT76_MCU_RESET, &dev->phy.state)) {
->> > +		if (test_bit(MT76_MCU_RESET, &dev->phy.state) ||
->> > +		    test_bit(MT76_STATE_SUSPEND, &dev->phy.state)) {
->> >			if (!mt76s_txqs_empty(dev))
->> >				continue;
->> >			else
->>
->> since mt76s_tx_run_queue will not run if MT76_MCU_RESET is set, do we
->> really need to check it for each iteration or is fine something like:
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> index 649a56790b89..68f30a83fa5d 100644
->> --- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> +++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> @@ -317,14 +317,12 @@ void mt76s_txrx_worker(struct mt76_sdio *sdio)
->>		if (ret > 0)
->>			nframes += ret;
->>
->> -		if (test_bit(MT76_MCU_RESET, &dev->phy.state)) {
->> -			if (!mt76s_txqs_empty(dev))
->> -				continue;
->> -			else
->> -				wake_up(&sdio->wait);
->> -		}
->>	} while (nframes > 0);
->>
->> +	if (test_bit(MT76_MCU_RESET, &dev->phy.state) &&
->> +	    mt76s_txqs_empty(dev))
->> +		wake_up(&sdio->wait);
->> +
+Stephen, can you pick this one up please?
 
-If doing so, mt76s_txqs_empty may not always be true because enqueuing packets
-to q_tx or MCU command to q_mcu simultanenously from the other contexts in
-different cpu is possible.
-
-It seemed to me we should check it for each iteration to guarantee that we can
-wake up the one that is waiting for the all the queues are empty at some time.
-
->>	/* enable interrupt */
->>	sdio_writel(sdio->func, WHLPCR_INT_EN_SET, MCR_WHLPCR, NULL);
->>	sdio_release_host(sdio->func);
->>
->> Regards,
->> Lorenzo
->>
->> > --
->> > 2.25.1
->> >
->
->
->
+> 
+> Miles
 
 _______________________________________________
 Linux-mediatek mailing list
