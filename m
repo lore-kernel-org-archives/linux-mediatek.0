@@ -4,62 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC1F2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 11:52:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDB7BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 11:57:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=inde77+0+FXbfE371DAgjytxwKBkp8qlcJFzsQMvVt4=; b=PAVSWLRaJ6KVcKrq7aY1u1ggt5
-	ZlRS8jRcdlMByiCEJpPs8MMRMGDpI4fAWQGlF3Z1RISo5Uy8hB69VPJUtV6MSM769UK3oK1yhtg62
-	VxDjVDM3h6dhvOQzzfwnFzhBkksCGaduoQEsDTinZrO1k3TCLEBk1p8VKj15dov451AaR6c8wRFwe
-	txJXuHxFxtEEy6CE3yfg9jXAdudYXf1dtLvZQX5FoldSnwCm/GRhNtATIHxnKnwIDiAWGEtaIIGiI
-	iuPxhUu1y/PB2iwXeGij4cEJVXLoywlC7G+AvCHAfyhShFzAqCY9bsd4bR2Nr+saSRVJVJsek7Zi6
-	UNZS5Niw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=l0mhNdBKy6rfJf+GNyiWZlvD6V/6hv0B4rIgEUWCifI=; b=IaJlE96Bc8NFax
+	/kaH/bZUzeB3AHWcaIyyXoqjQaZElhwIq4VxiHEyPEy/sEa3VYIG+Yth0FUqaHg8JrVV84GgnWsRI
+	K6SVnJjfr+SiM/JHejZcTipbzIsbKri+C9NVD0Ra5gxBV2y/ONjhQ1JCEJJtVBej0PEPwPlbXydcE
+	96JGNvYA/4xW/LZO6UyY9TOz5od2eFYlwVxd9AijSXna+Jyxr1OpPlIIH6nUdbLTwC/VAQpbhaX6j
+	B0PZwOv+vVq22mgJ/mpUM4Lf4TeNRKevcu8J03UWMObR7y14w0rzyCLclt8Pc/n8DCTVxg/kfhb2A
+	AdlUrzp0CCHyYWzjZVaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mp7sQ-00GAl9-AN; Mon, 22 Nov 2021 11:52:50 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mp7wl-00GC72-Hq; Mon, 22 Nov 2021 11:57:19 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mp6t7-00FuvC-5J
- for linux-mediatek@lists.infradead.org; Mon, 22 Nov 2021 10:49:30 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B6AEE60241;
- Mon, 22 Nov 2021 10:49:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637578168;
- bh=6IZt0vZBL703Wzm5h/gihPzq2vaEooHapA9/mKWYmto=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=uUg/HxIaQdbcsRjngKrP/1yIJGL5oZ4Yg/2elYJtMTcd+Mloc9O8fmVK9ibcWU5Ca
- Jm7hrS6LQqxIUggVJlT4B/fK/a9I1InOOKHFwd62VbJsCUnvwEvF0FkJQqCX5nCqG3
- A7fgeu7GbuYdM6NgTMjZ9YgfEZ5AiIKdQlZ3sibG1b+ZLLPmiPe6yf7sImNNHOhA1T
- aR9KQr33r90mDGwcs5ka14BFijbJXIEb37K62nBKxFivTyTKyOPCGj+COpuV+c5wSU
- dH/D8q1RjGOTqeuW3Z6qkDduwR60z7aXmtRVVvkMaBATn8lXzn1I+kddG4kewSGsiY
- N0gYFNKqHUs8A==
-Date: Mon, 22 Nov 2021 11:49:24 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: lorenzo.bianconi@redhat.com, nbd@nbd.name, Soul.Huang@mediatek.com,
- YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com,
- km.lin@mediatek.com, robin.chiu@mediatek.com,
- Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
- ted.huang@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, jemele@google.com,
- shawnku@google.com, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/2] mt76: mt7921s: fix the device cannot sleep deeply in
- suspend
-Message-ID: <YZt1tEk0rS4evYtP@lore-desk>
-References: <YZq9cBbzwtvzEKyN@lore-desk--annotate>
- <1637552808-24472-1-git-send-email-sean.wang@mediatek.com>
+ id 1mp703-00FwPz-55
+ for linux-mediatek@lists.infradead.org; Mon, 22 Nov 2021 10:56:40 +0000
+X-UUID: 80a83fbf755a4fd0b518975a1cc11ddb-20211122
+X-UUID: 80a83fbf755a4fd0b518975a1cc11ddb-20211122
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <meichia.chiu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 738418368; Mon, 22 Nov 2021 03:56:32 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 22 Nov 2021 02:56:30 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 22 Nov 2021 18:56:29 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 22 Nov 2021 18:56:29 +0800
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ MeiChia Chiu <meichia.chiu@mediatek.com>
+Subject: [PATCH] mt76: mt7915: fix the wrong SMPS mode
+Date: Mon, 22 Nov 2021 18:56:26 +0800
+Message-ID: <20211122105626.6275-1-MeiChia.Chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-In-Reply-To: <1637552808-24472-1-git-send-email-sean.wang@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_024929_317523_58CCDCEE 
-X-CRM114-Status: GOOD (  20.81  )
+X-CRM114-CacheID: sfid-20211122_025639_240157_19403A93 
+X-CRM114-Status: UNSURE (   9.91  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,118 +68,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0530897834394504250=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: MeiChia Chiu <meichia.chiu@mediatek.com>
 
---===============0530897834394504250==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="XvgaRyxRn9W6Ups7"
-Content-Disposition: inline
+Without this change, it sends the wrong SMPS mode to firmware
+when a station sends an action frame with disabled SMPS.
 
+Fixes: 427b09cd6bfa ("mt76: mt7915: fix SMPS operation fail")
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+---
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c | 17 ++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h |  7 +++++++
+ 2 files changed, 23 insertions(+), 1 deletion(-)
 
---XvgaRyxRn9W6Ups7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index ceeb5e3f..f922265f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2022,6 +2022,21 @@ mt7915_mcu_sta_bfee_tlv(struct mt7915_dev *dev, struct sk_buff *skb,
+ 	bfee->fb_identity_matrix = (nrow == 1 && tx_ant == 2);
+ }
+ 
++static enum mcu_mmps_mode
++mt7915_mcu_get_mmps_mode(enum ieee80211_smps_mode smps)
++{
++	switch (smps) {
++	case IEEE80211_SMPS_OFF:
++		return MCU_MMPS_DISABLE;
++	case IEEE80211_SMPS_STATIC:
++		return MCU_MMPS_STATIC;
++	case IEEE80211_SMPS_DYNAMIC:
++		return MCU_MMPS_DYNAMIC;
++	default:
++		return MCU_MMPS_DISABLE;
++	}
++}
++
+ int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
+ 				   struct ieee80211_vif *vif,
+ 				   struct ieee80211_sta *sta,
+@@ -2053,7 +2068,7 @@ int mt7915_mcu_set_fixed_rate_ctrl(struct mt7915_dev *dev,
+ 			ra->phy = *phy;
+ 		break;
+ 	case RATE_PARAM_MMPS_UPDATE:
+-		ra->mmps_mode = (sta->smps_mode == IEEE80211_SMPS_DYNAMIC);
++		ra->mmps_mode = mt7915_mcu_get_mmps_mode(sta->smps_mode);
+ 		break;
+ 	default:
+ 		break;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 1beaba38..53fa0f01 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -365,6 +365,13 @@ enum {
+ 	MCU_PHY_STATE_OFDMLQ_CNINFO,
+ };
+ 
++enum mcu_mmps_mode {
++	MCU_MMPS_STATIC,
++	MCU_MMPS_DYNAMIC,
++	MCU_MMPS_RSV,
++	MCU_MMPS_DISABLE,
++};
++
+ #define STA_TYPE_STA			BIT(0)
+ #define STA_TYPE_AP			BIT(1)
+ #define STA_TYPE_ADHOC			BIT(2)
+-- 
+2.29.2
 
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
->=20
-> <snip>
->=20
-> >> >>
-> >> >> -		if (test_bit(MT76_MCU_RESET, &dev->phy.state)) {
-> >> >> -			if (!mt76s_txqs_empty(dev))
-> >> >> -				continue;
-> >> >> -			else
-> >> >> -				wake_up(&sdio->wait);
-> >> >> -		}
-> >> >>	} while (nframes > 0);
-> >> >>
-> >> >> +	if (test_bit(MT76_MCU_RESET, &dev->phy.state) &&
-> >> >> +	    mt76s_txqs_empty(dev))
-> >> >> +		wake_up(&sdio->wait);
-> >> >> +
-> >>
-> >> If doing so, mt76s_txqs_empty may not always be true because enqueuing
-> >> packets to q_tx or MCU command to q_mcu simultanenously from the other
-> >> contexts in different cpu is possible.
-> >>
-> >> It seemed to me we should check it for each iteration to guarantee
-> >> that we can wake up the one that is waiting for the all the queues are=
- empty at some time.
-> >
-> >IIUC what we are interested here is there are no queued frames into the =
-hw queues during suspend or reset, right?
->=20
-> That is not completely true. Take the suspend procedure on mt7921s as an =
-example.
->=20
-> That should be "There are no queued frames into the hw queues right after=
- mt76_connac_mcu_set_hif_suspend."
->=20
-> The MCU data and WiFi are all handled in mt76s_txrx_worker so we should s=
-ynchronize all of
-> the Tx queues are all empty and then handle mt76_connac_mcu_set_hif_suspe=
-nd to guarantee
-> mt76_connac_mcu_set_hif_suspend is the last one to access the SDIO bus an=
-d there is no frame that accesses SDIO bus afterhand.
-
-ack, correct, "there are no queued frames into the hw queues right after
-mt76_connac_mcu_set_hif_suspend."
-What I mean is we are not really checking there are no frames in the hw que=
-ue
-here, but mt76 sdio has processed all the frames, got my point? maybe it is
-what we are looking for..
-
-Regards,
-Lorenzo
-
->=20
-> >
-> >>
-> >> >>	/* enable interrupt */
-> >> >>	sdio_writel(sdio->func, WHLPCR_INT_EN_SET, MCR_WHLPCR, NULL);
-> >> >>	sdio_release_host(sdio->func);
-> >> >>
-> >> >> Regards,
-> >> >> Lorenzo
-> >> >>
-> >> >> > --
-> >> >> > 2.25.1
-> >> >> >
-> >> >
-> >> >
-> >> >
-> >>
-> >
-
---XvgaRyxRn9W6Ups7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYZt1tAAKCRA6cBh0uS2t
-rIgUAP9cH8ze/XEp+miz+xtPvfgGccW2FQqPeK59A5pUSznO9gEAjWdLGp0yUamR
-m6kdq55y2RuFs7kd51MVV7DfrxldHww=
-=oCiO
------END PGP SIGNATURE-----
-
---XvgaRyxRn9W6Ups7--
-
-
---===============0530897834394504250==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============0530897834394504250==--
-
