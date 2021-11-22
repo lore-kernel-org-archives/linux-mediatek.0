@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1503C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 12:57:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B1FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 14:26:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lcFIVKoA/0tKHx+IyENzmbrCxfHkkM0EqOhFVbUpzsA=; b=IxWy5aLHhoI8m/
-	ur0le3twG99RsZr+ZrPlDRUWxSWOJKHnK2SqBJpfUpw4LzAmlRzXON3h50CuCwdzshr4bM5Y7lWtC
-	lS0G5JpEQtZZDI0sbTeV2V5Iy4yl2Oy4qUMgHsYTt4NBq+N59sSk73emSrDzVhrmwkGVoy/2y3TIz
-	zegpR6bL/cW+qk0x04UUhk6RgT313nqWAAa0Y/nM+T3daZad19PdRJcInG/vzhpPiqqRriuFk00XF
-	5zGtkDXMLTdubsYpWvMJ7YBfXQSajDe9z5BmNRUL4l+rojs24nzZOeJTIGFOnGRhbUqy/EfOzZUig
-	saoZA6DeVupLoF05Ma4g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Dd3K1sZU4JBLwOfb5w2jI2Urxfh0ZT7INHiFI+TS0/U=; b=ZZfmDhWETGR8fe
+	5Af3XqO0f4/wWujJhkqRQQruc5essheybr6s73kyVEq7wSlfP6J8lOxhB0tMLR6LwmxlblLYIqx0Y
+	MLxWXrSvCjGpahKG0xjSjIGSUDT0ebgSaF0Z2KFjlhupCmxHsB8iTD13kkG+AcaGQujjbqphcNl6S
+	a6ZUVNL9Nj/ClhE2YyUtJnbYyu0vZjYLr+KTMhE4i91+ywjOlPPBPkJSen1BHpYaTSNMJABrR62TO
+	RG5zpjB3Nqv78tTcGiss+nLRIt12Afap5dQtx3sJritMY/wR4iA6CG1hMWMZ9EQBafptCfLosQGxo
+	yTsTg8/U+w6q25AXTQOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mp8se-00GWYc-MW; Mon, 22 Nov 2021 12:57:08 +0000
+	id 1mpAHL-00Gqul-9h; Mon, 22 Nov 2021 14:26:43 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mp8ir-00GS8V-Pk; Mon, 22 Nov 2021 12:47:03 +0000
-X-UUID: 41c76210380f493b9ea7eb15a5a84920-20211122
-X-UUID: 41c76210380f493b9ea7eb15a5a84920-20211122
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
+ id 1mpAHH-00GqtJ-Hd
+ for linux-mediatek@lists.infradead.org; Mon, 22 Nov 2021 14:26:42 +0000
+X-UUID: 86b5f6caa9c244d7a1f73da60d05b6d5-20211122
+X-UUID: 86b5f6caa9c244d7a1f73da60d05b6d5-20211122
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 643103107; Mon, 22 Nov 2021 05:46:58 -0700
+ with ESMTP id 491494665; Mon, 22 Nov 2021 07:26:34 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Nov 2021 04:46:56 -0800
+ 15.0.1497.2; Mon, 22 Nov 2021 06:26:32 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 22 Nov 2021 20:46:49 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 22 Nov 2021 20:46:49 +0800
-Message-ID: <cc6e73ba980ee13f8ab29862140d0bfe44ed9d7f.camel@mediatek.com>
-Subject: Re: [PATCH v7 2/3] arm64: dts: mediatek: add basic mt7986a support
-From: Sam Shih <sam.shih@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, "Enric Balletbo i
- Serra" <enric.balletbo@collabora.com>, Fabien Parent <fparent@baylibre.com>,
- Seiya Wang <seiya.wang@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
-Date: Mon, 22 Nov 2021 20:46:49 +0800
-In-Reply-To: <a4605e32-3af3-5636-6682-475bef8448d1@gmail.com>
-References: <20211018114009.13350-1-sam.shih@mediatek.com>
- <20211018114009.13350-3-sam.shih@mediatek.com>
- <d411aec5-efa8-c71d-8179-54ff52c17039@gmail.com>
- <d299493d8fec0f34f527942f2cdedf15f2136c9a.camel@mediatek.com>
- <c5c0849d-a95a-25a0-11f8-9156770afc10@gmail.com>
- <59963509ec833009f5c10f0a1aee91670224c6c7.camel@mediatek.com>
- <a4605e32-3af3-5636-6682-475bef8448d1@gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Mon, 22 Nov 2021 22:26:25 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 22 Nov 2021 22:26:24 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: mt7921: fix timestamp check in tx_status
+Date: Mon, 22 Nov 2021 22:25:44 +0800
+Message-ID: <934b51921e22ca6f8983d7cbd9feb5248f804303.1637590567.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_044701_914393_066F6C23 
-X-CRM114-Status: GOOD (  43.01  )
+X-CRM114-CacheID: sfid-20211122_062639_624207_5D6D380B 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,180 +78,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Deren Wu <deren.wu@mediatek.com>
 
-On Fri, 2021-11-19 at 11:31 +0100, Matthias Brugger wrote:
-> 	
-> 
-> On 18/11/2021 04:48, Sam Shih wrote:
-> > Hi
-> > 
-> > On Tue, 2021-11-16 at 12:18 +0100, Matthias Brugger wrote:
-> > > 
-> > > On 16/11/2021 02:39, Sam Shih wrote:
-> > > > Hi,
-> > > > 
-> > > > On Mon, 2021-11-15 at 17:27 +0100, Matthias Brugger wrote:
-> > > > > Hi,
-> > > > > 
-> > > > > On 18/10/2021 13:40, Sam Shih wrote:
-> > > > > > Add basic chip support for Mediatek mt7986a, include
-> > > > > > basic uart nodes, rng node and watchdog node.
-> > > > > > 
-> > > > > > Add cpu node, timer node, gic node, psci and reserved-
-> > > > > > memory
-> > > > > > node
-> > > > > > for ARM Trusted Firmware.
-> > > > > > 
-> > > > > 
-> > > > > What is the exact difference between mt7986a and mt7986b?
-> > > > > Right
-> > > > > now,
-> > > > > it's only
-> > > > > the compatible, for that it makes no sense to split them.
-> > > > > 
-> > > > 
-> > > > The difference between mt7986a and mt7986b is pinout which
-> > > > described
-> > > > in our pinctrl patch series
-> > > > 
-> > 
-> > 
-https://urldefense.com/v3/__https://lore.kernel.org/all/20211022124036.5291-3-sam.shih@mediatek.com/__;!!CTRNKA9wMg0ARbw!0kseU8x1KnHHXDErh6Yj6MKqecufPEfGyeumtTBism47e99UFO2Gs-HfWjL1_jUv$
-> > > >   
-> > > > 
-> > > > You are right, in this "basic SoC support" patch series, only
-> > > > show
-> > > > compatible differences
-> > > > 
-> > > > > It would be good to see what the exact differences are, so
-> > > > > that
-> > > > > we
-> > > > > can see if it
-> > > > > makes sense to have one of the alternatives:
-> > > > > 1) use a common mt7986.dtsi which get included by
-> > > > > mt7986[a,b].dtsi
-> > > > > 2) Use on mt7986.dtsi and only add one mt7986a.dtsi or
-> > > > > mt7986b.dtsi
-> > > > > which has
-> > > > > add-ons.
-> > > > > 
-> > > > 
-> > > > In this case, can we use solution (1) to create a generic
-> > > > mt7986.dtsi
-> > > > in this patch series, and add mt7986[a,b].dtsi to the dts part
-> > > > of
-> > > > the
-> > > > pinctrl patch series to separate the difference nodes?
-> > > > 
-> > > 
-> > > If the only difference is the GPIO controller then why not go
-> > > with
-> > > solution 2.
-> > > Create a mt7986.dtsi which holds e.g. the node for pincontroller
-> > > mt7986a and
-> > > then create a mt7986b.dtsi that just changes compatible and gpio-
-> > > ranges:
-> > > 
-> > > &pio {
-> > >      compatible = "mediatek,mt7986b-pinctrl";
-> > >      gpio-ranges = <&pio 0 0 41>, <&pio 66 66 35>;
-> > > }
-> > > 
-> > > What do you think?
-> > 
-> > Ok,
-> > 
-> > For this basic patch series DTS, I will send the next version:
-> > - Use "mt7986.dtsi" instead of "mt7986[a,b].dtsi",
-> >    And make"mt7986.dtsi" get included by "mt7986[a,b]-rfb.dts"
-> >    (No dedicated uart1/uart2 pinout for mt7986b-rfb, status of dts
-> > node
-> > shoud be set to "disabled")
-> > 
-> > 
-> > For the pinctrl patch series DTS, I will send th next version:
-> > - Add "mt7986b.dtsi" according to your suggestion,
-> >    the new include
-> > chain will be:
-> >    mt7986a-rfb.dts <-- mt7986.dtsi (mt7986a pinctrl)
-> >   
-> > mt7986b-rfb.dts <-- mt7986b.dtsi (mt7986b pinctrl) <-- mt7986.dtsi
-> > (mt7986a pinctrl)
-> > 
-> > Do you agree above proposal?
-> > 
-> 
-> I mean something like this:
-> mt7986a.dtsi:
-> pio: pinctrl@1001f000 {
-> 	compatible = "mediatek,mt7986a-pinctrl";
-> 	reg = <0 0x1001f000 0 0x1000>,
-> 	      <0 0x11c30000 0 0x1000>,
-> 	      <0 0x11c40000 0 0x1000>,
-> 	      <0 0x11e20000 0 0x1000>,
-> 	      <0 0x11e30000 0 0x1000>,
-> 	      <0 0x11f00000 0 0x1000>,
-> 	      <0 0x11f10000 0 0x1000>,
-> 	      <0 0x1000b000 0 0x1000>;
-> 	reg-names = "gpio", "iocfg_rt", "iocfg_rb", "iocfg_lt",
-> 		    "iocfg_lb", "iocfg_tr", "iocfg_tl", "eint";
-> 	gpio-controller;
-> 	#gpio-cells = <2>;
-> 	gpio-ranges = <&pio 0 0 100>;
-> 	interrupt-controller;
-> 	interrupts = <GIC_SPI 225 IRQ_TYPE_LEVEL_HIGH>;
-> 	interrupt-parent = <&gic>;
-> 	#interrupt-cells = <2>;
-> };
-> 
-> mt7986b.dtsi:
-> #include "mt7986a.dtsi"
-> 
-> &pio {
->       compatible = "mediatek,mt7986b-pinctrl";
->       gpio-ranges = <&pio 0 0 41>, <&pio 66 66 35>;
-> }
-> 
-> mt7986b-rfb.dts:
-> #include "mt7986b.dtsi"
-> 
-> &pio {
-> 	uart1_pins: uart1-pins {
-> 		mux { [...]
-> 
-> 
-> mt7986a-rfb.dts:
-> #include "mt7986a.dtsi"
-> 
-> &pio {
-> 	uart1_pins: uart1-pins {
-> 		mux { [...]
-> 
-> 
-> Makes sense?
-> 
+Should keep SKBs only if timeout timestamp is still after jiffies.
+Otherwise, report tx status and drop it direclty.
 
-Okay,
+Fixes: bd1e3e7b693c ("mt76: introduce packet_id idr")
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/tx.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I have sent new patch set based on your suggestion,
-
-Basic Part:
-
-https://lore.kernel.org/all/20211122123222.8016-1-sam.shih@mediatek.com/
-
-Pinctrl:
-
-https://lore.kernel.org/all/20211122123552.8218-1-sam.shih@mediatek.com/
-
-Please take a look at those patches when you are free.
-
-Regards,
-Sam
-
-> Regards,
-> Matthias
-> 
+diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
+index 11719ef034d8..6b8c9dc80542 100644
+--- a/drivers/net/wireless/mediatek/mt76/tx.c
++++ b/drivers/net/wireless/mediatek/mt76/tx.c
+@@ -173,7 +173,7 @@ mt76_tx_status_skb_get(struct mt76_dev *dev, struct mt76_wcid *wcid, int pktid,
+ 			if (!(cb->flags & MT_TX_CB_DMA_DONE))
+ 				continue;
+ 
+-			if (!time_is_after_jiffies(cb->jiffies +
++			if (time_is_after_jiffies(cb->jiffies +
+ 						   MT_TX_STATUS_SKB_TIMEOUT))
+ 				continue;
+ 		}
+-- 
+2.18.0
 
 
 _______________________________________________
