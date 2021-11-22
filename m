@@ -4,70 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BBCEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 12:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB300C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 12:07:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xMyrrwrO7acfVA75pUCK80/7FxmqrsGqmNE8k3nE1Ps=; b=OYslvYf3zgtul7AproKks6DqwN
-	rzPS2Id+ofny/xrWfEA7NmCY7xYTpbZMWwPEZ/ibAi3KfAPsM+8TARWA2sXT9XiXDQAR9q6XraEtx
-	d0nfe3VO5ToRNL1yjsTSEjTFo0iU7V9IhT66i5FDxFCkeUPv76vPIOrF6hYWtDl3OBrq+o+FZ/+tZ
-	/df2ngXFylUOHoPiGx+YOZpKmo5fs0BJR2cTpWV9Mok7uN01wfAY2idw7hDvFncjzKHWnKUM9mmAU
-	fxDRpediUXjJWct5d7dIv8MfIdPWh800OZesho0Cnz4uhrBEqNZHKqd4D7Y8bcPu80BOr4IJVxHYd
-	UW/MV3qQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=b4KfsqF4EsZDSQbqQ6VvHHC8Y0zvH1TmTPuxUzbQuL0=; b=Wm+i/YUwauWojZ
+	2Ks+UBEzk+NpVmzTtYFjAsvFnJsBckDzhbX7mj05o70Q7eI70Uz9MU3tRSnJFPsZxPXGOWCoEVCrC
+	ZFG5NkaWfIf8HdA6zBmOunnUb9tBjPjwQaJq29kfFkNTuGN3shW2qWbYFWwVzPioWoaJVdDcgtFUn
+	YyMNiZMSb+yNXlPVnCZYp8d8+GO314SgsjxgKxasVIT+EBfjyoqvvKVHODJlVLCuyo7inHHEWHS/W
+	xwREd16E59RvpNuLDMWsxpCEOw6DT1wBYg+R6h3jKlsV3dK0z3xEXZ4AXrWVkxlSjZptwOv6OeyIH
+	v4m0ulV637uOY5KTu12g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mp7zU-00GCzE-5h; Mon, 22 Nov 2021 12:00:08 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mp86E-00GFSf-UI; Mon, 22 Nov 2021 12:07:06 +0000
+Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mp7C2-00Fyzx-8N; Mon, 22 Nov 2021 11:09:04 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 3733A1F44148
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1637579340; bh=6R7asC355cFNye6uYubFW2XAoicTdUQaddnkr60Th1A=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=EOTU3N8QBwwkYyW35oY3Di3R8mG0HV0HzKdn9Ts41UNH24Kgke3foLqvWEcwWzzmd
- J48fYH5waFC9ZxMLs1Uj6IEbLJ9qIU49oujVBZvkF7sH+ifARNhLX8ixB2jlTuC73g
- 2/xT3qgDmhZF0gg+T4V13kiuMvCEuu/ImhCSz2hyKvR1fFmJDnoIDHzD2JKyxHQHpP
- rUvbGY1+cMc27JGmNznYA6DbXmGdRTArl1fEmIb9YJ2/UfFopFGi+nG+Rm8AsRo3oA
- 7NJD6xw5MouUtInzMNPTGj4AKFPJ3T5RkRn/wu0sc36N27IY8+Y8UdnbzogS9SS0z5
- aVMb85CpAgo7w==
-Subject: Re: [PATCH v3 12/33] iommu/mediatek: Always tlb_flush_all when each
- PM resume
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: youlin.pei@mediatek.com, anan.sun@mediatek.com,
- srv_heupstream@mediatek.com,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Robin Murphy <robin.murphy@arm.com>, sebastian.reichel@collabora.com,
- yen-chang.chen@mediatek.com, Fabien Parent <fparent@baylibre.com>,
- iommu@lists.linux-foundation.org, Rob Herring <robh+dt@kernel.org>,
- linux-mediatek@lists.infradead.org, yf.wang@mediatek.com,
- Hsin-Yi Wang <hsinyi@chromium.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Collabora Kernel ML <kernel@collabora.com>,
- Will Deacon <will@kernel.org>, mingyuan.ma@mediatek.com,
+ id 1mp7bL-00G53N-4k; Mon, 22 Nov 2021 11:35:13 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id 38D5360C4A;
+ Mon, 22 Nov 2021 11:35:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1637580910;
+ bh=fsxiu5OtiKvVSGwLIQuhcHrreWPtheesRrgoLqEG4iI=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=dlqPWe0KLZL/veZDmsa4GPtvRis/6V0euE04fmcoB83vRtaf6/AWGZ6q+XGgKIFO9
+ ucddsnwjto28/ctMGqFWyqKikkv3vsvhiJL0ucmwYvZ7HqcgHEF6uxxqsxaRCBGEPM
+ 7/GLJ5DRco3cARJEsotBBnkDKpbFHO02OwHerB/YWgJH1GA9Ts//Z/635BgC7KzOBp
+ +EwqE3544TUpMWpOWo/PaHMVLeufcypvGbrhxmF8juXfOfrWhWq181CuttTEtS+o0Z
+ +QCC+bTDkvSRNgC3Lrs7SG+7EqIw4YEfXK8/ig/RfdghDHKujiF3q3fYRCEP3gCUWm
+ 3BzkQ9oXYCbPQ==
+Date: Mon, 22 Nov 2021 17:05:05 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-References: <20210923115840.17813-1-yong.wu@mediatek.com>
- <20210923115840.17813-13-yong.wu@mediatek.com>
- <c4be1a14-c257-81b7-4a2b-f7e68c32de88@collabora.com>
- <5c4dd67ae7c81721d8cfd2c3b23b7c6df493cb5a.camel@mediatek.com>
- <4dd4cf8d-0f52-afae-f7d9-8e3cfdf3b729@collabora.com>
- <c69e03b4781dd9014393e0ff47767c58c846a722.camel@mediatek.com>
- <fd46a6647b7c3a184f32df9a25141a3213a04ee5.camel@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <40de67e6-e9c9-9c31-79fb-250ac8998513@collabora.com>
-Date: Mon, 22 Nov 2021 13:08:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, Eddie Hung <eddie.hung@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yz Wu <yz.wu@mediatek.com>
+Subject: Re: [PATCH 5/6] phy: phy-mtk-tphy: add support efuse setting
+Message-ID: <YZuAab3j+flr1xXj@matsya>
+References: <20211107075646.4366-1-chunfeng.yun@mediatek.com>
+ <20211107075646.4366-5-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <fd46a6647b7c3a184f32df9a25141a3213a04ee5.camel@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20211107075646.4366-5-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_030902_638619_D002E335 
-X-CRM114-Status: GOOD (  38.40  )
+X-CRM114-CacheID: sfid-20211122_033511_289561_EDBF0DC3 
+X-CRM114-Status: GOOD (  26.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,213 +68,225 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 07-11-21, 15:56, Chunfeng Yun wrote:
+> Due to some SoCs have a bit shift issue that will drop a bit for usb3
+> phy or pcie phy, fix it by adding software efuse reading and setting,
+> but only support it optionally for versoin 2/3.
 
-
-On 22.11.21 09:05, Yong Wu wrote:
-> Hi Dafna,
-> 
-> On Wed, 2021-11-10 at 15:50 +0800, Yong Wu wrote:
->> On Wed, 2021-11-10 at 07:29 +0200, Dafna Hirschfeld wrote:
->>>
->>> On 10.11.21 04:20, Yong Wu wrote:
->>>> On Tue, 2021-11-09 at 14:21 +0200, Dafna Hirschfeld wrote:
->>>>> Hi
->>>>> This patch is needed in order to update the tlb when a device
->>>>> is
->>>>> powered on.
->>>>> Could you send this patch alone without the whole series so it
->>>>> get
->>>>> accepted easier?
->>>>
->>>> Which SoC are you testing on? In previous SoC, the IOMMU HW don't
->>>> have
->>>> power-domain, and we have a "has_pm"[1] in the tlb function for
->>>> that
->>>> case. The "has_pm" should be always 0 for the previous SoC like
->>>> mt8173,
->>>> it should always tlb synchronize.
->>>>
->>>> thus, Could you help share more about your issue? In which case
->>>> it
->>>> lack
->>>> the necessary tlb operation. At least, We need confirm if it
->>>> needs
->>>> a
->>>> "Fixes" tags if sending this patch alone.
->>>
->>> Hi,
->>> I work with the mtk-vcodec driver on mt8173. As you wrote, the
->>> iommu
->>> doesn't
->>> have a power-domain and so when allocating buffers before the
->>> device
->>> is powered
->>> on, there is the warning
->>> "Partial TLB flush timed out, falling back to full flush"
->>> flooding the log buf.
->>
->> oh. Thanks very much for your information. Get it now.
->>
->> This issue should be introduced by the:
->>
->> b34ea31fe013 ("iommu/mediatek: Always enable the clk on resume")
->>
->> tlb failed due to the bclk is not enabled. Could you help try that
->> after reverting this?
->>
->>>
->>> Sebastian Reichel suggested to remove the 'if(has_pm)' check to
->>> avoid
->>> this warning,
->>> and avoid flushing the tlb if the device is off:
->>>
->>> [1] http://ix.io/3Eyr
->>>
->>> This fixes the warning, but then the tlb is not flushed in sync,
->>> Therefore the tlb should be flushed when the device is resumed.
->>>
->>> So the two patches (the one suggested in the link [1] and this
->>> patch)
->>> should be sent together as a 2-patch series.
->>
->> then this is reasonable. You could help this into a new patchset if
->> you
->> are free(add Fixes tag).
->>
->> Thanks.
->>
->>>
->>> Thanks,
->>> Dafna
->>>
->>>>
->>>> Thanks.
->>>>
->>>> [1]
->>>>
->>
->>
-> https://elixir.bootlin.com/linux/v5.15/source/drivers/iommu/mtk_iommu.c#L236
->>>>
->>>>> I can resend the patch on your behalf if you want.
-> 
-> What's your plan here?
-> 
-> If you send the two as a independent patchset on v5.16, I will rebase
-> yours.
-> If you have no time for this, I could help this.
-
-Hi, just sent it in the patchset ` iommu/mediatek: fix tlb flush logic`
-
-Thanks,
-Dafna
+s/versoin/version
 
 > 
-> Thanks.
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/phy/mediatek/phy-mtk-tphy.c | 162 ++++++++++++++++++++++++++++
+>  1 file changed, 162 insertions(+)
 > 
->>>>>
->>>>> Thanks,
->>>>> Dafna
->>>>>
->>>>> On 23.09.21 14:58, Yong Wu wrote:
->>>>>> Prepare for 2 HWs that sharing pgtable in different power-
->>>>>> domains.
->>>>>>
->>>>>> When there are 2 M4U HWs, it may has problem in the
->>>>>> flush_range
->>>>>> in
->>>>>> which
->>>>>> we get the pm_status via the m4u dev, BUT that function don't
->>>>>> reflect the
->>>>>> real power-domain status of the HW since there may be other
->>>>>> HW
->>>>>> also
->>>>>> use
->>>>>> that power-domain.
->>>>>>
->>>>>> The function dma_alloc_attrs help allocate the iommu buffer
->>>>>> which
->>>>>> need the corresponding power domain since tlb flush is needed
->>>>>> when
->>>>>> preparing iova. BUT this function only is for allocating
->>>>>> buffer,
->>>>>> we have no good reason to request the user always call
->>>>>> pm_runtime_get
->>>>>> before calling dma_alloc_xxx. Therefore, we add a
->>>>>> tlb_flush_all
->>>>>> in the pm_runtime_resume to make sure the tlb always is
->>>>>> clean.
->>>>>>
->>>>>> Another solution is always call pm_runtime_get in the
->>>>>> tlb_flush_range.
->>>>>> This will trigger pm runtime resume/backup so often when the
->>>>>> iommu
->>>>>> power is not active at some time(means user don't call
->>>>>> pm_runtime_get
->>>>>> before calling dma_alloc_xxx), This may cause the performance
->>>>>> drop.
->>>>>> thus we don't use this.
->>>>>>
->>>>>> In other case, the iommu's power should always be active via
->>>>>> device
->>>>>> link with smi.
->>>>>>
->>>>>> The previous SoC don't have PM except mt8192. the mt8192
->>>>>> IOMMU
->>>>>> is
->>>>>> display's
->>>>>> power-domain which nearly always is enabled. thus no need fix
->>>>>> tags
->>>>>> here.
->>>>>> Prepare for mt8195.
->>>>>>
->>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>>>>> ---
->>>>>>     drivers/iommu/mtk_iommu.c | 11 +++++++++++
->>>>>>     1 file changed, 11 insertions(+)
->>>>>>
->>>>>> diff --git a/drivers/iommu/mtk_iommu.c
->>>>>> b/drivers/iommu/mtk_iommu.c
->>>>>> index 44cf5547d084..e9e94944ed91 100644
->>>>>> --- a/drivers/iommu/mtk_iommu.c
->>>>>> +++ b/drivers/iommu/mtk_iommu.c
->>>>>> @@ -984,6 +984,17 @@ static int __maybe_unused
->>>>>> mtk_iommu_runtime_resume(struct device *dev)
->>>>>>     		return ret;
->>>>>>     	}
->>>>>>     
->>>>>> +	/*
->>>>>> +	 * Users may allocate dma buffer before they call
->>>>>> pm_runtime_get, then
->>>>>> +	 * it will lack the necessary tlb flush.
->>>>>> +	 *
->>>>>> +	 * We have no good reason to request the users always
->>>>>> call
->>>>>> dma_alloc_xx
->>>>>> +	 * after pm_runtime_get_sync.
->>>>>> +	 *
->>>>>> +	 * Thus, Make sure the tlb always is clean after each
->>>>>> PM
->>>>>> resume.
->>>>>> +	 */
->>>>>> +	mtk_iommu_tlb_do_flush_all(data);
->>>>>> +
->>>>>>     	/*
->>>>>>     	 * Uppon first resume, only enable the clk and return,
->>>>>> since
->>>>>> the values of the
->>>>>>     	 * registers are not yet set.
->>>>>>
->>
->> _______________________________________________
->> iommu mailing list
->> iommu@lists.linux-foundation.org
->> https://lists.linuxfoundation.org/mailman/listinfo/iommu
+> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+> index cdcef865fe9e..3b5b1c266595 100644
+> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> @@ -12,6 +12,7 @@
+>  #include <linux/iopoll.h>
+>  #include <linux/mfd/syscon.h>
+>  #include <linux/module.h>
+> +#include <linux/nvmem-consumer.h>
+>  #include <linux/of_address.h>
+>  #include <linux/of_device.h>
+>  #include <linux/phy/phy.h>
+> @@ -41,6 +42,9 @@
+>  #define SSUSB_SIFSLV_V2_U3PHYD		0x200
+>  #define SSUSB_SIFSLV_V2_U3PHYA		0x400
+>  
+> +#define U3P_MISC_REG1		0x04
+> +#define MR1_EFUSE_AUTO_LOAD_DIS		BIT(6)
+> +
+>  #define U3P_USBPHYACR0		0x000
+>  #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
+>  #define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
+> @@ -133,6 +137,8 @@
+>  #define P3C_RG_SWRST_U3_PHYD_FORCE_EN	BIT(24)
+>  
+>  #define U3P_U3_PHYA_REG0	0x000
+> +#define P3A_RG_IEXT_INTR		GENMASK(15, 10)
+> +#define P3A_RG_IEXT_INTR_VAL(x)		((0x3f & (x)) << 10)
+>  #define P3A_RG_CLKDRV_OFF		GENMASK(3, 2)
+>  #define P3A_RG_CLKDRV_OFF_VAL(x)	((0x3 & (x)) << 2)
+>  
+> @@ -187,6 +193,19 @@
+>  #define P3D_RG_FWAKE_TH		GENMASK(21, 16)
+>  #define P3D_RG_FWAKE_TH_VAL(x)	((0x3f & (x)) << 16)
+>  
+> +#define U3P_U3_PHYD_IMPCAL0		0x010
+> +#define P3D_RG_FORCE_TX_IMPEL		BIT(31)
+> +#define P3D_RG_TX_IMPEL			GENMASK(28, 24)
+> +#define P3D_RG_TX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
+> +
+> +#define U3P_U3_PHYD_IMPCAL1		0x014
+> +#define P3D_RG_FORCE_RX_IMPEL		BIT(31)
+> +#define P3D_RG_RX_IMPEL			GENMASK(28, 24)
+> +#define P3D_RG_RX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
+> +
+> +#define U3P_U3_PHYD_RSV			0x054
+> +#define P3D_RG_EFUSE_AUTO_LOAD_DIS	BIT(12)
+> +
+>  #define U3P_U3_PHYD_CDR1		0x05c
+>  #define P3D_RG_CDR_BIR_LTD1		GENMASK(28, 24)
+>  #define P3D_RG_CDR_BIR_LTD1_VAL(x)	((0x1f & (x)) << 24)
+> @@ -307,6 +326,11 @@ struct mtk_phy_pdata {
+>  	 * 48M PLL, fix it by switching PLL to 26M from default 48M
+>  	 */
+>  	bool sw_pll_48m_to_26m;
+> +	/*
+> +	 * Some SoCs (e.g. mt8195) drop a bit when use auto load efuse,
+> +	 * support sw way, also support it for v2/v3 optionally.
+> +	 */
+> +	bool sw_efuse_supported;
+>  	enum mtk_phy_version version;
+>  };
+>  
+> @@ -336,6 +360,10 @@ struct mtk_phy_instance {
+>  	struct regmap *type_sw;
+>  	u32 type_sw_reg;
+>  	u32 type_sw_index;
+> +	u32 efuse_sw_en;
+> +	u32 efuse_intr;
+> +	u32 efuse_tx_imp;
+> +	u32 efuse_rx_imp;
+>  	int eye_src;
+>  	int eye_vrt;
+>  	int eye_term;
+> @@ -1040,6 +1068,130 @@ static int phy_type_set(struct mtk_phy_instance *instance)
+>  	return 0;
+>  }
+>  
+> +static int phy_efuse_get(struct mtk_tphy *tphy, struct mtk_phy_instance *instance)
+> +{
+> +	struct device *dev = &instance->phy->dev;
+> +	int ret = 0;
+> +
+> +	/* tphy v1 doesn't support sw efuse, skip it */
+> +	if (!tphy->pdata->sw_efuse_supported) {
+> +		instance->efuse_sw_en = 0;
+> +		return 0;
+> +	}
+> +
+> +	/* software efuse is optional */
+> +	instance->efuse_sw_en = device_property_read_bool(dev, "nvmem-cells");
+> +	if (!instance->efuse_sw_en)
+> +		return 0;
+> +
+> +	switch (instance->type) {
+> +	case PHY_TYPE_USB2:
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "intr", &instance->efuse_intr);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u2 intr efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		/* no efuse, ignore it */
+> +		if (!instance->efuse_intr) {
+> +			dev_warn(dev, "no u2 intr efuse, but dts enable it\n");
+> +			instance->efuse_sw_en = 0;
+> +			break;
+> +		}
+
+What does this check do...? so a zero value is not valid..?
+
+> +
+> +		dev_info(dev, "u2 efuse - intr %x\n", instance->efuse_intr);
+
+dev_dbg()?
+
+> +		break;
+
+empty line after break improves readability, pls add
+
+> +	case PHY_TYPE_USB3:
+> +	case PHY_TYPE_PCIE:
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "intr", &instance->efuse_intr);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 intr efuse, %d\n", ret);
+> +			break;
+> +		}
+
+This seems to be common, why not read this before switch?
+
+> +
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "rx_imp", &instance->efuse_rx_imp);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 rx_imp efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "tx_imp", &instance->efuse_tx_imp);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 tx_imp efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		/* no efuse, ignore it */
+> +		if (!instance->efuse_intr &&
+> +		    !instance->efuse_rx_imp &&
+> +		    !instance->efuse_rx_imp) {
+> +			dev_warn(dev, "no u3 intr efuse, but dts enable it\n");
+> +			instance->efuse_sw_en = 0;
+> +			break;
+> +		}
+
+again, zero values are not valid?
+
+> +
+> +		dev_info(dev, "u3 efuse - intr %x, rx_imp %x, tx_imp %x\n",
+> +			 instance->efuse_intr, instance->efuse_rx_imp,
+> +			 instance->efuse_tx_imp);
+
+dbg pls
+
+> +		break;
+> +	default:
+> +		dev_err(dev, "no sw efuse for type %d\n", instance->type);
+> +		ret = -EINVAL;
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static void phy_efuse_set(struct mtk_phy_instance *instance)
+> +{
+> +	struct device *dev = &instance->phy->dev;
+> +	struct u2phy_banks *u2_banks = &instance->u2_banks;
+> +	struct u3phy_banks *u3_banks = &instance->u3_banks;
+> +	u32 tmp;
+> +
+> +	if (!instance->efuse_sw_en)
+> +		return;
+> +
+> +	switch (instance->type) {
+> +	case PHY_TYPE_USB2:
+> +		tmp = readl(u2_banks->misc + U3P_MISC_REG1);
+> +		tmp |= MR1_EFUSE_AUTO_LOAD_DIS;
+> +		writel(tmp, u2_banks->misc + U3P_MISC_REG1);
+> +
+> +		tmp = readl(u2_banks->com + U3P_USBPHYACR1);
+> +		tmp &= ~PA1_RG_INTR_CAL;
+> +		tmp |= PA1_RG_INTR_CAL_VAL(instance->efuse_intr);
+> +		writel(tmp, u2_banks->com + U3P_USBPHYACR1);
+> +		break;
+> +	case PHY_TYPE_USB3:
+> +	case PHY_TYPE_PCIE:
+> +		tmp = readl(u3_banks->phyd + U3P_U3_PHYD_RSV);
+> +		tmp |= P3D_RG_EFUSE_AUTO_LOAD_DIS;
+> +		writel(tmp, u3_banks->phyd + U3P_U3_PHYD_RSV);
+
+add a updatel() macro and use this here and other places?
+
+-- 
+~Vinod
 
 _______________________________________________
 Linux-mediatek mailing list
