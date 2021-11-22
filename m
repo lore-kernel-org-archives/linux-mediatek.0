@@ -4,64 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B1FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 14:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6305BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 14:34:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Dd3K1sZU4JBLwOfb5w2jI2Urxfh0ZT7INHiFI+TS0/U=; b=ZZfmDhWETGR8fe
-	5Af3XqO0f4/wWujJhkqRQQruc5essheybr6s73kyVEq7wSlfP6J8lOxhB0tMLR6LwmxlblLYIqx0Y
-	MLxWXrSvCjGpahKG0xjSjIGSUDT0ebgSaF0Z2KFjlhupCmxHsB8iTD13kkG+AcaGQujjbqphcNl6S
-	a6ZUVNL9Nj/ClhE2YyUtJnbYyu0vZjYLr+KTMhE4i91+ywjOlPPBPkJSen1BHpYaTSNMJABrR62TO
-	RG5zpjB3Nqv78tTcGiss+nLRIt12Afap5dQtx3sJritMY/wR4iA6CG1hMWMZ9EQBafptCfLosQGxo
-	yTsTg8/U+w6q25AXTQOg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GAcrQJfd3lkURxSDWiuhiqmrLyyZnTSQT2UGwZTgo4Y=; b=sl3as176X8gxe3
+	+h1L230oKXwf6db5wJX/KowCcbqeZmmrBsuQpEqvGfqc51jw6M1/vN2cBbI8sWOypfimFqvfqq9Vd
+	rG02PC5ujT94n8i6QKF5ocuxh2E1/2OaSNQEZM0YXg7kQ32MByaxUXxV1AzcNYUebcZPlwlk5iipN
+	MMvejAJFMXPZjpQOZWYZq4zoLhOW9lSJM7SNlgazjBZwa9muShsWxsPse1u+k978QrFO+pT0g0lLV
+	7icqFvhXcAVIhEpdoa0BnFz/eN52arV602PHWjV7wQVNALlOcRBqgiGiERcBR9ct+UFcT2IlR61LA
+	TpWRi0xdteABqWJPHXAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpAHL-00Gqul-9h; Mon, 22 Nov 2021 14:26:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mpAOP-00GsPE-Kl; Mon, 22 Nov 2021 14:34:01 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpAHH-00GqtJ-Hd
- for linux-mediatek@lists.infradead.org; Mon, 22 Nov 2021 14:26:42 +0000
-X-UUID: 86b5f6caa9c244d7a1f73da60d05b6d5-20211122
-X-UUID: 86b5f6caa9c244d7a1f73da60d05b6d5-20211122
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <deren.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 491494665; Mon, 22 Nov 2021 07:26:34 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Nov 2021 06:26:32 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 22 Nov 2021 22:26:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 22 Nov 2021 22:26:24 +0800
-From: Deren Wu <Deren.Wu@mediatek.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo.bianconi@redhat.com>
-CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
- Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
- <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
- <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
- Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
- Chen" <shayne.chen@mediatek.com>, linux-wireless
- <linux-wireless@vger.kernel.org>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: [PATCH] mt76: mt7921: fix timestamp check in tx_status
-Date: Mon, 22 Nov 2021 22:25:44 +0800
-Message-ID: <934b51921e22ca6f8983d7cbd9feb5248f804303.1637590567.git.deren.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1mpAOL-00GsM6-7h
+ for linux-mediatek@lists.infradead.org; Mon, 22 Nov 2021 14:34:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+ References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=gS+N4akZ/XZOqsmtrfiHmr57eg/++9zj6ceGNTomSn0=; b=dcUPzf2h59Vc+G90WrB4T0LfVP
+ UfJAKSSGadSWZymmTg95Z5MbyQVsGFqiOc7AIXWWhQ3d8KwRTJ3ellR1LJjBVHkLP87fQShN3MXDg
+ EqgPA/6pHIan2Cqmlw5RfuPBjyYgPM7AP/8o5k+BDoUeY3IJQQE1sj8CSJJ6K7PYYh1w=;
+Received: from p54ae9f3f.dip0.t-ipconnect.de ([84.174.159.63] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1mpAO5-0005vJ-Q3; Mon, 22 Nov 2021 15:33:41 +0100
+Message-ID: <262c146e-8c75-be20-54c0-2a20158c1473@nbd.name>
+Date: Mon, 22 Nov 2021 15:33:40 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.3.2
+Subject: Re: [PATCH] mt76: mt7921: fix timestamp check in tx_status
+Content-Language: en-US
+To: Deren Wu <Deren.Wu@mediatek.com>,
+ Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+Cc: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+ Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
+ Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
+ Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>,
+ Stella Chang <Stella.Chang@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <934b51921e22ca6f8983d7cbd9feb5248f804303.1637590567.git.deren.wu@mediatek.com>
+From: Felix Fietkau <nbd@nbd.name>
+In-Reply-To: <934b51921e22ca6f8983d7cbd9feb5248f804303.1637590567.git.deren.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_062639_624207_5D6D380B 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20211122_063357_545113_6608D9C0 
+X-CRM114-Status: UNSURE (   7.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,38 +75,24 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+On 2021-11-22 15:25, Deren Wu wrote:
+> From: Deren Wu <deren.wu@mediatek.com>
+> 
+> Should keep SKBs only if timeout timestamp is still after jiffies.
+> Otherwise, report tx status and drop it direclty.
+> 
+> Fixes: bd1e3e7b693c ("mt76: introduce packet_id idr")
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 
-Should keep SKBs only if timeout timestamp is still after jiffies.
-Otherwise, report tx status and drop it direclty.
+Please drop the "mt7921: " from the subject, since it affects all 
+drivers. Other than that, the patch looks good. Thanks!
 
-Fixes: bd1e3e7b693c ("mt76: introduce packet_id idr")
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/tx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/tx.c b/drivers/net/wireless/mediatek/mt76/tx.c
-index 11719ef034d8..6b8c9dc80542 100644
---- a/drivers/net/wireless/mediatek/mt76/tx.c
-+++ b/drivers/net/wireless/mediatek/mt76/tx.c
-@@ -173,7 +173,7 @@ mt76_tx_status_skb_get(struct mt76_dev *dev, struct mt76_wcid *wcid, int pktid,
- 			if (!(cb->flags & MT_TX_CB_DMA_DONE))
- 				continue;
- 
--			if (!time_is_after_jiffies(cb->jiffies +
-+			if (time_is_after_jiffies(cb->jiffies +
- 						   MT_TX_STATUS_SKB_TIMEOUT))
- 				continue;
- 		}
--- 
-2.18.0
-
+- Felix
 
 _______________________________________________
 Linux-mediatek mailing list
