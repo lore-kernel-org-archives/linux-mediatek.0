@@ -4,54 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F4F4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 11:46:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F28D8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 11:46:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qxSze7SfW5xtQePB/JsSsnOOtLUxEo5IbMDejoQdPjE=; b=ezsCPZw4MYIkTZ
-	9KM3QEY0BKMW1T/KdDPjcgvkS/FAVLi0e9vDVLcYt0iXMRFtgjqEqeGOkKNuqBWY0v6hZypyGJR73
-	K0Z93FB5YV1M+tMSf0YXVjx8djnt2a3slhHPIq1Px6YfqtEz5knFV4wetojpF3P/bUSP2wlET/BKN
-	/NB8U1l3nic+lACUuQDMFe+wk/ahxK8QCqabjoRUvd4wYUwmwFBWnOFTiVeE/B5c/PRVveHpVKfo8
-	ntGtH48B9sChnmcMl/zkAcHwc/vNMLfKXrAMZB0LI1QXi1a4OA45TxuC7KFWTbob/c8capvK+Hib6
-	/heGTMsX69Y7J/LaEukQ==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cScXV+DHkdWaoWqwjRFWOGQNV1RQ86Hu5IMvuLfll+c=; b=sALerTHnh1VMkl
+	6hX9o/NIqCp6QykOtRlM13omlHDuFmHj2ou0zb6oTcNV9gA4pexn2NTVUgjbskWvZ1YSPCXiTmSVz
+	VnCRqL6UwsXRR7IhpmugaBmC8vKHXHHciRpFoQ1gSqtvzriZvTCyWzqWZqIunCwzJpQWk5VHRnzoJ
+	/BPSljZXAj7TQO0H0jwToGn729yNsjL6+STo3URy/LVRF3q2XipBx+Og6bivW64CIF0/yj29aQu0F
+	hxQf1WkqrNMtKpUNLzXYxf1JJKKs9SigdQ5SVucN4C+FI20jM8U71r9t8WDJ0Cid5g5hay35Z8DfV
+	s5HgcPBOZoY9nenZtwcw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mp7m7-00G8QP-KV; Mon, 22 Nov 2021 11:46:19 +0000
+	id 1mp7mA-00G8RV-IZ; Mon, 22 Nov 2021 11:46:22 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mp6oA-00Ftut-3d; Mon, 22 Nov 2021 10:44:23 +0000
+ id 1mp6oA-00FtvF-ME; Mon, 22 Nov 2021 10:44:24 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: dafna) with ESMTPSA id 0363E1F4481E
+ (Authenticated sender: dafna) with ESMTPSA id 4AF961F4482B
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1637577860; bh=F0sCdl4LDNPsiVCBcFYo9Yve0hPNTO3tV9OSCtyVJ0I=;
- h=From:To:Cc:Subject:Date:From;
- b=Zhi4XWr0K4DNHK96YKsypStuWryd8MzOuLDyqiTHpBOUNhQCdttlcrDn9Z6OouRi2
- z8roA8RsKtPHY5rX5Il0X+DFtSsqKMkKY79ObzmJRIrldMCtDz2dhrpsVa2OE+WNB+
- +fonn97A7iFt6bTUfZzXWpUiYuC25UgHqxlATT3KgoE9tw8ghza/FRUMOrW6ypRMyU
- tapUzyO7PBNLjHzPo7oXv24zVZzXdo2L5J/Zl2AlKDBsuWIE9k5oQQAnXRJQDX6AFH
- okCkKXu1oue8Nhlc0boh6vAu6t1qLGUqiKuGbslKk79gQcoBPMlpTAP2q4pnJu5JHF
- RlLd6ovtDB2LA==
+ t=1637577861; bh=2Xsz33sJUCBtrvsBkiwQnxCnwbbplwf03p+yM44j+xY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=AJA57MhNimPrOD/OHLVYM5/Xo8lNmRfBCpTzhBYY55RjyHWXovzrC3+kCz2GFFB7s
+ k9JcqtSNaVUN7UPZ3qOP61314DvDmpIy1LKVtBSOMXUZnSRJZkpSHSuPs3qKn2ms6q
+ wa+0qLHqFE2jQ+t6mSitG3fXQHKBvRr3Atjyc3Q/x5N8sOvxhTPiNjToDVljORECTG
+ cxG4n3LSaLr5LLzahXyAL0ZziNpaXur8ahl6hQ3Udfvp5fPNyq4z2xlR2dOa2lOHEu
+ 39YOqjPFb7yTbYgfLb16Ji/dc0kTGw0NF3HGEp/OIMFknQUarhrMwwdDohWVZP3G/4
+ 3ieNTmbk8eNGA==
 From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 To: iommu@lists.linux-foundation.org
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, kernel@collabora.com,
- Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+Cc: Yong Wu <yong.wu@mediatek.com>, dafna.hirschfeld@collabora.com,
+ kernel@collabora.com, Joerg Roedel <joro@8bytes.org>,
  Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
  linux-mediatek@lists.infradead.org (moderated list:MEDIATEK IOMMU DRIVER),
  linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
  linux-kernel@vger.kernel.org (open list), linux-media@vger.kernel.org,
  sebastian.reichel@collabora.com
-Subject: [PATCH 0/2] iommu/mediatek: fix tlb flush logic
-Date: Mon, 22 Nov 2021 12:43:58 +0200
-Message-Id: <20211122104400.4160-1-dafna.hirschfeld@collabora.com>
+Subject: [PATCH 1/2] iommu/mediatek: Always tlb_flush_all when each PM resume
+Date: Mon, 22 Nov 2021 12:43:59 +0200
+Message-Id: <20211122104400.4160-2-dafna.hirschfeld@collabora.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20211122104400.4160-1-dafna.hirschfeld@collabora.com>
+References: <20211122104400.4160-1-dafna.hirschfeld@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_024422_371557_14F66366 
-X-CRM114-Status: UNSURE (   8.76  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211122_024422_905078_EBAC8A50 
+X-CRM114-Status: GOOD (  16.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,33 +70,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Often devices allocate dma buffers before they do
-runtime pm resume. This is the case for example with v4l2
-devices where buffers are allocated during 'VIDIOC_REQBUFS`
-and runtime resume happens later usually during 'VIDIOC_STREAMON'.
-In such cases the partial tlb flush when allocating will fail
-since the the iommu is runtime suspended. This will print a warning
-and try to do full flush. But there is actually no need to flush
-the tlb before the consumer device is turned on.
+From: Yong Wu <yong.wu@mediatek.com>
 
-Fix the warning by skipping parital flush when allocating and instead
-do full flash in runtime resume
+Prepare for 2 HWs that sharing pgtable in different power-domains.
 
-This patchset is a combination of a patch already sent in a different
-patchset: [1] and a warning fix from Sebastian Reichel
+When there are 2 M4U HWs, it may has problem in the flush_range in which
+we get the pm_status via the m4u dev, BUT that function don't reflect the
+real power-domain status of the HW since there may be other HW also use
+that power-domain.
 
-[1] https://lore.kernel.org/linux-devicetree/20210923115840.17813-13-yong.wu@mediatek.com/
+The function dma_alloc_attrs help allocate the iommu buffer which
+need the corresponding power domain since tlb flush is needed when
+preparing iova. BUT this function only is for allocating buffer,
+we have no good reason to request the user always call pm_runtime_get
+before calling dma_alloc_xxx. Therefore, we add a tlb_flush_all
+in the pm_runtime_resume to make sure the tlb always is clean.
 
-Sebastian Reichel (1):
-  iommu/mediatek: always check runtime PM status in tlb flush range
-    callback
+Another solution is always call pm_runtime_get in the tlb_flush_range.
+This will trigger pm runtime resume/backup so often when the iommu
+power is not active at some time(means user don't call pm_runtime_get
+before calling dma_alloc_xxx), This may cause the performance drop.
+thus we don't use this.
 
-Yong Wu (1):
-  iommu/mediatek: Always tlb_flush_all when each PM resume
+In other case, the iommu's power should always be active via device
+link with smi.
 
- drivers/iommu/mtk_iommu.c | 17 ++++++++++-------
- 1 file changed, 10 insertions(+), 7 deletions(-)
+The previous SoC don't have PM except mt8192. the mt8192 IOMMU is display's
+power-domain which nearly always is enabled. thus no need fix tags here.
+Prepare for mt8195.
 
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+[imporvie inline doc]
+Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+---
+ drivers/iommu/mtk_iommu.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+index 25b834104790..28dc4b95b6d9 100644
+--- a/drivers/iommu/mtk_iommu.c
++++ b/drivers/iommu/mtk_iommu.c
+@@ -964,6 +964,13 @@ static int __maybe_unused mtk_iommu_runtime_resume(struct device *dev)
+ 		return ret;
+ 	}
+ 
++	/*
++	 * Users may allocate dma buffer before they call pm_runtime_get,
++	 * in which case it will lack the necessary tlb flush.
++	 * Thus, make sure to update the tlb after each PM resume.
++	 */
++	mtk_iommu_tlb_flush_all(data);
++
+ 	/*
+ 	 * Uppon first resume, only enable the clk and return, since the values of the
+ 	 * registers are not yet set.
 -- 
 2.17.1
 
