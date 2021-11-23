@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA47EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 07:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB1AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 07:56:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aHw8cDzAF4oVyAnWxpxbJEr47gZELeYykYlvr3x9d5k=; b=SitxIWYa92q/4e
-	+8UYRDopX4kvmmgOn3dzyoMggxpbkNQmXJPi30pa6tf6nMXx+N+gTnzT0lbDZjxElS+h4w3cCBntZ
-	luIxCmqG5P78p6ZLyfHkWcAxedko8IuKyXvbCiftr9dFVQmVDlhG+dII40f7Tjqb/Jrnso945q2jb
-	pzht1LQsGNDH7YligqX7B6cWhxqnwh0XQxiJw2ltabhVY+NWGNdhBaU+hjKu+w3jo8luMBeige7dR
-	dOFby8FL9/7cjUygHpCQ7yLKc3vkypt+BFrfxa7eEKCOgwUXxLhgp73YV2qWKVW4qsN8u9G/j7lwF
-	HTPI/zqolKHkdldhyILg==;
+	List-Owner; bh=hpgYy32IxfyEJtE0xpOUjJR6RVODswKm8724cRDZLUM=; b=Uiq49pIPhlWFMS
+	Lp02kN4/EMyqbmBoAi3cMDsttkcJjRaSEb9G9bGXkTR7oC/KiBNu9dTdHaExlLJ7VSQfde9Xh7MMY
+	pAKFoO+qNNkBepS4ZwXZGE4ftw/uxKhpdlvpGsfcQXqwJrXYgR00QZFKIV5JnswFxC5qqdBu8MOOd
+	GrNsY+btPxdIgmCG08Z8RmYvDR+3UBX3soH8mWTMWZ1h1Z0MjscZDjtIi76KekR4QfbTiftR8d1tS
+	0nvCtIpODFdBMpgLXFYs2zmPUDIWVpmhK2riZUndkLFRTnY0RoT9Fu4ybI8w3sluRF1d0e9F1EtPj
+	gBfRQZF0gqxdrou3Mgyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpQew-0018Kl-28; Tue, 23 Nov 2021 07:56:10 +0000
+	id 1mpQf3-0018NI-RA; Tue, 23 Nov 2021 07:56:17 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpQZY-0016uY-3G
- for linux-mediatek@lists.infradead.org; Tue, 23 Nov 2021 07:50:39 +0000
-X-UUID: 03a9d08acddb4a0db854940a820eb7c5-20211123
-X-UUID: 03a9d08acddb4a0db854940a820eb7c5-20211123
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1mpQZa-0016uI-TK
+ for linux-mediatek@lists.infradead.org; Tue, 23 Nov 2021 07:50:41 +0000
+X-UUID: 30aff6cf7e0340d7a4aa7fe4173ddc79-20211123
+X-UUID: 30aff6cf7e0340d7a4aa7fe4173ddc79-20211123
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <bo.jiao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1472208438; Tue, 23 Nov 2021 00:50:32 -0700
+ with ESMTP id 780537478; Tue, 23 Nov 2021 00:50:36 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 22 Nov 2021 23:50:31 -0800
+ 15.0.1497.2; Mon, 22 Nov 2021 23:50:35 -0800
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 23 Nov 2021 15:50:30 +0800
+ Tue, 23 Nov 2021 15:50:32 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 23 Nov 2021 15:50:29 +0800
+ 15.0.1497.2 via Frontend Transport; Tue, 23 Nov 2021 15:50:31 +0800
 From: Bo Jiao <bo.jiao@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
@@ -47,18 +47,17 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
  <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
  <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH v3 01/11] mt76: mt7915: add mt7915_mmio_probe() as a common
- probing function
-Date: Tue, 23 Nov 2021 15:49:45 +0800
-Message-ID: <e8cdd76ab9e16b04c432a3d8035871adb3b14444.1637652742.git.Bo.Jiao@mediatek.com>
+Subject: [PATCH v3 05/11] mt76: mt7915: rework eeprom.c to adapt mt7916 changes
+Date: Tue, 23 Nov 2021 15:49:49 +0800
+Message-ID: <ef676c5cd7d68e4fc2525dcd132e8a2a1f7d92d9.1637652742.git.Bo.Jiao@mediatek.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <cover.1637652742.git.Bo.Jiao@mediatek.com>
 References: <cover.1637652742.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_235036_282412_4D69F85B 
-X-CRM114-Status: GOOD (  19.87  )
+X-CRM114-CacheID: sfid-20211122_235039_021961_D14BBC8A 
+X-CRM114-Status: GOOD (  21.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,7 +76,6 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-Add mt7915_mmio_probe() which will be used for the upcoming devices.
 This is an intermediate patch to add mt7916 support.
 
 Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
@@ -86,599 +84,329 @@ Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7915/mmio.c  | 232 ++++++++++++++++-
- .../wireless/mediatek/mt76/mt7915/mt7915.h    |   7 +-
- .../net/wireless/mediatek/mt76/mt7915/pci.c   | 233 ++----------------
- 3 files changed, 255 insertions(+), 217 deletions(-)
+v2:
+- extend mac address from main phy mac address for ext phy
+  when ext phy mac address is invalid.
+---
+ .../wireless/mediatek/mt76/mt7915/eeprom.c    | 76 ++++++++++++++-----
+ .../wireless/mediatek/mt76/mt7915/eeprom.h    |  9 ++-
+ .../net/wireless/mediatek/mt76/mt7915/init.c  | 56 ++++++++++----
+ .../wireless/mediatek/mt76/mt7915/mt7915.h    |  3 +-
+ 4 files changed, 107 insertions(+), 37 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-index 1f6ba30..2f8b72b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
-@@ -1,7 +1,14 @@
- // SPDX-License-Identifier: ISC
- /* Copyright (C) 2020 MediaTek Inc. */
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+index edd74d0..40dcbeb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.c
+@@ -10,6 +10,7 @@ static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	u8 *eeprom = mdev->eeprom.data;
+ 	u32 val = eeprom[MT_EE_DO_PRE_CAL];
++	u32 offs;
  
-+#include <linux/kernel.h>
-+#include <linux/module.h>
-+#include <linux/platform_device.h>
-+#include <linux/pci.h>
+ 	if (!dev->flash_mode)
+ 		return 0;
+@@ -22,7 +23,9 @@ static int mt7915_eeprom_load_precal(struct mt7915_dev *dev)
+ 	if (!dev->cal)
+ 		return -ENOMEM;
+ 
+-	return mt76_get_of_eeprom(mdev, dev->cal, MT_EE_PRECAL, val);
++	offs = is_mt7915(&dev->mt76) ? MT_EE_PRECAL : MT_EE_PRECAL_V2;
 +
- #include "mt7915.h"
-+#include "mac.h"
-+#include "../trace.h"
- 
- static u32 mt7915_reg_map_l1(struct mt7915_dev *dev, u32 addr)
- {
-@@ -125,7 +132,9 @@ static u32 mt7915_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
- 	return dev->bus_ops->rmw(mdev, addr, mask, val);
++	return mt76_get_of_eeprom(mdev, dev->cal, offs, val);
  }
  
--int mt7915_mmio_init(struct mt76_dev *mdev, void __iomem *mem_base, int irq)
-+static int mt7915_mmio_init(struct mt76_dev *mdev,
-+			    void __iomem *mem_base,
-+			    u32 device_id)
- {
- 	struct mt76_bus_ops *bus_ops;
- 	struct mt7915_dev *dev;
-@@ -148,7 +157,228 @@ int mt7915_mmio_init(struct mt76_dev *mdev, void __iomem *mem_base, int irq)
- 		    (mt76_rr(dev, MT_HW_REV) & 0xff);
- 	dev_dbg(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
- 
-+	return 0;
-+}
-+
-+void mt7915_dual_hif_set_irq_mask(struct mt7915_dev *dev,
-+				  bool write_reg,
-+				  u32 clear, u32 set)
-+{
-+	struct mt76_dev *mdev = &dev->mt76;
-+	unsigned long flags;
-+
-+	spin_lock_irqsave(&mdev->mmio.irq_lock, flags);
-+
-+	mdev->mmio.irqmask &= ~clear;
-+	mdev->mmio.irqmask |= set;
-+
-+	if (write_reg) {
-+		mt76_wr(dev, MT_INT_MASK_CSR, mdev->mmio.irqmask);
-+		mt76_wr(dev, MT_INT1_MASK_CSR, mdev->mmio.irqmask);
-+	}
-+
-+	spin_unlock_irqrestore(&mdev->mmio.irq_lock, flags);
-+}
-+
-+static void mt7915_rx_poll_complete(struct mt76_dev *mdev,
-+				    enum mt76_rxq_id q)
-+{
-+	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
-+	static const u32 rx_irq_mask[] = {
-+		[MT_RXQ_MAIN] = MT_INT_RX_DONE_DATA0,
-+		[MT_RXQ_EXT] = MT_INT_RX_DONE_DATA1,
-+		[MT_RXQ_MCU] = MT_INT_RX_DONE_WM,
-+		[MT_RXQ_MCU_WA] = MT_INT_RX_DONE_WA,
-+		[MT_RXQ_EXT_WA] = MT_INT_RX_DONE_WA_EXT,
-+	};
-+
-+	mt7915_irq_enable(dev, rx_irq_mask[q]);
-+}
-+
-+/* TODO: support 2/4/6/8 MSI-X vectors */
-+static void mt7915_irq_tasklet(struct tasklet_struct *t)
-+{
-+	struct mt7915_dev *dev = from_tasklet(dev, t, irq_tasklet);
-+	u32 intr, intr1, mask;
-+
- 	mt76_wr(dev, MT_INT_MASK_CSR, 0);
-+	if (dev->hif2)
-+		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
-+
-+	intr = mt76_rr(dev, MT_INT_SOURCE_CSR);
-+	intr &= dev->mt76.mmio.irqmask;
-+	mt76_wr(dev, MT_INT_SOURCE_CSR, intr);
-+
-+	if (dev->hif2) {
-+		intr1 = mt76_rr(dev, MT_INT1_SOURCE_CSR);
-+		intr1 &= dev->mt76.mmio.irqmask;
-+		mt76_wr(dev, MT_INT1_SOURCE_CSR, intr1);
-+
-+		intr |= intr1;
-+	}
-+
-+	trace_dev_irq(&dev->mt76, intr, dev->mt76.mmio.irqmask);
-+
-+	mask = intr & MT_INT_RX_DONE_ALL;
-+	if (intr & MT_INT_TX_DONE_MCU)
-+		mask |= MT_INT_TX_DONE_MCU;
-+
-+	mt7915_irq_disable(dev, mask);
-+
-+	if (intr & MT_INT_TX_DONE_MCU)
-+		napi_schedule(&dev->mt76.tx_napi);
-+
-+	if (intr & MT_INT_RX_DONE_DATA0)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_MAIN]);
-+
-+	if (intr & MT_INT_RX_DONE_DATA1)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT]);
-+
-+	if (intr & MT_INT_RX_DONE_WM)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU]);
-+
-+	if (intr & MT_INT_RX_DONE_WA)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU_WA]);
-+
-+	if (intr & MT_INT_RX_DONE_WA_EXT)
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT_WA]);
-+
-+	if (intr & MT_INT_MCU_CMD) {
-+		u32 val = mt76_rr(dev, MT_MCU_CMD);
-+
-+		mt76_wr(dev, MT_MCU_CMD, val);
-+		if (val & MT_MCU_CMD_ERROR_MASK) {
-+			dev->reset_state = val;
-+			ieee80211_queue_work(mt76_hw(dev), &dev->reset_work);
-+			wake_up(&dev->reset_wait);
-+		}
-+	}
-+}
-+
-+static irqreturn_t mt7915_irq_handler(int irq, void *dev_instance)
-+{
-+	struct mt7915_dev *dev = dev_instance;
-+
-+	mt76_wr(dev, MT_INT_MASK_CSR, 0);
-+	if (dev->hif2)
-+		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
-+
-+	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
-+		return IRQ_NONE;
-+
-+	tasklet_schedule(&dev->irq_tasklet);
-+
-+	return IRQ_HANDLED;
-+}
-+
-+int mt7915_mmio_probe(struct device *pdev,
-+		      void __iomem *mem_base,
-+		      u32 device_id,
-+		      int irq, struct mt7915_hif *hif2)
-+{
-+	static const struct mt76_driver_ops drv_ops = {
-+		/* txwi_size = txd size + txp size */
-+		.txwi_size = MT_TXD_SIZE + sizeof(struct mt7915_txp),
-+		.drv_flags = MT_DRV_TXWI_NO_FREE | MT_DRV_HW_MGMT_TXQ,
-+		.survey_flags = SURVEY_INFO_TIME_TX |
-+				SURVEY_INFO_TIME_RX |
-+				SURVEY_INFO_TIME_BSS_RX,
-+		.token_size = MT7915_TOKEN_SIZE,
-+		.tx_prepare_skb = mt7915_tx_prepare_skb,
-+		.tx_complete_skb = mt7915_tx_complete_skb,
-+		.rx_skb = mt7915_queue_rx_skb,
-+		.rx_poll_complete = mt7915_rx_poll_complete,
-+		.sta_ps = mt7915_sta_ps,
-+		.sta_add = mt7915_mac_sta_add,
-+		.sta_remove = mt7915_mac_sta_remove,
-+		.update_survey = mt7915_update_channel,
-+	};
-+	struct ieee80211_ops *ops;
-+	struct mt7915_dev *dev;
-+	struct mt76_dev *mdev;
-+	int ret;
-+
-+	ops = devm_kmemdup(pdev, &mt7915_ops, sizeof(mt7915_ops), GFP_KERNEL);
-+	if (!ops)
-+		return -ENOMEM;
-+
-+	mdev = mt76_alloc_device(pdev, sizeof(*dev), ops, &drv_ops);
-+	if (!mdev)
-+		return -ENOMEM;
-+
-+	dev = container_of(mdev, struct mt7915_dev, mt76);
-+
-+	ret = mt7915_mmio_init(mdev, mem_base, device_id);
-+	if (ret)
-+		goto error;
-+
-+	tasklet_setup(&dev->irq_tasklet, mt7915_irq_tasklet);
-+
-+	mt76_wr(dev, MT_INT_MASK_CSR, 0);
-+	/* master switch of PCIe tnterrupt enable */
-+	if (dev_is_pci(pdev))
-+		mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-+
-+	ret = devm_request_irq(mdev->dev, irq, mt7915_irq_handler,
-+			       IRQF_SHARED, KBUILD_MODNAME, dev);
-+	if (ret)
-+		goto error;
-+
-+	if (hif2) {
-+		dev->hif2 = hif2;
-+
-+		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
-+		/* master switch of PCIe tnterrupt enable */
-+		if (dev_is_pci(pdev))
-+			mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0xff);
-+
-+		ret = devm_request_irq(mdev->dev, dev->hif2->irq,
-+				       mt7915_irq_handler, IRQF_SHARED,
-+				       KBUILD_MODNAME "-hif", dev);
-+		if (ret) {
-+			put_device(dev->hif2->dev);
-+			goto free_irq;
-+		}
-+	}
-+
-+	ret = mt7915_register_device(dev);
-+	if (ret)
-+		goto free_hif2_irq;
- 
- 	return 0;
-+
-+free_hif2_irq:
-+	if (dev->hif2)
-+		devm_free_irq(mdev->dev, dev->hif2->irq, dev);
-+free_irq:
-+	devm_free_irq(mdev->dev, irq, dev);
-+error:
-+	mt76_free_device(&dev->mt76);
-+
-+	return ret;
+ static int mt7915_check_eeprom(struct mt7915_dev *dev)
+@@ -98,7 +101,7 @@ static int mt7915_eeprom_load(struct mt7915_dev *dev)
+ 	return mt7915_check_eeprom(dev);
  }
+ 
+-void mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
++static void mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
+ {
+ 	struct mt7915_dev *dev = phy->dev;
+ 	bool ext_phy = phy != &dev->phy;
+@@ -124,32 +127,55 @@ void mt7915_eeprom_parse_band_config(struct mt7915_phy *phy)
+ 	}
+ }
+ 
+-static void mt7915_eeprom_parse_hw_cap(struct mt7915_dev *dev)
++void mt7915_eeprom_parse_hw_cap(struct mt7915_dev *dev,
++				struct mt7915_phy *phy)
+ {
+ 	u8 nss, nss_band, *eeprom = dev->mt76.eeprom.data;
++	struct mt76_phy *mphy = phy->mt76;
++	bool ext_phy = phy != &dev->phy;
 +
-+static int __init mt7915_init(void)
-+{
-+	int ret;
++	mt7915_eeprom_parse_band_config(phy);
+ 
+-	mt7915_eeprom_parse_band_config(&dev->phy);
++	/* read tx/rx mask from eeprom */
++	if (is_mt7915(&dev->mt76)) {
++		nss = FIELD_GET(MT_EE_WIFI_CONF0_TX_PATH,
++				eeprom[MT_EE_WIFI_CONF]);
++	} else {
++		nss = FIELD_GET(MT_EE_WIFI_CONF0_TX_PATH,
++				eeprom[MT_EE_WIFI_CONF + ext_phy]);
++	}
+ 
+-	/* read tx mask from eeprom */
+-	nss = FIELD_GET(MT_EE_WIFI_CONF0_TX_PATH, eeprom[MT_EE_WIFI_CONF]);
+ 	if (!nss || nss > 4)
+ 		nss = 4;
+ 
++	/* read tx/rx stream */
+ 	nss_band = nss;
+-
+ 	if (dev->dbdc_support) {
+-		nss_band = FIELD_GET(MT_EE_WIFI_CONF3_TX_PATH_B0,
+-				     eeprom[MT_EE_WIFI_CONF + 3]);
++		if (is_mt7915(&dev->mt76)) {
++			nss_band = FIELD_GET(MT_EE_WIFI_CONF3_TX_PATH_B0,
++					     eeprom[MT_EE_WIFI_CONF + 3]);
++			if (ext_phy)
++				nss_band = FIELD_GET(MT_EE_WIFI_CONF3_TX_PATH_B1,
++						     eeprom[MT_EE_WIFI_CONF + 3]);
++		} else {
++			nss_band = FIELD_GET(MT_EE_WIFI_CONF_STREAM_NUM,
++					     eeprom[MT_EE_WIFI_CONF + 2 + ext_phy]);
++		}
 +
-+	ret = pci_register_driver(&mt7915_hif_driver);
-+	if (ret)
-+		return ret;
+ 		if (!nss_band || nss_band > 2)
+ 			nss_band = 2;
++	}
+ 
+-		if (nss_band >= nss)
+-			nss = 4;
++	if (nss_band > nss) {
++		dev_err(dev->mt76.dev,
++			"nss mismatch, nss(%d) nss_band(%d) ext_phy(%d)\n",
++			nss, nss_band, ext_phy);
++		nss = nss_band;
+ 	}
+ 
+-	dev->chainmask = BIT(nss) - 1;
+-	dev->mphy.antenna_mask = BIT(nss_band) - 1;
+-	dev->mphy.chainmask = dev->mphy.antenna_mask;
++	mphy->chainmask = ext_phy ? (BIT(nss_band) - 1) << 2 : (BIT(nss_band) - 1);
++	mphy->antenna_mask = BIT(hweight8(mphy->chainmask)) - 1;
++	dev->chainmask |= mphy->chainmask;
+ }
+ 
+ int mt7915_eeprom_init(struct mt7915_dev *dev)
+@@ -171,7 +197,7 @@ int mt7915_eeprom_init(struct mt7915_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	mt7915_eeprom_parse_hw_cap(dev);
++	mt7915_eeprom_parse_hw_cap(dev, &dev->phy);
+ 	memcpy(dev->mphy.macaddr, dev->mt76.eeprom.data + MT_EE_MAC_ADDR,
+ 	       ETH_ALEN);
+ 
+@@ -194,15 +220,20 @@ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
+ 	tssi_on = mt7915_tssi_enabled(dev, chan->band);
+ 
+ 	if (chan->band == NL80211_BAND_2GHZ) {
+-		index = MT_EE_TX0_POWER_2G + chain_idx * 3;
++		u32 power = is_mt7915(&dev->mt76) ?
++			MT_EE_TX0_POWER_2G : MT_EE_TX0_POWER_2G_V2;
 +
-+	ret = pci_register_driver(&mt7915_pci_driver);
-+	if (ret)
-+		pci_unregister_driver(&mt7915_hif_driver);
++		index = power + chain_idx * 3;
+ 		target_power = eeprom[index];
+ 
+ 		if (!tssi_on)
+ 			target_power += eeprom[index + 1];
+ 	} else {
+ 		int group = mt7915_get_channel_group(chan->hw_value);
++		u32 power = is_mt7915(&dev->mt76) ?
++			MT_EE_TX0_POWER_5G : MT_EE_TX0_POWER_5G_V2;
+ 
+-		index = MT_EE_TX0_POWER_5G + chain_idx * 12;
++		index = power + chain_idx * 12;
+ 		target_power = eeprom[index + group];
+ 
+ 		if (!tssi_on)
+@@ -217,11 +248,18 @@ s8 mt7915_eeprom_get_power_delta(struct mt7915_dev *dev, int band)
+ 	u8 *eeprom = dev->mt76.eeprom.data;
+ 	u32 val;
+ 	s8 delta;
++	u32 rate_2g, rate_5g;
 +
-+	return ret;
-+}
++	rate_2g = is_mt7915(&dev->mt76) ?
++		MT_EE_RATE_DELTA_2G : MT_EE_RATE_DELTA_2G_V2;
 +
-+static void __exit mt7915_exit(void)
-+{
-+	pci_unregister_driver(&mt7915_pci_driver);
-+	pci_unregister_driver(&mt7915_hif_driver);
-+}
++	rate_5g = is_mt7915(&dev->mt76) ?
++		MT_EE_RATE_DELTA_5G : MT_EE_RATE_DELTA_5G_V2;
+ 
+ 	if (band == NL80211_BAND_2GHZ)
+-		val = eeprom[MT_EE_RATE_DELTA_2G];
++		val = eeprom[rate_2g];
+ 	else
+-		val = eeprom[MT_EE_RATE_DELTA_5G];
++		val = eeprom[rate_5g];
+ 
+ 	if (!(val & MT_EE_RATE_DELTA_EN))
+ 		return 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+index a43389a..92d1a94 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/eeprom.h
+@@ -23,11 +23,17 @@ enum mt7915_eeprom_field {
+ 	MT_EE_RATE_DELTA_5G =	0x29d,
+ 	MT_EE_TX0_POWER_2G =	0x2fc,
+ 	MT_EE_TX0_POWER_5G =	0x34b,
++	MT_EE_RATE_DELTA_2G_V2 = 0x7d3,
++	MT_EE_RATE_DELTA_5G_V2 = 0x81e,
++	MT_EE_TX0_POWER_2G_V2 =	0x441,
++	MT_EE_TX0_POWER_5G_V2 =	0x445,
+ 	MT_EE_ADIE_FT_VERSION =	0x9a0,
+ 
+ 	__MT_EE_MAX =		0xe00,
++	__MT_EE_MAX_V2 =	0x1000,
+ 	/* 0xe10 ~ 0x5780 used to save group cal data */
+-	MT_EE_PRECAL =		0xe10
++	MT_EE_PRECAL =		0xe10,
++	MT_EE_PRECAL_V2 =	0x1010
+ };
+ 
+ #define MT_EE_WIFI_CAL_GROUP			BIT(0)
+@@ -39,6 +45,7 @@ enum mt7915_eeprom_field {
+ #define MT_EE_WIFI_CONF0_TX_PATH		GENMASK(2, 0)
+ #define MT_EE_WIFI_CONF0_BAND_SEL		GENMASK(7, 6)
+ #define MT_EE_WIFI_CONF1_BAND_SEL		GENMASK(7, 6)
++#define MT_EE_WIFI_CONF_STREAM_NUM		GENMASK(7, 5)
+ #define MT_EE_WIFI_CONF3_TX_PATH_B0		GENMASK(1, 0)
+ #define MT_EE_WIFI_CONF3_TX_PATH_B1		GENMASK(5, 4)
+ #define MT_EE_WIFI_CONF7_TSSI0_2G		BIT(0)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+index 324263e..c2eae36 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
+@@ -307,6 +307,7 @@ mt7915_init_wiphy(struct ieee80211_hw *hw)
+ {
+ 	struct mt7915_phy *phy = mt7915_hw_phy(hw);
+ 	struct wiphy *wiphy = hw->wiphy;
++	struct mt7915_dev *dev = phy->dev;
+ 
+ 	hw->queues = 4;
+ 	hw->max_rx_aggregation_subframes = IEEE80211_MAX_AMPDU_BUF;
+@@ -349,14 +350,34 @@ mt7915_init_wiphy(struct ieee80211_hw *hw)
+ 		phy->mt76->sband_5g.sband.ht_cap.cap |=
+ 			IEEE80211_HT_CAP_LDPC_CODING |
+ 			IEEE80211_HT_CAP_MAX_AMSDU;
+-		phy->mt76->sband_5g.sband.vht_cap.cap |=
+-			IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_7991 |
+-			IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK;
 +
-+module_init(mt7915_init);
-+module_exit(mt7915_exit);
-+MODULE_LICENSE("Dual BSD/GPL");
++		if (is_mt7915(&dev->mt76)) {
++			phy->mt76->sband_5g.sband.vht_cap.cap |=
++				IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_7991 |
++				IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK;
++
++			if (!dev->dbdc_support)
++				phy->mt76->sband_5g.sband.vht_cap.cap |=
++					IEEE80211_VHT_CAP_SHORT_GI_160 |
++					IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160_80PLUS80MHZ;
++		} else {
++			phy->mt76->sband_5g.sband.vht_cap.cap |=
++				IEEE80211_VHT_CAP_MAX_MPDU_LENGTH_11454 |
++				IEEE80211_VHT_CAP_MAX_A_MPDU_LENGTH_EXPONENT_MASK;
++
++			/* mt7916 dbdc with 2g 2x2 bw40 and 5g 2x2 bw160c */
++			phy->mt76->sband_5g.sband.vht_cap.cap |=
++				IEEE80211_VHT_CAP_SHORT_GI_160 |
++				IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160MHZ;
++		}
+ 	}
+ 
+ 	mt76_set_stream_caps(phy->mt76, true);
+ 	mt7915_set_stream_vht_txbf_caps(phy);
+ 	mt7915_set_stream_he_caps(phy);
++
++	wiphy->available_antennas_rx = phy->mt76->antenna_mask;
++	wiphy->available_antennas_tx = phy->mt76->antenna_mask;
+ }
+ 
+ static void
+@@ -456,18 +477,27 @@ static int mt7915_register_ext_phy(struct mt7915_dev *dev)
+ 	phy = mphy->priv;
+ 	phy->dev = dev;
+ 	phy->mt76 = mphy;
+-	mphy->chainmask = dev->chainmask & ~dev->mphy.chainmask;
+-	mphy->antenna_mask = BIT(hweight8(mphy->chainmask)) - 1;
+ 
+ 	INIT_DELAYED_WORK(&mphy->mac_work, mt7915_mac_work);
+ 
+-	mt7915_eeprom_parse_band_config(phy);
+-	mt7915_init_wiphy(mphy->hw);
++	mt7915_eeprom_parse_hw_cap(dev, phy);
+ 
+ 	memcpy(mphy->macaddr, dev->mt76.eeprom.data + MT_EE_MAC_ADDR2,
+ 	       ETH_ALEN);
++	/*
++	 * Make the secondary PHY MAC address local without overlapping with
++	 * the usual MAC address allocation scheme on multiple virtual interfaces
++	 */
++	if (!is_valid_ether_addr(mphy->macaddr)) {
++		memcpy(mphy->macaddr, dev->mt76.eeprom.data + MT_EE_MAC_ADDR,
++		       ETH_ALEN);
++		mphy->macaddr[0] |= 2;
++		mphy->macaddr[0] ^= BIT(7);
++	}
+ 	mt76_eeprom_override(mphy);
+ 
++	/* init wiphy according to mphy and phy */
++	mt7915_init_wiphy(mphy->hw);
+ 	ret = mt7915_init_tx_queues(phy, MT7915_TXQ_BAND1,
+ 				    MT7915_TX_RING_SIZE);
+ 	if (ret)
+@@ -562,7 +592,9 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
+ 	mt76_wr(dev, MT_INT_SOURCE_CSR, ~0);
+ 
+ 	INIT_WORK(&dev->init_work, mt7915_init_work);
+-	dev->dbdc_support = !!(mt76_rr(dev, MT_HW_BOUND) & BIT(5));
++
++	dev->dbdc_support = is_mt7915(&dev->mt76) ?
++			    !!(mt76_rr(dev, MT_HW_BOUND) & BIT(5)) : true;
+ 
+ 	/* If MCU was already running, it is likely in a bad state */
+ 	if (mt76_get_field(dev, MT_TOP_MISC, MT_TOP_MISC_FW_STATE) >
+@@ -589,7 +621,6 @@ static int mt7915_init_hardware(struct mt7915_dev *dev)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-
+ 	if (dev->flash_mode) {
+ 		ret = mt7915_mcu_apply_group_cal(dev);
+ 		if (ret)
+@@ -935,13 +966,6 @@ int mt7915_register_device(struct mt7915_dev *dev)
+ 
+ 	mt7915_init_wiphy(hw);
+ 
+-	if (!dev->dbdc_support)
+-		dev->mphy.sband_5g.sband.vht_cap.cap |=
+-			IEEE80211_VHT_CAP_SHORT_GI_160 |
+-			IEEE80211_VHT_CAP_SUPP_CHAN_WIDTH_160_80PLUS80MHZ;
+-
+-	dev->mphy.hw->wiphy->available_antennas_rx = dev->mphy.chainmask;
+-	dev->mphy.hw->wiphy->available_antennas_tx = dev->mphy.chainmask;
+ 	dev->phy.dfs_state = -1;
+ 
+ #ifdef CONFIG_NL80211_TESTMODE
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index c6c846d..05a28c2 100644
+index cee719f..3e2e900 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -369,7 +369,13 @@ static inline u8 mt7915_lmac_mapping(struct mt7915_dev *dev, u8 ac)
- 
- extern const struct ieee80211_ops mt7915_ops;
- extern const struct mt76_testmode_ops mt7915_testmode_ops;
-+extern struct pci_driver mt7915_pci_driver;
-+extern struct pci_driver mt7915_hif_driver;
- 
-+int mt7915_mmio_probe(struct device *pdev,
-+		      void __iomem *mem_base,
-+		      u32 device_id,
-+		      int irq, struct mt7915_hif *hif2);
- u32 mt7915_reg_map(struct mt7915_dev *dev, u32 addr);
- u64 __mt7915_get_tsf(struct ieee80211_hw *hw, struct mt7915_vif *mvif);
+@@ -386,7 +386,8 @@ u64 __mt7915_get_tsf(struct ieee80211_hw *hw, struct mt7915_vif *mvif);
  int mt7915_register_device(struct mt7915_dev *dev);
-@@ -503,7 +509,6 @@ void mt7915_mac_work(struct work_struct *work);
- void mt7915_mac_reset_work(struct work_struct *work);
- void mt7915_mac_sta_rc_work(struct work_struct *work);
- void mt7915_mac_update_stats(struct mt7915_phy *phy);
--int mt7915_mmio_init(struct mt76_dev *mdev, void __iomem *mem_base, int irq);
- void mt7915_mac_twt_teardown_flow(struct mt7915_dev *dev,
- 				  struct mt7915_sta *msta,
- 				  u8 flowid);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-index 0af4cdb..2aba79a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/pci.c
-@@ -26,27 +26,7 @@ static const struct pci_device_id mt7915_hif_device_table[] = {
- 	{ },
- };
- 
--void mt7915_dual_hif_set_irq_mask(struct mt7915_dev *dev, bool write_reg,
--				  u32 clear, u32 set)
--{
--	struct mt76_dev *mdev = &dev->mt76;
--	unsigned long flags;
--
--	spin_lock_irqsave(&mdev->mmio.irq_lock, flags);
--
--	mdev->mmio.irqmask &= ~clear;
--	mdev->mmio.irqmask |= set;
--
--	if (write_reg) {
--		mt76_wr(dev, MT_INT_MASK_CSR, mdev->mmio.irqmask);
--		mt76_wr(dev, MT_INT1_MASK_CSR, mdev->mmio.irqmask);
--	}
--
--	spin_unlock_irqrestore(&mdev->mmio.irq_lock, flags);
--}
--
--static struct mt7915_hif *
--mt7915_pci_get_hif2(struct mt7915_dev *dev)
-+static struct mt7915_hif *mt7915_pci_get_hif2(u32 idx)
- {
- 	struct mt7915_hif *hif;
- 	u32 val;
-@@ -56,7 +36,7 @@ mt7915_pci_get_hif2(struct mt7915_dev *dev)
- 	list_for_each_entry(hif, &hif_list, list) {
- 		val = readl(hif->regs + MT_PCIE_RECOG_ID);
- 		val &= MT_PCIE_RECOG_ID_MASK;
--		if (val != dev->hif_idx)
-+		if (val != idx)
- 			continue;
- 
- 		get_device(hif->dev);
-@@ -78,123 +58,16 @@ static void mt7915_put_hif2(struct mt7915_hif *hif)
- 	put_device(hif->dev);
- }
- 
--static void
--mt7915_rx_poll_complete(struct mt76_dev *mdev, enum mt76_rxq_id q)
--{
--	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
--	static const u32 rx_irq_mask[] = {
--		[MT_RXQ_MAIN] = MT_INT_RX_DONE_DATA0,
--		[MT_RXQ_EXT] = MT_INT_RX_DONE_DATA1,
--		[MT_RXQ_MCU] = MT_INT_RX_DONE_WM,
--		[MT_RXQ_MCU_WA] = MT_INT_RX_DONE_WA,
--		[MT_RXQ_EXT_WA] = MT_INT_RX_DONE_WA_EXT,
--	};
--
--	mt7915_irq_enable(dev, rx_irq_mask[q]);
--}
--
--/* TODO: support 2/4/6/8 MSI-X vectors */
--static void mt7915_irq_tasklet(struct tasklet_struct *t)
--{
--	struct mt7915_dev *dev = from_tasklet(dev, t, irq_tasklet);
--	u32 intr, intr1, mask;
--
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--	if (dev->hif2)
--		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
--
--	intr = mt76_rr(dev, MT_INT_SOURCE_CSR);
--	intr &= dev->mt76.mmio.irqmask;
--	mt76_wr(dev, MT_INT_SOURCE_CSR, intr);
--
--	if (dev->hif2) {
--		intr1 = mt76_rr(dev, MT_INT1_SOURCE_CSR);
--		intr1 &= dev->mt76.mmio.irqmask;
--		mt76_wr(dev, MT_INT1_SOURCE_CSR, intr1);
--
--		intr |= intr1;
--	}
--
--	trace_dev_irq(&dev->mt76, intr, dev->mt76.mmio.irqmask);
--
--	mask = intr & MT_INT_RX_DONE_ALL;
--	if (intr & MT_INT_TX_DONE_MCU)
--		mask |= MT_INT_TX_DONE_MCU;
--
--	mt7915_irq_disable(dev, mask);
--
--	if (intr & MT_INT_TX_DONE_MCU)
--		napi_schedule(&dev->mt76.tx_napi);
--
--	if (intr & MT_INT_RX_DONE_DATA0)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_MAIN]);
--
--	if (intr & MT_INT_RX_DONE_DATA1)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT]);
--
--	if (intr & MT_INT_RX_DONE_WM)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU]);
--
--	if (intr & MT_INT_RX_DONE_WA)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU_WA]);
--
--	if (intr & MT_INT_RX_DONE_WA_EXT)
--		napi_schedule(&dev->mt76.napi[MT_RXQ_EXT_WA]);
--
--	if (intr & MT_INT_MCU_CMD) {
--		u32 val = mt76_rr(dev, MT_MCU_CMD);
--
--		mt76_wr(dev, MT_MCU_CMD, val);
--		if (val & MT_MCU_CMD_ERROR_MASK) {
--			dev->reset_state = val;
--			ieee80211_queue_work(mt76_hw(dev), &dev->reset_work);
--			wake_up(&dev->reset_wait);
--		}
--	}
--}
--
--static irqreturn_t mt7915_irq_handler(int irq, void *dev_instance)
--{
--	struct mt7915_dev *dev = dev_instance;
--
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--	if (dev->hif2)
--		mt76_wr(dev, MT_INT1_MASK_CSR, 0);
--
--	if (!test_bit(MT76_STATE_INITIALIZED, &dev->mphy.state))
--		return IRQ_NONE;
--
--	tasklet_schedule(&dev->irq_tasklet);
--
--	return IRQ_HANDLED;
--}
--
--static void mt7915_pci_init_hif2(struct mt7915_dev *dev)
-+static struct mt7915_hif *mt7915_pci_init_hif2(struct pci_dev *pdev)
- {
--	struct mt7915_hif *hif;
--
--	dev->hif_idx = ++hif_idx;
-+	hif_idx++;
- 	if (!pci_get_device(PCI_VENDOR_ID_MEDIATEK, 0x7916, NULL))
--		return;
--
--	mt76_wr(dev, MT_PCIE_RECOG_ID, dev->hif_idx | MT_PCIE_RECOG_ID_SEM);
--
--	hif = mt7915_pci_get_hif2(dev);
--	if (!hif)
--		return;
-+		return NULL;
- 
--	dev->hif2 = hif;
-+	writel(hif_idx | MT_PCIE_RECOG_ID_SEM,
-+	       pcim_iomap_table(pdev)[0] + MT_PCIE_RECOG_ID);
- 
--	mt76_wr(dev, MT_INT1_MASK_CSR, 0);
--
--	if (devm_request_irq(dev->mt76.dev, hif->irq, mt7915_irq_handler,
--			     IRQF_SHARED, KBUILD_MODNAME "-hif", dev)) {
--		mt7915_put_hif2(hif);
--		hif = NULL;
--	}
--
--	/* master switch of PCIe tnterrupt enable */
--	mt76_wr(dev, MT_PCIE1_MAC_INT_ENABLE, 0xff);
-+	return mt7915_pci_get_hif2(hif_idx);
- }
- 
- static int mt7915_pci_hif2_probe(struct pci_dev *pdev)
-@@ -219,25 +92,8 @@ static int mt7915_pci_hif2_probe(struct pci_dev *pdev)
- static int mt7915_pci_probe(struct pci_dev *pdev,
- 			    const struct pci_device_id *id)
- {
--	static const struct mt76_driver_ops drv_ops = {
--		/* txwi_size = txd size + txp size */
--		.txwi_size = MT_TXD_SIZE + sizeof(struct mt7915_txp),
--		.drv_flags = MT_DRV_TXWI_NO_FREE | MT_DRV_HW_MGMT_TXQ,
--		.survey_flags = SURVEY_INFO_TIME_TX |
--				SURVEY_INFO_TIME_RX |
--				SURVEY_INFO_TIME_BSS_RX,
--		.token_size = MT7915_TOKEN_SIZE,
--		.tx_prepare_skb = mt7915_tx_prepare_skb,
--		.tx_complete_skb = mt7915_tx_complete_skb,
--		.rx_skb = mt7915_queue_rx_skb,
--		.rx_poll_complete = mt7915_rx_poll_complete,
--		.sta_ps = mt7915_sta_ps,
--		.sta_add = mt7915_mac_sta_add,
--		.sta_remove = mt7915_mac_sta_remove,
--		.update_survey = mt7915_update_channel,
--	};
--	struct mt7915_dev *dev;
--	struct mt76_dev *mdev;
-+	struct mt7915_hif *hif2;
-+
- 	int ret;
- 
- 	ret = pcim_enable_device(pdev);
-@@ -259,46 +115,18 @@ static int mt7915_pci_probe(struct pci_dev *pdev,
- 	if (id->device == 0x7916)
- 		return mt7915_pci_hif2_probe(pdev);
- 
--	mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), &mt7915_ops,
--				 &drv_ops);
--	if (!mdev)
--		return -ENOMEM;
--
--	dev = container_of(mdev, struct mt7915_dev, mt76);
--
- 	ret = pci_alloc_irq_vectors(pdev, 1, 1, PCI_IRQ_ALL_TYPES);
- 	if (ret < 0)
--		goto free;
--
--	ret = mt7915_mmio_init(mdev, pcim_iomap_table(pdev)[0], pdev->irq);
--	if (ret)
--		goto error;
--
--	tasklet_setup(&dev->irq_tasklet, mt7915_irq_tasklet);
--
--	mt76_wr(dev, MT_INT_MASK_CSR, 0);
--
--	/* master switch of PCIe tnterrupt enable */
--	mt76_wr(dev, MT_PCIE_MAC_INT_ENABLE, 0xff);
-+		return ret;
- 
--	ret = devm_request_irq(mdev->dev, pdev->irq, mt7915_irq_handler,
--			       IRQF_SHARED, KBUILD_MODNAME, dev);
--	if (ret)
--		goto error;
-+	hif2 = mt7915_pci_init_hif2(pdev);
- 
--	mt7915_pci_init_hif2(dev);
-+	ret = mt7915_mmio_probe(&pdev->dev, pcim_iomap_table(pdev)[0],
-+				id->device, pdev->irq, hif2);
-+	if (!ret)
-+		return 0;
- 
--	ret = mt7915_register_device(dev);
--	if (ret)
--		goto free_irq;
--
--	return 0;
--free_irq:
--	devm_free_irq(mdev->dev, pdev->irq, dev);
--error:
- 	pci_free_irq_vectors(pdev);
--free:
--	mt76_free_device(&dev->mt76);
- 
- 	return ret;
- }
-@@ -321,47 +149,22 @@ static void mt7915_pci_remove(struct pci_dev *pdev)
- 	mt7915_unregister_device(dev);
- }
- 
--static struct pci_driver mt7915_hif_driver = {
-+struct pci_driver mt7915_hif_driver = {
- 	.name		= KBUILD_MODNAME "_hif",
- 	.id_table	= mt7915_hif_device_table,
- 	.probe		= mt7915_pci_probe,
- 	.remove		= mt7915_hif_remove,
- };
- 
--static struct pci_driver mt7915_pci_driver = {
-+struct pci_driver mt7915_pci_driver = {
- 	.name		= KBUILD_MODNAME,
- 	.id_table	= mt7915_pci_device_table,
- 	.probe		= mt7915_pci_probe,
- 	.remove		= mt7915_pci_remove,
- };
- 
--static int __init mt7915_init(void)
--{
--	int ret;
--
--	ret = pci_register_driver(&mt7915_hif_driver);
--	if (ret)
--		return ret;
--
--	ret = pci_register_driver(&mt7915_pci_driver);
--	if (ret)
--		pci_unregister_driver(&mt7915_hif_driver);
--
--	return ret;
--}
--
--static void __exit mt7915_exit(void)
--{
--    pci_unregister_driver(&mt7915_pci_driver);
--    pci_unregister_driver(&mt7915_hif_driver);
--}
--
--module_init(mt7915_init);
--module_exit(mt7915_exit);
--
- MODULE_DEVICE_TABLE(pci, mt7915_pci_device_table);
- MODULE_DEVICE_TABLE(pci, mt7915_hif_device_table);
- MODULE_FIRMWARE(MT7915_FIRMWARE_WA);
- MODULE_FIRMWARE(MT7915_FIRMWARE_WM);
- MODULE_FIRMWARE(MT7915_ROM_PATCH);
--MODULE_LICENSE("Dual BSD/GPL");
+ void mt7915_unregister_device(struct mt7915_dev *dev);
+ int mt7915_eeprom_init(struct mt7915_dev *dev);
+-void mt7915_eeprom_parse_band_config(struct mt7915_phy *phy);
++void mt7915_eeprom_parse_hw_cap(struct mt7915_dev *dev,
++				struct mt7915_phy *phy);
+ int mt7915_eeprom_get_target_power(struct mt7915_dev *dev,
+ 				   struct ieee80211_channel *chan,
+ 				   u8 chain_idx);
 -- 
 2.18.0
 
