@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DFABC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 10:01:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F46C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 10:01:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V/affAkTmaaiTTVyJOeqDcs82skEn9aypgF5FyPYUhQ=; b=uqP0f6wlVdpQJU
-	l3REv0Srn/uvjuZT22FL3mU6fPsnBaJ7M/WDReFCNK3BB7xZX9WwZjGQ3snIb2HvECBTHLGjMV+Im
-	zhi4m+LRLAfzBvOLw0dfSQFE24Mu0RQOuAw0MiGnwA7INMAzJ8WcI2JTFUBs1qynWUYil9CcqFCZd
-	Gi4BnIwLb8qRkLoZxh6WLux14MgGJdY5RYi7dXl3nrbC1Tkeg9k8LiKfUguMjnLNjLJL8LFoT52a0
-	OH2kUei8xXzL9iS6KjdR+cFKup/M6p4E8PqN8O6sPv+koFctuJRL2zH9BtT8g9///3q3HGYLYmefx
-	smWFSDCfXYRaT72w22Zw==;
+	List-Owner; bh=lT61V902Js7oVkdRj2X4nWaE5g1GUjtX545zNXhcBmI=; b=0YytlhhE7xAt5k
+	7jqykTUv0660Yu8/8uCnd/BxtexEY4i/t+VlDIx5sTSUi6z9Gi6O5zSFpkcrABZvZIDfNqo9CgXLo
+	hguLTDARnQLHVg2dp4ZMEvzIA+5lKgOw2yeWd74Pm3slG8J5psoXjHGlZSQ4p4uTsw1CfBWTAZV4J
+	F45kcWO+dVMoTl2EJRxBVk0r3aNOi+8i2GOighFzVOZkwYReRPpEvnji/FxOXG2f0+ixivJghv5sr
+	BfjrcDMAdAwbg+5kWJks/ysjvUlUyvFoqYCgW9Dvye5ZUu9//0r9igfzgZ9aBDEvZu22USqfC1RAB
+	X1qoG9uCfMh0WzIjY1hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpSbd-001awg-I9; Tue, 23 Nov 2021 10:00:53 +0000
+	id 1mpSbs-001b1q-Ag; Tue, 23 Nov 2021 10:01:08 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpSbQ-001as8-Ac; Tue, 23 Nov 2021 10:00:41 +0000
+ id 1mpSbT-001atq-C8; Tue, 23 Nov 2021 10:00:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
  Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
  In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=zGyMLwmozIGa5HKsKLxD/S/r9K2lopGCdgR2w8ENWEg=; b=Znx4acxXz0is16s2+/4xzxhLCN
- zoU22FidEK2K5oR9YW6ayPtd14p+wWQB4mHjq86r6sjM6FjMF+4AW0c2JfUWmZdYh7Sr8/V1s/cu2
- VvxYd3JudKmYfdmCcbYUFB8m12qImxEJQXZZ0mejJWnCku+/KYFKi/PMVJvRiXDp6W79I+A0vi0j+
- rgkG5+rv534rYDMBQTNpYJUPORWYk4DegC2BSztLNcABw6wgJY06tsgeHb0/cFhzUiQ8BNDdWFbq6
- HCW3DJo4e+uRJ8yEgMrVrts33zRyzRvl1QBbtgbAUWVYjeThjodIWFVPQMf0sUjZPwKOtPjY+4lN+
- ABfjaY6A==;
+ bh=vI3ymyYAKFYvel9BMTNK2PdmqBTT7h36ITGdk3iia7s=; b=KsWTN0MqPdM02Z77p402LRZG8X
+ EWbuvDDUlK5CJtbC+XqIBTCkgbMDGYvNPZmP2D9dCnm1p2Eazb7H+q3SwXw6SnOONrFLzzcnd+w/T
+ tSRGdCt6xC1TyCCIJLxZhV4kBjAaCiMyn+/FPbk86KND98TL454ZBOl9w4ArDZnBRC3ujiTfvqBR9
+ bWkxVkB0xE446Fr7cI4st+Prd2em+xv6m+yYLkj64rJtkh4yQo7ksXxk5oRI/O9ITZy1pKBt4G3ci
+ WbINXxSkNHwjciIJdRulNro28WTZNKOPmXqXJ6sXY+KWTocfj5Kwnw0tlXIsi9alueOvtOfnES5se
+ C985pGyA==;
 Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:36046 helo=rmk-PC.armlinux.org.uk)
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:36048 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1mpSbL-0007if-Cg; Tue, 23 Nov 2021 10:00:35 +0000
+ id 1mpSbQ-0007iy-H4; Tue, 23 Nov 2021 10:00:40 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1mpSbK-00BXoo-UE; Tue, 23 Nov 2021 10:00:34 +0000
+ id 1mpSbQ-00BXou-1d; Tue, 23 Nov 2021 10:00:40 +0000
 In-Reply-To: <YZy59OTNCpKoPZT/@shell.armlinux.org.uk>
 References: <YZy59OTNCpKoPZT/@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -61,15 +61,15 @@ Cc: Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
  Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
  linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: [PATCH RFC net-next 5/8] net: ag71xx: mark as a legacy_pre_march2020
+Subject: [PATCH RFC net-next 6/8] net: axienet: mark as a legacy_pre_march2020
  phylink driver
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1mpSbK-00BXoo-UE@rmk-PC.armlinux.org.uk>
-Date: Tue, 23 Nov 2021 10:00:34 +0000
+Message-Id: <E1mpSbQ-00BXou-1d@rmk-PC.armlinux.org.uk>
+Date: Tue, 23 Nov 2021 10:00:40 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211123_020040_393098_0D4FFA5F 
-X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-CacheID: sfid-20211123_020043_455640_BB2F5F69 
+X-CRM114-Status: UNSURE (   9.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,25 +87,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-ag71xx has a PCS, but does not make use of the phylink PCS support.
+axienet has a PCS, but does not make use of the phylink PCS support.
 Mark it was a pre-March 2020 driver.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/ethernet/atheros/ag71xx.c | 1 +
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/ethernet/atheros/ag71xx.c b/drivers/net/ethernet/atheros/ag71xx.c
-index ff924f06581e..89b6a8bfee43 100644
---- a/drivers/net/ethernet/atheros/ag71xx.c
-+++ b/drivers/net/ethernet/atheros/ag71xx.c
-@@ -1111,6 +1111,7 @@ static int ag71xx_phylink_setup(struct ag71xx *ag)
+diff --git a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+index e39356364f33..23ac353b35fe 100644
+--- a/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
++++ b/drivers/net/ethernet/xilinx/xilinx_axienet_main.c
+@@ -2051,6 +2051,7 @@ static int axienet_probe(struct platform_device *pdev)
  
- 	ag->phylink_config.dev = &ag->ndev->dev;
- 	ag->phylink_config.type = PHYLINK_NETDEV;
-+	ag->phylink_config.legacy_pre_march2020 = true;
- 	ag->phylink_config.mac_capabilities = MAC_SYM_PAUSE | MAC_ASYM_PAUSE |
- 		MAC_10 | MAC_100 | MAC_1000FD;
+ 	lp->phylink_config.dev = &ndev->dev;
+ 	lp->phylink_config.type = PHYLINK_NETDEV;
++	lp->phylink_config.legacy_pre_march2020 = true;
+ 	lp->phylink_config.mac_capabilities = MAC_SYM_PAUSE | MAC_ASYM_PAUSE |
+ 		MAC_10FD | MAC_100FD | MAC_1000FD;
  
 -- 
 2.30.2
