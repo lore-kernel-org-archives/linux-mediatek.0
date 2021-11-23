@@ -4,53 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21EE8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 11:59:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B930C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 12:08:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oYr1e1ihE7ge7W/K3K8O3Q65CMMoGeOXP27L2LE6Nn8=; b=ynVMI5Unu1njHt
-	VhNxEFulGCa1NULhoiTvJOnwEfppoFh3ApDDyojTd8IFF+ga/xf/jo8KXHoJLi7HRKPdDhlHk3ip1
-	pzaQj7k3pXD7wEtyMl9aVTcYcm3CXHd/fQoqdBuAvcpA81Vyex5OKNX1OzjxUPLC5QrT0JGn7udCj
-	Gt0kvx9ufOIhohQy/Hnsfro1Y8T/VJCdJRnx8AWtDeov7FsLPvC7eiEZEjOs+GXR1cweAyCIRGOP7
-	vHRbaKkETECXPkx9XninmQhE0BQSLIPyHrVPGcUxvkG+lwUzDkcNk36jOduVozYb5mMzzw1sgUYBh
-	BJRkQZAusrXmdpK7O69Q==;
+	List-Owner; bh=doegG2eobUcjmy7z92zRtG28NO6xLLYMwsXzDzTGzsY=; b=AdXfYP0dJBwtUO
+	A36kEltQtEtz9a8+FY1Ev6gu9R0QfwLzqN66YHUqYZXmQ75QjmVSmO2mQcaHaGmtfpy98qDRahtiJ
+	EUp6vx1mbPyafEOnLWN6M6jbDcMv6KY4DSgsEMxhwYUroCetHHr8UQY4OTGnyEzvC5Zc7x7RZpC2I
+	8xHJZo0n9a/wopkjFsEwFyOeT82kRUFvWgsaeWkcQppYK8LVVZNpN+qs3yPuD/rqar/EyVLJGN3c1
+	SE8eCSng4E829wNQsEzSibgUidvj/RjADOybHdjj0q9kaOqyZuwvn9WDkEdiUAruWWmrebBgzjt/M
+	DrQayaFE0L/e1X0rLUYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpUS6-001z6K-VV; Tue, 23 Nov 2021 11:59:10 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpURr-001z0f-Nz; Tue, 23 Nov 2021 11:58:57 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id EDC521063;
- Tue, 23 Nov 2021 03:58:54 -0800 (PST)
-Received: from [10.57.56.56] (unknown [10.57.56.56])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8214F3F5A1;
- Tue, 23 Nov 2021 03:58:52 -0800 (PST)
-Message-ID: <75ea1026-63e5-165a-9e07-27b5ac4c7579@arm.com>
-Date: Tue, 23 Nov 2021 11:58:47 +0000
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.3.1
-Subject: Re: [PATCH 0/3] Allow restricted-dma-pool to customize IO_TLB_SEGSIZE
-Content-Language: en-GB
-To: Hsin-Yi Wang <hsinyi@chromium.org>, Christoph Hellwig <hch@infradead.org>
-Cc: Marek Szyprowski <m.szyprowski@samsung.com>,
- iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
- Rob Herring <robh+dt@kernel.org>, Maxime Ripard <maxime@cerno.tech>,
- - <devicetree-spec@vger.kernel.org>, devicetree@vger.kernel.org,
+	id 1mpUbM-0020uw-HP; Tue, 23 Nov 2021 12:08:44 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mpUb7-0020sL-Vq; Tue, 23 Nov 2021 12:08:31 +0000
+Received: by mail-ed1-x536.google.com with SMTP id y13so91003160edd.13;
+ Tue, 23 Nov 2021 04:08:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=8NMLon2KasEKp2lUjnWpGI4F8VN4RtWFqQEMLQYjQZo=;
+ b=bfuKNE9AOEAHdjdlF0qKAYow2qAgAV8ALn8OPC44PYB6ntJHj2/Loetarzsmb5IYw6
+ bB8moCtSG7NlRTc4D3MDKTK4QofqPDt2rN1SL5ateKQY3+2pQGfwrrOZRIxZL4fFcvX9
+ uTxMX8LxUXe1aogGAa626jsNdyNyrT7//WKgBGO45K3vmP5ncyhbm2R7U1Mvk5rOXpe8
+ imG2Fp4VlZ5KBn+eMh+CAxi/2VcZKVoPT4hokI62K7K1OI1F8GrEAywgAnICUUY9cypI
+ Qb4y1LwlT2BsMUxteePlISzbtSH+zunIswa9Is40kEtOr1IKR4S6exd5yU6WdpipH3zJ
+ FjFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=8NMLon2KasEKp2lUjnWpGI4F8VN4RtWFqQEMLQYjQZo=;
+ b=DqhQFzt69aSFveIXvNnEw4x/27NBFuLcbhzz5l99QLThmB9gJ5+22zL1SVlSj/eB3h
+ wz7rNBGn+elm8H8O4MB+XDHDbOGI9S2kAGaqXO/OkXSsJ11IYAi3X8B5GtvUGFS4HXb9
+ qSOKS4yOOc7WsiD2QxIB9Qn5JbBX5ZWjIL32ZwJOCcp1kxfgxGa0ftj9owNLLXNAx9hp
+ 60uagK7Tw+pdlWEo0+/DWtyL6XtiHdl/tNbAXYl2Xqu4PfZuaaAhfRFQCcymkSlGfNeT
+ +D7zmcGEJNxDyiQWhp9EFDQF0FwBPj2JwgGqDztLHz5zlMsDdbN3pCNN5k0cnSBCVjbN
+ rCKw==
+X-Gm-Message-State: AOAM5306PrngEdu/gYz1smA77fofoSXUOZWhgdMqJ+9AndKpRIC/ytSI
+ VZu/eSWVDqZe1ojy72Q8YRA0DLXwLek=
+X-Google-Smtp-Source: ABdhPJxKXF5oNywtBw4/+rXqCu9WU20aDcML5wwXMeaN8k3e2yGHu+Zjh/6C0H4cxrr9YIKtaPwSpg==
+X-Received: by 2002:a05:6402:5206:: with SMTP id
+ s6mr8806194edd.286.1637669307935; 
+ Tue, 23 Nov 2021 04:08:27 -0800 (PST)
+Received: from skbuf ([188.25.163.189])
+ by smtp.gmail.com with ESMTPSA id gs15sm5081843ejc.42.2021.11.23.04.08.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Nov 2021 04:08:27 -0800 (PST)
+Date: Tue, 23 Nov 2021 14:08:25 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+Cc: Chris Snook <chris.snook@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+ Florian Fainelli <f.fainelli@gmail.com>, John Crispin <john@phrozen.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- senozhatsky@chromium.org, tfiga@chromium.org
-References: <20211123112104.3530135-1-hsinyi@chromium.org>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <20211123112104.3530135-1-hsinyi@chromium.org>
+ Michal Simek <michal.simek@xilinx.com>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: Re: [PATCH RFC net-next 8/8] net: phylink: allow PCS to be removed
+Message-ID: <20211123120825.jvuh7444wdxzugbo@skbuf>
+References: <YZy59OTNCpKoPZT/@shell.armlinux.org.uk>
+ <E1mpSba-00BXp6-9e@rmk-PC.armlinux.org.uk>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <E1mpSba-00BXp6-9e@rmk-PC.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211123_035855_874962_5AA7D7E6 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20211123_040830_088630_D51F14D0 
+X-CRM114-Status: GOOD (  26.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,55 +93,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2021-11-23 11:21, Hsin-Yi Wang wrote:
-> Default IO_TLB_SEGSIZE (128) slabs may be not enough for some use cases.
-> This series adds support to customize io_tlb_segsize for each
-> restricted-dma-pool.
+On Tue, Nov 23, 2021 at 10:00:50AM +0000, Russell King (Oracle) wrote:
+> Allow phylink_set_pcs() to be called with a NULL pcs argument to remove
+> the PCS from phylink. This is only supported on non-legacy drivers
+> where doing so will have no effect on the mac_config() calling
+> behaviour.
 > 
-> Example use case:
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> ---
+>  drivers/net/phy/phylink.c | 20 +++++++++++++++-----
+>  1 file changed, 15 insertions(+), 5 deletions(-)
 > 
-> mtk-isp drivers[1] are controlled by mtk-scp[2] and allocate memory through
-> mtk-scp. In order to use the noncontiguous DMA API[3], we need to use
-> the swiotlb pool. mtk-scp needs to allocate memory with 2560 slabs.
-> mtk-isp drivers also needs to allocate memory with 200+ slabs. Both are
-> larger than the default IO_TLB_SEGSIZE (128) slabs.
+> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+> index a935655c39c0..9f0f0e0aad55 100644
+> --- a/drivers/net/phy/phylink.c
+> +++ b/drivers/net/phy/phylink.c
+> @@ -1196,15 +1196,25 @@ EXPORT_SYMBOL_GPL(phylink_create);
+>   * in mac_prepare() or mac_config() methods if it is desired to dynamically
+>   * change the PCS.
+>   *
+> - * Please note that there are behavioural changes with the mac_config()
+> - * callback if a PCS is present (denoting a newer setup) so removing a PCS
+> - * is not supported, and if a PCS is going to be used, it must be registered
+> - * by calling phylink_set_pcs() at the latest in the first mac_config() call.
+> + * Please note that for legacy phylink users, there are behavioural changes
+> + * with the mac_config() callback if a PCS is present (denoting a newer setup)
+> + * so removing a PCS is not supported. If a PCS is going to be used, it must
+> + * be registered by calling phylink_set_pcs() at the latest in the first
+> + * mac_config() call.
+> + *
+> + * For modern drivers, this may be called with a NULL pcs argument to
+> + * disconnect the PCS from phylink.
+>   */
+>  void phylink_set_pcs(struct phylink *pl, struct phylink_pcs *pcs)
+>  {
+> +	if (pl->config->legacy_pre_march2020 && pl->pcs && !pcs) {
+> +		phylink_warn(pl,
+> +			     "Removing PCS is not supported in a legacy driver");
+> +		return;
+> +	}
+> +
+>  	pl->pcs = pcs;
+> -	pl->pcs_ops = pcs->ops;
+> +	pl->pcs_ops = pcs ? pcs->ops : NULL;
+>  }
+>  EXPORT_SYMBOL_GPL(phylink_set_pcs);
+>  
+> -- 
+> 2.30.2
+> 
 
-Are drivers really doing streaming DMA mappings that large? If so, that 
-seems like it might be worth trying to address in its own right for the 
-sake of efficiency - allocating ~5MB of memory twice and copying it back 
-and forth doesn't sound like the ideal thing to do.
-
-If it's really about coherent DMA buffer allocation, I thought the plan 
-was that devices which expect to use a significant amount and/or size of 
-coherent buffers would continue to use a shared-dma-pool for that? It's 
-still what the binding implies. My understanding was that 
-swiotlb_alloc() is mostly just a fallback for the sake of drivers which 
-mostly do streaming DMA but may allocate a handful of pages worth of 
-coherent buffers here and there. Certainly looking at the mtk_scp 
-driver, that seems like it shouldn't be going anywhere near SWIOTLB at all.
-
-Robin.
-
-> [1] (not in upstream) https://patchwork.kernel.org/project/linux-media/cover/20190611035344.29814-1-jungo.lin@mediatek.com/
-> [2] https://elixir.bootlin.com/linux/latest/source/drivers/remoteproc/mtk_scp.c
-> [3] https://patchwork.kernel.org/project/linux-media/cover/20210909112430.61243-1-senozhatsky@chromium.org/
-> 
-> Hsin-Yi Wang (3):
->    dma: swiotlb: Allow restricted-dma-pool to customize IO_TLB_SEGSIZE
->    dt-bindings: Add io-tlb-segsize property for restricted-dma-pool
->    arm64: dts: mt8183: use restricted swiotlb for scp mem
-> 
->   .../reserved-memory/shared-dma-pool.yaml      |  8 +++++
->   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  4 +--
->   include/linux/swiotlb.h                       |  1 +
->   kernel/dma/swiotlb.c                          | 34 ++++++++++++++-----
->   4 files changed, 37 insertions(+), 10 deletions(-)
-> 
+I've read the discussion at
+https://lore.kernel.org/netdev/cfcb368f-a785-9ea5-c446-1906eacd8c03@seco.com/
+and I still am not sure that I understand what is the use case behind
+removing a PCS?
 
 _______________________________________________
 Linux-mediatek mailing list
