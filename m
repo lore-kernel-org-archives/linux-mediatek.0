@@ -4,84 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B930C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 12:08:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F026C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 12:11:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=doegG2eobUcjmy7z92zRtG28NO6xLLYMwsXzDzTGzsY=; b=AdXfYP0dJBwtUO
-	A36kEltQtEtz9a8+FY1Ev6gu9R0QfwLzqN66YHUqYZXmQ75QjmVSmO2mQcaHaGmtfpy98qDRahtiJ
-	EUp6vx1mbPyafEOnLWN6M6jbDcMv6KY4DSgsEMxhwYUroCetHHr8UQY4OTGnyEzvC5Zc7x7RZpC2I
-	8xHJZo0n9a/wopkjFsEwFyOeT82kRUFvWgsaeWkcQppYK8LVVZNpN+qs3yPuD/rqar/EyVLJGN3c1
-	SE8eCSng4E829wNQsEzSibgUidvj/RjADOybHdjj0q9kaOqyZuwvn9WDkEdiUAruWWmrebBgzjt/M
-	DrQayaFE0L/e1X0rLUYw==;
+	List-Owner; bh=js+NX9k8a4+RE2epMT2mLdZQfQiqw61FJtsmh7dTlsQ=; b=1pohCeIlQ/mhfZ
+	+cLbBRQ90km5+9T5hEcZlbyFL/RZNENVETkH0KlwcaaIshOdtB4QW4IEP8N+tKWffP8zDwJgUEz9G
+	p7KrHQFRyPdenms3Ux3ut/zLJTvSC0YtVlcSBDLbWb6u14RMzeXz11zdx3//ImEJgySFI+7ZH9VZ3
+	e20gUgHUE93cE5Kr1u1CAg7/2mXhH/K0UEx6MFwyq0bajIRqBchrQSX6aoN+DzH81FUys824fSuJC
+	F+7Atff8AsJFmNy2ovdPdNs4YPB7eQQovxYRRJ9PtNYhmFcVuhGCgXMoCzjXEXhpZsdQ1chDwwJn/
+	RRXVL4w3pHWzZOLqgypA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpUbM-0020uw-HP; Tue, 23 Nov 2021 12:08:44 +0000
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpUb7-0020sL-Vq; Tue, 23 Nov 2021 12:08:31 +0000
-Received: by mail-ed1-x536.google.com with SMTP id y13so91003160edd.13;
- Tue, 23 Nov 2021 04:08:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=8NMLon2KasEKp2lUjnWpGI4F8VN4RtWFqQEMLQYjQZo=;
- b=bfuKNE9AOEAHdjdlF0qKAYow2qAgAV8ALn8OPC44PYB6ntJHj2/Loetarzsmb5IYw6
- bB8moCtSG7NlRTc4D3MDKTK4QofqPDt2rN1SL5ateKQY3+2pQGfwrrOZRIxZL4fFcvX9
- uTxMX8LxUXe1aogGAa626jsNdyNyrT7//WKgBGO45K3vmP5ncyhbm2R7U1Mvk5rOXpe8
- imG2Fp4VlZ5KBn+eMh+CAxi/2VcZKVoPT4hokI62K7K1OI1F8GrEAywgAnICUUY9cypI
- Qb4y1LwlT2BsMUxteePlISzbtSH+zunIswa9Is40kEtOr1IKR4S6exd5yU6WdpipH3zJ
- FjFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=8NMLon2KasEKp2lUjnWpGI4F8VN4RtWFqQEMLQYjQZo=;
- b=DqhQFzt69aSFveIXvNnEw4x/27NBFuLcbhzz5l99QLThmB9gJ5+22zL1SVlSj/eB3h
- wz7rNBGn+elm8H8O4MB+XDHDbOGI9S2kAGaqXO/OkXSsJ11IYAi3X8B5GtvUGFS4HXb9
- qSOKS4yOOc7WsiD2QxIB9Qn5JbBX5ZWjIL32ZwJOCcp1kxfgxGa0ftj9owNLLXNAx9hp
- 60uagK7Tw+pdlWEo0+/DWtyL6XtiHdl/tNbAXYl2Xqu4PfZuaaAhfRFQCcymkSlGfNeT
- +D7zmcGEJNxDyiQWhp9EFDQF0FwBPj2JwgGqDztLHz5zlMsDdbN3pCNN5k0cnSBCVjbN
- rCKw==
-X-Gm-Message-State: AOAM5306PrngEdu/gYz1smA77fofoSXUOZWhgdMqJ+9AndKpRIC/ytSI
- VZu/eSWVDqZe1ojy72Q8YRA0DLXwLek=
-X-Google-Smtp-Source: ABdhPJxKXF5oNywtBw4/+rXqCu9WU20aDcML5wwXMeaN8k3e2yGHu+Zjh/6C0H4cxrr9YIKtaPwSpg==
-X-Received: by 2002:a05:6402:5206:: with SMTP id
- s6mr8806194edd.286.1637669307935; 
- Tue, 23 Nov 2021 04:08:27 -0800 (PST)
-Received: from skbuf ([188.25.163.189])
- by smtp.gmail.com with ESMTPSA id gs15sm5081843ejc.42.2021.11.23.04.08.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Nov 2021 04:08:27 -0800 (PST)
-Date: Tue, 23 Nov 2021 14:08:25 +0200
-From: Vladimir Oltean <olteanv@gmail.com>
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Chris Snook <chris.snook@gmail.com>, Felix Fietkau <nbd@nbd.name>,
- Florian Fainelli <f.fainelli@gmail.com>, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
+	id 1mpUdn-0021UB-FU; Tue, 23 Nov 2021 12:11:15 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mpUdY-0021PL-Kl; Tue, 23 Nov 2021 12:11:02 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 8E824147A;
+ Tue, 23 Nov 2021 04:10:59 -0800 (PST)
+Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
+ [10.121.207.14])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 04F373F5A1;
+ Tue, 23 Nov 2021 04:10:57 -0800 (PST)
+Date: Tue, 23 Nov 2021 12:10:55 +0000
+From: Mark Rutland <mark.rutland@arm.com>
+To: Will Deacon <will@kernel.org>
+Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Jonathan Corbet <corbet@lwn.net>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH RFC net-next 8/8] net: phylink: allow PCS to be removed
-Message-ID: <20211123120825.jvuh7444wdxzugbo@skbuf>
-References: <YZy59OTNCpKoPZT/@shell.armlinux.org.uk>
- <E1mpSba-00BXp6-9e@rmk-PC.armlinux.org.uk>
+ chinwen.chang@mediatek.com, nicholas.tang@mediatek.com,
+ james.hsu@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] arm64: update compiler option for PAC
+Message-ID: <20211123121055.GD37253@lakrids.cambridge.arm.com>
+References: <20211115031810.29701-1-Kuan-Ying.Lee@mediatek.com>
+ <20211116101147.GB9851@willie-the-truck>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <E1mpSba-00BXp6-9e@rmk-PC.armlinux.org.uk>
+In-Reply-To: <20211116101147.GB9851@willie-the-truck>
+User-Agent: Mutt/1.11.1+11 (2f07cb52) (2018-12-01)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211123_040830_088630_D51F14D0 
-X-CRM114-Status: GOOD (  26.90  )
+X-CRM114-CacheID: sfid-20211123_041100_761862_8B1218F0 
+X-CRM114-Status: GOOD (  26.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,60 +69,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 23, 2021 at 10:00:50AM +0000, Russell King (Oracle) wrote:
-> Allow phylink_set_pcs() to be called with a NULL pcs argument to remove
-> the PCS from phylink. This is only supported on non-legacy drivers
-> where doing so will have no effect on the mac_config() calling
-> behaviour.
+On Tue, Nov 16, 2021 at 10:11:47AM +0000, Will Deacon wrote:
+> On Mon, Nov 15, 2021 at 11:18:08AM +0800, Kuan-Ying Lee wrote:
+> > We pass -mbranch-protection=pac-ret+leaf to support PAC
+> > when we use GCC 9 or later.
+> > 
+> > Before GCC 9, we pass -msign-return-address=all to support
+> > PAC.
+> > 
+> > Signed-off-by: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>
+> > ---
+> >  Documentation/arm64/pointer-authentication.rst | 6 ++++--
+> >  1 file changed, 4 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/Documentation/arm64/pointer-authentication.rst b/Documentation/arm64/pointer-authentication.rst
+> > index f127666ea3a8..055d08b0d42d 100644
+> > --- a/Documentation/arm64/pointer-authentication.rst
+> > +++ b/Documentation/arm64/pointer-authentication.rst
+> > @@ -54,8 +54,10 @@ virtual address size configured by the kernel. For example, with a
+> >  virtual address size of 48, the PAC is 7 bits wide.
+> >  
+> >  Recent versions of GCC can compile code with APIAKey-based return
+> > -address protection when passed the -msign-return-address option. This
+> > -uses instructions in the HINT space (unless -march=armv8.3-a or higher
+> > +address protection when passed compiler option as following.
+> > +Pass -msign-return-address when we use GCC 7, 8.
+> > +Pass -mbranch-protection when we use GCC 9 or later.
+> > +This uses instructions in the HINT space (unless -march=armv8.3-a or higher
+> >  is also passed), and such code can run on systems without the pointer
+> >  authentication extension.
 > 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
->  drivers/net/phy/phylink.c | 20 +++++++++++++++-----
->  1 file changed, 15 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-> index a935655c39c0..9f0f0e0aad55 100644
-> --- a/drivers/net/phy/phylink.c
-> +++ b/drivers/net/phy/phylink.c
-> @@ -1196,15 +1196,25 @@ EXPORT_SYMBOL_GPL(phylink_create);
->   * in mac_prepare() or mac_config() methods if it is desired to dynamically
->   * change the PCS.
->   *
-> - * Please note that there are behavioural changes with the mac_config()
-> - * callback if a PCS is present (denoting a newer setup) so removing a PCS
-> - * is not supported, and if a PCS is going to be used, it must be registered
-> - * by calling phylink_set_pcs() at the latest in the first mac_config() call.
-> + * Please note that for legacy phylink users, there are behavioural changes
-> + * with the mac_config() callback if a PCS is present (denoting a newer setup)
-> + * so removing a PCS is not supported. If a PCS is going to be used, it must
-> + * be registered by calling phylink_set_pcs() at the latest in the first
-> + * mac_config() call.
-> + *
-> + * For modern drivers, this may be called with a NULL pcs argument to
-> + * disconnect the PCS from phylink.
->   */
->  void phylink_set_pcs(struct phylink *pl, struct phylink_pcs *pcs)
->  {
-> +	if (pl->config->legacy_pre_march2020 && pl->pcs && !pcs) {
-> +		phylink_warn(pl,
-> +			     "Removing PCS is not supported in a legacy driver");
-> +		return;
-> +	}
-> +
->  	pl->pcs = pcs;
-> -	pl->pcs_ops = pcs->ops;
-> +	pl->pcs_ops = pcs ? pcs->ops : NULL;
->  }
->  EXPORT_SYMBOL_GPL(phylink_set_pcs);
->  
-> -- 
-> 2.30.2
-> 
+> I think I'd be more inclined to delete this paragraph altogether. It doesn't
+> really document anything to do with the kernel, and trying to document the
+> behaviour of "recent" versions of GCC is futile.
 
-I've read the discussion at
-https://lore.kernel.org/netdev/cfcb368f-a785-9ea5-c446-1906eacd8c03@seco.com/
-and I still am not sure that I understand what is the use case behind
-removing a PCS?
+Agreed. I think the only thing we might want to mention is that we rely
+on the compiler to use the HINT space instructions (PACIASP and AUTIASP)
+so that a kernel built with pointer authentication support works on HW
+without the feature.
+
+So replacing that paragraph with something like:
+
+| When ARM64_PTR_AUTH_KERNEL is selected the kernel will be compiled
+| with HINT space pointer authentication instructions protecting
+| function returns. Kernels built with this option will work on
+| hardware with or without pointer authentication support.
+
+... would make sense to me.
+
+Thanks,
+Mark.
 
 _______________________________________________
 Linux-mediatek mailing list
