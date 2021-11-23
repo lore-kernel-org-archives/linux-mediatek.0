@@ -4,81 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730A4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 22 Nov 2021 18:24:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 981A8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 03:13:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DMqtRbBH3zymUmu8i0jW99Xe2QK0D6l+HFMA1CCiGcQ=; b=U2FlfYcHT0/5Yu
-	M6w2cbIr3Vep9nPgvO24j1t3hKtqDuWw3qKNDpl8I0CbaT3tqtP/MVdPy3RD2FQRRZV38szXvlthI
-	GFGnC+amTC4a7XJOwulI/ln1j4DYqYQ348YgVIq9zTNGomy1bQRq84rTPOjk+wzi8Jg+EvHmu9fB1
-	NJ6i+yl15CFw4ms5VkK4ZVsf9tF2WOXW96tT8ubqQYhaJ/hxLeo3NBGJVy6yi5gYBsPBhWw7XsH9l
-	kX0ClDcA6wkr31u/OLH5Nuy6J7VQtfw4tmq/H5gSLykWooj5MO2GjsfNqqy+Rppv2BmCPe7gBvOpp
-	F/QHOwqHpmdXSyVTNlQA==;
+	List-Owner; bh=FL+ugFfyTEVp/K9sFCjNaVswPkkaC6/n3dIdV/7g+/Y=; b=hCGPd0jkZCf3gM
+	r0TlsbV9e7kCaa+MajpCz9gLqt9miuJ0zxSt6S1SKtAF4ZZzq6Oxz3M72xsW6voJSRbidQINIK3Uk
+	5M7iw7kz5QNYx/avd+Z21WnJb6RevOh0xLv76a9mZcphC6Qd/apSYOtH5HqtGuNAksYkKBg7teHSt
+	bCeLf5kKD3YmoWRHzdth85eRJapZy6P6Y8UnoMIxRiycqrSoxb1jjVD5ljrxVDU0LJmk575qPhmIm
+	V31hVr2C1/dBO8oiFuP2N6Uc1XZjAC14V+8FoPjD6pfNYPcgUKc5mVENrYkDqwQ+MaO0ZDMij3+b0
+	W10AR3t5xIuFsOEeeG3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpDzf-00HKq0-05; Mon, 22 Nov 2021 18:24:43 +0000
-Received: from so254-9.mailgun.net ([198.61.254.9])
+	id 1mpMF1-000hDI-GB; Tue, 23 Nov 2021 03:13:07 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpDzc-00HKpR-59
- for linux-mediatek@lists.infradead.org; Mon, 22 Nov 2021 18:24:41 +0000
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mg.codeaurora.org;
- q=dns/txt; 
- s=smtp; t=1637605478; h=Content-Type: MIME-Version: Message-ID:
- In-Reply-To: Date: References: Subject: Cc: To: From: Sender;
- bh=m2SdxG/+az9tYnj/M/SjhTOZNFf+Ny8hlBjj9zLOrNI=;
- b=fo1j0xlx/zpgxAFPDaN/mN975aYcH4VaSyBB+p7kr0I6D2BugJI/tU/yVm+YvyEtMdIhUWsP
- EbrUn94V1+CPDqaTxny0CHUtWkWv3UN49pGEYrL81i02gRHQF8YqP++ql4X1DglOPNtjnShx
- kTgZT49lVddzo/ibbqduQTbBTnI=
-X-Mailgun-Sending-Ip: 198.61.254.9
-X-Mailgun-Sid: WyI0ZDIyMyIsICJsaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnIiwgImJlOWU0YSJd
-Received: from smtp.codeaurora.org
- (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171]) by
- smtp-out-n03.prod.us-east-1.postgun.com with SMTP id
- 619be0666bacc185a5981742 (version=TLS1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256); Mon, 22 Nov 2021 18:24:38
- GMT
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
- id 5F6C1C4360D; Mon, 22 Nov 2021 18:24:37 +0000 (UTC)
-Received: from tykki (tynnyri.adurom.net [51.15.11.48])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested) (Authenticated sender: kvalo)
- by smtp.codeaurora.org (Postfix) with ESMTPSA id 7BD67C4338F;
- Mon, 22 Nov 2021 18:24:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.1 smtp.codeaurora.org 7BD67C4338F
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- dmarc=none (p=none dis=none) header.from=codeaurora.org
-Authentication-Results: aws-us-west-2-caf-mail-1.web.codeaurora.org;
- spf=fail smtp.mailfrom=codeaurora.org
-From: Kalle Valo <kvalo@codeaurora.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Deren Wu <Deren.Wu@mediatek.com>,
- Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
- YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
- Eric-SY Chang <Eric-SY.Chang@mediatek.com>, KM Lin <km.lin@mediatek.com>,
- Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>,
- Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>,
- Stella Chang <Stella.Chang@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH] mt76: fix timestamp check in tx_status
-References: <7e3784949c0b29a00465966b89fdb0192bd0298e.1637593492.git.deren.wu@mediatek.com>
- <5acfea49-675b-c825-4bb4-29108d6095eb@nbd.name>
-Date: Mon, 22 Nov 2021 20:24:29 +0200
-In-Reply-To: <5acfea49-675b-c825-4bb4-29108d6095eb@nbd.name> (Felix Fietkau's
- message of "Mon, 22 Nov 2021 17:00:47 +0100")
-Message-ID: <87wnl06obm.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ id 1mpMEn-000hBu-Qh
+ for linux-mediatek@lists.infradead.org; Tue, 23 Nov 2021 03:12:55 +0000
+Received: by mail-pf1-x432.google.com with SMTP id c4so18027166pfj.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 22 Nov 2021 19:12:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=x2hw3oGQCKQYUHt6V/jeij7qOnZntnAL24E56nojTHg=;
+ b=gIujpSdtAknKwM2DSCD5wuUpkhhrH097yVr1sWa5jsFkkwO6U/TMS7VEQfHoKjLGL6
+ PtpPhqkX1Z7hbVNjcxu5DJd9GOmfEfVT6Y9r2uZvBxgEZPk7Hn1NmP/l+gM3W3dOBQ3x
+ 6vZ6SxFMdjJew9B39sgKA6TfPpnGdtqBqCme6ZdYPXOImU4zYFMu5EXhfTihw7hujNeo
+ 9yOb2ntl1hkTeiwd+VvHEFxRw5ul7ni5R36VPr5MjQDIDYi3ZHd6CNHZbM0+juKYrnj8
+ BofEsJR2zzFmZGqrLL9fU3Fh8Bj/P/pFWHNsUpcISaU861PnqmjmVI5Y5+yWM0SqbgAW
+ Sj1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=x2hw3oGQCKQYUHt6V/jeij7qOnZntnAL24E56nojTHg=;
+ b=gDMw1Q7QM4XSB5G0FmqP/j/9pUEo+IG0Dl77ECzMFX/j3PTJYWDcgMpi1u8IO+56um
+ ST+3IvGLfMn0ouDOClyHrD9Te1ZKl2pbfPoU4/FrOV60wnNC5/aBD/QJtwSciPRcMFwe
+ O+BawpNVY+t6SVho2VmNkVYCaCGMVMK3F9OECKY8k1+v9LvZR/nuO3sotQUpQq0abEhE
+ +h0xS7J39TO8XGnAB/EraIVxB5QEhlaqqI2S+Fzn+6WBRBy4oNxJw60GdMEbYDr/wBHK
+ Ex5wVfr5Co3othZqe9Q0LTGDhT7We+2+QV0tR7m9s7TcV9vjfO76EMQ4ZXsWJslm29Rt
+ Uw5g==
+X-Gm-Message-State: AOAM531vBa89Y9G91amnis6WpoyQB2KHA2za4fiDMCLSx0dyHlx+0I+O
+ zcSMFDxtsM4fqIKiPLgmu88B1gMr78LQYFeUEgmUMA==
+X-Google-Smtp-Source: ABdhPJwMXvJBc/Q+TZQf5i18d92jX/IrYo7Qd/Ip5lemBkmdtvpN1+Uh02bMi2Upj+gk5gH0ickdapbkQ+WCbMkkrCM=
+X-Received: by 2002:a05:6a00:84c:b0:494:6d40:ed76 with SMTP id
+ q12-20020a056a00084c00b004946d40ed76mr1974231pfk.65.1637637169565; Mon, 22
+ Nov 2021 19:12:49 -0800 (PST)
 MIME-Version: 1.0
+References: <20211122164644.19442-1-jiaxin.yu@mediatek.com>
+ <20211122164644.19442-2-jiaxin.yu@mediatek.com>
+In-Reply-To: <20211122164644.19442-2-jiaxin.yu@mediatek.com>
+From: Tzung-Bi Shih <tzungbi@google.com>
+Date: Tue, 23 Nov 2021 11:12:38 +0800
+Message-ID: <CA+Px+wWeV=9DF7wdSyjaZKS=XCJjri1Dmpf-kfNVZOqm5fV33w@mail.gmail.com>
+Subject: Re: [PATCH] ASoC: mt8192: remove unnecessary CONFIG_PM
+To: Jiaxin Yu <Jiaxin.Yu@mediatek.com>
+Cc: broonie@kernel.org, matthias.bgg@gmail.com, alsa-devel@alsa-project.org, 
+ kernel test robot <lkp@intel.com>, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_102440_299533_61179A2B 
-X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-CacheID: sfid-20211122_191253_882541_C33A8BE1 
+X-CRM114-Status: UNSURE (   5.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,30 +85,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Felix Fietkau <nbd@nbd.name> writes:
+On Tue, Nov 23, 2021 at 12:48 AM Jiaxin Yu <jiaxin.yu@mediatek.com> wrote:
+> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
+> Reported-by: kernel test robot <lkp@intel.com>
+Acked-by: Tzung-Bi Shih <tzungbi@google.com>
 
-> On 2021-11-22 16:10, Deren Wu wrote:
->> From: Deren Wu <deren.wu@mediatek.com>
->>
->> Should keep SKBs only if timeout timestamp is still after jiffies.
->> Otherwise, report tx status and drop it direclty.
->>
->> Fixes: bd1e3e7b693c ("mt76: introduce packet_id idr")
->> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
->
-> Acked-by: Felix Fietkau <nbd@nbd.name>
->
-> Kalle, please queue this for 5.16
+Could you also submit another series for the cleanup?
 
-Ok, assigned the patch to me on patchwork.
-
-(A feature request for patchwork devs: assign patches based on email
-commands)
-
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
-
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+At least for sound/soc/mediatek/:
+$ rg --files-with-matches CONFIG_PM sound/soc/mediatek/
+sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c
+sound/soc/mediatek/mt8173/mt8173-rt5650.c
+sound/soc/mediatek/mt8173/mt8173-max98090.c
+sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c
+sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
+sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
+sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
 
 _______________________________________________
 Linux-mediatek mailing list
