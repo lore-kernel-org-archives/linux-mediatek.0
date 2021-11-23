@@ -4,73 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD59BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 16:08:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BFD7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 16:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CXfri8X1mt3upijr76zuF+lCVl9hCtg0JN1LpmBoK5c=; b=BqZ6ab5PZUdrT3
-	3DoEogNgOHCzravtpENgtb4AKK+L57LXxTsvDAFtmiQgN+E+WJZUofucSa/wUbtjjN3EL6SOhoSGo
-	QAVLEtXXf6BM2oQ5xNFzM0XWtaOVcZ4M222x2UFb6OQmFzWL0UhLMdWeSyBqDJfBsl502BiTw5IbZ
-	ScOxAqIVfkrQCWDpG6Rrp9bPwcsCrTXsMy36q6CuX9hp4AObW8khct4JFftfsAxeqBqwZ3CjuyY+f
-	4R3CQzUF1Wf0RYhaHrE/0yKum784svfSv9v3yCBravxEpSf1CjNKx9jDMHpx1aEhBVWn45OrHJb+W
-	RiyBXVkJEDwx+eT1FXyA==;
+	List-Owner; bh=CQ61VnvJmquL4P61EofkwGsXxmYmHrL9OepXujF7jkw=; b=tNTHIfvzlxGMFJ
+	pQr+/ZrCNeXew9GK05FQY6DznOSIBLYW5eDSkLpBO9sHoi8gGTkaeM24Ux/eiTDWPSh3T8pWre9pG
+	GuI3dB3AY/B05nmVwIOkSvsBjU7iw4aoy9ZpVoJXQTVyQFeKf4TmXBnaXlZjjA7/bj5i/TwvZiCHu
+	Bn4AAsQmeodQ8AdUNQNQ6yXWQ0g9HiCNqeghcRDZ50wEw4vZCgCBzjne50ixJ/rgLq/R1tjTGBKdZ
+	KLMrtH/ElMgBe3USWwYgTU9JR7sAGlLBQVolmxZNPS+d/7znK00EN2kaBhP1WgpsuOr+stRH9Vd61
+	gwx35leqkQcyw/ZGq37A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpYLY-002oTl-AH; Tue, 23 Nov 2021 16:08:40 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1mpYlZ-002uEM-4j; Tue, 23 Nov 2021 16:35:33 +0000
+Received: from mail-io1-f54.google.com ([209.85.166.54])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpYLL-002oRC-Ec; Tue, 23 Nov 2021 16:08:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=twcwpuMueGYyjGyqVQIkI89HletvDrqkckGMX3j3kIw=; b=iSfGjINe0V3k78UXkOxUHZBKn/
- I5KMYPNvZ+XSkR3plj9wNhEcrxOnuSy3ocukDF2A/+62bpUHmvgohUf7McVxWz6jdrYve+wLs396G
- F7lXYnKuNmWEJqmwfWRixLG4tDhkc++Xtosa3RkVRD0ZTltazFNEPttsCI+b/PxIdEvCOTgRdHEzQ
- skYandIT9Ewys+gFfFOHNXB08ecmQSKF+h1ZTVVbjyrQwUsvf5N3Aa5cY0tA0S+mkOL4yrWySQ7J1
- QNzUVWukITuBCNXANwHo0uskRWBMAjNQ7eK8nUNTFckfzep/U0G2QQelpJEXrUJtYvpVmvFqevzr8
- oeH2UhlA==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55820)
- by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1mpYL7-000867-S2; Tue, 23 Nov 2021 16:08:13 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1mpYL3-0000LS-8c; Tue, 23 Nov 2021 16:08:09 +0000
-Date: Tue, 23 Nov 2021 16:08:09 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Vladimir Oltean <olteanv@gmail.com>, Sean Anderson <sean.anderson@seco.com>
-Cc: Chris Snook <chris.snook@gmail.com>, Felix Fietkau <nbd@nbd.name>,
- Florian Fainelli <f.fainelli@gmail.com>, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Michal Simek <michal.simek@xilinx.com>,
- Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH RFC net-next 8/8] net: phylink: allow PCS to be removed
-Message-ID: <YZ0R6T33DNTW80SU@shell.armlinux.org.uk>
-References: <YZy59OTNCpKoPZT/@shell.armlinux.org.uk>
- <E1mpSba-00BXp6-9e@rmk-PC.armlinux.org.uk>
- <20211123120825.jvuh7444wdxzugbo@skbuf>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211123120825.jvuh7444wdxzugbo@skbuf>
+ id 1mpYl3-002u06-Pg; Tue, 23 Nov 2021 16:35:03 +0000
+Received: by mail-io1-f54.google.com with SMTP id z18so28708737iof.5;
+ Tue, 23 Nov 2021 08:34:54 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=tTDqJqEpn3lJVr9hvHIdnLnM0QZTa6cWxZTxlXqyveI=;
+ b=ofvVNftjiM6EfKCvPxCsQyg4Y7B7R2vNfjEwrAETHv9TJ8H+3+LKyxpsUzDGSgKjU2
+ NsnVgT/OABoH7YlfBu1GeTFCE2zOrQGrRtskshx869R28judzhvJVB6K5f9xgM4yOTLQ
+ 5kaUQThNhcJwWtm3ws218IiUEwuNArT1kQeGJ/rnGDJUH9z1KKTj4uJlQRiCRbF//ym0
+ kRaIbeyLu2J4iqaqfTAuYruIxtTYPVWfDgNC9A9owpctgaeJPxBgUtZJtxiAdw9sB9h/
+ 5CWP0uedI29CJ4m6BYdwtV5dizcCKLqSN5rAmSvzoA+DZ0f4CNn5WMngIEywutrW5FZJ
+ CHBw==
+X-Gm-Message-State: AOAM5316zTUtBeHJp48VhzFomTtxvk343PvGXXhf711eRkOdN9swgsif
+ KD0epPnrrm9Amm+6V/iAlA==
+X-Google-Smtp-Source: ABdhPJzpKxUJnoCa0cAVi7P8tqEKN9cFnfuz6QPVzyOgjxBNvvRZQNUJPZWW6WEKX50SRbXuuf9lzg==
+X-Received: by 2002:a02:cc29:: with SMTP id o9mr7751315jap.116.1637685293477; 
+ Tue, 23 Nov 2021 08:34:53 -0800 (PST)
+Received: from robh.at.kernel.org ([64.188.179.248])
+ by smtp.gmail.com with ESMTPSA id o22sm8929890iow.52.2021.11.23.08.34.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 Nov 2021 08:34:52 -0800 (PST)
+Received: (nullmailer pid 3442912 invoked by uid 1000);
+ Tue, 23 Nov 2021 16:34:29 -0000
+From: Rob Herring <robh@kernel.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: tfiga@chromium.org, - <devicetree-spec@vger.kernel.org>,
+ Christoph Hellwig <hch@infradead.org>, Robin Murphy <robin.murphy@arm.com>,
+ linux-arm-kernel@lists.infradead.org, Maxime Ripard <maxime@cerno.tech>,
+ Rob Herring <robh+dt@kernel.org>, senozhatsky@chromium.org,
+ iommu@lists.linux-foundation.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ Marek Szyprowski <m.szyprowski@samsung.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20211123112104.3530135-3-hsinyi@chromium.org>
+References: <20211123112104.3530135-1-hsinyi@chromium.org>
+ <20211123112104.3530135-3-hsinyi@chromium.org>
+Subject: Re: [PATCH 2/3] dt-bindings: Add io-tlb-segsize property for
+ restricted-dma-pool
+Date: Tue, 23 Nov 2021 09:34:29 -0700
+Message-Id: <1637685269.659918.3442911.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211123_080827_667087_FD845016 
-X-CRM114-Status: GOOD (  29.68  )
+X-CRM114-CacheID: sfid-20211123_083501_863038_B5B5048F 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,72 +78,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 23, 2021 at 02:08:25PM +0200, Vladimir Oltean wrote:
-> On Tue, Nov 23, 2021 at 10:00:50AM +0000, Russell King (Oracle) wrote:
-> > Allow phylink_set_pcs() to be called with a NULL pcs argument to remove
-> > the PCS from phylink. This is only supported on non-legacy drivers
-> > where doing so will have no effect on the mac_config() calling
-> > behaviour.
-> > 
-> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > ---
-> >  drivers/net/phy/phylink.c | 20 +++++++++++++++-----
-> >  1 file changed, 15 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
-> > index a935655c39c0..9f0f0e0aad55 100644
-> > --- a/drivers/net/phy/phylink.c
-> > +++ b/drivers/net/phy/phylink.c
-> > @@ -1196,15 +1196,25 @@ EXPORT_SYMBOL_GPL(phylink_create);
-> >   * in mac_prepare() or mac_config() methods if it is desired to dynamically
-> >   * change the PCS.
-> >   *
-> > - * Please note that there are behavioural changes with the mac_config()
-> > - * callback if a PCS is present (denoting a newer setup) so removing a PCS
-> > - * is not supported, and if a PCS is going to be used, it must be registered
-> > - * by calling phylink_set_pcs() at the latest in the first mac_config() call.
-> > + * Please note that for legacy phylink users, there are behavioural changes
-> > + * with the mac_config() callback if a PCS is present (denoting a newer setup)
-> > + * so removing a PCS is not supported. If a PCS is going to be used, it must
-> > + * be registered by calling phylink_set_pcs() at the latest in the first
-> > + * mac_config() call.
-> > + *
-> > + * For modern drivers, this may be called with a NULL pcs argument to
-> > + * disconnect the PCS from phylink.
-> >   */
-> >  void phylink_set_pcs(struct phylink *pl, struct phylink_pcs *pcs)
-> >  {
-> > +	if (pl->config->legacy_pre_march2020 && pl->pcs && !pcs) {
-> > +		phylink_warn(pl,
-> > +			     "Removing PCS is not supported in a legacy driver");
-> > +		return;
-> > +	}
-> > +
-> >  	pl->pcs = pcs;
-> > -	pl->pcs_ops = pcs->ops;
-> > +	pl->pcs_ops = pcs ? pcs->ops : NULL;
-> >  }
-> >  EXPORT_SYMBOL_GPL(phylink_set_pcs);
-> >  
-> > -- 
-> > 2.30.2
-> > 
+On Tue, 23 Nov 2021 19:21:03 +0800, Hsin-Yi Wang wrote:
+> Add a io-tlb-segsize property that each restricted-dma-pool can set its
+> own io_tlb_segsize since some use cases require slabs larger than default
+> value (128).
 > 
-> I've read the discussion at
-> https://lore.kernel.org/netdev/cfcb368f-a785-9ea5-c446-1906eacd8c03@seco.com/
-> and I still am not sure that I understand what is the use case behind
-> removing a PCS?
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+>  .../bindings/reserved-memory/shared-dma-pool.yaml         | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
 
-Passing that to Sean to answer in detail...
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/reserved-memory/shared-dma-pool.yaml: properties:io-tlb-segsize:type: 'anyOf' conditional failed, one must be fixed:
+	'u32' is not one of ['array', 'boolean', 'integer', 'null', 'number', 'object', 'string']
+	'u32' is not of type 'array'
+	from schema $id: http://json-schema.org/draft-07/schema#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/reserved-memory/shared-dma-pool.yaml: properties:io-tlb-segsize:type: 'u32' is not one of ['boolean', 'object']
+	from schema $id: http://devicetree.org/meta-schemas/core.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/reserved-memory/shared-dma-pool.yaml: ignoring, error in schema: properties: io-tlb-segsize: type
+warning: no schema found in file: ./Documentation/devicetree/bindings/reserved-memory/shared-dma-pool.yaml
+Documentation/devicetree/bindings/display/msm/gpu.example.dt.yaml:0:0: /example-1/reserved-memory/gpu@8f200000: failed to match any schema with compatible: ['shared-dma-pool']
+Documentation/devicetree/bindings/reserved-memory/shared-dma-pool.example.dt.yaml:0:0: /example-0/reserved-memory/linux,cma: failed to match any schema with compatible: ['shared-dma-pool']
+Documentation/devicetree/bindings/reserved-memory/shared-dma-pool.example.dt.yaml:0:0: /example-0/reserved-memory/restricted-dma-pool@50000000: failed to match any schema with compatible: ['restricted-dma-pool']
+Documentation/devicetree/bindings/dsp/fsl,dsp.example.dt.yaml:0:0: /example-1/vdev0buffer@94300000: failed to match any schema with compatible: ['shared-dma-pool']
+Documentation/devicetree/bindings/remoteproc/ti,omap-remoteproc.example.dt.yaml:0:0: /example-0/reserved-memory/dsp-memory@98000000: failed to match any schema with compatible: ['shared-dma-pool']
+Documentation/devicetree/bindings/remoteproc/ti,omap-remoteproc.example.dt.yaml:0:0: /example-1/reserved-memory/ipu-memory@95800000: failed to match any schema with compatible: ['shared-dma-pool']
+Documentation/devicetree/bindings/remoteproc/ti,omap-remoteproc.example.dt.yaml:0:0: /example-2/reserved-memory/dsp1-memory@99000000: failed to match any schema with compatible: ['shared-dma-pool']
+Documentation/devicetree/bindings/sound/google,cros-ec-codec.example.dt.yaml:0:0: /example-0/reserved-mem@52800000: failed to match any schema with compatible: ['shared-dma-pool']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1558503
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
 
 _______________________________________________
 Linux-mediatek mailing list
