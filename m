@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 981A8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 03:13:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2519C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 03:23:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FL+ugFfyTEVp/K9sFCjNaVswPkkaC6/n3dIdV/7g+/Y=; b=hCGPd0jkZCf3gM
-	r0TlsbV9e7kCaa+MajpCz9gLqt9miuJ0zxSt6S1SKtAF4ZZzq6Oxz3M72xsW6voJSRbidQINIK3Uk
-	5M7iw7kz5QNYx/avd+Z21WnJb6RevOh0xLv76a9mZcphC6Qd/apSYOtH5HqtGuNAksYkKBg7teHSt
-	bCeLf5kKD3YmoWRHzdth85eRJapZy6P6Y8UnoMIxRiycqrSoxb1jjVD5ljrxVDU0LJmk575qPhmIm
-	V31hVr2C1/dBO8oiFuP2N6Uc1XZjAC14V+8FoPjD6pfNYPcgUKc5mVENrYkDqwQ+MaO0ZDMij3+b0
-	W10AR3t5xIuFsOEeeG3w==;
+	List-Owner; bh=rev0yMHhuEFigW7Ku3HVBSp/adSOFk6/q2DC5+64qWA=; b=kZa/inFrvd+hAz
+	wGr/ONJHTDWjlJLNHzBx10HkNpSO0+Z0IiYaI/Sa2E5VugwnK39BpERNrqVnajzRDfHPHO291K4Hq
+	Y/vczU0s44Wa1eR07Sl0DesMcHF0Ge1Aj6eEytTsEKkWEYq/tOi2MpiK2fFjKZtTt9dIlapQBrsPW
+	l1/n8PHjvzPWYCyvPLhR7m1PIUKzQsJLAdCuTcDhtixgZ9glj6sKk4j3vThngYj1GZLUxRvo9rp4b
+	LC0Ji4E2JMl/2s2QbJNrI4ZpZr92OY9zZC+K+pgHS/WmtdO9NO5JZtQQ3Gnxdo5gfbo2UTNchMxkM
+	ew/YdMoqVonUc/UZtKYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpMF1-000hDI-GB; Tue, 23 Nov 2021 03:13:07 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1mpMP1-000iyn-46; Tue, 23 Nov 2021 03:23:27 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpMEn-000hBu-Qh
- for linux-mediatek@lists.infradead.org; Tue, 23 Nov 2021 03:12:55 +0000
-Received: by mail-pf1-x432.google.com with SMTP id c4so18027166pfj.2
- for <linux-mediatek@lists.infradead.org>; Mon, 22 Nov 2021 19:12:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=x2hw3oGQCKQYUHt6V/jeij7qOnZntnAL24E56nojTHg=;
- b=gIujpSdtAknKwM2DSCD5wuUpkhhrH097yVr1sWa5jsFkkwO6U/TMS7VEQfHoKjLGL6
- PtpPhqkX1Z7hbVNjcxu5DJd9GOmfEfVT6Y9r2uZvBxgEZPk7Hn1NmP/l+gM3W3dOBQ3x
- 6vZ6SxFMdjJew9B39sgKA6TfPpnGdtqBqCme6ZdYPXOImU4zYFMu5EXhfTihw7hujNeo
- 9yOb2ntl1hkTeiwd+VvHEFxRw5ul7ni5R36VPr5MjQDIDYi3ZHd6CNHZbM0+juKYrnj8
- BofEsJR2zzFmZGqrLL9fU3Fh8Bj/P/pFWHNsUpcISaU861PnqmjmVI5Y5+yWM0SqbgAW
- Sj1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=x2hw3oGQCKQYUHt6V/jeij7qOnZntnAL24E56nojTHg=;
- b=gDMw1Q7QM4XSB5G0FmqP/j/9pUEo+IG0Dl77ECzMFX/j3PTJYWDcgMpi1u8IO+56um
- ST+3IvGLfMn0ouDOClyHrD9Te1ZKl2pbfPoU4/FrOV60wnNC5/aBD/QJtwSciPRcMFwe
- O+BawpNVY+t6SVho2VmNkVYCaCGMVMK3F9OECKY8k1+v9LvZR/nuO3sotQUpQq0abEhE
- +h0xS7J39TO8XGnAB/EraIVxB5QEhlaqqI2S+Fzn+6WBRBy4oNxJw60GdMEbYDr/wBHK
- Ex5wVfr5Co3othZqe9Q0LTGDhT7We+2+QV0tR7m9s7TcV9vjfO76EMQ4ZXsWJslm29Rt
- Uw5g==
-X-Gm-Message-State: AOAM531vBa89Y9G91amnis6WpoyQB2KHA2za4fiDMCLSx0dyHlx+0I+O
- zcSMFDxtsM4fqIKiPLgmu88B1gMr78LQYFeUEgmUMA==
-X-Google-Smtp-Source: ABdhPJwMXvJBc/Q+TZQf5i18d92jX/IrYo7Qd/Ip5lemBkmdtvpN1+Uh02bMi2Upj+gk5gH0ickdapbkQ+WCbMkkrCM=
-X-Received: by 2002:a05:6a00:84c:b0:494:6d40:ed76 with SMTP id
- q12-20020a056a00084c00b004946d40ed76mr1974231pfk.65.1637637169565; Mon, 22
- Nov 2021 19:12:49 -0800 (PST)
+ id 1mpMOo-000iwz-HR; Tue, 23 Nov 2021 03:23:15 +0000
+X-UUID: 404978232dfa4b3eb6df05290fca0569-20211122
+X-UUID: 404978232dfa4b3eb6df05290fca0569-20211122
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <moudy.ho@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1734952031; Mon, 22 Nov 2021 20:23:08 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 22 Nov 2021 19:13:06 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 23 Nov 2021 11:12:58 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 23 Nov 2021 11:12:58 +0800
+Message-ID: <a42fb446e7afa3c7838d95bd3aded5e872354bc8.camel@mediatek.com>
+Subject: Re: [PATCH v8 5/7] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
+From: moudy ho <moudy.ho@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
+ Skrabec" <jernej.skrabec@siol.net>, Maoguang Meng
+ <maoguang.meng@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
+ <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <tfiga@chromium.org>, <drinkcat@chromium.org>, <acourbot@chromium.org>,
+ <pihsun@chromium.org>, <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
+ <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
+ <srv_heupstream@mediatek.com>, <hsinyi@google.com>, jason-jh.lin
+ <jason-jh.lin@mediatek.com>
+Date: Tue, 23 Nov 2021 11:12:58 +0800
+In-Reply-To: <YWrfUo73+UegMKYP@robh.at.kernel.org>
+References: <20211015123832.17914-1-moudy.ho@mediatek.com>
+ <20211015123832.17914-6-moudy.ho@mediatek.com>
+ <YWrfUo73+UegMKYP@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20211122164644.19442-1-jiaxin.yu@mediatek.com>
- <20211122164644.19442-2-jiaxin.yu@mediatek.com>
-In-Reply-To: <20211122164644.19442-2-jiaxin.yu@mediatek.com>
-From: Tzung-Bi Shih <tzungbi@google.com>
-Date: Tue, 23 Nov 2021 11:12:38 +0800
-Message-ID: <CA+Px+wWeV=9DF7wdSyjaZKS=XCJjri1Dmpf-kfNVZOqm5fV33w@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: mt8192: remove unnecessary CONFIG_PM
-To: Jiaxin Yu <Jiaxin.Yu@mediatek.com>
-Cc: broonie@kernel.org, matthias.bgg@gmail.com, alsa-devel@alsa-project.org, 
- kernel test robot <lkp@intel.com>, linux-kernel@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211122_191253_882541_C33A8BE1 
-X-CRM114-Status: UNSURE (   5.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211122_192314_595942_18077BCA 
+X-CRM114-Status: GOOD (  16.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,23 +84,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 23, 2021 at 12:48 AM Jiaxin Yu <jiaxin.yu@mediatek.com> wrote:
-> Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> Reported-by: kernel test robot <lkp@intel.com>
-Acked-by: Tzung-Bi Shih <tzungbi@google.com>
+On Sat, 2021-10-16 at 09:18 -0500, Rob Herring wrote:
+> On Fri, Oct 15, 2021 at 08:38:30PM +0800, Moudy Ho wrote:
+> > This patch adds DT binding document for Media Data Path 3 (MDP3)
+> > a unit in multimedia system used for scaling and color format
+> > convert.
+> > 
+> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > ---
+> >  .../bindings/arm/mediatek/mediatek,ccorr.yaml |  59 +++++
+> >  .../bindings/arm/mediatek/mediatek,rdma.yaml  | 211
+> > ++++++++++++++++++
+> >  .../bindings/arm/mediatek/mediatek,wdma.yaml  |  70 ++++++
+> 
+> These belong in a functional directory, not 'arm'.
+> 
 
-Could you also submit another series for the cleanup?
+Hi Matthias,
 
-At least for sound/soc/mediatek/:
-$ rg --files-with-matches CONFIG_PM sound/soc/mediatek/
-sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c
-sound/soc/mediatek/mt8173/mt8173-rt5650.c
-sound/soc/mediatek/mt8173/mt8173-max98090.c
-sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c
-sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+We tried to integrate the common components of DRM & MDP3 into the same
+binding files and move them to the "bindings/arm/mediatek" directory,
+but it did not meet the requirements.
+Is it appropriate for us to change the path to "bindings/soc/mediatek",
+or do you have other suggestions?
+
+Thanks & Regards,
+Moudy Ho
+
+> >  .../bindings/media/mediatek,mdp3-rsz.yaml     |  68 ++++++
+> >  .../bindings/media/mediatek,mdp3-wrot.yaml    |  70 ++++++
+> >  5 files changed, 478 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/arm/mediatek/mediatek,ccorr.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/arm/mediatek/mediatek,rdma.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/arm/mediatek/mediatek,wdma.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+
+(snip)
+
+> 
+> Fix this.
+> 
+> Similar comments on the rest...
+> 
+> Rob
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
