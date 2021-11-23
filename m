@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B6EDC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 09:50:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6806C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 23 Nov 2021 09:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xaTSHNPT9R07asRlacIBQdzrxwzzpDrDRwD8UYGiT2s=; b=gIRcWe3OnB/Vnn
-	oNiczFXxIGNXafG5EDks7IR/kfMj78qTvahTy4FlevueWSHzRlcUaTkY6XrDngO11u2fS8E5Azrjw
-	WokMLC4dsd4hQ2awtzclCUTagQqdZE9TNhdX9AZ3eJHVrC6b5zmmYaOnNtCvm7qqvxT9q6sBigfJN
-	8a1gdffEfNFbcfj1Uycz23iSAHWwISYwz4WccBBE6DxtsYQaGicEyIyoSX1I7oAxofnM5kPAebqai
-	9OaUhOgYv9oAjB1oixE5uf6vMi8HI/vGqiyfrXUxDnjXYq1d/izEPHI0jcrC7dAH/w9uPABxi9c0d
-	30UksjLslTNGifExah6A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nyLBEGYTmmqa0SYEXxoLWTOUj7cCNYSCHFR+Z4pqxj0=; b=Rm05bgW5l4fCdd
+	Pg9M2xooI7+/M21ucivVUUwym5OGpoWAq/rXJq0N3aQyO37niz/J9MVGhIijBKDSRNcCr+WvDY8RM
+	iRcvzq0hLUMgso44PnoeHPJ9dCzPcApM/T/SBsmZDZFlx7+78XtYukoBbWucV3NceQWYcr7zpbD0r
+	lxPWtYSFFbJTvZE9xU5brTvqrBg11banz6JqbvHwpZ0X3k87dqzBWqgiFDt+snjOQGENR2eJ4YEK8
+	LqbPuQSOSXIfLAZTMe7HuYu+6ND3+0VV/RaHJlsAQCXdYhsgNyH4yPZsPUiM/nAHPZgq1+Tzwi+UO
+	KjrzH1OhohZYzcQTDIhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpSRB-001YQQ-9V; Tue, 23 Nov 2021 09:50:05 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mpSUT-001ZFj-7m; Tue, 23 Nov 2021 09:53:29 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpSR9-001YPT-Fd; Tue, 23 Nov 2021 09:50:04 +0000
-X-UUID: 031bc7d3ccd04356b1003a69d3cd75f4-20211123
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=eK8cNyw7sAT+aeXPMqxaBd/3F94Dku6ahUx4FSXj9aE=; 
- b=rGK3uz95OVIl5bMVczCheemocfss6rK5W3/FpyrEYRG4CYAQqx1mr1s+noPBZ71YDT/sdC3hfBpr0JWcWvwBBE9SAJ8+/q+JenX82uF02nBjBJBNCzTld7r4kOvA3Q677JVjJ0eIW0YtLCLs3rfDeDgNpRozlcwMHupiEv/nHuE=;
-X-UUID: 031bc7d3ccd04356b1003a69d3cd75f4-20211123
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <jiaxin.yu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 148885430; Tue, 23 Nov 2021 02:50:00 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 23 Nov 2021 01:49:59 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 23 Nov 2021 17:49:58 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 23 Nov 2021 17:49:57 +0800
-Message-ID: <a0eddcc82cf4fc28eb96d7cb37cf1ad4252d39c3.camel@mediatek.com>
-Subject: Re: [PATCH] ASoC: mt8192: remove unnecessary CONFIG_PM
-From: Jiaxin Yu <jiaxin.yu@mediatek.com>
-To: Tzung-Bi Shih <tzungbi@google.com>
-CC: <broonie@kernel.org>, <matthias.bgg@gmail.com>,
- <alsa-devel@alsa-project.org>, kernel test robot <lkp@intel.com>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>
-Date: Tue, 23 Nov 2021 17:49:57 +0800
-In-Reply-To: <CA+Px+wWeV=9DF7wdSyjaZKS=XCJjri1Dmpf-kfNVZOqm5fV33w@mail.gmail.com>
-References: <20211122164644.19442-1-jiaxin.yu@mediatek.com>
- <20211122164644.19442-2-jiaxin.yu@mediatek.com>
- <CA+Px+wWeV=9DF7wdSyjaZKS=XCJjri1Dmpf-kfNVZOqm5fV33w@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mpSUE-001ZB4-AM; Tue, 23 Nov 2021 09:53:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+ Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+ List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=JYTFw20Aliur826yDh9Z24rOItlz7fSKajI2iQUIiX8=; b=Yo5f0SjEg9Wh3UxlfGJuxZ+WQV
+ dAHwd5WaUxJlf9Iu6bL3REtmMg/0/Lwm5nWdWsPOBFcp/ioL9trUi/wmizlnt5GVAfNZb5IsAiKJm
+ W6neUohco6UibmMiF/FCeAcghv0kUvxPwttW3LIA/KkEjsX9CQtZUaGA8ZTHYKoXnsBH2MIzJBoao
+ JIbTKcO578taMyUhLNto/S8QOgJL/XsXIEoOKvH5cBTr8PeJ82WIEcnWLxbUvdilfncLbZjI19f56
+ fLIYOb58vPS8xtMxnR6cSKXBce3h8xVa71GXCRK5Mqpw8Jt2//pIWYu+qKWnM2MMZ0XRY7sOTvprB
+ Q3n5/NAA==;
+Received: from shell.armlinux.org.uk
+ ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55808)
+ by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <linux@armlinux.org.uk>)
+ id 1mpSTy-0007gp-Ut; Tue, 23 Nov 2021 09:52:58 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <linux@shell.armlinux.org.uk>)
+ id 1mpSTs-00007E-Pi; Tue, 23 Nov 2021 09:52:52 +0000
+Date: Tue, 23 Nov 2021 09:52:52 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Chris Snook <chris.snook@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+ Florian Fainelli <f.fainelli@gmail.com>, John Crispin <john@phrozen.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ Radhey Shyam Pandey <radhey.shyam.pandey@xilinx.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
+Subject: [PATCH RFC net-next 0/8] net: phylink: introduce legacy mode flag
+Message-ID: <YZy59OTNCpKoPZT/@shell.armlinux.org.uk>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211123_015003_546831_57CA315E 
-X-CRM114-Status: UNSURE (   9.94  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211123_015314_403196_8941B33C 
+X-CRM114-Status: GOOD (  15.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +83,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-11-23 at 11:12 +0800, Tzung-Bi Shih wrote:
-> On Tue, Nov 23, 2021 at 12:48 AM Jiaxin Yu <jiaxin.yu@mediatek.com>
-> wrote:
-> > Signed-off-by: Jiaxin Yu <jiaxin.yu@mediatek.com>
-> > Reported-by: kernel test robot <lkp@intel.com>
-> 
-> Acked-by: Tzung-Bi Shih <tzungbi@google.com>
-> 
-> Could you also submit another series for the cleanup?
-> 
-> At least for sound/soc/mediatek/:
-> $ rg --files-with-matches CONFIG_PM sound/soc/mediatek/
-> sound/soc/mediatek/mt8173/mt8173-rt5650-rt5676.c
-> sound/soc/mediatek/mt8173/mt8173-rt5650.c
-> sound/soc/mediatek/mt8173/mt8173-max98090.c
-> sound/soc/mediatek/mt8173/mt8173-rt5650-rt5514.c
-> sound/soc/mediatek/mt6797/mt6797-afe-pcm.c
-> sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
-> sound/soc/mediatek/mt8192/mt8192-afe-pcm.c
-> sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
+Hi all,
 
-Hi Tzung-Bi,
+In March 2020, phylink gained support to split the PCS support out of
+the MAC callbacks. By doing so, a slight behavioural difference was
+introduced when a PCS is present, specifically:
 
-Ok, I will remove them from sound/soc/mediatek folder in PATCH v2.
-Thank you for reminding.
+1) the call to mac_config() when the link comes up or advertisement
+   changes were eliminated
+2) mac_an_restart() will never be called
+3) mac_pcs_get_state() will never be called
+
+The intention was to eventually remove this support once all phylink
+users were converted. Unfortunately, this still hasn't happened - and
+in some cases, it looks like it may never happen.
+
+Through discussion with Sean Anderson, we now need to allow the PCS to
+be optional for modern drivers, so we need a different way to identify
+these legacy drivers.
+
+In order to do that, this series of patches introduce a
+"legacy_pre_march2020" which is used to allow the old behaviour - in
+other words, we get the old behaviour only when there is no PCS and
+this flag is true. Otherwise, we get the new behaviour.
+
+I decided to use the date of the change in the flag as just using
+"legacy" or "legacy_driver" is too non-descript. An alternative could
+be to use the git sha1 hash of the set of changes.
+
+As part of this series, I have consolidated DSA's phylink creation, so
+only one place needs maintenance. This reduces the size of subsequent
+changes, including further changes I have lined up.
+
+I believe I have added the legacy flag to all the drivers which use
+legacy mode - that being the ag71xx, mtk_eth_soc and axienet ethernet
+drivers, and many DSA drivers - the ones which need the old behaviour
+are identified by having non-NULL phylink_mac_link_state or
+phylink_mac_an_restart methods in their dsa_switch_ops structure.
+
+ drivers/net/ethernet/atheros/ag71xx.c             |  1 +
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c       |  4 ++
+ drivers/net/ethernet/xilinx/xilinx_axienet_main.c |  1 +
+ drivers/net/phy/phylink.c                         | 32 +++++++++-----
+ include/linux/phylink.h                           | 20 +++++++++
+ net/dsa/dsa_priv.h                                |  2 +-
+ net/dsa/port.c                                    | 51 ++++++++++++++++-------
+ net/dsa/slave.c                                   | 19 ++-------
+ 8 files changed, 86 insertions(+), 44 deletions(-)
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
