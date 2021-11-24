@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E09A1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Nov 2021 03:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80506C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Nov 2021 06:38:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=L8fHsWHo7Fa4hgt8ub2QHfx841bYydnUSlyZcpdRlzs=; b=y6k88/1CX5gha0
-	exeN/LnVlgcZgGcLVlYs9Bb4afeLdoFJO82r7pcyE4g/oXWPb5Qq3t+0KOD1cJdEScE+LegO2YVzD
-	hd9v0QaOjCdBs6VLR3BZMcBmYy5L5yN8Z+Xp71fvqJ2bTHAOP9OToLnnHn7kCf+J2O0xszeqNrURg
-	kyzC579wgq7UVF//8b0Wfd1rNTTV2GUa3qTXkQQkw7GqLGOqa9uNrRLLdP8vj8/AITrgb2WakAWJ+
-	RbFjgMzqCg+IurZE9/zt+moriPY0HUOGmqf+AtmOmx5E6PjSl+zTpWlaoO/cvrQ7Gpp+RLdud2UBW
-	z9lJ0Hge3TXsYsysA23g==;
+	List-Owner; bh=JhrY/dDcZZYVrnQnMkixkzNDQQRUIYFQ8j/GWAR5CCE=; b=pndQvstTZhP1q9
+	xUHZGekMGat02mMrmGOjn1MVmsQbSMQO3Qlz77Py/W2B6rjNWkte7gTHibwntz5+wyF7/mjvwFzRX
+	1bVEH12OrryrYnnRfeykxF6YsAH7v+svFjhsinHYW5D4Z696TFd3iP1jslLeEFi4Qzp6PGxXvXMnY
+	svozf2DEsagiK/Xqkz6/VWVpvByLZO1+dVrPtzvY2GCk7hASKJBaVFAeYY28i3tDoUBUUC+WMQvAF
+	OI0aEp3pZdFNComnyFH5AZEWWHeHc64RFqMlsEzv1QYOHni/ZTVbK45xb/Qn9LIz7AqpFFjyMWCPk
+	peM0bJdpMpMrckjtq/5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpjNq-003smc-V3; Wed, 24 Nov 2021 03:55:46 +0000
-Received: from mail-il1-x12f.google.com ([2607:f8b0:4864:20::12f])
+	id 1mplvU-0040JW-4l; Wed, 24 Nov 2021 06:38:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpjNc-003skT-I4
- for linux-mediatek@lists.infradead.org; Wed, 24 Nov 2021 03:55:35 +0000
-Received: by mail-il1-x12f.google.com with SMTP id j21so1189258ila.5
- for <linux-mediatek@lists.infradead.org>; Tue, 23 Nov 2021 19:55:32 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/926FuVicfVC1nK0FVXtvbHMwYM36BbozQFkXoWswMk=;
- b=baWredfSFOMml8i0WHnqdj/WGSDAxeAgzkAmd1thTn9aNwNroqW+LAEdqtpecxvh+b
- tCXRUWrN47euOGjLHG7G3uJjFPwytNu/aK/96hIfHSB0xYg3UOLmBcTijw1YMNgbqG93
- r7Ua1tBOsOazX8ohB69fkXFcgQ1isqMA9u8bE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/926FuVicfVC1nK0FVXtvbHMwYM36BbozQFkXoWswMk=;
- b=cyz0bfhWICuJFdAeZ1kmMYqKgfwhCnM032Bs9oW2qXRM1jkqNP/LUFoR9m73S69CV3
- Oz042wkUMRx0ndLPbWCHaHC/KQtG5+XWzFWC6uPNSlbIvtF/PVnKOvUqfRvbKJreY8gm
- fZHPWXf3niVWb1/6kgD1rAksGlpYPJ3OYD8384ATySK5pgJ++0oYXIujLm4ZLsVUw2Bi
- rUToTSGDcb8FWRMRiSt56EZVzA5xVk8GZG0KkMnAEo4XT2z+KKVoT5yIOLrhN6rdnpQp
- ajCjGWe28gZY9sTLhYBiJbjkmrwJrqJwsWSRrPRpx1JxqmF4mGbiN59WevY6jBX/1mJ1
- RtlA==
-X-Gm-Message-State: AOAM5337HChmxWSSNR/oC8DkDxmDGdgcg30M56Tq3qHHxxd8VOKKpGkH
- NHpAB15WMzcUqCi4635MfvHMfmyruA+axrjYPWxXtg==
-X-Google-Smtp-Source: ABdhPJzWS1uYf8FWo45Cg3tq/AFpg6d/7sMCQWCP67g5+L5DT9Ag8Vsgz85lfPSTKmIcrxXnM+BisytQv2Zb2NcXTnM=
-X-Received: by 2002:a05:6e02:1a63:: with SMTP id
- w3mr9334649ilv.230.1637726131600; 
- Tue, 23 Nov 2021 19:55:31 -0800 (PST)
+ id 1mplvF-0040IM-HD; Wed, 24 Nov 2021 06:38:28 +0000
+X-UUID: 3fd42da25cfd4191ab08e4b54f213d19-20211123
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=o8yAD43f7Yz8PJZDUhlY+smBs0eLQyqXHTEwNYJfPik=; 
+ b=HkkCjWwDSUMjeXQBupvQ+cjRExZxoI4T911DAURMyNtWhlXCi3QVvtDVKNQCJ0cbeEwWmREPmNsJ27k16PBmqiKe76usJ3ahZRpZZLaoajlodgwd+wfQn/muwbAOVeDrE0nIeNkQ72jR/FccoL4N0CPwfH22L65/BecSMX37bHs=;
+X-UUID: 3fd42da25cfd4191ab08e4b54f213d19-20211123
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1704233352; Tue, 23 Nov 2021 23:38:21 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 23 Nov 2021 22:38:19 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 24 Nov 2021 14:38:18 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 24 Nov 2021 14:38:17 +0800
+Message-ID: <26704c3979b1c8936ab14d9ea7704166aca66887.camel@mediatek.com>
+Subject: Re: [RFC PATCH] soc: mediatek: Add support always on flag
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Chun-Jie Chen
+ <chun-jie.chen@mediatek.com>
+CC: <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Date: Wed, 24 Nov 2021 14:38:17 +0800
+In-Reply-To: <e6ebf764-b94a-7b77-df17-1cb8e4b14635@collabora.com>
+References: <20211102072058.4107-1-chunfeng.yun@mediatek.com>
+ <e6ebf764-b94a-7b77-df17-1cb8e4b14635@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20211123112104.3530135-1-hsinyi@chromium.org>
- <75ea1026-63e5-165a-9e07-27b5ac4c7579@arm.com>
-In-Reply-To: <75ea1026-63e5-165a-9e07-27b5ac4c7579@arm.com>
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-Date: Wed, 24 Nov 2021 11:55:05 +0800
-Message-ID: <CAJMQK-gHpmfedbRfR-1ZNLw0LpRDJHYoKLd-k3kvkqFf8vnD4A@mail.gmail.com>
-Subject: Re: [PATCH 0/3] Allow restricted-dma-pool to customize IO_TLB_SEGSIZE
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Christoph Hellwig <hch@infradead.org>,
- Marek Szyprowski <m.szyprowski@samsung.com>, 
- iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org, 
- Rob Herring <robh+dt@kernel.org>, Maxime Ripard <maxime@cerno.tech>, 
- - <devicetree-spec@vger.kernel.org>, devicetree@vger.kernel.org, 
- Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, senozhatsky@chromium.org, 
- tfiga@chromium.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211123_195532_669418_E612B245 
-X-CRM114-Status: GOOD (  25.42  )
+X-CRM114-CacheID: sfid-20211123_223826_721593_E176ED72 
+X-CRM114-Status: GOOD (  27.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,65 +79,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Nov 23, 2021 at 7:58 PM Robin Murphy <robin.murphy@arm.com> wrote:
->
-> On 2021-11-23 11:21, Hsin-Yi Wang wrote:
-> > Default IO_TLB_SEGSIZE (128) slabs may be not enough for some use cases.
-> > This series adds support to customize io_tlb_segsize for each
-> > restricted-dma-pool.
-> >
-> > Example use case:
-> >
-> > mtk-isp drivers[1] are controlled by mtk-scp[2] and allocate memory through
-> > mtk-scp. In order to use the noncontiguous DMA API[3], we need to use
-> > the swiotlb pool. mtk-scp needs to allocate memory with 2560 slabs.
-> > mtk-isp drivers also needs to allocate memory with 200+ slabs. Both are
-> > larger than the default IO_TLB_SEGSIZE (128) slabs.
->
-> Are drivers really doing streaming DMA mappings that large? If so, that
-> seems like it might be worth trying to address in its own right for the
-> sake of efficiency - allocating ~5MB of memory twice and copying it back
-> and forth doesn't sound like the ideal thing to do.
->
-> If it's really about coherent DMA buffer allocation, I thought the plan
-> was that devices which expect to use a significant amount and/or size of
-> coherent buffers would continue to use a shared-dma-pool for that? It's
-> still what the binding implies. My understanding was that
-> swiotlb_alloc() is mostly just a fallback for the sake of drivers which
-> mostly do streaming DMA but may allocate a handful of pages worth of
-> coherent buffers here and there. Certainly looking at the mtk_scp
-> driver, that seems like it shouldn't be going anywhere near SWIOTLB at all.
->
-mtk_scp on its own can use the shared-dma-pool, which it currently uses.
-The reason we switched to restricted-dma-pool is that we want to use
-the noncontiguous DMA API for mtk-isp. The noncontiguous DMA API is
-designed for devices with iommu, and if a device doesn't have an
-iommu, it will fallback using swiotlb. But currently noncontiguous DMA
-API doesn't work with the shared-dma-pool.
+On Thu, 2021-11-11 at 14:56 +0100, AngeloGioacchino Del Regno wrote:
+> Il 02/11/21 08:20, Chunfeng Yun ha scritto:
+> > There is a t-phy shared by PCIe and USB3 on mt8195, if the t-phy is
+> > used by PCIe, when power off its mtcmos, need software reset it
+> > (workaround way, usually hardware do it, but has an issue on
+> > mt8195),
+> > but it has side effect to USB2 phy(works with USB3 phy to support
+> > USB3.2 Gen1), so add support GENPD_FLAG_ALWAYS_ON flag, and make
+> > its
+> > power always on;
+> > Another reason is that USB3.2 Gen1/2 need keep power always on when
+> > support runtime-pm due to hardware limitation until now;
+> > 
+> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mt8195-pm-domains.h | 2 +-
+> >   drivers/soc/mediatek/mtk-pm-domains.c    | 2 ++
+> >   drivers/soc/mediatek/mtk-pm-domains.h    | 1 +
+> >   3 files changed, 4 insertions(+), 1 deletion(-)
+> > 
+> 
+> Hello Chunfeng,
+> what are are the side effects on the USB2 PHY? Can you please expand?
+Sorry for later reply, I missed this message.
 
-vb2_dc_alloc() -> dma_alloc_noncontiguous() -> alloc_single_sgt() ->
-__dma_alloc_pages() -> dma_direct_alloc_pages() ->
-__dma_direct_alloc_pages() -> swiotlb_alloc().
+the side effect on u2 phy is that it will cause u2 phy power off and
+cause other issues, e.g. if there is a device plugged in u2 port, it
+will disconnect, more over it will not work until reboot platform.
 
+> 
+> Also, wouldn't it be possible to also reset the USB2 PHY when
+> resetting the t-phy
+> in order to get it back up and running?
+No, the usb driver don't reset or reinit phy after probe;
 
-> Robin.
->
-> > [1] (not in upstream) https://patchwork.kernel.org/project/linux-media/cover/20190611035344.29814-1-jungo.lin@mediatek.com/
-> > [2] https://elixir.bootlin.com/linux/latest/source/drivers/remoteproc/mtk_scp.c
-> > [3] https://patchwork.kernel.org/project/linux-media/cover/20210909112430.61243-1-senozhatsky@chromium.org/
-> >
-> > Hsin-Yi Wang (3):
-> >    dma: swiotlb: Allow restricted-dma-pool to customize IO_TLB_SEGSIZE
-> >    dt-bindings: Add io-tlb-segsize property for restricted-dma-pool
-> >    arm64: dts: mt8183: use restricted swiotlb for scp mem
-> >
-> >   .../reserved-memory/shared-dma-pool.yaml      |  8 +++++
-> >   .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  4 +--
-> >   include/linux/swiotlb.h                       |  1 +
-> >   kernel/dma/swiotlb.c                          | 34 ++++++++++++++-----
-> >   4 files changed, 37 insertions(+), 10 deletions(-)
-> >
+> 
+> Moreover, as for the USB3.2 hardware limitation... I would say that
+> this is more
+> like something that has to be accounted for in the USB driver,
+> instead of the PM
+> domains driver... unless there's some reason that stops you from
+> doing that?
+Usb driver itself can't handle this case. but power domain's driver can
+handle it easily.
 
+> 
+> Thanks,
+> - Angelo
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
