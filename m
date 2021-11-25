@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DEE2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Nov 2021 13:37:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3123C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Nov 2021 13:37:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7jt1IcLnf6rG76yI3vJyPsmWZRJydBtHzdd0tWF1PBU=; b=koUR1H8cqHdhs+
-	ci+stOVaiNGGFs7LQy9O8NuxffBbg7fJ1fcin2368qHPgbTmcXYL1CR+K9ApL30HZNSCc2KatLzhf
-	yozquS+mxrahQdVV5dYgYeBg9xHfgJWv1yru8dVyXPgRcCuMXDTYBwxxNGaNv1xecSjiEG3djuln0
-	8Bt27+2Cpflm2NF4C/3w7XDJFwFSto4VBJZauQpCufzspeiYxuJIlOV0VZ85nECZbtiSZ1m0Gki5X
-	I5waVnLYwIWrCi4S05SdrjvsmlqHEmKitCzfJ6MbAD46G37QxH/El+b2DvlLJAElWiKF5yGvyEKPu
-	zM0yUwZx5ftVqEfVx+kw==;
+	List-Owner; bh=5iMU3ZMrRnVoG+jqY2qe+4QJYSIAalUIXDIWPq+IdUQ=; b=gQxWqxdBNLBl/Q
+	4EmXZaZnAN3JW9zYw/2hLr2ZV6vH5Mm7QsgqxFuPG6LDjU+7Vms7FdzfbyNTeGiiF8wC/BnqKXlMo
+	sIffAyylDk5G1GOKA1079Q44yUApU/WwGFLIEMQAIq7tw9uGpzEEakDQiyX8C9JYSrmY5gJ1K9lMM
+	b1INgsQy7IsWqJYa5Bbq1rcgaRXwjHimOpB3+xTiNHjsMAIYmYqeau7ZOaD0FkaDPoSDs7cRs0hD3
+	Pv9Dh9taiANIoqbI96ilOzLi8YITPFKgFhu1SWLAKpG6xq3xOtyAEu3EIlhosUMy0wzxUBFVzEaHC
+	3FH67Q2zvXHFjq75s1GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqEw2-007g9X-No; Thu, 25 Nov 2021 13:37:10 +0000
+	id 1mqEwE-007gBx-6L; Thu, 25 Nov 2021 13:37:22 +0000
 Received: from mail.kernel.org ([198.145.29.99])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqEvp-007g7Y-HI; Thu, 25 Nov 2021 13:36:58 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 356A861059;
- Thu, 25 Nov 2021 13:36:55 +0000 (UTC)
+ id 1mqEvt-007g8O-Gx; Thu, 25 Nov 2021 13:37:03 +0000
+Received: by mail.kernel.org (Postfix) with ESMTPSA id B206861074;
+ Thu, 25 Nov 2021 13:36:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637847417;
- bh=YBUe5iaqpRc+freiqsgpPGGUt/uvv62GjcaSgEBy0SE=;
+ s=k20201202; t=1637847421;
+ bh=amtopp9RHl/TvQxvYXr20cIuv/ZoExLoTxclzPSkcBA=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=DLnzZ3fnInJInqcpRZi7dgjPdaG1NeirxE8fZIE/F308Gn6ohRfInj1CtYDN8Oa3a
- 2l6Y5+1PJvKmMCHiURFPDeqyTqJuYDgPM4okXiygZxC5XNXkrNoTEzSUI8HwiBKQy1
- +TCLrUqazBIt9Fqs6iNnjElDGXI8G5G0JVzR/XHm0RL8KP4pRhP26jJX/TGv5PHTlg
- vObqXaYnbYLPGXYOivZIlwd5KkGfiwJpopHiPe+ntNtw+bgGirQnSjem1W9WEk2sAK
- bsDru2Z0+e5OkXpDF3x4ONLmsKi9efixko4sUoBea3hG749vPEGVMZOm6Ev46xz/k4
- Rx9s4ShUxCRGQ==
+ b=lry3K083Ck3VPN/+LLXeWeHs2U+6WlSBURFxscS5dAQiy0xcwcFsvBKrxoSAAtTsf
+ TIDPXhj8KZ5TzwwoSXHyolDqZY8H62XgSCGyuWLhkmNgYY/c1UMbC/CJUww31ZdpWP
+ s0drXYg0jUIqsHk74MHC3f9i2xehyXP+PSDLsfTwq65PfUSfVF2tQS2i+44OZE4G2b
+ xueUahted9G0xy3dYpCqa5Y5skyWfO/0LVuNx7mCuMhu1iX419TL7CODcj7ZlA20n8
+ Wn1Piw8/UjguGL+ngDkhz9Ed2ec/tGKjLxkKoq/ug0ndWRoX04XEFDLN8ySdqhEhnb
+ NQeboRWUHoHcA==
 From: Mark Brown <broonie@kernel.org>
-To: matthias.bgg@gmail.com, tzungbi@google.com, kaichieh.chuang@mediatek.com,
- Jiaxin Yu <jiaxin.yu@mediatek.com>, garlic.tseng@mediatek.com
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org,
- kernel test robot <lkp@intel.com>
-In-Reply-To: <20211125042422.2349-1-jiaxin.yu@mediatek.com>
-References: <20211125042422.2349-1-jiaxin.yu@mediatek.com>
-Subject: Re: [PATCH] ASoC: mediatek: remove unnecessary CONFIG_PM
-Message-Id: <163784741495.3101847.17087805943861117771.b4-ty@kernel.org>
-Date: Thu, 25 Nov 2021 13:36:54 +0000
+To: sound-open-firmware@alsa-project.org, linux-kernel@vger.kernel.org,
+ Yang Yingliang <yangyingliang@huawei.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ alsa-devel@alsa-project.org
+Cc: yc.hung@mediatek.com, daniel.baluta@nxp.com
+In-Reply-To: <20211125071608.3056715-1-yangyingliang@huawei.com>
+References: <20211125071608.3056715-1-yangyingliang@huawei.com>
+Subject: Re: [PATCH -next] ASoC: SOF: mediatek: Add missing of_node_put() in
+ platform_parse_resource()
+Message-Id: <163784741946.3101847.9704540045126980062.b4-ty@kernel.org>
+Date: Thu, 25 Nov 2021 13:36:59 +0000
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_053657_617466_05DD94B9 
-X-CRM114-Status: GOOD (  10.83  )
+X-CRM114-CacheID: sfid-20211125_053701_612812_C7E70306 
+X-CRM114-Status: GOOD (  10.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,15 +68,12 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 25 Nov 2021 12:24:22 +0800, Jiaxin Yu wrote:
-> The unnecessary conditional inclusion caused the following warning.
+On Thu, 25 Nov 2021 15:16:08 +0800, Yang Yingliang wrote:
+> The node pointer is returned by of_parse_phandle() with
+> refcount incremented in platform_parse_resource(). Calling
+> of_node_put() to aovid the refcount leak.
 > 
-> Such as:
-> >> sound/soc/mediatek/mt8192/mt8192-afe-pcm.c:2368:32: warning: unused
-> >> variable 'mt8192_afe_pm_ops' [-Wunused-const-variable]
->    static const struct dev_pm_ops mt8192_afe_pm_ops = {
 > 
-> [...]
 
 Applied to
 
@@ -83,8 +81,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: remove unnecessary CONFIG_PM
-      commit: faf695517c1c77bb4a4b46d54007a283962eb00e
+[1/1] ASoC: SOF: mediatek: Add missing of_node_put() in platform_parse_resource()
+      commit: fc6c62cf1cbf24c81ccb1d248120311336d5f3cc
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
