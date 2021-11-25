@@ -4,67 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3831CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Nov 2021 10:17:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 058C0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Nov 2021 10:20:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZgZtYBR5l4jAR6e7J4cMwAV4IF+p7taiK6YFr2EEUJ0=; b=Vfox6yd4XcXEhDtSGx75xGyG1S
-	pm5OE8gVrYZtGhEYUuL6gAW/jX6IB6b2WOJ95YdMk78O3gjzTRJLz6Uh2FlBZk3+XejGgGVqvTvYA
-	RYIyPuxVjcTKCgMKTNro/DsFmwNHmV8nULRgm9IJ6K86gf0rXGL056SSLbh9wDXvOhs4Y5vlb5c0E
-	BCeBGciCHnxAhiG1D6xe5EQ7a/NV6+IbvIRhKjhDMRFmkkMpfixhxEJbN7j5uAlFtizqwud9UVTpU
-	Phl6KC8Tx/WKyWcrjtKn2N9GrcvYtI1Fm0y6Hi80O6klGz9hlszW+Ml5mwXg3WiD1iFZuQlLKVq2s
-	nS00kvEA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m6KOH/WXF00P8H63AsBIm7T66dwaBNZMvbuuT3WjgBI=; b=SM8pSwAG7dAB63
+	vCybttNSL3DG23+Lj/cU7oA4Nupu2XhiTlw0AfDS6yECs6+5bADTQZVq36r/a9xlH0CaHMY41WfC2
+	hnzLAlfw7SrBIlSPnd/LC56+8U3FjLr76HCYhm4B7R7LlXcW0oqlNpe6rtYJPkIV1FUEruTbqRTa4
+	y7QB2yPuRZhEwNtW3nuzkxwCkzWVq4bUa8tK8sfOS41vFDlLrbqRlqVfsl6jhmIOH8QIKE40U6F59
+	TFwLRjgg2lmNfASuPPQZsRMqGtHRiNY8N8c5KJVCQ5edUwVFYExyriNxf2abb8wgbHXLd05r1DAIn
+	ViyvLKa+f89sNmX9eIHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqBp2-00741J-La; Thu, 25 Nov 2021 10:17:44 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mqBrP-0074S7-3v; Thu, 25 Nov 2021 10:20:11 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqBop-0073zH-6F; Thu, 25 Nov 2021 10:17:33 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 6EE071F45F43
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1637835442; bh=kU/MZYNKaO3dvvsRN6JtzRQ0r5zNYRD15c2pxK8A1Ok=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=JGFhrwntMATS6G/uRNt2zAPnUTAA3+pGem015A7Lx36duECl7zqipbC+UMi9omJG0
- Iszu+AW61a7QT8TII0Bb54NsOG4GccMZvVi2maKuZk5NcVgx5zT7+Fr1keXmOj0j4m
- S4C6Hb9EJpkLL/XtT93AH0Z/R6NQ1H0h0WwLjDTVksPPb7BM/hxUf5Wq1j6zjhCi1Q
- J2EEXTfyMrsGHkdrZKnqnd1CSn2VNUgp8DQXs7whKpgQnY2FkrEl4JC7FbOw1FvHDN
- g2TeRJtCr37bJEBoP5AcItesIOCFas3KRMjZ6lgHdm3IF+T/A1gQmA9CXsLb1Y6QSK
- 2Ht57sVCAfBlg==
-Subject: Re: [PATCH 0/9] Enable two H264 encoder cores on MT8195
-To: Irui Wang <irui.wang@mediatek.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Yong Wu <yong.wu@mediatek.com>
-Cc: Hsin-Yi Wang <hsinyi@chromium.org>,
- Maoguang Meng <maoguang.meng@mediatek.com>,
- Longfei Wang <longfei.wang@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig
- <frkoenig@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
- linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20210816105934.28265-1-irui.wang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <50a44f71-b39e-6f5c-dfc6-67377ecb4364@collabora.com>
-Date: Thu, 25 Nov 2021 11:17:19 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1mqBrA-0074OM-L0; Thu, 25 Nov 2021 10:19:59 +0000
+X-UUID: e443e420c86148d6a17c8cfc38554767-20211125
+X-UUID: e443e420c86148d6a17c8cfc38554767-20211125
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yee.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1782208497; Thu, 25 Nov 2021 03:19:45 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Nov 2021 02:19:43 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 25 Nov 2021 18:19:30 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 25 Nov 2021 18:19:29 +0800
+Message-ID: <e055e71f0ca7bcb351b9097ba8f8f4a9d324623c.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/1] arm64/cpufeature: Optionally disable MTE via
+ command-line
+From: Yee Lee <yee.lee@mediatek.com>
+To: Catalin Marinas <catalin.marinas@arm.com>
+CC: <linux-kernel@vger.kernel.org>, <nicholas.Tang@mediatek.com>,
+ <Kuan-Ying.lee@mediatek.com>, <chinwen.chang@mediatek.com>, Jonathan Corbet
+ <corbet@lwn.net>, Will Deacon <will@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "Paul E. McKenney" <paulmck@kernel.org>, "Randy
+ Dunlap" <rdunlap@infradead.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>, "Maciej W. Rozycki"
+ <macro@orcam.me.uk>, Viresh Kumar <viresh.kumar@linaro.org>, Peter Zijlstra
+ <peterz@infradead.org>, Vlastimil Babka <vbabka@suse.cz>, Marc Zyngier
+ <maz@kernel.org>, David Brazdil <dbrazdil@google.com>, Ard Biesheuvel
+ <ardb@kernel.org>, Fuad Tabba <tabba@google.com>, "open list:DOCUMENTATION"
+ <linux-doc@vger.kernel.org>, "moderated list:ARM64 PORT (AARCH64
+ ARCHITECTURE)" <linux-arm-kernel@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Date: Thu, 25 Nov 2021 18:19:29 +0800
+In-Reply-To: <20210802153036.GH18685@arm.com>
+References: <20210730144957.30938-1-yee.lee@mediatek.com>
+ <20210730144957.30938-2-yee.lee@mediatek.com>
+ <20210802153036.GH18685@arm.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <20210816105934.28265-1-irui.wang@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_021731_550576_A960F5AD 
-X-CRM114-Status: GOOD (  24.85  )
+X-CRM114-CacheID: sfid-20211125_021956_734012_FB7D6CC7 
+X-CRM114-Status: GOOD (  38.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,108 +79,114 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 16/08/21 12:59, Irui Wang ha scritto:
-> MT8195 has two H264 encoder cores, they have their own power-domains,
-> clocks, interrupts, register base. The two H264 encoder cores can work
-> together to achieve higher performance.
+On Mon, 2021-08-02 at 16:30 +0100, Catalin Marinas wrote:
+> On Fri, Jul 30, 2021 at 10:49:53PM +0800, yee.lee@mediatek.com wrote:
+> > From: Yee Lee <yee.lee@mediatek.com>
+> > 
+> > For some low-end devices with limited resources,
+> > MTE needs to be optionally disabled to save system
+> > costs such as tag memory and firmware controls.
 > 
-> This series of patches is to use enable two h264 encoder cores.
-> path[1..2]: use linux component framework to manage encoder hardware,
-> user call "mt8195-vcodec-enc" driver can get the encoder master device,
-> the encoding work is done by the two encoder core device. The hw_mode
-> variable is added to distinguish from old platform, two encoder cores
-> called "FRAME_RACING_MODE".
+> I understand the cost of using MTE but I don't fully get what you
+> mean
+> by firmware controls. If the ID_AA64PFR1_EL1.MTE reports that MTE is
+> present, the firmware should have initialised MTE correctly (e.g. tag
+> allocation storage, SCR_EL3.ATA) and not rely on a kernel command
+> line
+> argument that may or may not be present.
 > 
-> The hardware mode of two encoder cores work together(overlap, another
-> word called) on MT8195 called "frame_racing_mode", the two encoder
-> power-domains should be power on together while encoding, the encoding
-> process look like this:
+> > This allows ID_AA64PFR1_EL1.MTE to be overridden on 
+> > its shadow value by giving "arm64.nomte" on cmdline,
+> > and to suppress MTE feature.
+> > 
+> > Suggested-by: Marc Zyngier <maz@kernel.org>
+> > Suggested-by: Suzuki K Poulose <suzuki.poulose@arm.com>
+> > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
 > 
->      VENC Core0 frm#0....frm#2....frm#4
->      VENC Core1  .frm#1....frm#3....frm#5
+> While this patch appears to disable MTE, I don't think it can fully
+> prevent the access to the allocation tag storage, so the firmware
+> must
+> still initialise it correctly.
 > 
-> patch[3..5]: due to the component device, the master device has no
-> power-domains/clocks properties in dtsi, so the power/clock init function
-> can't use for "frame_racing_mode" device in master device probe process,
-> it should be called in component device probe process. Power on the
-> hardware power and clock on demand.
+> The issue is that __cpu_setup already configures the MAIR_EL1
+> register
+> to use Normal Tagged memory for the kernel mapping and SCTLR_EL1.ATA
+> is
+> set. The TCF field is zero, so no tag checking, but I couldn't figure
+> out from the ARM ARM whether this also prevents LDR/STR from
+> attempting
+> to fetch the allocation tags. I think it's only the ATA bit and the
+> MAIR
+> configuration.
 > 
-> patch[6]: "frame_racing_mode" encoding need a new set of memory buffer
-> for two encoder cores. For compatibility, we should new a encoder driver
-> interface.
-> 
-> patch[7..9]: add "frame_racing_mode" encoding process:
-> As-Is: Synchronous
-> VIDIOC_QBUF#0 --> device_run(triger encoder) --> wait encoder IRQ -->
-> encode done with result --> job_finish
-> 
-> VIDIOC_QBUF#1 --> device_run(triger encoder) --> wait encoder IRQ -->
-> encode done with result --> job_finish
-> ...
-> 
-> To-Be: Asynchronous
-> VIDIOC_QBUF#0 --> device_run(triger encoder core0) --> job_finish
-> ..VIDIOC_QBUF#1 --> device_run(triger encoder core1) --> job_finish
-> (core0 may encode done here, return encode result to client)
-> VIDIOC_QBUF#2 --> device_run(triger encoder core0) --> job_finish
-> 
-> Thers is no "wait encoder IRQ" synchronous call during "frame_racing_mode"
-> encoding process, which can full use the two encoder cores to achieve
-> higher performance.
-> 
-> Irui Wang (9):
->    dt-bindings: media: mtk-vcodec: Add binding for MT8195 two venc cores
->    media: mtk-vcodec: Use component framework to manage encoder hardware
->    media: mtk-vcodec: Rewrite venc power manage interface
->    media: mtk-vcodec: Add venc power on/off interface
->    media: mtk-vcodec: Rewrite venc clock interface
->    media: mtk-vcodec: Add new venc drv interface for frame_racing mode
->    media: mtk-vcodec: Add frame racing mode encode process
->    media: mtk-vcodec: Return encode result to client
->    media: mtk-vcodec: Add delayed worker for encode timeout
-> 
->   .../bindings/media/mediatek-vcodec.txt        |   2 +
->   drivers/media/platform/mtk-vcodec/Makefile    |   2 +
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  34 +-
->   .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 120 +++-
->   .../platform/mtk-vcodec/mtk_vcodec_enc.h      |  10 +-
->   .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 204 +++++-
->   .../platform/mtk-vcodec/mtk_vcodec_enc_hw.c   | 253 +++++++
->   .../platform/mtk-vcodec/mtk_vcodec_enc_hw.h   |  38 +
->   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 213 ++++--
->   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   |  13 +-
->   .../platform/mtk-vcodec/mtk_vcodec_util.c     |  19 +
->   .../platform/mtk-vcodec/mtk_vcodec_util.h     |   5 +
->   .../platform/mtk-vcodec/venc/venc_common_if.c | 675 ++++++++++++++++++
->   .../platform/mtk-vcodec/venc/venc_h264_if.c   |   6 +-
->   .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   2 +-
->   .../media/platform/mtk-vcodec/venc_drv_if.c   |  96 ++-
->   .../media/platform/mtk-vcodec/venc_drv_if.h   |   7 +
->   .../media/platform/mtk-vcodec/venc_vpu_if.c   |  11 +-
->   .../media/platform/mtk-vcodec/venc_vpu_if.h   |   3 +-
->   19 files changed, 1564 insertions(+), 149 deletions(-)
->   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.c
->   create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_hw.h
->   create mode 100644 drivers/media/platform/mtk-vcodec/venc/venc_common_if.c
+> With this patch, KASAN_HW_TAGS (if configured) won't be used and MTE
+> will not be presented to user applications, if that's what you want,
+> but
+> does not fully disable MTE.
 > 
 
-Hello Irui,
-we have some interest in this series; can you please rebase it over the latest
-changes that were sent in series [1] [2]?
+As pointed out earlier, the hardware has been verified that still has
+transaction sending to DRAM due to mair_el1(Normal_tagged) is
+setup.  That means the override in this patch would be incompleted and
+cannot achieve to avoid undesired hardware confliction by disabling
+MTE.
 
-Also, please follow [2], where of_platform_populate was used in place of the
-component framework (where applicable and where possible) on this series, as well.
+Do we have other options to delay the configuration on MAIR_EL1 after
+the override? Or maybe another CONFIG to bypass the init in
+__cpu_setup?
 
-Thanks!
-- Angelo
 
-[1]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=579201
-[2]: https://patchwork.kernel.org/project/linux-mediatek/list/?series=578467
+> Since May this year, the ARM ARM was updated so that
+> SCTLR_EL1.ATA/ATA0
+> are not permitted to be cached in the TLB. We could therefore move
+> the
+> setting to cpu_enable_mte(). Something like below, untested (to be
+> folded into your patch):
+> 
+> diff --git a/arch/arm64/include/asm/sysreg.h
+> b/arch/arm64/include/asm/sysreg.h
+> index aa53954c2f6b..cac23455a2b5 100644
+> --- a/arch/arm64/include/asm/sysreg.h
+> +++ b/arch/arm64/include/asm/sysreg.h
+> @@ -698,8 +698,7 @@
+>  	(SCTLR_ELx_M    | SCTLR_ELx_C    | SCTLR_ELx_SA   |
+> SCTLR_EL1_SA0   | \
+>  	 SCTLR_EL1_SED  | SCTLR_ELx_I    | SCTLR_EL1_DZE  |
+> SCTLR_EL1_UCT   | \
+>  	 SCTLR_EL1_NTWE | SCTLR_ELx_IESB | SCTLR_EL1_SPAN |
+> SCTLR_ELx_ITFSB | \
+> -	 SCTLR_ELx_ATA  | SCTLR_EL1_ATA0 | ENDIAN_SET_EL1 |
+> SCTLR_EL1_UCI   | \
+> -	 SCTLR_EL1_EPAN | SCTLR_EL1_RES1)
+> +	 ENDIAN_SET_EL1 | SCTLR_EL1_UCI  | SCTLR_EL1_EPAN |
+> SCTLR_EL1_RES1)
+> 
+>  /* MAIR_ELx memory attributes (used by Linux) */
+>  #define MAIR_ATTR_DEVICE_nGnRnE		UL(0x00)
+> diff --git a/arch/arm64/kernel/cpufeature.c
+> b/arch/arm64/kernel/cpufeature.c
+> index 9035c367d08b..23b1e3d83603 100644
+> --- a/arch/arm64/kernel/cpufeature.c
+> +++ b/arch/arm64/kernel/cpufeature.c
+> @@ -1841,6 +1841,9 @@ static void bti_enable(const struct
+> arm64_cpu_capabilities *__unused)
+>  #ifdef CONFIG_ARM64_MTE
+>  static void cpu_enable_mte(struct arm64_cpu_capabilities const *cap)
+>  {
+> +	sysreg_clear_set(sctlr_el1, 0, SCTLR_ELx_ATA | SCTLR_EL1_ATA0);
+> +	isb();
+> +
+>  	/*
+>  	 * Clear the tags in the zero page. This needs to be done via
+> the
+>  	 * linear map which has the Tagged attribute.
+> 
+
 
 _______________________________________________
 Linux-mediatek mailing list
