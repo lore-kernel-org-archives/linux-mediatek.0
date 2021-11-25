@@ -4,82 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84671C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 24 Nov 2021 19:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29CE9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 25 Nov 2021 01:47:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lp3MMxmSBC8ZDMk2XGi2a93qoVWrlHlu05cvxFh/IU8=; b=BHG0Eskd5m4Xnn
-	8P7HwewY9/qLFrYrZso6uZRe6VBIFvXzMvx26AsZaiBTcKW09tczdZCza+BP+2taVSCrZnX/cFgMw
-	pNRXSocaHl/ivjccytCPbpHUFIGBrw2VdmrJyjkeuxlGlg/FAhLlTiCaynnB2kBS7cKvycw5IC8xm
-	4sUZKHm9C0LE5jx6Pt/eZ0OFPDhpoqDVzXEn2ZXb6IOs3c2v9Fct7ovw3+HmBpWrO8xxY9dOUwqtA
-	7AuPvGdvWZh4wFExBnDkgNu9ok7IZgcbtJQfn4E6F2kUxi5An9irpwCmNY9QehFJpY44QwDz+KkS1
-	B0n2BSZAzjEYgqwPTkHQ==;
+	List-Owner; bh=qO4m/VAbnXzWSikdHydpZPns80B5/3m6WDoh+yhHyDU=; b=zPAdw4+ipCIRUb
+	QjjkmIMXWqHy8JSEmLdPDrNqkwSBuiBMlxc8j4x0jX1bAErVQ2Cgx89UpdRufuQpK/+Rm4xk+Wg4L
+	tJBNuwHZYgayNy8MDNpDFHjfbNVLjHaotmXhDiSM1Kd9EZozsjJHmGJqOPyMOpSsAbD/SEItlVYh6
+	mWd/Kgcze1W3tpbd+mel/Xpj5ayydeBuI2HwxtUXD1y1Ysw+TvxLinSc/AtI/rxX7XYAWrASJ+gDO
+	qu8bvftas5hbxEgToD6N4+dR/DHFPydhn4ZhP3vlUnY03oNVybD1SalEcuSYLoE3dRhRoSRec/KW0
+	FlvcqjYMEumtjq93SapQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mpxsS-005ejO-1k; Wed, 24 Nov 2021 19:24:20 +0000
-Received: from mout.kundenserver.de ([212.227.126.130])
+	id 1mq3rV-006FDT-CY; Thu, 25 Nov 2021 01:47:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mpxsN-005egr-Qi; Wed, 24 Nov 2021 19:24:18 +0000
-Received: from mail-wm1-f54.google.com ([209.85.128.54]) by
- mrelayeu.kundenserver.de (mreue011 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1MoOMq-1mIr7F2fo8-00orSV; Wed, 24 Nov 2021 20:24:13 +0100
-Received: by mail-wm1-f54.google.com with SMTP id
- g191-20020a1c9dc8000000b0032fbf912885so2970776wme.4; 
- Wed, 24 Nov 2021 11:24:13 -0800 (PST)
-X-Gm-Message-State: AOAM530vfqkkqzzRdKPvcnjqVWvxDarIE6odeDSUndXnCfSyng1H05AP
- X1sE2/55cgnKgMwfjIaxZe4uLMNLXwSXSrlpCY8=
-X-Google-Smtp-Source: ABdhPJxU3XHzGkZdmjVLUlcDMysYVZXYBGK7dc18pfMdKQoniTree9ljP7IJbkiJjYrYSt/hozmOHO002j1Kgkumx8s=
-X-Received: by 2002:a1c:1c1:: with SMTP id 184mr18501034wmb.1.1637781853302;
- Wed, 24 Nov 2021 11:24:13 -0800 (PST)
+ id 1mq3rG-006FBz-Tt; Thu, 25 Nov 2021 01:47:33 +0000
+X-UUID: b760bc9b47034429be70fb695f40404d-20211124
+X-UUID: b760bc9b47034429be70fb695f40404d-20211124
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 737045535; Wed, 24 Nov 2021 18:47:26 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 24 Nov 2021 17:47:24 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Nov 2021 09:47:22 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 25 Nov 2021 09:47:22 +0800
+Message-ID: <43976e8aab2e3055195d8e9c2f466a804e4d2ba7.camel@mediatek.com>
+Subject: Re: [PATCH v3 3/3] firmware: mediatek: add adsp ipc protocol interface
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Tzung-Bi Shih <tzungbi@google.com>
+CC: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Linux-ALSA
+ <alsa-devel@alsa-project.org>, <cujomalainey@google.com>, "Pierre-Louis
+ Bossart" <pierre-louis.bossart@linux.intel.com>, Liam Girdwood
+ <lgirdwood@gmail.com>, Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, Daniel Baluta
+ <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
+ <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <sound-open-firmware@alsa-project.org>
+Date: Thu, 25 Nov 2021 09:47:22 +0800
+In-Reply-To: <YZ4TGvtwO5ySCEkT@google.com>
+References: <20211124084514.28002-1-allen-kh.cheng@mediatek.com>
+ <20211124084514.28002-4-allen-kh.cheng@mediatek.com>
+ <YZ4TGvtwO5ySCEkT@google.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <cover.1637781097.git.mchehab+huawei@kernel.org>
-In-Reply-To: <cover.1637781097.git.mchehab+huawei@kernel.org>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Wed, 24 Nov 2021 20:23:57 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a1kQp4g6-59ui8ASBb-QYmwrtK5dh6L2PKjyXVV_VEGvw@mail.gmail.com>
-Message-ID: <CAK8P3a1kQp4g6-59ui8ASBb-QYmwrtK5dh6L2PKjyXVV_VEGvw@mail.gmail.com>
-Subject: Re: [PATCH 00/20] Solve the remaining issues with clang and W=1 on
- media
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Linuxarm <linuxarm@huawei.com>,
- Mauro Carvalho Chehab <mauro.chehab@huawei.com>, 
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>, Andy Gross <agross@kernel.org>, 
- Antti Palosaari <crope@iki.fi>, Bjorn Andersson <bjorn.andersson@linaro.org>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Malcolm Priestley <tvboxspy@gmail.com>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Robert Foss <robert.foss@linaro.org>, Todor Tomov <todor.too@gmail.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- llvm@lists.linux.dev
-X-Provags-ID: V03:K1:OMvt8jPYl3veQq2jPIG03wWHxridRD4CRo3dCxR8+hB62eJ41pq
- bM7H1gSe0M/dr4X9MmiZS1DF3rHi3lJpaJhR2QhelmBg2M1DCBsbB9TSpTXuBSMwgEyHz9S
- lrFAiMhVGxN9J0zUBTusuYeVIjK4vxzEJoIANhI19wAQBMfPoRa27K+L8rHdzpJn1plx6Cq
- SztPXDl6pPhQRwA4YfSlQ==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:JCtInnTxhwU=:xDtyawcD6u75Jj/0+IdtK0
- 3Fl00kWE9UBR8xdcKwKdUwx6OoJAFBlZzzMjkGynSqrV+657A0imvrE5+t9h8qP7AjeOe5pDk
- 4Al4WRW93gjC5A8VjIbvDRRnMalCdsPmaocIEhmwTh7x+DJZhLlCu78L5ht6bGgEaWlPZN5T7
- r3mbChzQwh/3cunpUFpiRtotDVcaPejesTqTPPfIpXA+rjYo383R16CYPraTsEpUcZHpBs3Fd
- rtjPynNF52VCZ0IjJoz8ctnw5+WpM6ukgt40I3X46xTNmxmvLOzRRMywKdQLB3lRVuuyEQ1I2
- +teMOsSM38kZK2VOwlk/bGGH9B4lzsL5F+Nw8Icjrel2ejk5FAmIi4B5McQUKl81jXvTqI/k1
- c0hsBe/ql0XFhhRT3bMqhELoctesutlIlmwC249+cRh+cayojdC2qjHCJY/qb6+fWbVKJLu05
- sFp3dOm8/TprTCkv+ry5SGTyOgGFjZDxLYI/7d5TviMoFjJE+NFdzc91q6wJsdpATWuxZZAKF
- fiV5lrnA6P4TP2LeNTRO0M3TXbtzza8okvd38LglzquZfwA/lveG08LyJ++WvT+lCOX4qPfs8
- P/WAMiTnNakxLgE6QzSAPw88/K04cVtLe5V5wQiUqsaHzmjMXb50M1FtWtq4oZCwRB5k0y6pl
- m7GqnjUnKswvCWw8mWoa8RXL+FDJGhAdiS4QaPh95izqrkPJqGmZwNIcn1COOn/owKZzgZIFa
- RvFw3YX5v867t1LnCj8wYNbb2hJlKz/Mao59E8XVoJwMne3Sf06Yu7zFg7SGidT65ME0AlSy/
- tALQ8lVZNhHNzuZ8XW0Wre069cma/QcLK/QxcLIoKfBRdoKgao=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211124_112416_185898_936FD3E0 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20211124_174731_028388_CA8606A3 
+X-CRM114-Status: GOOD (  25.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,22 +82,99 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 24, 2021 at 8:13 PM Mauro Carvalho Chehab
-<mchehab+huawei@kernel.org> wrote:
->
-> Currently, using clang with W=1 and CONFIG_WERROR causes media to break.
-> This is reported by builder.linuxtv.org.
->
-> This series solve the remaining issues.
+Hi Tzung-Bi,
 
-I looked through my randconfig tree and found one more that I had
-initially not sent
-as I wasn't sure whether we want to fix
--Wtautological-constant-out-of-range-compare
-warnings. I'll send it now, as all warnings of that type in other
-drivers have been addressed.
+Thanks for your suggestions.
 
-        Arnd
+On Wed, 2021-11-24 at 18:25 +0800, Tzung-Bi Shih wrote:
+> On Wed, Nov 24, 2021 at 04:45:14PM +0800, allen-kh.cheng wrote:
+> >  drivers/firmware/Kconfig                      |   1 +
+> >  drivers/firmware/Makefile                     |   1 +
+> >  drivers/firmware/mediatek/Kconfig             |  10 ++
+> >  drivers/firmware/mediatek/Makefile            |   2 +
+> >  drivers/firmware/mediatek/mtk-adsp-ipc.c      | 130
+> > ++++++++++++++++++
+> >  .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  72 ++++++++++
+> >  6 files changed, 216 insertions(+)
+> >  create mode 100644 drivers/firmware/mediatek/Kconfig
+> >  create mode 100644 drivers/firmware/mediatek/Makefile
+> >  create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
+> >  create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
+> 
+> The patch should move before the 2nd patch in the series as the 2nd
+> patch uses mtk-adsp-ipc.h.
+> 
+> > diff --git a/drivers/firmware/mediatek/mtk-adsp-ipc.c
+> > b/drivers/firmware/mediatek/mtk-adsp-ipc.c
+> 
+> [...]
+> > +int adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx,
+> > uint32_t op)
+> > +{
+> > +	struct mtk_adsp_chan *dsp_chan = &ipc->chans[idx];
+> > +	struct adsp_mbox_ch_info *ch_info = dsp_chan->ch->con_priv;
+> > +	int ret;
+> > +
+> > +	if (idx >= MTK_ADSP_MBOX_NUM)
+> > +		return -EINVAL;
+> 
+> If idx >= MTK_ADSP_MBOX_NUM, the invalid memory access has occurred
+> at beginning of the function.
+> 
+> > +static int mtk_adsp_ipc_probe(struct platform_device *pdev)
+> > +{
+> 
+> [...]
+> > +	device_set_of_node_from_dev(&pdev->dev, pdev->dev.parent);
+> 
+> Why does it need to call device_set_of_node_from_dev()?
+
+The original design regards mt8195 sof of_node as a parent deivce of
+mtk-adsp-ipc.
+
+device_set_of_node_from_dev will set of_node_reuse flag to prevent
+driver from attempting to claim any mbox ipc resources already claimed
+by the sof dsp device.
+
+> 
+> > +	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
+> > +		chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
+> > +		if (!chan_name)
+> > +			return -ENOMEM;
+> > +
+> > +		dsp_chan = &dsp_ipc->chans[i];
+> > +		cl = &dsp_chan->cl;
+> > +		cl->dev = dev->parent;
+> > +		cl->tx_block = false;
+> > +		cl->knows_txdone = false;
+> > +		cl->tx_prepare = NULL;
+> > +		cl->rx_callback = adsp_ipc_recv;
+> > +
+> > +		dsp_chan->ipc = dsp_ipc;
+> > +		dsp_chan->idx = i;
+> > +		dsp_chan->ch = mbox_request_channel_byname(cl,
+> > chan_name);
+> > +		if (IS_ERR(dsp_chan->ch)) {
+> > +			ret = PTR_ERR(dsp_chan->ch);
+> > +			if (ret != -EPROBE_DEFER)
+> > +				dev_err(dev, "Failed to request mbox
+> > chan %d ret %d\n",
+> > +					i, ret);
+> 
+> If ret == -EPROBE_DEFER, wouldn't it need to return
+> -EPROBE_DEFER?  It doesn't retry later if -EPROBE_DEFER.
+
+If ret != -EPROBE_DEFER, it will show a error message then goto out.
+
+If ret == -EPROBE_DEFER, probe funcation also will goto out. 
+
+
+Both of them will return ret. will not go to next round.
+
+Thanks,
+Allen
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
