@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23117C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 12:25:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A3D6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 12:25:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tTU6JZfiq6sNs/WqFLh2mByo3pLCnpcILyc7sF9SBRI=; b=DCuTIm7RaxuD4V+TkPmxgYibBk
-	qwOkUe/oGKrPoVbYlotl2UOEyQ7x0HG+pWYiaHkjnETWpo1muy+VCpYvDWp45EYKP0uqGNIoXf7dk
-	J7eFF7htA9V/Za7tWyjjkavFKbswgobboF7qyCuAS3yfM3iwIBg0H4Abko2jcFLsAdHw3twLDhPqI
-	mwY2LCGazAFt/z7u7df93WQTa42OMK2g/19FPxgZCGaATT48AynFzT7N+aR9Cr1aZN70/KR+l8E+1
-	bXzKBmn1OEMXgkQG4MvraWsKY41GpszYhf7E2l5xHgSxMsSSfP9YfiDMniHPhELPs3diJ9XcrdKIT
-	u0wjhw+Q==;
+	bh=Rxstn/ZFa58zvTADLA87T7EYetoAtyMnK92xLJOmPEI=; b=DDK15NA0Nq1fDW5cbDBQFAAeE5
+	VBSYyOqhsWeYTTiAerIdDsGAvQ22XaxQTbT+VsJ8nYl9Njmte0lakszQjR07RloPCPSQsoHhqQeSZ
+	F0Lo5MMTnn2EH/ZTNAVttGVJBirvSeGK1fe2fwOFIf44ezHuukELGrFLjBwSv+RCW9+/NAuFn/oBw
+	4TW6u9qLLTCPMy6Q9h/zs8BkY+JgLaIshiIXwN6Lhkd+UJzCYWsrhr+D1BweyU3IFQ0lQRPIVjOzN
+	hJfxqcOJzfeic42i9d1oi/O64JHCsrXLJFF6+bt17ux6gqAXtz/39TW9lMBLswHgl2UoazzsEOO+L
+	D8yLRofg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqaIJ-00ALqS-Ju; Fri, 26 Nov 2021 12:25:35 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mqaIP-00ALsP-OL; Fri, 26 Nov 2021 12:25:41 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqZzI-00AHS3-Gh
- for linux-mediatek@lists.infradead.org; Fri, 26 Nov 2021 12:05:58 +0000
+ id 1mqZzN-00AHSw-T5
+ for linux-mediatek@lists.infradead.org; Fri, 26 Nov 2021 12:06:03 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 60C4C1F46847
+ (Authenticated sender: kholk11) with ESMTPSA id 76D361F46849
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1637928355; bh=9EQmaihFqroyudxA2nA0/OcsptHnfOtG3O895b09Y2g=;
+ t=1637928360; bh=YOscnsoeA6Wvoqn1LuX19RmPd8uIS9PuwPxrBOZyGaA=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=K+tqyBcSzgn/XvTEwoARRUXVoMuW3VR0M9EJZTrKV9TMaA4ZotGcziOvZbCNrw41p
- pHq4wvsIvn8Q5xf9YZdYQ1uiP5mc80hNRnx2/L0yihFqoteGv4FLcufgZWWvU2C4fY
- NCsXfU0pXXYcjLceWyeUw5nTPz9U5WnL1F71zb/cZPUtqSbfFUIsEpu4fd7AJnVAB5
- JyceM4BHVE6oINAM2tfDRm0WPMyWCN93FMT38lrYdAt9Cf+a2U54bzWHfrZS7p4RtG
- RyoDhRVdHRLraYo2Iy+54YEBZ5o8LJnicgOrfOg/+IJKu5QplQbUIutlZ4jEruBHQo
- H0kZmjJQ2Da4Q==
-Subject: Re: [PATCH v2 4/8] ASoC: SOF: mediatek: Add fw loader and mt8195 dsp
- ops to load firmware
+ b=g/a95erAcsTOZwS3imAuBf5UcjVPdb48Lz/U8800KEzzklkmxys4QC6C423leKXOW
+ zr5gr7qQACvLxQ/uuPtaVvRMvLY0ZVM7Et/E+mVgHEde+tyV/m7FSo2ThLcnMEoRjo
+ dwPjTkZJKbxU3fbZQBB/rTtCm6HXxbzb9bDJccehiTqcOZxiXnJBzoZmjEshIpw7yi
+ AlybkUVc44QkONqI0LfNhB8Apt+YXuL1DBX1rWxeJsQZ7Z1RCAmS6tt81ec5/QAV3L
+ v5shkkX4NS0T61AzgMNb1FlAWDp465nrCI/9QG6W7RHOOCLRcgDIzwj96KVidbB8+Y
+ aJfkdDspYTvYQ==
+Subject: Re: [PATCH v2 3/8] ASoC: SOF: topology: Add support for Mediatek AFE
+ DAI
 To: Daniel Baluta <daniel.baluta@oss.nxp.com>, broonie@kernel.org,
  alsa-devel@alsa-project.org
 Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
@@ -49,18 +49,18 @@ Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
  Kai Vehmanen <kai.vehmanen@linux.intel.com>,
  Guennadi Liakhovetski <guennadi.liakhovetski@linux.intel.com>
 References: <20211118100749.54628-1-daniel.baluta@oss.nxp.com>
- <20211118100749.54628-5-daniel.baluta@oss.nxp.com>
+ <20211118100749.54628-4-daniel.baluta@oss.nxp.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <9521a830-bf02-8232-368e-1afb4b978bf4@collabora.com>
-Date: Fri, 26 Nov 2021 13:05:51 +0100
+Message-ID: <c31d5fd8-4f11-9f8b-f607-ea9191bc1d1b@collabora.com>
+Date: Fri, 26 Nov 2021 13:05:57 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211118100749.54628-5-daniel.baluta@oss.nxp.com>
+In-Reply-To: <20211118100749.54628-4-daniel.baluta@oss.nxp.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211126_040556_732888_20B6784D 
-X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-CacheID: sfid-20211126_040602_112304_C92BBA16 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,19 +79,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 SWwgMTgvMTEvMjEgMTE6MDcsIERhbmllbCBCYWx1dGEgaGEgc2NyaXR0bzoKPiBGcm9tOiBZQyBI
-dW5nIDx5Yy5odW5nQG1lZGlhdGVrLmNvbT4KPiAKPiBBZGQgbXQ4MTk1LWxvYWRlciBtb2R1bGUg
-d2l0aCBvcHMgY2FsbGJhY2sgdG8gbG9hZCBhbmQgcnVuIGZpcm13YXJlCj4gb24gbXQ4MTk1IHBs
-YXRmb3JtLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFlDIEh1bmcgPHljLmh1bmdAbWVkaWF0ZWsuY29t
-Pgo+IFJldmlld2VkLWJ5OiBQw6l0ZXIgVWpmYWx1c2kgPHBldGVyLnVqZmFsdXNpQGxpbnV4Lmlu
-dGVsLmNvbT4KPiBSZXZpZXdlZC1ieTogUGllcnJlLUxvdWlzIEJvc3NhcnQgPHBpZXJyZS1sb3Vp
-cy5ib3NzYXJ0QGxpbnV4LmludGVsLmNvbT4KPiBSZXZpZXdlZC1ieTogUmFuamFuaSBTcmlkaGFy
-YW4gPHJhbmphbmkuc3JpZGhhcmFuQGxpbnV4LmludGVsLmNvbT4KPiBSZXZpZXdlZC1ieTogS2Fp
-IFZlaG1hbmVuIDxrYWkudmVobWFuZW5AbGludXguaW50ZWwuY29tPgo+IFJldmlld2VkLWJ5OiBH
-dWVubmFkaSBMaWFraG92ZXRza2kgPGd1ZW5uYWRpLmxpYWtob3ZldHNraUBsaW51eC5pbnRlbC5j
-b20+Cj4gUmV2aWV3ZWQtYnk6IERhbmllbCBCYWx1dGEgPGRhbmllbC5iYWx1dGFAbnhwLmNvbT4K
-PiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgQmFsdXRhIDxkYW5pZWwuYmFsdXRhQG54cC5jb20+CgpB
-Y2tlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVs
-cmVnbm9AY29sbGFib3JhLmNvbT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+dW5nIDx5Yy5odW5nQG1lZGlhdGVrLmNvbT4KPiAKPiBBZGQgbmV3IHNvZiBkYWkgYW5kIGNvbmZp
+ZyB0byBwYXNzIHRvcG9sb2d5IGZpbGUgY29uZmlndXJhdGlvbgo+IHRvIFNPRiBmaXJtd2FyZSBy
+dW5uaW5nIG9uIE1lZGlhdGVrIHBsYXRmb3JtIERTUCBjb3JlLgo+IEFkZCBtZWRpYXRlayBhdWRp
+byBmcm9udCBlbmQoQUZFKSB0byB0aGUgbGlzdCBvZiBzdXBwb3J0ZWQgc29mX2RhaXMKPiAKPiBT
+aWduZWQtb2ZmLWJ5OiBZQyBIdW5nIDx5Yy5odW5nQG1lZGlhdGVrLmNvbT4KPiBSZXZpZXdlZC1i
+eTogUMOpdGVyIFVqZmFsdXNpIDxwZXRlci51amZhbHVzaUBsaW51eC5pbnRlbC5jb20+Cj4gUmV2
+aWV3ZWQtYnk6IFBpZXJyZS1Mb3VpcyBCb3NzYXJ0IDxwaWVycmUtbG91aXMuYm9zc2FydEBsaW51
+eC5pbnRlbC5jb20+Cj4gUmV2aWV3ZWQtYnk6IFJhbmphbmkgU3JpZGhhcmFuIDxyYW5qYW5pLnNy
+aWRoYXJhbkBsaW51eC5pbnRlbC5jb20+Cj4gUmV2aWV3ZWQtYnk6IEthaSBWZWhtYW5lbiA8a2Fp
+LnZlaG1hbmVuQGxpbnV4LmludGVsLmNvbT4KPiBSZXZpZXdlZC1ieTogR3Vlbm5hZGkgTGlha2hv
+dmV0c2tpIDxndWVubmFkaS5saWFraG92ZXRza2lAbGludXguaW50ZWwuY29tPgo+IFJldmlld2Vk
+LWJ5OiBEYW5pZWwgQmFsdXRhIDxkYW5pZWwuYmFsdXRhQG54cC5jb20+Cj4gU2lnbmVkLW9mZi1i
+eTogRGFuaWVsIEJhbHV0YSA8ZGFuaWVsLmJhbHV0YUBueHAuY29tPgoKQWNrZWQtYnk6IEFuZ2Vs
+b0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25vQGNvbGxhYm9y
+YS5jb20+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1l
+ZGlhdGVrCg==
