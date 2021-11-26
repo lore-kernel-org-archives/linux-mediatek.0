@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6620FC433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93F0AC433FE
 	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 04:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,79 +12,77 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A2sEWnNFi6ko0KK3Bs1qFsfIu0jC7KEaibMxTEV3VAY=; b=prpYm3OKAuB5K/
-	k4vWqyD/5eqWh2J+b++1ipYnGU4FvzGo3UY3HeQIgvHl3mUNDCuJSNHETn++RH6heufI9Y+kTZQqt
-	37S5R5ikoAPmYwck8CbNOoKr0Cu67dZ3/bTFQEuK6zqB66lBxrmGfA/6EQNQMT/XdMjkmJaMrTasU
-	o/XZN+V0UowvnBsXhpZraxCDujo4Mp6Pt5OkIZPppQCkZhNTV3rj2wcRCQY5tT2Cp3fHUpXwglWOr
-	RrcnIJgISXHqtDzde7bqmsipqeSlU+E8vFCjkXJZWgu83kCGf2aKwecHuMqmRV7ey45jcOuD77HJf
-	w6pSoLUCsIqCGKY8/MPQ==;
+	List-Owner; bh=Kl/rHS3T/cREG5Vr6exKLtbIHziidQl4ol4Tm4cOIO0=; b=ZUXIE+8kxB6gmA
+	hApX1DxBxYS7Np2HpTT32gTUmaZzbidJDZLftZrcfyynasUgeqe0qbRvlAOGBBCdMZyNEUv5pIMeg
+	0pFmk1wpP7qYHisGrB8B53qRuOdrEA2Fx8KL78s0jDLjJ5m4XfqBXy29CTfXa7JPd/5EG+IWuI1EI
+	4Ub3M74jZps2Wtdt09IJ4IXDthJsn2HNKcNlneZEjFnZdLmkWOXs9tU5BMX1ToH/29zmzKI5e+bIb
+	7LB2K7SkKg0V5bk+ehdMfH9VHDPBVmpx+dwArY0FxSgAQ0fjqDuGUwtd44qJiy3WxNisEgc2vRiR+
+	2B3o76rTSjiJARbQcy+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqT59-009B0u-Rn; Fri, 26 Nov 2021 04:43:31 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1mqT57-009Azl-OX; Fri, 26 Nov 2021 04:43:29 +0000
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqT57-009Azo-28
- for linux-mediatek@lists.infradead.org; Fri, 26 Nov 2021 04:43:30 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id g28so7070363pgg.3
- for <linux-mediatek@lists.infradead.org>; Thu, 25 Nov 2021 20:43:28 -0800 (PST)
+ id 1mqT4s-009Avy-9T
+ for linux-mediatek@lists.infradead.org; Fri, 26 Nov 2021 04:43:16 +0000
+Received: by mail-pj1-x102c.google.com with SMTP id np3so6408325pjb.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 25 Nov 2021 20:43:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:in-reply-to;
- bh=gwJIiwnisD6cF408GW4bOCdNiOevm+kN2DCfktfQz/4=;
- b=p/HPnND/JDqjAz5osN2fiqxWxjwlxeukWlCnWFYdia3ksPcLdj2T2/w7EYHHk2wHzh
- 8NoOKsyeh7nIRO3jA2Qp5+Zzr44CZP9J0vSuGvhzzd5Ul9T7StHo8IKBzGd2fG7GtWDY
- nTuYDnPwWGPJ6wmjXG3VlLZeKT3MdPKSc62rgr6+X422bqTD4m2MyX/LeNEwCfWWPAmJ
- WL1g3/QQ9L7Sk4aUC+UtrkapDFWHLz0QFTssZtHaZhFkEONtoJXKH8XKz0xoFpLLMfX9
- T9eYriy9fff/4MdXaIi3AukGZ6kvEwLf0KIs6V+L97ucwyXzlqO5xkmijlGi/tylQq5u
- qsYw==
+ bh=2LgS2eMeGMdnukM8cUoBve3IMu8b+A022tBUdPAN3OI=;
+ b=OMrr+Nwu0J1jMehGE7uVSNYBlFIZq8YEo1TshuWAuOw8rXnVxBWCnOTWjX0tJ8xk/B
+ p/Y59W0vsB2Wi3nvclkhheA1yJPtWLGCQz5/4tkKL1gPMOU2yaJCZLPkduIJmevR+iY3
+ vswhEHp1va64ULvN+IMrCNIV1d2YA61/uy2GPkHqP2FTr1PXJiPtEZ0UPZJBgLuBmyBf
+ y8cGvCCOLzRmUZVK5fD4B7khJLpGmSqs27GzUwOIZBA8TW1UWIdSWXg5lNS+PXZKiJBG
+ i8E2GgHrlX/vOX7yqdeWm+uof9bMapyGZc8cAcILcgUrEmOl0V9Ycq6yjJMMtFtCKdRx
+ JRnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=gwJIiwnisD6cF408GW4bOCdNiOevm+kN2DCfktfQz/4=;
- b=sCMqTEFUDiBvI5m+2rJP0zPFyLvtKZ1kMBzTBqJ2Vope83JHeKwd7g5s/21Na31tpr
- 0JFx43YJwWPNb9J/5ZhmyiOqsl2ZmgwjYpi5vS9RHHnG1dfMJN49tsHzy3Tdt/e2YBQs
- CsVlGOTAlZCKKnXw9vdeaQfQVnxSm0wYlbvdayKyXvrzWxNB6saVfSpaaodFFV3tlR2a
- EkLLYGehfS9Am2amqccWCLxPMazLlqOIwNMQJYONScqREm3yhN3o5VYLC+U4SZ8vgZWU
- Hpa7DeAe5adYITgkYIGgBIUxrHWqZEcTQRJgW2OFyN9lfOYAEsdJGECpazzUM126GgYk
- g2QA==
-X-Gm-Message-State: AOAM531VhnC4OoTorKOQ64LqD9ZlgwJrzBm3wRazaefZtLRISNINcG06
- wzqV5idBpuS2NnE2L9F7+VsCNw==
-X-Google-Smtp-Source: ABdhPJx0FjXR51YfULBYoNlN6azVm4pmsK/QdHHWCakrLIU0+ikdrQc99GBXkyRgdyNDpZyG+Rly5Q==
-X-Received: by 2002:a63:150c:: with SMTP id v12mr19528275pgl.442.1637901808160; 
- Thu, 25 Nov 2021 20:43:28 -0800 (PST)
+ bh=2LgS2eMeGMdnukM8cUoBve3IMu8b+A022tBUdPAN3OI=;
+ b=ojOkKcmc9FNBIiJeU8Qkl3KlK7O2DOK40zUM9XJK7LMHnZdg1uisrJ09x+DlCF/0G3
+ 6aUh2u/VUF4oN3+vH9IKphab7FNx2dWJv1FXE3UKdEz9EPK7ZwrNMGn3YkPk+GadtQEO
+ cW/RMsNhsd4Ni6lwHvkHgxpQTG1C2f/orjsEfcEcQjjyQ3/RBbdcF13+7i21/pez25x5
+ g8sZOmzstZK4Igr0ZQSf3qNE3Jg90a6JJSwzLYqUWLOKkilJX1RKxVzSbQxYJ2/QmMzR
+ HTiQ+HowRpYRO/8qNCV8F0sODSL0qgb3P9cAT4mt6v6tl7X6VzwITk9X5Por9Yxmdj1k
+ syqg==
+X-Gm-Message-State: AOAM530glefTQ1MhjMPC9ojiOVqoQCvPxHQP1WLGdSHp9hhzJbv59h6M
+ TofScBsdM0GlCFHCldC9zFxWbQ==
+X-Google-Smtp-Source: ABdhPJzHNlb6Iu4GBBMDy3fHylI190Sir9kysQUFJV6XRqGjoRO7VKp/xNJdJgj00ozyg+MXwQzm1g==
+X-Received: by 2002:a17:902:7890:b0:143:c4f7:59e6 with SMTP id
+ q16-20020a170902789000b00143c4f759e6mr36149485pll.87.1637901788687; 
+ Thu, 25 Nov 2021 20:43:08 -0800 (PST)
 Received: from google.com ([2401:fa00:1:10:5eda:d984:1426:91ca])
- by smtp.gmail.com with ESMTPSA id g9sm5600382pfj.160.2021.11.25.20.43.25
+ by smtp.gmail.com with ESMTPSA id o23sm4843770pfp.209.2021.11.25.20.43.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Nov 2021 20:43:27 -0800 (PST)
-Date: Fri, 26 Nov 2021 12:43:23 +0800
+ Thu, 25 Nov 2021 20:43:08 -0800 (PST)
+Date: Fri, 26 Nov 2021 12:43:04 +0800
 From: Tzung-Bi Shih <tzungbi@google.com>
 To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
 Cc: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Linux-ALSA <alsa-devel@alsa-project.org>, cujomalainey@google.com,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
+ Linux-ALSA <alsa-devel@alsa-project.org>,
  Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>,
- Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, cujomalainey@google.com,
+ linux-kernel@vger.kernel.org, Takashi Iwai <tiwai@suse.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sound-open-firmware@alsa-project.org
-Subject: Re: [PATCH v4 3/3] mailbox: mediatek: add support for adsp mailbox
- controller
-Message-ID: <YaBl66b7VFJK84F4@google.com>
+ Mark Brown <broonie@kernel.org>, linux-mediatek@lists.infradead.org,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ linux-arm-kernel@lists.infradead.org, sound-open-firmware@alsa-project.org
+Subject: Re: [PATCH v4 2/3] firmware: mediatek: add adsp ipc protocol interface
+Message-ID: <YaBl2PMPHnOMGKY+@google.com>
 References: <20211125122925.1303-1-allen-kh.cheng@mediatek.com>
- <20211125122925.1303-4-allen-kh.cheng@mediatek.com>
+ <20211125122925.1303-3-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20211125122925.1303-4-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20211125122925.1303-3-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_204329_146732_393467CA 
-X-CRM114-Status: GOOD (  12.61  )
+X-CRM114-CacheID: sfid-20211125_204314_385200_4BC571DE 
+X-CRM114-Status: GOOD (  14.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,32 +99,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 25, 2021 at 08:29:25PM +0800, allen-kh.cheng wrote:
-> diff --git a/drivers/mailbox/mtk-adsp-mailbox.c b/drivers/mailbox/mtk-adsp-mailbox.c
+On Thu, Nov 25, 2021 at 08:29:24PM +0800, allen-kh.cheng wrote:
+> diff --git a/drivers/firmware/mediatek/mtk-adsp-ipc.c b/drivers/firmware/mediatek/mtk-adsp-ipc.c
 [...]
-> +static bool mtk_adsp_mbox_last_tx_done(struct mbox_chan *chan)
+> +static void adsp_ipc_recv(struct mbox_client *c, void *msg)
 > +{
-> +	struct adsp_mbox_ch_info *ch_info = chan->con_priv;
-> +	void __iomem *reg = ch_info->va_reg;
+> +	struct mtk_adsp_chan *chan = container_of(c, struct mtk_adsp_chan, cl);
 > +
-> +	return (readl(reg + MTK_ADSP_MBOX_IN_CMD) == 0) ? true : false;
+> +	if (chan->idx == MTK_ADSP_MBOX_REPLY)
+> +		chan->ipc->ops->handle_reply(chan->ipc);
+> +	else
+> +		chan->ipc->ops->handle_request(chan->ipc);
 
-To be concise, readl(reg + MTK_ADSP_MBOX_IN_CMD) == 0.
+Using switch ... case ... makes the intention more clear.
 
-> +static int mtk_adsp_mbox_probe(struct platform_device *pdev)
+> +static int mtk_adsp_ipc_probe(struct platform_device *pdev)
 > +{
 [...]
-> +	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-> +	if (!res) {
-> +		dev_err(dev, "no adsp mbox register resource\n");
-> +		return -ENXIO;
-> +	}
-> +
-> +	priv->va_mboxreg = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(priv->va_mboxreg))
-> +		return PTR_ERR(priv->va_mboxreg);
+> +	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
+> +		chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
+> +		if (!chan_name)
+> +			return -ENOMEM;
 
-If using devm_platform_ioremap_resource(), it doesn't need to call platform_get_resource().  res is unused.
+It needs to go error handling path.
+
+> +static int mtk_adsp_remove(struct platform_device *pdev)
+> +{
+> +	struct mtk_adsp_chan *dsp_chan;
+> +	struct mtk_adsp_ipc *dsp_ipc;
+> +	int i;
+> +
+> +	dsp_ipc = dev_get_drvdata(&pdev->dev);
+
+To be concise, I would prefer dev_get_drvdata() inline to the line where the variable is declared.
 
 _______________________________________________
 Linux-mediatek mailing list
