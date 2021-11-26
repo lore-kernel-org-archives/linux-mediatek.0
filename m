@@ -4,57 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F074C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 07:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF01C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 07:15:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MsmxVMTlsf9xW3wKiQ1ntu6WLTR7zvlqX19uR1BJRek=; b=mU3vJbqkGanogt
-	yLcfAViiI7eTdLnmnXLiuCXX25JGOEaXR6RCxwu0x2fr2sEzF5WhDvcqqrcA76SFwrCMnb4WvcFJu
-	WbWPyYgG3Dw+SNOOtftZ7amjYYM9USSrPHPwAFfJPzkVGxC/i58phhU93bJpJyt8dGf7ZUQiSSOGY
-	RgEqNz2drKo5cSFSaKLdCmYvaXX8wyeOjBZEf/GKKqRzdwqljBicudoBPRKNCDaYy6ap33xalV0Ms
-	lZUX0RhzitsegJX6osWPmTxb3hxiFCGsa/UTi8V8tBS0DfxxtVs/hdcr4q87QvTrJSnIw3NgPQo7f
-	lbwueyRmwadUCE2fW4lQ==;
+	List-Owner; bh=ShMAKvjzno22EsjvNooCOAzh05XdAlFuFt9bNO4ZJmI=; b=UG7W6ouNngOxsa
+	crX37FPGiF8dEEtux0E80WlilSMTQtaEgF4cKvsTZVEDHjVqm6xbCIYffLAeyaLJji4YIAkvSMkwY
+	3HXsDkcjzeTFQ0Qhp1mgyHGlcd2kgSCIFYN1F8GEenZgIdkqdI6dDCA0+Fj1nXG3vFqbVo/N+6ylV
+	vQrN08qgwvf2wL6eVSLTUtzEHYsoksNClY5qtGOkbq57sMEzIxn9taMgMStgX7iHR8Wr+ctYBh03c
+	SXr/x+W4MEbKxukf1XfTrvAYobW6GkZweamqJYeGOOEKz5nw/DPzg0r3OMjb84WBOUympA23gCSwJ
+	gp4E2rYQQkD1LzHWrRYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqVIV-009OYV-Ki; Fri, 26 Nov 2021 07:05:27 +0000
-Received: from mga02.intel.com ([134.134.136.20])
+	id 1mqVRn-009PJH-AD; Fri, 26 Nov 2021 07:15:03 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqVIR-009OXB-VV
- for linux-mediatek@lists.infradead.org; Fri, 26 Nov 2021 07:05:25 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10179"; a="222846072"
-X-IronPort-AV: E=Sophos;i="5.87,265,1631602800"; d="scan'208";a="222846072"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Nov 2021 23:05:21 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,265,1631602800"; d="scan'208";a="475825212"
-Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by orsmga002.jf.intel.com with ESMTP; 25 Nov 2021 23:05:18 -0800
-Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mqVIL-0007ja-LQ; Fri, 26 Nov 2021 07:05:17 +0000
-Date: Fri, 26 Nov 2021 15:04:47 +0800
-From: kernel test robot <lkp@intel.com>
-To: MeiChia Chiu <MeiChia.Chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: kbuild-all@lists.01.org, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- MeiChia Chiu <meichia.chiu@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>
-Subject: Re: [PATCH] mt76: mt7915: update station's airtime and gi from event
-Message-ID: <202111261430.O1AAGfiL-lkp@intel.com>
-References: <20211125091330.27770-1-MeiChia.Chiu@mediatek.com>
+ id 1mqVRY-009PGi-3n; Fri, 26 Nov 2021 07:14:51 +0000
+X-UUID: 97107c8716a04e8badf1338ad99a7072-20211126
+X-UUID: 97107c8716a04e8badf1338ad99a7072-20211126
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 916105676; Fri, 26 Nov 2021 00:14:44 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Nov 2021 23:14:37 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 26 Nov 2021 15:14:36 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 26 Nov 2021 15:14:35 +0800
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
+ <jassisinghbrar@gmail.com>
+CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
+ <cujomalainey@google.com>, Pierre-Louis Bossart
+ <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
+ <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
+ <Allen-KH.Cheng@mediatek.com>
+Subject: [PATCH v5 1/3] dt-bindings: mediatek: add adsp-mbox document
+Date: Fri, 26 Nov 2021 15:14:30 +0800
+Message-ID: <20211126071432.21990-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211126071432.21990-1-allen-kh.cheng@mediatek.com>
+References: <20211126071432.21990-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211125091330.27770-1-MeiChia.Chiu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_230524_143646_AA929E06 
-X-CRM114-Status: GOOD (  16.14  )
+X-CRM114-CacheID: sfid-20211125_231448_189724_A2C3327A 
+X-CRM114-Status: GOOD (  13.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,75 +81,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi MeiChia,
+From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-Thank you for the patch! Perhaps something to improve:
+This patch adds document for mediatek adsp mbox
 
-[auto build test WARNING on kvalo-wireless-drivers-next/master]
-[also build test WARNING on kvalo-wireless-drivers/master v5.16-rc2 next-20211125]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/MeiChia-Chiu/mt76-mt7915-update-station-s-airtime-and-gi-from-event/20211125-171608
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git master
-config: riscv-allyesconfig (https://download.01.org/0day-ci/archive/20211126/202111261430.O1AAGfiL-lkp@intel.com/config)
-compiler: riscv64-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/446d4941b6395463c374c2281241769ca0abaad9
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review MeiChia-Chiu/mt76-mt7915-update-station-s-airtime-and-gi-from-event/20211125-171608
-        git checkout 446d4941b6395463c374c2281241769ca0abaad9
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=riscv SHELL=/bin/bash drivers/net/wireless/
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/net/wireless/mediatek/mt76/mt7915/main.c:9:
->> drivers/net/wireless/mediatek/mt76/mt7915/mcu.h:234:1: warning: no semicolon at end of struct or union
-     234 | };
-         | ^
---
-   In file included from drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:7:
->> drivers/net/wireless/mediatek/mt76/mt7915/mcu.h:234:1: warning: no semicolon at end of struct or union
-     234 | };
-         | ^
-   drivers/net/wireless/mediatek/mt76/mt7915/mcu.c:2516:5: warning: no previous prototype for 'mt7915_mcu_set_fixed_rate' [-Wmissing-prototypes]
-    2516 | int mt7915_mcu_set_fixed_rate(struct mt7915_dev *dev,
-         |     ^~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-vim +234 drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
-
-   217	
-   218	struct mt7915_mcu_sta_stat {
-   219		u8 event_id;
-   220		u8 more_event;
-   221		__le16 sta_num;
-   222		union {
-   223			struct {
-   224				__le16 wlan_id;
-   225				__le32 tx_time[4];
-   226				__le32 rx_time[4];
-   227			} airtime[0];
-   228			struct {
-   229				__le16 wlan_id;
-   230				u8 gimode;
-   231				u8 rsv;
-   232			} gi[0];
-   233		}
- > 234	};
-   235	
-
+Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 ---
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+ .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52 +++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+
+diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+new file mode 100644
+index 000000000000..a0149566ae56
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+@@ -0,0 +1,52 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek ADSP mailbox
++
++maintainers:
++  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
++
++description: |
++  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
++  to ommunicate with ADSP by passing messages through two mailbox channels.
++  The MTK ADSP mailbox IPC also provides the ability for one processor to
++  signal the other processor using interrupts.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt8195-adsp-mbox
++
++  "#mbox-cells":
++    const: 0
++
++  reg:
++    description:
++      Physical address base for dsp mbox base registers.
++
++  interrupts:
++    description:
++      adsp mbox interrupt
++
++required:
++  - compatible
++  - "#mbox-cells"
++  - reg
++  - interrupts
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    adsp_mailbox0:adsp_mailbox0@10816000 {
++        compatible = "mediatek,mt8195-adsp-mbox";
++        #mbox-cells = <0>;
++        reg = <0x10816000 0x1000>;
++        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
++    };
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
