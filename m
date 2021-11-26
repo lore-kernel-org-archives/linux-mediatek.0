@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F23A4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 11:36:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23117C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 12:25:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HYdByDZJX3KnuEqaEhP5Y+Tju/DYJZjQL+zrtnJ2xXU=; b=v112L4o5OAOIY2ywqWWWEtsJV3
-	pdTkXq+y/W3nWfZf79MHzqihEGJp+jdr5tvGLKA3hvPQDYTqi97dHp7Og+b9I/qJu2G5B40tJBSLT
-	HU/ZB8XKnAS12M8qg65czN8s+LkxZBOhFMvp8tmKtipO3GFJw7VN5r8S3bjCWnj63oQMgaYTjYh1f
-	iCSt9LJsqSMUwlZ9xufDgjJ5apCUasPXqoJdA/7ERZY1UH0rSzKIAswdZZUdRjynkq90Qcezhj+2K
-	WHeUh1pEczfNee15KJ1F30IW2f+Y928zFn2AL+uaWHt6ZSbjx9u5Io8wjcWtSmr9x0PgFkAGaVAmO
-	WotOD+9w==;
+	bh=tTU6JZfiq6sNs/WqFLh2mByo3pLCnpcILyc7sF9SBRI=; b=DCuTIm7RaxuD4V+TkPmxgYibBk
+	qwOkUe/oGKrPoVbYlotl2UOEyQ7x0HG+pWYiaHkjnETWpo1muy+VCpYvDWp45EYKP0uqGNIoXf7dk
+	J7eFF7htA9V/Za7tWyjjkavFKbswgobboF7qyCuAS3yfM3iwIBg0H4Abko2jcFLsAdHw3twLDhPqI
+	mwY2LCGazAFt/z7u7df93WQTa42OMK2g/19FPxgZCGaATT48AynFzT7N+aR9Cr1aZN70/KR+l8E+1
+	bXzKBmn1OEMXgkQG4MvraWsKY41GpszYhf7E2l5xHgSxMsSSfP9YfiDMniHPhELPs3diJ9XcrdKIT
+	u0wjhw+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqZWe-00AAU5-Iv; Fri, 26 Nov 2021 11:36:20 +0000
+	id 1mqaIJ-00ALqS-Ju; Fri, 26 Nov 2021 12:25:35 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqZWQ-00AAQA-QS; Fri, 26 Nov 2021 11:36:08 +0000
+ id 1mqZzI-00AHS3-Gh
+ for linux-mediatek@lists.infradead.org; Fri, 26 Nov 2021 12:05:58 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 8C3911F46833
+ (Authenticated sender: kholk11) with ESMTPSA id 60C4C1F46847
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1637926565; bh=GIN8NoFGOSznfLIa1UX7Cx0wpd48djpTS3XTrBwxP9Q=;
+ t=1637928355; bh=9EQmaihFqroyudxA2nA0/OcsptHnfOtG3O895b09Y2g=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=lZK3eP0ZA/iBWLFpQoU5OPkTE18dCbYBdQ1mKszmuTulvkifopnqeZp8OsEiv7GAu
- RCLdmKj/fK+LVGYjHBz2bPbpRyE/ZwiSjLnqbQQ7i9dVX6+Fd51wThoFc7zVOspUyP
- JO3+KR/f5O6qTgVzDQZZK5nmlcSCuncVTz/86w99gOT+sr+G/tScpGIJG1+81z5DFq
- lvz//6jrIxmZx6zGp5gMs2cUVe1nrcpemkjLq+qZ09/EQGyd5+RBPOnLJ/AlnILeBZ
- kmpbUnkcZfAkpR/wrRkFXllVKynfJplCP7ERDwfclm3DFRoVTmE+LVUIenUy4vpLiY
- x4i9nW99BwfMw==
-Subject: Re: [PATCH v6 1/3] dt-bindings: mediatek: add adsp-mbox document
-To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
- Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Linux-ALSA <alsa-devel@alsa-project.org>, tzungbi@google.com,
- cujomalainey@google.com,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
- Liam Girdwood <lgirdwood@gmail.com>,
+ b=K+tqyBcSzgn/XvTEwoARRUXVoMuW3VR0M9EJZTrKV9TMaA4ZotGcziOvZbCNrw41p
+ pHq4wvsIvn8Q5xf9YZdYQ1uiP5mc80hNRnx2/L0yihFqoteGv4FLcufgZWWvU2C4fY
+ NCsXfU0pXXYcjLceWyeUw5nTPz9U5WnL1F71zb/cZPUtqSbfFUIsEpu4fd7AJnVAB5
+ JyceM4BHVE6oINAM2tfDRm0WPMyWCN93FMT38lrYdAt9Cf+a2U54bzWHfrZS7p4RtG
+ RyoDhRVdHRLraYo2Iy+54YEBZ5o8LJnicgOrfOg/+IJKu5QplQbUIutlZ4jEruBHQo
+ H0kZmjJQ2Da4Q==
+Subject: Re: [PATCH v2 4/8] ASoC: SOF: mediatek: Add fw loader and mt8195 dsp
+ ops to load firmware
+To: Daniel Baluta <daniel.baluta@oss.nxp.com>, broonie@kernel.org,
+ alsa-devel@alsa-project.org
+Cc: pierre-louis.bossart@linux.intel.com, lgirdwood@gmail.com,
+ daniel.baluta@nxp.com, daniel.baluta@gmail.com,
+ linux-kernel@vger.kernel.org, yc.hung@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ =?UTF-8?Q?P=c3=a9ter_Ujfalusi?= <peter.ujfalusi@linux.intel.com>,
  Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
  Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sound-open-firmware@alsa-project.org
-References: <20211126093021.25462-1-allen-kh.cheng@mediatek.com>
- <20211126093021.25462-2-allen-kh.cheng@mediatek.com>
+ Guennadi Liakhovetski <guennadi.liakhovetski@linux.intel.com>
+References: <20211118100749.54628-1-daniel.baluta@oss.nxp.com>
+ <20211118100749.54628-5-daniel.baluta@oss.nxp.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <56c862fd-2fc3-4cbb-97a8-154a9faabd6f@collabora.com>
-Date: Fri, 26 Nov 2021 12:36:02 +0100
+Message-ID: <9521a830-bf02-8232-368e-1afb4b978bf4@collabora.com>
+Date: Fri, 26 Nov 2021 13:05:51 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211126093021.25462-2-allen-kh.cheng@mediatek.com>
+In-Reply-To: <20211118100749.54628-5-daniel.baluta@oss.nxp.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211126_033607_044259_646793B2 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20211126_040556_732888_20B6784D 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,91 +73,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 26/11/21 10:30, allen-kh.cheng ha scritto:
-> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> 
-> This patch adds document for mediatek adsp mbox
-> 
-> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> ---
->   .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52 +++++++++++++++++++
->   1 file changed, 52 insertions(+)
->   create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-> new file mode 100644
-> index 000000000000..a0149566ae56
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-> @@ -0,0 +1,52 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Mediatek ADSP mailbox
-> +
-> +maintainers:
-> +  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> +
-> +description: |
-> +  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
-> +  to ommunicate with ADSP by passing messages through two mailbox channels.
-> +  The MTK ADSP mailbox IPC also provides the ability for one processor to
-> +  signal the other processor using interrupts.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: mediatek,mt8195-adsp-mbox
-> +
-> +  "#mbox-cells":
-> +    const: 0
-> +
-> +  reg:
-> +    description:
-> +      Physical address base for dsp mbox base registers.
-> +
-> +  interrupts:
-> +    description:
-> +      adsp mbox interrupt
-> +
-> +required:
-> +  - compatible
-> +  - "#mbox-cells"
-> +  - reg
-> +  - interrupts
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    adsp_mailbox0:adsp_mailbox0@10816000 {
-
-This should be:
-
-adsp_mailbox0: mailbox@10816000 {
-
-> +        compatible = "mediatek,mt8195-adsp-mbox";
-> +        #mbox-cells = <0>;
-> +        reg = <0x10816000 0x1000>;
-> +        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
-> +    };
-> 
-
-Regards,
-- Angelo
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SWwgMTgvMTEvMjEgMTE6MDcsIERhbmllbCBCYWx1dGEgaGEgc2NyaXR0bzoKPiBGcm9tOiBZQyBI
+dW5nIDx5Yy5odW5nQG1lZGlhdGVrLmNvbT4KPiAKPiBBZGQgbXQ4MTk1LWxvYWRlciBtb2R1bGUg
+d2l0aCBvcHMgY2FsbGJhY2sgdG8gbG9hZCBhbmQgcnVuIGZpcm13YXJlCj4gb24gbXQ4MTk1IHBs
+YXRmb3JtLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFlDIEh1bmcgPHljLmh1bmdAbWVkaWF0ZWsuY29t
+Pgo+IFJldmlld2VkLWJ5OiBQw6l0ZXIgVWpmYWx1c2kgPHBldGVyLnVqZmFsdXNpQGxpbnV4Lmlu
+dGVsLmNvbT4KPiBSZXZpZXdlZC1ieTogUGllcnJlLUxvdWlzIEJvc3NhcnQgPHBpZXJyZS1sb3Vp
+cy5ib3NzYXJ0QGxpbnV4LmludGVsLmNvbT4KPiBSZXZpZXdlZC1ieTogUmFuamFuaSBTcmlkaGFy
+YW4gPHJhbmphbmkuc3JpZGhhcmFuQGxpbnV4LmludGVsLmNvbT4KPiBSZXZpZXdlZC1ieTogS2Fp
+IFZlaG1hbmVuIDxrYWkudmVobWFuZW5AbGludXguaW50ZWwuY29tPgo+IFJldmlld2VkLWJ5OiBH
+dWVubmFkaSBMaWFraG92ZXRza2kgPGd1ZW5uYWRpLmxpYWtob3ZldHNraUBsaW51eC5pbnRlbC5j
+b20+Cj4gUmV2aWV3ZWQtYnk6IERhbmllbCBCYWx1dGEgPGRhbmllbC5iYWx1dGFAbnhwLmNvbT4K
+PiBTaWduZWQtb2ZmLWJ5OiBEYW5pZWwgQmFsdXRhIDxkYW5pZWwuYmFsdXRhQG54cC5jb20+CgpB
+Y2tlZC1ieTogQW5nZWxvR2lvYWNjaGlubyBEZWwgUmVnbm8gPGFuZ2Vsb2dpb2FjY2hpbm8uZGVs
+cmVnbm9AY29sbGFib3JhLmNvbT4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
+aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
+dGluZm8vbGludXgtbWVkaWF0ZWsK
