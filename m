@@ -4,62 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1265C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 08:46:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19BEDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 08:52:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=X8+xpOrM/GURbnW+Bd++re5BPGaljwJPaBOoWSgVY6o=; b=0+iRne+bKBIqDu
-	UhXxoRedG1n9F/DtxmWyFVgMWgDXxgvFre64XAJ3fOTbm8Pp4qkKuzVp6Luva/CjERA7SNLSmcXna
-	/yP62ZovNeEtRRprA/9pLdqyn1A7T2ly53RiN81xGBl0oie77G1yG3QpI6LonUu1AoFcqo9dbyJKa
-	YtHh9toRtuR9Ff22xNqza3bdqbkVi6N8BLHNIn8QrF1VCFTAXYTmza5uYzcPk4TmxcpKN0yiWgrAZ
-	vEF1fKZTjtJYshkNGociBhszYA/XoY4l/aPkmxLgKeSsPAZ/8qMqlLpFXEAjaYpL+0nV02eqOxhRA
-	Sb44vipa/7tAJ8co08Ow==;
+	List-Owner; bh=Rpka7XrghrqTw/f3ZIhUeheE4kW9GS7/GxtCfH6kymI=; b=OhhNX5GeXicK+2
+	iB/UdCI8BNeRVJd8p9W09t2Qmd5lQqG4XGR+YVW6zzU1EzYXlzjVN49rLd2tFJjeWlMZdjY7a6Dwf
+	W8rQOGKdGBaPuWbbxPGCCaPoBihgSFj/TTXL7sy39dYKt+JVAOfy6lTmkqNhgKUnZkyRsTnT6BcP4
+	cl/YJ9C3UW5QwEUhtNnPCwsVj8lSH+tkXbkwkKGUVUk8o7e0rxvVQZ5JvTjtWG/12j8azSkKxM2Gy
+	6FHVkt/jTx1r6BlrNQkxSSX1XuU8XsmdAg3269lIFc+G+LBot1jTV3/teKVt1mrgBkr//GOXFwo3R
+	OQFmszfAHgR101acNy6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqWsU-009d8k-OZ; Fri, 26 Nov 2021 08:46:42 +0000
+	id 1mqWxy-009f6i-4L; Fri, 26 Nov 2021 08:52:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqWsC-009d4p-Af; Fri, 26 Nov 2021 08:46:25 +0000
-X-UUID: ecc2e87727f6474999529b6aa1802fc6-20211126
-X-UUID: ecc2e87727f6474999529b6aa1802fc6-20211126
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <flora.fu@mediatek.com>)
+ id 1mqWxf-009f3l-Pp; Fri, 26 Nov 2021 08:52:05 +0000
+X-UUID: 9673069c19234ed6902b1a6b44c75fc0-20211126
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=yW+mMWs04bgPIIBXTP+t3hvfP5DAW2oMOrvW1CRSJM4=; 
+ b=O25btT9i7NQ55cVtyx5Lnpc4hLZ7Zece5ijYYV+JJrLb3KGUTXgU7NLJAkBKqzaIhN+/zrks6HFBZ6FrS6A4fgpU8zvF6wHBkedStn1N8fcHFCpnsumgA2ih8zKP0mvVS64FkKW1+OTFJF6Yy5ClwHAGoLeQrWegDJNrBpQzFLs=;
+X-UUID: 9673069c19234ed6902b1a6b44c75fc0-20211126
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <xiangsheng.hou@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1000093239; Fri, 26 Nov 2021 01:46:22 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Nov 2021 00:46:20 -0800
+ with ESMTP id 1671808883; Fri, 26 Nov 2021 01:51:55 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 26 Nov 2021 00:51:53 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 26 Nov 2021 16:46:19 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 26 Nov 2021 16:51:52 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 26 Nov 2021 16:46:19 +0800
-Message-ID: <0e8aef6a448cdb068133bf4c29c67da2547063a7.camel@mediatek.com>
-Subject: Re: [RFC 12/13] arm64: dts: mt8192: Add apu tinysys
-From: Flora.Fu <flora.fu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>,
- Sumit Semwal <sumit.semwal@linaro.org>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-media@vger.kernel.org>,
- <dri-devel@lists.freedesktop.org>, <linaro-mm-sig@lists.linaro.org>, Yong Wu
- <yong.wu@mediatek.com>, Pi-Cheng Chen <pi-cheng.chen@mediatek.com>
-Date: Fri, 26 Nov 2021 16:46:19 +0800
-In-Reply-To: <314442f7-0c89-8696-05c9-871bfddf1821@collabora.com>
-References: <20211023111409.30463-1-flora.fu@mediatek.com>
- <20211023111409.30463-13-flora.fu@mediatek.com>
- <314442f7-0c89-8696-05c9-871bfddf1821@collabora.com>
+ Transport; Fri, 26 Nov 2021 16:51:51 +0800
+Message-ID: <16790c5f8bfb49014d3fc24a39e14e5a6afb4734.camel@mediatek.com>
+Subject: Re: [RFC,v3 5/5] mtd: spinand: skip set/get oob data bytes when
+ interleaved case
+From: xiangsheng.hou <xiangsheng.hou@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+CC: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
+ <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
+ <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
+ <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
+ <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
+Date: Fri, 26 Nov 2021 16:51:51 +0800
+In-Reply-To: <20211122100144.492115df@xps13>
+References: <20211022024021.14665-1-xiangsheng.hou@mediatek.com>
+ <20211022024021.14665-6-xiangsheng.hou@mediatek.com>
+ <20211109130518.70db0d5d@xps13>
+ <4e23bb7db6b3868531752efe644833f5817e9660.camel@mediatek.com>
+ <20211122100144.492115df@xps13>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211126_004624_415761_6979E894 
-X-CRM114-Status: GOOD (  25.32  )
+X-CRM114-CacheID: sfid-20211126_005203_869365_DA282E63 
+X-CRM114-Status: GOOD (  16.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,97 +85,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2021-10-26 at 17:18 +0200, AngeloGioacchino Del Regno wrote:
-> Il 23/10/21 13:14, Flora Fu ha scritto:
-> > Add node for APU tinysys.
+Hi Miquel,
+
+On Mon, 2021-11-22 at 10:01 +0100, Miquel Raynal wrote:
+> Hi xiangsheng,
+> 
+> Thanks for the figures, they are useful too understand better your
+> situation.
+> 
+> xiangsheng.hou@mediatek.com wrote on Fri, 12 Nov 2021 16:33:34
+> +0800:
 > > 
-> > Signed-off-by: Flora Fu <flora.fu@mediatek.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 36
-> > ++++++++++++++++++++++++
-> >   1 file changed, 36 insertions(+)
+> > part1 and part2 called FDM(flash disk manage data) which can be
+> > used to
+> > store BBM or filesystem manage data(like jffs2).
 > > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > index c505c6926839..8108084a3f6f 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> > @@ -925,6 +925,42 @@
-> >   			#iommu-cells = <1>;
-> >   		};
-> >   
-> > +		apusys_rv@19001000 {
-> > +			compatible = "mediatek,mt8192-apusys-rv";
-> > +			reg = <0 0x19000000 0 0x1000>,
-> > +			      <0 0x19001000 0 0x1000>,
-> > +			      <0 0x19002000 0 0x10>;
-> > +			reg-names = "apu_mbox",
-> > +				    "md32_sysctrl",
-> > +				    "apu_wdt";
-> > +			mediatek,apusys-power = <&apusys_power>;
-> 
-> As said on the IOMMU commit, I think that apusys-power can be passed
-> as a
-> power domain here as well... also keeping in mind that the apuspm
-> power
-> domain is being used in both the IOMMU and in apusys-power already,
-> so you
-> could even pass only the apusys-power pd here, because apuspm would
-> be
-> already being turned on by the former...
-> 
-> ...unless there's any possibility to have some functionality with
-> apuspm up
-> but apusys-power down? From how it looks right now, that's not a
-> thing.
-> 
-OK, we will check it.
-
-> > +			power-domains = <&apuspm 0>;
-> > +			iommus = <&iommu_apu IOMMU_PORT_APU_DATA>;
-> > +			interrupts = <GIC_SPI 393 IRQ_TYPE_LEVEL_HIGH
-> > 0>,
-> > +				     <GIC_SPI 404 IRQ_TYPE_LEVEL_HIGH
-> > 0>;
-> > +			interrupt-names = "apu_wdt",
-> > +					  "mbox0_irq";
-> > +			apu_ctrl {
-> > +				compatible = "mediatek,apu-ctrl-rpmsg";
-> > +				mtk,rpmsg-name = "apu-ctrl-rpmsg";
-> 
-> This is supposed to be "mediatek,rpmsg-name" instead... or it won't
-> work.
-> 
-The latest kernel uses "mediatek,rpmsg-name" and I will update the
-string in the next submission.
-
-> > +			};
-> > +
-> > +			apu_pwr_tx {
-> > +				compatible = "mediatek,apupwr-tx-
-> > rpmsg";
-> > +				mtk,rpmsg-name = "apupwr-tx-rpmsg";
-> > +			};
-> > +
-> > +			apu_pwr_rx {
-> > +				compatible = "mediatek,apupwr-rx-
-> > rpmsg";
-> > +				mtk,rpmsg-name = "apupwr-rx-rpmsg";
-> > +			};
-> > +
-> > +			apu_mdw_rpmsg {
-> > +				compatible = "mediatek,apu-mdw-rpmsg";
-> > +				mtk,rpmsg-name = "apu-mdw-rpmsg";
-> > +			};
-> > +		};
-> > +
-> >   		apu_conn: apu_conn@19020000 {
-> >   			compatible = "mediatek,mt8192-apu-conn",
-> > "syscon";
-> >   			reg = <0 0x19020000 0 0x1000>;
+> > The FDM and FDM ECC can be configurable,
+> > FDM number of bytes: 0 ~ 8 bytes
+> > FDM ECC number of byte: 0 ~ FDM size 
 > > 
+> > Therefore, the mtk ecc driver need to handle BBM swap and OOB shift
+> > operation before/after the write/read operation in
+> > ecc_finish/prepare_io_req.
+> 
+> Not necessarily. What if you just provide a translation in
+> prepare/finish which basically switches from one representation to
+> the
+> other?
+> 
 
+For current design which mtd_ooblayout_set_databytes in
+spinand_write_to_cache_op when MTD_AUTO_OOB_MODE can not work for BBM
+swap situation.
 
+In mtk nand_ecc_prepare_io_req, there have BBM swap lead to the
+oobbuf[0] have one byte main data. The expected OOB data bytes will be
+OOB availabe + 1 more byte. The mtd_ooblayout_set_databytes only set
+OOB available bytes (will skip the reserve byte for BBM), lead to one
+byte OOB data byte lost.
+
++-----------------------------+-----------+
+|                             |           |
+|                    *        |#@@@@@     |
+|                             |           |
++-----------------------------+-----------+
+(#): stand for one byte main data
+(*): stand for the BBM
+(@): the free OOB data byte
+
+I will send next interation in the next few days, adjust set/get OOB
+data byte operation in each ECC engine and only memcpy OOB buf in
+write/read cache when AUTO OOB mode, which can both solve the this
+situation and the AUTO OOB issue.
+
+> Whatever operation you try to do, we don't really care where all
+> these
+> sections will be located once in memory, do we?
+
+Yes, all the divergence need be handled at each ECC engine.
+
+Thanks
+Xiangsheng Hou
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
