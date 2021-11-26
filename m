@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86597C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 02:35:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A6BCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 26 Nov 2021 03:25:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=suJ9fYW6Wk80iJJaT0Nzfuh/vnxDYxld8Umj+SOo6IM=; b=rjXXvT1AZ8COb1
-	FjnoiSXRZIOcgj9NOUxUAy5xNp9tw2m1IOxEsuAGi78TIsghu0tK6QFNb30o+ZUw2y4u4WMoZxDlW
-	vfmIFE9b8eiuODAhhOPdYTybhxVQ04cjpvvXI6DYwziOCpy8duC3rTv0IBRgl49ZlgDiJbv933tVd
-	SWWgEY3IRuGLhftWSQHEWIx7F0waHvLf2EQTBMP1YkMBFlJpEOqoInuYW/6dzHQ/abDnZ7jRrC79O
-	5+hDehmAuZhpE7Hs5T4cUwbvGEhhsUVERuKVlx2X+ofpR520s8lJo2jjS6sGZMtuxyGdTndlq6Zv8
-	4DiyUSi27Xqgtd6xIZFA==;
+	List-Owner; bh=dsiBkVrG6JSS/Cg4n3J9vAEDjXDpoJ7647rDEIGs5HA=; b=uTuVZkFu6zT+RA
+	iWSWfoMiWf//MpZfuU8mt7c868iOzNxAQfpBh/EC6YMksLeZ5px7L5ZrMKcIIEwHL7/VZcLWAElLb
+	nCFXsa7ApKkmO6uf9NB44bjPVnMtfyWNnZvxOPHl7eMJqsfr98X2zKmzp3fdplrvoRSHam65PnvSl
+	8NT+buuejA4pVG0iwTmwXVUa2eF/ckSdCUl3V2jS3RRib3fRyWIhBBc+R88PWq1rwTXkwFGVT+6e5
+	cqcr6Ew9CbLBlFV5sP1jmlMQAoMlXkBT3ZrsQmMFF0pCyHBksPzE0eYczl0bCZ87Gz4eZ2mX5LEga
+	XeESG3ka8odHP/LM+p/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqR5W-0092e0-81; Fri, 26 Nov 2021 02:35:46 +0000
-Received: from mail.kernel.org ([198.145.29.99])
+	id 1mqRrz-0097Es-QX; Fri, 26 Nov 2021 03:25:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqR4g-0092AW-7A; Fri, 26 Nov 2021 02:34:55 +0000
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 919016125F;
- Fri, 26 Nov 2021 02:34:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1637894093;
- bh=8n2IBl+k1S/Bq+MjR5lhlxC6Vz+D8xdsiTdby2ApKEc=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=bt4+np51pe+p07qFgTRmCmrgZgXpZlcsRuZvHwUnb/Cc+n1YL5KduUgA1RiTY3Ej6
- NztwP+pfJw023+3fFE7Vmo72VlBpOFWOnDeOCVN6zPyHONSnjcdqd7JNBVuC1IHnj/
- 8uy+j/KEEezU7uXvd4xWACHoy6fqE6KtZnKblfSObt7qUvTxXeatJ+PJR/McZle8Yd
- MnAUy79pa4zSnTFSOfZhUVLilbEMjoIbUC5KIm/nMq7YyWL2YJ3CrfJaoK5aZk2xdl
- TQHfPn+jYeqcPq85+k4irHh1EffK698u7vS8n4XBUYWeK0lEzaRKa9hizPfqJbjGJz
- WD7LG11Cz4d+Q==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Xing Song <xing.song@mediatek.com>,
- Johannes Berg <johannes.berg@intel.com>, Sasha Levin <sashal@kernel.org>,
- johannes@sipsolutions.net, davem@davemloft.net, kuba@kernel.org,
- matthias.bgg@gmail.com, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.4 03/19] mac80211: do not access the IV when it was
- stripped
-Date: Thu, 25 Nov 2021 21:34:32 -0500
-Message-Id: <20211126023448.442529-3-sashal@kernel.org>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211126023448.442529-1-sashal@kernel.org>
-References: <20211126023448.442529-1-sashal@kernel.org>
+ id 1mqRru-0097EV-MK; Fri, 26 Nov 2021 03:25:49 +0000
+X-UUID: 4eb59dd922d04590b5a41892c031afe4-20211125
+X-UUID: 4eb59dd922d04590b5a41892c031afe4-20211125
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <guangming.cao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1880792175; Thu, 25 Nov 2021 20:25:44 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 25 Nov 2021 19:15:42 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 26 Nov 2021 11:15:40 +0800
+Received: from mszswglt01.gcn.mediatek.inc (10.16.20.20) by
+ mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Fri, 26 Nov 2021 11:15:40 +0800
+From: <guangming.cao@mediatek.com>
+To: <robin.murphy@arm.com>
+CC: <Brian.Starkey@arm.com>, <benjamin.gaignard@linaro.org>,
+ <christian.koenig@amd.com>, <dri-devel@lists.freedesktop.org>,
+ <guangming.cao@mediatek.com>, <john.stultz@linaro.org>, <labbott@redhat.com>, 
+ <linaro-mm-sig@lists.linaro.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <lmark@codeaurora.org>,
+ <matthias.bgg@gmail.com>, <sumit.semwal@linaro.org>,
+ <wsd_upstream@mediatek.com>, <stable@vger.kernel.org>, Guangming
+ <Guangming.Cao@mediatek.com>
+Subject: [PATCH v3] dma-buf: system_heap: Use 'for_each_sgtable_sg' in pages
+ free flow
+Date: Fri, 26 Nov 2021 11:16:05 +0800
+Message-ID: <20211126031605.81436-1-guangming.cao@mediatek.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <eb6cc56d-cbe0-73d5-d4f5-0aa2b76272a4@arm.com>
+References: <eb6cc56d-cbe0-73d5-d4f5-0aa2b76272a4@arm.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211125_183454_343288_E23F9E9B 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211125_192546_757465_92F403F2 
+X-CRM114-Status: GOOD (  12.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,39 +79,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Xing Song <xing.song@mediatek.com>
+From: Guangming <Guangming.Cao@mediatek.com>
 
-[ Upstream commit 77dfc2bc0bb4b8376ecd7a430f27a4a8fff6a5a0 ]
+For previous version, it uses 'sg_table.nent's to traverse sg_table in pages
+free flow.
+However, 'sg_table.nents' is reassigned in 'dma_map_sg', it means the number of
+created entries in the DMA adderess space.
+So, use 'sg_table.nents' in pages free flow will case some pages can't be freed.
 
-ieee80211_get_keyid() will return false value if IV has been stripped,
-such as return 0 for IP/ARP frames due to LLC header, and return -EINVAL
-for disassociation frames due to its length... etc. Don't try to access
-it if it's not present.
+Here we should use sg_table.orig_nents to free pages memory, but use the
+sgtable helper 'for each_sgtable_sg'(, instead of the previous rather common
+helper 'for_each_sg' which maybe cause memory leak) is much better.
 
-Signed-off-by: Xing Song <xing.song@mediatek.com>
-Link: https://lore.kernel.org/r/20211101024657.143026-1-xing.song@mediatek.com
-Signed-off-by: Johannes Berg <johannes.berg@intel.com>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Fixes: d963ab0f15fb0 ("dma-buf: system_heap: Allocate higher order pages if available")
+
+Signed-off-by: Guangming <Guangming.Cao@mediatek.com>
 ---
- net/mac80211/rx.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/dma-buf/heaps/system_heap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
-index c7e6bf7c22c78..282bf336b15a4 100644
---- a/net/mac80211/rx.c
-+++ b/net/mac80211/rx.c
-@@ -1918,7 +1918,8 @@ ieee80211_rx_h_decrypt(struct ieee80211_rx_data *rx)
- 		int keyid = rx->sta->ptk_idx;
- 		sta_ptk = rcu_dereference(rx->sta->ptk[keyid]);
+diff --git a/drivers/dma-buf/heaps/system_heap.c b/drivers/dma-buf/heaps/system_heap.c
+index 23a7e74ef966..8660508f3684 100644
+--- a/drivers/dma-buf/heaps/system_heap.c
++++ b/drivers/dma-buf/heaps/system_heap.c
+@@ -289,7 +289,7 @@ static void system_heap_dma_buf_release(struct dma_buf *dmabuf)
+ 	int i;
  
--		if (ieee80211_has_protected(fc)) {
-+		if (ieee80211_has_protected(fc) &&
-+		    !(status->flag & RX_FLAG_IV_STRIPPED)) {
- 			cs = rx->sta->cipher_scheme;
- 			keyid = ieee80211_get_keyid(rx->skb, cs);
+ 	table = &buffer->sg_table;
+-	for_each_sg(table->sgl, sg, table->nents, i) {
++	for_each_sgtable_sg(table, sg, i) {
+ 		struct page *page = sg_page(sg);
  
+ 		__free_pages(page, compound_order(page));
 -- 
-2.33.0
+2.17.1
 
 
 _______________________________________________
