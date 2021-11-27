@@ -4,161 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFA7FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Nov 2021 14:09:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B6FAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Nov 2021 14:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rfTKAmQ9pEzyLLJ0PUt6x0Q2F8NUi7bR6jqtc347ioI=; b=EGOAdOf/BIWGWn
-	tyzUX28LtOynqsypNG2F90o7u4qfq4jTBMqrTiZp3f/NyumUSpqZ9r4oYWjNFevqW9SaQInJCudgF
-	IIOoPynpfvj8UogrYhVSg3LdAvCEMIpV4VaJX4GkIaXkJ1DrHWc4OAOhDw+ACocdfwhYwZJGhXMb3
-	qSWd/842daKTLxgyWZfTWaSN7XqtlSWQ4UbE6qZKudnX++ynoJBfM+f6YUw1TX+PCuo51dvRQILtZ
-	lLjVmDUJRsUkjbPvZW7nVddNYNnTJSzfNE84Thxeyd91lA0JVqGopZYGyu0yTzDcsIjU6Srm1dl28
-	yKm7t9+A8LPrkk0Bo0/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JHQ6Ti23U+Gs4rrFpV9BUwo7hwM52OM9dbyaGAVZAt8=; b=xvf0+FuFOLJ/pEz/fQX18nOkHy
+	uENt5jQetoHBKVtCwdzapVlC+Cn2ro41+s1bhcPY/9vuEeTrD3ZHKVvgdQvluE4CZdeqFhMCY+7Yd
+	0e+jWTDkS58ZYFNfdNw0RZen1zrNl8r/jyPpd+CPG/9RBdlV0pXb1NtASQ0wacgU7EAzcZlgkB4n1
+	S1/xGL8rkwwYowpdpwmAjevQQIXojqgp9G4Z32mBx5khcpSXlzEJjN7url0HtvOfcEzknDg9n8oH4
+	BHjIL98/nvfgrsqmo26DesiSujv9JgI3ldjmyZgg7j7EbXuN2/nThq3sYMrfIyPoj+TnfhcSjB7N8
+	y7jK+UGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqyO8-00DloX-GW; Sat, 27 Nov 2021 14:09:12 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1mqyvX-00DppX-8J; Sat, 27 Nov 2021 14:43:43 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqyO6-00Dlnt-Hd
- for linux-mediatek@lists.infradead.org; Sat, 27 Nov 2021 14:09:11 +0000
-Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1ARCs0v0000960; 
- Sat, 27 Nov 2021 14:08:58 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=WTZ/tiBoUwxaMKzvQOaNuDeG9RMDaZr3VJaqEc35fqo=;
- b=G7sEnzI8MpDEN/6liHbu3OTQloP48DRKoabHeQ+tIjSe6qBfUUjLKOizMH6whElky6Ud
- 394lWmt1iUU/JWeolx31xnE3SwlUlhWQZLca4/9nV9CotBDKUegueUK7WtfnFxHpSiG1
- DtDpgNse8mryHfkuBTWZPVwWEOskeOSwbgAgrOFD8ceWaWZySrYecq3qN7x3l+RThsRr
- nnIUIXHMslaaAjVNJGlCPZrXgaqjMt/HU9mCY+EDP42tGAxtBMBMygKbhLXBn1XFc6U9
- cQG/ObuwEpGTapXahAMOs7GaGPU5Wy6gPZAZ7uOZEC7rggJB1iGyumm757SOqIZNMMZ2 kA== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by mx0b-00069f02.pphosted.com with ESMTP id 3ckb9gh2fa-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 27 Nov 2021 14:08:57 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1ARE5V1N105145;
- Sat, 27 Nov 2021 14:08:56 GMT
-Received: from nam12-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam12lp2049.outbound.protection.outlook.com [104.47.66.49])
- by aserp3020.oracle.com with ESMTP id 3ckcg16usk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Sat, 27 Nov 2021 14:08:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dZvn5Z4e1Wo3Jyw3nBYzaLiYZyd+zam0y4Y4DXx+FpHA8al/XE+jViNI3nUSHsCxmyxjF5DZxxcgm391gW/lUcGDV+2kiYEVcDizvZeFUlkpWig6acf8YlLSmbnevkOI8TxuxGCTe3z90EMxYZcq4k+7oRNUkn/RjwqbYIIIn442VCHHDY9sWs7zqh+cRNFKXvexZdimiVnIb/XMpfmTjnZ0oakkVv0wKF7kIkE+RHIpuzRr/hhggBpptgf65VZ3V0l3OiwjvmICTNRuA5larvYZmFnIk4nTDtm52ONpwhSumXno+ARf7ztaf/luLooPo9S16571zARw0j4IBGHDIQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WTZ/tiBoUwxaMKzvQOaNuDeG9RMDaZr3VJaqEc35fqo=;
- b=hFQhbdH/ddbdmN1orwzFUkJ3nW/kN5w+Za1QQ+kxh6qtYDLH8Qbxv9HnvGQ6dA1oJd/SDFqaMQBqOiLXcEdPdr81ZHBNqok851tb4Hwnng3KsUpIgHxX60shB+CI3OpAZS0Ho9+EXNdS/YU9NS9ACcYVbE5v3qixqxN9LPU3jFL+RNCjsLfzv5Uix2/GJu4o5T1VV2EKeoUeuyXpAKtWTpEy02v2Hfh46AlsOKlw5Oc5cJchdEiBpK9K17G7OCRgT64VnZKu6DkPRHa1ddkxDKcFH2m1gwMUoLhZMx8dqFgyeDqNWEsHUhFbhXWuymWd58d6ZUKITT94FZNVohhAdw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WTZ/tiBoUwxaMKzvQOaNuDeG9RMDaZr3VJaqEc35fqo=;
- b=rJ0LMUp0MzbZnE3GKHKZJRTTfXmh1//BRBHKcHmLxw0LYHncjJsMVHuWuyWTqPNpYqccGinkU7+oH9GdSpKzuzuZFe88l4eh+DYtHsmb3omiKJXY/1b4REyqj87XeL1dtcWx5i+SaVprbaiw0REwTFW9hWu5/KZOZmxZA3/N0GY=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MWHPR10MB1824.namprd10.prod.outlook.com
- (2603:10b6:300:10a::11) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.23; Sat, 27 Nov
- 2021 14:08:54 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::7194:c377:36cc:d9f0]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::7194:c377:36cc:d9f0%6]) with mapi id 15.20.4734.023; Sat, 27 Nov 2021
- 14:08:54 +0000
-Date: Sat, 27 Nov 2021 17:08:36 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Sean Wang <sean.wang@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH] pinctrl: mediatek: add a check for error in
- mtk_pinconf_bias_get_rsel()
-Message-ID: <20211127140836.GB24002@kili>
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ClientProxiedBy: ZR0P278CA0075.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::8) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1mqyvU-00Dpp9-Mg
+ for linux-mediatek@lists.infradead.org; Sat, 27 Nov 2021 14:43:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1638024216;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=51Zf5uatGgyB8agNKksvxXpLiJzCxzX6VNddpf1DJYY=;
+ b=Tdq0uWKIvj3I8wX3YLPDkOY/bDH3n+Ez9/aTGH5GaLVuHeSdRhWoX0A0Zg8701QPE7JoOk
+ TD+rBOlbRsfJEGuzosdWJnaD8YJNXt/pd80mvwQc9vrmKccypWgGuFyRIE89ybHY8vjrkM
+ lAgim92A5IVodCyfTX53ZalubuZ8Bok=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-171-5PZbb8mgOXSSl-POd8ZI5A-1; Sat, 27 Nov 2021 09:43:35 -0500
+X-MC-Unique: 5PZbb8mgOXSSl-POd8ZI5A-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ a3-20020a05640213c300b003e7d12bb925so10143721edx.9
+ for <linux-mediatek@lists.infradead.org>; Sat, 27 Nov 2021 06:43:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=HYMhhSR1YoRrVgQhjjHCLmb5AD8hUPl6l2sqPb0+yok=;
+ b=AnKbo+5xD0vN7QxUcmBeyBUbLp7eUkmJ6gOywuxccpeu3Eic/jee/pMT4RCgA44q89
+ IM01gBpBlFhchWFRJaWrsZHmfsXI+rTJmLHK20qQDyZe27xK4dWMSG9jj0C9aik4Wq5I
+ vyR+s9UBSxzW4+/vdE9grHXYoAGnIQ9LqkRAiZN4kKOLxpamKGh0nxrLFBWS04CE4iYh
+ ziEQC4NYNLuVcZ8xMAKLsDqCMMiQIm51BpS5sNVXHncknaYqGVr8pT+rfM4YRyOjr0W7
+ ZlUZvDglWs0K1FHCNDkVuEJZz4gH8iAHxp6ozIXKykSM1NsKVU4WU5HuVxJ+rnkSwiG7
+ MlVA==
+X-Gm-Message-State: AOAM5320v4aatS5UKyYbKiV7qAup1hbseUNuyl7afKYl2960a1ERba5b
+ guBQC3puC7WZXVWtwb02VSqJYDFLNS1mbsQ6YG0oZjOS/IAzIfAfag9Z+vwldG1q5E9xCgbVQ4y
+ a7Uf5aRKTDl5sNtoC13xiD/z6zCffXO4R
+X-Received: by 2002:a05:6402:270d:: with SMTP id
+ y13mr56792018edd.362.1638024213974; 
+ Sat, 27 Nov 2021 06:43:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJySR0iTOiJpZdNLbJGIwVZczX8xknIU8gOmbM1qovIX9GeVb9xmpttQswURN4QHkgpESYk3BA==
+X-Received: by 2002:a05:6402:270d:: with SMTP id
+ y13mr56792003edd.362.1638024213824; 
+ Sat, 27 Nov 2021 06:43:33 -0800 (PST)
+Received: from localhost (net-93-151-197-210.cust.vodafonedsl.it.
+ [93.151.197.210])
+ by smtp.gmail.com with ESMTPSA id r3sm4536270ejr.79.2021.11.27.06.43.33
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 27 Nov 2021 06:43:33 -0800 (PST)
+Date: Sat, 27 Nov 2021 15:43:31 +0100
+From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
+To: Shayne Chen <shayne.chen@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Deren Wu <deren.wu@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] mt76: mt7921: use correct iftype data on 6GHz cap init
+Message-ID: <YaJEE0gKhZvtBs6n@lore-desk>
+References: <20211126165316.1662-1-shayne.chen@mediatek.com>
 MIME-Version: 1.0
-Received: from kili (102.222.70.114) by ZR0P278CA0075.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:22::8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.20 via Frontend
- Transport; Sat, 27 Nov 2021 14:08:48 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: b8e3afc8-8f68-4d38-bafd-08d9b1af721f
-X-MS-TrafficTypeDiagnostic: MWHPR10MB1824:
-X-Microsoft-Antispam-PRVS: <MWHPR10MB182457D4BB785770EB7F18B28E649@MWHPR10MB1824.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4502;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: LwAEPEdMTcX8o7v3Fh33YQvUSC4UpXVk+m2JAQCFb38FZ0dSG3IbxWCh84HjnNxRNK6Zr1VGUBmhTLz4tDrR1UBUbNurimco2HE1+jQzbl0jYpyCcYuo7Ns1kLkGDEQrXYWr22pJbdyY355glYZGDaMHV38Wnn6xqAdwSj1nJqmlCfXOe5JkH8oTMNjOmjspOc9vN3Db+FnnXOXeC6+T71o45HkiUsTBsZbNS2fB7HNE3KOkaLljG29GdzkTwiT7xyqp2oxYUbEb50khywkhF/C8Z3tdbFWyxKuBlC39enxyFK8T/pAOHSE+9AqcZJAraJjapLm0gVdf1vko+Amm17SF2OY8YLEF/dPx2freee29YNcN33ncSooCU4aKl4UgCW0EQf1cyj0oEVzavcVV60qAQtfycMB8+u8i5ctH8crjLbYBCuRiEgARYxl9BStmZMPUiQ8+eEEulG5zb1o8d6Tdp1FDInFKmwYquOP0NVBVRkmtcvM8VxP3NwJgCE5jU4PkS1FtafGVsi8kUyvLdsbZh7TbmXhiG2wvU17SlO9DQIwmGlH4mIco9JX378ajnS8rovtCDAMEUvLxJqIhi4eVNmY6ivO0Hid+Y+oxtIl8hT71tvn5/I2YRDJGcy0J8zLSG9pyirlYIHjcg7vw2nW3mfWDWagGoOMP+6fqLg2XJeOrPb1MsPOwQWHTXhBKT/Ta6/4t8CZGEGbRv1m5Cw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(366004)(8936002)(52116002)(38350700002)(38100700002)(33716001)(86362001)(2906002)(186003)(6496006)(54906003)(5660300002)(33656002)(508600001)(44832011)(9686003)(8676002)(9576002)(55016003)(110136005)(4744005)(66946007)(26005)(1076003)(4326008)(6666004)(66556008)(83380400001)(316002)(66476007)(956004);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1Ior8Kxy2aSWa0m47N6U2uzjQICzeP//9rIeJG0Yf1oL5oknh2eoCH0M1WZ6?=
- =?us-ascii?Q?DviT9bsJl23qMAly7lcCmPh3KPZyP06eGaHlKp71eZFheXvSSiditYavFQ98?=
- =?us-ascii?Q?W3x0Zlc7Y0W6sSXjsx1st+4o4hlV3c/CVhCZceV4VVTqD45+c9wrTREJM1Ql?=
- =?us-ascii?Q?+KkC6GyE9o3HvHaC0w8dM1/clLXaiOzznbNZj5yX8SOqm5TTSx3nd7gLZqHJ?=
- =?us-ascii?Q?dtaxkYtvhRa/6rblWWbU4nykJIIlxSHWrvj14WtIeWe5SQZ6HypK9Oa0mec8?=
- =?us-ascii?Q?acX47Yi4JMHcLcAS3kdlrTVlgJcLqjEHe5yiQimXj56+oByHFO5SLd3f+tny?=
- =?us-ascii?Q?OIWJdOKqxztxE6dt5KiaRNOJu8whZ4MOAxFGfvRwjKPl9OfTzaQ579UTADCM?=
- =?us-ascii?Q?zhceS5COuHQGbbMu+FaBMDS2RKnfWSJsmOrZqTIwVZyki9MbX5rsi9ccbrZm?=
- =?us-ascii?Q?jtm0rTtOjvD8ZiO/m7eFf5Z7hSjX9Qq+6wSRBA196GU6iu3u+D/++7Gg5V+j?=
- =?us-ascii?Q?y+Ddp51OvjpyR5bv6Q3gGr7XwiOIZQz6hIchpUfMwueyY5cP2aY2cNaFk4Sx?=
- =?us-ascii?Q?VRJ2r7PDp1hXLCSDzntDve9gWJ7fRNhBC5yDqiwplaXDGvwE12arpLRgwk65?=
- =?us-ascii?Q?X/iMXBZjv4O1ZWw/ZtD0u5W6N75Ulf/JSWMnYTZc30Jpgju3y0uXYkF1jWqY?=
- =?us-ascii?Q?no952UAGZdXzuqWW9B7E+8/4ggUH8f6O2EQrlzDMYoPM1LSWasXl0tmjBZby?=
- =?us-ascii?Q?MPEkNucmyMyXT2Iy0x11vryBXm8+/xTsnyf8hz431J4V1rWD4yaMcDS7XeQq?=
- =?us-ascii?Q?Cny00UjbAHcxWQ+xlVHDsW1Tigz4XV6qsfH8TyI6ScuAHTQKXFdZ+1MZlbj8?=
- =?us-ascii?Q?Zg/7GxFLIxXmZSUYjbBoB7gdqFjTOfGTmt5POa/YlPnRIQ2WzzM34QGnOi3r?=
- =?us-ascii?Q?TBqEfprlAvmQ5jlwa4ZrRA6lvrVaPcxu7YCkvdQ9QSzhODu08yIzkD+yh6L/?=
- =?us-ascii?Q?XpWkdGjpV4kIDneEZiONrPUFMEtVL6wIqw+Aaz9NdzUr+xOLFjw4UZGASawy?=
- =?us-ascii?Q?dWGh2EsuR118O6BlHm0pCRqTNuEX1Z5GoczSC/N/PwXfsDOYLDjavYY3UbsT?=
- =?us-ascii?Q?rjAy+yeu53beRBg8dZIimNAJl2umgIZXRbKBXscy+2AwRARJkJgTGff8L59R?=
- =?us-ascii?Q?fbykgj+lP057ejZkQBTcu4AZcNVRAVpIUH0iwSVn9+k7ZkPVYOkwc+g7LHIh?=
- =?us-ascii?Q?Q+Kjp4Q7nukBKKFsFkcxprTqyGzKE7ewonFW2Twg2aE64vCuSKYYHmdHVqD9?=
- =?us-ascii?Q?c69YNNdYAR3ixVa5OPfX3WSEtANpBqt65Cu3K/R7RFgzYio1/5nBZQrtgM+m?=
- =?us-ascii?Q?NXbAKtpTE0g+gdv9lOGnLh/eXzHAC0NqrIq2fyS/DwxOJgvizAPsJ3cwbwUn?=
- =?us-ascii?Q?wanUDP9qRC5IZQe52iIQ7ObNZc4UrN48AV+MyehpT59+rOcIzcFXdaq2GBYM?=
- =?us-ascii?Q?yQ+dfVFyoffwrPsWFyYS4t7iqAN/cOReaoPbnVQSpzWmw17zgTWFUX8+LEdF?=
- =?us-ascii?Q?LRmSSzwZVLNBDJvS3mELgqH7X+vab+nXA9LWr7XsptQfENMQusLcEcnfBdx8?=
- =?us-ascii?Q?JOsUJWuqwXVAi1VYSJ/o19/bNW6uZXWTKQ6djcfItPJ+HbjujQTv5fiDTzs2?=
- =?us-ascii?Q?pYWxEnmzzPvgo1lOzbtYBogpIAw=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b8e3afc8-8f68-4d38-bafd-08d9b1af721f
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Nov 2021 14:08:54.5788 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: s/jPj6FsTR5sgsJjU/DC0QcIGv6LQ+QrOmVlHOT8Sd4iMsRUcupGWWcU/SPqg3gdILXMKd6JMhPcF5mpWNIhZpMUuesKOHTPauCpd6FQFvM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR10MB1824
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10180
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999
- bulkscore=0
- phishscore=0 spamscore=0 suspectscore=0 malwarescore=0 adultscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2110150000 definitions=main-2111270084
-X-Proofpoint-ORIG-GUID: ktOZGaLeDFduYFtGaTGuvKY-t3G4dVV0
-X-Proofpoint-GUID: ktOZGaLeDFduYFtGaTGuvKY-t3G4dVV0
+In-Reply-To: <20211126165316.1662-1-shayne.chen@mediatek.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lorenzo.bianconi@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211127_060910_624977_B7C0E981 
-X-CRM114-Status: GOOD (  15.29  )
+X-CRM114-CacheID: sfid-20211127_064340_982679_107ED55D 
+X-CRM114-Status: GOOD (  15.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,41 +99,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4674674276906004123=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-All the other mtk_hw_get_value() calls have a check for "if (err)" so
-we can add one here as well.  This silences a Smatch warning:
+--===============4674674276906004123==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="zUJr3aSWbgXhvFft"
+Content-Disposition: inline
 
-    drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c:819 mtk_pinconf_bias_get_rsel()
-    error: uninitialized symbol 'pd'.
+--zUJr3aSWbgXhvFft
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: fb34a9ae383a ("pinctrl: mediatek: support rsel feature")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 2 ++
- 1 file changed, 2 insertions(+)
+> Set 6GHz cap to iftype data which is matched to the type of
+> current interface.
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 53779822348d..e1ae3beb9f72 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -815,6 +815,8 @@ static int mtk_pinconf_bias_get_rsel(struct mtk_pinctrl *hw,
- 		goto out;
- 
- 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_PD, &pd);
-+	if (err)
-+		goto out;
- 
- 	if (pu == 0 && pd == 0) {
- 		*pullup = 0;
--- 
-2.20.1
+In this case data points to data[idx] since mt7921 supports just
+NL80211_IFTYPE_STATION (please note idx =3D 0 and idx !=3D i).
+Anyway this can be an issue in the future when we will add more vif_type.
+Maybe we can drop Fixes tag, not sure. Anyway:
 
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+
+>=20
+> Fixes: 50ac15a511e3 ("mt76: mt7921: add 6GHz support")
+> Signed-off-by: Shayne Chen <shayne.chen@mediatek.com>
+> ---
+>  drivers/net/wireless/mediatek/mt76/mt7921/main.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/main.c
+> index 5a64126..5540b2d 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -178,7 +178,7 @@ mt7921_init_he_caps(struct mt7921_phy *phy, enum nl80=
+211_band band,
+>  =09=09=09if (vht_cap->cap & IEEE80211_VHT_CAP_RX_ANTENNA_PATTERN)
+>  =09=09=09=09cap |=3D IEEE80211_HE_6GHZ_CAP_RX_ANTPAT_CONS;
+> =20
+> -=09=09=09data->he_6ghz_capa.capa =3D cpu_to_le16(cap);
+> +=09=09=09data[idx].he_6ghz_capa.capa =3D cpu_to_le16(cap);
+>  =09=09}
+>  =09=09idx++;
+>  =09}
+> --=20
+> 2.25.1
+>=20
+
+--zUJr3aSWbgXhvFft
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYaJEEwAKCRA6cBh0uS2t
+rOIVAP9Igd1KDjdhJHQHIReTFXMdhNhWSVpGQFZXXzNLDCAFOgD+NVNS9h1ulTfi
+LPxg4eCrt+xRDAzpwn5R458JiIuzdwI=
+=EMib
+-----END PGP SIGNATURE-----
+
+--zUJr3aSWbgXhvFft--
+
+
+
+--===============4674674276906004123==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============4674674276906004123==--
+
+
