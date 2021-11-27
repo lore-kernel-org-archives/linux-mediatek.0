@@ -4,72 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51E2BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Nov 2021 10:12:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF852C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 27 Nov 2021 14:08:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hNZMKOro6W4DHpvaRw1p3UXb8xRb7E8EWnV49Lf+5As=; b=NFhoayhDbCrZB25vY0ihNmxYCr
-	85MqsZ4hiTaATd819Cdid3tpBmQIxYklYfnYNX7qPY4Omz7j1zdpveDLhJOqWC+rjg/iqrDAEjYRy
-	gEGHz5aTXBgwVAHVpYulPsLkcnQr8G0VoQ181Gyn+TONKw5IZ0e4OabIY0T4iwYdds3jiosaLl41g
-	InsYNMLl4edzAUREbpU+WfnsXeTQHb8gJ2gEWcHv3nKNOghBJcPcMtzWCmV9S7bCW91M3CFMGqP9d
-	nhhXmUPlewtmgsK487Cfb/aEcDh00nlvjfvgKnET601XerZJqyFm9ozc1kXV3MNzj93tdkhLf/pMn
-	HWcpkhcA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TPiKyGYZE0hu/GSm5EOGWVMzMseXz6U3AHrwovLcBwI=; b=bFdVB/V83+b4te
+	4ZYq0WtFDP7W4hIMK3JNR2vwrXyDsi3hdLm3vtQS1zlK7tJKEaonLYlnFfPVXw9GXk2hCHZay7Oez
+	s/6Harvn/YI+fjQnZ0wYVv8b2O2Rtx/XwlvX1UOMTqz5w+Y95RMkzduk/SIDHnIeDyHHCVHZYo86T
+	QyunDNOzva0EP0c46NQTWvv08Nmkw/2CIDv7jgO7hrfSvab7x04JMnu6K9HIdskl6Cs8uQh+lPTSu
+	jbGI4sxWNQBaFsN27Ld150XcXWh2CL/+AWL5eZICBUtQ2IrPByXeUP4Ai32P21DSGE2M1BE7w86/S
+	OnNenr7ZLGIklhGEYjyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mqugd-00DMul-Ic; Sat, 27 Nov 2021 10:12:03 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mqyNR-00Dljt-Ez; Sat, 27 Nov 2021 14:08:29 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mqugO-00DMs0-VU; Sat, 27 Nov 2021 10:11:51 +0000
-Received: from [IPv6:2a00:c281:133e:7400:3570:9958:9ca2:e611] (unknown
- [IPv6:2a00:c281:133e:7400:3570:9958:9ca2:e611])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id B605E1F4631A;
- Sat, 27 Nov 2021 10:11:42 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1638007904; bh=8EFH+LY67WhaBIlkxUuLTiItxL9oH/dPB5IQi/pdSGw=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=dcYk9UwJIKmqV4xnGWsMCx3oWQo+UP98331MXBJM+pXBwvBRKryaqO0lawsL7uBk0
- koil1HMhX7dGGJVQFup3Rz7UguYBPdeS4e+vqacQwvMvgzYjfKHO26naCKBHQdHfvB
- FAfXnS+L6mpsUY5LzCq5MVkyf2pDOu4wIPSPauuk7l8BHIM84afxPmhOYAeLWKRX4z
- u7NFUSkjEaBvzFdZYChGhmZJ+FkzINlIbuD09ztFws0t66Zq1wjdqkrltZ3VL2HW2K
- P5TtxEnuMOsdF8nUcISdxk5ezYVws6PNmE/R769ELNLwb2kNatAyetteWwNly2PBUQ
- LGb3i1bXjljwg==
-Subject: Re: [PATCH v3 12/33] iommu/mediatek: Always tlb_flush_all when each
- PM resume
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- youlin.pei@mediatek.com, anan.sun@mediatek.com, yen-chang.chen@mediatek.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, sebastian.reichel@collabora.com,
- Collabora Kernel ML <kernel@collabora.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- mingyuan.ma@mediatek.com, yf.wang@mediatek.com
-References: <20210923115840.17813-1-yong.wu@mediatek.com>
- <20210923115840.17813-13-yong.wu@mediatek.com>
- <c4be1a14-c257-81b7-4a2b-f7e68c32de88@collabora.com>
- <5c4dd67ae7c81721d8cfd2c3b23b7c6df493cb5a.camel@mediatek.com>
- <4dd4cf8d-0f52-afae-f7d9-8e3cfdf3b729@collabora.com>
- <c69e03b4781dd9014393e0ff47767c58c846a722.camel@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <c5ded58b-a53a-3089-f8a5-c264f8ab9463@collabora.com>
-Date: Sat, 27 Nov 2021 12:11:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ id 1mqyNP-00DljF-9G
+ for linux-mediatek@lists.infradead.org; Sat, 27 Nov 2021 14:08:28 +0000
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1ARDUXgZ012068; 
+ Sat, 27 Nov 2021 14:08:14 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=date : from : to : cc
+ : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
+ bh=b/TvkS+9xe0/px2sx3m2f3F2mnzNz2dFc3iZMWEPraM=;
+ b=pGV5Px6YiCA8iMLTsw+GSSAHH1pwXpkbIMbY2Yq7hJyt7xgvjvJW3nRWRvkKIronsjXC
+ x86QRkCYEbg0BnlTf9aFOzcOw4RJvttocJn4hqS9yVdl6qLsTL2gf0WllwWzwEvl16rL
+ a17NVpmy2LXWcf8ezH8i5ILj+U0UtydJbuVrmq1936jhRDQOjPXWxIhSS4by0xSDyKMi
+ jg24fGmwdp4P/EOK2z77eMIEWzXbDhOri6kj4lDfpnPboRlAYFV2CqSdxjsSMJwbYlzm
+ Zx1rgS8N02iVZnok5cVoYtkaWdEEqnZqM7R39NLvc5T16ia3EBlWGR9fYwT3qGVyjsGw Sg== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by mx0b-00069f02.pphosted.com with ESMTP id 3ckbf39169-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 27 Nov 2021 14:08:13 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1ARE5SKD084768;
+ Sat, 27 Nov 2021 14:08:13 GMT
+Received: from nam12-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12lp2045.outbound.protection.outlook.com [104.47.66.45])
+ by aserp3030.oracle.com with ESMTP id 3ckaqaj725-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Sat, 27 Nov 2021 14:08:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ef0RwMaaQyQr6M+33crxIyrdGsG/T19PGJkBaxXeUaZIxEhfmR1tUQCYSKG7LuFy/2Luz1+8XDZu6nwL0nPdYsnuGOy4cSc6DzOPmf4Fehz2ciTfPdyRiZzWRkXKradT92TvhK41ii3FsgJ+bOzeyOUnPkdvbNlPoYqguh16FIZk8qQK86Vrw//bTJ6ByDSEjYuEROJ/sc5zVvnym7+IcGwy2fsum3Y+Xui5dDU6ymlS6Y607orSxRLNdeFRZCtvEDuKi0P0V4dp1OKgRC2jYIpsOXtSpTVOydKwcpGkCC6MedVx1DvNizAku+umlPncgy+uvnIHOklN8sQ7xhVCbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=b/TvkS+9xe0/px2sx3m2f3F2mnzNz2dFc3iZMWEPraM=;
+ b=gbsNjCN9FmryzEC7Jr294Go0YwpevhwhV1ZiiNANV19RucAFiHUpjfT8pGdFFyx25+MN3qxHLP7pCc/u/bRW6js/EEudhclxRd8X2XwbElljTVYHAWhHWPw8FHi3bKYHuqSJdEnA3KROYJjFCVOXLYRpelKVFO3nT+cJ490z4qkew6ye+G+2Bk+xljoOzqlFUkd1Cj7x67c3B87ITghu0Qsj5e/nciV2bkbpr+JNfCajqB2QYP7fEHk119M4lj05VZqESdD4TWIkN28vPLpp4DBX1j0I427I38fUBonnFTpUOHQioaOiLUFTCksTGTjSv6kgTHHTbK90pvN3Je/xYg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=b/TvkS+9xe0/px2sx3m2f3F2mnzNz2dFc3iZMWEPraM=;
+ b=NYErWMLrS52JgwU+o00Db/8jzJhzETeDLkoQImjQj2tOZAIIaUEsSjMXtxYub1+4y5nkwJ09tSlAmK6byrIZX6T2cOUpdLMQW0Pio1xahoh0Wlc+pcgp20EMJDCFqJdN0GDPLTAtCZ9HBN9uZpu+BhnurYbiTOI/8FnRhCE+X7U=
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by MWHPR10MB1824.namprd10.prod.outlook.com
+ (2603:10b6:300:10a::11) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.23; Sat, 27 Nov
+ 2021 14:08:11 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::7194:c377:36cc:d9f0]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::7194:c377:36cc:d9f0%6]) with mapi id 15.20.4734.023; Sat, 27 Nov 2021
+ 14:08:11 +0000
+Date: Sat, 27 Nov 2021 17:07:50 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Sean Wang <sean.wang@kernel.org>, Zhiyong Tao <zhiyong.tao@mediatek.com>
+Cc: Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ kernel-janitors@vger.kernel.org,
+ Nathan Chancellor <natechancellor@gmail.com>
+Subject: [PATCH] pinctrl: mediatek: uninitialized variable in
+ mtk_pctrl_show_one_pin()
+Message-ID: <20211127140750.GA24002@kili>
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-ClientProxiedBy: ZR0P278CA0159.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:41::8) To MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-In-Reply-To: <c69e03b4781dd9014393e0ff47767c58c846a722.camel@mediatek.com>
-Content-Language: en-US
+Received: from kili (102.222.70.114) by ZR0P278CA0159.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:41::8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.19 via Frontend
+ Transport; Sat, 27 Nov 2021 14:08:04 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 3d3258fa-b449-44d3-f61c-08d9b1af5800
+X-MS-TrafficTypeDiagnostic: MWHPR10MB1824:
+X-Microsoft-Antispam-PRVS: <MWHPR10MB1824FBD8A8BBE25DAADDB2FB8E649@MWHPR10MB1824.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1775;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: TfkW83kh4FCx8vOwbKGGlsf2/fhkd0+wB+ZtWAl57IHommdYFQTZtz9GhF5FJiPEVGtcNEg03sikldRmTUVk/aTHLBdU5Ju36jEhZiKmq3kDNsawR+wcUs71RG7Qy82IUhEACSDyvJr3OqI5nSNwYTJuEn9KLa8KZ3EM40ORtcl1JPtDGg9KbqsgtFzvytpHnp18VNrBbbBksEHuSrZKqgT2wUDquZWo98crxcABdSX6gyO+OevytH8rCvsoi2uDbHfkvBNC/44mHDBi8bMcWf89GbuoJXpef424xekbLgvf7Cz4t9vMwVCN8tXMKBCy4k28jR0QDtDW38rQ9JhioX6YJxiDQoI1HXcqfDS7uxjROPYPNt34uq/5H87SWsELqz6FRQQCDTlMgyYC4+KrmVu77ZCqqXPRe9wIskvhuj8wXq+R//noeKvZtPSodgMIY7MCz51KPOk21PE03yq9g4XpMRII3tB9cM+hU9HRxlO6muMXMnZhJvqMkYx+p8FhZ2E0fJmeMag3N8iK+tRM5oEu6Q/Gv6EmleK9N2KmSKgLgptSGbYLy0GHpPVAZjZEBHHQu0HhgbF/vgOYjrLNeQzLszVYOBdFxZqIAJChSJb5L4R3BXyWnsUs8U47gqxLOin42HjdU3WdpsuPVm/mwROjwaFtEcMQeSDA0rdAF2B3nNyUkKPbqNBJiWfelG/w26q018RrJG/JW4DIlZ/wxw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(8936002)(52116002)(38350700002)(38100700002)(33716001)(7416002)(86362001)(2906002)(186003)(6496006)(54906003)(5660300002)(33656002)(508600001)(44832011)(9686003)(8676002)(9576002)(55016003)(110136005)(4744005)(66946007)(26005)(1076003)(4326008)(6666004)(66556008)(83380400001)(316002)(66476007)(956004);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mMy6xuvmLkOMC4FAaoUiaGJJR/8XHZj92K2v7lHuwMF0Y+6Hm434Aa5v9EZZ?=
+ =?us-ascii?Q?aCtb2lCtky2lmLvAO8Hmf/HNhx051ceBstxjp4PxvdENqkYFVMuyrLU8sRN1?=
+ =?us-ascii?Q?Hi0i70c3obbzS1j0n+7jKa19EaGgovXYJSjzjKO18OI1GO9gWGB8X5l0XDNe?=
+ =?us-ascii?Q?gbhpPGjEhOiklrtVf3nBFVw4Lzi4W+BUFqmmnaFR8DRKoFe9eon5gbWh2hNV?=
+ =?us-ascii?Q?PFOkjf90JwZow1hDVkcbx2FfdSVKdapxw8uuGq8MNrmm7Qgy2xunV8CNbGZ5?=
+ =?us-ascii?Q?p09RkW+hfF9Od4a6PxXkA62LY6lOxQUjuzS9qOBnEaXnFjWVJYoqsY5eYkFc?=
+ =?us-ascii?Q?mR1vBa7m/XbM6sz0g7r36u8WZ/Gdb8ccx4yAURt8+ol+ScFEgto55L1M84AO?=
+ =?us-ascii?Q?oSSd2rAAjpxZJWY3DnnUQI6keTLi5f1xY08lttV/bThvGv2S9VW6jWjLONEh?=
+ =?us-ascii?Q?HdH/+Xi0opi78Jf9aeDBYA0S5QhDhfTTVPRPvBSCOJv6zP3iOj4Hs78Y9EOZ?=
+ =?us-ascii?Q?qHuYYiwq7VormspDn/M7mWTXtiJDTa11dCjuXNmp8sG/1BiCnnZb5e9Nm0eB?=
+ =?us-ascii?Q?3uFiYDOgC7AFn01vDmiaBFbzNi+SS6OfT6hFSmm0HLyXLoLQ0s4Joy1YQpKS?=
+ =?us-ascii?Q?+64N48jam2c9HPJStRD7jJwGwFA4+LuAnvlSCMsGASopUHEJmPp4h8z7gAXc?=
+ =?us-ascii?Q?7IBqqPEugGE0fImFaUzRdVit+m4fai0KfWiNAtAbClAAk3Ch/DvcVwVI+VKJ?=
+ =?us-ascii?Q?VqqUIU+6hRkP97mrlT53Q2YT7UslsiatIx/ZUEIywGngPGLjlUz6hfXrQKzR?=
+ =?us-ascii?Q?VliB2ZJV+PsgYbZHBqL7Vc/sp3Q0rwtreW8KPFaS/Htcjc8pTy43yq0toBTU?=
+ =?us-ascii?Q?8p9te8cI2w7cqEbNA/FKW8pgjsKPc57QNZidOfvIq2eGFxl35U3O0GE9nJf4?=
+ =?us-ascii?Q?2H0IteiCR/faTcTk6riqN7q7n7oXDeOmsYRwhhzkKJwXDMG7SSmEwiNovMyu?=
+ =?us-ascii?Q?WCR7lvNk/sVqvOqwhpjyLGDiechsx9dE+dkYn5zwA+sI+HEq4Ruu2WEy+UJ1?=
+ =?us-ascii?Q?QYrNggQTSCe+Y3zL0cqLdAWdCf4XX3L9bCwYTV/bQvlvN4kkYNF7tyRRdv9y?=
+ =?us-ascii?Q?o5Wg5+l/RphE8q6YzCFtN+dPiU8PNPFxUK52rLC2e4Mx9GC76IgCwasP8Kxo?=
+ =?us-ascii?Q?dpkyy2CtKh87AYLAptSTr5oPk8Se5Q/CMQvL56A27jxK0dztVzhJr51zdDNh?=
+ =?us-ascii?Q?4loF1jkGw5Tsy5qMeO7iWy/0saao61TbHrlEBVqiOYAlK0vckpr+9Jek0DkD?=
+ =?us-ascii?Q?dJtSkLOXHVRSR5UqzB8kVlitBeYyJ7UNMqDNPyGWPMPJQXLbXF1vmlv/x5p0?=
+ =?us-ascii?Q?sVd/5BNOTrKKgrFolnXnDaFlHdv5Kc2+qbUrrj0e2xCCeDjvyn0k67KYtnGW?=
+ =?us-ascii?Q?81Sx4xErSCSmrC9qzn87Qj2woCfvFt6HJzo/0Do3MZZmxSHsvwhc9MaAaVbB?=
+ =?us-ascii?Q?o5bsd5pOdNVAzt7UNUok0WsB4LjJTPYLaf1ym9YdhlhxFOldxz2fruI5DusP?=
+ =?us-ascii?Q?k/oMqxPXbDcmoZh0HsAAykKVhwGr5ixmziCfXYFi6fVuxjmqURBtlmGIq8xt?=
+ =?us-ascii?Q?wdncn6Q489+5CsbhQCcavE/gPBZBfyUmDNgEOd+M5/OX87fPI5GelmdpPo0q?=
+ =?us-ascii?Q?OOKnjw=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3d3258fa-b449-44d3-f61c-08d9b1af5800
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Nov 2021 14:08:10.8793 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Lt1n+F0kmXiJka1Y66gduz5fT2g0iAVpVG/0GjqzkR2rTndYzt0Uuvt6LySPwi3AjVQCN++AVhbb9YUDYXk+mU2vqc7Hx+HQdSfBd5B7UEA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR10MB1824
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10180
+ signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ malwarescore=0 mlxscore=0
+ suspectscore=0 mlxlogscore=999 spamscore=0 phishscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
+ definitions=main-2111270084
+X-Proofpoint-GUID: TBuBci4xHCUFJr3ea68E71iRQW2qGpuk
+X-Proofpoint-ORIG-GUID: TBuBci4xHCUFJr3ea68E71iRQW2qGpuk
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211127_021149_387159_A2A3F4EA 
-X-CRM114-Status: GOOD (  40.80  )
+X-CRM114-CacheID: sfid-20211127_060827_563108_B37C4452 
+X-CRM114-Status: GOOD (  15.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,187 +172,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+The "try_all_type" variable is not set if (hw->soc->pull_type) is false
+leading to the following Smatch warning:
 
+    drivers/pinctrl/mediatek/pinctrl-paris.c:599 mtk_pctrl_show_one_pin()
+    error: uninitialized symbol 'try_all_type'.
 
-On 10.11.21 09:50, Yong Wu wrote:
-> On Wed, 2021-11-10 at 07:29 +0200, Dafna Hirschfeld wrote:
->>
->> On 10.11.21 04:20, Yong Wu wrote:
->>> On Tue, 2021-11-09 at 14:21 +0200, Dafna Hirschfeld wrote:
->>>> Hi
->>>> This patch is needed in order to update the tlb when a device is
->>>> powered on.
->>>> Could you send this patch alone without the whole series so it
->>>> get
->>>> accepted easier?
->>>
->>> Which SoC are you testing on? In previous SoC, the IOMMU HW don't
->>> have
->>> power-domain, and we have a "has_pm"[1] in the tlb function for
->>> that
->>> case. The "has_pm" should be always 0 for the previous SoC like
->>> mt8173,
->>> it should always tlb synchronize.
->>>
->>> thus, Could you help share more about your issue? In which case it
->>> lack
->>> the necessary tlb operation. At least, We need confirm if it needs
->>> a
->>> "Fixes" tags if sending this patch alone.
->>
->> Hi,
->> I work with the mtk-vcodec driver on mt8173. As you wrote, the iommu
->> doesn't
->> have a power-domain and so when allocating buffers before the device
->> is powered
->> on, there is the warning
->> "Partial TLB flush timed out, falling back to full flush"
->> flooding the log buf.
-> 
-> oh. Thanks very much for your information. Get it now.
-> 
-> This issue should be introduced by the:
-> 
-> b34ea31fe013 ("iommu/mediatek: Always enable the clk on resume")
+Fixes: fb34a9ae383a ("pinctrl: mediatek: support rsel feature")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+ drivers/pinctrl/mediatek/pinctrl-paris.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi, reverting this commit didn't solve those warnings,
-I think this is because in the function mtk_iommu_attach_device
-the first call to pm_runtime_resume_and_get does not turn the clks on
-since m4u_dom is not yet initialize. And then mtk_iommu_attach_device
-calls pm_runtime_put right after mtk_iommu_hw_init is called
-(where the clks are turned on)
+diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+index d4e02c5d74a8..4c6f6d967b18 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-paris.c
++++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+@@ -581,7 +581,7 @@ ssize_t mtk_pctrl_show_one_pin(struct mtk_pinctrl *hw,
+ {
+ 	int pinmux, pullup, pullen, len = 0, r1 = -1, r0 = -1, rsel = -1;
+ 	const struct mtk_pin_desc *desc;
+-	u32 try_all_type;
++	u32 try_all_type = 0;
+ 
+ 	if (gpio >= hw->soc->npins)
+ 		return -EINVAL;
+-- 
+2.20.1
 
-thanks,
-Dafna
-
-
-> 
-> tlb failed due to the bclk is not enabled. Could you help try that
-> after reverting this?
-> 
->>
->> Sebastian Reichel suggested to remove the 'if(has_pm)' check to avoid
->> this warning,
->> and avoid flushing the tlb if the device is off:
->>
->> [1] http://ix.io/3Eyr
->>
->> This fixes the warning, but then the tlb is not flushed in sync,
->> Therefore the tlb should be flushed when the device is resumed.
->>
->> So the two patches (the one suggested in the link [1] and this patch)
->> should be sent together as a 2-patch series.
-> 
-> then this is reasonable. You could help this into a new patchset if you
-> are free(add Fixes tag).
-> 
-> Thanks.
-> 
->>
->> Thanks,
->> Dafna
->>
->>>
->>> Thanks.
->>>
->>> [1]
->>>
-> https://elixir.bootlin.com/linux/v5.15/source/drivers/iommu/mtk_iommu.c#L236
->>>
->>>> I can resend the patch on your behalf if you want.
->>>>
->>>> Thanks,
->>>> Dafna
->>>>
->>>> On 23.09.21 14:58, Yong Wu wrote:
->>>>> Prepare for 2 HWs that sharing pgtable in different power-
->>>>> domains.
->>>>>
->>>>> When there are 2 M4U HWs, it may has problem in the flush_range
->>>>> in
->>>>> which
->>>>> we get the pm_status via the m4u dev, BUT that function don't
->>>>> reflect the
->>>>> real power-domain status of the HW since there may be other HW
->>>>> also
->>>>> use
->>>>> that power-domain.
->>>>>
->>>>> The function dma_alloc_attrs help allocate the iommu buffer
->>>>> which
->>>>> need the corresponding power domain since tlb flush is needed
->>>>> when
->>>>> preparing iova. BUT this function only is for allocating
->>>>> buffer,
->>>>> we have no good reason to request the user always call
->>>>> pm_runtime_get
->>>>> before calling dma_alloc_xxx. Therefore, we add a tlb_flush_all
->>>>> in the pm_runtime_resume to make sure the tlb always is clean.
->>>>>
->>>>> Another solution is always call pm_runtime_get in the
->>>>> tlb_flush_range.
->>>>> This will trigger pm runtime resume/backup so often when the
->>>>> iommu
->>>>> power is not active at some time(means user don't call
->>>>> pm_runtime_get
->>>>> before calling dma_alloc_xxx), This may cause the performance
->>>>> drop.
->>>>> thus we don't use this.
->>>>>
->>>>> In other case, the iommu's power should always be active via
->>>>> device
->>>>> link with smi.
->>>>>
->>>>> The previous SoC don't have PM except mt8192. the mt8192 IOMMU
->>>>> is
->>>>> display's
->>>>> power-domain which nearly always is enabled. thus no need fix
->>>>> tags
->>>>> here.
->>>>> Prepare for mt8195.
->>>>>
->>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>>>> ---
->>>>>     drivers/iommu/mtk_iommu.c | 11 +++++++++++
->>>>>     1 file changed, 11 insertions(+)
->>>>>
->>>>> diff --git a/drivers/iommu/mtk_iommu.c
->>>>> b/drivers/iommu/mtk_iommu.c
->>>>> index 44cf5547d084..e9e94944ed91 100644
->>>>> --- a/drivers/iommu/mtk_iommu.c
->>>>> +++ b/drivers/iommu/mtk_iommu.c
->>>>> @@ -984,6 +984,17 @@ static int __maybe_unused
->>>>> mtk_iommu_runtime_resume(struct device *dev)
->>>>>     		return ret;
->>>>>     	}
->>>>>     
->>>>> +	/*
->>>>> +	 * Users may allocate dma buffer before they call
->>>>> pm_runtime_get, then
->>>>> +	 * it will lack the necessary tlb flush.
->>>>> +	 *
->>>>> +	 * We have no good reason to request the users always
->>>>> call
->>>>> dma_alloc_xx
->>>>> +	 * after pm_runtime_get_sync.
->>>>> +	 *
->>>>> +	 * Thus, Make sure the tlb always is clean after each
->>>>> PM
->>>>> resume.
->>>>> +	 */
->>>>> +	mtk_iommu_tlb_do_flush_all(data);
->>>>> +
->>>>>     	/*
->>>>>     	 * Uppon first resume, only enable the clk and return,
->>>>> since
->>>>> the values of the
->>>>>     	 * registers are not yet set.
->>>>>
 
 _______________________________________________
 Linux-mediatek mailing list
