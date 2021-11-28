@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4980C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Nov 2021 15:57:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76B76C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Nov 2021 16:02:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Resent-Cc:Resent-From:Subject:
 	MIME-Version:References:In-Reply-To:CC:To:From:Message-ID:Reply-To:Content-ID
 	:Content-Description:Resent-Date:Resent-Sender:Resent-To:Resent-Message-ID:
-	List-Owner; bh=9PhvaRJHaTH3OcOGBKGAtHdwIE+o4LG82OJR0xWAQYA=; b=4C5AKnHefHt1s6
-	wFVcHGuV3ElAV1O5ET5EzOYC+pKZ0/r1Rd4c9Pw2Td7kjbTs+AXC5vri17hCXhQAYCC5xtd5p1F5G
-	dsoIrXHDz0EUJElXvhFfJDxi/cge4LX39GuKUIAK95X3M8aWTbGcvm+QrHpPxDpiYwpQnfiQ7T70Z
-	6G4fs2N5PqazmGAfS6WOdDsG2UaiO1Ylh4IKBrX3PS00lu12vTEhZGUEqcMmNdCOV2f3pM3BJzqGE
-	l4c6uMo0oCG/dM1pUJA3iclimv3vlKg7Y1Kq2S4OqBYihw6frd0flbiurTkrsD2Nudwej3xE0+P/q
-	DvvgG3YXoVEdDPMcl3iQ==;
+	List-Owner; bh=9PhvaRJHaTH3OcOGBKGAtHdwIE+o4LG82OJR0xWAQYA=; b=RBw1i/7X/nCmVN
+	eyfwdnziV1xe5zNb9fD32Rp0iaGfizwLst1p2ESZFtuR8SlDrULHL4foUlO7XJxb5QUBXWYJvJal3
+	+e+Cvaa28mQ9zcL35tOPLVovkyyy1kj7ZyGsDvxfczElU1bUVjfpyDNkbg7ag/u0adBo5J8izkPp8
+	dbHUHhbjkzZcmS4AFkVXVN2x20xJGSFKVPsosnEsJb/LSL9oMBcgWi+jews1GM8k6krgfTwrBJsKy
+	hq26C09ywxfru5wiDSpObpxTogavx2vrmFLROZVEL59OswdFSAtl59Si4B5zc3jtymhaHQbX6CvOr
+	ZqEBDRa2jWc97Yuk+z5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrMYg-00G7Hd-KH; Sun, 28 Nov 2021 15:57:42 +0000
+	id 1mrMdU-00G8EE-Rj; Sun, 28 Nov 2021 16:02:40 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrMYd-00G7Go-8X; Sun, 28 Nov 2021 15:57:41 +0000
-X-UUID: 698d88a339c34e279fc47dc5d03bf1d2-20211128
-X-UUID: 698d88a339c34e279fc47dc5d03bf1d2-20211128
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1mrMdR-00G8DL-Pp; Sun, 28 Nov 2021 16:02:39 +0000
+X-UUID: cb557e29f8b1489e9005c5435c87c526-20211128
+X-UUID: cb557e29f8b1489e9005c5435c87c526-20211128
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <jason-jh.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 538637904; Sun, 28 Nov 2021 08:57:36 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1348135641; Sun, 28 Nov 2021 09:02:36 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 28 Nov 2021 07:57:35 -0800
+ 15.0.1497.2; Sun, 28 Nov 2021 08:02:34 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Sun, 28 Nov 2021 23:57:34 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Nov 2021 00:02:33 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 28 Nov 2021 23:57:33 +0800
+ Transport; Mon, 29 Nov 2021 00:02:33 +0800
 Message-ID: <ae29424d8121f8951cfb5fece114b6fcba90d351.camel@mediatek.com>
 From: Jason-JH Lin <jason-jh.lin@mediatek.com>
 To: Tzung-Bi Shih <tzungbi@google.com>
@@ -60,17 +59,17 @@ References: <20211117064158.27451-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
 Subject: Re: FW: [PATCH 3/3] drm/mediatek: add devlink to cmdq dev
 Resent-From: Jason-JH Lin <jason-jh.lin@mediatek.com>
-Resent-Cc: DRI Development <dri-devel@lists.freedesktop.org>, "moderated
- list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "Linux
- ARM" <linux-arm-kernel@lists.infradead.org>, linux-kernel
- <linux-kernel@vger.kernel.org>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fei
- Shao" <fshao@chromium.org>
-Date: Sun, 28 Nov 2021 23:57:33 +0800
+Resent-Cc: DRI Development <dri-devel@lists.freedesktop.org>, ";	moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, "; Linux
+ ARM" <linux-arm-kernel@lists.infradead.org>, "; linux-kernel"
+ <linux-kernel@vger.kernel.org>, "; Hsin-Yi Wang" <hsinyi@chromium.org>, ";
+ Fei Shao" <fshao@chromium.org>
+Date: Mon, 29 Nov 2021 00:02:33 +0800
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211128_075739_335111_296E7E7C 
-X-CRM114-Status: GOOD (  18.79  )
+X-CRM114-CacheID: sfid-20211128_080237_853408_EB20F359 
+X-CRM114-Status: GOOD (  18.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,6 +85,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+Message-ID: <20211128160233.QhQuvL7ZTowGTmj-3B87PfPAm6lkQurxZ8HPzvd1pCk@z>
 
 SGkgVHp1bmctQmksCgpUaGFua3MgZm9yIHRoZSByZXZpZXdzLgoKPiBGcm9tOiBMaW51eC1tZWRp
 YXRlayA8bGludXgtbWVkaWF0ZWstYm91bmNlc0BsaXN0cy5pbmZyYWRlYWQub3JnPiBPbgo+IEJl
