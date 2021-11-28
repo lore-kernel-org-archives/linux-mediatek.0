@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C682CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Nov 2021 00:20:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFCD8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 28 Nov 2021 07:44:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
-	Message-Id:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IKeVomCN/F159l8HFi0AIhlDkUEnGnZ+5uHoyNMS+YE=; b=OY2QYDUnR0foFO
-	SWvkbtt1zKVodZfI3r8T/heoSx82Zo2beF4cDrTpd085BpG8t26Aqpzdg/i2aEbqtJLEXf3UBfHUL
-	i3P+DSu4GFj4zx/uphp1CIgl1R/ATUIi++EW8EpMSvYZrkpK6e+IBcGOGtO7/GICCdza6YxfgfnfC
-	u5wiogRoHVQyX/K30IQ1ITVNC+unh1wU/gHBEACctRP7ofw919Y25ZEtyCZjoI9TCSZWuuyYxyQjw
-	bWUmlD2OsXm+bsy2sAqpFgTDJ2HxM0MetAlhJKYEyDIc9KthcX7y8KFxCGGGFPcRr2A2P608ATd1c
-	03pH5vUu0u5hLLs4Hadw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=CXLxqT2Xb731GP9BVhLRDyBEQPUrPtYuUDZHQaugt74=; b=GMO4EWLaVIWnSn
+	ayMtzzjgdN7WrT6qMd5Ls46V9piSRho+ytEnjLmpOG7OM8u+o7c0/+9ynp9tBFSUkDaiIXGvetIxv
+	3XldjpTU0G0WePgvmZl3OPNhVxq//Ga3WfBrqRljVGkMnqO9+bduzpV/+7H+lVg10PqqjfEPieoAw
+	Anatp5V5nyxnuvBvVV+sTMbPdQ78Cibkapi7E9iLv1SYVHfiAh1Y43taHD7c9eFkHnXatLndVJvkw
+	9+mZ9TJ9E7ad1mpFqEpzwV32CENRpe5EtoPd3anO8MCIpTs7n60hB6f8fCUz75kTaTWiZ1dR8SddQ
+	P3y2g7g6iqoPlgIIICCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mr7vz-00EgvQ-O3; Sun, 28 Nov 2021 00:20:47 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1mrEr7-00FGfs-Od; Sun, 28 Nov 2021 07:44:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mr7vm-00Egtt-6G; Sun, 28 Nov 2021 00:20:35 +0000
-Received: from mail.kernel.org (unknown [198.145.29.99])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 450BC60F4B;
- Sun, 28 Nov 2021 00:20:31 +0000 (UTC)
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 3B29560524;
- Sun, 28 Nov 2021 00:20:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linux-foundation.org;
- s=korg; t=1638058830;
- bh=CKZ+e8k135ZZUhwVMJEQB8rHyvFCB7GPOLchrJ0D5go=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=0AOvXxVGgboRb7eA1NwxoOrMf3dtsAtHRbiyZJL4nEy3F08Oa/ZLj16GfcnXRIJmQ
- zNZm5UQQ+WtO20dXMQTea3IZT5FwLccbE4YPuMfSs7Jp9bVSU1rj6fTkfWTJcosPWc
- rf2Z7VW47FypZ3+a0a+W/VfSsCykoRdSyig12/zE=
-Date: Sat, 27 Nov 2021 16:20:28 -0800
-From: Andrew Morton <akpm@linux-foundation.org>
-To: Andrey Konovalov <andreyknvl@gmail.com>
-Cc: Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>, Catalin Marinas
- <catalin.marinas@arm.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chinwen Chang (=?UTF-8?Q?=E5=BC=B5=E9=8C=A6=E6=96=87?=)
- <chinwen.chang@mediatek.com>, Nicholas Tang (=?UTF-8?Q?=E9=84=AD=E7=A7=A6?=
- =?UTF-8?Q?=E8=BC=9D?=) <nicholas.tang@mediatek.com>, James Hsu (
- =?UTF-8?Q?=E5=BE=90=E6=85=B6=E8=96=B0?=) <James.Hsu@mediatek.com>, Yee Lee
- (=?UTF-8?Q?=E6=9D=8E=E5=BB=BA=E8=AA=BC?=) <Yee.Lee@mediatek.com>,
- "linux-mm@kvack.org" <linux-mm@kvack.org>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- kasan-dev <kasan-dev@googlegroups.com>
-Subject: Re: [PATCH] kmemleak: fix kmemleak false positive report with HW
- tag-based kasan enable
-Message-Id: <20211127162028.07d1a9fc392d91e7d234daae@linux-foundation.org>
-In-Reply-To: <CA+fCnZchvHjU9G_SSf_M2--jHPqEa6PEr3u_5q-wJWvZK4N2pA@mail.gmail.com>
-References: <20211118054426.4123-1-Kuan-Ying.Lee@mediatek.com>
- <754511d9a0368065768cc3ad8037184d62c3fbd1.camel@mediatek.com>
- <CA+fCnZchvHjU9G_SSf_M2--jHPqEa6PEr3u_5q-wJWvZK4N2pA@mail.gmail.com>
-X-Mailer: Sylpheed 3.5.1 (GTK+ 2.24.31; x86_64-pc-linux-gnu)
-Mime-Version: 1.0
+ id 1mrEr4-00FGfF-KY
+ for linux-mediatek@lists.infradead.org; Sun, 28 Nov 2021 07:44:12 +0000
+X-UUID: 92452658af4a447c9b86bb3e06eaa43c-20211128
+X-UUID: 92452658af4a447c9b86bb3e06eaa43c-20211128
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <deren.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 485007268; Sun, 28 Nov 2021 00:44:03 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 27 Nov 2021 23:44:02 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 28 Nov 2021 15:44:00 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sun, 28 Nov 2021 15:44:00 +0800
+From: Deren Wu <Deren.Wu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo.bianconi@redhat.com>
+CC: Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, 
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>, "Eric-SY
+ Chang" <Eric-SY.Chang@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh
+ <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang
+ <Eric.Liang@mediatek.com>, Stella Chang <Stella.Chang@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>, "Shayne
+ Chen" <shayne.chen@mediatek.com>, linux-wireless
+ <linux-wireless@vger.kernel.org>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Deren Wu <deren.wu@mediatek.com>
+Subject: [PATCH] mt76: mt7921s: fix bus hang with wrong privilege
+Date: Sun, 28 Nov 2021 15:43:59 +0800
+Message-ID: <430016f5be77f69b047271081ed891f164bfe65d.1638081217.git.deren.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211127_162034_330083_05C45EE0 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20211127_234410_708523_C75D5B16 
+X-CRM114-Status: UNSURE (   8.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,46 +79,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 25 Nov 2021 17:13:36 +0100 Andrey Konovalov <andreyknvl@gmail.com> wrote:
+From: Deren Wu <deren.wu@mediatek.com>
 
-> > > kmemleak_object *object)
-> > >  static struct kmemleak_object *lookup_object(unsigned long ptr, int
-> > > alias)
-> > >  {
-> > >       struct rb_node *rb = object_tree_root.rb_node;
-> > > +     unsigned long untagged_ptr = (unsigned
-> > > long)kasan_reset_tag((void *)ptr);
-> > >
-> > >       while (rb) {
-> > >               struct kmemleak_object *object =
-> > >                       rb_entry(rb, struct kmemleak_object, rb_node);
-> > > -             if (ptr < object->pointer)
-> > > +             unsigned long untagged_objp;
-> > > +
-> > > +             untagged_objp = (unsigned long)kasan_reset_tag((void
-> > > *)object->pointer);
-> 
-> The two lines above can be squashed together.
+Accroding to chip hw flow, mt7921s need to re-acquire privilege
+again before normal running. Otherwise, the bus may be stuck in
+an abnormal status.
 
-That would make a too-long line even longer.  In fact I think it's
-better to go the other way:
+Tested-by: Leon Yen <Leon.Yen@mediatek.com>
+Co-developed-by: Eric-SY Chang <Eric-SY.Chang@mediatek.com>
+Signed-off-by: Eric-SY Chang <Eric-SY.Chang@mediatek.com>
+Co-developed-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
+Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
---- a/mm/kmemleak.c~kmemleak-fix-kmemleak-false-positive-report-with-hw-tag-based-kasan-enable-fix
-+++ a/mm/kmemleak.c
-@@ -384,10 +384,10 @@ static struct kmemleak_object *lookup_ob
- 	unsigned long untagged_ptr = (unsigned long)kasan_reset_tag((void *)ptr);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 6ada1ebe7d68..1227d626e9d3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -720,6 +720,17 @@ static int mt7921_load_patch(struct mt7921_dev *dev)
+ 	if (ret)
+ 		dev_err(dev->mt76.dev, "Failed to start patch\n");
  
- 	while (rb) {
--		struct kmemleak_object *object =
--			rb_entry(rb, struct kmemleak_object, rb_node);
-+		struct kmemleak_object *object;
- 		unsigned long untagged_objp;
- 
-+		object = rb_entry(rb, struct kmemleak_object, rb_node);
- 		untagged_objp = (unsigned long)kasan_reset_tag((void *)object->pointer);
- 
- 		if (untagged_ptr < untagged_objp)
-_
++	if (mt76_is_sdio(&dev->mt76)) {
++		/* activate again */
++		ret = __mt7921_mcu_fw_pmctrl(dev);
++		if (ret)
++			return ret;
++
++		ret = __mt7921_mcu_drv_pmctrl(dev);
++		if (ret)
++			return ret;
++	}
++
+ out:
+ 	sem = mt76_connac_mcu_patch_sem_ctrl(&dev->mt76, false);
+ 	switch (sem) {
+-- 
+2.18.0
 
 
 _______________________________________________
