@@ -4,67 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C04C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 02:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA9CC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 03:42:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AwAXSUHaAgfDokFkHNjESf5yU+nmaM8MXE+ywbMXPH4=; b=BCwWdvGD2STDoB
-	gEUDWuobyRd/URrVsOXTdF73iE8e2Dn/8tOWkJFEC4fzr3cQwzrW+lQRVRtdfjBOZdD/BxoCXy9eZ
-	0gPeVmBqTnGXre+TNJKH4kaV6w/SG+TjJd85FyRVoLsRLuzWiMu7+RsluH73qYbCZzjxuqWZ6rEMk
-	mOYvUACY0MnAGFuxX9UqNMZHyP/8ltjrK57+ypF9eFk38ESaSYeZRMA4/FkcEczrIxTBuwrs65cZG
-	tC+dH9b38vTULroU9g2hYdH05lCsNfuzloQmrSGr8/q90ReQ4mOvfXz1QOeyJfgniNVm5MTQ9Fqen
-	7iqDBMlcNOyjhjVhR/eA==;
+	List-Owner; bh=kRQ+SNXSs/sVLH8mtkMu5ljrsmP8FbVlpjIIwdkH4NM=; b=tGVXtvxXL5kbjZ
+	Ua87tUSpvBPcZhCSqjsMRl/DNJSuBYPkaGzgcZkmWfLbugFV8ap+BLk06ox9T57lASSpLfjv8FTQ6
+	wMI2Q/8uT//PYV29L4Y85UKdVprKbbwKrQEXSAfPT6xWumdIZ0umfLItM9t6o9hmlSrt4wHO5SEjx
+	nnZ/Yp/NKhIWjZ4hTKg5FbLN5JJwHTGf3mNX93X5h1LNvd0tA8G+ynVNaeIW3f42Tp00QbXFXFlKc
+	ewtk3ersy4RVz/ZjQCYzHTNsNqDluR8K0GAjnxCBeGKuytCJHjnh/spz+o++9mikhfB15+ouTlij2
+	TCJ4Q8yI7FDMjYRE50YQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrWnA-00H8P7-VG; Mon, 29 Nov 2021 02:53:20 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mrXYn-00HCQE-Bf; Mon, 29 Nov 2021 03:42:33 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrWn7-00H8NK-As; Mon, 29 Nov 2021 02:53:20 +0000
-X-UUID: f65ccae42b984d08a1ed18b3ade543f4-20211128
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=kD09jtn2dVIcl3Vsg9OLSofmPvBwrfGGIswuDPvN4T0=; 
- b=U4YMdNp9oXuxWqgFZ5KGoPSBeqdJ6XDmfM79WmZb3Aq2M/Ti6HE8ikAWh6MYLorGRDhdGLFYyBPP/T7yWE9mCOAcUD3kJQLtMqBNyozkLQOqvyS+KGj7yQZdRMtI35bii46MFyNIEerW9L5vXxlrbyD4gy/LcjB/zUOKlSa1rik=;
-X-UUID: f65ccae42b984d08a1ed18b3ade543f4-20211128
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <jianjun.wang@mediatek.com>)
+ id 1mrXYT-00HCF7-Aa; Mon, 29 Nov 2021 03:42:14 +0000
+X-UUID: 3130a88a3cc241f68ff4bfb7c0c8fb7c-20211128
+X-UUID: 3130a88a3cc241f68ff4bfb7c0c8fb7c-20211128
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 320474898; Sun, 28 Nov 2021 19:53:09 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 28 Nov 2021 18:52:02 -0800
+ with ESMTP id 134279340; Sun, 28 Nov 2021 20:42:07 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 28 Nov 2021 19:42:06 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Nov 2021 10:52:00 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 29 Nov 2021 10:51:59 +0800
-Message-ID: <253e497abbcff425428ac8b7f30cebce718a63c9.camel@mediatek.com>
-Subject: Re: [PATCH v3] PCI: mediatek-gen3: Disable DVFSRC voltage request
-From: Jianjun Wang <jianjun.wang@mediatek.com>
-To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring
- <robh+dt@kernel.org>, Krzysztof =?UTF-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 29 Nov 2021 11:42:05 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Mon, 29 Nov 2021 11:42:03 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <qizhong.cheng@mediatek.com>, <Ryan-JH.Yu@mediatek.com>, Tzung-Bi Shih
- <tzungbi@google.com>
-Date: Mon, 29 Nov 2021 10:51:59 +0800
-In-Reply-To: <b18f74b8831492c4a75f45fa778c359fd80184d0.camel@mediatek.com>
-References: <20211015063602.29058-1-jianjun.wang@mediatek.com>
- <b18f74b8831492c4a75f45fa778c359fd80184d0.camel@mediatek.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v11,
+ 01/19] media: mtk-vcodec: Get numbers of register bases from DT
+Date: Mon, 29 Nov 2021 11:41:43 +0800
+Message-ID: <20211129034201.5767-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211129034201.5767-1-yunfei.dong@mediatek.com>
+References: <20211129034201.5767-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211128_185318_807453_5BDE37B5 
-X-CRM114-Status: GOOD (  24.97  )
+X-CRM114-CacheID: sfid-20211128_194213_393674_B3DE0161 
+X-CRM114-Status: GOOD (  17.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,73 +83,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Maintainers,
+Different platform may has different numbers of register bases. Gets the
+numbers of register bases from DT (sizeof(u32) * 4 bytes for each).
 
-Just gentle ping for this patch, is there anything I need to do to get
-this patch merged?
+Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 37 ++++++++++++++-----
+ 1 file changed, 28 insertions(+), 9 deletions(-)
 
-Thanks.
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index e6e6a8203eeb..59caf2163349 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -78,6 +78,30 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	return IRQ_HANDLED;
+ }
+ 
++static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
++{
++	struct platform_device *pdev = dev->plat_dev;
++	int reg_num, i;
++
++	/* Sizeof(u32) * 4 bytes for each register base. */
++	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
++		sizeof(u32) * 4);
++	if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE) {
++		dev_err(&pdev->dev, "Invalid register property size: %d\n", reg_num);
++		return -EINVAL;
++	}
++
++	for (i = 0; i < reg_num; i++) {
++		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
++		if (IS_ERR(dev->reg_base[i]))
++			return PTR_ERR(dev->reg_base[i]);
++
++		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
++	}
++
++	return 0;
++}
++
+ static int fops_vcodec_open(struct file *file)
+ {
+ 	struct mtk_vcodec_dev *dev = video_drvdata(file);
+@@ -206,7 +230,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+-	int i, ret;
++	int ret;
+ 
+ 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+ 	if (!dev)
+@@ -238,14 +262,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_dec_pm;
+ 	}
+ 
+-	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
+-		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+-		if (IS_ERR((__force void *)dev->reg_base[i])) {
+-			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+-			goto err_res;
+-		}
+-		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+-	}
++	ret = mtk_vcodec_get_reg_bases(dev);
++	if (ret)
++		goto err_res;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+ 	if (res == NULL) {
+-- 
+2.25.1
 
-On Tue, 2021-11-09 at 14:10 +0800, Jianjun Wang wrote:
-> 
-> On Fri, 2021-10-15 at 14:36 +0800, Jianjun Wang wrote:
-> > When the DVFSRC (dynamic voltage and frequency scaling resource
-> > collector)
-> > feature is not implemented, the PCIe hardware will assert a voltage
-> > request
-> > signal when exit from the L1 PM Substates to request a specific
-> > Vcore
-> > voltage, but cannot receive the voltage ready signal, which will
-> > cause
-> > the link to fail to exit the L1 PM Substates.
-> > 
-> > Disable DVFSRC voltage request by default, we need to find a common
-> > way to
-> > enable it in the future.
-> > 
-> > Fixes: d3bf75b579b9 ("PCI: mediatek-gen3: Add MediaTek Gen3 driver
-> > for MT8192")
-> > Signed-off-by: Jianjun Wang <jianjun.wang@mediatek.com>
-> > Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-> > Tested-by: Qizhong Cheng <qizhong.cheng@mediatek.com>
-> > ---
-> >  drivers/pci/controller/pcie-mediatek-gen3.c | 8 ++++++++
-> >  1 file changed, 8 insertions(+)
-> > 
-> > diff --git a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > index f3aeb8d4eaca..79fb12fca6a9 100644
-> > --- a/drivers/pci/controller/pcie-mediatek-gen3.c
-> > +++ b/drivers/pci/controller/pcie-mediatek-gen3.c
-> > @@ -79,6 +79,9 @@
-> >  #define PCIE_ICMD_PM_REG		0x198
-> >  #define PCIE_TURN_OFF_LINK		BIT(4)
-> >  
-> > +#define PCIE_MISC_CTRL_REG		0x348
-> > +#define PCIE_DISABLE_DVFSRC_VLT_REQ	BIT(1)
-> > +
-> >  #define PCIE_TRANS_TABLE_BASE_REG	0x800
-> >  #define PCIE_ATR_SRC_ADDR_MSB_OFFSET	0x4
-> >  #define PCIE_ATR_TRSL_ADDR_LSB_OFFSET	0x8
-> > @@ -297,6 +300,11 @@ static int mtk_pcie_startup_port(struct
-> > mtk_pcie_port *port)
-> >  	val &= ~PCIE_INTX_ENABLE;
-> >  	writel_relaxed(val, port->base + PCIE_INT_ENABLE_REG);
-> >  
-> > +	/* Disable DVFSRC voltage request */
-> > +	val = readl_relaxed(port->base + PCIE_MISC_CTRL_REG);
-> > +	val |= PCIE_DISABLE_DVFSRC_VLT_REQ;
-> > +	writel_relaxed(val, port->base + PCIE_MISC_CTRL_REG);
-> > +
-> >  	/* Assert all reset signals */
-> >  	val = readl_relaxed(port->base + PCIE_RST_CTRL_REG);
-> >  	val |= PCIE_MAC_RSTB | PCIE_PHY_RSTB | PCIE_BRG_RSTB |
-> > PCIE_PE_RSTB;
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
