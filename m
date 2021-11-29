@@ -4,37 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DB0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 14:15:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CFD4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 14:21:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=DIJD7g2BeC9GjB80h3phv3fUcb0nRz8kKJOmNMwHt9Y=; b=F1IpjPPocVf5nt
-	GcXW2KgoUmopOfqvSQlDeQLc9DR+eqBRvW4KWinrrAuV0Km+8rJJAlsl5ar4b+/akzBUS5FpGzJuf
-	PXq6/9cDD/rrr0wPGE5bdty0bky3xn95xv2YPljDsIAjHkKiMtffr8dquRyRPihs85J6A0Qt2eaHi
-	ho6Rd3Relnrg6u225RBSCB4T6ZO8KIYQ1mgSMiHZ2Jule+bYV/I/9k4FhCyqEX/ztI2qNoAxHalgw
-	RvMyDePMZCh3+qqjR6URstGJuGjRkiz+QuMgNUsT1qQCIpMNUnsJ1RUpIu/j+JAtFsp2mEqCfcddu
-	q3mrgMj2dBMJZ9sFUSZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=//HbGU9eaiDtQa9tS6bVe8+46Zbb4y6inkwIiX9LmlA=; b=M5wCr7b+fdJ+tO
+	7I1cLouA1CtAU+CapOjHOvqas83Fptwm/P+vSTyTfAnz2jNdfAXlKppX6lAQeMQwGQwA1ET+KkexQ
+	qUSxR9AVb56lkP3cs7rGTj/P35I2RVLp+h4pX9XHsHyee0wQpQRZTlpZcnIHJD/Daxgk5fyknbFZR
+	Lboc83XVCtesHCkC2oGAy2/O4t/f2jTlfds1l9ncelYfHjd/2D7EGJo31vjFQTrtK7l0NYK3r/qyw
+	pYu+rJm71bpkSiqdfiICgGw8y8oyHWxh8SiTB3zoIAkTuc0I7ZjVgGjHLJPqys5t2Zm5f6EPE23LK
+	4D0z3XBBqpUDYVZprk4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrhQl-000yEu-1A; Mon, 29 Nov 2021 14:14:55 +0000
+	id 1mrhWt-000zs2-Ie; Mon, 29 Nov 2021 14:21:15 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrhQM-000y6w-1c; Mon, 29 Nov 2021 14:14:31 +0000
-X-UUID: c6ed035c9f2f48b7babf344a86d7f62a-20211129
-X-UUID: c6ed035c9f2f48b7babf344a86d7f62a-20211129
+ id 1mrhWq-000zqp-2R; Mon, 29 Nov 2021 14:21:13 +0000
+X-UUID: 853efdbe557240b49863c2989c44995d-20211129
+X-UUID: 853efdbe557240b49863c2989c44995d-20211129
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1162938429; Mon, 29 Nov 2021 07:14:22 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Nov 2021 06:11:12 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ with ESMTP id 309645096; Mon, 29 Nov 2021 07:21:09 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Nov 2021 06:11:06 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
  Mon, 29 Nov 2021 22:11:05 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
@@ -47,15 +48,17 @@ CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <yc.hung@mediatek.com>, <daniel.baluta@nxp.com>,
  <pierre-louis.bossart@linux.intel.com>
-Subject: [PATCH v2 0/4] ASoC: mediatek: Update MT8195 machine driver
-Date: Mon, 29 Nov 2021 22:10:53 +0800
-Message-ID: <20211129141057.12422-1-trevor.wu@mediatek.com>
+Subject: [PATCH v2 2/4] dt-bindings: mediatek: mt8195: add model property
+Date: Mon, 29 Nov 2021 22:10:55 +0800
+Message-ID: <20211129141057.12422-3-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211129141057.12422-1-trevor.wu@mediatek.com>
+References: <20211129141057.12422-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_061430_111237_3AFD900E 
-X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-CacheID: sfid-20211129_062112_129118_DF2F2FCE 
+X-CRM114-Status: UNSURE (   8.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,29 +76,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series of patches adds support for RT5682s headset codec in mt8195
-machine drivers, and SOF support on card mt8195-mt6359-rt1019-rt5682 is
-also included.
-Patches are based on broonie tree "for-next" branch.
+This patch adds the description of model property used to specify card
+name from dts.
 
-Changes since v1:
-  - remove patch3 and patch4 in v1
-  - add SOF support on card mt8195-mt6359-rt1012-rt5682
-  - add new propertes to dt-bindings for mt8195-mt6359-rt1019-rt5682
+Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Acked-by: Rob Herring <robh@kernel.org>
+---
+ .../bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml           | 4 ++++
+ .../bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml           | 4 ++++
+ 2 files changed, 8 insertions(+)
 
-Trevor Wu (4):
-  ASoC: mediatek: mt8195: add headset codec rt5682s support
-  dt-bindings: mediatek: mt8195: add model property
-  ASoC: mediatek: mt8195: add sof support on mt8195-mt6359-rt1019-rt5682
-  dt-bindings: mediatek: mt8195: add adsp and dai-link property
-
- .../sound/mt8195-mt6359-rt1011-rt5682.yaml    |   4 +
- .../sound/mt8195-mt6359-rt1019-rt5682.yaml    |  14 +
- sound/soc/mediatek/Kconfig                    |   2 +
- .../mt8195/mt8195-mt6359-rt1011-rt5682.c      |  29 +-
- .../mt8195/mt8195-mt6359-rt1019-rt5682.c      | 347 +++++++++++++++++-
- 5 files changed, 370 insertions(+), 26 deletions(-)
-
+diff --git a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml
+index d354c30d3377..cf6ad7933e23 100644
+--- a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1011-rt5682.yaml
+@@ -16,6 +16,10 @@ properties:
+   compatible:
+     const: mediatek,mt8195_mt6359_rt1011_rt5682
+ 
++  model:
++    $ref: /schemas/types.yaml#/definitions/string
++    description: User specified audio sound card name
++
+   mediatek,platform:
+     $ref: "/schemas/types.yaml#/definitions/phandle"
+     description: The phandle of MT8195 ASoC platform.
+diff --git a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
+index 20bc0ffd0e34..e6786dece9a3 100644
+--- a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
++++ b/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
+@@ -16,6 +16,10 @@ properties:
+   compatible:
+     const: mediatek,mt8195_mt6359_rt1019_rt5682
+ 
++  model:
++    $ref: /schemas/types.yaml#/definitions/string
++    description: User specified audio sound card name
++
+   mediatek,platform:
+     $ref: "/schemas/types.yaml#/definitions/phandle"
+     description: The phandle of MT8195 ASoC platform.
 -- 
 2.18.0
 
