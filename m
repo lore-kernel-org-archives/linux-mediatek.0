@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82185C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 14:15:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64DB0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 14:15:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9g9YDNuATKI1uU1X+cNdyEmRaIX0nt2cONz/XH1+8Hg=; b=PI7AMyxwpsdJf0
-	4u69SpXFW2RGpHiTqClNuuuXKq6TWkCznbaVBypbSc0fxoTSzOkhry2cVLoNMjfq+tRnsOUojwtr8
-	LM+g5y6GioMvY2QBiQdZzFC4h97rxDs+5w+QGhG9B2vNus7rZZRuC+y34EzG3oz8yyJPEIAVHfikp
-	uP4DDfzA8i2qSlxBhwey0o5L6fknvTapJhNzJKMsMlebN86fkoDDkyA3wm9vEJZEzOF90q5IKl6t4
-	kE/TQMd5Cwlpod1jWyt4cmc4IvY1edIW+P8xeL2PVzDBoUGk+iZpMTT6vQdMnOVYtjGJEb+E3v9rv
-	ot7IMl4sEfc2adgfiVLw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DIJD7g2BeC9GjB80h3phv3fUcb0nRz8kKJOmNMwHt9Y=; b=F1IpjPPocVf5nt
+	GcXW2KgoUmopOfqvSQlDeQLc9DR+eqBRvW4KWinrrAuV0Km+8rJJAlsl5ar4b+/akzBUS5FpGzJuf
+	PXq6/9cDD/rrr0wPGE5bdty0bky3xn95xv2YPljDsIAjHkKiMtffr8dquRyRPihs85J6A0Qt2eaHi
+	ho6Rd3Relnrg6u225RBSCB4T6ZO8KIYQ1mgSMiHZ2Jule+bYV/I/9k4FhCyqEX/ztI2qNoAxHalgw
+	RvMyDePMZCh3+qqjR6URstGJuGjRkiz+QuMgNUsT1qQCIpMNUnsJ1RUpIu/j+JAtFsp2mEqCfcddu
+	q3mrgMj2dBMJZ9sFUSZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrhQk-000yEP-5X; Mon, 29 Nov 2021 14:14:54 +0000
+	id 1mrhQl-000yEu-1A; Mon, 29 Nov 2021 14:14:55 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrhQM-000y79-1Z; Mon, 29 Nov 2021 14:14:31 +0000
-X-UUID: f231e868f98b4fe69ecfca5d2702b30e-20211129
-X-UUID: f231e868f98b4fe69ecfca5d2702b30e-20211129
+ id 1mrhQM-000y6w-1c; Mon, 29 Nov 2021 14:14:31 +0000
+X-UUID: c6ed035c9f2f48b7babf344a86d7f62a-20211129
+X-UUID: c6ed035c9f2f48b7babf344a86d7f62a-20211129
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <trevor.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1524763162; Mon, 29 Nov 2021 07:14:22 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1162938429; Mon, 29 Nov 2021 07:14:22 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 29 Nov 2021 06:11:12 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Nov 2021 22:11:05 +0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 29 Nov 2021 22:11:05 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Mon, 29 Nov 2021 22:11:05 +0800
@@ -47,18 +47,16 @@ CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <yc.hung@mediatek.com>, <daniel.baluta@nxp.com>,
  <pierre-louis.bossart@linux.intel.com>
-Subject: [PATCH v2 4/4] dt-bindings: mediatek: mt8195: add adsp and dai-link
- property
-Date: Mon, 29 Nov 2021 22:10:57 +0800
-Message-ID: <20211129141057.12422-5-trevor.wu@mediatek.com>
+Subject: [PATCH v2 0/4] ASoC: mediatek: Update MT8195 machine driver
+Date: Mon, 29 Nov 2021 22:10:53 +0800
+Message-ID: <20211129141057.12422-1-trevor.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211129141057.12422-1-trevor.wu@mediatek.com>
-References: <20211129141057.12422-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_061430_116430_439F6667 
-X-CRM114-Status: GOOD (  10.57  )
+X-CRM114-CacheID: sfid-20211129_061430_111237_3AFD900E 
+X-CRM114-Status: UNSURE (   8.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,35 +73,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-1. adsp phandle can be assigned to the machine driver if adsp is enabled.
-2. dai-link supported in the sound card can be specified from DTS.
+This series of patches adds support for RT5682s headset codec in mt8195
+machine drivers, and SOF support on card mt8195-mt6359-rt1019-rt5682 is
+also included.
+Patches are based on broonie tree "for-next" branch.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- .../bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml    | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+Changes since v1:
+  - remove patch3 and patch4 in v1
+  - add SOF support on card mt8195-mt6359-rt1012-rt5682
+  - add new propertes to dt-bindings for mt8195-mt6359-rt1019-rt5682
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml b/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
-index e6786dece9a3..8f177e02ad35 100644
---- a/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8195-mt6359-rt1019-rt5682.yaml
-@@ -32,6 +32,16 @@ properties:
-     $ref: "/schemas/types.yaml#/definitions/phandle"
-     description: The phandle of MT8195 HDMI codec node.
- 
-+  mediatek,adsp:
-+    $ref: "/schemas/types.yaml#/definitions/phandle"
-+    description: The phandle of MT8195 ADSP platform.
-+
-+  mediatek,dai-link:
-+    $ref: /schemas/types.yaml#/definitions/string-array
-+    description:
-+      A list of the desired dai-links in the sound card. Each entry is a
-+      name defined in the machine driver.
-+
- additionalProperties: false
- 
- required:
+Trevor Wu (4):
+  ASoC: mediatek: mt8195: add headset codec rt5682s support
+  dt-bindings: mediatek: mt8195: add model property
+  ASoC: mediatek: mt8195: add sof support on mt8195-mt6359-rt1019-rt5682
+  dt-bindings: mediatek: mt8195: add adsp and dai-link property
+
+ .../sound/mt8195-mt6359-rt1011-rt5682.yaml    |   4 +
+ .../sound/mt8195-mt6359-rt1019-rt5682.yaml    |  14 +
+ sound/soc/mediatek/Kconfig                    |   2 +
+ .../mt8195/mt8195-mt6359-rt1011-rt5682.c      |  29 +-
+ .../mt8195/mt8195-mt6359-rt1019-rt5682.c      | 347 +++++++++++++++++-
+ 5 files changed, 370 insertions(+), 26 deletions(-)
+
 -- 
 2.18.0
 
