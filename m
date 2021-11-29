@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78786C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 22:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B75EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 22:02:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JaxbXgqpxwF8Z3bEKw2Z8QWCkwh0J7syhNWNkgjGWwc=; b=y919VzJaBTqwEm
-	uk4seTEWdneTzNZGSHjxoClpdmsAXthaOtZ90oQRqHUS6hWeIEMNAQiR21WCuJzBZwoX9yDeM7oGq
-	oIimLRSypX/o98tCjRRGxP3RnhtHAG3Tj+L0VnF35XdsOHmstKJ4uCI7Ru96XbCFhl+WzwC0coAy2
-	aTLASUZfX3Br2C7VBgP0U90N+i6XTa8uktXhH3A81wbrc9cPtcTZ0RgYaPTOB3TEjx+ZfkKCsplGo
-	MB9/3Y/xV5TKAyh1cSaW2KbPBY7HNPc9APsnxcQQqoI3uw5d+o0tAEFD8xWV9u/xYrPl2GTfGgs+Z
-	M45SRQO4uNq4JRN4Xifg==;
+	List-Owner; bh=JaxbXgqpxwF8Z3bEKw2Z8QWCkwh0J7syhNWNkgjGWwc=; b=JJlCcArGPodlQ1
+	TubQrz9JE4iANaCRQiiIX9X5VjQUmb/HCsP1kyh+GVvkCjyFr+cUwLtAbF/K6wiFB5oXMyKoV96bK
+	uP02gRiX7hAdG5SUoEMEVFXX0oa2e7fkBTRKovO+GAibfXksMnUZBhxwwe8FjXmX0xoHiYL0+x1JS
+	3G554sLu/ogaOS+lXfzbs8gRWVC8XvPzcb7UoFNeCuXRVDOfrD0pxwUWLXh0RgmM2HzXqFsSEOK42
+	0NkL9XH9Sw/2S0tyGXqZYFJrijJPFEif5y+KRzCNmXC1i0xyT4NYCW9nRUefcNlUtd35JxV7fTovR
+	9ahRWfM8JiWebp4h73Cg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mroh2-002r1Z-Qc; Mon, 29 Nov 2021 22:00:12 +0000
+	id 1mroii-002rAf-SR; Mon, 29 Nov 2021 22:01:56 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrogz-002r14-43
- for linux-mediatek@lists.infradead.org; Mon, 29 Nov 2021 22:00:11 +0000
-X-UUID: caaba5b961024914a654fdf3e16fda4e-20211129
-X-UUID: caaba5b961024914a654fdf3e16fda4e-20211129
+ id 1mroig-002rAN-N8
+ for linux-mediatek@lists.infradead.org; Mon, 29 Nov 2021 22:01:56 +0000
+X-UUID: 7f10341a13314879992465faaf77f246-20211129
+X-UUID: 7f10341a13314879992465faaf77f246-20211129
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1737819832; Mon, 29 Nov 2021 15:00:04 -0700
+ with ESMTP id 2046547727; Mon, 29 Nov 2021 15:01:52 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Nov 2021 14:00:03 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Nov 2021 14:01:51 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 30 Nov 2021 06:00:01 +0800
+ Tue, 30 Nov 2021 06:01:49 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 30 Nov 2021 06:00:01 +0800
+ Frontend Transport; Tue, 30 Nov 2021 06:01:49 +0800
 From: <sean.wang@mediatek.com>
 To: <lb@semihalf.com>
 CC: <marcel@holtmann.org>, <johan.hedberg@gmail.com>, <luiz.dentz@gmail.com>, 
  <upstream@semihalf.com>, <linux-bluetooth@vger.kernel.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Sean
  Wang" <sean.wang@mediatek.com>
-Subject: =?UTF-8?q?Re=3A?=
-Date: Tue, 30 Nov 2021 05:59:58 +0800
-Message-ID: <1638223198-31652-1-git-send-email-sean.wang@mediatek.com>
+Subject: =?UTF-8?q?Re=3A=5BPATCH=20v1=5D=20Bluetooth=3A=20btmtksdio=3A=20enable=20msft=20opcode?=
+Date: Tue, 30 Nov 2021 06:01:48 +0800
+Message-ID: <1638223308-32622-1-git-send-email-sean.wang@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <20211126221034.21331-1-lukasz.bartosik@semihalf.com--annotate>
 References: <20211126221034.21331-1-lukasz.bartosik@semihalf.com--annotate>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_140009_193918_E1B13BBC 
+X-CRM114-CacheID: sfid-20211129_140154_792436_483B28A5 
 X-CRM114-Status: UNSURE (   8.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
