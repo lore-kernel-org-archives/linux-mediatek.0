@@ -4,55 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A00C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 15:54:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40444C43217
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 18:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZbNf0HRUO05pnnBbV5FW6zMWJN5dWQpyAisbEM6HY8w=; b=ch4osOZLcUeTJ6
-	byUs4tXBdapkNQC2INmsw0j8caRFSXFSpg6xqlfD6DYT2il9+yJVTS/45DkfPVIqg57do0ZV+Ls5o
-	V4diraMd0tdG4lIRQHtkOss71nsDC3inv33NEEp2eQKVL6CdTd05zjLXa7VsUfnRmugYCCMNzygmq
-	h66qq9jUV+HatZt4mkWit4/SjGnWj8nfLkOr96mkJpri682+FDwq8BQK33OrHAb+GK/S6hX5OIkpM
-	0icczb4OYwO3wdmaYmQFhqmv6ZrL93TgRIpIgROnaP/zS/gqyMAdsrpyNYteI7HevlBfR53oCjkIG
-	kWLvuDWGux4eqjNrnu1A==;
+	List-Owner; bh=0Wyr+Ql8syk8m5fSSRREjxMyRH+FIaaR60Z3POc0fCI=; b=Oj7IwymllIYxdL
+	vLVkTpeFK9FCwOa6TXkKjDoLe+SdotSi3WSMag3QNjzNP9kqAfGbXODtW3RvvCXDKaFvouDC0ADjD
+	Vt35AaEhaHO83c5zDYPgQeTeG/13wyfbn8Aqv47DFuAlNMdTNcE0jdkXG4WnoDa07jbFH8yudKGJU
+	Ct9D9Hs5kmgP6vB5a8uT3+qrWF3LdlEBaUikQVFg3aJkEsJGuY86/3t65uNA3CpmHOxZkygFX3P7h
+	SscikYXuZaBs+bkJ0e9KL6rXGJnZwb+JaBPZUD8Gn7eEodhVa/T284uyzeFRIYqWrNolwgMMcFnyG
+	sK0K3Sxd8kEMu9Rvz2CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrizF-001LdN-AX; Mon, 29 Nov 2021 15:54:37 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1mrl1u-001hic-9H; Mon, 29 Nov 2021 18:05:30 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mriz1-001La1-L9; Mon, 29 Nov 2021 15:54:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=ZJSBpFdj1oEKhmlkmpUI0uYMYH0kurbkS/vAGZiLCBY=; b=Uf4BM129iOigTJAPncAzFOTavP
- tRw4WS6kcBSVvJqG1YQOnKp0KITqnrrxlORzbx1Lk26cjQm682afvwVDBSi3MG22QHB/NiQC1xcpc
- M4E7smBv/+hfh+HBLCV1FHz3OydQ7jI6cwEVwUdIjjOF/hyb1yfRiMT4439uDIQQrgvQ=;
-Received: from p54ae943f.dip0.t-ipconnect.de ([84.174.148.63]
- helo=localhost.localdomain)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1mrif0-0000mo-Bb; Mon, 29 Nov 2021 16:33:42 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: linux-arm-kernel@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: john@phrozen.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v5 10/13] ARM: dts: Add PCIe support for Airoha EN7523
-Date: Mon, 29 Nov 2021 16:33:26 +0100
-Message-Id: <20211129153330.37719-11-nbd@nbd.name>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20211129153330.37719-1-nbd@nbd.name>
-References: <20211129153330.37719-1-nbd@nbd.name>
+ id 1mrl1h-001heC-1b
+ for linux-mediatek@lists.infradead.org; Mon, 29 Nov 2021 18:05:18 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id t11so36071260ljh.6
+ for <linux-mediatek@lists.infradead.org>; Mon, 29 Nov 2021 10:05:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IDi3zvjd6u7ZBVvXAka/LTSyAvUkqeh+L5SnX6c8Zdk=;
+ b=ELtQ57DjVTWJPnvASv4jZtvg9xzVjpRXdLK6WadVUiqQO2Tejx2Y4rP/jZvsvwdaGM
+ wVK5qYNcJTRTVvihhUy6a3XfzO7ShXe3HSKg9CJ9S9TdxAt3X4+ddQNsKXsRbhOEV3Nn
+ NeS7l4DPoqAaH0j+Gm2rrnRobzgyBp+zZRI4nhmfoSItyMTQPe6HJsrb3a8uXIO7pAUp
+ d0pHSCno/fnC3Fp0q+W51eSWigYy/I5qIJhRZa/O1KEhI708OF8jeLET61Dg8b9kw0VH
+ st1/mw7gEQ1NVGLv+ANo/xqXiZgR94N5ykkWzVgrrh3SWq2UdJQ1DTZyuwBI86rq3HIq
+ HE3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IDi3zvjd6u7ZBVvXAka/LTSyAvUkqeh+L5SnX6c8Zdk=;
+ b=Xxyir1Uu5ZaTQ/cAR8whAyUo/lRZ7CTOXEKyO3WUaZF3ChJJL6K/KhnO4kqbQW6DNn
+ /DP9vT102p6MV8c6bAQgv35wf2wxEf61ROu4RvW0Yfvvnwb0SPydmh5Z6eghBoahrJx5
+ i6b45luhkHTifXWe/2eHj5lS3vKr7a8tNZDxYMlRYcJcTPFnpF5Xl2S1ce6/Jew/Z1AR
+ ObLvNHyOXh/l79Oui1PYakK6T4p63ihwt7XbHk7zkxw4lEjcpLKCxMe7Ezc353GEfUKs
+ Jbq/aoOaGn5czr8H9O1/D1nfKWP4m5jBtfnTyox9h87bYrXZg24B4jmzU+h+na0dMer5
+ QhvQ==
+X-Gm-Message-State: AOAM531a8ldBeWtI4ZhFsg3MzYUh7iILqm4pNL5kr6BDr07o51JQAv9p
+ SXg/FE3Imall74WfQs/7SJsMcjbw4gtqDlHMGSHbjw==
+X-Google-Smtp-Source: ABdhPJz00rJJqhFv+eY/G4mQJbhWwtM/vfpfxJXb8qlKInsjRYgNcLli9eLdqgC5XVztKYKpkdzK0NNalzo7Gw9l8CQ=
+X-Received: by 2002:a2e:95d3:: with SMTP id y19mr50881703ljh.175.1638209112922; 
+ Mon, 29 Nov 2021 10:05:12 -0800 (PST)
 MIME-Version: 1.0
+References: <YaB/JHP/pMbgRJ1O@kroah.com>
+ <20211126074904.88388-1-guangming.cao@mediatek.com>
+In-Reply-To: <20211126074904.88388-1-guangming.cao@mediatek.com>
+From: John Stultz <john.stultz@linaro.org>
+Date: Mon, 29 Nov 2021 10:05:00 -0800
+Message-ID: <CALAqxLVF1BPznzwjem2BcsDDoo5gMoBqjKEceZDLJan4zCtk3w@mail.gmail.com>
+Subject: Re: [PATCH v4] dma-buf: system_heap: Use 'for_each_sgtable_sg' in
+ pages free flow
+To: guangming.cao@mediatek.com
+Cc: greg@kroah.com, Brian.Starkey@arm.com, benjamin.gaignard@linaro.org, 
+ christian.koenig@amd.com, dri-devel@lists.freedesktop.org, labbott@redhat.com, 
+ linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, lmark@codeaurora.org, 
+ matthias.bgg@gmail.com, robin.murphy@arm.com, stable@vger.kernel.org, 
+ sumit.semwal@linaro.org, wsd_upstream@mediatek.com, 
+ kuan-ying.lee@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_075423_876685_8C707B23 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20211129_100517_098982_5C6DE374 
+X-CRM114-Status: GOOD (  11.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,103 +89,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This uses the MediaTek MT7622 PCIe driver, since the PCIe IP block is nearly
-identical to the one in MT7622
+On Thu, Nov 25, 2021 at 11:48 PM <guangming.cao@mediatek.com> wrote:
+>
+> From: Guangming <Guangming.Cao@mediatek.com>
+>
+> For previous version, it uses 'sg_table.nent's to traverse sg_table in pages
+> free flow.
+> However, 'sg_table.nents' is reassigned in 'dma_map_sg', it means the number of
+> created entries in the DMA adderess space.
+> So, use 'sg_table.nents' in pages free flow will case some pages can't be freed.
+>
+> Here we should use sg_table.orig_nents to free pages memory, but use the
+> sgtable helper 'for each_sgtable_sg'(, instead of the previous rather common
+> helper 'for_each_sg' which maybe cause memory leak) is much better.
+>
+> Fixes: d963ab0f15fb0 ("dma-buf: system_heap: Allocate higher order pages if available")
+> Signed-off-by: Guangming <Guangming.Cao@mediatek.com>
+> Reviewed-by: Robin Murphy <robin.murphy@arm.com>
+> Cc: <stable@vger.kernel.org> # 5.11.*
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- arch/arm/boot/dts/en7523-evb.dts |  8 +++++
- arch/arm/boot/dts/en7523.dtsi    | 60 ++++++++++++++++++++++++++++++++
- 2 files changed, 68 insertions(+)
+Thanks so much for catching this and sending in all the revisions!
 
-diff --git a/arch/arm/boot/dts/en7523-evb.dts b/arch/arm/boot/dts/en7523-evb.dts
-index 69754ef9a628..0a79f5f6c311 100644
---- a/arch/arm/boot/dts/en7523-evb.dts
-+++ b/arch/arm/boot/dts/en7523-evb.dts
-@@ -25,3 +25,11 @@ memory@80000000 {
- 		reg = <0x80000000 0x20000000>;
- 	};
- };
-+
-+&pcie0 {
-+	status = "okay";
-+};
-+
-+&pcie1 {
-+	status = "okay";
-+};
-diff --git a/arch/arm/boot/dts/en7523.dtsi b/arch/arm/boot/dts/en7523.dtsi
-index 0148958c607b..862da104d6f2 100644
---- a/arch/arm/boot/dts/en7523.dtsi
-+++ b/arch/arm/boot/dts/en7523.dtsi
-@@ -119,4 +119,64 @@ uart1: serial@1fbf0000 {
- 		clock-frequency = <1843200>;
- 		status = "okay";
- 	};
-+
-+
-+	pcie0: pcie@1fa91000 {
-+		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
-+		device_type = "pci";
-+		reg = <0x1fa91000 0x1000>;
-+		reg-names = "port0";
-+		linux,pci-domain = <0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "pcie_irq";
-+		clocks = <&scu EN7523_CLK_PCIE>;
-+		clock-names = "sys_ck0";
-+		bus-range = <0x00 0xff>;
-+		ranges = <0x82000000 0 0x20000000  0x20000000  0 0x8000000>;
-+		status = "disabled";
-+
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-+				<0 0 0 2 &pcie_intc0 1>,
-+				<0 0 0 3 &pcie_intc0 2>,
-+				<0 0 0 4 &pcie_intc0 3>;
-+		pcie_intc0: interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+		};
-+	};
-+
-+	pcie1: pcie@1fa92000 {
-+		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
-+		device_type = "pci";
-+		reg = <0x1fa92000 0x1000>;
-+		reg-names = "port1";
-+		linux,pci-domain = <1>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "pcie_irq";
-+		clocks = <&scu EN7523_CLK_PCIE>;
-+		clock-names = "sys_ck1";
-+		bus-range = <0x00 0xff>;
-+		ranges = <0x82000000 0 0x28000000  0x28000000  0 0x8000000>;
-+		status = "disabled";
-+
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-+				<0 0 0 2 &pcie_intc1 1>,
-+				<0 0 0 3 &pcie_intc1 2>,
-+				<0 0 0 4 &pcie_intc1 3>;
-+		pcie_intc1: interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+		};
-+	};
-+
- };
--- 
-2.30.1
-
+Reviewed-by: John Stultz <john.stultz@linaro.org>
 
 _______________________________________________
 Linux-mediatek mailing list
