@@ -4,76 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 989CCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 22:43:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6145FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 23:06:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SmBV4deeDPKyjBTI6VOwAs2OLiYnSvqR0vCsZdiw60Y=; b=HBJgyKsGZGg7mP
-	TtAsnflNEqo+5y9NkNlJpNmlopHevjvx/u0Ub9E3C9oO09WybRuYIthtj2DjSPCGlawLN8eaIu3Ot
-	YCid+vh9YAZ2+Ug57Ew8S7IdEFbybx71l5aG8ncB5ZvNu7bqQZdz5xPSFQKi+Ktfypp7cao7JcZ1I
-	8JvxY6UQpUIsjXMjTmyOGDANl+NfcR2n9gR8D8fIglWWAfV3VtnoR8ReqB0tNzB/bUyRfKsRnJqxZ
-	MZTH9axyXEonT/ZUhtf+c/ackdZAxGud0P9yDmZXc3IXqgAvCv4n3xPVi1VMsXVL+XgeVWCsi+OxI
-	Il5bvCRY1PLwEDisSufA==;
+	List-Owner; bh=ioo4022iLcRGD6hJe1GNXaq9P1l+rxW/0uS6ga+I9eU=; b=NC67YQd0Md38ZV
+	or+0UALOaH0vHxvI5XwY5gjD/dqcF3uteDEU3kNKLv5LnPGs19ScNT7fqpLHCu3FhNgL0hwbA8ztX
+	H0fE02vUFQO39Zap3316ZhAD3zT+6lYL+yN8czFoIl3yvuSCg0fE2WsxreqR02Rbvsviuxg2t0IYt
+	50I+dXCe20MY2mSyj2DR0AVwUDksf4db1Tn2/OitP3APqfPtYsDoCKX7vEKD+HKura1kVB2tPpQXk
+	nj9s12pktvF8wRWSf5s12OA3VBDwVO8vINWR0RJ+o88NrIMRNiMaVb5V2RjpPHhGk+zLIReFuN9iD
+	NrUZYay4VD0P33S0vPcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrpMR-002vtQ-6h; Mon, 29 Nov 2021 22:42:59 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1mrpia-0032ro-Gg; Mon, 29 Nov 2021 23:05:52 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrpM8-002vlh-Cq; Mon, 29 Nov 2021 22:42:41 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 133so15944016wme.0;
- Mon, 29 Nov 2021 14:42:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=googlemail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=dSJ69WXnC1WdVb/bXAkyJh3OPxw+iRBQYM0yKG9SCbc=;
- b=jxpzTHscIrNgspMXiFoVTJk0lBc6o0Zapq0FvaHXff2MvLPuzzp1f6YZtng2TbXySG
- TMwos1nkY+pX15tSV53a9Pg2NvdenlwbkSwMxXEArijQ0btkPpfCO28bpl/5dTLWVFPN
- t0ZeA8HG5XF8EAjNl63KhFZrJTyN7yRVOyIxZRAPjcc9YsH0BmVg8KzoFoi+OdIBCBet
- YBDEDDmgQ3LU+g7KvdjYoQ3dd+YxSgomukiWJIVBhj7t5x5jxN0EM3mKpRLwwaQN5MkT
- 8jR/tWxjV8l+mrIJXbUb46ZZz5OI0Kj8FYNLvtc+HPI609Z5R82DOKyXYe3reEWRr7Ro
- zWzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=dSJ69WXnC1WdVb/bXAkyJh3OPxw+iRBQYM0yKG9SCbc=;
- b=PPF+AX48SgTvTDJLrpYQS0+5Bp8yYiHLfRmvg8+6H41tSYZyzmyOPVXmqyyIrOxJku
- othd1NW3TkaVd20dYfBYN0F3U9DtX71WaniYzE8WNQuhG+Z7SrunT4P2PgazgkS5JB8Y
- 5efgtj5e5M8n83E2J5UbPnjZH/1iu64l4nlOArxdMU2SugITRgKTId0fuVlXgJJFT4Re
- /pmt/LM6jOkFBNuhzAaKuFDhANNF8tr5tACiCYglXF1l6xUnFwTFZBrb11Lx5opNztlq
- pqSKCgYc3vcGbJRoHwZZXJtFNqoYIDbLvqpTciYRaS5SDKNOrtrxIfuhRcDSYc2Ju4uT
- vVUw==
-X-Gm-Message-State: AOAM532RCyC43xiwHHlNwKz1dDqoZwc0jjNhUoj5cDglHwzEJgaJfVv5
- 1rb9OgoAybP2iA==
-X-Google-Smtp-Source: ABdhPJzCmAftKlAJF7pKfmu2M4+OGjYiKrbAcjK/ELLGn47QwqrbukpbA9WU3WWxGyWtm9i+SJrvKQ==
-X-Received: by 2002:a05:600c:4982:: with SMTP id h2mr887917wmp.4.1638225758085; 
- Mon, 29 Nov 2021 14:42:38 -0800 (PST)
-Received: from localhost (cpc154979-craw9-2-0-cust193.16-3.cable.virginm.net.
- [80.193.200.194])
- by smtp.gmail.com with ESMTPSA id a1sm19126546wri.89.2021.11.29.14.42.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Nov 2021 14:42:37 -0800 (PST)
-From: Colin Ian King <colin.i.king@googlemail.com>
-X-Google-Original-From: Colin Ian King <colin.i.king@gmail.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] ASoC: mediatek: mt8195: make several arrays static const
-Date: Mon, 29 Nov 2021 22:42:36 +0000
-Message-Id: <20211129224236.506883-1-colin.i.king@gmail.com>
-X-Mailer: git-send-email 2.33.1
+ id 1mrpiW-0032r2-5q
+ for linux-mediatek@lists.infradead.org; Mon, 29 Nov 2021 23:05:51 +0000
+X-UUID: a8d9aae79e584dacb5f5ae3bfc611bd7-20211129
+X-UUID: a8d9aae79e584dacb5f5ae3bfc611bd7-20211129
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 926840995; Mon, 29 Nov 2021 16:05:44 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 29 Nov 2021 15:05:43 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 30 Nov 2021 07:05:29 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 30 Nov 2021 07:05:29 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
+ <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <robin.chiu@mediatek.com>,
+ <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>, <posh.sun@mediatek.com>,
+ <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>,
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] mt76: mt7921s: fix possible kernel crash due to invalid Rx
+ count
+Date: Tue, 30 Nov 2021 07:05:28 +0800
+Message-ID: <46ec9ad003b425f55c75a0de76b5f98fb066508f.1638225611.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_144240_457193_B97C0E02 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20211129_150548_249453_BC96A5ED 
+X-CRM114-Status: GOOD (  11.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,67 +78,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Don't populate various arrays on the stack but instead make them
-static const. Also makes the object code smaller by a few hundred
-bytes.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Signed-off-by: Colin Ian King <colin.i.king@gmail.com>
+Return the proper error code when out-of-range the Rx aggregation count
+are reported from the hardware that would create the unreasonable extreme
+large Rx buffer.
+
+[  100.873810]  show_stack+0x20/0x2c
+[  100.873823]  dump_stack+0xc4/0x140
+[  100.873839]  bad_page+0x110/0x114
+[  100.873854]  check_new_pages+0xf8/0xfc
+[  100.873869]  rmqueue+0x5a0/0x640
+[  100.873884]  get_page_from_freelist+0x124/0x20c
+[  100.873898]  __alloc_pages_nodemask+0x114/0x2a4
+[  100.873918]  mt76s_rx_run_queue+0xd4/0x2e4 [mt76_sdio 8280a88a0c8c9cf203f16e194f99ac293bdbb2f5]
+[  100.873938]  mt76s_rx_handler+0xd4/0x2a0 [mt76_sdio 8280a88a0c8c9cf203f16e194f99ac293bdbb2f5]
+[  100.873957]  mt76s_txrx_worker+0xac/0x17c [mt76_sdio 8280a88a0c8c9cf203f16e194f99ac293bdbb2f5]
+[  100.873977]  mt7921s_txrx_worker+0x5c/0xd8 [mt7921s d0bdbc018082dbc8dc1407614be3c2e7bd64423b]
+[  100.874003]  __mt76_worker_fn+0xe8/0x170 [mt76 b80af3483a8f9d48e916c12d8dbfaa0d3cd15337]
+[  100.874018]  kthread+0x148/0x3ac
+[  100.874032]  ret_from_fork+0x10/0x30
+[  100.874067] Kernel Offset: 0x1fe2000000 from 0xffffffc010000000
+[  100.874079] PHYS_OFFSET: 0xffffffe800000000
+[  100.874090] CPU features: 0x0240002,2188200c
+
+Fixes: 48fab5bbef40 ("mt76: mt7921: introduce mt7921s support")
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
- sound/soc/mediatek/mt8195/mt8195-afe-clk.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-index 8420b2c71332..c2543f4cffb7 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-@@ -326,7 +326,7 @@ int mt8195_afe_enable_reg_rw_clk(struct mtk_base_afe *afe)
- {
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
- 	int i;
--	unsigned int clk_array[] = {
-+	static const unsigned int clk_array[] = {
- 		MT8195_CLK_SCP_ADSP_AUDIODSP, /* bus clock for infra */
- 		MT8195_CLK_TOP_AUDIO_H_SEL, /* clock for ADSP bus */
- 		MT8195_CLK_TOP_AUDIO_LOCAL_BUS_SEL, /* bus clock for DRAM access */
-@@ -347,7 +347,7 @@ int mt8195_afe_disable_reg_rw_clk(struct mtk_base_afe *afe)
- {
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
- 	int i;
--	unsigned int clk_array[] = {
-+	static const unsigned int clk_array[] = {
- 		MT8195_CLK_AUD_A1SYS,
- 		MT8195_CLK_AUD_A1SYS_HP,
- 		MT8195_CLK_AUD_AFE,
-@@ -380,11 +380,11 @@ static int mt8195_afe_enable_timing_sys(struct mtk_base_afe *afe)
- {
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
- 	int i;
--	unsigned int clk_array[] = {
-+	static const unsigned int clk_array[] = {
- 		MT8195_CLK_AUD_A1SYS,
- 		MT8195_CLK_AUD_A2SYS,
- 	};
--	unsigned int cg_array[] = {
-+	static const unsigned int cg_array[] = {
- 		MT8195_TOP_CG_A1SYS_TIMING,
- 		MT8195_TOP_CG_A2SYS_TIMING,
- 		MT8195_TOP_CG_26M_TIMING,
-@@ -403,11 +403,11 @@ static int mt8195_afe_disable_timing_sys(struct mtk_base_afe *afe)
- {
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
- 	int i;
--	unsigned int clk_array[] = {
-+	static const unsigned int clk_array[] = {
- 		MT8195_CLK_AUD_A2SYS,
- 		MT8195_CLK_AUD_A1SYS,
- 	};
--	unsigned int cg_array[] = {
-+	static const unsigned int cg_array[] = {
- 		MT8195_TOP_CG_26M_TIMING,
- 		MT8195_TOP_CG_A2SYS_TIMING,
- 		MT8195_TOP_CG_A1SYS_TIMING,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+index 5c88b6b8d097..84be229a899d 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+@@ -62,6 +62,10 @@ static int mt7921s_parse_intr(struct mt76_dev *dev, struct mt76s_intr *intr)
+ 	if (err < 0)
+ 		return err;
+ 
++	if (irq_data->rx.num[0] > 16 ||
++	    irq_data->rx.num[1] > 128)
++		return -EINVAL;
++
+ 	intr->isr = irq_data->isr;
+ 	intr->rec_mb = irq_data->rec_mb;
+ 	intr->tx.wtqcr = irq_data->tx.wtqcr;
 -- 
-2.33.1
+2.25.1
 
 
 _______________________________________________
