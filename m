@@ -4,77 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB40C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 08:12:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC6E1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 09:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=80khEoehwz+A6z/ry0eAPGYjVwGa+T9T8Y3Zkswn5xU=; b=QQxig93T0xQLEGPjsvgPD7UTrm
-	wWePmOcTM9oDQnL0YqndZp4yzVOnZ7xPIyoDVcbyIHs6YgAxTjmb2YkDdHLlIkgW2eUIdrem2Ieq/
-	l5APmunIerA/+fKDwBnoVBZldmAXbHF5fa0Ss6fLFXsUY29LJO5vH08AYJ2JK5SWK3Ubodmv7D3Eo
-	R8RtbZ6lYGrcXnmWRFO5dgUSbDgdMFdF6b+TaBwpLDpJGcaAXgkvC2J1yBprI6Zt90aPEh/4Oi/So
-	hUW+sPANoKU059ImZlWvsoukk1KRujK28A+73t38M+k/A8sbYyEj1TrTlQmvZB2SoFpkntG0P8Kh3
-	a6BFafMQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FAzhZCzGCw6w6oH+vhnD1BeHlpmxGYAYkD97xpwfUXw=; b=0ntswKa8pCRMg2
+	yt9+Xgs96IgJ/0zh0v1orlEVUecWgeCFwWpeHagP5KbYrdQC2rV1lhEXSUKdbFPRnjanwJqPo9Q6F
+	/G8qo2kpy5LeBfdorKSto+/O6edrQRJX5Q95rUsUVYif9mlTCfdPhikaZ/E22/muWD08cBCSVcJL2
+	zgfqsy27nvU7oI4r47yPEnG16ZC/se57n/CZ6bvUAUHl0EgfzvKsd3rpQQ1grQK7UbFhXsNc9izoJ
+	As+i7yzIb8HLCSTKowGLB7ynhQd3FeOcYJa39gXMgzkX5aQCxPblF0mI9Oylt7prWKSy27xpMfnX1
+	/8NXRX2G0tWa34bfAfuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrblO-0005Ka-5i; Mon, 29 Nov 2021 08:11:50 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mrdGi-000HkO-TT; Mon, 29 Nov 2021 09:48:16 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrblL-0005IA-6K
- for linux-mediatek@lists.infradead.org; Mon, 29 Nov 2021 08:11:49 +0000
-Received: from [IPv6:2a00:c281:110c:e500:9c17:a789:903f:76c0] (unknown
- [IPv6:2a00:c281:110c:e500:9c17:a789:903f:76c0])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested) (Authenticated sender: dafna)
- by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 72D921F439F8;
- Mon, 29 Nov 2021 08:11:41 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1638173502; bh=8mWtECRVNBUbb/TnwcCSBmiz1Z8p8086RdkugQDNe/I=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=E2daxS9kg42vgTUEP2b8vGK7vwl/1i0jv29TYdpefOAVfLiGhQLJS1qQnEjIUFwej
- OQwXF3CjzXhBGTSB187wya1KoSDf6ODtzbJjrDrOI09mATmAlU2rWNOWf+RHs8maAs
- 8vp2OENcGB/EQeSJHlEXepKPu25Z+jt7U27SAPyN4lFxnRUrn4gCHjnuQ1bKleKcl0
- gpDaDqVBjSGBHib+N+yNV0CaXCvt0a49DKGPbUkjaSf/X9VomJqtvw7JwSA+e+0kxS
- Lwfx20kXs2q7+/dvYxEgALAKak37FE8EoL7hFtlDzq8PW6GXVbY6p80Eo5aNHXQMy0
- 58wqUPtALd6XA==
-Subject: Re: [PATCH v4] media: mtk-vpu: Ensure alignment of 8 for DTCM buffer
-To: Irui Wang <irui.wang@mediatek.com>, houlong wei
- <houlong.wei@mediatek.com>, Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil@xs4all.nl>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>, LKML <linux-kernel@vger.kernel.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- Dafna Hirschfeld <dafna3@gmail.com>,
- =?UTF-8?B?VGlmZmFueSBMaW4gKOael+aFp+ePiik=?= <tiffany.lin@mediatek.com>,
- =?UTF-8?B?QW5kcmV3LUNUIENoZW4gKOmZs+aZuui/qik=?=
- <Andrew-CT.Chen@mediatek.com>,
- =?UTF-8?B?TWluZ2hzaXUgVHNhaSAo6JSh5piO5L+uKQ==?=
- <Minghsiu.Tsai@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20210920170408.1561-1-dafna.hirschfeld@collabora.com>
- <c59b7f40-d99e-370a-b797-5dc72979df46@xs4all.nl>
- <CAPBb6MW_i1_Lh2ZaF8jGjcV-4XBhjswtyKkZCk3HxKO7LX79Og@mail.gmail.com>
- <9475ac5b-79fe-da0e-ed1c-a91275cad46e@collabora.com>
- <c01c2c6e2351c915fb6e55b025bf2ab5c449f045.camel@mediatek.com>
- <8dfc07306b853126e8109fc953fd6388b63c65d2.camel@mediatek.com>
- <4e7ff420-f67d-5d4a-8733-f4b83d80af13@collabora.com>
- <428f216d-cdff-e22d-b96e-f9dd9cc158e3@collabora.com>
- <054260428d9d7718f630ecc1b2bdec34ecf1f799.camel@mediatek.com>
-From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Message-ID: <fa138c32-0260-00dd-d094-8d64340d51a9@collabora.com>
-Date: Mon, 29 Nov 2021 10:11:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ id 1mrdGQ-000HW3-8s; Mon, 29 Nov 2021 09:47:59 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4D4E261257;
+ Mon, 29 Nov 2021 09:47:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49BBAC53FCD;
+ Mon, 29 Nov 2021 09:47:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638179276;
+ bh=5CENAf/8QanA+lLNHGoriAWyTBD8I6cnLPIi4nuvTN4=;
+ h=From:To:Cc:Subject:Date:From;
+ b=H5x3OCE4WZM12i3Vle4WyTNxy+SESS5l9MQeZY2n7ErMwupHa1wRMhIDBf89g7wm0
+ 6gSP3nnbNkjlvyl5EfRHCHT9yuFlAICe30EKLNuUnfkgpJwvV7j/LK/tpRwFkXXtNL
+ ngawzo+pjvK7MjnPQuBBEVueMaD0DcmNhT89Dcki0PS010FrjtX4z8KjMu49WiD2hB
+ Gbe7aXtjeIzubLax6URGtRpmgiSQWSoZk9ytffAodGu1kBI6yn/I9CQGZat+iZ9dFm
+ X+llPm1yrsTkJuLdmzOSQUGh9OICb+q4/osiwb1c99vuQQuHtvh97hr5+sg2lMOfgk
+ gS60XsLMi2/+g==
+Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
+ (envelope-from <mchehab@kernel.org>)
+ id 1mrdGM-000RAt-2h; Mon, 29 Nov 2021 10:47:54 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: 
+Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Andrey Utkin <andrey_utkin@fastmail.com>, Andy Gross <agross@kernel.org>,
+ Anton Sviridenko <anton@corp.bluecherry.net>,
+ Antti Palosaari <crope@iki.fi>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Bluecherry Maintainers <maintainers@bluecherrydvr.com>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Houlong Wei <houlong.wei@mediatek.com>, Ismael Luceno <ismael@iodev.co.uk>,
+ Kees Cook <keescook@chromium.org>, Malcolm Priestley <tvboxspy@gmail.com>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>,
+ Robert Foss <robert.foss@linaro.org>, Todor Tomov <todor.too@gmail.com>,
+ Xiaofeng Cao <caoxiaofeng@yulong.com>,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Subject: [PATCH v2 00/20] Solve the remaining issues with clang and W=1 on
+ media
+Date: Mon, 29 Nov 2021 10:47:32 +0100
+Message-Id: <cover.1638179135.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-In-Reply-To: <054260428d9d7718f630ecc1b2bdec34ecf1f799.camel@mediatek.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_001147_599853_7AC638B3 
-X-CRM114-Status: GOOD (  36.33  )
+X-CRM114-CacheID: sfid-20211129_014758_445018_C26C862A 
+X-CRM114-Status: GOOD (  12.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,225 +90,72 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Currently, using clang with W=1 and CONFIG_WERROR causes media to break.
+This is reported by builder.linuxtv.org.
+
+This series solve the remaining issues.
+
+v2:
+  - Use __always_unused for the code we're keeping
+  - Dropped a couple more unused functions
+  - Added reviews got from the first submission and addressed some comments.
+
+Mauro Carvalho Chehab (19):
+  media: adv7842: get rid of two unused functions
+  media: saa7134-go7007: get rid of to_state() function
+  media: davinci: get rid of an unused function
+  media: drxd: drop offset var from DownloadMicrocode()
+  media: drxk: drop operation_mode from set_dvbt()
+  media: m88ds3103: drop reg11 calculus from m88ds3103b_select_mclk()
+  media: si21xx: report eventual errors at set_frontend
+  media: solo6x10: mark unused functions as such
+  media: si470x: fix printk warnings with clang
+  media: radio-si476x: drop a container_of() abstraction macro
+  media: lmedm04: don't ignore errors when setting a filter
+  media: au0828-i2c: drop a duplicated function
+  media: adv7604: mark unused functions as such
+  media: adv7511: drop unused functions
+  media: imx290: mark read reg function as __always_unused
+  media: davinci: vpbe_osd: mark read reg function as __always_unused
+  media: mtk-mdp: address a clang warning
+  media: cobalt: drop an unused variable
+  media: mxl5005s: drop some dead code
+
+Robert Foss (1):
+  media: camss: Remove unused static function
+
+ drivers/media/dvb-frontends/drxd_hard.c       |  8 -------
+ drivers/media/dvb-frontends/drxk_hard.c       | 23 ++++---------------
+ drivers/media/dvb-frontends/m88ds3103.c       |  6 +----
+ drivers/media/dvb-frontends/si21xx.c          |  7 +++---
+ drivers/media/i2c/adv7511-v4l2.c              | 22 ------------------
+ drivers/media/i2c/adv7604.c                   | 18 +++++++--------
+ drivers/media/i2c/adv7842.c                   | 10 --------
+ drivers/media/i2c/imx290.c                    |  2 +-
+ drivers/media/pci/cobalt/cobalt-cpld.c        |  5 +---
+ drivers/media/pci/saa7134/saa7134-go7007.c    |  7 +-----
+ .../media/pci/solo6x10/solo6x10-v4l2-enc.c    | 12 +++++-----
+ drivers/media/platform/davinci/vpbe_osd.c     |  2 +-
+ drivers/media/platform/davinci/vpif_capture.c | 11 ---------
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c |  2 +-
+ .../media/platform/qcom/camss/camss-vfe-170.c |  7 ------
+ drivers/media/radio/radio-si476x.c            |  6 -----
+ drivers/media/radio/si470x/radio-si470x-i2c.c |  4 ++--
+ drivers/media/radio/si470x/radio-si470x-usb.c |  8 +++----
+ drivers/media/tuners/mxl5005s.c               | 14 +----------
+ drivers/media/usb/au0828/au0828-i2c.c         |  7 ------
+ drivers/media/usb/dvb-usb-v2/lmedm04.c        |  3 +++
+ 21 files changed, 40 insertions(+), 144 deletions(-)
+
+-- 
+2.33.1
 
 
-On 10.11.21 05:11, Irui Wang wrote:
-> Hi, Dafna,
-> 
-> Thanks for the patch.
-> On Tue, 2021-11-09 at 10:46 +0200, Dafna Hirschfeld wrote:
->>
->> On 03.11.21 13:04, Dafna Hirschfeld wrote:
->>>
->>>
->>> On 03.11.21 10:19, Irui Wang wrote:
->>>> Hi,
->>>>
->>>> The "len" of share_buf copied should be always 8 alignment;
->>>> do you have other logs to prove the len is not 8 alignment when
->>>> errors
->>>> appear?
->>>
->>> Hi, I found out that "sizeof(mdp_ipi_comm) = 20"
->>> this is due to the macro #pragma pack(push, 4) in mtk_mdp_ipi.h
->>>
->>> see [1]
->>>
->>> [1] http://lkml.iu.edu/hypermail/linux/kernel/2109.2/04978.html
->>>
->>
->> Hi Irui Wang,
->> Any update regarding that patch?
->> Can you give more explanation for that errors that we see
->> when the buffer size is not a multiple of 8?
->>
->> Thanks,
->> Dafna
-> 
-> share_buf is a mapped memory by ioremap, it should be better use
-> memcpy_to/fromio instead of memcpy because of alignment.
-> 
-> As for memcpy_toio, it may also have requirements for alignment, we can
-> also get such information from:
-> 
-> https://elixir.bootlin.com/linux/v5.15/source/drivers/mtd/spi-nor/controllers/aspeed-smc.c#L207
-> .
-> 
-> So, it's not VPU HW bug or limitation, it's memcpy_toio requirements,
-> maybe we can modify IPI message to do alignment, but it need modify
-> both kernel and vpu firmware, which will break upstream backward
-> compatible, we think it's unacceptale.
-> 
-> If this patch can solve the issue, we think it's OK.
-
-In such case shouldn't we also make sure that the address of
-send_obj->share_buf is 8 aligend before calling memcpy_toio,
-and also shouldn't we make the same checks for the memcpy_fromio ?
-
-Thanks,
-Dafna
-
-> 
-> Thanks
->>
->>> Thanks,
->>> Dafna
->>>
->>>>>> [58.350841] mtk-mdp 14001000.rdma: processing failed: -22
->>>>
->>>> On Wed, 2021-11-03 at 16:03 +0800, houlong wei wrote:
->>>>> Add mtk-vpu driver expert irui.wang in the loop.
->>>>>
->>>>> On Mon, 2021-10-18 at 15:07 +0800, Dafna Hirschfeld wrote:
->>>>>>
->>>>>> On 18.10.21 03:16, Alexandre Courbot wrote:
->>>>>>> Hi Hans!
->>>>>>>
->>>>>>> On Mon, Oct 4, 2021 at 6:37 PM Hans Verkuil <
->>>>>>> hverkuil@xs4all.nl>
->>>>>>> wrote:
->>>>>>>>
->>>>>>>> On 20/09/2021 19:04, Dafna Hirschfeld wrote:
->>>>>>>>> From: Alexandre Courbot <acourbot@chromium.org>
->>>>>>>>>
->>>>>>>>> When running memcpy_toio:
->>>>>>>>> memcpy_toio(send_obj->share_buf, buf, len);
->>>>>>>>> it was found that errors appear if len is not a
->>>>>>>>> multiple of
->>>>>>>>> 8:
->>>>>>>>>
->>>>>>>>> [58.350841] mtk-mdp 14001000.rdma: processing failed:
->>>>>>>>> -22
->>>>>>>>
->>>>>>>> Why do errors appear? Is that due to a HW bug? Some other
->>>>>>>> reason?
->>>>>>>
->>>>>>> MTK folks would be the best placed to answer this, but
->>>>>>> since the
->>>>>>> failure is reported by the firmware I'd suspect either a
->>>>>>> firmware
->>>>>>> or
->>>>>>> hardware limitation.
->>>>>>>
->>>>>>>>
->>>>>>>>>
->>>>>>>>> This patch ensures the copy of a multiple of 8 size by
->>>>>>>>> calling
->>>>>>>>> round_up(len, 8) when copying
->>>>>>>>>
->>>>>>>>> Fixes: e6599adfad30 ("media: mtk-vpu: avoid unaligned
->>>>>>>>> access
->>>>>>>>> to
->>>>>>>>> DTCM buffer.")
->>>>>>>>> Signed-off-by: Alexandre Courbot <acourbot@chromium.org
->>>>>>>>>>
->>>>>>>>> Signed-off-by: Enric Balletbo i Serra <
->>>>>>>>> enric.balletbo@collabora.com>
->>>>>>>>> Signed-off-by: Dafna Hirschfeld <
->>>>>>>>> dafna.hirschfeld@collabora.com
->>>>>>>>>>
->>>>>>>>>
->>>>>>>>> Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
->>>>>>>>> ---
->>>>>>>>> changes since v3:
->>>>>>>>> 1. multile -> multiple
->>>>>>>>> 2. add inline doc
->>>>>>>>>
->>>>>>>>> changes since v2:
->>>>>>>>> 1. do the extra copy only if len is not multiple of 8
->>>>>>>>>
->>>>>>>>> changes since v1:
->>>>>>>>> 1. change sign-off-by tags
->>>>>>>>> 2. change values to memset
->>>>>>>>>
->>>>>>>>>     drivers/media/platform/mtk-vpu/mtk_vpu.c | 15
->>>>>>>>> ++++++++++++++-
->>>>>>>>>     1 file changed, 14 insertions(+), 1 deletion(-)
->>>>>>>>>
->>>>>>>>> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c
->>>>>>>>> b/drivers/media/platform/mtk-vpu/mtk_vpu.c
->>>>>>>>> index ec290dde59cf..1df031716c8f 100644
->>>>>>>>> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
->>>>>>>>> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
->>>>>>>>> @@ -349,7 +349,20 @@ int vpu_ipi_send(struct
->>>>>>>>> platform_device
->>>>>>>>> *pdev,
->>>>>>>>>                  }
->>>>>>>>>          } while (vpu_cfg_readl(vpu, HOST_TO_VPU));
->>>>>>>>>
->>>>>>>>> -     memcpy_toio(send_obj->share_buf, buf, len);
->>>>>>>>> +     /*
->>>>>>>>> +      * when copying data to the vpu hardware, the
->>>>>>>>> memcpy_toio
->>>>>>>>> operation must copy
->>>>>>>>> +      * a multiple of 8. Otherwise the processing
->>>>>>>>> fails
->>>>>>>>
->>>>>>>> Same here: it needs to explain why the processing fails.
->>>>>>
->>>>>> Is writing 'due to hardware or firmware limitation' enough?
->>>>>> If not, then we should wait for mediatek people's response to
->>>>>> explain
->>>>>> if they know more
->>>>>>
->>>>>>>>
->>>>>>>>> +      */
->>>>>>>>> +     if (len % 8 != 0) {
->>>>>>>>> +             unsigned char data[SHARE_BUF_SIZE];
->>>>>>>>
->>>>>>>> Wouldn't it be more robust if you say:
->>>>>>>>
->>>>>>>>                    unsigned char data[sizeof(send_obj-
->>>>>>>>> share_buf)];
->>>>>>>
->>>>>>> Definitely yes.
->>>>>>
->>>>>> I'll send v5 fixing this
->>>>>>
->>>>>>>
->>>>>>>>
->>>>>>>> I also think that the SHARE_BUF_SIZE define needs a
->>>>>>>> comment
->>>>>>>> stating that it must be a
->>>>>>>> multiple of 8, otherwise unexpected things can happen.
->>>>>>>>
->>>>>>>> You also noticed that the current SHARE_BUF_SIZE define
->>>>>>>> is too
->>>>>>>> low, but I saw
->>>>>>>> no patch correcting this. Shouldn't that be fixed as
->>>>>>>> well?
->>>>>>>
->>>>>>> AFAICT the firmware expects this exact size on its end, so
->>>>>>> I
->>>>>>> don't
->>>>>>> believe it can be changed that easily. But maybe someone
->>>>>>> from MTK
->>>>>>> can
->>>>>>> prove me wrong.
->>>>>>>
->>>>>>
->>>>>> I looked further and noted that the structs that are larger
->>>>>> than
->>>>>> 'SHARE_BUF_SIZE'
->>>>>> (venc_ap_ipi_msg_enc_ext venc_ap_ipi_msg_set_param_ext)
->>>>>> are used by drivers that don't use this vpu api, so actually
->>>>>> SHARE_BUF_SIZE is
->>>>>> not too low and as Corurbot worte probably not changeable.
->>>>>>
->>>>>>
->>>>>> Thanks,
->>>>>> Dafna
->>>>>>
->>>>>>> Cheers,
->>>>>>> Alex.
->>>>>>>
->>>>>
->>>>>
 
 _______________________________________________
 Linux-mediatek mailing list
