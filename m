@@ -4,81 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC6E1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 09:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FBC1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 29 Nov 2021 09:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=FAzhZCzGCw6w6oH+vhnD1BeHlpmxGYAYkD97xpwfUXw=; b=0ntswKa8pCRMg2
-	yt9+Xgs96IgJ/0zh0v1orlEVUecWgeCFwWpeHagP5KbYrdQC2rV1lhEXSUKdbFPRnjanwJqPo9Q6F
-	/G8qo2kpy5LeBfdorKSto+/O6edrQRJX5Q95rUsUVYif9mlTCfdPhikaZ/E22/muWD08cBCSVcJL2
-	zgfqsy27nvU7oI4r47yPEnG16ZC/se57n/CZ6bvUAUHl0EgfzvKsd3rpQQ1grQK7UbFhXsNc9izoJ
-	As+i7yzIb8HLCSTKowGLB7ynhQd3FeOcYJa39gXMgzkX5aQCxPblF0mI9Oylt7prWKSy27xpMfnX1
-	/8NXRX2G0tWa34bfAfuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Caj8t9HyIToHQ5tD0TOty8+ASRFv2mF/BFottd/SvO0=; b=PnRqtvYizzrVv8
+	svvfaNCigAAkTUHs7vlrZaFh8jigzV2wyxhdXaZgVMFAwdIWxr5j0SnvNvm0mslAYLvFgMBrdIWOZ
+	cz4QcGKhs7C922/M/ZNBajI51D69kJOIXOJB4Q9KGVAtYJGql4xSgZ1OZr08fDYuB/bj6UFImWDsR
+	BDIC2GF3lZn6pRp0SoC35EFHWlJlPDSGkQqaW2q532gYhUrtC2jWS+tKUKK9v4WCCsGQ4yqY+iXe7
+	k9qeTmKrLjWBgENAP9JjGyIn1oTbUywwE6b0F66TGyPSwH1IvFA5qN97m+P7LwaMEAzmsb+pTWGvV
+	2tEeg1TmFs2d1cxUCKOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrdGi-000HkO-TT; Mon, 29 Nov 2021 09:48:16 +0000
+	id 1mrdH0-000HzJ-FF; Mon, 29 Nov 2021 09:48:34 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrdGQ-000HW3-8s; Mon, 29 Nov 2021 09:47:59 +0000
+ id 1mrdGR-000HXv-BP; Mon, 29 Nov 2021 09:48:02 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 4D4E261257;
+ by dfw.source.kernel.org (Postfix) with ESMTPS id DE69661256;
+ Mon, 29 Nov 2021 09:47:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20459C8CFC3;
  Mon, 29 Nov 2021 09:47:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49BBAC53FCD;
- Mon, 29 Nov 2021 09:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638179276;
- bh=5CENAf/8QanA+lLNHGoriAWyTBD8I6cnLPIi4nuvTN4=;
- h=From:To:Cc:Subject:Date:From;
- b=H5x3OCE4WZM12i3Vle4WyTNxy+SESS5l9MQeZY2n7ErMwupHa1wRMhIDBf89g7wm0
- 6gSP3nnbNkjlvyl5EfRHCHT9yuFlAICe30EKLNuUnfkgpJwvV7j/LK/tpRwFkXXtNL
- ngawzo+pjvK7MjnPQuBBEVueMaD0DcmNhT89Dcki0PS010FrjtX4z8KjMu49WiD2hB
- Gbe7aXtjeIzubLax6URGtRpmgiSQWSoZk9ytffAodGu1kBI6yn/I9CQGZat+iZ9dFm
- X+llPm1yrsTkJuLdmzOSQUGh9OICb+q4/osiwb1c99vuQQuHtvh97hr5+sg2lMOfgk
- gS60XsLMi2/+g==
+ s=k20201202; t=1638179277;
+ bh=50op9YAtX0/PCCZuHHAdCtTsRwW2P9kyuSBk3Zk50fM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Oki8XiQlbzy0bzjG3M7lzh+UspuiW0aj+E0AudObl3VBhss3bB8v3WrDKSjA8Ld/Z
+ aNvZvy9NXWEZ3Adm2/S16ADKTH1MGJ3PC6UZc7aNlMTGOKozWz8oRSe1BSRomjbePZ
+ PmWDVXyBr03dy2eDubT4kEY5bQScrvOPYF7METmZ1UoG+UUdII+3+P+7+Hg3AQN3su
+ E9Oxf+G4F4WGNwWIZqKA5C3UqgPrzYlfhKZWRIfOi7SMS/agARzf9LvyiOQAgGbz9k
+ bsn9vTwcQJn6uz23kO3ELjb6FLqKddPr7895vs/w7gv0CM5GWuyL6QABnjsTcxpaTr
+ gyCnfSIRMC5Cw==
 Received: from mchehab by mail.kernel.org with local (Exim 4.94.2)
  (envelope-from <mchehab@kernel.org>)
- id 1mrdGM-000RAt-2h; Mon, 29 Nov 2021 10:47:54 +0100
+ id 1mrdGN-000RC2-0a; Mon, 29 Nov 2021 10:47:55 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: 
 Cc: linuxarm@huawei.com, mauro.chehab@huawei.com,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- "Lad, Prabhakar" <prabhakar.csengg@gmail.com>,
  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Andrey Utkin <andrey_utkin@fastmail.com>, Andy Gross <agross@kernel.org>,
- Anton Sviridenko <anton@corp.bluecherry.net>,
- Antti Palosaari <crope@iki.fi>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Bluecherry Maintainers <maintainers@bluecherrydvr.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Hans Verkuil <hverkuil@xs4all.nl>,
- Houlong Wei <houlong.wei@mediatek.com>, Ismael Luceno <ismael@iodev.co.uk>,
- Kees Cook <keescook@chromium.org>, Malcolm Priestley <tvboxspy@gmail.com>,
- Manivannan Sadhasivam <mani@kernel.org>,
+ Houlong Wei <houlong.wei@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>,
  Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
  Nathan Chancellor <nathan@kernel.org>,
  Nick Desaulniers <ndesaulniers@google.com>,
- Robert Foss <robert.foss@linaro.org>, Todor Tomov <todor.too@gmail.com>,
- Xiaofeng Cao <caoxiaofeng@yulong.com>,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Subject: [PATCH v2 00/20] Solve the remaining issues with clang and W=1 on
- media
-Date: Mon, 29 Nov 2021 10:47:32 +0100
-Message-Id: <cover.1638179135.git.mchehab+huawei@kernel.org>
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ llvm@lists.linux.dev, Arnd Bergmann <arnd@arndb.de>
+Subject: [PATCH v2 18/20] media: mtk-mdp: address a clang warning
+Date: Mon, 29 Nov 2021 10:47:50 +0100
+Message-Id: <c6e2bedaa593ba764d3cafbe7940005e6b0b594c.1638179135.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.33.1
+In-Reply-To: <cover.1638179135.git.mchehab+huawei@kernel.org>
+References: <cover.1638179135.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_014758_445018_C26C862A 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20211129_014759_465176_542F8A3F 
+X-CRM114-Status: GOOD (  13.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,66 +84,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently, using clang with W=1 and CONFIG_WERROR causes media to break.
-This is reported by builder.linuxtv.org.
+The typecasts at the dvb-core generate clang warnings when W=1
+is enabled.
 
-This series solve the remaining issues.
+Such warning is harmless, but it causes the build to break with
+CONFIG_WERROR and W=1 with clang, so do the cast on a way that
+it won't produce warnings anymore.
 
-v2:
-  - Use __always_unused for the code we're keeping
-  - Dropped a couple more unused functions
-  - Added reviews got from the first submission and addressed some comments.
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
 
-Mauro Carvalho Chehab (19):
-  media: adv7842: get rid of two unused functions
-  media: saa7134-go7007: get rid of to_state() function
-  media: davinci: get rid of an unused function
-  media: drxd: drop offset var from DownloadMicrocode()
-  media: drxk: drop operation_mode from set_dvbt()
-  media: m88ds3103: drop reg11 calculus from m88ds3103b_select_mclk()
-  media: si21xx: report eventual errors at set_frontend
-  media: solo6x10: mark unused functions as such
-  media: si470x: fix printk warnings with clang
-  media: radio-si476x: drop a container_of() abstraction macro
-  media: lmedm04: don't ignore errors when setting a filter
-  media: au0828-i2c: drop a duplicated function
-  media: adv7604: mark unused functions as such
-  media: adv7511: drop unused functions
-  media: imx290: mark read reg function as __always_unused
-  media: davinci: vpbe_osd: mark read reg function as __always_unused
-  media: mtk-mdp: address a clang warning
-  media: cobalt: drop an unused variable
-  media: mxl5005s: drop some dead code
+See [PATCH v2 00/20] at: https://lore.kernel.org/all/cover.1638179135.git.mchehab+huawei@kernel.org/
 
-Robert Foss (1):
-  media: camss: Remove unused static function
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/media/dvb-frontends/drxd_hard.c       |  8 -------
- drivers/media/dvb-frontends/drxk_hard.c       | 23 ++++---------------
- drivers/media/dvb-frontends/m88ds3103.c       |  6 +----
- drivers/media/dvb-frontends/si21xx.c          |  7 +++---
- drivers/media/i2c/adv7511-v4l2.c              | 22 ------------------
- drivers/media/i2c/adv7604.c                   | 18 +++++++--------
- drivers/media/i2c/adv7842.c                   | 10 --------
- drivers/media/i2c/imx290.c                    |  2 +-
- drivers/media/pci/cobalt/cobalt-cpld.c        |  5 +---
- drivers/media/pci/saa7134/saa7134-go7007.c    |  7 +-----
- .../media/pci/solo6x10/solo6x10-v4l2-enc.c    | 12 +++++-----
- drivers/media/platform/davinci/vpbe_osd.c     |  2 +-
- drivers/media/platform/davinci/vpif_capture.c | 11 ---------
- drivers/media/platform/mtk-mdp/mtk_mdp_core.c |  2 +-
- .../media/platform/qcom/camss/camss-vfe-170.c |  7 ------
- drivers/media/radio/radio-si476x.c            |  6 -----
- drivers/media/radio/si470x/radio-si470x-i2c.c |  4 ++--
- drivers/media/radio/si470x/radio-si470x-usb.c |  8 +++----
- drivers/media/tuners/mxl5005s.c               | 14 +----------
- drivers/media/usb/au0828/au0828-i2c.c         |  7 ------
- drivers/media/usb/dvb-usb-v2/lmedm04.c        |  3 +++
- 21 files changed, 40 insertions(+), 144 deletions(-)
-
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+index 976aa1f4829b..3d38793aaa25 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+@@ -148,7 +148,7 @@ static int mtk_mdp_probe(struct platform_device *pdev)
+ 			continue;
+ 		}
+ 
+-		comp_type = (enum mtk_mdp_comp_type)of_id->data;
++		comp_type = (uintptr_t)of_id->data;
+ 
+ 		comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
+ 		if (!comp) {
 -- 
 2.33.1
-
 
 
 _______________________________________________
