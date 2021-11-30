@@ -4,98 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47C0DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 18:15:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE65AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 18:16:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=AJBTDO5R+Q5vcIi9lnX3OFyBJ4a8WfndHBQUD8ytYy0=; b=ZpSJUnAPjuq2Gf
-	uPDeGa+BRDhG+V348f3qfR7oWxycFAT3g1ctaBDVHkPHdqhYg7Ad4k6+KDVkBybocxhC5sPO0Iu7j
-	5/8XCoUh33YcJ36X1oxMTNajFj8xbd8FK9F2Mk0zypFRZNMp3K5KfK0LUC/Zv5I0m5IpD0F201m+L
-	oqui2iMALGB7WRc8BEYXTTrs9YZt6oRiHJelGA6jVwYaBWRZBHu3IBmhw1VtCJw6djj0NcocJY1cL
-	lSq32Hpi1q8vL2Q9dNY8JCsqBaoMPwPL+MjCp+WASMvwyZF0BudE/2/MLVJikoZEWl/ma/CSPGQ8N
-	LsGtZDf3Armv921yletw==;
+	List-Owner; bh=KYJGtGp6KDXHSBpmy0wn8r5QJVVkIF2FI1nhXEgmT3I=; b=YyqwLflCwTCPIU
+	cmmKC5KRG3Sc+Nwj+fS+KtLOFaQprmELwT0tp1BSCXiT3RGyVtDRS/AM8ArW8bkOwLCUJZhoEI8fy
+	Y5O2IRpscIoD4AX5y5SnOV1iHv5b4HPDFOeEY8xGuDNfeDH+p5qaU5xtuoMxxOwW44iX78ZaGrAjl
+	eTwg8my2kP15lb7D/qbfml287lbm7PF2swIklY5V91LoTyd7fusB5UKjXw8ytb2Zo+p8copZQR92i
+	gM0eXURHLvgQGu4MVrSprIMfUXxB/4ygByQiTTBz6LHAt5dNjzPiB83sopoLW+6J0c4NkflmlrQ/V
+	jxFsPmybN8vxq7ZRsgoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ms7f9-006SWP-Fa; Tue, 30 Nov 2021 18:15:31 +0000
-Received: from mta-p5.oit.umn.edu ([134.84.196.205])
+	id 1ms7fe-006Se5-Hl; Tue, 30 Nov 2021 18:16:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ms7ev-006SSO-SR
- for linux-mediatek@lists.infradead.org; Tue, 30 Nov 2021 18:15:19 +0000
-Received: from localhost (unknown [127.0.0.1])
- by mta-p5.oit.umn.edu (Postfix) with ESMTP id 4J3VkY2H2Lz9vvMv
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Nov 2021 18:15:17 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at umn.edu
-Received: from mta-p5.oit.umn.edu ([127.0.0.1])
- by localhost (mta-p5.oit.umn.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GABz4CJUXW7j for <linux-mediatek@lists.infradead.org>;
- Tue, 30 Nov 2021 12:15:17 -0600 (CST)
-Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
- [209.85.210.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mta-p5.oit.umn.edu (Postfix) with ESMTPS id 4J3VkY0GW0z9vvMp
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Nov 2021 12:15:17 -0600 (CST)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mta-p5.oit.umn.edu 4J3VkY0GW0z9vvMp
-DKIM-Filter: OpenDKIM Filter v2.11.0 mta-p5.oit.umn.edu 4J3VkY0GW0z9vvMp
-Received: by mail-pf1-f197.google.com with SMTP id
- a23-20020a62bd17000000b004a3f6892612so13286426pff.22
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Nov 2021 10:15:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umn.edu; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8aLbqDVidZ+7wdd4GicAjvyHH7eASjXq9vZdA7OEF94=;
- b=h/zqG5CfkaTPj/bhN4usylXAlQ5g3qbkk70kfXHrteu7ovjt/eVh76QH8Bi0XLCdey
- Lf+TKwTx+LZRn+z5ZdGRTqc8PDJOux825xOZBFTdsbOGAKEYBhkKT7GULROrT2rOQ4NX
- Bo0SzKsQ2P+RpvQZNxmig4beiRzO8jxiMDmnUVPlgM6pobobo16jj9RTxOd8x/k8Bx6l
- v/L4zJiGIKdaWmgOhrQZt4v5rnT8nGpTShtgfrSAdtNG9UhWjwagJr2Kjo2p36ViCVY6
- hYBJH7k5zlfIq8v/iTS2MND/PLDf+4AlUkWy6MC7snl8knter3gEJV+sl52xlobTbYGR
- uP4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=8aLbqDVidZ+7wdd4GicAjvyHH7eASjXq9vZdA7OEF94=;
- b=r+AXKd+nv/r8GePveNmS+spH2bLDC7IMT6j2qOYtZVtp4pXTvz7bcp8EwsEU4mjZwj
- THwskTfxzp77ZhMtJZkOnbU9XtUtYzhijntCT4bshvcjRCEb42PWrcl44XcKu5LEUbvD
- oDNuyfMG14RBmZGtGrduoDNNuRmrINXjUPUtpRN38vylodPeUsJe2qp1fFgiNYyNu0se
- gAzKD481NyOdm0wiUxmjQ0E+nHaDcMt2buP0+J524YV1iRH1tKj6z5xs4XmArAJvKUB2
- RI9Rsk2TIP5k2N3L24sGSFUGINlfwLjitVc5lJNQtNXUnXmPaWncnsdkULDcrVay8dlY
- S4zQ==
-X-Gm-Message-State: AOAM530fta2bXS5RPVatBjPFC6/4QQWNMm6JLyaui8bu/bLUqNyfiuRq
- 2tpelVBJ67sO/syT6QUmiwWVEDRYn+GHiKlruWnygAvsL6zHo6zvkEWVbfGfeG1jyjXPiHMsP/v
- 4M8uf8Fe6jppoCM4GpcDJ1fycOxvquXIfiUKJ
-X-Received: by 2002:a17:902:e749:b0:141:edaa:fde1 with SMTP id
- p9-20020a170902e74900b00141edaafde1mr1041433plf.72.1638296116222; 
- Tue, 30 Nov 2021 10:15:16 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzFonit7jQbQqW7wbtpwt79Yj99amZxiuzPUHMEFm11chH74+RimyI/4fW4yprB8GZxNrvZFQ==
-X-Received: by 2002:a17:902:e749:b0:141:edaa:fde1 with SMTP id
- p9-20020a170902e74900b00141edaafde1mr1041407plf.72.1638296115986; 
- Tue, 30 Nov 2021 10:15:15 -0800 (PST)
-Received: from zqy787-GE5S.lan ([36.7.42.137])
- by smtp.gmail.com with ESMTPSA id y8sm22530397pfi.56.2021.11.30.10.15.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Nov 2021 10:15:15 -0800 (PST)
-From: Zhou Qingyang <zhou1615@umn.edu>
-To: zhou1615@umn.edu
-Cc: kjlu@umn.edu, Michael Turquette <mturquette@baylibre.com>,
- Stephen Boyd <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Wenzhen Yu <wenzhen.yu@mediatek.com>,
- Rob Herring <robh@kernel.org>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH] clk: mediatek: mt7629: Fix a NULL pointer dereference in
- mtk_topckgen_init()
-Date: Wed,  1 Dec 2021 02:15:07 +0800
-Message-Id: <20211130181509.222496-1-zhou1615@umn.edu>
-X-Mailer: git-send-email 2.25.1
+ id 1ms7fb-006Sd7-O4; Tue, 30 Nov 2021 18:16:00 +0000
+X-UUID: ddcaa2ae32b74062b3f808d27255d8fb-20211130
+X-UUID: ddcaa2ae32b74062b3f808d27255d8fb-20211130
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1347717490; Tue, 30 Nov 2021 11:15:57 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 30 Nov 2021 10:15:55 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 1 Dec 2021 02:15:54 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 1 Dec 2021 02:15:53 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <tzungbi@google.com>
+CC: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <hsinyi@chromium.org>, <fshao@chromium.org>, <nancy.lin@mediatek.com>,
+ <singo.chang@mediatek.com>, jason-jh.lin <jason-jh.lin@mediatek.com>
+Subject: [PATCH v3 0/2] Fix mediatek-drm suspend and resume issue
+Date: Wed, 1 Dec 2021 02:15:50 +0800
+Message-ID: <20211130181552.9928-1-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211130_101518_012305_CFFF4CC6 
-X-CRM114-Status: GOOD (  16.37  )
+X-CRM114-CacheID: sfid-20211130_101559_807868_1104F6B0 
+X-CRM114-Status: UNSURE (   8.86  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,51 +75,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_topckgen_init(), mtk_alloc_clk_data() is assigned to clk_data
-and used in clk_prepare_enable(). There is dereference of clk_data
-in clk_prepare_enable(), which could lead to a NULL pointer dereference
-on failure of mtk_alloc_clk_data().
+Change in v3:
+- fix return typo: modify -NOEDV to -ENODEV.
+- add missing complete function in ddp_cmdq_cb.
 
-Fix this bug by adding a check of clk_data.
+Change in v2:
+- rollback adding cmdq_mbox_flush in cmdq_suspend and add
+  blocking config mode for mtk_drm_crtc_atomic_disable.
+- add return error when device_link_add fail.
+- change the first parameter of device_link_add from dev
+  to priv->dev.
 
-Another way to fix this bug is to add a check of clk_data in
-clk_prepare_enable(), which may solve many similar bugs but could
-cause potential problems to previously correct cases as the API is changed.
+jason-jh.lin (2):
+  drm/mediatek: add blocking config mode for crtc disable flow
+  drm/mediatek: add devlink to cmdq dev
 
-This bug was found by a static analyzer. The analysis employs
-differential checking to identify inconsistent security operations
-(e.g., checks or kfrees) between two code paths and confirms that the
-inconsistent operations are not recovered in the current function or
-the callers, so they constitute bugs.
+ drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 31 ++++++++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
 
-Note that, as a bug found by static analysis, it can be a false
-positive or hard to trigger. Multiple researchers have cross-reviewed
-the bug.
-
-Builds with CONFIG_COMMON_CLK_MT7629=y show no new warnings,
-and our static analyzer no longer warns about this code.
-
-Fixes: 3b5e748615e7 ("clk: mediatek: add clock support for MT7629 SoC")
-Signed-off-by: Zhou Qingyang <zhou1615@umn.edu>
----
- drivers/clk/mediatek/clk-mt7629.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/clk/mediatek/clk-mt7629.c b/drivers/clk/mediatek/clk-mt7629.c
-index 856929f94ebd..f791e53b812a 100644
---- a/drivers/clk/mediatek/clk-mt7629.c
-+++ b/drivers/clk/mediatek/clk-mt7629.c
-@@ -580,6 +580,8 @@ static int mtk_topckgen_init(struct platform_device *pdev)
- 		return PTR_ERR(base);
- 
- 	clk_data = mtk_alloc_clk_data(CLK_TOP_NR_CLK);
-+	if (!clk_data)
-+		return -ENOMEM;
- 
- 	mtk_clk_register_fixed_clks(top_fixed_clks, ARRAY_SIZE(top_fixed_clks),
- 				    clk_data);
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
