@@ -4,60 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96742C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 05:45:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B36C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 07:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DTeWaePN6LXm/yrBc8fzfM+LIt3Ph9zDE14vpsw03Ms=; b=lYHNLfDnZa1lCb
-	Dl69MoWX2Wz8MRx04smq7l7FyCrcDMk4eXjFR+vs7itjy+8S7Q5fAYzP6ZVjFUqLacemm9CGu75AT
-	69XwwtC4z9qZFpwG7i7hD5QHc1gzU6/Imx4LifxhXLkFEh5ODdPERLmjuMJS0HHoocLBL9xp3XuRe
-	0LuwlfxeVpnWVbVwqB7N0WgyEr1KHE8/vSkhck6dwAsesAZH66nIi3rCXOd5DlW7gX7SZC1LTS7aI
-	fwaAYZINjnhEmjZNSOoXFotMi79yj0afOWtOD0lvKhvRzc421TqkRVRQSvUdQTUfuu2dfPUv1cyt2
-	61crJGM/NZCTe1fQG5xw==;
+	List-Owner; bh=g90dRLsFYeZAPHoSzwAh0EU1zPrwUAApP83o30iMl54=; b=Ys7bXA1zzAcVCH
+	Jjv4D9gl0nW9xQ5xGpf4UjnepUpQJmXcAvIZgbJju/Tn1S9vptdgNgzMyRHlXl/tQU//Fgge2uJcy
+	F9d1uMIBKIoe+0CJMNLQ/geuMNbnByycRKpXjVasUhIoO+pAdmUywz8AF7uJfOtTjuYKnXIw/xd9a
+	FGSkfieHRiYSXwZr+0eRMGR9S8cXbrcfcz3CcOLcaaZPQJWFB1mudTgWZMuNmg1lI5JlvDyqeU37n
+	rntyWRMjh3WzDjPi2corzZP1JjuwvmSGwAqwRPNUzMt1ZcVWaDHOOWk/EJvQ453xKDgaLT94xBLUT
+	RwlKK7ilgDP6/mXV1S/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrvwx-003fUD-42; Tue, 30 Nov 2021 05:45:07 +0000
+	id 1mrxtg-003yK0-Mm; Tue, 30 Nov 2021 07:49:52 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mrvwu-003fTa-KZ; Tue, 30 Nov 2021 05:45:05 +0000
-X-UUID: e65a5e06699e4783a9bd44958c877166-20211129
-X-UUID: e65a5e06699e4783a9bd44958c877166-20211129
+ id 1mrxtR-003yGs-3p; Tue, 30 Nov 2021 07:49:39 +0000
+X-UUID: e34c31656a6048928e06efe73e55efdd-20211130
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=v5F5DipMsGe/EhJ3XkNJOo99cD9se6MaFiuPADUCFXA=; 
+ b=Wt0hcqgHxMtmKtTWDC2cPfglu7dEFhsII8AagJ29qZOhveaGYWXKlBS50jY4XivSzjgOjdKLpFEorUIoFuSAYYrQ4dC5tSTwukPQ0LPlr5HNaJ4pU4Xly7DGwH/5tVIrF9Z0hzlNXBMbkeIupebrYdzB0JXiVe6VOkJbktMb5JM=;
+X-UUID: e34c31656a6048928e06efe73e55efdd-20211130
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <trevor.wu@mediatek.com>)
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 523711638; Mon, 29 Nov 2021 22:45:02 -0700
+ with ESMTP id 1584853144; Tue, 30 Nov 2021 00:49:33 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 29 Nov 2021 21:39:09 -0800
+ 15.0.1497.2; Mon, 29 Nov 2021 23:39:31 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 30 Nov 2021 13:39:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 30 Nov 2021 13:39:07 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <yc.hung@mediatek.com>
-Subject: [PATCH 1/2] ASoC: mediatek: mt8195: support reserved memory assignment
-Date: Tue, 30 Nov 2021 13:39:04 +0800
-Message-ID: <20211130053905.28470-2-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211130053905.28470-1-trevor.wu@mediatek.com>
-References: <20211130053905.28470-1-trevor.wu@mediatek.com>
+ 15.2.792.15; Tue, 30 Nov 2021 15:39:29 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 30 Nov 2021 15:39:28 +0800
+Message-ID: <128eb1874127b2b9b42a7419e26090d1d192666f.camel@mediatek.com>
+Subject: Re: [PATCH v3 12/33] iommu/mediatek: Always tlb_flush_all when each
+ PM resume
+From: Yong Wu <yong.wu@mediatek.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
+ <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <yen-chang.chen@mediatek.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Fabien Parent
+ <fparent@baylibre.com>, <sebastian.reichel@collabora.com>, "Collabora Kernel
+ ML" <kernel@collabora.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Will
+ Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>
+Date: Tue, 30 Nov 2021 15:39:27 +0800
+In-Reply-To: <c5ded58b-a53a-3089-f8a5-c264f8ab9463@collabora.com>
+References: <20210923115840.17813-1-yong.wu@mediatek.com>
+ <20210923115840.17813-13-yong.wu@mediatek.com>
+ <c4be1a14-c257-81b7-4a2b-f7e68c32de88@collabora.com>
+ <5c4dd67ae7c81721d8cfd2c3b23b7c6df493cb5a.camel@mediatek.com>
+ <4dd4cf8d-0f52-afae-f7d9-8e3cfdf3b729@collabora.com>
+ <c69e03b4781dd9014393e0ff47767c58c846a722.camel@mediatek.com>
+ <c5ded58b-a53a-3089-f8a5-c264f8ab9463@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211129_214504_689829_F937221C 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20211129_234937_201125_C8D41184 
+X-CRM114-Status: GOOD (  43.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +93,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For security purpose, restrict the memory assess region of AFE memif.
-The specified memory region should be assigned from DTS.
+On Sat, 2021-11-27 at 12:11 +0200, Dafna Hirschfeld wrote:
+> 
+> On 10.11.21 09:50, Yong Wu wrote:
+> > On Wed, 2021-11-10 at 07:29 +0200, Dafna Hirschfeld wrote:
+> > > 
+> > > On 10.11.21 04:20, Yong Wu wrote:
+> > > > On Tue, 2021-11-09 at 14:21 +0200, Dafna Hirschfeld wrote:
+> > > > > Hi
+> > > > > This patch is needed in order to update the tlb when a device
+> > > > > is
+> > > > > powered on.
+> > > > > Could you send this patch alone without the whole series so
+> > > > > it
+> > > > > get
+> > > > > accepted easier?
+> > > > 
+> > > > Which SoC are you testing on? In previous SoC, the IOMMU HW
+> > > > don't
+> > > > have
+> > > > power-domain, and we have a "has_pm"[1] in the tlb function for
+> > > > that
+> > > > case. The "has_pm" should be always 0 for the previous SoC like
+> > > > mt8173,
+> > > > it should always tlb synchronize.
+> > > > 
+> > > > thus, Could you help share more about your issue? In which case
+> > > > it
+> > > > lack
+> > > > the necessary tlb operation. At least, We need confirm if it
+> > > > needs
+> > > > a
+> > > > "Fixes" tags if sending this patch alone.
+> > > 
+> > > Hi,
+> > > I work with the mtk-vcodec driver on mt8173. As you wrote, the
+> > > iommu
+> > > doesn't
+> > > have a power-domain and so when allocating buffers before the
+> > > device
+> > > is powered
+> > > on, there is the warning
+> > > "Partial TLB flush timed out, falling back to full flush"
+> > > flooding the log buf.
+> > 
+> > oh. Thanks very much for your information. Get it now.
+> > 
+> > This issue should be introduced by the:
+> > 
+> > b34ea31fe013 ("iommu/mediatek: Always enable the clk on resume")
+> 
+> Hi, reverting this commit didn't solve those warnings,
+> I think this is because in the function mtk_iommu_attach_device
+> the first call to pm_runtime_resume_and_get does not turn the clks on
+> since m4u_dom is not yet initialize. And then mtk_iommu_attach_device
+> calls pm_runtime_put right after mtk_iommu_hw_init is called
+> (where the clks are turned on)
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
----
- sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+oh. Right. this is also related with the patch of "Add power-domain
+operation".
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-index 2bb05a828e8d..8a6db24116e3 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
-@@ -14,6 +14,7 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_platform.h>
-+#include <linux/of_reserved_mem.h>
- #include <linux/pm_runtime.h>
- #include "mt8195-afe-common.h"
- #include "mt8195-afe-clk.h"
-@@ -3061,6 +3062,12 @@ static int mt8195_afe_pcm_dev_probe(struct platform_device *pdev)
- 	int i, irq_id, ret;
- 	struct snd_soc_component *component;
- 
-+	ret = of_reserved_mem_device_init(dev);
-+	if (ret) {
-+		dev_err(dev, "failed to assign memory region: %d\n", ret);
-+		return ret;
-+	}
-+
- 	ret = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(33));
- 	if (ret)
- 		return ret;
--- 
-2.18.0
+The current problem is that there is a redundant log of "Partial TLB
+flush timed out" in mt8173. We need fix this issue firstly. Are you
+going to prepare the patches again? If not, I could help this. You
+could help confirm them if you are free.
 
+Thanks.
+
+> 
+> thanks,
+> Dafna
+> 
+> 
+> > 
+> > tlb failed due to the bclk is not enabled. Could you help try that
+> > after reverting this?
+> > 
+> > > 
+> > > Sebastian Reichel suggested to remove the 'if(has_pm)' check to
+> > > avoid
+> > > this warning,
+> > > and avoid flushing the tlb if the device is off:
+> > > 
+> > > [1] http://ix.io/3Eyr
+> > > 
+> > > This fixes the warning, but then the tlb is not flushed in sync,
+> > > Therefore the tlb should be flushed when the device is resumed.
+> > > 
+> > > So the two patches (the one suggested in the link [1] and this
+> > > patch)
+> > > should be sent together as a 2-patch series.
+> > 
+> > then this is reasonable. You could help this into a new patchset if
+> > you
+> > are free(add Fixes tag).
+> > 
+> > Thanks.
+> > 
+> > > 
+> > > Thanks,
+> > > Dafna
+> > > 
 
 _______________________________________________
 Linux-mediatek mailing list
