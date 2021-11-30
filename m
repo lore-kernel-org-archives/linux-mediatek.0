@@ -4,62 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9AD3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 08:35:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 015A8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 08:43:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CmuHsNf4BQsW92AaYPVzjioVR6l6Ty30tUhu33OKSeA=; b=F+b60zZHxbHMWU
-	17XR0qoaSsuYC424QFrar7i/SZLk5o7O2hCvw3DzVqPUAvWOfMaPsfzLjOOn3cVMW/adifg0Hyf1P
-	EIkSwxLjnNZbv27Ydy3zoJ+C7wAGA/lumKtyblswcVQ860jv0pDOGBQedZhAuDp4Ez/+HMjGE6p3f
-	wo/pReYErnPWylqm7AVljxQbBBm72rvYvM4AWWbKOXmbLcZLSUaeUl4RTJc9WSFTjW738lZJfC7m3
-	gB62hSwy4qlM7cYLyRBlWpC61v8PmGbZyNg4nz+10hOyIBn4S+XZ+kGC0hTg2mP2ehlv6G3cCfEDI
-	vtncsGuo8MidZyuTyLqw==;
+	List-Owner; bh=aNgERMCVimgimCLB7WK1dHTFlvZeCKC1bIl0YWjQ2vw=; b=Y1OqdIjM5ToivG
+	TGXsWc5CUHWl+NqgJrbVkKrA3oKROmwYuIGMvHjuIVuX2dTjwFiMqw6Gprp6rB+uyLuaNAb8NfJwZ
+	zfrQgPN9yi7j8zyu3hR5sTJEd8bjY1MLknx9IFGyyEg8LY8UT9rh8O9aaNN7A74r4PlrU5lWwcgCz
+	75nwmj6rqEqapWDVYiBGYJJIklbv43/6aHYmbm9wLWnWpzNiAY+is8fZVzlpBQnKd2ANy4UH/b/j4
+	d3d/eSXGgZP2j6xvQqAPXvOrajrXdF6lL7i5iswUSVEQJlQw5qTMS0E3/M38WSQakWxm8K4yVLvqo
+	zjVQOUOeVo7Mri/otMIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mrybG-0048UN-2j; Tue, 30 Nov 2021 08:34:54 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mryjh-004AdN-Ux; Tue, 30 Nov 2021 08:43:37 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mryZ0-0047ZS-QR; Tue, 30 Nov 2021 08:32:36 +0000
-X-UUID: 11837ba579aa4401bcbc1b851fcbe23e-20211130
-X-UUID: 11837ba579aa4401bcbc1b851fcbe23e-20211130
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <xiangsheng.hou@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1321315218; Tue, 30 Nov 2021 01:32:34 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 30 Nov 2021 00:32:32 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 30 Nov 2021 16:32:30 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 30 Nov 2021 16:32:29 +0800
-From: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-To: <miquel.raynal@bootlin.com>, <broonie@kernel.org>
-CC: <xiangsheng.hou@mediatek.com>, <benliang.zhao@mediatek.com>,
- <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
- <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
- <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
- <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
-Subject: [RFC,v4,5/5] arm64: dts: mtk: Add snfi node
-Date: Tue, 30 Nov 2021 16:32:02 +0800
-Message-ID: <20211130083202.14228-6-xiangsheng.hou@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211130083202.14228-1-xiangsheng.hou@mediatek.com>
-References: <20211130083202.14228-1-xiangsheng.hou@mediatek.com>
+ id 1mryjO-004AV1-2W
+ for linux-mediatek@lists.infradead.org; Tue, 30 Nov 2021 08:43:19 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id y8so14364807plg.1
+ for <linux-mediatek@lists.infradead.org>; Tue, 30 Nov 2021 00:43:13 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=fHVy98BTaUQF52BWKLZtuQVRzz01N8+H95C8cB4Mhtg=;
+ b=dkAqbyqTPRY4L/DB0uLdYdRPU6b1N+TybDCY0FHBvSZn/2S8Ae0v0tdFZwYj7zBLDi
+ 8QqrjFuNnxaIPD8BAr2rJhpwB2cDkqWynWjh0Ac4qLo6dTsE54UqsPiCOX+RddtIHAO2
+ 8JBLdxXwcjC/F/oqOtekIMDpqcxK4ymeEg2t/OKu6eb2DQDHJUzH+N2n7plAhq184vX+
+ 3ilr42mjOAMqMwT+OGrhYyComtrMz2+AeX0KPKFk06V5xiL+cTmcyS3TObk+6xDdalRD
+ 5Gaot3pJL+djNMmQ9F1IXX3Sxk97PgB1c7iou+/rl9Rq5op0ena4PcLEXQYlr5biumJp
+ qtzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=fHVy98BTaUQF52BWKLZtuQVRzz01N8+H95C8cB4Mhtg=;
+ b=4hsQR0AkGuh33hxnhKILH7RRYyDrPcf3rhycpubsmCS5rudZAm1zy7gx+1n8yFwZfS
+ GRM9UFcp/7OYDMKTqn5rcShTfrhn4tBVSxW0bmSK/Cq5pRE7EKPheFgrvLp+buTaLkLC
+ RYyJ/cVQxb+CYV0+lPIXfFLHCHRkyVqXVBMZjHQmyA9Xnfk4wOE2RVi8IY/afBFYYGlx
+ 0xG8AQ1smvu741kB8JSUSqbidE7Nhul1UjH1qW3rR6fxCfs6P6TBnSgrPsC4zUEDkD0t
+ sn7V22NNw74XLUQYq2fMK66OX9xeNAr3dlL9ysNhnBK0MhQ6E7jKbsm/FhOMvaAJv40/
+ z+iw==
+X-Gm-Message-State: AOAM533O4SWrIJxWUVZygOK8D+44MQzirG0yg6VTLFC3LGuT+Hd7d+6u
+ EIeH2d11JgsUgSgX3v2p/icmKQ==
+X-Google-Smtp-Source: ABdhPJxue2FBF6O8NbPbziRrwGNOciaOEZ/z8FnZ1b/zhjeFgaTTmvLKkjb9rz4cIuDD9UU5GWKBaQ==
+X-Received: by 2002:a17:903:24d:b0:143:beb5:b6b1 with SMTP id
+ j13-20020a170903024d00b00143beb5b6b1mr66622707plh.54.1638261792852; 
+ Tue, 30 Nov 2021 00:43:12 -0800 (PST)
+Received: from google.com ([2401:fa00:1:10:6cb4:a0cc:6d7f:cba7])
+ by smtp.gmail.com with ESMTPSA id v10sm20770644pfu.123.2021.11.30.00.43.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 30 Nov 2021 00:43:12 -0800 (PST)
+Date: Tue, 30 Nov 2021 16:43:07 +0800
+From: Tzung-Bi Shih <tzungbi@google.com>
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Linux-ALSA <alsa-devel@alsa-project.org>, cujomalainey@google.com,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ sound-open-firmware@alsa-project.org
+Subject: Re: [PATCH v8 3/3] mailbox: mediatek: add support for adsp mailbox
+ controller
+Message-ID: <YaXkGym5QQDBSfcP@google.com>
+References: <20211129101946.6008-1-allen-kh.cheng@mediatek.com>
+ <20211129101946.6008-4-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20211129101946.6008-4-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211130_003234_894310_3B5B5D46 
-X-CRM114-Status: UNSURE (   9.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211130_004318_178250_41924699 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,69 +102,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add snfi node for SPI NAND controller.
-Just take MT7622 for example at present.
+On Mon, Nov 29, 2021 at 06:19:45PM +0800, allen-kh.cheng wrote:
+> diff --git a/drivers/mailbox/mtk-adsp-mailbox.c b/drivers/mailbox/mtk-adsp-mailbox.c
+[...]
+> +static int mtk_adsp_mbox_probe(struct platform_device *pdev)
+> +{
+[...]
+> +	mbox->dev = dev;
+> +	mbox->ops = &mtk_adsp_mbox_chan_ops;
+> +	mbox->txdone_irq = false;
+> +	mbox->txdone_poll = true;
+> +	mbox->of_xlate = mtk_adsp_mbox_xlate;
+> +	mbox->num_chans = 1;
+> +	mbox->chans = devm_kzalloc(mbox->dev, sizeof(*mbox->chans), GFP_KERNEL);
 
-Signed-off-by: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts | 16 ++++++++++++++++
- arch/arm64/boot/dts/mediatek/mt7622.dtsi     | 13 +++++++++++++
- 2 files changed, 29 insertions(+)
+I have commented in the v3[1].  To be neat, I prefer to use "dev" instead of "mbox->dev".  If you ever have the chance to respin the series, please fix it.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-index 596c073d8b05..1a5bf553f3a3 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7622-rfb1.dts
-@@ -530,6 +530,22 @@ &spi0 {
- 	status = "okay";
- };
- 
-+&snfi {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&snfi_pins>;
-+	nand-ecc-engine = <&bch>;
-+	status = "disabled";
-+
-+	spi_nand@0 {
-+		compatible = "spi-nand";
-+		reg = <0>;
-+		spi-max-frequency = <104000000>;
-+		spi-tx-bus-width = <4>;
-+		spi-rx-bus-width = <4>;
-+		nand-ecc-engine = <&snfi>;
-+	};
-+};
-+
- &spi1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&spic1_pins>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt7622.dtsi b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-index 6f8cb3ad1e84..229ec2a3a65e 100644
---- a/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7622.dtsi
-@@ -497,6 +497,19 @@ spi0: spi@1100a000 {
- 		status = "disabled";
- 	};
- 
-+	snfi: spi@1100d000 {
-+		compatible = "mediatek,mt7622-snfi";
-+		reg = <0 0x1100d000 0 0x1000>;
-+		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_LOW>;
-+		clocks = <&infracfg_ao CLK_INFRA_AO_NFI_BCLK_CK_SET>,
-+			 <&infracfg_ao CLK_INFRA_AO_NFI_INFRA_BCLK_CK_SET>,
-+			 <&infracfg_ao CLK_INFRA_AO_NFI_HCLK_CK_SET>;
-+		clock-names = "nfi_clk", "snfi_clk", "hclk";
-+		#address-cells = <1>;
-+		#size-cells = <0>;
-+		status = "disabled";
-+	};
-+
- 	thermal: thermal@1100b000 {
- 		#thermal-sensor-cells = <1>;
- 		compatible = "mediatek,mt7622-thermal";
--- 
-2.25.1
-
+[1]: https://patchwork.kernel.org/project/linux-mediatek/patch/20211124084514.28002-3-allen-kh.cheng@mediatek.com/#24614933
 
 _______________________________________________
 Linux-mediatek mailing list
