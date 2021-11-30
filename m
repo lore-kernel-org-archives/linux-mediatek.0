@@ -4,100 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB2CFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 11:09:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE5DAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 30 Nov 2021 11:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=tR6zy59L8JLZVr1eP5an9TqsFGuyoCqRjd6cWjdbLSo=; b=q32yG4Y75HuEx7
-	XVTLQaEUeQWTuh5XKq4Mm0p9hGeQvqnpkINJFy2QcXqJJcBtxTotLHLoBTyV8NSHKGJkgcMi3pQh3
-	lUsWdz110EZxVoeEbneQMPiMQ26PgupUXHwu1djyErC18CIO9ZOWrQdzjkong27oq83durS6cdeS6
-	ENsvgWVTDX64vXNXmud6n0qJDdi2pUAwzmpYteU3HJycZ9oNigoDwogvRELBKhme8YlBH/J2bojoX
-	Ik8JxZVRBF6BftgS+lCYzTBZBXwg60PK5TU5DFhgMRPNTrO0A3D1T9IV9uxQaDI8GKSbG9x4qSg6l
-	FepnkwWFy9O+5VC6g9HQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zganj24ED8RTkxqA3fy4qke3sUE2DO6YEzW7BmjHaWw=; b=4u9GVUFzqmuq0KnXR8bNhczeyd
+	jRvlTd8eT4XzQAo9oQccxo7Ip416ttcgQz93KtttBxncu6QKzBvsSAfvr56DF7CimF7ent7zOTWnZ
+	g3SYYgpSs7OSpSVxA5ejjdi1vLGkYp1j9a3vFknFMj8fZ9BA8c56RHcjjhlgYYpppvhqpLoCQ2vgG
+	kxmiZNGrBhyq+AaU0o1XS73NzdZgSUJgyUU/Lgk1tBvXHk1X2wYcupDeJPWLZdMdRSQ6raowD+ClE
+	cjkYAwbueD7YSAewudP2Dj40J1i1/HBkV5WqaUu9uSz1FOr9+pojun7PXS2ejAicpmMy/6i/QIT8Q
+	Ml3ghMkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ms10Q-004lpB-EF; Tue, 30 Nov 2021 11:09:02 +0000
-Received: from mta-p5.oit.umn.edu ([134.84.196.205])
+	id 1ms1OF-004sYD-3N; Tue, 30 Nov 2021 11:33:39 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1ms10N-004lnD-40
- for linux-mediatek@lists.infradead.org; Tue, 30 Nov 2021 11:09:00 +0000
-Received: from localhost (unknown [127.0.0.1])
- by mta-p5.oit.umn.edu (Postfix) with ESMTP id 4J3KGc20T5z9w940
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Nov 2021 11:08:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at umn.edu
-Received: from mta-p5.oit.umn.edu ([127.0.0.1])
- by localhost (mta-p5.oit.umn.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wKXpazUfL3bW for <linux-mediatek@lists.infradead.org>;
- Tue, 30 Nov 2021 05:08:56 -0600 (CST)
-Received: from mail-pg1-f199.google.com (mail-pg1-f199.google.com
- [209.85.215.199])
+ id 1ms1Np-004sT0-0n; Tue, 30 Nov 2021 11:33:15 +0000
+Received: from [IPv6:2a00:c281:1409:4a00:f02c:94f7:9527:dda] (unknown
+ [IPv6:2a00:c281:1409:4a00:f02c:94f7:9527:dda])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mta-p5.oit.umn.edu (Postfix) with ESMTPS id 4J3KGb6zSCz9w93x
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Nov 2021 05:08:55 -0600 (CST)
-DMARC-Filter: OpenDMARC Filter v1.3.2 mta-p5.oit.umn.edu 4J3KGb6zSCz9w93x
-DKIM-Filter: OpenDKIM Filter v2.11.0 mta-p5.oit.umn.edu 4J3KGb6zSCz9w93x
-Received: by mail-pg1-f199.google.com with SMTP id
- v3-20020a63b643000000b003255b6cb43aso4823125pgt.6
- for <linux-mediatek@lists.infradead.org>; Tue, 30 Nov 2021 03:08:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=umn.edu; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=L4d1W48kwHHShV4SEtnKYtW4rYy9ZnpgrsWKK2v2g6k=;
- b=GtUW2K/WOpbVkir7I1Tp3FYTarK7YibkN6sNrEotnvhlY9v5OkC6trHYw/B6W6GjNZ
- 4QDcoIiSn2o2iY7sELuG/ejW1DjHwKq1RYQVQbSNIJ18HagJl369LgtwiHS69lr/OWGc
- T9klLrFg/3MncZKUeJdY/41Nas3lB1ZKkmi6o0b17UpILbv1gUq3KQhRhVdTq7ILe1UQ
- zd2T9i+Shr2di+mwZKL2sfYUGLgkWXi+38tyEylmcQsJ906rVrb3hH9PkJUybA6jRDf1
- 66DsXXSuyZu/3SQ4JzMMN/tXeMdQW1XDcmv1O/Fw5YSblxekSdVUFaMQ+a8OokZdhSIk
- t//g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=L4d1W48kwHHShV4SEtnKYtW4rYy9ZnpgrsWKK2v2g6k=;
- b=ZRPhGVndUpY4bYU3RE9JZsQorlpU7B7xT2n6DlpZTnMn8bncNtXkKqON9DzdPaKoA6
- X1Q9LuODQQ/hbzqDYTp6a/6IgVVZNaQJR5iwEfCzUAi/Yv0FQ4yEIwnbuEB5q2fahJRr
- nCcY3suTyxaaPEMxCbYDRpqPkPIMx1XRBvtgpA/qYTwLkcZ9wpnxqV/hOQaQTBnBtH/O
- 9r9R9nn/u7EzGJ+244/dbfx5DRQOMVyOy0YyZJ8ZglBNyEHYuj+FSJm8FOIhUAs36E8e
- oQ8iooTvZe8akerKhBIwgNtTtVUTOogrYGm7QcahQlIi0WdDocQGcywf+C32Qb6lo+2a
- aRWQ==
-X-Gm-Message-State: AOAM532rngxMEz96BCukg+5wsJM0Yu1zKmNmsyZrov6lhQFS4ntovhw+
- CzmlL93dP9RHB7MCtrUqe57ssOpFAX3vavWy1wHNSrvXcOHOJI0cZwEBgGmO2u3AXZyqya/qDMf
- joZH20ySMZGD2DTfjLYN9zw7Q8FDTeIkWEheJ
-X-Received: by 2002:a63:5204:: with SMTP id g4mr12856352pgb.319.1638270535200; 
- Tue, 30 Nov 2021 03:08:55 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyhQMDrKlRy9nZ2NlLQm9ytvcBmwZ3NlEtd489Hx6S5Lk90kMvYdn8hmVlN3kWuCXwOlhER/w==
-X-Received: by 2002:a63:5204:: with SMTP id g4mr12856329pgb.319.1638270534953; 
- Tue, 30 Nov 2021 03:08:54 -0800 (PST)
-Received: from zqy787-GE5S.lan ([36.7.42.137])
- by smtp.gmail.com with ESMTPSA id u38sm23783318pfg.0.2021.11.30.03.08.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 30 Nov 2021 03:08:54 -0800 (PST)
-From: Zhou Qingyang <zhou1615@umn.edu>
-To: zhou1615@umn.edu
-Cc: kjlu@umn.edu, Shahed Shaikh <shshaikh@marvell.com>,
- Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sucheta Chakraborty <sucheta.chakraborty@qlogic.com>,
- Sritej Velaga <sritej.velaga@qlogic.com>,
- Sony Chacko <sony.chacko@qlogic.com>,
- Anirban Chakraborty <anirban.chakraborty@qlogic.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] clk: mediatek: net: qlogic: qlcnic: Fix a NULL pointer
- dereference in qlcnic_83xx_add_rings()
-Date: Tue, 30 Nov 2021 19:08:48 +0800
-Message-Id: <20211130110848.109026-1-zhou1615@umn.edu>
-X-Mailer: git-send-email 2.25.1
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id CAFDD1F410B9;
+ Tue, 30 Nov 2021 11:33:07 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638271989; bh=kPPICgkzXFPBrIYmZPv1q+nwez55PhApUTcS0F/NeBo=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=Deq8PqlhTo0QneJhYsfmqFdvxX1pqWMpB6c+zvITaBH3pEHHh5JGO5Sy0evRJAMI9
+ sXnuDdpZy+Lzle2eErvroT2n1r7myLSrKb7RX9bn/3wyfymXBt7gIo2qzAg+O+tDVl
+ 8g6XEBjqU88FYPMQuzdS3sfsmUhfCo4BqUZJGyKn++t/O7QRj2haWB0dvTk0zDvHR5
+ dhM/+BpZGzAnzR4gHl12N8WgTJ8MYmgsjcO/NvwBrZ9o1AqMTauccppSbv4A+MOev3
+ UI6LMYtsBuAdh8dQyjs0dD2AYCZliYOcfnfD4yqIaMlsUpP7BvgHZmZnKEc0Gzymkw
+ zKy8tz0LHsrRA==
+Subject: Re: [PATCH v3 12/33] iommu/mediatek: Always tlb_flush_all when each
+ PM resume
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, yen-chang.chen@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, sebastian.reichel@collabora.com,
+ Collabora Kernel ML <kernel@collabora.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ mingyuan.ma@mediatek.com, yf.wang@mediatek.com
+References: <20210923115840.17813-1-yong.wu@mediatek.com>
+ <20210923115840.17813-13-yong.wu@mediatek.com>
+ <c4be1a14-c257-81b7-4a2b-f7e68c32de88@collabora.com>
+ <5c4dd67ae7c81721d8cfd2c3b23b7c6df493cb5a.camel@mediatek.com>
+ <4dd4cf8d-0f52-afae-f7d9-8e3cfdf3b729@collabora.com>
+ <c69e03b4781dd9014393e0ff47767c58c846a722.camel@mediatek.com>
+ <c5ded58b-a53a-3089-f8a5-c264f8ab9463@collabora.com>
+ <128eb1874127b2b9b42a7419e26090d1d192666f.camel@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <58b13d3a-e89b-d2e3-278d-af8859d901b9@collabora.com>
+Date: Tue, 30 Nov 2021 13:33:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
+In-Reply-To: <128eb1874127b2b9b42a7419e26090d1d192666f.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211130_030859_282138_993D11C4 
-X-CRM114-Status: GOOD (  18.54  )
+X-CRM114-CacheID: sfid-20211130_033313_492224_44763B7C 
+X-CRM114-Status: GOOD (  33.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,63 +83,126 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In qlcnic_83xx_add_rings(), the indirect function of
-ahw->hw_ops->alloc_mbx_args will be called to allocate memory for
-cmd.req.arg, and there is a dereference of it in qlcnic_83xx_add_rings(),
-which could lead to a NULL pointer dereference on failure of the
-indirect function like qlcnic_83xx_alloc_mbx_args().
 
-Fix this bug by adding a check of alloc_mbx_args(), this patch
-imitates the logic of mbx_cmd()'s failure handling.
 
-This bug was found by a static analyzer. The analysis employs
-differential checking to identify inconsistent security operations
-(e.g., checks or kfrees) between two code paths and confirms that the
-inconsistent operations are not recovered in the current function or
-the callers, so they constitute bugs.
+On 30.11.21 09:39, Yong Wu wrote:
+> On Sat, 2021-11-27 at 12:11 +0200, Dafna Hirschfeld wrote:
+>>
+>> On 10.11.21 09:50, Yong Wu wrote:
+>>> On Wed, 2021-11-10 at 07:29 +0200, Dafna Hirschfeld wrote:
+>>>>
+>>>> On 10.11.21 04:20, Yong Wu wrote:
+>>>>> On Tue, 2021-11-09 at 14:21 +0200, Dafna Hirschfeld wrote:
+>>>>>> Hi
+>>>>>> This patch is needed in order to update the tlb when a device
+>>>>>> is
+>>>>>> powered on.
+>>>>>> Could you send this patch alone without the whole series so
+>>>>>> it
+>>>>>> get
+>>>>>> accepted easier?
+>>>>>
+>>>>> Which SoC are you testing on? In previous SoC, the IOMMU HW
+>>>>> don't
+>>>>> have
+>>>>> power-domain, and we have a "has_pm"[1] in the tlb function for
+>>>>> that
+>>>>> case. The "has_pm" should be always 0 for the previous SoC like
+>>>>> mt8173,
+>>>>> it should always tlb synchronize.
+>>>>>
+>>>>> thus, Could you help share more about your issue? In which case
+>>>>> it
+>>>>> lack
+>>>>> the necessary tlb operation. At least, We need confirm if it
+>>>>> needs
+>>>>> a
+>>>>> "Fixes" tags if sending this patch alone.
+>>>>
+>>>> Hi,
+>>>> I work with the mtk-vcodec driver on mt8173. As you wrote, the
+>>>> iommu
+>>>> doesn't
+>>>> have a power-domain and so when allocating buffers before the
+>>>> device
+>>>> is powered
+>>>> on, there is the warning
+>>>> "Partial TLB flush timed out, falling back to full flush"
+>>>> flooding the log buf.
+>>>
+>>> oh. Thanks very much for your information. Get it now.
+>>>
+>>> This issue should be introduced by the:
+>>>
+>>> b34ea31fe013 ("iommu/mediatek: Always enable the clk on resume")
+>>
+>> Hi, reverting this commit didn't solve those warnings,
+>> I think this is because in the function mtk_iommu_attach_device
+>> the first call to pm_runtime_resume_and_get does not turn the clks on
+>> since m4u_dom is not yet initialize. And then mtk_iommu_attach_device
+>> calls pm_runtime_put right after mtk_iommu_hw_init is called
+>> (where the clks are turned on)
+> 
+> oh. Right. this is also related with the patch of "Add power-domain
+> operation".
+> 
+> The current problem is that there is a redundant log of "Partial TLB
+> flush timed out" in mt8173. We need fix this issue firstly. Are you
+> going to prepare the patches again? If not, I could help this. You
+> could help confirm them if you are free.
 
-Note that, as a bug found by static analysis, it can be a false
-positive or hard to trigger. Multiple researchers have cross-reviewed
-the bug.
+Hi,
+I already sent a patch last week: https://lore.kernel.org/linux-iommu/afb46ad6ca9477a2bf71233858406caa6ccb1588.camel@mediatek.com/T/
+could you please review it?
 
-Builds with CONFIG_QLCNIC=m show no new warnings, and our
-static analyzer no longer warns about this code.
+Thanks,
+Dafna
 
-Fixes: 7f9664525f9c ("qlcnic: 83xx memory map and HW access routine")
-Signed-off-by: Zhou Qingyang <zhou1615@umn.edu>
----
- drivers/net/ethernet/qlogic/qlcnic/qlcnic_83xx_hw.c | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_83xx_hw.c b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_83xx_hw.c
-index d51bac7ba5af..bd0607680329 100644
---- a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_83xx_hw.c
-+++ b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_83xx_hw.c
-@@ -1077,8 +1077,14 @@ static int qlcnic_83xx_add_rings(struct qlcnic_adapter *adapter)
- 	sds_mbx_size = sizeof(struct qlcnic_sds_mbx);
- 	context_id = recv_ctx->context_id;
- 	num_sds = adapter->drv_sds_rings - QLCNIC_MAX_SDS_RINGS;
--	ahw->hw_ops->alloc_mbx_args(&cmd, adapter,
--				    QLCNIC_CMD_ADD_RCV_RINGS);
-+	err = ahw->hw_ops->alloc_mbx_args(&cmd, adapter,
-+					QLCNIC_CMD_ADD_RCV_RINGS);
-+	if (err) {
-+		dev_err(&adapter->pdev->dev,
-+			"Failed to alloc mbx args %d\n", err);
-+		return err;
-+	}
-+
- 	cmd.req.arg[1] = 0 | (num_sds << 8) | (context_id << 16);
- 
- 	/* set up status rings, mbx 2-81 */
--- 
-2.25.1
 
+> 
+> Thanks.
+> 
+>>
+>> thanks,
+>> Dafna
+>>
+>>
+>>>
+>>> tlb failed due to the bclk is not enabled. Could you help try that
+>>> after reverting this?
+>>>
+>>>>
+>>>> Sebastian Reichel suggested to remove the 'if(has_pm)' check to
+>>>> avoid
+>>>> this warning,
+>>>> and avoid flushing the tlb if the device is off:
+>>>>
+>>>> [1] http://ix.io/3Eyr
+>>>>
+>>>> This fixes the warning, but then the tlb is not flushed in sync,
+>>>> Therefore the tlb should be flushed when the device is resumed.
+>>>>
+>>>> So the two patches (the one suggested in the link [1] and this
+>>>> patch)
+>>>> should be sent together as a 2-patch series.
+>>>
+>>> then this is reasonable. You could help this into a new patchset if
+>>> you
+>>> are free(add Fixes tag).
+>>>
+>>> Thanks.
+>>>
+>>>>
+>>>> Thanks,
+>>>> Dafna
+>>>>
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
