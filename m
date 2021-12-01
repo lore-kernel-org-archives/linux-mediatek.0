@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40557C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 10:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB54EC43217
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 10:38:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sjhUWvwagoilgje8Fcf+LmZrAlgqzVkEtFRuBkbH12I=; b=sLTXxkl3Vb7RJfyARvdg0wWmNv
-	r7ijj4dmaVNrbQeGTB4PRA+sGMuyH0REkuhWyFZ0CeFqs0WKb8LUqHJOiSiPsCOB6AaXMxWprjadu
-	4k5T0tH4SahlWZ3RsNG4Tub2nVwU0PzvqQBG4MyH5/qKVwecyK4rZC0NsXcxrRwr2dquVI1Cdfocx
-	fDOFr7I5n5Z4Fqf+o0qWsWsn1pYpw56I3Nd9Fe5vQJaYbBdPnsfp3niQX6NL2LybO1USI2R+WilaB
-	6pkdCd+GWhbqsryCKTAWOZQe47LjgpQTRYGk54wOovxQ5fiX3EMTFRkVeh8CV/M4lN6LcxYNqkyKQ
-	R1HEAECA==;
+	bh=lz+eHlqKX/G3lgAMJ+WldWW9Npetes9oKxeOSLUz7t4=; b=FzGwmLpBrB/3V0zayOa8IMGURS
+	55GLJPFqTkmkoI/UDCRxaUfgSa8B7aAlnY8yqEAx3OdhHnkSPDfQTiGcw9x9w+mdplQCGWyPHRvuo
+	iwquO8wMmodINlIT2mMDHg61C97xtt0EQFFzPQ9+N/XMx29eud642WxheL7bxu/w+hv4CGIiTZCLa
+	JiBozoF4IfO292TIH8aWqpnQ0Wjd4P/8V0k5kTgZv9XboYibzbhvEyYiqQ3g0t6XzxZZah/ArGy+R
+	Iw6r9BhphFvJG2uy5x0mf76cXDenDB4t5hHWmjg59PcY0j5thGthibci8Ufxk8kVdNTkaDF1j8S7q
+	yoXBmnyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msMtU-0086kv-DC; Wed, 01 Dec 2021 10:31:20 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1msMzz-0087e5-8F; Wed, 01 Dec 2021 10:38:03 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msMtG-0086gs-Jy; Wed, 01 Dec 2021 10:31:08 +0000
+ id 1msMzl-0087aw-Lo; Wed, 01 Dec 2021 10:37:51 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 93EB31F457F4
+ (Authenticated sender: kholk11) with ESMTPSA id B24231F4105F
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1638354662; bh=KpiF5kNZXa2da2rHqBoWn0wRV+C0nTxU6BvDIk3QM9Y=;
+ t=1638355067; bh=5zeRiVN6ryxwm/9AqBmiziPFHviBjXpBHA5P6czC8SI=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=V4vuuOvBuzjRtD9HTwPCtWmSOpJC+/Ag5NWFS2aMev33XPKAeHrSQ+HrN9mtTEjS+
- hkq0TamSGFWyU9ui/FaAoidg6/gNOpN58jSDUoVPATyN74YQY9ie7BynEDq3m5afFy
- Wr/Pv/Z2nLc7bkhNaNyp8v7xrKIvhYN7jqg7IPlAQ62kOnr39IsKc/KC7/I9jpjLtN
- OiITcs3DNNgopKC8WakJYkikFpXNmDvMI+fdlM5ItCUdmKmm5cfZQzXmkfSiXTLo+e
- aBnyjQHaXskYjC0pnvRXCcJ0CXIj6a6DQyhqEPtoyJWpLv1YQO/zmYNkiBjxTVDVP9
- LbEbwcqP0oiHg==
-Subject: Re: [PATCH v9 4/7] soc: mediatek: mutex: add functions that operate
- registers by CMDQ
+ b=dfdAawREpQdQ0QXsUbDIvefQhw/dVtrMDpCTDUwj1cRrtQcmW12myoLxDHDjk7S6E
+ 2gscGaAcrDMZGWExTzBLGYyv3kfA1P/2vmMqxt6AEfo/YA66464koVAsAZoayJNvtz
+ VRKRzQwUnAzVULeMMzFX+JTrJaedV8DnRt/n/2ZnGldBgkabvgtIOG37hHQPIpENwY
+ U2nwOxeEpzYFWcgykf6hVjtvhgijvu+JynDqerrGfXGAFBw5Yuwxy008VLO3wghsiI
+ sHQ2f5T2iJXtOyEm5PVzQGes0Ou5ZYu+Y1NPSKuQNx/0+AiwuH/zlURsMs2GOwSZ3K
+ UOcjVXnzGxUWw==
+Subject: Re: [PATCH v9 7/7] media: platform: mtk-mdp3: add Mediatek MDP3 driver
 To: Moudy Ho <moudy.ho@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -56,18 +55,18 @@ Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
  jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com,
  river.cheng@mediatek.com, srv_heupstream@mediatek.com
 References: <20211201095031.31606-1-moudy.ho@mediatek.com>
- <20211201095031.31606-5-moudy.ho@mediatek.com>
+ <20211201095031.31606-8-moudy.ho@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <24a5672f-7d7b-c67a-3650-dbc228835074@collabora.com>
-Date: Wed, 1 Dec 2021 11:30:57 +0100
+Message-ID: <103b1664-d04c-c1fc-ff4c-e2c92ce45ee8@collabora.com>
+Date: Wed, 1 Dec 2021 11:37:43 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211201095031.31606-5-moudy.ho@mediatek.com>
+In-Reply-To: <20211201095031.31606-8-moudy.ho@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_023106_955280_1F1C4D07 
-X-CRM114-Status: GOOD (  12.70  )
+X-CRM114-CacheID: sfid-20211201_023750_021112_089A9CF5 
+X-CRM114-Status: GOOD (  20.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,18 +84,88 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 01/12/21 10:50, Moudy Ho ha scritto:
-> Considering that some functions have timing requirements
-> in specific situation, this patch adds several interface that
-> operate registers by CMDQ.
+> This patch adds driver for Mediatek's Media Data Path ver.3 (MDP3).
+> It provides the following functions:
+>    color transform, format conversion, resize, crop, rotate, flip
+>    and additional image quality enhancement.
 > 
+> The MDP3 driver is mainly used for Google Chromebook products to
+> import the new architecture to set the HW settings as shown below:
+>    User -> V4L2 framework
+>      -> MDP3 driver -> SCP (setting calculations)
+>        -> MDP3 driver -> CMDQ (GCE driver) -> HW
+> 
+> Each modules' related operation control is sited in mtk-mdp3-comp.c
+> Each modules' register table is defined in file with "mdp_reg_" prefix
+> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
+> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
+> Probe, power, suspend/resume, system level functions are defined in
+> mtk-mdp3-core.c
+> 
+> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
+> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
 > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> Reported-by: kernel test robot <lkp@intel.com>
 > ---
->   drivers/soc/mediatek/mtk-mutex.c       | 65 +++++++++++++++++++++++++-
->   include/linux/soc/mediatek/mtk-mutex.h |  6 +++
->   2 files changed, 70 insertions(+), 1 deletion(-)
+>   drivers/media/platform/Kconfig                |   19 +
+>   drivers/media/platform/Makefile               |    2 +
+>   drivers/media/platform/mtk-mdp3/Makefile      |    6 +
+>   .../media/platform/mtk-mdp3/mdp_reg_ccorr.h   |   19 +
+>   drivers/media/platform/mtk-mdp3/mdp_reg_isp.h |   27 +
+>   .../media/platform/mtk-mdp3/mdp_reg_rdma.h    |   65 +
+>   drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h |   39 +
+>   .../media/platform/mtk-mdp3/mdp_reg_wdma.h    |   47 +
+>   .../media/platform/mtk-mdp3/mdp_reg_wrot.h    |   55 +
+>   drivers/media/platform/mtk-mdp3/mtk-img-ipi.h |  280 ++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   |  514 +++++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.h   |   46 +
+>   .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 1264 +++++++++++++++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |  147 ++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  338 +++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |   76 +
+>   .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |  789 ++++++++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-m2m.h    |   49 +
+>   .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  737 ++++++++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |  372 +++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-vpu.c    |  312 ++++
+>   .../media/platform/mtk-mdp3/mtk-mdp3-vpu.h    |   78 +
+>   22 files changed, 5281 insertions(+)
+>   create mode 100644 drivers/media/platform/mtk-mdp3/Makefile
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_ccorr.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_isp.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wdma.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.c
+>   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.h
 > 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+snip...
+
+> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+> new file mode 100644
+> index 000000000000..a643f3ee928b
+> --- /dev/null
+> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
+> @@ -0,0 +1,514 @@
+
+Looks like you forgot to check my review comments to this entire file.
+Can you please send a new version after applying the changes to this file
+suggested in my review of series v8?
+
+Thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
