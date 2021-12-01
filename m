@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2C1DC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 18:21:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3912C4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 18:28:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CWoiTYb5wN2Y+RxybS1CipoUpSTUyT8Uftma3limvHM=; b=mKMQd0DCUTv10Z
-	jHROrvoSVtDorTDTJO3OcnjpgFEAv58LfCSxf3+W4p5sYsWYIdjGXFeWGkQUnPFIee1owcBCDtLU9
-	uZQCEzxvQ0/kh19YCe/GM4GStYXAgQJgCLRql9v5thaytgiHeLRYcc/7cYfdbIpWDnghzNPYjoIgI
-	+Xinmw/U84ROC2+V+oweUchV90JmxkVq/biYPREAuGxXIhZBZrtYal+84Cd3bniuNKSOCtfcH+b3j
-	aB7ET6qdVLk2l1zqWKSSyqOnlX0+YBzQXE3b4ojPxSbAFhASLlJgu8hENAaVQgdiMeyQ9RO+gicJk
-	G76qKG9N0zoaoJdbPv8g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZMu//iO72aVp4hiUcpnbGWbxRxwFmJW3XhTfmtVmzsg=; b=LrqCkH75i3TqzZ
+	TPoQChobt0Xb917iQHiI/3LvmiooZne2tKRklmXxjtLGV168+WD/XYhKE92mQxJdA3WQFsM3+1Ndl
+	tg8gTx7YBBhIMfO3/MjmcIKszh3jL2bKo9q6tUuZsjo6FT9XH5anSkvJtYrfIjuQZdQKiRn+GSpz0
+	Q9kWFlaszM2UPSOc9fZNyoKS5nO/07EdqkXC6b8T5ZP5rIl0hhKmqKaClONYjWBh0BPXWxEmh9oxP
+	y7zqiGmYCvByhw7kBFjQ2pN++zBZPH/ycLLZqlR8LjARymV6QlWFtuW+Ajk+Nm4a9kuE8cMd/STOg
+	rn7AbMwUD4+wWL8sE9JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msUDz-009je8-4D; Wed, 01 Dec 2021 18:20:59 +0000
+	id 1msUL5-009mac-M2; Wed, 01 Dec 2021 18:28:19 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msUDw-009jd5-Gk
- for linux-mediatek@lists.infradead.org; Wed, 01 Dec 2021 18:20:57 +0000
-X-UUID: f6a700cbc26944e1af6712e97401a437-20211201
-X-UUID: f6a700cbc26944e1af6712e97401a437-20211201
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1msUL3-009mZt-UI
+ for linux-mediatek@lists.infradead.org; Wed, 01 Dec 2021 18:28:19 +0000
+X-UUID: e1d394eabf95455681bb56ed4570db0e-20211201
+X-UUID: e1d394eabf95455681bb56ed4570db0e-20211201
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1994832921; Wed, 01 Dec 2021 11:20:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Dec 2021 10:20:50 -0800
+ with ESMTP id 678503071; Wed, 01 Dec 2021 11:28:16 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Dec 2021 10:28:15 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 2 Dec 2021 02:20:48 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Dec 2021 02:28:13 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 2 Dec 2021 02:20:48 +0800
+ Frontend Transport; Thu, 2 Dec 2021 02:28:13 +0800
 From: <sean.wang@mediatek.com>
 To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
@@ -53,17 +52,18 @@ CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
  <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
  <mcchou@chromium.org>, <shawnku@google.com>,
  <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH] Bluetooth: btmtksdio: enable AOSP extension for MT7921
-Date: Thu, 2 Dec 2021 02:20:47 +0800
-Message-ID: <a37f06cbc8ee0024d35c020a40808d657767e4c9.1638382621.git.objelf@gmail.com>
+ <linux-kernel@vger.kernel.org>, Mark-yw Chen <mark-yw.chen@mediatek.com>
+Subject: [PATCH v3 2/2] Bluetooth: btmtksdio: fix resume failure
+Date: Thu, 2 Dec 2021 02:28:09 +0800
+Message-ID: <6c659099972f1d3ab76087140ddb3c8e13eea923.1638383119.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <5c34f6c5529b6a8f8df893cd1fc1b0e628edf8a4.1638383119.git.objelf@gmail.com>
+References: <5c34f6c5529b6a8f8df893cd1fc1b0e628edf8a4.1638383119.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_102056_584950_A18A82CF 
-X-CRM114-Status: UNSURE (   8.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211201_102818_010577_6A583F6F 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +82,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Similar to MT7921 btusb, we enable AOSP extension for MT7921 btmtksdio
-as well.
+btmtksdio have to rely on MMC_PM_KEEP_POWER in pm_flags to avoid that
+SDIO power is being shut off during the device is in suspend. That fixes
+the SDIO command fails to access the bus after the device is resumed.
 
+Fixes: 7f3c563c575e7 ("Bluetooth: btmtksdio: Add runtime PM support to SDIO based Bluetooth")
+Co-developed-by: Mark-yw Chen <mark-yw.chen@mediatek.com>
+Signed-off-by: Mark-yw Chen <mark-yw.chen@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v2: rebase and resend
+v3: no change
 ---
  drivers/bluetooth/btmtksdio.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index d9cf0c492e29..13f78ba1a978 100644
+index fc6317e519e9..143404745240 100644
 --- a/drivers/bluetooth/btmtksdio.c
 +++ b/drivers/bluetooth/btmtksdio.c
-@@ -787,6 +787,8 @@ static int mt79xx_setup(struct hci_dev *hdev, const char *fwname)
- 		return err;
- 	}
+@@ -1065,6 +1065,8 @@ static int btmtksdio_runtime_suspend(struct device *dev)
+ 	if (!test_bit(BTMTKSDIO_FUNC_ENABLED, &bdev->tx_state))
+ 		return 0;
  
-+	hci_set_aosp_capable(hdev);
++	sdio_set_host_pm_flags(func, MMC_PM_KEEP_POWER);
 +
- 	return err;
- }
+ 	sdio_claim_host(bdev->func);
  
+ 	sdio_writel(bdev->func, C_FW_OWN_REQ_SET, MTK_REG_CHLPCR, &err);
 -- 
 2.25.1
 
