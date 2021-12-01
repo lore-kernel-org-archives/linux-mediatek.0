@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903AAC4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 09:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72B2BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 09:51:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c7mvKtFa6n/5JU+IAY9flFdP79BGKn7Wbmu7RvXsFLw=; b=TnqNqbf3Gh7787
-	Watp0k69O57x+PIxB62DvXz7F76Vpsqbibg0MzYRcMusp5x5bM1RJldxVZs0T8V9/+ujeyOce7dEC
-	LgXBYV4z5jpqit1/zuaihPkgIic2WM+WdKgzQDLCUzomwZSuSARLqxLVs7ryvRndMJNDxHTrexRT+
-	iFb9F2epmH7fDd/Kmy0FfEEyyzjFKIzT8eb7kYJTyDqqyLz+o6WaK7prB+Y3aTkWaaIaJDQEY94D0
-	Pm3lRbNYLOp+1mf4Ym7Zr8FN/pUzNbxbPoxLh6tR/rHtXqtHk57PkoxL/T6/tf5EgWThXwbwMmLCJ
-	eXIOZB1dcR37HXfQAE0A==;
+	List-Owner; bh=rQow5A0UVzI2yOBMEA4z5rUunegLQ8IJAifoccOoSFM=; b=b4FZp4FddW1fZA
+	w4fLsa+yzOu/cOmSspE5yQzqReMKpOX9pU5NN8hR8Gp/2gNNWuzx/C9c1C0hxqMZEn99nRx/6OdKY
+	R3WuVrBv1jyLZlLAiHPAsdcbkjd9yH08Uj7JBvwekyAzorgiUq4SpZkn/yzaEdeRfwZh1dUxCXfVY
+	AUkQhiPv71oFF7+ysUHkLeEPeBlAgP+oPu8gcpFhEt7pnS1ralwnZIy67ORTs2Mpy/UvY1dW8zXd5
+	DGxGYLYvJALHoGtOD8B68MsYcuWisKa6UQirpMtFIzusX7pQ8DzDiOeQ53gpdiEpzyHASbI7jCuuZ
+	T222fFeuFzVgdNo4xImg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msMGl-007z6Z-Ks; Wed, 01 Dec 2021 09:51:19 +0000
+	id 1msMGy-007zD5-CT; Wed, 01 Dec 2021 09:51:32 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msMGZ-007yxw-4y; Wed, 01 Dec 2021 09:51:08 +0000
-X-UUID: 13703466b7e7498eb4ae89e1e93869e9-20211201
-X-UUID: 13703466b7e7498eb4ae89e1e93869e9-20211201
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1msMGc-007z0x-99; Wed, 01 Dec 2021 09:51:11 +0000
+X-UUID: 8680cf8455e84cec822ce9d6e8ada901-20211201
+X-UUID: 8680cf8455e84cec822ce9d6e8ada901-20211201
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1490322470; Wed, 01 Dec 2021 02:51:03 -0700
+ with ESMTP id 377786033; Wed, 01 Dec 2021 02:51:08 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Dec 2021 01:51:02 -0800
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 1 Dec 2021 01:51:06 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Dec 2021 17:50:59 +0800
+ 15.0.1497.2; Wed, 1 Dec 2021 17:51:03 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 1 Dec 2021 17:50:59 +0800
+ Frontend Transport; Wed, 1 Dec 2021 17:51:03 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
@@ -58,17 +58,18 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
  <moudy.ho@mediatek.com>, <jason-jh.lin@mediatek.com>,
  <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
  <srv_heupstream@mediatek.com>
-Subject: [PATCH v9 2/7] soc: mediatek: mmsys: add support for ISP control
-Date: Wed, 1 Dec 2021 17:50:26 +0800
-Message-ID: <20211201095031.31606-3-moudy.ho@mediatek.com>
+Subject: [PATCH v9 4/7] soc: mediatek: mutex: add functions that operate
+ registers by CMDQ
+Date: Wed, 1 Dec 2021 17:50:28 +0800
+Message-ID: <20211201095031.31606-5-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211201095031.31606-1-moudy.ho@mediatek.com>
 References: <20211201095031.31606-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_015107_244442_8A3EBC59 
-X-CRM114-Status: GOOD (  16.31  )
+X-CRM114-CacheID: sfid-20211201_015110_373252_9FB699C9 
+X-CRM114-Status: GOOD (  17.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,252 +86,157 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds 8183 ISP settings in MMSYS domain and interface.
+Considering that some functions have timing requirements
+in specific situation, this patch adds several interface that
+operate registers by CMDQ.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
 ---
- drivers/soc/mediatek/mt8183-mmsys.h    |  26 ++++++
- drivers/soc/mediatek/mtk-mmsys.c       | 117 +++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.h       |   1 +
- include/linux/soc/mediatek/mtk-mmsys.h |  30 +++++++
- 4 files changed, 174 insertions(+)
+ drivers/soc/mediatek/mtk-mutex.c       | 65 +++++++++++++++++++++++++-
+ include/linux/soc/mediatek/mtk-mutex.h |  6 +++
+ 2 files changed, 70 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
-index 48865973314d..afc98c4dac95 100644
---- a/drivers/soc/mediatek/mt8183-mmsys.h
-+++ b/drivers/soc/mediatek/mt8183-mmsys.h
-@@ -32,6 +32,18 @@
- #define MT8183_MDP_CCORR_SEL_IN			0xff0
- #define MT8183_MDP_CCORR_SOUT_SEL		0xff4
- 
-+#define MT8183_ISP_REG_MMSYS_SW0_RST_B		0x140
-+#define MT8183_ISP_REG_MMSYS_SW1_RST_B		0x144
-+#define MT8183_ISP_REG_MDP_ASYNC_CFG_WD		0x934
-+#define MT8183_ISP_REG_MDP_ASYNC_IPU_CFG_WD	0x93C
-+#define MT8183_ISP_REG_ISP_RELAY_CFG_WD		0x994
-+#define MT8183_ISP_REG_IPU_RELAY_CFG_WD		0x9a0
-+#define MT8183_ISP_BIT_MDP_DL_ASYNC_TX		BIT(3)
-+#define MT8183_ISP_BIT_MDP_DL_ASYNC_TX2		BIT(4)
-+#define MT8183_ISP_BIT_MDP_DL_ASYNC_RX		BIT(10)
-+#define MT8183_ISP_BIT_MDP_DL_ASYNC_RX2		BIT(11)
-+#define MT8183_ISP_BIT_NO_SOF_MODE		BIT(31)
+diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
+index e5e6255f5b84..320d0b72c78d 100644
+--- a/drivers/soc/mediatek/mtk-mutex.c
++++ b/drivers/soc/mediatek/mtk-mutex.c
+@@ -7,10 +7,14 @@
+ #include <linux/iopoll.h>
+ #include <linux/module.h>
+ #include <linux/of_device.h>
++#include <linux/of_address.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/soc/mediatek/mtk-mutex.h>
++#include <linux/soc/mediatek/mtk-cmdq.h>
 +
- #define MT8183_OVL0_MOUT_EN_OVL0_2L		BIT(4)
- #define MT8183_OVL0_2L_MOUT_EN_DISP_PATH0	BIT(0)
- #define MT8183_OVL1_2L_MOUT_EN_RDMA1		BIT(4)
-@@ -325,5 +337,19 @@ static const struct mtk_mmsys_routes mmsys_mt8183_mdp_routing_table[] = {
- 	}
++#define MTK_MUTEX_ENABLE			BIT(0)
+ 
+ #define MT2701_MUTEX0_MOD0			0x2c
+ #define MT2701_MUTEX0_SOF0			0x30
+@@ -155,6 +159,8 @@ struct mtk_mutex_ctx {
+ 	void __iomem			*regs;
+ 	struct mtk_mutex		mutex[10];
+ 	const struct mtk_mutex_data	*data;
++	phys_addr_t			addr;
++	u8				subsys_id;
  };
  
-+static const unsigned int mmsys_mt8183_mdp_isp_ctrl_table[ISP_CTRL_MAX] = {
-+	[ISP_REG_MMSYS_SW0_RST_B] = MT8183_ISP_REG_MMSYS_SW0_RST_B,
-+	[ISP_REG_MMSYS_SW1_RST_B] = MT8183_ISP_REG_MMSYS_SW1_RST_B,
-+	[ISP_REG_MDP_ASYNC_CFG_WD] = MT8183_ISP_REG_MDP_ASYNC_CFG_WD,
-+	[ISP_REG_MDP_ASYNC_IPU_CFG_WD] = MT8183_ISP_REG_MDP_ASYNC_IPU_CFG_WD,
-+	[ISP_REG_ISP_RELAY_CFG_WD] = MT8183_ISP_REG_ISP_RELAY_CFG_WD,
-+	[ISP_REG_IPU_RELAY_CFG_WD] = MT8183_ISP_REG_IPU_RELAY_CFG_WD,
-+	[ISP_BIT_MDP_DL_ASYNC_TX] = MT8183_ISP_BIT_MDP_DL_ASYNC_TX,
-+	[ISP_BIT_MDP_DL_ASYNC_TX2] = MT8183_ISP_BIT_MDP_DL_ASYNC_TX2,
-+	[ISP_BIT_MDP_DL_ASYNC_RX] = MT8183_ISP_BIT_MDP_DL_ASYNC_RX,
-+	[ISP_BIT_MDP_DL_ASYNC_RX2] = MT8183_ISP_BIT_MDP_DL_ASYNC_RX2,
-+	[ISP_BIT_NO_SOF_MODE] = MT8183_ISP_BIT_NO_SOF_MODE,
-+};
-+
- #endif /* __SOC_MEDIATEK_MT8183_MMSYS_H */
- 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 905847d6e16c..cfbf36e6e0ad 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -58,6 +58,7 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
- 	.mdp_routes = mmsys_mt8183_mdp_routing_table,
- 	.mdp_num_routes = ARRAY_SIZE(mmsys_mt8183_mdp_routing_table),
-+	.mdp_isp_ctrl = mmsys_mt8183_mdp_isp_ctrl_table,
- };
- 
- static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-@@ -157,6 +158,122 @@ void mtk_mmsys_mdp_disconnect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
+ static const unsigned int mt2701_mutex_mod[DDP_COMPONENT_ID_MAX] = {
+@@ -475,6 +481,25 @@ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
  }
- EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_disconnect);
+ EXPORT_SYMBOL_GPL(mtk_mutex_remove_comp);
  
-+void mtk_mmsys_mdp_isp_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			    enum mtk_mdp_comp_id id)
++void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
++			       struct mmsys_cmdq_cmd *cmd)
 +{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const unsigned int *isp_ctrl = mmsys->data->mdp_isp_ctrl;
-+	u32 reg;
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++	unsigned int offset;
 +
-+	WARN_ON(mmsys->subsys_id == 0);
-+	/* Direct link */
-+	if (id == MDP_COMP_CAMIN) {
-+		/* Reset MDP_DL_ASYNC_TX */
-+		if (isp_ctrl[ISP_REG_MMSYS_SW0_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_MMSYS_SW0_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_TX]);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_TX],
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_TX]);
-+		}
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
 +
-+		/* Reset MDP_DL_ASYNC_RX */
-+		if (isp_ctrl[ISP_REG_MMSYS_SW1_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_MMSYS_SW1_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_RX]);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_RX],
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_RX]);
-+		}
++	offset = DISP_REG_MUTEX_MOD(mtx->data->mutex_mod_reg, mutex->id);
++	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id, mtx->addr + offset,
++			    mod, mtx->data->mutex_mdp_mod_mask);
 +
-+		/* Enable sof mode */
-+		if (isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0,
-+					    isp_ctrl[ISP_BIT_NO_SOF_MODE]);
-+		}
-+	}
-+
-+	if (id == MDP_COMP_CAMIN2) {
-+		/* Reset MDP_DL_ASYNC2_TX */
-+		if (isp_ctrl[ISP_REG_MMSYS_SW0_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_MMSYS_SW0_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_TX2]);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_TX2],
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_TX2]);
-+		}
-+
-+		/* Reset MDP_DL_ASYNC2_RX */
-+		if (isp_ctrl[ISP_REG_MMSYS_SW1_RST_B]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_MMSYS_SW1_RST_B];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_RX2]);
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_RX2],
-+					    isp_ctrl[ISP_BIT_MDP_DL_ASYNC_RX2]);
-+		}
-+
-+		/* Enable sof mode */
-+		if (isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    0x0,
-+					    isp_ctrl[ISP_BIT_NO_SOF_MODE]);
-+		}
-+	}
++	offset = DISP_REG_MUTEX_SOF(mtx->data->mutex_sof_reg, mutex->id);
++	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id, mtx->addr + offset,
++			    0, mtx->data->mutex_mdp_sof_mask);
 +}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_isp_ctrl);
++EXPORT_SYMBOL_GPL(mtk_mutex_add_mod_by_cmdq);
 +
-+void mtk_mmsys_mdp_camin_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id id, u32 camin_w, u32 camin_h)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const unsigned int *isp_ctrl = mmsys->data->mdp_isp_ctrl;
-+	u32 reg;
-+
-+	WARN_ON(mmsys->subsys_id == 0);
-+	/* Config for direct link */
-+	if (id == MDP_COMP_CAMIN) {
-+		if (isp_ctrl[ISP_REG_MDP_ASYNC_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_MDP_ASYNC_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+
-+		if (isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_ISP_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+	}
-+	if (id == MDP_COMP_CAMIN2) {
-+		if (isp_ctrl[ISP_REG_MDP_ASYNC_IPU_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_MDP_ASYNC_IPU_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+		if (isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD]) {
-+			reg = mmsys->addr + isp_ctrl[ISP_REG_IPU_RELAY_CFG_WD];
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id, reg,
-+					    (camin_h << 16) + camin_w,
-+					    0x3FFF3FFF);
-+		}
-+	}
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_camin_ctrl);
-+
- static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned long id,
- 				  bool assert)
+ void mtk_mutex_enable(struct mtk_mutex *mutex)
  {
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index 7ec2107b9823..61baec9409de 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -94,6 +94,7 @@ struct mtk_mmsys_driver_data {
- 	const unsigned int num_routes;
- 	const struct mtk_mmsys_routes *mdp_routes;
- 	const unsigned int mdp_num_routes;
-+	const unsigned int *mdp_isp_ctrl;
- };
+ 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+@@ -486,6 +511,20 @@ void mtk_mutex_enable(struct mtk_mutex *mutex)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_enable);
  
- /*
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index c5a4d6b181ce..1938428369f2 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -91,6 +91,29 @@ enum mtk_mdp_comp_id {
- 	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
- };
++void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
++			      struct mmsys_cmdq_cmd *cmd)
++{
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
++
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
++
++	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
++			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
++			    MTK_MUTEX_ENABLE, MTK_MUTEX_ENABLE);
++}
++EXPORT_SYMBOL_GPL(mtk_mutex_enable_by_cmdq);
++
+ void mtk_mutex_disable(struct mtk_mutex *mutex)
+ {
+ 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+@@ -497,6 +536,20 @@ void mtk_mutex_disable(struct mtk_mutex *mutex)
+ }
+ EXPORT_SYMBOL_GPL(mtk_mutex_disable);
  
-+enum mtk_mdp_pipe_id {
-+	MDP_PIPE_RDMA0,
-+	MDP_PIPE_IMGI,
-+	MDP_PIPE_WPEI,
-+	MDP_PIPE_WPEI2,
-+	MDP_PIPE_MAX
-+};
++void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
++			       struct mmsys_cmdq_cmd *cmd)
++{
++	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
++						 mutex[mutex->id]);
 +
-+enum mtk_isp_ctrl {
-+	ISP_REG_MMSYS_SW0_RST_B,
-+	ISP_REG_MMSYS_SW1_RST_B,
-+	ISP_REG_MDP_ASYNC_CFG_WD,
-+	ISP_REG_MDP_ASYNC_IPU_CFG_WD,
-+	ISP_REG_ISP_RELAY_CFG_WD,
-+	ISP_REG_IPU_RELAY_CFG_WD,
-+	ISP_BIT_MDP_DL_ASYNC_TX,
-+	ISP_BIT_MDP_DL_ASYNC_TX2,
-+	ISP_BIT_MDP_DL_ASYNC_RX,
-+	ISP_BIT_MDP_DL_ASYNC_RX2,
-+	ISP_BIT_NO_SOF_MODE,
-+	ISP_CTRL_MAX
-+};
++	WARN_ON(&mtx->mutex[mutex->id] != mutex);
 +
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
- 			   enum mtk_ddp_comp_id next);
-@@ -109,4 +132,11 @@ void mtk_mmsys_mdp_disconnect(struct device *dev,
- 			      enum mtk_mdp_comp_id cur,
- 			      enum mtk_mdp_comp_id next);
++	cmdq_pkt_write_mask(cmd->pkt, mtx->subsys_id,
++			    mtx->addr + DISP_REG_MUTEX_EN(mutex->id),
++			    0x0, MTK_MUTEX_ENABLE);
++}
++EXPORT_SYMBOL_GPL(mtk_mutex_disable_by_cmdq);
++
+ void mtk_mutex_acquire(struct mtk_mutex *mutex)
+ {
+ 	struct mtk_mutex_ctx *mtx = container_of(mutex, struct mtk_mutex_ctx,
+@@ -524,7 +577,8 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+ {
+ 	struct device *dev = &pdev->dev;
+ 	struct mtk_mutex_ctx *mtx;
+-	struct resource *regs;
++	struct cmdq_client_reg cmdq_reg;
++	struct resource *regs, addr;
+ 	int i;
  
-+void mtk_mmsys_mdp_isp_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			    enum mtk_mdp_comp_id id);
+ 	mtx = devm_kzalloc(dev, sizeof(*mtx), GFP_KERNEL);
+@@ -545,6 +599,15 @@ static int mtk_mutex_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
++	if (of_address_to_resource(dev->of_node, 0, &addr) < 0)
++		mtx->addr = 0L;
++	else
++		mtx->addr = addr.start;
 +
-+void mtk_mmsys_mdp_camin_ctrl(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id id,
-+			      u32 camin_w, u32 camin_h);
++	if (cmdq_dev_get_client_reg(dev, &cmdq_reg, 0) != 0)
++		dev_info(dev, "cmdq subsys id has not been set\n");
++	mtx->subsys_id = cmdq_reg.subsys;
 +
- #endif /* __MTK_MMSYS_H */
+ 	regs = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	mtx->regs = devm_ioremap_resource(dev, regs);
+ 	if (IS_ERR(mtx->regs)) {
+diff --git a/include/linux/soc/mediatek/mtk-mutex.h b/include/linux/soc/mediatek/mtk-mutex.h
+index 099ddb025d79..86c17c024d83 100644
+--- a/include/linux/soc/mediatek/mtk-mutex.h
++++ b/include/linux/soc/mediatek/mtk-mutex.h
+@@ -16,8 +16,14 @@ struct mtk_mutex *mtk_mutex_mdp_get(struct device *dev,
+ int mtk_mutex_prepare(struct mtk_mutex *mutex);
+ void mtk_mutex_add_comp(struct mtk_mutex *mutex,
+ 			enum mtk_ddp_comp_id id);
++void mtk_mutex_add_mod_by_cmdq(struct mtk_mutex *mutex, u32 mod,
++			       struct mmsys_cmdq_cmd *cmd);
+ void mtk_mutex_enable(struct mtk_mutex *mutex);
++void mtk_mutex_enable_by_cmdq(struct mtk_mutex *mutex,
++			      struct mmsys_cmdq_cmd *cmd);
+ void mtk_mutex_disable(struct mtk_mutex *mutex);
++void mtk_mutex_disable_by_cmdq(struct mtk_mutex *mutex,
++			       struct mmsys_cmdq_cmd *cmd);
+ void mtk_mutex_remove_comp(struct mtk_mutex *mutex,
+ 			   enum mtk_ddp_comp_id id);
+ void mtk_mutex_unprepare(struct mtk_mutex *mutex);
 -- 
 2.18.0
 
