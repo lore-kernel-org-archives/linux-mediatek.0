@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC6ACC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 23:58:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C53CEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 23:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1fcpCzSC/thHJHCeocASvScJ2DhtS4oz/jadS7GR978=; b=zps0yQyF71cfss
-	qBKIV7gnCrgNKXcSQqiIwXCfWuPwB0b9xWdScFumJW0zj6fEyPnrxq2kL0w/szFSMk7CVRCsY1f5B
-	Zm2ZcFfpF4w+XWSilmMESfQX9zNlRVVGAsSQiJLzVT/7MeIhGEb+bSEzszY/ThlzMcSHi3wiCp8t6
-	2vV1JSStj7yndPYZ3QeMAaxSyor4jTGW135P396RPAIeF7Ka0MphWthe8/Gb4qoUyhvOrL2aP8l0D
-	XZkWIEXLZH28DT1D88qNq5j8OdX36Jgx9FdXaOZNIM0e0ZjUPZGusP2/mQYzZJITAUTAHJPQmA8Nd
-	4eJD4Edv2pOw1WG1Yq7A==;
+	List-Owner; bh=qv/lirXFuKCnIUz4EWJC+d7+tdYKcBBG9pWeqsFjPHU=; b=WrabZiACIyWP/e
+	DE2G7+FPkoSKA/j4R4+/YFR1bsvSJjoG18R9AH67oSEDWVVMinhDNemYbs00ktum0Xot38rB5pH8U
+	hV/tox7P2iuL+dWjx/50MqLeZIjto2ZDA+GWfK+MuK4UtHxrYSM8o7jNJQlFEYet9NQvFe5crFNQ1
+	7es3JFPrk6OqvgZifOyUivqBJWEBCQiPP7iafzoEA6vRlfJ5n2Ewk8KqIFV4mB9jJUn91ViLhuBeY
+	k84gkg4Cwdq8IR2oflVUKKREJa3PFBtmSWiN+OXNvQp74hL2w+CKU5tnQn4vT1SLFzq+IrWu7gfct
+	31PXeMIDOw/bvbALH/KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msZUh-00AMN1-7J; Wed, 01 Dec 2021 23:58:35 +0000
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+	id 1msZVH-00AMYJ-AC; Wed, 01 Dec 2021 23:59:11 +0000
+Received: from mail-qt1-x835.google.com ([2607:f8b0:4864:20::835])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msZUT-00AMIm-EG
- for linux-mediatek@lists.infradead.org; Wed, 01 Dec 2021 23:58:22 +0000
-Received: by mail-qv1-xf31.google.com with SMTP id gu12so23343509qvb.6
- for <linux-mediatek@lists.infradead.org>; Wed, 01 Dec 2021 15:58:20 -0800 (PST)
+ id 1msZUz-00AMOe-J1
+ for linux-mediatek@lists.infradead.org; Wed, 01 Dec 2021 23:58:55 +0000
+Received: by mail-qt1-x835.google.com with SMTP id 8so25870327qtx.5
+ for <linux-mediatek@lists.infradead.org>; Wed, 01 Dec 2021 15:58:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=RQT5LaKuLpVbjom//RaF2AtN8bjf4gP/+BsDdSre8KU=;
- b=lp4L8B9l+jnHbFKIcbcvNkHjhTK1O6mbofLkPamQb5VBj/MIHd93OExtstUQdeEOqM
- UMQPvKud8dsr3AfHXo6gMpBMwENnXFj/+ikud6r2xfl608m0EjGMEKAeJLoL5VaCPY52
- dUaOIBZ8X7EGC5cw5gsgz1GpdesgTzTFmLImw=
+ :cc; bh=mKAVFtfRZpn9mek6iPysBIxAT9sFeNDh1PJVk69vAok=;
+ b=UiQtL7PYDLYrQNpaKD6zuScFDLJgXtjIiVUSuenai/weJwHaNZGd50drPKnS644xJI
+ FsIUoEA38p0/+CgS2GnR18T3SWsehh9cfFdQhsGcYNw83eEXy2yN0V551YDlQed1a5ia
+ suumy0/x42VakjEbn2dWsY6UEt7ktkLXMzUVY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=RQT5LaKuLpVbjom//RaF2AtN8bjf4gP/+BsDdSre8KU=;
- b=Fsn/H/7oiteq9ObRM3rLKLs6kpE5PgTFuKuac3wM/Nenh0jXAeBL0a9UXN4NhPSLMj
- RTV7zEvYg5ksT3ede6iY+fBZH6ECv7wz54EX/22nvmUTPyPBkTgbIatXNTjMLoQM9SEc
- Y4tGvOlkvT0onvOzFlSKmSV5wdVkBUiWolNJoDAidDcrUPkfN5bCkKkxWhbu2m1ytcOt
- iWu0J8KnBcl/RscQNTC+AeXI6CA99IqGbtPB9JktXFiDK9tAEkp1MdOzpIB75fhImVQA
- gyzpxdm4KNAGk6w/z+kZES1190QxhrONzdZNJ7RYROHloYD4XjdWBFBmX+ltUZ/j9fzu
- egRg==
-X-Gm-Message-State: AOAM533g4pi82NvcSSYpPCtRSIeivqCss7hLfB0P2AuNdPSGvoztDY6b
- dEMFTYRuQFxrcYhHp1TpXmUkkWyIBkBlZLBaZpE1LA==
-X-Google-Smtp-Source: ABdhPJzlpgZXsoQfRBzDzE58VVCzidR0RvngXil7sYYYYjvo4+YcwcrLBGNoEy/KBUtLRTFiMMMi5pjug9dEP26Q0DQ=
-X-Received: by 2002:a05:6214:17cc:: with SMTP id
- cu12mr10393249qvb.66.1638403100004; 
- Wed, 01 Dec 2021 15:58:20 -0800 (PST)
+ bh=mKAVFtfRZpn9mek6iPysBIxAT9sFeNDh1PJVk69vAok=;
+ b=BTqhyYzc4yQ+JqkIZViGKlehTmKDK4hirEoMGSiR7bdnYblrtwyPd/iyYoIAR9UQDQ
+ R21zEifwg6TDmmjC3fJr0GSpOqdkmchn50yw6i51bSnvRtWRW9in6H1LXtWcjSQrcof1
+ 7IgMghAxkOEui0u1LNNhkv+HGPLiqjbs1hRbTvNlWWxbr22HyBmUxXxNt+x0+77Q1Y55
+ ujdn9IqdVdYbDVQarwJkodn2OMzRrU/soqZDSzWdOgQBdVMsrKwB8xs+NNKawCnif2nV
+ MrfH20/UMlkq0OoewlgpnTzQczkMsGeU5BFIa1Nm0AeW1DyXvKy9RFlJr5MLd98czoSH
+ 52iw==
+X-Gm-Message-State: AOAM530s7ftBY6WCUJ2UFbh6jYT/yj9OTRiocfDjXyWOJaUANr+Vdrva
+ LX4tMat4oTpYX8H01mydtMXUO3r+GWC7A4ZIVyRfGA==
+X-Google-Smtp-Source: ABdhPJxjAowIZNevtYxc/JYBCkiAIs98qYglgiULGYpJOCGmpv/QaOf2gRWJM912xU3UVIlhW8QOcnJt6ZYIil4W+Lg=
+X-Received: by 2002:a05:622a:130e:: with SMTP id
+ v14mr10542855qtk.458.1638403121278; 
+ Wed, 01 Dec 2021 15:58:41 -0800 (PST)
 MIME-Version: 1.0
 References: <20211129034201.5767-1-yunfei.dong@mediatek.com>
- <20211129034201.5767-6-yunfei.dong@mediatek.com>
- <3fb4e348-295d-9ec4-43b4-0fad06b33010@collabora.com>
-In-Reply-To: <3fb4e348-295d-9ec4-43b4-0fad06b33010@collabora.com>
+ <20211129034201.5767-3-yunfei.dong@mediatek.com>
+ <CAC-pXoPXc=q8KPUcSfY6XZ=sLt71vDZbJV=f4SZx55Gc6VbRQw@mail.gmail.com>
+In-Reply-To: <CAC-pXoPXc=q8KPUcSfY6XZ=sLt71vDZbJV=f4SZx55Gc6VbRQw@mail.gmail.com>
 From: Steve Cho <stevecho@chromium.org>
-Date: Wed, 1 Dec 2021 15:58:09 -0800
-Message-ID: <CAC-pXoOgyTRqYpA9U2ze840moLQ+gTT4EnLq-Pn9H4PHd9ttTg@mail.gmail.com>
-Subject: Re: [PATCH v11, 05/19] media: mtk-vcodec: Support MT8192
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>, 
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, 
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+Date: Wed, 1 Dec 2021 15:58:30 -0800
+Message-ID: <CAC-pXoPtPb1y8c5FovXJ_T-689t_RRdyGu=54yr9BufDK+zmkw@mail.gmail.com>
+Subject: Re: [PATCH v11, 02/19] media: mtk-vcodec: Align vcodec wake up
+ interrupt interface
+To: Yunfei Dong <yunfei.dong@mediatek.com>
+Cc: Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, 
+ Tzung-Bi Shih <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, 
+ Fritz Koenig <frkoenig@chromium.org>,
  Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, 
  Benjamin Gaignard <benjamin.gaignard@collabora.com>,
  Daniel Vetter <daniel@ffwll.ch>, 
@@ -77,9 +78,8 @@ Cc: Yunfei Dong <yunfei.dong@mediatek.com>,
  srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org, 
  Project_Global_Chrome_Upstream_Group@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_155821_508386_B9DF9B85 
-X-CRM114-Status: UNSURE (   7.19  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211201_155853_658044_4B493D68 
+X-CRM114-Status: GOOD (  21.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,18 +98,92 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Reviewed-by: Steve Cho <stevecho@chromium.org>
 
-On Wed, Dec 1, 2021 at 4:10 AM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
+On Wed, Dec 1, 2021 at 3:55 PM Steve Cho <stevecho@chromium.org> wrote:
 >
-> Il 29/11/21 04:41, Yunfei Dong ha scritto:
-> > From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
+> LGTM.
+>
+> On Sun, Nov 28, 2021 at 7:44 PM Yunfei Dong <yunfei.dong@mediatek.com> wrote:
 > >
-> > Adds MT8192's compatible "mediatek,mt8192-vcodec-dec".
-> > Adds MT8192's device private data mtk_lat_sig_core_pdata.
+> > Vdec and venc can use the same function to wake up interrupt event.
 > >
+> > Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> > ---
+> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 9 +--------
+> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 8 ++++++++
+> >  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 8 --------
+> >  3 files changed, 9 insertions(+), 16 deletions(-)
+> >
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > index 59caf2163349..055d50e52720 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> > @@ -31,13 +31,6 @@
+> >  module_param(mtk_v4l2_dbg_level, int, 0644);
+> >  module_param(mtk_vcodec_dbg, bool, 0644);
+> >
+> > -/* Wake up context wait_queue */
+> > -static void wake_up_ctx(struct mtk_vcodec_ctx *ctx)
+> > -{
+> > -       ctx->int_cond = 1;
+> > -       wake_up_interruptible(&ctx->queue);
+> > -}
+> > -
+> >  static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+> >  {
+> >         struct mtk_vcodec_dev *dev = priv;
+> > @@ -69,7 +62,7 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+> >         writel((readl(vdec_misc_addr) & ~VDEC_IRQ_CLR),
+> >                 dev->reg_base[VDEC_MISC] + VDEC_IRQ_CFG_REG);
+> >
+> > -       wake_up_ctx(ctx);
+> > +       wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
 >
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Assuming setting up reason doesn't change functionality.
+>
+> >
+> >         mtk_v4l2_debug(3,
+> >                         "mtk_vcodec_dec_irq_handler :wake up ctx %d, dec_done_status=%x",
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> > index 581522177308..1d2370608d0d 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+> > @@ -473,4 +473,12 @@ static inline struct mtk_vcodec_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
+> >         return container_of(ctrl->handler, struct mtk_vcodec_ctx, ctrl_hdl);
+> >  }
+> >
+> > +/* Wake up context wait_queue */
+> > +static inline void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
+> > +{
+> > +       ctx->int_cond = 1;
+> > +       ctx->int_type = reason;
+> > +       wake_up_interruptible(&ctx->queue);
+> > +}
+> > +
+> >  #endif /* _MTK_VCODEC_DRV_H_ */
+> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > index eed67394cf46..7c3487fb3498 100644
+> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> > @@ -65,14 +65,6 @@ static const struct mtk_video_fmt mtk_video_formats_capture_vp8[] =  {
+> >         },
+> >  };
+> >
+> > -/* Wake up context wait_queue */
+> > -static void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
+> > -{
+> > -       ctx->int_cond = 1;
+> > -       ctx->int_type = reason;
+> > -       wake_up_interruptible(&ctx->queue);
+> > -}
+> > -
+> >  static void clean_irq_status(unsigned int irq_status, void __iomem *addr)
+> >  {
+> >         if (irq_status & MTK_VENC_IRQ_STATUS_PAUSE)
+> > --
+> > 2.25.1
+> >
 
 _______________________________________________
 Linux-mediatek mailing list
