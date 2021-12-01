@@ -4,69 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB54EC43217
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 10:38:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78111C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 12:06:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lz+eHlqKX/G3lgAMJ+WldWW9Npetes9oKxeOSLUz7t4=; b=FzGwmLpBrB/3V0zayOa8IMGURS
-	55GLJPFqTkmkoI/UDCRxaUfgSa8B7aAlnY8yqEAx3OdhHnkSPDfQTiGcw9x9w+mdplQCGWyPHRvuo
-	iwquO8wMmodINlIT2mMDHg61C97xtt0EQFFzPQ9+N/XMx29eud642WxheL7bxu/w+hv4CGIiTZCLa
-	JiBozoF4IfO292TIH8aWqpnQ0Wjd4P/8V0k5kTgZv9XboYibzbhvEyYiqQ3g0t6XzxZZah/ArGy+R
-	Iw6r9BhphFvJG2uy5x0mf76cXDenDB4t5hHWmjg59PcY0j5thGthibci8Ufxk8kVdNTkaDF1j8S7q
-	yoXBmnyw==;
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+ZG25aFODl+Gr6psBg0CaugCyMk9uxNNhJ40D70RpPw=; b=eF7DeFITQblkmt
+	jogUQJavhSjW7tOoZAgx9viXBiZQFv3zgaEIGEbw9noY0wdYrKuN+SztC06Tps8m20reaTr7E4c5l
+	8JBeoxCHG97wyD0q1/7rnxzSz0XTVH/8gahxhE/uMZH7jTcbTzDAiFl/FzjKfZBgAi8CC48mLzRvL
+	VES9Gjodl3y9KFdURWHLP8Km9GjTgHJiVrkr2Z8z31U2aoZKemFXcoeP09yNLTSICS2dJdm3EO2bw
+	VFd8JO/YzNUunVpgZT27lEjuYJr53Luj11Xhkbs6ED2X2FjC15/yIYqH6mF/9lwFEXcycoGCGQvOK
+	5/khnplPaCad5J2WVyLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msMzz-0087e5-8F; Wed, 01 Dec 2021 10:38:03 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1msONr-008K6T-AS; Wed, 01 Dec 2021 12:06:47 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msMzl-0087aw-Lo; Wed, 01 Dec 2021 10:37:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id B24231F4105F
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1638355067; bh=5zeRiVN6ryxwm/9AqBmiziPFHviBjXpBHA5P6czC8SI=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=dfdAawREpQdQ0QXsUbDIvefQhw/dVtrMDpCTDUwj1cRrtQcmW12myoLxDHDjk7S6E
- 2gscGaAcrDMZGWExTzBLGYyv3kfA1P/2vmMqxt6AEfo/YA66464koVAsAZoayJNvtz
- VRKRzQwUnAzVULeMMzFX+JTrJaedV8DnRt/n/2ZnGldBgkabvgtIOG37hHQPIpENwY
- U2nwOxeEpzYFWcgykf6hVjtvhgijvu+JynDqerrGfXGAFBw5Yuwxy008VLO3wghsiI
- sHQ2f5T2iJXtOyEm5PVzQGes0Ou5ZYu+Y1NPSKuQNx/0+AiwuH/zlURsMs2GOwSZ3K
- UOcjVXnzGxUWw==
-Subject: Re: [PATCH v9 7/7] media: platform: mtk-mdp3: add Mediatek MDP3 driver
-To: Moudy Ho <moudy.ho@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Jernej Skrabec <jernej.skrabec@siol.net>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
- tfiga@chromium.org, drinkcat@chromium.org, pihsun@chromium.org,
- hsinyi@google.com, Maoguang Meng <maoguang.meng@mediatek.com>,
- daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, menghui.lin@mediatek.com,
- sj.huang@mediatek.com, allen-kh.cheng@mediatek.com, randy.wu@mediatek.com,
- jason-jh.lin@mediatek.com, roy-cw.yeh@mediatek.com,
- river.cheng@mediatek.com, srv_heupstream@mediatek.com
-References: <20211201095031.31606-1-moudy.ho@mediatek.com>
- <20211201095031.31606-8-moudy.ho@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <103b1664-d04c-c1fc-ff4c-e2c92ce45ee8@collabora.com>
-Date: Wed, 1 Dec 2021 11:37:43 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1msOMP-008JQI-VY
+ for linux-mediatek@lists.infradead.org; Wed, 01 Dec 2021 12:05:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:
+ Cc:To:Subject:From:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=Fs2Dvlbnis6ALmJuF1LzDv7QQb8i2PaaMQJJ8if3268=; b=uSlOyyHtcvmeFvCgALaTWrnQB3
+ 2tAenKO8yujFJ4Gy/N4F3JjprwYb6Vt/+KF/CpTroOl5xk7dGZOMGeUdRT6c7r336zY7PBYlXgIaD
+ YBUy5NLYKbbAT7MtdaO14RBoHjRoSK/Sy48LgWuDdsD/RCruKzLFUxG+mu5HsSGP62yo=;
+Received: from p54ae943f.dip0.t-ipconnect.de ([84.174.148.63] helo=nf.local)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1msOMH-0001x8-OO; Wed, 01 Dec 2021 13:05:09 +0100
+Message-ID: <c42b846e-95c3-c244-f51d-9758cbb8d6be@nbd.name>
+Date: Wed, 1 Dec 2021 13:05:07 +0100
 MIME-Version: 1.0
-In-Reply-To: <20211201095031.31606-8-moudy.ho@mediatek.com>
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.3.2
+From: Felix Fietkau <nbd@nbd.name>
+Subject: Re: [PATCH v3 02/11] mt76: mt7915: refine register definition
+To: Bo Jiao <bo.jiao@mediatek.com>
+Cc: linux-wireless <linux-wireless@vger.kernel.org>,
+ Ryder Lee <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>,
+ Sujuan Chen <sujuan.chen@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+References: <cover.1637652742.git.Bo.Jiao@mediatek.com>
+ <0850d5df6574ea3d0ef32e953e5269548a8a223a.1637652742.git.Bo.Jiao@mediatek.com>
 Content-Language: en-US
+In-Reply-To: <0850d5df6574ea3d0ef32e953e5269548a8a223a.1637652742.git.Bo.Jiao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_023750_021112_089A9CF5 
-X-CRM114-Status: GOOD (  20.72  )
+X-CRM114-CacheID: sfid-20211201_040518_458968_9BB288CF 
+X-CRM114-Status: GOOD (  24.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,89 +75,517 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 01/12/21 10:50, Moudy Ho ha scritto:
-> This patch adds driver for Mediatek's Media Data Path ver.3 (MDP3).
-> It provides the following functions:
->    color transform, format conversion, resize, crop, rotate, flip
->    and additional image quality enhancement.
+Hi,
+
+Thank you for the patch. Some comments and change requests below.
+
+On 2021-11-23 08:49, Bo Jiao wrote:
+> From: Bo Jiao <Bo.Jiao@mediatek.com>
 > 
-> The MDP3 driver is mainly used for Google Chromebook products to
-> import the new architecture to set the HW settings as shown below:
->    User -> V4L2 framework
->      -> MDP3 driver -> SCP (setting calculations)
->        -> MDP3 driver -> CMDQ (GCE driver) -> HW
+> Add mt7915_reg_desc to differentiate chip generations.
+> This is an intermediate patch to introduce mt7916 support.
 > 
-> Each modules' related operation control is sited in mtk-mdp3-comp.c
-> Each modules' register table is defined in file with "mdp_reg_" prefix
-> GCE related API, operation control  sited in mtk-mdp3-cmdq.c
-> V4L2 m2m device functions are implemented in mtk-mdp3-m2m.c
-> Probe, power, suspend/resume, system level functions are defined in
-> mtk-mdp3-core.c
-> 
-> Signed-off-by: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
-> Signed-off-by: daoyuan huang <daoyuan.huang@mediatek.com>
-> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> Reported-by: kernel test robot <lkp@intel.com>
+> Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+> Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+> Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
 > ---
->   drivers/media/platform/Kconfig                |   19 +
->   drivers/media/platform/Makefile               |    2 +
->   drivers/media/platform/mtk-mdp3/Makefile      |    6 +
->   .../media/platform/mtk-mdp3/mdp_reg_ccorr.h   |   19 +
->   drivers/media/platform/mtk-mdp3/mdp_reg_isp.h |   27 +
->   .../media/platform/mtk-mdp3/mdp_reg_rdma.h    |   65 +
->   drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h |   39 +
->   .../media/platform/mtk-mdp3/mdp_reg_wdma.h    |   47 +
->   .../media/platform/mtk-mdp3/mdp_reg_wrot.h    |   55 +
->   drivers/media/platform/mtk-mdp3/mtk-img-ipi.h |  280 ++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   |  514 +++++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.h   |   46 +
->   .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 1264 +++++++++++++++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |  147 ++
->   .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  338 +++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |   76 +
->   .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |  789 ++++++++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-m2m.h    |   49 +
->   .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  737 ++++++++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |  372 +++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-vpu.c    |  312 ++++
->   .../media/platform/mtk-mdp3/mtk-mdp3-vpu.h    |   78 +
->   22 files changed, 5281 insertions(+)
->   create mode 100644 drivers/media/platform/mtk-mdp3/Makefile
->   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_ccorr.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_isp.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wdma.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.c
->   create mode 100644 drivers/media/platform/mtk-mdp3/mtk-mdp3-vpu.h
+>   .../wireless/mediatek/mt76/mt7915/debugfs.c   |  20 +-
+>   .../net/wireless/mediatek/mt76/mt7915/dma.c   |   5 +-
+>   .../net/wireless/mediatek/mt76/mt7915/mac.c   |  26 +-
+>   .../net/wireless/mediatek/mt76/mt7915/mmio.c  | 507 +++++++++++++--
+>   .../wireless/mediatek/mt76/mt7915/mt7915.h    |   4 +-
+>   .../net/wireless/mediatek/mt76/mt7915/regs.h  | 607 ++++++++++++------
+>   .../wireless/mediatek/mt76/mt7915/testmode.c  |  58 +-
+>   7 files changed, 907 insertions(+), 320 deletions(-)
 > 
 
-snip...
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> index 2f8b72b..0d67321 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mmio.c
+> @@ -10,100 +10,449 @@
+>   #include "mac.h"
+>   #include "../trace.h"
+>   
 
-> diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-> new file mode 100644
-> index 000000000000..a643f3ee928b
-> --- /dev/null
-> +++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-> @@ -0,0 +1,514 @@
+I think the patch and the code can be much simpler if we get rid of the 
+base address abstraction that you introduced. Some more comments below:
 
-Looks like you forgot to check my review comments to this entire file.
-Can you please send a new version after applying the changes to this file
-suggested in my review of series v8?
+> +static const u32 mt7915_base[] = {
+> +	[MT_REMAP_L1_CFG_BASE]	= 0xf1000,
+> +	[MT_REMAP_L1_BASE]	= 0xe0000,
+> +	[MT_REMAP_L2_CFG_BASE]	= 0xf1000,
+> +	[MT_REMAP_L2_BASE]	= 0x00000,
 
-Thanks.
+The use of these is limited to the mt7915_reg_map_l* functions. You can 
+simply add separate #defines and separate register map functions for 
+7915 and 7916.
+
+
+> +	[MT_INFRA_MCU_END_BASE]	= 0x7c3fffff,
+
+This one is unused if you also get rid of MT_CONN_INFRA_MCU_START and 
+MT_CONN_INFRA_MCU_END.
+
+> +	[MT_PCIE_MAC_BASE]	= 0x74030000,
+
+Same as 7916
+
+> +	[MT_PCIE1_MAC_BASE]	= 0x74020000,
+
+This is used in one place only. Separate register definitions would make 
+this easier to follow.
+
+> +	[MT_WFDMA0_BASE]	= 0xd4000,
+> +	[MT_WFDMA1_BASE]	= 0xd5000,
+> +	[MT_WFDMA0_PCIE1_BASE]	= 0xd8000,
+> +	[MT_WFDMA1_PCIE1_BASE]	= 0xd9000,
+> +	[MT_WFDMA_EXT_CSR_BASE]	= 0xd7000,
+
+Same as 7916
+
+> +	[MT_SWDEF_BASE]		= 0x41f200,
+
+Again used in one place only, so separate definitions makes sense here 
+as well.
+
+> +	[MT_MCU_WFDMA0_BASE]	= 0x2000,
+> +	[MT_MCU_WFDMA1_BASE]	= 0x3000,
+
+Same as 7916.
+
+> [...]
+> +static const struct __reg mt7915_reg[] = {
+> +	[L1_REMAP_CFG_OFFSET]	= { MT_REMAP_L1_CFG_BASE, 0x1ac },
+> +	[L2_REMAP_CFG_OFFSET]	= { MT_REMAP_L2_CFG_BASE, 0x1b0 },
+
+Same as for MT_REMAP_L1_CFG_BASE, ...
+
+
+> +	[INT_SOURCE_CSR]	= { MT_WFDMA_EXT_CSR_BASE, 0x10 },
+> +	[INT_MASK_CSR]		= { MT_WFDMA_EXT_CSR_BASE, 0x14 },
+> +	[INT1_SOURCE_CSR]	= { MT_WFDMA_EXT_CSR_BASE, 0x88 },
+> +	[INT1_MASK_CSR]		= { MT_WFDMA_EXT_CSR_BASE, 0x8c },
+> +	[INT_MCU_CMD_SOURCE]	= { MT_WFDMA1_BASE, 0x1f0 },
+> +	[INT_MCU_CMD_EVENT]	= { MT_MCU_WFDMA1_BASE, 0x108 },
+> +	[TX_RING_BASE]		= { MT_WFDMA1_BASE, 0x400 },
+> +	[RX_EVENT_RING_BASE]	= { MT_WFDMA1_BASE, 0x500 },
+> +	[RX_DATA_RING_BASE]	= { MT_WFDMA0_BASE, 0x500 },
+> +	[TMAC_CDTR]		= { INVALID_BASE, 0x090 },
+> +	[TMAC_ODTR]		= { INVALID_BASE, 0x094 },
+> +	[TMAC_ATCR]		= { INVALID_BASE, 0x098 },
+> +	[TMAC_TRCR0]		= { INVALID_BASE, 0x09c },
+> +	[TMAC_ICR0]		= { INVALID_BASE, 0x0a4 },
+> +	[TMAC_ICR1]		= { INVALID_BASE, 0x0b4 },
+> +	[TMAC_CTCR0]		= { INVALID_BASE, 0x0f4 },
+> +	[TMAC_TFCR0]		= { INVALID_BASE, 0x1e0 },
+> +	[MDP_BNRCFR0]		= { INVALID_BASE, 0x070 },
+> +	[MDP_BNRCFR1]		= { INVALID_BASE, 0x074 },
+> +	[ARB_DRNGR0]		= { INVALID_BASE, 0x194 },
+> +	[ARB_SCR]		= { INVALID_BASE, 0x080 },
+> +	[RMAC_MIB_AIRTIME14]	= { INVALID_BASE, 0x3b8 },
+> +	[AGG_AWSCR0]		= { INVALID_BASE, 0x05c },
+> +	[AGG_PCR0]		= { INVALID_BASE, 0x06c },
+> +	[AGG_ACR0]		= { INVALID_BASE, 0x084 },
+> +	[AGG_MRCR]		= { INVALID_BASE, 0x098 },
+> +	[AGG_ATCR1]		= { INVALID_BASE, 0x0f0 },
+> +	[AGG_ATCR3]		= { INVALID_BASE, 0x0f4 },
+> +	[LPON_UTTR0]		= { INVALID_BASE, 0x080 },
+> +	[LPON_UTTR1]		= { INVALID_BASE, 0x084 },
+> +	[MIB_SDR3]		= { INVALID_BASE, 0x014 },
+> +	[MIB_SDR4]		= { INVALID_BASE, 0x018 },
+> +	[MIB_SDR5]		= { INVALID_BASE, 0x01c },
+> +	[MIB_SDR7]		= { INVALID_BASE, 0x024 },
+> +	[MIB_SDR8]		= { INVALID_BASE, 0x028 },
+> +	[MIB_SDR9]		= { INVALID_BASE, 0x02c },
+> +	[MIB_SDR10]		= { INVALID_BASE, 0x030 },
+> +	[MIB_SDR11]		= { INVALID_BASE, 0x034 },
+> +	[MIB_SDR12]		= { INVALID_BASE, 0x038 },
+> +	[MIB_SDR13]		= { INVALID_BASE, 0x03c },
+> +	[MIB_SDR14]		= { INVALID_BASE, 0x040 },
+> +	[MIB_SDR15]		= { INVALID_BASE, 0x044 },
+> +	[MIB_SDR16]		= { INVALID_BASE, 0x048 },
+> +	[MIB_SDR17]		= { INVALID_BASE, 0x04c },
+> +	[MIB_SDR18]		= { INVALID_BASE, 0x050 },
+> +	[MIB_SDR19]		= { INVALID_BASE, 0x054 },
+> +	[MIB_SDR20]		= { INVALID_BASE, 0x058 },
+> +	[MIB_SDR21]		= { INVALID_BASE, 0x05c },
+> +	[MIB_SDR22]		= { INVALID_BASE, 0x060 },
+> +	[MIB_SDR23]		= { INVALID_BASE, 0x064 },
+> +	[MIB_SDR24]		= { INVALID_BASE, 0x068 },
+> +	[MIB_SDR25]		= { INVALID_BASE, 0x06c },
+> +	[MIB_SDR27]		= { INVALID_BASE, 0x074 },
+> +	[MIB_SDR28]		= { INVALID_BASE, 0x078 },
+> +	[MIB_SDR29]		= { INVALID_BASE, 0x07c },
+> +	[MIB_SDRVEC]		= { INVALID_BASE, 0x080 },
+> +	[MIB_SDR31]		= { INVALID_BASE, 0x084 },
+> +	[MIB_SDR32]		= { INVALID_BASE, 0x088 },
+> +	[MIB_SDRMUBF]		= { INVALID_BASE, 0x090 },
+> +	[MIB_DR8]		= { INVALID_BASE, 0x0c0 },
+> +	[MIB_DR9]		= { INVALID_BASE, 0x0c4 },
+> +	[MIB_DR11]		= { INVALID_BASE, 0x0cc },
+> +	[MIB_MB_SDR0]		= { INVALID_BASE, 0x100 },
+> +	[MIB_MB_SDR1]		= { INVALID_BASE, 0x104 },
+> +	[TX_AGG_CNT]		= { INVALID_BASE, 0x0a8 },
+> +	[TX_AGG_CNT2]		= { INVALID_BASE, 0x164 },
+> +	[MIB_ARNG]		= { INVALID_BASE, 0x4b8 },
+> +	[WTBLON_TOP_WDUCR]	= { INVALID_BASE, 0x0},
+> +	[WTBL_UPDATE]		= { INVALID_BASE, 0x030},
+> +	[PLE_FL_Q_EMPTY]	= { INVALID_BASE, 0x0b0},
+> +	[PLE_FL_Q_CTRL]		= { INVALID_BASE, 0x1b0},
+> +	[PLE_AC_QEMPTY]		= { INVALID_BASE, 0x500},
+> +	[PLE_FREEPG_CNT]	= { INVALID_BASE, 0x100},
+> +	[PLE_FREEPG_HEAD_TAIL]	= { INVALID_BASE, 0x104},
+> +	[PLE_PG_HIF_GROUP]	= { INVALID_BASE, 0x110},
+> +	[PLE_HIF_PG_INFO]	= { INVALID_BASE, 0x114},
+> +	[AC_OFFSET]		= { INVALID_BASE, 0x040},
+> +};
+
+I think you can replace the { base, reg } tuple with just a register 
+address (or offset). For the PLE register definitions, it probably also 
+makes sense to get rid of the array indirection and just add separate 
+definitions and functions.
+
+> [...]
+
+> +
+> +static const struct __mask mt7915_mask[] = {
+> +	[L2_REMAP_MASK]		= {19, 0},
+> +	[L2_REMAP_OFFSET]	= {11, 0},
+> +	[L2_REMAP_BASE]		= {31, 12},
+> +	[MIB_SDR3_FCS_ERR]	= {15, 0},
+> +	[MIB_MRDY_CNT]		= {25, 0},
+> +	[MIB_MPDU_ATTEMPTS_CNT]	= {23, 0},
+> +	[MIB_MPDU_SUCCESS_CNT]	= {23, 0},
+> +	[MIB_AMPDU_SF_CNT]	= {23, 0},
+> +	[MIB_PF_DROP_CNT]	= {7, 0},
+> +	[MIB_VEC_DROP_CNT]	= {15, 0},
+> +	[MIB_BF_TX_CNT]		= {15, 0},
+> +};
+> +
+> +static const struct __mask mt7916_mask[] = {
+> +	[L2_REMAP_MASK]		= {31, 16},
+> +	[L2_REMAP_OFFSET]	= {15, 0},
+> +	[L2_REMAP_BASE]		= {31, 16},
+> +	[MIB_SDR3_FCS_ERR]	= {31, 16},
+> +	[MIB_MRDY_CNT]		= {31, 0},
+> +	[MIB_MPDU_ATTEMPTS_CNT]	= {31, 0},
+> +	[MIB_MPDU_SUCCESS_CNT]	= {31, 0},
+> +	[MIB_AMPDU_SF_CNT]	= {31, 0},
+> +	[MIB_PF_DROP_CNT]	= {15, 0},
+> +	[MIB_VEC_DROP_CNT]	= {31, 16},
+> +	[MIB_BF_TX_CNT]		= {31, 16},
+> +};
+
+I think this array should also be removed and the mask differences 
+open-coded in the relevant functions.
+
+> +
+> +static const u32 mt7915_bit[] = {
+> +	[RX_DONE_DAND0]		= 16,
+> +	[RX_DONE_DAND1]		= 17,
+> +	[RX_DONE_MCU_WM]	= 0,
+> +	[RX_DONE_MCU_WA]	= 1,
+> +	[RX_DONE_WA_BAND0]	= 1,
+> +	[RX_DONE_WA_BAND1]	= 2,
+> +	[TX_DONE_FWDL]		= 26,
+> +	[TX_DONE_MCU_WM]	= 27,
+> +	[TX_DONE_MCU_WA]	= 15,
+> +	[TX_DONE_BAND0]		= 30,
+> +	[TX_DONE_BAND1]		= 31,
+> +	[RX_MCU_TO_HOST]	= 29,
+> +	[MIB_MB_SDR]		= 2,
+> +	[LPON_TCR]		= 0,
+> +};
+> +
+> +static const u32 mt7916_bit[] = {
+> +	[RX_DONE_DAND0]		= 22,
+> +	[RX_DONE_DAND1]		= 23,
+> +	[RX_DONE_MCU_WM]	= 0,
+> +	[RX_DONE_MCU_WA]	= 1,
+> +	[RX_DONE_WA_BAND0]	= 2,
+> +	[RX_DONE_WA_BAND1]	= 3,
+> +	[TX_DONE_FWDL]		= 26,
+> +	[TX_DONE_MCU_WM]	= 27,
+> +	[TX_DONE_MCU_WA]	= 25,
+> +	[TX_DONE_BAND0]		= 30,
+> +	[TX_DONE_BAND1]		= 31,
+> +	[RX_MCU_TO_HOST]	= 29,
+> +	[MIB_MB_SDR]		= 1,
+> +	[LPON_TCR]		= 2,
+> +};
+
+I think for the interrupt masks we should have a separate mask 
+definitions for 7915 vs 7916 and check for the chip type in 
+mt7915_irq_tasklet.
+The other two bits also don't seem worth keeping a separate array for, 
+so better just open-code the differences.
+
+> +
+> +static const struct __map mt7915_reg_map[] = {
+> +	{ 0x00400000, 0x80000, 0x10000 }, /* WF_MCU_SYSRAM */
+> +	{ 0x00410000, 0x90000, 0x10000 }, /* WF_MCU_SYSRAM (configure regs) */
+> +	{ 0x40000000, 0x70000, 0x10000 }, /* WF_UMAC_SYSRAM */
+> +	{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
+> +	{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
+> +	{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
+> +	{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
+> +	{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
+> +	{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
+> +	{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
+> +	{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
+> +	{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
+> +	{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
+> +	{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
+> +	{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
+> +	{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
+> +	{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
+> +	{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
+> +	{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
+> +	{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
+> +	{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
+> +	{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
+> +	{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
+> +	{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
+> +	{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
+> +	{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
+> +	{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
+> +	{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
+> +	{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
+> +	{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
+> +	{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
+> +	{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
+> +	{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
+> +	{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
+> +	{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
+> +	{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
+> +	{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
+> +	{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
+> +	{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
+> +	{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
+> +	{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
+> +	{ 0x0, 0x0, 0x0 }, /* imply end of search */
+> +};
+> +
+> +static const struct __map mt7916_reg_map[] = {
+> +	{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA_0 (PCIE0 MCU DMA0) */
+> +	{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA_1 (PCIE0 MCU DMA1) */
+> +	{ 0x56000000, 0x04000, 0x1000 }, /* WFDMA_2 (Reserved) */
+> +	{ 0x57000000, 0x05000, 0x1000 }, /* WFDMA_3 (MCU wrap CR) */
+> +	{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA_4 (PCIE1 MCU DMA0) */
+> +	{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA_5 (PCIE1 MCU DMA1) */
+> +	{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
+> +	{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
+> +	{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
+> +	{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
+> +	{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
+> +	{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
+> +	{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
+> +	{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
+> +	{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
+> +	{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
+> +	{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
+> +	{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
+> +	{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
+> +	{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
+> +	{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
+> +	{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
+> +	{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
+> +	{ 0x820ca000, 0x26000, 0x2000 }, /* WF_LMAC_TOP BN0 (WF_MUCOP) */
+> +	{ 0x820d0000, 0x30000, 0x10000}, /* WF_LMAC_TOP (WF_WTBLON) */
+> +	{ 0x00400000, 0x80000, 0x10000}, /* WF_MCU_SYSRAM */
+> +	{ 0x00410000, 0x90000, 0x10000}, /* WF_MCU_SYSRAM (configure cr) */
+> +	{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
+> +	{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
+> +	{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
+> +	{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
+> +	{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
+> +	{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
+> +	{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
+> +	{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
+> +	{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
+> +	{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
+> +	{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
+> +	{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
+> +	{ 0x820c4000, 0xa8000, 0x1000 }, /* WF_LMAC_TOP (WF_UWTBL ) */
+> +	{ 0x820b0000, 0xae000, 0x1000 }, /* [APB2] WFSYS_ON */
+> +	{ 0x80020000, 0xb0000, 0x10000}, /* WF_TOP_MISC_OFF */
+> +	{ 0x81020000, 0xc0000, 0x10000}, /* WF_TOP_MISC_ON */
+> +	{ 0x0, 0x0, 0x100000 }, /* fixed remap range */
+
+This "fixed remap range" entry isn't needed, this is already handled in 
+__mt7915_reg_addr.
+
+> +	{ 0x0, 0x0, 0x0 }, /* imply end of search */
+> +};
+> + [...]
+
+>   
+>   static u32 __mt7915_reg_addr(struct mt7915_dev *dev, u32 addr)
+>   {
+> -	static const struct {
+> -		u32 phys;
+> -		u32 mapped;
+> -		u32 size;
+> -	} fixed_map[] = {
+> -		{ 0x00400000, 0x80000, 0x10000 }, /* WF_MCU_SYSRAM */
+> -		{ 0x00410000, 0x90000, 0x10000 }, /* WF_MCU_SYSRAM (configure regs) */
+> -		{ 0x40000000, 0x70000, 0x10000 }, /* WF_UMAC_SYSRAM */
+> -		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
+> -		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
+> -		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
+> -		{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
+> -		{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
+> -		{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
+> -		{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
+> -		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
+> -		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
+> -		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
+> -		{ 0x820cc000, 0x0e000, 0x2000 }, /* WF_UMAC_TOP (PP) */
+> -		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
+> -		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
+> -		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
+> -		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
+> -		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
+> -		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
+> -		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
+> -		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
+> -		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
+> -		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
+> -		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
+> -		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
+> -		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
+> -		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
+> -		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
+> -		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
+> -		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
+> -		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
+> -		{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
+> -		{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
+> -		{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
+> -		{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
+> -		{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
+> -		{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
+> -		{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
+> -		{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
+> -		{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
+> -	};
+>   	int i;
+>   
+>   	if (addr < 0x100000)
+>   		return addr;
+>   
+> -	for (i = 0; i < ARRAY_SIZE(fixed_map); i++) {
+> +	if (!dev->reg->map) {
+> +		dev_err(dev->mt76.dev, "err: reg_map is null\n");
+> +		return addr;
+> +	}
+> +
+> +	for (i = 0; i < dev->reg->map_size; i++) {
+>   		u32 ofs;
+>   
+> -		if (addr < fixed_map[i].phys)
+> +		if (addr < dev->reg->map[i].phys)
+>   			continue;
+>   
+> -		ofs = addr - fixed_map[i].phys;
+> -		if (ofs > fixed_map[i].size)
+> +		ofs = addr - dev->reg->map[i].phys;
+> +		if (ofs > dev->reg->map[i].size)
+>   			continue;
+>   
+> -		return fixed_map[i].mapped + ofs;
+> +		return dev->reg->map[i].maps + ofs;
+>   	}
+>   
+> -	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
+> -	    (addr >= 0x70000000 && addr < 0x78000000))
+> +	if ((addr >= MT_INFRA_BASE && addr < MT_WFSYS0_PHY_START) ||
+> +	    (addr >= MT_WFSYS0_PHY_START && addr < MT_WFSYS1_PHY_START) ||
+> +	    (addr >= MT_WFSYS1_PHY_START && addr <= MT_WFSYS1_PHY_END))
+> +		return mt7915_reg_map_l1(dev, addr);
+> +
+> +	if (dev_is_pci(dev->mt76.dev) &&
+> +	    ((addr >= MT_CBTOP1_PHY_START && addr <= MT_CBTOP1_PHY_END) ||
+> +	     (addr >= MT_CBTOP2_PHY_START && addr <= MT_CBTOP2_PHY_END))) {
+> +		/* CONN_INFRA: covert to phyiscal addr and use layer 1 remap */
+> +		if (addr >= MT_CONN_INFRA_MCU_START &&
+> +		    addr <= MT_CONN_INFRA_MCU_END)
+> +			addr = addr - MT_CONN_INFRA_MCU_START + MT_INFRA_BASE;
+
+As far as I can tell, the MT_CONN_INFRA_MCU_START remapping is useless 
+and unused.
+
+> +
+>   		return mt7915_reg_map_l1(dev, addr);
+> +	}
+>   
+>   	return mt7915_reg_map_l2(dev, addr);
+>   }
+> @@ -138,10 +487,18 @@ static int mt7915_mmio_init(struct mt76_dev *mdev,
+>   {
+>   	struct mt76_bus_ops *bus_ops;
+>   	struct mt7915_dev *dev;
+> +	int i;
+>   
+>   	dev = container_of(mdev, struct mt7915_dev, mt76);
+>   	mt76_mmio_init(&dev->mt76, mem_base);
+>   
+> +	for (i = 0; i < ARRAY_SIZE(reg_desc); i++) {
+> +		if (device_id == reg_desc[i].id) {
+> +			dev->reg = &reg_desc[i];
+> +			break;
+> +		}
+> +	}
+
+I'd prefer removing the reg_desc array and just checking the chip types 
+here directly.
+
+> +
+>   	dev->bus_ops = dev->mt76.bus;
+>   	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
+>   			       GFP_KERNEL);
+> @@ -184,15 +541,29 @@ static void mt7915_rx_poll_complete(struct mt76_dev *mdev,
+>   				    enum mt76_rxq_id q)
+>   {
+>   	struct mt7915_dev *dev = container_of(mdev, struct mt7915_dev, mt76);
+> -	static const u32 rx_irq_mask[] = {
+> -		[MT_RXQ_MAIN] = MT_INT_RX_DONE_DATA0,
+> -		[MT_RXQ_EXT] = MT_INT_RX_DONE_DATA1,
+> -		[MT_RXQ_MCU] = MT_INT_RX_DONE_WM,
+> -		[MT_RXQ_MCU_WA] = MT_INT_RX_DONE_WA,
+> -		[MT_RXQ_EXT_WA] = MT_INT_RX_DONE_WA_EXT,
+> -	};
+> +	u32 rx_irq_mask = 0;
+> +
+> +	switch (q) {
+> +	case MT_RXQ_MAIN:
+> +		rx_irq_mask = MT_INT_RX_DONE_DATA0;
+> +		break;
+> +	case MT_RXQ_EXT:
+> +		rx_irq_mask = MT_INT_RX_DONE_DATA1;
+> +		break;
+> +	case MT_RXQ_MCU:
+> +		rx_irq_mask = MT_INT_RX_DONE_WM;
+> +		break;
+> +	case MT_RXQ_MCU_WA:
+> +		rx_irq_mask = MT_INT_RX_DONE_WA;
+> +		break;
+> +	case MT_RXQ_EXT_WA:
+> +		rx_irq_mask = MT_INT_RX_DONE_WA_EXT;
+> +		break;
+> +	default:
+> +		break;
+> +	}
+
+If we have separate mask definitions, we could simply have two arrays 
+here, one for 7915 and one for 7916.
+
+- Felix
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
