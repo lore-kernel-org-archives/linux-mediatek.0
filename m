@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E8E8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 18:32:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F271C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  1 Dec 2021 18:33:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FUhUsskIvDg7eemVqzS1IpsdjIdydgJSrx1O6qyNkds=; b=sQUbO4DqhRQaLr
-	m1K7GvLvB18unWJsq1qwNAoNV7wEMcXP94Pi2ffA8z5X7giN0kvUEYmZGT7ddu6YL/sCqUPMtHHdv
-	DnZLVRsClp0gFYdDc9FCkr+p3SPCnLHUTP8CfiTpqnHIYP6DVwcBu3fEGKsT7HweWRGWGE0a+sQOw
-	staiLSIni1NHi3RGXYmAzjyrGQOZLvSGS3J1euuBktQEwBV3u/7PoYyGxt8PVKkJmzCGxxa6z4Ccr
-	0GQtvYTq+9qI56pESOoiVa9UFcnBiLmbH82cTLrjnYsfv7ePQMQ1R9H+NQMVOeswCNfzfzulCAzLJ
-	TZJupxNh8FIisNfdP+4g==;
+	List-Owner; bh=Eu1GCd0b4v89jlglC+kgPYaXrkhFcrnKZgwX8ZScaYY=; b=4pLMwPVRpQyVOV
+	Z7nzpb1/kL4JCf3vUINFxU7GZiiSPeIxNURH3eD0KoLazW8IP8ee/3GcBX4AkPonFk3bahYVRUwwG
+	7HvtieNL3jpdS0Zr36ShNq2DfSQKAuLgV7dyanJ6TjH0QCCklUYu0FrYVH4ulIqGX9PAoQpcHVBMq
+	QBcej/YgJtTX0wMGtanTIciOK2excQ7DJnrNwbsyGT7HEGmZYPezsobk2CnIQje4JdwL8PtFvLlRw
+	5SAnuaueOGC7MSxFipydHCPzFMklXQ/Kuqcrtkty/MOMxjgmGWU/iqRVAqWDnbwMpXRx1jKX9F6Sp
+	52XoH8DTy7t84kZ/RiTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msUPO-009o5G-PQ; Wed, 01 Dec 2021 18:32:46 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1msUPn-009oKO-W3; Wed, 01 Dec 2021 18:33:12 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msUOz-009nqH-F8; Wed, 01 Dec 2021 18:32:23 +0000
+ id 1msUP4-009nsb-7Y; Wed, 01 Dec 2021 18:32:27 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 18609B820FC;
+ by ams.source.kernel.org (Postfix) with ESMTPS id 532EDB820E0;
+ Wed,  1 Dec 2021 18:32:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A096C53FCD;
  Wed,  1 Dec 2021 18:32:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA88FC53FCF;
- Wed,  1 Dec 2021 18:32:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638383538;
- bh=DbZYTt6Xk61X6E64B2G6G9w0VkROaHjiFX2uaD0wNNg=;
+ s=k20201202; t=1638383543;
+ bh=4g5v88qsCsd2eOxSUuIi5nfN0VvYnTAxUAxeb2Tfytw=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=SJ2EG+xrdvPZD6skv01hvMRDI4+2RGv4Ig9DI5MvpgJJwYwEA/gXuwPd/+5a1nNt4
- YRDybhqIWZvXurkJ1nLrP9zW7NBOXg18zY4GKgRuslx5x1DaGvJ0hB1DwyWr/OobpR
- SLBK8Yy59XdZMd4qdnz4KmTFGjIeyPZ35teoIpGAlx4yLvCOg/3OqgW9ho4Z7bBlfZ
- GyPU5C6AjZk6eJy04VHI6kOGbBzD7rMwLzQFTc2aSrn2ntTJtmLaXh89WUxg+rPaJc
- +hMf44lEJneiKx1V/gFEkWa8sFXy0XjhVkZ9Iy6nJLaX30r6oBpHY4/KZc8FY/MEYj
- iPMwW1ofG6MJA==
+ b=EiKCubeadJNn/PHgCLjVjjAtpedMYyGlyEzDsIuLfsuC4bsRfNHPGYUCDM3bA2ppQ
+ FF20EIagtMESiQPT4ruwPZhdu+wQmj3P15w9vYA7EFcxJzccUwoffoa++4Jsb4oA+f
+ fbabmk65q/nbSY4N8QNquvyp24Vlt3eF1CbQn6uuj8kKs6ucHwyKjkLhAG3va7gvVV
+ K6gAo8a2bS8TQekkeJ/jDoNN5ofos5ehd3EsZZQFqwgih0Q5JtkQQ7hvBF/+6U+1AF
+ O8q1iFKf5stU7gLqsN7LhwI5G1WfAqyFEhOlasjl2p/qHUbBYlT25g3z7VPRpFcKA5
+ H7EV93Ea5bBmw==
 From: Mark Brown <broonie@kernel.org>
-To: Takashi Iwai <tiwai@suse.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Rikard Falkeborn <rikard.falkeborn@gmail.com>,
- Jaroslav Kysela <perex@perex.cz>
-Cc: linux-kernel@vger.kernel.org, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org,
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ alsa-devel@alsa-project.org, linux-arm-kernel@lists.infradead.org,
  Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- Bixuan Cui <cuibixuan@huawei.com>, Trevor Wu <trevor.wu@mediatek.com>
-In-Reply-To: <20211127093147.17368-1-rikard.falkeborn@gmail.com>
-References: <20211127093147.17368-1-rikard.falkeborn@gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: mt8195: Constify static snd_soc_ops
-Message-Id: <163838353641.2179787.17471282072655140099.b4-ty@kernel.org>
-Date: Wed, 01 Dec 2021 18:32:16 +0000
+ Takashi Iwai <tiwai@suse.com>, Colin Ian King <colin.i.king@googlemail.com>
+Cc: linux-kernel@vger.kernel.org, kernel-janitors@vger.kernel.org
+In-Reply-To: <20211129224236.506883-1-colin.i.king@gmail.com>
+References: <20211129224236.506883-1-colin.i.king@gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8195: make several arrays static const
+Message-Id: <163838354089.2179787.18120653222525343560.b4-ty@kernel.org>
+Date: Wed, 01 Dec 2021 18:32:20 +0000
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_103221_715910_36127106 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20211201_103226_434955_50E7C915 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,10 +72,10 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 27 Nov 2021 10:31:47 +0100, Rikard Falkeborn wrote:
-> These are only assigned to the ops field in the snd_soc_dai_link which
-> is a pointer to const struct snd_soc_ops. Make them const to allow the
-> compiler to put them in read-only memory.
+On Mon, 29 Nov 2021 22:42:36 +0000, Colin Ian King wrote:
+> Don't populate various arrays on the stack but instead make them
+> static const. Also makes the object code smaller by a few hundred
+> bytes.
 > 
 > 
 
@@ -87,8 +85,8 @@ Applied to
 
 Thanks!
 
-[1/1] ASoC: mediatek: mt8195: Constify static snd_soc_ops
-      commit: 8752d9a82fd065ef60c9a0e0e8ec820327509382
+[1/1] ASoC: mediatek: mt8195: make several arrays static const
+      commit: 91745b034dca6044407b559fe28dd1cf7efccc29
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
