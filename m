@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD161C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Dec 2021 11:00:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0096AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Dec 2021 11:52:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7Gmgd/fiJFolR5TVN/CAw8clvP57UyqvxL498bL5rK4=; b=5B4ZN/06TgyKdK
-	iRTeZIeULANdmJJxBmtSbn+0DKwpbpUloAiENha0ZRVt7hCJk7Td1BAz1ha0r4/DmFXhqfTo5NJWp
-	dsqOaXtrKsMcnKeXSp7anG7NxlD/Ihx3B6g4zgfN1FnjsXaPAr5UtO/W23Kd9OE1JSSt1hbE1Ltxz
-	nNz6SnKkgdlrtB+Y3+urwM9XY/0KAaACDtZ+N1FnaFyCYqp42zlWq7xcNGvc2RS3oGDBCCXbRYqRT
-	MQYMcJywnAQEhWoQuvNed1X0yHq1+4qn/aD+ruxXylSI7VbD6bsP8+YbMjndiLq2+TFnuQNlYKXdP
-	JeZ8IyDjYY2F2baNMHlg==;
+	List-Owner; bh=aYOod0ivCLLPD0NCxJ1NtGLGbP+Bnfp+HoSjiTM3T2A=; b=oBTlOcRBRctzkj
+	auGDLrV5r69sjqjrtGbHTmxDIX2nghx7OcO6rInZ7VaZwSJUdhm6jOHgVAJ2s3QvEofiNPbUdEFLP
+	Hc1GhVoHTe0meHyeginSRzk9ivUYy9Z/xfW/7gJADkux8bBB2XmbAvAmmpvbLRsz9uSMGzUIJk3wy
+	cwSozceaCc3f/CVmUW0qH+Sr6FmIp010I5LiuZNuz5mlqTdzVWOUagPwO/E4l1qfxz3fD88TiLVfn
+	98UUZexSRaGoYfUXJBTSsbd+YEVexdJ37v4XivM65hFz91i1YNJkp+4ejHgll5yyqgR+2WrTslq5w
+	XJ9PSXnqwKa0uPPB9Bcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msjof-00BuTc-Un; Thu, 02 Dec 2021 10:59:53 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1mskd9-00C3h0-AC; Thu, 02 Dec 2021 11:52:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msjoM-00BuMX-Vd; Thu, 02 Dec 2021 10:59:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id ABA58B82297;
- Thu,  2 Dec 2021 10:59:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CFFD0C00446;
- Thu,  2 Dec 2021 10:59:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638442772;
- bh=jfJ+kzNVnJ1CTqytb0LMULYzG8eo4xvWqb8+ZuhmIbI=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eSoR8ZLGUZRvLgk4QuK02OG5qkshTYKJ0vjIPsSe0WgHkDiqX4UwRL9IC95D8VDRl
- qMaFwvXSpzedLDw+YHJEymEE3CKHhiI5ec3wp8XXz8DDRfaDoDKMAU0dj7xR14NMJm
- tQgGxbfOmWN/oAQ+QyDWGEneGt5Na3zACyV+s7BaeyENWwkVJ6QNuaPT00QriZ0gqy
- e4Ke/6hW9/EGr77hoO7C0u6A2Z3q5EbAbJ/8W82h8RnH3iezOI9ZB17fZnBVPxVWNT
- n/+pgQtB4O1gW9P10VhFjPzYNZhF46ESWbnaUJQqGFSAJyaQOONvOnBN1QsKkPxTB+
- UBJOhnDIgLsvg==
-From: Will Deacon <will@kernel.org>
-To: Catalin Marinas <catalin.marinas@arm.com>,
- Mark Rutland <mark.rutland@arm.com>, Jonathan Corbet <corbet@lwn.net>,
- Kuan-Ying Lee <Kuan-Ying.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: kernel-team@android.com, Will Deacon <will@kernel.org>,
- nicholas.tang@mediatek.com, linux-kernel@vger.kernel.org,
- chinwen.chang@mediatek.com, james.hsu@mediatek.com,
- linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] arm64: update PAC description for kernel
-Date: Thu,  2 Dec 2021 10:59:24 +0000
-Message-Id: <163844001555.25175.12332583693685528592.b4-ty@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20211201034014.20048-1-Kuan-Ying.Lee@mediatek.com>
-References: <20211201034014.20048-1-Kuan-Ying.Lee@mediatek.com>
+ id 1mskcu-00C3dC-6v; Thu, 02 Dec 2021 11:51:50 +0000
+X-UUID: a19f50a5eadb46118fbe342379a4dd76-20211202
+X-UUID: a19f50a5eadb46118fbe342379a4dd76-20211202
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1244152595; Thu, 02 Dec 2021 04:51:42 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Dec 2021 03:42:44 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Dec 2021 19:42:43 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 2 Dec 2021 19:42:43 +0800
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
+ <jassisinghbrar@gmail.com>
+CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
+ <cujomalainey@google.com>, Pierre-Louis Bossart
+ <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
+ <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
+ <Allen-KH.Cheng@mediatek.com>
+Subject: [PATCH v10 1/3] dt-bindings: mediatek: add adsp-mbox document
+Date: Thu, 2 Dec 2021 19:42:38 +0800
+Message-ID: <20211202114240.26976-2-allen-kh.cheng@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211202114240.26976-1-allen-kh.cheng@mediatek.com>
+References: <20211202114240.26976-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211202_025935_186988_59C3C530 
-X-CRM114-Status: UNSURE (   9.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211202_035148_264148_8E575D12 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,24 +81,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 1 Dec 2021 11:40:10 +0800, Kuan-Ying Lee wrote:
-> Remove the paragraph which has nothing to do with the kernel and
-> add PAC description related to kernel.
-> 
-> 
+From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-Applied to arm64 (for-next/fixes), thanks!
+This patch adds document for mediatek adsp mbox
 
-[1/1] arm64: update PAC description for kernel
-      https://git.kernel.org/arm64/c/ce39d473d1ed
+Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+---
+ .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52 +++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
 
-Cheers,
+diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+new file mode 100644
+index 000000000000..25756837797f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+@@ -0,0 +1,52 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek ADSP mailbox
++
++maintainers:
++  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
++
++description: |
++  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
++  to ommunicate with ADSP by passing messages through two mailbox channels.
++  The MTK ADSP mailbox IPC also provides the ability for one processor to
++  signal the other processor using interrupts.
++
++properties:
++  compatible:
++    items:
++      - const: mediatek,mt8195-adsp-mbox
++
++  "#mbox-cells":
++    const: 0
++
++  reg:
++    description:
++      Physical address base for dsp mbox registers.
++
++  interrupts:
++    description:
++      adsp mbox interrupt
++
++required:
++  - compatible
++  - "#mbox-cells"
++  - reg
++  - interrupts
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++
++    adsp_mailbox0:mailbox@10816000 {
++        compatible = "mediatek,mt8195-adsp-mbox";
++        #mbox-cells = <0>;
++        reg = <0x10816000 0x1000>;
++        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
++    };
 -- 
-Will
+2.18.0
 
-https://fixes.arm64.dev
-https://next.arm64.dev
-https://will.arm64.dev
 
 _______________________________________________
 Linux-mediatek mailing list
