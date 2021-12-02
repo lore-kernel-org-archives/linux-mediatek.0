@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B7BAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Dec 2021 03:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DAF2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Dec 2021 03:57:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Cew3oKMhr2P93V2EvGhA2Fk3JakJvVaH85TtBux9cdw=; b=wnDq+3PZmjO3fC
-	eE63R+nUU1oIP3Rs6CbIJdEvEURyIsIXvvyKMwqsu6l50BCQ562DmFtSoaG/ddIsMM7+Jbf9R8QUB
-	P/BH6tp4JvoMLFHgsCVa74w48IYFsNF6fca1qiWcUS51goY2ZsJmEd3Yul1Yvz7KkgxkiQ99ZBvvh
-	ijxKkrnzhGP9CMHfGBaezxriTXOGLX02FH8+5cZdMUh9puqG1EFU2V+DZstHklSA7k3d5Y0h3l7tt
-	uB3DX2vFTMaiKWzJTexxESQT9Ey/6ePyWiovmQZuy0QAuMEOp9V24BWdmSDAMe+HgLsQWAE6Hpudb
-	35SkBcpTaxLer5SY3aLw==;
+	List-Owner; bh=jA/AnIOTjxgC1teYUph0bPkbscZgdyYRwDu0oj47Tao=; b=kViC7otSmgcPuw
+	k4lvPNhZMw4aYdH04FGmUJLgJnvJdDAQkdgUmweCXhzEl7amtSCJcgMjYiYrv/cg/yzwYJJzzBsKw
+	1+EBpraeSY92zbR4i3iQovVgd8ZpArhsihKsHhgzs3AZ9vw+SS9ntgdm9oaB2twH4CUy+gkUcyYWA
+	cFwKEeIQ2qXDDaJOfXD2ejvO7KYS4BmzHKj2Wwsqrf/sGICJbcxjGwEQ8CfT9GJgNoddFF5c+h0Ur
+	KJvbXogqxmdu77KV8K+yjx4fKb0it6f0Lp8kMyoaEkf7sdC4vLqAhW+SvPOr6UudmU5BnzotxKoVw
+	tBksKNjbsAdRYFbrYUHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msdDN-00AmLw-0Z; Thu, 02 Dec 2021 03:56:57 +0000
+	id 1msdDy-00Amev-Bj; Thu, 02 Dec 2021 03:57:34 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msdCQ-00AlzC-CI; Thu, 02 Dec 2021 03:55:59 +0000
-X-UUID: f802b1c4691d487797efede26164040e-20211201
-X-UUID: f802b1c4691d487797efede26164040e-20211201
+ id 1msdCR-00Alzh-2U; Thu, 02 Dec 2021 03:56:00 +0000
+X-UUID: a60660bcbb2a4a719106391bde522e84-20211201
+X-UUID: a60660bcbb2a4a719106391bde522e84-20211201
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1505090867; Wed, 01 Dec 2021 20:55:55 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 509859586; Wed, 01 Dec 2021 20:55:55 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Dec 2021 19:46:09 -0800
+ 15.0.1497.2; Wed, 1 Dec 2021 19:46:16 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Dec 2021 11:46:07 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 2 Dec 2021 11:46:14 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 2 Dec 2021 11:46:06 +0800
+ 15.0.1497.2 via Frontend Transport; Thu, 2 Dec 2021 11:46:13 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -56,18 +57,17 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v12,
- 14/19] media: mtk-vcodec: Support 34bits dma address for vdec
-Date: Thu, 2 Dec 2021 11:45:39 +0800
-Message-ID: <20211202034544.2750-15-yunfei.dong@mediatek.com>
+Subject: [PATCH v12, 19/19] media: mtk-vcodec: Remove mtk_vcodec_release_enc_pm
+Date: Thu, 2 Dec 2021 11:45:44 +0800
+Message-ID: <20211202034544.2750-20-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211202034544.2750-1-yunfei.dong@mediatek.com>
 References: <20211202034544.2750-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_195558_435574_5C392012 
-X-CRM114-Status: GOOD (  14.61  )
+X-CRM114-CacheID: sfid-20211201_195559_142719_CA2B97EB 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,39 +84,104 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use the dma_set_mask_and_coherent helper to set vdec
-DMA bit mask to support 34bits iova space(16GB) that
-the mt8192 iommu HW support.
+There are only two lines in mtk_vcodec_release_enc_pm, using
+pm_runtime_disable and put_device instead directly.
 
-Whole the iova range separate to 0~4G/4G~8G/8G~12G/12G~16G,
-regarding which iova range VDEC actually locate, it
-depends on the dma-ranges property of vdec dtsi node.
+Move pm_runtime_enable outside mtk_vcodec_release_enc_pm to symmetry with
+pm_runtime_disable, after that, rename mtk_vcodec_init_enc_pm to *_clk since
+it only has clock operations now.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Co-developed-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 9 ++++++---
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c  | 9 +--------
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h  | 3 +--
+ 3 files changed, 8 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 4fbff61d2334..cdbe5ffeae26 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -352,6 +352,14 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		}
- 	}
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index 0f326d82dea0..7816efb90cbe 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -11,6 +11,7 @@
+ #include <linux/module.h>
+ #include <linux/of_device.h>
+ #include <linux/of.h>
++#include <linux/pm_runtime.h>
+ #include <media/v4l2-event.h>
+ #include <media/v4l2-mem2mem.h>
+ #include <media/videobuf2-dma-contig.h>
+@@ -260,7 +261,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		return PTR_ERR(dev->fw_handler);
  
-+	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL)) {
-+		ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
-+		if (ret) {
-+			mtk_v4l2_err("Failed to set mask");
-+			goto err_core_workq;
-+		}
-+	}
-+
- 	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
- 		mutex_init(&dev->dec_mutex[i]);
- 	spin_lock_init(&dev->irqlock);
+ 	dev->venc_pdata = of_device_get_match_data(&pdev->dev);
+-	ret = mtk_vcodec_init_enc_pm(dev);
++	ret = mtk_vcodec_init_enc_clk(dev);
+ 	if (ret < 0) {
+ 		dev_err(&pdev->dev, "Failed to get mtk vcodec clock source!");
+ 		goto err_enc_pm;
+@@ -372,7 +373,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ err_enc_alloc:
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ err_res:
+-	mtk_vcodec_release_enc_pm(dev);
++	pm_runtime_disable(dev->pm.dev);
++	put_device(dev->pm.larbvenc);
+ err_enc_pm:
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+ 	return ret;
+@@ -462,7 +464,8 @@ static int mtk_vcodec_enc_remove(struct platform_device *pdev)
+ 		video_unregister_device(dev->vfd_enc);
+ 
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+-	mtk_vcodec_release_enc_pm(dev);
++	pm_runtime_disable(dev->pm.dev);
++	put_device(dev->pm.larbvenc);
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+ 	return 0;
+ }
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+index 0c8c8f86788c..0825c6ec4eb7 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+@@ -13,7 +13,7 @@
+ #include "mtk_vcodec_enc_pm.h"
+ #include "mtk_vcodec_util.h"
+ 
+-int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
++int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *mtkdev)
+ {
+ 	struct device_node *node;
+ 	struct platform_device *pdev;
+@@ -86,13 +86,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 	return ret;
+ }
+ 
+-void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
+-{
+-	pm_runtime_disable(mtkdev->pm.dev);
+-	put_device(mtkdev->pm.larbvenc);
+-}
+-
+-
+ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
+ {
+ 	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
+index b7ecdfd74823..bc455cefc0cd 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
+@@ -9,8 +9,7 @@
+ 
+ #include "mtk_vcodec_drv.h"
+ 
+-int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *dev);
+-void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *dev);
++int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *dev);
+ 
+ void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
 -- 
 2.25.1
 
