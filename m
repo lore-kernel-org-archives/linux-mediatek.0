@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A85C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Dec 2021 06:24:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 419DBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  2 Dec 2021 06:27:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ehEAlF8AsATao07xiO4IgpcPQru5f0FHfwj6UxHYCws=; b=3RHAo86O6YXFUH
-	CAwkWcXgbVsRqTl7y/rrM4iZNa+NTzWO65Xv3s2tp6yyj9mX1Jxiqtt53OHm3DZn0MnhRs7haqN4w
-	Ufvd7ABKUMqHPXMi+mbjw2cOSAaP96oYdkzcOpAEKf1tEwvHvLZU4J2oIPX/uS3tcaVOKmI7RJtZT
-	aYhj8uBOf9e1CxllAMstOIJHklJfTXSyXegg6Br3qGPZTd621szunIKnKQ4q20yBQ0vs7SENHR5+e
-	1PhMYEmnYiQUy2m1gVleF4/opkw3QV6LlikYSc40MltMy4FqBVzan2CNGaFCOMW7XWIgL2t5wSKMU
-	LVgA799IVyYaN0pFh8tg==;
+	List-Owner; bh=yvF4zXgHKAj1PCjzVKiv43AvRUJpWmnz8tGIaEOqPYo=; b=4JkDMmClP1wBvS
+	F99bm6nf/FNQ70A3bfAmQnAPKwNt3W5ESAJKo6zM/L+JWv0gSmT9CPZB6egbrBq2Z+SmqVJo6xe+f
+	rVipOEkHQX4MC3rZDpdNXQ8ScZ7A1gVLPYKDoCyfMAZ6VfVD7HQhtfdhp4Dn4si9s1kpXPmXZbVL7
+	/R6aELLD4383YN4lwo1f1CkwAqu8TARf1IRN5NM0Jy8Os3JFwYlPu0v4nb0TCvIjpG07v0Q748lED
+	nOvRy+XQojP4uDPWNO2GNJQgny5jn4sVa7dvnHEZeuI2vDk02jHa0HdLPPZW/9Y5ZidRTez5EOLZg
+	7/q4ewlulze3yU+iYT4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msfVr-00B3u2-2U; Thu, 02 Dec 2021 06:24:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1msfZL-00B5Br-7Q; Thu, 02 Dec 2021 06:27:47 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msfVE-00B3gc-W2; Thu, 02 Dec 2021 06:23:35 +0000
-X-UUID: 8015e7b1f55d4f30b17ff6a012ec5c83-20211201
-X-UUID: 8015e7b1f55d4f30b17ff6a012ec5c83-20211201
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1msfZH-00B59L-Ai; Thu, 02 Dec 2021 06:27:46 +0000
+X-UUID: 28c82b441a5a4968b99649b016eda970-20211201
+X-UUID: 28c82b441a5a4968b99649b016eda970-20211201
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <moudy.ho@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 874642000; Wed, 01 Dec 2021 23:23:28 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1963269906; Wed, 01 Dec 2021 23:27:38 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 1 Dec 2021 22:13:27 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 2 Dec 2021 14:13:25 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ 15.0.1497.2; Wed, 1 Dec 2021 22:27:36 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 2 Dec 2021 14:27:34 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 2 Dec 2021 14:13:24 +0800
+ Frontend Transport; Thu, 2 Dec 2021 14:27:34 +0800
 From: Moudy Ho <moudy.ho@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
@@ -58,17 +58,17 @@ CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
  <moudy.ho@mediatek.com>, <jason-jh.lin@mediatek.com>,
  <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
  <srv_heupstream@mediatek.com>
-Subject: [PATCH v10 1/4] soc: mediatek: mmsys: add support for MDP
-Date: Thu, 2 Dec 2021 14:13:19 +0800
-Message-ID: <20211202061322.19917-2-moudy.ho@mediatek.com>
+Subject: [PATCH v10 1/3] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
+Date: Thu, 2 Dec 2021 14:27:31 +0800
+Message-ID: <20211202062733.20338-2-moudy.ho@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211202061322.19917-1-moudy.ho@mediatek.com>
-References: <20211202061322.19917-1-moudy.ho@mediatek.com>
+In-Reply-To: <20211202062733.20338-1-moudy.ho@mediatek.com>
+References: <20211202062733.20338-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211201_222333_056564_F1D484F8 
-X-CRM114-Status: GOOD (  16.78  )
+X-CRM114-CacheID: sfid-20211201_222743_424423_5002A30F 
+X-CRM114-Status: GOOD (  20.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,524 +85,526 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-For the purpose of module independence, related settings should be moved
-from MDP to the corresponding driver.
-This patch adds more 8183 MDP settings and interface. and MDP
-related settings must be set via CMDQ to avoid frame unsynchronized.
+This patch adds DT binding document for Media Data Path 3 (MDP3)
+a unit in multimedia system used for scaling and color format convert.
 
 Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/soc/mediatek/Kconfig           |   1 +
- drivers/soc/mediatek/mt8183-mmsys.h    | 268 +++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.c       |  56 ++++++
- drivers/soc/mediatek/mtk-mmsys.h       |   2 +
- include/linux/soc/mediatek/mtk-mmsys.h |  56 ++++++
- 5 files changed, 383 insertions(+)
+ .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++++++
+ .../bindings/media/mediatek,mdp3-wrot.yaml    |  67 ++++++
+ .../bindings/soc/mediatek/mediatek,ccorr.yaml |  57 +++++
+ .../bindings/soc/mediatek/mediatek,rdma.yaml  | 216 ++++++++++++++++++
+ .../bindings/soc/mediatek/mediatek,wdma.yaml  |  68 ++++++
+ 5 files changed, 473 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,rdma.yaml
+ create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 
-diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
-index fdd8bc08569e..172bc7828aca 100644
---- a/drivers/soc/mediatek/Kconfig
-+++ b/drivers/soc/mediatek/Kconfig
-@@ -69,6 +69,7 @@ config MTK_MMSYS
- 	bool "MediaTek MMSYS Support"
- 	default ARCH_MEDIATEK
- 	depends on HAS_IOMEM
-+	select MTK_CMDQ
- 	help
- 	  Say yes here to add support for the MediaTek Multimedia
- 	  Subsystem (MMSYS).
-diff --git a/drivers/soc/mediatek/mt8183-mmsys.h b/drivers/soc/mediatek/mt8183-mmsys.h
-index 9dee485807c9..48865973314d 100644
---- a/drivers/soc/mediatek/mt8183-mmsys.h
-+++ b/drivers/soc/mediatek/mt8183-mmsys.h
-@@ -12,6 +12,25 @@
- #define MT8183_DISP_DPI0_SEL_IN			0xf30
- #define MT8183_DISP_RDMA0_SOUT_SEL_IN		0xf50
- #define MT8183_DISP_RDMA1_SOUT_SEL_IN		0xf54
-+#define MT8183_MDP_ISP_MOUT_EN			0xf80
-+#define MT8183_MDP_RDMA0_MOUT_EN		0xf84
-+#define MT8183_MDP_PRZ0_MOUT_EN			0xf8c
-+#define MT8183_MDP_PRZ1_MOUT_EN			0xf90
-+#define MT8183_MDP_COLOR_MOUT_EN		0xf94
-+#define MT8183_MDP_IPU_MOUT_EN			0xf98
-+#define MT8183_MDP_PATH0_SOUT_SEL		0xfa8
-+#define MT8183_MDP_PATH1_SOUT_SEL		0xfac
-+#define MT8183_MDP_PRZ0_SEL_IN			0xfc0
-+#define MT8183_MDP_PRZ1_SEL_IN			0xfc4
-+#define MT8183_MDP_TDSHP_SEL_IN			0xfc8
-+#define MT8183_MDP_WROT0_SEL_IN			0xfd0
-+#define MT8183_MDP_WDMA_SEL_IN			0xfd4
-+#define MT8183_MDP_PATH0_SEL_IN			0xfe0
-+#define MT8183_MDP_PATH1_SEL_IN			0xfe4
-+#define MT8183_MDP_AAL_MOUT_EN			0xfe8
-+#define MT8183_MDP_AAL_SEL_IN			0xfec
-+#define MT8183_MDP_CCORR_SEL_IN			0xff0
-+#define MT8183_MDP_CCORR_SOUT_SEL		0xff4
- 
- #define MT8183_OVL0_MOUT_EN_OVL0_2L		BIT(4)
- #define MT8183_OVL0_2L_MOUT_EN_DISP_PATH0	BIT(0)
-@@ -24,6 +43,55 @@
- #define MT8183_DPI0_SEL_IN_RDMA1		0x2
- #define MT8183_RDMA0_SOUT_COLOR0		0x1
- #define MT8183_RDMA1_SOUT_DSI0			0x1
-+#define MT8183_MDP_ISP_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_ISP_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_ISP_MOUT_EN_AAL0		BIT(2)
-+#define MT8183_MDP_IPU_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_IPU_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_IPU_MOUT_EN_AAL0		BIT(2)
-+#define MT8183_MDP_RDMA0_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_RDMA0_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_RDMA0_MOUT_EN_PATH0_OUT	BIT(2)
-+#define MT8183_MDP_RDMA0_MOUT_EN_AAL0		BIT(3)
-+#define MT8183_MDP_AAL_MOUT_EN_CCORR0		BIT(0)
-+#define MT8183_MDP_AAL_MOUT_EN_RSZ1		BIT(1)
-+#define MT8183_MDP_AAL_MOUT_EN_RSZ0		BIT(2)
-+#define MT8183_MDP_PRZ0_MOUT_EN_PATH0_OUT	BIT(0)
-+#define MT8183_MDP_PRZ0_MOUT_EN_TDSHP0		BIT(1)
-+#define MT8183_MDP_PRZ1_MOUT_EN_PATH0_OUT	BIT(0)
-+#define MT8183_MDP_PRZ1_MOUT_EN_TDSHP0		BIT(1)
-+#define MT8183_MDP_PRZ1_MOUT_EN_PATH1_OUT	BIT(2)
-+#define MT8183_MDP_PRZ1_MOUT_EN_COLOR0		BIT(4)
-+#define MT8183_MDP_COLOR_MOUT_EN_PATH0_OUT	BIT(0)
-+#define MT8183_MDP_COLOR_MOUT_EN_PATH1_OUT	BIT(1)
-+#define MT8183_MDP_AAL_SEL_IN_CAMIN		0
-+#define MT8183_MDP_AAL_SEL_IN_RDMA0		1
-+#define MT8183_MDP_AAL_SEL_IN_CAMIN2		2
-+#define MT8183_MDP_AAL_SEL_IN_CCORR0		3
-+#define MT8183_MDP_CCORR_SEL_IN_CAMIN		0
-+#define MT8183_MDP_CCORR_SEL_IN_RDMA0		1
-+#define MT8183_MDP_CCORR_SEL_IN_CAMIN2		3
-+#define MT8183_MDP_CCORR_SEL_IN_AAL0		4
-+#define MT8183_MDP_PRZ0_SEL_IN_AAL0		0
-+#define MT8183_MDP_PRZ0_SEL_IN_CCORR0		1
-+#define MT8183_MDP_PRZ1_SEL_IN_CAMIN		0
-+#define MT8183_MDP_PRZ1_SEL_IN_RDMA0		1
-+#define MT8183_MDP_PRZ1_SEL_IN_CAMIN2		4
-+#define MT8183_MDP_PRZ1_SEL_IN_AAL0		5
-+#define MT8183_MDP_TDSHP_SEL_IN_RSZ0		0
-+#define MT8183_MDP_TDSHP_SEL_IN_RSZ1		1
-+#define MT8183_MDP_PATH0_SEL_IN_RSZ0		0
-+#define MT8183_MDP_PATH0_SEL_IN_RSZ1		1
-+#define MT8183_MDP_PATH0_SEL_IN_COLOR0		2
-+#define MT8183_MDP_PATH0_SEL_IN_RDMA0		3
-+#define MT8183_MDP_PATH1_SEL_IN_RSZ1		0
-+#define MT8183_MDP_PATH1_SEL_IN_COLOR0		1
-+#define MT8183_MDP_WROT0_SEL_IN_PATH0_OUT	0
-+#define MT8183_MDP_WDMA_SEL_IN_PATH1_OUT	0
-+#define MT8183_MDP_CCORR_SOUT_SEL_AAL0		0
-+#define MT8183_MDP_CCORR_SOUT_SEL_RSZ0		1
-+#define MT8183_MDP_PATH0_SOUT_SEL_WROT0		0
-+#define MT8183_MDP_PATH1_SOUT_SEL_WDMA		0
- 
- static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
- 	{
-@@ -57,5 +125,205 @@ static const struct mtk_mmsys_routes mmsys_mt8183_routing_table[] = {
- 	}
- };
- 
-+static const struct mtk_mmsys_routes mmsys_mt8183_mdp_routing_table[] = {
-+	{
-+		MDP_COMP_CAMIN, MDP_COMP_CCORR0,
-+		MT8183_MDP_ISP_MOUT_EN, MT8183_MDP_ISP_MOUT_EN_CCORR0,
-+		MT8183_MDP_ISP_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_RSZ1,
-+		MT8183_MDP_ISP_MOUT_EN, MT8183_MDP_ISP_MOUT_EN_RSZ1,
-+		MT8183_MDP_ISP_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_AAL0,
-+		MT8183_MDP_ISP_MOUT_EN, MT8183_MDP_ISP_MOUT_EN_AAL0,
-+		MT8183_MDP_ISP_MOUT_EN_AAL0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_CCORR0,
-+		MT8183_MDP_IPU_MOUT_EN, MT8183_MDP_IPU_MOUT_EN_CCORR0,
-+		MT8183_MDP_IPU_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_RSZ1,
-+		MT8183_MDP_IPU_MOUT_EN, MT8183_MDP_IPU_MOUT_EN_RSZ1,
-+		MT8183_MDP_IPU_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_AAL0,
-+		MT8183_MDP_IPU_MOUT_EN, MT8183_MDP_IPU_MOUT_EN_AAL0,
-+		MT8183_MDP_IPU_MOUT_EN_AAL0
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_CCORR0,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_CCORR0,
-+		MT8183_MDP_RDMA0_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_RSZ1,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_RSZ1,
-+		MT8183_MDP_RDMA0_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_PATH0_OUT,
-+		MT8183_MDP_RDMA0_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_AAL0,
-+		MT8183_MDP_RDMA0_MOUT_EN, MT8183_MDP_RDMA0_MOUT_EN_AAL0,
-+		MT8183_MDP_RDMA0_MOUT_EN_AAL0
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_CCORR0,
-+		MT8183_MDP_AAL_MOUT_EN, MT8183_MDP_AAL_MOUT_EN_CCORR0,
-+		MT8183_MDP_AAL_MOUT_EN_CCORR0
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ1,
-+		MT8183_MDP_AAL_MOUT_EN, MT8183_MDP_AAL_MOUT_EN_RSZ1,
-+		MT8183_MDP_AAL_MOUT_EN_RSZ1
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ0,
-+		MT8183_MDP_AAL_MOUT_EN, MT8183_MDP_AAL_MOUT_EN_RSZ0,
-+		MT8183_MDP_AAL_MOUT_EN_RSZ0
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PRZ0_MOUT_EN, MT8183_MDP_PRZ0_MOUT_EN_PATH0_OUT,
-+		MT8183_MDP_PRZ0_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_TDSHP0,
-+		MT8183_MDP_PRZ0_MOUT_EN, MT8183_MDP_PRZ0_MOUT_EN_TDSHP0,
-+		MT8183_MDP_PRZ0_MOUT_EN_TDSHP0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_PATH0_OUT,
-+		MT8183_MDP_PRZ1_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_TDSHP0,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_TDSHP0,
-+		MT8183_MDP_PRZ1_MOUT_EN_TDSHP0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_PATH1_OUT,
-+		MT8183_MDP_PRZ1_MOUT_EN_PATH1_OUT
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_COLOR0,
-+		MT8183_MDP_PRZ1_MOUT_EN, MT8183_MDP_PRZ1_MOUT_EN_COLOR0,
-+		MT8183_MDP_PRZ1_MOUT_EN_COLOR0
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_COLOR_MOUT_EN, MT8183_MDP_COLOR_MOUT_EN_PATH0_OUT,
-+		MT8183_MDP_COLOR_MOUT_EN_PATH0_OUT
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_COLOR_MOUT_EN, MT8183_MDP_COLOR_MOUT_EN_PATH1_OUT,
-+		MT8183_MDP_COLOR_MOUT_EN_PATH1_OUT
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_CAMIN,
-+		MT8183_MDP_AAL_SEL_IN_CAMIN
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_RDMA0,
-+		MT8183_MDP_AAL_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_CAMIN2,
-+		MT8183_MDP_AAL_SEL_IN_CAMIN2
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_AAL0,
-+		MT8183_MDP_AAL_SEL_IN, MT8183_MDP_AAL_SEL_IN_CCORR0,
-+		MT8183_MDP_AAL_SEL_IN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_CAMIN,
-+		MT8183_MDP_CCORR_SEL_IN_CAMIN
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_RDMA0,
-+		MT8183_MDP_CCORR_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_CAMIN2,
-+		MT8183_MDP_CCORR_SEL_IN_CAMIN2
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_CCORR0,
-+		MT8183_MDP_CCORR_SEL_IN, MT8183_MDP_CCORR_SEL_IN_AAL0,
-+		MT8183_MDP_CCORR_SEL_IN_AAL0
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ0,
-+		MT8183_MDP_PRZ0_SEL_IN, MT8183_MDP_PRZ0_SEL_IN_AAL0,
-+		MT8183_MDP_PRZ0_SEL_IN_AAL0
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_RSZ0,
-+		MT8183_MDP_PRZ0_SEL_IN, MT8183_MDP_PRZ0_SEL_IN_CCORR0,
-+		MT8183_MDP_PRZ0_SEL_IN_CCORR0
-+	}, {
-+		MDP_COMP_CAMIN, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_CAMIN,
-+		MT8183_MDP_PRZ1_SEL_IN_CAMIN
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_RDMA0,
-+		MT8183_MDP_PRZ1_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_CAMIN2, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_CAMIN2,
-+		MT8183_MDP_PRZ1_SEL_IN_CAMIN2
-+	}, {
-+		MDP_COMP_AAL0, MDP_COMP_RSZ1,
-+		MT8183_MDP_PRZ1_SEL_IN, MT8183_MDP_PRZ1_SEL_IN_AAL0,
-+		MT8183_MDP_PRZ1_SEL_IN_AAL0
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_TDSHP0,
-+		MT8183_MDP_TDSHP_SEL_IN, MT8183_MDP_TDSHP_SEL_IN_RSZ0,
-+		MT8183_MDP_TDSHP_SEL_IN_RSZ0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_TDSHP0,
-+		MT8183_MDP_TDSHP_SEL_IN, MT8183_MDP_TDSHP_SEL_IN_RSZ1,
-+		MT8183_MDP_TDSHP_SEL_IN_RSZ1
-+	}, {
-+		MDP_COMP_RSZ0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_RSZ0,
-+		MT8183_MDP_PATH0_SEL_IN_RSZ0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_RSZ1,
-+		MT8183_MDP_PATH0_SEL_IN_RSZ1
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_COLOR0,
-+		MT8183_MDP_PATH0_SEL_IN_COLOR0
-+	}, {
-+		MDP_COMP_RDMA0, MDP_COMP_PATH0_SOUT,
-+		MT8183_MDP_PATH0_SEL_IN, MT8183_MDP_PATH0_SEL_IN_RDMA0,
-+		MT8183_MDP_PATH0_SEL_IN_RDMA0
-+	}, {
-+		MDP_COMP_RSZ1, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_PATH1_SEL_IN, MT8183_MDP_PATH1_SEL_IN_RSZ1,
-+		MT8183_MDP_PATH1_SEL_IN_RSZ1
-+	}, {
-+		MDP_COMP_COLOR0, MDP_COMP_PATH1_SOUT,
-+		MT8183_MDP_PATH1_SEL_IN, MT8183_MDP_PATH1_SEL_IN_COLOR0,
-+		MT8183_MDP_PATH1_SEL_IN_COLOR0
-+	}, {
-+		MDP_COMP_PATH0_SOUT, MDP_COMP_WROT0,
-+		MT8183_MDP_WROT0_SEL_IN, MT8183_MDP_WROT0_SEL_IN_PATH0_OUT,
-+		MT8183_MDP_WROT0_SEL_IN_PATH0_OUT
-+	}, {
-+		MDP_COMP_PATH1_SOUT, MDP_COMP_WDMA,
-+		MT8183_MDP_WDMA_SEL_IN, MT8183_MDP_WDMA_SEL_IN_PATH1_OUT,
-+		MT8183_MDP_WDMA_SEL_IN_PATH1_OUT
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_AAL0,
-+		MT8183_MDP_CCORR_SOUT_SEL, MT8183_MDP_CCORR_SOUT_SEL_AAL0,
-+		MT8183_MDP_CCORR_SOUT_SEL_AAL0
-+	}, {
-+		MDP_COMP_CCORR0, MDP_COMP_RSZ0,
-+		MT8183_MDP_CCORR_SOUT_SEL, MT8183_MDP_CCORR_SOUT_SEL_RSZ0,
-+		MT8183_MDP_CCORR_SOUT_SEL_RSZ0
-+	}, {
-+		MDP_COMP_PATH0_SOUT, MDP_COMP_WROT0,
-+		MT8183_MDP_PATH0_SOUT_SEL, MT8183_MDP_PATH0_SOUT_SEL_WROT0,
-+		MT8183_MDP_PATH0_SOUT_SEL_WROT0
-+	}, {
-+		MDP_COMP_PATH1_SOUT, MDP_COMP_WDMA,
-+		MT8183_MDP_PATH1_SOUT_SEL, MT8183_MDP_PATH1_SOUT_SEL_WDMA,
-+		MT8183_MDP_PATH1_SOUT_SEL_WDMA
-+	}
-+};
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+new file mode 100644
+index 000000000000..d7f104a0f165
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+@@ -0,0 +1,65 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
- #endif /* __SOC_MEDIATEK_MT8183_MMSYS_H */
- 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.c b/drivers/soc/mediatek/mtk-mmsys.c
-index 1e448f1ffefb..905847d6e16c 100644
---- a/drivers/soc/mediatek/mtk-mmsys.c
-+++ b/drivers/soc/mediatek/mtk-mmsys.c
-@@ -8,9 +8,11 @@
- #include <linux/device.h>
- #include <linux/io.h>
- #include <linux/of_device.h>
-+#include <linux/of_address.h>
- #include <linux/platform_device.h>
- #include <linux/reset-controller.h>
- #include <linux/soc/mediatek/mtk-mmsys.h>
-+#include <linux/soc/mediatek/mtk-cmdq.h>
- 
- #include "mtk-mmsys.h"
- #include "mt8167-mmsys.h"
-@@ -54,6 +56,8 @@ static const struct mtk_mmsys_driver_data mt8183_mmsys_driver_data = {
- 	.clk_driver = "clk-mt8183-mm",
- 	.routes = mmsys_mt8183_routing_table,
- 	.num_routes = ARRAY_SIZE(mmsys_mt8183_routing_table),
-+	.mdp_routes = mmsys_mt8183_mdp_routing_table,
-+	.mdp_num_routes = ARRAY_SIZE(mmsys_mt8183_mdp_routing_table),
- };
- 
- static const struct mtk_mmsys_driver_data mt8192_mmsys_driver_data = {
-@@ -73,6 +77,8 @@ struct mtk_mmsys {
- 	const struct mtk_mmsys_driver_data *data;
- 	spinlock_t lock; /* protects mmsys_sw_rst_b reg */
- 	struct reset_controller_dev rcdev;
-+	phys_addr_t addr;
-+	u8 subsys_id;
- };
- 
- void mtk_mmsys_ddp_connect(struct device *dev,
-@@ -112,6 +118,45 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
- }
- EXPORT_SYMBOL_GPL(mtk_mmsys_ddp_disconnect);
- 
-+void mtk_mmsys_mdp_connect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			   enum mtk_mdp_comp_id cur,
-+			   enum mtk_mdp_comp_id next)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_routes *routes = mmsys->data->mdp_routes;
-+	int i;
++title: Mediatek Resizer
 +
-+	if (!routes) {
-+		WARN_ON(!routes);
-+		return;
-+	}
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
 +
-+	WARN_ON(mmsys->subsys_id == 0);
-+	for (i = 0; i < mmsys->data->mdp_num_routes; i++)
-+		if (cur == routes[i].from_comp && next == routes[i].to_comp)
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id,
-+					    mmsys->addr + routes[i].addr,
-+					    routes[i].val, routes[i].mask);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_connect);
++description: |
++  One of Media Data Path 3 (MDP3) components used to do frame resizing.
 +
-+void mtk_mmsys_mdp_disconnect(struct device *dev, struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id cur,
-+			      enum mtk_mdp_comp_id next)
-+{
-+	struct mtk_mmsys *mmsys = dev_get_drvdata(dev);
-+	const struct mtk_mmsys_routes *routes = mmsys->data->mdp_routes;
-+	int i;
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-rsz
 +
-+	WARN_ON(mmsys->subsys_id == 0);
-+	for (i = 0; i < mmsys->data->mdp_num_routes; i++)
-+		if (cur == routes[i].from_comp && next == routes[i].to_comp)
-+			cmdq_pkt_write_mask(cmd->pkt, mmsys->subsys_id,
-+					    mmsys->addr + routes[i].addr,
-+					    0, routes[i].mask);
-+}
-+EXPORT_SYMBOL_GPL(mtk_mmsys_mdp_disconnect);
++  mediatek,mdp3-id:
++    description: There may be multiple components with the same function but
++      different addresses in MDP3. The MDP3 driver can select one or zero of
++      them and connect other components in series according to the current
++      application to form one or more data paths. This property indicate the
++      selection order of the same components.
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [0, 1, 2, 3]
 +
- static int mtk_mmsys_reset_update(struct reset_controller_dev *rcdev, unsigned long id,
- 				  bool assert)
- {
-@@ -170,6 +215,8 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 	struct platform_device *clks;
- 	struct platform_device *drm;
- 	struct mtk_mmsys *mmsys;
-+	struct resource res;
-+	struct cmdq_client_reg cmdq_reg;
- 	int ret;
- 
- 	mmsys = devm_kzalloc(dev, sizeof(*mmsys), GFP_KERNEL);
-@@ -195,6 +242,15 @@ static int mtk_mmsys_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
-+	if (of_address_to_resource(dev->of_node, 0, &res) < 0)
-+		mmsys->addr = 0L;
-+	else
-+		mmsys->addr = res.start;
++  reg:
++    maxItems: 1
 +
-+	if (cmdq_dev_get_client_reg(dev, &cmdq_reg, 0) != 0)
-+		dev_info(dev, "cmdq subsys id has not been set\n");
-+	mmsys->subsys_id = cmdq_reg.subsys;
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
 +
- 	mmsys->data = of_device_get_match_data(&pdev->dev);
- 	platform_set_drvdata(pdev, mmsys);
- 
-diff --git a/drivers/soc/mediatek/mtk-mmsys.h b/drivers/soc/mediatek/mtk-mmsys.h
-index 8b0ed05117ea..7ec2107b9823 100644
---- a/drivers/soc/mediatek/mtk-mmsys.h
-+++ b/drivers/soc/mediatek/mtk-mmsys.h
-@@ -92,6 +92,8 @@ struct mtk_mmsys_driver_data {
- 	const char *clk_driver;
- 	const struct mtk_mmsys_routes *routes;
- 	const unsigned int num_routes;
-+	const struct mtk_mmsys_routes *mdp_routes;
-+	const unsigned int mdp_num_routes;
- };
- 
- /*
-diff --git a/include/linux/soc/mediatek/mtk-mmsys.h b/include/linux/soc/mediatek/mtk-mmsys.h
-index 4bba275e235a..c5a4d6b181ce 100644
---- a/include/linux/soc/mediatek/mtk-mmsys.h
-+++ b/include/linux/soc/mediatek/mtk-mmsys.h
-@@ -7,8 +7,14 @@
- #define __MTK_MMSYS_H
- 
- enum mtk_ddp_comp_id;
-+enum mtk_mdp_comp_id;
- struct device;
- 
-+struct mmsys_cmdq_cmd {
-+	struct cmdq_pkt *pkt;
-+	s32 *event;
-+};
++  clocks:
++    minItems: 1
 +
- enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_AAL0,
- 	DDP_COMPONENT_AAL1,
-@@ -45,6 +51,46 @@ enum mtk_ddp_comp_id {
- 	DDP_COMPONENT_ID_MAX,
- };
- 
-+enum mtk_mdp_comp_id {
-+	MDP_COMP_NONE = -1,	/* Invalid engine */
++additionalProperties: false
 +
-+	/* ISP */
-+	MDP_COMP_WPEI = 0,
-+	MDP_COMP_WPEO,		/* 1 */
-+	MDP_COMP_WPEI2,		/* 2 */
-+	MDP_COMP_WPEO2,		/* 3 */
-+	MDP_COMP_ISP_IMGI,	/* 4 */
-+	MDP_COMP_ISP_IMGO,	/* 5 */
-+	MDP_COMP_ISP_IMG2O,	/* 6 */
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
 +
-+	/* IPU */
-+	MDP_COMP_IPUI,		/* 7 */
-+	MDP_COMP_IPUO,		/* 8 */
++    mdp3_rsz0: mdp3_rsz0@14003000 {
++      compatible = "mediatek,mt8183-mdp3-rsz";
++      mediatek,mdp3-id = <0>;
++      reg = <0x14003000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
++      clocks = <&mmsys CLK_MM_MDP_RSZ0>;
++    };
 +
-+	/* MDP */
-+	MDP_COMP_CAMIN,		/* 9 */
-+	MDP_COMP_CAMIN2,	/* 10 */
-+	MDP_COMP_RDMA0,		/* 11 */
-+	MDP_COMP_AAL0,		/* 12 */
-+	MDP_COMP_CCORR0,	/* 13 */
-+	MDP_COMP_RSZ0,		/* 14 */
-+	MDP_COMP_RSZ1,		/* 15 */
-+	MDP_COMP_TDSHP0,	/* 16 */
-+	MDP_COMP_COLOR0,	/* 17 */
-+	MDP_COMP_PATH0_SOUT,	/* 18 */
-+	MDP_COMP_PATH1_SOUT,	/* 19 */
-+	MDP_COMP_WROT0,		/* 20 */
-+	MDP_COMP_WDMA,		/* 21 */
++    mdp3_rsz1: mdp3_rsz1@14004000 {
++      compatible = "mediatek,mt8183-mdp3-rsz";
++      mediatek,mdp3-id = <1>;
++      reg = <0x14004000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
++      clocks = <&mmsys CLK_MM_MDP_RSZ1>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+new file mode 100644
+index 000000000000..61f0534f748a
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+@@ -0,0 +1,67 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-wrot.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	/* Dummy Engine */
-+	MDP_COMP_RDMA1,		/* 22 */
-+	MDP_COMP_RSZ2,		/* 23 */
-+	MDP_COMP_TDSHP1,	/* 24 */
-+	MDP_COMP_WROT1,		/* 25 */
++title: Mediatek Write DMA with Rotation
 +
-+	MDP_MAX_COMP_COUNT	/* ALWAYS keep at the end */
-+};
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
 +
- void mtk_mmsys_ddp_connect(struct device *dev,
- 			   enum mtk_ddp_comp_id cur,
- 			   enum mtk_ddp_comp_id next);
-@@ -53,4 +99,14 @@ void mtk_mmsys_ddp_disconnect(struct device *dev,
- 			      enum mtk_ddp_comp_id cur,
- 			      enum mtk_ddp_comp_id next);
- 
-+void mtk_mmsys_mdp_connect(struct device *dev,
-+			   struct mmsys_cmdq_cmd *cmd,
-+			   enum mtk_mdp_comp_id cur,
-+			   enum mtk_mdp_comp_id next);
++description: |
++  One of Media Data Path 3 (MDP3) components used to write DMA with frame rotation.
 +
-+void mtk_mmsys_mdp_disconnect(struct device *dev,
-+			      struct mmsys_cmdq_cmd *cmd,
-+			      enum mtk_mdp_comp_id cur,
-+			      enum mtk_mdp_comp_id next);
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-wrot
 +
- #endif /* __MTK_MMSYS_H */
++  mediatek,mdp3-id:
++    description: There may be multiple components with the same function but
++      different addresses in MDP3. The MDP3 driver can select one or zero of
++      them and connect other components in series according to the current
++      application to form one or more data paths. This property indicate the
++      selection order of the same components.
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [0, 1, 2, 3]
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++
++  iommus:
++    maxItems: 1
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/power/mt8183-power.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++
++    mdp3_wrot0: mdp3_wrot0@14005000 {
++      compatible = "mediatek,mt8183-mdp3-wrot";
++      mediatek,mdp3-id = <0>;
++      reg = <0x14005000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
++      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++      clocks = <&mmsys CLK_MM_MDP_WROT0>;
++      iommus = <&iommu>;
++    };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+new file mode 100644
+index 000000000000..9aef69cd60ca
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+@@ -0,0 +1,57 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,ccorr.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek color correction
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  Mediatek color correction with 3X3 matrix.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-ccorr
++
++  mediatek,mdp3-id:
++    description: There may be multiple components with the same function but
++      different addresses in MDP3. The MDP3 driver can select one or zero of
++      them and connect other components in series according to the current
++      application to form one or more data paths. This property indicate the
++      selection order of the same components.
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [0, 1, 2, 3]
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++
++    mdp3_ccorr: mdp3_ccorr@1401c000 {
++      compatible = "mediatek,mt8183-mdp3-ccorr";
++      mediatek,mdp3-id = <0>;
++      reg = <0x1401c000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
++      clocks = <&mmsys CLK_MM_MDP_CCORR>;
++    };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,rdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,rdma.yaml
+new file mode 100644
+index 000000000000..c923505f70b3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,rdma.yaml
+@@ -0,0 +1,216 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,rdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Read Direct Memory Access
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  Mediatek Read Direct Memory Access(RDMA) component used to do read DMA.
++  It contains one line buffer to store the sufficient pixel data, and
++  must be siblings to the central MMSYS_CONFIG node.
++  For a description of the MMSYS_CONFIG binding, see
++  Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++  for details.
++  The 1st RDMA is also used to be a controller node in Media Data Path 3(MDP3)
++  that containing MMSYS, MUTEX, GCE and SCP settings.
++
++properties:
++  compatible:
++    oneOf:
++      - items:
++          # MDP3 controller node
++          - const: mediatek,mt8183-mdp3
++          - const: mediatek,mt8183-mdp3-rdma
++      - items:
++          # normal RDMA conponent
++          - const: mediatek,mt8183-mdp3-rdma
++
++  mediatek,scp:
++    description: The node of system control processor (SCP), using
++      the remoteproc & rpmsg framework.
++    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
++
++  mediatek,mdp3-id:
++    description: There may be multiple components with the same function but
++      different addresses in MDP3. The MDP3 driver can select one or zero of
++      them and connect other components in series according to the current
++      application to form one or more data paths. This property indicates the
++      selection order of the same components.
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [0, 1, 2, 3]
++
++  mediatek,mdp3-comps:
++    description: MTK sub-system of direct-link or DIP
++    $ref: /schemas/types.yaml#/definitions/string-array
++    items:
++      - enum:
++          # MDP direct-link input path selection, create a
++          # component for path connectedness of HW pipe control
++          - mediatek,mt8183-mdp3-dl1
++      - enum:
++          - mediatek,mt8183-mdp3-dl2
++      - enum:
++          # MDP direct-link output path selection, create a
++          # component for path connectedness of HW pipe control
++          - mediatek,mt8183-mdp3-path1
++      - enum:
++          - mediatek,mt8183-mdp3-path2
++      - enum:
++          # Input DMA of ISP PASS2 (DIP) module for raw image input
++          - mediatek,mt8183-mdp3-imgi
++      - enum:
++          # Output DMA of ISP PASS2 (DIP) module for YUV image output
++          - mediatek,mt8183-mdp3-exto
++
++  mediatek,mdp3-comp-ids:
++    description: Pipeline ID of MDP sub-system.
++    $ref: /schemas/types.yaml#/definitions/uint32-array
++    items:
++      - description: MDP direct-link 1st input
++      - description: MDP direct-link 2nd input
++      - description: MDP direct-link 1st output
++      - description: MDP direct-link 2nd output
++      - description: ISP input
++      - description: ISP output
++
++  reg:
++    items:
++      - description: basic RDMA HW address
++      - description: MDP direct-link 1st and 2nd input
++      - description: MDP direct-link 1st output
++      - description: MDP direct-link 2nd output
++      - description: ISP input and output
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    items:
++      - description: GCE client for RDMA
++      - description: GCR client for MDP direct-link 1st and 2nd input
++      - description: GCR client for MDP direct-link 1st output
++      - description: GCR client for MDP direct-link 2nd output
++      - description: GCR client for ISP input and output
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: RDMA clock
++      - description: RSZ clock
++      - description: direck-link TX clock in MDP side
++      - description: direck-link RX clock in MDP side
++      - description: direck-link TX clock in ISP side
++      - description: direck-link RX clock in ISP side
++
++  iommus:
++    maxItems: 1
++
++  mediatek,mmsys:
++    description: The node of mux(multiplexer) controller for HW connections.
++    $ref: /schemas/types.yaml#/definitions/phandle
++
++  mediatek,mm-mutex:
++    description: The node of sof(start of frame) signal controller.
++    $ref: /schemas/types.yaml#/definitions/phandle
++    maxItems: 1
++
++  mediatek,mailbox-gce:
++    description: The node of global command engine (GCE), used to read/write
++      registers with critical time limitation.
++    $ref: /schemas/types.yaml#/definitions/phandle
++
++  mboxes:
++    items:
++      - description: used for 1st data pipe from RDMA
++      - description: used for 2nd data pipe from RDMA
++      - description: used for 3rd data pipe from Direct-Link
++      - description: used for 4th data pipe from Direct-Link
++
++  gce-subsys:
++    description: sub-system id corresponding to the global command engine (GCE)
++      register address.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++
++if:
++  properties:
++    compatible:
++      contains:
++        const: mediatek,mt8183-mdp3
++
++then:
++  required:
++    - mediatek,scp
++    - mediatek,mmsys
++    - mediatek,mm-mutex
++    - mediatek,mailbox-gce
++    - mboxes
++    - gce-subsys
++
++required:
++  - compatible
++  - mediatek,mdp3-id
++  - reg
++  - clocks
++  - mediatek,gce-client-reg
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/power/mt8183-power.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++
++    mdp3_rdma0: mdp3_rdma0@14001000 {
++      compatible = "mediatek,mt8183-mdp3",
++                   "mediatek,mt8183-mdp3-rdma";
++      mediatek,scp = <&scp>;
++      mediatek,mdp3-id = <0>;
++      mediatek,mdp3-comps = "mediatek,mt8183-mdp3-dl1",
++                            "mediatek,mt8183-mdp3-dl2",
++                            "mediatek,mt8183-mdp3-path1",
++                            "mediatek,mt8183-mdp3-path2",
++                            "mediatek,mt8183-mdp3-imgi",
++                            "mediatek,mt8183-mdp3-exto";
++      mediatek,mdp3-comp-ids = <0 1 0 1 0 1>;
++      reg = <0x14001000 0x1000>,
++            <0x14000000 0x1000>,
++            <0x14005000 0x1000>,
++            <0x14006000 0x1000>,
++            <0x15020000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>,
++                                <&gce SUBSYS_1400XXXX 0 0x1000>,
++                                <&gce SUBSYS_1400XXXX 0x5000 0x1000>,
++                                <&gce SUBSYS_1400XXXX 0x6000 0x1000>,
++                                <&gce SUBSYS_1502XXXX 0 0x1000>;
++      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++      clocks = <&mmsys CLK_MM_MDP_RDMA0>,
++               <&mmsys CLK_MM_MDP_RSZ1>,
++               <&mmsys CLK_MM_MDP_DL_TXCK>,
++               <&mmsys CLK_MM_MDP_DL_RX>,
++               <&mmsys CLK_MM_IPU_DL_TXCK>,
++               <&mmsys CLK_MM_IPU_DL_RX>;
++      iommus = <&iommu>;
++      mediatek,mmsys = <&mmsys>;
++      mediatek,mm-mutex = <&mutex>;
++      mediatek,mailbox-gce = <&gce>;
++      mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
++               <&gce 21 CMDQ_THR_PRIO_LOWEST 0>,
++               <&gce 22 CMDQ_THR_PRIO_LOWEST 0>,
++               <&gce 23 CMDQ_THR_PRIO_LOWEST 0>;
++      gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
++                   <&gce 0x14010000 SUBSYS_1401XXXX>,
++                   <&gce 0x14020000 SUBSYS_1402XXXX>,
++                   <&gce 0x15020000 SUBSYS_1502XXXX>;
++    };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+new file mode 100644
+index 000000000000..cd23bdee6be3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+@@ -0,0 +1,68 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/soc/mediatek/mediatek,wdma.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Write Direct Memory Access
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  Mediatek Write Direct Memory Access(WDMA) component used to write
++  the data into DMA.
++
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt8183-mdp3-wdma
++
++  mediatek,mdp3-id:
++    description: There may be multiple components with the same function but
++      different addresses in MDP3. The MDP3 driver can select one or zero of
++      them and connect other components in series according to the current
++      application to form one or more data paths. This property indicate the
++      selection order of the same components.
++    $ref: /schemas/types.yaml#/definitions/uint32
++    enum: [0, 1, 2, 3]
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    description: The register of client driver can be configured by gce with
++      4 arguments defined in this property, such as phandle of gce, subsys id,
++      register offset and size. Each GCE subsys id is mapping to a client
++      defined in the header include/dt-bindings/gce/<chip>-gce.h.
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    maxItems: 1
++
++  power-domains:
++    maxItems: 1
++
++  clocks:
++    minItems: 1
++
++  iommus:
++    maxItems: 1
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8183-clk.h>
++    #include <dt-bindings/gce/mt8183-gce.h>
++    #include <dt-bindings/power/mt8183-power.h>
++    #include <dt-bindings/memory/mt8183-larb-port.h>
++
++    mdp3_wdma: mdp3_wdma@14006000 {
++      compatible = "mediatek,mt8183-mdp3-wdma";
++      mediatek,mdp3-id = <0>;
++      reg = <0x14006000 0x1000>;
++      mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
++      power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
++      clocks = <&mmsys CLK_MM_MDP_WDMA0>;
++      iommus = <&iommu>;
++    };
 -- 
 2.18.0
 
