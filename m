@@ -4,94 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22B50C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 12:27:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C34B3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 13:07:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:From:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w+xMSpUt2oae7bY4BgP41WQqm0Zy2TM6AzDFsA04vaY=; b=sy1PY35gD2GJ+l
-	MpBd24selYpPYPqPC/bytWHistJ/24Va+Wol/+Sa+ZVwdVGuo/gPUnK+xn2cCAJ0/cX6nN9kX4Byu
-	ZB4bJ+HPcS16brFMA3Fr8NRoNhX8+rO/h4wcsezYhPCFd9er2Ysul2hwmEcAJncQQm7JoYUbUzOyB
-	yRzRxODy2Vy4zn7TyacAkE3Lgmg5jULwWfB0IVCWLCt+QwVbqe4GSoVQGoe9Xzk7k1HDN00YM4WM1
-	monf/AYpcBRd9UVd9D003IMETF/cGNQ0IZcid5BJp++j2f7SVkClUCULydp5P6hEO0M7VadqJ4Hth
-	oYMGYt0HEf0N1R3W6Fqg==;
+	List-Owner; bh=82pD7UDWQzCxvZclW81BVDkFDX4Y7YBL6kUQdSJphHg=; b=YiV/Rd7Joe4rJB
+	doYbBdx819iiduHirU6EQR6p+nFTUyPbx5ysBSreIUJ+YwxDyFfbOptAIFaBH4qf+UvTncJMmon6j
+	e3/rS33honmei/y5e5MausxMzb6GCJoRoeh8StEqv1fGXOKkBdyvN/S30NWpE55YyhMrx6LIeTQP5
+	jTnRm+adJfZN0LHIaMj2KPy5+b6VVP1i330pxu7IytuO0AAPPOdvWf9wonSS00x2pNCiYbYca3Tvu
+	ERP5+12KzyLkJZCEtfL+xbK5m7bvywvbWMpEQks+lQHbvYP+BPraTdt1Yoy1IDP3gxXTIJmQVIH+I
+	8bSeCfJIghuZ9s/g6h2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mt7em-00Figi-Da; Fri, 03 Dec 2021 12:27:16 +0000
-Received: from mga18.intel.com ([134.134.136.126])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mt7eJ-00FiXm-P9; Fri, 03 Dec 2021 12:26:49 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10186"; a="223839592"
-X-IronPort-AV: E=Sophos;i="5.87,284,1631602800"; d="scan'208";a="223839592"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Dec 2021 04:26:46 -0800
-X-IronPort-AV: E=Sophos;i="5.87,284,1631602800"; d="scan'208";a="678082863"
-Received: from smile.fi.intel.com ([10.237.72.184])
- by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Dec 2021 04:26:35 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.95)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1mt7d5-001lPG-5I; Fri, 03 Dec 2021 14:25:31 +0200
-Date: Fri, 3 Dec 2021 14:25:30 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Marc Zyngier <maz@kernel.org>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Chunyan Zhang <chunyan.zhang@unisoc.com>, Baruch Siach <baruch@tkos.co.il>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Tony Lindgren <tony@atomide.com>,
- Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Jianqun Xu <jay.xu@rock-chips.com>,
- Alexandru Ardelean <aardelean@deviqon.com>,
- Thierry Reding <treding@nvidia.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- patches@opensource.cirrus.com,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- linux-power <linux-power@fi.rohmeurope.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- linux-pwm@vger.kernel.org, Linux-OMAP <linux-omap@vger.kernel.org>,
- linux-unisoc@lists.infradead.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-tegra@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Scott Branden <sbranden@broadcom.com>,
- Gregory Fong <gregory.0xf0@gmail.com>,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
- Keerthy <j-keerthy@ti.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Vladimir Zapolskiy <vz@mleia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>,
- Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jonathan Hunter <jonathanh@nvidia.com>
-Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
- the drivers
-Message-ID: <YaoMuoONxbJb0prf@smile.fi.intel.com>
-References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
- <CAMRc=Md-TKUETLzf41D2KeQODac153_AumMTW4928XfJ70GRxQ@mail.gmail.com>
+	id 1mt8Hu-00FquX-Nv; Fri, 03 Dec 2021 13:07:42 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mt8Hh-00FqrW-RQ; Fri, 03 Dec 2021 13:07:31 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id F307B1396;
+ Fri,  3 Dec 2021 05:07:27 -0800 (PST)
+Received: from [10.57.34.58] (unknown [10.57.34.58])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D8E7A3F5A1;
+ Fri,  3 Dec 2021 05:07:25 -0800 (PST)
+Message-ID: <46d9c8dd-d2dc-0d2a-aeb4-08dff9dcb733@arm.com>
+Date: Fri, 3 Dec 2021 13:07:21 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAMRc=Md-TKUETLzf41D2KeQODac153_AumMTW4928XfJ70GRxQ@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.2
+From: Robin Murphy <robin.murphy@arm.com>
+Subject: Re: [PATCH 0/3] Allow restricted-dma-pool to customize IO_TLB_SEGSIZE
+To: Tomasz Figa <tfiga@chromium.org>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Christoph Hellwig
+ <hch@infradead.org>, Marek Szyprowski <m.szyprowski@samsung.com>,
+ iommu@lists.linux-foundation.org, linux-kernel@vger.kernel.org,
+ Rob Herring <robh+dt@kernel.org>, Maxime Ripard <maxime@cerno.tech>,
+ - <devicetree-spec@vger.kernel.org>, devicetree@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ senozhatsky@chromium.org
+References: <20211123112104.3530135-1-hsinyi@chromium.org>
+ <75ea1026-63e5-165a-9e07-27b5ac4c7579@arm.com>
+ <CAAFQd5AA3XCqxOSdQOOCMEdByDKRz5J9vWB0QghO2SSCqOvQBQ@mail.gmail.com>
+Content-Language: en-GB
+In-Reply-To: <CAAFQd5AA3XCqxOSdQOOCMEdByDKRz5J9vWB0QghO2SSCqOvQBQ@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_042647_910202_73B35ADA 
-X-CRM114-Status: GOOD (  20.03  )
+X-CRM114-CacheID: sfid-20211203_050730_026363_7D110E23 
+X-CRM114-Status: GOOD (  29.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,41 +65,100 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 03, 2021 at 09:40:55AM +0100, Bartosz Golaszewski wrote:
-> On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> >
-> > GPIO library does copy the of_node from the parent device of
-> > the GPIO chip, there is no need to repeat this in the individual
-> > drivers. Remove these assignment all at once.
-> >
-> > For the details one may look into the of_gpio_dev_init() implementation.
-> >
-> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> > ---
+On 2021-11-25 07:35, Tomasz Figa wrote:
+> Hi Robin,
 > 
-> I have a bad feeling about this but I've gone through the drivers in
-> this patch and it seems like you don't update any of the drivers that
-> use multiple child OF nodes so I can't really point out any obvious
-> bug.
+> On Tue, Nov 23, 2021 at 8:59 PM Robin Murphy <robin.murphy@arm.com> wrote:
+>>
+>> On 2021-11-23 11:21, Hsin-Yi Wang wrote:
+>>> Default IO_TLB_SEGSIZE (128) slabs may be not enough for some use cases.
+>>> This series adds support to customize io_tlb_segsize for each
+>>> restricted-dma-pool.
+>>>
+>>> Example use case:
+>>>
+>>> mtk-isp drivers[1] are controlled by mtk-scp[2] and allocate memory through
+>>> mtk-scp. In order to use the noncontiguous DMA API[3], we need to use
+>>> the swiotlb pool. mtk-scp needs to allocate memory with 2560 slabs.
+>>> mtk-isp drivers also needs to allocate memory with 200+ slabs. Both are
+>>> larger than the default IO_TLB_SEGSIZE (128) slabs.
+>>
+>> Are drivers really doing streaming DMA mappings that large? If so, that
+>> seems like it might be worth trying to address in its own right for the
+>> sake of efficiency - allocating ~5MB of memory twice and copying it back
+>> and forth doesn't sound like the ideal thing to do.
+>>
+>> If it's really about coherent DMA buffer allocation, I thought the plan
+>> was that devices which expect to use a significant amount and/or size of
+>> coherent buffers would continue to use a shared-dma-pool for that? It's
+>> still what the binding implies. My understanding was that
+>> swiotlb_alloc() is mostly just a fallback for the sake of drivers which
+>> mostly do streaming DMA but may allocate a handful of pages worth of
+>> coherent buffers here and there. Certainly looking at the mtk_scp
+>> driver, that seems like it shouldn't be going anywhere near SWIOTLB at all.
+> 
+> First, thanks a lot for taking a look at this patch series.
+> 
+> The drivers would do streaming DMA within a reserved region that is
+> the only memory accessible to them for security reasons. This seems to
+> exactly match the definition of the restricted pool as merged
+> recently.
 
-Yes, like I said it's just a series to kick off the conversion.
-I left the corner cases to the last.
+Huh? Of the drivers indicated, the SCP driver is doing nothing but 
+coherent allocations, and I'm not entirely sure what those ISP driver 
+patches are supposed to be doing but I suspect it's probably just buffer 
+allocation too. I don't see any actual streaming DMA anywhere :/
 
-> I have another change I'm working on that's related, let me send it shortly.
+> The new dma_alloc_noncontiguous() API would allow allocating suitable
+> memory directly from the pool, which would eliminate the need to copy.
 
-Do you mean it should be attached to the series?
+Can you clarify what's being copied, and where? I'm not all that 
+familiar with the media APIs, but I thought it was all based around 
+preallocated DMA buffers (the whole dedicated "videobuf" thing)? The few 
+instances of actual streaming DMA I can see in drivers/media/ look to be 
+mostly PCI drivers mapping private descriptors, whereas the MTK ISP 
+appears to be entirely register-based.
 
--- 
-With Best Regards,
-Andy Shevchenko
+> However, for a restricted pool, this would exercise the SWIOTLB
+> allocator, which currently suffers from the limitation as described by
+> Hsin-Yi. Since the allocator in general is quite general purpose and
+> already used for coherent allocations as per the current restricted
+> pool implementation, I think it indeed makes sense to lift the
+> limitation, rather than trying to come up with yet another thing.
 
+No, just fix the dma_alloc_noncontiguous() fallback case to split the 
+allocation into dma_max_mapping_size() chunks. *That* makes sense.
 
+Thanks,
+Robin.
+
+> 
+> Best regards,
+> Tomasz
+> 
+>>
+>> Robin.
+>>
+>>> [1] (not in upstream) https://patchwork.kernel.org/project/linux-media/cover/20190611035344.29814-1-jungo.lin@mediatek.com/
+>>> [2] https://elixir.bootlin.com/linux/latest/source/drivers/remoteproc/mtk_scp.c
+>>> [3] https://patchwork.kernel.org/project/linux-media/cover/20210909112430.61243-1-senozhatsky@chromium.org/
+>>>
+>>> Hsin-Yi Wang (3):
+>>>     dma: swiotlb: Allow restricted-dma-pool to customize IO_TLB_SEGSIZE
+>>>     dt-bindings: Add io-tlb-segsize property for restricted-dma-pool
+>>>     arm64: dts: mt8183: use restricted swiotlb for scp mem
+>>>
+>>>    .../reserved-memory/shared-dma-pool.yaml      |  8 +++++
+>>>    .../arm64/boot/dts/mediatek/mt8183-kukui.dtsi |  4 +--
+>>>    include/linux/swiotlb.h                       |  1 +
+>>>    kernel/dma/swiotlb.c                          | 34 ++++++++++++++-----
+>>>    4 files changed, 37 insertions(+), 10 deletions(-)
+>>>
 
 _______________________________________________
 Linux-mediatek mailing list
