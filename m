@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D79DEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 01:56:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DA7EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 01:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WbsltlPkBiObkGPLu0VJcXoSaQV/wvJZ3LiVatni880=; b=Sr8qtpEbgNVcup
-	zOInCoWcb0o/6OcPy3EwWqvfFN1U+RqBU8W+0kToT9gpX6/90bMYeqUnx8aIUMYPH1ENhCrreiNxx
-	qVrKJ6/5Gzk63Tc3T8fz+itqbNpC+T7Zm0+Je1f0nhnNm18xr7gaBTBGqrg01v7YNhZVgdP6dt3YH
-	LwBioz1+0R0xaByruNX0aON3RkIzzPj8SpEYsyvyxc7JSKeUEJr6FUMuuMJr8B0oIb4E1deyWFG5h
-	Xm+irYHQPUP8OP0ggObRkQ98djig47T8CQyO8qfZ4e3UyGH4IoIKyOk76yNDxY7iz9a/3K74ZRISt
-	ZrEnCJxDJH6UgQDAhjfA==;
+	List-Owner; bh=sZjWIVPDhFBG9lmDyy7bIrpI4HOfpy6kjwWiYBZoIcM=; b=lEim0qnHlLhHc8
+	buGr6Y3vikF1TtJsIsDmDCeC6xMjggrT3QxUPJjxTwn6u0yThD346/xizkZNFRy/Ipfr4ypkQ/VtI
+	0+pmwaKyC9jiRR9F19Z6hrcKK5gZOYyMZTA5KH7+KEoXsQzjzExQvD2prtrj7J07Ycs1hHGkwO6H0
+	0KBBTmxT4IA3gPb1R//fJy4Xk9x2Y3hl/m4isC38Et4gyfmyD+JjCYQ94Gtq2jdRvOXfAHOHSWUzu
+	aipj/yiCpx0r0c80t67JeCk3oyLwi4Eec/++uHxo/v3jsYfcZMxwvTjS+6XRLBwnEEuQ1xrUsP19p
+	K/uF9j4NnjYvAX/9m3jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1msxoX-00E1A0-Pi; Fri, 03 Dec 2021 01:56:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1msxpK-00E1P9-P7; Fri, 03 Dec 2021 01:57:30 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1msxoU-00E18l-DV; Fri, 03 Dec 2021 01:56:40 +0000
-X-UUID: 0e88face1f194492ba0f9d2110152990-20211202
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=U8O6yZXk1USP9a3ivghloEgtx5u1o7Sb0yAqTaln6E0=; 
- b=LXCZxpgvnJNaixibysFu6THwLAjpiQDuMaOu82bZHmCJnAK7sVz3xqv0oqO6GTzpzIZH/IfdViNKKhRSS67GViVX5+zm1B+ekaF/LaqJsxEmjyd4HT0xSv2IAUu+4J7ykDh6aAqH0p7vISoasIF2U+WA+MV7e6Qa51viR+osql0=;
-X-UUID: 0e88face1f194492ba0f9d2110152990-20211202
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1159097227; Thu, 02 Dec 2021 18:56:36 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Dec 2021 17:50:07 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 3 Dec 2021 09:50:05 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 3 Dec 2021 09:50:04 +0800
-Message-ID: <e4be43859ea07a8382f927905c32f047dda77584.camel@mediatek.com>
-Subject: Re: [PATCH v11, 04/19] media: mtk-vcodec: export decoder pm functions
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Daniel Vetter
- <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
- <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 3 Dec 2021 09:50:04 +0800
-In-Reply-To: <2fa4e19f-d57c-6264-4284-8387c4182d1f@collabora.com>
-References: <20211129034201.5767-1-yunfei.dong@mediatek.com>
- <20211129034201.5767-5-yunfei.dong@mediatek.com>
- <2fa4e19f-d57c-6264-4284-8387c4182d1f@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1msxp6-00E1Js-Uv; Fri, 03 Dec 2021 01:57:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 95AE2B8256E;
+ Fri,  3 Dec 2021 01:57:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4BCBCC00446;
+ Fri,  3 Dec 2021 01:57:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638496634;
+ bh=/UDPkKhe1xuwTbm+tg8qCshVaTn9o077A90hWi1CX6Q=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=P22bOfSNPryoQdsSZD7kk6eRN7s+Om6vT2CrvzGA+WfQqsOfcQWB28+L3q4+DEVdg
+ RaEnE/+bS+Xa+JMb5+pnHft6xafn/ejRiKDa0WjnCi0lPjxlbn3MUtOhXAhMVbIPib
+ AVPGDMb85P3nJzplra/0mv6p6X7QkdB7dXOemB6QWNPx2K9Zpo9HOcRU1vDZsqrSu5
+ tOscy+82u0EROxyAmpcuYvHIoIuHxzebeqig5l/zRoOe0d4ZosVQ5sSce3PJZHGEMg
+ VERM8XGJcQF5Kv/6vDJt0fOyx25PEaweT+OYxDdLnveZRLlY5ZydyC9FqcwaDLAEQC
+ GAlTDVckYpiMQ==
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <YZlchKnEqWN8nKQk@ryzen>
+References: <163087455086.405991.14496690646389782129@swboyd.mtv.corp.google.com>
+ <20211105055932.3432-1-miles.chen@mediatek.com> <YZlchKnEqWN8nKQk@ryzen>
+Subject: Re: [PATCH v3] clk: imx: use module_platform_driver
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: festevam@gmail.com, kernel@pengutronix.de,
+ linux-arm-kernel@lists.infradead.org, linux-clk@vger.kernel.org,
+ linux-imx@nxp.com, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, mturquette@baylibre.com,
+ s.hauer@pengutronix.de, shawnguo@kernel.org, wsd_upstream@mediatek.com
+To: Abel Vesa <abel.vesa@nxp.com>, miles.chen@mediatek.com
+Date: Thu, 02 Dec 2021 17:57:13 -0800
+User-Agent: alot/0.9.1
+Message-Id: <20211203015714.4BCBCC00446@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211202_175638_481569_DB5D28E0 
-X-CRM114-Status: GOOD (  19.73  )
+X-CRM114-CacheID: sfid-20211202_175717_177798_5DED19B6 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,60 +70,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgQmVuamFtaW4sDQoNClRoYW5rcyBmb3IgeW91ciBzdWdnZXN0aW9uLg0KT24gVHVlLCAyMDIx
-LTExLTMwIGF0IDE0OjM0ICswMTAwLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToNCj4gTGUgMjkv
-MTEvMjAyMSDDoCAwNDo0MSwgWXVuZmVpIERvbmcgYSDDqWNyaXQgOg0KPiA+IFJlZ2lzdGVyIGVh
-Y2ggaGFyZHdhcmUgYXMgcGxhdGZvcm0gZGV2aWNlLCBuZWVkIHRvIGNhbGwgcG0NCj4gPiBmdW5j
-dGlvbnMNCj4gPiB0byBvcGVuL2Nsb3NlIHBvd2VyIGFuZCBjbG9jayBmcm9tIG1vZHVsZSBtdGst
-dmNvZGVjLWRlYywgZXhwb3J0DQo+ID4gdGhlc2UNCj4gPiBmdW5jdGlvbnMuDQo+IA0KPiBUaGUg
-Y29tbWl0IG1lc3NhZ2UgY29uZnVzZSBtZSwgbWF5YmUgc29tZXRoaW5nIGxpa2U6DQo+ICJXaGVu
-IG10ayB2Y29kZWMgZGVjb2RlciBpcyBidWlsZCBhcyBhIG1vZHVsZSB3ZSBuZWVkIHRvIGV4cG9y
-dA0KPiBtdGstdmNvZGVjLWRlYyBwbSBmdW5jdGlvbnMgdG8gbWFrZSB0aGVtIHZpc2libGUgYnkg
-dGhlIG90aGVyDQo+IGNvbXBvbmVudHMiDQo+IA0KRml4IGluIHBhdGNoIHYxMg0KPiBXaXRoIHRo
-YXQ6DQo+IFJldmlld2VkLWJ5OiBCZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRA
-Y29sbGFib3JhLmNvbT4NCj4gDQpCZXN0IFJlZ2FyZHMsDQpZdW5mZWkgRG9uZw0KPiA+IA0KPiA+
-IFNpZ25lZC1vZmYtYnk6IFl1bmZlaSBEb25nIDx5dW5mZWkuZG9uZ0BtZWRpYXRlay5jb20+DQo+
-ID4gLS0tDQo+ID4gICBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2Rl
-Y19kZWNfcG0uYyB8IDYgKysrKysrDQo+ID4gICAxIGZpbGUgY2hhbmdlZCwgNiBpbnNlcnRpb25z
-KCspDQo+ID4gDQo+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZj
-b2RlYy9tdGtfdmNvZGVjX2RlY19wbS5jDQo+ID4gYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL210
-ay12Y29kZWMvbXRrX3Zjb2RlY19kZWNfcG0uYw0KPiA+IGluZGV4IDIwYmQxNTdhODU1Yy4uMjIx
-Y2Y2MGU5ZmJmIDEwMDY0NA0KPiA+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLXZj
-b2RlYy9tdGtfdmNvZGVjX2RlY19wbS5jDQo+ID4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
-bS9tdGstdmNvZGVjL210a192Y29kZWNfZGVjX3BtLmMNCj4gPiBAQCAtNzcsMTIgKzc3LDE0IEBA
-IGludCBtdGtfdmNvZGVjX2luaXRfZGVjX3BtKHN0cnVjdA0KPiA+IHBsYXRmb3JtX2RldmljZSAq
-cGRldiwNCj4gPiAgIAlwdXRfZGV2aWNlKHBtLT5sYXJidmRlYyk7DQo+ID4gICAJcmV0dXJuIHJl
-dDsNCj4gPiAgIH0NCj4gPiArRVhQT1JUX1NZTUJPTF9HUEwobXRrX3Zjb2RlY19pbml0X2RlY19w
-bSk7DQo+ID4gICANCj4gPiAgIHZvaWQgbXRrX3Zjb2RlY19yZWxlYXNlX2RlY19wbShzdHJ1Y3Qg
-bXRrX3Zjb2RlY19wbSAqcG0pDQo+ID4gICB7DQo+ID4gICAJcG1fcnVudGltZV9kaXNhYmxlKHBt
-LT5kZXYpOw0KPiA+ICAgCXB1dF9kZXZpY2UocG0tPmxhcmJ2ZGVjKTsNCj4gPiAgIH0NCj4gPiAr
-RVhQT1JUX1NZTUJPTF9HUEwobXRrX3Zjb2RlY19yZWxlYXNlX2RlY19wbSk7DQo+ID4gICANCj4g
-PiAgIGludCBtdGtfdmNvZGVjX2RlY19wd19vbihzdHJ1Y3QgbXRrX3Zjb2RlY19wbSAqcG0pDQo+
-ID4gICB7DQo+ID4gQEAgLTk0LDYgKzk2LDcgQEAgaW50IG10a192Y29kZWNfZGVjX3B3X29uKHN0
-cnVjdCBtdGtfdmNvZGVjX3BtDQo+ID4gKnBtKQ0KPiA+ICAgDQo+ID4gICAJcmV0dXJuIHJldDsN
-Cj4gPiAgIH0NCj4gPiArRVhQT1JUX1NZTUJPTF9HUEwobXRrX3Zjb2RlY19kZWNfcHdfb24pOw0K
-PiA+ICAgDQo+ID4gICB2b2lkIG10a192Y29kZWNfZGVjX3B3X29mZihzdHJ1Y3QgbXRrX3Zjb2Rl
-Y19wbSAqcG0pDQo+ID4gICB7DQo+ID4gQEAgLTEwMyw2ICsxMDYsNyBAQCB2b2lkIG10a192Y29k
-ZWNfZGVjX3B3X29mZihzdHJ1Y3QgbXRrX3Zjb2RlY19wbQ0KPiA+ICpwbSkNCj4gPiAgIAlpZiAo
-cmV0KQ0KPiA+ICAgCQltdGtfdjRsMl9lcnIoInBtX3J1bnRpbWVfcHV0X3N5bmMgZmFpbCAlZCIs
-IHJldCk7DQo+ID4gICB9DQo+ID4gK0VYUE9SVF9TWU1CT0xfR1BMKG10a192Y29kZWNfZGVjX3B3
-X29mZik7DQo+ID4gICANCj4gPiAgIHZvaWQgbXRrX3Zjb2RlY19kZWNfY2xvY2tfb24oc3RydWN0
-IG10a192Y29kZWNfcG0gKnBtKQ0KPiA+ICAgew0KPiA+IEBAIC0xMjksNiArMTMzLDcgQEAgdm9p
-ZCBtdGtfdmNvZGVjX2RlY19jbG9ja19vbihzdHJ1Y3QNCj4gPiBtdGtfdmNvZGVjX3BtICpwbSkN
-Cj4gPiAgIAlmb3IgKGkgLT0gMTsgaSA+PSAwOyBpLS0pDQo+ID4gICAJCWNsa19kaXNhYmxlX3Vu
-cHJlcGFyZShkZWNfY2xrLT5jbGtfaW5mb1tpXS52Y29kZWNfY2xrKTsNCj4gPiAgIH0NCj4gPiAr
-RVhQT1JUX1NZTUJPTF9HUEwobXRrX3Zjb2RlY19kZWNfY2xvY2tfb24pOw0KPiA+ICAgDQo+ID4g
-ICB2b2lkIG10a192Y29kZWNfZGVjX2Nsb2NrX29mZihzdHJ1Y3QgbXRrX3Zjb2RlY19wbSAqcG0p
-DQo+ID4gICB7DQo+ID4gQEAgLTEzOSwzICsxNDQsNCBAQCB2b2lkIG10a192Y29kZWNfZGVjX2Ns
-b2NrX29mZihzdHJ1Y3QNCj4gPiBtdGtfdmNvZGVjX3BtICpwbSkNCj4gPiAgIAlmb3IgKGkgPSBk
-ZWNfY2xrLT5jbGtfbnVtIC0gMTsgaSA+PSAwOyBpLS0pDQo+ID4gICAJCWNsa19kaXNhYmxlX3Vu
-cHJlcGFyZShkZWNfY2xrLT5jbGtfaW5mb1tpXS52Y29kZWNfY2xrKTsNCj4gPiAgIH0NCj4gPiAr
-RVhQT1JUX1NZTUJPTF9HUEwobXRrX3Zjb2RlY19kZWNfY2xvY2tfb2ZmKTsNCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxp
-bmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Quoting Abel Vesa (2021-11-20 12:37:24)
+> On 21-11-05 13:59:32, miles.chen@mediatek.com wrote:
+> > From: Miles Chen <miles.chen@mediatek.com>
+> > 
+> > Hi Stephen,
+> > 
+> > >> Fixes: e0d0d4d86c766 ("clk: imx8qxp: Support building i.MX8QXP clock driver as module")
+> > >> Cc: Fabio Estevam <festevam@gmail.com>
+> > >> Cc: Stephen Boyd <sboyd@kernel.org>
+> > >> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+> > 
+> > > Reviewed-by: Stephen Boyd <sboyd@kernel.org>
+> > 
+> > Thanks for doing the review, I cannot find this patch in clk-imx tree,
+> > Would you pick this patch, please?
+> 
+> Sorry for the delay. 
+> 
+> Fixes are usually picked up directly by Stephen, 
+> therefore they're not going through clk-imx tree.
+> 
+> Stephen, can you pick this one up please?
+> 
+
+It doesn't look like a very critical fix but ok. I suppose someone could
+try to use =m for these files?
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
