@@ -4,82 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B18BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 13:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CAC3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 14:15:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p73IWyZrn4ejdVV1XQVbtto4ra0BPr+iM2UQD4RLDPg=; b=ufrEZpFpeT5Jct
-	CLSM1Rv70brm7sR+RQ6dZO6CcW3y+x0Y1fIVjvTvl8DXIDZEftouIl3EjF97a7qHe6yIp3tXvFY7q
-	U6o5yfsTaWa1XI3ZsA381bVdgnBKNvBCYQm9T6m8OLEaRwK8b9ttv2Qz0ZkYJp40PxPhvWAmaWr24
-	euGLjwgJRpqMLpytFZY22oOaEwztn1Y+UP/p69zpSNSNn2nTgZGMJR67txbv+WerKbzfnkmpxSp+9
-	utHz0I+9TKVjybS3PVJIaPbNmSZtQjbSS9hZI8LjLvIBgget0bxG85QrF5E96y/kSsZy+MYyQ28OY
-	qEZ3pdRQ/hx0BVYTMipA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zt5rortBYcneXlkD73/aHjxEEnUU9QmgSmymaOA0NMU=; b=gMmeSB2OBSgsS1
+	thnP0qPmNhhxrT3nKBbWL0ByYN+8JqZyxw5O3WXd/zrJ0uzqBd5KCVR3FEW3kth48MzL/3Wl++twq
+	vsBoJjnz1eWyNZ+ZJpthno+vYvRepQQ/MkdmtEfebSQysSmOGr5Qw41Wpo+olPqSvIvyJhBuLISGJ
+	ZvF+N8H4YHx6l+Vi0kcOtPVNXbqWNcOUJWwJR5F/7BDGxEfp1MqlE2MnVbuRJJ9T7C0cmu97SBcL2
+	jUj2/pTa779FJvTOBSHT+12Hk9Iqk4p1/othlmxAZdBhUt8WPfcjH8Isi0tyHhHOuS/KuYdoL8jEm
+	zKXd5Ci+9aUrymWsfuLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mt8rM-00G1VG-1k; Fri, 03 Dec 2021 13:44:20 +0000
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+	id 1mt9LA-00G7F7-6p; Fri, 03 Dec 2021 14:15:08 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mt8qs-00G1NT-CO
- for linux-mediatek@lists.infradead.org; Fri, 03 Dec 2021 13:43:51 +0000
-Received: by mail-ed1-x530.google.com with SMTP id t5so11955448edd.0
- for <linux-mediatek@lists.infradead.org>; Fri, 03 Dec 2021 05:43:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=caqYbeB05zXLjGSVGUuCqdI7HQ2llCrRlhq6cVUWiV0=;
- b=Ygqjtiv4kbuWrWiNOsYjnB0ekFqH7NOzoufn67zHKL7N9FW69D0gKais/bI+zxeFF9
- 4ahlcOaV35sfw4iwxmvyY5FLR5MMEPmms2RWsMPDd8TMtYLkAIP1wDpMsoF2VylH1eQg
- ZrqJBTF8yfExwx9kJaT8P9KyuHqRku+Smpuns=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=caqYbeB05zXLjGSVGUuCqdI7HQ2llCrRlhq6cVUWiV0=;
- b=ZOGOfo5eyfdkvDQJd62uV61kAZBxLmq0zYodFR7UdzFpT/cNm4tGfqO65yMfnEQ0g0
- ZnagkoT5hsyeQ85LLfnNVmOlXwH+3OVJefVHDByNqePmemuX/Kjy+Ozvk13vjWCZvNtj
- vWKtwX03+UkAVdUPDtvv9GmpCbqtxbstbwftiWvxcsCioGyWlvlumr2u35R/7MWZbyzT
- 1pNGL054A0HkKzomX2feMIpcE5voSBusePy/jJvwhV7adbu1bRCA9rfP5OhozqojGDn3
- AYMKPIf+46xFh8G6hXIOPvJbzBod8qPQMo93u9bKDIwM61anM5lz3XDvcQAV9RNwqFds
- OBJw==
-X-Gm-Message-State: AOAM532pM4ZXaN8HcHdzvoWG6sG2FQT145ha6g7sHdN0P17dwsn1IOJY
- 6g0px+D4XCmrurlOR4FXdkzqPw==
-X-Google-Smtp-Source: ABdhPJyCdv61zjdeT962tknIyH1upj+6b4k5awfM5eC95e/jSTjCO3VCvZ+1wiRUefnxexjNqJ3mAg==
-X-Received: by 2002:a05:6402:350e:: with SMTP id
- b14mr27416602edd.313.1638539023238; 
- Fri, 03 Dec 2021 05:43:43 -0800 (PST)
-Received: from gmail.com ([100.104.168.197])
- by smtp.gmail.com with ESMTPSA id e26sm2041942edr.82.2021.12.03.05.43.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Dec 2021 05:43:43 -0800 (PST)
-Date: Fri, 3 Dec 2021 14:43:25 +0100
-From: Ricardo Ribalda <ribalda@chromium.org>
-To: "kyrie.wu" <kyrie.wu@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, xia.jiang@mediatek.com,
- maoguang.meng@mediatek.com, srv_heupstream@mediatek.com,
- irui.wang@mediatek.com
-Subject: Re: [PATCH V6, 1/5] dt-bindings: mediatek: Add mediatek,
- mt8195-jpgenc compatible
-Message-ID: <Yaoe/Tk1wMyFoB1s@gmail.com>
-References: <1638501230-13417-1-git-send-email-kyrie.wu@mediatek.com>
- <1638501230-13417-2-git-send-email-kyrie.wu@mediatek.com>
+ id 1mt9Kv-00G7Ds-VB; Fri, 03 Dec 2021 14:14:56 +0000
+X-UUID: b72a0e7392c04132852ed3ec98d30048-20211203
+X-UUID: b72a0e7392c04132852ed3ec98d30048-20211203
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 485436168; Fri, 03 Dec 2021 07:14:48 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 3 Dec 2021 06:14:47 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 3 Dec 2021 22:14:39 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 3 Dec 2021 22:14:18 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <linux@armlinux.org.uk>, <matthias.bgg@gmail.com>,
+ <rmk+kernel@armlinux.org.uk>
+CC: <arnd@arndb.de>, <akpm@linux-foundation.org>, <linux@roeck-us.net>,
+ <rppt@kernel.org>, <wangkefeng.wang@huawei.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <yj.chiang@mediatek.com>,
+ <mark-pk.tsai@mediatek.com>
+Subject: [PATCH] arm: remove [_text, _stext) from kernel code resource
+Date: Fri, 3 Dec 2021 22:14:16 +0800
+Message-ID: <20211203141416.31121-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1638501230-13417-2-git-send-email-kyrie.wu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_054350_459891_C3B7A457 
-X-CRM114-Status: GOOD (  16.22  )
+X-CRM114-CacheID: sfid-20211203_061454_036064_1885B46F 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,53 +72,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-kyrie.wu wrote:
+Remove the [_text, _stext) from Kernel Code.
+Although there are some startup code in head.text, they
+are freed to the buddy system after kernel boot.
 
-> Add mediatek, mt8195-jpgenc compatible to binding document
-> 
-> Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
-> ---
-> V6: no change
+And we have memory protection mechanism use this
+which have false alarm when some other IPs doing dma
+if the dma page frame is in the [_text, _stext).
 
-Hi Kyrie
+Below are my iomem resource and reserved memory information:
+console:/ # grep Kernel /proc/iomem
+  20208000-219fffff : Kernel code
+  21b00000-21c2e76f : Kernel data
 
-Your patch does not seem to apply on top of linus or linus/next.
+console:/ # cat /sys/kernel/debug/memblock/reserved
+0: 0x20201000..0x20207fff
+1: 0x20300000..0x21c2e76f
 
-In linus/next they still have the .txt file:
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.txt?id=7afeac307a9561e3a93682c1e7eb22f918aa1187
+Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+---
+ arch/arm/kernel/setup.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-What are you using?
+diff --git a/arch/arm/kernel/setup.c b/arch/arm/kernel/setup.c
+index 284a80c0b6e1..85ffc9501e38 100644
+--- a/arch/arm/kernel/setup.c
++++ b/arch/arm/kernel/setup.c
+@@ -851,7 +851,7 @@ static void __init request_standard_resources(const struct machine_desc *mdesc)
+ 	struct resource *res;
+ 	u64 i;
+ 
+-	kernel_code.start   = virt_to_phys(_text);
++	kernel_code.start   = virt_to_phys(_stext);
+ 	kernel_code.end     = virt_to_phys(__init_begin - 1);
+ 	kernel_data.start   = virt_to_phys(_sdata);
+ 	kernel_data.end     = virt_to_phys(_end - 1);
+-- 
+2.18.0
 
-Thanks
-
-
-> ---
->  Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> index fcd9b82..e93ccf5 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek-jpeg-encoder.yaml
-> @@ -18,6 +18,9 @@ properties:
->        - enum:
->            - mediatek,mt2701-jpgenc
->            - mediatek,mt8183-jpgenc
-> +          - mediatek,mt8195-jpgenc
-> +          - mediatek,mt8195-jpgenc0
-> +          - mediatek,mt8195-jpgenc1
->        - const: mediatek,mtk-jpgenc
->    reg:
->      maxItems: 1
-> -- 
-> 2.6.4
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
