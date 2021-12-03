@@ -4,103 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA7C3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 08:41:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45418C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 11:34:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IsXo6x9S67AY9Fx5iaPHBuvQTBUkdzk0IoPeUlYsd4A=; b=yoWXxaa+2/v6aE
-	biSE3Lpv/dJyamRF/dY0VlTVeG4coumonohX6xTC1y2vrqV8OYcV7eQJOMVektFGrzA38Ym2VXzY2
-	4WCJwhRA5BT6zCfU+/ZfC2Q4CF8MygPK/C7ULaQ417Mmae0SOt7MWxjGH/ZA72VUToBDI5UGf/Dvg
-	U5AddESkLh8MYodgL7LZ0nABfEfTk+eFY7iI8Tw/kwvJdocRA0nmY2PSZ2+8Xvud0ujWkwWlmsoBT
-	a+CeyulkHDXfp5C5MGmQZyhb7zzrrTon2OEBn0DgDVVWxokO40Y9loqXpUumCom3y63j5KZ7VwYb6
-	rCJ7R5ZIUOcq/+VzYx/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Vu8j9ne3yoDryACfIVL8Kt2L95ps1tQhvCgZz7k4UGk=; b=KNsjx6TI8jbniv
+	RPtEhGJafYlc0QY9VIdjoxYRpKgnnn/5rryOGQLVc3DOYwMhZ6wdKqUwBDi6a9W4FeEIIBJR9hN8d
+	WGznxXYq0uyVB7PU/3ZeP9X5P5wVz+CMw2dwelPcOLQwlULAEzIsv0GxSYEuleAvMs+vjylIFMsXM
+	knKEQ7n9kZOaTtjl1umqmJosqxz4oxCANEraFaOe7U2+QjezwSWVCod8W3RHhFWEk1e46/BbBw5jJ
+	YPFqLhTaY3o1Tkwlqkmt8z25wm6fVSSCogj9n1cIKP+2XnSSh+UaWBj3djncncLYYpn83MtZ+5Z2r
+	/o+391S1YD14aMUv9MDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mt489-00Erz2-Rw; Fri, 03 Dec 2021 08:41:21 +0000
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+	id 1mt6pZ-00FNf3-1x; Fri, 03 Dec 2021 11:34:21 +0000
+Received: from nbd.name ([2a01:4f8:221:3d45::2])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mt47x-00ErvQ-Bs
- for linux-mediatek@lists.infradead.org; Fri, 03 Dec 2021 08:41:11 +0000
-Received: by mail-ed1-x531.google.com with SMTP id l25so8366818eda.11
- for <linux-mediatek@lists.infradead.org>; Fri, 03 Dec 2021 00:41:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=uLBHn9jsbKV7jZYY7Dm+t8lPDQRTZnoOfAaLgWh49GU=;
- b=LsIAHi4O7+rAKszJKyJ/QwZwolqgX7Xp85HCfWi/OAlf7oOjExVQVB3A1uF6oJMxXi
- gPosTZ3PyRq9IbJKMX4ESqDGYZZYcom4XQ8JtyMRl5tOE7xlwAkd4FpJbONadp6pWo7I
- oUoB99whrPg0HGUqiRetXBExiz97qDkf5NdxXb1GpetgxbWitUxWw81WWVuMwB7DeHg4
- F4fsE0Im8ySC6EvPdTGuYxXIdnTwT10W+OMVEHRanF7YSviRe6CvO4rDs/Sfax7qLy0G
- GQ8KIQPRWvs0w82uwlN5lRnk2skx92g4UPLasKF6asjvNdNubK/yYeFyTDsn7OcD+219
- BK3Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=uLBHn9jsbKV7jZYY7Dm+t8lPDQRTZnoOfAaLgWh49GU=;
- b=yP4R65uK+r1hfxxp1KNCBibthC84DlCIFLOsV2be5D631vJFF8oAcxJwpUtRhHSAiv
- Lvc4eajBDzeZFTMRchkvb6X9iduIoPIZOXFO0zNUJ0PclcWMoYDsYgZaJ/gwDTCkaLLN
- Ia6k1dQGsBqUVnPOZp1UgDFD2VfDYR9gHRko+jJ35fqCLvU4R/5Ejys+oNz28Et2YmjE
- 1Vu1y42evf78ZxvEwYSGnSftVt822TV68w8IVXSRA1NMuygyph8xPGGg/2MLwFqi39zt
- G4RS3jpCCih0eLk5uAoNeA4mIfYf0E3ZUi9d3rI/4L+6OuJNYTsgf6Mt2XXxShJ96mzY
- vlkg==
-X-Gm-Message-State: AOAM533t6dMIArpItD1/aUnXHHK+zqjBy+xTE1e9j9ThSIxxb3kO9/0j
- j50BEvPExy5ci4OaTiX+R/Z5k5BbLHTewdhL5uY2BQ==
-X-Google-Smtp-Source: ABdhPJzNHiauf+pMC5f/US+c9OIXcWbcKMNg90ABw6xCvQOgNu83JV2BIOiQy03TdGH6uVMTEr4y57dSuqO0jiYbpps=
-X-Received: by 2002:a17:907:75f0:: with SMTP id
- jz16mr22268827ejc.77.1638520866276; 
- Fri, 03 Dec 2021 00:41:06 -0800 (PST)
+ id 1mt6or-00FNEK-TD; Fri, 03 Dec 2021 11:33:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
+ s=20160729; h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject
+ :Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
+ Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+ In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=CUXZZBaL+eOeO8i2hg4qDJ69zJLU+/ibMTfxquWV6ow=; b=KeKGmfsVAgO9oQfeTx/86o0WdK
+ N+fGh4ywj5PkJIY4DmZCZBufaRy3bnmO9E21x10TkyFH+dr8QBt8XK5aGAz1mJyj7Hfe1SEj6DarA
+ n70vnapbwdcZAvO+4ODKyPUSuhhB98FNKgPhNn0jXRzAD/ONemI1kPYiu7rMAtVjRnx0=;
+Received: from p54ae943f.dip0.t-ipconnect.de ([84.174.148.63]
+ helo=localhost.localdomain)
+ by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.89) (envelope-from <nbd@nbd.name>)
+ id 1mt6oo-0004Ez-1U; Fri, 03 Dec 2021 12:33:34 +0100
+From: Felix Fietkau <nbd@nbd.name>
+To: linux-arm-kernel@lists.infradead.org,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: john@phrozen.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v6 00/14] Add support for Airoha EN7523 SoC
+Date: Fri,  3 Dec 2021 12:33:17 +0100
+Message-Id: <20211203113331.20510-1-nbd@nbd.name>
+X-Mailer: git-send-email 2.30.1
 MIME-Version: 1.0
-References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Fri, 3 Dec 2021 09:40:55 +0100
-Message-ID: <CAMRc=Md-TKUETLzf41D2KeQODac153_AumMTW4928XfJ70GRxQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
- the drivers
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Marc Zyngier <maz@kernel.org>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Chunyan Zhang <chunyan.zhang@unisoc.com>, 
- Baruch Siach <baruch@tkos.co.il>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, Jianqun Xu <jay.xu@rock-chips.com>, 
- Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- patches@opensource.cirrus.com, 
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
- linux-power <linux-power@fi.rohmeurope.com>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- linux-pwm@vger.kernel.org, 
- Linux-OMAP <linux-omap@vger.kernel.org>, linux-unisoc@lists.infradead.org, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
- Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
- Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>, 
- Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_004109_437616_2FEFA4AC 
-X-CRM114-Status: GOOD (  13.84  )
+X-CRM114-CacheID: sfid-20211203_033338_184019_C84E5DBB 
+X-CRM114-Status: GOOD (  11.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,26 +67,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> GPIO library does copy the of_node from the parent device of
-> the GPIO chip, there is no need to repeat this in the individual
-> drivers. Remove these assignment all at once.
->
-> For the details one may look into the of_gpio_dev_init() implementation.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
+This patchset adds support for the Airoha EN7523 SoC, intended primarily
+for xPON/xDSL routers.
 
-I have a bad feeling about this but I've gone through the drivers in
-this patch and it seems like you don't update any of the drivers that
-use multiple child OF nodes so I can't really point out any obvious
-bug.
+Felix Fietkau (4):
+  clk: en7523: Add clock driver for Airoha EN7523 SoC
+  ARM: dts: add clock support for Airoha EN7523
+  PCI: mediatek: allow selecting controller driver for airoha arch
+  ARM: dts: Add PCIe support for Airoha EN7523
 
-I have another change I'm working on that's related, let me send it shortly.
+John Crispin (10):
+  dt-bindings: Add vendor prefix for Airoha
+  dt-bindings: arm: airoha: Add binding for EN7523 SoC and EVB
+  ARM: dts: Add basic support for Airoha EN7523
+  ARM: Add basic support for Airoha EN7523 SoC
+  ARM: multi_v7_defconfig: Add support for Airoha EN7523 SoC
+  dt-bindings: Add en7523-scu device tree binding documentation
+  dt-bindings: PCI: Add support for Airoha EN7532
+  dt-bindings: arm: airoha: Add binding for Airoha GPIO controller
+  gpio: Add support for Airoha EN7523 GPIO controller
+  ARM: dts: add GPIO support for Airoha EN7523
 
-Bart
+ .../devicetree/bindings/arm/airoha.yaml       |  28 ++
+ .../bindings/clock/airoha,en7523-scu.yaml     |  58 +++
+ .../bindings/gpio/airoha,en7523-gpio.yaml     |  67 ++++
+ .../devicetree/bindings/pci/mediatek-pcie.txt |   1 +
+ .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+ arch/arm/Kconfig                              |  12 +
+ arch/arm/boot/dts/Makefile                    |   2 +
+ arch/arm/boot/dts/en7523-evb.dts              |  43 +++
+ arch/arm/boot/dts/en7523.dtsi                 | 202 ++++++++++
+ arch/arm/configs/multi_v7_defconfig           |   1 +
+ drivers/clk/Kconfig                           |   9 +
+ drivers/clk/Makefile                          |   1 +
+ drivers/clk/clk-en7523.c                      | 350 ++++++++++++++++++
+ drivers/gpio/Kconfig                          |   9 +
+ drivers/gpio/Makefile                         |   1 +
+ drivers/gpio/gpio-en7523.c                    | 134 +++++++
+ drivers/pci/controller/Kconfig                |   2 +-
+ include/dt-bindings/clock/en7523-clk.h        |  17 +
+ 18 files changed, 938 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/arm/airoha.yaml
+ create mode 100644 Documentation/devicetree/bindings/clock/airoha,en7523-scu.yaml
+ create mode 100644 Documentation/devicetree/bindings/gpio/airoha,en7523-gpio.yaml
+ create mode 100644 arch/arm/boot/dts/en7523-evb.dts
+ create mode 100644 arch/arm/boot/dts/en7523.dtsi
+ create mode 100644 drivers/clk/clk-en7523.c
+ create mode 100644 drivers/gpio/gpio-en7523.c
+ create mode 100644 include/dt-bindings/clock/en7523-clk.h
+
+-- 
+2.30.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
