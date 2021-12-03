@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A0BFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 23:34:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86BAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 23:35:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XDehEjJqj+lFi4RVmiekMtrcxmys2GZOIkGY6IHMP1A=; b=2LNrgyBHJKtBif
-	RNDL0E+GLwBNhmAR7Sc5wezhLudER81j/CE1zt6tjVBxX5CJC6OCsTfqi91Tm0db/5XsNvWevDF59
-	aKdFj2WAOc5Z0JA0061jiRToPfn7Pc2Je5AZhjjgtGlQmQGtM+c4T7n0ek4zgrIMQB732pzNqQSQD
-	TzD969WnAKLpy4PuQ4Krn3HVIbJ/TIDm2HYK/gEZLGhRFBYeDnHZaIqXR8H8OV4R43TZxtZ8xcd9h
-	KQWy83ybCgSIPsOEspaQqXioy0fvAWYINdnhui8o7dols9D82K91SKfGvmCH0hF2vTSUq6pqzYgZ3
-	GtuY5lZWOSCtBI/5uiCA==;
+	List-Owner; bh=TEEKmE9HGLIshJnmu/2fZc0aCqWf1+eCn7QlBdEj4aA=; b=EG8LjSKjSqdycG
+	s/ldsdea/JAJJY1BFs9o6Kzj3FMPF46itL0lzyKTavTpF1QN6QaF2GFOK9Mn4WA4na2B/RWVEYHs8
+	DzWHoLy2LKRbVl4lhHFbdBgqJPstUPKSPJHSa5MYWTvXkOySTFI48PE289Nfe4rh5CqbuAlBQOCJr
+	b3A/SyYoEDFmyFMIZ3XWmyAxq+mqsocmsh94A7JsvQMlG4bbnoBArpTYL19q0FCt/0x9iAXjC5/Pi
+	LvJujExNNRpOOjqT0GepCe+u8G5XfrHbSh7skYqq1s22Lq5kAdjVAaZTXpO5hNpZ3sC0LD3x1cLqd
+	sK5QH6Ia3wndJrernUHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mtI4h-00H9D5-TA; Fri, 03 Dec 2021 23:34:43 +0000
-Received: from mail-ot1-f42.google.com ([209.85.210.42])
+	id 1mtI4v-00H9HT-2M; Fri, 03 Dec 2021 23:34:57 +0000
+Received: from mail-ot1-f53.google.com ([209.85.210.53])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mtI4T-00H96z-5i; Fri, 03 Dec 2021 23:34:30 +0000
-Received: by mail-ot1-f42.google.com with SMTP id
- 47-20020a9d0332000000b005798ac20d72so5341237otv.9; 
- Fri, 03 Dec 2021 15:34:28 -0800 (PST)
+ id 1mtI4V-00H97E-6R; Fri, 03 Dec 2021 23:34:32 +0000
+Received: by mail-ot1-f53.google.com with SMTP id
+ x19-20020a9d7053000000b0055c8b39420bso5431586otj.1; 
+ Fri, 03 Dec 2021 15:34:30 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
  :message-id;
- bh=GE0Zk+eX8sZDvupP4sJ6Ohc20e/z8kxjxl7o4izocKY=;
- b=pb7lT5JiqA/oO3bTaFjP8HPbcXiONji19MgzuXGADs6LoiUrU+3WB8dDah9ZHPEIVA
- 2DpAXff1+cT7TOcW7JOvxWpXM8dGLs9ch7oK3yQ4Nwxbwx/7Ugocu+XOV/rhgTT+VnND
- Bco3pl4Cg5KEyJYnwEaYYBOhYfZQ45WYK6GFkjJA23bkCW6g4dXgYye3hgC1ef5zBzLX
- 9yUGihvutC6w7xT/uEzuVAK2Wjibd6TvP1R2ASPCw4KPsPWFdSf42+fbHiBVXSBd2e3A
- l9fbTfM7fOav+5LlrxGlLpJ6tpfJuzQ1TiWahqH03LJWn+rAJ5kRz3fx/s3Jn7AdVtce
- jq0w==
-X-Gm-Message-State: AOAM531OEM5VsEsX6KoMaKm+/k3FKeJsfNrm0VOLDKO/kNRZChjBudRW
- 6G9nWnilmRNrbWirVikEOw==
-X-Google-Smtp-Source: ABdhPJy3PCupkz+n/wmG78XL1Oz6xk1rXf5k7wFa5WXphozZiozk+A42lWVF0CAkCDKJY7uEHFyW9w==
-X-Received: by 2002:a9d:2486:: with SMTP id z6mr19250720ota.210.1638574468140; 
- Fri, 03 Dec 2021 15:34:28 -0800 (PST)
+ bh=YiLKOo6UjENxJNlcLLad7PuFG7LasjEMP8sQf/vfoCY=;
+ b=Sf/Oq6cDmGKYtAoPcw4iDGwUf809NnjFztdTzIF/ivxFBJGX4fAfKhUhWw/vPKSEM+
+ bTKjZjPTt/6k3ndVkdrnrUdIyk8nr0o1fe9apCOVTjGVt3J3zc/Q5LDspcT2ldQTdcw4
+ wtzQG/sG0cIRgW07zfDTEE5Za/mH0/zVtOQtKgWkYTT9Xrg1radmqlaeY+Vx+b0mO4uQ
+ PJo0+t3XAe67UDmrRxGCdH/WJO4GnWyAqGSC0omA8juceu9K3sO5qy+fhitS5zIfUBbO
+ U9gzmcuflm4+s1mp4fMVrt3VZiAGMIFsBD5I9kdS+A1avsEcDCXqNL1v1if+b/8+0uPG
+ uSiA==
+X-Gm-Message-State: AOAM531U4usFshlPy9OxYtaTfYt94iRo6qCjZx4ghXKa0AosnoP7MI1x
+ dUOWa+TnX0fvjo8fHQcnGw==
+X-Google-Smtp-Source: ABdhPJzaChXSNEtZQrVDuuBqE4OOoH38CUdgHcZapsCQUiGSTfOcqkFwFK52oIJ1fUrqoQYuBMT/Hw==
+X-Received: by 2002:a9d:7a5a:: with SMTP id z26mr19045138otm.297.1638574470251; 
+ Fri, 03 Dec 2021 15:34:30 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id c41sm939822otu.7.2021.12.03.15.34.26
+ by smtp.gmail.com with ESMTPSA id o19sm1051377oiw.22.2021.12.03.15.34.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Dec 2021 15:34:27 -0800 (PST)
-Received: (nullmailer pid 1043011 invoked by uid 1000);
+ Fri, 03 Dec 2021 15:34:29 -0800 (PST)
+Received: (nullmailer pid 1043013 invoked by uid 1000);
  Fri, 03 Dec 2021 23:34:15 -0000
 From: Rob Herring <robh@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Jakub Kicinski <kuba@kernel.org>, Jose Abreu <joabreu@synopsys.com>,
- linux-arm-kernel@lists.infradead.org,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, srv_heupstream@mediatek.com,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- dkirjanov@suse.de, netdev@vger.kernel.org,
- linux-stm32@st-md-mailman.stormreply.com,
- Matthias Brugger <matthias.bgg@gmail.com>,
- angelogioacchino.delregno@collabora.com, davem@davemloft.net,
- macpaul.lin@mediatek.com, Rob Herring <robh+dt@kernel.org>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, devicetree@vger.kernel.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>
-In-Reply-To: <20211203063418.14892-5-biao.huang@mediatek.com>
-References: <20211203063418.14892-1-biao.huang@mediatek.com>
- <20211203063418.14892-5-biao.huang@mediatek.com>
-Subject: Re: [PATCH v4 4/7] net-next: dt-bindings: dwmac: Convert
- mediatek-dwmac to DT schema
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
+ Tomasz Figa <tfiga@chromium.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Joerg Roedel <joro@8bytes.org>, yi.kuo@mediatek.com, anan.sun@mediatek.com,
+ Will Deacon <will@kernel.org>, devicetree@vger.kernel.org,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
+ linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
+ anthony.huang@mediatek.com, lc.kan@mediatek.com, srv_heupstream@mediatek.com,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
+ youlin.pei@mediatek.com
+In-Reply-To: <20211203064027.14993-2-yong.wu@mediatek.com>
+References: <20211203064027.14993-1-yong.wu@mediatek.com>
+ <20211203064027.14993-2-yong.wu@mediatek.com>
+Subject: Re: [PATCH 1/4] dt-bindings: memory: mediatek: Correct the minItems
+ of clk for larbs
 Date: Fri, 03 Dec 2021 17:34:15 -0600
-Message-Id: <1638574455.270026.1043010.nullmailer@robh.at.kernel.org>
+Message-Id: <1638574455.281202.1043012.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_153429_239897_C26143E5 
-X-CRM114-Status: GOOD (  13.30  )
+X-CRM114-CacheID: sfid-20211203_153431_260734_1FD741E2 
+X-CRM114-Status: GOOD (  13.63  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,22 +89,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 03 Dec 2021 14:34:15 +0800, Biao Huang wrote:
-> Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
-> And there are some changes in .yaml than .txt, others almost keep the same:
->   1. compatible "const: snps,dwmac-4.20".
->   2. delete "snps,reset-active-low;" in example, since driver remove this
->      property long ago.
->   3. add "snps,reset-delay-us = <0 10000 10000>" in example.
->   4. the example is for rgmii interface, keep related properties only.
+On Fri, 03 Dec 2021 14:40:24 +0800, Yong Wu wrote:
+> If a platform's larb support gals, there will be some larbs have a one
+> more "gals" clock while the others still only need "apb"/"smi" clocks.
+> then the minItems is 2 and the maxItems is 3.
 > 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> Fixes: 27bb0e42855a ("dt-bindings: memory: mediatek: Convert SMI to DT schema")
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > ---
->  .../bindings/net/mediatek-dwmac.txt           |  91 ----------
->  .../bindings/net/mediatek-dwmac.yaml          | 156 ++++++++++++++++++
->  2 files changed, 156 insertions(+), 91 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
->  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+>  .../bindings/memory-controllers/mediatek,smi-larb.yaml          | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
 
 Running 'make dtbs_check' with the schema in this patch gives the
@@ -115,23 +108,80 @@ incorrect. These may not be new warnings.
 Note that it is not yet a requirement to have 0 warnings for dtbs_check.
 This will change in the future.
 
-Full log is available here: https://patchwork.ozlabs.org/patch/1563125
+Full log is available here: https://patchwork.ozlabs.org/patch/1563127
 
 
-ethernet@1101c000: clock-names: ['axi', 'apb', 'mac_main', 'ptp_ref'] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+larb@14016000: 'mediatek,larb-id' is a required property
+	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
 
-ethernet@1101c000: clocks: [[27, 34], [27, 37], [6, 154], [6, 155]] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+larb@14017000: clock-names: ['apb', 'smi'] is too short
+	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dt.yaml
 
-ethernet@1101c000: compatible: ['mediatek,mt2712-gmac'] does not contain items matching the given schema
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+larb@15001000: 'mediatek,larb-id' is a required property
+	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
 
-ethernet@1101c000: compatible: 'oneOf' conditional failed, one must be fixed:
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+larb@16010000: clock-names: ['apb', 'smi'] is too short
+	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dt.yaml
 
-ethernet@1101c000: Unevaluated properties are not allowed ('compatible', 'reg', 'interrupts', 'interrupt-names', 'mac-address', 'clock-names', 'clocks', 'power-domains', 'snps,axi-config', 'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,txpbl', 'snps,rxpbl', 'clk_csr', 'phy-mode', 'phy-handle', 'snps,reset-gpio', 'mdio' were unexpected)
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+larb@16010000: 'mediatek,larb-id' is a required property
+	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
+
+larb@17010000: clock-names: ['apb', 'smi'] is too short
+	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dt.yaml
+	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dt.yaml
 
 
 _______________________________________________
