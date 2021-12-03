@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D92F7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 06:51:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B43C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 06:51:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4Cfho7bcO8sWt1oqaPOnOKNKH9/OB7aDADq9YG0DXig=; b=xk+U5o2nLzmqrU
-	Ti1UytA4vDG3tAFAm7oujV/r1uYAhnvbLldJ3KAhdhiGJ5xf1JSeeRTcgTbNftE2ZPwhBFKivWllG
-	lsjChtwqxifqT/GPwcHDtT5/tKAamM0OSWCx5aPaUwLnpl8bQkCX4jVpBOIz0yVRSDA1/wB71Y4Cq
-	CvUZwQbNEB8/B6dRepxjjyS4S45vFfh1D8hr4AIb3eGcZLg4cq01V9CxGqLqB1zqD8Ic726gVil8K
-	yYMTkYosAkBBy9frlUveSmi5LGKkTbs7l7BCaxsxWw32GEUcKhPXj358F9/2ezsusJK7OpfSV8J47
-	c756H0nxbiKGp/8R1W9w==;
+	List-Owner; bh=LC5E15XDTBbNWSlZuCfNj3CAX8ioUxPm2WLnvTDODZk=; b=kbe2NgInd1HwG0
+	poB2Ethn/M4OajTYRLuSymoiJgXBgKvYxE2WFJ3vE4UH44oYKIFuSxIJBWlWbzZ5nTfbi449kQBLg
+	gSBBcK+y8c2pH2qkzByhlbiCurVmyHYkqHk6GaRO55CqEOcUiqLhXsuLE8lN5n1Zyjq4cuhsJ48qy
+	FJ+e7Hk+z9dH6/F+LnQ/9BA3N1L8+3ndLdKahxNsQJ1ga6r9SZHApBKTLdyL7wVM2eBWd2ZCr3qfO
+	sB6TBv4Tslp0qfIkX1rwh0dHaoW+AO9DHsl1hhUarMP0usGVussP8otTS6i9AKLOSqHb3+zeBjrae
+	oUdZWEGvpRRsfRpre1pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mt2Pj-00EcYL-6C; Fri, 03 Dec 2021 06:51:23 +0000
+	id 1mt2Pk-00EcYb-8G; Fri, 03 Dec 2021 06:51:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mt2Pg-00EcWR-7s; Fri, 03 Dec 2021 06:51:21 +0000
-X-UUID: cecb3e31d2af4c23b53b9d9ecc660fbc-20211202
-X-UUID: cecb3e31d2af4c23b53b9d9ecc660fbc-20211202
+ id 1mt2Pg-00EcWG-7u; Fri, 03 Dec 2021 06:51:21 +0000
+X-UUID: f4641ed4ca8b4832bfe055ed8477e781-20211202
+X-UUID: f4641ed4ca8b4832bfe055ed8477e781-20211202
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 643749207; Thu, 02 Dec 2021 23:51:15 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 41538517; Thu, 02 Dec 2021 23:51:15 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Dec 2021 22:41:30 -0800
+ 15.0.1497.2; Thu, 2 Dec 2021 22:41:13 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 3 Dec 2021 14:41:29 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 3 Dec 2021 14:41:11 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 3 Dec 2021 14:41:28 +0800
+ 15.0.1497.2 via Frontend Transport; Fri, 3 Dec 2021 14:41:10 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -51,17 +51,17 @@ CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
  <iommu@lists.linux-foundation.org>, <yong.wu@mediatek.com>,
  <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <lc.kan@mediatek.com>,
  <yi.kuo@mediatek.com>, <anthony.huang@mediatek.com>
-Subject: [PATCH 4/4] memory: mtk-smi: mt8186: Add smi support
-Date: Fri, 3 Dec 2021 14:40:27 +0800
-Message-ID: <20211203064027.14993-5-yong.wu@mediatek.com>
+Subject: [PATCH 2/4] dt-bindings: memory: mediatek: Add mt8186 support
+Date: Fri, 3 Dec 2021 14:40:25 +0800
+Message-ID: <20211203064027.14993-3-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211203064027.14993-1-yong.wu@mediatek.com>
 References: <20211203064027.14993-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211202_225120_327319_FCAD774A 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20211202_225120_338912_9976A244 
+X-CRM114-Status: GOOD (  12.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,58 +78,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186 SMI support.
+Add mt8186 smi support in the bindings.
 
 Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/memory/mtk-smi.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ .../bindings/memory-controllers/mediatek,smi-common.yaml      | 4 +++-
+ .../bindings/memory-controllers/mediatek,smi-larb.yaml        | 3 +++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index 4b59b28e4d73..29d7cd1cc8f8 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -355,6 +355,11 @@ static const struct mtk_smi_larb_gen mtk_smi_larb_mt8183 = {
- 				      /* IPU0 | IPU1 | CCU */
- };
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+index 3a82b0b27fa0..fbe5077408d8 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
+@@ -16,7 +16,7 @@ description: |
+   MediaTek SMI have two generations of HW architecture, here is the list
+   which generation the SoCs use:
+   generation 1: mt2701 and mt7623.
+-  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8192 and mt8195.
++  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8186, mt8192 and mt8195.
  
-+static const struct mtk_smi_larb_gen mtk_smi_larb_mt8186 = {
-+	.config_port                = mtk_smi_larb_config_port_gen2_general,
-+	.flags_general	            = MTK_SMI_FLAG_SLEEP_CTL,
-+};
-+
- static const struct mtk_smi_larb_gen mtk_smi_larb_mt8192 = {
- 	.config_port                = mtk_smi_larb_config_port_gen2_general,
- };
-@@ -372,6 +377,7 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
- 	{.compatible = "mediatek,mt8167-smi-larb", .data = &mtk_smi_larb_mt8167},
- 	{.compatible = "mediatek,mt8173-smi-larb", .data = &mtk_smi_larb_mt8173},
- 	{.compatible = "mediatek,mt8183-smi-larb", .data = &mtk_smi_larb_mt8183},
-+	{.compatible = "mediatek,mt8186-smi-larb", .data = &mtk_smi_larb_mt8186},
- 	{.compatible = "mediatek,mt8192-smi-larb", .data = &mtk_smi_larb_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-larb", .data = &mtk_smi_larb_mt8195},
- 	{}
-@@ -575,6 +581,12 @@ static const struct mtk_smi_common_plat mtk_smi_common_mt8183 = {
- 		    F_MMU1_LARB(7),
- };
+   There's slight differences between the two SMI, for generation 2, the
+   register which control the iommu port is at each larb's register base. But
+@@ -35,6 +35,7 @@ properties:
+           - mediatek,mt8167-smi-common
+           - mediatek,mt8173-smi-common
+           - mediatek,mt8183-smi-common
++          - mediatek,mt8186-smi-common
+           - mediatek,mt8192-smi-common
+           - mediatek,mt8195-smi-common-vdo
+           - mediatek,mt8195-smi-common-vpp
+@@ -127,6 +128,7 @@ allOf:
+           enum:
+             - mediatek,mt6779-smi-common
+             - mediatek,mt8183-smi-common
++            - mediatek,mt8186-smi-common
+             - mediatek,mt8192-smi-common
+             - mediatek,mt8195-smi-common-vdo
+             - mediatek,mt8195-smi-common-vpp
+diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+index a1402f3b8344..e019990f892a 100644
+--- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
++++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
+@@ -23,6 +23,7 @@ properties:
+           - mediatek,mt8167-smi-larb
+           - mediatek,mt8173-smi-larb
+           - mediatek,mt8183-smi-larb
++          - mediatek,mt8186-smi-larb
+           - mediatek,mt8192-smi-larb
+           - mediatek,mt8195-smi-larb
  
-+static const struct mtk_smi_common_plat mtk_smi_common_mt8186 = {
-+	.type     = MTK_SMI_GEN2,
-+	.has_gals = true,
-+	.bus_sel  = F_MMU1_LARB(1) | F_MMU1_LARB(4) | F_MMU1_LARB(7),
-+};
-+
- static const struct mtk_smi_common_plat mtk_smi_common_mt8192 = {
- 	.type     = MTK_SMI_GEN2,
- 	.has_gals = true,
-@@ -609,6 +621,7 @@ static const struct of_device_id mtk_smi_common_of_ids[] = {
- 	{.compatible = "mediatek,mt8167-smi-common", .data = &mtk_smi_common_gen2},
- 	{.compatible = "mediatek,mt8173-smi-common", .data = &mtk_smi_common_gen2},
- 	{.compatible = "mediatek,mt8183-smi-common", .data = &mtk_smi_common_mt8183},
-+	{.compatible = "mediatek,mt8186-smi-common", .data = &mtk_smi_common_mt8186},
- 	{.compatible = "mediatek,mt8192-smi-common", .data = &mtk_smi_common_mt8192},
- 	{.compatible = "mediatek,mt8195-smi-common-vdo", .data = &mtk_smi_common_mt8195_vdo},
- 	{.compatible = "mediatek,mt8195-smi-common-vpp", .data = &mtk_smi_common_mt8195_vpp},
+@@ -75,6 +76,7 @@ allOf:
+         compatible:
+           enum:
+             - mediatek,mt8183-smi-larb
++            - mediatek,mt8186-smi-larb
+             - mediatek,mt8195-smi-larb
+ 
+     then:
+@@ -109,6 +111,7 @@ allOf:
+               - mediatek,mt2712-smi-larb
+               - mediatek,mt6779-smi-larb
+               - mediatek,mt8167-smi-larb
++              - mediatek,mt8186-smi-larb
+               - mediatek,mt8192-smi-larb
+               - mediatek,mt8195-smi-larb
+ 
 -- 
 2.18.0
 
