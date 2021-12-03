@@ -4,64 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B43C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 06:51:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA7C3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 08:41:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LC5E15XDTBbNWSlZuCfNj3CAX8ioUxPm2WLnvTDODZk=; b=kbe2NgInd1HwG0
-	poB2Ethn/M4OajTYRLuSymoiJgXBgKvYxE2WFJ3vE4UH44oYKIFuSxIJBWlWbzZ5nTfbi449kQBLg
-	gSBBcK+y8c2pH2qkzByhlbiCurVmyHYkqHk6GaRO55CqEOcUiqLhXsuLE8lN5n1Zyjq4cuhsJ48qy
-	FJ+e7Hk+z9dH6/F+LnQ/9BA3N1L8+3ndLdKahxNsQJ1ga6r9SZHApBKTLdyL7wVM2eBWd2ZCr3qfO
-	sB6TBv4Tslp0qfIkX1rwh0dHaoW+AO9DHsl1hhUarMP0usGVussP8otTS6i9AKLOSqHb3+zeBjrae
-	oUdZWEGvpRRsfRpre1pg==;
+	List-Owner; bh=IsXo6x9S67AY9Fx5iaPHBuvQTBUkdzk0IoPeUlYsd4A=; b=yoWXxaa+2/v6aE
+	biSE3Lpv/dJyamRF/dY0VlTVeG4coumonohX6xTC1y2vrqV8OYcV7eQJOMVektFGrzA38Ym2VXzY2
+	4WCJwhRA5BT6zCfU+/ZfC2Q4CF8MygPK/C7ULaQ417Mmae0SOt7MWxjGH/ZA72VUToBDI5UGf/Dvg
+	U5AddESkLh8MYodgL7LZ0nABfEfTk+eFY7iI8Tw/kwvJdocRA0nmY2PSZ2+8Xvud0ujWkwWlmsoBT
+	a+CeyulkHDXfp5C5MGmQZyhb7zzrrTon2OEBn0DgDVVWxokO40Y9loqXpUumCom3y63j5KZ7VwYb6
+	rCJ7R5ZIUOcq/+VzYx/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mt2Pk-00EcYb-8G; Fri, 03 Dec 2021 06:51:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mt489-00Erz2-Rw; Fri, 03 Dec 2021 08:41:21 +0000
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mt2Pg-00EcWG-7u; Fri, 03 Dec 2021 06:51:21 +0000
-X-UUID: f4641ed4ca8b4832bfe055ed8477e781-20211202
-X-UUID: f4641ed4ca8b4832bfe055ed8477e781-20211202
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 41538517; Thu, 02 Dec 2021 23:51:15 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 2 Dec 2021 22:41:13 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 3 Dec 2021 14:41:11 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 3 Dec 2021 14:41:10 +0800
-From: Yong Wu <yong.wu@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
- Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux-foundation.org>, <yong.wu@mediatek.com>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <lc.kan@mediatek.com>,
- <yi.kuo@mediatek.com>, <anthony.huang@mediatek.com>
-Subject: [PATCH 2/4] dt-bindings: memory: mediatek: Add mt8186 support
-Date: Fri, 3 Dec 2021 14:40:25 +0800
-Message-ID: <20211203064027.14993-3-yong.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211203064027.14993-1-yong.wu@mediatek.com>
-References: <20211203064027.14993-1-yong.wu@mediatek.com>
+ id 1mt47x-00ErvQ-Bs
+ for linux-mediatek@lists.infradead.org; Fri, 03 Dec 2021 08:41:11 +0000
+Received: by mail-ed1-x531.google.com with SMTP id l25so8366818eda.11
+ for <linux-mediatek@lists.infradead.org>; Fri, 03 Dec 2021 00:41:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=uLBHn9jsbKV7jZYY7Dm+t8lPDQRTZnoOfAaLgWh49GU=;
+ b=LsIAHi4O7+rAKszJKyJ/QwZwolqgX7Xp85HCfWi/OAlf7oOjExVQVB3A1uF6oJMxXi
+ gPosTZ3PyRq9IbJKMX4ESqDGYZZYcom4XQ8JtyMRl5tOE7xlwAkd4FpJbONadp6pWo7I
+ oUoB99whrPg0HGUqiRetXBExiz97qDkf5NdxXb1GpetgxbWitUxWw81WWVuMwB7DeHg4
+ F4fsE0Im8ySC6EvPdTGuYxXIdnTwT10W+OMVEHRanF7YSviRe6CvO4rDs/Sfax7qLy0G
+ GQ8KIQPRWvs0w82uwlN5lRnk2skx92g4UPLasKF6asjvNdNubK/yYeFyTDsn7OcD+219
+ BK3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=uLBHn9jsbKV7jZYY7Dm+t8lPDQRTZnoOfAaLgWh49GU=;
+ b=yP4R65uK+r1hfxxp1KNCBibthC84DlCIFLOsV2be5D631vJFF8oAcxJwpUtRhHSAiv
+ Lvc4eajBDzeZFTMRchkvb6X9iduIoPIZOXFO0zNUJ0PclcWMoYDsYgZaJ/gwDTCkaLLN
+ Ia6k1dQGsBqUVnPOZp1UgDFD2VfDYR9gHRko+jJ35fqCLvU4R/5Ejys+oNz28Et2YmjE
+ 1Vu1y42evf78ZxvEwYSGnSftVt822TV68w8IVXSRA1NMuygyph8xPGGg/2MLwFqi39zt
+ G4RS3jpCCih0eLk5uAoNeA4mIfYf0E3ZUi9d3rI/4L+6OuJNYTsgf6Mt2XXxShJ96mzY
+ vlkg==
+X-Gm-Message-State: AOAM533t6dMIArpItD1/aUnXHHK+zqjBy+xTE1e9j9ThSIxxb3kO9/0j
+ j50BEvPExy5ci4OaTiX+R/Z5k5BbLHTewdhL5uY2BQ==
+X-Google-Smtp-Source: ABdhPJzNHiauf+pMC5f/US+c9OIXcWbcKMNg90ABw6xCvQOgNu83JV2BIOiQy03TdGH6uVMTEr4y57dSuqO0jiYbpps=
+X-Received: by 2002:a17:907:75f0:: with SMTP id
+ jz16mr22268827ejc.77.1638520866276; 
+ Fri, 03 Dec 2021 00:41:06 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Fri, 3 Dec 2021 09:40:55 +0100
+Message-ID: <CAMRc=Md-TKUETLzf41D2KeQODac153_AumMTW4928XfJ70GRxQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Marc Zyngier <maz@kernel.org>,
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Chunyan Zhang <chunyan.zhang@unisoc.com>, 
+ Baruch Siach <baruch@tkos.co.il>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ patches@opensource.cirrus.com, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
+ linux-power <linux-power@fi.rohmeurope.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ linux-pwm@vger.kernel.org, 
+ Linux-OMAP <linux-omap@vger.kernel.org>, linux-unisoc@lists.infradead.org, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+ Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211202_225120_338912_9976A244 
-X-CRM114-Status: GOOD (  12.53  )
+X-CRM114-CacheID: sfid-20211203_004109_437616_2FEFA4AC 
+X-CRM114-Status: GOOD (  13.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,74 +117,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186 smi support in the bindings.
+On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> GPIO library does copy the of_node from the parent device of
+> the GPIO chip, there is no need to repeat this in the individual
+> drivers. Remove these assignment all at once.
+>
+> For the details one may look into the of_gpio_dev_init() implementation.
+>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
 
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- .../bindings/memory-controllers/mediatek,smi-common.yaml      | 4 +++-
- .../bindings/memory-controllers/mediatek,smi-larb.yaml        | 3 +++
- 2 files changed, 6 insertions(+), 1 deletion(-)
+I have a bad feeling about this but I've gone through the drivers in
+this patch and it seems like you don't update any of the drivers that
+use multiple child OF nodes so I can't really point out any obvious
+bug.
 
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-index 3a82b0b27fa0..fbe5077408d8 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-common.yaml
-@@ -16,7 +16,7 @@ description: |
-   MediaTek SMI have two generations of HW architecture, here is the list
-   which generation the SoCs use:
-   generation 1: mt2701 and mt7623.
--  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8192 and mt8195.
-+  generation 2: mt2712, mt6779, mt8167, mt8173, mt8183, mt8186, mt8192 and mt8195.
- 
-   There's slight differences between the two SMI, for generation 2, the
-   register which control the iommu port is at each larb's register base. But
-@@ -35,6 +35,7 @@ properties:
-           - mediatek,mt8167-smi-common
-           - mediatek,mt8173-smi-common
-           - mediatek,mt8183-smi-common
-+          - mediatek,mt8186-smi-common
-           - mediatek,mt8192-smi-common
-           - mediatek,mt8195-smi-common-vdo
-           - mediatek,mt8195-smi-common-vpp
-@@ -127,6 +128,7 @@ allOf:
-           enum:
-             - mediatek,mt6779-smi-common
-             - mediatek,mt8183-smi-common
-+            - mediatek,mt8186-smi-common
-             - mediatek,mt8192-smi-common
-             - mediatek,mt8195-smi-common-vdo
-             - mediatek,mt8195-smi-common-vpp
-diff --git a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-index a1402f3b8344..e019990f892a 100644
---- a/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-+++ b/Documentation/devicetree/bindings/memory-controllers/mediatek,smi-larb.yaml
-@@ -23,6 +23,7 @@ properties:
-           - mediatek,mt8167-smi-larb
-           - mediatek,mt8173-smi-larb
-           - mediatek,mt8183-smi-larb
-+          - mediatek,mt8186-smi-larb
-           - mediatek,mt8192-smi-larb
-           - mediatek,mt8195-smi-larb
- 
-@@ -75,6 +76,7 @@ allOf:
-         compatible:
-           enum:
-             - mediatek,mt8183-smi-larb
-+            - mediatek,mt8186-smi-larb
-             - mediatek,mt8195-smi-larb
- 
-     then:
-@@ -109,6 +111,7 @@ allOf:
-               - mediatek,mt2712-smi-larb
-               - mediatek,mt6779-smi-larb
-               - mediatek,mt8167-smi-larb
-+              - mediatek,mt8186-smi-larb
-               - mediatek,mt8192-smi-larb
-               - mediatek,mt8195-smi-larb
- 
--- 
-2.18.0
+I have another change I'm working on that's related, let me send it shortly.
 
+Bart
 
 _______________________________________________
 Linux-mediatek mailing list
