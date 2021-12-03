@@ -4,82 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D87C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 15:50:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E28CBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 16:09:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=B+JZQdQsTXYJLKZx8/wb8GcUgN8/+S8fsUQpFox2bSM=; b=gSahzQ8efgtjMc
-	nbmE3DMT+ARIlSm6LmevvIiHMZBo3ZxV595xrfgCmuP+q+1EURiejDF1jsKUs3mFZum9NVzqZLDKC
-	0PSnb9tqwJboZntEJy2jMX+wJ3gSjmqnIhwKHKSSwqSlaXuUJgIw4w+gXmMpscajTojfP8XnfS8ni
-	+Tf++wfOG2GushzkrUkcdHXKOL21bj4wndG/tO2RGE8xSm/NiAOLzsd9MBcoVkiB4WblxCrY/cKUL
-	i2gQ1GiWZRDBGnL8YrP879ezGSxzyxGk6anpVPj+8RPDtYJl3gErUnq2I/nvVXyMRyvolLj4oGclA
-	8cZqU80vqAWTPIxKm1BA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kB8gXsco5aFnVa/ktHGC1gwnXY8V1jie/QS1Izh6nEI=; b=DKDUtO44EzYEY6q/54lq7Q0MFt
+	UOyiY/8NHEcUi4S7fSWT9SMOs7GIckmGvqkushW36HPQs5JjP00LvscSWo4WsyzABYpTEV8+xy5am
+	ZkffuuIWEJ459ssNAlg6QuEEpLnntLBwzxeqwNWmgsy+JbcDnoXI+HSX8iOVRgbzT5QUJae2yQ1BQ
+	cekjj0/tIgPv9I6KcPP9Xtx0ei2HhWfPHCSJjP5OXIqDIvNKi6H8625VEsIkNgOJDvO1QuCAr8HXQ
+	WoLZRAnkpZQrlVT8Sj9nEt/Dh0BMbjBScMOSOvXpqvFjInqJb4JFpUoA79XIylG1lI9zOvXTVRKeu
+	q4Gvfkjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mtApE-00GRLd-9q; Fri, 03 Dec 2021 15:50:16 +0000
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+	id 1mtB7o-00GTru-A3; Fri, 03 Dec 2021 16:09:28 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mtApA-00GRKL-W7
- for linux-mediatek@lists.infradead.org; Fri, 03 Dec 2021 15:50:14 +0000
-Received: by mail-ed1-x52a.google.com with SMTP id l25so13189169eda.11
- for <linux-mediatek@lists.infradead.org>; Fri, 03 Dec 2021 07:50:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=xhzT2AVroq8VJRWan/yXvxnkVf1rq+0YhZQ2XSQjofo=;
- b=N8jtmHDIftbug5wgGfKz8p958a1GW+VFyIp37Fh0U3TL7IqyAHAULFo871EmdkopSY
- 3JgsSQAGZYDBnW3ptzQx3asgxq0yuumjQAkk4/dl5ArQC0UtDXGDgRkQ4p6JnF0QT3tB
- QlgHupZp2OT/17GMR0SVuo/xMANnHmJZejK2c=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=xhzT2AVroq8VJRWan/yXvxnkVf1rq+0YhZQ2XSQjofo=;
- b=BwrsYHvW4YfRAJI7u7MDONAHnoSOnw4jztucpv6giX8Gq4yaFhK7prAXyS2ODyxfD9
- ZmPvlF0r6lis2go/wOZ6R+5TITvtefEYW1lBREWTyW9dw7s/j0o+Q8D1KxgRTKQ++gaV
- xucFvObqmluIdXarttmFfhgUjHIv8YwLU4XKpqysGS96RDdbBBYLgAaVJOc8anmWkq++
- wOib8zKfb6t7LVHzpNq+K36/EkHcj2y1aMLxYigO3ymZmMP3PAj94BERz50SROVrXP13
- od8Z+XKgs7Knj9QOG4WMzSSKE3vGkmh/HmK6ki6wC6MxzbkHq2B5qU2/ZhoVKPawaIBX
- Pu0w==
-X-Gm-Message-State: AOAM530DSVN57i3FDO3aZErMIlr86snFFCayHqfKrw6lf0KshcLOHgoT
- bEc9EY7fhWcbrOyPZlie+EOBig==
-X-Google-Smtp-Source: ABdhPJz1dceqQfho8nblNWKj0IiokkYQZtIjpNFh4g0aamm+L8NbGikk3CLnukV/Gj1fbFL6xyBnVQ==
-X-Received: by 2002:a17:907:86a1:: with SMTP id
- qa33mr24971828ejc.142.1638546611308; 
- Fri, 03 Dec 2021 07:50:11 -0800 (PST)
-Received: from gmail.com ([2620:0:1059:10:5993:f714:eea7:6d6d])
- by smtp.gmail.com with ESMTPSA id e15sm2133814edq.46.2021.12.03.07.50.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Dec 2021 07:50:11 -0800 (PST)
-Date: Fri, 3 Dec 2021 16:50:01 +0100
-From: Ricardo Ribalda <ribalda@chromium.org>
-To: "kyrie.wu" <kyrie.wu@mediatek.com>
-Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Tomasz Figa <tfiga@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tzung-Bi Shih <tzungbi@chromium.org>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, xia.jiang@mediatek.com,
- maoguang.meng@mediatek.com, srv_heupstream@mediatek.com,
- irui.wang@mediatek.com
-Subject: Re: [PATCH V6, 5/5] media: mtk-jpegenc: add output pic reorder
- interface
-Message-ID: <Yao8qYubCJTaGKe0@gmail.com>
-References: <1638501230-13417-1-git-send-email-kyrie.wu@mediatek.com>
- <1638501230-13417-6-git-send-email-kyrie.wu@mediatek.com>
+ id 1mtB7m-00GTrJ-28
+ for linux-mediatek@lists.infradead.org; Fri, 03 Dec 2021 16:09:27 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 5E0D762C1F;
+ Fri,  3 Dec 2021 16:09:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FFE8C53FD2;
+ Fri,  3 Dec 2021 16:09:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638547764;
+ bh=lnJSHKCZvGVPK48N7mQhF2MzGkmU1p9LnYQ1zzIxWjg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=WBoEq0Y0FGulKH/ho84vA/VwDnaDfU9XpZq+YZGbx1Qsf/Upb+7sNHy1VKmmxfJBp
+ Oi+nm4H4CcPBq15LRL+rrbqXSOmNvHXz9ZqTyFj/9jUhqA3a7+U6zNOdS+jVqhXP3X
+ Bb1fsobTjYL3das8GfINdrlQXBx3RrFh5iY+dMCKr3fslkgsOXFz3uksGcL9r9xdir
+ GiQ/Af3dQlMnhO+VD8sKM6aezWvlgpvevPqkvblJmSYNDss2Ss1Nx7Pqwwyu0GIK71
+ EB2r8aF/Dv7USvt9rT/3FIz1GmN0wbz/ghIpBYPYNX1dXjjjMd4riDw0F2lw8C0ZXI
+ MIvJjJy5gn3bg==
+Date: Fri, 3 Dec 2021 17:09:20 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Sven Eckelmann <sven@narfation.org>
+Cc: Jan Fuchs <jf@simonwunderlich.de>, linux-wireless@vger.kernel.org,
+ nbd@nbd.name, linux-mediatek <linux-mediatek@lists.infradead.org>,
+ Sean Wang <sean.wang@mediatek.com>
+Subject: Re: mt76: MT7921K monitor mode not working
+Message-ID: <YapBMGjLcjuBo/vw@lore-desk>
+References: <7e156597-a206-b236-e4c8-d476614de7ef@simonwunderlich.de>
+ <YalFC7UlCPsCSZqE@lore-desk> <3467395.ZLqV6DWSsM@ripper>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1638501230-13417-6-git-send-email-kyrie.wu@mediatek.com>
+In-Reply-To: <3467395.ZLqV6DWSsM@ripper>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_075013_067894_9B17B4D4 
-X-CRM114-Status: GOOD (  29.22  )
+X-CRM114-CacheID: sfid-20211203_080926_167610_DE133F4D 
+X-CRM114-Status: GOOD (  17.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,219 +68,88 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7548146362620788860=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-kyrie.wu wrote:
 
-> There are two HWs in mt8195. Since the two HWs run
-> in parallel, it is necessary to reorder the output images
-> to ensure that the order is consistent with the input images.
-> 
-> Signed-off-by: kyrie.wu <kyrie.wu@mediatek.com>
-> ---
-> V6: no change
-> ---
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c   | 10 +----
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h   | 17 +++++++-
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c |  1 +
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h |  3 +-
->  drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c | 48 ++++++++++++++++++++++-
->  5 files changed, 65 insertions(+), 14 deletions(-)
-> 
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> index 80a6c1a..9e89629 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.c
-> @@ -106,15 +106,6 @@ static struct mtk_jpeg_fmt mtk_jpeg_dec_formats[] = {
->  #define MTK_JPEG_ENC_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_enc_formats)
->  #define MTK_JPEG_DEC_NUM_FORMATS ARRAY_SIZE(mtk_jpeg_dec_formats)
->  
-> -struct mtk_jpeg_src_buf {
-> -	struct vb2_v4l2_buffer b;
-> -	struct list_head list;
-> -	struct mtk_jpeg_dec_param dec_param;
-> -
-> -	struct mtk_jpeg_ctx *curr_ctx;
-> -	u32 frame_num;
-> -};
-> -
->  static int debug;
->  module_param(debug, int, 0644);
->  
-> @@ -1344,6 +1335,7 @@ static int mtk_jpeg_open(struct file *file)
->  	if (jpeg->variant->is_encoder)
->  		INIT_WORK(&ctx->jpeg_work, mtk_jpegenc_worker);
->  
-> +	INIT_LIST_HEAD(&ctx->dst_done_queue);
->  	v4l2_fh_init(&ctx->fh, vfd);
->  	file->private_data = &ctx->fh;
->  	v4l2_fh_add(&ctx->fh);
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> index 4c669af..f276221 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_core.h
-> @@ -13,10 +13,11 @@
->  #include <media/v4l2-ctrls.h>
->  #include <media/v4l2-device.h>
->  #include <media/v4l2-fh.h>
-> +#include <media/videobuf2-v4l2.h>
->  
-> -#define MTK_JPEG_NAME		"mtk-jpeg"
-> +#include "mtk_jpeg_dec_hw.h"
->  
-> -#define MTK_JPEG_COMP_MAX		3
-> +#define MTK_JPEG_NAME		"mtk-jpeg"
->  
->  #define MTK_JPEG_FMT_FLAG_OUTPUT	BIT(0)
->  #define MTK_JPEG_FMT_FLAG_CAPTURE	BIT(1)
-> @@ -75,6 +76,15 @@ struct mtk_jpeg_variant {
->  	u32 cap_q_default_fourcc;
->  };
->  
-> +struct mtk_jpeg_src_buf {
-> +	struct vb2_v4l2_buffer b;
-> +	struct list_head list;
-> +	struct mtk_jpeg_dec_param dec_param;
-> +
-> +	struct mtk_jpeg_ctx *curr_ctx;
-> +	u32 frame_num;
-> +};
-> +
->  enum mtk_jpeg_hw_state {
->  	MTK_JPEG_HW_IDLE = 0,
->  	MTK_JPEG_HW_BUSY = 1,
-> @@ -232,6 +242,9 @@ struct mtk_jpeg_ctx {
->  	struct v4l2_ctrl_handler ctrl_hdl;
->  	struct work_struct jpeg_work;
->  	u32 total_frame_num;
-> +	struct list_head dst_done_queue;
-> +	spinlock_t done_queue_lock;
-> +	u32 last_done_frame_num;
->  };
->  
->  extern struct platform_driver mtk_jpegenc_hw_driver;
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-> index afbbfd5..1e38522 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.c
-> @@ -9,6 +9,7 @@
->  #include <linux/kernel.h>
->  #include <media/videobuf2-core.h>
->  
-> +#include "mtk_jpeg_core.h"
->  #include "mtk_jpeg_dec_hw.h"
->  
->  #define MTK_JPEG_DUNUM_MASK(val)	(((val) - 1) & 0x3)
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
-> index fa0d45f..87aaa5c 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_dec_hw.h
-> @@ -11,9 +11,10 @@
->  
->  #include <media/videobuf2-core.h>
->  
-> -#include "mtk_jpeg_core.h"
->  #include "mtk_jpeg_dec_reg.h"
->  
-Why are you moving around this define?
-> +#define MTK_JPEG_COMP_MAX		3
-> +
->  enum {
->  	MTK_JPEG_DEC_RESULT_EOF_DONE		= 0,
->  	MTK_JPEG_DEC_RESULT_PAUSE		= 1,
-> diff --git a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> index 244f9f7..3383dc0 100644
-> --- a/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> +++ b/drivers/media/platform/mtk-jpeg/mtk_jpeg_enc_hw.c
-> @@ -183,6 +183,50 @@ void mtk_jpeg_set_enc_params(struct mtk_jpeg_ctx *ctx,  void __iomem *base)
->  	writel(ctx->restart_interval, base + JPEG_ENC_RST_MCU_NUM);
->  }
->  
-> +void mtk_jpegenc_put_buf(struct mtk_jpegenc_comp_dev *jpeg)
-> +{
-> +	struct mtk_jpeg_ctx *ctx;
-> +	struct vb2_v4l2_buffer *dst_buffer;
-> +	struct list_head *temp_entry;
-> +	struct list_head *pos = NULL;
-> +	struct mtk_jpeg_src_buf *dst_done_buf, *tmp_dst_done_buf;
-> +	unsigned long flags;
-> +
-> +	ctx = jpeg->hw_param.curr_ctx;
-> +	if (!ctx) {
-> +		dev_err(jpeg->dev, "comp_jpeg ctx fail !!!\n");
-> +		return;
-> +	}
-> +
-> +	dst_buffer = jpeg->hw_param.dst_buffer;
-> +	if (!dst_buffer) {
-> +		dev_err(jpeg->dev, "comp_jpeg dst_buffer fail !!!\n");
-> +		return;
-> +	}
-> +
-> +	dst_done_buf = container_of(dst_buffer,
-> +		struct mtk_jpeg_src_buf, b);
-> +
-> +	spin_lock_irqsave(&ctx->done_queue_lock, flags);
-> +	list_add_tail(&dst_done_buf->list, &ctx->dst_done_queue);
-You want to run this until there are only 0 or 1 elements? Did I got it
-right?
+--===============7548146362620788860==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="dy1Ly8MqNkbwOfbI"
+Content-Disposition: inline
 
-So this means that when you enter put_buf there is max one element in
-the list. Do you need a list for that or only save one buffer in case
-they have come out of order?
-> +	while (!list_empty(&ctx->dst_done_queue) &&
-> +		(pos != &ctx->dst_done_queue)) {
-> +		list_for_each_prev_safe(pos, temp_entry,
-> +			(&ctx->dst_done_queue)) {
-> +			tmp_dst_done_buf = list_entry(pos,
-> +				struct mtk_jpeg_src_buf, list);
-> +			if (tmp_dst_done_buf->frame_num ==
-> +				ctx->last_done_frame_num) {
-> +				list_del(&tmp_dst_done_buf->list);
-> +				v4l2_m2m_buf_done(&tmp_dst_done_buf->b,
-> +					VB2_BUF_STATE_DONE);
-> +				ctx->last_done_frame_num++;
-> +			}
-> +		}
-> +	}
-> +	spin_unlock_irqrestore(&ctx->done_queue_lock, flags);
-> +}
-> +
->  static void mtk_jpegenc_timeout_work(struct work_struct *work)
->  {
->  	struct delayed_work *Pwork =
-> @@ -203,6 +247,7 @@ static void mtk_jpegenc_timeout_work(struct work_struct *work)
->  	atomic_inc(&cjpeg->hw_rdy);
->  	wake_up(&master_jpeg->enc_hw_wq);
->  	v4l2_m2m_buf_done(src_buf, buf_state);
-> +	mtk_jpegenc_put_buf(cjpeg);
->  }
->  
->  static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
-> @@ -237,8 +282,7 @@ static irqreturn_t mtk_jpegenc_hw_irq_handler(int irq, void *priv)
->  	vb2_set_plane_payload(&dst_buf->vb2_buf, 0, result_size);
->  	buf_state = VB2_BUF_STATE_DONE;
->  	v4l2_m2m_buf_done(src_buf, buf_state);
-> -	v4l2_m2m_buf_done(dst_buf, buf_state);
-> -	v4l2_m2m_job_finish(master_jpeg->m2m_dev, ctx->fh.m2m_ctx);
-> +	mtk_jpegenc_put_buf(jpeg);
->  	clk_disable_unprepare(jpeg->pm.venc_clk.clk_info->jpegenc_clk);
->  	pm_runtime_put(ctx->jpeg->dev);
->  	if (ctx->fh.m2m_ctx &&
-> -- 
-> 2.6.4
-> 
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
-> 
+
+--dy1Ly8MqNkbwOfbI
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> On Thursday, 2 December 2021 23:13:31 CET Lorenzo Bianconi wrote:
+> > IIRC you need to disable runtime-pm and deep-sleep to proper enable mon=
+itor
+> > mode:
+> >=20
+> > echo 0 > /sys/kernel/debug/ieee80211/phy<x>/mt76/runtime-pm
+> > echo 0 > /sys/kernel/debug/ieee80211/phy<x>/mt76/deep-sleep
+> >=20
+> > Can you please give it whirl?
+>=20
+> Jan gave me the card. I've set it to a rather busy channel (2.4GHz channe=
+l=20
+> 11), created a monitor interface, attached tcpdump and then waited what=
+=20
+> happens. I didn't get anything and then I've tried to set runtime-pm and =
+deep-
+> sleep to 0. This didn't change the behavior for me at lot. I saw two pack=
+ets=20
+> and then it went silent again.
+>=20
+> I wanted to try the same on a different card (ath11k) in the same system.=
+ But
+> it crashed my complete system - so I had to recreate the test setup. This=
+ time,=20
+> I've set runtime-pm + deep-sleep to 0 before creating mon0. After doing t=
+his,=20
+> it seemed to work.
+
+interesting, adding Sean to the loop here.
+It seems the fw is mainting a different state in this case.
+
+@Sean: any pointers?
+
+Regards,
+Lorenzo
+
+>=20
+> Kind regards,
+> 	Sven
+
+
+
+--dy1Ly8MqNkbwOfbI
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYapBMAAKCRA6cBh0uS2t
+rJOzAQCZfdsdVFUCVzP+N/SiAYJmM9ynBn2XVI9q/NZY2ynZnAEAyGzUhlgxq2X8
+hndtXsB+HrLAQTK6I+FR8neLgT6QnAw=
+=zQwP
+-----END PGP SIGNATURE-----
+
+--dy1Ly8MqNkbwOfbI--
+
+
+--===============7548146362620788860==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7548146362620788860==--
+
