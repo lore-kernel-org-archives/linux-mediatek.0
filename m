@@ -4,60 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E73FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 11:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22B50C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 12:27:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cgFZdWp0HjpM6kmh4oouGFcOaLlU8Wb4jf2gGoleN/o=; b=zN+4/WVVt0R5Vk
-	NE6M7DAeN2KkAQCmeEr0Zs4Se5snWo4jCGClBpw8uGJuvLmP5fba8+d2Zl5PBlxKqcXxJbG3vDvtf
-	1ckAyGQ3nqhU1Ho6F9FiYx9VdXjUSU55DRVmITdxqyASXf/FbtNg40aCB8u/WBIlkhsSlgTidiVsM
-	jQKxDRm6GHYucNoNoI1ZPfUwIXmhscI7EEBKBRLdptKOG0xvnvWa80l8RdLKuBe86FIUyqi3WuzqV
-	NirtSZkn3aA8KBjEEPyP7pZj+0LXgc49A3AVhC58zxk9Wwrxil8I9kJGkP84Aa0m+Ir8o7cHhj6m1
-	nHdjq9WA3cQkbsWDS16Q==;
+	List-Owner; bh=w+xMSpUt2oae7bY4BgP41WQqm0Zy2TM6AzDFsA04vaY=; b=sy1PY35gD2GJ+l
+	MpBd24selYpPYPqPC/bytWHistJ/24Va+Wol/+Sa+ZVwdVGuo/gPUnK+xn2cCAJ0/cX6nN9kX4Byu
+	ZB4bJ+HPcS16brFMA3Fr8NRoNhX8+rO/h4wcsezYhPCFd9er2Ysul2hwmEcAJncQQm7JoYUbUzOyB
+	yRzRxODy2Vy4zn7TyacAkE3Lgmg5jULwWfB0IVCWLCt+QwVbqe4GSoVQGoe9Xzk7k1HDN00YM4WM1
+	monf/AYpcBRd9UVd9D003IMETF/cGNQ0IZcid5BJp++j2f7SVkClUCULydp5P6hEO0M7VadqJ4Hth
+	oYMGYt0HEf0N1R3W6Fqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mt7Cr-00FZ7G-TR; Fri, 03 Dec 2021 11:58:25 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1mt7em-00Figi-Da; Fri, 03 Dec 2021 12:27:16 +0000
+Received: from mga18.intel.com ([134.134.136.126])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mt7Bs-00FYb4-VB; Fri, 03 Dec 2021 11:57:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=/k6j6wHaioGkrZLjGu4ey+Q0rMQZQIVRikhhuIY/xoM=; b=N2SvzWJJUh3iC2a6UumjTLAzBl
- 38YdXs6/nJW11o51MJakuXeyvwJ265Y5uFtSf7MJWsemBSLGksuq0N38VrtQSkEVa9zxCBbxdTHpW
- koaSxTs5O4axB8Q5RdnK3G39ZOiSPrtBSq41/7lF8zoRr8b/eKl1Ad3zdsuLNjchMwJc=;
-Received: from p54ae943f.dip0.t-ipconnect.de ([84.174.148.63]
- helo=localhost.localdomain)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1mt6oy-0004Ez-Bw; Fri, 03 Dec 2021 12:33:44 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: linux-arm-kernel@lists.infradead.org,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: john@phrozen.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v6 10/14] PCI: mediatek: allow selecting controller driver for
- airoha arch
-Date: Fri,  3 Dec 2021 12:33:27 +0100
-Message-Id: <20211203113331.20510-11-nbd@nbd.name>
-X-Mailer: git-send-email 2.30.1
-In-Reply-To: <20211203113331.20510-1-nbd@nbd.name>
-References: <20211203113331.20510-1-nbd@nbd.name>
+ id 1mt7eJ-00FiXm-P9; Fri, 03 Dec 2021 12:26:49 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10186"; a="223839592"
+X-IronPort-AV: E=Sophos;i="5.87,284,1631602800"; d="scan'208";a="223839592"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Dec 2021 04:26:46 -0800
+X-IronPort-AV: E=Sophos;i="5.87,284,1631602800"; d="scan'208";a="678082863"
+Received: from smile.fi.intel.com ([10.237.72.184])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Dec 2021 04:26:35 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1mt7d5-001lPG-5I; Fri, 03 Dec 2021 14:25:31 +0200
+Date: Fri, 3 Dec 2021 14:25:30 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Bartosz Golaszewski <brgl@bgdev.pl>
+Cc: Marc Zyngier <maz@kernel.org>,
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Chunyan Zhang <chunyan.zhang@unisoc.com>, Baruch Siach <baruch@tkos.co.il>,
+ Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Tony Lindgren <tony@atomide.com>,
+ Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Jianqun Xu <jay.xu@rock-chips.com>,
+ Alexandru Ardelean <aardelean@deviqon.com>,
+ Thierry Reding <treding@nvidia.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ patches@opensource.cirrus.com,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ linux-power <linux-power@fi.rohmeurope.com>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
+ linux-pwm@vger.kernel.org, Linux-OMAP <linux-omap@vger.kernel.org>,
+ linux-unisoc@lists.infradead.org,
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
+ linux-stm32@st-md-mailman.stormreply.com,
+ linux-tegra@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Gregory Fong <gregory.0xf0@gmail.com>,
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+ Keerthy <j-keerthy@ti.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
+ Vladimir Zapolskiy <vz@mleia.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Lee Jones <lee.jones@linaro.org>,
+ Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>
+Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+Message-ID: <YaoMuoONxbJb0prf@smile.fi.intel.com>
+References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+ <CAMRc=Md-TKUETLzf41D2KeQODac153_AumMTW4928XfJ70GRxQ@mail.gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <CAMRc=Md-TKUETLzf41D2KeQODac153_AumMTW4928XfJ70GRxQ@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_035725_213213_8CED8098 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20211203_042647_910202_73B35ADA 
+X-CRM114-Status: GOOD (  20.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,28 +108,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The EN7523 SoC uses the same controller as MT7622
+On Fri, Dec 03, 2021 at 09:40:55AM +0100, Bartosz Golaszewski wrote:
+> On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
+> <andriy.shevchenko@linux.intel.com> wrote:
+> >
+> > GPIO library does copy the of_node from the parent device of
+> > the GPIO chip, there is no need to repeat this in the individual
+> > drivers. Remove these assignment all at once.
+> >
+> > For the details one may look into the of_gpio_dev_init() implementation.
+> >
+> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> > ---
+> 
+> I have a bad feeling about this but I've gone through the drivers in
+> this patch and it seems like you don't update any of the drivers that
+> use multiple child OF nodes so I can't really point out any obvious
+> bug.
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- drivers/pci/controller/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Yes, like I said it's just a series to kick off the conversion.
+I left the corner cases to the last.
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 93b141110537..f1342059c2a3 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -233,7 +233,7 @@ config PCIE_ROCKCHIP_EP
- 
- config PCIE_MEDIATEK
- 	tristate "MediaTek PCIe controller"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
- 	depends on OF
- 	depends on PCI_MSI_IRQ_DOMAIN
- 	help
+> I have another change I'm working on that's related, let me send it shortly.
+
+Do you mean it should be attached to the series?
+
 -- 
-2.30.1
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
