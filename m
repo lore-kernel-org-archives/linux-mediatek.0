@@ -4,74 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A86BAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  3 Dec 2021 23:35:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B1A7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat,  4 Dec 2021 00:55:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TEEKmE9HGLIshJnmu/2fZc0aCqWf1+eCn7QlBdEj4aA=; b=EG8LjSKjSqdycG
-	s/ldsdea/JAJJY1BFs9o6Kzj3FMPF46itL0lzyKTavTpF1QN6QaF2GFOK9Mn4WA4na2B/RWVEYHs8
-	DzWHoLy2LKRbVl4lhHFbdBgqJPstUPKSPJHSa5MYWTvXkOySTFI48PE289Nfe4rh5CqbuAlBQOCJr
-	b3A/SyYoEDFmyFMIZ3XWmyAxq+mqsocmsh94A7JsvQMlG4bbnoBArpTYL19q0FCt/0x9iAXjC5/Pi
-	LvJujExNNRpOOjqT0GepCe+u8G5XfrHbSh7skYqq1s22Lq5kAdjVAaZTXpO5hNpZ3sC0LD3x1cLqd
-	sK5QH6Ia3wndJrernUHQ==;
+	List-Owner; bh=xCrW6LMfnlNjIas5nu7qlZFGgGDdqA6PzDuxeLaRKQw=; b=jiObKrQ0TO1dzn
+	yzYxVPHObJ29NNmV7Qabeb8Zkjr6iv9lANLohL25cu05INsQBsBXxOtqh+TXwYcrqD3m2zjGBhmky
+	P4hr/d/XAgvLGCqlMExHeVhvLEtSPvhm1NvZeWlTVr5soabaBG4ovdpm8Q/SJQscQdOyHbVJov093
+	94MCFmdTTnqIAYedSvisLhvLciaiQT+aQqESYH0dECdT7tUuTrwF+BiU6tpGZNhgaHi/6Iw2MzzZE
+	FsDQBHTrxtQIU9FH/QQpr5bIHiel/wXrBkele3xBp7LK/CZtjslxmJtUvuTxc5RiLe8XHomKRNLNv
+	6QlrHZYrWP4nIfWAEDjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mtI4v-00H9HT-2M; Fri, 03 Dec 2021 23:34:57 +0000
-Received: from mail-ot1-f53.google.com ([209.85.210.53])
+	id 1mtJKj-00HM9w-FC; Sat, 04 Dec 2021 00:55:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mtI4V-00H97E-6R; Fri, 03 Dec 2021 23:34:32 +0000
-Received: by mail-ot1-f53.google.com with SMTP id
- x19-20020a9d7053000000b0055c8b39420bso5431586otj.1; 
- Fri, 03 Dec 2021 15:34:30 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=YiLKOo6UjENxJNlcLLad7PuFG7LasjEMP8sQf/vfoCY=;
- b=Sf/Oq6cDmGKYtAoPcw4iDGwUf809NnjFztdTzIF/ivxFBJGX4fAfKhUhWw/vPKSEM+
- bTKjZjPTt/6k3ndVkdrnrUdIyk8nr0o1fe9apCOVTjGVt3J3zc/Q5LDspcT2ldQTdcw4
- wtzQG/sG0cIRgW07zfDTEE5Za/mH0/zVtOQtKgWkYTT9Xrg1radmqlaeY+Vx+b0mO4uQ
- PJo0+t3XAe67UDmrRxGCdH/WJO4GnWyAqGSC0omA8juceu9K3sO5qy+fhitS5zIfUBbO
- U9gzmcuflm4+s1mp4fMVrt3VZiAGMIFsBD5I9kdS+A1avsEcDCXqNL1v1if+b/8+0uPG
- uSiA==
-X-Gm-Message-State: AOAM531U4usFshlPy9OxYtaTfYt94iRo6qCjZx4ghXKa0AosnoP7MI1x
- dUOWa+TnX0fvjo8fHQcnGw==
-X-Google-Smtp-Source: ABdhPJzaChXSNEtZQrVDuuBqE4OOoH38CUdgHcZapsCQUiGSTfOcqkFwFK52oIJ1fUrqoQYuBMT/Hw==
-X-Received: by 2002:a9d:7a5a:: with SMTP id z26mr19045138otm.297.1638574470251; 
- Fri, 03 Dec 2021 15:34:30 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id o19sm1051377oiw.22.2021.12.03.15.34.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 03 Dec 2021 15:34:29 -0800 (PST)
-Received: (nullmailer pid 1043013 invoked by uid 1000);
- Fri, 03 Dec 2021 23:34:15 -0000
-From: Rob Herring <robh@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
- Tomasz Figa <tfiga@chromium.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Joerg Roedel <joro@8bytes.org>, yi.kuo@mediatek.com, anan.sun@mediatek.com,
- Will Deacon <will@kernel.org>, devicetree@vger.kernel.org,
- Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh+dt@kernel.org>,
- linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk@kernel.org>,
- anthony.huang@mediatek.com, lc.kan@mediatek.com, srv_heupstream@mediatek.com,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org,
- youlin.pei@mediatek.com
-In-Reply-To: <20211203064027.14993-2-yong.wu@mediatek.com>
-References: <20211203064027.14993-1-yong.wu@mediatek.com>
- <20211203064027.14993-2-yong.wu@mediatek.com>
-Subject: Re: [PATCH 1/4] dt-bindings: memory: mediatek: Correct the minItems
- of clk for larbs
-Date: Fri, 03 Dec 2021 17:34:15 -0600
-Message-Id: <1638574455.281202.1043012.nullmailer@robh.at.kernel.org>
+ id 1mtJKg-00HM9b-8k
+ for linux-mediatek@lists.infradead.org; Sat, 04 Dec 2021 00:55:19 +0000
+X-UUID: e9b3bf76977a4d23b0df05f662b366c5-20211203
+X-UUID: e9b3bf76977a4d23b0df05f662b366c5-20211203
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1502395143; Fri, 03 Dec 2021 17:55:13 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 3 Dec 2021 16:55:12 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 4 Dec 2021 08:55:05 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 4 Dec 2021 08:55:04 +0800
+From: <sean.wang@mediatek.com>
+To: <lorenzo.bianconi@redhat.com>
+CC: <nbd@nbd.name>, <sven@narfation.org>, <jf@simonwunderlich.de>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>, "Sean
+ Wang" <sean.wang@mediatek.com>
+Subject: Re: mt76: MT7921K monitor mode not working
+Date: Sat, 4 Dec 2021 08:55:04 +0800
+Message-ID: <1638579304-17794-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <YapTmM3EztojTS9F@lore-desk--annotate>
+References: <YapTmM3EztojTS9F@lore-desk--annotate>
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211203_153431_260734_1FD741E2 
-X-CRM114-Status: GOOD (  13.63  )
+X-CRM114-CacheID: sfid-20211203_165518_365517_CCDF9BCC 
+X-CRM114-Status: GOOD (  19.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,106 +67,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 03 Dec 2021 14:40:24 +0800, Yong Wu wrote:
-> If a platform's larb support gals, there will be some larbs have a one
-> more "gals" clock while the others still only need "apb"/"smi" clocks.
-> then the minItems is 2 and the maxItems is 3.
-> 
-> Fixes: 27bb0e42855a ("dt-bindings: memory: mediatek: Convert SMI to DT schema")
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> ---
->  .../bindings/memory-controllers/mediatek,smi-larb.yaml          | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+From: Sean Wang <sean.wang@mediatek.com>
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> >> On Thursday, 2 December 2021 23:13:31 CET Lorenzo Bianconi wrote:
+>> >> > IIRC you need to disable runtime-pm and deep-sleep to proper
+>> >> > enable monitor
+>> >> > mode:
+>> >> >
+>> >> > echo 0 > /sys/kernel/debug/ieee80211/phy<x>/mt76/runtime-pm
+>> >> > echo 0 > /sys/kernel/debug/ieee80211/phy<x>/mt76/deep-sleep
+>> >> >
+>> >> > Can you please give it whirl?
+>> >>
+>> >> Jan gave me the card. I've set it to a rather busy channel (2.4GHz
+>> >> channel 11), created a monitor interface, attached tcpdump and then
+>> >> waited what happens. I didn't get anything and then I've tried to
+>> >> set runtime-pm and deep- sleep to 0. This didn't change the
+>> >> behavior for me at lot. I saw two packets and then it went silent again.
+>> >>
+>> >> I wanted to try the same on a different card (ath11k) in the same
+>> >> system. But it crashed my complete system - so I had to recreate
+>> >> the test setup. This time, I've set runtime-pm + deep-sleep to 0
+>> >> before creating mon0. After doing this, it seemed to work.
+>> >
+>> >interesting, adding Sean to the loop here.
+>> >It seems the fw is mainting a different state in this case.
+>>
+>> fw cannot receive any frame on monitor mode in deeply doze mode
+>>
+>> so it seemed to me we need a patch to explicitly disable pm runtime in driver when monitor interface is enabled until it is being disabled.
+>
+>ack, I agree, but I guess the point here is what is the difference (from the fw pov) if you disable runtime-pm/deep-sleep before/after the vif is added. I guess it is supposed to be the same, right?
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+yes, it is supposed to be the same.
 
-Full log is available here: https://patchwork.ozlabs.org/patch/1563127
-
-
-larb@14016000: 'mediatek,larb-id' is a required property
-	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
-
-larb@14017000: clock-names: ['apb', 'smi'] is too short
-	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dt.yaml
-
-larb@15001000: 'mediatek,larb-id' is a required property
-	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
-
-larb@16010000: clock-names: ['apb', 'smi'] is too short
-	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dt.yaml
-
-larb@16010000: 'mediatek,larb-id' is a required property
-	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
-
-larb@17010000: clock-names: ['apb', 'smi'] is too short
-	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-burnet.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-damu.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel14.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku1.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-fennel-sku6.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-juniper-sku16.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kappa.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-kenzo.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku0.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-willow-sku1.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kakadu.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku16.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku272.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku288.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-kodama-sku32.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku0.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-kukui-krane-sku176.dt.yaml
-	arch/arm64/boot/dts/mediatek/mt8183-pumpkin.dt.yaml
-
+>
+>Regards,
+>Lorenzo
+>
+>>
+>> >
+>> >@Sean: any pointers?
+>> >
+>> >Regards,
+>> >Lorenzo
+>> >
+>> >>
+>> >> Kind regards,
+>> >>	Sven
+>> >
+>>
+>
 
 _______________________________________________
 Linux-mediatek mailing list
