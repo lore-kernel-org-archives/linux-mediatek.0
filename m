@@ -4,71 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96E9EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 08:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E576AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 08:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HnhPYGM4Iomv9YEm0mFiJAGsRrUolRikXjaId8dhWJ4=; b=YTvGp4AeWFK7V3
-	GP9SmWYNG49kBSNdD0R3aT+iJFeOkLiNCRPT4VFPlfKU2zoxc2Jo9khtdapdf19JO82qK+qLHomT7
-	ybJ/p8M5UX4IE/+8DI19uYVlG5TEW0xSNoux2zdMawvQXjiFj17FP2I8Ct7AIBxlB8EayXPLw4hDi
-	0jOmNolux8Bss7Dxx0egnvluz0LjamgrqW1Ttehdtdkfv2aVApUbvXC/5Le6b8bTzhY8KUtLLtBa5
-	fT5lqmMzN1lPN6rLrXaYbgi8a5Hjc/k4MMAW7ZmWTH6CRg7KSPd4nsc6Hp01mVe1Nl80RO/Aszonh
-	SMmwAn5/PLvlwgf4bxCw==;
+	List-Owner; bh=Jani7mglPWZe52sBXLVZ5E2LFNxIDNOolSEqtyFs2T0=; b=UVIiy9OqglWaEe
+	G6WEQE6WkAa2wmdAT3kiq5gJL/Ck8m7LgPRaMWCALl7girWCBD/1EBQee/PUwKReZBDkZAYEX6iah
+	iEOZOSlSCGSOYiGV6cRcoJd7AgNaiFFH7uJIHTD+DsHTFW+Ub+mWoK7qC43EhpTimZoRvipptBTmE
+	BUFDvF8uornyk4mYkc42WzzcwoymnGaLtuL64GNy7yOxo4uN24C2SM2NjzcAkZPqG8cevZWT6aeeP
+	MhmKRUfbjh7M98lVoFc0Sgq34/eS0efEpDqyMeir8V+Ktj2/Yz/1fjQnV4RyqphACCvbtH1aCP28C
+	r3f7U+KLd/44HMIjxYwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mu9AO-002sSn-Gz; Mon, 06 Dec 2021 08:16:08 +0000
+	id 1mu9MJ-002udf-En; Mon, 06 Dec 2021 08:28:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mu9AH-002sPh-Mi; Mon, 06 Dec 2021 08:16:07 +0000
-X-UUID: a7f75b5b0d414f38a6579fe71b61a8c9-20211206
+ id 1mu9M4-002uXP-Ra; Mon, 06 Dec 2021 08:28:14 +0000
+X-UUID: 96e8dc2f7d0c4af7bcdda4b86b48b44b-20211206
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=Gwi9NQMi+aJlqofRC9/2Cdnnhql1ssg2h7PD3Qu6tws=; 
- b=Z08QStxoNbqTiW1WRshvSqF8wGbc7Gv6bihg6mJxnWv1F1KZbkNuOgvRuOcHG0WnUAJHvmesy3d4QAGLM7KenLjfassalmT3Jwgi8OqjEfvDTzhZHRmThBWFjoCTJyp7dG1pOr5iHICqFILsgnnEK1raH/8tUBLYSgD6clsjZpI=;
-X-UUID: a7f75b5b0d414f38a6579fe71b61a8c9-20211206
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ bh=x6YtsVKT5SbA+fAmPG41G/VMiY4QVQjlGJqlNFJ+A68=; 
+ b=GNUUDpkb4nqaw/D5eLC44xtXblzMMrj+glo2DaXZ6Z3JnNut3AKqnZA3VwvxuKsa/UsGvp5Fbrs00PXQB7UPFpP7Di7ZcddIe1JcRvKLW/W9Jv3FzvVGmY/WbsYO/4NhRwn2rW7wO9hHVjWQSs24JSvpNTVWveso0ioyjagJrKo=;
+X-UUID: 96e8dc2f7d0c4af7bcdda4b86b48b44b-20211206
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2122527805; Mon, 06 Dec 2021 01:15:58 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 592560395; Mon, 06 Dec 2021 01:28:09 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Dec 2021 00:15:56 -0800
+ 15.0.1497.2; Mon, 6 Dec 2021 00:28:08 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 6 Dec 2021 16:15:54 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 6 Dec 2021 16:28:03 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 6 Dec 2021 16:15:53 +0800
-Message-ID: <303eaeb2d371c96def8e5f0284495b1762879905.camel@mediatek.com>
-Subject: Re: [PATCH 3/4] memory: mtk-smi: Add sleep ctrl function
+ Transport; Mon, 6 Dec 2021 16:28:01 +0800
+Message-ID: <9fd624a9f0752b92f309c0bb8524547f250830cb.camel@mediatek.com>
+Subject: Re: [PATCH v3 12/33] iommu/mediatek: Always tlb_flush_all when each
+ PM resume
 From: Yong Wu <yong.wu@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
- Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux-foundation.org>, <youlin.pei@mediatek.com>,
- <anan.sun@mediatek.com>, <lc.kan@mediatek.com>, <yi.kuo@mediatek.com>,
- <anthony.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>
-Date: Mon, 6 Dec 2021 16:15:53 +0800
-In-Reply-To: <9631fe7c-b878-79b0-1680-80b0be089429@canonical.com>
-References: <20211203064027.14993-1-yong.wu@mediatek.com>
- <20211203064027.14993-4-yong.wu@mediatek.com>
- <9631fe7c-b878-79b0-1680-80b0be089429@canonical.com>
+To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
+ <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>,
+ <yen-chang.chen@mediatek.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Fabien Parent
+ <fparent@baylibre.com>, <sebastian.reichel@collabora.com>, "Collabora Kernel
+ ML" <kernel@collabora.com>, Joerg Roedel <joro@8bytes.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, "Will
+ Deacon" <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ <mingyuan.ma@mediatek.com>, <yf.wang@mediatek.com>
+Date: Mon, 6 Dec 2021 16:28:00 +0800
+In-Reply-To: <58b13d3a-e89b-d2e3-278d-af8859d901b9@collabora.com>
+References: <20210923115840.17813-1-yong.wu@mediatek.com>
+ <20210923115840.17813-13-yong.wu@mediatek.com>
+ <c4be1a14-c257-81b7-4a2b-f7e68c32de88@collabora.com>
+ <5c4dd67ae7c81721d8cfd2c3b23b7c6df493cb5a.camel@mediatek.com>
+ <4dd4cf8d-0f52-afae-f7d9-8e3cfdf3b729@collabora.com>
+ <c69e03b4781dd9014393e0ff47767c58c846a722.camel@mediatek.com>
+ <c5ded58b-a53a-3089-f8a5-c264f8ab9463@collabora.com>
+ <128eb1874127b2b9b42a7419e26090d1d192666f.camel@mediatek.com>
+ <58b13d3a-e89b-d2e3-278d-af8859d901b9@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_001603_197924_7A5365FD 
-X-CRM114-Status: GOOD (  36.27  )
+X-CRM114-CacheID: sfid-20211206_002812_928392_35F71F80 
+X-CRM114-Status: GOOD (  47.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,160 +95,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, 2021-12-04 at 12:48 +0100, Krzysztof Kozlowski wrote:
-> On 03/12/2021 07:40, Yong Wu wrote:
-> > sleep control means that when the larb go to sleep, we should wait
-> > a bit
+On Tue, 2021-11-30 at 13:33 +0200, Dafna Hirschfeld wrote:
 > 
-> s/go/goes/
+> On 30.11.21 09:39, Yong Wu wrote:
+> > On Sat, 2021-11-27 at 12:11 +0200, Dafna Hirschfeld wrote:
+> > > 
+> > > On 10.11.21 09:50, Yong Wu wrote:
+> > > > On Wed, 2021-11-10 at 07:29 +0200, Dafna Hirschfeld wrote:
+> > > > > 
+> > > > > On 10.11.21 04:20, Yong Wu wrote:
+> > > > > > On Tue, 2021-11-09 at 14:21 +0200, Dafna Hirschfeld wrote:
+> > > > > > > Hi
+> > > > > > > This patch is needed in order to update the tlb when a
+> > > > > > > device
+> > > > > > > is
+> > > > > > > powered on.
+> > > > > > > Could you send this patch alone without the whole series
+> > > > > > > so
+> > > > > > > it
+> > > > > > > get
+> > > > > > > accepted easier?
+> > > > > > 
+> > > > > > Which SoC are you testing on? In previous SoC, the IOMMU HW
+> > > > > > don't
+> > > > > > have
+> > > > > > power-domain, and we have a "has_pm"[1] in the tlb function
+> > > > > > for
+> > > > > > that
+> > > > > > case. The "has_pm" should be always 0 for the previous SoC
+> > > > > > like
+> > > > > > mt8173,
+> > > > > > it should always tlb synchronize.
+> > > > > > 
+> > > > > > thus, Could you help share more about your issue? In which
+> > > > > > case
+> > > > > > it
+> > > > > > lack
+> > > > > > the necessary tlb operation. At least, We need confirm if
+> > > > > > it
+> > > > > > needs
+> > > > > > a
+> > > > > > "Fixes" tags if sending this patch alone.
+> > > > > 
+> > > > > Hi,
+> > > > > I work with the mtk-vcodec driver on mt8173. As you wrote,
+> > > > > the
+> > > > > iommu
+> > > > > doesn't
+> > > > > have a power-domain and so when allocating buffers before the
+> > > > > device
+> > > > > is powered
+> > > > > on, there is the warning
+> > > > > "Partial TLB flush timed out, falling back to full flush"
+> > > > > flooding the log buf.
+> > > > 
+> > > > oh. Thanks very much for your information. Get it now.
+> > > > 
+> > > > This issue should be introduced by the:
+> > > > 
+> > > > b34ea31fe013 ("iommu/mediatek: Always enable the clk on
+> > > > resume")
+> > > 
+> > > Hi, reverting this commit didn't solve those warnings,
+> > > I think this is because in the function mtk_iommu_attach_device
+> > > the first call to pm_runtime_resume_and_get does not turn the
+> > > clks on
+> > > since m4u_dom is not yet initialize. And then
+> > > mtk_iommu_attach_device
+> > > calls pm_runtime_put right after mtk_iommu_hw_init is called
+> > > (where the clks are turned on)
+> > 
+> > oh. Right. this is also related with the patch of "Add power-domain
+> > operation".
+> > 
+> > The current problem is that there is a redundant log of "Partial
+> > TLB
+> > flush timed out" in mt8173. We need fix this issue firstly. Are you
+> > going to prepare the patches again? If not, I could help this. You
+> > could help confirm them if you are free.
 > 
-> > until all the current commands are finished. thus, when the larb
-> > runtime
-> 
-> Please start every sentence with a capital letter.
-> 
-> > suspend, we need enable this function to wait until all the existed
-> 
-> s/suspend/suspends/
-> s/we need enable/we need to enable/
-> 
-> > command are finished. when the larb resume, just disable this
-> > function.
-> 
-> s/command/commands/
-> s/resume/resumes/
-> 
-> > This function only improve the safe of bus. Add a new flag for this
-> 
-> s/improve/improves/
-> s/the safe/the safety/
-> 
-> > function. Prepare for mt8186.
-> 
-> In total it is hard to parse, really.
+> Hi,
+> I already sent a patch last week: 
+> https://lore.kernel.org/linux-iommu/afb46ad6ca9477a2bf71233858406caa6ccb1588.camel@mediatek.com/T/
+> could you please review it?
 
-Will fix them in next version.
+I have replied them before you send this reply. Have you got them?
 
-Thanks for reviewing so detailedly. Sorry. I didn't pay attention to
-the grammar before.
 
+https://lore.kernel.org/linux-iommu/afb46ad6ca9477a2bf71233858406caa6ccb1588.camel@mediatek.com/
+
+https://lore.kernel.org/linux-iommu/6abef78f6447c626b737fd35688f421c29871f43.camel@mediatek.com/
+
+Thanks.
+
+> 
+> Thanks,
+> Dafna
+> 
+> 
 > 
 > > 
-> > Signed-off-by: Anan Sun <anan.sun@mediatek.com>
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >  drivers/memory/mtk-smi.c | 39 +++++++++++++++++++++++++++++++++++-
-> > ---
-> >  1 file changed, 35 insertions(+), 4 deletions(-)
+> > Thanks.
 > > 
-> > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> > index b883dcc0bbfa..4b59b28e4d73 100644
-> > --- a/drivers/memory/mtk-smi.c
-> > +++ b/drivers/memory/mtk-smi.c
-> > @@ -8,6 +8,7 @@
-> >  #include <linux/device.h>
-> >  #include <linux/err.h>
-> >  #include <linux/io.h>
-> > +#include <linux/iopoll.h>
-> >  #include <linux/module.h>
-> >  #include <linux/of.h>
-> >  #include <linux/of_platform.h>
-> > @@ -32,6 +33,10 @@
-> >  #define SMI_DUMMY			0x444
-> >  
-> >  /* SMI LARB */
-> > +#define SMI_LARB_SLP_CON                0x00c
-> > +#define SLP_PROT_EN                     BIT(0)
-> > +#define SLP_PROT_RDY                    BIT(16)
-> > +
-> >  #define SMI_LARB_CMD_THRT_CON		0x24
-> >  #define SMI_LARB_THRT_RD_NU_LMT_MSK	GENMASK(7, 4)
-> >  #define SMI_LARB_THRT_RD_NU_LMT		(5 << 4)
-> > @@ -81,6 +86,7 @@
-> >  
-> >  #define MTK_SMI_FLAG_THRT_UPDATE	BIT(0)
-> >  #define MTK_SMI_FLAG_SW_FLAG		BIT(1)
-> > +#define MTK_SMI_FLAG_SLEEP_CTL		BIT(2)
-> >  #define MTK_SMI_CAPS(flags, _x)		(!!((flags) & (_x)))
-> >  
-> >  struct mtk_smi_reg_pair {
-> > @@ -371,6 +377,24 @@ static const struct of_device_id
-> > mtk_smi_larb_of_ids[] = {
-> >  	{}
-> >  };
-> >  
-> > +static int mtk_smi_larb_sleep_ctrl(struct device *dev, bool
-> > to_sleep)
-> > +{
-> 
-> Make two functions instead. There is no single code reuse (shared)
-> between sleep and resume. In the same time bool arguments are
-> confusing
-> when looking at caller and one never knows whether true means to
-> resume
-> or to sleep. Having two functions is obvious. Obvious code is easier
-> to
-> read and maintain.
-
-Make sense. Thanks for this suggestion.
-
-> 
-> > +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-> > +	int ret = 0;
-> > +	u32 tmp;
-> > +
-> > +	if (to_sleep) {
-> > +		writel_relaxed(SLP_PROT_EN, larb->base +
-> > SMI_LARB_SLP_CON);
-> > +		ret = readl_poll_timeout_atomic(larb->base +
-> > SMI_LARB_SLP_CON,
-> > +						tmp, !!(tmp &
-> > SLP_PROT_RDY), 10, 1000);
-> > +		if (ret)
-> > +			dev_warn(dev, "sleep ctrl is not
-> > ready(0x%x).\n", tmp);
-> > +	} else {
-> > +		writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
-> > +	}
-> > +	return ret;
-> > +}
-> > +
-> >  static int mtk_smi_device_link_common(struct device *dev, struct
-> > device **com_dev)
-> >  {
-> >  	struct platform_device *smi_com_pdev;
-> > @@ -477,24 +501,31 @@ static int __maybe_unused
-> > mtk_smi_larb_resume(struct device *dev)
-> >  {
-> >  	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-> >  	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
-> > -	int ret;
-> > +	int ret = 0;
-> 
-> This line does not have a sense.
-
-Yes. This is unhelpful. Will remove this.
-
-> 
-> >  
-> >  	ret = clk_bulk_prepare_enable(larb->smi.clk_num, larb-
-> > >smi.clks);
-> > -	if (ret < 0)
-> > +	if (ret)
-> 
-> Why changing this?
-
-The successful return value should be 0. I will use a independent patch
-for this.
-
-> 
-> Best regards,
-> Krzysztof
-> 
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+> > > 
+> > > thanks,
+> > > Dafna
+> > > 
+> > > 
+> > > > 
+> > > > tlb failed due to the bclk is not enabled. Could you help try
+> > > > that
+> > > > after reverting this?
+> > > > 
+> > > > > 
+> > > > > Sebastian Reichel suggested to remove the 'if(has_pm)' check
+> > > > > to
+> > > > > avoid
+> > > > > this warning,
+> > > > > and avoid flushing the tlb if the device is off:
+> > > > > 
+> > > > > [1] http://ix.io/3Eyr
+> > > > > 
+> > > > > This fixes the warning, but then the tlb is not flushed in
+> > > > > sync,
+> > > > > Therefore the tlb should be flushed when the device is
+> > > > > resumed.
+> > > > > 
+> > > > > So the two patches (the one suggested in the link [1] and
+> > > > > this
+> > > > > patch)
+> > > > > should be sent together as a 2-patch series.
+> > > > 
+> > > > then this is reasonable. You could help this into a new
+> > > > patchset if
+> > > > you
+> > > > are free(add Fixes tag).
+> > > > 
+> > > > Thanks.
+> > > > 
+> > > > > 
+> > > > > Thanks,
+> > > > > Dafna
+> > > > > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
