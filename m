@@ -4,68 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93A86C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 16:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81861C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 16:44:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lHlhNXsyEYO2u6qB37DFw01MdN/GLWjO1BjXZCZKGDo=; b=HSRO01zxuan9WqTcMUa4NO4RUP
-	7ayi/A7YToczBE1SvqOfCvt2M/qqT3hFHwJItDouT70kkPTLDBrGekjJG+o7L6joBhhgccdn4hTfW
-	+EWoIWokPOt7AiTk5EszKPrc5pSGYqNVDQpQDJpV4c280cEITr3pVX/BauIi+3d7a3cGkzZj0oisp
-	OhCOOJwObHklhoVLSlLTi77NHxy04TJ9NgZ5mrecfsQ7v2QZTQoVsUe5XmOnb804YkdjHAZnrqCxC
-	5V9PyL5IQZXrAEbLiB21135jTOqHGMkczk16Ap30nx+EU75VIHrlZnKVTXZKHEwB/8PdbXg20TAsb
-	PIpGvjMg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IHNMoKlC78WridTJcv3v+1lxKIkCMdqdxYwrnRtjGMk=; b=Ug+fjhJD6Zy8sz
+	TsT5X/Y0x3NbcgzDpUJWnlJoeCXjHIvNoIENAxzUbkpu6wP00as3OSx1xYaLq9E88GCuWGPCOGrMx
+	FkIbyrM4PpC4z1TnVv3ZOEeMvnZxLAucsnyu6MhKFoZQfGpJe+281cHdWSP9RKjiiZ3lN13GRvR21
+	xpY5Kqs1Fm83XYsFpYeYVYkjvKSqEI+8PuwvwfFTNflkoZGFYW8mcA4qg1LQWwb7Gt7PnSXaoZoEx
+	Ai1pMICQjb47GGyZfz0OdMZ87R5TxP5INgDhIevzhskp8bzQdfFy5s83wCSMXX2qZSfyrY4sIp1ar
+	xXc/TCSQWUuXulUNFy/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muH5h-004pfx-BK; Mon, 06 Dec 2021 16:43:49 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.183])
+	id 1muH6L-004prI-HF; Mon, 06 Dec 2021 16:44:29 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muH5e-004ped-DV
- for linux-mediatek@lists.infradead.org; Mon, 06 Dec 2021 16:43:48 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mx1-us1.ppe-hosted.com (unknown [10.110.51.173])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 9136C1A0065;
- Mon,  6 Dec 2021 16:43:44 +0000 (UTC)
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
- ACCFE20007F; Mon,  6 Dec 2021 16:43:43 +0000 (UTC)
-Received: from [192.168.1.115] (unknown [98.97.71.183])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail3.candelatech.com (Postfix) with ESMTPSA id 8345013C2B0;
- Mon,  6 Dec 2021 08:43:42 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 8345013C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
- s=default; t=1638809023;
- bh=np4Kl8GmuBDzrnUel5OsncrVAHrzKSAOfRMvGQ5jMGo=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=aN2suCBu+kriULJRA2QHq0rE7QxtsS9xR4Was4e7iI3MNDItSZXPsuNLaw1cHpHzb
- heq/HMGxA6bzqDxf8RjX8/JyilganIe7DE6M6gHXUDwof/RDGK8n4AqY24faKBLU29
- R9HLiLGP7gG2605uxVf2nUM65OMVBxA0+ueVcQ6s=
-Subject: Re: [PATCH] mt76: mt7915: add mu-mimo and ofdma debugfs knobs
-To: MeiChia Chiu <MeiChia.Chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Money Wang <Money.Wang@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20211206141006.29632-1-MeiChia.Chiu@mediatek.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-Message-ID: <7158a937-57f3-2bd8-591e-124a18d2d8e8@candelatech.com>
-Date: Mon, 6 Dec 2021 08:43:36 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1muH67-004pnL-Qi; Mon, 06 Dec 2021 16:44:17 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 662451F44A89
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638809054; bh=ufMGzqUKc1mGqbbGMtqGtAVoPTm0PrwEkwUigbsiWY0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=kGwUZsG9ZmN6Mrdube3jPYJgM7ujw1upKTTelviEXnpaNU7H5RobrlpF/PHOv3Ri9
+ MshRGVw+rpAjAMaCO3iDXo6JQdKqGtReYineNQvDZ1DnqCfkpfDhxsjke720/vhRZq
+ NR4kzR1ZUr9ZvNs17oQf7zICtoCMcVFLYZ+HVLyH8qs4BXBwkSdZ62okpUTgIisnKt
+ paswEhNyF1T9Kjl57r5vGjOf4GPAoJywy9ammZLuxUVTyh/rg29n6JxK8dtuk9GP+q
+ 5GUUXC9qqp+ORk5C/wf7jkX7lTjRxCDQqWJFkygb3sWaCCMI39g6gF4oufPiPGUFOM
+ Wz0hrLAE2KkrQ==
+Date: Mon, 6 Dec 2021 11:44:09 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Nicolas Boichat <drinkcat@chromium.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [v1 2/5] arm64: dts: mediatek: Correct UART clock of MT8192
+Message-ID: <20211206164409.oua5i77odmzmaqfs@notapiano>
+References: <20210825011120.30481-1-chun-jie.chen@mediatek.com>
+ <20210825011120.30481-3-chun-jie.chen@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20211206141006.29632-1-MeiChia.Chiu@mediatek.com>
-Content-Language: en-MW
-X-MDID: 1638809025-cW1BdMLclNrt
+Content-Disposition: inline
+In-Reply-To: <20210825011120.30481-3-chun-jie.chen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_084346_558757_6C4E5AF2 
-X-CRM114-Status: GOOD (  14.73  )
+X-CRM114-CacheID: sfid-20211206_084416_024845_00AC7FAA 
+X-CRM114-Status: GOOD (  13.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,43 +65,61 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/6/21 6:10 AM, MeiChia Chiu wrote:
-> From: MeiChia Chiu <meichia.chiu@mediatek.com>
-> 
-> Add mu-mimo and ofdma packet counters statistics.
+Hi,
 
-Hello,
+On Wed, Aug 25, 2021 at 09:11:17AM +0800, Chun-Jie Chen wrote:
+> update uart0 and uart1 bus clock to the real one.
 
-Are these stats clear-on-read in the firmware?  If so, then we need to accumulate
-them in the driver.
+With the same commit message improvement from patch 1:
 
-Is there any significant downside to enabling the stats?  For instance, a performance
-degradation in the firmware/hardware?
+Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
 
 Thanks,
-Ben
+N=EDcolas
 
-> 
-> Reviewed-by: Money Wang <money.wang@mediatek.com>
-> Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
-> Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+> =
+
+> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
 > ---
->   .../net/wireless/mediatek/mt76/mt7915/debugfs.c | 242 ++++++++++++++++++++++++++++++++++++++++++++++-
->   .../net/wireless/mediatek/mt76/mt7915/mcu.c     |  41 ++++++++
->   .../net/wireless/mediatek/mt76/mt7915/mcu.h     |  45 +++++++++
->   .../net/wireless/mediatek/mt76/mt7915/mt7915.h  |   3 +
->   4 files changed, 330 insertions(+), 1 deletion(-)
-> 
+>  arch/arm64/boot/dts/mediatek/mt8192.dtsi | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> =
 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/d=
+ts/mediatek/mt8192.dtsi
+> index 2b63d2ea6cb6..31d135e18784 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> @@ -327,7 +327,7 @@
+>  				     "mediatek,mt6577-uart";
+>  			reg =3D <0 0x11002000 0 0x1000>;
+>  			interrupts =3D <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
+> -			clocks =3D <&clk26m>, <&clk26m>;
+> +			clocks =3D <&clk26m>, <&infracfg CLK_INFRA_UART0>;
+>  			clock-names =3D "baud", "bus";
+>  			status =3D "disabled";
+>  		};
+> @@ -337,7 +337,7 @@
+>  				     "mediatek,mt6577-uart";
+>  			reg =3D <0 0x11003000 0 0x1000>;
+>  			interrupts =3D <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH 0>;
+> -			clocks =3D <&clk26m>, <&clk26m>;
+> +			clocks =3D <&clk26m>, <&infracfg CLK_INFRA_UART1>;
+>  			clock-names =3D "baud", "bus";
+>  			status =3D "disabled";
+>  		};
+> -- =
 
--- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+> 2.18.0
+> =
+
+> =
+
 
 _______________________________________________
 Linux-mediatek mailing list
