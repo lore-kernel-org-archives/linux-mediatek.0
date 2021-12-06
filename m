@@ -4,74 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FB23C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 17:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 795DCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 17:44:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dbczhAKVi4Hykb1wlA1ycycEO2TZRz+gbzM1C9c2b1U=; b=IMKAjMoTlii/XN
-	ot6MEzpIMQ5zG2902onOZ2tYU7t7jxlA4MGCLjU3/gH9x6UIHrfBDRBY2tTs8EDchemsaS6Q89Hgv
-	/6YqD0KlN3Aen/fosdAz48sUpsDHqoYZsamGMt1pQPem3RoVwsOhMH1MRZHen0foFbTN8cM5X2ara
-	o9TA1lhPbj9d65fa/BEJ22vsqcj+Wzn5bbDYV6xz1diKqLgi8vRPmRryW6AT3mbce1znezutANH1S
-	zEy3klzarxVwkcIxRu5+InD5R8hSrgzsM/4L/YwjnEzJY9gRzA95rLaDRiBqOnzzXU6HNwBG/lE9G
-	8HXBIRoPEpgxpqm3OaGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6Re2QHNnDsiHn3/RT8dlQbDVUznkoyyaeTDYfKQaoeg=; b=eH8wNxYxzlfrg7
+	RFjiTt/SYbED+QyW6Y4EI2Mgn9eWAvUK37t7mymhc0/WFW+hadJdHqYfYQF7r5NJF0bGDiMVRCgLL
+	nDIjWtlX2RAMXWOCP9qZfYsinjfDU4I5b26S4XGi5sy90qOQiOpWpfHNkWY5u+TNKXN9zr/HDYPfd
+	B6zAyGNKfvl5d1d2I/1eJ5NePB+zoR6bM5wuGTM3FcY/nOZC2Isiy71jv4ndR2EO4cUHsNbfoxhU9
+	5ltoV0cx86M7L6F7gYz1V6uZ3y38LjDx1jNmiRCBt4KXOjA+kAatCRWvkcQtcGk9A98yEHcf3hgV3
+	KyF8b17e3gvqDi7MErGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muI0e-0057G8-D0; Mon, 06 Dec 2021 17:42:40 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1muI28-00583Z-GM; Mon, 06 Dec 2021 17:44:12 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muI04-0056yO-Nn; Mon, 06 Dec 2021 17:42:06 +0000
-Received: by mail-oi1-f174.google.com with SMTP id m6so22821717oim.2;
- Mon, 06 Dec 2021 09:42:03 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=9R+vJEgrwKCKc8Zm3ZovBeKlL5zZ/+qKm2q4AQLvyzU=;
- b=yssseo4D1Pyjgq87xi/PspaDdhSuv/FQZRYJ2Y6JzX66bm2lNeUc4FSbXodD/Llkh8
- 9KQse+bwt/cf9PNN3op8nDqCVCYDYgi4PieI8ZkwhkBFwwSh0BTBvh7znT+VXmxb4il5
- JMp80g4u2ejFLulzJg3b7T4rjbQZyeHgmp/Jl5rdkRhIoUiOVt42weoRfZYkyhmtSLKK
- +oyA+fDDRu7IeYHFSmsAgx+rP34jYVaIrU2hcLEvGw8jEESDKHM6oSkY+Spb2Ft9Nxge
- 6GXPeHHQbQNiL1gKDYTrxeD96K2dKfN8j+aWH3ujAZ1lJldJfiMEUH6S4d0RxXehB2nB
- m5/w==
-X-Gm-Message-State: AOAM533qtIu/mnPkSVyT8qm9+JL4M0yXZSGwK3FuJgn6nphTEASzAsEl
- ZMJGj0GfFQ5r/IhfxcA3wA==
-X-Google-Smtp-Source: ABdhPJzAT9mXvNX4OTFUIQkz1DBSUGY1X4B+luSF7sEsnAPRca55Q4WZLKK5Jo49VEm1FcPc1Da3mg==
-X-Received: by 2002:a05:6808:211f:: with SMTP id
- r31mr25253142oiw.64.1638812523325; 
- Mon, 06 Dec 2021 09:42:03 -0800 (PST)
-Received: from xps15.herring.priv (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.googlemail.com with ESMTPSA id w5sm2240534otk.70.2021.12.06.09.42.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 06 Dec 2021 09:42:02 -0800 (PST)
-From: Rob Herring <robh@kernel.org>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Shawn Guo <shawnguo@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, NXP Linux Team <linux-imx@nxp.com>,
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>,
- Adrian Hunter <adrian.hunter@intel.com>,
- Linus Walleij <linus.walleij@linaro.org>,
- Wenbin Mei <wenbin.mei@mediatek.com>,
- Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: devicetree@vger.kernel.org, Thierry Reding <thierry.reding@gmail.com>,
- linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] dt-bindings: mmc: Add missing properties used in examples
-Date: Mon,  6 Dec 2021 11:42:00 -0600
-Message-Id: <20211206174201.2297265-1-robh@kernel.org>
-X-Mailer: git-send-email 2.32.0
+ id 1muI23-00580V-Cn
+ for linux-mediatek@lists.infradead.org; Mon, 06 Dec 2021 17:44:10 +0000
+X-UUID: 12902c2a33754477a874c5f30bffa93b-20211206
+X-UUID: 12902c2a33754477a874c5f30bffa93b-20211206
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <mark-yw.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 656551667; Mon, 06 Dec 2021 10:44:02 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Dec 2021 09:34:03 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Dec 2021 01:34:02 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 7 Dec 2021 01:34:01 +0800
+From: <mark-yw.chen@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <sean.wang@mediatek.com>, <mark-yw.chen@mediatek.com>,
+ <aaron.hou@mediatek.com>, <kaichuan.hsieh@canonical.com>,
+ <pmenzel@molgen.mpg.de>, <linux-bluetooth@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v3 2/2] Bluetooth: btusb: Return error code when getting patch
+ status failed
+Date: Tue, 7 Dec 2021 01:33:43 +0800
+Message-ID: <20211206173343.31380-2-mark-yw.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20211206173343.31380-1-mark-yw.chen@mediatek.com>
+References: <20211206173343.31380-1-mark-yw.chen@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_094204_817397_A99FDEA8 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20211206_094407_504422_1F25491F 
+X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,158 +75,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When 'unevaluatedProperties' support is enabled, the following warnings
-are generated in the mmc bindings:
+From: Mark Chen <mark-yw.chen@mediatek.com>
 
-Documentation/devicetree/bindings/mmc/mtk-sd.example.dt.yaml: mmc@11230000: Unevaluated properties are not allowed ('reg', 'interrupts' were unexpected)
-Documentation/devicetree/bindings/mmc/sdhci-am654.example.dt.yaml: mmc@4f80000: Unevaluated properties are not allowed ('sdhci-caps-mask' was unexpected)
-Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.example.dt.yaml: mmc@5a400000: Unevaluated properties are not allowed ('dma-names', 'dmas' were unexpected)
-Documentation/devicetree/bindings/mmc/arm,pl18x.example.dt.yaml: mmc@80126000: Unevaluated properties are not allowed ('dmas', 'dma-names' were unexpected)
-Documentation/devicetree/bindings/mmc/arasan,sdhci.example.dt.yaml: mmc@80420000: Unevaluated properties are not allowed ('resets' was unexpected)
-Documentation/devicetree/bindings/mmc/arm,pl18x.example.dt.yaml: mmc@52007000: Unevaluated properties are not allowed ('interrupt-names' was unexpected)
-Documentation/devicetree/bindings/clock/imx8qxp-lpcg.example.dt.yaml: mmc@5b010000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+If there are failure cases in getting patch status, it should return the
+error code (-EIO).
 
-Add the missing properties as necessary. For pl18x, drop interrupt-names
-as there isn't any use of it when there are 2 interrupts.
-
-Cc: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: Shawn Guo <shawnguo@kernel.org>
-Cc: Sascha Hauer <s.hauer@pengutronix.de>
-Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-Cc: Fabio Estevam <festevam@gmail.com>
-Cc: NXP Linux Team <linux-imx@nxp.com>
-Cc: Chaotian Jing <chaotian.jing@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
-Cc: Masami Hiramatsu <mhiramat@kernel.org>
-Cc: Adrian Hunter <adrian.hunter@intel.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>
-Cc: Wenbin Mei <wenbin.mei@mediatek.com>
-Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
-Cc: linux-mmc@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Signed-off-by: Rob Herring <robh@kernel.org>
+Fixes: fc342c4dc4087 ("Bluetooth: btusb: Add protocol support for MediaTek MT7921U USB devices")
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
 ---
- Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml  | 3 +++
- Documentation/devicetree/bindings/mmc/arm,pl18x.yaml     | 9 ++++++++-
- Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml | 3 +++
- Documentation/devicetree/bindings/mmc/mtk-sd.yaml        | 6 ++++++
- Documentation/devicetree/bindings/mmc/sdhci-am654.yaml   | 2 ++
- .../devicetree/bindings/mmc/socionext,uniphier-sd.yaml   | 6 ++++++
- 6 files changed, 28 insertions(+), 1 deletion(-)
+ drivers/bluetooth/btmtk.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml b/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml
-index de6f076e0ece..83be9e93d221 100644
---- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml
-+++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml
-@@ -118,6 +118,9 @@ properties:
-   phy-names:
-     const: phy_arasan
- 
-+  resets:
-+    maxItems: 1
-+
-   arasan,soc-ctl-syscon:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-diff --git a/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml b/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml
-index 47595cb483be..fbc866d9bb2f 100644
---- a/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml
-+++ b/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml
-@@ -60,6 +60,14 @@ properties:
-     minItems: 1
-     maxItems: 2
- 
-+  dmas:
-+    maxItems: 2
-+
-+  dma-names:
-+    items:
-+      - const: rx
-+      - const: tx
-+
-   power-domains: true
- 
-   resets:
-@@ -213,7 +221,6 @@ examples:
-       arm,primecell-periphid = <0x10153180>;
-       reg = <0x52007000 0x1000>;
-       interrupts = <49>;
--      interrupt-names = "cmd_irq";
-       clocks = <&rcc 0>;
-       clock-names = "apb_pclk";
-       resets = <&rcc 1>;
-diff --git a/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml b/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml
-index 19621a2f8beb..8d5cef0d3039 100644
---- a/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml
-+++ b/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml
-@@ -116,6 +116,9 @@ properties:
-       - const: ahb
-       - const: per
- 
-+  power-domains:
-+    maxItems: 1
-+
-   pinctrl-names:
-     oneOf:
-       - minItems: 3
-diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-index 82768a807294..faf89b0c918f 100644
---- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
-@@ -36,6 +36,9 @@ properties:
-           - const: mediatek,mt8195-mmc
-           - const: mediatek,mt8183-mmc
- 
-+  reg:
-+    maxItems: 1
-+
-   clocks:
-     description:
-       Should contain phandle for the clock feeding the MMC controller.
-@@ -62,6 +65,9 @@ properties:
-       - const: axi_cg
-       - const: ahb_cg
- 
-+  interrupts:
-+    maxItems: 1
-+
-   pinctrl-names:
-     items:
-       - const: default
-diff --git a/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml b/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml
-index 224303f5b913..9fbf16b3bc8d 100644
---- a/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml
-+++ b/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml
-@@ -48,6 +48,8 @@ properties:
-       - const: clk_ahb
-       - const: clk_xin
- 
-+  sdhci-caps-mask: true
-+
-   # PHY output tap delays:
-   # Used to delay the data valid window and align it to the sampling clock.
-   # Binding needs to be provided for each supported speed mode otherwise the
-diff --git a/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml b/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml
-index 56f9ff12742d..a586fad0a46b 100644
---- a/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml
-+++ b/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml
-@@ -26,6 +26,12 @@ properties:
-   clocks:
-     maxItems: 1
- 
-+  dmas:
-+    maxItems: 1
-+
-+  dma-names:
-+    const: rx-tx
-+
-   reset-names:
-     description: |
-       There are three reset signals at maximum
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index c2ee5c4b975a..526dfdf1fe01 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -121,6 +121,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
+ 				} else {
+ 					bt_dev_err(hdev, "Failed wmt patch dwnld status (%d)",
+ 						   status);
++					err = -EIO;
+ 					goto err_release_fw;
+ 				}
+ 			}
 -- 
-2.32.0
+2.18.0
 
 
 _______________________________________________
