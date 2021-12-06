@@ -4,87 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC6BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 07:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96E9EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 08:16:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eoE74qo+zpl5lMjlldbx6CZc9Pwi8BjGAbsqzQ0NBnk=; b=FKKq3iZY9EpMzm
-	LxQdKLNaZZPCSxlkYsg3RnnJiFTMyKOoj3OKb8xhDsP7tX/h5lMV5q0Kt0hYugmOVW8VoJIH/+vak
-	GUXrw3vrnC28Md+/6H/KU8mJ5XfulJsGklYyiCfatKJ1dwE9AU1GjOIg+KbcVLGfvbMV6/uBjIIhD
-	T0B5ncpPjmYjVRe/zU3XfyS0AthnXVIhiC15315djbodp+IIThSlGD1qFOhgME3uPbPwauc9gRhx9
-	PbHRaZ5GUJoa/+z6ZRU8xYOLTgNz9R4GdIbWYnIqTphnUNlVEL1o7d7uKm4Miqmvz+//BXco2OOdg
-	8shPKTh6DzctD416sOiQ==;
+	List-Owner; bh=HnhPYGM4Iomv9YEm0mFiJAGsRrUolRikXjaId8dhWJ4=; b=YTvGp4AeWFK7V3
+	GP9SmWYNG49kBSNdD0R3aT+iJFeOkLiNCRPT4VFPlfKU2zoxc2Jo9khtdapdf19JO82qK+qLHomT7
+	ybJ/p8M5UX4IE/+8DI19uYVlG5TEW0xSNoux2zdMawvQXjiFj17FP2I8Ct7AIBxlB8EayXPLw4hDi
+	0jOmNolux8Bss7Dxx0egnvluz0LjamgrqW1Ttehdtdkfv2aVApUbvXC/5Le6b8bTzhY8KUtLLtBa5
+	fT5lqmMzN1lPN6rLrXaYbgi8a5Hjc/k4MMAW7ZmWTH6CRg7KSPd4nsc6Hp01mVe1Nl80RO/Aszonh
+	SMmwAn5/PLvlwgf4bxCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mu8Lh-002l2Z-Vg; Mon, 06 Dec 2021 07:23:45 +0000
-Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
+	id 1mu9AO-002sSn-Gz; Mon, 06 Dec 2021 08:16:08 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mu8Le-002l1d-6N
- for linux-mediatek@lists.infradead.org; Mon, 06 Dec 2021 07:23:43 +0000
-Received: by mail-ua1-x92c.google.com with SMTP id p2so17703182uad.11
- for <linux-mediatek@lists.infradead.org>; Sun, 05 Dec 2021 23:23:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TVXIT3QBReTAXMWK2JBRHaKSQvnCkPugoBOMsNBKysg=;
- b=maqLUi5cEmc99xwy3nFbbYAYdHLt75CoLJ0K9WVYMH3Zv6pm7qtoNUklMqOQdvlUbg
- KFavq8DcElKOxy3YRuj+2DUuBN8X7Zj6XwDTHUph2GVpZAvRrxFhD+j8SttjdkpQ+kMy
- BJpE+4wFU/RAIXFGz7Ne4gWhtocENWmibWVHE=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TVXIT3QBReTAXMWK2JBRHaKSQvnCkPugoBOMsNBKysg=;
- b=66W0X+qr+379mPTV4deoxen3/Di1UWrfcs349RHwccExjeAz+ki9IISCbnu0q55dgo
- C1c70o1Qsw52VDhlHEd8fQUxpVA6KCJipD/bi2ZjNn8Dn/ErJ0yWII3WpqD4B0liEGMd
- fIEXKxreT1IjoEpIyxXpEoaDl89gxg3iN7tJFmSE08kDdbeRFUVFoWRdTMcIzwOVTxF3
- uxqD9EOkSbY7srkcBtbf9/KBvtVyvsi3ZmB3jciuVCJpBlxrZ99NfJf1bibtq5YpGgkE
- ovGmLOqB3lUR0ep4uCqn8MzZMsGopFu8TIrE6Q+GDZt48FYeATsPwBGLm6jX3DdUawLo
- JFsQ==
-X-Gm-Message-State: AOAM530gOosh/n4xs0IXYs0VlxKlgJsBdvIuV4jzjpdv+EZxuZq8UiNS
- JnJATqpyehGAe+cyNHGKlv5BhD0jPUQ+Nw==
-X-Google-Smtp-Source: ABdhPJwJxZtYvbtn//oYgDs/wesTiF1Y8lzXlSWsX0Sjt5ybhzOPGCeQqiL5q5Pn98bjNfOKdKV6XQ==
-X-Received: by 2002:a05:6102:304d:: with SMTP id
- w13mr34711167vsa.81.1638775418169; 
- Sun, 05 Dec 2021 23:23:38 -0800 (PST)
-Received: from mail-ua1-f53.google.com (mail-ua1-f53.google.com.
- [209.85.222.53])
- by smtp.gmail.com with ESMTPSA id j126sm3512371vsc.17.2021.12.05.23.23.37
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 Dec 2021 23:23:37 -0800 (PST)
-Received: by mail-ua1-f53.google.com with SMTP id w23so17728016uao.5
- for <linux-mediatek@lists.infradead.org>; Sun, 05 Dec 2021 23:23:37 -0800 (PST)
-X-Received: by 2002:a67:ef4b:: with SMTP id k11mr34003840vsr.74.1638775416913; 
- Sun, 05 Dec 2021 23:23:36 -0800 (PST)
+ id 1mu9AH-002sPh-Mi; Mon, 06 Dec 2021 08:16:07 +0000
+X-UUID: a7f75b5b0d414f38a6579fe71b61a8c9-20211206
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Gwi9NQMi+aJlqofRC9/2Cdnnhql1ssg2h7PD3Qu6tws=; 
+ b=Z08QStxoNbqTiW1WRshvSqF8wGbc7Gv6bihg6mJxnWv1F1KZbkNuOgvRuOcHG0WnUAJHvmesy3d4QAGLM7KenLjfassalmT3Jwgi8OqjEfvDTzhZHRmThBWFjoCTJyp7dG1pOr5iHICqFILsgnnEK1raH/8tUBLYSgD6clsjZpI=;
+X-UUID: a7f75b5b0d414f38a6579fe71b61a8c9-20211206
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2122527805; Mon, 06 Dec 2021 01:15:58 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Dec 2021 00:15:56 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 6 Dec 2021 16:15:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 6 Dec 2021 16:15:53 +0800
+Message-ID: <303eaeb2d371c96def8e5f0284495b1762879905.camel@mediatek.com>
+Subject: Re: [PATCH 3/4] memory: mtk-smi: Add sleep ctrl function
+From: Yong Wu <yong.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
+ Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, <youlin.pei@mediatek.com>,
+ <anan.sun@mediatek.com>, <lc.kan@mediatek.com>, <yi.kuo@mediatek.com>,
+ <anthony.huang@mediatek.com>, Rob Herring <robh+dt@kernel.org>, "Matthias
+ Brugger" <matthias.bgg@gmail.com>
+Date: Mon, 6 Dec 2021 16:15:53 +0800
+In-Reply-To: <9631fe7c-b878-79b0-1680-80b0be089429@canonical.com>
+References: <20211203064027.14993-1-yong.wu@mediatek.com>
+ <20211203064027.14993-4-yong.wu@mediatek.com>
+ <9631fe7c-b878-79b0-1680-80b0be089429@canonical.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20210920170408.1561-1-dafna.hirschfeld@collabora.com>
- <c59b7f40-d99e-370a-b797-5dc72979df46@xs4all.nl>
- <CAPBb6MW_i1_Lh2ZaF8jGjcV-4XBhjswtyKkZCk3HxKO7LX79Og@mail.gmail.com>
- <1d509eea-37ef-bfd1-cfe7-0a204d8c4bd4@collabora.com>
-In-Reply-To: <1d509eea-37ef-bfd1-cfe7-0a204d8c4bd4@collabora.com>
-From: Alexandre Courbot <acourbot@chromium.org>
-Date: Mon, 6 Dec 2021 16:23:25 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MU6KvhwXa=dx+8P1a5gYt4P6W3A2EbfC+6dYfDNSKvATQ@mail.gmail.com>
-Message-ID: <CAPBb6MU6KvhwXa=dx+8P1a5gYt4P6W3A2EbfC+6dYfDNSKvATQ@mail.gmail.com>
-Subject: Re: [PATCH v4] media: mtk-vpu: Ensure alignment of 8 for DTCM buffer
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Hans Verkuil <hverkuil@xs4all.nl>, 
- Linux Media Mailing List <linux-media@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- LKML <linux-kernel@vger.kernel.org>, 
- kernel@collabora.com, Dafna Hirschfeld <dafna3@gmail.com>, 
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com, 
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211205_232342_302695_938255C4 
-X-CRM114-Status: GOOD (  27.60  )
+X-CRM114-CacheID: sfid-20211206_001603_197924_7A5365FD 
+X-CRM114-Status: GOOD (  36.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,99 +85,160 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Nov 29, 2021 at 11:39 PM Dafna Hirschfeld
-<dafna.hirschfeld@collabora.com> wrote:
->
->
->
-> On 18.10.21 04:16, Alexandre Courbot wrote:
-> > Hi Hans!
-> >
-> > On Mon, Oct 4, 2021 at 6:37 PM Hans Verkuil <hverkuil@xs4all.nl> wrote:
-> >>
-> >> On 20/09/2021 19:04, Dafna Hirschfeld wrote:
-> >>> From: Alexandre Courbot <acourbot@chromium.org>
-> >>>
-> >>> When running memcpy_toio:
-> >>> memcpy_toio(send_obj->share_buf, buf, len);
-> >>> it was found that errors appear if len is not a multiple of 8:
-> >>>
-> >>> [58.350841] mtk-mdp 14001000.rdma: processing failed: -22
-> >>
-> >> Why do errors appear? Is that due to a HW bug? Some other reason?
-> >
-> > MTK folks would be the best placed to answer this, but since the
-> > failure is reported by the firmware I'd suspect either a firmware or
-> > hardware limitation.
-> >
-> >>
-> >>>
-> >>> This patch ensures the copy of a multiple of 8 size by calling
-> >>> round_up(len, 8) when copying
-> >>>
-> >>> Fixes: e6599adfad30 ("media: mtk-vpu: avoid unaligned access to DTCM buffer.")
-> >>> Signed-off-by: Alexandre Courbot <acourbot@chromium.org>
-> >>> Signed-off-by: Enric Balletbo i Serra <enric.balletbo@collabora.com>
-> >>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-> >>> Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
-> >>> ---
-> >>> changes since v3:
-> >>> 1. multile -> multiple
-> >>> 2. add inline doc
-> >>>
-> >>> changes since v2:
-> >>> 1. do the extra copy only if len is not multiple of 8
-> >>>
-> >>> changes since v1:
-> >>> 1. change sign-off-by tags
-> >>> 2. change values to memset
-> >>>
-> >>>   drivers/media/platform/mtk-vpu/mtk_vpu.c | 15 ++++++++++++++-
-> >>>   1 file changed, 14 insertions(+), 1 deletion(-)
-> >>>
-> >>> diff --git a/drivers/media/platform/mtk-vpu/mtk_vpu.c b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> >>> index ec290dde59cf..1df031716c8f 100644
-> >>> --- a/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> >>> +++ b/drivers/media/platform/mtk-vpu/mtk_vpu.c
-> >>> @@ -349,7 +349,20 @@ int vpu_ipi_send(struct platform_device *pdev,
-> >>>                }
-> >>>        } while (vpu_cfg_readl(vpu, HOST_TO_VPU));
-> >>>
-> >>> -     memcpy_toio(send_obj->share_buf, buf, len);
-> >>> +     /*
-> >>> +      * when copying data to the vpu hardware, the memcpy_toio operation must copy
-> >>> +      * a multiple of 8. Otherwise the processing fails
-> >>
-> >> Same here: it needs to explain why the processing fails.
-> >>
-> >>> +      */
-> >>> +     if (len % 8 != 0) {
-> >>> +             unsigned char data[SHARE_BUF_SIZE];
-> >>
-> >> Wouldn't it be more robust if you say:
-> >>
-> >>                  unsigned char data[sizeof(send_obj->share_buf)];
-> >
-> > Definitely yes.
->
-> won't it actually be better to implement it like this:
-> (assuming len is always multiply of 4 - which I think it must be since access must be 4 aligned)
->
->         void __iomem *to = obj->share_buf;
->
->          if (len % 8 != 0) {
->                  memcpy_toio(to, buf, len - 4);
->                  to += len - 4;
->                  buf += len - 4;
->                  writel_relaxed(*(u32 *)buf, to);
->          } else {
->                  memcpy_toio(obj->share_buf, buf, len);
->          }
+On Sat, 2021-12-04 at 12:48 +0100, Krzysztof Kozlowski wrote:
+> On 03/12/2021 07:40, Yong Wu wrote:
+> > sleep control means that when the larb go to sleep, we should wait
+> > a bit
+> 
+> s/go/goes/
+> 
+> > until all the current commands are finished. thus, when the larb
+> > runtime
+> 
+> Please start every sentence with a capital letter.
+> 
+> > suspend, we need enable this function to wait until all the existed
+> 
+> s/suspend/suspends/
+> s/we need enable/we need to enable/
+> 
+> > command are finished. when the larb resume, just disable this
+> > function.
+> 
+> s/command/commands/
+> s/resume/resumes/
+> 
+> > This function only improve the safe of bus. Add a new flag for this
+> 
+> s/improve/improves/
+> s/the safe/the safety/
+> 
+> > function. Prepare for mt8186.
+> 
+> In total it is hard to parse, really.
 
-Not sure if avoiding that stack allocation is worth the extra
-complexity and requirement for len being a multiple of 4. Also I'd
-like to test it on real hardware to confirm it is indeed ok.
+Will fix them in next version.
 
+Thanks for reviewing so detailedly. Sorry. I didn't pay attention to
+the grammar before.
+
+> 
+> > 
+> > Signed-off-by: Anan Sun <anan.sun@mediatek.com>
+> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> > ---
+> >  drivers/memory/mtk-smi.c | 39 +++++++++++++++++++++++++++++++++++-
+> > ---
+> >  1 file changed, 35 insertions(+), 4 deletions(-)
+> > 
+> > diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> > index b883dcc0bbfa..4b59b28e4d73 100644
+> > --- a/drivers/memory/mtk-smi.c
+> > +++ b/drivers/memory/mtk-smi.c
+> > @@ -8,6 +8,7 @@
+> >  #include <linux/device.h>
+> >  #include <linux/err.h>
+> >  #include <linux/io.h>
+> > +#include <linux/iopoll.h>
+> >  #include <linux/module.h>
+> >  #include <linux/of.h>
+> >  #include <linux/of_platform.h>
+> > @@ -32,6 +33,10 @@
+> >  #define SMI_DUMMY			0x444
+> >  
+> >  /* SMI LARB */
+> > +#define SMI_LARB_SLP_CON                0x00c
+> > +#define SLP_PROT_EN                     BIT(0)
+> > +#define SLP_PROT_RDY                    BIT(16)
+> > +
+> >  #define SMI_LARB_CMD_THRT_CON		0x24
+> >  #define SMI_LARB_THRT_RD_NU_LMT_MSK	GENMASK(7, 4)
+> >  #define SMI_LARB_THRT_RD_NU_LMT		(5 << 4)
+> > @@ -81,6 +86,7 @@
+> >  
+> >  #define MTK_SMI_FLAG_THRT_UPDATE	BIT(0)
+> >  #define MTK_SMI_FLAG_SW_FLAG		BIT(1)
+> > +#define MTK_SMI_FLAG_SLEEP_CTL		BIT(2)
+> >  #define MTK_SMI_CAPS(flags, _x)		(!!((flags) & (_x)))
+> >  
+> >  struct mtk_smi_reg_pair {
+> > @@ -371,6 +377,24 @@ static const struct of_device_id
+> > mtk_smi_larb_of_ids[] = {
+> >  	{}
+> >  };
+> >  
+> > +static int mtk_smi_larb_sleep_ctrl(struct device *dev, bool
+> > to_sleep)
+> > +{
+> 
+> Make two functions instead. There is no single code reuse (shared)
+> between sleep and resume. In the same time bool arguments are
+> confusing
+> when looking at caller and one never knows whether true means to
+> resume
+> or to sleep. Having two functions is obvious. Obvious code is easier
+> to
+> read and maintain.
+
+Make sense. Thanks for this suggestion.
+
+> 
+> > +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> > +	int ret = 0;
+> > +	u32 tmp;
+> > +
+> > +	if (to_sleep) {
+> > +		writel_relaxed(SLP_PROT_EN, larb->base +
+> > SMI_LARB_SLP_CON);
+> > +		ret = readl_poll_timeout_atomic(larb->base +
+> > SMI_LARB_SLP_CON,
+> > +						tmp, !!(tmp &
+> > SLP_PROT_RDY), 10, 1000);
+> > +		if (ret)
+> > +			dev_warn(dev, "sleep ctrl is not
+> > ready(0x%x).\n", tmp);
+> > +	} else {
+> > +		writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
+> > +	}
+> > +	return ret;
+> > +}
+> > +
+> >  static int mtk_smi_device_link_common(struct device *dev, struct
+> > device **com_dev)
+> >  {
+> >  	struct platform_device *smi_com_pdev;
+> > @@ -477,24 +501,31 @@ static int __maybe_unused
+> > mtk_smi_larb_resume(struct device *dev)
+> >  {
+> >  	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> >  	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
+> > -	int ret;
+> > +	int ret = 0;
+> 
+> This line does not have a sense.
+
+Yes. This is unhelpful. Will remove this.
+
+> 
+> >  
+> >  	ret = clk_bulk_prepare_enable(larb->smi.clk_num, larb-
+> > >smi.clks);
+> > -	if (ret < 0)
+> > +	if (ret)
+> 
+> Why changing this?
+
+The successful return value should be 0. I will use a independent patch
+for this.
+
+> 
+> Best regards,
+> Krzysztof
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
