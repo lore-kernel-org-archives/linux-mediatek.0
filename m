@@ -4,58 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36C6AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 18:01:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4163C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 19:40:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ry/zR+dEr8eNYPyLfRLGCrB3+Qe/GOMtrzTYJ3Dshc4=; b=ASYxRrNloDE62p
-	65tNd1T7+3NNbF2WfXGOiEbuoAYRdf/ptXif7a+6wIyrIf2ipoR6IK6VJ4Ip7pSXSVnhi/eTxQu9e
-	du/VRiO8Z/RNSr8AL9pXhMrWwOr3qXJcN0ddlGOYlznWWt9CtxZoyjvxsN7FS2x8xAbg6oy9naJQ+
-	ll2VNnAAEoc0cir2arn8zEq1UBnd+FG2puDTQOfyX/gZX+MiPkdWFpezkgJYgIClzrBmCsQsztiqW
-	eiFha8ALHSGc7KCjh5eVGkz/AT1gtEyzS/vaPyx0oKQiSgHMH8pxFFSuS6tyv12aSjC6T5UVV8aML
-	Ab5KJU0WTxe+BNFmFylw==;
+	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
+	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6nWdLtJkBO9VxN9lfl69+l1yGUEecOrmwQM7NoWqGRU=; b=RGoMIYf6ts9yK7
+	obktiTNpgky3yBuBn9nylL6FbUCGrwyzEWXOZX0kPRDnkq+tsZeelWMRDhBiLcqNdlg2d5F8PXVwu
+	nRRI5Tu4Mf2DsuhugmbuW2gWhMcWoez7Lu9khrzKLCKmgKk/GxeNur18YkFDQpaeR56FWxe37eC10
+	5tKBgr8xMYLzPVhsRVIWrmB7RfrNdz84WAyLPlvPEXEXQOpgdwWAbBJd83IJtFnNDRwN2nViqbkAd
+	KsZ1WHJ8vasYYrHMSIIUVJjUdgrGHN7bTSArVq44xJO+M3esEltOwqta9/5c55M6roMCCFfgNLdhy
+	aHxAYC6EWRxeU5Y550mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muIIJ-005Ahk-BP; Mon, 06 Dec 2021 18:00:55 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muIHz-005Abr-7T; Mon, 06 Dec 2021 18:00:36 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 7F565CE16E1;
- Mon,  6 Dec 2021 18:00:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2940AC341C6;
- Mon,  6 Dec 2021 18:00:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638813631;
- bh=rm4lpoorN4GW0idvvHmReqqBpZmjcTOc1YuUVO0Ac2g=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=jjRc2MYZzQIjUrOw+DzK8UGJnqGKL0Ip5yQ3sGBlCfirVCbHtuH2LDwOooZQOO/u8
- GwYLoxXv33XLoRjiDt7tGJuoFH7JLJOjFT+q7SAbN5EN79RK6lIlN6SmI2jY5MGi/f
- Qz5WKSO+j3PTvt7rYLfEqGD2cBVau4VGy3IxObW7ZKs5naIGxpXb6NGHSrmsKr35zA
- phvlGHIzdQl9LGUXf/sAUQsGpwdzkjpJn8o5IwXJ8CdD0R1WiYK0z2ZHkD9tClBVZn
- Ob2piYABpjZbSjuUNNaByxEtaXgO4cazAIEAfShSH7rjPpkbIgstdMVLKr1JHcPGx/
- Y8BhLRBOd3IMg==
-From: Mark Brown <broonie@kernel.org>
-To: robh+dt@kernel.org, matthias.bgg@gmail.com, tiwai@suse.com,
- Trevor Wu <trevor.wu@mediatek.com>
-Cc: alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, yc.hung@mediatek.com
-In-Reply-To: <20211130053905.28470-1-trevor.wu@mediatek.com>
-References: <20211130053905.28470-1-trevor.wu@mediatek.com>
-Subject: Re: [PATCH 0/2] ASoC: mediatek: support memory-region assignment
-Message-Id: <163881362873.2769299.4647182629013116105.b4-ty@kernel.org>
-Date: Mon, 06 Dec 2021 18:00:28 +0000
-MIME-Version: 1.0
+	id 1muJqa-005WRI-CE; Mon, 06 Dec 2021 19:40:24 +0000
+Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1muJqV-005WQB-8T
+ for linux-mediatek@lists.infradead.org; Mon, 06 Dec 2021 19:40:22 +0000
+Received: from smtpclient.apple (p5b3d2e91.dip0.t-ipconnect.de [91.61.46.145])
+ by mail.holtmann.org (Postfix) with ESMTPSA id CA96ACECF9;
+ Mon,  6 Dec 2021 20:40:08 +0100 (CET)
+Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.20.0.1.32\))
+Subject: Re: [PATCH v3 1/2] Bluetooth: btusb: Handle download_firmware failure
+ cases
+From: Marcel Holtmann <marcel@holtmann.org>
+In-Reply-To: <20211206173343.31380-1-mark-yw.chen@mediatek.com>
+Date: Mon, 6 Dec 2021 20:40:08 +0100
+Cc: Johan Hedberg <johan.hedberg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>, aaron.hou@mediatek.com,
+ kaichuan.hsieh@canonical.com, Paul Menzel <pmenzel@molgen.mpg.de>,
+ linux-bluetooth <linux-bluetooth@vger.kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-Id: <AC2E4193-8F59-4F9D-85E6-382E2354D95C@holtmann.org>
+References: <20211206173343.31380-1-mark-yw.chen@mediatek.com>
+To: mark-yw.chen@mediatek.com
+X-Mailer: Apple Mail (2.3693.20.0.1.32)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_100035_492806_DF3A9B6E 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20211206_114019_493344_D2DD5C31 
+X-CRM114-Status: UNSURE (   9.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,46 +63,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 30 Nov 2021 13:39:03 +0800, Trevor Wu wrote:
-> This series of patches adds support for memory-region assignment, so the
-> access region of DMA engine could be restricted.
-> Patches are based on broonie tree "for-next" branch.
+Hi Mark,
+
+> For Mediatek chipset, it can not enabled if there are something wrong
+> in btmtk_setup_firmware_79xx(). Thus, the process must be terminated
+> and returned error code.
 > 
-> Trevor Wu (2):
->   ASoC: mediatek: mt8195: support reserved memory assignment
->   dt-bindings: mediatek: mt8195: add memory-region property
-> 
-> [...]
+> Fixes: fc342c4dc4087 ("Bluetooth: btusb: Add protocol support for MediaTek MT7921U USB devices")
+> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
+> ---
+> drivers/bluetooth/btusb.c | 4 ++++
+> 1 file changed, 4 insertions(+)
 
-Applied to
+patch has been applied to bluetooth-next tree.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
+Regards
 
-Thanks!
+Marcel
 
-[1/2] ASoC: mediatek: mt8195: support reserved memory assignment
-      commit: 4d408ea0282c374a304ce402866cb7b8a56c6b05
-[2/2] dt-bindings: mediatek: mt8195: add memory-region property
-      commit: 2da636247bb6f4fc3a9842ade04757790753fd2c
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 _______________________________________________
 Linux-mediatek mailing list
