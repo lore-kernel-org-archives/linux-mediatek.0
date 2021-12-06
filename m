@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F4CFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 14:53:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E38EC433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 15:00:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XPyCTPqAHMUj829F0RVXIWLhfGOLW4jZVSZEevrGUeU=; b=L2zuNQ+N3xvdB7
-	EHlZxjM6u8yk+H0ddudGjFh2KJXwWokHE7m/41Ja50cr0VBi1A/5UqK+upRdaXZ6XYaI0hFrGfYO9
-	psOyn75BZRmo/B1siDKoJivuQKVkAYiBPyKH18umcxXsK+/YS0mAgfBxtE0H2uz93zoZt0n7kRgtO
-	belWN8eVoaVkKW7ljn/0b0224c5aJrMQgf5ZrPnv2CH51HmRTSJ1HOdmFaeafAONi9pcGSPidljbt
-	gQhGkRX3nc23uvNxBNx8sR61mvx8821EhyNoJJi/1NyK3ZosYktBrTvNik1v5z0t4Dfuq4OVaUgmR
-	SKueMcie+ABKC5jhPNUw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rJP/5tq6cm0HTwqpEemOrbvaWoO5eVjnVTB9s8lK8JE=; b=auKdrjBKO64UbVwQ5uYgjDxUbo
+	p0IAebXon/Ved4xph5jv7CrkchekfSi9dfHZnJ9tASU1zNbl/SX/jwoucujfaoPZmWgl6QjiCu85C
+	/xlYFAvIOeo5HNfoJgvBdfOa/PIIjCy2hEJB5rNfFP2ADBn46D2YV5XbGTpk46twVzh0DD98Jfwb6
+	/b1LPwVq+tbKiXt3+X89cvgf8nWlzZRMG6pun3qJVOddb3TpKCuLSQLWeQUiUBo0NAtp3DJ/elxJx
+	yCoaPGcLXG1a7MF1N6wBqdwrHCjszfPc/PjAk9U+AHifkwgqnMrBwr3PfPdzZ/xi62kMgLHixFtna
+	LSiiM9Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muFMh-004Hv7-6K; Mon, 06 Dec 2021 14:53:15 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1muFTh-004KfC-7H; Mon, 06 Dec 2021 15:00:29 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muFMf-004HuZ-Gh
- for linux-mediatek@lists.infradead.org; Mon, 06 Dec 2021 14:53:14 +0000
-X-UUID: a8725320f97746f8923aa7a971eac6d8-20211206
-X-UUID: a8725320f97746f8923aa7a971eac6d8-20211206
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <mark-yw.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1814989667; Mon, 06 Dec 2021 07:53:10 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Dec 2021 06:53:09 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 6 Dec 2021 22:53:07 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 6 Dec 2021 22:53:07 +0800
-From: <mark-yw.chen@mediatek.com>
-To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
-CC: <sean.wang@mediatek.com>, <mark-yw.chen@mediatek.com>,
- <aaron.hou@mediatek.com>, <kaichuan.hsieh@canonical.com>,
- <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-Subject: [PATCH V2] Bluetooth: btusb: Handle download_firmware failure cases.
-Date: Mon, 6 Dec 2021 22:52:41 +0800
-Message-ID: <20211206145241.30181-1-mark-yw.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1muFTP-004KVz-Qn; Mon, 06 Dec 2021 15:00:13 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 4FBD11F44803
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638802808; bh=GdCGPmly0UuQ6WjSsNws2p+iDG85TsB+eBdXAeJYWKo=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=K0fNGcFVKt7O287APEpkAIFNWACJowOJtubES7YzU18wZK9tNnX6ZS0kbADSNKC+Y
+ am0NkVRHfnoQTQJlzPZjKnz30qgm4Whf1fMoJ36ZW7tuuwUON8yNfV5KB1fLGF4qLz
+ wRT4fRML+iDArFocVdBPGhXWssHAcEDtuY3zEl7XnqGMC9g8Nu3Z34O6qjezjYx2+p
+ Jm3G8SkDOksXBYgZgWNmR8ZXro02agCanHvdBQG3jB7N6mGf3ioJSxk1lPrjf/msEu
+ rhasgGlGOHR52V1irMnWJcut59XIHV0ggwnbxyB9JXfc+GJvqg6CTW6oYAXy015cKw
+ WjK2fAddW3VRw==
+Subject: Re: [PATCH 4/4] memory: mtk-smi: mt8186: Add smi support
+To: Yong Wu <yong.wu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
+ anan.sun@mediatek.com, lc.kan@mediatek.com, yi.kuo@mediatek.com,
+ anthony.huang@mediatek.com
+References: <20211203064027.14993-1-yong.wu@mediatek.com>
+ <20211203064027.14993-5-yong.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <417ec223-b49a-c8dc-c53a-7831cca4d2d1@collabora.com>
+Date: Mon, 6 Dec 2021 16:00:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20211203064027.14993-5-yong.wu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_065313_588528_1339F150 
-X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-CacheID: sfid-20211206_070012_384436_A3DEF636 
+X-CRM114-Status: UNSURE (   8.20  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -68,53 +72,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Mark Chen <mark-yw.chen@mediatek.com>
+Il 03/12/21 07:40, Yong Wu ha scritto:
+> Add mt8186 SMI support.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-For Mediatek chipset, it can not enabled if there are something wrong
-in btmtk_setup_firmware_79xx(). Thus, the process must be terminated
-and returned error code.
 
-Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 1 +
- drivers/bluetooth/btusb.c | 4 ++++
- 2 files changed, 5 insertions(+)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index c2ee5c4b975a..526dfdf1fe01 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -121,6 +121,7 @@ int btmtk_setup_firmware_79xx(struct hci_dev *hdev, const char *fwname,
- 				} else {
- 					bt_dev_err(hdev, "Failed wmt patch dwnld status (%d)",
- 						   status);
-+					err = -EIO;
- 					goto err_release_fw;
- 				}
- 			}
-diff --git a/drivers/bluetooth/btusb.c b/drivers/bluetooth/btusb.c
-index ab169fc673ea..923cfbe40dae 100644
---- a/drivers/bluetooth/btusb.c
-+++ b/drivers/bluetooth/btusb.c
-@@ -2554,6 +2554,10 @@ static int btusb_mtk_setup(struct hci_dev *hdev)
- 			 dev_id & 0xffff, (fw_version & 0xff) + 1);
- 		err = btmtk_setup_firmware_79xx(hdev, fw_bin_name,
- 						btusb_mtk_hci_wmt_sync);
-+		if (err < 0) {
-+			bt_dev_err(hdev, "Failed to set up firmware (%d)", err);
-+			return err;
-+		}
- 
- 		/* It's Device EndPoint Reset Option Register */
- 		btusb_mtk_uhw_reg_write(data, MTK_EP_RST_OPT, MTK_EP_RST_IN_OUT_OPT);
--- 
-2.18.0
-
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 _______________________________________________
 Linux-mediatek mailing list
