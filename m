@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 693DAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 15:09:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E470C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 15:15:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2ba6uYijtFly1QsKMgY2SQedaRAeTPuZ0LojpPytmMg=; b=LxjXqSb+6IksMQNn5I445H3btW
-	tsiyjFrcdwfsS8xx9E1uIoCmP3p4iG+Gkank6IGwfhnSDNTvBeMGtc1lrDCfhih5Q27qMLV6SdaLe
-	urMwzt3yGN5phbxNHanLNRyQTE45CRN/ZySvbL0hSDML4+GLoANRebXhLdP7na5sKs9uUAiUmNH5W
-	ITfxJJLNMgLJqWbNMHXHnmwV0QiCkA7X+ZxO5cXT3X8mfUaFkU3mfB/2tDNXsn0tLUALx1XLI2fTn
-	CxdVSw1jqw38i3L7go1PAuvPxdzKV40Uu/63EHm+jJ0bGSite0GiIAF4jVPvjZVTudf/8oM7paTTB
-	RdSIDtdQ==;
+	bh=xkLEsOoR5v7s2FGV1k03Dftcgo8SFQ3seWsc9BJMU+4=; b=DIauqJdbxtAgd4IYfisbUqJP7k
+	R+psmO0e52i5uBIpEfYLG/6M7rKBxJJSAE8Tp9SFWQ1yDAQEYHpws+2eevoPPBTPecfmO2418H3Jy
+	/82vTkPQrTEHE3yZgK/IF0V0b86swnqvhyXNxQOM+ysaIXriSAOF/UTz0X7skpNLSoyscvV53kIiV
+	7SoCYpYveDI1Ir5ph2HOUBYLrZXTJm/lQWFqxrq+JX3UOava7Vcp7Kt6Ze+40kj1MAq3xleQm3rr/
+	N8J46xfToILge32YraPMLnmx2hKIM2FpNYoJOITASrZ2Coxz4Q64I7Vl8hnlQAoKuCrmEzANozSZg
+	fftwvKUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muFcP-004Op5-3f; Mon, 06 Dec 2021 15:09:29 +0000
+	id 1muFi4-004Rit-9j; Mon, 06 Dec 2021 15:15:20 +0000
 Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muFbk-004ORx-Nb; Mon, 06 Dec 2021 15:08:50 +0000
+ id 1muFhZ-004RV0-7T; Mon, 06 Dec 2021 15:14:50 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 3EA2A1F4487E
+ (Authenticated sender: kholk11) with ESMTPSA id 265421F4488A
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1638803327; bh=GD5jS7X5MjRddXaASD9ovBpWNoicoY2OOGjVAS/Fkj0=;
+ t=1638803687; bh=0wYI5HLADYAd4xSANRFLZ/t5SGL4HjQoUDDbtVZMntw=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=QmP9p/Xwn1DTDiTckK3f6PgxBAGeY1jfb3zUdAdtQ4HX70clXe1dHJl4ACRNYJMTw
- ufL5NI0KUbX79T48BORKnDJIcqB/hVvvk2ZE+77/+LmCctOasRbPaOqt92dqro/Tbw
- 4Kn0b2XXytIRKaB+UhpCecMReNcm4M6aZ+Q4c7J78IJ0T8tjhCIvz83uy04OIDEK3/
- rMS4dwOVFThMJ8C8YJDqdmdSYqT517aYtIkMEupKIBOIlOdLsIrsSCXjiHVwenRslH
- 3jjGKxEg/4qZ4b5rMbUruztYedI9xeS+tHs4u+ETj9ZJDhGLENR4ZsLJY1iBFUeHCk
- vSH3nnqDpp8BQ==
-Subject: Re: [PATCH 3/4] memory: mtk-smi: Add sleep ctrl function
-To: Yong Wu <yong.wu@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
- anan.sun@mediatek.com, lc.kan@mediatek.com, yi.kuo@mediatek.com,
- anthony.huang@mediatek.com
-References: <20211203064027.14993-1-yong.wu@mediatek.com>
- <20211203064027.14993-4-yong.wu@mediatek.com>
+ b=F3i+qP58ek+QIKjw1gTAd6rIjXU196UrMqKi+DJqxtwKT9teAAAKYDKlz5oFjx46y
+ FPqYUOo3CrAC3nuDPAyR2f16fDPcNAwAenlgSg0xB58532r5z07c3PBmgezyJ6ti6L
+ KebBY0RT6kj0OndKhn9btJ7CLlBQznplhoMfPx+oIn44P4Yp4uw0SnnewMaBvZ7IeD
+ KxkWDS4nJRLje/JEm0LgJyq17nuMAIFq11UWBpXnIAKA8FrW2f2CGgYXRyyVob+1Mx
+ FVg68HlMTJE1lQAItxtheu4WVmAArwN9qGVH7ibsCT2t5b0jghIuqZzlmT9nYhBXVH
+ FiDZ12bt+YGDw==
+Subject: Re: [PATCH v4 1/7] net-next: stmmac: dwmac-mediatek: add platform
+ level clocks management
+To: Biao Huang <biao.huang@mediatek.com>, davem@davemloft.net,
+ Jakub Kicinski <kuba@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, srv_heupstream@mediatek.com,
+ macpaul.lin@mediatek.com, dkirjanov@suse.de
+References: <20211203063418.14892-1-biao.huang@mediatek.com>
+ <20211203063418.14892-2-biao.huang@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <f2ffd08a-44c3-9458-1bd8-68e3c0755611@collabora.com>
-Date: Mon, 6 Dec 2021 16:08:40 +0100
+Message-ID: <9dc0cbc3-8de0-f1ed-cfc9-852b7e69ab3c@collabora.com>
+Date: Mon, 6 Dec 2021 16:14:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211203064027.14993-4-yong.wu@mediatek.com>
+In-Reply-To: <20211203063418.14892-2-biao.huang@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_070849_091979_B58AA701 
-X-CRM114-Status: GOOD (  33.64  )
+X-CRM114-CacheID: sfid-20211206_071449_477741_86987455 
+X-CRM114-Status: GOOD (  21.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,125 +77,74 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/12/21 07:40, Yong Wu ha scritto:
-> sleep control means that when the larb go to sleep, we should wait a bit
-> until all the current commands are finished. thus, when the larb runtime
-> suspend, we need enable this function to wait until all the existed
-> command are finished. when the larb resume, just disable this function.
-> This function only improve the safe of bus. Add a new flag for this
-> function. Prepare for mt8186.
+Il 03/12/21 07:34, Biao Huang ha scritto:
+> This patch implements clks_config callback for dwmac-mediatek platform,
+> which could support platform level clocks management.
 > 
-> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 > ---
->   drivers/memory/mtk-smi.c | 39 +++++++++++++++++++++++++++++++++++----
->   1 file changed, 35 insertions(+), 4 deletions(-)
+>   .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 24 ++++++++++++++-----
+>   1 file changed, 18 insertions(+), 6 deletions(-)
 > 
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index b883dcc0bbfa..4b59b28e4d73 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -8,6 +8,7 @@
->   #include <linux/device.h>
->   #include <linux/err.h>
->   #include <linux/io.h>
-> +#include <linux/iopoll.h>
->   #include <linux/module.h>
->   #include <linux/of.h>
->   #include <linux/of_platform.h>
-> @@ -32,6 +33,10 @@
->   #define SMI_DUMMY			0x444
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> index 58c0feaa8131..157ff655c85e 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> @@ -359,9 +359,6 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
+>   		return ret;
+>   	}
 >   
->   /* SMI LARB */
-> +#define SMI_LARB_SLP_CON                0x00c
-> +#define SLP_PROT_EN                     BIT(0)
-> +#define SLP_PROT_RDY                    BIT(16)
-> +
->   #define SMI_LARB_CMD_THRT_CON		0x24
->   #define SMI_LARB_THRT_RD_NU_LMT_MSK	GENMASK(7, 4)
->   #define SMI_LARB_THRT_RD_NU_LMT		(5 << 4)
-> @@ -81,6 +86,7 @@
+> -	pm_runtime_enable(&pdev->dev);
+> -	pm_runtime_get_sync(&pdev->dev);
+> -
+>   	return 0;
+>   }
 >   
->   #define MTK_SMI_FLAG_THRT_UPDATE	BIT(0)
->   #define MTK_SMI_FLAG_SW_FLAG		BIT(1)
-> +#define MTK_SMI_FLAG_SLEEP_CTL		BIT(2)
->   #define MTK_SMI_CAPS(flags, _x)		(!!((flags) & (_x)))
+> @@ -370,11 +367,25 @@ static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
+>   	struct mediatek_dwmac_plat_data *plat = priv;
 >   
->   struct mtk_smi_reg_pair {
-> @@ -371,6 +377,24 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
->   	{}
->   };
+>   	clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
+> -
+> -	pm_runtime_put_sync(&pdev->dev);
+> -	pm_runtime_disable(&pdev->dev);
+>   }
 >   
-> +static int mtk_smi_larb_sleep_ctrl(struct device *dev, bool to_sleep)
+> +static int mediatek_dwmac_clks_config(void *priv, bool enabled)
 > +{
-> +	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> +	struct mediatek_dwmac_plat_data *plat = priv;
 > +	int ret = 0;
-> +	u32 tmp;
 > +
-> +	if (to_sleep) {
-> +		writel_relaxed(SLP_PROT_EN, larb->base + SMI_LARB_SLP_CON);
-> +		ret = readl_poll_timeout_atomic(larb->base + SMI_LARB_SLP_CON,
-> +						tmp, !!(tmp & SLP_PROT_RDY), 10, 1000);
-> +		if (ret)
-> +			dev_warn(dev, "sleep ctrl is not ready(0x%x).\n", tmp);
+> +	if (enabled) {
+> +		ret = clk_bulk_prepare_enable(plat->num_clks_to_config, plat->clks);
+> +		if (ret) {
+> +			dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
+> +			return ret;
+> +		}
 > +	} else {
-> +		writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
+> +		clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
 > +	}
+> +
 > +	return ret;
 > +}
-> +
->   static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
+>   static int mediatek_dwmac_probe(struct platform_device *pdev)
 >   {
->   	struct platform_device *smi_com_pdev;
-> @@ -477,24 +501,31 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
->   {
->   	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
->   	const struct mtk_smi_larb_gen *larb_gen = larb->larb_gen;
-> -	int ret;
-> +	int ret = 0;
+>   	struct mediatek_dwmac_plat_data *priv_plat;
+> @@ -420,6 +431,7 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
+>   	plat_dat->bsp_priv = priv_plat;
+>   	plat_dat->init = mediatek_dwmac_init;
+>   	plat_dat->exit = mediatek_dwmac_exit;
+> +	plat_dat->clks_config = mediatek_dwmac_clks_config;
+>   	mediatek_dwmac_init(pdev, priv_plat);
 >   
->   	ret = clk_bulk_prepare_enable(larb->smi.clk_num, larb->smi.clks);
-> -	if (ret < 0)
-> +	if (ret)
->   		return ret;
->   
-> +	if (MTK_SMI_CAPS(larb->larb_gen->flags_general, MTK_SMI_FLAG_SLEEP_CTL))
-> +		ret = mtk_smi_larb_sleep_ctrl(dev, false);
-> +
->   	/* Configure the basic setting for this larb */
->   	larb_gen->config_port(dev);
->   
-> -	return 0;
-> +	return ret;
->   }
->   
->   static int __maybe_unused mtk_smi_larb_suspend(struct device *dev)
->   {
->   	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
-> +	int ret = 0;
-> +
-> +	if (MTK_SMI_CAPS(larb->larb_gen->flags_general, MTK_SMI_FLAG_SLEEP_CTL))
-> +		ret = mtk_smi_larb_sleep_ctrl(dev, true);
-
-Sorry but what happens if SLP_PROT_RDY is not getting set properly?
- From what I can understand in the commit description that you wrote, if we reach
-the timeout, then the LARB transactions are not over....
-
-I see that you are indeed returning a failure here, but you are also turning off
-the clocks regardless of whether we get a failure or a success; I'm not sure that
-this is right, as this may leave the hardware in an unpredictable state (since
-there were some more LARB transactions that didn't go through), leading to crashes
-at system resume (or when retyring to suspend).
-
->   
->   	clk_bulk_disable_unprepare(larb->smi.clk_num, larb->smi.clks);
-> -	return 0;
-> +	return ret;
->   }
->   
->   static const struct dev_pm_ops smi_larb_pm_ops = {
+>   	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
 > 
 
+Hello Biao,
+
+you're removing all calls to pm_runtime_* functions, so there is no more reason
+to include linux/pm_runtime.h in this file: please also remove the inclusion.
+
+Thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
