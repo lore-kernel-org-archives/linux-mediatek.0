@@ -4,96 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0DA6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 20:08:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6D1DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 20:12:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bDfKujQtf4OL+GI8Ff8wWcNRkkqaJvsv21N6HYaqfwo=; b=MNvXOud4WiTT/ZhkJ8PuP8ee2B
-	rIYt8yJ91Ofewu2H7UAgL9BZrw7D/2fAaFr3sjiJZwSkKr7mDTEz8j/9zBrpr/QUM2qs2lemDHZpm
-	B+1QPdZMI6lQgda/8qhVmnNqaKw8UWba7crIu57pwgrQ8NOG9I/tIm3hfeKge3jbcl7Ar9aeUcYNm
-	wiWGPrxR03I/FdxHAwApnmF9o7WrTWqi1oEKsbiHPJskn9WusvYt2o8QDCRM6CV9VHNxTAPkzojwQ
-	uRIcI6dQou4qLhpgrH1maMJW7npf4HIsLfS6a3pONs1PNc9chSLbOWU79ED3uveY6hgFBM15VGQVT
-	f9AHdA+w==;
+	bh=sVb3MUiWBUwMrlwNmUXH/ChPiKOCAUAqhVwpNo6+YYg=; b=WBVR8+24ocqqMwFPSDxYvFbngj
+	vSPpJuGGBBnxmeNBo7AebVrerzlrn1/m5iN4tqSnL/zrhkex9FK2NpttUWiUSmWjzduOF9hY1rhYs
+	Y3hd2WcWshOtRul0bZQ9QRlvT2E/EO1O0YgjMQ6WfZ5hFzUdZNqD5IDhHQpFS5Eg9MH4bM3vu/YrU
+	YjkHOl3iGlQDfTxbzy7I9vDCOHu+NO8j6dQevteAiOA6HFPAPA+0YfUQ8dFaO6JsymEBWztM8qQKU
+	QCcuI2QLGkNmtniFMThUbyjSPKvLJbRFpXMaNAKzDLV/DbTOos2zYTGcC7DqGAN6BBq1DMAhPlI3x
+	4RtSjoZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mugl4-009z2R-5f; Tue, 07 Dec 2021 20:08:14 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1mugoZ-009zg9-TR; Tue, 07 Dec 2021 20:11:51 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mugl1-009z1c-9h
- for linux-mediatek@lists.infradead.org; Tue, 07 Dec 2021 20:08:12 +0000
+ id 1mugoW-009zfZ-Gr
+ for linux-mediatek@lists.infradead.org; Tue, 07 Dec 2021 20:11:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1638907690;
+ s=mimecast20190719; t=1638907907;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=F8zzokBpVhqyVEh6FYhVKGMP/Mg3r+q2m+63DkVRI/E=;
- b=WHCj554WrbOBrVIHzJfHMxIHAVDRaOg+BHfKOI8WFDsGC2V22zYO9C1/H7PuN3Ug1XEBNi
- Im/+yz5n7HlZYzY8vD1sqHY0LmnWM8OCsnmEyiL7S1N/K2xMzwynlsJhV8PvP11pdjsBKV
- HGP9awJ/jt+cWQflEBBqtZmwbjoHoM0=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=BAvBUkvmH9VOTtYCHaOSrjxTLzeaebF0DBD7drcydEg=;
+ b=C4MuZxdtagHaWyhA8jWhBpvUFf+CJ3FgrsPSSS05FrDaNlPArl0WnTGvpFJnv7w5Ifgl+L
+ QCaXKH3sEtaMMp6F/OS41Iuj8a9XWuKSmBWaIggiAyeo0SveGWj0UJBPpY2wgBN77Cvi85
+ nJkcUCa+uY2Ad198AzP97gMxq9trMQk=
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-332-ykYvzD0PPfGt_rQABdXU5A-1; Tue, 07 Dec 2021 15:08:09 -0500
-X-MC-Unique: ykYvzD0PPfGt_rQABdXU5A-1
-Received: by mail-qt1-f199.google.com with SMTP id
- a26-20020ac8001a000000b002b6596897dcso399831qtg.19
- for <linux-mediatek@lists.infradead.org>; Tue, 07 Dec 2021 12:08:09 -0800 (PST)
+ us-mta-275-T5RthfyDNwCeTIKFLL6_Lw-1; Tue, 07 Dec 2021 15:11:45 -0500
+X-MC-Unique: T5RthfyDNwCeTIKFLL6_Lw-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ o3-20020a0562140e4300b0039a8ccca8efso893664qvc.7
+ for <linux-mediatek@lists.infradead.org>; Tue, 07 Dec 2021 12:11:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=eBvl6LFe+aw+Rh35aeMDmSH951L6XzA7tNWjg1mtFG8=;
- b=hnlGqlYnI5C6cNR28+L+XTspJbxfWwouL1O8DCbMlf3Nb0F2TOd/718fMYY9U/4rNZ
- aJUjJIumMXW9npKjtolsurhpx6rxeZhkRIvztWl2MZk4bsD1SNFmCwNFwPevaEpvIAyL
- 082gxhRkqX+6m6iAb6IHyv3pvuDRrBu3lehTXBCCUm1GEIdzNJv1VWtPjQFnS98Y6edS
- jholb2eGbYbI1u5gvA6UN7KsmB8xXLpt2GM8hxTO3eUjQ5sSqRDzTW1/opIK6KoVjl6L
- rUDSiG0nrZTylDoejUO9FMpGBVgmKZwtXJMZ6zhVFVBXpQ8BPS+1k8VBdeGCpwaUEFZt
- KN3w==
-X-Gm-Message-State: AOAM5331B7stH0q42IoEwxbTIXoZoASk5uSc+Wa8+uCTzlOPBllc4hfj
- mMr3VRN2CqrjnM9oTWuHVQlFaUKN147avMLIRtX6L+rIzIJX72IPd3NH0uRHCnBDzWmfeThcWwb
- aHTJCOBonYGBh3QEuzHR4OMmcOUzDcDOs
-X-Received: by 2002:a05:620a:a09:: with SMTP id
- i9mr1614346qka.768.1638907688628; 
- Tue, 07 Dec 2021 12:08:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJx0skii4m+c+RFKdfj7DFNZr066Mgdfx30R34dkotQ/yRz5s9AsXxgsHMtbzJuR+BG5wkfEPg==
-X-Received: by 2002:a05:620a:a09:: with SMTP id
- i9mr1614300qka.768.1638907688385; 
- Tue, 07 Dec 2021 12:08:08 -0800 (PST)
+ bh=o5U0T8lId4u/qtnYkSF6w2VpgkSGsEJ9/j1FJIOBWI8=;
+ b=a1KTdslyLI1Gz1E4Z3+yfV+fwdHb+ZJnGy+eQvJVofdHbNQMdaeGq+m8O7B+FRo9QT
+ /5T2+eizcsiIWSMR9RubXhjEDskq0b89IciXgLkcsSeUESFLpqoFe4J1vYKwy7BdR8q5
+ skvaCTYwDMpek/1XhP4sSWm2Aj2duf1qNxdVoHhiDhrFEXgroVdoemV3mJ/IvfSGtPeV
+ r4EEupPZzLLIV5dpSH2OFp2rysacDmLEf2pRqJlUxCxcD2waFmT0qO5t1bTQK+nFnjn0
+ /FGXwVFNRDRzVOIrbdD7FlKzOGsZIFz2mqqQKJdvM/wlO9wT9LyFCHkidRgAmiyhcggb
+ A4yw==
+X-Gm-Message-State: AOAM5308tn7pO2U7QPAqrf1bS3Ht7e15EKGxArXKHLy3cZauVQwPO0Am
+ ZzuP2a+u0YdhEh/lKo3s0gZoSDzIRdc9hetUn05lI6lhivZR5WTZ18aiHcrkNeOTzezJs6GUQyA
+ uaHtUv/uLa1ucoMvR1CPq+cOkZOQ12rJH
+X-Received: by 2002:ac8:5a96:: with SMTP id c22mr2025531qtc.602.1638907905426; 
+ Tue, 07 Dec 2021 12:11:45 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwG1pf4MzmjAPKtyQX3aPAClJ9qzTa7/zyMaT+QXwJJXzGjCmrGs3UJyfJTg+vIjTrnhF4fNw==
+X-Received: by 2002:ac8:5a96:: with SMTP id c22mr2025501qtc.602.1638907905179; 
+ Tue, 07 Dec 2021 12:11:45 -0800 (PST)
 Received: from localhost (net-37-182-17-175.cust.vodafonedsl.it.
  [37.182.17.175])
- by smtp.gmail.com with ESMTPSA id v2sm418115qkp.72.2021.12.07.12.08.07
+ by smtp.gmail.com with ESMTPSA id t35sm530705qtc.83.2021.12.07.12.11.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Dec 2021 12:08:07 -0800 (PST)
-Date: Tue, 7 Dec 2021 21:08:04 +0100
+ Tue, 07 Dec 2021 12:11:44 -0800 (PST)
+Date: Tue, 7 Dec 2021 21:11:41 +0100
 From: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>
-To: sean.wang@mediatek.com
-Cc: nbd@nbd.name, Soul.Huang@mediatek.com, YN.Chen@mediatek.com,
- Leon.Yen@mediatek.com, Eric-SY.Chang@mediatek.com,
- Mark-YW.Chen@mediatek.com, Deren.Wu@mediatek.com,
- km.lin@mediatek.com, robin.chiu@mediatek.com,
- Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
- ted.huang@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
- steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
- jemele@google.com, abhishekpandit@google.com, shawnku@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7921: fix possible resume failure
-Message-ID: <Ya+/JNMaq2O3BKwb@lore-desk>
-References: <Ya8ysehFjoEGGEf+@lore-desk--annotate>
- <1638897717-14465-1-git-send-email-sean.wang@mediatek.com>
+To: Deren Wu <Deren.Wu@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Sean Wang <sean.wang@mediatek.com>,
+ Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Leon Yen <Leon.Yen@mediatek.com>,
+ Eric-SY Chang <Eric-SY.Chang@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+ CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+ Eric Liang <Eric.Liang@mediatek.com>,
+ Stella Chang <Stella.Chang@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] mt76: mt7921: fix network buffer leak by txs missing
+Message-ID: <Ya+//bw09FMMwEh3@lore-desk>
+References: <7f6efbd8e749b21bec2257c54b8258ebe89738fe.1638795555.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <1638897717-14465-1-git-send-email-sean.wang@mediatek.com>
+In-Reply-To: <7f6efbd8e749b21bec2257c54b8258ebe89738fe.1638795555.git.deren.wu@mediatek.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lorenzo.bianconi@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_120811_444869_40052619 
-X-CRM114-Status: GOOD (  22.53  )
+X-CRM114-CacheID: sfid-20211207_121148_663244_FF5CE9D9 
+X-CRM114-Status: GOOD (  19.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,109 +104,168 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6080043668081527183=="
+Content-Type: multipart/mixed; boundary="===============8378804616252273755=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============6080043668081527183==
+--===============8378804616252273755==
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="S3T/g1lnhrSI4XOY"
+	protocol="application/pgp-signature"; boundary="HlBm58Dcb78sl8w9"
 Content-Disposition: inline
 
---S3T/g1lnhrSI4XOY
+--HlBm58Dcb78sl8w9
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> From: Sean Wang <sean.wang@mediatek.com>
+> From: Deren Wu <deren.wu@mediatek.com>
 >=20
-> >> From: Sean Wang <sean.wang@mediatek.com>
-> >>
-> >> Fix the possible resume failure due to mt76_connac_mcu_set_hif_suspend
-> >> timeout.
-> >>
-> >> That is because clearing the flag pm->suspended too early opened up a
-> >> race window, where mt7921_poll_tx/rx scheduled a ps_work to put the
-> >> device in doze mode, that is unexpected for the device is being
-> >> resumed from the suspend state and would make the remaining MCU
-> >> comamnds in resume handler failed to execute.
-> >
-> >do we have a similar issue in mt7921s_resume()?
+> TXS in mt7921 may be forwared to tx_done event. Should try to catch
+> TXS information in tx_done event as well.
 >=20
-> We don't have the same issue found in mt7921s_resume because the driver
-> guarantees all MCU commands (even in mt7921s_resume) always work in the a=
-ctive
-> state.
+> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
+> ---
+>  .../net/wireless/mediatek/mt76/mt7921/mac.c   |  2 +-
+>  .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 17 ++++++++++++
+>  .../net/wireless/mediatek/mt76/mt7921/mcu.h   | 27 +++++++++++++++++++
+>  .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
+>  4 files changed, 46 insertions(+), 1 deletion(-)
 >=20
-> But we can have the same patch for mt7921s just to make code consistent w=
-ith
-> mt7921e.
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mac.c
+> index edf54b192f37..2514708e9ac8 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+> @@ -1150,7 +1150,7 @@ mt7921_mac_add_txs_skb(struct mt7921_dev *dev, stru=
+ct mt76_wcid *wcid, int pid,
+>  =09return !!skb;
+>  }
+> =20
+> -static void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data)
+> +void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data)
+>  {
+>  =09struct mt7921_sta *msta =3D NULL;
+>  =09struct mt76_wcid *wcid;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mcu.c
+> index 1227d626e9d3..8f58af4e29c6 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+> @@ -418,6 +418,20 @@ mt7921_mcu_low_power_event(struct mt7921_dev *dev, s=
+truct sk_buff *skb)
+>  =09trace_lp_event(dev, event->state);
+>  }
+> =20
+> +static void
+> +mt7921_mcu_tx_done_event(struct mt7921_dev *dev, struct sk_buff *skb)
+> +{
+> +=09struct mt7921_mcu_tx_done_event *event;
+> +
+> +=09skb_pull(skb, sizeof(struct mt7921_mcu_rxd));
+> +=09event =3D (struct mt7921_mcu_tx_done_event *)skb->data;
+> +
+> +=09if (event->pid < MT_PACKET_ID_FIRST)
+> +=09=09return;
 
-ack, agree.
+I guess we do not need it since it is already checked in mt7921_mac_add_txs
+
+> +
+> +=09mt7921_mac_add_txs(dev, event->txs);
+> +}
+> +
+>  static void
+>  mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *=
+skb)
+>  {
+> @@ -445,6 +459,9 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *de=
+v, struct sk_buff *skb)
+>  =09case MCU_EVENT_LP_INFO:
+>  =09=09mt7921_mcu_low_power_event(dev, skb);
+>  =09=09break;
+> +=09case MCU_EVENT_TX_DONE:
+> +=09=09mt7921_mcu_tx_done_event(dev, skb);
+> +=09=09break;
+>  =09default:
+>  =09=09break;
+>  =09}
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/ne=
+t/wireless/mediatek/mt76/mt7921/mcu.h
+> index edc0c73f8c01..821af6e8d99a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
+> @@ -91,6 +91,33 @@ enum {
+>  =09MCU_EVENT_COREDUMP =3D 0xf0,
+>  };
+> =20
+> +struct mt7921_mcu_tx_done_event {
+> +=09u8 pid;
+> +=09u8 status;
+> +=09u16 seq;
+> +
+> +=09u8 wlan_idx;
+> +=09u8 tx_cnt;
+> +=09u16 tx_rate;
+
+can you please fix endianness of mt7921_mcu_tx_done_event?
 
 Regards,
 Lorenzo
 
->=20
-> >
-> >>
-> >> Fixes: ffa1bf97425b ("mt76: mt7921: introduce PM support")
-> >> Co-developed-by: YN Chen <YN.Chen@mediatek.com>
-> >> Signed-off-by: YN Chen <YN.Chen@mediatek.com>
-> >> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> >> ---
-> >>  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 7 +++++--
-> >>  1 file changed, 5 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> >> b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> >> index 5635de3c80b1..21a48f02ab60 100644
-> >> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> >> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> >> @@ -315,7 +315,6 @@ static int mt7921_pci_resume(struct pci_dev *pdev)
-> >>=09struct mt76_connac_pm *pm =3D &dev->pm;
-> >>=09int i, err;
-> >>
-> >> -=09pm->suspended =3D false;
-> >>=09err =3D pci_set_power_state(pdev, PCI_D0);
-> >>=09if (err)
-> >>=09=09return err;
-> >> @@ -353,7 +352,11 @@ static int mt7921_pci_resume(struct pci_dev *pdev=
-)
-> >>=09if (!pm->ds_enable)
-> >>=09=09mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
-> >>
-> >> -=09return mt76_connac_mcu_set_hif_suspend(mdev, false);
-> >> +=09err =3D mt76_connac_mcu_set_hif_suspend(mdev, false);
-> >> +
-> >> +=09pm->suspended =3D false;
-> >> +
-> >> +=09return err;
-> >>  }
-> >>  #endif /* CONFIG_PM */
-> >>
-> >> --
-> >> 2.25.1
-> >>
-> >
+> +
+> +=09u8 flag;
+> +=09u8 tid;
+> +=09u8 rsp_rate;
+> +=09u8 mcs;
+> +
+> +=09u8 bw;
+> +=09u8 tx_pwr;
+> +=09u8 reason;
+> +=09u8 rsv0[1];
+> +
+> +=09u32 delay;
+> +=09u32 timestamp;
+> +=09u32 applied_flag;
+> +=09u8 txs[28];
+> +
+> +=09u8 rsv1[32];
+> +} __packed;
+> +
+>  /* ext event table */
+>  enum {
+>  =09MCU_EXT_EVENT_RATE_REPORT =3D 0x87,
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers=
+/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> index d6b823713ba3..96647801850a 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
+> @@ -464,4 +464,5 @@ int mt7921s_tx_prepare_skb(struct mt76_dev *mdev, voi=
+d *txwi_ptr,
+>  =09=09=09   struct mt76_tx_info *tx_info);
+>  void mt7921s_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue_en=
+try *e);
+>  bool mt7921s_tx_status_data(struct mt76_dev *mdev, u8 *update);
+> +void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data);
+>  #endif
+> --=20
+> 2.18.0
 >=20
 
---S3T/g1lnhrSI4XOY
+--HlBm58Dcb78sl8w9
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYa+/JAAKCRA6cBh0uS2t
-rP8HAQCJ8HWqVgvcuEgmYSstf5h0Sei/dsGM3SatXC1xegI7swD/ZNVyb1+PBtF8
-uInGuoNrgIY7N6DVud2XrvNWF6dBjQ4=
-=6lcp
+iHUEABYIAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYa+//QAKCRA6cBh0uS2t
+rKIBAQDUBQi44Haok7jXFgo4LaCViKs/FeRb/+crPO6nObM/yQEA0e4HK8uNLDIo
+gsLYusdmg+Yxww4wl963+JMstITgngM=
+=SGCg
 -----END PGP SIGNATURE-----
 
---S3T/g1lnhrSI4XOY--
+--HlBm58Dcb78sl8w9--
 
 
 
---===============6080043668081527183==
+--===============8378804616252273755==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -218,6 +276,6 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============6080043668081527183==--
+--===============8378804616252273755==--
 
 
