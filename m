@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87A73C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 09:06:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6268C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 09:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=7WxMdRQmBxtEnrk+1tBYegwGnUXMQpzCWjycVV/QDfE=; b=nCJUQaE9R/F4MK
-	IIWahJk45EK1KFFUShLZqgA1rjebAOWs2jNwyqBs0GTsPvJgzKzS3ogOXujuSy4A8vPqJL/K3etW7
-	jLRElyexNHMuEdGDIaZNpRrQGW6iPbalu6aQMfmR+BmaJcStqdbbwcCqRessRKIj4N04mJ5DSl/kL
-	BbmIhCwFBkrZSW2YCnTCCd1TJlkK0mcIwDWYK8PZAZ+7cb5H4BisRbDoWputepWlD/SN6yVVez2LV
-	VfGMAwkeqALb6RjQan7fl3i/sL4w/1KcszTEeEHpLdg/SE6eyxI3ZC3G4DkBl4taYaRdkVjYF/nz4
-	b8GM8IaVygG6VtPIhlMw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DgP7mlWUForiOvmi3wxGtIQ/pX89kBA5jccT7T9B5rM=; b=VFR3MD7I496VAjpdlA9UiHOf2I
+	htcpPkvsPv/K2/TpDOY5PKwDDI0HpvkXnvSxdvQ/Mpyc0NHULz96TX4JvsL4FTcWBzulYV0vLiS7A
+	mWS3VFYOo3qhGblaxTFv2V6D5UULRfn/hnU2e+1bS3gpMO5vgddpckagpkfu3gaOMMfusOoQPDgvC
+	SDh3QuhOBwbhT+/gROI/AU6bvXigCJn9dVyjFdVCj6+GuvVA4qwKLcpaN8w60QWXHwudHYtIcQWu2
+	b+eiDEFoVBPxQv1+W39wXcYvRNVm7bEmeeRV/qMC5ukmLz4iRVyCwCWoCSFffLNRcvAngFFxutRnW
+	WwAKFF4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muWQr-007hZy-Jy; Tue, 07 Dec 2021 09:06:41 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1muWSE-007i95-Oc; Tue, 07 Dec 2021 09:08:06 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muWCy-007dB7-MK; Tue, 07 Dec 2021 08:52:22 +0000
-X-UUID: d8d1b84f2472484080f350e61544d85f-20211207
-X-UUID: d8d1b84f2472484080f350e61544d85f-20211207
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <qizhong.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 919865572; Tue, 07 Dec 2021 01:52:14 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Dec 2021 00:42:12 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Dec 2021 16:42:11 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 7 Dec 2021 16:42:10 +0800
-From: qizhong cheng <qizhong.cheng@mediatek.com>
-To: Ryder Lee <ryder.lee@mediatek.com>, Jianjun Wang
- <jianjun.wang@mediatek.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>, Bjorn Helgaas
- <bhelgaas@google.com>
-CC: <linux-pci@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <qizhong.cheng@mediatek.com>, <chuanjia.liu@mediatek.com>,
- =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>
-Subject: [RESEND PATCH v2] PCI: mediatek: Delay 100ms to wait power and clock
- to become stable
-Date: Tue, 7 Dec 2021 16:41:53 +0800
-Message-ID: <20211207084153.23019-1-qizhong.cheng@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ id 1muWHX-007eRH-U4; Tue, 07 Dec 2021 08:57:05 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id ADE191F44D8B
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638867422; bh=6nmUTy2qScz4iTwXjqQt0rHoA1TXWwXjzZV/fmWui78=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=QKWHMuu5MIBaoMET43C9soRtIOij55jI75VSMpib0iawKdoiBkK20yQOfM8K0bA1H
+ mIlHI5anp3xP/om0YfO56YFbkE+x59LCgTk0P1E6jEI4TSAgOB8Bn+HudlcEl5L7Lj
+ 0W1xcTyM7p8C/EIkgyAQxsMREoHfomCqmI1R35niwX3m/9U/RgcartIfFL9cYEw0NY
+ dACSCmbJNTgttlGUTumf7Ixv+qkDxuxUmLBIJId5xrGRjvcmvVUv6c5XAN0HaXhB6s
+ pnW8XiOmhbLvCpGPlYjl548ujYKn9zTyWKZHZy926Psh3P8ZEEanceqXYmtEBqgCvV
+ pIWWjhztMnuBg==
+Subject: Re: [PATCH 3/4] memory: mtk-smi: Add sleep ctrl function
+To: Yong Wu <yong.wu@mediatek.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
+ anan.sun@mediatek.com, lc.kan@mediatek.com, yi.kuo@mediatek.com,
+ anthony.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+References: <20211203064027.14993-1-yong.wu@mediatek.com>
+ <20211203064027.14993-4-yong.wu@mediatek.com>
+ <f2ffd08a-44c3-9458-1bd8-68e3c0755611@collabora.com>
+ <ebc8e4c0b0519043c5a82c6c967ac6d524e8869a.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <47c30f6f-ce9d-9ea7-283c-9026ae9ed1c0@collabora.com>
+Date: Tue, 7 Dec 2021 09:56:59 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <ebc8e4c0b0519043c5a82c6c967ac6d524e8869a.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_005220_775136_31CAD89F 
-X-CRM114-Status: UNSURE (   7.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211207_005704_291251_898C68B7 
+X-CRM114-Status: GOOD (  34.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,33 +73,110 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RGVzY3JpYmVkIGluIFBDSWUgQ0VNIHNwZWNpZmljYXRpb24gc2VjdGlvbnMgMi4yIChQRVJTVCMg
-U2lnbmFsKSBhbmQKMi4yLjEgKEluaXRpYWwgUG93ZXItVXAgKEczIHRvIFMwKSkuIFRoZSBkZWFz
-c2VydGlvbiBvZiBQRVJTVCMgc2hvdWxkCmJlIGRlbGF5ZWQgMTAwbXMgKFRQVlBFUkwpIGZvciB0
-aGUgcG93ZXIgYW5kIGNsb2NrIHRvIGJlY29tZSBzdGFibGUuCgpTaWduZWQtb2ZmLWJ5OiBxaXpo
-b25nIGNoZW5nIDxxaXpob25nLmNoZW5nQG1lZGlhdGVrLmNvbT4KQWNrZWQtYnk6IFBhbGkgUm9o
-w6FyIDxwYWxpQGtlcm5lbC5vcmc+Ci0tLQoKdjI6CiAtIFR5cG8gZml4LgogLSBSZXdyYXAgaW50
-byBvbmUgcGFyYWdyYXBoLgoKIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpZS1tZWRpYXRlay5j
-IHwgNyArKysrKysrCiAxIGZpbGUgY2hhbmdlZCwgNyBpbnNlcnRpb25zKCspCgpkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMgYi9kcml2ZXJzL3BjaS9j
-b250cm9sbGVyL3BjaWUtbWVkaWF0ZWsuYwppbmRleCAyZjNmOTc0OTc3YTMuLmE2MWVhMzk0MDQ3
-MSAxMDA2NDQKLS0tIGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMKKysr
-IGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2llLW1lZGlhdGVrLmMKQEAgLTcwMiw2ICs3MDIs
-MTMgQEAgc3RhdGljIGludCBtdGtfcGNpZV9zdGFydHVwX3BvcnRfdjIoc3RydWN0IG10a19wY2ll
-X3BvcnQgKnBvcnQpCiAJICovCiAJd3JpdGVsKFBDSUVfTElOS0RPV05fUlNUX0VOLCBwb3J0LT5i
-YXNlICsgUENJRV9SU1RfQ1RSTCk7CiAKKwkvKgorCSAqIERlc2NyaWJlZCBpbiBQQ0llIENFTSBz
-cGVjaWZpY2F0aW9uIHNlY3Rpb25zIDIuMiAoUEVSU1QjIFNpZ25hbCkgYW5kCisJICogMi4yLjEg
-KEluaXRpYWwgUG93ZXItVXAgKEczIHRvIFMwKSkuIFRoZSBkZWFzc2VydGlvbiBvZiBQRVJTVCMg
-c2hvdWxkCisJICogYmUgZGVsYXllZCAxMDBtcyAoVFBWUEVSTCkgZm9yIHRoZSBwb3dlciBhbmQg
-Y2xvY2sgdG8gYmVjb21lIHN0YWJsZS4KKwkgKi8KKwltc2xlZXAoMTAwKTsKKwogCS8qIERlLWFz
-c2VydCBQSFksIFBFLCBQSVBFLCBNQUMgYW5kIGNvbmZpZ3VyYXRpb24gcmVzZXQJKi8KIAl2YWwg
-PSByZWFkbChwb3J0LT5iYXNlICsgUENJRV9SU1RfQ1RSTCk7CiAJdmFsIHw9IFBDSUVfUEhZX1JT
-VEIgfCBQQ0lFX1BFUlNUQiB8IFBDSUVfUElQRV9TUlNUQiB8Ci0tIAoyLjI1LjEKCgpfX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBt
-YWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
-dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Il 07/12/21 07:24, Yong Wu ha scritto:
+> Hi AngeloGioacchino,
+> 
+> Thanks for your review.
+> 
+> On Mon, 2021-12-06 at 16:08 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 03/12/21 07:40, Yong Wu ha scritto:
+>>> sleep control means that when the larb go to sleep, we should wait
+>>> a bit
+>>> until all the current commands are finished. thus, when the larb
+>>> runtime
+>>> suspend, we need enable this function to wait until all the existed
+>>> command are finished. when the larb resume, just disable this
+>>> function.
+>>> This function only improve the safe of bus. Add a new flag for this
+>>> function. Prepare for mt8186.
+>>>
+>>> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>>> ---
+>>>    drivers/memory/mtk-smi.c | 39
+>>> +++++++++++++++++++++++++++++++++++----
+>>>    1 file changed, 35 insertions(+), 4 deletions(-)
+> 
+> [snip]
+> 
+>>>    static int __maybe_unused mtk_smi_larb_suspend(struct device
+>>> *dev)
+>>>    {
+>>>    	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+>>> +	int ret = 0;
+>>> +
+>>> +	if (MTK_SMI_CAPS(larb->larb_gen->flags_general,
+>>> MTK_SMI_FLAG_SLEEP_CTL))
+>>> +		ret = mtk_smi_larb_sleep_ctrl(dev, true);
+>>
+>> Sorry but what happens if SLP_PROT_RDY is not getting set properly?
+>>   From what I can understand in the commit description that you wrote,
+>> if we reach
+>> the timeout, then the LARB transactions are not over....
+>>
+>> I see that you are indeed returning a failure here, but you are also
+>> turning off
+>> the clocks regardless of whether we get a failure or a success; I'm
+>> not sure that
+>> this is right, as this may leave the hardware in an unpredictable
+>> state (since
+>> there were some more LARB transactions that didn't go through),
+>> leading to crashes
+>> at system resume (or when retyring to suspend).
+> 
+> Thanks for this question. In theory you are right. In this case, the
+> bus already hang.
+> 
+> We only printed a fail log in this patch. If this fail happens, we
+> should request the master to check which case cause the larb hang.
+> 
+> If the master has a good reason or limitation, the hang is expected, I
+> think we have to add larb reset in this fail case: Reset the larb when
+> the larb runtime resume.
+> 
+
+Think about the case in which the system gets resumed only partially due to a
+
+failure during resume of some driver, or due to a RTC or arch timer resume and
+suspend right after... or perhaps during runtime suspend/resume of some devices.
+In that case, we definitely want to avoid any kind of failure point that would
+lead to a system crash, or any kind of user noticeable (or UX disrupting) "strange
+behavior".
+
+I think that we should make sure that the system suspends cleanly, instead of
+patching up any possible leftover issue at resume time: if this is doable with
+a LARB reset in suspend error case, that looks like being a good option indeed.
+
+As a side note, thinking about UX, losing a little more time during suspend is
+nothing really noticeable for the user... on the other hand, spending more time
+during resume may be something noticeable to the user.
+For this reason, I think that guaranteeing that the system resumes as fast as
+possible is very important, which adds up to the need of suspending cleanly.
+
+> Fortunately, we have never got this issue. We could add this reset when
+> necessary. Is this OK for you?
+> 
+> Thanks.
+> 
+>>
+>>>    
+>>>    	clk_bulk_disable_unprepare(larb->smi.clk_num, larb->smi.clks);
+>>> -	return 0;
+>>> +	return ret;
+>>>    }
+>>>    
+>>>    static const struct dev_pm_ops smi_larb_pm_ops = {
+>>>
+>>
+>>
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
