@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B7DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 01:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD6FAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 01:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=xfvWTcakkMz+dD74MgZoUirhWIu9CjogfKx4EA+nqZA=; b=1gjH63nuDgr4ek
-	cocoG6vCO2ip6K6M2pFXQhO0f8vps+kSl+OtGkyuL+8n1yu3VEOiJvThoyDRQL/dzojhmBoqR3ikD
-	m35Jn/nPsIe3axSEml2ioJ4abZt7wiF2IJEpQRaNI6jHmF8bnyGg72gedM7dCTNAvr+tFSVrC9Cw6
-	OUzabCzyVKTyRX6BU2+S+7fctaGGVLGRtQ1Roq0SrScGtMnbI3CtQp+JFM+3lfisdKRCUqFXE22+u
-	eh4Mw3Dn9UM9WfwkSCkeyL2jX9LFz8iMV9KF+OLYPOY/5zQomHe1BkdiaVJaWTwZNcuMfESr2VS7i
-	7YPUaCd7UX2fX+FumHKA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r/5NtYyOVI6N+Uto373tJ1n73neiz711nq9sf7ScCHw=; b=uofxdpI0Lmu+MH
+	X9S8c5ioH982BvDE+/P/qs53b+9tmgbuzv3+nG1GA1+Yloc4hapZTkn+1JiVvb4419+CEI4LmXDW1
+	FD2g6IF4pGI9AcoLxrSjz7g41BrBfC4h01pfWBxQPMS1Q6QrnayXqUd+476nkNTStNUbamQAnYP1U
+	ElHqhQ0Y2LTLBPtF1CXhTQhxnb/1k2t1ymbshX1GLHJXVTLbGy+UzXq5Eb7HiLB0t4iCge2ZihhTt
+	OYp7PQhDXHir9uUwKGbeYsTMazcAHVeBvgalaqeH4UJkVr4JUnHTRyxhwI9T5yCaWEC3FUX/ragMN
+	zexaRrJGPheEZscOXh4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muPfr-006dox-Km; Tue, 07 Dec 2021 01:53:43 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1muPkj-006gT8-Lc; Tue, 07 Dec 2021 01:58:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muPfd-006dm3-Sk; Tue, 07 Dec 2021 01:53:32 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 35890CE1986;
- Tue,  7 Dec 2021 01:53:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E42ADC004DD;
- Tue,  7 Dec 2021 01:53:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638842006;
- bh=eXTQmCkV7TlQUUyikTeYDDeh2Q2A+dhlVrouNNuPuY4=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=pfNIZhoFL5Z2N5wUx7SiDtzqqqsGp1pcVzcbnxzFyBCCu69un9CTSEJm20HqpSa26
- NWERhDKFPo2tvCk+QBNApNV2R0BjzaQb6HEhQPPFiQSS0jfiQdLbxZ8UEMeJ2R47Ek
- RyeS8Q1XhA8bxlJD55FyeVJQqykMHY0AwiVtQOd/qiAqPpL5Z6xLb8vgrfb/8EaWn1
- 5DjywXW46pWw0i9TqyPkMmf67XVcYTDuPFW2Q2jR7KumamuczRDHZDMk0vij1pkcNk
- EFuhijwDHyQp+EGTQTaXV75F8r8RbqRorE97rcvUYYRoHosPsrjo3gJsAe41zp0l+9
- 2VaYeiXJ7wPww==
-Date: Mon, 6 Dec 2021 19:53:23 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: qizhong cheng <qizhong.cheng@mediatek.com>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Krzysztof =?utf-8?Q?Wilczyi=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- Chuanjia Liu <chuanjia.liu@mediatek.com>,
- Jiey Yang <ot_jiey.yang@mediatek.com>
-Subject: Re: [PATCH] PCI: mediatek: Delay 100ms to wait power and clock to
- become stable
-Message-ID: <20211207015323.GA26237@bhelgaas>
+ id 1muPhV-006eUK-9i; Tue, 07 Dec 2021 01:55:27 +0000
+X-UUID: f8493d5421f04aa0952c22bc1f2179b5-20211206
+X-UUID: f8493d5421f04aa0952c22bc1f2179b5-20211206
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1012814631; Mon, 06 Dec 2021 18:55:21 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Dec 2021 17:55:20 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 7 Dec 2021 09:55:18 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 7 Dec 2021 09:55:17 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <dkirjanov@suse.de>
+Subject: [PATCH v5 0/7] MediaTek Ethernet Patches on MT8195
+Date: Tue, 7 Dec 2021 09:54:58 +0800
+Message-ID: <20211207015505.16746-1-biao.huang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211104062144.31453-1-qizhong.cheng@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_175330_128515_2E45425D 
-X-CRM114-Status: GOOD (  16.49  )
+X-CRM114-CacheID: sfid-20211206_175525_378156_B93BBD01 
+X-CRM114-Status: GOOD (  11.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,48 +78,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Nov 04, 2021 at 02:21:44PM +0800, qizhong cheng wrote:
-> Described in PCIe CEM specification setctions 2.2 (PERST# Signal) and
-> 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
-> be delayed 100ms (TPVPERL) for the power and clock to become stable.
+Changes in v5:
+1. remove useless inclusion in dwmac-mediatek.c as Angelo's comments.
+2. add acked-by in "net-next: stmmac: dwmac-mediatek: add support for
+   mt8195" patch
 
-Thanks for the spec references.
+Changes in v4:
+1. add changes in commit message in "net-next: dt-bindings: dwmac:
+   Convert mediatek-dwmac to DT schema" patch.
+2. remove ethernet-controller.yaml since snps,dwmac.yaml already include it.
 
-s/setctions/sections/
+Changes in v3:
+1. Add prefix "net-next" to support new IC as Denis's suggestion.
+2. Split dt-bindings to two patches, one for conversion, and the other for
+   new IC.
+3. add a new patch to update device node in mt2712-evb.dts to accommodate to
+   changes in driver.
+4. remove unnecessary wrapper as Angelo's suggestion.
+5. Add acked-by in "net-next: stmmac: dwmac-mediatek: Reuse more common
+   features" patch.
 
-> Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
-> ---
->  drivers/pci/controller/pcie-mediatek.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-> index 2f3f974977a3..b32acbac8084 100644
-> --- a/drivers/pci/controller/pcie-mediatek.c
-> +++ b/drivers/pci/controller/pcie-mediatek.c
-> @@ -702,6 +702,14 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
->  	 */
->  	writel(PCIE_LINKDOWN_RST_EN, port->base + PCIE_RST_CTRL);
->  
-> +	/*
-> +	 * Described in PCIe CEM specification setctions 2.2 (PERST# Signal)
-> +	 * and 2.2.1 (Initial Power-Up (G3 to S0)).
-> +	 * The deassertion of PERST# should be delayed 100ms (TPVPERL)
-> +	 * for the power and clock to become stable.
+Changes in v2:
+1. fix errors/warnings in mediatek-dwmac.yaml with upgraded dtschema tools
 
-s/setctions/sections/ again.  Otherwise we'll have a typo-fixing patch
-eventually.
+This series include 5 patches:
+1. add platform level clocks management for dwmac-mediatek
+2. resue more common features defined in stmmac_platform.c
+3. add ethernet entry for mt8195
+4. convert mediatek-dwmac.txt to mediatek-dwmac.yaml
 
-Please also rewrap into one paragraph.
+Biao Huang (7):
+  net-next: stmmac: dwmac-mediatek: add platform level clocks management
+  net-next: stmmac: dwmac-mediatek: Reuse more common features
+  arm64: dts: mt2712: update ethernet device node
+  net-next: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema
+  net-next: stmmac: dwmac-mediatek: add support for mt8195
+  arm64: dts: mt8195: add ethernet device node
+  net-next: dt-bindings: dwmac: add support for mt8195
 
-> +	 */
-> +	msleep(100);
-> +
->  	/* De-assert PHY, PE, PIPE, MAC and configuration reset	*/
->  	val = readl(port->base + PCIE_RST_CTRL);
->  	val |= PCIE_PHY_RSTB | PCIE_PERSTB | PCIE_PIPE_SRSTB |
-> -- 
-> 2.25.1
-> 
+ .../bindings/net/mediatek-dwmac.txt           |  91 ------
+ .../bindings/net/mediatek-dwmac.yaml          | 210 ++++++++++++
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |   1 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  14 +-
+ arch/arm64/boot/dts/mediatek/mt8195-evb.dts   |  92 ++++++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  70 ++++
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 306 ++++++++++++++++--
+ 7 files changed, 665 insertions(+), 119 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
