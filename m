@@ -4,63 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2E7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  6 Dec 2021 20:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3222DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 01:48:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=sua5lWYmfJOFJd2eaxK76mYGzSElWGkRAIzRD/sEZeI=; b=ibkPxb1T2o4763
-	3DRrFQ2OL5JNCFBmvTkEjij1WxnM/M5jWKVnUW1W8pK51jOWNvWhH+JESqgh1lxfep+q/WrNQ7k03
-	3SjtyX06AZMyrKb3O025V74LdLKmzpnKmkdAVn3ORKpkuapMkygR85c+BHH+++pqnU5oY0dURs1gv
-	Z/8kOnMQFPK0FVpy3Uxa024mZkUc91485Q2Cc389KpPTcWNxJKHmmPjUIJ2ABLDpF8sDh0gw9WQKY
-	+bZUlpaREOCj6A3l3U9/rRMh32oCwGXuY7538Icg524ol7isMOJUefZN3NQVJkWrewDR55GZ1pnlD
-	JRfpERt5teNHmfPAdoXw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HGLs07juzJfUv0iuoVQSpPqZesmQCGIul0jYkCqpKes=; b=1/Uy34sVlHYoo2
+	RzYlyrjWF7o/61DnTgdRgXEBWon95K8dJsNc5+m0FbREA/M5tRq6Rf8zDibsZElrorSbg8T0SuXY5
+	zWTWXKM9s9KvWtqE/dV+4F4UgXsmw1y2nqfmSeleGhBfN/IrEgpkAiht0m8ZJFl78mLViem6r7ZvG
+	EMrjZxVFndQ9swDYAEjRYxnv9Dm/F6f9Q1s6Hs/74MkgbTlSjhUgv9bMVDuIhtULulX6UqQGRKu44
+	CwJW20Ew1GXFv3jeE9yDt2WMggleWlj2CV+KJ8a47rMxA6dhXwIoFPHuuXyZUdl/4E1etvH6Xpc0Y
+	qfDdXwAiri9GnpVuZhKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muKKd-005cDT-Qd; Mon, 06 Dec 2021 20:11:27 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1muPaX-006cRF-HX; Tue, 07 Dec 2021 01:48:13 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muKKR-005cA6-9V; Mon, 06 Dec 2021 20:11:16 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 9F424CE180D;
- Mon,  6 Dec 2021 20:11:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87E91C341C1;
- Mon,  6 Dec 2021 20:11:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638821471;
- bh=sk7m/9ChjeTsUjA1qk7j5ctQRQdk4uoA60tUGbHHSbY=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=Ijqw3kx78+LoGUnZpNWhLrf6RJGhHPXcRbeTgQpFuaMUVRTUTWI8XhpfU07JhYiF6
- 5DEgw+7DXFREt8rqlLdP05XBl37ZYamSIRws3GbozwvAdDznYkF/eTrhwsrvuNvsw4
- kP997oKmoV2ltKht/7ZgM4FStAZ3TGzwmR5rJMsuy1j/hjV3bvreo8ubXb1O/nUpdc
- 0ZuuNv62ge7uND2fceBU1CmJoWxCV/QAdsnKHgDl3Dv7iwOu+EOHYM/XtqNNlyBmGk
- U4fo439hFDcGJlkk3uYOG4rCwSbX5oN2g3G9i++wbM4d8lo1jT3NQiDve8zHXgz8li
- yTsyLZMLn7nZQ==
-Date: Mon, 6 Dec 2021 14:11:10 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: linux-arm-kernel@lists.infradead.org,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, john@phrozen.org,
- linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v6 10/14] PCI: mediatek: allow selecting controller
- driver for airoha arch
-Message-ID: <20211206201110.GA7319@bhelgaas>
+ id 1muPaU-006cQ4-5r; Tue, 07 Dec 2021 01:48:12 +0000
+X-UUID: 02cd6a386af34804b40d5defdd6330fc-20211206
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=a+w0KP+ZqAlkYFHTZ/XSFagOIiGrcVHtihSDas+AcT4=; 
+ b=j7qV0gIriJWgPSxvYACBe8xuOczSgbVqyG/FuluiK26Nirbkr6b06MvSYIOKdMVjGDjvTG7gZ3dbOk5KreLcGcxX9gsfSAeFJZRA76heLXi2Se9Ezi4BibkTbjBtxLpNGA15obNHQgh5SW8iHjZE+Ilt0b2DZf4Lw+JA/jgW5bc=;
+X-UUID: 02cd6a386af34804b40d5defdd6330fc-20211206
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1844833977; Mon, 06 Dec 2021 18:48:05 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Dec 2021 17:38:03 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 7 Dec 2021 09:38:02 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 7 Dec 2021 09:38:01 +0800
+Message-ID: <183a86f912ba28930845847c0b19b4118e3db80a.camel@mediatek.com>
+Subject: Re: [PATCH v4 1/7] net-next: stmmac: dwmac-mediatek: add platform
+ level clocks management
+From: Biao Huang <biao.huang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, <netdev@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <dkirjanov@suse.de>
+Date: Tue, 7 Dec 2021 09:38:00 +0800
+In-Reply-To: <9dc0cbc3-8de0-f1ed-cfc9-852b7e69ab3c@collabora.com>
+References: <20211203063418.14892-1-biao.huang@mediatek.com>
+ <20211203063418.14892-2-biao.huang@mediatek.com>
+ <9dc0cbc3-8de0-f1ed-cfc9-852b7e69ab3c@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211203113331.20510-11-nbd@nbd.name>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_121115_535985_19AB4072 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20211206_174810_407660_E3C13A19 
+X-CRM114-Status: GOOD (  22.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,33 +87,91 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 03, 2021 at 12:33:27PM +0100, Felix Fietkau wrote:
-> The EN7523 SoC uses the same controller as MT7622
+Dear Angelo,
+	Thanks for your comments~
 
-See https://lore.kernel.org/r/20211206200601.GA7175@bhelgaas
-
-> Signed-off-by: Felix Fietkau <nbd@nbd.name>
-> ---
->  drivers/pci/controller/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Mon, 2021-12-06 at 16:14 +0100, AngeloGioacchino Del Regno wrote:
+> Il 03/12/21 07:34, Biao Huang ha scritto:
+> > This patch implements clks_config callback for dwmac-mediatek
+> > platform,
+> > which could support platform level clocks management.
+> > 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >   .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 24
+> > ++++++++++++++-----
+> >   1 file changed, 18 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > index 58c0feaa8131..157ff655c85e 100644
+> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> > @@ -359,9 +359,6 @@ static int mediatek_dwmac_init(struct
+> > platform_device *pdev, void *priv)
+> >   		return ret;
+> >   	}
+> >   
+> > -	pm_runtime_enable(&pdev->dev);
+> > -	pm_runtime_get_sync(&pdev->dev);
+> > -
+> >   	return 0;
+> >   }
+> >   
+> > @@ -370,11 +367,25 @@ static void mediatek_dwmac_exit(struct
+> > platform_device *pdev, void *priv)
+> >   	struct mediatek_dwmac_plat_data *plat = priv;
+> >   
+> >   	clk_bulk_disable_unprepare(plat->num_clks_to_config, plat-
+> > >clks);
+> > -
+> > -	pm_runtime_put_sync(&pdev->dev);
+> > -	pm_runtime_disable(&pdev->dev);
+> >   }
+> >   
+> > +static int mediatek_dwmac_clks_config(void *priv, bool enabled)
+> > +{
+> > +	struct mediatek_dwmac_plat_data *plat = priv;
+> > +	int ret = 0;
+> > +
+> > +	if (enabled) {
+> > +		ret = clk_bulk_prepare_enable(plat->num_clks_to_config, 
+> > plat->clks);
+> > +		if (ret) {
+> > +			dev_err(plat->dev, "failed to enable clks, err
+> > = %d\n", ret);
+> > +			return ret;
+> > +		}
+> > +	} else {
+> > +		clk_bulk_disable_unprepare(plat->num_clks_to_config,
+> > plat->clks);
+> > +	}
+> > +
+> > +	return ret;
+> > +}
+> >   static int mediatek_dwmac_probe(struct platform_device *pdev)
+> >   {
+> >   	struct mediatek_dwmac_plat_data *priv_plat;
+> > @@ -420,6 +431,7 @@ static int mediatek_dwmac_probe(struct
+> > platform_device *pdev)
+> >   	plat_dat->bsp_priv = priv_plat;
+> >   	plat_dat->init = mediatek_dwmac_init;
+> >   	plat_dat->exit = mediatek_dwmac_exit;
+> > +	plat_dat->clks_config = mediatek_dwmac_clks_config;
+> >   	mediatek_dwmac_init(pdev, priv_plat);
+> >   
+> >   	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
+> > 
 > 
-> diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-> index 93b141110537..f1342059c2a3 100644
-> --- a/drivers/pci/controller/Kconfig
-> +++ b/drivers/pci/controller/Kconfig
-> @@ -233,7 +233,7 @@ config PCIE_ROCKCHIP_EP
->  
->  config PCIE_MEDIATEK
->  	tristate "MediaTek PCIe controller"
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
->  	depends on OF
->  	depends on PCI_MSI_IRQ_DOMAIN
->  	help
-> -- 
-> 2.30.1
+> Hello Biao,
 > 
-
+> you're removing all calls to pm_runtime_* functions, so there is no
+> more reason
+> to include linux/pm_runtime.h in this file: please also remove the
+> inclusion.
+> 
+> Thanks!
+Yes, I'll remove the inclusion in the next send.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
