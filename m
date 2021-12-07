@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 243A1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 01:59:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCFFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 01:59:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e8D11o8dH3Y+nECnexIdj9dNYP+hzWQI5z+VWAESK+g=; b=HQAfieYhwtTysc
-	SZVfmcZuXBUTfofucGoUrvFisQERgiKAVCGjJ+zQsMln3QF7AdpB2AzsMoGaopj7QGJTQMxHf5RF6
-	aTNsMQWJCzEjhLT3hEOyavzN6y/H9yMPxXkgwy9KAQ0i7O3p4Ti22b3mSF4kZ1jLb6kez8iUuPUwC
-	NNr2bVW6gWmYxG+RCM8En6ilQwUGmex3hepLMg0Y4VF+xZ2ToZvgCuVk0Vue+Uz0CXhg4J7kTclvP
-	tyB/0+W0n4fvafLhefD09KHDj6xK/ABmVvcoNKHPBawpfU+krJFtpJ/t7DPrpaefxLHdHMdVOnGCd
-	Y2QsfgEeziXw6RtzfQsw==;
+	List-Owner; bh=xP2lQNCrVkCoHe8RIYroxtV/WMhmn+J3fSHfCm7duUE=; b=11+Sw8+SenLE/T
+	qeSZYpLjDNnln2uuuR4D902vbFyIlB0pghOCnaSHRfotM723Wfvwg+/7pyFoytp3tw5T6B+mA57tX
+	mvG1nh+MNIfAGZM8Gx8DtHlDR/tdqraIK7vdeqx2cU0B4xxX5LhaAzdqPkzwSfA7C0cekeZhxgfhj
+	5isXpn+zqXzL4qCj6B8El/Ls1QjU3X+UdJOp1lotDlfRuATeML+Tv2CdHKNYMxZf8Vmp1hgpmGvfn
+	ZEV8/U2p15Upg0q8Gdxvl1nEioUpqZ03VnD1q02xHPQfRKeEOeTSwz2KVnPq0bmjkiFvz4jJay8v+
+	ayxDudgPU2hS4xMuIz/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muPlI-006gkE-D3; Tue, 07 Dec 2021 01:59:20 +0000
+	id 1muPlK-006gkz-Bg; Tue, 07 Dec 2021 01:59:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muPhX-006eUs-QL; Tue, 07 Dec 2021 01:55:29 +0000
-X-UUID: 2d14654839f0481e9185eea4fecca497-20211206
-X-UUID: 2d14654839f0481e9185eea4fecca497-20211206
+ id 1muPhY-006eWt-38; Tue, 07 Dec 2021 01:55:31 +0000
+X-UUID: 4700d323d7834d1a96dfc37b33c89868-20211206
+X-UUID: 4700d323d7834d1a96dfc37b33c89868-20211206
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1257477331; Mon, 06 Dec 2021 18:55:23 -0700
+ with ESMTP id 1479519238; Mon, 06 Dec 2021 18:55:25 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 6 Dec 2021 17:55:21 -0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 6 Dec 2021 17:55:23 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 7 Dec 2021 09:55:19 +0800
+ 15.2.792.15; Tue, 7 Dec 2021 09:55:22 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Tue, 7 Dec 2021 09:55:18 +0800
+ 15.0.1497.2 via Frontend Transport; Tue, 7 Dec 2021 09:55:20 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
  <robh+dt@kernel.org>
@@ -53,18 +53,17 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
  <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
  <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
  <dkirjanov@suse.de>
-Subject: [PATCH v5 1/7] net-next: stmmac: dwmac-mediatek: add platform level
- clocks management
-Date: Tue, 7 Dec 2021 09:54:59 +0800
-Message-ID: <20211207015505.16746-2-biao.huang@mediatek.com>
+Subject: [PATCH v5 3/7] arm64: dts: mt2712: update ethernet device node
+Date: Tue, 7 Dec 2021 09:55:01 +0800
+Message-ID: <20211207015505.16746-4-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211207015505.16746-1-biao.huang@mediatek.com>
 References: <20211207015505.16746-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211206_175527_887511_7390D94A 
-X-CRM114-Status: GOOD (  13.29  )
+X-CRM114-CacheID: sfid-20211206_175528_172205_6570851C 
+X-CRM114-Status: GOOD (  10.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,73 +80,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch implements clks_config callback for dwmac-mediatek platform,
-which could support platform level clocks management.
+Since there are some changes in ethernet driver,
+update ethernet device node in dts to accommodate to it.
 
 Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 ---
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 25 +++++++++++++------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts |  1 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 14 +++++++++-----
+ 2 files changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 58c0feaa8131..0ff57c268dca 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -9,7 +9,6 @@
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/of_net.h>
--#include <linux/pm_runtime.h>
- #include <linux/regmap.h>
- #include <linux/stmmac.h>
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+index 7d369fdd3117..11aa135aa0f3 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
++++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+@@ -110,6 +110,7 @@ &eth {
+ 	phy-handle = <&ethernet_phy0>;
+ 	mediatek,tx-delay-ps = <1530>;
+ 	snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
++	snps,reset-delays-us = <0 10000 10000>;
+ 	pinctrl-names = "default", "sleep";
+ 	pinctrl-0 = <&eth_default>;
+ 	pinctrl-1 = <&eth_sleep>;
+diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+index a9cca9c146fd..9e850e04fffb 100644
+--- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+@@ -726,7 +726,7 @@ queue2 {
+ 	};
  
-@@ -359,9 +358,6 @@ static int mediatek_dwmac_init(struct platform_device *pdev, void *priv)
- 		return ret;
- 	}
- 
--	pm_runtime_enable(&pdev->dev);
--	pm_runtime_get_sync(&pdev->dev);
--
- 	return 0;
- }
- 
-@@ -370,11 +366,25 @@ static void mediatek_dwmac_exit(struct platform_device *pdev, void *priv)
- 	struct mediatek_dwmac_plat_data *plat = priv;
- 
- 	clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
--
--	pm_runtime_put_sync(&pdev->dev);
--	pm_runtime_disable(&pdev->dev);
- }
- 
-+static int mediatek_dwmac_clks_config(void *priv, bool enabled)
-+{
-+	struct mediatek_dwmac_plat_data *plat = priv;
-+	int ret = 0;
-+
-+	if (enabled) {
-+		ret = clk_bulk_prepare_enable(plat->num_clks_to_config, plat->clks);
-+		if (ret) {
-+			dev_err(plat->dev, "failed to enable clks, err = %d\n", ret);
-+			return ret;
-+		}
-+	} else {
-+		clk_bulk_disable_unprepare(plat->num_clks_to_config, plat->clks);
-+	}
-+
-+	return ret;
-+}
- static int mediatek_dwmac_probe(struct platform_device *pdev)
- {
- 	struct mediatek_dwmac_plat_data *priv_plat;
-@@ -420,6 +430,7 @@ static int mediatek_dwmac_probe(struct platform_device *pdev)
- 	plat_dat->bsp_priv = priv_plat;
- 	plat_dat->init = mediatek_dwmac_init;
- 	plat_dat->exit = mediatek_dwmac_exit;
-+	plat_dat->clks_config = mediatek_dwmac_clks_config;
- 	mediatek_dwmac_init(pdev, priv_plat);
- 
- 	ret = stmmac_dvr_probe(&pdev->dev, plat_dat, &stmmac_res);
+ 	eth: ethernet@1101c000 {
+-		compatible = "mediatek,mt2712-gmac";
++		compatible = "mediatek,mt2712-gmac", "snps,dwmac-4.20a";
+ 		reg = <0 0x1101c000 0 0x1300>;
+ 		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+ 		interrupt-names = "macirq";
+@@ -734,15 +734,19 @@ eth: ethernet@1101c000 {
+ 		clock-names = "axi",
+ 			      "apb",
+ 			      "mac_main",
+-			      "ptp_ref";
++			      "ptp_ref",
++			      "rmii_internal";
+ 		clocks = <&pericfg CLK_PERI_GMAC>,
+ 			 <&pericfg CLK_PERI_GMAC_PCLK>,
+ 			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-			 <&topckgen CLK_TOP_ETHER_50M_SEL>;
++			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
++			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+ 		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-				  <&topckgen CLK_TOP_ETHER_50M_SEL>;
++				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
++				  <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+ 		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
+-					 <&topckgen CLK_TOP_APLL1_D3>;
++					 <&topckgen CLK_TOP_APLL1_D3>,
++					 <&topckgen CLK_TOP_ETHERPLL_50M>;
+ 		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
+ 		mediatek,pericfg = <&pericfg>;
+ 		snps,axi-config = <&stmmac_axi_setup>;
 -- 
 2.25.1
 
