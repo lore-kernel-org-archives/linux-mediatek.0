@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D54C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 15:14:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25704C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 15:34:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OLEryBnzfJNF+hr1zUBjNEe0/wtZnkWyU0RvN5DQ+ZA=; b=UTnH1x/A8u175M
-	tSmfbFEUVlNVJvrkhgu7gM4orNyA4dkz5cRqDkDJ5aEt2ec/oLd7Qbr5XeJsGXVlTk4J/D9KGXtkK
-	z+FQgpkTGlGqWzNnbJ7vK5P5IqFMqQ5RPAtHD1WDkh7QHiKpa08Vfner4PgnBBJ+S/wbNYL36ukjD
-	6fC/Runl86NY2HTcR1I/77f+jAxeBHjUhJuZAJ3umAHmlxzRYIG/fBGvK7+rbk1h/W9gqdrjV/wuo
-	rCmys4CsMfWC/FUB9SJfqrOI/Fav4rKi9QCpPVxIE43mkswEztpfxdq4Z5tHhNscwS69//6enPBBN
-	RySi09r2Nl2xgUgIEXZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=owopXekPvARrf9JVyZ6sTUdmV+v1Ra5hBGttdVAHBg8=; b=uLYPUfFhqLXzo+HMM5/ItO3gCz
+	j4Iqe30FpoGbZox1vuxMhQiEGdMYEF3NRgy5KjN+J2M/BeSlRv6LYoOT3pCLB2dQ0TUrrnt/1VlCb
+	CvpgY3+QkiiZYP2h4ivwWuogYc95IG6Tnr86riD9t3Yw1Rc7F4J8KkCkal0yKXOrXAIEzX15oUzmB
+	rEMTGCfqT8D1oej8DX+LxdA/W5+QwIGPY4bYToIHOPpL/F7UP+jCpm6GkRDx2Qi85TS4zpiJij414
+	w6HFA4RqN4otvU3UG46j4/2+3x2qNqGz79DyD9s+zWqFf1g2xvqPS6nba/qKR6CzQhl9xXRqkgLBE
+	Bp4DGmDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mucAR-0098hj-A3; Tue, 07 Dec 2021 15:14:07 +0000
-Received: from mail-ot1-f47.google.com ([209.85.210.47])
+	id 1mucTX-009Ffd-GW; Tue, 07 Dec 2021 15:33:51 +0000
+Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.164])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mubv6-0093dl-ES; Tue, 07 Dec 2021 14:58:18 +0000
-Received: by mail-ot1-f47.google.com with SMTP id
- x3-20020a05683000c300b0057a5318c517so18312439oto.13; 
- Tue, 07 Dec 2021 06:58:15 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=ISwB/Cqr0g2fR9Rv1ZPSZGA/iwpQtfwdBswG+ia19pY=;
- b=WmNKG3OEVP5HjNF73tTVmgXHjokSn+Zq6NAKEPxQX9dPqm5mmAJhHCn5WVVpzLBgvX
- LnCthGsQm5F3hSACuFK5ZTler04HvrDNlVvKp4ky7QdlCk5iNwB7N+bK6X7np3lX6/CZ
- 69GuVNX0Yrhbi/mRF18SMj2bSRjZ/3/cluDac5McRuRJAh86lDoq7kWb0jvKWqLHkyo4
- fC4E6abtVIP94PoLW9E7GEX6NaKpY+IhXX6uEKrIcCJPfVvEN1QoXaN46Gf4NNUAF8Hu
- 3pCX4vXGZGoY0ccYC3QpB67HKashnaPsnQNKvXQWcND9rTuJekHfcKyXMwC0NRWiPGfy
- eTdQ==
-X-Gm-Message-State: AOAM531CHkuGZfKdNss3p0dsxLT5rUx8K2CRP9SR9FxkkkC4qYsytfXS
- nSe86B3SjdpCcNDdbPt7ug==
-X-Google-Smtp-Source: ABdhPJzWbIjQ5ndnddb4GSl+z61bTtoUDb/1KYBoxAMiY033kVvOuMdyLuS3XWH3MrvukZoClyRG5g==
-X-Received: by 2002:a05:6830:2643:: with SMTP id
- f3mr35971443otu.187.1638889094869; 
- Tue, 07 Dec 2021 06:58:14 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id g4sm2719201oof.40.2021.12.07.06.58.13
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Dec 2021 06:58:13 -0800 (PST)
-Received: (nullmailer pid 5806 invoked by uid 1000);
- Tue, 07 Dec 2021 14:58:10 -0000
-From: Rob Herring <robh@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Rob Herring <robh+dt@kernel.org>, linux-stm32@st-md-mailman.stormreply.com,
- davem@davemloft.net, netdev@vger.kernel.org, dkirjanov@suse.de,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-mediatek@lists.infradead.org,
- Jakub Kicinski <kuba@kernel.org>, linux-arm-kernel@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- angelogioacchino.delregno@collabora.com,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, Jose Abreu <joabreu@synopsys.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, macpaul.lin@mediatek.com
-In-Reply-To: <20211207015505.16746-5-biao.huang@mediatek.com>
-References: <20211207015505.16746-1-biao.huang@mediatek.com>
- <20211207015505.16746-5-biao.huang@mediatek.com>
-Subject: Re: [PATCH v5 4/7] net-next: dt-bindings: dwmac: Convert
- mediatek-dwmac to DT schema
-Date: Tue, 07 Dec 2021 08:58:10 -0600
-Message-Id: <1638889090.734543.5805.nullmailer@robh.at.kernel.org>
+ id 1mucTD-009FZE-9M
+ for linux-mediatek@lists.infradead.org; Tue, 07 Dec 2021 15:33:32 +0000
+X-Virus-Scanned: Proofpoint Essentials engine
+Received: from mx1-us1.ppe-hosted.com (unknown [10.110.51.164])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 400802A0070;
+ Tue,  7 Dec 2021 15:33:28 +0000 (UTC)
+Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
+ by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
+ 77ACBB0008C; Tue,  7 Dec 2021 15:33:27 +0000 (UTC)
+Received: from [192.168.1.115] (unknown [98.97.71.183])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mail3.candelatech.com (Postfix) with ESMTPSA id 3DBB613C2B0;
+ Tue,  7 Dec 2021 07:33:26 -0800 (PST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 3DBB613C2B0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
+ s=default; t=1638891207;
+ bh=YDQa2OJN7nV9hEolGlq1UYeF9tA7KtmMdZ/FpojLsso=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=CYezbsUXYJ8FRrxakOwxE6mXVfrJCD6uAM+zX0IyVKa7VPs9W0yZ1vOpuzqrrQMgk
+ uXxiFxxGtbKzI4kGjb8sO8EwycsnzcZfjC/wziH4ff2SsAMU3hrRr0BdMNmf6mk+QF
+ WjkEc0FisZll4lEhGLjeOwAb5ZE1AcEbOZoTRBEM=
+Subject: Re: [PATCH] mt76: mt7915: add mu-mimo and ofdma debugfs knobs
+To: meichia chiu <meichia.chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Money Wang <Money.Wang@mediatek.com>, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+References: <20211206141006.29632-1-MeiChia.Chiu@mediatek.com>
+ <7158a937-57f3-2bd8-591e-124a18d2d8e8@candelatech.com>
+ <72ca4f5fe3c351ec56dee4935b28c7b7f26188c2.camel@mediatek.com>
+From: Ben Greear <greearb@candelatech.com>
+Organization: Candela Technologies
+Message-ID: <e4a8301c-53a1-9ca0-7e1d-fd235a22ccd6@candelatech.com>
+Date: Tue, 7 Dec 2021 07:33:25 -0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
+MIME-Version: 1.0
+In-Reply-To: <72ca4f5fe3c351ec56dee4935b28c7b7f26188c2.camel@mediatek.com>
+Content-Language: en-MW
+X-MDID: 1638891208-clVzOPXvi6wc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_065816_534812_E9EA0E0F 
-X-CRM114-Status: GOOD (  13.74  )
+X-CRM114-CacheID: sfid-20211207_073331_459975_2B3FEAA5 
+X-CRM114-Status: GOOD (  22.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,55 +79,62 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 07 Dec 2021 09:55:02 +0800, Biao Huang wrote:
-> Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
-> And there are some changes in .yaml than .txt, others almost keep the same:
->   1. compatible "const: snps,dwmac-4.20".
->   2. delete "snps,reset-active-low;" in example, since driver remove this
->      property long ago.
->   3. add "snps,reset-delay-us = <0 10000 10000>" in example.
->   4. the example is for rgmii interface, keep related properties only.
+On 12/6/21 11:25 PM, meichia chiu wrote:
+> On Mon, 2021-12-06 at 08:43 -0800, Ben Greear wrote:
+>> On 12/6/21 6:10 AM, MeiChia Chiu wrote:
+>>> From: MeiChia Chiu <meichia.chiu@mediatek.com>
+>>>
+>>> Add mu-mimo and ofdma packet counters statistics.
+>>
+>> Hello,
+>>
+>> Are these stats clear-on-read in the firmware?  If so, then we need
+>> to accumulate
+>> them in the driver.
+>>
+>> Is there any significant downside to enabling the stats?  For
+>> instance, a performance
+>> degradation in the firmware/hardware?
+>>
+>> Thanks,
+>> Ben
 > 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  .../bindings/net/mediatek-dwmac.txt           |  91 ----------
->  .../bindings/net/mediatek-dwmac.yaml          | 156 ++++++++++++++++++
->  2 files changed, 156 insertions(+), 91 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
->  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+> Hi Ben,
+> 
+> Yes, the current design is clear-on-read and its sole purpose is for
+> debugging only. If you need statistics, this may have to be done in
+> another way.
+
+So we could poll these stats in the other logic that polls firmware stats and accumulate
+them in the driver and display with debugfs and/or ethtool.  If you don't want
+to do the accumulation, and lease add a comment to your patch about the
+values being clear-on-read and someone else can add the accumulation logic
+later.
+
+> Yes, a performance degradation is expected since enabling this debug
+> function would burden MCU with more calculation.
+
+Have you done any testing to verify this?  If it is just bumping a few
+counters, it may not matter.  But I don't know how the firmware is actually
+implementing this, so maybe it is a lot more expensive than expected?
+
+Thanks,
+Ben
+
+> 
+> Thanks,
+> Meichia
 > 
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
-
-Full log is available here: https://patchwork.ozlabs.org/patch/1564459
-
-
-ethernet@1101c000: clock-names: ['axi', 'apb', 'mac_main', 'ptp_ref'] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: clocks: [[27, 34], [27, 37], [6, 154], [6, 155]] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: compatible: ['mediatek,mt2712-gmac'] does not contain items matching the given schema
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: compatible: 'oneOf' conditional failed, one must be fixed:
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: Unevaluated properties are not allowed ('compatible', 'reg', 'interrupts', 'interrupt-names', 'mac-address', 'clock-names', 'clocks', 'power-domains', 'snps,axi-config', 'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,txpbl', 'snps,rxpbl', 'clk_csr', 'phy-mode', 'phy-handle', 'snps,reset-gpio', 'mdio' were unexpected)
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
+-- 
+Ben Greear <greearb@candelatech.com>
+Candela Technologies Inc  http://www.candelatech.com
 
 _______________________________________________
 Linux-mediatek mailing list
