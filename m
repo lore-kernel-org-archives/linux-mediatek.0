@@ -4,85 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07489C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 08:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A85FBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 08:43:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-reply-to:
-	Date:Subject:Cc:To:From:References:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RzsxB4pbaWUQsHl9OyrjQ8SNIld8Iy4+EspTCRRpUPM=; b=yMxOmKQ/3Z0/BX
-	S34mDDrXGgw3VuVHa/snsEJNL43ARNGd01yzYSIkA1ayToLMam2K0Jbr1x0h8IimtLmHAQmGbroWT
-	x0XI4mS0eXhiExUaW4mcf1U0hW9FG/MzOzTBRsZVMpuvecOhp/FkFqxFEv8IU5WFIUpY9oORgUiQ9
-	BNdfLnR+pNDbrfXbmLMiQDEPWywIQ0StTfgVIPsI3Vk6dpkyzdsCPbQXf7zFGcYWYBEma2PfqNxbp
-	w8LfXpA+HHz/WGglRGBt8kOSwdNqdHnbXOWLwwhnzD5AUiy0zEC6Oy9qav8LDoKky+p8aCwEoOZA7
-	56zsRWsjBpB1pqmNb54g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=novEeV8Qu/Lj2AtUnSiOC+U49YvX49W01Ieyvfvi6zA=; b=M5FPEbtpr/xlHrzzuJbwH88acD
+	h8fzBYnaxyFNV7SMioXkAb6YJQNiJ6KK+2vjr4CTExCF5J4mEjli0lBXVaBZUuC4NblUO9vC/YUDU
+	oPbmozi5Ib8EtdeHLygOTPAzYbaVYRmuR60fmGSnP1pgqIzwxvvoxEs7Jr7yT8/bh0TSjxOS72zey
+	Cid/RGueiZy1LF00I6jG/CLLmp2CWq5bNmwthVDYVi1EUc22OclGMMFtxSB5LsVBRoJ5Xwq9tnf8d
+	dNIrLRhJxj2PG9hJ2A5XyEo35o5e1fX6ZoJhENeSHvaU502WYYfRdDwFyc5kYljsMFcq049zQW11T
+	wqAfQSUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muVUu-007Nm5-BY; Tue, 07 Dec 2021 08:06:48 +0000
-Received: from bzq-84-110-109-230.red.bezeqint.net ([84.110.109.230]
- helo=mx.tkos.co.il)
+	id 1muW42-007aQs-Gq; Tue, 07 Dec 2021 08:43:06 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muVUb-007Ngk-Pc; Tue, 07 Dec 2021 08:06:31 +0000
-Received: from tarshish (unknown [10.0.8.2])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mx.tkos.co.il (Postfix) with ESMTPS id E1A8A440855;
- Tue,  7 Dec 2021 10:06:08 +0200 (IST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tkos.co.il;
- s=default; t=1638864370;
- bh=esweGkmM1TaFxAsLsotS7LKsL2FjaGbpG3oTnnMt2EY=;
- h=References:From:To:Cc:Subject:Date:In-reply-to:From;
- b=GcPgxTp47EJex9304Cwrh1a93q3dHMKWiHIjz8ZTn4NegGPU69yqh7Su5vmg5fO+P
- Kh7nqdgkBIpI3Rf9UzzHq/x7N7cBaA/7R0ZE12PQaFHPd0XT3nfMmWwSoc6YNW6HJ/
- sY7u4RIykgN0trrfVUJdtS/HSKo97dqJciT8yZxSr0wjGT9g5g4otk+PHV0JYm9p9k
- P9YzQWW8WWhUeig+fPqnm1HPGtUlIZxk5urZr4h4aKbE+4xA9oZm9Je0d93bTim8GN
- 1As0GD0fgMDT/yrRdfvnw9AkNJRlBW1Fj0uJad+Crzam3J4mee0elu9epTaexUTQ7t
- Pqt45gjbFAkpw==
-References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
- <20211207080325.6hfokrrcs45iucx6@pengutronix.de>
-User-agent: mu4e 1.6.10; emacs 27.1
-From: Baruch Siach <baruch@tkos.co.il>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Marc Zyngier
- <maz@kernel.org>, Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>, Chunyan Zhang
- <chunyan.zhang@unisoc.com>, Bartosz Golaszewski <brgl@bgdev.pl>, Tony
- Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>, Jianqun Xu
- <jay.xu@rock-chips.com>, Alexandru Ardelean <aardelean@deviqon.com>,
- Thierry Reding <treding@nvidia.com>, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, patches@opensource.cirrus.com,
- bcm-kernel-feedback-list@broadcom.com, linux-power@fi.rohmeurope.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-pwm@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-unisoc@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, Ray
- Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, Scott
- Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy
- <j-keerthy@ti.com>, Orson Zhai <orsonzhai@gmail.com>, Baolin Wang
- <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir
- Zapolskiy <vz@mleia.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>, Lee Jones
- <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman
- <khilman@kernel.org>, Robert Jarzmik <robert.jarzmik@free.fr>, Manivannan
- Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Ludovic
- Desroches <ludovic.desroches@microchip.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Jonathan Hunter <jonathanh@nvidia.com>
-Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
- the drivers
-Date: Tue, 07 Dec 2021 10:05:08 +0200
-In-reply-to: <20211207080325.6hfokrrcs45iucx6@pengutronix.de>
-Message-ID: <87ilw0on3z.fsf@tarshish>
+ id 1muVtS-007XE5-Gd; Tue, 07 Dec 2021 08:32:12 +0000
+Received: from [IPv6:2a00:c281:1230:3700:b039:4e10:9830:879f] (unknown
+ [IPv6:2a00:c281:1230:3700:b039:4e10:9830:879f])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested) (Authenticated sender: dafna)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id BE2921F44D3A;
+ Tue,  7 Dec 2021 08:32:01 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1638865922; bh=2jT1HU0XXAhidWEVV53WhPL8fQKqtf/4yrL0tbbkOnM=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=H8qqPeNx6IsI21O014oDXTH/VJPk0/FIS/OeG9mV9/eLLQgTpbUy3Af9v2xtWhlFu
+ pGzoC3ksCC6Fm+6Cm5Pw12WdJpWmc8mZn8L9YrBmPoxldWpLqmNw+Cf1NbFViLQlO+
+ gwShAQbW3Pm/ofTXOnBU/SUw4f8ruMXleDJkni9PuIPom9KY6x8m4eSwxZk1qohmOE
+ Hi17B6DDh36OhC3+PQGKEsf8snz55ZWmOKdF7k80JUpOdvQVKVkfS0/HjdJbeWRVt5
+ M3nBkZIVftBSYx5/Zar3YUg+awtIJEvpy6ehbhvcVrCXq2IW54XFCm/Y2TMNN6hL9B
+ W7M605TV6cS9A==
+Subject: Re: [PATCH 1/2] iommu/mediatek: Always tlb_flush_all when each PM
+ resume
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: kernel@collabora.com, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ "moderated list:MEDIATEK IOMMU DRIVER" <linux-mediatek@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>, linux-media@vger.kernel.org,
+ sebastian.reichel@collabora.com, iommu@lists.linux-foundation.org
+References: <20211122104400.4160-1-dafna.hirschfeld@collabora.com>
+ <20211122104400.4160-2-dafna.hirschfeld@collabora.com>
+ <6abef78f6447c626b737fd35688f421c29871f43.camel@mediatek.com>
+From: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Message-ID: <d30438bf-9add-7904-bad0-0764e3602263@collabora.com>
+Date: Tue, 7 Dec 2021 10:31:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
+In-Reply-To: <6abef78f6447c626b737fd35688f421c29871f43.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_000630_052088_811CB3EA 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211207_003210_752768_F46F4D13 
+X-CRM114-Status: GOOD (  35.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,22 +74,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgVXdlLAoKT24gVHVlLCBEZWMgMDcgMjAyMSwgVXdlIEtsZWluZS1Lw7ZuaWcgd3JvdGU6Cj4g
-SGVsbG8gQW5keSwKPgo+IHlvdSBDYzogbGludXgtcHdtIGFuZCB0aGUgcHdtIG1haW50YWluZXJz
-IGluIHRoaXMgc2VyaWVzLiBJIGRvbid0IHNwb3QKPiBhbnl0aGluZyBwd20gc3BlY2lmaWMgaGVy
-ZSAoYXBhcnQgZnJvbSB0b3VjaGluZyBncGlvLW12ZWJ1IHdoaWNoIGFsc28KPiBjb250YWlucyBh
-IFBXTSBkcml2ZXIpLiBEbyBJIG1pc3Mgc29tZXRoaW5nPwoKVGhhdCdzIHByb2JhYmx5IGJlY2F1
-c2Ugb2YgZHJpdmVycy9ncGlvL2dwaW8tbXZlYnUuYyB0aGF0IGFwcGVhcnMgaW4gdGhlCk1BSU5U
-QUlORVJTIFBXTSBlbnRyeS4KCmJhcnVjaAoKLS0gCiAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgfi4gLn4gICBUayBPcGVuIFN5c3RlbXMKPX0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1vb08tLVUtLU9vby0t
-LS0tLS0tLS0tLXs9CiAgIC0gYmFydWNoQHRrb3MuY28uaWwgLSB0ZWw6ICs5NzIuNTIuMzY4LjQ2
-NTYsIGh0dHA6Ly93d3cudGtvcy5jby5pbCAtCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVk
-aWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+
+
+On 27.11.21 04:46, Yong Wu wrote:
+> Hi Dafna,
+> 
+> Sorry for reply late.
+> 
+> On Mon, 2021-11-22 at 12:43 +0200, Dafna Hirschfeld wrote:
+>> From: Yong Wu <yong.wu@mediatek.com>
+>>
+>> Prepare for 2 HWs that sharing pgtable in different power-domains.
+>>
+>> When there are 2 M4U HWs, it may has problem in the flush_range in
+>> which
+>> we get the pm_status via the m4u dev, BUT that function don't reflect
+>> the
+>> real power-domain status of the HW since there may be other HW also
+>> use
+>> that power-domain.
+>>
+>> The function dma_alloc_attrs help allocate the iommu buffer which
+>> need the corresponding power domain since tlb flush is needed when
+>> preparing iova. BUT this function only is for allocating buffer,
+>> we have no good reason to request the user always call pm_runtime_get
+>> before calling dma_alloc_xxx. Therefore, we add a tlb_flush_all
+>> in the pm_runtime_resume to make sure the tlb always is clean.
+>>
+>> Another solution is always call pm_runtime_get in the
+>> tlb_flush_range.
+>> This will trigger pm runtime resume/backup so often when the iommu
+>> power is not active at some time(means user don't call pm_runtime_get
+>> before calling dma_alloc_xxx), This may cause the performance drop.
+>> thus we don't use this.
+>>
+>> In other case, the iommu's power should always be active via device
+>> link with smi.
+>>
+>> The previous SoC don't have PM except mt8192. the mt8192 IOMMU is
+>> display's
+>> power-domain which nearly always is enabled. thus no need fix tags
+>> here.
+>> Prepare for mt8195.
+> 
+> In this patchset, this message should be not proper. I think you could
+> add the comment why this patch is needed in mt8173.
+> 
+>>
+>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+>> [imporvie inline doc]
+>> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+>> ---
+>>   drivers/iommu/mtk_iommu.c | 7 +++++++
+>>   1 file changed, 7 insertions(+)
+>>
+>> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+>> index 25b834104790..28dc4b95b6d9 100644
+>> --- a/drivers/iommu/mtk_iommu.c
+>> +++ b/drivers/iommu/mtk_iommu.c
+>> @@ -964,6 +964,13 @@ static int __maybe_unused
+>> mtk_iommu_runtime_resume(struct device *dev)
+>>   		return ret;
+>>   	}
+>>   
+>> +	/*
+>> +	 * Users may allocate dma buffer before they call
+>> pm_runtime_get,
+>> +	 * in which case it will lack the necessary tlb flush.
+>> +	 * Thus, make sure to update the tlb after each PM resume.
+>> +	 */
+>> +	mtk_iommu_tlb_flush_all(data);
+> 
+> This should not work. since current the *_tlb_flush_all call
+> pm_runtime_get_if_in_use which will always return 0 when it called from
+> this runtime_cb in my test. thus, It won't do the tlb_flush_all
+> actually.
+> 
+> I guess this also depend on these two patches of mt8195 v3.
+> [PATCH v3 09/33] iommu/mediatek: Remove for_each_m4u in tlb_sync_all
+> [PATCH v3 10/33] iommu/mediatek: Add tlb_lock in tlb_flush_all
+> 
+> like in [10/33], I added a mtk_iommu_tlb_do_flush_all which don't have
+> the pm operation.
+> 
+> This looks has a dependence. Let me know if I can help this.
+
+It did work for me, testing on elm device. I'll check that again.
+
+
+> 
+>> +
+>>   	/*
+>>   	 * Uppon first resume, only enable the clk and return, since
+>> the values of the
+>>   	 * registers are not yet set.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
