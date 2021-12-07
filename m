@@ -4,70 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25704C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 15:34:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03EFFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 15:54:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=owopXekPvARrf9JVyZ6sTUdmV+v1Ra5hBGttdVAHBg8=; b=uLYPUfFhqLXzo+HMM5/ItO3gCz
-	j4Iqe30FpoGbZox1vuxMhQiEGdMYEF3NRgy5KjN+J2M/BeSlRv6LYoOT3pCLB2dQ0TUrrnt/1VlCb
-	CvpgY3+QkiiZYP2h4ivwWuogYc95IG6Tnr86riD9t3Yw1Rc7F4J8KkCkal0yKXOrXAIEzX15oUzmB
-	rEMTGCfqT8D1oej8DX+LxdA/W5+QwIGPY4bYToIHOPpL/F7UP+jCpm6GkRDx2Qi85TS4zpiJij414
-	w6HFA4RqN4otvU3UG46j4/2+3x2qNqGz79DyD9s+zWqFf1g2xvqPS6nba/qKR6CzQhl9xXRqkgLBE
-	Bp4DGmDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TDNWPkcytyBkVNlPomkUGyhHSrzAj+8nsOCcB+da3bY=; b=KOShm4DHS86BZf
+	UU4t5t0DfNGUeDDELDkrKiEGJr2zHKfhewF2QjtR3eX6ECX3n+bNUXzHb2zkNOFuGKjx0LR1gG6IC
+	tarcR4lE+HlEdvd8lydxafP2epmXefvFen+F/pMHk7FfAO3gwBPv2RAkZckFnmWSzsWPQIakUY4M4
+	OdXuz4qUti4F05dbVT09lzYOpU1COrpZyZhVBI6ZoH+O+GrXgnMYZh/dqJBTLrq68Q0rBLcKLhCzZ
+	evwT7yvbKQYaUgLAdkuuBhvtE8lFGeOQ8qGZkNog7J4TKBm2AE5wNXnSyMUiSZ/L+CHD3eJzDQfXD
+	veJ+Yn7dNwCm0UNb7LGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mucTX-009Ffd-GW; Tue, 07 Dec 2021 15:33:51 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.164])
+	id 1mucmz-009Jte-5a; Tue, 07 Dec 2021 15:53:57 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mucTD-009FZE-9M
- for linux-mediatek@lists.infradead.org; Tue, 07 Dec 2021 15:33:32 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mx1-us1.ppe-hosted.com (unknown [10.110.51.164])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTPS id 400802A0070;
- Tue,  7 Dec 2021 15:33:28 +0000 (UTC)
-Received: from mail3.candelatech.com (mail2.candelatech.com [208.74.158.173])
- by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id
- 77ACBB0008C; Tue,  7 Dec 2021 15:33:27 +0000 (UTC)
-Received: from [192.168.1.115] (unknown [98.97.71.183])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mail3.candelatech.com (Postfix) with ESMTPSA id 3DBB613C2B0;
- Tue,  7 Dec 2021 07:33:26 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 3DBB613C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
- s=default; t=1638891207;
- bh=YDQa2OJN7nV9hEolGlq1UYeF9tA7KtmMdZ/FpojLsso=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=CYezbsUXYJ8FRrxakOwxE6mXVfrJCD6uAM+zX0IyVKa7VPs9W0yZ1vOpuzqrrQMgk
- uXxiFxxGtbKzI4kGjb8sO8EwycsnzcZfjC/wziH4ff2SsAMU3hrRr0BdMNmf6mk+QF
- WjkEc0FisZll4lEhGLjeOwAb5ZE1AcEbOZoTRBEM=
-Subject: Re: [PATCH] mt76: mt7915: add mu-mimo and ofdma debugfs knobs
-To: meichia chiu <meichia.chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Money Wang <Money.Wang@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-References: <20211206141006.29632-1-MeiChia.Chiu@mediatek.com>
- <7158a937-57f3-2bd8-591e-124a18d2d8e8@candelatech.com>
- <72ca4f5fe3c351ec56dee4935b28c7b7f26188c2.camel@mediatek.com>
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-Message-ID: <e4a8301c-53a1-9ca0-7e1d-fd235a22ccd6@candelatech.com>
-Date: Tue, 7 Dec 2021 07:33:25 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1mucmk-009JnR-48; Tue, 07 Dec 2021 15:53:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+ Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+ In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=LkV0ugmAwItsKGLuNMCYZ4l2rbseYZbS+kZJ2LdeEnQ=; b=KgfT69ikUtqj+G2ZzjkjEu8aPv
+ MHdbW8yjdQGUAwRJgcsYFcakNhjr0mA2Rkx8seIWJSfsUcsOoA+t3XAK0PTIEGjq/lBQHo4COkKlx
+ AJ+b7A9rOCL6YwayKuFF4VKGa4fxBaC3I2SjYiXCWqNHSarMIXNLMWnu+QMqBbQ9W+mr6nhCM95dv
+ mQEYzOaN+W2kiEVqC434saHYhLtoBk/2a1HWyjotsL48ZDHHWsYwfC+d+VIBCgGObsxQQV3IZrM73
+ LW6ylNWughfWp53/WJpqIkpBVRDDKuOCzIRvvVKogoGF7q8RkSneP0lxeKW9lMCUB6oNuAKg3WRNM
+ mKvx1mQQ==;
+Received: from e0022681537dd.dyn.armlinux.org.uk
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:56780 helo=rmk-PC.armlinux.org.uk)
+ by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1mucmg-0006Ow-3V; Tue, 07 Dec 2021 15:53:38 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
+ (envelope-from <rmk@armlinux.org.uk>)
+ id 1mucmf-00EyCl-KA; Tue, 07 Dec 2021 15:53:37 +0000
+In-Reply-To: <DGaGmGgWrlVkW@shell.armlinux.org.uk>
+References: <DGaGmGgWrlVkW@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
+To: Chris Snook <chris.snook@gmail.com>, Felix Fietkau <nbd@nbd.name>,
+ Florian Fainelli <f.fainelli@gmail.com>, John Crispin <john@phrozen.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Vivien Didelot <vivien.didelot@gmail.com>,
+ Vladimir Oltean <olteanv@gmail.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org
+Subject: [PATCH net-next 1/5] net: phylink: add legacy_pre_march2020 indicator
 MIME-Version: 1.0
-In-Reply-To: <72ca4f5fe3c351ec56dee4935b28c7b7f26188c2.camel@mediatek.com>
-Content-Language: en-MW
-X-MDID: 1638891208-clVzOPXvi6wc
+Content-Disposition: inline
+Message-Id: <E1mucmf-00EyCl-KA@rmk-PC.armlinux.org.uk>
+Date: Tue, 07 Dec 2021 15:53:37 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_073331_459975_2B3FEAA5 
-X-CRM114-Status: GOOD (  22.29  )
+X-CRM114-CacheID: sfid-20211207_075342_199509_16872C4B 
+X-CRM114-Status: GOOD (  13.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,62 +77,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 12/6/21 11:25 PM, meichia chiu wrote:
-> On Mon, 2021-12-06 at 08:43 -0800, Ben Greear wrote:
->> On 12/6/21 6:10 AM, MeiChia Chiu wrote:
->>> From: MeiChia Chiu <meichia.chiu@mediatek.com>
->>>
->>> Add mu-mimo and ofdma packet counters statistics.
->>
->> Hello,
->>
->> Are these stats clear-on-read in the firmware?  If so, then we need
->> to accumulate
->> them in the driver.
->>
->> Is there any significant downside to enabling the stats?  For
->> instance, a performance
->> degradation in the firmware/hardware?
->>
->> Thanks,
->> Ben
-> 
-> Hi Ben,
-> 
-> Yes, the current design is clear-on-read and its sole purpose is for
-> debugging only. If you need statistics, this may have to be done in
-> another way.
+Add a boolean to phylink_config to indicate whether a driver has not
+been updated for the changes in commit 7cceb599d15d ("net: phylink:
+avoid mac_config calls"), and thus are reliant on the old behaviour.
 
-So we could poll these stats in the other logic that polls firmware stats and accumulate
-them in the driver and display with debugfs and/or ethtool.  If you don't want
-to do the accumulation, and lease add a comment to your patch about the
-values being clear-on-read and someone else can add the accumulation logic
-later.
+We were currently keying the phylink behaviour on the presence of a
+PCS, but this is sub-optimal for modern drivers that may not have a
+PCS.
 
-> Yes, a performance degradation is expected since enabling this debug
-> function would burden MCU with more calculation.
+This commit merely introduces the new flag, but does not add any use,
+since we need all legacy drivers to set this flag before it can be
+used. Once these legacy drivers have been updated, we can remove this
+flag.
 
-Have you done any testing to verify this?  If it is just bumping a few
-counters, it may not matter.  But I don't know how the firmware is actually
-implementing this, so maybe it is a lot more expensive than expected?
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ include/linux/phylink.h | 3 +++
+ 1 file changed, 3 insertions(+)
 
-Thanks,
-Ben
-
-> 
-> Thanks,
-> Meichia
-> 
-
-
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index 01224235df0f..d005b8e36048 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -84,6 +84,8 @@ enum phylink_op_type {
+  * struct phylink_config - PHYLINK configuration structure
+  * @dev: a pointer to a struct device associated with the MAC
+  * @type: operation type of PHYLINK instance
++ * @legacy_pre_march2020: driver has not been updated for March 2020 updates
++ *	(See commit 7cceb599d15d ("net: phylink: avoid mac_config calls")
+  * @pcs_poll: MAC PCS cannot provide link change interrupt
+  * @poll_fixed_state: if true, starts link_poll,
+  *		      if MAC link is at %MLO_AN_FIXED mode.
+@@ -97,6 +99,7 @@ enum phylink_op_type {
+ struct phylink_config {
+ 	struct device *dev;
+ 	enum phylink_op_type type;
++	bool legacy_pre_march2020;
+ 	bool pcs_poll;
+ 	bool poll_fixed_state;
+ 	bool ovr_an_inband;
 -- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+2.30.2
+
 
 _______________________________________________
 Linux-mediatek mailing list
