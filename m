@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A090C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 15:55:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6452DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 15:57:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8Yc96epqvNCefMjRqWHjxZ3F3A551ayiOEq+z2DstqA=; b=ieUMF9OmLixHFL
-	cMVdlf26ojc7UDQiTeRKqPgT0WKbEv+Dunpirse5wacQYwQQhMtF4Q2OB1Tcqoh01RAcV78PUKSe5
-	+bzKTvGTH8P5xUR4f72HsMYunW6o8C0lI7PSpkYr17srajUWbQwLAe8yAQMLZ7hf3xKQmBa/USHnt
-	Zag1D1Q5ujbZW70m9ZY0+maKlHqa74ftjTV8C61TozuSysZGSYJMDyK0LJZxH4SwupJRfBg6JfRBM
-	ZRtP110EE67Qb6dcdIXBrHiaXeK8aJAnJf87leB2o1XjBisiMNxHStJQbRYTttWBwIPhcifoH3I1T
-	EeuAzrUpiQ+6TBNGVWZA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=k+iDLyy1Q2KL4VW26QxIoMT+9rUQ42PpFIOwmmhoSaM=; b=gk92XQzx9trrCC
+	VzIxXHn8Nj9GiYyklKRy2A2BBGc/XyPZulwMEdLG4KWHCqfMdcIDPAJbmMS0k404vjgEZwDMY8gho
+	SYy/gr1dkU/AOLbWCJoaDwQgQi3j2T8GbFrvTfzjWdDr4vfRX1OR58DD0iUE+tNEltk3u5zfPEPCJ
+	o34N2+dDwmBiUjocgbWFxrgzKfHbbhKy1JTtHBwe1MLoqFLPgqNaLYyGa9oxhHbITnftClucXWqe5
+	GELrN3OkSgk10i/o3LquIaiHi3IHE5wAppMs+FuUgfhz9lavbz6UVOd+TYiXyyKPVo/xY4zqXLKAd
+	PGmizfhk22WN7qjvhssQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mucoj-009Kzh-4g; Tue, 07 Dec 2021 15:55:45 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1mucqU-009LyC-07; Tue, 07 Dec 2021 15:57:34 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mucnF-009JaG-24; Tue, 07 Dec 2021 15:54:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
- Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=mHHA4yNbkBopyxIjfJPY6MSbIpnvXuPcH/0ewslIK50=; b=Cg4u354wikJNNrDdU/27QOIjI4
- RkJugbt/S55vLhL2Y01crzU7UoJL9zp/grZEDjlU0yZMSTNIYreQ7kfTxqcWeqmOfyMwBb43cqxt7
- bgOkmEhpI5epoI18AyvfgDt+l/tEpDt4d1NfmdmFREn4D91maqdLLC2OhCW+MLTxOhulaE2iCR9Hu
- 8Y1fLEwQmteH5seCtdnWKMdgHTdWhfU0+n5jsT1H9h7p+R4PPtDZZobXWTWVW9L1NOpPqwI2yp2KT
- Q0in9lqXUnAenM50ingsuV1fBaW++Q4zbH+CT8Zh5ulmntd50C+He8ddJvHqvXee7ijbkRNJWLu8f
- SSnT1xUA==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56166)
- by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1mucl3-0006Od-CQ; Tue, 07 Dec 2021 15:51:58 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1muckz-0005SZ-Ck; Tue, 07 Dec 2021 15:51:53 +0000
-Date: Tue, 7 Dec 2021 15:51:53 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Chris Snook <chris.snook@gmail.com>, Felix Fietkau <nbd@nbd.name>,
- Florian Fainelli <f.fainelli@gmail.com>, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Heiner Kallweit <hkallweit1@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: [PATCH net-next 0/5] net: phylink: introduce legacy mode flag
-Message-ID: <Ya+DGaGmGgWrlVkW@shell.armlinux.org.uk>
+ id 1mucqF-009LsJ-Ao; Tue, 07 Dec 2021 15:57:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 990DACE1B21;
+ Tue,  7 Dec 2021 15:57:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC755C341C1;
+ Tue,  7 Dec 2021 15:57:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638892633;
+ bh=wrbsse3acJeCEeYR4Lf4gAc+9H0xGhKHL3PYig774uU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=TYTC/d+sMyDJri6M/pu7iG487aY5RcwzshvKFeGeMoZGIIYmZft9eFvHfPkWZs3z6
+ qzKs+7uCVeqNNugstO/Ax+j0iF1wEbzzn0Kq7l3SoLXAKDTWUfvR7xxSGY4RN+7c+A
+ pg3D5v7ARfUVmr2Lzhi6sQyN7IaHiAj/vISAm5qZ60bTUz9vXeIvP2/KAdAeFSHQde
+ 7tScDMEeJlcYgPNqxKUCdeGL67jY2lFDuIEXowt1a1B8nhiWK6cbFYWDr45q1+MY38
+ 5B96Ll9Q0cUXVxZ0SbyqvqOtwzBnCrZ23kvRkoWNNKe6cpazYAtmISTr8Q5zEb+WnM
+ XVLZ6ffgL2+AQ==
+Date: Tue, 7 Dec 2021 17:57:04 +0200
+From: Mike Rapoport <rppt@kernel.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: linux@armlinux.org.uk, matthias.bgg@gmail.com,
+ rmk+kernel@armlinux.org.uk, arnd@arndb.de,
+ akpm@linux-foundation.org, linux@roeck-us.net,
+ wangkefeng.wang@huawei.com, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ yj.chiang@mediatek.com
+Subject: Re: [PATCH] arm: remove [_text, _stext) from kernel code resource
+Message-ID: <Ya+EUDVYdBvRa7xI@kernel.org>
+References: <20211203141416.31121-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
+In-Reply-To: <20211203141416.31121-1-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_075413_133086_C667CC62 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20211207_075719_582084_B43EBDAB 
+X-CRM114-Status: GOOD (  23.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,57 +75,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi all,
+On Fri, Dec 03, 2021 at 10:14:16PM +0800, Mark-PK Tsai wrote:
+> Remove the [_text, _stext) from Kernel Code.
+> Although there are some startup code in head.text, they
+> are freed to the buddy system after kernel boot.
 
-In March 2020, phylink gained support to split the PCS support out of
-the MAC callbacks. By doing so, a slight behavioural difference was
-introduced when a PCS is present, specifically:
+Hmm, I don't see it is being freed anywhere. Can you elaborate when and how
+the range [_text, _stext) is freed?
 
-1) the call to mac_config() when the link comes up or advertisement
-   changes were eliminated
-2) mac_an_restart() will never be called
-3) mac_pcs_get_state() will never be called
+> And we have memory protection mechanism use this
+> which have false alarm when some other IPs doing dma
+> if the dma page frame is in the [_text, _stext).
+> 
+> Below are my iomem resource and reserved memory information:
+> console:/ # grep Kernel /proc/iomem
+>   20208000-219fffff : Kernel code
+>   21b00000-21c2e76f : Kernel data
+> 
+> console:/ # cat /sys/kernel/debug/memblock/reserved
+> 0: 0x20201000..0x20207fff
+> 1: 0x20300000..0x21c2e76f
+ 
+What are the addresses of _text and _stext in your configuration? 
+What these dumps are supposed to show here?
 
-The intention was to eventually remove this support once all phylink
-users were converted. Unfortunately, this still hasn't happened - and
-in some cases, it looks like it may never happen.
-
-Through discussion with Sean Anderson, we now need to allow the PCS to
-be optional for modern drivers, so we need a different way to identify
-these legacy drivers - in that we wish to allow the "modern" behaviour
-where mac_config() is not called on link-up events, even if there is
-no PCS attached.
-
-In order to do that, this series of patches introduce a
-"legacy_pre_march2020" which is used to permit the old behaviour - in
-other words, we get the old behaviour only when there is no PCS and
-this flag is true. Otherwise, we get the new behaviour.
-
-I decided to use the date of the change in the flag as just using
-"legacy" or "legacy_driver" is too non-descript. An alternative could
-be to use the git sha1 hash of the set of changes.
-
-I believe I have added the legacy flag to all the drivers which use
-legacy mode - that being the mtk_eth_soc ethernet driver, and many DSA
-drivers - the ones which need the old behaviour are identified by
-having non-NULL phylink_mac_link_state or phylink_mac_an_restart
-methods in their dsa_switch_ops structure.
-
-ag71xx and xilinx do not need the legacy flag. ag71xx is explained in
-its own commit, and xilinx only updates the inband advertisement in
-the mac_config() call, which is sufficient qualification to avoid it
-being marked legacy.
-
- drivers/net/ethernet/atheros/ag71xx.c       | 13 -------------
- drivers/net/ethernet/mediatek/mtk_eth_soc.c |  4 ++++
- drivers/net/phy/phylink.c                   | 12 ++++++------
- include/linux/phylink.h                     | 20 ++++++++++++++++++++
- net/dsa/port.c                              |  7 +++++++
- 5 files changed, 37 insertions(+), 19 deletions(-)
+> Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> ---
+>  arch/arm/kernel/setup.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/arch/arm/kernel/setup.c b/arch/arm/kernel/setup.c
+> index 284a80c0b6e1..85ffc9501e38 100644
+> --- a/arch/arm/kernel/setup.c
+> +++ b/arch/arm/kernel/setup.c
+> @@ -851,7 +851,7 @@ static void __init request_standard_resources(const struct machine_desc *mdesc)
+>  	struct resource *res;
+>  	u64 i;
+>  
+> -	kernel_code.start   = virt_to_phys(_text);
+> +	kernel_code.start   = virt_to_phys(_stext);
+>  	kernel_code.end     = virt_to_phys(__init_begin - 1);
+>  	kernel_data.start   = virt_to_phys(_sdata);
+>  	kernel_data.end     = virt_to_phys(_end - 1);
+> -- 
+> 2.18.0
+> 
 
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+Sincerely yours,
+Mike.
 
 _______________________________________________
 Linux-mediatek mailing list
