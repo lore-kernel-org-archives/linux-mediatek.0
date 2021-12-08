@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87458C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 01:48:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62D80C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 01:53:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=URzTjIWvmDQIm9/LcPNsHoTnHpV7CtyElvK0EOE0ack=; b=GYSbjet+Ikr2QL
-	WRgV6wSbY8gBIJptRtVYKJ9j4ZFz09LD7OCB8EQh66mfWSv//pszMLAwoRZCPDIAohL0HaC65BzTD
-	1C8/66Q7HCP1cgSIpqPyM1gk0l7BKE5A5RUmBRxKyF3ZhRI+trtBJ2FsJl0DGcyK9h3v8NxfyMUeB
-	0oVhZ7NMkTNgk7WNfqYtkwRUq1bqY+gcFCQgyHGZx1gpnmkxSZdinbcAOaLuGYC8SPKXnN1TmX5R8
-	iU03EjvhpUaBKH6BrVda5LhZVm1ZrnDe/NPBzBAGSmF46bXnAc2qRMWnV3Zdg0ECVCdzTc66fq1ti
-	OJMJrN4i/JIMeGzU7CPg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=YaY/ElN5YrEF9vF/g2OlnR9B89oCpbKSQ9dAttMm0lU=; b=jxUSW4wI59iKRk
+	ZmlE17ZqtZnRXl1H9cVl/H2JLhaBE44UTQm6Q+qtASZeCV+JHSkx1x50quSXcphfthiv//k+4UwE8
+	j33hVZmLhwxWo4uh7lCyylP0TM5D1UdbuVCD78JyR/GUa2uky47S5g+itTBRPUIzgdVKw1Sw3/J7S
+	uX5on5Z1ra0WR2dlaxaoT/vtbq7KOtmUAszAeV98T9RIs1y8lmnIXTO/CLZKCyijumag4IaFLqOUe
+	sl1V/3zsR36Ay+FUnWIbIzI2Q0mikdG4LcR4hI8T7Ww4SQNhaHTMXj1gWgDwvEom87sBRK2SyCC4G
+	ZP33tsCt67SZsR3v8lxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mum4S-00Acuv-Ov; Wed, 08 Dec 2021 01:48:36 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1mum9K-00Adh9-MX; Wed, 08 Dec 2021 01:53:38 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mum4Q-00Acth-IW
- for linux-mediatek@lists.infradead.org; Wed, 08 Dec 2021 01:48:35 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id l64so687415pgl.9
- for <linux-mediatek@lists.infradead.org>; Tue, 07 Dec 2021 17:48:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aljXQrfp/nk+XodhSs669E3VvH0uoHB2cwz4E+feFs0=;
- b=fiDcvQk0WrAprIYApbU9yo9ksEjH49kQkrHRxO8VYFqjKLsmHFrxp57bYYCtGVdJPu
- wMZRXPE7jLmsMFFQj/CoL5dLu3WQngIU/D/7h0Fm97a56bz5+jGms0xnnTgcKN1y53uJ
- PFk75HQabTZJjEXA8vSNbc3Pmz9cDfuBfaFgo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aljXQrfp/nk+XodhSs669E3VvH0uoHB2cwz4E+feFs0=;
- b=EgDlDQDBelCbULjfFhato1k1WXnLIp7mJowGQLAebHRmeW4YlKAliHgStr7Nyqwn/9
- mfrL0mAlub10GfuFMkghiEWr7eZ2cdjRfg8yfhZ2CkMEQF5ml9He5qThOoXAPZtpIRAf
- UgBKUH7JxQufM1XQuoarkHfZJW+6RgOcD9q5kfj8VpbOoQZmx7LxHtLZShCqK2k35B0n
- 8U9CufDJLUZ97PZXHJwC31KFQ16FRt4aOVQGWZdisPHERfh0CqRtiIJTQdWdr6eVfHPN
- USTxxYn2Nd4Qn3uBshixXtHkNTbET7gZuJNm0zRvUydcsxoJJQfoXSWbsv//kQQjlO5W
- w2uw==
-X-Gm-Message-State: AOAM532qmW5j8Ngqg7jdf5lAv7NnPEAZAh8/DYGXLGnAbXz6S8LoJDMn
- lIgbT/Tt8cz+t+4n/ySUNiLXxA==
-X-Google-Smtp-Source: ABdhPJzq8zPem4Gf5ADs/xOZ7wd9Z00KjDeEcd/30o7dSRnnLPv1CAdeUkobknzxFUIM8jqsHdkgyQ==
-X-Received: by 2002:a63:187:: with SMTP id 129mr27057651pgb.333.1638928109422; 
- Tue, 07 Dec 2021 17:48:29 -0800 (PST)
-Received: from pmalani2.mtv.corp.google.com
- ([2620:15c:202:201:3bcc:3d23:303f:533b])
- by smtp.gmail.com with ESMTPSA id p17sm1080565pfh.86.2021.12.07.17.48.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Dec 2021 17:48:29 -0800 (PST)
-From: Prashant Malani <pmalani@chromium.org>
-To: linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Cc: Prashant Malani <pmalani@chromium.org>,
- Alexandru M Stan <amstan@chromium.org>, Benson Leung <bleung@chromium.org>,
- devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE
- BINDINGS), 
- linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: [PATCH] arm64: dts: mt8183: kukui: Add Type C node
-Date: Tue,  7 Dec 2021 17:47:58 -0800
-Message-Id: <20211208014800.10058-1-pmalani@chromium.org>
-X-Mailer: git-send-email 2.34.1.400.ga245620fadb-goog
+ id 1mum9G-00AdgW-Hl; Wed, 08 Dec 2021 01:53:37 +0000
+X-UUID: 3a023dcafb524a43bf19026e3f3bac49-20211207
+X-UUID: 3a023dcafb524a43bf19026e3f3bac49-20211207
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <nancy.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1984251089; Tue, 07 Dec 2021 18:53:29 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Dec 2021 17:53:28 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 8 Dec 2021 09:53:25 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 8 Dec 2021 09:53:25 +0800
+Message-ID: <8a126638578e5437ae2b210e2e4076a29aa52907.camel@mediatek.com>
+Subject: Re: [PATCH v9 16/22] drm/mediatek: add ETHDR support for MT8195
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, "jason-jh . lin"
+ <jason-jh.lin@mediatek.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <singo.chang@mediatek.com>,
+ <srv_heupstream@mediatek.com>
+Date: Wed, 8 Dec 2021 09:53:25 +0800
+In-Reply-To: <ea057e8b080a7f553ee45f282459090dca4fb4c6.camel@pengutronix.de>
+References: <20211130033519.26086-1-nancy.lin@mediatek.com>
+ <20211130033519.26086-17-nancy.lin@mediatek.com>
+ <ea057e8b080a7f553ee45f282459090dca4fb4c6.camel@pengutronix.de>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_174834_635080_059B6F77 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211207_175334_625008_BF94D3A4 
+X-CRM114-Status: GOOD (  20.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,44 +79,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add a node describing the USB Type C connector, in order to utilize the
-Chromium OS USB Type-C driver that enumerates Type-C ports and connected
-cables/peripherals and makes them visible to userspace.
+Hi Philipp,
 
-Cc: Alexandru M Stan <amstan@chromium.org>
-Cc: Benson Leung <bleung@chromium.org>
-Signed-off-by: Prashant Malani <pmalani@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+Thanks for the review.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index 94c13c459194..d2796d17b856 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -886,6 +886,20 @@ usbc_extcon: extcon0 {
- 		cbas {
- 			compatible = "google,cros-cbas";
- 		};
-+
-+		typec {
-+			compatible = "google,cros-ec-typec";
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			usb_c0: connector@0 {
-+				compatible = "usb-c-connector";
-+				reg = <0>;
-+				power-role = "dual";
-+				data-role = "host";
-+				try-power-role = "source";
-+			};
-+		};
- 	};
- };
- 
--- 
-2.34.1.400.ga245620fadb-goog
+On Tue, 2021-11-30 at 10:46 +0100, Philipp Zabel wrote:
+> Hi Nancy,
+> 
+> On Tue, 2021-11-30 at 11:35 +0800, Nancy.Lin wrote:
+> [...]
+> > +void mtk_ethdr_stop(struct device *dev)
+> > +{
+> > +	struct mtk_ethdr *priv = dev_get_drvdata(dev);
+> > +	struct mtk_ethdr_comp *mixer = &priv->ethdr_comp[ETHDR_MIXER];
+> > +
+> > +	writel(0, mixer->regs + MIX_EN);
+> > +	writel(1, mixer->regs + MIX_RST);
+> > +	reset_control_reset(devm_reset_control_array_get(dev, true,
+> > true));
+> 
+> Are these reset lines really shared with other hardware units, and
+> more
+> specifically, are there other drivers that also try to control them?
+> 
+> If so, please use devm_reset_control_array_get_optional_shared().
+> 
+> Otherwise use devm_reset_control_array_get_optional_exclusive()
+> instead.
+> 
+> If you really need to share the reset line with other hardware and
+> have
+> to trigger it more than once, the only use case supported by the
+> reset
+> framework is to use reset_control_reset() before starting the
+> hardware
+> for each user and then reset_control_rearm() after stopping it for
+> all
+> users (see [1]). That would both stop the reset from being triggered
+> while the hardware is active (before last _rearm) and allow another
+> reset once after all hardware is stopped.
+> 
+> [1] 
+> https://urldefense.com/v3/__https://www.kernel.org/doc/html/latest/driver-api/reset.htm*triggering__;Iw!!CTRNKA9wMg0ARbw!zETfuA55cH_3uiTFEknFoWXKkApsSKFbemms9qLwluMdylp-FVK3jn5E9Ld1ZCwv$
+>  
+> 
+> Also, request the reset control once in the probe function, not every
+> time ETHDR is stopped. Otherwise you'll end up leaking devres memory
+> 
+> regards
+> Philipp
+
+These reset lines doesn't share with other hardware units. I will use
+devm_reset_control_array_get_optional_exclusive instead and and reqest
+reset control in the probe function.
+
+Regards,
+Nancy
+
 
 
 _______________________________________________
