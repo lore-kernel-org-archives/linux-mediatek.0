@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 034DEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 03:29:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C97C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 03:33:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=53VzvuFabSIVyptUVEXtIxBWX2R0JeQ3MR3clI8ywXo=; b=sEJzmwGFS4sm5q
-	8xdFYGdr9AvMOlU1Pl5nITQRcz6MQxvPlc2EN95pmaeqYcI/ceszF5loCA/rxtp/xv9CBqcgdjwkt
-	GqGBHTuJt2jfOamezGt8LQpzPYHWm1cch+3CcNdFZaYQl6kJXWcfDqO2UTD8jlzuapN2/rQHJSsXh
-	zsDCm/Yvjvh+08eBIINRorLWGVsvysHf7WwAM0Pz2+s8njOOMHBxP06VdvHujpdJQA9axYd3iw4uL
-	+CsC0cjoPF6k4tIHFZOl3beiJcEPvMkk8srJucFExb1uhl1DEeeZ6bRNHZNFw3Kej1t8Mfn5qWSkp
-	ANkybIHS2EGHXdgK0ZGA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=R1rDwQ6hv9BpviG7F87N8Y5ffzmZxfKGlOBz5lb4FyE=; b=CYLZRsk5bYInU0
+	H0TMNssxJVgTbf1OvE6093zEJr6Pv+hysW8urdevv0iE5C87mk/+fCQL6XVjQeM1uCYx55C9N1o8M
+	ETi5qiXS2ryNAQppfFG/ipeNRcra5OnsySo34kqzMFUCMCkINvgHFG5NAaBGqUbF8K4wyd4hbaxfk
+	2q+t1QTTsj6+OEJbsIeoTqVpU8ou79vdLe5HJF3tg+9/W3aBccKJygKpZ8mtUg/ISUkgneraD2Js/
+	cuEx8RdVByIPQtZSU3Qj1vkdMzQMzSO4fEdTwj7hvu7OsnTTVjZ7s9v7e3g5n38JRDWl5KuRg4ijV
+	3ZbqyVmr97d52qon8X4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mune8-00B1Xx-GA; Wed, 08 Dec 2021 03:29:32 +0000
+	id 1muniD-00B3L2-0u; Wed, 08 Dec 2021 03:33:45 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1munFh-00AqOk-Jq; Wed, 08 Dec 2021 03:04:20 +0000
-X-UUID: 93b7999f07bf470f84351ab5ca3bb03b-20211207
-X-UUID: 93b7999f07bf470f84351ab5ca3bb03b-20211207
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1munPE-00AuoB-Af; Wed, 08 Dec 2021 03:14:10 +0000
+X-UUID: 7249380ade414503981504094980939c-20211207
+X-UUID: 7249380ade414503981504094980939c-20211207
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 937994956; Tue, 07 Dec 2021 20:04:09 -0700
+ with ESMTP id 708925618; Tue, 07 Dec 2021 20:14:05 -0700
 Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 7 Dec 2021 19:04:07 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Dec 2021 19:04:03 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 8 Dec 2021 11:04:06 +0800
+ Wed, 8 Dec 2021 11:04:02 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Wed, 8 Dec 2021 11:04:05 +0800
+ 15.0.1497.2 via Frontend Transport; Wed, 8 Dec 2021 11:04:01 +0800
 From: Biao Huang <biao.huang@mediatek.com>
 To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
  <robh+dt@kernel.org>
@@ -53,18 +53,15 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
  <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
  <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
  <dkirjanov@suse.de>
-Subject: [PATCH net-next v6 4/6] net: dt-bindings: dwmac: Convert
- mediatek-dwmac to DT schema
-Date: Wed, 8 Dec 2021 11:03:52 +0800
-Message-ID: <20211208030354.31877-5-biao.huang@mediatek.com>
+Subject: [PATCH net-next v6 0/6] MediaTek Ethernet Patches on MT8195
+Date: Wed, 8 Dec 2021 11:03:48 +0800
+Message-ID: <20211208030354.31877-1-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211208030354.31877-1-biao.huang@mediatek.com>
-References: <20211208030354.31877-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_190417_737207_DEEEC72C 
-X-CRM114-Status: GOOD (  24.21  )
+X-CRM114-CacheID: sfid-20211207_191408_424460_3375BBFE 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,283 +78,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
-And there are some changes in .yaml than .txt, others almost keep the same:
-  1. compatible "const: snps,dwmac-4.20".
-  2. delete "snps,reset-active-low;" in example, since driver remove this
-     property long ago.
-  3. add "snps,reset-delay-us = <0 10000 10000>" in example.
-  4. the example is for rgmii interface, keep related properties only.
+Changes in v6:
+1. update commit message as Jacub's comments.
+2. split mt8195 eth dts patch("arm64: dts: mt8195: add ethernet device
+   node") from this series, since mt8195 dtsi/dts basic patches is still
+   under reviewing.
+   https://patchwork.kernel.org/project/linux-mediatek/list/?series=579071
+   we'll resend mt8195 eth dts patch once all the dependent patches are
+   accepted.
 
-Signed-off-by: Biao Huang <biao.huang@mediatek.com>
----
- .../bindings/net/mediatek-dwmac.txt           |  91 ----------
- .../bindings/net/mediatek-dwmac.yaml          | 156 ++++++++++++++++++
- 2 files changed, 156 insertions(+), 91 deletions(-)
+Changes in v5:
+1. remove useless inclusion in dwmac-mediatek.c as Angelo's comments.
+2. add acked-by in "net-next: stmmac: dwmac-mediatek: add support for
+   mt8195" patch
+
+Changes in v4:
+1. add changes in commit message in "net-next: dt-bindings: dwmac:
+   Convert mediatek-dwmac to DT schema" patch.
+2. remove ethernet-controller.yaml since snps,dwmac.yaml already include it.
+
+Changes in v3:
+1. Add prefix "net-next" to support new IC as Denis's suggestion.
+2. Split dt-bindings to two patches, one for conversion, and the other for
+   new IC.
+3. add a new patch to update device node in mt2712-evb.dts to accommodate to
+   changes in driver.
+4. remove unnecessary wrapper as Angelo's suggestion.
+5. Add acked-by in "net-next: stmmac: dwmac-mediatek: Reuse more common
+   features" patch.
+
+Changes in v2:
+1. fix errors/warnings in mediatek-dwmac.yaml with upgraded dtschema tools
+
+This series include 5 patches:
+1. add platform level clocks management for dwmac-mediatek
+2. resue more common features defined in stmmac_platform.c
+3. add ethernet entry for mt8195
+4. convert mediatek-dwmac.txt to mediatek-dwmac.yaml
+
+
+Biao Huang (6):
+  stmmac: dwmac-mediatek: add platform level clocks management
+  stmmac: dwmac-mediatek: Reuse more common features
+  arm64: dts: mt2712: update ethernet device node
+  net: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema
+  stmmac: dwmac-mediatek: add support for mt8195
+  net: dt-bindings: dwmac: add support for mt8195
+
+ .../bindings/net/mediatek-dwmac.txt           |  91 ------
+ .../bindings/net/mediatek-dwmac.yaml          | 210 ++++++++++++
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |   1 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  14 +-
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 306 ++++++++++++++++--
+ 5 files changed, 503 insertions(+), 119 deletions(-)
  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
 
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-deleted file mode 100644
-index afbcaebf062e..000000000000
---- a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
-+++ /dev/null
-@@ -1,91 +0,0 @@
--MediaTek DWMAC glue layer controller
--
--This file documents platform glue layer for stmmac.
--Please see stmmac.txt for the other unchanged properties.
--
--The device node has following properties.
--
--Required properties:
--- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
--- reg:  Address and length of the register set for the device
--- interrupts:  Should contain the MAC interrupts
--- interrupt-names: Should contain a list of interrupt names corresponding to
--	the interrupts in the interrupts property, if available.
--	Should be "macirq" for the main MAC IRQ
--- clocks: Must contain a phandle for each entry in clock-names.
--- clock-names: The name of the clock listed in the clocks property. These are
--	"axi", "apb", "mac_main", "ptp_ref", "rmii_internal" for MT2712 SoC.
--- mac-address: See ethernet.txt in the same directory
--- phy-mode: See ethernet.txt in the same directory
--- mediatek,pericfg: A phandle to the syscon node that control ethernet
--	interface and timing delay.
--
--Optional properties:
--- mediatek,tx-delay-ps: TX clock delay macro value. Default is 0.
--	It should be defined for RGMII/MII interface.
--	It should be defined for RMII interface when the reference clock is from MT2712 SoC.
--- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
--	It should be defined for RGMII/MII interface.
--	It should be defined for RMII interface.
--Both delay properties need to be a multiple of 170 for RGMII interface,
--or will round down. Range 0~31*170.
--Both delay properties need to be a multiple of 550 for MII/RMII interface,
--or will round down. Range 0~31*550.
--
--- mediatek,rmii-rxc: boolean property, if present indicates that the RMII
--	reference clock, which is from external PHYs, is connected to RXC pin
--	on MT2712 SoC.
--	Otherwise, is connected to TXC pin.
--- mediatek,rmii-clk-from-mac: boolean property, if present indicates that
--	MT2712 SoC provides the RMII reference clock, which outputs to TXC pin only.
--- mediatek,txc-inverse: boolean property, if present indicates that
--	1. tx clock will be inversed in MII/RGMII case,
--	2. tx clock inside MAC will be inversed relative to reference clock
--	   which is from external PHYs in RMII case, and it rarely happen.
--	3. the reference clock, which outputs to TXC pin will be inversed in RMII case
--	   when the reference clock is from MT2712 SoC.
--- mediatek,rxc-inverse: boolean property, if present indicates that
--	1. rx clock will be inversed in MII/RGMII case.
--	2. reference clock will be inversed when arrived at MAC in RMII case, when
--	   the reference clock is from external PHYs.
--	3. the inside clock, which be sent to MAC, will be inversed in RMII case when
--	   the reference clock is from MT2712 SoC.
--- assigned-clocks: mac_main and ptp_ref clocks
--- assigned-clock-parents: parent clocks of the assigned clocks
--
--Example:
--	eth: ethernet@1101c000 {
--		compatible = "mediatek,mt2712-gmac";
--		reg = <0 0x1101c000 0 0x1300>;
--		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
--		interrupt-names = "macirq";
--		phy-mode ="rgmii-rxid";
--		mac-address = [00 55 7b b5 7d f7];
--		clock-names = "axi",
--			      "apb",
--			      "mac_main",
--			      "ptp_ref",
--			      "rmii_internal";
--		clocks = <&pericfg CLK_PERI_GMAC>,
--			 <&pericfg CLK_PERI_GMAC_PCLK>,
--			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
--			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
--			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
--		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
--				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
--				  <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
--		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
--					 <&topckgen CLK_TOP_APLL1_D3>,
--					 <&topckgen CLK_TOP_ETHERPLL_50M>;
--		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
--		mediatek,pericfg = <&pericfg>;
--		mediatek,tx-delay-ps = <1530>;
--		mediatek,rx-delay-ps = <1530>;
--		mediatek,rmii-rxc;
--		mediatek,txc-inverse;
--		mediatek,rxc-inverse;
--		snps,txpbl = <1>;
--		snps,rxpbl = <1>;
--		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
--		snps,reset-active-low;
--	};
-diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-new file mode 100644
-index 000000000000..9207266a6e69
---- /dev/null
-+++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-@@ -0,0 +1,156 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/net/mediatek-dwmac.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek DWMAC glue layer controller
-+
-+maintainers:
-+  - Biao Huang <biao.huang@mediatek.com>
-+
-+description:
-+  This file documents platform glue layer for stmmac.
-+
-+# We need a select here so we don't match all nodes with 'snps,dwmac'
-+select:
-+  properties:
-+    compatible:
-+      contains:
-+        enum:
-+          - mediatek,mt2712-gmac
-+  required:
-+    - compatible
-+
-+allOf:
-+  - $ref: "snps,dwmac.yaml#"
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt2712-gmac
-+          - const: snps,dwmac-4.20a
-+
-+  clocks:
-+    items:
-+      - description: AXI clock
-+      - description: APB clock
-+      - description: MAC Main clock
-+      - description: PTP clock
-+      - description: RMII reference clock provided by MAC
-+
-+  clock-names:
-+    items:
-+      - const: axi
-+      - const: apb
-+      - const: mac_main
-+      - const: ptp_ref
-+      - const: rmii_internal
-+
-+  mediatek,pericfg:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description:
-+      The phandle to the syscon node that control ethernet
-+      interface and timing delay.
-+
-+  mediatek,tx-delay-ps:
-+    description:
-+      The internal TX clock delay (provided by this driver) in nanoseconds.
-+      For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
-+      or will round down. Range 0~31*170.
-+      For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-+      or will round down. Range 0~31*550.
-+
-+  mediatek,rx-delay-ps:
-+    description:
-+      The internal RX clock delay (provided by this driver) in nanoseconds.
-+      For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
-+      or will round down. Range 0~31*170.
-+      For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-+      or will round down. Range 0~31*550.
-+
-+  mediatek,rmii-rxc:
-+    type: boolean
-+    description:
-+      If present, indicates that the RMII reference clock, which is from external
-+      PHYs, is connected to RXC pin. Otherwise, is connected to TXC pin.
-+
-+  mediatek,rmii-clk-from-mac:
-+    type: boolean
-+    description:
-+      If present, indicates that MAC provides the RMII reference clock, which
-+      outputs to TXC pin only.
-+
-+  mediatek,txc-inverse:
-+    type: boolean
-+    description:
-+      If present, indicates that
-+      1. tx clock will be inversed in MII/RGMII case,
-+      2. tx clock inside MAC will be inversed relative to reference clock
-+         which is from external PHYs in RMII case, and it rarely happen.
-+      3. the reference clock, which outputs to TXC pin will be inversed in RMII case
-+         when the reference clock is from MAC.
-+
-+  mediatek,rxc-inverse:
-+    type: boolean
-+    description:
-+      If present, indicates that
-+      1. rx clock will be inversed in MII/RGMII case.
-+      2. reference clock will be inversed when arrived at MAC in RMII case, when
-+         the reference clock is from external PHYs.
-+      3. the inside clock, which be sent to MAC, will be inversed in RMII case when
-+         the reference clock is from MAC.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - interrupt-names
-+  - clocks
-+  - clock-names
-+  - phy-mode
-+  - mediatek,pericfg
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt2712-clk.h>
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/mt2712-power.h>
-+
-+    eth: ethernet@1101c000 {
-+        compatible = "mediatek,mt2712-gmac", "snps,dwmac-4.20a";
-+        reg = <0x1101c000 0x1300>;
-+        interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
-+        interrupt-names = "macirq";
-+        phy-mode ="rgmii-rxid";
-+        mac-address = [00 55 7b b5 7d f7];
-+        clock-names = "axi",
-+                      "apb",
-+                      "mac_main",
-+                      "ptp_ref",
-+                      "rmii_internal";
-+        clocks = <&pericfg CLK_PERI_GMAC>,
-+                 <&pericfg CLK_PERI_GMAC_PCLK>,
-+                 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-+                 <&topckgen CLK_TOP_ETHER_50M_SEL>,
-+                 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
-+        assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
-+                          <&topckgen CLK_TOP_ETHER_50M_SEL>,
-+                          <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
-+        assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
-+                                 <&topckgen CLK_TOP_APLL1_D3>,
-+                                 <&topckgen CLK_TOP_ETHERPLL_50M>;
-+        power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
-+        mediatek,pericfg = <&pericfg>;
-+        mediatek,tx-delay-ps = <1530>;
-+        snps,txpbl = <1>;
-+        snps,rxpbl = <1>;
-+        snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
-+        snps,reset-delays-us = <0 10000 10000>;
-+    };
--- 
-2.25.1
+--
+2.18.0
+
 
 
 _______________________________________________
