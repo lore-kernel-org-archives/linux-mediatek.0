@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE283C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 13:44:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2997C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 14:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s3k+Oe9Ms3T+HWxR7F6hbuJ+jC0b0OHSxvlXJuXHu1k=; b=IE/+2IfmO2AK/H
-	vYucCikdL/st8pwr1ffv28tS1uVIGiIXYhI5YLfb20WwnRPP974u/PMbGWF0TM8mMvvKWVpbNcY3Q
-	c5YidFi2yORVB5MqSRh/OmTXAia651jTdpQ8CXwlPxJVV/rKw/GHDm4ihFC93MNa9ngNzUvq7CwKW
-	UQLiRJMWK/e4TVixuz3VwINMq+23K0euHk0sj4wlDz5EHFTAND7rEBW4+EaUctJq4PimbiQHNgUqz
-	Uz9/utbHPf2tce631f1cP1ksAcJ2KU9zsBBwyKvRU3IW/vVI9yKMZ6GA4yikJ+19a0c9JV8S1ZedF
-	Sp4oB+Q5euspO2htvg7g==;
+	List-Owner; bh=vpZuZHRwqLNSKGJsSN1/EaV3BDgIPEg0vrUCmYoZPfM=; b=4JxqNRiI5RpYeI
+	zOk7+8m71aiHVl206b1iJi/CaNgj0+02SV/iuIfPrg+GhY+3S0ZT8HIKegkXCyKbzIvS3OWabjrtB
+	qNW0jUR3wGka5AS2QS2ZJAUbWkea5BjJkdT7mVHmrCJhV1dhsjWfjgZWokpghlcNho3y9E2Iuwy9N
+	TcH8uGxwLd3s3EPssX7vMWainj3swW/j+Sm8M//cXvgvATz3YcX9aWX4ju1KPdKSrtFrqryXheSUT
+	o+oTajCj2w7yFEQBneXQWM0QMWl7if3pyktRvxW/JTGSWkUoYgPRfRezUogkDl4wM8bgjqJENqVOd
+	7uu0sQErt8ulzWNxnZ/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muxFN-00CqL2-BW; Wed, 08 Dec 2021 13:44:37 +0000
-Received: from mail-oi1-f178.google.com ([209.85.167.178])
+	id 1muxVA-00CuMA-Dw; Wed, 08 Dec 2021 14:00:56 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muxFJ-00CqJY-I3; Wed, 08 Dec 2021 13:44:35 +0000
-Received: by mail-oi1-f178.google.com with SMTP id t23so4216667oiw.3;
- Wed, 08 Dec 2021 05:44:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=2FBGOv0PegNkvtOMGaZYa1BsopYp6ezUI2k+MFWsRkg=;
- b=K5hL83R/DTp3nVfGaX+5utmJHGG08Q9d7TrxbSwwnDInH2qTIoVsGDoX6lVyebp/ag
- U8fh3TplM5W11shqBST9JuTyO47PBsDyYjtA7/MEv7MDh9GQJm5s+0/KbCFYyXPSTP8V
- zMSU6g/GuHIYWcuOIoZGs6jrHj5QMW44FpEXvPsqKcAvj2Q3IzC0z4zqUCOsl6RO5vvp
- 053QwPVS7nB046TvWL72dueZz3tZmBUQIbtsVNKEzoa861sdMwgKvan3sg2NpxIMGsaE
- tfh4odk5fAzv/DtRk1oFXlyMCzsEUeAKv3ynSvjPRdhMW5JZSDRZI4CtCto/rbNZHHKX
- oQhA==
-X-Gm-Message-State: AOAM5305LC+J8j7huESobwSUhGYos6inxEuMg1bfgEjW+v3nNNI6wHr4
- C77DBCFA1yXIK1FV/oruXQ==
-X-Google-Smtp-Source: ABdhPJy4QOKFBXVt9kjHp3l6spBp74LPhwun2A8oRCnVjLpYafUk8Begm5tyq5EWMDExu9pfz3il7Q==
-X-Received: by 2002:a54:4402:: with SMTP id k2mr11425020oiw.141.1638971072200; 
- Wed, 08 Dec 2021 05:44:32 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id 109sm477713otv.30.2021.12.08.05.44.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Dec 2021 05:44:31 -0800 (PST)
-Received: (nullmailer pid 3857740 invoked by uid 1000);
- Wed, 08 Dec 2021 13:44:28 -0000
-From: Rob Herring <robh@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Jose Abreu <joabreu@synopsys.com>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, macpaul.lin@mediatek.com,
- netdev@vger.kernel.org, angelogioacchino.delregno@collabora.com,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, devicetree@vger.kernel.org,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, davem@davemloft.net,
- Rob Herring <robh+dt@kernel.org>, srv_heupstream@mediatek.com,
- dkirjanov@suse.de, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-kernel@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>
-In-Reply-To: <20211208054716.603-5-biao.huang@mediatek.com>
-References: <20211208054716.603-1-biao.huang@mediatek.com>
- <20211208054716.603-5-biao.huang@mediatek.com>
-Subject: Re: [PATCH net-next v7 4/6] net: dt-bindings: dwmac: Convert
- mediatek-dwmac to DT schema
-Date: Wed, 08 Dec 2021 07:44:28 -0600
-Message-Id: <1638971068.792969.3857739.nullmailer@robh.at.kernel.org>
+ id 1muxV6-00CuLC-HV
+ for linux-mediatek@lists.infradead.org; Wed, 08 Dec 2021 14:00:55 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="261910745"
+X-IronPort-AV: E=Sophos;i="5.88,189,1635231600"; d="scan'208";a="261910745"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Dec 2021 06:00:49 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,189,1635231600"; d="scan'208";a="612096706"
+Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
+ by orsmga004.jf.intel.com with ESMTP; 08 Dec 2021 06:00:45 -0800
+Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
+ (envelope-from <lkp@intel.com>)
+ id 1muxUy-0000ci-M1; Wed, 08 Dec 2021 14:00:44 +0000
+Date: Wed, 8 Dec 2021 22:00:24 +0800
+From: kernel test robot <lkp@intel.com>
+To: MeiChia Chiu <MeiChia.Chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
+Cc: kbuild-all@lists.01.org, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Money Wang <Money.Wang@mediatek.com>,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ MeiChia Chiu <meichia.chiu@mediatek.com>
+Subject: Re: [PATCH v2] mt76: mt7915: add mu-mimo and ofdma debugfs knobs
+Message-ID: <202112082145.YwvZAzNR-lkp@intel.com>
+References: <20211208090319.19096-1-MeiChia.Chiu@mediatek.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211208090319.19096-1-MeiChia.Chiu@mediatek.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_054433_628414_CE8FF73A 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20211208_060052_760178_5842FDA5 
+X-CRM114-Status: GOOD (  14.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,55 +67,306 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 08 Dec 2021 13:47:14 +0800, Biao Huang wrote:
-> Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
-> And there are some changes in .yaml than .txt, others almost keep the same:
->   1. compatible "const: snps,dwmac-4.20".
->   2. delete "snps,reset-active-low;" in example, since driver remove this
->      property long ago.
->   3. add "snps,reset-delay-us = <0 10000 10000>" in example.
->   4. the example is for rgmii interface, keep related properties only.
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  .../bindings/net/mediatek-dwmac.txt           |  91 ----------
->  .../bindings/net/mediatek-dwmac.yaml          | 156 ++++++++++++++++++
->  2 files changed, 156 insertions(+), 91 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
->  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> 
+Hi MeiChia,
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+Thank you for the patch! Perhaps something to improve:
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+[auto build test WARNING on kvalo-wireless-drivers-next/master]
+[also build test WARNING on kvalo-wireless-drivers/master v5.16-rc4 next-20211208]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-Full log is available here: https://patchwork.ozlabs.org/patch/1565082
+url:    https://github.com/0day-ci/linux/commits/MeiChia-Chiu/mt76-mt7915-add-mu-mimo-and-ofdma-debugfs-knobs/20211208-170525
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git master
+config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20211208/202112082145.YwvZAzNR-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 11.2.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/0day-ci/linux/commit/2d224f4e59aa02c401f3f6f5e9d4586040773a8a
+        git remote add linux-review https://github.com/0day-ci/linux
+        git fetch --no-tags linux-review MeiChia-Chiu/mt76-mt7915-add-mu-mimo-and-ofdma-debugfs-knobs/20211208-170525
+        git checkout 2d224f4e59aa02c401f3f6f5e9d4586040773a8a
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=alpha SHELL=/bin/bash drivers/net/wireless/
+
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
+
+All warnings (new ones prefixed by >>):
+
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c: In function 'mt7915_muru_stat_show':
+>> drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:167:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     167 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %7d%% | ",
+         |                           ~~^
+         |                             |
+         |                             int
+         |                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:167:37: warning: format '%d' expects argument of type 'int', but argument 4 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     167 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %7d%% | ",
+         |                                   ~~^
+         |                                     |
+         |                                     int
+         |                                   %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:167:45: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     167 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %7d%% | ",
+         |                                           ~~^
+         |                                             |
+         |                                             int
+         |                                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:167:53: warning: format '%d' expects argument of type 'int', but argument 6 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     167 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %7d%% | ",
+         |                                                   ~~^
+         |                                                     |
+         |                                                     int
+         |                                                   %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:167:61: warning: format '%d' expects argument of type 'int', but argument 7 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     167 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %7d%% | ",
+         |                                                           ~~^
+         |                                                             |
+         |                                                             int
+         |                                                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:186:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     186 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+         |                           ~~^
+         |                             |
+         |                             int
+         |                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:186:37: warning: format '%d' expects argument of type 'int', but argument 4 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     186 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+         |                                   ~~^
+         |                                     |
+         |                                     int
+         |                                   %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:186:45: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     186 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+         |                                           ~~^
+         |                                             |
+         |                                             int
+         |                                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:215:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     215 |         seq_printf(file, "%7d%% | %7d%% | ",
+         |                           ~~^
+         |                             |
+         |                             int
+         |                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:215:37: warning: format '%d' expects argument of type 'int', but argument 4 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     215 |         seq_printf(file, "%7d%% | %7d%% | ",
+         |                                   ~~^
+         |                                     |
+         |                                     int
+         |                                   %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:231:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     231 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+         |                           ~~^
+         |                             |
+         |                             int
+         |                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:231:37: warning: format '%d' expects argument of type 'int', but argument 4 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     231 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+         |                                   ~~^
+         |                                     |
+         |                                     int
+         |                                   %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:231:45: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     231 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+         |                                           ~~^
+         |                                             |
+         |                                             int
+         |                                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:251:29: warning: format '%d' expects argument of type 'int', but argument 3 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     251 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %8d%% | %7d%% | ",
+         |                           ~~^
+         |                             |
+         |                             int
+         |                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:251:37: warning: format '%d' expects argument of type 'int', but argument 4 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     251 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %8d%% | %7d%% | ",
+         |                                   ~~^
+         |                                     |
+         |                                     int
+         |                                   %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:251:45: warning: format '%d' expects argument of type 'int', but argument 5 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     251 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %8d%% | %7d%% | ",
+         |                                           ~~^
+         |                                             |
+         |                                             int
+         |                                           %7lld
+   drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c:251:53: warning: format '%d' expects argument of type 'int', but argument 6 has type 'u64' {aka 'long long unsigned int'} [-Wformat=]
+     251 |         seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %8d%% | %7d%% | ",
+         |                                                   ~~^
+         |                                                     |
+         |                                                     int
 
 
-ethernet@1101c000: clock-names: ['axi', 'apb', 'mac_main', 'ptp_ref'] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+vim +167 drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
 
-ethernet@1101c000: clocks: [[27, 34], [27, 37], [6, 154], [6, 155]] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+   104	
+   105	DEFINE_DEBUGFS_ATTRIBUTE(fops_muru_debug, mt7915_muru_debug_get,
+   106				 mt7915_muru_debug_set, "%lld\n");
+   107	
+   108	static int mt7915_muru_stat_show(struct seq_file *file, void *data)
+   109	{
+   110		struct mt7915_phy *phy = file->private;
+   111		struct mt7915_dev *dev = phy->dev;
+   112		struct mt7915_mcu_muru_stats mu_stats = {};
+   113		static const char * const dl_non_he_type[] = {
+   114			"CCK", "OFDM", "HT MIX", "HT GF",
+   115			"VHT SU", "VHT 2MU", "VHT 3MU", "VHT 4MU"
+   116		};
+   117		static const char * const dl_he_type[] = {
+   118			"HE SU", "HE EXT", "HE 2MU", "HE 3MU", "HE 4MU",
+   119			"HE 2RU", "HE 3RU", "HE 4RU", "HE 5-8RU", "HE 9-16RU",
+   120			"HE >16RU"
+   121		};
+   122		static const char * const ul_he_type[] = {
+   123			"HE 2MU", "HE 3MU", "HE 4MU", "HE SU", "HE 2RU",
+   124			"HE 3RU", "HE 4RU", "HE 5-8RU", "HE 9-16RU", "HE >16RU"
+   125		};
+   126		int ret, i;
+   127		u64 total_ppdu_cnt;
+   128	
+   129		if (!dev->muru_debug) {
+   130			seq_puts(file, "Please enable muru_debug first.\n");
+   131			return 0;
+   132		}
+   133	
+   134		mutex_lock(&dev->mt76.mutex);
+   135	
+   136		ret = mt7915_mcu_muru_debug_get(phy, &mu_stats);
+   137		if (ret)
+   138			goto exit;
+   139	
+   140	#define __ms_ratio(s)	(!total_ppdu_cnt ? 0 :			  \
+   141			le32_to_cpu(s) * 100 / total_ppdu_cnt)
+   142	#define __dl_u32(s)	le32_to_cpu(mu_stats.dl.s)
+   143		/* Non-HE Downlink*/
+   144		total_ppdu_cnt = __dl_u32(cck_cnt) +
+   145			__dl_u32(ofdm_cnt) +
+   146			__dl_u32(htmix_cnt) +
+   147			__dl_u32(htgf_cnt) +
+   148			__dl_u32(vht_su_cnt) +
+   149			__dl_u32(vht_2mu_cnt) +
+   150			__dl_u32(vht_3mu_cnt) +
+   151			__dl_u32(vht_4mu_cnt);
+   152	
+   153		seq_puts(file, "[Non-HE]\nDownlink\nData Type:  ");
+   154	
+   155		for (i = 0; i < 5; i++)
+   156			seq_printf(file, "%8s | ", dl_non_he_type[i]);
+   157	
+   158		seq_puts(file, "\nTotal Cnt:  ");
+   159		seq_printf(file, "%8u | %8u | %8u | %8u | %8u | ",
+   160			   __dl_u32(cck_cnt),
+   161			   __dl_u32(ofdm_cnt),
+   162			   __dl_u32(htmix_cnt),
+   163			   __dl_u32(htgf_cnt),
+   164			   __dl_u32(vht_su_cnt));
+   165	
+   166		seq_puts(file, "\nRatio    :  ");
+ > 167		seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %7d%% | ",
+   168			   __ms_ratio(mu_stats.dl.cck_cnt),
+   169			   __ms_ratio(mu_stats.dl.ofdm_cnt),
+   170			   __ms_ratio(mu_stats.dl.htmix_cnt),
+   171			   __ms_ratio(mu_stats.dl.htgf_cnt),
+   172			   __ms_ratio(mu_stats.dl.vht_su_cnt));
+   173	
+   174		seq_puts(file, "\nDownlink MU-MIMO\nData Type:  ");
+   175	
+   176		for (i = 5; i < 8; i++)
+   177			seq_printf(file, "%8s | ", dl_non_he_type[i]);
+   178	
+   179		seq_puts(file, "\nTotal Cnt:  ");
+   180		seq_printf(file, "%8u | %8u | %8u | ",
+   181			   __dl_u32(vht_2mu_cnt),
+   182			   __dl_u32(vht_3mu_cnt),
+   183			   __dl_u32(vht_4mu_cnt));
+   184	
+   185		seq_puts(file, "\nRatio    :  ");
+   186		seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+   187			   __ms_ratio(mu_stats.dl.vht_2mu_cnt),
+   188			   __ms_ratio(mu_stats.dl.vht_3mu_cnt),
+   189			   __ms_ratio(mu_stats.dl.vht_4mu_cnt));
+   190	
+   191		/* HE Downlink */
+   192		total_ppdu_cnt = __dl_u32(he_su_cnt) +
+   193			__dl_u32(he_ext_su_cnt) +
+   194			__dl_u32(he_2mu_cnt) +
+   195			__dl_u32(he_3mu_cnt) +
+   196			__dl_u32(he_4mu_cnt) +
+   197			__dl_u32(he_2ru_cnt) +
+   198			__dl_u32(he_3ru_cnt) +
+   199			__dl_u32(he_4ru_cnt) +
+   200			__dl_u32(he_5to8ru_cnt) +
+   201			__dl_u32(he_9to16ru_cnt) +
+   202			__dl_u32(he_gtr16ru_cnt);
+   203	
+   204		seq_puts(file, "\n\n[HE]\nDownlink\nData Type:  ");
+   205	
+   206		for (i = 0; i < 2; i++)
+   207			seq_printf(file, "%8s | ", dl_he_type[i]);
+   208	
+   209		seq_puts(file, "\nTotal Cnt:  ");
+   210		seq_printf(file, "%8u | %8u | ",
+   211			   __dl_u32(he_su_cnt),
+   212			   __dl_u32(he_ext_su_cnt));
+   213	
+   214		seq_puts(file, "\nRatio    :  ");
+   215		seq_printf(file, "%7d%% | %7d%% | ",
+   216			   __ms_ratio(mu_stats.dl.he_su_cnt),
+   217			   __ms_ratio(mu_stats.dl.he_ext_su_cnt));
+   218	
+   219		seq_puts(file, "\nDownlink MU-MIMO\nData Type:  ");
+   220	
+   221		for (i = 2; i < 5; i++)
+   222			seq_printf(file, "%8s | ", dl_he_type[i]);
+   223	
+   224		seq_puts(file, "\nTotal Cnt:  ");
+   225		seq_printf(file, "%8u | %8u | %8u | ",
+   226			   __dl_u32(he_2mu_cnt),
+   227			   __dl_u32(he_3mu_cnt),
+   228			   __dl_u32(he_4mu_cnt));
+   229	
+   230		seq_puts(file, "\nRatio    :  ");
+   231		seq_printf(file, "%7d%% | %7d%% | %7d%% | ",
+   232			   __ms_ratio(mu_stats.dl.he_2mu_cnt),
+   233			   __ms_ratio(mu_stats.dl.he_3mu_cnt),
+   234			   __ms_ratio(mu_stats.dl.he_4mu_cnt));
+   235	
+   236		seq_puts(file, "\nDownlink OFDMA\nData Type:  ");
+   237	
+   238		for (i = 5; i < 11; i++)
+   239			seq_printf(file, "%8s | ", dl_he_type[i]);
+   240	
+   241		seq_puts(file, "\nTotal Cnt:  ");
+   242		seq_printf(file, "%8u | %8u | %8u | %8u | %9u | %8u | ",
+   243			   __dl_u32(he_2ru_cnt),
+   244			   __dl_u32(he_3ru_cnt),
+   245			   __dl_u32(he_4ru_cnt),
+   246			   __dl_u32(he_5to8ru_cnt),
+   247			   __dl_u32(he_9to16ru_cnt),
+   248			   __dl_u32(he_gtr16ru_cnt));
+   249	#undef __dl_u32
+   250		seq_puts(file, "\nRatio    :  ");
+   251		seq_printf(file, "%7d%% | %7d%% | %7d%% | %7d%% | %8d%% | %7d%% | ",
+   252			   __ms_ratio(mu_stats.dl.he_2ru_cnt),
+   253			   __ms_ratio(mu_stats.dl.he_3ru_cnt),
+   254			   __ms_ratio(mu_stats.dl.he_4ru_cnt),
+   255			   __ms_ratio(mu_stats.dl.he_5to8ru_cnt),
+   256			   __ms_ratio(mu_stats.dl.he_9to16ru_cnt),
+   257			   __ms_ratio(mu_stats.dl.he_gtr16ru_cnt));
+   258	
 
-ethernet@1101c000: compatible: ['mediatek,mt2712-gmac'] does not contain items matching the given schema
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: compatible: 'oneOf' conditional failed, one must be fixed:
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: Unevaluated properties are not allowed ('compatible', 'reg', 'interrupts', 'interrupt-names', 'mac-address', 'clock-names', 'clocks', 'power-domains', 'snps,axi-config', 'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,txpbl', 'snps,rxpbl', 'clk_csr', 'phy-mode', 'phy-handle', 'snps,reset-gpio', 'mdio' were unexpected)
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
+---
+0-DAY CI Kernel Test Service, Intel Corporation
+https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
 
 _______________________________________________
 Linux-mediatek mailing list
