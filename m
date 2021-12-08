@@ -4,49 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D658C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  7 Dec 2021 21:01:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADCCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 01:21:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-version:References:
-	Subject:In-Reply-To:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nsd3XUEq+8v5jDyxjdHk77ZQ+NIKPc8vyW3QhUWKdi4=; b=b7kk1pHpnncXKq
-	CKRswILc2uiXBs5vb9DYUNuYXXuX8nHrqu6z3RmfB1Mupr7PYy3AA1d9fbj3cSnYRR6YhJtp6eatZ
-	VCbhurnb2NbDQXqQWWPVXBIFYRiXuIpSQRLtcgpAxK65Y9Y69mpaJiT5HlUgLOH6bLRBLT4K9m4Bf
-	34oEKcJNvnhY7Gls2RpFKdhAAYkF5As7bcccXmXEsTeBBTB/w6QA+V2IRsGK5OUMrMrxiGAKH8chz
-	Dcnlqs161buGXzKRfc1FniPPVv/zEPPIKSDE/YmGpkE2nuCmKwmqI5/nalp7rb2L582x9B+3frpbE
-	icDys23tNgZkn4JaEMnw==;
+	List-Owner; bh=44mFXLw7NPAM+6tVI882jLc7IFAaJhJ58rDUAxvKtg0=; b=j37qfQCl51+77U
+	mPJ5WNzAJBxMXEaF3+0HPSJdYY3rAJ1nXJ2qlBxT2IiU5FB79+uFHRev/VfGZABYmKSp08fZUChA8
+	JyAv+7CmN0/kp64y0DK9+w0dXxj1TkdDw7x4d7OMEtC34mFiJRWwK/HPZlXVkXNfaQO/3DVkD4f8Q
+	dRUrFVmv7y3RXAv7VQgWGLzGO4y3cw4uUqElvBkOiK9vPVopZkPVbm6tzI1TzRgufHJpbQlhDa2PU
+	CsBdzoJhjNTRiOZ0dL47NRbpKFKII3aL9pKNC+Ou6kRUNJhrZO8lEvwNU+jAlo6//bwjuyXcVlLtz
+	CYUyGkNpUUpP2dGBmhnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muhaD-00A610-86; Tue, 07 Dec 2021 21:01:05 +0000
-Received: from sibelius.xs4all.nl ([83.163.83.176])
+	id 1muldd-00AXLR-8x; Wed, 08 Dec 2021 01:20:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muhZy-00A5u0-K2; Tue, 07 Dec 2021 21:00:53 +0000
-Received: from localhost (bloch.sibelius.xs4all.nl [local])
- by bloch.sibelius.xs4all.nl (OpenSMTPD) with ESMTPA id 45929648;
- Tue, 7 Dec 2021 22:00:43 +0100 (CET)
-Date: Tue, 7 Dec 2021 22:00:43 +0100 (CET)
-From: Mark Kettenis <mark.kettenis@xs4all.nl>
-To: Bjorn Helgaas <helgaas@kernel.org>
-Cc: qizhong.cheng@mediatek.com, ryder.lee@mediatek.com,
- jianjun.wang@mediatek.com, lorenzo.pieralisi@arm.com,
- kw@linux.com, bhelgaas@google.com, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- chuanjia.liu@mediatek.com, pali@kernel.org, maz@kernel.org,
- alyssa@rosenzweig.io, luca@lucaceresoli.net
-In-Reply-To: <20211207175416.GA42725@bhelgaas> (message from Bjorn Helgaas on
- Tue, 7 Dec 2021 11:54:16 -0600)
-Subject: Re: [RESEND PATCH v2] PCI: mediatek: Delay 100ms to wait power and
- clock to become stable
-References: <20211207175416.GA42725@bhelgaas>
-MIME-version: 1.0
-Message-ID: <d3cb32527f48df70@bloch.sibelius.xs4all.nl>
+ id 1muldb-00AXKh-8W; Wed, 08 Dec 2021 01:20:52 +0000
+X-UUID: ff8a4405fbf249c79cd37c2c5b90c057-20211207
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=8MEfUWmmn3GyKsBzKhZSTZEmNpkk6avA7qVgY8BtriE=; 
+ b=bufZfLL/YW1OXhgCj+OVYknySZMrucfJ73JZdVMLJuvr6GbYOsYUVD2bzTLq9ypD4jcBb7QeISOFvLzW0Bpc+5mmfh2Jxu9+SlyxaOJAOkfY+OeQFGv4azNGjfs6ej4QwmdioYCQmiWUsLGAqO1zijOm1Fd5APfQWPlEP9EaaEg=;
+X-UUID: ff8a4405fbf249c79cd37c2c5b90c057-20211207
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 921920727; Tue, 07 Dec 2021 18:20:47 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 7 Dec 2021 17:20:45 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 8 Dec 2021 09:20:44 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 8 Dec 2021 09:20:43 +0800
+Message-ID: <25e2a50392beeb3e7c7428f53fac617a5a5b30f9.camel@mediatek.com>
+Subject: Re: [PATCH v5 0/7] MediaTek Ethernet Patches on MT8195
+From: Biao Huang <biao.huang@mediatek.com>
+To: Jakub Kicinski <kuba@kernel.org>
+CC: <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+ <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <dkirjanov@suse.de>
+Date: Wed, 8 Dec 2021 09:20:38 +0800
+In-Reply-To: <20211207064627.5623f3bf@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+References: <20211207015505.16746-1-biao.huang@mediatek.com>
+ <20211207064345.2c6427a1@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+ <20211207064627.5623f3bf@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_130051_001519_461E15A3 
-X-CRM114-Status: GOOD (  22.36  )
+X-CRM114-CacheID: sfid-20211207_172051_337151_169C6C76 
+X-CRM114-Status: GOOD (  18.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,105 +81,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Date: Tue, 7 Dec 2021 11:54:16 -0600
-> From: Bjorn Helgaas <helgaas@kernel.org>
-> =
-
-> [+cc Marc, Alyssa, Mark, Luca for reset timing questions]
-
-Hi Bjorn,
-
-> On Tue, Dec 07, 2021 at 04:41:53PM +0800, qizhong cheng wrote:
-> > Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
-> > 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
-> > be delayed 100ms (TPVPERL) for the power and clock to become stable.
-> > =
-
-> > Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
-> > Acked-by: Pali Roh=E1r <pali@kernel.org>
-> > ---
-> > =
-
-> > v2:
-> >  - Typo fix.
-> >  - Rewrap into one paragraph.
-> =
-
-> 1) If you change something, even in the commit log or comments, it is
-> a new version, not a "RESEND".  A "RESEND" means "I sent this quite a
-> while ago and didn't hear anything, so I'm sending the exact same
-> thing again in case the first one got lost."
-> =
-
-> 2) I suggested a subject line update, which apparently got missed.
-> Here's a better one:
-> =
-
->   PCI: mediatek: Assert PERST# for 100ms for power and clock to stabilize
-> =
-
-> 3) Most importantly, this needs to be reconciled with the similar
-> change to the apple driver:
-> =
-
->   https://lore.kernel.org/r/20211123180636.80558-2-maz@kernel.org
-> =
-
-> In the apple driver, we're doing:
-> =
-
->   - Assert PERST#
->   - Set up REFCLK
->   - Sleep 100us (T_perst-clk, CEM r5 2.2, 2.9.2)
->   - Deassert PERST#
->   - Sleep 100ms (not sure there's a name? PCIe r5 6.6.1)
-> =
-
-> But here in mediatek, we're doing:
-> =
-
->   - Assert PERST#
->   - Sleep 100ms (T_pvperl, CEM r5 2.2, 2.2.1, 2.9.2)
->   - Deassert PERST#
-> =
-
-> My questions:
-
-My understanding of the the Apple PCIe hardware is somewhat limited but:
-
->   - Where does apple enforce T_pvperl?  I can't tell where power to
->     the slot is turned on.
-
-So far all available machines only have PCIe devices that are soldered
-onto the motherboard, so there are no "real" slots.  As far as we can
-tell the PCIe power domain is already powered on at the point where
-the m1n1 bootloader takes control.  There is a GPIO that controls
-power to some devices (WiFi, SDHC on the M1 Pro/Max laptops) and those
-devices are initially powered off.  The Linux driver doesn't currently
-attempt to power these devices on, but U-Boot will power them on if
-the appropriate GPIO is defined in the device tree.  The way this is
-specified in the device tree is still under discussion.
-
->   - Where does mediatek enforce the PCIe sec 6.6.1 delay after
->     deasserting PERST# and before config requests?
-> =
-
->   - Does either apple or mediatek support speeds greater than 5 GT/s,
->     and if so, shouldn't we start the sec 6.6.1 100ms delay *after*
->     Link training completes?
-
-The Apple hardware advertises support for 8 GT/s, but all the devices
-integrated on the Mac mini support only 2.5 GT/s or 5 GT/s.
-
-Hope this helps,
-
-Mark
-
+Dear Jakub,
+	Thanks for your comments~
+On Tue, 2021-12-07 at 06:46 -0800, Jakub Kicinski wrote:
+> On Tue, 7 Dec 2021 06:43:45 -0800 Jakub Kicinski wrote:
+> > On Tue, 7 Dec 2021 09:54:58 +0800 Biao Huang wrote:
+> > > Changes in v5:
+> > > 1. remove useless inclusion in dwmac-mediatek.c as Angelo's
+> > > comments.
+> > > 2. add acked-by in "net-next: stmmac: dwmac-mediatek: add support
+> > > for
+> > >    mt8195" patch  
+> > 
+> > Which tree is this series based on? It doesn't seem to apply to
+> > net-next. Also the net-next in the subjects is misplaced. If the
+> > series
+> > is supposed to be merged to net-next the subject should be like:
+> > 
+> > [PATCH net-next v5 1/7] stmmac: dwmac-mediatek: add platform level
+> > clocks management
+> > 
+> > You can use --subject-prefix="PATCH net-next v6" in git-format-
+> > patch to
+> > add the prefix.
+> 
+> FWIW patch 6 is the one with the conflict: "arm64: dts: mt8195: add
+> ethernet device node"
+I'll rebase to the latest net-next tree, and fix these issues in next
+send
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
