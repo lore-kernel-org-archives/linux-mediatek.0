@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A46AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 10:19:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDD36C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 10:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+5DVeKxUq6Foo754SyFOIgt/5/dxs8LjmxZlxNkttzs=; b=BnHBM4jWcqfANT
-	Nowi+KWl3kpqtSsgF/95vK5W0nLGgaZ6Wj4fNGrx8y2IalpcMubjwbT72lJNy+yv95HI55/S+qdoL
-	qorumiJeMwkmdNjn21QbZMHUHPjEXGrDpOK6swYSs4b5pLQzgJ89DV/+dVbmm/IpJr0qp/bEqxhqj
-	O3cVPfQzK0DVMfu1BNo6pYjQZvZDhUqRKhbEcK6qYlZd894FN6524qXgnxxGXQKH5RA/Z4VvTd62O
-	hYHz5mKJ5Tgj2xB6Fm/QqB87voz9M8HcwH3d5ZrnsvEE3VI0VXP0zrI7wmM0NdwTNqIe3HpywCk8X
-	FsfIQ4OlGQHQDqwe+bhg==;
+	List-Owner; bh=5SERgStgERiEYQK8IIZ2wCXuTe5wS4ST2pgv0igD9iY=; b=F6YDtoMKprtl5o
+	7UQfOdxyVsOqZVd5GzNT3cjoLhXPYgEjFHmujy7iVIlR4rBNzz1xqxigGocNd2fWYpjb5QwuKKi5G
+	0RFQl0DcR/QYwGCmnjOtkv5U4V4k1+sCZAgFejZ52dTQTuXd6zOGK8CQg/lb0+8OKQHCpYEu260FA
+	KB4HPyFU5e3o0MuKyTmLK6BCGI40+bEHECsj5GIHPjIcLuthICwERc1tMhZl/0S5fimhE4/vzlj6q
+	9I1MOw4G+5zHWet5uiQ+r47XfUTCAobSUdiN+u8X/iHTj6OT7VI2Y055mqvvhlr0M8S8ebbXWzON+
+	yWUqhXHkGz6vbjBX5+GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muu2K-00C4Yg-1i; Wed, 08 Dec 2021 10:18:56 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1muuFu-00C7IY-F5; Wed, 08 Dec 2021 10:32:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muu25-00C4Tu-FF; Wed, 08 Dec 2021 10:18:43 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 95492B82056;
- Wed,  8 Dec 2021 10:18:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEFC9C00446;
- Wed,  8 Dec 2021 10:18:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638958719;
- bh=SlWRPo5VmJBor/dRHjC4sQVfvViQ/exZumhOr5ZEsYs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=SS8gf76A9q55wxXwtjc2hq9y50OU8GW6Fi8a/CzaHasZE1tG9qePLa7kj9at/AfPF
- dy1A/IzdNdLPHXDjzWxgJB+oFo505QexnyT7kuWIdTb02lmG4RC5CemlcPeTHLHpNu
- dPkPUZfS/Vs7Sb4KTGUTiXHZLJozFMOVtFU6oKUPMc4Br8iGzJUWFBKOv7I9KzxBqS
- F3BLjcT69SO8a3sHJCOgm2Q1uLWtKsSgoCHbVUqr1lSTAiecql1KfA+Dg2Qu7XOrTt
- acobD0mv42NQXKY+EuN5hOuTVCeGdu/3fvaQ6ptk1Z97AVvnN9R+cuYSxy+XXglc6s
- T734mXloimcRQ==
-Received: by pali.im (Postfix)
- id 4E0A51EB6; Wed,  8 Dec 2021 11:18:36 +0100 (CET)
-Date: Wed, 8 Dec 2021 11:18:36 +0100
-From: Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>
-To: "qizhong.cheng" <qizhong.cheng@mediatek.com>
-Cc: Bjorn Helgaas <helgaas@kernel.org>,
- Mark Kettenis <mark.kettenis@xs4all.nl>, ryder.lee@mediatek.com,
- jianjun.wang@mediatek.com, lorenzo.pieralisi@arm.com, kw@linux.com,
- bhelgaas@google.com, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
- maz@kernel.org, alyssa@rosenzweig.io, luca@lucaceresoli.net
-Subject: Re: [RESEND PATCH v2] PCI: mediatek: Delay 100ms to wait power and
- clock to become stable
-Message-ID: <20211208101836.pazwdloibn6d7iri@pali>
-References: <20211208041228.GA103736@bhelgaas>
- <e891bf625b00078c476cc53c4b8770dfce71ddb0.camel@mediatek.com>
+ id 1muuFg-00C7FR-Mz; Wed, 08 Dec 2021 10:32:47 +0000
+X-UUID: 213b942366b44b6f9c295d352565c605-20211208
+X-UUID: 213b942366b44b6f9c295d352565c605-20211208
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <mark-pk.tsai@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1481719843; Wed, 08 Dec 2021 03:32:41 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 8 Dec 2021 02:22:38 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 8 Dec 2021 18:22:37 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 8 Dec 2021 18:22:36 +0800
+From: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+To: <rppt@kernel.org>
+CC: <akpm@linux-foundation.org>, <arnd@arndb.de>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux@armlinux.org.uk>,
+ <linux@roeck-us.net>, <mark-pk.tsai@mediatek.com>, <matthias.bgg@gmail.com>,
+ <rmk+kernel@armlinux.org.uk>, <wangkefeng.wang@huawei.com>,
+ <yj.chiang@mediatek.com>
+Subject: Re: [PATCH] arm: remove [_text, _stext) from kernel code resource
+Date: Wed, 8 Dec 2021 18:22:37 +0800
+Message-ID: <20211208102237.19706-1-mark-pk.tsai@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <YbB+O80Th2QI8sTl@kernel.org>
+References: <YbB+O80Th2QI8sTl@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e891bf625b00078c476cc53c4b8770dfce71ddb0.camel@mediatek.com>
-User-Agent: NeoMutt/20180716
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_021841_833618_B8C3F335 
-X-CRM114-Status: GOOD (  44.78  )
+X-CRM114-CacheID: sfid-20211208_023244_782424_0602D972 
+X-CRM114-Status: GOOD (  24.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,105 +70,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkbmVzZGF5IDA4IERlY2VtYmVyIDIwMjEgMTQ6MDc6NTcgcWl6aG9uZy5jaGVuZyB3cm90
-ZToKPiBPbiBUdWUsIDIwMjEtMTItMDcgYXQgMjI6MTIgLTA2MDAsIEJqb3JuIEhlbGdhYXMgd3Jv
-dGU6Cj4gPiBPbiBUdWUsIERlYyAwNywgMjAyMSBhdCAxMDowMDo0M1BNICswMTAwLCBNYXJrIEtl
-dHRlbmlzIHdyb3RlOgo+ID4gPiA+IERhdGU6IFR1ZSwgNyBEZWMgMjAyMSAxMTo1NDoxNiAtMDYw
-MAo+ID4gPiA+IEZyb206IEJqb3JuIEhlbGdhYXMgPGhlbGdhYXNAa2VybmVsLm9yZz4KPiA+ID4g
-PiAKPiA+ID4gPiBbK2NjIE1hcmMsIEFseXNzYSwgTWFyaywgTHVjYSBmb3IgcmVzZXQgdGltaW5n
-IHF1ZXN0aW9uc10KPiA+ID4gCj4gPiA+IEhpIEJqb3JuLAo+ID4gPiAKPiA+ID4gPiBPbiBUdWUs
-IERlYyAwNywgMjAyMSBhdCAwNDo0MTo1M1BNICswODAwLCBxaXpob25nIGNoZW5nIHdyb3RlOgo+
-ID4gPiA+ID4gRGVzY3JpYmVkIGluIFBDSWUgQ0VNIHNwZWNpZmljYXRpb24gc2VjdGlvbnMgMi4y
-IChQRVJTVCMKPiA+ID4gPiA+IFNpZ25hbCkgYW5kCj4gPiA+ID4gPiAyLjIuMSAoSW5pdGlhbCBQ
-b3dlci1VcCAoRzMgdG8gUzApKS4gVGhlIGRlYXNzZXJ0aW9uIG9mIFBFUlNUIwo+ID4gPiA+ID4g
-c2hvdWxkCj4gPiA+ID4gPiBiZSBkZWxheWVkIDEwMG1zIChUUFZQRVJMKSBmb3IgdGhlIHBvd2Vy
-IGFuZCBjbG9jayB0byBiZWNvbWUKPiA+ID4gPiA+IHN0YWJsZS4KPiA+ID4gPiA+IAo+ID4gPiA+
-ID4gU2lnbmVkLW9mZi1ieTogcWl6aG9uZyBjaGVuZyA8cWl6aG9uZy5jaGVuZ0BtZWRpYXRlay5j
-b20+Cj4gPiA+ID4gPiBBY2tlZC1ieTogUGFsaSBSb2jDoXIgPHBhbGlAa2VybmVsLm9yZz4KPiA+
-ID4gPiAuLi4KPiAKPiAxKQo+IDIpCj4gVGhhbmtzIGZvciB5b3VyIHJlbWluZGluZyBhbmQgc3Vn
-Z2VzdGlvbi4KPiAKPiA+ID4gPiAzKSBNb3N0IGltcG9ydGFudGx5LCB0aGlzIG5lZWRzIHRvIGJl
-IHJlY29uY2lsZWQgd2l0aCB0aGUgc2ltaWxhcgo+ID4gPiA+IGNoYW5nZSB0byB0aGUgYXBwbGUg
-ZHJpdmVyOgo+ID4gPiA+IAo+ID4gPiA+ICAgaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDIx
-MTEyMzE4MDYzNi44MDU1OC0yLW1hekBrZXJuZWwub3JnCj4gPiA+ID4gCj4gPiA+ID4gSW4gdGhl
-IGFwcGxlIGRyaXZlciwgd2UncmUgZG9pbmc6Cj4gPiA+ID4gCj4gPiA+ID4gICAtIEFzc2VydCBQ
-RVJTVCMKPiA+ID4gPiAgIC0gU2V0IHVwIFJFRkNMSwo+ID4gPiA+ICAgLSBTbGVlcCAxMDB1cyAo
-VF9wZXJzdC1jbGssIENFTSByNSAyLjIsIDIuOS4yKQo+ID4gPiA+ICAgLSBEZWFzc2VydCBQRVJT
-VCMKPiA+ID4gPiAgIC0gU2xlZXAgMTAwbXMgKG5vdCBzdXJlIHRoZXJlJ3MgYSBuYW1lPyBQQ0ll
-IHI1IDYuNi4xKQo+ID4gPiA+IAo+ID4gPiA+IEJ1dCBoZXJlIGluIG1lZGlhdGVrLCB3ZSdyZSBk
-b2luZzoKPiA+ID4gPiAKPiA+ID4gPiAgIC0gQXNzZXJ0IFBFUlNUIwo+ID4gPiA+ICAgLSBTbGVl
-cCAxMDBtcyAoVF9wdnBlcmwsIENFTSByNSAyLjIsIDIuMi4xLCAyLjkuMikKPiA+ID4gPiAgIC0g
-RGVhc3NlcnQgUEVSU1QjCj4gPiA+ID4gCj4gPiA+ID4gTXkgcXVlc3Rpb25zOgo+ID4gPiAKPiA+
-ID4gTXkgdW5kZXJzdGFuZGluZyBvZiB0aGUgdGhlIEFwcGxlIFBDSWUgaGFyZHdhcmUgaXMgc29t
-ZXdoYXQgbGltaXRlZAo+ID4gPiBidXQ6Cj4gPiA+IAo+ID4gPiA+ICAgLSBXaGVyZSBkb2VzIGFw
-cGxlIGVuZm9yY2UgVF9wdnBlcmw/ICBJIGNhbid0IHRlbGwgd2hlcmUgcG93ZXIKPiA+ID4gPiB0
-bwo+ID4gPiA+ICAgICB0aGUgc2xvdCBpcyB0dXJuZWQgb24uCj4gPiA+IAo+ID4gPiBTbyBmYXIg
-YWxsIGF2YWlsYWJsZSBtYWNoaW5lcyBvbmx5IGhhdmUgUENJZSBkZXZpY2VzIHRoYXQgYXJlCj4g
-PiA+IHNvbGRlcmVkCj4gPiA+IG9udG8gdGhlIG1vdGhlcmJvYXJkLCBzbyB0aGVyZSBhcmUgbm8g
-InJlYWwiIHNsb3RzLiAgQXMgZmFyIGFzIHdlCj4gPiA+IGNhbgo+ID4gPiB0ZWxsIHRoZSBQQ0ll
-IHBvd2VyIGRvbWFpbiBpcyBhbHJlYWR5IHBvd2VyZWQgb24gYXQgdGhlIHBvaW50IHdoZXJlCj4g
-PiA+IHRoZSBtMW4xIGJvb3Rsb2FkZXIgdGFrZXMgY29udHJvbC4gIFRoZXJlIGlzIGEgR1BJTyB0
-aGF0IGNvbnRyb2xzCj4gPiA+IHBvd2VyIHRvIHNvbWUgZGV2aWNlcyAoV2lGaSwgU0RIQyBvbiB0
-aGUgTTEgUHJvL01heCBsYXB0b3BzKSBhbmQKPiA+ID4gdGhvc2UKPiA+ID4gZGV2aWNlcyBhcmUg
-aW5pdGlhbGx5IHBvd2VyZWQgb2ZmLiAgVGhlIExpbnV4IGRyaXZlciBkb2Vzbid0Cj4gPiA+IGN1
-cnJlbnRseQo+ID4gPiBhdHRlbXB0IHRvIHBvd2VyIHRoZXNlIGRldmljZXMgb24sIGJ1dCBVLUJv
-b3Qgd2lsbCBwb3dlciB0aGVtIG9uIGlmCj4gPiA+IHRoZSBhcHByb3ByaWF0ZSBHUElPIGlzIGRl
-ZmluZWQgaW4gdGhlIGRldmljZSB0cmVlLiAgVGhlIHdheSB0aGlzCj4gPiA+IGlzCj4gPiA+IHNw
-ZWNpZmllZCBpbiB0aGUgZGV2aWNlIHRyZWUgaXMgc3RpbGwgdW5kZXIgZGlzY3Vzc2lvbi4KPiA+
-IAo+ID4gRG9lcyB0aGlzIG1lYW4gd2UgYmFzaWNhbGx5IGFzc3VtZSB0aGF0IG0xbjEgYW5kIGVh
-cmx5IExpbnV4IGJvb3QKPiA+IHRha2VzIGF0IGxlYXN0IHRoZSAxMDBtcyBUX3B2cGVybCByZXF1
-aXJlZCBieSBDRU0gc2VjIDIuMiwgYnV0IHdlCj4gPiB0YWtlCj4gPiBwYWlucyB0byBkZWxheSB0
-aGUgMTAwdXMgVF9wZXJzdC1jbGs/ICBUaGF0IHNlZW1zIGEgbGl0dGxlIHdlaXJkLCBidXQKPiA+
-IEkgZ3Vlc3MgaXQgaXMgY2xlYXIgdGhhdCBSRUZDTEsgaXMgKm5vdCogZW5hYmxlZCBiZWZvcmUg
-d2UgZW5hYmxlIGl0LAo+ID4gc28gd2UgZG8gbmVlZCBhdCBsZWFzdCB0aGUgMTAwdXMgdGhlcmUu
-Cj4gPiAKPiA+IEl0IGFsc28gbmlnZ2xlcyBhdCBtZSBhIGxpdHRsZSB0aGF0IHRoZSBzcGVjIHNh
-eXMgVF9wdnBlcmwgc3RhcnRzCj4gPiBmcm9tCj4gPiAqcG93ZXIgc3RhYmxlKiAobm90IGZyb20g
-cG93ZXIgZW5hYmxlKSBhbmQgVF9wZXJzdC1jbGsgc3RhcnRzIGZyb20KPiA+ICpSRUZDTEsgc3Rh
-YmxlKiAobm90IFJFRkNMSyBlbmFibGUpLiAgU2luY2Ugd2UgZG9uJ3Qga25vdyB0aGUgdGltZQo+
-ID4gZnJvbSBlbmFibGUgdG8gc3RhYmxlLCBpdCBzZWVtcyBsaWtlIG5hdGl2ZSBkcml2ZXJzIHNo
-b3VsZCBhZGQgc29tZQo+ID4gY2lyY3VpdC1zcGVjaWZpYyBjb25zdGFudHMgdG8gdGhlIHNwZWMg
-dmFsdWVzLgo+ID4gCj4gCj4gUmVzZXQgb2YgZW5kcG9pbnQgY2FyZCB2aWEgUEVSU1QjIHNpZ25h
-bCBpcyBkZWZpbmVkIGluIFBDSWUgQ0VNIHI1IDIuMjoKPiAiT24gcG93ZXItdXAsIHRoZSBkZS1h
-c3NlcnRpb24gb2YgUEVSU1QjIGlzIGRlbGF5ZWQgMTAwIG1zIChUUFZQRVJMKQo+IGZyb20gdGhl
-IHBvd2VyIHJhaWxzIGFjaGlldmluZyBzcGVjaWZpZWQgb3BlcmF0aW5nIGxpbWl0cy4gQWxzbywg
-d2l0aGluCj4gdGhpcyB0aW1lLCB0aGUgcmVmZXJlbmNlIGNsb2NrcyAoUkVGQ0xLKywgUkVGQ0xL
-LSkgYWxzbyBiZWNvbWUgc3RhYmxlLAo+IGF0IGxlYXN0IFRQRVJTVC1DTEsgYmVmb3JlIFBFUlNU
-IyBpcyBkZS1hc3NlcnRlZC4iCj4gCj4gLSBUcHZwZXJsIC0gUEVSU1QjIG11c3QgcmVtYWluIGFj
-dGl2ZSBhdCBsZWFzdCB0aGlzIGxvbmcgYWZ0ZXIgcG93ZXIKPiBiZWNvbWVzIHZhbGlkCj4gCj4g
-SW5pdGlhbGl6ZSBzdGVwcyBhcyBmb2xsb3dpbmcocGxlYXNlIGNvcnJlY3QgbWUgaWYgSSdtIHdy
-b25nKToKPiAgMSkgRW5hYmxlIG1haW4gcG93ZXIKPiAgMikgQXNzZXJ0IFBFUlNUIwo+ICAzKSBT
-bGVlcCAxMDBtcyAoVFBWUEVSTCwgd2l0aGluIHRoaXMgdGltZSwgdGhlIFJFRkNMSyBhbmQgcG93
-ZXIgYWxzbwo+IGJlY29tZSBzdGFibGUpKENFTSByNSBmaWd1cmUgODogcG93ZXIgdXApCj4gIDQp
-IERlYXNzZXJ0IFBFUlNUIwo+ICA1KSB3YWl0IHVudGlsIGxpbmsgdHJhaW5pbmcgY29tcGxldGVz
-IGJ5IHNvZnR3YXJlIHBvbGxpbmcgdGhlIERhdGEKPiBMaW5rIExheWVyIExpbmsgQWN0aXZlIGJp
-dAo+ICA2KSBpZiBzcGVlZCBpcyBncmVhdGVyIHRoYW4gNUdUL3MsIHdhaXQgYW5vdGhlciAxMDBt
-cwoKSGVsbG8hIEFib3V0IG1vbnRoIGFnbyBJIHdhcyBpbnZlc3RpZ2F0aW5nIGNvcnJlY3Qgb3Jk
-ZXIgb2Ygc3RlcHMgYW5kIEkKd3JvdGUgZW1haWwgYWJvdXQgaXQsIHBsZWFzZSBsb29rIGF0IGl0
-OgpodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1wY2kvMjAyMTEwMjIxODM4MDguamRlbzd2
-bnRuYWdxa2c3Z0BwYWxpLwoKPiA+ID4gPiAgIC0gV2hlcmUgZG9lcyBtZWRpYXRlayBlbmZvcmNl
-IHRoZSBQQ0llIHNlYyA2LjYuMSBkZWxheSBhZnRlcgo+ID4gPiA+ICAgICBkZWFzc2VydGluZyBQ
-RVJTVCMgYW5kIGJlZm9yZSBjb25maWcgcmVxdWVzdHM/Cj4gPiA+ID4gCj4gU29mdHdhcmUgY2Fu
-IGRldGVybWluZSB3aGVuIExpbmsgdHJhaW5pbmcgY29tcGxldGVzIGJ5IHBvbGxpbmcgdGhlIERh
-dGEKPiBMaW5rIExheWVyIExpbmsgQWN0aXZlIGJpdCBmb3IgbWF4aW11bSAxMDBtcy4KCk15IHVu
-ZGVyc3RhbmRpbmcgaXMgdGhhdCBpdCBpcyBuZWVkZWQgdG8gd2FpdCBhbm90aGVyIDEwMG1zIF9h
-ZnRlcl8gbGluawp0cmFpbmluZyBjb21wbGV0ZXMuCgo+ID4gPiA+ICAgLSBEb2VzIGVpdGhlciBh
-cHBsZSBvciBtZWRpYXRlayBzdXBwb3J0IHNwZWVkcyBncmVhdGVyIHRoYW4gNQo+ID4gPiA+IEdU
-L3MsCj4gPiA+ID4gICAgIGFuZCBpZiBzbywgc2hvdWxkbid0IHdlIHN0YXJ0IHRoZSBzZWMgNi42
-LjEgMTAwbXMgZGVsYXkKPiA+ID4gPiAqYWZ0ZXIqCj4gPiA+ID4gICAgIExpbmsgdHJhaW5pbmcg
-Y29tcGxldGVzPwo+ID4gPiAKPiA+ID4gVGhlIEFwcGxlIGhhcmR3YXJlIGFkdmVydGlzZXMgc3Vw
-cG9ydCBmb3IgOCBHVC9zLCBidXQgYWxsIHRoZQo+ID4gPiBkZXZpY2VzCj4gPiA+IGludGVncmF0
-ZWQgb24gdGhlIE1hYyBtaW5pIHN1cHBvcnQgb25seSAyLjUgR1QvcyBvciA1IEdUL3MuCj4gPiAK
-PiA+IFRoZSBzcGVjIGRvZXNuJ3Qgc2F5IGFueXRoaW5nIGFib3V0IHdoYXQgdGhlIGRvd25zdHJl
-YW0gZGV2aWNlcwo+ID4gc3VwcG9ydCAob2J2aW91c2x5IGl0IGNhbid0IGJlY2F1c2Ugd2UgZG9u
-J3QgKmtub3cqIHdoYXQgdGhvc2UKPiA+IGRldmljZXMKPiA+IGFyZSB1bnRpbCBhZnRlciB3ZSBl
-bnVtZXJhdGUgdGhlbSkuICBTbyB0byBiZSBwZWRhbnRpY2FsbHkgY29ycmVjdCwKPiA+IEknZCBh
-cmd1ZSB0aGF0IHdlIHNob3VsZCBwYXkgYXR0ZW50aW9uIHRvIHdoYXQgdGhlIFJvb3QgUG9ydAo+
-ID4gYWR2ZXJ0aXNlcy4gIE9mIGNvdXJzZSwgSSBkb24ndCB0aGluayB3ZSBkbyB0aGlzIGNvcnJl
-Y3RseSAqYW55d2hlcmUqCj4gPiB0b2RheS4KPiAKPiBUaGFua3MKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlz
-dApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+> On Wed, Dec 08, 2021 at 10:26:23AM +0800, Mark-PK Tsai wrote:
+> > > On Fri, Dec 03, 2021 at 10:14:16PM +0800, Mark-PK Tsai wrote:
+> > > > Remove the [_text, _stext) from Kernel Code.
+> > > > Although there are some startup code in head.text, they
+> > > > are freed to the buddy system after kernel boot.
+> > >
+> > > Hmm, I don't see it is being freed anywhere. Can you elaborate when and how
+> > > the range [_text, _stext) is freed?
+> > 
+> > arm_memblock_init() reserve [KERNEL_START, KERNEL_END) which are defined as following.
+> > 
+> > #define KERNEL_START            _stext
+> > #define KERNEL_END              _end
+> > 
+> > free_low_memory_core_early() free all the non-reserved range in lowmem,
+> > so the range [_text, _stext) is also freed here.
+> 
+> Right, I've misread KERNEL_START as if it was _text...
+>  
+> > >
+> > > > And we have memory protection mechanism use this
+> > > > which have false alarm when some other IPs doing dma
+> > > > if the dma page frame is in the [_text, _stext).
+> > > >
+> > > > Below are my iomem resource and reserved memory information:
+> > > > console:/ # grep Kernel /proc/iomem
+> > > >   20208000-219fffff : Kernel code
+> > > >   21b00000-21c2e76f : Kernel data
+> > > >
+> > > > console:/ # cat /sys/kernel/debug/memblock/reserved
+> > > > 0: 0x20201000..0x20207fff
+> > > > 1: 0x20300000..0x21c2e76f
+> > >
+> > > What are the addresses of _text and _stext in your configuration?
+> > 
+> > va	 pa
+> > c0008000 20208000 _text
+> > c0100000 20300000 _stext
+> > 
+> > >
+> > > What these dumps are supposed to show here?
+> > >
+> > 
+> > Below is the dump info after applied this patch.
+> > 
+> > console:/ # grep Kernel /proc/iomem
+> >   20300000-219fffff : Kernel code
+> >   21b00000-21c2e76f : Kernel data
+> > 
+> > console:/ # cat /sys/kernel/debug/memblock/reserved
+> > 0: 0x20201000..0x20207fff
+> > 1: 0x20300000..0x21c2e76f
+> > 
+> > The difference is that Kernel Code resource match the reserved memblock 1
+> > which is reserved in arm_memblock_init().
+> 
+> For that I'd extend the reservation in arm_memblock_init() to include
+> [_text, _stext). 
+> 
+> Even if the code there is not needed after init, at least we'll keep this
+> consistent with other architectures.
+>  
+
+Extending the reservation in arm_memblock_init() will consume up to SECTION_SIZE
+memory for SECTION_SIZE alignment when CONFIG_STRICT_KERNEL_RWX=y.
+So we really don't want to extend the reservation because it affect
+the low RAM devices.
+
+And arm64_memblock_init() also reserve [_stext, _end) in the recent kernel.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
