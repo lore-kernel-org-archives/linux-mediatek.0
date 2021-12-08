@@ -4,52 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA898C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 09:21:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C016C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 09:44:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ij2Coz9gi2Doxk4az+Q4jA34YIVse6Gfar2UOT36cKs=; b=UMOj8pZjkqcHTA
-	ZKzT5Iv4TmZtbA8x3Cem7+N1VDHk6OtnpAl2DSQwjV2wtwVxiUEeD3olM0J7ubVRAwp5pNeU5zEnS
-	ozHlawXv083hEYd/iz/EFgnrfKeTlJXKmNAansFARlgOdOCZG7fBPzZ6qoJpVcqpVxG+54rI+pNfx
-	fdyK4U3XpPvgn13vqwcMZNsue3lbgUN3nCavTGFCKMt/ef4QtZsrfoXzn93vfFAM1tpfo43RJ/sde
-	m682BjB1so426NIWjYeCILzeLlH99ycDSmYjbgUUO7u/1ThbnXIQn6zoy3MrVDSe43RVXMl1n+b2s
-	MJ4Xf451RpZXCo0YbaNw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1pq4hHsGE0t+VV4BIXMSVAFuSgUgLuecyJaFxll+jw4=; b=jpgD34U0IxG6wz
+	2vCrBXSN669nwKNWvwyWJSezgpuirXMswcHViZTnZyfrjsU8PZrjuAu7fCLMxNH2kdp7ciej/KS40
+	nINSphrrvvyhYLty8YfUp83+BX2txdlpgRaLLicMxqNUR+5WkAEy0gLMYkUYTUcjImia7WtfOSNcl
+	JvZEDUu0r5j7rcGUxnpZiBb1s+FvobX/GUdw5iHAtye0QOwWgPRIhqTYYgCkLbNmmCYHzqyxkSLBK
+	NqlROw1lSzRai5HG83LNIix+2YjlzfKJzO9eaZwEmAmi3ijG1I6o4rO55vLuNqixhib7aJ4SuXPEk
+	TMI2wXFGSYQJkA7tPpRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mut8q-00BsKN-KW; Wed, 08 Dec 2021 09:21:36 +0000
-Received: from mga03.intel.com ([134.134.136.65])
+	id 1mutUS-00BwxD-4V; Wed, 08 Dec 2021 09:43:56 +0000
+Received: from sin.source.kernel.org ([145.40.73.55])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mut8V-00BsCx-HE; Wed, 08 Dec 2021 09:21:18 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10191"; a="237735215"
-X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="237735215"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2021 01:20:49 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.87,297,1631602800"; d="scan'208";a="516141057"
-Received: from black.fi.intel.com ([10.237.72.28])
- by fmsmga007.fm.intel.com with ESMTP; 08 Dec 2021 01:20:47 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 2E0F214F; Wed,  8 Dec 2021 11:20:52 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Linus Walleij <linus.walleij@linaro.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v1 1/1] pinctrl: Sort Kconfig and Makefile entries
- alphabetically
-Date: Wed,  8 Dec 2021 11:20:49 +0200
-Message-Id: <20211208092049.20792-1-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.33.0
+ id 1mutUE-00Bwvo-G3; Wed, 08 Dec 2021 09:43:44 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id E2247CE2033;
+ Wed,  8 Dec 2021 09:43:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D6445C00446;
+ Wed,  8 Dec 2021 09:43:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1638956614;
+ bh=7KVwmZP4kb/OUL12BsPtaww8tTdt2wLQUh9C2RS84eg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=h3Ux8Mz5MdK0z6YQ5WyzALFAKVKmQEk0+7u4MYenjEKWSdYay/H+eLFSqkJpThpsd
+ bDunlql+anSvbDj8enIYHVUWygu7gb0yIhW8VuaUKBhHQ0cSGVTBz/q6RZxD61C6Tm
+ ZVA2ZmG8uOUATKSkIM399mZiH9XyecKC9qUhI8Lt4O8YONu7SD1bcv+5ipJB05m8uZ
+ mBJcZ7XF6g1rEOpN52UZyGYDpy+oCY4dx2nUqIzbE+tXg1bu7qNCTq/XZCk2FkZzSR
+ x2egKSR4V2pU37yAhQPbjdEdrkJhHr5Vc+ZO05KFmkY6I2LEZb6wFZ53nV/O1KK91d
+ +tW5Upq2wb+lw==
+Date: Wed, 8 Dec 2021 11:43:23 +0200
+From: Mike Rapoport <rppt@kernel.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: akpm@linux-foundation.org, arnd@arndb.de,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux@armlinux.org.uk,
+ linux@roeck-us.net, matthias.bgg@gmail.com,
+ rmk+kernel@armlinux.org.uk, wangkefeng.wang@huawei.com,
+ yj.chiang@mediatek.com
+Subject: Re: [PATCH] arm: remove [_text, _stext) from kernel code resource
+Message-ID: <YbB+O80Th2QI8sTl@kernel.org>
+References: <Ya+EUDVYdBvRa7xI@kernel.org>
+ <20211208022623.15103-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211208022623.15103-1-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_012115_730613_54CD51DA 
-X-CRM114-Status: GOOD (  24.25  )
+X-CRM114-CacheID: sfid-20211208_014342_765661_EE189DAF 
+X-CRM114-Status: GOOD (  23.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,648 +76,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sort Kconfig and Makefile entries alphabetically for better maintenance
-in the future.
+On Wed, Dec 08, 2021 at 10:26:23AM +0800, Mark-PK Tsai wrote:
+> > On Fri, Dec 03, 2021 at 10:14:16PM +0800, Mark-PK Tsai wrote:
+> > > Remove the [_text, _stext) from Kernel Code.
+> > > Although there are some startup code in head.text, they
+> > > are freed to the buddy system after kernel boot.
+> >
+> > Hmm, I don't see it is being freed anywhere. Can you elaborate when and how
+> > the range [_text, _stext) is freed?
+> 
+> arm_memblock_init() reserve [KERNEL_START, KERNEL_END) which are defined as following.
+> 
+> #define KERNEL_START            _stext
+> #define KERNEL_END              _end
+> 
+> free_low_memory_core_early() free all the non-reserved range in lowmem,
+> so the range [_text, _stext) is also freed here.
 
-While at it fix some style issues, such as wrong indentation.
+Right, I've misread KERNEL_START as if it was _text...
+ 
+> >
+> > > And we have memory protection mechanism use this
+> > > which have false alarm when some other IPs doing dma
+> > > if the dma page frame is in the [_text, _stext).
+> > >
+> > > Below are my iomem resource and reserved memory information:
+> > > console:/ # grep Kernel /proc/iomem
+> > >   20208000-219fffff : Kernel code
+> > >   21b00000-21c2e76f : Kernel data
+> > >
+> > > console:/ # cat /sys/kernel/debug/memblock/reserved
+> > > 0: 0x20201000..0x20207fff
+> > > 1: 0x20300000..0x21c2e76f
+> >
+> > What are the addresses of _text and _stext in your configuration?
+> 
+> va	 pa
+> c0008000 20208000 _text
+> c0100000 20300000 _stext
+> 
+> >
+> > What these dumps are supposed to show here?
+> >
+> 
+> Below is the dump info after applied this patch.
+> 
+> console:/ # grep Kernel /proc/iomem
+>   20300000-219fffff : Kernel code
+>   21b00000-21c2e76f : Kernel data
+> 
+> console:/ # cat /sys/kernel/debug/memblock/reserved
+> 0: 0x20201000..0x20207fff
+> 1: 0x20300000..0x21c2e76f
+> 
+> The difference is that Kernel Code resource match the reserved memblock 1
+> which is reserved in arm_memblock_init().
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/pinctrl/Kconfig  | 431 +++++++++++++++++++--------------------
- drivers/pinctrl/Makefile |  45 ++--
- 2 files changed, 238 insertions(+), 238 deletions(-)
+For that I'd extend the reservation in arm_memblock_init() to include
+[_text, _stext). 
 
-diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
-index 6a961d5f8726..92495fc59a79 100644
---- a/drivers/pinctrl/Kconfig
-+++ b/drivers/pinctrl/Kconfig
-@@ -31,6 +31,24 @@ config DEBUG_PINCTRL
- 	help
- 	  Say Y here to add some extra checks and diagnostics to PINCTRL calls.
+Even if the code there is not needed after init, at least we'll keep this
+consistent with other architectures.
  
-+config PINCTRL_AMD
-+	tristate "AMD GPIO pin control"
-+	depends on HAS_IOMEM
-+	depends on ACPI || COMPILE_TEST
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select PINMUX
-+	select PINCONF
-+	select GENERIC_PINCONF
-+	help
-+	  driver for memory mapped GPIO functionality on AMD platforms
-+	  (x86 or arm).Most pins are usually muxed to some other
-+	  functionality by firmware,so only a small amount is available
-+	  for gpio use.
-+
-+	  Requires ACPI/FDT device enumeration code to set up a platform
-+	  device.
-+
- config PINCTRL_APPLE_GPIO
- 	tristate "Apple SoC GPIO pin controller driver"
- 	depends on ARCH_APPLE
-@@ -69,20 +87,6 @@ config PINCTRL_AS3722
- 	  open drain configuration for the GPIO pins of AS3722 devices. It also
- 	  supports the GPIO functionality through gpiolib.
- 
--config PINCTRL_AXP209
--	tristate "X-Powers AXP209 PMIC pinctrl and GPIO Support"
--	depends on MFD_AXP20X
--	depends on OF
--	select PINMUX
--	select GENERIC_PINCONF
--	select GPIOLIB
--	help
--	  AXP PMICs provides multiple GPIOs that can be muxed for different
--	  functions. This driver bundles a pinctrl driver to select the function
--	  muxing and a GPIO driver to handle the GPIO when the GPIO function is
--	  selected.
--	  Say yes to enable pinctrl and GPIO support for the AXP209 PMIC
--
- config PINCTRL_AT91
- 	bool "AT91 pinctrl driver"
- 	depends on OF
-@@ -109,23 +113,19 @@ config PINCTRL_AT91PIO4
- 	  Say Y here to enable the at91 pinctrl/gpio driver for Atmel PIO4
- 	  controller available on sama5d2 SoC.
- 
--config PINCTRL_AMD
--	tristate "AMD GPIO pin control"
--	depends on HAS_IOMEM
--	depends on ACPI || COMPILE_TEST
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
-+config PINCTRL_AXP209
-+	tristate "X-Powers AXP209 PMIC pinctrl and GPIO Support"
-+	depends on MFD_AXP20X
-+	depends on OF
- 	select PINMUX
--	select PINCONF
- 	select GENERIC_PINCONF
-+	select GPIOLIB
- 	help
--	  driver for memory mapped GPIO functionality on AMD platforms
--	  (x86 or arm).Most pins are usually muxed to some other
--	  functionality by firmware,so only a small amount is available
--	  for gpio use.
--
--	  Requires ACPI/FDT device enumeration code to set up a platform
--	  device.
-+	  AXP PMICs provides multiple GPIOs that can be muxed for different
-+	  functions. This driver bundles a pinctrl driver to select the function
-+	  muxing and a GPIO driver to handle the GPIO when the GPIO function is
-+	  selected.
-+	  Say yes to enable pinctrl and GPIO support for the AXP209 PMIC
- 
- config PINCTRL_BM1880
- 	bool "Bitmain BM1880 Pinctrl driver"
-@@ -162,12 +162,93 @@ config PINCTRL_DIGICOLOR
- 	select PINMUX
- 	select GENERIC_PINCONF
- 
-+config PINCTRL_EQUILIBRIUM
-+	tristate "Generic pinctrl and GPIO driver for Intel Lightning Mountain SoC"
-+	depends on OF && HAS_IOMEM
-+	depends on X86 || COMPILE_TEST
-+	select PINMUX
-+	select PINCONF
-+	select GPIOLIB
-+	select GPIO_GENERIC
-+	select GPIOLIB_IRQCHIP
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	help
-+	  Equilibrium pinctrl driver is a pinctrl & GPIO driver for Intel Lightning
-+	  Mountain network processor SoC that supports both the linux GPIO and pin
-+	  control frameworks. It provides interfaces to setup pinmux, assign desired
-+	  pin functions, configure GPIO attributes for LGM SoC pins. Pinmux and
-+	  pinconf settings are retrieved from device tree.
-+
-+config PINCTRL_GEMINI
-+	bool
-+	depends on ARCH_GEMINI
-+	default ARCH_GEMINI
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	select MFD_SYSCON
-+
-+config PINCTRL_INGENIC
-+	bool "Pinctrl driver for the Ingenic JZ47xx SoCs"
-+	default MACH_INGENIC
-+	depends on OF
-+	depends on MIPS || COMPILE_TEST
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select REGMAP_MMIO
-+
-+config PINCTRL_K210
-+	bool "Pinctrl driver for the Canaan Kendryte K210 SoC"
-+	depends on RISCV && SOC_CANAAN && OF
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select GENERIC_PINCONF
-+	select GPIOLIB
-+	select OF_GPIO
-+	select REGMAP_MMIO
-+	default SOC_CANAAN
-+	help
-+	  Add support for the Canaan Kendryte K210 RISC-V SOC Field
-+	  Programmable IO Array (FPIOA) controller.
-+
-+config PINCTRL_KEEMBAY
-+	tristate "Pinctrl driver for Intel Keem Bay SoC"
-+	depends on ARCH_KEEMBAY || (ARM64 && COMPILE_TEST)
-+	depends on HAS_IOMEM
-+	select PINMUX
-+	select PINCONF
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select GPIO_GENERIC
-+	help
-+	  This selects pin control driver for the Intel Keembay SoC.
-+	  It provides pin config functions such as pullup, pulldown,
-+	  interrupt, drive strength, sec lock, schmitt trigger, slew
-+	  rate control and direction control. This module will be
-+	  called as pinctrl-keembay.
-+
- config PINCTRL_LANTIQ
- 	bool
- 	depends on LANTIQ
- 	select PINMUX
- 	select PINCONF
- 
-+config PINCTRL_FALCON
-+	bool
-+	depends on SOC_FALCON
-+	depends on PINCTRL_LANTIQ
-+
-+config PINCTRL_XWAY
-+	bool
-+	depends on SOC_TYPE_XWAY
-+	depends on PINCTRL_LANTIQ
-+
- config PINCTRL_LPC18XX
- 	bool "NXP LPC18XX/43XX SCU pinctrl driver"
- 	depends on OF && (ARCH_LPC18XX || COMPILE_TEST)
-@@ -177,18 +258,16 @@ config PINCTRL_LPC18XX
- 	help
- 	  Pinctrl driver for NXP LPC18xx/43xx System Control Unit (SCU).
- 
--config PINCTRL_FALCON
--	bool
--	depends on SOC_FALCON
--	depends on PINCTRL_LANTIQ
--
--config PINCTRL_GEMINI
--	bool
--	depends on ARCH_GEMINI
--	default ARCH_GEMINI
-+config PINCTRL_MAX77620
-+	tristate "MAX77620/MAX20024 Pincontrol support"
-+	depends on MFD_MAX77620 && OF
- 	select PINMUX
- 	select GENERIC_PINCONF
--	select MFD_SYSCON
-+	help
-+	  Say Yes here to enable Pin control support for Maxim PMIC MAX77620.
-+	  This PMIC has 8 GPIO pins that work as GPIO as well as special
-+	  function in alternate mode. This driver also configure push-pull,
-+	  open drain, FPS slots etc.
- 
- config PINCTRL_MCP23S08_I2C
- 	tristate
-@@ -212,6 +291,37 @@ config PINCTRL_MCP23S08
- 	  This provides a GPIO interface supporting inputs and outputs and a
- 	  corresponding interrupt-controller.
- 
-+config PINCTRL_MICROCHIP_SGPIO
-+	bool "Pinctrl driver for Microsemi/Microchip Serial GPIO"
-+	depends on OF
-+	depends on HAS_IOMEM
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select OF_GPIO
-+	help
-+	  Support for the serial GPIO interface used on Microsemi and
-+	  Microchip SoC's. By using a serial interface, the SIO
-+	  controller significantly extends the number of available
-+	  GPIOs with a minimum number of additional pins on the
-+	  device. The primary purpose of the SIO controller is to
-+	  connect control signals from SFP modules and to act as an
-+	  LED controller.
-+
-+config PINCTRL_OCELOT
-+	bool "Pinctrl driver for the Microsemi Ocelot and Jaguar2 SoCs"
-+	depends on OF
-+	depends on HAS_IOMEM
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select OF_GPIO
-+	select REGMAP_MMIO
-+
- config PINCTRL_OXNAS
- 	bool
- 	depends on OF
-@@ -223,6 +333,54 @@ config PINCTRL_OXNAS
- 	select GPIOLIB_IRQCHIP
- 	select MFD_SYSCON
- 
-+config PINCTRL_PALMAS
-+	tristate "Pinctrl driver for the PALMAS Series MFD devices"
-+	depends on OF && MFD_PALMAS
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	help
-+	  Palmas device supports the configuration of pins for different
-+	  functionality. This driver supports the pinmux, push-pull and
-+	  open drain configuration for the Palmas series devices like
-+	  TPS65913, TPS80036 etc.
-+
-+config PINCTRL_PIC32
-+	bool "Microchip PIC32 pin controller driver"
-+	depends on OF
-+	depends on MACH_PIC32
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	select GPIOLIB_IRQCHIP
-+	select OF_GPIO
-+	help
-+	  This is the pin controller and gpio driver for Microchip PIC32
-+	  microcontrollers. This option is selected automatically when specific
-+	  machine and arch are selected to build.
-+
-+config PINCTRL_PIC32MZDA
-+	def_bool y if PIC32MZDA
-+	select PINCTRL_PIC32
-+
-+config PINCTRL_PISTACHIO
-+	bool "IMG Pistachio SoC pinctrl driver"
-+	depends on OF && (MIPS || COMPILE_TEST)
-+	depends on GPIOLIB
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	select GPIOLIB_IRQCHIP
-+	select OF_GPIO
-+	help
-+	  This support pinctrl and gpio driver for IMG Pistachio SoC.
-+
-+config PINCTRL_RK805
-+	tristate "Pinctrl and GPIO driver for RK805 PMIC"
-+	depends on MFD_RK808
-+	select GPIOLIB
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	help
-+	  This selects the pinctrl driver for RK805.
-+
- config PINCTRL_ROCKCHIP
- 	tristate "Rockchip gpio and pinctrl driver"
- 	depends on ARCH_ROCKCHIP || COMPILE_TEST
-@@ -247,33 +405,6 @@ config PINCTRL_SINGLE
- 	help
- 	  This selects the device tree based generic pinctrl driver.
- 
--config PINCTRL_SX150X
--	bool "Semtech SX150x I2C GPIO expander pinctrl driver"
--	depends on I2C=y
--	select PINMUX
--	select PINCONF
--	select GENERIC_PINCONF
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
--	select REGMAP
--	help
--	  Say yes here to provide support for Semtech SX150x-series I2C
--	  GPIO expanders as pinctrl module.
--	  Compatible models include:
--	  - 8 bits:  sx1508q, sx1502q
--	  - 16 bits: sx1509q, sx1506q
--
--config PINCTRL_PISTACHIO
--	bool "IMG Pistachio SoC pinctrl driver"
--	depends on OF && (MIPS || COMPILE_TEST)
--	depends on GPIOLIB
--	select PINMUX
--	select GENERIC_PINCONF
--	select GPIOLIB_IRQCHIP
--	select OF_GPIO
--    help
--	  This support pinctrl and gpio driver for IMG Pistachio SoC.
--
- config PINCTRL_ST
- 	bool
- 	depends on OF
-@@ -295,44 +426,26 @@ config PINCTRL_STMFX
- 	  and configuring push-pull, open-drain, and can also be used as
- 	  interrupt-controller.
- 
--config PINCTRL_MAX77620
--	tristate "MAX77620/MAX20024 Pincontrol support"
--	depends on MFD_MAX77620 && OF
--	select PINMUX
--	select GENERIC_PINCONF
--	help
--	  Say Yes here to enable Pin control support for Maxim PMIC MAX77620.
--	  This PMIC has 8 GPIO pins that work as GPIO as well as special
--	  function in alternate mode. This driver also configure push-pull,
--	  open drain, FPS slots etc.
--
--config PINCTRL_PALMAS
--	tristate "Pinctrl driver for the PALMAS Series MFD devices"
--	depends on OF && MFD_PALMAS
--	select PINMUX
--	select GENERIC_PINCONF
--	help
--	  Palmas device supports the configuration of pins for different
--	  functionality. This driver supports the pinmux, push-pull and
--	  open drain configuration for the Palmas series devices like
--	  TPS65913, TPS80036 etc.
--
--config PINCTRL_PIC32
--	bool "Microchip PIC32 pin controller driver"
--	depends on OF
--	depends on MACH_PIC32
-+config PINCTRL_SX150X
-+	bool "Semtech SX150x I2C GPIO expander pinctrl driver"
-+	depends on I2C=y
- 	select PINMUX
-+	select PINCONF
- 	select GENERIC_PINCONF
-+	select GPIOLIB
- 	select GPIOLIB_IRQCHIP
--	select OF_GPIO
-+	select REGMAP
- 	help
--	  This is the pin controller and gpio driver for Microchip PIC32
--	  microcontrollers. This option is selected automatically when specific
--	  machine and arch are selected to build.
-+	  Say yes here to provide support for Semtech SX150x-series I2C
-+	  GPIO expanders as pinctrl module.
-+	  Compatible models include:
-+	  - 8 bits:  sx1508q, sx1502q
-+	  - 16 bits: sx1509q, sx1506q
- 
--config PINCTRL_PIC32MZDA
--	def_bool y if PIC32MZDA
--	select PINCTRL_PIC32
-+config PINCTRL_TB10X
-+	bool
-+	depends on OF && ARC_PLAT_TB10X
-+	select GPIOLIB
- 
- config PINCTRL_ZYNQ
- 	bool "Pinctrl driver for Xilinx Zynq"
-@@ -358,96 +471,15 @@ config PINCTRL_ZYNQMP
- 	  This driver can also be built as a module. If so, the module
- 	  will be called pinctrl-zynqmp.
- 
--config PINCTRL_INGENIC
--	bool "Pinctrl driver for the Ingenic JZ47xx SoCs"
--	default MACH_INGENIC
--	depends on OF
--	depends on MIPS || COMPILE_TEST
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
--	select REGMAP_MMIO
--
--config PINCTRL_RK805
--	tristate "Pinctrl and GPIO driver for RK805 PMIC"
--	depends on MFD_RK808
--	select GPIOLIB
--	select PINMUX
--	select GENERIC_PINCONF
--	help
--	  This selects the pinctrl driver for RK805.
--
--config PINCTRL_OCELOT
--	bool "Pinctrl driver for the Microsemi Ocelot and Jaguar2 SoCs"
--	depends on OF
--	depends on HAS_IOMEM
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--	select OF_GPIO
--	select REGMAP_MMIO
--
--config PINCTRL_MICROCHIP_SGPIO
--	bool "Pinctrl driver for Microsemi/Microchip Serial GPIO"
--	depends on OF
--	depends on HAS_IOMEM
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--	select OF_GPIO
--	help
--	  Support for the serial GPIO interface used on Microsemi and
--	  Microchip SoC's. By using a serial interface, the SIO
--	  controller significantly extends the number of available
--	  GPIOs with a minimum number of additional pins on the
--	  device. The primary purpose of the SIO controller is to
--	  connect control signals from SFP modules and to act as an
--	  LED controller.
--
--config PINCTRL_K210
--	bool "Pinctrl driver for the Canaan Kendryte K210 SoC"
--	depends on RISCV && SOC_CANAAN && OF
--	select GENERIC_PINMUX_FUNCTIONS
--	select GENERIC_PINCONF
--	select GPIOLIB
--	select OF_GPIO
--	select REGMAP_MMIO
--	default SOC_CANAAN
--	help
--	  Add support for the Canaan Kendryte K210 RISC-V SOC Field
--	  Programmable IO Array (FPIOA) controller.
--
--config PINCTRL_KEEMBAY
--	tristate "Pinctrl driver for Intel Keem Bay SoC"
--	depends on ARCH_KEEMBAY || (ARM64 && COMPILE_TEST)
--	depends on HAS_IOMEM
--	select PINMUX
--	select PINCONF
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
--	select GPIO_GENERIC
--	help
--	  This selects pin control driver for the Intel Keembay SoC.
--	  It provides pin config functions such as pullup, pulldown,
--	  interrupt, drive strength, sec lock, schmitt trigger, slew
--	  rate control and direction control. This module will be
--	  called as pinctrl-keembay.
--
- source "drivers/pinctrl/actions/Kconfig"
- source "drivers/pinctrl/aspeed/Kconfig"
- source "drivers/pinctrl/bcm/Kconfig"
- source "drivers/pinctrl/berlin/Kconfig"
-+source "drivers/pinctrl/cirrus/Kconfig"
- source "drivers/pinctrl/freescale/Kconfig"
- source "drivers/pinctrl/intel/Kconfig"
-+source "drivers/pinctrl/mediatek/Kconfig"
-+source "drivers/pinctrl/meson/Kconfig"
- source "drivers/pinctrl/mvebu/Kconfig"
- source "drivers/pinctrl/nomadik/Kconfig"
- source "drivers/pinctrl/nuvoton/Kconfig"
-@@ -463,40 +495,7 @@ source "drivers/pinctrl/sunxi/Kconfig"
- source "drivers/pinctrl/tegra/Kconfig"
- source "drivers/pinctrl/ti/Kconfig"
- source "drivers/pinctrl/uniphier/Kconfig"
--source "drivers/pinctrl/vt8500/Kconfig"
--source "drivers/pinctrl/mediatek/Kconfig"
--source "drivers/pinctrl/meson/Kconfig"
--source "drivers/pinctrl/cirrus/Kconfig"
- source "drivers/pinctrl/visconti/Kconfig"
--
--config PINCTRL_XWAY
--	bool
--	depends on SOC_TYPE_XWAY
--	depends on PINCTRL_LANTIQ
--
--config PINCTRL_TB10X
--	bool
--	depends on OF && ARC_PLAT_TB10X
--	select GPIOLIB
--
--config PINCTRL_EQUILIBRIUM
--	tristate "Generic pinctrl and GPIO driver for Intel Lightning Mountain SoC"
--	depends on OF && HAS_IOMEM
--	depends on X86 || COMPILE_TEST
--	select PINMUX
--	select PINCONF
--	select GPIOLIB
--	select GPIO_GENERIC
--	select GPIOLIB_IRQCHIP
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--
--	help
--	  Equilibrium pinctrl driver is a pinctrl & GPIO driver for Intel Lightning
--	  Mountain network processor SoC that supports both the linux GPIO and pin
--	  control frameworks. It provides interfaces to setup pinmux, assign desired
--	  pin functions, configure GPIO attributes for LGM SoC pins. Pinmux and
--	  pinconf settings are retrieved from device tree.
-+source "drivers/pinctrl/vt8500/Kconfig"
- 
- endif
-diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
-index 5e63de2ffcf4..f63483fde75f 100644
---- a/drivers/pinctrl/Makefile
-+++ b/drivers/pinctrl/Makefile
-@@ -6,56 +6,58 @@ subdir-ccflags-$(CONFIG_DEBUG_PINCTRL)	+= -DDEBUG
- obj-y				+= core.o pinctrl-utils.o
- obj-$(CONFIG_PINMUX)		+= pinmux.o
- obj-$(CONFIG_PINCONF)		+= pinconf.o
--obj-$(CONFIG_OF)		+= devicetree.o
- obj-$(CONFIG_GENERIC_PINCONF)	+= pinconf-generic.o
-+obj-$(CONFIG_OF)		+= devicetree.o
-+
-+obj-$(CONFIG_PINCTRL_AMD)	+= pinctrl-amd.o
- obj-$(CONFIG_PINCTRL_APPLE_GPIO) += pinctrl-apple-gpio.o
- obj-$(CONFIG_PINCTRL_ARTPEC6)	+= pinctrl-artpec6.o
- obj-$(CONFIG_PINCTRL_AS3722)	+= pinctrl-as3722.o
--obj-$(CONFIG_PINCTRL_AXP209)	+= pinctrl-axp209.o
- obj-$(CONFIG_PINCTRL_AT91)	+= pinctrl-at91.o
- obj-$(CONFIG_PINCTRL_AT91PIO4)	+= pinctrl-at91-pio4.o
--obj-$(CONFIG_PINCTRL_AMD)	+= pinctrl-amd.o
-+obj-$(CONFIG_PINCTRL_AXP209)	+= pinctrl-axp209.o
- obj-$(CONFIG_PINCTRL_BM1880)	+= pinctrl-bm1880.o
- obj-$(CONFIG_PINCTRL_DA850_PUPD) += pinctrl-da850-pupd.o
- obj-$(CONFIG_PINCTRL_DA9062)	+= pinctrl-da9062.o
- obj-$(CONFIG_PINCTRL_DIGICOLOR)	+= pinctrl-digicolor.o
--obj-$(CONFIG_PINCTRL_FALCON)	+= pinctrl-falcon.o
-+obj-$(CONFIG_PINCTRL_EQUILIBRIUM)   += pinctrl-equilibrium.o
- obj-$(CONFIG_PINCTRL_GEMINI)	+= pinctrl-gemini.o
-+obj-$(CONFIG_PINCTRL_INGENIC)	+= pinctrl-ingenic.o
-+obj-$(CONFIG_PINCTRL_K210)	+= pinctrl-k210.o
-+obj-$(CONFIG_PINCTRL_KEEMBAY)	+= pinctrl-keembay.o
-+obj-$(CONFIG_PINCTRL_LANTIQ)	+= pinctrl-lantiq.o
-+obj-$(CONFIG_PINCTRL_FALCON)	+= pinctrl-falcon.o
-+obj-$(CONFIG_PINCTRL_XWAY)	+= pinctrl-xway.o
-+obj-$(CONFIG_PINCTRL_LPC18XX)	+= pinctrl-lpc18xx.o
- obj-$(CONFIG_PINCTRL_MAX77620)	+= pinctrl-max77620.o
- obj-$(CONFIG_PINCTRL_MCP23S08_I2C)	+= pinctrl-mcp23s08_i2c.o
- obj-$(CONFIG_PINCTRL_MCP23S08_SPI)	+= pinctrl-mcp23s08_spi.o
- obj-$(CONFIG_PINCTRL_MCP23S08)	+= pinctrl-mcp23s08.o
--obj-$(CONFIG_PINCTRL_MESON)	+= meson/
-+obj-$(CONFIG_PINCTRL_MICROCHIP_SGPIO)	+= pinctrl-microchip-sgpio.o
-+obj-$(CONFIG_PINCTRL_OCELOT)	+= pinctrl-ocelot.o
- obj-$(CONFIG_PINCTRL_OXNAS)	+= pinctrl-oxnas.o
- obj-$(CONFIG_PINCTRL_PALMAS)	+= pinctrl-palmas.o
- obj-$(CONFIG_PINCTRL_PIC32)	+= pinctrl-pic32.o
- obj-$(CONFIG_PINCTRL_PISTACHIO)	+= pinctrl-pistachio.o
-+obj-$(CONFIG_PINCTRL_RK805)	+= pinctrl-rk805.o
- obj-$(CONFIG_PINCTRL_ROCKCHIP)	+= pinctrl-rockchip.o
- obj-$(CONFIG_PINCTRL_SINGLE)	+= pinctrl-single.o
-+obj-$(CONFIG_PINCTRL_STMFX) 	+= pinctrl-stmfx.o
-+obj-$(CONFIG_PINCTRL_ST) 	+= pinctrl-st.o
- obj-$(CONFIG_PINCTRL_SX150X)	+= pinctrl-sx150x.o
--obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
--obj-$(CONFIG_PINCTRL_XWAY)	+= pinctrl-xway.o
--obj-$(CONFIG_PINCTRL_LANTIQ)	+= pinctrl-lantiq.o
--obj-$(CONFIG_PINCTRL_LPC18XX)	+= pinctrl-lpc18xx.o
- obj-$(CONFIG_PINCTRL_TB10X)	+= pinctrl-tb10x.o
--obj-$(CONFIG_PINCTRL_ST) 	+= pinctrl-st.o
--obj-$(CONFIG_PINCTRL_STMFX) 	+= pinctrl-stmfx.o
--obj-$(CONFIG_PINCTRL_ZYNQ)	+= pinctrl-zynq.o
- obj-$(CONFIG_PINCTRL_ZYNQMP)	+= pinctrl-zynqmp.o
--obj-$(CONFIG_PINCTRL_INGENIC)	+= pinctrl-ingenic.o
--obj-$(CONFIG_PINCTRL_RK805)	+= pinctrl-rk805.o
--obj-$(CONFIG_PINCTRL_OCELOT)	+= pinctrl-ocelot.o
--obj-$(CONFIG_PINCTRL_MICROCHIP_SGPIO)	+= pinctrl-microchip-sgpio.o
--obj-$(CONFIG_PINCTRL_EQUILIBRIUM)   += pinctrl-equilibrium.o
--obj-$(CONFIG_PINCTRL_K210)	+= pinctrl-k210.o
--obj-$(CONFIG_PINCTRL_KEEMBAY)	+= pinctrl-keembay.o
-+obj-$(CONFIG_PINCTRL_ZYNQ)	+= pinctrl-zynq.o
- 
- obj-y				+= actions/
- obj-$(CONFIG_ARCH_ASPEED)	+= aspeed/
- obj-y				+= bcm/
- obj-$(CONFIG_PINCTRL_BERLIN)	+= berlin/
-+obj-y				+= cirrus/
- obj-y				+= freescale/
- obj-$(CONFIG_X86)		+= intel/
-+obj-y				+= mediatek/
-+obj-$(CONFIG_PINCTRL_MESON)	+= meson/
- obj-y				+= mvebu/
- obj-y				+= nomadik/
- obj-$(CONFIG_ARCH_NPCM7XX)	+= nuvoton/
-@@ -68,9 +70,8 @@ obj-$(CONFIG_PINCTRL_SPEAR)	+= spear/
- obj-y				+= sprd/
- obj-$(CONFIG_PINCTRL_STM32)	+= stm32/
- obj-$(CONFIG_PINCTRL_SUNXI)	+= sunxi/
-+obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
- obj-y				+= ti/
- obj-$(CONFIG_PINCTRL_UNIPHIER)	+= uniphier/
--obj-$(CONFIG_ARCH_VT8500)	+= vt8500/
--obj-y				+= mediatek/
--obj-y				+= cirrus/
- obj-$(CONFIG_PINCTRL_VISCONTI)	+= visconti/
-+obj-$(CONFIG_ARCH_VT8500)	+= vt8500/
+
 -- 
-2.33.0
-
+Sincerely yours,
+Mike.
 
 _______________________________________________
 Linux-mediatek mailing list
