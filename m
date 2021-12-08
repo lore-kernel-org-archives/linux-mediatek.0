@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E06C4332F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 04:07:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18FC0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  8 Dec 2021 04:13:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nND5erX/BmmQn94R0CI8E3q8SQxhAWIUD9xQwpp637Y=; b=27hTl/hllghQma
-	XVf0osbwU18C5p2rIovnbT1MuMmMq+g1AFsuabP3T2bSx+atomnHsGR82QXWVVtjcfAHUh35SOu7x
-	Zh97DTelkvtpJTqrLDOFxcjQ0SnKB8ybak2kVXQIqV4n8MMaP99/GBufTszz3ux6qMMJsnWm2tM5t
-	E2+bi38yhxwWzr4q9PjzpZ9YexdK/biI/58QxQ3QOLXolPWw+0S7DjB0nHElq/d21xd9rYLE1gR/1
-	dca5+9j6Pu8mDsQFmdR3FCNVtPkUb9rKl4UfxddSPQrOPTYTnrXDr2h2iA63SbH/4gfmSox/GF6eV
-	z2QCDT6z4bOfUxG2yBcQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=LeyikoI+shh0QFLoUl64r69X3lHdRUF5rdVAbwJAhSg=; b=LSuC5Ho2vI114w
+	NG1Gu2U+XFhNsSsLyByfSMeVXK4517W4RoxW+uGdzKPsru9DKXH546baxw6lTRxzMgRM4bHpWz6R2
+	XZWlpA5FKpUISDbUXn8D+iOaoeFGtd1vtg+jbhQ+zrm/VQwOQn9H6d3pYCAxVNWHDLRcq+nKmo3fO
+	qL+OYPAzFeqN0XYODiuJ6mhjyHC29o/1MI3WAx6IC0SzoRvta21qGVVgTtsfdrS0lMl+Tm/5+w20D
+	MGH/31W/I70Tpm1JnpAs+VBJWchX/h84c6rAAqpCTtba8IHQf53/jjbQMTP8cKsU4vVIrq70mirkH
+	Fr8kBGSXU8WqmKmoX86w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1muoEQ-00B9TF-4X; Wed, 08 Dec 2021 04:07:02 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1muoKC-00BBVZ-Ud; Wed, 08 Dec 2021 04:13:00 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1muoCM-00B8Z5-6v; Wed, 08 Dec 2021 04:04:55 +0000
+ id 1muoJx-00BBPD-PU; Wed, 08 Dec 2021 04:12:47 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id DD631B81F61;
- Wed,  8 Dec 2021 04:04:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF090C00446;
- Wed,  8 Dec 2021 04:04:51 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 23224B81EBF;
+ Wed,  8 Dec 2021 04:12:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B179BC00446;
+ Wed,  8 Dec 2021 04:12:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1638936292;
- bh=1r558GTEUAd1QgB8UN7qYm8RGcn1C0as6rGvCpBhBdg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=c01kKm4/EQD7+IVBOaAq4j4UcZQ8YLSq5USj5LOyOi9aX3+mCathluYcIjJ6SABi9
- g6J0suXdmg7hRkpTD9nD0lhFCoZ9yuz+Zha87gSo0B81XoZ5LO2IcTmUehjajCNvuc
- gWt2m4OLGEn4G+74hnr4wyEQsmZFGPgbqs+BzyXw+cYqOnnDz2TV5GBHl/eUIEKH0w
- ZnrENM1w3kmAGUmCml5MsV3rywh3o9w0nWgWiDRJzkVXkx4/Cj2N/skV24SooOyIGW
- vkgg4brNMcg56vFmOwqGqJSy8a5uKsKViW1Bz5YusbPYnG2t6+OaJWJFmi9JoUMoEz
- F8gDOIWeoA5Xw==
-Date: Tue, 7 Dec 2021 20:04:50 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, <netdev@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
- <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
- <dkirjanov@suse.de>
-Subject: Re: [PATCH net-next v6 5/6] stmmac: dwmac-mediatek: add support for
- mt8195
-Message-ID: <20211207200450.093f94a8@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
-In-Reply-To: <20211208030354.31877-6-biao.huang@mediatek.com>
-References: <20211208030354.31877-1-biao.huang@mediatek.com>
- <20211208030354.31877-6-biao.huang@mediatek.com>
+ s=k20201202; t=1638936749;
+ bh=gFJPgHU3rF0+oH3Tv/ru3zNDZuTRZu9S6ukLJe+ET+k=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:From;
+ b=jH2bKsVQqTONUuVL5o90V6g5UaDw/shn9+qBIPC/wfFON1sqD+Bge2VB0ysNc/Hir
+ V83jfomzlevvQ8BMdjpDHo9TPfQji8qg34Ksc/lMWP3kvxl9iltKh4fyc9tw+QzYVE
+ bG87+yE2nL1kQUvo/E7742enyLcKNpVEYpE+9CzSMCia4UoFBb3bsPOo9UWBxvLvec
+ UEGMFhdkiYjByYQLjZQAvcP/up18IGAnE5QA2oOzjUHKmEM6YNJFcXOxMNRfWeYIRc
+ 4Oa92xp3Ta6fSkHF+u+F+qWURn6qySsYYPy8uLloU63SRl15Nxsogewid8xghKEvbX
+ jqmjgG2vc4JrQ==
+Date: Tue, 7 Dec 2021 22:12:28 -0600
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Mark Kettenis <mark.kettenis@xs4all.nl>
+Cc: qizhong.cheng@mediatek.com, ryder.lee@mediatek.com,
+ jianjun.wang@mediatek.com, lorenzo.pieralisi@arm.com, kw@linux.com,
+ bhelgaas@google.com, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
+ pali@kernel.org, maz@kernel.org, alyssa@rosenzweig.io,
+ luca@lucaceresoli.net
+Subject: Re: [RESEND PATCH v2] PCI: mediatek: Delay 100ms to wait power and
+ clock to become stable
+Message-ID: <20211208041228.GA103736@bhelgaas>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <d3cb32527f48df70@bloch.sibelius.xs4all.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211207_200454_432441_15E05BFB 
-X-CRM114-Status: UNSURE (   8.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211207_201246_153527_1F48F9DD 
+X-CRM114-Status: GOOD (  30.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,32 +71,109 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 8 Dec 2021 11:03:53 +0800 Biao Huang wrote:
-> Add Ethernet support for MediaTek SoCs from the mt8195 family.
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Tue, Dec 07, 2021 at 10:00:43PM +0100, Mark Kettenis wrote:
+> > Date: Tue, 7 Dec 2021 11:54:16 -0600
+> > From: Bjorn Helgaas <helgaas@kernel.org>
+> > =
 
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:439:3: warning: variable 'gtxc_delay_val' is uninitialized when used here [-Wuninitialized]
-                gtxc_delay_val |= FIELD_PREP(MT8195_DLY_GTXC_ENABLE, !!mac_delay->tx_delay);
-                ^~~~~~~~~~~~~~
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:369:20: note: initialize the variable 'gtxc_delay_val' to silence this warning
-        u32 gtxc_delay_val, delay_val = 0, rmii_delay_val = 0;
-                          ^
-                           = 0
-1 warning generated.
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:439:3: warning: variable 'gtxc_delay_val' is uninitialized when used here [-Wuninitialized]
-                gtxc_delay_val |= FIELD_PREP(MT8195_DLY_GTXC_ENABLE, !!mac_delay->tx_delay);
-                ^~~~~~~~~~~~~~
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:369:20: note: initialize the variable 'gtxc_delay_val' to silence this warning
-        u32 gtxc_delay_val, delay_val = 0, rmii_delay_val = 0;
-                          ^
-                           = 0
+> > [+cc Marc, Alyssa, Mark, Luca for reset timing questions]
+> =
+
+> Hi Bjorn,
+> =
+
+> > On Tue, Dec 07, 2021 at 04:41:53PM +0800, qizhong cheng wrote:
+> > > Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
+> > > 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
+> > > be delayed 100ms (TPVPERL) for the power and clock to become stable.
+> > > =
+
+> > > Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
+> > > Acked-by: Pali Roh=E1r <pali@kernel.org>
+
+> > ...
+> > 3) Most importantly, this needs to be reconciled with the similar
+> > change to the apple driver:
+> > =
+
+> >   https://lore.kernel.org/r/20211123180636.80558-2-maz@kernel.org
+> > =
+
+> > In the apple driver, we're doing:
+> > =
+
+> >   - Assert PERST#
+> >   - Set up REFCLK
+> >   - Sleep 100us (T_perst-clk, CEM r5 2.2, 2.9.2)
+> >   - Deassert PERST#
+> >   - Sleep 100ms (not sure there's a name? PCIe r5 6.6.1)
+> > =
+
+> > But here in mediatek, we're doing:
+> > =
+
+> >   - Assert PERST#
+> >   - Sleep 100ms (T_pvperl, CEM r5 2.2, 2.2.1, 2.9.2)
+> >   - Deassert PERST#
+> > =
+
+> > My questions:
+> =
+
+> My understanding of the the Apple PCIe hardware is somewhat limited but:
+> =
+
+> >   - Where does apple enforce T_pvperl?  I can't tell where power to
+> >     the slot is turned on.
+> =
+
+> So far all available machines only have PCIe devices that are soldered
+> onto the motherboard, so there are no "real" slots.  As far as we can
+> tell the PCIe power domain is already powered on at the point where
+> the m1n1 bootloader takes control.  There is a GPIO that controls
+> power to some devices (WiFi, SDHC on the M1 Pro/Max laptops) and those
+> devices are initially powered off.  The Linux driver doesn't currently
+> attempt to power these devices on, but U-Boot will power them on if
+> the appropriate GPIO is defined in the device tree.  The way this is
+> specified in the device tree is still under discussion.
+
+Does this mean we basically assume that m1n1 and early Linux boot
+takes at least the 100ms T_pvperl required by CEM sec 2.2, but we take
+pains to delay the 100us T_perst-clk?  That seems a little weird, but
+I guess it is clear that REFCLK is *not* enabled before we enable it,
+so we do need at least the 100us there.
+
+It also niggles at me a little that the spec says T_pvperl starts from
+*power stable* (not from power enable) and T_perst-clk starts from
+*REFCLK stable* (not REFCLK enable).  Since we don't know the time
+from enable to stable, it seems like native drivers should add some
+circuit-specific constants to the spec values.
+
+> >   - Where does mediatek enforce the PCIe sec 6.6.1 delay after
+> >     deasserting PERST# and before config requests?
+> > =
+
+> >   - Does either apple or mediatek support speeds greater than 5 GT/s,
+> >     and if so, shouldn't we start the sec 6.6.1 100ms delay *after*
+> >     Link training completes?
+> =
+
+> The Apple hardware advertises support for 8 GT/s, but all the devices
+> integrated on the Mac mini support only 2.5 GT/s or 5 GT/s.
+
+The spec doesn't say anything about what the downstream devices
+support (obviously it can't because we don't *know* what those devices
+are until after we enumerate them).  So to be pedantically correct,
+I'd argue that we should pay attention to what the Root Port
+advertises.  Of course, I don't think we do this correctly *anywhere*
+today.
+
+Bjorn
 
 _______________________________________________
 Linux-mediatek mailing list
