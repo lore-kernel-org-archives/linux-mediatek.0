@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A76ABC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 01:42:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A685BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 01:48:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KzhSv24U7O+AWVIIYg98ZHjHupYZryALcUGDsYLhs3Q=; b=APQ/2m8dGN3RzE
-	Em5bcozzNN3iXeM+qyos2zqSCAjSfUR/Y2YzP6QHDfH6802a31wnHQcFVR3SUrJxGlebB0eFN5ld2
-	3WH6PgomKSH2/5H4WiGs6WQqrlHb0RDciW2T5D2RkiDn4UEP0JjxZM9B3ekC9EBxsDi+Eae03ZVrI
-	xZbMtY/BM980iaZ0QngTG9epboatZsZjXzq3ycCfZSrRoONyZ7cG5R7/jMPqtZPAqVIClLDgqT6y7
-	LMZl62Wk/Mfc6JooWjjM0SUqG4xLfOR8RZLTdITTqVWP3evsvbHWj5xKg7QCi24hd+VX+SG080pK4
-	GfX94kq1xZZarMgQWGeA==;
+	List-Owner; bh=fuyzoMawXmB3HSWg8YFd6A+hi08IWYhDcugGAxbysoc=; b=uLnS4v4WUMJsWE
+	tzymNglRwQXoKQnAzvCjUSjyX5ZAi7iWoXCFPBlK2/5tTYl4YVy3j6OYGyMWKej77tk3RE9WB64hN
+	ie8B06IS+8sTpKXqmpb0SU0yi4jv/2SMP3iM/rG0ezfSpy9Cahwejv5/9w3s6igDnSJ11GeOFDRY8
+	zHP+iyUN68RZ8hAOeLnJhuf5v+s+UZHps7CnpAaY46zORBzXfcfAiPTFWLZ+bDjK9D7Wwg+Zm75PM
+	THUKKZ20jGu5KwK2sr9sTx7db+ut2Oy+kBQkw/sxpJ5fjGUT1LHH2ypvFoCg9dTjRQDWnOZziCW1Q
+	wWl2rgIU/nvjbDjakKgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mv8Ry-00EfjZ-VI; Thu, 09 Dec 2021 01:42:22 +0000
+	id 1mv8Xz-00EgmV-B4; Thu, 09 Dec 2021 01:48:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mv8Ru-00Efil-No; Thu, 09 Dec 2021 01:42:21 +0000
-X-UUID: 7f8b3281afc74c9893c2d8a1a4e6fe8f-20211208
+ id 1mv8Xw-00Egkt-AO; Thu, 09 Dec 2021 01:48:33 +0000
+X-UUID: a3d705c955d3467a8b952b40e4756cbc-20211208
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=JEt3XG4GHhG9WFakPdTvxOX/lsmWXLVPAlDuPpzKZro=; 
- b=okq6CjmdpC/VGZ97YGqF9AStRZdzKofxz0leGxwBj+1pfGc/1T67zHe00GHDhNwQQ1fcQokayO6cdMUWbENJcebobO/G3KfH3Re9WNtoX46CWCjl62/XUtodVbu8G51MzWSF0iaGYQjDiK/htxnh0ajm55F446joIriJegqgOLk=;
-X-UUID: 7f8b3281afc74c9893c2d8a1a4e6fe8f-20211208
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=XjABykCBjXFelT4zEiqGcJGg15Ult0B96f3Fb8EdYNs=; 
+ b=JEQMqBRWf7fQUOHn/Pm6V3VxkGp7vj6h5pUr6+CdfcdfmpjNOKXXWHfrJDhiC7ryTfZ5ehKNvACitzAGDeOhYvt0pn6jtmau31/68d9/+60/LRmrHMjzOuOwHlDy9kbsCeTNQrEtIzxSNBZKWVRK0d0+MUxwNrLdrGm9nQfTro8=;
+X-UUID: a3d705c955d3467a8b952b40e4756cbc-20211208
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2023220695; Wed, 08 Dec 2021 18:42:14 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Dec 2021 17:42:12 -0800
+ with ESMTP id 1961316490; Wed, 08 Dec 2021 18:48:29 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 8 Dec 2021 17:48:27 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 9 Dec 2021 09:42:10 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 9 Dec 2021 09:48:26 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 9 Dec 2021 09:42:09 +0800
-Message-ID: <5713fa6121effde79c19e0b4475d02389d72d2cc.camel@mediatek.com>
+ Transport; Thu, 9 Dec 2021 09:48:25 +0800
+Message-ID: <39aa23e1a48bc36a631b3074af2abfd5d1e2256d.camel@mediatek.com>
 Subject: Re: [PATCH net-next v7 5/6] stmmac: dwmac-mediatek: add support for
  mt8195
 From: Biao Huang <biao.huang@mediatek.com>
@@ -60,7 +60,7 @@ CC: <davem@davemloft.net>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
  <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
  <dkirjanov@suse.de>
-Date: Thu, 9 Dec 2021 09:42:08 +0800
+Date: Thu, 9 Dec 2021 09:48:25 +0800
 In-Reply-To: <20211208063820.264df62d@kicinski-fedora-pc1c0hjn.dhcp.thefacebook.com>
 References: <20211208054716.603-1-biao.huang@mediatek.com>
  <20211208054716.603-6-biao.huang@mediatek.com>
@@ -69,8 +69,8 @@ X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_174218_808447_18265E2E 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20211208_174832_391382_CF507935 
+X-CRM114-Status: GOOD (  12.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,6 +89,8 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Dear Jakub,
 
+Sorry for some typo in previous reply, fix it here.
+
 All these warning lines share a similar semantics:
 delay_val |= FIELD_PREP(xxx, !!val);
 
@@ -103,20 +105,18 @@ __BF_FILED_CHECK {
 ...
   BUILD_BUG_ON_MSG(__builtin_constant_p(_val) ?           \
                    ~((_mask) >> __bf_shf(_mask)) & (_val) : 0, \
-                   _pfx "value too large for the field"); \
-...
+                   _pfx "value too large for the field"); \ ...
 ===============================================================
 
 Should I fix it by converting
   delay_val |= FIELD_PREP(ETH_DLY_TXC_ENABLE, !!mac_delay->tx_delay);
 to
   en_val = !!mac_delay->tx_delay;
-  delay_val |= FIELD_PREP(ETH_DLY_TXC_ENABLE, !!en_val);
+  delay_val |= FIELD_PREP(ETH_DLY_TXC_ENABLE, en_val);
 
 or other suggestions for these warnings?
 
 Thanks~
-
 On Wed, 2021-12-08 at 06:38 -0800, Jakub Kicinski wrote:
 > On Wed, 8 Dec 2021 13:47:15 +0800 Biao Huang wrote:
 > > Add Ethernet support for MediaTek SoCs from the mt8195 family.
