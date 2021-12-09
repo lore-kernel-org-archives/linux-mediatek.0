@@ -4,70 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD1FBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 13:15:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41E00C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 14:04:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kvr1Mx8dRiFKwnZzVn5gzrbCzK421whz+IlIsA7Qb0M=; b=NdTZPXXrAsGZVN
-	NuzbekAmEN24DET+km/FSQwVy4/ze4bItW2EOtzV+cBR1qdze8BYv4UDNKAjhW1GCIx8oJXYOGVUW
-	IRVVRkG4CTLDjN4tcsKAbe9vn2haF694IFz63mao4zZmZdURHZ1YJlnVj1HZBfSQftsDsY7iZJLiZ
-	tWgFGAPnO0uC5Sbz6vP9S83ANgnFG4kIAteQaXkDEtfJbaHf49SoJ/XrtSzoHWBUD9IcJjjeqsEQ2
-	3HeU+x1jqczpZbvIJ+N/LnPoLAOG2UHWMvvdg8TBLAoMwNc3p1+7jAwGH49vrscE+OWDQJ9nJp8kV
-	D0QLODRkZv+TG30+MfdA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=za2c4VZdGW1L2iFe+CQZcB3xwP4jvYEYR7sh3FYJzY8=; b=nk7pmGWFzu1GtBfE8oL0LrX5+K
+	LJajqbsVmNVnCVNefRulg/f06rWrfwV1gbHNfuG/xm4gFVlUonMrjn5+xhzb2DicPhlBZiTQu2Gkr
+	CPQiBFjlnCprXjLyW/wqhR2yENTujolLiF1gINZdctmJoUvBItH/1P14xZ2r2X4MHV6VTDmrrgcXk
+	Gom/5uJwoISUiOXe97tPFMHo9Xz6I01t9FM0qLuZKsKJ0TpDYXuTg2kOwTegZ1QSXFBXqWxG4yqLH
+	fTfoLT8Eg3mwOmNp3W6DDsdbyMADfUBK3W8s1Qq01vmuQ5ePJRAUZKGFx+D8hu4NigPxMrM2pjK1E
+	vA/QG+Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvJGf-00G2rg-TJ; Thu, 09 Dec 2021 13:15:25 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1mvK2D-00GCk9-KA; Thu, 09 Dec 2021 14:04:33 +0000
+Received: from dvalin.narfation.org ([213.160.73.56])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvJGL-00G2it-FR; Thu, 09 Dec 2021 13:15:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
- Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
- List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=7rc2LETThfTw6UpoMBQEPgeN7FitD8uA5UkWVs/Zubk=; b=K91ztcXOnsrD889e7JOdV9n8xS
- m2xAx3Zk41Vpkxb5j27pf6eaJplgxJrTO6UxIiHEXYJ4jBo34ybX7vldTXr5MwmNz0HWXQvTD002F
- vkET4YPYrSW3vIHnEMYu26HJRbJdiGBiDRQy+CEfIDmNty2QFzJqPsH4YexOBSRqOgtKs//EcY1hu
- H9GQhRvQ+Vg1WnxLW83nQpznvZaDKpkg1tTDJ7M9kW1CgLOwm3xwjO8hM672vVC5QB3FTK+57dsiN
- qGnNHpFbcof814+mKxfbuCRzNNDp5vKXl4QNqynwvQx6FU4uxZYHm9f9Cgc7fOFuYdLskaWnWuCa2
- p+wW3Qow==;
-Received: from shell.armlinux.org.uk
- ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56196)
- by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <linux@armlinux.org.uk>)
- id 1mvJGE-0008UR-PG; Thu, 09 Dec 2021 13:14:58 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.94.2)
- (envelope-from <linux@shell.armlinux.org.uk>)
- id 1mvJGB-0007F8-TU; Thu, 09 Dec 2021 13:14:56 +0000
-Date: Thu, 9 Dec 2021 13:14:55 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Chris Snook <chris.snook@gmail.com>, Felix Fietkau <nbd@nbd.name>,
- Florian Fainelli <f.fainelli@gmail.com>, John Crispin <john@phrozen.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Vivien Didelot <vivien.didelot@gmail.com>,
- Vladimir Oltean <olteanv@gmail.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next 1/5] net: phylink: add legacy_pre_march2020
- indicator
-Message-ID: <YbIBT7/6b0evemPB@shell.armlinux.org.uk>
-References: <DGaGmGgWrlVkW@shell.armlinux.org.uk>
- <E1mucmf-00EyCl-KA@rmk-PC.armlinux.org.uk>
+ id 1mvK2A-00GCiV-QX
+ for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 14:04:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=narfation.org;
+ s=20121; t=1639058668;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=27CpbSSRvy1jd6MiYfFrehhgJ2HcF0yT0PcMYD8pezQ=;
+ b=v877vYqEST5qU/KfaHJNsLcjCMbvAjseY3TcVcuWUwsU2ERn+AbCt9vJa5pGJoHPqZkFAQ
+ w+w7E4l/80DAqC0djEqWfT+yE5Nz8M63qrjiX9vDf6sO68AsXRZ/Xl7zv0Q3gKi+TUNKgF
+ uC/PamQZSMMvQwxGKs48bCjAhsEeDZ8=
+From: Sven Eckelmann <sven@narfation.org>
+To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk,
+ Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Deren Wu <Deren.Wu@mediatek.com>
+Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+ CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+ Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com,
+ linux-firmware <linux-firmware@kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>,
+ jf@simonwunderlich.de
+Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
+Date: Thu, 09 Dec 2021 15:04:24 +0100
+Message-ID: <3841963.FhVex8QpIh@ripper>
+In-Reply-To: <2314855.OJx0zA1Pyt@ripper>
+References: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
+ <2314855.OJx0zA1Pyt@ripper>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <E1mucmf-00EyCl-KA@rmk-PC.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_051505_563760_D4EBB022 
-X-CRM114-Status: GOOD (  25.20  )
+X-CRM114-CacheID: sfid-20211209_060431_049080_AF960AF8 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,66 +70,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8376037928648874404=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series was incorrectly threaded to its cover letter; the patches
-have now been re-sent with the correct message-ID for their cover
-letter. Sadly, this mistake was not obvious until I looked at patchwork
-to work out why they haven't been applied yet.
+--===============8376037928648874404==
+Content-Type: multipart/signed; boundary="nextPart1990156.1ky84pn987"; micalg="pgp-sha512"; protocol="application/pgp-signature"
 
-On Tue, Dec 07, 2021 at 03:53:37PM +0000, Russell King (Oracle) wrote:
-> Add a boolean to phylink_config to indicate whether a driver has not
-> been updated for the changes in commit 7cceb599d15d ("net: phylink:
-> avoid mac_config calls"), and thus are reliant on the old behaviour.
-> 
-> We were currently keying the phylink behaviour on the presence of a
-> PCS, but this is sub-optimal for modern drivers that may not have a
-> PCS.
-> 
-> This commit merely introduces the new flag, but does not add any use,
-> since we need all legacy drivers to set this flag before it can be
-> used. Once these legacy drivers have been updated, we can remove this
-> flag.
-> 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> ---
->  include/linux/phylink.h | 3 +++
->  1 file changed, 3 insertions(+)
-> 
-> diff --git a/include/linux/phylink.h b/include/linux/phylink.h
-> index 01224235df0f..d005b8e36048 100644
-> --- a/include/linux/phylink.h
-> +++ b/include/linux/phylink.h
-> @@ -84,6 +84,8 @@ enum phylink_op_type {
->   * struct phylink_config - PHYLINK configuration structure
->   * @dev: a pointer to a struct device associated with the MAC
->   * @type: operation type of PHYLINK instance
-> + * @legacy_pre_march2020: driver has not been updated for March 2020 updates
-> + *	(See commit 7cceb599d15d ("net: phylink: avoid mac_config calls")
->   * @pcs_poll: MAC PCS cannot provide link change interrupt
->   * @poll_fixed_state: if true, starts link_poll,
->   *		      if MAC link is at %MLO_AN_FIXED mode.
-> @@ -97,6 +99,7 @@ enum phylink_op_type {
->  struct phylink_config {
->  	struct device *dev;
->  	enum phylink_op_type type;
-> +	bool legacy_pre_march2020;
->  	bool pcs_poll;
->  	bool poll_fixed_state;
->  	bool ovr_an_inband;
-> -- 
-> 2.30.2
-> 
-> 
+--nextPart1990156.1ky84pn987
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Sven Eckelmann <sven@narfation.org>
+To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Deren Wu <Deren.Wu@mediatek.com>
+Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com, linux-firmware <linux-firmware@kernel.org>, linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>, jf@simonwunderlich.de
+Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
+Date: Thu, 09 Dec 2021 15:04:24 +0100
+Message-ID: <3841963.FhVex8QpIh@ripper>
+In-Reply-To: <2314855.OJx0zA1Pyt@ripper>
+References: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com> <2314855.OJx0zA1Pyt@ripper>
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 40Mbps down 10Mbps up. Decent connectivity at last!
+On Thursday, 9 December 2021 10:21:02 CET Sven Eckelmann wrote:
+> Tested-by: Sven Eckelmann <sven@narfation.org>
+
+I would like to retract this again because it seems like the firmware is now 
+hanging all the time when the default runtime-pm/deep-sleep settings are used.
+
+    [  521.553436] mt7921e 0000:05:00.0: Message 40000002 (seq 12) timeout
+    [  521.559884] mt7921e 0000:05:00.0: chip reset
+    [  521.661983] mt7921e 0000:05:00.0: HW/SW Version: 0x8a108a10, Build Time: 20211129210838a
+    [  521.661983] 
+    [  521.684088] mt7921e 0000:05:00.0: WM Firmware Version: ____010000, Build Time: 20211129210917
+    [  521.723561] mt7921e 0000:05:00.0: Firmware init done
+
+This doesn't seem to happen that often when I perform a
+
+   echo 0 > /sys/kernel/debug/ieee80211/phy0/mt76/runtime-pm
+   echo 0 > /sys/kernel/debug/ieee80211/phy0/mt76/deep-sleep
+
+before setting up the interfaces.
+
+But even then, on the first "ip link set up dev mon0" (not only for mon0 - 
+also for wlan0/...) it will crash with:
+
+
+    [  806.731357] mt7921e 0000:05:00.0: Message 00000046 (seq 4) timeout
+    [  806.737730] mt7921e 0000:05:00.0: chip reset
+RTNETLINK answers: Connection timed out
+    [  806.867666] mt7921e 0000:05:00.0: HW/SW Version: 0x8a108a10, Build Time: 20211129210838a
+    [  806.867666] 
+    [  806.888441] mt7921e 0000:05:00.0: WM Firmware Version: ____010000, Build Time: 20211129210917
+    [  806.928204] mt7921e 0000:05:00.0: Firmware init done
+
+But when I then set up the device again then it seems to work. This is the 
+case for monitor and managed interfaces.
+
+I've used commit 678071ef7029 ("mt76: mt7615: clear mcu error interrupt status 
+on mt7663") in mt76.git for this. 
+
+Kind regards,
+	Sven
+--nextPart1990156.1ky84pn987
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEF10rh2Elc9zjMuACXYcKB8Eme0YFAmGyDOgACgkQXYcKB8Em
+e0bkhBAAkqBMV5xrzHFlOV75veDIUYPQjwNP/KZsTUL7bCc1NDkhuQHd73iwqM9H
+5xpdF/8DQm0A5Sbqip8Sxi29zbwffh35iO+J+E8opxi000oHuslOUMCWg0Og6XZD
+yB7J8ONjDSC+yZ3gNNeESAMoU06PDQQg7oJ2zA9lUPWtRNZ/Eiq6QH4mJRyXHUP2
+IQSQ+d0DdVDFx9j77kkyJNAKIRPNSB/M23y8bAxvQ9m+gXlmTsFfAOzCke+Z3qN6
+clkpHhXqAaSIin2XjCTHzSjYcnEmgMFu4tof6Vk6geMxvc16tl0/sky6AzZf4mHk
+XPhIEOUK3gxyZPpD+z8QeqIBtOZPtyTjtpDlYiMCoBGXnYM35ZZuTHivX1UvuSg4
+3v/TKHmftEJ7J+8dRAKO5aw1BJm6bLO7rmMz/niwYdKwN7q6Kj66nM0HGCfmXNav
+N3Lkjkz34k0o1i4PSnEI1e4kff2Ll2nnahChmud6ReFjaIzrZjmYDgeimBZT5kma
+Rck74zBstLqB3eD79mzNPd20Fd7MnCCOgUclFxwEETwedNVVRKEaHktnsyq5KB3/
+xS5wQzeci879l1XuyZFiz65riN6XyGOYJaOFld+ALkaIO9QQ1l3qh9YAB4ba9v/w
+nav7b07bmgpSHaDoekFPec6N6E5/MsKK6nXlZphJw2+lmXSLu7w=
+=iVCx
+-----END PGP SIGNATURE-----
+
+--nextPart1990156.1ky84pn987--
+
+
+
+
+
+--===============8376037928648874404==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8376037928648874404==--
+
+
+
+
