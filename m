@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15A59C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 13:12:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0690BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 13:12:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kBoCTwcq7pci0b+BR7iC+iY6mCiT99/lXvhVjcXfrek=; b=aZcDYUwwbGh9kS
-	98rlbLt7LysBJHnRgUMmEnspjPuttURQ3dksen3EuCmr/ksP4lp6tKgeUgUo+E9DR4rDNhcTeVN2+
-	PZ3aXlxHiGOzPLnwI4o1LtF93Eb64gpnCLexmLfOCtW9BF5M2ocj2jg1UnMxZ+m+PteBXH/CuL/aa
-	OqqB81lmJgvi6Px2Rgheh+HQLaZQHDmWrnMR0Di3Qz4VtWQxz6bUTNsSqGkzukETaHRxOrM7nSISR
-	JmnGMM9e82TjvSBWfTEAfJnNffahglqPab+imlk5btuqK1TWdB/hJHACVl2s918sEixeJI4mkqWzW
-	YcVuz/kOHypNN1hYJ+sA==;
+	List-Owner; bh=kLraSDW/ZCo4K4Ml/Lm0PNgP0MgFkbcoayJY6duB/ck=; b=c2CaYKNnYQB71W
+	TA5BQLizP5myJXbQ84uwi0+ODD1/PXSCFWXIicDhGPW2oGNYsQCmIXF1SR/Y0UmOTgUSWTZioEben
+	pG7Re75KLjvRLTJHfGyLbeqnhc3x1ETtVSb9mvV7K08SOxjqghekx8LN94zYK7WqjG9s2P4I7wCfq
+	YvPCbrFW/0YTp8uv0BWjGe5PQvPhy+irV/4fL/lmYCiiUzevZi2IRItCUQQj3I29l/TeOsARa9zH5
+	vTM07Evm8cIlAnPF8kOim1bl+JhB8q6wWYgPW6OVqFB3A4/Fe9fGmo1PivgFCBe6DrDP5DsCmB9kk
+	eqnfIh10bEhvAPTWrANg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvJDf-00G1Jh-Af; Thu, 09 Dec 2021 13:12:19 +0000
+	id 1mvJE0-00G1TZ-PS; Thu, 09 Dec 2021 13:12:40 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvJD3-00G16N-5t; Thu, 09 Dec 2021 13:11:43 +0000
+ id 1mvJD8-00G18Z-2R; Thu, 09 Dec 2021 13:11:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
  Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
  In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=O63xYY4WTkxVuqPi0iAnNn7QvWPMaZMM+ioaw94+SgQ=; b=B9J+z/iHSerOmebuCJ2O0HycC3
- DaHwE5l4rDxxN7hknBwkoSWBEHSvBhaufgpPCkVjnFTM35xkLdvfIL/pWE+RpAmOCYGw93IUmGn25
- OBCyHNcPHUkzq1/HRiO2nuVFJDNoDEbgD3zJU4eQaFYCUQNJwEM1gWxYV9MZqP7ZEA4BNBT9sqhJo
- JcqOKQWrOkg9cDCI/xhsNpijrczauww4U4b3FtTzjCnb56gb2YMPLX1vkJHddF8Ye2RNtXoiJKMLY
- lrj1x8tMs/i3/TJG5/ZzPOhKWjj6O50bTdYSK5E1pchY56c/Ee/rryVkzgXfNLG/jy/+DGGn3tO6a
- eZBApMxA==;
+ bh=5xLY/Uq2n6j9WqqUWofdWwPwDBeOzhpbijMK8F238lU=; b=rSBLqGbhMvA8coIWg55xvhK5yl
+ /YE/AjPPrBbxt1soxzhFwiCj+LzkuslXYJ+Dag0TPZFIzdvE1RsEeQ5n6n6HuTG3kBxurTlIKDfs0
+ PCdt0Z4zsekygLx+XoBItpYXYykfAQbZi2S4yRuJ9NACFIUOZGct/4TT9QwmMMi6GRDcx1SS64y4Z
+ jvPJkBjXbXl1EugPymwUAfSl+1nRFx22RL1gpFr3LVWjQI6kbuwL9Oo1lucfmNvREHWEs9oXcRRf0
+ ZcHDd34/vypJqIh3XdT0Hk2ulYr0Who8smdVwHrkKZiw3lXbd/LQE4u4zq2mAj0RG3xeK8gbTi5kQ
+ lrzM4WpA==;
 Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:45530 helo=rmk-PC.armlinux.org.uk)
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:45532 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1mvJD0-0008Sq-Fl; Thu, 09 Dec 2021 13:11:38 +0000
+ id 1mvJD5-0008T5-J3; Thu, 09 Dec 2021 13:11:43 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1mvJD0-00F93x-1i; Thu, 09 Dec 2021 13:11:38 +0000
+ id 1mvJD5-00F943-5N; Thu, 09 Dec 2021 13:11:43 +0000
 In-Reply-To: <Ya+DGaGmGgWrlVkW@shell.armlinux.org.uk>
 References: <Ya+DGaGmGgWrlVkW@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -59,15 +59,15 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
  Jakub Kicinski <kuba@kernel.org>
-Subject: [PATCH net-next 2/5] net: dsa: mark DSA phylink as
- legacy_pre_march2020
+Subject: [PATCH net-next 3/5] net: mtk_eth_soc: mark as a legacy_pre_march2020
+ driver
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1mvJD0-00F93x-1i@rmk-PC.armlinux.org.uk>
-Date: Thu, 09 Dec 2021 13:11:38 +0000
+Message-Id: <E1mvJD5-00F943-5N@rmk-PC.armlinux.org.uk>
+Date: Thu, 09 Dec 2021 13:11:43 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_051141_268745_A601188E 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20211209_051146_174929_8BAA48CF 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,39 +84,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The majority of DSA drivers do not make use of the PCS support, and
-thus operate in legacy mode. In order to preserve this behaviour in
-future, we need to set the legacy_pre_march2020 flag so phylink knows
-this may require the legacy calls.
-
-There are some DSA drivers that do make use of PCS support, and these
-will continue operating as before - legacy_pre_march2020 will not
-prevent split-PCS support enabling the newer phylink behaviour.
+mtk_eth_soc has not been updated for commit 7cceb599d15d ("net: phylink:
+avoid mac_config calls"), and makes use of state->speed and
+state->duplex in contravention of the phylink documentation. This makes
+reliant on the legacy behaviours, so mark it as a legacy driver.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
 Resent with the correct cover-letter message-ID.
 
- net/dsa/port.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/net/dsa/port.c b/net/dsa/port.c
-index 6d5ebe61280b..3b8d18e5b72c 100644
---- a/net/dsa/port.c
-+++ b/net/dsa/port.c
-@@ -1094,6 +1094,13 @@ int dsa_port_phylink_create(struct dsa_port *dp)
- 	if (err)
- 		mode = PHY_INTERFACE_MODE_NA;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index de4152e2e3e4..a068cf5c970f 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -2923,6 +2923,10 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
  
-+	/* Presence of phylink_mac_link_state or phylink_mac_an_restart is
-+	 * an indicator of a legacy phylink driver.
+ 	mac->phylink_config.dev = &eth->netdev[id]->dev;
+ 	mac->phylink_config.type = PHYLINK_NETDEV;
++	/* This driver makes use of state->speed/state->duplex in
++	 * mac_config
 +	 */
-+	if (ds->ops->phylink_mac_link_state ||
-+	    ds->ops->phylink_mac_an_restart)
-+		dp->pl_config.legacy_pre_march2020 = true;
-+
- 	if (ds->ops->phylink_get_caps)
- 		ds->ops->phylink_get_caps(ds, dp->index, &dp->pl_config);
++	mac->phylink_config.legacy_pre_march2020 = true;
+ 	mac->phylink_config.mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+ 		MAC_10 | MAC_100 | MAC_1000 | MAC_2500FD;
  
 -- 
 2.30.2
