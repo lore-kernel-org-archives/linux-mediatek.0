@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0690BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 13:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12C3DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 13:13:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kLraSDW/ZCo4K4Ml/Lm0PNgP0MgFkbcoayJY6duB/ck=; b=c2CaYKNnYQB71W
-	TA5BQLizP5myJXbQ84uwi0+ODD1/PXSCFWXIicDhGPW2oGNYsQCmIXF1SR/Y0UmOTgUSWTZioEben
-	pG7Re75KLjvRLTJHfGyLbeqnhc3x1ETtVSb9mvV7K08SOxjqghekx8LN94zYK7WqjG9s2P4I7wCfq
-	YvPCbrFW/0YTp8uv0BWjGe5PQvPhy+irV/4fL/lmYCiiUzevZi2IRItCUQQj3I29l/TeOsARa9zH5
-	vTM07Evm8cIlAnPF8kOim1bl+JhB8q6wWYgPW6OVqFB3A4/Fe9fGmo1PivgFCBe6DrDP5DsCmB9kk
-	eqnfIh10bEhvAPTWrANg==;
+	List-Owner; bh=tmDV4+2iQ+Tc/a2jVA8Nh6SGSy0lnj/QyhPMkKui+4s=; b=Y1g4z+Bix5foOa
+	7yPSQnGlvSpa/ORepP2gOP+92C7b91R9NMC5wjBdCO5cGO6lth/nvIO8/716xU1TTH+IsMYhSvYI3
+	Q6FoqD2IcEmhOD5WXU2LX0iUm0sN63jzPE+NKH/gyZA2UwmwZXF9+0BhglQNjJBf0vVq//M4P2pkR
+	DDpuV0Fpb/VcqD3T82M5d+y53uWzZt3iuQAieMONEMf7MhnlkIKNaC6je689ib+r6evPYYJPbCxWd
+	zY/BhNknMMdfQwOqsOXROWABSKjnPvdrrKvVyiA5Q7ungx1qBTBBgOucadocVuKxHgSmODYqwWmPr
+	0/Y4bd9/zcRnr5I2SXBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvJE0-00G1TZ-PS; Thu, 09 Dec 2021 13:12:40 +0000
+	id 1mvJES-00G1i7-VT; Thu, 09 Dec 2021 13:13:08 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvJD8-00G18Z-2R; Thu, 09 Dec 2021 13:11:47 +0000
+ id 1mvJDD-00G1AI-3O; Thu, 09 Dec 2021 13:11:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
  Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
  In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
  Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
  List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=5xLY/Uq2n6j9WqqUWofdWwPwDBeOzhpbijMK8F238lU=; b=rSBLqGbhMvA8coIWg55xvhK5yl
- /YE/AjPPrBbxt1soxzhFwiCj+LzkuslXYJ+Dag0TPZFIzdvE1RsEeQ5n6n6HuTG3kBxurTlIKDfs0
- PCdt0Z4zsekygLx+XoBItpYXYykfAQbZi2S4yRuJ9NACFIUOZGct/4TT9QwmMMi6GRDcx1SS64y4Z
- jvPJkBjXbXl1EugPymwUAfSl+1nRFx22RL1gpFr3LVWjQI6kbuwL9Oo1lucfmNvREHWEs9oXcRRf0
- ZcHDd34/vypJqIh3XdT0Hk2ulYr0Who8smdVwHrkKZiw3lXbd/LQE4u4zq2mAj0RG3xeK8gbTi5kQ
- lrzM4WpA==;
+ bh=oBofdXdd8iAHU1rD7qsP3yeRZuW/vNIcXKBxzUDJmBM=; b=yrMd8i4rVDPe5Nd20N4U2rpkIz
+ AU+UNRZrQzPYiKuA0bgAZduhlFV4hvuyD/WBeX1XfVI4jhnKiBPsMcmgl0sbW/5GyrZI9kcH4sqIi
+ WeAmWPWvuql8wNY5T5RxNREdPu63JYxskgu9k9JQazrvi7CT4Nqs0i2NnJiDDYOX4GJsv0OsqHGh8
+ ZGecoHGoxImLq3aBkIpC6tRrRuWH/MJXvxSUq7nEu2sX6ZKB3eWowbUJYEpwMyaCSQyn308gjREdz
+ vCucWWNUsmRGJtjsHhbHXEsHInQPpGQurBA7vMkVzOs1hXyVRZGKj7g8m4c24zHF/BFxfu5IQCQK5
+ B6oqGezA==;
 Received: from e0022681537dd.dyn.armlinux.org.uk
- ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:45532 helo=rmk-PC.armlinux.org.uk)
+ ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:45534 helo=rmk-PC.armlinux.org.uk)
  by pandora.armlinux.org.uk with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1mvJD5-0008T5-J3; Thu, 09 Dec 2021 13:11:43 +0000
+ id 1mvJDA-0008TM-Ml; Thu, 09 Dec 2021 13:11:48 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.94.2)
  (envelope-from <rmk@armlinux.org.uk>)
- id 1mvJD5-00F943-5N; Thu, 09 Dec 2021 13:11:43 +0000
+ id 1mvJDA-00F949-8I; Thu, 09 Dec 2021 13:11:48 +0000
 In-Reply-To: <Ya+DGaGmGgWrlVkW@shell.armlinux.org.uk>
 References: <Ya+DGaGmGgWrlVkW@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -59,15 +59,14 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Heiner Kallweit <hkallweit1@gmail.com>,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  netdev@vger.kernel.org, "David S. Miller" <davem@davemloft.net>,
  Jakub Kicinski <kuba@kernel.org>
-Subject: [PATCH net-next 3/5] net: mtk_eth_soc: mark as a legacy_pre_march2020
- driver
+Subject: [PATCH net-next 4/5] net: phylink: use legacy_pre_march2020
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1mvJD5-00F943-5N@rmk-PC.armlinux.org.uk>
-Date: Thu, 09 Dec 2021 13:11:43 +0000
+Message-Id: <E1mvJDA-00F949-8I@rmk-PC.armlinux.org.uk>
+Date: Thu, 09 Dec 2021 13:11:48 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_051146_174929_8BAA48CF 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20211209_051151_238198_0E2D0995 
+X-CRM114-Status: GOOD (  20.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,32 +83,120 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_eth_soc has not been updated for commit 7cceb599d15d ("net: phylink:
-avoid mac_config calls"), and makes use of state->speed and
-state->duplex in contravention of the phylink documentation. This makes
-reliant on the legacy behaviours, so mark it as a legacy driver.
+Use the legacy flag to indicate whether we should operate in legacy
+mode. This allows us to stop using the presence of a PCS as an
+indicator to the age of the phylink user, and make PCS presence
+optional.
+
+Legacy mode involves:
+1) calling mac_config() whenever the link comes up
+2) calling mac_config() whenever the inband advertisement changes,
+   possibly followed by a call to mac_an_restart()
+3) making use of mac_an_restart()
+4) making use of mac_pcs_get_state()
+
+All the above functionality was moved to a seperate "PCS" block of
+operations in March 2020.
+
+Update the documents to indicate that the differences that this flag
+makes.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
 Resent with the correct cover-letter message-ID.
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/phy/phylink.c | 12 ++++++------
+ include/linux/phylink.h   | 17 +++++++++++++++++
+ 2 files changed, 23 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index de4152e2e3e4..a068cf5c970f 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -2923,6 +2923,10 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
+diff --git a/drivers/net/phy/phylink.c b/drivers/net/phy/phylink.c
+index 8e3861f09b4f..e47f2baf4b07 100644
+--- a/drivers/net/phy/phylink.c
++++ b/drivers/net/phy/phylink.c
+@@ -742,7 +742,7 @@ static void phylink_mac_pcs_an_restart(struct phylink *pl)
+ 	    phylink_autoneg_inband(pl->cur_link_an_mode)) {
+ 		if (pl->pcs_ops)
+ 			pl->pcs_ops->pcs_an_restart(pl->pcs);
+-		else
++		else if (pl->config->legacy_pre_march2020)
+ 			pl->mac_ops->mac_an_restart(pl->config);
+ 	}
+ }
+@@ -803,7 +803,7 @@ static int phylink_change_inband_advert(struct phylink *pl)
+ 	if (test_bit(PHYLINK_DISABLE_STOPPED, &pl->phylink_disable_state))
+ 		return 0;
  
- 	mac->phylink_config.dev = &eth->netdev[id]->dev;
- 	mac->phylink_config.type = PHYLINK_NETDEV;
-+	/* This driver makes use of state->speed/state->duplex in
-+	 * mac_config
-+	 */
-+	mac->phylink_config.legacy_pre_march2020 = true;
- 	mac->phylink_config.mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
- 		MAC_10 | MAC_100 | MAC_1000 | MAC_2500FD;
+-	if (!pl->pcs_ops) {
++	if (!pl->pcs_ops && pl->config->legacy_pre_march2020) {
+ 		/* Legacy method */
+ 		phylink_mac_config(pl, &pl->link_config);
+ 		phylink_mac_pcs_an_restart(pl);
+@@ -854,7 +854,8 @@ static void phylink_mac_pcs_get_state(struct phylink *pl,
+ 
+ 	if (pl->pcs_ops)
+ 		pl->pcs_ops->pcs_get_state(pl->pcs, state);
+-	else if (pl->mac_ops->mac_pcs_get_state)
++	else if (pl->mac_ops->mac_pcs_get_state &&
++		 pl->config->legacy_pre_march2020)
+ 		pl->mac_ops->mac_pcs_get_state(pl->config, state);
+ 	else
+ 		state->link = 0;
+@@ -1048,12 +1049,11 @@ static void phylink_resolve(struct work_struct *w)
+ 			}
+ 			phylink_major_config(pl, false, &link_state);
+ 			pl->link_config.interface = link_state.interface;
+-		} else if (!pl->pcs_ops) {
++		} else if (!pl->pcs_ops && pl->config->legacy_pre_march2020) {
+ 			/* The interface remains unchanged, only the speed,
+ 			 * duplex or pause settings have changed. Call the
+ 			 * old mac_config() method to configure the MAC/PCS
+-			 * only if we do not have a PCS installed (an
+-			 * unconverted user.)
++			 * only if we do not have a legacy MAC driver.
+ 			 */
+ 			phylink_mac_config(pl, &link_state);
+ 		}
+diff --git a/include/linux/phylink.h b/include/linux/phylink.h
+index d005b8e36048..a2f266cc3442 100644
+--- a/include/linux/phylink.h
++++ b/include/linux/phylink.h
+@@ -190,6 +190,10 @@ void validate(struct phylink_config *config, unsigned long *supported,
+  * negotiation completion state in @state->an_complete, and link up state
+  * in @state->link. If possible, @state->lp_advertising should also be
+  * populated.
++ *
++ * Note: This is a legacy method. This function will not be called unless
++ * legacy_pre_march2020 is set in &struct phylink_config and there is no
++ * PCS attached.
+  */
+ void mac_pcs_get_state(struct phylink_config *config,
+ 		       struct phylink_link_state *state);
+@@ -230,6 +234,15 @@ int mac_prepare(struct phylink_config *config, unsigned int mode,
+  * guaranteed to be correct, and so any mac_config() implementation must
+  * never reference these fields.
+  *
++ * Note: For legacy March 2020 drivers (drivers with legacy_pre_march2020 set
++ * in their &phylnk_config and which don't have a PCS), this function will be
++ * called on each link up event, and to also change the in-band advert. For
++ * non-legacy drivers, it will only be called to reconfigure the MAC for a
++ * "major" change in e.g. interface mode. It will not be called for changes
++ * in speed, duplex or pause modes or to change the in-band advertisement.
++ * In any case, it is strongly preferred that speed, duplex and pause settings
++ * are handled in the mac_link_up() method and not in this method.
++ *
+  * (this requires a rewrite - please refer to mac_link_up() for situations
+  *  where the PCS and MAC are not tightly integrated.)
+  *
+@@ -314,6 +327,10 @@ int mac_finish(struct phylink_config *config, unsigned int mode,
+ /**
+  * mac_an_restart() - restart 802.3z BaseX autonegotiation
+  * @config: a pointer to a &struct phylink_config.
++ *
++ * Note: This is a legacy method. This function will not be called unless
++ * legacy_pre_march2020 is set in &struct phylink_config and there is no
++ * PCS attached.
+  */
+ void mac_an_restart(struct phylink_config *config);
  
 -- 
 2.30.2
