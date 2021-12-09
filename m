@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A89ECC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 20:00:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 474ACC433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 20:00:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
 	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=puU+obegi/MA2EKTQqyHMKZes/ThDwpG5fUYX8cI2FM=; b=BIhgdMB8h/PHWa
-	U4YDeF0rFg0tvCGg2UQjW1cp2lhiFMJgD5sMH6f8djA3R9dOVysOoAFQRQ2+IN7m7C7i4WaESZAr5
-	3qyImbOM8t+havl0AKtwDwigobaAywjxoOyJ/hr0V3arL/D4qtw3brt28vIayt4m8qmdN5VaPhdsh
-	mau8jCoztjLxf1SqT6JsjD8xHLvPLy+5oxUofdJaG1cBbt3vqHT30IY9cSEpQOkhi9ndYP+siksGs
-	+4UibsndMp2cVHX/Xi3qk8wlwWEHIhlMqWTV6t88NWB8FKaZ9BFZTKMUPsA4MHu+ElIK5AWofZB4I
-	F/sDtvGOoZ+WP2Obw74A==;
+	List-Owner; bh=/PpNdu3Rq7c6kD+rR4iRpnvEfHKFAgNkSYCwoRClW3M=; b=RJ4sgNMbhbAlkL
+	h92slPQ+NcgyWGgDdS1mTZ5WXL9VWkLv86LGrixu4eswk02UlM8khsQwJ/l+ZLjmhAR6foD5WWCs8
+	XP86QcppkkrQoMILIeby8ZOMm2pAMdGovcwlZi5HkEL7OXK2zMGDmei/7t6ZOratKOV2IAkVX1RSh
+	Zj7ExjfjPl6kdlVKqe8LRDccg8wkeU3ioaK7oc0nfwQvrJ9pOYejXKgLJbuUonxHCEdkFZihXQP7/
+	EkEUw8UWlx4XHyARyCT3GLFLQOwXOlwPBpuHH8x7tZjzSp9CwtOyTnUjkuAfGE0VX3gSbFy4gDMis
+	EJjtZHSwZ1KN9frVOMHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvPag-00HPdD-IY; Thu, 09 Dec 2021 20:00:30 +0000
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
+	id 1mvPas-00HPip-AE; Thu, 09 Dec 2021 20:00:42 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvPaR-00HPUU-Kh; Thu, 09 Dec 2021 20:00:17 +0000
+ id 1mvPaR-00HPTx-UL; Thu, 09 Dec 2021 20:00:18 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 56224CE2831;
- Thu,  9 Dec 2021 20:00:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 82D2AC341C7;
+ by ams.source.kernel.org (Postfix) with ESMTPS id B0AB6B82649;
+ Thu,  9 Dec 2021 20:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 7B9C3C341C6;
  Thu,  9 Dec 2021 20:00:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
  s=k20201202; t=1639080011;
- bh=CC42lOz3dSjTXthF3XhDSnDdabQHMrBqGRB87P6fUIc=;
+ bh=YnNs7az/qTTbTLdtsHA8c/HDbey3m6k2oXgBT+NTBFw=;
  h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=GcqepBvWSYgQRwwc01jCgG1YpR8Ii02T8OjNpznu1O35UlIaqKeSvdOTkZnZsgwdA
- ao9/Qj1DXD641dIUnkS7jzp2oOqy/CMbjF9vcm/xciTJ0vANbM6UNnRNyhGiICpRKb
- mS304U9aFMhmvFyP5JQeRb4hTy2iFC2kLMgSBJH2CZr2RDxdCoKNaBX8M9m9gm8mMA
- rmVeZ8GWhUZlxpr4wsrjSDsNA1l8FiiTU4O4SDxbCbWWooQFhzAo9NL12OlW2KIM/i
- SP2RxtmoC+mytLsGZB1/drXKklBGYmuD6T12O+MyyCGAfk1U18UXO7O1O47wv+jr8D
- 4ru5w0pNFCujg==
+ b=oEA35apeb4ygwrav4LktCYXYpdLrcRQuszi7HvgSlZdrgPdftOEJ5lJsGsd68cWz9
+ ofWOMOv9qLH7AllRNig+azGSa9oeNMy8rNk8H+922MbbkQvT7m//GtGRF3VV1VdPDb
+ gjZClzsfppPYtkfOoiuXdAjduGbFp1YZK+MBaCYnyPXaD05BS4YiV2o7XrTYbkQDlE
+ 0otExP+lEsis0qap8T++LseXMRVDLyQxqQL3qIb+jK6Y2ngx2GvV2m6MvjfzVJ8wxN
+ pymkW82fut+HUW/nk04JfF34pnZeJjys/Qe5WIHiZ9lZ2qMGEaiZyc6FN9yJYm09yR
+ l8QG9bC9jj5jA==
 Received: from pdx-korg-docbuild-2.ci.codeaurora.org (localhost.localdomain
  [127.0.0.1])
- by pdx-korg-docbuild-2.ci.codeaurora.org (Postfix) with ESMTP id 510AB60A54;
+ by pdx-korg-docbuild-2.ci.codeaurora.org (Postfix) with ESMTP id 466E960A37;
  Thu,  9 Dec 2021 20:00:11 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next 0/5] net: phylink: introduce legacy mode flag
+Subject: Re: [PATCH net-next 1/5] net: phylink: add legacy_pre_march2020
+ indicator
 From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <163908001132.24516.13773473862700421452.git-patchwork-notify@kernel.org>
+Message-Id: <163908001128.24516.3335515439099109879.git-patchwork-notify@kernel.org>
 Date: Thu, 09 Dec 2021 20:00:11 +0000
-References: <Ya+DGaGmGgWrlVkW@shell.armlinux.org.uk>
-In-Reply-To: <Ya+DGaGmGgWrlVkW@shell.armlinux.org.uk>
-To: Russell King (Oracle) <linux@armlinux.org.uk>
+References: <E1mucmf-00EyCl-KA@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1mucmf-00EyCl-KA@rmk-PC.armlinux.org.uk>
+To: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 Cc: chris.snook@gmail.com, nbd@nbd.name, f.fainelli@gmail.com,
  john@phrozen.org, Mark-MC.Lee@mediatek.com, matthias.bgg@gmail.com,
  sean.wang@mediatek.com, vivien.didelot@gmail.com, olteanv@gmail.com,
- andrew@lunn.ch, davem@davemloft.net, hkallweit1@gmail.com, kuba@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org
+ andrew@lunn.ch, hkallweit1@gmail.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_120015_904646_52A7B6AF 
-X-CRM114-Status: GOOD (  11.52  )
+X-CRM114-CacheID: sfid-20211209_120016_160593_89702302 
+X-CRM114-Status: GOOD (  13.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,17 +83,14 @@ Hello:
 This series was applied to netdev/net-next.git (master)
 by Jakub Kicinski <kuba@kernel.org>:
 
-On Tue, 7 Dec 2021 15:51:53 +0000 you wrote:
-> Hi all,
+On Tue, 07 Dec 2021 15:53:37 +0000 you wrote:
+> Add a boolean to phylink_config to indicate whether a driver has not
+> been updated for the changes in commit 7cceb599d15d ("net: phylink:
+> avoid mac_config calls"), and thus are reliant on the old behaviour.
 > 
-> In March 2020, phylink gained support to split the PCS support out of
-> the MAC callbacks. By doing so, a slight behavioural difference was
-> introduced when a PCS is present, specifically:
-> 
-> 1) the call to mac_config() when the link comes up or advertisement
->    changes were eliminated
-> 2) mac_an_restart() will never be called
-> 3) mac_pcs_get_state() will never be called
+> We were currently keying the phylink behaviour on the presence of a
+> PCS, but this is sub-optimal for modern drivers that may not have a
+> PCS.
 > 
 > [...]
 
