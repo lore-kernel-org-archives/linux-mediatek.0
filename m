@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C64F8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 02:35:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E2B4C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 02:42:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jb3fVk40B1z/c7SN7BFsm3QyCVab7G2zJZbmLjc9lb8=; b=ckyw8lPeHctxOz
-	8+uAutnLGZLse1D4wpv2SXU8RHYVZxOD5KX90lP7C7581z6pQ3HXk+f0plL+9a7JWU3k8v0a/QChl
-	SbAUhkKspRRT7iVhuJ1cnLEkXWIxzuHm9H/nYUw5HAZibUVBnZ2ncRGdAn+/GNcaqtrunBxSLDVop
-	0ICFe+tBLouYqKktnSjcgT7GYNq8K2uqOpHlqP1iADeAXnvPswFlpCuodne2d4h+YSgFGD9udbGxL
-	cCHhKxLiVf9l/c+HK/2Ec4wc7olD7yhdW7qGpmz+r9kVrzRcwTEd8UqY7nfPPug7GkXJHKuQJDipE
-	egnQgOZTp2aIT5Lo7Qmw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZPNO3Bu9a2T00/B88daSE0sZhvYspj4bTK6IS1zoOf8=; b=ZBJWAW6enYCUe+
+	FGJqvjU6V+SwpdgwgL5Lv/MtnBO9npBXID/HwcKeXx3jLkOMS6B+nP+Xs2E307rWj+EJGgJYDrsmv
+	BBMaiKOWRtUbxwXTfRo5VK6z6jR2VYjhbUIZsvy1O2c9gZWaFogDrqx+qxWUPB8BNJaRmZpFoE8Ey
+	NSHeVGXZfBglT96Zh5WqUtzV5HRNbn7UBkJTdgeWzpsG0C+94SQSesTJt7XWey5ndNqJqXJj2nGxu
+	X4vnUu3lYCOYD5OaLTjGp9Vw01XP6U5dmQJjL6FxZ1GwHEf6h1ULbeYvJ861KM09caKPX689PfGHY
+	6yevqWffGY5oCh9oaPpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mv9H8-00ElOL-Tz; Thu, 09 Dec 2021 02:35:14 +0000
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
+	id 1mv9OF-00ElyN-Ju; Thu, 09 Dec 2021 02:42:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mv9H6-00ElNb-Jj
- for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 02:35:13 +0000
-Received: by mail-oi1-x235.google.com with SMTP id u74so6768900oie.8
- for <linux-mediatek@lists.infradead.org>; Wed, 08 Dec 2021 18:35:11 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QkYYBxG7+xkJfoeCkvBx0tM2ZRRAe/vl6ALDFgfyHAg=;
- b=FIQ65O1yjezrQmg7r9mJ/s8Kxh8W71rtG3CkJcCiqvQUC/lnYquUjO3rqGmmhLMoK4
- Xdozh0OShZPkaLTBTR4twiGTKFUWVaNhbDZJ/+2lEWrGEQmQbL+9+0+cavqr5BU/WjGJ
- zxmK1yqMPDC57eM89TfLh1l5euq1GkWyDnEIhGMwcszzUSaIk0tnaz8asW6Yi9ApSK/m
- dFj2OxApmTguKrL8Grp4TwU0BtCklaziaxqCqpUky4wHMaGnlM9IBrUNrE+8bJ4i+kH0
- qg7iRt12iReld3M7cRUON0C2g3UUXSeLlzcPzpLhVLPWkv7s+xVSioPYDN5GtnXc4/7b
- LDNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QkYYBxG7+xkJfoeCkvBx0tM2ZRRAe/vl6ALDFgfyHAg=;
- b=eYwiOhryehmw7Am8dC4Aj8dvmxiM3WT9HyvqefTEva7zYi9V+8X+Y1BEw1cfqBHaqK
- SNeEzlaT5W/NG61gUB0KLQSm0EJPf/wJh56eUPhUMZM+dhDQRAMleVW0350RTQ4jR5xe
- ZYuPwUt0KmLwa9ul1y5DtAw/3Gs67sgGCiuH+Fz64goH5Pi8hc9n84xjBHwbIcPRa4Ng
- Y1LyNNe5iNPjpJfIQYikA1avPd/TtQ5dHk6gczJlBsDIPrDFVS6HLe82LfAEU/KaVCXg
- omaM9s78zkTa/xV9rJNvm8MBa8glIgx6bRYUbviFdc+t4E5F7ES6Fg/x2UAXrUelLdpQ
- 2pog==
-X-Gm-Message-State: AOAM532kTngz6+hWZp6z9vjMrJ84e/iH3shs8v/xvzN67sTe4RvUfLe3
- LuKsxNoDlV49wCLGCRtm5n0QULT/YQs/2S12FtWKnw==
-X-Google-Smtp-Source: ABdhPJzFSQeklOMErFeLeaff/3FgFFHy71R372ruyJJz77X4iahE6mksIOiCRzCSA9lDUer7hWhqZ2tSP9rHAnYpR/Q=
-X-Received: by 2002:a05:6808:60e:: with SMTP id
- y14mr3214046oih.162.1639017310823; 
- Wed, 08 Dec 2021 18:35:10 -0800 (PST)
+ id 1mv9O2-00Elwg-Go; Thu, 09 Dec 2021 02:42:24 +0000
+X-UUID: 79fa94a2c672439d833f26d6e1ff8568-20211208
+X-UUID: 79fa94a2c672439d833f26d6e1ff8568-20211208
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1051311775; Wed, 08 Dec 2021 19:42:17 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 8 Dec 2021 18:42:16 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 9 Dec 2021 10:42:14 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 9 Dec 2021 10:42:13 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, Chunfeng Yun
+ <chunfeng.yun@mediatek.com>
+Subject: [next PATCH] dt-bindings: nvmem: convert mtk-efuse.txt to YAML schema
+Date: Thu, 9 Dec 2021 10:42:13 +0800
+Message-ID: <20211209024213.16612-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20211208092049.20792-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211208092049.20792-1-andriy.shevchenko@linux.intel.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 9 Dec 2021 03:34:59 +0100
-Message-ID: <CACRpkdb2ZnH7gi8TAQ_8hvbaAw=hqBZBjQftPOtyNMLR+c541g@mail.gmail.com>
-Subject: Re: [PATCH v1 1/1] pinctrl: Sort Kconfig and Makefile entries
- alphabetically
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Matthias Brugger <matthias.bgg@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_183512_679162_D1D49670 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20211208_184222_591878_AD41F2E5 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,25 +72,163 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 8, 2021 at 10:20 AM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
+Convert mtk-efuse.txt to YAML schema mediatek,efuse.yaml
 
-> Sort Kconfig and Makefile entries alphabetically for better maintenance
-> in the future.
->
-> While at it fix some style issues, such as wrong indentation.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+---
+ .../bindings/nvmem/mediatek,efuse.yaml        | 89 +++++++++++++++++++
+ .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 ---------
+ 2 files changed, 89 insertions(+), 43 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+ delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
 
-Nice! I tried to apply it but I was queueing patches from other
-unreviewed threads and creating misc problems.
-Ideally I'd like a patch close to the merge window,  but if
-you rebase this on linux-next (or the "devel" branch in my
-tree that I insist on using) I can try to apply it again anyways,
-we need to take the hit at some point.
+diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+new file mode 100644
+index 000000000000..7332195e7f00
+--- /dev/null
++++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+@@ -0,0 +1,89 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek efuse device tree bindings
++
++description: |
++  MediaTek's efuse is used for storing calibration data, it can be accessed
++  on ARM devices usiong I/O mapped memory.
++
++maintainers:
++  - Andrew-CT Chen <andrew-ct.chen@mediatek.com>
++
++allOf:
++  - $ref: "nvmem.yaml#"
++
++properties:
++  $nodename:
++    pattern: "^efuse@[0-9a-f]+$"
++
++  compatible:
++    oneOf:
++      - items:
++          - enum:
++              - mediatek,mt7622-efuse
++              - mediatek,mt7623-efuse
++              - mediatek,mt8173-efuse
++              - mediatek,mt8192-efuse
++              - mediatek,mt8195-efuse
++              - mediatek,mt8516-efuse
++          - const: mediatek,efuse
++      - const: mediatek,mt8173-efuse
++        deprecated: true
++
++  reg:
++    maxItems: 1
++
++  "#address-cells":
++    const: 1
++
++  "#size-cells":
++    const: 1
++
++patternProperties:
++  "^.*@[0-9a-f]+$":
++    type: object
++
++    properties:
++      reg:
++        maxItems: 1
++
++      bits:
++        maxItems: 1
++
++    required:
++      - reg
++
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    efuse@10206000 {
++        compatible = "mediatek,mt8173-efuse";
++        reg = <0x10206000 0x1000>;
++        #address-cells = <1>;
++        #size-cells = <1>;
++
++        u2_intr_p0: usb2-intr-p0@188 {
++            reg = <0x188 0x1>;
++            bits = <0 5>;
++        };
++
++        u2_intr_p1: usb2-intr-p1@188 {
++            reg = <0x188 0x2>;
++            bits = <5 5>;
++        };
++
++        thermal_calibration: calib@528 {
++            reg = <0x528 0xc>;
++        };
++    };
+diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+deleted file mode 100644
+index 39d529599444..000000000000
+--- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
++++ /dev/null
+@@ -1,43 +0,0 @@
+-= Mediatek MTK-EFUSE device tree bindings =
+-
+-This binding is intended to represent MTK-EFUSE which is found in most Mediatek SOCs.
+-
+-Required properties:
+-- compatible: should be
+-	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+-	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+-	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
+-	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
+-	      "mediatek,mt8195-efuse", "mediatek,efuse": for MT8195
+-	      "mediatek,mt8516-efuse", "mediatek,efuse": for MT8516
+-- reg: Should contain registers location and length
+-- bits: contain the bits range by offset and size
+-
+-= Data cells =
+-Are child nodes of MTK-EFUSE, bindings of which as described in
+-bindings/nvmem/nvmem.txt
+-
+-Example:
+-
+-	efuse: efuse@10206000 {
+-		compatible = "mediatek,mt8173-efuse";
+-		reg	   = <0 0x10206000 0 0x1000>;
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+-
+-		/* Data cells */
+-		thermal_calibration: calib@528 {
+-			reg = <0x528 0xc>;
+-		};
+-	};
+-
+-= Data consumers =
+-Are device nodes which consume nvmem data cells.
+-
+-For example:
+-
+-	thermal {
+-		...
+-		nvmem-cells = <&thermal_calibration>;
+-		nvmem-cell-names = "calibration";
+-	};
+-- 
+2.18.0
 
-Yours,
-Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
