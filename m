@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B062C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 07:00:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8B1BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 07:22:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=rOnbUEm5Z4zGlg0v1DA+7StRw+dk1tfIVeGfLSWIMdM=; b=HsU7TjZ4haZWex
-	nyrKI16+iDjxxyY/Njvt257nJgg38Jp53fdNS3NHL5Xp17HTrEtw5CYqHH04rMpoPYWMyS2nJ1qMN
-	zA2ViekMGFFFh8nDpy2urL7LbaiSup7Kh8tTgOzRe3c84EfUyTTcvCDZ+0edVilbZxExCT7bUULUU
-	rAKkLl3ANDVTJa3Ly/QJPEmWCFFKy1cqYxhHRPkLKe9EtfMe6MlilIul+zvAaMEQg5ZN8QiXNvj/x
-	AtAzUQzgOuPbs3d/69+/p+Matjkvoxho/0FWrU5mbPelJgxtHAGRsNnJyUyelZtNYivvJ0jNo51mk
-	sIMCGHvwZxHmj3GJQc6w==;
+	List-Owner; bh=imdlG+xiHBWsYtYuHTdkVOEtxSFk+Kbuvul0U/C1/XI=; b=dkQjao6IwIZxXz
+	E2+TklJVKJHUbzaLivvZ6ExVjgVdUkCmsfd8K5E6xnogfk6pwgwoqRQyqjgbVFVtVJUeYC2tpD5aJ
+	uTvBUAIDoO26s2Lgv5f77cEsPSs9VGQV19SKuII68xVcVkjINFl4RAq5HPJAJM1jdC0sUqw/fo8zq
+	J+0Bw8w373dT5wbIHs8UIdNnCPbgO+IopfpUGRJSpzfMdFHSTe+VHQr56LWdCuQZK4L55nfmfqk7B
+	UZTF6hGrDyHRzeyPyC5tYuHRNg4rLtFPaESr9fc8JFGmwjrWZ4kfonLDDVlGoZjfdN3BuADbOp/Nh
+	7boC8QZs18c0HAAHGWyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvDPI-00F6wG-II; Thu, 09 Dec 2021 06:59:56 +0000
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+	id 1mvDlJ-00F8d7-Ml; Thu, 09 Dec 2021 07:22:41 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvDPF-00F6vJ-OG
- for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 06:59:55 +0000
-Received: by mail-pl1-x636.google.com with SMTP id k4so3189597plx.8
- for <linux-mediatek@lists.infradead.org>; Wed, 08 Dec 2021 22:59:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=RW5/PiePPwGEbHeQax2XMoMOzVE/w5j3urPprFU4xj4=;
- b=JVbv4a01GSr23DKUbNzvViDTbkroOUJ87xix4b42EFQaiFa1zGzPOWqcwlrYW5vgLP
- 2ZGiJfe62HN460Hg51yFQcDuPG0SWbo/67FO3eJ1vwNyPZ+OeUXlPuupEXJAtnsZj0dS
- i2BZGWKeJrHSy0RM0ZGyNLL+bi05qB3ChyceA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=RW5/PiePPwGEbHeQax2XMoMOzVE/w5j3urPprFU4xj4=;
- b=asubEZZ1D99mVBJUJZZP37ogEboaJl5YYvwkewplg2s5aw6lwwAyJQrTPsIFlhGozg
- +OOLyjGp/D8vbnkqmua38JiSDwOJv/qhHH5lz4mHp629fePzXt2Qb4YUaQgpT+/Xx48F
- wN4wfbWKTmgW/G/R+jkFf1XMIIYk3h8BU9ZQJneUjtoiz4QpusG9dHNO1eVgtDXNRxdP
- 9RrI0SsoAwNs/qc2fAwLchEI8+9gMH1IC1WpwMNvjI3Y1Wv2sElqQo303SUjqJHhgN9Z
- cjTRRwLOcttHGIfr34cJNFKTkC8Yxqnbz0eHn/9dg35Z1Mk7KAXKPLkUR8+sPnBROEVb
- WwJA==
-X-Gm-Message-State: AOAM533EnXI+94UH8FF+XrBTeINqVdEIX4X9o3I10GSClK1AMpsLLjzd
- iVu5CtTzTgM5D1EOw4y0eChNmg==
-X-Google-Smtp-Source: ABdhPJxslNIMXLet9RCsdKQS4VcDTdk1MoI3qUUFLzT/WUMx1UA0lI3LnVvI7Nvbp4pNWZtW8vIZ2w==
-X-Received: by 2002:a17:90b:33d0:: with SMTP id
- lk16mr13483577pjb.7.1639033192843; 
- Wed, 08 Dec 2021 22:59:52 -0800 (PST)
-Received: from hsinyi-z840.tpe.corp.google.com
- ([2401:fa00:1:10:bc93:a930:2121:8bed])
- by smtp.gmail.com with ESMTPSA id j4sm4463519pgp.58.2021.12.08.22.59.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Dec 2021 22:59:52 -0800 (PST)
-From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH] mailbox: mtk-cmdq: Silent EPROBE_DEFER errors for clks
-Date: Thu,  9 Dec 2021 14:59:48 +0800
-Message-Id: <20211209065948.1796663-1-hsinyi@chromium.org>
-X-Mailer: git-send-email 2.34.1.400.ga245620fadb-goog
+ id 1mvDl4-00F8ZH-EZ; Thu, 09 Dec 2021 07:22:29 +0000
+X-UUID: ddc741205b664e25a51a39c8b68b9cfb-20211209
+X-UUID: ddc741205b664e25a51a39c8b68b9cfb-20211209
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1426974652; Thu, 09 Dec 2021 00:22:22 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 8 Dec 2021 23:22:20 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 9 Dec 2021 15:22:19 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 9 Dec 2021 15:22:18 +0800
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Mathias Nyman <mathias.nyman@intel.com>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Eddie
+ Hung" <eddie.hung@mediatek.com>, Yun-Chien Yu <yun-chien.yu@mediatek.com>
+Subject: [PATCH] usb: xhci: skip re-check pending port event if hibernated
+Date: Thu, 9 Dec 2021 15:22:18 +0800
+Message-ID: <20211209072218.21651-1-chunfeng.yun@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_225953_837821_171A9ED0 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20211208_232226_517011_629FFC5B 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,41 +72,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Silent the error if it's EPROBE_DEFER for clks.
+When xHCI controller hibernated, the root hub lost power, if controller
+support Port Power Control (PPC), PP is not set at xhci_resume() and
+set by hub_reset_resume() later, so no need check pending port event.
+If PPC is not supported, device is disconneced, seems do not send out
+U3 LFPS wake signal, no need re-check again and drop 120ms delay to
+save resume time.
 
-Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+Reported-by: Yun-Chien Yu <yun-chien.yu@mediatek.com>
+Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ drivers/usb/host/xhci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index a8845b162dbf..087fb7334166 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -573,7 +573,10 @@ static int cmdq_probe(struct platform_device *pdev)
- 				cmdq->clocks[alias_id].id = clk_names[alias_id];
- 				cmdq->clocks[alias_id].clk = of_clk_get(node, 0);
- 				if (IS_ERR(cmdq->clocks[alias_id].clk)) {
--					dev_err(dev, "failed to get gce clk: %d\n", alias_id);
-+					dev_err_probe(dev,
-+						PTR_ERR(cmdq->clocks[alias_id].clk),
-+						"failed to get gce clk: %d\n",
-+						alias_id);
- 					return PTR_ERR(cmdq->clocks[alias_id].clk);
- 				}
- 			}
-@@ -582,7 +585,8 @@ static int cmdq_probe(struct platform_device *pdev)
- 		cmdq->clocks[alias_id].id = clk_name;
- 		cmdq->clocks[alias_id].clk = devm_clk_get(&pdev->dev, clk_name);
- 		if (IS_ERR(cmdq->clocks[alias_id].clk)) {
--			dev_err(dev, "failed to get gce clk\n");
-+			dev_err_probe(dev, PTR_ERR(cmdq->clocks[alias_id].clk),
-+				"failed to get gce clk\n");
- 			return PTR_ERR(cmdq->clocks[alias_id].clk);
+diff --git a/drivers/usb/host/xhci.c b/drivers/usb/host/xhci.c
+index 902f410874e8..686d8e6f03f6 100644
+--- a/drivers/usb/host/xhci.c
++++ b/drivers/usb/host/xhci.c
+@@ -1235,7 +1235,7 @@ int xhci_resume(struct xhci_hcd *xhci, bool hibernated)
+ 		 * the first wake signalling failed, give it that chance.
+ 		 */
+ 		pending_portevent = xhci_pending_portevent(xhci);
+-		if (!pending_portevent) {
++		if (!pending_portevent && !hibernated) {
+ 			msleep(120);
+ 			pending_portevent = xhci_pending_portevent(xhci);
  		}
- 	}
 -- 
-2.34.1.400.ga245620fadb-goog
+2.18.0
 
 
 _______________________________________________
