@@ -2,42 +2,42 @@ Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.in
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D915C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 08:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E096C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 08:37:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MUhzJzfsCvsYBB6DQcLy6UpMsr/qVV8Prd5cWCLLn2E=; b=LK8AbyDI2pbmTo
-	uNxgMCvGT5cOXYW8tdUwD25HQt7I//4IQ3ranBixmzT1TBv2SI+GYVez5M3X+HmMM9NKU5x7yhnqp
-	d7TGIA9iXvwVWFT4g0vUsWFGGN7VQihF4J4HTwA/l8U0/FcPNsZRzgAcmbjPQc3GkLYEepbOHh+UJ
-	U+EQfG/qhkXUjiroewWrIeWADxWR/87gx0Ql47am7tTE3axMvEGysEkl0qzPn+3TyUyLknvAWoL3X
-	TBfzfDjDNr4AHRUmMEbS1h6xkD6JL53W+aKUc82aP91f1PL0tyuPHnpailaob2YpHjiSx7+HBXPWs
-	21Z5Np3bsl/1FQYwjwAw==;
+	List-Owner; bh=gKMkq05A/lAFgJ4Em8ACtE5Fk43A8wk7V1dEaKPo05U=; b=W1SG7L17/0/i3m
+	udy0SVkT08m8AUfKno7abdi035J7yxSE0ExoC/2Az61Y03GdixcL8aBYMtjHhnJwbL38J06YXQUQm
+	0aIjPxXMeH2tU4A4ZLSuTioRII6CWE3uKqeGEeTm9z9slrcZY/PQ33S4rpmNdxGYwXWJj7zkTOgNA
+	lCpY1a/3CKtX2MzXpFFf5XwqGHQas6O0Sx2ts5Rq6Qd84cfh/MIsexIw4guVtnqDaKh5hACTi9SdC
+	x+FA7rch4GsBbzFgKLVZff4Rqd/iTucPSTT794DbT3o8uS+qtQ/nq3N6yNJ5ox6+TAg7tqG1cVyYv
+	don3M+EIDa0hkc9cRYZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvEmg-00FEvk-6Z; Thu, 09 Dec 2021 08:28:10 +0000
+	id 1mvEvZ-00FFvl-0L; Thu, 09 Dec 2021 08:37:21 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvEmd-00FEvZ-Nd
- for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 08:28:08 +0000
-X-UUID: a1cd00ea4e514164a3cdf714759caaf0-20211209
-X-UUID: a1cd00ea4e514164a3cdf714759caaf0-20211209
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1mvEvW-00FFv8-Mh
+ for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 08:37:19 +0000
+X-UUID: f82d75f7067a431fb4e7ecd410a6ea96-20211209
+X-UUID: f82d75f7067a431fb4e7ecd410a6ea96-20211209
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <mark-yw.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 461613016; Thu, 09 Dec 2021 01:27:58 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Dec 2021 00:27:56 -0800
+ with ESMTP id 923429681; Thu, 09 Dec 2021 01:37:13 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Dec 2021 00:37:10 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 9 Dec 2021 16:27:53 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Dec 2021 16:37:07 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 9 Dec 2021 16:27:52 +0800
+ Frontend Transport; Thu, 9 Dec 2021 16:37:07 +0800
 From: <mark-yw.chen@mediatek.com>
 To: <jwboyer@kernel.org>, <marcel@holtmann.org>, <johan.hedberg@gmail.com>
 CC: <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
@@ -45,15 +45,15 @@ CC: <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <koro.chen@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
  <will-cy.lee@mediatek.com>, <deren.wu@mediatek.com>, <yn.chen@mediatek.com>,
  Mark Chen <mark-yw.chen@mediatek.com>
-Subject: [PATCH] linux-firmware: update frimware for mediatek bluetooth chip
- (MT7921)
-Date: Thu, 9 Dec 2021 16:27:31 +0800
-Message-ID: <20211209082731.27808-1-mark-yw.chen@mediatek.com>
+Subject: [PATCH v2] linux-firmware: update frimware for mediatek bluetooth
+ chip (MT7921)
+Date: Thu, 9 Dec 2021 16:37:06 +0800
+Message-ID: <20211209083706.28193-1-mark-yw.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
 X-MTK: N
-X-Spam-Note: CRM114 run bypassed due to message size (1004439 bytes)
-X-Spam-Note: SpamAssassin run bypassed due to message size (1004439 bytes)
+X-Spam-Note: CRM114 run bypassed due to message size (1004875 bytes)
+X-Spam-Note: SpamAssassin run bypassed due to message size (1004875 bytes)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,9 +80,23 @@ Version: 20211129211059
 
 Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
 ---
+ WHENCE                                  |   2 +-
  mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin | Bin 518062 -> 513582 bytes
- 1 file changed, 0 insertions(+), 0 deletions(-)
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/WHENCE b/WHENCE
+index 6172b9f..e8f3b62 100644
+--- a/WHENCE
++++ b/WHENCE
+@@ -5229,7 +5229,7 @@ Licence: Redistributable. See LICENCE.mediatek for details.
+ Driver: mt7921 - MediaTek MT7921 bluetooth chipset
+ 
+ File: mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
+-Version: 20211018131102
++Version: 20211129211059
+ 
+ Licence: Redistributable. See LICENCE.mediatek for details.
+ 
 diff --git a/mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin b/mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin
 index 54b5981889bc0d6e46c509836025349f27010e37..67c0f5bf377425467f61c810aa2c4e8ff8589172 100644
 GIT binary patch
