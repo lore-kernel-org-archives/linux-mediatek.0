@@ -4,61 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C95F6C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 09:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68928C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 10:06:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KI10B7AjCdYmJfg/4/m2ORaud8UDUNcpzloZ4nBlR7s=; b=T2dAjd4A24KWsgkNKIwpu9Jq6z
-	YMnRVxgO3FFHjVabJcHA65BAHsBryHAbyLhnAJeKXDWw0w0SvsmNjkvcDygTgQIWRFfWzfHlJKh6a
-	QfOhP92yfAx6gVibtLn7XEyoypaOSbfFh83qWwivkYYVHzQ1jHu7+ufJ5HrXKQVVrq0ttIV/FsS/h
-	+Syegc6bfDYh3UT9dQ2juW4Wi7NNDIHZv0XM5QUAyyk5+TP+Cck6trYMJyY1N/r71vCaJ1x6IrrSq
-	yyfc1an2qUNhi3K5aE4NRBS1mt0be1ftyL7Of7JU2F14sqD1gMTxcoC9KF/yNvS93w4vvaFx53Rb9
-	mdYYqNkw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KEuTzYHzIgacFrZ/0XCjgDEFyr8DYsc5zX0evlsDh4U=; b=Uu8seWDG9rwvtm
+	pKBjAIycZZcqbrKkuWePok3HomZFB2b9LdkHA+v+OvubRSxgTMjEi2tRZ1DTtzK/nFRBdqwEaVwP5
+	fzx0B+HcfQPJOjWbV6BoA5zzAgK0k+vZ+aMhbSqxliEsRmPln3XHLPUpe8ov2FiFzTRwWYnPZEFo8
+	P/8XYXJs8fLhxg9M6QayDFNVjiK4RVOTN2EN9AjWBCJPykz6pimdbPD1Yvt5pQqAuO2Jyy1pJ73HW
+	sSo370TbBv8NHbCzAfYWftNxTN8UcSymmZYdTR3qPLx9vFlyivKjKW41SAb0CLIhCNjTKHML5Q9+B
+	RL2VFFu0LUMSHO/aGzWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvFc5-00FOk6-7Q; Thu, 09 Dec 2021 09:21:17 +0000
-Received: from dvalin.narfation.org ([213.160.73.56])
+	id 1mvGJb-00FWbU-RZ; Thu, 09 Dec 2021 10:06:15 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvFby-00FOej-8s
- for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 09:21:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=narfation.org;
- s=20121; t=1639041665;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=HKfoBlRfsPWUt5hnOkqJORTtA2aNncI/9GyUqXURfVQ=;
- b=wKzcE01/NZcjkvW5RMDJ2EPP36tRpCwo0vG+t7E/66evxG9D5lx0y5VQQy0B0RJQVXUuTV
- PMg/f8kgcqOf9Rjek3YnAqQrTtjYbOU11faThswZXApeD559sjQqLDfG8DxN2GSVne3gTb
- kuRGeiKZ5cjpBgKY5dNeZPO7aDduZRU=
-From: Sven Eckelmann <sven@narfation.org>
-To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk,
- Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Deren Wu <Deren.Wu@mediatek.com>
-Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
- YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
- CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
- Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com,
- linux-firmware <linux-firmware@kernel.org>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>,
- jf@simonwunderlich.de
-Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
-Date: Thu, 09 Dec 2021 10:21:02 +0100
-Message-ID: <2314855.OJx0zA1Pyt@ripper>
-In-Reply-To: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
-References: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
+ id 1mvGJY-00FWZe-Jn
+ for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 10:06:14 +0000
+Received: by mail-lf1-x134.google.com with SMTP id z21so10948901lfu.8
+ for <linux-mediatek@lists.infradead.org>; Thu, 09 Dec 2021 02:06:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=F1owymgiCbwjtMOY3GwDKTTRv4aRJ4ddqlYjVacAxeY=;
+ b=IEAlki6D4NihEbGixc0ZB8q1mWKYeVyBm450yjRD6H+nFTePjftgbNP1DSbjKJC/wn
+ aA6G1S7zyTmWIk2wnFu1f0vt67RzKqsiulULcMDgUC+z69q+XtVhP3Eu0UC0yezAwjNB
+ vX82i6L0vOPMOqpqTVSvYYCMeFCK7iTHxJMGDkkT5ZH+GnHs9SODYR5MYMhq1DGi4GzO
+ jzkp592RVDVKnCu1VIpNL7vqWdE78LfoQ/N7ed/l18v1uQfKPEjZBRH2eRUjtNTKCBPA
+ nWa9O+uPUfVM+lsrddwkRKNoYhpf4nu+XyMW4JWKq2CaEyoOmsYKC8jQgxIh6QFH8/oT
+ jcsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=F1owymgiCbwjtMOY3GwDKTTRv4aRJ4ddqlYjVacAxeY=;
+ b=BxK1da9ZPB/CanZgDxCr9vcqkPB44WlFe6apCDSItSHwFPp64Rf7lUc8lWopCOKtST
+ uIYt3pmOskHivRvh5Gve+jdXbUKtGR1xXB7SYiT1E15NzPAwyYQ+xQs8oY5vtosmlIw5
+ uTpcpTqiLVmi4GRskWYxd3f8zDmtqMyzF4cj0fAiMFUHOuaYvKDgA/U6hIIdjCt9bxuY
+ Hn4ICUeZgMTP4wZcpvCsJ/ckb7fqBYDvzlTGX9pW+i1D0D1VxUDSYXW8GDfdW1xNC7Vo
+ emYH/8tvmp3Cwa52nIi7xnRPfWAQzHEHPUxbGfzwCw2NYEvKURwFIlVE0jxSKDj94H6w
+ QoZg==
+X-Gm-Message-State: AOAM533JvItT43QwloawDFl7ep+JRiMEGWGIF1KNvsl7Vk6bOgQaiHYm
+ Sxd5fzB37NCQHz36f4u6fbwa1vuu+eJFHCPhJYvIdQ==
+X-Google-Smtp-Source: ABdhPJwOXRN/8lU2AYgTrJejBXDpm4hFI6pejaLy27VCQ/luFqzDGRy/0PN4sedVg8qGNEQznzbU3QCdxNwh1mp0znQ=
+X-Received: by 2002:a05:6512:10c4:: with SMTP id
+ k4mr4875603lfg.373.1639044369640; 
+ Thu, 09 Dec 2021 02:06:09 -0800 (PST)
 MIME-Version: 1.0
+References: <20211206174201.2297265-1-robh@kernel.org>
+In-Reply-To: <20211206174201.2297265-1-robh@kernel.org>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Thu, 9 Dec 2021 11:05:33 +0100
+Message-ID: <CAPDyKFpd=bdMOCe2cScdLjhr97bZ+VLFr7yn8j48d4KCcHaqtw@mail.gmail.com>
+Subject: Re: [PATCH] dt-bindings: mmc: Add missing properties used in examples
+To: Rob Herring <robh@kernel.org>
+Cc: Shawn Guo <shawnguo@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <Kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, 
+ NXP Linux Team <linux-imx@nxp.com>, Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+ Masami Hiramatsu <mhiramat@kernel.org>, Adrian Hunter <adrian.hunter@intel.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Wenbin Mei <wenbin.mei@mediatek.com>,
+ Masahiro Yamada <yamada.masahiro@socionext.com>, devicetree@vger.kernel.org, 
+ Thierry Reding <thierry.reding@gmail.com>, linux-mmc@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_012110_844054_8DFB3EEF 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211209_020612_665598_B3D9FAA0 
+X-CRM114-Status: GOOD (  22.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,120 +87,175 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8381872695545507103=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============8381872695545507103==
-Content-Type: multipart/signed; boundary="nextPart3341260.rLAWO6SjPS"; micalg="pgp-sha512"; protocol="application/pgp-signature"
+On Mon, 6 Dec 2021 at 18:42, Rob Herring <robh@kernel.org> wrote:
+>
+> When 'unevaluatedProperties' support is enabled, the following warnings
+> are generated in the mmc bindings:
+>
+> Documentation/devicetree/bindings/mmc/mtk-sd.example.dt.yaml: mmc@11230000: Unevaluated properties are not allowed ('reg', 'interrupts' were unexpected)
+> Documentation/devicetree/bindings/mmc/sdhci-am654.example.dt.yaml: mmc@4f80000: Unevaluated properties are not allowed ('sdhci-caps-mask' was unexpected)
+> Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.example.dt.yaml: mmc@5a400000: Unevaluated properties are not allowed ('dma-names', 'dmas' were unexpected)
+> Documentation/devicetree/bindings/mmc/arm,pl18x.example.dt.yaml: mmc@80126000: Unevaluated properties are not allowed ('dmas', 'dma-names' were unexpected)
+> Documentation/devicetree/bindings/mmc/arasan,sdhci.example.dt.yaml: mmc@80420000: Unevaluated properties are not allowed ('resets' was unexpected)
+> Documentation/devicetree/bindings/mmc/arm,pl18x.example.dt.yaml: mmc@52007000: Unevaluated properties are not allowed ('interrupt-names' was unexpected)
+> Documentation/devicetree/bindings/clock/imx8qxp-lpcg.example.dt.yaml: mmc@5b010000: Unevaluated properties are not allowed ('power-domains' was unexpected)
+>
+> Add the missing properties as necessary. For pl18x, drop interrupt-names
+> as there isn't any use of it when there are 2 interrupts.
+>
+> Cc: Ulf Hansson <ulf.hansson@linaro.org>
+> Cc: Shawn Guo <shawnguo@kernel.org>
+> Cc: Sascha Hauer <s.hauer@pengutronix.de>
+> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
+> Cc: Fabio Estevam <festevam@gmail.com>
+> Cc: NXP Linux Team <linux-imx@nxp.com>
+> Cc: Chaotian Jing <chaotian.jing@mediatek.com>
+> Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+> Cc: Masami Hiramatsu <mhiramat@kernel.org>
+> Cc: Adrian Hunter <adrian.hunter@intel.com>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Wenbin Mei <wenbin.mei@mediatek.com>
+> Cc: Masahiro Yamada <yamada.masahiro@socionext.com>
+> Cc: linux-mmc@vger.kernel.org
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-mediatek@lists.infradead.org
+> Signed-off-by: Rob Herring <robh@kernel.org>
 
---nextPart3341260.rLAWO6SjPS
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Sven Eckelmann <sven@narfation.org>
-To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Deren Wu <Deren.Wu@mediatek.com>
-Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com, linux-firmware <linux-firmware@kernel.org>, linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>, jf@simonwunderlich.de
-Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
-Date: Thu, 09 Dec 2021 10:21:02 +0100
-Message-ID: <2314855.OJx0zA1Pyt@ripper>
-In-Reply-To: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
-References: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
+Applied for next, thanks!
 
-On Thursday, 9 December 2021 09:24:11 CET Deren Wu wrote:
-> From: Deren Wu <deren.wu@mediatek.com>
-> 
-> Update binary firmware for MT7921 WiFi devices
-> 
-> File: mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin
-> Version: 20211129210838a
-> File: mediatek/WIFI_RAM_CODE_MT7961_1.bin
-> Version: 20211129210917
-
-Thank you for the firmware update. With this firmware and the mt76.git 
-commit 678071ef7029 ("mt76: mt7615: clear mcu error interrupt status on 
-mt7663") + hostapd commit 14ab4a816c68 ("Reject ap_vendor_elements if
-its length is odd") , I was able to connect to an 6GHz AP:
-
-    $ cat > station_sae_test.conf << "EOF"
-    country=US
-    network={
-            scan_ssid=1
-            ssid="Maverick6g"
-            key_mgmt=SAE
-            psk="testtest"
-            proto=RSN
-            ieee80211w=2
-            beacon_int=100
-    }
-    EOF
-
-    $ ip link set up dev wlp5s0
-    $ ./wpa_supplicant -D nl80211 -i wlp6s0 -c ~/station_sae_test.cfg -B
-    $ iw dev wlp5s0 link
-    Connected to 00:03:7f:12:8c:8c (on wlp5s0)
-            SSID: Maverick6g
-            freq: 6115
-            RX: 3092674 bytes (26805 packets)
-            TX: 114756 bytes (1073 packets)
-            signal: -49 dBm
-            rx bitrate: 1080.6 MBit/s 80MHz HE-MCS 10 HE-NSS 2 HE-GI 0 HE-DCM 0
-            tx bitrate: 6.5 MBit/s MCS 0
-    
-            bss flags:      short-slot-time
-            dtim period:    2
-            beacon int:     100
-    $ ping ff02::1%wlp5s0
-    ....
-     
-
-Just as note: It is still not possible to see beacons when using the card in 
-monitor mode.
-
-Tested-by: Sven Eckelmann <sven@narfation.org>
-
-Kind regards,
-	Svem
---nextPart3341260.rLAWO6SjPS
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEF10rh2Elc9zjMuACXYcKB8Eme0YFAmGxyn4ACgkQXYcKB8Em
-e0YICA/9HP/KgPvp7hf4CLElCGNnekR8cj2P6tEOYqIpQwvmG+FfxVSBESzKJDbL
-jb0U+dnm9hooIkgX/UPcaSiiaDPRzek3xqZyaFvl4aZRN3iK64ovTt4ytDrGmBi6
-Ew5kI7vevnAjt/RDYNKCPobGqmjKyslCezJnReNAVTlk7v0R5fiX2i+mwsKv3GB0
-mzpVEaIoWsKuYHwhypHF1l2Ay2SuRRpnORQg2DyfWwd5bU39Q7kN/r4nybhPjJ+W
-QUA6sYhx/p09c/SzJo9lL+vBVbrBzZwxGTaCdGi7i0EoEMblIcmruB3d3OHam5y/
-uBwOy6E46PIStRfw3vbq38ZBM10g3z4qjA/OgfSUBY3kTF/PcLUDwnMaYqKgFAcp
-W7MfHa0tpDixKTortPic7QBzp8KGvsAYfXWvN7xSVZCVbZZBRHqCaBYW7dVPC/9M
-CNiGZj90gUqLDnLirm/O/K3UvMJqZYqhVula3BxNSIkL1TczyBtIZDQYF4iRwfIb
-XTJX8eVpcij9DCuMOEp0guQ5ogbgP/+OG6E6RUlw9eX9KcjZl+a+BsCyy90J4m0P
-d2sxR6qMwa8NoV7cF0iyoEyhVpEs9FPzLXWRhM4dDIR5FRObMTaFsmXrgQKwxOL7
-q2lQra2dtTU5Az11mZd0WxqPFr9/sbBIWjSv6V+vZy5PEb1HqBI=
-=syZA
------END PGP SIGNATURE-----
-
---nextPart3341260.rLAWO6SjPS--
+Kind regards
+Uffe
 
 
-
-
-
---===============8381872695545507103==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> ---
+>  Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml  | 3 +++
+>  Documentation/devicetree/bindings/mmc/arm,pl18x.yaml     | 9 ++++++++-
+>  Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml | 3 +++
+>  Documentation/devicetree/bindings/mmc/mtk-sd.yaml        | 6 ++++++
+>  Documentation/devicetree/bindings/mmc/sdhci-am654.yaml   | 2 ++
+>  .../devicetree/bindings/mmc/socionext,uniphier-sd.yaml   | 6 ++++++
+>  6 files changed, 28 insertions(+), 1 deletion(-)
+>
+> diff --git a/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml b/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml
+> index de6f076e0ece..83be9e93d221 100644
+> --- a/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/arasan,sdhci.yaml
+> @@ -118,6 +118,9 @@ properties:
+>    phy-names:
+>      const: phy_arasan
+>
+> +  resets:
+> +    maxItems: 1
+> +
+>    arasan,soc-ctl-syscon:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+>      description:
+> diff --git a/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml b/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml
+> index 47595cb483be..fbc866d9bb2f 100644
+> --- a/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/arm,pl18x.yaml
+> @@ -60,6 +60,14 @@ properties:
+>      minItems: 1
+>      maxItems: 2
+>
+> +  dmas:
+> +    maxItems: 2
+> +
+> +  dma-names:
+> +    items:
+> +      - const: rx
+> +      - const: tx
+> +
+>    power-domains: true
+>
+>    resets:
+> @@ -213,7 +221,6 @@ examples:
+>        arm,primecell-periphid = <0x10153180>;
+>        reg = <0x52007000 0x1000>;
+>        interrupts = <49>;
+> -      interrupt-names = "cmd_irq";
+>        clocks = <&rcc 0>;
+>        clock-names = "apb_pclk";
+>        resets = <&rcc 1>;
+> diff --git a/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml b/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml
+> index 19621a2f8beb..8d5cef0d3039 100644
+> --- a/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/fsl-imx-esdhc.yaml
+> @@ -116,6 +116,9 @@ properties:
+>        - const: ahb
+>        - const: per
+>
+> +  power-domains:
+> +    maxItems: 1
+> +
+>    pinctrl-names:
+>      oneOf:
+>        - minItems: 3
+> diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> index 82768a807294..faf89b0c918f 100644
+> --- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+> @@ -36,6 +36,9 @@ properties:
+>            - const: mediatek,mt8195-mmc
+>            - const: mediatek,mt8183-mmc
+>
+> +  reg:
+> +    maxItems: 1
+> +
+>    clocks:
+>      description:
+>        Should contain phandle for the clock feeding the MMC controller.
+> @@ -62,6 +65,9 @@ properties:
+>        - const: axi_cg
+>        - const: ahb_cg
+>
+> +  interrupts:
+> +    maxItems: 1
+> +
+>    pinctrl-names:
+>      items:
+>        - const: default
+> diff --git a/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml b/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml
+> index 224303f5b913..9fbf16b3bc8d 100644
+> --- a/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/sdhci-am654.yaml
+> @@ -48,6 +48,8 @@ properties:
+>        - const: clk_ahb
+>        - const: clk_xin
+>
+> +  sdhci-caps-mask: true
+> +
+>    # PHY output tap delays:
+>    # Used to delay the data valid window and align it to the sampling clock.
+>    # Binding needs to be provided for each supported speed mode otherwise the
+> diff --git a/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml b/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml
+> index 56f9ff12742d..a586fad0a46b 100644
+> --- a/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml
+> +++ b/Documentation/devicetree/bindings/mmc/socionext,uniphier-sd.yaml
+> @@ -26,6 +26,12 @@ properties:
+>    clocks:
+>      maxItems: 1
+>
+> +  dmas:
+> +    maxItems: 1
+> +
+> +  dma-names:
+> +    const: rx-tx
+> +
+>    reset-names:
+>      description: |
+>        There are three reset signals at maximum
+> --
+> 2.32.0
+>
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8381872695545507103==--
-
-
-
-
