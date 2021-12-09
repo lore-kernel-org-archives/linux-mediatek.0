@@ -4,52 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97C0DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 11:35:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8545FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 11:51:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=F645OtbRqaxCTkOyMMlZUqIfn6QFi2QShs7z4O3q8Ig=; b=eFRR8gP5oBiprK
-	pMGBnztnu18hUt62cS27iVXATZFAio7sUyudhWNxNoPCFLOMgsIVZeueghrUEgWpM/7gGiDLuNdxH
-	C4Xi2OSmb+6zVKLVZ9DhRkH82rFkXX+nEcviFQqLTehbb+8WdWn75pWpJ4IGNB5MvSZYeP2HlR2bt
-	5XG6d4HBf4utUYUojAi/VJWQ7fxLfmaBYHL1Zs3ZGRm7AP8HnaIsOMId/CXxlvQ8BUOYtZQ5VSNZr
-	72GmNGLnVxV62DtSlhVwo2S9WxWDsLjrrqdm7wDTGGwuZf8NYA3XJIjJBEtU8BHYY/p14lgc4J8Vm
-	Gs96Br7e+/HfYlqqpb/A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MLP+NUkvhJpkoOrn9L18vDyPLQ8IIeAZmaB7Wf4MAy4=; b=xAe3I/RBBF9hqc
+	RamNH8tU/BzrURbZekP+jrGQAA2qIdh/shkijZgzRs92aqp6yMAeGBHxxBX0IzEpmLSVs4IFnfeoU
+	8+79koeXSCDV1gml02qNL4Bu4OfJQOF5r5i6PqOPCq37wJSJrURiItk1E5fDebFMN0CatoEA5uSe9
+	NtjNZXebNYiGivP6ORNqLQntPQaGtZ41yyUtj6uoLRg50it+gAF71+aQIbfFt6CWdvXbb28oyOR2R
+	WhSCVzrk5IuzJTw2MSUT+1c4l/Wr+McIfV4ovLmGAXb/5l4aQZ6lutXJpu9Y6xojbhg6+2gn0L6MK
+	ZdSGZH45iOi/wP8a8OsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvHhh-00Foje-AZ; Thu, 09 Dec 2021 11:35:13 +0000
-Received: from mga07.intel.com ([134.134.136.100])
+	id 1mvHxE-00FqrR-RW; Thu, 09 Dec 2021 11:51:16 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvHhP-00Fof9-AF; Thu, 09 Dec 2021 11:34:58 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10192"; a="301463665"
-X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="301463665"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Dec 2021 03:34:54 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,192,1635231600"; d="scan'208";a="601529114"
-Received: from black.fi.intel.com ([10.237.72.28])
- by FMSMGA003.fm.intel.com with ESMTP; 09 Dec 2021 03:34:51 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
- id 3A1CF15C; Thu,  9 Dec 2021 13:34:57 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Linus Walleij <linus.walleij@linaro.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: [PATCH v3 1/1] pinctrl: Sort Kconfig and Makefile entries
- alphabetically
-Date: Thu,  9 Dec 2021 13:34:56 +0200
-Message-Id: <20211209113456.33977-1-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.33.0
+ id 1mvHxB-00Fqqv-BD; Thu, 09 Dec 2021 11:51:15 +0000
+X-UUID: 3826e2b567c4407097a7e181d456fa5e-20211209
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=EKGzfuC6Tlw4OMADdLVrT5dzmYsPNapRwE5UpjqS+mk=; 
+ b=Ty31ICIlKgiw5VvxLaBvrM3Ohid6Gl3pl8Bo2R3H44nOgzORuOeGgZjAsoDGO5lkPmgBBDbEGv2RUc6CxiHaZ1zlN/x41Bbhi4sRJaI0Wg9vD/ajziiDPAUvsLi3t/G+oHNVq11mfHW5sXR/Uggtwuy+YRAr0b7w2ktUpdkEqmg=;
+X-UUID: 3826e2b567c4407097a7e181d456fa5e-20211209
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <qizhong.cheng@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 952051263; Thu, 09 Dec 2021 04:51:07 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 9 Dec 2021 03:51:05 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 9 Dec 2021 19:51:04 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 9 Dec 2021 19:51:02 +0800
+Message-ID: <6e6fd0b50699616e7d943ec1c8bc4e71abd85f6f.camel@mediatek.com>
+Subject: Re: [RESEND PATCH v2] PCI: mediatek: Delay 100ms to wait power and
+ clock to become stable
+From: qizhong.cheng <qizhong.cheng@mediatek.com>
+To: Pali =?ISO-8859-1?Q?Roh=E1r?= <pali@kernel.org>
+CC: Bjorn Helgaas <helgaas@kernel.org>, Mark Kettenis
+ <mark.kettenis@xs4all.nl>, <ryder.lee@mediatek.com>,
+ <jianjun.wang@mediatek.com>, <lorenzo.pieralisi@arm.com>, <kw@linux.com>,
+ <bhelgaas@google.com>, <linux-pci@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <chuanjia.liu@mediatek.com>,
+ <maz@kernel.org>, <alyssa@rosenzweig.io>, <luca@lucaceresoli.net>,
+ <qizhong.cheng@mediatek.com>
+Date: Thu, 9 Dec 2021 19:51:03 +0800
+In-Reply-To: <20211208101836.pazwdloibn6d7iri@pali>
+References: <20211208041228.GA103736@bhelgaas>
+ <e891bf625b00078c476cc53c4b8770dfce71ddb0.camel@mediatek.com>
+ <20211208101836.pazwdloibn6d7iri@pali>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_033455_473414_A2932A12 
-X-CRM114-Status: GOOD (  24.35  )
+X-CRM114-CacheID: sfid-20211209_035113_422712_3680E6BE 
+X-CRM114-Status: GOOD (  47.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,747 +80,126 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sort Kconfig and Makefile entries alphabetically for better maintenance
-in the future.
-
-While at it fix some style issues, such as:
-  - "Say Y"/"Say yes"/"Say Yes" --> "Say Y"
-  - "pullup/pulldown" --> "pull-up and pull-down"
-  - wrong indentation
-
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
-v3: fixed more grammar issues in AMD text
-v2: rebased on top of very recent pinctrl/devel (Linus), added some grammar fixes
- drivers/pinctrl/Kconfig  | 469 +++++++++++++++++++--------------------
- drivers/pinctrl/Makefile |  47 ++--
- 2 files changed, 258 insertions(+), 258 deletions(-)
-
-diff --git a/drivers/pinctrl/Kconfig b/drivers/pinctrl/Kconfig
-index a3457a4b4d9d..c27c9ee89f0e 100644
---- a/drivers/pinctrl/Kconfig
-+++ b/drivers/pinctrl/Kconfig
-@@ -31,6 +31,24 @@ config DEBUG_PINCTRL
- 	help
- 	  Say Y here to add some extra checks and diagnostics to PINCTRL calls.
- 
-+config PINCTRL_AMD
-+	tristate "AMD GPIO pin control"
-+	depends on HAS_IOMEM
-+	depends on ACPI || COMPILE_TEST
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select PINMUX
-+	select PINCONF
-+	select GENERIC_PINCONF
-+	help
-+	  The driver for memory mapped GPIO functionality on AMD platforms
-+	  (x86 or arm). Most of the pins are usually muxed to some other
-+	  functionality by firmware, so only a small amount is available
-+	  for GPIO use.
-+
-+	  Requires ACPI/FDT device enumeration code to set up a platform
-+	  device.
-+
- config PINCTRL_APPLE_GPIO
- 	tristate "Apple SoC GPIO pin controller driver"
- 	depends on ARCH_APPLE
-@@ -69,20 +87,6 @@ config PINCTRL_AS3722
- 	  open drain configuration for the GPIO pins of AS3722 devices. It also
- 	  supports the GPIO functionality through gpiolib.
- 
--config PINCTRL_AXP209
--	tristate "X-Powers AXP209 PMIC pinctrl and GPIO Support"
--	depends on MFD_AXP20X
--	depends on OF
--	select PINMUX
--	select GENERIC_PINCONF
--	select GPIOLIB
--	help
--	  AXP PMICs provides multiple GPIOs that can be muxed for different
--	  functions. This driver bundles a pinctrl driver to select the function
--	  muxing and a GPIO driver to handle the GPIO when the GPIO function is
--	  selected.
--	  Say yes to enable pinctrl and GPIO support for the AXP209 PMIC
--
- config PINCTRL_AT91
- 	bool "AT91 pinctrl driver"
- 	depends on OF
-@@ -109,23 +113,19 @@ config PINCTRL_AT91PIO4
- 	  Say Y here to enable the at91 pinctrl/gpio driver for Atmel PIO4
- 	  controller available on sama5d2 SoC.
- 
--config PINCTRL_AMD
--	tristate "AMD GPIO pin control"
--	depends on HAS_IOMEM
--	depends on ACPI || COMPILE_TEST
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
-+config PINCTRL_AXP209
-+	tristate "X-Powers AXP209 PMIC pinctrl and GPIO Support"
-+	depends on MFD_AXP20X
-+	depends on OF
- 	select PINMUX
--	select PINCONF
- 	select GENERIC_PINCONF
-+	select GPIOLIB
- 	help
--	  driver for memory mapped GPIO functionality on AMD platforms
--	  (x86 or arm).Most pins are usually muxed to some other
--	  functionality by firmware,so only a small amount is available
--	  for gpio use.
--
--	  Requires ACPI/FDT device enumeration code to set up a platform
--	  device.
-+	  AXP PMICs provides multiple GPIOs that can be muxed for different
-+	  functions. This driver bundles a pinctrl driver to select the function
-+	  muxing and a GPIO driver to handle the GPIO when the GPIO function is
-+	  selected.
-+	  Say Y to enable pinctrl and GPIO support for the AXP209 PMIC.
- 
- config PINCTRL_BM1880
- 	bool "Bitmain BM1880 Pinctrl driver"
-@@ -136,13 +136,13 @@ config PINCTRL_BM1880
- 	  Pinctrl driver for Bitmain BM1880 SoC.
- 
- config PINCTRL_DA850_PUPD
--	tristate "TI DA850/OMAP-L138/AM18XX pullup/pulldown groups"
-+	tristate "TI DA850/OMAP-L138/AM18XX pull-up and pull-down groups"
- 	depends on OF && (ARCH_DAVINCI_DA850 || COMPILE_TEST)
- 	select PINCONF
- 	select GENERIC_PINCONF
- 	help
- 	  Driver for TI DA850/OMAP-L138/AM18XX pinconf. Used to control
--	  pullup/pulldown pin groups.
-+	  pull-up and pull-down pin groups.
- 
- config PINCTRL_DA9062
- 	tristate "Dialog Semiconductor DA9062 PMIC pinctrl and GPIO Support"
-@@ -154,7 +154,7 @@ config PINCTRL_DA9062
- 	  function muxing and a GPIO driver to handle the GPIO when the GPIO
- 	  function is selected.
- 
--	  Say yes to enable pinctrl and GPIO support for the DA9062 PMIC.
-+	  Say Y to enable pinctrl and GPIO support for the DA9062 PMIC.
- 
- config PINCTRL_DIGICOLOR
- 	bool
-@@ -162,12 +162,93 @@ config PINCTRL_DIGICOLOR
- 	select PINMUX
- 	select GENERIC_PINCONF
- 
-+config PINCTRL_EQUILIBRIUM
-+	tristate "Generic pinctrl and GPIO driver for Intel Lightning Mountain SoC"
-+	depends on OF && HAS_IOMEM
-+	depends on X86 || COMPILE_TEST
-+	select PINMUX
-+	select PINCONF
-+	select GPIOLIB
-+	select GPIO_GENERIC
-+	select GPIOLIB_IRQCHIP
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	help
-+	  Equilibrium driver is a pinctrl and GPIO driver for Intel Lightning
-+	  Mountain network processor SoC that supports both the GPIO and pin
-+	  control frameworks. It provides interfaces to setup pin muxing, assign
-+	  desired pin functions, configure GPIO attributes for LGM SoC pins.
-+	  Pin muxing and pin config settings are retrieved from device tree.
-+
-+config PINCTRL_GEMINI
-+	bool
-+	depends on ARCH_GEMINI
-+	default ARCH_GEMINI
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	select MFD_SYSCON
-+
-+config PINCTRL_INGENIC
-+	bool "Pinctrl driver for the Ingenic JZ47xx SoCs"
-+	default MACH_INGENIC
-+	depends on OF
-+	depends on MIPS || COMPILE_TEST
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select REGMAP_MMIO
-+
-+config PINCTRL_K210
-+	bool "Pinctrl driver for the Canaan Kendryte K210 SoC"
-+	depends on RISCV && SOC_CANAAN && OF
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select GENERIC_PINCONF
-+	select GPIOLIB
-+	select OF_GPIO
-+	select REGMAP_MMIO
-+	default SOC_CANAAN
-+	help
-+	  Add support for the Canaan Kendryte K210 RISC-V SOC Field
-+	  Programmable IO Array (FPIOA) controller.
-+
-+config PINCTRL_KEEMBAY
-+	tristate "Pinctrl driver for Intel Keem Bay SoC"
-+	depends on ARCH_KEEMBAY || (ARM64 && COMPILE_TEST)
-+	depends on HAS_IOMEM
-+	select PINMUX
-+	select PINCONF
-+	select GENERIC_PINCONF
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
-+	select GPIOLIB
-+	select GPIOLIB_IRQCHIP
-+	select GPIO_GENERIC
-+	help
-+	  This selects pin control driver for the Intel Keem Bay SoC.
-+	  It provides pin config functions such as pull-up, pull-down,
-+	  interrupt, drive strength, sec lock, Schmitt trigger, slew
-+	  rate control and direction control. This module will be
-+	  called as pinctrl-keembay.
-+
- config PINCTRL_LANTIQ
- 	bool
- 	depends on LANTIQ
- 	select PINMUX
- 	select PINCONF
- 
-+config PINCTRL_FALCON
-+	bool
-+	depends on SOC_FALCON
-+	depends on PINCTRL_LANTIQ
-+
-+config PINCTRL_XWAY
-+	bool
-+	depends on SOC_TYPE_XWAY
-+	depends on PINCTRL_LANTIQ
-+
- config PINCTRL_LPC18XX
- 	bool "NXP LPC18XX/43XX SCU pinctrl driver"
- 	depends on OF && (ARCH_LPC18XX || COMPILE_TEST)
-@@ -177,18 +258,16 @@ config PINCTRL_LPC18XX
- 	help
- 	  Pinctrl driver for NXP LPC18xx/43xx System Control Unit (SCU).
- 
--config PINCTRL_FALCON
--	bool
--	depends on SOC_FALCON
--	depends on PINCTRL_LANTIQ
--
--config PINCTRL_GEMINI
--	bool
--	depends on ARCH_GEMINI
--	default ARCH_GEMINI
-+config PINCTRL_MAX77620
-+	tristate "MAX77620/MAX20024 Pincontrol support"
-+	depends on MFD_MAX77620 && OF
- 	select PINMUX
- 	select GENERIC_PINCONF
--	select MFD_SYSCON
-+	help
-+	  Say Y here to enable Pin control support for Maxim MAX77620 PMIC.
-+	  This PMIC has 8 GPIO pins that work as GPIO as well as special
-+	  function in alternate mode. This driver also configure push-pull,
-+	  open drain, FPS slots etc.
- 
- config PINCTRL_MCP23S08_I2C
- 	tristate
-@@ -212,99 +291,47 @@ config PINCTRL_MCP23S08
- 	  This provides a GPIO interface supporting inputs and outputs and a
- 	  corresponding interrupt-controller.
- 
--config PINCTRL_OXNAS
--	bool
-+config PINCTRL_MICROCHIP_SGPIO
-+	bool "Pinctrl driver for Microsemi/Microchip Serial GPIO"
- 	depends on OF
--	select PINMUX
--	select PINCONF
--	select GENERIC_PINCONF
-+	depends on HAS_IOMEM
- 	select GPIOLIB
--	select OF_GPIO
- 	select GPIOLIB_IRQCHIP
--	select MFD_SYSCON
--
--config PINCTRL_ROCKCHIP
--	tristate "Rockchip gpio and pinctrl driver"
--	depends on ARCH_ROCKCHIP || COMPILE_TEST
--	depends on OF
--	select GPIOLIB
--	select PINMUX
- 	select GENERIC_PINCONF
--	select GENERIC_IRQ_CHIP
--	select MFD_SYSCON
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
- 	select OF_GPIO
--	default ARCH_ROCKCHIP
- 	help
--          This support pinctrl and gpio driver for Rockchip SoCs.
-+	  Support for the serial GPIO interface used on Microsemi and
-+	  Microchip SoCs. By using a serial interface, the SIO
-+	  controller significantly extends the number of available
-+	  GPIOs with a minimum number of additional pins on the
-+	  device. The primary purpose of the SIO controller is to
-+	  connect control signals from SFP modules and to act as an
-+	  LED controller.
- 
--config PINCTRL_SINGLE
--	tristate "One-register-per-pin type device tree based pinctrl driver"
-+config PINCTRL_OCELOT
-+	bool "Pinctrl driver for the Microsemi Ocelot and Jaguar2 SoCs"
- 	depends on OF
- 	depends on HAS_IOMEM
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--	select GENERIC_PINCONF
--	help
--	  This selects the device tree based generic pinctrl driver.
--
--config PINCTRL_SX150X
--	bool "Semtech SX150x I2C GPIO expander pinctrl driver"
--	depends on I2C=y
--	select PINMUX
--	select PINCONF
--	select GENERIC_PINCONF
- 	select GPIOLIB
- 	select GPIOLIB_IRQCHIP
--	select REGMAP
--	help
--	  Say yes here to provide support for Semtech SX150x-series I2C
--	  GPIO expanders as pinctrl module.
--	  Compatible models include:
--	  - 8 bits:  sx1508q, sx1502q
--	  - 16 bits: sx1509q, sx1506q
--
--config PINCTRL_PISTACHIO
--	bool "IMG Pistachio SoC pinctrl driver"
--	depends on OF && (MIPS || COMPILE_TEST)
--	depends on GPIOLIB
--	select PINMUX
- 	select GENERIC_PINCONF
--	select GPIOLIB_IRQCHIP
-+	select GENERIC_PINCTRL_GROUPS
-+	select GENERIC_PINMUX_FUNCTIONS
- 	select OF_GPIO
--    help
--	  This support pinctrl and gpio driver for IMG Pistachio SoC.
-+	select REGMAP_MMIO
- 
--config PINCTRL_ST
-+config PINCTRL_OXNAS
- 	bool
- 	depends on OF
- 	select PINMUX
- 	select PINCONF
--	select GPIOLIB_IRQCHIP
--
--config PINCTRL_STMFX
--	tristate "STMicroelectronics STMFX GPIO expander pinctrl driver"
--	depends on I2C
--	depends on OF_GPIO
- 	select GENERIC_PINCONF
-+	select GPIOLIB
-+	select OF_GPIO
- 	select GPIOLIB_IRQCHIP
--	select MFD_STMFX
--	help
--	  Driver for STMicroelectronics Multi-Function eXpander (STMFX)
--	  GPIO expander.
--	  This provides a GPIO interface supporting inputs and outputs,
--	  and configuring push-pull, open-drain, and can also be used as
--	  interrupt-controller.
--
--config PINCTRL_MAX77620
--	tristate "MAX77620/MAX20024 Pincontrol support"
--	depends on MFD_MAX77620 && OF
--	select PINMUX
--	select GENERIC_PINCONF
--	help
--	  Say Yes here to enable Pin control support for Maxim PMIC MAX77620.
--	  This PMIC has 8 GPIO pins that work as GPIO as well as special
--	  function in alternate mode. This driver also configure push-pull,
--	  open drain, FPS slots etc.
-+	select MFD_SYSCON
- 
- config PINCTRL_PALMAS
- 	tristate "Pinctrl driver for the PALMAS Series MFD devices"
-@@ -334,41 +361,16 @@ config PINCTRL_PIC32MZDA
- 	def_bool y if PIC32MZDA
- 	select PINCTRL_PIC32
- 
--config PINCTRL_ZYNQ
--	bool "Pinctrl driver for Xilinx Zynq"
--	depends on ARCH_ZYNQ
--	select PINMUX
--	select GENERIC_PINCONF
--	help
--	  This selects the pinctrl driver for Xilinx Zynq.
--
--config PINCTRL_ZYNQMP
--	tristate "Pinctrl driver for Xilinx ZynqMP"
--	depends on ZYNQMP_FIRMWARE
-+config PINCTRL_PISTACHIO
-+	bool "IMG Pistachio SoC pinctrl driver"
-+	depends on OF && (MIPS || COMPILE_TEST)
-+	depends on GPIOLIB
- 	select PINMUX
- 	select GENERIC_PINCONF
--	default ZYNQMP_FIRMWARE
--	help
--	  This selects the pinctrl driver for Xilinx ZynqMP platform.
--	  This driver will query the pin information from the firmware
--	  and allow configuring the pins.
--	  Configuration can include the mux function to select on those
--	  pin(s)/group(s), and various pin configuration parameters
--	  such as pull-up, slew rate, etc.
--	  This driver can also be built as a module. If so, the module
--	  will be called pinctrl-zynqmp.
--
--config PINCTRL_INGENIC
--	bool "Pinctrl driver for the Ingenic JZ47xx SoCs"
--	default MACH_INGENIC
--	depends on OF
--	depends on MIPS || COMPILE_TEST
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--	select GPIOLIB
- 	select GPIOLIB_IRQCHIP
--	select REGMAP_MMIO
-+	select OF_GPIO
-+	help
-+	  This support pinctrl and GPIO driver for IMG Pistachio SoC.
- 
- config PINCTRL_RK805
- 	tristate "Pinctrl and GPIO driver for RK805 PMIC"
-@@ -379,53 +381,75 @@ config PINCTRL_RK805
- 	help
- 	  This selects the pinctrl driver for RK805.
- 
--config PINCTRL_OCELOT
--	bool "Pinctrl driver for the Microsemi Ocelot and Jaguar2 SoCs"
-+config PINCTRL_ROCKCHIP
-+	tristate "Rockchip gpio and pinctrl driver"
-+	depends on ARCH_ROCKCHIP || COMPILE_TEST
- 	depends on OF
--	depends on HAS_IOMEM
- 	select GPIOLIB
--	select GPIOLIB_IRQCHIP
-+	select PINMUX
- 	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
-+	select GENERIC_IRQ_CHIP
-+	select MFD_SYSCON
- 	select OF_GPIO
--	select REGMAP_MMIO
-+	default ARCH_ROCKCHIP
-+	help
-+          This support pinctrl and GPIO driver for Rockchip SoCs.
- 
--config PINCTRL_MICROCHIP_SGPIO
--	bool "Pinctrl driver for Microsemi/Microchip Serial GPIO"
-+config PINCTRL_SINGLE
-+	tristate "One-register-per-pin type device tree based pinctrl driver"
- 	depends on OF
- 	depends on HAS_IOMEM
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
--	select GENERIC_PINCONF
- 	select GENERIC_PINCTRL_GROUPS
- 	select GENERIC_PINMUX_FUNCTIONS
--	select OF_GPIO
-+	select GENERIC_PINCONF
- 	help
--	  Support for the serial GPIO interface used on Microsemi and
--	  Microchip SoC's. By using a serial interface, the SIO
--	  controller significantly extends the number of available
--	  GPIOs with a minimum number of additional pins on the
--	  device. The primary purpose of the SIO controller is to
--	  connect control signals from SFP modules and to act as an
--	  LED controller.
-+	  This selects the device tree based generic pinctrl driver.
- 
--config PINCTRL_K210
--	bool "Pinctrl driver for the Canaan Kendryte K210 SoC"
--	depends on RISCV && SOC_CANAAN && OF
--	select GENERIC_PINMUX_FUNCTIONS
-+config PINCTRL_ST
-+	bool
-+	depends on OF
-+	select PINMUX
-+	select PINCONF
-+	select GPIOLIB_IRQCHIP
-+
-+config PINCTRL_STMFX
-+	tristate "STMicroelectronics STMFX GPIO expander pinctrl driver"
-+	depends on I2C
-+	depends on OF_GPIO
-+	select GENERIC_PINCONF
-+	select GPIOLIB_IRQCHIP
-+	select MFD_STMFX
-+	help
-+	  Driver for STMicroelectronics Multi-Function eXpander (STMFX)
-+	  GPIO expander.
-+	  This provides a GPIO interface supporting inputs and outputs,
-+	  and configuring push-pull, open-drain, and can also be used as
-+	  interrupt-controller.
-+
-+config PINCTRL_SX150X
-+	bool "Semtech SX150x I2C GPIO expander pinctrl driver"
-+	depends on I2C=y
-+	select PINMUX
-+	select PINCONF
- 	select GENERIC_PINCONF
- 	select GPIOLIB
--	select OF_GPIO
--	select REGMAP_MMIO
--	default SOC_CANAAN
-+	select GPIOLIB_IRQCHIP
-+	select REGMAP
- 	help
--	  Add support for the Canaan Kendryte K210 RISC-V SOC Field
--	  Programmable IO Array (FPIOA) controller.
-+	  Say Y here to provide support for Semtech SX150x-series I2C
-+	  GPIO expanders as pinctrl module.
-+	  Compatible models include:
-+	  - 8 bits:  sx1508q, sx1502q
-+	  - 16 bits: sx1509q, sx1506q
- 
--config PINCTRL_KEEMBAY
--	tristate "Pinctrl driver for Intel Keem Bay SoC"
--	depends on ARCH_KEEMBAY || (ARM64 && COMPILE_TEST)
-+config PINCTRL_TB10X
-+	bool
-+	depends on OF && ARC_PLAT_TB10X
-+	select GPIOLIB
-+
-+config PINCTRL_THUNDERBAY
-+	tristate "Generic pinctrl and GPIO driver for Intel Thunder Bay SoC"
-+	depends on ARCH_THUNDERBAY || (ARM64 && COMPILE_TEST)
- 	depends on HAS_IOMEM
- 	select PINMUX
- 	select PINCONF
-@@ -436,18 +460,45 @@ config PINCTRL_KEEMBAY
- 	select GPIOLIB_IRQCHIP
- 	select GPIO_GENERIC
- 	help
--	  This selects pin control driver for the Intel Keembay SoC.
--	  It provides pin config functions such as pullup, pulldown,
--	  interrupt, drive strength, sec lock, schmitt trigger, slew
-+	  This selects pin control driver for the Intel Thunder Bay SoC.
-+	  It provides pin config functions such as pull-up, pull-down,
-+	  interrupt, drive strength, sec lock, Schmitt trigger, slew
- 	  rate control and direction control. This module will be
--	  called as pinctrl-keembay.
-+	  called as pinctrl-thunderbay.
-+
-+config PINCTRL_ZYNQ
-+	bool "Pinctrl driver for Xilinx Zynq"
-+	depends on ARCH_ZYNQ
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	help
-+	  This selects the pinctrl driver for Xilinx Zynq.
-+
-+config PINCTRL_ZYNQMP
-+	tristate "Pinctrl driver for Xilinx ZynqMP"
-+	depends on ZYNQMP_FIRMWARE
-+	select PINMUX
-+	select GENERIC_PINCONF
-+	default ZYNQMP_FIRMWARE
-+	help
-+	  This selects the pinctrl driver for Xilinx ZynqMP platform.
-+	  This driver will query the pin information from the firmware
-+	  and allow configuring the pins.
-+	  Configuration can include the mux function to select on those
-+	  pin(s)/group(s), and various pin configuration parameters
-+	  such as pull-up, slew rate, etc.
-+	  This driver can also be built as a module. If so, the module
-+	  will be called pinctrl-zynqmp.
- 
- source "drivers/pinctrl/actions/Kconfig"
- source "drivers/pinctrl/aspeed/Kconfig"
- source "drivers/pinctrl/bcm/Kconfig"
- source "drivers/pinctrl/berlin/Kconfig"
-+source "drivers/pinctrl/cirrus/Kconfig"
- source "drivers/pinctrl/freescale/Kconfig"
- source "drivers/pinctrl/intel/Kconfig"
-+source "drivers/pinctrl/mediatek/Kconfig"
-+source "drivers/pinctrl/meson/Kconfig"
- source "drivers/pinctrl/mvebu/Kconfig"
- source "drivers/pinctrl/nomadik/Kconfig"
- source "drivers/pinctrl/nuvoton/Kconfig"
-@@ -463,59 +514,7 @@ source "drivers/pinctrl/sunxi/Kconfig"
- source "drivers/pinctrl/tegra/Kconfig"
- source "drivers/pinctrl/ti/Kconfig"
- source "drivers/pinctrl/uniphier/Kconfig"
--source "drivers/pinctrl/vt8500/Kconfig"
--source "drivers/pinctrl/mediatek/Kconfig"
--source "drivers/pinctrl/meson/Kconfig"
--source "drivers/pinctrl/cirrus/Kconfig"
- source "drivers/pinctrl/visconti/Kconfig"
--
--config PINCTRL_XWAY
--	bool
--	depends on SOC_TYPE_XWAY
--	depends on PINCTRL_LANTIQ
--
--config PINCTRL_TB10X
--	bool
--	depends on OF && ARC_PLAT_TB10X
--	select GPIOLIB
--
--config PINCTRL_EQUILIBRIUM
--	tristate "Generic pinctrl and GPIO driver for Intel Lightning Mountain SoC"
--	depends on OF && HAS_IOMEM
--	depends on X86 || COMPILE_TEST
--	select PINMUX
--	select PINCONF
--	select GPIOLIB
--	select GPIO_GENERIC
--	select GPIOLIB_IRQCHIP
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--
--	help
--	  Equilibrium pinctrl driver is a pinctrl & GPIO driver for Intel Lightning
--	  Mountain network processor SoC that supports both the linux GPIO and pin
--	  control frameworks. It provides interfaces to setup pinmux, assign desired
--	  pin functions, configure GPIO attributes for LGM SoC pins. Pinmux and
--	  pinconf settings are retrieved from device tree.
--
--config PINCTRL_THUNDERBAY
--	tristate "Generic pinctrl and GPIO driver for Intel Thunder Bay SoC"
--	depends on ARCH_THUNDERBAY || (ARM64 && COMPILE_TEST)
--	depends on HAS_IOMEM
--	select PINMUX
--	select PINCONF
--	select GENERIC_PINCONF
--	select GENERIC_PINCTRL_GROUPS
--	select GENERIC_PINMUX_FUNCTIONS
--	select GPIOLIB
--	select GPIOLIB_IRQCHIP
--	select GPIO_GENERIC
--	help
--	  This selects pin control driver for the Intel Thunder Bay SoC.
--	  It provides pin config functions such as pullup, pulldown,
--	  interrupt, drive strength, sec lock, schmitt trigger, slew
--	  rate control and direction control. This module will be
--	  called as pinctrl-thunderbay.
-+source "drivers/pinctrl/vt8500/Kconfig"
- 
- endif
-diff --git a/drivers/pinctrl/Makefile b/drivers/pinctrl/Makefile
-index 0d5744e7f8fb..6be6c3fc6663 100644
---- a/drivers/pinctrl/Makefile
-+++ b/drivers/pinctrl/Makefile
-@@ -6,57 +6,59 @@ subdir-ccflags-$(CONFIG_DEBUG_PINCTRL)	+= -DDEBUG
- obj-y				+= core.o pinctrl-utils.o
- obj-$(CONFIG_PINMUX)		+= pinmux.o
- obj-$(CONFIG_PINCONF)		+= pinconf.o
--obj-$(CONFIG_OF)		+= devicetree.o
- obj-$(CONFIG_GENERIC_PINCONF)	+= pinconf-generic.o
-+obj-$(CONFIG_OF)		+= devicetree.o
-+
-+obj-$(CONFIG_PINCTRL_AMD)	+= pinctrl-amd.o
- obj-$(CONFIG_PINCTRL_APPLE_GPIO) += pinctrl-apple-gpio.o
- obj-$(CONFIG_PINCTRL_ARTPEC6)	+= pinctrl-artpec6.o
- obj-$(CONFIG_PINCTRL_AS3722)	+= pinctrl-as3722.o
--obj-$(CONFIG_PINCTRL_AXP209)	+= pinctrl-axp209.o
- obj-$(CONFIG_PINCTRL_AT91)	+= pinctrl-at91.o
- obj-$(CONFIG_PINCTRL_AT91PIO4)	+= pinctrl-at91-pio4.o
--obj-$(CONFIG_PINCTRL_AMD)	+= pinctrl-amd.o
-+obj-$(CONFIG_PINCTRL_AXP209)	+= pinctrl-axp209.o
- obj-$(CONFIG_PINCTRL_BM1880)	+= pinctrl-bm1880.o
- obj-$(CONFIG_PINCTRL_DA850_PUPD) += pinctrl-da850-pupd.o
- obj-$(CONFIG_PINCTRL_DA9062)	+= pinctrl-da9062.o
- obj-$(CONFIG_PINCTRL_DIGICOLOR)	+= pinctrl-digicolor.o
--obj-$(CONFIG_PINCTRL_FALCON)	+= pinctrl-falcon.o
-+obj-$(CONFIG_PINCTRL_EQUILIBRIUM)   += pinctrl-equilibrium.o
- obj-$(CONFIG_PINCTRL_GEMINI)	+= pinctrl-gemini.o
-+obj-$(CONFIG_PINCTRL_INGENIC)	+= pinctrl-ingenic.o
-+obj-$(CONFIG_PINCTRL_K210)	+= pinctrl-k210.o
-+obj-$(CONFIG_PINCTRL_KEEMBAY)	+= pinctrl-keembay.o
-+obj-$(CONFIG_PINCTRL_LANTIQ)	+= pinctrl-lantiq.o
-+obj-$(CONFIG_PINCTRL_FALCON)	+= pinctrl-falcon.o
-+obj-$(CONFIG_PINCTRL_XWAY)	+= pinctrl-xway.o
-+obj-$(CONFIG_PINCTRL_LPC18XX)	+= pinctrl-lpc18xx.o
- obj-$(CONFIG_PINCTRL_MAX77620)	+= pinctrl-max77620.o
- obj-$(CONFIG_PINCTRL_MCP23S08_I2C)	+= pinctrl-mcp23s08_i2c.o
- obj-$(CONFIG_PINCTRL_MCP23S08_SPI)	+= pinctrl-mcp23s08_spi.o
- obj-$(CONFIG_PINCTRL_MCP23S08)	+= pinctrl-mcp23s08.o
--obj-$(CONFIG_PINCTRL_MESON)	+= meson/
-+obj-$(CONFIG_PINCTRL_MICROCHIP_SGPIO)	+= pinctrl-microchip-sgpio.o
-+obj-$(CONFIG_PINCTRL_OCELOT)	+= pinctrl-ocelot.o
- obj-$(CONFIG_PINCTRL_OXNAS)	+= pinctrl-oxnas.o
- obj-$(CONFIG_PINCTRL_PALMAS)	+= pinctrl-palmas.o
- obj-$(CONFIG_PINCTRL_PIC32)	+= pinctrl-pic32.o
- obj-$(CONFIG_PINCTRL_PISTACHIO)	+= pinctrl-pistachio.o
-+obj-$(CONFIG_PINCTRL_RK805)	+= pinctrl-rk805.o
- obj-$(CONFIG_PINCTRL_ROCKCHIP)	+= pinctrl-rockchip.o
- obj-$(CONFIG_PINCTRL_SINGLE)	+= pinctrl-single.o
-+obj-$(CONFIG_PINCTRL_STMFX) 	+= pinctrl-stmfx.o
-+obj-$(CONFIG_PINCTRL_ST) 	+= pinctrl-st.o
- obj-$(CONFIG_PINCTRL_SX150X)	+= pinctrl-sx150x.o
--obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
--obj-$(CONFIG_PINCTRL_XWAY)	+= pinctrl-xway.o
--obj-$(CONFIG_PINCTRL_LANTIQ)	+= pinctrl-lantiq.o
--obj-$(CONFIG_PINCTRL_LPC18XX)	+= pinctrl-lpc18xx.o
- obj-$(CONFIG_PINCTRL_TB10X)	+= pinctrl-tb10x.o
--obj-$(CONFIG_PINCTRL_ST) 	+= pinctrl-st.o
--obj-$(CONFIG_PINCTRL_STMFX) 	+= pinctrl-stmfx.o
--obj-$(CONFIG_PINCTRL_ZYNQ)	+= pinctrl-zynq.o
--obj-$(CONFIG_PINCTRL_ZYNQMP)	+= pinctrl-zynqmp.o
--obj-$(CONFIG_PINCTRL_INGENIC)	+= pinctrl-ingenic.o
--obj-$(CONFIG_PINCTRL_RK805)	+= pinctrl-rk805.o
--obj-$(CONFIG_PINCTRL_OCELOT)	+= pinctrl-ocelot.o
--obj-$(CONFIG_PINCTRL_MICROCHIP_SGPIO)	+= pinctrl-microchip-sgpio.o
--obj-$(CONFIG_PINCTRL_EQUILIBRIUM)   += pinctrl-equilibrium.o
--obj-$(CONFIG_PINCTRL_K210)	+= pinctrl-k210.o
--obj-$(CONFIG_PINCTRL_KEEMBAY)	+= pinctrl-keembay.o
- obj-$(CONFIG_PINCTRL_THUNDERBAY) += pinctrl-thunderbay.o
-+obj-$(CONFIG_PINCTRL_ZYNQMP)	+= pinctrl-zynqmp.o
-+obj-$(CONFIG_PINCTRL_ZYNQ)	+= pinctrl-zynq.o
- 
- obj-y				+= actions/
- obj-$(CONFIG_ARCH_ASPEED)	+= aspeed/
- obj-y				+= bcm/
- obj-$(CONFIG_PINCTRL_BERLIN)	+= berlin/
-+obj-y				+= cirrus/
- obj-y				+= freescale/
- obj-$(CONFIG_X86)		+= intel/
-+obj-y				+= mediatek/
-+obj-$(CONFIG_PINCTRL_MESON)	+= meson/
- obj-y				+= mvebu/
- obj-y				+= nomadik/
- obj-$(CONFIG_ARCH_NPCM7XX)	+= nuvoton/
-@@ -69,9 +71,8 @@ obj-$(CONFIG_PINCTRL_SPEAR)	+= spear/
- obj-y				+= sprd/
- obj-$(CONFIG_PINCTRL_STM32)	+= stm32/
- obj-$(CONFIG_PINCTRL_SUNXI)	+= sunxi/
-+obj-$(CONFIG_ARCH_TEGRA)	+= tegra/
- obj-y				+= ti/
- obj-$(CONFIG_PINCTRL_UNIPHIER)	+= uniphier/
--obj-$(CONFIG_ARCH_VT8500)	+= vt8500/
--obj-y				+= mediatek/
--obj-y				+= cirrus/
- obj-$(CONFIG_PINCTRL_VISCONTI)	+= visconti/
-+obj-$(CONFIG_ARCH_VT8500)	+= vt8500/
--- 
-2.33.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCAyMDIxLTEyLTA4IGF0IDExOjE4ICswMTAwLCBQYWxpIFJvaMOhciB3cm90ZToNCj4g
+T24gV2VkbmVzZGF5IDA4IERlY2VtYmVyIDIwMjEgMTQ6MDc6NTcgcWl6aG9uZy5jaGVuZyB3cm90
+ZToNCj4gPiBPbiBUdWUsIDIwMjEtMTItMDcgYXQgMjI6MTIgLTA2MDAsIEJqb3JuIEhlbGdhYXMg
+d3JvdGU6DQo+ID4gPiBPbiBUdWUsIERlYyAwNywgMjAyMSBhdCAxMDowMDo0M1BNICswMTAwLCBN
+YXJrIEtldHRlbmlzIHdyb3RlOg0KPiA+ID4gPiA+IERhdGU6IFR1ZSwgNyBEZWMgMjAyMSAxMTo1
+NDoxNiAtMDYwMA0KPiA+ID4gPiA+IEZyb206IEJqb3JuIEhlbGdhYXMgPGhlbGdhYXNAa2VybmVs
+Lm9yZz4NCj4gPiA+ID4gPiANCj4gPiA+ID4gPiBbK2NjIE1hcmMsIEFseXNzYSwgTWFyaywgTHVj
+YSBmb3IgcmVzZXQgdGltaW5nIHF1ZXN0aW9uc10NCj4gPiA+ID4gDQo+ID4gPiA+IEhpIEJqb3Ju
+LA0KPiA+ID4gPiANCj4gPiA+ID4gPiBPbiBUdWUsIERlYyAwNywgMjAyMSBhdCAwNDo0MTo1M1BN
+ICswODAwLCBxaXpob25nIGNoZW5nDQo+ID4gPiA+ID4gd3JvdGU6DQo+ID4gPiA+ID4gPiBEZXNj
+cmliZWQgaW4gUENJZSBDRU0gc3BlY2lmaWNhdGlvbiBzZWN0aW9ucyAyLjIgKFBFUlNUIw0KPiA+
+ID4gPiA+ID4gU2lnbmFsKSBhbmQNCj4gPiA+ID4gPiA+IDIuMi4xIChJbml0aWFsIFBvd2VyLVVw
+IChHMyB0byBTMCkpLiBUaGUgZGVhc3NlcnRpb24gb2YNCj4gPiA+ID4gPiA+IFBFUlNUIw0KPiA+
+ID4gPiA+ID4gc2hvdWxkDQo+ID4gPiA+ID4gPiBiZSBkZWxheWVkIDEwMG1zIChUUFZQRVJMKSBm
+b3IgdGhlIHBvd2VyIGFuZCBjbG9jayB0bw0KPiA+ID4gPiA+ID4gYmVjb21lDQo+ID4gPiA+ID4g
+PiBzdGFibGUuDQo+ID4gPiA+ID4gPiANCj4gPiA+ID4gPiA+IFNpZ25lZC1vZmYtYnk6IHFpemhv
+bmcgY2hlbmcgPHFpemhvbmcuY2hlbmdAbWVkaWF0ZWsuY29tPg0KPiA+ID4gPiA+ID4gQWNrZWQt
+Ynk6IFBhbGkgUm9ow6FyIDxwYWxpQGtlcm5lbC5vcmc+DQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4g
+Li4uDQo+ID4gDQo+ID4gMSkNCj4gPiAyKQ0KPiA+IFRoYW5rcyBmb3IgeW91ciByZW1pbmRpbmcg
+YW5kIHN1Z2dlc3Rpb24uDQo+ID4gDQo+ID4gPiA+ID4gMykgTW9zdCBpbXBvcnRhbnRseSwgdGhp
+cyBuZWVkcyB0byBiZSByZWNvbmNpbGVkIHdpdGggdGhlDQo+ID4gPiA+ID4gc2ltaWxhcg0KPiA+
+ID4gPiA+IGNoYW5nZSB0byB0aGUgYXBwbGUgZHJpdmVyOg0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+
+ICAgDQo+ID4gPiA+ID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8yMDIxMTEyMzE4MDYzNi44
+MDU1OC0yLW1hekBrZXJuZWwub3JnDQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gSW4gdGhlIGFwcGxl
+IGRyaXZlciwgd2UncmUgZG9pbmc6DQo+ID4gPiA+ID4gDQo+ID4gPiA+ID4gICAtIEFzc2VydCBQ
+RVJTVCMNCj4gPiA+ID4gPiAgIC0gU2V0IHVwIFJFRkNMSw0KPiA+ID4gPiA+ICAgLSBTbGVlcCAx
+MDB1cyAoVF9wZXJzdC1jbGssIENFTSByNSAyLjIsIDIuOS4yKQ0KPiA+ID4gPiA+ICAgLSBEZWFz
+c2VydCBQRVJTVCMNCj4gPiA+ID4gPiAgIC0gU2xlZXAgMTAwbXMgKG5vdCBzdXJlIHRoZXJlJ3Mg
+YSBuYW1lPyBQQ0llIHI1IDYuNi4xKQ0KPiA+ID4gPiA+IA0KPiA+ID4gPiA+IEJ1dCBoZXJlIGlu
+IG1lZGlhdGVrLCB3ZSdyZSBkb2luZzoNCj4gPiA+ID4gPiANCj4gPiA+ID4gPiAgIC0gQXNzZXJ0
+IFBFUlNUIw0KPiA+ID4gPiA+ICAgLSBTbGVlcCAxMDBtcyAoVF9wdnBlcmwsIENFTSByNSAyLjIs
+IDIuMi4xLCAyLjkuMikNCj4gPiA+ID4gPiAgIC0gRGVhc3NlcnQgUEVSU1QjDQo+ID4gPiA+ID4g
+DQo+ID4gPiA+ID4gTXkgcXVlc3Rpb25zOg0KPiA+ID4gPiANCj4gPiA+ID4gTXkgdW5kZXJzdGFu
+ZGluZyBvZiB0aGUgdGhlIEFwcGxlIFBDSWUgaGFyZHdhcmUgaXMgc29tZXdoYXQNCj4gPiA+ID4g
+bGltaXRlZA0KPiA+ID4gPiBidXQ6DQo+ID4gPiA+IA0KPiA+ID4gPiA+ICAgLSBXaGVyZSBkb2Vz
+IGFwcGxlIGVuZm9yY2UgVF9wdnBlcmw/ICBJIGNhbid0IHRlbGwgd2hlcmUNCj4gPiA+ID4gPiBw
+b3dlcg0KPiA+ID4gPiA+IHRvDQo+ID4gPiA+ID4gICAgIHRoZSBzbG90IGlzIHR1cm5lZCBvbi4N
+Cj4gPiA+ID4gDQo+ID4gPiA+IFNvIGZhciBhbGwgYXZhaWxhYmxlIG1hY2hpbmVzIG9ubHkgaGF2
+ZSBQQ0llIGRldmljZXMgdGhhdCBhcmUNCj4gPiA+ID4gc29sZGVyZWQNCj4gPiA+ID4gb250byB0
+aGUgbW90aGVyYm9hcmQsIHNvIHRoZXJlIGFyZSBubyAicmVhbCIgc2xvdHMuICBBcyBmYXIgYXMN
+Cj4gPiA+ID4gd2UNCj4gPiA+ID4gY2FuDQo+ID4gPiA+IHRlbGwgdGhlIFBDSWUgcG93ZXIgZG9t
+YWluIGlzIGFscmVhZHkgcG93ZXJlZCBvbiBhdCB0aGUgcG9pbnQNCj4gPiA+ID4gd2hlcmUNCj4g
+PiA+ID4gdGhlIG0xbjEgYm9vdGxvYWRlciB0YWtlcyBjb250cm9sLiAgVGhlcmUgaXMgYSBHUElP
+IHRoYXQNCj4gPiA+ID4gY29udHJvbHMNCj4gPiA+ID4gcG93ZXIgdG8gc29tZSBkZXZpY2VzIChX
+aUZpLCBTREhDIG9uIHRoZSBNMSBQcm8vTWF4IGxhcHRvcHMpDQo+ID4gPiA+IGFuZA0KPiA+ID4g
+PiB0aG9zZQ0KPiA+ID4gPiBkZXZpY2VzIGFyZSBpbml0aWFsbHkgcG93ZXJlZCBvZmYuICBUaGUg
+TGludXggZHJpdmVyIGRvZXNuJ3QNCj4gPiA+ID4gY3VycmVudGx5DQo+ID4gPiA+IGF0dGVtcHQg
+dG8gcG93ZXIgdGhlc2UgZGV2aWNlcyBvbiwgYnV0IFUtQm9vdCB3aWxsIHBvd2VyIHRoZW0NCj4g
+PiA+ID4gb24gaWYNCj4gPiA+ID4gdGhlIGFwcHJvcHJpYXRlIEdQSU8gaXMgZGVmaW5lZCBpbiB0
+aGUgZGV2aWNlIHRyZWUuICBUaGUgd2F5DQo+ID4gPiA+IHRoaXMNCj4gPiA+ID4gaXMNCj4gPiA+
+ID4gc3BlY2lmaWVkIGluIHRoZSBkZXZpY2UgdHJlZSBpcyBzdGlsbCB1bmRlciBkaXNjdXNzaW9u
+Lg0KPiA+ID4gDQo+ID4gPiBEb2VzIHRoaXMgbWVhbiB3ZSBiYXNpY2FsbHkgYXNzdW1lIHRoYXQg
+bTFuMSBhbmQgZWFybHkgTGludXggYm9vdA0KPiA+ID4gdGFrZXMgYXQgbGVhc3QgdGhlIDEwMG1z
+IFRfcHZwZXJsIHJlcXVpcmVkIGJ5IENFTSBzZWMgMi4yLCBidXQgd2UNCj4gPiA+IHRha2UNCj4g
+PiA+IHBhaW5zIHRvIGRlbGF5IHRoZSAxMDB1cyBUX3BlcnN0LWNsaz8gIFRoYXQgc2VlbXMgYSBs
+aXR0bGUgd2VpcmQsDQo+ID4gPiBidXQNCj4gPiA+IEkgZ3Vlc3MgaXQgaXMgY2xlYXIgdGhhdCBS
+RUZDTEsgaXMgKm5vdCogZW5hYmxlZCBiZWZvcmUgd2UgZW5hYmxlDQo+ID4gPiBpdCwNCj4gPiA+
+IHNvIHdlIGRvIG5lZWQgYXQgbGVhc3QgdGhlIDEwMHVzIHRoZXJlLg0KPiA+ID4gDQo+ID4gPiBJ
+dCBhbHNvIG5pZ2dsZXMgYXQgbWUgYSBsaXR0bGUgdGhhdCB0aGUgc3BlYyBzYXlzIFRfcHZwZXJs
+IHN0YXJ0cw0KPiA+ID4gZnJvbQ0KPiA+ID4gKnBvd2VyIHN0YWJsZSogKG5vdCBmcm9tIHBvd2Vy
+IGVuYWJsZSkgYW5kIFRfcGVyc3QtY2xrIHN0YXJ0cw0KPiA+ID4gZnJvbQ0KPiA+ID4gKlJFRkNM
+SyBzdGFibGUqIChub3QgUkVGQ0xLIGVuYWJsZSkuICBTaW5jZSB3ZSBkb24ndCBrbm93IHRoZQ0K
+PiA+ID4gdGltZQ0KPiA+ID4gZnJvbSBlbmFibGUgdG8gc3RhYmxlLCBpdCBzZWVtcyBsaWtlIG5h
+dGl2ZSBkcml2ZXJzIHNob3VsZCBhZGQNCj4gPiA+IHNvbWUNCj4gPiA+IGNpcmN1aXQtc3BlY2lm
+aWMgY29uc3RhbnRzIHRvIHRoZSBzcGVjIHZhbHVlcy4NCj4gPiA+IA0KPiA+IA0KPiA+IFJlc2V0
+IG9mIGVuZHBvaW50IGNhcmQgdmlhIFBFUlNUIyBzaWduYWwgaXMgZGVmaW5lZCBpbiBQQ0llIENF
+TSByNQ0KPiA+IDIuMjoNCj4gPiAiT24gcG93ZXItdXAsIHRoZSBkZS1hc3NlcnRpb24gb2YgUEVS
+U1QjIGlzIGRlbGF5ZWQgMTAwIG1zDQo+ID4gKFRQVlBFUkwpDQo+ID4gZnJvbSB0aGUgcG93ZXIg
+cmFpbHMgYWNoaWV2aW5nIHNwZWNpZmllZCBvcGVyYXRpbmcgbGltaXRzLiBBbHNvLA0KPiA+IHdp
+dGhpbg0KPiA+IHRoaXMgdGltZSwgdGhlIHJlZmVyZW5jZSBjbG9ja3MgKFJFRkNMSyssIFJFRkNM
+Sy0pIGFsc28gYmVjb21lDQo+ID4gc3RhYmxlLA0KPiA+IGF0IGxlYXN0IFRQRVJTVC1DTEsgYmVm
+b3JlIFBFUlNUIyBpcyBkZS1hc3NlcnRlZC4iDQo+ID4gDQo+ID4gLSBUcHZwZXJsIC0gUEVSU1Qj
+IG11c3QgcmVtYWluIGFjdGl2ZSBhdCBsZWFzdCB0aGlzIGxvbmcgYWZ0ZXINCj4gPiBwb3dlcg0K
+PiA+IGJlY29tZXMgdmFsaWQNCj4gPiANCj4gPiBJbml0aWFsaXplIHN0ZXBzIGFzIGZvbGxvd2lu
+ZyhwbGVhc2UgY29ycmVjdCBtZSBpZiBJJ20gd3JvbmcpOg0KPiA+ICAxKSBFbmFibGUgbWFpbiBw
+b3dlcg0KPiA+ICAyKSBBc3NlcnQgUEVSU1QjDQo+ID4gIDMpIFNsZWVwIDEwMG1zIChUUFZQRVJM
+LCB3aXRoaW4gdGhpcyB0aW1lLCB0aGUgUkVGQ0xLIGFuZCBwb3dlcg0KPiA+IGFsc28NCj4gPiBi
+ZWNvbWUgc3RhYmxlKShDRU0gcjUgZmlndXJlIDg6IHBvd2VyIHVwKQ0KPiA+ICA0KSBEZWFzc2Vy
+dCBQRVJTVCMNCj4gPiAgNSkgd2FpdCB1bnRpbCBsaW5rIHRyYWluaW5nIGNvbXBsZXRlcyBieSBz
+b2Z0d2FyZSBwb2xsaW5nIHRoZSBEYXRhDQo+ID4gTGluayBMYXllciBMaW5rIEFjdGl2ZSBiaXQN
+Cj4gPiAgNikgaWYgc3BlZWQgaXMgZ3JlYXRlciB0aGFuIDVHVC9zLCB3YWl0IGFub3RoZXIgMTAw
+bXMNCj4gDQo+IEhlbGxvISBBYm91dCBtb250aCBhZ28gSSB3YXMgaW52ZXN0aWdhdGluZyBjb3Jy
+ZWN0IG9yZGVyIG9mIHN0ZXBzIGFuZA0KPiBJDQo+IHdyb3RlIGVtYWlsIGFib3V0IGl0LCBwbGVh
+c2UgbG9vayBhdCBpdDoNCj4gDQpodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1wY2kvMjAy
+MTEwMjIxODM4MDguamRlbzd2bnRuYWdxa2c3Z0BwYWxpLw0KDQpIaSBQYWxpLA0KDQpUaGFua3Mg
+Zm9yIHlvdXIgaW52ZXN0aWdhdGluZy4NCk1vZGlmeSB0aGUgY29kZSB0byByZWZlciB0byB5b3Vy
+IHN0ZXBzIGFzIGZvbGxvd2luZyhwbGVhc2UgY29ycmVjdCBtZQ0KaWYgSSdtIHdyb25nKToNCjEp
+IHBjaWVfYXNzZXJ0X3Jlc2V0KCk7DQoyKSBwY2llX3Bvd2VyX29uKCk7DQozKSBwY2llX3NldHVw
+X3JlZmNsaygpOw0KNCkgbXNsZWVwKDEwMCk7DQo1KSBwY2llX2RlYXNzZXJ0X3Jlc2V0KCk7DQo2
+KSBwb2xsaW5nX2xpbmtfYWN0aXZlX2JpdCgpOw0KNykgbXNsZWVwKDEwMCk7DQoNCj4gDQo+ID4g
+PiA+ID4gICAtIFdoZXJlIGRvZXMgbWVkaWF0ZWsgZW5mb3JjZSB0aGUgUENJZSBzZWMgNi42LjEg
+ZGVsYXkNCj4gPiA+ID4gPiBhZnRlcg0KPiA+ID4gPiA+ICAgICBkZWFzc2VydGluZyBQRVJTVCMg
+YW5kIGJlZm9yZSBjb25maWcgcmVxdWVzdHM/DQo+ID4gPiA+ID4gDQo+ID4gDQo+ID4gU29mdHdh
+cmUgY2FuIGRldGVybWluZSB3aGVuIExpbmsgdHJhaW5pbmcgY29tcGxldGVzIGJ5IHBvbGxpbmcg
+dGhlDQo+ID4gRGF0YQ0KPiA+IExpbmsgTGF5ZXIgTGluayBBY3RpdmUgYml0IGZvciBtYXhpbXVt
+IDEwMG1zLg0KPiANCj4gTXkgdW5kZXJzdGFuZGluZyBpcyB0aGF0IGl0IGlzIG5lZWRlZCB0byB3
+YWl0IGFub3RoZXIgMTAwbXMgX2FmdGVyXw0KPiBsaW5rDQo+IHRyYWluaW5nIGNvbXBsZXRlcy4N
+Cg0KSSBzdGlsbCBoYXZlIHNvbWUgZG91YnQgdGhlIHR3byBjYXNlcyB0aGF0IHRoZSBzcGVjIHBy
+b3Bvc2VzIHRvIGJlDQpncmVhdGVyIHRoYW4gNUdUL3MgYW5kIG5vdCBncmVhdGVyIHRoYW4gNUdU
+L3MsIGFuZCBldmVuIGRpdmlkZWQgaW50bw0KdHdvIHBhcmFncmFwaHMuKHNwZWMgcjYuNi4xKQ0K
+DQo+IA0KPiA+ID4gPiA+ICAgLSBEb2VzIGVpdGhlciBhcHBsZSBvciBtZWRpYXRlayBzdXBwb3J0
+IHNwZWVkcyBncmVhdGVyIHRoYW4NCj4gPiA+ID4gPiA1DQo+ID4gPiA+ID4gR1QvcywNCj4gPiA+
+ID4gPiAgICAgYW5kIGlmIHNvLCBzaG91bGRuJ3Qgd2Ugc3RhcnQgdGhlIHNlYyA2LjYuMSAxMDBt
+cyBkZWxheQ0KPiA+ID4gPiA+ICphZnRlcioNCj4gPiA+ID4gPiAgICAgTGluayB0cmFpbmluZyBj
+b21wbGV0ZXM/DQo+ID4gPiA+IA0KPiA+ID4gPiBUaGUgQXBwbGUgaGFyZHdhcmUgYWR2ZXJ0aXNl
+cyBzdXBwb3J0IGZvciA4IEdUL3MsIGJ1dCBhbGwgdGhlDQo+ID4gPiA+IGRldmljZXMNCj4gPiA+
+ID4gaW50ZWdyYXRlZCBvbiB0aGUgTWFjIG1pbmkgc3VwcG9ydCBvbmx5IDIuNSBHVC9zIG9yIDUg
+R1Qvcy4NCj4gPiA+IA0KPiA+ID4gVGhlIHNwZWMgZG9lc24ndCBzYXkgYW55dGhpbmcgYWJvdXQg
+d2hhdCB0aGUgZG93bnN0cmVhbSBkZXZpY2VzDQo+ID4gPiBzdXBwb3J0IChvYnZpb3VzbHkgaXQg
+Y2FuJ3QgYmVjYXVzZSB3ZSBkb24ndCAqa25vdyogd2hhdCB0aG9zZQ0KPiA+ID4gZGV2aWNlcw0K
+PiA+ID4gYXJlIHVudGlsIGFmdGVyIHdlIGVudW1lcmF0ZSB0aGVtKS4gIFNvIHRvIGJlIHBlZGFu
+dGljYWxseQ0KPiA+ID4gY29ycmVjdCwNCj4gPiA+IEknZCBhcmd1ZSB0aGF0IHdlIHNob3VsZCBw
+YXkgYXR0ZW50aW9uIHRvIHdoYXQgdGhlIFJvb3QgUG9ydA0KPiA+ID4gYWR2ZXJ0aXNlcy4gIE9m
+IGNvdXJzZSwgSSBkb24ndCB0aGluayB3ZSBkbyB0aGlzIGNvcnJlY3RseQ0KPiA+ID4gKmFueXdo
+ZXJlKg0KPiA+ID4gdG9kYXkuDQo+ID4gDQo+ID4gVGhhbmtzDQpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
+TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
