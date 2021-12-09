@@ -4,68 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0087C4332F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 09:20:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C95F6C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 09:21:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hNpiCtjrmNayLdSHc+xhh3QBuhBTCyQPq+IxFLDDs8Y=; b=21XF3qJyIUphnCqroFZ8TH4akR
-	vXVHl5cqjrqttfy45xzX7XDnhN6Z6Ul5+arW0INo8XVmRmZYCbbtm3wngU/IEz4rVSsIAri4Pm9bz
-	oOShYyIiWrm6is/HiMoH1shpcumiwSXlPQqWi16VvfKdD3yM+tWfatOKOTK94nstrnjH/PKhpoSOb
-	26Z9ZbO/iy0mlFkyGOMyt+llFcR3K7wf98Tza+v894DyWpnVXVsvLOy6W/a3j0qvk0bjQNA+ibdUW
-	c3SlZE26aJY3cGmYJ2snlmo+jJxT83hcivUgL11UQaWCrlfPK7Goe4xk9OoHI89XEKUt/ziHRVDIT
-	dIqXb/xg==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KI10B7AjCdYmJfg/4/m2ORaud8UDUNcpzloZ4nBlR7s=; b=T2dAjd4A24KWsgkNKIwpu9Jq6z
+	YMnRVxgO3FFHjVabJcHA65BAHsBryHAbyLhnAJeKXDWw0w0SvsmNjkvcDygTgQIWRFfWzfHlJKh6a
+	QfOhP92yfAx6gVibtLn7XEyoypaOSbfFh83qWwivkYYVHzQ1jHu7+ufJ5HrXKQVVrq0ttIV/FsS/h
+	+Syegc6bfDYh3UT9dQ2juW4Wi7NNDIHZv0XM5QUAyyk5+TP+Cck6trYMJyY1N/r71vCaJ1x6IrrSq
+	yyfc1an2qUNhi3K5aE4NRBS1mt0be1ftyL7Of7JU2F14sqD1gMTxcoC9KF/yNvS93w4vvaFx53Rb9
+	mdYYqNkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvFbG-00FONS-9o; Thu, 09 Dec 2021 09:20:26 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1mvFc5-00FOk6-7Q; Thu, 09 Dec 2021 09:21:17 +0000
+Received: from dvalin.narfation.org ([213.160.73.56])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvFTg-00FLyd-P2; Thu, 09 Dec 2021 09:12:38 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 4C8921F4654A
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
- t=1639041153; bh=sPBqbsrB9UT6NfM6wy4+leJCOrkH2CX3quBKt/V3f9E=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=MhGZXeGyFwxOfTnQjje19Du8KHtsplWlJvMpNzYzmwMk3a/OPh0fN61y65fFoF0vS
- +PgKFPuIuu2hazvEwXL5VW45nwzH5vPz/+TLFAHGpTQAyp7vS2XqmEDzwwsbw/UuVg
- TqdxSNvGLRirp/WjjGshxpzIKo9Li8XOgw9t0BPsFalocAK5CPF5uZclYJw3pnNk5f
- yOXFG6lq7B05YXEZcV+5JUyHrMqtJns5i1zLavCMfaavrLPU/a/ZTcmihlWNVewYe/
- IQwWTM/iCYTN0EMnmAUfzMMRrzM4qUWeCuPhC3+H0mXUEd7pOb5CEmPCInXgAG4Qjm
- bxVLN4hI1oNwQ==
-Subject: Re: [PATCH 3/4] memory: mtk-smi: Add sleep ctrl function
-To: Yong Wu <yong.wu@mediatek.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
- Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
- anan.sun@mediatek.com, lc.kan@mediatek.com, yi.kuo@mediatek.com,
- anthony.huang@mediatek.com, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-References: <20211203064027.14993-1-yong.wu@mediatek.com>
- <20211203064027.14993-4-yong.wu@mediatek.com>
- <f2ffd08a-44c3-9458-1bd8-68e3c0755611@collabora.com>
- <ebc8e4c0b0519043c5a82c6c967ac6d524e8869a.camel@mediatek.com>
- <47c30f6f-ce9d-9ea7-283c-9026ae9ed1c0@collabora.com>
- <e1d72db69f424b9ee8987b7bafa7423c672ceef1.camel@mediatek.com>
- <85ef182a-8ebe-7dbb-aa95-35e77cbb072c@collabora.com>
- <581d847ede5ce917762e2c5734e23dcd693fef32.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <dce1e8bd-c21c-202f-3e56-70be6e743a18@collabora.com>
-Date: Thu, 9 Dec 2021 10:12:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1mvFby-00FOej-8s
+ for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 09:21:12 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=narfation.org;
+ s=20121; t=1639041665;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=HKfoBlRfsPWUt5hnOkqJORTtA2aNncI/9GyUqXURfVQ=;
+ b=wKzcE01/NZcjkvW5RMDJ2EPP36tRpCwo0vG+t7E/66evxG9D5lx0y5VQQy0B0RJQVXUuTV
+ PMg/f8kgcqOf9Rjek3YnAqQrTtjYbOU11faThswZXApeD559sjQqLDfG8DxN2GSVne3gTb
+ kuRGeiKZ5cjpBgKY5dNeZPO7aDduZRU=
+From: Sven Eckelmann <sven@narfation.org>
+To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk,
+ Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
+ Deren Wu <Deren.Wu@mediatek.com>
+Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
+ YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
+ KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
+ CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
+ Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com,
+ linux-firmware <linux-firmware@kernel.org>,
+ linux-wireless <linux-wireless@vger.kernel.org>,
+ linux-mediatek <linux-mediatek@lists.infradead.org>,
+ linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>,
+ jf@simonwunderlich.de
+Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
+Date: Thu, 09 Dec 2021 10:21:02 +0100
+Message-ID: <2314855.OJx0zA1Pyt@ripper>
+In-Reply-To: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
+References: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <581d847ede5ce917762e2c5734e23dcd693fef32.camel@mediatek.com>
-Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_011237_160530_60895B44 
-X-CRM114-Status: GOOD (  45.22  )
+X-CRM114-CacheID: sfid-20211209_012110_844054_8DFB3EEF 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,205 +70,120 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8381872695545507103=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 08/12/21 03:42, Yong Wu ha scritto:
-> On Tue, 2021-12-07 at 13:16 +0100, AngeloGioacchino Del Regno wrote:
->> Il 07/12/21 13:10, Yong Wu ha scritto:
->>> On Tue, 2021-12-07 at 09:56 +0100, AngeloGioacchino Del Regno
->>> wrote:
->>>> Il 07/12/21 07:24, Yong Wu ha scritto:
->>>>> Hi AngeloGioacchino,
->>>>>
->>>>> Thanks for your review.
->>>>>
->>>>> On Mon, 2021-12-06 at 16:08 +0100, AngeloGioacchino Del Regno
->>>>> wrote:
->>>>>> Il 03/12/21 07:40, Yong Wu ha scritto:
->>>>>>> sleep control means that when the larb go to sleep, we
->>>>>>> should
->>>>>>> wait
->>>>>>> a bit
->>>>>>> until all the current commands are finished. thus, when the
->>>>>>> larb
->>>>>>> runtime
->>>>>>> suspend, we need enable this function to wait until all the
->>>>>>> existed
->>>>>>> command are finished. when the larb resume, just disable
->>>>>>> this
->>>>>>> function.
->>>>>>> This function only improve the safe of bus. Add a new flag
->>>>>>> for
->>>>>>> this
->>>>>>> function. Prepare for mt8186.
->>>>>>>
->>>>>>> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
->>>>>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
->>>>>>> ---
->>>>>>>      drivers/memory/mtk-smi.c | 39
->>>>>>> +++++++++++++++++++++++++++++++++++----
->>>>>>>      1 file changed, 35 insertions(+), 4 deletions(-)
->>>>>
->>>>> [snip]
->>>>>
->>>>>>>      static int __maybe_unused mtk_smi_larb_suspend(struct
->>>>>>> device
->>>>>>> *dev)
->>>>>>>      {
->>>>>>>      	struct mtk_smi_larb *larb =
->>>>>>> dev_get_drvdata(dev);
->>>>>>> +	int ret = 0;
->>>>>>> +
->>>>>>> +	if (MTK_SMI_CAPS(larb->larb_gen->flags_general,
->>>>>>> MTK_SMI_FLAG_SLEEP_CTL))
->>>>>>> +		ret = mtk_smi_larb_sleep_ctrl(dev, true);
->>>>>>
->>>>>> Sorry but what happens if SLP_PROT_RDY is not getting set
->>>>>> properly?
->>>>>>     From what I can understand in the commit description that
->>>>>> you
->>>>>> wrote,
->>>>>> if we reach
->>>>>> the timeout, then the LARB transactions are not over....
->>>>>>
->>>>>> I see that you are indeed returning a failure here, but you
->>>>>> are
->>>>>> also
->>>>>> turning off
->>>>>> the clocks regardless of whether we get a failure or a
->>>>>> success;
->>>>>> I'm
->>>>>> not sure that
->>>>>> this is right, as this may leave the hardware in an
->>>>>> unpredictable
->>>>>> state (since
->>>>>> there were some more LARB transactions that didn't go
->>>>>> through),
->>>>>> leading to crashes
->>>>>> at system resume (or when retyring to suspend).
->>>>>
->>>>> Thanks for this question. In theory you are right. In this
->>>>> case,
->>>>> the
->>>>> bus already hang.
->>>>>
->>>>> We only printed a fail log in this patch. If this fail happens,
->>>>> we
->>>>> should request the master to check which case cause the larb
->>>>> hang.
->>>>>
->>>>> If the master has a good reason or limitation, the hang is
->>>>> expected, I
->>>>> think we have to add larb reset in this fail case: Reset the
->>>>> larb
->>>>> when
->>>>> the larb runtime resume.
->>>>>
->>>>
->>>> Think about the case in which the system gets resumed only
->>>> partially
->>>> due to a
->>>>
->>>> failure during resume of some driver, or due to a RTC or arch
->>>> timer
->>>> resume and
->>>> suspend right after... or perhaps during runtime suspend/resume
->>>> of
->>>> some devices.
->>>> In that case, we definitely want to avoid any kind of failure
->>>> point
->>>> that would
->>>> lead to a system crash, or any kind of user noticeable (or UX
->>>> disrupting) "strange
->>>> behavior".
->>>>
->>>> I think that we should make sure that the system suspends
->>>> cleanly,
->>>> instead of
->>>> patching up any possible leftover issue at resume time: if this
->>>> is
->>>> doable with
->>>> a LARB reset in suspend error case, that looks like being a good
->>>> option indeed.
->>>>
->>>> As a side note, thinking about UX, losing a little more time
->>>> during
->>>> suspend is
->>>> nothing really noticeable for the user... on the other hand,
->>>> spending
->>>> more time
->>>> during resume may be something noticeable to the user.
->>>> For this reason, I think that guaranteeing that the system
->>>> resumes as
->>>> fast as
->>>> possible is very important, which adds up to the need of
->>>> suspending
->>>> cleanly.
->>>
->>> Thanks for this comment. I will put it in the suspend when adding
->>> the
->>> reset. But I have no plan to add it in this version since I don't
->>> see
->>> the need for this right now. Maybe I should add a comment in the
->>> code
->>> for this.
->>>
->>
->> What I understand from your reply is that the reset is not trivial
->> work
+--===============8381872695545507103==
+Content-Type: multipart/signed; boundary="nextPart3341260.rLAWO6SjPS"; micalg="pgp-sha512"; protocol="application/pgp-signature"
+
+--nextPart3341260.rLAWO6SjPS
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
+From: Sven Eckelmann <sven@narfation.org>
+To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Deren Wu <Deren.Wu@mediatek.com>
+Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com, linux-firmware <linux-firmware@kernel.org>, linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>, jf@simonwunderlich.de
+Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
+Date: Thu, 09 Dec 2021 10:21:02 +0100
+Message-ID: <2314855.OJx0zA1Pyt@ripper>
+In-Reply-To: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
+References: <67f30cd5235e2065e6c20cfb4662e4ac72ef6395.1639037336.git.deren.wu@mediatek.com>
+
+On Thursday, 9 December 2021 09:24:11 CET Deren Wu wrote:
+> From: Deren Wu <deren.wu@mediatek.com>
 > 
-> Yes. the reset bit is in different register regions, like mmsys,
-> vdecsys. But the main problem is that I don't see why we need that. We
-> never that problem.
+> Update binary firmware for MT7921 WiFi devices
 > 
+> File: mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin
+> Version: 20211129210838a
+> File: mediatek/WIFI_RAM_CODE_MT7961_1.bin
+> Version: 20211129210917
 
-The fact that we didn't get any "visible" problem with that is very good,
-indeed, but having a recovery mechanism in place in the event that something
-like that happens is going to be helpful in the future, as driver updates (either
-to support new SoCs or Linux API changes, or new APIs) may produce unexpected
-results sometimes and this will make sure that, despite there may be a problem,
-the hardware will still work even before solving the producer of the issue.
+Thank you for the firmware update. With this firmware and the mt76.git 
+commit 678071ef7029 ("mt76: mt7615: clear mcu error interrupt status on 
+mt7663") + hostapd commit 14ab4a816c68 ("Reject ap_vendor_elements if
+its length is odd") , I was able to connect to an 6GHz AP:
 
-Sometimes it may happen that solving an issue is nothing trivial, hence requires
-a lot of time, and that's the main usefulness of that - and it's as useful as
-your *great* idea of enabling SLP_PROT_RDY to check on the bus.
+    $ cat > station_sae_test.conf << "EOF"
+    country=US
+    network={
+            scan_ssid=1
+            ssid="Maverick6g"
+            key_mgmt=SAE
+            psk="testtest"
+            proto=RSN
+            ieee80211w=2
+            beacon_int=100
+    }
+    EOF
 
-> The sleep ctrl function is just for the safety of the bus. If we have
-> not it, It also should be ok...If not, the question is: why does the
-> larb master device call pm_runtime_put before his HW finish the job?
-> 
+    $ ip link set up dev wlp5s0
+    $ ./wpa_supplicant -D nl80211 -i wlp6s0 -c ~/station_sae_test.cfg -B
+    $ iw dev wlp5s0 link
+    Connected to 00:03:7f:12:8c:8c (on wlp5s0)
+            SSID: Maverick6g
+            freq: 6115
+            RX: 3092674 bytes (26805 packets)
+            TX: 114756 bytes (1073 packets)
+            signal: -49 dBm
+            rx bitrate: 1080.6 MBit/s 80MHz HE-MCS 10 HE-NSS 2 HE-GI 0 HE-DCM 0
+            tx bitrate: 6.5 MBit/s MCS 0
+    
+            bss flags:      short-slot-time
+            dtim period:    2
+            beacon int:     100
+    $ ping ff02::1%wlp5s0
+    ....
+     
 
-I agree on the fact that calling pm_runtime_put before the HW finishes the
-job is something that should *never* happen.
+Just as note: It is still not possible to see beacons when using the card in 
+monitor mode.
 
->> and needs quite some time to be done properly; in that case: yes,
->> please
->> add a TODO comment that explains the situation and the discussed
->> solution.
->>
->> Also, since this SLP_PROT_RDY flag seems to be very nice, just a
->> simple question: is this a new feature in the SMI IP of MT8186, or is
->> there anything similar that we may use on other SoCs, like 8183,
->> 8192, 8195, as a follow-up of this series?
-> 
-> All the three SoC support this function. I expect the later SoC will
-> support this. but the previous SoC has already MP... If someone has
-> already tested ok after adding it for the previous SoC, I'm ok of
-> course.
-> 
+Tested-by: Sven Eckelmann <sven@narfation.org>
 
-Thanks for the information. Again, this feature is very nice, so if it can
-be used on any other SoC, it's going to be helpful in the future.
+Kind regards,
+	Svem
+--nextPart3341260.rLAWO6SjPS
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
 
-I will do some research.
+-----BEGIN PGP SIGNATURE-----
 
-Regards,
-- Angelo
+iQIzBAABCgAdFiEEF10rh2Elc9zjMuACXYcKB8Eme0YFAmGxyn4ACgkQXYcKB8Em
+e0YICA/9HP/KgPvp7hf4CLElCGNnekR8cj2P6tEOYqIpQwvmG+FfxVSBESzKJDbL
+jb0U+dnm9hooIkgX/UPcaSiiaDPRzek3xqZyaFvl4aZRN3iK64ovTt4ytDrGmBi6
+Ew5kI7vevnAjt/RDYNKCPobGqmjKyslCezJnReNAVTlk7v0R5fiX2i+mwsKv3GB0
+mzpVEaIoWsKuYHwhypHF1l2Ay2SuRRpnORQg2DyfWwd5bU39Q7kN/r4nybhPjJ+W
+QUA6sYhx/p09c/SzJo9lL+vBVbrBzZwxGTaCdGi7i0EoEMblIcmruB3d3OHam5y/
+uBwOy6E46PIStRfw3vbq38ZBM10g3z4qjA/OgfSUBY3kTF/PcLUDwnMaYqKgFAcp
+W7MfHa0tpDixKTortPic7QBzp8KGvsAYfXWvN7xSVZCVbZZBRHqCaBYW7dVPC/9M
+CNiGZj90gUqLDnLirm/O/K3UvMJqZYqhVula3BxNSIkL1TczyBtIZDQYF4iRwfIb
+XTJX8eVpcij9DCuMOEp0guQ5ogbgP/+OG6E6RUlw9eX9KcjZl+a+BsCyy90J4m0P
+d2sxR6qMwa8NoV7cF0iyoEyhVpEs9FPzLXWRhM4dDIR5FRObMTaFsmXrgQKwxOL7
+q2lQra2dtTU5Az11mZd0WxqPFr9/sbBIWjSv6V+vZy5PEb1HqBI=
+=syZA
+-----END PGP SIGNATURE-----
+
+--nextPart3341260.rLAWO6SjPS--
+
+
+
+
+
+--===============8381872695545507103==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8381872695545507103==--
+
+
+
+
