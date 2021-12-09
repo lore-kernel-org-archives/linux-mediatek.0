@@ -4,76 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB527C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 23:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E1F8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 23:10:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GMNPxHKAvQqtIXC8eg7NSqH15Zn3H4kaQKc7/rDMmrs=; b=xJ/+t2zfABy7t7I42FAUWpDI/p
-	g4mqxmayxAePpXDdj1anlxbX4BHpSR2YHVZsqeswClGt6x2LYq/2+i4ohGyJC+VRDtIqaUwOQiBVI
-	LNOqmoPJNpKwBlisVCt6R51p6SoJWbzTQEihOav+bZCL+lo8LYucP64/zQkbJDI1GK4TL8WVNIk+Y
-	zLHe5ceGP9Abb0Ew6sOKG5sMQZ9wll930rFfL3wHEQjz8Qj64XNDUHAXWx4GvITcO5KEvNraKik4X
-	DeXcY3yJwAcvj9uOMwBfwFCm+E796XxCYgR9mwmqGghycM+dNlBKz7VQCdQL/bjC3qhRhT1HhvJzS
-	5U16ajtQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=LPrj4aupA01gz+jNX3iU3uJS5X3i2gvYEhMf7gG1NB8=; b=bkN4KNf1ZAhSzd
+	4MaEFZ3IweWT4mNcL4yA5ucSTl6p/DvoKpJMpFgqpcOUCbiS6MsV/fz8lS8q5m/lrultDCySn23eT
+	e5gQRNcsT/y+zIM3eYyTkmrWhmOYRrooq+PTFeUKl6QM5HWAeaPWxhL8ATZMm4o5nZy3Ro//Ef4Iv
+	ZnQkHfh0bsKPtiWwDEKX25PvbTjj1qXyV7f4u6kj81f8D850g8KpdB+EyVRgY3PMNbWS+pwckxH0J
+	k73TahpevP3bfmk+v6EjhtotQNjLz3PcC01Z7xvF5w5nVbRQjSHR8uTPLoeEGF7i8VQTD5hrRHbgZ
+	eVb/nVZdBLN+6xw0Ivpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvSTI-000Kqy-75; Thu, 09 Dec 2021 23:05:04 +0000
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+	id 1mvSYj-000LTh-JH; Thu, 09 Dec 2021 23:10:41 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvST6-000Kni-4W
- for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 23:04:53 +0000
-Received: by mail-pg1-x532.google.com with SMTP id f125so6492541pgc.0
- for <linux-mediatek@lists.infradead.org>; Thu, 09 Dec 2021 15:04:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=AM7QLMUWHfMwmQDV/nARvLu6AUqKl6gTrIizSq8pCV0=;
- b=qCUTYflpJD3Ut8S3L9vAdsRCFkfP6S1UK/pYIcT6QfgUqj3IrkrCT4ezn3jaOsf3Cl
- QWXXPUZs+WxnhUjOZmGD3MD+yMr1uQ4MPnml+A3U6sVIr1NuDQjnxAVWqlzhj2iKBJ3v
- UVZc3vL3u8GPqVzXjH8o2LZKH9265/3UW1CVYplUB1MgkH9c5ybvjJIKVXYJvrcLh394
- P90V/cOnkBv/iNu+Q/0tn+tcZb57JKYcdbPJW+sK8l4beDVlSxBGGYj3kX/T4AxOqfIl
- UB/2KhtFPncq+0yKdb9T39Tq3TJiyLrFSDV3H0HYU7qUuLOVeojoQvZgvAswjkqck/q8
- PFSA==
+ id 1mvSYh-000LSb-AH
+ for linux-mediatek@lists.infradead.org; Thu, 09 Dec 2021 23:10:40 +0000
+Received: by mail-ot1-x335.google.com with SMTP id
+ h19-20020a9d3e53000000b0056547b797b2so7879161otg.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 09 Dec 2021 15:10:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=jwQ3/cvUvZwvZqmL1mCJROo89LdfAWk6eb0jRU/PPfA=;
+ b=bleUAVWorez5jOJY3nEoJbhU7GbSzr7+LS0r/JZcBeOWYf5aC10+VHh1ubUWal9iJd
+ cve8rftd0oSuPhuyK7h5v8ibpurBcfClv8FKcPwStqgxE+CzFri8DEFVIMMa6LqUnAZ5
+ s7qiYV96LEsYjQWMsgZ+hx+gTGbr6JYOD/71Jh6mDb3igAoMD2tjfxy0XFWfonv4iC6W
+ L+hKdh1GAzFl02VL/sCz8Qc/U74qa0skgCKkwXCBDdoSKC+Nv4gi22eJ4jeHjrVat7j7
+ mbSVPxIYpxe9vMpMFzmYxEQzCwCnVhEz7p2vBjDQY9ZvfrxX1CGEj5e/fwcBz1EtGT++
+ N7BQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=AM7QLMUWHfMwmQDV/nARvLu6AUqKl6gTrIizSq8pCV0=;
- b=Uc7pPqWmOx+VjiHpeYzL5/uqkzrUvhSt1cINxP8TItkkPprpTbdreNN02j+sJYIm/P
- VtTXqT6xp4Z/8oJx7aHbQGYqk+9Ygr897jvXY6cK03Joa5Wgom3vvsqL8h7PgDWxosnv
- YFPOCIq1Ojx3ia4TiZa3OC3h81o5bTUzdOfkKzntVzCQOMJGP2ru7NUVPxvu5uOl/ZK4
- 3Ot6kle6qfmqfimYMx0TdNjmRf5I/5Q6FJbVXnny7bP1UBT9JHa8OEX+IzpoFSgYeHV8
- QiUmSfCVbH0YwHHNXcp6y1FI2xOk1XB/edeFK4ju+dxMPk5pvDTAAFlVeyxRSj+eLoaM
- A3PA==
-X-Gm-Message-State: AOAM533JAYMcopHjYGvGnMr15OXjajMMKsfKe0ZbFVjnLSFmlbmZmkPC
- BdCOVR4ZuvHxQxET+ffEWenM5w==
-X-Google-Smtp-Source: ABdhPJwv3BwHdZiLi1ZhC5t+Cp5jkK/HRMF9Ysg4XP1dLe3XT0E5UCPyHw6UtZFq3qUMnwim2AuqFw==
-X-Received: by 2002:a63:6dcc:: with SMTP id i195mr35590826pgc.90.1639091089661; 
- Thu, 09 Dec 2021 15:04:49 -0800 (PST)
-Received: from google.com ([2620:15c:202:201:4686:81c:7840:3f2a])
- by smtp.gmail.com with ESMTPSA id o1sm10610131pjs.30.2021.12.09.15.04.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Dec 2021 15:04:48 -0800 (PST)
-Date: Thu, 9 Dec 2021 15:04:42 -0800
-From: Benson Leung <bleung@google.com>
-To: Prashant Malani <pmalani@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Alexandru M Stan <amstan@chromium.org>, Benson Leung <bleung@chromium.org>,
- "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
- <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
-Subject: Re: [PATCH v2] arm64: dts: mt8183: kukui: Add Type C node
-Message-ID: <YbKLiic12TTlCI5K@google.com>
-References: <20211209195112.366176-1-pmalani@chromium.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=jwQ3/cvUvZwvZqmL1mCJROo89LdfAWk6eb0jRU/PPfA=;
+ b=gUtN/Eih8d5EkqoRkgnwqq1EXmSHw5tx8T/+u2/a1hag++D5x/1FABAJS2Sk+M1GdU
+ oO9g5wPkM6xAdbZeWVUsiecDDMSCL2w94CurUQNwbD6HBNXXBGi5KE99h7+fMTH0sWRM
+ n1PDGoRYgrqSROxoJ9obXiIkjITPTMMaRyyyJgZwVz0qO9BG0PRTEDb2dtb6z5en8g0o
+ HkOj+p2EoYCvI5I1/zlixYCCSqCWQ+W3vJxSYkt6QOcHnfLdu2LadZOLDBOMyP4vMV4f
+ jVhr5ZwfWHF+yBbJvmNI1nJ1KwGaiqdQnoqdWwn1j1gXB9alu+84NkBR5fESfROScKm6
+ c1ag==
+X-Gm-Message-State: AOAM532dfiY/zHR1au1bGbAx+AyKe1ArkLRysCBHkbBBEQiFIP2qr0+z
+ fe8ULRUe+K+j8K3n1n7mrh2G17nJMQkBdau33WscNQ==
+X-Google-Smtp-Source: ABdhPJzo+Qn3beEC2GCP40Dln8g3w03FB1cYts0c1cuXhM0sKcR+azpj0wOy3oZM9W3SYZUtgtldhp9j0UCVfnGVgMc=
+X-Received: by 2002:a9d:a42:: with SMTP id 60mr8426847otg.179.1639091438012;
+ Thu, 09 Dec 2021 15:10:38 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20211209195112.366176-1-pmalani@chromium.org>
+References: <20211209113456.33977-1-andriy.shevchenko@linux.intel.com>
+ <YbI2Xb7gBfN4Kyid@smile.fi.intel.com>
+In-Reply-To: <YbI2Xb7gBfN4Kyid@smile.fi.intel.com>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Fri, 10 Dec 2021 00:10:26 +0100
+Message-ID: <CACRpkdZxWpygHBJFmuXft5yWhA9SWJzEubC6Oac0dUsLeFAjSw@mail.gmail.com>
+Subject: Re: [PATCH v3 1/1] pinctrl: Sort Kconfig and Makefile entries
+ alphabetically
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_150452_209362_0DD64C18 
-X-CRM114-Status: GOOD (  16.46  )
+X-CRM114-CacheID: sfid-20211209_151039_403772_30A24297 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,105 +80,36 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3452228064763494794=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Dec 9, 2021 at 6:05 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+> On Thu, Dec 09, 2021 at 01:34:56PM +0200, Andy Shevchenko wrote:
+> > Sort Kconfig and Makefile entries alphabetically for better maintenance
+> > in the future.
+> >
+> > While at it fix some style issues, such as:
+> >   - "Say Y"/"Say yes"/"Say Yes" --> "Say Y"
+> >   - "pullup/pulldown" --> "pull-up and pull-down"
+> >   - wrong indentation
+>
+> > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> > ---
+> > v3: fixed more grammar issues in AMD text
+> > v2: rebased on top of very recent pinctrl/devel (Linus), added some grammar fixes
+>
+> I have noticed that you applied v2, thanks!
+> Do you want me to sent a followup that fixes AMD help text?
 
---===============3452228064763494794==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="h0DgCffirGSPqlD0"
-Content-Disposition: inline
+Nah just pulled it out and applied v3 instead :)
 
-
---h0DgCffirGSPqlD0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Dec 09, 2021 at 11:51:12AM -0800, Prashant Malani wrote:
-> Add a node describing the USB Type C connector, in order to utilize the
-> Chromium OS USB Type-C driver that enumerates Type-C ports and connected
-> cables/peripherals and makes them visible to userspace.
->=20
-> Cc: Alexandru M Stan <amstan@chromium.org>
-> Cc: Benson Leung <bleung@chromium.org>
-> Signed-off-by: Prashant Malani <pmalani@chromium.org>
-
-Reviewed-by: Benson Leung <bleung@chromium.org>
-
-> ---
->=20
-> Changes in v2:
-> - Alexandru mentioned that HW specs suggest preferred power role for
->   devices like kukui to be sink, so changed try-power-role to "sink".
->=20
->  arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
->=20
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/=
-boot/dts/mediatek/mt8183-kukui.dtsi
-> index 94c13c459194..0f9480f91261 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-> @@ -886,6 +886,20 @@ usbc_extcon: extcon0 {
->  		cbas {
->  			compatible =3D "google,cros-cbas";
->  		};
-> +
-> +		typec {
-> +			compatible =3D "google,cros-ec-typec";
-> +			#address-cells =3D <1>;
-> +			#size-cells =3D <0>;
-> +
-> +			usb_c0: connector@0 {
-> +				compatible =3D "usb-c-connector";
-> +				reg =3D <0>;
-> +				power-role =3D "dual";
-> +				data-role =3D "host";
-> +				try-power-role =3D "sink";
-> +			};
-> +		};
->  	};
->  };
-> =20
-> --=20
-> 2.34.1.173.g76aa8bc2d0-goog
->=20
-
---=20
-Benson Leung
-Staff Software Engineer
-Chrome OS Kernel
-Google Inc.
-bleung@google.com
-Chromium OS Project
-bleung@chromium.org
-
---h0DgCffirGSPqlD0
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQQCtZK6p/AktxXfkOlzbaomhzOwwgUCYbKLigAKCRBzbaomhzOw
-wgTfAP0UKw0CIZnkq7XRxizWU1ISWsbA7Fg4wi8F3FRlEtjalgD/RnGrQZDBRr7E
-LnQC2+PGRByTSZwMCNTeptgTOh+8IAA=
-=fRVO
------END PGP SIGNATURE-----
-
---h0DgCffirGSPqlD0--
-
-
---===============3452228064763494794==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Linus Walleij
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3452228064763494794==--
-
