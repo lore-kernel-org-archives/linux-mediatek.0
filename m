@@ -4,58 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E2B4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 02:42:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12AA8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 02:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZPNO3Bu9a2T00/B88daSE0sZhvYspj4bTK6IS1zoOf8=; b=ZBJWAW6enYCUe+
-	FGJqvjU6V+SwpdgwgL5Lv/MtnBO9npBXID/HwcKeXx3jLkOMS6B+nP+Xs2E307rWj+EJGgJYDrsmv
-	BBMaiKOWRtUbxwXTfRo5VK6z6jR2VYjhbUIZsvy1O2c9gZWaFogDrqx+qxWUPB8BNJaRmZpFoE8Ey
-	NSHeVGXZfBglT96Zh5WqUtzV5HRNbn7UBkJTdgeWzpsG0C+94SQSesTJt7XWey5ndNqJqXJj2nGxu
-	X4vnUu3lYCOYD5OaLTjGp9Vw01XP6U5dmQJjL6FxZ1GwHEf6h1ULbeYvJ861KM09caKPX689PfGHY
-	6yevqWffGY5oCh9oaPpg==;
+	List-Owner; bh=8WnZ+6m2H1RkO8e3Wmz8tohtXJRfE1MwEwEgpSbiiSo=; b=Fu9FoOiBwT/w5O
+	5FrHZpE1yshtu/7YLnFtHY6U32xF+2l0b61Lo7VZj9T8TXNlXJVDmvKDZNUpwA1a2kCY1PE1T7wgk
+	t1uxstX5pqd9PlV1vNsCP52XbwMPCa2UKiVxq0i07mbQkd1mrIVjvzy8n+JNRxJ7zSrf0H8CHUbX3
+	Ka4F+ozez52bFVdp2PNBZLRNeI8ENJv9jwyyW4hTUMnBQ6wKyeaigIHZoSk0IhPomd1Vp7kfFrttl
+	SLAKS9Yv8SBQBkrEX0cmQS3gFc5mH02m9+vNOKEZNaBcXK7zBDGZr2A0Vgb7GPj6VYs+JEG3ULSEy
+	+oJwPG5im+q8TMo18HLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mv9OF-00ElyN-Ju; Thu, 09 Dec 2021 02:42:35 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mv9aB-00Emhh-2R; Thu, 09 Dec 2021 02:54:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mv9O2-00Elwg-Go; Thu, 09 Dec 2021 02:42:24 +0000
-X-UUID: 79fa94a2c672439d833f26d6e1ff8568-20211208
-X-UUID: 79fa94a2c672439d833f26d6e1ff8568-20211208
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1mv9Zy-00Emfm-VB; Thu, 09 Dec 2021 02:54:44 +0000
+X-UUID: 8ddbe0ab388b49a9b318c3c528ba2e9d-20211208
+X-UUID: 8ddbe0ab388b49a9b318c3c528ba2e9d-20211208
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1051311775; Wed, 08 Dec 2021 19:42:17 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1701345992; Wed, 08 Dec 2021 19:54:40 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 8 Dec 2021 18:42:16 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 9 Dec 2021 10:42:14 +0800
+ 15.0.1497.2; Wed, 8 Dec 2021 18:54:38 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 9 Dec 2021 10:54:24 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 9 Dec 2021 10:42:13 +0800
+ 15.0.1497.2 via Frontend Transport; Thu, 9 Dec 2021 10:54:23 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Rob Herring
- <robh+dt@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Chunfeng Yun
- <chunfeng.yun@mediatek.com>
-Subject: [next PATCH] dt-bindings: nvmem: convert mtk-efuse.txt to YAML schema
-Date: Thu, 9 Dec 2021 10:42:13 +0800
-Message-ID: <20211209024213.16612-1-chunfeng.yun@mediatek.com>
+To: Mathias Nyman <mathias.nyman@intel.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>
+CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
+ <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Eddie
+ Hung" <eddie.hung@mediatek.com>
+Subject: [PATCH] usb: xhci-mtk: fix list_del warning when enable list debug
+Date: Thu, 9 Dec 2021 10:54:22 +0800
+Message-ID: <20211209025422.17108-1-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211208_184222_591878_AD41F2E5 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20211208_185443_031955_B5F29C6B 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,160 +73,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert mtk-efuse.txt to YAML schema mediatek,efuse.yaml
+There is warning of 'list_del corruption' when enable list debug
+(CONFIG_DEBUG_LIST=y), fix it by using list_del_init()
 
+Fixes: 4ce186665e7c ("usb: xhci-mtk: Do not use xhci's virt_dev in drop_endpoint")
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
- .../bindings/nvmem/mediatek,efuse.yaml        | 89 +++++++++++++++++++
- .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 ---------
- 2 files changed, 89 insertions(+), 43 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
- delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+ drivers/usb/host/xhci-mtk-sch.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-new file mode 100644
-index 000000000000..7332195e7f00
---- /dev/null
-+++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-@@ -0,0 +1,89 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek efuse device tree bindings
-+
-+description: |
-+  MediaTek's efuse is used for storing calibration data, it can be accessed
-+  on ARM devices usiong I/O mapped memory.
-+
-+maintainers:
-+  - Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-+
-+allOf:
-+  - $ref: "nvmem.yaml#"
-+
-+properties:
-+  $nodename:
-+    pattern: "^efuse@[0-9a-f]+$"
-+
-+  compatible:
-+    oneOf:
-+      - items:
-+          - enum:
-+              - mediatek,mt7622-efuse
-+              - mediatek,mt7623-efuse
-+              - mediatek,mt8173-efuse
-+              - mediatek,mt8192-efuse
-+              - mediatek,mt8195-efuse
-+              - mediatek,mt8516-efuse
-+          - const: mediatek,efuse
-+      - const: mediatek,mt8173-efuse
-+        deprecated: true
-+
-+  reg:
-+    maxItems: 1
-+
-+  "#address-cells":
-+    const: 1
-+
-+  "#size-cells":
-+    const: 1
-+
-+patternProperties:
-+  "^.*@[0-9a-f]+$":
-+    type: object
-+
-+    properties:
-+      reg:
-+        maxItems: 1
-+
-+      bits:
-+        maxItems: 1
-+
-+    required:
-+      - reg
-+
-+    additionalProperties: false
-+
-+required:
-+  - compatible
-+  - reg
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    efuse@10206000 {
-+        compatible = "mediatek,mt8173-efuse";
-+        reg = <0x10206000 0x1000>;
-+        #address-cells = <1>;
-+        #size-cells = <1>;
-+
-+        u2_intr_p0: usb2-intr-p0@188 {
-+            reg = <0x188 0x1>;
-+            bits = <0 5>;
-+        };
-+
-+        u2_intr_p1: usb2-intr-p1@188 {
-+            reg = <0x188 0x2>;
-+            bits = <5 5>;
-+        };
-+
-+        thermal_calibration: calib@528 {
-+            reg = <0x528 0xc>;
-+        };
-+    };
-diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-deleted file mode 100644
-index 39d529599444..000000000000
---- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-+++ /dev/null
-@@ -1,43 +0,0 @@
--= Mediatek MTK-EFUSE device tree bindings =
--
--This binding is intended to represent MTK-EFUSE which is found in most Mediatek SOCs.
--
--Required properties:
--- compatible: should be
--	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
--	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
--	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
--	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
--	      "mediatek,mt8195-efuse", "mediatek,efuse": for MT8195
--	      "mediatek,mt8516-efuse", "mediatek,efuse": for MT8516
--- reg: Should contain registers location and length
--- bits: contain the bits range by offset and size
--
--= Data cells =
--Are child nodes of MTK-EFUSE, bindings of which as described in
--bindings/nvmem/nvmem.txt
--
--Example:
--
--	efuse: efuse@10206000 {
--		compatible = "mediatek,mt8173-efuse";
--		reg	   = <0 0x10206000 0 0x1000>;
--		#address-cells = <1>;
--		#size-cells = <1>;
--
--		/* Data cells */
--		thermal_calibration: calib@528 {
--			reg = <0x528 0xc>;
--		};
--	};
--
--= Data consumers =
--Are device nodes which consume nvmem data cells.
--
--For example:
--
--	thermal {
--		...
--		nvmem-cells = <&thermal_calibration>;
--		nvmem-cell-names = "calibration";
--	};
+diff --git a/drivers/usb/host/xhci-mtk-sch.c b/drivers/usb/host/xhci-mtk-sch.c
+index 1edef7527c11..edbfa82c6565 100644
+--- a/drivers/usb/host/xhci-mtk-sch.c
++++ b/drivers/usb/host/xhci-mtk-sch.c
+@@ -781,7 +781,7 @@ int xhci_mtk_check_bandwidth(struct usb_hcd *hcd, struct usb_device *udev)
+ 
+ 	ret = xhci_check_bandwidth(hcd, udev);
+ 	if (!ret)
+-		INIT_LIST_HEAD(&mtk->bw_ep_chk_list);
++		list_del_init(&mtk->bw_ep_chk_list);
+ 
+ 	return ret;
+ }
 -- 
 2.18.0
 
