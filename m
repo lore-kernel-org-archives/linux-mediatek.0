@@ -4,62 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B6EC43217
-	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 16:00:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CCE7C433FE
+	for <linux-mediatek@archiver.kernel.org>; Thu,  9 Dec 2021 17:06:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=UQQue3FCE/xKe0eH1B4xyNPVAhsqVlLlWOAHWSjhlI4=; b=V+v2YYzr4CxsuY
-	6ibOKdmbrwn/Kyw9zHhk4B9gQXgr/KntyzRI93yMabtbFbXrAT5eqwvWn/ijuz1DtMtfisBGzTRDF
-	CVC3KzxsvbkGrsQmk+jdM5yIbZnvnXQTFq8Mbb7AcoeTrQjXasgDVMwj6/Rn0aG3RyzbEywYvrBW8
-	vE9jEOxcpVzq/L+503UXGGyAcJO+SR9PV01dXopBUqoRuwRAS54MqTzN3U8tnDgEFYmKP8ibyXDmI
-	2t1RQIySMdEd6iBUSQfacl7ccgEAfsfpRjTiYXxTwKd5xci4gKLacgx3MOzA1djlrGbAqor+9u1rs
-	EsCR5pkye8btYJKDtbWA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PGbhCTn22ckUk8lFKRIXSXDHuizkVkdos4SKDJF8Ogo=; b=sSIa1nmyOtss97
+	JUvu3E2RiZphLbL07YjpYFLwy8FJC+jLH7hsqiWlwXJp05vEy0zc+wtir+bNjMPYsv3V9JohVx6cP
+	6Exeyi/mSMi3VQgd/gqRatr04xD2xM7pSF0i+NF12kzcipiwlQA8stbl+B75mloVD2tT88ehP3pH5
+	BbmXNXmrID+6J7eAFN8jKWJFIHLIbWi9I5Ld2zPKhO9TNtUzNWalf4oPmEoj3a7Fvse5Z5vmpiNew
+	FI4/hadKQaCzMGofWrKmP2dS6QDjoJfoZkU2H50fpxj/krg789xbDi454z8RaqyMnXvsI3btfbFi1
+	lRyJ9i7wuray464GvwvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvLq5-00Gc4T-H2; Thu, 09 Dec 2021 16:00:09 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1mvMro-00GrnK-5n; Thu, 09 Dec 2021 17:06:00 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvLpr-00Gc1V-F1; Thu, 09 Dec 2021 15:59:57 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 3118DB8219F;
- Thu,  9 Dec 2021 15:59:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B019EC004DD;
- Thu,  9 Dec 2021 15:59:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639065592;
- bh=WCrvLQA0qeKw7bTS8wIW5Nl3xC+J6OUs03D0x9jEzIs=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=rNx5d+TFrCHWybAFT3dWbZuPNlklvKrTG6LxOsF/BJ7+NcI7ICYjrQDFe+ZMVGU+u
- VVtVflRewfFmXRNkon0Q9ZevA+wBEBNGpDPysX0yyyM/jFnXL+ctsYF4inQBbF8/st
- Qe2TPEkWMf88sd9XFODQrpyxLyLRJ6BCM4b20jxdyQ8YwqIXTExSbZsl0WmrLdojBO
- TUcuEFf5ocpbigoQXFRPl1mC23s6JuqsSOyZfp8rQLCq93PiKaPXWX4h8fhotQrF+P
- njLNaMoi4uEZqSyxaLZ+vUUJQwMTIvnKxlTs68GPx6nWBvcQrxdHYHHkwB5K5WFF58
- 3prbvPPZfr4RA==
-Date: Thu, 9 Dec 2021 09:59:50 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>
-Cc: "qizhong.cheng" <qizhong.cheng@mediatek.com>,
- Mark Kettenis <mark.kettenis@xs4all.nl>, ryder.lee@mediatek.com,
- jianjun.wang@mediatek.com, lorenzo.pieralisi@arm.com, kw@linux.com,
- bhelgaas@google.com, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
- maz@kernel.org, alyssa@rosenzweig.io, luca@lucaceresoli.net
-Subject: Re: [RESEND PATCH v2] PCI: mediatek: Delay 100ms to wait power and
- clock to become stable
-Message-ID: <20211209155950.GA238105@bhelgaas>
+ id 1mvMrb-00GrjI-9u; Thu, 09 Dec 2021 17:05:48 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10193"; a="236890207"
+X-IronPort-AV: E=Sophos;i="5.88,193,1635231600"; d="scan'208";a="236890207"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Dec 2021 09:02:22 -0800
+X-IronPort-AV: E=Sophos;i="5.88,193,1635231600"; d="scan'208";a="601625797"
+Received: from smile.fi.intel.com ([10.237.72.184])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Dec 2021 09:02:17 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1mvMnG-004B17-4s; Thu, 09 Dec 2021 19:01:18 +0200
+Date: Thu, 9 Dec 2021 19:01:17 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v3 1/1] pinctrl: Sort Kconfig and Makefile entries
+ alphabetically
+Message-ID: <YbI2Xb7gBfN4Kyid@smile.fi.intel.com>
+References: <20211209113456.33977-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20211209130034.z3d47hc4qzsrc3mt@pali>
+In-Reply-To: <20211209113456.33977-1-andriy.shevchenko@linux.intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_075955_840236_A800AD82 
-X-CRM114-Status: GOOD (  62.27  )
+X-CRM114-CacheID: sfid-20211209_090547_394678_B66D3D6E 
+X-CRM114-Status: GOOD (  11.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,293 +64,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 09, 2021 at 02:00:34PM +0100, Pali Roh=E1r wrote:
-> On Thursday 09 December 2021 19:51:03 qizhong.cheng wrote:
-> > On Wed, 2021-12-08 at 11:18 +0100, Pali Roh=E1r wrote:
-> > > On Wednesday 08 December 2021 14:07:57 qizhong.cheng wrote:
-> > > > On Tue, 2021-12-07 at 22:12 -0600, Bjorn Helgaas wrote:
-> > > > > On Tue, Dec 07, 2021 at 10:00:43PM +0100, Mark Kettenis wrote:
-> > > > > > > Date: Tue, 7 Dec 2021 11:54:16 -0600
-> > > > > > > From: Bjorn Helgaas <helgaas@kernel.org>
-> > > > > > > =
+On Thu, Dec 09, 2021 at 01:34:56PM +0200, Andy Shevchenko wrote:
+> Sort Kconfig and Makefile entries alphabetically for better maintenance
+> in the future.
+> 
+> While at it fix some style issues, such as:
+>   - "Say Y"/"Say yes"/"Say Yes" --> "Say Y"
+>   - "pullup/pulldown" --> "pull-up and pull-down"
+>   - wrong indentation
 
-> > > > > > > [+cc Marc, Alyssa, Mark, Luca for reset timing questions]
-> > > > > > =
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+> v3: fixed more grammar issues in AMD text
+> v2: rebased on top of very recent pinctrl/devel (Linus), added some grammar fixes
 
-> > > > > > Hi Bjorn,
-> > > > > > =
+I have noticed that you applied v2, thanks!
+Do you want me to sent a followup that fixes AMD help text?
 
-> > > > > > > On Tue, Dec 07, 2021 at 04:41:53PM +0800, qizhong cheng
-> > > > > > > wrote:
-> > > > > > > > Described in PCIe CEM specification sections 2.2 (PERST#
-> > > > > > > > Signal) and
-> > > > > > > > 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of
-> > > > > > > > PERST#
-> > > > > > > > should
-> > > > > > > > be delayed 100ms (TPVPERL) for the power and clock to
-> > > > > > > > become
-> > > > > > > > stable.
-> > > > > > > > =
+-- 
+With Best Regards,
+Andy Shevchenko
 
-> > > > > > > > Signed-off-by: qizhong cheng <qizhong.cheng@mediatek.com>
-> > > > > > > > Acked-by: Pali Roh=E1r <pali@kernel.org>
-> > > > > > > =
 
-> > > > > > > ...
-> > > > =
-
-> > > > 1)
-> > > > 2)
-> > > > Thanks for your reminding and suggestion.
-> > > > =
-
-> > > > > > > 3) Most importantly, this needs to be reconciled with the
-> > > > > > > similar
-> > > > > > > change to the apple driver:
-> > > > > > > =
-
-> > > > > > >   =
-
-> > > > > > > https://lore.kernel.org/r/20211123180636.80558-2-maz@kernel.o=
-rg
-> > > > > > > =
-
-> > > > > > > In the apple driver, we're doing:
-> > > > > > > =
-
-> > > > > > >   - Assert PERST#
-> > > > > > >   - Set up REFCLK
-> > > > > > >   - Sleep 100us (T_perst-clk, CEM r5 2.2, 2.9.2)
-> > > > > > >   - Deassert PERST#
-> > > > > > >   - Sleep 100ms (not sure there's a name? PCIe r5 6.6.1)
-> > > > > > > =
-
-> > > > > > > But here in mediatek, we're doing:
-> > > > > > > =
-
-> > > > > > >   - Assert PERST#
-> > > > > > >   - Sleep 100ms (T_pvperl, CEM r5 2.2, 2.2.1, 2.9.2)
-> > > > > > >   - Deassert PERST#
-> > > > > > > =
-
-> > > > > > > My questions:
-> > > > > > =
-
-> > > > > > My understanding of the the Apple PCIe hardware is somewhat
-> > > > > > limited
-> > > > > > but:
-> > > > > > =
-
-> > > > > > >   - Where does apple enforce T_pvperl?  I can't tell where
-> > > > > > > power
-> > > > > > > to
-> > > > > > >     the slot is turned on.
-> > > > > > =
-
-> > > > > > So far all available machines only have PCIe devices that are
-> > > > > > soldered
-> > > > > > onto the motherboard, so there are no "real" slots.  As far as
-> > > > > > we
-> > > > > > can
-> > > > > > tell the PCIe power domain is already powered on at the point
-> > > > > > where
-> > > > > > the m1n1 bootloader takes control.  There is a GPIO that
-> > > > > > controls
-> > > > > > power to some devices (WiFi, SDHC on the M1 Pro/Max laptops)
-> > > > > > and
-> > > > > > those
-> > > > > > devices are initially powered off.  The Linux driver doesn't
-> > > > > > currently
-> > > > > > attempt to power these devices on, but U-Boot will power them
-> > > > > > on if
-> > > > > > the appropriate GPIO is defined in the device tree.  The way
-> > > > > > this
-> > > > > > is
-> > > > > > specified in the device tree is still under discussion.
-> > > > > =
-
-> > > > > Does this mean we basically assume that m1n1 and early Linux boot
-> > > > > takes at least the 100ms T_pvperl required by CEM sec 2.2, but we
-> > > > > take
-> > > > > pains to delay the 100us T_perst-clk?  That seems a little weird,
-> > > > > but
-> > > > > I guess it is clear that REFCLK is *not* enabled before we enable
-> > > > > it,
-> > > > > so we do need at least the 100us there.
-> > > > > =
-
-> > > > > It also niggles at me a little that the spec says T_pvperl starts
-> > > > > from
-> > > > > *power stable* (not from power enable) and T_perst-clk starts
-> > > > > from
-> > > > > *REFCLK stable* (not REFCLK enable).  Since we don't know the
-> > > > > time
-> > > > > from enable to stable, it seems like native drivers should add
-> > > > > some
-> > > > > circuit-specific constants to the spec values.
-> > > > > =
-
-> > > > =
-
-> > > > Reset of endpoint card via PERST# signal is defined in PCIe CEM r5
-> > > > 2.2:
-> > > > "On power-up, the de-assertion of PERST# is delayed 100 ms
-> > > > (TPVPERL)
-> > > > from the power rails achieving specified operating limits. Also,
-> > > > within
-> > > > this time, the reference clocks (REFCLK+, REFCLK-) also become
-> > > > stable,
-> > > > at least TPERST-CLK before PERST# is de-asserted."
-> > > > =
-
-> > > > - Tpvperl - PERST# must remain active at least this long after
-> > > > power
-> > > > becomes valid
-> > > > =
-
-> > > > Initialize steps as following(please correct me if I'm wrong):
-> > > >  1) Enable main power
-> > > >  2) Assert PERST#
-> > > >  3) Sleep 100ms (TPVPERL, within this time, the REFCLK and power
-> > > > also
-> > > > become stable)(CEM r5 figure 8: power up)
-> > > >  4) Deassert PERST#
-> > > >  5) wait until link training completes by software polling the Data
-> > > > Link Layer Link Active bit
-> > > >  6) if speed is greater than 5GT/s, wait another 100ms
-> > > =
-
-> > > Hello! About month ago I was investigating correct order of
-> > > steps and I wrote email about it, please look at it:
-> > > =
-
-> > https://lore.kernel.org/linux-pci/20211022183808.jdeo7vntnagqkg7g@pali/
-> > =
-
-> > Hi Pali,
-> > =
-
-> > Thanks for your investigating.
-> > Modify the code to refer to your steps as following(please correct me
-> > if I'm wrong):
-> > 1) pcie_assert_reset();
-> > 2) pcie_power_on();
-> > 3) pcie_setup_refclk();
-> > 4) msleep(100);
-> > 5) pcie_deassert_reset();
-> > 6) polling_link_active_bit();
-> > 7) msleep(100);
-> =
-
-> If I understood it correctly then above steps should be OK.
-> =
-
-> > > > > > >   - Where does mediatek enforce the PCIe sec 6.6.1 delay
-> > > > > > >   after deasserting PERST# and before config requests?
-> > > > =
-
-> > > > Software can determine when Link training completes by polling
-> > > > the Data Link Layer Link Active bit for maximum 100ms.
-> > > =
-
-> > > My understanding is that it is needed to wait another 100ms
-> > > _after_ link training completes.
-> > =
-
-> > I still have some doubt the two cases that the spec proposes to be
-> > greater than 5GT/s and not greater than 5GT/s, and even divided
-> > into two paragraphs.(spec r6.6.1)
-> =
-
-> IIRC support for DLLA bit was introduced in PCIe base spec 3.0,
-> which also introduced support for 8GT/s (=3D greater than 5GT/s). I
-> guess that split between "not grater than 5GT/s" and "greater than
-> 5GT/s" could be due to fact that on older HW there do not have to be
-> support for DLLA bit and so SW does not have generic way to check if
-> link training completed. This is how I see it, I may be wrong. But
-> there can be controller specific way how to access link training
-> state, which lot of pcie drivers already do. If I'm looking at
-> comparison of "not greater than 5GT/s" and "greater than 5GT/s", the
-> only difference is that "grater than 5GT/s" has additional
-> requirement to wait until link training completes.
-> =
-
-> Therefore I would suggest following: if your PCIe HW can provide
-> link training status also for devices "not greater than 5GT/s" then
-> wait for link training complete also for them. And so do not
-> distinguish between "not greater than 5GT/s" and "greater than
-> 5GT/s" at all.
-> =
-
-> But this is just my opinion.
-> =
-
-> Bjorn, do you have any other comments regarding this? Or maybe
-> different opinion how it should be handled?
-
-IIUC, you're proposing something like this:
-
-  deassert PERST#
-  if (device advertises PCI_EXP_LNKCAP_DLLLARC) {
-    poll until PCI_EXP_LNKSTA_DLLLA is set
-  } =
-
-  wait 100ms
-  issue config request
-
-I'm sure the spec would have said "if the device advertises
-PCI_EXP_LNKCAP_DLLLARC, wait 100ms after PCI_EXP_LNKSTA_DLLLA is set"
-if that were the intent, because that's the obvious wording.
-
-But the spec calls out > 5 GT/s links specifically, and the physical
-encoding changed significantly for those links (128b/130b encoding
-instead of 8b/10b, etc), so it's plausible that they may require more
-time for training.
-
-Hotplug ports have always been required to advertise
-PCI_EXP_LNKCAP_DLLLARC, and if they only support 5 GT/s or less, they
-would not require more training time.
-
-So I'm inclined to decide based on the max link speed instead of
-PCI_EXP_LNKCAP_DLLLARC.  pci_bridge_wait_for_secondary_bus() does
-something similar.
-
-If we decide based on PCI_EXP_LNKCAP_DLLLARC, I guess the down side is
-that we'll wait longer than necessary for ports like gen2 hotplug
-ports.  Probably not a huge deal, since we only wait an extra link
-training time, but why do it differently than what the spec says?
-Would it make the implementation significantly simpler?
-
-> > > > > > >   - Does either apple or mediatek support speeds greater than
-> > > > > > > 5
-> > > > > > > GT/s,
-> > > > > > >     and if so, shouldn't we start the sec 6.6.1 100ms delay
-> > > > > > > *after*
-> > > > > > >     Link training completes?
-> > > > > > =
-
-> > > > > > The Apple hardware advertises support for 8 GT/s, but all the
-> > > > > > devices
-> > > > > > integrated on the Mac mini support only 2.5 GT/s or 5 GT/s.
-> > > > > =
-
-> > > > > The spec doesn't say anything about what the downstream devices
-> > > > > support (obviously it can't because we don't *know* what those
-> > > > > devices
-> > > > > are until after we enumerate them).  So to be pedantically
-> > > > > correct,
-> > > > > I'd argue that we should pay attention to what the Root Port
-> > > > > advertises.  Of course, I don't think we do this correctly
-> > > > > *anywhere*
-> > > > > today.
-> > > > =
-
-> > > > Thanks
 
 _______________________________________________
 Linux-mediatek mailing list
