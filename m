@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A506C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 09:06:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1364DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 09:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gd09gV3SINAMyVvZKLhxGHErPgJgLMMCP0braMi3uLg=; b=pejV/KxJma79Nv
-	hl/lku3PvoWDg4We4Qcqb7kZryPdsmTBccD87RZc4VGpG3WYvFmw/i26lqBhaanWOlom3m/0iEOMf
-	CHZd0zldvGqtYHT3TBTCzRvTAf06DefEXKBCR7yTg2ZznZ5ZfG7Gx+o6dJfpC3qsk27UPcGQ+iIn3
-	4G3YYFBz1yf1fNDsmSrlkSBFIX8pszkvwIMXtPcDccnP9elMLeJiyGFZBhUQnD88PuQeW0hmhOYxu
-	WH+GrCnzJ+spZpsAqd4knzRsxvI4/fYziRvcPYf7TpATQKxPHYv/XjTIHPyg/2/6g/+agMuvNd8zJ
-	Doh/orRk518SSZhk8r8A==;
+	List-Owner; bh=/D1bdWxc7Q9mPJTg5gFFeZCHNLcO0EQLgU7BJhyLCyM=; b=bOeKVZBeAzEjkW
+	Suh1PR0A+dgKPM5SCrZn0zi/RuY4giqJVoM+Dt+xUwbs7n8g6M3+CbWlZUfJb03bFrhMfOxMH++ju
+	XLe/hkK6DZbddPvbKQTEdctIbBgao7Nb2cEnVc6ph3WIRxDFT2xQtyMA+pvQVz0V8mnrlXnIY5MlQ
+	DW0S1TjoIL0oVGkcUZeFsfI2lwv44tyjuDOR34cS/pZw6+xRPrCokTTB7E8kTT3IVX1R5sSMds74l
+	yMJ8y9qlvvRdt1pCj/qP9Y1As3DmcrHHrlCN10x+DZJnrlFenP98OG0xOf5JAftZ35DWpfuDHVGzs
+	EYZJT2YSpggK7Q3MK/hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvbrL-001HwH-75; Fri, 10 Dec 2021 09:06:31 +0000
-Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
+	id 1mvbue-001IDu-AN; Fri, 10 Dec 2021 09:09:56 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvbrI-001Hus-Pc
- for linux-mediatek@lists.infradead.org; Fri, 10 Dec 2021 09:06:30 +0000
-Received: by mail-ua1-x92d.google.com with SMTP id i6so15585997uae.6
- for <linux-mediatek@lists.infradead.org>; Fri, 10 Dec 2021 01:06:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9tGFC4LzWqCgm0WZvcBZCqbYx5+hs05WaoMGVHtCwSQ=;
- b=dzpOCEItnevmnc8O0NJ2fSw3n6TQ92XxO7pp66r2wpqtT5lx1yKL302TGJBZ+fRHur
- wrIK+V1zGgd2tRlm6qJgkI4PG417GtmPOwMQYTBT4kxCpHfZtsmIZkund8StmOt6DbLw
- gkl0/0hO55nO4rj6kPf/26O5z/2FSwjBNz47wBZ+79mv8fJ9lTNFFMQd9ZUKxB0MbvY8
- 1dz5TJo0RllEyA0kSN82ISIyHcOnjYgfsDxTaeVdGSDAuPDD88B+tg8p4wnAXytE6bkX
- Dl2YXCnWW0EwEJExzaZIIZ5FOngJEg32AH2WWgogRr0Jk2NXNNu77PAOSNOfU3oHEGhE
- JPGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9tGFC4LzWqCgm0WZvcBZCqbYx5+hs05WaoMGVHtCwSQ=;
- b=XTS3TDd0Z1eG8KsXk0QSskXKRZRLRryq6zjM5N2W3Of/AnNnSitQHvKAq/MIT+jETq
- +IZkgHNKdXuOclRIDkf3GxZ0DGEDRiDK2Z44yPW6+vx/TP28EWaRU/zq90CngrWsMzL0
- DLt1Oi8205ihicttvC7N4O7kLqrLvmVLmNWwPt/vdSDfm/y/MVf29mPc1qjHS36ipBmx
- hi54Dsyjt3rVS8zZtK6VnY2h/B7v1Kx5W6V9y9PpK01qBAMwta0Kt61Zq+caJHxBsNdJ
- GZZOnUVQ7GGu6veLX06ejPsecnBPFjFcyNUS+FcmDdfW5lmlceAPwmTphqirCZBbBK5w
- b10A==
-X-Gm-Message-State: AOAM533KVCsFIs1asMOpO2eC97Yp8XO2wQyY4xo0SUCFluf7h91tZvv+
- ldMWcxJv1Y71Ibp3kwdT6R+faiu03dFl3366Ifg=
-X-Google-Smtp-Source: ABdhPJwrzX4R908X787m5pCkNfhqt1pa0auQvUb6jSQ5RECJlas/hTNiNuMIw0lJZP+KkheO/qddaS1r4cuYm+MR/EA=
-X-Received: by 2002:a05:6102:38ce:: with SMTP id
- k14mr14134171vst.70.1639127185051; 
- Fri, 10 Dec 2021 01:06:25 -0800 (PST)
+ id 1mvbuO-001ICA-OK; Fri, 10 Dec 2021 09:09:42 +0000
+X-UUID: e99bfde9133f4d3aa712d21ebb1cea5d-20211210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=CjU98ycZMFvnEF82w0kKkH98J8lMsWvawl0iNRUhs7E=; 
+ b=fwinEs7kZI5egOftigkaEid8uXIUP+Ftw95O6ScgGbk+2MGGfjJvqo3fXbE7lBEX6xntnutuPDBQ01D3epnNz+zCs47UfoZyzUR5N7kPjXWQZcX8HK8p/j01sSx4Slufw3zYJ4EZc04+yhpsHDCmgBvss1c54R24cYCrYodUblc=;
+X-UUID: e99bfde9133f4d3aa712d21ebb1cea5d-20211210
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <xiangsheng.hou@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 271663808; Fri, 10 Dec 2021 02:09:34 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 10 Dec 2021 01:09:33 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 10 Dec 2021 17:09:31 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 10 Dec 2021 17:09:30 +0800
+Message-ID: <60212a8cba39939ff2bf48196cc37cb1a2eb20e4.camel@mediatek.com>
+Subject: Re: [RFC,v4,3/5] spi: mtk: Add mediatek SPI Nand Flash interface
+ driver
+From: xiangsheng.hou <xiangsheng.hou@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+CC: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
+ <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
+ <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
+ <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
+ <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
+Date: Fri, 10 Dec 2021 17:09:31 +0800
+In-Reply-To: <20211209112030.5cdcd07c@xps13>
+References: <20211130083202.14228-1-xiangsheng.hou@mediatek.com>
+ <20211130083202.14228-4-xiangsheng.hou@mediatek.com>
+ <20211209112030.5cdcd07c@xps13>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <CALW65jbKsDGTXghqQFQe2CxYbWPakkaeFrr+3vAA4gAPjeeL2w@mail.gmail.com>
-In-Reply-To: <CALW65jbKsDGTXghqQFQe2CxYbWPakkaeFrr+3vAA4gAPjeeL2w@mail.gmail.com>
-From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Date: Fri, 10 Dec 2021 10:06:14 +0100
-Message-ID: <CAMhs-H9ve2VtLm8x__DEb0_CpoYsqix1HwLDcZ8_ZeEK9vdfQg@mail.gmail.com>
-Subject: Re: MT7621 ethernet does not get probed on net-next branch after 5.15
- merge
-To: DENG Qingfang <dqfext@gmail.com>
-Cc: netdev <netdev@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Siddhant Gupta <siddhantgupta416@gmail.com>,
- Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Felix Fietkau <nbd@nbd.name>, 
- John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
- Mark Lee <Mark-MC.Lee@mediatek.com>, Russell King <linux@armlinux.org.uk>, 
- Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>, 
- =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>, 
- OpenWrt Development List <openwrt-devel@lists.openwrt.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_010628_851599_B8161512 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20211210_010940_824899_FE73590C 
+X-CRM114-Status: GOOD (  13.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,51 +83,123 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Qingfang,
+Hi Miquel,
 
-On Fri, Oct 15, 2021 at 4:23 PM DENG Qingfang <dqfext@gmail.com> wrote:
->
-> Hi,
->
-> After the merge of 5.15.y into net-next, MT7621 ethernet
-> (mtk_eth_soc.c) does not get probed at all.
->
-> Kernel log before 5.15 merge:
-> ...
-> libphy: Fixed MDIO Bus: probed
-> libphy: mdio: probed
-> mt7530 mdio-bus:1f: MT7530 adapts as multi-chip module
-> mtk_soc_eth 1e100000.ethernet eth0: mediatek frame engine at 0xbe100000, irq 20
-> mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
-> ...
->
-> Kernel log after 5.15 merge:
-> ...
-> libphy: Fixed MDIO Bus: probed
-> mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
-> ...
->
->
-> I tried adding debug prints into the .mtk_probe function, but it did
-> not execute.
-> There are no dts changes for MT7621 between 5.14 and 5.15, so I
-> believe it should be something else.
->
-> Any ideas?
+On Thu, 2021-12-09 at 11:20 +0100, Miquel Raynal wrote:
+> Hi Xiangsheng,
+> 
+> xiangsheng.hou@mediatek.com wrote on Tue, 30 Nov 2021 16:32:00 +0800:
+> 
+> > 
+> > +
+> > +static int mtk_snfi_config(struct nand_device *nand,
+> > +			   struct mtk_snfi *snfi)
+> > +{
+> > +	struct mtk_ecc_engine *eng = mtk_snfi_to_ecc_engine(snfi);
+> > +	u32 val;
+> > +
+> > +	switch (nanddev_page_size(nand)) {
+> > +	case 512:
+> > +		val = PAGEFMT_512_2K | PAGEFMT_SEC_SEL_512;
+> > +		break;
+> > +	case KB(2):
+> > +		if (eng->section_size == 512)
+> > +			val = PAGEFMT_2K_4K | PAGEFMT_SEC_SEL_512;
+> > +		else
+> > +			val = PAGEFMT_512_2K;
+> > +		break;
+> > +	case KB(4):
+> > +		if (eng->section_size == 512)
+> > +			val = PAGEFMT_4K_8K | PAGEFMT_SEC_SEL_512;
+> > +		else
+> > +			val = PAGEFMT_2K_4K;
+> > +		break;
+> > +	case KB(8):
+> > +		if (eng->section_size == 512)
+> > +			val = PAGEFMT_8K_16K | PAGEFMT_SEC_SEL_512;
+> > +		else
+> > +			val = PAGEFMT_4K_8K;
+> > +		break;
+> > +	case KB(16):
+> > +		val = PAGEFMT_8K_16K;
+> > +		break;
+> > +	default:
+> > +		dev_err(snfi->dev, "invalid page len: %d\n",
+> > +			nanddev_page_size(nand));
+> > +		return -EINVAL;
+> > +	}
+> > +
+> > +	val |= eng->oob_per_section_idx << PAGEFMT_SPARE_SHIFT;
+> > +	val |= eng->oob_free << PAGEFMT_FDM_SHIFT;
+> > +	val |= eng->oob_free_protected << PAGEFMT_FDM_ECC_SHIFT;
+> > +	writel(val, snfi->regs + NFI_PAGEFMT);
+> 
+> Shouldn't this be calculated only once?
 
-I had time to create a new image for my gnubee board using kernel 5.15
-and this problem does not exist on my side. Since no more mails have
-come for a while I guess this was a problem from your configuration,
-but just in case I preferred to answer to let you know. I am currently
-using v5.15.7 from linux-stable with some other patches that will be
-for 5.16. Just in case, you can check the kernel tree [0] I am
-currently using.
+Yes, The mtk_snfi_config function can be only called in prepare_io_req
+at the first time. I will add a variable to indicate config done or not
+to avoid calculate repeatedly.
 
-Best regards,
-     Sergio Paracuellos
+> 
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int mtk_snfi_ecc_init_ctx(struct nand_device *nand)
+> > +{
+> > +	struct nand_ecc_engine_ops *ops = mtk_ecc_get_pipelined_ops();
+> > +
+> > +	return ops->init_ctx(nand);
+> > +}
+> > +
+> > +static void mtk_snfi_ecc_cleanup_ctx(struct nand_device *nand)
+> > +{
+> > +	struct nand_ecc_engine_ops *ops = mtk_ecc_get_pipelined_ops();
+> > +
+> > +	ops->cleanup_ctx(nand);
+> > +}
+> > +
+> > +static int mtk_snfi_ecc_prepare_io_req(struct nand_device *nand,
+> > +				       struct nand_page_io_req *req)
+> > +{
+> > +	struct nand_ecc_engine_ops *ops = mtk_ecc_get_pipelined_ops();
+> > +	struct mtk_snfi *snfi = mtk_nand_to_spi(nand);
+> > +	int ret;
+> > +
+> > +	ret = mtk_snfi_config(nand, snfi);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	return ops->prepare_io_req(nand, req);
+> > +}
+> > +
+> > +static int mtk_snfi_ecc_finish_io_req(struct nand_device *nand,
+> > +				      struct nand_page_io_req *req)
+> > +{
+> > +	struct nand_ecc_engine_ops *ops = mtk_ecc_get_pipelined_ops();
+> > +	struct mtk_ecc_engine *eng = nand_to_ecc_ctx(nand);
+> > +	struct mtk_snfi *snfi = mtk_nand_to_spi(nand);
+> > +
+> > +	if (req->mode != MTD_OPS_RAW)
+> > +		eng->read_empty = readl(snfi->regs + NFI_STA) &
+> > STA_EMP_PAGE;
+> > +
+> > +	return ops->finish_io_req(nand, req);
+> > +}
+> > +
+> > +
+> > +MODULE_LICENSE("GPL v2");
+> > +MODULE_AUTHOR("Xiangsheng Hou <xiangsheng.hou@mediatek.com>");
+> > +MODULE_DESCRIPTION("Mediatek SPI Nand Flash interface driver");
+> 
+> Otherwise looks good, I believe you can drop the RFC prefix now.
+> 
 
-[0]: https://github.com/paraka/linux/tree/gbpc1-5.15
+I will prepare the formal patch and send for review after internal
+review and test.
 
+Thanks
+Xiangsheng Hou
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
