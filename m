@@ -4,68 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80B96C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 10:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E64C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 11:37:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZdpzAlOGZKTtUkcwn9LiKPVG5vCNFs4twheu+/y3aZw=; b=YN9+203A5GBdmv
-	wYZugrJXPyaYn6NbczvtuFF+x2+Vj024wZAIggHvGonVzATgvD+Wp5lmpNakakR/c+yaq44TWXDX+
-	U1bmVBvBv/OX7SigoekdYojAQZkBRgY+9PyJ4l82XbusPNrUsY8bPfvebc6W2AXZyiZunIikmopWh
-	+tYLpsB3fTN8pPOBo+cjP5JdyxEmfWcWbxc6x66v9A11AhGM/OL+w17V+qVjJ0nW+Q01EQAyFOn3Z
-	CpxMjZ/aIXL1R7kroX7DCEEuh2MU56f6SeKMyNY+W5u+iL5Id3X74djGjv0d29Y8bwZChR/n2UjsR
-	hANgWHqQkNS23xmJIw2A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ix/nlanAHGyJx8j1Tiy8z5WskOJ6K1YM4hYVOurLJFY=; b=OjHShI7rS/AluZ
+	HMmGJEYyy57LmH/3/5u4GtLykMnA+ElIiFVSmTvy06Kz5dBF3WLba/zlKLuldtgT61eU9ZwXeOid2
+	Mc5gG+VurG6FwGyfRa+rhvKaGVoma9YH36ZTF0ErxB8z/+IqJ+5KDqA3ES0eYUhDxz/teLmuSHv3S
+	zaWGr3EHtJ/9BsSdtTWviiM41PdjE9ehm+rknHtTVJSfO1et6agZCUDFJ9jleCT54PmY7p2JsAcDJ
+	YYsfl6uSXTpYtF2eqL7aPJQR/H+FoYOCXqsPxZzBadWx/ebW7rhy8NEvnnePqrsMRPqHmQ2sffZCs
+	TB7IjftwqX20UywB50bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvdMd-001Wiq-JX; Fri, 10 Dec 2021 10:42:55 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mveCq-001hRQ-OZ; Fri, 10 Dec 2021 11:36:52 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvdLq-001WOQ-Ao; Fri, 10 Dec 2021 10:42:08 +0000
-X-UUID: f6bae44e66ee4b7dbe1b61d4dfa3c557-20211210
-X-UUID: f6bae44e66ee4b7dbe1b61d4dfa3c557-20211210
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1912980732; Fri, 10 Dec 2021 03:42:00 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Dec 2021 02:41:58 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Dec 2021 18:41:57 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 10 Dec 2021 18:41:57 +0800
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jassi Brar
- <jassisinghbrar@gmail.com>
-CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
- <cujomalainey@google.com>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
- <Allen-KH.Cheng@mediatek.com>
-Subject: [RESEND PATCH v10 2/3] firmware: mediatek: add adsp ipc protocol
- interface
-Date: Fri, 10 Dec 2021 18:41:52 +0800
-Message-ID: <20211210104153.24181-3-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211210104153.24181-1-allen-kh.cheng@mediatek.com>
-References: <20211210104153.24181-1-allen-kh.cheng@mediatek.com>
+ id 1mveCO-001hHh-6K; Fri, 10 Dec 2021 11:36:26 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id A69671F473FD
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1639136182; bh=ga0KsyS3JGRjDvHO3Hhaar+nzxbjKXtgSndP0zQIbGc=;
+ h=From:To:Cc:Subject:Date:From;
+ b=fTad5sNhdilIGdbKy++cy4JB7YiDjOpzJAAidrIOeXPU1CYDVFHt9VLlAXbe7GQL3
+ ud9HSRXYchFj2coQRYL4Ek5ubtqpXJyrif8wpOzuEkpGG2QwIVoid9uYMb6Vq0PLgY
+ R2bM/lAgr+RB1EJnoazM6AAs3asiw85Tp1IrI0F1R3dzyRtBNmU8iEexGkghUBFFeJ
+ oInxNN5KzuKkIGqkJwvYVJlx5AZZdLp05XXn2sGtGX9bEWSbT3DY1sA86ZbPlDgGvQ
+ KcDYsUXQ01xoRIcu18mC9BV+g4bEtnzZLv7yS6n53S6ydbCIcRzbvKohbrFqXxsxIh
+ Uk+571W/g0JrQ==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, kernel@collabora.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with external
+ bridge
+Date: Fri, 10 Dec 2021 12:36:17 +0100
+Message-Id: <20211210113617.196204-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.33.1
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_024206_432272_E935DD50 
-X-CRM114-Status: GOOD (  25.10  )
+X-CRM114-CacheID: sfid-20211210_033624_583405_DE2E91DC 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,295 +67,255 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+DRM bridge drivers are now attaching their DSI device at probe time,
+which requires us to register our DSI host in order to let the bridge
+to probe: this recently started producing an endless -EPROBE_DEFER
+loop on some machines that are using external bridges, like the
+parade-ps8640, found on the ACER Chromebook R13.
 
-Some of mediatek processors contain
-the Tensilica HiFix DSP for audio processing.
+Now that the DSI hosts/devices probe sequence is documented, we can
+do adjustments to the mtk_dsi driver as to both fix now and make sure
+to avoid this situation in the future: for this, following what is
+documented in drm_bridge.c, move the mtk_dsi component_add() to the
+mtk_dsi_ops.attach callback and delete it in the detach callback;
+keeping in mind that we are registering a drm_bridge for our DSI,
+which is only used/attached if the DSI Host is bound, it wouldn't
+make sense to keep adding our bridge at probe time (as it would
+be useless to have it if mtk_dsi_ops.attach() fails!), so also move
+that one to the dsi host attach function (and remove it in detach).
 
-The communication between Host CPU and DSP firmware is
-taking place using a shared memory area for message passing.
-
-ADSP IPC protocol offers (send/recv) interfaces using
-mediatek-mailbox APIs.
-
-We use two mbox channels to implement a request-reply protocol.
-
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/firmware/Kconfig                      |   1 +
- drivers/firmware/Makefile                     |   1 +
- drivers/firmware/mediatek/Kconfig             |   9 ++
- drivers/firmware/mediatek/Makefile            |   2 +
- drivers/firmware/mediatek/mtk-adsp-ipc.c      | 135 ++++++++++++++++++
- .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++++
- 6 files changed, 213 insertions(+)
- create mode 100644 drivers/firmware/mediatek/Kconfig
- create mode 100644 drivers/firmware/mediatek/Makefile
- create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
- create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 167 +++++++++++++++--------------
+ 1 file changed, 84 insertions(+), 83 deletions(-)
 
-diff --git a/drivers/firmware/Kconfig b/drivers/firmware/Kconfig
-index 220a58cf0a44..005f76a9a31a 100644
---- a/drivers/firmware/Kconfig
-+++ b/drivers/firmware/Kconfig
-@@ -301,6 +301,7 @@ source "drivers/firmware/broadcom/Kconfig"
- source "drivers/firmware/google/Kconfig"
- source "drivers/firmware/efi/Kconfig"
- source "drivers/firmware/imx/Kconfig"
-+source "drivers/firmware/mediatek/Kconfig"
- source "drivers/firmware/meson/Kconfig"
- source "drivers/firmware/psci/Kconfig"
- source "drivers/firmware/smccc/Kconfig"
-diff --git a/drivers/firmware/Makefile b/drivers/firmware/Makefile
-index 5ced0673d94b..c0d1f3bdeae4 100644
---- a/drivers/firmware/Makefile
-+++ b/drivers/firmware/Makefile
-@@ -33,6 +33,7 @@ obj-$(CONFIG_GOOGLE_FIRMWARE)	+= google/
- obj-$(CONFIG_EFI)		+= efi/
- obj-$(CONFIG_UEFI_CPER)		+= efi/
- obj-y				+= imx/
-+obj-y				+= mediatek/
- obj-y				+= psci/
- obj-y				+= smccc/
- obj-y				+= tegra/
-diff --git a/drivers/firmware/mediatek/Kconfig b/drivers/firmware/mediatek/Kconfig
-new file mode 100644
-index 000000000000..6d1e580b967b
---- /dev/null
-+++ b/drivers/firmware/mediatek/Kconfig
-@@ -0,0 +1,9 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+config MTK_ADSP_IPC
-+	tristate "MTK ADSP IPC Protocol driver"
-+	depends on MTK_ADSP_MBOX
-+	help
-+	  Say yes here to add support for the MediaTek ADSP IPC
-+	  between host AP (Linux) and the firmware running on ADSP.
-+	  ADSP exists on some mtk processors.
-+	  Client might use shared memory to exchange information with ADSP side.
-diff --git a/drivers/firmware/mediatek/Makefile b/drivers/firmware/mediatek/Makefile
-new file mode 100644
-index 000000000000..4e840b65650d
---- /dev/null
-+++ b/drivers/firmware/mediatek/Makefile
-@@ -0,0 +1,2 @@
-+# SPDX-License-Identifier: GPL-2.0
-+obj-$(CONFIG_MTK_ADSP_IPC)		+= mtk-adsp-ipc.o
-diff --git a/drivers/firmware/mediatek/mtk-adsp-ipc.c b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-new file mode 100644
-index 000000000000..49da06590612
---- /dev/null
-+++ b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-@@ -0,0 +1,135 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2021 MediaTek Corporation. All rights reserved.
-+ * Author: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-+ */
-+
-+#include <linux/firmware/mediatek/mtk-adsp-ipc.h>
-+#include <linux/kernel.h>
-+#include <linux/mailbox_client.h>
-+#include <linux/module.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
-+#include <linux/slab.h>
-+
-+int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx, uint32_t msg)
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 5d90d2eb0019..2ff347da35c2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -786,18 +786,101 @@ void mtk_dsi_ddp_stop(struct device *dev)
+ 	mtk_dsi_poweroff(dsi);
+ }
+ 
++static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
 +{
-+	struct mtk_adsp_chan *dsp_chan;
 +	int ret;
 +
-+	if (idx >= MTK_ADSP_MBOX_NUM)
-+		return -EINVAL;
-+
-+	dsp_chan = &ipc->chans[idx];
-+	ret = mbox_send_message(dsp_chan->ch, &msg);
-+	if (ret < 0)
++	ret = drm_simple_encoder_init(drm, &dsi->encoder,
++				      DRM_MODE_ENCODER_DSI);
++	if (ret) {
++		DRM_ERROR("Failed to encoder init to drm\n");
 +		return ret;
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL(mtk_adsp_ipc_send);
-+
-+static void mtk_adsp_ipc_recv(struct mbox_client *c, void *msg)
-+{
-+	struct mtk_adsp_chan *chan = container_of(c, struct mtk_adsp_chan, cl);
-+
-+	switch (chan->idx) {
-+	case MTK_ADSP_MBOX_REPLY:
-+		chan->ipc->ops->handle_reply(chan->ipc);
-+		break;
-+	case MTK_ADSP_MBOX_REQUEST:
-+		chan->ipc->ops->handle_request(chan->ipc);
-+		break;
-+	default:
-+		break;
-+	}
-+}
-+
-+static int mtk_adsp_ipc_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_adsp_ipc *dsp_ipc;
-+	struct mtk_adsp_chan *dsp_chan;
-+	struct mbox_client *cl;
-+	char *chan_name;
-+	int ret;
-+	int i, j;
-+
-+	device_set_of_node_from_dev(&pdev->dev, pdev->dev.parent);
-+
-+	dsp_ipc = devm_kzalloc(dev, sizeof(*dsp_ipc), GFP_KERNEL);
-+	if (!dsp_ipc)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-+		chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
-+		if (!chan_name) {
-+			ret = -ENOMEM;
-+			goto out;
-+		}
-+
-+		dsp_chan = &dsp_ipc->chans[i];
-+		cl = &dsp_chan->cl;
-+		cl->dev = dev->parent;
-+		cl->tx_block = false;
-+		cl->knows_txdone = false;
-+		cl->tx_prepare = NULL;
-+		cl->rx_callback = mtk_adsp_ipc_recv;
-+
-+		dsp_chan->ipc = dsp_ipc;
-+		dsp_chan->idx = i;
-+		dsp_chan->ch = mbox_request_channel_byname(cl, chan_name);
-+		if (IS_ERR(dsp_chan->ch)) {
-+			ret = PTR_ERR(dsp_chan->ch);
-+			if (ret != -EPROBE_DEFER)
-+				dev_err(dev, "Failed to request mbox chan %d ret %d\n",
-+					i, ret);
-+			goto out;
-+		}
-+
-+		dev_dbg(dev, "request mbox chan %s\n", chan_name);
-+		kfree(chan_name);
 +	}
 +
-+	dsp_ipc->dev = dev;
-+	dev_set_drvdata(dev, dsp_ipc);
-+	dev_dbg(dev, "MTK ADSP IPC initialized\n");
++	dsi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm, dsi->host.dev);
++
++	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
++				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
++	if (ret)
++		goto err_cleanup_encoder;
++
++	dsi->connector = drm_bridge_connector_init(drm, &dsi->encoder);
++	if (IS_ERR(dsi->connector)) {
++		DRM_ERROR("Unable to create bridge connector\n");
++		ret = PTR_ERR(dsi->connector);
++		goto err_cleanup_encoder;
++	}
++	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
 +
 +	return 0;
 +
-+out:
-+	kfree(chan_name);
-+	for (j = 0; j < i; j++) {
-+		dsp_chan = &dsp_ipc->chans[j];
-+		mbox_free_channel(dsp_chan->ch);
-+	}
-+
++err_cleanup_encoder:
++	drm_encoder_cleanup(&dsi->encoder);
 +	return ret;
 +}
 +
-+static int mtk_adsp_ipc_remove(struct platform_device *pdev)
++static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
 +{
-+	struct mtk_adsp_ipc *dsp_ipc = dev_get_drvdata(&pdev->dev);
-+	struct mtk_adsp_chan *dsp_chan;
-+	int i;
++	int ret;
++	struct drm_device *drm = data;
++	struct mtk_dsi *dsi = dev_get_drvdata(dev);
 +
-+	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-+		dsp_chan = &dsp_ipc->chans[i];
-+		mbox_free_channel(dsp_chan->ch);
++	ret = mtk_dsi_encoder_init(drm, dsi);
++	if (ret)
++		return ret;
++
++	return device_reset_optional(dev);
++}
++
++static void mtk_dsi_unbind(struct device *dev, struct device *master,
++			   void *data)
++{
++	struct mtk_dsi *dsi = dev_get_drvdata(dev);
++
++	drm_encoder_cleanup(&dsi->encoder);
++}
++
++static const struct component_ops mtk_dsi_component_ops = {
++	.bind = mtk_dsi_bind,
++	.unbind = mtk_dsi_unbind,
++};
++
+ static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
+ 			       struct mipi_dsi_device *device)
+ {
+ 	struct mtk_dsi *dsi = host_to_dsi(host);
++	struct device *dev = host->dev;
++	int ret;
+ 
+ 	dsi->lanes = device->lanes;
+ 	dsi->format = device->format;
+ 	dsi->mode_flags = device->mode_flags;
++	dsi->next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0, 0);
++	if (IS_ERR(dsi->next_bridge))
++		return PTR_ERR(dsi->next_bridge);
++
++	drm_bridge_add(&dsi->bridge);
++
++	ret = component_add(host->dev, &mtk_dsi_component_ops);
++	if (ret) {
++		DRM_ERROR("failed to add dsi_host component: %d\n", ret);
++		drm_bridge_remove(&dsi->bridge);
++		return ret;
 +	}
+ 
+ 	return 0;
+ }
+ 
++static int mtk_dsi_host_detach(struct mipi_dsi_host *host,
++			       struct mipi_dsi_device *device)
++{
++	struct mtk_dsi *dsi = host_to_dsi(host);
 +
++	drm_bridge_remove(&dsi->bridge);
++	component_del(host->dev, &mtk_dsi_component_ops);
 +	return 0;
 +}
 +
-+static struct platform_driver mtk_adsp_ipc_driver = {
-+	.driver = {
-+		.name = "mtk-adsp-ipc",
-+	},
-+	.probe = mtk_adsp_ipc_probe,
-+	.remove = mtk_adsp_ipc_remove,
-+};
-+builtin_platform_driver(mtk_adsp_ipc_driver);
-+
-+MODULE_AUTHOR("Allen-KH Cheng <allen-kh.cheng@mediatek.com>");
-+MODULE_DESCRIPTION("MTK ADSP IPC Driver");
-+MODULE_LICENSE("GPL v2");
-diff --git a/include/linux/firmware/mediatek/mtk-adsp-ipc.h b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
-new file mode 100644
-index 000000000000..08e3c7d3b405
---- /dev/null
-+++ b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
-@@ -0,0 +1,65 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
-+
-+#ifndef MTK_ADSP_IPC_H
-+#define MTK_ADSP_IPC_H
-+
-+#include <linux/device.h>
-+#include <linux/types.h>
-+#include <linux/mailbox_controller.h>
-+#include <linux/mailbox_client.h>
-+
-+#define MTK_ADSP_IPC_REQ 0
-+#define MTK_ADSP_IPC_RSP 1
-+#define MTK_ADSP_IPC_OP_REQ 0x1
-+#define MTK_ADSP_IPC_OP_RSP 0x2
-+
-+enum {
-+	MTK_ADSP_MBOX_REPLY,
-+	MTK_ADSP_MBOX_REQUEST,
-+	MTK_ADSP_MBOX_NUM,
-+};
-+
-+struct mtk_adsp_ipc;
-+
-+struct mtk_adsp_ipc_ops {
-+	void (*handle_reply)(struct mtk_adsp_ipc *ipc);
-+	void (*handle_request)(struct mtk_adsp_ipc *ipc);
-+};
-+
-+struct mtk_adsp_chan {
-+	struct mtk_adsp_ipc *ipc;
-+	struct mbox_client cl;
-+	struct mbox_chan *ch;
-+	char *name;
-+	int idx;
-+};
-+
-+struct mtk_adsp_ipc {
-+	struct mtk_adsp_chan chans[MTK_ADSP_MBOX_NUM];
-+	struct device *dev;
-+	struct mtk_adsp_ipc_ops *ops;
-+	void *private_data;
-+};
-+
-+static inline void mtk_adsp_ipc_set_data(struct mtk_adsp_ipc *ipc, void *data)
-+{
-+	if (!ipc)
-+		return;
-+
-+	ipc->private_data = data;
-+}
-+
-+static inline void *mtk_adsp_ipc_get_data(struct mtk_adsp_ipc *ipc)
-+{
-+	if (!ipc)
-+		return NULL;
-+
-+	return ipc->private_data;
-+}
-+
-+int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx, uint32_t op);
-+
-+#endif /* MTK_ADSP_IPC_H */
+ static void mtk_dsi_wait_for_idle(struct mtk_dsi *dsi)
+ {
+ 	int ret;
+@@ -938,73 +1021,14 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 
+ static const struct mipi_dsi_host_ops mtk_dsi_ops = {
+ 	.attach = mtk_dsi_host_attach,
++	.detach = mtk_dsi_host_detach,
+ 	.transfer = mtk_dsi_host_transfer,
+ };
+ 
+-static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+-{
+-	int ret;
+-
+-	ret = drm_simple_encoder_init(drm, &dsi->encoder,
+-				      DRM_MODE_ENCODER_DSI);
+-	if (ret) {
+-		DRM_ERROR("Failed to encoder init to drm\n");
+-		return ret;
+-	}
+-
+-	dsi->encoder.possible_crtcs = mtk_drm_find_possible_crtc_by_comp(drm, dsi->host.dev);
+-
+-	ret = drm_bridge_attach(&dsi->encoder, &dsi->bridge, NULL,
+-				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+-	if (ret)
+-		goto err_cleanup_encoder;
+-
+-	dsi->connector = drm_bridge_connector_init(drm, &dsi->encoder);
+-	if (IS_ERR(dsi->connector)) {
+-		DRM_ERROR("Unable to create bridge connector\n");
+-		ret = PTR_ERR(dsi->connector);
+-		goto err_cleanup_encoder;
+-	}
+-	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
+-
+-	return 0;
+-
+-err_cleanup_encoder:
+-	drm_encoder_cleanup(&dsi->encoder);
+-	return ret;
+-}
+-
+-static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+-{
+-	int ret;
+-	struct drm_device *drm = data;
+-	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+-
+-	ret = mtk_dsi_encoder_init(drm, dsi);
+-	if (ret)
+-		return ret;
+-
+-	return device_reset_optional(dev);
+-}
+-
+-static void mtk_dsi_unbind(struct device *dev, struct device *master,
+-			   void *data)
+-{
+-	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+-
+-	drm_encoder_cleanup(&dsi->encoder);
+-}
+-
+-static const struct component_ops mtk_dsi_component_ops = {
+-	.bind = mtk_dsi_bind,
+-	.unbind = mtk_dsi_unbind,
+-};
+-
+ static int mtk_dsi_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_dsi *dsi;
+ 	struct device *dev = &pdev->dev;
+-	struct drm_panel *panel;
+ 	struct resource *regs;
+ 	int irq_num;
+ 	int ret;
+@@ -1021,19 +1045,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 		return ret;
+ 	}
+ 
+-	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0,
+-					  &panel, &dsi->next_bridge);
+-	if (ret)
+-		goto err_unregister_host;
+-
+-	if (panel) {
+-		dsi->next_bridge = devm_drm_panel_bridge_add(dev, panel);
+-		if (IS_ERR(dsi->next_bridge)) {
+-			ret = PTR_ERR(dsi->next_bridge);
+-			goto err_unregister_host;
+-		}
+-	}
+-
+ 	dsi->driver_data = of_device_get_match_data(dev);
+ 
+ 	dsi->engine_clk = devm_clk_get(dev, "engine");
+@@ -1098,14 +1109,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	dsi->bridge.of_node = dev->of_node;
+ 	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
+ 
+-	drm_bridge_add(&dsi->bridge);
+-
+-	ret = component_add(&pdev->dev, &mtk_dsi_component_ops);
+-	if (ret) {
+-		dev_err(&pdev->dev, "failed to add component: %d\n", ret);
+-		goto err_unregister_host;
+-	}
+-
+ 	return 0;
+ 
+ err_unregister_host:
+@@ -1118,8 +1121,6 @@ static int mtk_dsi_remove(struct platform_device *pdev)
+ 	struct mtk_dsi *dsi = platform_get_drvdata(pdev);
+ 
+ 	mtk_output_dsi_disable(dsi);
+-	drm_bridge_remove(&dsi->bridge);
+-	component_del(&pdev->dev, &mtk_dsi_component_ops);
+ 	mipi_dsi_host_unregister(&dsi->host);
+ 
+ 	return 0;
 -- 
-2.18.0
+2.33.1
 
 
 _______________________________________________
