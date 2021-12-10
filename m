@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A168AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 08:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A506C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 09:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:In-Reply-To:
-	Date:References:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ReBT4H/vGwZtxQvVrPK5jX26BG7nfjP84z/ghhw+5yI=; b=z0e2nWwrmQArGD
-	7qui+/7pYPOuQP2Omzj90FNd8XEYeFhzQfXZH1ZW/zY1kMNP9SlDkyHFQoGPq9GTSFfxFjLhO+zlP
-	ZxdARk1cBCzFIpvl8ttjkW+XPH5PAzpmbImxeQvCRIZ0kje6ej/vqh5ipfodQD4YJgEIm1uaL3RLI
-	MdnZnl9iAxIsQlha0MoayvAm/Jthduh4KTDrJTtHzp5lXFTHFd17xBi8Dob4QNUtSIKPZkrmaDgxy
-	RKxHO3Abs/0JdOHCdd47wVIMx53md7Nvn+DSN4npbm37H3WSPK1gMMal+YEMWi2lb9Ng5V8gkqqY9
-	PEFAke/CQ5QDV1gPsOFQ==;
+	List-Owner; bh=Gd09gV3SINAMyVvZKLhxGHErPgJgLMMCP0braMi3uLg=; b=pejV/KxJma79Nv
+	hl/lku3PvoWDg4We4Qcqb7kZryPdsmTBccD87RZc4VGpG3WYvFmw/i26lqBhaanWOlom3m/0iEOMf
+	CHZd0zldvGqtYHT3TBTCzRvTAf06DefEXKBCR7yTg2ZznZ5ZfG7Gx+o6dJfpC3qsk27UPcGQ+iIn3
+	4G3YYFBz1yf1fNDsmSrlkSBFIX8pszkvwIMXtPcDccnP9elMLeJiyGFZBhUQnD88PuQeW0hmhOYxu
+	WH+GrCnzJ+spZpsAqd4knzRsxvI4/fYziRvcPYf7TpATQKxPHYv/XjTIHPyg/2/6g/+agMuvNd8zJ
+	Doh/orRk518SSZhk8r8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvbau-001EMr-QM; Fri, 10 Dec 2021 08:49:32 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1mvbrL-001HwH-75; Fri, 10 Dec 2021 09:06:31 +0000
+Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvbah-001EM1-Jz; Fri, 10 Dec 2021 08:49:21 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id E5108CE29F0;
- Fri, 10 Dec 2021 08:49:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57B65C00446;
- Fri, 10 Dec 2021 08:49:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639126156;
- bh=sHJ2K4HWmLNgcWaZ8JeGY7iqpMYUyAqbVSIEietNe9M=;
- h=From:To:Cc:Subject:References:Date:In-Reply-To:From;
- b=Bh9Av8Z5EEvQ8cY1y+SAorgyDjQ0IWWJMPaYpK7yS+UeyGWPng0QFsgXG8lQUm219
- y0ZMClZdU9+JAoAa6s+qMy9pjdOJGIICPkul6+NJ9PYkMwZzRkM7ISRVtFzaqs6Cyq
- jQFgcqFeS3HC/SwVeKUitDZViJd9Y5qaWiFt/uu1kcMpZor1mTkFX9VtEgCPpNyU6O
- RVVV5A7h2OtU/xoxvpwewEhpmNYvY0vM2RRdK7nhaJfGC8MMrqOaEqfa5QMn7w/CGZ
- QPDt4rC3XFjo6FCdfZTtN/nzo3iMjxAG8/2Ou19iX92OcAu6khlTQoHjvfGwrEbabw
- 4dw5w0A3CBzag==
-From: Kalle Valo <kvalo@kernel.org>
-To: Tzung-Bi Shih <tzungbi@google.com>
-Cc: nbd@nbd.name, lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
- shayne.chen@mediatek.com, sean.wang@mediatek.com,
- linux-wireless@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] mt76: mt7921: reduce log severity levels for informative
- messages
-References: <20211210082247.977043-1-tzungbi@google.com>
-Date: Fri, 10 Dec 2021 10:49:11 +0200
-In-Reply-To: <20211210082247.977043-1-tzungbi@google.com> (Tzung-Bi Shih's
- message of "Fri, 10 Dec 2021 16:22:47 +0800")
-Message-ID: <8735n0oneg.fsf@tynnyri.adurom.net>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.1 (gnu/linux)
+ id 1mvbrI-001Hus-Pc
+ for linux-mediatek@lists.infradead.org; Fri, 10 Dec 2021 09:06:30 +0000
+Received: by mail-ua1-x92d.google.com with SMTP id i6so15585997uae.6
+ for <linux-mediatek@lists.infradead.org>; Fri, 10 Dec 2021 01:06:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=9tGFC4LzWqCgm0WZvcBZCqbYx5+hs05WaoMGVHtCwSQ=;
+ b=dzpOCEItnevmnc8O0NJ2fSw3n6TQ92XxO7pp66r2wpqtT5lx1yKL302TGJBZ+fRHur
+ wrIK+V1zGgd2tRlm6qJgkI4PG417GtmPOwMQYTBT4kxCpHfZtsmIZkund8StmOt6DbLw
+ gkl0/0hO55nO4rj6kPf/26O5z/2FSwjBNz47wBZ+79mv8fJ9lTNFFMQd9ZUKxB0MbvY8
+ 1dz5TJo0RllEyA0kSN82ISIyHcOnjYgfsDxTaeVdGSDAuPDD88B+tg8p4wnAXytE6bkX
+ Dl2YXCnWW0EwEJExzaZIIZ5FOngJEg32AH2WWgogRr0Jk2NXNNu77PAOSNOfU3oHEGhE
+ JPGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=9tGFC4LzWqCgm0WZvcBZCqbYx5+hs05WaoMGVHtCwSQ=;
+ b=XTS3TDd0Z1eG8KsXk0QSskXKRZRLRryq6zjM5N2W3Of/AnNnSitQHvKAq/MIT+jETq
+ +IZkgHNKdXuOclRIDkf3GxZ0DGEDRiDK2Z44yPW6+vx/TP28EWaRU/zq90CngrWsMzL0
+ DLt1Oi8205ihicttvC7N4O7kLqrLvmVLmNWwPt/vdSDfm/y/MVf29mPc1qjHS36ipBmx
+ hi54Dsyjt3rVS8zZtK6VnY2h/B7v1Kx5W6V9y9PpK01qBAMwta0Kt61Zq+caJHxBsNdJ
+ GZZOnUVQ7GGu6veLX06ejPsecnBPFjFcyNUS+FcmDdfW5lmlceAPwmTphqirCZBbBK5w
+ b10A==
+X-Gm-Message-State: AOAM533KVCsFIs1asMOpO2eC97Yp8XO2wQyY4xo0SUCFluf7h91tZvv+
+ ldMWcxJv1Y71Ibp3kwdT6R+faiu03dFl3366Ifg=
+X-Google-Smtp-Source: ABdhPJwrzX4R908X787m5pCkNfhqt1pa0auQvUb6jSQ5RECJlas/hTNiNuMIw0lJZP+KkheO/qddaS1r4cuYm+MR/EA=
+X-Received: by 2002:a05:6102:38ce:: with SMTP id
+ k14mr14134171vst.70.1639127185051; 
+ Fri, 10 Dec 2021 01:06:25 -0800 (PST)
 MIME-Version: 1.0
+References: <CALW65jbKsDGTXghqQFQe2CxYbWPakkaeFrr+3vAA4gAPjeeL2w@mail.gmail.com>
+In-Reply-To: <CALW65jbKsDGTXghqQFQe2CxYbWPakkaeFrr+3vAA4gAPjeeL2w@mail.gmail.com>
+From: Sergio Paracuellos <sergio.paracuellos@gmail.com>
+Date: Fri, 10 Dec 2021 10:06:14 +0100
+Message-ID: <CAMhs-H9ve2VtLm8x__DEb0_CpoYsqix1HwLDcZ8_ZeEK9vdfQg@mail.gmail.com>
+Subject: Re: MT7621 ethernet does not get probed on net-next branch after 5.15
+ merge
+To: DENG Qingfang <dqfext@gmail.com>
+Cc: netdev <netdev@vger.kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Siddhant Gupta <siddhantgupta416@gmail.com>,
+ Ilya Lipnitskiy <ilya.lipnitskiy@gmail.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Felix Fietkau <nbd@nbd.name>, 
+ John Crispin <john@phrozen.org>, Sean Wang <sean.wang@mediatek.com>, 
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Russell King <linux@armlinux.org.uk>, 
+ Jakub Kicinski <kuba@kernel.org>, David Miller <davem@davemloft.net>, 
+ =?UTF-8?Q?Ren=C3=A9_van_Dorst?= <opensource@vdorst.com>, 
+ OpenWrt Development List <openwrt-devel@lists.openwrt.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_004919_870349_6E29767D 
-X-CRM114-Status: GOOD (  14.77  )
+X-CRM114-CacheID: sfid-20211210_010628_851599_B8161512 
+X-CRM114-Status: GOOD (  16.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,35 +91,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Tzung-Bi Shih <tzungbi@google.com> writes:
+Hi Qingfang,
 
-> "ASIC revision" and "Firmware init done" shouldn't be error messages.
-> Reduces the severity level to info.
+On Fri, Oct 15, 2021 at 4:23 PM DENG Qingfang <dqfext@gmail.com> wrote:
 >
-> Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
-> ---
->  drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 2 +-
->  drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+> Hi,
 >
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-> index 6ada1ebe7d68..99b144fd8db5 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-> @@ -882,7 +882,7 @@ static int mt7921_load_firmware(struct mt7921_dev *dev)
->  	dev->mt76.hw->wiphy->wowlan = &mt76_connac_wowlan_support;
->  #endif /* CONFIG_PM */
->  
-> -	dev_err(dev->mt76.dev, "Firmware init done\n");
-> +	dev_info(dev->mt76.dev, "Firmware init done\n");
+> After the merge of 5.15.y into net-next, MT7621 ethernet
+> (mtk_eth_soc.c) does not get probed at all.
+>
+> Kernel log before 5.15 merge:
+> ...
+> libphy: Fixed MDIO Bus: probed
+> libphy: mdio: probed
+> mt7530 mdio-bus:1f: MT7530 adapts as multi-chip module
+> mtk_soc_eth 1e100000.ethernet eth0: mediatek frame engine at 0xbe100000, irq 20
+> mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+> ...
+>
+> Kernel log after 5.15 merge:
+> ...
+> libphy: Fixed MDIO Bus: probed
+> mt7621-pci 1e140000.pcie: host bridge /pcie@1e140000 ranges:
+> ...
+>
+>
+> I tried adding debug prints into the .mtk_probe function, but it did
+> not execute.
+> There are no dts changes for MT7621 between 5.14 and 5.15, so I
+> believe it should be something else.
+>
+> Any ideas?
 
-Shouldn't that be a debug message? Hard to see how's that useful in
-normal operation.
+I had time to create a new image for my gnubee board using kernel 5.15
+and this problem does not exist on my side. Since no more mails have
+come for a while I guess this was a problem from your configuration,
+but just in case I preferred to answer to let you know. I am currently
+using v5.15.7 from linux-stable with some other patches that will be
+for 5.16. Just in case, you can check the kernel tree [0] I am
+currently using.
 
--- 
-https://patchwork.kernel.org/project/linux-wireless/list/
+Best regards,
+     Sergio Paracuellos
 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+[0]: https://github.com/paraka/linux/tree/gbpc1-5.15
 
 _______________________________________________
 Linux-mediatek mailing list
