@@ -4,80 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F742C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 07:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56BB5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 08:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KJ08GMjTvIv6rcilWyh3N+/X65B81t68v21uwccNIh0=; b=dZgPtsIwUolnMP
-	KdRFlzt4gC9Vue3OLdGHdln3Mgt9CbZRRXxEnan5C7PSJLcYN13tMhYXExoB/PZvRXnZbmho7rdSV
-	3xgnrQsurfAjGtSNjw1zjfRQiuphACrfsGMLX0YWuPQE3Awpbyk0MdtxolwaPMXxEysP/ELXsKAg4
-	gSB9mX8JX0YGCU1W3pk+60VrAfq9WDjR9pmipB2V3lXOIFktjgpObANv5mwL6YFpxWL5HhQmICaYx
-	VbLup40ZWsrNUk0/hTcIFOlonv02+9DpJZP2m7xnUCkhjxuxLP4ltV1leF0rfkK08gPGUUDOdh0S5
-	WpCi/O45a8S9eJe82BPQ==;
+	List-Owner; bh=Zo86744IKTBrKRscq9BwCwhu9pFTdBjUQnYXIKaItFU=; b=HfipHbUn6UJqo8
+	A49FQGzS2I42Cm4iHdwUikGoDhU6+qr7CD+YQUUVqSZK30tWhh/tLBlx9RUrC/i23s6Rzaz+A9T8Y
+	z1YY71Jz9AIH/FKbSCvLaQayqLefBd6r+P59o8IZXT055oUxjD7JsjTJCfxh0JZ/VaV8oBmdPThZK
+	leasOpVbCeUvb/aB6oFy51si1jjTZyoWcWAhn0C3iVgwdJdoWI0uaWvMSIV8KzxRsQUDYcy8LVlJp
+	lwWd/KVNiCwK0mB9HBcg61FpxEeIsUqdud1sZEjxsu/vtPVl02WYHi5qdG2BzzIDojxltWDG4NNJf
+	hMo8GmEZgdb1UYiXEklg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvaj2-00175e-Ic; Fri, 10 Dec 2021 07:53:52 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1mvay5-0019PQ-SZ; Fri, 10 Dec 2021 08:09:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvaiz-00173u-O8
- for linux-mediatek@lists.infradead.org; Fri, 10 Dec 2021 07:53:50 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id m24so7362290pgn.7
- for <linux-mediatek@lists.infradead.org>; Thu, 09 Dec 2021 23:53:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=mJmmV17V4GqEpcKpliLXYPaRRnl952JuoJAtDoU5wX8=;
- b=KpGsh35qG074zspucC5/tttr2xImfhgK6xeclO/jIK+uh8oGcuMlU0gctYClhQsyR6
- RHkQne0c7wtceo51mXJZoVZhv55fcYG2K5cXhK51LJc5GBELhcCkkIVftmGwuE3TAG/4
- nWxmgi66cLT6ngZ18NHZLTg9N8Hn7Jtj9ShR8YLPSivpRzpNAHnpymDR1SpdnPGbl/4+
- mYlh5RrAnebcAYHdqGU7kZwCuA4pdlb1+fbpK0hLBzdnlp/w89dI/sNq/9YtJ4tkvksL
- PXHvjva3lYtxFm3lL4vBlpS+SPzyG7VCDqR8k19wrbo3aIUkmgz70YUhaGnwCPxwMyf9
- Yjvg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=mJmmV17V4GqEpcKpliLXYPaRRnl952JuoJAtDoU5wX8=;
- b=HXyjFL+U1prSh97c/wFGEpEnEtnhrZaoQPhj6cTXd4J1QMAYjJlzItxxlkPU4HNhgS
- VyIGTz7qDi0Y83oyTkI8+l3qNacFoV5+JJ2cU6r45zJmmlQaoErlRPDL3c2VXOwtPvNA
- 5AkhdYF00MCbmp70EvzD9dav9DESWa3xsKfxYpjoY5BmbeS1LTRjo9MJomYnaqenJeaK
- S7ujMSvNNAWVjL8VdCUKvepHtAbqXJCMQLJFKOwEoWwhkv8TGy7BGw/BlGUTgt7FRptL
- QmbvdZfCaqpFI7Z0MxLej2NQzk7lCpXes9vIsAESBqD8yivXzWGGGe9kdbmG5oHFHXyJ
- GgCw==
-X-Gm-Message-State: AOAM5308J2ZAXroJxlw7CC1BDUsnVALnSz5Nf3P12lrEFtrz+QAMRVkP
- zUse9AV1IJR2qzDt/PHjxfKzIw==
-X-Google-Smtp-Source: ABdhPJyFZ5NC0bEPoezW7x/sYUWkU2IvA/4QqqzZpR7AeY1ioHFOCiUytzlpI/kl0W13hFp9IqqMiw==
-X-Received: by 2002:a63:d354:: with SMTP id u20mr38051850pgi.366.1639122822857; 
- Thu, 09 Dec 2021 23:53:42 -0800 (PST)
-Received: from google.com ([2401:fa00:1:10:7fdb:7edf:3c09:a8eb])
- by smtp.gmail.com with ESMTPSA id m6sm1446947pfh.87.2021.12.09.23.53.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 Dec 2021 23:53:42 -0800 (PST)
-Date: Fri, 10 Dec 2021 15:53:38 +0800
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Yongqiang Niu <yongqiang.niu@mediatek.com>,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, nancy.lin@mediatek.com,
- singo.chang@mediatek.com
-Subject: Re: [PATCH] mailbox: add control_by_sw for mt8195
-Message-ID: <YbMHgkG/MwKNu0v1@google.com>
-References: <20211210061138.9943-1-jason-jh.lin@mediatek.com>
+ id 1mvaxs-0019OC-Im; Fri, 10 Dec 2021 08:09:14 +0000
+X-UUID: 9c95eb3a19de47adbca14ad4a6bf1944-20211210
+X-UUID: 9c95eb3a19de47adbca14ad4a6bf1944-20211210
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <james.lo@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1520812893; Fri, 10 Dec 2021 01:09:05 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 10 Dec 2021 00:08:38 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Fri, 10 Dec 2021 16:08:37 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 10 Dec 2021 16:08:36 +0800
+Message-ID: <a8275c2ee2a7fad619605b433d61077a03ed4796.camel@mediatek.com>
+Subject: Re: [PATCH v16 0/4] Add SPMI support for Mediatek SoC IC
+From: James Lo <james.lo@mediatek.com>
+To: Stephen Boyd <sboyd@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>
+CC: Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 10 Dec 2021 16:08:37 +0800
+In-Reply-To: <20211210021215.0EE19C004DD@smtp.kernel.org>
+References: <20211119034613.32489-1-james.lo@mediatek.com>
+ <20211210021215.0EE19C004DD@smtp.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211210061138.9943-1-jason-jh.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211209_235349_811825_3252C4D7 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211210_000912_658878_0F56B6A5 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,16 +76,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 10, 2021 at 02:11:38PM +0800, jason-jh.lin wrote:
-> To make sure the GCE request signal to SPM is not trigger by
-> other HW modules and cause suspend premature wake.
+On Thu, 2021-12-09 at 18:12 -0800, Stephen Boyd wrote:
+> Quoting James Lo (2021-11-18 19:46:09)
+> > This series adds support for new SoC MT6873/MT8192/MT8195 to the
+> > spmi driver.
+> > This series is based on Chun-Jie's patches[1].
+> > 
+> > [1] 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/list/?series=521655__;!!CTRNKA9wMg0ARbw!ycJplySfH-hTtYCIdjkF0VvfKgtq2B1NeOaBAOw5GU05898X6B7FN21KLkKTZiPC$
+> >  
 > 
-> Set 0x7 (the bit 0~2 as 1) to GCE_GCTL_VALUE, to configure the
-> request signal control by SW and release the request to SPM.
-> 
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> This isn't needed though right? I've picked these four patches up
+> into
+> spmi-next.
 
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+Yes. You are right.
+It's just for notice the patch dependency.
+Many Thanks!
+
 
 _______________________________________________
 Linux-mediatek mailing list
