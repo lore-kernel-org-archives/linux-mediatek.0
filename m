@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A32AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 17:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24862C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 17:49:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1KJMjWDOehSYZ77wIlFgOhsPrkQ0co+OsUq0XZBnSGM=; b=F7yP+qHmSye1B/
-	mWIbAEmK6GSky3CqGbQaFFMe2MiMh+WNTP0WVTd40FMUjSGKtexvlRNMM5XkqBy72iRJeN7XSkOEh
-	ap6niRh35W/ws5NX4z28OOag5KYzgpXatvKSb6CPIl+NffwrnYz3oIF8JVr3COTxY/tx1J9eGkOj1
-	L91AvfkNy37uNZ/7mUyTPAJzLeMeLl/HGhdcP69C5P3BlL3/CLrR2hF7vKBNuIMeqpr3Rq5uPH8UF
-	LDbsUo6BoFzQoaXAdXp0UpQvr5UjK8a4SZNGCYfsvRcWbF1QfZaUGVRBemnkXN3nAU1kxQatt07Eh
-	SPcifSTbXNcKKT6wNV0w==;
+	List-Owner; bh=YgJHsyE2OYRW4azBxr6zMKa9rcPTnRD7iOUIZMyLHcI=; b=X4VfIDE9KTp5tr
+	Y/6NjQbQ1TF0xGnn3rJzK13tDJ/Prm2GUjdff1wHdILMA4b5v8e2zx0zxIvdDFNALiNYi7D9DTzD/
+	gQYZnq0wYLnSReqZqZm7Tj7HkZq9jXeKmVDbhVJ20iZgskNkuWxEI1RymJuqKiDJgnkAFl7oapko3
+	Z/qualU+K/W0G8SB5exEIGARxHRTTS+JJghRjyD0pE03aH1lZxES8AxpaA9EsOHqUD4KbZf8LHJQE
+	78vWk/SpGSiEgrpuaB5uPreoWsOkjLhnREHXsPl4JeBm+QKVsjH4Wt/VJFIrJurX5dcmwvevP3rA/
+	59N25iV1dnKici7N6sWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvk05-002ys4-7W; Fri, 10 Dec 2021 17:48:05 +0000
+	id 1mvk1L-002zVL-UW; Fri, 10 Dec 2021 17:49:23 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvjzw-002yn1-7T; Fri, 10 Dec 2021 17:47:57 +0000
-X-UUID: 78fcdcf2a35f4e3f9b994fc3b46e5880-20211210
-X-UUID: 78fcdcf2a35f4e3f9b994fc3b46e5880-20211210
+ id 1mvjzx-002ynp-2O; Fri, 10 Dec 2021 17:47:58 +0000
+X-UUID: c2e06fa1b7814103a6d8858d9bf51b2a-20211210
+X-UUID: c2e06fa1b7814103a6d8858d9bf51b2a-20211210
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <flora.fu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 864391434; Fri, 10 Dec 2021 10:47:54 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1045587814; Fri, 10 Dec 2021 10:47:54 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Dec 2021 09:37:57 -0800
+ 15.0.1497.2; Fri, 10 Dec 2021 09:37:52 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 11 Dec 2021 01:37:55 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 11 Dec 2021 01:37:50 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 11 Dec 2021 01:37:55 +0800
+ Frontend Transport; Sat, 11 Dec 2021 01:37:50 +0800
 From: Flora Fu <flora.fu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Pi-Cheng Chen
  <pi-cheng.chen@mediatek.com>
@@ -46,17 +47,18 @@ CC: <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Flora
  Fu" <flora.fu@mediatek.com>, Yong Wu <yong.wu@mediatek.com>, JB Tsai
  <jb.tsai@mediatek.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Subject: [PATCH 5/6] arm64: dts: mt8195: Add APU power domain node
-Date: Sat, 11 Dec 2021 01:37:42 +0800
-Message-ID: <20211210173743.30906-6-flora.fu@mediatek.com>
+Subject: [PATCH 1/6] dt-bindings: soc: mediatek: apu: Add MT8195 APU power
+ domain
+Date: Sat, 11 Dec 2021 01:37:38 +0800
+Message-ID: <20211210173743.30906-2-flora.fu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211210173743.30906-1-flora.fu@mediatek.com>
 References: <20211210173743.30906-1-flora.fu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_094756_313409_5D6FD914 
-X-CRM114-Status: UNSURE (   8.05  )
+X-CRM114-CacheID: sfid-20211210_094757_154333_E344A6BE 
+X-CRM114-Status: UNSURE (   7.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -74,41 +76,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add APU power domain node to MT8195.
+Document the MT8195 APU power domain bindings.
 
 Signed-off-by: Flora Fu <flora.fu@mediatek.com>
 
 ---
- arch/arm64/boot/dts/mediatek/mt8195.dtsi | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ .../devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml        | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-index 828ac8a6b95f..6e60c4a38495 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-@@ -1375,6 +1375,22 @@
- 			reg = <0 0x19029000 0 0x1000>;
- 		};
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
+index e1b7d4030dc9..66547f899014 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,apu-pm.yaml
+@@ -21,6 +21,7 @@ properties:
+     items:
+       - enum:
+           - mediatek,mt8192-apu-pm
++          - mediatek,mt8195-apu-pm
+       - const: syscon
  
-+		apuspm: power-domain@190f0000 {
-+			compatible = "mediatek,mt8195-apu-pm", "syscon";
-+			reg = <0 0x190f0000 0 0x1000>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+			#power-domain-cells = <1>;
-+			mediatek,scpsys = <&scpsys>;
-+			mediatek,apu-conn = <&apu_conn>;
-+			mediatek,apu-conn1 = <&apu_conn1>;
-+			mediatek,apu-vcore = <&apu_vcore>;
-+			apu_top: power-domain@0 {
-+				reg = <0>;
-+				#power-domain-cells = <0>;
-+			};
-+		};
-+
- 		apusys_pll: clock-controller@190f3000 {
- 			compatible = "mediatek,mt8195-apusys_pll";
- 			reg = <0 0x190f3000 0 0x1000>;
+   reg:
 -- 
 2.18.0
 
