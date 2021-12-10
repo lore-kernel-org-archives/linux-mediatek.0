@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6D17C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 17:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E028C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 17:38:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tZC1lVaf6g4lIgJF7VFogSTmHVJKb3kExUNW0q5o/ZM=; b=LCh1PnfQR2gcOq
-	RMC8IkcDP+bK6sgiLNXuGmvP/dkgxShGEl5nTfJCVbnQfcD7F3Ma0aNbesugwA/8J0YJTjdvhnQA7
-	U6ajwXJN4nPI+3yQGphVpYTdPtdFYpgPdZnnDvNbKW1Dq42vv/uCXyDdidcyKZdo97pWbvn3ndZCa
-	nBQS0Hgv5vNcu8HmwOQSdFuh7si2l84Vimk6+KyzJ8cYDGrVflFhk8nIC3NFEaH1CXW53zi5t1ykx
-	NjArp7wb79lhhy6YoIinwPZK3kkJsRLV4/nUiH8NBK7UDysjDJor01Qp7dAXPzSZbiqm4egRStOp2
-	k++vGQTdiGuxaYe7TZgg==;
+	List-Owner; bh=/4QIsX0msj505Ud/Q1iedirvgffkAjY98yK2heJt3go=; b=fjzEjqyxWTmbfE
+	VrxX5i2PBkT/COiBLbWVgf5bKzIQPRuM/Co0ELvBZuSgNDfmJmzvbH0ANvSd75PA76dl8tlNeuQmY
+	G2vGMtkCCZMzho0U3pU1q2hEiqg1UHncNaXFR5PpFYBBKqq65hiDHEBMvHTiAUWrLPKtkaX/wslzJ
+	1ErPSda1nNiWeIEQlwgiQvUZatDZVzTmFVYpneReaIlOX4n/+bQRA9duFEfAhxyXSoWKk2F80wKjP
+	IsSWoecdmx+8PXXblcOH5B/69fcRVoppVbcMo8QZ+Odd9Fy4bdW6W/rgBmgqv4fTV30MdHh49AxMI
+	xLtvqEClSwwYzglJK+MA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvjqv-002uP2-7t; Fri, 10 Dec 2021 17:38:37 +0000
+	id 1mvjqx-002uPw-1X; Fri, 10 Dec 2021 17:38:39 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvjpO-002tg3-Ae; Fri, 10 Dec 2021 17:37:03 +0000
-X-UUID: 06339aca5c0542cd9115b5f13ceb4360-20211210
-X-UUID: 06339aca5c0542cd9115b5f13ceb4360-20211210
+ id 1mvjpN-002tgR-Vz; Fri, 10 Dec 2021 17:37:04 +0000
+X-UUID: 0277b4bc9dd3461f94a8236d7138e65b-20211210
+X-UUID: 0277b4bc9dd3461f94a8236d7138e65b-20211210
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <flora.fu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 237089193; Fri, 10 Dec 2021 10:36:59 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Dec 2021 09:26:58 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Sat, 11 Dec 2021 01:26:51 +0800
+ with ESMTP id 1427473666; Fri, 10 Dec 2021 10:36:55 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 10 Dec 2021 09:26:53 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 11 Dec 2021 01:26:48 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 11 Dec 2021 01:26:50 +0800
+ Frontend Transport; Sat, 11 Dec 2021 01:26:47 +0800
 From: Flora Fu <flora.fu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Liam Girdwood
  <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Sumit Semwal
@@ -49,18 +49,17 @@ CC: <linux-arm-kernel@lists.infradead.org>,
  <linux-media@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
  <linaro-mm-sig@lists.linaro.org>, Flora Fu <flora.fu@mediatek.com>, JB Tsai
  <jb.tsai@mediatek.com>
-Subject: [PATCH 14/17] arm64: dts: mt8192: Add apu tinysys node
-Date: Sat, 11 Dec 2021 01:26:02 +0800
-Message-ID: <20211210172605.30618-15-flora.fu@mediatek.com>
+Subject: [PATCH 10/17] soc: mediatek: apu: Add APU software logger dirver
+Date: Sat, 11 Dec 2021 01:25:58 +0800
+Message-ID: <20211210172605.30618-11-flora.fu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20211210172605.30618-1-flora.fu@mediatek.com>
 References: <20211210172605.30618-1-flora.fu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_093702_420135_C2AA3527 
-X-CRM114-Status: UNSURE (   9.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211210_093702_085225_94C2187E 
+X-CRM114-Status: GOOD (  25.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,60 +76,575 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add node for APU tinysys.
+The APU software logger is for debug for remote processor.
+The remote microprocessor's logs will be output to the mapped
+memory and application processor can read logs from the
+dedicated reserved registers
 
 Signed-off-by: Flora Fu <flora.fu@mediatek.com>
 
 ---
- arch/arm64/boot/dts/mediatek/mt8192.dtsi | 35 ++++++++++++++++++++++++
- 1 file changed, 35 insertions(+)
+ drivers/soc/mediatek/apusys/Makefile        |   2 +
+ drivers/soc/mediatek/apusys/apu-sw-logger.c | 540 ++++++++++++++++++++
+ 2 files changed, 542 insertions(+)
+ create mode 100644 drivers/soc/mediatek/apusys/apu-sw-logger.c
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-index 62acaba7b033..de73fbf0cb90 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-@@ -914,6 +914,41 @@
- 			#mbox-cells = <1>;
- 		};
- 
-+		apusys_rv@19001000 {
-+			compatible = "mediatek,mt8192-apusys-rv", "simple-mfd";
-+			reg = <0 0x19000000 0 0x1000>,
-+			      <0 0x19001000 0 0x1000>,
-+			      <0 0x19002000 0 0x10>;
-+			reg-names = "apu_mbox",
-+				    "md32_sysctrl",
-+				    "apu_wdt";
-+			power-domains = <&apuspm 0>;
-+			iommus = <&iommu_apu IOMMU_PORT_APU_DATA>;
-+			interrupts = <GIC_SPI 393 IRQ_TYPE_LEVEL_HIGH 0>;
-+			interrupt-names = "apu_wdt";
-+			mboxes = <&apu_mailbox 0>;
+diff --git a/drivers/soc/mediatek/apusys/Makefile b/drivers/soc/mediatek/apusys/Makefile
+index 8fff18d63dc1..6fb69abcf3b9 100644
+--- a/drivers/soc/mediatek/apusys/Makefile
++++ b/drivers/soc/mediatek/apusys/Makefile
+@@ -5,3 +5,5 @@ obj-$(CONFIG_MTK_APU) += mtk_apu_pwr.o
+ mtk_apu_pwr-objs += apu-pwr.o
+ mtk_apu_pwr-objs += apu-pwr-ipi.o
+ mtk_apu_pwr-$(CONFIG_MTK_APU_DEBUG) += apu-pwr-dbg.o
 +
-+			apu_ctrl {
-+				compatible = "mediatek,apu-ctrl-rpmsg";
-+				mtk,rpmsg-name = "apu-ctrl-rpmsg";
-+			};
++obj-$(CONFIG_MTK_APU_DEBUG) += apu-sw-logger.o
+diff --git a/drivers/soc/mediatek/apusys/apu-sw-logger.c b/drivers/soc/mediatek/apusys/apu-sw-logger.c
+new file mode 100644
+index 000000000000..98a9748e92a7
+--- /dev/null
++++ b/drivers/soc/mediatek/apusys/apu-sw-logger.c
+@@ -0,0 +1,540 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ */
 +
-+			apu_pwr_tx {
-+				compatible = "mediatek,apupwr-tx-rpmsg";
-+				mtk,rpmsg-name = "apupwr-tx-rpmsg";
-+			};
++#include <linux/debugfs.h>
++#include <linux/delay.h>
++#include <linux/dma-mapping.h>
++#include <linux/fs.h>
++#include <linux/module.h>
++#include <linux/of_platform.h>
++#include <linux/platform_device.h>
++#include <linux/remoteproc/mtk-apu-config.h>
++#include <linux/sched/signal.h>
++#include <linux/seq_file.h>
++#include <linux/slab.h>
++#include <linux/spinlock.h>
++#include <linux/timer.h>
 +
-+			apu_pwr_rx {
-+				compatible = "mediatek,apupwr-rx-rpmsg";
-+				mtk,rpmsg-name = "apupwr-rx-rpmsg";
-+			};
++#define APUSYS_LOGGER_DIR "apu_logger"
 +
-+			apu_mdw_rpmsg {
-+				compatible = "mediatek,apu-mdw-rpmsg";
-+				mtk,rpmsg-name = "apu-mdw-rpmsg";
-+			};
-+		};
++#define LOG_LINE_MAX_LENS SZ_128
++#define APU_LOG_SIZE SZ_1M
++#define APU_LOG_BUF_SIZE SZ_1M
 +
- 		iommu_apu: iommu@19010000 {
- 			compatible = "mediatek,mt8192-iommu-apu";
- 			reg = <0 0x19010000 0 0x1000>;
++#define LOG_W_PTR 0x0
++#define LOG_R_PTR 0x4
++#define LOG_OV_FLG 0xC
++
++struct sw_logger_seq_data {
++	u32 w_ptr;
++	u32 r_ptr;
++	u32 overflow_flg;
++	int i;
++	int is_finished;
++	char *data;
++	bool startl_first;
++};
++
++struct apu_sw_logger {
++	struct device *dev;
++	struct dentry *dbg_root;
++	dma_addr_t handle;
++	char *sw_log_buf;
++	void __iomem *apu_slog;
++	spinlock_t logger_spinlock; /* logger status update lock */
++	struct sw_logger_seq_data pseqdata_lock;
++	struct sw_logger_seq_data *pseqdata;
++};
++
++static struct dentry *log_root;
++static struct dentry *log_seqlog;
++static struct dentry *log_seqlogl;
++static struct device *sw_logger_dev;
++
++static void sw_logger_buf_invalidate(struct apu_sw_logger *logger)
++{
++	dma_sync_single_for_cpu(logger->dev, logger->handle, APU_LOG_SIZE,
++				DMA_FROM_DEVICE);
++}
++
++static int sw_logger_buf_alloc(struct device *dev)
++{
++	struct apu_sw_logger *logger = dev_get_drvdata(dev);
++	int ret;
++
++	ret = dma_set_coherent_mask(logger->dev, DMA_BIT_MASK(64));
++	if (ret)
++		return ret;
++
++	logger->sw_log_buf = kzalloc(APU_LOG_SIZE, GFP_KERNEL);
++	if (!logger->sw_log_buf)
++		return -ENOMEM;
++
++	logger->handle = dma_map_single(logger->dev, logger->sw_log_buf,
++					APU_LOG_SIZE, DMA_FROM_DEVICE);
++	if (dma_mapping_error(logger->dev, logger->handle) != 0) {
++		kfree(logger->sw_log_buf);
++		logger->sw_log_buf = NULL;
++		return -EFAULT;
++	}
++
++	return 0;
++}
++
++int sw_logger_config_init(struct config_v1 *conf)
++{
++	int ret;
++	unsigned long flags;
++	struct logger_init_info *st_logger_init_info;
++	struct apu_sw_logger *logger;
++
++	if (!conf)
++		return -EINVAL;
++
++	if (!sw_logger_dev) {
++		pr_debug("%s: logger NA and skip logger\n",
++			 __func__);
++		return 0;
++	}
++
++	logger = dev_get_drvdata(sw_logger_dev);
++	if (!logger->sw_log_buf) {
++		ret = sw_logger_buf_alloc(logger->dev);
++		if (ret) {
++			dev_err(logger->dev, "%s: sw_logger_buf_alloc fail\n",
++				__func__);
++			return ret;
++		}
++	}
++
++	spin_lock_irqsave(&logger->logger_spinlock, flags);
++	iowrite32(0, logger->apu_slog + LOG_W_PTR);
++	iowrite32(0, logger->apu_slog + LOG_R_PTR);
++	iowrite32(0, logger->apu_slog + LOG_OV_FLG);
++	spin_unlock_irqrestore(&logger->logger_spinlock, flags);
++
++	st_logger_init_info = (struct logger_init_info *)
++		get_apu_config_user_ptr(conf, LOGGER_INIT_INFO);
++
++	st_logger_init_info->iova = logger->handle;
++
++	return 0;
++}
++EXPORT_SYMBOL(sw_logger_config_init);
++
++void sw_logger_config_remove(void)
++{
++	struct apu_sw_logger *logger = dev_get_drvdata(sw_logger_dev);
++
++	if (logger->handle)
++		dma_unmap_single(logger->dev, logger->handle,
++				 APU_LOG_SIZE, DMA_FROM_DEVICE);
++	kfree(logger->sw_log_buf);
++	logger->sw_log_buf = NULL;
++}
++EXPORT_SYMBOL(sw_logger_config_remove);
++
++/*
++ * seq_start() takes a position as an argument and returns an iterator which
++ * will start reading at that position.
++ * start->show->next->show...->next->show->next->stop->start->stop
++ */
++static void *seq_start(struct seq_file *s, loff_t *pos)
++{
++	struct apu_sw_logger *logger = (struct apu_sw_logger *)s->private;
++	u32 w_ptr, r_ptr, overflow_flg;
++	unsigned long flags;
++
++	if (!logger->sw_log_buf) {
++		pr_err("%s: sw_log_buf == NULL\n", __func__);
++		return NULL;
++	}
++
++	spin_lock_irqsave(&logger->logger_spinlock, flags);
++	w_ptr = ioread32(logger->apu_slog + LOG_W_PTR);
++	r_ptr = ioread32(logger->apu_slog + LOG_R_PTR);
++	overflow_flg = ioread32(logger->apu_slog + LOG_OV_FLG);
++	spin_unlock_irqrestore(&logger->logger_spinlock, flags);
++
++	sw_logger_buf_invalidate(logger);
++
++	if (w_ptr == r_ptr && overflow_flg == 0)
++		return NULL;
++
++	if (!logger->pseqdata) {
++		logger->pseqdata = kzalloc(sizeof(*logger->pseqdata),
++					   GFP_KERNEL);
++		if (logger->pseqdata) {
++			logger->pseqdata->w_ptr = w_ptr;
++			logger->pseqdata->r_ptr = r_ptr;
++			logger->pseqdata->overflow_flg = overflow_flg;
++			if (overflow_flg == 0)
++				logger->pseqdata->i = r_ptr;
++			else
++				logger->pseqdata->i = w_ptr;
++
++			logger->pseqdata->is_finished = 0;
++		}
++	}
++
++	return logger->pseqdata;
++}
++
++/*
++ * seq_start() takes a position as an argument and returns an iterator which
++ * will start reading at that position.
++ */
++static void *seq_startl(struct seq_file *s, loff_t *pos)
++{
++	struct apu_sw_logger *logger = s->private;
++	u32 w_ptr, r_ptr, overflow_flg;
++	struct sw_logger_seq_data *pseqdata_lock = &logger->pseqdata_lock;
++	unsigned long flags;
++
++	if (!logger->sw_log_buf)
++		return NULL;
++
++	spin_lock_irqsave(&logger->logger_spinlock, flags);
++	w_ptr = ioread32(logger->apu_slog + LOG_W_PTR);
++	r_ptr = ioread32(logger->apu_slog + LOG_R_PTR);
++	overflow_flg = ioread32(logger->apu_slog + LOG_OV_FLG);
++	spin_unlock_irqrestore(&logger->logger_spinlock, flags);
++
++	sw_logger_buf_invalidate(logger);
++
++	/* for ctrl-c to force exit the loop */
++	while (!signal_pending(current) && w_ptr == r_ptr) {
++		usleep_range(10000, 12000);
++
++		spin_lock_irqsave(&logger->logger_spinlock, flags);
++		w_ptr = ioread32(logger->apu_slog + LOG_W_PTR);
++		r_ptr = ioread32(logger->apu_slog + LOG_R_PTR);
++		overflow_flg = ioread32(logger->apu_slog + LOG_OV_FLG);
++		spin_unlock_irqrestore(&logger->logger_spinlock, flags);
++
++		sw_logger_buf_invalidate(logger);
++
++		pseqdata_lock->w_ptr = w_ptr;
++		pseqdata_lock->r_ptr = r_ptr;
++		pseqdata_lock->overflow_flg = overflow_flg;
++		pseqdata_lock->i = r_ptr;
++	}
++
++	if (pseqdata_lock->startl_first ||
++	    pseqdata_lock->i == pseqdata_lock->w_ptr) {
++		pseqdata_lock->startl_first = false;
++		pseqdata_lock->w_ptr = w_ptr;
++		pseqdata_lock->r_ptr = r_ptr;
++		pseqdata_lock->overflow_flg = overflow_flg;
++		pseqdata_lock->i = r_ptr;
++	}
++
++	if (signal_pending(current))
++		pseqdata_lock->startl_first = true;
++
++	return pseqdata_lock;
++}
++
++/*
++ * move the iterator forward to the next position in the sequence
++ */
++static void *seq_next(struct seq_file *s, void *v, loff_t *pos)
++{
++	struct sw_logger_seq_data *psdata = v;
++
++	if (!psdata) {
++		pr_err("%s: psdata == NULL\n", __func__);
++		return NULL;
++	}
++
++	psdata->i = (psdata->i + LOG_LINE_MAX_LENS) % APU_LOG_SIZE;
++
++	/* prevent kernel warning */
++	*pos = psdata->i;
++
++	if (psdata->i != psdata->w_ptr)
++		return v;
++
++	psdata->is_finished = 1;
++	return NULL;
++}
++
++/*
++ * move the iterator forward to the next position in the sequence
++ */
++static void *seq_next_lock(struct seq_file *s, void *v, loff_t *pos)
++{
++	struct apu_sw_logger *logger = s->private;
++	struct sw_logger_seq_data *psdata = v;
++
++	if (!psdata) {
++		pr_err("%s: psdata == NULL\n", __func__);
++		return NULL;
++	}
++
++	psdata->i = (psdata->i + LOG_LINE_MAX_LENS) % APU_LOG_SIZE;
++
++	/* prevent kernel warning */
++	*pos = psdata->i;
++
++	if (psdata->i != psdata->w_ptr)
++		return v;
++
++	iowrite32(psdata->i, logger->apu_slog + LOG_R_PTR);
++	return NULL;
++}
++
++/*
++ * stop() is called when iteration is complete (clean up)
++ */
++static void seq_stop(struct seq_file *s, void *v)
++{
++	struct apu_sw_logger *logger = (struct apu_sw_logger *)s->private;
++	unsigned long flags;
++
++	if (logger->pseqdata) {
++		if (logger->pseqdata->is_finished == 1) {
++			spin_lock_irqsave(&logger->logger_spinlock, flags);
++			iowrite32(logger->pseqdata->i,
++				  logger->apu_slog + LOG_R_PTR);
++			/* fixme: assume next overflow won't happen
++			 * until next seq_start
++			 */
++			iowrite32(0, logger->apu_slog + LOG_OV_FLG);
++			spin_unlock_irqrestore(&logger->logger_spinlock, flags);
++			kfree(logger->pseqdata);
++			logger->pseqdata = NULL;
++		}
++	}
++}
++
++/*
++ * stop() is called when iteration is complete (clean up)
++ */
++static void seq_stopl(struct seq_file *s, void *v)
++{
++}
++
++/*
++ * success return 0, otherwise return error code
++ */
++static int seq_show(struct seq_file *s, void *v)
++{
++	struct apu_sw_logger *logger = (struct apu_sw_logger *)s->private;
++	struct sw_logger_seq_data *psdata = v;
++
++	seq_printf(s, "%s", logger->sw_log_buf + psdata->i);
++
++	return 0;
++}
++
++static int seq_showl(struct seq_file *s, void *v)
++{
++	struct apu_sw_logger *logger = (struct apu_sw_logger *)s->private;
++	struct sw_logger_seq_data *psdata = v;
++
++	if (psdata->i != psdata->w_ptr)
++		seq_printf(s, "%s", logger->sw_log_buf + psdata->i);
++
++	return 0;
++}
++
++static const struct seq_operations seq_ops = {
++	.start = seq_start,
++	.next  = seq_next,
++	.stop  = seq_stop,
++	.show  = seq_show
++};
++
++static const struct seq_operations seq_ops_lock = {
++	.start = seq_startl,
++	.next  = seq_next_lock,
++	.stop  = seq_stopl,
++	.show  = seq_showl
++};
++
++static int debug_sqopen_lock(struct inode *inode, struct file *file)
++{
++	struct apu_sw_logger *logger = inode->i_private;
++	int ret;
++
++	ret = seq_open(file, &seq_ops_lock);
++	if (ret)
++		return ret;
++
++	((struct seq_file *)file->private_data)->private = logger;
++
++	return 0;
++}
++
++static int debug_sqopen(struct inode *inode, struct file *file)
++{
++	struct apu_sw_logger *logger = inode->i_private;
++	int ret;
++
++	ret = seq_open(file, &seq_ops);
++	if (ret)
++		return ret;
++
++	((struct seq_file *)file->private_data)->private = logger;
++
++	return 0;
++}
++
++static const struct file_operations seqlog_ops = {
++	.owner   = THIS_MODULE,
++	.open    = debug_sqopen,
++	.read    = seq_read,
++	.llseek  = seq_lseek,
++	.release = seq_release,
++};
++
++static const struct file_operations seqlogl_ops = {
++	.owner   = THIS_MODULE,
++	.open    = debug_sqopen_lock,
++	.read    = seq_read,
++	.llseek  = seq_lseek,
++	.release = seq_release,
++};
++
++static int sw_logger_create_debugfs(struct device *dev)
++{
++	struct apu_sw_logger *logger = dev_get_drvdata(dev);
++	int ret = 0;
++
++	logger->dbg_root = NULL;
++	log_root = debugfs_create_dir(APUSYS_LOGGER_DIR, logger->dbg_root);
++	ret = IS_ERR_OR_NULL(log_root);
++	if (ret) {
++		dev_err(dev, "(%d)failed to create apusys_logger dir\n", ret);
++		goto out;
++	}
++
++	log_seqlog = debugfs_create_file("seq_log", 0444,
++					 log_root, logger, &seqlog_ops);
++	ret = IS_ERR_OR_NULL(log_seqlog);
++	if (ret) {
++		dev_err(dev, "(%d)failed to create apusys_logger node(seqlog)\n",
++			ret);
++		goto out;
++	}
++
++	log_seqlogl = debugfs_create_file("seq_logl", 0444,
++					  log_root, logger, &seqlogl_ops);
++	ret = IS_ERR_OR_NULL(log_seqlogl);
++	if (ret) {
++		dev_err(dev, "(%d)failed to create apusys_logger node(seqlogL)\n",
++			ret);
++		goto out;
++	}
++
++	return 0;
++
++out:
++	debugfs_remove_recursive(log_root);
++	return ret;
++}
++
++static void sw_logger_remove_debugfs(struct device *dev)
++{
++	debugfs_remove_recursive(log_root);
++}
++
++static int sw_logger_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct apu_sw_logger *logger;
++	struct resource *res;
++	int ret = 0;
++
++	logger = devm_kzalloc(dev, sizeof(struct apu_sw_logger), GFP_KERNEL);
++	if (!logger)
++		return -ENOMEM;
++
++	platform_set_drvdata(pdev, logger);
++
++	logger->dev = dev;
++	sw_logger_dev = dev;
++	spin_lock_init(&logger->logger_spinlock);
++
++	ret = sw_logger_create_debugfs(dev);
++	if (ret) {
++		dev_err(dev, "%s fail\n", __func__);
++		goto remove_debugfs;
++	}
++
++	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res) {
++		dev_info(dev, "%s: apu log get resource fail\n", __func__);
++		ret = -ENODEV;
++		goto remove_ioremap;
++	}
++	logger->apu_slog = ioremap(res->start, res->end - res->start + 1);
++	if (IS_ERR((void const *)logger->apu_slog)) {
++		dev_info(dev, "%s: apu_slog remap base fail\n", __func__);
++		ret = -ENOMEM;
++		goto remove_ioremap;
++	}
++
++	return 0;
++
++remove_ioremap:
++	if (logger->apu_slog)
++		iounmap(logger->apu_slog);
++
++remove_debugfs:
++	sw_logger_remove_debugfs(dev);
++
++	return ret;
++}
++
++static int sw_logger_remove(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++
++	sw_logger_remove_debugfs(dev);
++
++	return 0;
++}
++
++static const struct of_device_id sw_logger_of_match[] = {
++	{ .compatible = "mediatek,apu-sw-logger"},
++	{},
++};
++MODULE_DEVICE_TABLE(of, sw_logger_of_match);
++
++static struct platform_driver sw_logger_driver = {
++	.probe = sw_logger_probe,
++	.remove = sw_logger_remove,
++	.driver = {
++		.name = "apu-sw-logger",
++		.of_match_table = of_match_ptr(sw_logger_of_match),
++	}
++};
++
++static int __init sw_logger_init(void)
++{
++	int ret = 0;
++
++	allow_signal(SIGKILL);
++	ret = platform_driver_register(&sw_logger_driver);
++	if (ret != 0) {
++		pr_err("failed to register sw_logger driver");
++		return -ENODEV;
++	}
++
++	return ret;
++}
++
++static void __exit sw_logger_exit(void)
++{
++	platform_driver_unregister(&sw_logger_driver);
++}
++
++module_init(sw_logger_init);
++module_exit(sw_logger_exit);
++MODULE_LICENSE("GPL v2");
++MODULE_DESCRIPTION("MediaTek APU SW Logger Driver");
++
 -- 
 2.18.0
 
