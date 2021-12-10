@@ -4,75 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B901FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 14:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D648C4321E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 15:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z33wMemcoEQWRE4uvoiihiN6UnNTkV1DfM6Y5gakNn0=; b=WWa/AD7Vi/lGoD
-	PDn1wWD1MR9uHnHW48ww45a2GLcQ/WjKZId3gCSpGj6nnwnrq1MeVU8oFaAwnLaqo2OT5mH38ORK2
-	wQzF+YU9nQO6h+e2+hyoXonMlkD/58yM7jPUCQ/PL6Xx5e/GvhNHORyabZhc0G9PodLEQOxhRizOl
-	ic9ziolSMCWW+X8jZEj6SWWAwMWjqkm1K/yFeF5LMCw1sl0HhRf1AvhA2V35/XeE+ObOyLTg9EI4q
-	vDeut+WiKyvC0VBem2IDbIaAT4ZlssH5E1SgC1KPaqTWcssOYXlvLGRuVKVB198ULebGu9tCycXHQ
-	Hj/6eCQRiQ1kIufzUT7w==;
+	List-Owner; bh=haxVD68dEts7hzIEH03ggFrTQxi2nmwKQ/rihlklUTE=; b=Gm7cfvH1V8Jv9z
+	Q9xg8qM+US98GcJgAnUk/t9Q6ECIq9dmz8fMRSH98RwuJs3hqk8Xl9qem4UUdeKOtjfJRfwvmWoKO
+	BTSTyne0lhfxgDjUJ6fC/C2DJc1C2RAOOQDaruXzz6hU/x+KOp3UrypgDnkzJSJ4swnw2tbneQk3o
+	cy1WHPx2/VRPeNYqd/nVfGxiA5A+gm6UoMRZl156CJlRRe/xSCVx0M+yZrw0jV6is+2OBlndw/bgw
+	41JL+WpP3k2RHXxhCFnPTvdfBnydEDtUQLGsdHkygvgQo2gu/rFgYWgE6hIdtizZf6YvdDo3P9YRP
+	axtlnmfRmUgze50JpX0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvgUx-0027Pl-8f; Fri, 10 Dec 2021 14:03:43 +0000
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+	id 1mvi4n-002UnR-0h; Fri, 10 Dec 2021 15:44:49 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvgUP-0027Cf-Rj; Fri, 10 Dec 2021 14:03:11 +0000
-Received: by mail-ot1-f50.google.com with SMTP id
- x3-20020a05683000c300b0057a5318c517so9638127oto.13; 
- Fri, 10 Dec 2021 06:03:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=k7EaRnob3zOEquu+wkUbm05857jqaStaszAJkkyFu8I=;
- b=wlQ6tBe7OnhRvZxq4R0CDVkpxUvQ84wO6Xs6KUuVk7AmRow7mvVIKu1/XneH3jsK65
- 62hwKWBOWP8EztAfDsgK+2VvtwjdWk6pLoGXSDmR3vCu/mt7747sbLE6L2DDG4sfVq+V
- Xf6HMFShJBzLOxw0Gidll608O1egZL3ANilBTCT840V+3nQa3luumYZa3hR1E/Pm85T3
- 6Iley1WJJd5XY7KXA55/1e5PAb5csK3VEjpBTSEzpcwBbMxYozix2YS3ti12aDeqrlwP
- jv3llWqFyH3iOGrEkIGfVUI+iCRMOrL5BxdnW4jAbP9l+yrFVBAnsaTNhjuv/qYXYORP
- KTTA==
-X-Gm-Message-State: AOAM532r8a5dEa4UskOe+ZoD73E66uBOrUOKeQ7N/VRXwXXpT76HInbA
- TR2tyGxsD9JMcMWGtO93nw==
-X-Google-Smtp-Source: ABdhPJw8097NeWY7msvS0XSMdwLw1NEYFR27r4qN30zbTRskT35vsrks871Xs7VoBvqNOAmesE3DHQ==
-X-Received: by 2002:a05:6830:18b:: with SMTP id
- q11mr11543396ota.113.1639144985532; 
- Fri, 10 Dec 2021 06:03:05 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id t14sm554859oth.81.2021.12.10.06.03.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Dec 2021 06:03:04 -0800 (PST)
-Received: (nullmailer pid 1252259 invoked by uid 1000);
- Fri, 10 Dec 2021 14:02:56 -0000
-From: Rob Herring <robh@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: Jose Abreu <joabreu@synopsys.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- srv_heupstream@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, davem@davemloft.net,
- angelogioacchino.delregno@collabora.com, devicetree@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, linux-kernel@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, dkirjanov@suse.de,
- linux-mediatek@lists.infradead.org,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, macpaul.lin@mediatek.com,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>
-In-Reply-To: <20211210013129.811-5-biao.huang@mediatek.com>
-References: <20211210013129.811-1-biao.huang@mediatek.com>
- <20211210013129.811-5-biao.huang@mediatek.com>
-Subject: Re: [PATCH net-next v8 4/6] net: dt-bindings: dwmac: Convert
- mediatek-dwmac to DT schema
-Date: Fri, 10 Dec 2021 08:02:56 -0600
-Message-Id: <1639144976.227854.1252258.nullmailer@robh.at.kernel.org>
+ id 1mvi4I-002UPz-3O; Fri, 10 Dec 2021 15:44:20 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 46783B82899;
+ Fri, 10 Dec 2021 15:44:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EDE31C341C6;
+ Fri, 10 Dec 2021 15:44:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1639151056;
+ bh=U+1FevzHmy0ZqiqdIP2yUZ4w5TY9qcZ0u/4j+FLtE+g=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=GhSaAGP2sxqzy7xVxl/46uNuDQrqLhGwawyIV8ldS0VQsAn6RLmfJjbRmyrpqH4Aq
+ i4YVW0sznbgC7VW6WAbpMCk0NyHc3QX/OqwIWmqAbOKJcu2dMsRToY8zXDaDtJgAeb
+ /xx6XbVA3TVSJr48y3G2y8Cf4BflDUSWlrP+wEyU7u7Lk/RJQuRDc06pVx5y5hGb4o
+ blyexbqvFqrnik9SY7pYbJ+otfQb6MSnhMdzFjjcG4vcy+oNmeajduKlYgtC7+N+Rq
+ l6228myrQ4YZqQDBSuxCFu4Ksm9beKJRxvd8QHtSsFlBtZDzPP46BKMGlm37GLqmAn
+ idsgwbMepZsUg==
+Received: by mail-ed1-f46.google.com with SMTP id e3so31899888edu.4;
+ Fri, 10 Dec 2021 07:44:15 -0800 (PST)
+X-Gm-Message-State: AOAM5331ciYBdaveJHU0DjSUuq0nLZM98gbHg+p9DzGIKnJLMTb5tMoL
+ /uQvGgCkTT1EEDtmeWQhPFsRCQlcRqhtHNfHFw==
+X-Google-Smtp-Source: ABdhPJwXCU+Z5NaN2BTHX/zMqkJH+ZZTVToTgcBEJQr6kwb8d7FIu3S+CacUJxCflUZLiBN1DbqE7KciG3vLx8r6e2w=
+X-Received: by 2002:a17:906:7955:: with SMTP id
+ l21mr25651980ejo.6.1639151054211; 
+ Fri, 10 Dec 2021 07:44:14 -0800 (PST)
+MIME-Version: 1.0
+References: <20211210061138.9943-1-jason-jh.lin@mediatek.com>
+In-Reply-To: <20211210061138.9943-1-jason-jh.lin@mediatek.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Fri, 10 Dec 2021 23:44:03 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_-dO9hXaPCEhJymrCDYU-P-wOvS0YLYQ-gyYX1_morteg@mail.gmail.com>
+Message-ID: <CAAOTY_-dO9hXaPCEhJymrCDYU-P-wOvS0YLYQ-gyYX1_morteg@mail.gmail.com>
+Subject: Re: [PATCH] mailbox: add control_by_sw for mt8195
+To: "jason-jh.lin" <jason-jh.lin@mediatek.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Jassi Brar <jassisinghbrar@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, tzungbi@google.com, 
+ Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ linux-kernel <linux-kernel@vger.kernel.org>, 
+ DTML <devicetree@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Nancy Lin <nancy.lin@mediatek.com>, singo.chang@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_060309_932042_8ADE6187 
-X-CRM114-Status: GOOD (  13.12  )
+X-CRM114-CacheID: sfid-20211210_074418_324418_1636E1B7 
+X-CRM114-Status: GOOD (  17.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,57 +81,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 10 Dec 2021 09:31:27 +0800, Biao Huang wrote:
-> Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
-> And there are some changes in .yaml than .txt, others almost keep the same:
->   1. compatible "const: snps,dwmac-4.20".
->   2. delete "snps,reset-active-low;" in example, since driver remove this
->      property long ago.
->   3. add "snps,reset-delay-us = <0 10000 10000>" in example.
->   4. the example is for rgmii interface, keep related properties only.
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  .../bindings/net/mediatek-dwmac.txt           |  91 ----------
->  .../bindings/net/mediatek-dwmac.yaml          | 156 ++++++++++++++++++
->  2 files changed, 156 insertions(+), 91 deletions(-)
->  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
->  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> 
-
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
-
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
-
-Full log is available here: https://patchwork.ozlabs.org/patch/1566169
-
-
-ethernet@1101c000: clock-names: ['axi', 'apb', 'mac_main', 'ptp_ref'] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: clocks: [[27, 34], [27, 37], [6, 154], [6, 155]] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: compatible: ['mediatek,mt2712-gmac'] does not contain items matching the given schema
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: compatible: 'oneOf' conditional failed, one must be fixed:
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: Unevaluated properties are not allowed ('compatible', 'reg', 'interrupts', 'interrupt-names', 'mac-address', 'clock-names', 'clocks', 'power-domains', 'snps,axi-config', 'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,txpbl', 'snps,rxpbl', 'clk_csr', 'phy-mode', 'phy-handle', 'snps,reset-gpio', 'mdio' were unexpected)
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGksIEphc29uOgoKamFzb24tamgubGluIDxqYXNvbi1qaC5saW5AbWVkaWF0ZWsuY29tPiDmlrwg
+MjAyMeW5tDEy5pyIMTDml6Ug6YCx5LqUIOS4i+WNiDI6MTHlr6vpgZPvvJoKPgo+IFRvIG1ha2Ug
+c3VyZSB0aGUgR0NFIHJlcXVlc3Qgc2lnbmFsIHRvIFNQTSBpcyBub3QgdHJpZ2dlciBieQo+IG90
+aGVyIEhXIG1vZHVsZXMgYW5kIGNhdXNlIHN1c3BlbmQgcHJlbWF0dXJlIHdha2UuCj4KPiBTZXQg
+MHg3ICh0aGUgYml0IDB+MiBhcyAxKSB0byBHQ0VfR0NUTF9WQUxVRSwgdG8gY29uZmlndXJlIHRo
+ZQo+IHJlcXVlc3Qgc2lnbmFsIGNvbnRyb2wgYnkgU1cgYW5kIHJlbGVhc2UgdGhlIHJlcXVlc3Qg
+dG8gU1BNLgoKSG93IGRvZXMgbXQ4MTczLCBtdDgxODMsIGFuZCBtdDY3NzkgcHJldmVudCB0aGlz
+PyBPciB0aGVzZSBTb0NzIGNvdWxkCm5vdCBwcmV2ZW50IHRoaXM/CgpSZWdhcmRzLApDaHVuLUt1
+YW5nLgoKPgo+IFNpZ25lZC1vZmYtYnk6IGphc29uLWpoLmxpbiA8amFzb24tamgubGluQG1lZGlh
+dGVrLmNvbT4KPiAtLS0KPiAgZHJpdmVycy9tYWlsYm94L210ay1jbWRxLW1haWxib3guYyB8IDIg
+Ky0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pCj4KPiBk
+aWZmIC0tZ2l0IGEvZHJpdmVycy9tYWlsYm94L210ay1jbWRxLW1haWxib3guYyBiL2RyaXZlcnMv
+bWFpbGJveC9tdGstY21kcS1tYWlsYm94LmMKPiBpbmRleCBhODg0NWIxNjJkYmYuLjM0MmI5MWYx
+NmU2NSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL21haWxib3gvbXRrLWNtZHEtbWFpbGJveC5jCj4g
+KysrIGIvZHJpdmVycy9tYWlsYm94L210ay1jbWRxLW1haWxib3guYwo+IEBAIC02NjQsNyArNjY0
+LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBnY2VfcGxhdCBnY2VfcGxhdF92NSA9IHsKPiAgc3Rh
+dGljIGNvbnN0IHN0cnVjdCBnY2VfcGxhdCBnY2VfcGxhdF92NiA9IHsKPiAgICAgICAgIC50aHJl
+YWRfbnIgPSAyNCwKPiAgICAgICAgIC5zaGlmdCA9IDMsCj4gLSAgICAgICAuY29udHJvbF9ieV9z
+dyA9IGZhbHNlLAo+ICsgICAgICAgLmNvbnRyb2xfYnlfc3cgPSB0cnVlLAo+ICAgICAgICAgLmdj
+ZV9udW0gPSAyCj4gIH07Cj4KPiAtLQo+IDIuMTguMAo+CgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
+dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
