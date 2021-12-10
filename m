@@ -4,59 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 389FAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 18:06:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D6A5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 18:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eMHrgs/O3VBoQxrCW2+nVGSmS5ceemyPKO8+LS8T97c=; b=qe2Cct9YBfwalo
-	sLfSpL21NsJMTxZDqDk8GNvn62BpioIhAHzeFW9m7IAqnNAeuEKnFQ7tJ5hqADV41o4E9HcCzxtWa
-	KQkXJxd5XMGskVtl0Q1iLdgPA+3dKg5OIhKXNDSg2PoTu0ES1AGbrtMshkLprhRe7Jq1UFSFnc6ym
-	8BGAG2GbM/dE7tvpLORBFrPZx6PjeaMwqRmdeq/mOZdA2TWD2r3f+OwvxNOrlKIL4HZvFDKuBuqeY
-	PXWjpGJHKtvXkmH4lIU1zYFulG2bh6+To32EtKBygTpOgytLTLkUS/5lzb0xAboCvxBE0KUq/PzC+
-	NIOEuv8CyPs3fjmBiNQQ==;
+	List-Owner; bh=hglZ5geJcN6+sNlwDrDLZjtnA8TF+rFE1zmy/o/Acz0=; b=KLvn6gDTICWdk4
+	NgJoFxgBZDd3o7tDneJlzVyyUbCTp6szlOrKyJpv7pmWdhh+uEMi8BNtvKKGa69KiDYM247N5iBQD
+	at6uzdpdyfE/+IgpZTYBxMKOfR3KlgeHjSDn1Ly+Oh6xEMVHR3JRDmQmlM9BImnfU+eVJ4XNqjIHz
+	m/dunE3RghFPO6BIL/TwNMmp0w0D82hq9PM05JXjjuq2fON4kIw/GayqjLazEB90xRbOiGp7qI2t6
+	AxNZ9nyF9/5c+frOfY2cTR+AYv3IYZVbza1gjW+0Nzz0iqSvmi1uA4ZEo2VEJyWw0uLbd9Q+FRPAo
+	OCHLLxPk4ZDHowhsxcUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvkHa-0037Sx-R1; Fri, 10 Dec 2021 18:06:10 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mvkSl-003AyK-3K; Fri, 10 Dec 2021 18:17:43 +0000
+Received: from mail-oi1-f180.google.com ([209.85.167.180])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvkEI-00364X-5l; Fri, 10 Dec 2021 18:02:48 +0000
-X-UUID: a139fa69b2804fbcb9fda12ac6acd06e-20211210
-X-UUID: a139fa69b2804fbcb9fda12ac6acd06e-20211210
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <flora.fu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 332776636; Fri, 10 Dec 2021 11:02:42 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 10 Dec 2021 09:52:40 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 11 Dec 2021 01:52:38 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Sat, 11 Dec 2021 01:52:38 +0800
-From: Flora Fu <flora.fu@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Pi-Cheng Chen
- <pi-cheng.chen@mediatek.com>, Yong Wu <yong.wu@mediatek.com>
-CC: <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, Flora Fu <flora.fu@mediatek.com>, "JB
- Tsai" <jb.tsai@mediatek.com>
-Subject: [PATCH 12/12] arm64: dts: mt8195: Set up regulators for APU subsys
-Date: Sat, 11 Dec 2021 01:52:23 +0800
-Message-ID: <20211210175223.31131-13-flora.fu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20211210175223.31131-1-flora.fu@mediatek.com>
-References: <20211210175223.31131-1-flora.fu@mediatek.com>
+ id 1mvkSU-003AuE-RH; Fri, 10 Dec 2021 18:17:28 +0000
+Received: by mail-oi1-f180.google.com with SMTP id t23so14354927oiw.3;
+ Fri, 10 Dec 2021 10:17:26 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=YU9YCbZbDktrwFwYhXC085Scw8TfNhTNhBZqDcowh58=;
+ b=FF0IRoQlf0VIilTMe7mOcrRxe8DRMWzisXRhjmugla8m5PJB1vWd/AlNxsV3mYGpoJ
+ CfPxnuB81t1J7vnOH5tDTRweg8AQqz/qyicrviPU7x2VQgKqZYOpUjXVMG+MOtLEmdl7
+ l5a65D4i7+tFjkUdec0VCf+b1EKodhdSj9sbmhcXDVmxUPvGYXzQctIyo+SvqhrlkAW7
+ pDnwxkOSG3GL/lVVhDFKNBnZ2HLAubGF/RYCZlixf5t2op72w3ZPPfrynmgsa5IwDnqj
+ hNfY959vcQN7pee0DKkZ3WR53h5ggGSrGHJHRBJXZV6AbGOu1cZ0c9E8h+xZpDo4aKX1
+ OpBg==
+X-Gm-Message-State: AOAM532bFq1L43YVS94GwqX0COrxChvApu8mcCGlNg9tBWO/mh97HKYE
+ D7z//39YfmNe4jZxH3xRZw==
+X-Google-Smtp-Source: ABdhPJyvpSgennWM9D8Uf+LQaqbHK2gVSasZ6S9vGBlFwcRSN30Q22MHR58rfH44QR08viRIKDt9jQ==
+X-Received: by 2002:a54:4692:: with SMTP id k18mr13899661oic.93.1639160245462; 
+ Fri, 10 Dec 2021 10:17:25 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id bq5sm930460oib.55.2021.12.10.10.17.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Dec 2021 10:17:24 -0800 (PST)
+Received: (nullmailer pid 1641340 invoked by uid 1000);
+ Fri, 10 Dec 2021 18:17:21 -0000
+Date: Fri, 10 Dec 2021 12:17:21 -0600
+From: Rob Herring <robh@kernel.org>
+To: Moudy Ho <moudy.ho@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+ Jernej Skrabec <jernej.skrabec@siol.net>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Alexandre Courbot <acourbot@chromium.org>,
+ tfiga@chromium.org, 
+ drinkcat@chromium.org, pihsun@chromium.org, hsinyi@google.com, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Maoguang Meng <maoguang.meng@mediatek.com>,
+ daoyuan huang <daoyuan.huang@mediatek.com>, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, menghui.lin@mediatek.com,
+ sj.huang@mediatek.com, 
+ allen-kh.cheng@mediatek.com, randy.wu@mediatek.com, jason-jh.lin@mediatek.com, 
+ roy-cw.yeh@mediatek.com, river.cheng@mediatek.com, 
+ srv_heupstream@mediatek.com
+Subject: Re: [PATCH v10 1/3] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
+Message-ID: <YbOZsd+zNmwOpB4x@robh.at.kernel.org>
+References: <20211202062733.20338-1-moudy.ho@mediatek.com>
+ <20211202062733.20338-2-moudy.ho@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20211202062733.20338-2-moudy.ho@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_100246_276000_35E48527 
-X-CRM114-Status: UNSURE (   8.34  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211210_101726_910677_B2B98D1F 
+X-CRM114-Status: GOOD (  22.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,33 +99,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Set up APU regulators for mdla and vvpu.
+On Thu, Dec 02, 2021 at 02:27:31PM +0800, Moudy Ho wrote:
+> This patch adds DT binding document for Media Data Path 3 (MDP3)
+> a unit in multimedia system used for scaling and color format convert.
+> 
+> Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> ---
+>  .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++++++
+>  .../bindings/media/mediatek,mdp3-wrot.yaml    |  67 ++++++
+>  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  57 +++++
+>  .../bindings/soc/mediatek/mediatek,rdma.yaml  | 216 ++++++++++++++++++
+>  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  68 ++++++
+>  5 files changed, 473 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+>  create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,rdma.yaml
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
 
-Signed-off-by: Flora Fu <flora.fu@mediatek.com>
+I'm not a fan of bindings/soc/ either. Put everything in 
+bindings/media/. What's the difference between these blocks here and 
+the version used for display? If they are the same h/w, then the binding 
+needs to be the same. How they get used is the kernel's problem. 
 
----
- arch/arm64/boot/dts/mediatek/mt8195-evb.dts | 5 +++++
- 1 file changed, 5 insertions(+)
+It looks like the display ccorr, rdma, and wdma aren't documented. Fix 
+that before you add new stuff.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-index 6333cab7929f..f49a460a8767 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-evb.dts
-@@ -44,6 +44,11 @@
- 	};
- };
- 
-+&apusys_power {
-+	vvpu-supply = <&mt6359_vproc1_buck_reg>;
-+	vmdla-supply = <&mt6359_vproc2_buck_reg>;
-+};
-+
- &i2c0 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&i2c0_pin>;
--- 
-2.18.0
 
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+> new file mode 100644
+> index 000000000000..d7f104a0f165
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+> @@ -0,0 +1,65 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Mediatek Resizer
+> +
+> +maintainers:
+> +  - Matthias Brugger <matthias.bgg@gmail.com>
+> +
+> +description: |
+> +  One of Media Data Path 3 (MDP3) components used to do frame resizing.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - enum:
+> +          - mediatek,mt8183-mdp3-rsz
+> +
+> +  mediatek,mdp3-id:
+> +    description: There may be multiple components with the same function but
+> +      different addresses in MDP3. The MDP3 driver can select one or zero of
+> +      them and connect other components in series according to the current
+> +      application to form one or more data paths. This property indicate the
+> +      selection order of the same components.
+> +    $ref: /schemas/types.yaml#/definitions/uint32
+> +    enum: [0, 1, 2, 3]
+
+Again, an index nor an alias is the right approach for this. Use DT 
+graph like others do. 'It's too complicated' is not a reason unless you 
+show how and why it won't work.
+
+Rob
 
 _______________________________________________
 Linux-mediatek mailing list
