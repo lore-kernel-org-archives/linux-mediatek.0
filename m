@@ -4,78 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35220C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 10 Dec 2021 20:57:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23A2BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 11 Dec 2021 03:26:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=w2nbjRDBtNeawUjOK1Pk1TbyQpHEpse0cfLgyY171lQ=; b=hfevPYXu40TtKW
-	TVhAtIXFtv9LqqZezP5f9Rj5ITtN1bpSK1AUbyTF1fm5szEiuI276sHfWBN7cpZnqc3qHHl8QCeAy
-	hV4Q/5e8RQGcjoeyZRz6WKinrnTrhJaTrZUgWQDAR5gwQ/BTJUO1LbKwuT4czf5RZDvD5COYrblBi
-	avIux2bwHjh761DErHBiL0mNS9wv/iYoWclckT/A8EN84/bbJdYfPlArXMwOJKM/yjMxSJHMDNTXi
-	ZHYjFVvHRK92jBEcRPvz6sqK5BadqMNJwEnGyyTh3AbP/zDyq6EmeCl0YulGTahY67ZlFSYa7hmwq
-	5nrePHLsgr4pIMP88DGw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TbPkMZ2NYIA6kyDi+8ayHUllIXkiKiVOCyyWNOKVwsw=; b=s0ic686TNLgExD
+	wWYb7UDOuh7YRDaJE1H7RK0+KAYZpogR1TT+Ve5JMf/z/mezNM3HmgbYhBLEYLcv07mWJSM1R34Sw
+	QfM525R03VVrNBMOIwCqHYOjMUQPHLJeXCwHftJYMekaIGoYaTu8hec3tJ1I+9a/RTnCxTGtkpm72
+	t5RIXc1GUks2Q0io3saAid2KqTLCU2/IJBqgx0b48CJ8VwkBhV3dRkYc/IJFEVNjSbJngu5pjoQlY
+	sWEa/wEi2WqxOVHaP7q1YAXr5sj7YwpB+9ikOD3ZpquUvTxCKnMHb1j/SraABpgqu5zGQSZAetbKA
+	bI78WCaRr9yzwmr/T2Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mvmx6-003oGR-Ag; Fri, 10 Dec 2021 20:57:12 +0000
-Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
+	id 1mvt1W-004Tqm-FH; Sat, 11 Dec 2021 03:26:10 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mvmx3-003oF9-G4; Fri, 10 Dec 2021 20:57:11 +0000
-Received: by mail-ot1-x336.google.com with SMTP id
- v15-20020a9d604f000000b0056cdb373b82so10849268otj.7; 
- Fri, 10 Dec 2021 12:57:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wobD4Jbzi5ufjdCOWA/nVYk8n1ISd9Z61aPS0wQf5zE=;
- b=JdY2WDN2p461FkGvsxWWgssB5bJvFhZYhUHH63DdzZaOS/BF8ZQTp0ZRohildNIGfX
- alWei8hF/dOiYXd1Z9hS5CEigliRsXzQO8xzs+kxd+ajDHK3eNMRM87q4Ju4rj6fd/gv
- lYsbndjN7dSsbgrIBFXGjMTA4PdACS//XRVN3ZbYkoy1n3FT5jlT/d0jDR4IQCv9A+Uy
- KByWYGgTkvVMxsGsOL2XYtQWqLYAPwOihXIJCui3XCZ95CJhgQCB1P4mw+mNY823BKGt
- 0I8P5dypvRWs2TbprRkp1owmaruN+NMkRC5sjMK6j3MfLzBbi2qubfSIZVBUZhE9ccKN
- zL7A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=wobD4Jbzi5ufjdCOWA/nVYk8n1ISd9Z61aPS0wQf5zE=;
- b=MvLYVn0h/9OvzeBe2E2xauJT0kZGkPclTnWtolJT05oQNI++zobn7CfXDlF4fH8lbr
- 3odS4jPQgjFH5zxELsHeK//40fS2jncYUCNN+wpR96TEp8UZb6r52UY1JNAKeXo6JTbY
- 6aIEdxWdrFouWqykcBCpDT8NltGWum5ij+mjNglx9XyG8wxCWT+CliKItml52ZBCHZK1
- GRr9JaWESktMHsP2WEyNgqahmZSkK8fIbArCSShl6MupgJjRvHm+ozp1FjqP5XkIZ1Nq
- y1ozxK2oZDPUVf4esVqEWl+7eLKTEJAR26+XY+nwH5mutuJ5hCH44ymgdQlQK2Oe9eeJ
- q+hA==
-X-Gm-Message-State: AOAM531s0JqOFqsXhvGCirEC9MgTFsaSaWY9JuErhD/gu0IlzEShKwW6
- EPbi/IEscOYnJAKGONmEZ3k=
-X-Google-Smtp-Source: ABdhPJwjZrKA3qk3BYYk+5CCrYVxJPalsMFrhHqeEmEj9Q654spZxrRQ5lvqR74363+dwnEBfK8Nyg==
-X-Received: by 2002:a05:6830:314b:: with SMTP id
- c11mr12958654ots.224.1639169827221; 
- Fri, 10 Dec 2021 12:57:07 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- t13sm926128oiw.30.2021.12.10.12.57.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Dec 2021 12:57:06 -0800 (PST)
-From: Guenter Roeck <linux@roeck-us.net>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Guenter Roeck <linux@roeck-us.net>, Tomasz Figa <tfiga@chromium.org>,
- kernel test robot <lkp@intel.com>, Dan Carpenter <dan.carpenter@oracle.com>
-Subject: [PATCH] iommu/mediatek: Validate number of phandles associated with
- "mediatek, larbs"
-Date: Fri, 10 Dec 2021 12:57:04 -0800
-Message-Id: <20211210205704.1664928-1-linux@roeck-us.net>
-X-Mailer: git-send-email 2.33.0
+ id 1mvt1F-004Tq0-34; Sat, 11 Dec 2021 03:25:56 +0000
+X-UUID: 6310b6c423bc472e83d27e49a683ac1f-20211210
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=iOelVhCAc1UskNgsRqIsf7l1j9lvXLW9YXbQRHqI+Bc=; 
+ b=CZ10CCCCrfi63nD6lajV7o/Q4//dSuDa/IoxNGJheRvIHfPkz7rRY+NyiKF12mOUWpRLwaOGWJw+gS7AfS4oA6c/LHDyqNsldR/vq+U4j1psVHrMvJxolVJBH5RIAP/PdLe4HAaoVjEL07+1vfuxsUywNoesziWp6FNlc1Ft5zg=;
+X-UUID: 6310b6c423bc472e83d27e49a683ac1f-20211210
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <xiangsheng.hou@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2102472032; Fri, 10 Dec 2021 20:25:49 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 10 Dec 2021 19:25:47 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 11 Dec 2021 11:25:45 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 11 Dec 2021 11:25:45 +0800
+Message-ID: <4debdf60521d13a2ee54e65fa2f545040e74fed7.camel@mediatek.com>
+Subject: Re: [RFC,v4,2/5] mtd: nand: ecc: mtk: Convert to the ECC
+ infrastructure
+From: xiangsheng.hou <xiangsheng.hou@mediatek.com>
+To: Miquel Raynal <miquel.raynal@bootlin.com>
+CC: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
+ <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
+ <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
+ <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
+ <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
+Date: Sat, 11 Dec 2021 11:25:46 +0800
+In-Reply-To: <20211210103426.0850d8d5@xps13>
+References: <20211130083202.14228-1-xiangsheng.hou@mediatek.com>
+ <20211130083202.14228-3-xiangsheng.hou@mediatek.com>
+ <20211209113209.71fe8ea7@xps13>
+ <c7367dccd7b159ed36fd7d19fef25b0df8c5782d.camel@mediatek.com>
+ <20211210103426.0850d8d5@xps13>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211210_125709_649302_9714E1DE 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20211210_192554_574377_E2DD2975 
+X-CRM114-Status: GOOD (  31.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,41 +85,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since commit baf94e6ebff9 ("iommu/mediatek: Add device link for smi-common
-and m4u"), the driver assumes that at least one phandle associated with
-"mediatek,larbs" exists. If that is not the case, for example if reason
-"mediatek,larbs" is provided as boolean property, the code will use an
-uninitialized pointer and may crash. To fix the problem, ensure that the
-number of phandles associated with "mediatek,larbs" is at least 1 and
-bail out immediately if that is not the case.
+Hi Miquel,
 
-Cc: Yong Wu <yong.wu@mediatek.com>
-Cc: Tomasz Figa <tfiga@chromium.org>
-Fixes: baf94e6ebff9 ("iommu/mediatek: Add device link for smi-common and m4u")
-Reported-by: kernel test robot <lkp@intel.com>
-Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Guenter Roeck <linux@roeck-us.net>
----
- drivers/iommu/mtk_iommu.c | 2 ++
- 1 file changed, 2 insertions(+)
+On Fri, 2021-12-10 at 10:34 +0100, Miquel Raynal wrote:
+> Hello,
+> 
+> xiangsheng.hou@mediatek.com wrote on Fri, 10 Dec 2021 17:09:14 +0800:
+> > 
+> > > As this will be the exact same function for all the pipelined
+> > > engines,
+> > > I am tempted to put this in the core. I'll soon send a iteration,
+> > > stay
+> > > tuned.
+> > >   
+> > 
+> > Look forward to the function.
+> 
+> I sent the new version yesterday but I
+> * forgot to CC: you
+> * forgot about that function as well
+> 
+> Let's ignore this comment for now, send your driver with the same
+> function in it and I'll clean that up later.
+> 
+> Here is the new iteration, sorry for forgetting to send it to you as
+> well:
+> 
+https://lore.kernel.org/linux-mtd/20211209174046.535229-1-miquel.raynal@bootlin.com/T/
+> And here is a Github branch as well:
+> https://github.com/miquelraynal/linux/tree/ecc-engine
 
-diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-index 25b834104790..0bbe32d0a2a6 100644
---- a/drivers/iommu/mtk_iommu.c
-+++ b/drivers/iommu/mtk_iommu.c
-@@ -828,6 +828,8 @@ static int mtk_iommu_probe(struct platform_device *pdev)
- 					     "mediatek,larbs", NULL);
- 	if (larb_nr < 0)
- 		return larb_nr;
-+	if (larb_nr == 0)
-+		return -EINVAL;
- 
- 	for (i = 0; i < larb_nr; i++) {
- 		u32 id;
--- 
-2.33.0
+Got it, Thanks.
 
+> 
+> > > > +				struct nand_page_io_req *req)
+> > > > +{
+> > > > +	struct mtk_ecc_engine *eng = nand_to_ecc_ctx(nand);
+> > > > +	int step_size = nand->ecc.ctx.conf.step_size;
+> > > > +	void *databuf, *oobbuf;
+> > > > +	int i;
+> > > > +
+> > > > +	if (req->type == NAND_PAGE_WRITE) {
+> > > > +		databuf = (void *)req->databuf.out;
+> > > > +		oobbuf = (void *)req->oobbuf.out;
+> > > > +
+> > > > +		/*
+> > > > +		 * Convert the source databuf and oobbuf to MTK
+> > > > ECC
+> > > > +		 * on-flash data format.
+> > > > +		 */
+> > > > +		for (i = 0; i < eng->nsteps; i++) {
+> > > > +			if (i == eng->bbm_ctl.section)
+> > > > +				eng->bbm_ctl.bbm_swap(nand,
+> > > > +						      databuf,
+> > > > oobbuf);  
+> > > 
+> > > Do you really need this swap? Isn't the overall move enough to
+> > > put
+> > > the
+> > > BBM at the right place?
+> > >   
+> > 
+> > For OPS_RAW mode, need organize flash data in the MTK ECC engine
+> > data
+> > format. Other operation in this function only organize data by
+> > section
+> > and not include BBM swap.
+> > 
+> > For other mode, this function will not be called.
+> 
+> Can you try to explain this with an ascii schema again? I'm sorry but
+> I
+> don't follow it. Is the BBM placed in the first bytes of the first
+> oob
+> area by the engine? Or is it place somewhere else?
+> 
 
+Yes, the BBM will at the first OOB area in NAND standard layout after
+BBM swap.
+
+0. Differential on-flash data layout
+
+NAND standard page layout
++------------------------------+------------+
+|                              |            |
+|            main area         |   OOB area |
+|                              |            |
++------------------------------+------------+
+
+MTK ECC on-flash page layout (2 section for example)
++------------+--------+------------+--------+
+|            |        |            |        |    
+| section(0) | OOB(0) | section(1) | OOB(1) |
+|            |        |            |        | 
++------------+--------+------------+--------+
+
+The standard BBM position will be section(1) main data,
+need do the BBM swap operation.
+
+request buffer include req->databuf and req->oobbuf.
++----------------------------+
+|                            |
+|     req->databuf           |
+|                            |
++----------------------------+
+
++-------------+
+|             |
+| req->oobbuf |
+|             |
++-------------+
+
+1. For the OPS_RAW mode
+
+Expect the on-flash data format is like MTK ECC layout.
+The snfi controller will put the on-flash data as is
+spi_mem_op->data.buf.out.
+
+Therefore, the ECC engine have to reorganize the request
+data and OOB buffer in 4 part for each section in
+OPS_RAW mode.
+
+1) BBM swap, only for the section need do the swap
+2) section main data
+3) OOB free data
+4) OOB ECC data
+
+The BBM swap will ensure the BBM position in MTK ECC
+on-flash layout is same as NAND standard layout in
+OPS_RAW mode.
+
+for (i = 0; i < eng->nsteps; i++) {
+
+        /* part 1: BBM swap */
+        if (i == eng->bbm_ctl.section)
+                eng->bbm_ctl.bbm_swap(nand,
+                                      databuf, oobbuf);
+
+	/* part 2: main data in this section */
+        memcpy(mtk_ecc_section_ptr(nand, i),
+               databuf + mtk_ecc_data_off(nand, i),
+               step_size);
+
+        /* part 3: OOB free data */
+        memcpy(mtk_ecc_oob_free_ptr(nand, i),
+               oobbuf + mtk_ecc_oob_free_position(nand, i),
+               eng->oob_free);
+
+        /* part 4: OOB ECC data */
+        memcpy(mtk_ecc_oob_free_ptr(nand, i) + eng->oob_free,
+               oobbuf + eng->oob_free * eng->nsteps +
+               i * eng->oob_ecc,
+               eng->oob_ecc);
+}
+
+2. For non OPS_RAW mode
+
+The snfi have a function called auto format with ECC enable.
+This will auto reorganize the request data and oob data in
+MTK ECC page layout by the snfi controller except the BBM position.
+
+Therefore, the ECC engine only need do the BBM swap after set OOB data
+bytes in OPS_AUTO or after memcpy oob data in OPS_PLACE_OOB for write
+operation.
+
+The BBM swap also ensure the BBM position in MTK ECC on-flash
+layout is
+same as NAND standard layout in non OPS_RAW mode.
+
+if (req->ooblen) {
+        if (req->mode == MTD_OPS_AUTO_OOB) {
+                ret = mtd_ooblayout_set_databytes(mtd,
+                                                  req->oobbuf.out,
+                                                  eng->bounce_oob_buf,
+                                                  req->ooboffs,
+                                                  mtd->oobavail);
+                if (ret)
+                        return ret;
+        } else {
+                memcpy(eng->bounce_oob_buf + req->ooboffs,
+                       req->oobbuf.out,
+                       req->ooblen);
+        }
+}
+
+eng->bbm_ctl.bbm_swap(nand, (void *)req->databuf.out,
+                      eng->bounce_oob_buf);
+
+Thanks
+Xiangsheng Hou
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
