@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A09A2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 08:56:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13A7DC4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 08:57:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/LC8b1lN36coAMldhxizvuHWtcDV7CXCTSSaaEghW00=; b=PwkZOs6huRBoxs
-	kPEwpsD5LQcriQTttZmAKALOazR5M80Bi1UzBluLDYoM+F+DDPcKM2JFpsriCdzXqxRqYnesBf5Gk
-	F06g8MD16ysmnDHlAdQ7P48DIN0Pk3NdgrO8Y6ckG8as76cxTtCWcv+jooWqg0mAgER9riggCE8xM
-	f0gcHmC73zT+7Zlo3y75+Cx+p4vIWo/vUwgOepVvsK7UAQB8U1lMhcHRwD9ffeHDZX2CK5+qIsMSR
-	jLnW7T8hLFsFNdZlIFQmtew3ksXNU4FgJ3VnFgm0LczovcUe7/HJEmEVyIQ1+yoWXWQu0jvn0EaCT
-	orhZIcSKPtpN0R6x7OgQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=GwZn7JyBUffPyIqn3kshDhkof+yxPxhgkU72hbRtQ/4=; b=Ebq6yhYWvpUJj3
+	RuGFAb3dFvCc+oF+6pXTneOWxWEtxBfB0DLqVkbCCI4rRWfSraNZnwQuD8xCoUx4BfxVhmUQgUdV5
+	H2tMwYK9Oibw1OvRf+MxAcwmWZCgxcehdTK5FXToJcRoSDcmNc8ucQYyGXQCju5mw1j/1DaBLvMMB
+	zvT3xYblSszQ/xY052i9VOWo2z9sp2erqsRaER8lQNV+iHzt3aiZrzhGEtAjMbNyToSfF6kv0fKGC
+	dXfiZvSVVD5HbNhEItxnZOiIGm09Z97tzT5NWJgSQWd2oGqzOH8ZGMO3YjitBz3OjT4oo6ez91s/9
+	Fy1IX10JbzBhlZyw/KrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwh87-008RCj-BA; Mon, 13 Dec 2021 08:56:19 +0000
+	id 1mwh8z-008Rd1-Qr; Mon, 13 Dec 2021 08:57:13 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwh33-008OhV-Q7; Mon, 13 Dec 2021 08:51:08 +0000
-X-UUID: 7b0dda91b5154f23b2d94eee1915fc8d-20211213
-X-UUID: 7b0dda91b5154f23b2d94eee1915fc8d-20211213
+ id 1mwh34-008OkA-Da; Mon, 13 Dec 2021 08:51:09 +0000
+X-UUID: a6b0ad3289354be4a28b7776ab2e7fe1-20211213
+X-UUID: a6b0ad3289354be4a28b7776ab2e7fe1-20211213
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1463093305; Mon, 13 Dec 2021 01:50:57 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 448307772; Mon, 13 Dec 2021 01:50:57 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Dec 2021 00:41:43 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Dec 2021 16:41:41 +0800
+ 15.0.1497.2; Mon, 13 Dec 2021 00:41:59 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 13 Dec 2021 16:41:56 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Mon, 13 Dec 2021 16:41:39 +0800
+ 15.0.1497.2 via Frontend Transport; Mon, 13 Dec 2021 16:41:55 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -57,15 +57,18 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v13,
- 00/19] Support multi hardware decode using of_platform_populate
-Date: Mon, 13 Dec 2021 16:41:22 +0800
-Message-ID: <20211213084141.13363-1-yunfei.dong@mediatek.com>
+ 10/19] media: mtk-vcodec: Add msg queue feature for lat and core
+ architecture
+Date: Mon, 13 Dec 2021 16:41:32 +0800
+Message-ID: <20211213084141.13363-11-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211213084141.13363-1-yunfei.dong@mediatek.com>
+References: <20211213084141.13363-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_005105_918945_BEA665DB 
-X-CRM114-Status: GOOD (  25.46  )
+X-CRM114-CacheID: sfid-20211213_005106_523102_4B2CC8F8 
+X-CRM114-Status: GOOD (  27.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,226 +85,496 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for multi hardware decode into mtk-vcodec, by first adding use
-of_platform_populate to manage each hardware information: interrupt, clock, register
-bases and power. Secondly add core work queue to deal with core hardware message,
-at the same time, add msg queue for different hardware share messages. Lastly, the
-architecture of different specs are not the same, using specs type to separate them.
+For lat and core architecture, lat thread will send message to core
+thread when lat decode done. Core hardware will use the message
+from lat to decode, then free message to lat thread when decode done.
 
-This series has been tested with both MT8183 and MT8173. Decoding was working for both chips.
-
-Patches 1~3 rewrite get register bases and power on/off interface.
-Patches 4 export decoder pm interfaces.
-Patches 5 add to support 8192.
-Patch 6 support multi hardware.
-Patch 7 separate video encoder and decoder document
-Patch 8-17 add interfaces to support core hardware.
-Patch 18-19 remove mtk_vcodec_release_dec/enc_pm interfaces.
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
-changes compared with v11:
-- fix comments from rob for patch 15.
-- fix comments from steve for 06 and 13.
-
-changes compared with v11:
-- fix comments from AngeloGioacchino for patch 09~11/19.
-- fix comments from steve for patch 03/19.
-
-changes compared with v10:
-- fix comments from tzung-bi for patch 06/19.
-- add more detail information for hardware block diagram 15/19
-
-changes compared with v9:
-- need not to build ko, just export pm interfaces for patch 04/19.
-- fix comments for patch 06/19
-
-changes compared with v8:
-- add new patch 18~19 to remove mtk_vcodec_release_de/enc_pm interfaces.
-- fix spelling mistakes for patch 17/19
-- fix yaml comments for patch 15/19
-
-Changes compared with v7:
-- add new patch 4 to build decoder pm file as module
-- add new patch 5 to support 8192
-- fix comments for patch 6/17
-- change some logic for using work queue instead of create thread for core hardware decode for patch 10/17
-- using work queue for hardware decode instead of create thread for patch 13/17
-- add returen value for patch 14/17
-- fix yaml check fail 15/17
-
-Changes compared with v6:
-- Use of_platform_populate to manage multi hardware, not component framework for patch 4/15
-- Re-write dtsi document for hardware architecture changed for patch 13/15 -The dtsi will write like below in patch 13/15:
-    vcodec_dec: vcodec_dec@16000000 {
-        compatible = "mediatek,mt8192-vcodec-dec";
-        #address-cells = <2>;
-        #size-cells = <2>;
-        ranges;
-        reg = <0 0x16000000 0 0x1000>;		/* VDEC_SYS */
-        mediatek,scp = <&scp>;
-        iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>;
-        dma-ranges = <0x1 0x0 0x0 0x40000000 0x0 0xfff00000>;
-        vcodec_lat {
-            compatible = "mediatek,mtk-vcodec-lat";
-            reg = <0 0x16010000 0 0x800>;		/* VDEC_MISC */
-            reg-name = "reg-misc";
-            interrupts = <GIC_SPI 426 IRQ_TYPE_LEVEL_HIGH 0>;
-            iommus = <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD_EXT>,
-                 <&iommu0 M4U_PORT_L5_VDEC_LAT0_VLD2_EXT>,
-                 <&iommu0 M4U_PORT_L5_VDEC_LAT0_AVC_MV_EXT>,
-                 <&iommu0 M4U_PORT_L5_VDEC_LAT0_PRED_RD_EXT>,
-                 <&iommu0 M4U_PORT_L5_VDEC_LAT0_TILE_EXT>,
-                 <&iommu0 M4U_PORT_L5_VDEC_LAT0_WDMA_EXT>,
-                 <&iommu0 M4U_PORT_L5_VDEC_LAT0_RG_CTRL_DMA_EXT>,
-                 <&iommu0 M4U_PORT_L5_VDEC_UFO_ENC_EXT>;
-            clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-                 <&vdecsys_soc CLK_VDEC_SOC_VDEC>,
-                 <&vdecsys_soc CLK_VDEC_SOC_LAT>,
-                 <&vdecsys_soc CLK_VDEC_SOC_LARB1>,
-                 <&topckgen CLK_TOP_MAINPLL_D4>;
-            clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-lat",
-                  "vdec-vdec", "vdec-top";
-            assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-            assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
-            power-domains = <&spm MT8192_POWER_DOMAIN_VDEC>;
-        };
-
-        vcodec_core {
-            compatible = "mediatek,mtk-vcodec-core";
-            reg = <0 0x16025000 0 0x1000>;		/* VDEC_CORE_MISC */
-            reg-names = "reg-misc";
-            interrupts = <GIC_SPI 425 IRQ_TYPE_LEVEL_HIGH 0>;
-            iommus = <&iommu0 M4U_PORT_L4_VDEC_MC_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_UFO_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_PP_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_PRED_RD_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_PRED_WR_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_PPWRAP_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_TILE_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_VLD_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_VLD2_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_AVC_MV_EXT>,
-                 <&iommu0 M4U_PORT_L4_VDEC_RG_CTRL_DMA_EXT>;
-            clocks = <&topckgen CLK_TOP_VDEC_SEL>,
-                 <&vdecsys CLK_VDEC_VDEC>,
-                 <&vdecsys CLK_VDEC_LAT>,
-                 <&vdecsys CLK_VDEC_LARB1>,
-                 <&topckgen CLK_TOP_MAINPLL_D4>;
-            clock-names = "vdec-sel", "vdec-soc-vdec", "vdec-soc-lat",
-                  "vdec-vdec", "vdec-top";
-            assigned-clocks = <&topckgen CLK_TOP_VDEC_SEL>;
-            assigned-clock-parents = <&topckgen CLK_TOP_MAINPLL_D4>;
-            power-domains = <&spm MT8192_POWER_DOMAIN_VDEC2>;
-        };
-    };
-
-Changes compared with v5:
-- Add decoder hardware block diagram for patch 13/15
-
-Changes compared with v4:
-- Fix comments for patch 4/15
-  >> +     if (dev->is_comp_supported) {
-  >> +             ret = mtk_vcodec_init_master(dev);
-  >> +             if (ret < 0)
-  >> +                     goto err_component_match;
-  >> +     } else {
-  >> +             platform_set_drvdata(pdev, dev);
-  >> +     }
-  Fix platform_set_drvdata.
-- Fix build error for patch 9/15
-- Add depend patch in case of error header file for patch 13/15
-
-Changes compared with v3:
-- Fix return value for patch 1/15
-- Fix comments for patch 4/15
-  > Looking up "mediatek,mtk-vcodec-core" to determine if it uses component framwork sounds like...
-  Add prameter in pdata, for all platform will use compoent after mt8183
-
-  >> +     if (dev->is_comp_supported) {
-  >> +             ret = mtk_vcodec_init_master(dev);
-  >> +             if (ret < 0)
-  >> +                     goto err_component_match;
-  >> +     } else {
-  >> +             platform_set_drvdata(pdev, dev);
-  >> +     }
-  > + Has asked the same question in [1].  Why it removes the
-  > +platform_set_drvdata() above?  mtk_vcodec_init_master() also calls platform_set_drvdata().
-  Must call component_master_add_with_match after platform_set_drvdata for component architecture.
-- Fix yaml files check fail for patch 5/15
-- Fix yaml file check fail for patch 14/15
-
-Changes compared with v1:
-- Fix many comments for patch 3/14
-- Remove unnecessary code for patch 4/14
-- Using enum mtk_vdec_hw_count instead of magic numbers for patch 6/14
-- Reconstructed get/put lat buffer for lat and core hardware for patch 7/14
-- Using yaml format to instead of txt file for patch 12/14
-
-Yunfei Dong (19):
-  media: mtk-vcodec: Get numbers of register bases from DT
-  media: mtk-vcodec: Align vcodec wake up interrupt interface
-  media: mtk-vcodec: Refactor vcodec pm interface
-  media: mtk-vcodec: export decoder pm functions
-  media: mtk-vcodec: Support MT8192
-  media: mtk-vcodec: Add to support multi hardware decode
-  dt-bindings: media: mtk-vcodec: Separate video encoder and decoder
-    dt-bindings
-  media: mtk-vcodec: Use pure single core for MT8183
-  media: mtk-vcodec: Add irq interface for multi hardware
-  media: mtk-vcodec: Add msg queue feature for lat and core architecture
-  media: mtk-vcodec: Generalize power and clock on/off interfaces
-  media: mtk-vcodec: Add new interface to lock different hardware
-  media: mtk-vcodec: Add work queue for core hardware decode
-  media: mtk-vcodec: Support 34bits dma address for vdec
-  dt-bindings: media: mtk-vcodec: Adds decoder dt-bindings for mt8192
-  media: mtk-vcodec: Add core dec and dec end ipi msg
-  media: mtk-vcodec: Use codec type to separate different hardware
-  media: mtk-vcodec: Remove mtk_vcodec_release_dec_pm
-  media: mtk-vcodec: Remove mtk_vcodec_release_enc_pm
-
- .../media/mediatek,vcodec-decoder.yaml        | 176 +++++++++++
- .../media/mediatek,vcodec-encoder.yaml        | 187 ++++++++++++
- .../media/mediatek,vcodec-subdev-decoder.yaml | 265 ++++++++++++++++
- .../bindings/media/mediatek-vcodec.txt        | 131 --------
- drivers/media/platform/mtk-vcodec/Makefile    |   6 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec.c      |   4 +-
- .../platform/mtk-vcodec/mtk_vcodec_dec.h      |   1 +
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 203 +++++++++---
- .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   | 175 +++++++++++
- .../platform/mtk-vcodec/mtk_vcodec_dec_hw.h   |  55 ++++
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 104 +++++--
- .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  12 +-
- .../mtk-vcodec/mtk_vcodec_dec_stateful.c      |   2 +
- .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |  21 ++
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  71 ++++-
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  21 +-
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |  10 +-
- .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   |   3 +-
- .../platform/mtk-vcodec/mtk_vcodec_intr.c     |  27 +-
- .../platform/mtk-vcodec/mtk_vcodec_intr.h     |   4 +-
- .../platform/mtk-vcodec/mtk_vcodec_util.c     |  59 +++-
- .../platform/mtk-vcodec/mtk_vcodec_util.h     |   8 +-
- .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |   2 +-
- .../mtk-vcodec/vdec/vdec_h264_req_if.c        |   2 +-
- .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |   2 +-
- .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |   2 +-
- .../media/platform/mtk-vcodec/vdec_drv_if.c   |  21 +-
- .../media/platform/mtk-vcodec/vdec_ipi_msg.h  |  16 +-
- .../platform/mtk-vcodec/vdec_msg_queue.c      | 289 ++++++++++++++++++
- .../platform/mtk-vcodec/vdec_msg_queue.h      | 143 +++++++++
- .../media/platform/mtk-vcodec/vdec_vpu_if.c   |  46 ++-
- .../media/platform/mtk-vcodec/vdec_vpu_if.h   |  22 ++
- .../platform/mtk-vcodec/venc/venc_h264_if.c   |   2 +-
- .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   2 +-
- 34 files changed, 1799 insertions(+), 295 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
- delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
- create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
- create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.h
+ drivers/media/platform/mtk-vcodec/Makefile    |   1 +
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |   9 +
+ .../platform/mtk-vcodec/vdec_msg_queue.c      | 260 ++++++++++++++++++
+ .../platform/mtk-vcodec/vdec_msg_queue.h      | 143 ++++++++++
+ 4 files changed, 413 insertions(+)
  create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
  create mode 100644 drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
 
+diff --git a/drivers/media/platform/mtk-vcodec/Makefile b/drivers/media/platform/mtk-vcodec/Makefile
+index c61bfb179bcc..359619653a0e 100644
+--- a/drivers/media/platform/mtk-vcodec/Makefile
++++ b/drivers/media/platform/mtk-vcodec/Makefile
+@@ -12,6 +12,7 @@ mtk-vcodec-dec-y := vdec/vdec_h264_if.o \
+ 		mtk_vcodec_dec_drv.o \
+ 		vdec_drv_if.o \
+ 		vdec_vpu_if.o \
++		vdec_msg_queue.o \
+ 		mtk_vcodec_dec.o \
+ 		mtk_vcodec_dec_stateful.o \
+ 		mtk_vcodec_dec_stateless.o \
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 7fc106df039b..610b0af13879 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -15,7 +15,9 @@
+ #include <media/v4l2-ioctl.h>
+ #include <media/v4l2-mem2mem.h>
+ #include <media/videobuf2-core.h>
++
+ #include "mtk_vcodec_util.h"
++#include "vdec_msg_queue.h"
+ 
+ #define MTK_VCODEC_DRV_NAME	"mtk_vcodec_drv"
+ #define MTK_VCODEC_DEC_NAME	"mtk-vcodec-dec"
+@@ -282,6 +284,8 @@ struct vdec_pic_info {
+  * @decoded_frame_cnt: number of decoded frames
+  * @lock: protect variables accessed by V4L2 threads and worker thread such as
+  *	  mtk_video_dec_buf.
++ *
++ * @msg_queue: msg queue used to store lat buffer information.
+  */
+ struct mtk_vcodec_ctx {
+ 	enum mtk_instance_type type;
+@@ -325,6 +329,7 @@ struct mtk_vcodec_ctx {
+ 	int decoded_frame_cnt;
+ 	struct mutex lock;
+ 
++	struct vdec_msg_queue msg_queue;
+ };
+ 
+ enum mtk_chip {
+@@ -457,6 +462,8 @@ struct mtk_vcodec_enc_pdata {
+  * @dec_capability: used to identify decode capability, ex: 4k
+  * @enc_capability: used to identify encode capability
+  *
++ * @msg_queue_core_ctx: msg queue context used for core workqueue
++ *
+  * @subdev_dev: subdev hardware device
+  * @subdev_bitmap: used to record hardware is ready or not
+  */
+@@ -497,6 +504,8 @@ struct mtk_vcodec_dev {
+ 	unsigned int dec_capability;
+ 	unsigned int enc_capability;
+ 
++	struct vdec_msg_queue_ctx msg_queue_core_ctx;
++
+ 	void *subdev_dev[MTK_VDEC_HW_MAX];
+ 	DECLARE_BITMAP(subdev_bitmap, MTK_VDEC_HW_MAX);
+ };
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
+new file mode 100644
+index 000000000000..913aefa67618
+--- /dev/null
++++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
+@@ -0,0 +1,260 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Yunfei Dong <yunfei.dong@mediatek.com>
++ */
++
++#include <linux/freezer.h>
++#include <linux/interrupt.h>
++#include <linux/kthread.h>
++
++#include "mtk_vcodec_dec_pm.h"
++#include "mtk_vcodec_drv.h"
++#include "vdec_msg_queue.h"
++
++#define VDEC_MSG_QUEUE_TIMEOUT_MS 1500
++
++/* the size used to store lat slice header information */
++#define VDEC_LAT_SLICE_HEADER_SZ    (640 * SZ_1K)
++
++/* the size used to store avc error information */
++#define VDEC_ERR_MAP_SZ_AVC         (17 * SZ_1K)
++
++/* core will read the trans buffer which decoded by lat to decode again.
++ * The trans buffer size of FHD and 4K bitstreams are different.
++ */
++static int vde_msg_queue_get_trans_size(int width, int height)
++{
++	if (width > 1920 || height > 1088)
++		return 30 * SZ_1M;
++	else
++		return 6 * SZ_1M;
++}
++
++void vdec_msg_queue_init_ctx(struct vdec_msg_queue_ctx *ctx, int hardware_index)
++{
++	init_waitqueue_head(&ctx->ready_to_use);
++	INIT_LIST_HEAD(&ctx->ready_queue);
++	spin_lock_init(&ctx->ready_lock);
++	ctx->ready_num = 0;
++	ctx->hardware_index = hardware_index;
++}
++
++static struct list_head *vdec_get_buf_list(int hardware_index, struct vdec_lat_buf *buf)
++{
++	switch (hardware_index) {
++	case MTK_VDEC_CORE:
++		return &buf->core_list;
++	case MTK_VDEC_LAT0:
++		return &buf->lat_list;
++	default:
++		return NULL;
++	}
++}
++
++int vdec_msg_queue_qbuf(struct vdec_msg_queue_ctx *msg_ctx, struct vdec_lat_buf *buf)
++{
++	struct list_head *head;
++
++	head = vdec_get_buf_list(msg_ctx->hardware_index, buf);
++	if (!head) {
++		mtk_v4l2_err("fail to qbuf: %d",msg_ctx->hardware_index);
++		return -EINVAL;
++	}
++
++	spin_lock(&msg_ctx->ready_lock);
++	list_add_tail(head, &msg_ctx->ready_queue);
++	msg_ctx->ready_num++;
++
++	if (msg_ctx->hardware_index != MTK_VDEC_CORE)
++		wake_up_all(&msg_ctx->ready_to_use);
++
++	mtk_v4l2_debug(3, "enqueue buf type: %d addr: 0x%p num: %d",
++		msg_ctx->hardware_index, buf, msg_ctx->ready_num);
++	spin_unlock(&msg_ctx->ready_lock);
++
++	return 0;
++}
++
++static bool vdec_msg_queue_wait_event(struct vdec_msg_queue_ctx *msg_ctx)
++{
++	int ret;
++
++	ret = wait_event_timeout(msg_ctx->ready_to_use,
++		!list_empty(&msg_ctx->ready_queue),
++		msecs_to_jiffies(VDEC_MSG_QUEUE_TIMEOUT_MS));
++	if (!ret)
++		return false;
++
++	return true;
++}
++
++struct vdec_lat_buf *vdec_msg_queue_dqbuf(struct vdec_msg_queue_ctx *msg_ctx)
++{
++	struct vdec_lat_buf *buf;
++	struct list_head *head;
++	int ret;
++
++	spin_lock(&msg_ctx->ready_lock);
++	if (list_empty(&msg_ctx->ready_queue)) {
++		mtk_v4l2_debug(3, "queue is NULL, type:%d num: %d",
++			msg_ctx->hardware_index, msg_ctx->ready_num);
++		spin_unlock(&msg_ctx->ready_lock);
++
++		if (msg_ctx->hardware_index == MTK_VDEC_CORE)
++			return NULL;
++
++		ret = vdec_msg_queue_wait_event(msg_ctx);
++		if (!ret)
++			return NULL;
++		spin_lock(&msg_ctx->ready_lock);
++	}
++
++	if (msg_ctx->hardware_index == MTK_VDEC_CORE)
++		buf = list_first_entry(&msg_ctx->ready_queue,
++			struct vdec_lat_buf, core_list);
++	else
++		buf = list_first_entry(&msg_ctx->ready_queue,
++			struct vdec_lat_buf, lat_list);
++
++	head = vdec_get_buf_list(msg_ctx->hardware_index, buf);
++	if (!head) {
++		spin_unlock(&msg_ctx->ready_lock);
++		mtk_v4l2_err("fail to dqbuf: %d",msg_ctx->hardware_index);
++		return NULL;
++	}
++	list_del(head);
++
++	msg_ctx->ready_num--;
++	mtk_v4l2_debug(3, "dqueue buf type:%d addr: 0x%p num: %d",
++		msg_ctx->hardware_index, buf, msg_ctx->ready_num);
++	spin_unlock(&msg_ctx->ready_lock);
++
++	return buf;
++}
++
++void vdec_msg_queue_update_ube_rptr(struct vdec_msg_queue *msg_queue, uint64_t ube_rptr)
++{
++	spin_lock(&msg_queue->lat_ctx.ready_lock);
++	msg_queue->wdma_rptr_addr = ube_rptr;
++	mtk_v4l2_debug(3, "update ube rprt (0x%llx)", ube_rptr);
++	spin_unlock(&msg_queue->lat_ctx.ready_lock);
++}
++
++void vdec_msg_queue_update_ube_wptr(struct vdec_msg_queue *msg_queue, uint64_t ube_wptr)
++{
++	spin_lock(&msg_queue->lat_ctx.ready_lock);
++	msg_queue->wdma_wptr_addr = ube_wptr;
++	mtk_v4l2_debug(3, "update ube wprt: (0x%llx 0x%llx) offset: 0x%llx",
++		msg_queue->wdma_rptr_addr, msg_queue->wdma_wptr_addr, ube_wptr);
++	spin_unlock(&msg_queue->lat_ctx.ready_lock);
++}
++
++bool vdec_msg_queue_wait_lat_buf_full(struct vdec_msg_queue *msg_queue)
++{
++	long timeout_jiff;
++	int ret;
++
++	timeout_jiff = msecs_to_jiffies(1000 * (NUM_BUFFER_COUNT + 2));
++	ret = wait_event_timeout(msg_queue->lat_ctx.ready_to_use,
++		msg_queue->lat_ctx.ready_num == NUM_BUFFER_COUNT,
++		timeout_jiff);
++	if (ret) {
++		mtk_v4l2_debug(3, "success to get lat buf: %d",
++			msg_queue->lat_ctx.ready_num);
++		return true;
++	}
++	mtk_v4l2_err("failed with lat buf isn't full: %d",
++		msg_queue->lat_ctx.ready_num);
++	return false;
++}
++
++void vdec_msg_queue_deinit(
++	struct vdec_msg_queue *msg_queue,
++	struct mtk_vcodec_ctx *ctx)
++{
++	struct vdec_lat_buf *lat_buf;
++	struct mtk_vcodec_mem *mem;
++	int i;
++
++	mem = &msg_queue->wdma_addr;
++	if (mem->va)
++		mtk_vcodec_mem_free(ctx, mem);
++	for (i = 0; i < NUM_BUFFER_COUNT; i++) {
++		lat_buf = &msg_queue->lat_buf[i];
++
++		mem = &lat_buf->wdma_err_addr;
++		if (mem->va)
++			mtk_vcodec_mem_free(ctx, mem);
++
++		mem = &lat_buf->slice_bc_addr;
++		if (mem->va)
++			mtk_vcodec_mem_free(ctx, mem);
++
++		if (lat_buf->private_data)
++			kfree(lat_buf->private_data);
++	}
++}
++
++int vdec_msg_queue_init(
++	struct vdec_msg_queue *msg_queue,
++	struct mtk_vcodec_ctx *ctx,
++	core_decode_cb_t core_decode,
++	int private_size)
++{
++	struct vdec_lat_buf *lat_buf;
++	int i, err;
++
++	/* already init msg queue */
++	if (msg_queue->wdma_addr.size)
++		return 0;
++
++	vdec_msg_queue_init_ctx(&msg_queue->lat_ctx, MTK_VDEC_LAT0);
++	msg_queue->wdma_addr.size = vde_msg_queue_get_trans_size(
++		ctx->picinfo.buf_w, ctx->picinfo.buf_h);
++
++	err = mtk_vcodec_mem_alloc(ctx, &msg_queue->wdma_addr);
++	if (err) {
++		mtk_v4l2_err("failed to allocate wdma_addr buf");
++		return -ENOMEM;
++	}
++	msg_queue->wdma_rptr_addr = msg_queue->wdma_addr.dma_addr;
++	msg_queue->wdma_wptr_addr = msg_queue->wdma_addr.dma_addr;
++
++	for (i = 0; i < NUM_BUFFER_COUNT; i++) {
++		lat_buf = &msg_queue->lat_buf[i];
++
++		lat_buf->wdma_err_addr.size = VDEC_ERR_MAP_SZ_AVC;
++		err = mtk_vcodec_mem_alloc(ctx, &lat_buf->wdma_err_addr);
++		if (err) {
++			mtk_v4l2_err("failed to allocate wdma_err_addr buf[%d]", i);
++			goto mem_alloc_err;
++		}
++
++		lat_buf->slice_bc_addr.size = VDEC_LAT_SLICE_HEADER_SZ;
++		err = mtk_vcodec_mem_alloc(ctx, &lat_buf->slice_bc_addr);
++		if (err) {
++			mtk_v4l2_err("failed to allocate wdma_addr buf[%d]", i);
++			goto mem_alloc_err;
++		}
++
++		lat_buf->private_data = kzalloc(private_size, GFP_KERNEL);
++		if (!lat_buf->private_data) {
++			mtk_v4l2_err("failed to allocate private_data[%d]", i);
++			goto mem_alloc_err;
++		}
++
++		lat_buf->ctx = ctx;
++		lat_buf->core_decode = core_decode;
++		err = vdec_msg_queue_qbuf(&msg_queue->lat_ctx, lat_buf);
++		if (err) {
++			mtk_v4l2_err("failed to qbuf buf[%d]", i);
++			goto mem_alloc_err;
++		}
++	}
++	return 0;
++
++mem_alloc_err:
++	vdec_msg_queue_deinit(msg_queue, ctx);
++	return err;
++}
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+new file mode 100644
+index 000000000000..21a9c0aeb1b4
+--- /dev/null
++++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
+@@ -0,0 +1,143 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Yunfei Dong <yunfei.dong@mediatek.com>
++ */
++
++#ifndef _VDEC_MSG_QUEUE_H_
++#define _VDEC_MSG_QUEUE_H_
++
++#include <linux/sched.h>
++#include <linux/semaphore.h>
++#include <linux/slab.h>
++#include <media/videobuf2-v4l2.h>
++
++#include "mtk_vcodec_util.h"
++
++#define NUM_BUFFER_COUNT 3
++
++struct vdec_lat_buf;
++struct mtk_vcodec_ctx;
++struct mtk_vcodec_dev;
++typedef int (*core_decode_cb_t)(struct vdec_lat_buf *lat_buf);
++
++/**
++ * struct vdec_msg_queue_ctx - represents a queue for buffers ready to be processed
++ * @ready_used: ready used queue used to signalize when get a job queue
++ * @ready_queue: list of ready lat buffer queues
++ * @ready_lock: spin lock to protect the lat buffer usage
++ * @ready_num: number of buffers ready to be processed
++ * @hardware_index: hardware id that this queue is used for
++ */
++struct vdec_msg_queue_ctx {
++	wait_queue_head_t ready_to_use;
++	struct list_head ready_queue;
++	spinlock_t ready_lock;
++	int ready_num;
++	int hardware_index;
++};
++
++/**
++ * struct vdec_lat_buf - lat buffer message used to store lat info for core decode
++ * @wdma_err_addr: wdma error address used for lat hardware
++ * @slice_bc_addr: slice bc address used for lat hardware
++ * @ts_info: need to set timestamp from output to capture
++ *
++ * @private_data: shared information used to lat and core hardware
++ * @ctx: mtk vcodec context information
++ * @core_decode: different codec use different decode callback function
++ * @lat_list: add lat buffer to lat head list
++ * @core_list: add lat buffer to core head list
++ */
++struct vdec_lat_buf {
++	struct mtk_vcodec_mem wdma_err_addr;
++	struct mtk_vcodec_mem slice_bc_addr;
++	struct vb2_v4l2_buffer ts_info;
++
++	void *private_data;
++	struct mtk_vcodec_ctx *ctx;
++	core_decode_cb_t core_decode;
++	struct list_head lat_list;
++	struct list_head core_list;
++};
++
++/**
++ * struct vdec_msg_queue - used to store lat buffer message
++ * @lat_buf: lat buffer used to store lat buffer information
++ * @wdma_addr: wdma address used for ube
++ * @wdma_rptr_addr: ube read point
++ * @wdma_wptr_addr: ube write point
++ * @lat_ctx: used to store lat buffer list
++ */
++struct vdec_msg_queue {
++	struct vdec_lat_buf lat_buf[NUM_BUFFER_COUNT];
++
++	struct mtk_vcodec_mem wdma_addr;
++	uint64_t wdma_rptr_addr;
++	uint64_t wdma_wptr_addr;
++
++	struct vdec_msg_queue_ctx lat_ctx;
++};
++
++/**
++ * vdec_msg_queue_init - init lat buffer information.
++ * @msg_queue: used to store the lat buffer information
++ * @ctx: v4l2 ctx
++ * @core_decode: core decode callback for each codec
++ * @private_size: the private data size used to share with core
++ */
++int vdec_msg_queue_init(
++	struct vdec_msg_queue *msg_queue,
++	struct mtk_vcodec_ctx *ctx,
++	core_decode_cb_t core_decode,
++	int private_size);
++
++/**
++ * vdec_msg_queue_init_ctx - used to init msg queue context information.
++ * @ctx: message queue context
++ * @hardware_index: hardware index
++ */
++void vdec_msg_queue_init_ctx(struct vdec_msg_queue_ctx *ctx, int hardware_index);
++
++/**
++ * vdec_msg_queue_qbuf - enqueue lat buffer to queue list.
++ * @ctx: message queue context
++ * @buf: current lat buffer
++ */
++int vdec_msg_queue_qbuf(struct vdec_msg_queue_ctx *ctx, struct vdec_lat_buf *buf);
++
++/**
++ * vdec_msg_queue_dqbuf - dequeue lat buffer from queue list.
++ * @ctx: message queue context
++ */
++struct vdec_lat_buf *vdec_msg_queue_dqbuf(struct vdec_msg_queue_ctx *ctx);
++
++/**
++ * vdec_msg_queue_update_ube_rptr - used to updata the ube read point.
++ * @msg_queue: used to store the lat buffer information
++ * @ube_rptr: current ube read point
++ */
++void vdec_msg_queue_update_ube_rptr(struct vdec_msg_queue *msg_queue, uint64_t ube_rptr);
++
++/**
++ * vdec_msg_queue_update_ube_wptr - used to updata the ube write point.
++ * @msg_queue: used to store the lat buffer information
++ * @ube_wptr: current ube write point
++ */
++void vdec_msg_queue_update_ube_wptr(struct vdec_msg_queue *msg_queue, uint64_t ube_wptr);
++
++/**
++ * vdec_msg_queue_wait_lat_buf_full - used to check whether all lat buffer
++ *                                    in lat list.
++ * @msg_queue: used to store the lat buffer information
++ */
++bool vdec_msg_queue_wait_lat_buf_full(struct vdec_msg_queue *msg_queue);
++
++/**
++ * vdec_msg_queue_deinit - deinit lat buffer information.
++ * @msg_queue: used to store the lat buffer information
++ * @ctx: v4l2 ctx
++ */
++void vdec_msg_queue_deinit(struct vdec_msg_queue *msg_queue, struct mtk_vcodec_ctx *ctx);
++
++#endif
 -- 
 2.25.1
 
