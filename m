@@ -4,97 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2B8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:54:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E5ACC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:56:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ti09MqaA65YfPpD6mSsMyR3b1pPQDVXFcmAtlV5QI7c=; b=gsK5FRTvJ6gzFOyLn2eIMU+rok
-	EecVDXFgP6pC0HPHL1m988jjyXt6yMlwCJyYV4Gn9jqSwCt/AazlXJONOAg+w5zwEwLHAfRIQgwsq
-	ESHnBeazJD+g+2MyRQDvlmYqJdEgcypPDvqO4wnFVROKY2XJ2PJGYRqpHh1NPfrzSJ+XfAdC03Z7N
-	FJq6eJWXTbMULQtHoBTdhOHLChbs4gKxN1T13fX2a951gxUDGGVkGzdw4yT4pFUbihMECFbOXzRM0
-	UwxKzApFLZYmCtBJu2be43TN4QSZUf9rzJg+Gp6m2Whd4Lyczb5RacDaMVLIiP8kvG0xvl9wiXoSt
-	9aWhlUfg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Fdi2QFq4U7j0etg9MSACnp17wUmVLTtOXwuzh/f2HuA=; b=yjN5+PSF1VSuPZ
+	4/tWGCtu28RkkGfczklIXGNPjRfcfKKcZpAGNa4QoEojYllGHZzcMIftaUNIoBhheE0LtSnVILZC8
+	l+K5P3+JVEDvRH48MbHDNjGCAUwlkJWc8pfNKVsYkIao/HxHbB5VOAJM/2P3u9BOblU4Q8a0OCxS1
+	TnDSzv015ylGeqf2bBCCFI7SlKwcaUpNTMAkkfenQzrLNv5Ok0t068kbvOTrkVukemWUK5g373Bcs
+	q2ML2JP2ZOW00j37wNuLtI+IfA1F8mrIM3qRWkr2fVaPhCGKr8ouf+DI4IrfPENBtN5R/7pAdALhz
+	KzX/WmjIwXGX/YXmHFwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwob4-00Aj4k-24; Mon, 13 Dec 2021 16:54:42 +0000
-Received: from new4-smtp.messagingengine.com ([66.111.4.230])
+	id 1mwocJ-00Ajdx-8s; Mon, 13 Dec 2021 16:55:59 +0000
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwoam-00AiyX-UY; Mon, 13 Dec 2021 16:54:26 +0000
-Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
- by mailnew.nyi.internal (Postfix) with ESMTP id 2761D5801DF;
- Mon, 13 Dec 2021 11:54:24 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute6.internal (MEProxy); Mon, 13 Dec 2021 11:54:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=5QiXVE5U69Mg35ZnXupLr9UQK/P
- btYmTEolYnD06NLQ=; b=Wo0vGCLKL8TnuTpXGT6aMvo+mVKt398ERba+hPmKEpD
- gOePnZzc1ep1dbKyuY+Lfwjm6wv2bnuOXdY2DxQrTnXblLzMA1aW/ZZlgWKCinex
- qLYAiCk4VBc9hBNJymRlHd6Av8CH7Mg4ewH1ilB/4oZV7s/04CDnUFqsVQMcl7X9
- PBeTW1MVMrUoDUVPm17s+YBkvyjUyb3TpAwFoZd0cvJM2coh067tGxyR0qgysVTH
- uk0QSjkvQNo/sOPyqdI+PxHIsYSBr0g7G0t8auXAXn3XKF0KNvxB9iNZydMYdFU7
- o8GVqr0u+VoU3lK1LgE+0SaW8yUAvfRsUDaOwis3BqQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=5QiXVE
- 5U69Mg35ZnXupLr9UQK/PbtYmTEolYnD06NLQ=; b=ZCDCuoiG2EevFdkafU9Se9
- B/mFoXSFNhWwJJaJgDYnpWVKqMZ9JTtBCJ6dKh+Ch/pmqSuFbd5JyDoNgLMx9aFP
- DxEHJ44FL68CaQKrglWZozAZYYlRoLVBLoanNcLHH1LY0B4C1cgxBNGxt36VCByg
- 8+ldqgMa8Z06/9ft5Bzy5AFuWu6VJkR5HlvUUcfnTF5Z/3fCOuN6/IAHjCpjnYPY
- U3RBcccw0SN1784eiorhY/+lE9U5Y/Rmhk0vHmhhuqfQmo0GTRPSVrWH8E+na9Tf
- 8Y1ol1NvLSmVmX4/S3RfGaxSvU9FkskliyOMF/Py7aAhuYhp62JuFOPMkVemcWwg
- ==
-X-ME-Sender: <xms:v3q3YXa_-t7aZl7Gfmo_XFzhI2zw37moXstAZ5Ex16CyoonePGsaGg>
- <xme:v3q3YWalhVXN6BQm3cmstHqi7P_ud8qw_7Eyr5tEbh-1Bg54z5NShJYE_1MH5Pwea
- TBHYOq75W7Vl9veY00>
-X-ME-Received: <xmr:v3q3YZ9o6WGGBnz2DZHaY0s8cky-25B2oYS1tbSVeHfyNSbYDdrTeIHBIMiMwh0N0PvCB8jtLvbPdEnfVdzOW0OCiZW3VZyDWy9bCtt4>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrkeekgdelgecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihimhgv
- ucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrghtth
- gvrhhnpeevveefffduveeitdegtefhhfetueffteefffdvheevvdehteethedvleffgfej
- vdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
- enucfrrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:v3q3YdrR1_0X47QzI8HtSWViN8YdIAAz7gIoJ3DXKPm5GBtA6WlWag>
- <xmx:v3q3YSr6qbi-Xeeb3nGqObgm3jwRDz6n0WCD7Rg0_P8jppohH12OMQ>
- <xmx:v3q3YTTcv-LNTaCVeLMLNvv5iTtXdhJHr8E0RzFSqIBOCY-cPJ4Rzg>
- <xmx:wHq3YYhKI9VF7Vso7A04DMP4uHx4rfWnn9XTjjzbcyARRzY2PTxK9w>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
- 13 Dec 2021 11:54:23 -0500 (EST)
-Date: Mon, 13 Dec 2021 17:54:22 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Guillaume Ranquet <granquet@baylibre.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- kernel test robot <lkp@intel.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 7/7] drm/mediatek: Add mt8195 DisplayPort driver
-Message-ID: <20211213165422.54n3oh72tjcb3a67@houat>
-References: <20211110130623.20553-1-granquet@baylibre.com>
- <20211110130623.20553-8-granquet@baylibre.com>
- <20211115101129.lyxxmb6i7paaonwi@gilmour>
- <CABnWg9tNPGZSi1RLqF5+Qs1GHtynyVoOzAyw+i9mPRYEoByk8g@mail.gmail.com>
- <20211116145112.xyoxzfll6exysnvt@gilmour>
- <CABnWg9uhuchdWyBeTacR6Cy0A9OHziUi051BQ5wsZVU0ajYjyA@mail.gmail.com>
- <20211125143034.tzikvlxxl6fdhsif@gilmour>
- <CABnWg9tcWdfPQwNtFhqVZxCriT848fy42VHoQZs3X2UmL4LYSA@mail.gmail.com>
+ id 1mwoc3-00AjXd-P9
+ for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 16:55:45 +0000
+Received: by mail-pf1-x434.google.com with SMTP id g19so15462290pfb.8
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Dec 2021 08:55:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=Otkd94Ddo+0y+d19P9705aLyzrf8R+OhLjXGWeBBDgI=;
+ b=D2pQ/ahpacnzEw4VKDE+IWQG9HUL/EEsWexNqmtOR4aNU5XRNcTMGIcFE4kTfkdg0u
+ Urd3qw/wp/ybiCNZNvxY6XJqtkpMjR7QhPecu67jMtnbj8hmJRn7kKShA1+mgYpvL4D9
+ oJ+CQnNFirWc+8lo2KnWjDX25k+depiKcixPXsbzZLKTktNrWBdmAfNhMUPhXTPMeaC2
+ FaS6wUQ2IcWiOerE3Pyg6w+scfVh9PTa34b3UVdXWWrmV5TO7oDfLZvKZNzeU2MkUqEa
+ DLItbA1GxSmg2iPv/Kl/jc/yWytd88vFon1VNR3NZdFRymNAlInFzVkcL5HrNEtJUZ4a
+ gcyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=Otkd94Ddo+0y+d19P9705aLyzrf8R+OhLjXGWeBBDgI=;
+ b=q7CPoIUpbTIZ/OmJHD+7EtCwTGZ12V4l+f3ZIW7n8oyV+OBdT8EEtNGalMVvl6dL+O
+ JZWNCERycGxrdOes7x5spBfnosMFVTQRjkPsS+n3Cmwr/pXOWq6A69cVyGy5vI7bJiHv
+ fVuh6jqkW/h6Oqop4YW0QCxk4gEKe/iK/GD3fDS0rDIu0jt781jycM8F+MGofJuLeu5J
+ Qg2YAFELW7gQafrXHEvuQxL4AqzJhNPkYGrXtF9rMaxof5RIhnyZcohV8dvhEk5efjDQ
+ voxDZMoTWCf8mdfXJTpxuuV0FdbzDLxYZ8Z59JECBmW+NqRuDr1GpRnTNHshRuRFPinK
+ Gsiw==
+X-Gm-Message-State: AOAM530dyT1JxhZN6Hq74cUlh17vDFjrEV8JXTj9rOFbk6xUNdxA6B6B
+ WktbikuR1JG7TerfAucno+A8Ng==
+X-Google-Smtp-Source: ABdhPJxcG+pDaR82nQIpiGgA+GsZ94Xtzp0Mh0VcEJpkpsk7NgrveddXN3qtbe4XWzRsAWtKejnyUw==
+X-Received: by 2002:a65:6557:: with SMTP id a23mr12921258pgw.451.1639414541767; 
+ Mon, 13 Dec 2021 08:55:41 -0800 (PST)
+Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
+ by smtp.gmail.com with ESMTPSA id r6sm7378794pjz.56.2021.12.13.08.55.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Dec 2021 08:55:40 -0800 (PST)
+Date: Mon, 13 Dec 2021 09:55:38 -0700
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+Cc: bjorn.andersson@linaro.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-remoteproc@vger.kernel.org, matthias.bgg@gmail.com,
+ ohad@wizery.com, yj.chiang@mediatek.com
+Subject: Re: [PATCH v2] remoteproc: use %pe format string to print return
+ error code
+Message-ID: <20211213165538.GA1396405@p14s>
+References: <20211116162933.GA2318486@p14s>
+ <20211213072015.32235-1-mark-pk.tsai@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <CABnWg9tcWdfPQwNtFhqVZxCriT848fy42VHoQZs3X2UmL4LYSA@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <20211213072015.32235-1-mark-pk.tsai@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_085425_115319_48280D99 
-X-CRM114-Status: GOOD (  44.72  )
+X-CRM114-CacheID: sfid-20211213_085543_831315_DEE5044D 
+X-CRM114-Status: GOOD (  33.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,146 +86,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2550994995837245103=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============2550994995837245103==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ylwd6onewg73wtcp"
-Content-Disposition: inline
-
-
---ylwd6onewg73wtcp
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Dec 02, 2021 at 06:48:12AM -0800, Guillaume Ranquet wrote:
-> Hi,
->=20
-> Quoting Maxime Ripard (2021-11-25 15:30:34)
-> > On Wed, Nov 24, 2021 at 01:45:21PM +0000, Guillaume Ranquet wrote:
-> > > Hi,
-> > > Thanks for all your input, really appreciated.
-> > >
-> > > Quoting Maxime Ripard (2021-11-16 15:51:12)
-> > > > Hi,
-> > > >
-> > > > On Mon, Nov 15, 2021 at 09:33:52AM -0500, Guillaume Ranquet wrote:
-> > > > > Quoting Maxime Ripard (2021-11-15 11:11:29)
-> > > > > > > The driver creates a child device for the phy. The child devi=
-ce will
-> > > > > > > never exist without the parent being active. As they are shar=
-ing a
-> > > > > > > register range, the parent passes a regmap pointer to the chi=
-ld so that
-> > > > > > > both can work with the same register range. The phy driver se=
-ts device
-> > > > > > > data that is read by the parent to get the phy device that ca=
-n be used
-> > > > > > > to control the phy properties.
+On Mon, Dec 13, 2021 at 03:20:15PM +0800, Mark-PK Tsai wrote:
+> > Good day,
+> > 
+> > On Tue, Nov 16, 2021 at 09:57:03PM +0800, Mark-PK Tsai wrote:
+> > > > > > > Use %pe format string to print return error code which
+> > > > > > > make the error message easier to understand.
+> > > > > > >
+> > > > > > > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
+> > > > > > > ---
+> > > > > > >  drivers/remoteproc/remoteproc_core.c | 4 ++--
+> > > > > > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > > > > >
+> > > > > > > diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
+> > > > > > > index 502b6604b757..2242da320368 100644
+> > > > > > > --- a/drivers/remoteproc/remoteproc_core.c
+> > > > > > > +++ b/drivers/remoteproc/remoteproc_core.c
+> > > > > > > @@ -575,8 +575,8 @@ static int rproc_handle_vdev(struct rproc *rproc, void *ptr,
+> > > > > > >                                            dma_get_mask(rproc->dev.parent));
+> > > > > > >         if (ret) {
+> > > > > > >                 dev_warn(dev,
+> > > > > > > -                        "Failed to set DMA mask %llx. Trying to continue... %x\n",
+> > > > > > > -                        dma_get_mask(rproc->dev.parent), ret);
+> > > > > > > +                        "Failed to set DMA mask %llx. Trying to continue... (%pe)\n",
+> > > > > > > +                        dma_get_mask(rproc->dev.parent), ERR_PTR(ret));
 > > > > > >
-> > > > > > If the PHY is in the same register space than the DP controller=
-, why do
-> > > > > > you need a separate PHY driver in the first place?
+> > > > > > Macro ERR_PTR() is used to convert error codes to pointer type when
+> > > > > > returning from a function - I fail to see how doing so in a dev_warn()
+> > > > > > context can make the message easier to understand.  Can you provide an
+> > > > > > example?
 > > > > >
-> > > > > This has been asked by Chun-Kuang Hu in a previous revision of th=
-e series:
+> > > > > Hi,
 > > > > >
-> > > > > https://lore.kernel.org/linux-mediatek/CAAOTY_-+T-wRCH2yw2XSm=3DZ=
-baBbqBQ4EqpU2P0TF90gAWQeRsg@mail.gmail.com/
+> > > > > When dma_coerce_mask_and_coherent() fail, the output log will be as following.
+> > > > >
+> > > > > format          log
+> > > > > %x              Trying to continue... fffffffb
+> > > > > %d              Trying to continue... -5
+> > > > > %pe             Trying to continue... -5        (if CONFIG_SYMBOLIC_ERRNAME is not set)
+> > > > > %pe             Trying to continue... -EIO      (if CONFIG_SYMBOLIC_ERRNAME=y)
 > > > >
-> > > > It's a bit of a circular argument though :)
-> > > >
-> > > > It's a separate phy driver because it needs to go through another
-> > > > maintainer's tree, but it needs to go through another maintainer's =
-tree
-> > > > because it's a separate phy driver.
-> > > >
-> > > > It doesn't explain why it needs to be a separate phy driver? Why ca=
-n't
-> > > > the phy setup be done directly in the DP driver, if it's essentiall=
-y a
-> > > > single device?
-> > > >
-> > > > That being said, usually what those kind of questions mean is that
-> > > > you're missing a comment or something in the commit log to provide =
-that
-> > > > context in the first place, so it would be great to add that context
-> > > > here.
-> > > >
-> > > > And it will avoid the situation we're now in where multiple reviewe=
-rs
-> > > > ask the same questions over and over again :)
-> > > >
-> > > At first I didn't understand your reply, then I realized I gave you
-> > > the wrong link...
-> > > my bad! I'm struggling a bit with mail reviews, but I'll get there ev=
-entually.
-> > >
-> > > The driver and phy were a single driver until v2 of this patch series
-> > > and the phy setup
-> > > was done directly in the driver (single driver, single C file).
-> > > Here's the relevant link to the discussion between Chun-Kuang and Mar=
-kus
-> > >
-> > > https://lore.kernel.org/linux-mediatek/CAAOTY__cJMqcAieEraJ2sz4gi0Zs-=
-aiNXz38_x7dPQea6HvYEg@mail.gmail.com/#t
-> > >
-> > > I'll try to find a way to make it clearer for v7.
-> >
-> > OK, it makes sense then :)
-> >
-> > There's something weird though: the devices definitely look like they're
-> > in a separate register range, yet you mention a regmap to handle the
-> > shared register range. That range doesn't seem described anywhere in the
-> > device tree though? What is it for?
->
-> My understanding is that 0x1000 to 0x1fff controls the phy
-> functionalities and 0x2000 to 0x4fff controls "non-phy"
-> functionalities. And you are right, there's no description of that in
-> the device tree whatsoever. The ranges are in the same actual device
-> and thus it has been decided to not have dt-bindings for the phy
-> device.
+> > > > When failing, functions dma_coerce_mask_and_coherent() returns -EIO.
+> > > > Casting that to a (void *) with ERR_PTR() does not change that value.
+> > > > Since variable @ret is already declared as "int" the real fix is to
+> > > > change "%x" to "%d".
+> > > 
+> > > There're some other drivers do the same thing in the recent kernel, so I think
+> > > it's fine to casting the `ret` to a (void *) for more user friendly.
+> > > But I suppose it would depend on the maintainer's opinion.
+> > > 
+> > > So how about previous patch I sent, which also fix this issue by using %d.
+> > > 
+> > > https://lore.kernel.org/lkml/20211102120805.27137-1-mark-pk.tsai@mediatek.com/
+> > 
+> > I had not seen Russell's reply in the link you posted above.  I am not
+> > completely sure about his solution but his insight and guidance in kernel
+> > programming have precedence over mine.
+> > 
+> > I will take this patch.
+> > 
+> > Thanks,
+> > Mathieu
+> > 
+> 
+> Hi,
+> 
+> Sorry to disturb you.
+> Is this patch queued?
+> Just want to make sure it has not been forgotten.
 
-Sure, that last part makes sense, but then I'm not sure why you don't
-have the full register range in the device node you have in the DT?
+https://git.kernel.org/pub/scm/linux/kernel/git/remoteproc/linux.git/log/?h=for-next
 
-> The phy driver is a child of the DP driver that we register using
-> platform_device_register_data() and we pass along the same regmap as
-> the DP driver in its platform data.
-
-Especially if it's used by something, it should be described in the DT
-somewhere.
-
-Maxime
-
---ylwd6onewg73wtcp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCYbd6vgAKCRDj7w1vZxhR
-xT/XAP4gcBznOdZEodDfrTWXsySCTdZkPIjixaXYaZygMv/DvAEAzYR8zGWt+4Lo
-KRYSF1p0RUF9kFGbzn1FJomiL38MuwI=
-=Rzng
------END PGP SIGNATURE-----
-
---ylwd6onewg73wtcp--
-
-
---===============2550994995837245103==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============2550994995837245103==--
-
