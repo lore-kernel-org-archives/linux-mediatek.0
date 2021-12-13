@@ -4,94 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21328C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 14:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E6BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 14:34:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l/b0w3liKv3c/XIZl3ri9Cw2yGsIiIrmm74eAWQ+69I=; b=B5KbdY8g3mK10I
-	D7jWLf4Ji2pCHgKf84o7cKt/M4uF5S8l/b29/Gv0lJCP5cjfju6QkkDUCjzHLITjgK60NqxNi2akS
-	vRSdLHgP9nrl7SldFhza932XpwVF3ah/Ps/a0UGBcIjzVVQhMu7bYLeExCEUtFzK6HEiRMpiEiSOo
-	uepgNI0LAjdx1Tu5LTRGRu+RQ/wkQ3011nIaqcEMztabPh1n7ouoLkrRS47odUnLX10beXOJmH4K8
-	DTO7maWyGw+hm+IUdbW47m7y2iDIo+TW2bfk4bmeaqLhsvYwD0Nx3liU3cYAXGBowdNCCftuhgDNM
-	WhKBR2Ha9SHSb8b8lSbQ==;
+	List-Owner; bh=DhekKPDmGzWv83bW4u7ogkDt1jnF/aWhLGso5fOiTmw=; b=KeZuoPl6jT/qq7
+	B8B6ZjH2WyS4f5XTBB+HUg4f/x580M/6baqKuJHbwQkU3zr4+QsXKOIlvaMOvMHlABWbNPaVqKCDP
+	dBhvmvCmoBW2bjhlrCEPzSUMs1GuJr/fxwf8IDbwSvShAeiooZaqwMQX3rhX1+ojUk4D37vHVwjUe
+	vzzF/KNJqNB65NcBOt82Y2XcfRF9sGVuBQSFPb1quQBg0ljLBZAjmBykFpj8T78H9iPRi2lZ9Lahc
+	vjvAMw6Mzllch96xd85T0zh62ck4Dp4ZWFfCK0bcuk64ga0pGX1QWPS1/uv+GZn77DzwT78RB5doA
+	xAhYsYeDIIH40s/mAtEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwmMH-00A48p-Ve; Mon, 13 Dec 2021 14:31:18 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1mwmP1-00A59V-Va; Mon, 13 Dec 2021 14:34:07 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwm2b-009wJF-Q0; Mon, 13 Dec 2021 14:10:59 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10196"; a="325009656"
-X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="325009656"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2021 06:05:41 -0800
-X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="609028967"
-Received: from smile.fi.intel.com ([10.237.72.184])
- by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2021 06:05:31 -0800
-Received: from andy by smile.fi.intel.com with local (Exim 4.95)
- (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1mwlwO-005dxK-9w; Mon, 13 Dec 2021 16:04:32 +0200
-Date: Mon, 13 Dec 2021 16:04:32 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Bartosz Golaszewski <brgl@bgdev.pl>
-Cc: Marc Zyngier <maz@kernel.org>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Chunyan Zhang <chunyan.zhang@unisoc.com>, Baruch Siach <baruch@tkos.co.il>,
- Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
- Tony Lindgren <tony@atomide.com>,
- Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Linus Walleij <linus.walleij@linaro.org>,
- Jianqun Xu <jay.xu@rock-chips.com>,
- Alexandru Ardelean <aardelean@deviqon.com>,
- Thierry Reding <treding@nvidia.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- patches@opensource.cirrus.com,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- linux-power <linux-power@fi.rohmeurope.com>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>,
- "open list:PWM SUBSYSTEM" <linux-pwm@vger.kernel.org>,
- Linux-OMAP <linux-omap@vger.kernel.org>, linux-unisoc@lists.infradead.org,
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>,
- linux-stm32@st-md-mailman.stormreply.com,
- linux-tegra@vger.kernel.org, Ray Jui <rjui@broadcom.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Scott Branden <sbranden@broadcom.com>,
- Gregory Fong <gregory.0xf0@gmail.com>,
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
- Keerthy <j-keerthy@ti.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang7@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>,
- Vladimir Zapolskiy <vz@mleia.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>,
- Lee Jones <lee.jones@linaro.org>,
- Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>,
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jonathan Hunter <jonathanh@nvidia.com>
-Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
- the drivers
-Message-ID: <YbdS8E6lHGzWniba@smile.fi.intel.com>
-References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
- <CAMRc=Meve=W3yvPmakFap-s6cOY1GUq7c1VjJE2dEH4f0+shag@mail.gmail.com>
+ id 1mwm9f-009z2J-Dw; Mon, 13 Dec 2021 14:18:16 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id D45A561021;
+ Mon, 13 Dec 2021 14:18:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5CBEC34602;
+ Mon, 13 Dec 2021 14:18:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1639405094;
+ bh=NtWdzlEjft5tnQeFaBXUVrmubHd8T7HRkrRLfS+HxKc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ef4dtFt35n0BNeZHb5cwHF2nWR84NPJ4B4Ej+DcAmvR7/HzogwktH/W/meMnZnx1/
+ Xg3O6A+RredIYQtKTQ5Xmko6sTk52Ckx/QDevDNiQkd9m6eeVOhNiVRfdPIU5wthcz
+ kslBCgGFDpF4EoLzXiuVfEO/wBb1eXc3RIOJDVQs=
+Date: Mon, 13 Dec 2021 15:18:11 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Eddie Hung <eddie.hung@mediatek.com>,
+ Yuwen Ng <yuwen.ng@mediatek.com>, stable@vger.kernel.org
+Subject: Re: [PATCH 2/3] usb: mtu3: add memory barrier before set GPD's HWO
+Message-ID: <YbdWI5PD3e6uFz8U@kroah.com>
+References: <20211209031424.17842-1-chunfeng.yun@mediatek.com>
+ <20211209031424.17842-2-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <CAMRc=Meve=W3yvPmakFap-s6cOY1GUq7c1VjJE2dEH4f0+shag@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+In-Reply-To: <20211209031424.17842-2-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_061057_918395_95F1A4EA 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20211213_061815_567106_06383700 
+X-CRM114-Status: GOOD (  20.94  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,29 +72,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 13, 2021 at 02:50:57PM +0100, Bartosz Golaszewski wrote:
-> On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
-> <andriy.shevchenko@linux.intel.com> wrote:
-> >
-> > GPIO library does copy the of_node from the parent device of
-> > the GPIO chip, there is no need to repeat this in the individual
-> > drivers. Remove these assignment all at once.
-> >
-> > For the details one may look into the of_gpio_dev_init() implementation.
+On Thu, Dec 09, 2021 at 11:14:23AM +0800, Chunfeng Yun wrote:
+> There is a seldom issue that the controller access invalid address
+> and trigger devapc or emimpu violation. That is due to memory access
+> is out of order and cause gpd data is not correct.
+> Make sure GPD is fully written before giving it to HW by setting its
+> HWO.
+> 
+> Fixes: 48e0d3735aa5 ("usb: mtu3: supports new QMU format")
+> Cc: stable@vger.kernel.org
+> Reported-by: Eddie Hung <eddie.hung@mediatek.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  drivers/usb/mtu3/mtu3_qmu.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
+> index 3f414f91b589..34bb5ac67efe 100644
+> --- a/drivers/usb/mtu3/mtu3_qmu.c
+> +++ b/drivers/usb/mtu3/mtu3_qmu.c
+> @@ -273,6 +273,8 @@ static int mtu3_prepare_tx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
+>  			gpd->dw3_info |= cpu_to_le32(GPD_EXT_FLAG_ZLP);
+>  	}
+>  
+> +	/* make sure GPD is fully written before giving it to HW */
+> +	mb();
 
-> If there are no objections, I am willing to apply this to give it some
-> time in next and get the work on dropping the OF APIs from gpiolib
-> going.
+So this means you are using mmio for this structure?  If so, shouldn't
+you be using normal io memory read/write calls as well and not just
+"raw" pointers like this:
 
-There was a v2 sent out.
+>  	gpd->dw0_info |= cpu_to_le32(GPD_FLAGS_IOC | GPD_FLAGS_HWO);
 
-  Message-Id: <20211206131852.74746-1-andriy.shevchenko@linux.intel.com>
+Are you sure this is ok?
 
--- 
-With Best Regards,
-Andy Shevchenko
+Sprinkling around mb() calls is almost never the correct solution.
+
+If you need to ensure that a write succeeds, shouldn't you do a read
+from it afterward?  Many busses require this, doesn't yours?
 
 
+
+>  
+>  	mreq->gpd = gpd;
+> @@ -306,6 +308,8 @@ static int mtu3_prepare_rx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
+>  	gpd->next_gpd = cpu_to_le32(lower_32_bits(enq_dma));
+>  	ext_addr |= GPD_EXT_NGP(mtu, upper_32_bits(enq_dma));
+>  	gpd->dw3_info = cpu_to_le32(ext_addr);
+> +	/* make sure GPD is fully written before giving it to HW */
+> +	mb();
+
+Again, mb(); does not ensure that memory-mapped i/o actually hits the
+HW.  Or if it does on your platform, how?
+
+mb() is a compiler barrier, not a memory write to a bus barrier.  Please
+read Documentation/memory-barriers.txt for more details.
+
+thanks,
+
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
