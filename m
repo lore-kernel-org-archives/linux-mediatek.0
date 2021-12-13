@@ -4,86 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25597C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB2B8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:54:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ztRH8ozV6Go56OkABXNb10SEzUsJ0cLfbqjMcr9Yc0U=; b=wHxNcsETKEDNvO
-	TBgq0qgvfQWaONqmXhw/HM46VSfh7sHvK58IMbystncvWjM2xkfviIfnUmlCMWMjeHtjOR+SfY03d
-	8rMDc0Z60kIED49UyV9YpfjwUuOnjQ31Hpm+xRvuTRu7U4EvKQI1ReGtVtFLDNdg25R5TOtgXzYJl
-	SORviMyaVj7RVTd7Q6pqnT0qpkB5g0s19N+sLCME/aUN4NxkaGkNtKZNMvXg3iK7oT0hIG2mSrKph
-	mTA7TZGAcP9lru7UF0iZlnK08xPYm58x5UKmNTJEEPafAo4sKVx15+6vK/brrqSagsNGTnJMZl/UV
-	2+MJEtUt9Mrm5XZ01isQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ti09MqaA65YfPpD6mSsMyR3b1pPQDVXFcmAtlV5QI7c=; b=gsK5FRTvJ6gzFOyLn2eIMU+rok
+	EecVDXFgP6pC0HPHL1m988jjyXt6yMlwCJyYV4Gn9jqSwCt/AazlXJONOAg+w5zwEwLHAfRIQgwsq
+	ESHnBeazJD+g+2MyRQDvlmYqJdEgcypPDvqO4wnFVROKY2XJ2PJGYRqpHh1NPfrzSJ+XfAdC03Z7N
+	FJq6eJWXTbMULQtHoBTdhOHLChbs4gKxN1T13fX2a951gxUDGGVkGzdw4yT4pFUbihMECFbOXzRM0
+	UwxKzApFLZYmCtBJu2be43TN4QSZUf9rzJg+Gp6m2Whd4Lyczb5RacDaMVLIiP8kvG0xvl9wiXoSt
+	9aWhlUfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwoNK-00Af6o-BS; Mon, 13 Dec 2021 16:40:30 +0000
-Received: from mga05.intel.com ([192.55.52.43])
+	id 1mwob4-00Aj4k-24; Mon, 13 Dec 2021 16:54:42 +0000
+Received: from new4-smtp.messagingengine.com ([66.111.4.230])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwoNG-00Af5o-Lh; Mon, 13 Dec 2021 16:40:28 +0000
-X-IronPort-AV: E=McAfee;i="6200,9189,10196"; a="325043647"
-X-IronPort-AV: E=Sophos;i="5.88,203,1635231600"; d="scan'208";a="325043647"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2021 08:39:57 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,203,1635231600"; d="scan'208";a="609150188"
-Received: from black.fi.intel.com ([10.237.72.28])
- by fmsmga002.fm.intel.com with ESMTP; 13 Dec 2021 08:39:40 -0800
-Received: by black.fi.intel.com (Postfix, from userid 1003)
- id E553114F; Mon, 13 Dec 2021 18:39:47 +0200 (EET)
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Linus Walleij <linus.walleij@linaro.org>, Marc Zyngier <maz@kernel.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Sam Shih <sam.shih@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>,
- Ludovic Desroches <ludovic.desroches@microchip.com>,
- Claudiu Beznea <claudiu.beznea@microchip.com>,
- Radim Pavlik <radim.pavlik@tbs-biometrics.com>,
- Kavyasree Kotagiri <kavyasree.kotagiri@microchip.com>,
- Colin Foster <colin.foster@in-advantage.com>,
- Douglas Anderson <dianders@chromium.org>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
- Herve Codina <herve.codina@bootlin.com>, linux-gpio@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
- linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
- linux-rpi-kernel@lists.infradead.org, patches@opensource.cirrus.com,
- alsa-devel@alsa-project.org, linux-mediatek@lists.infradead.org,
- linux-oxnas@groups.io, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-Cc: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
- Manivannan Sadhasivam <mani@kernel.org>,
- Nicolas Saenz Julienne <nsaenz@kernel.org>,
- Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
- Scott Branden <sbranden@broadcom.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Sean Wang <sean.wang@kernel.org>,
- Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
- Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Support Opensource <support.opensource@diasemi.com>,
- Baruch Siach <baruch@tkos.co.il>, Neil Armstrong <narmstrong@baylibre.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andy Gross <agross@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org
-Subject: [PATCH v1 2/2] pinctrl: Propagate firmware node from a parent device
-Date: Mon, 13 Dec 2021 18:39:29 +0200
-Message-Id: <20211213163929.7509-2-andriy.shevchenko@linux.intel.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20211213163929.7509-1-andriy.shevchenko@linux.intel.com>
-References: <20211213163929.7509-1-andriy.shevchenko@linux.intel.com>
+ id 1mwoam-00AiyX-UY; Mon, 13 Dec 2021 16:54:26 +0000
+Received: from compute6.internal (compute6.nyi.internal [10.202.2.46])
+ by mailnew.nyi.internal (Postfix) with ESMTP id 2761D5801DF;
+ Mon, 13 Dec 2021 11:54:24 -0500 (EST)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute6.internal (MEProxy); Mon, 13 Dec 2021 11:54:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
+ date:from:to:cc:subject:message-id:references:mime-version
+ :content-type:in-reply-to; s=fm1; bh=5QiXVE5U69Mg35ZnXupLr9UQK/P
+ btYmTEolYnD06NLQ=; b=Wo0vGCLKL8TnuTpXGT6aMvo+mVKt398ERba+hPmKEpD
+ gOePnZzc1ep1dbKyuY+Lfwjm6wv2bnuOXdY2DxQrTnXblLzMA1aW/ZZlgWKCinex
+ qLYAiCk4VBc9hBNJymRlHd6Av8CH7Mg4ewH1ilB/4oZV7s/04CDnUFqsVQMcl7X9
+ PBeTW1MVMrUoDUVPm17s+YBkvyjUyb3TpAwFoZd0cvJM2coh067tGxyR0qgysVTH
+ uk0QSjkvQNo/sOPyqdI+PxHIsYSBr0g7G0t8auXAXn3XKF0KNvxB9iNZydMYdFU7
+ o8GVqr0u+VoU3lK1LgE+0SaW8yUAvfRsUDaOwis3BqQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=5QiXVE
+ 5U69Mg35ZnXupLr9UQK/PbtYmTEolYnD06NLQ=; b=ZCDCuoiG2EevFdkafU9Se9
+ B/mFoXSFNhWwJJaJgDYnpWVKqMZ9JTtBCJ6dKh+Ch/pmqSuFbd5JyDoNgLMx9aFP
+ DxEHJ44FL68CaQKrglWZozAZYYlRoLVBLoanNcLHH1LY0B4C1cgxBNGxt36VCByg
+ 8+ldqgMa8Z06/9ft5Bzy5AFuWu6VJkR5HlvUUcfnTF5Z/3fCOuN6/IAHjCpjnYPY
+ U3RBcccw0SN1784eiorhY/+lE9U5Y/Rmhk0vHmhhuqfQmo0GTRPSVrWH8E+na9Tf
+ 8Y1ol1NvLSmVmX4/S3RfGaxSvU9FkskliyOMF/Py7aAhuYhp62JuFOPMkVemcWwg
+ ==
+X-ME-Sender: <xms:v3q3YXa_-t7aZl7Gfmo_XFzhI2zw37moXstAZ5Ex16CyoonePGsaGg>
+ <xme:v3q3YWalhVXN6BQm3cmstHqi7P_ud8qw_7Eyr5tEbh-1Bg54z5NShJYE_1MH5Pwea
+ TBHYOq75W7Vl9veY00>
+X-ME-Received: <xmr:v3q3YZ9o6WGGBnz2DZHaY0s8cky-25B2oYS1tbSVeHfyNSbYDdrTeIHBIMiMwh0N0PvCB8jtLvbPdEnfVdzOW0OCiZW3VZyDWy9bCtt4>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrkeekgdelgecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihimhgv
+ ucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrghtth
+ gvrhhnpeevveefffduveeitdegtefhhfetueffteefffdvheevvdehteethedvleffgfej
+ vdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
+ enucfrrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
+X-ME-Proxy: <xmx:v3q3YdrR1_0X47QzI8HtSWViN8YdIAAz7gIoJ3DXKPm5GBtA6WlWag>
+ <xmx:v3q3YSr6qbi-Xeeb3nGqObgm3jwRDz6n0WCD7Rg0_P8jppohH12OMQ>
+ <xmx:v3q3YTTcv-LNTaCVeLMLNvv5iTtXdhJHr8E0RzFSqIBOCY-cPJ4Rzg>
+ <xmx:wHq3YYhKI9VF7Vso7A04DMP4uHx4rfWnn9XTjjzbcyARRzY2PTxK9w>
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 13 Dec 2021 11:54:23 -0500 (EST)
+Date: Mon, 13 Dec 2021 17:54:22 +0100
+From: Maxime Ripard <maxime@cerno.tech>
+To: Guillaume Ranquet <granquet@baylibre.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>,
+ kernel test robot <lkp@intel.com>, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v6 7/7] drm/mediatek: Add mt8195 DisplayPort driver
+Message-ID: <20211213165422.54n3oh72tjcb3a67@houat>
+References: <20211110130623.20553-1-granquet@baylibre.com>
+ <20211110130623.20553-8-granquet@baylibre.com>
+ <20211115101129.lyxxmb6i7paaonwi@gilmour>
+ <CABnWg9tNPGZSi1RLqF5+Qs1GHtynyVoOzAyw+i9mPRYEoByk8g@mail.gmail.com>
+ <20211116145112.xyoxzfll6exysnvt@gilmour>
+ <CABnWg9uhuchdWyBeTacR6Cy0A9OHziUi051BQ5wsZVU0ajYjyA@mail.gmail.com>
+ <20211125143034.tzikvlxxl6fdhsif@gilmour>
+ <CABnWg9tcWdfPQwNtFhqVZxCriT848fy42VHoQZs3X2UmL4LYSA@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CABnWg9tcWdfPQwNtFhqVZxCriT848fy42VHoQZs3X2UmL4LYSA@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_084026_801051_FAA5A1F1 
-X-CRM114-Status: GOOD (  13.32  )
+X-CRM114-CacheID: sfid-20211213_085425_115319_48280D99 
+X-CRM114-Status: GOOD (  44.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,144 +106,146 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2550994995837245103=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When creating MFD platform devices the firmware node is left unset.
-This, in particular, prevents GPIO library to use it for different
-purposes. Propagate firmware node from the parent device and let
-GPIO library do the right thing.
 
-Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
----
- drivers/pinctrl/cirrus/pinctrl-madera-core.c | 3 ++-
- drivers/pinctrl/pinctrl-as3722.c             | 4 ++--
- drivers/pinctrl/pinctrl-da9062.c             | 5 ++---
- drivers/pinctrl/pinctrl-max77620.c           | 3 ++-
- drivers/pinctrl/pinctrl-rk805.c              | 4 ++--
- 5 files changed, 10 insertions(+), 9 deletions(-)
+--===============2550994995837245103==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ylwd6onewg73wtcp"
+Content-Disposition: inline
 
-diff --git a/drivers/pinctrl/cirrus/pinctrl-madera-core.c b/drivers/pinctrl/cirrus/pinctrl-madera-core.c
-index dce2626384a9..b48646bd3f55 100644
---- a/drivers/pinctrl/cirrus/pinctrl-madera-core.c
-+++ b/drivers/pinctrl/cirrus/pinctrl-madera-core.c
-@@ -1004,13 +1004,14 @@ static int madera_pin_probe(struct platform_device *pdev)
- 
- 	dev_dbg(&pdev->dev, "%s\n", __func__);
- 
-+	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
-+
- 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
- 	if (!priv)
- 		return -ENOMEM;
- 
- 	priv->dev = &pdev->dev;
- 	priv->madera = madera;
--	pdev->dev.of_node = madera->dev->of_node;
- 
- 	switch (madera->type) {
- 	case CS47L15:
-diff --git a/drivers/pinctrl/pinctrl-as3722.c b/drivers/pinctrl/pinctrl-as3722.c
-index 13c193156363..d5d0f62fa55b 100644
---- a/drivers/pinctrl/pinctrl-as3722.c
-+++ b/drivers/pinctrl/pinctrl-as3722.c
-@@ -551,12 +551,13 @@ static int as3722_pinctrl_probe(struct platform_device *pdev)
- 	struct as3722_pctrl_info *as_pci;
- 	int ret;
- 
-+	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
-+
- 	as_pci = devm_kzalloc(&pdev->dev, sizeof(*as_pci), GFP_KERNEL);
- 	if (!as_pci)
- 		return -ENOMEM;
- 
- 	as_pci->dev = &pdev->dev;
--	as_pci->dev->of_node = pdev->dev.parent->of_node;
- 	as_pci->as3722 = dev_get_drvdata(pdev->dev.parent);
- 	platform_set_drvdata(pdev, as_pci);
- 
-@@ -578,7 +579,6 @@ static int as3722_pinctrl_probe(struct platform_device *pdev)
- 
- 	as_pci->gpio_chip = as3722_gpio_chip;
- 	as_pci->gpio_chip.parent = &pdev->dev;
--	as_pci->gpio_chip.of_node = pdev->dev.parent->of_node;
- 	ret = gpiochip_add_data(&as_pci->gpio_chip, as_pci);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "Couldn't register gpiochip, %d\n", ret);
-diff --git a/drivers/pinctrl/pinctrl-da9062.c b/drivers/pinctrl/pinctrl-da9062.c
-index 1c08579f0198..678e33d81856 100644
---- a/drivers/pinctrl/pinctrl-da9062.c
-+++ b/drivers/pinctrl/pinctrl-da9062.c
-@@ -256,6 +256,8 @@ static int da9062_pctl_probe(struct platform_device *pdev)
- 	struct da9062_pctl *pctl;
- 	int i;
- 
-+	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
-+
- 	pctl = devm_kzalloc(&pdev->dev, sizeof(*pctl), GFP_KERNEL);
- 	if (!pctl)
- 		return -ENOMEM;
-@@ -277,9 +279,6 @@ static int da9062_pctl_probe(struct platform_device *pdev)
- 	pctl->gc = reference_gc;
- 	pctl->gc.label = dev_name(&pdev->dev);
- 	pctl->gc.parent = &pdev->dev;
--#ifdef CONFIG_OF_GPIO
--	pctl->gc.of_node = parent->of_node;
--#endif
- 
- 	platform_set_drvdata(pdev, pctl);
- 
-diff --git a/drivers/pinctrl/pinctrl-max77620.c b/drivers/pinctrl/pinctrl-max77620.c
-index c643ed43ebbf..4b60ff20e9f7 100644
---- a/drivers/pinctrl/pinctrl-max77620.c
-+++ b/drivers/pinctrl/pinctrl-max77620.c
-@@ -551,12 +551,13 @@ static int max77620_pinctrl_probe(struct platform_device *pdev)
- 	struct max77620_pctrl_info *mpci;
- 	int i;
- 
-+	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
-+
- 	mpci = devm_kzalloc(&pdev->dev, sizeof(*mpci), GFP_KERNEL);
- 	if (!mpci)
- 		return -ENOMEM;
- 
- 	mpci->dev = &pdev->dev;
--	mpci->dev->of_node = pdev->dev.parent->of_node;
- 	mpci->rmap = max77620->rmap;
- 
- 	mpci->pins = max77620_pins_desc;
-diff --git a/drivers/pinctrl/pinctrl-rk805.c b/drivers/pinctrl/pinctrl-rk805.c
-index c6f4229eb106..528832b54b29 100644
---- a/drivers/pinctrl/pinctrl-rk805.c
-+++ b/drivers/pinctrl/pinctrl-rk805.c
-@@ -420,18 +420,18 @@ static int rk805_pinctrl_probe(struct platform_device *pdev)
- 	struct rk805_pctrl_info *pci;
- 	int ret;
- 
-+	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
-+
- 	pci = devm_kzalloc(&pdev->dev, sizeof(*pci), GFP_KERNEL);
- 	if (!pci)
- 		return -ENOMEM;
- 
- 	pci->dev = &pdev->dev;
--	pci->dev->of_node = pdev->dev.parent->of_node;
- 	pci->rk808 = dev_get_drvdata(pdev->dev.parent);
- 
- 	pci->pinctrl_desc = rk805_pinctrl_desc;
- 	pci->gpio_chip = rk805_gpio_chip;
- 	pci->gpio_chip.parent = &pdev->dev;
--	pci->gpio_chip.of_node = pdev->dev.parent->of_node;
- 
- 	platform_set_drvdata(pdev, pci);
- 
--- 
-2.33.0
 
+--ylwd6onewg73wtcp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Dec 02, 2021 at 06:48:12AM -0800, Guillaume Ranquet wrote:
+> Hi,
+>=20
+> Quoting Maxime Ripard (2021-11-25 15:30:34)
+> > On Wed, Nov 24, 2021 at 01:45:21PM +0000, Guillaume Ranquet wrote:
+> > > Hi,
+> > > Thanks for all your input, really appreciated.
+> > >
+> > > Quoting Maxime Ripard (2021-11-16 15:51:12)
+> > > > Hi,
+> > > >
+> > > > On Mon, Nov 15, 2021 at 09:33:52AM -0500, Guillaume Ranquet wrote:
+> > > > > Quoting Maxime Ripard (2021-11-15 11:11:29)
+> > > > > > > The driver creates a child device for the phy. The child devi=
+ce will
+> > > > > > > never exist without the parent being active. As they are shar=
+ing a
+> > > > > > > register range, the parent passes a regmap pointer to the chi=
+ld so that
+> > > > > > > both can work with the same register range. The phy driver se=
+ts device
+> > > > > > > data that is read by the parent to get the phy device that ca=
+n be used
+> > > > > > > to control the phy properties.
+> > > > > >
+> > > > > > If the PHY is in the same register space than the DP controller=
+, why do
+> > > > > > you need a separate PHY driver in the first place?
+> > > > >
+> > > > > This has been asked by Chun-Kuang Hu in a previous revision of th=
+e series:
+> > > > >
+> > > > > https://lore.kernel.org/linux-mediatek/CAAOTY_-+T-wRCH2yw2XSm=3DZ=
+baBbqBQ4EqpU2P0TF90gAWQeRsg@mail.gmail.com/
+> > > >
+> > > > It's a bit of a circular argument though :)
+> > > >
+> > > > It's a separate phy driver because it needs to go through another
+> > > > maintainer's tree, but it needs to go through another maintainer's =
+tree
+> > > > because it's a separate phy driver.
+> > > >
+> > > > It doesn't explain why it needs to be a separate phy driver? Why ca=
+n't
+> > > > the phy setup be done directly in the DP driver, if it's essentiall=
+y a
+> > > > single device?
+> > > >
+> > > > That being said, usually what those kind of questions mean is that
+> > > > you're missing a comment or something in the commit log to provide =
+that
+> > > > context in the first place, so it would be great to add that context
+> > > > here.
+> > > >
+> > > > And it will avoid the situation we're now in where multiple reviewe=
+rs
+> > > > ask the same questions over and over again :)
+> > > >
+> > > At first I didn't understand your reply, then I realized I gave you
+> > > the wrong link...
+> > > my bad! I'm struggling a bit with mail reviews, but I'll get there ev=
+entually.
+> > >
+> > > The driver and phy were a single driver until v2 of this patch series
+> > > and the phy setup
+> > > was done directly in the driver (single driver, single C file).
+> > > Here's the relevant link to the discussion between Chun-Kuang and Mar=
+kus
+> > >
+> > > https://lore.kernel.org/linux-mediatek/CAAOTY__cJMqcAieEraJ2sz4gi0Zs-=
+aiNXz38_x7dPQea6HvYEg@mail.gmail.com/#t
+> > >
+> > > I'll try to find a way to make it clearer for v7.
+> >
+> > OK, it makes sense then :)
+> >
+> > There's something weird though: the devices definitely look like they're
+> > in a separate register range, yet you mention a regmap to handle the
+> > shared register range. That range doesn't seem described anywhere in the
+> > device tree though? What is it for?
+>
+> My understanding is that 0x1000 to 0x1fff controls the phy
+> functionalities and 0x2000 to 0x4fff controls "non-phy"
+> functionalities. And you are right, there's no description of that in
+> the device tree whatsoever. The ranges are in the same actual device
+> and thus it has been decided to not have dt-bindings for the phy
+> device.
+
+Sure, that last part makes sense, but then I'm not sure why you don't
+have the full register range in the device node you have in the DT?
+
+> The phy driver is a child of the DP driver that we register using
+> platform_device_register_data() and we pass along the same regmap as
+> the DP driver in its platform data.
+
+Especially if it's used by something, it should be described in the DT
+somewhere.
+
+Maxime
+
+--ylwd6onewg73wtcp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCYbd6vgAKCRDj7w1vZxhR
+xT/XAP4gcBznOdZEodDfrTWXsySCTdZkPIjixaXYaZygMv/DvAEAzYR8zGWt+4Lo
+KRYSF1p0RUF9kFGbzn1FJomiL38MuwI=
+=Rzng
+-----END PGP SIGNATURE-----
+
+--ylwd6onewg73wtcp--
+
+
+--===============2550994995837245103==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2550994995837245103==--
+
