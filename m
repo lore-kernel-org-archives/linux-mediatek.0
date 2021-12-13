@@ -4,75 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B54ACC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:08:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55FF7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KjA5xTFf3XpJlrM+3EtyyYluhbHOVsY81noVOjFS/Uo=; b=NxV2bp1Ro1XN1n
-	ubM0Fcsmf2yXKzo5pydx1ss9G2ZN3n/bk5xkeFqJXtUmxDYvk9/kOsfnPdO1qGvWTUijjownlLagM
-	pVjYZ0JPo6RFjChr9J5HSGODKoWdmsqCIk4Nn2RbrZcHajFeu2+lKQJfxLcWxa2V6vefkqVE58Imx
-	o9RYHoaERE18Z3NRkB0rqtQlib2Oic6SKAcZkmdLLx1GpyRwXz7VEUtlQOw4SPcl1+Gkpd2w2XWuj
-	/lyNPVkptyhqOtvLykKdx0Q6oY/LJsJqK4uyrI/7YIao4IEJBz8efrb+ZVRREQsp3Th85/RkBtv/9
-	gFT++gr5Zhjoe3+6GvRw==;
+	List-Owner; bh=jUsBVQwqVZU0wBz9L4owR9FALDjfRAZmSIluNFZR/S0=; b=3RuO8R1dFO+HuG
+	kSFV6gHNC7HYIR07BfOU14IEsNf9MRwRrGdHRcWyxrUd4qMM3PgNRXnaOH4dR5j0EKSrkr7PkVXQH
+	B5XqVidp6HxAbmZRNuMSMonHOPc947dZ+w93sO1nBU9PewOMvsBmpTzT6X7OEEP6xawpeAKNOXHZM
+	sQwW+gc0hDvUO8ag1gX4eVgNJxGIBggfHckc8c3wj/x5yTHfz1sKOQdwT+Np2dWFt3knc8fKDa2BW
+	200D/gGhoklDwgcPPyYBNfhy4dkuCrOgxcse002S3OB8YQG9mdzHeQqNGwZcnjMmQ3Qm96dAoKC6O
+	jplsIxgp4HIRMX3/wjpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwnsF-00AV66-MK; Mon, 13 Dec 2021 16:08:23 +0000
-Received: from mail-qk1-x735.google.com ([2607:f8b0:4864:20::735])
+	id 1mwo41-00AYXi-67; Mon, 13 Dec 2021 16:20:33 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwns2-00AV2W-OE
- for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 16:08:12 +0000
-Received: by mail-qk1-x735.google.com with SMTP id t6so14340170qkg.1
- for <linux-mediatek@lists.infradead.org>; Mon, 13 Dec 2021 08:07:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=5VPAU6dvYOzvsB1kyIfMQv3U9XrNMQlDiY7WbCBmBes=;
- b=aqwHs4+TE4DLSYVktWLA8eauGvZ1M5mb9cmFWB9dGS9HT8aI1sizuWcY2hhiH7yN1Z
- XBwpxbiE3gKBaxK02sOgWhToQa1yxkGCGb/WDUCYGP+Ps0LA4n9syrEqUWRfEUJxFyIM
- e17dClHwtHeJwNhWM6uak6lwCn+LwuB3upWF0=
+ id 1mwo3m-00AYSI-Sv; Mon, 13 Dec 2021 16:20:20 +0000
+Received: by mail-oi1-f173.google.com with SMTP id s139so23710607oie.13;
+ Mon, 13 Dec 2021 08:20:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=5VPAU6dvYOzvsB1kyIfMQv3U9XrNMQlDiY7WbCBmBes=;
- b=ll5I7Gk7ZrhZH8R9LU8eNlMo6C2wtmIlIplKFkcMSuV1lnMl9xQMzghWleykXEAq2e
- Rl2YYfikJLQQoWo9q6yTUMI3k+5e8vGMnUsHVkvLhVLt4+HKdzF8O4wLPwdvIw6JMzWK
- pzJOrUprRm7nR8hcMXFF3KtVFeprALduIMq09ZIMPqoAiCR9NQtz7LoC0gynbPelcNRu
- kYQIzKwmzWGi07GVIXnOovl/EcDivJU67SpEq9fisQ9pIZm4TUh68J3lfnbOb7nPQmLu
- jLfb6au6iiqiGESG/5XV4Lfhjy+tEQB/wUIcdfqkTpKS0h25pfB9BeXKpPC4RpPPEret
- aoXg==
-X-Gm-Message-State: AOAM5333k1fkovthf0TxQdZR/Taxx1/ilBbiLt5q0UtgeSzU17HX9h8e
- CszHxyxyl3VSRmaqINaHiHbRA/SykCETsw==
-X-Google-Smtp-Source: ABdhPJwVk+NpCyiYqBuxb8qXr1TTL8u2eezR/uX5Vhpcpw+L1CidoZGT5Lo5wmw1ZpnAXNALFjKJ1Q==
-X-Received: by 2002:a37:a411:: with SMTP id n17mr33513759qke.722.1639411678428; 
- Mon, 13 Dec 2021 08:07:58 -0800 (PST)
-Received: from markyacoub.nyc.corp.google.com
- ([2620:0:1003:314:435a:1eff:4bc4:107d])
- by smtp.gmail.com with ESMTPSA id d23sm6054390qkl.70.2021.12.13.08.07.57
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=l6ZLi0PGoBXQBBSQe+jVt6PyRuLOnFoXjb9xaIaFyd8=;
+ b=qB+OY9YJx/3TLTE2a78xqTZp9dny/WKxkhbMqwahR0Xtnol/WQ6QUDFeCHeAjmi7DT
+ aMeOeWHiQPOFxUv+PBXvYjqZdx3vUcg8Q4iGxPe1n9JtTiAMflkHwRjii3ZZFtotdsW9
+ qdSu7OYhfVQY3jUf61KcbkVQJp4B2M9//eWhw3aGFz3H1/ZnNAPsfdXfP5J/Y4fovPD0
+ qxj7MoWVLm6xl9Bbi+QNGOXWA4JWWoTshIhxHQyMrE1MiyMucHr+v0bC33i6USw9iP0f
+ HQY5Bi4XDhIuS75mzZI650KMjFJS/m7dU5u7qvWPZ8iaCy4IEOhmi+lxf2xkimBANveH
+ 4MyQ==
+X-Gm-Message-State: AOAM532rShUdnUAesWedVyOO2hWzL0PX2/9axpqBVHqIDnAFNSfdcwWt
+ AmaX3polV2t2t9oUxrC9Zg==
+X-Google-Smtp-Source: ABdhPJxD5WHxXNNHT+o8W64P92PeYWFg6nzCIiFA7fdbpNK3L3FRy93EXTKDfdFeGxasBHOlryCJpQ==
+X-Received: by 2002:a05:6808:2014:: with SMTP id
+ q20mr28900955oiw.9.1639412416725; 
+ Mon, 13 Dec 2021 08:20:16 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id e21sm2219792ote.72.2021.12.13.08.20.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Dec 2021 08:07:57 -0800 (PST)
-From: Mark Yacoub <markyacoub@chromium.org>
-To: linux-mediatek@lists.infradead.org
-Cc: seanpaul@chromium.org, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- matthias.bgg@gmail.com, jason-jh.lin@mediatek.com, tzungbi@google.com,
- Mark Yacoub <markyacoub@chromium.org>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] drm/mediatek: Set the default value of rotation to
- DRM_MODE_ROTATE_0
-Date: Mon, 13 Dec 2021 11:07:22 -0500
-Message-Id: <20211213160742.744333-1-markyacoub@chromium.org>
-X-Mailer: git-send-email 2.34.1.173.g76aa8bc2d0-goog
-In-Reply-To: <20211027162806.2014022-1-markyacoub@chromium.org>
-References: <20211027162806.2014022-1-markyacoub@chromium.org>
-MIME-Version: 1.0
+ Mon, 13 Dec 2021 08:20:16 -0800 (PST)
+Received: (nullmailer pid 1139463 invoked by uid 1000);
+ Mon, 13 Dec 2021 16:20:15 -0000
+From: Rob Herring <robh@kernel.org>
+To: Hsin-Yi Wang <hsinyi@chromium.org>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20211213072355.4079568-4-hsinyi@chromium.org>
+References: <20211213072355.4079568-1-hsinyi@chromium.org>
+ <20211213072355.4079568-4-hsinyi@chromium.org>
+Subject: Re: [PATCH 4/4] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-makomo
+Date: Mon, 13 Dec 2021 10:20:15 -0600
+Message-Id: <1639412415.371102.1139462.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_080810_794407_9CBDB14A 
-X-CRM114-Status: GOOD (  10.89  )
+X-CRM114-CacheID: sfid-20211213_082018_966797_3794ACEC 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,41 +77,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-At the reset hook, call __drm_atomic_helper_plane_reset which is
-called at the initialization of the plane and sets the default value of
-rotation on all planes to DRM_MODE_ROTATE_0 which is equal to 1.
+On Mon, 13 Dec 2021 15:23:55 +0800, Hsin-Yi Wang wrote:
+> Makomo is known as Lenovo 100e Gen 2 Chromebook.
+> 
+> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+> ---
+>  .../devicetree/bindings/arm/mediatek.yaml          | 14 ++++++++++++++
+>  1 file changed, 14 insertions(+)
+> 
 
-Tested on Jacuzzi (MTK).
-Resolves IGT@kms_properties@plane-properties-{legacy,atomic}
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
 
-Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
----
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+yamllint warnings/errors:
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index e6dcb34d30522..accd26481b9fb 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -44,9 +44,10 @@ static void mtk_plane_reset(struct drm_plane *plane)
- 		state = kzalloc(sizeof(*state), GFP_KERNEL);
- 		if (!state)
- 			return;
--		plane->state = &state->base;
- 	}
- 
-+	__drm_atomic_helper_plane_reset(plane, &state->base);
-+
- 	state->base.plane = plane;
- 	state->pending.format = DRM_FORMAT_RGB565;
- }
--- 
-2.34.1.173.g76aa8bc2d0-goog
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:31:items: 'oneOf' conditional failed, one must be fixed:
+	[{'enum': [{'const': 'google,makomo-rev4-sku0'}, {'const': 'google,makomo-rev5-sku0'}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}]}] is not of type 'object'
+	{'const': 'google,makomo-rev4-sku0'} is not of type 'string'
+	{'const': 'google,makomo-rev5-sku0'} is not of type 'string'
+	{'const': 'google,makomo'} is not of type 'string'
+	{'const': 'mediatek,mt8183'} is not of type 'string'
+	from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:32:items: 'oneOf' conditional failed, one must be fixed:
+	[{'enum': [{'const': 'google,makomo-rev4-sku1'}, {'const': 'google,makomo-rev5-sku1'}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}]}] is not of type 'object'
+	{'const': 'google,makomo-rev4-sku1'} is not of type 'string'
+	{'const': 'google,makomo-rev5-sku1'} is not of type 'string'
+	{'const': 'google,makomo'} is not of type 'string'
+	{'const': 'mediatek,mt8183'} is not of type 'string'
+	from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek.yaml: ignoring, error in schema: properties: compatible: oneOf: 31: items
+warning: no schema found in file: ./Documentation/devicetree/bindings/arm/mediatek.yaml
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1567163
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
 
 
 _______________________________________________
