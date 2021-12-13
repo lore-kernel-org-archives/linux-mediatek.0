@@ -4,41 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF750C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 08:42:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A1FDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 08:42:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9fWAb8gpc9F1/4mWklgQZYUSq8DWYmGi/7UMjfzhQB8=; b=c9oTeHudPIR7XI
-	09u42o6G39lRUjH+Gxsqg900ngSdNNt62wifU+LenqndCR6NBbwvOrCMsfgOwrPFfjuP8pcyj7/bp
-	kT6ZSL6K9ND2GZYSxtqlEDFx8ifVKuPhAlHAtolpFf0Hj6djB/9qx7M7qfky0Fudh+hKUcTb6HIGi
-	g8Osq6Q4QnbL9NmHiqvlzXezbsBfSCg4yuHi4UcNJY6Pf3I5PsZZsNWNEvApCS1NfeoTvyG3rKq7s
-	mRSKDDQ+xuikfqBxITT9buEaF6uh05NRXzENkl0nMiNsDiTL6TZf1CMuqf/GhrxQgfZ14kEPE8abd
-	kyllAwudl/A53i3v4C1g==;
+	List-Owner; bh=e/yAJk/eRc0YG1/JiFsGJgU6vlOiwaa2OdqTyUJrejY=; b=z6yw5rBRa7xTno
+	u47JA+7OJ6kCvC5CHGru2OCAiNM23nrfhXWAu+QUcsbESDs1g6ZiGCaDAxNkE/WtABx3HawU4R4zW
+	WrR/eCXo40cnYvbu8sc8bHm0ZWFSTbvlhsVZ+/FClwjepIO3rAXn87PMO0giy3CKbfjcc0Wr22aHS
+	VIBJUHGoDr2d0mJIXZ3J4a8NtADKB7wtAIARfNWiKlqSV+XrU8E37QCs6wQq1qBq0cRhJ+1s9cqjz
+	6RhAx35chw7RVdaQtmLrTRosuYDhjQiviD1mO74GxjJxq9+iRWloCzWJ5qLLptiiWp9fgmGdl123V
+	1iqidPr+Zrmz299+KshA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwguk-008KqJ-DA; Mon, 13 Dec 2021 08:42:30 +0000
+	id 1mwgul-008Kr8-Hk; Mon, 13 Dec 2021 08:42:31 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwguA-008KQZ-DY; Mon, 13 Dec 2021 08:41:56 +0000
-X-UUID: 146aa4bffc3a41d5a16296ebf5ce0c41-20211213
-X-UUID: 146aa4bffc3a41d5a16296ebf5ce0c41-20211213
+ id 1mwguB-008KRT-5B; Mon, 13 Dec 2021 08:41:56 +0000
+X-UUID: 621edb58dea24f9fb2ea5a956d508f2f-20211213
+X-UUID: 621edb58dea24f9fb2ea5a956d508f2f-20211213
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1166843159; Mon, 13 Dec 2021 01:41:51 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 1448162464; Mon, 13 Dec 2021 01:41:51 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Dec 2021 00:41:47 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 13 Dec 2021 16:41:45 +0800
+ 15.0.1497.2; Mon, 13 Dec 2021 00:41:44 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 13 Dec 2021 16:41:42 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Mon, 13 Dec 2021 16:41:42 +0800
+ 15.0.1497.2 via Frontend Transport; Mon, 13 Dec 2021 16:41:41 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -57,17 +58,17 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v13,
- 02/19] media: mtk-vcodec: Align vcodec wake up interrupt interface
-Date: Mon, 13 Dec 2021 16:41:24 +0800
-Message-ID: <20211213084141.13363-3-yunfei.dong@mediatek.com>
+ 01/19] media: mtk-vcodec: Get numbers of register bases from DT
+Date: Mon, 13 Dec 2021 16:41:23 +0800
+Message-ID: <20211213084141.13363-2-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211213084141.13363-1-yunfei.dong@mediatek.com>
 References: <20211213084141.13363-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_004154_508773_B7B5C226 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20211213_004155_242739_B038F951 
+X-CRM114-Status: GOOD (  16.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,81 +85,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Vdec and venc can use the same function to wake up interrupt event.
+Different platforms may have different numbers of register bases. Gets the
+numbers of register bases from dts (sizeof(u32) * 4 bytes for each).
 
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Steve Cho <stevecho@chromium.org>
+Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 9 +--------
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 8 ++++++++
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 8 --------
- 3 files changed, 9 insertions(+), 16 deletions(-)
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 37 ++++++++++++++-----
+ 1 file changed, 28 insertions(+), 9 deletions(-)
 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index 59caf2163349..055d50e52720 100644
+index e6e6a8203eeb..59caf2163349 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -31,13 +31,6 @@
- module_param(mtk_v4l2_dbg_level, int, 0644);
- module_param(mtk_vcodec_dbg, bool, 0644);
- 
--/* Wake up context wait_queue */
--static void wake_up_ctx(struct mtk_vcodec_ctx *ctx)
--{
--	ctx->int_cond = 1;
--	wake_up_interruptible(&ctx->queue);
--}
--
- static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
- {
- 	struct mtk_vcodec_dev *dev = priv;
-@@ -69,7 +62,7 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
- 	writel((readl(vdec_misc_addr) & ~VDEC_IRQ_CLR),
- 		dev->reg_base[VDEC_MISC] + VDEC_IRQ_CFG_REG);
- 
--	wake_up_ctx(ctx);
-+	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
- 
- 	mtk_v4l2_debug(3,
- 			"mtk_vcodec_dec_irq_handler :wake up ctx %d, dec_done_status=%x",
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 581522177308..1d2370608d0d 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -473,4 +473,12 @@ static inline struct mtk_vcodec_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
- 	return container_of(ctrl->handler, struct mtk_vcodec_ctx, ctrl_hdl);
+@@ -78,6 +78,30 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	return IRQ_HANDLED;
  }
  
-+/* Wake up context wait_queue */
-+static inline void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
++static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
 +{
-+	ctx->int_cond = 1;
-+	ctx->int_type = reason;
-+	wake_up_interruptible(&ctx->queue);
++	struct platform_device *pdev = dev->plat_dev;
++	int reg_num, i;
++
++	/* Sizeof(u32) * 4 bytes for each register base. */
++	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
++		sizeof(u32) * 4);
++	if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE) {
++		dev_err(&pdev->dev, "Invalid register property size: %d\n", reg_num);
++		return -EINVAL;
++	}
++
++	for (i = 0; i < reg_num; i++) {
++		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
++		if (IS_ERR(dev->reg_base[i]))
++			return PTR_ERR(dev->reg_base[i]);
++
++		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
++	}
++
++	return 0;
 +}
 +
- #endif /* _MTK_VCODEC_DRV_H_ */
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index eed67394cf46..7c3487fb3498 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -65,14 +65,6 @@ static const struct mtk_video_fmt mtk_video_formats_capture_vp8[] =  {
- 	},
- };
- 
--/* Wake up context wait_queue */
--static void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
--{
--	ctx->int_cond = 1;
--	ctx->int_type = reason;
--	wake_up_interruptible(&ctx->queue);
--}
--
- static void clean_irq_status(unsigned int irq_status, void __iomem *addr)
+ static int fops_vcodec_open(struct file *file)
  {
- 	if (irq_status & MTK_VENC_IRQ_STATUS_PAUSE)
+ 	struct mtk_vcodec_dev *dev = video_drvdata(file);
+@@ -206,7 +230,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+-	int i, ret;
++	int ret;
+ 
+ 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+ 	if (!dev)
+@@ -238,14 +262,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_dec_pm;
+ 	}
+ 
+-	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
+-		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+-		if (IS_ERR((__force void *)dev->reg_base[i])) {
+-			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+-			goto err_res;
+-		}
+-		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+-	}
++	ret = mtk_vcodec_get_reg_bases(dev);
++	if (ret)
++		goto err_res;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+ 	if (res == NULL) {
 -- 
 2.25.1
 
