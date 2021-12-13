@@ -4,122 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9985CC433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 10:05:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA538C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 10:15:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ibyvmxR8yAy0aIHzke7ezrn7kZmB7c+sx/aQhIgck40=; b=ScEAbosWV4kUz8
-	yPTS3hEhqfbVzra/UiQ9pxpqoUTKO0AvDjb3qlhdOQfVrt6IFTGb5wjwVXyZBjH9TYbn6H3Y1onGQ
-	tE47kD+RNbQqXXy3btlYb3zLUQaLZMSFjg/2ifWWb1CW2WJWgd0cY1sM65VYIkPsdu0GzCoHMHEzG
-	g0V5L+COJad3OWOR+FtIIrYd+tKySedFMKmeXS3V4NF3t4hgOAkl2CjFfX9b9mlsNGVuAkQF8C4By
-	u2CNrum2Divz3weEMYR8Qmy6xvRZHhQ9j68vanJAYm2tdgWjvcFa0wfcV1vMQbLZJ0z1ZAVcJrQto
-	bK0PlyxBX7Q64rFEoOZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=f7oDZH53hVR8JP/zG4kP3+WHRLXwTLCz9IfzoyTDmM0=; b=yZLiB2bobTNUZRoVgJUsjD9ura
+	0Gz0bIt8DSE7mdjeRarmXusBxGaHdhZte8/3hZeFtXq6ce9xy1ORG9Rw9h9fJQE0Pc+67fMK7bJlA
+	h+IoNCLWXJiWwpPwghM2F0SfUnnQ1Yec/NqIn5hK5MwUpWTb6DBbGajFpSDcy47LkN7nWS4R8++HN
+	50lU1duC/hhO2kZomoNEadsC0hV9+PgxtXsAa6H6jxraNajjPy7AmB+Ha1KlQMe5EX4cp3XwtsWqR
+	rhOlUJ/kpo+dFCy1EK4eWk0kZkjgJNrdZR0XO17GhWOzfc19iJq0eUPT+wnziuxpi4zOypvJwRtE7
+	JMoKZ3cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwiD4-008rbt-Qo; Mon, 13 Dec 2021 10:05:30 +0000
-Received: from mail-eopbgr1300122.outbound.protection.outlook.com
- ([40.107.130.122] helo=APC01-HK2-obe.outbound.protection.outlook.com)
+	id 1mwiMS-008vfy-Jy; Mon, 13 Dec 2021 10:15:12 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwhsX-008idu-Gt; Mon, 13 Dec 2021 09:44:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kLSZK+5EM7bW33qkGC51cSdsPdzRDh0r+PoZxufHq/IqBTfuhzrVkI0u9sTp2FhqxIUUw2nto0hsogcLJ/fKAz50rPXqc7WRlssiKkR96O1CWBjtt1+QuiwiD4UM3WLvAMaCOWUOib3Ias2BlJdPNKS5WpzOr8HPxdIwLTRmNUmnwNut38q3EtP/DNhOeCCZhfaZyv7vWyyh78h407gVxhWITUOA1YjXNrTaku0IFgRpn1/javpQwkp7UWVi4UlNwz1d76MSqAbzk5QvthOzMNdcdmE3M26khBMyEbUe+ymZFmdAA5wIYnoSivKBhTIJHf6KWwC+f/npYMKb0+zQzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0JoimoGWDCn5E1PbBE8PyQ8UIPUhFR/3oefqRqzIvAs=;
- b=d3dsSNlpcMg+ikSXkq/q+jAlYt2G/2prl5qFT+S9fK2twbpP0MaAl5OEFFUY7jZMaLnirLxApalPcAmozzu8tnsctAmHjTt7yGikod6Am32m7+qu2uuZzFVibqTCuIhCqg6HXCy680x4EKSRe8umNylULYvx1Xc1aRxSxT95cb9loq7BP4NvL94Og6VjzRpzm837NbeB3AxUNwzuige5gr2H9eOvQfFgpw2cxyjLYPMRdWWdwf32cFfVsY2bEb7ZkAsbPq/JOur+EVjQfBu0yYBHl/QHK21qKwoTp+lZR/vvjRmtSNZk+Z+Dd8cthTIUVz881x9kIvWPJvCzDN+vvQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=vivo.com; dmarc=pass action=none header.from=vivo.com;
- dkim=pass header.d=vivo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivo0.onmicrosoft.com; 
- s=selector2-vivo0-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0JoimoGWDCn5E1PbBE8PyQ8UIPUhFR/3oefqRqzIvAs=;
- b=VxC7TlwLKJrwdZHtwOqn3emsXhZfFnYzE7XPkP2NsFPt6XiDFSs23n+t9e4tAI5Dcz+Sv9PaS02x77Pb49hO6kLuF5iyUwOIlEXt/BMiHzJxU4sP88lHc9f0LA3TwNoa0DXRyAN1jNPs3dgYnnsTV6C/sQs7o2X1B9w9zrInNcE=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=vivo.com;
-Received: from SL2PR06MB3082.apcprd06.prod.outlook.com (2603:1096:100:37::17)
- by SL2PR06MB3050.apcprd06.prod.outlook.com (2603:1096:100:39::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4778.16; Mon, 13 Dec
- 2021 09:44:13 +0000
-Received: from SL2PR06MB3082.apcprd06.prod.outlook.com
- ([fe80::a0cf:a0e2:ee48:a396]) by SL2PR06MB3082.apcprd06.prod.outlook.com
- ([fe80::a0cf:a0e2:ee48:a396%4]) with mapi id 15.20.4778.017; Mon, 13 Dec 2021
- 09:44:13 +0000
-From: Qing Wang <wangqing@vivo.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Cc: Wang Qing <wangqing@vivo.com>
-Subject: [PATCH] mailbox: mtk: add missing of_node_put before return
-Date: Mon, 13 Dec 2021 01:44:05 -0800
-Message-Id: <1639388645-63897-1-git-send-email-wangqing@vivo.com>
-X-Mailer: git-send-email 2.7.4
-X-ClientProxiedBy: HK2PR03CA0061.apcprd03.prod.outlook.com
- (2603:1096:202:17::31) To SL2PR06MB3082.apcprd06.prod.outlook.com
- (2603:1096:100:37::17)
+ id 1mwi1o-008miI-VJ
+ for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 09:53:54 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BB226B80E9D;
+ Mon, 13 Dec 2021 09:53:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6984C34601;
+ Mon, 13 Dec 2021 09:53:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1639389227;
+ bh=v7Lg+J16vRQFISY4twI+8sD57NLw7i8MiOwfhdznK+o=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=s0Djrd5RBGfyMWUO11UbkwkExyeoQVutnpI/n2Lj9NPQwQjqokhl2zmxtDJIAosy0
+ tALPIRGEVSlKub8Nps4nBEot/UmLzS5KYxXjs3LIUOHLZzpzz+OwCL0yGgvCNJtHzF
+ mw9KwyX7KshOEpAN5pjrUJ9gWeUR2Qg4hjObUruloVyPQa+EZ1qxbAQ09pxIGNoEDC
+ T//bqIeuJ/H0jEmB9POl62OCr+joQvO5uIwmOgfrSAVBVvRiAObXjOJNnBuNSyHwBy
+ taXI6+Yz9u6KjiyZGqjXssNV7wtMlCz92+ZnrBsmLVcWg9RGsCfTxVDLHPm5g8arZT
+ kHhJ/ltNQMPZQ==
+Date: Mon, 13 Dec 2021 10:53:43 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: sean.wang@mediatek.com
+Cc: lorenzo.bianconi@redhat.com, nbd@nbd.name, Soul.Huang@mediatek.com,
+ YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
+ Eric-SY.Chang@mediatek.com, Mark-YW.Chen@mediatek.com,
+ Deren.Wu@mediatek.com, km.lin@mediatek.com,
+ jenhao.yang@mediatek.com, robin.chiu@mediatek.com,
+ Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
+ ted.huang@mediatek.com, Eric.Liang@mediatek.com,
+ Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
+ steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
+ jemele@google.com, abhishekpandit@google.com, shawnku@google.com,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] mt76: mt7921s: make pm->suspended usage consistent
+Message-ID: <YbcYJ47OKfh0A5Vt@lore-desk>
+References: <YbTU08hzeTSJPIsp@lore-desk--annotate>
+ <1639242882-15796-1-git-send-email-sean.wang@mediatek.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f5e65d9e-d6f3-444a-7885-08d9be1d1ed8
-X-MS-TrafficTypeDiagnostic: SL2PR06MB3050:EE_
-X-Microsoft-Antispam-PRVS: <SL2PR06MB3050EBA68BE1CE02C81F440ABD749@SL2PR06MB3050.apcprd06.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:913;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: hbNDqE1oYVVWpxNMMrqx+Z2tcHGUUBBmDkuO66CB3FbHucLqhJApzlf2OdE6Bs1rr0xwPpAvOd1hL8gn0SVjBXNlQeLs4JnKJnwqF9KjLPVtrrXtxl2h24f11FHhg1F8HObX2W/ZaP2BTGX9HWZKKwxsYNs4R/O+xBNhdRRKpuExYF+5WKX4WgpO2r1Cvjdi/8ViOcMP3i3HFNCfyNNxupBXZWj5/YAQHms9PJMxoLN46lP1RI+vCw2zSmiQnONxgkx54CnTvqWW/8U7TN9p03jWpLiCO/cpOLTOiuwmY/hiQE5pWhWxBvzCcc0N3e1TjvXP8QZSCeWOsVhU2vRzch2wt/0LWsX3bevkMgsLkX54OIRdSxmRmPMPZLPkAOqxeMynj+xqN0A8nHwgXDRMQ5yJ6n3HAuMHE39djM+XjaFARDalHne+z60GbaXdk8SvYg5TdP68cgnS7YyYnvxrt/wroUaB6v0J5sVTtIWrPfIrielQFaaZQ4MItnhFETUWeRVNoK1PpfG2zWmqvdu+OSqa4Jooow/xEv5WIjFwNjrBuD3Vh6Crc8iaBDCNaF27mG6IdG6pAMiud2OvIqdrTB3ZMA2+4MRu65CDrXVbEVf5mPkF89BM5JaGY5qIU3tb0p1OpyDVLFIlaE6FdtW8mT9KO/nXinNk+z11quxWyHG/9MRjh5rFVjZU3ll3Z1khKY1K362rJjr5d1H41C1lWA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SL2PR06MB3082.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(86362001)(83380400001)(52116002)(6506007)(110136005)(2906002)(316002)(508600001)(15650500001)(26005)(186003)(66946007)(36756003)(107886003)(66476007)(2616005)(66556008)(8936002)(6512007)(8676002)(4326008)(5660300002)(6486002)(38100700002)(4744005)(38350700002)(6666004);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?6bnx9WTFNWP9n9y7TRjqIAjZTpFQJWkv6qAqqbfuTEVpefS+lFNpRx810fnu?=
- =?us-ascii?Q?k2orKdooZVrv32TeC4ZpatWYSF1xUtkYi1z1eM6lncymBMiMWECzx5HoKX57?=
- =?us-ascii?Q?naNn/oFmme2vy4AjRd672N/Hm3aSO6VLdweWTY/+2uIW3pU9xqjXc2TtIChD?=
- =?us-ascii?Q?UPF3mvJi27S6hLaGInudJ45gHuJlvLKZPgppHT2jHgh2TJX5+RxlMZFajW/z?=
- =?us-ascii?Q?wJKh2AkJ8VoVPHuWbXsw6P8+MRMOoseSpV4F2ANNqICJVDEBg9rDBt0cN7lf?=
- =?us-ascii?Q?Dmgl0rHA3j2F23LQPrIqXLmYQLaF4aM5CbAU+Cqi5Et4HiZNuAYYBelJ07wp?=
- =?us-ascii?Q?yYbdJZzASqkXKwyN43wf9AC+bklCf/O6byG2aFixzklmhko6gLdSFQd/dqSC?=
- =?us-ascii?Q?CI7O2Er4UE6VRVUYOXnfo+4wWwLih+ax/7IGr+I1DdPSZHredXLsebIhf61T?=
- =?us-ascii?Q?QPvTWCteeZbogUuCwaXNMJFawL9SxdNGWPuI5jHL5cyTJDhXqYat0Tom/Et8?=
- =?us-ascii?Q?ACvYsLHFEpEB5nIu0CgbFTeaN63Q1YoWGc2tTtIBJRnySMqTah7koXOL2yCR?=
- =?us-ascii?Q?Y+6zb0HtPdceuFmdlAfzLwDuovacFFsBDFtBJjH6SRzsszz7pAWvtms4ctA4?=
- =?us-ascii?Q?uh6ziQs//YRfHDEFUddeIeB+pfOjNvNnhlW29XCnzEGvpxSlni8O4ufvl+IG?=
- =?us-ascii?Q?vVmtuUj398Q9WJx8Gv+Du1Pp4NyNUaw3mWwpCgUxDugrnOy2u2M7M1UylMlX?=
- =?us-ascii?Q?a2GGJTNCTOuRwQKLZEsriUvAIig4pRNZknecQ62UOQIvBSfQUx206rHZDtwU?=
- =?us-ascii?Q?4fSqhkd5iIp7taNcGELe4xckMfSC21yKitaLKDkFTVWh2V26yAdMFUYGEzPQ?=
- =?us-ascii?Q?PMvC6CHUXhRykfbUA5nwjFBDZDi07D0d+WNTK6jn1Z8hY2G3jtKC3mhR6jlC?=
- =?us-ascii?Q?i9NqXXrEl8d9es/J7LFGVxbR7oQPNeH0l9/srCtAeWEYXHTY7AEPLv0EK+9r?=
- =?us-ascii?Q?oVm++TRqGKcSGXkIgE6xPqz32vV0tPIQ0JHIoY/fSkstKV7jhikA//mZ5RVV?=
- =?us-ascii?Q?QOK2F/0FUFBRVMKV22k713gudDaYfPxd7hfFhaSoMTm0XpnoXk3LQQAYG0Bp?=
- =?us-ascii?Q?QVoftMyfsUURgWioZmyv1s8u3A7hKHi3Hp9ZbU9aAb4r8MdgOArsBVOCt4a+?=
- =?us-ascii?Q?KR1WQN7EskgQqggR6Y6BHwlyDfVur9dHSG1T7kJy/e7WTm8SWMWXOcpro8tF?=
- =?us-ascii?Q?dnpBsmdi0+7qxWPwa2lOpgHSVKBCWmB/dtapOk6AWXSNg0ZCpnHkkcRYqs3A?=
- =?us-ascii?Q?JkfHIxN72w64vHvejvbPArpZFD+9aOAApiCfG2agavvtBzjQSSJO+1RP9B5I?=
- =?us-ascii?Q?MJFFP/6rmFvY3NTWZ4rXnjITKytXQfmYlsLFN2Jls657LWsnKxg7izTnkqcn?=
- =?us-ascii?Q?ZlBvzBjYYBlKMR6gImtgVFwukbUTk738ytingxF2e9uB0snFjzbZlVDtbdA5?=
- =?us-ascii?Q?eGehllQucTWZ2bpOwHksc37OYmnIZqsDslUGDcfFwHXgJ3jnLaIGn2C12hYI?=
- =?us-ascii?Q?+xFFSpAUdgWgAqszfq8IbJRT+cqwqITvWaZkahMtqY7EKf9y0esmptQK0Ixu?=
- =?us-ascii?Q?DpTISVKz8Nka36Wrft9yPxI=3D?=
-X-OriginatorOrg: vivo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f5e65d9e-d6f3-444a-7885-08d9be1d1ed8
-X-MS-Exchange-CrossTenant-AuthSource: SL2PR06MB3082.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Dec 2021 09:44:13.2416 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 923e42dc-48d5-4cbe-b582-1a797a6412ed
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: xWcGWbu4kP8HHvWviTz20wb8stnEK6i6T6XtJUMgN7PPNIkEMINCjLp05P1bIa4jIUuUjixw0LxTkHi3Lh9/Iw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SL2PR06MB3050
+In-Reply-To: <1639242882-15796-1-git-send-email-sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_014417_628047_3B37C23A 
-X-CRM114-Status: UNSURE (   7.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211213_015353_357339_E537758B 
+X-CRM114-Status: GOOD (  20.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,42 +76,114 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8202234678418372328=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Wang Qing <wangqing@vivo.com>
 
-Fix following coccicheck warning:
-WARNING: Function "for_each_child_of_node" 
-should have of_node_put() before return.
+--===============8202234678418372328==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="0SXPcFI+nToIgH3R"
+Content-Disposition: inline
 
-Early exits from for_each_child_of_node should decrement the
-node reference counter.
 
-Signed-off-by: Wang Qing <wangqing@vivo.com>
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 1 +
- 1 file changed, 1 insertion(+)
+--0SXPcFI+nToIgH3R
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index a8845b1..03abad5
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -573,6 +573,7 @@ static int cmdq_probe(struct platform_device *pdev)
- 				cmdq->clocks[alias_id].id = clk_names[alias_id];
- 				cmdq->clocks[alias_id].clk = of_clk_get(node, 0);
- 				if (IS_ERR(cmdq->clocks[alias_id].clk)) {
-+					of_node_put(node);
- 					dev_err(dev, "failed to get gce clk: %d\n", alias_id);
- 					return PTR_ERR(cmdq->clocks[alias_id].clk);
- 				}
--- 
-2.7.4
+> From: Sean Wang <sean.wang@mediatek.com>
+>=20
+> >> From: Sean Wang <sean.wang@mediatek.com>
+> >>
+> >> Update pm->suspended usage to be consistent with mt7921e driver.
+> >>
+> >> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> >> ---
+> >>  drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 7 +++++--
+> >>  1 file changed, 5 insertions(+), 2 deletions(-)
+> >>
+> >> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/driver=
+s/net/wireless/mediatek/mt76/mt7921/sdio.c
+> >> index 84be229a899d..44ee9369f6bf 100644
+> >> --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+> >> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+> >> @@ -278,7 +278,6 @@ static int mt7921s_resume(struct device *__dev)
+> >>	struct mt76_dev *mdev =3D &dev->mt76;
+> >>	int err;
+> >>
+> >> -	pm->suspended =3D false;
+> >>	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
+> >>
+> >>	err =3D mt7921_mcu_drv_pmctrl(dev);
+> >> @@ -294,7 +293,11 @@ static int mt7921s_resume(struct device *__dev)
+> >>	if (!pm->ds_enable)
+> >>		mt76_connac_mcu_set_deep_sleep(mdev, false);
+> >>
+> >> -	return mt76_connac_mcu_set_hif_suspend(mdev, false);
+> >> +	err =3D mt76_connac_mcu_set_hif_suspend(mdev, false);
+> >
+> >should we check return value here? Something like:
+> >
+> >	if (err)
+> >		return err;
+> >
+> >	pm->suspended =3D false;
+> >	return 0;
+> >
+> >Or, is the chip up even if mt76_connac_mcu_set_hif_suspend() fails?
+>=20
+> yes, chip is eventually up again by recovered with the following wifi res=
+et
+>=20
+> with current logic, if do so (not mark pm->suspended back as false to sho=
+w suspend/resume is over),
+>=20
+> the pm runtime would not be enabled again after the wifi reset
 
+maybe we should just set pm->suspended =3D false; in mt7921_mac_reset_work(=
+) as
+we do for hw_full_reset, wdyt?
+
+Regards,
+Lorenzo
+
+>=20
+> >> +
+> >> +	pm->suspended =3D false;
+> >> +
+> >> +	return err;
+> >>  }
+> >>
+> >>  static const struct dev_pm_ops mt7921s_pm_ops =3D {
+> >> --
+> >> 2.25.1
+> >>
+
+--0SXPcFI+nToIgH3R
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYbcYJwAKCRA6cBh0uS2t
+rJ4JAQCttsm1F7E9ENH4GfBlVaclyHUhAnjDI9hi6Bcl2Y/deQEA/+HpBfUhu78I
+/hJgrRrPGMZvkS/H1w2m0a4xUcgGWgs=
+=ioOx
+-----END PGP SIGNATURE-----
+
+--0SXPcFI+nToIgH3R--
+
+
+--===============8202234678418372328==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8202234678418372328==--
+
