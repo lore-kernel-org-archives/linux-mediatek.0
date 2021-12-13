@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79FCEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:32:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20F84C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iqDO2yKaWKiUqlkHUEBCad3ew5PiGrgHDUAlhEphrow=; b=nkreJaEpzVvFk/
-	gISbjLg6gRwK1PTgMgIKkthLKwQXzRlg512McUtCi4ZyL7oVOxR6YN6vTAbnt31oSYE8sMQs0jKQ+
-	ZSKqVJf4/yt0EqMCtV/5iVjr3qosYQbubYL/1lYkLxFIwx9CwPnMX95vMYt60hloTiwsZFPgFcw3k
-	J+opQXvIhhnR1E0we9ldRRypZQCv8bETkIoVlSzLMp6QqpizsxfIhlKnMrw32uCUZJEQnqrp/V4CJ
-	owy8MTo3Yu9nPSxpeHdeFlADeTmU0Owcmp+9fLyNhTYBuI0BF9sMeoie9cGT50TPoXOeETYq6fozx
-	MVd0vDvJZfljh2HAvFwg==;
+	List-Owner; bh=Q4RNTfCTM4/3mtcYBI0hA/zacZ5JNdS7KBfrJuUzQsE=; b=gHwmjNapV4bBkc
+	0f15ZkCxI81uG8ateWil+SsfBWyGrHVi6wkEYIbEgki49TlXNZXxtCbiheJkCj/b0heVpJOqSGSbi
+	YZKCdWsw6INTD31tXJ93X1PNS9BihHfEdm0t8SqYDColRIAFFP2wMGfh+tpWTKb7JFh7rs3iuGAPR
+	Dd8jmwlY37OgzWiRdApozfM/YdGTKnxVh0k7VSLr4ZSIDYfXi1Fb9/yBpfRa+SZCKJc4+8V56UY+G
+	wSQ21oWOg9a2gVtVhMPkILzYUD3wKb5F2HoxPeGehRRAvP2/TW49F3DG8WDtOk2mmsiPXWlpyCRkL
+	/4lul9fC63BWtSpDthhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwoF4-00AcNN-4L; Mon, 13 Dec 2021 16:31:58 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1mwoF7-00AcPF-RZ; Mon, 13 Dec 2021 16:32:01 +0000
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwoCH-00Ab1L-5t
- for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 16:29:06 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id
- cq22-20020a17090af99600b001a9550a17a5so15037764pjb.2
- for <linux-mediatek@lists.infradead.org>; Mon, 13 Dec 2021 08:29:04 -0800 (PST)
+ id 1mwoCI-00Ab2X-ST
+ for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 16:29:08 +0000
+Received: by mail-pj1-x102b.google.com with SMTP id
+ w33-20020a17090a6ba400b001a722a06212so12856967pjj.0
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Dec 2021 08:29:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=PHDKjEXSmqoSIP+TB1gPedSyi6ETK7cM1nPYeOviVPg=;
- b=EQAL2svOqRuf+zxv1dtfNQpVATmX4LvJABaaH6nUaqH4o7Y/8OZ98vtyTXbksNyosX
- fXP6V85IhR6iuR9Xr/EbWsPCfKTkXPg/Ol15Z0Gzaj5iiWZVK0t2KmoGhYvs1OJERxhK
- Arh1UB83YQSTSDjEhMioiq5l6ZbEbBO9JbBzo=
+ bh=2502SCATk5qTXISqWbrDC4RK34Z7WGkAvudBl98LieM=;
+ b=C25z5N9GMvgqS1P9g/yYRotI/7cUxOkcQfEyoQO6JDfuMopGjAVcFWkusTgcpWBJKo
+ QR1iOvUgW9+QG42U5gpRa6iOcx2p1SyYZu5zdk6OwZR5vGCKKfcRYKO2K2B1HESbP/hb
+ bCQ0mikaoqd4m0eXg5MfaS2VUv+pg02Vom64I=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=PHDKjEXSmqoSIP+TB1gPedSyi6ETK7cM1nPYeOviVPg=;
- b=OvpZCpUhpGj0LR77wiyydVBpbuv2fTMsYiU/tFba9igdwGz8M1AUYwhXBcPbEuwIpG
- 1yjyb8ozxS5daj2wwgv76two9tM2Qh75HNxBaOKU6k7BNqRDuG33awoqrcCn5TX6lXWh
- l52XhRspcRH/RHEgxF6ietwJRjiq65LHoN07y4dEf4kscaamSp11s6XzU7vdi0sHOifX
- Ns3EHpPJnBKt4PjUkTqrxjVmfSHaTY3bEPMN1mAH4deqzo6WhB+95jlzI7RuxPWphrhB
- yAYKlw3G0CKUdCsMCEt6p6Ye0aMYzhw1zZwl4ANx58PbV7Xd4ZdqGN7vDRwG5vRvPmj/
- P8EA==
-X-Gm-Message-State: AOAM530Qx3OZZ3wrZDcCaz2QaSR5nbqppqSAEiU91bLYl7PcJnSZ8s9T
- SXegdGiTQLsM+7cYNt5exg1TbA==
-X-Google-Smtp-Source: ABdhPJx2ld4vBsWFYDkWoQWK3Tn1x1+xO/FN+YYtifgE6j87eHBM9RajAJ4+aWYkEHW6TxBDymzzyg==
-X-Received: by 2002:a17:902:c407:b0:142:28fe:668e with SMTP id
- k7-20020a170902c40700b0014228fe668emr96615217plk.31.1639412943778; 
- Mon, 13 Dec 2021 08:29:03 -0800 (PST)
+ bh=2502SCATk5qTXISqWbrDC4RK34Z7WGkAvudBl98LieM=;
+ b=Mc4HZb5s495LUtAwSBXocMxtk0rf0y+gKHt6CNVuw9PYjDhwEYno+BDLGyAKWsxQg0
+ coBW6vnBMB6CZGTlBnCOoEy7U87lWti//tihqwoJYPTYYgO7uTXXvOe+BM5WsxgkEv7/
+ oCJVEX/efcyGzBELvGx4bihKhS30KjI1KmpCD0iTacxlstH2301VulKkndzkJ8PcALFh
+ 1fkOTFBbmMD8PCvOTuxWanWVswwlIgrvgCgLjvYIVCzHZQnipzyX90VYVmSjqBy5TaFe
+ wtLYwlP7T1G1m87o1D6dpGnQTkW7YoDF4C8FcpYbMxu3qfk5IBHQQbiwCkKCMvndoSUB
+ Fe0g==
+X-Gm-Message-State: AOAM5316h00GItL8XnNh+0swAQfPz1v3VDnk3ldNml3FfZycIAwQgd5g
+ vzUZdAzc/yD9lr0T46N/srjVlw==
+X-Google-Smtp-Source: ABdhPJxayZzdaqNk+MKYyCSH0Rri2yOQQoYyI+ykOSsqT4/93hGbAb/vRbiq1RxX7CNWXM3gD2lLIg==
+X-Received: by 2002:a17:90b:4f84:: with SMTP id
+ qe4mr45816129pjb.102.1639412945316; 
+ Mon, 13 Dec 2021 08:29:05 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:9447:edff:ad23:1bfc])
- by smtp.gmail.com with ESMTPSA id mh1sm7803802pjb.6.2021.12.13.08.29.02
+ by smtp.gmail.com with ESMTPSA id mh1sm7803802pjb.6.2021.12.13.08.29.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Dec 2021 08:29:03 -0800 (PST)
+ Mon, 13 Dec 2021 08:29:05 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/4] dt-bindings: arm64: dts: mediatek: Add
- mt8183-kukui-katsu
-Date: Tue, 14 Dec 2021 00:28:55 +0800
-Message-Id: <20211213162856.235130-3-hsinyi@chromium.org>
+Subject: [PATCH v2 4/4] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-makomo
+Date: Tue, 14 Dec 2021 00:28:56 +0800
+Message-Id: <20211213162856.235130-4-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.34.1.173.g76aa8bc2d0-goog
 In-Reply-To: <20211213162856.235130-1-hsinyi@chromium.org>
 References: <20211213162856.235130-1-hsinyi@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_082905_279289_3DCF7F04 
-X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-CacheID: sfid-20211213_082906_976699_E818BEBE 
+X-CRM114-Status: UNSURE (   8.12  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,29 +90,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Katsu is known as ASUS Chromebook Detachable CZ1.
+Makomo is known as Lenovo 100e Gen 2 Chromebook.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
- 1 file changed, 7 insertions(+)
+v2: Fix enum typo
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 723810cffce2e7..75bb06d1802a08 100644
+index 75bb06d1802a08..828f5f3fde4e20 100644
 --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
 +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -175,6 +175,13 @@ properties:
-         items:
-           - const: google,kappa
+@@ -191,6 +191,18 @@ properties:
+               - google,kodama-sku32
+           - const: google,kodama
            - const: mediatek,mt8183
-+      - description: Google Katsu (ASUS Chromebook Detachable CZ1)
++      - description: Google Makomo (Lenovo 100e Gen 2)
 +        items:
-+          - enum:
-+              - google,katsu-sku32
-+              - google,katsu-sku38
-+          - const: google,katsu
++          - const: google,makomo-rev4-sku0
++          - const: google,makomo-rev5-sku0
++          - const: google,makomo
 +          - const: mediatek,mt8183
-       - description: Google Kodama (Lenovo 10e Chromebook Tablet)
++      - description: Google Makomo (Lenovo 100e Gen 2)
++        items:
++          - const: google,makomo-rev4-sku1
++          - const: google,makomo-rev5-sku1
++          - const: google,makomo
++          - const: mediatek,mt8183
+       - description: Google Willow (Acer Chromebook 311 C722/C722T)
          items:
            - enum:
 -- 
