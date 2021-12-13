@@ -4,77 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E5ACC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:56:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2838C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 18:58:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Fdi2QFq4U7j0etg9MSACnp17wUmVLTtOXwuzh/f2HuA=; b=yjN5+PSF1VSuPZ
-	4/tWGCtu28RkkGfczklIXGNPjRfcfKKcZpAGNa4QoEojYllGHZzcMIftaUNIoBhheE0LtSnVILZC8
-	l+K5P3+JVEDvRH48MbHDNjGCAUwlkJWc8pfNKVsYkIao/HxHbB5VOAJM/2P3u9BOblU4Q8a0OCxS1
-	TnDSzv015ylGeqf2bBCCFI7SlKwcaUpNTMAkkfenQzrLNv5Ok0t068kbvOTrkVukemWUK5g373Bcs
-	q2ML2JP2ZOW00j37wNuLtI+IfA1F8mrIM3qRWkr2fVaPhCGKr8ouf+DI4IrfPENBtN5R/7pAdALhz
-	KzX/WmjIwXGX/YXmHFwQ==;
+	List-Owner; bh=vsTuE2pGmpYdW5/jMLYwRIY/seyK1NNojnaso8WxWbA=; b=vxKHqSekWLpdJI
+	v+enyyc2hr8zepLbAXj3iVaj2BPb5j5MT2YRhjOvqDDdVqspmbe5yCg1q5ks5Gp9vsC0a/sP7L2Z7
+	xJY9BU87raYzpPaDYiSLmdNE/5SKRl4/svtQtyDGfCQ/WcR0G0icuLcDKBTb9bUvgVXj+syI9ms+T
+	wDB9BiKq7vKACtR4BQOrKl55GS5WEtcdzGA+7VE4+7E5ExwBZAsUwR/CeJrxrfuQOe8vAK/LX57tH
+	Ux7pCOy/qFfI1ioiGtSYrBxEz3a6HZQ5Dq+4brlo+ALAJorw99P7nlBUPVZzSl3BhoDQBPtBzECWK
+	883S8LXMd2rV5GtH8NLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwocJ-00Ajdx-8s; Mon, 13 Dec 2021 16:55:59 +0000
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+	id 1mwqWj-00B2wx-HC; Mon, 13 Dec 2021 18:58:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwoc3-00AjXd-P9
- for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 16:55:45 +0000
-Received: by mail-pf1-x434.google.com with SMTP id g19so15462290pfb.8
- for <linux-mediatek@lists.infradead.org>; Mon, 13 Dec 2021 08:55:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Otkd94Ddo+0y+d19P9705aLyzrf8R+OhLjXGWeBBDgI=;
- b=D2pQ/ahpacnzEw4VKDE+IWQG9HUL/EEsWexNqmtOR4aNU5XRNcTMGIcFE4kTfkdg0u
- Urd3qw/wp/ybiCNZNvxY6XJqtkpMjR7QhPecu67jMtnbj8hmJRn7kKShA1+mgYpvL4D9
- oJ+CQnNFirWc+8lo2KnWjDX25k+depiKcixPXsbzZLKTktNrWBdmAfNhMUPhXTPMeaC2
- FaS6wUQ2IcWiOerE3Pyg6w+scfVh9PTa34b3UVdXWWrmV5TO7oDfLZvKZNzeU2MkUqEa
- DLItbA1GxSmg2iPv/Kl/jc/yWytd88vFon1VNR3NZdFRymNAlInFzVkcL5HrNEtJUZ4a
- gcyA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Otkd94Ddo+0y+d19P9705aLyzrf8R+OhLjXGWeBBDgI=;
- b=q7CPoIUpbTIZ/OmJHD+7EtCwTGZ12V4l+f3ZIW7n8oyV+OBdT8EEtNGalMVvl6dL+O
- JZWNCERycGxrdOes7x5spBfnosMFVTQRjkPsS+n3Cmwr/pXOWq6A69cVyGy5vI7bJiHv
- fVuh6jqkW/h6Oqop4YW0QCxk4gEKe/iK/GD3fDS0rDIu0jt781jycM8F+MGofJuLeu5J
- Qg2YAFELW7gQafrXHEvuQxL4AqzJhNPkYGrXtF9rMaxof5RIhnyZcohV8dvhEk5efjDQ
- voxDZMoTWCf8mdfXJTpxuuV0FdbzDLxYZ8Z59JECBmW+NqRuDr1GpRnTNHshRuRFPinK
- Gsiw==
-X-Gm-Message-State: AOAM530dyT1JxhZN6Hq74cUlh17vDFjrEV8JXTj9rOFbk6xUNdxA6B6B
- WktbikuR1JG7TerfAucno+A8Ng==
-X-Google-Smtp-Source: ABdhPJxcG+pDaR82nQIpiGgA+GsZ94Xtzp0Mh0VcEJpkpsk7NgrveddXN3qtbe4XWzRsAWtKejnyUw==
-X-Received: by 2002:a65:6557:: with SMTP id a23mr12921258pgw.451.1639414541767; 
- Mon, 13 Dec 2021 08:55:41 -0800 (PST)
-Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
- by smtp.gmail.com with ESMTPSA id r6sm7378794pjz.56.2021.12.13.08.55.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Dec 2021 08:55:40 -0800 (PST)
-Date: Mon, 13 Dec 2021 09:55:38 -0700
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-Cc: bjorn.andersson@linaro.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-remoteproc@vger.kernel.org, matthias.bgg@gmail.com,
- ohad@wizery.com, yj.chiang@mediatek.com
-Subject: Re: [PATCH v2] remoteproc: use %pe format string to print return
- error code
-Message-ID: <20211213165538.GA1396405@p14s>
-References: <20211116162933.GA2318486@p14s>
- <20211213072015.32235-1-mark-pk.tsai@mediatek.com>
+ id 1mwqWe-00B2ti-8q
+ for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 18:58:19 +0000
+X-UUID: 04e9a9eda2644cf0b0c3b782923e5d68-20211213
+X-UUID: 04e9a9eda2644cf0b0c3b782923e5d68-20211213
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1520249331; Mon, 13 Dec 2021 11:58:10 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 13 Dec 2021 10:58:09 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 14 Dec 2021 02:58:07 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 14 Dec 2021 02:58:07 +0800
+From: <sean.wang@mediatek.com>
+To: <lorenzo.bianconi@redhat.com>
+CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
+ <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH 1/2] mt76: mt7921s: make pm->suspended usage consistent
+Date: Tue, 14 Dec 2021 02:58:05 +0800
+Message-ID: <1639421885-6126-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <YbcYJ47OKfh0A5Vt@lore-desk--annotate>
+References: <YbcYJ47OKfh0A5Vt@lore-desk--annotate>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211213072015.32235-1-mark-pk.tsai@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_085543_831315_DEE5044D 
-X-CRM114-Status: GOOD (  33.45  )
+X-CRM114-CacheID: sfid-20211213_105816_365690_34F4FAFA 
+X-CRM114-Status: GOOD (  16.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,77 +79,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 13, 2021 at 03:20:15PM +0800, Mark-PK Tsai wrote:
-> > Good day,
-> > 
-> > On Tue, Nov 16, 2021 at 09:57:03PM +0800, Mark-PK Tsai wrote:
-> > > > > > > Use %pe format string to print return error code which
-> > > > > > > make the error message easier to understand.
-> > > > > > >
-> > > > > > > Signed-off-by: Mark-PK Tsai <mark-pk.tsai@mediatek.com>
-> > > > > > > ---
-> > > > > > >  drivers/remoteproc/remoteproc_core.c | 4 ++--
-> > > > > > >  1 file changed, 2 insertions(+), 2 deletions(-)
-> > > > > > >
-> > > > > > > diff --git a/drivers/remoteproc/remoteproc_core.c b/drivers/remoteproc/remoteproc_core.c
-> > > > > > > index 502b6604b757..2242da320368 100644
-> > > > > > > --- a/drivers/remoteproc/remoteproc_core.c
-> > > > > > > +++ b/drivers/remoteproc/remoteproc_core.c
-> > > > > > > @@ -575,8 +575,8 @@ static int rproc_handle_vdev(struct rproc *rproc, void *ptr,
-> > > > > > >                                            dma_get_mask(rproc->dev.parent));
-> > > > > > >         if (ret) {
-> > > > > > >                 dev_warn(dev,
-> > > > > > > -                        "Failed to set DMA mask %llx. Trying to continue... %x\n",
-> > > > > > > -                        dma_get_mask(rproc->dev.parent), ret);
-> > > > > > > +                        "Failed to set DMA mask %llx. Trying to continue... (%pe)\n",
-> > > > > > > +                        dma_get_mask(rproc->dev.parent), ERR_PTR(ret));
-> > > > > >
-> > > > > > Macro ERR_PTR() is used to convert error codes to pointer type when
-> > > > > > returning from a function - I fail to see how doing so in a dev_warn()
-> > > > > > context can make the message easier to understand.  Can you provide an
-> > > > > > example?
-> > > > >
-> > > > > Hi,
-> > > > >
-> > > > > When dma_coerce_mask_and_coherent() fail, the output log will be as following.
-> > > > >
-> > > > > format          log
-> > > > > %x              Trying to continue... fffffffb
-> > > > > %d              Trying to continue... -5
-> > > > > %pe             Trying to continue... -5        (if CONFIG_SYMBOLIC_ERRNAME is not set)
-> > > > > %pe             Trying to continue... -EIO      (if CONFIG_SYMBOLIC_ERRNAME=y)
-> > > >
-> > > > When failing, functions dma_coerce_mask_and_coherent() returns -EIO.
-> > > > Casting that to a (void *) with ERR_PTR() does not change that value.
-> > > > Since variable @ret is already declared as "int" the real fix is to
-> > > > change "%x" to "%d".
-> > > 
-> > > There're some other drivers do the same thing in the recent kernel, so I think
-> > > it's fine to casting the `ret` to a (void *) for more user friendly.
-> > > But I suppose it would depend on the maintainer's opinion.
-> > > 
-> > > So how about previous patch I sent, which also fix this issue by using %d.
-> > > 
-> > > https://lore.kernel.org/lkml/20211102120805.27137-1-mark-pk.tsai@mediatek.com/
-> > 
-> > I had not seen Russell's reply in the link you posted above.  I am not
-> > completely sure about his solution but his insight and guidance in kernel
-> > programming have precedence over mine.
-> > 
-> > I will take this patch.
-> > 
-> > Thanks,
-> > Mathieu
-> > 
-> 
-> Hi,
-> 
-> Sorry to disturb you.
-> Is this patch queued?
-> Just want to make sure it has not been forgotten.
+From: Sean Wang <sean.wang@mediatek.com>
 
-https://git.kernel.org/pub/scm/linux/kernel/git/remoteproc/linux.git/log/?h=for-next
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> >> From: Sean Wang <sean.wang@mediatek.com>
+>> >>
+>> >> Update pm->suspended usage to be consistent with mt7921e driver.
+>> >>
+>> >> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> >> ---
+>> >>  drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 7 +++++--
+>> >>  1 file changed, 5 insertions(+), 2 deletions(-)
+>> >>
+>> >> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+>> >> b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+>> >> index 84be229a899d..44ee9369f6bf 100644
+>> >> --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+>> >> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+>> >> @@ -278,7 +278,6 @@ static int mt7921s_resume(struct device *__dev)
+>> >>	struct mt76_dev *mdev = &dev->mt76;
+>> >>	int err;
+>> >>
+>> >> -	pm->suspended = false;
+>> >>	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
+>> >>
+>> >>	err = mt7921_mcu_drv_pmctrl(dev);
+>> >> @@ -294,7 +293,11 @@ static int mt7921s_resume(struct device *__dev)
+>> >>	if (!pm->ds_enable)
+>> >>		mt76_connac_mcu_set_deep_sleep(mdev, false);
+>> >>
+>> >> -	return mt76_connac_mcu_set_hif_suspend(mdev, false);
+>> >> +	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
+>> >
+>> >should we check return value here? Something like:
+>> >
+>> >	if (err)
+>> >		return err;
+>> >
+>> >	pm->suspended = false;
+>> >	return 0;
+>> >
+>> >Or, is the chip up even if mt76_connac_mcu_set_hif_suspend() fails?
+>>
+>> yes, chip is eventually up again by recovered with the following wifi
+>> reset
+>>
+>> with current logic, if do so (not mark pm->suspended back as false to
+>> show suspend/resume is over),
+>>
+>> the pm runtime would not be enabled again after the wifi reset
+>
+>maybe we should just set pm->suspended = false; in mt7921_mac_reset_work() as we do for hw_full_reset, wdyt?
 
+That looks fine to me. I will submit another patch for that prior to the patch.
+
+>
+>Regards,
+>Lorenzo
+>
+>>
+>> >> +
+>> >> +	pm->suspended = false;
+>> >> +
+>> >> +	return err;
+>> >>  }
+>> >>
+>> >>  static const struct dev_pm_ops mt7921s_pm_ops = {
+>> >> --
+>> >> 2.25.1
+>> >>
 
 _______________________________________________
 Linux-mediatek mailing list
