@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E6BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 14:34:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F81C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 14:36:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DhekKPDmGzWv83bW4u7ogkDt1jnF/aWhLGso5fOiTmw=; b=KeZuoPl6jT/qq7
-	B8B6ZjH2WyS4f5XTBB+HUg4f/x580M/6baqKuJHbwQkU3zr4+QsXKOIlvaMOvMHlABWbNPaVqKCDP
-	dBhvmvCmoBW2bjhlrCEPzSUMs1GuJr/fxwf8IDbwSvShAeiooZaqwMQX3rhX1+ojUk4D37vHVwjUe
-	vzzF/KNJqNB65NcBOt82Y2XcfRF9sGVuBQSFPb1quQBg0ljLBZAjmBykFpj8T78H9iPRi2lZ9Lahc
-	vjvAMw6Mzllch96xd85T0zh62ck4Dp4ZWFfCK0bcuk64ga0pGX1QWPS1/uv+GZn77DzwT78RB5doA
-	xAhYsYeDIIH40s/mAtEg==;
+	List-Owner; bh=Qi4LIIB3tCdhaA8vadpRv9KH6U23uKmz7ht3uS68mNo=; b=lgjP1Qv4UBM1XN
+	Fgnw7ybggCpK5s2ze00pBu9mLgge3bK7XZUAmRRRwPDS0wM71t+IiqWAXgwqonfVC7ekuCJL/2Sqm
+	Blkz9lZe4kRoVB6xdxM1EkYaFH7QIJm9z07TPJJalmPUbZjq3FXlAV3oVVIJWG8gny84x+Fe0rfO/
+	ctPoaFfqpW7HVcK+14Hs4Wxpp8ps+woO1v1kClAHk9a+UF1+wyKFDPUkqH+mrSmKh48jV+98yL7cF
+	JuQ7pv1GKIJQh5LEi0mFzTuRUauCJsV/ru49DTxreVl4BcjakSsDICxhq1cbrcQ/ygxSHHW5Ry7h0
+	f6HeErmCtwdh26E3jojA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwmP1-00A59V-Va; Mon, 13 Dec 2021 14:34:07 +0000
+	id 1mwmQn-00A5v6-Fp; Mon, 13 Dec 2021 14:35:57 +0000
 Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwm9f-009z2J-Dw; Mon, 13 Dec 2021 14:18:16 +0000
+ id 1mwmBJ-009zeo-Ey; Mon, 13 Dec 2021 14:19:58 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id D45A561021;
- Mon, 13 Dec 2021 14:18:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5CBEC34602;
- Mon, 13 Dec 2021 14:18:13 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id E34F561074;
+ Mon, 13 Dec 2021 14:19:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3D60C34602;
+ Mon, 13 Dec 2021 14:19:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1639405094;
- bh=NtWdzlEjft5tnQeFaBXUVrmubHd8T7HRkrRLfS+HxKc=;
+ s=korg; t=1639405196;
+ bh=G5oL15r8MfACBMd4Acl40Vokbu2uNByzt91jDIyzlS4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ef4dtFt35n0BNeZHb5cwHF2nWR84NPJ4B4Ej+DcAmvR7/HzogwktH/W/meMnZnx1/
- Xg3O6A+RredIYQtKTQ5Xmko6sTk52Ckx/QDevDNiQkd9m6eeVOhNiVRfdPIU5wthcz
- kslBCgGFDpF4EoLzXiuVfEO/wBb1eXc3RIOJDVQs=
-Date: Mon, 13 Dec 2021 15:18:11 +0100
+ b=r6C7sH9BeXpM3ZWMpbrtz5EUGv4/DvXWFtvpFkVgRwm586OCMYotKuqJUTwqTCk6Q
+ qUhMlv2GlSiDYEVt0oGWwFBWTJdP8GNlJ6MldEJyyd8+fq1tMDX22zCuOjnUfzL2BU
+ BMUyLKuLYe24bbvuLrFQLUx/2Ud4C+Akl9mfkVtg=
+Date: Mon, 13 Dec 2021 15:19:53 +0100
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Eddie Hung <eddie.hung@mediatek.com>,
- Yuwen Ng <yuwen.ng@mediatek.com>, stable@vger.kernel.org
-Subject: Re: [PATCH 2/3] usb: mtu3: add memory barrier before set GPD's HWO
-Message-ID: <YbdWI5PD3e6uFz8U@kroah.com>
+ Eddie Hung <eddie.hung@mediatek.com>, Yuwen Ng <yuwen.ng@mediatek.com>
+Subject: Re: [PATCH 3/3] usb: mtu3: fix list_head check warning
+Message-ID: <YbdWiYU+LJHWd4wQ@kroah.com>
 References: <20211209031424.17842-1-chunfeng.yun@mediatek.com>
- <20211209031424.17842-2-chunfeng.yun@mediatek.com>
+ <20211209031424.17842-3-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20211209031424.17842-2-chunfeng.yun@mediatek.com>
+In-Reply-To: <20211209031424.17842-3-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_061815_567106_06383700 
-X-CRM114-Status: GOOD (  20.94  )
+X-CRM114-CacheID: sfid-20211213_061957_583185_1CF996BD 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,61 +71,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 09, 2021 at 11:14:23AM +0800, Chunfeng Yun wrote:
-> There is a seldom issue that the controller access invalid address
-> and trigger devapc or emimpu violation. That is due to memory access
-> is out of order and cause gpd data is not correct.
-> Make sure GPD is fully written before giving it to HW by setting its
-> HWO.
+On Thu, Dec 09, 2021 at 11:14:24AM +0800, Chunfeng Yun wrote:
+> This is caused by uninitialization of list_head.
 > 
-> Fixes: 48e0d3735aa5 ("usb: mtu3: supports new QMU format")
-> Cc: stable@vger.kernel.org
-> Reported-by: Eddie Hung <eddie.hung@mediatek.com>
+> BUG: KASAN: use-after-free in __list_del_entry_valid+0x34/0xe4
+> 
+> Call trace:
+> dump_backtrace+0x0/0x298
+> show_stack+0x24/0x34
+> dump_stack+0x130/0x1a8
+> print_address_description+0x88/0x56c
+> __kasan_report+0x1b8/0x2a0
+> kasan_report+0x14/0x20
+> __asan_load8+0x9c/0xa0
+> __list_del_entry_valid+0x34/0xe4
+> mtu3_req_complete+0x4c/0x300 [mtu3]
+> mtu3_gadget_stop+0x168/0x448 [mtu3]
+> usb_gadget_unregister_driver+0x204/0x3a0
+> unregister_gadget_item+0x44/0xa4
+> 
+> Reported-by: Yuwen Ng <yuwen.ng@mediatek.com>
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  drivers/usb/mtu3/mtu3_qmu.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
-> index 3f414f91b589..34bb5ac67efe 100644
-> --- a/drivers/usb/mtu3/mtu3_qmu.c
-> +++ b/drivers/usb/mtu3/mtu3_qmu.c
-> @@ -273,6 +273,8 @@ static int mtu3_prepare_tx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
->  			gpd->dw3_info |= cpu_to_le32(GPD_EXT_FLAG_ZLP);
->  	}
->  
-> +	/* make sure GPD is fully written before giving it to HW */
-> +	mb();
+>  drivers/usb/mtu3/mtu3_gadget.c | 1 +
+>  1 file changed, 1 insertion(+)
 
-So this means you are using mmio for this structure?  If so, shouldn't
-you be using normal io memory read/write calls as well and not just
-"raw" pointers like this:
-
->  	gpd->dw0_info |= cpu_to_le32(GPD_FLAGS_IOC | GPD_FLAGS_HWO);
-
-Are you sure this is ok?
-
-Sprinkling around mb() calls is almost never the correct solution.
-
-If you need to ensure that a write succeeds, shouldn't you do a read
-from it afterward?  Many busses require this, doesn't yours?
-
-
-
->  
->  	mreq->gpd = gpd;
-> @@ -306,6 +308,8 @@ static int mtu3_prepare_rx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
->  	gpd->next_gpd = cpu_to_le32(lower_32_bits(enq_dma));
->  	ext_addr |= GPD_EXT_NGP(mtu, upper_32_bits(enq_dma));
->  	gpd->dw3_info = cpu_to_le32(ext_addr);
-> +	/* make sure GPD is fully written before giving it to HW */
-> +	mb();
-
-Again, mb(); does not ensure that memory-mapped i/o actually hits the
-HW.  Or if it does on your platform, how?
-
-mb() is a compiler barrier, not a memory write to a bus barrier.  Please
-read Documentation/memory-barriers.txt for more details.
+What commit does this fix?  Should it go to stable kernels?
 
 thanks,
 
