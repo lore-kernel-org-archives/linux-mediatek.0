@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7A65C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 07:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7157FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 07:24:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=xCsipzT1wgBYGQjABmNKl79jIknJ7QIvhCOt//hKZGg=; b=gJlFMGwHdMqnAt
-	EPHM0EeaLo9nCHLeQ10YUWn4CebADF/E4eii5ewJb9S5zUnCoJghDSsf3F8f3P8+tmOQ9USzhHHtN
-	pdcrqKmD1pEK4pQRo9gilPS3FeC7HnldnmkKEcbhT0RogO5c7dzYa60aRSNjeJ//F2YJGNfIleDIN
-	YqT9X1PzamRaj6kiCHNtIlEq6j1sq5Jx/T+NpCOpn2l0CuyQV2M0LXmYlMy4KDVhlqJInlqvWEpdn
-	vvAyOHjXggEN4XiSoF2d/OyfUlG69mMmu/NrCoDLPlD9+s7gRKVmlfdLl9yD2yOQh7I9x+8+qUIg5
-	4oq+334LV1rGmGVHGSJw==;
+	List-Owner; bh=SFZxwVqocktpKzLlLaFe/qkrzOFrvB2HrmMNFAAsn+Q=; b=MIfYbzi6QkLJ1r
+	Uz5oVhOoBjW5BPVd/OgxNlh3cxs2u/hNQKzPhzO0tIUZ9u5woUijr4gPy+sUoD8CNMfo91uUSg1+3
+	BnZNS3skm7EnsdUu452yTbDdVJYGNoQ6CLDIsBzbPzpBm61BMAbaXRvi9YAdqGKLIpwAM8YSggQRw
+	6XIa/cQLp60P2iaFssrK3/7mPjjQyuXpj0G6SUjeiTVKBWVRrDfJG0RSvK4vmeN4wVIeO6vhogb1H
+	/1g3vOy5Y621M437HTMmCxh5wwDIyMa/rwWd0jK2qLi+ZTZQ9aiSSfYcN/YY8xhG/5oBtn6qml9Jy
+	h0cQocB7OeW7Qs94jiFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwfOd-0080xj-IM; Mon, 13 Dec 2021 07:05:15 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1mwfh3-0083hH-4J; Mon, 13 Dec 2021 07:24:17 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwfOb-0080wH-8U
- for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 07:05:14 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id np3so11186811pjb.4
- for <linux-mediatek@lists.infradead.org>; Sun, 12 Dec 2021 23:05:12 -0800 (PST)
+ id 1mwfgm-0083Ze-56
+ for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 07:24:03 +0000
+Received: by mail-pg1-x532.google.com with SMTP id a23so9183630pgm.4
+ for <linux-mediatek@lists.infradead.org>; Sun, 12 Dec 2021 23:23:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=m/kc7ebJlnLqfaZVU4eMOkFHSZDqfSXCTb3+LTn6SwU=;
- b=LShxVAZyIyqYus7DPwCbQTlPaaUHZLiGxYbFJH10V2CQ1IHefDJR6+7Fo49/Qzh6AU
- Lbw76mOSk/+soRdakEt0fsh8z0H9XwL21N9buUkkH8K50PN+8cDX4wcvo9eT4Dt9MGJW
- Ej0LzjYq6a6JUzQ9qzY5r/Yhavs06Cs6ltLCw=
+ bh=biiS4C+lzKL6rUA1uy2e/g9FiWgrw/yETmDilWklXNU=;
+ b=T7rVDQXjtXmre8S0xW2CXVZcG/2HRk5R14pskRLXBBjohD2FR2eLw1cXil+NRSg4hF
+ zqSmiZMtwNxtiv+calopqdA/qqSj80D7h8G8LZzHZQ+PXFKXXX5tZYpcEIm8bJIVVQLB
+ QNyfFYbV8PhRRTHFW6QLGksFwcaetUJ94u0Tw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=m/kc7ebJlnLqfaZVU4eMOkFHSZDqfSXCTb3+LTn6SwU=;
- b=QnvuusOREmolp6N592zs5rZkt5sbVPDKmz+h24hoFkPZvjWvCBRbF3i4HypoqDZbQU
- SAPO4nXmxOaSCmJkeYpps4lR6fG18OcF1Sh+QnCIXrLFh5mFnioHQ4sy21XzdaTz+4lr
- xA+BHpYnVQMHZGXvoz2z91wk4z757iJFTRDREdb6XcKotDy8zlS+wx7IhjlRVeZrYWxX
- b+l5rxtfepC2w5Uz3CHhCub19ObBy7ewoHlT1v0Kp/yQiPKPz+rRsiekLcaN+24JQOKH
- HGvKI2DbcNX+YWlQzkyxDleIh3gFzWDQNSR3KYJ8xxeV0rV8t4uVzGsBZ3nNCyJp8U6Y
- aRaw==
-X-Gm-Message-State: AOAM533Xys3uOyNqkgswYPCZFO6oPx+BP0OFpc3eEEf0Yxk5ELtoPsnq
- Z6yVJcvn1u4DQc0gXzOq/dMxsQ==
-X-Google-Smtp-Source: ABdhPJw5eN9BL11bnpjH2Litra/spgqz7gb1zNDlZ8DD8NBRQ5q5FEL8J+LhSLy30C37bExPbUB0QA==
-X-Received: by 2002:a17:90b:fd5:: with SMTP id
- gd21mr43377175pjb.37.1639379111712; 
- Sun, 12 Dec 2021 23:05:11 -0800 (PST)
+ bh=biiS4C+lzKL6rUA1uy2e/g9FiWgrw/yETmDilWklXNU=;
+ b=bfnfzYtvpHymuDpUuoKf5+j0n1DPuhfhWMcXBkGhMqkD6ayFjGqSR6UwDxz4lL7FsT
+ CdJygQa0UsJixfukA6aBGYroJO3+xHe07c+9zZ7ctL89GzF7Yct8vGDz/S/UdBeQpZKT
+ Tl8ioqS3Idlt5kt+BuKTwEz8DUtA+qZOsoWV/ds9HlBt/D5glWT7Cc7TpdnoqbfeBgy5
+ rQbtivbEGHoWDGnlnmnuqPEOjnacadsBtxs+V5SyiJeFbLEPNzOGKYKkGu+T4dClN7cE
+ XLdrPHTJSS6cU+h3KkLQ2TUkrlu4yvywhyniBOwD+Jf+ICqP8DPui+/RU1EcYYxTJjR2
+ 86ug==
+X-Gm-Message-State: AOAM533RfxVf4XO56giQS34zxNt3PE0UmAtC1TXNm2jgudsgKkrYQTU+
+ sGWC5zfbKo48LQRkQ4gQkbz6dA==
+X-Google-Smtp-Source: ABdhPJzB+Lv5TFVQBHvLgUX1xC1pkNvNMiganBL73XvNFU8yrcgNpweyaXo3YnNiyHRB6nVBhsL8hw==
+X-Received: by 2002:a63:da4d:: with SMTP id l13mr8956999pgj.452.1639380238960; 
+ Sun, 12 Dec 2021 23:23:58 -0800 (PST)
 Received: from hsinyi-z840.tpe.corp.google.com
  ([2401:fa00:1:10:9447:edff:ad23:1bfc])
- by smtp.gmail.com with ESMTPSA id k5sm5079402pgm.94.2021.12.12.23.05.10
+ by smtp.gmail.com with ESMTPSA id e7sm11747562pfv.156.2021.12.12.23.23.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 Dec 2021 23:05:11 -0800 (PST)
+ Sun, 12 Dec 2021 23:23:58 -0800 (PST)
 From: Hsin-Yi Wang <hsinyi@chromium.org>
-To: Jassi Brar <jassisinghbrar@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] mailbox: mtk-cmdq: Silent EPROBE_DEFER errors for clks
-Date: Mon, 13 Dec 2021 15:05:01 +0800
-Message-Id: <20211213070500.3977049-1-hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH 1/4] arm64: dts: mt8183: Add katsu board
+Date: Mon, 13 Dec 2021 15:23:52 +0800
+Message-Id: <20211213072355.4079568-1-hsinyi@chromium.org>
 X-Mailer: git-send-email 2.34.1.173.g76aa8bc2d0-goog
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211212_230513_309035_04522E77 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20211212_232400_218177_3EDCD752 
+X-CRM114-Status: GOOD (  13.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,43 +84,126 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Silent the error if it's EPROBE_DEFER for clks.
+Katsu is known as ASUS Chromebook Detachable CZ1.
 
 Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 ---
-v2: fix comments
----
- drivers/mailbox/mtk-cmdq-mailbox.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+This patch depends on [1] to add Himax8279d MIPI-DSI LCD panel driver.
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index a8845b162dbf..6f9ee831ccd8 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -573,8 +573,10 @@ static int cmdq_probe(struct platform_device *pdev)
- 				cmdq->clocks[alias_id].id = clk_names[alias_id];
- 				cmdq->clocks[alias_id].clk = of_clk_get(node, 0);
- 				if (IS_ERR(cmdq->clocks[alias_id].clk)) {
--					dev_err(dev, "failed to get gce clk: %d\n", alias_id);
--					return PTR_ERR(cmdq->clocks[alias_id].clk);
-+					return dev_err_probe(dev,
-+							     PTR_ERR(cmdq->clocks[alias_id].clk),
-+							     "failed to get gce clk: %d\n",
-+							     alias_id);
- 				}
- 			}
- 		}
-@@ -582,8 +584,8 @@ static int cmdq_probe(struct platform_device *pdev)
- 		cmdq->clocks[alias_id].id = clk_name;
- 		cmdq->clocks[alias_id].clk = devm_clk_get(&pdev->dev, clk_name);
- 		if (IS_ERR(cmdq->clocks[alias_id].clk)) {
--			dev_err(dev, "failed to get gce clk\n");
--			return PTR_ERR(cmdq->clocks[alias_id].clk);
-+			return dev_err_probe(dev, PTR_ERR(cmdq->clocks[alias_id].clk),
-+					     "failed to get gce clk\n");
- 		}
- 	}
- 
+[1] https://patchwork.freedesktop.org/patch/462468/
+---
+ arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+ .../dts/mediatek/mt8183-kukui-katsu-sku32.dts | 38 +++++++++++++++++
+ .../dts/mediatek/mt8183-kukui-katsu-sku38.dts | 42 +++++++++++++++++++
+ 3 files changed, 82 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 1613259b686576..c130518c3293d5 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -28,6 +28,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu-sku22.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-katsu-sku32.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-katsu-sku38.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku16.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku272.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku288.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+new file mode 100644
+index 00000000000000..f923b8c3c49c36
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+@@ -0,0 +1,38 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-kakadu.dtsi"
++#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
++
++/ {
++	model = "MediaTek katsu board";
++	compatible = "google,katsu-sku32", "google,katsu", "mediatek,mt8183";
++};
++
++&i2c0 {
++	status = "okay";
++
++	/delete-node/touchscreen@10;
++	touchscreen1: touchscreen@5d {
++		compatible = "goodix,gt7375p";
++		reg = <0x5d>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&open_touch>;
++
++		interrupt-parent = <&pio>;
++		interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
++
++		reset-gpios = <&pio 156 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&panel {
++	compatible = "starry,2081101qfh032011-53g";
++};
++
++&qca_wifi {
++	qcom,ath10k-calibration-variant = "GO_KATSU";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+new file mode 100644
+index 00000000000000..1ab14096a279c6
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+@@ -0,0 +1,42 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-kakadu.dtsi"
++#include "mt8183-kukui-audio-rt1015p.dtsi"
++
++/ {
++	model = "MediaTek katsu sku38 board";
++	compatible = "google,katsu-sku38", "google,katsu", "mediatek,mt8183";
++};
++
++&i2c0 {
++	status = "okay";
++
++	/delete-node/touchscreen@10;
++	touchscreen1: touchscreen@5d {
++		compatible = "goodix,gt7375p";
++		reg = <0x5d>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&open_touch>;
++
++		interrupt-parent = <&pio>;
++		interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
++
++		reset-gpios = <&pio 156 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&panel {
++	compatible = "starry,2081101qfh032011-53g";
++};
++
++&qca_wifi {
++        qcom,ath10k-calibration-variant = "GO_KATSU";
++};
++
++&sound {
++	compatible = "mediatek,mt8183_mt6358_ts3a227_rt1015p";
++};
 -- 
 2.34.1.173.g76aa8bc2d0-goog
 
