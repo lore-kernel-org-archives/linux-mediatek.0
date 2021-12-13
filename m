@@ -4,51 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5574BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 10:16:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F72CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 10:28:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UpW8IG8jvxJCbnjzOei6QV3R9Y3zIkM7w8LeNjDvKAQ=; b=a1KXjLqo1mxlz9
-	pDUBNL+WRwgb22Gy07cunKcHuhuAfIru35BmBCvxP15nqFfb8KKbY15LkBwVp8efa5+5vWamQdgz8
-	g9pn9Kp3QJ3KbY8EHzZp3NxRlYkzJYJB9tFZ0JiybVY1VjmjX9h4Gr7QGxPNSGyUDKD/w4IzYo21B
-	7PMh+Q1bioye2gLc8brPxwaL3wqqD6IRIqcK1dKv9L7jXpWhM6z57X5wPwvrJGuL3rPY+aTPu2UIt
-	xMbk0s3cycuduboY6ES/psgcpr+3Yv0WIRBrN/91/rI2EqD3685CvmkOAQktdNyZIb5L+pVo2kJYp
-	1wLuvti5gqfn62vJ4VFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uZwxABOibllqEMrJOxonBLvrqppkjvGSsU7jrQraVf0=; b=d/YljKOIbhLAX1bSfQ0akpAwX4
+	KfPfHbqci3gdXBcA6am6CsLOJQEgzl/gyN2e2V7MmlSGDfWzKvN5rhLkdGuk6XnHgb91ui4Qtw0WP
+	tM7d953OOQasC69cCbrlo6vrNalaEGkkz3BUMkBRM8YnorcNxcbiEZVw2L/c1Dc3VTLbIwCezWTzQ
+	V9ucljqxEYwrjJrUqvYy8exwx/xjjgzKdDmeSxIpmWJ/TSZAAfGGkn7+7bHmMp0qjhSkEWwQbDPP7
+	PK5XhKePp9H68YIjKL2PZxVexAQHXu9pqTfbJy9sWzG8iVjusCdEBteJTOnWuRdGsW+30wYH5B96C
+	6NgcG33A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwiNG-008wA7-AS; Mon, 13 Dec 2021 10:16:02 +0000
-Received: from out30-57.freemail.mail.aliyun.com ([115.124.30.57])
+	id 1mwiZ5-0090gG-SQ; Mon, 13 Dec 2021 10:28:15 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwi2H-008mvA-Ty; Mon, 13 Dec 2021 09:54:23 +0000
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R181e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04357; MF=yang.lee@linux.alibaba.com;
- NM=1; PH=DS; RN=19; SR=0; TI=SMTPD_---0V-V3Tqn_1639389254; 
-Received: from localhost(mailfrom:yang.lee@linux.alibaba.com
- fp:SMTPD_---0V-V3Tqn_1639389254) by smtp.aliyun-inc.com(127.0.0.1);
- Mon, 13 Dec 2021 17:54:15 +0800
-From: Yang Li <yang.lee@linux.alibaba.com>
-To: nbd@nbd.name
-Cc: lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
- shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
- davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
- nathan@kernel.org, ndesaulniers@google.com, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- llvm@lists.linux.dev, Yang Li <yang.lee@linux.alibaba.com>,
- Abaci Robot <abaci@linux.alibaba.com>
-Subject: [PATCH -next] mt76: remove variable set but not used
-Date: Mon, 13 Dec 2021 17:54:13 +0800
-Message-Id: <20211213095413.99456-1-yang.lee@linux.alibaba.com>
-X-Mailer: git-send-email 2.20.1.7.g153144c
+ id 1mwiAR-008qPy-D3; Mon, 13 Dec 2021 10:02:50 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id E58D81F422D4
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1639389763; bh=gbwMY8tv7htkSgQhxyiYITlrUTUsJaPP690NeQU6YUQ=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=EU11AE4wrTQEE+5LfvBgVxBkiE++ZIemMYyUK2B+hSS6eJlY/R0cwCg4KczXtV85K
+ vVohGdjYANIWOHL6bzUmMFYYOCUsABOL4FQNdnB5XZsiujMneDka+KmSgY+XqyTswi
+ Q4GAwtC//aDpKYEFXBJz1zJ90R8FOGD4ojbWqXyr5Fpx7EIU1jTi/aspJE4E5k//Vv
+ Y0TKL11uPblz25B1JNQBmqSnvnrrHktxrcMj3PvgwCA1xcFREg+olOOnr3IIebmBlu
+ /KdbveU3l7mNYSfN4Dh9IeWggwcAj9cFhS5A5DT/+GgdxI4CHdNgnxy28q1GzzkkGb
+ se5mtDkliq2Bg==
+Subject: Re: [PATCH] drm/mediatek: hdmi: Perform NULL pointer check for
+ mtk_hdmi_conf
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, dafna.hirschfeld@collabora.com,
+ kernel@collabora.com
+References: <20211028074311.57842-1-angelogioacchino.delregno@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <000ba19e-0220-f5c3-0efd-abb8338bb8f2@collabora.com>
+Date: Mon, 13 Dec 2021 11:02:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
+In-Reply-To: <20211028074311.57842-1-angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_015422_181378_752924F0 
-X-CRM114-Status: UNSURE (   7.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211213_020247_667101_E06E5486 
+X-CRM114-Status: GOOD (  20.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,35 +66,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-VGhlIGNvZGUgdGhhdCB1c2VzIHZhcmlhYmxlIHF1ZXVlZCBoYXMgYmVlbiByZW1vdmVkLAphbmQg
-Im10NzZfaXNfdXNiKGRldikgPyBxLT5uZGVzYyAtIHEtPnF1ZXVlZCA6IHEtPnF1ZXVlZCIKZGlk
-bid0IGRvIGFueXRoaW5nLCBzbyBhbGwgdGhleSBzaG91bGQgYmUgcmVtb3ZlZCBhcyB3ZWxsLgoK
-RWxpbWluYXRlIHRoZSBmb2xsb3dpbmcgY2xhbmcgd2FybmluZ3M6CmRyaXZlcnMvbmV0L3dpcmVs
-ZXNzL21lZGlhdGVrL210NzYvZGVidWdmcy5jOjc3Ojk6IHdhcm5pbmc6IHZhcmlhYmxlCuKAmHF1
-ZXVlZOKAmSBzZXQgYnV0IG5vdCB1c2VkLgoKUmVwb3J0ZWQtYnk6IEFiYWNpIFJvYm90IDxhYmFj
-aUBsaW51eC5hbGliYWJhLmNvbT4KRml4ZXM6IDJkOGJlNzZjMTY3NCAoIm10NzY6IGRlYnVnZnM6
-IGltcHJvdmUgcXVldWUgbm9kZSByZWFkYWJpbGl0eSIpClNpZ25lZC1vZmYtYnk6IFlhbmcgTGkg
-PHlhbmcubGVlQGxpbnV4LmFsaWJhYmEuY29tPgotLS0KIGRyaXZlcnMvbmV0L3dpcmVsZXNzL21l
-ZGlhdGVrL210NzYvZGVidWdmcy5jIHwgMyArLS0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
-bigrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC93aXJlbGVzcy9t
-ZWRpYXRlay9tdDc2L2RlYnVnZnMuYyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210
-NzYvZGVidWdmcy5jCmluZGV4IGI4YmNmMjJhMDdmZC4uMDI3ZDllYTE3ZDA0IDEwMDY0NAotLS0g
-YS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L2RlYnVnZnMuYworKysgYi9kcml2
-ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L2RlYnVnZnMuYwpAQCAtNzQsMTMgKzc0LDEy
-IEBAIEVYUE9SVF9TWU1CT0xfR1BMKG10NzZfcXVldWVzX3JlYWQpOwogc3RhdGljIGludCBtdDc2
-X3J4X3F1ZXVlc19yZWFkKHN0cnVjdCBzZXFfZmlsZSAqcywgdm9pZCAqZGF0YSkKIHsKIAlzdHJ1
-Y3QgbXQ3Nl9kZXYgKmRldiA9IGRldl9nZXRfZHJ2ZGF0YShzLT5wcml2YXRlKTsKLQlpbnQgaSwg
-cXVldWVkOworCWludCBpOwogCiAJc2VxX3B1dHMocywgIiAgICAgcXVldWUgfCBody1xdWV1ZWQg
-fCAgICAgIGhlYWQgfCAgICAgIHRhaWwgfFxuIik7CiAJbXQ3Nl9mb3JfZWFjaF9xX3J4KGRldiwg
-aSkgewogCQlzdHJ1Y3QgbXQ3Nl9xdWV1ZSAqcSA9ICZkZXYtPnFfcnhbaV07CiAKLQkJcXVldWVk
-ID0gbXQ3Nl9pc191c2IoZGV2KSA/IHEtPm5kZXNjIC0gcS0+cXVldWVkIDogcS0+cXVldWVkOwog
-CQlzZXFfcHJpbnRmKHMsICIgJTlkIHwgJTlkIHwgJTlkIHwgJTlkIHxcbiIsCiAJCQkgICBpLCBx
-LT5xdWV1ZWQsIHEtPmhlYWQsIHEtPnRhaWwpOwogCX0KLS0gCjIuMjAuMS43LmcxNTMxNDRjCgoK
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
-aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
-cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+Il 28/10/21 09:43, AngeloGioacchino Del Regno ha scritto:
+> In commit 41ca9caaae0b ("drm/mediatek: hdmi: Add check for CEA modes only")
+> a check for CEA modes was added to function mtk_hdmi_bridge_mode_valid()
+> in order to address possible issues on MT8167; moreover, with commit
+> c91026a938c2 ("drm/mediatek: hdmi: Add optional limit on maximal HDMI mode clock")
+> another similar check was introduced.
+> 
+> Unfortunately though, at the time of writing, MT8173 does not provide
+> any mtk_hdmi_conf structure and this is crashing the kernel with NULL
+> pointer upon entering mtk_hdmi_bridge_mode_valid(), which happens as
+> soon as a HDMI cable gets plugged in.
+> 
+> To fix this regression, add a NULL pointer check for hdmi->conf in the
+> said function, restoring HDMI functionality and avoiding NULL pointer
+> kernel panics.
+> 
+> Fixes: 41ca9caaae0b ("drm/mediatek: hdmi: Add check for CEA modes only")
+> Fixes: c91026a938c2 ("drm/mediatek: hdmi: Add optional limit on maximal HDMI mode clock")
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>   drivers/gpu/drm/mediatek/mtk_hdmi.c | 12 +++++++-----
+>   1 file changed, 7 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi.c b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> index 5838c44cbf6f..3196189429bc 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_hdmi.c
+> @@ -1224,12 +1224,14 @@ static int mtk_hdmi_bridge_mode_valid(struct drm_bridge *bridge,
+>   			return MODE_BAD;
+>   	}
+>   
+> -	if (hdmi->conf->cea_modes_only && !drm_match_cea_mode(mode))
+> -		return MODE_BAD;
+> +	if (hdmi->conf) {
+> +		if (hdmi->conf->cea_modes_only && !drm_match_cea_mode(mode))
+> +			return MODE_BAD;
+>   
+> -	if (hdmi->conf->max_mode_clock &&
+> -	    mode->clock > hdmi->conf->max_mode_clock)
+> -		return MODE_CLOCK_HIGH;
+> +		if (hdmi->conf->max_mode_clock &&
+> +		    mode->clock > hdmi->conf->max_mode_clock)
+> +			return MODE_CLOCK_HIGH;
+> +	}
+>   
+>   	if (mode->clock < 27000)
+>   		return MODE_CLOCK_LOW;
+> 
+
+Hello, friendly ping!
+
+Can I please get a review (or merge) of this commit?
+
+This is an important fix for a null pointer KP and restores HDMI functionality.
+
+Thanks,
+- Angelo
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
