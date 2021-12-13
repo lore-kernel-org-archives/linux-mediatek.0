@@ -4,68 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55FF7C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:20:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC16AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 16:29:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jUsBVQwqVZU0wBz9L4owR9FALDjfRAZmSIluNFZR/S0=; b=3RuO8R1dFO+HuG
-	kSFV6gHNC7HYIR07BfOU14IEsNf9MRwRrGdHRcWyxrUd4qMM3PgNRXnaOH4dR5j0EKSrkr7PkVXQH
-	B5XqVidp6HxAbmZRNuMSMonHOPc947dZ+w93sO1nBU9PewOMvsBmpTzT6X7OEEP6xawpeAKNOXHZM
-	sQwW+gc0hDvUO8ag1gX4eVgNJxGIBggfHckc8c3wj/x5yTHfz1sKOQdwT+Np2dWFt3knc8fKDa2BW
-	200D/gGhoklDwgcPPyYBNfhy4dkuCrOgxcse002S3OB8YQG9mdzHeQqNGwZcnjMmQ3Qm96dAoKC6O
-	jplsIxgp4HIRMX3/wjpA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SFZxwVqocktpKzLlLaFe/qkrzOFrvB2HrmMNFAAsn+Q=; b=AwocTbVaarVrXk
+	9Aw4hAF25r5/SdA1LaQxrxJgJK7yJhjaZ406u053nVVb78xu93HkEegQJ77lv8vYiZYGImlclxOWq
+	MxRzIA1I1/XWk+wHJtnwn0WrrMJZT2EJU6xGPmrWGXizpaCSnsDAW0bKWcSnWzDwpNQmLaDfHDUOR
+	MQObhhmffMDCnlG8rMlcAZXz53Kq3xXDIznNkGLKF29S+DZPRpRRU5GRZuIl2uTbGoE4Stdyrmp4N
+	CzkjyH/Pom2kwm9xRHo9YXDY1CE8M+YOdv8PQJBdu1WAClsbxMjaXoRQOi9ay/ap8uy1HMMm4zwJL
+	LwA4X8q/eBQEXZw9zF0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwo41-00AYXi-67; Mon, 13 Dec 2021 16:20:33 +0000
-Received: from mail-oi1-f173.google.com ([209.85.167.173])
+	id 1mwoCK-00Ab46-BF; Mon, 13 Dec 2021 16:29:08 +0000
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwo3m-00AYSI-Sv; Mon, 13 Dec 2021 16:20:20 +0000
-Received: by mail-oi1-f173.google.com with SMTP id s139so23710607oie.13;
- Mon, 13 Dec 2021 08:20:17 -0800 (PST)
+ id 1mwoCD-00AazA-W4
+ for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 16:29:03 +0000
+Received: by mail-pf1-x42e.google.com with SMTP id p13so15409394pfw.2
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Dec 2021 08:29:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=biiS4C+lzKL6rUA1uy2e/g9FiWgrw/yETmDilWklXNU=;
+ b=ZNU/Ru1HXHA2pan1cQDKzDswLSjrFIllZ81BXCYBuYNczkeO21KelJQO+wLXueWJT0
+ NwAYq4Cqdw9GeoFHo63gUB6MjRyclPXlwv3iK8k1YCpfUHhOQsGaB4lcKDWqOnCdH5Fo
+ dBFPlXLOwc2Z5ZaNzzlzQbyXZnBwHEz6FlR7s=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=l6ZLi0PGoBXQBBSQe+jVt6PyRuLOnFoXjb9xaIaFyd8=;
- b=qB+OY9YJx/3TLTE2a78xqTZp9dny/WKxkhbMqwahR0Xtnol/WQ6QUDFeCHeAjmi7DT
- aMeOeWHiQPOFxUv+PBXvYjqZdx3vUcg8Q4iGxPe1n9JtTiAMflkHwRjii3ZZFtotdsW9
- qdSu7OYhfVQY3jUf61KcbkVQJp4B2M9//eWhw3aGFz3H1/ZnNAPsfdXfP5J/Y4fovPD0
- qxj7MoWVLm6xl9Bbi+QNGOXWA4JWWoTshIhxHQyMrE1MiyMucHr+v0bC33i6USw9iP0f
- HQY5Bi4XDhIuS75mzZI650KMjFJS/m7dU5u7qvWPZ8iaCy4IEOhmi+lxf2xkimBANveH
- 4MyQ==
-X-Gm-Message-State: AOAM532rShUdnUAesWedVyOO2hWzL0PX2/9axpqBVHqIDnAFNSfdcwWt
- AmaX3polV2t2t9oUxrC9Zg==
-X-Google-Smtp-Source: ABdhPJxD5WHxXNNHT+o8W64P92PeYWFg6nzCIiFA7fdbpNK3L3FRy93EXTKDfdFeGxasBHOlryCJpQ==
-X-Received: by 2002:a05:6808:2014:: with SMTP id
- q20mr28900955oiw.9.1639412416725; 
- Mon, 13 Dec 2021 08:20:16 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id e21sm2219792ote.72.2021.12.13.08.20.15
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=biiS4C+lzKL6rUA1uy2e/g9FiWgrw/yETmDilWklXNU=;
+ b=21EefMLs+tm55ce0S4tQS5U/EsxTKa6V29ZmFAaK5fhcGUHvncVLIdMQ5v/2D5lIua
+ 4Faz2uPdO8qa/3s7XDotE+g9pEzzIT37heS/4/+adCQ8yL6W7kPJoG5lSrmPlDqwsbLO
+ Fd3NDUUJlG/4NWz6HcECLePE11FLfyIunNisPMz0SjkRTCn0eR1EX76WzYGajmY8PbWu
+ CT+J7Ovr9uG7NDWGkeQcnCes1XFw+Eo+ZD/H21AREJOeRBHWmNT89hQb7ehBTQB7jqEf
+ RYwnGc2sI+PTbFOAGjImAnLQ958kp9RFRjBRR+nidOCd2GovZ4Xva2rvT2EpsG1efnON
+ WhkA==
+X-Gm-Message-State: AOAM532X3oi+OngvZtxVAXDCgcObDQZaCKeVGcI4j8pE3gcRtYQvd+0F
+ deZn6yGN/wxl0cFpMa2SaBSQjA==
+X-Google-Smtp-Source: ABdhPJzn6LYGfIvTwksk0xQNlW/W3F8r99EJcrlLsE/jQtJCtI4G4XKP/gnT/rT6mUIH5J6AL5Drzw==
+X-Received: by 2002:a05:6a00:1385:b0:4ad:580d:8a8 with SMTP id
+ t5-20020a056a00138500b004ad580d08a8mr33932528pfg.10.1639412940703; 
+ Mon, 13 Dec 2021 08:29:00 -0800 (PST)
+Received: from hsinyi-z840.tpe.corp.google.com
+ ([2401:fa00:1:10:9447:edff:ad23:1bfc])
+ by smtp.gmail.com with ESMTPSA id mh1sm7803802pjb.6.2021.12.13.08.28.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Dec 2021 08:20:16 -0800 (PST)
-Received: (nullmailer pid 1139463 invoked by uid 1000);
- Mon, 13 Dec 2021 16:20:15 -0000
-From: Rob Herring <robh@kernel.org>
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20211213072355.4079568-4-hsinyi@chromium.org>
-References: <20211213072355.4079568-1-hsinyi@chromium.org>
- <20211213072355.4079568-4-hsinyi@chromium.org>
-Subject: Re: [PATCH 4/4] dt-bindings: arm64: dts: mediatek: Add
- mt8183-kukui-jacuzzi-makomo
-Date: Mon, 13 Dec 2021 10:20:15 -0600
-Message-Id: <1639412415.371102.1139462.nullmailer@robh.at.kernel.org>
+ Mon, 13 Dec 2021 08:29:00 -0800 (PST)
+From: Hsin-Yi Wang <hsinyi@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v2 1/4] arm64: dts: mt8183: Add katsu board
+Date: Tue, 14 Dec 2021 00:28:53 +0800
+Message-Id: <20211213162856.235130-1-hsinyi@chromium.org>
+X-Mailer: git-send-email 2.34.1.173.g76aa8bc2d0-goog
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_082018_966797_3794ACEC 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20211213_082902_108341_A113CE55 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,58 +80,133 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 13 Dec 2021 15:23:55 +0800, Hsin-Yi Wang wrote:
-> Makomo is known as Lenovo 100e Gen 2 Chromebook.
-> 
-> Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
-> ---
->  .../devicetree/bindings/arm/mediatek.yaml          | 14 ++++++++++++++
->  1 file changed, 14 insertions(+)
-> 
+Katsu is known as ASUS Chromebook Detachable CZ1.
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
+Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
+---
+This patch depends on [1] to add Himax8279d MIPI-DSI LCD panel driver.
 
-yamllint warnings/errors:
+[1] https://patchwork.freedesktop.org/patch/462468/
+---
+ arch/arm64/boot/dts/mediatek/Makefile         |  2 +
+ .../dts/mediatek/mt8183-kukui-katsu-sku32.dts | 38 +++++++++++++++++
+ .../dts/mediatek/mt8183-kukui-katsu-sku38.dts | 42 +++++++++++++++++++
+ 3 files changed, 82 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
 
-dtschema/dtc warnings/errors:
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:31:items: 'oneOf' conditional failed, one must be fixed:
-	[{'enum': [{'const': 'google,makomo-rev4-sku0'}, {'const': 'google,makomo-rev5-sku0'}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}]}] is not of type 'object'
-	{'const': 'google,makomo-rev4-sku0'} is not of type 'string'
-	{'const': 'google,makomo-rev5-sku0'} is not of type 'string'
-	{'const': 'google,makomo'} is not of type 'string'
-	{'const': 'mediatek,mt8183'} is not of type 'string'
-	from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek.yaml: properties:compatible:oneOf:32:items: 'oneOf' conditional failed, one must be fixed:
-	[{'enum': [{'const': 'google,makomo-rev4-sku1'}, {'const': 'google,makomo-rev5-sku1'}, {'const': 'google,makomo'}, {'const': 'mediatek,mt8183'}]}] is not of type 'object'
-	{'const': 'google,makomo-rev4-sku1'} is not of type 'string'
-	{'const': 'google,makomo-rev5-sku1'} is not of type 'string'
-	{'const': 'google,makomo'} is not of type 'string'
-	{'const': 'mediatek,mt8183'} is not of type 'string'
-	from schema $id: http://devicetree.org/meta-schemas/string-array.yaml#
-/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/arm/mediatek.yaml: ignoring, error in schema: properties: compatible: oneOf: 31: items
-warning: no schema found in file: ./Documentation/devicetree/bindings/arm/mediatek.yaml
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.ozlabs.org/patch/1567163
-
-This check can fail if there are any dependencies. The base for a patch
-series is generally the most recent rc1.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit.
+diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+index 1613259b686576..c130518c3293d5 100644
+--- a/arch/arm64/boot/dts/mediatek/Makefile
++++ b/arch/arm64/boot/dts/mediatek/Makefile
+@@ -28,6 +28,8 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku0.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-jacuzzi-willow-sku1.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kakadu-sku22.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-katsu-sku32.dtb
++dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-katsu-sku38.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku16.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku272.dtb
+ dtb-$(CONFIG_ARCH_MEDIATEK) += mt8183-kukui-kodama-sku288.dtb
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+new file mode 100644
+index 00000000000000..f923b8c3c49c36
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku32.dts
+@@ -0,0 +1,38 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-kakadu.dtsi"
++#include "mt8183-kukui-audio-da7219-rt1015p.dtsi"
++
++/ {
++	model = "MediaTek katsu board";
++	compatible = "google,katsu-sku32", "google,katsu", "mediatek,mt8183";
++};
++
++&i2c0 {
++	status = "okay";
++
++	/delete-node/touchscreen@10;
++	touchscreen1: touchscreen@5d {
++		compatible = "goodix,gt7375p";
++		reg = <0x5d>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&open_touch>;
++
++		interrupt-parent = <&pio>;
++		interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
++
++		reset-gpios = <&pio 156 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&panel {
++	compatible = "starry,2081101qfh032011-53g";
++};
++
++&qca_wifi {
++	qcom,ath10k-calibration-variant = "GO_KATSU";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+new file mode 100644
+index 00000000000000..1ab14096a279c6
+--- /dev/null
++++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui-katsu-sku38.dts
+@@ -0,0 +1,42 @@
++// SPDX-License-Identifier: (GPL-2.0 OR MIT)
++/*
++ * Copyright 2021 Google LLC
++ */
++
++/dts-v1/;
++#include "mt8183-kukui-kakadu.dtsi"
++#include "mt8183-kukui-audio-rt1015p.dtsi"
++
++/ {
++	model = "MediaTek katsu sku38 board";
++	compatible = "google,katsu-sku38", "google,katsu", "mediatek,mt8183";
++};
++
++&i2c0 {
++	status = "okay";
++
++	/delete-node/touchscreen@10;
++	touchscreen1: touchscreen@5d {
++		compatible = "goodix,gt7375p";
++		reg = <0x5d>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&open_touch>;
++
++		interrupt-parent = <&pio>;
++		interrupts = <155 IRQ_TYPE_LEVEL_LOW>;
++
++		reset-gpios = <&pio 156 GPIO_ACTIVE_LOW>;
++	};
++};
++
++&panel {
++	compatible = "starry,2081101qfh032011-53g";
++};
++
++&qca_wifi {
++        qcom,ath10k-calibration-variant = "GO_KATSU";
++};
++
++&sound {
++	compatible = "mediatek,mt8183_mt6358_ts3a227_rt1015p";
++};
+-- 
+2.34.1.173.g76aa8bc2d0-goog
 
 
 _______________________________________________
