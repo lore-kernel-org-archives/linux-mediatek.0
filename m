@@ -4,67 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA538C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 10:15:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5574BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 10:16:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=f7oDZH53hVR8JP/zG4kP3+WHRLXwTLCz9IfzoyTDmM0=; b=yZLiB2bobTNUZRoVgJUsjD9ura
-	0Gz0bIt8DSE7mdjeRarmXusBxGaHdhZte8/3hZeFtXq6ce9xy1ORG9Rw9h9fJQE0Pc+67fMK7bJlA
-	h+IoNCLWXJiWwpPwghM2F0SfUnnQ1Yec/NqIn5hK5MwUpWTb6DBbGajFpSDcy47LkN7nWS4R8++HN
-	50lU1duC/hhO2kZomoNEadsC0hV9+PgxtXsAa6H6jxraNajjPy7AmB+Ha1KlQMe5EX4cp3XwtsWqR
-	rhOlUJ/kpo+dFCy1EK4eWk0kZkjgJNrdZR0XO17GhWOzfc19iJq0eUPT+wnziuxpi4zOypvJwRtE7
-	JMoKZ3cA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=UpW8IG8jvxJCbnjzOei6QV3R9Y3zIkM7w8LeNjDvKAQ=; b=a1KXjLqo1mxlz9
+	pDUBNL+WRwgb22Gy07cunKcHuhuAfIru35BmBCvxP15nqFfb8KKbY15LkBwVp8efa5+5vWamQdgz8
+	g9pn9Kp3QJ3KbY8EHzZp3NxRlYkzJYJB9tFZ0JiybVY1VjmjX9h4Gr7QGxPNSGyUDKD/w4IzYo21B
+	7PMh+Q1bioye2gLc8brPxwaL3wqqD6IRIqcK1dKv9L7jXpWhM6z57X5wPwvrJGuL3rPY+aTPu2UIt
+	xMbk0s3cycuduboY6ES/psgcpr+3Yv0WIRBrN/91/rI2EqD3685CvmkOAQktdNyZIb5L+pVo2kJYp
+	1wLuvti5gqfn62vJ4VFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwiMS-008vfy-Jy; Mon, 13 Dec 2021 10:15:12 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1mwiNG-008wA7-AS; Mon, 13 Dec 2021 10:16:02 +0000
+Received: from out30-57.freemail.mail.aliyun.com ([115.124.30.57])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwi1o-008miI-VJ
- for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 09:53:54 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id BB226B80E9D;
- Mon, 13 Dec 2021 09:53:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6984C34601;
- Mon, 13 Dec 2021 09:53:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639389227;
- bh=v7Lg+J16vRQFISY4twI+8sD57NLw7i8MiOwfhdznK+o=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=s0Djrd5RBGfyMWUO11UbkwkExyeoQVutnpI/n2Lj9NPQwQjqokhl2zmxtDJIAosy0
- tALPIRGEVSlKub8Nps4nBEot/UmLzS5KYxXjs3LIUOHLZzpzz+OwCL0yGgvCNJtHzF
- mw9KwyX7KshOEpAN5pjrUJ9gWeUR2Qg4hjObUruloVyPQa+EZ1qxbAQ09pxIGNoEDC
- T//bqIeuJ/H0jEmB9POl62OCr+joQvO5uIwmOgfrSAVBVvRiAObXjOJNnBuNSyHwBy
- taXI6+Yz9u6KjiyZGqjXssNV7wtMlCz92+ZnrBsmLVcWg9RGsCfTxVDLHPm5g8arZT
- kHhJ/ltNQMPZQ==
-Date: Mon, 13 Dec 2021 10:53:43 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: sean.wang@mediatek.com
-Cc: lorenzo.bianconi@redhat.com, nbd@nbd.name, Soul.Huang@mediatek.com,
- YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Mark-YW.Chen@mediatek.com,
- Deren.Wu@mediatek.com, km.lin@mediatek.com,
- jenhao.yang@mediatek.com, robin.chiu@mediatek.com,
- Eddie.Chen@mediatek.com, ch.yeh@mediatek.com, posh.sun@mediatek.com,
- ted.huang@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com,
- steve.lee@mediatek.com, jsiuda@google.com, frankgor@google.com,
- jemele@google.com, abhishekpandit@google.com, shawnku@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 1/2] mt76: mt7921s: make pm->suspended usage consistent
-Message-ID: <YbcYJ47OKfh0A5Vt@lore-desk>
-References: <YbTU08hzeTSJPIsp@lore-desk--annotate>
- <1639242882-15796-1-git-send-email-sean.wang@mediatek.com>
+ id 1mwi2H-008mvA-Ty; Mon, 13 Dec 2021 09:54:23 +0000
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R181e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e04357; MF=yang.lee@linux.alibaba.com;
+ NM=1; PH=DS; RN=19; SR=0; TI=SMTPD_---0V-V3Tqn_1639389254; 
+Received: from localhost(mailfrom:yang.lee@linux.alibaba.com
+ fp:SMTPD_---0V-V3Tqn_1639389254) by smtp.aliyun-inc.com(127.0.0.1);
+ Mon, 13 Dec 2021 17:54:15 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: nbd@nbd.name
+Cc: lorenzo.bianconi83@gmail.com, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, kvalo@kernel.org,
+ davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
+ nathan@kernel.org, ndesaulniers@google.com, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ llvm@lists.linux.dev, Yang Li <yang.lee@linux.alibaba.com>,
+ Abaci Robot <abaci@linux.alibaba.com>
+Subject: [PATCH -next] mt76: remove variable set but not used
+Date: Mon, 13 Dec 2021 17:54:13 +0800
+Message-Id: <20211213095413.99456-1-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
-In-Reply-To: <1639242882-15796-1-git-send-email-sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_015353_357339_E537758B 
-X-CRM114-Status: GOOD (  20.43  )
+X-CRM114-CacheID: sfid-20211213_015422_181378_752924F0 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,114 +60,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8202234678418372328=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============8202234678418372328==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="0SXPcFI+nToIgH3R"
-Content-Disposition: inline
-
-
---0SXPcFI+nToIgH3R
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> From: Sean Wang <sean.wang@mediatek.com>
->=20
-> >> From: Sean Wang <sean.wang@mediatek.com>
-> >>
-> >> Update pm->suspended usage to be consistent with mt7921e driver.
-> >>
-> >> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> >> ---
-> >>  drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 7 +++++--
-> >>  1 file changed, 5 insertions(+), 2 deletions(-)
-> >>
-> >> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/driver=
-s/net/wireless/mediatek/mt76/mt7921/sdio.c
-> >> index 84be229a899d..44ee9369f6bf 100644
-> >> --- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-> >> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-> >> @@ -278,7 +278,6 @@ static int mt7921s_resume(struct device *__dev)
-> >>	struct mt76_dev *mdev =3D &dev->mt76;
-> >>	int err;
-> >>
-> >> -	pm->suspended =3D false;
-> >>	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
-> >>
-> >>	err =3D mt7921_mcu_drv_pmctrl(dev);
-> >> @@ -294,7 +293,11 @@ static int mt7921s_resume(struct device *__dev)
-> >>	if (!pm->ds_enable)
-> >>		mt76_connac_mcu_set_deep_sleep(mdev, false);
-> >>
-> >> -	return mt76_connac_mcu_set_hif_suspend(mdev, false);
-> >> +	err =3D mt76_connac_mcu_set_hif_suspend(mdev, false);
-> >
-> >should we check return value here? Something like:
-> >
-> >	if (err)
-> >		return err;
-> >
-> >	pm->suspended =3D false;
-> >	return 0;
-> >
-> >Or, is the chip up even if mt76_connac_mcu_set_hif_suspend() fails?
->=20
-> yes, chip is eventually up again by recovered with the following wifi res=
-et
->=20
-> with current logic, if do so (not mark pm->suspended back as false to sho=
-w suspend/resume is over),
->=20
-> the pm runtime would not be enabled again after the wifi reset
-
-maybe we should just set pm->suspended =3D false; in mt7921_mac_reset_work(=
-) as
-we do for hw_full_reset, wdyt?
-
-Regards,
-Lorenzo
-
->=20
-> >> +
-> >> +	pm->suspended =3D false;
-> >> +
-> >> +	return err;
-> >>  }
-> >>
-> >>  static const struct dev_pm_ops mt7921s_pm_ops =3D {
-> >> --
-> >> 2.25.1
-> >>
-
---0SXPcFI+nToIgH3R
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYbcYJwAKCRA6cBh0uS2t
-rJ4JAQCttsm1F7E9ENH4GfBlVaclyHUhAnjDI9hi6Bcl2Y/deQEA/+HpBfUhu78I
-/hJgrRrPGMZvkS/H1w2m0a4xUcgGWgs=
-=ioOx
------END PGP SIGNATURE-----
-
---0SXPcFI+nToIgH3R--
-
-
---===============8202234678418372328==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8202234678418372328==--
-
+VGhlIGNvZGUgdGhhdCB1c2VzIHZhcmlhYmxlIHF1ZXVlZCBoYXMgYmVlbiByZW1vdmVkLAphbmQg
+Im10NzZfaXNfdXNiKGRldikgPyBxLT5uZGVzYyAtIHEtPnF1ZXVlZCA6IHEtPnF1ZXVlZCIKZGlk
+bid0IGRvIGFueXRoaW5nLCBzbyBhbGwgdGhleSBzaG91bGQgYmUgcmVtb3ZlZCBhcyB3ZWxsLgoK
+RWxpbWluYXRlIHRoZSBmb2xsb3dpbmcgY2xhbmcgd2FybmluZ3M6CmRyaXZlcnMvbmV0L3dpcmVs
+ZXNzL21lZGlhdGVrL210NzYvZGVidWdmcy5jOjc3Ojk6IHdhcm5pbmc6IHZhcmlhYmxlCuKAmHF1
+ZXVlZOKAmSBzZXQgYnV0IG5vdCB1c2VkLgoKUmVwb3J0ZWQtYnk6IEFiYWNpIFJvYm90IDxhYmFj
+aUBsaW51eC5hbGliYWJhLmNvbT4KRml4ZXM6IDJkOGJlNzZjMTY3NCAoIm10NzY6IGRlYnVnZnM6
+IGltcHJvdmUgcXVldWUgbm9kZSByZWFkYWJpbGl0eSIpClNpZ25lZC1vZmYtYnk6IFlhbmcgTGkg
+PHlhbmcubGVlQGxpbnV4LmFsaWJhYmEuY29tPgotLS0KIGRyaXZlcnMvbmV0L3dpcmVsZXNzL21l
+ZGlhdGVrL210NzYvZGVidWdmcy5jIHwgMyArLS0KIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
+bigrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC93aXJlbGVzcy9t
+ZWRpYXRlay9tdDc2L2RlYnVnZnMuYyBiL2RyaXZlcnMvbmV0L3dpcmVsZXNzL21lZGlhdGVrL210
+NzYvZGVidWdmcy5jCmluZGV4IGI4YmNmMjJhMDdmZC4uMDI3ZDllYTE3ZDA0IDEwMDY0NAotLS0g
+YS9kcml2ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L2RlYnVnZnMuYworKysgYi9kcml2
+ZXJzL25ldC93aXJlbGVzcy9tZWRpYXRlay9tdDc2L2RlYnVnZnMuYwpAQCAtNzQsMTMgKzc0LDEy
+IEBAIEVYUE9SVF9TWU1CT0xfR1BMKG10NzZfcXVldWVzX3JlYWQpOwogc3RhdGljIGludCBtdDc2
+X3J4X3F1ZXVlc19yZWFkKHN0cnVjdCBzZXFfZmlsZSAqcywgdm9pZCAqZGF0YSkKIHsKIAlzdHJ1
+Y3QgbXQ3Nl9kZXYgKmRldiA9IGRldl9nZXRfZHJ2ZGF0YShzLT5wcml2YXRlKTsKLQlpbnQgaSwg
+cXVldWVkOworCWludCBpOwogCiAJc2VxX3B1dHMocywgIiAgICAgcXVldWUgfCBody1xdWV1ZWQg
+fCAgICAgIGhlYWQgfCAgICAgIHRhaWwgfFxuIik7CiAJbXQ3Nl9mb3JfZWFjaF9xX3J4KGRldiwg
+aSkgewogCQlzdHJ1Y3QgbXQ3Nl9xdWV1ZSAqcSA9ICZkZXYtPnFfcnhbaV07CiAKLQkJcXVldWVk
+ID0gbXQ3Nl9pc191c2IoZGV2KSA/IHEtPm5kZXNjIC0gcS0+cXVldWVkIDogcS0+cXVldWVkOwog
+CQlzZXFfcHJpbnRmKHMsICIgJTlkIHwgJTlkIHwgJTlkIHwgJTlkIHxcbiIsCiAJCQkgICBpLCBx
+LT5xdWV1ZWQsIHEtPmhlYWQsIHEtPnRhaWwpOwogCX0KLS0gCjIuMjAuMS43LmcxNTMxNDRjCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVk
+aWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
