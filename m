@@ -4,77 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B864C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 09:05:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96EECC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 09:32:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QADdV9qWfhyqRyZQwLUgj+DLz4m5p4O6o6bY3sB1iag=; b=WHvusBWSDJFhBy
-	8pOl9El8MoZ9X85mSmLLOHbj+JDSehmireY1W/pun8AKJpd88XcB+WUJMHcQUziyYeMijyY4cAvFB
-	PmbUSpZVxootaSl8dL4l9qHSVGD5vn3/OvmxWd0mNa2YEudjBcDz+mds9R5zLM7YNdBONz29FhcL5
-	R2INMrb6vRVNSA6G0KNaGz7gaxpn4Zhh5DICBarioEs6XVMGRrV5OjjWXJIWAl94qYYepdXLHxpPu
-	mx43ZP/K9qdn/D9OoVWAolb3dlHBft5Z1CdXt+5U8jM4BSbnlcYb48YFMIH+qa3OsTAmYo0N/G4sT
-	6oquKYjQwfOJ6ngyr3hg==;
+	List-Owner; bh=zmdQRA41yg9Iny03ks6EpeI5wjFWkVuMqmpK9TMhT4s=; b=IlNfZT7OaQDYW7
+	rXq6E2aZ5H26+esNxjUGJKEU5TFgaMzInvD/RYB1rgVXPj9kEa2DehWA2aH0XbNza6xaucbdWUrLG
+	fCvMpUN7q9JbU6GYskCLYH3leJr7bgfjJGj+uiHB7a46fDOsV+dW7PyZWD5UFeTw07VvxBBIzrk3v
+	2L5SUN+zWN9gJs1IRJKC/4m9EGItf/VFbWjy6rcF3atLXz1zs1XVFLGK2w0/sHKK3sRFDqiYJ8YaR
+	yy9iAoM8TJssHQ0rRZWrIygXscHIppij7sLWtdgYMhP8IwKdLuW8VzOMUiXuymr1RlsrG3hg2avcj
+	p+Ctydsv94bt1XUGZXxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwhHC-008VG5-Ka; Mon, 13 Dec 2021 09:05:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mwhgf-008eRj-RJ; Mon, 13 Dec 2021 09:32:01 +0000
+Received: from relay4-d.mail.gandi.net ([217.70.183.196])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwh4g-008PTC-8R; Mon, 13 Dec 2021 08:52:48 +0000
-X-UUID: 99b5820d73d0464fa33d108b7d15ab95-20211213
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=nh2pzg5ezSu90nE5Vw866CY2CweAt9tmRwS+GU2f7J4=; 
- b=Klv/4Is/rudkoA2Y1TVzjsqKHc9W7CI3ldK4pEitAM63KJhbChkR5mtCrmHQun9shjPLpmO0G7mDmlFIal7QeE91FvItxyQX/chFCRJqq9wqFRbFO5/sZYc7NaW7ZrfD4nguA0fwMlWa2kR0SvGyGCZtjBZYq2OMvVRn/idL4og=;
-X-UUID: 99b5820d73d0464fa33d108b7d15ab95-20211213
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 425591564; Mon, 13 Dec 2021 01:52:45 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 13 Dec 2021 00:52:43 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 13 Dec 2021 16:52:41 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 13 Dec 2021 16:52:39 +0800
-Message-ID: <385bd033f88eba79262f1dd25fbd98dc9089bf8d.camel@mediatek.com>
-Subject: Re: [PATCH v12, 13/19] media: mtk-vcodec: Add work queue for core
- hardware decode
-From: "yunfei.dong@mediatek.com" <yunfei.dong@mediatek.com>
-To: Steve Cho <stevecho@chromium.org>
-CC: Alexandre Courbot <acourbot@chromium.org>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih <tzungbi@chromium.org>, "Tiffany
- Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>, Hsin-Yi Wang <hsinyi@chromium.org>, "Fritz
- Koenig" <frkoenig@chromium.org>, Dafna Hirschfeld
- <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
- <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 13 Dec 2021 16:52:42 +0800
-In-Reply-To: <CAC-pXoPV0MrX91DfuiscmkOwviJ6Gh4RcYRZ+GW6482NpMGFtg@mail.gmail.com>
-References: <20211202034544.2750-1-yunfei.dong@mediatek.com>
- <20211202034544.2750-14-yunfei.dong@mediatek.com>
- <CAC-pXoPV0MrX91DfuiscmkOwviJ6Gh4RcYRZ+GW6482NpMGFtg@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1mwhen-008dtj-Bx; Mon, 13 Dec 2021 09:30:07 +0000
+Received: (Authenticated sender: miquel.raynal@bootlin.com)
+ by relay4-d.mail.gandi.net (Postfix) with ESMTPSA id 1E583E0019;
+ Mon, 13 Dec 2021 09:29:58 +0000 (UTC)
+Date: Mon, 13 Dec 2021 10:29:56 +0100
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+To: "xiangsheng.hou" <xiangsheng.hou@mediatek.com>
+Cc: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
+ <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
+ <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
+ <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>,
+ <donghunt@amazon.com>, <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
+Subject: Re: [RFC,v4,2/5] mtd: nand: ecc: mtk: Convert to the ECC
+ infrastructure
+Message-ID: <20211213102956.559e98a1@xps13>
+In-Reply-To: <4debdf60521d13a2ee54e65fa2f545040e74fed7.camel@mediatek.com>
+References: <20211130083202.14228-1-xiangsheng.hou@mediatek.com>
+ <20211130083202.14228-3-xiangsheng.hou@mediatek.com>
+ <20211209113209.71fe8ea7@xps13>
+ <c7367dccd7b159ed36fd7d19fef25b0df8c5782d.camel@mediatek.com>
+ <20211210103426.0850d8d5@xps13>
+ <4debdf60521d13a2ee54e65fa2f545040e74fed7.camel@mediatek.com>
+Organization: Bootlin
+X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_005246_358251_E3D60C66 
-X-CRM114-Status: GOOD (  33.34  )
+X-CRM114-CacheID: sfid-20211213_013005_728918_4D63CA27 
+X-CRM114-Status: GOOD (  38.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,264 +63,130 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi steve,
-
-Thanks for your suggestion.
-
-On Thu, 2021-12-09 at 15:44 -0800, Steve Cho wrote:
-> On Wed, Dec 1, 2021 at 7:46 PM Yunfei Dong <yunfei.dong@mediatek.com>
-> wrote:
-> > 
-> > Add work queue to process core hardware information.
-> > First, get lat_buf from message queue, then call core
-> > hardware of each codec(H264/VP9/AV1) to decode, finally
-> > puts lat_buf back to the message.
-> > 
-> > Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> > ---
-> >  .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 16 +++++++-
-> >  .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 ++
-> >  .../platform/mtk-vcodec/vdec_msg_queue.c      | 41
-> > ++++++++++++++++---
-> >  .../platform/mtk-vcodec/vdec_msg_queue.h      |  8 ++--
-> >  4 files changed, 57 insertions(+), 11 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c 
-> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > index d460703f335d..4fbff61d2334 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-> > @@ -341,6 +341,17 @@ static int mtk_vcodec_probe(struct
-> > platform_device *pdev)
-> >                 goto err_dec_pm;
-> >         }
-> > 
-> > +       if (IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch)) {
-> > +               vdec_msg_queue_init_ctx(&dev->msg_queue_core_ctx,
-> > MTK_VDEC_CORE);
-> > +               dev->core_workqueue =
-> > alloc_ordered_workqueue("core-decoder",
-> > +                       WQ_MEM_RECLAIM | WQ_FREEZABLE);
-> > +               if (!dev->core_workqueue) {
-> > +                       mtk_v4l2_err("Failed to create core
-> > workqueue");
-> > +                       ret = -EINVAL;
-> > +                       goto err_res;
-> > +               }
-> > +       }
-> > +
-> >         for (i = 0; i < MTK_VDEC_HW_MAX; i++)
-> >                 mutex_init(&dev->dec_mutex[i]);
-> >         spin_lock_init(&dev->irqlock);
-> > @@ -351,7 +362,7 @@ static int mtk_vcodec_probe(struct
-> > platform_device *pdev)
-> >         ret = v4l2_device_register(&pdev->dev, &dev->v4l2_dev);
-> >         if (ret) {
-> >                 mtk_v4l2_err("v4l2_device_register err=%d", ret);
-> > -               goto err_res;
-> > +               goto err_core_workq;
-> >         }
-> > 
-> >         init_waitqueue_head(&dev->queue);
-> > @@ -450,6 +461,9 @@ static int mtk_vcodec_probe(struct
-> > platform_device *pdev)
-> >         video_unregister_device(vfd_dec);
-> >  err_dec_alloc:
-> >         v4l2_device_unregister(&dev->v4l2_dev);
-> > +err_core_workq:
-> > +       if (IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch))
-> > +               destroy_workqueue(dev->core_workqueue);
-> >  err_res:
-> >         mtk_vcodec_release_dec_pm(&dev->pm);
-> >  err_dec_pm:
-> > diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > index cbaed96dcfa2..a558cc16026d 100644
-> > --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-> > @@ -27,6 +27,7 @@
-> >  #define MTK_VCODEC_MAX_PLANES  3
-> >  #define MTK_V4L2_BENCHMARK     0
-> >  #define WAIT_INTR_TIMEOUT_MS   1000
-> > +#define IS_VDEC_LAT_ARCH(hw_arch) ((hw_arch) >=
-> > MTK_VDEC_LAT_SINGLE_CORE)
-> 
-> Basic question: What is practical meaning of this? What architectures
-> are supported?
-> 
-This definition is used to separate different architectures.
-Pure single core/lat single core at current period is supported.
-> > 
-> >  /*
-> >   * enum mtk_hw_reg_idx - MTK hw register base index
-> > @@ -464,6 +465,7 @@ struct mtk_vcodec_enc_pdata {
-> >   * @dec_capability: used to identify decode capability, ex: 4k
-> >   * @enc_capability: used to identify encode capability
-> >   *
-> > + * @core_workqueue: queue used for core hardware decode
-> >   * @msg_queue_core_ctx: msg queue context used for core workqueue
-> >   *
-> >   * @subdev_dev: subdev hardware device
-> > @@ -506,6 +508,7 @@ struct mtk_vcodec_dev {
-> >         unsigned int dec_capability;
-> >         unsigned int enc_capability;
-> > 
-> > +       struct workqueue_struct *core_workqueue;
-> >         struct vdec_msg_queue_ctx msg_queue_core_ctx;
-> > 
-> >         void *subdev_dev[MTK_VDEC_HW_MAX];
-> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > index 913aefa67618..24f1d03df9f1 100644
-> > --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.c
-> > @@ -68,6 +68,9 @@ int vdec_msg_queue_qbuf(struct vdec_msg_queue_ctx
-> > *msg_ctx, struct vdec_lat_buf
-> > 
-> >         if (msg_ctx->hardware_index != MTK_VDEC_CORE)
-> >                 wake_up_all(&msg_ctx->ready_to_use);
-> > +       else
-> > +               queue_work(buf->ctx->dev->core_workqueue,
-> > +                       &buf->ctx->msg_queue.core_work);
-> 
-> need {} for else here?
-> 
-If condition not add "{}", else need not to add "{}" ?
-> > 
-> >         mtk_v4l2_debug(3, "enqueue buf type: %d addr: 0x%p num:
-> > %d",
-> >                 msg_ctx->hardware_index, buf, msg_ctx->ready_num);
-> > @@ -169,8 +172,7 @@ bool vdec_msg_queue_wait_lat_buf_full(struct
-> > vdec_msg_queue *msg_queue)
-> >         return false;
-> >  }
-> > 
-> > -void vdec_msg_queue_deinit(
-> > -       struct vdec_msg_queue *msg_queue,
-> > +void vdec_msg_queue_deinit(struct vdec_msg_queue *msg_queue,
-> >         struct mtk_vcodec_ctx *ctx)
-> >  {
-> >         struct vdec_lat_buf *lat_buf;
-> > @@ -196,10 +198,36 @@ void vdec_msg_queue_deinit(
-> >         }
-> >  }
-> > 
-> > -int vdec_msg_queue_init(
-> > -       struct vdec_msg_queue *msg_queue,
-> > -       struct mtk_vcodec_ctx *ctx,
-> > -       core_decode_cb_t core_decode,
-> > +static void vdec_msg_queue_core_work(struct work_struct *work)
-> > +{
-> > +       struct vdec_msg_queue *msg_queue =
-> > +               container_of(work, struct vdec_msg_queue,
-> > core_work);
-> > +       struct mtk_vcodec_ctx *ctx =
-> > +               container_of(msg_queue, struct mtk_vcodec_ctx,
-> > msg_queue);
-> > +       struct mtk_vcodec_dev *dev = ctx->dev;
-> > +       struct vdec_lat_buf *lat_buf;
-> > +
-> > +       lat_buf = vdec_msg_queue_dqbuf(&dev->msg_queue_core_ctx);
-> > +       if (!lat_buf)
-> > +               return;
-> 
-> If we were to return in this error condition,
-> isn't it better to also differentiate this error with return code and
-> change void return type?
-> 
-vdec_msg_queue_core_work function is callback for param "func" in
-struct work_struct, need not to add return value.
-
-> > +
-> > +       ctx = lat_buf->ctx;
-> > +       mtk_vcodec_set_curr_ctx(dev, ctx, MTK_VDEC_CORE);
-> > +
-> > +       lat_buf->core_decode(lat_buf);
-> > +
-> > +       mtk_vcodec_set_curr_ctx(dev, NULL, MTK_VDEC_CORE);
-> > +       vdec_msg_queue_qbuf(&ctx->msg_queue.lat_ctx, lat_buf);
-> > +
-> > +       if (!list_empty(&ctx->msg_queue.lat_ctx.ready_queue)) {
-> > +               mtk_v4l2_debug(3, "re-schedule to decode for core",
-> > +                       dev->msg_queue_core_ctx.ready_num);
-> > +               queue_work(dev->core_workqueue, &msg_queue-
-> > >core_work);
-> > +       }
-> > +}
-> > +
-> > +int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
-> > +       struct mtk_vcodec_ctx *ctx,     core_decode_cb_t
-> > core_decode,
-> >         int private_size)
-> >  {
-> >         struct vdec_lat_buf *lat_buf;
-> > @@ -210,6 +238,7 @@ int vdec_msg_queue_init(
-> >                 return 0;
-> > 
-> >         vdec_msg_queue_init_ctx(&msg_queue->lat_ctx,
-> > MTK_VDEC_LAT0);
-> > +       INIT_WORK(&msg_queue->core_work, vdec_msg_queue_core_work);
-> >         msg_queue->wdma_addr.size = vde_msg_queue_get_trans_size(
-> >                 ctx->picinfo.buf_w, ctx->picinfo.buf_h);
-> > 
-> > diff --git a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > index 21a9c0aeb1b4..43eae638a2a8 100644
-> > --- a/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > +++ b/drivers/media/platform/mtk-vcodec/vdec_msg_queue.h
-> > @@ -67,6 +67,7 @@ struct vdec_lat_buf {
-> >   * @wdma_addr: wdma address used for ube
-> >   * @wdma_rptr_addr: ube read point
-> >   * @wdma_wptr_addr: ube write point
-> > + * @core_work: core hardware work
-> >   * @lat_ctx: used to store lat buffer list
-> >   */
-> >  struct vdec_msg_queue {
-> > @@ -76,6 +77,7 @@ struct vdec_msg_queue {
-> >         uint64_t wdma_rptr_addr;
-> >         uint64_t wdma_wptr_addr;
-> > 
-> > +       struct work_struct core_work;
-> >         struct vdec_msg_queue_ctx lat_ctx;
-> >  };
-> > 
-> > @@ -86,10 +88,8 @@ struct vdec_msg_queue {
-> >   * @core_decode: core decode callback for each codec
-> >   * @private_size: the private data size used to share with core
-> >   */
-> > -int vdec_msg_queue_init(
-> > -       struct vdec_msg_queue *msg_queue,
-> > -       struct mtk_vcodec_ctx *ctx,
-> > -       core_decode_cb_t core_decode,
-> > +int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
-> > +       struct mtk_vcodec_ctx *ctx,     core_decode_cb_t
-> > core_decode,
-> 
-> Not sure about the formatting rule, but is it supposed to be one
-> param per line?
-> If so, this comment also applied to function definition part.
-> 
-> >         int private_size);
-> > 
-I try to review other files, it looks that two or more parameters per
-line is ok. Whether you mean that we'd better to write one parameter
-per line?
-int vdec_msg_queue_init(struct vdec_msg_queue *msg_queue,
-	struct mtk_vcodec_ctx *ctx,
-	core_decode_cb_t
-
-Thanks,
-Yunfei Dong
-> >  /**
-> > --
-> > 2.25.1
-> > 
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgWGlhbmdzaGVuZywKCnhpYW5nc2hlbmcuaG91QG1lZGlhdGVrLmNvbSB3cm90ZSBvbiBTYXQs
+IDExIERlYyAyMDIxIDExOjI1OjQ2ICswODAwOgoKPiBIaSBNaXF1ZWwsCj4gCj4gT24gRnJpLCAy
+MDIxLTEyLTEwIGF0IDEwOjM0ICswMTAwLCBNaXF1ZWwgUmF5bmFsIHdyb3RlOgo+ID4gSGVsbG8s
+Cj4gPiAKPiA+IHhpYW5nc2hlbmcuaG91QG1lZGlhdGVrLmNvbSB3cm90ZSBvbiBGcmksIDEwIERl
+YyAyMDIxIDE3OjA5OjE0ICswODAwOiAgCj4gPiA+ICAgCj4gPiA+ID4gQXMgdGhpcyB3aWxsIGJl
+IHRoZSBleGFjdCBzYW1lIGZ1bmN0aW9uIGZvciBhbGwgdGhlIHBpcGVsaW5lZAo+ID4gPiA+IGVu
+Z2luZXMsCj4gPiA+ID4gSSBhbSB0ZW1wdGVkIHRvIHB1dCB0aGlzIGluIHRoZSBjb3JlLiBJJ2xs
+IHNvb24gc2VuZCBhIGl0ZXJhdGlvbiwKPiA+ID4gPiBzdGF5Cj4gPiA+ID4gdHVuZWQuCj4gPiA+
+ID4gICAgIAo+ID4gPiAKPiA+ID4gTG9vayBmb3J3YXJkIHRvIHRoZSBmdW5jdGlvbi4gIAo+ID4g
+Cj4gPiBJIHNlbnQgdGhlIG5ldyB2ZXJzaW9uIHllc3RlcmRheSBidXQgSQo+ID4gKiBmb3Jnb3Qg
+dG8gQ0M6IHlvdQo+ID4gKiBmb3Jnb3QgYWJvdXQgdGhhdCBmdW5jdGlvbiBhcyB3ZWxsCj4gPiAK
+PiA+IExldCdzIGlnbm9yZSB0aGlzIGNvbW1lbnQgZm9yIG5vdywgc2VuZCB5b3VyIGRyaXZlciB3
+aXRoIHRoZSBzYW1lCj4gPiBmdW5jdGlvbiBpbiBpdCBhbmQgSSdsbCBjbGVhbiB0aGF0IHVwIGxh
+dGVyLgo+ID4gCj4gPiBIZXJlIGlzIHRoZSBuZXcgaXRlcmF0aW9uLCBzb3JyeSBmb3IgZm9yZ2V0
+dGluZyB0byBzZW5kIGl0IHRvIHlvdSBhcwo+ID4gd2VsbDoKPiA+ICAgCj4gaHR0cHM6Ly9sb3Jl
+Lmtlcm5lbC5vcmcvbGludXgtbXRkLzIwMjExMjA5MTc0MDQ2LjUzNTIyOS0xLW1pcXVlbC5yYXlu
+YWxAYm9vdGxpbi5jb20vVC8KPiA+IEFuZCBoZXJlIGlzIGEgR2l0aHViIGJyYW5jaCBhcyB3ZWxs
+Ogo+ID4gaHR0cHM6Ly9naXRodWIuY29tL21pcXVlbHJheW5hbC9saW51eC90cmVlL2VjYy1lbmdp
+bmUgIAo+IAo+IEdvdCBpdCwgVGhhbmtzLgo+IAo+ID4gICAKPiA+ID4gPiA+ICsJCQkJc3RydWN0
+IG5hbmRfcGFnZV9pb19yZXEgKnJlcSkKPiA+ID4gPiA+ICt7Cj4gPiA+ID4gPiArCXN0cnVjdCBt
+dGtfZWNjX2VuZ2luZSAqZW5nID0gbmFuZF90b19lY2NfY3R4KG5hbmQpOwo+ID4gPiA+ID4gKwlp
+bnQgc3RlcF9zaXplID0gbmFuZC0+ZWNjLmN0eC5jb25mLnN0ZXBfc2l6ZTsKPiA+ID4gPiA+ICsJ
+dm9pZCAqZGF0YWJ1ZiwgKm9vYmJ1ZjsKPiA+ID4gPiA+ICsJaW50IGk7Cj4gPiA+ID4gPiArCj4g
+PiA+ID4gPiArCWlmIChyZXEtPnR5cGUgPT0gTkFORF9QQUdFX1dSSVRFKSB7Cj4gPiA+ID4gPiAr
+CQlkYXRhYnVmID0gKHZvaWQgKilyZXEtPmRhdGFidWYub3V0Owo+ID4gPiA+ID4gKwkJb29iYnVm
+ID0gKHZvaWQgKilyZXEtPm9vYmJ1Zi5vdXQ7Cj4gPiA+ID4gPiArCj4gPiA+ID4gPiArCQkvKgo+
+ID4gPiA+ID4gKwkJICogQ29udmVydCB0aGUgc291cmNlIGRhdGFidWYgYW5kIG9vYmJ1ZiB0byBN
+VEsKPiA+ID4gPiA+IEVDQwo+ID4gPiA+ID4gKwkJICogb24tZmxhc2ggZGF0YSBmb3JtYXQuCj4g
+PiA+ID4gPiArCQkgKi8KPiA+ID4gPiA+ICsJCWZvciAoaSA9IDA7IGkgPCBlbmctPm5zdGVwczsg
+aSsrKSB7Cj4gPiA+ID4gPiArCQkJaWYgKGkgPT0gZW5nLT5iYm1fY3RsLnNlY3Rpb24pCj4gPiA+
+ID4gPiArCQkJCWVuZy0+YmJtX2N0bC5iYm1fc3dhcChuYW5kLAo+ID4gPiA+ID4gKwkJCQkJCSAg
+ICAgIGRhdGFidWYsCj4gPiA+ID4gPiBvb2JidWYpOyAgICAKPiA+ID4gPiAKPiA+ID4gPiBEbyB5
+b3UgcmVhbGx5IG5lZWQgdGhpcyBzd2FwPyBJc24ndCB0aGUgb3ZlcmFsbCBtb3ZlIGVub3VnaCB0
+bwo+ID4gPiA+IHB1dAo+ID4gPiA+IHRoZQo+ID4gPiA+IEJCTSBhdCB0aGUgcmlnaHQgcGxhY2U/
+Cj4gPiA+ID4gICAgIAo+ID4gPiAKPiA+ID4gRm9yIE9QU19SQVcgbW9kZSwgbmVlZCBvcmdhbml6
+ZSBmbGFzaCBkYXRhIGluIHRoZSBNVEsgRUNDIGVuZ2luZQo+ID4gPiBkYXRhCj4gPiA+IGZvcm1h
+dC4gT3RoZXIgb3BlcmF0aW9uIGluIHRoaXMgZnVuY3Rpb24gb25seSBvcmdhbml6ZSBkYXRhIGJ5
+Cj4gPiA+IHNlY3Rpb24KPiA+ID4gYW5kIG5vdCBpbmNsdWRlIEJCTSBzd2FwLgo+ID4gPiAKPiA+
+ID4gRm9yIG90aGVyIG1vZGUsIHRoaXMgZnVuY3Rpb24gd2lsbCBub3QgYmUgY2FsbGVkLiAgCj4g
+PiAKPiA+IENhbiB5b3UgdHJ5IHRvIGV4cGxhaW4gdGhpcyB3aXRoIGFuIGFzY2lpIHNjaGVtYSBh
+Z2Fpbj8gSSdtIHNvcnJ5IGJ1dAo+ID4gSQo+ID4gZG9uJ3QgZm9sbG93IGl0LiBJcyB0aGUgQkJN
+IHBsYWNlZCBpbiB0aGUgZmlyc3QgYnl0ZXMgb2YgdGhlIGZpcnN0Cj4gPiBvb2IKPiA+IGFyZWEg
+YnkgdGhlIGVuZ2luZT8gT3IgaXMgaXQgcGxhY2Ugc29tZXdoZXJlIGVsc2U/Cj4gPiAgIAo+IAo+
+IFllcywgdGhlIEJCTSB3aWxsIGF0IHRoZSBmaXJzdCBPT0IgYXJlYSBpbiBOQU5EIHN0YW5kYXJk
+IGxheW91dCBhZnRlcgo+IEJCTSBzd2FwLgo+IAo+IDAuIERpZmZlcmVudGlhbCBvbi1mbGFzaCBk
+YXRhIGxheW91dAo+IAo+IE5BTkQgc3RhbmRhcmQgcGFnZSBsYXlvdXQKPiArLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLSsKPiB8ICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgfCAgICAgICAgICAgIHwKPiB8ICAgICAgICAgICAgbWFpbiBhcmVhICAgICAgICAg
+fCAgIE9PQiBhcmVhIHwKPiB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICAgICAg
+ICAgIHwKPiArLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLSsKPiAK
+PiBNVEsgRUNDIG9uLWZsYXNoIHBhZ2UgbGF5b3V0ICgyIHNlY3Rpb24gZm9yIGV4YW1wbGUpCj4g
+Ky0tLS0tLS0tLS0tLSstLS0tLS0tLSstLS0tLS0tLS0tLS0rLS0tLS0tLS0rCj4gfCAgICAgICAg
+ICAgIHwgICAgICAgIHwgICAgICAgICAgICB8ICAgICAgICB8ICAgIAo+IHwgc2VjdGlvbigwKSB8
+IE9PQigwKSB8IHNlY3Rpb24oMSkgfCBPT0IoMSkgfAo+IHwgICAgICAgICAgICB8ICAgICAgICB8
+ICAgICAgICAgICAgfCAgICAgICAgfCAKPiArLS0tLS0tLS0tLS0tKy0tLS0tLS0tKy0tLS0tLS0t
+LS0tLSstLS0tLS0tLSsKCkkgdGhpbmsgd2UgYXJlIGFsaWduZWQgb24gdGhhdCBwYXJ0LgoKVGhl
+IEJCTSBpcyBwdXJlbHkgYSB1c2VyIGNvbmNlcHRpb24sIGl0IGlzIG5vdCBzb21ldGhpbmcgd2ly
+ZWQgaW4gdGhlCmhhcmR3YXJlLiBXaGF0IEkgbWVhbiBpczogd2h5IGRvICp5b3UqIHRoaW5rIHRo
+ZSBCQk0gc2hvdWxkIGJlIGxvY2F0ZWQKaW4gdGhlIG1pZGRsZSBvZiBzZWN0aW9uICMxID8KClRo
+ZXJlIGlzIG9uZSBsYXlvdXQ6IHRoZSBsYXlvdXQgZnJvbSB0aGUgTkFORC9NVEQgcGVyc3BlY3Rp
+dmUuClRoZXJlIGlzIGFub3RoZXIgbGF5b3V0OiB0aGUgbGF5b3V0IG9mIHlvdXIgRUNDIGVuZ2lu
+ZS4KCkp1c3QgY29uc2lkZXIgdGhhdCB0aGUgQkJNIHNob3VsZCBiZSBhdCBieXRlIDAgb2YgT09C
+ICMwIGFuZCB5b3Ugd2lsbApub3QgbmVlZCBhbnkgQkJNIHN3YXAgb3BlcmF0aW9uIGFueW1vcmUu
+IEkgZG9uJ3QgdW5kZXJzdGFuZCB3aHkgeW91CmFic29sdXRlbHkgd2FudCB0byBwdXQgaXQgaW4g
+c2VjdGlvbiAjMS4KCj4gVGhlIHN0YW5kYXJkIEJCTSBwb3NpdGlvbiB3aWxsIGJlIHNlY3Rpb24o
+MSkgbWFpbiBkYXRhLAo+IG5lZWQgZG8gdGhlIEJCTSBzd2FwIG9wZXJhdGlvbi4KPiAKPiByZXF1
+ZXN0IGJ1ZmZlciBpbmNsdWRlIHJlcS0+ZGF0YWJ1ZiBhbmQgcmVxLT5vb2JidWYuCj4gKy0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCj4gfCAgICAgICAgICAgICAgICAgICAgICAgICAgICB8
+Cj4gfCAgICAgcmVxLT5kYXRhYnVmICAgICAgICAgICB8Cj4gfCAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICB8Cj4gKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rCj4gCj4gKy0tLS0tLS0t
+LS0tLS0rCj4gfCAgICAgICAgICAgICB8Cj4gfCByZXEtPm9vYmJ1ZiB8Cj4gfCAgICAgICAgICAg
+ICB8Cj4gKy0tLS0tLS0tLS0tLS0rCj4gCj4gMS4gRm9yIHRoZSBPUFNfUkFXIG1vZGUKPiAKPiBF
+eHBlY3QgdGhlIG9uLWZsYXNoIGRhdGEgZm9ybWF0IGlzIGxpa2UgTVRLIEVDQyBsYXlvdXQuCj4g
+VGhlIHNuZmkgY29udHJvbGxlciB3aWxsIHB1dCB0aGUgb24tZmxhc2ggZGF0YSBhcyBpcwo+IHNw
+aV9tZW1fb3AtPmRhdGEuYnVmLm91dC4KPiAKPiBUaGVyZWZvcmUsIHRoZSBFQ0MgZW5naW5lIGhh
+dmUgdG8gcmVvcmdhbml6ZSB0aGUgcmVxdWVzdAo+IGRhdGEgYW5kIE9PQiBidWZmZXIgaW4gNCBw
+YXJ0IGZvciBlYWNoIHNlY3Rpb24gaW4KPiBPUFNfUkFXIG1vZGUuCj4gCj4gMSkgQkJNIHN3YXAs
+IG9ubHkgZm9yIHRoZSBzZWN0aW9uIG5lZWQgZG8gdGhlIHN3YXAKPiAyKSBzZWN0aW9uIG1haW4g
+ZGF0YQo+IDMpIE9PQiBmcmVlIGRhdGEKPiA0KSBPT0IgRUNDIGRhdGEKPiAKPiBUaGUgQkJNIHN3
+YXAgd2lsbCBlbnN1cmUgdGhlIEJCTSBwb3NpdGlvbiBpbiBNVEsgRUNDCj4gb24tZmxhc2ggbGF5
+b3V0IGlzIHNhbWUgYXMgTkFORCBzdGFuZGFyZCBsYXlvdXQgaW4KPiBPUFNfUkFXIG1vZGUuCj4g
+Cj4gZm9yIChpID0gMDsgaSA8IGVuZy0+bnN0ZXBzOyBpKyspIHsKPiAKPiAgICAgICAgIC8qIHBh
+cnQgMTogQkJNIHN3YXAgKi8KPiAgICAgICAgIGlmIChpID09IGVuZy0+YmJtX2N0bC5zZWN0aW9u
+KQo+ICAgICAgICAgICAgICAgICBlbmctPmJibV9jdGwuYmJtX3N3YXAobmFuZCwKPiAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGRhdGFidWYsIG9vYmJ1Zik7Cj4gCj4gCS8q
+IHBhcnQgMjogbWFpbiBkYXRhIGluIHRoaXMgc2VjdGlvbiAqLwo+ICAgICAgICAgbWVtY3B5KG10
+a19lY2Nfc2VjdGlvbl9wdHIobmFuZCwgaSksCj4gICAgICAgICAgICAgICAgZGF0YWJ1ZiArIG10
+a19lY2NfZGF0YV9vZmYobmFuZCwgaSksCj4gICAgICAgICAgICAgICAgc3RlcF9zaXplKTsKPiAK
+PiAgICAgICAgIC8qIHBhcnQgMzogT09CIGZyZWUgZGF0YSAqLwo+ICAgICAgICAgbWVtY3B5KG10
+a19lY2Nfb29iX2ZyZWVfcHRyKG5hbmQsIGkpLAo+ICAgICAgICAgICAgICAgIG9vYmJ1ZiArIG10
+a19lY2Nfb29iX2ZyZWVfcG9zaXRpb24obmFuZCwgaSksCj4gICAgICAgICAgICAgICAgZW5nLT5v
+b2JfZnJlZSk7Cj4gCj4gICAgICAgICAvKiBwYXJ0IDQ6IE9PQiBFQ0MgZGF0YSAqLwo+ICAgICAg
+ICAgbWVtY3B5KG10a19lY2Nfb29iX2ZyZWVfcHRyKG5hbmQsIGkpICsgZW5nLT5vb2JfZnJlZSwK
+PiAgICAgICAgICAgICAgICBvb2JidWYgKyBlbmctPm9vYl9mcmVlICogZW5nLT5uc3RlcHMgKwo+
+ICAgICAgICAgICAgICAgIGkgKiBlbmctPm9vYl9lY2MsCj4gICAgICAgICAgICAgICAgZW5nLT5v
+b2JfZWNjKTsKPiB9Cj4gCj4gMi4gRm9yIG5vbiBPUFNfUkFXIG1vZGUKPiAKPiBUaGUgc25maSBo
+YXZlIGEgZnVuY3Rpb24gY2FsbGVkIGF1dG8gZm9ybWF0IHdpdGggRUNDIGVuYWJsZS4KPiBUaGlz
+IHdpbGwgYXV0byByZW9yZ2FuaXplIHRoZSByZXF1ZXN0IGRhdGEgYW5kIG9vYiBkYXRhIGluCj4g
+TVRLIEVDQyBwYWdlIGxheW91dCBieSB0aGUgc25maSBjb250cm9sbGVyIGV4Y2VwdCB0aGUgQkJN
+IHBvc2l0aW9uLgo+IAo+IFRoZXJlZm9yZSwgdGhlIEVDQyBlbmdpbmUgb25seSBuZWVkIGRvIHRo
+ZSBCQk0gc3dhcCBhZnRlciBzZXQgT09CIGRhdGEKPiBieXRlcyBpbiBPUFNfQVVUTyBvciBhZnRl
+ciBtZW1jcHkgb29iIGRhdGEgaW4gT1BTX1BMQUNFX09PQiBmb3Igd3JpdGUKPiBvcGVyYXRpb24u
+Cj4gCj4gVGhlIEJCTSBzd2FwIGFsc28gZW5zdXJlIHRoZSBCQk0gcG9zaXRpb24gaW4gTVRLIEVD
+QyBvbi1mbGFzaAo+IGxheW91dCBpcwo+IHNhbWUgYXMgTkFORCBzdGFuZGFyZCBsYXlvdXQgaW4g
+bm9uIE9QU19SQVcgbW9kZS4KPiAKPiBpZiAocmVxLT5vb2JsZW4pIHsKPiAgICAgICAgIGlmIChy
+ZXEtPm1vZGUgPT0gTVREX09QU19BVVRPX09PQikgewo+ICAgICAgICAgICAgICAgICByZXQgPSBt
+dGRfb29ibGF5b3V0X3NldF9kYXRhYnl0ZXMobXRkLAo+ICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVxLT5vb2JidWYub3V0LAo+ICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZW5nLT5ib3VuY2Vfb29iX2J1
+ZiwKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJl
+cS0+b29ib2ZmcywKPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgIG10ZC0+b29iYXZhaWwpOwo+ICAgICAgICAgICAgICAgICBpZiAocmV0KQo+ICAgICAg
+ICAgICAgICAgICAgICAgICAgIHJldHVybiByZXQ7Cj4gICAgICAgICB9IGVsc2Ugewo+ICAgICAg
+ICAgICAgICAgICBtZW1jcHkoZW5nLT5ib3VuY2Vfb29iX2J1ZiArIHJlcS0+b29ib2ZmcywKPiAg
+ICAgICAgICAgICAgICAgICAgICAgIHJlcS0+b29iYnVmLm91dCwKPiAgICAgICAgICAgICAgICAg
+ICAgICAgIHJlcS0+b29ibGVuKTsKPiAgICAgICAgIH0KPiB9Cj4gCj4gZW5nLT5iYm1fY3RsLmJi
+bV9zd2FwKG5hbmQsICh2b2lkICopcmVxLT5kYXRhYnVmLm91dCwKPiAgICAgICAgICAgICAgICAg
+ICAgICAgZW5nLT5ib3VuY2Vfb29iX2J1Zik7Cj4gCj4gVGhhbmtzCj4gWGlhbmdzaGVuZyBIb3UK
+CgpUaGFua3MsCk1pcXXDqGwKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtbWVkaWF0ZWsK
