@@ -4,70 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7711CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 13:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8697AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 13 Dec 2021 13:52:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=omFH4Lxmor3lki9K8zONxtabwr8DsnPNSZMV/hVyFAI=; b=Bx8/MQI/yohMeX
-	qonbnh7CqTtDjYXYpbBNPP8fMIlvYoaKa6bq3MwRq5zlt/DhWLmoP+XEElD6MQ+oaX1JqgtW8m24V
-	OGJm/l8lIgd6rgSaJv/qDhF9VFXsV2+7LQXqywBVZrc7wUL3m30vCigKKf/BuusVXBzPeQH8aRj2/
-	20uAQBEZW4ajweFqxWc6tzAp1vvLbNCm3m4AICLFHO+j+6CuTEw404ritT3yABd/AvKQFXflAMB1T
-	gqJ9ThwXpioFsNnTgI/5El3cDahDnhvuFMT/QrAqflimFDhiKUTnmbxxkb1kANcmnYPNl/zb5JfZn
-	XsFP3QTnE1T4KtqtGzDw==;
+	List-Owner; bh=3xsPNQe5mjlwLnpvGJXXhuYnEU/i143azYMTHQ518Jc=; b=MpbrHqrcqNbUTj
+	PQj9b/3+udl1esmgbr5qf3tJbQVRDXgkCAG005R5Ap/zn43YzprWliTFElc+ueJyVYs7vkOBbLepE
+	lbLXpEXyp74tiksFlNEIdMrDHHuHhnf4+jjCFD1tsAfsz48bTFNnexxNF2oMdvV4ENcWhnF47CiCf
+	N5c7084Npr4AheBokhjLWxDA9F0TYckD4JE16BvRxuV0r1b5IJaByyIVk5FNEsSsIW2f+Y4NsmkhQ
+	TCx0lBINvbXxcq33f0hw+TrxBwtjv+O1/rhdKjtoChbDo/Jt0pVW729Jyjl8f5jDNrkpw4kPlwePc
+	TJO2bpDSgXHEeOei8d2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mwlJ4-009fDz-5A; Mon, 13 Dec 2021 13:23:54 +0000
-Received: from mga14.intel.com ([192.55.52.115])
+	id 1mwlk7-009oCY-04; Mon, 13 Dec 2021 13:51:51 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mwlJ0-009fCl-Sl
- for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 13:23:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1639401830; x=1670937830;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=NUaiRW8izVYY+jHItB+IlWmb+AOutAfJrsSjOPLwAo4=;
- b=fsl1CHqyBr6HU1VLMTWSfPUkWEqN20SO60gvbKqjY0dL0pb0L+UJXT3f
- opjapvx56mj1pB42ysMKKifZuj4ejUgpfh8AdhDpw7E1Nq64KNbpezRns
- U7UrVtDzGV1cbmdAR6RzCuyHzq/pprvstq+XUyoQ5WSsihKBfexQKz06U
- 83JwM3EyXfH99uFayeXYW+j9khuhtunNuiGAI/BP0MjEL8U2CZ+ygh89c
- JBgGV+a+3wUFHschYUxHSQeeOgcyJlpDEnvqI/SV+F3Xqszgs3qrgwRcT
- 5YhzmWimAjl6d3+S8CX9NpA95pl3rP8FE58uvCTLutzY5OgaPN1B/5AbM A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10196"; a="238952866"
-X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="238952866"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2021 05:23:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,202,1635231600"; d="scan'208";a="613822560"
-Received: from lkp-server02.sh.intel.com (HELO 9e1e9f9b3bcb) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 13 Dec 2021 05:23:47 -0800
-Received: from kbuild by 9e1e9f9b3bcb with local (Exim 4.92)
- (envelope-from <lkp@intel.com>)
- id 1mwlIw-0006hT-B3; Mon, 13 Dec 2021 13:23:46 +0000
-Date: Mon, 13 Dec 2021 21:23:13 +0800
-From: kernel test robot <lkp@intel.com>
-To: MeiChia Chiu <MeiChia.Chiu@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-Cc: kbuild-all@lists.01.org, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Money Wang <Money.Wang@mediatek.com>,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- MeiChia Chiu <meichia.chiu@mediatek.com>
-Subject: Re: [PATCH v3] mt76: mt7915: add mu-mimo and ofdma debugfs knobs
-Message-ID: <202112132120.tRzeHzz5-lkp@intel.com>
-References: <20211213060309.28323-1-MeiChia.Chiu@mediatek.com>
+ id 1mwljS-009nqt-QZ
+ for linux-mediatek@lists.infradead.org; Mon, 13 Dec 2021 13:51:14 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id l25so52689174eda.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 13 Dec 2021 05:51:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JA6W9bf1908WD6cfFb6AhPYhGreRD1L3ZPU1ovM0YAo=;
+ b=JR+DaCc5q3x/nJ52dLl6r+4FwSEv9WD0p7h6CAvJzuCN4LA6+wkAYifxMiKmhtGPMC
+ FTN/0x8gYKn6C0DH+DPrgH6lH2w+WJEIfGDy1/YzVD0zU202RDccLQt46z8yx/mv5SEQ
+ orFijgywNSCXDOJ/OPyq3mvh5NlrdflBnU+13ax6fE2dt0FQGfzQsQKPQMlWf12X6gYS
+ H/d+nrvTinlxhp9IzxuZ3LhRXaM+23FWY9lMgayxh0hvEqluoQhfJStRiFE2+rfIOnQF
+ Iw8LA3Ko152lC8tyud5LtFSKXRrJ7LmTPR7MzT1Pb8/drF5Zj0ygRhSQOmk3y0qr4lHt
+ 19ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JA6W9bf1908WD6cfFb6AhPYhGreRD1L3ZPU1ovM0YAo=;
+ b=G6YiJ0YGfWSaVdqTlxIBYECYWot1ZQp2iMQH0IFGwYNRr5Kfkpi6A0m7hYOaxXL26u
+ yEheZstq7B3rCk+4nLkhjrZiNvFwX5ZM8TuOD6rxB70bDjpg7VwxeL2Tt9sUZaMF7mFc
+ enEsTwmi/l+zOZShkpwXG1DslEv++QZWrAJI6dEHOiylxWQf8xx75pI0JiiHrP/XnGRr
+ XEb4ayrZlUCNW8wnJGrZoSC49sI0Ae+t2uFWyMBJZmQKPRsVSYkZRHF89UXilHpntw3i
+ /ngD6SPqlHI21PbpUo2nNqv8ryMicSITCzQkLcCuarQ5sLos6+1mXsePYcZ/qz5pD3BJ
+ 8I5A==
+X-Gm-Message-State: AOAM530RaiWQrMR1J+PyL5RF4vZWWlTlvzLaKo6/cxaXJ96BSPW8JXEH
+ GT1c30GqmN9Z93dRVMyMz3PmPoK7t53IEzIrKDHvHQ==
+X-Google-Smtp-Source: ABdhPJyUfRonKaOMYp5CA3+4Qguk6GD9f9+ENkQJ7XEThNqMIaIY/ZVhde1IxmgVdguaMtUOm8hj/b6kBh4NcjdyhEI=
+X-Received: by 2002:a05:6402:354e:: with SMTP id
+ f14mr63951085edd.245.1639403467922; 
+ Mon, 13 Dec 2021 05:51:07 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211213060309.28323-1-MeiChia.Chiu@mediatek.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Mon, 13 Dec 2021 14:50:57 +0100
+Message-ID: <CAMRc=Meve=W3yvPmakFap-s6cOY1GUq7c1VjJE2dEH4f0+shag@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Marc Zyngier <maz@kernel.org>,
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Chunyan Zhang <chunyan.zhang@unisoc.com>, 
+ Baruch Siach <baruch@tkos.co.il>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ patches@opensource.cirrus.com, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
+ linux-power <linux-power@fi.rohmeurope.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
+ "open list:PWM SUBSYSTEM" <linux-pwm@vger.kernel.org>,
+ Linux-OMAP <linux-omap@vger.kernel.org>, 
+ linux-unisoc@lists.infradead.org, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+ Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211213_052351_001777_1A34540C 
-X-CRM114-Status: GOOD (  11.99  )
+X-CRM114-CacheID: sfid-20211213_055110_895519_AC794EF6 
+X-CRM114-Status: GOOD (  11.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,64 +118,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi MeiChia,
+On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> GPIO library does copy the of_node from the parent device of
+> the GPIO chip, there is no need to repeat this in the individual
+> drivers. Remove these assignment all at once.
+>
+> For the details one may look into the of_gpio_dev_init() implementation.
+>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
 
-Thank you for the patch! Yet something to improve:
+If there are no objections, I am willing to apply this to give it some
+time in next and get the work on dropping the OF APIs from gpiolib
+going.
 
-[auto build test ERROR on kvalo-wireless-drivers-next/master]
-[also build test ERROR on kvalo-wireless-drivers/master v5.16-rc5]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch]
-
-url:    https://github.com/0day-ci/linux/commits/MeiChia-Chiu/mt76-mt7915-add-mu-mimo-and-ofdma-debugfs-knobs/20211213-140356
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/kvalo/wireless-drivers-next.git master
-config: mips-allyesconfig (https://download.01.org/0day-ci/archive/20211213/202112132120.tRzeHzz5-lkp@intel.com/config)
-compiler: mips-linux-gcc (GCC) 11.2.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/0day-ci/linux/commit/91cb277e37dbed42e6b6aee256694204ba8d9a7f
-        git remote add linux-review https://github.com/0day-ci/linux
-        git fetch --no-tags linux-review MeiChia-Chiu/mt76-mt7915-add-mu-mimo-and-ofdma-debugfs-knobs/20211213-140356
-        git checkout 91cb277e37dbed42e6b6aee256694204ba8d9a7f
-        # save the config file to linux build tree
-        mkdir build_dir
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=mips SHELL=/bin/bash
-
-If you fix the issue, kindly add following tag as appropriate
-Reported-by: kernel test robot <lkp@intel.com>
-
-All errors (new ones prefixed by >>):
-
-   arch/mips/kernel/head.o: in function `kernel_entry':
-   (.ref.text+0xac): relocation truncated to fit: R_MIPS_26 against `start_kernel'
-   init/main.o: in function `set_reset_devices':
-   main.c:(.init.text+0x20): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x30): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `debug_kernel':
-   main.c:(.init.text+0xa4): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0xb4): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `quiet_kernel':
-   main.c:(.init.text+0x128): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x138): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `warn_bootconfig':
-   main.c:(.init.text+0x1ac): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x1bc): relocation truncated to fit: R_MIPS_26 against `__sanitizer_cov_trace_pc'
-   init/main.o: in function `init_setup':
-   main.c:(.init.text+0x238): relocation truncated to fit: R_MIPS_26 against `_mcount'
-   main.c:(.init.text+0x258): additional relocation overflows omitted from the output
-   mips-linux-ld: drivers/net/wireless/mediatek/mt76/mt7915/debugfs.o: in function `mt7915_muru_stat_show':
->> debugfs.c:(.text.mt7915_muru_stat_show+0x320): undefined reference to `__udivdi3'
->> mips-linux-ld: debugfs.c:(.text.mt7915_muru_stat_show+0x34c): undefined reference to `__udivdi3'
-   mips-linux-ld: debugfs.c:(.text.mt7915_muru_stat_show+0x37c): undefined reference to `__udivdi3'
-   mips-linux-ld: debugfs.c:(.text.mt7915_muru_stat_show+0x3ac): undefined reference to `__udivdi3'
-   mips-linux-ld: debugfs.c:(.text.mt7915_muru_stat_show+0x3dc): undefined reference to `__udivdi3'
-   mips-linux-ld: drivers/net/wireless/mediatek/mt76/mt7915/debugfs.o:debugfs.c:(.text.mt7915_muru_stat_show+0x4dc): more undefined references to `__udivdi3' follow
-
----
-0-DAY CI Kernel Test Service, Intel Corporation
-https://lists.01.org/hyperkitty/list/kbuild-all@lists.01.org
+Bart
 
 _______________________________________________
 Linux-mediatek mailing list
