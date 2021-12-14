@@ -4,50 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5840C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 11:41:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56B2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 12:12:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WUt5qVcl3X5GFwWc6Meh/WnlMIpqGy3KJt0XC68PifY=; b=wnqGQwPkpvJLEL
-	TKLfWktU0/m3xEvnDBsUeHFceMdsk6whKVEa5sXQyGcuMGXKEyMi97Ov37PhsQFo1CuRHfyzMDqhs
-	4NdPKlnfOAiqDioy7pXRzCAgmdcvP98Lf8I+eS+8WXxpl6y5/ltpbUwr8g3UR8qocqsv2GnKsMFWc
-	1pnAB5UrDuEVWAhZVbmEnd0XnONo/MR+yJOFzS8g+pYNzS12CGMB/ZJ36HF1aWU/WzzYikX9hePR6
-	QLas+dOb5ilGgdlvdVRFApnY3hGv4XdHDzCZv5N1+1b2eUJP34OvtkLPyMDQzWqQ/GzqB9rwQNpL8
-	9zY6PYf5iV6bPgT0zrlg==;
+	List-Owner; bh=ORmlxIQF4C0oz4xVfF01MOBOO23I/I9LrmT4x3+csBc=; b=I6LfZyCqQnbqCu
+	JEskgCU2NuK1wp9cKTOTQqHf8aCy68Zj7wH+XlqAc8ztjGhPrIZKiO6c1dbKa9A9+1Ncm+jhxWLGC
+	vCBTXveGbruxSq0zpv8tpfBWPgFL9qN2xS1S9aUKxa9JCaoXwMmSty0d1P0Q+/IUmqKJTVShZIiyh
+	2dbCCXSZqfukJeQhJYkM40Xj78ozPanCJfeypDcxhQytXciYMdEyR1r3ZDSqj/7FtJHClnGw7N5di
+	pG3VO3W5vKba4HmUmkEPUCffuWyJVCkzElKAgYQzPl8WAjUoNlX03E7XMXgbLfkDMdK+JFLPHLvt/
+	L7HqCtSDkBGPMuCqUYRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mx6BO-00DjOL-TJ; Tue, 14 Dec 2021 11:41:22 +0000
-Received: from relay12.mail.gandi.net ([217.70.178.232])
+	id 1mx6fQ-00DrQA-Jr; Tue, 14 Dec 2021 12:12:24 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mx6BK-00DjML-Ux; Tue, 14 Dec 2021 11:41:21 +0000
-Received: (Authenticated sender: miquel.raynal@bootlin.com)
- by relay12.mail.gandi.net (Postfix) with ESMTPSA id 17EBD20000B;
- Tue, 14 Dec 2021 11:41:12 +0000 (UTC)
-Date: Tue, 14 Dec 2021 12:41:11 +0100
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: Xiangsheng Hou <xiangsheng.hou@mediatek.com>
-Cc: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
- <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
- <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
- <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>,
- <donghunt@amazon.com>, <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
-Subject: Re: [RFC,v4,4/5] mtd: spinand: Move set/get OOB databytes to each
- ECC engines
-Message-ID: <20211214124111.3bd39e74@xps13>
-In-Reply-To: <20211130083202.14228-5-xiangsheng.hou@mediatek.com>
-References: <20211130083202.14228-1-xiangsheng.hou@mediatek.com>
- <20211130083202.14228-5-xiangsheng.hou@mediatek.com>
-Organization: Bootlin
-X-Mailer: Claws Mail 3.17.7 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
+ id 1mx6Vw-00DozJ-7L; Tue, 14 Dec 2021 12:02:37 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 97ABE614A2;
+ Tue, 14 Dec 2021 12:02:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CAB6C34601;
+ Tue, 14 Dec 2021 12:02:30 +0000 (UTC)
+Date: Tue, 14 Dec 2021 12:02:27 +0000
+From: Catalin Marinas <catalin.marinas@arm.com>
+To: Yee Lee <yee.lee@mediatek.com>
+Cc: linux-kernel@vger.kernel.org, nicholas.Tang@mediatek.com,
+ Kuan-Ying.lee@mediatek.com, chinwen.chang@mediatek.com,
+ Jonathan Corbet <corbet@lwn.net>, Will Deacon <will@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ "Paul E. McKenney" <paulmck@kernel.org>,
+ Randy Dunlap <rdunlap@infradead.org>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>,
+ "Maciej W. Rozycki" <macro@orcam.me.uk>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Peter Zijlstra <peterz@infradead.org>,
+ Vlastimil Babka <vbabka@suse.cz>, Marc Zyngier <maz@kernel.org>,
+ David Brazdil <dbrazdil@google.com>,
+ Ard Biesheuvel <ardb@kernel.org>, Fuad Tabba <tabba@google.com>,
+ "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+ "moderated list:ARM64 PORT (AARCH64 ARCHITECTURE)"
+ <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v3 1/1] arm64/cpufeature: Optionally disable MTE via
+ command-line
+Message-ID: <YbiH04yqEqW8p8EM@arm.com>
+References: <20210730144957.30938-1-yee.lee@mediatek.com>
+ <20210730144957.30938-2-yee.lee@mediatek.com>
+ <20210802153036.GH18685@arm.com>
+ <e055e71f0ca7bcb351b9097ba8f8f4a9d324623c.camel@mediatek.com>
+ <YapGyozjactAm8vp@arm.com>
+ <dc2fd1f8c68e78905f4242c2b530bc720b979cd8.camel@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <dc2fd1f8c68e78905f4242c2b530bc720b979cd8.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_034119_300811_07580F5D 
-X-CRM114-Status: GOOD (  26.42  )
+X-CRM114-CacheID: sfid-20211214_040236_399193_726AED40 
+X-CRM114-Status: GOOD (  25.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,119 +78,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgWGlhbmdzaGVuZywKCnhpYW5nc2hlbmcuaG91QG1lZGlhdGVrLmNvbSB3cm90ZSBvbiBUdWUs
-IDMwIE5vdiAyMDIxIDE2OjMyOjAxICswODAwOgoKPiBNb3ZlIHNldC9nZXQgT09CIGRhdGFieXRl
-cyB0byBlYWNoIEVDQyBlbmdpbmVzIHdoZW4gaW4gQVVUTyBtb2RlLgo+IEZvciByZWFkL3dyaXRl
-IGluIEFVVE8gbW9kZSwgdGhlIE9PQiBieXRlcyBpbmNsdWRlIG5vdCBvbmx5IGZyZWUKPiBkYXRl
-IGJ5dGVzIGJ1dCBhbHNvIEVDQyBkYXRhIGJ5dGVzLgoKVGhpcyBpcyBtb3JlIG9yIGxlc3Mgb2ss
-IEkgd291bGQgcmVwaHJhc2UgaXQgdG8gZ2l2ZSBtb3JlIGRldGFpbHMgYWJvdXQKdGhlIGlzc3Vl
-OgoKTW92ZSB0aGUgZGF0YSBieXRlcyBoYW5kbGluZyB3aGVuIGluIEFVVE8gbW9kZSB0byB0aGUg
-RUNDIGRyaXZlcnMsIG9ubHkKdGhlbSBoYXZlIHRoZSBrbm93bGVkZ2Ugb2Ygd2hhdCdzIGluIHRo
-ZSBPT0IgYnVmZmVyIGFuZCB3ZSBzaG91bGQgYmUKc3VyZSB0aGF0IHRoZSBFQ0MgYnl0ZXMgZG8g
-bm90IHNtYXNoIHRoZSBkYXRhIHByb3ZpZGVkIGJ5IHRoZSB1c2VyIGluCnRoaXMgbW9kZS4gU28g
-dGhlIEVDQyBkcml2ZXJzIG11c3QgdGFrZSBjYXJlIG9mIGFueSBkYXRhIHRoYXQgY291bGQgYmUK
-cHJlc2VudCBhdCB0aGUgYmVnaW5uaW5nIG9mIHRoZSBidWZmZXIgYmVmb3JlIGdlbmVyYXRpbmcg
-dGhlIEVDQyBieXRlcy4KCj4gQW5kIGZvciBzb21lIHNwZWNpYWwgRUNDIGVuZ2luZSwKPiB0aGUg
-ZGF0YSBieXRlcyBpbiBPT0IgbWF5IGJlIG1peGVkIHdpdGggbWFpbiBkYXRhLiBGb3IgZXhhbXBs
-ZSwKPiBtZWRpYXRlayBFQ0MgZW5naW5lIHdpbGwgYmUgb25lIG1vcmUgbWFpbiBkYXRhIGJ5dGUg
-c3dhcCB3aXRoIEJCTS4KPiBTbywganVzdCBwdXQgdGhlc2Ugb3BlcmF0aW9uIGluIGVhY2ggRUND
-IGVuZ2luZSB0byBkaXN0aW5ndWlzaAo+IHRoZSBkaWZmZXJlbnRpYXRpb24uCgpCdXQgaGlzIGlz
-IG5vdCByZWxhdGVkIHRvIHlvdXIgY2hhbmdlLCBwbGVhc2UgZHJvcCBpdC4KCk5lZWRzIGEgRml4
-ZXMgaGVyZSBJIGJlbGlldmUuCgo+IFNpZ25lZC1vZmYtYnk6IFhpYW5nc2hlbmcgSG91IDx4aWFu
-Z3NoZW5nLmhvdUBtZWRpYXRlay5jb20+Cj4gLS0tCj4gIGRyaXZlcnMvbXRkL25hbmQvZWNjLXN3
-LWJjaC5jICAgICAgICAgICB8IDcxICsrKysrKysrKysrKysrKystLS0KPiAgZHJpdmVycy9tdGQv
-bmFuZC9lY2Mtc3ctaGFtbWluZy5jICAgICAgIHwgNzEgKysrKysrKysrKysrKysrKy0tLQo+ICBk
-cml2ZXJzL210ZC9uYW5kL3NwaS9jb3JlLmMgICAgICAgICAgICAgfCA5MyArKysrKysrKysrKysr
-KysrKy0tLS0tLS0tCj4gIGluY2x1ZGUvbGludXgvbXRkL25hbmQtZWNjLXN3LWJjaC5oICAgICB8
-ICA0ICsrCj4gIGluY2x1ZGUvbGludXgvbXRkL25hbmQtZWNjLXN3LWhhbW1pbmcuaCB8ICA0ICsr
-Cj4gIGluY2x1ZGUvbGludXgvbXRkL3NwaW5hbmQuaCAgICAgICAgICAgICB8ICA0ICsrCj4gIDYg
-ZmlsZXMgY2hhbmdlZCwgMTk4IGluc2VydGlvbnMoKyksIDQ5IGRlbGV0aW9ucygtKQo+IAo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL210ZC9uYW5kL2VjYy1zdy1iY2guYyBiL2RyaXZlcnMvbXRkL25h
-bmQvZWNjLXN3LWJjaC5jCj4gaW5kZXggNDA1NTUyZDAxNGE4Li5iZGEzMWVmOGYwYjggMTAwNjQ0
-Cj4gLS0tIGEvZHJpdmVycy9tdGQvbmFuZC9lY2Mtc3ctYmNoLmMKPiArKysgYi9kcml2ZXJzL210
-ZC9uYW5kL2VjYy1zdy1iY2guYwo+IEBAIC0yMzgsNyArMjM4LDkgQEAgaW50IG5hbmRfZWNjX3N3
-X2JjaF9pbml0X2N0eChzdHJ1Y3QgbmFuZF9kZXZpY2UgKm5hbmQpCj4gIAllbmdpbmVfY29uZi0+
-Y29kZV9zaXplID0gY29kZV9zaXplOwo+ICAJZW5naW5lX2NvbmYtPmNhbGNfYnVmID0ga3phbGxv
-YyhtdGQtPm9vYnNpemUsIEdGUF9LRVJORUwpOwo+ICAJZW5naW5lX2NvbmYtPmNvZGVfYnVmID0g
-a3phbGxvYyhtdGQtPm9vYnNpemUsIEdGUF9LRVJORUwpOwo+IC0JaWYgKCFlbmdpbmVfY29uZi0+
-Y2FsY19idWYgfHwgIWVuZ2luZV9jb25mLT5jb2RlX2J1Zikgewo+ICsJZW5naW5lX2NvbmYtPm9v
-Yl9idWYgPSBremFsbG9jKG10ZC0+b29ic2l6ZSwgR0ZQX0tFUk5FTCk7Cj4gKwlpZiAoIWVuZ2lu
-ZV9jb25mLT5jYWxjX2J1ZiB8fCAhZW5naW5lX2NvbmYtPmNvZGVfYnVmIHx8Cj4gKwkgICAgIWVu
-Z2luZV9jb25mLT5vb2JfYnVmKSB7Cj4gIAkJcmV0ID0gLUVOT01FTTsKPiAgCQlnb3RvIGZyZWVf
-YnVmczsKPiAgCX0KPiBAQCAtMjY3LDYgKzI2OSw3IEBAIGludCBuYW5kX2VjY19zd19iY2hfaW5p
-dF9jdHgoc3RydWN0IG5hbmRfZGV2aWNlICpuYW5kKQo+ICAJbmFuZF9lY2NfY2xlYW51cF9yZXFf
-dHdlYWtpbmcoJmVuZ2luZV9jb25mLT5yZXFfY3R4KTsKPiAgCWtmcmVlKGVuZ2luZV9jb25mLT5j
-YWxjX2J1Zik7Cj4gIAlrZnJlZShlbmdpbmVfY29uZi0+Y29kZV9idWYpOwo+ICsJa2ZyZWUoZW5n
-aW5lX2NvbmYtPm9vYl9idWYpOwo+ICBmcmVlX2VuZ2luZV9jb25mOgo+ICAJa2ZyZWUoZW5naW5l
-X2NvbmYpOwo+ICAKPiBAQCAtMjgzLDYgKzI4Niw3IEBAIHZvaWQgbmFuZF9lY2Nfc3dfYmNoX2Ns
-ZWFudXBfY3R4KHN0cnVjdCBuYW5kX2RldmljZSAqbmFuZCkKPiAgCQluYW5kX2VjY19jbGVhbnVw
-X3JlcV90d2Vha2luZygmZW5naW5lX2NvbmYtPnJlcV9jdHgpOwo+ICAJCWtmcmVlKGVuZ2luZV9j
-b25mLT5jYWxjX2J1Zik7Cj4gIAkJa2ZyZWUoZW5naW5lX2NvbmYtPmNvZGVfYnVmKTsKPiArCQlr
-ZnJlZShlbmdpbmVfY29uZi0+b29iX2J1Zik7Cj4gIAkJa2ZyZWUoZW5naW5lX2NvbmYpOwo+ICAJ
-fQo+ICB9Cj4gQEAgLTI5OSwyMiArMzAzLDQyIEBAIHN0YXRpYyBpbnQgbmFuZF9lY2Nfc3dfYmNo
-X3ByZXBhcmVfaW9fcmVxKHN0cnVjdCBuYW5kX2RldmljZSAqbmFuZCwKPiAgCWludCB0b3RhbCA9
-IG5hbmQtPmVjYy5jdHgudG90YWw7Cj4gIAl1OCAqZWNjY2FsYyA9IGVuZ2luZV9jb25mLT5jYWxj
-X2J1ZjsKPiAgCWNvbnN0IHU4ICpkYXRhOwo+IC0JaW50IGk7Cj4gKwlpbnQgaSwgcmV0ID0gMDsK
-CmludCBpLCByZXQ7Cgo+ICAKPiAgCS8qIE5vdGhpbmcgdG8gZG8gZm9yIGEgcmF3IG9wZXJhdGlv
-biAqLwo+ICAJaWYgKHJlcS0+bW9kZSA9PSBNVERfT1BTX1JBVykKPiAgCQlyZXR1cm4gMDsKPiAg
-Cj4gLQkvKiBUaGlzIGVuZ2luZSBkb2VzIG5vdCBwcm92aWRlIEJCTS9mcmVlIE9PQiBieXRlcyBw
-cm90ZWN0aW9uICovCj4gLQlpZiAoIXJlcS0+ZGF0YWxlbikKPiAtCQlyZXR1cm4gMDsKPiAtCgpX
-aHk/IFBsZWFzZSBkcm9wIHRoaXMgcmVtb3ZhbCBoZXJlIGFuZCBiZWxvdywgaXQgaGFzIG5vdGhp
-bmcgdG8gZG8gd2l0aAp0aGUgY3VycmVudCBmaXgsIHJpZ2h0PwoKPiAgCW5hbmRfZWNjX3R3ZWFr
-X3JlcSgmZW5naW5lX2NvbmYtPnJlcV9jdHgsIHJlcSk7Cj4gIAo+ICAJLyogTm8gbW9yZSBwcmVw
-YXJhdGlvbiBmb3IgcGFnZSByZWFkICovCj4gIAlpZiAocmVxLT50eXBlID09IE5BTkRfUEFHRV9S
-RUFEKQo+ICAJCXJldHVybiAwOwo+ICAKPiArCWlmIChyZXEtPm9vYmxlbikgewo+ICsJCW1lbXNl
-dChlbmdpbmVfY29uZi0+b29iX2J1ZiwgMHhmZiwKPiArCQkgICAgICAgbmFuZGRldl9wZXJfcGFn
-ZV9vb2JzaXplKG5hbmQpKTsKCkkgdGhpbmsgdGhpcyBpcyBvbmx5IG5lZWRlZCBpbiB0aGUgQVVU
-TyBjYXNlLgoKPiArCj4gKwkJaWYgKHJlcS0+bW9kZSA9PSBNVERfT1BTX0FVVE9fT09CKSB7Cj4g
-KwkJCXJldCA9IG10ZF9vb2JsYXlvdXRfc2V0X2RhdGFieXRlcyhtdGQsIHJlcS0+b29iYnVmLm91
-dCwKPiArCQkJCQkJCSAgZW5naW5lX2NvbmYtPm9vYl9idWYsCj4gKwkJCQkJCQkgIHJlcS0+b29i
-b2ZmcywKPiArCQkJCQkJCSAgbXRkLT5vb2JhdmFpbCk7Cj4gKwkJCWlmIChyZXQpCj4gKwkJCQly
-ZXR1cm4gcmV0Owo+ICsJCX0gZWxzZSB7Cj4gKwkJCW1lbWNweShlbmdpbmVfY29uZi0+b29iX2J1
-ZiArIHJlcS0+b29ib2ZmcywKPiArCQkJICAgICAgIHJlcS0+b29iYnVmLm91dCwgcmVxLT5vb2Js
-ZW4pOwo+ICsJCX0KPiArCj4gKwkJZW5naW5lX2NvbmYtPnNyY19vb2JfYnVmID0gKHZvaWQgKily
-ZXEtPm9vYmJ1Zi5vdXQ7Cj4gKwkJcmVxLT5vb2JidWYub3V0ID0gZW5naW5lX2NvbmYtPm9vYl9i
-dWY7Cj4gKwl9Cj4gKwo+ICsJLyogVGhpcyBlbmdpbmUgZG9lcyBub3QgcHJvdmlkZSBCQk0vZnJl
-ZSBPT0IgYnl0ZXMgcHJvdGVjdGlvbiAqLwo+ICsJaWYgKCFyZXEtPmRhdGFsZW4pCj4gKwkJcmV0
-dXJuIDA7Cj4gKwoKSSBiZWxpZXZlIHdlIGNhbiBkbyBzb21ldGhpbmcgc2ltcGxlcjoKCmlmIChy
-ZXEtPm9vYmxlbiAmJiByZXEtPm1vZGUgPT0gQVVUTykgewoJbWVtY3B5KG9vYmJ1ZiwgcmVxLT5v
-b2JidWYub3V0Li4uCgltdGRfb29ibGF5b3V0X3NldF9kYXRhYnl0ZXModXNpbmcgb29iYnVmKQp9
-CgpCdXQgSSBiZWxpZXZlIHRoaXMgc2hvdWxkIGJlIGRvbmUgYmVmb3JlIHR3ZWFraW5nIHRoZSBy
-ZXF1ZXN0IHNvIHRoYXQKeW91IGNhbiBhdm9pZCBtZXNzaW5nIHdpdGggc3JjX29vYl9idWYsIHJp
-Z2h0PwoKPiAgCS8qIFByZXBhcmF0aW9uIGZvciBwYWdlIHdyaXRlOiBkZXJpdmUgdGhlIEVDQyBi
-eXRlcyBhbmQgcGxhY2UgdGhlbSAqLwo+ICAJZm9yIChpID0gMCwgZGF0YSA9IHJlcS0+ZGF0YWJ1
-Zi5vdXQ7Cj4gIAkgICAgIGVjY3N0ZXBzOwo+IEBAIC0zNDQsMTIgKzM2OCwzNiBAQCBzdGF0aWMg
-aW50IG5hbmRfZWNjX3N3X2JjaF9maW5pc2hfaW9fcmVxKHN0cnVjdCBuYW5kX2RldmljZSAqbmFu
-ZCwKPiAgCWlmIChyZXEtPm1vZGUgPT0gTVREX09QU19SQVcpCj4gIAkJcmV0dXJuIDA7Cj4gIAo+
-IC0JLyogVGhpcyBlbmdpbmUgZG9lcyBub3QgcHJvdmlkZSBCQk0vZnJlZSBPT0IgYnl0ZXMgcHJv
-dGVjdGlvbiAqLwo+IC0JaWYgKCFyZXEtPmRhdGFsZW4pCj4gLQkJcmV0dXJuIDA7Cj4gLQo+ICAJ
-LyogTm8gbW9yZSBwcmVwYXJhdGlvbiBmb3IgcGFnZSB3cml0ZSAqLwo+ICAJaWYgKHJlcS0+dHlw
-ZSA9PSBOQU5EX1BBR0VfV1JJVEUpIHsKPiArCQlpZiAocmVxLT5vb2JsZW4pCj4gKwkJCXJlcS0+
-b29iYnVmLm91dCA9IGVuZ2luZV9jb25mLT5zcmNfb29iX2J1ZjsKPiArCj4gKwkJbmFuZF9lY2Nf
-cmVzdG9yZV9yZXEoJmVuZ2luZV9jb25mLT5yZXFfY3R4LCByZXEpOwo+ICsJCXJldHVybiAwOwo+
-ICsJfQo+ICsKPiArCWlmIChyZXEtPm9vYmxlbikgewo+ICsJCW1lbXNldChlbmdpbmVfY29uZi0+
-b29iX2J1ZiwgMHhmZiwKPiArCQkgICAgICAgbmFuZGRldl9wZXJfcGFnZV9vb2JzaXplKG5hbmQp
-KTsKPiArCj4gKwkJaWYgKHJlcS0+bW9kZSA9PSBNVERfT1BTX0FVVE9fT09CKSB7Cj4gKwkJCXJl
-dCA9IG10ZF9vb2JsYXlvdXRfZ2V0X2RhdGFieXRlcyhtdGQsCj4gKwkJCQkJCQkgIGVuZ2luZV9j
-b25mLT5vb2JfYnVmLAo+ICsJCQkJCQkJICByZXEtPm9vYmJ1Zi5pbiwKPiArCQkJCQkJCSAgcmVx
-LT5vb2JvZmZzLAo+ICsJCQkJCQkJICBtdGQtPm9vYmF2YWlsKTsKPiArCQkJaWYgKHJldCkKPiAr
-CQkJCXJldHVybiByZXQ7Cj4gKwkJfSBlbHNlIHsKPiArCQkJbWVtY3B5KGVuZ2luZV9jb25mLT5v
-b2JfYnVmLAo+ICsJCQkgICAgICAgcmVxLT5vb2JidWYuaW4gKyByZXEtPm9vYm9mZnMsIHJlcS0+
-b29ibGVuKTsKPiArCQl9Cj4gKwl9Cj4gKwo+ICsJLyogVGhpcyBlbmdpbmUgZG9lcyBub3QgcHJv
-dmlkZSBCQk0vZnJlZSBPT0IgYnl0ZXMgcHJvdGVjdGlvbiAqLwo+ICsJaWYgKCFyZXEtPmRhdGFs
-ZW4pIHsKPiArCQlyZXEtPm9vYmJ1Zi5pbiA9IGVuZ2luZV9jb25mLT5vb2JfYnVmOwo+ICAJCW5h
-bmRfZWNjX3Jlc3RvcmVfcmVxKCZlbmdpbmVfY29uZi0+cmVxX2N0eCwgcmVxKTsKPiAgCQlyZXR1
-cm4gMDsKPiAgCX0KPiBAQCAtMzc5LDYgKzQyNyw5IEBAIHN0YXRpYyBpbnQgbmFuZF9lY2Nfc3df
-YmNoX2ZpbmlzaF9pb19yZXEoc3RydWN0IG5hbmRfZGV2aWNlICpuYW5kLAo+ICAJCX0KPiAgCX0K
-PiAgCj4gKwlpZiAocmVxLT5vb2JsZW4pCj4gKwkJcmVxLT5vb2JidWYuaW4gPSBlbmdpbmVfY29u
-Zi0+b29iX2J1ZjsKPiArCj4gIAluYW5kX2VjY19yZXN0b3JlX3JlcSgmZW5naW5lX2NvbmYtPnJl
-cV9jdHgsIHJlcSk7Cj4gIAo+ICAJcmV0dXJuIG1heF9iaXRmbGlwczsKClNhbWUgYXBwbGllcyB0
-byB0aGUgdHdvIG90aGVyIGVuZ2luZXMuCgpUaGFua3MsCk1pcXXDqGwKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcg
-bGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Tue, Dec 14, 2021 at 04:19:05PM +0800, Yee Lee wrote:
+> On Fri, 2021-12-03 at 16:33 +0000, Catalin Marinas wrote:
+> > On Thu, Nov 25, 2021 at 06:19:29PM +0800, Yee Lee wrote:
+> > > As pointed out earlier, the hardware has been verified that still has
+> > > transaction sending to DRAM due to mair_el1(Normal_tagged) is
+> > > setup.  That means the override in this patch would be incompleted and
+> > > cannot achieve to avoid undesired hardware confliction by disabling MTE.
+> > > 
+> > > Do we have other options to delay the configuration on MAIR_EL1 after
+> > > the override? Or maybe another CONFIG to bypass the init in __cpu_setup?
+> > 
+> > This register is trickier as it may be cached in the TLB (IIRC). I think
+> > deferring the setting of SCTLR_EL1.ATA(0) should be sufficient. Can you
+> > try the diff I sent in the previous email and confirm that the accesses
+> > to the allocation tag storage are blocked?
+> 
+> Yes, the previous diff is already online. 
+> 
+> In our experiment, with cmdline, "arm64.nomte", cpu_enable_mte() is
+> bypassed and the ATA0 is not set, but the access to tag memory still
+> dispatches. Only as MAIR_EL1 remains MAIR_ATTR_NORMAL, instead of
+> MAIR_ATTR_NORMAL_TAGGED, the access will stop.
+> 
+> From the manual, I think ATA only affects TAG instructions like STG,
+> IRG, but not the tag access within normal STR/LDR.
+
+The ARM ARM states SCTLR_EL1.ATA0 == 0 means "access to allocation tags
+is prevented". The AArch64.MemSingle[] pseudocode ends up with similar
+checks:
+
+https://developer.arm.com/documentation/ddi0596/2021-09/Shared-Pseudocode/AArch64-Functions?lang=en#AArch64.MemSingle.read.5
+
+before reading the tags from memory in AArch64.CheckTag():
+
+https://developer.arm.com/documentation/ddi0596/2021-09/Shared-Pseudocode/AArch64-Functions?lang=en#AArch64.CheckTag.4
+
+My suggestion is to raise this with support@arm.com (feel free to cc me)
+so that we clarify the hardware behaviour. I don't think it's entirely
+correct (it's more like, is there a risk of external aborts caused by
+access to allocation tag storage that's not present?)
+
+-- 
+Catalin
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
