@@ -4,71 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D077C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 15:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D6CBC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 15:20:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ys2Fdi5ISHISrZ6Yh5jIMmYNuoWxN5jUFnf9YIlla+Q=; b=BnHA7Gs4dCsWp8
-	nqNCRNegYFrCzbceL2jDqkpoC+Y9N4aA0bwz/wCrBMDEX/EHotBkigia4E2go3+Makd8BrAy5TGWw
-	hD27Z1poWP6OAnXNuJDiLJBy0uPTwCoVCnap8MmjUfqrSWSX1y4+DcVUkvfG40XHSYzcHehwpyFjU
-	O1bQ2nzN4gYCD7rPDgaSehjwK13aIz3eYSe6Xq6jLltLXW1ceF2kselvsC16rSk3/6q3D396ooUZW
-	RpXFztYU1Kxdqxb+zx2DBwVXuIV8EJ2eEMiAlKWdzoN5VI6Jh84M3QKEg9kSvKUbRopF1ocDL0SvH
-	t1Luxi/wLL/ybVU2TmaQ==;
+	List-Owner; bh=aq26IvfRiT1r58+nIEcWaZRUEz9OvWg+TkXxigQPu+Q=; b=WIMSsq2oFK4hk3
+	Brjpc8F4YByvM5kDVYz8vBamlhFl3scv6A0/UD+d3nQuwmv/LkIKrgIySGpfafckfsXWSrvrJ6PlW
+	2ARcM2zibmMw6YlinC/2E40Vu8PjZrP0OsfJCkri9+GQcKs2OyMOKmb7ag7gWlndsSRE1NCJBuzAC
+	gVBNzZX57kDLrwNMxHinOuk4foHRONbeOt+ii0XSCNU/lwO7672QA70ar198ebAAFAbt9Qd+rL6uj
+	Dy2HQc8GJXQZSUHv8ZDPyvBoFhJFaUs+urvw59VfEOuYbc4FiCpJDefpdFGXaw/2zBlp7AG8j6exz
+	pgnk3ls4VIw+aSxXPuRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mx9UT-00Eb5e-2b; Tue, 14 Dec 2021 15:13:17 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1mx9aq-00Ecqs-0P; Tue, 14 Dec 2021 15:19:52 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mx9UP-00Eb40-RN
- for linux-mediatek@lists.infradead.org; Tue, 14 Dec 2021 15:13:15 +0000
-Received: by mail-lf1-x135.google.com with SMTP id b40so37357528lfv.10
- for <linux-mediatek@lists.infradead.org>; Tue, 14 Dec 2021 07:13:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=H+bLnAgO3b5siLg+4Vc0pITri5Pyuz0KEVByfdnYDUc=;
- b=kCE7rz4ty8OGXocOaIZ3U4M6gf6ZOKVj3wNbZYF0cgfawnSE7lraEFy4XZSw/fLgSF
- +znofuf+MuVMaaLS3TEXk10vJMTERr9+PeavbiQTq8Tls0YR5gjguTMLcRzSVqJt99K/
- 0je4UkVDApqGfFNiKg32fiTXAGdspkepqWSlo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=H+bLnAgO3b5siLg+4Vc0pITri5Pyuz0KEVByfdnYDUc=;
- b=7Oh/Mo9nCYHyxnKWnZ0g9zC9SVHKxJ+tf21nIfFUnaBlLGLFUPO/LK8xNFod08rnnz
- UVoJEV710U8EuiNH4jhLw20wIVSabYHkzQ0DmfVXhA3Wn0lzuJC9WZ5zmBrGcpRfQSoF
- 0bQXwvwqNSDs/pLrF85KyuJ5cI8fQW4Ll81wnMLr7ySjQ4Hml+W+wjNLoFiDmdrL9tUP
- knZaMgkxvFERCQtY+EergbTSlF+6rP4pquyb1hxrNkeAXrSGIK7xeO4p/AQrsqcdjYNl
- SudpTaioo5U9q3JzPAjYOHCFKZ80jF6/KNikNVKP49+rfu3Lal74S4twnS2BOWIeQv09
- 8azQ==
-X-Gm-Message-State: AOAM531sFP9A6Y6jKmCOEGPSFJqinrDx0ebCpPcBADbLnDYFsxMlxNbv
- sSeA25cTnZ2/itRaTaeOgmrK6BuQXoTueyCjqoszhw==
-X-Google-Smtp-Source: ABdhPJyJT7xqBLUyVs9umwlaLSNF7gCLRF7yhoSNNTuBadwQHuxuZn1gHe8yhGYuShqyro78Lu0JCvDSqBPxCAMGnYs=
-X-Received: by 2002:a05:6512:1510:: with SMTP id
- bq16mr4926777lfb.628.1639494791345; 
- Tue, 14 Dec 2021 07:13:11 -0800 (PST)
+ id 1mx9Zk-00EcGC-V1; Tue, 14 Dec 2021 15:18:46 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 610E86156F;
+ Tue, 14 Dec 2021 15:18:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38CDBC34606;
+ Tue, 14 Dec 2021 15:18:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1639495123;
+ bh=EtXNCqqEF5z7tNX4x034w1DmPhsexirc5bJSadieaTU=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=oVm5vp4S50b4rGVhdHXirrlW9wzjjz4QmXBPKuTPQVSv/iN+1KZIYc+ukAokyG3NL
+ 5EYAUnXwYT8ooc8tJFGmtoEDjqtHvO/PwLht9tW7rIei49/5ZuWUxgnlpm7jakwUu4
+ RuZaKfNUYRG5L0hCu6TcCcKyzOWrAVuaD+FuRTe4jxKgYgYc9svs4ZyN6qkE8nUKwS
+ BBukGp4WcOJykx+A28YWnsysRITIEDLDwZiQ5HX90vpD9G0x8B4JfDDHdcfWMZtmGM
+ APhy0y3yr6Hpsir8HXkbr5sLUFrMdYOmyezphCTsrTIhyRE4DNECZMowppwfbBJRHo
+ peKqoXbWSIPFw==
+From: Will Deacon <will@kernel.org>
+To: yf.wang@mediatek.com
+Cc: catalin.marinas@arm.com, kernel-team@android.com,
+ Will Deacon <will@kernel.org>, linux-arm-kernel@lists.infradead.org,
+ Guangming.Cao@mediatek.com, linux-mediatek@lists.infradead.org,
+ iommu@lists.linux-foundation.org, wsd_upstream@mediatek.com,
+ Libo.Kang@mediatek.com, linux-kernel@vger.kernel.org, robin.murphy@arm.com,
+ matthias.bgg@gmail.com, stable@vger.kernel.org
+Subject: Re: [PATCH v3] iommu/io-pgtable-arm-v7s: Add error handle for page
+ table allocation failure
+Date: Tue, 14 Dec 2021 15:18:17 +0000
+Message-Id: <163949313634.2865984.16870619152235318237.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20211207113315.29109-1-yf.wang@mediatek.com>
+References: <20211207094817.GA31382@willie-the-truck>
+ <20211207113315.29109-1-yf.wang@mediatek.com>
 MIME-Version: 1.0
-References: <20211022172413.195559-1-markyacoub@chromium.org>
- <20211026011318.GF2515@art_vandelay>
-In-Reply-To: <20211026011318.GF2515@art_vandelay>
-From: Mark Yacoub <markyacoub@chromium.org>
-Date: Tue, 14 Dec 2021 10:13:00 -0500
-Message-ID: <CAJUqKUopyQEyLh7w32UnHfUJv0nNUoE_PHAdkEj8JOnkhVqbbQ@mail.gmail.com>
-Subject: Re: [PATCH] mediatek: Set default value for Panel Orientation
- connector prop.
-To: Sean Paul <sean@poorly.run>
-Cc: linux-mediatek@lists.infradead.org, seanpaul@chromium.org, 
- Mark Yacoub <markyacoub@google.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_071313_946493_399932C0 
-X-CRM114-Status: GOOD (  17.27  )
+X-CRM114-CacheID: sfid-20211214_071845_091144_7AFB5BC9 
+X-CRM114-Status: UNSURE (   9.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,52 +78,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hey CK, can we have this merged?
-Thank you!
+On Tue, 7 Dec 2021 19:33:15 +0800, yf.wang@mediatek.com wrote:
+> From: Yunfei Wang <yf.wang@mediatek.com>
+> 
+> In __arm_v7s_alloc_table function:
+> iommu call kmem_cache_alloc to allocate page table, this function
+> allocate memory may fail, when kmem_cache_alloc fails to allocate
+> table, call virt_to_phys will be abnomal and return unexpected phys
+> and goto out_free, then call kmem_cache_free to release table will
+> trigger KE, __get_free_pages and free_pages have similar problem,
+> so add error handle for page table allocation failure.
+> 
+> [...]
 
-On Mon, Oct 25, 2021 at 9:13 PM Sean Paul <sean@poorly.run> wrote:
->
-> On Fri, Oct 22, 2021 at 01:24:03PM -0400, Mark Yacoub wrote:
-> > From: Mark Yacoub <markyacoub@chromium.org>
-> >
-> > [Why]
-> > Creating the prop uses UNKNOWN as the initial value, which is not a
-> > supported value if the props is to be supported.
-> >
-> > [How]
-> > Set the panel orientation default value to NORMAL right after creating
-> > the prop.
->
-> Reviewed-by: Sean Paul <seanpaul@chromium.org>
->
-> >
-> > Tested on Jacuzzi(MTK)
-> > Fixes IGT@kms_properties@get_properties-sanity-{atomic,non-atomic}
-> >
-> > Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
-> > ---
-> >  drivers/gpu/drm/mediatek/mtk_dsi.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> >
-> > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > index 0ad7157660afa..b7c2528a8f41c 100644
-> > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > @@ -1039,6 +1039,8 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
-> >               DRM_ERROR("Unable to init panel orientation\n");
-> >               goto err_cleanup_encoder;
-> >       }
-> > +     drm_connector_set_panel_orientation(dsi->connector,
-> > +                                         DRM_MODE_PANEL_ORIENTATION_NORMAL);
-> >
-> >       drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
-> >
-> > --
-> > 2.33.0.1079.g6e70778dc9-goog
-> >
->
-> --
-> Sean Paul, Software Engineer, Google / Chromium OS
+Applied to will (for-joerg/arm-smmu/updates), thanks!
+
+[1/1] iommu/io-pgtable-arm-v7s: Add error handle for page table allocation failure
+      https://git.kernel.org/will/c/a556cfe4cabc
+
+Cheers,
+-- 
+Will
+
+https://fixes.arm64.dev
+https://next.arm64.dev
+https://will.arm64.dev
 
 _______________________________________________
 Linux-mediatek mailing list
