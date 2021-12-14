@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B258CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 08:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 706BFC4321E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 08:19:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+MqWsIbnBYEssdG0WTgMBHu/9q/HlVkL71Q0KRpfong=; b=FvQnw6VXJPIu40
-	LoL0hSDXbpR7UoSDT6vehedB0FrSrMC9G59itf2wotoYaxNFXigbqgZmW35L7mrcqWODkNEiZqb0U
-	xur3kV97lvgJPzLEHwQyH0Y6sOhF1mjx38DXPYuh2ox7G5Oh8lI7FK8bt9/cjotGqBlwPkBsrtyZE
-	E4soG1pLoq9uXPrg08JdDD3UzIfvuqvJjojXbPAIt8mpUicm76GV3PSzqHqB4yLsCCqyXZJ4le1ZP
-	j9Gneg8UmI+AaVflcwcTwaNw+b5BmYmIuyvNB9Nj2+X1kj6zIOdxu0wL35kjqwzK8KKFsW6/NVhOa
-	v/puv962M/Ga9V0VG/Jw==;
+	List-Owner; bh=z0Vjfdme0H1cVE6YnwScL7JFS1f/L0u/lyQ4dBL4WzY=; b=xPeHibtgZa4XsP
+	Tdt0cU570ZZR7eQ5uWIadrwjOApm+30X2hwuKJXVYj/TW9mbs8Jcj93F+saihVpOgz7z5dp1d3Ig9
+	oHmQs0AT6azUpMRbOUVjJwm3fyy3wqvBscP3My3kz9d96qVZYGhAp31JQqDM6awYRt4w0iMUlcYSa
+	+0G2zAzZ5myctdqNCLH02TF3G1KxzrTEUvCVpakzhMKViuOdvE8wrXYOZjaA0X1b7Hg99QyDZuoqP
+	dZSUJHpIgEt7gMLYTYZkZXF7GC8yzSkoc0QG4+OlCo+QSg6aZlDukZTdmdDynVdN4UMMTObzvcY3X
+	jzoxI29gauYFt5sVineA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mx2kD-00Cwmu-LX; Tue, 14 Dec 2021 08:01:05 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+	id 1mx31x-00CzhR-Ud; Tue, 14 Dec 2021 08:19:25 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mx2jx-00CwjR-6A; Tue, 14 Dec 2021 08:00:50 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id o4so26357089oia.10;
- Tue, 14 Dec 2021 00:00:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=OCkr7HY+MiDuhLnjGtVsvlNgp0NXQsZibi1Zdq0qncY=;
- b=glmMjJdkrGF/acVp9UHcZrXP7qcNlr7RiSmA7oM+CWZaNFO5YcKOxuSFWy0MikeuNi
- qIhR//IQkvrFAwZ25DqbzH6TRE4vZUiaaVHH9ELQSr83ilpe1TByIHQMc7Q9b09ffsGo
- 24vSMAh3rfzWqv4ea+bWQYPqC3yApQFjeNq8ebx754IrYtDchIeRLT4skAa4ckkuSkii
- DvMeQAEEZ4vB/kWjhtF+xWzohXL6vZHWpfzorzKc0yckajxf/vpEG2Nf9zBEtRjWAbMt
- S6irSXfR4h6hdN1IyEYXED98Lcp62pufptCNQgnVLiJ1hJB4jV9KS4xrBP59Q7zy38m8
- o/GQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=OCkr7HY+MiDuhLnjGtVsvlNgp0NXQsZibi1Zdq0qncY=;
- b=VPhwdBeFoWPmnYCo9CSMijua+RWHVFr4KZJopOrh3b3wweD/HwilHVOV0faILZgYOu
- drXMBXwemQDTxecuWSvvQXPRaLJAMhcgDrZtADGjcPSZau+AD39ScuxZBRcwQ1nGGl0P
- hY4dZLH9ios5ufFzGmgdKnxLpHIjFieT1W2xdw2Top98SxM9F56NLxIhiZle5ZmZ6i3e
- EVwk5k54f26q0qMPbyiBb/2GKiceFH+2nIeHHyJUXjYIxUyAsZIrgZhXAZxq7pQvfYts
- O+X4qFLuKnwbK/5P+iSKsjaApqM6ii0O1V8wQHnzE34Tr/YeKbD/c+yrTMFlYiy9ZOAA
- SKjA==
-X-Gm-Message-State: AOAM530S+jArPdK0/eMRQ/Kce2GbK1BaCR/rYrk7lpL3Y7yKF+cpO5SR
- WjKEYuXZHoBTw3cqToVNzyAuNR1RY6tzWB2kH1E=
-X-Google-Smtp-Source: ABdhPJwerNovIcT3UKklATUbw5xH3MDbWq0GscSVhskXzn3PhXJIo9HoMhhC/WtJtkPiaSK+XxHTe2FfLfeAsoMlPXY=
-X-Received: by 2002:a05:6808:68f:: with SMTP id
- k15mr30718975oig.5.1639468846715; 
- Tue, 14 Dec 2021 00:00:46 -0800 (PST)
+ id 1mx31k-00CzdZ-G2; Tue, 14 Dec 2021 08:19:14 +0000
+X-UUID: 9c209afea787438f80bdf0bb1c80a6aa-20211214
+X-UUID: 9c209afea787438f80bdf0bb1c80a6aa-20211214
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yee.lee@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 918119936; Tue, 14 Dec 2021 01:19:08 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Dec 2021 00:19:06 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Dec 2021 16:19:05 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 14 Dec 2021 16:19:04 +0800
+Message-ID: <dc2fd1f8c68e78905f4242c2b530bc720b979cd8.camel@mediatek.com>
+Subject: Re: [PATCH v3 1/1] arm64/cpufeature: Optionally disable MTE via
+ command-line
+From: Yee Lee <yee.lee@mediatek.com>
+To: Catalin Marinas <catalin.marinas@arm.com>
+CC: <linux-kernel@vger.kernel.org>, <nicholas.Tang@mediatek.com>,
+ <Kuan-Ying.lee@mediatek.com>, <chinwen.chang@mediatek.com>, Jonathan Corbet
+ <corbet@lwn.net>, Will Deacon <will@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "Paul E. McKenney" <paulmck@kernel.org>, "Randy
+ Dunlap" <rdunlap@infradead.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>, "Maciej W. Rozycki"
+ <macro@orcam.me.uk>, Viresh Kumar <viresh.kumar@linaro.org>, Peter Zijlstra
+ <peterz@infradead.org>, Vlastimil Babka <vbabka@suse.cz>, Marc Zyngier
+ <maz@kernel.org>, David Brazdil <dbrazdil@google.com>, Ard Biesheuvel
+ <ardb@kernel.org>, Fuad Tabba <tabba@google.com>, "open list:DOCUMENTATION"
+ <linux-doc@vger.kernel.org>, "moderated list:ARM64 PORT (AARCH64
+ ARCHITECTURE)" <linux-arm-kernel@lists.infradead.org>, "moderated
+ list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
+Date: Tue, 14 Dec 2021 16:19:05 +0800
+In-Reply-To: <YapGyozjactAm8vp@arm.com>
+References: <20210730144957.30938-1-yee.lee@mediatek.com>
+ <20210730144957.30938-2-yee.lee@mediatek.com>
+ <20210802153036.GH18685@arm.com>
+ <e055e71f0ca7bcb351b9097ba8f8f4a9d324623c.camel@mediatek.com>
+ <YapGyozjactAm8vp@arm.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20211209072218.21651-1-chunfeng.yun@mediatek.com>
- <c448da77-f2f3-8b79-fc4b-b9dcff727c6e@linux.intel.com>
-In-Reply-To: <c448da77-f2f3-8b79-fc4b-b9dcff727c6e@linux.intel.com>
-From: Jun Li <lijun.kernel@gmail.com>
-Date: Tue, 14 Dec 2021 16:00:35 +0800
-Message-ID: <CAKgpwJXxtLwOjxjg3vFHiqS92j6rx_b1+C-bRwDnp+PBvXCMTg@mail.gmail.com>
-Subject: Re: [PATCH] usb: xhci: skip re-check pending port event if hibernated
-To: Mathias Nyman <mathias.nyman@linux.intel.com>
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Mathias Nyman <mathias.nyman@intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Linux USB List <linux-usb@vger.kernel.org>, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>,
- linux-mediatek@lists.infradead.org, 
- lkml <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>, 
- Yun-Chien Yu <yun-chien.yu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_000049_265672_3C6A955A 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20211214_001912_586471_BE56EAE1 
+X-CRM114-Status: GOOD (  40.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,28 +81,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-TWF0aGlhcyBOeW1hbiA8bWF0aGlhcy5ueW1hbkBsaW51eC5pbnRlbC5jb20+IOS6jjIwMjHlubQx
-MuaciDEx5pel5ZGo5YWtIDAxOjU25YaZ6YGT77yaCj4KPiBPbiA5LjEyLjIwMjEgOS4yMiwgQ2h1
-bmZlbmcgWXVuIHdyb3RlOgo+ID4gV2hlbiB4SENJIGNvbnRyb2xsZXIgaGliZXJuYXRlZCwgdGhl
-IHJvb3QgaHViIGxvc3QgcG93ZXIsIGlmIGNvbnRyb2xsZXIKPiA+IHN1cHBvcnQgUG9ydCBQb3dl
-ciBDb250cm9sIChQUEMpLCBQUCBpcyBub3Qgc2V0IGF0IHhoY2lfcmVzdW1lKCkgYW5kCj4gPiBz
-ZXQgYnkgaHViX3Jlc2V0X3Jlc3VtZSgpIGxhdGVyLCBzbyBubyBuZWVkIGNoZWNrIHBlbmRpbmcg
-cG9ydCBldmVudC4KPiA+IElmIFBQQyBpcyBub3Qgc3VwcG9ydGVkLCBkZXZpY2UgaXMgZGlzY29u
-bmVjZWQsIHNlZW1zIGRvIG5vdCBzZW5kIG91dAo+ID4gVTMgTEZQUyB3YWtlIHNpZ25hbCwgbm8g
-bmVlZCByZS1jaGVjayBhZ2FpbiBhbmQgZHJvcCAxMjBtcyBkZWxheSB0bwo+ID4gc2F2ZSByZXN1
-bWUgdGltZS4KPiA+Cj4gPiBSZXBvcnRlZC1ieTogWXVuLUNoaWVuIFl1IDx5dW4tY2hpZW4ueXVA
-bWVkaWF0ZWsuY29tPgo+ID4gU2lnbmVkLW9mZi1ieTogQ2h1bmZlbmcgWXVuIDxjaHVuZmVuZy55
-dW5AbWVkaWF0ZWsuY29tPgo+ID4gLS0tCj4KPiBUaGFua3MsIGFkZGluZwoKSGkgTWF0aGlhcywg
-Q2h1bmZlbmcKCkkgaGF2ZSBhIHF1ZXN0aW9uIG9uIHRoaXMsIGlmIHRoZXJlIGlzIG5vIGFueSB1
-c2IgZGV2aWNlcyBjb25uZWN0ZWQKYmVmb3JlIHN1c3BlbmQsIGRvIHdlIG5lZWQgdGhpcyAxMjBt
-cyBkZWxheSB0byBjaGVjayBhZ2Fpbj8KU28gZG8gd2UgbmVlZCBvbmUgbW9yZSBjb25kaXRpb24g
-dG8gbGltaXQgdGhpcyBsaWtlPwppZiAoIXBlbmRpbmdfcG9ydGV2ZW50ICYmICFoaWJlcm5hdGVk
-ICYmIHhoY2lfaGFzX2NoaWxkX2RldmljZSgpKQoKdGhhbmtzCkxpIEp1bgo+Cj4gLU1hdGhpYXMK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
-ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Fri, 2021-12-03 at 16:33 +0000, Catalin Marinas wrote:
+> On Thu, Nov 25, 2021 at 06:19:29PM +0800, Yee Lee wrote:
+> > On Mon, 2021-08-02 at 16:30 +0100, Catalin Marinas wrote:
+> > > On Fri, Jul 30, 2021 at 10:49:53PM +0800, yee.lee@mediatek.com
+> > > wrote:
+> > > > From: Yee Lee <yee.lee@mediatek.com>
+> > > > 
+> > > > For some low-end devices with limited resources,
+> > > > MTE needs to be optionally disabled to save system
+> > > > costs such as tag memory and firmware controls.
+> > > 
+> > > I understand the cost of using MTE but I don't fully get what you
+> > > mean
+> > > by firmware controls. If the ID_AA64PFR1_EL1.MTE reports that MTE
+> > > is
+> > > present, the firmware should have initialised MTE correctly (e.g.
+> > > tag
+> > > allocation storage, SCR_EL3.ATA) and not rely on a kernel command
+> > > line
+> > > argument that may or may not be present.
+> > > 
+> > > > This allows ID_AA64PFR1_EL1.MTE to be overridden on 
+> > > > its shadow value by giving "arm64.nomte" on cmdline,
+> > > > and to suppress MTE feature.
+> > > > 
+> > > > Suggested-by: Marc Zyngier <maz@kernel.org>
+> > > > Suggested-by: Suzuki K Poulose <suzuki.poulose@arm.com>
+> > > > Signed-off-by: Yee Lee <yee.lee@mediatek.com>
+> > > 
+> > > While this patch appears to disable MTE, I don't think it can
+> > > fully
+> > > prevent the access to the allocation tag storage, so the firmware
+> > > must
+> > > still initialise it correctly.
+> > > 
+> > > The issue is that __cpu_setup already configures the MAIR_EL1
+> > > register
+> > > to use Normal Tagged memory for the kernel mapping and
+> > > SCTLR_EL1.ATA is
+> > > set. The TCF field is zero, so no tag checking, but I couldn't
+> > > figure
+> > > out from the ARM ARM whether this also prevents LDR/STR from
+> > > attempting
+> > > to fetch the allocation tags. I think it's only the ATA bit and
+> > > the MAIR
+> > > configuration.
+> > > 
+> > > With this patch, KASAN_HW_TAGS (if configured) won't be used and
+> > > MTE
+> > > will not be presented to user applications, if that's what you
+> > > want, but
+> > > does not fully disable MTE.
+> > 
+> > As pointed out earlier, the hardware has been verified that still
+> > has
+> > transaction sending to DRAM due to mair_el1(Normal_tagged) is
+> > setup.  That means the override in this patch would be incompleted
+> > and
+> > cannot achieve to avoid undesired hardware confliction by disabling
+> > MTE.
+> > 
+> > Do we have other options to delay the configuration on MAIR_EL1
+> > after
+> > the override? Or maybe another CONFIG to bypass the init in
+> > __cpu_setup?
+> 
+> This register is trickier as it may be cached in the TLB (IIRC). I
+> think
+> deferring the setting of SCTLR_EL1.ATA(0) should be sufficient. Can
+> you
+> try the diff I sent in the previous email and confirm that the
+> accesses
+> to the allocation tag storage are blocked?
+> 
+
+Yes, the previous diff is already online. 
+
+In our experiment, with cmdline, "arm64.nomte", cpu_enable_mte() is
+bypassed and the ATA0 is not set, but the access to tag memory still
+dispatches. Only as MAIR_EL1 remains MAIR_ATTR_NORMAL, instead of
+MAIR_ATTR_NORMAL_TAGGED, the access will stop.
+
+From the manual, I think ATA only affects TAG instructions like STG,
+IRG, but not the tag access within normal STR/LDR.
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
