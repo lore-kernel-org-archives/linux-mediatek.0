@@ -4,69 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56B2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 12:12:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A780C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 14 Dec 2021 12:59:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ORmlxIQF4C0oz4xVfF01MOBOO23I/I9LrmT4x3+csBc=; b=I6LfZyCqQnbqCu
-	JEskgCU2NuK1wp9cKTOTQqHf8aCy68Zj7wH+XlqAc8ztjGhPrIZKiO6c1dbKa9A9+1Ncm+jhxWLGC
-	vCBTXveGbruxSq0zpv8tpfBWPgFL9qN2xS1S9aUKxa9JCaoXwMmSty0d1P0Q+/IUmqKJTVShZIiyh
-	2dbCCXSZqfukJeQhJYkM40Xj78ozPanCJfeypDcxhQytXciYMdEyR1r3ZDSqj/7FtJHClnGw7N5di
-	pG3VO3W5vKba4HmUmkEPUCffuWyJVCkzElKAgYQzPl8WAjUoNlX03E7XMXgbLfkDMdK+JFLPHLvt/
-	L7HqCtSDkBGPMuCqUYRQ==;
+	List-Owner; bh=34wOup6A2kHt8LaBlzInPINHnEpfeWCn6mRKPukwzTc=; b=YEJ4jT1I1i9IET
+	QrcHexb2ZRL4wsvyTMiUqA+GG+E/sM8IKlsQe5V5szNTSd6ofOFF7qf1do2icVKl8pPtLu4swGoyU
+	UJEbiQQbHL2ZlQl5gqQ4kiDr4BgmweXu2c5vERSxGJtE1bVjGmD1nNUlFMwRr12oSjWmrjl3v5q2u
+	/Qftk+bzmsUzp4p51V5rUuOgylB9VRs1Cu2nw4t4iqC6dT5AI2ErT8ka0F9gQ755bO7VCElhw4wF7
+	LIq2mVbHm8IPTib3E56cFGiwa+ugIlUnfq1uC9v2f/7rm7sxLnAqV41HagDX2qENcdtC7ou0vf5QN
+	oAzMJJL5JjnHJzHo9eWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mx6fQ-00DrQA-Jr; Tue, 14 Dec 2021 12:12:24 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1mx7Od-00E60v-4N; Tue, 14 Dec 2021 12:59:07 +0000
+Received: from mga12.intel.com ([192.55.52.136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mx6Vw-00DozJ-7L; Tue, 14 Dec 2021 12:02:37 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 97ABE614A2;
- Tue, 14 Dec 2021 12:02:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1CAB6C34601;
- Tue, 14 Dec 2021 12:02:30 +0000 (UTC)
-Date: Tue, 14 Dec 2021 12:02:27 +0000
-From: Catalin Marinas <catalin.marinas@arm.com>
-To: Yee Lee <yee.lee@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, nicholas.Tang@mediatek.com,
- Kuan-Ying.lee@mediatek.com, chinwen.chang@mediatek.com,
- Jonathan Corbet <corbet@lwn.net>, Will Deacon <will@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- "Paul E. McKenney" <paulmck@kernel.org>,
- Randy Dunlap <rdunlap@infradead.org>,
- Andrew Morton <akpm@linux-foundation.org>,
- Thomas Gleixner <tglx@linutronix.de>,
- "Maciej W. Rozycki" <macro@orcam.me.uk>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Peter Zijlstra <peterz@infradead.org>,
- Vlastimil Babka <vbabka@suse.cz>, Marc Zyngier <maz@kernel.org>,
- David Brazdil <dbrazdil@google.com>,
- Ard Biesheuvel <ardb@kernel.org>, Fuad Tabba <tabba@google.com>,
- "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
- "moderated list:ARM64 PORT (AARCH64 ARCHITECTURE)"
- <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v3 1/1] arm64/cpufeature: Optionally disable MTE via
- command-line
-Message-ID: <YbiH04yqEqW8p8EM@arm.com>
-References: <20210730144957.30938-1-yee.lee@mediatek.com>
- <20210730144957.30938-2-yee.lee@mediatek.com>
- <20210802153036.GH18685@arm.com>
- <e055e71f0ca7bcb351b9097ba8f8f4a9d324623c.camel@mediatek.com>
- <YapGyozjactAm8vp@arm.com>
- <dc2fd1f8c68e78905f4242c2b530bc720b979cd8.camel@mediatek.com>
+ id 1mx7OZ-00E5vD-7m; Tue, 14 Dec 2021 12:59:04 +0000
+X-IronPort-AV: E=McAfee;i="6200,9189,10197"; a="218986584"
+X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="218986584"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Dec 2021 04:59:02 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,205,1635231600"; d="scan'208";a="463785891"
+Received: from black.fi.intel.com ([10.237.72.28])
+ by orsmga003.jf.intel.com with ESMTP; 14 Dec 2021 04:58:49 -0800
+Received: by black.fi.intel.com (Postfix, from userid 1003)
+ id DD49981; Tue, 14 Dec 2021 14:58:56 +0200 (EET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Linus Walleij <linus.walleij@linaro.org>, Marc Zyngier <maz@kernel.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Sam Shih <sam.shih@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>,
+ Claudiu Beznea <claudiu.beznea@microchip.com>,
+ Radim Pavlik <radim.pavlik@tbs-biometrics.com>,
+ Kavyasree Kotagiri <kavyasree.kotagiri@microchip.com>,
+ Colin Foster <colin.foster@in-advantage.com>,
+ Douglas Anderson <dianders@chromium.org>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@linaro.org>,
+ Herve Codina <herve.codina@bootlin.com>, linux-gpio@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org,
+ linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ linux-rpi-kernel@lists.infradead.org, alsa-devel@alsa-project.org,
+ patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
+ linux-oxnas@groups.io, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org
+Cc: =?UTF-8?q?Andreas=20F=C3=A4rber?= <afaerber@suse.de>,
+ Manivannan Sadhasivam <mani@kernel.org>,
+ Nicolas Saenz Julienne <nsaenz@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>,
+ Charles Keepax <ckeepax@opensource.cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Sean Wang <sean.wang@kernel.org>,
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
+ Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Support Opensource <support.opensource@diasemi.com>,
+ Baruch Siach <baruch@tkos.co.il>, Neil Armstrong <narmstrong@baylibre.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andy Gross <agross@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Viresh Kumar <vireshk@kernel.org>,
+ Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org
+Subject: [PATCH v2 2/2] pinctrl: Propagate firmware node from a parent device
+Date: Tue, 14 Dec 2021 14:58:55 +0200
+Message-Id: <20211214125855.33207-2-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20211214125855.33207-1-andriy.shevchenko@linux.intel.com>
+References: <20211214125855.33207-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <dc2fd1f8c68e78905f4242c2b530bc720b979cd8.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_040236_399193_726AED40 
-X-CRM114-Status: GOOD (  25.66  )
+X-CRM114-CacheID: sfid-20211214_045903_319292_53BB6FEF 
+X-CRM114-Status: GOOD (  15.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,49 +100,224 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 14, 2021 at 04:19:05PM +0800, Yee Lee wrote:
-> On Fri, 2021-12-03 at 16:33 +0000, Catalin Marinas wrote:
-> > On Thu, Nov 25, 2021 at 06:19:29PM +0800, Yee Lee wrote:
-> > > As pointed out earlier, the hardware has been verified that still has
-> > > transaction sending to DRAM due to mair_el1(Normal_tagged) is
-> > > setup.  That means the override in this patch would be incompleted and
-> > > cannot achieve to avoid undesired hardware confliction by disabling MTE.
-> > > 
-> > > Do we have other options to delay the configuration on MAIR_EL1 after
-> > > the override? Or maybe another CONFIG to bypass the init in __cpu_setup?
-> > 
-> > This register is trickier as it may be cached in the TLB (IIRC). I think
-> > deferring the setting of SCTLR_EL1.ATA(0) should be sufficient. Can you
-> > try the diff I sent in the previous email and confirm that the accesses
-> > to the allocation tag storage are blocked?
-> 
-> Yes, the previous diff is already online. 
-> 
-> In our experiment, with cmdline, "arm64.nomte", cpu_enable_mte() is
-> bypassed and the ATA0 is not set, but the access to tag memory still
-> dispatches. Only as MAIR_EL1 remains MAIR_ATTR_NORMAL, instead of
-> MAIR_ATTR_NORMAL_TAGGED, the access will stop.
-> 
-> From the manual, I think ATA only affects TAG instructions like STG,
-> IRG, but not the tag access within normal STR/LDR.
+When creating MFD platform devices the firmware node is left unset.
+This, in particular, prevents GPIO library to use it for different
+purposes. Propagate firmware node from the parent device and let
+GPIO library do the right thing.
 
-The ARM ARM states SCTLR_EL1.ATA0 == 0 means "access to allocation tags
-is prevented". The AArch64.MemSingle[] pseudocode ends up with similar
-checks:
+While at it, slightly modify the headers to reflect the usage of APIs.
 
-https://developer.arm.com/documentation/ddi0596/2021-09/Shared-Pseudocode/AArch64-Functions?lang=en#AArch64.MemSingle.read.5
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+v2: fixed compilation bug (LKP), due to above reshuffle headers in the rest
+ drivers/pinctrl/cirrus/pinctrl-madera-core.c |  5 ++++-
+ drivers/pinctrl/pinctrl-as3722.c             | 13 +++++++------
+ drivers/pinctrl/pinctrl-da9062.c             |  6 +++---
+ drivers/pinctrl/pinctrl-max77620.c           | 10 ++++++----
+ drivers/pinctrl/pinctrl-rk805.c              | 12 ++++++------
+ 5 files changed, 26 insertions(+), 20 deletions(-)
 
-before reading the tags from memory in AArch64.CheckTag():
-
-https://developer.arm.com/documentation/ddi0596/2021-09/Shared-Pseudocode/AArch64-Functions?lang=en#AArch64.CheckTag.4
-
-My suggestion is to raise this with support@arm.com (feel free to cc me)
-so that we clarify the hardware behaviour. I don't think it's entirely
-correct (it's more like, is there a risk of external aborts caused by
-access to allocation tag storage that's not present?)
-
+diff --git a/drivers/pinctrl/cirrus/pinctrl-madera-core.c b/drivers/pinctrl/cirrus/pinctrl-madera-core.c
+index dce2626384a9..e1cfbee3643a 100644
+--- a/drivers/pinctrl/cirrus/pinctrl-madera-core.c
++++ b/drivers/pinctrl/cirrus/pinctrl-madera-core.c
+@@ -8,8 +8,10 @@
+ #include <linux/err.h>
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
++#include <linux/property.h>
+ #include <linux/regmap.h>
+ #include <linux/slab.h>
++
+ #include <linux/pinctrl/machine.h>
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinmux.h>
+@@ -1004,13 +1006,14 @@ static int madera_pin_probe(struct platform_device *pdev)
+ 
+ 	dev_dbg(&pdev->dev, "%s\n", __func__);
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	priv = devm_kzalloc(&pdev->dev, sizeof(*priv), GFP_KERNEL);
+ 	if (!priv)
+ 		return -ENOMEM;
+ 
+ 	priv->dev = &pdev->dev;
+ 	priv->madera = madera;
+-	pdev->dev.of_node = madera->dev->of_node;
+ 
+ 	switch (madera->type) {
+ 	case CS47L15:
+diff --git a/drivers/pinctrl/pinctrl-as3722.c b/drivers/pinctrl/pinctrl-as3722.c
+index 13c193156363..5a175e3d7439 100644
+--- a/drivers/pinctrl/pinctrl-as3722.c
++++ b/drivers/pinctrl/pinctrl-as3722.c
+@@ -23,19 +23,20 @@
+ #include <linux/delay.h>
+ #include <linux/gpio/driver.h>
+ #include <linux/kernel.h>
++#include <linux/mod_device_table.h>
+ #include <linux/module.h>
+ #include <linux/mfd/as3722.h>
+-#include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
++#include <linux/pm.h>
++#include <linux/property.h>
++#include <linux/slab.h>
++
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/machine.h>
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinmux.h>
+-#include <linux/pm.h>
+-#include <linux/slab.h>
+ 
+ #include "core.h"
+ #include "pinconf.h"
+@@ -551,12 +552,13 @@ static int as3722_pinctrl_probe(struct platform_device *pdev)
+ 	struct as3722_pctrl_info *as_pci;
+ 	int ret;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	as_pci = devm_kzalloc(&pdev->dev, sizeof(*as_pci), GFP_KERNEL);
+ 	if (!as_pci)
+ 		return -ENOMEM;
+ 
+ 	as_pci->dev = &pdev->dev;
+-	as_pci->dev->of_node = pdev->dev.parent->of_node;
+ 	as_pci->as3722 = dev_get_drvdata(pdev->dev.parent);
+ 	platform_set_drvdata(pdev, as_pci);
+ 
+@@ -578,7 +580,6 @@ static int as3722_pinctrl_probe(struct platform_device *pdev)
+ 
+ 	as_pci->gpio_chip = as3722_gpio_chip;
+ 	as_pci->gpio_chip.parent = &pdev->dev;
+-	as_pci->gpio_chip.of_node = pdev->dev.parent->of_node;
+ 	ret = gpiochip_add_data(&as_pci->gpio_chip, as_pci);
+ 	if (ret < 0) {
+ 		dev_err(&pdev->dev, "Couldn't register gpiochip, %d\n", ret);
+diff --git a/drivers/pinctrl/pinctrl-da9062.c b/drivers/pinctrl/pinctrl-da9062.c
+index 1c08579f0198..0e0ac3f3ffef 100644
+--- a/drivers/pinctrl/pinctrl-da9062.c
++++ b/drivers/pinctrl/pinctrl-da9062.c
+@@ -14,6 +14,7 @@
+ #include <linux/bits.h>
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
++#include <linux/property.h>
+ #include <linux/regmap.h>
+ 
+ #include <linux/gpio/driver.h>
+@@ -256,6 +257,8 @@ static int da9062_pctl_probe(struct platform_device *pdev)
+ 	struct da9062_pctl *pctl;
+ 	int i;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	pctl = devm_kzalloc(&pdev->dev, sizeof(*pctl), GFP_KERNEL);
+ 	if (!pctl)
+ 		return -ENOMEM;
+@@ -277,9 +280,6 @@ static int da9062_pctl_probe(struct platform_device *pdev)
+ 	pctl->gc = reference_gc;
+ 	pctl->gc.label = dev_name(&pdev->dev);
+ 	pctl->gc.parent = &pdev->dev;
+-#ifdef CONFIG_OF_GPIO
+-	pctl->gc.of_node = parent->of_node;
+-#endif
+ 
+ 	platform_set_drvdata(pdev, pctl);
+ 
+diff --git a/drivers/pinctrl/pinctrl-max77620.c b/drivers/pinctrl/pinctrl-max77620.c
+index c643ed43ebbf..132987340637 100644
+--- a/drivers/pinctrl/pinctrl-max77620.c
++++ b/drivers/pinctrl/pinctrl-max77620.c
+@@ -11,13 +11,14 @@
+ 
+ #include <linux/mfd/max77620.h>
+ #include <linux/module.h>
+-#include <linux/of.h>
++#include <linux/platform_device.h>
++#include <linux/property.h>
++#include <linux/regmap.h>
++
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinmux.h>
+-#include <linux/platform_device.h>
+-#include <linux/regmap.h>
+ 
+ #include "core.h"
+ #include "pinconf.h"
+@@ -551,12 +552,13 @@ static int max77620_pinctrl_probe(struct platform_device *pdev)
+ 	struct max77620_pctrl_info *mpci;
+ 	int i;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	mpci = devm_kzalloc(&pdev->dev, sizeof(*mpci), GFP_KERNEL);
+ 	if (!mpci)
+ 		return -ENOMEM;
+ 
+ 	mpci->dev = &pdev->dev;
+-	mpci->dev->of_node = pdev->dev.parent->of_node;
+ 	mpci->rmap = max77620->rmap;
+ 
+ 	mpci->pins = max77620_pins_desc;
+diff --git a/drivers/pinctrl/pinctrl-rk805.c b/drivers/pinctrl/pinctrl-rk805.c
+index c6f4229eb106..7c1f7408fb9a 100644
+--- a/drivers/pinctrl/pinctrl-rk805.c
++++ b/drivers/pinctrl/pinctrl-rk805.c
+@@ -13,17 +13,17 @@
+ #include <linux/kernel.h>
+ #include <linux/module.h>
+ #include <linux/mfd/rk808.h>
+-#include <linux/of.h>
+-#include <linux/of_device.h>
+ #include <linux/platform_device.h>
++#include <linux/pm.h>
++#include <linux/property.h>
++#include <linux/slab.h>
++
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/machine.h>
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/pinctrl/pinconf.h>
+ #include <linux/pinctrl/pinmux.h>
+-#include <linux/pm.h>
+-#include <linux/slab.h>
+ 
+ #include "core.h"
+ #include "pinconf.h"
+@@ -420,18 +420,18 @@ static int rk805_pinctrl_probe(struct platform_device *pdev)
+ 	struct rk805_pctrl_info *pci;
+ 	int ret;
+ 
++	device_set_node(&pdev->dev, dev_fwnode(pdev->dev.parent));
++
+ 	pci = devm_kzalloc(&pdev->dev, sizeof(*pci), GFP_KERNEL);
+ 	if (!pci)
+ 		return -ENOMEM;
+ 
+ 	pci->dev = &pdev->dev;
+-	pci->dev->of_node = pdev->dev.parent->of_node;
+ 	pci->rk808 = dev_get_drvdata(pdev->dev.parent);
+ 
+ 	pci->pinctrl_desc = rk805_pinctrl_desc;
+ 	pci->gpio_chip = rk805_gpio_chip;
+ 	pci->gpio_chip.parent = &pdev->dev;
+-	pci->gpio_chip.of_node = pdev->dev.parent->of_node;
+ 
+ 	platform_set_drvdata(pdev, pci);
+ 
 -- 
-Catalin
+2.33.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
