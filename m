@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF06DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 17:05:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 490F5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 17:25:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0dZFR4IIMAbZdrGbpe16JSSwYgXLi8UyrLF/uXS9kjE=; b=Y6FX7xCpBlscDW
-	BCIUbic7F8QN21yrn6LSvitoQsoMmy767ZaqGLoEBqF9Y4UGI2Oy4uR3x1hcdlF6AqnFs8s7AcsRp
-	/WG6LscLj17xVMghFpqo9lL52ZWvmzn4qz6nNi0FF9BLWeWoWIEaZjDADlUcG8kdAkVtAqm8I0hFL
-	fLN/Fp5xh/9qklYXAb4GFno0ETdFTdgsxUAr+dX330CUtXNLfDWXsXFpcxxyRGbKXKScxyNd2RyCp
-	1Cjy+KxrOMVmCDBJRf0aEdUIr143CqwTNog7yt7ECoIVIpgvqkwLK0gMc30n7UPL0pQmlIZM934a8
-	CSzwfoU35za4jCuNMF9w==;
+	List-Owner; bh=09Asx/N792C0ZhP6jyWkfwo1D5lEIcQImfi4Z/HdNtU=; b=QpwjbyCrD9dpuY
+	lEJ4MmpBBtDs2smc1pSYnVBmFqBq/ZTgV0SLLdktubnk3xb3KkTY2mT8MtCt9EGs7jT4Gye6K7f90
+	/QOFHZVlIE3PNhOaaUEuC/XD9kHUwUO4KM/EZkYQkQ2yeCtdTnWiCN6Li0jxE2j6vSAksgRNn582I
+	yhdywov0KxtMoaNXhZJPbt+Mcq9CMxfV35uvx/fYSHKRo0n9S58rv345p2S/dqm96tYhEyzg1idEw
+	LbuglTyR5UIz0b0o3PEzsg2DrzRqyzysC1+Zl2ojXvjWKthCsKOO/fxKpqhAD77wFbQMbV1WU7J7+
+	xLrKDZFD9abkvIK4KnGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxXiD-001wun-4g; Wed, 15 Dec 2021 17:05:05 +0000
-Received: from mail-oo1-f51.google.com ([209.85.161.51])
+	id 1mxY22-00252o-0S; Wed, 15 Dec 2021 17:25:34 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxXZo-001tYb-SU; Wed, 15 Dec 2021 16:56:26 +0000
-Received: by mail-oo1-f51.google.com with SMTP id
- v30-20020a4a315e000000b002c52d555875so6100529oog.12; 
- Wed, 15 Dec 2021 08:56:24 -0800 (PST)
+ id 1mxY1l-0024va-1x
+ for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 17:25:19 +0000
+Received: by mail-lf1-x136.google.com with SMTP id l22so44471491lfg.7
+ for <linux-mediatek@lists.infradead.org>; Wed, 15 Dec 2021 09:25:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Ru1QL2NBcOaL08U8KTJ8X+cObMY1RMiyv3ZA0fT6+tc=;
+ b=NR1IRP7NBuHpjy3NNtMcQtDrQeD4PxJvs2bqCI4hudQOXKBccGAg80rzb7VJTpUgKj
+ b7Bp+VIFxZ1rqSd77PsBDV7klG9eUd3MurAAwSlG5r1DquTsvSnoKtfYPeZcEXouJWtA
+ G52s1P4JbdQ81xsrDlSW58wYsOKxsMMQ9xqwo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=jRx/8XO5m2lO+UXrFb8kcYT22KejDsnyUFbPI7+hOJM=;
- b=PgcU9R4QU062eaHHWJX2nf2h0B6BWcPPEuyfOJl1GbUli1P7C7morx9XMMs7BuOsBs
- TRknzCaxEpCrMFKQabco1PmclxZHgwYzLp9XpKk1Hrky6hnZeHPj8DUzj/W+uANqYgAI
- EGvC1OcmAhWW9lOQu7PuHEZbEhmJzQDQg2OKk5OrHewJXKqjpC10S6PhlrDwPpWWE10r
- qWLdkMaaKVBYILQNc0MUIHOhOdMxNDuXcM92FEQe1gewwfXHyy28hF5fgBtNAnpKqz6b
- QDYol90aVFRNEPcc/zlDVIo+0QNS58zOo3rq5Gp22wQixk61Iywgobwdh139n9cp3y9H
- cJeQ==
-X-Gm-Message-State: AOAM532fZa/0z6svCIx1M4x9V3GcWu+9LqNZyt0cjDBhhpjYhjDEHjEu
- XXLs5/Gnz8QDonkTQEByGA==
-X-Google-Smtp-Source: ABdhPJwAyYDPJPd/QuvgrvCEGorU09o3oX0vioSImGfUA+720rBTHRNfwyRDvv4oc8UFp20LVOHoNA==
-X-Received: by 2002:a4a:d47:: with SMTP id 68mr7887808oob.92.1639587383787;
- Wed, 15 Dec 2021 08:56:23 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id j10sm528301ooq.5.2021.12.15.08.56.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 08:56:23 -0800 (PST)
-Received: (nullmailer pid 1466701 invoked by uid 1000);
- Wed, 15 Dec 2021 16:56:22 -0000
-Date: Wed, 15 Dec 2021 10:56:22 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [next PATCH] dt-bindings: nvmem: convert mtk-efuse.txt to YAML
- schema
-Message-ID: <YboeNrekGcGOZES8@robh.at.kernel.org>
-References: <20211209024213.16612-1-chunfeng.yun@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Ru1QL2NBcOaL08U8KTJ8X+cObMY1RMiyv3ZA0fT6+tc=;
+ b=T2d/ds3GQ6tmB1sH6l5pmHimvw3wp5LUm7bXkqoeVdEXX0IUZt/ciRNKg6dveyQ4mC
+ 9C+kS5q7uu/t/VGs4I11ic1EIrbJg4RzgNb4LNeJEOcmVb5zM0DTSU838IZq4J1ldEfy
+ osXodzTdZS5d6qMHL837O1pf9i9aux7ttvmZRFa/lvUJXHwxUCtZ5ehpF5mTGpTD4ryM
+ gK5h7GWRwMgiGh5VGnPRyw1HofsGBITzXmjJ3WADiLRRtsp7p02xk8JAMz0NRGyrUM4w
+ IZwJ43dE+XUeSVCcF+h/kJbaQs6x2Cao9A8LYT3dSwryHCjt/y0VZTkiwdwF12OSwPj7
+ 1ZfQ==
+X-Gm-Message-State: AOAM530F329n/S3DX2WCVLugliLRQZGr9KHKDdpt9H6ozV67cTVGQgf1
+ 95uYLe0you5PmqNdkcxX7Qv9a988j2gx9/0DU+g3zQ==
+X-Google-Smtp-Source: ABdhPJznEJza5b1lb+va724WlFIkZtOElqFWZGL/mIh6Ux79XpFZA9BLaQf0YiyCn/PejWZESk08SwEHLgkNYSPRTxQ=
+X-Received: by 2002:a19:7417:: with SMTP id v23mr10778310lfe.19.1639589114100; 
+ Wed, 15 Dec 2021 09:25:14 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211209024213.16612-1-chunfeng.yun@mediatek.com>
+References: <20211022172413.195559-1-markyacoub@chromium.org>
+ <20211026011318.GF2515@art_vandelay>
+ <CAJUqKUopyQEyLh7w32UnHfUJv0nNUoE_PHAdkEj8JOnkhVqbbQ@mail.gmail.com>
+ <CAAOTY_84K_xCQE-H8zxWfBhn4kQF_kPsmaqDuRr8w2E4rti3QA@mail.gmail.com>
+In-Reply-To: <CAAOTY_84K_xCQE-H8zxWfBhn4kQF_kPsmaqDuRr8w2E4rti3QA@mail.gmail.com>
+From: Mark Yacoub <markyacoub@chromium.org>
+Date: Wed, 15 Dec 2021 12:25:02 -0500
+Message-ID: <CAJUqKUrCibOCjPca_YaLpF2_zsb-85CbKbrs9KyGqWwGrWOGyg@mail.gmail.com>
+Subject: Re: [PATCH] mediatek: Set default value for Panel Orientation
+ connector prop.
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: Sean Paul <sean@poorly.run>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sean Paul <seanpaul@chromium.org>, 
+ Mark Yacoub <markyacoub@google.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_085625_012207_C9E86E9D 
-X-CRM114-Status: GOOD (  21.36  )
+X-CRM114-CacheID: sfid-20211215_092517_157472_76D0DAF0 
+X-CRM114-Status: GOOD (  24.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,178 +85,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 09, 2021 at 10:42:13AM +0800, Chunfeng Yun wrote:
-> Convert mtk-efuse.txt to YAML schema mediatek,efuse.yaml
-> 
-> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> ---
->  .../bindings/nvmem/mediatek,efuse.yaml        | 89 +++++++++++++++++++
->  .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 ---------
->  2 files changed, 89 insertions(+), 43 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
->  delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> 
-> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> new file mode 100644
-> index 000000000000..7332195e7f00
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
-> @@ -0,0 +1,89 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: MediaTek efuse device tree bindings
-> +
-> +description: |
-> +  MediaTek's efuse is used for storing calibration data, it can be accessed
-> +  on ARM devices usiong I/O mapped memory.
-> +
-> +maintainers:
-> +  - Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-> +
-> +allOf:
-> +  - $ref: "nvmem.yaml#"
-> +
-> +properties:
-> +  $nodename:
-> +    pattern: "^efuse@[0-9a-f]+$"
-> +
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - mediatek,mt7622-efuse
-> +              - mediatek,mt7623-efuse
-> +              - mediatek,mt8173-efuse
-> +              - mediatek,mt8192-efuse
-> +              - mediatek,mt8195-efuse
-> +              - mediatek,mt8516-efuse
-> +          - const: mediatek,efuse
-> +      - const: mediatek,mt8173-efuse
-> +        deprecated: true
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-
-All of: 
-
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 1
-> +
-> +patternProperties:
-> +  "^.*@[0-9a-f]+$":
-> +    type: object
-> +
-> +    properties:
-> +      reg:
-> +        maxItems: 1
-> +
-> +      bits:
-> +        maxItems: 1
-> +
-> +    required:
-> +      - reg
-> +
-> +    additionalProperties: false
-
-...this is covered by nvmem.yaml and can be dropped.
-
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +unevaluatedProperties: false
-> +
-> +examples:
-> +  - |
-> +    efuse@10206000 {
-> +        compatible = "mediatek,mt8173-efuse";
-> +        reg = <0x10206000 0x1000>;
-> +        #address-cells = <1>;
-> +        #size-cells = <1>;
-> +
-> +        u2_intr_p0: usb2-intr-p0@188 {
-> +            reg = <0x188 0x1>;
-> +            bits = <0 5>;
-> +        };
-> +
-> +        u2_intr_p1: usb2-intr-p1@188 {
-> +            reg = <0x188 0x2>;
-> +            bits = <5 5>;
-> +        };
-> +
-> +        thermal_calibration: calib@528 {
-> +            reg = <0x528 0xc>;
-> +        };
-> +    };
-> diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> deleted file mode 100644
-> index 39d529599444..000000000000
-> --- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
-> +++ /dev/null
-> @@ -1,43 +0,0 @@
-> -= Mediatek MTK-EFUSE device tree bindings =
-> -
-> -This binding is intended to represent MTK-EFUSE which is found in most Mediatek SOCs.
-> -
-> -Required properties:
-> -- compatible: should be
-> -	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
-> -	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
-> -	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
-> -	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
-> -	      "mediatek,mt8195-efuse", "mediatek,efuse": for MT8195
-> -	      "mediatek,mt8516-efuse", "mediatek,efuse": for MT8516
-> -- reg: Should contain registers location and length
-> -- bits: contain the bits range by offset and size
-> -
-> -= Data cells =
-> -Are child nodes of MTK-EFUSE, bindings of which as described in
-> -bindings/nvmem/nvmem.txt
-> -
-> -Example:
-> -
-> -	efuse: efuse@10206000 {
-> -		compatible = "mediatek,mt8173-efuse";
-> -		reg	   = <0 0x10206000 0 0x1000>;
-> -		#address-cells = <1>;
-> -		#size-cells = <1>;
-> -
-> -		/* Data cells */
-> -		thermal_calibration: calib@528 {
-> -			reg = <0x528 0xc>;
-> -		};
-> -	};
-> -
-> -= Data consumers =
-> -Are device nodes which consume nvmem data cells.
-> -
-> -For example:
-> -
-> -	thermal {
-> -		...
-> -		nvmem-cells = <&thermal_calibration>;
-> -		nvmem-cell-names = "calibration";
-> -	};
-> -- 
-> 2.18.0
-> 
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gV2VkLCBEZWMgMTUsIDIwMjEgYXQgMTE6MTQgQU0gQ2h1bi1LdWFuZyBIdSA8Y2h1bmt1YW5n
+Lmh1QGtlcm5lbC5vcmc+IHdyb3RlOgo+Cj4gSGksIE1hcms6Cj4KPiBNYXJrIFlhY291YiA8bWFy
+a3lhY291YkBjaHJvbWl1bS5vcmc+IOaWvCAyMDIx5bm0MTLmnIgxNOaXpSDpgLHkuowg5LiL5Y2I
+MTE6MTPlr6vpgZPvvJoKPiA+Cj4gPiBIZXkgQ0ssIGNhbiB3ZSBoYXZlIHRoaXMgbWVyZ2VkPwo+
+ID4gVGhhbmsgeW91IQo+ID4KPiA+IE9uIE1vbiwgT2N0IDI1LCAyMDIxIGF0IDk6MTMgUE0gU2Vh
+biBQYXVsIDxzZWFuQHBvb3JseS5ydW4+IHdyb3RlOgo+ID4gPgo+ID4gPiBPbiBGcmksIE9jdCAy
+MiwgMjAyMSBhdCAwMToyNDowM1BNIC0wNDAwLCBNYXJrIFlhY291YiB3cm90ZToKPiA+ID4gPiBG
+cm9tOiBNYXJrIFlhY291YiA8bWFya3lhY291YkBjaHJvbWl1bS5vcmc+Cj4gPiA+ID4KPiA+ID4g
+PiBbV2h5XQo+ID4gPiA+IENyZWF0aW5nIHRoZSBwcm9wIHVzZXMgVU5LTk9XTiBhcyB0aGUgaW5p
+dGlhbCB2YWx1ZSwgd2hpY2ggaXMgbm90IGEKPiA+ID4gPiBzdXBwb3J0ZWQgdmFsdWUgaWYgdGhl
+IHByb3BzIGlzIHRvIGJlIHN1cHBvcnRlZC4KPiA+ID4gPgo+ID4gPiA+IFtIb3ddCj4gPiA+ID4g
+U2V0IHRoZSBwYW5lbCBvcmllbnRhdGlvbiBkZWZhdWx0IHZhbHVlIHRvIE5PUk1BTCByaWdodCBh
+ZnRlciBjcmVhdGluZwo+ID4gPiA+IHRoZSBwcm9wLgo+ID4gPgo+ID4gPiBSZXZpZXdlZC1ieTog
+U2VhbiBQYXVsIDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gPiA+Cj4gPiA+ID4KPiA+ID4gPiBU
+ZXN0ZWQgb24gSmFjdXp6aShNVEspCj4gPiA+ID4gRml4ZXMgSUdUQGttc19wcm9wZXJ0aWVzQGdl
+dF9wcm9wZXJ0aWVzLXNhbml0eS17YXRvbWljLG5vbi1hdG9taWN9Cj4gPiA+ID4KPiA+ID4gPiBT
+aWduZWQtb2ZmLWJ5OiBNYXJrIFlhY291YiA8bWFya3lhY291YkBjaHJvbWl1bS5vcmc+Cj4gPiA+
+ID4gLS0tCj4gPiA+ID4gIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMgfCAyICsr
+Cj4gPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPiA+ID4gPgo+ID4gPiA+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jIGIvZHJpdmVy
+cy9ncHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gPiA+IGluZGV4IDBhZDcxNTc2NjBhZmEu
+LmI3YzI1MjhhOGY0MWMgMTAwNjQ0Cj4gPiA+ID4gLS0tIGEvZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kc2kuYwo+ID4gPiA+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtf
+ZHNpLmMKPiA+ID4gPiBAQCAtMTAzOSw2ICsxMDM5LDggQEAgc3RhdGljIGludCBtdGtfZHNpX2Vu
+Y29kZXJfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1Y3QgbXRrX2RzaSAqZHNpKQo+
+ID4gPiA+ICAgICAgICAgICAgICAgRFJNX0VSUk9SKCJVbmFibGUgdG8gaW5pdCBwYW5lbCBvcmll
+bnRhdGlvblxuIik7Cj4gPiA+ID4gICAgICAgICAgICAgICBnb3RvIGVycl9jbGVhbnVwX2VuY29k
+ZXI7Cj4gPiA+ID4gICAgICAgfQo+ID4gPiA+ICsgICAgIGRybV9jb25uZWN0b3Jfc2V0X3BhbmVs
+X29yaWVudGF0aW9uKGRzaS0+Y29ubmVjdG9yLAo+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIERSTV9NT0RFX1BBTkVMX09SSUVOVEFUSU9OX05PUk1BTCk7
+Cj4KPiBJbiBkcm1fY29ubmVjdG9yX3NldF9wYW5lbF9vcmllbnRhdGlvbigpIFsxXSwgSSBmaW5k
+IHRoYXQgdGhlCj4gb3JpZW50YXRpb24gY291bGQgYmUgc2V0IG9ubHkgb25jZS4gT25jZSB5b3Ug
+c2V0IGl0IHRvIG5vcm1hbCwgaXQKPiBjb3VsZCBub3QgYmUgc2V0IHRvIG90aGVyIG9yaWVudGF0
+aW9uLiBSaWdodD8KPgpIZWxsbywKWWVhaCB0aGlzIGxvb2tzIHRydWUsIGFuZCBtYWtlcyBzZW5z
+ZSBhY2NvcmRpbmcgdG8gdGhlIGRvY3VtZW50YXRpb246Cmh0dHBzOi8vMDEub3JnL2xpbnV4Z3Jh
+cGhpY3MvZ2Z4LWRvY3MvZHJtL2dwdS9kcm0ta21zLmh0bWwjOn46dGV4dD1vbmUlMjBzdGFuZGFy
+ZGl6ZWQlMjBwcm9wZXJ0eSUzQS0scGFuZWwlMjBvcmllbnRhdGlvbiUzQSwtT24lMjBzb21lJTIw
+ZGV2aWNlcwoKUGFuZWwgb3JpZW50YXRpb24gaGFzIHRvIGRvIHdpdGggdGhlIGhvdyB0aGUgaGFy
+ZHdhcmUgaXMgbW91bnRlZCwgaW4KY29udHJhc3Qgd2l0aCB0aGUgUm90YXRpb24gcHJvcGVydHku
+IEFsbCB0aGUgSFcgd2UgaGF2ZSByaWdodCBub3cgaGFzCmEgbm9ybWFsIHBhbmVsIG9yaWVudGF0
+aW9uIHNvIGl0IG1ha2VzIHNlbnNlIHRvIGJlIHNldCB0aGlzIHdheS4gQW1vbmcKb3RoZXIgZHJp
+dmVycywgcGFuZWwgb3JpZW50YXRpb24gaXMgYWx3YXlzIHNldCByaWdodCBhZnRlciB0aGUKcHJv
+cGVydHkgaXMgaW5pdGlhbGl6ZWQuCgo+IFsxXSBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9z
+Y20vbGludXgva2VybmVsL2dpdC90b3J2YWxkcy9saW51eC5naXQvdHJlZS9kcml2ZXJzL2dwdS9k
+cm0vZHJtX2Nvbm5lY3Rvci5jP2g9djUuMTYtcmM1I24yMzAyCj4KPiBSZWdhcmRzLAo+IENodW4t
+S3VhbmcuCj4KPiA+ID4gPgo+ID4gPiA+ICAgICAgIGRybV9jb25uZWN0b3JfYXR0YWNoX2VuY29k
+ZXIoZHNpLT5jb25uZWN0b3IsICZkc2ktPmVuY29kZXIpOwo+ID4gPiA+Cj4gPiA+ID4gLS0KPiA+
+ID4gPiAyLjMzLjAuMTA3OS5nNmU3MDc3OGRjOS1nb29nCj4gPiA+ID4KPiA+ID4KPiA+ID4gLS0K
+PiA+ID4gU2VhbiBQYXVsLCBTb2Z0d2FyZSBFbmdpbmVlciwgR29vZ2xlIC8gQ2hyb21pdW0gT1MK
+Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
+ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
+dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
