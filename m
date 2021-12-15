@@ -4,87 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC03C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 19:23:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF50AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 19:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vTXE/BrMgCrewt7+vV7/RxnHD+Qcri1XadchjbrorgU=; b=saNrNi2NEVR6gt
-	OxE9ZgT0kV8snijDCaEIIgmyCJ6TeH1Ow2ok3puadOo+KbL34PFFz0ywPudDWtDI5qNW3xuOG4skY
-	3y7Js9oyFMsaAOw3NmX+fnPkAqHhUWlMadcVvIOfSagxJvctznPcZQLfEcD8JgDMTMoFtp3f14K4y
-	8ExXK3CFtwUNaYcRduLjrllfJP2RXfbzC8nGRBBiMVwodVm4Gqa9nOeUG3T1Vz7yt8Ywzi8RHFa1u
-	F1/bqkW88Zy5MRtOoJfntZGzKOm7AqFsj3qVTxRjkQxY3Y6HNO4efzjv4qAP1x8+3GfqifKdZwNF0
-	OEw3pRxSNd8ltkvhtAkA==;
+	List-Owner; bh=5WbTQhDVLBZlgidk5ynNNfywoecvGn7nOTMoqq/OecE=; b=sVgXg3th/sJzVx
+	x1lUDBFozBsjlHwu+DFfgAr8rXUpAQhPJMe8JgEn4inMFPpObVtb+kK/DNCnsJa8rD2zMSIEbmbSB
+	AM5ndjtUWZWi3lSu3WfKWesad6dbLCofovWqWb9TTFDQvmCp3+ZjVr1Cc3+xeH3UxExdQ44Phu5vx
+	yLdQsFrEyKfIjmmJDJM63hoCLeu2P9KNGjOUtq+NARCr71h+ahh12HMje2v6PX8sHP8zlRNekDQ3r
+	T8ybq+XqoJmvKMxfIqx9JECXvq6Y9DTQM+8Jm4U8XHlmKaFV4rlj5uaTn0tF1PX0nfXe0I7mk+Oi2
+	S6asaMRKzNPaQeFWI3Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxZrw-002OdQ-Ek; Wed, 15 Dec 2021 19:23:16 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1mxZzb-002PvO-KZ; Wed, 15 Dec 2021 19:31:11 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxZrh-002OYZ-QM; Wed, 15 Dec 2021 19:23:03 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id
- bg19-20020a05600c3c9300b0034565e837b6so333582wmb.1; 
- Wed, 15 Dec 2021 11:23:00 -0800 (PST)
+ id 1mxZzP-002Pse-9O; Wed, 15 Dec 2021 19:31:01 +0000
+Received: by mail-wr1-x434.google.com with SMTP id e5so6582149wrc.5;
+ Wed, 15 Dec 2021 11:30:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=ZYwgBJaj/unectxNhsPO9gtbst5oHKfm3K6XFRszQRI=;
- b=Q8NaUFUtT9c0f6DWp6vcNspUZhwLnLLSM/MRmWvwOXoaGLFgWTvznHeCK6G6Lv934a
- M64NfrQya2KQIzKh01W+U12Fc7ldmtVW9/QKNPPcJfW98omhxwTAOLoQ1tnf9uozXYFR
- NhqMlEouQ17uLSmCToamGDc9h6NyMYGaKDiYqrTPVJu/H03fyy6Qkf27XcnGnbhzzBnl
- 2L+yId8J8VjvBTK3Jdi7/LtTrlpECXazAnNo0EWmPimXS9G6qtvsCBIYC7zN/DXF26LE
- dcIzRF8iQwU8dwLNXKqq2yrKot8R+jQPOyNSsNpSZWudcWz1a4njmkaYgWQJYoR8yS3E
- 9mIA==
+ bh=Y4KYZYbmHmOnFAGiPJsnb/ToH7SegH1Iwoa7ADMxpfw=;
+ b=FYtYiM9oyvpPmWHENImMI3pw3mwC0F0efmMKLKouZACetLXHkw1XeSDfAj/OmizJ4b
+ XW+lxdwNl0kQe7hYp17Tck/EBCOm5+jnzpbgICjSA0okX16MYe25UBBlS+lZxyRUpahL
+ Meyag30sUR8gWfnMtKcv67W9qUkWQC2FpM4SZuFkprrhC7UgWJ3yof777/IVUGSC2dBO
+ 4X8b04+lDVHeVKYFshCNt2xb/Yjc2PPHUHD5ABhPt6P2sNZEsC6qHq3+ka6O54pWtg9b
+ 6m7MabQl8gECdoxTxiHYBSE1e3A6uhS9d++mHV5+EuKEA+zaIGp4GK2hYj2VQTE1BcJu
+ fhaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=ZYwgBJaj/unectxNhsPO9gtbst5oHKfm3K6XFRszQRI=;
- b=I99Ff02RMYYZFwmejxc4+6cP61hAXJucOQKvRWQeE05w48Z0Hh3tlaPyWTWkvWenDj
- KajenbQ8BR94owMcTdbNYJ92rRZLtcw3Tgg1EIsuCxAZ0zJozhbaS6Ww7JGXW3x9H2OL
- xjyFuzZQ+OiqOHtrdZ15e+bLRjaGBC54d7jlOKHSae8hS1u9s4k3WabDsWGhEToHN3l2
- WT7/H8XdUpWXcshNZo4+7I0sRhfKfXXDYA1wWWT+frWsvocvoWPKe7w2/CrvO9xSfWI8
- KvUg9JzNzKe8o9Xd0Bb+sdJYIYehBJKKVRXdSX+PxOZH6RWaPcBnAu/1Az9RQ6Qj8/Vv
- a8sg==
-X-Gm-Message-State: AOAM531lPkAtU71LXlDf+YGvly1H8UGAriPcpM51aOgKlzGyBJOEmeOJ
- I8uniQPCRJ4pB0wrC8KPhaI=
-X-Google-Smtp-Source: ABdhPJwNwyh4XxuqT5udvlzXiwRG9boU1Qdrw7Pw7evZ7Hxcwq1PG3znUeUEH0XlTzDd6waANd8aVg==
-X-Received: by 2002:a05:600c:3788:: with SMTP id
- o8mr1574047wmr.82.1639596179243; 
- Wed, 15 Dec 2021 11:22:59 -0800 (PST)
+ bh=Y4KYZYbmHmOnFAGiPJsnb/ToH7SegH1Iwoa7ADMxpfw=;
+ b=ndHXUoApZX1+gSBD+nQ9WZ8QyDTVnmBk1vxcZERbHYDylZdeAnkygLqUhL7LopnUa7
+ FvYnjjez4gRp2fZz6ev3C42/ITEbXpRPjg1P2OIUfBdcNXY4OG2x0et/pv9+OXnAewmL
+ 8NAtE9IoSoPbMUaAdCcKa9lyG9RRWvT22PJR/VwIglto4qdc3PRwz6MNqgTZRvuJ8xkj
+ MXAjHzx5PbmQ1VZGh4dj17EiQgaYiyTrnEXwaGiwnVwKme8jeG8qhFaKkITX1U1lokTT
+ VVOqDGsPOxiBqbngoOOP8vqvrNlg1w40LD0vR3HLdCDqht0DvMlAdzEWJSTmS593Jz05
+ 28hw==
+X-Gm-Message-State: AOAM532S4C38pKfeQfywcy08lBPfacEMhMRByCMxRyWiLDf40LrYjhxX
+ XE7Jj6qOcw3CtWjbwSpZOnA=
+X-Google-Smtp-Source: ABdhPJyEek4ofghq1j1jzRaQfwQ9jMNIMvRSegM3Lv8m7+3vrwCSh83lUg1yJBVvl6CoA2lcnZgcSg==
+X-Received: by 2002:a5d:4ccb:: with SMTP id c11mr5587022wrt.689.1639596657651; 
+ Wed, 15 Dec 2021 11:30:57 -0800 (PST)
 Received: from [192.168.0.18] (81.172.62.207.dyn.user.ono.com. [81.172.62.207])
- by smtp.gmail.com with ESMTPSA id m17sm2676457wrw.11.2021.12.15.11.22.58
+ by smtp.gmail.com with ESMTPSA id d16sm2891177wrv.111.2021.12.15.11.30.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Dec 2021 11:22:58 -0800 (PST)
-Message-ID: <c9b3d31a-1c18-32ec-8077-603bb93fe8d0@gmail.com>
-Date: Wed, 15 Dec 2021 20:22:57 +0100
+ Wed, 15 Dec 2021 11:30:57 -0800 (PST)
+Message-ID: <4ba7d0ff-3715-8ec1-91c7-26da23ea1709@gmail.com>
+Date: Wed, 15 Dec 2021 20:30:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH net-next v8 3/6] arm64: dts: mt2712: update ethernet
- device node
+Subject: Re: [PATCH v8 2/2] arm64: dts: mediatek: add basic mt7986 support
 Content-Language: en-US
-To: Biao Huang <biao.huang@mediatek.com>, davem@davemloft.net,
- Jakub Kicinski <kuba@kernel.org>, Rob Herring <robh+dt@kernel.org>
-Cc: Giuseppe Cavallaro <peppe.cavallaro@st.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, srv_heupstream@mediatek.com,
- macpaul.lin@mediatek.com, angelogioacchino.delregno@collabora.com,
- dkirjanov@suse.de
-References: <20211210013129.811-1-biao.huang@mediatek.com>
- <20211210013129.811-4-biao.huang@mediatek.com>
+To: Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>,
+ Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ Fabien Parent <fparent@baylibre.com>, Seiya Wang <seiya.wang@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
+References: <20211122123222.8016-1-sam.shih@mediatek.com>
+ <20211122123222.8016-3-sam.shih@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20211210013129.811-4-biao.huang@mediatek.com>
+In-Reply-To: <20211122123222.8016-3-sam.shih@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_112301_911174_D1F0F6AA 
-X-CRM114-Status: GOOD (  19.52  )
+X-CRM114-CacheID: sfid-20211215_113059_378172_F587B50E 
+X-CRM114-Status: GOOD (  19.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,75 +97,251 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 10/12/2021 02:31, Biao Huang wrote:
-> Since there are some changes in ethernet driver,
-> update ethernet device node in dts to accommodate to it.
+On 22/11/2021 13:32, Sam Shih wrote:
+> Add basic chip support for Mediatek mt7986, include
+> basic uart nodes, rng node and watchdog node.
+> 
+> Add cpu node, timer node, gic node, psci and reserved-memory node
+> for ARM Trusted Firmware.
+> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
 > 
 
-I have a hard time to understand how the first two patches are related to this 
-one. Please be more specific in your commit message.
+Applied to v5.16-next/dts64
 
-Also please beware that we should make sure that a newer driver version should 
-still work properly with an older device tree, which does not have your changes.
+Thanks!
 
-Regards,
-Matthias
-
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 > ---
->   arch/arm64/boot/dts/mediatek/mt2712-evb.dts |  1 +
->   arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 14 +++++++++-----
->   2 files changed, 10 insertions(+), 5 deletions(-)
+> v8: removed debug bootargs
+> v7: added memory node back to dts
+> v6: removed clock and pinctrl node, to separate basic part into a single
+>      patch series
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> index 7d369fdd3117..11aa135aa0f3 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
-> @@ -110,6 +110,7 @@ &eth {
->   	phy-handle = <&ethernet_phy0>;
->   	mediatek,tx-delay-ps = <1530>;
->   	snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
-> +	snps,reset-delays-us = <0 10000 10000>;
->   	pinctrl-names = "default", "sleep";
->   	pinctrl-0 = <&eth_default>;
->   	pinctrl-1 = <&eth_sleep>;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> index a9cca9c146fd..9e850e04fffb 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
-> @@ -726,7 +726,7 @@ queue2 {
->   	};
->   
->   	eth: ethernet@1101c000 {
-> -		compatible = "mediatek,mt2712-gmac";
-> +		compatible = "mediatek,mt2712-gmac", "snps,dwmac-4.20a";
->   		reg = <0 0x1101c000 0 0x1300>;
->   		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
->   		interrupt-names = "macirq";
-> @@ -734,15 +734,19 @@ eth: ethernet@1101c000 {
->   		clock-names = "axi",
->   			      "apb",
->   			      "mac_main",
-> -			      "ptp_ref";
-> +			      "ptp_ref",
-> +			      "rmii_internal";
->   		clocks = <&pericfg CLK_PERI_GMAC>,
->   			 <&pericfg CLK_PERI_GMAC_PCLK>,
->   			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> -			 <&topckgen CLK_TOP_ETHER_50M_SEL>;
-> +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> +			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
->   		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
-> -				  <&topckgen CLK_TOP_ETHER_50M_SEL>;
-> +				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
-> +				  <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
->   		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
-> -					 <&topckgen CLK_TOP_APLL1_D3>;
-> +					 <&topckgen CLK_TOP_APLL1_D3>,
-> +					 <&topckgen CLK_TOP_ETHERPLL_50M>;
->   		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
->   		mediatek,pericfg = <&pericfg>;
->   		snps,axi-config = <&stmmac_axi_setup>;
+> Original thread:
+> https://lore.kernel.org/all/20211004124155.1404-1-sam.shih@mediatek.com/
+> 
+> v5: follow reviewr's comment: removed clock freqency node in timer due to
+>      we have set CNTFRQ_EL0 in ATF firmware, and also corrected GICD range
+> v4: added missing gic register bases, and fixed range of GICR
+> v3: used the stdout-path instead of console=ttyS0
+> v2: modified clock and uart node due to clock driver updated
+> ---
+>   arch/arm64/boot/dts/mediatek/Makefile        |   1 +
+>   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts |  37 +++++
+>   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 148 +++++++++++++++++++
+>   3 files changed, 186 insertions(+)
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+>   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
+> index 4f68ebed2e31..e6c3a73b9e4a 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
+>   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> new file mode 100644
+> index 000000000000..6911862390d7
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
+> @@ -0,0 +1,37 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include "mt7986a.dtsi"
+> +
+> +/ {
+> +	model = "MediaTek MT7986a RFB";
+> +	compatible = "mediatek,mt7986a-rfb";
+> +
+> +	aliases {
+> +		serial0 = &uart0;
+> +	};
+> +
+> +	chosen {
+> +		stdout-path = "serial0:115200n8";
+> +	};
+> +
+> +	memory {
+> +		reg = <0 0x40000000 0 0x40000000>;
+> +	};
+> +};
+> +
+> +&uart0 {
+> +	status = "okay";
+> +};
+> +
+> +&uart1 {
+> +	status = "okay";
+> +};
+> +
+> +&uart2 {
+> +	status = "okay";
+> +};
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> new file mode 100644
+> index 000000000000..77906839cc85
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+> @@ -0,0 +1,148 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2021 MediaTek Inc.
+> + * Author: Sam.Shih <sam.shih@mediatek.com>
+> + */
+> +
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +/ {
+> +	interrupt-parent = <&gic>;
+> +	#address-cells = <2>;
+> +	#size-cells = <2>;
+> +
+> +	system_clk: dummy40m {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <40000000>;
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		cpu0: cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53";
+> +			enable-method = "psci";
+> +			reg = <0x0>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu1: cpu@1 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53";
+> +			enable-method = "psci";
+> +			reg = <0x1>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu2: cpu@2 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a53";
+> +			enable-method = "psci";
+> +			reg = <0x2>;
+> +			#cooling-cells = <2>;
+> +		};
+> +
+> +		cpu3: cpu@3 {
+> +			device_type = "cpu";
+> +			enable-method = "psci";
+> +			compatible = "arm,cortex-a53";
+> +			reg = <0x3>;
+> +			#cooling-cells = <2>;
+> +		};
+> +	};
+> +
+> +	psci {
+> +		compatible  = "arm,psci-0.2";
+> +		method      = "smc";
+> +	};
+> +
+> +	reserved-memory {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		ranges;
+> +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
+> +		secmon_reserved: secmon@43000000 {
+> +			reg = <0 0x43000000 0 0x30000>;
+> +			no-map;
+> +		};
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv8-timer";
+> +		interrupt-parent = <&gic>;
+> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
+> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
+> +	};
+> +
+> +	soc {
+> +		#address-cells = <2>;
+> +		#size-cells = <2>;
+> +		compatible = "simple-bus";
+> +		ranges;
+> +
+> +		gic: interrupt-controller@c000000 {
+> +			compatible = "arm,gic-v3";
+> +			#interrupt-cells = <3>;
+> +			interrupt-parent = <&gic>;
+> +			interrupt-controller;
+> +			reg = <0 0x0c000000 0 0x10000>,  /* GICD */
+> +			      <0 0x0c080000 0 0x80000>,  /* GICR */
+> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
+> +			      <0 0x0c410000 0 0x1000>,   /* GICH */
+> +			      <0 0x0c420000 0 0x2000>;   /* GICV */
+> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
+> +		};
+> +
+> +		watchdog: watchdog@1001c000 {
+> +			compatible = "mediatek,mt7986-wdt",
+> +				     "mediatek,mt6589-wdt";
+> +			reg = <0 0x1001c000 0 0x1000>;
+> +			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
+> +			#reset-cells = <1>;
+> +			status = "disabled";
+> +		};
+> +
+> +		trng: trng@1020f000 {
+> +			compatible = "mediatek,mt7986-rng",
+> +				     "mediatek,mt7623-rng";
+> +			reg = <0 0x1020f000 0 0x100>;
+> +			clocks = <&system_clk>;
+> +			clock-names = "rng";
+> +			status = "disabled";
+> +		};
+> +
+> +		uart0: serial@11002000 {
+> +			compatible = "mediatek,mt7986-uart",
+> +				     "mediatek,mt6577-uart";
+> +			reg = <0 0x11002000 0 0x400>;
+> +			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&system_clk>;
+> +			status = "disabled";
+> +		};
+> +
+> +		uart1: serial@11003000 {
+> +			compatible = "mediatek,mt7986-uart",
+> +				     "mediatek,mt6577-uart";
+> +			reg = <0 0x11003000 0 0x400>;
+> +			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&system_clk>;
+> +			status = "disabled";
+> +		};
+> +
+> +		uart2: serial@11004000 {
+> +			compatible = "mediatek,mt7986-uart",
+> +				     "mediatek,mt6577-uart";
+> +			reg = <0 0x11004000 0 0x400>;
+> +			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&system_clk>;
+> +			status = "disabled";
+> +		};
+> +
+> +	};
+> +
+> +};
 > 
 
 _______________________________________________
