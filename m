@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31336C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 20:21:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A80C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 20:22:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wU3gDTF/eoK04NmfMjoTohBLn9XfYwvvEmqQp5y8jzA=; b=TLqmxGG+vpR9dO
-	JhZRqzXEDXZtaJgBM61jBtVQ1lQ8VkzBsYh4LRyCdU1eNar//i6KVnWEauCmCuhAfHaUCaUJv9MfQ
-	EkofJ9WBrlFez99K2Wl+ddX/fgCea1ni9Umum3lL6vzqQRWLGGTHNinM17+37Ef7H5Wi5bIE5w+aa
-	3kDuG6MyCb+bvaROaxtDbWuRl+86bbmO2DF1n8TEshuyu1zQA6lg9EYoXId4RzLMNHH6bZjCuTagX
-	32zkYtAw5aW+6PhXERvtOxCC/DAAixL2YJne0+m2cEkeaFZmlsvXLtzmrk2oFPRmgfMv4psWaesLv
-	Rlia+dzA3gLEOzZshnvA==;
+	List-Owner; bh=SnoQ9HDo60qBdm7jqtAfd35jYJXc5bidHhS1WEIS+n0=; b=AUe5gefTXDjmK3
+	dQvCUOcr0DD3Z8XwiaeDd1T1hVeWVtTu6Z//6Yp5cnHM3zzXDC0Z8eVKLypb9GrK2gyjXiWaQvMz2
+	97MgfSllAxomOc2LnYw0TaInYur97kbwFpfUHt0SWP2S8m0D+Sqs/EkL2X1oUVAYtwGBMDqCOfKnH
+	+HklRajP+nEPAr9HY/h5j3zruev4F7mT9Aj8HsGxgHJTkVLttqNPGKE0DSLh6MoN8eO7YkwQgxtPp
+	hhT1Fny9KUWT4rC+GgWNHEyi7uDmDL0DJiu4QNYKGGUHGb/oTBaqSW69jUvYpbRSz5vcSnniKu9vm
+	pu11WtREyqfUBHtIuzsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxamX-002b3P-E9; Wed, 15 Dec 2021 20:21:45 +0000
-Received: from mail-ot1-f53.google.com ([209.85.210.53])
+	id 1mxamq-002b7V-Fj; Wed, 15 Dec 2021 20:22:04 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxamU-002b2M-AD; Wed, 15 Dec 2021 20:21:43 +0000
-Received: by mail-ot1-f53.google.com with SMTP id
- x3-20020a05683000c300b0057a5318c517so26223727oto.13; 
- Wed, 15 Dec 2021 12:21:41 -0800 (PST)
+ id 1mxamn-002b6Z-Of; Wed, 15 Dec 2021 20:22:02 +0000
+Received: by mail-ot1-f45.google.com with SMTP id
+ n104-20020a9d2071000000b005799790cf0bso26349755ota.5; 
+ Wed, 15 Dec 2021 12:22:00 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=RdIFuSso44hrhd8nXmN6Y3wbJps6MIRzHFW57KgL+Q8=;
- b=uStIOb6XZUZwtuwf7lsZMdTncUGPR8WTaV11peR2T5B6G/9fMglTAtuVqeZlbcC6lT
- iGo2N4JCapaMrs2x++lrg/Hnq3AjUiZRC+HK+qVmZsCPPJhk1uu1DoiooXXBw3olysZM
- 245fv2SXP180z6Gp1I5D2oJwuiurbu65uXQjob/Rs6fo4oC6v0EFMR5+A7/XJ/0nnxhq
- ve0T3otkNgcffm7tZnHNiII00AoUpDw7p+/DSYQJA7O0Q9sdISQms5LdJJMbU8DVAsVz
- ntZYq3IkC0elQOxbBMsFA4fSr1IrzPS2wUC2DIEdLC+JmVmBARnvuRzEVa9wHKT4AmAf
- OMZQ==
-X-Gm-Message-State: AOAM532ogAvHoPCNGryK/jeT8NiHZLEsVuyVCpewATg+oaVKulwT/rfG
- pfgJWKTsIfamCkeobB2XzQ==
-X-Google-Smtp-Source: ABdhPJxGdUPqJQCMWMFcp5PgXBllnOaxCxFH1D3ewEYWT+NUYoyWaZoVi7w6Ws9a5AInQ8A2Bhx+Ow==
-X-Received: by 2002:a9d:17cc:: with SMTP id j70mr9865104otj.313.1639599701365; 
- Wed, 15 Dec 2021 12:21:41 -0800 (PST)
+ bh=yl4rL89vkkQfkiSLnPZW1gZdBwzv6ThVDS0MODexfww=;
+ b=ftwNVeuk20lJznInRQR7VuTRMznh14z5ajaC7jSUrHHjh4CVbEwFbv+diWG1x644qJ
+ SRmZk0y6oQwMPF5GQJQCygN3tf+uzfKnifwiXLnaY8lkqdTJ9DR/q0Of6XUcIl2MgfUc
+ 7BsZPC/Kz94Fr5ARxXG/7B2tw1tWiCqODRqYSPOzYsa000P7skK3koXtZHR18FpKwDlw
+ SPxqX4yipibwjH8uqrjDDAMHvN5j/xewifgmwMuxM9G5noUQbmr5AZPBxJQJz82aCUKs
+ SJ7DQghfuaGlK6s7HilKjf/1TdFh5j9sPeFlwNeSLT9t6eQdTYJUk+3e+BahBlB9xRPX
+ Cl1A==
+X-Gm-Message-State: AOAM531CEIiN2sqvkk1ESnrlFffvCDwOD5S5fdg4Rey/Qru9TWrh5nHB
+ +o8SNSeyF953tkozSiEAJOGgNRG8og==
+X-Google-Smtp-Source: ABdhPJxAD+MvRMJzz4Zo3q6S/s9MgZeKC/OTMbJZzQDfyQvMEgsyy2f69GVp1ZXlVMqgAmN9g9agmw==
+X-Received: by 2002:a9d:51c3:: with SMTP id d3mr10225774oth.152.1639599719660; 
+ Wed, 15 Dec 2021 12:21:59 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id x13sm627605otr.58.2021.12.15.12.21.40
+ by smtp.gmail.com with ESMTPSA id t3sm623898otk.44.2021.12.15.12.21.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 12:21:40 -0800 (PST)
-Received: (nullmailer pid 1772584 invoked by uid 1000);
- Wed, 15 Dec 2021 20:21:39 -0000
-Date: Wed, 15 Dec 2021 14:21:39 -0600
+ Wed, 15 Dec 2021 12:21:59 -0800 (PST)
+Received: (nullmailer pid 1773069 invoked by uid 1000);
+ Wed, 15 Dec 2021 20:21:58 -0000
+Date: Wed, 15 Dec 2021 14:21:58 -0600
 From: Rob Herring <robh@kernel.org>
 To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 3/4] dt-bindings: arm64: dts: mediatek: Add
- mt8183-kukui-katsu
-Message-ID: <YbpOU0VL2SxJhSr9@robh.at.kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Rob Herring <robh+dt@kernel.org>,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2 4/4] dt-bindings: arm64: dts: mediatek: Add
+ mt8183-kukui-jacuzzi-makomo
+Message-ID: <YbpOZi7oroStzT3M@robh.at.kernel.org>
 References: <20211213162856.235130-1-hsinyi@chromium.org>
- <20211213162856.235130-3-hsinyi@chromium.org>
+ <20211213162856.235130-4-hsinyi@chromium.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20211213162856.235130-3-hsinyi@chromium.org>
+In-Reply-To: <20211213162856.235130-4-hsinyi@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_122142_375033_FB7C69DA 
-X-CRM114-Status: UNSURE (   9.70  )
+X-CRM114-CacheID: sfid-20211215_122201_821907_9C97652E 
+X-CRM114-Status: UNSURE (   9.64  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,13 +84,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 14 Dec 2021 00:28:55 +0800, Hsin-Yi Wang wrote:
-> Katsu is known as ASUS Chromebook Detachable CZ1.
+On Tue, 14 Dec 2021 00:28:56 +0800, Hsin-Yi Wang wrote:
+> Makomo is known as Lenovo 100e Gen 2 Chromebook.
 > 
 > Signed-off-by: Hsin-Yi Wang <hsinyi@chromium.org>
 > ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml | 7 +++++++
->  1 file changed, 7 insertions(+)
+> v2: Fix enum typo
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 > 
 
 Acked-by: Rob Herring <robh@kernel.org>
