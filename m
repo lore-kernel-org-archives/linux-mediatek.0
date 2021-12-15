@@ -4,77 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 344C7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 05:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BC6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 06:05:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0BpF1dBZybqSKBMRYRxOgp0Y6MxyGJPd7Qd+/WV3uqU=; b=vKvCkn2gHF+1ke
-	sx3XwKqW2iCFzA6yR/V+oZHN/+OPoOUHDaHxHn6eo1b6rutV6RakKdCoNBY3PBGtFAfUtU8I3wqcu
-	BeXli14lTkB1rFPPldbdqHWdRjODxdvaSbp/ShTSc04XYWxgNBXO/hJehlZsNTtA+4s+50HOUpv4q
-	g9jFL/TGMf8VOUjrLvzOz9rgJQ8XuBAPYgKncp3QSeEWA8uWXp2OjYtyOCTGRnTK2UQdDSv3ULmxR
-	O2r1cZuN1bLQZQ+zLq9A9VYEAg1csc73C3bjnCBKscSIY7I0ZZYcCnm3KetrlY1U0T62VuYcfb5FW
-	WvUJoJdXy8pkFdc9Zy4g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2MmvQ0WB3Y4tPbB8tVqh+VgAfiEFmZkp8s8YX7FVCWY=; b=PReB5Qeiz2jxKm
+	fM1YF8vIoTivijgmFsN1WmkPHSMY/79QvXHtMDG+3laMxnMAkmLOaGUq2VinXkwJJLmFsXPEKsEM6
+	bPIwiZHtgHRU7pmr4ZIvzu+N58TXVkZI8ZEzlkJn3nR8MJio1u/L6c8QdmRN3RdX84J3G9UzCkK/T
+	qOBH3RfUYXlCkWYNqhuhW3qzpsIWndkhxSfQDg6wX24T5Vuar+Z/LegsD/2/+kmqkVaHHvx+RGK19
+	qcGPbPTIS8WQ9bkd/FOVdeDPM39Ky1AMJJNhThOR9T1YcgQwKHvkKXtiaZ+r94BzmcGrL6P7OaJcF
+	E2XrPhRN/7Xeu6WoiPRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxNGc-00Gl89-3C; Wed, 15 Dec 2021 05:55:54 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1mxNQB-00GmiK-TU; Wed, 15 Dec 2021 06:05:47 +0000
+Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxNGZ-00Gl6N-LU
- for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 05:55:52 +0000
-Received: by mail-pf1-x431.google.com with SMTP id u80so19745682pfc.9
- for <linux-mediatek@lists.infradead.org>; Tue, 14 Dec 2021 21:55:51 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=or349biYLFpL+w0ZA3FfJe1BgIFAwbYkc2y2ZXxAeHw=;
- b=kDowek4cSSKDkV4UGyJuXyqi5JIWAReO4OxHgYeFCA2HgFjEt1CmeiAM/M29ggFdWg
- zDA/vFKSK9uddEPsw6wgIXwmAHpCHwIGsC3J/1ibKr0pCY02/gmpC/7BEgpLr/c4ATlC
- L3nLg9A3lMltpboAcgF5Vbiohm/XRqfAc6EERoIOQoo/W0TrNgmv4Sgo3e6xJjP+J/19
- 4hBUComVDTtx8ThzXRwuIHX16u61zSn3cVAorIsKN+qBdjiiNhlbPIqoOlNh/vYW33HJ
- 9LaKqv8Cfwn8Hk4NM7gRBQU/s3wspmVc7BIW1GQm67V9cop79vBDzKcQPPSZmi3etjlo
- An/g==
+ id 1mxNPz-00GmfY-0X; Wed, 15 Dec 2021 06:05:36 +0000
+Received: by mail-qv1-xf2e.google.com with SMTP id m6so2260546qvh.10;
+ Tue, 14 Dec 2021 22:05:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kfB50yz+wtniH54BM6Vm2zw9w3vq/rJwIyH5Smo+/Jo=;
+ b=J5aTdyn12laJzJtmwQtHRwJpYqox3Ppg6gM9O/iTPQGJKCJAw7TrOojuAKaCcjiltK
+ CVZqgLXIvG9RmyevGn1jmP+PW8ttpavSiWK9PuxAdOvKqf0FUaMrd6j1HktU6MERFg4L
+ wfClW46lzk/3xFlhI8DmqaZE+l4TuLrCDDNq39MjvFYH5H8HYHo9I5KdSeR6CJAhrg0P
+ 7EC16wyCVZWZi2uz9n+CU7b4PrlVdWSPipQ1xmwe1jNi4SJ+cum+hM0hbA10fwA9Sc8P
+ Gt1DCNUUL79eITCVOmPkUSzB9QziYTWtpJmCzySWRLLwAsGiNIWEksgvGtJ2zzcuJq/Z
+ +EsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=or349biYLFpL+w0ZA3FfJe1BgIFAwbYkc2y2ZXxAeHw=;
- b=1cwHrDA1F6K3ymwjPp8ZblN44rQsRjA5q4uhbLaqbLi49gk/ZWqK+PocrG+BIaIJrG
- r9vRTsp9yVLWxY5FI/X6gObEU9sax0LwiEMuu1E1Hpm5+pcgX2QCyfn1ZotTCfjLAt/k
- tt2bWYeupMQhB3HGLI4TVQwrUHm9UCSxe9bBkpw9H7/otKoC8nzIKmP0f2SlrN0ETGgK
- 9f8YVBCq3AcsOKAgZrVAyRl7bKqtKtaXnDLFvWhcvPO8NXA8NmJOMYtyTg9UiaO7xrLA
- qXBU8WNrkHJKT8KVHlMhq5qjkfEpcom2UAgfkIlcPxjo2r/fxzMXX6/T4LzYf4fj3P1F
- VYYg==
-X-Gm-Message-State: AOAM530lVL2k+5JA62tGYnrK0yPSCf0II+7khrMOP/cQHVS5RI4TCNRa
- 6FbDutMNR2TdWCyXcPGWOikHXA==
-X-Google-Smtp-Source: ABdhPJxJk9jvjtHfRNmilmy4wTT3wZeaD4iKsJSZSfKzYHurbYvLQ7MyZFm9b5pPFVNOYSjjm5goIA==
-X-Received: by 2002:a63:102:: with SMTP id 2mr6802124pgb.311.1639547750606;
- Tue, 14 Dec 2021 21:55:50 -0800 (PST)
-Received: from google.com ([2401:fa00:1:10:754d:1c44:62a9:6d30])
- by smtp.gmail.com with ESMTPSA id k22sm1015260pfu.72.2021.12.14.21.55.48
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=kfB50yz+wtniH54BM6Vm2zw9w3vq/rJwIyH5Smo+/Jo=;
+ b=qN1mTrulpLpbBwdGDZleVHqp0VkaqapiUJGaSMIXHGvtvXuW8hGqbZXXNGL01pYJ3E
+ NiuDzmuxgeE2OVERWK0jZ8eYt8BAVCZAuTn1nhzjZjaHO8BR7/lubx/4Qo83GWqWS1eR
+ DQuk5SiQsNxCVWBiUn3YohjTDMQoO1+QaMRnmj5gZWaBKHUu42wvzvejvB11mqeIGTGq
+ Hkg0fmmu/uoRTU+8gyq54YPVKlwesCHW8X0fbr9ge0GBuWWK3duNEGs+pq7aQrzIx4KI
+ jVPt9oT7ynm4KDZceZqxNPF2UdkmEkVozlCJudzx2sdUoAZqtL0P/Fcogkla5touXqQa
+ gY5A==
+X-Gm-Message-State: AOAM530bjOvJKzgOhL96+n27dRRwcrIRE2I1tHzSIPZ2BpXx+oNvu0Vp
+ 81I34QrZkGugWyRTIU6nO/Y=
+X-Google-Smtp-Source: ABdhPJwhFH2MM84maffO9BMwznbkRqZ0gyp7GM8TVIIzFezFqVl2zZc02G1CuV/iFJlx+kbkFey5KQ==
+X-Received: by 2002:a05:6214:2428:: with SMTP id
+ gy8mr9883423qvb.18.1639548333964; 
+ Tue, 14 Dec 2021 22:05:33 -0800 (PST)
+Received: from localhost.localdomain ([193.203.214.57])
+ by smtp.gmail.com with ESMTPSA id l22sm747156qtj.68.2021.12.14.22.05.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Dec 2021 21:55:50 -0800 (PST)
-Date: Wed, 15 Dec 2021 13:55:47 +0800
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Cc: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com,
- mchehab@kernel.org, matthias.bgg@gmail.com,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] media: mtk-vcodec: potential dereference of null
- pointer
-Message-ID: <YbmDY9PbQUlHgyPF@google.com>
-References: <20211215052157.94172-1-jiasheng@iscas.ac.cn>
+ Tue, 14 Dec 2021 22:05:33 -0800 (PST)
+From: cgel.zte@gmail.com
+X-Google-Original-From: chi.minghao@zte.com.cn
+To: tglx@linutronix.de
+Cc: maz@kernel.org, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Minghao Chi <chi.minghao@zte.com.cn>, Zeal Robot <zealci@zte.com.cn>
+Subject: [PATCH irqchip-next] drivers/irqchip: remove redundant ret variable
+Date: Wed, 15 Dec 2021 06:05:28 +0000
+Message-Id: <20211215060528.442001-1-chi.minghao@zte.com.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211215052157.94172-1-jiasheng@iscas.ac.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_215551_730398_1261981E 
-X-CRM114-Status: UNSURE (   7.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211214_220535_084589_F90457AE 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,17 +87,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 15, 2021 at 01:21:57PM +0800, Jiasheng Jiang wrote:
-> The return value of devm_kzalloc() needs to be checked.
-> To avoid use of null pointer in case of thefailure of alloc.
-> 
-> Fixes: 46233e91fa24 ("media: mtk-vcodec: move firmware implementations into their own files")
-> Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+From: Minghao Chi <chi.minghao@zte.com.cn>
 
-With a nit:
-s/thefailure/the failure/
+Return value directly instead of taking this
+in another redundant variable.
 
-Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+Reported-by: Zeal Robot <zealci@zte.com.cn>
+Signed-off-by: Minghao Chi <chi.minghao@zte.com.cn>
+---
+ drivers/irqchip/irq-mtk-cirq.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
+index 9bca0918078e..2f895473d9d3 100644
+--- a/drivers/irqchip/irq-mtk-cirq.c
++++ b/drivers/irqchip/irq-mtk-cirq.c
+@@ -60,8 +60,6 @@ static void mtk_cirq_unmask(struct irq_data *data)
+ 
+ static int mtk_cirq_set_type(struct irq_data *data, unsigned int type)
+ {
+-	int ret;
+-
+ 	switch (type & IRQ_TYPE_SENSE_MASK) {
+ 	case IRQ_TYPE_EDGE_FALLING:
+ 		mtk_cirq_write_mask(data, CIRQ_POL_CLR);
+@@ -84,8 +82,7 @@ static int mtk_cirq_set_type(struct irq_data *data, unsigned int type)
+ 	}
+ 
+ 	data = data->parent_data;
+-	ret = data->chip->irq_set_type(data, type);
+-	return ret;
++	return data->chip->irq_set_type(data, type);
+ }
+ 
+ static struct irq_chip mtk_cirq_chip = {
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
