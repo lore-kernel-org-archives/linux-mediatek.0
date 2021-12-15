@@ -4,58 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18FDAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 07:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7881BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 07:06:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UhVa4JbhELEoyKNb0QrY8CCr/M9k8zEbSfiZXx0Pjgs=; b=fKDvpxvv+2DNBr
-	5RQtyzdri3Jzp0x1ZGZo3nUjOl4vB+MYkPk0/5rygDFQyvEo4n4ED6/Lgy7QsmOeSLn3cUexL+wMJ
-	CjpnbAkiPW05LyqrlBx0pJvtRMbaCEsRVwBOgo4oSx7hQBSmT741UT13T1GrL7OP7cUMd3T8eAohT
-	qNfX+sz3qMwNSYUMZWPc8vVUOGXCcuo592S63K8pPQ0NbpCbitauLnrNe+qQU4/63DVuhUrpqv7Ia
-	SkN41eslJhqQjD+C0svcxjWGp0teltw7Ld7eWFQv2V8E42L2QcbZC5ZEF37NZu2aR+rjoIdrwTrR6
-	oLHiTZ/F9SYG5IoY7cJA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=DVzpm4Ac7AAUSV+0a42xMRW2KtJh/rZPcdIMWBDHXYA=; b=2g5QCXhMeilKDZ
+	Fn6WW9sgfs7NWu3e9Vc/133YVDk1iMBIumWh9XhK3wORiI71+12ZxjX8u8nGa91p8bNfAQx4S4jQh
+	B8kkgs3qZSCWEbnumk2UKsbZzQ6W3uNSI2kTurCcDD8NM4XhBRc1MNg5scTGdMT39+ln14L+u6Wj+
+	0JuQINDXMe+Li9+WHcWCDpnJ7H75QvbsuxEpYkghP1Yw4X/CMYuBmK6ae1nbwHmZKFR1gNFhZ00mh
+	M5VDChdDqq1Es5a+BBRg3dMzPU1UAST76QjPfsnS1Ltw0H3MyvzPMH5Vru2HBo16BNcqch9YIHxJc
+	aa50W7tM30H0ibFzaE4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxOHI-00H3Ih-Fq; Wed, 15 Dec 2021 07:00:40 +0000
+	id 1mxOMq-00H4vE-PO; Wed, 15 Dec 2021 07:06:24 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxOFS-00H2Sa-QB; Wed, 15 Dec 2021 06:58:48 +0000
-X-UUID: b6a136d97aeb43d4947ba96ef9889694-20211214
-X-UUID: b6a136d97aeb43d4947ba96ef9889694-20211214
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <trevor.wu@mediatek.com>)
+ id 1mxOGG-00H2kj-64; Wed, 15 Dec 2021 06:59:37 +0000
+X-UUID: 67dc640063b14f9481795e28dc576163-20211214
+X-UUID: 67dc640063b14f9481795e28dc576163-20211214
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1552192985; Tue, 14 Dec 2021 23:58:40 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Dec 2021 22:58:38 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 15 Dec 2021 14:58:37 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 15 Dec 2021 14:58:37 +0800
-From: Trevor Wu <trevor.wu@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>
-CC: <trevor.wu@mediatek.com>, <alsa-devel@alsa-project.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <jiaxin.yu@mediatek.com>, <shumingf@realtek.com>
-Subject: [PATCH 1/2] ASoC: mediatek: mt8195: update control for RT5682 series
-Date: Wed, 15 Dec 2021 14:58:34 +0800
-Message-ID: <20211215065835.3074-1-trevor.wu@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ with ESMTP id 1197282015; Tue, 14 Dec 2021 23:59:35 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Dec 2021 22:59:33 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Dec 2021 14:59:31 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Wed, 15 Dec 2021 14:59:30 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v1, 03/12] media: mtk-vcodec: get frame buffer size from scp
+Date: Wed, 15 Dec 2021 14:59:17 +0800
+Message-ID: <20211215065926.8761-4-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211215065926.8761-1-yunfei.dong@mediatek.com>
+References: <20211215065926.8761-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_225846_953403_0D456FE5 
-X-CRM114-Status: GOOD (  19.69  )
+X-CRM114-CacheID: sfid-20211214_225936_297206_26D8A3D2 
+X-CRM114-Status: GOOD (  20.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,266 +83,228 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Playback pop is observed and the root cause is the reference clock
-provided by MT8195 is diabled before RT5682 finishes the control flow.
+From: Yunfei Dong <yunfei.dong@mediatek.corp-partner.google.com>
 
-To ensure the reference clock supplied to RT5682 is disabled after RT5682
-finishes all register controls. We replace BCLK with MCLK for RT5682
-reference clock, and makes use of set_bias_level_post to handle MCLK
-which guarantees MCLK is off after all RT5682 register access.
+Different capture buffer format has different buffer size, need to get
+real buffer size according to buffer type from scp.
 
-Signed-off-by: Trevor Wu <trevor.wu@mediatek.com>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../mt8195/mt8195-mt6359-rt1011-rt5682.c      | 66 +++++++++++++++-
- .../mt8195/mt8195-mt6359-rt1019-rt5682.c      | 76 ++++++++++++++++---
- 2 files changed, 128 insertions(+), 14 deletions(-)
+ .../platform/mtk-vcodec/mtk_vcodec_dec.c      |  2 +
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  2 +
+ .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 36 +++++++++++++
+ .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 51 +++++++++++++++++++
+ .../media/platform/mtk-vcodec/vdec_vpu_if.h   | 15 ++++++
+ 5 files changed, 106 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
-index 5cdbfaafd479..05359365f200 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
-@@ -37,6 +37,7 @@ struct mt8195_mt6359_rt1011_rt5682_priv {
- 	struct snd_soc_jack headset_jack;
- 	struct snd_soc_jack dp_jack;
- 	struct snd_soc_jack hdmi_jack;
-+	struct clk *i2so1_mclk;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 130ecef2e766..87891ebd7246 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -466,6 +466,8 @@ static int vidioc_vdec_s_fmt(struct file *file, void *priv,
+ 			}
+ 			ctx->state = MTK_STATE_INIT;
+ 		}
++	} else {
++		ctx->capture_fourcc = fmt->fourcc;
+ 	}
+ 
+ 	/*
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index e9a31306b956..fc2c23deb825 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -277,6 +277,7 @@ struct vdec_pic_info {
+  *		     to be used with encoder and stateful decoder.
+  * @is_flushing: set to true if flushing is in progress.
+  * @current_codec: current set input codec, in V4L2 pixel format
++ * @capture_fourcc: capture queue type, in V4L2 pixel format
+  *
+  * @colorspace: enum v4l2_colorspace; supplemental to pixelformat
+  * @ycbcr_enc: enum v4l2_ycbcr_encoding, Y'CbCr encoding
+@@ -322,6 +323,7 @@ struct mtk_vcodec_ctx {
+ 	bool is_flushing;
+ 
+ 	u32 current_codec;
++	u32 capture_fourcc;
+ 
+ 	enum v4l2_colorspace colorspace;
+ 	enum v4l2_ycbcr_encoding ycbcr_enc;
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+index 5daca8d52ebb..d00e555cf27a 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
++++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+@@ -20,6 +20,7 @@ enum vdec_ipi_msgid {
+ 	AP_IPIMSG_DEC_RESET = 0xA004,
+ 	AP_IPIMSG_DEC_CORE = 0xA005,
+ 	AP_IPIMSG_DEC_CORE_END = 0xA006,
++	AP_IPIMSG_DEC_GET_PARAM = 0xA007,
+ 
+ 	VPU_IPIMSG_DEC_INIT_ACK = 0xB000,
+ 	VPU_IPIMSG_DEC_START_ACK = 0xB001,
+@@ -28,6 +29,7 @@ enum vdec_ipi_msgid {
+ 	VPU_IPIMSG_DEC_RESET_ACK = 0xB004,
+ 	VPU_IPIMSG_DEC_CORE_ACK = 0xB005,
+ 	VPU_IPIMSG_DEC_CORE_END_ACK = 0xB006,
++	VPU_IPIMSG_DEC_GET_PARAM_ACK = 0xB007,
  };
  
- static const struct snd_soc_dapm_widget
-@@ -87,8 +88,8 @@ static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
- 	}
+ /**
+@@ -114,4 +116,38 @@ struct vdec_vpu_ipi_init_ack {
+ 	uint32_t inst_id;
+ };
  
--	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1, RT5682_PLL1_S_BCLK1,
--				  rate * 64, rate * 512);
-+	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1, RT5682_PLL1_S_MCLK,
-+				  rate * 256, rate * 512);
- 	if (ret) {
- 		dev_err(card->dev, "failed to set pll\n");
- 		return ret;
-@@ -101,7 +102,7 @@ static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
++/**
++ * struct vdec_ap_ipi_get_param - for AP_IPIMSG_SET_PARAM
++ * @msg_id	: AP_IPIMSG_DEC_START
++ * @inst_id     : instance ID. Used if the ABI version >= 2.
++ * @data	: picture information
++ * @param_type	: get param type
++ * @codec_type	: Codec fourcc
++ */
++struct vdec_ap_ipi_get_param {
++	uint32_t msg_id;
++	uint32_t inst_id;
++	uint32_t data[4];
++	uint32_t param_type;
++	uint32_t codec_type;
++};
++
++
++/**
++ * struct vdec_vpu_ipi_init_ack - for VPU_IPIMSG_DEC_INIT_ACK
++ * @msg_id	: VPU_IPIMSG_DEC_INIT_ACK
++ * @status	: VPU exeuction result
++ * @ap_inst_addr	: AP vcodec_vpu_inst instance address
++ * @data     : picture information from SCP.
++ * @param_type	: get param type
++ */
++struct vdec_vpu_ipi_get_param_ack {
++	uint32_t msg_id;
++	int32_t status;
++	uint64_t ap_inst_addr;
++	uint32_t data[4];
++	uint32_t param_type;
++	uint32_t reserved;
++};
++
+ #endif
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+index 21f6d9c5a371..6f9bcc2b0bb9 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+@@ -54,6 +54,27 @@ static void handle_init_ack_msg(const struct vdec_vpu_ipi_init_ack *msg)
  	}
- 
--	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 128,
-+	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 256,
- 				      SND_SOC_CLOCK_OUT);
  }
  
-@@ -565,6 +566,51 @@ static const struct snd_soc_ops mt8195_capture_ops = {
- 	.startup = mt8195_capture_startup,
- };
- 
-+static int mt8195_set_bias_level_post(struct snd_soc_card *card,
-+	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level level)
++static void handle_get_param_msg_ack(
++	const struct vdec_vpu_ipi_get_param_ack *msg)
 +{
-+	struct snd_soc_component *component = dapm->component;
-+	struct mt8195_mt6359_rt1011_rt5682_priv *priv =
-+		snd_soc_card_get_drvdata(card);
-+	int ret = 0;
++	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
++					(unsigned long)msg->ap_inst_addr;
 +
-+	/*
-+	 * It's required to control mclk directly in the set_bias_level_post
-+	 * function for rt5682 and rt5682s codec, or the unexpected pop happens
-+	 * at the end of playback.
-+	 */
-+	if (!component ||
-+	    (strcmp(component->name, RT5682_DEV0_NAME) &&
-+	    strcmp(component->name, RT5682S_DEV0_NAME)))
-+		return 0;
++	mtk_vcodec_debug(vpu, "+ ap_inst_addr = 0x%llx", msg->ap_inst_addr);
 +
-+	if (IS_ERR(priv->i2so1_mclk))
-+		return 0;
-+
-+	switch (level) {
-+	case SND_SOC_BIAS_OFF:
-+		if (!__clk_is_enabled(priv->i2so1_mclk))
-+			return 0;
-+
-+		dev_dbg(card->dev, "Disable i2so1");
-+		clk_disable_unprepare(priv->i2so1_mclk);
-+		break;
-+	case SND_SOC_BIAS_ON:
-+		dev_dbg(card->dev, "Enable i2so1");
-+		ret = clk_prepare_enable(priv->i2so1_mclk);
-+		if (ret) {
-+			dev_err(card->dev, "Can't enable mclk, err: %d\n", ret);
-+			return ret;
-+		}
++	/* param_type is enum vdec_get_param_type */
++	switch(msg->param_type) {
++	case 2:
++		vpu->fb_sz[0] = msg->data[0];
++		vpu->fb_sz[1] = msg->data[1];
 +		break;
 +	default:
++		mtk_vcodec_err(vpu, "invalid get param type=%d", msg->param_type);
++		vpu->failure = 1;
 +		break;
 +	}
-+
-+	return ret;
 +}
 +
-+
- enum {
- 	DAI_LINK_DL2_FE,
- 	DAI_LINK_DL3_FE,
-@@ -1040,6 +1086,7 @@ static struct snd_soc_card mt8195_mt6359_rt1011_rt5682_soc_card = {
- 	.num_dapm_routes = ARRAY_SIZE(mt8195_mt6359_rt1011_rt5682_routes),
- 	.codec_conf = rt1011_amp_conf,
- 	.num_configs = ARRAY_SIZE(rt1011_amp_conf),
-+	.set_bias_level_post = mt8195_set_bias_level_post,
- };
+ /*
+  * vpu_dec_ipi_handler - Handler for VPU ipi message.
+  *
+@@ -89,6 +110,9 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 		case VPU_IPIMSG_DEC_CORE_END_ACK:
+ 			break;
  
- static int mt8195_mt6359_rt1011_rt5682_dev_probe(struct platform_device *pdev)
-@@ -1072,6 +1119,19 @@ static int mt8195_mt6359_rt1011_rt5682_dev_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
- 
-+	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
-+	if (IS_ERR(priv->i2so1_mclk)) {
-+		ret = PTR_ERR(priv->i2so1_mclk);
-+		if (ret == -ENOENT) {
-+			dev_dbg(&pdev->dev,
-+				"Failed to get i2so1_mclk, defer probe\n");
-+			return -EPROBE_DEFER;
-+		}
-+
-+		dev_err(&pdev->dev, "Failed to get i2so1_mclk, err:%d\n", ret);
-+		return ret;
-+	}
-+
- 	for_each_card_prelinks(card, i, dai_link) {
- 		if (!dai_link->platforms->name)
- 			dai_link->platforms->of_node = priv->platform_node;
-diff --git a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-index fa50a31e9718..b2c3b57da9c4 100644
---- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-@@ -50,6 +50,7 @@ struct mt8195_mt6359_rt1019_rt5682_priv {
- 	struct snd_soc_jack headset_jack;
- 	struct snd_soc_jack dp_jack;
- 	struct snd_soc_jack hdmi_jack;
-+	struct clk *i2so1_mclk;
- };
- 
- static const struct snd_soc_dapm_widget
-@@ -96,8 +97,6 @@ static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
- 	struct snd_soc_dai *cpu_dai = asoc_rtd_to_cpu(rtd, 0);
- 	struct snd_soc_dai *codec_dai = asoc_rtd_to_codec(rtd, 0);
- 	unsigned int rate = params_rate(params);
--	unsigned int mclk_fs_ratio = 128;
--	unsigned int mclk_fs = rate * mclk_fs_ratio;
- 	int bitwidth;
- 	int ret;
- 
-@@ -113,25 +112,22 @@ static int mt8195_rt5682_etdm_hw_params(struct snd_pcm_substream *substream,
- 		return ret;
- 	}
- 
--	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1,
--				  RT5682_PLL1_S_BCLK1,
--				  params_rate(params) * 64,
--				  params_rate(params) * 512);
-+	ret = snd_soc_dai_set_pll(codec_dai, RT5682_PLL1, RT5682_PLL1_S_MCLK,
-+				  rate * 256, rate * 512);
- 	if (ret) {
- 		dev_err(card->dev, "failed to set pll\n");
- 		return ret;
- 	}
- 
--	ret = snd_soc_dai_set_sysclk(codec_dai,
--				     RT5682_SCLK_S_PLL1,
--				     params_rate(params) * 512,
--				     SND_SOC_CLOCK_IN);
-+	ret = snd_soc_dai_set_sysclk(codec_dai, RT5682_SCLK_S_PLL1,
-+				     rate * 512, SND_SOC_CLOCK_IN);
- 	if (ret) {
- 		dev_err(card->dev, "failed to set sysclk\n");
- 		return ret;
- 	}
- 
--	return snd_soc_dai_set_sysclk(cpu_dai, 0, mclk_fs, SND_SOC_CLOCK_OUT);
-+	return snd_soc_dai_set_sysclk(cpu_dai, 0, rate * 256,
-+				      SND_SOC_CLOCK_OUT);
++		case VPU_IPIMSG_DEC_GET_PARAM_ACK:
++			handle_get_param_msg_ack(data);
++			break;
+ 		default:
+ 			mtk_vcodec_err(vpu, "invalid msg=%X", msg->msg_id);
+ 			break;
+@@ -217,6 +241,33 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
+ 	return err;
  }
  
- static const struct snd_soc_ops mt8195_rt5682_etdm_ops = {
-@@ -564,6 +560,50 @@ static const struct snd_soc_ops mt8195_capture_ops = {
- 	.startup = mt8195_capture_startup,
- };
- 
-+static int mt8195_set_bias_level_post(struct snd_soc_card *card,
-+	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level level)
++int vpu_dec_get_param(struct vdec_vpu_inst *vpu, uint32_t *data,
++	unsigned int len, unsigned int param_type)
 +{
-+	struct snd_soc_component *component = dapm->component;
-+	struct mt8195_mt6359_rt1019_rt5682_priv *priv =
-+		snd_soc_card_get_drvdata(card);
-+	int ret = 0;
++	struct vdec_ap_ipi_get_param msg;
++	int i;
++	int err;
 +
-+	/*
-+	 * It's required to control mclk directly in the set_bias_level_post
-+	 * function for rt5682 and rt5682s codec, or the unexpected pop happens
-+	 * at the end of playback.
-+	 */
-+	if (!component ||
-+	    (strcmp(component->name, RT5682_DEV0_NAME) &&
-+	    strcmp(component->name, RT5682S_DEV0_NAME)))
-+		return 0;
++	mtk_vcodec_debug_enter(vpu);
 +
-+	if (IS_ERR(priv->i2so1_mclk))
-+		return 0;
-+
-+	switch (level) {
-+	case SND_SOC_BIAS_OFF:
-+		if (!__clk_is_enabled(priv->i2so1_mclk))
-+			return 0;
-+
-+		dev_dbg(card->dev, "Disable i2so1");
-+		clk_disable_unprepare(priv->i2so1_mclk);
-+		break;
-+	case SND_SOC_BIAS_ON:
-+		dev_dbg(card->dev, "Enable i2so1");
-+		ret = clk_prepare_enable(priv->i2so1_mclk);
-+		if (ret) {
-+			dev_err(card->dev, "Can't enable mclk, err: %d\n", ret);
-+			return ret;
-+		}
-+		break;
-+	default:
-+		break;
++	if (len > ARRAY_SIZE(msg.data)) {
++		mtk_vcodec_err(vpu, "invalid len = %d\n", len);
++		return -EINVAL;
 +	}
 +
-+	return ret;
++	memset(&msg, 0, sizeof(msg));
++	msg.msg_id = AP_IPIMSG_DEC_GET_PARAM;
++	msg.inst_id = vpu->inst_id;
++	for (i = 0; i < len; i++)
++		msg.data[i] = data[i];
++	msg.param_type = param_type;
++	msg.codec_type = vpu->codec_type;
++
++	err = vcodec_vpu_send_msg(vpu, (void *)&msg, sizeof(msg));
++	mtk_vcodec_debug(vpu, "- ret=%d", err);
++	return err;
 +}
 +
- enum {
- 	DAI_LINK_DL2_FE,
- 	DAI_LINK_DL3_FE,
-@@ -1203,6 +1243,7 @@ static struct snd_soc_card mt8195_mt6359_rt1019_rt5682_soc_card = {
- 	.num_dapm_widgets = ARRAY_SIZE(mt8195_mt6359_rt1019_rt5682_widgets),
- 	.dapm_routes = mt8195_mt6359_rt1019_rt5682_routes,
- 	.num_dapm_routes = ARRAY_SIZE(mt8195_mt6359_rt1019_rt5682_routes),
-+	.set_bias_level_post = mt8195_set_bias_level_post,
+ int vpu_dec_core(struct vdec_vpu_inst *vpu)
+ {
+ 	return vcodec_send_ap_ipi(vpu, AP_IPIMSG_DEC_CORE);
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+index 4cb3c7f5a3ad..963f8d4877b7 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+@@ -28,6 +28,8 @@ struct mtk_vcodec_ctx;
+  * @wq          : wait queue to wait VPU message ack
+  * @handler     : ipi handler for each decoder
+  * @codec_type     : use codec type to separate different codecs
++ * @capture_type    : used capture type to separate different capture format
++ * @fb_sz  : frame buffer size of each plane
+  */
+ struct vdec_vpu_inst {
+ 	int id;
+@@ -42,6 +44,8 @@ struct vdec_vpu_inst {
+ 	wait_queue_head_t wq;
+ 	mtk_vcodec_ipi_handler handler;
+ 	unsigned int codec_type;
++	unsigned int capture_type;
++	unsigned int fb_sz[2];
  };
  
- static int mt8195_dailink_parse_of(struct snd_soc_card *card, struct device_node *np,
-@@ -1285,6 +1326,19 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
- 		return -EINVAL;
- 	}
+ /**
+@@ -104,4 +108,15 @@ int vpu_dec_core(struct vdec_vpu_inst *vpu);
+  */
+ int vpu_dec_core_end(struct vdec_vpu_inst *vpu);
  
-+	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
-+	if (IS_ERR(priv->i2so1_mclk)) {
-+		ret = PTR_ERR(priv->i2so1_mclk);
-+		if (ret == -ENOENT) {
-+			dev_dbg(&pdev->dev,
-+				"Failed to get i2so1_mclk, defer probe\n");
-+			return -EPROBE_DEFER;
-+		}
++/**
++ * vpu_dec_get_param - get param from scp
++ *
++ * @vpu : instance for vdec_vpu_inst
++ * @data: meta data to pass bitstream info to VPU decoder
++ * @len : meta data length
++ * @param_type : get param type
++ */
++int vpu_dec_get_param(struct vdec_vpu_inst *vpu, uint32_t *data,
++	unsigned int len, unsigned int param_type);
 +
-+		dev_err(&pdev->dev, "Failed to get i2so1_mclk, err:%d\n", ret);
-+		return ret;
-+	}
-+
- 	/* dai link */
- 	priv->adsp_node = of_parse_phandle(pdev->dev.of_node,
- 					   "mediatek,adsp", 0);
+ #endif
 -- 
-2.18.0
+2.25.1
 
 
 _______________________________________________
