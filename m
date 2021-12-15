@@ -4,82 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7236CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 16:50:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF06DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 17:05:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jyb5WhXdmmR/RQ67X9j1uu4xJIZqleH4qJHLcY72A1M=; b=L7uPQVFg20RK8e
-	xs/jNVnxHtjS3oboqoVPOxsh6EtvU+pFNIGKFQcEtP6qE1djtQvzeI2p2R5Angv6d5HxH1iQ6/PVr
-	FPvlZLTvvWUFtzp0BtbjsgOY+PN+PMfdUS7CwaXiBCJVmynEpJYC/osnQm5TyOdKr+OVwAvk8jkk6
-	HASsyG5Qrw7QHuBG8MnB7focbnsWetZ6eGDY80NvyuDuya8TYFYtz0XtbK+mMFsMwW8gxr/tV3tPf
-	VprAKpiexSm8wNWmmeVnaBGjLj2oEJyAolRcVVQIl5DDfOvRRYod0BJ5sBTR5D3p9haT84vQ5n61e
-	EIpbXl/+nXJj4ZRYProg==;
+	List-Owner; bh=0dZFR4IIMAbZdrGbpe16JSSwYgXLi8UyrLF/uXS9kjE=; b=Y6FX7xCpBlscDW
+	BCIUbic7F8QN21yrn6LSvitoQsoMmy767ZaqGLoEBqF9Y4UGI2Oy4uR3x1hcdlF6AqnFs8s7AcsRp
+	/WG6LscLj17xVMghFpqo9lL52ZWvmzn4qz6nNi0FF9BLWeWoWIEaZjDADlUcG8kdAkVtAqm8I0hFL
+	fLN/Fp5xh/9qklYXAb4GFno0ETdFTdgsxUAr+dX330CUtXNLfDWXsXFpcxxyRGbKXKScxyNd2RyCp
+	1Cjy+KxrOMVmCDBJRf0aEdUIr143CqwTNog7yt7ECoIVIpgvqkwLK0gMc30n7UPL0pQmlIZM934a8
+	CSzwfoU35za4jCuNMF9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxXUK-001rIx-NJ; Wed, 15 Dec 2021 16:50:44 +0000
-Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
+	id 1mxXiD-001wun-4g; Wed, 15 Dec 2021 17:05:05 +0000
+Received: from mail-oo1-f51.google.com ([209.85.161.51])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxX64-001hIK-A6; Wed, 15 Dec 2021 16:25:42 +0000
-Received: by mail-oi1-x234.google.com with SMTP id t19so32428987oij.1;
- Wed, 15 Dec 2021 08:25:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=sender:date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=HEDYgwxo2wFNr4pZJJaSPV2an5headxvgWEW6Oni1KQ=;
- b=ngbqMHDkO3t7RmxFkjk8u/uHqbnIcSmYCm80xXzQo1LRTUk+kYaUBCOtsSRMOwjsaF
- rpMI8G/mtS1w4mpupkPQjwX3/QJPcWQj00qoFF6e/BBkC7fcAXBtkc5R5BaNURl33Pkn
- vFMdaeKS/PkV6DK+t+2gCSHmLeHfzD2phiFNFpxsG9UY5gbgBxBbmQAiMsg5Qwbs+ZU/
- 5N0yh4Zl54ZtV4StneEXZbLBQLAPNXJ4RHr95Bpb4R566i67khxKuaPyaiVyaqSp0jz+
- iQuUfTJr1qW/puRwjnj3GY5wt3M1Oa9Ec1a3oxkzeePe2udUGJYsA2s/eNSfK7za+bzB
- iljQ==
+ id 1mxXZo-001tYb-SU; Wed, 15 Dec 2021 16:56:26 +0000
+Received: by mail-oo1-f51.google.com with SMTP id
+ v30-20020a4a315e000000b002c52d555875so6100529oog.12; 
+ Wed, 15 Dec 2021 08:56:24 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :references:mime-version:content-disposition:in-reply-to;
- bh=HEDYgwxo2wFNr4pZJJaSPV2an5headxvgWEW6Oni1KQ=;
- b=MFShn33fjnW32lUhDny+u/3Rtt0LK/olC7FxDUueh966dGl7lqC0x8segP7+ArOxYn
- NMKcT1Pg0gro9xCBFnAGALJ2omMMriGJ7aXFUonb7cUV4NlcZZPO9ma7Namb566RIIiw
- cp+/QEXA9ijRew4ridcRysNEILe2djT48ZK+XFK45+SHwSJmNcRltpo5w3M5Sqg6/BSi
- w5qdROVc9LLv0+4iYomRF0WoDnZCGW8u0svD9Pi7BV9nBOH4D5Tr7GcnXFrk+n+K4AU8
- EqsYncZ0dFtErM4Cocfsl2s5c9BzTT4g+hjFNSpBIo3rcY3nUDomedRrBA784WueOiq0
- CGDw==
-X-Gm-Message-State: AOAM531lcTHx4i+oEpPea1BQUlL3/QCSBSHaqWahobFQbfelCz7r6BJF
- EM60Pwd6E+zOa7voJXKviiI=
-X-Google-Smtp-Source: ABdhPJztfrPd81HgoxOlmlrw73ZRmCjKQ4AmArC6dr27p0Oipb4OIPsJDytc/znqs1z99fKtaptGcQ==
-X-Received: by 2002:a05:6808:11c6:: with SMTP id
- p6mr536796oiv.158.1639585537065; 
- Wed, 15 Dec 2021 08:25:37 -0800 (PST)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- w4sm396024oiv.37.2021.12.15.08.25.35
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=jRx/8XO5m2lO+UXrFb8kcYT22KejDsnyUFbPI7+hOJM=;
+ b=PgcU9R4QU062eaHHWJX2nf2h0B6BWcPPEuyfOJl1GbUli1P7C7morx9XMMs7BuOsBs
+ TRknzCaxEpCrMFKQabco1PmclxZHgwYzLp9XpKk1Hrky6hnZeHPj8DUzj/W+uANqYgAI
+ EGvC1OcmAhWW9lOQu7PuHEZbEhmJzQDQg2OKk5OrHewJXKqjpC10S6PhlrDwPpWWE10r
+ qWLdkMaaKVBYILQNc0MUIHOhOdMxNDuXcM92FEQe1gewwfXHyy28hF5fgBtNAnpKqz6b
+ QDYol90aVFRNEPcc/zlDVIo+0QNS58zOo3rq5Gp22wQixk61Iywgobwdh139n9cp3y9H
+ cJeQ==
+X-Gm-Message-State: AOAM532fZa/0z6svCIx1M4x9V3GcWu+9LqNZyt0cjDBhhpjYhjDEHjEu
+ XXLs5/Gnz8QDonkTQEByGA==
+X-Google-Smtp-Source: ABdhPJwAyYDPJPd/QuvgrvCEGorU09o3oX0vioSImGfUA+720rBTHRNfwyRDvv4oc8UFp20LVOHoNA==
+X-Received: by 2002:a4a:d47:: with SMTP id 68mr7887808oob.92.1639587383787;
+ Wed, 15 Dec 2021 08:56:23 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id j10sm528301ooq.5.2021.12.15.08.56.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 08:25:36 -0800 (PST)
-Date: Wed, 15 Dec 2021 08:25:34 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Wed, 15 Dec 2021 08:56:23 -0800 (PST)
+Received: (nullmailer pid 1466701 invoked by uid 1000);
+ Wed, 15 Dec 2021 16:56:22 -0000
+Date: Wed, 15 Dec 2021 10:56:22 -0600
+From: Rob Herring <robh@kernel.org>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Tomasz Figa <tfiga@chromium.org>, kernel test robot <lkp@intel.com>,
- Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [SPAM][PATCH] iommu/mediatek: Validate number of phandles
- associated with "mediatek,larbs"
-Message-ID: <20211215162534.GA2906031@roeck-us.net>
-References: <20211210205704.1664928-1-linux@roeck-us.net>
- <ebf58066a131f92c68e83a1ef56b88f435fa0d08.camel@mediatek.com>
- <ade9292c-38ee-14b3-a8c4-49cfc7a350e6@roeck-us.net>
- <dee32e154493788f8860f8495f2ed8ccd2ebc2ba.camel@mediatek.com>
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [next PATCH] dt-bindings: nvmem: convert mtk-efuse.txt to YAML
+ schema
+Message-ID: <YboeNrekGcGOZES8@robh.at.kernel.org>
+References: <20211209024213.16612-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <dee32e154493788f8860f8495f2ed8ccd2ebc2ba.camel@mediatek.com>
+In-Reply-To: <20211209024213.16612-1-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_082540_427374_A6E6D4DE 
-X-CRM114-Status: GOOD (  77.66  )
+X-CRM114-CacheID: sfid-20211215_085625_012207_C9E86E9D 
+X-CRM114-Status: GOOD (  21.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,271 +84,171 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 15, 2021 at 01:30:45PM +0800, Yong Wu wrote:
-> On Tue, 2021-12-14 at 07:02 -0800, Guenter Roeck wrote:
-> > On 12/13/21 11:31 PM, Yong Wu wrote:
-> > > On Fri, 2021-12-10 at 12:57 -0800, Guenter Roeck wrote:
-> > > > Since commit baf94e6ebff9 ("iommu/mediatek: Add device link for
-> > > > smi-
-> > > > common
-> > > > and m4u"), the driver assumes that at least one phandle
-> > > > associated
-> > > > with
-> > > > "mediatek,larbs" exists. If that is not the case, for example if
-> > > > reason
-> > > > "mediatek,larbs" is provided as boolean property, the code will
-> > > > use
-> > > > an
-> > > > uninitialized pointer and may crash. To fix the problem, ensure
-> > > > that
-> > > > the
-> > > > number of phandles associated with "mediatek,larbs" is at least 1
-> > > > and
-> > > > bail out immediately if that is not the case.
-> > > 
-> > >  From the dt-binding, "mediatek,larbs" always is a phandle-array. I
-> > > assumed the dts should conform to the dt-binding before. Then the
-> > > problem is that if we should cover the case that someone
-> > > abuses/attacks
-> > > the dts. Could you help add more comment in the commit message?
-> > > something like: this is for avoid abuse the dt-binding.
-> > > 
-> > 
-> > This doesn't have to be an abuse or attack. It can simply be an error
-> > by the person who wrote the devicetree file. Sure, bugs or lack of
+On Thu, Dec 09, 2021 at 10:42:13AM +0800, Chunfeng Yun wrote:
+> Convert mtk-efuse.txt to YAML schema mediatek,efuse.yaml
 > 
-> A minor question: If someone wrote error data that don't conform to the
-> dtbinding, the error result is expected. He should fix that problem,
-> right? If we could avoid abort and show error message at the beginning,
-> it's better of course.
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+>  .../bindings/nvmem/mediatek,efuse.yaml        | 89 +++++++++++++++++++
+>  .../devicetree/bindings/nvmem/mtk-efuse.txt   | 43 ---------
+>  2 files changed, 89 insertions(+), 43 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
 > 
+> diff --git a/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> new file mode 100644
+> index 000000000000..7332195e7f00
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/nvmem/mediatek,efuse.yaml
+> @@ -0,0 +1,89 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/nvmem/mediatek,efuse.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek efuse device tree bindings
+> +
+> +description: |
+> +  MediaTek's efuse is used for storing calibration data, it can be accessed
+> +  on ARM devices usiong I/O mapped memory.
+> +
+> +maintainers:
+> +  - Andrew-CT Chen <andrew-ct.chen@mediatek.com>
+> +
+> +allOf:
+> +  - $ref: "nvmem.yaml#"
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "^efuse@[0-9a-f]+$"
+> +
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt7622-efuse
+> +              - mediatek,mt7623-efuse
+> +              - mediatek,mt8173-efuse
+> +              - mediatek,mt8192-efuse
+> +              - mediatek,mt8195-efuse
+> +              - mediatek,mt8516-efuse
+> +          - const: mediatek,efuse
+> +      - const: mediatek,mt8173-efuse
+> +        deprecated: true
+> +
+> +  reg:
+> +    maxItems: 1
+> +
 
-Sure. However, such an error should not result in a crash but should be
-caught in an error handler.
+All of: 
 
-> > error checking can often be used for attacks, but that doesn't mean
-> > that all bad data is an exploit or attack.
-> > 
-> > > > 
-> > > > Cc: Yong Wu <yong.wu@mediatek.com>
-> > > > Cc: Tomasz Figa <tfiga@chromium.org>
-> > > > Fixes: baf94e6ebff9 ("iommu/mediatek: Add device link for smi-
-> > > > common
-> > > > and m4u")
-> > > > Reported-by: kernel test robot <lkp@intel.com>
-> > > > Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
-> > > > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
-> > > > ---
-> > > >   drivers/iommu/mtk_iommu.c | 2 ++
-> > > >   1 file changed, 2 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/iommu/mtk_iommu.c
-> > > > b/drivers/iommu/mtk_iommu.c
-> > > > index 25b834104790..0bbe32d0a2a6 100644
-> > > > --- a/drivers/iommu/mtk_iommu.c
-> > > > +++ b/drivers/iommu/mtk_iommu.c
-> > > > @@ -828,6 +828,8 @@ static int mtk_iommu_probe(struct
-> > > > platform_device
-> > > > *pdev)
-> > > >   					     "mediatek,larbs",
-> > > > NULL);
-> > > >   	if (larb_nr < 0)
-> > > >   		return larb_nr;
-> > > > +	if (larb_nr == 0)
-> > > > +		return -EINVAL;
-> > > 
-> > > Just assigning the larbnode to NULL may be simpler. In this case,
-> > > it
-> > > won't enter the loop below, and return 0 in the
-> > > of_parse_phandle(larbnode, "mediatek,smi", 0).
-> > > 
-> > > -       struct device_node      *larbnode, *smicomm_node;
-> > > +       struct device_node      *larbnode = NULL, *smicomm_node;
-> > > 
-> > 
-> > It is an option, but it would need to be explained and would not be
-> > as simple as it looks. And, yes, it would result in unnecessary code
-> > execution.
-> > 
-> > Why does it need to be explained ? I spent quite some additional
-> > time with the code trying to understand _why_ it works, and we should
-> > make sure that others don't have to spend that time.
-> > 
-> > Anyway, that additional time made me find additional problems with
-> > the code.
-> > 
-> > The for loop below assigns larbnode to the last node it finds.
-> > However, that node can be disabled.
-> > 
-> > 		if (!of_device_is_available(larbnode)) {
-> >                          of_node_put(larbnode);
-> >                          continue;
-> >                  }
-> > 
-> > Is such a disabled larbnode, if it is the last one, the node to use
-> > when looking for "mediatek,smi" ?
-> > 
-> > Also, there is
-> > 
-> > 	ret = of_property_read_u32(larbnode, "mediatek,larb-id", &id);
-> >          if (ret)/* The id is consecutive if there is no this
-> > property */
-> >                  id = i;
-> > 
-> > There are two problems with this code. First, neither i nor id are
-> > range
-> > checked, but used later in
-> > 
-> > 	data->larb_imu[id].dev = &plarbdev->dev;
-> > 
-> > That means a devicetree with a bad value for "mediatek,larb-id"
-> > or more than MTK_LARB_NR_MAX larb nodes will result in writes after
-> > the end of struct mtk_iommu_data.
-> > 
-> > On top of that, the comment states that the nodes are consecutive if
-> > there
-> > is no "mediatek,larb-id". However, that isn't really the case if
-> > there
-> > are disabled nodes. If there are disabled nodes, there will be a gap
-> > in
-> > larb_imu[]. I don't know if that matters; if it doesn't, there should
-> > be
-> > a comment about it in the code.
-> > 
-> > Last but not least, it would probably make sense to explain what the
-> > "last"
-> > larb node is expected to be in more detail. It is the last larb node
-> > in
-> > the devicetree file, but not the one with the highest id, and not
-> > (necessarily) an enabled one. For example, in
-> > arch/arm64/boot/dts/mediatek/mt2712e.dtsi, the code would pick
-> > <&smi_common0> even though <&smi_common1> is associated with a higher
-> > larb id.
-> > 
-> > One could of course argue that this all doesn't matter because it
-> > would
-> > suggest that the devicetree data is bad, but it is common practice to
-> > validate
-> > devicetree data and not just blindly accept it. One could also argue
-> > that such bad data would be an "attack", but, again, we don't know
-> > that.
-> > 
-> > In summary,
-> 
-> Thanks very much for your time to check here. All the issues are
-> introduced by the values from dts are untrusted. The detail platform
-> informations are replied below.
-> 
-> > 
-> > - The check I introduced should probably be something like
-> > 
-> > 	if (larb_nr == 0 || larb_nr > MTK_LARB_NR_MAX)
-> > 		return -EINVAL;
-> 
-> OK. Add a "else" to show it is a block with the "if" above?
-> 
->         if (larb_nr < 0)
->              return larb_nr;
->         else if (larb_nr == 0 || larb_nr > MTK_LARB_NR_MAX)
->              return -EINVAL;
-> 
+> +  "#address-cells":
+> +    const: 1
+> +
+> +  "#size-cells":
+> +    const: 1
+> +
+> +patternProperties:
+> +  "^.*@[0-9a-f]+$":
+> +    type: object
+> +
+> +    properties:
+> +      reg:
+> +        maxItems: 1
+> +
+> +      bits:
+> +        maxItems: 1
+> +
+> +    required:
+> +      - reg
+> +
+> +    additionalProperties: false
 
-Static checkers would complain with "else after return is unnecessary".
+...this is covered by nvmem.yaml and can be dropped.
 
-> > 
-> > - It needs to be clarified if larbnode to use for finding
-> > "mediatek,smi"
-> >    is indeed always the last one, even if it is disabled. If so, we 
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    efuse@10206000 {
+> +        compatible = "mediatek,mt8173-efuse";
+> +        reg = <0x10206000 0x1000>;
+> +        #address-cells = <1>;
+> +        #size-cells = <1>;
+> +
+> +        u2_intr_p0: usb2-intr-p0@188 {
+> +            reg = <0x188 0x1>;
+> +            bits = <0 5>;
+> +        };
+> +
+> +        u2_intr_p1: usb2-intr-p1@188 {
+> +            reg = <0x188 0x2>;
+> +            bits = <5 5>;
+> +        };
+> +
+> +        thermal_calibration: calib@528 {
+> +            reg = <0x528 0xc>;
+> +        };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt b/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> deleted file mode 100644
+> index 39d529599444..000000000000
+> --- a/Documentation/devicetree/bindings/nvmem/mtk-efuse.txt
+> +++ /dev/null
+> @@ -1,43 +0,0 @@
+> -= Mediatek MTK-EFUSE device tree bindings =
+> -
+> -This binding is intended to represent MTK-EFUSE which is found in most Mediatek SOCs.
+> -
+> -Required properties:
+> -- compatible: should be
+> -	      "mediatek,mt7622-efuse", "mediatek,efuse": for MT7622
+> -	      "mediatek,mt7623-efuse", "mediatek,efuse": for MT7623
+> -	      "mediatek,mt8173-efuse" or "mediatek,efuse": for MT8173
+> -	      "mediatek,mt8192-efuse", "mediatek,efuse": for MT8192
+> -	      "mediatek,mt8195-efuse", "mediatek,efuse": for MT8195
+> -	      "mediatek,mt8516-efuse", "mediatek,efuse": for MT8516
+> -- reg: Should contain registers location and length
+> -- bits: contain the bits range by offset and size
+> -
+> -= Data cells =
+> -Are child nodes of MTK-EFUSE, bindings of which as described in
+> -bindings/nvmem/nvmem.txt
+> -
+> -Example:
+> -
+> -	efuse: efuse@10206000 {
+> -		compatible = "mediatek,mt8173-efuse";
+> -		reg	   = <0 0x10206000 0 0x1000>;
+> -		#address-cells = <1>;
+> -		#size-cells = <1>;
+> -
+> -		/* Data cells */
+> -		thermal_calibration: calib@528 {
+> -			reg = <0x528 0xc>;
+> -		};
+> -	};
+> -
+> -= Data consumers =
+> -Are device nodes which consume nvmem data cells.
+> -
+> -For example:
+> -
+> -	thermal {
+> -		...
+> -		nvmem-cells = <&thermal_calibration>;
+> -		nvmem-cell-names = "calibration";
+> -	};
+> -- 
+> 2.18.0
 > 
-> We could find the "mediatek,smi" with any available larb. Of course it
-> should not be a disabled one. The code using the last larb is for
-> reusing the variable "larbnode".
 > 
-> > should
-> >    probably also handle the situation that of_node_put(larbnode); was
-> > called
-> >    on that larbnode. Alternatively, if the last larb node to use is
-> > the last
-> >    _active_ larb node, we'll probably need a separate variable to
-> > save that
-> >    larb node pointer for later use.
-> 
-> A new variable is ok.
-> 
-Ok, I'll change the code accordingly.
-
-> > 
-> > - It needs to be clarified if larb_imu[] may have gaps if there are
-> > disabled
-> >    larb nodes and "mediatek,larb-id" is not specified. If so, there 
-> 
-> Yes. It may have gaps. the commit message of this patch may be helpful.
-> 
-> 50fa3cd33f9d ("dt-bindings: mediatek: Add binding for mt2712 IOMMU and
-> SMI")
-> 
-> > is still the
-> >    problem that 'i' and a previous value of "mediatek,larb-id" may be
-> > identical
-> >    [ eg the first node provides mediatek,larb-id = <1> and the second
-> > node
-> >      doesn't provide "mediatek,larb-id" ]
-> 
-> This case did don't meet my expectation. OK, then we add a checking?
-> like:
-> 
->    if (data->larb_imu[i].dev) {
->          dev_err(dev, "the larb %d exist.", i);
->          return -EEXIST;
->    }         
-
-Makes sense, I'll do that.
-
-> 
-> > 
-> > - "id" should be range checked.
-> 
-> It should be [0, MTK_LARB_NR_MAX).
-> 
-
-I'll add this check.
-
-> > 
-> > - The meaning of "last" larb node to use when looking for
-> > mediatek,smi should
-> >    be explained in more detail.
-> 
-> We could use any available larb node to find mediatek,smi.
-> 
-> Their "mediatek,smi" node must be the same. OK, In this case, they are
-> possible different. We should add a checking: return -EINVAL if they
-> are not same.
-> 
-I'll see if and how I can do that without adding too much cmplexity
-to the code.
-
-> > 
-> > Once we have determined the correct handling of all those situations,
-> > I'll
-> > be happy to send another revision of this patch (or possibly multiple
-> > patches).
-> 
-> Appreciate for help enhance the safe here. I will test it.
-> 
-My pleasure.
-
-Thanks,
-Guenter
-
-> > 
-> > Thanks,
-> > Guenter
-> > 
-> > > >   
-> > > >   	for (i = 0; i < larb_nr; i++) {
-> > > >   		u32 id;
-> > 
-> > 
 
 _______________________________________________
 Linux-mediatek mailing list
