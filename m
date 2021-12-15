@@ -4,74 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D821CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 16:37:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7236CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 16:50:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/HkRXsxsmGQFUaLTntwH2R058kumKGaplLxhRp/24xc=; b=VXq5nbr36FjR60
-	eSWITBVTnrN56kmNRZAOWyjAB70EG6+IldAKqG2xksA0wiungjjwjIYKb76kkJShu0ax5EEzhv3TR
-	O4SgkflDQ1PjrLbly47IBeenPC+4e9t3KfXqWiRfxqHS8bhKNJ9864kxYAhu4x3wUsqX+9hdbLCYq
-	aYeSfVDH37325d62bPhtC6gVXymh8tYc0qkDsUoYWZxZ+aZwG3GUCHuEkNc8iiNjCSbO9CxvfVvSo
-	mNCEz4HUc4+YYm64r/6Dncvw3MlUh+PFfBig8XiNm+x2QMkSSIlzfQp8BFIYD40wX2fEPQpixaduv
-	k5bsDBkq6lk9dU6xgCyA==;
+	List-Owner; bh=Jyb5WhXdmmR/RQ67X9j1uu4xJIZqleH4qJHLcY72A1M=; b=L7uPQVFg20RK8e
+	xs/jNVnxHtjS3oboqoVPOxsh6EtvU+pFNIGKFQcEtP6qE1djtQvzeI2p2R5Angv6d5HxH1iQ6/PVr
+	FPvlZLTvvWUFtzp0BtbjsgOY+PN+PMfdUS7CwaXiBCJVmynEpJYC/osnQm5TyOdKr+OVwAvk8jkk6
+	HASsyG5Qrw7QHuBG8MnB7focbnsWetZ6eGDY80NvyuDuya8TYFYtz0XtbK+mMFsMwW8gxr/tV3tPf
+	VprAKpiexSm8wNWmmeVnaBGjLj2oEJyAolRcVVQIl5DDfOvRRYod0BJ5sBTR5D3p9haT84vQ5n61e
+	EIpbXl/+nXJj4ZRYProg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxXHq-001m6n-SG; Wed, 15 Dec 2021 16:37:50 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1mxXUK-001rIx-NJ; Wed, 15 Dec 2021 16:50:44 +0000
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxWvh-001d0v-1F; Wed, 15 Dec 2021 16:15:00 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 13A3BB81FC0;
- Wed, 15 Dec 2021 16:14:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF70FC36AE0;
- Wed, 15 Dec 2021 16:14:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639584893;
- bh=wo0crMKVlb7bmqaDIAvITIC848wu5jLZZ67Z80HKcRM=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=eNNwMRyTV221oRdj5G7UQ3XcsDP0G7RuGoRrkRZ8/lXE5fYOW59uAEH7VihbRwWxO
- rtb2Sx3uHnp5mBD933YemSHpayKk8aVSbhbS2kbp59RPunQhsSVllBTcTVxRaC+7vW
- LK2qW0jamydu8RrkXx6l9G5NH3CljOkpCbzelsgkQ+DbsD7UJZgwQN/fASuh112NmM
- U6qgHhfjUCfNgNxkWFW5Q4dO6fd1XNjIk25q+yElqtapX5MLBZakT3X8qjwoViNhkQ
- RY4ZSE4xqJravCkR194jmGdWpJY8xB6yXowVQwBYv9aqOFXzVRB/jv3/etMHkNSYGO
- 1bwfUz3h+JsWA==
-Received: by mail-ed1-f50.google.com with SMTP id z9so21556350edb.5;
- Wed, 15 Dec 2021 08:14:53 -0800 (PST)
-X-Gm-Message-State: AOAM5328ohKv8K5rOSLrVc35GPahb+miX8MG7S8KFJ0wr8jOLMXG/GtF
- Fqc0gMxOCYIzU5zbUFytfe9gNio/4TQbSmx6nA==
-X-Google-Smtp-Source: ABdhPJwb1dCWZnfzIsxAO7jQHE1+1kUJseuzbpP+YWd9CINPK/i/ENG5c75C9WxsfttHUDoyFH5Gb/7t73WX+PxlWKg=
-X-Received: by 2002:a50:ef02:: with SMTP id m2mr15331810eds.172.1639584888656; 
- Wed, 15 Dec 2021 08:14:48 -0800 (PST)
+ id 1mxX64-001hIK-A6; Wed, 15 Dec 2021 16:25:42 +0000
+Received: by mail-oi1-x234.google.com with SMTP id t19so32428987oij.1;
+ Wed, 15 Dec 2021 08:25:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=HEDYgwxo2wFNr4pZJJaSPV2an5headxvgWEW6Oni1KQ=;
+ b=ngbqMHDkO3t7RmxFkjk8u/uHqbnIcSmYCm80xXzQo1LRTUk+kYaUBCOtsSRMOwjsaF
+ rpMI8G/mtS1w4mpupkPQjwX3/QJPcWQj00qoFF6e/BBkC7fcAXBtkc5R5BaNURl33Pkn
+ vFMdaeKS/PkV6DK+t+2gCSHmLeHfzD2phiFNFpxsG9UY5gbgBxBbmQAiMsg5Qwbs+ZU/
+ 5N0yh4Zl54ZtV4StneEXZbLBQLAPNXJ4RHr95Bpb4R566i67khxKuaPyaiVyaqSp0jz+
+ iQuUfTJr1qW/puRwjnj3GY5wt3M1Oa9Ec1a3oxkzeePe2udUGJYsA2s/eNSfK7za+bzB
+ iljQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
+ :references:mime-version:content-disposition:in-reply-to;
+ bh=HEDYgwxo2wFNr4pZJJaSPV2an5headxvgWEW6Oni1KQ=;
+ b=MFShn33fjnW32lUhDny+u/3Rtt0LK/olC7FxDUueh966dGl7lqC0x8segP7+ArOxYn
+ NMKcT1Pg0gro9xCBFnAGALJ2omMMriGJ7aXFUonb7cUV4NlcZZPO9ma7Namb566RIIiw
+ cp+/QEXA9ijRew4ridcRysNEILe2djT48ZK+XFK45+SHwSJmNcRltpo5w3M5Sqg6/BSi
+ w5qdROVc9LLv0+4iYomRF0WoDnZCGW8u0svD9Pi7BV9nBOH4D5Tr7GcnXFrk+n+K4AU8
+ EqsYncZ0dFtErM4Cocfsl2s5c9BzTT4g+hjFNSpBIo3rcY3nUDomedRrBA784WueOiq0
+ CGDw==
+X-Gm-Message-State: AOAM531lcTHx4i+oEpPea1BQUlL3/QCSBSHaqWahobFQbfelCz7r6BJF
+ EM60Pwd6E+zOa7voJXKviiI=
+X-Google-Smtp-Source: ABdhPJztfrPd81HgoxOlmlrw73ZRmCjKQ4AmArC6dr27p0Oipb4OIPsJDytc/znqs1z99fKtaptGcQ==
+X-Received: by 2002:a05:6808:11c6:: with SMTP id
+ p6mr536796oiv.158.1639585537065; 
+ Wed, 15 Dec 2021 08:25:37 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ w4sm396024oiv.37.2021.12.15.08.25.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 Dec 2021 08:25:36 -0800 (PST)
+Date: Wed, 15 Dec 2021 08:25:34 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ iommu@lists.linux-foundation.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, kernel test robot <lkp@intel.com>,
+ Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [SPAM][PATCH] iommu/mediatek: Validate number of phandles
+ associated with "mediatek,larbs"
+Message-ID: <20211215162534.GA2906031@roeck-us.net>
+References: <20211210205704.1664928-1-linux@roeck-us.net>
+ <ebf58066a131f92c68e83a1ef56b88f435fa0d08.camel@mediatek.com>
+ <ade9292c-38ee-14b3-a8c4-49cfc7a350e6@roeck-us.net>
+ <dee32e154493788f8860f8495f2ed8ccd2ebc2ba.camel@mediatek.com>
 MIME-Version: 1.0
-References: <20211022172413.195559-1-markyacoub@chromium.org>
- <20211026011318.GF2515@art_vandelay>
- <CAJUqKUopyQEyLh7w32UnHfUJv0nNUoE_PHAdkEj8JOnkhVqbbQ@mail.gmail.com>
-In-Reply-To: <CAJUqKUopyQEyLh7w32UnHfUJv0nNUoE_PHAdkEj8JOnkhVqbbQ@mail.gmail.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Thu, 16 Dec 2021 00:14:36 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_84K_xCQE-H8zxWfBhn4kQF_kPsmaqDuRr8w2E4rti3QA@mail.gmail.com>
-Message-ID: <CAAOTY_84K_xCQE-H8zxWfBhn4kQF_kPsmaqDuRr8w2E4rti3QA@mail.gmail.com>
-Subject: Re: [PATCH] mediatek: Set default value for Panel Orientation
- connector prop.
-To: Mark Yacoub <markyacoub@chromium.org>
-Cc: Sean Paul <sean@poorly.run>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Sean Paul <seanpaul@chromium.org>, 
- Mark Yacoub <markyacoub@google.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- DRI Development <dri-devel@lists.freedesktop.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <dee32e154493788f8860f8495f2ed8ccd2ebc2ba.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_081457_424926_319AE249 
-X-CRM114-Status: GOOD (  22.26  )
+X-CRM114-CacheID: sfid-20211215_082540_427374_A6E6D4DE 
+X-CRM114-Status: GOOD (  77.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,48 +91,278 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE1hcms6CgpNYXJrIFlhY291YiA8bWFya3lhY291YkBjaHJvbWl1bS5vcmc+IOaWvCAyMDIx
-5bm0MTLmnIgxNOaXpSDpgLHkuowg5LiL5Y2IMTE6MTPlr6vpgZPvvJoKPgo+IEhleSBDSywgY2Fu
-IHdlIGhhdmUgdGhpcyBtZXJnZWQ/Cj4gVGhhbmsgeW91IQo+Cj4gT24gTW9uLCBPY3QgMjUsIDIw
-MjEgYXQgOToxMyBQTSBTZWFuIFBhdWwgPHNlYW5AcG9vcmx5LnJ1bj4gd3JvdGU6Cj4gPgo+ID4g
-T24gRnJpLCBPY3QgMjIsIDIwMjEgYXQgMDE6MjQ6MDNQTSAtMDQwMCwgTWFyayBZYWNvdWIgd3Jv
-dGU6Cj4gPiA+IEZyb206IE1hcmsgWWFjb3ViIDxtYXJreWFjb3ViQGNocm9taXVtLm9yZz4KPiA+
-ID4KPiA+ID4gW1doeV0KPiA+ID4gQ3JlYXRpbmcgdGhlIHByb3AgdXNlcyBVTktOT1dOIGFzIHRo
-ZSBpbml0aWFsIHZhbHVlLCB3aGljaCBpcyBub3QgYQo+ID4gPiBzdXBwb3J0ZWQgdmFsdWUgaWYg
-dGhlIHByb3BzIGlzIHRvIGJlIHN1cHBvcnRlZC4KPiA+ID4KPiA+ID4gW0hvd10KPiA+ID4gU2V0
-IHRoZSBwYW5lbCBvcmllbnRhdGlvbiBkZWZhdWx0IHZhbHVlIHRvIE5PUk1BTCByaWdodCBhZnRl
-ciBjcmVhdGluZwo+ID4gPiB0aGUgcHJvcC4KPiA+Cj4gPiBSZXZpZXdlZC1ieTogU2VhbiBQYXVs
-IDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gPgo+ID4gPgo+ID4gPiBUZXN0ZWQgb24gSmFjdXp6
-aShNVEspCj4gPiA+IEZpeGVzIElHVEBrbXNfcHJvcGVydGllc0BnZXRfcHJvcGVydGllcy1zYW5p
-dHkte2F0b21pYyxub24tYXRvbWljfQo+ID4gPgo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlh
-Y291YiA8bWFya3lhY291YkBjaHJvbWl1bS5vcmc+Cj4gPiA+IC0tLQo+ID4gPiAgZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDIgKysKPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAy
-IGluc2VydGlvbnMoKykKPiA+ID4KPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
-ZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
-PiA+IGluZGV4IDBhZDcxNTc2NjBhZmEuLmI3YzI1MjhhOGY0MWMgMTAwNjQ0Cj4gPiA+IC0tLSBh
-L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiA+ID4gKysrIGIvZHJpdmVycy9n
-cHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gPiBAQCAtMTAzOSw2ICsxMDM5LDggQEAgc3Rh
-dGljIGludCBtdGtfZHNpX2VuY29kZXJfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1
-Y3QgbXRrX2RzaSAqZHNpKQo+ID4gPiAgICAgICAgICAgICAgIERSTV9FUlJPUigiVW5hYmxlIHRv
-IGluaXQgcGFuZWwgb3JpZW50YXRpb25cbiIpOwo+ID4gPiAgICAgICAgICAgICAgIGdvdG8gZXJy
-X2NsZWFudXBfZW5jb2RlcjsKPiA+ID4gICAgICAgfQo+ID4gPiArICAgICBkcm1fY29ubmVjdG9y
-X3NldF9wYW5lbF9vcmllbnRhdGlvbihkc2ktPmNvbm5lY3RvciwKPiA+ID4gKyAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRFJNX01PREVfUEFORUxfT1JJRU5UQVRJT05f
-Tk9STUFMKTsKCkluIGRybV9jb25uZWN0b3Jfc2V0X3BhbmVsX29yaWVudGF0aW9uKCkgWzFdLCBJ
-IGZpbmQgdGhhdCB0aGUKb3JpZW50YXRpb24gY291bGQgYmUgc2V0IG9ubHkgb25jZS4gT25jZSB5
-b3Ugc2V0IGl0IHRvIG5vcm1hbCwgaXQKY291bGQgbm90IGJlIHNldCB0byBvdGhlciBvcmllbnRh
-dGlvbi4gUmlnaHQ/CgpbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tl
-cm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L3RyZWUvZHJpdmVycy9ncHUvZHJtL2RybV9jb25u
-ZWN0b3IuYz9oPXY1LjE2LXJjNSNuMjMwMgoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4gPiA+Cj4g
-PiA+ICAgICAgIGRybV9jb25uZWN0b3JfYXR0YWNoX2VuY29kZXIoZHNpLT5jb25uZWN0b3IsICZk
-c2ktPmVuY29kZXIpOwo+ID4gPgo+ID4gPiAtLQo+ID4gPiAyLjMzLjAuMTA3OS5nNmU3MDc3OGRj
-OS1nb29nCj4gPiA+Cj4gPgo+ID4gLS0KPiA+IFNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIs
-IEdvb2dsZSAvIENocm9taXVtIE9TCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Wed, Dec 15, 2021 at 01:30:45PM +0800, Yong Wu wrote:
+> On Tue, 2021-12-14 at 07:02 -0800, Guenter Roeck wrote:
+> > On 12/13/21 11:31 PM, Yong Wu wrote:
+> > > On Fri, 2021-12-10 at 12:57 -0800, Guenter Roeck wrote:
+> > > > Since commit baf94e6ebff9 ("iommu/mediatek: Add device link for
+> > > > smi-
+> > > > common
+> > > > and m4u"), the driver assumes that at least one phandle
+> > > > associated
+> > > > with
+> > > > "mediatek,larbs" exists. If that is not the case, for example if
+> > > > reason
+> > > > "mediatek,larbs" is provided as boolean property, the code will
+> > > > use
+> > > > an
+> > > > uninitialized pointer and may crash. To fix the problem, ensure
+> > > > that
+> > > > the
+> > > > number of phandles associated with "mediatek,larbs" is at least 1
+> > > > and
+> > > > bail out immediately if that is not the case.
+> > > 
+> > >  From the dt-binding, "mediatek,larbs" always is a phandle-array. I
+> > > assumed the dts should conform to the dt-binding before. Then the
+> > > problem is that if we should cover the case that someone
+> > > abuses/attacks
+> > > the dts. Could you help add more comment in the commit message?
+> > > something like: this is for avoid abuse the dt-binding.
+> > > 
+> > 
+> > This doesn't have to be an abuse or attack. It can simply be an error
+> > by the person who wrote the devicetree file. Sure, bugs or lack of
+> 
+> A minor question: If someone wrote error data that don't conform to the
+> dtbinding, the error result is expected. He should fix that problem,
+> right? If we could avoid abort and show error message at the beginning,
+> it's better of course.
+> 
+
+Sure. However, such an error should not result in a crash but should be
+caught in an error handler.
+
+> > error checking can often be used for attacks, but that doesn't mean
+> > that all bad data is an exploit or attack.
+> > 
+> > > > 
+> > > > Cc: Yong Wu <yong.wu@mediatek.com>
+> > > > Cc: Tomasz Figa <tfiga@chromium.org>
+> > > > Fixes: baf94e6ebff9 ("iommu/mediatek: Add device link for smi-
+> > > > common
+> > > > and m4u")
+> > > > Reported-by: kernel test robot <lkp@intel.com>
+> > > > Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > > > Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> > > > ---
+> > > >   drivers/iommu/mtk_iommu.c | 2 ++
+> > > >   1 file changed, 2 insertions(+)
+> > > > 
+> > > > diff --git a/drivers/iommu/mtk_iommu.c
+> > > > b/drivers/iommu/mtk_iommu.c
+> > > > index 25b834104790..0bbe32d0a2a6 100644
+> > > > --- a/drivers/iommu/mtk_iommu.c
+> > > > +++ b/drivers/iommu/mtk_iommu.c
+> > > > @@ -828,6 +828,8 @@ static int mtk_iommu_probe(struct
+> > > > platform_device
+> > > > *pdev)
+> > > >   					     "mediatek,larbs",
+> > > > NULL);
+> > > >   	if (larb_nr < 0)
+> > > >   		return larb_nr;
+> > > > +	if (larb_nr == 0)
+> > > > +		return -EINVAL;
+> > > 
+> > > Just assigning the larbnode to NULL may be simpler. In this case,
+> > > it
+> > > won't enter the loop below, and return 0 in the
+> > > of_parse_phandle(larbnode, "mediatek,smi", 0).
+> > > 
+> > > -       struct device_node      *larbnode, *smicomm_node;
+> > > +       struct device_node      *larbnode = NULL, *smicomm_node;
+> > > 
+> > 
+> > It is an option, but it would need to be explained and would not be
+> > as simple as it looks. And, yes, it would result in unnecessary code
+> > execution.
+> > 
+> > Why does it need to be explained ? I spent quite some additional
+> > time with the code trying to understand _why_ it works, and we should
+> > make sure that others don't have to spend that time.
+> > 
+> > Anyway, that additional time made me find additional problems with
+> > the code.
+> > 
+> > The for loop below assigns larbnode to the last node it finds.
+> > However, that node can be disabled.
+> > 
+> > 		if (!of_device_is_available(larbnode)) {
+> >                          of_node_put(larbnode);
+> >                          continue;
+> >                  }
+> > 
+> > Is such a disabled larbnode, if it is the last one, the node to use
+> > when looking for "mediatek,smi" ?
+> > 
+> > Also, there is
+> > 
+> > 	ret = of_property_read_u32(larbnode, "mediatek,larb-id", &id);
+> >          if (ret)/* The id is consecutive if there is no this
+> > property */
+> >                  id = i;
+> > 
+> > There are two problems with this code. First, neither i nor id are
+> > range
+> > checked, but used later in
+> > 
+> > 	data->larb_imu[id].dev = &plarbdev->dev;
+> > 
+> > That means a devicetree with a bad value for "mediatek,larb-id"
+> > or more than MTK_LARB_NR_MAX larb nodes will result in writes after
+> > the end of struct mtk_iommu_data.
+> > 
+> > On top of that, the comment states that the nodes are consecutive if
+> > there
+> > is no "mediatek,larb-id". However, that isn't really the case if
+> > there
+> > are disabled nodes. If there are disabled nodes, there will be a gap
+> > in
+> > larb_imu[]. I don't know if that matters; if it doesn't, there should
+> > be
+> > a comment about it in the code.
+> > 
+> > Last but not least, it would probably make sense to explain what the
+> > "last"
+> > larb node is expected to be in more detail. It is the last larb node
+> > in
+> > the devicetree file, but not the one with the highest id, and not
+> > (necessarily) an enabled one. For example, in
+> > arch/arm64/boot/dts/mediatek/mt2712e.dtsi, the code would pick
+> > <&smi_common0> even though <&smi_common1> is associated with a higher
+> > larb id.
+> > 
+> > One could of course argue that this all doesn't matter because it
+> > would
+> > suggest that the devicetree data is bad, but it is common practice to
+> > validate
+> > devicetree data and not just blindly accept it. One could also argue
+> > that such bad data would be an "attack", but, again, we don't know
+> > that.
+> > 
+> > In summary,
+> 
+> Thanks very much for your time to check here. All the issues are
+> introduced by the values from dts are untrusted. The detail platform
+> informations are replied below.
+> 
+> > 
+> > - The check I introduced should probably be something like
+> > 
+> > 	if (larb_nr == 0 || larb_nr > MTK_LARB_NR_MAX)
+> > 		return -EINVAL;
+> 
+> OK. Add a "else" to show it is a block with the "if" above?
+> 
+>         if (larb_nr < 0)
+>              return larb_nr;
+>         else if (larb_nr == 0 || larb_nr > MTK_LARB_NR_MAX)
+>              return -EINVAL;
+> 
+
+Static checkers would complain with "else after return is unnecessary".
+
+> > 
+> > - It needs to be clarified if larbnode to use for finding
+> > "mediatek,smi"
+> >    is indeed always the last one, even if it is disabled. If so, we 
+> 
+> We could find the "mediatek,smi" with any available larb. Of course it
+> should not be a disabled one. The code using the last larb is for
+> reusing the variable "larbnode".
+> 
+> > should
+> >    probably also handle the situation that of_node_put(larbnode); was
+> > called
+> >    on that larbnode. Alternatively, if the last larb node to use is
+> > the last
+> >    _active_ larb node, we'll probably need a separate variable to
+> > save that
+> >    larb node pointer for later use.
+> 
+> A new variable is ok.
+> 
+Ok, I'll change the code accordingly.
+
+> > 
+> > - It needs to be clarified if larb_imu[] may have gaps if there are
+> > disabled
+> >    larb nodes and "mediatek,larb-id" is not specified. If so, there 
+> 
+> Yes. It may have gaps. the commit message of this patch may be helpful.
+> 
+> 50fa3cd33f9d ("dt-bindings: mediatek: Add binding for mt2712 IOMMU and
+> SMI")
+> 
+> > is still the
+> >    problem that 'i' and a previous value of "mediatek,larb-id" may be
+> > identical
+> >    [ eg the first node provides mediatek,larb-id = <1> and the second
+> > node
+> >      doesn't provide "mediatek,larb-id" ]
+> 
+> This case did don't meet my expectation. OK, then we add a checking?
+> like:
+> 
+>    if (data->larb_imu[i].dev) {
+>          dev_err(dev, "the larb %d exist.", i);
+>          return -EEXIST;
+>    }         
+
+Makes sense, I'll do that.
+
+> 
+> > 
+> > - "id" should be range checked.
+> 
+> It should be [0, MTK_LARB_NR_MAX).
+> 
+
+I'll add this check.
+
+> > 
+> > - The meaning of "last" larb node to use when looking for
+> > mediatek,smi should
+> >    be explained in more detail.
+> 
+> We could use any available larb node to find mediatek,smi.
+> 
+> Their "mediatek,smi" node must be the same. OK, In this case, they are
+> possible different. We should add a checking: return -EINVAL if they
+> are not same.
+> 
+I'll see if and how I can do that without adding too much cmplexity
+to the code.
+
+> > 
+> > Once we have determined the correct handling of all those situations,
+> > I'll
+> > be happy to send another revision of this patch (or possibly multiple
+> > patches).
+> 
+> Appreciate for help enhance the safe here. I will test it.
+> 
+My pleasure.
+
+Thanks,
+Guenter
+
+> > 
+> > Thanks,
+> > Guenter
+> > 
+> > > >   
+> > > >   	for (i = 0; i < larb_nr; i++) {
+> > > >   		u32 id;
+> > 
+> > 
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
