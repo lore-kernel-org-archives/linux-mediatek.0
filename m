@@ -4,77 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A8A6C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 08:21:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EACF2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 08:46:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ySZbXYKLTomtzvRZGavJNJcWfarsLW7iZL4Vj9OJayo=; b=YZ/6aNd9cSPyed
-	rPu/SkPDiKCszng4AODVik6VFo+edrUs1M5MB0jguFdEN+jfOZtYL81WWBXBPvaW3g5wY65uHRYAb
-	xAhOeAnglgpvRgykwwYmLLksWyViTbeIVPiX0crWTk91aHDn81OH5bFDu6L7fUNlYF2afKE1OGf86
-	5uLMHa2GG83dei1pJ4o9WDZX9niTcX80XJUJEhUlm2CbYvY3Uw3MvCoS59pwiqNcRW4L1S2CVy/bW
-	/oEggLiUZKHgdLLAkrBisRKCrpdbipkp7il/baLzBDKkH9A9Zyz6kOwKc9+Xxo4hW4NHsQKqsoQcg
-	D0N/YWBUatjXVtOIAOIQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=gvV5e//kX+GVKa9toG9gl0ohHQgOKiEgc7fFkmKKB74=; b=HXbXRr1/lZi0vZ
+	laX3wtYHhRJqaL3RJn3xoLHefeg/mQV7w8/xVb1RW3PnkqEDUgJ5l1ISoBVHQpyVnFMP9P7GDUtv8
+	uolmxacVOsi1/7UJt8gQ/V+k+LGv0HTLROuwMAAnKT5Glm9WfwAkjVwgcwPl+v3yqoifTtUeWaXK1
+	kcmipQeZmcrYyks6v/e47sbShZJcogdcPOdxF5O6CEVJGznBcCLSkcL960Ds9p25TovlYs0LVlrVp
+	nTY2MwQbyZzNYqxoP7xLPw3wRDfnpZ/YPrb5nCG1lDLRvCAPyX34NT44iGdOjTp8HeLqYYKSkNzHZ
+	2PYdIiL4O5eCv0CmXrQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxPWu-00HKuq-1v; Wed, 15 Dec 2021 08:20:52 +0000
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+	id 1mxPvh-00HNio-I6; Wed, 15 Dec 2021 08:46:29 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxPWh-00HKsg-6v
- for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 08:20:40 +0000
-Received: by mail-pg1-x535.google.com with SMTP id r138so19542487pgr.13
- for <linux-mediatek@lists.infradead.org>; Wed, 15 Dec 2021 00:20:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=dVW69TmCJnTv5pUkbvRYzOl3hIL8o0Ev8E5MCNMu3v4=;
- b=G/3L4rDd1Goqt0d0b2dj/cMhsDvkaMD7Z1+8qFaNab+J/SE+VpMr8z5qIjIgg31BP3
- 6Rgv6T1J2UpaqpYj4Ko/HrsvNIinACGkY9Lq5IoHJmoAfHdOCZaVIS8KCXKSYD+RXgZa
- /tkVzDLzR++mtz40WJdnBEWAHCVJHeYyEp/qf6PSLI0VfhlzOWEmckna48+po0it3yNf
- LAXJXzd9ucGOc72u1drmRWGY/oxGZGNbXHlqHYO3Q1Mbr9iGZI5uUeGNv079dUH+i/uQ
- cRClz28G6WpGzT/Iu1lkboFSdf/KTwa+NTw7eq9XCNDI29f50wCdZFXoICXU1S0PMGXY
- mLOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=dVW69TmCJnTv5pUkbvRYzOl3hIL8o0Ev8E5MCNMu3v4=;
- b=Dqg/0spNBp6B1JmvzI+eioHYMuBYsHw6yzMwzSNIRlxl3fV6aIUjGQWmdnwwcx38Pa
- tH+sSDNajYeHvuWedoNWSzckyST6H2AW+d3ppljXaYS+mk26uppr+DByi22GHs2GpNd9
- MXbDSrDBCS7J6dcqJuJcLsFktl1LmU8opLKR4d+Ac0k/fa8BEqrcb2lsNRxfVZXSos8I
- hGODd/KZ8QMUrbrrEtFIWXTK796mYA0jj8dq2RX15UM3WN+p0AbUaK5qmnqX7yzeguzn
- MfDH9kKxEIjUZQ5mphk7oaR97ONWT+BdMitdeA57/oUat2Z6Stulrn1kzt5ICaBR+U+s
- ga3g==
-X-Gm-Message-State: AOAM533KJisSqN5hnSwoBT/PP9Il6gzj4WnpW5EI51Z/G5m2TDMFBBlJ
- eh9KpnugQWrvDZIt53+mWibyDTZYEaGSgg==
-X-Google-Smtp-Source: ABdhPJzqmCCROdTAh4mINIHDWtKReeWzZihdPEwTeamzuw2CuCOAX2lKwuAQZGGVSBG5s+y4UQgjig==
-X-Received: by 2002:a63:5350:: with SMTP id t16mr6987808pgl.321.1639556435096; 
- Wed, 15 Dec 2021 00:20:35 -0800 (PST)
-Received: from google.com ([2401:fa00:1:10:754d:1c44:62a9:6d30])
- by smtp.gmail.com with ESMTPSA id j127sm1679143pfg.14.2021.12.15.00.20.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 00:20:34 -0800 (PST)
-Date: Wed, 15 Dec 2021 16:20:31 +0800
-From: Tzung-Bi Shih <tzungbi@google.com>
-To: Trevor Wu <trevor.wu@mediatek.com>
-Cc: broonie@kernel.org, tiwai@suse.com, robh+dt@kernel.org,
- matthias.bgg@gmail.com, alsa-devel@alsa-project.org,
- linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, jiaxin.yu@mediatek.com, shumingf@realtek.com
-Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8195: update control for RT5682
- series
-Message-ID: <YbmlT+OSwpGuylsx@google.com>
-References: <20211215065835.3074-1-trevor.wu@mediatek.com>
+ id 1mxPvc-00HNhN-3y
+ for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 08:46:27 +0000
+X-UUID: 5437b65041d143f49fee99ff18010612-20211215
+X-UUID: 5437b65041d143f49fee99ff18010612-20211215
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <meichia.chiu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1877703458; Wed, 15 Dec 2021 01:46:21 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Dec 2021 00:46:20 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Dec 2021 16:46:19 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 15 Dec 2021 16:46:19 +0800
+From: MeiChia Chiu <MeiChia.Chiu@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Shayne Chen
+ <shayne.chen@mediatek.com>, Evelyn Tsai <evelyn.tsai@mediatek.com>, Ryder Lee
+ <ryder.lee@mediatek.com>, Money Wang <Money.Wang@mediatek.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ MeiChia Chiu <meichia.chiu@mediatek.com>
+Subject: [PATCH v4] mt76: mt7915: add mu-mimo and ofdma debugfs knobs
+Date: Wed, 15 Dec 2021 16:45:30 +0800
+Message-ID: <20211215084530.5427-1-MeiChia.Chiu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211215065835.3074-1-trevor.wu@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_002039_293528_6C76BB9E 
-X-CRM114-Status: GOOD (  23.81  )
+X-CRM114-CacheID: sfid-20211215_004624_202049_8D9C8BF2 
+X-CRM114-Status: GOOD (  14.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,163 +72,410 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 15, 2021 at 02:58:34PM +0800, Trevor Wu wrote:
-> --- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
-> +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
-[...]
-> +static int mt8195_set_bias_level_post(struct snd_soc_card *card,
-> +	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level level)
-> +{
-> +	struct snd_soc_component *component = dapm->component;
-> +	struct mt8195_mt6359_rt1011_rt5682_priv *priv =
-> +		snd_soc_card_get_drvdata(card);
-> +	int ret = 0;
+From: MeiChia Chiu <meichia.chiu@mediatek.com>
 
-ret doesn't need to be initialized.
+Add mu-mimo and ofdma packet counters statistics.
+The statistics are clear on read.
 
-> +	/*
-> +	 * It's required to control mclk directly in the set_bias_level_post
-> +	 * function for rt5682 and rt5682s codec, or the unexpected pop happens
-> +	 * at the end of playback.
-> +	 */
-> +	if (!component ||
-> +	    (strcmp(component->name, RT5682_DEV0_NAME) &&
-> +	    strcmp(component->name, RT5682S_DEV0_NAME)))
-> +		return 0;
-> +
-> +	if (IS_ERR(priv->i2so1_mclk))
-> +		return 0;
+Reviewed-by: Money Wang <Money.Wang@mediatek.com>
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: MeiChia Chiu <meichia.chiu@mediatek.com>
+---
+v2:
+-use u64 total_ppdu_cnt to avoid overflow
+-update commit message
+v3:
+update printf format
+v4:
+-remove the ratio
+-add new total count
+---
+ .../net/wireless/mediatek/mt76/mt7915/debugfs.c | 223 ++++++++++++++++++++++++++++++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7915/mcu.c     |  41 +++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mcu.h     |  45 ++++++++++
+ .../net/wireless/mediatek/mt76/mt7915/mt7915.h  |   3 +
+ 4 files changed, 311 insertions(+), 1 deletion(-)
 
-I doubt if it needs to check priv->i2so1_mclk.  In other words, if IS_ERR(priv->i2so1_mclk) is true in _probe, does mt8195_set_bias_level_post() get called?
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+index a15aa256..8c7c15a3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/debugfs.c
+@@ -81,6 +81,225 @@ mt7915_radar_trigger(void *data, u64 val)
+ DEFINE_DEBUGFS_ATTRIBUTE(fops_radar_trigger, NULL,
+ 			 mt7915_radar_trigger, "%lld\n");
+ 
++static int
++mt7915_muru_debug_set(void *data, u64 val)
++{
++	struct mt7915_dev *dev = data;
++
++	dev->muru_debug = val;
++	mt7915_mcu_muru_debug_set(dev, data);
++
++	return 0;
++}
++
++static int
++mt7915_muru_debug_get(void *data, u64 *val)
++{
++	struct mt7915_dev *dev = data;
++
++	*val = dev->muru_debug;
++
++	return 0;
++}
++
++DEFINE_DEBUGFS_ATTRIBUTE(fops_muru_debug, mt7915_muru_debug_get,
++			 mt7915_muru_debug_set, "%lld\n");
++
++static int mt7915_muru_stats_show(struct seq_file *file, void *data)
++{
++	struct mt7915_phy *phy = file->private;
++	struct mt7915_dev *dev = phy->dev;
++	struct mt7915_mcu_muru_stats mu_stats = {};
++	static const char * const dl_non_he_type[] = {
++		"CCK", "OFDM", "HT MIX", "HT GF",
++		"VHT SU", "VHT 2MU", "VHT 3MU", "VHT 4MU"
++	};
++	static const char * const dl_he_type[] = {
++		"HE SU", "HE EXT", "HE 2MU", "HE 3MU", "HE 4MU",
++		"HE 2RU", "HE 3RU", "HE 4RU", "HE 5-8RU", "HE 9-16RU",
++		"HE >16RU"
++	};
++	static const char * const ul_he_type[] = {
++		"HE 2MU", "HE 3MU", "HE 4MU", "HE SU", "HE 2RU",
++		"HE 3RU", "HE 4RU", "HE 5-8RU", "HE 9-16RU", "HE >16RU"
++	};
++	int ret, i;
++	u64 total_ppdu_cnt, sub_total_cnt;
++
++	if (!dev->muru_debug) {
++		seq_puts(file, "Please enable muru_debug first.\n");
++		return 0;
++	}
++
++	mutex_lock(&dev->mt76.mutex);
++
++	ret = mt7915_mcu_muru_debug_get(phy, &mu_stats);
++	if (ret)
++		goto exit;
++
++	/* Non-HE Downlink*/
++	seq_puts(file, "[Non-HE]\nDownlink\nData Type:  ");
++
++	for (i = 0; i < 5; i++)
++		seq_printf(file, "%8s | ", dl_non_he_type[i]);
++
++#define __dl_u32(s)     le32_to_cpu(mu_stats.dl.s)
++	seq_puts(file, "\nTotal Count:");
++	seq_printf(file, "%8u | %8u | %8u | %8u | %8u | ",
++		   __dl_u32(cck_cnt),
++		   __dl_u32(ofdm_cnt),
++		   __dl_u32(htmix_cnt),
++		   __dl_u32(htgf_cnt),
++		   __dl_u32(vht_su_cnt));
++
++	seq_puts(file, "\nDownlink MU-MIMO\nData Type:  ");
++
++	for (i = 5; i < 8; i++)
++		seq_printf(file, "%8s | ", dl_non_he_type[i]);
++
++	seq_puts(file, "\nTotal Count:");
++	seq_printf(file, "%8u | %8u | %8u | ",
++		   __dl_u32(vht_2mu_cnt),
++		   __dl_u32(vht_3mu_cnt),
++		   __dl_u32(vht_4mu_cnt));
++
++	sub_total_cnt = __dl_u32(vht_2mu_cnt) +
++		__dl_u32(vht_3mu_cnt) +
++		__dl_u32(vht_4mu_cnt);
++
++	seq_printf(file, "\nTotal non-HE MU-MIMO DL PPDU count: %lld",
++		   sub_total_cnt);
++
++	total_ppdu_cnt = sub_total_cnt +
++		__dl_u32(cck_cnt) +
++		__dl_u32(ofdm_cnt) +
++		__dl_u32(htmix_cnt) +
++		__dl_u32(htgf_cnt) +
++		__dl_u32(vht_su_cnt);
++
++	seq_printf(file, "\nAll non-HE DL PPDU count: %lld", total_ppdu_cnt);
++
++	/* HE Downlink */
++	seq_puts(file, "\n\n[HE]\nDownlink\nData Type:  ");
++
++	for (i = 0; i < 2; i++)
++		seq_printf(file, "%8s | ", dl_he_type[i]);
++
++	seq_puts(file, "\nTotal Count:");
++	seq_printf(file, "%8u | %8u | ",
++		   __dl_u32(he_su_cnt),
++		   __dl_u32(he_ext_su_cnt));
++
++	seq_puts(file, "\nDownlink MU-MIMO\nData Type:  ");
++
++	for (i = 2; i < 5; i++)
++		seq_printf(file, "%8s | ", dl_he_type[i]);
++
++	seq_puts(file, "\nTotal Count:");
++	seq_printf(file, "%8u | %8u | %8u | ",
++		   __dl_u32(he_2mu_cnt),
++		   __dl_u32(he_3mu_cnt),
++		   __dl_u32(he_4mu_cnt));
++
++	seq_puts(file, "\nDownlink OFDMA\nData Type:  ");
++
++	for (i = 5; i < 11; i++)
++		seq_printf(file, "%8s | ", dl_he_type[i]);
++
++	seq_puts(file, "\nTotal Count:");
++	seq_printf(file, "%8u | %8u | %8u | %8u | %9u | %8u | ",
++		   __dl_u32(he_2ru_cnt),
++		   __dl_u32(he_3ru_cnt),
++		   __dl_u32(he_4ru_cnt),
++		   __dl_u32(he_5to8ru_cnt),
++		   __dl_u32(he_9to16ru_cnt),
++		   __dl_u32(he_gtr16ru_cnt));
++
++	sub_total_cnt = __dl_u32(he_2mu_cnt) +
++		__dl_u32(he_3mu_cnt) +
++		__dl_u32(he_4mu_cnt);
++	total_ppdu_cnt = sub_total_cnt;
++
++	seq_printf(file, "\nTotal HE MU-MIMO DL PPDU count: %lld",
++		   sub_total_cnt);
++
++	sub_total_cnt = __dl_u32(he_2ru_cnt) +
++		__dl_u32(he_3ru_cnt) +
++		__dl_u32(he_4ru_cnt) +
++		__dl_u32(he_5to8ru_cnt) +
++		__dl_u32(he_9to16ru_cnt) +
++		__dl_u32(he_gtr16ru_cnt);
++	total_ppdu_cnt += sub_total_cnt;
++
++	seq_printf(file, "\nTotal HE OFDMA DL PPDU count: %lld",
++		   sub_total_cnt);
++
++	total_ppdu_cnt += __dl_u32(he_su_cnt) +
++		__dl_u32(he_ext_su_cnt);
++
++	seq_printf(file, "\nAll HE DL PPDU count: %lld", total_ppdu_cnt);
++#undef __dl_u32
++
++	/* HE Uplink */
++	seq_puts(file, "\n\nUplink");
++	seq_puts(file, "\nTrigger-based Uplink MU-MIMO\nData Type:  ");
++
++	for (i = 0; i < 3; i++)
++		seq_printf(file, "%8s | ", ul_he_type[i]);
++
++#define __ul_u32(s)     le32_to_cpu(mu_stats.ul.s)
++	seq_puts(file, "\nTotal Count:");
++	seq_printf(file, "%8u | %8u | %8u | ",
++		   __ul_u32(hetrig_2mu_cnt),
++		   __ul_u32(hetrig_3mu_cnt),
++		   __ul_u32(hetrig_4mu_cnt));
++
++	seq_puts(file, "\nTrigger-based Uplink OFDMA\nData Type:  ");
++
++	for (i = 3; i < 10; i++)
++		seq_printf(file, "%8s | ", ul_he_type[i]);
++
++	seq_puts(file, "\nTotal Count:");
++	seq_printf(file, "%8u | %8u | %8u | %8u | %8u | %9u |  %7u | ",
++		   __ul_u32(hetrig_su_cnt),
++		   __ul_u32(hetrig_2ru_cnt),
++		   __ul_u32(hetrig_3ru_cnt),
++		   __ul_u32(hetrig_4ru_cnt),
++		   __ul_u32(hetrig_5to8ru_cnt),
++		   __ul_u32(hetrig_9to16ru_cnt),
++		   __ul_u32(hetrig_gtr16ru_cnt));
++
++	sub_total_cnt = __ul_u32(hetrig_2mu_cnt) +
++		__ul_u32(hetrig_3mu_cnt) +
++		__ul_u32(hetrig_4mu_cnt);
++	total_ppdu_cnt = sub_total_cnt;
++
++	seq_printf(file, "\nTotal HE MU-MIMO UL TB PPDU count: %lld",
++		   sub_total_cnt);
++
++	sub_total_cnt = __ul_u32(hetrig_2ru_cnt) +
++		__ul_u32(hetrig_3ru_cnt) +
++		__ul_u32(hetrig_4ru_cnt) +
++		__ul_u32(hetrig_5to8ru_cnt) +
++		__ul_u32(hetrig_9to16ru_cnt) +
++		__ul_u32(hetrig_gtr16ru_cnt);
++	total_ppdu_cnt += sub_total_cnt;
++
++	seq_printf(file, "\nTotal HE OFDMA UL TB PPDU count: %lld",
++		   sub_total_cnt);
++
++	total_ppdu_cnt += __ul_u32(hetrig_su_cnt);
++
++	seq_printf(file, "\nAll HE UL TB PPDU count: %lld\n", total_ppdu_cnt);
++#undef __ul_u32
++
++exit:
++	mutex_unlock(&dev->mt76.mutex);
++
++	return ret;
++}
++DEFINE_SHOW_ATTRIBUTE(mt7915_muru_stats);
++
+ static int
+ mt7915_fw_debug_wm_set(void *data, u64 val)
+ {
+@@ -528,7 +747,9 @@ int mt7915_init_debugfs(struct mt7915_phy *phy)
+ 	dir = mt76_register_debugfs_fops(phy->mt76, NULL);
+ 	if (!dir)
+ 		return -ENOMEM;
+-
++	debugfs_create_file("muru_debug", 0600, dir, dev, &fops_muru_debug);
++	debugfs_create_file("muru_stats", 0400, dir, phy,
++			    &mt7915_muru_stats_fops);
+ 	debugfs_create_file("hw-queues", 0400, dir, phy,
+ 			    &mt7915_hw_queues_fops);
+ 	debugfs_create_file("xmit-queues", 0400, dir, phy,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+index 73a11448..a32d2199 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
+@@ -2993,6 +2993,47 @@ int mt7915_mcu_fw_dbg_ctrl(struct mt7915_dev *dev, u32 module, u8 level)
+ 				 sizeof(data), false);
+ }
+ 
++int mt7915_mcu_muru_debug_set(struct mt7915_dev *dev, bool enabled)
++{
++	struct {
++		__le32 cmd;
++		u8 enable;
++	} data = {
++		.cmd = cpu_to_le32(MURU_SET_TXC_TX_STATS_EN),
++		.enable = enabled,
++	};
++
++	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL), &data,
++				sizeof(data), false);
++}
++
++int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy, void *ms)
++{
++	struct mt7915_dev *dev = phy->dev;
++	struct sk_buff *skb;
++	struct mt7915_mcu_muru_stats *mu_stats =
++				(struct mt7915_mcu_muru_stats *)ms;
++	int ret;
++
++	struct {
++		__le32 cmd;
++		u8 band_idx;
++	} req = {
++		.cmd = cpu_to_le32(MURU_GET_TXC_TX_STATS),
++		.band_idx = phy != &dev->phy,
++	};
++
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL),
++					&req, sizeof(req), true, &skb);
++	if (ret)
++		return ret;
++
++	memcpy(mu_stats, skb->data, sizeof(struct mt7915_mcu_muru_stats));
++	dev_kfree_skb(skb);
++
++	return 0;
++}
++
+ static int mt7915_mcu_set_mwds(struct mt7915_dev *dev, bool enabled)
+ {
+ 	struct {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+index 4636b7dc..60b18457 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.h
+@@ -44,6 +44,13 @@ enum {
+ 	MCU_EXT_EVENT_RDD_REPORT = 0x3a,
+ 	MCU_EXT_EVENT_CSA_NOTIFY = 0x4f,
+ 	MCU_EXT_EVENT_BCC_NOTIFY = 0x75,
++	MCU_EXT_EVENT_MURU_CTRL = 0x9f,
++};
++
++/* tx cmd tx statistics */
++enum {
++	MURU_SET_TXC_TX_STATS_EN = 150,
++	MURU_GET_TXC_TX_STATS = 151,
+ };
+ 
+ enum {
+@@ -206,6 +213,44 @@ struct mt7915_mcu_tx {
+ 	struct edca edca[IEEE80211_NUM_ACS];
+ } __packed;
+ 
++struct mt7915_mcu_muru_stats {
++	__le32 event_id;
++	struct {
++		__le32 cck_cnt;
++		__le32 ofdm_cnt;
++		__le32 htmix_cnt;
++		__le32 htgf_cnt;
++		__le32 vht_su_cnt;
++		__le32 vht_2mu_cnt;
++		__le32 vht_3mu_cnt;
++		__le32 vht_4mu_cnt;
++		__le32 he_su_cnt;
++		__le32 he_ext_su_cnt;
++		__le32 he_2ru_cnt;
++		__le32 he_2mu_cnt;
++		__le32 he_3ru_cnt;
++		__le32 he_3mu_cnt;
++		__le32 he_4ru_cnt;
++		__le32 he_4mu_cnt;
++		__le32 he_5to8ru_cnt;
++		__le32 he_9to16ru_cnt;
++		__le32 he_gtr16ru_cnt;
++	} dl;
++
++	struct {
++		__le32 hetrig_su_cnt;
++		__le32 hetrig_2ru_cnt;
++		__le32 hetrig_3ru_cnt;
++		__le32 hetrig_4ru_cnt;
++		__le32 hetrig_5to8ru_cnt;
++		__le32 hetrig_9to16ru_cnt;
++		__le32 hetrig_gtr16ru_cnt;
++		__le32 hetrig_2mu_cnt;
++		__le32 hetrig_3mu_cnt;
++		__le32 hetrig_4mu_cnt;
++	} ul;
++};
++
+ #define WMM_AIFS_SET		BIT(0)
+ #define WMM_CW_MIN_SET		BIT(1)
+ #define WMM_CW_MAX_SET		BIT(2)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+index 10e43307..ec62c299 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
+@@ -273,6 +273,7 @@ struct mt7915_dev {
+ 
+ 	bool dbdc_support;
+ 	bool flash_mode;
++	bool muru_debug;
+ 	bool ibf;
+ 	u8 fw_debug_wm;
+ 	u8 fw_debug_wa;
+@@ -527,6 +528,8 @@ int mt7915_dfs_init_radar_detector(struct mt7915_phy *phy);
+ void mt7915_set_stream_he_caps(struct mt7915_phy *phy);
+ void mt7915_set_stream_vht_txbf_caps(struct mt7915_phy *phy);
+ void mt7915_update_channel(struct mt76_phy *mphy);
++int mt7915_mcu_muru_debug_set(struct mt7915_dev *dev, bool enable);
++int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy, void *ms);
+ int mt7915_init_debugfs(struct mt7915_phy *phy);
+ #ifdef CONFIG_MAC80211_DEBUGFS
+ void mt7915_sta_add_debugfs(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+-- 
+2.29.2
 
-> +	switch (level) {
-> +	case SND_SOC_BIAS_OFF:
-> +		if (!__clk_is_enabled(priv->i2so1_mclk))
-> +			return 0;
-> +
-> +		dev_dbg(card->dev, "Disable i2so1");
-> +		clk_disable_unprepare(priv->i2so1_mclk);
-
-I would suggest move dev_dbg() later than clk_disable_unprepare() which means "Disable i2so1" is done.
-
-> +		break;
-> +	case SND_SOC_BIAS_ON:
-> +		dev_dbg(card->dev, "Enable i2so1");
-> +		ret = clk_prepare_enable(priv->i2so1_mclk);
-> +		if (ret) {
-> +			dev_err(card->dev, "Can't enable mclk, err: %d\n", ret);
-
-The error message can be more specific.  "Cannot enable i2so1" for example.
-
-> +			return ret;
-> +		}
-
-Also, I would suggest move dev_dbg() later than clk_prepare_enable().  Otherwise, it could fail to prepare or enable but still can see "Enable i2so1" message.
-
-> +		break;
-> +	default:
-> +		break;
-> +	}
-> +
-> +	return ret;
-
-The function doesn't use any gotos.  To be concise, "return 0;".
-
-> @@ -1072,6 +1119,19 @@ static int mt8195_mt6359_rt1011_rt5682_dev_probe(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> +	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
-> +	if (IS_ERR(priv->i2so1_mclk)) {
-> +		ret = PTR_ERR(priv->i2so1_mclk);
-> +		if (ret == -ENOENT) {
-> +			dev_dbg(&pdev->dev,
-> +				"Failed to get i2so1_mclk, defer probe\n");
-> +			return -EPROBE_DEFER;
-> +		}
-
-Does devm_clk_get_optional() could make the block more concise?
-
-> +
-> +		dev_err(&pdev->dev, "Failed to get i2so1_mclk, err:%d\n", ret);
-
-If devm_clk_get() is possible to return -EPROBE_DEFER too, use dev_err_probe().
-
-> --- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-> +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
-[...]
-> +static int mt8195_set_bias_level_post(struct snd_soc_card *card,
-> +	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level level)
-> +{
-> +	struct snd_soc_component *component = dapm->component;
-> +	struct mt8195_mt6359_rt1019_rt5682_priv *priv =
-> +		snd_soc_card_get_drvdata(card);
-> +	int ret = 0;
-
-Ditto, see comments above.
-
-> +
-> +	/*
-> +	 * It's required to control mclk directly in the set_bias_level_post
-> +	 * function for rt5682 and rt5682s codec, or the unexpected pop happens
-> +	 * at the end of playback.
-> +	 */
-> +	if (!component ||
-> +	    (strcmp(component->name, RT5682_DEV0_NAME) &&
-> +	    strcmp(component->name, RT5682S_DEV0_NAME)))
-> +		return 0;
-> +
-> +	if (IS_ERR(priv->i2so1_mclk))
-> +		return 0;
-
-Ditto, see comments above.
-
-> +
-> +	switch (level) {
-> +	case SND_SOC_BIAS_OFF:
-> +		if (!__clk_is_enabled(priv->i2so1_mclk))
-> +			return 0;
-> +
-> +		dev_dbg(card->dev, "Disable i2so1");
-> +		clk_disable_unprepare(priv->i2so1_mclk);
-> +		break;
-> +	case SND_SOC_BIAS_ON:
-> +		dev_dbg(card->dev, "Enable i2so1");
-> +		ret = clk_prepare_enable(priv->i2so1_mclk);
-> +		if (ret) {
-> +			dev_err(card->dev, "Can't enable mclk, err: %d\n", ret);
-> +			return ret;
-> +		}
-> +		break;
-> +	default:
-> +		break;
-> +	}
-
-Ditto, see comments above for the block.
-
-> +
-> +	return ret;
-
-Ditto, see comments above.
-
-> @@ -1285,6 +1326,19 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
->  		return -EINVAL;
->  	}
->  
-> +	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
-> +	if (IS_ERR(priv->i2so1_mclk)) {
-> +		ret = PTR_ERR(priv->i2so1_mclk);
-> +		if (ret == -ENOENT) {
-> +			dev_dbg(&pdev->dev,
-> +				"Failed to get i2so1_mclk, defer probe\n");
-> +			return -EPROBE_DEFER;
-> +		}
-> +
-> +		dev_err(&pdev->dev, "Failed to get i2so1_mclk, err:%d\n", ret);
-> +		return ret;
-> +	}
-
-Ditto, see comments above for the block.
 
 _______________________________________________
 Linux-mediatek mailing list
