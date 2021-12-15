@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59BA2C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 03:20:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06A87C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 03:29:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=w/DSnio6KiQnQYRNCCQhKh7Yh6PAYv5ZBvMrg/WiKc4=; b=1RysuLRHdDOU4g
-	GlSumONA/Pg0ZsDoNcaU/0PfYxLsAkkqu7icHllTMploKkUwwdWv3VPu7UGVrDb4R0MAp111GS0fZ
-	6n4G/5O8G+10R9Rab1sYbUJN1JhhfscILz7yjzfgtQairmY5FZWUFwwAngie10zVGGryQ7McaK2rU
-	5t0HMzR0ZExdLhkYKqBztuLDSmGP0yWMSx7No/H0SOdzrlJJwQqet6uRyvaynn4X592zjsLnsZlaC
-	KzuEdk7lkP1rJsANTY3DjB7e0gDxCxV5SKLtHRR+Q/uU51Tww6SOvbnuQop6Ay+4hjtMDz4W9VeOT
-	YX3vP2/LUOP37Bl2ADhQ==;
+	List-Owner; bh=TIY4XmoDi2JQasolr/VByMnboBcpQPRR3N1wiCA2D0c=; b=eLGrJrjUWfiMP1
+	GGXCtVYicZKyH9Rfo5LXYAE0OefgOGwkQO71MTGByk1Z189NeKp08X4zrFhMHDTgzC9GSAhXo26uQ
+	U1jfpaN9m5wPWCipvvR0S3kUxbP8sYW9JU+wXPetqFcPxfeRf9vCoU7Vvb31nVxGweCT99j0ZryNa
+	grWZ+roNP6zieJURJC121eadQ8Ms4aPlEZ/6lFR4C1G/gfRT/nklOOfCrllEP3SGCmj8qmoTCrKKx
+	urcLDi/RuSdRiPUsZmt2iOnWNIVDlNFgKuliiHGN2pplNxLNxoQ7gJ1yylnfqRIhGmEsB9w6Wm0P7
+	uwJ3/Jk3iM2qAbqHq/6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxKqD-00GWc4-Pb; Wed, 15 Dec 2021 03:20:29 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxKpz-00GWYl-Ed; Wed, 15 Dec 2021 03:20:18 +0000
-X-UUID: c3f91e09701d4e61a24a7f8c2a7753c5-20211214
-X-UUID: c3f91e09701d4e61a24a7f8c2a7753c5-20211214
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yc.hung@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1708363631; Tue, 14 Dec 2021 20:20:08 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 14 Dec 2021 19:20:06 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Dec 2021 11:20:05 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 15 Dec 2021 11:20:05 +0800
-From: YC Hung <yc.hung@mediatek.com>
-To: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
- <matthias.bgg@gmail.com>
-CC: <yc.hung@mediatek.com>, <alsa-devel@alsa-project.org>,
- <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <daniel.baluta@nxp.com>, <trevor.wu@mediatek.com>,
- <allen-kh.cheng@mediatek.com>
-Subject: [PATCH] dt-bindings: dsp: mediatek: add mt8195 dsp document
-Date: Wed, 15 Dec 2021 11:19:55 +0800
-Message-ID: <20211215031955.28244-1-yc.hung@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+	id 1mxKyT-00GXDy-RX; Wed, 15 Dec 2021 03:29:01 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mxKyH-00GXC1-9A; Wed, 15 Dec 2021 03:28:51 +0000
+Received: from localhost.localdomain (unknown [124.16.138.126])
+ by APP-05 (Coremail) with SMTP id zQCowAD3_wPkYLlht7ctAw--.30807S2;
+ Wed, 15 Dec 2021 11:28:36 +0800 (CST)
+From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+To: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org,
+ matthias.bgg@gmail.com
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Subject: [PATCH] media: mtk-vcodec: potential dereference of null pointer
+Date: Wed, 15 Dec 2021 11:28:34 +0800
+Message-Id: <20211215032834.94111-1-jiasheng@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
+X-CM-TRANSID: zQCowAD3_wPkYLlht7ctAw--.30807S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrKFy8Aw4fXFyxCFyrtw4ruFg_yoWDKwb_Za
+ yqvF1xZr1UKwnxJF47tF1S9ryIgFZ0kr40q3sxKFZIga4UGF4rur4DAF45Za1UZw40vF98
+ JasYvFWxA39xJjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbcAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+ 6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+ A2z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j
+ 6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+ Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+ I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
+ 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCY02Avz4vE14v_Gr4l
+ 42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJV
+ WUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAK
+ I48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F
+ 4UMIIF0xvE42xK8VAvwI8IcIk0rVWrJr0_WFyUJwCI42IY6I8E87Iv67AKxVWUJVW8JwCI
+ 42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjfUYnYwUUUUU
+X-Originating-IP: [124.16.138.126]
+X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_192015_522990_448C3E23 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20211214_192849_731050_1A75C305 
+X-CRM114-Status: UNSURE (   6.94  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,140 +76,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "yc.hung" <yc.hung@mediatek.com>
+The return value of devm_kzalloc() needs to be checked.
+To avoid use of null pointer in case of thefailure of alloc.
 
-This patch adds mt8195 dsp document.
-
-Signed-off-by: yc.hung <yc.hung@mediatek.com>
+Fixes: 46233e91fa24 ("media: mtk-vcodec: move firmware implementations into their own files")
+Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
 ---
- .../bindings/dsp/mtk,mt8195-dsp.yaml          | 116 ++++++++++++++++++
- 1 file changed, 116 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml b/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-new file mode 100644
-index 000000000000..33db11ee2336
---- /dev/null
-+++ b/Documentation/devicetree/bindings/dsp/mtk,mt8195-dsp.yaml
-@@ -0,0 +1,116 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/dsp/mtk,mt8195-dsp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek mt8195 DSP core
-+
-+maintainers:
-+  - YC Hung <yc.hung@mediatek.com>
-+
-+description: |
-+  Some boards from mt8195 contain a DSP core used for
-+  advanced pre- and post- audio processing.
-+properties:
-+  compatible:
-+    const: mediatek,mt8195-dsp
-+
-+  reg:
-+    items:
-+      - description: Address and size of the DSP Cfg registers
-+      - description: Address and size of the DSP SRAM
-+
-+  reg-names:
-+    items:
-+      - const: cfg
-+      - const: sram
-+
-+  interrupts:
-+    items:
-+      - description: watchdog interrupt
-+
-+  interrupt-names:
-+    items:
-+      - const: wdt
-+
-+  clocks:
-+    items:
-+      - description: mux for audio dsp clock
-+      - description: 26M clock
-+      - description: mux for audio dsp local bus
-+      - description: default audio dsp local bus clock source
-+      - description: clock gate for audio dsp clock
-+      - description: mux for audio dsp access external bus
-+
-+  clock-names:
-+    items:
-+      - const: adsp_sel
-+      - const: clk26m_ck
-+      - const: audio_local_bus
-+      - const: mainpll_d7_d2
-+      - const: scp_adsp_audiodsp
-+      - const: audio_h
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  mboxes:
-+    items:
-+      - description: a mailbox is ised for ipc reply between host and audio DSP.
-+      - description: a mailbox is ised for ipc reuqest between host and audio DSP.
-+
-+  mbox-names:
-+    items:
-+      - const: mbox0
-+      - const: mbox1
-+
-+  memory-region:      
-+    items:
-+      - description: A phandle to a reserved memory region is used for dma buffer between host and DSP.   
-+      - description: A phandle to a reserved memory region is used for DSP system memory.
-+
-+required:
-+  - compatible
-+  - reg
-+  - reg-names
-+  - interrupts
-+  - interrupt-names
-+  - clocks
-+  - clock-names
-+  - memory-region
-+  - power-domains
-+  - mbox-names
-+  - mboxes
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    adsp: dsp@10803000 {
-+       compatible =  "mediatek,mt8195-dsp";
-+       reg = <0x10803000  0x1000>,
-+             <0x10840000  0x40000>;
-+       reg-names = "cfg", "sram";
-+       interrupts = <GIC_SPI 694 IRQ_TYPE_LEVEL_HIGH 0>;
-+       interrupt-names = "wdt";
-+       clocks = <&topckgen 10>, //CLK_TOP_ADSP
-+                <&clk26m>,
-+                <&topckgen 107>, //CLK_TOP_AUDIO_LOCAL_BUS
-+                <&topckgen 136>, //CLK_TOP_MAINPLL_D7_D2
-+                <&scp_adsp 0>, //CLK_SCP_ADSP_AUDIODSP
-+                <&topckgen 34>; //CLK_TOP_AUDIO_H
-+       clock-names = "adsp_sel",
-+                     "clk26m_ck",
-+                     "audio_local_bus",
-+                     "mainpll_d7_d2",
-+                     "scp_adsp_audiodsp",
-+                     "audio_h";
-+       memory-region = <&adsp_dma_mem_reserved>,
-+                       <&adsp_mem_reserved>;
-+       power-domains = <&spm 6>; //MT8195_POWER_DOMAIN_ADSP
-+       mbox-names = "mbox0", "mbox1";
-+       mboxes = <&adsp_mailbox0>, <&adsp_mailbox1>;
-+       };
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c
+index cd27f637dbe7..769228093e48 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c
+@@ -102,6 +102,8 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
+ 	vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_handler, dev, rst_id);
+ 
+ 	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
++	if (!fw)
++		return ERR_PTR(-EINVAL);
+ 	fw->type = VPU;
+ 	fw->ops = &mtk_vcodec_vpu_msg;
+ 	fw->pdev = fw_pdev;
 -- 
-2.18.0
+2.25.1
 
 
 _______________________________________________
