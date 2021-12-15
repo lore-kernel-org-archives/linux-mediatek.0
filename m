@@ -4,65 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF398C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 21:26:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6541FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 22:13:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=foX2cXFsAeuEB4d4rjbA1+Omv/BYxMhpwo7dnruSoeE=; b=jAFsQ9sk6A1zlQ
-	NhoKVLQMyvyrSDyXQLYsC6nkPTSwiDg2TztuRT7+Y+cair67whA4fOFGIvRNUspZnUq4Z93cL2Z2O
-	lHlweB0nOFB13m8vcI17QtBqbwrElD7Xwya0ZeQ7BNivkjPQBRGJb2xMqfFV5sSCr8af82A/KQNsN
-	rrk90yIZ9JSxcTMl2+/fCOos2AnByBG4GJMvKsn0V8Har5+GXcOMKaW/AzyHJHZHxFxDrJ7LRBONw
-	g0F7/JLwnb8BffQ0uKkGFYzt+po6KmAf7yKbOKcHvktYOk5BsYfujdk3Ky3VRdDZLXvMFw2YZ/xJL
-	uFmmTHD2mUGmDR3y+SyQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vYvcqZ5hiDqxVVAFnA+15FX5ixyDB1lMqbOYof+Aaw0=; b=Wb1cuUbMWslI4P
+	EBHh81LtsK6wwV1gVY0dqMljO1H6CX8JiQTsYy4ZJd+QHcyAXDPqXRZZD0xljVCpO/HjDyMWIEULf
+	jGlU+DKhCNxADE60tAEXeqmT+jTAKvP0jCVkLhNNsWTJfb/ImkR8S57JZVlX7VM2DdPyuozwizJDy
+	BqZWy3a1F7hquiRAm07aAjMJPFcxFJbU9Kk0pIOAX2J1Oos1P4bXpzQAyM35iZadztgIqZ90qBFx2
+	FyeGE6bmhLmupL7u+pCAUNIu6grry0jgfoyLmNuCO1fNmkCj6YXoeEGbEZVfHcld2dRzMWASaL5v5
+	G2Y6MpHSeFQz/Ja6CmBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxbmi-002nnY-1F; Wed, 15 Dec 2021 21:26:00 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mxcWl-002wuF-BW; Wed, 15 Dec 2021 22:13:35 +0000
+Received: from mail-ot1-f45.google.com ([209.85.210.45])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxbmf-002nmS-B5
- for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 21:25:58 +0000
-X-UUID: 9a9900bac74c460c98231c55a96c3b9e-20211215
-X-UUID: 9a9900bac74c460c98231c55a96c3b9e-20211215
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 590796871; Wed, 15 Dec 2021 14:25:54 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Dec 2021 13:25:52 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 16 Dec 2021 05:25:38 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 16 Dec 2021 05:25:38 +0800
-From: <sean.wang@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
-CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
- <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
- <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
- <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
- <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 1/4] mt76: mt7921: clear pm->suspended in
- mt7921_mac_reset_work
-Date: Thu, 16 Dec 2021 05:25:34 +0800
-Message-ID: <9813aaab7c86fbbdd160a8c421696a09deb559d3.1639602937.git.objelf@gmail.com>
-X-Mailer: git-send-email 1.7.9.5
+ id 1mxcWF-002wlf-EQ; Wed, 15 Dec 2021 22:13:05 +0000
+Received: by mail-ot1-f45.google.com with SMTP id
+ a23-20020a9d4717000000b0056c15d6d0caso26610846otf.12; 
+ Wed, 15 Dec 2021 14:13:03 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=ITxrC42cpEdFPF3axFsIeZiANWHi83eE7MbTcA8W+gg=;
+ b=GB90dd7RvXVqn3oONOE0Fqj7dGJYm2roKCPKkN/XY1yENVeH0jmxTWdEDPgqaNc3pQ
+ ySaPHw30y2xwVFq3YGF0S+r1lf60uATvS8dfZbu1kYMyE9V42VRp5s5PwEeMMtqv9/mF
+ mvobKWSHi4Ux7KVnVdBA0T1rfOPjXixk+i6lMe8kHxZUrLE/i3WyLpBoZg+xbAG8U1a7
+ xkW9CSq0jmxA431CyahoSetWhvM0UQMFpLE0XtBcRmA+fKHMSm9VdeulXlaMoHE9wqxA
+ EtEM2rS3grBfC032hOMrg0LGvMt1LAse2riYEw2MH0HbezoILiF0GOCYjPz4jJfTmwqP
+ HvPg==
+X-Gm-Message-State: AOAM530IUSI+DW6qrAU1/LJawVzhpQ2pqSQL5SndYWzfa59ivWnz7Ddp
+ J+4G9MJIK20DFjON1yJThg==
+X-Google-Smtp-Source: ABdhPJwaDEcWGo2pJ8CHSx9viVOHay+ZBu3YGBOyUvT6TDJu7jRsraMtVM63nT7+QEIcvGrQCS8ePw==
+X-Received: by 2002:a05:6830:1092:: with SMTP id
+ y18mr10206759oto.119.1639606382307; 
+ Wed, 15 Dec 2021 14:13:02 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id t18sm698156ott.2.2021.12.15.14.13.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 Dec 2021 14:13:01 -0800 (PST)
+Received: (nullmailer pid 1932976 invoked by uid 1000);
+ Wed, 15 Dec 2021 22:13:00 -0000
+Date: Wed, 15 Dec 2021 16:13:00 -0600
+From: Rob Herring <robh@kernel.org>
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: davem@davemloft.net, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
+ srv_heupstream@mediatek.com, macpaul.lin@mediatek.com,
+ angelogioacchino.delregno@collabora.com, dkirjanov@suse.de
+Subject: Re: [PATCH net-next v9 6/6] net: dt-bindings: dwmac: add support for
+ mt8195
+Message-ID: <YbpobIscSDPKuxxY@robh.at.kernel.org>
+References: <20211215021652.7270-1-biao.huang@mediatek.com>
+ <20211215021652.7270-7-biao.huang@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20211215021652.7270-7-biao.huang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_132557_410381_BBA83D78 
-X-CRM114-Status: UNSURE (   8.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211215_141303_526876_38FFBDF4 
+X-CRM114-Status: GOOD (  18.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,33 +91,122 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, Dec 15, 2021 at 10:16:52AM +0800, Biao Huang wrote:
+> Add binding document for the ethernet on mt8195.
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>  .../bindings/net/mediatek-dwmac.yaml          | 42 ++++++++++++++-----
+>  1 file changed, 32 insertions(+), 10 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+> index 8ad6e19661b8..44d55146def4 100644
+> --- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+> +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+> @@ -19,6 +19,7 @@ select:
+>        contains:
+>          enum:
+>            - mediatek,mt2712-gmac
+> +          - mediatek,mt8195-gmac
+>    required:
+>      - compatible
+>  
+> @@ -27,26 +28,37 @@ allOf:
+>  
+>  properties:
+>    compatible:
+> -    items:
+> -      - enum:
+> -          - mediatek,mt2712-gmac
+> -      - const: snps,dwmac-4.20a
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt2712-gmac
+> +          - const: snps,dwmac-4.20a
+> +      - items:
+> +          - enum:
+> +              - mediatek,mt8195-gmac
+> +          - const: snps,dwmac-5.10a
+>  
+>    clocks:
+> +    minItems: 5
 
-clear pm->suspended in mt7921_mac_reset_work to allow pm runtime
-can be enabled after wifi reset in any circumstance.
+As before, you need 'minItems: 4' in the previous patch.
 
-Signed-off-by: Sean Wang <sean.wang@mediatek.com>
----
-v2: create a new patch for the following ones
----
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 1 +
- 1 file changed, 1 insertion(+)
+If you aren't clear what's needed, run 'make dtbs_checks' yourself 
+before submitting again.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index edf54b192f37..a0f23047f13c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -1399,6 +1399,7 @@ void mt7921_mac_reset_work(struct work_struct *work)
- 	}
- 
- 	dev->hw_full_reset = false;
-+	pm->suspended = false;
- 	ieee80211_wake_queues(hw);
- 	ieee80211_iterate_active_interfaces(hw,
- 					    IEEE80211_IFACE_ITER_RESUME_ALL,
--- 
-2.25.1
+>      items:
+>        - description: AXI clock
+>        - description: APB clock
+>        - description: MAC Main clock
+>        - description: PTP clock
+>        - description: RMII reference clock provided by MAC
+> +      - description: MAC clock gate
+>  
+>    clock-names:
+> -    items:
+> -      - const: axi
+> -      - const: apb
+> -      - const: mac_main
+> -      - const: ptp_ref
+> -      - const: rmii_internal
+> +    minItems: 5
+> +    maxItems: 6
+> +    contains:
 
+No, you just threw out the order requirements. And this schema will be 
+true with just 1 of the strings below plus any other strings. For 
+example, this will pass:
+
+clock-names = "foo", "bar", "axi", "baz", "rob";
+
+> +      enum:
+> +        - axi
+> +        - apb
+> +        - mac_main
+> +        - ptp_ref
+> +        - rmii_internal
+> +        - mac_cg
+>  
+>    mediatek,pericfg:
+>      $ref: /schemas/types.yaml#/definitions/phandle
+> @@ -61,6 +73,8 @@ properties:
+>        or will round down. Range 0~31*170.
+>        For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+>        or will round down. Range 0~31*550.
+> +      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
+> +      or will round down. Range 0~31*290.
+>  
+>    mediatek,rx-delay-ps:
+>      description:
+> @@ -69,6 +83,8 @@ properties:
+>        or will round down. Range 0~31*170.
+>        For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+>        or will round down. Range 0~31*550.
+> +      For MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
+> +      of 290, or will round down. Range 0~31*290.
+>  
+>    mediatek,rmii-rxc:
+>      type: boolean
+> @@ -102,6 +118,12 @@ properties:
+>        3. the inside clock, which be sent to MAC, will be inversed in RMII case when
+>           the reference clock is from MAC.
+>  
+> +  mediatek,mac-wol:
+> +    type: boolean
+> +    description:
+> +      If present, indicates that MAC supports WOL(Wake-On-LAN), and MAC WOL will be enabled.
+> +      Otherwise, PHY WOL is perferred.
+> +
+>  required:
+>    - compatible
+>    - reg
+> -- 
+> 2.25.1
+> 
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
