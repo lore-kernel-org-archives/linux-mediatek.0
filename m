@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F379BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 21:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35F6AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 21:26:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gacn3geDOXtRTWn0JP82P4hc9KlS0+YVKlDls3d+W64=; b=eKd3LlcIWyEk1r
-	Fc/wgQaunKsRgwcsor3TgKOxomf9Pv1beOrpzL7MDIlx6fHw0Co9ljLv9XSH7/TPO5CEONRo+A5ET
-	rn7JgTB6KphS+MjTggzNwYKgJzq/a/xNFTsjQGDU6X+WMi9Oi2Drsvn1ZAzKnGzvB2/vN5EbGoX8I
-	Xj88PWpNttMBuPbrKBCno5xG9hvnkt5zozO2LBXnNDxTFG29FL9iKrJxrJrV0pRdIQVU9qDBFuvM1
-	honHsorb6KkBbxFSdeFA+QTEGuzM7mL860T9UpVSPvucNQqkLFMjy3gE3FccbavseNh05nf08awsj
-	CPM8zg59cUQgfvBWk3EQ==;
+	List-Owner; bh=pVN6XR8g94EHqhxBifQgywc2Irx4HOY0zvYySGK97zY=; b=LhglkBk9FJPa6e
+	Q8Los13VNK6Kc7EFEVXL24sYXRTYeR0ffq210l1NQn+/4MTaxivjOJVEynFFYGMruJ7ZnWwqo3CjZ
+	9GabkI795SBF0Kbzh5iQjJsDRP1idhyWYc0lIkO/DUdABkXkdVt3770+wqcdEsQ47XbSRzCVkn72L
+	dpIx4pcbpTEgUHHQB9vhI2l0r/9wQMXGNDUiZG8o42EXVKHEaY//a1RAv75qILf8u85tiIuKJWvif
+	GjHFxkoX9zcQ6UCkFizP2BXwoqnm4E3jpSyWf3qxmHYz6LFNp/3TVqpMPLSr3Etih8xKs1mYVs/uI
+	AHcqGsTt8DSZzgAWlX0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxbmZ-002nlI-Bk; Wed, 15 Dec 2021 21:25:51 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mxbmd-002nln-6O; Wed, 15 Dec 2021 21:25:55 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxbmV-002nkM-An
- for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 21:25:50 +0000
-X-UUID: 96552e0112e5484d88ea00b39cb50012-20211215
-X-UUID: 96552e0112e5484d88ea00b39cb50012-20211215
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1mxbmZ-002nkf-4o
+ for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 21:25:54 +0000
+X-UUID: 2dc52d01338a43d3a1110528e9ed9f98-20211215
+X-UUID: 2dc52d01338a43d3a1110528e9ed9f98-20211215
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1032508238; Wed, 15 Dec 2021 14:25:43 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ with ESMTP id 150495091; Wed, 15 Dec 2021 14:25:45 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 15 Dec 2021 13:25:41 -0800
+ 15.0.1497.2; Wed, 15 Dec 2021 13:25:42 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Dec 2021 05:25:40 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 16 Dec 2021 05:25:41 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 16 Dec 2021 05:25:40 +0800
+ Frontend Transport; Thu, 16 Dec 2021 05:25:41 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -52,17 +52,17 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
  <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 2/4] mt76: mt7921: fix possible resume failure
-Date: Thu, 16 Dec 2021 05:25:35 +0800
-Message-ID: <0c6a784deb679d9eb113ea3d5a36716ad9166312.1639602937.git.objelf@gmail.com>
+Subject: [PATCH v2 3/4] mt76: mt7921s: make pm->suspended usage consistent
+Date: Thu, 16 Dec 2021 05:25:36 +0800
+Message-ID: <57d752fc7ee5af393e2856d25ed701ce8fd01aed.1639602937.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
 In-Reply-To: <9813aaab7c86fbbdd160a8c421696a09deb559d3.1639602937.git.objelf@gmail.com>
 References: <9813aaab7c86fbbdd160a8c421696a09deb559d3.1639602937.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_132547_404010_F8222DFA 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20211215_132551_231219_04547BA4 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,40 +81,30 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Sean Wang <sean.wang@mediatek.com>
 
-Fix the possible resume failure due to mt76_connac_mcu_set_hif_suspend
-timeout.
+Update pm->suspended usage to be consistent with mt7921e driver.
 
-That is because clearing the flag pm->suspended too early opened up a race
-window, where mt7921_poll_tx/rx scheduled a ps_work to put the device in
-doze mode, that is unexpected for the device is being resumed from the
-suspend state and would make the remaining MCU comamnds in resume handler
-failed to execute.
-
-Fixes: ffa1bf97425b ("mt76: mt7921: introduce PM support")
-Co-developed-by: YN Chen <YN.Chen@mediatek.com>
-Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
 v2: refine the error handling path
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 9 +++++++--
+ drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 9 +++++++--
  1 file changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 5635de3c80b1..1212b803b1c8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -315,7 +315,6 @@ static int mt7921_pci_resume(struct pci_dev *pdev)
- 	struct mt76_connac_pm *pm = &dev->pm;
- 	int i, err;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+index 84be229a899d..65d693902c22 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
+@@ -278,7 +278,6 @@ static int mt7921s_resume(struct device *__dev)
+ 	struct mt76_dev *mdev = &dev->mt76;
+ 	int err;
  
 -	pm->suspended = false;
- 	err = pci_set_power_state(pdev, PCI_D0);
- 	if (err)
- 		return err;
-@@ -353,7 +352,13 @@ static int mt7921_pci_resume(struct pci_dev *pdev)
+ 	clear_bit(MT76_STATE_SUSPEND, &mdev->phy.state);
+ 
+ 	err = mt7921_mcu_drv_pmctrl(dev);
+@@ -294,7 +293,13 @@ static int mt7921s_resume(struct device *__dev)
  	if (!pm->ds_enable)
- 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
+ 		mt76_connac_mcu_set_deep_sleep(mdev, false);
  
 -	return mt76_connac_mcu_set_hif_suspend(mdev, false);
 +	err = mt76_connac_mcu_set_hif_suspend(mdev, false);
@@ -125,8 +115,8 @@ index 5635de3c80b1..1212b803b1c8 100644
 +
 +	return err;
  }
- #endif /* CONFIG_PM */
  
+ static const struct dev_pm_ops mt7921s_pm_ops = {
 -- 
 2.25.1
 
