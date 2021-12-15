@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77976C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 07:29:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A8A6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 08:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nqZfcJhabMm4wj2TugiaRAwOMZ6mPHb+aOq0Qy6kCJk=; b=rfTHTm5AhBKzG2
-	2DmrxADXzcmFqMOtyUPQcM5943/3IKqN6K746ZrRcaW3saBwynb1J+I1n25DWwrwGLF5TfjMIxsrn
-	iIQHFUsTyUEHvucL1HNXDrvcS/Ntu6op85+JqxTetrrz4Aqlh0du/IVjjkFGOeG+9guBTjzoJ7H9B
-	lytSRPRs3RD2kCbDoLB8J77gvRMHKlubd47ll7dhFaHnOTz8u3yud8q7Mo9tGeHX/OHjNLyUsU3rI
-	ru4mF7KpOSplc30ugYjefrvTNwqDNWDM9q5nC9T4NFeufOx0UyS6JqFJ8Jd2E++sEZv73GM3eogo9
-	pMHtB+XlMqzizgzsbJnQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ySZbXYKLTomtzvRZGavJNJcWfarsLW7iZL4Vj9OJayo=; b=YZ/6aNd9cSPyed
+	rPu/SkPDiKCszng4AODVik6VFo+edrUs1M5MB0jguFdEN+jfOZtYL81WWBXBPvaW3g5wY65uHRYAb
+	xAhOeAnglgpvRgykwwYmLLksWyViTbeIVPiX0crWTk91aHDn81OH5bFDu6L7fUNlYF2afKE1OGf86
+	5uLMHa2GG83dei1pJ4o9WDZX9niTcX80XJUJEhUlm2CbYvY3Uw3MvCoS59pwiqNcRW4L1S2CVy/bW
+	/oEggLiUZKHgdLLAkrBisRKCrpdbipkp7il/baLzBDKkH9A9Zyz6kOwKc9+Xxo4hW4NHsQKqsoQcg
+	D0N/YWBUatjXVtOIAOIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxOjW-00HDYE-TI; Wed, 15 Dec 2021 07:29:50 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1mxPWu-00HKuq-1v; Wed, 15 Dec 2021 08:20:52 +0000
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxOj7-00HDP3-03; Wed, 15 Dec 2021 07:29:26 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id
- p27-20020a05600c1d9b00b0033bf8532855so15361044wms.3; 
- Tue, 14 Dec 2021 23:29:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aMZSPHzmKlp4nB0z4xKj0z3g/eSIybOBv9g3NZ7AxBc=;
- b=GztGmfJYV8tlywo/+a2VFYMkAVdKt7YfBdqaVivbNaR1/K0tqYK9zRBkHsraJk1yMG
- c03G1ZaZOgndjYVpAoBeOHtgim9A0rW+bXNvAHHw93auSDoSLXgdMoFE3CrHZlff5Avt
- A6iR+nzBbTxhu+8HuMMs4NJcv/aFnnsoG+yzPW9ezYPurXkDH0MN/GgD7/TpmSO507rI
- 4TPMMdnqvK2Iw2Sr0YjxHsUwZ3oaijXriaQHDLJ7ztwxBNvRddKNe2D176aOJFvu3uR1
- Cr6MlTLq/VE6NI3MxAXCfNFd03OlsedQ+jaewFX+RP9rprU8QLP7lVD49bcEnNXxVGt9
- aYlg==
+ id 1mxPWh-00HKsg-6v
+ for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 08:20:40 +0000
+Received: by mail-pg1-x535.google.com with SMTP id r138so19542487pgr.13
+ for <linux-mediatek@lists.infradead.org>; Wed, 15 Dec 2021 00:20:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20210112;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=dVW69TmCJnTv5pUkbvRYzOl3hIL8o0Ev8E5MCNMu3v4=;
+ b=G/3L4rDd1Goqt0d0b2dj/cMhsDvkaMD7Z1+8qFaNab+J/SE+VpMr8z5qIjIgg31BP3
+ 6Rgv6T1J2UpaqpYj4Ko/HrsvNIinACGkY9Lq5IoHJmoAfHdOCZaVIS8KCXKSYD+RXgZa
+ /tkVzDLzR++mtz40WJdnBEWAHCVJHeYyEp/qf6PSLI0VfhlzOWEmckna48+po0it3yNf
+ LAXJXzd9ucGOc72u1drmRWGY/oxGZGNbXHlqHYO3Q1Mbr9iGZI5uUeGNv079dUH+i/uQ
+ cRClz28G6WpGzT/Iu1lkboFSdf/KTwa+NTw7eq9XCNDI29f50wCdZFXoICXU1S0PMGXY
+ mLOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aMZSPHzmKlp4nB0z4xKj0z3g/eSIybOBv9g3NZ7AxBc=;
- b=jdd1iJWhDnoF6TC8mEPwOr86O+6ka1CeK/y65ZbLq4omy/fRwEzp2qX+3V2h36woxM
- GTr/sE3aH621loZ4xcdoIFR9XSiJpePxgd5kRn3JdJfpsONy5bhnQwRu6q4Caaggdrzi
- CWoFNDeXTPlGR/S4obiVOJzrZL8cQ3z8aE9zYfWMAhH5mf6i5xPcwvz5263jDtSH27mZ
- tm0MbCTO295pVn9aagrm9grhQ0iFg8P+zrCl4Rm82wjDTo0KHVFEyT2Q+q0Wo1NK1v3x
- E5cML3UUaSOP/mDJX8ZV75eYT9jUE6/lXZ4GVsR1khfdkPPT1nUEbjDJa7hSk6+eNBLD
- YJfQ==
-X-Gm-Message-State: AOAM533zI+lf+CMoGuh7rl6FAQlWL5Vt4MdcptIIRad+2zZOlumyeDJS
- +pCBR8t2hi8Gl468JEH6z+A=
-X-Google-Smtp-Source: ABdhPJye3e8Fd3RuWitjlcsNICFnsTS5SmIxWwZuo312bTG8xiFg9RxZcyL3DnR9MqIFlnZ1jLC75A==
-X-Received: by 2002:a1c:6a0e:: with SMTP id f14mr3390565wmc.58.1639553361731; 
- Tue, 14 Dec 2021 23:29:21 -0800 (PST)
-Received: from localhost.localdomain ([217.113.240.86])
- by smtp.gmail.com with ESMTPSA id n4sm1204728wrc.1.2021.12.14.23.29.19
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=dVW69TmCJnTv5pUkbvRYzOl3hIL8o0Ev8E5MCNMu3v4=;
+ b=Dqg/0spNBp6B1JmvzI+eioHYMuBYsHw6yzMwzSNIRlxl3fV6aIUjGQWmdnwwcx38Pa
+ tH+sSDNajYeHvuWedoNWSzckyST6H2AW+d3ppljXaYS+mk26uppr+DByi22GHs2GpNd9
+ MXbDSrDBCS7J6dcqJuJcLsFktl1LmU8opLKR4d+Ac0k/fa8BEqrcb2lsNRxfVZXSos8I
+ hGODd/KZ8QMUrbrrEtFIWXTK796mYA0jj8dq2RX15UM3WN+p0AbUaK5qmnqX7yzeguzn
+ MfDH9kKxEIjUZQ5mphk7oaR97ONWT+BdMitdeA57/oUat2Z6Stulrn1kzt5ICaBR+U+s
+ ga3g==
+X-Gm-Message-State: AOAM533KJisSqN5hnSwoBT/PP9Il6gzj4WnpW5EI51Z/G5m2TDMFBBlJ
+ eh9KpnugQWrvDZIt53+mWibyDTZYEaGSgg==
+X-Google-Smtp-Source: ABdhPJzqmCCROdTAh4mINIHDWtKReeWzZihdPEwTeamzuw2CuCOAX2lKwuAQZGGVSBG5s+y4UQgjig==
+X-Received: by 2002:a63:5350:: with SMTP id t16mr6987808pgl.321.1639556435096; 
+ Wed, 15 Dec 2021 00:20:35 -0800 (PST)
+Received: from google.com ([2401:fa00:1:10:754d:1c44:62a9:6d30])
+ by smtp.gmail.com with ESMTPSA id j127sm1679143pfg.14.2021.12.15.00.20.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Dec 2021 23:29:21 -0800 (PST)
-From: =?UTF-8?q?Jos=C3=A9=20Exp=C3=B3sito?= <jose.exposito89@gmail.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org, matthias.bgg@gmail.com, ikjn@chromium.org,
- chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- =?UTF-8?q?Jos=C3=A9=20Exp=C3=B3sito?= <jose.exposito89@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH v2] clk: mediatek: Fix memory leaks on probe
-Date: Wed, 15 Dec 2021 08:29:15 +0100
-Message-Id: <20211215072915.8678-1-jose.exposito89@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ Wed, 15 Dec 2021 00:20:34 -0800 (PST)
+Date: Wed, 15 Dec 2021 16:20:31 +0800
+From: Tzung-Bi Shih <tzungbi@google.com>
+To: Trevor Wu <trevor.wu@mediatek.com>
+Cc: broonie@kernel.org, tiwai@suse.com, robh+dt@kernel.org,
+ matthias.bgg@gmail.com, alsa-devel@alsa-project.org,
+ linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, jiaxin.yu@mediatek.com, shumingf@realtek.com
+Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8195: update control for RT5682
+ series
+Message-ID: <YbmlT+OSwpGuylsx@google.com>
+References: <20211215065835.3074-1-trevor.wu@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211215065835.3074-1-trevor.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_232925_086116_563E80F3 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20211215_002039_293528_6C76BB9E 
+X-CRM114-Status: GOOD (  23.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,51 +86,170 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGFuZGxlIHRoZSBlcnJvciBicmFuY2hlcyB0byBmcmVlIG1lbW9yeSB3aGVyZSByZXF1aXJlZC4K
-CkFkZHJlc3Nlcy1Db3Zlcml0eS1JRDogMTQ5MTgyNSAoIlJlc291cmNlIGxlYWsiKQpTaWduZWQt
-b2ZmLWJ5OiBKb3PDqSBFeHDDs3NpdG8gPGpvc2UuZXhwb3NpdG84OUBnbWFpbC5jb20+ClJldmll
-d2VkLWJ5OiBDaGVuLVl1IFRzYWkgPHdlbnN0QGNocm9taXVtLm9yZz4KCi0tLQoKdjI6IEFkZCBS
-ZXZpZXdlZC1ieSB0YWcKLS0tCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTkyLmMgfCAz
-NiArKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMzAgaW5z
-ZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9tZWRp
-YXRlay9jbGstbXQ4MTkyLmMgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTkyLmMKaW5k
-ZXggY2JjN2M2ZGJlMGY0Li43OWRkYjNjYzBiOTggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY2xrL21l
-ZGlhdGVrL2Nsay1tdDgxOTIuYworKysgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTky
-LmMKQEAgLTEyMzYsOSArMTIzNiwxNyBAQCBzdGF0aWMgaW50IGNsa19tdDgxOTJfaW5mcmFfcHJv
-YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAogCXIgPSBtdGtfY2xrX3JlZ2lzdGVy
-X2dhdGVzKG5vZGUsIGluZnJhX2Nsa3MsIEFSUkFZX1NJWkUoaW5mcmFfY2xrcyksIGNsa19kYXRh
-KTsKIAlpZiAocikKLQkJcmV0dXJuIHI7CisJCWdvdG8gZnJlZV9jbGtfZGF0YTsKKworCXIgPSBv
-Zl9jbGtfYWRkX3Byb3ZpZGVyKG5vZGUsIG9mX2Nsa19zcmNfb25lY2VsbF9nZXQsIGNsa19kYXRh
-KTsKKwlpZiAocikKKwkJZ290byBmcmVlX2Nsa19kYXRhOworCisJcmV0dXJuIHI7CiAKLQlyZXR1
-cm4gb2ZfY2xrX2FkZF9wcm92aWRlcihub2RlLCBvZl9jbGtfc3JjX29uZWNlbGxfZ2V0LCBjbGtf
-ZGF0YSk7CitmcmVlX2Nsa19kYXRhOgorCW10a19mcmVlX2Nsa19kYXRhKGNsa19kYXRhKTsKKwly
-ZXR1cm4gcjsKIH0KIAogc3RhdGljIGludCBjbGtfbXQ4MTkyX3BlcmlfcHJvYmUoc3RydWN0IHBs
-YXRmb3JtX2RldmljZSAqcGRldikKQEAgLTEyNTMsOSArMTI2MSwxNyBAQCBzdGF0aWMgaW50IGNs
-a19tdDgxOTJfcGVyaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCiAJciA9
-IG10a19jbGtfcmVnaXN0ZXJfZ2F0ZXMobm9kZSwgcGVyaV9jbGtzLCBBUlJBWV9TSVpFKHBlcmlf
-Y2xrcyksIGNsa19kYXRhKTsKIAlpZiAocikKLQkJcmV0dXJuIHI7CisJCWdvdG8gZnJlZV9jbGtf
-ZGF0YTsKKworCXIgPSBvZl9jbGtfYWRkX3Byb3ZpZGVyKG5vZGUsIG9mX2Nsa19zcmNfb25lY2Vs
-bF9nZXQsIGNsa19kYXRhKTsKKwlpZiAocikKKwkJZ290byBmcmVlX2Nsa19kYXRhOwogCi0JcmV0
-dXJuIG9mX2Nsa19hZGRfcHJvdmlkZXIobm9kZSwgb2ZfY2xrX3NyY19vbmVjZWxsX2dldCwgY2xr
-X2RhdGEpOworCXJldHVybiByOworCitmcmVlX2Nsa19kYXRhOgorCW10a19mcmVlX2Nsa19kYXRh
-KGNsa19kYXRhKTsKKwlyZXR1cm4gcjsKIH0KIAogc3RhdGljIGludCBjbGtfbXQ4MTkyX2FwbWl4
-ZWRfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKQEAgLTEyNzEsOSArMTI4Nywx
-NyBAQCBzdGF0aWMgaW50IGNsa19tdDgxOTJfYXBtaXhlZF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1f
-ZGV2aWNlICpwZGV2KQogCW10a19jbGtfcmVnaXN0ZXJfcGxscyhub2RlLCBwbGxzLCBBUlJBWV9T
-SVpFKHBsbHMpLCBjbGtfZGF0YSk7CiAJciA9IG10a19jbGtfcmVnaXN0ZXJfZ2F0ZXMobm9kZSwg
-YXBtaXhlZF9jbGtzLCBBUlJBWV9TSVpFKGFwbWl4ZWRfY2xrcyksIGNsa19kYXRhKTsKIAlpZiAo
-cikKLQkJcmV0dXJuIHI7CisJCWdvdG8gZnJlZV9jbGtfZGF0YTsKIAotCXJldHVybiBvZl9jbGtf
-YWRkX3Byb3ZpZGVyKG5vZGUsIG9mX2Nsa19zcmNfb25lY2VsbF9nZXQsIGNsa19kYXRhKTsKKwly
-ID0gb2ZfY2xrX2FkZF9wcm92aWRlcihub2RlLCBvZl9jbGtfc3JjX29uZWNlbGxfZ2V0LCBjbGtf
-ZGF0YSk7CisJaWYgKHIpCisJCWdvdG8gZnJlZV9jbGtfZGF0YTsKKworCXJldHVybiByOworCitm
-cmVlX2Nsa19kYXRhOgorCW10a19mcmVlX2Nsa19kYXRhKGNsa19kYXRhKTsKKwlyZXR1cm4gcjsK
-IH0KIAogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgb2ZfbWF0Y2hfY2xrX210ODE5
-MltdID0gewotLSAKMi4yNS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1tZWRpYXRlawo=
+On Wed, Dec 15, 2021 at 02:58:34PM +0800, Trevor Wu wrote:
+> --- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
+> +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
+[...]
+> +static int mt8195_set_bias_level_post(struct snd_soc_card *card,
+> +	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level level)
+> +{
+> +	struct snd_soc_component *component = dapm->component;
+> +	struct mt8195_mt6359_rt1011_rt5682_priv *priv =
+> +		snd_soc_card_get_drvdata(card);
+> +	int ret = 0;
+
+ret doesn't need to be initialized.
+
+> +	/*
+> +	 * It's required to control mclk directly in the set_bias_level_post
+> +	 * function for rt5682 and rt5682s codec, or the unexpected pop happens
+> +	 * at the end of playback.
+> +	 */
+> +	if (!component ||
+> +	    (strcmp(component->name, RT5682_DEV0_NAME) &&
+> +	    strcmp(component->name, RT5682S_DEV0_NAME)))
+> +		return 0;
+> +
+> +	if (IS_ERR(priv->i2so1_mclk))
+> +		return 0;
+
+I doubt if it needs to check priv->i2so1_mclk.  In other words, if IS_ERR(priv->i2so1_mclk) is true in _probe, does mt8195_set_bias_level_post() get called?
+
+> +	switch (level) {
+> +	case SND_SOC_BIAS_OFF:
+> +		if (!__clk_is_enabled(priv->i2so1_mclk))
+> +			return 0;
+> +
+> +		dev_dbg(card->dev, "Disable i2so1");
+> +		clk_disable_unprepare(priv->i2so1_mclk);
+
+I would suggest move dev_dbg() later than clk_disable_unprepare() which means "Disable i2so1" is done.
+
+> +		break;
+> +	case SND_SOC_BIAS_ON:
+> +		dev_dbg(card->dev, "Enable i2so1");
+> +		ret = clk_prepare_enable(priv->i2so1_mclk);
+> +		if (ret) {
+> +			dev_err(card->dev, "Can't enable mclk, err: %d\n", ret);
+
+The error message can be more specific.  "Cannot enable i2so1" for example.
+
+> +			return ret;
+> +		}
+
+Also, I would suggest move dev_dbg() later than clk_prepare_enable().  Otherwise, it could fail to prepare or enable but still can see "Enable i2so1" message.
+
+> +		break;
+> +	default:
+> +		break;
+> +	}
+> +
+> +	return ret;
+
+The function doesn't use any gotos.  To be concise, "return 0;".
+
+> @@ -1072,6 +1119,19 @@ static int mt8195_mt6359_rt1011_rt5682_dev_probe(struct platform_device *pdev)
+>  		return -EINVAL;
+>  	}
+>  
+> +	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
+> +	if (IS_ERR(priv->i2so1_mclk)) {
+> +		ret = PTR_ERR(priv->i2so1_mclk);
+> +		if (ret == -ENOENT) {
+> +			dev_dbg(&pdev->dev,
+> +				"Failed to get i2so1_mclk, defer probe\n");
+> +			return -EPROBE_DEFER;
+> +		}
+
+Does devm_clk_get_optional() could make the block more concise?
+
+> +
+> +		dev_err(&pdev->dev, "Failed to get i2so1_mclk, err:%d\n", ret);
+
+If devm_clk_get() is possible to return -EPROBE_DEFER too, use dev_err_probe().
+
+> --- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
+> +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
+[...]
+> +static int mt8195_set_bias_level_post(struct snd_soc_card *card,
+> +	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level level)
+> +{
+> +	struct snd_soc_component *component = dapm->component;
+> +	struct mt8195_mt6359_rt1019_rt5682_priv *priv =
+> +		snd_soc_card_get_drvdata(card);
+> +	int ret = 0;
+
+Ditto, see comments above.
+
+> +
+> +	/*
+> +	 * It's required to control mclk directly in the set_bias_level_post
+> +	 * function for rt5682 and rt5682s codec, or the unexpected pop happens
+> +	 * at the end of playback.
+> +	 */
+> +	if (!component ||
+> +	    (strcmp(component->name, RT5682_DEV0_NAME) &&
+> +	    strcmp(component->name, RT5682S_DEV0_NAME)))
+> +		return 0;
+> +
+> +	if (IS_ERR(priv->i2so1_mclk))
+> +		return 0;
+
+Ditto, see comments above.
+
+> +
+> +	switch (level) {
+> +	case SND_SOC_BIAS_OFF:
+> +		if (!__clk_is_enabled(priv->i2so1_mclk))
+> +			return 0;
+> +
+> +		dev_dbg(card->dev, "Disable i2so1");
+> +		clk_disable_unprepare(priv->i2so1_mclk);
+> +		break;
+> +	case SND_SOC_BIAS_ON:
+> +		dev_dbg(card->dev, "Enable i2so1");
+> +		ret = clk_prepare_enable(priv->i2so1_mclk);
+> +		if (ret) {
+> +			dev_err(card->dev, "Can't enable mclk, err: %d\n", ret);
+> +			return ret;
+> +		}
+> +		break;
+> +	default:
+> +		break;
+> +	}
+
+Ditto, see comments above for the block.
+
+> +
+> +	return ret;
+
+Ditto, see comments above.
+
+> @@ -1285,6 +1326,19 @@ static int mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
+>  		return -EINVAL;
+>  	}
+>  
+> +	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
+> +	if (IS_ERR(priv->i2so1_mclk)) {
+> +		ret = PTR_ERR(priv->i2so1_mclk);
+> +		if (ret == -ENOENT) {
+> +			dev_dbg(&pdev->dev,
+> +				"Failed to get i2so1_mclk, defer probe\n");
+> +			return -EPROBE_DEFER;
+> +		}
+> +
+> +		dev_err(&pdev->dev, "Failed to get i2so1_mclk, err:%d\n", ret);
+> +		return ret;
+> +	}
+
+Ditto, see comments above for the block.
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
