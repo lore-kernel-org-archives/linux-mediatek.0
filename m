@@ -4,108 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB5C1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 10:29:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38078C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 10:49:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sBwkE41ernumCP1zj3Ac13FjBhuIaAKK6lj/gPCEGqY=; b=cto1XEF9CMLk9I
-	hfY5mrJBQQkSClECr9tyYEGlrJR77ptGu5xXyFq6ePSXeanGOLRes7tXpldKlCPAjhPGiGohfxBAp
-	FrVcpohyOxSgyMru6bz8mxikqT2KyGspgplzrZUDtrRxApb94piOSqDOoFLpBEEmpQic7cTE5zuoz
-	QaycmzQMM7rQkXlCJ77jA9BkjsMXzLm/82/Z3JLm16t8TVQPvW8ki5M8YVw/tkYPE8YfGBtIsO/Jt
-	KuAbPeei7JWVAiQKCqFmlwzMRAE8ojt2yqNEOFNLzSTGtD+98BHW69lZHnZ6Ghqh6kt2JO8aScyjl
-	DWMHujZaOLC6TTUS7aRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6qMAVhwxzsRhBlII/QFdLE4E6pSQnnJ/n2me4qC4owQ=; b=iRJe5A2Lo9LfR6x9Hw4rK1XjUG
+	i4bP/AyfdLw8/SuX2DNtxiSTWcidiXDlgZwEqZ6hasveX/cOeTYR0G0SPLrTzyFqu6opD5PKQUcum
+	Y4KKjlomuV5LPqh8bTaYLa13UFUPRYsmTB1C4P+4CuhVNq9cKZsV9m9ryEfEoqtr8H0snqbFg070d
+	GsbsjYFzcinqsf2KF6azZA0Dvdka5BUf1wYxXdBqRKhh/6quHc6zwWdpWtxm7/6RmEngFySm+pmW5
+	c8ppfy2RJ1GNTzrPU1neiqsXkZ4OPoFymIYDhNPBArtZhXuSjkDcXLtQFLXYc72X86m3L4bVWMwkw
+	wKO8PfOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxRWm-000Axk-Hh; Wed, 15 Dec 2021 10:28:52 +0000
-Received: from mail-ua1-f52.google.com ([209.85.222.52])
+	id 1mxRq8-000Fg0-8d; Wed, 15 Dec 2021 10:48:52 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxRWj-000Awe-7P; Wed, 15 Dec 2021 10:28:50 +0000
-Received: by mail-ua1-f52.google.com with SMTP id u40so6890075uad.1;
- Wed, 15 Dec 2021 02:28:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6KatagByVh+i+7U2cQTugmti3xcd82C2QfCSX1Fy8Jo=;
- b=TO9MC3EKtjdXs6dXCXKHAcy/XM4PedEA2loS0nLTCV6CigtFGCKb8uwRO3HTSHJxiM
- Lv6WKGY8N1VimqgmWQZ/97oUI/jw8tHAGMmO7yw2mjCdRJLlrQo5JnG2g4XLGr+5WYUr
- 954KJwmqj4FvcXL1uqyVNHAF7A/gVt3gpnB0vc9oyJt4B176PMwcQiRrXti0WjTrMABs
- b51FY0cX549hcLmTpPwRKtcM2BFnV2ox0VI2i+mre394rWQ7Iw9kUBM3meUCH5mhKqyO
- ESryiKTWy3I54EWY4/tfUAavR2NOGL7lijxQAAjFNm+y8HEerWBqm/8e4L6HGqcryloc
- Z6pg==
-X-Gm-Message-State: AOAM530xlZa0nUB+1j/EIFqxpwYNsMl0CsH/LDgXtYa2oQo7HNJlzdlv
- ToJRDLcBIvhjB4MhoP0QK4M1SgBeSo7ZiA==
-X-Google-Smtp-Source: ABdhPJz53r2CNl0i+8dLDWzVHs/t8XYZv50jif0T8CHseUOD9vFFEKH5TQwgJmwc6cMkzBsFS2ftGw==
-X-Received: by 2002:ab0:3301:: with SMTP id r1mr9110448uao.96.1639564127181;
- Wed, 15 Dec 2021 02:28:47 -0800 (PST)
-Received: from mail-vk1-f170.google.com (mail-vk1-f170.google.com.
- [209.85.221.170])
- by smtp.gmail.com with ESMTPSA id u145sm305035vsu.25.2021.12.15.02.28.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Dec 2021 02:28:46 -0800 (PST)
-Received: by mail-vk1-f170.google.com with SMTP id s17so14339221vka.5;
- Wed, 15 Dec 2021 02:28:45 -0800 (PST)
-X-Received: by 2002:a05:6122:920:: with SMTP id
- j32mr2889520vka.20.1639564125403; 
- Wed, 15 Dec 2021 02:28:45 -0800 (PST)
+ id 1mxRpV-000FNa-BC; Wed, 15 Dec 2021 10:48:14 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 5A59D1F44248
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1639565290; bh=/q/kjkgul5wMQm4dm++HudFeeAybi+3zwNwCfM/2sUk=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=DGxqFQLkCebVwP6VefxMPW/TwdGu4BQEpkbtwgF+zshNg0irDAfOjnZQN/JLh3q9L
+ VjVcV9MyufugN+ij72CJjSqtTdCUpT4jAtCv3lxw+xFKo6fEo++rvlQVh2AUIiGRJd
+ 1Xy9mO7VyXt5ZGNhkNojt3XxGfwN+PvX7MoJj2ocKD4PukKwQe06Aplx+uj+/XxaQJ
+ jTmOUQsnFS+H0iLJ2OPzItFsVN6zoDrNOoTqx6MgC11Geb4yFHV9KJgGNWW8NgBDly
+ ahMB+ZAlBLclW+ycbePjIkFcF2XoRjv+xOy2jwi2Zx/0See08bnHw9AL8NtGk2QfsX
+ xw6II2cXbKSPQ==
+Subject: Re: [PATCH v14, 00/19] Support multi hardware decode using
+ of_platform_populate
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20211215061552.8523-1-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <de90218e-95b1-63f0-ab92-07a0386a1058@collabora.com>
+Date: Wed, 15 Dec 2021 11:48:07 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-References: <20211213163929.7509-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211213163929.7509-1-andriy.shevchenko@linux.intel.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 15 Dec 2021 11:28:34 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdW_CKcXwOSUAbCreHVM62E35yjiCfpXC_wM0zK-V43CnA@mail.gmail.com>
-Message-ID: <CAMuHMdW_CKcXwOSUAbCreHVM62E35yjiCfpXC_wM0zK-V43CnA@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] pinctrl: Get rid of duplicate of_node assignment
- in the drivers
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Marc Zyngier <maz@kernel.org>, 
- Sam Shih <sam.shih@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
- Ludovic Desroches <ludovic.desroches@microchip.com>, 
- Claudiu Beznea <claudiu.beznea@microchip.com>, 
- Radim Pavlik <radim.pavlik@tbs-biometrics.com>, 
- Kavyasree Kotagiri <kavyasree.kotagiri@microchip.com>, 
- Colin Foster <colin.foster@in-advantage.com>,
- Douglas Anderson <dianders@chromium.org>, 
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
- Herve Codina <herve.codina@bootlin.com>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-actions@lists.infradead.org, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
- linux-rpi-kernel <linux-rpi-kernel@lists.infradead.org>,
- - <patches@opensource.cirrus.com>, 
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- linux-mediatek@lists.infradead.org, 
- linux-oxnas@groups.io, linux-stm32@st-md-mailman.stormreply.com, 
- linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
- Manivannan Sadhasivam <mani@kernel.org>,
- Nicolas Saenz Julienne <nsaenz@kernel.org>, 
- Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
- Scott Branden <sbranden@broadcom.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>, 
- Richard Fitzgerald <rf@opensource.cirrus.com>, Sean Wang <sean.wang@kernel.org>,
- Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
- Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Support Opensource <support.opensource@diasemi.com>,
- Baruch Siach <baruch@tkos.co.il>, 
- Neil Armstrong <narmstrong@baylibre.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, Andy Gross <agross@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, arm-soc <soc@kernel.org>
+In-Reply-To: <20211215061552.8523-1-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_022849_289196_195E56E0 
-X-CRM114-Status: GOOD (  19.54  )
+X-CRM114-CacheID: sfid-20211215_024813_593162_692C242C 
+X-CRM114-Status: GOOD (  14.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,36 +78,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 13, 2021 at 5:40 PM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
-> GPIO library does copy the of_node from the parent device of
-> the GPIO chip, there is no need to repeat this in the individual
-> drivers. Remove these assignment all at once.
->
-> For the details one may look into the of_gpio_dev_init() implementation.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Il 15/12/21 07:15, Yunfei Dong ha scritto:
+> This series adds support for multi hardware decode into mtk-vcodec, by first adding use
+> of_platform_populate to manage each hardware information: interrupt, clock, register
+> bases and power. Secondly add core work queue to deal with core hardware message,
+> at the same time, add msg queue for different hardware share messages. Lastly, the
+> architecture of different specs are not the same, using specs type to separate them.
+> 
+> This series has been tested with both MT8183 and MT8173. Decoding was working for both chips.
+> 
+> Patches 1~3 rewrite get register bases and power on/off interface.
+> Patches 4 export decoder pm interfaces.
+> Patches 5 add to support 8192.
+> Patch 6 support multi hardware.
+> Patch 7 separate video encoder and decoder document
+> Patch 8-17 add interfaces to support core hardware.
+> Patch 18-19 remove mtk_vcodec_release_dec/enc_pm interfaces.
 
->  drivers/pinctrl/renesas/pinctrl-rza2.c     | 1 -
+Hello Yunfei,
+this series does not apply cleanly on the current linux-next tree.
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
-Tested-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Can you please rebase?
 
-Gr{oetje,eeting}s,
-
-                        Geert
-
---
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+Thanks,
+- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
