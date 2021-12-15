@@ -4,99 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB335C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 16:08:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D821CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 16:37:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J8S8Ed4LqD8zpNlcYJf0Je5JmuuGLuubvXZd/qnWllM=; b=BGHdyzhbJmg0EC0cDEXJbdOeIM
-	vVXFG3m7EEcGrGZNPs0HU0dU8CY9j0SdA9lHXZOcRI5XDCKQ4FOQyZG/2MQocZehhAjOkz7QrObmR
-	qCLx+6mR5LIcksvUajFpEYjnIkGBH3+aMrgJ1DTItX/+YLKZDLwuNKW3vasVV+Jr4p6nH8jJmZnm5
-	pey/xSHdA6Fwnl1FEMFk1XsMS2AxEqD8MNwj4u8D7pufzMo19jZqRWF/sOyXlacuMSHwHK/gmOvSe
-	0RBtDay3CfQC692hsVDhc7KDIaaVxxbpdDUaqZh8r/grwkUR1HDj6LjmJjnwgyaP/ru++d9VOgNjV
-	6NxpXgKg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=/HkRXsxsmGQFUaLTntwH2R058kumKGaplLxhRp/24xc=; b=VXq5nbr36FjR60
+	eSWITBVTnrN56kmNRZAOWyjAB70EG6+IldAKqG2xksA0wiungjjwjIYKb76kkJShu0ax5EEzhv3TR
+	O4SgkflDQ1PjrLbly47IBeenPC+4e9t3KfXqWiRfxqHS8bhKNJ9864kxYAhu4x3wUsqX+9hdbLCYq
+	aYeSfVDH37325d62bPhtC6gVXymh8tYc0qkDsUoYWZxZ+aZwG3GUCHuEkNc8iiNjCSbO9CxvfVvSo
+	mNCEz4HUc4+YYm64r/6Dncvw3MlUh+PFfBig8XiNm+x2QMkSSIlzfQp8BFIYD40wX2fEPQpixaduv
+	k5bsDBkq6lk9dU6xgCyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxWp3-001ZgS-CJ; Wed, 15 Dec 2021 16:08:05 +0000
-Received: from wnew1-smtp.messagingengine.com ([64.147.123.26])
+	id 1mxXHq-001m6n-SG; Wed, 15 Dec 2021 16:37:50 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxWnh-001Yzb-S6; Wed, 15 Dec 2021 16:06:44 +0000
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailnew.west.internal (Postfix) with ESMTP id 49C312B000FA;
- Wed, 15 Dec 2021 11:06:39 -0500 (EST)
-Received: from mailfrontend1 ([10.202.2.162])
- by compute3.internal (MEProxy); Wed, 15 Dec 2021 11:06:40 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cerno.tech; h=
- date:from:to:cc:subject:message-id:references:mime-version
- :content-type:in-reply-to; s=fm1; bh=WP37NbalGKJAL0/fH72V8DXVgIh
- gPELRYdKLvojT4Z4=; b=I1JKQ0Qp16O7m6Dl068qAPHTtTaJyxzgfdmhUEJrpzC
- fGYU4RePOKwe772Q/f3PmsyVoeQwUs/nWJcRQT3raFmU+qxg/7qI0ZU/Z+1jR5lK
- fliiRC02mn+06E7X+KPg9W/inxpoMF59NgcrFZT+f8VcvDerQqprowWdY/t2EXdF
- XdIYQHP5cirPnC+JGuUeyextTlnQ0L/dwhwdpWDUDxh/+TEpKBIu/cNfKyQl0Bjl
- fN8u0TDiYc5Q2QyQswJ7cnF0mHvOzwpsCn6gCNgwdQkjwDlChRpCf/Qm6/1P9EMV
- uu+flLvzEKRr/9RdC4rQ2+WOrgvovH0q90IIDRDDo6Q==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; bh=WP37Nb
- alGKJAL0/fH72V8DXVgIhgPELRYdKLvojT4Z4=; b=CBgX3DNsBsFLHllQuYJ9wE
- 5gWJBdGMQIWS7gSS+9pcb6K9CSbJzZkfUCciedTGW9uXTM5WVMa823GBcd5mrU1H
- 3mP6LIYQAueQsBEGDs4iF8IIEbqBp63pB4nZ+dFomC2JJyLuyK/LbuHuYpe+Jhtr
- 9liAbtOFu44vSnAFXCJh49bdIDJH4KhTgv2EPnWXq3sK6UjTK6syNO35sHUxfKpt
- JpkiziPlMeobP04xYRoB/y/0395r0YgHxcrcX5umFZFwIjNb8UjuEe00H3e/3WFc
- ijC71LdWR+4sk95pF9c6bje7at85VRbuPL0waFnr6PrLj0hhMrmASkRQKAxuUhow
- ==
-X-ME-Sender: <xms:hhK6Yb9YkGQJtXyiG1GsceZsQcr49_FBvz3ilc2W2-0cOYJ02y5ufQ>
- <xme:hhK6YXt_OztEopYb1EYylOxatH0_T-094yOHiD7ul2_VbFXjxvvdthXOi3TYWGE3T
- APv7sSTPCrycQmlkIc>
-X-ME-Received: <xmr:hhK6YZAhotNLrRDa1oaRA6rD8JKceGoHjDnCgqpXVxZ1Vz5CTbsr--LAhljQNLDKT6GaHQqcBjSK_WKXA7wHWwy4KM2dRN25zJ6PXbw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvuddrledvgdekhecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpeffhffvuffkfhggtggujgesghdtreertddtvdenucfhrhhomhepofgrgihimhgv
- ucftihhprghrugcuoehmrgigihhmvgestggvrhhnohdrthgvtghhqeenucggtffrrghtth
- gvrhhnpeevveefffduveeitdegtefhhfetueffteefffdvheevvdehteethedvleffgfej
- vdenucffohhmrghinhepkhgvrhhnvghlrdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
- enucfrrghrrghmpehmrghilhhfrhhomhepmhgrgihimhgvsegtvghrnhhordhtvggthh
-X-ME-Proxy: <xmx:hhK6YXcW09v2iehWXB1CBKSCOin-wlkF-IhG68puzVssD_d7ofvDAA>
- <xmx:hhK6YQM_B2Pu7Qznm5mzkNxudkUhp3eTojkWoHt4o_tyiyn68vSTog>
- <xmx:hhK6YZkiXd46lkfbQCzoNDZLNHNUebG2K4hs-UQO-9mDJ9ud2LKpyQ>
- <xmx:jhK6YcnDxEMUCeWhkR5AV7XVOguTJCrktgxelAumEenVhndfbwY0XjAOsvo>
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 15 Dec 2021 11:06:29 -0500 (EST)
-Date: Wed, 15 Dec 2021 17:06:28 +0100
-From: Maxime Ripard <maxime@cerno.tech>
-To: Guillaume Ranquet <granquet@baylibre.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>,
- kernel test robot <lkp@intel.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v6 7/7] drm/mediatek: Add mt8195 DisplayPort driver
-Message-ID: <20211215160628.ogfprazobtm5nylf@houat>
-References: <20211115101129.lyxxmb6i7paaonwi@gilmour>
- <CABnWg9tNPGZSi1RLqF5+Qs1GHtynyVoOzAyw+i9mPRYEoByk8g@mail.gmail.com>
- <20211116145112.xyoxzfll6exysnvt@gilmour>
- <CABnWg9uhuchdWyBeTacR6Cy0A9OHziUi051BQ5wsZVU0ajYjyA@mail.gmail.com>
- <20211125143034.tzikvlxxl6fdhsif@gilmour>
- <CABnWg9tcWdfPQwNtFhqVZxCriT848fy42VHoQZs3X2UmL4LYSA@mail.gmail.com>
- <20211213165422.54n3oh72tjcb3a67@houat>
- <CABnWg9uyoK0TkRZRJXstmtB4u2-UUCi-x_frosKhhQerNmFT=A@mail.gmail.com>
- <20211215151508.hc7blhh7p3wrjili@houat>
- <CABnWg9s0GpTPWH=2HcD5j6F23=0rvkG9KrFpen-qKO4RpQoH1g@mail.gmail.com>
+ id 1mxWvh-001d0v-1F; Wed, 15 Dec 2021 16:15:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 13A3BB81FC0;
+ Wed, 15 Dec 2021 16:14:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF70FC36AE0;
+ Wed, 15 Dec 2021 16:14:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1639584893;
+ bh=wo0crMKVlb7bmqaDIAvITIC848wu5jLZZ67Z80HKcRM=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=eNNwMRyTV221oRdj5G7UQ3XcsDP0G7RuGoRrkRZ8/lXE5fYOW59uAEH7VihbRwWxO
+ rtb2Sx3uHnp5mBD933YemSHpayKk8aVSbhbS2kbp59RPunQhsSVllBTcTVxRaC+7vW
+ LK2qW0jamydu8RrkXx6l9G5NH3CljOkpCbzelsgkQ+DbsD7UJZgwQN/fASuh112NmM
+ U6qgHhfjUCfNgNxkWFW5Q4dO6fd1XNjIk25q+yElqtapX5MLBZakT3X8qjwoViNhkQ
+ RY4ZSE4xqJravCkR194jmGdWpJY8xB6yXowVQwBYv9aqOFXzVRB/jv3/etMHkNSYGO
+ 1bwfUz3h+JsWA==
+Received: by mail-ed1-f50.google.com with SMTP id z9so21556350edb.5;
+ Wed, 15 Dec 2021 08:14:53 -0800 (PST)
+X-Gm-Message-State: AOAM5328ohKv8K5rOSLrVc35GPahb+miX8MG7S8KFJ0wr8jOLMXG/GtF
+ Fqc0gMxOCYIzU5zbUFytfe9gNio/4TQbSmx6nA==
+X-Google-Smtp-Source: ABdhPJwb1dCWZnfzIsxAO7jQHE1+1kUJseuzbpP+YWd9CINPK/i/ENG5c75C9WxsfttHUDoyFH5Gb/7t73WX+PxlWKg=
+X-Received: by 2002:a50:ef02:: with SMTP id m2mr15331810eds.172.1639584888656; 
+ Wed, 15 Dec 2021 08:14:48 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CABnWg9s0GpTPWH=2HcD5j6F23=0rvkG9KrFpen-qKO4RpQoH1g@mail.gmail.com>
+References: <20211022172413.195559-1-markyacoub@chromium.org>
+ <20211026011318.GF2515@art_vandelay>
+ <CAJUqKUopyQEyLh7w32UnHfUJv0nNUoE_PHAdkEj8JOnkhVqbbQ@mail.gmail.com>
+In-Reply-To: <CAJUqKUopyQEyLh7w32UnHfUJv0nNUoE_PHAdkEj8JOnkhVqbbQ@mail.gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 16 Dec 2021 00:14:36 +0800
+X-Gmail-Original-Message-ID: <CAAOTY_84K_xCQE-H8zxWfBhn4kQF_kPsmaqDuRr8w2E4rti3QA@mail.gmail.com>
+Message-ID: <CAAOTY_84K_xCQE-H8zxWfBhn4kQF_kPsmaqDuRr8w2E4rti3QA@mail.gmail.com>
+Subject: Re: [PATCH] mediatek: Set default value for Panel Orientation
+ connector prop.
+To: Mark Yacoub <markyacoub@chromium.org>
+Cc: Sean Paul <sean@poorly.run>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ Sean Paul <seanpaul@chromium.org>, 
+ Mark Yacoub <markyacoub@google.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, 
+ Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ DRI Development <dri-devel@lists.freedesktop.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-kernel <linux-kernel@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_080642_999322_7CF33693 
-X-CRM114-Status: GOOD (  55.52  )
+X-CRM114-CacheID: sfid-20211215_081457_424926_319AE249 
+X-CRM114-Status: GOOD (  22.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,225 +83,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7250022676638730121=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============7250022676638730121==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ku4qditxo4q3mink"
-Content-Disposition: inline
-
-
---ku4qditxo4q3mink
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Dec 15, 2021 at 10:02:22AM -0600, Guillaume Ranquet wrote:
-> Quoting Maxime Ripard (2021-12-15 16:15:08)
-> > Hi,
-> >
-> > On Wed, Dec 15, 2021 at 09:03:01AM -0600, Guillaume Ranquet wrote:
-> > > Quoting Maxime Ripard (2021-12-13 17:54:22)
-> > > > On Thu, Dec 02, 2021 at 06:48:12AM -0800, Guillaume Ranquet wrote:
-> > > > > Hi,
-> > > > >
-> > > > > Quoting Maxime Ripard (2021-11-25 15:30:34)
-> > > > > > On Wed, Nov 24, 2021 at 01:45:21PM +0000, Guillaume Ranquet wro=
-te:
-> > > > > > > Hi,
-> > > > > > > Thanks for all your input, really appreciated.
-> > > > > > >
-> > > > > > > Quoting Maxime Ripard (2021-11-16 15:51:12)
-> > > > > > > > Hi,
-> > > > > > > >
-> > > > > > > > On Mon, Nov 15, 2021 at 09:33:52AM -0500, Guillaume Ranquet=
- wrote:
-> > > > > > > > > Quoting Maxime Ripard (2021-11-15 11:11:29)
-> > > > > > > > > > > The driver creates a child device for the phy. The ch=
-ild device will
-> > > > > > > > > > > never exist without the parent being active. As they =
-are sharing a
-> > > > > > > > > > > register range, the parent passes a regmap pointer to=
- the child so that
-> > > > > > > > > > > both can work with the same register range. The phy d=
-river sets device
-> > > > > > > > > > > data that is read by the parent to get the phy device=
- that can be used
-> > > > > > > > > > > to control the phy properties.
-> > > > > > > > > >
-> > > > > > > > > > If the PHY is in the same register space than the DP co=
-ntroller, why do
-> > > > > > > > > > you need a separate PHY driver in the first place?
-> > > > > > > > >
-> > > > > > > > > This has been asked by Chun-Kuang Hu in a previous revisi=
-on of the series:
-> > > > > > > > >
-> > > > > > > > > https://lore.kernel.org/linux-mediatek/CAAOTY_-+T-wRCH2yw=
-2XSm=3DZbaBbqBQ4EqpU2P0TF90gAWQeRsg@mail.gmail.com/
-> > > > > > > >
-> > > > > > > > It's a bit of a circular argument though :)
-> > > > > > > >
-> > > > > > > > It's a separate phy driver because it needs to go through a=
-nother
-> > > > > > > > maintainer's tree, but it needs to go through another maint=
-ainer's tree
-> > > > > > > > because it's a separate phy driver.
-> > > > > > > >
-> > > > > > > > It doesn't explain why it needs to be a separate phy driver=
-? Why can't
-> > > > > > > > the phy setup be done directly in the DP driver, if it's es=
-sentially a
-> > > > > > > > single device?
-> > > > > > > >
-> > > > > > > > That being said, usually what those kind of questions mean =
-is that
-> > > > > > > > you're missing a comment or something in the commit log to =
-provide that
-> > > > > > > > context in the first place, so it would be great to add tha=
-t context
-> > > > > > > > here.
-> > > > > > > >
-> > > > > > > > And it will avoid the situation we're now in where multiple=
- reviewers
-> > > > > > > > ask the same questions over and over again :)
-> > > > > > > >
-> > > > > > > At first I didn't understand your reply, then I realized I ga=
-ve you
-> > > > > > > the wrong link...
-> > > > > > > my bad! I'm struggling a bit with mail reviews, but I'll get =
-there eventually.
-> > > > > > >
-> > > > > > > The driver and phy were a single driver until v2 of this patc=
-h series
-> > > > > > > and the phy setup
-> > > > > > > was done directly in the driver (single driver, single C file=
-).
-> > > > > > > Here's the relevant link to the discussion between Chun-Kuang=
- and Markus
-> > > > > > >
-> > > > > > > https://lore.kernel.org/linux-mediatek/CAAOTY__cJMqcAieEraJ2s=
-z4gi0Zs-aiNXz38_x7dPQea6HvYEg@mail.gmail.com/#t
-> > > > > > >
-> > > > > > > I'll try to find a way to make it clearer for v7.
-> > > > > >
-> > > > > > OK, it makes sense then :)
-> > > > > >
-> > > > > > There's something weird though: the devices definitely look lik=
-e they're
-> > > > > > in a separate register range, yet you mention a regmap to handl=
-e the
-> > > > > > shared register range. That range doesn't seem described anywhe=
-re in the
-> > > > > > device tree though? What is it for?
-> > > > >
-> > > > > My understanding is that 0x1000 to 0x1fff controls the phy
-> > > > > functionalities and 0x2000 to 0x4fff controls "non-phy"
-> > > > > functionalities. And you are right, there's no description of tha=
-t in
-> > > > > the device tree whatsoever. The ranges are in the same actual dev=
-ice
-> > > > > and thus it has been decided to not have dt-bindings for the phy
-> > > > > device.
-> > > >
-> > > > Sure, that last part makes sense, but then I'm not sure why you don=
-'t
-> > > > have the full register range in the device node you have in the DT?
-> > > >
-> > > > > The phy driver is a child of the DP driver that we register using
-> > > > > platform_device_register_data() and we pass along the same regmap=
- as
-> > > > > the DP driver in its platform data.
-> > > >
-> > > > Especially if it's used by something, it should be described in the=
- DT
-> > > > somewhere.
-> > > >
-> > > > Maxime
-> > >
-> > >
-> > > So, to make things crystal clear to a newbie (like me).
-> > > Would you describe it like this:
-> > > compatible =3D "mediatek,mt8195-dp-tx";
-> > > reg =3D <0 0x1c501000 0 0x0fff>,
-> > >       <0 0x1c502000 0 0x2fff>;
-> > >
-> > > instead of the current description:
-> > > compatible =3D "mediatek,mt8195-dp-tx";
-> > > reg =3D <0 0x1c500000 0 0x8000>;
-> > >
-> > > I haven't checked what the rest of the 0x8000 range is used for thoug=
-h...
-> >
-> > I'm confused, is that what you had before?
-> >
-> > I recall you had a DTSI somewhere where you have two devices, and the
-> > dp-tx device not having the phy range?
-> >
-> > If the latter is what you have, and there's no overlapping ranges over
-> > multiple nodes, then it's fine already.
-> >
-> > Maxime
->=20
-> This is what I have today in the mt8195.dtsi I'm using for testing purpos=
-e.
-> Provided by mediatek on their vendor branch, not sure if it has been subm=
-itted
-> to the list yet:
->=20
->         edp_tx: edp_tx@1c500000 {
->             status =3D "disabled";
->             compatible =3D "mediatek,mt8195-dp-tx";
->             reg =3D <0 0x1c500000 0 0x8000>;
->             nvmem-cells =3D <&dp_calibration>;
->             nvmem-cell-names =3D "dp_calibration_data";
->             power-domains =3D <&spm MT8195_POWER_DOMAIN_EPD_TX>;
->             interrupts =3D <GIC_SPI 676 IRQ_TYPE_LEVEL_HIGH 0>;
->         };
->=20
->         dp_tx: dp_tx@1c600000 {
->             compatible =3D "mediatek,mt8195-dp-tx";
->             reg =3D <0 0x1c600000 0 0x8000>;
->             nvmem-cells =3D <&dp_calibration>;
->             nvmem-cell-names =3D "dp_calibration_data";
->             power-domains =3D <&spm MT8195_POWER_DOMAIN_DP_TX>;
->             interrupts =3D <GIC_SPI 458 IRQ_TYPE_LEVEL_HIGH 0>;
->             status =3D "disabled";
->         };
->=20
-> With no device tree node for the dp-phy.
-> The phy range is included in the reg range of the dp-tx device.
-
-It's all good then, sorry for the noise
-
-Maxime
-
---ku4qditxo4q3mink
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRcEzekXsqa64kGDp7j7w1vZxhRxQUCYboShAAKCRDj7w1vZxhR
-xUYVAQCGjzUfWr2v3Z62sZDrWOasRwMjVwIuCKR48vIkup8T+AEAvm/G2Hc7KhWe
-iKk+sVWc6DV2ixUroSxPb1PtnTOQPQ4=
-=UG8J
------END PGP SIGNATURE-----
-
---ku4qditxo4q3mink--
-
-
---===============7250022676638730121==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7250022676638730121==--
-
+SGksIE1hcms6CgpNYXJrIFlhY291YiA8bWFya3lhY291YkBjaHJvbWl1bS5vcmc+IOaWvCAyMDIx
+5bm0MTLmnIgxNOaXpSDpgLHkuowg5LiL5Y2IMTE6MTPlr6vpgZPvvJoKPgo+IEhleSBDSywgY2Fu
+IHdlIGhhdmUgdGhpcyBtZXJnZWQ/Cj4gVGhhbmsgeW91IQo+Cj4gT24gTW9uLCBPY3QgMjUsIDIw
+MjEgYXQgOToxMyBQTSBTZWFuIFBhdWwgPHNlYW5AcG9vcmx5LnJ1bj4gd3JvdGU6Cj4gPgo+ID4g
+T24gRnJpLCBPY3QgMjIsIDIwMjEgYXQgMDE6MjQ6MDNQTSAtMDQwMCwgTWFyayBZYWNvdWIgd3Jv
+dGU6Cj4gPiA+IEZyb206IE1hcmsgWWFjb3ViIDxtYXJreWFjb3ViQGNocm9taXVtLm9yZz4KPiA+
+ID4KPiA+ID4gW1doeV0KPiA+ID4gQ3JlYXRpbmcgdGhlIHByb3AgdXNlcyBVTktOT1dOIGFzIHRo
+ZSBpbml0aWFsIHZhbHVlLCB3aGljaCBpcyBub3QgYQo+ID4gPiBzdXBwb3J0ZWQgdmFsdWUgaWYg
+dGhlIHByb3BzIGlzIHRvIGJlIHN1cHBvcnRlZC4KPiA+ID4KPiA+ID4gW0hvd10KPiA+ID4gU2V0
+IHRoZSBwYW5lbCBvcmllbnRhdGlvbiBkZWZhdWx0IHZhbHVlIHRvIE5PUk1BTCByaWdodCBhZnRl
+ciBjcmVhdGluZwo+ID4gPiB0aGUgcHJvcC4KPiA+Cj4gPiBSZXZpZXdlZC1ieTogU2VhbiBQYXVs
+IDxzZWFucGF1bEBjaHJvbWl1bS5vcmc+Cj4gPgo+ID4gPgo+ID4gPiBUZXN0ZWQgb24gSmFjdXp6
+aShNVEspCj4gPiA+IEZpeGVzIElHVEBrbXNfcHJvcGVydGllc0BnZXRfcHJvcGVydGllcy1zYW5p
+dHkte2F0b21pYyxub24tYXRvbWljfQo+ID4gPgo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIFlh
+Y291YiA8bWFya3lhY291YkBjaHJvbWl1bS5vcmc+Cj4gPiA+IC0tLQo+ID4gPiAgZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kc2kuYyB8IDIgKysKPiA+ID4gIDEgZmlsZSBjaGFuZ2VkLCAy
+IGluc2VydGlvbnMoKykKPiA+ID4KPiA+ID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9t
+ZWRpYXRlay9tdGtfZHNpLmMgYi9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2RzaS5jCj4g
+PiA+IGluZGV4IDBhZDcxNTc2NjBhZmEuLmI3YzI1MjhhOGY0MWMgMTAwNjQ0Cj4gPiA+IC0tLSBh
+L2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHNpLmMKPiA+ID4gKysrIGIvZHJpdmVycy9n
+cHUvZHJtL21lZGlhdGVrL210a19kc2kuYwo+ID4gPiBAQCAtMTAzOSw2ICsxMDM5LDggQEAgc3Rh
+dGljIGludCBtdGtfZHNpX2VuY29kZXJfaW5pdChzdHJ1Y3QgZHJtX2RldmljZSAqZHJtLCBzdHJ1
+Y3QgbXRrX2RzaSAqZHNpKQo+ID4gPiAgICAgICAgICAgICAgIERSTV9FUlJPUigiVW5hYmxlIHRv
+IGluaXQgcGFuZWwgb3JpZW50YXRpb25cbiIpOwo+ID4gPiAgICAgICAgICAgICAgIGdvdG8gZXJy
+X2NsZWFudXBfZW5jb2RlcjsKPiA+ID4gICAgICAgfQo+ID4gPiArICAgICBkcm1fY29ubmVjdG9y
+X3NldF9wYW5lbF9vcmllbnRhdGlvbihkc2ktPmNvbm5lY3RvciwKPiA+ID4gKyAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRFJNX01PREVfUEFORUxfT1JJRU5UQVRJT05f
+Tk9STUFMKTsKCkluIGRybV9jb25uZWN0b3Jfc2V0X3BhbmVsX29yaWVudGF0aW9uKCkgWzFdLCBJ
+IGZpbmQgdGhhdCB0aGUKb3JpZW50YXRpb24gY291bGQgYmUgc2V0IG9ubHkgb25jZS4gT25jZSB5
+b3Ugc2V0IGl0IHRvIG5vcm1hbCwgaXQKY291bGQgbm90IGJlIHNldCB0byBvdGhlciBvcmllbnRh
+dGlvbi4gUmlnaHQ/CgpbMV0gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tl
+cm5lbC9naXQvdG9ydmFsZHMvbGludXguZ2l0L3RyZWUvZHJpdmVycy9ncHUvZHJtL2RybV9jb25u
+ZWN0b3IuYz9oPXY1LjE2LXJjNSNuMjMwMgoKUmVnYXJkcywKQ2h1bi1LdWFuZy4KCj4gPiA+Cj4g
+PiA+ICAgICAgIGRybV9jb25uZWN0b3JfYXR0YWNoX2VuY29kZXIoZHNpLT5jb25uZWN0b3IsICZk
+c2ktPmVuY29kZXIpOwo+ID4gPgo+ID4gPiAtLQo+ID4gPiAyLjMzLjAuMTA3OS5nNmU3MDc3OGRj
+OS1nb29nCj4gPiA+Cj4gPgo+ID4gLS0KPiA+IFNlYW4gUGF1bCwgU29mdHdhcmUgRW5naW5lZXIs
+IEdvb2dsZSAvIENocm9taXVtIE9TCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtA
+bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
+c3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
