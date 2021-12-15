@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EBF5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 05:22:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60A37C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 05:31:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=u7yia/uEZZmuObsJIxIGTuC8LtLWQpD/ehsyXsNUWCY=; b=g6I+/ldQHyjDRF
-	Vn881m8ZFgD7v3GGDWi3s/JC43w9HjUejqwxIwlJp49+YcYg+SCRHt/LKOo0DapifU7f5Gv5IDf1q
-	1WWUu7gSBRAbVHdC+Ad4Z3w33FRRApE9kRXSxbzcUPJjqX8Z2g1V0m0wmmPqMZK/36nyO3p0H9cwy
-	67FugivIVuq8pYi5eIUVCwHXyg8sHdf+RukLVQrqJUI+2HYC63lQkKV7G8GupFTWSzkRKlzLp+y39
-	wm3L93VdgOYjatXj1AjMz8mqLXmzDguHExHTcuyBbfYHzSHjsbpAUXvhQCCelr+h7/R7n9e3Y5A3k
-	5DaZhJYUZbt4Rg8QN4nA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Fb2NrVtRKFz0u2Z2UaMBu2f6IhFTgZ9MH6uYs/u0UrI=; b=LJ+NxN+Z+ZbU5S
+	U3eyrig249gUqsZzf2PBmryZ4eGE7bulAH02PcJTlTN6PrnFbVWEfZp3PQO1seBwC2WvTto4PCvHe
+	5oUgl1p0rqqDj3RGC4jLtMse6hOEFgrMbDLl69VZV/Uzz8DY30jXGFFBCiec06WqNhJgn/sLcLrYI
+	7iUbqA9LDgenEsdKynbkO0rVxr/U6+znl3TaHR4jXnlEHHcj1i/dV2rXTcFEMI7Z++AK27pRwPD9r
+	1SQBqaeVk1oi3QfMXVZl102aWKD+xIdaJ6fA3BNcXyN/Dhs8QiQMasi7/zdrzFlBwWs05cjlXeZlG
+	hbmluqhVaadxZDtEt7lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxMk7-00GhpT-Jc; Wed, 15 Dec 2021 05:22:19 +0000
-Received: from smtp23.cstnet.cn ([159.226.251.23] helo=cstnet.cn)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxMjv-00GhoV-0F; Wed, 15 Dec 2021 05:22:08 +0000
-Received: from localhost.localdomain (unknown [124.16.138.126])
- by APP-03 (Coremail) with SMTP id rQCowABnbi53e7lh4DcEAw--.38941S2;
- Wed, 15 Dec 2021 13:21:59 +0800 (CST)
-From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-To: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org,
- matthias.bgg@gmail.com
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Subject: [PATCH v2] media: mtk-vcodec: potential dereference of null pointer
-Date: Wed, 15 Dec 2021 13:21:57 +0800
-Message-Id: <20211215052157.94172-1-jiasheng@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1mxMst-00GiTy-1N; Wed, 15 Dec 2021 05:31:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mxMsp-00GiSh-5e; Wed, 15 Dec 2021 05:31:20 +0000
+X-UUID: c544a9f175d841f8b5899d9755aed852-20211214
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=i9I5Pq76XGu923LV95G8PHzGBpoVXt0t8Crp714UgVY=; 
+ b=F4c+c9YhOzogtCX22SXrhBME+BYF92iL9d8hxXAmAWQZGgSgw5nsR4ZHkHS5PGNfhedQdcUSkZctNPskYE3vF07ESCWBnz9IwU3HXGVXvDBqJDXpBB3971r0dNwFRLkWYwJAn3ztbbzBm6vISasWoj8fKHUldmBi8LQapl115Ic=;
+X-UUID: c544a9f175d841f8b5899d9755aed852-20211214
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 555023986; Tue, 14 Dec 2021 22:31:15 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Dec 2021 21:31:14 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 15 Dec 2021 13:31:12 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 15 Dec 2021 13:31:11 +0800
+Message-ID: <2d66660f3507a50af618e109b7f41f411398b2ef.camel@mediatek.com>
+Subject: Re: [SPAM][PATCH] iommu/mediatek: Validate number of phandles
+ associated with "mediatek,larbs"
+From: Yong Wu <yong.wu@mediatek.com>
+To: Tzung-Bi Shih <tzungbi@google.com>
+CC: Guenter Roeck <linux@roeck-us.net>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <iommu@lists.linux-foundation.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ Tomasz Figa <tfiga@chromium.org>, kernel test robot <lkp@intel.com>, "Dan
+ Carpenter" <dan.carpenter@oracle.com>
+Date: Wed, 15 Dec 2021 13:31:13 +0800
+In-Reply-To: <YbheCEbOS48Owcht@google.com>
+References: <20211210205704.1664928-1-linux@roeck-us.net>
+ <ebf58066a131f92c68e83a1ef56b88f435fa0d08.camel@mediatek.com>
+ <YbheCEbOS48Owcht@google.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-CM-TRANSID: rQCowABnbi53e7lh4DcEAw--.38941S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrKFy8Aw4fXFyxCFy7Ww15urg_yoWkurc_Aa
- yqvF1xZr1UtwnxJF47tF1S9ryI9Fs8Kr40q3sxKFZIqa4UGF4rZr1DXF45Za1UXwnFvF98
- Jas0vFW7A39xJjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUIcSsGvfJTRUUUbckFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
- 6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
- A2z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr1j
- 6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
- Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
- I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
- 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCY02Avz4vE14v_GrWl
- 42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJV
- WUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAK
- I48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r1j6r
- 4UMIIF0xvE42xK8VAvwI8IcIk0rVWrZr1j6s0DMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF
- 0xvEx4A2jsIEc7CjxVAFwI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0JUP5rcUUUUU=
-X-Originating-IP: [124.16.138.126]
-X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_212207_464889_D7F6A0DD 
-X-CRM114-Status: UNSURE (   7.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211214_213119_241029_CDD1C1B6 
+X-CRM114-Status: GOOD (  37.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,38 +82,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The return value of devm_kzalloc() needs to be checked.
-To avoid use of null pointer in case of thefailure of alloc.
+On Tue, 2021-12-14 at 17:04 +0800, Tzung-Bi Shih wrote:
+> On Tue, Dec 14, 2021 at 03:31:25PM +0800, Yong Wu wrote:
+> > On Fri, 2021-12-10 at 12:57 -0800, Guenter Roeck wrote:
+> > > Since commit baf94e6ebff9 ("iommu/mediatek: Add device link for
+> > > smi-
+> > > common
+> > > and m4u"), the driver assumes that at least one phandle
+> > > associated
+> > > with
+> > > "mediatek,larbs" exists. If that is not the case, for example if
+> > > reason
+> > > "mediatek,larbs" is provided as boolean property, the code will
+> > > use
+> > > an
+> > > uninitialized pointer and may crash. To fix the problem, ensure
+> > > that
+> > > the
+> > > number of phandles associated with "mediatek,larbs" is at least 1
+> > > and
+> > > bail out immediately if that is not the case.
+> > 
+> > From the dt-binding, "mediatek,larbs" always is a phandle-array. I 
+> > assumed the dts should conform to the dt-binding before. Then the
+> > problem is that if we should cover the case that someone
+> > abuses/attacks
+> > the dts. Could you help add more comment in the commit message?
+> > something like: this is for avoid abuse the dt-binding.
+> 
+> How could you make sure dts conform to dt-bindings in runtime?  Code
+> shouldn't rely on the assumptions but try the best to prevent any
+> abuse/misconfigured/malicious cases especially if the assumptions are
+> controllable by other parties.
+> 
+> Taking this case as an example, of_count_phandle_with_args() could
+> return 3 types of values.
+> 1. Negative: an error, it is already handled in the original code.
+> 2. Positive: normal case, it falls down to the rest of code.
+> 3. Zero: it still falls down to the rest of code, however, some
+> variables won't be filled.
+> 
+> The code should handle all of the above types.
+> 
+> > > diff --git a/drivers/iommu/mtk_iommu.c
+> > > b/drivers/iommu/mtk_iommu.c
+> > > index 25b834104790..0bbe32d0a2a6 100644
+> > > --- a/drivers/iommu/mtk_iommu.c
+> > > +++ b/drivers/iommu/mtk_iommu.c
+> > > @@ -828,6 +828,8 @@ static int mtk_iommu_probe(struct
+> > > platform_device
+> > > *pdev)
+> > >  					     "mediatek,larbs", NULL);
+> > >  	if (larb_nr < 0)
+> > >  		return larb_nr;
+> > > +	if (larb_nr == 0)
+> > > +		return -EINVAL;
+> > 
+> > Just assigning the larbnode to NULL may be simpler. In this case,
+> > it
+> > won't enter the loop below, and return 0 in the
+> > of_parse_phandle(larbnode, "mediatek,smi", 0).
+> > 
+> > -       struct device_node      *larbnode, *smicomm_node;
+> > +       struct device_node      *larbnode = NULL, *smicomm_node;
+> 
+> Setting larbnode to NULL doesn't make sense to me.  It wastes some
+> more instructions.  If the code can exit earlier, why does it need to
+> call another of_parse_phandle()?
 
-Fixes: 46233e91fa24 ("media: mtk-vcodec: move firmware implementations into their own files")
-Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
----
-Changelog:
+Yes. it wastes more instrustions. But this function is only called in
+the probe. it isn't called so often. Guenter has other suggestions.
+Let's discuss in that thread.
 
-v1 -> v2
+Thanks very much for your comment.
 
-*Change 1. Change the return value from "-EINVAL" to "-ENOMEM".
----
- drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c
-index cd27f637dbe7..769228093e48 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_fw_vpu.c
-@@ -102,6 +102,8 @@ struct mtk_vcodec_fw *mtk_vcodec_fw_vpu_init(struct mtk_vcodec_dev *dev,
- 	vpu_wdt_reg_handler(fw_pdev, mtk_vcodec_vpu_reset_handler, dev, rst_id);
- 
- 	fw = devm_kzalloc(&dev->plat_dev->dev, sizeof(*fw), GFP_KERNEL);
-+	if (!fw)
-+		return ERR_PTR(-ENOMEM);
- 	fw->type = VPU;
- 	fw->ops = &mtk_vcodec_vpu_msg;
- 	fw->pdev = fw_pdev;
--- 
-2.25.1
-
-
+> 
+> Also, it adds another dependency between the code blocks.  What if
+> someone move the code blocks without awareness of the dependency?
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
