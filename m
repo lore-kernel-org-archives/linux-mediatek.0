@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00BC6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 06:05:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A261EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 06:16:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2MmvQ0WB3Y4tPbB8tVqh+VgAfiEFmZkp8s8YX7FVCWY=; b=PReB5Qeiz2jxKm
-	fM1YF8vIoTivijgmFsN1WmkPHSMY/79QvXHtMDG+3laMxnMAkmLOaGUq2VinXkwJJLmFsXPEKsEM6
-	bPIwiZHtgHRU7pmr4ZIvzu+N58TXVkZI8ZEzlkJn3nR8MJio1u/L6c8QdmRN3RdX84J3G9UzCkK/T
-	qOBH3RfUYXlCkWYNqhuhW3qzpsIWndkhxSfQDg6wX24T5Vuar+Z/LegsD/2/+kmqkVaHHvx+RGK19
-	qcGPbPTIS8WQ9bkd/FOVdeDPM39Ky1AMJJNhThOR9T1YcgQwKHvkKXtiaZ+r94BzmcGrL6P7OaJcF
-	E2XrPhRN/7Xeu6WoiPRw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=9fWAb8gpc9F1/4mWklgQZYUSq8DWYmGi/7UMjfzhQB8=; b=38VW84gZo40h++
+	jYfEMROsSyDs7LWj8+O6C4SpY2JvVVDtMA/a7JlNMoRszOc1u5flzUAG5sxVQpeOiiI31r5me/OLH
+	i4ydJ3gMfcSggxub3CX0xdiF7nYCJteQ7VrsAmexkoTUtoD+AMjW32vbpaCwcZizFPc5sIpkwumEn
+	vlIm2w2P2eUEj0p7sBBK9mEXM35ectSqc4eKSivQIYmKkN02UbXEvxP6TkZ+ZtsZL3m7CMzCiodys
+	q44hlfOonu1wF2li5itrWETpEH7j30spJSwpyCYjIKZHZoFLu9uAgerCA+akXVYfMtjZmFvT5Y0Z3
+	Y6q1hZHqLoymdioSWykQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxNQB-00GmiK-TU; Wed, 15 Dec 2021 06:05:47 +0000
-Received: from mail-qv1-xf2e.google.com ([2607:f8b0:4864:20::f2e])
+	id 1mxNaO-00GoCt-To; Wed, 15 Dec 2021 06:16:20 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxNPz-00GmfY-0X; Wed, 15 Dec 2021 06:05:36 +0000
-Received: by mail-qv1-xf2e.google.com with SMTP id m6so2260546qvh.10;
- Tue, 14 Dec 2021 22:05:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=kfB50yz+wtniH54BM6Vm2zw9w3vq/rJwIyH5Smo+/Jo=;
- b=J5aTdyn12laJzJtmwQtHRwJpYqox3Ppg6gM9O/iTPQGJKCJAw7TrOojuAKaCcjiltK
- CVZqgLXIvG9RmyevGn1jmP+PW8ttpavSiWK9PuxAdOvKqf0FUaMrd6j1HktU6MERFg4L
- wfClW46lzk/3xFlhI8DmqaZE+l4TuLrCDDNq39MjvFYH5H8HYHo9I5KdSeR6CJAhrg0P
- 7EC16wyCVZWZi2uz9n+CU7b4PrlVdWSPipQ1xmwe1jNi4SJ+cum+hM0hbA10fwA9Sc8P
- Gt1DCNUUL79eITCVOmPkUSzB9QziYTWtpJmCzySWRLLwAsGiNIWEksgvGtJ2zzcuJq/Z
- +EsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=kfB50yz+wtniH54BM6Vm2zw9w3vq/rJwIyH5Smo+/Jo=;
- b=qN1mTrulpLpbBwdGDZleVHqp0VkaqapiUJGaSMIXHGvtvXuW8hGqbZXXNGL01pYJ3E
- NiuDzmuxgeE2OVERWK0jZ8eYt8BAVCZAuTn1nhzjZjaHO8BR7/lubx/4Qo83GWqWS1eR
- DQuk5SiQsNxCVWBiUn3YohjTDMQoO1+QaMRnmj5gZWaBKHUu42wvzvejvB11mqeIGTGq
- Hkg0fmmu/uoRTU+8gyq54YPVKlwesCHW8X0fbr9ge0GBuWWK3duNEGs+pq7aQrzIx4KI
- jVPt9oT7ynm4KDZceZqxNPF2UdkmEkVozlCJudzx2sdUoAZqtL0P/Fcogkla5touXqQa
- gY5A==
-X-Gm-Message-State: AOAM530bjOvJKzgOhL96+n27dRRwcrIRE2I1tHzSIPZ2BpXx+oNvu0Vp
- 81I34QrZkGugWyRTIU6nO/Y=
-X-Google-Smtp-Source: ABdhPJwhFH2MM84maffO9BMwznbkRqZ0gyp7GM8TVIIzFezFqVl2zZc02G1CuV/iFJlx+kbkFey5KQ==
-X-Received: by 2002:a05:6214:2428:: with SMTP id
- gy8mr9883423qvb.18.1639548333964; 
- Tue, 14 Dec 2021 22:05:33 -0800 (PST)
-Received: from localhost.localdomain ([193.203.214.57])
- by smtp.gmail.com with ESMTPSA id l22sm747156qtj.68.2021.12.14.22.05.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Dec 2021 22:05:33 -0800 (PST)
-From: cgel.zte@gmail.com
-X-Google-Original-From: chi.minghao@zte.com.cn
-To: tglx@linutronix.de
-Cc: maz@kernel.org, matthias.bgg@gmail.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Minghao Chi <chi.minghao@zte.com.cn>, Zeal Robot <zealci@zte.com.cn>
-Subject: [PATCH irqchip-next] drivers/irqchip: remove redundant ret variable
-Date: Wed, 15 Dec 2021 06:05:28 +0000
-Message-Id: <20211215060528.442001-1-chi.minghao@zte.com.cn>
+ id 1mxNa8-00Go0Q-CX; Wed, 15 Dec 2021 06:16:05 +0000
+X-UUID: 357174eecabf4e69a6af64c1ceaed282-20211214
+X-UUID: 357174eecabf4e69a6af64c1ceaed282-20211214
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 809816182; Tue, 14 Dec 2021 23:15:59 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 14 Dec 2021 22:15:58 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 15 Dec 2021 14:15:56 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Wed, 15 Dec 2021 14:15:54 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v14,
+ 02/19] media: mtk-vcodec: Align vcodec wake up interrupt interface
+Date: Wed, 15 Dec 2021 14:15:35 +0800
+Message-ID: <20211215061552.8523-3-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211215061552.8523-1-yunfei.dong@mediatek.com>
+References: <20211215061552.8523-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211214_220535_084589_F90457AE 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20211214_221604_472647_4DAFDB4A 
+X-CRM114-Status: GOOD (  14.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +85,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Minghao Chi <chi.minghao@zte.com.cn>
+Vdec and venc can use the same function to wake up interrupt event.
 
-Return value directly instead of taking this
-in another redundant variable.
-
-Reported-by: Zeal Robot <zealci@zte.com.cn>
-Signed-off-by: Minghao Chi <chi.minghao@zte.com.cn>
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Steve Cho <stevecho@chromium.org>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/irqchip/irq-mtk-cirq.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 9 +--------
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 8 ++++++++
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 8 --------
+ 3 files changed, 9 insertions(+), 16 deletions(-)
 
-diff --git a/drivers/irqchip/irq-mtk-cirq.c b/drivers/irqchip/irq-mtk-cirq.c
-index 9bca0918078e..2f895473d9d3 100644
---- a/drivers/irqchip/irq-mtk-cirq.c
-+++ b/drivers/irqchip/irq-mtk-cirq.c
-@@ -60,8 +60,6 @@ static void mtk_cirq_unmask(struct irq_data *data)
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 59caf2163349..055d50e52720 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -31,13 +31,6 @@
+ module_param(mtk_v4l2_dbg_level, int, 0644);
+ module_param(mtk_vcodec_dbg, bool, 0644);
  
- static int mtk_cirq_set_type(struct irq_data *data, unsigned int type)
- {
--	int ret;
+-/* Wake up context wait_queue */
+-static void wake_up_ctx(struct mtk_vcodec_ctx *ctx)
+-{
+-	ctx->int_cond = 1;
+-	wake_up_interruptible(&ctx->queue);
+-}
 -
- 	switch (type & IRQ_TYPE_SENSE_MASK) {
- 	case IRQ_TYPE_EDGE_FALLING:
- 		mtk_cirq_write_mask(data, CIRQ_POL_CLR);
-@@ -84,8 +82,7 @@ static int mtk_cirq_set_type(struct irq_data *data, unsigned int type)
- 	}
+ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ {
+ 	struct mtk_vcodec_dev *dev = priv;
+@@ -69,7 +62,7 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	writel((readl(vdec_misc_addr) & ~VDEC_IRQ_CLR),
+ 		dev->reg_base[VDEC_MISC] + VDEC_IRQ_CFG_REG);
  
- 	data = data->parent_data;
--	ret = data->chip->irq_set_type(data, type);
--	return ret;
-+	return data->chip->irq_set_type(data, type);
+-	wake_up_ctx(ctx);
++	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
+ 
+ 	mtk_v4l2_debug(3,
+ 			"mtk_vcodec_dec_irq_handler :wake up ctx %d, dec_done_status=%x",
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 581522177308..1d2370608d0d 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -473,4 +473,12 @@ static inline struct mtk_vcodec_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
+ 	return container_of(ctrl->handler, struct mtk_vcodec_ctx, ctrl_hdl);
  }
  
- static struct irq_chip mtk_cirq_chip = {
++/* Wake up context wait_queue */
++static inline void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
++{
++	ctx->int_cond = 1;
++	ctx->int_type = reason;
++	wake_up_interruptible(&ctx->queue);
++}
++
+ #endif /* _MTK_VCODEC_DRV_H_ */
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index eed67394cf46..7c3487fb3498 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -65,14 +65,6 @@ static const struct mtk_video_fmt mtk_video_formats_capture_vp8[] =  {
+ 	},
+ };
+ 
+-/* Wake up context wait_queue */
+-static void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
+-{
+-	ctx->int_cond = 1;
+-	ctx->int_type = reason;
+-	wake_up_interruptible(&ctx->queue);
+-}
+-
+ static void clean_irq_status(unsigned int irq_status, void __iomem *addr)
+ {
+ 	if (irq_status & MTK_VENC_IRQ_STATUS_PAUSE)
 -- 
 2.25.1
 
