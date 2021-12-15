@@ -4,81 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 926BCC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 19:33:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E2A2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 20:03:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ShCHDBn5s9SDFbHTlaqdIkXkdLXc7UNshWKwW6Imh20=; b=KzX+8o+TZGiIIr
-	eYHzNborolz/tcXZNMxeOIMmS/IRC0h1jXleYsqAbW82Eh1885ldA94HvmSSotTc+hou/x2+QrCUZ
-	XpifGc6+C8I1ujIiXkKNLlQ5PvdyFPU1xK1PGZyd7rLPaOK29aNivgJjOpbb3RjVyxZGr72oGeVcF
-	HUa1E1JChvFvQpahsvWE9anUGvBXexwgnDrpy1NKvW93bAWrvpc0nfkQPt4SWRtjq1oY77MCWMK9w
-	d+KVl7LAUm91R/FdwXj1T0k/2NIHdxWUa49JUJl4cR2c3VMdDrQF6giA7wwsqS8RCCNrkbThWBlqu
-	iUqgd5ZUW2FywKqX6anA==;
+	List-Owner; bh=rdHavKlB/1/VliGN5iKls3iX0jwq176oDWHq7l74dwQ=; b=iYfublRZMN6Zs9
+	oqhvEh4BxH/7V7Zw+aXPCrlOfoK4337s9qMcJgqgWxlVj2i0Db6TLjJvz3JBHhY6IB9sVRUkCRFWs
+	3ldQns45CzyAu6nY3tZU7lV7Ay/YJOvycpkBf87/BUJlyd3Gqg5PG6KkHEQJztq68BL3SEcNOOVP7
+	81y37xYzOv2SIqqFsaBSVKoeOVHYNhG24EUuxCrU2PaVpLQdEMDQ1NRpUGl2qmaabSYYGCLdI5BuH
+	xHW8tJVxcsPFuBNSkN84JDAjC/keybpZyucRQyZKAKzZXJL0Fg89h8asPVnwdk4Dg3Ps75/V+Q63S
+	rUYdZSg05snMuQqwaCLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxa1f-002Qau-Qp; Wed, 15 Dec 2021 19:33:19 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1mxaUQ-002W0q-MZ; Wed, 15 Dec 2021 20:03:02 +0000
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxa1R-002QW1-R2; Wed, 15 Dec 2021 19:33:07 +0000
-Received: by mail-wr1-x431.google.com with SMTP id o13so39939908wrs.12;
- Wed, 15 Dec 2021 11:33:05 -0800 (PST)
+ id 1mxaUN-002Vzi-Og; Wed, 15 Dec 2021 20:03:01 +0000
+Received: by mail-wr1-x435.google.com with SMTP id u17so40167468wrt.3;
+ Wed, 15 Dec 2021 12:02:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=79+FhVBjs4o3yYVhPlsAjU+5rDQFf4+UuCCoWP0VrP8=;
- b=OgYSlRMNbdHZvtFtkran+ccjafcycUS0JZpyIVGxE4Ob4UDAft8ubuW4LddsPECHGL
- 3BwIv0mzJcZ/hcx97C/O9TWHbYmuj8HghiKWDl41soxENYdul0TG8L5LI/h+pQ+noqbX
- WVwuWMkbpodIrlZwRJtvfoDiL6vU1xOez1O5yNWkkiE91eL66H1ywh3annGEo7V0ITnw
- B3KeQMVyohARDxHeRMdUmY9ZVss+KuftPfeLxodEhE1fGy0OpxymUipH9e4rMSy5bO3K
- J7YXJQ+7lH8KOeohVdDRbIL10aYm1GoQpnXw4XmhJxcTDs+7QtVxTaq+bpphSqZe98gC
- lYJQ==
+ bh=15UlF7+uGjlTkwwX8mzVxbyazaBqLGc99zLGZEkto+M=;
+ b=FP5GAk7B3qaNAoTR7zqIg100qjBKtzlqO3dniSqTNKaZfITZd+7c8DpWl/nGUEstuT
+ SwJNkaBZydGstSCMXWyt+dAr8msoDsN7Fn7PFlQBZl6SfAR6NOOwiamNQVI9ndeMpHQs
+ gP3T4MRQ4dHCodOVia4WNHbbLhn0WY13zBVY0agt51Ln4WCZmDuwnw1qTXPgHJ0nevPj
+ Wzc4Aoxj2z01arRxqLpbFjrnz4TOxpzcBDPiAggSpQoDTINT4CYwpTJdeK7sEvoUQgYV
+ 153+zJ8p9XO2xUpgZai+6Ta5rZUlXYVwevN7yKfzbbx6xxmlclmc0aLfqM7NHA7Yivcn
+ tapQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=79+FhVBjs4o3yYVhPlsAjU+5rDQFf4+UuCCoWP0VrP8=;
- b=btcJdJOtR5WBO0G3s2mHD7EZFbQ7F4rDNT/qflB53EqedNEip7g5xLR+lDAm99s+Kp
- MUdXv7sRQRuTauQ6w4mT0LSypudVlBdsTo1+bQujBwkOZhc1soi7pnyivnyXYeeqiMAX
- YnoQ90vy1EIGE1mMoHhKFHbwMsFhN3fDAVUuu86EE4W7Vc3t5ImpMJG0WcWsigq5IItq
- xBVsnZSbi9Be4kWru8lH1e7ltTwCUUXIYT4j5BSdal559IRU0ApJfrmsQMbZEBsFaBuX
- IcoAkYW41/8q9jKbwwJ0jOSUEYsdJsJ3Bl4Rnh7g1BGg+H6/N9D6cidA6anNhryCTHmY
- uL/A==
-X-Gm-Message-State: AOAM533OcLdNvM/+Uyjuou3wwpVvxFmfaIAggIcfyidfwcJfp1Do4nFQ
- TSIO6jfd+VN384UiEfwaGpI=
-X-Google-Smtp-Source: ABdhPJzdnNtSy9sIiHfrr83EJYE7w4XvmIH+FUk2TcetbRS3tuZcEfMFQ3Sj1cJ+pA8drKuEWB4ZMA==
-X-Received: by 2002:a5d:6d4c:: with SMTP id k12mr5828831wri.511.1639596784230; 
- Wed, 15 Dec 2021 11:33:04 -0800 (PST)
+ bh=15UlF7+uGjlTkwwX8mzVxbyazaBqLGc99zLGZEkto+M=;
+ b=hdkop/RPOa/JdZ9eQ6LGmLEb8jz8r9R+AQP8915nVOZrPD9VVk7Glnk6ArhnVNqvTw
+ AUCqfjXU2oLcknBqjy7C8sCa0vxlfHDy/pQyXk7LBrARD5sHs7R6EM8pEa02N3QjUl5M
+ hMArYcJYRk4IGkJXcTXak+ZTLAsbZDdJZv8QvIVxyqElc5+AFO7E7u8h2bucJdiKJAoq
+ K6KsEFrJz31GQJWHWKKmxWmWGO33xrvhK07SNgwzDGFn1EsGbNNNZh7GhrBo5AJQ2COW
+ CODhBredaEcPfN6qo1p8UVzq6ni4C/7WDY+AXiacbFVEkMgCDNqS9ok9CESBojyxCe9S
+ LW/g==
+X-Gm-Message-State: AOAM530Lfc23A3YDxY6KZs1xO1pwOXdpdTOC1ljRVOfw5kpUcf/O1Zvl
+ JrTd/ApHLKB7jjPH+LpDX/U+CU93aJI=
+X-Google-Smtp-Source: ABdhPJz0rKBo+MEebuAgAGMFyRMLsT9h33P48BbZMO47N1W8KxnvFvS5O7uqrk3ujwiK88+V8BDUjg==
+X-Received: by 2002:a5d:6ac2:: with SMTP id u2mr5912265wrw.486.1639598578493; 
+ Wed, 15 Dec 2021 12:02:58 -0800 (PST)
 Received: from [192.168.0.18] (81.172.62.207.dyn.user.ono.com. [81.172.62.207])
- by smtp.gmail.com with ESMTPSA id s8sm3291108wra.9.2021.12.15.11.33.03
+ by smtp.gmail.com with ESMTPSA id b10sm3362890wri.78.2021.12.15.12.02.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 15 Dec 2021 11:33:03 -0800 (PST)
-Message-ID: <bc0a9df0-8ba0-76ed-4522-43a3082f42b4@gmail.com>
-Date: Wed, 15 Dec 2021 20:33:02 +0100
+ Wed, 15 Dec 2021 12:02:58 -0800 (PST)
+Message-ID: <c62f562f-c446-4986-2915-00c01a2aff1a@gmail.com>
+Date: Wed, 15 Dec 2021 21:02:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH v8 2/2] arm64: dts: mediatek: add basic mt7986 support
+Subject: Re: [PATCH v2] arm64: dts: mt8183: kukui: Add Type C node
 Content-Language: en-US
-To: Sam Shih <sam.shih@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
- Hsin-Yi Wang <hsinyi@chromium.org>,
- Enric Balletbo i Serra <enric.balletbo@collabora.com>,
- Fabien Parent <fparent@baylibre.com>, Seiya Wang <seiya.wang@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+To: Prashant Malani <pmalani@chromium.org>, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org
-Cc: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>
-References: <20211122123222.8016-1-sam.shih@mediatek.com>
- <20211122123222.8016-3-sam.shih@mediatek.com>
+Cc: Alexandru M Stan <amstan@chromium.org>, Benson Leung <bleung@chromium.org>,
+ "open list:OPEN FIRMWARE AND FLATTENED DEVICE TREE BINDINGS"
+ <devicetree@vger.kernel.org>, "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>
+References: <20211209195112.366176-1-pmalani@chromium.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20211122123222.8016-3-sam.shih@mediatek.com>
+In-Reply-To: <20211209195112.366176-1-pmalani@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_113305_953087_576C2999 
-X-CRM114-Status: GOOD (  19.36  )
+X-CRM114-CacheID: sfid-20211215_120259_854388_62E8F5C0 
+X-CRM114-Status: GOOD (  15.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,262 +94,53 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 22/11/2021 13:32, Sam Shih wrote:
-> Add basic chip support for Mediatek mt7986, include
-> basic uart nodes, rng node and watchdog node.
+On 09/12/2021 20:51, Prashant Malani wrote:
+> Add a node describing the USB Type C connector, in order to utilize the
+> Chromium OS USB Type-C driver that enumerates Type-C ports and connected
+> cables/peripherals and makes them visible to userspace.
 > 
-> Add cpu node, timer node, gic node, psci and reserved-memory node
-> for ARM Trusted Firmware.
-> 
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> 
+> Cc: Alexandru M Stan <amstan@chromium.org>
+> Cc: Benson Leung <bleung@chromium.org>
+> Signed-off-by: Prashant Malani <pmalani@chromium.org>
+
+Applied to v5.16-next/dts64
+
+Thanks
+
 > ---
-> v8: removed debug bootargs
-> v7: added memory node back to dts
-> v6: removed clock and pinctrl node, to separate basic part into a single
->      patch series
 > 
-> Original thread:
-> https://lore.kernel.org/all/20211004124155.1404-1-sam.shih@mediatek.com/
+> Changes in v2:
+> - Alexandru mentioned that HW specs suggest preferred power role for
+>    devices like kukui to be sink, so changed try-power-role to "sink".
 > 
-> v5: follow reviewr's comment: removed clock freqency node in timer due to
->      we have set CNTFRQ_EL0 in ATF firmware, and also corrected GICD range
-> v4: added missing gic register bases, and fixed range of GICR
-> v3: used the stdout-path instead of console=ttyS0
-> v2: modified clock and uart node due to clock driver updated
-> ---
->   arch/arm64/boot/dts/mediatek/Makefile        |   1 +
->   arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts |  37 +++++
->   arch/arm64/boot/dts/mediatek/mt7986a.dtsi    | 148 +++++++++++++++++++
->   3 files changed, 186 insertions(+)
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
->   create mode 100644 arch/arm64/boot/dts/mediatek/mt7986a.dtsi
+>   arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
 > 
-> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/mediatek/Makefile
-> index 4f68ebed2e31..e6c3a73b9e4a 100644
-> --- a/arch/arm64/boot/dts/mediatek/Makefile
-> +++ b/arch/arm64/boot/dts/mediatek/Makefile
-> @@ -7,6 +7,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-evb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt6797-x20-dev.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-rfb1.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt7622-bananapi-bpi-r64.dtb
-> +dtb-$(CONFIG_ARCH_MEDIATEK) += mt7986a-rfb.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8167-pumpkin.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm.dtb
->   dtb-$(CONFIG_ARCH_MEDIATEK) += mt8173-elm-hana.dtb
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> new file mode 100644
-> index 000000000000..6911862390d7
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a-rfb.dts
-> @@ -0,0 +1,37 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2021 MediaTek Inc.
-> + * Author: Sam.Shih <sam.shih@mediatek.com>
-> + */
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> index 94c13c459194..0f9480f91261 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
+> @@ -886,6 +886,20 @@ usbc_extcon: extcon0 {
+>   		cbas {
+>   			compatible = "google,cros-cbas";
+>   		};
 > +
-> +/dts-v1/;
-> +#include "mt7986a.dtsi"
+> +		typec {
+> +			compatible = "google,cros-ec-typec";
+> +			#address-cells = <1>;
+> +			#size-cells = <0>;
 > +
-> +/ {
-> +	model = "MediaTek MT7986a RFB";
-> +	compatible = "mediatek,mt7986a-rfb";
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:115200n8";
-> +	};
-> +
-> +	memory {
-> +		reg = <0 0x40000000 0 0x40000000>;
-
-Should be:
-         memory@40000000 {
-
-                 device_type = "memory";
-
-                 reg = <0 0x40000000 0 0x40000000>;
-
-         };
-
-
-Please send a follow-up patch for that.
-
-Regards,
-Matthias
-
-> +	};
-> +};
-> +
-> +&uart0 {
-> +	status = "okay";
-> +};
-> +
-> +&uart1 {
-> +	status = "okay";
-> +};
-> +
-> +&uart2 {
-> +	status = "okay";
-> +};
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7986a.dtsi b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> new file mode 100644
-> index 000000000000..77906839cc85
-> --- /dev/null
-> +++ b/arch/arm64/boot/dts/mediatek/mt7986a.dtsi
-> @@ -0,0 +1,148 @@
-> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
-> +/*
-> + * Copyright (C) 2021 MediaTek Inc.
-> + * Author: Sam.Shih <sam.shih@mediatek.com>
-> + */
-> +
-> +#include <dt-bindings/interrupt-controller/irq.h>
-> +#include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +/ {
-> +	interrupt-parent = <&gic>;
-> +	#address-cells = <2>;
-> +	#size-cells = <2>;
-> +
-> +	system_clk: dummy40m {
-> +		compatible = "fixed-clock";
-> +		clock-frequency = <40000000>;
-> +		#clock-cells = <0>;
-> +	};
-> +
-> +	cpus {
-> +		#address-cells = <1>;
-> +		#size-cells = <0>;
-> +		cpu0: cpu@0 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x0>;
-> +			#cooling-cells = <2>;
+> +			usb_c0: connector@0 {
+> +				compatible = "usb-c-connector";
+> +				reg = <0>;
+> +				power-role = "dual";
+> +				data-role = "host";
+> +				try-power-role = "sink";
+> +			};
 > +		};
-> +
-> +		cpu1: cpu@1 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x1>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu2: cpu@2 {
-> +			device_type = "cpu";
-> +			compatible = "arm,cortex-a53";
-> +			enable-method = "psci";
-> +			reg = <0x2>;
-> +			#cooling-cells = <2>;
-> +		};
-> +
-> +		cpu3: cpu@3 {
-> +			device_type = "cpu";
-> +			enable-method = "psci";
-> +			compatible = "arm,cortex-a53";
-> +			reg = <0x3>;
-> +			#cooling-cells = <2>;
-> +		};
-> +	};
-> +
-> +	psci {
-> +		compatible  = "arm,psci-0.2";
-> +		method      = "smc";
-> +	};
-> +
-> +	reserved-memory {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		ranges;
-> +		/* 192 KiB reserved for ARM Trusted Firmware (BL31) */
-> +		secmon_reserved: secmon@43000000 {
-> +			reg = <0 0x43000000 0 0x30000>;
-> +			no-map;
-> +		};
-> +	};
-> +
-> +	timer {
-> +		compatible = "arm,armv8-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
-> +	};
-> +
-> +	soc {
-> +		#address-cells = <2>;
-> +		#size-cells = <2>;
-> +		compatible = "simple-bus";
-> +		ranges;
-> +
-> +		gic: interrupt-controller@c000000 {
-> +			compatible = "arm,gic-v3";
-> +			#interrupt-cells = <3>;
-> +			interrupt-parent = <&gic>;
-> +			interrupt-controller;
-> +			reg = <0 0x0c000000 0 0x10000>,  /* GICD */
-> +			      <0 0x0c080000 0 0x80000>,  /* GICR */
-> +			      <0 0x0c400000 0 0x2000>,   /* GICC */
-> +			      <0 0x0c410000 0 0x1000>,   /* GICH */
-> +			      <0 0x0c420000 0 0x2000>;   /* GICV */
-> +			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_HIGH>;
-> +		};
-> +
-> +		watchdog: watchdog@1001c000 {
-> +			compatible = "mediatek,mt7986-wdt",
-> +				     "mediatek,mt6589-wdt";
-> +			reg = <0 0x1001c000 0 0x1000>;
-> +			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
-> +			#reset-cells = <1>;
-> +			status = "disabled";
-> +		};
-> +
-> +		trng: trng@1020f000 {
-> +			compatible = "mediatek,mt7986-rng",
-> +				     "mediatek,mt7623-rng";
-> +			reg = <0 0x1020f000 0 0x100>;
-> +			clocks = <&system_clk>;
-> +			clock-names = "rng";
-> +			status = "disabled";
-> +		};
-> +
-> +		uart0: serial@11002000 {
-> +			compatible = "mediatek,mt7986-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11002000 0 0x400>;
-> +			interrupts = <GIC_SPI 123 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&system_clk>;
-> +			status = "disabled";
-> +		};
-> +
-> +		uart1: serial@11003000 {
-> +			compatible = "mediatek,mt7986-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11003000 0 0x400>;
-> +			interrupts = <GIC_SPI 124 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&system_clk>;
-> +			status = "disabled";
-> +		};
-> +
-> +		uart2: serial@11004000 {
-> +			compatible = "mediatek,mt7986-uart",
-> +				     "mediatek,mt6577-uart";
-> +			reg = <0 0x11004000 0 0x400>;
-> +			interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
-> +			clocks = <&system_clk>;
-> +			status = "disabled";
-> +		};
-> +
-> +	};
-> +
-> +};
+>   	};
+>   };
+>   
 > 
 
 _______________________________________________
