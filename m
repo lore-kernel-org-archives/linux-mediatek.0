@@ -4,84 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03791C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 13:59:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DBAC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 14:01:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WTAVOhWnUhLMFrdEkZ4/uCEMdgzSLc6tZDNPwf2umHs=; b=po07APl2V/DPnt
-	FIt408v6U9cAjIjMRVsDER4mSDX34rPWFmijoMDnagFdNs5xH8Y/XlKOYA3pUdI9+MV8S2M7t3udG
-	rhFQTqWXrH6JqaM4ALO7X1eOXR5jXUt3DJpJ1aeh2MwieimMfQ6+qqY9Cn5rlmsBbhziQcnv7unnn
-	EzvVFdoxj1tRrhVGSwM+Wkie5E9FwOk+DzQBhkg2Olt1i1GAK6EytOmET9Cph83ptCwzQjCX7tly4
-	n2VsM4VyyW+wn7QPhfkGVBttmCmboXOwTOZjaS2bVW8E2XPT+QR3ZECixyjf3rmerRKkh+fJ8Ebtt
-	8HMET+/hzjn6zJEO3wZw==;
+	List-Owner; bh=9d70W1N8IWso38j5R86Q9smni+KJdSOjwb5kcDftgRU=; b=ceAByS6/zffvkL
+	+TP6V/vxdL50vENwINQBHEqWQ8x94gJcUbP6rzPXfaKjcuB+kHDbTxXkS87ypJZtGMb2mPer7VK3i
+	/9AnlROJUzSbcrDZS7hlGgq8K+yrCA52LVONz+un7GYrG6bMmWBQhro86ef7uXyM0yiFopzz3iS5i
+	zIBsCK6IGCSIVW1heAUMdwBMCK5FabW9J7Nka/UEA26UJmzDB+mbMW8/3Zns58l0FJY1hfZFEL5RX
+	8A2W8SNtygkj1QVt6pG+h29V2mbYKTCSyALvftnCGvzrAhGXOGlN1G8dIFzFyJFE/M/VoNHam30Op
+	/SZfRpkq9hmRci+yuddw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxUol-0010QB-So; Wed, 15 Dec 2021 13:59:39 +0000
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c])
+	id 1mxUqU-0010sx-3X; Wed, 15 Dec 2021 14:01:26 +0000
+Received: from mail-oi1-f179.google.com ([209.85.167.179])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxUoi-0010On-VY
- for linux-mediatek@lists.infradead.org; Wed, 15 Dec 2021 13:59:38 +0000
-Received: by mail-ot1-x32c.google.com with SMTP id
- 47-20020a9d0332000000b005798ac20d72so24969889otv.9
- for <linux-mediatek@lists.infradead.org>; Wed, 15 Dec 2021 05:59:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=mime-version:in-reply-to:references:from:user-agent:date:message-id
- :subject:to:cc;
- bh=jzXbIP5FciFwRo+uwKbSYKwE5J1uKZwuclMd+bHXm4Q=;
- b=VW9meFnnbW+6LhQXBCYPKpSaQzDRpNnMKRUZyG7F83OPWZ35MX+n4Qr4fgwTmrF0rT
- 6m9gcUNEEMjaYdGTbOnKqtEMFoY5B3WNGnlDW3U0KtLtgyFCfwQx1vmr/m4U05GTZcem
- 5UtzSKqy2kFGXp/gUJ7EmPzPtoqMTDqIfQC/YvzVxo/LQ5kHKwkxE3jp5njcEelUv1kT
- OG+iBv9RmWkUa5GARhS9NinLIasDgB8d9//7XMhh28GcjR8UhN7IY/fuvUBNap7Xo/3W
- A+5v1+o116FlmWcud/nkiz8Y/GbQz/SNhtUr8kF1JFXv/F8gm1ythiT2qQn13y9snEdY
- fydw==
+ id 1mxUqF-0010mz-Un; Wed, 15 Dec 2021 14:01:13 +0000
+Received: by mail-oi1-f179.google.com with SMTP id bk14so31778145oib.7;
+ Wed, 15 Dec 2021 06:01:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:in-reply-to:references:from
- :user-agent:date:message-id:subject:to:cc;
- bh=jzXbIP5FciFwRo+uwKbSYKwE5J1uKZwuclMd+bHXm4Q=;
- b=jTkdMSmVgakQZ81jbUkBV9VxUHy0HkyFMsccY3p5h7HHFxtfH9Gt2wU/1FgEB5+mo6
- kKQoCgCcoV6EGqWNjrQDC1A+6sZfujAno9Rn6Q5mb6iTaz3CWYnJL9L8gNXBf0zpqybt
- QAOFReH4kuSFngxhOSDWoRFlWsxR77o2OL6SDSfCnxiW9Zfi1c8W7TYI5fDtC8bJT3xL
- JYFuUOs4TIUs8z3diMpyr2plO3UaX3iG45YGkuGC6B4YpbsVVXugEHWSFO91B09ZpvBb
- nuEf/Hxyk3rOBIVruGtvG7qgXtZn8sHpNRDkXDwKv+op6bLlaUkHp4B3ENKUR05w8Q4h
- MHpQ==
-X-Gm-Message-State: AOAM531rPN0p+eamRDOkyRysW1i6DXuzajFKsuIezo5RA5rCcTt5rSdP
- noh3O3iUIhCBi/Q4R7ftVw7/Ype414TZI4g3cVpD4g==
-X-Google-Smtp-Source: ABdhPJw9vbo3GtL3umP4JTbk/hUjj33zlRQI9PHcpEYiz1E8UmKBHQI5Lfz+6KJ2nWa6o7LDr4U/YQDOVfofOzqmx08=
-X-Received: by 2002:a05:6830:200d:: with SMTP id
- e13mr9181654otp.109.1639576776133; 
- Wed, 15 Dec 2021 05:59:36 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 15 Dec 2021 07:59:35 -0600
-MIME-Version: 1.0
-In-Reply-To: <CAJMQK-gGE78qZoR92d8OH6_vTzBR5ry04nKGS22Dw48vAo7+AA@mail.gmail.com>
-References: <20211110130623.20553-1-granquet@baylibre.com>
- <20211110130623.20553-8-granquet@baylibre.com>
- <CAJMQK-gGE78qZoR92d8OH6_vTzBR5ry04nKGS22Dw48vAo7+AA@mail.gmail.com>
-From: Guillaume Ranquet <granquet@baylibre.com>
-User-Agent: alot/0.10
-Date: Wed, 15 Dec 2021 07:59:35 -0600
-Message-ID: <CABnWg9tAMLWtPK1QjiqKyNgNhdqDDSc2fyAAmS3rzLQBwvT8SA@mail.gmail.com>
-Subject: Re: [PATCH v6 7/7] drm/mediatek: Add mt8195 DisplayPort driver
-To: Hsin-Yi Wang <hsinyi@chromium.org>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Markus Schneider-Pargmann <msp@baylibre.com>, 
- kernel test robot <lkp@intel.com>, linux-kernel@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=v2N2/2aRl0uDViM7Eo18ZEycm6qiJCN1cJkIyTdCyMk=;
+ b=HzPqTA0reB88CdQN8Acmww9QmItR0QrIUWvobB7/9pjYmk9laB2rUQrxpnAz1wEevn
+ 1v9cBI4xq3+lmqKV5iKej1w+lcr0mNTHTB70LF2oQ0fozTVoIn6Irt25DG+f9tyYhGot
+ 4OsgP59kiUDcm+EwDpwD7XqH0r/QwDRzgttfrUcQttiIRGKMQGi6d996UiENNbMSa8wD
+ nIsN4y01bTy4G+k9gBxVL2lkJ4CcyCwJkhperwY3E2nZ6DWbdra/QsffLsW/Dvp+Yyii
+ slSDFAualgvJnE00pawkg647qM75oolO7f4kIA1f0HdJJSE/i6BFRF5bLIEb9o8EY0u6
+ jxNA==
+X-Gm-Message-State: AOAM532jthLBEwhw/cNG1JVfJxyQG1Eyqjm1Iv/uKT5f2Vu/5xSam/MB
+ rph3NgnNPmPDBQ9Ssvxmow==
+X-Google-Smtp-Source: ABdhPJyLHls0NqIbXlFT86l7QPNmz2Nu39/Akl9ZcQh7M1EkHj/vb600jTYN0BNbCBgWUtj6wv4pJQ==
+X-Received: by 2002:aca:2319:: with SMTP id e25mr38548861oie.164.1639576869775; 
+ Wed, 15 Dec 2021 06:01:09 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id b1sm447272otj.5.2021.12.15.06.01.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 15 Dec 2021 06:01:09 -0800 (PST)
+Received: (nullmailer pid 1207416 invoked by uid 1000);
+ Wed, 15 Dec 2021 14:01:07 -0000
+From: Rob Herring <robh@kernel.org>
+To: Biao Huang <biao.huang@mediatek.com>
+Cc: netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ davem@davemloft.net, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ devicetree@vger.kernel.org, srv_heupstream@mediatek.com,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, macpaul.lin@mediatek.com,
+ linux-arm-kernel@lists.infradead.org, Jakub Kicinski <kuba@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, angelogioacchino.delregno@collabora.com,
+ dkirjanov@suse.de, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20211215021652.7270-5-biao.huang@mediatek.com>
+References: <20211215021652.7270-1-biao.huang@mediatek.com>
+ <20211215021652.7270-5-biao.huang@mediatek.com>
+Subject: Re: [PATCH net-next v9 4/6] net: dt-bindings: dwmac: Convert
+ mediatek-dwmac to DT schema
+Date: Wed, 15 Dec 2021 08:01:07 -0600
+Message-Id: <1639576867.892685.1207415.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_055937_042459_DA37A0BB 
-X-CRM114-Status: GOOD (  28.21  )
+X-CRM114-CacheID: sfid-20211215_060112_025572_ABFE3F81 
+X-CRM114-Status: GOOD (  13.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,108 +81,55 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Hsin-Yi,
+On Wed, 15 Dec 2021 10:16:50 +0800, Biao Huang wrote:
+> Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
+> And there are some changes in .yaml than .txt, others almost keep the same:
+>   1. compatible "const: snps,dwmac-4.20".
+>   2. delete "snps,reset-active-low;" in example, since driver remove this
+>      property long ago.
+>   3. add "snps,reset-delay-us = <0 10000 10000>" in example.
+>   4. the example is for rgmii interface, keep related properties only.
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> ---
+>  .../bindings/net/mediatek-dwmac.txt           |  91 ----------
+>  .../bindings/net/mediatek-dwmac.yaml          | 155 ++++++++++++++++++
+>  2 files changed, 155 insertions(+), 91 deletions(-)
+>  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+>  create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+> 
 
-Quoting Hsin-Yi Wang (2021-12-09 07:29:30)
-> On Wed, Nov 10, 2021 at 9:08 PM Guillaume Ranquet <granquet@baylibre.com> wrote:
-> >
-> > From: Markus Schneider-Pargmann <msp@baylibre.com>
-> >
-> > This patch adds a DisplayPort driver for the Mediatek mt8195 SoC and a
-> > according phy driver mediatek-dp-phy.
-> >
-> > It supports both functional units on the mt8195, the embedded
-> > DisplayPort as well as the external DisplayPort units. It offers
-> > hot-plug-detection, audio up to 8 channels, and DisplayPort 1.4 with up
-> > to 4 lanes.
-> >
-> > The driver creates a child device for the phy. The child device will
-> > never exist without the parent being active. As they are sharing a
-> > register range, the parent passes a regmap pointer to the child so that
-> > both can work with the same register range. The phy driver sets device
-> > data that is read by the parent to get the phy device that can be used
-> > to control the phy properties.
-> >
-> > This driver is based on an initial version by
-> > Jason-JH.Lin <jason-jh.lin@mediatek.com>.
-> >
-> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
-> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
-> > Reported-by: kernel test robot <lkp@intel.com>
-> > ---
->
->
-> <snip>
->
-> > +static int mtk_dp_probe(struct platform_device *pdev)
-> > +{
-> > +       struct mtk_dp *mtk_dp;
-> > +       struct device *dev = &pdev->dev;
-> > +       int ret;
-> > +       int irq_num = 0;
-> > +       struct drm_panel *panel = NULL;
-> > +
-> > +       mtk_dp = devm_kzalloc(dev, sizeof(*mtk_dp), GFP_KERNEL);
-> > +       if (!mtk_dp)
-> > +               return -ENOMEM;
-> > +
-> > +       mtk_dp->dev = dev;
-> > +
-> > +       irq_num = platform_get_irq(pdev, 0);
-> > +       if (irq_num < 0) {
-> > +               dev_err(dev, "failed to request dp irq resource\n");
-> > +               return -EPROBE_DEFER;
-> > +       }
-> > +
-> > +       ret = drm_of_find_panel_or_bridge(dev->of_node, 1, 0, &panel,
-> > +                                         &mtk_dp->next_bridge);
-> > +       if (ret == -ENODEV) {
-> > +               dev_info(
-> > +                       dev,
-> > +                       "No panel connected in devicetree, continuing as external DP\n");
-> > +               mtk_dp->next_bridge = NULL;
-> > +       } else if (ret) {
-> > +               dev_err(dev, "Failed to find panel or bridge: %d\n", ret);
->
-> Hi,
->
-> We're seeing
-> [    0.424599] mediatek-drm-dp 1c500000.edp_tx: Failed to find panel
-> or bridge: -517
->
-> It's probably better to use dev_err_probe here.
->
-> Thanks
+Running 'make dtbs_check' with the schema in this patch gives the
+following warnings. Consider if they are expected or the schema is
+incorrect. These may not be new warnings.
 
-Good suggestion, it will be in v7.
+Note that it is not yet a requirement to have 0 warnings for dtbs_check.
+This will change in the future.
 
-Thanks for your review,
-Guillaume.
->
-> > +               return ret;
-> > +       }
-> > +
-> > +       if (panel) {
-> > +               mtk_dp->next_bridge = devm_drm_panel_bridge_add(dev, panel);
-> > +               if (IS_ERR(mtk_dp->next_bridge)) {
-> > +                       ret = PTR_ERR(mtk_dp->next_bridge);
-> > +                       dev_err(dev, "Failed to create bridge: %d\n", ret);
-> > +                       return -EPROBE_DEFER;
-> > +               }
-> > +       }
->
->
-> <snip>
->
-> > _______________________________________________
-> > Linux-mediatek mailing list
-> > Linux-mediatek@lists.infradead.org
-> > http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Full log is available here: https://patchwork.ozlabs.org/patch/1567987
+
+
+ethernet@1101c000: clock-names: ['axi', 'apb', 'mac_main', 'ptp_ref'] is too short
+	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+
+ethernet@1101c000: clocks: [[27, 34], [27, 37], [6, 154], [6, 155]] is too short
+	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+
+ethernet@1101c000: compatible: ['mediatek,mt2712-gmac'] does not contain items matching the given schema
+	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+
+ethernet@1101c000: compatible: ['mediatek,mt2712-gmac'] is too short
+	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+
+ethernet@1101c000: Unevaluated properties are not allowed ('compatible', 'reg', 'interrupts', 'interrupt-names', 'mac-address', 'clock-names', 'clocks', 'power-domains', 'snps,axi-config', 'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,txpbl', 'snps,rxpbl', 'clk_csr', 'phy-mode', 'phy-handle', 'snps,reset-gpio', 'mdio' were unexpected)
+	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+
 
 _______________________________________________
 Linux-mediatek mailing list
