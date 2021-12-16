@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01535C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Dec 2021 09:05:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41287C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Dec 2021 09:05:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qa2rwq3HwfQswv5INYpoldRHczTA+Gzzb7Nmrc/sJ4o=; b=SQd0FQTYwjCdCl
-	/v00AZe3YAkmdSc58YkM/ioe/bQA7+GTynPbfdEnq+o9zmfgeZgfQWL47NFUDX6YhPJohreGhs/qp
-	ZQrInZPrF3+G9sQDRfpNMvCtGwIE57qO3+kTCVTv0hajRJzb4SZKqNFokBq5RdHGOGqt2W1ZDpoSN
-	9ODpqH8x4760iSY/IfhmTZt3SX2OME0JPpdiUVWavPVVnJ1CKy6fgjELKQUQqQ61Sd+ny+82KHIFI
-	DlEuEakAVbxdx6+LDlb5ANRdaoHq/OIPtcEWVHIMYrPex3P4HvGqkY57ECxiL0BFitBhuCFw4KQeo
-	p9NNqz9TjkF82TeP/+CQ==;
+	List-Owner; bh=uHiAvIrQP9ZejIKgmA39Oo5rMMY3bI7JpP1kbtGfgAw=; b=yf9F2NgxLKIq2G
+	NofElFml6V76SocRHnau1w499ylw2IWt1xREQ3xuj5/OVxDNn63RXNP/Vg7ftcS94exeazSMBYEOy
+	pwqu5OBjmCg7Ryk4PtRPcIUNGREmAb+ytVi71BiapOoYr1cMq5a/aIwC+N5cXEJ+KsDTPk+wOymuB
+	gVRht5GUBojvtdlC+WF8iRBzPgP+I9hZdKPflLYkUqu7qoiKCxx2Tz6JKa7w5ABbb9hEdMk6Q5n1w
+	xj0sNfzZCtUT7auwFhKpul2YXn9pa8pRn/ISUUlyPY8y7Kv2j3w0ttmJjyzcok3xsxRfWX3okTCCw
+	mzYm60Y2/a1wAYLeNflQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxmhH-004HgL-3b; Thu, 16 Dec 2021 09:05:07 +0000
+	id 1mxmhK-004HiG-H4; Thu, 16 Dec 2021 09:05:10 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxmcG-004F0f-9k; Thu, 16 Dec 2021 08:59:57 +0000
-X-UUID: 8163944b4b43430f92dc7a7c1af0d530-20211216
-X-UUID: 8163944b4b43430f92dc7a7c1af0d530-20211216
+ id 1mxmcG-004F2l-PC; Thu, 16 Dec 2021 08:59:58 +0000
+X-UUID: aaec024b8b0f44beb7aa5cf9e88617d9-20211216
+X-UUID: aaec024b8b0f44beb7aa5cf9e88617d9-20211216
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 216389780; Thu, 16 Dec 2021 01:59:51 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1393498655; Thu, 16 Dec 2021 01:59:51 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Dec 2021 00:58:16 -0800
+ 15.0.1497.2; Thu, 16 Dec 2021 00:57:53 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 16 Dec 2021 16:58:15 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 16 Dec 2021 16:57:51 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Thu, 16 Dec 2021 16:58:13 +0800
+ 15.0.1497.2 via Frontend Transport; Thu, 16 Dec 2021 16:57:50 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -57,17 +56,17 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v15, 19/19] media: mtk-vcodec: Remove mtk_vcodec_release_enc_pm
-Date: Thu, 16 Dec 2021 16:57:45 +0800
-Message-ID: <20211216085745.18732-20-yunfei.dong@mediatek.com>
+Subject: [PATCH v15, 04/19] media: mtk-vcodec: export decoder pm functions
+Date: Thu, 16 Dec 2021 16:57:30 +0800
+Message-ID: <20211216085745.18732-5-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211216085745.18732-1-yunfei.dong@mediatek.com>
 References: <20211216085745.18732-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211216_005956_409142_41AB89AA 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20211216_005956_905254_4760B435 
+X-CRM114-Status: GOOD (  10.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,104 +83,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-There are only two lines in mtk_vcodec_release_enc_pm, using
-pm_runtime_disable and put_device instead directly.
-
-Move pm_runtime_enable outside mtk_vcodec_release_enc_pm to symmetry with
-pm_runtime_disable, after that, rename mtk_vcodec_init_enc_pm to *_clk since
-it only has clock operations now.
+When mtk vcodec decoder is build as a module, we need to export
+mtk-vcodec-dec pm functions to make them visible by the other components.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Co-developed-by: Yong Wu <yong.wu@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 9 ++++++---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c  | 9 +--------
- drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h  | 3 +--
- 3 files changed, 8 insertions(+), 13 deletions(-)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 347f0d87e2ff..507ad1ea2104 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -11,6 +11,7 @@
- #include <linux/module.h>
- #include <linux/of_device.h>
- #include <linux/of.h>
-+#include <linux/pm_runtime.h>
- #include <media/v4l2-event.h>
- #include <media/v4l2-mem2mem.h>
- #include <media/videobuf2-dma-contig.h>
-@@ -257,7 +258,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- 		return PTR_ERR(dev->fw_handler);
- 
- 	dev->venc_pdata = of_device_get_match_data(&pdev->dev);
--	ret = mtk_vcodec_init_enc_pm(dev);
-+	ret = mtk_vcodec_init_enc_clk(dev);
- 	if (ret < 0) {
- 		dev_err(&pdev->dev, "Failed to get mtk vcodec clock source!");
- 		goto err_enc_pm;
-@@ -369,7 +370,8 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
- err_enc_alloc:
- 	v4l2_device_unregister(&dev->v4l2_dev);
- err_res:
--	mtk_vcodec_release_enc_pm(dev);
-+	pm_runtime_disable(dev->pm.dev);
-+	put_device(dev->pm.larbvenc);
- err_enc_pm:
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return ret;
-@@ -458,7 +460,8 @@ static int mtk_vcodec_enc_remove(struct platform_device *pdev)
- 		video_unregister_device(dev->vfd_enc);
- 
- 	v4l2_device_unregister(&dev->v4l2_dev);
--	mtk_vcodec_release_enc_pm(dev);
-+	pm_runtime_disable(dev->pm.dev);
-+	put_device(dev->pm.larbvenc);
- 	mtk_vcodec_fw_release(dev->fw_handler);
- 	return 0;
- }
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-index 0c8c8f86788c..0825c6ec4eb7 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
-@@ -13,7 +13,7 @@
- #include "mtk_vcodec_enc_pm.h"
- #include "mtk_vcodec_util.h"
- 
--int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
-+int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *mtkdev)
- {
- 	struct device_node *node;
- 	struct platform_device *pdev;
-@@ -86,13 +86,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+index 20bd157a855c..221cf60e9fbf 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+@@ -77,12 +77,14 @@ int mtk_vcodec_init_dec_pm(struct platform_device *pdev,
+ 	put_device(pm->larbvdec);
  	return ret;
  }
++EXPORT_SYMBOL_GPL(mtk_vcodec_init_dec_pm);
  
--void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *mtkdev)
--{
--	pm_runtime_disable(mtkdev->pm.dev);
--	put_device(mtkdev->pm.larbvenc);
--}
--
--
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm)
+ void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm)
  {
- 	struct mtk_vcodec_clk *enc_clk = &pm->venc_clk;
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-index b7ecdfd74823..bc455cefc0cd 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.h
-@@ -9,8 +9,7 @@
+ 	pm_runtime_disable(pm->dev);
+ 	put_device(pm->larbvdec);
+ }
++EXPORT_SYMBOL_GPL(mtk_vcodec_release_dec_pm);
  
- #include "mtk_vcodec_drv.h"
+ int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+ {
+@@ -94,6 +96,7 @@ int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
  
--int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *dev);
--void mtk_vcodec_release_enc_pm(struct mtk_vcodec_dev *dev);
-+int mtk_vcodec_init_enc_clk(struct mtk_vcodec_dev *dev);
+ 	return ret;
+ }
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_pw_on);
  
- void mtk_vcodec_enc_clock_on(struct mtk_vcodec_pm *pm);
- void mtk_vcodec_enc_clock_off(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
+ {
+@@ -103,6 +106,7 @@ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm)
+ 	if (ret)
+ 		mtk_v4l2_err("pm_runtime_put_sync fail %d", ret);
+ }
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_pw_off);
+ 
+ void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
+ {
+@@ -129,6 +133,7 @@ void mtk_vcodec_dec_clock_on(struct mtk_vcodec_pm *pm)
+ 	for (i -= 1; i >= 0; i--)
+ 		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
+ }
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_clock_on);
+ 
+ void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm)
+ {
+@@ -139,3 +144,4 @@ void mtk_vcodec_dec_clock_off(struct mtk_vcodec_pm *pm)
+ 	for (i = dec_clk->clk_num - 1; i >= 0; i--)
+ 		clk_disable_unprepare(dec_clk->clk_info[i].vcodec_clk);
+ }
++EXPORT_SYMBOL_GPL(mtk_vcodec_dec_clock_off);
 -- 
 2.25.1
 
