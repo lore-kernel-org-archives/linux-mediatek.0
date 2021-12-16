@@ -4,69 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8547DC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 15 Dec 2021 23:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AC57C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Dec 2021 01:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GkT68MuocC4+dJv609TmXci9rLzBRTtA5suZ79LuuyQ=; b=qaU7SfndNneBuE
-	+4Lajr5TJTOtzAX6h+q10ZqUPOFEDxiqoC8Licy2IBQza8EC7YjgUPvH6Txr4FMZKzdvesYhmdhKY
-	/zjD1Y+RuTORNlrWX/VAETrF6K3+wYa5S30rTMr7yB7JL+csjkATiqVRwn825hgOQoy17xCCKmKBM
-	/Gq24hfDmxQkmknkstRlOkGYToDJ1OuH5YNiglUudHXan6eihuYzozaELh1nY9PsiGQWXlhBsHRiZ
-	czlSjhtWUATVZvUEUA/mitu2/rdOAZyKEJxOkzQx7dFfHt4aSMkXXXQCuXto/C216IwLUZe9wQ3bj
-	ZAdpebUjgDJ1Nx13gPmA==;
+	List-Owner; bh=Dlcljrd6I7XKkK8VIljsOMounB98teSuEFxMuNh45Pg=; b=Ak2FxKOmDqLJPz
+	+nk/RYJ8f+BbBeiAnkl9Eb2VK0/gIdZKPV4Lsiv2+9v62RiOA4M4bFG6hpuD/Kmp83Ni59TpZimH1
+	ILEzvY0ZsgziEdb08yAkyieQSdDEvSwZPDcz90fu5d9oBJ1u2i6l6KqTpLa6jF6UBUtGy9sIDjd2M
+	4DupWDBq37eO4YN/q303Tpm8KOjeVAPOFsv4Z79rIxutaSn8mWwbBPYvjgO/QV06FXz7tB0V7WuXX
+	GZJ0ny4EXqTFozOE2DKiLeY2NehCr0/CmZ4eTyVN2fqkmxz9n3birhDu6VJ/1btJQ/W2eP2cwuyJT
+	5EE/k1/9oNi9ixg+tMaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxdVt-0034pY-Bm; Wed, 15 Dec 2021 23:16:45 +0000
-Received: from mail-ot1-f53.google.com ([209.85.210.53])
+	id 1mxfZL-003Flx-WB; Thu, 16 Dec 2021 01:28:28 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxdVb-0034kj-M7; Wed, 15 Dec 2021 23:16:29 +0000
-Received: by mail-ot1-f53.google.com with SMTP id
- a23-20020a9d4717000000b0056c15d6d0caso26780867otf.12; 
- Wed, 15 Dec 2021 15:16:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+NJojSfoVwMgJb/Ja90KiUetfn1vdOAgMVEPVsedxn4=;
- b=KvgKmlmRDaCl4bYWtYl3k0BVslnJDDYur5cMICJjFhpNgPSkbJ+o+GI0+2m5FKjSJz
- 21IXovNdmnqA6/IF4mu+gkODk2iWtrYonnDjrgeFRtaw8UbmW+jrq7j2bnrCPnwT0oi9
- l5ZSkVsjKQXuZJIN8FvPPaGy6hF8DyBogT7cSnr60FLtEMyC39/02TJlHdhCx6SfEcXw
- ekkQOcX8ycmfnh9nXFN0EBNhuR7VSOhSuMGC/KFy9jRNjDqyoZUQVvM4TxrhHs6MjWUJ
- BS8r2QWRptKSWrCdFBomVmdY45I2EXH2k4TUgm3xhdBJ+C0jzuj1OMG4oIwPjJwyu1xz
- Vhhg==
-X-Gm-Message-State: AOAM533/KX+rQbMePjPvin9hm3IpKCifZM8CxH5j5lNbbd95+I7aWmSp
- ykjG3Mjk4ybRDM9GKRcwJwv4Cqz+XA==
-X-Google-Smtp-Source: ABdhPJxe1D9MH0CKZ4DycjsHFTIJBOoLIjt6AIVTztF3s4fwJK0Y3vM/K0Wz5DMCsalknmREVSwMng==
-X-Received: by 2002:a05:6830:2707:: with SMTP id
- j7mr10302445otu.354.1639610186803; 
- Wed, 15 Dec 2021 15:16:26 -0800 (PST)
-Received: from xps15.herring.priv (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.googlemail.com with ESMTPSA id g7sm740166oon.27.2021.12.15.15.16.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Dec 2021 15:16:26 -0800 (PST)
-From: Rob Herring <robh@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Bin Liu <b-liu@ti.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Paul Cercueil <paul@crapouillou.net>
-Cc: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mips@vger.kernel.org, linux-omap@vger.kernel.org
-Subject: [PATCH 2/2] usb: musb: Set the DT node on the child device
-Date: Wed, 15 Dec 2021 17:07:57 -0600
-Message-Id: <20211215230756.2009115-3-robh@kernel.org>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20211215230756.2009115-1-robh@kernel.org>
-References: <20211215230756.2009115-1-robh@kernel.org>
+ id 1mxfZH-003Fk5-I6; Thu, 16 Dec 2021 01:28:26 +0000
+X-UUID: f46b6a465409421eb7b1031d4578f059-20211215
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=lPwZ/wiMhF2SlW3zUGCuz9quzus0l5KZmaU6H+G/S3Y=; 
+ b=TBs2DTvlLhImgc7m8teAN9YfbsHuZPgnKbbdPUhla142rf0sOnm7ic9YChJu/XOUp5aQW4EduUXlszgipk82dEAH2IKnrbh8keZpZ4v8DftZx8MPzs6DTDI68B8O3+Xr/kLLNyxGYj5YZt22CRu8pd1lxtgNXdFzmxtOwidvKvg=;
+X-UUID: f46b6a465409421eb7b1031d4578f059-20211215
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 927628145; Wed, 15 Dec 2021 18:28:16 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Dec 2021 17:28:14 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 16 Dec 2021 09:28:13 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 16 Dec 2021 09:28:12 +0800
+Message-ID: <c320d912b4569363514390718e2a81f565f9e225.camel@mediatek.com>
+Subject: Re: [PATCH net-next v8 3/6] arm64: dts: mt2712: update ethernet
+ device node
+From: Biao Huang <biao.huang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, <davem@davemloft.net>, "Jakub
+ Kicinski" <kuba@kernel.org>, Rob Herring <robh+dt@kernel.org>
+CC: Giuseppe Cavallaro <peppe.cavallaro@st.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Jose Abreu <joabreu@synopsys.com>, "Maxime
+ Coquelin" <mcoquelin.stm32@gmail.com>, <netdev@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <dkirjanov@suse.de>
+Date: Thu, 16 Dec 2021 09:28:13 +0800
+In-Reply-To: <c9b3d31a-1c18-32ec-8077-603bb93fe8d0@gmail.com>
+References: <20211210013129.811-1-biao.huang@mediatek.com>
+ <20211210013129.811-4-biao.huang@mediatek.com>
+ <c9b3d31a-1c18-32ec-8077-603bb93fe8d0@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_151627_755502_28460E03 
-X-CRM114-Status: GOOD (  12.06  )
+X-CRM114-CacheID: sfid-20211215_172823_635371_D920C57F 
+X-CRM114-Status: GOOD (  25.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,101 +86,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The musb glue drivers just copy the glue resources to the musb child device.
-Instead, set the musb child device's DT node pointer to the parent device's
-node so that platform_get_irq_byname() can find the resources in the DT.
-This removes the need for statically populating the IRQ resources from the
-DT which has been deprecated for some time.
+Dear Matthias,
+	Thanks for your comments~
+On Wed, 2021-12-15 at 20:22 +0100, Matthias Brugger wrote:
+> 
+> On 10/12/2021 02:31, Biao Huang wrote:
+> > Since there are some changes in ethernet driver,
+> > update ethernet device node in dts to accommodate to it.
+> > 
+> 
+> I have a hard time to understand how the first two patches are
+> related to this 
+> one. Please be more specific in your commit message.
+This dts patch is not related to previous two patches in this series.
 
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- drivers/usb/musb/am35x.c    | 2 ++
- drivers/usb/musb/da8xx.c    | 2 ++
- drivers/usb/musb/jz4740.c   | 1 +
- drivers/usb/musb/mediatek.c | 2 ++
- drivers/usb/musb/omap2430.c | 1 +
- drivers/usb/musb/ux500.c    | 1 +
- 6 files changed, 9 insertions(+)
+Actually, this patch should be sent with commit
+"71a55a2315b047352b3d65e2d24724207be85ae2", which added extra RMII
+support in driver. But unfortunately, we missed it out.
 
-diff --git a/drivers/usb/musb/am35x.c b/drivers/usb/musb/am35x.c
-index 660641ab1545..bf2c0fa6cb32 100644
---- a/drivers/usb/musb/am35x.c
-+++ b/drivers/usb/musb/am35x.c
-@@ -500,6 +500,8 @@ static int am35x_probe(struct platform_device *pdev)
- 	pinfo.num_res = pdev->num_resources;
- 	pinfo.data = pdata;
- 	pinfo.size_data = sizeof(*pdata);
-+	pinfo.fwnode = of_fwnode_handle(pdev->dev.of_node);
-+	pinfo.of_node_reused = true;
- 
- 	glue->musb = musb = platform_device_register_full(&pinfo);
- 	if (IS_ERR(musb)) {
-diff --git a/drivers/usb/musb/da8xx.c b/drivers/usb/musb/da8xx.c
-index e4e0195131da..fd4ae2dd24e5 100644
---- a/drivers/usb/musb/da8xx.c
-+++ b/drivers/usb/musb/da8xx.c
-@@ -563,6 +563,8 @@ static int da8xx_probe(struct platform_device *pdev)
- 	pinfo.num_res = pdev->num_resources;
- 	pinfo.data = pdata;
- 	pinfo.size_data = sizeof(*pdata);
-+	pinfo.fwnode = of_fwnode_handle(np);
-+	pinfo.of_node_reused = true;
- 
- 	glue->musb = platform_device_register_full(&pinfo);
- 	ret = PTR_ERR_OR_ZERO(glue->musb);
-diff --git a/drivers/usb/musb/jz4740.c b/drivers/usb/musb/jz4740.c
-index 5b7d576bf6ee..417c30bff9ca 100644
---- a/drivers/usb/musb/jz4740.c
-+++ b/drivers/usb/musb/jz4740.c
-@@ -231,6 +231,7 @@ static int jz4740_probe(struct platform_device *pdev)
- 	musb->dev.parent		= dev;
- 	musb->dev.dma_mask		= &musb->dev.coherent_dma_mask;
- 	musb->dev.coherent_dma_mask	= DMA_BIT_MASK(32);
-+	device_set_of_node_from_dev(&musb->dev, dev);
- 
- 	glue->pdev			= musb;
- 	glue->clk			= clk;
-diff --git a/drivers/usb/musb/mediatek.c b/drivers/usb/musb/mediatek.c
-index f5d97eb84cb5..1aeb34dbe24f 100644
---- a/drivers/usb/musb/mediatek.c
-+++ b/drivers/usb/musb/mediatek.c
-@@ -538,6 +538,8 @@ static int mtk_musb_probe(struct platform_device *pdev)
- 	pinfo.num_res = pdev->num_resources;
- 	pinfo.data = pdata;
- 	pinfo.size_data = sizeof(*pdata);
-+	pinfo.fwnode = of_fwnode_handle(np);
-+	pinfo.of_node_reused = true;
- 
- 	glue->musb_pdev = platform_device_register_full(&pinfo);
- 	if (IS_ERR(glue->musb_pdev)) {
-diff --git a/drivers/usb/musb/omap2430.c b/drivers/usb/musb/omap2430.c
-index d2b7e613eb34..7d4d0713f4f0 100644
---- a/drivers/usb/musb/omap2430.c
-+++ b/drivers/usb/musb/omap2430.c
-@@ -327,6 +327,7 @@ static int omap2430_probe(struct platform_device *pdev)
- 	musb->dev.parent		= &pdev->dev;
- 	musb->dev.dma_mask		= &omap2430_dmamask;
- 	musb->dev.coherent_dma_mask	= omap2430_dmamask;
-+	device_set_of_node_from_dev(&musb->dev, &pdev->dev);
- 
- 	glue->dev			= &pdev->dev;
- 	glue->musb			= musb;
-diff --git a/drivers/usb/musb/ux500.c b/drivers/usb/musb/ux500.c
-index 9bce19b5ffd7..8ea62c344328 100644
---- a/drivers/usb/musb/ux500.c
-+++ b/drivers/usb/musb/ux500.c
-@@ -262,6 +262,7 @@ static int ux500_probe(struct platform_device *pdev)
- 	musb->dev.parent		= &pdev->dev;
- 	musb->dev.dma_mask		= &pdev->dev.coherent_dma_mask;
- 	musb->dev.coherent_dma_mask	= pdev->dev.coherent_dma_mask;
-+	device_set_of_node_from_dev(&musb->dev, &pdev->dev);
- 
- 	glue->dev			= &pdev->dev;
- 	glue->musb			= musb;
--- 
-2.32.0
-
-
+Is there any proper way to relate this patch to commit
+"71a55a2315b047352b3d65e2d24724207be85ae2"? (Fixed tag seems not a good
+choice, or just add more details in commit message?)
+>  
+> Also please beware that we should make sure that a newer driver
+> version should 
+> still work properly with an older device tree, which does not have
+> your changes.
+> 
+> Regards,
+> Matthias
+> 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt2712-evb.dts |  1 +
+> >   arch/arm64/boot/dts/mediatek/mt2712e.dtsi   | 14 +++++++++-----
+> >   2 files changed, 10 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > index 7d369fdd3117..11aa135aa0f3 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > +++ b/arch/arm64/boot/dts/mediatek/mt2712-evb.dts
+> > @@ -110,6 +110,7 @@ &eth {
+> >   	phy-handle = <&ethernet_phy0>;
+> >   	mediatek,tx-delay-ps = <1530>;
+> >   	snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
+> > +	snps,reset-delays-us = <0 10000 10000>;
+> >   	pinctrl-names = "default", "sleep";
+> >   	pinctrl-0 = <&eth_default>;
+> >   	pinctrl-1 = <&eth_sleep>;
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > index a9cca9c146fd..9e850e04fffb 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt2712e.dtsi
+> > @@ -726,7 +726,7 @@ queue2 {
+> >   	};
+> >   
+> >   	eth: ethernet@1101c000 {
+> > -		compatible = "mediatek,mt2712-gmac";
+> > +		compatible = "mediatek,mt2712-gmac", "snps,dwmac-
+> > 4.20a";
+> >   		reg = <0 0x1101c000 0 0x1300>;
+> >   		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+> >   		interrupt-names = "macirq";
+> > @@ -734,15 +734,19 @@ eth: ethernet@1101c000 {
+> >   		clock-names = "axi",
+> >   			      "apb",
+> >   			      "mac_main",
+> > -			      "ptp_ref";
+> > +			      "ptp_ref",
+> > +			      "rmii_internal";
+> >   		clocks = <&pericfg CLK_PERI_GMAC>,
+> >   			 <&pericfg CLK_PERI_GMAC_PCLK>,
+> >   			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+> > -			 <&topckgen CLK_TOP_ETHER_50M_SEL>;
+> > +			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
+> > +			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+> >   		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
+> > -				  <&topckgen CLK_TOP_ETHER_50M_SEL>;
+> > +				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
+> > +				  <&topckgen
+> > CLK_TOP_ETHER_50M_RMII_SEL>;
+> >   		assigned-clock-parents = <&topckgen
+> > CLK_TOP_ETHERPLL_125M>,
+> > -					 <&topckgen CLK_TOP_APLL1_D3>;
+> > +					 <&topckgen CLK_TOP_APLL1_D3>,
+> > +					 <&topckgen
+> > CLK_TOP_ETHERPLL_50M>;
+> >   		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
+> >   		mediatek,pericfg = <&pericfg>;
+> >   		snps,axi-config = <&stmmac_axi_setup>;
+> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
