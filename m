@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B2A7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Dec 2021 08:52:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CCD9C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Dec 2021 08:59:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GfNwh8HiNCYw1mt5vpgRiHwHMuWBq8Bs1BJVYPaUJVU=; b=NKC9KUp/JprIbP
-	7Ul5eqs3N1EhBedH56smtKZgCFTSh79UhROCw1MVcolWrTlSiRiIqNa2h9PkIbkrkf4P/5O6H04vM
-	X/g7x734sYHb6Y1fL0ML3DeDb0ODBVNyUOBpNKlL9DMKfGPs3D1vX8EYtPx+pe8NSARj3XDA0zPrb
-	bN4r2gD0OGxUUZq9K7nVcjnOo83WGlX7MWkbjSYp29UAO2csG707CA4VIo7OpT6qSxBE9zEm080gi
-	Rv4zs7NpyVWxDwm5GtFzuqAxH/Jm4YhXfdsr/oKtu+TgkA1HeyCyRiUJ6GldvsBJye2BsBOSpk0tj
-	Fr/23o6UTc7Jyn3gNcDQ==;
+	List-Owner; bh=JMLvc4DfiWmaqxTMauwNnbqDX2p9pRtqvhJGcPh2qpY=; b=fP7/DSZW0BiRmu
+	TEtpqKlqlvj6jUjGgQCElPeCJtG4F39HBz9Ru4YuTzfJH4dSgngrPwUtixaFTkgTiIGwBw9fF1b7n
+	QtMRfBXqN2C3/P6LzadP/scICeT4YdBUHezrV/fcH9ToDDGlHUSJOEL00IvmB8p4OSoYo0E45zzSI
+	KTRbsyMNI6ybVrCGMBTIfeS/s1r2UzeTg4KVQJf6/QqVo8AnOUVjyx7jlJIvStE+UN3rt2PclhkpP
+	l8G8kiujQJlWcLyFwoR2MLGAvFqdqF6EC5X0AAFFHasTzMf4rQaeDZPepMwhr8F0436sUCDO/EnoX
+	cXlF4FDKsVGoS3e03K6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxmVJ-004CNE-CG; Thu, 16 Dec 2021 08:52:45 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1mxmbN-004ETx-Qo; Thu, 16 Dec 2021 08:59:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxmVF-004CM6-NP; Thu, 16 Dec 2021 08:52:43 +0000
-X-UUID: 98de3d6aa752415c9a0b4122c065588e-20211216
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=+IojS5yeYRx75FMM30KE+W/+YeDH20EiSGjnrXmbJa4=; 
- b=s4gvNvjIopQ3LELm09NUh80VGh8Lh4g7QNvaWaVKBbvSuBjRd2ISLWWLLfpSgadsQux6iGipcQy70E026LQ2P6FgHQUhDF9ep91d//aEZUj4RtkMUwu+RPHEq4+3aDlsH0ndyvt5ylotH7xErFF0IFYDjjZHfxGkoUrfqR8DQzs=;
-X-UUID: 98de3d6aa752415c9a0b4122c065588e-20211216
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <chunfeng.yun@mediatek.com>)
+ id 1mxmac-004Dxb-Fi; Thu, 16 Dec 2021 08:58:17 +0000
+X-UUID: 30f9cd9089834296a948ec7ccc4f2547-20211216
+X-UUID: 30f9cd9089834296a948ec7ccc4f2547-20211216
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 33329740; Thu, 16 Dec 2021 01:52:37 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Dec 2021 00:45:41 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 16 Dec 2021 16:45:39 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 16 Dec 2021 16:45:39 +0800
-Message-ID: <e04620d000dfa009bceeaca0a18d17a6be81f706.camel@mediatek.com>
-Subject: Re: [PATCH 1/3] usb: mtu3: fix interval value for intr and isoc
-From: Chunfeng Yun <chunfeng.yun@mediatek.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, <linux-usb@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>, "Yuwen
- Ng" <yuwen.ng@mediatek.com>
-Date: Thu, 16 Dec 2021 16:45:40 +0800
-In-Reply-To: <YbdWmQMck/WGYJ4/@kroah.com>
-References: <20211209031424.17842-1-chunfeng.yun@mediatek.com>
- <YbdWmQMck/WGYJ4/@kroah.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ with ESMTP id 323962408; Thu, 16 Dec 2021 01:58:08 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 16 Dec 2021 00:57:52 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 16 Dec 2021 16:57:50 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Thu, 16 Dec 2021 16:57:48 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>, Benjamin Gaignard
+ <benjamin.gaignard@collabora.com>, Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Steve
+ Cho" <stevecho@chromium.org>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v15, 03/19] media: mtk-vcodec: Refactor vcodec pm interface
+Date: Thu, 16 Dec 2021 16:57:29 +0800
+Message-ID: <20211216085745.18732-4-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211216085745.18732-1-yunfei.dong@mediatek.com>
+References: <20211216085745.18732-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211216_005241_926749_1C8740F4 
-X-CRM114-Status: GOOD (  15.28  )
+X-CRM114-CacheID: sfid-20211216_005814_563450_DC799B75 
+X-CRM114-Status: GOOD (  16.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +84,153 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2021-12-13 at 15:20 +0100, Greg Kroah-Hartman wrote:
-> On Thu, Dec 09, 2021 at 11:14:22AM +0800, Chunfeng Yun wrote:
-> > Use the Interval value from isoc/intr endpoint descriptor, no need
-> > minus one. But the original code doesn't cause transfer error for
-> > normal cases, due to the interval is less than the host request.
-> > 
-> > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > ---
-> >  drivers/usb/mtu3/mtu3_gadget.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> What commit does this fix?
-The interval between transfers is less than the Interval value, I add
-it in commit massage when send out v2.
+Using the needed params for pm init/release function and remove unused
+param mtkdev in 'struct mtk_vcodec_pm'.
 
-Thanks
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Steve Cho <stevecho@chromium.org>
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+---
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  6 ++---
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 22 ++++++++-----------
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  5 +++--
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  1 -
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |  1 -
+ 5 files changed, 15 insertions(+), 20 deletions(-)
+
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index e5f6e400a587..af235fa4c487 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -246,7 +246,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	if (IS_ERR(dev->fw_handler))
+ 		return PTR_ERR(dev->fw_handler);
+ 
+-	ret = mtk_vcodec_init_dec_pm(dev);
++	ret = mtk_vcodec_init_dec_pm(dev->plat_dev, &dev->pm);
+ 	if (ret < 0) {
+ 		dev_err(&pdev->dev, "Failed to get mt vcodec clock source");
+ 		goto err_dec_pm;
+@@ -377,7 +377,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ err_dec_alloc:
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ err_res:
+-	mtk_vcodec_release_dec_pm(dev);
++	mtk_vcodec_release_dec_pm(&dev->pm);
+ err_dec_pm:
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+ 	return ret;
+@@ -416,7 +416,7 @@ static int mtk_vcodec_dec_remove(struct platform_device *pdev)
+ 		video_unregister_device(dev->vfd_dec);
+ 
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+-	mtk_vcodec_release_dec_pm(dev);
++	mtk_vcodec_release_dec_pm(&dev->pm);
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+ 	return 0;
+ }
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+index 6038db96f71c..20bd157a855c 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+@@ -13,18 +13,15 @@
+ #include "mtk_vcodec_dec_pm.h"
+ #include "mtk_vcodec_util.h"
+ 
+-int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
++int mtk_vcodec_init_dec_pm(struct platform_device *pdev,
++	struct mtk_vcodec_pm *pm)
+ {
+ 	struct device_node *node;
+-	struct platform_device *pdev;
+-	struct mtk_vcodec_pm *pm;
++	struct platform_device *larb_pdev;
+ 	struct mtk_vcodec_clk *dec_clk;
+ 	struct mtk_vcodec_clk_info *clk_info;
+ 	int i = 0, ret = 0;
+ 
+-	pdev = mtkdev->plat_dev;
+-	pm = &mtkdev->pm;
+-	pm->mtkdev = mtkdev;
+ 	dec_clk = &pm->vdec_clk;
+ 	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
+ 	if (!node) {
+@@ -32,13 +29,12 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+ 		return -1;
+ 	}
+ 
+-	pdev = of_find_device_by_node(node);
++	larb_pdev = of_find_device_by_node(node);
+ 	of_node_put(node);
+-	if (WARN_ON(!pdev)) {
++	if (WARN_ON(!larb_pdev)) {
+ 		return -1;
+ 	}
+-	pm->larbvdec = &pdev->dev;
+-	pdev = mtkdev->plat_dev;
++	pm->larbvdec = &larb_pdev->dev;
+ 	pm->dev = &pdev->dev;
+ 
+ 	dec_clk->clk_num =
+@@ -82,10 +78,10 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+ 	return ret;
+ }
+ 
+-void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
++void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm)
+ {
+-	pm_runtime_disable(dev->pm.dev);
+-	put_device(dev->pm.larbvdec);
++	pm_runtime_disable(pm->dev);
++	put_device(pm->larbvdec);
+ }
+ 
+ int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+index 280aeaefdb65..a3df6aef6cb9 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+@@ -9,8 +9,9 @@
+ 
+ #include "mtk_vcodec_drv.h"
+ 
+-int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *dev);
+-void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev);
++int mtk_vcodec_init_dec_pm(struct platform_device *pdev,
++	struct mtk_vcodec_pm *pm);
++void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm);
+ 
+ int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm);
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 1d2370608d0d..0fa9d85114b9 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -195,7 +195,6 @@ struct mtk_vcodec_pm {
+ 	struct mtk_vcodec_clk	venc_clk;
+ 	struct device	*larbvenc;
+ 	struct device	*dev;
+-	struct mtk_vcodec_dev	*mtkdev;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+index 1b2e4930ed27..0c8c8f86788c 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+@@ -26,7 +26,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 	pdev = mtkdev->plat_dev;
+ 	pm = &mtkdev->pm;
+ 	memset(pm, 0, sizeof(struct mtk_vcodec_pm));
+-	pm->mtkdev = mtkdev;
+ 	pm->dev = &pdev->dev;
+ 	dev = &pdev->dev;
+ 	enc_clk = &pm->venc_clk;
+-- 
+2.25.1
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
