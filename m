@@ -4,101 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1828C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Dec 2021 03:19:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B02FFC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 16 Dec 2021 03:37:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ElPlsyBDA6FylFNYQBV1oLbJvR7czn6Kse2YDVhkFcI=; b=U/QvzKm6RaQM60
-	Jop1/kgSH7wozH57SbtNp9voe2ZvLKwI7GMwhbCxUnlajpeydtffpkf6O3NHfNrev4xf03DON1Bi1
-	glOrrQ0KP4sVFSrTz7YxZ6r+tEDCjtniJvYcb4MfSjoOyqzJFCY/FrvUzUriZDA6Ki/aIpYDuIWFG
-	ETWNKNi8L1Z+WDdN4MkYoaRdYmPrSB8seMy0u720YropxTs3vI6G/eSlgdsy3jad/Pfn2Z9weqldn
-	mkQOf+LWcSQC32cmo8jO2chbbv6UV5ARGoxG88ZcnTHRQNQ7wg6puA0msXrAuv3oF4amTntqRqGIB
-	iUDWvhduw74hL+g3D7nQ==;
+	List-Owner; bh=LIoNPP/loTJVneGxJJVZrxNdWQ3mOnt9vCCu1tQpXO4=; b=ImKgMIieS5o6gX
+	rewlfwxTqmrjMKpJX2P/YdZADaChN5Gh7BkYvXA6Uj+3eVr2QRKwpQIXh7xwKv70XCMwW5ZWEfsdt
+	aV4yReZYKzgQQzlvvw5KMluxAwakco4LpO+AtKpxVFJKUgyUhVzOCo6exd4eUftGrcoKkOy/1CwXB
+	dYQb9nrGTZiEu0uHmPFhoto18K6bC3Io/K4BFwZC/wT9rwrroKJORO1/+5fNdsvhvz7u2p0lv0Qvz
+	nkIe+H1/IcwZyZAv/ORF1xTsVhwF07W6i8OQDSZx1Gwu2Sf8Q4CaMFNkj03EGkJJ4BEN/5YelEH3x
+	AwDJg0n1JrniC5Ky+GJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mxhIs-003RaE-Mr; Thu, 16 Dec 2021 03:19:34 +0000
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
+	id 1mxhaS-003TTL-2Y; Thu, 16 Dec 2021 03:37:44 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mxhIg-003RXJ-2w
- for linux-mediatek@lists.infradead.org; Thu, 16 Dec 2021 03:19:24 +0000
-Received: by mail-oi1-x235.google.com with SMTP id t19so34567981oij.1
- for <linux-mediatek@lists.infradead.org>; Wed, 15 Dec 2021 19:19:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=RWM/2Tdo+A39zviPt3A6JldRYsbUDOs2gZmt1TWRfEU=;
- b=zRWPUcug9JLw4lLpjR5FRm7N3TahpWbYFQnGkQdY0nnpN0NcMRzW1rPNPX2iUOk+fz
- wqb2Z9a1/S63sZxUor6sGazjkdHQXZfktqexaXyD3BN2xxB3TLdiriHQSLyOSe0gdWtn
- IP+TVnZklGicQ0oM1CwDLRlXFz5vx0Qw+MJ72Ye/aRXa2mhUUMemZO6K/Bk+sFO9qcGe
- TOwf8L9Izfo45NtjGjU+076dqTi7ndUdP3E9jIOqVUAkMS6nRj9BnMFTny39NDTvu0Xm
- yvkv1F4ZMghOB5QWYM0X7vwbuQT6eofb57B8D4yRhQJl+4SFgLfOS6uC/bAaI4RaNfNd
- L5EQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=RWM/2Tdo+A39zviPt3A6JldRYsbUDOs2gZmt1TWRfEU=;
- b=HNzJEH0w/vTnScYRZG0j+kjcjnA0ZeGKiySsbEvT8ZBU463bDDZ3DWJyMPfAgH/BjI
- +cJ9VT1iW0bbfTGlm4/b2OjUb/s3Pahtk/C5PYXEazZzfYEBE+dUf1NPGcmbOEe1rScz
- QkJ22x/TLM1I/Mgld7ll86+1ooDtJcWuYmquJWqtoSAr1dx/xVUPrsvfqg7vH015n1Zo
- hMyGrZ022mtwywP/tTlQq9Mw/zXCQyvvEkekpc9m/IXqPRSW03D3jTXjhLbBCY/J+HE1
- K/Hou53TrG9CL21Zlk1I+adC+Qa9VW1mEFOL1PLWO1xKP2+yKFxlHRoc/fdOYc1KUvqQ
- bNnw==
-X-Gm-Message-State: AOAM533oJetT7aYr1I9ZeS1MGCXOMgDxEJC+NOMhgJlpJcmaBfWBHD39
- 4flLvwR5FpMeAljHQtp9Z6XWLfppG5aPujsP23Ss3A==
-X-Google-Smtp-Source: ABdhPJxMt8LsH5solEGiTCgX6vrLS/Lejlh/uyv5vtoK/cjjDQdtu3LiiiFa8vkEePPWEVkSf5rT4Xe4hzEx6EQxyiM=
-X-Received: by 2002:a54:4791:: with SMTP id o17mr2719065oic.114.1639624760385; 
- Wed, 15 Dec 2021 19:19:20 -0800 (PST)
+ id 1mxhaP-003TSa-5I; Thu, 16 Dec 2021 03:37:42 +0000
+X-UUID: 1911202eb1a4451f8a575f55ae93bb8e-20211215
+X-UUID: 1911202eb1a4451f8a575f55ae93bb8e-20211215
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <trevor.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1463673569; Wed, 15 Dec 2021 20:37:38 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 15 Dec 2021 19:37:36 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 16 Dec 2021 11:37:35 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 16 Dec 2021 11:37:35 +0800
+Message-ID: <0b99c46f84c98c56e8fc99b2e103f52f756b5bf9.camel@mediatek.com>
+Subject: Re: [PATCH 1/2] ASoC: mediatek: mt8195: update control for RT5682
+ series
+From: Trevor Wu <trevor.wu@mediatek.com>
+To: Tzung-Bi Shih <tzungbi@google.com>
+CC: <broonie@kernel.org>, <tiwai@suse.com>, <robh+dt@kernel.org>,
+ <matthias.bgg@gmail.com>, <alsa-devel@alsa-project.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <jiaxin.yu@mediatek.com>, <shumingf@realtek.com>
+Date: Thu, 16 Dec 2021 11:37:34 +0800
+In-Reply-To: <YbmlT+OSwpGuylsx@google.com>
+References: <20211215065835.3074-1-trevor.wu@mediatek.com>
+ <YbmlT+OSwpGuylsx@google.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20211214125855.33207-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211214125855.33207-1-andriy.shevchenko@linux.intel.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Thu, 16 Dec 2021 04:19:08 +0100
-Message-ID: <CACRpkdZxfOZtibKgywx_XL_ayp5NEQiCK-NRrEtbvCUGYSojVg@mail.gmail.com>
-Subject: Re: [PATCH v2 1/2] pinctrl: Get rid of duplicate of_node assignment
- in the drivers
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Marc Zyngier <maz@kernel.org>, Sam Shih <sam.shih@mediatek.com>, 
- Zhiyong Tao <zhiyong.tao@mediatek.com>, 
- Ludovic Desroches <ludovic.desroches@microchip.com>, 
- Claudiu Beznea <Claudiu.Beznea@microchip.com>, 
- Radim Pavlik <radim.pavlik@tbs-biometrics.com>, 
- Kavyasree Kotagiri <kavyasree.kotagiri@microchip.com>, 
- Colin Foster <colin.foster@in-advantage.com>,
- Douglas Anderson <dianders@chromium.org>, 
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Dmitry Baryshkov <dmitry.baryshkov@linaro.org>, 
- Herve Codina <herve.codina@bootlin.com>, linux-gpio@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-actions@lists.infradead.org, 
- linux-kernel@vger.kernel.org, bcm-kernel-feedback-list@broadcom.com, 
- linux-rpi-kernel@lists.infradead.org, alsa-devel@alsa-project.org, 
- patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org, 
- linux-oxnas@groups.io, linux-stm32@st-md-mailman.stormreply.com, 
- linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
- =?UTF-8?Q?Andreas_F=C3=A4rber?= <afaerber@suse.de>, 
- Manivannan Sadhasivam <mani@kernel.org>,
- Nicolas Saenz Julienne <nsaenz@kernel.org>, 
- Florian Fainelli <f.fainelli@gmail.com>, Ray Jui <rjui@broadcom.com>, 
- Scott Branden <sbranden@broadcom.com>,
- Charles Keepax <ckeepax@opensource.cirrus.com>, 
- Richard Fitzgerald <rf@opensource.cirrus.com>, Sean Wang <sean.wang@kernel.org>,
- Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
- Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
- Nicolas Ferre <nicolas.ferre@microchip.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Support Opensource <support.opensource@diasemi.com>,
- Baruch Siach <baruch@tkos.co.il>, 
- Neil Armstrong <narmstrong@baylibre.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
- Alexandre Torgue <alexandre.torgue@foss.st.com>, Andy Gross <agross@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Viresh Kumar <vireshk@kernel.org>,
- Shiraz Hashim <shiraz.linux.kernel@gmail.com>, soc@kernel.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211215_191922_179014_8AAB8D2A 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20211215_193741_242704_5845BF50 
+X-CRM114-Status: GOOD (  30.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,23 +76,225 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Dec 14, 2021 at 1:59 PM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
+Hi Tzung-Bi,
+Thanks for your reviewing,
 
-> GPIO library does copy the of_node from the parent device of
-> the GPIO chip, there is no need to repeat this in the individual
-> drivers. Remove these assignment all at once.
->
-> For the details one may look into the of_gpio_dev_init() implementation.
->
-> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> ---
-> v2: no changes
+On Wed, 2021-12-15 at 16:20 +0800, Tzung-Bi Shih wrote:
+> On Wed, Dec 15, 2021 at 02:58:34PM +0800, Trevor Wu wrote:
+> > --- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
+> > +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1011-rt5682.c
+> 
+> [...]
+> > +static int mt8195_set_bias_level_post(struct snd_soc_card *card,
+> > +	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level
+> > level)
+> > +{
+> > +	struct snd_soc_component *component = dapm->component;
+> > +	struct mt8195_mt6359_rt1011_rt5682_priv *priv =
+> > +		snd_soc_card_get_drvdata(card);
+> > +	int ret = 0;
+> 
+> ret doesn't need to be initialized.
+> 
+Originally, I initailize "ret", because it will be returned at the end
+of the function. To be concise, I will return 0 directly and remove the
+initialization.
 
-Applied this patch 1/2 of the v2 patch set!
+> > +	/*
+> > +	 * It's required to control mclk directly in the
+> > set_bias_level_post
+> > +	 * function for rt5682 and rt5682s codec, or the unexpected pop
+> > happens
+> > +	 * at the end of playback.
+> > +	 */
+> > +	if (!component ||
+> > +	    (strcmp(component->name, RT5682_DEV0_NAME) &&
+> > +	    strcmp(component->name, RT5682S_DEV0_NAME)))
+> > +		return 0;
+> > +
+> > +	if (IS_ERR(priv->i2so1_mclk))
+> > +		return 0;
+> 
+> I doubt if it needs to check priv->i2so1_mclk.  In other words, if
+> IS_ERR(priv->i2so1_mclk) is true in _probe, does
+> mt8195_set_bias_level_post() get called?
+> 
 
-Yours,
-Linus Walleij
+Now, i2so1_mclk is a required property.
+I will remove the condition in v2.
+
+> > +	switch (level) {
+> > +	case SND_SOC_BIAS_OFF:
+> > +		if (!__clk_is_enabled(priv->i2so1_mclk))
+> > +			return 0;
+> > +
+> > +		dev_dbg(card->dev, "Disable i2so1");
+> > +		clk_disable_unprepare(priv->i2so1_mclk);
+> 
+> I would suggest move dev_dbg() later than clk_disable_unprepare()
+> which means "Disable i2so1" is done.
+> 
+OK.
+
+> > +		break;
+> > +	case SND_SOC_BIAS_ON:
+> > +		dev_dbg(card->dev, "Enable i2so1");
+> > +		ret = clk_prepare_enable(priv->i2so1_mclk);
+> > +		if (ret) {
+> > +			dev_err(card->dev, "Can't enable mclk, err:
+> > %d\n", ret);
+> 
+> The error message can be more specific.  "Cannot enable i2so1" for
+> example.
+> 
+OK.
+
+> > +			return ret;
+> > +		}
+> 
+> Also, I would suggest move dev_dbg() later than
+> clk_prepare_enable().  Otherwise, it could fail to prepare or enable
+> but still can see "Enable i2so1" message.
+> 
+Yes, that's correct.
+I will move it to a proper position.
+
+> > +		break;
+> > +	default:
+> > +		break;
+> > +	}
+> > +
+> > +	return ret;
+> 
+> The function doesn't use any gotos.  To be concise, "return 0;".
+OK.
+
+> 
+> > @@ -1072,6 +1119,19 @@ static int
+> > mt8195_mt6359_rt1011_rt5682_dev_probe(struct platform_device *pdev)
+> >  		return -EINVAL;
+> >  	}
+> >  
+> > +	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
+> > +	if (IS_ERR(priv->i2so1_mclk)) {
+> > +		ret = PTR_ERR(priv->i2so1_mclk);
+> > +		if (ret == -ENOENT) {
+> > +			dev_dbg(&pdev->dev,
+> > +				"Failed to get i2so1_mclk, defer
+> > probe\n");
+> > +			return -EPROBE_DEFER;
+> > +		}
+> 
+> Does devm_clk_get_optional() could make the block more concise?
+
+Even though we use devm_clk_get_optional, we still have to handle the
+(-ENOENT) case in probe function. In my opinion, original
+implementation could be kept.
+
+> 
+> > +
+> > +		dev_err(&pdev->dev, "Failed to get i2so1_mclk,
+> > err:%d\n", ret);
+> 
+> If devm_clk_get() is possible to return -EPROBE_DEFER too, use
+> dev_err_probe().
+Ok.
+
+> 
+> > --- a/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
+> > +++ b/sound/soc/mediatek/mt8195/mt8195-mt6359-rt1019-rt5682.c
+> 
+> [...]
+> > +static int mt8195_set_bias_level_post(struct snd_soc_card *card,
+> > +	struct snd_soc_dapm_context *dapm, enum snd_soc_bias_level
+> > level)
+> > +{
+> > +	struct snd_soc_component *component = dapm->component;
+> > +	struct mt8195_mt6359_rt1019_rt5682_priv *priv =
+> > +		snd_soc_card_get_drvdata(card);
+> > +	int ret = 0;
+> 
+> Ditto, see comments above.
+> 
+OK.
+
+> > +
+> > +	/*
+> > +	 * It's required to control mclk directly in the
+> > set_bias_level_post
+> > +	 * function for rt5682 and rt5682s codec, or the unexpected pop
+> > happens
+> > +	 * at the end of playback.
+> > +	 */
+> > +	if (!component ||
+> > +	    (strcmp(component->name, RT5682_DEV0_NAME) &&
+> > +	    strcmp(component->name, RT5682S_DEV0_NAME)))
+> > +		return 0;
+> > +
+> > +	if (IS_ERR(priv->i2so1_mclk))
+> > +		return 0;
+> 
+> Ditto, see comments above.
+> 
+OK.
+
+> > +
+> > +	switch (level) {
+> > +	case SND_SOC_BIAS_OFF:
+> > +		if (!__clk_is_enabled(priv->i2so1_mclk))
+> > +			return 0;
+> > +
+> > +		dev_dbg(card->dev, "Disable i2so1");
+> > +		clk_disable_unprepare(priv->i2so1_mclk);
+> > +		break;
+> > +	case SND_SOC_BIAS_ON:
+> > +		dev_dbg(card->dev, "Enable i2so1");
+> > +		ret = clk_prepare_enable(priv->i2so1_mclk);
+> > +		if (ret) {
+> > +			dev_err(card->dev, "Can't enable mclk, err:
+> > %d\n", ret);
+> > +			return ret;
+> > +		}
+> > +		break;
+> > +	default:
+> > +		break;
+> > +	}
+> 
+> Ditto, see comments above for the block.
+> 
+OK.
+
+> > +
+> > +	return ret;
+> 
+> Ditto, see comments above.
+> 
+OK.
+
+> > @@ -1285,6 +1326,19 @@ static int
+> > mt8195_mt6359_rt1019_rt5682_dev_probe(struct platform_device *pdev)
+> >  		return -EINVAL;
+> >  	}
+> >  
+> > +	priv->i2so1_mclk = devm_clk_get(&pdev->dev, "i2so1_mclk");
+> > +	if (IS_ERR(priv->i2so1_mclk)) {
+> > +		ret = PTR_ERR(priv->i2so1_mclk);
+> > +		if (ret == -ENOENT) {
+> > +			dev_dbg(&pdev->dev,
+> > +				"Failed to get i2so1_mclk, defer
+> > probe\n");
+> > +			return -EPROBE_DEFER;
+> > +		}
+> > +
+> > +		dev_err(&pdev->dev, "Failed to get i2so1_mclk,
+> > err:%d\n", ret);
+> > +		return ret;
+> > +	}
+> 
+> Ditto, see comments above for the block.
+OK.
+
+
 
 _______________________________________________
 Linux-mediatek mailing list
