@@ -4,55 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C554C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 11:36:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 399A2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 11:38:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lTQLIn+TE8UFMPodCSFO2S43ACJb0blzH9Ui4Jqk3/I=; b=nJsCa1BYogeNM/
-	CtKASuIJ2SuDNOGJFZzwFf0czP/1Hm7JDmaHPFctgeiT0jLQCg4Ah6L940LF4xDNIel8YP+cGud4w
-	eWTDwC43ktE+xSJdZKi0UWC/m/0WN5v1ZCYqSsV9gw4ls5ntO0htMmzC8qdZfV4sAw3CyHqrIga1e
-	c17ujiYtifB3wjzXsPHd3XBSaz3yhmiYTHZT6QYehycbNvcjo2isfMSSSkW66kLpffw4N0jUf2uUH
-	bW+83Ud2Nc7Cv7ZvreQ06BHtcUEy+PaK0MHAHnm0a62ZsJ8+DgvPpNAXHIRZq0wUxnLvyrq0OoTBj
-	BVK9/LVu5A7DnRVkntww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lWCLNERKvlcldAxDukUYvvyaCsB3yvTF4z9DfMPdTAM=; b=lc+VWBA4g0tiSWzqhYZogSy6Y/
+	EhvyODdFzE1ZGy93WvR6ueWcOqF2H1TJFT18A7u7NDTDyzhPA1GnG2EaC9QkAKvcbmMK2jCkGtk7M
+	MY4vLMv/SuPZYOSntLF/4hb/NLP/oN6DOhwRfWMQZ0k/mryEia2SidQ5S9ouvYF0Bt/d8ulLshBmX
+	VspZTK3EQmR7LlHjoBRCX2Cmij0TbB+VRdLp8qdu35Q0R9v8v+43Uyl16U826D/p/WBKQcMfrzB3I
+	IyoxlaL2tKnu4HDlVIytyRBy1sjFAqWcGJaG9LII5EQAzP9+HKQzHoLmhYc7TOoNmEhqkrvpIAzHT
+	b3lSFdhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1myBWp-009rYO-8J; Fri, 17 Dec 2021 11:35:59 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1myBYf-009sRW-2Q; Fri, 17 Dec 2021 11:37:53 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1myBMU-009n3G-Pf; Fri, 17 Dec 2021 11:25:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=EJlxClv7lGaks+7g6MaGFpuicispAFvSlSbDezAHD8s=; b=EE6Z1nral7L3g0U4VUM2Ly/zIq
- r1iOvSaj0q27P7htCuq0OUkeP7hk3wNEPRdWSsTdCKmB6/RTb4aw2k7C/UwUD6Y/XLXuxscmXR/em
- TnBqo/dCd5gJ+3iS0nNIUMN13YynzRTVbxYuhvJxm2N5L/k24tsmLKhgb3+gz3Z4hH7o=;
-Received: from p54ae911a.dip0.t-ipconnect.de ([84.174.145.26]
- helo=localhost.localdomain)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1myBLJ-000742-RB; Fri, 17 Dec 2021 12:24:05 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: john@phrozen.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v7 11/14] ARM: dts: Add PCIe support for Airoha EN7523
-Date: Fri, 17 Dec 2021 12:23:41 +0100
-Message-Id: <20211217112345.14029-12-nbd@nbd.name>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20211217112345.14029-1-nbd@nbd.name>
-References: <20211217112345.14029-1-nbd@nbd.name>
+ id 1myBOX-009nqB-No; Fri, 17 Dec 2021 11:27:27 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 59FC9B82797;
+ Fri, 17 Dec 2021 11:27:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E4A3C36AE5;
+ Fri, 17 Dec 2021 11:27:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1639740443;
+ bh=gCj6M3fgYAowhTn0haiHmB2bEGG+t+sL1+hhnl1D+Gk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=noOfF5QfATS6h2XJ7bbPpixX+sCebZ0/24d7gSLMG7CpYv8B5xl4ixa4UimMEpwrF
+ fJDx/dnccIJd5w7cRPZj2gEsKtSabX6UnwtM9cKAelfGcjmWVhrmx6rq02k/UTbzUM
+ Ik3wrH3aQ8TkXc6qLQmY0AffBavin1TuVrpVxBsGRKTDoVpoyF4jNYnaTpNN5QUKpH
+ n4WQ1l5tvXMvn481l9whS/9gxzZO4ZQUZMSpQQhoV0V53NHCZP46mHwNW7YqvtJJ+p
+ F0Isp1xiqd7bg8sjXt+j0oPjO7YUsIIRutdnDY/lW2SxFg/YyMUoUYgtbj3MKd+b5c
+ CiC3Q4XdNS6mQ==
+Date: Fri, 17 Dec 2021 11:27:18 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Cc: matthias.bgg@gmail.com, lgirdwood@gmail.com,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] isoc: mediatek: potential use of error pointer
+Message-ID: <Ybx0FouFzlI79zjU@sirena.org.uk>
+References: <20211217064140.517160-1-jiasheng@iscas.ac.cn>
 MIME-Version: 1.0
+In-Reply-To: <20211217064140.517160-1-jiasheng@iscas.ac.cn>
+X-Cookie: Pause for storage relocation.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211217_032519_066372_8420F46F 
-X-CRM114-Status: GOOD (  11.19  )
+X-CRM114-CacheID: sfid-20211217_032725_956075_373E9F64 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,110 +67,59 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0037539052703956231=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This uses the MediaTek MT7622 PCIe driver, since the PCIe IP block is nearly
-identical to the one in MT7622
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
----
- arch/arm/boot/dts/en7523-evb.dts |  8 +++++
- arch/arm/boot/dts/en7523.dtsi    | 60 ++++++++++++++++++++++++++++++++
- 2 files changed, 68 insertions(+)
+--===============0037539052703956231==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="8QwhTE1g/UziorTz"
+Content-Disposition: inline
 
-diff --git a/arch/arm/boot/dts/en7523-evb.dts b/arch/arm/boot/dts/en7523-evb.dts
-index 69754ef9a628..0a79f5f6c311 100644
---- a/arch/arm/boot/dts/en7523-evb.dts
-+++ b/arch/arm/boot/dts/en7523-evb.dts
-@@ -25,3 +25,11 @@ memory@80000000 {
- 		reg = <0x80000000 0x20000000>;
- 	};
- };
-+
-+&pcie0 {
-+	status = "okay";
-+};
-+
-+&pcie1 {
-+	status = "okay";
-+};
-diff --git a/arch/arm/boot/dts/en7523.dtsi b/arch/arm/boot/dts/en7523.dtsi
-index 0148958c607b..862da104d6f2 100644
---- a/arch/arm/boot/dts/en7523.dtsi
-+++ b/arch/arm/boot/dts/en7523.dtsi
-@@ -119,4 +119,64 @@ uart1: serial@1fbf0000 {
- 		clock-frequency = <1843200>;
- 		status = "okay";
- 	};
-+
-+
-+	pcie0: pcie@1fa91000 {
-+		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
-+		device_type = "pci";
-+		reg = <0x1fa91000 0x1000>;
-+		reg-names = "port0";
-+		linux,pci-domain = <0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		interrupts = <GIC_SPI 39 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "pcie_irq";
-+		clocks = <&scu EN7523_CLK_PCIE>;
-+		clock-names = "sys_ck0";
-+		bus-range = <0x00 0xff>;
-+		ranges = <0x82000000 0 0x20000000  0x20000000  0 0x8000000>;
-+		status = "disabled";
-+
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie_intc0 0>,
-+				<0 0 0 2 &pcie_intc0 1>,
-+				<0 0 0 3 &pcie_intc0 2>,
-+				<0 0 0 4 &pcie_intc0 3>;
-+		pcie_intc0: interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+		};
-+	};
-+
-+	pcie1: pcie@1fa92000 {
-+		compatible = "airoha,en7523-pcie", "mediatek,mt7622-pcie";
-+		device_type = "pci";
-+		reg = <0x1fa92000 0x1000>;
-+		reg-names = "port1";
-+		linux,pci-domain = <1>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		interrupts = <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-+		interrupt-names = "pcie_irq";
-+		clocks = <&scu EN7523_CLK_PCIE>;
-+		clock-names = "sys_ck1";
-+		bus-range = <0x00 0xff>;
-+		ranges = <0x82000000 0 0x28000000  0x28000000  0 0x8000000>;
-+		status = "disabled";
-+
-+		#interrupt-cells = <1>;
-+		interrupt-map-mask = <0 0 0 7>;
-+		interrupt-map = <0 0 0 1 &pcie_intc1 0>,
-+				<0 0 0 2 &pcie_intc1 1>,
-+				<0 0 0 3 &pcie_intc1 2>,
-+				<0 0 0 4 &pcie_intc1 3>;
-+		pcie_intc1: interrupt-controller {
-+			interrupt-controller;
-+			#address-cells = <0>;
-+			#interrupt-cells = <1>;
-+		};
-+	};
-+
- };
--- 
-2.34.1
 
+--8QwhTE1g/UziorTz
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Dec 17, 2021 at 02:41:40PM +0800, Jiasheng Jiang wrote:
+
+>  		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
+> +		if (!clk[i])
+> +			return -ENOMEM;
+
+The whole point with returning an error pointer is that there's an error
+code in there, we should use that rather than overriding it with another
+value which might be misleading.
+
+--8QwhTE1g/UziorTz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmG8dBUACgkQJNaLcl1U
+h9DsBQf9FTg6jkzyG1wK1SgbhFjoSeICsQhrkB/lOxpY+krjK5nB7PacLuSPEQcd
+9kiM1QqQYFtAxQsHTxJ5j8l4zrimA1BQ67miLtrMN/Uv+/fb47HWaKqOqNCaXqYg
+aKNbTREM1+fyeQuj1s24vM77eNQ098721WcVaecNYWdf7eWOETIcrkrkX/JlEW25
+jQoDYDZ+qB/z2odrPdBz5Kh23F/u/+Q9wkqlgbHxKPGSVGbjKRYfkuGuae3sN+96
+7V9DPtzTL9iTy+w/3Sx1RW0X7M65C5d2CN5X+gd6C+nUJyD1ibMl/qENRiXD659k
+pgoYR2SCBW+IawM37lVegfSx877blg==
+=pcgO
+-----END PGP SIGNATURE-----
+
+--8QwhTE1g/UziorTz--
+
+
+--===============0037539052703956231==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0037539052703956231==--
+
