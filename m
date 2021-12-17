@@ -4,58 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9FCFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 00:19:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC277C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 01:28:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Iaw/PdNy2vEGX+WSDzUZ8kH08YF58wZ/fiH2oLrEbtY=; b=2j2Snlygvg3Msg
-	Fs1/xsURaipO6AWedzGqmoewnkCJW+EBHh+1NrdGmwM0/j28N9S88ReOObtfhwwFVDjQP8XTA3bsE
-	SiahFSMzwn+onWaGeKHR28DExLo18thAgfuueGWBinQ7U/ZfKzB29OiY16UE70kG3U01nMV0glbrZ
-	E4tLYu8j0EdsL87za0QLs6DSe9O5hTmhUdxNootN11cINU/gDEXY/Gb9e2DYJbh/CY0JsxnnLTRC5
-	3KlVXGxEAp2KmJKRPMqDLSv7rIpBaTO17bVNOBnak1NbGgM3UUSMb1PJURc9Z8bwHNBpAnDwBiJLp
-	HNmRKUjzmYUipU/Kr0xg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0JXY+OaJEr3wcIh1aTxBF6yZho7tLCr+Kjx9yWFtqyo=; b=T6AmXZDyT6ABDM
+	6qm45/1X71T7oJHmqTMvqgQTYKI596JZChQKzWrue7CAVCC7nWcRgA0l4XLZOFfUlNkJi0TAWs7P9
+	M1m6JeI1ntUmkan5Ulqg4T2+j1uVN8gbyjO2oSC94ObAkcASQE/OHHICQlJvzM78pG53VOLx3bhOA
+	Yn98WWV4C+wmkwR03/mn649J6MbKy48vK0uvDNDyVkiPtoC1J3nuQ0mHCoW61A/GcRmQmzENMHg/6
+	OC++UbwldsRhe9x7MZDdfEB9wwPEtfbRKTbXdhGcQ1CnSj961RqxS+oOoEyKwRAONw7TWTblm8Xl1
+	eizwQUyArw45jHICm1Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1my0y9-0083mO-0L; Fri, 17 Dec 2021 00:19:29 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1my22W-0088Xe-E9; Fri, 17 Dec 2021 01:28:04 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1my0y6-0083m6-Fs
- for linux-mediatek@lists.infradead.org; Fri, 17 Dec 2021 00:19:28 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 32E7CB82526;
- Fri, 17 Dec 2021 00:19:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BB1FC36AE7;
- Fri, 17 Dec 2021 00:19:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639700363;
- bh=Z9wCuqOH6HMPiT2aqxoeeoFm1KRW2uJYG9nKOfQCJ34=;
- h=From:To:Cc:Subject:Date:From;
- b=UEQ004DuWziOzBBYfA8kznBnHUZ0j8aeg6krEdrUxJIUxN8CATlrAjdVBtQyc0yfk
- czwMlIsaWQeyZE5w6I/yvUsiGlAFOjStNy+jmLgqZ9cvFxbJ8D68xP1zOBTWBrqNpV
- 4rWiQCPsQvz4GeFopeVk7t6sYZ6nwRv0SVvNBfx4dVKUKj20n6Ky0809ds5mTE1ec6
- UjXkK8h1Mlu0702EMPzlLPWtNspMKmmG6Cxxd6G82xKxYvrixa3QHWM5/DD49VWvS3
- 1OZcESuDLNcMfgfMAKuJhjheKB+i0M5P/0CSFQ1VetoPU/SfUsqKO5TrdGpKG21pOA
- tRKyR6sn8Ku2A==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org
-Cc: Yongqiang Niu <yongqiang.niu@mediatek.com>,
- "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- Mark Yacoub <markyacoub@chromium.org>
-Subject: [GIT PULL] mediatek drm next for 5.17
-Date: Fri, 17 Dec 2021 08:19:30 +0800
-Message-Id: <1639700370-3541-1-git-send-email-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.7.4
+ id 1my22S-0088XB-9q; Fri, 17 Dec 2021 01:28:02 +0000
+X-UUID: b7a1660b991f4d22a0f4022580c59bcb-20211216
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=cMKFGO50Nijrd/zf0SyWIymRa4cZ18pTctDEuNU+t50=; 
+ b=BQbQE8dhegxrx5xWHmhb4uiWxRp+otcMVObhgnwrTi15c7IaB9LU/SCee18HMcslmoyw79Hj9FiVmW1L4hrnnr599qX4gKjyliKeRWASQOFh7mXfP7GRNKYp7BYyTYoqzCF1zl5j6dnZ+MhpM+U+5XRXAyR7nUQqalJMKjwHCsw=;
+X-UUID: b7a1660b991f4d22a0f4022580c59bcb-20211216
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 713521450; Thu, 16 Dec 2021 18:27:56 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 16 Dec 2021 17:26:08 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Fri, 17 Dec 2021 09:26:06 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 17 Dec 2021 09:26:05 +0800
+Message-ID: <c231ad91abe639a200b9a18835280c9ca28c771a.camel@mediatek.com>
+Subject: Re: [PATCH net-next v10 4/6] net: dt-bindings: dwmac: Convert
+ mediatek-dwmac to DT schema
+From: Biao Huang <biao.huang@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Jose Abreu
+ <joabreu@synopsys.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <dkirjanov@suse.de>
+Date: Fri, 17 Dec 2021 09:26:07 +0800
+In-Reply-To: <Ybti2mNfEVNWQWgM@robh.at.kernel.org>
+References: <20211216055328.15953-1-biao.huang@mediatek.com>
+ <20211216055328.15953-5-biao.huang@mediatek.com>
+ <Ybti2mNfEVNWQWgM@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211216_161926_688652_A006F053 
-X-CRM114-Status: UNSURE (   8.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211216_172800_374976_0F9669B9 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,77 +82,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Daniel:
-
-This includes:
-
-1. Add support for MT8192
-2. CMDQ refinement.
-3. Miscellaneous clean up and reorder.
-4. Set the default value of rotation to DRM_MODE_ROTATE_0
-
-Regards,
-Chun-Kuang.
-
-The following changes since commit fa55b7dcdc43c1aa1ba12bca9d2dd4318c2a0dbf:
-
-  Linux 5.16-rc1 (2021-11-14 13:56:52 -0800)
-
-are available in the git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-5.17
-
-for you to fetch changes up to d95b00f1a8c57f10a7c83bec5a245391c7666f36:
-
-  drm/mediatek: Set the default value of rotation to DRM_MODE_ROTATE_0 (2021-12-14 07:17:50 +0800)
-
-----------------------------------------------------------------
-Mediatek DRM Next for Linux 5.16
-
-1. Add support for MT8192
-2. CMDQ refinement.
-3. Miscellaneous clean up and reorder.
-4. Set the default value of rotation to DRM_MODE_ROTATE_0
-
-----------------------------------------------------------------
-Chun-Kuang Hu (4):
-      drm/mediatek: Use mailbox rx_callback instead of cmdq_task_cb
-      drm/mediatek: Remove the pointer of struct cmdq_client
-      drm/mediatek: Detect CMDQ execution timeout
-      drm/mediatek: Add cmdq_handle in mtk_crtc
-
-Mark Yacoub (1):
-      drm/mediatek: Set the default value of rotation to DRM_MODE_ROTATE_0
-
-Yongqiang Niu (5):
-      drm/mediatek: Add component OVL_2L2
-      drm/mediatek: Add component POSTMASK
-      drm/mediatek: Add component RDMA4
-      drm/mediatek: Add support for Mediatek SoC MT8192
-      drm/mediatek: Clear pending flag when cmdq packet is done
-
-jason-jh.lin (4):
-      drm/mediatek: Add mbox_free_channel in mtk_drm_crtc_destroy
-      drm/mediatek: Remove unused define in mtk_drm_ddp_comp.c
-      drm/mediatek: Rename the define of register offset
-      drm/mediatek: Adjust to the alphabetic order for mediatek-drm
-
- drivers/gpu/drm/mediatek/mtk_disp_ccorr.c   |   6 +
- drivers/gpu/drm/mediatek/mtk_disp_ovl.c     |  20 +++
- drivers/gpu/drm/mediatek/mtk_disp_rdma.c    |   6 +
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c     | 175 +++++++++++++++++++---
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c | 217 ++++++++++++++++------------
- drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h |  23 +--
- drivers/gpu/drm/mediatek/mtk_drm_drv.c      | 142 +++++++++++-------
- drivers/gpu/drm/mediatek/mtk_drm_plane.c    |   3 +-
- 8 files changed, 414 insertions(+), 178 deletions(-)
-
+Dear Rob,
+	Thanks for your comments.
+On Thu, 2021-12-16 at 10:01 -0600, Rob Herring wrote:
+> On Thu, Dec 16, 2021 at 01:53:26PM +0800, Biao Huang wrote:
+> > Convert mediatek-dwmac to DT schema, and delete old mediatek-
+> > dwmac.txt.
+> > And there are some changes in .yaml than .txt, others almost keep
+> > the same:
+> >   1. compatible "const: snps,dwmac-4.20".
+> >   2. delete "snps,reset-active-low;" in example, since driver
+> > remove this
+> >      property long ago.
+> >   3. add "snps,reset-delay-us = <0 10000 10000>" in example.
+> >   4. the example is for rgmii interface, keep related properties
+> > only.
+> > 
+> > Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+> > ---
+> >  .../bindings/net/mediatek-dwmac.txt           |  91 ----------
+> >  .../bindings/net/mediatek-dwmac.yaml          | 155
+> > ++++++++++++++++++
+> >  2 files changed, 155 insertions(+), 91 deletions(-)
+> >  delete mode 100644 Documentation/devicetree/bindings/net/mediatek-
+> > dwmac.txt
+> >  create mode 100644 Documentation/devicetree/bindings/net/mediatek-
+> > dwmac.yaml
+> 
+> Reviewed-by: Rob Herring <robh@kernel.org>
+I'll add reviewed-by in next send.
+Regards!
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
