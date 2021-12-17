@@ -4,104 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD8CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 18:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 558CDC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 18:06:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oA73C6M+eFISiq8iPESUw4ixwKDkEbJyIFSFyeBHbas=; b=n32GRAoQdiieKN
-	uDrSb9x5KiElX9i+J+LNK50+X7vC+v2kruLOA5SQV90OJ990zfiu6lg5959wTfA9Rvz7Xl9Nfk8hj
-	Q1uQaZpAc6BASb/CqgjXheLth7W4i7/lgpHCqhDRyqlUvYLgNIDgJTzuHaQcWwZrtCu38mJvlAOOC
-	6iVFpyLqrP+46IxcLc5+Z0jPH4DCrZAuwuvsbaHQJLbwiX2g3x0RTf9dpnsE6ATYLrq58JW+1NDVX
-	+Od+mAM58z4ZQvWtZINQmR6gnGtfHMHtoS8wyF4GXYho3rGYK4u0/vq+Q+LbiRTFhXBH2KEHxVWdk
-	D8l3gnASqhXjb/e0CY2g==;
+	List-Owner; bh=ONql9mpnbbbdi74IXVllA3Ms8Ihtp2qu428wq8jZmxk=; b=heo6vIOz/s4Gdq
+	ERm/KaEGtE7WoMJllaYX9p+Ix1c2Xd/ZB4QMgjmJEZ/xXKowTLizQIusCQOWtfvSsklyu3GdjcSYM
+	JzedlJo1+HWNxHgKSzXwPEqh43BF8ZmYcgJDPghC6tPK9sogR3fQCCJ93r27gZCxY1jMlmqe8qyFH
+	o33CAh/KHyfvbxta6Du/yWWpjfMDiRvN/+7oxEs+6AyhgFmGAgRSobYzctZRSuVf875mmZyzM3lfq
+	1ZZQ9ep4HYeWalf8UJJmCNArj2MiJHSHAJJ0tiUAKHqow/Ks0lsECYDzRjGpn8rBGLfnR5uLCQOQ9
+	2RhK9L3YJxVqyzZha3ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1myHbQ-00BehP-6g; Fri, 17 Dec 2021 18:05:08 +0000
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+	id 1myHcm-00BfPX-OE; Fri, 17 Dec 2021 18:06:32 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1myGUo-00BI1v-8l
- for linux-mediatek@lists.infradead.org; Fri, 17 Dec 2021 16:54:15 +0000
-Received: by mail-ed1-x52c.google.com with SMTP id z7so10079930edc.11
- for <linux-mediatek@lists.infradead.org>; Fri, 17 Dec 2021 08:54:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ty3idGCi5XDl9xKvErHWNjIC6p7/NuEe9TiwxcVy8Us=;
- b=u9I1oPvsJNdQBSYXsGSVFvOEzPGh8YHNrcZyV4Kd4Ux0b007WnOatjgAjtpO7ElHj+
- hGmuiwerkfDuIqCHLAo613SY2tvmSUxTdYM0wU8p9QmiQVr9m9JA3Naueo3Yfodz6PXK
- 87Kghc+eG799moXmgTvzehIou/OBfRSxy6uKhrkhotiEqkh8JRKrsnfTTnYL5U6M1B7t
- FETyeoncmUeYZBM045702egEznZCU4GjmYR8491uENA8sjto4EZdTiZlL58Y1yKTVgEN
- CaZJ582PxifNLXiMmL7WreCUCgOo3GYwkOWTOTqbS20yiN2i6DT8eADFIDVoM7GOLwCY
- 9cRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ty3idGCi5XDl9xKvErHWNjIC6p7/NuEe9TiwxcVy8Us=;
- b=Eo0UZnqqz2EBJ88o2JWnPbuFcjr/lkjL6cdNcZNZc1v+eGZ8uMxnzw919jHYpCOn9B
- P1CmFmL4sOnArDjW6etU+TVx+pO0O/ole8D3LGaNea+Vfe4pip9Ea2M1Ry4lJJbmZD6s
- g5gEVR48cMg3EfeRvxhmc1nNWQiHdgu0EkS++RprsBbf7tKtdEuhzgbO4+Lw31vFuAUL
- NLdkandANZKWWYKfenzxgrRgno+IZi5CTA3VDqoBIVOcqgcfKEAPWKEMXI4HVuf92135
- //siO44w8TqmtyQtowdhzUBSVeIN7vxLgzpbyuJGSTRs0Q5Zsw24b1k430nMWPYrdKmW
- HKVA==
-X-Gm-Message-State: AOAM532ntQ1TJHyUyvzUnSATVcrkHel1nT6LJ9MIeYN8m7391Dox17E5
- dVSSe8oXHah5gyAhPttr0QFvRnlItCQgTOm8IO0kNg==
-X-Google-Smtp-Source: ABdhPJx8NgewPvw8C9vg5xgAqhhQeH0jCc31PRQMmf/5wN37PHnQyAoHsmmMeZhdRGMORIs9EvU83ilcsDAuLWfaiLU=
-X-Received: by 2002:a17:906:249a:: with SMTP id
- e26mr3225602ejb.492.1639760051506; 
- Fri, 17 Dec 2021 08:54:11 -0800 (PST)
-MIME-Version: 1.0
-References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
-In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
-From: Bartosz Golaszewski <brgl@bgdev.pl>
-Date: Fri, 17 Dec 2021 17:54:00 +0100
-Message-ID: <CAMRc=Mct9FuYvT-0gFrpUuNBnCVdmCp_cNESkL5NSgVVP6vezQ@mail.gmail.com>
-Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
- the drivers
+ id 1myGVX-00BIIR-8J; Fri, 17 Dec 2021 16:55:00 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id ADF2262309;
+ Fri, 17 Dec 2021 16:54:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89721C36AE7;
+ Fri, 17 Dec 2021 16:54:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1639760098;
+ bh=35R/DOnfqARo0hvx3JTyLxO4xZ9BgeHF7T8etQNvDHU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=hWMpmgB68DIatvPYkqYjULgyZgpZm/WMp4eE8rqINzZ9/bAyqsTC1Jl9h7QmBDiEk
+ Bx5OBzIg5HSwgc9C4DkLm/LrO2pg18GadbSWqiO8QSR5tfTr6PfiY9NXHhXoqBgT2T
+ grrlMhwcyRuarrxfW0fDVXPEpigZiFUYtU2L3ZBg=
+Date: Fri, 17 Dec 2021 17:54:55 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Marc Zyngier <maz@kernel.org>,
- Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Chunyan Zhang <chunyan.zhang@unisoc.com>, 
- Baruch Siach <baruch@tkos.co.il>,
- =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
- Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, 
- Linus Walleij <linus.walleij@linaro.org>, Jianqun Xu <jay.xu@rock-chips.com>, 
- Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- patches@opensource.cirrus.com, 
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
- linux-power <linux-power@fi.rohmeurope.com>, 
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
- "open list:PWM SUBSYSTEM" <linux-pwm@vger.kernel.org>,
- Linux-OMAP <linux-omap@vger.kernel.org>, 
- linux-unisoc@lists.infradead.org, 
- "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
- linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
- Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
- Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
- Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
- Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Thierry Reding <thierry.reding@gmail.com>, 
- Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
- Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
- Robert Jarzmik <robert.jarzmik@free.fr>,
- Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Ludovic Desroches <ludovic.desroches@microchip.com>, 
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, 
- Jonathan Hunter <jonathanh@nvidia.com>
+Cc: Zhiyong Tao <zhiyong.tao@mediatek.com>, linux-serial@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jiri Slaby <jirislaby@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v1 1/1] serial: 8520_mtk: Prepare for
+ platform_get_irq_optional() changes
+Message-ID: <YbzA3y5jp5K5zL/+@kroah.com>
+References: <20211217151034.62046-1-andriy.shevchenko@linux.intel.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20211217151034.62046-1-andriy.shevchenko@linux.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211217_085414_401391_B501D114 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20211217_085459_398323_10698F5A 
+X-CRM114-Status: GOOD (  22.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,20 +72,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
-<andriy.shevchenko@linux.intel.com> wrote:
->
-> GPIO library does copy the of_node from the parent device of
-> the GPIO chip, there is no need to repeat this in the individual
-> drivers. Remove these assignment all at once.
->
-> For the details one may look into the of_gpio_dev_init() implementation.
->
+On Fri, Dec 17, 2021 at 05:10:34PM +0200, Andy Shevchenko wrote:
+> The platform_get_irq_optional() is going to be changed in a way
+> that the result of it:
+>    = 0 means no IRQ is provided
+>    < 0 means the error which needs to be propagated to the upper layers
+>    > 0 valid vIRQ is allocated
+
+What about 0 being a valid irq?
+
+> In this case, drop check for 0. Note, the 0 is not valid vIRQ and
+> platform_get_irq_optional() issues a big WARN() in such case,
+
+But it still is a valid irq, so why did you just break things?  Yes, a
+warning will happen, but the driver and platform will still work.
+
+> 
 > Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+> ---
+>  drivers/tty/serial/8250/8250_mtk.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/tty/serial/8250/8250_mtk.c b/drivers/tty/serial/8250/8250_mtk.c
+> index fb65dc601b23..8d3e16d7bf63 100644
+> --- a/drivers/tty/serial/8250/8250_mtk.c
+> +++ b/drivers/tty/serial/8250/8250_mtk.c
+> @@ -641,7 +641,7 @@ static int __maybe_unused mtk8250_resume(struct device *dev)
+>  	struct mtk8250_data *data = dev_get_drvdata(dev);
+>  	int irq = data->rx_wakeup_irq;
+>  
+> -	if (irq >= 0)
+> +	if (irq > 0)
+>  		disable_irq_wake(irq);
 
-Queued the series for next, thanks!
+Why change this now?  What does this solve at this point in time?
 
-Bart
+thanks,
+
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
