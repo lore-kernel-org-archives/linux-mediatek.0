@@ -4,62 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10347C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 18:04:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFD8CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 18:05:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SZ0QTgHjTcOogmgTmds8D5Escr7qlvTCXkDMK3LotKg=; b=Rr3p/WtYX8oQW7
-	dNLuhGH/B47TEwaQCiYS/1IGmqeDoTa2kqYW2uP4Le6AIOKqZQfQU5W7baeqMjZnVlxJCvCty5PeZ
-	0Mfu5sqf3gUZaEV2rnyKr9dN4QngoRXuZfffGBgWHtcG8hIxfpTAV5ca3v0Sn+C5IsWddh0m7eBrP
-	v7ApOiqcqKVCaQ1jUveQyfjphXE7YugmRJ7NZTbkwPJwgrkTUux5ZIlmzKaZeHY87p3cY2hk3HbCj
-	LZUPCZCcRbhYiY8MnfuT4PFBUoIq8pgdJLageUq49mtab/3y+QvDb9dtwehqzHKsOkaDUNyhDitTn
-	BwhAS8EXGAWyCukwX9hw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=oA73C6M+eFISiq8iPESUw4ixwKDkEbJyIFSFyeBHbas=; b=n32GRAoQdiieKN
+	uDrSb9x5KiElX9i+J+LNK50+X7vC+v2kruLOA5SQV90OJ990zfiu6lg5959wTfA9Rvz7Xl9Nfk8hj
+	Q1uQaZpAc6BASb/CqgjXheLth7W4i7/lgpHCqhDRyqlUvYLgNIDgJTzuHaQcWwZrtCu38mJvlAOOC
+	6iVFpyLqrP+46IxcLc5+Z0jPH4DCrZAuwuvsbaHQJLbwiX2g3x0RTf9dpnsE6ATYLrq58JW+1NDVX
+	+Od+mAM58z4ZQvWtZINQmR6gnGtfHMHtoS8wyF4GXYho3rGYK4u0/vq+Q+LbiRTFhXBH2KEHxVWdk
+	D8l3gnASqhXjb/e0CY2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1myHap-00BeON-Bo; Fri, 17 Dec 2021 18:04:31 +0000
-Received: from smtp23.cstnet.cn ([159.226.251.23] helo=cstnet.cn)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1myGTC-00BHTw-Tp; Fri, 17 Dec 2021 16:52:37 +0000
-Received: from localhost.localdomain (unknown [124.16.138.126])
- by APP-03 (Coremail) with SMTP id rQCowACnrVlKwLxhCKpqAw--.17695S2;
- Sat, 18 Dec 2021 00:52:26 +0800 (CST)
-From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-To: matthias.bgg@gmail.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Subject: [PATCH v2] isoc: mediatek: Fix dereference of null pointer while
- alloc fail
-Date: Sat, 18 Dec 2021 00:52:20 +0800
-Message-Id: <20211217165220.675485-1-jiasheng@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1myHbQ-00BehP-6g; Fri, 17 Dec 2021 18:05:08 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1myGUo-00BI1v-8l
+ for linux-mediatek@lists.infradead.org; Fri, 17 Dec 2021 16:54:15 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id z7so10079930edc.11
+ for <linux-mediatek@lists.infradead.org>; Fri, 17 Dec 2021 08:54:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bgdev-pl.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ty3idGCi5XDl9xKvErHWNjIC6p7/NuEe9TiwxcVy8Us=;
+ b=u9I1oPvsJNdQBSYXsGSVFvOEzPGh8YHNrcZyV4Kd4Ux0b007WnOatjgAjtpO7ElHj+
+ hGmuiwerkfDuIqCHLAo613SY2tvmSUxTdYM0wU8p9QmiQVr9m9JA3Naueo3Yfodz6PXK
+ 87Kghc+eG799moXmgTvzehIou/OBfRSxy6uKhrkhotiEqkh8JRKrsnfTTnYL5U6M1B7t
+ FETyeoncmUeYZBM045702egEznZCU4GjmYR8491uENA8sjto4EZdTiZlL58Y1yKTVgEN
+ CaZJ582PxifNLXiMmL7WreCUCgOo3GYwkOWTOTqbS20yiN2i6DT8eADFIDVoM7GOLwCY
+ 9cRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ty3idGCi5XDl9xKvErHWNjIC6p7/NuEe9TiwxcVy8Us=;
+ b=Eo0UZnqqz2EBJ88o2JWnPbuFcjr/lkjL6cdNcZNZc1v+eGZ8uMxnzw919jHYpCOn9B
+ P1CmFmL4sOnArDjW6etU+TVx+pO0O/ole8D3LGaNea+Vfe4pip9Ea2M1Ry4lJJbmZD6s
+ g5gEVR48cMg3EfeRvxhmc1nNWQiHdgu0EkS++RprsBbf7tKtdEuhzgbO4+Lw31vFuAUL
+ NLdkandANZKWWYKfenzxgrRgno+IZi5CTA3VDqoBIVOcqgcfKEAPWKEMXI4HVuf92135
+ //siO44w8TqmtyQtowdhzUBSVeIN7vxLgzpbyuJGSTRs0Q5Zsw24b1k430nMWPYrdKmW
+ HKVA==
+X-Gm-Message-State: AOAM532ntQ1TJHyUyvzUnSATVcrkHel1nT6LJ9MIeYN8m7391Dox17E5
+ dVSSe8oXHah5gyAhPttr0QFvRnlItCQgTOm8IO0kNg==
+X-Google-Smtp-Source: ABdhPJx8NgewPvw8C9vg5xgAqhhQeH0jCc31PRQMmf/5wN37PHnQyAoHsmmMeZhdRGMORIs9EvU83ilcsDAuLWfaiLU=
+X-Received: by 2002:a17:906:249a:: with SMTP id
+ e26mr3225602ejb.492.1639760051506; 
+ Fri, 17 Dec 2021 08:54:11 -0800 (PST)
 MIME-Version: 1.0
-X-CM-TRANSID: rQCowACnrVlKwLxhCKpqAw--.17695S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7uFy3tFy7ZrW8XFyDKFy3Arb_yoW8tr43pF
- 48tay2yrWrGrW7Wr1vkrWDuFyS934Iya47K34Ygw1av3s8Jrn5JFyFya4jyF4kCFykKa13
- tr42qrWxCF1UZF7anT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUkS14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
- 6F4UM28EF7xvwVC2z280aVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r4j6r
- 4UJwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
- I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r
- 4UM4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCY02Avz4vE14v_JwCF
- 04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r
- 18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_JF0_Jw1lIxkGc2Ij64vI
- r41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr
- 1lIxAIcVCF04k26cxKx2IYs7xG6rW3Jr0E3s1lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAI
- cVC2z280aVCY1x0267AKxVWUJVW8JbIYCTnIWIevJa73UjIFyTuYvjfUj_-PUUUUU
-X-Originating-IP: [124.16.138.126]
-X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
+References: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+In-Reply-To: <20211202210839.79140-1-andriy.shevchenko@linux.intel.com>
+From: Bartosz Golaszewski <brgl@bgdev.pl>
+Date: Fri, 17 Dec 2021 17:54:00 +0100
+Message-ID: <CAMRc=Mct9FuYvT-0gFrpUuNBnCVdmCp_cNESkL5NSgVVP6vezQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/3] gpio: Get rid of duplicate of_node assignment in
+ the drivers
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Marc Zyngier <maz@kernel.org>,
+ Matti Vaittinen <matti.vaittinen@fi.rohmeurope.com>, 
+ Sergio Paracuellos <sergio.paracuellos@gmail.com>,
+ Chunyan Zhang <chunyan.zhang@unisoc.com>, 
+ Baruch Siach <baruch@tkos.co.il>,
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Tony Lindgren <tony@atomide.com>, Nicolas Saenz Julienne <nsaenz@kernel.org>, 
+ Linus Walleij <linus.walleij@linaro.org>, Jianqun Xu <jay.xu@rock-chips.com>, 
+ Alexandru Ardelean <aardelean@deviqon.com>, Thierry Reding <treding@nvidia.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ patches@opensource.cirrus.com, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
+ linux-power <linux-power@fi.rohmeurope.com>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
+ "open list:PWM SUBSYSTEM" <linux-pwm@vger.kernel.org>,
+ Linux-OMAP <linux-omap@vger.kernel.org>, 
+ linux-unisoc@lists.infradead.org, 
+ "open list:ARM/Rockchip SoC..." <linux-rockchip@lists.infradead.org>, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org, 
+ Ray Jui <rjui@broadcom.com>, Florian Fainelli <f.fainelli@gmail.com>, 
+ Scott Branden <sbranden@broadcom.com>, Gregory Fong <gregory.0xf0@gmail.com>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Keerthy <j-keerthy@ti.com>, 
+ Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang7@gmail.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Lee Jones <lee.jones@linaro.org>, Grygorii Strashko <grygorii.strashko@ti.com>,
+ Santosh Shilimkar <ssantosh@kernel.org>, Kevin Hilman <khilman@kernel.org>, 
+ Robert Jarzmik <robert.jarzmik@free.fr>,
+ Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Ludovic Desroches <ludovic.desroches@microchip.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211217_085235_397579_BD85354C 
-X-CRM114-Status: GOOD (  16.01  )
+X-CRM114-CacheID: sfid-20211217_085414_401391_B501D114 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,79 +118,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sorry, maybe I do not fully understand the meaning of your review
-comments and I really fail to behave polite.
-This time I carefully check all the comments and believe I have already
-obey all the request.
-The message as follow is my new comments.
-If there are also problems, please let me know and I will correct in
-time.
+On Thu, Dec 2, 2021 at 10:17 PM Andy Shevchenko
+<andriy.shevchenko@linux.intel.com> wrote:
+>
+> GPIO library does copy the of_node from the parent device of
+> the GPIO chip, there is no need to repeat this in the individual
+> drivers. Remove these assignment all at once.
+>
+> For the details one may look into the of_gpio_dev_init() implementation.
+>
+> Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 
-Because devm_clk_get() will not always success.
-It should be better to check the return value in order to
-avoid use of error pointer in case of the failure.
-Therefore, we should use the IS_ERR() to check the error pointer and
-return -ENOMEM if it is and 0 if not.
-Also, we deal with the return value in init_scp.
+Queued the series for next, thanks!
 
-Fixes: 6078c651947a ("soc: mediatek: Refine scpsys to support multiple platform")
-Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
----
-Changelog:
-
-v1 -> v2
-
-*Change 1. Correct the commit message.
----
- drivers/soc/mediatek/mtk-scpsys.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index ca75b14931ec..778d6ffc42b8 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -411,12 +411,16 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	return ret;
- }
- 
--static void init_clks(struct platform_device *pdev, struct clk **clk)
-+static int init_clks(struct platform_device *pdev, struct clk **clk)
- {
- 	int i;
- 
--	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
-+	for (i = CLK_NONE + 1; i < CLK_MAX; i++) {
- 		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
-+		if (IS_ERR(clk[i]))
-+			return -ENOMEM;
-+	}
-+	return 0;
- }
- 
- static struct scp *init_scp(struct platform_device *pdev,
-@@ -426,7 +430,7 @@ static struct scp *init_scp(struct platform_device *pdev,
- {
- 	struct genpd_onecell_data *pd_data;
- 	struct resource *res;
--	int i, j;
-+	int i, j, ret;
- 	struct scp *scp;
- 	struct clk *clk[CLK_MAX];
- 
-@@ -481,7 +485,9 @@ static struct scp *init_scp(struct platform_device *pdev,
- 
- 	pd_data->num_domains = num;
- 
--	init_clks(pdev, clk);
-+	ret = init_clks(pdev, clk);
-+	if (ret)
-+		return ERR_PTR(-ENOMEM);
- 
- 	for (i = 0; i < num; i++) {
- 		struct scp_domain *scpd = &scp->domains[i];
--- 
-2.25.1
-
+Bart
 
 _______________________________________________
 Linux-mediatek mailing list
