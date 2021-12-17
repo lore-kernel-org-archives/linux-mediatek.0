@@ -4,61 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1A04C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 17:37:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86F0AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 17 Dec 2021 17:52:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=5Ug2CRV+E1sOdMswY2P8iQr9wlodZxukwXO0UEyoMOs=; b=vs86i28CDjmqkO
-	ayuDKr+yRO/PPDrUqbmwWxDhygodewltas3fXChliQcDA2MgeMWk514v6L9QSyexNa37yxkN9nVU1
-	rmkCnVu4GrtQ8e8tZz7xsqd3md9jhsvpchfBlq3GS6GSlW0cHFWPxXFOG2mJ3pYM3ew318h9Nzf5l
-	w6RMs2u8hiSOJsYhDtw+G3wI/BwJfP/1OleDxCb/m0+orQ20IzX5QKwhyxVtDA4HLFJvOWbjKU9mu
-	YTUvxqnCO33ZcC6JSwR35qGSu9SOGxotz64qrcO3Hf0Cwaht8G0fmGHDqf9he9VIWfNoR/1YvxNha
-	cvughK5jyCOqVqh+dseg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=pLYmya1rGNEbFZB7UR6xwgTQ2QvYUaB/FnDvEouRJyA=; b=hAmqpdESzbHuy5
+	GLhUgfNi26QaT6eOCxa0i54KQHr1pcIJWWRgmGtjqH1tTHFOjALykAIf4twRY0YCq2FFqf6hLP3Wh
+	xak3nfZboTQOroSl3dsC0BqxZOGkuN3pDz+soNp8lAqyNrDXSPbJMtJZCQtdmsTZWszdnDWurAPB8
+	32cB94R7BHEWX9jCk5kqvuzERsh7zKwbub5sfPCDBKplNNSg6y1x+Iqv28IZFkmYIPGpLic5260OU
+	i4jWsRV4+SwIoJ/dRIcBhEUireiJd2R1CZnRn0S8aTlLm3dOAw6pgpWfnuZI//8lKIOsJEYf4VUOd
+	xxm+yDo9nX78FIY9BGJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1myHAc-00BVja-3O; Fri, 17 Dec 2021 17:37:26 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1myHOa-00BZUI-KC; Fri, 17 Dec 2021 17:51:52 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1myFzL-00B94L-2v; Fri, 17 Dec 2021 16:21:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id A7017B82966;
- Fri, 17 Dec 2021 16:21:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E9D0C36AE1;
- Fri, 17 Dec 2021 16:21:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1639758099;
- bh=huC7uz1dGwNTuzWeqgiNaG3sk3EcmBrJ63xBA1P61zw=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=mxARPdYm02vkR1wXFYlvgPaemHFGDbK6rk8Q8VKGK2inUv6cF06cWgLjrlNCcE57P
- k7NnlyE+Ps3w+SWlHxqIrKLJ6XKiQCWVG5XcLm/rHuNfTyMonUPDp8z1FClHNR2zK4
- 3js6fQKPxr2k1IwbKvO/i/1skiFSDdm388/qqWM80bXKWTJd8oHyGjJcLP4b5xTIiX
- mUjkl5MXsfB+7cUKnej+WTSwJVFtBVZOY06cecM/ilXUM9YUdUidyUZcYFdDo6YE4y
- Ohkr6d3W22cfQoYSrx3w/f2X/pL9xyeQC3zRKocib623SbWB4yqaT6yel7pSGgimjI
- KeJ7pC5WHXPvw==
-Date: Fri, 17 Dec 2021 10:21:37 -0600
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Bjorn Helgaas <bhelgaas@google.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, john@phrozen.org,
- linux-arm-kernel@lists.infradead.org, Rob Herring <robh@kernel.org>,
- linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 09/14] dt-bindings: PCI: Add support for Airoha EN7532
-Message-ID: <20211217162137.GA894954@bhelgaas>
+ id 1myG2T-00B9gm-8c; Fri, 17 Dec 2021 16:24:58 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 98C6E1F47153
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=collabora.com; s=mail;
+ t=1639758295; bh=lxasgzjqebm4cr/bK1kNdQ45q5KLqEPJPyvYbHtTlFQ=;
+ h=From:To:Cc:Subject:Date:From;
+ b=euyMke+SvnYfzlw2kOqY1FNW/qVCRuXc8fCZytMr9lv8sLexs2XL9Wjo9/Gag9RPG
+ +bmx9rP+zQ95khHvZVGRRmuIgVD0okN1G192s8RGwzS2qlON+5KQNdia31eN/Zqq5/
+ W3G0FT3lv6w6ZR4pwmr4zi5N6uNR4l2M4JBlGYQE+viM293uTP97louo5jnjiudwlV
+ HWFzpfSVHxaFw2CGVE8KgVZMF/YCkZsskSW4p1SxJ7LEX/2wfWfy5lRG1qqHhJA8Fm
+ OvYu7b7UygZVxhNA3B0zx9GxgJJWXUq1HdOoePRBicv9jPBKAX0qXn3C2dst4wNvzQ
+ ZtjgpS6x7W8cA==
+From: =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+To: matthias.bgg@gmail.com
+Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com,
+ =?UTF-8?q?N=C3=ADcolas=20F=2E=20R=2E=20A=2E=20Prado?=
+ <nfraprado@collabora.com>
+Subject: [PATCH] arm64: defconfig: Enable MT6397 RTC
+Date: Fri, 17 Dec 2021 11:24:45 -0500
+Message-Id: <20211217162445.876034-1-nfraprado@collabora.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211217112345.14029-10-nbd@nbd.name>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211217_082143_365291_D59C730E 
-X-CRM114-Status: GOOD (  16.34  )
+X-CRM114-CacheID: sfid-20211217_082457_476768_76F5B392 
+X-CRM114-Status: UNSURE (   7.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,45 +62,25 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Dec 17, 2021 at 12:23:39PM +0100, Felix Fietkau wrote:
-> From: John Crispin <john@phrozen.org>
-> 
-> EN7532 is an ARM based platform SoC integrating the same PCIe IP as
-> MT7622, add a binding for it.
-> 
-> Acked-by: Rob Herring <robh@kernel.org>
-> Signed-off-by: John Crispin <john@phrozen.org>
-
-Needs a sign-off from you, Felix:
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/process/submitting-patches.rst?id=v5.14#n418
-
-> ---
->  Documentation/devicetree/bindings/pci/mediatek-pcie.txt | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> index 57ae73462272..684227522267 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.txt
-> @@ -7,6 +7,7 @@ Required properties:
->  	"mediatek,mt7622-pcie"
->  	"mediatek,mt7623-pcie"
->  	"mediatek,mt7629-pcie"
-> +	"airoha,en7523-pcie"
->  - device_type: Must be "pci"
->  - reg: Base addresses and lengths of the root ports.
->  - reg-names: Names of the above areas to use during resource lookup.
-> -- 
-> 2.34.1
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+VGhlIE1UNjM5NyBSVEMgaXMgcGFydCBvZiB0aGUgTWVkaWF0ZWsgTVQ2Mzk3IFBNSUMsIHdoaWNo
+IGlzIHByZXNlbnQgaW4KdGhlIG10ODE3My1lbG0gYmFzZSBib2FyZC4KClRoZSBkcml2ZXIgZm9y
+IHRoZSBQTUlDIGlzIGFscmVhZHkgZW5hYmxlZCB0aHJvdWdoIENPTkZJR19NRkRfTVQ2Mzk3LCBz
+bwplbmFibGUganVzdCB0aGUgZHJpdmVyIGZvciB0aGUgUlRDLgoKU2lnbmVkLW9mZi1ieTogTsOt
+Y29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgotLS0KIGFyY2gv
+YXJtNjQvY29uZmlncy9kZWZjb25maWcgfCAxICsKIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlv
+bigrKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWcgYi9hcmNoL2Fy
+bTY0L2NvbmZpZ3MvZGVmY29uZmlnCmluZGV4IGYyZTJiOWJkZDcwMi4uNzZiZDM0MjIzMjc3IDEw
+MDY0NAotLS0gYS9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnCisrKyBiL2FyY2gvYXJtNjQv
+Y29uZmlncy9kZWZjb25maWcKQEAgLTkyNyw2ICs5MjcsNyBAQCBDT05GSUdfUlRDX0RSVl9URUdS
+QT15CiBDT05GSUdfUlRDX0RSVl9TTlZTPW0KIENPTkZJR19SVENfRFJWX0lNWF9TQz1tCiBDT05G
+SUdfUlRDX0RSVl9YR0VORT15CitDT05GSUdfUlRDX0RSVl9NVDYzOTc9bQogQ09ORklHX0RNQURF
+VklDRVM9eQogQ09ORklHX0RNQV9CQ00yODM1PXkKIENPTkZJR19ETUFfU1VONkk9bQotLSAKMi4z
+NC4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGlu
+dXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5v
+cmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRp
+YXRlawo=
