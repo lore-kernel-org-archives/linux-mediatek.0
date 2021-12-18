@@ -4,61 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC0FAC433FE
-	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Dec 2021 09:58:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E03C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Dec 2021 09:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z8bDPaAWlN9NzbDEFknDzoHzOph5q0o9bnb9uhY57e0=; b=t4cIBo0Qob4T8g
-	b5Wua7m8+hsrubm/FiVcKBenwTJhjsRhZZQPJ8dS3kFQgRndJr0Km16FiJTURNAtLqaYPkai9nG4q
-	nJDKLFxNrcjWPt+cAj8aTIbbjNwPNOX2jJdqqYZ0Zxnn2ZErj8dxR9xJOA3bX63bMP0KB8NrnS54w
-	HrAuKI5xHSfsj8cqnTtYJlJs/es6FaNmSv5e68PGjCpanJA3z36dPqt96sDHimmFAvIz9ZtfrRLev
-	PkOZNiobloqa4SfrYy1lRjfb6hRj02O4wMkpyvcJry4yDizDGsDYVzZRjhJyxDxIkLwKtq5a9VMir
-	xuOY2DeHEdrtgWDbwt2Q==;
+	List-Owner; bh=CNjHZKjlaRHiw58zznwwTyZDGG905kG+gxiGt2yVM1I=; b=ti7keN9zW3s4VZ
+	ww1MPfmZtqa5Zr+dDf1wBPfQDDHzS9wZEwlPBqFWtDkXZGp+ZHGOw1vqZi/EKZyHXoym8Ez3hCuvU
+	MxFb5x+IPD1GPKcnJJlA1UNZ62O6HhbP2mkDF4zaOE7WpOvXm1rUtxhGSrSEQPNlFlyR1CEfqyLaU
+	iXqekIhbcc0AC3EeWEtCcXjcnVym83QSbgiaeShqkAhxEsXhQaa0uxNii8hYS9N4nxZx5EdcWXZDL
+	gaZJ+9bcLksdQWfe9Ysx3WKwEnWIrbRWynB3PGPmSOS4JjUnGidgo2knO1MhKfxwxUVHp8kB5wklC
+	8Zlle/KmZVpuigJUcLEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1myWTg-00DR2U-1p; Sat, 18 Dec 2021 09:58:08 +0000
+	id 1myWU1-00DRBQ-RU; Sat, 18 Dec 2021 09:58:29 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1myWTc-00DR05-NO; Sat, 18 Dec 2021 09:58:05 +0000
-X-UUID: ab0e5bcbdf514d309abc68df78e5aae2-20211218
-X-UUID: ab0e5bcbdf514d309abc68df78e5aae2-20211218
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1myWTm-00DR6Q-B5; Sat, 18 Dec 2021 09:58:15 +0000
+X-UUID: 7d9ee518591a4aaf98ec47bdfc33437b-20211218
+X-UUID: 7d9ee518591a4aaf98ec47bdfc33437b-20211218
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 584510513; Sat, 18 Dec 2021 02:58:01 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 18 Dec 2021 01:57:59 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 18 Dec 2021 17:57:58 +0800
+ with ESMTP id 1516509937; Sat, 18 Dec 2021 02:58:11 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 18 Dec 2021 01:58:10 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Sat, 18 Dec 2021 17:57:57 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas10.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sat, 18 Dec 2021 17:57:57 +0800
+ 15.0.1497.2 via Frontend Transport; Sat, 18 Dec 2021 17:57:56 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Felipe Balbi <felipe.balbi@linux.intel.com>,
  <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Eddie
- Hung" <eddie.hung@mediatek.com>, <stable@vger.kernel.org>, Yuwen Ng
- <yuwen.ng@mediatek.com>
-Subject: [PATCH v2 3/4] usb: mtu3: fix list_head check warning
-Date: Sat, 18 Dec 2021 17:57:48 +0800
-Message-ID: <20211218095749.6250-3-chunfeng.yun@mediatek.com>
+ Hung" <eddie.hung@mediatek.com>, <stable@vger.kernel.org>
+Subject: [PATCH v2 2/4] usb: mtu3: add memory barrier before set GPD's HWO
+Date: Sat, 18 Dec 2021 17:57:47 +0800
+Message-ID: <20211218095749.6250-2-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211218095749.6250-1-chunfeng.yun@mediatek.com>
 References: <20211218095749.6250-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211218_015804_808516_8988EC24 
-X-CRM114-Status: UNSURE (   8.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211218_015814_420689_264CD369 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,46 +73,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This is caused by uninitialization of list_head.
+There is a seldom issue that the controller access invalid address
+and trigger devapc or emimpu violation. That is due to memory access
+is out of order and cause gpd data is not correct.
+Add mb() to prohibit compiler or cpu from reordering to make sure GPD
+is fully written before setting its HWO.
 
-BUG: KASAN: use-after-free in __list_del_entry_valid+0x34/0xe4
-
-Call trace:
-dump_backtrace+0x0/0x298
-show_stack+0x24/0x34
-dump_stack+0x130/0x1a8
-print_address_description+0x88/0x56c
-__kasan_report+0x1b8/0x2a0
-kasan_report+0x14/0x20
-__asan_load8+0x9c/0xa0
-__list_del_entry_valid+0x34/0xe4
-mtu3_req_complete+0x4c/0x300 [mtu3]
-mtu3_gadget_stop+0x168/0x448 [mtu3]
-usb_gadget_unregister_driver+0x204/0x3a0
-unregister_gadget_item+0x44/0xa4
-
-Fixes: 83374e035b62 ("usb: mtu3: add tracepoints to help debug")
+Fixes: 48e0d3735aa5 ("usb: mtu3: supports new QMU format")
 Cc: stable@vger.kernel.org
-Reported-by: Yuwen Ng <yuwen.ng@mediatek.com>
+Reported-by: Eddie Hung <eddie.hung@mediatek.com>
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2: add Fixes and Cc suggested by Greg
+v2: modify misleading comment and commit message
 ---
- drivers/usb/mtu3/mtu3_gadget.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/usb/mtu3/mtu3_qmu.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index c51be015345b..b6c8a4a99c4d 100644
---- a/drivers/usb/mtu3/mtu3_gadget.c
-+++ b/drivers/usb/mtu3/mtu3_gadget.c
-@@ -235,6 +235,7 @@ struct usb_request *mtu3_alloc_request(struct usb_ep *ep, gfp_t gfp_flags)
- 	mreq->request.dma = DMA_ADDR_INVALID;
- 	mreq->epnum = mep->epnum;
- 	mreq->mep = mep;
-+	INIT_LIST_HEAD(&mreq->list);
- 	trace_mtu3_alloc_request(mreq);
+diff --git a/drivers/usb/mtu3/mtu3_qmu.c b/drivers/usb/mtu3/mtu3_qmu.c
+index 3f414f91b589..2ea3157ddb6e 100644
+--- a/drivers/usb/mtu3/mtu3_qmu.c
++++ b/drivers/usb/mtu3/mtu3_qmu.c
+@@ -273,6 +273,8 @@ static int mtu3_prepare_tx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
+ 			gpd->dw3_info |= cpu_to_le32(GPD_EXT_FLAG_ZLP);
+ 	}
  
- 	return &mreq->request;
++	/* prevent reorder, make sure GPD's HWO is set last */
++	mb();
+ 	gpd->dw0_info |= cpu_to_le32(GPD_FLAGS_IOC | GPD_FLAGS_HWO);
+ 
+ 	mreq->gpd = gpd;
+@@ -306,6 +308,8 @@ static int mtu3_prepare_rx_gpd(struct mtu3_ep *mep, struct mtu3_request *mreq)
+ 	gpd->next_gpd = cpu_to_le32(lower_32_bits(enq_dma));
+ 	ext_addr |= GPD_EXT_NGP(mtu, upper_32_bits(enq_dma));
+ 	gpd->dw3_info = cpu_to_le32(ext_addr);
++	/* prevent reorder, make sure GPD's HWO is set last */
++	mb();
+ 	gpd->dw0_info |= cpu_to_le32(GPD_FLAGS_IOC | GPD_FLAGS_HWO);
+ 
+ 	mreq->gpd = gpd;
+@@ -445,7 +449,8 @@ static void qmu_tx_zlp_error_handler(struct mtu3 *mtu, u8 epnum)
+ 		return;
+ 	}
+ 	mtu3_setbits(mbase, MU3D_EP_TXCR0(mep->epnum), TX_TXPKTRDY);
+-
++	/* prevent reorder, make sure GPD's HWO is set last */
++	mb();
+ 	/* by pass the current GDP */
+ 	gpd_current->dw0_info |= cpu_to_le32(GPD_FLAGS_BPS | GPD_FLAGS_HWO);
+ 
 -- 
 2.18.0
 
