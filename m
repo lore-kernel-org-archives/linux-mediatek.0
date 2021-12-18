@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D035C433F5
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89189C433EF
 	for <linux-mediatek@archiver.kernel.org>; Sat, 18 Dec 2021 08:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,34 +12,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q26ccaMD9ZW4uf1YdCl9Oan1JzNIQP0Ra5FVJdZ31OI=; b=EYkWTxmfBE2K0F
-	fOrgN371gQTQ/iHFd4fYKG+pPyQ3s9gqSGVJ68iMomLfPdqePNVwN3OVARKabZqJDNP1L2j4P4KQa
-	oaxbsdw4DZEN3Uxe2HBEKzI6L4DlGHtOYwv7W8lP6HYJTzY2pYujCYbDEF1LxfJgDc8nmWfZYpzNB
-	Pw1jW/ouq71UegI/jmnOBsTtw21m9QZNz/Djb+Ocni7YphE6jkljVb0309Td3RLRezAgEuVXS1DBm
-	HTU/bTqAg5+Hoie+PiWr2aLp9Ht/ywKG9MN4BqZNQAeGgZWyNzpnjn9MOA3l0GRhjEg7CzNeYOfq9
-	s7+iKGQjKqb9YmqkGhYg==;
+	List-Owner; bh=YeqSFyWh5l8J4tkv4B4EIjdNsT7ECoCGc5OND0F0tDk=; b=jmZdVw4y/FA0ZG
+	ElzBkS/zJf1tyilLD1GGaJb6Olkls5uQCClk3l5EAdg4oOejdGfLMRFcPfhyqs4FlOCqpJENWniVb
+	MpYKEfCZ14YiIMVlX6YK6wtTGvW5sm+129NfwEv2yOshZqLUQ2x6eq1Y60T/nx1Y6smJtLMITjI3+
+	CChi8Zp6wk+eNUb33zILpn6CGyQgxviTCOZGyI3/ZegMnj6HVjjxyLaaOc+mCs5wsvfjraIFsFDFa
+	0nctpSYXUoon1u5yr4C27WmkcTr50yYHls+8YBJ9+ky6oB441LnDDVRSrBELYZZsyBajG/Ta4o/5h
+	1u2LWIOmep831Upf8FFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1myV4q-00DEet-BG; Sat, 18 Dec 2021 08:28:24 +0000
+	id 1myV4r-00DEf3-5T; Sat, 18 Dec 2021 08:28:25 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1myV4e-00DEbE-4N; Sat, 18 Dec 2021 08:28:13 +0000
-X-UUID: a5b493f0961a4529a157c3f497f17039-20211218
-X-UUID: a5b493f0961a4529a157c3f497f17039-20211218
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1myV4e-00DEb4-4N; Sat, 18 Dec 2021 08:28:14 +0000
+X-UUID: 5af4264823c94cda9941afc0ccba8f7c-20211218
+X-UUID: 5af4264823c94cda9941afc0ccba8f7c-20211218
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1244485548; Sat, 18 Dec 2021 01:28:08 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 18 Dec 2021 00:28:06 -0800
+ with ESMTP id 313102676; Sat, 18 Dec 2021 01:28:06 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 18 Dec 2021 00:28:04 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Sat, 18 Dec 2021 16:28:04 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 18 Dec 2021 16:28:03 +0800
 Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
  mtkcas11.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Sat, 18 Dec 2021 16:28:04 +0800
+ 15.0.1497.2 via Frontend Transport; Sat, 18 Dec 2021 16:28:02 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Vinod Koul <vkoul@kernel.org>
 CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
@@ -48,18 +47,17 @@ CC: Chunfeng Yun <chunfeng.yun@mediatek.com>, Kishon Vijay Abraham I
  <linux-mediatek@lists.infradead.org>, <linux-phy@lists.infradead.org>,
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>, Eddie Hung
  <eddie.hung@mediatek.com>
-Subject: [PATCH v2 4/5] phy: phy-mtk-xsphy: use new io helpers to access
- register
-Date: Sat, 18 Dec 2021 16:28:01 +0800
-Message-ID: <20211218082802.5256-4-chunfeng.yun@mediatek.com>
+Subject: [PATCH v2 2/5] phy: phy-mtk-tphy: add support efuse setting
+Date: Sat, 18 Dec 2021 16:27:59 +0800
+Message-ID: <20211218082802.5256-2-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20211218082802.5256-1-chunfeng.yun@mediatek.com>
 References: <20211218082802.5256-1-chunfeng.yun@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211218_002812_213587_41DAFBCD 
-X-CRM114-Status: GOOD (  12.05  )
+X-CRM114-CacheID: sfid-20211218_002812_219192_ACCA1444 
+X-CRM114-Status: GOOD (  21.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,251 +74,273 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use new helpers mtk_phy_clear/set/update_bits() to access registers
+Due to some SoCs have a bit shift issue that will drop a bit for usb3
+phy or pcie phy, fix it by adding software efuse reading and setting,
+but only support it optionally for version 2/3.
 
 Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 ---
-v2: new patch
+v2: changes suggested by Vinod
+    1. fix typo of version in commit message
+    2. use dev_dbg() instead of dev_info()
 ---
- drivers/phy/mediatek/phy-mtk-xsphy.c | 140 +++++++++------------------
- 1 file changed, 46 insertions(+), 94 deletions(-)
+ drivers/phy/mediatek/phy-mtk-tphy.c | 162 ++++++++++++++++++++++++++++
+ 1 file changed, 162 insertions(+)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-xsphy.c b/drivers/phy/mediatek/phy-mtk-xsphy.c
-index 8c51131945c0..c0cdb78f77fa 100644
---- a/drivers/phy/mediatek/phy-mtk-xsphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-xsphy.c
-@@ -10,13 +10,14 @@
- #include <dt-bindings/phy/phy.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
--#include <linux/io.h>
+diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+index cdcef865fe9e..98a942c607a6 100644
+--- a/drivers/phy/mediatek/phy-mtk-tphy.c
++++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+@@ -12,6 +12,7 @@
  #include <linux/iopoll.h>
+ #include <linux/mfd/syscon.h>
  #include <linux/module.h>
++#include <linux/nvmem-consumer.h>
  #include <linux/of_address.h>
+ #include <linux/of_device.h>
  #include <linux/phy/phy.h>
- #include <linux/platform_device.h>
+@@ -41,6 +42,9 @@
+ #define SSUSB_SIFSLV_V2_U3PHYD		0x200
+ #define SSUSB_SIFSLV_V2_U3PHYA		0x400
  
-+#include "phy-mtk-io.h"
++#define U3P_MISC_REG1		0x04
++#define MR1_EFUSE_AUTO_LOAD_DIS		BIT(6)
 +
- /* u2 phy banks */
- #define SSUSB_SIFSLV_MISC		0x000
- #define SSUSB_SIFSLV_U2FREQ		0x100
-@@ -126,26 +127,18 @@ static void u2_phy_slew_rate_calibrate(struct mtk_xsphy *xsphy,
- 		return;
+ #define U3P_USBPHYACR0		0x000
+ #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
+ #define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
+@@ -133,6 +137,8 @@
+ #define P3C_RG_SWRST_U3_PHYD_FORCE_EN	BIT(24)
  
- 	/* enable USB ring oscillator */
--	tmp = readl(pbase + XSP_USBPHYACR5);
--	tmp |= P2A5_RG_HSTX_SRCAL_EN;
--	writel(tmp, pbase + XSP_USBPHYACR5);
-+	mtk_phy_set_bits(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCAL_EN);
- 	udelay(1);	/* wait clock stable */
+ #define U3P_U3_PHYA_REG0	0x000
++#define P3A_RG_IEXT_INTR		GENMASK(15, 10)
++#define P3A_RG_IEXT_INTR_VAL(x)		((0x3f & (x)) << 10)
+ #define P3A_RG_CLKDRV_OFF		GENMASK(3, 2)
+ #define P3A_RG_CLKDRV_OFF_VAL(x)	((0x3 & (x)) << 2)
  
- 	/* enable free run clock */
--	tmp = readl(pbase + XSP_U2FREQ_FMMONR1);
--	tmp |= P2F_RG_FRCK_EN;
--	writel(tmp, pbase + XSP_U2FREQ_FMMONR1);
-+	mtk_phy_set_bits(pbase + XSP_U2FREQ_FMMONR1, P2F_RG_FRCK_EN);
+@@ -187,6 +193,19 @@
+ #define P3D_RG_FWAKE_TH		GENMASK(21, 16)
+ #define P3D_RG_FWAKE_TH_VAL(x)	((0x3f & (x)) << 16)
  
- 	/* set cycle count as 1024 */
--	tmp = readl(pbase + XSP_U2FREQ_FMCR0);
--	tmp &= ~(P2F_RG_CYCLECNT);
--	tmp |= P2F_RG_CYCLECNT_VAL(XSP_FM_DET_CYCLE_CNT);
--	writel(tmp, pbase + XSP_U2FREQ_FMCR0);
-+	mtk_phy_update_bits(pbase + XSP_U2FREQ_FMCR0, P2F_RG_CYCLECNT,
-+			    P2F_RG_CYCLECNT_VAL(XSP_FM_DET_CYCLE_CNT));
++#define U3P_U3_PHYD_IMPCAL0		0x010
++#define P3D_RG_FORCE_TX_IMPEL		BIT(31)
++#define P3D_RG_TX_IMPEL			GENMASK(28, 24)
++#define P3D_RG_TX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
++
++#define U3P_U3_PHYD_IMPCAL1		0x014
++#define P3D_RG_FORCE_RX_IMPEL		BIT(31)
++#define P3D_RG_RX_IMPEL			GENMASK(28, 24)
++#define P3D_RG_RX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
++
++#define U3P_U3_PHYD_RSV			0x054
++#define P3D_RG_EFUSE_AUTO_LOAD_DIS	BIT(12)
++
+ #define U3P_U3_PHYD_CDR1		0x05c
+ #define P3D_RG_CDR_BIR_LTD1		GENMASK(28, 24)
+ #define P3D_RG_CDR_BIR_LTD1_VAL(x)	((0x1f & (x)) << 24)
+@@ -307,6 +326,11 @@ struct mtk_phy_pdata {
+ 	 * 48M PLL, fix it by switching PLL to 26M from default 48M
+ 	 */
+ 	bool sw_pll_48m_to_26m;
++	/*
++	 * Some SoCs (e.g. mt8195) drop a bit when use auto load efuse,
++	 * support sw way, also support it for v2/v3 optionally.
++	 */
++	bool sw_efuse_supported;
+ 	enum mtk_phy_version version;
+ };
  
- 	/* enable frequency meter */
--	tmp = readl(pbase + XSP_U2FREQ_FMCR0);
--	tmp |= P2F_RG_FREQDET_EN;
--	writel(tmp, pbase + XSP_U2FREQ_FMCR0);
-+	mtk_phy_set_bits(pbase + XSP_U2FREQ_FMCR0, P2F_RG_FREQDET_EN);
- 
- 	/* ignore return value */
- 	readl_poll_timeout(pbase + XSP_U2FREQ_FMMONR1, tmp,
-@@ -154,14 +147,10 @@ static void u2_phy_slew_rate_calibrate(struct mtk_xsphy *xsphy,
- 	fm_out = readl(pbase + XSP_U2FREQ_MMONR0);
- 
- 	/* disable frequency meter */
--	tmp = readl(pbase + XSP_U2FREQ_FMCR0);
--	tmp &= ~P2F_RG_FREQDET_EN;
--	writel(tmp, pbase + XSP_U2FREQ_FMCR0);
-+	mtk_phy_clear_bits(pbase + XSP_U2FREQ_FMCR0, P2F_RG_FREQDET_EN);
- 
- 	/* disable free run clock */
--	tmp = readl(pbase + XSP_U2FREQ_FMMONR1);
--	tmp &= ~P2F_RG_FRCK_EN;
--	writel(tmp, pbase + XSP_U2FREQ_FMMONR1);
-+	mtk_phy_clear_bits(pbase + XSP_U2FREQ_FMMONR1, P2F_RG_FRCK_EN);
- 
- 	if (fm_out) {
- 		/* (1024 / FM_OUT) x reference clock frequency x coefficient */
-@@ -177,31 +166,22 @@ static void u2_phy_slew_rate_calibrate(struct mtk_xsphy *xsphy,
- 		xsphy->src_ref_clk, xsphy->src_coef);
- 
- 	/* set HS slew rate */
--	tmp = readl(pbase + XSP_USBPHYACR5);
--	tmp &= ~P2A5_RG_HSTX_SRCTRL;
--	tmp |= P2A5_RG_HSTX_SRCTRL_VAL(calib_val);
--	writel(tmp, pbase + XSP_USBPHYACR5);
-+	mtk_phy_update_bits(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCTRL,
-+			    P2A5_RG_HSTX_SRCTRL_VAL(calib_val));
- 
- 	/* disable USB ring oscillator */
--	tmp = readl(pbase + XSP_USBPHYACR5);
--	tmp &= ~P2A5_RG_HSTX_SRCAL_EN;
--	writel(tmp, pbase + XSP_USBPHYACR5);
-+	mtk_phy_clear_bits(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCAL_EN);
+@@ -336,6 +360,10 @@ struct mtk_phy_instance {
+ 	struct regmap *type_sw;
+ 	u32 type_sw_reg;
+ 	u32 type_sw_index;
++	u32 efuse_sw_en;
++	u32 efuse_intr;
++	u32 efuse_tx_imp;
++	u32 efuse_rx_imp;
+ 	int eye_src;
+ 	int eye_vrt;
+ 	int eye_term;
+@@ -1040,6 +1068,130 @@ static int phy_type_set(struct mtk_phy_instance *instance)
+ 	return 0;
  }
  
- static void u2_phy_instance_init(struct mtk_xsphy *xsphy,
- 				 struct xsphy_instance *inst)
- {
- 	void __iomem *pbase = inst->port_base;
--	u32 tmp;
- 
- 	/* DP/DM BC1.1 path Disable */
--	tmp = readl(pbase + XSP_USBPHYACR6);
--	tmp &= ~P2A6_RG_BC11_SW_EN;
--	writel(tmp, pbase + XSP_USBPHYACR6);
-+	mtk_phy_clear_bits(pbase + XSP_USBPHYACR6, P2A6_RG_BC11_SW_EN);
- 
--	tmp = readl(pbase + XSP_USBPHYACR0);
--	tmp |= P2A0_RG_INTR_EN;
--	writel(tmp, pbase + XSP_USBPHYACR0);
-+	mtk_phy_set_bits(pbase + XSP_USBPHYACR0, P2A0_RG_INTR_EN);
- }
- 
- static void u2_phy_instance_power_on(struct mtk_xsphy *xsphy,
-@@ -209,16 +189,12 @@ static void u2_phy_instance_power_on(struct mtk_xsphy *xsphy,
- {
- 	void __iomem *pbase = inst->port_base;
- 	u32 index = inst->index;
--	u32 tmp;
- 
--	tmp = readl(pbase + XSP_USBPHYACR6);
--	tmp |= P2A6_RG_OTG_VBUSCMP_EN;
--	writel(tmp, pbase + XSP_USBPHYACR6);
-+	mtk_phy_set_bits(pbase + XSP_USBPHYACR6, P2A6_RG_OTG_VBUSCMP_EN);
- 
--	tmp = readl(pbase + XSP_U2PHYDTM1);
--	tmp |= P2D_RG_VBUSVALID | P2D_RG_AVALID;
--	tmp &= ~P2D_RG_SESSEND;
--	writel(tmp, pbase + XSP_U2PHYDTM1);
-+	mtk_phy_update_bits(pbase + XSP_U2PHYDTM1,
-+			    P2D_RG_VBUSVALID | P2D_RG_AVALID | P2D_RG_SESSEND,
-+			    P2D_RG_VBUSVALID | P2D_RG_AVALID);
- 
- 	dev_dbg(xsphy->dev, "%s(%d)\n", __func__, index);
- }
-@@ -228,16 +204,12 @@ static void u2_phy_instance_power_off(struct mtk_xsphy *xsphy,
- {
- 	void __iomem *pbase = inst->port_base;
- 	u32 index = inst->index;
--	u32 tmp;
- 
--	tmp = readl(pbase + XSP_USBPHYACR6);
--	tmp &= ~P2A6_RG_OTG_VBUSCMP_EN;
--	writel(tmp, pbase + XSP_USBPHYACR6);
-+	mtk_phy_clear_bits(pbase + XSP_USBPHYACR6, P2A6_RG_OTG_VBUSCMP_EN);
- 
--	tmp = readl(pbase + XSP_U2PHYDTM1);
--	tmp &= ~(P2D_RG_VBUSVALID | P2D_RG_AVALID);
--	tmp |= P2D_RG_SESSEND;
--	writel(tmp, pbase + XSP_U2PHYDTM1);
-+	mtk_phy_update_bits(pbase + XSP_U2PHYDTM1,
-+			    P2D_RG_VBUSVALID | P2D_RG_AVALID | P2D_RG_SESSEND,
-+			    P2D_RG_SESSEND);
- 
- 	dev_dbg(xsphy->dev, "%s(%d)\n", __func__, index);
- }
-@@ -306,63 +278,43 @@ static void u2_phy_props_set(struct mtk_xsphy *xsphy,
- 			     struct xsphy_instance *inst)
- {
- 	void __iomem *pbase = inst->port_base;
--	u32 tmp;
- 
--	if (inst->efuse_intr) {
--		tmp = readl(pbase + XSP_USBPHYACR1);
--		tmp &= ~P2A1_RG_INTR_CAL;
--		tmp |= P2A1_RG_INTR_CAL_VAL(inst->efuse_intr);
--		writel(tmp, pbase + XSP_USBPHYACR1);
--	}
-+	if (inst->efuse_intr)
-+		mtk_phy_update_bits(pbase + XSP_USBPHYACR1, P2A1_RG_INTR_CAL,
-+				    P2A1_RG_INTR_CAL_VAL(inst->efuse_intr));
- 
--	if (inst->eye_src) {
--		tmp = readl(pbase + XSP_USBPHYACR5);
--		tmp &= ~P2A5_RG_HSTX_SRCTRL;
--		tmp |= P2A5_RG_HSTX_SRCTRL_VAL(inst->eye_src);
--		writel(tmp, pbase + XSP_USBPHYACR5);
--	}
-+	if (inst->eye_src)
-+		mtk_phy_update_bits(pbase + XSP_USBPHYACR5, P2A5_RG_HSTX_SRCTRL,
-+				    P2A5_RG_HSTX_SRCTRL_VAL(inst->eye_src));
- 
--	if (inst->eye_vrt) {
--		tmp = readl(pbase + XSP_USBPHYACR1);
--		tmp &= ~P2A1_RG_VRT_SEL;
--		tmp |= P2A1_RG_VRT_SEL_VAL(inst->eye_vrt);
--		writel(tmp, pbase + XSP_USBPHYACR1);
--	}
-+	if (inst->eye_vrt)
-+		mtk_phy_update_bits(pbase + XSP_USBPHYACR1, P2A1_RG_VRT_SEL,
-+				    P2A1_RG_VRT_SEL_VAL(inst->eye_vrt));
- 
--	if (inst->eye_term) {
--		tmp = readl(pbase + XSP_USBPHYACR1);
--		tmp &= ~P2A1_RG_TERM_SEL;
--		tmp |= P2A1_RG_TERM_SEL_VAL(inst->eye_term);
--		writel(tmp, pbase + XSP_USBPHYACR1);
--	}
-+	if (inst->eye_term)
-+		mtk_phy_update_bits(pbase + XSP_USBPHYACR1, P2A1_RG_TERM_SEL,
-+				    P2A1_RG_TERM_SEL_VAL(inst->eye_term));
- }
- 
- static void u3_phy_props_set(struct mtk_xsphy *xsphy,
- 			     struct xsphy_instance *inst)
- {
- 	void __iomem *pbase = inst->port_base;
--	u32 tmp;
- 
--	if (inst->efuse_intr) {
--		tmp = readl(xsphy->glb_base + SSPXTP_PHYA_GLB_00);
--		tmp &= ~RG_XTP_GLB_BIAS_INTR_CTRL;
--		tmp |= RG_XTP_GLB_BIAS_INTR_CTRL_VAL(inst->efuse_intr);
--		writel(tmp, xsphy->glb_base + SSPXTP_PHYA_GLB_00);
--	}
-+	if (inst->efuse_intr)
-+		mtk_phy_update_bits(xsphy->glb_base + SSPXTP_PHYA_GLB_00,
-+				    RG_XTP_GLB_BIAS_INTR_CTRL,
-+				    RG_XTP_GLB_BIAS_INTR_CTRL_VAL(inst->efuse_intr));
- 
--	if (inst->efuse_tx_imp) {
--		tmp = readl(pbase + SSPXTP_PHYA_LN_04);
--		tmp &= ~RG_XTP_LN0_TX_IMPSEL;
--		tmp |= RG_XTP_LN0_TX_IMPSEL_VAL(inst->efuse_tx_imp);
--		writel(tmp, pbase + SSPXTP_PHYA_LN_04);
--	}
-+	if (inst->efuse_tx_imp)
-+		mtk_phy_update_bits(pbase + SSPXTP_PHYA_LN_04,
-+				    RG_XTP_LN0_TX_IMPSEL,
-+				    RG_XTP_LN0_TX_IMPSEL_VAL(inst->efuse_tx_imp));
- 
--	if (inst->efuse_rx_imp) {
--		tmp = readl(pbase + SSPXTP_PHYA_LN_14);
--		tmp &= ~RG_XTP_LN0_RX_IMPSEL;
--		tmp |= RG_XTP_LN0_RX_IMPSEL_VAL(inst->efuse_rx_imp);
--		writel(tmp, pbase + SSPXTP_PHYA_LN_14);
--	}
-+	if (inst->efuse_rx_imp)
-+		mtk_phy_update_bits(pbase + SSPXTP_PHYA_LN_14,
-+				    RG_XTP_LN0_RX_IMPSEL,
-+				    RG_XTP_LN0_RX_IMPSEL_VAL(inst->efuse_rx_imp));
- }
- 
++static int phy_efuse_get(struct mtk_tphy *tphy, struct mtk_phy_instance *instance)
++{
++	struct device *dev = &instance->phy->dev;
++	int ret = 0;
++
++	/* tphy v1 doesn't support sw efuse, skip it */
++	if (!tphy->pdata->sw_efuse_supported) {
++		instance->efuse_sw_en = 0;
++		return 0;
++	}
++
++	/* software efuse is optional */
++	instance->efuse_sw_en = device_property_read_bool(dev, "nvmem-cells");
++	if (!instance->efuse_sw_en)
++		return 0;
++
++	switch (instance->type) {
++	case PHY_TYPE_USB2:
++		ret = nvmem_cell_read_variable_le_u32(dev, "intr", &instance->efuse_intr);
++		if (ret) {
++			dev_err(dev, "fail to get u2 intr efuse, %d\n", ret);
++			break;
++		}
++
++		/* no efuse, ignore it */
++		if (!instance->efuse_intr) {
++			dev_warn(dev, "no u2 intr efuse, but dts enable it\n");
++			instance->efuse_sw_en = 0;
++			break;
++		}
++
++		dev_dbg(dev, "u2 efuse - intr %x\n", instance->efuse_intr);
++		break;
++
++	case PHY_TYPE_USB3:
++	case PHY_TYPE_PCIE:
++		ret = nvmem_cell_read_variable_le_u32(dev, "intr", &instance->efuse_intr);
++		if (ret) {
++			dev_err(dev, "fail to get u3 intr efuse, %d\n", ret);
++			break;
++		}
++
++		ret = nvmem_cell_read_variable_le_u32(dev, "rx_imp", &instance->efuse_rx_imp);
++		if (ret) {
++			dev_err(dev, "fail to get u3 rx_imp efuse, %d\n", ret);
++			break;
++		}
++
++		ret = nvmem_cell_read_variable_le_u32(dev, "tx_imp", &instance->efuse_tx_imp);
++		if (ret) {
++			dev_err(dev, "fail to get u3 tx_imp efuse, %d\n", ret);
++			break;
++		}
++
++		/* no efuse, ignore it */
++		if (!instance->efuse_intr &&
++		    !instance->efuse_rx_imp &&
++		    !instance->efuse_rx_imp) {
++			dev_warn(dev, "no u3 intr efuse, but dts enable it\n");
++			instance->efuse_sw_en = 0;
++			break;
++		}
++
++		dev_dbg(dev, "u3 efuse - intr %x, rx_imp %x, tx_imp %x\n",
++			instance->efuse_intr, instance->efuse_rx_imp,instance->efuse_tx_imp);
++		break;
++	default:
++		dev_err(dev, "no sw efuse for type %d\n", instance->type);
++		ret = -EINVAL;
++	}
++
++	return ret;
++}
++
++static void phy_efuse_set(struct mtk_phy_instance *instance)
++{
++	struct device *dev = &instance->phy->dev;
++	struct u2phy_banks *u2_banks = &instance->u2_banks;
++	struct u3phy_banks *u3_banks = &instance->u3_banks;
++	u32 tmp;
++
++	if (!instance->efuse_sw_en)
++		return;
++
++	switch (instance->type) {
++	case PHY_TYPE_USB2:
++		tmp = readl(u2_banks->misc + U3P_MISC_REG1);
++		tmp |= MR1_EFUSE_AUTO_LOAD_DIS;
++		writel(tmp, u2_banks->misc + U3P_MISC_REG1);
++
++		tmp = readl(u2_banks->com + U3P_USBPHYACR1);
++		tmp &= ~PA1_RG_INTR_CAL;
++		tmp |= PA1_RG_INTR_CAL_VAL(instance->efuse_intr);
++		writel(tmp, u2_banks->com + U3P_USBPHYACR1);
++		break;
++	case PHY_TYPE_USB3:
++	case PHY_TYPE_PCIE:
++		tmp = readl(u3_banks->phyd + U3P_U3_PHYD_RSV);
++		tmp |= P3D_RG_EFUSE_AUTO_LOAD_DIS;
++		writel(tmp, u3_banks->phyd + U3P_U3_PHYD_RSV);
++
++		tmp = readl(u3_banks->phyd + U3P_U3_PHYD_IMPCAL0);
++		tmp &= ~P3D_RG_TX_IMPEL;
++		tmp |= P3D_RG_TX_IMPEL_VAL(instance->efuse_tx_imp);
++		tmp |= P3D_RG_FORCE_TX_IMPEL;
++		writel(tmp, u3_banks->phyd + U3P_U3_PHYD_IMPCAL0);
++
++		tmp = readl(u3_banks->phyd + U3P_U3_PHYD_IMPCAL1);
++		tmp &= ~P3D_RG_RX_IMPEL;
++		tmp |= P3D_RG_RX_IMPEL_VAL(instance->efuse_rx_imp);
++		tmp |= P3D_RG_FORCE_RX_IMPEL;
++		writel(tmp, u3_banks->phyd + U3P_U3_PHYD_IMPCAL1);
++
++		tmp = readl(u3_banks->phya + U3P_U3_PHYA_REG0);
++		tmp &= ~P3A_RG_IEXT_INTR;
++		tmp |= P3A_RG_IEXT_INTR_VAL(instance->efuse_intr);
++		writel(tmp, u3_banks->phya + U3P_U3_PHYA_REG0);
++		break;
++	default:
++		dev_warn(dev, "no sw efuse for type %d\n", instance->type);
++		break;
++	}
++}
++
  static int mtk_phy_init(struct phy *phy)
+ {
+ 	struct mtk_phy_instance *instance = phy_get_drvdata(phy);
+@@ -1050,6 +1202,8 @@ static int mtk_phy_init(struct phy *phy)
+ 	if (ret)
+ 		return ret;
+ 
++	phy_efuse_set(instance);
++
+ 	switch (instance->type) {
+ 	case PHY_TYPE_USB2:
+ 		u2_phy_instance_init(tphy, instance);
+@@ -1134,6 +1288,7 @@ static struct phy *mtk_phy_xlate(struct device *dev,
+ 	struct mtk_phy_instance *instance = NULL;
+ 	struct device_node *phy_np = args->np;
+ 	int index;
++	int ret;
+ 
+ 	if (args->args_count != 1) {
+ 		dev_err(dev, "invalid number of cells in 'phy' property\n");
+@@ -1174,6 +1329,10 @@ static struct phy *mtk_phy_xlate(struct device *dev,
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
++	ret = phy_efuse_get(tphy, instance);
++	if (ret)
++		return ERR_PTR(ret);
++
+ 	phy_parse_property(tphy, instance);
+ 	phy_type_set(instance);
+ 
+@@ -1196,10 +1355,12 @@ static const struct mtk_phy_pdata tphy_v1_pdata = {
+ 
+ static const struct mtk_phy_pdata tphy_v2_pdata = {
+ 	.avoid_rx_sen_degradation = false,
++	.sw_efuse_supported = true,
+ 	.version = MTK_PHY_V2,
+ };
+ 
+ static const struct mtk_phy_pdata tphy_v3_pdata = {
++	.sw_efuse_supported = true,
+ 	.version = MTK_PHY_V3,
+ };
+ 
+@@ -1210,6 +1371,7 @@ static const struct mtk_phy_pdata mt8173_pdata = {
+ 
+ static const struct mtk_phy_pdata mt8195_pdata = {
+ 	.sw_pll_48m_to_26m = true,
++	.sw_efuse_supported = true,
+ 	.version = MTK_PHY_V3,
+ };
+ 
 -- 
 2.18.0
 
