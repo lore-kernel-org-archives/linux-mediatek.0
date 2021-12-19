@@ -4,61 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2C5CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Dec 2021 10:41:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08F69C433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 19 Dec 2021 11:00:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2YdC1SK6vptJcS4LNbjCITfae3V4h73eua8WXz0yblQ=; b=m2ozScWe1oVpc0
-	eq/YDmZean80ZXh28gdhu8xepVnuq+AU6r1vfEDEkjVdmpw/1axDt0ID1G953CTdpXrM4UFGSLLBj
-	NbEIR1DXF7ywGbb3rAcJZM3+1/mBDZO4sXHuiJ5Dii/KhvO9gBBJjmlsmIHBqdsLDIVm4o7dciAjG
-	YvRUaVcr0ySEJUcGQFzcsBspwi2ZESMXcmkS59fttL9aKHCyRchZo9CHbEFnLSh8+Sd2NiNFOyuTG
-	sVXFW9oS1a+XCwIJlt2lS//xBVGc/Vt89OhOSw4VOrG7mgyVV4Z/JEETAmiiGdgYPGxwmHkhksFJW
-	5g1kx7NTox5DqSZs+9eA==;
+	List-Owner; bh=gZSoQQlmG8y2vo80HIIMhQtsGakEYUsimKCSgqytgH0=; b=ckuOe/WWGqvYOt
+	KKNgQE9JGR4w32VkpLkCGhrr61gaPPOFMLLg5AgiSWqcBzhS5BPVguyE+NNp7mBSfMK5GOwVgUfSV
+	B3fg1Tu13TMKHCDoyr8Kq1fqaBh9QAMLD9hi5AdNxY2Y8HruFJTxtpHOuK+9PZNBMAXg2z5hK44L7
+	lrQL663TTa8k9E9Nj5PyTM/7ykPCFriOnCAxpduM3aMaxYDcrq1Wvm6kJVruZG9mwF7RVZgfmymhV
+	Youk1fX5+f3WoUVf1MOuppKTAKhIwT2hmuY4uiTBUDHeElWEZtLffak1F+1FMXwq6wK1ytlZTm9LH
+	giHosvhcjUCJgEr6JbVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mytcr-00Fi3c-P6; Sun, 19 Dec 2021 10:41:09 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1mytvY-00FkAb-NF; Sun, 19 Dec 2021 11:00:28 +0000
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mytcg-00Fi1l-6H; Sun, 19 Dec 2021 10:40:59 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 1811160C83;
- Sun, 19 Dec 2021 10:40:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42E80C36AE0;
- Sun, 19 Dec 2021 10:40:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
- s=korg; t=1639910455;
- bh=vSC2BJyhnf6Q1CVJ13NrRvcfJTkRhr7dQpxqqDwXIvw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=LoyK0JYVdZskNUm33a0xe5yTc4u8nllKzGjR4JTvwtLoc4i659gpry64XOzAMTZEG
- 0W5JBHy3Q7LkzBrcQ7BDg6JRqLh+vf63s+4YtVKCwnDXMb3+wszNTrN//EpLuYZO+B
- Kq07EAeTByK4dZYe6WgNg4jKYdYG3S7G4wBH1Z/I=
-Date: Sun, 19 Dec 2021 11:40:51 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Sergei Shtylyov <sergei.shtylyov@gmail.com>
+ id 1mytvM-00Fk84-Df; Sun, 19 Dec 2021 11:00:17 +0000
+Received: by mail-lj1-x22b.google.com with SMTP id z8so11022668ljz.9;
+ Sun, 19 Dec 2021 03:00:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=28WUq9Jt90oxX2or2ReiiYs2kHyyTZ89Ut+mmcfXAPQ=;
+ b=MvA2FRT3P60D5yjezwKIFYMSfSHRZp5IRVxMk0BdJWl2zzxHNVkQuwPx184OZ/VIL4
+ inJUvjLQNSa9mu40ePpg2Af/dAMNsQ2LYQ5kgf036j3CgQw65Bd3hBhudnTrSx/xr1AX
+ 7heIbvMCVnuesRNta2lfAUhZP80ZRAcoH7wvnixxNPaOOE47xOw5d0pYM3K8RKb5hHJW
+ Q6JdH2vvV6T4bHIJQiGlGqlukSiOlhjDwiLY6TS0SxgIBoE6gIjsB9LMrTerZ0c6yjIG
+ 5IWDPvcwnqizBNACYxB67R81bv+3MusJOwhmbciukFs/ZqAwpA3Vo2TibijgUG1fKfgK
+ oj2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:organization:in-reply-to
+ :content-transfer-encoding;
+ bh=28WUq9Jt90oxX2or2ReiiYs2kHyyTZ89Ut+mmcfXAPQ=;
+ b=mfBs8L/ZIPNJBtFmrpO9ZBPVDB8xrwx+wKjbokCIZxAaOG+oWAumPhfF3H6wkffMjg
+ zKz7hHAVu0clX1kAkysTD7O7O+3P7O+6ktBYpW1tNes6/mUz1DwVN9TgpphUVjIrMCvM
+ zzag3tv91t4ts28hX56MFaEHDBk89b5vgUa55SKpUMLZPSrd+Cq18QAo5SvOj9Uajiij
+ 5ZULLvdrVobz29RkdZzCKpLIxFOVy3I9b2MUB6jkmLZrvNiHwaWPSjFpx79iIZVFHi6v
+ cQ6yNKqM77Y0jgPgBao0ySsxed2V0i0iirK+E++YOdmWOWQ4wabmAcRqTuiNvj0S8fpr
+ +aww==
+X-Gm-Message-State: AOAM533lL+1dQTAfXRVjufVCQdIkNSNkywbnaBrbFIe62I9nNVk33auy
+ KKZYhiyC9ukd3ozLyT4HtSY=
+X-Google-Smtp-Source: ABdhPJy4q1W3IfUk3iv7+OV74YqxVPB6VWyBubwKM1rhmCigLlyhq+AHZfeU8BKn2WNBeKFGCEbnBw==
+X-Received: by 2002:a2e:5c86:: with SMTP id q128mr9866205ljb.245.1639911613992; 
+ Sun, 19 Dec 2021 03:00:13 -0800 (PST)
+Received: from [192.168.1.100] ([31.173.85.16])
+ by smtp.gmail.com with ESMTPSA id z28sm2223309ljn.77.2021.12.19.03.00.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 19 Dec 2021 03:00:13 -0800 (PST)
+Message-ID: <9c5417f7-3cd9-472d-5b04-f831135ffd78@gmail.com>
+Date: Sun, 19 Dec 2021 14:00:09 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.4.0
+Subject: Re: [PATCH v2 3/4] usb: mtu3: fix list_head check warning
+Content-Language: en-US
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
- Felipe Balbi <felipe.balbi@linux.intel.com>,
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- Eddie Hung <eddie.hung@mediatek.com>, stable@vger.kernel.org,
- Yuwen Ng <yuwen.ng@mediatek.com>
-Subject: Re: [PATCH v2 3/4] usb: mtu3: fix list_head check warning
-Message-ID: <Yb8MM2zL2Ecfzv1/@kroah.com>
+ Felipe Balbi <felipe.balbi@linux.intel.com>, linux-usb@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>,
+ stable@vger.kernel.org, Yuwen Ng <yuwen.ng@mediatek.com>
 References: <20211218095749.6250-1-chunfeng.yun@mediatek.com>
  <20211218095749.6250-3-chunfeng.yun@mediatek.com>
- <64b9453a-84c5-8d41-26d5-698d1ae9d473@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <64b9453a-84c5-8d41-26d5-698d1ae9d473@gmail.com>
+ <64b9453a-84c5-8d41-26d5-698d1ae9d473@gmail.com> <Yb8MM2zL2Ecfzv1/@kroah.com>
+From: Sergei Shtylyov <sergei.shtylyov@gmail.com>
+Organization: Brain-dead Software
+In-Reply-To: <Yb8MM2zL2Ecfzv1/@kroah.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211219_024058_325033_5D99E334 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20211219_030016_519190_BB3D2D7E 
+X-CRM114-Status: UNSURE (   6.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,26 +93,31 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 19, 2021 at 01:14:25PM +0300, Sergei Shtylyov wrote:
-> On 18.12.2021 12:57, Chunfeng Yun wrote:
+On 19.12.2021 13:40, Greg Kroah-Hartman wrote:
+[...]
+
+>>> This is caused by uninitialization of list_head.
+>>
+>>     Again, there's no such word as "uninitialization" (even if it existed, it
+>> wouldn't mean what you wanted to say); please replace by "not initializing".
 > 
-> > This is caused by uninitialization of list_head.
+> We are not English language scholars, most of us do not have English as
+> their native language.  We all can understand what is being said here,
+> there's no need for any change, please do not be so critical.
+
+    OK, noted...
+    I was just somewhat upset that my 1st comment was ignored. :-/
+
+> thanks,
 > 
->    Again, there's no such word as "uninitialization" (even if it existed, it
-> wouldn't mean what you wanted to say); please replace by "not initializing".
+> greg k-h
 
-We are not English language scholars, most of us do not have English as
-their native language.  We all can understand what is being said here,
-there's no need for any change, please do not be so critical.
-
-thanks,
-
-greg k-h
+MBR, Sergey
 
 _______________________________________________
 Linux-mediatek mailing list
