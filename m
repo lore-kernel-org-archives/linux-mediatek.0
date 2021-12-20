@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0E2BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 12:58:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 131EAC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 12:59:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E1dBWZnB5rA3O1jKxpjNFaAZgmastcTGANLYzTjXd4U=; b=myYUwgzg6oeDEiEI9ZoY6Eqydy
-	4GHaYyhpthtV4qK7QbijZ2pIC8ZwjHq8EFHn6qS9RDDHjsjGrH/6wABc4DILdsXkiMCgtom2hgwbU
-	MxUsOT4qyL2tmwi7kJu7llRldEjOcqixyPtxJhQ0uCp/Lg2vfTSdg3HHawoZ6xCiXH0fD5jSpGa4Y
-	CC7DV1zYdOl4rTFQ+AkAXGPwozAezJfnj14dQ60SA1WDpsIMkkig9UIzfIqfCi/OHjKjm3zruETj1
-	efY7QwHaK3myvHzZ3wS+JuQvEV5Nd/chsoAVqeHjgstGqPYljmoemMYkoUm4GgwsOeOMAv8pdNwoG
-	SkqbFkJg==;
+	bh=eWqsYVmwnZhG1bRAszSJVqNgo/kGjbuQ87VoBsSZDbg=; b=x5Ys4SuSFcSLtEMIGlSBqCJc5q
+	dkfHO9qLzWNGZQ4F1PwQH+P3pcHjU0qg30/GVS0v61fdqx/GjIfrAHn09JCKtJqjf5wy8rcAgosg9
+	I+I7WSf/lGl47JcLibXCyQGUQlapgf9o09/Z6t2cCJ/ZN6E0RlZCgKwod7rmpKvNZX1IQCyPD/st5
+	AdQRqrdL2OINzsLBe1FhDBCbUZRV2y8lBIZh2Bd3wxt4BajpAlGC8J7H3MVT7LBKWMQHD8DDrlRCE
+	L8Z3U+JBtbLVYAO4+p5n+exkqH8dQV1xqoy7M+/cJIhUh1ORmEWtP6/v9qvfvSF9I36e67DXyulps
+	28ocihnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzIEz-002Q0f-Py; Mon, 20 Dec 2021 12:58:09 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1mzIGR-002Qbf-3X; Mon, 20 Dec 2021 12:59:39 +0000
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzIEm-002Pv6-8g; Mon, 20 Dec 2021 12:57:57 +0000
+ id 1mzIGC-002QUz-Fv; Mon, 20 Dec 2021 12:59:25 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 09A05CE1025;
- Mon, 20 Dec 2021 12:57:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 611DEC36AE8;
- Mon, 20 Dec 2021 12:57:49 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 9CD55CE102B;
+ Mon, 20 Dec 2021 12:59:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E94BDC36AE9;
+ Mon, 20 Dec 2021 12:59:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640005072;
- bh=pewh3AlWMe5plAWePnKDnUBSLaArfevPs/u+jV6kgLI=;
+ s=k20201202; t=1640005161;
+ bh=cvkjnL8Vt4Ov4zMUd3/Cmz+GyzMZAAaM2YMINoQw4N0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=at4Wqri4EnCyzlcrOTehdUmeiLD+KwpiApzE8sJfQ1VI9wXwUAklMHO1qzmGrS4Xo
- Mj3E/kUMMDsAgDE+6F2kMqhN+W40DXkgnl3Ov2zPgk6sOKOg8eWDMJg+ObgkmGy0JY
- R03KkJizMeAc/9H1bxYg2DHtT+NU8WAPcfrn2eF6i0xcA5KHX6tRcZC3Y6iUoDN1B8
- ThefWEEPo8Gf5DXC9z9HjNOJkMC+NFWliSR4fg8/v0kPZ2WC61Jgyh9dw1kXBx97fx
- j7JmBis8qv+8raaw7960yXNRq9CT8AQNLNoinc2ygaXZNAuMKj6NBZXWym7JJfh7ww
- 2Vcy6uFV1PccQ==
-Date: Mon, 20 Dec 2021 12:57:46 +0000
+ b=JYQ2U66cYNkrvZfycRjpxFalLKRv4iDByDGyHrqkvlcJ3NHulktQ8DowT80sabbyJ
+ EjEX1xnNo0nvWwotPKuHw8R98nS2L3Nb1Fb3J8V79ifUPCUOTJynpFGOlabpM4yEmJ
+ 6f9EQQtmXc1Icqmn8Qd2OAXoULNsBQKqlWihdMVkoC6dWOBBhd2rPfT7zntnzdYgCf
+ tFitLJYAV96cVBFvONS0kGK6sXBNMnFBy5VWyV9JS4v9yBaxBHDmfwRhF1ansG/ygM
+ UDoOCDblKMvywdd0NQD0pQfQQUvFhPOMnLFYrXI1Dbn2939yKG5xD2F9n0C/a1SvwV
+ eF5kVXGTKurxg==
+Date: Mon, 20 Dec 2021 12:59:14 +0000
 From: Mark Brown <broonie@kernel.org>
 To: Tinghan Shen <tinghan.shen@mediatek.com>
 Cc: robh+dt@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com,
@@ -53,15 +53,15 @@ Cc: robh+dt@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 Subject: Re: [PATCH v7 2/4] dt-bindings: spi: spi-mtk-nor: add new clock name
  'axi' for spi nor
-Message-ID: <YcB9ygan0g/13Uz5@sirena.org.uk>
+Message-ID: <YcB+Ih5KkdaXGvsS@sirena.org.uk>
 References: <20211220121825.6446-1-tinghan.shen@mediatek.com>
  <20211220121825.6446-3-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 In-Reply-To: <20211220121825.6446-3-tinghan.shen@mediatek.com>
 X-Cookie: Christ was born in 4 B.C.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_045756_513620_DF42EFFF 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20211220_045924_734179_23759C06 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,18 +73,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7118093114689354222=="
+Content-Type: multipart/mixed; boundary="===============7610603080172560965=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============7118093114689354222==
+--===============7610603080172560965==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="TR47X5VnHL9xPYNY"
+	protocol="application/pgp-signature"; boundary="NST5rrJ6CjnkHa/k"
 Content-Disposition: inline
 
 
---TR47X5VnHL9xPYNY
+--NST5rrJ6CjnkHa/k
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
@@ -98,25 +98,25 @@ Look at what existing commits in the area you're changing are doing and
 make sure your subject lines visually resemble what they're doing.
 There's no need to resubmit to fix this alone.
 
---TR47X5VnHL9xPYNY
+--NST5rrJ6CjnkHa/k
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHAfckACgkQJNaLcl1U
-h9Da1Af+K65qLUvTTB2A+4DEfiym3syrCFx3PTWGF/cCBhyV8nzoEtsYcqGUOTFi
-AoS7keXjHItQnMdIhdJKLoIWVBxaYPq6kYzmSRNauSh+nYZmPD+6MDCWW4Kytj6w
-tjbpSyxR3kQVv0dcMyVd+s7tajVRhYalDTDR7BUNMhA8hAvlxm9zm0Og/hxY1sUl
-hY8M2Tc+DftJEY2B298TfS53ZwaHhI+m8rs7xLBQOg1UpObq1tqWJ/Hkt4nMbMxg
-bdB8oVMMHLWHFoNpWoHJymPXXgZ35SqQxLnmBnAhHjwBnzFtwSl0ErFCiQ+2HdoJ
-VvRxydsrTOpysC3/AWesYz9Ej3ghUQ==
-=hs52
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHAfiIACgkQJNaLcl1U
+h9CFkQf+PYaFOrmJrFz0nn/s4JFUuZA/0JmpfjK6Cv9M4kE+d077UHibmgwtxJnm
+MsH5VHjOgH7VdSFmaOi8vbSVyjjgEIQv23PP4JeNIJdZ9PO04XsveM9RosrAndfo
+T4H5HQTulqCYybkNBff2P1koJMZLitk9DilbGRv0KSQx6kf2fu04Hkp6Gb38ryee
+I2CydD5ul/+DCAG6VV1d9Q+dmYM3VH1qQnktN34pLpyVsDQX5MGaPDtS2xEzm+Bn
+W6nVpc6qqH2aNt3bQcil1SYjOnPx4urfxJ0+Nq0xhmbl+YsVFN8fdwq+LNbdBxYp
+89C6bb664Q3Tyj8qZMl0y9Iqn2tRiQ==
+=k7OU
 -----END PGP SIGNATURE-----
 
---TR47X5VnHL9xPYNY--
+--NST5rrJ6CjnkHa/k--
 
 
---===============7118093114689354222==
+--===============7610603080172560965==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -127,5 +127,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============7118093114689354222==--
+--===============7610603080172560965==--
 
