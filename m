@@ -4,69 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E64C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 07:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19FD6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 08:38:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3D079HuYGK7UWc8/L11v2RaJLuZ7OiqY7fO6/As+m80=; b=eyQqFLykMnAYZ5
-	8OC4fbabrjTAaDWZFw1N6nGIhAjuefDktuokETNS+BMMtAb11ID7tOZqXc6dgcEHWaBSxiIfYpKqn
-	U8vH8+OdbB2bJ45J84o95UUbCvbS7TTOLfYKeL8Jrd07rh/NV5Yw/4yNWxK8pBGN3NdRRAC/WBC1Y
-	5SCBQJ0pJdVK60Q6WzrUn69q+VhEobY9VRMfl3tbAQvdrQ6aIKpfTm/P/MSEKUwvU9hZJ4GxemGkA
-	gmvumtPrrZnzV08p0yrjU4PDM1p3ifFaCnsrxjHPa2VUUYPb7OlplUboWWGfmN/03w743YL/Y0V+g
-	h8EKEL1UUPd8Gtbz1OsA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XKW3xwpi8hxvXurLrfy70h1cclfRk6qC09V7nicK10o=; b=jbEbH29f6agEea
+	bDVsRPfxJH7xL0WYAGdSBGVbU2UslURp6tjAdB2IcUnmkY8TZnRCNCX54V9/FQfIt+8s7A9srqncG
+	BfXmf8Dc4Ij6dx+YAEBKI06tHmt8wvYgEzLicsycXE83JFSxIyFt1ZUFQa55GZVrbp13LSFBECGWk
+	fq+ZONx9uEMkM9RCOif3CA8ryHrqoJ6ZvizjcOXmoxhMj8/Rt7dsKueh77vOta37tuOY2RlliZlU5
+	nbML/xbMNMjeN11rBhSxTEtnrGt6MxNk2YyNut02jzlAyxh6x4nhRNCVGUfARrx8EpTmZNguI7K3J
+	ToIvGbx5Eud4DXO09CzQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzDOe-0014xX-8Y; Mon, 20 Dec 2021 07:47:48 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzDOL-0014r7-Bs; Mon, 20 Dec 2021 07:47:32 +0000
-X-UUID: 79fdbd418beb4bb4bd98b2e588046b50-20211220
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=t0B8By882gK+w6ltMCRFD4rdCroKZjb1bCIoXpRpAng=; 
- b=ZPDH69e6RZD7O0s3M+oPHWumPukVZg5oPqU5wDrHHXv+cMi/xE6R6Um45QZCh0KqopRCAcrZOO9y+sA+1/it1tl1atdGYkxWdpTkw5/FJE6nAQiItqkzFQFXkmLdmLAMgAUmPFCnjIYIV/q8sEJXbKcvTjCXDXe5uO8pI6DheKM=;
-X-UUID: 79fdbd418beb4bb4bd98b2e588046b50-20211220
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <xiangsheng.hou@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 757420622; Mon, 20 Dec 2021 00:47:26 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Dec 2021 23:37:25 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 20 Dec 2021 15:37:23 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 20 Dec 2021 15:37:22 +0800
-Message-ID: <1bf2dbbdf63fdfa3d8cea9afeee83ce11996f42a.camel@mediatek.com>
-Subject: Re: [RFC,v4,4/5] mtd: spinand: Move set/get OOB databytes to each
- ECC engines
-From: xiangsheng.hou <xiangsheng.hou@mediatek.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-CC: <broonie@kernel.org>, <benliang.zhao@mediatek.com>,
- <dandan.he@mediatek.com>, <guochun.mao@mediatek.com>,
- <bin.zhang@mediatek.com>, <sanny.chen@mediatek.com>,
- <mao.zhong@mediatek.com>, <yingjoe.chen@mediatek.com>, <donghunt@amazon.com>, 
- <rdlee@amazon.com>, <linux-mtd@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
-Date: Mon, 20 Dec 2021 15:37:23 +0800
-In-Reply-To: <20211214124111.3bd39e74@xps13>
-References: <20211130083202.14228-1-xiangsheng.hou@mediatek.com>
- <20211130083202.14228-5-xiangsheng.hou@mediatek.com>
- <20211214124111.3bd39e74@xps13>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+	id 1mzEBe-001Ewu-Kz; Mon, 20 Dec 2021 08:38:26 +0000
+Received: from smtp23.cstnet.cn ([159.226.251.23] helo=cstnet.cn)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mzEBS-001EvF-Ta; Mon, 20 Dec 2021 08:38:16 +0000
+Received: from localhost.localdomain (unknown [124.16.138.126])
+ by APP-03 (Coremail) with SMTP id rQCowAA3UJL0QMBhfh7vAw--.59045S2;
+ Mon, 20 Dec 2021 16:38:12 +0800 (CST)
+From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+To: sean.wang@mediatek.com,
+	sre@kernel.org,
+	matthias.bgg@gmail.com
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Subject: [PATCH] rtc: mt6397: Check for null res pointer
+Date: Mon, 20 Dec 2021 16:38:11 +0800
+Message-Id: <20211220083811.907261-1-jiasheng@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MTK: N
+X-CM-TRANSID: rQCowAA3UJL0QMBhfh7vAw--.59045S2
+X-Coremail-Antispam: 1UD129KBjvdXoW7JFyDuFW3uF4fWr1Duw1fXrb_yoWfAFc_X3
+ y2934xAF93GF12kFsrAFn3ZFWIkF9xuFs3Xr4rtFWak345Xw1Dta4jgr97Gr17Xw1UZFWD
+ GasFvr43AFyfAjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbcAFF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+ 6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+ A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
+ Gr1UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
+ 0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
+ jxv20xvE14v26r1j6r18McIj6I8E87Iv67AKxVW8JVWxJwAm72CE4IkC6x0Yz7v_Jr0_Gr
+ 1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkIecxEwVAFwVW8ZwCF
+ 04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r
+ 18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jw0_GFylIxkGc2Ij64vI
+ r41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr
+ 1lIxAIcVCF04k26cxKx2IYs7xG6rWUJVWrZr1UMIIF0xvEx4A2jsIE14v26r4j6F4UMIIF
+ 0xvEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJbIYCTnIWIevJa73UjIFyTuYvjfU8Z2-UUUUU
+X-Originating-IP: [124.16.138.126]
+X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211219_234730_854609_57D99682 
-X-CRM114-Status: GOOD (  22.37  )
+X-CRM114-CacheID: sfid-20211220_003815_365706_6661D0C5 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,105 +77,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Miquel,
+The return value of platform_get_resource() needs to be checked.
+To avoid use of error pointer in case that there is no suitable
+resource.
 
-On Tue, 2021-12-14 at 12:41 +0100, Miquel Raynal wrote:
-> 
-> > 
-> > @@ -299,22 +303,42 @@ static int
-> > nand_ecc_sw_bch_prepare_io_req(struct nand_device *nand,
-> >  	int total = nand->ecc.ctx.total;
-> >  	u8 *ecccalc = engine_conf->calc_buf;
-> >  	const u8 *data;
-> > -	int i;
-> > +	int i, ret = 0;
-> 
-> int i, ret;
-> 
-> >  
-> >  	/* Nothing to do for a raw operation */
-> >  	if (req->mode == MTD_OPS_RAW)
-> >  		return 0;
-> >  
-> > -	/* This engine does not provide BBM/free OOB bytes protection
-> > */
-> > -	if (!req->datalen)
-> > -		return 0;
-> > -
-> 
-> Why? Please drop this removal here and below, it has nothing to do
-> with
-> the current fix, right?
-> 
+Fixes: d28c74c10751 ("power: reset: add driver for mt6323 poweroff")
+Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+---
+ drivers/power/reset/mt6323-poweroff.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-For req->datalen == 0 and req->ooblen !=0 when write operation in
-OPS_AUTO mode, it`s also need to set OOB databytes. So I remove this to
-the back.
+diff --git a/drivers/power/reset/mt6323-poweroff.c b/drivers/power/reset/mt6323-poweroff.c
+index 0532803e6cbc..d90e76fcb938 100644
+--- a/drivers/power/reset/mt6323-poweroff.c
++++ b/drivers/power/reset/mt6323-poweroff.c
+@@ -57,6 +57,9 @@ static int mt6323_pwrc_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res)
++		return -EINVAL;
++
+ 	pwrc->base = res->start;
+ 	pwrc->regmap = mt6397_chip->regmap;
+ 	pwrc->dev = &pdev->dev;
+-- 
+2.25.1
 
-However, for OPS_RAW and OPS_PLACE_OOB mode, it`s unnecessary.
 
-I will try to fix this.
-
-> >  	nand_ecc_tweak_req(&engine_conf->req_ctx, req);
-> >  
-> >  	/* No more preparation for page read */
-> >  	if (req->type == NAND_PAGE_READ)
-> >  		return 0;
-> >  
-> > +	if (req->ooblen) {
-> > +		memset(engine_conf->oob_buf, 0xff,
-> > +		       nanddev_per_page_oobsize(nand));
-> 
-> I think this is only needed in the AUTO case.
-> 
-> > +
-> > +		if (req->mode == MTD_OPS_AUTO_OOB) {
-> > +			ret = mtd_ooblayout_set_databytes(mtd, req-
-> > >oobbuf.out,
-> > +							  engine_conf-
-> > >oob_buf,
-> > +							  req->ooboffs,
-> > +							  mtd-
-> > >oobavail);
-> > +			if (ret)
-> > +				return ret;
-> > +		} else {
-> > +			memcpy(engine_conf->oob_buf + req->ooboffs,
-> > +			       req->oobbuf.out, req->ooblen);
-> > +		}
-> > +
-> > +		engine_conf->src_oob_buf = (void *)req->oobbuf.out;
-> > +		req->oobbuf.out = engine_conf->oob_buf;
-> > +	}
-> > +
-> > +	/* This engine does not provide BBM/free OOB bytes protection
-> > */
-> > +	if (!req->datalen)
-> > +		return 0;
-> > +
-> 
-> I believe we can do something simpler:
-> 
-> if (req->ooblen && req->mode == AUTO) {
-> 	memcpy(oobbuf, req->oobbuf.out...
-> 	mtd_ooblayout_set_databytes(using oobbuf)
-> }
-> 
-> But I believe this should be done before tweaking the request so that
-> you can avoid messing with src_oob_buf, right?
-
-Yes, you are right. For OPS_AUTO mode, the maximal request OOB len is
-mtd->oobavail which smaller than nand->memorg.oobsize.
-
-Therefore, this will use bounce oob buffer when tweaking the request.
-
-> 
-> Same applies to the two other engines.
-
-I will.
-
-Thanks
-Xiangsheng Hou
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
