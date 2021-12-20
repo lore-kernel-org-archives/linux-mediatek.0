@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9AB2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 02:24:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55BBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 02:24:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uGKZvZrcly6A7CH723E7TJSJQDB+H+sCl9uxaVaGmrM=; b=KDdPrVqu7S9MfL
-	q+vFGM+v/jT2eXNrIRWLSzw8ogN6QTnVfJdNjVlxL9RVBOe/ut1EQSGPrKrKwaFbPXZkQeNJYz+sX
-	TXTyeabkz6f2MygCzen5s5LCgXDdpcXxhadIcdHkwNdxwUuKWfJ78Q/+Zj66BT8qKJa4H3lyEZ1fo
-	W3P45LDFc8dPl1ms38F27ENQSrhMdWFeW7NuhocoDwwePkSwm6H8nzJG5oBxyE+oWHVM8jK5BHemT
-	lbi8peodJbhSdBfe8kHdQg92KNh7r0KgmeGrwZu/hRmAsDULvkM1j3E23tgXCa3T8i3RYhno4/Kkv
-	3f3H3SNROKlLoec6Zr3w==;
+	List-Owner; bh=ihynT0+/FPDUHSgsVdXQDZP741IqOrV8sGnc/8zUlLQ=; b=WOhxAD+5GOZL90
+	YB3elUmhms+3q0buaEneTyaUjuTzHhMBfVFjY69bQPaHCwD+AcxWamoX3VTwnja/uMz+qCxBJiVcp
+	mGsDUNMaKcza77Q+6hICuLVChbbgflNpgp2sHYsOt7U3MjPcE2BC9oe29ubvdZi18tqLdIYFpCJFo
+	m/xyJ0r7S2sI9LuiVAhXgxHmhjLwtogU1a3ryPzIPL78YrPShJEAy5ABA38+GUEdDVz/v/JR1X66c
+	wf3n7PGIt+GoNVMH7m+QS3XUHNOOFrxpW8j4tCGnIiy3/02NEKmjAI6i4sBXyCKtz4FPvfkwufUAR
+	UECE0ZfSIE5PRtmYyTzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mz8LM-000CRV-H1; Mon, 20 Dec 2021 02:24:04 +0000
+	id 1mz8LO-000CSo-5i; Mon, 20 Dec 2021 02:24:06 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mz8LB-000CFv-E9
- for linux-mediatek@lists.infradead.org; Mon, 20 Dec 2021 02:23:54 +0000
-X-UUID: 2dffff4d366e4a44958fef042b59c932-20211219
-X-UUID: 2dffff4d366e4a44958fef042b59c932-20211219
+ id 1mz8LB-000CG9-QV
+ for linux-mediatek@lists.infradead.org; Mon, 20 Dec 2021 02:23:55 +0000
+X-UUID: c2088447f67a4dd7a75b63e03f906f1c-20211219
+X-UUID: c2088447f67a4dd7a75b63e03f906f1c-20211219
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <bo.jiao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1582938181; Sun, 19 Dec 2021 19:23:42 -0700
+ with ESMTP id 1187166421; Sun, 19 Dec 2021 19:23:42 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 19 Dec 2021 18:18:19 -0800
+ 15.0.1497.2; Sun, 19 Dec 2021 18:18:21 -0800
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 20 Dec 2021 10:18:13 +0800
+ Mon, 20 Dec 2021 10:18:15 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Mon, 20 Dec 2021 10:18:13 +0800
+ 15.0.1497.2 via Frontend Transport; Mon, 20 Dec 2021 10:18:14 +0800
 From: Bo Jiao <bo.jiao@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
@@ -47,17 +47,17 @@ CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
  <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
  <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
-Subject: [PATCH v4 07/12] mt76: mt7915: enlarge wcid size to 544
-Date: Mon, 20 Dec 2021 10:17:59 +0800
-Message-ID: <867e7d9e80ab24dc2d9c62f33d5879edd8ae506a.1639965732.git.Bo.Jiao@mediatek.com>
+Subject: [PATCH v4 09/12] mt76: mt7915: update rx rate reporting for mt7916
+Date: Mon, 20 Dec 2021 10:18:01 +0800
+Message-ID: <695e5ae34f907ab0a12dad69345c6dc3929f756c.1639965732.git.Bo.Jiao@mediatek.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <cover.1639965732.git.Bo.Jiao@mediatek.com>
 References: <cover.1639965732.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211219_182353_532150_E159D1D0 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20211219_182353_935784_CF8EC30B 
+X-CRM114-Status: GOOD (  16.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,8 +76,7 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-The mt7916 can support up to 544 wcid entries.
-This is an intermediate patch to add mt7916 support.
+mt7916 reports rx rate from rxd group3 directly.
 
 Co-developed-by: Sujuan Chen <sujuan.chen@mediatek.com>
 Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
@@ -85,79 +84,286 @@ Co-developed-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
 Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76.h          |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/init.c   |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mac.c    |  2 +-
- drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h | 10 ++++++++--
- 4 files changed, 11 insertions(+), 5 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7915/init.c  |   3 +-
+ .../net/wireless/mediatek/mt76/mt7915/mac.c   | 193 +++++++++++-------
+ .../net/wireless/mediatek/mt76/mt7915/mac.h   |   6 +
+ .../net/wireless/mediatek/mt76/mt7915/main.c  |   3 +-
+ 4 files changed, 129 insertions(+), 76 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 29bc381..4accfb5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -225,7 +225,7 @@ enum mt76_wcid_flags {
- 	MT_WCID_FLAG_HDR_TRANS,
- };
- 
--#define MT76_N_WCIDS 288
-+#define MT76_N_WCIDS 544
- 
- /* stored in ieee80211_tx_info::hw_queue */
- #define MT_TX_HW_QUEUE_EXT_PHY		BIT(3)
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/init.c b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-index 00dce19..8bc88db 100644
+index 8bc88db..7557429 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/init.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/init.c
-@@ -430,7 +430,7 @@ static void mt7915_mac_init(struct mt7915_dev *dev)
- 	/* enable hardware de-agg */
- 	mt76_set(dev, MT_MDP_DCR0, MT_MDP_DCR0_DAMSDU_EN);
+@@ -411,7 +411,8 @@ mt7915_mac_init_band(struct mt7915_dev *dev, u8 band)
+ 	mt76_rmw(dev, MT_MDP_BNRCFR1(band), mask, set);
  
--	for (i = 0; i < MT7915_WTBL_SIZE; i++)
-+	for (i = 0; i < mt7915_wtbl_size(dev); i++)
- 		mt7915_mac_wtbl_update(dev, i,
- 				       MT_WTBL_UPDATE_ADM_COUNT_CLEAR);
- 	for (i = 0; i < 2; i++)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-index 80db7b5..0be2e9f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
-@@ -1598,7 +1598,7 @@ static void mt7915_mac_add_txs(struct mt7915_dev *dev, void *data)
- 	if (pid < MT_PACKET_ID_FIRST)
- 		return;
- 
--	if (wcidx >= MT7915_WTBL_SIZE)
-+	if (wcidx >= mt7915_wtbl_size(dev))
- 		return;
- 
- 	rcu_read_lock();
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-index 44702b8..0066776 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mt7915.h
-@@ -12,8 +12,9 @@
- #define MT7915_MAX_INTERFACES		19
- #define MT7915_MAX_WMM_SETS		4
- #define MT7915_WTBL_SIZE		288
--#define MT7915_WTBL_RESERVED		(MT7915_WTBL_SIZE - 1)
--#define MT7915_WTBL_STA			(MT7915_WTBL_RESERVED -	\
-+#define MT7916_WTBL_SIZE		544
-+#define MT7915_WTBL_RESERVED		(mt7915_wtbl_size(dev) - 1)
-+#define MT7915_WTBL_STA			(MT7915_WTBL_RESERVED - \
- 					 MT7915_MAX_INTERFACES)
- 
- #define MT7915_WATCHDOG_TIME		(HZ / 10)
-@@ -480,6 +481,11 @@ static inline bool is_mt7915(struct mt76_dev *dev)
- 	return mt76_chip(dev) == 0x7915;
+ 	mt76_rmw_field(dev, MT_DMA_DCR0(band), MT_DMA_DCR0_MAX_RX_LEN, 0x680);
+-	/* disable rx rate report by default due to hw issues */
++
++	/* mt7915: disable rx rate report by default due to hw issues */
+ 	mt76_clear(dev, MT_DMA_DCR0(band), MT_DMA_DCR0_RXD_G5_EN);
  }
  
-+static inline u16 mt7915_wtbl_size(struct mt7915_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+index 74ec7cd..e16df04 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.c
+@@ -462,6 +462,116 @@ static int mt7915_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap)
+ 	return 0;
+ }
+ 
++static int
++mt7915_mac_fill_rx_rate(struct mt7915_dev *dev,
++			struct mt76_rx_status *status,
++			struct ieee80211_supported_band *sband,
++			__le32 *rxv)
 +{
-+	return is_mt7915(&dev->mt76) ? MT7915_WTBL_SIZE : MT7916_WTBL_SIZE;
++	u32 v0, v1, v2;
++	u16 legacy;
++	u8 flags, stbc, gi, bw, dcm, mode, nss;
++	int i, idx;
++	bool cck = false;
++
++	v0 = le32_to_cpu(rxv[0]);
++	v1 = le32_to_cpu(rxv[1]);
++	v2 = le32_to_cpu(rxv[2]);
++
++	idx = i = FIELD_GET(MT_PRXV_TX_RATE, v0);
++	nss = FIELD_GET(MT_PRXV_NSTS, v0) + 1;
++
++	if (!is_mt7915(&dev->mt76)) {
++		stbc = FIELD_GET(MT_PRXV_HT_STBC, v0);
++		gi = FIELD_GET(MT_PRXV_HT_SHORT_GI, v0);
++		mode = FIELD_GET(MT_PRXV_TX_MODE, v0);
++		dcm = FIELD_GET(MT_PRXV_DCM, v0);
++		bw = FIELD_GET(MT_PRXV_FRAME_MODE, v0);
++	} else {
++		stbc = FIELD_GET(MT_CRXV_HT_STBC, v2);
++		gi = FIELD_GET(MT_CRXV_HT_SHORT_GI, v2);
++		mode = FIELD_GET(MT_CRXV_TX_MODE, v2);
++		dcm = !!(idx & GENMASK(3, 0) & MT_PRXV_TX_DCM);
++		bw = FIELD_GET(MT_CRXV_FRAME_MODE, v2);
++	}
++
++	switch (mode) {
++	case MT_PHY_TYPE_CCK:
++		cck = true;
++		fallthrough;
++	case MT_PHY_TYPE_OFDM:
++		i = mt76_get_rate(&dev->mt76, sband, i, cck);
++		legacy = sband->bitrates[i].bitrate;
++		break;
++	case MT_PHY_TYPE_HT_GF:
++	case MT_PHY_TYPE_HT:
++		status->encoding = RX_ENC_HT;
++		if (i > 31)
++			return -EINVAL;
++
++		flags = RATE_INFO_FLAGS_MCS;
++		if (gi)
++			flags |= RATE_INFO_FLAGS_SHORT_GI;
++		break;
++	case MT_PHY_TYPE_VHT:
++		status->nss = nss;
++		status->encoding = RX_ENC_VHT;
++		if (i > 9)
++			return -EINVAL;
++
++		flags = RATE_INFO_FLAGS_VHT_MCS;
++		if (gi)
++			flags |= RATE_INFO_FLAGS_SHORT_GI;
++		break;
++	case MT_PHY_TYPE_HE_MU:
++	case MT_PHY_TYPE_HE_SU:
++	case MT_PHY_TYPE_HE_EXT_SU:
++	case MT_PHY_TYPE_HE_TB:
++		status->nss = nss;
++		status->encoding = RX_ENC_HE;
++		i &= GENMASK(3, 0);
++
++		if (gi <= NL80211_RATE_INFO_HE_GI_3_2)
++			status->he_gi = gi;
++
++		status->he_dcm = dcm;
++		flags |= RATE_INFO_FLAGS_HE_MCS;
++		break;
++	default:
++		return -EINVAL;
++	}
++	status->rate_idx = i;
++
++	switch (bw) {
++	case IEEE80211_STA_RX_BW_20:
++		break;
++	case IEEE80211_STA_RX_BW_40:
++		if (mode & MT_PHY_TYPE_HE_EXT_SU &&
++		    (idx & MT_PRXV_TX_ER_SU_106T)) {
++			status->bw = RATE_INFO_BW_HE_RU;
++			status->he_ru =
++				NL80211_RATE_INFO_HE_RU_ALLOC_106;
++		} else {
++			status->bw = RATE_INFO_BW_40;
++		}
++		break;
++	case IEEE80211_STA_RX_BW_80:
++		status->bw = RATE_INFO_BW_80;
++		break;
++	case IEEE80211_STA_RX_BW_160:
++		status->bw = RATE_INFO_BW_160;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	status->enc_flags |= RX_ENC_FLAG_STBC_MASK * stbc;
++	if (mode < MT_PHY_TYPE_HE_SU && gi)
++		status->enc_flags |= RX_ENC_FLAG_SHORT_GI;
++
++	return 0;
 +}
 +
- void mt7915_dual_hif_set_irq_mask(struct mt7915_dev *dev, bool write_reg,
- 				  u32 clear, u32 set);
+ static int
+ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ {
+@@ -626,7 +736,8 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
  
+ 	/* RXD Group 3 - P-RXV */
+ 	if (rxd1 & MT_RXD1_NORMAL_GROUP_3) {
+-		u32 v0, v1, v2;
++		u32 v0, v1;
++		int ret;
+ 
+ 		rxv = rxd;
+ 		rxd += 2;
+@@ -635,7 +746,6 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 
+ 		v0 = le32_to_cpu(rxv[0]);
+ 		v1 = le32_to_cpu(rxv[1]);
+-		v2 = le32_to_cpu(rxv[2]);
+ 
+ 		if (v0 & MT_PRXV_HT_AD_CODE)
+ 			status->enc_flags |= RX_ENC_FLAG_LDPC;
+@@ -657,82 +767,17 @@ mt7915_mac_fill_rx(struct mt7915_dev *dev, struct sk_buff *skb)
+ 
+ 		/* RXD Group 5 - C-RXV */
+ 		if (rxd1 & MT_RXD1_NORMAL_GROUP_5) {
+-			u8 stbc = FIELD_GET(MT_CRXV_HT_STBC, v2);
+-			u8 gi = FIELD_GET(MT_CRXV_HT_SHORT_GI, v2);
+-			bool cck = false;
+-
+ 			rxd += 18;
+ 			if ((u8 *)rxd - skb->data >= skb->len)
+ 				return -EINVAL;
++		}
+ 
+-			idx = i = FIELD_GET(MT_PRXV_TX_RATE, v0);
+-			mode = FIELD_GET(MT_CRXV_TX_MODE, v2);
+-
+-			switch (mode) {
+-			case MT_PHY_TYPE_CCK:
+-				cck = true;
+-				fallthrough;
+-			case MT_PHY_TYPE_OFDM:
+-				i = mt76_get_rate(&dev->mt76, sband, i, cck);
+-				break;
+-			case MT_PHY_TYPE_HT_GF:
+-			case MT_PHY_TYPE_HT:
+-				status->encoding = RX_ENC_HT;
+-				if (i > 31)
+-					return -EINVAL;
+-				break;
+-			case MT_PHY_TYPE_VHT:
+-				status->nss =
+-					FIELD_GET(MT_PRXV_NSTS, v0) + 1;
+-				status->encoding = RX_ENC_VHT;
+-				if (i > 9)
+-					return -EINVAL;
+-				break;
+-			case MT_PHY_TYPE_HE_MU:
+-			case MT_PHY_TYPE_HE_SU:
+-			case MT_PHY_TYPE_HE_EXT_SU:
+-			case MT_PHY_TYPE_HE_TB:
+-				status->nss =
+-					FIELD_GET(MT_PRXV_NSTS, v0) + 1;
+-				status->encoding = RX_ENC_HE;
+-				i &= GENMASK(3, 0);
+-
+-				if (gi <= NL80211_RATE_INFO_HE_GI_3_2)
+-					status->he_gi = gi;
+-
+-				status->he_dcm = !!(idx & MT_PRXV_TX_DCM);
+-				break;
+-			default:
+-				return -EINVAL;
+-			}
+-			status->rate_idx = i;
+-
+-			switch (FIELD_GET(MT_CRXV_FRAME_MODE, v2)) {
+-			case IEEE80211_STA_RX_BW_20:
+-				break;
+-			case IEEE80211_STA_RX_BW_40:
+-				if (mode & MT_PHY_TYPE_HE_EXT_SU &&
+-				    (idx & MT_PRXV_TX_ER_SU_106T)) {
+-					status->bw = RATE_INFO_BW_HE_RU;
+-					status->he_ru =
+-						NL80211_RATE_INFO_HE_RU_ALLOC_106;
+-				} else {
+-					status->bw = RATE_INFO_BW_40;
+-				}
+-				break;
+-			case IEEE80211_STA_RX_BW_80:
+-				status->bw = RATE_INFO_BW_80;
+-				break;
+-			case IEEE80211_STA_RX_BW_160:
+-				status->bw = RATE_INFO_BW_160;
+-				break;
+-			default:
+-				return -EINVAL;
+-			}
+-
+-			status->enc_flags |= RX_ENC_FLAG_STBC_MASK * stbc;
+-			if (mode < MT_PHY_TYPE_HE_SU && gi)
+-				status->enc_flags |= RX_ENC_FLAG_SHORT_GI;
++		if (!is_mt7915(&dev->mt76) ||
++		    (is_mt7915(&dev->mt76) &&
++		     (rxd1 & MT_RXD1_NORMAL_GROUP_5))) {
++			ret = mt7915_mac_fill_rx_rate(dev, status, sband, rxv);
++			if (ret < 0)
++				return ret;
+ 		}
+ 	}
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+index 4504ebc..d79f0a5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/mac.h
+@@ -125,6 +125,12 @@ enum rx_pkt_type {
+ #define MT_PRXV_RCPI2			GENMASK(23, 16)
+ #define MT_PRXV_RCPI1			GENMASK(15, 8)
+ #define MT_PRXV_RCPI0			GENMASK(7, 0)
++#define MT_PRXV_HT_SHORT_GI		GENMASK(16, 15)
++#define MT_PRXV_HT_STBC			GENMASK(23, 22)
++#define MT_PRXV_TX_MODE			GENMASK(27, 24)
++#define MT_PRXV_FRAME_MODE		GENMASK(14, 12)
++#define MT_PRXV_DCM			BIT(17)
++#define MT_PRXV_NUM_RX			BIT(20, 18)
+ 
+ /* C-RXV */
+ #define MT_CRXV_HT_STBC			GENMASK(1, 0)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/main.c b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+index 8302fae..d2a7a4a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/main.c
+@@ -1006,7 +1006,8 @@ static void mt7915_sta_statistics(struct ieee80211_hw *hw,
+ 	struct rate_info *txrate = &msta->wcid.rate;
+ 	struct rate_info rxrate = {};
+ 
+-	if (!mt7915_mcu_get_rx_rate(phy, vif, sta, &rxrate)) {
++	if (is_mt7915(&phy->dev->mt76) &&
++	    !mt7915_mcu_get_rx_rate(phy, vif, sta, &rxrate)) {
+ 		sinfo->rxrate = rxrate;
+ 		sinfo->filled |= BIT_ULL(NL80211_STA_INFO_RX_BITRATE);
+ 	}
 -- 
 2.18.0
 
