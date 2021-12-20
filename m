@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DD21C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 16:18:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F877C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 17:52:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cXs6kSCrgTv4FvUzeMlZUciIWBNOHw79SjMi08+hriw=; b=Yqi0cF+Em47zw0
-	AQE//XEyyhrMqGIAKvndTqMQUMsyTaJn2sMvrgD3MX7N4EIefOa/uSmYefPtcvdoK0brqXiCAvV5S
-	WD1U6dPiOwIY7somqYRKtDOuzdbC1jTMaghX8cyDMCqzDaxPaGmk/XrhYifmLNzt4tO2Y+Ggav/ef
-	98VY2k5fvCOc3fmP8PkT48rzpINKUUcjlKY5TuVsaK/Z7r/USyl7+mehkzUmdqAcWuiR06cgo7YxM
-	Vl7z48rYUV8UDGH/CYGXP5CgQSe7qpCIwmeVPt/NMCUia1oABmEB/D0Wngo+2T2WNWlY2i0dMk+2c
-	tzSpk310ZjSuzjTBvRhA==;
+	List-Owner; bh=ev94bjfFajSgXgr4wQJbHQTVzVD4znPW543XnMsCY04=; b=FZ4SHmtQuG/qU9
+	5gJVSWTm0cl0zxrE1GaUyEJS8IJDHLzeu+YoRH8f+F/CRDaDXjtRUrAvnvTMWw9vUNpL9beLZe3vj
+	TR6pxL6IQK01II7iR/eom8nE/Y3BeIAIi4FmHtCs/mr/79Eol5kVpLrFr5xc3Quv0cGF6juiLdozY
+	avaPdeFa2rL6ShQuyZsnjJZJyP/3yFJPctTZp2/PayGAh5G2ObCsnrKTEy9cYjtYIMKI9Qcl1OGYj
+	vZrUWXUE9MeIxlgcbHkOLZ5ZkJCqirh2HHCQruTBA8lj8N2faaWIt2Gkp8HUUWTWvbUczg5jNiKRL
+	GMg7xrD0V/xW/s8Kr+Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzLN9-003GMP-NR; Mon, 20 Dec 2021 16:18:47 +0000
-Received: from mout.kundenserver.de ([212.227.126.131])
+	id 1mzMq4-003fLx-5e; Mon, 20 Dec 2021 17:52:44 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzLMw-003GJt-9F; Mon, 20 Dec 2021 16:18:35 +0000
-Received: from mail-wr1-f46.google.com ([209.85.221.46]) by
- mrelayeu.kundenserver.de (mreue012 [213.165.67.97]) with ESMTPSA (Nemesis) id
- 1N8n8I-1mNJ6u1vPC-015ts3; Mon, 20 Dec 2021 17:18:30 +0100
-Received: by mail-wr1-f46.google.com with SMTP id v7so13868565wrv.12;
- Mon, 20 Dec 2021 08:18:30 -0800 (PST)
-X-Gm-Message-State: AOAM5307ON6cx9PCOoNiGhCSJz4fXnai/f6Lxkuayq5IzhMJuoAPu9IV
- E/t8c4ab8eLv7nOuxfNjbxpUqBGWk73Bvg/NcpM=
-X-Google-Smtp-Source: ABdhPJyA2LGJ0uydHgPL3F8iobo0HnKBt8FXDwHRu+xqKAdhr7la//Nq7B9um0JBzW7e91O9oTfXHdgSG5Qim03j8Lo=
-X-Received: by 2002:a5d:6989:: with SMTP id g9mr13221348wru.12.1640017110131; 
- Mon, 20 Dec 2021 08:18:30 -0800 (PST)
+ id 1mzMpz-003fJk-TF
+ for linux-mediatek@lists.infradead.org; Mon, 20 Dec 2021 17:52:42 +0000
+X-UUID: 5ecc888f2cc6459cb48c8f30fc6cb633-20211220
+X-UUID: 5ecc888f2cc6459cb48c8f30fc6cb633-20211220
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1604084927; Mon, 20 Dec 2021 10:52:36 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 20 Dec 2021 09:52:34 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 21 Dec 2021 01:52:33 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Tue, 21 Dec 2021 01:52:32 +0800
+From: <sean.wang@mediatek.com>
+To: <pmenzel@molgen.mpg.de>
+CC: <marcel@holtmann.org>, <johan.hedberg@gmail.com>,
+ <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
+ <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
+ <mcchou@chromium.org>, <shawnku@google.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 2/3] Bluetooth: btmtksdio: Enable SCO over I2S function
+Date: Tue, 21 Dec 2021 01:52:30 +0800
+Message-ID: <1640022750-16263-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <638a2506-c410-d98c-b704-6f16f72e0bc6@molgen.mpg.de--annotate>
+References: <638a2506-c410-d98c-b704-6f16f72e0bc6@molgen.mpg.de--annotate>
 MIME-Version: 1.0
-References: <0d05e8b6-c56f-bad7-00c1-44682cedb38f@suse.com>
-In-Reply-To: <0d05e8b6-c56f-bad7-00c1-44682cedb38f@suse.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Mon, 20 Dec 2021 17:18:14 +0100
-X-Gmail-Original-Message-ID: <CAK8P3a1DaHnf0QOMjuvTYGeUttUNkBLhFu0b-43jBAa0bHtLFw@mail.gmail.com>
-Message-ID: <CAK8P3a1DaHnf0QOMjuvTYGeUttUNkBLhFu0b-43jBAa0bHtLFw@mail.gmail.com>
-Subject: Re: [GIT PULL] arm64: dts: updates for v5.17
-To: Matthias Brugger <mbrugger@suse.com>
-Cc: arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Ben Tseng <ben.tseng@mediatek.com>, Fabien Parent <fparent@baylibre.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Prashant Malani <pmalani@chromium.org>, 
- Sam Shih <sam.shih@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
- Tinghan Shen <tinghan.shen@mediatek.com>
-X-Provags-ID: V03:K1:oTpDHgAcFZg6piqP69qmRLSCzJzQifPqbQWClIk1ZU4RWF6HKzi
- FKIfGWErxP8kOXwDR/iKSU2+RWK5K1BvzEon8pXXFUHW3FOdMLdaIU/W/VBcjPJv7VjMhmm
- wbYf3wbQf/2VTzRZlEFxdrk39CtQMMrsWhgnWSO+uqNhADQ7GQvdh1g3+Pbq/hIxgpbG7EP
- gU/n0YJtKtO6c8EG0jIqw==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1teXmFSPPQE=:L2LAz5UUciSF8b8klNAY3c
- yL7GQgaRhcJyAynOfA+DmXnGk+wY73aiJ3nHI4NvuMMe1VhaOoyuKhqjQS4L6ZsGRdsYKDM1t
- iXqTzQ54n1V3Pr2+HVEkro4iKbQTPGw4RK+24yW2VIOUwl3RMSDUqgQ30lPINSqUR/pkCzFg2
- Ft0bnp9n1gKY2OcAjmdXmLNtvF+Zp6RHzAZ1fA038M0oR76LjfdnA8zsvzFH/7QUBnaQ7CNai
- azkzC/4hczUjMp3yYwOztQX3G9+I9rjQwBGHpux2+87PY0GtpQW61xYw1lLRFrVkDdB7mrxGa
- 8eW22+VzsLxTkjqHOZh5nQS1L27T9/1qd706LUeBmxMyu4sYCsx4taqGy9ADp47qs1xOzmNu3
- t5kwKDZSOK/GPZjyBhRZRSJ9RO1Wf4TcWe8OggIdC0cNWBVU/GY8rBgfG180MnchhaDC90hQ7
- o5UkQGuPHaosJDUdkTU2YbOqcIVmXYIK0Zn2pWp8oT8giVflN1N0YZBVsD/xmPcZ0eUpzCUCS
- wbrTYHhH3187+2S4eONvzCH9YqhcRX70fTbkxKBApLNRvYLvVX9LmPwMZyfn9LjU5zS8/yyhk
- 9VT6upLFTvZN/IpwAAP6klZJTzkqcLPPmXOupHLVxNipavGC46giucPIf+Luyyz+ohk6huQsC
- VYwTOxQrNsbWrUXNbh3DTEJjVwfgxRZjMTP2ypp7CIUyi7zCK8QGPc3layzAuE+Z03xi7cl3a
- kIctMryTkroWxOfy1Ccde3A6tJ2c8vBU+H78EtVD17n897cQFj06xR5p2oDBE62Be02NmqWQ8
- JzYYCTgMkVKWzQOOeTf7zw6iI2QTShTtBm+mbjkrNHR6Mck21w=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_081834_635029_F16B51FF 
-X-CRM114-Status: GOOD (  14.74  )
+X-CRM114-CacheID: sfid-20211220_095239_987882_C492220C 
+X-CRM114-Status: GOOD (  19.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,28 +82,195 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Dec 18, 2021 at 9:42 AM Matthias Brugger <mbrugger@suse.com> wrote:
+From: Sean Wang <sean.wang@mediatek.com>
+
+>Dear Sean, dear Mark,
 >
-> Hi Arnd and Olof,
 >
-> Please take a look on the below patches for aarch64 based MediaTek boards.
-> In this round we add support for the mt8183 based Acer Crhomebook 314, as well
-> as we add support to several SKUs for mt8183 based Chromebooks.
-> Apart from that we add basic support to the mt7986 in both variants (mt7986a,
-> mt7986b). The difference between the both SoCs are the pin-controller capabilities.
+>Am 18.12.21 um 02:08 schrieb sean.wang@mediatek.com:
+>> From: Mark Chen <mark-yw.chen@mediatek.com>
+>>
+>> For MediaTek chipset, the driver has to issue the specific command to
+>> enable Bluetooth SCO support over the I2S/PCM interface.
 >
-> Hope you are fine with this pull request.
+>Please document the datasheet name, revision and section, where this is described.
 
-I've pulled both tags, but I have two minor comments:
+the datasheet is not released in public so Mark and I cannot provide the detail here, but we will make the patch easy to review and understand.
 
-- please put "mediatek" into the subject, that helps when looking at
-the pull requests
-  with pwclient, which does not show the author by default
+>
+>Please add how SCO support can be tested. Are all Mediatek chipsets supported?
 
-- I was expecting you to send a branch for the new EN7523 SoC as well. Did that
-  end up not making it in time?
+the SCO profile was tested by setting up a VOIP application, connected to HFP device, checked telephony function can work normally.
 
-       Arnd
+currently, SCO is only supported by mt7921, we will change the subject to "Bluetooth: mt7921s: Enable SCO over I2S function" to avoid any misunderstanding.
+
+>
+>> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
+>> ---
+>>   drivers/bluetooth/btmtk.h     | 20 +++++++++
+>>   drivers/bluetooth/btmtksdio.c | 76 +++++++++++++++++++++++++++++++++++
+>>   2 files changed, 96 insertions(+)
+>>
+>> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+>> index 2be1d2680ad8..fc57ef09d132 100644
+>> --- a/drivers/bluetooth/btmtk.h
+>> +++ b/drivers/bluetooth/btmtk.h
+>> @@ -7,8 +7,12 @@
+>>
+>>   #define HCI_WMT_MAX_EVENT_SIZE		64
+>>
+>> +#define BTMTK_WMT_REG_WRITE 0x1
+>>   #define BTMTK_WMT_REG_READ 0x2
+>>
+>> +#define MT7921_PINMUX_0 0x70005050
+>> +#define MT7921_PINMUX_1 0x70005054
+>> +
+>>   enum {
+>>	BTMTK_WMT_PATCH_DWNLD = 0x1,
+>>	BTMTK_WMT_TEST = 0x2,
+>> @@ -76,6 +80,22 @@ struct btmtk_wakeon {
+>>	__le16 wakeup_delay;
+>>   } __packed;
+>>
+>> +struct btmtk_sco {
+>> +	u8 clock_config;
+>> +	u8 transmit_format_config;
+>> +	u8 channel_format_config;
+>> +	u8 channel_select_config;
+>> +} __packed;
+>> +
+>> +struct reg_write_cmd {
+>> +	u8 type;
+>> +	u8 rsv;
+>> +	u8 num;
+>> +	__le32 addr;
+>> +	__le32 data;
+>> +	__le32 mask;
+>> +} __packed;
+>> +
+>>   struct btmtk_hci_wmt_params {
+>>	u8 op;
+>>	u8 flag;
+>> diff --git a/drivers/bluetooth/btmtksdio.c
+>> b/drivers/bluetooth/btmtksdio.c index 771733ce362b..8e4d8c2da824
+>> 100644
+>> --- a/drivers/bluetooth/btmtksdio.c
+>> +++ b/drivers/bluetooth/btmtksdio.c
+>> @@ -830,6 +830,74 @@ static int btsdio_mtk_reg_read(struct hci_dev *hdev, u32 reg, u32 *val)
+>>	return err;
+>>   }
+>>
+>> +static int btsdio_mtk_reg_write(struct hci_dev *hdev, u32 reg, u32
+>> +val, u32 mask) {
+>> +	struct btmtk_hci_wmt_params wmt_params;
+>> +	struct reg_write_cmd reg_write = {
+>> +		.type = 1,
+>> +		.num = 1,
+>> +		.addr = cpu_to_le32(reg),
+>> +		.data = cpu_to_le32(val),
+>> +		.mask = cpu_to_le32(mask),
+>> +	};
+>> +	int err, status;
+>> +
+>> +	wmt_params.op = BTMTK_WMT_REGISTER;
+>> +	wmt_params.flag = BTMTK_WMT_REG_WRITE;
+>> +	wmt_params.dlen = sizeof(reg_write);
+>> +	wmt_params.data = &reg_write;
+>> +	wmt_params.status = &status;
+>> +
+>> +	err = mtk_hci_wmt_sync(hdev, &wmt_params);
+>> +	if (err < 0)
+>> +		bt_dev_err(hdev, "Failed to write reg(%d)", err);
+>> +
+>> +	return err;
+>> +}
+>> +
+>> +static int btsdio_mtk_sco_setting(struct hci_dev *hdev) {
+>> +	struct btmtk_sco sco_setting = {
+>> +		.clock_config = 0x49,
+>> +		.channel_format_config = 0x80,
+>> +	};
+>> +	struct sk_buff *skb;
+>> +	u32 val;
+>> +	int err;
+>> +
+>> +	/* Enable SCO over i2s/pcm for Mediatek Chipset */
+>
+>s/Chipset/chipset/
+
+will do in the next version
+
+>
+>> +	skb =  __hci_cmd_sync(hdev, 0xfc72, sizeof(sco_setting),
+>> +			      &sco_setting, HCI_CMD_TIMEOUT);
+>> +	if (IS_ERR(skb))
+>> +		return PTR_ERR(skb);
+>> +
+>> +	err = btsdio_mtk_reg_read(hdev, MT7921_PINMUX_0, &val);
+>> +	if (err < 0) {
+>> +		bt_dev_err(hdev, "Failed to read register (%d)", err);
+>> +		return err;
+>> +	}
+>> +
+>> +	val |= 0x11000000;
+>> +	err = btsdio_mtk_reg_write(hdev, MT7921_PINMUX_0, val, ~0);
+>> +	if (err < 0) {
+>> +		bt_dev_err(hdev, "Failed to write register (%d)", err);
+>> +		return err;
+>> +	}
+>> +
+>> +	err = btsdio_mtk_reg_read(hdev, MT7921_PINMUX_1, &val);
+>> +	if (err < 0) {
+>> +		bt_dev_err(hdev, "Failed to read register (%d)", err);
+>> +		return err;
+>> +	}
+>> +
+>> +	val |= 0x00000101;
+>> +	err = btsdio_mtk_reg_write(hdev, MT7921_PINMUX_1, val, ~0);
+>> +	if (err < 0)
+>> +		bt_dev_err(hdev, "Failed to write register (%d)", err);
+>> +
+>> +	return err;
+>> +}
+>> +
+>>   static int btmtksdio_setup(struct hci_dev *hdev)
+>>   {
+>>	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev); @@ -862,6
+>> +930,14 @@ static int btmtksdio_setup(struct hci_dev *hdev)
+>>		err = mt79xx_setup(hdev, fwname);
+>>		if (err < 0)
+>>			return err;
+>> +
+>> +		/* Enable sco over i2s/pcm */
+>
+>s/sco/SCO/
+
+ditto
+
+>
+>> +		err = btsdio_mtk_sco_setting(hdev);
+>> +		if (err < 0) {
+>> +			bt_dev_err(hdev, "Failed to enable sco setting (%d)", err);
+>
+>s/sco/SCO/
+
+ditto
+
+>
+>> +			return err;
+>> +		}
+>> +
+>>		break;
+>>	case 0x7663:
+>>	case 0x7668:
+>
+>
+>Kind regards,
+>
+>Paul
+>
 
 _______________________________________________
 Linux-mediatek mailing list
