@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F877C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 17:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF5BEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 18:44:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ev94bjfFajSgXgr4wQJbHQTVzVD4znPW543XnMsCY04=; b=FZ4SHmtQuG/qU9
-	5gJVSWTm0cl0zxrE1GaUyEJS8IJDHLzeu+YoRH8f+F/CRDaDXjtRUrAvnvTMWw9vUNpL9beLZe3vj
-	TR6pxL6IQK01II7iR/eom8nE/Y3BeIAIi4FmHtCs/mr/79Eol5kVpLrFr5xc3Quv0cGF6juiLdozY
-	avaPdeFa2rL6ShQuyZsnjJZJyP/3yFJPctTZp2/PayGAh5G2ObCsnrKTEy9cYjtYIMKI9Qcl1OGYj
-	vZrUWXUE9MeIxlgcbHkOLZ5ZkJCqirh2HHCQruTBA8lj8N2faaWIt2Gkp8HUUWTWvbUczg5jNiKRL
-	GMg7xrD0V/xW/s8Kr+Ig==;
+	List-Owner; bh=GJFRimedUtZEhTCyXYVYcGVwy6NW1HOEI1WkFmoHXO0=; b=Ubym9y65bTyfZg
+	xado2W5pWMamkzT0bVbZ6aJO50ZSH0mfS7xeB/WKTHt9jKdt5B2pm4EWYS9lxUqyq1V+GXqiULRhb
+	aBzf8NfKn2YYvedLDEfN8Mg4AXlrjpq/K7owObsiI881rf6iG2bV4ftVVMglawx/WdrfxRGtKX/p/
+	QniQ6XFdMT4tJlCJzsHWHVaU01gAXGREQpKbA3LIKiPz88JePF92dDe7hQn6m27rXsTmcxGp3l7KB
+	AbhXlvWsmlkaieZV4Dc/Iw+gxp8Qnc9VUK0Yn4d62X+3lb3+NFk+wRzBRCInyvPEl/x/P7wbXYh9K
+	HzKKxzw0qv/dyONXUk8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzMq4-003fLx-5e; Mon, 20 Dec 2021 17:52:44 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1mzNe8-003rzJ-CO; Mon, 20 Dec 2021 18:44:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzMpz-003fJk-TF
- for linux-mediatek@lists.infradead.org; Mon, 20 Dec 2021 17:52:42 +0000
-X-UUID: 5ecc888f2cc6459cb48c8f30fc6cb633-20211220
-X-UUID: 5ecc888f2cc6459cb48c8f30fc6cb633-20211220
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1mzNe5-003rx2-4E
+ for linux-mediatek@lists.infradead.org; Mon, 20 Dec 2021 18:44:26 +0000
+X-UUID: 3fe500c4cb0d46b0bc77ec4e78c2e3b1-20211220
+X-UUID: 3fe500c4cb0d46b0bc77ec4e78c2e3b1-20211220
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1604084927; Mon, 20 Dec 2021 10:52:36 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 901543452; Mon, 20 Dec 2021 11:44:23 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 20 Dec 2021 09:52:34 -0800
+ 15.0.1497.2; Mon, 20 Dec 2021 10:34:20 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 21 Dec 2021 01:52:33 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Dec 2021 02:34:19 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 21 Dec 2021 01:52:32 +0800
+ Frontend Transport; Tue, 21 Dec 2021 02:34:18 +0800
 From: <sean.wang@mediatek.com>
 To: <pmenzel@molgen.mpg.de>
 CC: <marcel@holtmann.org>, <johan.hedberg@gmail.com>,
@@ -55,17 +54,17 @@ CC: <marcel@holtmann.org>, <johan.hedberg@gmail.com>,
  <mcchou@chromium.org>, <shawnku@google.com>,
  <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 2/3] Bluetooth: btmtksdio: Enable SCO over I2S function
-Date: Tue, 21 Dec 2021 01:52:30 +0800
-Message-ID: <1640022750-16263-1-git-send-email-sean.wang@mediatek.com>
+Subject: =?UTF-8?q?Re=3A=20=5BPATCH=20RESEND=201/3=5D=20Bluetooth=3A=20btmtksdio=3A=20add=20the=20support=20of=20wake=20on=20bluetooth?=
+Date: Tue, 21 Dec 2021 02:34:17 +0800
+Message-ID: <1640025257-18029-1-git-send-email-sean.wang@mediatek.com>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <638a2506-c410-d98c-b704-6f16f72e0bc6@molgen.mpg.de--annotate>
-References: <638a2506-c410-d98c-b704-6f16f72e0bc6@molgen.mpg.de--annotate>
+In-Reply-To: <67f062f9-293b-78aa-6474-f018d4bd269c@molgen.mpg.de--annotate>
+References: <67f062f9-293b-78aa-6474-f018d4bd269c@molgen.mpg.de--annotate>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_095239_987882_C492220C 
-X-CRM114-Status: GOOD (  19.98  )
+X-CRM114-CacheID: sfid-20211220_104425_211328_20A59747 
+X-CRM114-Status: GOOD (  23.77  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,202 +76,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
-
->Dear Sean, dear Mark,
->
->
->Am 18.12.21 um 02:08 schrieb sean.wang@mediatek.com:
->> From: Mark Chen <mark-yw.chen@mediatek.com>
->>
->> For MediaTek chipset, the driver has to issue the specific command to
->> enable Bluetooth SCO support over the I2S/PCM interface.
->
->Please document the datasheet name, revision and section, where this is described.
-
-the datasheet is not released in public so Mark and I cannot provide the detail here, but we will make the patch easy to review and understand.
-
->
->Please add how SCO support can be tested. Are all Mediatek chipsets supported?
-
-the SCO profile was tested by setting up a VOIP application, connected to HFP device, checked telephony function can work normally.
-
-currently, SCO is only supported by mt7921, we will change the subject to "Bluetooth: mt7921s: Enable SCO over I2S function" to avoid any misunderstanding.
-
->
->> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
->> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
->> Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
->> ---
->>   drivers/bluetooth/btmtk.h     | 20 +++++++++
->>   drivers/bluetooth/btmtksdio.c | 76 +++++++++++++++++++++++++++++++++++
->>   2 files changed, 96 insertions(+)
->>
->> diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
->> index 2be1d2680ad8..fc57ef09d132 100644
->> --- a/drivers/bluetooth/btmtk.h
->> +++ b/drivers/bluetooth/btmtk.h
->> @@ -7,8 +7,12 @@
->>
->>   #define HCI_WMT_MAX_EVENT_SIZE		64
->>
->> +#define BTMTK_WMT_REG_WRITE 0x1
->>   #define BTMTK_WMT_REG_READ 0x2
->>
->> +#define MT7921_PINMUX_0 0x70005050
->> +#define MT7921_PINMUX_1 0x70005054
->> +
->>   enum {
->>	BTMTK_WMT_PATCH_DWNLD = 0x1,
->>	BTMTK_WMT_TEST = 0x2,
->> @@ -76,6 +80,22 @@ struct btmtk_wakeon {
->>	__le16 wakeup_delay;
->>   } __packed;
->>
->> +struct btmtk_sco {
->> +	u8 clock_config;
->> +	u8 transmit_format_config;
->> +	u8 channel_format_config;
->> +	u8 channel_select_config;
->> +} __packed;
->> +
->> +struct reg_write_cmd {
->> +	u8 type;
->> +	u8 rsv;
->> +	u8 num;
->> +	__le32 addr;
->> +	__le32 data;
->> +	__le32 mask;
->> +} __packed;
->> +
->>   struct btmtk_hci_wmt_params {
->>	u8 op;
->>	u8 flag;
->> diff --git a/drivers/bluetooth/btmtksdio.c
->> b/drivers/bluetooth/btmtksdio.c index 771733ce362b..8e4d8c2da824
->> 100644
->> --- a/drivers/bluetooth/btmtksdio.c
->> +++ b/drivers/bluetooth/btmtksdio.c
->> @@ -830,6 +830,74 @@ static int btsdio_mtk_reg_read(struct hci_dev *hdev, u32 reg, u32 *val)
->>	return err;
->>   }
->>
->> +static int btsdio_mtk_reg_write(struct hci_dev *hdev, u32 reg, u32
->> +val, u32 mask) {
->> +	struct btmtk_hci_wmt_params wmt_params;
->> +	struct reg_write_cmd reg_write = {
->> +		.type = 1,
->> +		.num = 1,
->> +		.addr = cpu_to_le32(reg),
->> +		.data = cpu_to_le32(val),
->> +		.mask = cpu_to_le32(mask),
->> +	};
->> +	int err, status;
->> +
->> +	wmt_params.op = BTMTK_WMT_REGISTER;
->> +	wmt_params.flag = BTMTK_WMT_REG_WRITE;
->> +	wmt_params.dlen = sizeof(reg_write);
->> +	wmt_params.data = &reg_write;
->> +	wmt_params.status = &status;
->> +
->> +	err = mtk_hci_wmt_sync(hdev, &wmt_params);
->> +	if (err < 0)
->> +		bt_dev_err(hdev, "Failed to write reg(%d)", err);
->> +
->> +	return err;
->> +}
->> +
->> +static int btsdio_mtk_sco_setting(struct hci_dev *hdev) {
->> +	struct btmtk_sco sco_setting = {
->> +		.clock_config = 0x49,
->> +		.channel_format_config = 0x80,
->> +	};
->> +	struct sk_buff *skb;
->> +	u32 val;
->> +	int err;
->> +
->> +	/* Enable SCO over i2s/pcm for Mediatek Chipset */
->
->s/Chipset/chipset/
-
-will do in the next version
-
->
->> +	skb =  __hci_cmd_sync(hdev, 0xfc72, sizeof(sco_setting),
->> +			      &sco_setting, HCI_CMD_TIMEOUT);
->> +	if (IS_ERR(skb))
->> +		return PTR_ERR(skb);
->> +
->> +	err = btsdio_mtk_reg_read(hdev, MT7921_PINMUX_0, &val);
->> +	if (err < 0) {
->> +		bt_dev_err(hdev, "Failed to read register (%d)", err);
->> +		return err;
->> +	}
->> +
->> +	val |= 0x11000000;
->> +	err = btsdio_mtk_reg_write(hdev, MT7921_PINMUX_0, val, ~0);
->> +	if (err < 0) {
->> +		bt_dev_err(hdev, "Failed to write register (%d)", err);
->> +		return err;
->> +	}
->> +
->> +	err = btsdio_mtk_reg_read(hdev, MT7921_PINMUX_1, &val);
->> +	if (err < 0) {
->> +		bt_dev_err(hdev, "Failed to read register (%d)", err);
->> +		return err;
->> +	}
->> +
->> +	val |= 0x00000101;
->> +	err = btsdio_mtk_reg_write(hdev, MT7921_PINMUX_1, val, ~0);
->> +	if (err < 0)
->> +		bt_dev_err(hdev, "Failed to write register (%d)", err);
->> +
->> +	return err;
->> +}
->> +
->>   static int btmtksdio_setup(struct hci_dev *hdev)
->>   {
->>	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev); @@ -862,6
->> +930,14 @@ static int btmtksdio_setup(struct hci_dev *hdev)
->>		err = mt79xx_setup(hdev, fwname);
->>		if (err < 0)
->>			return err;
->> +
->> +		/* Enable sco over i2s/pcm */
->
->s/sco/SCO/
-
-ditto
-
->
->> +		err = btsdio_mtk_sco_setting(hdev);
->> +		if (err < 0) {
->> +			bt_dev_err(hdev, "Failed to enable sco setting (%d)", err);
->
->s/sco/SCO/
-
-ditto
-
->
->> +			return err;
->> +		}
->> +
->>		break;
->>	case 0x7663:
->>	case 0x7668:
->
->
->Kind regards,
->
->Paul
->
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogU2VhbiBXYW5nIDxzZWFuLndhbmdAbWVkaWF0ZWsuY29tPgoKCj5EZWFyIFNlYW4sIGRl
+YXIgTWFyaywKPgo+Cj5BbSAxOC4xMi4yMSB1bSAwMjowOCBzY2hyaWViIHNlYW4ud2FuZ0BtZWRp
+YXRlay5jb206Cj4+IEZyb206IE1hcmsgQ2hlbiA8bWFyay15dy5jaGVuQG1lZGlhdGVrLmNvbT4K
+Pgo+U2hvcnRlciBzdW1tYXJ5OiBCbHVldG9vdGg6IGJ0bXRrc2RpbzogU3VwcG9ydCB3YWtlIG9u
+IGJsdWV0b290aAoKc2VlbWVkIG5pY2UgdG8gbWUsIHdpbGwgZG8gaW4gdGhlIG5leHQgdmVyc2lv
+bgoKPgo+PiBBZGQgdGhlIHN1cHBvcnQgdG8gZW5hYmxlIHdha2Ugb24gYmx1ZXRvb3RoCj4KPkNh
+biB5b3UgcGxlYXNlIGxpc3QgdGhlIGRhdGFzaGVldCBuYW1lIGFuZCByZXZpc2lvbiB1c2VkIGZv
+ciB0aGUgaW1wbGVtZW50YXRpb24uCgp0aGUgZGF0YXNoZWV0IGlzIG5vdCByZWxlYXNlZCBpbiBw
+dWJsaWMgc28gTWFyayBhbmQgSSBjYW5ub3QgcHJvdmlkZSB0aGUgZGV0YWlsIGhlcmUsIGJ1dCB3
+ZSB3aWxsIG1ha2UgdGhlIHBhdGNoIGVhc3kgdG8gcmV2aWV3IGFuZCB1bmRlcnN0YW5kLgoKPlBs
+ZWFzZSBkb2N1bWVudCBob3cgeW91IHRlc3RlZCB0aGlzLgoKSXQgd2FzIHRlc3RlZCBieSBzZXR0
+aW5nIHVwIGFuIEhJRCBvciBIT0dQIHByb2ZpbGUgdG8gY29ubmVjdCBhIEJsdWV0b290aCBrZXli
+b2FyZCBhbmQgbW91c2UsICB0aGVuIHB1dHRpbmcgdGhlIHN5c3RlbSB0byBzdXNwZW5kLCB0aGVu
+IHRyeWluZyB0byB3YWtlIHVwIHRoZSBzeXN0ZW0gYnkgbW92aW5nIHRoZSBCbHVldG9vdGgga2V5
+Ym9hcmQgb3IgbW91c2UsIGFuZCB0aGVuIGNoZWNraW5nIGlmIHRoZSBzeXN0ZW0gY2FuIGJlIHdh
+a2VuIHVwIGFuZCBiZSBicm91Z2h0IGJhY2sgdG8gdGhlIG5vcm1hbCBzdGF0ZS4KCj4KPj4gQ28t
+ZGV2ZWxvcGVkLWJ5OiBTZWFuIFdhbmcgPHNlYW4ud2FuZ0BtZWRpYXRlay5jb20+Cj4+IFNpZ25l
+ZC1vZmYtYnk6IFNlYW4gV2FuZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4KPj4gU2lnbmVkLW9m
+Zi1ieTogTWFyayBDaGVuIDxtYXJrLXl3LmNoZW5AbWVkaWF0ZWsuY29tPgo+PiAtLS0KPj4gICBk
+cml2ZXJzL2JsdWV0b290aC9idG10ay5oICAgICB8ICA4ICsrKysrKysrCj4+ICAgZHJpdmVycy9i
+bHVldG9vdGgvYnRtdGtzZGlvLmMgfCAzMSArKysrKysrKysrKysrKysrKysrKysrKysrKysrKyst
+Cj4+ICAgMiBmaWxlcyBjaGFuZ2VkLCAzOCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0pCj4+
+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2JsdWV0b290aC9idG10ay5oIGIvZHJpdmVycy9ibHVl
+dG9vdGgvYnRtdGsuaAo+PiBpbmRleCA2ZTdiMGM3NTY3YzAuLjJiZTFkMjY4MGFkOCAxMDA2NDQK
+Pj4gLS0tIGEvZHJpdmVycy9ibHVldG9vdGgvYnRtdGsuaAo+PiArKysgYi9kcml2ZXJzL2JsdWV0
+b290aC9idG10ay5oCj4+IEBAIC02OCw2ICs2OCwxNCBAQCBzdHJ1Y3QgYnRtdGtfdGNpX3NsZWVw
+IHsKPj4JdTggdGltZV9jb21wZW5zYXRpb247Cj4+ICAgfSBfX3BhY2tlZDsKPj4KPj4gK3N0cnVj
+dCBidG10a193YWtlb24gewo+PiArCXU4IG1vZGU7Cj4+ICsJdTggZ3BvOwo+PiArCXU4IGFjdGl2
+ZV9oaWdoOwo+PiArCV9fbGUxNiBlbmFibGVfZGVsYXk7Cj4+ICsJX19sZTE2IHdha2V1cF9kZWxh
+eTsKPj4gK30gX19wYWNrZWQ7Cj4+ICsKPj4gICBzdHJ1Y3QgYnRtdGtfaGNpX3dtdF9wYXJhbXMg
+ewo+Pgl1OCBvcDsKPj4JdTggZmxhZzsKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvYmx1ZXRvb3Ro
+L2J0bXRrc2Rpby5jCj4+IGIvZHJpdmVycy9ibHVldG9vdGgvYnRtdGtzZGlvLmMgaW5kZXggYjVl
+YThkM2JmZmFhLi43NzE3MzNjZTM2MmIKPj4gMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvYmx1ZXRv
+b3RoL2J0bXRrc2Rpby5jCj4+ICsrKyBiL2RyaXZlcnMvYmx1ZXRvb3RoL2J0bXRrc2Rpby5jCj4+
+IEBAIC05NTgsNiArOTU4LDMwIEBAIHN0YXRpYyBpbnQgYnRtdGtzZGlvX3NlbmRfZnJhbWUoc3Ry
+dWN0IGhjaV9kZXYgKmhkZXYsIHN0cnVjdCBza19idWZmICpza2IpCj4+CXJldHVybiAwOwo+PiAg
+IH0KPj4KPj4gK3N0YXRpYyBib29sIGJ0bXRrX3NkaW9fd2FrZXVwKHN0cnVjdCBoY2lfZGV2ICpo
+ZGV2KSB7Cj4+ICsJc3RydWN0IGJ0bXRrc2Rpb19kZXYgKmJkZXYgPSBoY2lfZ2V0X2RydmRhdGEo
+aGRldik7Cj4+ICsJYm9vbCBtYXlfd2FrZXVwID0gZGV2aWNlX21heV93YWtldXAoYmRldi0+ZGV2
+KTsKPj4gKwlzdHJ1Y3QgYnRtdGtfd2FrZW9uIGJ0X2F3YWtlID0gewo+PiArCQkubW9kZSA9IDB4
+MSwKPj4gKwkJLmdwbyA9IDAsCj4+ICsJCS5hY3RpdmVfaGlnaCA9IDB4MSwKPj4gKwkJLmVuYWJs
+ZV9kZWxheSA9IGNwdV90b19sZTE2KDB4YzgwKSwKPj4gKwkJLndha2V1cF9kZWxheSA9IGNwdV90
+b19sZTE2KDB4MjApCj4+ICsJfTsKPj4gKwlzdHJ1Y3Qgc2tfYnVmZiAqc2tiOwo+PiArCj4+ICsJ
+aWYgKG1heV93YWtldXAgJiYKPj4gKwkgICAgYmRldi0+ZGF0YS0+Y2hpcGlkID09IDB4NzkyMSkg
+ewo+Cj5XaHkgdGhlIGNoZWNrIGZvciAweDc5MjE/IElzIHRoYXQgZGV2aWNlIG9ubHkgc3VwcG9y
+dGVkPyBUaGUgY29tbWl0IG1lc3NhZ2UgZG9lcyBub3Qgc2F5IGFueXRoaW5nIGFib3V0IGl0LgoK
+Y3VycmVudGx5LCB3YWtlIG9uIGJ0IGlzIG9ubHkgc3VwcG9ydGVkIGJ5IG10NzkyMSwgd2Ugd2ls
+bCBjaGFuZ2UgdGhlIHN1YmplY3QgdG8gIkJsdWV0b290aDogbXQ3OTIxczogU3VwcG9ydCB3YWtl
+IG9uIGJsdWV0b290aCIKYW5kIHJlZmluZSB0aGUgbWVzc2FnZSBib2R5IHRvIHJlZmxlY3QgdGhl
+IGZhY3QuCgo+Cj4+ICsJCXNrYiA9ICBfX2hjaV9jbWRfc3luYyhoZGV2LCAweGZjMjcsIHNpemVv
+ZihidF9hd2FrZSksCj4+ICsJCQkJICAgICAgJmJ0X2F3YWtlLCBIQ0lfQ01EX1RJTUVPVVQpOwo+
+PiArCQlpZiAoSVNfRVJSKHNrYikpCj4+ICsJCQltYXlfd2FrZXVwID0gZmFsc2U7Cj4+ICsJfQo+
+PiArCj4+ICsJcmV0dXJuIG1heV93YWtldXA7Cj4+ICt9Cj4+ICsKPj4gICBzdGF0aWMgaW50IGJ0
+bXRrc2Rpb19wcm9iZShzdHJ1Y3Qgc2Rpb19mdW5jICpmdW5jLAo+PgkJCSAgIGNvbnN0IHN0cnVj
+dCBzZGlvX2RldmljZV9pZCAqaWQpCj4+ICAgewo+PiBAQCAtOTk4LDYgKzEwMjIsNyBAQCBzdGF0
+aWMgaW50IGJ0bXRrc2Rpb19wcm9iZShzdHJ1Y3Qgc2Rpb19mdW5jICpmdW5jLAo+PgloZGV2LT5z
+aHV0ZG93biA9IGJ0bXRrc2Rpb19zaHV0ZG93bjsKPj4JaGRldi0+c2VuZCAgICAgPSBidG10a3Nk
+aW9fc2VuZF9mcmFtZTsKPj4JaGRldi0+c2V0X2JkYWRkciA9IGJ0bXRrX3NldF9iZGFkZHI7Cj4+
+ICsJaGRldi0+d2FrZXVwID0gYnRtdGtfc2Rpb193YWtldXA7Cj4+Cj4+CVNFVF9IQ0lERVZfREVW
+KGhkZXYsICZmdW5jLT5kZXYpOwo+Pgo+PiBAQCAtMTAzMiw3ICsxMDU3LDExIEBAIHN0YXRpYyBp
+bnQgYnRtdGtzZGlvX3Byb2JlKHN0cnVjdCBzZGlvX2Z1bmMgKmZ1bmMsCj4+CSAqLwo+PglwbV9y
+dW50aW1lX3B1dF9ub2lkbGUoYmRldi0+ZGV2KTsKPj4KPj4gLQlyZXR1cm4gMDsKPj4gKwllcnIg
+PSBkZXZpY2VfaW5pdF93YWtldXAoYmRldi0+ZGV2LCB0cnVlKTsKPj4gKwlpZiAoZXJyKQo+PiAr
+CQlidF9kZXZfZXJyKGhkZXYsICIlczogZmFpbGVkIHRvIGluaXRfd2FrZXVwIiwgX19mdW5jX18p
+Owo+Cj5Db3VsZCB0aGUgZXJyb3IgbWVzc2FnZSBiZSBleHRlbmRlZCwgc28gbm9ybWFsIHVzZXJz
+IGtub3cgd2hhdCB0byBkbz8KPkN1cnJlbnRseSBpdOKAmXMgb25seSB1c2VmdWwgZm9yIGRldmVs
+b3BlcnMuCgpUaGF0IGlzIGRvbmUgYnkgcmVmZXJyaW5nIHRvIGJ0dXNiLmMuIEkgaGF2ZSB3aWxs
+aW5nIHRvIGVuaGFuY2UgdGhlIHBhcnQgYWxvbmcgd2l0aCBidHVzYi5jIGlmIE1hcmNlbCBoYXMg
+YW55IGlkZWEgYWJvdXQgdGhhdC4KCj4KPj4gKwo+PiArCXJldHVybiBlcnI7Cj4+ICAgfQo+Pgo+
+PiAgIHN0YXRpYyB2b2lkIGJ0bXRrc2Rpb19yZW1vdmUoc3RydWN0IHNkaW9fZnVuYyAqZnVuYykK
+Pgo+Cj5LaW5kIHJlZ2FyZHMsCj4KPlBhdWwKPgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
+bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
