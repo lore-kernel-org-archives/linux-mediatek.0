@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A71C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Dec 2021 02:08:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72255C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Dec 2021 02:09:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=epjXEXZbDLyJaJBymWthmVO7psBSIkfrkcQzU6dNHvc=; b=h6dZZandQwQQfk
-	0BIegu1584kEROFNRRkgsjRGxzHUbXucMmxXXJdiicwkWwIWhNnrJ8ZsL9+FZoiq+pcvGJ3EzntHL
-	lUShDKEHjUeyNaufbMPO4F/JlGoOeaoa/TfdCpcKF3Ir1h/DpdmW9T0PvvOzVxrRAvU2fCiY6WRog
-	dtfaMLoBFeIOxSXwy2aYoItBV4BoSbBPjM93TzI3mcdPs1Qzlty+NeomSagdpAN7yf8cyid+RB8Gs
-	g1Ds241TkbJcaajk2A6WuBwHNxEdoSkPHJ0xDIfN7Aut2dz6ASc6M7cSNlHf/5BuRWVXlktIS0x8J
-	9djyUJnq8gTUZHMPaiAA==;
+	List-Owner; bh=Qe8sbwmhhBaEPdZAq6t3bDwr2jSyxDPQMd6QaIkgOCo=; b=btLsQVfXS6Z6A9
+	u3tTkws6yCKhAJ07x/b1roqIxM9WeXREf3rm23PKb9pqjRFCNHZPgIOiy+PB8k4xUEDXhNf2/o1bM
+	ZF6C61kbIeKGcpBPP+TOiMJ52Fk3YWxcecejlVuvUnGDOAYIgvtW7BOLrqZeGtj6eztPBXOzEt+SE
+	P313Ysz8bsw5RN/tqw3A6S+GNn523eoRK2TNXg8xDONuT39KmxcIvvtOe+IGrlM3FpkuGXVSZw3+0
+	wqP9srEq2wBCUjNaqTwL4u4suklI1EHb8C98XNvhXJtXTI+5U1WoXj1Dp4HyW4r84kgD2XhmT5A23
+	3VJbIpb+ovCgZKKpfj/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzUZJ-005D27-DY; Tue, 21 Dec 2021 02:07:57 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1mzUal-005Dk2-O1; Tue, 21 Dec 2021 02:09:27 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzUTd-0059in-Fn; Tue, 21 Dec 2021 02:02:07 +0000
+ id 1mzUTj-0059m9-VH; Tue, 21 Dec 2021 02:02:13 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 23C66B81115;
- Tue, 21 Dec 2021 02:02:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6C780C36AEA;
- Tue, 21 Dec 2021 02:02:01 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 1937961166;
+ Tue, 21 Dec 2021 02:02:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1FD49C36AE9;
+ Tue, 21 Dec 2021 02:02:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640052122;
- bh=O8tppKcRB/FXE5XiKYgTTYxvn0PbzCfAaewxyEGUBGA=;
+ s=k20201202; t=1640052130;
+ bh=aht5Fn7Bx/fEmLyVAftQWO0O/Vvjiin6jgfCmYxfBn8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Fp/x4QGZJzNUZtr9AdxHg3YUgiK0tBRq+l8kiICxKRKICN66ca/9Rfo8yeXbL27zJ
- qpe0TqIs4fNhwtUq3ZqBwvq5wAGIk4zxf9Q1lfBPI3hV6ytcELpQ+vPo1LFYJtDO9z
- 51FqOupsHwjonfWABh+z5f2f/aiQiZ+m6GSGoUmkiRCrxVZ8JuhQ5Jrmwk4Tvy+2Tz
- NtZt2f5tdGoa2QS8JNFKMIwgyft5as09RsVcyhgQqYSaunogN3P63HlX5ESZ5G7odg
- 1+1XCcF1ukL4LTMpGYPW9LI8VogWULEhFXE6cPs+K1XaGTHQ+5qdxN0czEtv/OSuQw
- E2pOStNbJwgjg==
+ b=eQpSW0QI9HTXhIOuA6+BPEN1l2r2gBnwAR/DuXQd9GiVpgpOERMX600nnjyZbO9wm
+ LyxclKiwpPA93fsYZFAS5/SGEdEdByMoTdPeufqJsylxDHDBpIHiynkJmaYQ2i3+Qh
+ x5muMeatsg03miUCCT+UGo88t87Om6UpvqyINWeJrjWaA2XYFmYzZVahgDCek05SYn
+ fk/0ib5hjj28icIT7ShJ6NPRqXq3Vv0QzbtUJsOBS7sBVpNpQ9fFYs6i2ha2zXhlD2
+ lnSXJkFDENHEPu0m6gaRrMt/MnlQcnSHTOpt6j8T7tqBOPlfCRgmzxNBqWeJnPD0ab
+ FZ8WFS8gvnTuQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Subject: [PATCH AUTOSEL 4.9 2/4] mac80211: set up the fwd_skb->dev for mesh
+Subject: [PATCH AUTOSEL 4.4 2/4] mac80211: set up the fwd_skb->dev for mesh
  forwarding
-Date: Mon, 20 Dec 2021 21:01:56 -0500
-Message-Id: <20211221020158.117612-2-sashal@kernel.org>
+Date: Mon, 20 Dec 2021 21:02:04 -0500
+Message-Id: <20211221020206.117771-2-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20211221020158.117612-1-sashal@kernel.org>
-References: <20211221020158.117612-1-sashal@kernel.org>
+In-Reply-To: <20211221020206.117771-1-sashal@kernel.org>
+References: <20211221020206.117771-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_180205_840862_1E5DDB63 
+X-CRM114-CacheID: sfid-20211220_180212_164136_0BA4B543 
 X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -137,10 +137,10 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+)
 
 diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
-index 3dc370ad23bf6..5be4d73ea9b74 100644
+index 688d7b5b71395..b391066e858fd 100644
 --- a/net/mac80211/rx.c
 +++ b/net/mac80211/rx.c
-@@ -2632,6 +2632,7 @@ ieee80211_rx_h_mesh_fwding(struct ieee80211_rx_data *rx)
+@@ -2461,6 +2461,7 @@ ieee80211_rx_h_mesh_fwding(struct ieee80211_rx_data *rx)
  		goto out;
  	}
  
