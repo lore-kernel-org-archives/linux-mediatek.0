@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BA77C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 20 Dec 2021 21:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C137C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 21 Dec 2021 01:58:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6IaFtz9DGjLEWRM74CUAdPbQVjrMjUjKGv9ZOOgOfJM=; b=bKIP0vF5LXDoy9
-	Hp8joifShEkRk99KWAcIdqM0BY/8SkAZgg+vfJxJXk8c+6DcwZ9LGus9nQvQo2+KbxnYc8JNWNDFU
-	1pqucGRj4pmQHpokK9SpsFeVkNsKqXcnWpeEj912cFdvQWYXrGMNobt/k17ElnDnxdF8o3xz21WwE
-	5c4wG6qH31vF+vg6rkNoyHmWlkcZuzTRJdBulfa0yCj0Aar+55pus8fSvzJl++J2KCKfWy9tMo8n+
-	/utmTC4tEsYjeULOkU10oUDg62yJ0Ot33TX34QG8RZgD2jQEa8tqXklsKUhgFNI3fnQrEFMpJsOJ9
-	A/r58Hgav4648B+or7BQ==;
+	List-Owner; bh=9QHRrpRXvRaXjZ5Ho8y4aWwqAey14YftBq/7K/+CPkk=; b=tVP4qc47znAand
+	pLD3Hl6Uisel/40NjdTsinOcf6ypS+fUk3VyUgmsWev0taWzmPoaHCk3JQvmQ5VTHDek4fvqZIcL9
+	kY3dlaN4ZNmKLwFPv4ULT1jajY8DTSjmswEqnvG+vvnHA5GrIJfcncaWYgYCHiJSYuHEtRwa9gGUY
+	y5AUP53wxQNZWUVLRvXB/gSEiBSbFSR3LA5CvpkG5DccrQKjaPSFmEguaYVyqwt+rBDJJatvfPR1l
+	P9MI9xMji5nNAeLMJeE2SFC6w5TvlSvJDMFjYTWwBda2aXs/XYsDFrjkXAl/sDrqo7XGzOgcdExzA
+	yNVoHs8bdgfJHF9dn9CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzQCS-004TH8-IQ; Mon, 20 Dec 2021 21:28:04 +0000
-Received: from nbd.name ([2a01:4f8:221:3d45::2])
+	id 1mzUQP-0057MY-Sz; Tue, 21 Dec 2021 01:58:45 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzQBo-004SxJ-Hj; Mon, 20 Dec 2021 21:27:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
- s=20160729; h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:
- Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive;
- bh=JWqi786giIKaSw4tSGdwpvXgr1JgtStfMmdgvrcLvio=; b=rlGlWIGfBBFY5PWUmFDUpm1mWq
- qDZ6R2ypBWQBL1VEtltKcvHhGjLjN7dO/tjODkZGhlMoEylq2jAZ7dUZukyRqJUWpYH5DrtIv0TFF
- I6CUXC4VijTKVvftAba0Io/mrRxQKsTBBEd91/85V5fWrMq+7cctb89y9LDRNl5oHlxo=;
-Received: from p54ae911a.dip0.t-ipconnect.de ([84.174.145.26]
- helo=localhost.localdomain)
- by ds12 with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.89) (envelope-from <nbd@nbd.name>)
- id 1mzQ3r-0000zo-3j; Mon, 20 Dec 2021 22:19:11 +0100
-From: Felix Fietkau <nbd@nbd.name>
-To: linux-arm-kernel@lists.infradead.org,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>,
- =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: john@phrozen.org, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH v8 10/14] PCI: mediatek: Allow building for ARCH_AIROHA
-Date: Mon, 20 Dec 2021 22:18:50 +0100
-Message-Id: <20211220211854.89452-11-nbd@nbd.name>
+ id 1mzUPh-0056u3-Br; Tue, 21 Dec 2021 01:58:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 673AC61166;
+ Tue, 21 Dec 2021 01:58:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4EF1C36AFE;
+ Tue, 21 Dec 2021 01:57:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1640051880;
+ bh=sZSldKi0iMQUAf7w5zYMUMMeC+ByL2z6fnI3z3l3/VA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=efbzG6hB+s54NEk7j9JCrE9cEPNUk0CP3B3t5SDn+E45rzRFS1ciZ7EZ9VDyBA0pb
+ LsHwd7t0lHI0qpKpQJGlmTE/pHjiT0i2nlcoAseq/2b2gZx/SBi7o8efhuWgdsFf0o
+ Nwy9yiYkNlslWRcAfXL72PfQM+6DTlP3/Zs+67e5VG3fr4yWww5TWOWpgiKPd8P+/P
+ uv9sUTgtYTxq0VlOl6g3LDk2Qpv2OydnV+eOnWcCPsLS9PdcJScRlaPSuvAQrFH2gm
+ 85q/1CzZhu3Te4YF3/LMGz124fYUAS6PnRNfswTdwUL1HAzJfqux5JqPy5lNnMy/+B
+ 67evbi2HsTI9A==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH AUTOSEL 5.15 05/29] mac80211: set up the fwd_skb->dev for mesh
+ forwarding
+Date: Mon, 20 Dec 2021 20:57:26 -0500
+Message-Id: <20211221015751.116328-5-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20211220211854.89452-1-nbd@nbd.name>
-References: <20211220211854.89452-1-nbd@nbd.name>
+In-Reply-To: <20211221015751.116328-1-sashal@kernel.org>
+References: <20211221015751.116328-1-sashal@kernel.org>
 MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211220_132724_788558_A35B88B8 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20211220_175801_530204_88D402ED 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,34 +68,86 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Sasha Levin <sashal@kernel.org>, Johannes Berg <johannes.berg@intel.com>,
+ Xing Song <xing.song@mediatek.com>, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ matthias.bgg@gmail.com, kuba@kernel.org, johannes@sipsolutions.net,
+ davem@davemloft.net, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allow selecting the pcie-mediatek driver if ARCH_AIROHA is set, because the
-Airoha EN7523 SoC uses the same controller as MT7622.
-The driver itself is not modified. The PCIe controller DT node should use
-mediatek,mt7622-pcie after airoha,en7523-pcie.
+From: Xing Song <xing.song@mediatek.com>
 
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+[ Upstream commit 942bd1070c3a39d1302fc5db73d60c86e3033c81 ]
+
+Mesh forwarding requires that the fwd_skb->dev is set up for TX handling,
+otherwise the following warning will be generated, so set it up for the
+pending frames.
+
+[   72.835674 ] WARNING: CPU: 0 PID: 1193 at __skb_flow_dissect+0x284/0x1298
+[   72.842379 ] Modules linked in: ksmbd pppoe ppp_async l2tp_ppp ...
+[   72.962020 ] CPU: 0 PID: 1193 Comm: kworker/u5:1 Tainted: P S 5.4.137 #0
+[   72.969938 ] Hardware name: MT7622_MT7531 RFB (DT)
+[   72.974659 ] Workqueue: napi_workq napi_workfn
+[   72.979025 ] pstate: 60000005 (nZCv daif -PAN -UAO)
+[   72.983822 ] pc : __skb_flow_dissect+0x284/0x1298
+[   72.988444 ] lr : __skb_flow_dissect+0x54/0x1298
+[   72.992977 ] sp : ffffffc010c738c0
+[   72.996293 ] x29: ffffffc010c738c0 x28: 0000000000000000
+[   73.001615 ] x27: 000000000000ffc2 x26: ffffff800c2eb818
+[   73.006937 ] x25: ffffffc010a987c8 x24: 00000000000000ce
+[   73.012259 ] x23: ffffffc010c73a28 x22: ffffffc010a99c60
+[   73.017581 ] x21: 000000000000ffc2 x20: ffffff80094da800
+[   73.022903 ] x19: 0000000000000000 x18: 0000000000000014
+[   73.028226 ] x17: 00000000084d16af x16: 00000000d1fc0bab
+[   73.033548 ] x15: 00000000715f6034 x14: 000000009dbdd301
+[   73.038870 ] x13: 00000000ea4dcbc3 x12: 0000000000000040
+[   73.044192 ] x11: 000000000eb00ff0 x10: 0000000000000000
+[   73.049513 ] x9 : 000000000eb00073 x8 : 0000000000000088
+[   73.054834 ] x7 : 0000000000000000 x6 : 0000000000000001
+[   73.060155 ] x5 : 0000000000000000 x4 : 0000000000000000
+[   73.065476 ] x3 : ffffffc010a98000 x2 : 0000000000000000
+[   73.070797 ] x1 : 0000000000000000 x0 : 0000000000000000
+[   73.076120 ] Call trace:
+[   73.078572 ]  __skb_flow_dissect+0x284/0x1298
+[   73.082846 ]  __skb_get_hash+0x7c/0x228
+[   73.086629 ]  ieee80211_txq_may_transmit+0x7fc/0x17b8 [mac80211]
+[   73.092564 ]  ieee80211_tx_prepare_skb+0x20c/0x268 [mac80211]
+[   73.098238 ]  ieee80211_tx_pending+0x144/0x330 [mac80211]
+[   73.103560 ]  tasklet_action_common.isra.16+0xb4/0x158
+[   73.108618 ]  tasklet_action+0x2c/0x38
+[   73.112286 ]  __do_softirq+0x168/0x3b0
+[   73.115954 ]  do_softirq.part.15+0x88/0x98
+[   73.119969 ]  __local_bh_enable_ip+0xb0/0xb8
+[   73.124156 ]  napi_workfn+0x58/0x90
+[   73.127565 ]  process_one_work+0x20c/0x478
+[   73.131579 ]  worker_thread+0x50/0x4f0
+[   73.135249 ]  kthread+0x124/0x128
+[   73.138484 ]  ret_from_fork+0x10/0x1c
+
+Signed-off-by: Xing Song <xing.song@mediatek.com>
+Tested-By: Frank Wunderlich <frank-w@public-files.de>
+Link: https://lore.kernel.org/r/20211123033123.2684-1-xing.song@mediatek.com
+Signed-off-by: Johannes Berg <johannes.berg@intel.com>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/pci/controller/Kconfig | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ net/mac80211/rx.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/pci/controller/Kconfig b/drivers/pci/controller/Kconfig
-index 93b141110537..f1342059c2a3 100644
---- a/drivers/pci/controller/Kconfig
-+++ b/drivers/pci/controller/Kconfig
-@@ -233,7 +233,7 @@ config PCIE_ROCKCHIP_EP
+diff --git a/net/mac80211/rx.c b/net/mac80211/rx.c
+index 1958e4d59b524..c41c704dcf8b7 100644
+--- a/net/mac80211/rx.c
++++ b/net/mac80211/rx.c
+@@ -2944,6 +2944,7 @@ ieee80211_rx_h_mesh_fwding(struct ieee80211_rx_data *rx)
+ 	if (!fwd_skb)
+ 		goto out;
  
- config PCIE_MEDIATEK
- 	tristate "MediaTek PCIe controller"
--	depends on ARCH_MEDIATEK || COMPILE_TEST
-+	depends on ARCH_AIROHA || ARCH_MEDIATEK || COMPILE_TEST
- 	depends on OF
- 	depends on PCI_MSI_IRQ_DOMAIN
- 	help
++	fwd_skb->dev = sdata->dev;
+ 	fwd_hdr =  (struct ieee80211_hdr *) fwd_skb->data;
+ 	fwd_hdr->frame_control &= ~cpu_to_le16(IEEE80211_FCTL_RETRY);
+ 	info = IEEE80211_SKB_CB(fwd_skb);
 -- 
 2.34.1
 
