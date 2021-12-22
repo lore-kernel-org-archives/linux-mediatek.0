@@ -4,67 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEFC9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 17:32:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85120C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 17:50:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YdvReJcIzWW0RcTLI14TC+/syozQBFMks4W/RQ76REI=; b=JTvUgAE7qLGqLM
-	JS2XFV1fzvkoHb4cVsrCVeW6fi1lknKTva3/YuSbne36/g9uJ0m2J4r6Y+ew7MomrBWnwd8cV8Xsh
-	lSjU5wxt8uHQHcmwa0dLkqUgUfFz7RYAX/DxtyibT26XKCIIPi9OrJKsG73Vj7Z/uq7UQM+UpT5i3
-	obUfJBQFdcZUzXGDjY8Qx+TrJBx8NsOMJt1IRU6b5Z7jXu14UvrXmRFY3jjdSLUtIqYirmRPwWEdq
-	7DL924isolRIf9KtkaVarVKxj+ooo4m4Jh2y4CO5Js1TliJ4ssmST+relGjaPkaeFAr+2Q5jrMD1D
-	xnXyyn8Mu8/uukCFVOzw==;
+	List-Owner; bh=wCDnG9UuNPP7i7Vhw8Xd4FD6JkXbpCAXHdrrPh8fWUI=; b=hxTUvUaJCSGWfi
+	CY4uw3oVnByRZf9F52g6SyLotMdLzt5oNfPe3U58Lfy1Gi8HF3pZwjaZMURMkxCQUYNf5EbKyVScl
+	mYes/Ekks4QoBmdTCaOnfFFsJ/0n3yJr9Un5jKo4a3DYHTkn7pQWWgMCoyYbikhVLrroajDSz3Nbc
+	euzad6qzQ1sZv110kM0Lo7x/BAK5P4gDJPVvWdGskKJ9ADLGz8nn3esHfG4127ILuiYnNwhsV8eY+
+	9iuJqvrznE3mz5KwOzAb1Cg793Q+WJnyV+WAcwfiv0Wp66SmHdZiQVPd+EZBT5zxwNaZldQJBnsDZ
+	SFz3GWtSNk2o37ix3BxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n05Tk-00AzVT-HR; Wed, 22 Dec 2021 17:32:40 +0000
-Received: from mail-qt1-f178.google.com ([209.85.160.178])
+	id 1n05ks-00B0YL-6U; Wed, 22 Dec 2021 17:50:22 +0000
+Received: from mail-qk1-f182.google.com ([209.85.222.182])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n05Th-00AzUO-9h; Wed, 22 Dec 2021 17:32:38 +0000
-Received: by mail-qt1-f178.google.com with SMTP id q14so2562769qtx.10;
- Wed, 22 Dec 2021 09:32:36 -0800 (PST)
+ id 1n05kp-00B0Xs-B5; Wed, 22 Dec 2021 17:50:20 +0000
+Received: by mail-qk1-f182.google.com with SMTP id p4so3040164qkm.7;
+ Wed, 22 Dec 2021 09:50:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=rnVSRUWvGi3hc/dun7RSLrJGOUbv/6Fcvs2Ge1f+9VI=;
- b=eeLptx4YOLYfgQgsL4znJlL6tQrd2zMqeu4lcLsf+EYUeOZhpmchtzgvXVZVsMw/B/
- CXHIpoXDXwV5468a0AOGqgmM4RPP4wCMOyxDd5W6pThbwHapDt1maokZZRzNyJ6HvdgS
- zKM0freJ5ME6fianJlheEXkWcs2B+JIrGEM99bqVlHpRl8jFI6EMPYyCckZZPVsEoX7B
- IDwMLkBFEuf0y9L0zwu4waAddhulNGP3P2LkevzMlZH1LyzpTFxVQgWhFrYVU63egmkF
- BuUfp/mmOlY7Ay7JRth/N0K7YezT5k/ZWMG2YtmaBQkFlIQoHlPa68A5GcXmbg29MIwC
- sLgQ==
-X-Gm-Message-State: AOAM533HfkMU8wxbvjC73aVfXsobsrg0rDm0scNvgCrjrCK4grEvwx1i
- 50rRx3LCceRUYzsjBEriLw==
-X-Google-Smtp-Source: ABdhPJwWKZzfhNl0pedugmMBWdSFfwQ5oN+9pK3tDg+VA+OSbTZIeuMNMms1VONr7sG3iC9fD4X/wQ==
-X-Received: by 2002:ac8:7009:: with SMTP id x9mr2966783qtm.420.1640194356037; 
- Wed, 22 Dec 2021 09:32:36 -0800 (PST)
+ bh=G0Bo2xi487zsjbvsxUHGM60Jt3WTXGtaD5AP/5FQrYU=;
+ b=goXG4aW4ahP8PZ/67n5QR0l9qcX47i64LL7tBJ7uDFoeS3D4uBm8csIoaJjEMpH63E
+ NHVbqycGVw/h7W08NfQeQZSEa5lv0LKVZTX8tkg9Njk/LwqPsQeyynbIZ43s+qb5H4ZY
+ cbSDX9WOJuEbis5IAcMDMUGdTHZisqf2JeKVFm5hTBufDhyOxepVDxAAi6BR4bfNw942
+ dHJAVJbC4ZWL+KaQHcHp3msTF7mhhkWbDKKaU/Q4dvyOP4HpjT5wfL8PduAIMnEnLEI3
+ vrq0rfAnazfVJuzP23/PzfrncN9BAImMu5hyL53hWdap/WutrR+JKkHMSOGlk1LgwiGX
+ gwEg==
+X-Gm-Message-State: AOAM531pn3ZmIILd83b36OhcktPddGRsCd8YCODBk0YVhd84oZlG4jdp
+ 3y22cku1Do0gH4XvsM9yzw==
+X-Google-Smtp-Source: ABdhPJyvAAEpmHO21h+BgfeOi40PfsFEpHcNduiO7Js5mzx8z/J1daeSExKuDA/ssJQ+ZFmLU9Ujqg==
+X-Received: by 2002:a05:620a:15cb:: with SMTP id
+ o11mr2820061qkm.371.1640195417674; 
+ Wed, 22 Dec 2021 09:50:17 -0800 (PST)
 Received: from robh.at.kernel.org ([24.55.105.145])
- by smtp.gmail.com with ESMTPSA id ay32sm2271901qkb.63.2021.12.22.09.32.34
+ by smtp.gmail.com with ESMTPSA id f18sm2518981qko.34.2021.12.22.09.50.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Dec 2021 09:32:35 -0800 (PST)
-Received: (nullmailer pid 2371335 invoked by uid 1000);
- Wed, 22 Dec 2021 17:32:33 -0000
-Date: Wed, 22 Dec 2021 13:32:33 -0400
+ Wed, 22 Dec 2021 09:50:16 -0800 (PST)
+Received: (nullmailer pid 2400088 invoked by uid 1000);
+ Wed, 22 Dec 2021 17:50:15 -0000
+Date: Wed, 22 Dec 2021 13:50:15 -0400
 From: Rob Herring <robh@kernel.org>
-To: Maxim Kutnij <gtk3@inbox.ru>
-Cc: linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+To: Tinghan Shen <tinghan.shen@mediatek.com>
+Cc: broonie@kernel.org, sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
+ linux-spi@vger.kernel.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ bgolaszewski@baylibre.com, linux-mediatek@lists.infradead.org,
+ bayi.cheng@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linus.walleij@linaro.org, gch981213@gmail.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, robh+dt@kernel.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/3] This adds a DT binding documentation for the MT6582
- SoC
-Message-ID: <YcNhMdN6rzh9yRG1@robh.at.kernel.org>
-References: <20211219183134.3849-1-gtk3@inbox.ru>
- <20211219183134.3849-3-gtk3@inbox.ru>
+Subject: Re: [PATCH v7 3/4] dt-bindings: pinctrl: mt8195: add wrapping node
+ of pin configurations
+Message-ID: <YcNlVzSZAWCM9eKO@robh.at.kernel.org>
+References: <20211220121825.6446-1-tinghan.shen@mediatek.com>
+ <20211220121825.6446-4-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20211219183134.3849-3-gtk3@inbox.ru>
+In-Reply-To: <20211220121825.6446-4-tinghan.shen@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211222_093237_384464_B4D53A4F 
-X-CRM114-Status: GOOD (  18.30  )
+X-CRM114-CacheID: sfid-20211222_095019_422867_EE2975B3 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,67 +86,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Dec 19, 2021 at 11:31:34PM +0500, Maxim Kutnij wrote:
-> This adds a DT binding documentation for the MT6582 SoC.
-
-Please follow the convention used for other commits of these files in 
-the subject:
-
-dt-bindings: mediatek: ...
-
-(That's true for all commits in the kernel)
-
+On Mon, 20 Dec 2021 20:18:24 +0800, Tinghan Shen wrote:
+> On mt8195, the pinctrl node has pinctrl groups to group pin
+> configurations by users' need. In each pinctrl group, it has
+> subnode(s) to list pins needed and pin configurations. By supporting
+> multiple subnodes, we can configure different pin characteristics
+> (driving/pull-up/pull-down/etc.) in a pinctrl group.
 > 
-> Signed-off-by: Maxim Kutnij <gtk3@inbox.ru>
+> Update pinctrl-mt8195.yaml to add subnode in pinctrl groups and an
+> example to illustrate the usage.
+> 
+> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/arm/mediatek.yaml           | 4 ++++
->  .../devicetree/bindings/timer/mediatek,mtk-timer.txt          | 1 +
->  Documentation/devicetree/bindings/watchdog/mtk-wdt.txt        | 1 +
->  3 files changed, 6 insertions(+)
+>  .../bindings/pinctrl/pinctrl-mt8195.yaml      | 338 ++++++++++--------
+>  1 file changed, 188 insertions(+), 150 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> index 0fa55497b96..fedce0d0f3f 100644
-> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-> @@ -26,6 +26,10 @@ properties:
->            - enum:
->                - mediatek,mt2712-evb
->            - const: mediatek,mt2712
-> +      - items:
-> +          - enum:
-> +              - prestigio,pmt5008-3g
-> +          - const: mediatek,mt6582
->        - items:
->            - enum:
->                - mediatek,mt6580-evbp1
-> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> index e5c57d6e018..62acdb11aff 100644
-> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
-> @@ -11,6 +11,7 @@ Required properties:
->  - compatible should contain:
->  	For those SoCs that use GPT
->  	* "mediatek,mt2701-timer" for MT2701 compatible timers (GPT)
-> +	* "mediatek,mt6582-timer" for MT6582 compatible timers (GPT)
->  	* "mediatek,mt6580-timer" for MT6580 compatible timers (GPT)
->  	* "mediatek,mt6589-timer" for MT6589 compatible timers (GPT)
->  	* "mediatek,mt7623-timer" for MT7623 compatible timers (GPT)
-> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> index 0114871f887..a97418c74f6 100644
-> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
-> @@ -8,6 +8,7 @@ Required properties:
->  - compatible should contain:
->  	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
->  	"mediatek,mt2712-wdt": for MT2712
-> +	"mediatek,mt6582-wdt", "mediatek,mt6589-wdt": for MT6582
->  	"mediatek,mt6589-wdt": for MT6589
->  	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
->  	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
-> -- 
-> 2.34.1
-> 
-> 
+
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
