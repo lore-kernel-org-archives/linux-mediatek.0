@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A09EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 05:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CB8EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 05:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=P0loCbJaB6p0S+BZ8eTN8ukOrE5cY2tVdvnTr7C2FeA=; b=mWeR4kBIR01YIQ
-	UZ+KUAyVOUNq05AFsSjtnWGlJbOtq+Sz3vzh/fjDqFZKwvYH8zvrlqkHRHhMib+2Bcf6/j5JBGlKl
-	2WPC/9OmQjUbnSQyNvsHDTNLfpHgXDrKGQRs8RDbeS3qqfnbIsYN8zJz/AZlCnuuQxn/DqwGUNd2n
-	kSj4E9svFtb+Ca/expyOHNl/FnKN+HR27yT3yFC2Y6tfwf50u/YXYYfOFFYCp0sDOzRRmA9JHI4JJ
-	od+2bFoW+81BVeIX4ZOaPHmxxzZcFp6yNnxlfLNd0m9Owkkgu+C/vZtmE6iZiW7MPZDsBmBAzYX0N
-	o/o0B19SmqAgDmFz1mDQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IEveREhIyE8MGojRoWk0u4ZMvVruuoMzFomG4DX/pYU=; b=lAcUrkcaAN3d44
+	RIe7pNV2OMtJri2TDHhsaL+h5xVgk/GbqEkCh5b2JJFj0LVCsNAaZI+a7edwajvMAp7tp8L1F9Z5l
+	j1SQDa17syTRxgtCEC9px1I3Gojk+p3Jb6kjegm2FqpFaFc5XuQWjUwj6GZnapZeZrpL7r1JclAXf
+	DiYTQOmjAyrR3RBbHogX4G8z3iDJw5V0ahe/hPga/yqCyfS3J1t20zXP3j3lJsFxbXA+QZdQbbWXL
+	OGSyArNZ3bg9sL9Uf3kmGkfOkNEnAhGVVtXbGXfkGnwbhOkicHKB4t6JXHHOQU34yeaUav/x9ZZAH
+	aBmPeYncqNhj2yynzRwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzucN-009Hcq-I4; Wed, 22 Dec 2021 05:56:51 +0000
+	id 1mzudw-009Hqc-5a; Wed, 22 Dec 2021 05:58:28 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzucJ-009HaP-HU
- for linux-mediatek@lists.infradead.org; Wed, 22 Dec 2021 05:56:50 +0000
-X-UUID: aec95ac5bf674282afd8760fd19143a7-20211221
-X-UUID: aec95ac5bf674282afd8760fd19143a7-20211221
+ id 1mzudt-009Hq1-L0
+ for linux-mediatek@lists.infradead.org; Wed, 22 Dec 2021 05:58:26 +0000
+X-UUID: eee58718d4214b7c8d3c4a549a83ee9f-20211221
+X-UUID: eee58718d4214b7c8d3c4a549a83ee9f-20211221
 Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 80037411; Tue, 21 Dec 2021 22:56:44 -0700
+ with ESMTP id 306317683; Tue, 21 Dec 2021 22:58:24 -0700
 Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 21 Dec 2021 21:56:43 -0800
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Dec 2021 21:58:23 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
  (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 22 Dec 2021 13:56:29 +0800
+ Wed, 22 Dec 2021 13:58:21 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 22 Dec 2021 13:56:28 +0800
+ Frontend Transport; Wed, 22 Dec 2021 13:58:20 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -52,15 +52,18 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
  <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH] mt76: sdio: lock sdio when it is needed
-Date: Wed, 22 Dec 2021 13:56:28 +0800
-Message-ID: <7aaf68bc8073c4f1cef063d1e0989e5402ac358c.1640151426.git.objelf@gmail.com>
+Subject: [PATCH 2/2] mt76: mt7921s: update mt7921s_wfsys_reset sequence
+Date: Wed, 22 Dec 2021 13:58:18 +0800
+Message-ID: <b18e61c14e845af5c4ade2a0eb16acd388058c17.1640151776.git.objelf@gmail.com>
 X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <f18bbe4b077e5e21c3fbb04c5ab84520142d567d.1640151776.git.objelf@gmail.com>
+References: <f18bbe4b077e5e21c3fbb04c5ab84520142d567d.1640151776.git.objelf@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211221_215647_633242_4E62D3D5 
-X-CRM114-Status: GOOD (  13.19  )
+X-CRM114-CacheID: sfid-20211221_215825_740903_DE6BC431 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,93 +80,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+From: YN Chen <YN.Chen@mediatek.com>
 
-Acquire the SDIO as needed as possible because either MT7663S or MT7921S
-is a multiple-function device that always includes Bluetooth that would
-share with the same SDIO bus. So not to avoid breaking Bluetooth pairing,
-audio, and HID such kind of time critical application on that, we only
-lock sdio bus when it is necessary in WiFi driver.
+MT7921S firmware expects driver to clear out the firmware download state
+before FW is downloaded again in WiFi reset procedure.
 
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/sdio.c | 3 +++
- drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 3 +++
- drivers/net/wireless/mediatek/mt76/sdio_txrx.c   | 8 ++++++++
- 3 files changed, 14 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7921/regs.h     | 3 +++
+ drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c | 2 ++
+ 2 files changed, 5 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
-index 31c4a76b7f91..71162befdae8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
-@@ -56,7 +56,10 @@ static int mt7663s_parse_intr(struct mt76_dev *dev, struct mt76s_intr *intr)
- 	struct mt7663s_intr *irq_data = sdio->intr_data;
- 	int i, err;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+index cbd38122c510..411695f273cd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/regs.h
+@@ -454,6 +454,9 @@
  
-+	sdio_claim_host(sdio->func);
- 	err = sdio_readsb(sdio->func, irq_data, MCR_WHISR, sizeof(*irq_data));
-+	sdio_release_host(sdio->func);
+ #define MT_DMASHDL_SCHED_SET(_n)	MT_DMA_SHDL(0x070 + ((_n) << 2))
+ 
++#define MT_CONN_STATUS			0x7c053c10
++#define MT_WIFI_PATCH_DL_STATE		BIT(0)
 +
- 	if (err)
- 		return err;
+ #define MT_CONN_ON_LPCTL		0x7c060010
+ #define PCIE_LPCR_HOST_OWN_SYNC		BIT(2)
+ #define PCIE_LPCR_HOST_CLR_OWN		BIT(1)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+index e0f0d3a2b17e..4fd1d4765b04 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio_mac.c
+@@ -63,6 +63,8 @@ int mt7921s_wfsys_reset(struct mt7921_dev *dev)
+ 	clear_bit(MT76_STATE_MCU_RUNNING, &dev->mphy.state);
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-index 65d693902c22..743b63f66efa 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/sdio.c
-@@ -58,7 +58,10 @@ static int mt7921s_parse_intr(struct mt76_dev *dev, struct mt76s_intr *intr)
- 	struct mt7921_sdio_intr *irq_data = sdio->intr_data;
- 	int i, err;
+ 	/* activate mt7921s again */
++	mt7921s_mcu_drv_pmctrl(dev);
++	mt76_clear(dev, MT_CONN_STATUS, MT_WIFI_PATCH_DL_STATE);
+ 	mt7921s_mcu_fw_pmctrl(dev);
+ 	mt7921s_mcu_drv_pmctrl(dev);
  
-+	sdio_claim_host(sdio->func);
- 	err = sdio_readsb(sdio->func, irq_data, MCR_WHISR, sizeof(*irq_data));
-+	sdio_release_host(sdio->func);
-+
- 	if (err < 0)
- 		return err;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-index 801590a0a334..f2b46975d831 100644
---- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-+++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
-@@ -102,7 +102,10 @@ mt76s_rx_run_queue(struct mt76_dev *dev, enum mt76_rxq_id qid,
- 
- 	buf = page_address(page);
- 
-+	sdio_claim_host(sdio->func);
- 	err = sdio_readsb(sdio->func, buf, MCR_WRDR(qid), len);
-+	sdio_release_host(sdio->func);
-+
- 	if (err < 0) {
- 		dev_err(dev->dev, "sdio read data failed:%d\n", err);
- 		put_page(page);
-@@ -214,7 +217,10 @@ static int __mt76s_xmit_queue(struct mt76_dev *dev, u8 *data, int len)
- 	if (len > sdio->func->cur_blksize)
- 		len = roundup(len, sdio->func->cur_blksize);
- 
-+	sdio_claim_host(sdio->func);
- 	err = sdio_writesb(sdio->func, MCR_WTDR1, data, len);
-+	sdio_release_host(sdio->func);
-+
- 	if (err)
- 		dev_err(dev->dev, "sdio write failed: %d\n", err);
- 
-@@ -298,6 +304,7 @@ void mt76s_txrx_worker(struct mt76_sdio *sdio)
- 	/* disable interrupt */
- 	sdio_claim_host(sdio->func);
- 	sdio_writel(sdio->func, WHLPCR_INT_EN_CLR, MCR_WHLPCR, NULL);
-+	sdio_release_host(sdio->func);
- 
- 	do {
- 		nframes = 0;
-@@ -327,6 +334,7 @@ void mt76s_txrx_worker(struct mt76_sdio *sdio)
- 	} while (nframes > 0);
- 
- 	/* enable interrupt */
-+	sdio_claim_host(sdio->func);
- 	sdio_writel(sdio->func, WHLPCR_INT_EN_SET, MCR_WHLPCR, NULL);
- 	sdio_release_host(sdio->func);
- }
 -- 
 2.25.1
 
