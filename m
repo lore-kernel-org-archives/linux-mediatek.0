@@ -4,72 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85120C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 17:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2AB3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 19:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wCDnG9UuNPP7i7Vhw8Xd4FD6JkXbpCAXHdrrPh8fWUI=; b=hxTUvUaJCSGWfi
-	CY4uw3oVnByRZf9F52g6SyLotMdLzt5oNfPe3U58Lfy1Gi8HF3pZwjaZMURMkxCQUYNf5EbKyVScl
-	mYes/Ekks4QoBmdTCaOnfFFsJ/0n3yJr9Un5jKo4a3DYHTkn7pQWWgMCoyYbikhVLrroajDSz3Nbc
-	euzad6qzQ1sZv110kM0Lo7x/BAK5P4gDJPVvWdGskKJ9ADLGz8nn3esHfG4127ILuiYnNwhsV8eY+
-	9iuJqvrznE3mz5KwOzAb1Cg793Q+WJnyV+WAcwfiv0Wp66SmHdZiQVPd+EZBT5zxwNaZldQJBnsDZ
-	SFz3GWtSNk2o37ix3BxA==;
+	List-Owner; bh=wnvBjRygF2/6dvHyEga1vNHwtKd6pYpjKb+0y3xR1f4=; b=1Kevz5x52HiLcY
+	ODAVbd2yBNhSMWObyWARnwr+13bFOgj52t2hkQibtS+bI6FIVuY6pZSO1cHQ+3nc1bVPupvqj/PNa
+	TK9Hit579ru03vIr876gxkj0BtF1EvT2ZT+uTTp22rMX0OlFXUSZtTqJox1lCZ3FKnBR/vBO4nxa2
+	qDAKiVLfu4gD+VwjupDma56FBBcDjErRXX0bZhWdxeBBKJjQGQy8hHvZFLyEInLiJ/AVF6krjy79P
+	xRQtiT6nV7CLo7hRYjesd1xBbHsULUUMsHOVLpLbeaI9/uDiO/X+RjsVueZ9aQIDc5/3zvt90j0L2
+	B3N497XXDiwYHVAlhUNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n05ks-00B0YL-6U; Wed, 22 Dec 2021 17:50:22 +0000
-Received: from mail-qk1-f182.google.com ([209.85.222.182])
+	id 1n07H2-00BEQO-PM; Wed, 22 Dec 2021 19:27:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n05kp-00B0Xs-B5; Wed, 22 Dec 2021 17:50:20 +0000
-Received: by mail-qk1-f182.google.com with SMTP id p4so3040164qkm.7;
- Wed, 22 Dec 2021 09:50:18 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=G0Bo2xi487zsjbvsxUHGM60Jt3WTXGtaD5AP/5FQrYU=;
- b=goXG4aW4ahP8PZ/67n5QR0l9qcX47i64LL7tBJ7uDFoeS3D4uBm8csIoaJjEMpH63E
- NHVbqycGVw/h7W08NfQeQZSEa5lv0LKVZTX8tkg9Njk/LwqPsQeyynbIZ43s+qb5H4ZY
- cbSDX9WOJuEbis5IAcMDMUGdTHZisqf2JeKVFm5hTBufDhyOxepVDxAAi6BR4bfNw942
- dHJAVJbC4ZWL+KaQHcHp3msTF7mhhkWbDKKaU/Q4dvyOP4HpjT5wfL8PduAIMnEnLEI3
- vrq0rfAnazfVJuzP23/PzfrncN9BAImMu5hyL53hWdap/WutrR+JKkHMSOGlk1LgwiGX
- gwEg==
-X-Gm-Message-State: AOAM531pn3ZmIILd83b36OhcktPddGRsCd8YCODBk0YVhd84oZlG4jdp
- 3y22cku1Do0gH4XvsM9yzw==
-X-Google-Smtp-Source: ABdhPJyvAAEpmHO21h+BgfeOi40PfsFEpHcNduiO7Js5mzx8z/J1daeSExKuDA/ssJQ+ZFmLU9Ujqg==
-X-Received: by 2002:a05:620a:15cb:: with SMTP id
- o11mr2820061qkm.371.1640195417674; 
- Wed, 22 Dec 2021 09:50:17 -0800 (PST)
-Received: from robh.at.kernel.org ([24.55.105.145])
- by smtp.gmail.com with ESMTPSA id f18sm2518981qko.34.2021.12.22.09.50.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 22 Dec 2021 09:50:16 -0800 (PST)
-Received: (nullmailer pid 2400088 invoked by uid 1000);
- Wed, 22 Dec 2021 17:50:15 -0000
-Date: Wed, 22 Dec 2021 13:50:15 -0400
-From: Rob Herring <robh@kernel.org>
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: broonie@kernel.org, sean.wang@mediatek.com, linux-gpio@vger.kernel.org,
- linux-spi@vger.kernel.org, matthias.bgg@gmail.com, devicetree@vger.kernel.org,
- bgolaszewski@baylibre.com, linux-mediatek@lists.infradead.org,
- bayi.cheng@mediatek.com, linux-arm-kernel@lists.infradead.org,
- linus.walleij@linaro.org, gch981213@gmail.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com, robh+dt@kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v7 3/4] dt-bindings: pinctrl: mt8195: add wrapping node
- of pin configurations
-Message-ID: <YcNlVzSZAWCM9eKO@robh.at.kernel.org>
-References: <20211220121825.6446-1-tinghan.shen@mediatek.com>
- <20211220121825.6446-4-tinghan.shen@mediatek.com>
+ id 1n07Gw-00BEPZ-PV
+ for linux-mediatek@lists.infradead.org; Wed, 22 Dec 2021 19:27:37 +0000
+X-UUID: a4c238afbfef4607a399218b7d63bdbf-20211222
+X-UUID: a4c238afbfef4607a399218b7d63bdbf-20211222
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 801682368; Wed, 22 Dec 2021 12:27:32 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Dec 2021 11:27:31 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 23 Dec 2021 03:27:29 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 23 Dec 2021 03:27:29 +0800
+From: <sean.wang@mediatek.com>
+To: <lorenzo.bianconi@redhat.com>
+CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
+ <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH] mt76: sdio: lock sdio when it is needed
+Date: Thu, 23 Dec 2021 03:27:28 +0800
+Message-ID: <1640201248-14901-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <YcMJDdDrDVIT0Y55@lore-desk--annotate>
+References: <YcMJDdDrDVIT0Y55@lore-desk--annotate>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20211220121825.6446-4-tinghan.shen@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211222_095019_422867_EE2975B3 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20211222_112734_869445_3658A9E9 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,23 +80,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 20 Dec 2021 20:18:24 +0800, Tinghan Shen wrote:
-> On mt8195, the pinctrl node has pinctrl groups to group pin
-> configurations by users' need. In each pinctrl group, it has
-> subnode(s) to list pins needed and pin configurations. By supporting
-> multiple subnodes, we can configure different pin characteristics
-> (driving/pull-up/pull-down/etc.) in a pinctrl group.
-> 
-> Update pinctrl-mt8195.yaml to add subnode in pinctrl groups and an
-> example to illustrate the usage.
-> 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> ---
->  .../bindings/pinctrl/pinctrl-mt8195.yaml      | 338 ++++++++++--------
->  1 file changed, 188 insertions(+), 150 deletions(-)
-> 
+From: Sean Wang <sean.wang@mediatek.com>
 
-Reviewed-by: Rob Herring <robh@kernel.org>
+>> From: Sean Wang <sean.wang@mediatek.com>
+>>
+>> Acquire the SDIO as needed as possible because either MT7663S or
+>> MT7921S is a multiple-function device that always includes Bluetooth
+>> that would share with the same SDIO bus. So not to avoid breaking
+>> Bluetooth pairing, audio, and HID such kind of time critical
+>> application on that, we only lock sdio bus when it is necessary in WiFi driver.
+>>
+>> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+>> ---
+>>  drivers/net/wireless/mediatek/mt76/mt7615/sdio.c | 3 +++
+>> drivers/net/wireless/mediatek/mt76/mt7921/sdio.c | 3 +++
+>>  drivers/net/wireless/mediatek/mt76/sdio_txrx.c   | 8 ++++++++
+>>  3 files changed, 14 insertions(+)
+>>
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+>> b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+>> index 31c4a76b7f91..71162befdae8 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt7615/sdio.c
+>> @@ -56,7 +56,10 @@ static int mt7663s_parse_intr(struct mt76_dev *dev, struct mt76s_intr *intr)
+>>	struct mt7663s_intr *irq_data = sdio->intr_data;
+>>	int i, err;
+>>
+>> +	sdio_claim_host(sdio->func);
+>>	err = sdio_readsb(sdio->func, irq_data, MCR_WHISR,
+>> sizeof(*irq_data));
+>> +	sdio_release_host(sdio->func);
+>
+>I guess you can move this in mt76s_rx_handler() and remove the duplicated code in mt7921_sdio.c
+>
+
+I got your point, but I still prefer we can release sdio lock as early as possible when WiFi driver doesn't need it
+to allow BT driver has the chance to get the lock quickly.
+
+>Regards,
+>Lorenzo
+>
+>> +
+>>	if (err)
+>>		return err;
+
+<snip>
 
 _______________________________________________
 Linux-mediatek mailing list
