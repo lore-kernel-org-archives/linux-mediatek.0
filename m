@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5092DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 01:52:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55C4CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 22 Dec 2021 03:12:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BEEZQbHcpT+1NRmKsyQRZDSDPNwVLUulsNA7cO+JDiQ=; b=vu8xmCpqC6MRXO
-	TyYKRWthgjz5e3eLF0y8oy8jBtgW8ErK2w3EZk87kozXVjARFTiuOY6TxOPPnvkRrZFDGFsHn8i4N
-	PTpMSnO51+JuMN1/IB8Qx5iR+/McqFj1TtpRgHIEZpHSf5zpUImUo45lAFB/VgxHk6Dt4b8DWTG1l
-	TjkrBptKP0oyskIZ7TUaKYNUZQa0+vJxTGLwIeDEFXxd3GTDvMBUOB1RAjvanyXlz5XM56ZAzV9xu
-	gFY8sn/l+A4rAnRbuT4ZUmZCvxh5NUkFzsoo8kmwqvY1T5XR3J/6RhyvzlR0KLZd7xTsZC7I2VEOE
-	tXOYhe4LcSlrZqAjgZZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bDmDb8k9ZJ+VszMvw0wkSIItrR8bziUh9Il7lMmx2CE=; b=aaBqLjD9+Kq4R4
+	DBLF6hpCkiMdj9fVCSi1tc5+db93LpT6Vs23NCGufBiFukbe56Sbc+hjg9K+M9ixnsCY8zu6MHJed
+	TstQZ9E6mvIGcvkR1TTeMJYp0GDDUQGvKjxunY6Tz+Mm5DbPejnIkBRal146OCy4DNLmN78hrsmKR
+	82JRamVwqbz0veg98drGR84He50RLDvtuCbLLJLpp5nUtteUSSATviZHNPIyBzNp+rWTomy+XPXfd
+	i6otowZJo/5WDO2fYddzN7jxnWE+Ti6ORuIw1BVH197caZY9zIF2kDON6bhiWftWXLSSBS1qSXDU3
+	q8pASca7bjwsTPIIateA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1mzqnu-008tNq-5U; Wed, 22 Dec 2021 01:52:30 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1mzqnh-008tKD-Bk; Wed, 22 Dec 2021 01:52:19 +0000
-Received: from localhost.localdomain (unknown [124.16.138.126])
- by APP-05 (Coremail) with SMTP id zQCowABHKBW+hMJhxLR+BA--.51475S2;
- Wed, 22 Dec 2021 09:51:58 +0800 (CST)
-From: Jiasheng Jiang <jiasheng@iscas.ac.cn>
-To: matthias.bgg@gmail.com,
-	lgirdwood@gmail.com,
-	broonie@kernel.org
-Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, Jiasheng Jiang <jiasheng@iscas.ac.cn>
-Subject: [PATCH v2] isoc: mediatek: Check for error clk pointer
-Date: Wed, 22 Dec 2021 09:51:57 +0800
-Message-Id: <20211222015157.1025853-1-jiasheng@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1mzs2w-00942w-94; Wed, 22 Dec 2021 03:12:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1mzs2r-00940l-Qc
+ for linux-mediatek@lists.infradead.org; Wed, 22 Dec 2021 03:12:04 +0000
+X-UUID: 25a0d158511a45f6b2f1d9db2853ce38-20211221
+X-UUID: 25a0d158511a45f6b2f1d9db2853ce38-20211221
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 798225814; Tue, 21 Dec 2021 20:11:57 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 21 Dec 2021 19:11:55 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 22 Dec 2021 11:11:53 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 22 Dec 2021 11:11:53 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
+ <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
+ <mcchou@chromium.org>, <shawnku@google.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2 3/3] Bluetooth: btmtksdio: move struct reg_read_cmd to
+ common file
+Date: Wed, 22 Dec 2021 11:11:47 +0800
+Message-ID: <7fea13fab5a203ed4f373ec250fd4426cb8afff1.1640141813.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <ef0603f2553d09fb84043704e4726d0ab98aa63b.1640141813.git.objelf@gmail.com>
+References: <ef0603f2553d09fb84043704e4726d0ab98aa63b.1640141813.git.objelf@gmail.com>
 MIME-Version: 1.0
-X-CM-TRANSID: zQCowABHKBW+hMJhxLR+BA--.51475S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7KryfWw4UXr1DAFykKF4kZwb_yoW8uF4UpF
- ykta42yFWrtrWxWas5ZrWDWFyakryxta9rK34fKw4Fy3s8Jrn3JF95Ja4jyF4fAFykK3Wa
- yr4YgrW8CF1UZFUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUkl14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
- 1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
- 6r4UJwA2z4x0Y4vEx4A2jsIE14v26r4UJVWxJr1l84ACjcxK6I8E87Iv6xkF7I0E14v26r
- 4UJVWxJr1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2Wl
- Yx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbV
- WUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lc2xSY4AK67AK
- 6w4l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxV
- WUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r126r1DMIIYrxkI
- 7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r
- 1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWrZr1j6s0DMIIF0xvEx4A2jsIE14v26r1j6r4U
- MIIF0xvEx4A2jsIEc7CjxVAFwI0_Jr0_GrUvcSsGvfC2KfnxnUUI43ZEXa7VUbLiSPUUUU
- U==
-X-Originating-IP: [124.16.138.126]
-X-CM-SenderInfo: pmld2xxhqjqxpvfd2hldfou0/
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211221_175217_836957_6F0C47C3 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20211221_191201_898040_271A1FCD 
+X-CRM114-Status: GOOD (  11.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,81 +82,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 22, 2021 at 01:57:15AM +0800, Mark Brown wrote:
->> +	for (i = CLK_NONE + 1; i < CLK_MAX; i++) {
->>  		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
->> +		if (IS_ERR(clk[i]))
->> +			return PTR_ERR(clk[i]);
->
-> This now pays attention to the error code here which is good but...
->
->> -	init_clks(pdev, clk);
->> +	ret = init_clks(pdev, clk);
->> +	if (ret)
->> +		return ERR_PTR(-ENOMEM);
->
-> ...then discards it here with a random most likely inappropriate error
-> code.
+From: Sean Wang <sean.wang@mediatek.com>
 
-Yes, you are right and now the return code depending on the
-init_clks().
+move struct reg_read_cmd to btmtk.h to allow other mtk drivers refer to.
 
-Fixes: 6078c651947a ("soc: mediatek: Refine scpsys to support multiple platform")
-Signed-off-by: Jiasheng Jiang <jiasheng@iscas.ac.cn>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 ---
-Changelog:
-
-v1 -> v2
-
-*Change 1. Change the return code.
+v2: no change
 ---
- drivers/soc/mediatek/mtk-scpsys.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+ drivers/bluetooth/btmtk.h     | 7 +++++++
+ drivers/bluetooth/btmtksdio.c | 7 +------
+ 2 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/soc/mediatek/mtk-scpsys.c b/drivers/soc/mediatek/mtk-scpsys.c
-index ca75b14931ec..670cc82d17dc 100644
---- a/drivers/soc/mediatek/mtk-scpsys.c
-+++ b/drivers/soc/mediatek/mtk-scpsys.c
-@@ -411,12 +411,17 @@ static int scpsys_power_off(struct generic_pm_domain *genpd)
- 	return ret;
- }
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index fc57ef09d132..fb76d9765ce0 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -87,6 +87,13 @@ struct btmtk_sco {
+ 	u8 channel_select_config;
+ } __packed;
  
--static void init_clks(struct platform_device *pdev, struct clk **clk)
-+static int init_clks(struct platform_device *pdev, struct clk **clk)
- {
- 	int i;
- 
--	for (i = CLK_NONE + 1; i < CLK_MAX; i++)
-+	for (i = CLK_NONE + 1; i < CLK_MAX; i++) {
- 		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
-+		if (IS_ERR(clk[i]))
-+			return PTR_ERR(clk[i]);
-+	}
++struct reg_read_cmd {
++	u8 type;
++	u8 rsv;
++	u8 num;
++	__le32 addr;
++} __packed;
 +
-+	return 0;
- }
- 
- static struct scp *init_scp(struct platform_device *pdev,
-@@ -426,7 +431,7 @@ static struct scp *init_scp(struct platform_device *pdev,
+ struct reg_write_cmd {
+ 	u8 type;
+ 	u8 rsv;
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index c9120bd755d3..3f6b3f84077a 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -800,12 +800,7 @@ static int mt79xx_setup(struct hci_dev *hdev, const char *fwname)
+ static int btsdio_mtk_reg_read(struct hci_dev *hdev, u32 reg, u32 *val)
  {
- 	struct genpd_onecell_data *pd_data;
- 	struct resource *res;
--	int i, j;
-+	int i, j, ret;
- 	struct scp *scp;
- 	struct clk *clk[CLK_MAX];
- 
-@@ -481,7 +486,9 @@ static struct scp *init_scp(struct platform_device *pdev,
- 
- 	pd_data->num_domains = num;
- 
--	init_clks(pdev, clk);
-+	ret = init_clks(pdev, clk);
-+	if (ret)
-+		return ERR_PTR(ret);
- 
- 	for (i = 0; i < num; i++) {
- 		struct scp_domain *scpd = &scp->domains[i];
+ 	struct btmtk_hci_wmt_params wmt_params;
+-	struct reg_read_cmd {
+-		u8 type;
+-		u8 rsv;
+-		u8 num;
+-		__le32 addr;
+-	} __packed reg_read = {
++	struct reg_read_cmd reg_read = {
+ 		.type = 1,
+ 		.num = 1,
+ 	};
 -- 
 2.25.1
 
