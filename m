@@ -4,49 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74934C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Dec 2021 17:13:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A02EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Dec 2021 17:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LGWS1J8UMZY9din66c4qCPis8/vHgBMSWelxnhcDZMo=; b=YNoViOlRjA2+qX
-	UHLbzws+0VzBjLJo6afqSv7WjkxOxFSaS2HhtEVOWlX7fsq+0XJBEHpwiieVIyMEBRkiECL+WvjOM
-	FdoiWsA7wsC7CQtPHN0/oK0dq0JFqTKCzXrJvczx4h4YUrBs4GkzI5C8mfoRxLlZSUu+qPwQ/pmEy
-	TNkQIcR5NDX/50fhBhwqCXRvUbKSYjuvKs/pAbcDfaYWH7TACQnhhMqT5sxHqNpwMVjNHVVZNk52O
-	Q7PCbIXaQ46+7KKTX8U3/Kk8xYUE3Et8HnRn3bO5qfDQUHqdMJmW873uIYaGznJXlSE/6Kk2oUgNg
-	1e4JGPga8z+d4w8aDvsQ==;
+	List-Owner; bh=6q5w8K9qY0kZ5VigYV4AfCWmN2iWp8Yh+E+5/iKNWiI=; b=SCeS0ERTLU249V
+	2dG2TrfG2xIqRWzOpACxLnT/UNL5rYqs2aJ6C9pq3ei/Lc5hP4AHxyTgxDAE+WekKOtFteLsK6cpJ
+	4/yGSW8KqkG81/4mBmlgo3WbSnc0xRCaNrEUVs0TJtAYOARqrERBdlekhssjPYKEVR/X0Y7fdbXsK
+	kgNcEm5onZcEkmgZR/D+1JADc0astbQTHKLQNuGxeAgziR/FNCZPYlsDdjoPP56m8R2/WUo8/+NLk
+	qJ0ZCO+yIsCxqmYbJA2lrafXiMOkNaVZcQNBIDvoRBKbLjnq4scdLZykwwPDOt9mYlCvERe+NCa9b
+	ejeu23ICqMDsm6FYZTjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0Rec-00D8dP-Cb; Thu, 23 Dec 2021 17:13:22 +0000
-Received: from mxout04.lancloud.ru ([45.84.86.114])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0RdY-00D8G3-Bv; Thu, 23 Dec 2021 17:12:19 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout04.lancloud.ru 021F8209FA39
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-To: Ulf Hansson <ulf.hansson@linaro.org>, <linux-mmc@vger.kernel.org>
-CC: Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>
-Subject: [PATCH RFC 03/13] mmc: mtk-sd: fix deferred probing
-Date: Thu, 23 Dec 2021 20:11:52 +0300
-Message-ID: <20211223171202.8224-4-s.shtylyov@omp.ru>
-X-Mailer: git-send-email 2.26.3
-In-Reply-To: <20211223171202.8224-1-s.shtylyov@omp.ru>
-References: <20211223171202.8224-1-s.shtylyov@omp.ru>
-MIME-Version: 1.0
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+	id 1n0RwH-00DCWj-0j; Thu, 23 Dec 2021 17:31:37 +0000
+Received: from relmlor2.renesas.com ([210.160.252.172]
+ helo=relmlie6.idc.renesas.com)
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n0Rvg-00DCH1-PY; Thu, 23 Dec 2021 17:31:02 +0000
+X-IronPort-AV: E=Sophos;i="5.88,230,1635174000"; d="scan'208";a="104983894"
+Received: from unknown (HELO relmlir6.idc.renesas.com) ([10.200.68.152])
+ by relmlie6.idc.renesas.com with ESMTP; 24 Dec 2021 02:31:00 +0900
+Received: from localhost.localdomain (unknown [10.226.36.204])
+ by relmlir6.idc.renesas.com (Postfix) with ESMTP id A23A640C4DA9;
+ Fri, 24 Dec 2021 02:30:57 +0900 (JST)
+From: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+To: linux-media@vger.kernel.org, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Rob Herring <robh+dt@kernel.org>,
+ linux-kernel@vger.kernel.org, Prabhakar <prabhakar.csengg@gmail.com>,
+ linux-renesas-soc@vger.kernel.org,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: [PATCH 09/13] media: mtk-vcodec: Drop unnecessary call to
+ platform_get_resource()
+Date: Thu, 23 Dec 2021 17:30:10 +0000
+Message-Id: <20211223173015.22251-10-prabhakar.mahadev-lad.rj@bp.renesas.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20211223173015.22251-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+References: <20211223173015.22251-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211223_091216_646321_27733B73 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20211223_093100_969263_6EA96C75 
+X-CRM114-Status: GOOD (  11.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -58,37 +62,89 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The driver overrides the error codes returned by platform_get_irq() to
--EINVAL, so if it returns -EPROBE_DEFER, the driver will fail the probe
-permanently instead of the deferred probing. Switch to propagating the
-error codes upstream.
+mtk_vcodec_probe() calls platform_get_resource(pdev, IORESOURCE_IRQ, ..)
+to check if IRQ resource exists and later calls platform_get_irq(pdev, ..)
+to get the actual IRQ.
 
-Fixes: 208489032bdd ("mmc: mediatek: Add Mediatek MMC driver")
-Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
+This patch drops an unnecessary call to platform_get_resource() and
+checks the return value of platform_get_irq(pdev, ..) to check if the
+IRQ line is valid.
+
+Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
 ---
- drivers/mmc/host/mtk-sd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ .../media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c    | 11 ++++-------
+ .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c    | 10 +++-------
+ 2 files changed, 7 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 632775217d35..4bd070a458e9 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -2590,7 +2590,7 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 
- 	host->irq = platform_get_irq(pdev, 0);
- 	if (host->irq < 0) {
--		ret = -EINVAL;
-+		ret = host->irq;
- 		goto host_free;
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 40c39e1e596b..1509c2a4de84 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -200,7 +200,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_vcodec_dev *dev;
+ 	struct video_device *vfd_dec;
+-	struct resource *res;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+ 	int i, ret;
+@@ -244,14 +243,12 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
  	}
  
+-	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+-	if (res == NULL) {
+-		dev_err(&pdev->dev, "failed to get irq resource");
+-		ret = -ENOENT;
++	ret = platform_get_irq(pdev, 0);
++	if (ret < 0)
+ 		goto err_res;
+-	}
+ 
+-	dev->dec_irq = platform_get_irq(pdev, 0);
++	dev->dec_irq = ret;
++
+ 	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
+ 	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
+ 			mtk_vcodec_dec_irq_handler, 0, pdev->name, dev);
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index aeaecb8d416e..86e70d826754 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -236,7 +236,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_vcodec_dev *dev;
+ 	struct video_device *vfd_enc;
+-	struct resource *res;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+ 	int ret;
+@@ -280,14 +279,11 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_res;
+ 	}
+ 
+-	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+-	if (res == NULL) {
+-		dev_err(&pdev->dev, "failed to get irq resource");
+-		ret = -ENOENT;
++	ret = platform_get_irq(pdev, 0);
++	if (ret < 0)
+ 		goto err_res;
+-	}
+ 
+-	dev->enc_irq = platform_get_irq(pdev, 0);
++	dev->enc_irq = ret;
+ 	irq_set_status_flags(dev->enc_irq, IRQ_NOAUTOEN);
+ 	ret = devm_request_irq(&pdev->dev, dev->enc_irq,
+ 			       mtk_vcodec_enc_irq_handler,
 -- 
-2.26.3
+2.17.1
 
 
 _______________________________________________
