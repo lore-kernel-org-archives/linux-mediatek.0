@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1419AC433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Dec 2021 01:14:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 311BEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 23 Dec 2021 02:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kGp76l0JTssfF5UsumECyLLQbuaQD+9TlfTkIEpD06Q=; b=qsWoLpVqns0fqb
-	1OL1Zox8XoZYnViu/Xluw50wL+h4Dn8O24VBOklPz/e+T5jeaB7ALbRnFUgQYH6o8SdxiNfNxgbpM
-	dKaCHtFQKgsbCWFcbiafKgpQMvEWIz3N4c7kwFTgRZvI4DGGfX0666AX/qBefW22E+ZXWUhw3r4Ln
-	YrKSiibl3yD+1ZryR1v4rfnzur1jyEFtZ+Ox6UCgBu1STQ1hny8W9W6TbpMYYtpc32LQeqLIR0sHL
-	qkhtYynhyko1NC9z446kldW+V30Yjmh1YDjxnaMnT7OX7RIJYzARBTy/QWj2RunLVpIjFZatMrDaM
-	9W9xy4OPldIBS35A0SqA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1zLc5mi+FJkz/yb66AI1ISZkAU2Bvi0bQ9NZSyrBj2Y=; b=T6dJOLPFkt6Y+1
+	hJpp+G8p1JVjZrOOysNudk/PhawxrbynrRr6dwlc0ynlV9cta7ecXGGsWA0hSlISLZP6bcJ6aD6md
+	c7DKQ7GtSJvheJQxxSFLOqkZlTd2ls0gSKoOvYCi2Y+empgzQJt3ghkFRBMACUsYFzQZkxpJ5J0Qm
+	RUg7JIVbbv5vBOb9Sjd+0H+pJvuO6XxSfj4D/BgsS9iU5HUSZ8yOh6Pav82N7pDSo3tp/sEWw+KtG
+	uYCHywrpqMqo5+9jDVlksJtTe4uA+5DGM5Uxn/7bpGAFgwH4ZkpvgPOXEiua/RTIJumpKTm+sn9KF
+	X9x9va8X5n4tcZAox4aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0CgE-00BeSD-0R; Thu, 23 Dec 2021 01:14:02 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1n0EHF-00BmaC-Vw; Thu, 23 Dec 2021 02:56:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0Cdx-00BdFt-SZ; Thu, 23 Dec 2021 01:11:44 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 6002A61C1E;
- Thu, 23 Dec 2021 01:11:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9BB67C36AE8;
- Thu, 23 Dec 2021 01:11:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640221900;
- bh=JEMd6rbvAJo5/E0VVbBCtxpY1OwkDouz6ExYkZiuVQU=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hW0hvav0Nme8bJkjVlYbJCp4QsLxXxZtPVZphM7W3oFDqz+0Dwc7l6amya0PB4RNc
- 9hdMc9o3yDOCsEzZtWGM04BvH+GbSb1qS/dxZNFDYS/3SAIyfSPsY4jTq/9+KDq9ys
- lMG3FQwHF8i8YXznN9YQT7zJSjctduMwkNpRpbytk2IkJFk5qkcI38p2xxfMEyT7er
- owdv/I6d6/oReZn5tuXFKN4xP4GUzQ20V3QRO6CmhP9TIINcey+ZwuZJQPkt3Gm3cV
- g8R8kAHaMKKOz0R0/1H7iMiwdMSImmzIcU1ymEdE0QxsCiRIC7FqTjuF8tqPI736XI
- dHGJ2KzX33Byg==
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: linux-pci@vger.kernel.org,
-	Fan Fei <ffclaire1224@gmail.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, linux-kernel@vger.kernel.org,
- linux-kernel-mentees@lists.linuxfoundation.org,
- Shuah Khan <skhan@linuxfoundation.org>,
- Bjorn Helgaas <bhelgaas@google.com>,
- Sergio Paracuellos <sergio.paracuellos@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 17/23] PCI: mt7621: Rename mt7621_pci_ to mt7621_pcie_
-Date: Wed, 22 Dec 2021 19:10:48 -0600
-Message-Id: <20211223011054.1227810-18-helgaas@kernel.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20211223011054.1227810-1-helgaas@kernel.org>
-References: <20211223011054.1227810-1-helgaas@kernel.org>
+ id 1n0EHC-00BmZ5-3H
+ for linux-mediatek@lists.infradead.org; Thu, 23 Dec 2021 02:56:21 +0000
+X-UUID: eb57845b8d5e4372b55480bc8510fa0d-20211222
+X-UUID: eb57845b8d5e4372b55480bc8510fa0d-20211222
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1321791945; Wed, 22 Dec 2021 19:56:15 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 22 Dec 2021 18:56:13 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 23 Dec 2021 10:56:11 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Thu, 23 Dec 2021 10:56:11 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
+ <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
+ <mcchou@chromium.org>, <shawnku@google.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, Mark Chen <mark-yw.chen@mediatek.com>
+Subject: [PATCH v3 1/3] Bluetooth: mt7921s: Support wake on bluetooth
+Date: Thu, 23 Dec 2021 10:56:07 +0800
+Message-ID: <ceafc644ca9ce926a9fb07f7b3f4e2f701e69c8d.1640165092.git.sean.wang@kernel.org>
+X-Mailer: git-send-email 1.7.9.5
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211222_171142_066452_2E0C3310 
-X-CRM114-Status: GOOD (  17.20  )
+X-CRM114-CacheID: sfid-20211222_185618_173702_D9F545C8 
+X-CRM114-Status: GOOD (  18.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,143 +78,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Bjorn Helgaas <bhelgaas@google.com>
+From: Mark Chen <mark-yw.chen@mediatek.com>
 
-Rename mt7621_pci_* structs and functions to mt7621_pcie_* for consistency
-with the rest of the file.
+Enable wake on bluetooth on mt7921s that can be supported since the
+firmware with version 20211129211059 was added, and the patch would
+not cause any harm even when the old firmware is applied.
 
-Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
-Cc: Sergio Paracuellos <sergio.paracuellos@gmail.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
+The patch was tested by setting up an HID or HOGP profile to connect a
+Bluetooth keyboard and mouse, then putting the system to suspend, then
+trying to wake up the system by moving the Bluetooth keyboard or mouse,
+and then checking if the system can wake up and be brought back to
+the normal state.
+
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
 ---
- drivers/pci/controller/pcie-mt7621.c | 36 ++++++++++++++--------------
- 1 file changed, 18 insertions(+), 18 deletions(-)
+v2: refine the git message
+v3:
+    1. fit to single line as possible
+    2. move the skb variable into local scope
+    3. free skb after calling __hci_cmd_sync
+    4. make bt_awake as const struct btmtk_wakeon
+---
+ drivers/bluetooth/btmtk.h     |  8 ++++++++
+ drivers/bluetooth/btmtksdio.c | 33 ++++++++++++++++++++++++++++++++-
+ 2 files changed, 40 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
-index 4138c0e83513..b8fea7afdb1b 100644
---- a/drivers/pci/controller/pcie-mt7621.c
-+++ b/drivers/pci/controller/pcie-mt7621.c
-@@ -93,8 +93,8 @@ struct mt7621_pcie_port {
-  * reset lines are inverted.
-  */
- struct mt7621_pcie {
--	void __iomem *base;
- 	struct device *dev;
-+	void __iomem *base;
- 	struct list_head ports;
- 	bool resets_inverted;
- };
-@@ -129,7 +129,7 @@ static inline void pcie_port_write(struct mt7621_pcie_port *port,
- 	writel_relaxed(val, port->base + reg);
- }
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 6e7b0c7567c0..2be1d2680ad8 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -68,6 +68,14 @@ struct btmtk_tci_sleep {
+ 	u8 time_compensation;
+ } __packed;
  
--static inline u32 mt7621_pci_get_cfgaddr(unsigned int bus, unsigned int slot,
-+static inline u32 mt7621_pcie_get_cfgaddr(unsigned int bus, unsigned int slot,
- 					 unsigned int func, unsigned int where)
- {
- 	return (((where & 0xf00) >> 8) << 24) | (bus << 16) | (slot << 11) |
-@@ -140,7 +140,7 @@ static void __iomem *mt7621_pcie_map_bus(struct pci_bus *bus,
- 					 unsigned int devfn, int where)
- {
- 	struct mt7621_pcie *pcie = bus->sysdata;
--	u32 address = mt7621_pci_get_cfgaddr(bus->number, PCI_SLOT(devfn),
-+	u32 address = mt7621_pcie_get_cfgaddr(bus->number, PCI_SLOT(devfn),
- 					     PCI_FUNC(devfn), where);
- 
- 	writel_relaxed(address, pcie->base + RALINK_PCI_CONFIG_ADDR);
-@@ -148,7 +148,7 @@ static void __iomem *mt7621_pcie_map_bus(struct pci_bus *bus,
- 	return pcie->base + RALINK_PCI_CONFIG_DATA + (where & 3);
- }
- 
--static struct pci_ops mt7621_pci_ops = {
-+static struct pci_ops mt7621_pcie_ops = {
- 	.map_bus	= mt7621_pcie_map_bus,
- 	.read		= pci_generic_config_read,
- 	.write		= pci_generic_config_write,
-@@ -156,7 +156,7 @@ static struct pci_ops mt7621_pci_ops = {
- 
- static u32 read_config(struct mt7621_pcie *pcie, unsigned int dev, u32 reg)
- {
--	u32 address = mt7621_pci_get_cfgaddr(0, dev, 0, reg);
-+	u32 address = mt7621_pcie_get_cfgaddr(0, dev, 0, reg);
- 
- 	pcie_write(pcie, address, RALINK_PCI_CONFIG_ADDR);
- 	return pcie_read(pcie, RALINK_PCI_CONFIG_DATA);
-@@ -165,7 +165,7 @@ static u32 read_config(struct mt7621_pcie *pcie, unsigned int dev, u32 reg)
- static void write_config(struct mt7621_pcie *pcie, unsigned int dev,
- 			 u32 reg, u32 val)
- {
--	u32 address = mt7621_pci_get_cfgaddr(0, dev, 0, reg);
-+	u32 address = mt7621_pcie_get_cfgaddr(0, dev, 0, reg);
- 
- 	pcie_write(pcie, address, RALINK_PCI_CONFIG_ADDR);
- 	pcie_write(pcie, val, RALINK_PCI_CONFIG_DATA);
-@@ -505,16 +505,16 @@ static int mt7621_pcie_register_host(struct pci_host_bridge *host)
- {
- 	struct mt7621_pcie *pcie = pci_host_bridge_priv(host);
- 
--	host->ops = &mt7621_pci_ops;
-+	host->ops = &mt7621_pcie_ops;
- 	host->sysdata = pcie;
- 	return pci_host_probe(host);
- }
- 
--static const struct soc_device_attribute mt7621_pci_quirks_match[] = {
-+static const struct soc_device_attribute mt7621_pcie_quirks_match[] = {
- 	{ .soc_id = "mt7621", .revision = "E2" }
- };
- 
--static int mt7621_pci_probe(struct platform_device *pdev)
-+static int mt7621_pcie_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	const struct soc_device_attribute *attr;
-@@ -535,7 +535,7 @@ static int mt7621_pci_probe(struct platform_device *pdev)
- 	platform_set_drvdata(pdev, pcie);
- 	INIT_LIST_HEAD(&pcie->ports);
- 
--	attr = soc_device_match(mt7621_pci_quirks_match);
-+	attr = soc_device_match(mt7621_pcie_quirks_match);
- 	if (attr)
- 		pcie->resets_inverted = true;
- 
-@@ -572,7 +572,7 @@ static int mt7621_pci_probe(struct platform_device *pdev)
- 	return err;
- }
- 
--static int mt7621_pci_remove(struct platform_device *pdev)
-+static int mt7621_pcie_remove(struct platform_device *pdev)
- {
- 	struct mt7621_pcie *pcie = platform_get_drvdata(pdev);
- 	struct mt7621_pcie_port *port;
-@@ -583,18 +583,18 @@ static int mt7621_pci_remove(struct platform_device *pdev)
++struct btmtk_wakeon {
++	u8 mode;
++	u8 gpo;
++	u8 active_high;
++	__le16 enable_delay;
++	__le16 wakeup_delay;
++} __packed;
++
+ struct btmtk_hci_wmt_params {
+ 	u8 op;
+ 	u8 flag;
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index b5ea8d3bffaa..b79cee84f590 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -958,6 +958,32 @@ static int btmtksdio_send_frame(struct hci_dev *hdev, struct sk_buff *skb)
  	return 0;
  }
  
--static const struct of_device_id mt7621_pci_ids[] = {
-+static const struct of_device_id mt7621_pcie_ids[] = {
- 	{ .compatible = "mediatek,mt7621-pci" },
- 	{},
- };
--MODULE_DEVICE_TABLE(of, mt7621_pci_ids);
-+MODULE_DEVICE_TABLE(of, mt7621_pcie_ids);
++static bool btmtk_sdio_wakeup(struct hci_dev *hdev)
++{
++	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
++	bool may_wakeup = device_may_wakeup(bdev->dev);
++	const struct btmtk_wakeon bt_awake = {
++		.mode = 0x1,
++		.gpo = 0,
++		.active_high = 0x1,
++		.enable_delay = cpu_to_le16(0xc80),
++		.wakeup_delay = cpu_to_le16(0x20)
++	};
++
++	if (may_wakeup && bdev->data->chipid == 0x7921) {
++		struct sk_buff *skb;
++
++		skb =  __hci_cmd_sync(hdev, 0xfc27, sizeof(bt_awake),
++				      &bt_awake, HCI_CMD_TIMEOUT);
++		if (IS_ERR(skb))
++			may_wakeup = false;
++
++		kfree_skb(skb);
++	}
++
++	return may_wakeup;
++}
++
+ static int btmtksdio_probe(struct sdio_func *func,
+ 			   const struct sdio_device_id *id)
+ {
+@@ -998,6 +1024,7 @@ static int btmtksdio_probe(struct sdio_func *func,
+ 	hdev->shutdown = btmtksdio_shutdown;
+ 	hdev->send     = btmtksdio_send_frame;
+ 	hdev->set_bdaddr = btmtk_set_bdaddr;
++	hdev->wakeup = btmtk_sdio_wakeup;
  
--static struct platform_driver mt7621_pci_driver = {
--	.probe = mt7621_pci_probe,
--	.remove = mt7621_pci_remove,
-+static struct platform_driver mt7621_pcie_driver = {
-+	.probe = mt7621_pcie_probe,
-+	.remove = mt7621_pcie_remove,
- 	.driver = {
- 		.name = "mt7621-pci",
--		.of_match_table = of_match_ptr(mt7621_pci_ids),
-+		.of_match_table = of_match_ptr(mt7621_pcie_ids),
- 	},
- };
--builtin_platform_driver(mt7621_pci_driver);
-+builtin_platform_driver(mt7621_pcie_driver);
+ 	SET_HCIDEV_DEV(hdev, &func->dev);
+ 
+@@ -1032,7 +1059,11 @@ static int btmtksdio_probe(struct sdio_func *func,
+ 	 */
+ 	pm_runtime_put_noidle(bdev->dev);
+ 
+-	return 0;
++	err = device_init_wakeup(bdev->dev, true);
++	if (err)
++		bt_dev_err(hdev, "%s: failed to init_wakeup", __func__);
++
++	return err;
+ }
+ 
+ static void btmtksdio_remove(struct sdio_func *func)
 -- 
 2.25.1
 
