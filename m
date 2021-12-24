@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D14C8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 09:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C37EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 10:04:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fcdn47qnpy7jQA2VAKVti6I2T8CJD+Ev7B3cm0FYmC8=; b=yQhN/UCfoH9IGH8c2TU7B21TDK
-	rA2gsCai82PGmDYFpfTb/snrGUy3asM2iphyN+TNiiF8U8Ui7quW/tWa5qob0G9CwPqqckn1S8Jdu
-	vXLwTK/nSxEkGlwAA1udCWuyUXKqfBjq2KUYC9i8hOWvhnKQtQj5pC6gAtyeyw0aQQg5Fyd6afPF+
-	CWjeUWcsKF8flaO379KjxGX71RXvxzpl/owDlPMv7gruPjM1H+SuwqF+IZOa968yJVljrhGozkHqF
-	pkftCdNA07LjvbC/KkJcxtk7vTnLBDENEqL7CMwTTciXUJcMT8pKNuM2nedIO8urAKcRais/iEa6I
-	rYqDe5JQ==;
+	bh=ikVeCGc8sOvkyaEiH7aUX2ZARDYP/vpnAVw3XIfibyk=; b=HoBwn5MCRT4VWcc5SIIPVGVlYq
+	zuQ6VzNUWX8AnQ+CcUqcFSAp8V7Vq4lF4hteOzaCTvL5wWP7il81ZLXVIXsEHVZDZm5TjKaqIo+e+
+	EQvViMuC5yNiNmlyUlH+YJX6ukEKE4LDe6v9PvrDL/bX4K/1zMIUnztb6DMxYG/VWkEp1XSO6qFGq
+	xVWumOTyxkP/n+sEYnGsVcB62oChtbEoJKg94hvYKppkDXPoOfgOtAvxds6W0ea9N9mY4ycAur9zx
+	hWN5I0u8WGBA5lpNXV1saBdQTku95Fj6c4+V2Y4VP3gejdBwP4vINIA0eqZWOKEJzHagZLoke3LMG
+	zHQ/1G6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0hIF-00E3dU-2p; Fri, 24 Dec 2021 09:55:19 +0000
+	id 1n0hQr-00E4NB-9N; Fri, 24 Dec 2021 10:04:13 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0hI3-00E3bC-UC; Fri, 24 Dec 2021 09:55:09 +0000
+ id 1n0hQf-00E4L6-CY; Fri, 24 Dec 2021 10:04:03 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 0FB081F40AF0
+ (Authenticated sender: kholk11) with ESMTPSA id 86E311F45CBB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1640339705;
- bh=g/qrKxbq81374OPNyBlN5b0Uw2S7uiZ13C5P82NahIA=;
+ s=mail; t=1640340240;
+ bh=Cqq6tirJ0J1L4jiIGUBseXI83U5oUF+xGxcJB7JV+C0=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=XD9uQAp0iU8aU0GqQ/lNnkmvJNxU383e2Yc/NoWpqgEgWtz7InHOogu4bzmkWBmeE
- Zv0AUV3njiViMoqEIJxm7Yi2TDvE5vn2s0jMlZ21Nv8iRQcjvZALBP+DljqbrEs7jc
- /BtqdCo8dWLYheyk9rw6E3xMnUh0OKATLitRDINxJnvomKWzBQa+GXfO5lPEa7Juz7
- 3eahIa7UqFFd1PMGGRU5x0IHymST1gnfE+ZAhfwxk0nxZ40ZG11/hoQ45Wxn5Ck2id
- F53JT34LitY7UVJVR3z7hf1qnp54N7/adwr1LBN8WjXLLePm8iKVPaAaxR4oFqehSK
- WnU9EONoPKT9w==
-Subject: Re: [PATCH] phy: mediatek: Fix missing check in mtk_mipi_tx_probe
-To: Miaoqian Lin <linmq006@gmail.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20211224082103.7658-1-linmq006@gmail.com>
+ b=dfMkblv93jkQ9u4GG5y3VrGIMYCal8Wg2B4CuGt/AMloQSpze8SpDQWdAxc+CMqbs
+ CzoEo2FU5K861VHCrosQq/X11VYRk4GSRK5gssnCyikKfJXEiB4FyHsa6iOp1fxPF7
+ YJ4QoZfc4LcVvvv6wI6b1SBy0lxPPpoUKk+FaP7AmKdcaW6eC0YxVVv0zr3fjZx7js
+ Ainq/P1V/ZcacTvpaiDmM5MuBAphVuIvF+UKUcQvSS2MXaL5qfx674+o8rP6B6lx2L
+ PK0tbflhmxbS1qiTUN+iWVyDHmIGYt+JGGcr+vgxvtbbwXqJv6yi7xkr+PIN8J152M
+ mBT3oAJw6/Q8Q==
+Subject: Re: [PATCH v2 2/5] phy: phy-mtk-tphy: add support efuse setting
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>
+References: <20211218082802.5256-1-chunfeng.yun@mediatek.com>
+ <20211218082802.5256-2-chunfeng.yun@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <badadf88-f912-9794-774f-ec344f2303c0@collabora.com>
-Date: Fri, 24 Dec 2021 10:55:02 +0100
+Message-ID: <bc841baa-e025-b0b8-8dbd-f438fd6981f7@collabora.com>
+Date: Fri, 24 Dec 2021 11:03:56 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211224082103.7658-1-linmq006@gmail.com>
+In-Reply-To: <20211218082802.5256-2-chunfeng.yun@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211224_015508_186959_0DFF7ECF 
-X-CRM114-Status: UNSURE (   6.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211224_020401_736041_AC7D1DCC 
+X-CRM114-Status: GOOD (  30.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,13 +72,187 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/12/21 09:21, Miaoqian Lin ha scritto:
-> The of_device_get_match_data() function may return NULL.
-> Add check to prevent potential null dereference.
+Il 18/12/21 09:27, Chunfeng Yun ha scritto:
+> Due to some SoCs have a bit shift issue that will drop a bit for usb3
+> phy or pcie phy, fix it by adding software efuse reading and setting,
+> but only support it optionally for version 2/3.
 > 
-> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v2: changes suggested by Vinod
+>      1. fix typo of version in commit message
+>      2. use dev_dbg() instead of dev_info()
+> ---
+>   drivers/phy/mediatek/phy-mtk-tphy.c | 162 ++++++++++++++++++++++++++++
+>   1 file changed, 162 insertions(+)
+> 
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hello Chunfeng, thanks for the patch!
+However, there are a few things to improve...
+
+> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
+> index cdcef865fe9e..98a942c607a6 100644
+> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> @@ -12,6 +12,7 @@
+>   #include <linux/iopoll.h>
+>   #include <linux/mfd/syscon.h>
+>   #include <linux/module.h>
+> +#include <linux/nvmem-consumer.h>
+>   #include <linux/of_address.h>
+>   #include <linux/of_device.h>
+>   #include <linux/phy/phy.h>
+> @@ -41,6 +42,9 @@
+>   #define SSUSB_SIFSLV_V2_U3PHYD		0x200
+>   #define SSUSB_SIFSLV_V2_U3PHYA		0x400
+>   
+> +#define U3P_MISC_REG1		0x04
+> +#define MR1_EFUSE_AUTO_LOAD_DIS		BIT(6)
+> +
+>   #define U3P_USBPHYACR0		0x000
+>   #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
+>   #define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
+> @@ -133,6 +137,8 @@
+>   #define P3C_RG_SWRST_U3_PHYD_FORCE_EN	BIT(24)
+>   
+>   #define U3P_U3_PHYA_REG0	0x000
+> +#define P3A_RG_IEXT_INTR		GENMASK(15, 10)
+> +#define P3A_RG_IEXT_INTR_VAL(x)		((0x3f & (x)) << 10)
+>   #define P3A_RG_CLKDRV_OFF		GENMASK(3, 2)
+>   #define P3A_RG_CLKDRV_OFF_VAL(x)	((0x3 & (x)) << 2)
+>   
+> @@ -187,6 +193,19 @@
+>   #define P3D_RG_FWAKE_TH		GENMASK(21, 16)
+>   #define P3D_RG_FWAKE_TH_VAL(x)	((0x3f & (x)) << 16)
+>   
+> +#define U3P_U3_PHYD_IMPCAL0		0x010
+> +#define P3D_RG_FORCE_TX_IMPEL		BIT(31)
+> +#define P3D_RG_TX_IMPEL			GENMASK(28, 24)
+> +#define P3D_RG_TX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
+> +
+> +#define U3P_U3_PHYD_IMPCAL1		0x014
+> +#define P3D_RG_FORCE_RX_IMPEL		BIT(31)
+> +#define P3D_RG_RX_IMPEL			GENMASK(28, 24)
+> +#define P3D_RG_RX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
+> +
+> +#define U3P_U3_PHYD_RSV			0x054
+> +#define P3D_RG_EFUSE_AUTO_LOAD_DIS	BIT(12)
+> +
+>   #define U3P_U3_PHYD_CDR1		0x05c
+>   #define P3D_RG_CDR_BIR_LTD1		GENMASK(28, 24)
+>   #define P3D_RG_CDR_BIR_LTD1_VAL(x)	((0x1f & (x)) << 24)
+> @@ -307,6 +326,11 @@ struct mtk_phy_pdata {
+>   	 * 48M PLL, fix it by switching PLL to 26M from default 48M
+>   	 */
+>   	bool sw_pll_48m_to_26m;
+> +	/*
+> +	 * Some SoCs (e.g. mt8195) drop a bit when use auto load efuse,
+> +	 * support sw way, also support it for v2/v3 optionally.
+> +	 */
+> +	bool sw_efuse_supported;
+>   	enum mtk_phy_version version;
+>   };
+>   
+> @@ -336,6 +360,10 @@ struct mtk_phy_instance {
+>   	struct regmap *type_sw;
+>   	u32 type_sw_reg;
+>   	u32 type_sw_index;
+> +	u32 efuse_sw_en;
+> +	u32 efuse_intr;
+> +	u32 efuse_tx_imp;
+> +	u32 efuse_rx_imp;
+>   	int eye_src;
+>   	int eye_vrt;
+>   	int eye_term;
+> @@ -1040,6 +1068,130 @@ static int phy_type_set(struct mtk_phy_instance *instance)
+>   	return 0;
+>   }
+>   
+> +static int phy_efuse_get(struct mtk_tphy *tphy, struct mtk_phy_instance *instance)
+> +{
+> +	struct device *dev = &instance->phy->dev;
+> +	int ret = 0;
+> +
+> +	/* tphy v1 doesn't support sw efuse, skip it */
+> +	if (!tphy->pdata->sw_efuse_supported) {
+> +		instance->efuse_sw_en = 0;
+> +		return 0;
+> +	}
+> +
+> +	/* software efuse is optional */
+> +	instance->efuse_sw_en = device_property_read_bool(dev, "nvmem-cells");
+> +	if (!instance->efuse_sw_en)
+> +		return 0;
+> +
+> +	switch (instance->type) {
+> +	case PHY_TYPE_USB2:
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "intr", &instance->efuse_intr);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u2 intr efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		/* no efuse, ignore it */
+> +		if (!instance->efuse_intr) {
+> +			dev_warn(dev, "no u2 intr efuse, but dts enable it\n");
+> +			instance->efuse_sw_en = 0;
+> +			break;
+> +		}
+> +
+> +		dev_dbg(dev, "u2 efuse - intr %x\n", instance->efuse_intr);
+> +		break;
+> +
+> +	case PHY_TYPE_USB3:
+> +	case PHY_TYPE_PCIE:
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "intr", &instance->efuse_intr);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 intr efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "rx_imp", &instance->efuse_rx_imp);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 rx_imp efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		ret = nvmem_cell_read_variable_le_u32(dev, "tx_imp", &instance->efuse_tx_imp);
+> +		if (ret) {
+> +			dev_err(dev, "fail to get u3 tx_imp efuse, %d\n", ret);
+> +			break;
+> +		}
+> +
+> +		/* no efuse, ignore it */
+> +		if (!instance->efuse_intr &&
+> +		    !instance->efuse_rx_imp &&
+> +		    !instance->efuse_rx_imp) {
+> +			dev_warn(dev, "no u3 intr efuse, but dts enable it\n");
+> +			instance->efuse_sw_en = 0;
+> +			break;
+> +		}
+> +
+> +		dev_dbg(dev, "u3 efuse - intr %x, rx_imp %x, tx_imp %x\n",
+> +			instance->efuse_intr, instance->efuse_rx_imp,instance->efuse_tx_imp);
+> +		break;
+> +	default:
+> +		dev_err(dev, "no sw efuse for type %d\n", instance->type);
+> +		ret = -EINVAL;
+> +	}
+> +
+> +	return ret;
+> +}
+> +
+> +static void phy_efuse_set(struct mtk_phy_instance *instance)
+
+The name for this function is a bit misleading and one may think that this
+is writing efuses (aka blowing a fuse array), which doesn't look like being
+the case at all.
+
+What about changing it to phy_set_sw_efuse_params(), or something similar?
+
+
+Thank you,
+- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
