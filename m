@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1727DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 08:34:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80ABDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 08:43:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dE/bhozY+IX5WDG3KqKkGoMB2IrFDNa9S0i/SJ+MSSk=; b=1EmtINNfselRWh
-	E6awUTcXq978YyiUt3C0zWnS147jXBKoDM/CkEONL0DKJWrDksEXZhsMpzHBzgLiueznTlXameZtR
-	za9m9UkoS2j8+CNONMNLxMUXzi/G0FEojow2x2JTT//TdOsvQFBhFUEsOHyJydqhXriYCD5vkp9IG
-	RCCEBIiwo4suuEjgIcKEFoBGCY5ZSXu7mcnM9yqV1DlJrxE4x6PQI+L1u6jAMHRSxA+1VctiwkMLi
-	s2Xr9cz5ZBeqPG9+zPy1Knj2yg7iIat7xHamzzvr5d3SxkLnob7Beoa8S/xwQ8d7ZfU6Zzjg2t84D
-	5OwV1aJCgJCPanTagMvg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=3Jc+E/0QetCrLiSpXgLaUuNFAHxVmetN8bLZiR96kz0=; b=kaKvAGRosUYnZx
+	MtoKR9tTbjj1nvQUJys/meBx8a77pO5Q3trzUZrl+8CxfcSA3AXgMbOpodYKc3QAFTFbYF4HsrAPk
+	h/3UvI55tvNBPgwy0LG4/ASGlqjV+Tf7K6B1luGcXRxyX6CXXm8e5rVZLPvOWjzWCEylCEanlBYKI
+	GL7O7m1GL3gMCggaMVdqd2vNAx4YnNxGpPqnQf/xjUrtCqEX4xdq2oxOrPyTJs2Opk5m9xNQmTQNr
+	RMHx1ay34KKikw0CPBX+SPvH1ncE9p638MM0D8hzEzcMPRCeEUGCDI76jbYGx97Gl6DL9pNF+VV5f
+	PBv5UTvDibgDPskWosVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0g26-00Dw97-0C; Fri, 24 Dec 2021 08:34:34 +0000
+	id 1n0gAI-00DwUp-54; Fri, 24 Dec 2021 08:43:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0g21-00Dw77-E6
- for linux-mediatek@lists.infradead.org; Fri, 24 Dec 2021 08:34:33 +0000
-X-UUID: a97a547a29764ac1b4c6258f8f336d95-20211224
-X-UUID: a97a547a29764ac1b4c6258f8f336d95-20211224
+ id 1n0gAE-00DwUX-S8
+ for linux-mediatek@lists.infradead.org; Fri, 24 Dec 2021 08:43:00 +0000
+X-UUID: f7c6707705af4835b346af1118309414-20211224
+X-UUID: f7c6707705af4835b346af1118309414-20211224
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <sean.wang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2093524883; Fri, 24 Dec 2021 01:34:24 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Dec 2021 00:33:00 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 24 Dec 2021 16:32:58 +0800
+ with ESMTP id 1255930196; Fri, 24 Dec 2021 01:42:57 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Dec 2021 00:32:54 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 24 Dec 2021 16:32:52 +0800
 Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 24 Dec 2021 16:32:58 +0800
+ Frontend Transport; Fri, 24 Dec 2021 16:32:52 +0800
 From: <sean.wang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
 CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
@@ -53,18 +52,16 @@ CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
  <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
  <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
  <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 2/2] mt76: mt7921: forbid the doze mode when coredump is in
- progress
-Date: Fri, 24 Dec 2021 16:32:49 +0800
-Message-ID: <d002355a24981e24064806b2cd1a089d8f826dbe.1640331647.git.sean.wang@kernel.org>
+Subject: [PATCH 1/2] mt76: mt7921e: make dev->fw_assert usage consistent
+Date: Fri, 24 Dec 2021 16:32:48 +0800
+Message-ID: <6a32d0cfc105b85bbeae11acd3214d7ce41bdb8b.1640331647.git.sean.wang@kernel.org>
 X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <6a32d0cfc105b85bbeae11acd3214d7ce41bdb8b.1640331647.git.sean.wang@kernel.org>
-References: <6a32d0cfc105b85bbeae11acd3214d7ce41bdb8b.1640331647.git.sean.wang@kernel.org>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211224_003429_513973_403672B3 
-X-CRM114-Status: GOOD (  11.63  )
+X-CRM114-CacheID: sfid-20211224_004258_963678_AE6749ED 
+X-CRM114-Status: UNSURE (   7.65  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,34 +78,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: YN Chen <YN.Chen@mediatek.com>
+From: Sean Wang <sean.wang@mediatek.com>
 
-We forbid the doze mode while the collecting core dump is going because
-that doesn't make sense and the firmware possibly stays in the abnormal
-state where cannot handle the doze request from the driver anymore until
-the WiFi reset procedure is completed.
+Clear dev->fw_assert flag in mt7921s to be consistent with mt7921s driver.
 
-Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: YN Chen <YN.Chen@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index ec10f95a4649..b2b88130ea8d 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -1548,7 +1548,8 @@ void mt7921_pm_power_save_work(struct work_struct *work)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+index 85286cc9add1..a63ef5de5115 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mac.c
+@@ -314,6 +314,7 @@ int mt7921e_mac_reset(struct mt7921_dev *dev)
+ 	}
+ 	local_bh_enable();
  
- 	delta = dev->pm.idle_timeout;
- 	if (test_bit(MT76_HW_SCANNING, &mphy->state) ||
--	    test_bit(MT76_HW_SCHED_SCANNING, &mphy->state))
-+	    test_bit(MT76_HW_SCHED_SCANNING, &mphy->state) ||
-+	    dev->fw_assert)
- 		goto out;
++	dev->fw_assert = false;
+ 	clear_bit(MT76_MCU_RESET, &dev->mphy.state);
  
- 	if (time_is_after_jiffies(dev->pm.last_activity + delta)) {
+ 	mt76_wr(dev, MT_WFDMA0_HOST_INT_ENA,
 -- 
 2.25.1
 
