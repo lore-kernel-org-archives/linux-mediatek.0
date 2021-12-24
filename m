@@ -4,61 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CD06C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 16:17:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DF2DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 16:18:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Chz4YeUBxkS3VHMJ0N8I2QYOCJVdtPLyy06dAAMquoM=; b=qMGpFpTOEXRl5V
-	OIytj0ctc+/4khAj9RfTGBVLO8b5PkcrDFDUkrcbQZTFuMajsvE5fiFTQ3YaywQ3+Gs7OcBAOOiQD
-	liVp3IWTG+zUGhOUkYTrUDa9N/RB9Z/cY+q5y5UO/6Y9BPFKH/+qHLjkcYAhuyl2ZEY1CFVUr1uFg
-	NneFpQrNnndsNDdhvLCdEz4yF+HOmy2/Lx8ZT8b0lUKlcUFEI+a/1B57xwKpreQNZt0a5Y7O6M5nS
-	+yWtdsg4TCdcetV3D9XrzrJBRbxJHKlys9Z05lemY/7Z4sYpXFX+Qd2Vy4jvDgCwlpD3AVs/zR7iw
-	WMKzPt2YZPE7KSNKRQNg==;
+	List-Owner; bh=MPAzuhWd2jmH5G1IvMsPirytHwj9v/8dEG7UWt53Ucc=; b=fubxhKwIIz1AZx
+	B9/OuS1p7YJWfcl4mR/YZwV3LMhPyQQCnf1tZ8vOBgTCWNnuhKeYwiDW1BiBA9P0KtQTLcForCrOK
+	PJ+pykQD/1hWGVA/F4N2+0bYf717/H3MN4tTDs1GwUIuvai+eagj/HZJK7kFnYMt3rxA7/jSe9ezY
+	A44F6rp3OJFi8C8zc5l0K9TK+Yp+UJQ8Da+0AsJ6QiMqG8MujGbDSfE+0Cg4Mkde4lDASifAN/u1j
+	sKAJk1iETna0AdQWiGWE6XY0v4J0JKfAOSfp/VljBd9SpX21DJFcCDiOmikpTRyc1tuph+7DTda4t
+	FcX5a4GgAxjlc1I6r4pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0nGJ-00EJ40-OI; Fri, 24 Dec 2021 16:17:43 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1n0nGa-00EJ9S-7N; Fri, 24 Dec 2021 16:18:00 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0nG7-00EJ18-E3; Fri, 24 Dec 2021 16:17:32 +0000
+ id 1n0nGG-00EJ2Y-5h; Fri, 24 Dec 2021 16:17:41 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id EA16A61E1D;
- Fri, 24 Dec 2021 16:17:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05F5FC36AE8;
- Fri, 24 Dec 2021 16:17:25 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id BFFAFB82339;
+ Fri, 24 Dec 2021 16:17:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C9657C36AF6;
+ Fri, 24 Dec 2021 16:17:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1640362649;
- bh=c770Vl0s4K8ne0JvN1d9u+B9NXqvmS0SNJ/Vr5lpXpE=;
+ s=k20201202; t=1640362658;
+ bh=F8xnkK+XpNG5NYxvlj4BQZhPsYtY54y6CQF2ovCcV/Y=;
  h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=ZEHguiC6Sx7jrCAhJzIdc2b9ali2tP+4TU7f9jBubYM0wRTV+5z2WM1d+UdVO+SSM
- 4pW7maR7w6UnpSEr5pGdlEcI7kV19acXkdaZ6ur5GPnzaCnsBwQegp5vLvQHOtsezx
- 50d8BGJHorLbpnq3Y7QfTbaJBh6een0e4Lf7RQSTZpsb1uBYsf9bJTCGeQ9dqLsVra
- 1w+6qTu+nP1SNiNTASOCEP4dyg6JnKwZngEGpDLtacCxpviuFrOk2Ko0k3GpuC8Vxk
- 0RkZrccFISvkZh6J+83wizRMFkcpGi0UV4X+FbWDVzSBpeuGIXmQn3BjLB8alJbv6q
- 6wjAsYfRYVHhg==
+ b=gzWNJU/3nh3+RRe1YRafjKNiCEuPqx3j7N6ua573I6A5go4D/y3I7yEXM7ekKdhK5
+ xnCCCNw+OaqbEhM3lYyPInWwnXidOB4Gy0HFr/i6ApgkWkSkzCWg5fFNtmYSR1bWG7
+ eoZBwDwgHVyQaJbKYCq/aI9pbSW0REthSsATgqZjPA/9nCMKjvZJpZlWDzvJ07HgJj
+ LSnKAFv4yr3/bKRfH2T/vrDfTsoXqSQmSoDWLE5x6X/rKLGEuarqEGfeDIKBXGiXdQ
+ 5uwOopUUi4rIVREeXjuWIDqUUGFyUen5J8G0h/O+b+WxX35uWX1SCIf37Du6SQbY7L
+ gZmQaY3Oi3f6A==
 From: Mark Brown <broonie@kernel.org>
-To: cgel.zte@gmail.com, lgirdwood@gmail.com
-Cc: linux-kernel@vger.kernel.org, srinivas.kandagatla@linaro.org,
- perex@perex.cz, pulehui@huawei.com, kuninori.morimoto.gx@renesas.com,
- lkp@intel.com, linux-mediatek@lists.infradead.org,
- Zeal Robot <zealci@zte.com.cm>, alsa-devel@alsa-project.org,
- chi.minghao@zte.com.cn, tiwai@suse.com, pierre-louis.bossart@linux.intel.com,
- linux-arm-kernel@lists.infradead.org, srivasam@codeaurora.org,
+To: Jiasheng Jiang <jiasheng@iscas.ac.cn>, lgirdwood@gmail.com,
  matthias.bgg@gmail.com
-In-Reply-To: <20211209015707.409870-1-chi.minghao@zte.com.cn>
-References: <20211209015707.409870-1-chi.minghao@zte.com.cn>
-Subject: Re: [PATCH] sound:soc:remove unneeded variable
-Message-Id: <164036264573.3720027.488082222157598597.b4-ty@kernel.org>
-Date: Fri, 24 Dec 2021 16:17:25 +0000
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+In-Reply-To: <20211222015157.1025853-1-jiasheng@iscas.ac.cn>
+References: <20211222015157.1025853-1-jiasheng@iscas.ac.cn>
+Subject: Re: [PATCH v2] isoc: mediatek: Check for error clk pointer
+Message-Id: <164036265653.3720027.11806563702893486753.b4-ty@kernel.org>
+Date: Fri, 24 Dec 2021 16:17:36 +0000
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211224_081731_535943_426C075F 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20211224_081740_401444_9A66C8D2 
+X-CRM114-Status: GOOD (  16.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,13 +71,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 9 Dec 2021 01:57:07 +0000, cgel.zte@gmail.com wrote:
-> From: chiminghao <chi.minghao@zte.com.cn>
+On Wed, 22 Dec 2021 09:51:57 +0800, Jiasheng Jiang wrote:
+> On Wed, Dec 22, 2021 at 01:57:15AM +0800, Mark Brown wrote:
+> >> +	for (i = CLK_NONE + 1; i < CLK_MAX; i++) {
+> >>  		clk[i] = devm_clk_get(&pdev->dev, clk_names[i]);
+> >> +		if (IS_ERR(clk[i]))
+> >> +			return PTR_ERR(clk[i]);
+> >
+> > This now pays attention to the error code here which is good but...
+> >
+> >> -	init_clks(pdev, clk);
+> >> +	ret = init_clks(pdev, clk);
+> >> +	if (ret)
+> >> +		return ERR_PTR(-ENOMEM);
+> >
+> > ...then discards it here with a random most likely inappropriate error
+> > code.
 > 
-> return value form directly instead of
-> taking this in another redundant variable.
-> 
-> 
+> [...]
 
 Applied to
 
@@ -89,8 +96,8 @@ Applied to
 
 Thanks!
 
-[1/1] sound:soc:remove unneeded variable
-      commit: b2fde4deff854ca7d49ec735a8252d944418b64d
+[1/1] isoc: mediatek: Check for error clk pointer
+      commit: 9de2b9286a6dd16966959b3cb34fc2ddfd39213e
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
