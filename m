@@ -4,68 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56EAEC433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 09:47:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D14C8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 09:55:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=60+2WFELKtOYFSoFit/cH0z++5+4w9i0kJbCuae2gM8=; b=Usy+5XhTtTmPAS
-	yVqi6Bv+2EmxsjpEjsRC59ooCXls8MIRWADiWvoxZSdxSW1wmkPPz+qbqfBHsPowuw3giP8eUo6kf
-	zrFQJFnTWrlCXkAhwlWr6u/KLEXRViB+ihItENlZb2tFoMqAC32tiDcDPuXdwLt7fE+O6rGP7DwqG
-	HANtiry1KRjMdtishzUoVaxOqkB0DJNu4lDnT3wfnFoxODWaYisonbfWN+gf2GY+XvNHytaM4V2uk
-	VN/BcaAvyy2bMjL/iAcA4KcOYBaj5KPtEVq/d4FnyGBhGAELpGFsS5oJxLAbCKkP19rDF1mrUzmIB
-	A2IDlohJqpHMG7+kcM2Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Fcdn47qnpy7jQA2VAKVti6I2T8CJD+Ev7B3cm0FYmC8=; b=yQhN/UCfoH9IGH8c2TU7B21TDK
+	rA2gsCai82PGmDYFpfTb/snrGUy3asM2iphyN+TNiiF8U8Ui7quW/tWa5qob0G9CwPqqckn1S8Jdu
+	vXLwTK/nSxEkGlwAA1udCWuyUXKqfBjq2KUYC9i8hOWvhnKQtQj5pC6gAtyeyw0aQQg5Fyd6afPF+
+	CWjeUWcsKF8flaO379KjxGX71RXvxzpl/owDlPMv7gruPjM1H+SuwqF+IZOa968yJVljrhGozkHqF
+	pkftCdNA07LjvbC/KkJcxtk7vTnLBDENEqL7CMwTTciXUJcMT8pKNuM2nedIO8urAKcRais/iEa6I
+	rYqDe5JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0hAr-00E2Z6-7e; Fri, 24 Dec 2021 09:47:41 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n0hIF-00E3dU-2p; Fri, 24 Dec 2021 09:55:19 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0hAW-00E2Wg-C8; Fri, 24 Dec 2021 09:47:21 +0000
-X-UUID: 5bf099a1bc30444f8bd65066721426fb-20211224
-X-UUID: 5bf099a1bc30444f8bd65066721426fb-20211224
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <roger.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1377006469; Fri, 24 Dec 2021 02:47:16 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Dec 2021 01:39:07 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 24 Dec 2021 17:38:58 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Dec 2021 17:38:58 +0800
-Message-ID: <a6f0704e430453fc6bbbb49eabcd5518c6852f4c.camel@mediatek.com>
-Subject: Re: [PATCH v16 4/7] soc: mediatek: SVS: add debug commands
-From: Roger Lu <roger.lu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
- <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
- <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
- Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-pm@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 24 Dec 2021 17:38:58 +0800
-In-Reply-To: <715c9587-825f-6c22-96a2-273fb7f07bc3@collabora.com>
-References: <20210428065440.3704-1-roger.lu@mediatek.com>
- <20210428065440.3704-5-roger.lu@mediatek.com>
- <715c9587-825f-6c22-96a2-273fb7f07bc3@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1n0hI3-00E3bC-UC; Fri, 24 Dec 2021 09:55:09 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 0FB081F40AF0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1640339705;
+ bh=g/qrKxbq81374OPNyBlN5b0Uw2S7uiZ13C5P82NahIA=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=XD9uQAp0iU8aU0GqQ/lNnkmvJNxU383e2Yc/NoWpqgEgWtz7InHOogu4bzmkWBmeE
+ Zv0AUV3njiViMoqEIJxm7Yi2TDvE5vn2s0jMlZ21Nv8iRQcjvZALBP+DljqbrEs7jc
+ /BtqdCo8dWLYheyk9rw6E3xMnUh0OKATLitRDINxJnvomKWzBQa+GXfO5lPEa7Juz7
+ 3eahIa7UqFFd1PMGGRU5x0IHymST1gnfE+ZAhfwxk0nxZ40ZG11/hoQ45Wxn5Ck2id
+ F53JT34LitY7UVJVR3z7hf1qnp54N7/adwr1LBN8WjXLLePm8iKVPaAaxR4oFqehSK
+ WnU9EONoPKT9w==
+Subject: Re: [PATCH] phy: mediatek: Fix missing check in mtk_mipi_tx_probe
+To: Miaoqian Lin <linmq006@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20211224082103.7658-1-linmq006@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <badadf88-f912-9794-774f-ec344f2303c0@collabora.com>
+Date: Fri, 24 Dec 2021 10:55:02 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20211224082103.7658-1-linmq006@gmail.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211224_014720_469234_E035EC98 
-X-CRM114-Status: GOOD (  24.44  )
+X-CRM114-CacheID: sfid-20211224_015508_186959_0DFF7ECF 
+X-CRM114-Status: UNSURE (   6.96  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,126 +69,18 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+Il 24/12/21 09:21, Miaoqian Lin ha scritto:
+> The of_device_get_match_data() function may return NULL.
+> Add check to prevent potential null dereference.
+> 
+> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
 
-Sorry for the late reply.
-
-On Thu, 2021-10-21 at 10:52 +0200, AngeloGioacchino Del Regno wrote:
-> Il 28/04/21 08:54, Roger Lu ha scritto:
-> > The purpose of SVS is to help find the suitable voltages
-> > for DVFS. Therefore, if SVS bank voltages are concerned
-> > to be wrong, we can adjust SVS bank voltages by this patch.
-> > 
-> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> > ---
-> >   drivers/soc/mediatek/mtk-svs.c | 328 +++++++++++++++++++++++++++++++++
-> >   1 file changed, 328 insertions(+)
-> > 
-> > diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> > index 2d2153c92373..8794a2d87baa 100644
-> > --- a/drivers/soc/mediatek/mtk-svs.c
-> > +++ b/drivers/soc/mediatek/mtk-svs.c
-> > @@ -6,6 +6,7 @@
-> >   #include <linux/bits.h>
-> >   #include <linux/clk.h>
-> >   #include <linux/completion.h>
-> > +#include <linux/debugfs.h>
-> >   #include <linux/device.h>
-> >   #include <linux/init.h>
-> >   #include <linux/interrupt.h>
-> > @@ -24,6 +25,7 @@
-> >   #include <linux/pm_runtime.h>
-> >   #include <linux/regulator/consumer.h>
-> >   #include <linux/reset.h>
-> > +#include <linux/seq_file.h>
-> >   #include <linux/slab.h>
-> >   #include <linux/spinlock.h>
-> >   #include <linux/thermal.h>
-> > @@ -62,6 +64,39 @@
-> >   #define SVSB_INTSTS_COMPLETE		0x1
-> >   #define SVSB_INTSTS_CLEAN		0x00ffffff
-> >   
-> > +#define debug_fops_ro(name)						
-> > \
-> > +	static int svs_##name##_debug_open(struct inode *inode,		\
-> > +					   struct file *filp)		\
-> > +	{								\
-> > +		return single_open(filp, svs_##name##_debug_show,	\
-> > +				   inode->i_private);			\
-> > +	}								\
-> > +	static const struct file_operations svs_##name##_debug_fops = {	\
-> > +		.owner = THIS_MODULE,					\
-> > +		.open = svs_##name##_debug_open,			\
-> > +		.read = seq_read,					\
-> > +		.llseek = seq_lseek,					\
-> > +		.release = single_release,				\
-> > +	}
-> > +
-> > +#define debug_fops_rw(name)						
-> > \
-> > +	static int svs_##name##_debug_open(struct inode *inode,		\
-> > +					   struct file *filp)		\
-> > +	{								\
-> > +		return single_open(filp, svs_##name##_debug_show,	\
-> > +				   inode->i_private);			\
-> > +	}								\
-> > +	static const struct file_operations svs_##name##_debug_fops = {	\
-> > +		.owner = THIS_MODULE,					\
-> > +		.open = svs_##name##_debug_open,			\
-> > +		.read = seq_read,					\
-> > +		.write = svs_##name##_debug_write,			\
-> > +		.llseek = seq_lseek,					\
-> > +		.release = single_release,				\
-> > +	}
-> > +
-> > +#define svs_dentry(name)	{__stringify(name), &svs_##name##_debug_fops}
-> > +
-> >   static DEFINE_SPINLOCK(mtk_svs_lock);
-> >   
-> >   /*
-> > @@ -83,6 +118,7 @@ enum svsb_phase {
-> >   	SVSB_PHASE_INIT01,
-> >   	SVSB_PHASE_INIT02,
-> >   	SVSB_PHASE_MON,
-> > +	SVSB_PHASE_NUM,
-> 
-> I would move the addition of these last members in the previous (3/7) patch,
-> where you introduce the driver in the first place.
-> 
-> Also, I think that using _MAX instead would be better, as it is pretty
-> much a common practice. So, this would become SVSB_PHASE_MAX.
-
-Okay. I'll move it to previous (3/7) patch. Thanks for advice.
-
-> 
-> >   };
-> >   
-> >   enum svs_reg_index {
-> > @@ -140,6 +176,7 @@ enum svs_reg_index {
-> >   	SPARE2,
-> >   	SPARE3,
-> >   	THSLPEVEB,
-> > +	SVS_REG_NUM,
-> 
-> ... and this would become SVS_REG_MAX
-
-Okay. I'll move it to previous (3/7) patch. Thanks for advice.
-
-> 
-> >   };
-> >   
-> >   static const u32 svs_regs_v2[] = {
-> 
-> Apart from that,
-> 
-> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 _______________________________________________
 Linux-mediatek mailing list
