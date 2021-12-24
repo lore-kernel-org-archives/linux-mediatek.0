@@ -4,68 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09121C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 07:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 336FFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 08:21:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QW9enZ2NQ5QIGFHYIlplrhPHvOcWO7O/OXKClT+S07c=; b=1ThLfHL40F7zUT
-	DtCzoxJQWcWl86VJyTGTxCGRFHuZuNKBvxfocWa0xBdv0pwgJMH8mqz/YdQ6jsGpfabLNA4Qxd+aO
-	oK1AdRD7VG7FT/GJct5qXLGvgVTo9vY25e+S2f0jx7G2KbrzxdYMQTwrAxtJawjkarmE+f0VkIyZR
-	a3qdNnebdXTXL5cOd37czkaaqSwCfGyyJ1zXyptFlSt2Rnux1uHaPscCQgMWy5jcpUFzl4PJnicdW
-	ARfnzkDpG9SGPCkKFewop9LvKECXqAqCyKtD+vYzTvJtcmUyJqcNXCuOT0kgWWCjrKJXlAbKEr2Ke
-	zIoStB+gw6OwMVM8LWEQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=EpqLynaBPxxWGLkSXlw36khs9+XHhf2bFkmRteE6LeM=; b=nEJJKA0Pj/6m+b
+	x09RidteOZ+LBKpPcuPf7q+6RpHo48kg5q2CfWxu637Y/8zDZX6r4jczq1wX/k6wjx63JDkDQlENt
+	QIDuy6TxA9cbfU/eejDxV/Wm4hdih0FsYBZnlVlAdbEz/7hpZzuxZW6mDDnJ7uQyX/0H4H4+ifhgE
+	Eycxwi4FkWwaz71yfh9Rs0imgtM16xDtVt5NDpOPAbymn/paMePSBKTXiU45XcD7C8r94SZEUSRt1
+	GBICMK6L07siSunLXm/er38bkoAl1hoLOTMEACUF2NYXbQvdLrvV5nY3mEYDLAEA993RSZ2ivW3zQ
+	2foZvuUZJORxHjc6IJiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0f9w-00Drp0-9N; Fri, 24 Dec 2021 07:38:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n0fpB-00Dv9R-9j; Fri, 24 Dec 2021 08:21:13 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0f9h-00DrkO-Gh; Fri, 24 Dec 2021 07:38:22 +0000
-X-UUID: 7f6fc280c57346d3bf56cb985f1053e0-20211224
-X-UUID: 7f6fc280c57346d3bf56cb985f1053e0-20211224
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <roger.lu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1680105356; Fri, 24 Dec 2021 00:38:15 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 23 Dec 2021 23:33:49 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 24 Dec 2021 15:33:48 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Fri, 24 Dec 2021 15:33:47 +0800
-Message-ID: <a5c9133e2bc856f8f9cbf6c70bc5196bce61639e.camel@mediatek.com>
-Subject: Re: [PATCH v16 2/7] arm64: dts: mt8183: add svs device information
-From: Roger Lu <roger.lu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
- <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
- <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
- YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
- Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <linux-pm@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Fri, 24 Dec 2021 15:33:47 +0800
-In-Reply-To: <70e71210-6d17-92e3-4e3f-01b83380be42@collabora.com>
-References: <20210428065440.3704-1-roger.lu@mediatek.com>
- <20210428065440.3704-3-roger.lu@mediatek.com>
- <70e71210-6d17-92e3-4e3f-01b83380be42@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
-MIME-Version: 1.0
-X-MTK: N
+ id 1n0fp8-00Dv90-Lw; Fri, 24 Dec 2021 08:21:11 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id b22so7267995pfb.5;
+ Fri, 24 Dec 2021 00:21:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=from:to:cc:subject:date:message-id;
+ bh=a8eS3YXB3+KjJDuEPWQLcX+HJOufYQaI4qZVeMqQu9o=;
+ b=gVjzFGHhAzx0/FUF5skx3OxxeTTS/L9yKIQQQDnqhIZGkFRxiGa2wyabresrry4kWd
+ CtI69HZxWPmRaSHjtcwKk6Q6EKwjGrBTWXcEBu7c+OD7pypxBMyH2FkmQJKmxZCnOSuj
+ eK7RW2qAdPtabB5ZdSMiFKaEcqG/oWTd8+JvDszUPszMDGWYQA6OAytx6VjAFNeBaXxz
+ PD2oQBN9J3LadXx+/u64o+X6GN3J4URkZvhWk6TnncvA4t2MCcJ4FceeY6M+6MhalsIN
+ H6LP6F423xptsq7JxCfcXYRXeZSbg7NbKnnzeEIoi2K6Ccaoj53kqriC3g++RDnH0AhF
+ yH1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=a8eS3YXB3+KjJDuEPWQLcX+HJOufYQaI4qZVeMqQu9o=;
+ b=NlDiX1R2tau6e42Av4vE8L0YpZAy5zeG3wZBdtTllPFu9G23Ve88/oOnAUuNdZrUvn
+ oWXtp9by/aNe5Kc8oubnCngdmzUofwrsgfb8R8QiN/Ks6Ms/zmbg61id7MRoHSdD9J+z
+ ZS+fbQO67CkfK7Ium4MVMVRzrABY2HLOl6lbg06bcHU48Rd6LQrKaUes0LY5vQ8WN9cL
+ o6JmUiLnOTGsCuq8Tj5Lg9swNz3RHP8AJLhkP7/SQpjwLo4OS6JS0hqtqndfP9KvPx86
+ RT0XxUMtoK+cl0sjhEkzrxvXJFhxK9yjEr5Vt01/8blm8v9qhSlf98sc9E+poVXNwWhj
+ RojQ==
+X-Gm-Message-State: AOAM533YCpx4e8fa4phDlSMeHKi9AU5bjFsl5eTtBa3U6NBycmmvU6UZ
+ qA12uTjHoN0pIKjWx/48erc=
+X-Google-Smtp-Source: ABdhPJwk6yXFazpg9bTL+8Bh6befkkI7lDWa9g9PRfY4jgrlEDehk1AK7OvGeVwPxLtA85dPiIStRA==
+X-Received: by 2002:a63:920b:: with SMTP id o11mr5316856pgd.314.1640334069362; 
+ Fri, 24 Dec 2021 00:21:09 -0800 (PST)
+Received: from localhost.localdomain ([159.226.95.43])
+ by smtp.googlemail.com with ESMTPSA id a11sm6587453pgd.87.2021.12.24.00.21.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Dec 2021 00:21:09 -0800 (PST)
+From: Miaoqian Lin <linmq006@gmail.com>
+To: 
+Cc: linmq006@gmail.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] phy: mediatek: Fix missing check in mtk_mipi_tx_probe
+Date: Fri, 24 Dec 2021 08:21:03 +0000
+Message-Id: <20211224082103.7658-1-linmq006@gmail.com>
+X-Mailer: git-send-email 2.17.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211223_233821_597346_5ABBBBE0 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20211224_002110_744419_4DF58368 
+X-CRM114-Status: UNSURE (   8.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,73 +82,35 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi AngeloGioacchino,
+The of_device_get_match_data() function may return NULL.
+Add check to prevent potential null dereference.
 
-Sorry for the late reply. 
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+---
+ drivers/phy/mediatek/phy-mtk-mipi-dsi.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-On Wed, 2021-10-20 at 17:20 +0200, AngeloGioacchino Del Regno wrote:
-> Il 28/04/21 08:54, Roger Lu ha scritto:
-> > add compitable/reg/irq/clock/efuse setting in svs node
-> > 
-> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 18 ++++++++++++++++++
-> >   1 file changed, 18 insertions(+)
-> > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > index 80519a145f13..441d617ece43 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > @@ -657,6 +657,18 @@
-> >   			status = "disabled";
-> >   		};
-> >   
-> > +		svs: svs@1100b000 {
-> > +			compatible = "mediatek,mt8183-svs";
-> > +			reg = <0 0x1100b000 0 0x1000>;
-> > +			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-> > +			clocks = <&infracfg CLK_INFRA_THERM>;
-> > +			clock-names = "main";
-> > +			nvmem-cells = <&svs_calibration>,
-> > +				      <&thermal_calibration>;
-> > +			nvmem-cell-names = "svs-calibration-data",
-> > +					   "t-calibration-data";
-> > +		};
-> > +
-> >   		pwm0: pwm@1100e000 {
-> >   			compatible = "mediatek,mt8183-disp-pwm";
-> >   			reg = <0 0x1100e000 0 0x1000>;
-> > @@ -941,9 +953,15 @@
-> >   			reg = <0 0x11f10000 0 0x1000>;
-> >   			#address-cells = <1>;
-> >   			#size-cells = <1>;
-> > +			thermal_calibration: calib@180 {
-> > +				reg = <0x180 0xc>;
-> > +			};
-> >   			mipi_tx_calibration: calib@190 {
-> >   				reg = <0x190 0xc>;
-> >   			};
-> > +			svs_calibration: calib@580 {
-> > +				reg = <0x580 0x64>;
-> > +			};
-> >   		};
-> >   
-> >   		u3phy: usb-phy@11f40000 {
-> > 
-> 
-> This patch doesn't apply on the latest linux-next due to some new commits in
-> mt8183.dtsi, can you please rebase?
-
-Okay. I'll rebase it.
-
-> Thanks,
-> - Angelo
+diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+index 28ad9403c441..67b005d5b9e3 100644
+--- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
++++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+@@ -146,6 +146,8 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	mipi_tx->driver_data = of_device_get_match_data(dev);
++	if (!mipi_tx->driver_data)
++		return -ENODEV;
+ 
+ 	mipi_tx->regs = devm_platform_ioremap_resource(pdev, 0);
+ 	if (IS_ERR(mipi_tx->regs))
+-- 
+2.17.1
 
 
 _______________________________________________
