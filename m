@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE0C4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 09:35:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45D2AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 09:47:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zdln1ZYdoazs8E0q1blg57dp1RK+XGBEu2fpQYjh3Uk=; b=P+Qx02qUR3lnPv6cYdyljjZlb8
-	ODOMu7z5REmu7ZZkcjE0DNDA002+kPg6cZyv5qTIDKA2A/UTJbIQY5IX7mMRNm+r5DTDvf6S/AOwI
-	6yhs3KGEZ2YjoPLudhYdjCmAFZyTvheRvq2o5geZARSJ69HMDsjDH6vqO9zZ+owtq6bHLkB2tinoz
-	e52G23W84cP5sc/dftmD6L9Cda9IUwCKL0lnu8si2FX5p/1zFBki0P3Rrcknz/a32Xv0RXDmfLkEt
-	sRQTSJ9ggqm14++tF7IKpkkyuef8s2Z3M9whtexkQz08d17F1A/SkgXpaqn1Uon3mu+hJpqTIXk5Y
-	O9av5m+A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mTQ5xbyS1Nl7OoUZ7pi1ukiBci5TiaFFmoJD6emNv3A=; b=QhG8dDWHZ7AMSl
+	xQPcQiv/mYsiNDGBJstxHbyRTYiu0/iudC9y2K2kmHub63RLDWoAVHpXu09HRYn3MvUiSrGjf5R+h
+	w6ni9VKBmDIB7NA2DKGL9tBETYM8hXhFwkRUZ4iyLK7FEx+UYg2Q2yLjgdylPdKDJ+SVnoDizCSpx
+	f2wmqndQecQi7L94xSViPqeXkjZO1UT8mTowI7x+g2a5h/6m0XID2VE7hjpp8lb/4GX9iKzDbUmQ4
+	Cv/atwBJel3fFIkP6HI+yI5/SjyjwKRbT+Susq4IzsnKUPNOls9Jrn8uanQRDC8K9a4ImnOQSO4Ip
+	6wufGL62hhy0OlSfwozQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0gyf-00E1mu-1M; Fri, 24 Dec 2021 09:35:05 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1n0hAq-00E2Yy-Cs; Fri, 24 Dec 2021 09:47:40 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0gyT-00E1kQ-6M; Fri, 24 Dec 2021 09:34:54 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id D8F331F45BEC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1640338490;
- bh=qZF4je+LerA+OqBTDGJZEJVXwlNuPorsNcMLYzAa4mE=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=Wg3hniFlgAgdm3+vcSd+eEaeyLtW+YGGquc/J66XoOcZZJmWSoP5yHq1QqHbFJ8xg
- a6UBjbyr1qNmhueOZ38UDEgHWRyyB9HeL1TLmBnOdlSHC+WDvm6nGCL4aBd4S8OdET
- wRdm7ILxTeJ0O4Zji5PCMyoIlwnJj/T0UphNwoFSvybGmnV9fGfuQbjCDWXnFX7Ec4
- o8Cw2NB7P3KIUiX8UOG4znfp3z/DNk0gprvhs/ZzD74KMPQKhgW7dSq7jKxDnQZx9J
- rsFOuzP2hrT568VUNyAGUxmBMsX2TqnJkkn9gMaa+8n20439BASD3L6vOzf9fUil9M
- NJ2HkW59ys1KA==
-Subject: Re: [PATCH v16 3/7] soc: mediatek: SVS: introduce MTK SVS engine
-To: Roger Lu <roger.lu@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
- <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
- Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ id 1n0hAW-00E2Wf-C8; Fri, 24 Dec 2021 09:47:21 +0000
+X-UUID: 948ad3d8c0a342cd8b4ed4030060f486-20211224
+X-UUID: 948ad3d8c0a342cd8b4ed4030060f486-20211224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1333196286; Fri, 24 Dec 2021 02:47:16 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Dec 2021 01:42:27 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Dec 2021 17:42:25 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 24 Dec 2021 17:42:25 +0800
+Message-ID: <60ecf997de03e7426e0e54fc3eb937f95902419c.camel@mediatek.com>
+Subject: Re: [PATCH v16 6/7] arm64: dts: mt8192: add svs device information
+From: Roger Lu <roger.lu@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@somainline.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
  YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
- Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
- <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>,
- Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Fri, 24 Dec 2021 17:42:25 +0800
+In-Reply-To: <855e004b-b128-70f7-b1d2-9fe957c94e08@somainline.org>
 References: <20210428065440.3704-1-roger.lu@mediatek.com>
- <20210428065440.3704-4-roger.lu@mediatek.com>
- <c97f7dcd-32e5-616e-1bf9-fbd110ecd218@collabora.com>
- <6cdc903250723a6c547bccf2546dd10091b76249.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <fc825af2-7331-fa05-26e0-f3054557333a@collabora.com>
-Date: Fri, 24 Dec 2021 10:34:46 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ <20210428065440.3704-7-roger.lu@mediatek.com>
+ <855e004b-b128-70f7-b1d2-9fe957c94e08@somainline.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <6cdc903250723a6c547bccf2546dd10091b76249.camel@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211224_013453_409344_669EE8E0 
-X-CRM114-Status: GOOD (  16.65  )
+X-CRM114-CacheID: sfid-20211224_014720_468961_6FBD1175 
+X-CRM114-Status: GOOD (  22.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,70 +77,122 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 24/12/21 10:27, Roger Lu ha scritto:
-> Hi AngeloGioacchino,
-> 
-> Sorry for the late reply and thanks for all the advices.
-> 
-> On Thu, 2021-10-21 at 10:46 +0200, AngeloGioacchino Del Regno wrote:
->> Il 28/04/21 08:54, Roger Lu ha scritto:
->>> The Smart Voltage Scaling(SVS) engine is a piece of hardware
->>> which calculates suitable SVS bank voltages to OPP voltage table.
->>> Then, DVFS driver could apply those SVS bank voltages to PMIC/Buck
->>> when receiving OPP_EVENT_ADJUST_VOLTAGE.
->>>
->>> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
->>> ---
->>>    drivers/soc/mediatek/Kconfig   |   10 +
->>>    drivers/soc/mediatek/Makefile  |    1 +
->>>    drivers/soc/mediatek/mtk-svs.c | 1723 ++++++++++++++++++++++++++++++++
->>>    3 files changed, 1734 insertions(+)
->>>    create mode 100644 drivers/soc/mediatek/mtk-svs.c
-> 
-> [snip]
-> 
->>> +/* svs bank common setting */
->>> +#define SVSB_DET_CLK_EN			BIT(31)
->>> +#define SVSB_TZONE_HIGH_TEMP_MAX	U32_MAX
->>> +#define SVSB_RUNCONFIG_DEFAULT		0x80000000
->>> +#define SVSB_DC_SIGNED_BIT		0x8000
->>> +#define SVSB_INTEN_INIT0x		0x00005f01
->>> +#define SVSB_INTEN_MONVOPEN		0x00ff0000
->>> +#define SVSB_EN_OFF			0x0
->>> +#define SVSB_EN_MASK			0x7
->>> +#define SVSB_EN_INIT01			0x1
->>> +#define SVSB_EN_INIT02			0x5
->>> +#define SVSB_EN_MON			0x2
->>> +#define SVSB_INTSTS_MONVOP		0x00ff0000
->>> +#define SVSB_INTSTS_COMPLETE		0x1
->>> +#define SVSB_INTSTS_CLEAN		0x00ffffff
->>> +
->>> +static DEFINE_SPINLOCK(mtk_svs_lock);
->>> +
->>> +/*
->>
->> Thanks for using kernel-doc!! However, to be proper, this has to be
->> /**
->>    * ..........
-> 
-> Oh okay. Thanks. I will use /** to add multi-line comments. However, I checked
-> kernel doc-guide and it uses indent as below. So, I'll follow it. If I'm doing
-> it wrong, please correct me. Thanks a lot.
-> https://www.kernel.org/doc/html/latest/doc-guide/kernel-doc.html
-> 
-> /**
->   * .........
-> 
+Hi AngeloGioacchino,
 
-You're welcome! By the way, yes, the indentation is as shown on the documentation.
+Sorry for the late reply.
 
-Regards,
-- Angelo
+On Wed, 2021-10-20 at 17:16 +0200, AngeloGioacchino Del Regno wrote:
+> Il 28/04/21 08:54, Roger Lu ha scritto:
+> > add compitable/reg/irq/clock/efuse/reset setting in svs node
+> > 
+> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> > ---
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 34 ++++++++++++++++++++++++
+> >   1 file changed, 34 insertions(+)
+> > 
+> 
+> Hello Roger,
+> thanks for this series! However, there is an issue with this patch:
+> 
+> > diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > index fe24cc66ff7a..e9816a56d87b 100644
+> > --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+> > @@ -270,6 +270,14 @@
+> >   			compatible = "mediatek,mt8192-infracfg", "syscon";
+> >   			reg = <0 0x10001000 0 0x1000>;
+> >   			#clock-cells = <1>;
+> > +
+> > +			infracfg_rst: reset-controller {
+> > +				compatible = "mediatek,infra-reset", "ti,syscon-
+> > reset";
+> > +				#reset-cells = <1>;
+> > +				ti,reset-bits = <
+> > +					0x150 5 0x154 5 0 0     (ASSERT_SET |
+> > DEASSERT_SET | STATUS_NONE) /* 0: svs */
+> 
+> You are using macros here, which are defined in dt-bindings/reset/ti-syscon.h
+> hovever, you are not including this header in this devicetree, so it's not
+> compiling.
+> 
+> Please fix it.
+
+Sure, I'll fix it. Thanks for the heads-up.
+
+> 
+> > +				>;
+> > +			};
+> >   		};
+> >   
+> >   		pericfg: syscon@10003000 {
+> > @@ -564,6 +572,20 @@
+> >   			status = "disabled";
+> >   		};
+> >   
+> > +		svs: svs@1100b000 {
+> > +			compatible = "mediatek,mt8192-svs";
+> > +			reg = <0 0x1100b000 0 0x1000>;
+> > +			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
+> > +			clocks = <&infracfg CLK_INFRA_THERM>;
+> > +			clock-names = "main";
+> > +			nvmem-cells = <&svs_calibration>,
+> > +				      <&lvts_e_data1>;
+> > +			nvmem-cell-names = "svs-calibration-data",
+> > +					   "t-calibration-data";
+> > +			resets = <&infracfg_rst 0>;
+> > +			reset-names = "svs_rst";
+> > +		};
+> > +
+> >   		spi1: spi@11010000 {
+> >   			compatible = "mediatek,mt8192-spi",
+> >   				     "mediatek,mt6765-spi";
+> > @@ -681,6 +703,18 @@
+> >   			#clock-cells = <1>;
+> >   		};
+> >   
+> > +		efuse: efuse@11c10000 {
+> > +			compatible = "mediatek,efuse";
+> > +			reg = <0 0x11c10000 0 0x1000>;
+> > +
+> 
+> arch/arm64/boot/dts/mediatek/mt8192.dtsi:510.5-24: Warning (reg_format): 
+> /soc/efuse@11c10000/data1:reg: property has invalid length (8 bytes) 
+> (#address-cells == 2, #size-cells == 1)
+> 
+> arch/arm64/boot/dts/mediatek/mt8192.dtsi:513.5-24: Warning (reg_format): 
+> /soc/efuse@11c10000/calib@580:reg: property has invalid length (8 bytes) 
+> (#address-cells == 2, #size-cells == 1)
+> 
+> 
+> In short, you should add here:
+> 			#address-cells = <1>;
+> 			#size-cells = <1>;
+
+Thanks for the example code and I will add them in the latest patch.
+
+> 
+> > +			lvts_e_data1: data1 {
+> > +				reg = <0x1C0 0x58>;
+> > +			};
+> > +			svs_calibration: calib@580 {
+> > +				reg = <0x580 0x68>;
+> > +			};
+> > +		};
+> > +
+> >   		i2c3: i2c3@11cb0000 {
+> >   			compatible = "mediatek,mt8192-i2c";
+> >   			reg = <0 0x11cb0000 0 0x1000>,
+> > 
+> 
+> Regards,
+> - Angelo
+
 
 _______________________________________________
 Linux-mediatek mailing list
