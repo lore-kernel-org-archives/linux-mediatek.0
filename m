@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 336FFC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 08:21:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C7F9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 24 Dec 2021 08:26:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=EpqLynaBPxxWGLkSXlw36khs9+XHhf2bFkmRteE6LeM=; b=nEJJKA0Pj/6m+b
-	x09RidteOZ+LBKpPcuPf7q+6RpHo48kg5q2CfWxu637Y/8zDZX6r4jczq1wX/k6wjx63JDkDQlENt
-	QIDuy6TxA9cbfU/eejDxV/Wm4hdih0FsYBZnlVlAdbEz/7hpZzuxZW6mDDnJ7uQyX/0H4H4+ifhgE
-	Eycxwi4FkWwaz71yfh9Rs0imgtM16xDtVt5NDpOPAbymn/paMePSBKTXiU45XcD7C8r94SZEUSRt1
-	GBICMK6L07siSunLXm/er38bkoAl1hoLOTMEACUF2NYXbQvdLrvV5nY3mEYDLAEA993RSZ2ivW3zQ
-	2foZvuUZJORxHjc6IJiw==;
+	List-Owner; bh=8VRWSdrSTFtMSD2mHFjcG8ekKATzjeLgLTf3KjAR5BE=; b=3DPgcFYYcK7kT8
+	iCVXjZ6DnAaXxRldEi+53nhmqT2cJwwoArb4h0cProOUOJ+UveO26vhzFh7/3vhM4wwWWHcXoIjQM
+	0OTSGHBLBsV+Xckpe1owdFSlGAnso5p8uWV/1bFHTH6Foj52cxw8VYsSqqs/VPdbsKOMdVQEUYGEr
+	/px+3UMaglJAzXzCw1X4cJ4Zqtnp2GLzQ6pq5Pw5J4JRxsREMJamJovkYCauZ5ib505wOTHoQ1KDT
+	79NaLbeyOcm3PP32PaYB+mQFi4qTGF5p83BjeJhoywXGbk8JUF3NCJJg2ipoGbvGXew8pqwrH1Bb5
+	ydUtqIrX81VAfYn8gKUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n0fpB-00Dv9R-9j; Fri, 24 Dec 2021 08:21:13 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1n0fu3-00DvXD-Jd; Fri, 24 Dec 2021 08:26:15 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n0fp8-00Dv90-Lw; Fri, 24 Dec 2021 08:21:11 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id b22so7267995pfb.5;
- Fri, 24 Dec 2021 00:21:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id;
- bh=a8eS3YXB3+KjJDuEPWQLcX+HJOufYQaI4qZVeMqQu9o=;
- b=gVjzFGHhAzx0/FUF5skx3OxxeTTS/L9yKIQQQDnqhIZGkFRxiGa2wyabresrry4kWd
- CtI69HZxWPmRaSHjtcwKk6Q6EKwjGrBTWXcEBu7c+OD7pypxBMyH2FkmQJKmxZCnOSuj
- eK7RW2qAdPtabB5ZdSMiFKaEcqG/oWTd8+JvDszUPszMDGWYQA6OAytx6VjAFNeBaXxz
- PD2oQBN9J3LadXx+/u64o+X6GN3J4URkZvhWk6TnncvA4t2MCcJ4FceeY6M+6MhalsIN
- H6LP6F423xptsq7JxCfcXYRXeZSbg7NbKnnzeEIoi2K6Ccaoj53kqriC3g++RDnH0AhF
- yH1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=a8eS3YXB3+KjJDuEPWQLcX+HJOufYQaI4qZVeMqQu9o=;
- b=NlDiX1R2tau6e42Av4vE8L0YpZAy5zeG3wZBdtTllPFu9G23Ve88/oOnAUuNdZrUvn
- oWXtp9by/aNe5Kc8oubnCngdmzUofwrsgfb8R8QiN/Ks6Ms/zmbg61id7MRoHSdD9J+z
- ZS+fbQO67CkfK7Ium4MVMVRzrABY2HLOl6lbg06bcHU48Rd6LQrKaUes0LY5vQ8WN9cL
- o6JmUiLnOTGsCuq8Tj5Lg9swNz3RHP8AJLhkP7/SQpjwLo4OS6JS0hqtqndfP9KvPx86
- RT0XxUMtoK+cl0sjhEkzrxvXJFhxK9yjEr5Vt01/8blm8v9qhSlf98sc9E+poVXNwWhj
- RojQ==
-X-Gm-Message-State: AOAM533YCpx4e8fa4phDlSMeHKi9AU5bjFsl5eTtBa3U6NBycmmvU6UZ
- qA12uTjHoN0pIKjWx/48erc=
-X-Google-Smtp-Source: ABdhPJwk6yXFazpg9bTL+8Bh6befkkI7lDWa9g9PRfY4jgrlEDehk1AK7OvGeVwPxLtA85dPiIStRA==
-X-Received: by 2002:a63:920b:: with SMTP id o11mr5316856pgd.314.1640334069362; 
- Fri, 24 Dec 2021 00:21:09 -0800 (PST)
-Received: from localhost.localdomain ([159.226.95.43])
- by smtp.googlemail.com with ESMTPSA id a11sm6587453pgd.87.2021.12.24.00.21.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Dec 2021 00:21:09 -0800 (PST)
-From: Miaoqian Lin <linmq006@gmail.com>
-To: 
-Cc: linmq006@gmail.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] phy: mediatek: Fix missing check in mtk_mipi_tx_probe
-Date: Fri, 24 Dec 2021 08:21:03 +0000
-Message-Id: <20211224082103.7658-1-linmq006@gmail.com>
-X-Mailer: git-send-email 2.17.1
+ id 1n0fu0-00DvWF-Ji
+ for linux-mediatek@lists.infradead.org; Fri, 24 Dec 2021 08:26:14 +0000
+X-UUID: 84c81b605b0f45a5a39ffee08fdee789-20211224
+X-UUID: 84c81b605b0f45a5a39ffee08fdee789-20211224
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1102424040; Fri, 24 Dec 2021 01:26:08 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 24 Dec 2021 00:26:06 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 24 Dec 2021 16:26:04 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 24 Dec 2021 16:26:04 +0800
+From: <sean.wang@mediatek.com>
+To: <marcel@holtmann.org>, <johan.hedberg@gmail.com>
+CC: <Mark-YW.Chen@mediatek.com>, <sean.wang@mediatek.com>,
+ <Soul.Huang@mediatek.com>, <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, 
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <michaelfsun@google.com>,
+ <mcchou@chromium.org>, <shawnku@google.com>,
+ <linux-bluetooth@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, Mark Chen <mark-yw.chen@mediatek.com>
+Subject: [PATCH v4 1/3] Bluetooth: mt7921s: Support wake on bluetooth
+Date: Fri, 24 Dec 2021 16:26:00 +0800
+Message-ID: <91dfa736b7629cdb94bd2029f05717eeae77b07d.1640334021.git.sean.wang@kernel.org>
+X-Mailer: git-send-email 1.7.9.5
+MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211224_002110_744419_4DF58368 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211224_002612_678029_BE781AC7 
+X-CRM114-Status: GOOD (  17.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,35 +73,119 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The of_device_get_match_data() function may return NULL.
-Add check to prevent potential null dereference.
+From: Mark Chen <mark-yw.chen@mediatek.com>
 
-Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Enable wake on bluetooth on mt7921s that can be supported since the
+firmware with version 20211129211059 was added, and the patch would
+not cause any harm even when the old firmware is applied.
+
+The patch was tested by setting up an HID or HOGP profile to connect a
+Bluetooth keyboard and mouse, then putting the system to suspend, then
+trying to wake up the system by moving the Bluetooth keyboard or mouse,
+and then checking if the system can wake up and be brought back to
+the normal state.
+
+Co-developed-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Signed-off-by: Mark Chen <mark-yw.chen@mediatek.com>
 ---
- drivers/phy/mediatek/phy-mtk-mipi-dsi.c | 2 ++
- 1 file changed, 2 insertions(+)
+v2: refine the git message
+v3:
+    1. fit to single line as possible
+    2. move the skb variable into local scope
+    3. free skb after calling __hci_cmd_sync
+    4. make bt_awake as const struct btmtk_wakeon
+v4: 1. drop __func__ in error messages
+    2. make hdev->wakeup assignment aligned to hdev->send
+---
+ drivers/bluetooth/btmtk.h     |  8 ++++++++
+ drivers/bluetooth/btmtksdio.c | 33 ++++++++++++++++++++++++++++++++-
+ 2 files changed, 40 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-index 28ad9403c441..67b005d5b9e3 100644
---- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-+++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-@@ -146,6 +146,8 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
- 		return -ENOMEM;
+diff --git a/drivers/bluetooth/btmtk.h b/drivers/bluetooth/btmtk.h
+index 6e7b0c7567c0..2be1d2680ad8 100644
+--- a/drivers/bluetooth/btmtk.h
++++ b/drivers/bluetooth/btmtk.h
+@@ -68,6 +68,14 @@ struct btmtk_tci_sleep {
+ 	u8 time_compensation;
+ } __packed;
  
- 	mipi_tx->driver_data = of_device_get_match_data(dev);
-+	if (!mipi_tx->driver_data)
-+		return -ENODEV;
++struct btmtk_wakeon {
++	u8 mode;
++	u8 gpo;
++	u8 active_high;
++	__le16 enable_delay;
++	__le16 wakeup_delay;
++} __packed;
++
+ struct btmtk_hci_wmt_params {
+ 	u8 op;
+ 	u8 flag;
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index b5ea8d3bffaa..89bd70651e9e 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -958,6 +958,32 @@ static int btmtksdio_send_frame(struct hci_dev *hdev, struct sk_buff *skb)
+ 	return 0;
+ }
  
- 	mipi_tx->regs = devm_platform_ioremap_resource(pdev, 0);
- 	if (IS_ERR(mipi_tx->regs))
++static bool btmtk_sdio_wakeup(struct hci_dev *hdev)
++{
++	struct btmtksdio_dev *bdev = hci_get_drvdata(hdev);
++	bool may_wakeup = device_may_wakeup(bdev->dev);
++	const struct btmtk_wakeon bt_awake = {
++		.mode = 0x1,
++		.gpo = 0,
++		.active_high = 0x1,
++		.enable_delay = cpu_to_le16(0xc80),
++		.wakeup_delay = cpu_to_le16(0x20)
++	};
++
++	if (may_wakeup && bdev->data->chipid == 0x7921) {
++		struct sk_buff *skb;
++
++		skb =  __hci_cmd_sync(hdev, 0xfc27, sizeof(bt_awake),
++				      &bt_awake, HCI_CMD_TIMEOUT);
++		if (IS_ERR(skb))
++			may_wakeup = false;
++
++		kfree_skb(skb);
++	}
++
++	return may_wakeup;
++}
++
+ static int btmtksdio_probe(struct sdio_func *func,
+ 			   const struct sdio_device_id *id)
+ {
+@@ -998,6 +1024,7 @@ static int btmtksdio_probe(struct sdio_func *func,
+ 	hdev->shutdown = btmtksdio_shutdown;
+ 	hdev->send     = btmtksdio_send_frame;
+ 	hdev->set_bdaddr = btmtk_set_bdaddr;
++	hdev->wakeup   = btmtk_sdio_wakeup;
+ 
+ 	SET_HCIDEV_DEV(hdev, &func->dev);
+ 
+@@ -1032,7 +1059,11 @@ static int btmtksdio_probe(struct sdio_func *func,
+ 	 */
+ 	pm_runtime_put_noidle(bdev->dev);
+ 
+-	return 0;
++	err = device_init_wakeup(bdev->dev, true);
++	if (err)
++		bt_dev_err(hdev, "failed to init_wakeup");
++
++	return err;
+ }
+ 
+ static void btmtksdio_remove(struct sdio_func *func)
 -- 
-2.17.1
+2.25.1
 
 
 _______________________________________________
