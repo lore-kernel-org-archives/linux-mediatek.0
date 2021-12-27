@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 323A1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Dec 2021 08:26:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D911C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Dec 2021 08:38:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MK2qMhwfzwN4PzhCbbd5K6V+TIvixGnMFBj2vs+/+rQ=; b=Ndmwa/z4Yk08mW
-	lJ/EsjsBoxu4vHrrI+HXeT/Dj3AUvO8X9UpmYt1i7KkYKMnRq9ofThmGHfhkTWGhUKmv8OqeE9aC4
-	0HvPzwPG4QExhV7/7tlerFDGMKMp9MIygJizVajN7COWvQumNgP+MMkxEiPV7+nTatIelmiuMBnWg
-	aRxWX01qx1m7q82Fi+o1Pw4xYuz5qxAg+kUFm5mYK2LqlmTRLNvftPs5Z1EjugWoRTKsVpLMVQRqs
-	/bQG2ncdUsl+1lHgpjQVvzCMBr5r4xL3AtJH+Swwy6IJvYa+BDMeY82cGypCC9hZ/ZNsPbCCyHGCz
-	T7iYDGVYqBDY9VYWVrIA==;
+	List-Owner; bh=F0GL7USNWzgHUgb4vJGDNKcTMQf1AcGKZKzCNWItBH4=; b=oIg2Hs4DPeT81g
+	jzLg8UmHEbbWd/nByclwBH6cjdgdV7JRv0Ni3EjIigu3y847rTYWhVIl00RxyV+k294jT0Ily2aTa
+	StP0vQZIcixangVjPsJNMNznM940N3jX6E8KTenuuirk1r1tWyPtoeG4exW8unFvkXqLrV2MQu1YI
+	FWN3WNFAyjXl6mTqdgEVtk/Iqmsw2jp6by7x4rGp2O9oxqXW02njvN4O8L41vKbX547Za50Dk50fL
+	uo/GF+922DArMM/6JpvlM4Y7Nr9ns2fcfnBUA0cuNFnqGPhlsH2/29zyKZTr0U++TDqhciwUffUpM
+	XsG2Rr1SEAP53Mvsb/NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n1lLB-00GMbW-AM; Mon, 27 Dec 2021 08:26:45 +0000
+	id 1n1lW5-00GNK4-1r; Mon, 27 Dec 2021 08:38:01 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n1lL5-00GMaj-3N; Mon, 27 Dec 2021 08:26:43 +0000
-X-UUID: cbfa46082bb14c708f1b6373e80d6dad-20211227
-X-UUID: cbfa46082bb14c708f1b6373e80d6dad-20211227
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
+ id 1n1lVt-00GNIO-5w; Mon, 27 Dec 2021 08:37:50 +0000
+X-UUID: 73f5a3dfe85246639cbf023c48a6f743-20211227
+X-UUID: 73f5a3dfe85246639cbf023c48a6f743-20211227
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2130907486; Mon, 27 Dec 2021 01:26:35 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1589692963; Mon, 27 Dec 2021 01:37:20 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 27 Dec 2021 00:26:33 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 27 Dec 2021 16:26:31 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ 15.0.1497.2; Mon, 27 Dec 2021 00:36:47 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Dec 2021 16:36:46 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 27 Dec 2021 16:26:31 +0800
-Message-ID: <b13233262aed45d57984a542dcd3b9b56ff78d5c.camel@mediatek.com>
-Subject: Re: [PATCH v10 1/3] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
-From: moudy ho <moudy.ho@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
- Skrabec" <jernej.skrabec@siol.net>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>, Alexandre Courbot <acourbot@chromium.org>,
- <tfiga@chromium.org>, <drinkcat@chromium.org>, <pihsun@chromium.org>,
- <hsinyi@google.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Maoguang Meng
- <maoguang.meng@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>,
- Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, <menghui.lin@mediatek.com>,
- <sj.huang@mediatek.com>, <allen-kh.cheng@mediatek.com>,
- <randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <srv_heupstream@mediatek.com>
-Date: Mon, 27 Dec 2021 16:26:31 +0800
-In-Reply-To: <YbOZsd+zNmwOpB4x@robh.at.kernel.org>
-References: <20211202062733.20338-1-moudy.ho@mediatek.com>
- <20211202062733.20338-2-moudy.ho@mediatek.com>
- <YbOZsd+zNmwOpB4x@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Mon, 27 Dec 2021 16:36:44 +0800
+From: Axe Yang <axe.yang@mediatek.com>
+To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
+CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
+ <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
+ <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
+ <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
+ <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
+ <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
+ <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v1 1/3] dt-bindings: mmc: add cap-sdio-async-int flag
+Date: Mon, 27 Dec 2021 16:36:39 +0800
+Message-ID: <20211227083641.12538-2-axe.yang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20211227083641.12538-1-axe.yang@mediatek.com>
+References: <20211227083641.12538-1-axe.yang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211227_002639_192439_66273B71 
-X-CRM114-Status: GOOD (  32.15  )
+X-CRM114-CacheID: sfid-20211227_003749_256507_F4A7DFFB 
+X-CRM114-Status: UNSURE (   9.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,117 +81,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-12-10 at 12:17 -0600, Rob Herring wrote:
-> On Thu, Dec 02, 2021 at 02:27:31PM +0800, Moudy Ho wrote:
-> > This patch adds DT binding document for Media Data Path 3 (MDP3)
-> > a unit in multimedia system used for scaling and color format
-> > convert.
-> > 
-> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
-> > ---
-> >  .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++++++
-> >  .../bindings/media/mediatek,mdp3-wrot.yaml    |  67 ++++++
-> >  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  57 +++++
-> >  .../bindings/soc/mediatek/mediatek,rdma.yaml  | 216
-> > ++++++++++++++++++
-> >  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  68 ++++++
-> >  5 files changed, 473 insertions(+)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/soc/mediatek/mediatek,rdma.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
-> 
-> I'm not a fan of bindings/soc/ either. Put everything in 
-> bindings/media/. What's the difference between these blocks here and 
-> the version used for display? If they are the same h/w, then the
-> binding 
-> needs to be the same. How they get used is the kernel's problem. 
-> 
-> It looks like the display ccorr, rdma, and wdma aren't documented.
-> Fix 
-> that before you add new stuff.
-> 
-> 
+Asynchronous interrupt is a mechanism that allow SDIO devices alarm
+interrupt when host stop providing clock to card. Add a DT flag to
+enable this feature if it is supported by SDIO card.
 
-Hi Rob,
+Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+---
+ Documentation/devicetree/bindings/mmc/mmc-controller.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-The bindings about display components were introduced by the other
-patch listed below:
-
-https://patchwork.kernel.org/project/linux-mediatek/patch/20211129184439.16892-4-jason-jh.lin@mediatek.com/
-I'll add the bindings shared with display in the commit message, such
-as ccorr and wdma but rdma has slight different.
-
-> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rsz.yaml
-> > new file mode 100644
-> > index 000000000000..d7f104a0f165
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
-> > rsz.yaml
-> > @@ -0,0 +1,65 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: 
-> > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml*__;Iw!!CTRNKA9wMg0ARbw!2EXFPaNlBbwXl4J4iyU18dX2N2UFR-c1E8Eo_tPF-FSoFNwhTh0bJynYCcta3KDP$
-> >  
-> > +$schema: 
-> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!2EXFPaNlBbwXl4J4iyU18dX2N2UFR-c1E8Eo_tPF-FSoFNwhTh0bJynYCTPZYiHy$
-> >  
-> > +
-> > +title: Mediatek Resizer
-> > +
-> > +maintainers:
-> > +  - Matthias Brugger <matthias.bgg@gmail.com>
-> > +
-> > +description: |
-> > +  One of Media Data Path 3 (MDP3) components used to do frame
-> > resizing.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    items:
-> > +      - enum:
-> > +          - mediatek,mt8183-mdp3-rsz
-> > +
-> > +  mediatek,mdp3-id:
-> > +    description: There may be multiple components with the same
-> > function but
-> > +      different addresses in MDP3. The MDP3 driver can select one
-> > or zero of
-> > +      them and connect other components in series according to the
-> > current
-> > +      application to form one or more data paths. This property
-> > indicate the
-> > +      selection order of the same components.
-> > +    $ref: /schemas/types.yaml#/definitions/uint32
-> > +    enum: [0, 1, 2, 3]
-> 
-> Again, an index nor an alias is the right approach for this. Use DT 
-> graph like others do. 'It's too complicated' is not a reason unless
-> you 
-> show how and why it won't work.
-> 
-> Rob
-
-Perhaps, I can rename the compatible, for example from
-"mediatek,mt8183-mdp3-rsz" to "mediatek,mdp3-rsz0" & "mediatek,mdp3-
-rsz1", and handle this in driver, so another similar attribute
-"mediatek,mdp3-comp-ids" can be removed too.
-On the other hand, it can maintain flexibility when adding other chip
-settings.
-
-Thanks & Regards,
-Moudy Ho
-
+diff --git a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+index 25ac8e200970..7230421583c6 100644
+--- a/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
++++ b/Documentation/devicetree/bindings/mmc/mmc-controller.yaml
+@@ -165,6 +165,11 @@ properties:
+     description:
+       eMMC hardware reset is supported
+ 
++  cap-sdio-async-int:
++    $ref: /schemas/types.yaml#/definitions/flag
++    description:
++      SDIO async interrupt is supported.
++
+   cap-sdio-irq:
+     $ref: /schemas/types.yaml#/definitions/flag
+     description:
+-- 
+2.25.1
 
 
 _______________________________________________
