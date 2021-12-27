@@ -4,89 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2895EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Dec 2021 07:14:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 323A1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Dec 2021 08:26:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SlkAL/4t49HVmaX77Q0h5L6eNijfxtvxlQZh0sKJJB4=; b=ZFrdqiCBnOhDNh
-	si/g8gA12ypzv34DciVCVOvmVI3Un+t+GXYEdvNyrlgsDQUNe4ow4PFH6ZQjmfr3QDCIvRS1zB/Bo
-	Y+k8X3kcfcXLqzdGePxlJAvl1MVX3eqqs4qI2QyG6jDG4k2NVOL9nncje/neshcZOqUn6RxtKLbla
-	osDOR5fjxBPl6rlP2YnltsJmCOXw8FaPTRHhTmvUOR56Hq9DVnlw7u893Iht7E3uqErrrbR9W3sYX
-	jjS/sMkFR8TM0E1Hx3jjXpm88Z+TKeJv8P6yc9ujs+JdrjnzxmeZ+D/TDLfp+gsUFx/Db00HXSsC1
-	MB+IwuDA/fbJ6cNo+/VA==;
+	List-Owner; bh=MK2qMhwfzwN4PzhCbbd5K6V+TIvixGnMFBj2vs+/+rQ=; b=Ndmwa/z4Yk08mW
+	lJ/EsjsBoxu4vHrrI+HXeT/Dj3AUvO8X9UpmYt1i7KkYKMnRq9ofThmGHfhkTWGhUKmv8OqeE9aC4
+	0HvPzwPG4QExhV7/7tlerFDGMKMp9MIygJizVajN7COWvQumNgP+MMkxEiPV7+nTatIelmiuMBnWg
+	aRxWX01qx1m7q82Fi+o1Pw4xYuz5qxAg+kUFm5mYK2LqlmTRLNvftPs5Z1EjugWoRTKsVpLMVQRqs
+	/bQG2ncdUsl+1lHgpjQVvzCMBr5r4xL3AtJH+Swwy6IJvYa+BDMeY82cGypCC9hZ/ZNsPbCCyHGCz
+	T7iYDGVYqBDY9VYWVrIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n1kDX-00GIvP-KQ; Mon, 27 Dec 2021 07:14:47 +0000
-Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
+	id 1n1lLB-00GMbW-AM; Mon, 27 Dec 2021 08:26:45 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n1kDU-00GIv5-Nf
- for linux-mediatek@lists.infradead.org; Mon, 27 Dec 2021 07:14:46 +0000
-Received: by mail-qk1-x72f.google.com with SMTP id e25so8047498qkl.12
- for <linux-mediatek@lists.infradead.org>; Sun, 26 Dec 2021 23:14:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4FLR5aRa6nhcAgyU88oGHnr22kyfHCN3jOQK5fS/Kkc=;
- b=M0PfZbMlw980hwdVk9JbyWaetJDLPWLwxYeBHJdEl2uuiJ8GnjnEPfcxX0K8CQR/n4
- V4QK4xZ5M1mZXcLBSs7h6N1U4dRbPnw31gHEJs57N/bhAM6moXrSxwLfv2P+yF3k81zp
- 9BTuY0mt3jxwVqUh25JSB2TvEHEtVAxQXrOAY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4FLR5aRa6nhcAgyU88oGHnr22kyfHCN3jOQK5fS/Kkc=;
- b=3iyNsgCe9q/dBPghnbuEISFNohXK0cf+/MYGGaqTidTq9sI7nkD5fp9QYFywn2RF+W
- sgkEeQv789QqbTDHRhCaVWDNYghQExz0uleHhWbPjyK+8yjV3WfW4vTT7VLgYKfEqD8J
- eP3h67ec9Exn5fKoV+Pvj5WBCM2Se/c/zwvHyISQAaHGvrUMj9ol7nmR+i20GJIPw80i
- bZTYoBbjy30rg8PmIKGJ1aNVGknDHvjf7bWA+Lsy7oPmgm/V/R0FvUWJcn7/FF8RQBrk
- uyAReB8W5FGzcSfsoniyFGyyjXVrs0+Av5eGPmoruHphBWxOWWhrBaXtKQmOXC5+YyFM
- h08w==
-X-Gm-Message-State: AOAM532QHASknu04/KSH3zCJJYV75QTZk1+lwYIthN2JPNc3wN6AIAvS
- gb8kWdKhvX+jwMdXs7GTPlSNaBPXy8/oXQ==
-X-Google-Smtp-Source: ABdhPJzYBF5gDs9sgjmviPiPbuAzjl5XXqUDbpiAk3IzcqwY5K68BkgroLQ+gLbsHOz4+DFjUBRf2g==
-X-Received: by 2002:a05:620a:4249:: with SMTP id
- w9mr11131342qko.251.1640589283417; 
- Sun, 26 Dec 2021 23:14:43 -0800 (PST)
-Received: from mail-qv1-f49.google.com (mail-qv1-f49.google.com.
- [209.85.219.49])
- by smtp.gmail.com with ESMTPSA id o4sm11893380qkh.107.2021.12.26.23.14.43
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 26 Dec 2021 23:14:43 -0800 (PST)
-Received: by mail-qv1-f49.google.com with SMTP id h5so13153233qvh.8
- for <linux-mediatek@lists.infradead.org>; Sun, 26 Dec 2021 23:14:43 -0800 (PST)
-X-Received: by 2002:a05:6102:3218:: with SMTP id
- r24mr4753042vsf.74.1640588787493; 
- Sun, 26 Dec 2021 23:06:27 -0800 (PST)
+ id 1n1lL5-00GMaj-3N; Mon, 27 Dec 2021 08:26:43 +0000
+X-UUID: cbfa46082bb14c708f1b6373e80d6dad-20211227
+X-UUID: cbfa46082bb14c708f1b6373e80d6dad-20211227
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <moudy.ho@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2130907486; Mon, 27 Dec 2021 01:26:35 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 27 Dec 2021 00:26:33 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 27 Dec 2021 16:26:31 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 27 Dec 2021 16:26:31 +0800
+Message-ID: <b13233262aed45d57984a542dcd3b9b56ff78d5c.camel@mediatek.com>
+Subject: Re: [PATCH v10 1/3] dt-binding: mt8183: add Mediatek MDP3 dt-bindings
+From: moudy ho <moudy.ho@mediatek.com>
+To: Rob Herring <robh@kernel.org>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Jernej
+ Skrabec" <jernej.skrabec@siol.net>, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Geert Uytterhoeven <geert+renesas@glider.be>, Rob Landley <rob@landley.net>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, Alexandre Courbot <acourbot@chromium.org>,
+ <tfiga@chromium.org>, <drinkcat@chromium.org>, <pihsun@chromium.org>,
+ <hsinyi@google.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Maoguang Meng
+ <maoguang.meng@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>,
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, <menghui.lin@mediatek.com>,
+ <sj.huang@mediatek.com>, <allen-kh.cheng@mediatek.com>,
+ <randy.wu@mediatek.com>, <jason-jh.lin@mediatek.com>,
+ <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
+ <srv_heupstream@mediatek.com>
+Date: Mon, 27 Dec 2021 16:26:31 +0800
+In-Reply-To: <YbOZsd+zNmwOpB4x@robh.at.kernel.org>
+References: <20211202062733.20338-1-moudy.ho@mediatek.com>
+ <20211202062733.20338-2-moudy.ho@mediatek.com>
+ <YbOZsd+zNmwOpB4x@robh.at.kernel.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20211117130635.11633-1-dafna.hirschfeld@collabora.com>
- <20211117130635.11633-6-dafna.hirschfeld@collabora.com>
-In-Reply-To: <20211117130635.11633-6-dafna.hirschfeld@collabora.com>
-From: Alexandre Courbot <acourbot@chromium.org>
-Date: Mon, 27 Dec 2021 16:06:16 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MXyV7K3NuSLCWApC_TNjhFW=+3Eb_7d2028Nyno7fnkMA@mail.gmail.com>
-Message-ID: <CAPBb6MXyV7K3NuSLCWApC_TNjhFW=+3Eb_7d2028Nyno7fnkMA@mail.gmail.com>
-Subject: Re: [PATCH v2 5/7] media: mtk-vcodec: replace func vidioc_try_fmt
- with two funcs for out/cap
-To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
-Cc: Linux Media Mailing List <linux-media@vger.kernel.org>,
- kernel@collabora.com, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, courbot@chromium.org, 
- Dafna Hirschfeld <dafna3@gmail.com>, eizan@chromium.org,
- houlong.wei@mediatek.com, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>, 
- Irui Wang <irui.wang@mediatek.com>, LKML <linux-kernel@vger.kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- =?UTF-8?B?TWFvZ3VhbmcgTWVuZyAo5a2f5q+b5bm/KQ==?= <maoguang.meng@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, minghsiu.tsai@mediatek.com, 
- Tomasz Figa <tfiga@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211226_231444_813942_8B1458E5 
-X-CRM114-Status: GOOD (  25.98  )
+X-CRM114-CacheID: sfid-20211227_002639_192439_66273B71 
+X-CRM114-Status: GOOD (  32.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,226 +88,118 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 17, 2021 at 10:07 PM Dafna Hirschfeld
-<dafna.hirschfeld@collabora.com> wrote:
->
-> The function vidioc_try_fmt has a big 'if-else' for
-> the capture and output cases. There is hardly any code
-> outside of that condition. It is therefore better to split
-> that functions into two different functions, one for each case.
->
-> Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+On Fri, 2021-12-10 at 12:17 -0600, Rob Herring wrote:
+> On Thu, Dec 02, 2021 at 02:27:31PM +0800, Moudy Ho wrote:
+> > This patch adds DT binding document for Media Data Path 3 (MDP3)
+> > a unit in multimedia system used for scaling and color format
+> > convert.
+> > 
+> > Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
+> > ---
+> >  .../bindings/media/mediatek,mdp3-rsz.yaml     |  65 ++++++
+> >  .../bindings/media/mediatek,mdp3-wrot.yaml    |  67 ++++++
+> >  .../bindings/soc/mediatek/mediatek,ccorr.yaml |  57 +++++
+> >  .../bindings/soc/mediatek/mediatek,rdma.yaml  | 216
+> > ++++++++++++++++++
+> >  .../bindings/soc/mediatek/mediatek,wdma.yaml  |  68 ++++++
+> >  5 files changed, 473 insertions(+)
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/soc/mediatek/mediatek,ccorr.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/soc/mediatek/mediatek,rdma.yaml
+> >  create mode 100644
+> > Documentation/devicetree/bindings/soc/mediatek/mediatek,wdma.yaml
+> 
+> I'm not a fan of bindings/soc/ either. Put everything in 
+> bindings/media/. What's the difference between these blocks here and 
+> the version used for display? If they are the same h/w, then the
+> binding 
+> needs to be the same. How they get used is the kernel's problem. 
+> 
+> It looks like the display ccorr, rdma, and wdma aren't documented.
+> Fix 
+> that before you add new stuff.
+> 
+> 
 
-Makes much more sense that way, thanks!
+Hi Rob,
 
-Reviewed-by: Alexandre Courbot <acourbot@chromium.org>
+The bindings about display components were introduced by the other
+patch listed below:
+
+https://patchwork.kernel.org/project/linux-mediatek/patch/20211129184439.16892-4-jason-jh.lin@mediatek.com/
+I'll add the bindings shared with display in the commit message, such
+as ccorr and wdma but rdma has slight different.
+
+> > diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > rsz.yaml
+> > new file mode 100644
+> > index 000000000000..d7f104a0f165
+> > --- /dev/null
+> > +++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-
+> > rsz.yaml
+> > @@ -0,0 +1,65 @@
+> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > +%YAML 1.2
+> > +---
+> > +$id: 
+> > https://urldefense.com/v3/__http://devicetree.org/schemas/media/mediatek,mdp3-rsz.yaml*__;Iw!!CTRNKA9wMg0ARbw!2EXFPaNlBbwXl4J4iyU18dX2N2UFR-c1E8Eo_tPF-FSoFNwhTh0bJynYCcta3KDP$
+> >  
+> > +$schema: 
+> > https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!2EXFPaNlBbwXl4J4iyU18dX2N2UFR-c1E8Eo_tPF-FSoFNwhTh0bJynYCTPZYiHy$
+> >  
+> > +
+> > +title: Mediatek Resizer
+> > +
+> > +maintainers:
+> > +  - Matthias Brugger <matthias.bgg@gmail.com>
+> > +
+> > +description: |
+> > +  One of Media Data Path 3 (MDP3) components used to do frame
+> > resizing.
+> > +
+> > +properties:
+> > +  compatible:
+> > +    items:
+> > +      - enum:
+> > +          - mediatek,mt8183-mdp3-rsz
+> > +
+> > +  mediatek,mdp3-id:
+> > +    description: There may be multiple components with the same
+> > function but
+> > +      different addresses in MDP3. The MDP3 driver can select one
+> > or zero of
+> > +      them and connect other components in series according to the
+> > current
+> > +      application to form one or more data paths. This property
+> > indicate the
+> > +      selection order of the same components.
+> > +    $ref: /schemas/types.yaml#/definitions/uint32
+> > +    enum: [0, 1, 2, 3]
+> 
+> Again, an index nor an alias is the right approach for this. Use DT 
+> graph like others do. 'It's too complicated' is not a reason unless
+> you 
+> show how and why it won't work.
+> 
+> Rob
+
+Perhaps, I can rename the compatible, for example from
+"mediatek,mt8183-mdp3-rsz" to "mediatek,mdp3-rsz0" & "mediatek,mdp3-
+rsz1", and handle this in driver, so another similar attribute
+"mediatek,mdp3-comp-ids" can be removed too.
+On the other hand, it can maintain flexibility when adding other chip
+settings.
+
+Thanks & Regards,
+Moudy Ho
 
 
-> ---
->  .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 149 +++++++++---------
->  1 file changed, 72 insertions(+), 77 deletions(-)
->
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index fb3cf804c96a..be28f2401839 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -263,87 +263,82 @@ static struct mtk_q_data *mtk_venc_get_q_data(struct mtk_vcodec_ctx *ctx,
->         return &ctx->q_data[MTK_Q_DATA_DST];
->  }
->
-> +static void vidioc_try_fmt_cap(struct v4l2_format *f)
-> +{
-> +       f->fmt.pix_mp.field = V4L2_FIELD_NONE;
-> +       f->fmt.pix_mp.num_planes = 1;
-> +       f->fmt.pix_mp.plane_fmt[0].bytesperline = 0;
-> +       f->fmt.pix_mp.flags = 0;
-> +}
-> +
->  /* V4L2 specification suggests the driver corrects the format struct if any of
->   * the dimensions is unsupported
->   */
-> -static int vidioc_try_fmt(struct mtk_vcodec_ctx *ctx, struct v4l2_format *f,
-> -                         const struct mtk_video_fmt *fmt)
-> +static int vidioc_try_fmt_out(struct mtk_vcodec_ctx *ctx, struct v4l2_format *f,
-> +                             const struct mtk_video_fmt *fmt)
->  {
->         struct v4l2_pix_format_mplane *pix_fmt_mp = &f->fmt.pix_mp;
-> +       int tmp_w, tmp_h;
-> +       unsigned int max_width, max_height;
->
->         pix_fmt_mp->field = V4L2_FIELD_NONE;
->
-> -       if (f->type == V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE) {
-> -               pix_fmt_mp->num_planes = 1;
-> -               pix_fmt_mp->plane_fmt[0].bytesperline = 0;
-> -       } else if (f->type == V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE) {
-> -               int tmp_w, tmp_h;
-> -               unsigned int max_width, max_height;
-> -
-> -               if (ctx->dev->enc_capability & MTK_VENC_4K_CAPABILITY_ENABLE) {
-> -                       max_width = MTK_VENC_4K_MAX_W;
-> -                       max_height = MTK_VENC_4K_MAX_H;
-> -               } else {
-> -                       max_width = MTK_VENC_HD_MAX_W;
-> -                       max_height = MTK_VENC_HD_MAX_H;
-> -               }
-> +       if (ctx->dev->enc_capability & MTK_VENC_4K_CAPABILITY_ENABLE) {
-> +               max_width = MTK_VENC_4K_MAX_W;
-> +               max_height = MTK_VENC_4K_MAX_H;
-> +       } else {
-> +               max_width = MTK_VENC_HD_MAX_W;
-> +               max_height = MTK_VENC_HD_MAX_H;
-> +       }
->
-> -               pix_fmt_mp->height = clamp(pix_fmt_mp->height,
-> -                                       MTK_VENC_MIN_H,
-> -                                       max_height);
-> -               pix_fmt_mp->width = clamp(pix_fmt_mp->width,
-> -                                       MTK_VENC_MIN_W,
-> -                                       max_width);
-> +       pix_fmt_mp->height = clamp(pix_fmt_mp->height, MTK_VENC_MIN_H, max_height);
-> +       pix_fmt_mp->width = clamp(pix_fmt_mp->width, MTK_VENC_MIN_W, max_width);
->
-> -               /* find next closer width align 16, heign align 32, size align
-> -                * 64 rectangle
-> -                */
-> -               tmp_w = pix_fmt_mp->width;
-> -               tmp_h = pix_fmt_mp->height;
-> -               v4l_bound_align_image(&pix_fmt_mp->width,
-> -                                       MTK_VENC_MIN_W,
-> -                                       max_width, 4,
-> -                                       &pix_fmt_mp->height,
-> -                                       MTK_VENC_MIN_H,
-> -                                       max_height, 5, 6);
-> -
-> -               if (pix_fmt_mp->width < tmp_w &&
-> -                       (pix_fmt_mp->width + 16) <= max_width)
-> -                       pix_fmt_mp->width += 16;
-> -               if (pix_fmt_mp->height < tmp_h &&
-> -                       (pix_fmt_mp->height + 32) <= max_height)
-> -                       pix_fmt_mp->height += 32;
-> -
-> -               mtk_v4l2_debug(0,
-> -                       "before resize width=%d, height=%d, after resize width=%d, height=%d, sizeimage=%d %d",
-> -                       tmp_w, tmp_h, pix_fmt_mp->width,
-> -                       pix_fmt_mp->height,
-> -                       pix_fmt_mp->plane_fmt[0].sizeimage,
-> -                       pix_fmt_mp->plane_fmt[1].sizeimage);
-> -
-> -               pix_fmt_mp->num_planes = fmt->num_planes;
-> -               pix_fmt_mp->plane_fmt[0].sizeimage =
-> -                               pix_fmt_mp->width * pix_fmt_mp->height +
-> -                               ((ALIGN(pix_fmt_mp->width, 16) * 2) * 16);
-> -               pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
-> -
-> -               if (pix_fmt_mp->num_planes == 2) {
-> -                       pix_fmt_mp->plane_fmt[1].sizeimage =
-> -                               (pix_fmt_mp->width * pix_fmt_mp->height) / 2 +
-> -                               (ALIGN(pix_fmt_mp->width, 16) * 16);
-> -                       pix_fmt_mp->plane_fmt[2].sizeimage = 0;
-> -                       pix_fmt_mp->plane_fmt[1].bytesperline =
-> -                                                       pix_fmt_mp->width;
-> -                       pix_fmt_mp->plane_fmt[2].bytesperline = 0;
-> -               } else if (pix_fmt_mp->num_planes == 3) {
-> -                       pix_fmt_mp->plane_fmt[1].sizeimage =
-> -                       pix_fmt_mp->plane_fmt[2].sizeimage =
-> -                               (pix_fmt_mp->width * pix_fmt_mp->height) / 4 +
-> -                               ((ALIGN(pix_fmt_mp->width, 16) / 2) * 16);
-> -                       pix_fmt_mp->plane_fmt[1].bytesperline =
-> -                               pix_fmt_mp->plane_fmt[2].bytesperline =
-> -                               pix_fmt_mp->width / 2;
-> -               }
-> +       /* find next closer width align 16, heign align 32, size align
-> +        * 64 rectangle
-> +        */
-> +       tmp_w = pix_fmt_mp->width;
-> +       tmp_h = pix_fmt_mp->height;
-> +       v4l_bound_align_image(&pix_fmt_mp->width,
-> +                             MTK_VENC_MIN_W,
-> +                             max_width, 4,
-> +                             &pix_fmt_mp->height,
-> +                             MTK_VENC_MIN_H,
-> +                             max_height, 5, 6);
-> +
-> +       if (pix_fmt_mp->width < tmp_w && (pix_fmt_mp->width + 16) <= max_width)
-> +               pix_fmt_mp->width += 16;
-> +       if (pix_fmt_mp->height < tmp_h && (pix_fmt_mp->height + 32) <= max_height)
-> +               pix_fmt_mp->height += 32;
-> +
-> +       mtk_v4l2_debug(0, "before resize w=%d, h=%d, after resize w=%d, h=%d, sizeimage=%d %d",
-> +                      tmp_w, tmp_h, pix_fmt_mp->width,
-> +                      pix_fmt_mp->height,
-> +                      pix_fmt_mp->plane_fmt[0].sizeimage,
-> +                      pix_fmt_mp->plane_fmt[1].sizeimage);
-> +
-> +       pix_fmt_mp->num_planes = fmt->num_planes;
-> +       pix_fmt_mp->plane_fmt[0].sizeimage =
-> +                       pix_fmt_mp->width * pix_fmt_mp->height +
-> +                       ((ALIGN(pix_fmt_mp->width, 16) * 2) * 16);
-> +       pix_fmt_mp->plane_fmt[0].bytesperline = pix_fmt_mp->width;
-> +
-> +       if (pix_fmt_mp->num_planes == 2) {
-> +               pix_fmt_mp->plane_fmt[1].sizeimage =
-> +                       (pix_fmt_mp->width * pix_fmt_mp->height) / 2 +
-> +                       (ALIGN(pix_fmt_mp->width, 16) * 16);
-> +               pix_fmt_mp->plane_fmt[2].sizeimage = 0;
-> +               pix_fmt_mp->plane_fmt[1].bytesperline =
-> +                                               pix_fmt_mp->width;
-> +               pix_fmt_mp->plane_fmt[2].bytesperline = 0;
-> +       } else if (pix_fmt_mp->num_planes == 3) {
-> +               pix_fmt_mp->plane_fmt[1].sizeimage =
-> +               pix_fmt_mp->plane_fmt[2].sizeimage =
-> +                       (pix_fmt_mp->width * pix_fmt_mp->height) / 4 +
-> +                       ((ALIGN(pix_fmt_mp->width, 16) / 2) * 16);
-> +               pix_fmt_mp->plane_fmt[1].bytesperline =
-> +                       pix_fmt_mp->plane_fmt[2].bytesperline =
-> +                       pix_fmt_mp->width / 2;
->         }
->
->         pix_fmt_mp->flags = 0;
-> @@ -432,9 +427,7 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
->         }
->
->         q_data->fmt = fmt;
-> -       ret = vidioc_try_fmt(ctx, f, q_data->fmt);
-> -       if (ret)
-> -               return ret;
-> +       vidioc_try_fmt_cap(f);
->
->         q_data->coded_width = f->fmt.pix_mp.width;
->         q_data->coded_height = f->fmt.pix_mp.height;
-> @@ -494,7 +487,7 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
->                 f->fmt.pix.pixelformat = fmt->fourcc;
->         }
->
-> -       ret = vidioc_try_fmt(ctx, f, fmt);
-> +       ret = vidioc_try_fmt_out(ctx, f, fmt);
->         if (ret)
->                 return ret;
->
-> @@ -572,7 +565,9 @@ static int vidioc_try_fmt_vid_cap_mplane(struct file *file, void *priv,
->         f->fmt.pix_mp.quantization = ctx->quantization;
->         f->fmt.pix_mp.xfer_func = ctx->xfer_func;
->
-> -       return vidioc_try_fmt(ctx, f, fmt);
-> +       vidioc_try_fmt_cap(f);
-> +
-> +       return 0;
->  }
->
->  static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
-> @@ -594,7 +589,7 @@ static int vidioc_try_fmt_vid_out_mplane(struct file *file, void *priv,
->                 f->fmt.pix_mp.xfer_func = V4L2_XFER_FUNC_DEFAULT;
->         }
->
-> -       return vidioc_try_fmt(ctx, f, fmt);
-> +       return vidioc_try_fmt_out(ctx, f, fmt);
->  }
->
->  static int vidioc_venc_g_selection(struct file *file, void *priv,
-> --
-> 2.17.1
->
 
 _______________________________________________
 Linux-mediatek mailing list
