@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BD03C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Dec 2021 07:06:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E6AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 27 Dec 2021 07:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WZbiABdtrXyetb1jPJg9n0KMS9K673S1YBaQzEvxeaw=; b=jMM4po1GnuHFwF
-	4C2jojfPZUV1jHpvB0JW7uwmnqQolHFAu3K9sO/3uySX4jdb0mVZjDwIg9ZKDjtJXGgLOvKyRdinV
-	HDPpR2hXuxC4b8kbG08iO5UtpoowRVbpJ1kGtLXNHN6uqZUlffPpqiJW42eHtx+WRsGLKJ+IX/8HF
-	1wcyNYiBwpAtZnTgDYltsNFXCOmomN4HZvhESO36Ifah9ua8IAs+0cwK2Y4f1N4z9B7W3Pz7NawXv
-	fpq9w/v/0dKqH6N6ulnFgdv8eNJEs3Za3SyZP4GKyrRcvGVo/fdAzlC/AmEkzfZOS+5PacCCYSMTZ
-	46nxQabHnJep6RGwOPFw==;
+	List-Owner; bh=YOsW0Qg2JtdWUl2Np4uAzFvYHD1qmBr2kkFl24q/Ezc=; b=x5Ej0nxQpkdabQ
+	IRwXn8/WaW6JkA4hheLHi8ej+opRFIhj1kWgs/YViVscCMnZ09ZA9A2nDnuC5iLE7IhpPjNQxfAq8
+	gxtQ2Zx0mhrO+r6buSXolE7TME3oSJcGXxtKSdBibDT1N6wB+7RCpcr3ahatl2vkqJOGxShcelvym
+	3EVy/4Ocx2DRvK0DqjcnEyCQWayNW+K5f5qpGTR3C4F/6Z9rFd/eAnndm7BfG4SQBwlqIAzcdmJDD
+	bEq/HxKAsiMsIfeB/GP1FkDTGC1ZbI4J7lJyopOkXfbqCnsMCgaFzKdLHsD0ABzyiVi8+20GkLVOF
+	CjZB0FFiIZOZnR22JjFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n1k5h-00GIar-Oz; Mon, 27 Dec 2021 07:06:41 +0000
-Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
+	id 1n1kBa-00GIld-Eq; Mon, 27 Dec 2021 07:12:46 +0000
+Received: from mail-ua1-x933.google.com ([2607:f8b0:4864:20::933])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n1k5f-00GIZz-Cs
- for linux-mediatek@lists.infradead.org; Mon, 27 Dec 2021 07:06:40 +0000
-Received: by mail-ua1-x935.google.com with SMTP id t18so18009279uaj.1
- for <linux-mediatek@lists.infradead.org>; Sun, 26 Dec 2021 23:06:38 -0800 (PST)
+ id 1n1kBX-00GIlH-O7
+ for linux-mediatek@lists.infradead.org; Mon, 27 Dec 2021 07:12:45 +0000
+Received: by mail-ua1-x933.google.com with SMTP id p1so3472478uap.9
+ for <linux-mediatek@lists.infradead.org>; Sun, 26 Dec 2021 23:12:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Mn5z8Yw7iLT0GibyNVJxOywmkk9xNTM1BsrsY50wxA0=;
- b=Fmu3inELwWGRoc+/d047G0g91Zv/JR90W9NOSw/paEwBvKsD/seV2kd6KMhmQMyjEP
- VxxFHzhHRq85jeUM+nCTmXkBEnRGxQJodRABLc7BfGzPji+Jo1iD+h8ZKO8Esce8q2XT
- 3W8yFRUP3uzfuiVQK6DTrBiiFl5jnApeNlSf0=
+ :cc:content-transfer-encoding;
+ bh=TGt9h2A85gxYft0rVPguvrwyauB5J7ujBUnVmtY0QIE=;
+ b=UuGM08JNoPIZGbdzJTwhkqWus0Mk3UZF1YuJDDNqK7d7b23yzMmxkLcwqVZXdOyILw
+ CrjCTshqvCB0YGZhAGrU7b8HOQdNB8O7LZTFwiwyTPBTu4ZaUKtm6DEUbPRcuzc41YB9
+ ANpYlwsZO6IQtKii+/rd5T1GdsBy0+cUSSvlg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Mn5z8Yw7iLT0GibyNVJxOywmkk9xNTM1BsrsY50wxA0=;
- b=SZ5ghDWbmQ0vczsuC5wngwbx5sfZsBi7dOkz/OpGAh9PQqeFG+keioy3sg/05XY5Pp
- R7O8AgdPQ25rH4+7bkcLONG0TE5WP6s6xUgfZWyI989SCU9qZ5DUSCaZyBEJ7gpn+pu4
- wkweU7UNItfIgPXas/K02VTPXBmrAWMtRHfeFSclZ1Il1iCJoYzG6dWqZVvk9K4X1OKP
- 4TD2VmvjuccoUr6S2aIxvOzLA+zDOrnnQ0xPbqPnOHXxWYqV2grWrB4OAr74TMNnK7/J
- XosLPlCqdnccMohFht/DsPxJxUgT1KxdAx/AGsxhTd+5GHqI/Ov6wqKHgXWlqPTFhn0K
- zIvA==
-X-Gm-Message-State: AOAM5308G3mRU/KM+gel8PJGwFdqDtHTaU9GYWnPlMuOsc0OwN4bxVlo
- 2WVXtnPWnnwDFd7O/kgdHKXPFwt8Nawl7Q==
-X-Google-Smtp-Source: ABdhPJwacenXTacRE24mhZyfl4jXBO0z8brF0tcLpw+y+uPs/BNFX5M3zxB4IKi5YNlPnZTNYe3ucg==
-X-Received: by 2002:ab0:2b96:: with SMTP id q22mr4453738uar.87.1640588797358; 
- Sun, 26 Dec 2021 23:06:37 -0800 (PST)
-Received: from mail-ua1-f51.google.com (mail-ua1-f51.google.com.
- [209.85.222.51])
- by smtp.gmail.com with ESMTPSA id f132sm3127946vkf.18.2021.12.26.23.06.36
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=TGt9h2A85gxYft0rVPguvrwyauB5J7ujBUnVmtY0QIE=;
+ b=7RP8jVPNsGqmUkcucNka7cSVr5fsBpUgkFvFcuDFjD4+rRXE/Ke6NIClEb3gJCmXGT
+ F6JFh5Wr3bTGfGjeBimOQWmhcNKzVH6PwGiOudgjPl1Vco4q39ghbZsRtAOa2i6g/Hgg
+ ZSVBaWyrUiiMCKXj9AKiGlWQwSIzDu4NMh9M4pbHh2L52dA5b2o3jf188Amh/WRNA4Eo
+ WsXWsw19cbeuXbGwLX6OIOi3xGGoN84xbcR9dNGowf9iZW4cbphWqDM7Q7QZ5AsS/CAw
+ YBNnElWT3mVAn/MXB7HX1NzFVbYCoqIUet5QCwqp0lqukw+rg/xT9Q+E2eOI+m6lD8jU
+ +I9g==
+X-Gm-Message-State: AOAM5316upLKP2BCAxKOyeE/Ia4dulpmDEfWqDFUaFZqCgq0RdtNdUh9
+ D0jluMwMTDxTT2d8621EmnFqsqnDGlwJoA==
+X-Google-Smtp-Source: ABdhPJwaolU8tRXHKmihd0AWMYw1L5ZAdJNg+EpqkH2MOdVE+9SkkxW1AxfVB89/5zXUTamXMe2mNA==
+X-Received: by 2002:a67:3214:: with SMTP id y20mr4091560vsy.4.1640589162172;
+ Sun, 26 Dec 2021 23:12:42 -0800 (PST)
+Received: from mail-ua1-f43.google.com (mail-ua1-f43.google.com.
+ [209.85.222.43])
+ by smtp.gmail.com with ESMTPSA id t130sm841018vkc.32.2021.12.26.23.12.42
  for <linux-mediatek@lists.infradead.org>
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 26 Dec 2021 23:06:37 -0800 (PST)
-Received: by mail-ua1-f51.google.com with SMTP id v14so7902616uau.2
- for <linux-mediatek@lists.infradead.org>; Sun, 26 Dec 2021 23:06:36 -0800 (PST)
-X-Received: by 2002:a05:6102:2368:: with SMTP id
- o8mr4126408vsa.47.1640588796568; 
- Sun, 26 Dec 2021 23:06:36 -0800 (PST)
+ Sun, 26 Dec 2021 23:12:42 -0800 (PST)
+Received: by mail-ua1-f43.google.com with SMTP id v14so7919902uau.2
+ for <linux-mediatek@lists.infradead.org>; Sun, 26 Dec 2021 23:12:42 -0800 (PST)
+X-Received: by 2002:a05:6102:85:: with SMTP id t5mr3972571vsp.25.1640588780620; 
+ Sun, 26 Dec 2021 23:06:20 -0800 (PST)
 MIME-Version: 1.0
 References: <20211117130635.11633-1-dafna.hirschfeld@collabora.com>
- <20211117130635.11633-7-dafna.hirschfeld@collabora.com>
-In-Reply-To: <20211117130635.11633-7-dafna.hirschfeld@collabora.com>
+ <20211117130635.11633-3-dafna.hirschfeld@collabora.com>
+In-Reply-To: <20211117130635.11633-3-dafna.hirschfeld@collabora.com>
 From: Alexandre Courbot <acourbot@chromium.org>
-Date: Mon, 27 Dec 2021 16:06:25 +0900
-X-Gmail-Original-Message-ID: <CAPBb6MXqwWDhCVrdvdUZ3U6P8-CJXo22mkQ_wrQ3_LLGacOvvg@mail.gmail.com>
-Message-ID: <CAPBb6MXqwWDhCVrdvdUZ3U6P8-CJXo22mkQ_wrQ3_LLGacOvvg@mail.gmail.com>
-Subject: Re: [PATCH v2 6/7] media: mtk-vcodec: don't check return val of
- mtk_venc_get_q_data
+Date: Mon, 27 Dec 2021 16:06:09 +0900
+X-Gmail-Original-Message-ID: <CAPBb6MVeohz94O5bXrBLmQkPddMTD9sj0ZMsOjG652_r7OyHSg@mail.gmail.com>
+Message-ID: <CAPBb6MVeohz94O5bXrBLmQkPddMTD9sj0ZMsOjG652_r7OyHSg@mail.gmail.com>
+Subject: Re: [PATCH v2 2/7] media: mtk-vcodec: call v4l2_m2m_ctx_release first
+ when file is released
 To: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
 Cc: Linux Media Mailing List <linux-media@vger.kernel.org>,
  kernel@collabora.com, 
@@ -84,8 +84,8 @@ Cc: Linux Media Mailing List <linux-media@vger.kernel.org>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, minghsiu.tsai@mediatek.com, 
  Tomasz Figa <tfiga@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211226_230639_465604_1D7056FB 
-X-CRM114-Status: GOOD (  22.51  )
+X-CRM114-CacheID: sfid-20211226_231243_798141_29829B78 
+X-CRM114-Status: GOOD (  18.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,146 +102,85 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Nov 17, 2021 at 10:07 PM Dafna Hirschfeld
+On Wed, Nov 17, 2021 at 10:06 PM Dafna Hirschfeld
 <dafna.hirschfeld@collabora.com> wrote:
 >
-> The function mtk_venc_get_q_data always returns a reference
-> so there is no need to check if the return value is null.
-> In addition move the q_data initialization to the declaration
+> The func v4l2_m2m_ctx_release waits for currently running jobs
+> to finish and then stop streaming both queues and frees the buffers.
+> All this should be done before the call to mtk_vcodec_enc_release
+> which frees the encoder handler. This fixes null-pointer dereference bug:
 >
+> [gst-master] root@debian:~/gst-build# [  638.019193] Unable to handle kernel NULL pointer dereference at virtual address 00000000000001a0
+> [  638.028076] Mem abort info:
+> [  638.030932]   ESR = 0x96000004
+> [  638.033978]   EC = 0x25: DABT (current EL), IL = 32 bits
+> [  638.039293]   SET = 0, FnV = 0
+> [  638.042338]   EA = 0, S1PTW = 0
+> [  638.045474]   FSC = 0x04: level 0 translation fault
+> [  638.050349] Data abort info:
+> [  638.053224]   ISV = 0, ISS = 0x00000004
+> [  638.057055]   CM = 0, WnR = 0
+> [  638.060018] user pgtable: 4k pages, 48-bit VAs, pgdp=000000012b6db000
+> [  638.066485] [00000000000001a0] pgd=0000000000000000, p4d=0000000000000000
+> [  638.073277] Internal error: Oops: 96000004 [#1] SMP
+> [  638.078145] Modules linked in: rfkill mtk_vcodec_dec mtk_vcodec_enc uvcvideo mtk_mdp mtk_vcodec_common videobuf2_dma_contig v4l2_h264 cdc_ether v4l2_mem2mem videobuf2_vmalloc usbnet videobuf2_memops videobuf2_v4l2 r8152 videobuf2_common videodev cros_ec_sensors cros_ec_sensors_core industrialio_triggered_buffer kfifo_buf elan_i2c elants_i2c sbs_battery mc cros_usbpd_charger cros_ec_chardev cros_usbpd_logger crct10dif_ce mtk_vpu fuse ip_tables x_tables ipv6
+> [  638.118583] CPU: 0 PID: 212 Comm: kworker/u8:5 Not tainted 5.15.0-06427-g58a1d4dcfc74-dirty #109
+> [  638.127357] Hardware name: Google Elm (DT)
+> [  638.131444] Workqueue: mtk-vcodec-enc mtk_venc_worker [mtk_vcodec_enc]
+> [  638.137974] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> [  638.144925] pc : vp8_enc_encode+0x34/0x2b0 [mtk_vcodec_enc]
+> [  638.150493] lr : venc_if_encode+0xac/0x1b0 [mtk_vcodec_enc]
+> [  638.156060] sp : ffff8000124d3c40
+> [  638.159364] x29: ffff8000124d3c40 x28: 0000000000000000 x27: 0000000000000000
+> [  638.166493] x26: 0000000000000000 x25: ffff0000e7f252d0 x24: ffff8000124d3d58
+> [  638.173621] x23: ffff8000124d3d58 x22: ffff8000124d3d60 x21: 0000000000000001
+> [  638.180750] x20: ffff80001137e000 x19: 0000000000000000 x18: 0000000000000001
+> [  638.187878] x17: 000000040044ffff x16: 00400032b5503510 x15: 0000000000000000
+> [  638.195006] x14: ffff8000118536c0 x13: ffff8000ee1da000 x12: 0000000030d4d91d
+> [  638.202134] x11: 0000000000000000 x10: 0000000000000980 x9 : ffff8000124d3b20
+> [  638.209262] x8 : ffff0000c18d4ea0 x7 : ffff0000c18d44c0 x6 : ffff0000c18d44c0
+> [  638.216391] x5 : ffff80000904a3b0 x4 : ffff8000124d3d58 x3 : ffff8000124d3d60
+> [  638.223519] x2 : ffff8000124d3d78 x1 : 0000000000000001 x0 : ffff80001137efb8
+> [  638.230648] Call trace:
+> [  638.233084]  vp8_enc_encode+0x34/0x2b0 [mtk_vcodec_enc]
+> [  638.238304]  venc_if_encode+0xac/0x1b0 [mtk_vcodec_enc]
+> [  638.243525]  mtk_venc_worker+0x110/0x250 [mtk_vcodec_enc]
+> [  638.248918]  process_one_work+0x1f8/0x498
+> [  638.252923]  worker_thread+0x140/0x538
+> [  638.256664]  kthread+0x148/0x158
+> [  638.259884]  ret_from_fork+0x10/0x20
+> [  638.263455] Code: f90023f9 2a0103f5 aa0303f6 aa0403f8 (f940d277)
+> [  638.269538] ---[ end trace e374fc10f8e181f5 ]---
+>
+> Fixes: 4e855a6efa547 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder Driver")
 > Signed-off-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+
+The order looks indeed safer this way.
 
 Reviewed-by: Alexandre Courbot <acourbot@chromium.org>
 
 
 > ---
->  .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 39 ++++---------------
->  1 file changed, 7 insertions(+), 32 deletions(-)
+>  drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> index be28f2401839..5caaeb4773ca 100644
-> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc.c
-> @@ -399,7 +399,7 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
->         struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
->         const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
->         struct vb2_queue *vq;
-> -       struct mtk_q_data *q_data;
-> +       struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, f->type);
->         int i, ret;
->         const struct mtk_video_fmt *fmt;
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> index eed67394cf46..f898226fc53e 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> @@ -214,11 +214,11 @@ static int fops_vcodec_release(struct file *file)
+>         mtk_v4l2_debug(1, "[%d] encoder", ctx->id);
+>         mutex_lock(&dev->dev_mutex);
 >
-> @@ -414,12 +414,6 @@ static int vidioc_venc_s_fmt_cap(struct file *file, void *priv,
->                 return -EBUSY;
->         }
+> +       v4l2_m2m_ctx_release(ctx->m2m_ctx);
+>         mtk_vcodec_enc_release(ctx);
+>         v4l2_fh_del(&ctx->fh);
+>         v4l2_fh_exit(&ctx->fh);
+>         v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+> -       v4l2_m2m_ctx_release(ctx->m2m_ctx);
 >
-> -       q_data = mtk_venc_get_q_data(ctx, f->type);
-> -       if (!q_data) {
-> -               mtk_v4l2_err("fail to get q data");
-> -               return -EINVAL;
-> -       }
-> -
->         fmt = mtk_venc_find_format(f->fmt.pix.pixelformat, pdata);
->         if (!fmt) {
->                 fmt = &ctx->dev->venc_pdata->capture_formats[0];
-> @@ -460,7 +454,7 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
->         struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
->         const struct mtk_vcodec_enc_pdata *pdata = ctx->dev->venc_pdata;
->         struct vb2_queue *vq;
-> -       struct mtk_q_data *q_data;
-> +       struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, f->type);
->         int ret, i;
->         const struct mtk_video_fmt *fmt;
->
-> @@ -475,12 +469,6 @@ static int vidioc_venc_s_fmt_out(struct file *file, void *priv,
->                 return -EBUSY;
->         }
->
-> -       q_data = mtk_venc_get_q_data(ctx, f->type);
-> -       if (!q_data) {
-> -               mtk_v4l2_err("fail to get q data");
-> -               return -EINVAL;
-> -       }
-> -
->         fmt = mtk_venc_find_format(f->fmt.pix.pixelformat, pdata);
->         if (!fmt) {
->                 fmt = &ctx->dev->venc_pdata->output_formats[0];
-> @@ -520,14 +508,13 @@ static int vidioc_venc_g_fmt(struct file *file, void *priv,
->         struct v4l2_pix_format_mplane *pix = &f->fmt.pix_mp;
->         struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
->         struct vb2_queue *vq;
-> -       struct mtk_q_data *q_data;
-> +       struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, f->type);
->         int i;
->
->         vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
->         if (!vq)
->                 return -EINVAL;
->
-> -       q_data = mtk_venc_get_q_data(ctx, f->type);
->
->         pix->width = q_data->coded_width;
->         pix->height = q_data->coded_height;
-> @@ -596,15 +583,11 @@ static int vidioc_venc_g_selection(struct file *file, void *priv,
->                                      struct v4l2_selection *s)
->  {
->         struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> -       struct mtk_q_data *q_data;
-> +       struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, s->type);
->
->         if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
->                 return -EINVAL;
->
-> -       q_data = mtk_venc_get_q_data(ctx, s->type);
-> -       if (!q_data)
-> -               return -EINVAL;
-> -
->         switch (s->target) {
->         case V4L2_SEL_TGT_CROP_DEFAULT:
->         case V4L2_SEL_TGT_CROP_BOUNDS:
-> @@ -630,15 +613,11 @@ static int vidioc_venc_s_selection(struct file *file, void *priv,
->                                      struct v4l2_selection *s)
->  {
->         struct mtk_vcodec_ctx *ctx = fh_to_ctx(priv);
-> -       struct mtk_q_data *q_data;
-> +       struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, s->type);
->
->         if (s->type != V4L2_BUF_TYPE_VIDEO_OUTPUT)
->                 return -EINVAL;
->
-> -       q_data = mtk_venc_get_q_data(ctx, s->type);
-> -       if (!q_data)
-> -               return -EINVAL;
-> -
->         switch (s->target) {
->         case V4L2_SEL_TGT_CROP:
->                 /* Only support crop from (0,0) */
-> @@ -805,11 +784,9 @@ static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
->                                    struct device *alloc_devs[])
->  {
->         struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vq);
-> -       struct mtk_q_data *q_data;
-> +       struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, vq->type);
->         unsigned int i;
->
-> -       q_data = mtk_venc_get_q_data(ctx, vq->type);
-> -
->         if (q_data == NULL)
->                 return -EINVAL;
->
-> @@ -829,11 +806,9 @@ static int vb2ops_venc_queue_setup(struct vb2_queue *vq,
->  static int vb2ops_venc_buf_prepare(struct vb2_buffer *vb)
->  {
->         struct mtk_vcodec_ctx *ctx = vb2_get_drv_priv(vb->vb2_queue);
-> -       struct mtk_q_data *q_data;
-> +       struct mtk_q_data *q_data = mtk_venc_get_q_data(ctx, vb->vb2_queue->type);
->         int i;
->
-> -       q_data = mtk_venc_get_q_data(ctx, vb->vb2_queue->type);
-> -
->         for (i = 0; i < q_data->fmt->num_planes; i++) {
->                 if (vb2_plane_size(vb, i) < q_data->sizeimage[i]) {
->                         mtk_v4l2_err("data will not fit into plane %d (%lu < %d)",
+>         list_del_init(&ctx->list);
+>         kfree(ctx);
 > --
 > 2.17.1
 >
