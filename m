@@ -4,80 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D71C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Dec 2021 15:12:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D58C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 28 Dec 2021 15:56:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1Zuy84+KP2L5rtMzspsG5p5ySWoHCGZC9I07kAVt7UU=; b=tJerpIsWFTx19b
-	hKFm92uVQe+fTidMh0ISDRR0NlaK6/o3/RNcRnM0GeCv9QYs1ZY2bmxBL06MOiRcm0M0CGX9zssHc
-	/3NhPb3tbkDtqPo3ZFaBskJf+B2jgflcvtytEoN1ekQ+0lvIvlBF7ALC0Vz+vayp9DqkUH9pTbebe
-	yrRykytCLAQijBFVmLW01JKfiCkQwZln+3iCVeMfs1eEeIVxKOKbf71tb8XpYAdNGvBUfT3Q0P4sl
-	RIYO34ZZpcvn3Sc06k72CDEQKHVM1SauaHqWoohkiFg6rnavKOPODTn5SCLdgLm3F9TsOldC0x8uW
-	IGc1+lA6pQELUYI72GCw==;
+	List-Owner; bh=jb0N+O+o6HvxbZF9y7ymuDNKShrkMC7Lpqulz5ktGaM=; b=e+pvK0z5MJ7UHm
+	3umNyv0PmfprCk5NXbHqICgvWgwn5jDPeCp+85jRqo0sDJXj1QXlE7Q1ZbYiev5tHbkzpKWZXLBr7
+	J4arCHs1d08BvTFwk69W+cg/jROn2FbIawnPWH9GjUCC6lQxcjaM95ArHJq59LFoGNPIDC73TXJsY
+	mSOz96yvTIoV7/TvWuD6saW0Fmc0k6pFU9PeLsgYIuWzcwia4sAUU2Q1fNcUmI+xjTlZg2eI2+Eyk
+	gAVZRZE9rbdoZ+csMQsLfwLPNw1UJHX/4xt4HqNB+6yT/l/57jn0zt3xj45Z1nGpWgHtBgbxcYEwW
+	fl55D5Z2LKwFVRw6HDvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2E8p-001NBx-K0; Tue, 28 Dec 2021 15:11:55 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1n2Epn-001Srm-93; Tue, 28 Dec 2021 15:56:19 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2Dvp-001HfU-Pf; Tue, 28 Dec 2021 14:58:31 +0000
-Received: by mail-wr1-x436.google.com with SMTP id w20so29879343wra.9;
- Tue, 28 Dec 2021 06:58:29 -0800 (PST)
+ id 1n2Epi-001Sqi-RS; Tue, 28 Dec 2021 15:56:17 +0000
+Received: by mail-wm1-x330.google.com with SMTP id
+ j140-20020a1c2392000000b003399ae48f58so12991479wmj.5; 
+ Tue, 28 Dec 2021 07:56:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=0EKkFOMfBMhnj4gE/wIselffM6hh1xaDY0vBPskTeK8=;
- b=eXsUiD+XAMAE366M0Wq6CbF2W26uA1pXycMjbBq7X+U66zEEo+SoA+P4y3ntdUVGlr
- jm6UekdgB/CgC66w/KPa1+ShM4A812w9EoG0xqo2lop2qbE9muOduFLnj5JlsUygP/06
- OKZMxLeR2K1JnmrChdxuhbdi3XvKkjidwaC5bUHQUFiyFaTYYtAOLgRlZxSu0gCPmdPf
- lGmgbBBICPdCOQIYEV4rjGh6VOwjYOWaYd+fiZFeZhoz33zPlONZuHoGRyw3EaiAwEQe
- Zhs4b20PfFnA8NVZ8wKS/E/9u33C3jG8PlTq0mDip2v+djyFuDcmJUFMgV8ZxFOE8G84
- jxCA==
+ h=message-id:date:mime-version:user-agent:content-language:to:cc
+ :references:from:subject:in-reply-to:content-transfer-encoding;
+ bh=t1MDQ1CuJ+CtxV/k/TCo6Po1qrBja12Cye53X+2hxAw=;
+ b=o00dZLBKTdEgFVqOhz+3M4aTH+3GOsY6yRQov1N60Io3DQ0tYv672K+Ia/kb0s2Uma
+ FG5vmY1zQ0BgRwgTdNKyniFugn2+4+UFg4IPcRT/XBqTgWyRME2SkYuaXbpCRn8S8Ytp
+ SyREk40Ngrepjvm9sywWazRQcUAUc/FzIQB1SkSrJtHjBo0L/aX9UKBqB4Zvyp92HIJt
+ itgYdg4PZW6Z+7mihWiszGF809uT++Jmw0qi+4f/22DxTIvNevnRK9qUstmAB1sADf/9
+ BkceYfdugySDWoWxBVo5fSg0s8bdkd7VcXr6lOvdgDQKB2WvLAOiZFtzeF7JH88Uf5q2
+ QEEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:subject:in-reply-to
  :content-transfer-encoding;
- bh=0EKkFOMfBMhnj4gE/wIselffM6hh1xaDY0vBPskTeK8=;
- b=p/O9hSBh77KT3jlMyNm6rab0fKFgg+96/V5zLyWWhYC/08TQexIkARmUx1AIijNJWN
- U2ymrqPHnWH3QgU830DhjZ2TAuPEiy6zSuFy8+O3tYP0ZffUGnKycQWElUohGuR8UriI
- GYZtqJQwPsYq8KQkESDqYjAvX+32YmZGsYurozM5ru0nfCTmx2n7yAFwuWtKw/Tey41X
- HRIWQEosiP8Rm24zhtZFFY53UL6ZblTPeOi66FGXXYejl5nqn2R4VFi6776VS2gAvWes
- VIbSD/Kg+DLJek0BJGBG/p63Wo3fsdso3iSXkm+0VmY00KgUEdAix/UDoHvxyQfDF0nA
- VaEQ==
-X-Gm-Message-State: AOAM530h6CKgkqLKV9b6cGqt8d/bb0OPbUjXaDzR9vi83F19jP/d5FXS
- a8OsCo+nevZiaN8ERuE+umU=
-X-Google-Smtp-Source: ABdhPJzKqa0L9wwBoXeKIwPS6rl8ONnmr/bs6OUl8sS5RxFlF7/bBldlKueEtJCsTu+6NI81czaDiw==
-X-Received: by 2002:a05:6000:18a2:: with SMTP id
- b2mr17239895wri.277.1640703507827; 
- Tue, 28 Dec 2021 06:58:27 -0800 (PST)
+ bh=t1MDQ1CuJ+CtxV/k/TCo6Po1qrBja12Cye53X+2hxAw=;
+ b=J3SE7HK+gi0rqKg+zzVvuqbI0QP0qrEioNWbmJvlGE0J0TCKzXr9wDAffoXir/It5a
+ xw6Wq780tjedTbQH4e/LGyv0WP6iDo9JASPNCmr/2hMF8drTukxCs8oIkKYpN5VhMypH
+ HB+idQ9B+icd+9TWZptEitTAhUit+Dt+cr0EKjVx2+2XsD47XPGj/Brw5hzYmTOa06LJ
+ xJV5E8i780T0n0rVCLjp4w3wEogaKavh6rRQxIyEV6GJS6q1Ih3omkQZt+mPu+VgtRq8
+ 4ScWekq0Fl13kukltzwGSUMJFc3b4fgwUreylNdwbYUJeIUUttEbYt/yyPEtxhH49a7r
+ m4fw==
+X-Gm-Message-State: AOAM530Tib5ZSLvZjunpt4kB45defoCZqSaZ9IriH7MH0ySD5PxJsliE
+ 5EwYrCistxK2oEEcCsy/Hl0UomGmr3dN8w==
+X-Google-Smtp-Source: ABdhPJwTVaMHMH2jZEptpNnvfazLDgeUnQ/pvqXSObPuy3N5yE62W28JeUWULMTu8bgsKg/0uhBGbQ==
+X-Received: by 2002:a1c:23d2:: with SMTP id j201mr18135068wmj.76.1640706973311; 
+ Tue, 28 Dec 2021 07:56:13 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id b6sm16320534wri.56.2021.12.28.06.58.26
+ by smtp.gmail.com with ESMTPSA id a204sm21834509wmd.39.2021.12.28.07.56.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Dec 2021 06:58:27 -0800 (PST)
-Message-ID: <0eab31b6-2b8a-b9e1-a738-232cc8f86379@gmail.com>
-Date: Tue, 28 Dec 2021 15:58:26 +0100
+ Tue, 28 Dec 2021 07:56:12 -0800 (PST)
+Message-ID: <331e5b78-2ac7-bca6-061d-85cf25a6bd95@gmail.com>
+Date: Tue, 28 Dec 2021 16:56:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH v2] mailbox: fix gce_num of mt8192 driver data
 Content-Language: en-US
-To: "jason-jh.lin" <jason-jh.lin@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, tzungbi@google.com,
- Yongqiang Niu <yongqiang.niu@mediatek.com>
-Cc: linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- nancy.lin@mediatek.com, singo.chang@mediatek.com
-References: <20211223145155.25704-1-jason-jh.lin@mediatek.com>
+To: Rob Herring <robh@kernel.org>, Maxim Kutnij <gtk3@inbox.ru>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20211219183134.3849-1-gtk3@inbox.ru>
+ <20211219183134.3849-3-gtk3@inbox.ru> <YcNhMdN6rzh9yRG1@robh.at.kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20211223145155.25704-1-jason-jh.lin@mediatek.com>
+Subject: Re: [PATCH 3/3] This adds a DT binding documentation for the MT6582
+ SoC
+In-Reply-To: <YcNhMdN6rzh9yRG1@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211228_065829_915536_D52F7941 
-X-CRM114-Status: GOOD (  16.98  )
+X-CRM114-CacheID: sfid-20211228_075614_933490_45B4F50B 
+X-CRM114-Status: GOOD (  18.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,36 +94,80 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 23/12/2021 15:51, jason-jh.lin wrote:
-> Because mt8192 only have 1 gce, the gce_num should be 1.
+On 22/12/2021 18:32, Rob Herring wrote:
+> On Sun, Dec 19, 2021 at 11:31:34PM +0500, Maxim Kutnij wrote:
+>> This adds a DT binding documentation for the MT6582 SoC.
 > 
-> Fixes: 85dfdbfc13ea ("mailbox: cmdq: add multi-gce clocks support for mt8195")
-> Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+> Please follow the convention used for other commits of these files in
+> the subject:
+> 
+> dt-bindings: mediatek: ...
+> 
+> (That's true for all commits in the kernel)
+> 
 
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
+I fixed that for you. I also fixed the order of the timer and SoC compatible.
 
-> ---
-> Change in v2:
-> - fix tilte tag from cmdq to mailbox
-> - rebase on kernel-5.16
-> ---
->   drivers/mailbox/mtk-cmdq-mailbox.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 1faf35e8aff0..2895484f8349 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -650,7 +650,7 @@ static const struct gce_plat gce_plat_v5 = {
->   	.thread_nr = 24,
->   	.shift = 3,
->   	.control_by_sw = true,
-> -	.gce_num = 2
-> +	.gce_num = 1
->   };
->   
->   static const struct gce_plat gce_plat_v6 = {
-> 
+All three patches are now pushed to v5.17-tmp/dts32 [1]
+This branch will be renamed to v5.17-next/dts32 after v5.17-rc1 is released.
+
+Hope to see more patches from you to enable other drivers of the SoC.
+
+Thanks!
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/matthias.bgg/linux.git/
+
+>>
+>> Signed-off-by: Maxim Kutnij <gtk3@inbox.ru>
+>> ---
+>>   Documentation/devicetree/bindings/arm/mediatek.yaml           | 4 ++++
+>>   .../devicetree/bindings/timer/mediatek,mtk-timer.txt          | 1 +
+>>   Documentation/devicetree/bindings/watchdog/mtk-wdt.txt        | 1 +
+>>   3 files changed, 6 insertions(+)
+>>
+>> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+>> index 0fa55497b96..fedce0d0f3f 100644
+>> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+>> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+>> @@ -26,6 +26,10 @@ properties:
+>>             - enum:
+>>                 - mediatek,mt2712-evb
+>>             - const: mediatek,mt2712
+>> +      - items:
+>> +          - enum:
+>> +              - prestigio,pmt5008-3g
+>> +          - const: mediatek,mt6582
+>>         - items:
+>>             - enum:
+>>                 - mediatek,mt6580-evbp1
+>> diff --git a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+>> index e5c57d6e018..62acdb11aff 100644
+>> --- a/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+>> +++ b/Documentation/devicetree/bindings/timer/mediatek,mtk-timer.txt
+>> @@ -11,6 +11,7 @@ Required properties:
+>>   - compatible should contain:
+>>   	For those SoCs that use GPT
+>>   	* "mediatek,mt2701-timer" for MT2701 compatible timers (GPT)
+>> +	* "mediatek,mt6582-timer" for MT6582 compatible timers (GPT)
+>>   	* "mediatek,mt6580-timer" for MT6580 compatible timers (GPT)
+>>   	* "mediatek,mt6589-timer" for MT6589 compatible timers (GPT)
+>>   	* "mediatek,mt7623-timer" for MT7623 compatible timers (GPT)
+>> diff --git a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+>> index 0114871f887..a97418c74f6 100644
+>> --- a/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+>> +++ b/Documentation/devicetree/bindings/watchdog/mtk-wdt.txt
+>> @@ -8,6 +8,7 @@ Required properties:
+>>   - compatible should contain:
+>>   	"mediatek,mt2701-wdt", "mediatek,mt6589-wdt": for MT2701
+>>   	"mediatek,mt2712-wdt": for MT2712
+>> +	"mediatek,mt6582-wdt", "mediatek,mt6589-wdt": for MT6582
+>>   	"mediatek,mt6589-wdt": for MT6589
+>>   	"mediatek,mt6797-wdt", "mediatek,mt6589-wdt": for MT6797
+>>   	"mediatek,mt7622-wdt", "mediatek,mt6589-wdt": for MT7622
+>> -- 
+>> 2.34.1
+>>
+>>
 
 _______________________________________________
 Linux-mediatek mailing list
