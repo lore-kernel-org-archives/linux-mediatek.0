@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 113A3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Dec 2021 19:54:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44727C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Dec 2021 19:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1EqeLZw/ByLlk8M4GhB4O5BK17AExzMltUvx/DIo1XA=; b=DI6HLZzOpOcZLi
-	zwlhW1leeolFtUHiR7AJqvhlWs/8pynm8usDaFRIj9Hf7hQUQKcje82lQTWdsFBGNiab7HnkF8jIZ
-	sRmUXSTStl+31yYtux4X9A8Zit31j7pRgpB34Wxsvpyq2ioz3kIf/CMAhoEc8Cu0Vm3/g39xlcXrN
-	+0oPb0l9rwZ5tzxeW3m1Z8yMAcWJ/zNY2KJo5yemDZOqJUYt8s+i9NnJovC++ekZQ1AVDPnmxmJm6
-	1O4EHAJ60tDgBIqjCfGLUNpkGzaAgQ0W9vw9mBAxiYsSbrizFJEpbpDTlw8bhqr0z8fyIEPbUcUh2
-	WaEvRsVqPRYFP2OombWA==;
+	List-Owner; bh=yBQsrwWmRHCEitXTF0FdZNNocP0CIn3WE5y8KOGcCOg=; b=p2ahpustt3Cwii
+	geT0KBdEqU9zUXnyfnngTz2Kup7vzZJ/AMcoiU5Fza+uLwVCsfmtutYz78w9xDZcVoheFbZn72P8y
+	8RGzS4wJWMa947PbLSI2nnTfAV0cTGcFQMnDHMy2TDGzJMeNomXyLY6UbN7BOaK9glhIShu0P6dQy
+	N+r+cGUVMqUCiUUVB60vS2SEUu8mFuwh4tFf8Kbt3YpLQY3ekPa4hvJ77ymhRFTN7Wn7reZ6vuWCe
+	nEVJpxJg2CVzW1QQq39AYuUpqJIu5o1kWgp7DmKOJ5jBEH1V2Nn17aWjAtwG01/qRRFwSSmpIxQOD
+	puis4DnfHHgA0sx7F2iA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2f1g-003Mzx-Ac; Wed, 29 Dec 2021 19:54:20 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1n2f2S-003N7e-FT; Wed, 29 Dec 2021 19:55:08 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2f1T-003Mxo-O3; Wed, 29 Dec 2021 19:54:09 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id i22so46312946wrb.13;
- Wed, 29 Dec 2021 11:54:07 -0800 (PST)
+ id 1n2f2F-003N4J-5X; Wed, 29 Dec 2021 19:54:56 +0000
+Received: by mail-wm1-x336.google.com with SMTP id
+ b186-20020a1c1bc3000000b00345734afe78so12279676wmb.0; 
+ Wed, 29 Dec 2021 11:54:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=AYgJm3Z1tSR5Siv29G2UYY7I4ntAQELIfBcvNqWFS10=;
- b=l5HwBAha+7bZs3VnX23PMnXJbhjgGcH+jbQ4Wvz4T9QfZzs7v/NoE4FeHJenRY/Ma6
- lVqoQAzOYNa85ePDghrThFWQcgyybgbHMDigMdnmtgFNh5bwjc1fwKYoFiAmQE0d2YPL
- nFjoW5JWa22OJ6aPNfbqpXWmGt5fSsRah2vdTaOXY53vdPJ/d6QzqmUESgaO1g/7XE03
- Ssa6EWbNiEIpLeH4hlYeG1mtJx2hmRzxCCX7hWo099eB+ekJf1gWP8RBL4GD/rbvjQmf
- LnCX62F6doa2/TL3jjzglIM002CHoadx5YqmNhWMLAPE0X59LmqNzGMPOOQ4GqMvOBfl
- g21Q==
+ bh=NrUwacVRFzf7fPecApv7ayzGGTUNhRqhhOB3jeB+l2U=;
+ b=YsSoIPwzO9KKLygwNBShfBEoExsIkKA/yPYAt7L9NGQRNHoAAVh7WJzs9nItMNfGHL
+ 770ifnXVhVaXC2stW2OilxKe7hOOM8jArF7uWzS6j81GZvy2zyaLq439wUj3TMHSaGPy
+ /x0OzentsBshc35MCbf3+VcYzAw7YUdFwz+gMiL9FbQO2p5kQp+MHTdWVym772MoyEon
+ 457sRW07z+hJMgncCqnEa0R0Pkixt7E3ciZxbd3A10WRFq1Ov/uu1HBJMHPY7Qq5d6Kp
+ SViY9YG/QCQ27PV0hXmIKoY6fANq5/OiZKer4MJVSfVlak+gCf2hbPTgj4rghgPj0N1Q
+ KG2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=AYgJm3Z1tSR5Siv29G2UYY7I4ntAQELIfBcvNqWFS10=;
- b=Cjd2U7b7O8jY+KpX92f9/73V5F55uDHp42/CI0XhcM4bLG3PUU06R+6Arc9mt+pWOF
- GEUR9j9ASYDCnljWdzS/iikPk33wf7aVE8T6kLIZ3gBgwAf9lskGSWGpgM8JQHIHvXMA
- AiLiaFqWEmx3zkriCmkfAxpsXNGbGvNdnju1bkvfhmsyW3z1E+2cZQZPOzFafvUOvQ0O
- bdXZmWpSMLof7N231SunPkQ8RZ8POmFwFVLMDVm+bcNcFdx+xpW4S4liNLtY/zKkzcx0
- Gzc78ZvPxud3ha8Tmvw7Wj474E9nPaa2XTYheTmCIDra2FMIDCUHOhvnQqbDm26rGOYK
- uu4Q==
-X-Gm-Message-State: AOAM5316aQnPwVJgN3l82tCrRiOqhBZ12sazTS/VNtBpZ6cMYWMTjeNX
- jITM/PRzbPGrPRDt4PPblSkR0gwl5PhfTw==
-X-Google-Smtp-Source: ABdhPJxOKg6B9uBEFM9ZKGS0/B/51ZCestKZbdkcWcnACIJ5hkWYEOz6EqO4BL5FZSh//Tu1CtlhzA==
-X-Received: by 2002:a5d:64a1:: with SMTP id m1mr21524523wrp.503.1640807646252; 
- Wed, 29 Dec 2021 11:54:06 -0800 (PST)
+ bh=NrUwacVRFzf7fPecApv7ayzGGTUNhRqhhOB3jeB+l2U=;
+ b=D3eTRgCJBTIiTZ19PWvtpXS/uXxsgBjSy3mDkVaDgH/2YSSA408fWJYY1UtJAgH9f7
+ 0U2fIVmL+wRhepzbyt7uEGhJYCENwhqi2KlplHSyblNGilwyTqC2xnvuSBqyn4HqWyVG
+ 8/9MsQ8L2Ku2Sd7TCMfeRi4H3kaJlmgErGYjmP4C6vozqdd+MljMeVzRxanVa+afoDoF
+ 4J9YOeD+pd4LHLEb048xEgSbvidkazfzWuq7dHt5jHimA9TS5D1oZnC34Ia+k29ow4US
+ 91Krywvbr70r1SVGEDRIMcaC5Sr54sxjiW4lnSTzfxvSyfmpNJoMxvy6t79VWjoiBeyN
+ mWxg==
+X-Gm-Message-State: AOAM530xh2U0IL/oJ3Y52QwzTUe6cjw6EjzSE+Bi7QGWJy0c4bojTPvi
+ EghIKOkjtdKTdlsNikoqaEI=
+X-Google-Smtp-Source: ABdhPJwicjRzPYXLZuwWJqBlXY6XpJaAGofQW7h4VyW/OcTIkX81w4DFb+roiVs0KmVLtQdpqcwhRA==
+X-Received: by 2002:a1c:f012:: with SMTP id a18mr22777579wmb.73.1640807693669; 
+ Wed, 29 Dec 2021 11:54:53 -0800 (PST)
 Received: from [192.168.2.177] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id x8sm24420551wmj.44.2021.12.29.11.54.05
+ by smtp.gmail.com with ESMTPSA id d10sm24046243wri.57.2021.12.29.11.54.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Dec 2021 11:54:05 -0800 (PST)
-Message-ID: <0b0f0f81-cabe-aef2-e453-2caa2985b96b@gmail.com>
-Date: Wed, 29 Dec 2021 20:54:05 +0100
+ Wed, 29 Dec 2021 11:54:53 -0800 (PST)
+Message-ID: <af4243f6-a4cd-a51e-0ee0-d5f0dec074ff@gmail.com>
+Date: Wed, 29 Dec 2021 20:54:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH] arm64: defconfig: Enable MT6397 RTC
+Subject: Re: [PATCH] arm64: defconfig: Enable cpufreq for MediaTek
 Content-Language: en-US
 To: =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>
 Cc: linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com
-References: <20211217162445.876034-1-nfraprado@collabora.com>
+References: <20211217154452.868419-1-nfraprado@collabora.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20211217162445.876034-1-nfraprado@collabora.com>
+In-Reply-To: <20211217154452.868419-1-nfraprado@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211229_115407_833493_70BCD0B5 
-X-CRM114-Status: GOOD (  15.14  )
+X-CRM114-CacheID: sfid-20211229_115455_245642_15E67D99 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,22 +90,23 @@ Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAxNy8xMi8yMDIxIDE3OjI0LCBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyB3cm90ZToKPiBU
-aGUgTVQ2Mzk3IFJUQyBpcyBwYXJ0IG9mIHRoZSBNZWRpYXRlayBNVDYzOTcgUE1JQywgd2hpY2gg
-aXMgcHJlc2VudCBpbgo+IHRoZSBtdDgxNzMtZWxtIGJhc2UgYm9hcmQuCj4gCj4gVGhlIGRyaXZl
-ciBmb3IgdGhlIFBNSUMgaXMgYWxyZWFkeSBlbmFibGVkIHRocm91Z2ggQ09ORklHX01GRF9NVDYz
-OTcsIHNvCj4gZW5hYmxlIGp1c3QgdGhlIGRyaXZlciBmb3IgdGhlIFJUQy4KPiAKCkFwcGxpZWQg
-dG8gdjUuMTctdG1wL2RlZmNvbmZpZwoKVGhhbmtzCgo+IFNpZ25lZC1vZmYtYnk6IE7DrWNvbGFz
-IEYuIFIuIEEuIFByYWRvIDxuZnJhcHJhZG9AY29sbGFib3JhLmNvbT4KPiAtLS0KPiAgIGFyY2gv
-YXJtNjQvY29uZmlncy9kZWZjb25maWcgfCAxICsKPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2Vy
-dGlvbigrKQo+IAo+IGRpZmYgLS1naXQgYS9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnIGIv
-YXJjaC9hcm02NC9jb25maWdzL2RlZmNvbmZpZwo+IGluZGV4IGYyZTJiOWJkZDcwMi4uNzZiZDM0
-MjIzMjc3IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWcKPiArKysg
-Yi9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnCj4gQEAgLTkyNyw2ICs5MjcsNyBAQCBDT05G
-SUdfUlRDX0RSVl9URUdSQT15Cj4gICBDT05GSUdfUlRDX0RSVl9TTlZTPW0KPiAgIENPTkZJR19S
-VENfRFJWX0lNWF9TQz1tCj4gICBDT05GSUdfUlRDX0RSVl9YR0VORT15Cj4gK0NPTkZJR19SVENf
-RFJWX01UNjM5Nz1tCj4gICBDT05GSUdfRE1BREVWSUNFUz15Cj4gICBDT05GSUdfRE1BX0JDTTI4
-MzU9eQo+ICAgQ09ORklHX0RNQV9TVU42ST1tCj4gCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgt
-bWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+CgpPbiAxNy8xMi8yMDIxIDE2OjQ0LCBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyB3cm90ZToKPiBU
+aGUgTWVkaWFUZWsgQ1BVRnJlcSBkcml2ZXIgcHJvdmlkZXMgY29udHJvbCBvZiBDUFUgZnJlcXVl
+bmN5L3ZvbHRhZ2UKPiBvbiBNZWRpYVRlayBTb0NzLiBTaW5jZSB0aGVyZSdzIG5vIGRldmljZS10
+cmVlIG5vZGUgdG8gYmluZCBpdCB0bywgdGhlCj4gZHJpdmVyIG5lZWRzIHRvIGJlIGVuYWJsZWQg
+YnVpbHQtaW4uIEVuYWJsZSBpdCBzby4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBOw61jb2xhcyBGLiBS
+LiBBLiBQcmFkbyA8bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+CgpRdWV1ZWQgbm93IGluIHY1LjE2
+LXRtcC9kZWZjb25maWcKClRoYW5rcwoKPiAtLS0KPiAgIGFyY2gvYXJtNjQvY29uZmlncy9kZWZj
+b25maWcgfCAxICsKPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKQo+IAo+IGRpZmYg
+LS1naXQgYS9hcmNoL2FybTY0L2NvbmZpZ3MvZGVmY29uZmlnIGIvYXJjaC9hcm02NC9jb25maWdz
+L2RlZmNvbmZpZwo+IGluZGV4IGYyZTJiOWJkZDcwMi4uODI5ZThiYzA0NWY3IDEwMDY0NAo+IC0t
+LSBhL2FyY2gvYXJtNjQvY29uZmlncy9kZWZjb25maWcKPiArKysgYi9hcmNoL2FybTY0L2NvbmZp
+Z3MvZGVmY29uZmlnCj4gQEAgLTk2LDYgKzk2LDcgQEAgQ09ORklHX0FSTV9RQ09NX0NQVUZSRVFf
+SFc9eQo+ICAgQ09ORklHX0FSTV9SQVNQQkVSUllQSV9DUFVGUkVRPW0KPiAgIENPTkZJR19BUk1f
+U0NNSV9DUFVGUkVRPXkKPiAgIENPTkZJR19BUk1fVEVHUkExODZfQ1BVRlJFUT15Cj4gK0NPTkZJ
+R19BUk1fTUVESUFURUtfQ1BVRlJFUT15Cj4gICBDT05GSUdfUU9SSVFfQ1BVRlJFUT15Cj4gICBD
+T05GSUdfQVJNX1NDTUlfUFJPVE9DT0w9eQo+ICAgQ09ORklHX0FSTV9TQ1BJX1BST1RPQ09MPXkK
+PiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0
+ZWsK
