@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80046C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Dec 2021 03:04:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12512C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Dec 2021 05:03:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nAUGLBnGBQpO+Wa1vHsMJbbnnrqfqEOsWwsSHRwvcZc=; b=NEWL2lhn6p2iW5
-	zB0j/OlDcuPDVbHdEDLwXH5+ZtXlcTggNUYPVAOVG1WEyuYc5zcYbbRPd4ciGoqlKdDdsL9jGueoQ
-	Mr8rrWofmW1m/+lE4S+1wPAzzvuuqS1dVlSMVmWN+oi+4ngQX2vamxPf0KwHTDg4hJdPepAcbBGFh
-	gIzesAJLW0OCzxb/pXuJ+NgAm7ZWlB+sX22Zri1j8WmoDSaEGtW8aQvMHFR4ckyahl3GRFtc/P9Qs
-	cITW48YdAfVr3DNnZSR+3831YZBkb5AcBW8pMPvTG/ZwtTMm4oAzUHoaBaK0ILBgBs2qblj0FOIEU
-	7Ok+7+6M4UNU1ZC4OHZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=JPkPeoqhMvaDmP+GM27ll6RJduL78zKmHSBAvVm4lmA=; b=E2R7vAGX/ASQt3
+	3FzT+Q65dERjp/hdZDYyOVZUOulP31VV47mTfU4nTIuZxPbkfk37Lxp5h7KnUeK+dFOmXeRx67vpl
+	htPox/JJJFje3LbmsGp6U3e4awnryL7uHyMxQOPMA4ChwzbGzsx2QGkbndNORwCJs5gXpeNEUTEkb
+	apSdfoiJBn3r9wL+Qt+OQrpaDpxXYULOAQ2tcy0HZBNiK4vCTfg8olL0ZY6kDyM8oPQdut73+5tT3
+	mwMnaYcB9Pen4oAulLD6SBJhHW9B8uFRSql7RQi/9/EcrRohimuVpGzz2N2l+Yv7QxRQeRuluPf5B
+	JdpYbk9cCsJ0u1L+37BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2PGV-002B7z-QI; Wed, 29 Dec 2021 03:04:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n2R70-002FZ4-1d; Wed, 29 Dec 2021 05:02:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2PGI-002B6o-QF; Wed, 29 Dec 2021 03:04:24 +0000
-X-UUID: 769d81eb2db34f00b3adfd45cc8e4556-20211228
-X-UUID: 769d81eb2db34f00b3adfd45cc8e4556-20211228
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1n2R6o-002FXS-Tn; Wed, 29 Dec 2021 05:02:44 +0000
+X-UUID: 51da6f978f9445d2b1c789468b0866ad-20211228
+X-UUID: 51da6f978f9445d2b1c789468b0866ad-20211228
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <miles.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 432802661; Tue, 28 Dec 2021 20:04:15 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 127561713; Tue, 28 Dec 2021 22:02:39 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 28 Dec 2021 19:04:14 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 29 Dec 2021 11:04:06 +0800
+ 15.0.1497.2; Tue, 28 Dec 2021 21:02:38 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Wed, 29 Dec 2021 13:02:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 29 Dec 2021 11:04:06 +0800
-From: <miles.chen@mediatek.com>
-To: <matthias.bgg@gmail.com>
-CC: <airlied@linux.ie>, <chunkuang.hu@kernel.org>, <daniel@ffwll.ch>,
- <dri-devel@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <miles.chen@mediatek.com>, <p.zabel@pengutronix.de>
-Subject: Re: [PATCH] drm/mediatek: Fix unused-but-set variable warning
-Date: Wed, 29 Dec 2021 11:04:03 +0800
-Message-ID: <20211229030405.4338-1-miles.chen@mediatek.com>
+ Frontend Transport; Wed, 29 Dec 2021 13:02:24 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, Jie Qiu
+ <jie.qiu@mediatek.com>, Junzhi Zhao <junzhi.zhao@mediatek.com>
+CC: Miles Chen <miles.chen@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: [PATCH v2] drm/mediatek: Fix unused-but-set variable warning
+Date: Wed, 29 Dec 2021 13:02:21 +0800
+Message-ID: <20211229050223.5108-1-miles.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <fcaccc97-e920-08eb-ec3f-4c4b11ea8925@gmail.com>
-References: <fcaccc97-e920-08eb-ec3f-4c4b11ea8925@gmail.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211228_190422_901863_F9C65448 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211228_210242_993552_055B3785 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,46 +72,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Fix unused-but-set variable warning:
+drivers/gpu/drm/mediatek/mtk_cec.c:85:6: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
 
-On 28/12/2021 10:25, Miles Chen wrote:
-> Fix unused-but-set variable warning:
->> drivers/gpu/drm/mediatek/mtk_cec.c:85:6: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
->> 
->
->Actually we ignore the value passed to mtk_cec_mask. In case of
->mtk_cec_mask(cec, CEC_CKGEN, 0 | CEC_32K_PDN, PDN | CEC_32K_PDN);
->
->
->We are not setting CEC_32K_PDN. I wonder which side effect will it have to set 
->that bit.
+Cc: CK Hu <ck.hu@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
 
-I am confused about "not setting CEC_32K_PDN" part,
-in case mtk_cec_mask(cec, CEC_CKGEN, 0 | CEC_32K_PDN, PDN | CEC_32K_PDN);
-CEC_32K_PDN (BIT(19)) is set.
+---
 
-for exmaple:
-CEC_32K_PDN is BIT(19)
-PDN is BIT(16)
-say tmp = 0xffffffff;
+Change since v1:
+add Fixes tag
 
-mask = PDN | CEC_32K_PDN;
-val = 0 | CEC_32K_PDN;
+---
+ drivers/gpu/drm/mediatek/mtk_cec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-tmp = fff6ffff, mask = 90000
-val = 80000, tmp = fffeffff
+diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
+index e9cef5c0c8f7..cdfa648910b2 100644
+--- a/drivers/gpu/drm/mediatek/mtk_cec.c
++++ b/drivers/gpu/drm/mediatek/mtk_cec.c
+@@ -85,7 +85,7 @@ static void mtk_cec_mask(struct mtk_cec *cec, unsigned int offset,
+ 	u32 tmp = readl(cec->regs + offset) & ~mask;
+ 
+ 	tmp |= val & mask;
+-	writel(val, cec->regs + offset);
++	writel(tmp, cec->regs + offset);
+ }
+ 
+ void mtk_cec_set_hpd_event(struct device *dev,
+-- 
+2.18.0
 
-u32 tmp = readl(cec->regs + offset) & ~mask; // tmp = fff6ffff
-tmp |= val & mask; // tmp = fffeffff
-writel(val, cec->regs + offset); // val = 80000, tmp = fffeffff
-
-in both val and tmp case, CEC_32K_PDN is set.
-
->Anyway, if it's the right thing to do, we should add:
->
->Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
-
-I will add the Fixes tag, thanks.
 
 _______________________________________________
 Linux-mediatek mailing list
