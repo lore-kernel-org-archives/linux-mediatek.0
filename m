@@ -4,79 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45215C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Dec 2021 14:25:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9464DC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 29 Dec 2021 15:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/HXxPU0Ot40vD/rlwJsY2Rft9kyK69pmkG1Aq/pbAiM=; b=O67RE8N0P4/hEk
-	XXWcvUeC6nNuiTgc3T9l2aFfMzlGo98oQp1jMtjnXOWEO2V9uD2BeLSWl7w71pgwNnVtnuWRv+Zkr
-	+YavNkzF2NuyFqsM0tkEigIUQwJu121FhKqF62C+L9ChD4poMc3V/FTUI8nKul+ya9xzKTWS8bkei
-	qtxmnHOcJ62jNtfWpGRebvTUyrLDfLOdHmxrqfPpyyBWRweFV4T2ChMX4IXJPgjm6t6lpDaxarHWu
-	Ma5vFQqFAf4DXG+A+lMiqj9Z6X12O05tq4IM7v7r2yMm/+XNH6bEJIdVe1vxwaYo6n4/ShwR1CVPV
-	3Mi4P5F7MQTHeQ2dXJhQ==;
+	List-Owner; bh=+OuyBfixTZNse0zTK3g0yT5x1cxAl1HWVrPCudhYKbY=; b=eonEhNn211lhKS
+	py8WpnXgkVwO5fjgL187vM4REuc4FpzeZsGQ766s+vDImULT1A0erVZtuF66scfnem49l8M0PDaZi
+	rGCXzEfGpMorxQVb1wSCm+EfM5hxh7oaSoxKjegiOvZY/jtJvyarMXcYCo8qsYSB0vzk4gFoAYdbg
+	QBlPk+D2zaIU00WEJGlZ6PcjB9fGZVsbaEmSkcjovwI2UDTUJ+1s1AD/G9v7sAd888OVxaaufGEXl
+	0HBsrb7bhOe7+IWwkZT5Ru/5EZTO785G1Dy/nHji1DwOzVP2fshrNkCbxNOBZ4yVqiasiEDZxb/sg
+	db3NAUO7oJN7CFdAZLXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2Ztd-002xCj-Pu; Wed, 29 Dec 2021 14:25:41 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+	id 1n2atJ-0031FI-4L; Wed, 29 Dec 2021 15:29:25 +0000
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2ZtR-002xAM-Cf; Wed, 29 Dec 2021 14:25:30 +0000
-Received: by mail-wr1-x429.google.com with SMTP id q16so44790833wrg.7;
- Wed, 29 Dec 2021 06:25:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=pjYlN3fQUyrH1Y9l7SaP7OpdaDMi9fBO087bmleGSU4=;
- b=GSevx4zkS/+CEXR2sk7lq4+NtIdwxyoKz9q3GYUNVIVl3l8gbxqoytPK22pk48b6mg
- AIpyTkdwFB0yYaIP/Q8TtWjRHRVZrjipQxTKmXV5+PypzaROMykKjfQ/IOvZiIkpiyU3
- q96AgIQuXqMrhbOF/bdUrJ7H+iyh1ZoGdFfn4XMg14YveEMckhjcF3jrGTagYezvcR30
- VEMss+0o+ZBg7BUF3fGr/GA8AqrLy42P09fpBaxLWKDMsIW+d2dQq7UmtZoCt4XWU5pz
- l7nhPCccebnqFZNUuWUOYiNJYnSEzFNt8vWouIaDAsDkRlzUkjFSdqRcMA6+MmrJu3JE
- DJTA==
+ id 1n2atG-0031Dp-1o
+ for linux-mediatek@lists.infradead.org; Wed, 29 Dec 2021 15:29:23 +0000
+Received: by mail-wr1-x432.google.com with SMTP id d9so45219304wrb.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 29 Dec 2021 07:29:21 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=Esrph6oyYvc0PlFMTSVl4KFn0QN18H5CiN0RdTi0uho=;
+ b=MMFE+DoHqzruyp0xhECuwx7sJylzgT7qQJk25ya0JZt84UlHHO7rwHNMhYGcKezNuW
+ kblbkES+sHmyTCXrX8GozwV9kVGiRNxsC+dotZiA+JKD/6sR4MHiMJ9RbMc1OawZhM1P
+ jGZIVE9DIX2haHgMeIJpjnOpgeXqPkTfqj67vJEHpYZT1Jo7GAopTyhVbenaXA7OrU63
+ Y5x6nrvApffF97+u1LLP1bNB2vAPelywTl8bNln8BAXi0DWdUznbdk1WqrmLkL2g3Mug
+ m2Gm4MOS0+gJ3u9sYnA0+yiaFLFGdZYUu5iId6JwmDJ+3FVoOyUoXb+ExIA4RzPu+Dfs
+ r5AQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
- :content-transfer-encoding;
- bh=pjYlN3fQUyrH1Y9l7SaP7OpdaDMi9fBO087bmleGSU4=;
- b=ZLSM0KhW4V49mFL5Ydz9DXFSRhmEqLdJChbFe+aUYRqw3AUiUBJvL8vHdL+MDEJ1tZ
- geo0KfNiLx2TJVtKJl7XOaBjdBfiosamYM9kEQiPdU5PGlZlXad2+wCMkM2j/7NGA8AI
- NTg01dxZGnemX3UgW2RwUS+8Yta8p0B/Y9kp4uwMdWO321GxSK/lCe42tvsztNRF9Xeu
- cys0RytOBNhoF/mF0StDUImlFBLybvzLTXpM5B9bP2BUjduMbd5W0b21NY1G7cPXfir8
- BSJmt9uhYBqaRaT9YDMoK/LAHoZn06PdtrqtS+Y8dXvTm+RuzTGIABKhhQdhSBPJpta/
- ifog==
-X-Gm-Message-State: AOAM533Kls++qjckiZu2AKETAnZvLQgv8yQEogLBGS9QMi3wrAx/TdJt
- IxGRvVZxtwfZFCT3Y10K8b8=
-X-Google-Smtp-Source: ABdhPJzRBdhVxtUXyHCJ8VRyq/aXdrpUZj7KVHcKANKeZLNwqwpB+e7BrOt6XxS6LvatplTbKaNPBA==
-X-Received: by 2002:a05:6000:2c8:: with SMTP id
- o8mr20891999wry.84.1640787927628; 
- Wed, 29 Dec 2021 06:25:27 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id l2sm21664851wrs.43.2021.12.29.06.25.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Dec 2021 06:25:27 -0800 (PST)
-Message-ID: <363ed3cd-2a08-26a0-31e3-2ee4d01f71c3@gmail.com>
-Date: Wed, 29 Dec 2021 15:25:26 +0100
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=Esrph6oyYvc0PlFMTSVl4KFn0QN18H5CiN0RdTi0uho=;
+ b=iRiJcdyh4VvSg6cmp/mnenzsoJwDg0x/LwvEOBUD9Rzk7dAs5Syxk3QTEzWKdd+2rD
+ +i1NoshdvUTDZ33lMhM7LtgO4f6qoIj9VIWg+F5y0KVH+bH/WRghFqSWndU63jhvR7g8
+ kQW3wcWpZo1pA4abFu/0ASE0XO3bPmucSWi6X5OtHoWoFFe2i/kqAjrgKn+TMKNZHaZ+
+ vR/JKddp1gxiX91v0C6GqFlUA+4xv8rFGusnO8cQ9bdOZBrw77yfU8FC5RCxzg8Zt7H+
+ BtZmMuhTdSkJANZCcZQpNHo5ooE5ZLRie1imZ/ksOZvZD11PwiS8sVPrNjlxzCUDvQ6S
+ jpzw==
+X-Gm-Message-State: AOAM533CqYHk1M6l2sZ5fXbA8HQLM6k4O+315WjzY1IZctQPCVyJ4qkO
+ 722SELnvUGbTTwgDsGVp+uBOYg==
+X-Google-Smtp-Source: ABdhPJxUDpVp537KUcAr3eZlvz2pSfSMqV482z3oVEwQYc07xlN9iaMwVsJ9ScvRwOc5YhKHGNrT8g==
+X-Received: by 2002:adf:ef0b:: with SMTP id e11mr20665685wro.621.1640791760744; 
+ Wed, 29 Dec 2021 07:29:20 -0800 (PST)
+Received: from google.com ([2.31.167.18])
+ by smtp.gmail.com with ESMTPSA id e18sm25186071wrx.36.2021.12.29.07.29.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Dec 2021 07:29:20 -0800 (PST)
+Date: Wed, 29 Dec 2021 15:29:18 +0000
+From: Lee Jones <lee.jones@linaro.org>
+To: matthias.bgg@kernel.org
+Cc: robh+dt@kernel.org, bleung@chromium.org, groeck@chromium.org,
+ matthias.bgg@gmail.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Matthias Brugger <mbrugger@suse.com>
+Subject: Re: [PATCH] mfd: google, cros-ec: fix property name for MediaTek rpmsg
+Message-ID: <Ycx+zpPZUAeScoIf@google.com>
+References: <20211218081543.3851-1-matthias.bgg@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Content-Language: en-US
-To: miles.chen@mediatek.com
-Cc: airlied@linux.ie, chunkuang.hu@kernel.org, daniel@ffwll.ch,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- p.zabel@pengutronix.de
-References: <fcaccc97-e920-08eb-ec3f-4c4b11ea8925@gmail.com>
- <20211229030405.4338-1-miles.chen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH] drm/mediatek: Fix unused-but-set variable warning
-In-Reply-To: <20211229030405.4338-1-miles.chen@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20211218081543.3851-1-matthias.bgg@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211229_062529_470907_EDF579CD 
-X-CRM114-Status: GOOD (  22.17  )
+X-CRM114-CacheID: sfid-20211229_072922_123651_0C5731C6 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,106 +85,22 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 29/12/2021 04:04, miles.chen@mediatek.com wrote:
-> Hi,
-> 
-> On 28/12/2021 10:25, Miles Chen wrote:
->> Fix unused-but-set variable warning:
->>> drivers/gpu/drm/mediatek/mtk_cec.c:85:6: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
->>>
->>
->> Actually we ignore the value passed to mtk_cec_mask. In case of
->> mtk_cec_mask(cec, CEC_CKGEN, 0 | CEC_32K_PDN, PDN | CEC_32K_PDN);
->>
->>
->> We are not setting CEC_32K_PDN. I wonder which side effect will it have to set
->> that bit.
-> 
-> I am confused about "not setting CEC_32K_PDN" part,
-> in case mtk_cec_mask(cec, CEC_CKGEN, 0 | CEC_32K_PDN, PDN | CEC_32K_PDN);
-> CEC_32K_PDN (BIT(19)) is set.
-> 
-> for exmaple:
-> CEC_32K_PDN is BIT(19)
-> PDN is BIT(16)
-> say tmp = 0xffffffff;
-
-You mean reading the register returns 0xffffffff, correct?
-
-> 
-> mask = PDN | CEC_32K_PDN;
-
-mask = 0x48000
-
-> val = 0 | CEC_32K_PDN;
-
-val = 0x40000
-
-> 
-> tmp = fff6ffff, mask = 90000
-> val = 80000, tmp = fffeffff
-> 
-> u32 tmp = readl(cec->regs + offset) & ~mask; // tmp = fff6ffff
-
-tmp = 0xffffffff & ~(0x48000) // tmp = 0xffb7ffff
-
-> tmp |= val & mask; // tmp = fffeffff
-
-tmp |= 0x40000 & 0x48000 // tmp = 0xff7fffff
-
-> writel(val, cec->regs + offset); // val = 80000, tmp = fffeffff
-
-val = 0x40000, tmp = 0xff7fffff
-
-> 
-> in both val and tmp case, CEC_32K_PDN is set.
-> 
-
-You are right, in both cases the bit is set, but the funciton does not do what 
-it is supposed to do.
-
-With you fix:
-With the mask we define bits that
-a) are set to zero if not present in val
-b) set to one, when part of val, independent of what the value was in the 
-register read.
-
-mtk_cec_mask(cec, CEC_CKGEN, 0 | CEC_32K_PDN, PDN | CEC_32K_PDN);
-
-
-Will set CEC_32K_PDN to one and clear PDN in the register.
-
-mtk_cec_mask(cec, RX_GEN_WD, 0, HDMI_PORD_INT_32K_CLR | RX_INT_32K_CLR |
-  HDMI_HTPLG_INT_32K_CLR | HDMI_PORD_INT_32K_EN |
-  RX_INT_32K_EN | HDMI_HTPLG_INT_32K_EN);
-
-Will just clear all bits of the mask.
-
-Without your patch, we will just write the val to the register and don't care 
-what the register value was before that.
-
-We should somehow mention that in the commit message, as it's not only about a 
-not used variable, it actually has an influence on the value we write(-back) to 
-the register.
-
-Regards,
-Matthias
-
->> Anyway, if it's the right thing to do, we should add:
->>
->> Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
-> 
-> I will add the Fixes tag, thanks.
-> 
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gU2F0LCAxOCBEZWMgMjAyMSwgbWF0dGhpYXMuYmdnQGtlcm5lbC5vcmcgd3JvdGU6Cgo+IEZy
+b206IE1hdHRoaWFzIEJydWdnZXIgPG1icnVnZ2VyQHN1c2UuY29tPgo+IAo+IFRoZSBNZWRpYVRl
+ayBycG1zZy1uYW1lIGlzIGRlZmluZWQgYXMgbWVkaWF0ZWsscnBtc2ctbmFtZSBpbgo+IG10ayxz
+Y3AueWFtbC4gRml4IHRoZSBiaW5kaW5nIGRvY3VtZW50YXRpb24gdG8gbWF0Y2ggdGhlIG5ldyBw
+cm9wZXJ0eQo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hdHRoaWFzIEJydWdnZXIgPG1hdHRoaWFzLmJn
+Z0BnbWFpbC5jb20+Cj4gLS0tCj4gIERvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9t
+ZmQvZ29vZ2xlLGNyb3MtZWMueWFtbCB8IDIgKy0KPiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0
+aW9uKCspLCAxIGRlbGV0aW9uKC0pCgpBcHBsaWVkLCB0aGFua3MuCgotLSAKTGVlIEpvbmVzIFvm
+nY7nkLzmlq9dClNlbmlvciBUZWNobmljYWwgTGVhZCAtIERldmVsb3BlciBTZXJ2aWNlcwpMaW5h
+cm8ub3JnIOKUgiBPcGVuIHNvdXJjZSBzb2Z0d2FyZSBmb3IgQXJtIFNvQ3MKRm9sbG93IExpbmFy
+bzogRmFjZWJvb2sgfCBUd2l0dGVyIHwgQmxvZwoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1l
+ZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
