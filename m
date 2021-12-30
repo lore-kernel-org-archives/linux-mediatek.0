@@ -4,92 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1641C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 10:50:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7805C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 11:11:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ERLl7wHzc0R+vFbM9JKimmV+tYJbCbZ0l2PKAszSpqQ=; b=Lwm3wVi8jwfiq2
-	9ET1IjkSby4/+yDt0pxdSkMgoMPGdxRXgD8obdGCw2axlLXIqxD3yyxShu/XndWUu8kA7UbiHpMND
-	JGvqZxBZuaVAsLrYUBHsYQQshAqYNBLCOk2Yibhfg4LWv/vwEVU3psQKJNh/0DDDnK5mYGcIPsLtL
-	4AVf0WYJQXbLXyO+zhgjrcqb07ttKog6d5x1G0r2WaM6nBTCmQJ5mQQqaQqukUJd4wDAKYskG45fF
-	YLMM34zHDETRd1WKHjsz5C9xOrUBX8P3aO/8O9pxEqyft5ML5PmG9MqOprJhzQTvUFkeAdYhwi1RV
-	5mhejq5RF2ElvrUuVtDw==;
+	List-Owner; bh=YNnoEe4CTJZGH56Ecw0i8vO9XFgeJBD2ZyGjqD54c4g=; b=nA0DVzX8wCIoZB
+	eJWna+R8iqcJ1D7j+b8DpGrXo+H/HxpnnCN5V1mEgh3WQC7Sg6U8Q2fFCJS1L0LqHjWevZNh8logL
+	DAUSqPxBRwR+svu9q3r6U1SPDQm83KySchAablYMhsujcJe6uqUXMqIGV9cy0iJso8LmzDz8yNnRA
+	28oSiv1vXFpGgTRb80hkDHco01yyZESk4QyaCOkexjPDRYOfJDb8Mi3SzP/2vb3kqdLHI/Aejb9TZ
+	/0NAsYUARELhxB7WuYc7IdukxSvO4Aj93fbGIZPLdT/ksaqFjJkea5GmwsQ4vwHoCOX2fTN4vd0Ne
+	Rnt+ZXi9lYHrMNDNIfNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2t0W-004F4j-96; Thu, 30 Dec 2021 10:50:04 +0000
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+	id 1n2tLY-004Ghq-Dz; Thu, 30 Dec 2021 11:11:48 +0000
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2t0R-004F3l-JC
- for linux-mediatek@lists.infradead.org; Thu, 30 Dec 2021 10:50:01 +0000
-Received: from mail-lf1-f71.google.com (mail-lf1-f71.google.com
- [209.85.167.71])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 87A53406EA
- for <linux-mediatek@lists.infradead.org>; Thu, 30 Dec 2021 10:49:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1640861391;
- bh=T7SSQLzvNaGqombUsG5MeeLlkx6Boh3UgJFRdWX3IeM=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=VpBoGXbQwTbWH4m3S2vpPTBF27K55FxSnU5HoZbq/+UgAVDiJqe3tX8iP/w0ZXmSo
- kyOKtwdgLfz/+HBQA2y0IEgDZD6e+xHpEBQsPCYVvX+rQbz0opiWA2oA+CszBSORSa
- Pp/lVx7SJmmSKrwDY1TMypTK8pRmKD216szyTDZC2tytiKBSNgCkfkgBnIGyEjJt83
- /JS1KC+/mjA0JjhS6l68/XiiFOy0A2l0TXmlmIZEGLulx6696o0B5hJIi2dUVr9NXl
- x1xk8zowMNOwew3ddH34Pk5+Xzq6eSbb2emrJA+4ZlYhCIcyyaniZFTzcggZeJa8y+
- oXhQJFGXzLrgQ==
-Received: by mail-lf1-f71.google.com with SMTP id
- o2-20020a198c02000000b00425d146a32bso4771987lfd.15
- for <linux-mediatek@lists.infradead.org>; Thu, 30 Dec 2021 02:49:51 -0800 (PST)
+ id 1n2tLU-004GgD-Ab
+ for linux-mediatek@lists.infradead.org; Thu, 30 Dec 2021 11:11:46 +0000
+Received: by mail-ot1-x330.google.com with SMTP id
+ 45-20020a9d0a30000000b0058f1a6df088so31914533otg.4
+ for <linux-mediatek@lists.infradead.org>; Thu, 30 Dec 2021 03:11:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=mime-version:in-reply-to:references:from:user-agent:date:message-id
+ :subject:to:cc;
+ bh=Czr881vajn+zMvKnvNarIUGCjt+P/NqfiUXbcHCJi0k=;
+ b=xuJ9mGjRXqaLXzsbm2e9UPttIxJdvqpNBLsVbvZ/gHiRJeh+nUrY9VTQ7kjKQ1OSlm
+ U129wW/JCMD6n6kRwacYDVHgMt3iSlwHGAlq5pF8JKA83GtBfALyy/5seIC1UPru744D
+ XKQwkA7n5pKpRTcRYkFwBhQ2HKafWMOVV28uPBiB8DqgH40LSokBMc1vTavOKSnAiyuQ
+ E1OWFzAIDw3wB7e9mOeLNVbXr6cjkcUyf41iOIpFlhMBfwdNKpS/mR2552V4lR/T+9mw
+ wx/GKfToib/FNKG4VV1nRY98iq7RnWlMwhSwFNdmoX3Ry63YaUazGlFtYxr6UZkAFs1S
+ LSjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=T7SSQLzvNaGqombUsG5MeeLlkx6Boh3UgJFRdWX3IeM=;
- b=I8AxMQbnC3NDvgCedXULyBuSORoD246w9q2Ua1Vu7HwpzOt4rH8lPNrG41VDPM7Gd3
- Ki/sDD9jZNpMOi4yXGn0C2CjZYvs9LrOUeLL+MMAkvxEFx2sdHu5qXqhjwEcMqRZWf23
- qPm5byQfkxZOmJGkNSQtMBnPaz9FrxFeGpt4wwnJ6+/mxIT6D3HD6jnKchTMHUhYnG2x
- mzFQ+mt3jckwk2N4TEIOIXlhoI2HvLtIAyVNOiY1rkaQGRvz1VPUFyVQofT8gsoKM/hy
- bspVsUCQZ2wo2dV+8YZb8MNIwNkviCWPSb37X3DlpxAEN7HEzVZbtvb+xulhEzqZZ2NX
- /Oww==
-X-Gm-Message-State: AOAM5327q3yXQnjy5tiYvPVT2H5aAH+pemX/U8ufim7EJ+yHYx2Wx5NI
- FnlE6J1o1KDy5LGNgFIartKHsApJnk9OE57ZcmPewF3ndaNr66VJstSPR1p8L8ArhN2Q6ed99t2
- xFeJvWGbTONcGDgtKBZkCBbD8JjlviUSv6D1ZCa5iUJw4EvvYpw==
-X-Received: by 2002:a2e:b7c9:: with SMTP id p9mr25714029ljo.255.1640861390622; 
- Thu, 30 Dec 2021 02:49:50 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJw8K8ZccB1+kw4+ZEpMxyuJwdEIzuctUDEAqF9O1N2eYr6XzKGsRZzlk12PPDs4nEswLC99ew==
-X-Received: by 2002:a2e:b7c9:: with SMTP id p9mr25714011ljo.255.1640861390414; 
- Thu, 30 Dec 2021 02:49:50 -0800 (PST)
-Received: from [192.168.3.67] (89-77-68-124.dynamic.chello.pl. [89.77.68.124])
- by smtp.gmail.com with ESMTPSA id
- y1sm2407792lja.132.2021.12.30.02.49.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Dec 2021 02:49:49 -0800 (PST)
-Message-ID: <c1050d0d-55ae-a626-58c5-b0fab6f8f0c3@canonical.com>
-Date: Thu, 30 Dec 2021 11:49:48 +0100
+ h=x-gm-message-state:mime-version:in-reply-to:references:from
+ :user-agent:date:message-id:subject:to:cc;
+ bh=Czr881vajn+zMvKnvNarIUGCjt+P/NqfiUXbcHCJi0k=;
+ b=SQeGm1x/tjxbX9CEVMlKrIvpGjN5DSrS47UxZ0CHOGlkVzV+7PAx8MylNYQ/Bj56bE
+ gBL9vdy65FtvQrHfZBRxvmQnH8sFUULCeOXfHm7hScNktEqtjQ9Y/0gatmVr3EwQfxMg
+ LJzyyKwP1tC0UeLYZasd8jtEufw1Wr6ZCdjPqjoVzUHYh9FJJ8kXFHPseJk9yosbpyqP
+ 2bkS0K3GSK1cVaRXYUxOwr+7jmyVpTLJe3iPrWa/2uD0w/6uNb7NaNRL3Kzp9QSs9O3V
+ UyTwFi255BGDKw7Sv0olTuQK9LmC6bIWl+bnPI7Jw9St8Mj5JXd53VuKJDlYeUyMsI7t
+ aerw==
+X-Gm-Message-State: AOAM530MtT/c9nmPHp7HLVtICWVfXc1fy+hWnXlIo0kIZBfUYsbLIrD4
+ oekPL2Y/9T42kWEZ9LYAsYFzDG+kdJUxcQqZXdZOSg==
+X-Google-Smtp-Source: ABdhPJzPYFci8h/7GlV2vqQ2ZFFuujJK8HBjGtBan2EDPSSGQXym8YGCqHdu/NQAr1+I6sj/Hd++7n+cLFscRdXruiE=
+X-Received: by 2002:a9d:51c3:: with SMTP id d3mr21655218oth.152.1640862702517; 
+ Thu, 30 Dec 2021 03:11:42 -0800 (PST)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Thu, 30 Dec 2021 05:11:41 -0600
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.1
-Subject: Re: [PATCH] memory: mtk-smi: add missing put_device() call in
- mtk_smi_device_link_common
-Content-Language: en-US
-To: Miaoqian Lin <linmq006@gmail.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-References: <20211230084115.5375-1-linmq006@gmail.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
-In-Reply-To: <20211230084115.5375-1-linmq006@gmail.com>
+In-Reply-To: <Ycv5gnWDtosJhwjc@matsya>
+References: <20211217150854.2081-1-granquet@baylibre.com>
+ <20211217150854.2081-7-granquet@baylibre.com>
+ <Ycv5gnWDtosJhwjc@matsya>
+From: Guillaume Ranquet <granquet@baylibre.com>
+User-Agent: alot/0.10
+Date: Thu, 30 Dec 2021 05:11:41 -0600
+Message-ID: <CABnWg9sBdAhjUPnijiwLj-iFP_AHjP06FkzrqEmtXsSeGTYK0Q@mail.gmail.com>
+Subject: Re: [PATCH v7 6/8] phy: phy-mtk-dp: Add driver for DP phy
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Kishon Vijay Abraham I <kishon@ti.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Markus Schneider-Pargmann <msp@baylibre.com>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-phy@lists.infradead.org, dri-devel@lists.freedesktop.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211230_024959_937100_4439DD28 
-X-CRM114-Status: GOOD (  18.29  )
+X-CRM114-CacheID: sfid-20211230_031144_444379_65EB20BB 
+X-CRM114-Status: GOOD (  40.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,36 +94,186 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 30/12/2021 09:41, Miaoqian Lin wrote:
-> The reference taken by 'of_find_device_by_node()' must be released when
-> not needed anymore.
-> Add the corresponding 'put_device()' in the error handling paths.
-> 
-> Fixes: 4740475 ("memory: mtk-smi: Add device link for smi-sub-common")
-> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
-> ---
->  drivers/memory/mtk-smi.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-> index e201e5976f34..2131f2c9e7ed 100644
-> --- a/drivers/memory/mtk-smi.c
-> +++ b/drivers/memory/mtk-smi.c
-> @@ -386,8 +386,10 @@ static int mtk_smi_device_link_common(struct device *dev, struct device **com_de
->  	of_node_put(smi_com_node);
->  	if (smi_com_pdev) {
->  		/* smi common is the supplier, Make sure it is ready before */
-> -		if (!platform_get_drvdata(smi_com_pdev))
-> +		if (!platform_get_drvdata(smi_com_pdev)) {
-> +			put_device(&smi_com_pdev->dev);
->  			return -EPROBE_DEFER;
-> +		}
+Hi Vinod,
 
-What about other return paths (-ENODEV, 0)?
+Quoting Vinod Koul (2021-12-29 07:00:34)
+>
+> On 17-12-21, 16:08, Guillaume Ranquet wrote:
+> > From: Markus Schneider-Pargmann <msp@baylibre.com>
+>
+> Pls cc relevant folks on cover so that they know what is going on in the
+> series... Is this dependent on rest? It should not and can be sent and
+> reviewed separately!
+>
 
+Sorry, I'm a bit of a noob...
+I've used the get_maintainers.pl script to get the to: and cc: for each patch.
+I'll make sure the cover has everyone included in the next revision.
 
-Best regards,
-Krzysztof
+The phy is not dependant on the rest, but this phy cannot be used outside of
+the mt8195 Display Port context... as the phy is actually the same IP as the DP.
+
+The DP driver has a functional dependency with the phy, they can be split into
+two series as they both merge/compile on their own.
+
+Do you want me to split the series with the phy on one hand the the DP driver
+on the other?
+
+> > This is a new driver that supports the integrated DisplayPort phy for
+> > mediatek SoCs, especially the mt8195. The phy is integrated into the
+> > DisplayPort controller and will be created by the mtk-dp driver. This
+> > driver expects a struct regmap to be able to work on the same registers
+> > as the DisplayPort controller. It sets the device data to be the struct
+> > phy so that the DisplayPort controller can easily work with it.
+> >
+> > The driver does not have any devicetree bindings because the datasheet
+> > does not list the controller and the phy as distinct units.
+> >
+> > The interaction with the controller can be covered by the configure
+> > callback of the phy framework and its displayport parameters.
+> >
+> > Signed-off-by: Markus Schneider-Pargmann <msp@baylibre.com>
+> > Signed-off-by: Guillaume Ranquet <granquet@baylibre.com>
+> > ---
+> >  MAINTAINERS                       |   1 +
+> >  drivers/phy/mediatek/Kconfig      |   8 ++
+> >  drivers/phy/mediatek/Makefile     |   1 +
+> >  drivers/phy/mediatek/phy-mtk-dp.c | 219 ++++++++++++++++++++++++++++++
+> >  4 files changed, 229 insertions(+)
+> >  create mode 100644 drivers/phy/mediatek/phy-mtk-dp.c
+> >
+> > diff --git a/MAINTAINERS b/MAINTAINERS
+> > index 8b7a98daf8e05..c44829d8a74df 100644
+> > --- a/MAINTAINERS
+> > +++ b/MAINTAINERS
+> > @@ -6394,6 +6394,7 @@ L:      linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+> >  S:   Supported
+> >  F:   Documentation/devicetree/bindings/display/mediatek/
+> >  F:   drivers/gpu/drm/mediatek/
+> > +F:   drivers/phy/mediatek/phy-mtk-dp.c
+> >  F:   drivers/phy/mediatek/phy-mtk-hdmi*
+> >  F:   drivers/phy/mediatek/phy-mtk-mipi*
+> >
+> > diff --git a/drivers/phy/mediatek/Kconfig b/drivers/phy/mediatek/Kconfig
+> > index 55f8e6c048ab3..f7ec860590492 100644
+> > --- a/drivers/phy/mediatek/Kconfig
+> > +++ b/drivers/phy/mediatek/Kconfig
+> > @@ -55,3 +55,11 @@ config PHY_MTK_MIPI_DSI
+> >       select GENERIC_PHY
+> >       help
+> >         Support MIPI DSI for Mediatek SoCs.
+> > +
+> > +config PHY_MTK_DP
+> > +     tristate "MediaTek DP-PHY Driver"
+> > +     depends on ARCH_MEDIATEK || COMPILE_TEST
+> > +     depends on OF
+> > +     select GENERIC_PHY
+> > +     help
+> > +       Support DisplayPort PHY for Mediatek SoCs.
+> > diff --git a/drivers/phy/mediatek/Makefile b/drivers/phy/mediatek/Makefile
+> > index ace660fbed3a1..4ba1e06504346 100644
+> > --- a/drivers/phy/mediatek/Makefile
+> > +++ b/drivers/phy/mediatek/Makefile
+> > @@ -3,6 +3,7 @@
+> >  # Makefile for the phy drivers.
+> >  #
+> >
+> > +obj-$(CONFIG_PHY_MTK_DP)             += phy-mtk-dp.o
+> >  obj-$(CONFIG_PHY_MTK_TPHY)           += phy-mtk-tphy.o
+> >  obj-$(CONFIG_PHY_MTK_UFS)            += phy-mtk-ufs.o
+> >  obj-$(CONFIG_PHY_MTK_XSPHY)          += phy-mtk-xsphy.o
+> > diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+> > new file mode 100644
+> > index 0000000000000..e0de2a367e788
+> > --- /dev/null
+> > +++ b/drivers/phy/mediatek/phy-mtk-dp.c
+> > @@ -0,0 +1,219 @@
+> > +// SPDX-License-Identifier: GPL-2.0
+> > +/*
+> > + * Copyright (c) 2021 BayLibre
+> > + * Author: Markus Schneider-Pargmann <msp@baylibre.com>
+> > + */
+> > +
+> > +#include <linux/delay.h>
+> > +#include <linux/io.h>
+> > +#include <linux/of.h>
+> > +#include <linux/phy/phy.h>
+> > +#include <linux/platform_device.h>
+> > +#include <linux/regmap.h>
+> > +
+> > +#define PHY_OFFSET 0x1000
+> > +
+> > +#define MTK_DP_PHY_DIG_PLL_CTL_1             (PHY_OFFSET + 0x014)
+> > +# define TPLL_SSC_EN                         BIT(3)
+> > +
+> > +#define MTK_DP_PHY_DIG_BIT_RATE                      (PHY_OFFSET + 0x03C)
+> > +# define BIT_RATE_RBR                                0
+> > +# define BIT_RATE_HBR                                1
+> > +# define BIT_RATE_HBR2                               2
+> > +# define BIT_RATE_HBR3                               3
+> > +
+> > +#define MTK_DP_PHY_DIG_SW_RST                        (PHY_OFFSET + 0x038)
+> > +# define DP_GLB_SW_RST_PHYD                  BIT(0)
+> > +
+> > +#define MTK_DP_LANE0_DRIVING_PARAM_3         (PHY_OFFSET + 0x138)
+> > +#define MTK_DP_LANE1_DRIVING_PARAM_3         (PHY_OFFSET + 0x238)
+> > +#define MTK_DP_LANE2_DRIVING_PARAM_3         (PHY_OFFSET + 0x338)
+> > +#define MTK_DP_LANE3_DRIVING_PARAM_3         (PHY_OFFSET + 0x438)
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE0_DEFAULT   0x10
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE1_DEFAULT   (0x14 << 8)
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE2_DEFAULT   (0x18 << 16)
+> > +# define XTP_LN_TX_LCTXC0_SW0_PRE3_DEFAULT   (0x20 << 24)
+>
+> how about defining constants and using FEILD_PREP() to set the value.
+> Here and few other places!
+>
+Noted for next revision,
+Thanks.
+
+> > +static int mtk_dp_phy_configure(struct phy *phy, union phy_configure_opts *opts)
+> > +{
+> > +     struct mtk_dp_phy *dp_phy = phy_get_drvdata(phy);
+> > +     u32 val;
+> > +
+> > +     if (opts->dp.set_rate) {
+> > +             switch (opts->dp.link_rate) {
+> > +             default:
+> > +                     dev_err(&phy->dev,
+> > +                             "Implementation error, unknown linkrate %x\n",
+> > +                             opts->dp.link_rate);
+> > +                     return -EINVAL;
+> > +             case 1620:
+> > +                     val = BIT_RATE_RBR;
+> > +                     break;
+> > +             case 2700:
+> > +                     val = BIT_RATE_HBR;
+> > +                     break;
+> > +             case 5400:
+> > +                     val = BIT_RATE_HBR2;
+> > +                     break;
+> > +             case 8100:
+> > +                     val = BIT_RATE_HBR3;
+> > +                     break;
+> > +             }
+> > +             regmap_write(dp_phy->regs, MTK_DP_PHY_DIG_BIT_RATE, val);
+>
+> interesting use of default :) which is correct!
+>
+> But why keep the regmap_write inside switch, you are anyway returning in
+> default, so this write could be outside as well
+
+Not my code here (as we are upstreaming code from the vendor tree).
+My understanding is that the regmap_write() shouldn't be called if
+dp.set_rate is false as val won't be set.
+
+This doesn't actually happen because the only client for this phy is
+the DP driver and we make sure to call it with dp.set_rate to true.
+
+> --
+> ~Vinod
+
+Thx,
+Guillaume.
 
 _______________________________________________
 Linux-mediatek mailing list
