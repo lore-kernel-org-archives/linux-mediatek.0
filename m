@@ -4,61 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8855C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 12:52:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E85F2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 12:55:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1C+p5nWre4fNCsSXfX11GO7HY5IOAXIK0Eu293+s85o=; b=zFAQo3/+IDOwYL
-	ump6N+Do8VfKcDN08vO5o+zHKPmg/fUIjuj99ONEC79guUaqNwnWjvF6DHa127wFBvppHXH3b30u9
-	L0H9u6tV9ZoSnNCB5nxxt4DWWIFbgMsngSsm8P3BkwO66rKFSiDNpPS/Co5uMbcrLQzOJtMT+XqEt
-	XaoXROPzGd2BTp7Id50JMaTCXstrNVz9rhjW0Z2gheyvz9GgjtaevkZGxfdnKxdLFLYIHDMEosPAe
-	f9oO2Y0K0QtFMt0ZN+E2YALuFRRfb6VXX9mQq+ZGau6ekBNoEK8O/ZUYpQyiTHzoiII3zJEIloAMs
-	MRp5taH+UlvI6Ebbtg4A==;
+	List-Owner; bh=oIua/lq/CTL5QMfs9qY0SfHqONbxHkc4NDQj8c2n+Ow=; b=Beu/5J59rMKttX
+	sPV6ToxKzmjfZ9wclHsQqELvTQKUE2ETjKsLFdAZz46ElcNjQPoVyhX9CNg8ld8be10lyK0iIA+a4
+	2OtO9c/LFK/J9ZEV4Ac6zLzAqwhY7bnpW/kg1dwXALyny9FegGyrf6UzuA5LnMuPq0baoxNhIm0Pi
+	ciyJL1+CSZA13gKwXUZq1HY6Ur0p6Gua8I9Wyc8OvilKZf9B6+y47ABm+zKiqPmLhvrwZ6QHNshmS
+	6Ffh3nu4ojqQ8SUCAfBatK7VOlUBwxWSc7pP42+t6nY1L1MD5E4VdqYBGzVQYvX1qteHiXvtttTX3
+	+02uZZMGf7GVb3uqR42g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2uuv-004OyH-Ct; Thu, 30 Dec 2021 12:52:25 +0000
-Received: from smtpng3.i.mail.ru ([94.100.177.149])
+	id 1n2uxR-004PYI-V9; Thu, 30 Dec 2021 12:55:01 +0000
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2uuY-004Oun-Uk; Thu, 30 Dec 2021 12:52:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=inbox.ru;
- s=mail4; 
- h=Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:From:Subject:Content-Type:Content-Transfer-Encoding:To:Cc;
- bh=AI7M4IM+OIQfNp7Vwkgow1e5z6visorja0WbeRGp4Us=; 
- t=1640868723;x=1641474123; 
- b=taZa2x/vt+TZx8Dk/wCiRAmaGYg7xvhVZsEurWsqSlGBq4BcumIVaLYaAzfEBPGJa1b4kMjBw0/lyz9OLz3/suG53Vz2ZquSydOoNEt8y2l9SEy9zjp6XB5a+EkJrK9Xo1Eg729M3Jz7YJAryX0hVUEnEGnz3PLamVKQ7jFWxW58HJt8a1Y+YcQwA2hsygxnhOeK/5kfJKPJN42oQhZGtTdgdxL9rdqcMpHz7isSbRIkVoNYKr4PZbZeCKw79fxtwAkbXzpuTBMBtWqrRyT/ikCw4DKS1/vExuA7L8TJ6JeO1g6UCOwKbHqhj5HNj8pKwaTJB2jj/n6w4gwqZW0pUg==;
-Received: by smtpng3.m.smailru.net with esmtpa (envelope-from <gtk3@inbox.ru>)
- id 1n2uuU-0001Tn-SJ; Thu, 30 Dec 2021 15:51:59 +0300
-From: Maxim Kutnij <gtk3@inbox.ru>
-To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Maxim Kutnij <gtk3@inbox.ru>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] ARM: mediatek: dts: activate SMP for mt6582
-Date: Thu, 30 Dec 2021 20:51:51 +0500
-Message-Id: <20211230155152.48715-2-gtk3@inbox.ru>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20211230155152.48715-1-gtk3@inbox.ru>
-References: <20211230155152.48715-1-gtk3@inbox.ru>
+ id 1n2uxD-004PUm-SR; Thu, 30 Dec 2021 12:54:49 +0000
+Received: by mail-wr1-x434.google.com with SMTP id i22so50226132wrb.13;
+ Thu, 30 Dec 2021 04:54:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=YFsE9Hzd6Rw74/QWXyvFaT9SGHT235vGJZ7VH+X9Vqg=;
+ b=j1/mXzn1nmea5RST1mMajHuWCuVWhRqN+Lg+syW8EQjxxsP+3z/R93jwf8vgZWbZsm
+ OcuVJ9XUPFPEAU9OtCF+ZwU71OGyQMuKXNmj1Jk9ebfSFlPExhHPMigoSVaJforhf6qJ
+ MSrs2D6cozE43KuJe0O/r6SMBFCRBNmFMatKgoEH7XYm3mCx1BNX77iTI1GUfR0p3gq4
+ tvNKAQZL15557qK/KTsRBQpJFU/bA6CtoGsG0s1HKrGsDf+LMsoSvwqw8ZP6GhC+jaNe
+ hzqABqGTxll+o+q2ZW6rBTvjBRH1TaQ20zt2ZjIiL9k2BhLcnof9T1QFjiAB6uUXAa6m
+ I6nw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=YFsE9Hzd6Rw74/QWXyvFaT9SGHT235vGJZ7VH+X9Vqg=;
+ b=uLs1UcE5hTcJElHO2GtiUs+sWJyac8ZzaQ5foOiQuDdqh8MHNbg3MarJXwUb6YBKat
+ EqIMfx92TcsGPWDfcsVEwBK9LdQyaGntNBvala0743mGhWoqWUv+8hRaPYmKk5QCZU12
+ CUlv6zAxUtkI2dBlgR2vnpOgdH2N5qJkPQS6xVAsDDdsr7NNbK90MG+cAGEYtMSuLOn+
+ 9b+8ldJRxAoJyEUPkkWPFOi+0x4r41CiF3+MMApl/wbhidpAVxbH611HdMoEayBiEp5N
+ LVtXS9T1iJwP+HxVxVuBMYrrfaSGjrZfEqgTmIL5mep91v6vXssb3kbiL9X9aNEd5FA7
+ YgTw==
+X-Gm-Message-State: AOAM532JHYOVV1qjw8M95Awp+1RwSTyXAx4bq+2jameoSN2V1VAerA/E
+ 7kSKPsaCr2FgRIJ69r3EB0pnNcKGX/nlVg==
+X-Google-Smtp-Source: ABdhPJzPDe29tdWKwhekT4d7Z3/ncbk+zLexQx66U+rHmm1/X9HvJuKxKAeY5PKXovwjJaFWy4VXjw==
+X-Received: by 2002:a5d:6b8f:: with SMTP id n15mr24876182wrx.189.1640868886447; 
+ Thu, 30 Dec 2021 04:54:46 -0800 (PST)
+Received: from [192.168.1.145] ([207.188.161.251])
+ by smtp.gmail.com with ESMTPSA id j3sm23485981wrt.14.2021.12.30.04.54.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Dec 2021 04:54:45 -0800 (PST)
+Message-ID: <20cf2c1e-d55b-5780-8c6e-4d8beaca5a65@gmail.com>
+Date: Thu, 30 Dec 2021 13:54:44 +0100
 MIME-Version: 1.0
-Authentication-Results: smtpng3.m.smailru.net;
- auth=pass smtp.auth=gtk3@inbox.ru
- smtp.mailfrom=gtk3@inbox.ru
-X-7564579A: B8F34718100C35BD
-X-77F55803: 4F1203BC0FB41BD94D5EF110843E6A67C325213A5E2C0E449CAC477A2A6F0E15182A05F538085040450BCF773D3DF88160F72509ADBA016566A5ED421034FAE65B4B2153517ED7C4
-X-7FA49CB5: FF5795518A3D127A4AD6D5ED66289B5278DA827A17800CE766DCF8604E9C5C06EA1F7E6F0F101C67BD4B6F7A4D31EC0BCC500DACC3FED6E28638F802B75D45FF8AA50765F790063702DFA59B3C994360EA1F7E6F0F101C6723150C8DA25C47586E58E00D9D99D84E1BDDB23E98D2D38BEBC5CAB6D411FFA69254326C01B69220E1AA0239E909E00020879F7C8C5043D14489FFFB0AA5F4BF176DF2183F8FC7C084ED00A64A654CBE8941B15DA834481FA18204E546F3947C21E93C0F2A571C7BF6B57BC7E64490618DEB871D839B7333395957E7521B51C2DFABB839C843B9C08941B15DA834481F8AA50765F790063793270F7220657A0A389733CBF5DBD5E9B5C8C57E37DE458B9E9CE733340B9D5F3BBE47FD9DD3FB595F5C1EE8F4F765FC72CEEB2601E22B093A03B725D353964B0B7D0EA88DDEDAC722CA9DD8327EE493B89ED3C7A628178125A4AB119743A3B3C4224003CC83647689D4C264860C145E
-X-C1DE0DAB: C20DE7B7AB408E4181F030C43753B8186998911F362727C414F749A5E30D975C98DCDA00E0158592738A57C1586C77681A742A5B678BDD7F9C2B6934AE262D3EE7EAB7254005DCED7532B743992DF240BDC6A1CF3F042BAD6DF99611D93F60EF15519F706774CB6A699F904B3F4130E343918A1A30D5E7FCCB5012B2E24CD356
-X-C8649E89: 4E36BF7865823D7055A7F0CF078B5EC49A30900B95165D34E318F287A436F24C999557752B3EF12E5B4E0FE4061C08EA6AF60B13CC337B9A8D73C3FBA8DABA541D7E09C32AA3244CA30F42E3C18344009E7B19D8CBDC2F27B4DF56057A86259FDCA3B3C10BC03908
-X-D57D3AED: 3ZO7eAau8CL7WIMRKs4sN3D3tLDjz0dLbV79QFUyzQ2Ujvy7cMT6pYYqY16iZVKkSc3dCLJ7zSJH7+u4VD18S7Vl4ZUrpaVfd2+vE6kuoey4m4VkSEu530nj6fImhcD4MUrOEAnl0W826KZ9Q+tr5ycPtXkTV4k65bRjmOUUP8cvGozZ33TWg5HZplvhhXbhDGzqmQDTd6OAevLeAnq3Ra9uf7zvY2zzsIhlcp/Y7m53TZgf2aB4JOg4gkr2bioj1qmHCAeuKqPnSxAz7wEH1g==
-X-Mailru-Sender: 689FA8AB762F739339CABD9B3CA9A7D642AD7DBB5C5DF4F89F393FC02AAF00E88F8182784CE3FA142B2697F7A04D759B04FC54F637BA925032C609A2DC06202998FD9B05CC386A12349DB15C680E247222B820C1B2086D890DA7A0AF5A3A8387
-X-Mras: Ok
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v16 2/7] arm64: dts: mt8183: add svs device information
+Content-Language: en-US
+To: Roger Lu <roger.lu@mediatek.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
+ <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
+ <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>,
+ Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20210428065440.3704-1-roger.lu@mediatek.com>
+ <20210428065440.3704-3-roger.lu@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <20210428065440.3704-3-roger.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211230_045203_388507_96C00266 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211230_045447_963791_9DAB0127 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,93 +95,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This patch adds nodes mt6589-smp, pmu and arm,armv7-timer.
 
-Signed-off-by: Maxim Kutnij <gtk3@inbox.ru>
----
- arch/arm/boot/dts/mt6582.dtsi | 35 ++++++++++++++++++++++++++++++-----
- 1 file changed, 30 insertions(+), 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/mt6582.dtsi b/arch/arm/boot/dts/mt6582.dtsi
-index 4263371784c..5efcbf43325 100644
---- a/arch/arm/boot/dts/mt6582.dtsi
-+++ b/arch/arm/boot/dts/mt6582.dtsi
-@@ -15,29 +15,43 @@ / {
- 	cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
-+		enable-method = "mediatek,mt6589-smp";
- 
--		cpu@0 {
-+		cpu0: cpu@0 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a7";
- 			reg = <0x0>;
-+			clock-frequency = <1300000000>;
- 		};
--		cpu@1 {
-+		cpu1: cpu@1 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a7";
- 			reg = <0x1>;
-+			clock-frequency = <1300000000>;
- 		};
--		cpu@2 {
-+		cpu2: cpu@2 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a7";
- 			reg = <0x2>;
-+			clock-frequency = <1300000000>;
- 		};
--		cpu@3 {
-+		cpu3: cpu@3 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a7";
- 			reg = <0x3>;
-+			clock-frequency = <1300000000>;
- 		};
- 	};
- 
-+	pmu {
-+		compatible = "arm,cortex-a7-pmu";
-+		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 5 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 6 IRQ_TYPE_LEVEL_LOW>,
-+			     <GIC_SPI 7 IRQ_TYPE_LEVEL_LOW>;
-+		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
-+	};
-+
- 	system_clk: dummy13m {
- 		compatible = "fixed-clock";
- 		clock-frequency = <13000000>;
-@@ -56,7 +70,18 @@ uart_clk: dummy26m {
- 		#clock-cells = <0>;
- 	};
- 
--	timer: timer@11008000 {
-+	timer {
-+		compatible = "arm,armv7-timer";
-+		interrupt-parent = <&gic>;
-+		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-+			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-+		clock-frequency = <13000000>;
-+		arm,cpu-registers-not-fw-configured;
-+	};
-+
-+	timer: timer@10008000 {
- 		compatible = "mediatek,mt6577-timer";
- 		reg = <0x10008000 0x80>;
- 		interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>;
--- 
-2.34.1
+On 28/04/2021 08:54, Roger Lu wrote:
+> add compitable/reg/irq/clock/efuse setting in svs node
+> 
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> ---
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 18 ++++++++++++++++++
+>   1 file changed, 18 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> index 80519a145f13..441d617ece43 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
+> @@ -657,6 +657,18 @@
+>   			status = "disabled";
+>   		};
+>   
+> +		svs: svs@1100b000 {
+> +			compatible = "mediatek,mt8183-svs";
+> +			reg = <0 0x1100b000 0 0x1000>;
+> +			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
+> +			clocks = <&infracfg CLK_INFRA_THERM>;
+> +			clock-names = "main";
+> +			nvmem-cells = <&svs_calibration>,
+> +				      <&thermal_calibration>;
+> +			nvmem-cell-names = "svs-calibration-data",
+> +					   "t-calibration-data";
+> +		};
+> +
+>   		pwm0: pwm@1100e000 {
+>   			compatible = "mediatek,mt8183-disp-pwm";
+>   			reg = <0 0x1100e000 0 0x1000>;
+> @@ -941,9 +953,15 @@
+>   			reg = <0 0x11f10000 0 0x1000>;
+>   			#address-cells = <1>;
+>   			#size-cells = <1>;
 
+Please add a new line between the different calibartion data, to improve 
+readability.
+
+Regards,
+Matthias
+
+> +			thermal_calibration: calib@180 {
+> +				reg = <0x180 0xc>;
+> +			};
+>   			mipi_tx_calibration: calib@190 {
+>   				reg = <0x190 0xc>;
+>   			};
+> +			svs_calibration: calib@580 {
+> +				reg = <0x580 0x64>;
+> +			};
+>   		};
+>   
+>   		u3phy: usb-phy@11f40000 {
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
