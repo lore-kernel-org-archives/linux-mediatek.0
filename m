@@ -4,50 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 542D9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 02:07:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1765C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 02:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r6wYpmHPRhM06eZfQ9N6dqljWuKAGmdSRLulWiin3OM=; b=rTaG1e9oWb75L5
-	xUfa/HIJuNjh8HH9rWghkArvXxNT+1uHyrPCANsWRqU+aQ6DlWMlvIirw1B0MGc5mKvKC+Zu5D30u
-	mvHl9gfYwbDdOezF8PggWebJ/BXpggL4uze6Pk6QAe7HWE3if20vEbKQiMzF9lz0Uv75YK7ZrkEIG
-	p/vV0hkzpc5H3GqH0WGRgd8IhMK3/HZAu22EVXJklxyjYlvrTC7eESRtGZ7PDPvPiStgwCqXDZPWh
-	laQCBzFEQsHCzM7GItmktaRZctnLXPO3pLNZEQHRVNKu578tQ9cQTlKR0f1I5i1BwLQE1hopt2nhD
-	vzJcTmU91P7igPmuS8HQ==;
+	List-Owner; bh=9dQjs5SEIRG+3MfwYTX/x7Kdu2/G5KTIl1mCDbvlmzg=; b=HaHkjV0ERJQ8jF
+	tqDWOUsqehYW4Rfs1nfUnRibQkz743ee23jVr7UI/JB+alReRBCOB3I6vDgra4vfJLEDwx1GVlEXG
+	MBpwop3opF7SculC+N89t6n4vVoFKCdjmcVduN3UK928eh65otjMOsEuxGmbt2Y6D8l7ahJolUH0I
+	x3I68xjJ20+6y9cYdJlPF9Ahzsie9lbTySNwVx1Z1aYEd4jq8MRAMrYgX6eYjBpvDeb4TZogDpbFP
+	3Mu58qoahVcePjZ0cGOtaG3aA1s+qddAERn/yY2JSbNA0XBmVgrYJEnOF3cu+bO1aDiPxmbCPgnWk
+	wcPRzOQ68OcWSmdyMcgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2kqM-003a7Z-8s; Thu, 30 Dec 2021 02:07:02 +0000
+	id 1n2kxR-003ar8-1L; Thu, 30 Dec 2021 02:14:21 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2kq4-003a51-4O; Thu, 30 Dec 2021 02:06:45 +0000
-X-UUID: be106e29c5b84e1f9eb24c33baa8a579-20211229
+ id 1n2kxN-003aqK-RN; Thu, 30 Dec 2021 02:14:19 +0000
+X-UUID: 2c21f17ed15742eabecc96161f51bc78-20211229
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=sPOTvMuDJjvlDzy7nqG24GE8k+hFonDBmuW7nB8SSCA=; 
- b=HudQ/kUfDno2Ih1Z6V+bVFQ4AOGSI6DrObbZ3T3M+HkBvBGCNRlWqQasPC3clArbHRlWPZALrcEXwYB6910i5/BY2hmwp+l1dSf6Zv6iELf3SAWB4GSS5R9bzjGvISagU5YMMjViO3zrzqpNvJhUN92fdKzC5NTbHYzGBRjLnlM=;
-X-UUID: be106e29c5b84e1f9eb24c33baa8a579-20211229
+ bh=x6GiD9JJ4B1knkLkeZo2l7UgESkmJYdMXsAzklAKuuQ=; 
+ b=Qg4F1qYwMCtyrkbGjOSO86EVcnkGnAg8MaoALcUdT9dEGiZJ+uBoVtWdKevLnZ1gqkYPTAiHN+vtmBCXD0OwOsDYNUhLkgFOdELjZLmoaGR9r2oLZhQfBRrUxjRzwJ83XVSc0x+tCwquZqD7ZJ2CrtIOb1q28ZoY9Zfh94GXIsw=;
+X-UUID: 2c21f17ed15742eabecc96161f51bc78-20211229
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1615845474; Wed, 29 Dec 2021 19:06:34 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 29 Dec 2021 18:06:33 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Thu, 30 Dec 2021 10:06:31 +0800
+ with ESMTP id 1242767948; Wed, 29 Dec 2021 19:14:11 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Dec 2021 18:14:10 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 30 Dec 2021 10:13:57 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 30 Dec 2021 10:06:30 +0800
-Message-ID: <75b2773d1d170f42bae0774dbc58d1458cb25502.camel@mediatek.com>
-Subject: Re: [PATCH v2 3/5] phy: mediatek: add helpers to update bits of
- registers
+ Transport; Thu, 30 Dec 2021 10:13:56 +0800
+Message-ID: <e7e25a6bce17a4f488e49dfc6d17aa77f0603645.camel@mediatek.com>
+Subject: Re: [PATCH v2 2/5] phy: phy-mtk-tphy: add support efuse setting
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Vinod Koul <vkoul@kernel.org>
@@ -56,17 +54,17 @@ CC: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-phy@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, Eddie Hung <eddie.hung@mediatek.com>
-Date: Thu, 30 Dec 2021 10:06:31 +0800
-In-Reply-To: <047803b9-d09f-d4f8-a674-317cc19dd055@collabora.com>
+Date: Thu, 30 Dec 2021 10:13:56 +0800
+In-Reply-To: <bc841baa-e025-b0b8-8dbd-f438fd6981f7@collabora.com>
 References: <20211218082802.5256-1-chunfeng.yun@mediatek.com>
- <20211218082802.5256-3-chunfeng.yun@mediatek.com>
- <047803b9-d09f-d4f8-a674-317cc19dd055@collabora.com>
+ <20211218082802.5256-2-chunfeng.yun@mediatek.com>
+ <bc841baa-e025-b0b8-8dbd-f438fd6981f7@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211229_180644_217983_D3745502 
-X-CRM114-Status: GOOD (  22.67  )
+X-CRM114-CacheID: sfid-20211229_181417_923676_8485040D 
+X-CRM114-Status: GOOD (  34.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,90 +81,155 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2021-12-24 at 11:10 +0100, AngeloGioacchino Del Regno wrote:
-> Il 18/12/21 09:28, Chunfeng Yun ha scritto:
-> > Add three helpers mtk_phy_clear/set/update_bits() for registers
-> > operation
+On Fri, 2021-12-24 at 11:03 +0100, AngeloGioacchino Del Regno wrote:
+> Il 18/12/21 09:27, Chunfeng Yun ha scritto:
+> > Due to some SoCs have a bit shift issue that will drop a bit for
+> > usb3
+> > phy or pcie phy, fix it by adding software efuse reading and
+> > setting,
+> > but only support it optionally for version 2/3.
 > > 
 > > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > > ---
-> > v2: new patch, add register access helpers,
-> >      Add updatel() macro suggested by Vinod, here add more ones
-> > instead.
+> > v2: changes suggested by Vinod
+> >      1. fix typo of version in commit message
+> >      2. use dev_dbg() instead of dev_info()
 > > ---
-> >   drivers/phy/mediatek/phy-mtk-io.h | 38
-> > +++++++++++++++++++++++++++++++
-> >   1 file changed, 38 insertions(+)
-> >   create mode 100644 drivers/phy/mediatek/phy-mtk-io.h
-> > 
-> > diff --git a/drivers/phy/mediatek/phy-mtk-io.h
-> > b/drivers/phy/mediatek/phy-mtk-io.h
-> > new file mode 100644
-> > index 000000000000..500fcdab165d
-> > --- /dev/null
-> > +++ b/drivers/phy/mediatek/phy-mtk-io.h
-> > @@ -0,0 +1,38 @@
-> > +/* SPDX-License-Identifier: GPL-2.0 */
-> > +/*
-> > + * Copyright (C) 2021 MediaTek Inc.
-> > + *
-> > + * Author: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > + */
-> > +
-> > +#ifndef __PHY_MTK_H__
-> > +#define __PHY_MTK_H__
-> > +
-> > +#include <linux/io.h>
-> > +
-> > +static inline void mtk_phy_clear_bits(void __iomem *reg, u32 bits)
-> > +{
-> > +	u32 tmp = readl(reg);
-> > +
-> > +	tmp &= ~bits;
-> > +	writel(tmp, reg);
-> > +}
-> > +
-> > +static inline void mtk_phy_set_bits(void __iomem *reg, u32 bits)
-> > +{
-> > +	u32 tmp = readl(reg);
-> > +
-> > +	tmp |= bits;
-> > +	writel(tmp, reg);
-> > +}
-> > +
-> > +static inline void mtk_phy_update_bits(void __iomem *reg, u32
-> > mask, u32 val)
-> > +{
-> > +	u32 tmp = readl(reg);
-> > +
-> > +	tmp &= ~mask;
-> > +	tmp |= val & mask;
-> > +	writel(tmp, reg);
-> > +}
-> > +
-> > +#endif
+> >   drivers/phy/mediatek/phy-mtk-tphy.c | 162
+> > ++++++++++++++++++++++++++++
+> >   1 file changed, 162 insertions(+)
 > > 
 > 
-> These helpers are almost exactly duplicating what
-> regmap_update_bits() is doing.
-> I appreciate the effort to stop open-coding the same sequences over
-> and over by
-> adding such helper functions, 
-I agree with you.
-> but I think that the proper way of doing what you
-> are proposing is not to add custom functions but rather reuse what
-> the Linux APIs
-> give you.
-I also like to use common APIs ASAP, but not found suitable ones.
-This may be a problem, I found that some similar custom helps already
-added under phy fold.
-
+> Hello Chunfeng, thanks for the patch!
+> However, there are a few things to improve...
 > 
-> What about doing a conversion to use regmap on this driver?
-No, we don't use regmap here, these registers are monopolized by t-phy, 
-it's not syscon.
+> > diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c
+> > b/drivers/phy/mediatek/phy-mtk-tphy.c
+> > index cdcef865fe9e..98a942c607a6 100644
+> > --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> > +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> > @@ -12,6 +12,7 @@
+> >   #include <linux/iopoll.h>
+> >   #include <linux/mfd/syscon.h>
+> >   #include <linux/module.h>
+> > +#include <linux/nvmem-consumer.h>
+> >   #include <linux/of_address.h>
+> >   #include <linux/of_device.h>
+> >   #include <linux/phy/phy.h>
+> > @@ -41,6 +42,9 @@
+> >   #define SSUSB_SIFSLV_V2_U3PHYD		0x200
+> >   #define SSUSB_SIFSLV_V2_U3PHYA		0x400
+> >   
+> > +#define U3P_MISC_REG1		0x04
+> > +#define MR1_EFUSE_AUTO_LOAD_DIS		BIT(6)
+> > +
+> >   #define U3P_USBPHYACR0		0x000
+> >   #define PA0_RG_U2PLL_FORCE_ON		BIT(15)
+> >   #define PA0_USB20_PLL_PREDIV		GENMASK(7, 6)
+> > @@ -133,6 +137,8 @@
+> >   #define P3C_RG_SWRST_U3_PHYD_FORCE_EN	BIT(24)
+> >   
+> >   #define U3P_U3_PHYA_REG0	0x000
+> > +#define P3A_RG_IEXT_INTR		GENMASK(15, 10)
+> > +#define P3A_RG_IEXT_INTR_VAL(x)		((0x3f & (x)) << 10)
+> >   #define P3A_RG_CLKDRV_OFF		GENMASK(3, 2)
+> >   #define P3A_RG_CLKDRV_OFF_VAL(x)	((0x3 & (x)) << 2)
+> >   
+> > @@ -187,6 +193,19 @@
+> >   #define P3D_RG_FWAKE_TH		GENMASK(21, 16)
+> >   #define P3D_RG_FWAKE_TH_VAL(x)	((0x3f & (x)) << 16)
+> >   
+> > +#define U3P_U3_PHYD_IMPCAL0		0x010
+> > +#define P3D_RG_FORCE_TX_IMPEL		BIT(31)
+> > +#define P3D_RG_TX_IMPEL			GENMASK(28, 24)
+> > +#define P3D_RG_TX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
+> > +
+> > +#define U3P_U3_PHYD_IMPCAL1		0x014
+> > +#define P3D_RG_FORCE_RX_IMPEL		BIT(31)
+> > +#define P3D_RG_RX_IMPEL			GENMASK(28, 24)
+> > +#define P3D_RG_RX_IMPEL_VAL(x)		((0x1f & (x)) << 24)
+> > +
+> > +#define U3P_U3_PHYD_RSV			0x054
+> > +#define P3D_RG_EFUSE_AUTO_LOAD_DIS	BIT(12)
+> > +
+> >   #define U3P_U3_PHYD_CDR1		0x05c
+> >   #define P3D_RG_CDR_BIR_LTD1		GENMASK(28, 24)
+> >   #define P3D_RG_CDR_BIR_LTD1_VAL(x)	((0x1f & (x)) << 24)
+> > @@ -307,6 +326,11 @@ struct mtk_phy_pdata {
+> >   	 * 48M PLL, fix it by switching PLL to 26M from default 48M
+> >   	 */
+> >   	bool sw_pll_48m_to_26m;
+> > +	/*
+> > +	 * Some SoCs (e.g. mt8195) drop a bit when use auto load efuse,
+> > +	 * support sw way, also support it for v2/v3 optionally.
+> > +	 */
+> > +	bool sw_efuse_supported;
+> >   	enum mtk_phy_version version;
+> >   };
+> >   
+> > @@ -336,6 +360,10 @@ struct mtk_phy_instance {
+> >   	struct regmap *type_sw;
+> >   	u32 type_sw_reg;
+> >   	u32 type_sw_index;
+> > +	u32 efuse_sw_en;
+> > +	u32 efuse_intr;
+> > +	u32 efuse_tx_imp;
+> > +	u32 efuse_rx_imp;
+> >   	int eye_src;
+> >   	int eye_vrt;
+> >   	int eye_term;
+> > @@ -1040,6 +1068,130 @@ static int phy_type_set(struct
+> > mtk_phy_instance *instance)
+> >   	return 0;
+> >   }
+> >   
+> > +static int phy_efuse_get(struct mtk_tphy *tphy, struct
+> > mtk_phy_instance *instance)
+> > +{
+> > +	struct device *dev = &instance->phy->dev;
+> > +	int ret = 0;
+> > +
+> > +	/* tphy v1 doesn't support sw efuse, skip it */
+> > +	if (!tphy->pdata->sw_efuse_supported) {
+> > +		instance->efuse_sw_en = 0;
+> > +		return 0;
+> > +	}
+> > +
+> > 
+> > [...]
+> > 
+> > +
+> > +		dev_dbg(dev, "u3 efuse - intr %x, rx_imp %x, tx_imp
+> > %x\n",
+> > +			instance->efuse_intr, instance-
+> > >efuse_rx_imp,instance->efuse_tx_imp);
+> > +		break;
+> > +	default:
+> > +		dev_err(dev, "no sw efuse for type %d\n", instance-
+> > >type);
+> > +		ret = -EINVAL;
+> > +	}
+> > +
+> > +	return ret;
+> > +}
+> > +
+> > +static void phy_efuse_set(struct mtk_phy_instance *instance)
+> 
+> The name for this function is a bit misleading and one may think that
+> this
+> is writing efuses (aka blowing a fuse array), 
+The hardware efuses on MediaTek platform only support Read-Only.
 
-
+> which doesn't look like being
+> the case at all.
+> 
+> What about changing it to phy_set_sw_efuse_params(), or something
+> similar?
+It seems better, I'll prepare a new patch.
+> 
+> 
+> Thank you,
+> - Angelo
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
