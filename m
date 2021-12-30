@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E85F2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 12:55:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16DD4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 13:18:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oIua/lq/CTL5QMfs9qY0SfHqONbxHkc4NDQj8c2n+Ow=; b=Beu/5J59rMKttX
-	sPV6ToxKzmjfZ9wclHsQqELvTQKUE2ETjKsLFdAZz46ElcNjQPoVyhX9CNg8ld8be10lyK0iIA+a4
-	2OtO9c/LFK/J9ZEV4Ac6zLzAqwhY7bnpW/kg1dwXALyny9FegGyrf6UzuA5LnMuPq0baoxNhIm0Pi
-	ciyJL1+CSZA13gKwXUZq1HY6Ur0p6Gua8I9Wyc8OvilKZf9B6+y47ABm+zKiqPmLhvrwZ6QHNshmS
-	6Ffh3nu4ojqQ8SUCAfBatK7VOlUBwxWSc7pP42+t6nY1L1MD5E4VdqYBGzVQYvX1qteHiXvtttTX3
-	+02uZZMGf7GVb3uqR42g==;
+	List-Owner; bh=EiaSMjSbGCl2f3ZCQL22G1l/GorNvfwzcfyYgkfsoA0=; b=oFFGbtLfcBKgPM
+	1mUAEOOGuPef59Eb7DqFbanf+ykARHsFEdji7X71pjHE9r9gZBsTdqbn/yMzqG87VwBhWUFnUwDfP
+	IuJ/k6LYTY2PH6OLrHYuAw1B0Brqu5QTXmYuD9P4a2i/emsSN6rrwLIkrZkhPOthdZ5gU/y5bLeCe
+	D5/G3L+tZ91B/DKycJa3NFUqtFi1N0YaiHxHkJldMVk737ibeHuXtbouudE27YVE2DftfO+sOUxkk
+	xX1nIoxLPzqB/mYRxIZmzegb9+Bsl/9IgBD/2owiXlkV88bJu8+86eRY7SHu+zWJ5qFHWQvq7Q8mR
+	pUPsMmbAoUpmq0JS/V3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2uxR-004PYI-V9; Thu, 30 Dec 2021 12:55:01 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1n2vJy-004QvZ-09; Thu, 30 Dec 2021 13:18:18 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2uxD-004PUm-SR; Thu, 30 Dec 2021 12:54:49 +0000
-Received: by mail-wr1-x434.google.com with SMTP id i22so50226132wrb.13;
- Thu, 30 Dec 2021 04:54:47 -0800 (PST)
+ id 1n2vJm-004QuB-3J; Thu, 30 Dec 2021 13:18:07 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id t26so50390352wrb.4;
+ Thu, 30 Dec 2021 05:18:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=YFsE9Hzd6Rw74/QWXyvFaT9SGHT235vGJZ7VH+X9Vqg=;
- b=j1/mXzn1nmea5RST1mMajHuWCuVWhRqN+Lg+syW8EQjxxsP+3z/R93jwf8vgZWbZsm
- OcuVJ9XUPFPEAU9OtCF+ZwU71OGyQMuKXNmj1Jk9ebfSFlPExhHPMigoSVaJforhf6qJ
- MSrs2D6cozE43KuJe0O/r6SMBFCRBNmFMatKgoEH7XYm3mCx1BNX77iTI1GUfR0p3gq4
- tvNKAQZL15557qK/KTsRBQpJFU/bA6CtoGsG0s1HKrGsDf+LMsoSvwqw8ZP6GhC+jaNe
- hzqABqGTxll+o+q2ZW6rBTvjBRH1TaQ20zt2ZjIiL9k2BhLcnof9T1QFjiAB6uUXAa6m
- I6nw==
+ h=message-id:date:mime-version:user-agent:content-language:to:cc
+ :references:from:subject:in-reply-to:content-transfer-encoding;
+ bh=vuRsc8wW9XJ+M5W8oEGctVZv5dxejvx5UO2xVo0fpo8=;
+ b=odamaGhRaS2vZVQzGEGWPjhZergHYpE+vRdUAh/AyNJOFPAGghZCOYPny/IuuShyai
+ PTgQzgmlUrTSS92K9efVBozlqpMU4dK+iO+VC1u/bG0A/5QEZUuUgq/ZdH60YBuPbXBH
+ uljVMlp9iko78CgWOfs3AroAiebtnBbmtr4ZPOMpAxI+EJjPMzvQFDQw1uWdudbuyp+j
+ IBXvKVPDta63EeDOCpDF+OWDwtym1B3+0fVflo6WcBU41nLWWtWVJUOp87SphLB0gNQk
+ WKkI+NkauH1i62MUisfc7xan/U3TgyA+SaAYtfM1BMc2GargiEIquO+dZMDaQLiG5OO8
+ mE1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:subject:in-reply-to
  :content-transfer-encoding;
- bh=YFsE9Hzd6Rw74/QWXyvFaT9SGHT235vGJZ7VH+X9Vqg=;
- b=uLs1UcE5hTcJElHO2GtiUs+sWJyac8ZzaQ5foOiQuDdqh8MHNbg3MarJXwUb6YBKat
- EqIMfx92TcsGPWDfcsVEwBK9LdQyaGntNBvala0743mGhWoqWUv+8hRaPYmKk5QCZU12
- CUlv6zAxUtkI2dBlgR2vnpOgdH2N5qJkPQS6xVAsDDdsr7NNbK90MG+cAGEYtMSuLOn+
- 9b+8ldJRxAoJyEUPkkWPFOi+0x4r41CiF3+MMApl/wbhidpAVxbH611HdMoEayBiEp5N
- LVtXS9T1iJwP+HxVxVuBMYrrfaSGjrZfEqgTmIL5mep91v6vXssb3kbiL9X9aNEd5FA7
- YgTw==
-X-Gm-Message-State: AOAM532JHYOVV1qjw8M95Awp+1RwSTyXAx4bq+2jameoSN2V1VAerA/E
- 7kSKPsaCr2FgRIJ69r3EB0pnNcKGX/nlVg==
-X-Google-Smtp-Source: ABdhPJzPDe29tdWKwhekT4d7Z3/ncbk+zLexQx66U+rHmm1/X9HvJuKxKAeY5PKXovwjJaFWy4VXjw==
-X-Received: by 2002:a5d:6b8f:: with SMTP id n15mr24876182wrx.189.1640868886447; 
- Thu, 30 Dec 2021 04:54:46 -0800 (PST)
+ bh=vuRsc8wW9XJ+M5W8oEGctVZv5dxejvx5UO2xVo0fpo8=;
+ b=fMwp9BWjusvwnMhDENBmaby9MUC7rfcA5g//KNhFW7hmSbxf6hKOO1B/WeXj9DgDwQ
+ uxl56TVmFyQSzfn4+CKE1a+zxbYud3Rl/NU+t3+9zQuvIgxLtJevNClU7yCyt/o75RQ3
+ s2gjP1lhos5S0JSk3GF4+qeD6Ts96Eu3R+QnDsUYq4iFN28ErWkef4hklQz9ChGnKrbp
+ zsKrGRXLxdGQGi9seBoIxYxdx5N1WANVUgTVbOMJCIptgObBlJb5EEN4aIF+SkOFTWVQ
+ QQTOzufsGkcxySs/E21iqqgrSZ6BKRoLrnzI9qcAAK2GJRFIlG4D62wpfAQkMFCOLroR
+ nh1w==
+X-Gm-Message-State: AOAM531+MHJ04hakgnVmYKqGp/oOV3r+/x/PaZTOWqKAxEtDhciSs+jW
+ xRC5YoUPNIjZLltk44zxTz0=
+X-Google-Smtp-Source: ABdhPJyvTHcr9eexUZO4ohoV+9DtcbakodobY0TzhO4u1LOmOZsK0+qvtXUoI5lBycGiP0hh2zTrZQ==
+X-Received: by 2002:a5d:51c9:: with SMTP id n9mr25116995wrv.694.1640870283425; 
+ Thu, 30 Dec 2021 05:18:03 -0800 (PST)
 Received: from [192.168.1.145] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id j3sm23485981wrt.14.2021.12.30.04.54.44
+ by smtp.gmail.com with ESMTPSA id p18sm4086785wms.16.2021.12.30.05.18.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Dec 2021 04:54:45 -0800 (PST)
-Message-ID: <20cf2c1e-d55b-5780-8c6e-4d8beaca5a65@gmail.com>
-Date: Thu, 30 Dec 2021 13:54:44 +0100
+ Thu, 30 Dec 2021 05:18:02 -0800 (PST)
+Message-ID: <abd9332b-dace-f75a-33f5-be88fe516784@gmail.com>
+Date: Thu, 30 Dec 2021 14:18:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH v16 2/7] arm64: dts: mt8183: add svs device information
 Content-Language: en-US
 To: Roger Lu <roger.lu@mediatek.com>,
  Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
@@ -78,12 +77,12 @@ Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
  Project_Global_Chrome_Upstream_Group@mediatek.com
 References: <20210428065440.3704-1-roger.lu@mediatek.com>
- <20210428065440.3704-3-roger.lu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20210428065440.3704-3-roger.lu@mediatek.com>
+Subject: Re: [PATCH v16 0/7] soc: mediatek: SVS: introduce MTK SVS
+In-Reply-To: <20210428065440.3704-1-roger.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211230_045447_963791_9DAB0127 
-X-CRM114-Status: GOOD (  14.53  )
+X-CRM114-CacheID: sfid-20211230_051806_184559_D0FB9443 
+X-CRM114-Status: GOOD (  15.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,59 +102,71 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 On 28/04/2021 08:54, Roger Lu wrote:
-> add compitable/reg/irq/clock/efuse setting in svs node
+> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
+> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
+> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
+> 3. SVS dts refers to reset controller [4] to help reset SVS HW.
 > 
-> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> ---
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 18 ++++++++++++++++++
->   1 file changed, 18 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 80519a145f13..441d617ece43 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -657,6 +657,18 @@
->   			status = "disabled";
->   		};
->   
-> +		svs: svs@1100b000 {
-> +			compatible = "mediatek,mt8183-svs";
-> +			reg = <0 0x1100b000 0 0x1000>;
-> +			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-> +			clocks = <&infracfg CLK_INFRA_THERM>;
-> +			clock-names = "main";
-> +			nvmem-cells = <&svs_calibration>,
-> +				      <&thermal_calibration>;
-> +			nvmem-cell-names = "svs-calibration-data",
-> +					   "t-calibration-data";
-> +		};
-> +
->   		pwm0: pwm@1100e000 {
->   			compatible = "mediatek,mt8183-disp-pwm";
->   			reg = <0 0x1100e000 0 0x1000>;
-> @@ -941,9 +953,15 @@
->   			reg = <0 0x11f10000 0 0x1000>;
->   			#address-cells = <1>;
->   			#size-cells = <1>;
+> #mt8183 SVS related patches
+> [1] https://patchwork.kernel.org/patch/11193513/
 
-Please add a new line between the different calibartion data, to improve 
-readability.
+Already mainline, please either refer to the commit, to make it clear it's 
+maineline or drop it.
+
+> [2] https://patchwork.kernel.org/project/linux-mediatek/patch/20201013102358.22588-2-michael.kao@mediatek.com/
+
+Same here.
+
+> [3] https://patchwork.kernel.org/project/linux-mediatek/patch/20200306041345.259332-3-drinkcat@chromium.org/
+
+Same here,
+
+> 
+> #mt8192 SVS related patches
+> [1] https://patchwork.kernel.org/patch/11193513/
+
+Same here, it's actually the same link as [1].
+
+> [2] https://patchwork.kernel.org/project/linux-mediatek/patch/20201223074944.2061-1-michael.kao@mediatek.com/
+> [3] https://lore.kernel.org/patchwork/patch/1360551/
+> [4] https://patchwork.kernel.org/project/linux-mediatek/patch/20200817030324.5690-5-crystal.guo@mediatek.com/
+
+There are many dependencies for that. Some patches need resubmit, others seem to 
+be stale. I'd advise to concentrate on mt8183 for now and add support for mt8192 
+once dependencies have settled.
 
 Regards,
 Matthias
 
-> +			thermal_calibration: calib@180 {
-> +				reg = <0x180 0xc>;
-> +			};
->   			mipi_tx_calibration: calib@190 {
->   				reg = <0x190 0xc>;
->   			};
-> +			svs_calibration: calib@580 {
-> +				reg = <0x580 0x64>;
-> +			};
->   		};
->   
->   		u3phy: usb-phy@11f40000 {
+> 
+> changes since v15:
+> - Put (*set_freqs_pct) and (*get_vops) in struct svs_bank because they are part of svs bank's operation
+> - Add define "SVSB_INIT02_RM_DVTFIXED" and "SVSB_MON_VOLT_IGNORE" to make control clearly.
+> - Remove unnecessary parenthesis
+> 
+> Roger Lu (7):
+>    [v16,1/7] dt-bindings: soc: mediatek: add mtk svs dt-bindings
+>    [v16,2/7] arm64: dts: mt8183: add svs device information
+>    [v16,3/7] soc: mediatek: SVS: introduce MTK SVS engine
+>    [v16,4/7] soc: mediatek: SVS: add debug commands
+>    [v16,5/7] dt-bindings: soc: mediatek: add mt8192 svs dt-bindings
+>    [v16,6/7] arm64: dts: mt8192: add svs device information
+>    [v16,7/7] soc: mediatek: SVS: add mt8192 SVS GPU driver
+> 
+>   .../bindings/soc/mediatek/mtk-svs.yaml        |   92 +
+>   arch/arm64/boot/dts/mediatek/mt8183.dtsi      |   18 +
+>   arch/arm64/boot/dts/mediatek/mt8192.dtsi      |   34 +
+>   drivers/soc/mediatek/Kconfig                  |   10 +
+>   drivers/soc/mediatek/Makefile                 |    1 +
+>   drivers/soc/mediatek/mtk-svs.c                | 2524 +++++++++++++++++
+>   6 files changed, 2679 insertions(+)
+>   create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+>   create mode 100644 drivers/soc/mediatek/mtk-svs.c
+> 
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 > 
 
 _______________________________________________
