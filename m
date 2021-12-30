@@ -4,82 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E7F1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 12:30:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A8FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 12:52:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lwUYqCbLle08G9RqWAOKX8GjRcU4wUxvLOLUqd4qY9c=; b=oBdOE1CrPGWy1K
-	xuPJeHfx416o748Y99ob6CikenL4zEz0yPgZVdMlqpMj3SQdzkvsna7Oib/30FVqgI4O1U+AOU0lw
-	MJ7KYNptdnr5lYpShJHcPmD/OJbTmDZUO9wioD+/Kslu2TLd5kjSHvCpNWI4n9LFrVmXSBUGsjBse
-	W7o09xqHTJ4GBqaVYS0iKiNgP9X12c2Ry8VC9J/Bb7+RZ7Wgx+N9UfOMSNSfPkZ6etHWLKD/jGPV7
-	BbUXBe4RYFF862g/ip6NM71hCg5A5VbPtw/regBz/dsfrDUhIIZqxYMUtvcDVA3fZGz+W99KuHchl
-	+zkqRfojOYGdgQkhBPmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=sMizgiev8ZjsXIKG5ZmJ8D8Mhj4eQCizUvxhLASWrUI=; b=ILnbrcD2U73XF7
+	tV2iJtC/gyYrbLpkr6Tgv+2Rwq237qi8Bk1qVAv8AULLb4QzlWxTzW0dEmz2KWcqH+bFf0QcXwimZ
+	CEY4VUWHzXfxxa0CJ03oXCzmI6OJ26/9gOWUQElYWhILY7nGfUfzhh0YHa9Zt1Ht/bD+W3VsRofHz
+	qZzV7leQc44r3bYvCs0DSioCGcuqzC1/mi38KL4KRFm/TFVV8Xc6/M/6uqE/T5IKnzX0vkKDoY2P4
+	TmugWIvATTG2+eMMx+WN1UCRQAbgL2g/Fy8Y+S3lJKjOB7x7kIEaazwXfojDHnEQ5ia34a/tAqKIM
+	zJBXaiHsEdzgFSrzzGzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2uZD-004MoV-Mh; Thu, 30 Dec 2021 12:29:59 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1n2uuu-004OyB-G5; Thu, 30 Dec 2021 12:52:24 +0000
+Received: from smtpng3.i.mail.ru ([94.100.177.149])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2uZB-004MnO-R3; Thu, 30 Dec 2021 12:29:59 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id d9so50249167wrb.0;
- Thu, 30 Dec 2021 04:29:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=O0+J3hfYi+tJOX87FRscUIQ71ohxgIJHCX2HAI7b8Uk=;
- b=WMadPGKQYElHu5jMUqicwQrvbZw0wasy3D2dwh6uxHrjnJIKPJU2olLLJiUHlD3145
- plls98wtenzGF2fKfmdY+zgaoa+jfm1UcyH2wkz5HwMtk+9/Qh9TIqO85tG2dg+DB6lC
- +3e+sFx8vK+EaZzrlOQ4oMNMl7NxCcMoBoZJDv9wivx7eB6ftjYEV3iYCqcuggnraFTV
- AG6lYgy2JNYCSPoWhUz1P8FK3E5ws6ZBZTMb1uJZTczp3CiqAHm9U46gHeH3dcpnqQIH
- 1tS9OsNRcHYpfa4tH+NupuN9/QJu3+dM2VWCPAjJH1oxL2Qu9yUuX6I/dXc6pxLQ1KOy
- 0KTA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=O0+J3hfYi+tJOX87FRscUIQ71ohxgIJHCX2HAI7b8Uk=;
- b=4BRo0mF7UTui86IkfMv5r5k6O1+PjOk/jijFblUAzvi2q/qr8OMxxuE9DaSO/H038u
- uqvBI0LkLNOajUNkYrQ0JFb36jtvxhQ+689Pbh18+ylMy6FWoo2twMFNbzH+s+Nv+VJH
- +P5qEr6RDM7+6zwoZM18+B5GFcwr2retRwaFvsAks/YtpHhCGerptnKLk6ffy+e4obyM
- kvAOtofBxcHXkKjLakQYtthZ2qdALADHTmgBC6DgXkrNPlQkiGWCfkqTyihDO5t/ApQS
- Y9mqj2THjTVnOwYYLGp6MIIB3xi6xqANZ4VZSB01Et+aePSZHgV+yoicSdYpfFGNP4UJ
- AfDw==
-X-Gm-Message-State: AOAM532oOE9eJ9huPwDTK1r9o+e5lzDlUboSDWomwJK22yLijUJWQLZv
- 3neNlUUZARmmPjyK/qddneE=
-X-Google-Smtp-Source: ABdhPJyeMdqRs+cOsnbASw7H4TcBciKWFlGxLhfRAl5VE2g8s7FE8D4hxsDXVPloniZ7EO3XL58Fpg==
-X-Received: by 2002:a5d:4385:: with SMTP id i5mr24410955wrq.178.1640867396353; 
- Thu, 30 Dec 2021 04:29:56 -0800 (PST)
-Received: from [192.168.2.177] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id o12sm23945584wrv.76.2021.12.30.04.29.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Dec 2021 04:29:55 -0800 (PST)
-Message-ID: <d784e170-a115-bd0a-a87c-07aed0fb73fc@gmail.com>
-Date: Thu, 30 Dec 2021 13:29:54 +0100
+ id 1n2uuY-004Oum-Ud; Thu, 30 Dec 2021 12:52:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=inbox.ru;
+ s=mail4; 
+ h=Content-Transfer-Encoding:MIME-Version:Message-Id:Date:Subject:Cc:To:From:From:Subject:Content-Type:Content-Transfer-Encoding:To:Cc;
+ bh=Mr3OPbGfdZv2acimE3GKBnV6ABp9DngLyItpAMsR1EM=; 
+ t=1640868723;x=1641474123; 
+ b=UFa1KE1HqgRxcTtlRry2aoQnLcpmEcEnmG1t/e3dz1xNuJWgTLJLWUD/yXtbNP8aWXc0I0Tr1QXqLrTnd/3hy8c+eCPHSm+SX6yL+CIT2mOqmKaT/cr3BW0T+Ins/I7mQG28uySZeafjpV0m/cxjH5TjcPHm4gPyOVdhxpiEV51o7flIJTV9U/IeLn3FVCR2poK1QNJOca72H059QRNAHnWGST3EDtE1boSikYJr69H4MFxec9mPQPJiMokYpW7GDe78p/DP3eYt20z/EntrfB+kFJuQe7+yVYJ+S8S3WH0pSBk2qpDiGK/ki4SVbUqKfnUIfrELBeo5UnCFa6tRZw==;
+Received: by smtpng3.m.smailru.net with esmtpa (envelope-from <gtk3@inbox.ru>)
+ id 1n2uuS-0001Tn-EK; Thu, 30 Dec 2021 15:51:56 +0300
+From: Maxim Kutnij <gtk3@inbox.ru>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>
+Cc: Maxim Kutnij <gtk3@inbox.ru>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH 1/2] ARM: mediatek: add smp bringup code for MT6582
+Date: Thu, 30 Dec 2021 20:51:50 +0500
+Message-Id: <20211230155152.48715-1-gtk3@inbox.ru>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v3] drm/mediatek: Fix unused-but-set variable warning
-Content-Language: en-US
-To: Miles Chen <miles.chen@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>, Jie Qiu <jie.qiu@mediatek.com>,
- Junzhi Zhao <junzhi.zhao@mediatek.com>
-Cc: Zhiqiang Lin <zhiqiang.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- llvm@lists.linux.dev
-References: <20211230093610.28012-1-miles.chen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20211230093610.28012-1-miles.chen@mediatek.com>
+Authentication-Results: smtpng3.m.smailru.net;
+ auth=pass smtp.auth=gtk3@inbox.ru
+ smtp.mailfrom=gtk3@inbox.ru
+X-7564579A: B8F34718100C35BD
+X-77F55803: 4F1203BC0FB41BD94D5EF110843E6A67C325213A5E2C0E449CAC477A2A6F0E15182A05F538085040D44ECFBC32F42193FB61FBFD3B931568476AF814F00C598CF5EC25122E9958EF
+X-7FA49CB5: FF5795518A3D127A4AD6D5ED66289B5278DA827A17800CE7AD2F2D6F6013FF7FC2099A533E45F2D0395957E7521B51C2CFCAF695D4D8E9FCEA1F7E6F0F101C6778DA827A17800CE77C1346FE4B18DC51EA1F7E6F0F101C6723150C8DA25C47586E58E00D9D99D84E1BDDB23E98D2D38BEBC5CAB6D411FFA6A698B691B9FCA0A4BAC9B3D349B4D65E20879F7C8C5043D14489FFFB0AA5F4BF176DF2183F8FC7C07E7E81EEA8A9722B8941B15DA834481FA18204E546F3947CD2DCF9CF1F528DBCF6B57BC7E64490618DEB871D839B7333395957E7521B51C2DFABB839C843B9C08941B15DA834481F8AA50765F7900637CAEE156C82D3D7D9389733CBF5DBD5E9B5C8C57E37DE458B9E9CE733340B9D5F3BBE47FD9DD3FB595F5C1EE8F4F765FC72CEEB2601E22B093A03B725D353964B0B7D0EA88DDEDAC722CA9DD8327EE493B89ED3C7A628178125A4AB119743A3B3C4224003CC83647689D4C264860C145E
+X-C1DE0DAB: C20DE7B7AB408E4181F030C43753B8186998911F362727C414F749A5E30D975C98DCDA00E0158592B3D8AC402627D226E8F6AC43113E6A989C2B6934AE262D3EE7EAB7254005DCED179A508CD82A26DD1E0A4E2319210D9B64D260DF9561598F01A9E91200F654B069F8FEF10F1C2C2993EDB24507CE13387DFF0A840B692CF8
+X-C8649E89: 4E36BF7865823D7055A7F0CF078B5EC49A30900B95165D340A58BF0C7EAC340FAA0F38CA127064085198DA8F6EC469BD3EE52C4A9FB55682F99958E839884D7F1D7E09C32AA3244C2187BB0E0678AD2A76948ABE2D29758655E75C8D0ED9F6EE8D5DD81C2BAB7D1D
+X-D57D3AED: 3ZO7eAau8CL7WIMRKs4sN3D3tLDjz0dLbV79QFUyzQ2Ujvy7cMT6pYYqY16iZVKkSc3dCLJ7zSJH7+u4VD18S7Vl4ZUrpaVfd2+vE6kuoey4m4VkSEu530nj6fImhcD4MUrOEAnl0W826KZ9Q+tr5ycPtXkTV4k65bRjmOUUP8cvGozZ33TWg5HZplvhhXbhDGzqmQDTd6OAevLeAnq3Ra9uf7zvY2zzsIhlcp/Y7m53TZgf2aB4JOg4gkr2bioj1qmHCAeuKqOjkqr2/CpP9A==
+X-Mailru-Sender: 689FA8AB762F739339CABD9B3CA9A7D6AF8F064E25D51A3A2A58C97B59C27E9F8F8182784CE3FA142B2697F7A04D759B04FC54F637BA925032C609A2DC06202998FD9B05CC386A12349DB15C680E247222B820C1B2086D890DA7A0AF5A3A8387
+X-Mras: Ok
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211230_042957_923656_D7B23DB3 
-X-CRM114-Status: GOOD (  19.56  )
+X-CRM114-CacheID: sfid-20211230_045203_388354_DF974F4A 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,64 +67,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This patch adds support SMP on MediaTek MT6582 Cortex-A7 quad core SoC.
 
+Signed-off-by: Maxim Kutnij <gtk3@inbox.ru>
+---
+ arch/arm/mach-mediatek/mediatek.c | 4 +++-
+ arch/arm/mach-mediatek/platsmp.c  | 1 +
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
-On 30/12/2021 10:36, Miles Chen wrote:
-> clang reports a unused-but-set variable warning:
-> drivers/gpu/drm/mediatek/mtk_cec.c:85:6: warning: variable 'tmp' set but not used [-Wunused-but-set-variable]
-> 
-> In current implementation, mtk_cec_mask() writes val into target register
-> and ignores the mask. After talking to our hdmi experts, mtk_cec_mask()
-> should read a register, clean only mask bits, and update (val | mask) bits
-> to the register.
-> 
-> Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
-> 
-> Cc: Zhiqiang Lin <zhiqiang.lin@mediatek.com>
-> Cc: CK Hu <ck.hu@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> 
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+diff --git a/arch/arm/mach-mediatek/mediatek.c b/arch/arm/mach-mediatek/mediatek.c
+index e6e9f93a1f0..aefeb661405 100644
+--- a/arch/arm/mach-mediatek/mediatek.c
++++ b/arch/arm/mach-mediatek/mediatek.c
+@@ -20,7 +20,8 @@ static void __init mediatek_timer_init(void)
+ {
+ 	void __iomem *gpt_base;
+ 
+-	if (of_machine_is_compatible("mediatek,mt6589") ||
++	if (of_machine_is_compatible("mediatek,mt6582") ||
++	    of_machine_is_compatible("mediatek,mt6589") ||
+ 	    of_machine_is_compatible("mediatek,mt7623") ||
+ 	    of_machine_is_compatible("mediatek,mt8135") ||
+ 	    of_machine_is_compatible("mediatek,mt8127")) {
+@@ -38,6 +39,7 @@ static void __init mediatek_timer_init(void)
+ 
+ static const char * const mediatek_board_dt_compat[] = {
+ 	"mediatek,mt2701",
++	"mediatek,mt6582",
+ 	"mediatek,mt6589",
+ 	"mediatek,mt6592",
+ 	"mediatek,mt7623",
+diff --git a/arch/arm/mach-mediatek/platsmp.c b/arch/arm/mach-mediatek/platsmp.c
+index 16a4ee6c959..e1c7ad52f77 100644
+--- a/arch/arm/mach-mediatek/platsmp.c
++++ b/arch/arm/mach-mediatek/platsmp.c
+@@ -49,6 +49,7 @@ static const struct of_device_id mtk_tz_smp_boot_infos[] __initconst = {
+ };
+ 
+ static const struct of_device_id mtk_smp_boot_infos[] __initconst = {
++	{ .compatible   = "mediatek,mt6582", .data = &mtk_mt7623_boot },
+ 	{ .compatible   = "mediatek,mt6589", .data = &mtk_mt6589_boot },
+ 	{ .compatible   = "mediatek,mt7623", .data = &mtk_mt7623_boot },
+ 	{ .compatible   = "mediatek,mt7629", .data = &mtk_mt7623_boot },
+-- 
+2.34.1
 
-I'm still not happy with the commit subject, I think it is misleading. Clang 
-only helped to find the bug, but the we are fixing something else, that's not 
-just a clang warning. But I don't want to nit-pick too much so:
-
-Reviewed-by: Matthias Brugger <matthias.bgg@gmail.com>
-
-> 
-> ---
-> 
-> Change since v1:
-> add Fixes tag
-> 
-> Change since v2:
-> add explanation of mtk_cec_mask()
-> 
-> Change-Id: Iec6402b0532942f4d0e8bc56817eb87b95c03fad
-> ---
->   drivers/gpu/drm/mediatek/mtk_cec.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
-> index e9cef5c0c8f7..cdfa648910b2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_cec.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_cec.c
-> @@ -85,7 +85,7 @@ static void mtk_cec_mask(struct mtk_cec *cec, unsigned int offset,
->   	u32 tmp = readl(cec->regs + offset) & ~mask;
->   
->   	tmp |= val & mask;
-> -	writel(val, cec->regs + offset);
-> +	writel(tmp, cec->regs + offset);
->   }
->   
->   void mtk_cec_set_hpd_event(struct device *dev,
-> 
 
 _______________________________________________
 Linux-mediatek mailing list
