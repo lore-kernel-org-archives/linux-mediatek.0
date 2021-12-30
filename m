@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DED6BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 15:13:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89C0AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 15:30:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q1Hmk/fCDj6n+4ap1czMIn9SACGQ0UbWAV0SqUDnUXw=; b=N5Msc83cfL2Gpx
-	gcsiMMLIdvSYZtD1CYbDbuJAN+kR4KH0a4etfLEsTh1bA/Mv7AJatmW8FhDi4X6Fx522hv0gCj0Nn
-	Hgavh9m0JASI9AV9NdMgSN45DyY6h7OTe3nILd0oo/D52Burt1CZJFstiuWdvFdhpPctpsPFK/Y/t
-	9lmKBZqaX1rV1HFBBmUSgWOsqd7BiU1aX5XZUoV9eZQzCLZCq6VL3W9s2XKDaNC/0xGhJjSY8gkpo
-	xsAVv5SHGvbhAg34j73q9b8X4gFY+m/+p0DvZQ/YJQbxj8zOt1JFl3S31ljH5EQ06jFuZ9QS1qa93
-	/Dufk91Gg+a41Te1vqog==;
+	List-Owner; bh=CO35835Rk7EYuSfP/Qml38OduBbtPbnEts6csaXpYKA=; b=ER0MWIrAupSUDh
+	ojY6IbE94FF9Zb8SXRyTy0sa/9dgqXvQP8aR3fIbN+EE7HU2L+6YQDComrI/XgT3D7O0CHVv6lwHZ
+	UyWMN7X5xStT6BMssfpqwJ8oukHkIgvbQ2oaQxmAtcClT+peg4630hfcDjTYHKFH41T/Nljiuaoer
+	DE+J2JToho2wDc/A1ItEMOfSaB9yWDNgFwUSTt95k2G4Knkhr13g4iVLkAylQRMLvPdcBqC0PFIQt
+	geYpOjL8awbfHOXi9K5PY4C60mw8OtWLGuCztkPtrw/c0WPVW4+8yeSwM5XXgZMCxf91TxADf4dlQ
+	6lX3g3lQn9i6LUguTZFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2x7P-004cLR-Nm; Thu, 30 Dec 2021 15:13:27 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1n2xNw-004eBb-Sr; Thu, 30 Dec 2021 15:30:32 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2x7C-004cJ1-Dp; Thu, 30 Dec 2021 15:13:15 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id
- k66-20020a1ca145000000b00345fa984108so7770472wme.2; 
- Thu, 30 Dec 2021 07:13:14 -0800 (PST)
+ id 1n2xNV-004e52-QH; Thu, 30 Dec 2021 15:30:07 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id s1so51196672wrg.1;
+ Thu, 30 Dec 2021 07:30:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=BrOBt56bIUGwhax4+hkiSfB9eBwZpxmU8jWPncxv4xY=;
- b=mdcO0u7q512tAOfsTZd7cVP+9FoqU2UTTHPO+Yo/IGSV0jpo3V6ocoJcpfqVC+FqVq
- Y/R2IMnisigM9OZSRq5m8cMI7UyxCzpEuwJlZjzD5I47qKBijMd0cTgW8YdmGvwqGIgG
- LwR00rdl+w0+6VoEoFxks9NrghoH8gzJl2c9Dh3417RDCUfH9BARG/IJnJfzaTAntEg/
- CYUuZhMWbhoQqgpxKCsVWyAdkttIQD7uzWMV74baJmOu3o7+kEPwlbuTYOZNTQcs/XG3
- ICfmjodf46LaSnfOU3e9lZLYnTXzYhDprLDPs755K6R3tRfUNrteJoBN+1Tea/4Qukih
- upXA==
+ bh=1jof+DZebMLPiQc0TwDMmSnKuPJVGago0B+tjBwIYlw=;
+ b=OZYYKWmxJBwf2rALtePHVS5iVQMWA2WaSnbsSEYQnasSAZbu2SogzxPvsH7rP1Z7GT
+ UGJMXslRLv9dnu1DEgFUCQhuZmfavkZDCl1cKazBsWGvsFZShnCxYJ7dnOzbJMR8uxuf
+ ilazXWBQFquKFYhUFEHXTR81dmAM0AETc+A+50T6ahvzFWkbNZwC+OVb8h2kymGRWjNo
+ PMvMiCvY4ovqjukVwQL72U4imxJ0i/QtiOXJ3uoNF8ie6gcfa8K6LgMYuekZKw7zRMRQ
+ BNOCziQY+5xLAWR2kxNKwmKTtBZ29pk//hWTqgCe2NgR9ZONCO2YeZHvjfMaHKnpusG3
+ bKdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=BrOBt56bIUGwhax4+hkiSfB9eBwZpxmU8jWPncxv4xY=;
- b=F4k6KB/ax2UvSoQkpRyjrshZxSf7y3wSYSGTaOK3rd0iEheietvDNpOivq+HQ261UW
- b6+0xhXxP6BEYUqm3Rt9aK3KOL8PGsPhAYtLVkHApXUKng628uqFXZiGIVYV2zrWkRte
- T+cL3QplhfmuJLwx0bDzXJd3WKsB8qez0bnphckrFOcnY8GwOCF7KBOEb5qXziR6aiv8
- FexyuGHUV2yhP7RxddCRp6wqQIdiy16qBOtMe2OaKvBL2P1fnACjFGRDVwxEi2FPPtEI
- rowS9VRL8K4WigYUoSN5S1LWSnKLrhY5U7/UdJTiHNmbh6AJ2ULyZMbSy0yQ4xXaZPk1
- lk4Q==
-X-Gm-Message-State: AOAM531Ds1V70wXxXC6jKYwZ+M1DCSAWA+m5eG1AgTiLQ2NrhX02epUO
- eTDfhiXmCmd96coFKj4VIHY=
-X-Google-Smtp-Source: ABdhPJz6Ivr54shp46pcRY+QQqmJl5qUd/LY3TzF+V+pjZDP3U8afmIJ+avvhxp005UdEO/5axkTJw==
-X-Received: by 2002:a1c:20c2:: with SMTP id
- g185mr26301905wmg.115.1640877192898; 
- Thu, 30 Dec 2021 07:13:12 -0800 (PST)
+ bh=1jof+DZebMLPiQc0TwDMmSnKuPJVGago0B+tjBwIYlw=;
+ b=u7N9tpKNphfkLi+AZ13bxdX01/7ZuSepr/2JbCxdpOk4NuvB5n2ZwoIGMHtRg2eGx9
+ odCjN8JGbJjoIzINW2GK4xFqlH4YnCYoExrn0K3/v/o5pv47V5nq3XEtCXblKHzAADja
+ DWxFZ3xNXy2Xq3xoaefG42YMEY+/FlANA5U22PsT5/qng4PTZCh6WGe6A9V5Wm1fax3i
+ pAbJwjSDPW0L8HtHTzjotCOG04HYhlhoYE0dWv++O7zLgT7ohTJvQjchBURaDf3v7TqB
+ F5uUJUhEGOsCTXssS1fW6EI++i+/T2MEITdzkUUz9KIuGDw2iYuBDW+n3BZJL/Xd5RnP
+ nEGw==
+X-Gm-Message-State: AOAM533oB/ia6oWloUJw4wWTxvArRYxA2/PY4LquXJMA1Uyo9Omup4mB
+ BbdzEOaPpLp1S0Vqo3/+fcDva9SinOJ6FQ==
+X-Google-Smtp-Source: ABdhPJx5+OCjcspjRbYTsb4M9GjVMlH0pAjXWZCbNoB4HSUcvc6rFly+j9tntV0aChPYTZHYQgTHLA==
+X-Received: by 2002:adf:dcd2:: with SMTP id x18mr25558357wrm.173.1640878202749; 
+ Thu, 30 Dec 2021 07:30:02 -0800 (PST)
 Received: from [192.168.1.145] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id bg19sm2589127wmb.47.2021.12.30.07.13.11
+ by smtp.gmail.com with ESMTPSA id d4sm23839556wrx.102.2021.12.30.07.30.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Dec 2021 07:13:12 -0800 (PST)
-Message-ID: <fff75b65-51ab-cafd-a55f-137c0b7c2dc6@gmail.com>
-Date: Thu, 30 Dec 2021 16:13:10 +0100
+ Thu, 30 Dec 2021 07:30:02 -0800 (PST)
+Message-ID: <98efb356-dc0d-fa7e-5579-7984f2bb3e84@gmail.com>
+Date: Thu, 30 Dec 2021 16:30:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [PATCH v20 0/7] soc: mediatek: SVS: introduce MTK SVS engine
+Subject: Re: [PATCH v20 5/7] dt-bindings: soc: mediatek: add mt8192 svs
+ dt-bindings
 Content-Language: en-US
 To: Roger Lu <roger.lu@mediatek.com>,
  Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
@@ -81,12 +80,12 @@ Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  Guenter Roeck <linux@roeck-us.net>
 References: <20210721070904.15636-1-roger.lu@mediatek.com>
+ <20210721070904.15636-6-roger.lu@mediatek.com>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20210721070904.15636-1-roger.lu@mediatek.com>
+In-Reply-To: <20210721070904.15636-6-roger.lu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211230_071314_497699_C1AFD0A2 
-X-CRM114-Status: UNSURE (   8.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20211230_073005_902592_EBB9850D 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,24 +102,45 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Roger,
-
-On 21/07/2021 09:08, Roger Lu wrote:
-> 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
-> 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by get_cpu_device().
-> After retrieving subsys device, SVS driver calls device_link_add() to make sure probe/suspend callback priority.
-> 3. SVS dts refers to reset controller [4] to help reset SVS HW.
-> 
-> #mt8183 SVS related patches
-> [1] https://patchwork.kernel.org/patch/11193513/
-> [2] https://patchwork.kernel.org/project/linux-mediatek/patch/20201013102358.22588-2-michael.kao@mediatek.com/
-> [3] https://patchwork.kernel.org/project/linux-mediatek/patch/20200306041345.259332-3-drinkcat@chromium.org/
-> 
-
-Comments made in v16 actually also hold for v20, so please take them into account :)
+Please add a commit message.
 
 Regards,
 Matthias
+
+On 21/07/2021 09:09, Roger Lu wrote:
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+>   .../devicetree/bindings/soc/mediatek/mtk-svs.yaml         | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+> index a855ced410f8..59342e627b67 100644
+> --- a/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+> @@ -22,6 +22,7 @@ properties:
+>     compatible:
+>       enum:
+>         - mediatek,mt8183-svs
+> +      - mediatek,mt8192-svs
+>   
+>     reg:
+>       maxItems: 1
+> @@ -51,6 +52,13 @@ properties:
+>         - const: svs-calibration-data
+>         - const: t-calibration-data
+>   
+> +  resets:
+> +    maxItems: 1
+> +
+> +  reset-names:
+> +    items:
+> +      - const: svs_rst
+> +
+>   required:
+>     - compatible
+>     - reg
+> 
 
 _______________________________________________
 Linux-mediatek mailing list
