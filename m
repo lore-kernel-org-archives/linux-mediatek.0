@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4AB0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 01:40:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A46ABC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 30 Dec 2021 01:56:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lo+pXajyci4QqYt/LUVrVPMV1MQjA9WqQzNkCERUnYg=; b=M5ektrBg+Ok7H5
-	Ox1JOA8TWdruHqVvNzOguI0v+1FluHbqSe679oBK/V7CTfm2419DmL3GlLxijzt5dZUm1bp04KLkz
-	xSNBlpvyuq49mAHAnK6dn8vp6pPxBt9hY6wPo7il7aaLhzTP019zxD6mWf1BnfbU55838Pnf406xs
-	7MjzEtzHfnTnSBzZRe7tcClKyFRJRnA9PHuc3sKmz9ex9gtfsVWfOj+XO+YaMd0ONvfvL9E01vEy5
-	oU8iivFQgEWWBanbVXHjMMoz+ao007ztVCHXq8m6NmbRvNthv4h6cQmhdZ1LyrudKSBrUczyrxNkp
-	1f6n0kRTky0OrGcZ14Dw==;
+	List-Owner; bh=uOH+8tppTRFbf2HNGfsF9DzJYl2JBXj8eVDnsLA0b4I=; b=AgX3vGHVWDG8Lf
+	uxU0gVVs7J3nGbix2CPGnaKg74c5BHqz/37TBUtYw3A7Vrotfqb5lAwN6Kkf6UCu3CvNh4UdIpKEO
+	olEUJ+NpaXV6b0mGvuc/fnlYfqAZQ/x4BKBy4pVqYA1N1WOeqgFmkx5MdQT7s6iVCJGeE+lWW5CGr
+	O4MMA6BsNzCvBiNikYH+ZvJdbUvhe6eCNNX/a2BsR2+k7fiutsIHQFbYEcFt/+E+IYBaJEtiaIVNG
+	x1r1+rAbPArgOQZvVFlf7eVKfHw77DtNmGm4dTCe2omW4jyNRvw92cimp14iJ+Use36385/5qaceq
+	kGNaEpKbumxdJwFiziHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n2kQb-003Y1w-7A; Thu, 30 Dec 2021 01:40:25 +0000
-Received: from mout.kundenserver.de ([212.227.17.10])
+	id 1n2kg5-003ZFL-Ao; Thu, 30 Dec 2021 01:56:25 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n2kQO-003Y0a-4s; Thu, 30 Dec 2021 01:40:13 +0000
-Received: from mail-wm1-f46.google.com ([209.85.128.46]) by
- mrelayeu.kundenserver.de (mreue108 [213.165.67.113]) with ESMTPSA (Nemesis)
- id 1M6UVr-1n4gEJ1hxh-006u1A; Thu, 30 Dec 2021 02:40:06 +0100
-Received: by mail-wm1-f46.google.com with SMTP id
- g7-20020a7bc4c7000000b00345c4bb365aso12552071wmk.4; 
- Wed, 29 Dec 2021 17:40:06 -0800 (PST)
-X-Gm-Message-State: AOAM530Ddc1qcG7qO+UPA4svpYvyBod/M9VPU2YEbwZAl/ZKNn2L1NaS
- o1/kjGvZuDcSYLWrgVWbbfGfdI5We6j414X2zsQ=
-X-Google-Smtp-Source: ABdhPJxdTKZsUGv4yK6MpMvye0fW7A+jPT6EmKT3s0X6J1Ax1eu2h7DJ+yLaT2MAqb8v3KguyWLmiC/ygBi8s75y0VA=
-X-Received: by 2002:a7b:c448:: with SMTP id l8mr23776105wmi.173.1640828406019; 
- Wed, 29 Dec 2021 17:40:06 -0800 (PST)
+ id 1n2kg1-003ZEp-6x; Thu, 30 Dec 2021 01:56:24 +0000
+X-UUID: 27270f8a0409438aba6bddb5f5bce042-20211229
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=HYqS7d+eiPmGytyx8HRz1poJJR6kp79sEhVu1clfAK8=; 
+ b=e/mQkyJB35YWGcso6cQkDKbtzAlDZ6IU/LwTLXiohgLdGDkpFhktMp7Y759NzlSamGle3PGj3fouwiIfm3xFtxIjxlr2Do6FIY+dxur7LQnRjJQQSP5o+ZZEzRK7mb/ixQMrPbxhTxN1noSSr0FIEe6bQO9CTvP3hU0Io+pxSAU=;
+X-UUID: 27270f8a0409438aba6bddb5f5bce042-20211229
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 498774183; Wed, 29 Dec 2021 18:56:15 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 29 Dec 2021 17:56:09 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 30 Dec 2021 09:56:07 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 30 Dec 2021 09:56:07 +0800
+Message-ID: <33cd21877853d3f602a7403f37a30d68e9fa3e4a.camel@mediatek.com>
+Subject: Re: [PATCH] phy: mediatek: Fix missing check in mtk_mipi_tx_probe
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Miaoqian Lin <linmq006@gmail.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Kishon Vijay Abraham I <kishon@ti.com>, "Vinod
+ Koul" <vkoul@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <dri-devel@lists.freedesktop.org>, <linux-mediatek@lists.infradead.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-phy@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+Date: Thu, 30 Dec 2021 09:56:07 +0800
+In-Reply-To: <20211224082103.7658-1-linmq006@gmail.com>
+References: <20211224082103.7658-1-linmq006@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <0d05e8b6-c56f-bad7-00c1-44682cedb38f@suse.com>
- <CAK8P3a1DaHnf0QOMjuvTYGeUttUNkBLhFu0b-43jBAa0bHtLFw@mail.gmail.com>
- <9b16c1c9-7fcb-b717-7dcb-b911dd39a5a2@gmail.com>
-In-Reply-To: <9b16c1c9-7fcb-b717-7dcb-b911dd39a5a2@gmail.com>
-From: Arnd Bergmann <arnd@arndb.de>
-Date: Wed, 29 Dec 2021 20:40:03 -0500
-X-Gmail-Original-Message-ID: <CAK8P3a2mY7y1XWS6L-Ze-DtnhONJRzx0rFdAagBfKGBErsdD6Q@mail.gmail.com>
-Message-ID: <CAK8P3a2mY7y1XWS6L-Ze-DtnhONJRzx0rFdAagBfKGBErsdD6Q@mail.gmail.com>
-Subject: Re: [GIT PULL] arm64: dts: updates for v5.17
-To: Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Arnd Bergmann <arnd@arndb.de>, Matthias Brugger <mbrugger@suse.com>,
- arm-soc <arm@kernel.org>, SoC Team <soc@kernel.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Ben Tseng <ben.tseng@mediatek.com>, Fabien Parent <fparent@baylibre.com>, 
- Hsin-Yi Wang <hsinyi@chromium.org>, Prashant Malani <pmalani@chromium.org>, 
- Sam Shih <sam.shih@mediatek.com>, Seiya Wang <seiya.wang@mediatek.com>, 
- Tinghan Shen <tinghan.shen@mediatek.com>, Felix Fietkau <nbd@nbd.name>
-X-Provags-ID: V03:K1:+M+sIdTmVT+7BGwywMiI3gaLZxBZi96+nu6gkSBzw3gfWWQwrY5
- p8nmhrn1FxsJtx3gMhy23O3wfZ72t2PwlcotOijXBmgCrJpQAOJsLGuAPxLTq3c0kBZzW0W
- r5UW5DJn3tiYLXJZfQY9VO2rykkT/darN8XYlpZGhQ2cW7+hYDBxWTcMuQ0sp3a0DUV/rxn
- Mph50rBo4jpMZAVJ0opUA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:iaVZ8yiaTIE=:9HOw5IkwSY170rxUxpn3Tr
- mLcZcPjpBOvGMS4hqIdKXz6mfEc9llS4wvOiqTkDA8OKMKGlO/DSgiwOFDfKqB/4T9YnteMsm
- awt3i/YSFaSvx1C97GlmIIvqcgqnf5SxRz5bx9or1qM0OgmTGgsVkUD2QDVLh0y/+bDyJ1dBc
- EJKgXgOet/KaHgNCPRGZZCmnk8KvE5Am5j6f0lnj5IAXR2365RTMQU4jh0G5EDHJsDGC+DmG0
- c1CCI6xn+apzuGZ9x9xfrTjHWDRGBqxgqqSBP0OVTlV7B6FuZNdfBBswFWEigHXPMAMPZzG1Z
- kdOuEhZUqW96cL+EX66sJVbVqNVDaO4d90frBXYyEz4XJ1e1DLB5BcHwkyPByUbmCGUaFH3EH
- Zbjt1Pz0xMDAcmtJkV2DasDAnk2WZ5Ob8W4D2olmY5s2u8e8+k6FgSDBKUuCpzzfEtopoWdDd
- VzGTtq9O4B1rVcIGJOhRuWPjDeje+45QccLy2wirK9Ph3ScEJJH0f6t4rgGwf9rITcHXzxkSn
- rtk6IZSWgH65dkKhT3VW7VebC3GBGn2kIGb4wOgqspBm8X1vh3YCXjokaUatYv+aKxJ9xC37E
- tl5kNLuRaz4gD9I8avn4/DNWYuGuRT7Cu8A4+ZHWIEYZxgyXi80WHVWDkOFU9exWsbH84P/Sn
- IlH8+w2E37dNq+1ksViHKcFwhEOU8h7+zxgVvN/cr0NSW8+QK75CtjzKZk+zRsuGu7h8=
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211229_174012_546622_27DC58E6 
-X-CRM114-Status: GOOD (  30.20  )
+X-CRM114-CacheID: sfid-20211229_175621_306515_0FFF811F 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,49 +79,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Dec 29, 2021 at 10:29 AM Matthias Brugger
-<matthias.bgg@gmail.com> wrote:
-> On 20/12/2021 17:18, Arnd Bergmann wrote:
-> > On Sat, Dec 18, 2021 at 9:42 AM Matthias Brugger <mbrugger@suse.com> wrote:
-> >>
-> >> Please take a look on the below patches for aarch64 based MediaTek boards.
-> >> In this round we add support for the mt8183 based Acer Crhomebook 314, as well
-> >> as we add support to several SKUs for mt8183 based Chromebooks.
-> >> Apart from that we add basic support to the mt7986 in both variants (mt7986a,
-> >> mt7986b). The difference between the both SoCs are the pin-controller capabilities.
-> >>
-> >> Hope you are fine with this pull request.
-> >
-> > I've pulled both tags, but I have two minor comments:
-> >
-> > - please put "mediatek" into the subject, that helps when looking at
-> > the pull requests
-> >    with pwclient, which does not show the author by default
-> >
->
-> I did this pull request with a lot of time pressure and forgot about it. My
-> apologies, I'll try to not forget next time.
->
-> > - I was expecting you to send a branch for the new EN7523 SoC as well. Did that
-> >    end up not making it in time?
-> >
->
-> As I have seen, in the meantime you reviewed some parts yourself. I took the
-> first two patches in my tree, but we should coordinate for the rest. If  you
-> want to take it through the SOC tree or if I should take it through the mediatek
-> tree. As Airoha is a subsidiary of MediaTek, I suppose in the long run, you want
-> it do be part of the Mediatek tree, correct?
+On Fri, 2021-12-24 at 08:21 +0000, Miaoqian Lin wrote:
+> The of_device_get_match_data() function may return NULL.
+> Add check to prevent potential null dereference.
+> 
+> Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+> ---
+>  drivers/phy/mediatek/phy-mtk-mipi-dsi.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> index 28ad9403c441..67b005d5b9e3 100644
+> --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> @@ -146,6 +146,8 @@ static int mtk_mipi_tx_probe(struct
+> platform_device *pdev)
+>  		return -ENOMEM;
+>  
+>  	mipi_tx->driver_data = of_device_get_match_data(dev);
+> +	if (!mipi_tx->driver_data)
+> +		return -ENODEV;
+>  
+>  	mipi_tx->regs = devm_platform_ioremap_resource(pdev, 0);
+>  	if (IS_ERR(mipi_tx->regs))
 
-I talked to Felix about it last week, I think it would be best if you handle the
-arch/{arm,arm64}/ bits for Airoha as part of the mach-mediatek and merge
-changes the same way as the mt76xx, mt69xx and mt81xx series. For the
-initial submission, of en7623, having a single branch that contains both
-the arch/* and drivers/* with the appropriate Acks would make the most
-sense, to avoid spreading it out over multiple merge windows, though it's
-not too late for 5.17.
+Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-         Arnd
-
+Thanks
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
