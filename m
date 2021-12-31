@@ -4,76 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4870AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Dec 2021 15:51:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3663FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 31 Dec 2021 20:52:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vBeK3+Lzh8JeQGnM+xJOfM1dIa7sGeIG6G+Buc2sLM4=; b=IGS5pSfBquS9oI
-	hM4lWlEo+PQqYsJf69oqWWRjuIeVkpciOJ+qZpIwDruNhB4jKd4OXmQU8Hif/B0VfShkK626rEze4
-	Q+brU9BgcQw97Ba6Fjxcoqgon3oECCgkc8IKIaD91OSf1x+Vej/Lso4p7S0pnb0IXlQCWdHCzWhnS
-	RyEKfW+YHbbcB5Onw1smFIF2OyI/ZdeyypBjF4OC6212M8GnlKORVv+wtZgZFYAxDjSisaNr4G/tL
-	Btrux7JPg7e+DiXkReGOmE5GeBq1Akh0Tk2eU2g8jUQa7nN41ech5SVz47GmAifdVAwCpKsQh9NgS
-	voISHMr3y8apHXe3lxog==;
+	List-Owner; bh=1bqysmC1wr0eMn3gNIsCRcZIzjhUUUJ80ekqI1SnglE=; b=ZDO5Y1aNCFgkiU
+	hGMMNQEg2VzUa1RY+HIj9I398p508Cu9ZrLSYktOTLYFa4JFFyTO7NBtQmhy1VnW3CHqygsnZR+9X
+	hD9O7aJSXoS//cfBY5vlfwd22HyuO1CChMgX8wBj0vigBeDGsKlIQW+1ncXr88Fh/FQUS9EdkBgbe
+	ZZ2FUI6YhqDAZNulwzgsI1a9ceygVLJr+nW442dj5RqRnJibsxI8SKEogqpLZDvd8HvUOWqFCS0sh
+	sVN/jkuSh/VbPu5FPCgSLR/IPRHUhktAU530fKR/yvDoyleObwRwOLgxeQRzBpGtl10CiLyp46dCa
+	nKs2m5jlGhl2U7pKjMoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n3KBs-006FM3-0q; Fri, 31 Dec 2021 15:51:36 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1n3Ot8-006W5k-9Y; Fri, 31 Dec 2021 20:52:34 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n3KBg-006FKT-Hy; Fri, 31 Dec 2021 15:51:25 +0000
-Received: by mail-wr1-x434.google.com with SMTP id s1so56686836wrg.1;
- Fri, 31 Dec 2021 07:51:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=z2JRwnSemlAssF0xWWxbNdKfXjlM4nM04lo4L/++jM0=;
- b=OY0frir6nXi+ax6kx21OwPIqlAzk9f67w1xJtpBV2Ai9jSVYWKmGFSvoCbfRQVNHWO
- ZXwHgGjN3EVPl0ZaLlnbxxs4pwvmM8InukWDEPzknSl/X5C/hTReyIMLIPiAyysgrLfi
- avdrXFg6DPAi50PmzkHbSC/obIdI4vdO30UXYoGD8HqGbiTIZB2HdcEKhFhOdColNkho
- WLTuBV3YQlHEY/RzAkBluMawMcdKhkJhAfgv3Z9P+2h7nKegUg8mJ1KvpW4O71OaGWLt
- fXDRHrS3sRfnlg2RRBIzAzW/XjwUttImPnKTCR5XYlCZTCjupp3BxalsEitYs2+YW5VY
- +CMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=z2JRwnSemlAssF0xWWxbNdKfXjlM4nM04lo4L/++jM0=;
- b=MlycfFPGAZMWPIPdEdMix+TLrKjK2Qd+14WXQFm1jGs+BP+WQwm7wIlGZih9Z4rqPC
- aeG5XHdgdnNMSWsEVG5YHBv1owPHgUQXWbef62coyluyV9brkVEDnBC6UP9cbW3/uy5/
- DlH3fCfSmQtmjmL8TdgjpvvH6XTY/gyynUdiD1RcmqHz5WuzO25MuFX3upgt3Hsrxric
- 9ny3E8/aXhoqO+qxGk2eiCjxJcUdIHxt54r566r0CdFzArRUino/9oTqc0zkfuxK+ys5
- jG/cXgB2giABzmNT9Sunj1JMD61crAL/fvHhe/L+7QEAbe2uTdCz7OIr87YHgCI5XdbS
- MBVw==
-X-Gm-Message-State: AOAM5307iTRYVuSKyqO8p63BVLmBjY9lhaXPPjWoefqQu6pibpH0OQg/
- 6MhC2Fw16w/Zan6hGvIVhPc=
-X-Google-Smtp-Source: ABdhPJz53Lv49gxLZAUyTXJrUNygCj34P14GobP1ntR8Jm6a0JIRrHzKfnrpio6OsX1bMlXcLpVh0Q==
-X-Received: by 2002:a5d:6d50:: with SMTP id k16mr6612671wri.693.1640965881976; 
- Fri, 31 Dec 2021 07:51:21 -0800 (PST)
-Received: from [10.0.2.15] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id n15sm26592506wru.66.2021.12.31.07.51.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 Dec 2021 07:51:21 -0800 (PST)
-Message-ID: <dda186e0-38e0-4061-f60e-e297441d9fed@gmail.com>
-Date: Fri, 31 Dec 2021 16:51:20 +0100
+ id 1n3Ot4-006W58-15; Fri, 31 Dec 2021 20:52:32 +0000
+Received: from local
+ by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.94.2) (envelope-from <daniel@makrotopia.org>)
+ id 1n3Ost-0004rN-DV; Fri, 31 Dec 2021 21:52:19 +0100
+Date: Fri, 31 Dec 2021 20:52:03 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Andrew Lunn <andrew@lunn.ch>,
+ Michael Lee <igvtee@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH v9 0/3] net: ethernet: mtk_eth_soc: refactoring and Clause 45
+Message-ID: <Yc9tc4jHEYsRq++v@makrotopia.org>
+References: <Ycr5Cna76eg2B0An@shell.armlinux.org.uk>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.1
-Subject: Re: [PATCH 2/2] ARM: mediatek: dts: activate SMP for mt6582
-Content-Language: en-US
-To: Maxim Kutnij <gtk3@inbox.ru>, Rob Herring <robh+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20211230155152.48715-1-gtk3@inbox.ru>
- <20211230155152.48715-2-gtk3@inbox.ru>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20211230155152.48715-2-gtk3@inbox.ru>
+Content-Disposition: inline
+In-Reply-To: <Ycr5Cna76eg2B0An@shell.armlinux.org.uk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20211231_075124_666785_55FD4EEA 
-X-CRM114-Status: GOOD (  15.01  )
+X-CRM114-CacheID: sfid-20211231_125230_119569_45D38E84 
+X-CRM114-Status: UNSURE (   9.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,102 +59,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Rework value and type of mdio read and write functions in mtk_eth_soc
+and generally clean up and unify both functions.
+Then add support to access Clause 45 phy registers.
+
+All three commits are tested on the Bananapi BPi-R64 board having
+MediaTek MT7531BE DSA gigE switch using clause 22 MDIO and
+Ubiquiti UniFi 6 LR access point having Aquantia AQR112C PHY using
+clause 45 MDIO.
+
+v9: improved formatting and Cc missing maintainer
+v8: add patch from Russel King, switch to bitfield helper macros
+v7: remove unneeded variables and order OR-ed call parameters
+v6: further clean up functions and more cleanly separate patches
+v5: fix wrong variable name in first patch covered by follow-up patch
+v4: clean-up return values and types, split into two commits
+v3: return -1 instead of 0xffff on error in _mtk_mdio_write
+v2: use MII_DEVADDR_C45_SHIFT and MII_REGADDR_C45_MASK to extract
+    device id and register address. Unify read and write functions to
+    have identical types and parameter names where possible as we are
+    anyway already replacing both function bodies.
 
 
-On 12/30/21 16:51, Maxim Kutnij wrote:
-> This patch adds nodes mt6589-smp, pmu and arm,armv7-timer.
-> 
-> Signed-off-by: Maxim Kutnij <gtk3@inbox.ru>
-> ---
->   arch/arm/boot/dts/mt6582.dtsi | 35 ++++++++++++++++++++++++++++++-----
->   1 file changed, 30 insertions(+), 5 deletions(-)
-> 
-> diff --git a/arch/arm/boot/dts/mt6582.dtsi b/arch/arm/boot/dts/mt6582.dtsi
-> index 4263371784c..5efcbf43325 100644
-> --- a/arch/arm/boot/dts/mt6582.dtsi
-> +++ b/arch/arm/boot/dts/mt6582.dtsi
-> @@ -15,29 +15,43 @@ / {
->   	cpus {
->   		#address-cells = <1>;
->   		#size-cells = <0>;
-> +		enable-method = "mediatek,mt6589-smp";
->   
-> -		cpu@0 {
-> +		cpu0: cpu@0 {
->   			device_type = "cpu";
->   			compatible = "arm,cortex-a7";
->   			reg = <0x0>;
-> +			clock-frequency = <1300000000>;
+Daniel Golle (2):
+  net: ethernet: mtk_eth_soc: fix return value and refactor MDIO ops
+  net: ethernet: mtk_eth_soc: implement Clause 45 MDIO access
 
-What do we need the clock-frequency for? I wasn't able to figure that 
-out right now.
+Russell King (Oracle) (1):
+  net: mdio: add helpers to extract clause 45 regad and devad fields
 
-Other then that patches look good.
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 85 +++++++++++++++------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 19 +++--
+ include/linux/mdio.h                        | 12 +++
+ 3 files changed, 89 insertions(+), 27 deletions(-)
 
-Regards,
-Matthias
+-- 
+2.34.1
 
->   		};
-> -		cpu@1 {
-> +		cpu1: cpu@1 {
->   			device_type = "cpu";
->   			compatible = "arm,cortex-a7";
->   			reg = <0x1>;
-> +			clock-frequency = <1300000000>;
->   		};
-> -		cpu@2 {
-> +		cpu2: cpu@2 {
->   			device_type = "cpu";
->   			compatible = "arm,cortex-a7";
->   			reg = <0x2>;
-> +			clock-frequency = <1300000000>;
->   		};
-> -		cpu@3 {
-> +		cpu3: cpu@3 {
->   			device_type = "cpu";
->   			compatible = "arm,cortex-a7";
->   			reg = <0x3>;
-> +			clock-frequency = <1300000000>;
->   		};
->   	};
->   
-> +	pmu {
-> +		compatible = "arm,cortex-a7-pmu";
-> +		interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 5 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 6 IRQ_TYPE_LEVEL_LOW>,
-> +			     <GIC_SPI 7 IRQ_TYPE_LEVEL_LOW>;
-> +		interrupt-affinity = <&cpu0>, <&cpu1>, <&cpu2>, <&cpu3>;
-> +	};
-> +
->   	system_clk: dummy13m {
->   		compatible = "fixed-clock";
->   		clock-frequency = <13000000>;
-> @@ -56,7 +70,18 @@ uart_clk: dummy26m {
->   		#clock-cells = <0>;
->   	};
->   
-> -	timer: timer@11008000 {
-> +	timer {
-> +		compatible = "arm,armv7-timer";
-> +		interrupt-parent = <&gic>;
-> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-> +			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>,
-> +			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
-> +		clock-frequency = <13000000>;
-> +		arm,cpu-registers-not-fw-configured;
-> +	};
-> +
-> +	timer: timer@10008000 {
->   		compatible = "mediatek,mt6577-timer";
->   		reg = <0x10008000 0x80>;
->   		interrupts = <GIC_SPI 112 IRQ_TYPE_LEVEL_LOW>;
 
 _______________________________________________
 Linux-mediatek mailing list
