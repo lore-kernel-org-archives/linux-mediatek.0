@@ -4,75 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E72D1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jan 2022 05:17:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4A3AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun,  2 Jan 2022 15:48:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ji1T5dk9kGhCLXfgAsPi0Vv0UTXKoiDQ77fXt2WU1Mc=; b=3pLaeR8OVBMrOw
-	gf170KQDbgtScHQVFY5Veodc7mx9GDBCYUV1iKWa2U46o+0RiirXKmZP/dAXAxkvQHSlBBcEJ01dD
-	B4KqKVo2V5Q6AjrTrZp9OMT+UidrWRoJx+GIguaZjHtHLXbS4xCYnfEWZDSeQzKukHjDOpbyEIbgB
-	0bwtKoy1lCBKsDS6NHYObZGLce+cI9U6GeNyJP+VjmPVtxxEOT32OJqEVb5DDaWAqHeensZUdUEuV
-	LvbNs4jwnPT1ZXWjN+HA/xksj0Ck+tFZTsYXFWBy5pj9CuTsIAoWqW5h8tzJWKNOu5c4mrBhJHX92
-	tKQy/0bzR9lt0WPKKaPA==;
+	List-Owner; bh=CmW0U0xwnbcPqr2MQjzbuTHjU5UzNHcQLB/L7HHeJJU=; b=i9SrnnB9L6yFoe
+	fDRd8ZdIQ6nx50O2T0WlzAYiAP/OGlU+OulEwD86w6lwA8GgLbX8aKV/NbVjGw6HeXgevr3JvJpS9
+	R6FvSBjeg8iMVecCHhOnzzDwy2J0Y5zYIfNGGPdN4RVwmeW6TBD0qVG2JEGGVVHt96eDd7lT1JBgB
+	UPmLGP0wBKj066EZ/AWa5X2TzxZKR1TdANj8jvbwC7VXiPubpErBs6dgbNPVHsoBJgmyPsrb6Z0s3
+	z6M5duOvn4yZ2C3uw4UbzPfnbukdLr60/WbAffLyrS/lrSRGt9UqlEMY6qvDXhTHDTsPthg/OF5sD
+	aK/XOhG74EWLFb9lW3jQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n3tF0-007YLU-VD; Sun, 02 Jan 2022 05:17:10 +0000
-Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
+	id 1n435g-007tCH-V4; Sun, 02 Jan 2022 15:48:12 +0000
+Received: from fudo.makrotopia.org ([2a07:2ec0:3002::71])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n3tEy-007YKK-7f
- for linux-mediatek@lists.infradead.org; Sun, 02 Jan 2022 05:17:09 +0000
-Received: by mail-lf1-x134.google.com with SMTP id bp20so68348648lfb.6
- for <linux-mediatek@lists.infradead.org>; Sat, 01 Jan 2022 21:17:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9OUJm1l1Lkz1YaEdfh/UEwDaTVMcLzVdwO6tOQfKl7o=;
- b=EhPaLrzIg6G1hnSZHwGOBFaFHxH4UcQg44k8y7RnCfMMJ26s5yYuh3KY+LGCoUO72S
- zJ6UWj/g3J+AduMZdZqDx9LQwmBSwgLNID7w37AIoSfThf/Id7LBJF1IqdhQF/4U8IRB
- YyxQq5z7zRdxF77bI6jV79EMMjbhK3HRul9oK57hQO+cDjpiN/zUwHELKzk9UcWHf7fx
- dncoZMGHqFNmmiLDT/ehp5122zyz/vLMKwkgXoUhuRhVC2B55nmx/oqyLkdIkRrmPKp5
- 1k64Q55v8bTDmR+ZAnkBIWNQ5fi+1UCfb8LXztefaq7WGWOkRL0Q8P8TIPqxSD2AuWe4
- d1rA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9OUJm1l1Lkz1YaEdfh/UEwDaTVMcLzVdwO6tOQfKl7o=;
- b=J50fXB62ABjvT4wB+woQLupyzWV+RfAztdi8x1YlH9uEVAtZjAlygBGHGB2aLN34rk
- pasOEGNhP3NDWuisMgdXnatc5JHJ71YOM2F2H3FmnsAaFu90TulvfkqTxtkxwnQQIP6h
- 97/nwmrsYng5gJbReEE7PWhRTtpCjJ/eq1WvShaY5EZCWrhCOoK4mUDhUnQroPxIgzyL
- ThHve5KGvNv8ScxqGM33cU0gI4Z9QV+BTCDgzAwLkb3fRYsh/dbTAFVvFk2c3pRETr0D
- ZZXReUcXvcbaCNKeuvhUP+FmSQltJkp4AWwyaHqL3KJRYBRrvg4LzyYEyHvwLFJO2soT
- YYkw==
-X-Gm-Message-State: AOAM533b4J9qwiUuQtPkyS8EurDT4TqeOzMF9iMiZS0OAhVbk8+Vr7Ey
- bgTh5koKcb/qLEH+J97g3WDgRz1/h1JsT2xxtyHDFQ==
-X-Google-Smtp-Source: ABdhPJx1AorkEc1HSDDatFay0OziPayU+K/x43xNs6lLbJwcnlEBOfMLwN9/X8ZQciCUI5gZ71NO+Ml7PdU9DJ0OS/g=
-X-Received: by 2002:a05:6512:39ce:: with SMTP id
- k14mr18954362lfu.508.1641100625527; 
- Sat, 01 Jan 2022 21:17:05 -0800 (PST)
+ id 1n435d-007tA8-F6; Sun, 02 Jan 2022 15:48:11 +0000
+Received: from local
+ by fudo.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256)
+ (Exim 4.94.2) (envelope-from <daniel@makrotopia.org>)
+ id 1n435U-00017V-HF; Sun, 02 Jan 2022 16:48:00 +0100
+Date: Sun, 2 Jan 2022 15:47:52 +0000
+From: Daniel Golle <daniel@makrotopia.org>
+To: linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, John Crispin <john@phrozen.org>,
+ Sean Wang <sean.wang@mediatek.com>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, Andrew Lunn <andrew@lunn.ch>,
+ Michael Lee <igvtee@gmail.com>, Heiner Kallweit <hkallweit1@gmail.com>
+Subject: [PATCH v10 0/3] net: ethernet: mtk_eth_soc: refactoring and Clause 45
+Message-ID: <YdHJKLfFCJvYBcdB@makrotopia.org>
+References: <YdCNZh5PsBwbfMtp@lunn.ch>
 MIME-Version: 1.0
-References: <20211220121825.6446-1-tinghan.shen@mediatek.com>
- <20211220121825.6446-4-tinghan.shen@mediatek.com>
-In-Reply-To: <20211220121825.6446-4-tinghan.shen@mediatek.com>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 2 Jan 2022 06:16:53 +0100
-Message-ID: <CACRpkdaGui4ULm7E7Y7YFLZ1BXKfvKKqv4KC=eTMBDExJThPdA@mail.gmail.com>
-Subject: Re: [PATCH v7 3/4] dt-bindings: pinctrl: mt8195: add wrapping node of
- pin configurations
-To: Tinghan Shen <tinghan.shen@mediatek.com>
-Cc: robh+dt@kernel.org, matthias.bgg@gmail.com, broonie@kernel.org, 
- bgolaszewski@baylibre.com, sean.wang@mediatek.com, bayi.cheng@mediatek.com, 
- gch981213@gmail.com, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-spi@vger.kernel.org, 
- Project_Global_Chrome_Upstream_Group@mediatek.com
+Content-Disposition: inline
+In-Reply-To: <YdCNZh5PsBwbfMtp@lunn.ch>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220101_211708_391708_BD577E11 
-X-CRM114-Status: UNSURE (   9.58  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220102_074809_561822_D209BBCE 
+X-CRM114-Status: GOOD (  11.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,23 +63,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Dec 20, 2021 at 1:18 PM Tinghan Shen <tinghan.shen@mediatek.com> wrote:
+Rework value and type of mdio read and write functions in mtk_eth_soc
+and generally clean up and unify both functions.
+Then add support to access Clause 45 phy registers, using newly
+introduced helper macros added by a patch Russell King has suggested
+in a reply to an earlier version of this series [1].
 
-> On mt8195, the pinctrl node has pinctrl groups to group pin
-> configurations by users' need. In each pinctrl group, it has
-> subnode(s) to list pins needed and pin configurations. By supporting
-> multiple subnodes, we can configure different pin characteristics
-> (driving/pull-up/pull-down/etc.) in a pinctrl group.
->
-> Update pinctrl-mt8195.yaml to add subnode in pinctrl groups and an
-> example to illustrate the usage.
->
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+All three commits are tested on the Bananapi BPi-R64 board having
+MediaTek MT7531BE DSA gigE switch using clause 22 MDIO and
+Ubiquiti UniFi 6 LR access point having Aquantia AQR112C PHY using
+clause 45 MDIO.
 
-This patch applied.
+[1]: https://lore.kernel.org/netdev/Ycr5Cna76eg2B0An@shell.armlinux.org.uk/
 
-Yours,
-Linus Walleij
+v10: correct order of SoB lines in 2/3, change patch order in series
+v9: improved formatting and Cc missing maintainer
+v8: add patch from Russel King, switch to bitfield helper macros
+v7: remove unneeded variables and order OR-ed call parameters
+v6: further clean up functions and more cleanly separate patches
+v5: fix wrong variable name in first patch covered by follow-up patch
+v4: clean-up return values and types, split into two commits
+v3: return -1 instead of 0xffff on error in _mtk_mdio_write
+v2: use MII_DEVADDR_C45_SHIFT and MII_REGADDR_C45_MASK to extract
+    device id and register address. Unify read and write functions to
+    have identical types and parameter names where possible as we are
+    anyway already replacing both function bodies.
+
+Daniel Golle (2):
+  net: ethernet: mtk_eth_soc: fix return value and refactor MDIO ops
+  net: ethernet: mtk_eth_soc: implement Clause 45 MDIO access
+
+Russell King (Oracle) (1):
+  net: mdio: add helpers to extract clause 45 regad and devad fields
+
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 85 +++++++++++++++------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.h | 19 +++--
+ include/linux/mdio.h                        | 12 +++
+ 3 files changed, 89 insertions(+), 27 deletions(-)
+
+-- 
+2.34.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
