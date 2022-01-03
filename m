@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56BC3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jan 2022 17:31:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C8EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jan 2022 17:31:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KfxEaDjeGl993Pi9BbwFiWrqRStnFHsDDGDaAC8ru4s=; b=ALfrIrcPvurOdq
-	XvUMVaOpti45/w/mhB5uFVEA5/Jo3apnyhZv8SLOO24d0sg3eAviYqyczxDYiEhTzDUcq6zO9Seyb
-	y91EJJXtO+z4xWAG07ne6GIs1COgCmTw5KOmnEdYiUBlVzfRfXmRQjY22mRW2ETClBGW+8dypAK7E
-	JKdAnt3hbSG8NCCREzxC+m6tHbPD0PkOJ70VLd/HviXOjENrpogINTXfMxIArWh7+ZtWZ4WIP6w+/
-	B7y83TvE4cY1smCcjazaylH2vE0DKqWv3EJqlVQdFdWn6XfbQGAYYfkm0Ij/JqKIQyfPy+9HcVtL+
-	5PW7QzEuo9Q6T2m3wJJw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FVI6f80hwQwdxOT3bsNGF5B67fgDB/HczuZPCDnLfGI=; b=q45rCQMH9y8mBV
+	tKwBiG0zbHxUu/0U11AjR820bET5m4KCIY07bYyzI+aVmktSgCMqcxwDL1oBxU2nrX/kkG65pC5nD
+	3e32GzLT8KLE3aufg3UfY8E8TqIKfEIJ7N8PLMv5q/nPpS5QPreCwf+sHDqAHkGN4LEW8OyhGgP/D
+	jIPsC142RitVmt7na/uFr8Oz712QEAZ7azBgcYIflzgJFhLMASXMhNLyJz/hz7r0KpEPvj+oJeb03
+	u/dKLwAK2PjIZ/9gfeQwgpXJTAa0KcJOPdO5nBBJyYaio5f6H6RkUYTncZPl6+rKOG+/T3uC113Yv
+	7Juqp/ONnLhxjegM6mLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4RAm-009gme-JV; Mon, 03 Jan 2022 17:31:04 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1n4RBQ-009h6j-SP; Mon, 03 Jan 2022 17:31:44 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4R93-009foZ-Oq; Mon, 03 Jan 2022 17:29:19 +0000
+ id 1n4R9p-009gFy-1q; Mon, 03 Jan 2022 17:30:06 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 08545B80E66;
- Mon,  3 Jan 2022 17:29:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF5B6C36AED;
- Mon,  3 Jan 2022 17:29:13 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 929EB6119F;
+ Mon,  3 Jan 2022 17:30:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82FBCC36AEE;
+ Mon,  3 Jan 2022 17:30:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641230954;
- bh=A8kiksh69T5+Q6DUAVRPG9YYkcbIc+iLjriLRyM4zjE=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=iFXP93qtFqI4PhtNB126hicsP4dW9za2yGbKdCDFmtYiOBySceA3APVUOOJa4fONV
- 94nLdZrQTMQSVG1h+sQunKJTaewRObNNLnTWROmMBr0gxtHm8xca2Jg85alk4XjUOz
- KrelMScUx5OcuZRmhp1DXbivdMTMblwnakp7nEUCV+Ejbp1qJaVQsG+60jIpn8MhtY
- afn4cUI8AX32fPK5qrucxDK5WH7FL8CXUyiGOhLJXGlRlVxq+qKx5ks3r4Mh0nVhij
- 8T2nXTBIXq7fSqiWawvJO1L81UvkukH7A3LDW8qYZT1QLzTXpl487i8cLzyYydV5+B
- pWw9WXEWBaDkA==
+ s=k20201202; t=1641231004;
+ bh=uTWJxd6YdVohd2Y6L/UFfKfbHIuT4KvjE1DEYgZLAUM=;
+ h=From:To:Cc:Subject:Date:From;
+ b=MD8EJSZ9sArtCX1OOyf64vZigCW/HmqN+5fiTrXU2Li7txmccw82lSJcLdyY520Jj
+ Unafmz6Xah5wGpIZM4AtIJ5UI4a5h/kNkYAzKn6BujgTonh6BAxmgQehYtSGzu5NSJ
+ MdC6pG3mL9PaHz9AHHsFwzmu4ZRiQ27iHsNBeBMwg+kxqotoIK96n8ANdftzDV0/V8
+ hWD28rvvJWfhQcPDEiUtL88YWqVmc9JTPkCkI3iseaOsxtTXRJqZZxNCCVjaC1k1EC
+ bLStN4vdMpwgnxM++ljaPBZmunm39gDNXOIO/ao+vMpB9eFTwT7DhhRM9eYRAYSNYL
+ oDoMiU68ZCyJQ==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -49,19 +49,17 @@ Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
  Sasha Levin <sashal@kernel.org>, matthias.bgg@gmail.com,
  linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 04/16] usb: mtu3: fix interval value for intr and
+Subject: [PATCH AUTOSEL 5.10 1/8] usb: mtu3: fix interval value for intr and
  isoc
-Date: Mon,  3 Jan 2022 12:28:37 -0500
-Message-Id: <20220103172849.1612731-4-sashal@kernel.org>
+Date: Mon,  3 Jan 2022 12:29:54 -0500
+Message-Id: <20220103173001.1613277-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220103172849.1612731-1-sashal@kernel.org>
-References: <20220103172849.1612731-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220103_092917_996110_ECCE8F9C 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20220103_093005_176785_5EF719D8 
+X-CRM114-Status: GOOD (  12.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,7 +94,7 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-index a9a65b4bbfede..c51be015345b9 100644
+index 0b3aa7c65857a..ae480ab1415b9 100644
 --- a/drivers/usb/mtu3/mtu3_gadget.c
 +++ b/drivers/usb/mtu3/mtu3_gadget.c
 @@ -77,7 +77,7 @@ static int mtu3_ep_enable(struct mtu3_ep *mep)
