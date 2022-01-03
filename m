@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D03A9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jan 2022 06:15:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 496C7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jan 2022 07:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GfMoBHc3JDxdljqlgZMLcjWneJTSB1LcATT2tDb/2j8=; b=CRGtDn/rZQDaMh
-	iRRMLuFHeAibnp5EBAGDHwu2fr8Wgn8wKeCUEvUXSXhyrVO0KYsvHThDHMj8p7c+URVDmHpMXkgIB
-	1cGIl/YwnmcQ9s5nQdcfcI9ETnZE/f38OIuMx0QkxSxBpd0JZWm1euHgb1xe2qdny/h4ut4baOqVI
-	1xEZe3AiI7wD7xJ948vWWnhdERFcnt1gAMkf+vBfImuYQFG/Q6zD20aW+Phe2kifl290tifpG9XpL
-	IAGER47OsOBm8bQsByDFNfxlsB4Oe4AINfoEHr/UUyNSRDEwiS0oAX3Ri531UQBhMykyOuw3wXgz7
-	A2MSQH5nmf3nvO+NG0hA==;
+	List-Owner; bh=2gueK2XvOxzMVKmW0HNGvJEduFdFeVFXHMmVhZ3GV4Q=; b=0c2+c+KGBGw+O1
+	S1wDfPJz7m/mGnao5ozHwGn7cB+qSCNhIEs5Tlqp8JcqFV2AqWIm2Bh1EDaZRnxrNSLKM7OOCDXiH
+	tK6xSWP2MkE+AdtAaWPU5p9KJILdtXHn3gVFfhGzLXghnl+sRvOtJaIQTtNWn/L14zbY5dYccIKB6
+	S9AQFW5JPXW6KbfXukiBHBOabowHmyS1Va0ZpUUEOrjLabljUPC3dXuXwKp9wM9cXJyVserECe8Fu
+	ir+o3UVY3BIgfTJot50z6yqiIg1lSss6qgXhXbAnP82VKtpfaDmbIvTlYwp/IEV67mPpZvr700XgG
+	M4QMXGXwJbpInjNiDaFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4GdH-008RkB-Kh; Mon, 03 Jan 2022 06:15:47 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n4I1K-008UvR-W0; Mon, 03 Jan 2022 07:44:43 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4Gd5-008RjO-Ew; Mon, 03 Jan 2022 06:15:36 +0000
-X-UUID: d81cbaec1a744a8da50f866b18ead8f5-20220102
-X-UUID: d81cbaec1a744a8da50f866b18ead8f5-20220102
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1n4I17-008UuD-OS; Mon, 03 Jan 2022 07:44:32 +0000
+X-UUID: fd28c64dd4c14f4cabfe9d871a5a31c5-20220103
+X-UUID: fd28c64dd4c14f4cabfe9d871a5a31c5-20220103
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <roger.lu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1594506819; Sun, 02 Jan 2022 23:15:30 -0700
+ with ESMTP id 2029731569; Mon, 03 Jan 2022 00:44:25 -0700
 Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 2 Jan 2022 22:08:17 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 2 Jan 2022 23:44:23 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Jan 2022 14:08:15 +0800
+ 15.0.1497.2; Mon, 3 Jan 2022 15:44:22 +0800
 Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 3 Jan 2022 14:08:15 +0800
-Message-ID: <63e17e727d8290a5ebd8c4c5cd8f2383fc1164cc.camel@mediatek.com>
-Subject: Re: [PATCH v16 2/7] arm64: dts: mt8183: add svs device information
+ Transport; Mon, 3 Jan 2022 15:44:21 +0800
+Message-ID: <8d0b14c93f98d97ed1c1147b785738baf7dfc117.camel@mediatek.com>
+Subject: Re: [PATCH v20 0/7] soc: mediatek: SVS: introduce MTK SVS engine
 From: Roger Lu <roger.lu@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
  <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
@@ -53,18 +53,18 @@ CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
  <linux-pm@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Date: Mon, 3 Jan 2022 14:08:15 +0800
-In-Reply-To: <20cf2c1e-d55b-5780-8c6e-4d8beaca5a65@gmail.com>
-References: <20210428065440.3704-1-roger.lu@mediatek.com>
- <20210428065440.3704-3-roger.lu@mediatek.com>
- <20cf2c1e-d55b-5780-8c6e-4d8beaca5a65@gmail.com>
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
+ <linux@roeck-us.net>
+Date: Mon, 3 Jan 2022 15:44:21 +0800
+In-Reply-To: <fff75b65-51ab-cafd-a55f-137c0b7c2dc6@gmail.com>
+References: <20210721070904.15636-1-roger.lu@mediatek.com>
+ <fff75b65-51ab-cafd-a55f-137c0b7c2dc6@gmail.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220102_221535_542351_CCC53ADE 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20220102_234429_833781_A291D7F5 
+X-CRM114-Status: GOOD (  13.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,66 +83,37 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi Matthias,
 
-On Thu, 2021-12-30 at 13:54 +0100, Matthias Brugger wrote:
+On Thu, 2021-12-30 at 16:13 +0100, Matthias Brugger wrote:
+> Hi Roger,
 > 
-> On 28/04/2021 08:54, Roger Lu wrote:
-> > add compitable/reg/irq/clock/efuse setting in svs node
+> On 21/07/2021 09:08, Roger Lu wrote:
+> > 1. SVS driver uses OPP adjust event in [1] to update OPP table voltage part.
+> > 2. SVS driver gets thermal/GPU device by node [2][3] and CPU device by
+> > get_cpu_device().
+> > After retrieving subsys device, SVS driver calls device_link_add() to make
+> > sure probe/suspend callback priority.
+> > 3. SVS dts refers to reset controller [4] to help reset SVS HW.
 > > 
-> > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> > ---
-> >   arch/arm64/boot/dts/mediatek/mt8183.dtsi | 18 ++++++++++++++++++
-> >   1 file changed, 18 insertions(+)
+> > #mt8183 SVS related patches
+> > [1] 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/patch/11193513/__;!!CTRNKA9wMg0ARbw!1SsvfMF2dN3uBcTxgzllNcmZ0yWfXvvAKdKlWRVgaEm69mvIZUYLBf27o_UqdhsH$
+> >  
+> > [2] 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20201013102358.22588-2-michael.kao@mediatek.com/__;!!CTRNKA9wMg0ARbw!1SsvfMF2dN3uBcTxgzllNcmZ0yWfXvvAKdKlWRVgaEm69mvIZUYLBf27o_10UEyP$
+> >  
+> > [3] 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20200306041345.259332-3-drinkcat@chromium.org/__;!!CTRNKA9wMg0ARbw!1SsvfMF2dN3uBcTxgzllNcmZ0yWfXvvAKdKlWRVgaEm69mvIZUYLBf27ozqhhMBj$
+> >  
 > > 
-> > diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > index 80519a145f13..441d617ece43 100644
-> > --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> > @@ -657,6 +657,18 @@
-> >   			status = "disabled";
-> >   		};
-> >   
-> > +		svs: svs@1100b000 {
-> > +			compatible = "mediatek,mt8183-svs";
-> > +			reg = <0 0x1100b000 0 0x1000>;
-> > +			interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_LOW>;
-> > +			clocks = <&infracfg CLK_INFRA_THERM>;
-> > +			clock-names = "main";
-> > +			nvmem-cells = <&svs_calibration>,
-> > +				      <&thermal_calibration>;
-> > +			nvmem-cell-names = "svs-calibration-data",
-> > +					   "t-calibration-data";
-> > +		};
-> > +
-> >   		pwm0: pwm@1100e000 {
-> >   			compatible = "mediatek,mt8183-disp-pwm";
-> >   			reg = <0 0x1100e000 0 0x1000>;
-> > @@ -941,9 +953,15 @@
-> >   			reg = <0 0x11f10000 0 0x1000>;
-> >   			#address-cells = <1>;
-> >   			#size-cells = <1>;
 > 
-> Please add a new line between the different calibartion data, to improve 
-> readability.
+> Comments made in v16 actually also hold for v20, so please take them into
+> account :)
 
-No problem and thanks for the review.
+Sure. Thanks for the reminding :)
 
+> 
 > Regards,
 > Matthias
-> 
-> > +			thermal_calibration: calib@180 {
-> > +				reg = <0x180 0xc>;
-> > +			};
-> >   			mipi_tx_calibration: calib@190 {
-> >   				reg = <0x190 0xc>;
-> >   			};
-> > +			svs_calibration: calib@580 {
-> > +				reg = <0x580 0x64>;
-> > +			};
-> >   		};
-> >   
-> >   		u3phy: usb-phy@11f40000 {
-> > 
 
 
 _______________________________________________
