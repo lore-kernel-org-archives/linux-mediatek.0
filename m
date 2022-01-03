@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76915C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jan 2022 08:09:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3F2EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon,  3 Jan 2022 08:59:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Lq92eOIg2wnWRWwtC+mc20VNAungk6ul85lISAC8hOE=; b=DwMdLV+a6GUqM7
-	F/gL9lW0eWQfDIcDumB2XH+WC6QFt4EKiK4oal1CdgH1iJdWtgIBIyoO7Xg/qbl10bLXPdpkpYWZL
-	Lt9HfT6PWj8WuP1YoNRfXluqVKjv9y9zwMuxQf1suzP7NBwKo3jgl+k21ejkAa/QaY68rZ3545Kx2
-	EkGYbUtZoi4KOexnI4x6goQBF6tsX7cUky3B6d6eTAQ3RuaZLNLcQNq9mhIDlyExb5/BVQlgclZsk
-	vmzLl9IxIuENt0DAAvPw3xQxCR5YXU+O2P1RNQQ/lx7GXpxgg/k1jk36qqbfjxdilAcs8IEkidfRW
-	tPMky03XuIyvOzOuEZEA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NEF4fi80FGFnhY5XvaSba7SqfJWM1POQbrVxcQAtrBE=; b=tZ3F5rMuqM4YEdAQ1PtQafNcun
+	Qph+Ecq1kbUL7ej2OmNd+ZfBVfbCkvBVJJODvZ/qGIMNwyyxWJooKseI4Yg7/yAkmeb3nAhkrIl1W
+	xmZdXzHGKwHRmbKaqCPX0IXQfAepnItrRSAiLAxUMhAlBEPjdv0SkuPVREPpyNlJ4spgbUC+OqGeo
+	NUatmpyaZXkm7PutsvJHFJqvUv6nRgwbuI7iRjasPnTENHW7gcvk1Ul3wYE/HKQRrbGHe0lFG78g4
+	TEZDg7Qj794IiDFX032fGFYaeL1BkMomx1nrhwdd6tDCnM00JOQIBKa2VVKIBKqQv3b/0Lj4qm6PU
+	A3J9QuLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4IPE-008ZVl-SK; Mon, 03 Jan 2022 08:09:24 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n4JBc-008cdj-0v; Mon, 03 Jan 2022 08:59:24 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4IPC-008ZUp-B6; Mon, 03 Jan 2022 08:09:23 +0000
-X-UUID: 911a45f6038f439ba654506c5df211f2-20220103
-X-UUID: 911a45f6038f439ba654506c5df211f2-20220103
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1956623611; Mon, 03 Jan 2022 01:09:19 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 2 Jan 2022 23:59:17 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 3 Jan 2022 15:59:04 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 3 Jan 2022 15:59:03 +0800
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson
- <bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>
-CC: Mark Brown <broonie@kernel.org>, <linux-remoteproc@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- allen-kh.cheng <allen-kh.cheng@mediatek.com>
-Subject: [PATCH 1/2] dt-bindings: remoteproc: mediatek: Add binding for mt8186
- scp
-Date: Mon, 3 Jan 2022 15:58:53 +0800
-Message-ID: <20220103075854.10438-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1n4JBP-008ccD-QC; Mon, 03 Jan 2022 08:59:13 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 8A5071F41EBE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641200347;
+ bh=Lg7ar1sN11ciL2DcpoXXF8T+6ylIewLjLgr41Thyq3Y=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=YKOtWIbxd0k61NxswnNEpxj+h1HzxuK9la2Q+nvHl2NikBMjv+8ZCdlxSr5bepYGH
+ rmO7GB93XpTKJiOc55M2foj8gXDaQ9oLaCGMHJ7ncNMF2FlIc7jeBq7UBm8BTt7acd
+ 5qWncBGtpDuiHtuAD6oBA/yWfyfjX9EEh+FOBJ7Fz3OwzZUTRH1JbmsEGFHLq+E7W9
+ sgvyn/PymuRs79ZAzKf53YXkO23qjQY8uDi6RMxXjm04gNySExylW9iq7XNDpdZd0M
+ ULOLdg3gHfjACKvWBNOKtxIDJ/XA6Qs0CsfVpidOYylnH89u/S+rJqJWYrF6B3tzbq
+ tUPGLHYuglTLA==
+Subject: Re: [PATCH v2 3/5] phy: mediatek: add helpers to update bits of
+ registers
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>
+Cc: Kishon Vijay Abraham I <kishon@ti.com>, Rob Herring <robh+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-phy@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Eddie Hung <eddie.hung@mediatek.com>
+References: <20211218082802.5256-1-chunfeng.yun@mediatek.com>
+ <20211218082802.5256-3-chunfeng.yun@mediatek.com>
+ <047803b9-d09f-d4f8-a674-317cc19dd055@collabora.com>
+ <75b2773d1d170f42bae0774dbc58d1458cb25502.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <821f9e8b-cf35-2e53-e64f-c19e7bde957b@collabora.com>
+Date: Mon, 3 Jan 2022 09:59:04 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <75b2773d1d170f42bae0774dbc58d1458cb25502.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220103_000922_414749_73E7BDB1 
-X-CRM114-Status: UNSURE (   8.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220103_005912_046839_B1881DC8 
+X-CRM114-Status: GOOD (  20.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,33 +70,104 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add mt8186 compatible to binding document.
+Il 30/12/21 03:06, Chunfeng Yun ha scritto:
+> On Fri, 2021-12-24 at 11:10 +0100, AngeloGioacchino Del Regno wrote:
+>> Il 18/12/21 09:28, Chunfeng Yun ha scritto:
+>>> Add three helpers mtk_phy_clear/set/update_bits() for registers
+>>> operation
+>>>
+>>> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>> ---
+>>> v2: new patch, add register access helpers,
+>>>       Add updatel() macro suggested by Vinod, here add more ones
+>>> instead.
+>>> ---
+>>>    drivers/phy/mediatek/phy-mtk-io.h | 38
+>>> +++++++++++++++++++++++++++++++
+>>>    1 file changed, 38 insertions(+)
+>>>    create mode 100644 drivers/phy/mediatek/phy-mtk-io.h
+>>>
+>>> diff --git a/drivers/phy/mediatek/phy-mtk-io.h
+>>> b/drivers/phy/mediatek/phy-mtk-io.h
+>>> new file mode 100644
+>>> index 000000000000..500fcdab165d
+>>> --- /dev/null
+>>> +++ b/drivers/phy/mediatek/phy-mtk-io.h
+>>> @@ -0,0 +1,38 @@
+>>> +/* SPDX-License-Identifier: GPL-2.0 */
+>>> +/*
+>>> + * Copyright (C) 2021 MediaTek Inc.
+>>> + *
+>>> + * Author: Chunfeng Yun <chunfeng.yun@mediatek.com>
+>>> + */
+>>> +
+>>> +#ifndef __PHY_MTK_H__
+>>> +#define __PHY_MTK_H__
+>>> +
+>>> +#include <linux/io.h>
+>>> +
+>>> +static inline void mtk_phy_clear_bits(void __iomem *reg, u32 bits)
+>>> +{
+>>> +	u32 tmp = readl(reg);
+>>> +
+>>> +	tmp &= ~bits;
+>>> +	writel(tmp, reg);
+>>> +}
+>>> +
+>>> +static inline void mtk_phy_set_bits(void __iomem *reg, u32 bits)
+>>> +{
+>>> +	u32 tmp = readl(reg);
+>>> +
+>>> +	tmp |= bits;
+>>> +	writel(tmp, reg);
+>>> +}
+>>> +
+>>> +static inline void mtk_phy_update_bits(void __iomem *reg, u32
+>>> mask, u32 val)
+>>> +{
+>>> +	u32 tmp = readl(reg);
+>>> +
+>>> +	tmp &= ~mask;
+>>> +	tmp |= val & mask;
+>>> +	writel(tmp, reg);
+>>> +}
+>>> +
+>>> +#endif
+>>>
+>>
+>> These helpers are almost exactly duplicating what
+>> regmap_update_bits() is doing.
+>> I appreciate the effort to stop open-coding the same sequences over
+>> and over by
+>> adding such helper functions,
+> I agree with you.
+>> but I think that the proper way of doing what you
+>> are proposing is not to add custom functions but rather reuse what
+>> the Linux APIs
+>> give you.
+> I also like to use common APIs ASAP, but not found suitable ones.
+> This may be a problem, I found that some similar custom helps already
+> added under phy fold.
+> 
+>>
+>> What about doing a conversion to use regmap on this driver?
+> No, we don't use regmap here, these registers are monopolized by t-phy,
+> it's not syscon.
+> 
+> 
 
-Signed-off-by: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
----
- Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Hello,
 
-diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-index d21a25ee96e6..5b693a2d049c 100644
---- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-+++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
-@@ -17,6 +17,7 @@ properties:
-   compatible:
-     enum:
-       - mediatek,mt8183-scp
-+      - mediatek,mt8186-scp
-       - mediatek,mt8192-scp
-       - mediatek,mt8195-scp
- 
--- 
-2.18.0
+The regmap API allows this kind of usage, registers don't necessarily have
+to be part of a syscon.
 
+Regards,
+- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
