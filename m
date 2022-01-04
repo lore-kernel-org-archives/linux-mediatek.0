@@ -4,59 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76CEAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 09:15:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82E09C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 09:18:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=pGwe2Jv1dz6F5/6quUxzBjST/EWIMQ6j4Py/7XzkpgM=; b=CRL8P9d4j1tO2oQwyL50N0bMpf
-	b9ySTUs05SNnY1qHom+ZGriwUxRLNjdLPWEuHagU2n+k1vSdq5EXn1+LARielkAM+8f6+NbivAnwX
-	2pkGKzDdQV98fshOzq2L1rD6opmwbL6i1o6JdnO9c/sBsvM0dM7uPFxP1Dw7hANujeaygJhzYkJRG
-	zXrgwv2+BoeHj9/CKI4B1MQh6FgEdoGP7JY60ZnvtiCpei0ph7TsDRkRJjpTsu6CxLBiV1WK64MQK
-	DZGhf4hi771b5DFUlUKd3sQstVDLNawxmv7fe3PGa9rGnC0e1NEy0/C1GpOKJDboB5OTVuIori0Cd
-	7z5RDSUw==;
+	bh=Wbw4Mrce46byIbkF0j3WdEBZ4D9ZFDr2mNgqPwEa+xY=; b=ALy5/vzwrY2wYH6azvwqwBQuDc
+	NapeUDA1smP7WqefppEp1ctGjjyEnlMF0qBeNFNR7TuNnL7MPir70DMbrwpP+CEDO/ACJRsjBIXJG
+	JSYjPiMcg7nYLo7jmm/ClAU+PD3ZuAYlLJ51G38vgSeisTjrALJi6Qjxgj1N3YdA5aRoEXhSXQWj+
+	hGZYVXu8S9Aivtd4ITIAXRBS6swARfgjt5xlMmumRNH8GcU1d3etHUEeR7c/k63aVEa3PKw8fR/9t
+	qt6qFOZQ2j1KfY75RHtS6RetAzPF29nsCQjUKUW362LFw0296x7ksyP7klpwYuvkx5wh2B6p5l4eG
+	qR54wgfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4fuj-00Avg5-8x; Tue, 04 Jan 2022 09:15:29 +0000
+	id 1n4fx3-00AwVO-Ge; Tue, 04 Jan 2022 09:17:53 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4fnb-00AtLX-1E; Tue, 04 Jan 2022 09:08:08 +0000
+ id 1n4ft6-00Av0V-DP; Tue, 04 Jan 2022 09:13:49 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E676D1F42D09
+ (Authenticated sender: kholk11) with ESMTPSA id 879501F42D87
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1641287285;
- bh=8Dx96BzS5V0cNEYbDj2kjQ7X4Fa7vPHPz+P7c6y5cIw=;
+ s=mail; t=1641287627;
+ bh=XZd2lykqJomHU+Ox/8ttKPosF+qxXhAWLOOqEgbtIdo=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=H/Jkyi5lCDzjOSF6jvyqDzBlvnbdD6WiEuWhu0q4kvZym9jq1IlSx2Aunuh5w3kdJ
- RRTaGEdt9RnDRQiXxMT6+JDmiFhRGu98pJ8wQmgTf2hJiWp2yHAqtZ+JVQ+7gRL1d6
- TksM0T4L5/ZLTKCfelFi/+5Ic4M00fN7IZ9+y7m/GMXJKIqKp1UEuiqN8yvM8VuYug
- Nv5/BK9IqvAgreCruqp4Uqxr0jIHpKJ8os6As0Sv3j70r5mE/+tr+3MKVdPsZqWdDI
- lRTpL6r00foKr3ZnCqdDQb/O/nwVcWep7I/cBCvAav3hJclnhFnE43e40PdLYmr/Bl
- 636PjsSVY2R5g==
-Subject: Re: [PATCH v4] drm/mediatek: Fix mtk_cec_mask()
-To: Miles Chen <miles.chen@mediatek.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>,
- Junzhi Zhao <junzhi.zhao@mediatek.com>, Jie Qiu <jie.qiu@mediatek.com>
-Cc: Zhiqiang Lin <zhiqiang.lin@mediatek.com>, CK Hu <ck.hu@mediatek.com>,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220103054706.8072-1-miles.chen@mediatek.com>
+ b=iQ8lVGvPPym5/5IZSktbxmSKApdFKXLV8L8JhFK1cp/LQSXq7Lmr3S678qN+ET2gh
+ YCAKi7zdhELODH1TlKDTZtSDwSBhVp8nn28VTzd+oAI7KVI/2oqZgxBXSzhWEye0oB
+ wWmEW9VsBH97h6caTCJ705TyY1jqDyYywebgbpN8jUfCYWbaZcuHNqwagIvwWO7IdC
+ W+hlBtG2dxDoYOpNneQsZZJfMXsiS3qeZYstDQgtZdz28SKGXQNHm+FSsDTta9dC+i
+ FMPJ5qz47jH2g6bT9zWr8tpoojCfprjAqSf+zLJAYUI6dw+TjwS/HSs30vfZEzBIVi
+ nXVE02V4PKQ/Q==
+Subject: Re: [PATCH] drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with
+ external bridge
+To: dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, kernel@collabora.com
+References: <20211210113617.196204-1-angelogioacchino.delregno@collabora.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <1c57eecc-de2d-b3dc-6ea6-ddd50db70e95@collabora.com>
-Date: Tue, 4 Jan 2022 10:08:02 +0100
+Message-ID: <a2c54a49-b052-ab41-d2af-1869c63878e3@collabora.com>
+Date: Tue, 4 Jan 2022 10:13:44 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20220103054706.8072-1-miles.chen@mediatek.com>
+In-Reply-To: <20211210113617.196204-1-angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220104_010807_273435_6924D6B2 
-X-CRM114-Status: GOOD (  20.38  )
+X-CRM114-CacheID: sfid-20220104_011348_647177_A4BCF9CB 
+X-CRM114-Status: GOOD (  17.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,53 +71,31 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 03/01/22 06:47, Miles Chen ha scritto:
-> In current implementation, mtk_cec_mask() writes val into target register
-> and ignores the mask. After talking to our hdmi experts, mtk_cec_mask()
-> should read a register, clean only mask bits, and update (val | mask) bits
-> to the register.
+Il 10/12/21 12:36, AngeloGioacchino Del Regno ha scritto:
+> DRM bridge drivers are now attaching their DSI device at probe time,
+> which requires us to register our DSI host in order to let the bridge
+> to probe: this recently started producing an endless -EPROBE_DEFER
+> loop on some machines that are using external bridges, like the
+> parade-ps8640, found on the ACER Chromebook R13.
 > 
-> Fixes: 8f83f26891e1 ("drm/mediatek: Add HDMI support")
+> Now that the DSI hosts/devices probe sequence is documented, we can
+> do adjustments to the mtk_dsi driver as to both fix now and make sure
+> to avoid this situation in the future: for this, following what is
+> documented in drm_bridge.c, move the mtk_dsi component_add() to the
+> mtk_dsi_ops.attach callback and delete it in the detach callback;
+> keeping in mind that we are registering a drm_bridge for our DSI,
+> which is only used/attached if the DSI Host is bound, it wouldn't
+> make sense to keep adding our bridge at probe time (as it would
+> be useless to have it if mtk_dsi_ops.attach() fails!), so also move
+> that one to the dsi host attach function (and remove it in detach).
 > 
-> Cc: Zhiqiang Lin <zhiqiang.lin@mediatek.com>
-> Cc: CK Hu <ck.hu@mediatek.com>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> 
-> Signed-off-by: Miles Chen <miles.chen@mediatek.com>
-> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Due to the latest changes in drm bridge, we need this patch to land as soon as
+possible, otherwise breakages will be seen on all MediaTek powered devices using
+DSI to eDP/DP bridges...
 
-> ---
-> 
-> Change since v1:
-> add Fixes tag
-> 
-> Change since v2:
-> add explanation of mtk_cec_mask()
-> 
-> Change since v3:
-> change misleading subject and modify the commit message since this is a bug fix patch
-> 
-> ---
->   drivers/gpu/drm/mediatek/mtk_cec.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_cec.c b/drivers/gpu/drm/mediatek/mtk_cec.c
-> index e9cef5c0c8f7..cdfa648910b2 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_cec.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_cec.c
-> @@ -85,7 +85,7 @@ static void mtk_cec_mask(struct mtk_cec *cec, unsigned int offset,
->   	u32 tmp = readl(cec->regs + offset) & ~mask;
->   
->   	tmp |= val & mask;
-> -	writel(val, cec->regs + offset);
-> +	writel(tmp, cec->regs + offset);
->   }
->   
->   void mtk_cec_set_hpd_event(struct device *dev,
-> 
-
+...hence, friendly ping for a review :)
 
 _______________________________________________
 Linux-mediatek mailing list
