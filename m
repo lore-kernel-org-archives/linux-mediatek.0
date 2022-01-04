@@ -4,73 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D983C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 00:01:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F26CFC433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 03:40:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QjiZ6SRtyZ0KYw9fIynVTTPuXUd5CSeL+YHeFR8/b40=; b=qqDt5FCeAVblvp
-	QIoRu5lJtADx/ziritT7Okcyx4xiAT5+aUWtYqjBmei4CDB/BfkRUfnx+0Lt0kW1bhaUQ+xBmHH3O
-	MbJ9s7fkxxLfYE9sZHtbfQoXDbztz6V530EvR88TzGjYg5UFfzQkuHiUPuvqLUrqeFtRp5xHg4dYG
-	VybqBNi/vpc3+WXvVuv0xBRJt017fCyN/6OdsHdoD5ueIWNZzWUQq3Hua9OBjdU39237sdmuExeFR
-	/rI2It3avrzl2PDrdcYciNrbW7nnz+r6RNxmtwIRCuaHQLOiZ+CWbCyK4boPmnMOPXLaommfvbh8M
-	OXV/dDl7kajWLMa2PNYw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=HnaG6DIMTwKQhJ4K4j+knE09hENJSV3Kyx3Z0wucxOo=; b=nbDh07LwlxiRYV
+	fD+kT8Rj6qp3Rau5YiSdY3RaXTNX6RxmcLWCYn0jiEj4aLwwMrJ1qPUv5VNQawPXiW3jN2kNZeh3q
+	8LxzaGFcj92hY38WeToJsbRa3lmHE99A3l1iR55hFsMkiIhUZcYY1gMCCIGqGeJmy3W6fhdDmSL1S
+	IEdZZDnQHiLoQXbAGXQRo1bb9yv4MWKzDKghvrDNeRMloSrd2+vT5+jnYJSVLQ4tfje909fsyKJNn
+	MeRXGHSWH33xix2LnIcbMD4WJxqsxKwGcSZ2vVOuG3+mW6mOSILJOKF54+XemowkddSkpB727YOMY
+	hS7e215KI8WfJ6qm+4PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4XGC-00A8V0-JP; Tue, 04 Jan 2022 00:01:04 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1n4afy-00AFoL-60; Tue, 04 Jan 2022 03:39:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4XFz-00A8T6-A6; Tue, 04 Jan 2022 00:00:52 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id B7171B81116;
- Tue,  4 Jan 2022 00:00:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72BB3C36AEF;
- Tue,  4 Jan 2022 00:00:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641254448;
- bh=TNarL2hfu8eJEcGtDz9+dQGA77tHSc49VlWpuvPnZ1I=;
- h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
- b=Eo0d+CTN+FJuwECto80YDNRaqot6AcT3Bxh3XoliN0XewK/BjDNPG0IJYL4In1zX2
- ZiuXIrm8SfnDNb5bMmNkrufSwrLApanTc7G+RtQlJj+rijosScqsTz9SwHvQLSBXLH
- Uk2dcIKVJJ9NX87GoqC7Fk1dxMqCx+VJba42HV6AI1vJXjFU4lvQVgjqt2ZwcStE7+
- kqa9OAjitm67zTlz8D8gCQnFnktwYLenpRFHNNgAfXGWo2DBYmltqnwXYROXpV0GCv
- aJDVh8vm98EBjS7gM2ILCtHb8DmFQJa2VAnhsbnhkpWC6EIBmnjD1bwVJky0e2tOIH
- 3XPFll6PKc3YQ==
-Received: by mail-ed1-f54.google.com with SMTP id o6so141666194edc.4;
- Mon, 03 Jan 2022 16:00:48 -0800 (PST)
-X-Gm-Message-State: AOAM530l15PykFwlXhyadLr+thz4e2qSf/fz1PX/a6iVTPE71ae41DF5
- Jnxo/j6ICkI51+yk96a1qv9Sj/RF6GZgaWqcCQ==
-X-Google-Smtp-Source: ABdhPJyaz7BnlYjQMVi+kdPY5KTdRWwNiolCizpj3tNIG5pA43f+7YnaYUahBNDOYOQUnP476RsDvzNIT9t6xMhhfW8=
-X-Received: by 2002:a17:906:c109:: with SMTP id
- do9mr37211153ejc.48.1641254446823; 
- Mon, 03 Jan 2022 16:00:46 -0800 (PST)
+ id 1n4afu-00AFnI-W0; Tue, 04 Jan 2022 03:39:53 +0000
+X-UUID: 42f5bc180779487e8c958f1524c631da-20220103
+X-UUID: 42f5bc180779487e8c958f1524c631da-20220103
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <biao.huang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1963808028; Mon, 03 Jan 2022 20:39:46 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 3 Jan 2022 19:39:44 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 4 Jan 2022 11:39:43 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 4 Jan 2022 11:39:42 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <angelogioacchino.delregno@collabora.com>,
+ <dkirjanov@suse.de>
+Subject: [PATCH net-next v11 0/6] MediaTek Ethernet Patches on MT8195
+Date: Tue, 4 Jan 2022 11:39:34 +0800
+Message-ID: <20220104033940.5497-1-biao.huang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20220103054706.8072-1-miles.chen@mediatek.com>
-In-Reply-To: <20220103054706.8072-1-miles.chen@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Tue, 4 Jan 2022 08:00:54 +0800
-X-Gmail-Original-Message-ID: <CAAOTY_-WX8p=Ba_4JPgnX4Wmh66bNF09RiP5C7+0=7V-ngdsLA@mail.gmail.com>
-Message-ID: <CAAOTY_-WX8p=Ba_4JPgnX4Wmh66bNF09RiP5C7+0=7V-ngdsLA@mail.gmail.com>
-Subject: Re: [PATCH v4] drm/mediatek: Fix mtk_cec_mask()
-To: Miles Chen <miles.chen@mediatek.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, 
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
- Matthias Brugger <matthias.bgg@gmail.com>,
- Junzhi Zhao <junzhi.zhao@mediatek.com>, 
- Jie Qiu <jie.qiu@mediatek.com>, Zhiqiang Lin <zhiqiang.lin@mediatek.com>, 
- CK Hu <ck.hu@mediatek.com>, DRI Development <dri-devel@lists.freedesktop.org>, 
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- linux-kernel <linux-kernel@vger.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220103_160051_657666_B130D96E 
-X-CRM114-Status: GOOD (  18.80  )
+X-CRM114-CacheID: sfid-20220103_193951_063023_6D137B7D 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,38 +73,105 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGksIE1pbGVzOgoKTWlsZXMgQ2hlbiA8bWlsZXMuY2hlbkBtZWRpYXRlay5jb20+IOaWvCAyMDIy
-5bm0MeaciDPml6Ug6YCx5LiAIOS4i+WNiDE6NDflr6vpgZPvvJoKPgo+IEluIGN1cnJlbnQgaW1w
-bGVtZW50YXRpb24sIG10a19jZWNfbWFzaygpIHdyaXRlcyB2YWwgaW50byB0YXJnZXQgcmVnaXN0
-ZXIKPiBhbmQgaWdub3JlcyB0aGUgbWFzay4gQWZ0ZXIgdGFsa2luZyB0byBvdXIgaGRtaSBleHBl
-cnRzLCBtdGtfY2VjX21hc2soKQo+IHNob3VsZCByZWFkIGEgcmVnaXN0ZXIsIGNsZWFuIG9ubHkg
-bWFzayBiaXRzLCBhbmQgdXBkYXRlICh2YWwgfCBtYXNrKSBiaXRzCj4gdG8gdGhlIHJlZ2lzdGVy
-LgoKUmV2aWV3ZWQtYnk6IENodW4tS3VhbmcgSHUgPGNodW5rdWFuZy5odUBrZXJuZWwub3JnPgoK
-Pgo+IEZpeGVzOiA4ZjgzZjI2ODkxZTEgKCJkcm0vbWVkaWF0ZWs6IEFkZCBIRE1JIHN1cHBvcnQi
-KQo+Cj4gQ2M6IFpoaXFpYW5nIExpbiA8emhpcWlhbmcubGluQG1lZGlhdGVrLmNvbT4KPiBDYzog
-Q0sgSHUgPGNrLmh1QG1lZGlhdGVrLmNvbT4KPiBDYzogTWF0dGhpYXMgQnJ1Z2dlciA8bWF0dGhp
-YXMuYmdnQGdtYWlsLmNvbT4KPgo+IFNpZ25lZC1vZmYtYnk6IE1pbGVzIENoZW4gPG1pbGVzLmNo
-ZW5AbWVkaWF0ZWsuY29tPgo+Cj4gLS0tCj4KPiBDaGFuZ2Ugc2luY2UgdjE6Cj4gYWRkIEZpeGVz
-IHRhZwo+Cj4gQ2hhbmdlIHNpbmNlIHYyOgo+IGFkZCBleHBsYW5hdGlvbiBvZiBtdGtfY2VjX21h
-c2soKQo+Cj4gQ2hhbmdlIHNpbmNlIHYzOgo+IGNoYW5nZSBtaXNsZWFkaW5nIHN1YmplY3QgYW5k
-IG1vZGlmeSB0aGUgY29tbWl0IG1lc3NhZ2Ugc2luY2UgdGhpcyBpcyBhIGJ1ZyBmaXggcGF0Y2gK
-Pgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NlYy5jIHwgMiArLQo+ICAx
-IGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKPgo+IGRpZmYgLS1n
-aXQgYS9kcml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NlYy5jIGIvZHJpdmVycy9ncHUvZHJt
-L21lZGlhdGVrL210a19jZWMuYwo+IGluZGV4IGU5Y2VmNWMwYzhmNy4uY2RmYTY0ODkxMGIyIDEw
-MDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfY2VjLmMKPiArKysgYi9k
-cml2ZXJzL2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2NlYy5jCj4gQEAgLTg1LDcgKzg1LDcgQEAgc3Rh
-dGljIHZvaWQgbXRrX2NlY19tYXNrKHN0cnVjdCBtdGtfY2VjICpjZWMsIHVuc2lnbmVkIGludCBv
-ZmZzZXQsCj4gICAgICAgICB1MzIgdG1wID0gcmVhZGwoY2VjLT5yZWdzICsgb2Zmc2V0KSAmIH5t
-YXNrOwo+Cj4gICAgICAgICB0bXAgfD0gdmFsICYgbWFzazsKPiAtICAgICAgIHdyaXRlbCh2YWws
-IGNlYy0+cmVncyArIG9mZnNldCk7Cj4gKyAgICAgICB3cml0ZWwodG1wLCBjZWMtPnJlZ3MgKyBv
-ZmZzZXQpOwo+ICB9Cj4KPiAgdm9pZCBtdGtfY2VjX3NldF9ocGRfZXZlbnQoc3RydWN0IGRldmlj
-ZSAqZGV2LAo+IC0tCj4gMi4xOC4wCj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRl
-a0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+Changes in v11:
+1. add reivewed-by in "net: dt-bindings: dwmac: Convert mediatek-dwmac to
+   DT schema" as Rob's comments.
+2. fall back "net: dt-bindings: dwmac: add support for mt8195" to v8 version
+   as mentioned in previous reply(https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20211216055328.15953-7-biao.huang@mediatek.com/):
+   2.1 there is already a special clock named "rmii_internal", which need to
+       be put to the end of the clock list(driver special handling),
+       so we can't simply put new "mac_cg" for mt8195 to the end of the clock
+       list.
+   2.2 we prefer the if-then schema, which will make mt8195 clock list clearer
+       with some duplicated information.
+   2.3 we expect the future IC will follow mt2712 or mt8195, so we only need
+       add new IC name to compatible list for future IC, and will not make the
+       clock list binding files worse.
+
+Changes in v10:
+1. add detailed description in "arm64: dts: mt2712: update ethernet
+   device node" to make the modifications clearer as Matthias's comments.
+2. modify dt-binding description as Rob's comments, and "make dtbs_check" runs
+   pass locally with "arm64: dts: mt2712: update ethernet device node"
+   in this series.
+
+Changes in v9:
+1. remove oneOf for 1 entry as Rob's comments.
+2. add new clocks to the end of existing clocks to simplify
+   the binding as Rob's comments.
+
+Changes in v8:
+1. add acked-by in "stmmac: dwmac-mediatek: add platform level clocks
+   management" patch
+
+Changes in v7:
+1. fix uninitialized warning as Jakub's comments.
+
+Changes in v6:
+1. update commit message as Jakub's comments.
+2. split mt8195 eth dts patch("arm64: dts: mt8195: add ethernet device
+   node") from this series, since mt8195 dtsi/dts basic patches is still
+   under reviewing.
+   https://patchwork.kernel.org/project/linux-mediatek/list/?series=579071
+   we'll resend mt8195 eth dts patch once all the dependent patches are
+   accepted.
+
+Changes in v5:
+1. remove useless inclusion in dwmac-mediatek.c as Angelo's comments.
+2. add acked-by in "net-next: stmmac: dwmac-mediatek: add support for
+   mt8195" patch
+
+Changes in v4:
+1. add changes in commit message in "net-next: dt-bindings: dwmac:
+   Convert mediatek-dwmac to DT schema" patch.
+2. remove ethernet-controller.yaml since snps,dwmac.yaml already include it.
+
+Changes in v3:
+1. Add prefix "net-next" to support new IC as Denis's suggestion.
+2. Split dt-bindings to two patches, one for conversion, and the other for
+   new IC.
+3. add a new patch to update device node in mt2712-evb.dts to accommodate to
+   changes in driver.
+4. remove unnecessary wrapper as Angelo's suggestion.
+5. Add acked-by in "net-next: stmmac: dwmac-mediatek: Reuse more common
+   features" patch.
+
+Changes in v2:
+1. fix errors/warnings in mediatek-dwmac.yaml with upgraded dtschema tools
+
+This series include 5 patches:
+1. add platform level clocks management for dwmac-mediatek
+2. resue more common features defined in stmmac_platform.c
+3. add ethernet entry for mt8195
+
+Biao Huang (6):
+  stmmac: dwmac-mediatek: add platform level clocks management
+  stmmac: dwmac-mediatek: Reuse more common features
+  arm64: dts: mt2712: update ethernet device node
+  net: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema
+  stmmac: dwmac-mediatek: add support for mt8195
+  net: dt-bindings: dwmac: add support for mt8195
+
+ .../bindings/net/mediatek-dwmac.txt           |  91 ------
+ .../bindings/net/mediatek-dwmac.yaml          | 210 ++++++++++++
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |   1 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  14 +-
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 306 ++++++++++++++++--
+ 5 files changed, 503 insertions(+), 119 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+
+--
+2.18.0
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
