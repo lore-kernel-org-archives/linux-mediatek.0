@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CF4C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 09:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 796D9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 09:31:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Gg5gcWpr9Kofz+bY0YUmNjvgpcQjuwzvrjn4kDhX9BY=; b=aCl+zyKhcTQ0YD
-	7cPiunwYl5xUNRvT8ZMpZO21tp1yvuJ6sXcxirihoHjVnAD2kDJtK6uFC0CxClLe8XupVGwqekgVU
-	S9AbZZJdv00bwGyUxUFMAlyOz5sfUriv3hgRRTb5Td1AMVA8gw4S2DKor54Pzyt7PTB3au6BHMWsl
-	vIC5MsMX3/b/v3sr+Uc/YtiMPzwJLsQgtJiSpH/Tav96NrXCVjtjXDmtMu5/6IKrB63HKAhALKfEs
-	LqyO++c5lab7bun1vBCja7e3SqMogeNnXBJCXkmkJphjMZmrronlILMc/ft0nXu0/konAhR1lgX59
-	rH+xz7tqSI7lBVziAtqw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Ta9YSiUg6z73s5s2LiitBNFCji7sBSAGv8jmPy7eOxw=; b=wmwfySbI7ydQrxgdbCzg1G1NGH
+	SVTfcmkxaPKsEKyGt8uKJn4QqSgYxityluOIf+3wdfN9NC9cnayVX64MZNWDr0pIntc3wW65MQ2Ot
+	imXsQlx9hSJ8i/9xKevZm6GUD+FT/dNcLMaxHZ6x5Gv7ms9v9Nb2SPe+4Pqt30+gXV9qyJbk/U8ze
+	Js7Nr0x0Ytt/u2+KHETwT2k+i9nZZup9V/PhwXrgpGhsaJdzMPo3oN+vK6NAZyJ84hLmVcKSZZFjF
+	CpR9gLSHSamYaA3k9lX+A0SnNWGxh53VMmjq3Ii5SWSnuxdC38mlh6t5Nb1kWUBEFLmVQ5i7FtwaN
+	jRN7mehA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4g4K-00AzEz-9t; Tue, 04 Jan 2022 09:25:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n4gAA-00B11z-LI; Tue, 04 Jan 2022 09:31:26 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4g3g-00Az3j-Kb; Tue, 04 Jan 2022 09:24:46 +0000
-X-UUID: ea96e61f4bd54b339402a69833804b00-20220104
-X-UUID: ea96e61f4bd54b339402a69833804b00-20220104
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1379061304; Tue, 04 Jan 2022 02:24:43 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Jan 2022 01:17:18 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 4 Jan 2022 17:17:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 4 Jan 2022 17:17:16 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <moudy.ho@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <srv_heupstream@mediatek.com>
-Subject: [PATCH v11 0/4] Add mmsys and mutex support for MDP
-Date: Tue, 4 Jan 2022 17:17:08 +0800
-Message-ID: <20220104091712.25670-1-moudy.ho@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1n4g9v-00B0wY-AP; Tue, 04 Jan 2022 09:31:12 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id E825C1F42D84
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641288670;
+ bh=9/T8aEfuY7T8xMS1IhnS76wUW+9atSI7kjJyu/iRtDU=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=dFXEJQPWjXn1LKtamRetcBoBxRdVPu8oc4kUftd9Jg8pxfB1z5Nlxqgo0iB57ZeMn
+ uSB2UZEVCQCVlX1C5Ck3Q5lXMr+l9gt15TPjuli6afS/0Zik95yU670XU4vxwASCiF
+ LJ7A9681XBMjtLi47dhYvVE/VNDZCOvWT83HBJAczqYntBcGrOfSYmFVXz0fTgUPag
+ sXprSVYS6AzsPbL7K/owK40/PXH5Yn3Oxxed1pJDh60jhacnYjNrKVnq5TVJ2i5+FO
+ AZA4ePF4eovMo7dq30wXdzWDrHmhWHONLUl6fN7ihMqmTE6agiMgSLvykrIvQymVui
+ roAHPRuB4e5lg==
+Subject: Re: [PATCH v3, 02/13] media: mtk-vcodec: Using firmware type to
+ separate different firmware architecture
+To: Yunfei Dong <yunfei.dong@mediatek.com>,
+ Alexandre Courbot <acourbot@chromium.org>,
+ Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>
+Cc: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>, 
+ Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ Daniel Vetter <daniel@ffwll.ch>, dri-devel
+ <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
+ Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220104080138.7472-1-yunfei.dong@mediatek.com>
+ <20220104080138.7472-3-yunfei.dong@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <94e51db2-c44a-b2fe-36af-d58c9e5ca29c@collabora.com>
+Date: Tue, 4 Jan 2022 10:31:05 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20220104080138.7472-3-yunfei.dong@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220104_012444_713169_B5084169 
-X-CRM114-Status: GOOD (  13.88  )
+X-CRM114-CacheID: sfid-20220104_013111_528323_6CBE0C57 
+X-CRM114-Status: GOOD (  12.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,47 +80,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change since v10:
-- For some ISP application scenarios, such as preview and recording
-  at the same time.
-  The routing table needs to be discarded, and the calculation result
-  on the SCP side is used to write a suitable mux setting for
-  1 input and 2 output.
-- Adjust the GCE client register parsing method to avoid redundant warning logs.
+Il 04/01/22 09:01, Yunfei Dong ha scritto:
+> MT8173 platform use vpu firmware, mt8183/mt8192 will use scp
+> firmware instead, using chip name is not reasonable to separate
+> different firmware architecture. Using firmware type is much better.
+> 
+> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+> Reviewed-by: Tzung-Bi Shih<tzungbi@google.com>
 
-Change since v9:
-- Add API for MDP getting mutex mod.
+Hello Yunfei,
 
-Hi,
+I agree with this change, it looks better as it separates behaviors in
+a more generic way.
 
-This patch splits mmsys and mutex settings from Media Data Path 3 (MDP3),
-and original mailling list list below:
-https://patchwork.kernel.org/project/linux-mediatek/cover/20211201095031.31606-1-moudy.ho@mediatek.com/
-Corresponding settings and interfaces are added for MDP operation in the
-mmsys and mutex drivers, which increases the independence of the modules
+Anyway, it looks like you're removing all users of `enum mtk_chip` but, in
+this case, you forgot to also remove the declaration of this enumeration
+from mtk_vcodec_drv.h! :)
 
-Moudy Ho (4):
-  soc: mediatek: mmsys: add CMDQ write register function
-  soc: mediatek: mmsys: add support for ISP control
-  soc: mediatek: mutex: add support for MDP
-  soc: mediatek: mutex: add functions that operate registers by CMDQ
+Can you please send a v4 with the requested removal?
 
- drivers/soc/mediatek/Kconfig           |   1 +
- drivers/soc/mediatek/mt8183-mmsys.h    |  26 +++++
- drivers/soc/mediatek/mtk-mmsys.c       | 145 +++++++++++++++++++++++++
- drivers/soc/mediatek/mtk-mmsys.h       |   2 +
- drivers/soc/mediatek/mtk-mutex.c       | 140 +++++++++++++++++++++++-
- include/linux/soc/mediatek/mtk-mmsys.h |  80 ++++++++++++++
- include/linux/soc/mediatek/mtk-mutex.h |   9 ++
- 7 files changed, 401 insertions(+), 2 deletions(-)
+so, for v4...
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
--- 
-2.18.0
 
 
 _______________________________________________
