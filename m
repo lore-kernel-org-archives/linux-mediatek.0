@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58BB0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 15:01:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBACFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 15:53:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tfi+9Ze1SfLFqZ1ihH94P5Td5OxPxsieSiNJv3Qs5bc=; b=cprci/qoW3VLpgBn4MoIqARMh4
-	NtIjjMgO7ISZQMNgstEoZWgNXjOJZKwgjfQqsCu6If5jXBGJ1rRyGw4ObATzjnyb0IOkWN7gyhQpH
-	PUvmbF3pXEYaewWjrmEh+Y/Qgw7SfQVaL+qZTkvyCbqD2p+vHiKftQPGcqwWPFawJIFXZRpnemNhV
-	pr6WJt41JGbW1tNxFF9UB/biZh0waTuJPbI6reAbaqejWjdlfHJxQYjonulJ7wCqjnpEBZ4Hit9n0
-	9x5+0Ir3NCQqeFjHNddxDKdpFcbH/3QTf3Hd/oek9zCmTUFA+bdBFlr8o2I6uruLMgJNKJbMKoI4W
-	E3AoIAYw==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SVzqIP6Q0a9tvTwlNfn6LeJB7PrMZxn6ulZtXFfuvhw=; b=yzi8SMUSfPXN5DVLpWt40WmsKF
+	fzDp/CTpOYGsvjOL8NXWz2zAuG63QZwEvhZXgDoH3bexuKZemmjEfsFK1n1rq0g7nbu5xgT5OD37D
+	Rp32FFj90Q/bd4NZ2DZf5EXSFX/fmDbXtb5laGqDN4q0CnqMPNpOdNzuzE9/RgUz0b4PX6XrsNAix
+	dxaisTJ76MeHSGXmJ6O7G434XaXgU7SltaVgN4KFAUvbH6Xu1zgb2w+d5OCTn6ipdm8fBy+vHAB43
+	8Ep8e0Ay0DdflSOGighhyGf0q8w0cz7XLQDKoA9F7rCdbz2EpODd25jg0OT8KxgzzEqtXBmkQghKO
+	zX1O3AMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4lJg-00BqIH-0Y; Tue, 04 Jan 2022 15:01:36 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1n4m84-00C3jA-1w; Tue, 04 Jan 2022 15:53:40 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4lJC-00Bq80-Cc; Tue, 04 Jan 2022 15:01:07 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 339BC61366;
- Tue,  4 Jan 2022 15:01:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF2CBC36AED;
- Tue,  4 Jan 2022 15:01:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641308464;
- bh=wCYKl8HbAjB3pp9BNkTP2Ru1EwIirs5CBVCUZdD7ZS8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=DEjGuVGCCiV2hhzrTyu5w6cT20zmchrG5CkT5WZfOmfs+whyq7NsKxZnkGx12vpPk
- y49mxvWs1KkJYAIil08529UyWwYBdBSb4Epl8uVpRMY2LuvzZldEISnc+tXauBX5tw
- Iuf9XIWUiEuKrghw104N5aNP4gtu/XqEG4S2oRL76ufW8bh1k2qjvzVZB1OUR0rmpI
- BAUv0yCSyqO5lhwtaFymzxxJvriRP+cC9D6KLjQzLu9I1LB4wkodmAXgsARGINGx1o
- 1HpWHF5CLrmq39fVP9xXjhhpYjv67LSTScAUQjBOFDragSj/axLi8oI3OiJMZnlSjR
- /dBHcDLfVaPug==
-Date: Tue, 4 Jan 2022 15:00:59 +0000
-From: Mark Brown <broonie@kernel.org>
-To: "cgel.zte@gmail.com" <cgel.zte@gmail.com>
-Cc: lgirdwood@gmail.com, matthias.bgg@gmail.com,
+ id 1n4m7r-00C3eU-9p; Tue, 04 Jan 2022 15:53:29 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 220F51F434D9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641311606;
+ bh=8YQxFbvnIvsl0bXf11gulFrkxkDU8PWus97Bhbnjwoc=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=j/EV3NtSordrsTUj8H8TAxeAccfm0+fuX5BE6C5pnJw5aHba8HJThhaX3MUdwwZUM
+ tGRsxyt2yOWiO9Zeqg0gVLU7vZ1IcO83FDPT2J9/sXrQ8NlfuL+6QYAhVtEKWeoChI
+ CtIlAJQ8ZUZHiF0sGbhY5AuGs7hUYi5leuxd/a/PpYWMZaC1L53BfXB8vY4jlwzNUn
+ DQnt+uCZoIPykQXAC/cPwZHnoALbQuCfZOLnIjYAGhN+6HKBwn0Hv+jWNzlIplM0rU
+ CYld++ZTVbHnAk1jszWUuxpCObT9jBwP+h6xOGebqJxSIUP+GLZYTpLPXCWtl2v849
+ U8nDWu23ObTKw==
+Subject: Re: [PATCH v3 28/33] iommu/mediatek: Add bank_nr and bank_enable
+To: Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Minghao Chi <chi.minghao@zte.com.cn>,
- Zeal Robot <zealci@zte.com.cn>
-Subject: Re: [PATCH] drivers/regulator: remove redundant ret variable
-Message-ID: <YdRhK55op7XzJAuj@sirena.org.uk>
-References: <20220104104139.601031-1-chi.minghao@zte.com.cn>
+ iommu@lists.linux-foundation.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, chao.hao@mediatek.com,
+ yen-chang.chen@mediatek.com
+References: <20210923115840.17813-1-yong.wu@mediatek.com>
+ <20210923115840.17813-29-yong.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <48493504-8877-b78d-0476-118a8b1441e0@collabora.com>
+Date: Tue, 4 Jan 2022 16:53:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20220104104139.601031-1-chi.minghao@zte.com.cn>
-X-Cookie: Many pages make a thick book.
+In-Reply-To: <20210923115840.17813-29-yong.wu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220104_070106_510760_0F142BB5 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20220104_075327_651078_26900B15 
+X-CRM114-Status: GOOD (  21.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,62 +71,132 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7038975744974538754=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 23/09/21 13:58, Yong Wu ha scritto:
+> Prepare for supporting multi banks, Adds two variables in the plat_data:
+> bank_nr: the bank number that this SoC support;
+> bank_enable: list if the banks is enabled.
+> 
+> Add them for all the current SoC, bank_nr always is 1 and only
+> bank_enable[0] is enabled.
+> 
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>   drivers/iommu/mtk_iommu.c | 18 ++++++++++++++++++
+>   drivers/iommu/mtk_iommu.h |  3 +++
+>   2 files changed, 21 insertions(+)
+> 
+> diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
+> index c139675d99e6..4ad85469f68f 100644
+> --- a/drivers/iommu/mtk_iommu.c
+> +++ b/drivers/iommu/mtk_iommu.c
+> @@ -1134,6 +1134,8 @@ static const struct mtk_iommu_plat_data mt2712_data = {
+>   			NOT_STD_AXI_MODE | MTK_IOMMU_TYPE_MM,
+>   	.hw_list      = &m4ulist,
+>   	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+> +	.bank_nr      = 1,
+> +	.bank_enable  = {true},
+>   	.iova_region  = single_domain,
+>   	.iova_region_nr = ARRAY_SIZE(single_domain),
+>   	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}},
+> @@ -1144,6 +1146,8 @@ static const struct mtk_iommu_plat_data mt6779_data = {
+>   	.flags         = HAS_SUB_COMM_2BITS | OUT_ORDER_WR_EN | WR_THROT_EN |
+>   			 NOT_STD_AXI_MODE | MTK_IOMMU_TYPE_MM,
+>   	.inv_sel_reg   = REG_MMU_INV_SEL_GEN2,
+> +	.bank_nr       = 1,
+> +	.bank_enable   = {true},
+>   	.iova_region   = single_domain,
+>   	.iova_region_nr = ARRAY_SIZE(single_domain),
+>   	.larbid_remap  = {{0}, {1}, {2}, {3}, {5}, {7, 8}, {10}, {9}},
+> @@ -1154,6 +1158,8 @@ static const struct mtk_iommu_plat_data mt8167_data = {
+>   	.flags        = RESET_AXI | HAS_LEGACY_IVRP_PADDR | NOT_STD_AXI_MODE |
+>   			MTK_IOMMU_TYPE_MM,
+>   	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+> +	.bank_nr      = 1,
+> +	.bank_enable  = {true},
+>   	.iova_region  = single_domain,
+>   	.iova_region_nr = ARRAY_SIZE(single_domain),
+>   	.larbid_remap = {{0}, {1}, {2}}, /* Linear mapping. */
+> @@ -1165,6 +1171,8 @@ static const struct mtk_iommu_plat_data mt8173_data = {
+>   			HAS_LEGACY_IVRP_PADDR | NOT_STD_AXI_MODE |
+>   			MTK_IOMMU_TYPE_MM,
+>   	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+> +	.bank_nr      = 1,
+> +	.bank_enable  = {true},
+>   	.iova_region  = single_domain,
+>   	.iova_region_nr = ARRAY_SIZE(single_domain),
+>   	.larbid_remap = {{0}, {1}, {2}, {3}, {4}, {5}}, /* Linear mapping. */
+> @@ -1174,6 +1182,8 @@ static const struct mtk_iommu_plat_data mt8183_data = {
+>   	.m4u_plat     = M4U_MT8183,
+>   	.flags        = RESET_AXI | MTK_IOMMU_TYPE_MM,
+>   	.inv_sel_reg  = REG_MMU_INV_SEL_GEN1,
+> +	.bank_nr      = 1,
+> +	.bank_enable  = {true},
+>   	.iova_region  = single_domain,
+>   	.iova_region_nr = ARRAY_SIZE(single_domain),
+>   	.larbid_remap = {{0}, {4}, {5}, {6}, {7}, {2}, {3}, {1}},
+> @@ -1185,6 +1195,8 @@ static const struct mtk_iommu_plat_data mt8192_data = {
+>   			  WR_THROT_EN | IOVA_34_EN | NOT_STD_AXI_MODE |
+>   			  MTK_IOMMU_TYPE_MM,
+>   	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
+> +	.bank_nr        = 1,
+> +	.bank_enable    = {true},
+>   	.iova_region    = mt8192_multi_dom,
+>   	.iova_region_nr = ARRAY_SIZE(mt8192_multi_dom),
+>   	.larbid_remap   = {{0}, {1}, {4, 5}, {7}, {2}, {9, 11, 19, 20},
+> @@ -1196,6 +1208,8 @@ static const struct mtk_iommu_plat_data mt8195_data_infra = {
+>   	.flags            = WR_THROT_EN | DCM_DISABLE |
+>   			    MTK_IOMMU_TYPE_INFRA | IFA_IOMMU_PCIe_SUPPORT,
+>   	.pericfg_comp_str = "mediatek,mt8195-pericfg_ao",
+> +	.bank_nr	  = 1,
+> +	.bank_enable      = {true},
+>   	.inv_sel_reg      = REG_MMU_INV_SEL_GEN2,
+>   	.iova_region      = single_domain,
+>   	.iova_region_nr   = ARRAY_SIZE(single_domain),
+> @@ -1208,6 +1222,8 @@ static const struct mtk_iommu_plat_data mt8195_data_vdo = {
+>   			  SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
+>   	.hw_list        = &m4ulist,
+>   	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
+> +	.bank_nr	= 1,
+> +	.bank_enable    = {true},
+>   	.iova_region	= mt8192_multi_dom,
+>   	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
+>   	.larbid_remap   = {{2, 0}, {21}, {24}, {7}, {19}, {9, 10, 11},
+> @@ -1221,6 +1237,8 @@ static const struct mtk_iommu_plat_data mt8195_data_vpp = {
+>   			  SHARE_PGTABLE | MTK_IOMMU_TYPE_MM,
+>   	.hw_list        = &m4ulist,
+>   	.inv_sel_reg    = REG_MMU_INV_SEL_GEN2,
+> +	.bank_nr	= 1,
+> +	.bank_enable    = {true},
+>   	.iova_region	= mt8192_multi_dom,
+>   	.iova_region_nr	= ARRAY_SIZE(mt8192_multi_dom),
+>   	.larbid_remap   = {{1}, {3}, {22, 0, 0, 0, 23}, {8},
+> diff --git a/drivers/iommu/mtk_iommu.h b/drivers/iommu/mtk_iommu.h
+> index 881fade8d39a..dc0190edebf0 100644
+> --- a/drivers/iommu/mtk_iommu.h
+> +++ b/drivers/iommu/mtk_iommu.h
+> @@ -62,6 +62,9 @@ struct mtk_iommu_plat_data {
+>   	struct list_head			*hw_list;
+>   	unsigned int				iova_region_nr;
+>   	const struct mtk_iommu_iova_region	*iova_region;
+> +
+> +	unsigned int        bank_nr;
 
---===============7038975744974538754==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5Sx7lbAcr290ea0T"
-Content-Disposition: inline
+As said in the review for patch 26/33, maybe this can be renamed as `num_banks`
+instead... and also, this can be a `u8` to save some memory.
 
+> +	bool                bank_enable[MTK_IOMMU_BANK_MAX];
+>   	unsigned char       larbid_remap[MTK_LARB_COM_MAX][MTK_LARB_SUBCOM_MAX];
+>   };
+>   
+> 
 
---5Sx7lbAcr290ea0T
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Jan 04, 2022 at 10:41:39AM +0000, cgel.zte@gmail.com wrote:
-> From: Minghao Chi <chi.minghao@zte.com.cn>
->=20
-> Return value from regmap_update_bits() directly instead
-> of taking this in another redundant variable.
-
-Please submit patches using subject lines reflecting the style for the
-subsystem, this makes it easier for people to identify relevant patches.
-Look at what existing commits in the area you're changing are doing and
-make sure your subject lines visually resemble what they're doing.
-There's no need to resubmit to fix this alone.
-
---5Sx7lbAcr290ea0T
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHUYSsACgkQJNaLcl1U
-h9Cz9gf+Jguh5RAvwtAq1ZZhx9QN4sxPnzcsOzGnkE+J0ovjiN/tTj4cNGD8Bhme
-De7mYFsFY9gAyMD9iqc2ruHwrh7cVTlz5nGeA+WBljF+UxcDDHul6s1MG+yvmSXn
-8+Oauy3QRj0mliWQZzTVQM5kBzLWhoClw10YtgBHgNFcIYms1zVrFUAY5NrnPdn2
-ECqpZciLMNCBExN5GS5NoX5vj9FwlqgFQT1+udpcFkECmZ6CO4zAxUWWZ1Eo9PJ2
-Gim0Ea8dcbjkJmXY0zyG8kbkWW2ZULebdWHanxJpFL9Z7yFeJgJmfGeYR1cQd5si
-zW/HbdD83eqnRx4NP06Ecv/9NZTXMg==
-=7l8d
------END PGP SIGNATURE-----
-
---5Sx7lbAcr290ea0T--
-
-
---===============7038975744974538754==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7038975744974538754==--
-
