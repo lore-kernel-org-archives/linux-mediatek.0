@@ -4,77 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C828FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 09:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF2A9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 09:12:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5zZRJS1iNTzSxiU1n3EStTe8Y5Wy1P+9JliEXzflTTg=; b=jmvo7RZXCdJzLn
-	+9IYXSNeY4isBFNj4qeu6gXfjJpZZMpQ8MWMPuqfrHSIJ1Ae4fPZYtJ88G7bOxSy9786Kjabmw9TI
-	uKvtdq72X2IrrY7sxjysldNn4jAKv3Aup/+FCuegyleyNZlY9iUxI01u9kC+IVtQaVep4tewauV5S
-	oMbPnmL+njhJVKND0VVaJ0TrGjmhIMbxTzMr9zcqyDN6P+rIFY4hgsjUS4yoGwodHA2V/dZGYLFQo
-	oZvuervpPZTsEI3b84V4TBjCoeEdDAkJPyBSeCzY34LXF6QCNUbSkQiOGlk7CoJvCCUl0/Eeg/1M3
-	JYhQnOFX91Yu4L6B/BAw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bmG2VUXek59j1osG5StMtKM00nbdy+JC/ebYc+qGYs8=; b=E1S7syWCDDENY4v6YkkWNuwB6t
+	toN1FGevTillOCF6DxUlvey+kB7foY7Xhu9kmCxvz2jPbom3hrfsYnh1MJnr5f03ywm5/VZxjgBfD
+	fHK5He8guarJ93hbsVMqqNzNtGgPSudO7O9BDBsSkVd9NhWzhNoV6MHR/Aoqg8msqWofZ4pYIGrM3
+	OSlc7hQcCvcptTzO/Ce6tIGxHbC1qq9SkViHXnK94000W54TA8l5uUQRI5NbFaoRO2XofAxGueYMI
+	2QpJ2FzTGcXKj+y0Gpm9kKhyV/iN08I3lHmJAzVVxnSmBf+YgVlHficI7TK3cyjEwPFokBpzCqMzv
+	rqyvlzWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4fiF-00Arl9-NA; Tue, 04 Jan 2022 09:02:35 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n4frc-00AuY9-8w; Tue, 04 Jan 2022 09:12:16 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4fa0-00ApOb-QI; Tue, 04 Jan 2022 08:54:06 +0000
-X-UUID: 5188e470bc0d4014a24debdc1fb1dfb5-20220104
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=brhqIFFMdcfEWAvou5K8NfEO+QOlRwYJuECfooyXFss=; 
- b=QglWHIfF5DzU4rm42cdWiROi/EDnoTwxodrvwnXZge80xDIHb1/6HTObVfzCN4AttdlFygCryjqO3C9pB+XSVDpxwK+yYbnAJix+eBGb/fpI9bs7prlIkr68Of4ttWIIuwhLjEbpHZ59HCUC8ZeZTOWBk3MDFoZp1RZBpHiI7CE=;
-X-UUID: 5188e470bc0d4014a24debdc1fb1dfb5-20220104
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <guangming.cao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 237531630; Tue, 04 Jan 2022 01:54:00 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Jan 2022 00:43:57 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 4 Jan 2022 16:43:56 +0800
-Received: from mszswglt01 (10.16.20.20) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 4 Jan 2022 16:43:55 +0800
-Message-ID: <ae7c424a02b5b0ef30239ca65bd58086f13bc42b.camel@mediatek.com>
-Subject: Re: [PATCH v2] dma-buf: dma-heap: Add a size check for allocation
-From: Guangming.Cao <guangming.cao@mediatek.com>
-To: Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, "John
- Stultz" <john.stultz@linaro.org>
-CC: Sumit Semwal <sumit.semwal@linaro.org>, Benjamin Gaignard
- <benjamin.gaignard@linaro.org>, Liam Mark <lmark@codeaurora.org>, "Laura
- Abbott" <labbott@redhat.com>, Brian Starkey <Brian.Starkey@arm.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, "open list:DMA-BUF HEAPS FRAMEWORK"
- <linux-media@vger.kernel.org>, "open list:DMA-BUF HEAPS FRAMEWORK"
- <dri-devel@lists.freedesktop.org>, "moderated list:DMA-BUF HEAPS FRAMEWORK"
- <linaro-mm-sig@lists.linaro.org>, open list <linux-kernel@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>, "moderated list:ARM/Mediatek SoC
- support" <linux-mediatek@lists.infradead.org>, Bo Song
- <bo.song@mediatek.com>, Libo Kang <libo.kang@mediatek.com>, jianjiao zeng
- <jianjiao.zeng@mediatek.com>, mingyuan ma <mingyuan.ma@mediatek.com>, "Yunfei
- Wang" <yf.wang@mediatek.com>, <wsd_upstream@mediatek.com>
-Date: Tue, 4 Jan 2022 16:44:45 +0800
-In-Reply-To: <c05749d0-4c24-8763-a459-27257b2524ed@amd.com>
-References: <20211217094104.24977-1-guangming.cao@mediatek.com>
- <20211227095102.6054-1-guangming.cao@mediatek.com>
- <CALAqxLVA4jUk-2o28RZobrPDUnuXfV1xN77Pt8Pu1o27V3aUQQ@mail.gmail.com>
- <c05749d0-4c24-8763-a459-27257b2524ed@amd.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1n4fkv-00Asa1-Ul; Tue, 04 Jan 2022 09:05:23 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 773941F42D02
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641287118;
+ bh=Xi4ZY9J9nQvNXvhCwkB/X5eLzOcvVw0qtIjUE13RnLU=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=WUaXsPuY6FKnIU8lBBBqM1LvEk/x6qaAWekIWkPjFP2qFjwsJL1sGLbcvPrJWOd9I
+ NWKKkWvqtzTye/SlhBuLVGGC3lOLUR83pgwxWoeV6wcO+tWFkOxQoO9J+/plXLGIr/
+ QF50/nc8H3X6YdRIsgkwFBPQ24ZeZ0SPcNfBFFU88hjy3/i3MilXlM741r7EVR46I0
+ rj+6gzwNQamuKgx10edf1ZuVkmTcbFTi9l9Ws6IXHm167OMAiYjGZky1n38gTcORdE
+ yHfeoneiOtv+L6UazXoDiFxUCPI3H6cJZuvnVGbwvm+Jrz07mPNK+mkI3W7YSRix0q
+ e/JUAEwxQO/4Q==
+Subject: Re: [PATCH 1/2] soc: mediatek: pwrap: add pwrap driver for MT8186 SoC
+To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org,
+ matthias.bgg@gmail.com
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20211230114913.9829-1-johnson.wang@mediatek.com>
+ <20211230114913.9829-2-johnson.wang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <3dd41039-0151-4ee0-3940-3aceeaff17d1@collabora.com>
+Date: Tue, 4 Jan 2022 10:05:15 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20211230114913.9829-2-johnson.wang@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220104_005404_898626_062AE0B2 
-X-CRM114-Status: GOOD (  33.83  )
+X-CRM114-CacheID: sfid-20220104_010522_326429_789DEF2B 
+X-CRM114-Status: GOOD (  28.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,66 +66,194 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCAyMDIyLTAxLTA0IGF0IDA4OjQ3ICswMTAwLCBDaHJpc3RpYW4gS8O2bmlnIHdyb3Rl
-Og0KPiBBbSAwMy4wMS4yMiB1bSAxOTo1NyBzY2hyaWViIEpvaG4gU3R1bHR6Og0KPiA+IE9uIE1v
-biwgRGVjIDI3LCAyMDIxIGF0IDE6NTIgQU0gPGd1YW5nbWluZy5jYW9AbWVkaWF0ZWsuY29tPiB3
-cm90ZToNCj4gPiA+IEZyb206IEd1YW5nbWluZyA8R3VhbmdtaW5nLkNhb0BtZWRpYXRlay5jb20+
-DQo+ID4gPiANCj4gPiANCj4gPiBUaGFua3MgZm9yIHN1Ym1pdHRpbmcgdGhpcyENCj4gPiANCj4g
-PiA+IEFkZCBhIHNpemUgY2hlY2sgZm9yIGFsbGNhdGlvbiBzaW5jZSB0aGUgYWxsb2NhdGlvbiBz
-aXplIGlzDQo+ID4gDQo+ID4gbml0OiAiYWxsb2NhdGlvbiIgYWJvdmUuDQo+ID4gDQo+ID4gPiBh
-bHdheXMgbGVzcyB0aGFuIHRoZSB0b3RhbCBEUkFNIHNpemUuDQo+ID4gDQo+ID4gSW4gZ2VuZXJh
-bCwgaXQgbWlnaHQgYmUgZ29vZCB0byBhZGQgbW9yZSBjb250ZXh0IHRvIHRoZSBjb21taXQNCj4g
-PiBtZXNzYWdlDQo+ID4gdG8gYmV0dGVyIGFuc3dlciAqd2h5KiB0aGlzIGNoYW5nZSBpcyBuZWVk
-ZWQgcmF0aGVyIHRoYW4gd2hhdCB0aGUNCj4gPiBjaGFuZ2UgaXMgZG9pbmcuICBpZTogV2hhdCBu
-ZWdhdGl2ZSB0aGluZyBoYXBwZW5zIHdpdGhvdXQgdGhpcw0KPiA+IGNoYW5nZT8NCj4gPiBBbmQg
-c28gaG93IGRvZXMgdGhpcyBjaGFuZ2UgYXZvaWQgb3IgaW1wcm92ZSB0aGluZ3M/DQo+IA0KPiBD
-b21wbGV0ZWx5IGFncmVlLCBqdXN0IG9uZSBsaXR0bGUgYWRkaXRpb246IENvdWxkIHlvdSBhbHNv
-IGFkZCB0aGlzDQo+IHdoeSANCj4gYXMgY29tbWVudCB0byB0aGUgY29kZT8NCj4gDQo+IFdoZW4g
-d2Ugc3R1bWJsZSBvdmVyIHRoaXMgZml2ZSB5ZWFycyBmcm9tIG5vdyBpdCBpcyBhYnNvbHV0ZWx5
-IG5vdCANCj4gb2J2aW91cyB3aHkgd2UgZG8gdGhpcy4NClRoYW5rcyBmb3IgeW91ciByZXBseSEN
-Ckkgd2lsbCB1cGRhdGUgdGhlIHJlbGF0ZWQgcmVhc29uIGluIHRoZSBwYXRjaCBsYXRlci4NCg0K
-VGhlIHJlYXNvbiBmb3IgYWRkaW5nIHRoaXMgY2hlY2sgaXMgdGhhdCB3ZSBtZXQgYSBjYXNlIHRo
-YXQgdGhlIHVzZXINCnNlbnQgYW4gaW52YWxpZCBzaXplKEl0IHNlZW1zIGl0J3MgYSBuZWdhdGl2
-ZSB2YWx1ZSwgTVNCIGlzIDB4ZmYsIGl0J3MNCmxhcmdlciB0aGFuIERSQU0gc2l6ZSBhZnRlciBj
-b252ZXJ0IGl0IHRvIHNpemVfdCkgdG8gZG1hLWhlYXAgdG8gYWxsb2MNCm1lbW9yeSwgYW5kIHRo
-aXMgYWxsb2NhdGlvbiB3YXMgcnVubmluZyBvbiBhIHByb2Nlc3Moc3VjaCBhcyAiZ3JhbGxvYyIN
-Cm9uIEFuZHJvaWQgZGV2aWNlKSBjYW4ndCBiZSBraWxsZWQgYnkgT09NIGZsb3csIGFuZCB3ZSBh
-bHNvIGNvdWxkbid0DQpmaW5kIHRoZSByZWxhdGVkIGRtYWJ1ZiBpbiAiZG1hX2J1Zl9kZWJ1Z19z
-aG93IiBiZWNhdXNlIHRoZSByZWxhdGVkDQpkbWFidWYgd2FzIG5vdCBleHBvcnRlZCB5ZXQgc2lu
-Y2UgdGhlIGFsbG9jYXRpb24gaXMgc3RpbGwgb24gZ29pbmcuDQoNClNpbmNlIHRoaXMgaW52YWxp
-ZCBhcmd1bWVudCBjYXNlIGNhbiBiZSBwcmV2ZW50ZWQgYXQgZG1hLWhlYXAgc2lkZSwgc28sDQpJ
-IGFkZGVkIHRoaXMgc2l6ZSBjaGVjaywgYW5kIG1vcmVvdmVyLCB0byBsZXQgZGVidWcgaXQgZWFz
-aWx5LCBJIGFsc28NCmFkZGVkIGxvZ3Mgd2hlbiBzaXplIGlzIGJpZ2dlciB0aGFuIGEgdGhyZXNo
-b2xkIHdlIHNldCBpbiBtdGsgc3lzdGVtDQpoZWFwLg0KSWYgeW91IHRoaW5rIHRoYXQgcHJpbnQg
-bG9ncyBpbiBkbWEtaGVhcCBmcmFtZXdvcmsgaXMgYmV0dGVyLCBJIHdpbGwNCnVwZGF0ZSBpdCBp
-biBuZXh0IHZlcnNpb24uDQoNCklmIHlvdSBoYXZlIGJldHRlciBzb2x1dGlvbihzdWNoIGFzIGR1
-bXAgdGhlIHNpemUgdW5kZXIgYWxsb2NhdGluZw0KaW4gImRtYV9idWZfZGVidWdfc2hvdyIsIHdo
-aWNoIG1heWJlIG5lZWQgYWRkIGdsb2JhbCB2YXJpYWJsZSB0byByZWNvcmQNCml0KSwgcGxlYXNl
-IGtpbmRseSBsZXQgbWUga25vdywgdGhhbmtzIDopDQoNCj4gDQo+IFRoYW5rcywNCj4gQ2hyaXN0
-aWFuLg0KPiANCj4gPiANCj4gPiANCj4gPiA+IFNpZ25lZC1vZmYtYnk6IEd1YW5nbWluZyA8R3Vh
-bmdtaW5nLkNhb0BtZWRpYXRlay5jb20+DQo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBqaWFuamlhbyB6
-ZW5nIDxqaWFuamlhby56ZW5nQG1lZGlhdGVrLmNvbT4NCj4gPiA+IC0tLQ0KPiA+ID4gdjI6IDEu
-IHVwZGF0ZSBzaXplIGxpbWl0YXRpb24gYXMgdG90YWxfZHJhbSBwYWdlIHNpemUuDQo+ID4gPiAg
-ICAgIDIuIHVwZGF0ZSBjb21taXQgbWVzc2FnZQ0KPiA+ID4gLS0tDQo+ID4gPiAgIGRyaXZlcnMv
-ZG1hLWJ1Zi9kbWEtaGVhcC5jIHwgMiArKw0KPiA+ID4gICAxIGZpbGUgY2hhbmdlZCwgMiBpbnNl
-cnRpb25zKCspDQo+ID4gPiANCj4gPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2RtYS1idWYvZG1h
-LWhlYXAuYyBiL2RyaXZlcnMvZG1hLWJ1Zi9kbWEtDQo+ID4gPiBoZWFwLmMNCj4gPiA+IGluZGV4
-IDU2YmY1YWQwMWFkNS4uZTM5ZDJiZTk4ZDY5IDEwMDY0NA0KPiA+ID4gLS0tIGEvZHJpdmVycy9k
-bWEtYnVmL2RtYS1oZWFwLmMNCj4gPiA+ICsrKyBiL2RyaXZlcnMvZG1hLWJ1Zi9kbWEtaGVhcC5j
-DQo+ID4gPiBAQCAtNTUsNiArNTUsOCBAQCBzdGF0aWMgaW50IGRtYV9oZWFwX2J1ZmZlcl9hbGxv
-YyhzdHJ1Y3QNCj4gPiA+IGRtYV9oZWFwICpoZWFwLCBzaXplX3QgbGVuLA0KPiA+ID4gICAgICAg
-ICAgc3RydWN0IGRtYV9idWYgKmRtYWJ1ZjsNCj4gPiA+ICAgICAgICAgIGludCBmZDsNCj4gPiA+
-IA0KPiA+ID4gKyAgICAgICBpZiAobGVuIC8gUEFHRV9TSVpFID4gdG90YWxyYW1fcGFnZXMoKSkN
-Cj4gPiA+ICsgICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsNCj4gPiANCj4gPiBUaGlzIHNl
-ZW1zIHNhbmUuIEkga25vdyBJT04gdXNlZCB0byBoYXZlIHNvbWUgMS8yIG9mIG1lbW9yeSBjYXAg
-dG8NCj4gPiBhdm9pZCB1bm5lY2Vzc2FyeSBtZW1vcnkgcHJlc3N1cmUgb24gY3JhenkgYWxsb2Nh
-dGlvbnMuDQo+ID4gDQo+ID4gQ291bGQgeW91IHNlbmQgYWdhaW4gd2l0aCBhbiBpbXByb3ZlZCBj
-b21taXQgbWVzc2FnZT8NCj4gPiANCj4gPiB0aGFua3MNCj4gPiAtam9obg0KPiANCj4gDQpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
-ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Il 30/12/21 12:49, Johnson Wang ha scritto:
+> MT8186 are highly integrated SoC and use PMIC_MT6366 for
+> power management. This patch adds pwrap master driver to
+> access PMIC_MT6366.
+> 
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+
+Hello Johnson,
+thanks for the patch!
+
+However, there's something to improve...
+
+> ---
+>   drivers/soc/mediatek/mtk-pmic-wrap.c | 86 ++++++++++++++++++++++++++--
+>   1 file changed, 80 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 952bc554f443..4af713274468 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -30,6 +30,7 @@
+>   #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) & 0x00000001)
+>   #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
+>   #define PWRAP_STATE_INIT_DONE0		BIT(21)
+> +#define PWRAP_STATE_INIT_DONE0_V2	BIT(22)
+>   #define PWRAP_STATE_INIT_DONE1		BIT(15)
+>   
+>   /* macro for WACS FSM */
+> @@ -77,6 +78,8 @@
+>   #define PWRAP_CAP_INT1_EN	BIT(3)
+>   #define PWRAP_CAP_WDT_SRC1	BIT(4)
+>   #define PWRAP_CAP_ARB		BIT(5)
+> +#define PWRAP_CAP_MONITOR_V2	BIT(6)
+> +#define PWRAP_CAP_ARB_V2	BIT(8)
+>   
+>   /* defines for slave device wrapper registers */
+>   enum dew_regs {
+> @@ -1063,6 +1066,55 @@ static int mt8516_regs[] = {
+>   	[PWRAP_MSB_FIRST] =		0x170,
+>   };
+>   
+> +static int mt8186_regs[] = {
+> +	[PWRAP_MUX_SEL] =		0x0,
+> +	[PWRAP_WRAP_EN] =		0x4,
+> +	[PWRAP_DIO_EN] =		0x8,
+> +	[PWRAP_RDDMY] =			0x20,
+> +	[PWRAP_CSHEXT_WRITE] =		0x24,
+> +	[PWRAP_CSHEXT_READ] =		0x28,
+> +	[PWRAP_CSLEXT_WRITE] =		0x2C,
+> +	[PWRAP_CSLEXT_READ] =		0x30,
+> +	[PWRAP_EXT_CK_WRITE] =		0x34,
+> +	[PWRAP_STAUPD_CTRL] =		0x3C,
+> +	[PWRAP_STAUPD_GRPEN] =		0x40,
+> +	[PWRAP_EINT_STA0_ADR] =		0x44,
+> +	[PWRAP_EINT_STA1_ADR] =		0x48,
+> +	[PWRAP_INT_CLR] =		0xC8,
+> +	[PWRAP_INT_FLG] =		0xC4,
+> +	[PWRAP_MAN_EN] =		0x7C,
+> +	[PWRAP_MAN_CMD] =		0x80,
+> +	[PWRAP_WACS0_EN] =		0x8C,
+> +	[PWRAP_WACS1_EN] =		0x94,
+> +	[PWRAP_WACS2_EN] =		0x9C,
+> +	[PWRAP_INIT_DONE0] =		0x90,
+> +	[PWRAP_INIT_DONE1] =		0x98,
+> +	[PWRAP_INIT_DONE2] =		0xA0,
+> +	[PWRAP_INT_EN] =		0xBC,
+> +	[PWRAP_INT1_EN] =		0xCC,
+> +	[PWRAP_INT1_FLG] =		0xD4,
+> +	[PWRAP_INT1_CLR] =		0xD8,
+> +	[PWRAP_TIMER_EN] =		0xF0,
+> +	[PWRAP_WDT_UNIT] =		0xF8,
+> +	[PWRAP_WDT_SRC_EN] =		0xFC,
+> +	[PWRAP_WDT_SRC_EN_1] =		0x100,
+> +	[PWRAP_WDT_FLG] =		0x104,
+> +	[PWRAP_SPMINF_STA] =		0x1B4,
+> +	[PWRAP_DCM_EN] =		0x1EC,
+> +	[PWRAP_DCM_DBC_PRD] =		0x1F0,
+> +	[PWRAP_GPSINF_0_STA] =		0x204,
+> +	[PWRAP_GPSINF_1_STA] =		0x208,
+> +	[PWRAP_WACS0_CMD] =		0xC00,
+> +	[PWRAP_WACS0_RDATA] =		0xC04,
+> +	[PWRAP_WACS0_VLDCLR] =		0xC08,
+> +	[PWRAP_WACS1_CMD] =		0xC10,
+> +	[PWRAP_WACS1_RDATA] =		0xC14,
+> +	[PWRAP_WACS1_VLDCLR] =		0xC18,
+> +	[PWRAP_WACS2_CMD] =		0xC20,
+> +	[PWRAP_WACS2_RDATA] =		0xC24,
+> +	[PWRAP_WACS2_VLDCLR] =		0xC28,
+> +};
+> +
+>   enum pmic_type {
+>   	PMIC_MT6323,
+>   	PMIC_MT6351,
+> @@ -1083,6 +1135,7 @@ enum pwrap_type {
+>   	PWRAP_MT8135,
+>   	PWRAP_MT8173,
+>   	PWRAP_MT8183,
+> +	PWRAP_MT8186,
+>   	PWRAP_MT8195,
+>   	PWRAP_MT8516,
+>   };
+> @@ -1535,6 +1588,7 @@ static int pwrap_init_cipher(struct pmic_wrapper *wrp)
+>   	case PWRAP_MT6779:
+>   	case PWRAP_MT6797:
+>   	case PWRAP_MT8173:
+> +	case PWRAP_MT8186:
+>   	case PWRAP_MT8516:
+>   		pwrap_writel(wrp, 1, PWRAP_CIPHER_EN);
+>   		break;
+> @@ -2069,6 +2123,19 @@ static struct pmic_wrapper_type pwrap_mt8516 = {
+>   	.init_soc_specific = NULL,
+>   };
+>   
+> +static struct pmic_wrapper_type pwrap_mt8186 = {
+> +	.regs = mt8186_regs,
+> +	.type = PWRAP_MT8186,
+> +	.arb_en_all = 0xfb27f,
+> +	.int_en_all = 0xfffffffe, /* disable WatchDog Timeout for bit 1 */
+> +	.int1_en_all =  0x000017ff, /* disable Matching interrupt for bit 13 */
+> +	.spi_w = PWRAP_MAN_CMD_SPI_WRITE,
+> +	.wdt_src = PWRAP_WDT_SRC_MASK_ALL,
+> +	.caps = PWRAP_CAP_INT1_EN | PWRAP_CAP_MONITOR_V2 | PWRAP_CAP_ARB_V2,
+> +	.init_reg_clock = pwrap_common_init_reg_clock,
+> +	.init_soc_specific = NULL,
+> +};
+> +
+>   static const struct of_device_id of_pwrap_match_tbl[] = {
+>   	{
+>   		.compatible = "mediatek,mt2701-pwrap",
+> @@ -2097,6 +2164,9 @@ static const struct of_device_id of_pwrap_match_tbl[] = {
+>   	}, {
+>   		.compatible = "mediatek,mt8183-pwrap",
+>   		.data = &pwrap_mt8183,
+> +	}, {
+> +		.compatible = "mediatek,mt8186-pwrap",
+> +		.data = &pwrap_mt8186,
+>   	}, {
+>   		.compatible = "mediatek,mt8195-pwrap",
+>   		.data = &pwrap_mt8195,
+> @@ -2112,7 +2182,7 @@ MODULE_DEVICE_TABLE(of, of_pwrap_match_tbl);
+>   static int pwrap_probe(struct platform_device *pdev)
+>   {
+>   	int ret, irq;
+> -	u32 mask_done;
+> +	u32 rdata;
+>   	struct pmic_wrapper *wrp;
+>   	struct device_node *np = pdev->dev.of_node;
+>   	const struct of_device_id *of_slave_id = NULL;
+> @@ -2207,12 +2277,16 @@ static int pwrap_probe(struct platform_device *pdev)
+>   		}
+>   	}
+>   
+> -	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> -		mask_done = PWRAP_STATE_INIT_DONE1;
+> +	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+> +		rdata = pwrap_readl(wrp, PWRAP_WACS2_RDATA) &
+> +				    PWRAP_STATE_INIT_DONE0;
+> +	else if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB_V2))
+> +		rdata = pwrap_readl(wrp, PWRAP_WACS2_RDATA) &
+> +				    PWRAP_STATE_INIT_DONE0_V2;
+
+Why are you changing the logic here?
+I think that assigning to `mask_done` is a good option, reducing duplication and
+also reducing the amount of changes for this patch.
+
+That said, I would simply do it as follows:
+
+	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+
+		mask_done = PWRAP_STATE_INIT_DONE1;
+
+	else if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB_V2))
+
+		mask_done = PWRAP_STATE_INIT_DONE0_V2;
+
+	else
+
+		mask_done = PWRAP_STATE_INIT_DONE0;
+
+Regards,
+- Angelo
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
