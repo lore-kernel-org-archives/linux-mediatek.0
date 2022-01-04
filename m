@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBCECC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 08:08:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A66CC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 08:09:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=826xWfq9OKeEr5NAi3IL+yjWjUJw1xU8ulKjB+/dUtc=; b=ZeToOe7ihXm9Dr
-	a7kigoH10eMEVh+UMNSvKHIRa0r9mEo+KdWKndg5KpiYmbmoqB2Vte3zNAx+0N0Xgln0LqRaFOare
-	R+iGs9TQErV4uwin2D4ePO14Q5l2iPrDc5Y1SSV6zAm8D9QIIu4Uag5LduV0YESbmCedVGTFT1k1z
-	DEBuAMK+TYIo5igbZndTwGdk6KYp30vMg9l0rV9Hpp3RFd630BVVA95FJ7PqLFeFu+OzrxLEZn58D
-	noKVu1se3WqMaDEcevO//mivYSp8Lf0ePFxB61LFp3TECN1w1fQjNFGBBeSe6J01SJ/TAww/fjQxO
-	Ccc6upc2hXayGtEiFDew==;
+	List-Owner; bh=x8qFM0hPqyrlYwcw46XPIBqX6Zso3RVoovuiWC9Mdzo=; b=FV/hmJ3lMR3oKj
+	OsyWi5Zly6VpDDFmtlN8Ke2bmcaaZBwrCC43rdJySuFBZhvvoCoVxCxApCLgztg0tHUgJVacvilnj
+	X55L+Fy5C+aTUmM98gg6TBZWcierZjtx28p4rTPZ/jBs6o+iVl14aOx41e6RWVGgo6ExepHwP/7X8
+	ZbAVLs0XByWSubEPkCXx4LtdMbTQ3sRnyQmRg0LWoKmTjLfdpALZUXZYvSauYHsloq+YI/WKZvfAd
+	/KDCxfQIIQq43iwhjEMuZ4QWQq9wYKWrlDU6EiI5WOCPF585oPu9CDNmw0GA+0qtkI7SQpdEEe1it
+	Xd20Y1NZTRPD4YD9sU2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4es9-00Advg-78; Tue, 04 Jan 2022 08:08:45 +0000
+	id 1n4esz-00AeKF-PH; Tue, 04 Jan 2022 08:09:37 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4eo8-00Ably-Pe; Tue, 04 Jan 2022 08:04:38 +0000
-X-UUID: 685ce542432c4b48a1b868bc9bcc23e6-20220104
-X-UUID: 685ce542432c4b48a1b868bc9bcc23e6-20220104
+ id 1n4eoA-00Ably-5g; Tue, 04 Jan 2022 08:04:39 +0000
+X-UUID: 65c9aa251f44461ba13c94d3c660a281-20220104
+X-UUID: 65c9aa251f44461ba13c94d3c660a281-20220104
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 568176999; Tue, 04 Jan 2022 01:04:34 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 1032740234; Tue, 04 Jan 2022 01:04:34 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Jan 2022 00:01:54 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 4 Jan 2022 16:01:52 +0800
+ 15.0.1497.2; Tue, 4 Jan 2022 00:01:56 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 4 Jan 2022 16:01:54 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 4 Jan 2022 16:01:51 +0800
+ Transport; Tue, 4 Jan 2022 16:01:52 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -56,17 +56,17 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v3, 08/13] media: mtk-vcodec: Add format to support MT21C
-Date: Tue, 4 Jan 2022 16:01:33 +0800
-Message-ID: <20220104080138.7472-9-yunfei.dong@mediatek.com>
+Subject: [PATCH v3, 09/13] media: mtk-vcodec: disable vp8 4K capability
+Date: Tue, 4 Jan 2022 16:01:34 +0800
+Message-ID: <20220104080138.7472-10-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220104080138.7472-1-yunfei.dong@mediatek.com>
 References: <20220104080138.7472-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220104_000436_863364_A7BB062C 
-X-CRM114-Status: GOOD (  15.76  )
+X-CRM114-CacheID: sfid-20220104_000438_242042_F118BF24 
+X-CRM114-Status: GOOD (  12.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,58 +83,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Needs to use mediatek compressed mode for mt8192 decoder.
+For vp8 not support 4K, need to disable it.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- .../media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c   | 7 ++++++-
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h         | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-index 01bb96f3b30e..21895fbed4c5 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-@@ -81,7 +81,7 @@ static const struct mtk_stateless_control mtk_stateless_controls[] = {
- 
- #define NUM_CTRLS ARRAY_SIZE(mtk_stateless_controls)
- 
--static struct mtk_video_fmt mtk_video_formats[2];
-+static struct mtk_video_fmt mtk_video_formats[3];
- static struct mtk_codec_framesizes mtk_vdec_framesizes[1];
- 
- static struct mtk_video_fmt default_out_format;
-@@ -361,6 +361,7 @@ static void mtk_vcodec_add_formats(unsigned int fourcc,
- 		num_framesizes++;
- 		break;
- 	case V4L2_PIX_FMT_MM21:
-+	case V4L2_PIX_FMT_MT21C:
- 		mtk_video_formats[count_formats].fourcc = fourcc;
- 		mtk_video_formats[count_formats].type = MTK_FMT_FRAME;
- 		mtk_video_formats[count_formats].num_planes = 2;
-@@ -387,6 +388,10 @@ static void mtk_vcodec_get_supported_formats(struct mtk_vcodec_ctx *ctx)
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_MM21, ctx);
- 		cap_format_count++;
- 	}
-+	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_MT21C) {
-+		mtk_vcodec_add_formats(V4L2_PIX_FMT_MT21C, ctx);
-+		cap_format_count++;
-+	}
- 	if (ctx->dev->dec_capability & MTK_VDEC_FORMAT_H264_SLICE) {
- 		mtk_vcodec_add_formats(V4L2_PIX_FMT_H264_SLICE, ctx);
- 		out_format_count++;
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 4ae80d2e77d2..6c084a172e4b 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -360,6 +360,7 @@ enum mtk_vdec_hw_arch {
-  */
- enum mtk_vdec_format_types {
- 	MTK_VDEC_FORMAT_MM21 = 0x20,
-+	MTK_VDEC_FORMAT_MT21C = 0x40,
- 	MTK_VDEC_FORMAT_H264_SLICE = 0x100,
- };
- 
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+index 519f2b9d9b5b..34ee4a0092ff 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.c
+@@ -532,7 +532,8 @@ static int vidioc_enum_framesizes(struct file *file, void *priv,
+ 		fsize->type = V4L2_FRMSIZE_TYPE_STEPWISE;
+ 		fsize->stepwise = dec_pdata->vdec_framesizes[i].stepwise;
+ 		if (!(ctx->dev->dec_capability &
+-				VCODEC_CAPABILITY_4K_DISABLED)) {
++				VCODEC_CAPABILITY_4K_DISABLED) &&
++				fsize->pixel_format != V4L2_PIX_FMT_VP8_FRAME) {
+ 			mtk_v4l2_debug(3, "4K is enabled");
+ 			fsize->stepwise.max_width =
+ 					VCODEC_DEC_4K_CODED_WIDTH;
 -- 
 2.25.1
 
