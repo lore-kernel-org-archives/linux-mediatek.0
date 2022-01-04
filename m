@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 284BCC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 08:06:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C3A0C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 08:06:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zY4Yb6xb0Wzc5elzUm3XS7LdM7+Wt7MC3SNakBoM0Jc=; b=KCSLAbeU+EnfzR
-	Kpjpd3lIxkGPp45GYaHp6dcB7V+uK4CioI7R1Fzt7IWPVPaUdhsM/ffMiAmqvIbOzKcLxgEhWsRmm
-	sEYCrq+mbTuDDmbnnEEDHcg8nMXrIFLCvrfmbcFLKiaz08qFSUCe9GvAoM15bIC4ctJfFXKt2Fnmw
-	/FeHjh6COODMbWE4TBXPO6oEig65ApcgSQvWrLMlSg+KxiuOoluMFOE4XTpXxDWxOIAD8olt3fV9D
-	ZidKMmQ6NB51m2D16pKfPPS8Z5cqp7f4bK5Mdlyo3bTkVyVwmMMImo8ACclzyXKvZG4sUZV6/8Tgk
-	Q6xyXXhpghyWriOhZ5RQ==;
+	List-Owner; bh=F9IQ4jDgE/N5455/lmhlrYq0IwCM98m+f9bUvdyiz6Q=; b=ARwvqc+rJgt9Mv
+	P0iBAUQzsxh2VasTm7dmM7k7q2nEKVvyyt+tRy6WAZTBTzUBLBfTZLJq+DgrK4ME5hHzXMlb2O5AD
+	c2VudmREeXSOi/fYlLg5AEGHYJS+bIH9yFAPbn6u0i/7+QfxmlOb4MGiI/Yc6C+wbC78HbUNF/Juj
+	r6zt3USe6a0vV2XdQP7j5vH42kZxSG6ecGekazyQEMc32SDWCYaVQ0nkXcq69UXE5/f4UvDOvapnR
+	S+sycuTgFNWUvILMHuPYQrSq4WGIVlQck/uq5F2qXk95WUxbiwTT5RSOnrQV9+HD9hO5dBt5RsFIk
+	tTIconMBGSQVqjENwVAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4eq3-00Ackr-F1; Tue, 04 Jan 2022 08:06:35 +0000
+	id 1n4eq7-00Acmt-I2; Tue, 04 Jan 2022 08:06:39 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4enh-00AbUP-Nj; Tue, 04 Jan 2022 08:04:11 +0000
-X-UUID: 92c472b57f0441da8678fe120b6c1784-20220104
-X-UUID: 92c472b57f0441da8678fe120b6c1784-20220104
+ id 1n4enl-00AbVR-0t; Tue, 04 Jan 2022 08:04:14 +0000
+X-UUID: 76db09f70c6b41ae8dd3ea95a33981b1-20220104
+X-UUID: 76db09f70c6b41ae8dd3ea95a33981b1-20220104
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2089330771; Tue, 04 Jan 2022 01:04:02 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ with ESMTP id 1983379783; Tue, 04 Jan 2022 01:04:02 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Jan 2022 00:01:49 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 4 Jan 2022 16:01:47 +0800
+ 15.0.1497.2; Tue, 4 Jan 2022 00:01:46 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 4 Jan 2022 16:01:44 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 4 Jan 2022 16:01:46 +0800
+ Transport; Tue, 4 Jan 2022 16:01:43 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -57,18 +57,17 @@ CC: Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig <frkoenig@chromium.org>,
  <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v3,
- 05/13] media: mtk-vcodec: Call v4l2_m2m_set_dst_buffered() set
- capture buffer buffered
-Date: Tue, 4 Jan 2022 16:01:30 +0800
-Message-ID: <20220104080138.7472-6-yunfei.dong@mediatek.com>
+ 03/13] media: mtk-vcodec: get capture queue buffer size from scp
+Date: Tue, 4 Jan 2022 16:01:28 +0800
+Message-ID: <20220104080138.7472-4-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220104080138.7472-1-yunfei.dong@mediatek.com>
 References: <20220104080138.7472-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220104_000409_810670_97783C1A 
-X-CRM114-Status: GOOD (  11.84  )
+X-CRM114-CacheID: sfid-20220104_000413_130387_90CD186B 
+X-CRM114-Status: GOOD (  19.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,35 +84,210 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-lat thread: output queue      \
-                               -> lat hardware -> lat trans buffer
-            lat trans buffer  /
-
-core thread: capture queue     \
-                                ->core hardware -> capture queue
-             lat trans buffer  /
-
-Lat and core work in different thread, setting capture buffer buffered.
+Different capture buffer format has different buffer size, need to get
+real buffer size according to buffer type from scp.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 ---
- drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c | 3 +++
- 1 file changed, 3 insertions(+)
+comments:
++static void handle_get_param_msg_ack(
++	const struct vdec_vpu_ipi_get_param_ack *msg)
++{
++	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
++					(unsigned long)msg->ap_inst_addr;
+> ap inst addr is uint64_t, but for 32bit system, only use 32bit address, so add unsigned long.
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-index 5aebf88f997b..23a154c4e321 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-@@ -314,6 +314,9 @@ static void mtk_init_vdec_params(struct mtk_vcodec_ctx *ctx)
- 	src_vq = v4l2_m2m_get_vq(ctx->m2m_ctx,
- 				 V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
++	case GET_PARAM_PIC_INFO:
++		vpu->fb_sz[0] = msg->data[0];
++		vpu->fb_sz[1] = msg->data[1];
+> fb_sz is used here.
+---
+ .../media/platform/mtk-vcodec/vdec_ipi_msg.h  | 37 ++++++++++++++
+ .../media/platform/mtk-vcodec/vdec_vpu_if.c   | 51 +++++++++++++++++++
+ .../media/platform/mtk-vcodec/vdec_vpu_if.h   | 15 ++++++
+ 3 files changed, 103 insertions(+)
+
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+index 5daca8d52ebb..476fc5777a0f 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
++++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
+@@ -20,6 +20,7 @@ enum vdec_ipi_msgid {
+ 	AP_IPIMSG_DEC_RESET = 0xA004,
+ 	AP_IPIMSG_DEC_CORE = 0xA005,
+ 	AP_IPIMSG_DEC_CORE_END = 0xA006,
++	AP_IPIMSG_DEC_GET_PARAM = 0xA007,
  
-+	if (ctx->dev->vdec_pdata->hw_arch != MTK_VDEC_PURE_SINGLE_CORE)
-+		v4l2_m2m_set_dst_buffered(ctx->m2m_ctx, 1);
+ 	VPU_IPIMSG_DEC_INIT_ACK = 0xB000,
+ 	VPU_IPIMSG_DEC_START_ACK = 0xB001,
+@@ -28,6 +29,7 @@ enum vdec_ipi_msgid {
+ 	VPU_IPIMSG_DEC_RESET_ACK = 0xB004,
+ 	VPU_IPIMSG_DEC_CORE_ACK = 0xB005,
+ 	VPU_IPIMSG_DEC_CORE_END_ACK = 0xB006,
++	VPU_IPIMSG_DEC_GET_PARAM_ACK = 0xB007,
+ };
+ 
+ /**
+@@ -114,4 +116,39 @@ struct vdec_vpu_ipi_init_ack {
+ 	uint32_t inst_id;
+ };
+ 
++/**
++ * struct vdec_ap_ipi_get_param - for AP_IPIMSG_GET_PARAM
++ * @msg_id	: AP_IPIMSG_DEC_GET_PARAM
++ * @inst_id     : instance ID. Used if the ABI version >= 2.
++ * @data	: picture information
++ * @param_type	: get param type
++ * @codec_type	: Codec fourcc
++ */
++struct vdec_ap_ipi_get_param {
++	uint32_t msg_id;
++	uint32_t inst_id;
++	uint32_t data[4];
++	uint32_t param_type;
++	uint32_t codec_type;
++};
 +
- 	/* Support request api for output plane */
- 	src_vq->supports_requests = true;
- 	src_vq->requires_requests = true;
++
++/**
++ * struct vdec_vpu_ipi_get_param_ack - for VPU_IPIMSG_DEC_GET_PARAM_ACK
++ * @msg_id	: VPU_IPIMSG_DEC_GET_PARAM_ACK
++ * @status	: VPU exeuction result
++ * @ap_inst_addr	: AP vcodec_vpu_inst instance address
++ * @data     : picture information from SCP.
++ * @param_type	: get param type
++ * @reserved : reserved param
++ */
++struct vdec_vpu_ipi_get_param_ack {
++	uint32_t msg_id;
++	int32_t status;
++	uint64_t ap_inst_addr;
++	uint32_t data[4];
++	uint32_t param_type;
++	uint32_t reserved;
++};
++
+ #endif
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+index 21f6d9c5a371..2fb9a4184b27 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
+@@ -6,6 +6,7 @@
+ 
+ #include "mtk_vcodec_drv.h"
+ #include "mtk_vcodec_util.h"
++#include "vdec_drv_if.h"
+ #include "vdec_ipi_msg.h"
+ #include "vdec_vpu_if.h"
+ #include "mtk_vcodec_fw.h"
+@@ -54,6 +55,27 @@ static void handle_init_ack_msg(const struct vdec_vpu_ipi_init_ack *msg)
+ 	}
+ }
+ 
++static void handle_get_param_msg_ack(
++	const struct vdec_vpu_ipi_get_param_ack *msg)
++{
++	struct vdec_vpu_inst *vpu = (struct vdec_vpu_inst *)
++					(unsigned long)msg->ap_inst_addr;
++
++	mtk_vcodec_debug(vpu, "+ ap_inst_addr = 0x%llx", msg->ap_inst_addr);
++
++	/* param_type is enum vdec_get_param_type */
++	switch(msg->param_type) {
++	case GET_PARAM_PIC_INFO:
++		vpu->fb_sz[0] = msg->data[0];
++		vpu->fb_sz[1] = msg->data[1];
++		break;
++	default:
++		mtk_vcodec_err(vpu, "invalid get param type=%d", msg->param_type);
++		vpu->failure = 1;
++		break;
++	}
++}
++
+ /*
+  * vpu_dec_ipi_handler - Handler for VPU ipi message.
+  *
+@@ -89,6 +111,9 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
+ 		case VPU_IPIMSG_DEC_CORE_END_ACK:
+ 			break;
+ 
++		case VPU_IPIMSG_DEC_GET_PARAM_ACK:
++			handle_get_param_msg_ack(data);
++			break;
+ 		default:
+ 			mtk_vcodec_err(vpu, "invalid msg=%X", msg->msg_id);
+ 			break;
+@@ -217,6 +242,32 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
+ 	return err;
+ }
+ 
++int vpu_dec_get_param(struct vdec_vpu_inst *vpu, uint32_t *data,
++	unsigned int len, unsigned int param_type)
++{
++	struct vdec_ap_ipi_get_param msg;
++	int i;
++	int err;
++
++	mtk_vcodec_debug_enter(vpu);
++
++	if (len > ARRAY_SIZE(msg.data)) {
++		mtk_vcodec_err(vpu, "invalid len = %d\n", len);
++		return -EINVAL;
++	}
++
++	memset(&msg, 0, sizeof(msg));
++	msg.msg_id = AP_IPIMSG_DEC_GET_PARAM;
++	msg.inst_id = vpu->inst_id;
++	memcpy(msg.data, data, sizeof(unsigned int) * i);
++	msg.param_type = param_type;
++	msg.codec_type = vpu->codec_type;
++
++	err = vcodec_vpu_send_msg(vpu, (void *)&msg, sizeof(msg));
++	mtk_vcodec_debug(vpu, "- ret=%d", err);
++	return err;
++}
++
+ int vpu_dec_core(struct vdec_vpu_inst *vpu)
+ {
+ 	return vcodec_send_ap_ipi(vpu, AP_IPIMSG_DEC_CORE);
+diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+index 4cb3c7f5a3ad..963f8d4877b7 100644
+--- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
++++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
+@@ -28,6 +28,8 @@ struct mtk_vcodec_ctx;
+  * @wq          : wait queue to wait VPU message ack
+  * @handler     : ipi handler for each decoder
+  * @codec_type     : use codec type to separate different codecs
++ * @capture_type    : used capture type to separate different capture format
++ * @fb_sz  : frame buffer size of each plane
+  */
+ struct vdec_vpu_inst {
+ 	int id;
+@@ -42,6 +44,8 @@ struct vdec_vpu_inst {
+ 	wait_queue_head_t wq;
+ 	mtk_vcodec_ipi_handler handler;
+ 	unsigned int codec_type;
++	unsigned int capture_type;
++	unsigned int fb_sz[2];
+ };
+ 
+ /**
+@@ -104,4 +108,15 @@ int vpu_dec_core(struct vdec_vpu_inst *vpu);
+  */
+ int vpu_dec_core_end(struct vdec_vpu_inst *vpu);
+ 
++/**
++ * vpu_dec_get_param - get param from scp
++ *
++ * @vpu : instance for vdec_vpu_inst
++ * @data: meta data to pass bitstream info to VPU decoder
++ * @len : meta data length
++ * @param_type : get param type
++ */
++int vpu_dec_get_param(struct vdec_vpu_inst *vpu, uint32_t *data,
++	unsigned int len, unsigned int param_type);
++
+ #endif
 -- 
 2.25.1
 
