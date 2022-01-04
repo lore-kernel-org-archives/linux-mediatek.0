@@ -4,61 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17908C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 05:05:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8948C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue,  4 Jan 2022 07:41:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=/UsSzWiyYhfMfoBWFHDGXtPjy6ydrvCS7caZbCq1A6Q=; b=J/lspwhRCWMOB6
-	6jaZ/VHifBAi+7HfYs+2CUz72fGiLI7UoDRRcxHfJUJhu1kSSh0e5pEtqhDII6IuofO5quozp+GYX
-	IKsvVODUceDY3IkngBd11avhtaAQmgOydtKaSmT7N29vz2QLei9ZHnmUXD2qwuEm34f3DGzsodJOH
-	x4+Rnuj/2RuW797rTImE1FR+Yds9J1RNMc3S7sFE02sbdDUEkRBlR5z5v08qeFLD8mkyNEoAgM5Cq
-	G9FM8D0l3OfPSpvHSlVqVGi5gA4jikmLx9Iab5Szi6WuP0MHbsSxXuV4EuFQomDzuC9AQfla8xAvG
-	jrlB/RIypqprFF4cU8Zg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kigu4z/xo/9W31czQPfKGC5AQbTSMHM7iHVOl+Vp3VM=; b=nGBmTTOmmKHYY2
+	h1fU7C2/DbvfllKDR+Q4zGLp6Mlri0kAQG03yAkznt6fJYz9Nvpuz6yMtcaqOKGlB4iJ3mJTDKLTn
+	zr8z7ChHvVZDR6NoEvUJDxRd11P7/a6rTK3e0A6YGtdusIgJbN9TH+Go8E72a3xzKOEAd54fUtgfU
+	TOb1MPyYaz81Goscw7oN9YuT0Mjl58OKydxmlgWK9+Xi7YLw+22CiOxMK6xYXCovmmA9I/EaB+JPf
+	hhLFh9kqNGQVNFShH1mRareD7oHhZvi6SKQAC3+re8K6fumEgotW6dEmtmoW/QUguZLqP/GX27thU
+	Ky1Z4vsd/qO+6eaSHjJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n4c0u-00AN4u-Gj; Tue, 04 Jan 2022 05:05:36 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n4eRU-00AX5o-6B; Tue, 04 Jan 2022 07:41:12 +0000
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n4c0h-00AN2g-Rf; Tue, 04 Jan 2022 05:05:25 +0000
-X-UUID: 6a627f8f9d37457a8f3a334025d3579e-20220103
-X-UUID: 6a627f8f9d37457a8f3a334025d3579e-20220103
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 603291566; Mon, 03 Jan 2022 22:05:19 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 3 Jan 2022 20:55:18 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 4 Jan 2022 12:55:16 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 4 Jan 2022 12:55:17 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Michael Turquette
- <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Chun-Jie Chen <chun-jie.chen@mediatek.com>, "Weiyi
- Lu" <weiyi.lu@mediatek.com>, Ikjoon Jang <ikjn@chromium.org>, Miles Chen
- <miles.chen@mediatek.com>, Enric Balletbo i Serra
- <enric.balletbo@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee
- <ryder.lee@kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-clk@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: John Crispin <john@phrozen.org>, Sam Shih <sam.shih@mediatek.com>
-Subject: [PATCH v8 0/3] Mediatek MT7986 basic clock support
-Date: Tue, 4 Jan 2022 12:55:08 +0800
-Message-ID: <20220104045508.21614-1-sam.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1n4eRR-00AX4G-Tn
+ for linux-mediatek@lists.infradead.org; Tue, 04 Jan 2022 07:41:11 +0000
+Received: by mail-lf1-x12a.google.com with SMTP id o12so79959009lfk.1
+ for <linux-mediatek@lists.infradead.org>; Mon, 03 Jan 2022 23:41:08 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CsNGkAuTfXI5FN0re853yKsBlp1/TfiDupH7mdPtEH8=;
+ b=bt1dpabRFl1fZ8T5SBzU3zX2YrJv3AsPCn9mVTUi72pE9/1bN4aZhW9dpJl33tZaM9
+ 7iaESPWbHBFnnXArza/MTy3T7FYJJCgiv99Di/U7qTqFZsyAYk/MJuo9oKra72g9vygN
+ 17jVAOAM3wGl52rn6RtjqDkgFo6TsIUDIPU5k=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CsNGkAuTfXI5FN0re853yKsBlp1/TfiDupH7mdPtEH8=;
+ b=AtbIzcjGhNaHgl2jHwj7s31+Vaiu95wfKvMnGR/4+m3aG4qGyP9mH82B9aY7sZ6xtA
+ DddHyWfLfOkz9YauKh2yXIjKXynq+98XyQd0TtKoQ1aWZKOo8EuzieUO6mn3aCYifww6
+ GhqDNUF30o1Eenliq3PGZFhBlNluEImroMXkyywx8GvkPVtJYVmWf7JxFKbyC/uks6B9
+ EXkDFYSKigRurn4m/YcU2v1mjdPAJkIYGyuwd/E5cR9gInh6iOVT7kEBaMdi2By4A/6L
+ nRDbV4e3sr45WJj7jxuA4keuvuIyt8XxJhMxd6b48o9k//Oc4oAqPl/RqY+hvh4xYP/I
+ TFIw==
+X-Gm-Message-State: AOAM530faDX/feo+4RJT8C5emLgvikpK3tGsDck6xJ2Byiw0K8yLJh79
+ x/uTGHfcR9OXpr+1DL8AqNMiMv7nqOYB/FET9OhQdA==
+X-Google-Smtp-Source: ABdhPJytUCpP+bhk+Y00OMKDkyKKeQaE6cvos2kOI6OSzqWU42kDCIZUSxoTZ5LSAvJPEeULqokCCRGBCTIG3y8Buzo=
+X-Received: by 2002:a05:6512:202f:: with SMTP id
+ s15mr45046523lfs.501.1641282067147; 
+ Mon, 03 Jan 2022 23:41:07 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220103101855.17350-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20220103101855.17350-1-angelogioacchino.delregno@collabora.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 4 Jan 2022 15:40:55 +0800
+Message-ID: <CAGXv+5HJSDZe-Ob4jpPcPnsCn=4Pqu=JHz9B4S4hANQF80r2kg@mail.gmail.com>
+Subject: Re: [PATCH 1/3] pinctrl: mediatek: pinctrl-moore: Simplify with
+ dev_err_probe()
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: sean.wang@kernel.org, linus.walleij@linaro.org, matthias.bgg@gmail.com, 
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ kernel@collabora.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220103_210523_926352_24D449BF 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20220103_234110_010314_7EE95792 
+X-CRM114-Status: UNSURE (   7.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,51 +78,21 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-VGhpcyBwYXRjaCBzZXJpZXMgYWRkIGJhc2ljIGNsb2NrIHN1cHBvcnQgZm9yIG1lZGlhdGVrIG10
-Nzk4NiBTb0MuCkl0IGlzIGJhc2VkIG9uIHBhdGNoIHNlcmllcyAiQWRkIGJhc2ljIFNvQyBzdXBw
-b3J0IGZvciBtZWRpYXRlayBtdDc5ODYiCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDIx
-MTAxODExNDAwOS4xMzM1MC0xLXNhbS5zaGloQG1lZGlhdGVrLmNvbS8KdGhhdCBoYXMgYmVlbiBt
-ZXJnZWQgaW50byBtYXR0aGlhcydzIHRyZWUgcmVjZW50bHk6Cmh0dHBzOi8vZ2l0Lmtlcm5lbC5v
-cmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L21hdHRoaWFzLmJnZy9saW51eC5naXQvbG9nLz9o
-PXY1LjE2LW5leHQvZHRzNjQKCi0tLQp2ODogdXBkYXRlIHRoZSBnaXQgbWVzc2FnZSwgYW5kIGFk
-ZCBhIFJldmlld2VkLWJ5IHRhZyBmb3IgdGhpcyBzZXJpZXMgCnY3OiBleGNsdWRlIERUUyBjaGFu
-Z2VzIGluIHRoZSBwYXRjaCBzZXJpZXMKdjU6IHVzZWQgYnVpbHRpbl9wbGF0Zm9ybV9kcml2ZXIg
-aW5zdGVhZCBvZiBDTEtfT0ZfREVDTEFSRQogICAgZm9sbG93IHJlY2VudCBjbGstbXQ4MTk1IGNs
-b2NrIHBhdGNoIHNlcmllczoKICAgIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWFybS1r
-ZXJuZWwvMjAyMTA5MTQwMjE2MzMuMjYzNzctMS1jaHVuLWppZS5jaGVuQG1lZGlhdGVrLmNvbS8K
-CnY0OgpBY2NvcmRpbmcgdG8gdGhlIG1haW50YWluZXLCocKmcyBzdWdnZXN0aW9uLCB0aGlzIHBh
-dGNoIHNwbGl0cyB0aGUgcHJldmlvdXMKdGhyZWFkIGludG8gaW5kZXBlbmRlbnQgcGF0Y2ggc2Vy
-aWVzLgpUaGlzIHBhdGNoIGluY2x1ZGUgY2xvY2sgZHJpdmVyIGFuZCBkZXZpY2UgdHJlZSB1cGRh
-dGUKCk9yaWdpbmFsIHRocmVhZDoKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjEwOTE0
-MDg1MTM3LjMxNzYxLTEtc2FtLnNoaWhAbWVkaWF0ZWsuY29tLwpodHRwczovL2xvcmUua2VybmVs
-Lm9yZy9saW51eC1hcm0ta2VybmVsLzIwMjEwOTE0MDg1MTM3LjMxNzYxLTItc2FtLnNoaWhAbWVk
-aWF0ZWsuY29tLwotLS0KClNhbSBTaGloICgzKToKICBkdC1iaW5kaW5nczogY2xvY2s6IG1lZGlh
-dGVrOiBkb2N1bWVudCBjbGsgYmluZGluZ3MgZm9yIG1lZGlhdGVrCiAgICBtdDc5ODYgU29DCiAg
-Y2xrOiBtZWRpYXRlazogYWRkIG10Nzk4NiBjbG9jayBJRHMKICBjbGs6IG1lZGlhdGVrOiBhZGQg
-bXQ3OTg2IGNsb2NrIHN1cHBvcnQKCiAuLi4vYXJtL21lZGlhdGVrL21lZGlhdGVrLGFwbWl4ZWRz
-eXMudHh0ICAgICAgfCAgIDEgKwogLi4uL2JpbmRpbmdzL2FybS9tZWRpYXRlay9tZWRpYXRlayxl
-dGhzeXMudHh0IHwgICAxICsKIC4uLi9hcm0vbWVkaWF0ZWsvbWVkaWF0ZWssaW5mcmFjZmcudHh0
-ICAgICAgICB8ICAgMSArCiAuLi4vYXJtL21lZGlhdGVrL21lZGlhdGVrLHNnbWlpc3lzLnR4dCAg
-ICAgICAgfCAgIDIgKwogLi4uL2FybS9tZWRpYXRlay9tZWRpYXRlayx0b3Bja2dlbi50eHQgICAg
-ICAgIHwgICAxICsKIGRyaXZlcnMvY2xrL21lZGlhdGVrL0tjb25maWcgICAgICAgICAgICAgICAg
-ICB8ICAxNyArCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9NYWtlZmlsZSAgICAgICAgICAgICAgICAg
-fCAgIDQgKwogZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10Nzk4Ni1hcG1peGVkLmMgICAgIHwg
-MTAwICsrKysrCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LWV0aC5jICAgICAgICAg
-fCAxMzIgKysrKysrKwogZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10Nzk4Ni1pbmZyYWNmZy5j
-ICAgIHwgMjI0ICsrKysrKysrKysrKwogZHJpdmVycy9jbGsvbWVkaWF0ZWsvY2xrLW10Nzk4Ni10
-b3Bja2dlbi5jICAgIHwgMzQyICsrKysrKysrKysrKysrKysrKwogaW5jbHVkZS9kdC1iaW5kaW5n
-cy9jbG9jay9tdDc5ODYtY2xrLmggICAgICAgIHwgMTY5ICsrKysrKysrKwogMTIgZmlsZXMgY2hh
-bmdlZCwgOTk0IGluc2VydGlvbnMoKykKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL2Nsay9t
-ZWRpYXRlay9jbGstbXQ3OTg2LWFwbWl4ZWQuYwogY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMv
-Y2xrL21lZGlhdGVrL2Nsay1tdDc5ODYtZXRoLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJz
-L2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LWluZnJhY2ZnLmMKIGNyZWF0ZSBtb2RlIDEwMDY0NCBk
-cml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ3OTg2LXRvcGNrZ2VuLmMKIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBpbmNsdWRlL2R0LWJpbmRpbmdzL2Nsb2NrL210Nzk4Ni1jbGsuaAoKLS0gCjIuMjkuMgoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1l
-ZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+On Mon, Jan 3, 2022 at 6:19 PM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Use the dev_err_probe() helper to simplify error handling during probe.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
