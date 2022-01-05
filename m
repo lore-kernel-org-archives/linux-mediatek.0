@@ -4,62 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1BC5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 10:13:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A4DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 10:45:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xvDiTNcHTO0KhnnHUomeHFH7uQQZ1sLzpPK9QdTntQE=; b=0iP1YyujM0lvxN
-	wtpyKtYmVIG62nNSYYGUlSuKQjYJ7HHaLlRyW3W2qiLpz/+m+n5nUlx9Orhx4ybi7u4fAOS4AqSmF
-	qqizOMvaaf92njIduBXP98ytofUVY5if+pgBcONRagluj0Ejm+uZra2E8JLV2HnnN21+liqNiMx0M
-	lnW6E/ZLpcI4CJjfW8fR4u7pfPMwiEpLgUwa8MpaJD8afBgGvAQCRqSOKYE4U/aAbID1LhwwK5LaE
-	yHoqkH9hTDCVeKBZtkLej1Mu3pCvqgiedcSGkLA3lPwM6LCE2ctEUumi3joO6HSsifLQj9OUs1s/p
-	UUxHGyBjNnTBZQjUhRVA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HXu+zTlJAbIrMfTL7u/Va7uNBPyx6EvayesmlPFHue4=; b=pmwe0VKcs8rw3ohysdczB5tQYt
+	bb1Cr0VVhCOIIkGP/JAVmV5w0YqkOFxdjE9ZCCdsFrFZq2JnTHpC9z2oRBTA0rx3lSy1Lmkucq04C
+	Wxo+UMU2psoLAi8CgOIBvjpQp5Ojx0LL6Xrxu/rGhIo8ZGStLeD44eV5pD8ZS4IBZy2fPvXmF/eWX
+	opaqG9hRhk8r3vbD7xr3/fVB7q84lLL5g1a+fRDvWbYlm284sipMvGK84agfoAYZrpjUcWz9ohAM0
+	79GtKrJNxmeHUw8WcYsbCFUNqHY/QwTrozm8z9fsYEv+Jq9QXd/+LvY3QQa9wLvoWgd7JHdXn6wqx
+	1wkAmUsQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n53IR-00ETol-Op; Wed, 05 Jan 2022 10:13:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n53nC-00EYu3-MH; Wed, 05 Jan 2022 10:45:18 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n53I5-00ETgY-VF; Wed, 05 Jan 2022 10:13:11 +0000
-X-UUID: e47d062d431f437684b1d8028033e39b-20220105
-X-UUID: e47d062d431f437684b1d8028033e39b-20220105
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <sam.shih@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2112997605; Wed, 05 Jan 2022 03:13:08 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 5 Jan 2022 02:05:45 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 5 Jan 2022 18:05:43 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 5 Jan 2022 18:05:43 +0800
-From: Sam Shih <sam.shih@mediatek.com>
-To: Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck
- <linux@roeck-us.net>, Matthias Brugger <matthias.bgg@gmail.com>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, Rob Herring <robh+dt@kernel.org>, Ryder Lee
- <ryder.lee@kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-watchdog@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>
-CC: John Crispin <john@phrozen.org>, Sam Shih <sam.shih@mediatek.com>
-Subject: [PATCH 1/2] dt-bindings: reset: mt7986: Add reset-controller header
- file
-Date: Wed, 5 Jan 2022 18:04:55 +0800
-Message-ID: <20220105100456.7126-2-sam.shih@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220105100456.7126-1-sam.shih@mediatek.com>
-References: <20220105100456.7126-1-sam.shih@mediatek.com>
+ id 1n53mz-00EYpp-Si; Wed, 05 Jan 2022 10:45:07 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 5D6B31F444D6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641379504;
+ bh=j5jKYJLd2HHKiewIUKNMRt+js9u9s0ejQWXJ1s60ryk=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=BOyoPyVKMtE0zA0Cc1bsSHidcURJQGgB54S3tqNbWy+/3DAigDdUmHz0JNJueMiUx
+ DM4ttHr38VthFPfpAMHfdZiiibAln9cd3JP5/Gzd2PbbPtg8+mJ6gWKut30fbz41QY
+ kUD/MNRiEqthNTLWYqIBqtCRT+7PPw2OV0zQcxKP36uweA8bClsHIJgUC1Qb8Ol8BZ
+ AnyKZLDlYWqqe45OAHoRKmrVTJCW+YP+YIqr17F76/6OOyJklyKmjsy/miOoEIhksX
+ BKW+Brk0JAY8rhA7q679hcI026p42Ga9VkacyOlAcdTOrOVBIGsGmp20ju4/lBwVlT
+ nAFzQ7zZGtiZA==
+Subject: Re: [PATCH v10] drm/bridge: add it6505 driver
+To: allen <allen.chen@ite.com.tw>
+Cc: Hsin-Yi Wang <hsinyi@google.com>,
+ Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
+ Kenneth Hung <Kenneth.Hung@ite.com.tw>, Hermes Wu <Hermes.Wu@ite.com.tw>,
+ Hsin-yi Wang <hsinyi@chromium.org>, Andrzej Hajda <a.hajda@samsung.com>,
+ Neil Armstrong <narmstrong@baylibre.com>,
+ Robert Foss <robert.foss@linaro.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>
+References: <20211014033031.38459-1-allen.chen@ite.com.tw>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <9513a22c-5b84-88d9-ff5d-ac071df53ba3@collabora.com>
+Date: Wed, 5 Jan 2022 11:45:00 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20211014033031.38459-1-allen.chen@ite.com.tw>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220105_021310_038656_5762F99B 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20220105_024506_137558_A67DF54C 
+X-CRM114-Status: GOOD (  19.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,84 +77,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add infracfg, toprgu, and ethsys reset-controller header file
-for MT7986 platform.
+Il 14/10/21 05:30, allen ha scritto:
+> This adds support for the iTE IT6505.
+> This device can convert DPI signal to DP output.
+> 
+> From: Allen Chen <allen.chen@ite.com.tw>
+> Tested-by: Hsin-yi Wang <hsinyi@chromium.org>
+> Signed-off-by: Hermes Wu <hermes.wu@ite.com.tw>
+> Signed-off-by: Allen Chen <allen.chen@ite.com.tw>
+> ---
+> This patch depends on https://patchwork.kernel.org/project/linux-mediatek/patch/20210722062246.2512666-4-sam@ravnborg.org/
+> ---
+>   drivers/gpu/drm/bridge/Kconfig      |    8 +
+>   drivers/gpu/drm/bridge/Makefile     |    1 +
+>   drivers/gpu/drm/bridge/ite-it6505.c | 3335 +++++++++++++++++++++++++++
+>   3 files changed, 3344 insertions(+)
+>   create mode 100644 drivers/gpu/drm/bridge/ite-it6505.c
 
-Signed-off-by: Sam Shih <sam.shih@mediatek.com>
----
- include/dt-bindings/reset/mt7986-resets.h | 55 +++++++++++++++++++++++
- 1 file changed, 55 insertions(+)
- create mode 100644 include/dt-bindings/reset/mt7986-resets.h
+Hello Allen,
 
-diff --git a/include/dt-bindings/reset/mt7986-resets.h b/include/dt-bindings/reset/mt7986-resets.h
-new file mode 100644
-index 000000000000..af3d16c81192
---- /dev/null
-+++ b/include/dt-bindings/reset/mt7986-resets.h
-@@ -0,0 +1,55 @@
-+/* SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause) */
-+/*
-+ * Copyright (c) 2022 MediaTek Inc.
-+ * Author: Sam Shih <sam.shih@mediatek.com>
-+ */
-+
-+#ifndef _DT_BINDINGS_RESET_CONTROLLER_MT7986
-+#define _DT_BINDINGS_RESET_CONTROLLER_MT7986
-+
-+/* INFRACFG resets */
-+#define MT7986_INFRACFG_PEXTP_MAC_SW_RST	6
-+#define MT7986_INFRACFG_SSUSB_SW_RST		7
-+#define MT7986_INFRACFG_EIP97_SW_RST		8
-+#define MT7986_INFRACFG_AUDIO_SW_RST		13
-+#define MT7986_INFRACFG_CQ_DMA_SW_RST		14
-+
-+#define MT7986_INFRACFG_TRNG_SW_RST		17
-+#define MT7986_INFRACFG_AP_DMA_SW_RST		32
-+#define MT7986_INFRACFG_I2C_SW_RST		33
-+#define MT7986_INFRACFG_NFI_SW_RST		34
-+#define MT7986_INFRACFG_SPI0_SW_RST		35
-+#define MT7986_INFRACFG_SPI1_SW_RST		36
-+#define MT7986_INFRACFG_UART0_SW_RST		37
-+#define MT7986_INFRACFG_UART1_SW_RST		38
-+#define MT7986_INFRACFG_UART2_SW_RST		39
-+#define MT7986_INFRACFG_AUXADC_SW_RST		43
-+
-+#define MT7986_INFRACFG_APXGPT_SW_RST		66
-+#define MT7986_INFRACFG_PWM_SW_RST		68
-+
-+#define MT7986_INFRACFG_SW_RST_NUM		69
-+
-+/* TOPRGU resets */
-+#define MT7986_TOPRGU_APMIXEDSYS_SW_RST		0
-+#define MT7986_TOPRGU_SGMII0_SW_RST		1
-+#define MT7986_TOPRGU_SGMII1_SW_RST		2
-+#define MT7986_TOPRGU_INFRA_SW_RST		3
-+#define MT7986_TOPRGU_U2PHY_SW_RST		5
-+#define MT7986_TOPRGU_PCIE_SW_RST		6
-+#define MT7986_TOPRGU_SSUSB_SW_RST		7
-+#define MT7986_TOPRGU_ETHDMA_SW_RST		20
-+#define MT7986_TOPRGU_CONSYS_SW_RST		23
-+
-+#define MT7986_TOPRGU_SW_RST_NUM		24
-+
-+/* ETHSYS Subsystem resets */
-+#define MT7986_ETHSYS_FE_SW_RST			6
-+#define MT7986_ETHSYS_PMTR_SW_RST		8
-+#define MT7986_ETHSYS_GMAC_SW_RST		23
-+#define MT7986_ETHSYS_PPE0_SW_RST		30
-+#define MT7986_ETHSYS_PPE1_SW_RST		31
-+
-+#define MT7986_ETHSYS_SW_RST_NUM		32
-+
-+#endif  /* _DT_BINDINGS_RESET_CONTROLLER_MT7986 */
--- 
-2.29.2
+since the dependency that you mentioned seems to be requiring some time to get
+merged in, can you please open-code the call to drm_bridge_new_crtc_state() as
+to stop requiring the commit you pointed to?
 
+We can perhaps update this driver later, whenever the series you mentioned will
+get applied.
+
+The reason for this request is due to a breakage on MT8183 Kukui: since DPI is
+supported in the drm-mediatek driver for this SoC, on platforms that are using
+a DSI<->DP/eDP bridge, a probe failure occurs for the DPI0 component.
+Leaving apart that drm-mediatek should be fixed to account for this as a non
+critical error (and keep going with DSI only, simply ignoring DPI0), the Kukui
+family of devices do have this functionality and it should be brought up as
+soon as possible at this point - especially since the driver that you've sent
+is ok to have.
+
+Looking forward to see a v11 without unsatisfiable dependencies!
+
+Thank you.
+
+Regards,
+- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
