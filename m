@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 745D8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 15:54:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5320C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 21:24:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q9SL3GPqgRcaoHYf1vSnU7JUlSdaMf+jxfN6CFLu5fs=; b=ea2522h5dkNn8I
-	PJo+X7bYf9ZW2dHr4QHVRDdUTU11e3U7LIT8yCeZG3AFaGGV4sW6l7DaZcuMqX88blq73dskqM1TR
-	XVVu7eI9kj96eQ2IO/sFeFZtqgq4QlCOlT3J+AKrPsiUBa1VPG40KZthpzyNw5ewzlxV7rZ7muga/
-	w+bwAFdlupCIfS84lNzTyU65+VWxV4tmUkb5GuVpwm4rRCZxVdqGAzanoEh4vLg4oMg7Ms0P1bRO3
-	mRXhyz/izUyBc4uWXwpxnXOHFJctc9QKDfjSCQk+/233W26qAJQy4JwMI3bHDVz6YYBIFjX1vv7xT
-	mYlxDCwb3EJnZFs1SxJA==;
+	List-Owner; bh=GmlX2BxVlbBMM/7zE7Hh0e6TUuNt6phr2VX7szPGLoA=; b=j74g4Aj+La7bcX
+	tHq9beZgai8mVoGy91egVIz2zf31wkcK+4p5yPms+cbPr/AHOBZr3fzW3PbGehC1Iln6oAIMnSeQA
+	1ucOBFC9ce1iSwSB4Oya2p5I4+0uwuJ75AsN1tYNLXT1XPBHvPmCafhBYhXI0sc+57oqipCb9aM3A
+	tsLowDG/rtPJBafM1ldBXyY0w0nX+psLNah1jSMjF4cDjwvdTjOb5IN0r1lJWuzsGsCaz0MnjIKSS
+	2jJynczZ7Y2d2jLQu6LZNqcPojAk8Evfo2YNsg6FqadEK1aPgIFxmnHcW+UskeE34SJnee8E4kAtx
+	/pklXVvllomQkTNcPLJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n58c4-00FEeO-US; Wed, 05 Jan 2022 15:54:08 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1n5DlA-00FtVI-EM; Wed, 05 Jan 2022 21:23:52 +0000
+Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n58c1-00FEdI-Fq; Wed, 05 Jan 2022 15:54:07 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id k18so47235610wrg.11;
- Wed, 05 Jan 2022 07:54:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W1hSBC1/w98Pw768lmJjpnN6pQZfQzImMpHnsNTHwes=;
- b=aAiyTBoLIFSGF30KgT0PoBOWB4sG/qXliIZcz23iLomVGGocLLPuR1fElE6eX0aaxk
- AfXUTEyJztGRVD+nYfZHV2NU1uNLuHTAenWQI1N5S4XkcxtOzcqytWp3XskMVruBxFlx
- +nPKlamtrLk0fHpxCzxeYxI/xs6Y0Gl2cqAVTieXr3VQ55JOsIXzoJzXdz+b7aL5GJdx
- /v7204V4P1OuvP2qpR1Fg20Gi0r8w9NSt+gMN5Ewi6HdCEbmCyr97h6EUV6dv3bBwWWD
- 3MgTjziPQYPaTlSpqQKNlv6GJG5zPFiBqiHgRk5Fs/QsaVwbgLgcRzv7LFKC16C7IRWr
- /YvA==
+ id 1n5Dkz-00FtRx-1M
+ for linux-mediatek@lists.infradead.org; Wed, 05 Jan 2022 21:23:43 +0000
+Received: by mail-qk1-x732.google.com with SMTP id r139so721272qke.9
+ for <linux-mediatek@lists.infradead.org>; Wed, 05 Jan 2022 13:23:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=zY0MGgHszlxJMiljmXEEiC1wEzxNY+uDQh+HxW5Uns4=;
+ b=cWg7/JPddxtwQJ/HOgH3+oR1fhhnoQiqZH2jvDD93PkRI29IfqGagjO+gqGHJZVHZL
+ v858zBw1z4lhms6W8dT4DFgbRNErR6ajZR6b10djp2d2/I0nFi21wGQEL6n4qGadZNoS
+ 3Lo7j7a8BgtoUBHMLbOI6m/Z2G+dzpcDPSwl8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W1hSBC1/w98Pw768lmJjpnN6pQZfQzImMpHnsNTHwes=;
- b=eEA49QX8vT/5FCX72uTLhDrhe8cLbr65YHaeil/O2VESF8uLKnpslIzT0GKE14JqB9
- nmXwT44V11kEb3cdoxGM9EE4iwME9pmxFz0JsPAxjEkt/77lMYn4fNmgwgWRvQE/ECKk
- XIb88lbzAdMOTfAwtY0zSK1n5+J8JO6/RlmFf5OPirs5fIaZKwLDGs/PlHx57ugqdsXL
- DARYLeKr/fUWqtp9/Akkj1uSZ91mV2XyVgMzYBOKntIk6fD0cDQ1ETX6MTYGUHuKMjBj
- fSlDe4M3UhpY0bHlUDPPPJ8MNKcqeU33pTGXGxDb8e7rb23INNKHYwY9ejt3N7z5bRtH
- 1eOw==
-X-Gm-Message-State: AOAM5309yCUwj3OuSwy9U/4UNTcwuMy9KETgH8ZWE3RecJnL8ohSYP5o
- H9CU2Dese5jbE/K4YBciWdEzoMvo3X4oC2mgQME=
-X-Google-Smtp-Source: ABdhPJywwb5ns/ANiBJIsaCUkgHG7AuBBdGtP/ATxIr7g1Fxp2Z03sxOoIvq9UzjMTvcJuZA3W7w5GMldnEqkblZNPA=
-X-Received: by 2002:adf:d1c2:: with SMTP id b2mr47690277wrd.81.1641398042839; 
- Wed, 05 Jan 2022 07:54:02 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=zY0MGgHszlxJMiljmXEEiC1wEzxNY+uDQh+HxW5Uns4=;
+ b=JZeUuEAkaNkt9xpLV3TanhH7M/NCZJuKJ+1uY6VXszQLMVVMk8Ynbb90RdDMMMIT0J
+ NDDcDlAEMAhYeSpI9ieeRGbjHI17reaTsuY10TCM/KBz2kmlz9uPsdvrw5mm/vRpbLlR
+ gpm1MmBYvqpEmY15BL2FlazbsQAUGZC0CWJ0raAkL8NuHBgec3ixm/Kotf3cu+7HRoxB
+ mL+O/kc/rxjdoQOGNk20a0hNu/gFJUsGU86xeBosB+PYX1dIg0zICWq0Bo8DWbsvj7IX
+ ezW4w4PnALMOnsy+Kxdpt/LrjNH8SvWLQqlJGk8/9p0StAdWJnqPW2aAW2dKlQmSfDb2
+ T4vQ==
+X-Gm-Message-State: AOAM533YSQk4l6owlQ8ehBSOBihqmDlyjeEvSmmTKH0GNChQ1TEYj5l+
+ cIXZDSvm3S8qSJec82kiblO6FtOVmvgwBQ==
+X-Google-Smtp-Source: ABdhPJxEyFhumzU211wdXGQ8UbL2PChXeuyZYivpZy17HeB7BR5gVki7gW29chV6s0DnDIezHae+2w==
+X-Received: by 2002:a37:a70d:: with SMTP id q13mr3984850qke.84.1641417818960; 
+ Wed, 05 Jan 2022 13:23:38 -0800 (PST)
+Received: from markyacoub.nyc.corp.google.com
+ ([2620:0:1003:314:e210:d796:8522:dada])
+ by smtp.gmail.com with ESMTPSA id w63sm32384108qkd.88.2022.01.05.13.23.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 05 Jan 2022 13:23:38 -0800 (PST)
+From: Mark Yacoub <markyacoub@chromium.org>
+To: linux-mediatek@lists.infradead.org
+Cc: seanpaul@chromium.org, markyacoub@google.com, markyacoub@chromium.org,
+ chunkuang.hu@kernel.org, p.zabel@pengutronix.de, matthias.bgg@gmail.com,
+ jason-jh.lin@mediatek.com, tzungbi@google.com,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v3] drm/mediatek: Set default value for Panel Orientation
+ connector prop.
+Date: Wed,  5 Jan 2022 16:23:27 -0500
+Message-Id: <20220105212330.2199045-1-markyacoub@chromium.org>
+X-Mailer: git-send-email 2.34.1.448.ga2b2bfdf31-goog
+In-Reply-To: <20211229184420.793234-1-markyacoub@chromium.org>
+References: <20211229184420.793234-1-markyacoub@chromium.org>
 MIME-Version: 1.0
-References: <20220103043202.6524-1-yc.hung@mediatek.com>
-In-Reply-To: <20220103043202.6524-1-yc.hung@mediatek.com>
-From: Daniel Baluta <daniel.baluta@gmail.com>
-Date: Wed, 5 Jan 2022 17:53:51 +0200
-Message-ID: <CAEnQRZBH4uwMmyBLY2bCtY9QZooBiK5PqF3T+4K8WAtQV1QN-Q@mail.gmail.com>
-Subject: Re: [PATCH v3] dt-bindings: dsp: mediatek: add mt8195 dsp document
-To: YC Hung <yc.hung@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, Takashi Iwai <tiwai@suse.com>,
- Rob Herring <robh+dt@kernel.org>, 
- matthias.bgg@gmail.com, Linux-ALSA <alsa-devel@alsa-project.org>, 
- linux-mediatek@lists.infradead.org, 
- linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Devicetree List <devicetree@vger.kernel.org>, 
- Daniel Baluta <daniel.baluta@nxp.com>, trevor.wu@mediatek.com,
- allen-kh.cheng@mediatek.com, Cezary Rojewski <cezary.rojewski@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220105_075405_556970_E8703859 
-X-CRM114-Status: GOOD (  20.25  )
+X-CRM114-CacheID: sfid-20220105_132341_117208_2B55D77C 
+X-CRM114-Status: GOOD (  15.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,81 +90,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 3, 2022 at 1:00 PM YC Hung <yc.hung@mediatek.com> wrote:
->
-> From: "YC Hung" <yc.hung@mediatek.com>
->
-> This patch adds mt8195 dsp document. The dsp is used for Sound Open
-> Firmware driver node. It includes registers,  clocks, memory regions,
-> and mailbox for dsp.
->
-> Signed-off-by: yc.hung <yc.hung@mediatek.com>
+[Why]
+Creating the prop uses UNKNOWN as the initial value, which is not a
+supported value if the prop is to be supported.
 
-The code patch should be created against original source code from
-Rob's tree. Here it seems the patch is against v2.
+[How]
+Set the panel orientation default value to NORMAL right after creating
+the prop if no DSI panel exists.
+Panels have their own orientations, and panel orientation can't be
+overriden once initialized to a value.
 
-This isn't going to work! Because when Rob will try to apply the patch
-it will fail since he doesn't have (and doesnt need to have)
-your previous versions.
+v2:
+Move to the latest code where struct mtk_dsi{} has no member 'panel'.
+v1:
+Set panel orientation only if DSI panel does not exist.
 
-So, please keep the changes history (that's a good thing!) but always
-rebase your patch on maintainer's tree.
+Tested on Jacuzzi(MTK)
+Fixes IGT@kms_properties@get_properties-sanity-{atomic,non-atomic}
 
+Signed-off-by: Mark Yacoub <markyacoub@chromium.org>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
 
-> ---
-> Changes since v2:
->   Remove useless watchdog interrupt.
->   Add commit message more detail description.
->
-> Changes since v1:
->   Rename yaml file name as mediatek,mt8195-dsp.yaml
->   Refine descriptions for mailbox, memory-region and drop unused labels
->   in examples.
-> ---
-> ---
->  .../devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml | 12 ------------
->  1 file changed, 12 deletions(-)
->
-> diff --git a/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml b/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
-> index bde763191d86..779daa786739 100644
-> --- a/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
-> +++ b/Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
-> @@ -27,14 +27,6 @@ properties:
->        - const: cfg
->        - const: sram
->
-> -  interrupts:
-> -    items:
-> -      - description: watchdog interrupt
-> -
-> -  interrupt-names:
-> -    items:
-> -      - const: wdt
-> -
->    clocks:
->      items:
->        - description: mux for audio dsp clock
-> @@ -75,8 +67,6 @@ required:
->    - compatible
->    - reg
->    - reg-names
-> -  - interrupts
-> -  - interrupt-names
->    - clocks
->    - clock-names
->    - memory-region
-> @@ -95,8 +85,6 @@ examples:
->         reg = <0x10803000  0x1000>,
->               <0x10840000  0x40000>;
->         reg-names = "cfg", "sram";
-> -       interrupts = <GIC_SPI 694 IRQ_TYPE_LEVEL_HIGH 0>;
-> -       interrupt-names = "wdt";
->         clocks = <&topckgen 10>, //CLK_TOP_ADSP
->                  <&clk26m>,
->                  <&topckgen 107>, //CLK_TOP_AUDIO_LOCAL_BUS
-> --
-> 2.18.0
->
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 5d90d2eb00193..9e1d4e297ca48 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -941,8 +941,10 @@ static const struct mipi_dsi_host_ops mtk_dsi_ops = {
+ 	.transfer = mtk_dsi_host_transfer,
+ };
+ 
+-static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
++static int mtk_dsi_encoder_init(struct device *dev, struct drm_device *drm)
+ {
++	struct mtk_dsi *dsi = dev_get_drvdata(dev);
++	struct drm_panel *panel;
+ 	int ret;
+ 
+ 	ret = drm_simple_encoder_init(drm, &dsi->encoder,
+@@ -967,6 +969,15 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 	}
+ 	drm_connector_attach_encoder(dsi->connector, &dsi->encoder);
+ 
++	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0, &panel,
++					  &dsi->next_bridge);
++	/* A drm_panel can have its own orientation. If there is no panel, set the
++	 * orientation to NORMAL. */
++	if (ret || !panel) {
++		drm_connector_set_panel_orientation(
++			dsi->connector, DRM_MODE_PANEL_ORIENTATION_NORMAL);
++	}
++
+ 	return 0;
+ 
+ err_cleanup_encoder:
+@@ -976,11 +987,8 @@ static int mtk_dsi_encoder_init(struct drm_device *drm, struct mtk_dsi *dsi)
+ 
+ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
+ {
+-	int ret;
+ 	struct drm_device *drm = data;
+-	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+-
+-	ret = mtk_dsi_encoder_init(drm, dsi);
++	int ret = mtk_dsi_encoder_init(dev, drm);
+ 	if (ret)
+ 		return ret;
+ 
+-- 
+2.34.1.448.ga2b2bfdf31-goog
+
 
 _______________________________________________
 Linux-mediatek mailing list
