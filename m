@@ -4,71 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69330C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 09:38:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC9F5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 09:41:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CgVvb38vr7fTNEK9DieI54Y1pcFEXsyxRhsvuzVB2Io=; b=MqcJjCRmvN3bBw
-	VX8gtKhUAsGr06Nm8AeJJQpNRYwoIpdxWNZ4NuTsnl1wigLiB0j3M3IjKlEMPgPyQL703lgYpiV8w
-	RVMsa79+hOzJb2Y1Bk3pY7RgMuEcsmw5amFcshbz2zYnG0aWfQDkZ+4XWq7l6FQ2LTvAsT9da/8BZ
-	DV1+S48abGG1fnWrqg1zLWVOxienGVoDbBhnYd+wIQju8tv5T0iOETKcXaEJ2K4ZzCEnvqRe3gyy/
-	4YaBPnEr8H9WCHcm1IH4TORiO+Td8dBSm6qWWRs7ycqjMRsmFLaQVgY1nykcKZxZU5wgKbqN6lf5w
-	LtD80BPIGLq2WOnxlFwA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2/uxzh1klXW5M/NZxSiPCGlSFcaTIbo5WywUBEo/eAI=; b=Abc720BPMGzGk7
+	FGBJBgk7I4x7CZ9iT134LGi8UmCSMK/eHOV/KoKCkrkbiDYCN8B1+uD4vnYiqEsGIENMnGHn8Z26i
+	A2rIbFvdUStgHvcsv5E8Q0ntYUOqZLGMoxWysxILMOsiGsOEaCC7N4Rg18VBuhqRtsUvki9yUJr1U
+	m6Rtz58VvvwvRxpJJjuLEIt/h5cdI4oTJLuNFwyNfuMJ6TvMWz2Om/HLXUmfwugZ0huKTLL69ZI75
+	QG9n1ifi7DiIwZSTO+S2TqJgfN9gi8H7Kgw+OXNn+ToBkyUWdvPjr1VKQ8cByJPPktMBUPJvc6OBp
+	mGVpFfAtPDVloLH/pMVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n52kZ-00EMUg-4o; Wed, 05 Jan 2022 09:38:31 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n52nW-00ENIs-Rz; Wed, 05 Jan 2022 09:41:34 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n52kW-00EMSb-2K; Wed, 05 Jan 2022 09:38:29 +0000
-X-UUID: c07f4136327b4c5ca7ebc15817a883cc-20220105
-X-UUID: c07f4136327b4c5ca7ebc15817a883cc-20220105
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <moudy.ho@mediatek.com>)
+ id 1n52nT-00ENHW-G2; Wed, 05 Jan 2022 09:41:32 +0000
+X-UUID: 2195e9b2be6940b69c148081ad10c250-20220105
+X-UUID: 2195e9b2be6940b69c148081ad10c250-20220105
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1403713055; Wed, 05 Jan 2022 02:38:16 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 5 Jan 2022 01:38:15 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 5 Jan 2022 17:38:00 +0800
+ with ESMTP id 794436530; Wed, 05 Jan 2022 02:41:30 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 5 Jan 2022 01:41:29 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 5 Jan 2022 17:41:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 5 Jan 2022 17:38:00 +0800
-From: Moudy Ho <moudy.ho@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
- <hverkuil-cisco@xs4all.nl>, Jernej Skrabec <jernej.skrabec@siol.net>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Rob Landley <rob@landley.net>, Laurent Pinchart
- <laurent.pinchart@ideasonboard.com>, <linux-media@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- Alexandre Courbot <acourbot@chromium.org>, <tfiga@chromium.org>,
- <drinkcat@chromium.org>, <pihsun@chromium.org>, <hsinyi@google.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Maoguang Meng <maoguang.meng@mediatek.com>, daoyuan huang
- <daoyuan.huang@mediatek.com>, Ping-Hsun Wu <ping-hsun.wu@mediatek.com>,
- <menghui.lin@mediatek.com>, <sj.huang@mediatek.com>,
- <allen-kh.cheng@mediatek.com>, <randy.wu@mediatek.com>,
- <moudy.ho@mediatek.com>, <jason-jh.lin@mediatek.com>,
- <roy-cw.yeh@mediatek.com>, <river.cheng@mediatek.com>,
- <srv_heupstream@mediatek.com>
-Subject: [PATCH v11 2/3] dts: arm64: mt8183: add Mediatek MDP3 nodes
-Date: Wed, 5 Jan 2022 17:37:57 +0800
-Message-ID: <20220105093758.6850-3-moudy.ho@mediatek.com>
+ Frontend Transport; Wed, 5 Jan 2022 17:41:27 +0800
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Ohad Ben-Cohen <ohad@wizery.com>, Bjorn Andersson
+ <bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Tinghan Shen <tinghan.shen@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
+ <linux-remoteproc@vger.kernel.org>, Allen-KH Cheng
+ <Allen-KH.Cheng@mediatek.com>
+Subject: [PATCH v4 0/2] Add SCP support for mt8186
+Date: Wed, 5 Jan 2022 17:41:23 +0800
+Message-ID: <20220105094125.6917-1-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220105093758.6850-1-moudy.ho@mediatek.com>
-References: <20220105093758.6850-1-moudy.ho@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220105_013828_130586_4ADE355A 
-X-CRM114-Status: GOOD (  10.97  )
+X-CRM114-CacheID: sfid-20220105_014131_564935_CB9190AF 
+X-CRM114-Status: UNSURE (   7.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,146 +75,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add device nodes for Media Data Path 3 (MDP3) modules.
+From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-Signed-off-by: Moudy Ho <moudy.ho@mediatek.com>
----
- arch/arm64/boot/dts/mediatek/mt8183.dtsi | 108 ++++++++++++++++++++++-
- 1 file changed, 107 insertions(+), 1 deletion(-)
+changes since v3:
+ - use rproc-next
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-index ba4584faca5a..b872ef1ff6b3 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-@@ -1325,6 +1325,79 @@
- 			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0 0x1000>;
- 		};
- 
-+		mdp3_rdma0: mdp3_rdma0@14001000 {
-+			compatible = "mediatek,mt8183-mdp3",
-+				     "mediatek,mt8183-mdp3-rdma0";
-+			mediatek,scp = <&scp>;
-+			mediatek,mdp3-comps = "mediatek,mt8183-mdp3-dl1",
-+					      "mediatek,mt8183-mdp3-dl2",
-+					      "mediatek,mt8183-mdp3-path1",
-+					      "mediatek,mt8183-mdp3-path2",
-+					      "mediatek,mt8183-mdp3-imgi",
-+					      "mediatek,mt8183-mdp3-exto";
-+			reg = <0 0x14001000 0 0x1000>,
-+			      <0 0x14000000 0 0x1000>,
-+			      <0 0x14005000 0 0x1000>,
-+			      <0 0x14006000 0 0x1000>,
-+			      <0 0x15020000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x1000 0x1000>,
-+						  <&gce SUBSYS_1400XXXX 0 0x1000>,
-+						  <&gce SUBSYS_1400XXXX 0x5000 0x1000>,
-+						  <&gce SUBSYS_1400XXXX 0x6000 0x1000>,
-+						  <&gce SUBSYS_1502XXXX 0 0x1000>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_MDP_RDMA0>,
-+				 <&mmsys CLK_MM_MDP_RSZ1>,
-+				 <&mmsys CLK_MM_MDP_DL_TXCK>,
-+				 <&mmsys CLK_MM_MDP_DL_RX>,
-+				 <&mmsys CLK_MM_IPU_DL_TXCK>,
-+				 <&mmsys CLK_MM_IPU_DL_RX>;
-+			iommus = <&iommu M4U_PORT_MDP_RDMA0>;
-+			mediatek,mmsys = <&mmsys>;
-+			mediatek,mm-mutex = <&mutex>;
-+			mediatek,mailbox-gce = <&gce>;
-+			mboxes = <&gce 20 CMDQ_THR_PRIO_LOWEST 0>,
-+				 <&gce 21 CMDQ_THR_PRIO_LOWEST>,
-+				 <&gce 22 CMDQ_THR_PRIO_LOWEST>,
-+				 <&gce 23 CMDQ_THR_PRIO_LOWEST>;
-+			gce-subsys = <&gce 0x14000000 SUBSYS_1400XXXX>,
-+				     <&gce 0x14010000 SUBSYS_1401XXXX>,
-+				     <&gce 0x14020000 SUBSYS_1402XXXX>,
-+				     <&gce 0x15020000 SUBSYS_1502XXXX>;
-+		};
-+
-+		mdp3_rsz0: mdp3_rsz0@14003000 {
-+			compatible = "mediatek,mt8183-mdp3-rsz0";
-+			reg = <0 0x14003000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x3000 0x1000>;
-+			clocks = <&mmsys CLK_MM_MDP_RSZ0>;
-+		};
-+
-+		mdp3_rsz1: mdp3_rsz1@14004000 {
-+			compatible = "mediatek,mt8183-mdp3-rsz1";
-+			reg = <0 0x14004000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x4000 0x1000>;
-+			clocks = <&mmsys CLK_MM_MDP_RSZ1>;
-+		};
-+
-+		mdp3_wrot0: mdp3_wrot0@14005000 {
-+			compatible = "mediatek,mt8183-mdp3-wrot0";
-+			reg = <0 0x14005000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x5000 0x1000>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_MDP_WROT0>;
-+			iommus = <&iommu M4U_PORT_MDP_WROT0>;
-+		};
-+
-+		mdp3_wdma: mdp3_wdma@14006000 {
-+			compatible = "mediatek,mt8183-mdp3-wdma";
-+			reg = <0 0x14006000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1400XXXX 0x6000 0x1000>;
-+			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
-+			clocks = <&mmsys CLK_MM_MDP_WDMA0>;
-+			iommus = <&iommu M4U_PORT_MDP_WDMA0>;
-+		};
-+
- 		ovl0: ovl@14008000 {
- 			compatible = "mediatek,mt8183-disp-ovl";
- 			reg = <0 0x14008000 0 0x1000>;
-@@ -1449,7 +1522,33 @@
- 			interrupts = <GIC_SPI 217 IRQ_TYPE_LEVEL_LOW>;
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 			mediatek,gce-events = <CMDQ_EVENT_MUTEX_STREAM_DONE0>,
--					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>;
-+					      <CMDQ_EVENT_MUTEX_STREAM_DONE1>,
-+					      <CMDQ_EVENT_MDP_RDMA0_SOF>,
-+					      <CMDQ_EVENT_MDP_RDMA0_EOF>,
-+					      <CMDQ_EVENT_MDP_RSZ0_SOF>,
-+					      <CMDQ_EVENT_MDP_RSZ1_SOF>,
-+					      <CMDQ_EVENT_MDP_TDSHP_SOF>,
-+					      <CMDQ_EVENT_MDP_WROT0_SOF>,
-+					      <CMDQ_EVENT_MDP_WROT0_EOF>,
-+					      <CMDQ_EVENT_MDP_WDMA0_SOF>,
-+					      <CMDQ_EVENT_MDP_WDMA0_EOF>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_0>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_1>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_2>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_3>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_4>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_5>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_6>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_7>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_8>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_9>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_10>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_11>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_12>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_13>,
-+					      <CMDQ_EVENT_ISP_FRAME_DONE_P2_14>,
-+					      <CMDQ_EVENT_WPE_A_DONE>,
-+					      <CMDQ_EVENT_SPE_B_DONE>;
- 		};
- 
- 		larb0: larb@14017000 {
-@@ -1473,6 +1572,13 @@
- 			power-domains = <&spm MT8183_POWER_DOMAIN_DISP>;
- 		};
- 
-+		mdp3_ccorr: mdp3_ccorr@1401c000 {
-+			compatible = "mediatek,mt8183-mdp3-ccorr";
-+			reg = <0 0x1401c000 0 0x1000>;
-+			mediatek,gce-client-reg = <&gce SUBSYS_1401XXXX 0xc000 0x1000>;
-+			clocks = <&mmsys CLK_MM_MDP_CCORR>;
-+		};
-+
- 		imgsys: syscon@15020000 {
- 			compatible = "mediatek,mt8183-imgsys", "syscon";
- 			reg = <0 0x15020000 0 0x1000>;
+changes since v2:
+ - remove redundant SoB
+
+changes since v1:
+ - use mt8192_power_on_sram() helper
+ - add MT8186_SCP_L1_SRAM_PD_P1 in mtk_common.h
+ - add MT8186_SCP_L1_SRAM_PD_P2 in mtk_common.h
+
+Based on rproc-next
+
+Allen-KH Cheng (2):
+  dt-bindings: remoteproc: mediatek: Add binding for mt8186 scp
+  remoteproc: mediatek: Support mt8186 scp
+
+ .../bindings/remoteproc/mtk,scp.yaml          |  1 +
+ drivers/remoteproc/mtk_common.h               |  3 ++
+ drivers/remoteproc/mtk_scp.c                  | 35 +++++++++++++++++++
+ 3 files changed, 39 insertions(+)
+
 -- 
 2.18.0
 
