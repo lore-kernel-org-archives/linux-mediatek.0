@@ -4,68 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92A4DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 10:45:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E581C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed,  5 Jan 2022 11:30:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HXu+zTlJAbIrMfTL7u/Va7uNBPyx6EvayesmlPFHue4=; b=pmwe0VKcs8rw3ohysdczB5tQYt
-	bb1Cr0VVhCOIIkGP/JAVmV5w0YqkOFxdjE9ZCCdsFrFZq2JnTHpC9z2oRBTA0rx3lSy1Lmkucq04C
-	Wxo+UMU2psoLAi8CgOIBvjpQp5Ojx0LL6Xrxu/rGhIo8ZGStLeD44eV5pD8ZS4IBZy2fPvXmF/eWX
-	opaqG9hRhk8r3vbD7xr3/fVB7q84lLL5g1a+fRDvWbYlm284sipMvGK84agfoAYZrpjUcWz9ohAM0
-	79GtKrJNxmeHUw8WcYsbCFUNqHY/QwTrozm8z9fsYEv+Jq9QXd/+LvY3QQa9wLvoWgd7JHdXn6wqx
-	1wkAmUsQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zjNX1EUlJW0DXQEpBVDse9K8elfVtEaP4vkAimUrK6c=; b=wDtc0llEpUbyhH
+	k5yEeKk7rV+fjWkUROp6d+rszhPJD1s3Dz1ja57b03cCe+TRyk0Lw4v4u0jQzkWLxqNw8oLJEpd1i
+	fFJ0+c7rjE0vNlR4N6gkV8P6fjpyHNfIMKnyAJEgO7Gi1a5mlKF1JKklb1ibViCLSFBSRl3Uv5xoB
+	3UqJJ9ZS/v0Y5y7qTkr7h2JabyvFsqV2FSmA4HuQzFYLdDNhqolkXii3AqmaWSGPS11hethyi1GYI
+	8bChmdmxUy6zb2tzLWnpbi3x6xtiIEZ6QdWG7LzhW95FMcDJGYTdzgvLbTRZLy8F7cn6MsvTvs/zW
+	9QtkigYZBLywihIoA3TQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n53nC-00EYu3-MH; Wed, 05 Jan 2022 10:45:18 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1n54Ur-00EfzP-7o; Wed, 05 Jan 2022 11:30:25 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n53mz-00EYpp-Si; Wed, 05 Jan 2022 10:45:07 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 5D6B31F444D6
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1641379504;
- bh=j5jKYJLd2HHKiewIUKNMRt+js9u9s0ejQWXJ1s60ryk=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=BOyoPyVKMtE0zA0Cc1bsSHidcURJQGgB54S3tqNbWy+/3DAigDdUmHz0JNJueMiUx
- DM4ttHr38VthFPfpAMHfdZiiibAln9cd3JP5/Gzd2PbbPtg8+mJ6gWKut30fbz41QY
- kUD/MNRiEqthNTLWYqIBqtCRT+7PPw2OV0zQcxKP36uweA8bClsHIJgUC1Qb8Ol8BZ
- AnyKZLDlYWqqe45OAHoRKmrVTJCW+YP+YIqr17F76/6OOyJklyKmjsy/miOoEIhksX
- BKW+Brk0JAY8rhA7q679hcI026p42Ga9VkacyOlAcdTOrOVBIGsGmp20ju4/lBwVlT
- nAFzQ7zZGtiZA==
-Subject: Re: [PATCH v10] drm/bridge: add it6505 driver
-To: allen <allen.chen@ite.com.tw>
-Cc: Hsin-Yi Wang <hsinyi@google.com>,
- Jau-Chih Tseng <Jau-Chih.Tseng@ite.com.tw>,
- Kenneth Hung <Kenneth.Hung@ite.com.tw>, Hermes Wu <Hermes.Wu@ite.com.tw>,
- Hsin-yi Wang <hsinyi@chromium.org>, Andrzej Hajda <a.hajda@samsung.com>,
- Neil Armstrong <narmstrong@baylibre.com>,
- Robert Foss <robert.foss@linaro.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:DRM DRIVERS" <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>
-References: <20211014033031.38459-1-allen.chen@ite.com.tw>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <9513a22c-5b84-88d9-ff5d-ac071df53ba3@collabora.com>
-Date: Wed, 5 Jan 2022 11:45:00 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1n54Uf-00EfwY-HD; Wed, 05 Jan 2022 11:30:14 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 6087C616F8;
+ Wed,  5 Jan 2022 11:30:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B8EA4C36AED;
+ Wed,  5 Jan 2022 11:30:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1641382211;
+ bh=NXnK29rweR4LUQ4VydBhLmhRcLlfzwpZeWKkeIjmW/4=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=shRNi6YH7cKQuVgeFhNXsSXy0bVLVTBzyEh2u2btgqAJrHbaF27taAWaZHTBWkkKT
+ s6M65hCxw5koItsIrrAMIviw7EBsMguC6ulW0xh31TJuOYELh2lEMmXWJtWrSPtn0p
+ H+i9PCBPuPG6b9vy0dbpyJgkSWMYJIbrejsAWdVpTLQ3RR98ztI92rc8Si8BmEx4av
+ 9yxf21ZVSmC+IOHHqmDyrrAeVYz3xBS8zFulMdbiBaW/fJfUnBVXmzEZZT/iWxKD2U
+ OPnXqOOMHaA0k/YbeySPMUDtTwpGRTBo1E1ea+OgsxgOAdy4ndHgIwongRJLPUxOEE
+ lU0aNjykHz8BQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 9CD0CF79408; Wed,  5 Jan 2022 11:30:11 +0000 (UTC)
 MIME-Version: 1.0
-In-Reply-To: <20211014033031.38459-1-allen.chen@ite.com.tw>
-Content-Language: en-US
+Subject: Re: [PATCH v12 0/3] net: ethernet: mtk_eth_soc: refactoring and
+ Clause 45
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <164138221163.4307.616203536271666789.git-patchwork-notify@kernel.org>
+Date: Wed, 05 Jan 2022 11:30:11 +0000
+References: <YdQ4HzLjpuVW4YFi@makrotopia.org>
+In-Reply-To: <YdQ4HzLjpuVW4YFi@makrotopia.org>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
+ matthias.bgg@gmail.com, linux@armlinux.org.uk, andrew@lunn.ch,
+ hkallweit1@gmail.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220105_024506_137558_A67DF54C 
-X-CRM114-Status: GOOD (  19.95  )
+X-CRM114-CacheID: sfid-20220105_033013_657947_91B8D92F 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +74,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/10/21 05:30, allen ha scritto:
-> This adds support for the iTE IT6505.
-> This device can convert DPI signal to DP output.
+Hello:
+
+This series was applied to netdev/net-next.git (master)
+by David S. Miller <davem@davemloft.net>:
+
+On Tue, 4 Jan 2022 12:05:51 +0000 you wrote:
+> Rework value and type of mdio read and write functions in mtk_eth_soc
+> and generally clean up and unify both functions.
+> Then add support to access Clause 45 phy registers, using newly
+> introduced helper macros added by a patch Russell King has suggested
+> in a reply to an earlier version of this series [1].
 > 
-> From: Allen Chen <allen.chen@ite.com.tw>
-> Tested-by: Hsin-yi Wang <hsinyi@chromium.org>
-> Signed-off-by: Hermes Wu <hermes.wu@ite.com.tw>
-> Signed-off-by: Allen Chen <allen.chen@ite.com.tw>
-> ---
-> This patch depends on https://patchwork.kernel.org/project/linux-mediatek/patch/20210722062246.2512666-4-sam@ravnborg.org/
-> ---
->   drivers/gpu/drm/bridge/Kconfig      |    8 +
->   drivers/gpu/drm/bridge/Makefile     |    1 +
->   drivers/gpu/drm/bridge/ite-it6505.c | 3335 +++++++++++++++++++++++++++
->   3 files changed, 3344 insertions(+)
->   create mode 100644 drivers/gpu/drm/bridge/ite-it6505.c
+> All three commits are tested on the Bananapi BPi-R64 board having
+> MediaTek MT7531BE DSA gigE switch using clause 22 MDIO and
+> Ubiquiti UniFi 6 LR access point having Aquantia AQR112C PHY using
+> clause 45 MDIO.
+> 
+> [...]
 
-Hello Allen,
+Here is the summary with links:
+  - [v12,1/3] net: ethernet: mtk_eth_soc: fix return values and refactor MDIO ops
+    https://git.kernel.org/netdev/net-next/c/eda80b249df7
+  - [v12,2/3] net: mdio: add helpers to extract clause 45 regad and devad fields
+    https://git.kernel.org/netdev/net-next/c/c6af53f038aa
+  - [v12,3/3] net: ethernet: mtk_eth_soc: implement Clause 45 MDIO access
+    https://git.kernel.org/netdev/net-next/c/e2e7f6e29c99
 
-since the dependency that you mentioned seems to be requiring some time to get
-merged in, can you please open-code the call to drm_bridge_new_crtc_state() as
-to stop requiring the commit you pointed to?
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-We can perhaps update this driver later, whenever the series you mentioned will
-get applied.
 
-The reason for this request is due to a breakage on MT8183 Kukui: since DPI is
-supported in the drm-mediatek driver for this SoC, on platforms that are using
-a DSI<->DP/eDP bridge, a probe failure occurs for the DPI0 component.
-Leaving apart that drm-mediatek should be fixed to account for this as a non
-critical error (and keep going with DSI only, simply ignoring DPI0), the Kukui
-family of devices do have this functionality and it should be brought up as
-soon as possible at this point - especially since the driver that you've sent
-is ok to have.
-
-Looking forward to see a v11 without unsatisfiable dependencies!
-
-Thank you.
-
-Regards,
-- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
