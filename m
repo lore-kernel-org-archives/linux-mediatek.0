@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A252AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jan 2022 14:03:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F3E3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jan 2022 18:26:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2i7OwmYXQYJgDSSUZd5N9lVrQYN0eg+NfNy/xh4l9RQ=; b=xvi5CPEBPnw4xt
-	8Vib7FZQBjc2/Vq27B1tIGU9Y8CoxfemyB8JDGq53iOZI85y5ZEsp0/uBdlTj9QHMSVSLBzm2JLMB
-	T04kxAQhVozh4mxNl/f7vTzrS1+A+onI2xGvozKCIDsOP3Q6THjzWt5YRA5nG/0VowzDKZT9p0OW8
-	tiep2oiUNBrbliZgSz7hBJEX2y501IKlzOaI4sgkemI2/n0fSoaAhkRzPlKmDBLDZniN+QP4Pm0Bd
-	8mEllhqtcXNyFuVrXArEFQ1lBrMARwqs7gDIshg49He0McS5XUtYX6DORzJyr9rXsNbSlemSIbgfK
-	Gx6495h/suhcYHyLv3uA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=U/t54GSuCTML3VBiX2DBvUzNRBf6NJOZbSAVIBIhecg=; b=Y+xPtasA0KpGdJ
+	EYMoSqHOhFK205l48iyt4F1ATHLow3zgsVNhWhmG1rlNQfvKZiuFof82l6zAWO6vGpi2Zm1USXe62
+	ciL6BqhAVteT2QUG5W0YZXdb53tpBzCCLeHQq5XvWlWSZURu7AY3mVM1FTf1vMfQLBGUjupKS8SPZ
+	N3UqDpOBl0hzWGpdK9UzazYZYVRMOAtIlLmX1YsP/BIblHGwlO8fEUgzxY0y0WeMQloDpub3hrJQ7
+	NDLFc7BKIs1+IWfTou60+wTDMOVWlNZSCrAppWnb70XhKPyhjutsjEVftx0pjZGw6poRTXABEscRw
+	dSvdwWRnoUlqqR5D0USg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5TMD-000HxQ-Df; Thu, 06 Jan 2022 14:03:09 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5TM9-000HwW-UQ
- for linux-mediatek@lists.infradead.org; Thu, 06 Jan 2022 14:03:07 +0000
-Received: from smtpclient.apple (p4fefca45.dip0.t-ipconnect.de [79.239.202.69])
- by mail.holtmann.org (Postfix) with ESMTPSA id B44E8CECD5;
- Thu,  6 Jan 2022 15:03:04 +0100 (CET)
-Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.40.0.1.81\))
-Subject: Re: [PATCH v4 2/3] Bluetooth: mt7921s: Enable SCO over I2S
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <b12d6dce30c1eeb1dfff2b80b64bdedc0803f40b.1640334021.git.sean.wang@kernel.org>
-Date: Thu, 6 Jan 2022 15:03:04 +0100
-Cc: Johan Hedberg <johan.hedberg@gmail.com>,
- =?utf-8?B?Ik1hcmstWVcgQ2hlbiAo6Zmz5o+a5paHKSI=?= <Mark-YW.Chen@mediatek.com>, 
- Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, ted.huang@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, jemele@google.com,
- abhishekpandit@google.com, michaelfsun@google.com, mcchou@chromium.org,
- shawnku@google.com, linux-bluetooth@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Message-Id: <6DDA9D10-3001-4A57-B2F4-9712732868AC@holtmann.org>
-References: <91dfa736b7629cdb94bd2029f05717eeae77b07d.1640334021.git.sean.wang@kernel.org>
- <b12d6dce30c1eeb1dfff2b80b64bdedc0803f40b.1640334021.git.sean.wang@kernel.org>
-To: Sean Wang <sean.wang@mediatek.com>
-X-Mailer: Apple Mail (2.3693.40.0.1.81)
+	id 1n5XT9-0011cH-Gr; Thu, 06 Jan 2022 18:26:35 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n5XSG-00115l-CS; Thu, 06 Jan 2022 18:25:41 +0000
+Received: by mail-oi1-f173.google.com with SMTP id i9so4914414oih.4;
+ Thu, 06 Jan 2022 10:25:39 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=TNd0yX/eMqLTp7SQM3Mb8ivKu6Zp4HcxMj8tE/O94/0=;
+ b=jVLZ3VhFgC3gcaO7OGGqvGo0b6tgKg0Jzxn9fZWXjp1v64hBhwA1KqL1WBs5IWYcJO
+ kAhrfqwYu9uo/gfSrUzG1QAoSxWi9AVoWsM4KVoXRw9VxSR3bAbsSOICxV/TQyPcVkHj
+ GStkr3SJcjEE5ZdHCt8MwwNWRQQDZcpTrMOl3DY/F7QUgiO9DkB1+SjlT9OS/MT17ygu
+ spsy7OxdFMVZfsz+XPJYzDgLpTgJRpq2L9Jmk0yxqBSCd831YMCFr1PpSKCtR8s5uFXh
+ Jx2OZtas1WB+mpNZ4AZ+eZ1t0EEQQ+U9ptnpEwn2ir3r09how9telBbrCi1MHsCB9WyX
+ SFVw==
+X-Gm-Message-State: AOAM5331rb8hyRhAj1wmHPYlg3wTKTBCyn4cK/u0TxNdCw4CBByrZlqL
+ MkDQGcDLyGPfHveaBX8dJg==
+X-Google-Smtp-Source: ABdhPJxma2BhQyJhOIcE9VJ4imQvWZ18uqwZtw6d3pT5EmqAKuK+QWuVszmPcgCB3vD+YwhKi4+WGw==
+X-Received: by 2002:a05:6808:1914:: with SMTP id
+ bf20mr7192851oib.7.1641493539303; 
+ Thu, 06 Jan 2022 10:25:39 -0800 (PST)
+Received: from xps15.herring.priv (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.googlemail.com with ESMTPSA id r13sm484949oth.21.2022.01.06.10.25.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Jan 2022 10:25:38 -0800 (PST)
+From: Rob Herring <robh@kernel.org>
+To: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Bayi Cheng <bayi.cheng@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>
+Cc: linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: [PATCH] spi: dt-bindings: mediatek,
+ spi-mtk-nor: Fix example 'interrupts' property
+Date: Thu,  6 Jan 2022 12:25:17 -0600
+Message-Id: <20220106182518.1435497-9-robh@kernel.org>
+X-Mailer: git-send-email 2.32.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_060306_156639_3DF5DD18 
-X-CRM114-Status: GOOD (  26.33  )
+X-CRM114-CacheID: sfid-20220106_102540_481076_04FB792F 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,90 +75,41 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgU2VhbiwKCj4gVGhlIGRyaXZlciBoYXMgdG8gaXNzdWUgdGhlIHNwZWNpZmljIGNvbW1hbmQg
-dG8gZW5hYmxlIEJsdWV0b290aCBTQ08gb3Zlcgo+IHRoZSBJMlMvUENNIGludGVyZmFjZSBvbiBt
-dDc5MjFzLCB0aGF0IGlzIHN1cHBvcnRlZCBzaW5jZSB0aGUgZmlybXdhcmUKPiB3aXRoIHZlcnNp
-b24gMjAyMTEyMjIxOTExMDEgd2FzIGFkZGVkLCBhbmQgdGhlIHBhdGNoIHdvdWxkIG5vdCBjYXVz
-ZSBhbnkKPiBoYXJtIGV2ZW4gd2hlbiB0aGUgb2xkIGZpcm13YXJlIGlzIGFwcGxpZWQuCj4gCj4g
-VGhlIFNDTyBwcm9maWxlIHdpdGggdGhlIHBhdGNoIHdhcyB0ZXN0ZWQgYnkgc2V0dGluZyB1cCBh
-IFZPSVAgYXBwbGljYXRpb24sCj4gY29ubmVjdGVkIHRvIEhGUCBkZXZpY2UsIGNoZWNrZWQgdGVs
-ZXBob255IGZ1bmN0aW9uIGNhbiB3b3JrIG5vcm1hbGx5Lgo+IAo+IENvLWRldmVsb3BlZC1ieTog
-U2VhbiBXYW5nIDxzZWFuLndhbmdAbWVkaWF0ZWsuY29tPgo+IFNpZ25lZC1vZmYtYnk6IFNlYW4g
-V2FuZyA8c2Vhbi53YW5nQG1lZGlhdGVrLmNvbT4KPiBTaWduZWQtb2ZmLWJ5OiBNYXJrIENoZW4g
-PG1hcmsteXcuY2hlbkBtZWRpYXRlay5jb20+Cj4gLS0tCj4gdjI6IHJlZmluZSBnaXQgbWVzc2Fn
-ZSBhbmQgZml4IHR5cG8KPiB2MzoKPiAgICAxLiBmcmVlIHNrYiBhZnRlciBjYWxsaW5nICBfX2hj
-aV9jbWRfc3luYwo+ICAgIDIuIG1ha2UgYnRfYXdha2UgYXMgY29uc3Qgc3RydWN0IGJ0bXRrX3Nj
-bwo+IHY0Ogo+ICAgIDEuIHVwZGF0ZSBnaXQgbWVzc2FnZQo+ICAgIDIuIGRyb3AgYSBmZXcgcmVk
-dW5kYW50IGVycm9yIG1lc3NhZ2VzCj4gLS0tCj4gZHJpdmVycy9ibHVldG9vdGgvYnRtdGsuaCAg
-ICAgfCAyMCArKysrKysrKysrKwo+IGRyaXZlcnMvYmx1ZXRvb3RoL2J0bXRrc2Rpby5jIHwgNjgg
-KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiAyIGZpbGVzIGNoYW5nZWQsIDg4
-IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ibHVldG9vdGgvYnRtdGsu
-aCBiL2RyaXZlcnMvYmx1ZXRvb3RoL2J0bXRrLmgKPiBpbmRleCAyYmUxZDI2ODBhZDguLmZjNTdl
-ZjA5ZDEzMiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2JsdWV0b290aC9idG10ay5oCj4gKysrIGIv
-ZHJpdmVycy9ibHVldG9vdGgvYnRtdGsuaAo+IEBAIC03LDggKzcsMTIgQEAKPiAKPiAjZGVmaW5l
-IEhDSV9XTVRfTUFYX0VWRU5UX1NJWkUJCTY0Cj4gCj4gKyNkZWZpbmUgQlRNVEtfV01UX1JFR19X
-UklURSAweDEKPiAjZGVmaW5lIEJUTVRLX1dNVF9SRUdfUkVBRCAweDIKPiAKPiArI2RlZmluZSBN
-VDc5MjFfUElOTVVYXzAgMHg3MDAwNTA1MAo+ICsjZGVmaW5lIE1UNzkyMV9QSU5NVVhfMSAweDcw
-MDA1MDU0Cj4gKwo+IGVudW0gewo+IAlCVE1US19XTVRfUEFUQ0hfRFdOTEQgPSAweDEsCj4gCUJU
-TVRLX1dNVF9URVNUID0gMHgyLAo+IEBAIC03Niw2ICs4MCwyMiBAQCBzdHJ1Y3QgYnRtdGtfd2Fr
-ZW9uIHsKPiAJX19sZTE2IHdha2V1cF9kZWxheTsKPiB9IF9fcGFja2VkOwo+IAo+ICtzdHJ1Y3Qg
-YnRtdGtfc2NvIHsKPiArCXU4IGNsb2NrX2NvbmZpZzsKPiArCXU4IHRyYW5zbWl0X2Zvcm1hdF9j
-b25maWc7Cj4gKwl1OCBjaGFubmVsX2Zvcm1hdF9jb25maWc7Cj4gKwl1OCBjaGFubmVsX3NlbGVj
-dF9jb25maWc7Cj4gK30gX19wYWNrZWQ7Cj4gKwo+ICtzdHJ1Y3QgcmVnX3dyaXRlX2NtZCB7Cj4g
-Kwl1OCB0eXBlOwo+ICsJdTggcnN2Owo+ICsJdTggbnVtOwo+ICsJX19sZTMyIGFkZHI7Cj4gKwlf
-X2xlMzIgZGF0YTsKPiArCV9fbGUzMiBtYXNrOwo+ICt9IF9fcGFja2VkOwo+ICsKPiBzdHJ1Y3Qg
-YnRtdGtfaGNpX3dtdF9wYXJhbXMgewo+IAl1OCBvcDsKPiAJdTggZmxhZzsKPiBkaWZmIC0tZ2l0
-IGEvZHJpdmVycy9ibHVldG9vdGgvYnRtdGtzZGlvLmMgYi9kcml2ZXJzL2JsdWV0b290aC9idG10
-a3NkaW8uYwo+IGluZGV4IDg5YmQ3MDY1MWU5ZS4uZjZmYjgyYjMxN2RlIDEwMDY0NAo+IC0tLSBh
-L2RyaXZlcnMvYmx1ZXRvb3RoL2J0bXRrc2Rpby5jCj4gKysrIGIvZHJpdmVycy9ibHVldG9vdGgv
-YnRtdGtzZGlvLmMKPiBAQCAtODMwLDYgKzgzMCw2NiBAQCBzdGF0aWMgaW50IGJ0c2Rpb19tdGtf
-cmVnX3JlYWQoc3RydWN0IGhjaV9kZXYgKmhkZXYsIHUzMiByZWcsIHUzMiAqdmFsKQo+IAlyZXR1
-cm4gZXJyOwo+IH0KPiAKPiArc3RhdGljIGludCBidHNkaW9fbXRrX3JlZ193cml0ZShzdHJ1Y3Qg
-aGNpX2RldiAqaGRldiwgdTMyIHJlZywgdTMyIHZhbCwgdTMyIG1hc2spCj4gK3sKPiArCXN0cnVj
-dCBidG10a19oY2lfd210X3BhcmFtcyB3bXRfcGFyYW1zOwo+ICsJc3RydWN0IHJlZ193cml0ZV9j
-bWQgcmVnX3dyaXRlID0gewo+ICsJCS50eXBlID0gMSwKPiArCQkubnVtID0gMSwKPiArCQkuYWRk
-ciA9IGNwdV90b19sZTMyKHJlZyksCj4gKwkJLmRhdGEgPSBjcHVfdG9fbGUzMih2YWwpLAo+ICsJ
-CS5tYXNrID0gY3B1X3RvX2xlMzIobWFzayksCj4gKwl9OwoKTWF5YmUgYSBnb29kIGlkZWEgdG8g
-bWFrZSB0aGlzIGNvbnN0IGFzIHdlbGwuCgo+ICsJaW50IGVyciwgc3RhdHVzOwo+ICsKPiArCXdt
-dF9wYXJhbXMub3AgPSBCVE1US19XTVRfUkVHSVNURVI7Cj4gKwl3bXRfcGFyYW1zLmZsYWcgPSBC
-VE1US19XTVRfUkVHX1dSSVRFOwo+ICsJd210X3BhcmFtcy5kbGVuID0gc2l6ZW9mKHJlZ193cml0
-ZSk7Cj4gKwl3bXRfcGFyYW1zLmRhdGEgPSAmcmVnX3dyaXRlOwo+ICsJd210X3BhcmFtcy5zdGF0
-dXMgPSAmc3RhdHVzOwo+ICsKPiArCWVyciA9IG10a19oY2lfd210X3N5bmMoaGRldiwgJndtdF9w
-YXJhbXMpOwo+ICsJaWYgKGVyciA8IDApCj4gKwkJYnRfZGV2X2VycihoZGV2LCAiRmFpbGVkIHRv
-IHdyaXRlIHJlZyglZCkiLCBlcnIpOwoKVGhlIHBsZWFzZSDigJwuLnJlZyAoJWQp4oCdIGFzIHlv
-dSBoYXZlIGZvciB0aGUgb3RoZXIgZXJyb3IgbWVzc2FnZS4KCj4gKwo+ICsJcmV0dXJuIGVycjsK
-PiArfQo+ICsKPiArc3RhdGljIGludCBidHNkaW9fbXRrX3Njb19zZXR0aW5nKHN0cnVjdCBoY2lf
-ZGV2ICpoZGV2KQo+ICt7Cj4gKwljb25zdCBzdHJ1Y3QgYnRtdGtfc2NvIHNjb19zZXR0aW5nID0g
-ewo+ICsJCS5jbG9ja19jb25maWcgPSAweDQ5LAo+ICsJCS5jaGFubmVsX2Zvcm1hdF9jb25maWcg
-PSAweDgwLAo+ICsJfTsKPiArCXN0cnVjdCBza19idWZmICpza2I7Cj4gKwl1MzIgdmFsOwo+ICsJ
-aW50IGVycjsKPiArCj4gKwkvKiBFbmFibGUgU0NPIG92ZXIgSTJTL1BDTSBmb3IgTWVkaWFUZWsg
-Y2hpcHNldCAqLwo+ICsJc2tiID0gIF9faGNpX2NtZF9zeW5jKGhkZXYsIDB4ZmM3Miwgc2l6ZW9m
-KHNjb19zZXR0aW5nKSwKPiArCQkJICAgICAgJnNjb19zZXR0aW5nLCBIQ0lfQ01EX1RJTUVPVVQp
-Owo+ICsJaWYgKElTX0VSUihza2IpKQo+ICsJCXJldHVybiBQVFJfRVJSKHNrYik7Cj4gKwo+ICsJ
-a2ZyZWVfc2tiKHNrYik7Cj4gKwo+ICsJZXJyID0gYnRzZGlvX210a19yZWdfcmVhZChoZGV2LCBN
-VDc5MjFfUElOTVVYXzAsICZ2YWwpOwo+ICsJaWYgKGVyciA8IDApCj4gKwkJcmV0dXJuIGVycjsK
-PiArCj4gKwl2YWwgfD0gMHgxMTAwMDAwMDsKPiArCWVyciA9IGJ0c2Rpb19tdGtfcmVnX3dyaXRl
-KGhkZXYsIE1UNzkyMV9QSU5NVVhfMCwgdmFsLCB+MCk7Cj4gKwlpZiAoZXJyIDwgMCkKPiArCQly
-ZXR1cm4gZXJyOwo+ICsKPiArCWVyciA9IGJ0c2Rpb19tdGtfcmVnX3JlYWQoaGRldiwgTVQ3OTIx
-X1BJTk1VWF8xLCAmdmFsKTsKPiArCWlmIChlcnIgPCAwKQo+ICsJCXJldHVybiBlcnI7Cj4gKwo+
-ICsJdmFsIHw9IDB4MDAwMDAxMDE7Cj4gKwlyZXR1cm4gYnRzZGlvX210a19yZWdfd3JpdGUoaGRl
-diwgTVQ3OTIxX1BJTk1VWF8xLCB2YWwsIH4wKTsKPiArfQo+ICsKPiBzdGF0aWMgaW50IGJ0bXRr
-c2Rpb19zZXR1cChzdHJ1Y3QgaGNpX2RldiAqaGRldikKPiB7Cj4gCXN0cnVjdCBidG10a3NkaW9f
-ZGV2ICpiZGV2ID0gaGNpX2dldF9kcnZkYXRhKGhkZXYpOwo+IEBAIC04NjIsNiArOTIyLDE0IEBA
-IHN0YXRpYyBpbnQgYnRtdGtzZGlvX3NldHVwKHN0cnVjdCBoY2lfZGV2ICpoZGV2KQo+IAkJZXJy
-ID0gbXQ3OXh4X3NldHVwKGhkZXYsIGZ3bmFtZSk7Cj4gCQlpZiAoZXJyIDwgMCkKPiAJCQlyZXR1
-cm4gZXJyOwo+ICsKPiArCQkvKiBFbmFibGUgU0NPIG92ZXIgSTJTL1BDTSAqLwo+ICsJCWVyciA9
-IGJ0c2Rpb19tdGtfc2NvX3NldHRpbmcoaGRldik7Cj4gKwkJaWYgKGVyciA8IDApIHsKPiArCQkJ
-YnRfZGV2X2VycihoZGV2LCAiRmFpbGVkIHRvIGVuYWJsZSBTQ08gc2V0dGluZyAoJWQpIiwgZXJy
-KTsKPiArCQkJcmV0dXJuIGVycjsKPiArCQl9Cj4gKwoKSXMgdGhpcyByZWFsbHkgYSBmYWlsdXJl
-IG9yIGNvdWxkIHRoZSBjaGlwIGNvbnRpbnVlIHRvIG9wZXJhdGU/IEl0IGp1c3QgbWVhbnMgaXQg
-ZmFsbHMgYmFjayB0byBTQ08gb3ZlciBIQ0k/Cgo+IAkJYnJlYWs7Cj4gCWNhc2UgMHg3NjYzOgo+
-IAljYXNlIDB4NzY2ODoKClJlZ2FyZHMKCk1hcmNlbAoKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51
-eC1tZWRpYXRla0BsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtbWVkaWF0ZWsK
+A phandle for 'interrupts' value is wrong and should be one or more numbers.
+
+Signed-off-by: Rob Herring <robh@kernel.org>
+---
+ .../devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml          | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+index 7393f30535df..da43a545614f 100644
+--- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
++++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+@@ -72,7 +72,7 @@ examples:
+       nor_flash: spi@1100d000 {
+         compatible = "mediatek,mt8173-nor";
+         reg = <0 0x1100d000 0 0xe0>;
+-        interrupts = <&spi_flash_irq>;
++        interrupts = <1>;
+         clocks = <&pericfg CLK_PERI_SPI>, <&topckgen CLK_TOP_SPINFI_IFR_SEL>;
+         clock-names = "spi", "sf";
+         #address-cells = <1>;
+@@ -84,4 +84,3 @@ examples:
+         };
+       };
+     };
+-
+-- 
+2.32.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
