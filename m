@@ -4,81 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B911FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jan 2022 12:16:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC51FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jan 2022 12:59:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jn2h3R0snaOb6Z7wdHpnPC4JSpgkDLFHwbzcZvzn69M=; b=a3Q9r14g+Ki3Ro
-	TOhAak9y47sYTJ1+MWYCRsyUnu8+w70xTxbZ+6TYTy5K94RwUOQW/TABsK6LShj5PoEz1tYaeraVy
-	/wYCL40cnvOzq0FkLFu9Wr4L0eM+AV9jxRhQDOSIN8NiKvFpEcmSOdE+Q6EVYvB1Hw+WsjrwJfD7H
-	6RiDthtWWSUmVoMO5ieYZf3Iv7MiN8ePHpyorLTSQeLbvDN2qT53GU9tu+VjJXVPyNugpMMa6VueH
-	Z9Uko5+fIE5s4nQdEH1EO1YK+FQBRdt0fz5Y3ti9NftaRZEUilCdUHUnkxJkxaVE2oIAsFmDdP2KY
-	PyRYqP+5EkwaWif35Ttg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sv5i+TQ0n04aS1UhVbwy28vaEzijbP77j0IToQYd7jc=; b=FvyjLCqK3SbZYxRu0O94EfwI1p
+	2NF5ai2yZHk86uBEQQjJKOvKvR/0yPU4P7f8lGFiM6VhrDSdQcNnzAhxJRQdyeVBl9JmF5kat+x9t
+	cQ0GKWxULrr6NhNqRQp0yyv//YnEMW73ipr1QYOoQQQnc5hDC36qeckicM5HC1uWlsz2Xt67w19h6
+	9ja3ecCzjjyGqvgvTqg2U9ZhCqfUwS9edgdlv+N9GxaTKP3HqP+goEFrmfoHaxsG06DJz5NTGbMAl
+	AwxW+q+3Mk3Ej727qvGT+6jrz5STMEFB2WYkGnrMQ6bB1eDvrpiE3R52hIIcsYsuxfuaxW9kPYNjo
+	4Mem2Zhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5Rgj-00HaTV-Uv; Thu, 06 Jan 2022 12:16:13 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1n5SMf-00056K-KQ; Thu, 06 Jan 2022 12:59:33 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5Rgh-00HaS7-TE; Thu, 06 Jan 2022 12:16:13 +0000
-Received: by mail-pl1-x631.google.com with SMTP id l8so150879plt.6;
- Thu, 06 Jan 2022 04:16:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=ezhOL9IQmLkdhn7bT2hYUZscONiXzj3Zulc4AqaqV74=;
- b=VWuYcofoSfJWAV4N8jaIG1D93UCOzzLF4pnjMZckQdHuwfgaz+x204qWdN4QF4YoRD
- jjXdv6nQCa0cdQvhgmsH706TQG5JQqC2UipfolVHtapLb6VJ6mjx3mvAMAvJ9Ooi5nB6
- CRsCNuUmRVJtehrSnmYuebPoAmJSgHGuYmCNi47cAYBd27WmmUPIrHfBja4EQVUVAYvE
- xHEMWdoc093Hihp5ksbATTC/pSlSafiFyvDCnDXh1YrfV/2OCzLMdP60JaQ0C2aNaVkj
- tim9w33+IK49XDuWb+ftGMo9xZMAsOF+xNjlHqYS+VRwvF0me3YYKY1Vt79vdnY/4VeR
- RXUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=ezhOL9IQmLkdhn7bT2hYUZscONiXzj3Zulc4AqaqV74=;
- b=sSSLH8gEHbQkMX7sw985l8vSj9djKguTztIGNXObcxzO41tdF1P8OQz6KLfqphF4uf
- tLmM/q/pez3IFhdRrZ+n0+rulRFd6lkS/3838bQI1Rl9iBU2pqu+UuPsdSxz2pysz4R2
- hI1iQtdrPxwDdBgmwv5mIwO1Bqli6+QYn5+xzEQyHdBfA1zhqXPU9hjKMOsaeTIJ5Q8K
- QZaXsQF/fijwD4BLKhhIWZQURMMvIp9BCMupUgHR4tsMuCA39xaaI1WYk6lIcJc+2DK9
- 5dp0l4LwjgDDH8qcAOg4odlSe+tORxX/cvrw/no7klSJ3qxMAwHa52tydLRkJZhxPNZU
- GsRQ==
-X-Gm-Message-State: AOAM533L8wu0GNAGEbSNNHBOebAOjhELYcSrYD/vgqZacL6xMR93T57Y
- imyllDDoPvJrB/BdSF211Pn7lB0h3ENE1LoAyW4=
-X-Google-Smtp-Source: ABdhPJzV2qd7Kyc2ZIOHuzuuD3AFWMO67x7jgDMNj2Z9+hCizMBZuXOekzZfGXgf9RDEl+VUGs7ztA==
-X-Received: by 2002:a17:90b:4f4a:: with SMTP id
- pj10mr9731709pjb.112.1641471369839; 
- Thu, 06 Jan 2022 04:16:09 -0800 (PST)
-Received: from 8345e2a12d0c ([159.226.95.43])
- by smtp.gmail.com with ESMTPSA id b5sm2401828pfm.155.2022.01.06.04.16.07
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 06 Jan 2022 04:16:09 -0800 (PST)
-Date: Thu, 6 Jan 2022 12:16:05 +0000
-From: Miaoqian Lin <linmq006@gmail.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Kishon Vijay Abraham I <kishon@ti.com>, Vinod Koul <vkoul@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-phy@lists.infradead.org, linux-kernel <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] phy: mediatek: Fix missing check in mtk_mipi_tx_probe
-Message-ID: <20220106121524.GA25165@8345e2a12d0c>
-References: <20211224082103.7658-1-linmq006@gmail.com>
- <CAAOTY_-7-BrnkPk_5V5y20F6fX3X8Vm0tcYAA=1DNCnxjvNF8A@mail.gmail.com>
+ id 1n5SMT-00053o-PE; Thu, 06 Jan 2022 12:59:23 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 4CA6C61B8F;
+ Thu,  6 Jan 2022 12:59:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0B9DC36AE5;
+ Thu,  6 Jan 2022 12:59:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1641473960;
+ bh=jInIbXvarsX6TNet4OakeBJA6YBefMPG5+MbxEc2B60=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=T+/YxtIkPBS/kaKo1S6jKr+sdCdloc8avdgZftnwK3x0RyIOkyo9cD4/C9mRPbRsD
+ lkXpxIzJ4jCI5+M1mEjZqFZQ/3zSqX6qCAOgwbggh5g/G+SgP9BUlIvaYe536vqb1x
+ Aq9X0cHCSC4L5SoVCJz99BbejTE/idjf0BXNaiqZEjSa33NjQX/qpTuq+2LeChfS8J
+ O4KP4oS5RX23CGF5acrbmAy2gcGLU3hCKIFFFKUKoi/h5HpWA242qY3B1I2z/mt8J5
+ 3d4Ultl40z1bVCnzxbkH++n70WY45Q0zN05ZW9p+n6U2xkFzUbh0NSo5GTJaFvVwJP
+ NqdW0PswUbatw==
+Date: Thu, 6 Jan 2022 12:59:15 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Johnson Wang <johnson.wang@mediatek.com>
+Cc: lee.jones@linaro.org, robh+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [PATCH 2/4] regulator: mt6366: Add support for MT6366 regulator
+Message-ID: <Ydbno0JM8YP9NhNh@sirena.org.uk>
+References: <20220106065407.16036-1-johnson.wang@mediatek.com>
+ <20220106065407.16036-3-johnson.wang@mediatek.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAAOTY_-7-BrnkPk_5V5y20F6fX3X8Vm0tcYAA=1DNCnxjvNF8A@mail.gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
+In-Reply-To: <20220106065407.16036-3-johnson.wang@mediatek.com>
+X-Cookie: I think we're in trouble.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_041611_973822_CC11BDB5 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20220106_045921_883009_67A0138B 
+X-CRM114-Status: GOOD (  11.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,36 +69,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0185923986142059551=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Chun-Kuang:
 
-On Fri, Dec 31, 2021 at 12:31:33AM +0800, Chun-Kuang Hu wrote:
-> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> > index 28ad9403c441..67b005d5b9e3 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> > @@ -146,6 +146,8 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
-> >                 return -ENOMEM;
-> >
-> >         mipi_tx->driver_data = of_device_get_match_data(dev);
-> > +       if (!mipi_tx->driver_data)
-> 
-> I'm confused. mtk_mipi_tx_probe() is called because this device node's
-> compatible match one in mtk_mipi_tx_match[]. So I think the return
-> value of of_device_get_match_data(dev) would not be NULL. If this is
-> true, this checking is redundant.
->
-I think your are right, this checking is redundant. Thanks for your
-reply.
+--===============0185923986142059551==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="HMjMTKWCs7502cOB"
+Content-Disposition: inline
 
-Regards,
-Miaoqian.
+
+--HMjMTKWCs7502cOB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Thu, Jan 06, 2022 at 02:54:05PM +0800, Johnson Wang wrote:
+> The MT6366 is a regulator found on boards based on MediaTek MT8186 and
+> probably other SoCs. It is a so called pmic and connects as a slave to
+> SoC using SPI, wrapped inside the pmic-wrapper.
+
+Reviwed-by: Mark Brown <broonie@kernel.org>
+
+--HMjMTKWCs7502cOB
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHW56IACgkQJNaLcl1U
+h9Dnfwf/aNvswddLATuwHO1btHmXygSnrjKxqpbMIL7KwJg8L9tEGthhzIJ6+xgc
+rx9WwA+Smt7mMWS1YKCQ9KN/TaW9Mti2sMCLrjNlz+G8H/bU3TCdXpJk6/Ve1ZPF
+eGJfUZqunpetCrOi4r/flf9zCAN06+p0DF3haYuMxoZI7UGtyy5qNUjXIE+5iIJF
+KGVSlNViduNOj1RQjmBQx3OE2E1vW6BTN2g97U3CO6aGAcsvBD+T/i/xVSz3OY7y
+pSLdD2UW3wEAC0sz3r8dm/WyAjd25zTb06FR1y8HbvMLtB218Seov6CoeBhvQDGP
+B3/S8gTT8fSbtxfuISScQoHvlYmqIw==
+=wBRY
+-----END PGP SIGNATURE-----
+
+--HMjMTKWCs7502cOB--
+
+
+--===============0185923986142059551==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============0185923986142059551==--
+
