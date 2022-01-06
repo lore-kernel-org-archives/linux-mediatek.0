@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B0BFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jan 2022 09:22:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D67FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  6 Jan 2022 09:23:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zT0vKwq8KqMnVfbLtBemg1MwGpx/4y23LODtRabAWlU=; b=KBeDBsY1l9rmtY
-	JZwVBk0kdfzOZVEDIlsQrWtDnfDwLzWYb1uflcWs+yhBsCMtOyjJ9ZnBh3+p1zMI2wgcJIhuuHGif
-	ie0oQBCUqZw6bIQWZqALypsNzL7Xdz18W7uQvdvASQyBrgEYoUxrD0e6ur1LZ/eLe8QhWBLcxln9V
-	Dl3tHvnb7WhG+qtkiaFW5zErCf3BKdv2GEPo5Bgq4VSFS/SJBbzFsQKt5CltQKsSpPfNrZjrgxw+X
-	zNf2qWZg3ispsbAeglRPVbrR9XrwUNrWcWjioPOdeCyXUnYTo+oePDIuK7qa7UCabKf5faQMh80xy
-	vFoYnK6M94JK0V8sQ4eg==;
+	List-Owner; bh=PAHRuumWo/KaO1Mg0kI6StG5AFD2lsh30BJLz+6SOEI=; b=3vN7KeVJ179yAR
+	bQ/SVF30RaEFZSsPc6wn87crZVQP+6/is+qVITpiWn5NlwhnbEVJ3zocdDDJR7ZalIYirz6H307Nh
+	AzNm7z7Pb6R/TDCGrpJt1K46c81qnxg6C0iy7cjoHP7TFROHSWsvnRs+IiM/RTbv02kJMJH4OHsYs
+	j4Rc8Ihaz5dL7Amk/+ou65TrCFDtY3cYjhtJe+y5z4hq5Eos6+o/3bKsLCh4CoBu7DKh8T1eJI1IE
+	rAjtqdB3I2jdnGsXICNwtlUEW/HfhPoK3C7i5YdYT226YzyrxOFAo/qoOpf20jO6IlyZ80UFFAqkS
+	ypT0/yaX+nX32ujnBtpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5OyS-00HD6O-Ol; Thu, 06 Jan 2022 09:22:20 +0000
+	id 1n5Ozv-00HDLz-Hn; Thu, 06 Jan 2022 09:23:51 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5OyP-00HD4m-QI; Thu, 06 Jan 2022 09:22:19 +0000
-X-UUID: 424d952097134d24b702e9a6dc3402c8-20220106
+ id 1n5Ozs-00HDL7-Op; Thu, 06 Jan 2022 09:23:50 +0000
+X-UUID: 108628c63c784bde8ea0114ea6370b34-20220106
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=YqFkuLXPM110+xURTsmv5GvG77ZjBzDfJrv5YfcM58k=; 
- b=g0swXi8uupUt6CPJ4DIDyhMs1NbCoQho2cj31dQSVUESAjXpdmqs6mpHnlIloLQBVDBGKXPgIUZouLZ1xN7NgRDMQXU0bN+2halc0ovrCLRxsXQ7Th75Ih3u3pq2BNRNap/24ytzgb5j9Jj+a8h6Gce60+uIiS1G87UZRu5sVxA=;
-X-UUID: 424d952097134d24b702e9a6dc3402c8-20220106
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=/+xiYN384QxD3R5EZY8Le11jJX9RporVQy83KPVgL/w=; 
+ b=P9H++9pxazK1yqXWXjih9/Oe6a0UqtNy5vxpW1I2wmLvH73YlZIdJczF1ABc+la8Fsvut3rwjI/A1rW9YFqsgHV53qAG5K00ajYpCpF1ixo2SLyNVG5CNAclYPWwmnPUdn1RTz+9KGTUfqcql7ONoB8kPjklJByobYOoh+sSfCk=;
+X-UUID: 108628c63c784bde8ea0114ea6370b34-20220106
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <chunfeng.yun@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1323463140; Thu, 06 Jan 2022 02:22:14 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 6 Jan 2022 01:22:13 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 6 Jan 2022 17:22:06 +0800
+ with ESMTP id 1080185574; Thu, 06 Jan 2022 02:23:47 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Jan 2022 01:13:45 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 6 Jan 2022 17:13:44 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 6 Jan 2022 17:22:05 +0800
-Message-ID: <c3773ed47126bf3810bc7d78e3ec293f144ccd7f.camel@mediatek.com>
-Subject: Re: [PATCH 3/4] phy: mediatek: phy-mtk-hdmi: Reorder and stop
- implicit header inclusion
+ Transport; Thu, 6 Jan 2022 17:13:43 +0800
+Message-ID: <4d7195c3ac9bc63a5f980548f0c880484403346d.camel@mediatek.com>
+Subject: Re: [PATCH 3/3] phy: mediatek: phy-mtk-mipi-dsi: Simplify with
+ dev_err_probe()
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  <chunkuang.hu@kernel.org>
@@ -54,16 +55,16 @@ CC: <p.zabel@pengutronix.de>, <kishon@ti.com>, <vkoul@kernel.org>,
  <matthias.bgg@gmail.com>, <dri-devel@lists.freedesktop.org>,
  <linux-mediatek@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>, 
  <linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Date: Thu, 6 Jan 2022 17:22:05 +0800
-In-Reply-To: <20220103153055.50473-3-angelogioacchino.delregno@collabora.com>
-References: <20220103153055.50473-1-angelogioacchino.delregno@collabora.com>
- <20220103153055.50473-3-angelogioacchino.delregno@collabora.com>
+Date: Thu, 6 Jan 2022 17:13:43 +0800
+In-Reply-To: <20220103145324.48008-3-angelogioacchino.delregno@collabora.com>
+References: <20220103145324.48008-1-angelogioacchino.delregno@collabora.com>
+ <20220103145324.48008-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_012217_884729_F6898180 
-X-CRM114-Status: GOOD (  15.53  )
+X-CRM114-CacheID: sfid-20220106_012348_840300_7FB8AEE4 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,105 +81,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-01-03 at 16:30 +0100, AngeloGioacchino Del Regno wrote:
-> All the headers for phy-mtk-{hdmi,hdmi-mt2701,hdmi-mt8183}.c were
-> included from phy-mtk-mipi-dsi.h, but this isn't optimal: in order to
-> increase readability and sensibly reduce build times, the inclusions
-> should be done per-file, also avoiding to include unused headers and
-> should not be implicit.
-> 
-> For this reason, move the inclusions to each file and remove unused
-> ones.
+On Mon, 2022-01-03 at 15:53 +0100, AngeloGioacchino Del Regno wrote:
+> Use the dev_err_probe() helper to simplify error handling during
+> probe.
 > 
 > Signed-off-by: AngeloGioacchino Del Regno <
 > angelogioacchino.delregno@collabora.com>
 > ---
->  drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c |  5 +++++
->  drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c |  5 +++++
->  drivers/phy/mediatek/phy-mtk-hdmi.c        |  8 ++++++++
->  drivers/phy/mediatek/phy-mtk-hdmi.h        | 10 +---------
->  4 files changed, 19 insertions(+), 9 deletions(-)
+>  drivers/phy/mediatek/phy-mtk-mipi-dsi.c | 29 +++++++++------------
+> ----
+>  1 file changed, 10 insertions(+), 19 deletions(-)
 > 
-> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> index 09e0dd7499d8..270c5f538483 100644
-> --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt2701.c
-> @@ -4,6 +4,11 @@
->   * Author: Chunhui Dai <chunhui.dai@mediatek.com>
->   */
+> diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> index 6f7425b0bf5b..4b77508f5241 100644
+> --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> @@ -148,11 +148,9 @@ static int mtk_mipi_tx_probe(struct
+> platform_device *pdev)
+>  		return PTR_ERR(mipi_tx->regmap);
 >  
-> +#include <linux/clk-provider.h>
-> +#include <linux/delay.h>
-> +#include <linux/device.h>
-> +#include <linux/module.h>
-> +#include <linux/regmap.h>
->  #include "phy-mtk-hdmi.h"
+>  	ref_clk = devm_clk_get(dev, NULL);
+> -	if (IS_ERR(ref_clk)) {
+> -		ret = PTR_ERR(ref_clk);
+> -		dev_err(dev, "Failed to get reference clock: %d\n",
+> ret);
+> -		return ret;
+> -	}
+> +	if (IS_ERR(ref_clk))
+> +		return dev_err_probe(dev, PTR_ERR(ref_clk),
+> +				     "Failed to get reference
+> clock\n");
 >  
->  #define HDMI_CON0	0x00
-> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
-> b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
-> index e317bf4a9db9..87ba9a3687b7 100644
-> --- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8173.c
-> @@ -4,6 +4,11 @@
->   * Author: Jie Qiu <jie.qiu@mediatek.com>
->   */
+>  	ret = of_property_read_u32(dev->of_node, "drive-strength-
+> microamp",
+>  				   &mipi_tx->mipitx_drive);
+> @@ -172,27 +170,20 @@ static int mtk_mipi_tx_probe(struct
+> platform_device *pdev)
 >  
-> +#include <linux/clk-provider.h>
-> +#include <linux/delay.h>
-> +#include <linux/device.h>
-> +#include <linux/module.h>
-> +#include <linux/regmap.h>
->  #include "phy-mtk-hdmi.h"
->  
->  #define HDMI_CON0		0x00
-> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c
-> b/drivers/phy/mediatek/phy-mtk-hdmi.c
-> index b4193cb4e4e3..e037fa89696c 100644
-> --- a/drivers/phy/mediatek/phy-mtk-hdmi.c
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
-> @@ -4,6 +4,14 @@
->   * Author: Jie Qiu <jie.qiu@mediatek.com>
->   */
->  
-> +#include <linux/clk.h>
-> +#include <linux/clk-provider.h>
-> +#include <linux/device.h>
-> +#include <linux/module.h>
-> +#include <linux/of_device.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/phy/phy.h>
->  #include "phy-mtk-hdmi.h"
->  
->  inline struct mtk_hdmi_phy *to_mtk_hdmi_phy(struct clk_hw *hw)
-> diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.h
-> b/drivers/phy/mediatek/phy-mtk-hdmi.h
-> index a0571271d730..ef81e44a235d 100644
-> --- a/drivers/phy/mediatek/phy-mtk-hdmi.h
-> +++ b/drivers/phy/mediatek/phy-mtk-hdmi.h
-> @@ -6,17 +6,9 @@
->  
->  #ifndef _MTK_HDMI_PHY_H
->  #define _MTK_HDMI_PHY_H
-> -#include <linux/clk.h>
-> +
->  #include <linux/clk-provider.h>
-> -#include <linux/delay.h>
-> -#include <linux/io.h>
-> -#include <linux/mfd/syscon.h>
-> -#include <linux/module.h>
-> -#include <linux/of_device.h>
-> -#include <linux/phy/phy.h>
-> -#include <linux/platform_device.h>
->  #include <linux/regmap.h>
-> -#include <linux/types.h>
-Please do not move common headers also into .c files
+>  	ret = of_property_read_string(dev->of_node, "clock-output-
+> names",
+>  				      &clk_init.name);
+> -	if (ret < 0) {
+> -		dev_err(dev, "Failed to read clock-output-names: %d\n",
+> ret);
+> -		return ret;
+> -	}
+> +	if (ret < 0)
+> +		return dev_err_probe(dev, ret, "Failed to read clock-
+> output-names\n");
+Seems no need change it here. (no EPROBE_DEFER error)
 
+Thanks
 >  
->  struct mtk_hdmi_phy;
+>  	clk_init.ops = mipi_tx->driver_data->mipi_tx_clk_ops;
 >  
+>  	mipi_tx->pll_hw.init = &clk_init;
+>  	mipi_tx->pll = devm_clk_register(dev, &mipi_tx->pll_hw);
+> -	if (IS_ERR(mipi_tx->pll)) {
+> -		ret = PTR_ERR(mipi_tx->pll);
+> -		dev_err(dev, "Failed to register PLL: %d\n", ret);
+> -		return ret;
+> -	}
+> +	if (IS_ERR(mipi_tx->pll))
+> +		return dev_err_probe(dev, PTR_ERR(mipi_tx->pll),
+> "Cannot register PLL\n");
+>  
+>  	phy = devm_phy_create(dev, NULL, &mtk_mipi_tx_ops);
+> -	if (IS_ERR(phy)) {
+> -		ret = PTR_ERR(phy);
+> -		dev_err(dev, "Failed to create MIPI D-PHY: %d\n", ret);
+> -		return ret;
+> -	}
+> +	if (IS_ERR(phy))
+> +		return dev_err_probe(dev, PTR_ERR(phy), "Failed to
+> create MIPI D-PHY\n");
+> +
+>  	phy_set_drvdata(phy, mipi_tx);
+>  
+>  	phy_provider = devm_of_phy_provider_register(dev,
+> of_phy_simple_xlate);
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
