@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAE7BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 11:55:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21ACCC433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 11:55:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NIlG7EbZq92/f4QfHWRBRpSuHHu23rrMlGvnX1t2jwc=; b=dTf3ystNTmZGrc
-	dpIvP9FWKcVVxUM/e6E14DEt2yoL0ncatFzzt+JHg8/TsYN6Et/FuAikplTYvvSmxYO84nEUuIfVZ
-	3e4ORX/hVEWs2wOMF/0iBcwFx/ovDpRMz6fKx+cCw8ZL79IwbhMFzEUz72lF7TIseDd6dW/R8IA3U
-	bicGoyKLF0XSPZKQmx34Wanw/3boMHBQl461u5ML61bVgx/ZNiqv1SJ38i4lU9iOwrk3YuyMxoMsS
-	8urChH2d1wpAz9teAWg5tCi9rXHfmKG1h6nPudgu++IZ9cnBEV1bY27v/k7XpBcPWAQH22914J0Vx
-	MFtEnIwkuLmqNP/eMRSw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iWQhdPlV7SqkvedGMKBvnxmx4hGylYEwDNYAG1NZa8k=; b=FyHeH9Ie9iFDZ3
+	xx81pxc4BDrPBnWkHdRQt5vJjustJTdkAmrPk0YYh0NC5jkY5qoaPDB84cq7fMP5sGIowoychL2qv
+	U3ZefBZL98W7nKPXlSHRz6dMusjLS/G/Qje8uI7aTrw9rIJJY7DG8C6/u3+IH1YSRcnbth1+J8Qz+
+	TsPA7AEttNaYw1eZllhJeO5X7TaYOBbyy3BEVXqmpAffdJhr9KHO1v2tb/VV/mhw3wTRD1IkssGIA
+	wP16y6qKdzsvUr8TzEff/N20E3N8oZ0SF+44sbVTz6tOvNL/hYxzfjFTmGGz0DKZ6h0yLlDUmiaIA
+	aYsnxOf2POH9LT0Dgzkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5npz-003iKM-0J; Fri, 07 Jan 2022 11:55:15 +0000
+	id 1n5nq0-003iKj-1r; Fri, 07 Jan 2022 11:55:16 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5npa-003i9q-RL; Fri, 07 Jan 2022 11:54:52 +0000
-X-UUID: f0246b92a7ea40dca842eb1140db681d-20220107
-X-UUID: f0246b92a7ea40dca842eb1140db681d-20220107
+ id 1n5npa-003iAN-RL; Fri, 07 Jan 2022 11:54:54 +0000
+X-UUID: 6507f771e35d4339b97015f16cd3fdcb-20220107
+X-UUID: 6507f771e35d4339b97015f16cd3fdcb-20220107
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 59044266; Fri, 07 Jan 2022 04:54:42 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1927830145; Fri, 07 Jan 2022 04:54:42 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Fri, 7 Jan 2022 03:54:41 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Fri, 7 Jan 2022 19:54:39 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 7 Jan 2022 19:54:39 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 7 Jan 2022 19:54:39 +0800
@@ -51,18 +50,15 @@ CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
  <wenst@chromium.org>, <chunfeng.yun@mediatek.com>, Tinghan Shen
  <tinghan.shen@mediatek.com>
-Subject: [PATCH v8 2/4] dt-bindings: arm: cpus: Add cortex-a78 compatible
-Date: Fri, 7 Jan 2022 19:53:43 +0800
-Message-ID: <20220107115345.9075-3-tinghan.shen@mediatek.com>
+Subject: [PATCH v8 0/4] Add basic SoC support for mediatek mt8195
+Date: Fri, 7 Jan 2022 19:53:41 +0800
+Message-ID: <20220107115345.9075-1-tinghan.shen@mediatek.com>
 X-Mailer: git-send-email 2.15.GIT
-In-Reply-To: <20220107115345.9075-1-tinghan.shen@mediatek.com>
-References: <20220107115345.9075-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220107_035450_920829_EBF10616 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220107_035450_927390_B60ECDB4 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,25 +75,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add ARM cpu type cortex-a78.
+This series adds basic SoC support for Mediatek's SoC MT8195.
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
 ---
- Documentation/devicetree/bindings/arm/cpus.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v8:
+  - v7 mediatek,spi-mtk-nor.yaml patch is applied in branch for-5.17 at 
+    kernel/git/broonie/spi.git
+  - v7 pinctrl-mt8195.yaml patch is applied in branch for-next at 
+    kernel/git/linusw/linux-pinctrl.git
+  - add cortex-a78 compatible to cpus dt-bindings
+  - add mediatek,drive-strength-adv property to pinctrl dt-bindings
+  - fix evb dts
+    - remove i2c nodes with disabled status from dts
+    - fix pin properties not match pinctrl dt-bindings
+    - remove unnecessary u3port*
+  - fix dtsi
+    - fix node format
+    - reorder oscillator* nodes 
+    - fix node name of cpu idle nodes
+    - remove clock-frequency property in the timer node
+    - reorder clock and clock names in usb nodes
+Changes in v7:
+  - refine title of spi-nor dt-bindings patch
+  - refine commit message of pinctrl dt-bindings patch
+  - update pinctrl-mt8195.yaml
+    - change property pattern from 'pins' to '^pins'
+    - update examples with new property in descriptions
+    - add new example
+  - drop '_' from node names of pinctrl subnodes in mt8195-evb.dts
+Changes in v6:
+  - rebase on 5.16-rc1
+  - add new clock name to spi-nor dt-bindings
+  - add "pins" property in pinctrl dt-bindings
+  - fix fails of dtbs_checks
+    - remove "arm,armv8" not matched in yaml from cpu compatile
+    - fix node name of xhci
+    - remvoe xhci upstreaming wakeup properties
+    - remove xhci unused properties address-cells and size-cells
+    - fix node name of ufs-phy 
+    - fix node name of spi-nor
+    - fix node name and sub-nodes of pinctrl
+    - fix mmc compatible
+Changes in v5:
+  - enable basic nodes in mt8195-evb.dts
+  - remove dedicated clock nodes
+  - add mmc2 node
+  - fix interrupt number of pinctrl node
+  - update clock nodes to apply internal fixes
+  - add dt-bindings for perficfg node
 
-diff --git a/Documentation/devicetree/bindings/arm/cpus.yaml b/Documentation/devicetree/bindings/arm/cpus.yaml
-index f2ab6423b4af..452bfd1d4ecc 100644
---- a/Documentation/devicetree/bindings/arm/cpus.yaml
-+++ b/Documentation/devicetree/bindings/arm/cpus.yaml
-@@ -137,6 +137,7 @@ properties:
-       - arm,cortex-a75
-       - arm,cortex-a76
-       - arm,cortex-a77
-+      - arm,cortex-a78
-       - arm,cortex-m0
-       - arm,cortex-m0+
-       - arm,cortex-m1
+v4 thread:
+https://lore.kernel.org/all/20210922093303.23720-2-seiya.wang@mediatek.com/
+v3 thread:
+https://lore.kernel.org/all/20210601075350.31515-2-seiya.wang@mediatek.com/
+v2 thread:
+https://lore.kernel.org/all/20210319023427.16711-10-seiya.wang@mediatek.com/
+v1 thread:
+https://lore.kernel.org/all/20210316111443.3332-11-seiya.wang@mediatek.com/
+---
+
+Tinghan Shen (4):
+  dt-bindings: arm: mediatek: Add mt8195 pericfg compatible
+  dt-bindings: arm: cpus: Add cortex-a78 compatible
+  dt-bindings: pinctrl: mt8195: Add mediatek,drive-strength-adv property
+  arm64: dts: Add mediatek SoC mt8195 and evaluation board
+
+ .../devicetree/bindings/arm/cpus.yaml         |    1 +
+ .../arm/mediatek/mediatek,pericfg.yaml        |    1 +
+ .../bindings/pinctrl/pinctrl-mt8195.yaml      |   35 +
+ arch/arm64/boot/dts/mediatek/Makefile         |    1 +
+ arch/arm64/boot/dts/mediatek/mt8195-evb.dts   |  161 +++
+ arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 1049 +++++++++++++++++
+ 6 files changed, 1248 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195-evb.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8195.dtsi
+
 -- 
 2.18.0
 
