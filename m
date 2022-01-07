@@ -4,53 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28BB0C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 10:23:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D132FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 10:25:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=axkL6u5i/cpNujDnLRk57teGo+oJnlMH8hKPPj+gELk=; b=nFS7Z7T4FdqBj3
-	7ymEgKdPWPJnY5w/wk7946tUl9XvYPNjcwzEJ/6L9v6RNURI7yNtydoktxBQo8Qt9+Sa4/EO+v0gU
-	qtxUqctiNvqljkBMOWecRo3XGi6T/m/GlBrUfiaNSTv+MnhSifaht7vSm2SjbApzYlE3KsfoeOqiv
-	rA6kFhG9F3R/HnwULlzrbIm4D7rpbHUK+wfc9Lyfzl7h1wNtQf0IfDc5qg7ALr4LqXQNd1lJGoJC4
-	Vhbxk6473yoPSMNlKXEmxJy9LcWHgcFuwisLYPk6ksG2Ei/ot8ocx/h4u02AqzAsKrhF98cZJHOvn
-	Drm7kYb8cOFtwQD2D7nA==;
+	List-Owner; bh=sY/psEZL3pl292ZVJ3QbDCoRNxdhKOBjAhP1wWPqEeQ=; b=BMObChJf5paT+J
+	Bqk2Ug20eLmxYLvlvO6NIL4sn32qVAfIiBrzm/WVH+nP8arXssDvNZvLfDManpC3FGjokGE+RDvKZ
+	FHteucCbnlyaaH1erNKDthW0tqs3EHbXifR+o+N+bFXmH0+8vLj1v61XDJKoJFwPp9blPxMEPnA8R
+	hahTQF/Wdfenzx5WgO8M6eZUDYcfqc4gl43cl27O15L58V8mVlH+HuXKCzzmqOlEAj99hTIliwYF1
+	lX+FTA1aIt4uqHbEZiE1uCJkH65emX2ScRZOje3HLzw47Y9UFKmE5/OOnJdHmkl711Bbrwv7atkpp
+	myc1OV68/BN7JO/MTvHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5mOz-003KCU-99; Fri, 07 Jan 2022 10:23:17 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5mOe-003K2l-QA; Fri, 07 Jan 2022 10:22:58 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0E60C13D5;
- Fri,  7 Jan 2022 02:22:54 -0800 (PST)
-Received: from e123427-lin.arm.com (unknown [10.57.36.216])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E362C3F66F;
- Fri,  7 Jan 2022 02:22:51 -0800 (PST)
-From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
-To: =?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kw@linux.com>,
- Jianjun Wang <jianjun.wang@mediatek.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Bjorn Helgaas <bhelgaas@google.com>,
- qizhong cheng <qizhong.cheng@mediatek.com>
-Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- =?UTF-8?q?Pali=20Roh=C3=A1r?= <pali@kernel.org>,
- linux-arm-kernel@lists.infradead.org, chuanjia.liu@mediatek.com,
- linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] PCI: mediatek: Assert PERST# for 100ms for power and
- clock to stabilize
-Date: Fri,  7 Jan 2022 10:22:46 +0000
-Message-Id: <164155095225.6775.655179565397700923.b4-ty@arm.com>
-X-Mailer: git-send-email 2.31.0
-In-Reply-To: <20211227133110.14500-1-qizhong.cheng@mediatek.com>
-References: <20211227133110.14500-1-qizhong.cheng@mediatek.com>
+	id 1n5mQd-003KtH-Mg; Fri, 07 Jan 2022 10:24:59 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n5mQQ-003KoA-LQ; Fri, 07 Jan 2022 10:24:48 +0000
+X-UUID: 0dab188973f543629689efc96ae326d5-20220107
+X-UUID: 0dab188973f543629689efc96ae326d5-20220107
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <jason-jh.lin@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 894705095; Fri, 07 Jan 2022 03:24:44 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 7 Jan 2022 02:14:42 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 7 Jan 2022 18:14:28 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 7 Jan 2022 18:14:27 +0800
+From: jason-jh.lin <jason-jh.lin@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, "Philipp
+ Zabel" <p.zabel@pengutronix.de>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v14 02/12] dt-bindings: arm: mediatek: mmsys: add mt8195 SoC
+ binding
+Date: Fri, 7 Jan 2022 18:14:15 +0800
+Message-ID: <20220107101425.6917-3-jason-jh.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220107101425.6917-1-jason-jh.lin@mediatek.com>
+References: <20220107101425.6917-1-jason-jh.lin@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220107_022256_944651_64BCC572 
-X-CRM114-Status: UNSURE (   4.78  )
+X-CRM114-CacheID: sfid-20220107_022446_733710_677C6022 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -63,25 +68,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: devicetree@vger.kernel.org, Jitao shi <jitao.shi@mediatek.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, David Airlie <airlied@linux.ie>,
+ "jason-jh . lin" <jason-jh.lin@mediatek.com>, singo.chang@mediatek.com,
+ Fabien Parent <fparent@baylibre.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, roy-cw.yeh@mediatek.com,
+ linux-kernel@vger.kernel.org, CK
+ Hu <ck.hu@mediatek.com>, moudy.ho@mediatek.com,
+ linux-mediatek@lists.infradead.org, Daniel Vetter <daniel@ffwll.ch>,
+ hsinyi@chromium.org, Enric Balletbo i Serra <enric.balletbo@collabora.com>,
+ nancy.lin@mediatek.com, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 27 Dec 2021 21:31:10 +0800, qizhong cheng wrote:
-> Described in PCIe CEM specification sections 2.2 (PERST# Signal) and
-> 2.2.1 (Initial Power-Up (G3 to S0)). The deassertion of PERST# should
-> be delayed 100ms (TPVPERL) for the power and clock to become stable.
-> 
-> 
+There are 2 mmsys, namely vdosys0 and vdosys1 in mt8195.
+Each of them is bound to a display pipeline, so add their
+definition in mtk-mmsys documentation with 2 compatibles.
 
-Applied to pci/mediatek, thanks!
+Signed-off-by: jason-jh.lin <jason-jh.lin@mediatek.com>
+---
+ .../devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
 
-[1/1] PCI: mediatek: Assert PERST# for 100ms for power and clock to stabilize
-      https://git.kernel.org/lpieralisi/pci/c/65ace9a85f
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 474bcf9c250d..a978cdd32575 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -31,6 +31,8 @@ properties:
+               - mediatek,mt8183-mmsys
+               - mediatek,mt8192-mmsys
+               - mediatek,mt8365-mmsys
++              - mediatek,mt8195-vdosys0
++              - mediatek,mt8195-vdosys1
+           - const: syscon
+       - items:
+           - const: mediatek,mt7623-mmsys
+-- 
+2.18.0
 
-Thanks,
-Lorenzo
 
 _______________________________________________
 Linux-mediatek mailing list
