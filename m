@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80930C4332F
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 11:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EFEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 14:34:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l+AmJZITgeWPhLyuD5mAFG3tB2zeR4ihk1cnHd0mbYQ=; b=EFPzcjh0Ew70kj
-	U7lNlKcgMCtUhFe8x87JRuCHcao+ralFXL7M4pC3KSUcar95qWCwmWyvevmGWhx0SYQ/KM7n9x9Da
-	MdFUyc7w1/D8LgIaODsW5t+nU/RfFWq2EPcoLOE/679S7WahYq1XFb52bh04p9wzSdRQMKOjGRDRO
-	kwzREZIpYQZEzbtE3kggLq0EUJ2oi4tFNUADritHKpl9pem0wrcjJCEwOAFxZBNkZu/KGJB1op+HT
-	c0hf6D7KhgySOZAWSGMC3q0VELkGleLPlMat/bDPEse8LNgzuKd1+Z/HfSOofAJ5vbSwHoIdLo1/w
-	kVm5TytkrGvjhF5SUpqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=IrKJWejVLgtl3uehTlGrf5Wj7EUz6PIJhGLB8besfV0=; b=m1vfZz4ntxd/vOYlSxKQG0ASr+
+	lIyErYG0hwBeUBBr0Ef7+1wBzsFVhB7g+5bxIZA2gnxQW+7bai0Ekww3FKQN81VKmEJLw8fiybwe+
+	N+5R6JVnpv+r0iQ7AEcPYoVBm3+MDGKmecNS8Goj/PXCvVPUxwWbiNgeueDzGjM+oAGoeO+8jQEOy
+	xqiR08nfymd05NcUJViIuMwIyjr8++d1r/bhQudzw8nIBixdPn7S2WRcB/FbuGJd8dWqAR1zO1bkw
+	WkV25Edp+tioSKAuvU9l9eWSA7jpDJllDUWp9itvZ5soQRRp5AYt6OuoQS0yyTgocNy7jjal3/aML
+	YI9ovXCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5nqa-003igB-MW; Fri, 07 Jan 2022 11:55:52 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n5qJg-004Cks-Dz; Fri, 07 Jan 2022 14:34:04 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5npk-003iFi-Uy; Fri, 07 Jan 2022 11:55:02 +0000
-X-UUID: f23d8591a2d04c23ae615f9c5e54b009-20220107
-X-UUID: f23d8591a2d04c23ae615f9c5e54b009-20220107
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
- (envelope-from <tinghan.shen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 720159074; Fri, 07 Jan 2022 04:54:55 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 7 Jan 2022 03:54:53 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 7 Jan 2022 19:54:40 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 7 Jan 2022 19:54:39 +0800
-From: Tinghan Shen <tinghan.shen@mediatek.com>
-To: Rob Herring <robh+dt@kernel.org>, Linus Walleij
- <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Bartosz Golaszewski
- <bgolaszewski@baylibre.com>, Sean Wang <sean.wang@mediatek.com>
-CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-gpio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
- <wenst@chromium.org>, <chunfeng.yun@mediatek.com>, Tinghan Shen
- <tinghan.shen@mediatek.com>
-Subject: [PATCH v8 3/4] dt-bindings: pinctrl: mt8195: Add mediatek,
- drive-strength-adv property
-Date: Fri, 7 Jan 2022 19:53:44 +0800
-Message-ID: <20220107115345.9075-4-tinghan.shen@mediatek.com>
-X-Mailer: git-send-email 2.15.GIT
-In-Reply-To: <20220107115345.9075-1-tinghan.shen@mediatek.com>
-References: <20220107115345.9075-1-tinghan.shen@mediatek.com>
+ id 1n5qJM-004CUT-Fi; Fri, 07 Jan 2022 14:33:46 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id ADD2E1F41A85
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641566010;
+ bh=xsEtblrCb0tBGSZg8VcgU0f3IuRCjwRAstGnjQ8ex4M=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=QztwbUzfrGMamK1nWpM8GF6PyhX/dvB4Q4MRkV+FgjLDfhxFomfBA/TddHKIgB3x1
+ 43q4PBu4b4iO0S3kFcdqmiyHP3anskAUZUGjvQMG5Em2AqHqpFqgfZI3QpxBrYd6oA
+ 4h9Cjx/95lA8ECG2FTfu5eaupz6adnpD2bHDlPdsz/3YCYIRJ2ZM2X7o9LTkjX/KbX
+ dAtivBbTKJleh18+csF8ixXQeRmeZC3wLNJu5ESLPTLBk7MhStatySGKSLreVFQF+l
+ ezG2zpxcX/9zwDA4gYxThJg331dIv+bvKfRQNzP3/qSTCCkoBNdJS8R3JwaITQ7b4B
+ h9SGuLEfNKThg==
+Subject: Re: [PATCH v21 8/8] soc: mediatek: SVS: add mt8192 SVS GPU driver
+To: Roger Lu <roger.lu@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
+ <khilman@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Nicolas Boichat <drinkcat@google.com>, Stephen Boyd <sboyd@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin
+ <Angus.Lin@mediatek.com>, Mark Rutland <mark.rutland@arm.com>,
+ Nishanth Menon <nm@ti.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-pm@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Guenter Roeck <linux@roeck-us.net>
+References: <20220107095200.4389-1-roger.lu@mediatek.com>
+ <20220107095200.4389-9-roger.lu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <2c0e89c6-6e9c-9d12-703f-d71e22023e7a@collabora.com>
+Date: Fri, 7 Jan 2022 15:33:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <20220107095200.4389-9-roger.lu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220107_035501_040497_5A9169D7 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220107_063344_848930_82768080 
+X-CRM114-Status: GOOD (  26.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,72 +76,245 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Extend pin driving support for I2C pins on SoC mt8195.
-This property is also documented in mediatek,mt8183-pinctrl.yaml.
+Il 07/01/22 10:52, Roger Lu ha scritto:
+> mt8192 SVS GPU uses 2-line (high/low bank) HW architecture to provide
+> bank voltages. High bank helps update higher frequency's voltage
+> and low bank helps update lower frequency's voltage.
+> 
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mtk-svs.c | 469 ++++++++++++++++++++++++++++++++-
+>   1 file changed, 464 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+> index 93cdaecadd6d..bec6524ab33a 100644
+> --- a/drivers/soc/mediatek/mtk-svs.c
+> +++ b/drivers/soc/mediatek/mtk-svs.c
 
-Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
----
- .../bindings/pinctrl/pinctrl-mt8195.yaml      | 35 +++++++++++++++++++
- 1 file changed, 35 insertions(+)
+..snip..
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-index 567f71cab7b4..5e27e01d6588 100644
---- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-@@ -98,6 +98,32 @@ patternProperties:
-           drive-strength:
-             enum: [2, 4, 6, 8, 10, 12, 14, 16]
- 
-+          mediatek,drive-strength-adv:
-+            description: |
-+              Describe the specific driving setup property.
-+              For I2C pins, the existing generic driving setup can only support
-+              2/4/6/8/10/12/14/16mA driving. But in specific driving setup, they
-+              can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
-+              driving setup, the existing generic setup will be disabled.
-+              The specific driving setup is controlled by E1E0EN.
-+              When E1=0/E0=0, the strength is 0.125mA.
-+              When E1=0/E0=1, the strength is 0.25mA.
-+              When E1=1/E0=0, the strength is 0.5mA.
-+              When E1=1/E0=1, the strength is 1mA.
-+              EN is used to enable or disable the specific driving setup.
-+              Valid arguments are described as below:
-+              0: (E1, E0, EN) = (0, 0, 0)
-+              1: (E1, E0, EN) = (0, 0, 1)
-+              2: (E1, E0, EN) = (0, 1, 0)
-+              3: (E1, E0, EN) = (0, 1, 1)
-+              4: (E1, E0, EN) = (1, 0, 0)
-+              5: (E1, E0, EN) = (1, 0, 1)
-+              6: (E1, E0, EN) = (1, 1, 0)
-+              7: (E1, E0, EN) = (1, 1, 1)
-+              So the valid arguments are from 0 to 7.
-+            $ref: /schemas/types.yaml#/definitions/uint32
-+            enum: [0, 1, 2, 3, 4, 5, 6, 7]
-+
-           bias-pull-down:
-             description: |
-               For pull down type is normal, it don't need add RSEL & R1R0 define
-@@ -265,4 +291,13 @@ examples:
-           bias-pull-down;
-         };
-       };
-+
-+      i2c0-pins {
-+        pins {
-+          pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
-+                   <PINMUX_GPIO9__FUNC_SCL0>;
-+          bias-disable;
-+          mediatek,drive-strength-adv = <7>;
-+        };
-+      };
-     };
--- 
-2.18.0
+> @@ -639,9 +706,11 @@ static int svs_status_debug_show(struct seq_file *m, void *v)
+>   
+>   	ret = svs_get_zone_temperature(svsb->tzone_name, &tzone_temp);
+>   	if (ret)
+> -		seq_printf(m, "%s: temperature ignore\n", svsb->name);
+> +		seq_printf(m, "%s: temperature ignore, turn_pt = %u\n",
+> +			   svsb->name, svsb->turn_pt);
+>   	else
+> -		seq_printf(m, "%s: temperature = %d\n", svsb->name, tzone_temp);
+> +		seq_printf(m, "%s: temperature = %d, turn_pt = %u\n",
+> +			   svsb->name, tzone_temp, svsb->turn_pt);
+>   
+>   	for (i = 0; i < svsb->opp_count; i++) {
+>   		opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
+> @@ -784,6 +853,181 @@ static u32 interpolate(u32 f0, u32 f1, u32 v0, u32 v1, u32 fx)
+>   	return DIV_ROUND_UP(vx, 100);
+>   }
+>   
+> +static void svs_get_bank_volts_v3(struct svs_platform *svsp)
+> +{
+> +	struct svs_bank *svsb = svsp->pbank;
+> +	u32 i, j, *vop, vop74, vop30, mask7_0 = GENMASK(7, 0);
+> +	u32 b_sft, bits8 = 8, shift_byte = 0, reg_bytes = 4;
+
+mask7_0, bits8, reg_bytes are constants, and it's not right to declare constants
+as variables like you're doing here.
+
+Please replace all usages of `mask7_0` with either a definition or with the call
+to the GENMASK macro;
+also, replace all usages of `bits8` with a definition, or just 8;
+finally, either make `reg_bytes` a `const u8` or a definition.
+
+
+In my opinion, a #define would be preferred, since the exact same comments on
+the exact same values also apply to function svs_set_bank_freq_pct_v3().
+
+After that fix, you'll get my R-b.
+
+I feel like v22 will be golden :)
+
+Regards,
+- Angelo
+
+> +	u32 middle_index = (svsb->opp_count / 2);
+> +	u32 opp_start = 0, opp_stop = 0, turn_pt = svsb->turn_pt;
+> +
+> +	if (svsb->phase == SVSB_PHASE_MON &&
+> +	    svsb->volt_flags & SVSB_MON_VOLT_IGNORE)
+> +		return;
+> +
+> +	vop74 = svs_readl_relaxed(svsp, VOP74);
+> +	vop30 = svs_readl_relaxed(svsp, VOP30);
+> +
+> +	/* Target is to set svsb->volt[] by algorithm */
+> +	if (turn_pt < middle_index) {
+> +		if (svsb->type == SVSB_HIGH) {
+> +			/* volt[0] ~ volt[turn_pt - 1] */
+> +			for (i = 0; i < turn_pt; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				vop = (shift_byte < reg_bytes) ? &vop30 :
+> +								 &vop74;
+> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
+> +				shift_byte++;
+> +			}
+> +		} else if (svsb->type == SVSB_LOW) {
+> +			/* volt[turn_pt] + volt[j] ~ volt[opp_count - 1] */
+> +			j = svsb->opp_count - 7;
+> +			svsb->volt[turn_pt] = vop30 & mask7_0;
+> +			shift_byte++;
+> +			for (i = j; i < svsb->opp_count; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				vop = (shift_byte < reg_bytes) ? &vop30 :
+> +								 &vop74;
+> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
+> +				shift_byte++;
+> +			}
+> +
+> +			/* volt[turn_pt + 1] ~ volt[j - 1] by interpolate */
+> +			for (i = turn_pt + 1; i < j; i++)
+> +				svsb->volt[i] =
+> +					interpolate(svsb->freq_pct[turn_pt],
+> +						    svsb->freq_pct[j],
+> +						    svsb->volt[turn_pt],
+> +						    svsb->volt[j],
+> +						    svsb->freq_pct[i]);
+> +		}
+> +	} else {
+> +		if (svsb->type == SVSB_HIGH) {
+> +			/* volt[0] + volt[j] ~ volt[turn_pt - 1] */
+> +			j = turn_pt - 7;
+> +			svsb->volt[0] = vop30 & mask7_0;
+> +			shift_byte++;
+> +			for (i = j; i < turn_pt; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				vop = (shift_byte < reg_bytes) ? &vop30 :
+> +								 &vop74;
+> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
+> +				shift_byte++;
+> +			}
+> +
+> +			/* volt[1] ~ volt[j - 1] by interpolate */
+> +			for (i = 1; i < j; i++)
+> +				svsb->volt[i] =
+> +					interpolate(svsb->freq_pct[0],
+> +						    svsb->freq_pct[j],
+> +						    svsb->volt[0],
+> +						    svsb->volt[j],
+> +						    svsb->freq_pct[i]);
+> +		} else if (svsb->type == SVSB_LOW) {
+> +			/* volt[turn_pt] ~ volt[opp_count - 1] */
+> +			for (i = turn_pt; i < svsb->opp_count; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				vop = (shift_byte < reg_bytes) ? &vop30 :
+> +								 &vop74;
+> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
+> +				shift_byte++;
+> +			}
+> +		}
+> +	}
+> +
+> +	if (svsb->type == SVSB_HIGH) {
+> +		opp_start = 0;
+> +		opp_stop = svsb->turn_pt;
+> +	} else if (svsb->type == SVSB_LOW) {
+> +		opp_start = svsb->turn_pt;
+> +		opp_stop = svsb->opp_count;
+> +	}
+> +
+> +	for (i = opp_start; i < opp_stop; i++)
+> +		if (svsb->volt_flags & SVSB_REMOVE_DVTFIXED_VOLT)
+> +			svsb->volt[i] -= svsb->dvt_fixed;
+> +}
+> +
+> +static void svs_set_bank_freq_pct_v3(struct svs_platform *svsp)
+> +{
+> +	struct svs_bank *svsb = svsp->pbank;
+> +	u32 i, j, *freq_pct, freq_pct74 = 0, freq_pct30 = 0;
+> +	u32 b_sft, bits8 = 8, shift_byte = 0, reg_bytes = 4;
+> +	u32 middle_index = (svsb->opp_count / 2);
+> +	u32 turn_pt = middle_index;
+> +
+> +	for (i = 0; i < svsb->opp_count; i++) {
+> +		if (svsb->opp_dfreq[i] <= svsb->turn_freq_base) {
+> +			svsb->turn_pt = i;
+> +			break;
+> +		}
+> +	}
+> +
+> +	turn_pt = svsb->turn_pt;
+> +
+> +	/* Target is to fill out freq_pct74 / freq_pct30 by algorithm */
+> +	if (turn_pt < middle_index) {
+> +		if (svsb->type == SVSB_HIGH) {
+> +			/* Edge case for preventing freq_pct30 from being 0 */
+> +			if (turn_pt == 0)
+> +				freq_pct30 = svsb->freq_pct[0];
+> +
+> +			/* freq_pct[0] ~ freq_pct[turn_pt - 1] */
+> +			for (i = 0; i < turn_pt; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				freq_pct = (shift_byte < reg_bytes) ?
+> +					   &freq_pct30 : &freq_pct74;
+> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
+> +				shift_byte++;
+> +			}
+> +		} else if (svsb->type == SVSB_LOW) {
+> +			/*
+> +			 * freq_pct[turn_pt] +
+> +			 * freq_pct[opp_count - 7] ~ freq_pct[opp_count -1]
+> +			 */
+> +			freq_pct30 = svsb->freq_pct[turn_pt];
+> +			shift_byte++;
+> +			j = svsb->opp_count - 7;
+> +			for (i = j; i < svsb->opp_count; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				freq_pct = (shift_byte < reg_bytes) ?
+> +					   &freq_pct30 : &freq_pct74;
+> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
+> +				shift_byte++;
+> +			}
+> +		}
+> +	} else {
+> +		if (svsb->type == SVSB_HIGH) {
+> +			/*
+> +			 * freq_pct[0] +
+> +			 * freq_pct[turn_pt - 7] ~ freq_pct[turn_pt - 1]
+> +			 */
+> +			freq_pct30 = svsb->freq_pct[0];
+> +			shift_byte++;
+> +			j = turn_pt - 7;
+> +			for (i = j; i < turn_pt; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				freq_pct = (shift_byte < reg_bytes) ?
+> +					   &freq_pct30 : &freq_pct74;
+> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
+> +				shift_byte++;
+> +			}
+> +		} else if (svsb->type == SVSB_LOW) {
+> +			/* freq_pct[turn_pt] ~ freq_pct[opp_count - 1] */
+> +			for (i = turn_pt; i < svsb->opp_count; i++) {
+> +				b_sft = bits8 * (shift_byte % reg_bytes);
+> +				freq_pct = (shift_byte < reg_bytes) ?
+> +					   &freq_pct30 : &freq_pct74;
+> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
+> +				shift_byte++;
+> +			}
+> +		}
+> +	}
+> +
+> +	svs_writel_relaxed(svsp, freq_pct74, FREQPCT74);
+> +	svs_writel_relaxed(svsp, freq_pct30, FREQPCT30);
+> +}
+> +
+>   static void svs_get_bank_volts_v2(struct svs_platform *svsp)
+>   {
+>   	struct svs_bank *svsb = svsp->pbank;
+
 
 
 _______________________________________________
