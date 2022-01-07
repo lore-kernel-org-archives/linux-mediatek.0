@@ -4,59 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53BBEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 09:23:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D82FFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 09:52:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ifVYb48v2BrfMKcniq1EcU8e4fiIaKq4LmnShxAVmDM=; b=Zld/AJgrAeZUryoXtai9r99A1q
-	ku1N3ad869llBG88FxblzirV/FAkNe05Gvh3zX9uLYshouufjGU4nw1/AV+4nJDpcCOGcrDorpFJV
-	0lbxYWxDFzxsmZ2vvdGJLuoB9Snq5NQFkyUuoR4omTzGcJsrghNIXlqTeRruz4X1VXErMoK08Ze9i
-	zos1qrn2E+u2cFeC0qAb3s5Gtvl8x5J65vZHYcNGBg34L7fLeVMuteI4Asxj2HfNZel0zMnqut5yD
-	6RoQe7ou/aRgItC8Ahg13kY6+x+48xOi0veD02DLtRCGXw9xtJRY9DodjQSk+P5c+XTQycIKC3NHJ
-	yrrGiM8A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ebq5t/wunxGWXkrDLfkkjhMjgeuuQD5ao6AMvJtgxWg=; b=in5hB3kLCrMIDr
+	jGoYFq3cyzu0Cww9FBn6IrvecO70rJO3syI2FcrIGlZtAiXs7Dz7AKbcz3s7mNQYV0xVFTO5mqq5m
+	pdu7tz4ngr7HDqpzLxqsga+VrRNeMXtFXky2k9Zj3WqJCrxet42KpB1EjexZwvLmuXDFHG0LJM+ex
+	jghPVoofu60sXVcMhB43wQin8BVEm8BfNwSZG4NyHRQs94XgSnZYIOxta4bEJQae31aEptX3Sz5Yu
+	WQxzK/G8RxrTyLC4Hg6LYvUEton1suM8fkSTWfQkL4NOZyO3fwnroYgTonGpFDxQEij+IsIcI4hSl
+	kpMpRjwuyIaAWnge/5QA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5lTS-00333d-AR; Fri, 07 Jan 2022 09:23:50 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1n5lv8-00399r-1s; Fri, 07 Jan 2022 09:52:26 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5lTF-003306-GP; Fri, 07 Jan 2022 09:23:39 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id DD0E51F40A55
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1641547414;
- bh=wj1ZDK4lkn/iSMxOoGczIJTSg6wOxjiARPaZ2r2OUWw=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=c7TocaBKZAHN+HhlzCoPRaklI+aiWQMse7sjTJ3DD/6JaFoxtqSb0Y2088RnnaH+1
- qGzWIPCWvRqUwaKIxDUIMGG/+RRw2vcdj5w2TAGVlWYjdb5UL5gQuhC4bsR76YevUE
- qcMPJQCdnQs/owVWkwDW/Ho5IzM/W26Vhr+gydewcZtoP6z/9EWyAiNnOc8mBRducK
- AiIqupciZFfnW+cJVeoB5ewBy+ibo1+k38gKmZWv51xuAylIQvj9KENrXjw4YISQ0z
- HoeVrMnHircsrRPFaXXEs3kjaClm73RQwu5zSPcefzAapyeG/yyldEDraJqoFz8cLR
- 0iqNsArtWAg9g==
-Subject: Re: [PATCH 3/3] phy: mediatek: phy-mtk-mipi-dsi: Simplify with
- dev_err_probe()
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, chunkuang.hu@kernel.org
-Cc: p.zabel@pengutronix.de, kishon@ti.com, vkoul@kernel.org,
- matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20220103145324.48008-1-angelogioacchino.delregno@collabora.com>
- <20220103145324.48008-3-angelogioacchino.delregno@collabora.com>
- <4d7195c3ac9bc63a5f980548f0c880484403346d.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <ba6c0163-fc5f-2a5f-560d-240e5fe2c3c4@collabora.com>
-Date: Fri, 7 Jan 2022 10:23:32 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1n5lus-0038zv-5R; Fri, 07 Jan 2022 09:52:11 +0000
+X-UUID: 03256b73c3e14a538e4406b86b944008-20220107
+X-UUID: 03256b73c3e14a538e4406b86b944008-20220107
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <roger.lu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 9843752; Fri, 07 Jan 2022 02:52:05 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 7 Jan 2022 01:52:03 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 7 Jan 2022 17:52:02 +0800
+Received: from mtksdaap41.mediatek.inc (172.21.77.4) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 7 Jan 2022 17:52:02 +0800
+From: Roger Lu <roger.lu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Enric Balletbo Serra
+ <eballetbo@gmail.com>, Kevin Hilman <khilman@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, Nicolas Boichat <drinkcat@google.com>, Stephen Boyd
+ <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
+CC: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>, 
+ YT Lee <yt.lee@mediatek.com>, Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>,
+ Charles Yang <Charles.Yang@mediatek.com>, Angus Lin <Angus.Lin@mediatek.com>, 
+ Mark Rutland <mark.rutland@arm.com>, Nishanth Menon <nm@ti.com>, Roger Lu
+ <roger.lu@mediatek.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>, <linux-pm@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guenter Roeck
+ <linux@roeck-us.net>
+Subject: [PATCH v21 7/8] arm64: dts: mt8192: add svs device information
+Date: Fri, 7 Jan 2022 17:51:59 +0800
+Message-ID: <20220107095200.4389-8-roger.lu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220107095200.4389-1-roger.lu@mediatek.com>
+References: <20220107095200.4389-1-roger.lu@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <4d7195c3ac9bc63a5f980548f0c880484403346d.camel@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220107_012337_736663_04DDE1EA 
-X-CRM114-Status: GOOD (  17.24  )
+X-CRM114-CacheID: sfid-20220107_015210_263402_993295AD 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,108 +75,91 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 06/01/22 10:13, Chunfeng Yun ha scritto:
-> On Mon, 2022-01-03 at 15:53 +0100, AngeloGioacchino Del Regno wrote:
->> Use the dev_err_probe() helper to simplify error handling during
->> probe.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <
->> angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/phy/mediatek/phy-mtk-mipi-dsi.c | 29 +++++++++------------
->> ----
->>   1 file changed, 10 insertions(+), 19 deletions(-)
->>
->> diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
->> b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
->> index 6f7425b0bf5b..4b77508f5241 100644
->> --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
->> +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
->> @@ -148,11 +148,9 @@ static int mtk_mipi_tx_probe(struct
->> platform_device *pdev)
->>   		return PTR_ERR(mipi_tx->regmap);
->>   
->>   	ref_clk = devm_clk_get(dev, NULL);
->> -	if (IS_ERR(ref_clk)) {
->> -		ret = PTR_ERR(ref_clk);
->> -		dev_err(dev, "Failed to get reference clock: %d\n",
->> ret);
->> -		return ret;
->> -	}
->> +	if (IS_ERR(ref_clk))
->> +		return dev_err_probe(dev, PTR_ERR(ref_clk),
->> +				     "Failed to get reference
->> clock\n");
->>   
->>   	ret = of_property_read_u32(dev->of_node, "drive-strength-
->> microamp",
->>   				   &mipi_tx->mipitx_drive);
->> @@ -172,27 +170,20 @@ static int mtk_mipi_tx_probe(struct
->> platform_device *pdev)
->>   
->>   	ret = of_property_read_string(dev->of_node, "clock-output-
->> names",
->>   				      &clk_init.name);
->> -	if (ret < 0) {
->> -		dev_err(dev, "Failed to read clock-output-names: %d\n",
->> ret);
->> -		return ret;
->> -	}
->> +	if (ret < 0)
->> +		return dev_err_probe(dev, ret, "Failed to read clock-
->> output-names\n");
-> Seems no need change it here. (no EPROBE_DEFER error)
-> 
+Add compitable/reg/irq/clock/efuse/reset setting in svs node.
 
-Hello Chunfeng,
+Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+---
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 39 ++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
 
-pasting from kernel driver-api infrastructure guidelines:
-
-[...]Note that it is deemed acceptable to use this function for error prints during 
-probe even if the err is known to never be -EPROBE_DEFER. The benefit compared to a 
-normal dev_err() is the standardized format of the error code and the fact that the 
-error code is returned.
-
-https://www.kernel.org/doc/html/latest/driver-api/infrastructure.html
-
-Regards,
-- Angelo
-
-> Thanks
->>   
->>   	clk_init.ops = mipi_tx->driver_data->mipi_tx_clk_ops;
->>   
->>   	mipi_tx->pll_hw.init = &clk_init;
->>   	mipi_tx->pll = devm_clk_register(dev, &mipi_tx->pll_hw);
->> -	if (IS_ERR(mipi_tx->pll)) {
->> -		ret = PTR_ERR(mipi_tx->pll);
->> -		dev_err(dev, "Failed to register PLL: %d\n", ret);
->> -		return ret;
->> -	}
->> +	if (IS_ERR(mipi_tx->pll))
->> +		return dev_err_probe(dev, PTR_ERR(mipi_tx->pll),
->> "Cannot register PLL\n");
->>   
->>   	phy = devm_phy_create(dev, NULL, &mtk_mipi_tx_ops);
->> -	if (IS_ERR(phy)) {
->> -		ret = PTR_ERR(phy);
->> -		dev_err(dev, "Failed to create MIPI D-PHY: %d\n", ret);
->> -		return ret;
->> -	}
->> +	if (IS_ERR(phy))
->> +		return dev_err_probe(dev, PTR_ERR(phy), "Failed to
->> create MIPI D-PHY\n");
->> +
->>   	phy_set_drvdata(phy, mipi_tx);
->>   
->>   	phy_provider = devm_of_phy_provider_register(dev,
->> of_phy_simple_xlate);
-> 
+diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+index c7c7d4e017ae..c111e26489dd 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
+@@ -9,6 +9,8 @@
+ #include <dt-bindings/interrupt-controller/arm-gic.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
+ #include <dt-bindings/pinctrl/mt8192-pinfunc.h>
++#include <dt-bindings/reset/ti-syscon.h>
++
+ 
+ / {
+ 	compatible = "mediatek,mt8192";
+@@ -268,6 +270,14 @@
+ 			compatible = "mediatek,mt8192-infracfg", "syscon";
+ 			reg = <0 0x10001000 0 0x1000>;
+ 			#clock-cells = <1>;
++
++			infracfg_rst: reset-controller {
++				compatible = "mediatek,infra-reset", "ti,syscon-reset";
++				#reset-cells = <1>;
++				ti,reset-bits = <
++					0x150 5 0x154 5 0 0     (ASSERT_SET | DEASSERT_SET | STATUS_NONE) /* 0: svs */
++				>;
++			};
+ 		};
+ 
+ 		pericfg: syscon@10003000 {
+@@ -362,6 +372,20 @@
+ 			status = "disabled";
+ 		};
+ 
++		svs: svs@1100b000 {
++			compatible = "mediatek,mt8192-svs";
++			reg = <0 0x1100b000 0 0x1000>;
++			interrupts = <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH 0>;
++			clocks = <&infracfg CLK_INFRA_THERM>;
++			clock-names = "main";
++			nvmem-cells = <&svs_calibration>,
++				      <&lvts_e_data1>;
++			nvmem-cell-names = "svs-calibration-data",
++					   "t-calibration-data";
++			resets = <&infracfg_rst 0>;
++			reset-names = "svs_rst";
++		};
++
+ 		spi1: spi@11010000 {
+ 			compatible = "mediatek,mt8192-spi",
+ 				     "mediatek,mt6765-spi";
+@@ -479,6 +503,21 @@
+ 			#clock-cells = <1>;
+ 		};
+ 
++		efuse: efuse@11c10000 {
++			compatible = "mediatek,efuse";
++			reg = <0 0x11c10000 0 0x1000>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++
++			lvts_e_data1: data1@1c0 {
++				reg = <0x1c0 0x58>;
++			};
++
++			svs_calibration: calib@580 {
++				reg = <0x580 0x68>;
++			};
++		};
++
+ 		i2c3: i2c3@11cb0000 {
+ 			compatible = "mediatek,mt8192-i2c";
+ 			reg = <0 0x11cb0000 0 0x1000>,
+-- 
+2.18.0
 
 
 _______________________________________________
