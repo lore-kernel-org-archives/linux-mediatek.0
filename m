@@ -4,75 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2664C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 18:26:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1090C433FE
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 19:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=nqZfcJhabMm4wj2TugiaRAwOMZ6mPHb+aOq0Qy6kCJk=; b=cdUhpDvwGDjH5b
-	HXnhHUdB1SqLYSs4YN7EUCLURVB+h/ifuG24aKXSIdUtxv5P018zZEbFqS9HYErW0wQOyPAV9+m+4
-	mzXvatkJMBbJu/SBZPS2SWnlhUnGDSZQUJkpAImMSDLwlZXSHekvwFTBtff/GQVnm2M9oPftrT4I/
-	pKR5LSaSajSp0mERPKtjQpvoatu6dciPMYWM+C6umLAwaEzNl1feiu40GR5+aGRrarxvHzDcAVNnl
-	daCb3CbE+L6ZxS4cSXJMFsLP8fD+egGzRIEs9WpEgMn5YAP5fTNHz7q6pIW6Hvhl4RWuv97ZELWKR
-	rlfoJPB3yaQHqs1lbOQg==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=s6OYblawnshxz6rgLNEHJTovAGbkNHIWPrQ41nqjqNQ=; b=g1h0yV8mHpgkIW
+	NPcvPWt9fv4g93v5/chPE7OjrtxNonNEGFiwAGVfiqtqbL8CUnszM/uGa5cCwKYB/KFbT+sTKp9lx
+	jcyJL5Dp127hz5hT/pALnYIQxheFTJ3tT5vTKgg4hYcubjwLDkwA2atNeYe1AlLN5qMJRQwXTouLz
+	Ra89Nwm5pWqB92fnKNsYPb5uOYIcSQ7K69AGXZBz/jvU2PuU7aldX7+XXYcER62RZ6KkaPpjFwJvS
+	Hwmg4NFLVY9fpQ0eiU/W7oP7MToZhiNKKCR32ABOc2zyPcO+gB4bbXiolm0VdwTr3RvJNE+7fCe9r
+	IR7u4jDZNqHWWV7f4qzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5tw7-004sQ6-TZ; Fri, 07 Jan 2022 18:25:59 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1n5uVA-0050jp-EF; Fri, 07 Jan 2022 19:02:12 +0000
+Received: from mail-oi1-f173.google.com ([209.85.167.173])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5tv6-004s1Y-P4; Fri, 07 Jan 2022 18:25:03 +0000
-Received: by mail-wr1-x433.google.com with SMTP id r10so4985470wrc.3;
- Fri, 07 Jan 2022 10:24:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aMZSPHzmKlp4nB0z4xKj0z3g/eSIybOBv9g3NZ7AxBc=;
- b=quivSkBIqvYx7HHIhNcVzJMk1g2PqMCIZD1U/C28SoY52KIZVa5erqh7Ecy9Tc/uZY
- xy4im3rnanh7XX52x+uEDm25eQrSTTTTbNHMWzskQJXewA8l7Hv96MPweGA/piN6vemc
- QVv2Q40zjmLPAkJb+NzuKcX+moy8OXQKB+eokdpiJE08XFhpn0xuE9Y0PsEAAJd29Wem
- 7htfnQKkQ5q7zRBKjmd3VSX0H9hNVHQib++OsGrYO+xrumfrsa18w+sFaev6RmewTxf6
- A22wpqc3XnTwBa1i+0U1Vw9ykX9ZeZVRW1vvsZybcWbe5bdOjkgO1PPHNCfPXIwgn5t/
- H8SA==
+ id 1n5uUE-0050Yt-SC; Fri, 07 Jan 2022 19:01:16 +0000
+Received: by mail-oi1-f173.google.com with SMTP id u21so9425452oie.10;
+ Fri, 07 Jan 2022 11:01:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aMZSPHzmKlp4nB0z4xKj0z3g/eSIybOBv9g3NZ7AxBc=;
- b=WcQa6b34AWS8eFQeKBWh5dP5baNcPTt6hywvJy/X2lTqCBTSVhrM63SY2BqWLJ1//Y
- RM6cFfDiyCnMeV+1A8Y06JaPr5/Rrs0VaTxFvCVmJcvu9Tq7dLPKKWdoJ8fk3WAHfe3I
- W4+/x0VnpRnx0nhxXcd6Fs7XquaNB+aebfE7QqD5ehzSPkA2ioOg4o6J4l4JfmvjPjb4
- djqO57D5OEKsY9YyiHv0CRh+I9e9uu4byTwxojiRYmGZWFWn0EtTmPzm7C0s6yzgmE0g
- fhIbORy5Kx1Rw4S/58ratwZ0Zg9WPOQo3tN3eEhELKgXNdwzls+O180uyOpgyAfeajnY
- C1uA==
-X-Gm-Message-State: AOAM530C/plSpXruv8gxizV6SVFJImf73feA/p4mAgQklZA+Jd+qzpOo
- 6XfE/L/MXsb+awwKHfiEqGw=
-X-Google-Smtp-Source: ABdhPJxIMdZG2/mErKh1SRRIvGw8qzcobjoNHtD+/pns9H9ulLIrwuZ3L3ZaYlzt5h+xMKGoMXaS6g==
-X-Received: by 2002:a05:6000:2a9:: with SMTP id
- l9mr55607369wry.71.1641579894699; 
- Fri, 07 Jan 2022 10:24:54 -0800 (PST)
-Received: from localhost.localdomain ([217.113.240.86])
- by smtp.gmail.com with ESMTPSA id g18sm5305938wrv.42.2022.01.07.10.24.53
+ h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
+ :message-id;
+ bh=M9Ewz3je/UPVYnHWZBwxIw8fSnK7ld3cFu23OJRs32o=;
+ b=SrWfreZlkIG7Azq/sR9T2bNQ7muFOVh18/38JYLAI5WeRZ+7Ko66ymb5Cjzzn/cKaW
+ 4Jyk9CXxXwuDY9CAIbz+UvqqRvvMc8U4+Kaxq16Mo2OGPFvYN2/GwfsgcECvLD+GNc9/
+ Ku862IqdSdeSz9Nn9CXYsCrgUShneVXriLJaQqN+QrujHMOvUCY7WfAoyTwvfoZbFc/F
+ OmPWsy78S5AFgEJJE+9oju6dZ8gaW5htd4bbBHMk/GKrtHkNolZdKxmNih/jDTYAGoN9
+ ES0Q1Lc+8gymbJ6prUoKO5uIYx3PWjzHmWwGckkjYkISS7WwwHhoT3zfin8Mc93Pox5C
+ F1QA==
+X-Gm-Message-State: AOAM530JcAkOI4oGJFCRtos6WwqjPz48slBQcYwjLpsSlduST6ZSB15i
+ WBRiWDW1Tkon/byDU0/dHQ==
+X-Google-Smtp-Source: ABdhPJxquTndMbNj9kp8gfIWlQVYbrUBHSB+Weu7q94ndIncJ7r49i9m0gMX0OQlKB+LamGTAe7UxA==
+X-Received: by 2002:a05:6808:13ce:: with SMTP id
+ d14mr10955251oiw.62.1641582073051; 
+ Fri, 07 Jan 2022 11:01:13 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id be30sm1117011oib.50.2022.01.07.11.01.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 07 Jan 2022 10:24:54 -0800 (PST)
-From: =?UTF-8?q?Jos=C3=A9=20Exp=C3=B3sito?= <jose.exposito89@gmail.com>
-To: mturquette@baylibre.com
-Cc: sboyd@kernel.org, matthias.bgg@gmail.com, ikjn@chromium.org,
- chun-jie.chen@mediatek.com, weiyi.lu@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- =?UTF-8?q?Jos=C3=A9=20Exp=C3=B3sito?= <jose.exposito89@gmail.com>,
- Chen-Yu Tsai <wenst@chromium.org>
-Subject: [PATCH RESEND v2] clk: mediatek: Fix memory leaks on probe
-Date: Fri,  7 Jan 2022 19:24:51 +0100
-Message-Id: <20220107182451.139456-1-jose.exposito89@gmail.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
+ Fri, 07 Jan 2022 11:01:12 -0800 (PST)
+Received: (nullmailer pid 3702049 invoked by uid 1000);
+ Fri, 07 Jan 2022 19:01:11 -0000
+From: Rob Herring <robh@kernel.org>
+To: Roger Lu <roger.lu@mediatek.com>
+Cc: HenryC Chen <HenryC.Chen@mediatek.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Xiaoqing Liu <Xiaoqing.Liu@mediatek.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Nishanth Menon <nm@ti.com>,
+ Rob Herring <robh+dt@kernel.org>, Charles Yang <Charles.Yang@mediatek.com>,
+ linux-pm@vger.kernel.org, Mark Rutland <mark.rutland@arm.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Kevin Hilman <khilman@kernel.org>,
+ Nicolas Boichat <drinkcat@google.com>, Philipp Zabel <p.zabel@pengutronix.de>,
+ Stephen Boyd <sboyd@kernel.org>, Fan Chen <fan.chen@mediatek.com>,
+ Guenter Roeck <linux@roeck-us.net>, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Angus Lin <Angus.Lin@mediatek.com>,
+ YT Lee <yt.lee@mediatek.com>, Enric Balletbo Serra <eballetbo@gmail.com>
+In-Reply-To: <20220107095200.4389-2-roger.lu@mediatek.com>
+References: <20220107095200.4389-1-roger.lu@mediatek.com>
+ <20220107095200.4389-2-roger.lu@mediatek.com>
+Subject: Re: [PATCH v21 1/8] dt-bindings: soc: mediatek: add mtk svs
+ dt-bindings
+Date: Fri, 07 Jan 2022 13:01:11 -0600
+Message-Id: <1641582071.084026.3702048.nullmailer@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220107_102456_888322_5E656688 
-X-CRM114-Status: GOOD (  11.57  )
+X-CRM114-CacheID: sfid-20220107_110114_956742_403EA273 
+X-CRM114-Status: GOOD (  12.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,51 +85,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGFuZGxlIHRoZSBlcnJvciBicmFuY2hlcyB0byBmcmVlIG1lbW9yeSB3aGVyZSByZXF1aXJlZC4K
-CkFkZHJlc3Nlcy1Db3Zlcml0eS1JRDogMTQ5MTgyNSAoIlJlc291cmNlIGxlYWsiKQpTaWduZWQt
-b2ZmLWJ5OiBKb3PDqSBFeHDDs3NpdG8gPGpvc2UuZXhwb3NpdG84OUBnbWFpbC5jb20+ClJldmll
-d2VkLWJ5OiBDaGVuLVl1IFRzYWkgPHdlbnN0QGNocm9taXVtLm9yZz4KCi0tLQoKdjI6IEFkZCBS
-ZXZpZXdlZC1ieSB0YWcKLS0tCiBkcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTkyLmMgfCAz
-NiArKysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgMzAgaW5z
-ZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2Nsay9tZWRp
-YXRlay9jbGstbXQ4MTkyLmMgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTkyLmMKaW5k
-ZXggY2JjN2M2ZGJlMGY0Li43OWRkYjNjYzBiOTggMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvY2xrL21l
-ZGlhdGVrL2Nsay1tdDgxOTIuYworKysgYi9kcml2ZXJzL2Nsay9tZWRpYXRlay9jbGstbXQ4MTky
-LmMKQEAgLTEyMzYsOSArMTIzNiwxNyBAQCBzdGF0aWMgaW50IGNsa19tdDgxOTJfaW5mcmFfcHJv
-YmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKIAogCXIgPSBtdGtfY2xrX3JlZ2lzdGVy
-X2dhdGVzKG5vZGUsIGluZnJhX2Nsa3MsIEFSUkFZX1NJWkUoaW5mcmFfY2xrcyksIGNsa19kYXRh
-KTsKIAlpZiAocikKLQkJcmV0dXJuIHI7CisJCWdvdG8gZnJlZV9jbGtfZGF0YTsKKworCXIgPSBv
-Zl9jbGtfYWRkX3Byb3ZpZGVyKG5vZGUsIG9mX2Nsa19zcmNfb25lY2VsbF9nZXQsIGNsa19kYXRh
-KTsKKwlpZiAocikKKwkJZ290byBmcmVlX2Nsa19kYXRhOworCisJcmV0dXJuIHI7CiAKLQlyZXR1
-cm4gb2ZfY2xrX2FkZF9wcm92aWRlcihub2RlLCBvZl9jbGtfc3JjX29uZWNlbGxfZ2V0LCBjbGtf
-ZGF0YSk7CitmcmVlX2Nsa19kYXRhOgorCW10a19mcmVlX2Nsa19kYXRhKGNsa19kYXRhKTsKKwly
-ZXR1cm4gcjsKIH0KIAogc3RhdGljIGludCBjbGtfbXQ4MTkyX3BlcmlfcHJvYmUoc3RydWN0IHBs
-YXRmb3JtX2RldmljZSAqcGRldikKQEAgLTEyNTMsOSArMTI2MSwxNyBAQCBzdGF0aWMgaW50IGNs
-a19tdDgxOTJfcGVyaV9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQogCiAJciA9
-IG10a19jbGtfcmVnaXN0ZXJfZ2F0ZXMobm9kZSwgcGVyaV9jbGtzLCBBUlJBWV9TSVpFKHBlcmlf
-Y2xrcyksIGNsa19kYXRhKTsKIAlpZiAocikKLQkJcmV0dXJuIHI7CisJCWdvdG8gZnJlZV9jbGtf
-ZGF0YTsKKworCXIgPSBvZl9jbGtfYWRkX3Byb3ZpZGVyKG5vZGUsIG9mX2Nsa19zcmNfb25lY2Vs
-bF9nZXQsIGNsa19kYXRhKTsKKwlpZiAocikKKwkJZ290byBmcmVlX2Nsa19kYXRhOwogCi0JcmV0
-dXJuIG9mX2Nsa19hZGRfcHJvdmlkZXIobm9kZSwgb2ZfY2xrX3NyY19vbmVjZWxsX2dldCwgY2xr
-X2RhdGEpOworCXJldHVybiByOworCitmcmVlX2Nsa19kYXRhOgorCW10a19mcmVlX2Nsa19kYXRh
-KGNsa19kYXRhKTsKKwlyZXR1cm4gcjsKIH0KIAogc3RhdGljIGludCBjbGtfbXQ4MTkyX2FwbWl4
-ZWRfcHJvYmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKQEAgLTEyNzEsOSArMTI4Nywx
-NyBAQCBzdGF0aWMgaW50IGNsa19tdDgxOTJfYXBtaXhlZF9wcm9iZShzdHJ1Y3QgcGxhdGZvcm1f
-ZGV2aWNlICpwZGV2KQogCW10a19jbGtfcmVnaXN0ZXJfcGxscyhub2RlLCBwbGxzLCBBUlJBWV9T
-SVpFKHBsbHMpLCBjbGtfZGF0YSk7CiAJciA9IG10a19jbGtfcmVnaXN0ZXJfZ2F0ZXMobm9kZSwg
-YXBtaXhlZF9jbGtzLCBBUlJBWV9TSVpFKGFwbWl4ZWRfY2xrcyksIGNsa19kYXRhKTsKIAlpZiAo
-cikKLQkJcmV0dXJuIHI7CisJCWdvdG8gZnJlZV9jbGtfZGF0YTsKIAotCXJldHVybiBvZl9jbGtf
-YWRkX3Byb3ZpZGVyKG5vZGUsIG9mX2Nsa19zcmNfb25lY2VsbF9nZXQsIGNsa19kYXRhKTsKKwly
-ID0gb2ZfY2xrX2FkZF9wcm92aWRlcihub2RlLCBvZl9jbGtfc3JjX29uZWNlbGxfZ2V0LCBjbGtf
-ZGF0YSk7CisJaWYgKHIpCisJCWdvdG8gZnJlZV9jbGtfZGF0YTsKKworCXJldHVybiByOworCitm
-cmVlX2Nsa19kYXRhOgorCW10a19mcmVlX2Nsa19kYXRhKGNsa19kYXRhKTsKKwlyZXR1cm4gcjsK
-IH0KIAogc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgb2ZfbWF0Y2hfY2xrX210ODE5
-MltdID0gewotLSAKMi4yNS4xCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxp
-c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1tZWRpYXRlawo=
+On Fri, 07 Jan 2022 17:51:53 +0800, Roger Lu wrote:
+> Document the binding for enabling mtk svs on MediaTek SoC.
+> 
+> Signed-off-by: Roger Lu <roger.lu@mediatek.com>
+> Reviewed-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../bindings/soc/mediatek/mtk-svs.yaml        | 84 +++++++++++++++++++
+>  1 file changed, 84 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml
+> 
+
+My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
+on your patch (DT_CHECKER_FLAGS is new in v5.13):
+
+yamllint warnings/errors:
+
+dtschema/dtc warnings/errors:
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml: properties:nvmem-cells: {'minItems': 1, 'maxItems': 2, 'description': 'Phandle to the calibration data provided by a nvmem device.', 'items': [{'description': 'SVS efuse for SVS controller'}, {'description': 'Thermal efuse for SVS controller'}]} should not be valid under {'required': ['maxItems']}
+	hint: "maxItems" is not needed with an "items" list
+	from schema $id: http://devicetree.org/meta-schemas/items.yaml#
+/builds/robherring/linux-dt-review/Documentation/devicetree/bindings/soc/mediatek/mtk-svs.yaml: ignoring, error in schema: properties: nvmem-cells
+Documentation/devicetree/bindings/soc/mediatek/mtk-svs.example.dt.yaml:0:0: /example-0/soc/svs@1100b000: failed to match any schema with compatible: ['mediatek,mt8183-svs']
+
+doc reference errors (make refcheckdocs):
+
+See https://patchwork.ozlabs.org/patch/1576508
+
+This check can fail if there are any dependencies. The base for a patch
+series is generally the most recent rc1.
+
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
+
+pip3 install dtschema --upgrade
+
+Please check and re-submit.
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
