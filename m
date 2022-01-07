@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35EFEC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 14:34:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B9D6C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 14:34:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IrKJWejVLgtl3uehTlGrf5Wj7EUz6PIJhGLB8besfV0=; b=m1vfZz4ntxd/vOYlSxKQG0ASr+
-	lIyErYG0hwBeUBBr0Ef7+1wBzsFVhB7g+5bxIZA2gnxQW+7bai0Ekww3FKQN81VKmEJLw8fiybwe+
-	N+5R6JVnpv+r0iQ7AEcPYoVBm3+MDGKmecNS8Goj/PXCvVPUxwWbiNgeueDzGjM+oAGoeO+8jQEOy
-	xqiR08nfymd05NcUJViIuMwIyjr8++d1r/bhQudzw8nIBixdPn7S2WRcB/FbuGJd8dWqAR1zO1bkw
-	WkV25Edp+tioSKAuvU9l9eWSA7jpDJllDUWp9itvZ5soQRRp5AYt6OuoQS0yyTgocNy7jjal3/aML
-	YI9ovXCg==;
+	bh=DlUQVYj31I7fYkwB/A8oQDgIWZmvWfE9xvDheU9vx3E=; b=sNY+OmspcN8cyc9ezKDUeD4ABI
+	unC0mWwnJ3Ovl3K5CVm1m+q2mqDEu5PwjKa5uZFHTKPlb4LyIePyIiK3LDcQg2jLe1p2yKH+w+Rax
+	yAkRCiyMdWhvM49c7xaTErq2YF54mE//UWmHpQCBP+EHFYkyCq1GNyA4hPyk22MHCjemn8pb3/1cc
+	MZ/xGjQV4soD/SrNz7oRwzeGKBQA3qupz5JG3YzAlbNQHSyxgxLzTeHFbarZYo9jPvwEs0WyES5t6
+	IOuNNIDk4km/+8qHlsWnwgXAEi7KDnQwuivSTtIcw+4qODI3qBfCaf+5kAfSakvrnF7JqXxL+vL8b
+	wntqcPYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5qJg-004Cks-Dz; Fri, 07 Jan 2022 14:34:04 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1n5qJx-004CvN-Vp; Fri, 07 Jan 2022 14:34:22 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5qJM-004CUT-Fi; Fri, 07 Jan 2022 14:33:46 +0000
+ id 1n5qJP-004CaP-6T; Fri, 07 Jan 2022 14:33:52 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id ADD2E1F41A85
+ (Authenticated sender: kholk11) with ESMTPSA id 70D191F4436E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1641566010;
- bh=xsEtblrCb0tBGSZg8VcgU0f3IuRCjwRAstGnjQ8ex4M=;
+ s=mail; t=1641566025;
+ bh=dwxI2Zt9X3CdVPZ4YhQ/FM1Ow749UR2LLeAOwFZludY=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=QztwbUzfrGMamK1nWpM8GF6PyhX/dvB4Q4MRkV+FgjLDfhxFomfBA/TddHKIgB3x1
- 43q4PBu4b4iO0S3kFcdqmiyHP3anskAUZUGjvQMG5Em2AqHqpFqgfZI3QpxBrYd6oA
- 4h9Cjx/95lA8ECG2FTfu5eaupz6adnpD2bHDlPdsz/3YCYIRJ2ZM2X7o9LTkjX/KbX
- dAtivBbTKJleh18+csF8ixXQeRmeZC3wLNJu5ESLPTLBk7MhStatySGKSLreVFQF+l
- ezG2zpxcX/9zwDA4gYxThJg331dIv+bvKfRQNzP3/qSTCCkoBNdJS8R3JwaITQ7b4B
- h9SGuLEfNKThg==
-Subject: Re: [PATCH v21 8/8] soc: mediatek: SVS: add mt8192 SVS GPU driver
+ b=Mjke4fniYh1ZBmUlRn8HVJSQa8j9OJsXcVHDy2QJclG1iDw0e1INlkq5MC9sN6Fz2
+ xScuVfwSm5ZhAr3jkE1uMKbZCMmdAjTQmWE7iux43kfnKV2Mu094x9LY/jw7X+blcw
+ KH04C+ptKe0AvLHPCjqpXXmVuz+cdnFMNQimzUrA+o589TZDJuw9oks9bawevnEkFi
+ XOVJkpLR1wTdjv4AsBwJ/Pl5H0Kk4FnNaBJtsYgNHmA1Red7WWbAZ2sEx3/qBptnPC
+ ToUzoeCg0WT7ejziVMHCTf+SKenX7MTshY7MJvWktOAoLb0NaFBd/Ednfqr/pgThpF
+ LelrKJrjkZDwg==
+Subject: Re: [PATCH v21 2/8] arm64: dts: mt8183: add svs device information
 To: Roger Lu <roger.lu@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  Enric Balletbo Serra <eballetbo@gmail.com>, Kevin Hilman
@@ -53,18 +53,19 @@ Cc: Fan Chen <fan.chen@mediatek.com>, HenryC Chen <HenryC.Chen@mediatek.com>,
  Project_Global_Chrome_Upstream_Group@mediatek.com,
  Guenter Roeck <linux@roeck-us.net>
 References: <20220107095200.4389-1-roger.lu@mediatek.com>
- <20220107095200.4389-9-roger.lu@mediatek.com>
+ <20220107095200.4389-3-roger.lu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <2c0e89c6-6e9c-9d12-703f-d71e22023e7a@collabora.com>
-Date: Fri, 7 Jan 2022 15:33:26 +0100
+Message-ID: <1d0afef1-47b2-4b36-9616-27d1df9ac113@collabora.com>
+Date: Fri, 7 Jan 2022 15:33:41 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20220107095200.4389-9-roger.lu@mediatek.com>
+In-Reply-To: <20220107095200.4389-3-roger.lu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220107_063344_848930_82768080 
-X-CRM114-Status: GOOD (  26.69  )
+X-CRM114-CacheID: sfid-20220107_063347_438160_A9C9282A 
+X-CRM114-Status: UNSURE (   8.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,240 +82,12 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 07/01/22 10:52, Roger Lu ha scritto:
-> mt8192 SVS GPU uses 2-line (high/low bank) HW architecture to provide
-> bank voltages. High bank helps update higher frequency's voltage
-> and low bank helps update lower frequency's voltage.
+Il 07/01/22 10:51, Roger Lu ha scritto:
+> Add compitable/reg/irq/clock/efuse setting in svs node.
 > 
 > Signed-off-by: Roger Lu <roger.lu@mediatek.com>
-> ---
->   drivers/soc/mediatek/mtk-svs.c | 469 ++++++++++++++++++++++++++++++++-
->   1 file changed, 464 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-> index 93cdaecadd6d..bec6524ab33a 100644
-> --- a/drivers/soc/mediatek/mtk-svs.c
-> +++ b/drivers/soc/mediatek/mtk-svs.c
 
-..snip..
-
-> @@ -639,9 +706,11 @@ static int svs_status_debug_show(struct seq_file *m, void *v)
->   
->   	ret = svs_get_zone_temperature(svsb->tzone_name, &tzone_temp);
->   	if (ret)
-> -		seq_printf(m, "%s: temperature ignore\n", svsb->name);
-> +		seq_printf(m, "%s: temperature ignore, turn_pt = %u\n",
-> +			   svsb->name, svsb->turn_pt);
->   	else
-> -		seq_printf(m, "%s: temperature = %d\n", svsb->name, tzone_temp);
-> +		seq_printf(m, "%s: temperature = %d, turn_pt = %u\n",
-> +			   svsb->name, tzone_temp, svsb->turn_pt);
->   
->   	for (i = 0; i < svsb->opp_count; i++) {
->   		opp = dev_pm_opp_find_freq_exact(svsb->opp_dev,
-> @@ -784,6 +853,181 @@ static u32 interpolate(u32 f0, u32 f1, u32 v0, u32 v1, u32 fx)
->   	return DIV_ROUND_UP(vx, 100);
->   }
->   
-> +static void svs_get_bank_volts_v3(struct svs_platform *svsp)
-> +{
-> +	struct svs_bank *svsb = svsp->pbank;
-> +	u32 i, j, *vop, vop74, vop30, mask7_0 = GENMASK(7, 0);
-> +	u32 b_sft, bits8 = 8, shift_byte = 0, reg_bytes = 4;
-
-mask7_0, bits8, reg_bytes are constants, and it's not right to declare constants
-as variables like you're doing here.
-
-Please replace all usages of `mask7_0` with either a definition or with the call
-to the GENMASK macro;
-also, replace all usages of `bits8` with a definition, or just 8;
-finally, either make `reg_bytes` a `const u8` or a definition.
-
-
-In my opinion, a #define would be preferred, since the exact same comments on
-the exact same values also apply to function svs_set_bank_freq_pct_v3().
-
-After that fix, you'll get my R-b.
-
-I feel like v22 will be golden :)
-
-Regards,
-- Angelo
-
-> +	u32 middle_index = (svsb->opp_count / 2);
-> +	u32 opp_start = 0, opp_stop = 0, turn_pt = svsb->turn_pt;
-> +
-> +	if (svsb->phase == SVSB_PHASE_MON &&
-> +	    svsb->volt_flags & SVSB_MON_VOLT_IGNORE)
-> +		return;
-> +
-> +	vop74 = svs_readl_relaxed(svsp, VOP74);
-> +	vop30 = svs_readl_relaxed(svsp, VOP30);
-> +
-> +	/* Target is to set svsb->volt[] by algorithm */
-> +	if (turn_pt < middle_index) {
-> +		if (svsb->type == SVSB_HIGH) {
-> +			/* volt[0] ~ volt[turn_pt - 1] */
-> +			for (i = 0; i < turn_pt; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				vop = (shift_byte < reg_bytes) ? &vop30 :
-> +								 &vop74;
-> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
-> +				shift_byte++;
-> +			}
-> +		} else if (svsb->type == SVSB_LOW) {
-> +			/* volt[turn_pt] + volt[j] ~ volt[opp_count - 1] */
-> +			j = svsb->opp_count - 7;
-> +			svsb->volt[turn_pt] = vop30 & mask7_0;
-> +			shift_byte++;
-> +			for (i = j; i < svsb->opp_count; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				vop = (shift_byte < reg_bytes) ? &vop30 :
-> +								 &vop74;
-> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
-> +				shift_byte++;
-> +			}
-> +
-> +			/* volt[turn_pt + 1] ~ volt[j - 1] by interpolate */
-> +			for (i = turn_pt + 1; i < j; i++)
-> +				svsb->volt[i] =
-> +					interpolate(svsb->freq_pct[turn_pt],
-> +						    svsb->freq_pct[j],
-> +						    svsb->volt[turn_pt],
-> +						    svsb->volt[j],
-> +						    svsb->freq_pct[i]);
-> +		}
-> +	} else {
-> +		if (svsb->type == SVSB_HIGH) {
-> +			/* volt[0] + volt[j] ~ volt[turn_pt - 1] */
-> +			j = turn_pt - 7;
-> +			svsb->volt[0] = vop30 & mask7_0;
-> +			shift_byte++;
-> +			for (i = j; i < turn_pt; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				vop = (shift_byte < reg_bytes) ? &vop30 :
-> +								 &vop74;
-> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
-> +				shift_byte++;
-> +			}
-> +
-> +			/* volt[1] ~ volt[j - 1] by interpolate */
-> +			for (i = 1; i < j; i++)
-> +				svsb->volt[i] =
-> +					interpolate(svsb->freq_pct[0],
-> +						    svsb->freq_pct[j],
-> +						    svsb->volt[0],
-> +						    svsb->volt[j],
-> +						    svsb->freq_pct[i]);
-> +		} else if (svsb->type == SVSB_LOW) {
-> +			/* volt[turn_pt] ~ volt[opp_count - 1] */
-> +			for (i = turn_pt; i < svsb->opp_count; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				vop = (shift_byte < reg_bytes) ? &vop30 :
-> +								 &vop74;
-> +				svsb->volt[i] = (*vop >> b_sft) & mask7_0;
-> +				shift_byte++;
-> +			}
-> +		}
-> +	}
-> +
-> +	if (svsb->type == SVSB_HIGH) {
-> +		opp_start = 0;
-> +		opp_stop = svsb->turn_pt;
-> +	} else if (svsb->type == SVSB_LOW) {
-> +		opp_start = svsb->turn_pt;
-> +		opp_stop = svsb->opp_count;
-> +	}
-> +
-> +	for (i = opp_start; i < opp_stop; i++)
-> +		if (svsb->volt_flags & SVSB_REMOVE_DVTFIXED_VOLT)
-> +			svsb->volt[i] -= svsb->dvt_fixed;
-> +}
-> +
-> +static void svs_set_bank_freq_pct_v3(struct svs_platform *svsp)
-> +{
-> +	struct svs_bank *svsb = svsp->pbank;
-> +	u32 i, j, *freq_pct, freq_pct74 = 0, freq_pct30 = 0;
-> +	u32 b_sft, bits8 = 8, shift_byte = 0, reg_bytes = 4;
-> +	u32 middle_index = (svsb->opp_count / 2);
-> +	u32 turn_pt = middle_index;
-> +
-> +	for (i = 0; i < svsb->opp_count; i++) {
-> +		if (svsb->opp_dfreq[i] <= svsb->turn_freq_base) {
-> +			svsb->turn_pt = i;
-> +			break;
-> +		}
-> +	}
-> +
-> +	turn_pt = svsb->turn_pt;
-> +
-> +	/* Target is to fill out freq_pct74 / freq_pct30 by algorithm */
-> +	if (turn_pt < middle_index) {
-> +		if (svsb->type == SVSB_HIGH) {
-> +			/* Edge case for preventing freq_pct30 from being 0 */
-> +			if (turn_pt == 0)
-> +				freq_pct30 = svsb->freq_pct[0];
-> +
-> +			/* freq_pct[0] ~ freq_pct[turn_pt - 1] */
-> +			for (i = 0; i < turn_pt; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				freq_pct = (shift_byte < reg_bytes) ?
-> +					   &freq_pct30 : &freq_pct74;
-> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
-> +				shift_byte++;
-> +			}
-> +		} else if (svsb->type == SVSB_LOW) {
-> +			/*
-> +			 * freq_pct[turn_pt] +
-> +			 * freq_pct[opp_count - 7] ~ freq_pct[opp_count -1]
-> +			 */
-> +			freq_pct30 = svsb->freq_pct[turn_pt];
-> +			shift_byte++;
-> +			j = svsb->opp_count - 7;
-> +			for (i = j; i < svsb->opp_count; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				freq_pct = (shift_byte < reg_bytes) ?
-> +					   &freq_pct30 : &freq_pct74;
-> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
-> +				shift_byte++;
-> +			}
-> +		}
-> +	} else {
-> +		if (svsb->type == SVSB_HIGH) {
-> +			/*
-> +			 * freq_pct[0] +
-> +			 * freq_pct[turn_pt - 7] ~ freq_pct[turn_pt - 1]
-> +			 */
-> +			freq_pct30 = svsb->freq_pct[0];
-> +			shift_byte++;
-> +			j = turn_pt - 7;
-> +			for (i = j; i < turn_pt; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				freq_pct = (shift_byte < reg_bytes) ?
-> +					   &freq_pct30 : &freq_pct74;
-> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
-> +				shift_byte++;
-> +			}
-> +		} else if (svsb->type == SVSB_LOW) {
-> +			/* freq_pct[turn_pt] ~ freq_pct[opp_count - 1] */
-> +			for (i = turn_pt; i < svsb->opp_count; i++) {
-> +				b_sft = bits8 * (shift_byte % reg_bytes);
-> +				freq_pct = (shift_byte < reg_bytes) ?
-> +					   &freq_pct30 : &freq_pct74;
-> +				*freq_pct |= (svsb->freq_pct[i] << b_sft);
-> +				shift_byte++;
-> +			}
-> +		}
-> +	}
-> +
-> +	svs_writel_relaxed(svsp, freq_pct74, FREQPCT74);
-> +	svs_writel_relaxed(svsp, freq_pct30, FREQPCT30);
-> +}
-> +
->   static void svs_get_bank_volts_v2(struct svs_platform *svsp)
->   {
->   	struct svs_bank *svsb = svsp->pbank;
-
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
 _______________________________________________
