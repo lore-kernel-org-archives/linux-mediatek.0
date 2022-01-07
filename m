@@ -4,67 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72732C433FE
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 03:04:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF71BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 03:58:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+8ldVnfwWvEKySue1NBZbOVVNJjIghVmLHpY3RJmxQ0=; b=iRa8OV0QZvWn5t
-	lLme/NCbKWCRe1IDiy6tKsJSLo+9Wsh9B7qoUyS8qgKvlyP2JN0TK5iYdSwMD02nRxWSfbVbRuET8
-	eFEyOYs0EtfU6yEx0A5AnzWdBcjaRJoGqPJUD7n/dGyCd3oUd2vevL4/cXMJFD/wuApw9nT4RS2pc
-	QynDEXyGKM/eDtD1NhOGsO91Cupsfyj5A05octzOQb7prgyqKIq5NfZh4iHM9rOFTUVAnJnsrarX2
-	nuozGM1e+uFydY1ZihHV5vjZ3QWB+Q4JnUSnGoUz/xxtMObPHE3P9of9+Fom9SwDMmBXd3mF8lsTv
-	7t40Aa9w+xf/ZwZh+0ew==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EL5Gn/PWAmkxHfKczighZu0jRfWSiNfWkC/uaf2QjFU=; b=1c0Sj6JixK6Evq
+	myp1S2p9yN1vhXXjXg22i2OyqdLvRDa1RvybpGOphb+KMHlQKeSoO+j3pnlQnF8PzsW3BGEIvWT+S
+	6QOl1CiSCSqds7O5lRhkjbVMvqNB1LbVvSigQEWXjj5L0Da5+UwSAIFrT2ltleu6mAZ7VprggrTpi
+	PeiLbLEjMKIjvFLubZCjI2Q7XIqvi91vkCUuqwF+WJRYv3Tcv6clm/jgwoC5VuMft4+ethMVy6BFI
+	aC0q4YoDbp1CtF+SMFJvueSyxjN1IofVhES+dM1zRdtkgcukw8DDtLvv+//+hb7stx7fEUr30n0Q/
+	lYr9MjnSgqBABBvM75jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5fYZ-0026YZ-1K; Fri, 07 Jan 2022 03:04:43 +0000
-Received: from mail-ot1-f46.google.com ([209.85.210.46])
+	id 1n5gOF-002Ctv-Lu; Fri, 07 Jan 2022 03:58:07 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5fYN-0026X3-1g; Fri, 07 Jan 2022 03:04:32 +0000
-Received: by mail-ot1-f46.google.com with SMTP id
- 35-20020a9d08a6000000b00579cd5e605eso5286829otf.0; 
- Thu, 06 Jan 2022 19:04:28 -0800 (PST)
+ id 1n5gOB-002Crx-1r
+ for linux-mediatek@lists.infradead.org; Fri, 07 Jan 2022 03:58:04 +0000
+Received: by mail-lf1-x135.google.com with SMTP id o12so11061283lfk.1
+ for <linux-mediatek@lists.infradead.org>; Thu, 06 Jan 2022 19:58:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=xKNMJyJbEEL5q9peHIeW1VWZHuVFJtpU7pIceN/pwjU=;
+ b=Ct5qh0NnIjgjBBI8xvXdVNKrKFDmuJqDQ6lk+nREa2ajHPDsDrFmIqTCK/ih45n/+i
+ MxVvKQX4wxPd/KqFTbXeaMVUspFFe2zOFPIHwD8+X/hDyeWjkxKrw/miIwgpNC8CyAQY
+ dWpmeQvSJ9tTMcsSrDml7yTQw1BbaBypeNN3U=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NBar8N+1gW94C3fgFMqpUysSc+AeI/hjDEO8pXAcURg=;
- b=QafVxwXPytXRfzSv10HQDy6EH4GHUylZ8t5L4Hess8V4tg776/FL0uOiBeKc6WHXix
- eR1onV25Njef2c/6Q1GuvhGKdI4VVLWtaZOWSrivQ/LYRRgKv5WI2AW75IyI9LTT/6U5
- IO03vczZhiurxjZ0dA9Dpv6bpD2yysJnLpiHQ6mq5HrZKDGuIFeTD4GsvILYdLlmJ6lS
- iryzIxsYR+vOzNlP/60zKEzE1wnzI6Y1mfzLJTZ8Kz0UXSm96PxbN+0sEGH/121V8k+Y
- 4zTv6konUX+o3p9UVOI+8gY1MXOKLkXasY9S/eO3jXIwnicyj6gr6T9GR0udbegQET0s
- UPOg==
-X-Gm-Message-State: AOAM531eUistRvN3rEnZGIapdYgd9HVO6PwOajyAh3Ayq3m5BcmuS6vT
- YTd1RtVtNHo3zT6AQLwifytiJscPtg==
-X-Google-Smtp-Source: ABdhPJzttxN24jpI2p+TdOXTWAvbQK6w0JRyEjAdIzTeHDE2eH/HHDwVvIRge1Nv30K0X6SqEy9hcQ==
-X-Received: by 2002:a9d:6b14:: with SMTP id g20mr3065468otp.37.1641524668136; 
- Thu, 06 Jan 2022 19:04:28 -0800 (PST)
-Received: from xps15.herring.priv (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.googlemail.com with ESMTPSA id k11sm692385ots.22.2022.01.06.19.04.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Jan 2022 19:04:27 -0800 (PST)
-From: Rob Herring <robh@kernel.org>
-To: Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
- Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] dt-bindings: net: wireless: mt76: Fix 8-bit property sizes
-Date: Thu,  6 Jan 2022 21:04:17 -0600
-Message-Id: <20220107030419.2380198-1-robh@kernel.org>
-X-Mailer: git-send-email 2.32.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=xKNMJyJbEEL5q9peHIeW1VWZHuVFJtpU7pIceN/pwjU=;
+ b=h//3NlkBhgYba/u8kbMlo0vvRuZzwWdCuZ33Q6MltcDien0jfwOe86TLTxuOpi/scJ
+ OdlHlDZ35pLGJKM+i12rSQiy/1QewgyFOmm0GEKfGR0I0nsxpM9Ag2auqxe+vbsiw+Up
+ MlsNb8wQqLiQqJvvyad0BLdxZIgjgNf/tMTgaIscZA/Ekh1Z7dqQkRzBhwzfuL+17YGf
+ EpgCUJEjG9q7hpLXeFOi5yWzq9Qj73YjeCAvtb/Q4trQCvDxhdo2fZV0nMp6DpY/2wR4
+ sExeCF/U6kXwOJsZxpGibqIOYv6l16Q+YoVBBcLp239IbDZRYLvdCKLe5K5OWtY9YmLw
+ Ls9Q==
+X-Gm-Message-State: AOAM531JgEwcy8JI+HJPFoNR8ivhLOXy9XklTI/6R62RdXkPZZ7B59Dp
+ z7AP09CEJ0c4jwSEzdEqxzY3L6M2e/GZ2TbQsBO2og==
+X-Google-Smtp-Source: ABdhPJwB2LOLwXDSwFYbn94VKmzms3kaczzZBBcQQ0Iamv202Lew+ehb6NgWIJQfYAZCzjaWayYDS1PcdtAvATpbHog=
+X-Received: by 2002:a2e:b8cd:: with SMTP id s13mr43356738ljp.201.1641527880239; 
+ Thu, 06 Jan 2022 19:58:00 -0800 (PST)
 MIME-Version: 1.0
+References: <20220103145324.48008-1-angelogioacchino.delregno@collabora.com>
+ <20220103145324.48008-2-angelogioacchino.delregno@collabora.com>
+ <509b82079256ffaa0d844ae5a79a436fced16f3f.camel@mediatek.com>
+In-Reply-To: <509b82079256ffaa0d844ae5a79a436fced16f3f.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Fri, 7 Jan 2022 11:57:49 +0800
+Message-ID: <CAGXv+5EmnGFDnZE01mFfC=WHReOLdbuqCpAmwJNMvm6N93wRew@mail.gmail.com>
+Subject: Re: [PATCH 2/3] phy: mediatek: phy-mtk-mipi-dsi: Reorder and stop
+ implicit header inclusion
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ chunkuang.hu@kernel.org, 
+ p.zabel@pengutronix.de, kishon@ti.com, vkoul@kernel.org, 
+ matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_190431_111976_45AC9DAD 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220106_195803_125812_C10AA8D6 
+X-CRM114-Status: GOOD (  24.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,37 +85,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The '/bits/ 8' notation applies the next <> list of values. Another <> list
-is encoded as 32-bits by default. IOW, each <> list needs to be preceeded
-with '/bits/ 8'.
+On Thu, Jan 6, 2022 at 4:48 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
+>
+> On Mon, 2022-01-03 at 15:53 +0100, AngeloGioacchino Del Regno wrote:
+> > All the headers for phy-mtk-mipi-{dsi,dsi-mt8173,dsi-mt8183}.c were
+> > included from phy-mtk-mipi-dsi.h, but this isn't optimal: in order to
+> > increase readability and sensibly reduce build times, the inclusions
+> > should be done per-file, also avoiding to include unused headers and
+> > should not be implicit.
+> >
+> > For this reason, move the inclusions to each file and remove unused
+> > ones.
+> >
+> > Signed-off-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > ---
+> >  drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c |  4 ++++
+> >  drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c |  4 ++++
+> >  drivers/phy/mediatek/phy-mtk-mipi-dsi.c        |  7 +++++++
+> >  drivers/phy/mediatek/phy-mtk-mipi-dsi.h        | 10 ++--------
+> >  4 files changed, 17 insertions(+), 8 deletions(-)
+> >
+> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
+> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
+> > index 95a0d9a3cca7..59f028da9d3e 100644
+> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
+> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
+> > @@ -4,7 +4,11 @@
+> >   * Author: jitao.shi <jitao.shi@mediatek.com>
+> >   */
+> >
+> > +#include <linux/clk-provider.h>
+> > +#include <linux/delay.h>
+> > +#include <linux/module.h>
+> >  #include <linux/regmap.h>
+> > +#include <linux/phy/phy.h>
+> >  #include "phy-mtk-mipi-dsi.h"
+> >
+> >  #define MIPITX_DSI_CON               0x00
+> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
+> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
+> > index 01b59527669e..6c6b192485ba 100644
+> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
+> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
+> > @@ -4,7 +4,11 @@
+> >   * Author: jitao.shi <jitao.shi@mediatek.com>
+> >   */
+> >
+> > +#include <linux/clk-provider.h>
+> > +#include <linux/delay.h>
+> > +#include <linux/module.h>
+> >  #include <linux/regmap.h>
+> > +#include <linux/phy/phy.h>
+> >  #include "phy-mtk-mipi-dsi.h"
+> >
+> >  #define MIPITX_LANE_CON              0x000c
+> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> > index 51b1b1d4ad38..6f7425b0bf5b 100644
+> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
+> > @@ -3,7 +3,14 @@
+> >   * Copyright (c) 2015 MediaTek Inc.
+> >   */
+> >
+> > +#include <linux/clk.h>
+> > +#include <linux/clk-provider.h>
+> > +#include <linux/module.h>
+> > +#include <linux/nvmem-consumer.h>
+> > +#include <linux/of_device.h>
+> > +#include <linux/platform_device.h>
+> >  #include <linux/regmap.h>
+> > +#include <linux/phy/phy.h>
+> >  #include "phy-mtk-mipi-dsi.h"
+> >
+> >  inline struct mtk_mipi_tx *mtk_mipi_tx_from_clk_hw(struct clk_hw
+> > *hw)
+> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
+> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
+> > index 8d32e9027a15..4eb5fc91e083 100644
+> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
+> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
+> > @@ -7,16 +7,10 @@
+> >  #ifndef _MTK_MIPI_TX_H
+> >  #define _MTK_MIPI_TX_H
+> >
+> > -#include <linux/clk.h>
+> >  #include <linux/clk-provider.h>
+> > -#include <linux/delay.h>
+> > -#include <linux/io.h>
+> > -#include <linux/module.h>
+> > -#include <linux/nvmem-consumer.h>
+> > -#include <linux/of_device.h>
+> > -#include <linux/platform_device.h>
+> > +#include <linux/types.h>
+> > +#include <linux/regmap.h>
+> >  #include <linux/phy/phy.h>
+> > -#include <linux/slab.h>
+> >
+> I don't think it's good idea to move the common headers into .c files
 
-While the dts format allows this, as a rule we don't mix sizes for DT
-properties since all size information is lost in the dtb file.
+Header files should be included directly by the file that uses facilities
+provided by said header file. Required ones should not be transitively
+included through other header files, as that introduces a subtle dependency.
 
-Signed-off-by: Rob Herring <robh@kernel.org>
----
- .../devicetree/bindings/net/wireless/mediatek,mt76.yaml       | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Also, needlessly including header files in places that aren't using them
+increases build time. See the 2000+ patch series from Ingo Molnar [1]
+increasing build performance by cleaning up header files.
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 1489d3c1cd6e..269cd63fb544 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -191,9 +191,9 @@ examples:
-                    channels = <36 48>;
-                    rates-ofdm = /bits/ 8 <23 23 23 23 23 23 23 23>;
-                    rates-mcs = /bits/ 8 <1 23 23 23 23 23 23 23 23 23 23>,
--                                        <3 22 22 22 22 22 22 22 22 22 22>;
-+                               /bits/ 8 <3 22 22 22 22 22 22 22 22 22 22>;
-                    rates-ru = /bits/ 8 <3 22 22 22 22 22 22 22 22 22 22 22 22>,
--                                       <4 20 20 20 20 20 20 20 20 20 20 20 20>;
-+                              /bits/ 8 <4 20 20 20 20 20 20 20 20 20 20 20 20>;
-                };
-                b1 {
-                    channels = <100 181>;
--- 
-2.32.0
+ChenYu
 
+[1] https://lwn.net/ml/linux-kernel/YdIfz+LMewetSaEB@gmail.com/
+
+> >  struct mtk_mipitx_data {
+> >       const u32 mppll_preserve;
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
