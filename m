@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21C61C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 02:32:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9C82C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 02:32:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
 	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fU+TNoQSDxKdHshDH9dezXRfV6vZFo8vTNr/NVn50ys=; b=2rCYBooo095+cX
-	asAYiVbD7ILCWGo1D3asbqf2XHQ4pYsqYVdfel07Xq0jGeY/VTB4+i/i3EacGve2De5/gH8NgIJS7
-	aDTb6kNFKeyl0HpZa1xN/P/MQ+woRnpBdrY6SGPxgqnw3JDxYTOA0ZEs4TMpKNbWdOg0JDDaZSI3m
-	jm6VMRDhjoPC5aASmd9btcQxrd1aedihucMGM+zrOpORQ0zCsKjbuogP9dBweoV0NQFewfgPiEDgU
-	bbjoNA9o+uNrqgDje1oxtH0SKVGdZIfn/LyYPFt2jZgqXrTWGLRa4AR7/83rOtoOtg/nTEgeKi187
-	xafAoLhKS1VdgHrHKSvA==;
+	List-Owner; bh=jBAsuObDujwrZbas9ueaTdniX5Di8v3ipFN+ai++2es=; b=Gm+irEOrABIrEh
+	UKViSA2dQivHGmrYlQajY5wqspJJH8SSCQW8TIOyzGHn9+1GL6oYzCerGTc9lbP0dHw+WFOtZ0muV
+	vQNR7aJKSz/dmyxbJ0ARfRSuaO1wyHihX/DgiFHsssZar6JOuEq9SNSZD407o1ypTNFqWSZcLng4P
+	kJ8Jgmo3O+XX/o0bk+P5fhkKTOWr5VwWR5YjeuksbNCWeR2vB2/7cWCxYO29/12zjjHaTBKb0XlVE
+	lnEJ7shJ0cKRuGZA88FUc4RPyyNCJXaKYw3aMmMcvp1lba5Qh8AnMA69arsdzoh5VlP5egUpdwEWo
+	RJ4yfO9160N3sSjL7QJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5f3A-001y2p-Hr; Fri, 07 Jan 2022 02:32:16 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1n5f3M-001y8P-JW; Fri, 07 Jan 2022 02:32:28 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5f2x-001xyt-3P; Fri, 07 Jan 2022 02:32:04 +0000
+ id 1n5f35-001y12-HT; Fri, 07 Jan 2022 02:32:12 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 8B4C161C9C;
- Fri,  7 Jan 2022 02:32:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFCB9C36AE5;
- Fri,  7 Jan 2022 02:32:01 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 3198AB824A4;
+ Fri,  7 Jan 2022 02:32:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C77FDC36AE5;
+ Fri,  7 Jan 2022 02:32:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641522722;
- bh=wqrLQ8xJsAam3WCj6CV+t05ORa4KMZ45YTRPs1CsPdM=;
+ s=k20201202; t=1641522728;
+ bh=YdNMm3YLxoeg6thWoy3+z5Vvy8+bQlB7/0IAGCZ6NYQ=;
  h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=bdLq406E1iS5TVhx6sKs1n0wokbRjZ+4+K+xYFY0mVK3/soFuRPeqdj6Lt7m43MOu
- usBEblfxAVVnAeSFO+Y0omdCsgFSG1QfScKvS6HL5NgvZHA+E/O75aLVfn/c+mrEkk
- 1Fcl7Upn73/gNRKMJW0/6J/x0ia6hC7fntGUs/QwlXgEHk8XirNGCsk80qB5wqDfJG
- bubkeCafx4AH2qd+K9zrmSJL2EFDr5kwe81vMBRIoPUkWbkA7YX1nlzIZUeKiqrq3+
- bc7gTqSd/YMuQF0TruXGS30z2aQ1MN59hREgaZMkjygsLHsX3QUAI6r3/c9gXP0Qxt
- nxIwKg09AIpiQ==
+ b=F2Ix41jkwDOQe4+TZw78JUswoRPNj/wZu/gkOJHP/zuvkLxYuNCh2epnfj2jX8jkH
+ ODPjDBISHEFR7CxOhlXTOcZwuZEHQWWanjufn9WC3jcX8WRhpcDWZvyK3/U/RN7zAO
+ g0U1goXPfDmSGWnlAYcfDeVLvnqIDt8kkma9Opw9U8e+4HtD8XGAhcEPAmy77UouCX
+ 46T14bJexGUXH+ta/tEY9jnjdj4OfHo0m8gp6pVawFRH0E+z10VahKAtCUuNcxo8av
+ /kSsOVFsFkwIdbRa57NqjPVhC8Mjgpz67mDQfITEI9gvgD0pQhbMC6S7Ql+6npymNq
+ aOTAtFutYEk6w==
 MIME-Version: 1.0
-In-Reply-To: <20211217121148.6753-2-sam.shih@mediatek.com>
+In-Reply-To: <20211217121148.6753-3-sam.shih@mediatek.com>
 References: <20211217121148.6753-1-sam.shih@mediatek.com>
- <20211217121148.6753-2-sam.shih@mediatek.com>
-Subject: Re: [PATCH v7 1/3] dt-bindings: clock: mediatek: document clk
- bindings for mediatek mt7986 SoC
+ <20211217121148.6753-3-sam.shih@mediatek.com>
+Subject: Re: [PATCH v7 2/3] clk: mediatek: add mt7986 clock IDs
 From: Stephen Boyd <sboyd@kernel.org>
 Cc: John Crispin <john@phrozen.org>, Ryder Lee <Ryder.Lee@mediatek.com>,
  YH Chen <yh.chen@mediatek.com>, Sam Shih <sam.shih@mediatek.com>
@@ -60,12 +59,12 @@ To: Chen-Yu Tsai <wenst@chromium.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-mediatek@lists.infradead.org
-Date: Thu, 06 Jan 2022 18:32:00 -0800
+Date: Thu, 06 Jan 2022 18:32:07 -0800
 User-Agent: alot/0.9.1
-Message-Id: <20220107023201.DFCB9C36AE5@smtp.kernel.org>
+Message-Id: <20220107023208.C77FDC36AE5@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_183203_203452_D6AE9DBD 
-X-CRM114-Status: UNSURE (   8.29  )
+X-CRM114-CacheID: sfid-20220106_183211_742149_B85920F9 
+X-CRM114-Status: UNSURE (   7.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,8 +82,8 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Sam Shih (2021-12-17 04:11:46)
-> This patch adds the binding documentation for topckgen, apmixedsys,
+Quoting Sam Shih (2021-12-17 04:11:47)
+> Add MT7986 clock dt-bindings, include topckgen, apmixedsys,
 > infracfg, and ethernet subsystem clocks.
 > 
 > Signed-off-by: Sam Shih <sam.shih@mediatek.com>
