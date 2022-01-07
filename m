@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF71BC433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 03:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B5ADC433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 05:44:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EL5Gn/PWAmkxHfKczighZu0jRfWSiNfWkC/uaf2QjFU=; b=1c0Sj6JixK6Evq
-	myp1S2p9yN1vhXXjXg22i2OyqdLvRDa1RvybpGOphb+KMHlQKeSoO+j3pnlQnF8PzsW3BGEIvWT+S
-	6QOl1CiSCSqds7O5lRhkjbVMvqNB1LbVvSigQEWXjj5L0Da5+UwSAIFrT2ltleu6mAZ7VprggrTpi
-	PeiLbLEjMKIjvFLubZCjI2Q7XIqvi91vkCUuqwF+WJRYv3Tcv6clm/jgwoC5VuMft4+ethMVy6BFI
-	aC0q4YoDbp1CtF+SMFJvueSyxjN1IofVhES+dM1zRdtkgcukw8DDtLvv+//+hb7stx7fEUr30n0Q/
-	lYr9MjnSgqBABBvM75jw==;
+	List-Owner; bh=933r61NyYGDXayQw/lIh3gjfAREO97RAmGFM/d+Opec=; b=fY9qSFPX0fqbRR
+	beS48lDD3tI4OQWeFj1k/uuBoj98HrjSuWnY3ie5OHxW9IvkXu+l7874w65TlFfzFi3ieFRPkUkQV
+	REHa60B8SBggCiKpXE8m9BfqSJovq1no7B/RflmMQjt+Qe+ajYhnY5m4/WJfQUxn7XoKPwyaV14YB
+	14Qr4l3DZPyiBfKEO0cBlvcD3/PsKSHWcQ7tAYdjoW2YxoiWcS1CQnLVSn363iPXXQyrsZTCpN9Kr
+	yQx8Ec+GsI1TSuCi4wNi2SlRsQWPN2CZ6oUI4r4ZV9h8aywtNth9GJ6qIzNlNVvvH+RPY0kMtLjgk
+	qkK0WvxP2S/Cpwp7FC/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5gOF-002Ctv-Lu; Fri, 07 Jan 2022 03:58:07 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1n5i2d-002T6z-1p; Fri, 07 Jan 2022 05:43:55 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5gOB-002Crx-1r
- for linux-mediatek@lists.infradead.org; Fri, 07 Jan 2022 03:58:04 +0000
-Received: by mail-lf1-x135.google.com with SMTP id o12so11061283lfk.1
- for <linux-mediatek@lists.infradead.org>; Thu, 06 Jan 2022 19:58:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xKNMJyJbEEL5q9peHIeW1VWZHuVFJtpU7pIceN/pwjU=;
- b=Ct5qh0NnIjgjBBI8xvXdVNKrKFDmuJqDQ6lk+nREa2ajHPDsDrFmIqTCK/ih45n/+i
- MxVvKQX4wxPd/KqFTbXeaMVUspFFe2zOFPIHwD8+X/hDyeWjkxKrw/miIwgpNC8CyAQY
- dWpmeQvSJ9tTMcsSrDml7yTQw1BbaBypeNN3U=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xKNMJyJbEEL5q9peHIeW1VWZHuVFJtpU7pIceN/pwjU=;
- b=h//3NlkBhgYba/u8kbMlo0vvRuZzwWdCuZ33Q6MltcDien0jfwOe86TLTxuOpi/scJ
- OdlHlDZ35pLGJKM+i12rSQiy/1QewgyFOmm0GEKfGR0I0nsxpM9Ag2auqxe+vbsiw+Up
- MlsNb8wQqLiQqJvvyad0BLdxZIgjgNf/tMTgaIscZA/Ekh1Z7dqQkRzBhwzfuL+17YGf
- EpgCUJEjG9q7hpLXeFOi5yWzq9Qj73YjeCAvtb/Q4trQCvDxhdo2fZV0nMp6DpY/2wR4
- sExeCF/U6kXwOJsZxpGibqIOYv6l16Q+YoVBBcLp239IbDZRYLvdCKLe5K5OWtY9YmLw
- Ls9Q==
-X-Gm-Message-State: AOAM531JgEwcy8JI+HJPFoNR8ivhLOXy9XklTI/6R62RdXkPZZ7B59Dp
- z7AP09CEJ0c4jwSEzdEqxzY3L6M2e/GZ2TbQsBO2og==
-X-Google-Smtp-Source: ABdhPJwB2LOLwXDSwFYbn94VKmzms3kaczzZBBcQQ0Iamv202Lew+ehb6NgWIJQfYAZCzjaWayYDS1PcdtAvATpbHog=
-X-Received: by 2002:a2e:b8cd:: with SMTP id s13mr43356738ljp.201.1641527880239; 
- Thu, 06 Jan 2022 19:58:00 -0800 (PST)
+ id 1n5hrC-002OYN-FG; Fri, 07 Jan 2022 05:32:10 +0000
+X-UUID: 1571ba0fe9ec4b789c74d73f214212e1-20220106
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=yOyhSybCVKwL6f9Dj2Yrfcp2GMZppE3rd+pnbUwSqSY=; 
+ b=SXppUhy85uxMGv8v/EEk+0Co3WslGKkZ7GFz7T+skXuahnAHyrRLdR2n19F99sgFD8TZhaYeE3Z9AKsnQ6on8tctbSnYV3ru96FPFk+0cx/B8C167kO6VD7occ0gwWq3B2pev+7InYMIYDVmf7hrhwPlUyEcTNEnuMpdq8dgLy8=;
+X-UUID: 1571ba0fe9ec4b789c74d73f214212e1-20220106
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ (envelope-from <chunfeng.yun@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1505165310; Thu, 06 Jan 2022 22:32:01 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Jan 2022 21:32:00 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 7 Jan 2022 13:31:53 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 7 Jan 2022 13:31:51 +0800
+Message-ID: <54af6850e07aba2ca8002e344be86498c810067d.camel@mediatek.com>
+Subject: Re: [PATCH] phy: phy-mtk-tphy: Fix dumplicated argument in
+ phy-mtk-tphy
+From: Chunfeng Yun <chunfeng.yun@mediatek.com>
+To: Wan Jiabing <wanjiabing@vivo.com>, Kishon Vijay Abraham I <kishon@ti.com>, 
+ Vinod Koul <vkoul@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>, 
+ <linux-phy@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+CC: <jiabing.wan@qq.com>
+Date: Fri, 7 Jan 2022 13:31:52 +0800
+In-Reply-To: <20220107025050.787720-1-wanjiabing@vivo.com>
+References: <20220107025050.787720-1-wanjiabing@vivo.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220103145324.48008-1-angelogioacchino.delregno@collabora.com>
- <20220103145324.48008-2-angelogioacchino.delregno@collabora.com>
- <509b82079256ffaa0d844ae5a79a436fced16f3f.camel@mediatek.com>
-In-Reply-To: <509b82079256ffaa0d844ae5a79a436fced16f3f.camel@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Fri, 7 Jan 2022 11:57:49 +0800
-Message-ID: <CAGXv+5EmnGFDnZE01mFfC=WHReOLdbuqCpAmwJNMvm6N93wRew@mail.gmail.com>
-Subject: Re: [PATCH 2/3] phy: mediatek: phy-mtk-mipi-dsi: Reorder and stop
- implicit header inclusion
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- chunkuang.hu@kernel.org, 
- p.zabel@pengutronix.de, kishon@ti.com, vkoul@kernel.org, 
- matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-phy@lists.infradead.org, linux-kernel@vger.kernel.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_195803_125812_C10AA8D6 
-X-CRM114-Status: GOOD (  24.44  )
+X-CRM114-CacheID: sfid-20220106_213207_357930_65F655A5 
+X-CRM114-Status: GOOD (  15.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,124 +79,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 6, 2022 at 4:48 PM Chunfeng Yun <chunfeng.yun@mediatek.com> wrote:
->
-> On Mon, 2022-01-03 at 15:53 +0100, AngeloGioacchino Del Regno wrote:
-> > All the headers for phy-mtk-mipi-{dsi,dsi-mt8173,dsi-mt8183}.c were
-> > included from phy-mtk-mipi-dsi.h, but this isn't optimal: in order to
-> > increase readability and sensibly reduce build times, the inclusions
-> > should be done per-file, also avoiding to include unused headers and
-> > should not be implicit.
-> >
-> > For this reason, move the inclusions to each file and remove unused
-> > ones.
-> >
-> > Signed-off-by: AngeloGioacchino Del Regno <
-> > angelogioacchino.delregno@collabora.com>
-> > ---
-> >  drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c |  4 ++++
-> >  drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c |  4 ++++
-> >  drivers/phy/mediatek/phy-mtk-mipi-dsi.c        |  7 +++++++
-> >  drivers/phy/mediatek/phy-mtk-mipi-dsi.h        | 10 ++--------
-> >  4 files changed, 17 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
-> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
-> > index 95a0d9a3cca7..59f028da9d3e 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8173.c
-> > @@ -4,7 +4,11 @@
-> >   * Author: jitao.shi <jitao.shi@mediatek.com>
-> >   */
-> >
-> > +#include <linux/clk-provider.h>
-> > +#include <linux/delay.h>
-> > +#include <linux/module.h>
-> >  #include <linux/regmap.h>
-> > +#include <linux/phy/phy.h>
-> >  #include "phy-mtk-mipi-dsi.h"
-> >
-> >  #define MIPITX_DSI_CON               0x00
-> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-> > index 01b59527669e..6c6b192485ba 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi-mt8183.c
-> > @@ -4,7 +4,11 @@
-> >   * Author: jitao.shi <jitao.shi@mediatek.com>
-> >   */
-> >
-> > +#include <linux/clk-provider.h>
-> > +#include <linux/delay.h>
-> > +#include <linux/module.h>
-> >  #include <linux/regmap.h>
-> > +#include <linux/phy/phy.h>
-> >  #include "phy-mtk-mipi-dsi.h"
-> >
-> >  #define MIPITX_LANE_CON              0x000c
-> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> > index 51b1b1d4ad38..6f7425b0bf5b 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.c
-> > @@ -3,7 +3,14 @@
-> >   * Copyright (c) 2015 MediaTek Inc.
-> >   */
-> >
-> > +#include <linux/clk.h>
-> > +#include <linux/clk-provider.h>
-> > +#include <linux/module.h>
-> > +#include <linux/nvmem-consumer.h>
-> > +#include <linux/of_device.h>
-> > +#include <linux/platform_device.h>
-> >  #include <linux/regmap.h>
-> > +#include <linux/phy/phy.h>
-> >  #include "phy-mtk-mipi-dsi.h"
-> >
-> >  inline struct mtk_mipi_tx *mtk_mipi_tx_from_clk_hw(struct clk_hw
-> > *hw)
-> > diff --git a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-> > b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-> > index 8d32e9027a15..4eb5fc91e083 100644
-> > --- a/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-> > +++ b/drivers/phy/mediatek/phy-mtk-mipi-dsi.h
-> > @@ -7,16 +7,10 @@
-> >  #ifndef _MTK_MIPI_TX_H
-> >  #define _MTK_MIPI_TX_H
-> >
-> > -#include <linux/clk.h>
-> >  #include <linux/clk-provider.h>
-> > -#include <linux/delay.h>
-> > -#include <linux/io.h>
-> > -#include <linux/module.h>
-> > -#include <linux/nvmem-consumer.h>
-> > -#include <linux/of_device.h>
-> > -#include <linux/platform_device.h>
-> > +#include <linux/types.h>
-> > +#include <linux/regmap.h>
-> >  #include <linux/phy/phy.h>
-> > -#include <linux/slab.h>
-> >
-> I don't think it's good idea to move the common headers into .c files
+On Fri, 2022-01-07 at 10:50 +0800, Wan Jiabing wrote:
+> Fix following coccicheck warning:
+> ./drivers/phy/mediatek/phy-mtk-tphy.c:994:6-29: duplicated argument
+> to && or ||
+> 
+> The efuse_rx_imp is duplicate. Here should be efuse_tx_imp.
+> 
+> Signed-off-by: Wan Jiabing <wanjiabing@vivo.com>
+> ---
+>  drivers/phy/mediatek/phy-mtk-tphy.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c
+> b/drivers/phy/mediatek/phy-mtk-tphy.c
+> index 6d307102f4f6..8ee7682b8e93 100644
+> --- a/drivers/phy/mediatek/phy-mtk-tphy.c
+> +++ b/drivers/phy/mediatek/phy-mtk-tphy.c
+> @@ -992,7 +992,7 @@ static int phy_efuse_get(struct mtk_tphy *tphy,
+> struct mtk_phy_instance *instanc
+>  		/* no efuse, ignore it */
+>  		if (!instance->efuse_intr &&
+>  		    !instance->efuse_rx_imp &&
+> -		    !instance->efuse_rx_imp) {
+> +		    !instance->efuse_tx_imp) {
+>  			dev_warn(dev, "no u3 intr efuse, but dts enable
+> it\n");
+>  			instance->efuse_sw_en = 0;
+>  			break;
 
-Header files should be included directly by the file that uses facilities
-provided by said header file. Required ones should not be transitively
-included through other header files, as that introduces a subtle dependency.
+Acked-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 
-Also, needlessly including header files in places that aren't using them
-increases build time. See the 2000+ patch series from Ingo Molnar [1]
-increasing build performance by cleaning up header files.
-
-ChenYu
-
-[1] https://lwn.net/ml/linux-kernel/YdIfz+LMewetSaEB@gmail.com/
-
-> >  struct mtk_mipitx_data {
-> >       const u32 mppll_preserve;
-> _______________________________________________
-> Linux-mediatek mailing list
-> Linux-mediatek@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-mediatek
+Thanks a lot
 
 _______________________________________________
 Linux-mediatek mailing list
