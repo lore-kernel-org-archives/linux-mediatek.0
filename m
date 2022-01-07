@@ -4,159 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67F1CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 07:36:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9BAAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri,  7 Jan 2022 07:54:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CG2FpPOkjYf29g86qCu5WFlnBI4RkgGi7cSrfIDS7LE=; b=vWm8EYwOSCWL+I
-	g64OkOzw2aUpiYbKp2VnnOB8KisVxAhMYz1ftpdXI5Tg5ue7XzZE3VIrGWpyZgsLMJiZhEIRGXRr+
-	l/Yd2O0fK5e2yo0o9Dc1ylhRoJPVwbsTlbWAK/j3viKwPbY43ityVUsU1uoLzLOYFgRnH7p9j66SH
-	rG8qRc6wDRss4LLYJ1F0+k8YdSdIbqYYAPgsTuF/1R/Ip8OiYh4vsfHgK0STD+aFZEwlFm+NwIw6L
-	7AIXgt7EUvnH0qVTBm3+5tSYhynxe/jFO3hHt9dxLs3cthRdMf2UW9iKgR64asxr7cBH6uQFFJhDf
-	HDFDGZ2kIBHd07JRCnGA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UBewuLsGzk2NvWe3IcfHhFZte/cf3SW/gjBK0ct9wl8=; b=0BYOci2AAcmrgd
+	Wglgf23t5HunrxGmAwekkpU3TA2daX8fYQtzKmgsHFiC+0HWayvK0EVNjNuZDRmV/w83+Er7ATuX+
+	IP/JfPzvjgbPd2Udt8q2zIc/h84qH87jjJqdsKJH+SxhTu3NMlqsp2DIHLRMJHyLP0Fd9MLYUcqgl
+	yWmFCmmUsIvn1BJEEBoZkp7bO/aduuY9wIfAIjxjmm2ZrrHxELffc+Phe7a+dlgAaZPnOgOjBx4Pw
+	aWZpLqtMgFmodMI6G5qV3qXFfLah6aSuku97EnFrtFHaQBq/WdKggit3yQOa0jfIGKw3mgBbvZS8E
+	w+AUvtqWHeYbngSYHFJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n5jnd-002lUJ-4c; Fri, 07 Jan 2022 07:36:33 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1n5k4X-002nde-Eo; Fri, 07 Jan 2022 07:54:01 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n5jnZ-002lTC-PJ
- for linux-mediatek@lists.infradead.org; Fri, 07 Jan 2022 07:36:32 +0000
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 2074QvYP009297; 
- Fri, 7 Jan 2022 07:36:26 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=date : from : to : cc
- : subject : message-id : content-type : mime-version; s=corp-2021-07-09;
- bh=ePxy+W7f1GNZkrHTHu4rQptoOzum4leHVESQFyP6KNk=;
- b=nvrTa4ZRKuLYHFueJl3br6YVgqvTi9a+FPhQ1uQnZUfY31iZuECm1uSu/Ogy4Q1uenuH
- wuA/FNJBJx2iXS2qFKvWXgoV04mWlFkdJU7gWgquPrkpcnxWXczp341ujWo4bvtwyRoB
- /SW/Xvl7VrusJwkEFoev1koY1kKmfSCAceIxT+GL4yvd03OUhMotRzxMvbcibI+sRMyZ
- t5MglYv3/bBvE2zEiYQpzJHKCPfTXkRL9v/SCZj7A8ZALLFucH3sokk0+303vFN2Ri+c
- BBMpnO9uPsKjaVOIRU/tuKxjWn2kdf9Qiiga+OClF2tWnCxajZos5PkhN2sCCCZLX11t wQ== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by mx0b-00069f02.pphosted.com with ESMTP id 3de4vh98av-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 07 Jan 2022 07:36:26 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 2077VnQZ182082;
- Fri, 7 Jan 2022 07:36:25 GMT
-Received: from nam04-bn8-obe.outbound.protection.outlook.com
- (mail-bn8nam08lp2047.outbound.protection.outlook.com [104.47.74.47])
- by aserp3020.oracle.com with ESMTP id 3de4vvy29b-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 07 Jan 2022 07:36:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=KF+xJkssoj7tSCvNBC9F2C3qKTB682A0HY2FtacipWQn2FZd2nxeqzrUsx1TzLO+j+N0KrRlQnmyAfEIb9hwf8Gn1KCZNzlO3cKYZ4jlh13s7ws3tjtVigA11LJdciRWm6lesvlETsy+mLmM3JTp/i/sZ0zbX6+t9KkhqCPPmAs2zsQJk//bZTdNwCZRexd0GNZzcde6BuQKJp8fCIpbmUyHwY4D4U0p7oyebyuvbQQCj7qTiV/t2MxTlLLEe34mD0OruFA1nLAYqbMiHdcv11MQHFrg9trSguqAGTbYSP0SDYjPHGP7+3egQHoh3ySE9nu7AB5BPMk2cNHdfa357A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ePxy+W7f1GNZkrHTHu4rQptoOzum4leHVESQFyP6KNk=;
- b=mmon6c/BDh6OFJblUa94x0K8gJ81Gjo3QSFGoiQBwoo3IE2dXX4CmXrMBS5RmTLkWQKLUZmKWbevCCMAGcKCwCDEQpOJQZI7m07lFsdmcOjc9RE6B1MPm+P2ym0LPHx08QPK1gD1FAp3VmfGwGft5xGYumogCxXdPQdZ5tiT9aGOLTJmXKb31GJZ9lor0winQhOCyNUg0uMM57ZXEacgDPCmf+HkvQqkgxVPyrKA4knWF0SeYlUj1poOfGTZfbpz8NclVUDpB/aUat2BtwPz+uTXrm6oX8c5a3kkndukH+lG5kyfTvzDCM0M8SpWsqn9clygBK7tlfpUwHxdqX1JBA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ePxy+W7f1GNZkrHTHu4rQptoOzum4leHVESQFyP6KNk=;
- b=O27ybwXcXE+JnDzpa/JSNLYs5B7nZxJ5/M+5Mo+P4VjumH/OQQYopcMZZ1NwiqxqSs0mae996PRePJvGEGj8eTqHLnQHI7QhzBGz62lHXZALMAfID1hBIlRL7KXpR7k/2I7Axp1CqZgT+xUecPPYB8N/HfCMYWJqTohUGNR4+VE=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MW4PR10MB5752.namprd10.prod.outlook.com
- (2603:10b6:303:18d::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4844.15; Fri, 7 Jan
- 2022 07:36:22 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::b889:5c86:23c0:82b8]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::b889:5c86:23c0:82b8%4]) with mapi id 15.20.4867.011; Fri, 7 Jan 2022
- 07:36:22 +0000
-Date: Fri, 7 Jan 2022 10:36:09 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Felix Fietkau <nbd@nbd.name>
-Cc: Lorenzo Bianconi <lorenzo.bianconi83@gmail.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- MeiChia Chiu <meichia.chiu@mediatek.com>,
- Money Wang <Money.Wang@mediatek.com>, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org, kernel-janitors@vger.kernel.org
-Subject: [PATCH] mt76: mt7915: fix a couple information leaks
-Message-ID: <20220107073609.GH22086@kili>
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-ClientProxiedBy: ZR0P278CA0002.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:16::12) To MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28)
+ id 1n5k4L-002nbO-8C; Fri, 07 Jan 2022 07:53:51 +0000
+X-UUID: f5f2167025674617968e638a79e2153b-20220107
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=s5Ox6CCUO5y1I4595HQxLlQav8mY/2EeXiRD7zQ7bu8=; 
+ b=eg4zGIpuWpan8u98X+0ejdNKS26N8SgZ+aEVFduGZLkDrL1vWqWcDYDoJyIZ4ruBfQ5UOR9sErtBjg4gSWGEbAApRrsZjxnci0MXIn0NL+q2ghB2fCoyoxCqyfYkIc+prjaaOtFPTR2u2eXoN5L21U8k1xsGR4//eIFA5qGixBc=;
+X-UUID: f5f2167025674617968e638a79e2153b-20220107
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <axe.yang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 693762627; Fri, 07 Jan 2022 00:53:45 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 6 Jan 2022 23:53:43 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 7 Jan 2022 15:53:36 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Fri, 7 Jan 2022 15:53:35 +0800
+Message-ID: <ff5616ca0cbace3c304b94246f405b5831de1a41.camel@mediatek.com>
+Subject: Re: [PATCH v1 3/3] mmc: mediatek: add support for SDIO eint irq
+From: Axe Yang <axe.yang@mediatek.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, "Ulf
+ Hansson" <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ "Chaotian Jing" <chaotian.jing@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
+CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
+ <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
+ <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>, Andrew Jeffery
+ <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim
+ <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, Tian Tao
+ <tiantao6@hisilicon.com>, <linux-mmc@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+Date: Fri, 7 Jan 2022 15:53:35 +0800
+In-Reply-To: <63cd9b04-8ff5-00ff-bbc4-7bc110080e41@collabora.com>
+References: <20211227083641.12538-1-axe.yang@mediatek.com>
+ <20211227083641.12538-4-axe.yang@mediatek.com>
+ <63cd9b04-8ff5-00ff-bbc4-7bc110080e41@collabora.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7d416287-513b-434c-2c16-08d9d1b06704
-X-MS-TrafficTypeDiagnostic: MW4PR10MB5752:EE_
-X-Microsoft-Antispam-PRVS: <MW4PR10MB575296D151B908996B78656A8E4D9@MW4PR10MB5752.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:5797;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: RcZbwEKY/UHzmt/jZvps5YSqrfA7je26XcWcgyunqTesWQnaYIjxcC4erIXu8wMUfnUm+JM5fOhm9jgA3/L6HPl7kaK1fcsaY45RlyeAT0XMotMfYCdAA2k3w0q9lJef2GOQPVcKlAkFGX1j9z8ufYJRiuIF/j6DIBW2LvMNRTrXmQyR6K6EgHwxUr95wwtfVCoJYvyi8gOwqcn852Wz02ES4LCO5zx6GEoc7rPFyJJU9PRg56+bR8dhBflyvKRDe5RuCnZ+DGhXpwYgqXbkwM1c6V61rEpuMZqTxqgrV1VIJBRSJmj4aqpsFi4GSSxmSFpRbkbtZPToeX6/cjIYxZzPddCp95yWVP410Y1RBaVzk9jn/tiL4zlM5QTQQKbkOvDoQgtBNYz0OUHw2qAzK4aW2UWhtYkq6O6TS08zFIKfALNYRiOaDMTiSa3d5e3HK2MHQn/zfGPp8echt+WDgOr28FubNucl5E5Tj8+R/h1uWI3WCvbhle8k4LW7cFTvD/Jt7slpFt7JXiUBeGFmYvjPwuCASK+DMRAO9aUeqXbSX3gpRk3Y3WrQymfSxyaWTZ8DTvIYU9RRdOTHwu/4CGfljYfZVfs8U00mq8cTDKPHScUTjPHW9k6ZTqzSUx4LcJ/rrYpeqlJ9TUiomdCZl1dgICj5Py2PuiEsKZoev8a19k82CAhCFLvf1ZJEBZLc4N4XDMFVwuyZzk0cN0+Gqg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MWHPR1001MB2365.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(7916004)(366004)(66946007)(6486002)(8936002)(6666004)(2906002)(7416002)(186003)(4326008)(33716001)(1076003)(5660300002)(33656002)(6916009)(44832011)(9686003)(6512007)(316002)(52116002)(508600001)(83380400001)(38100700002)(38350700002)(66556008)(6506007)(86362001)(66476007)(54906003)(26005)(8676002);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1irlz6rk/FxvDwkSmayBtGuRBHCGNPZsjRu2hXXqCVVTH97+psEeHiXEc/cx?=
- =?us-ascii?Q?7z/wlx2c8YkEPS30BmPpQf34lNE4vFovs6vjs00kRePGQKtmj9EA0YRaMyjT?=
- =?us-ascii?Q?B34J2gvF9CMVmwhb8WIyFKDpfW31mJ0YN6aDUT/V60SiUEv0jESTz6gRXdkF?=
- =?us-ascii?Q?byHlgGca25lWMbVY9yEYl1K0PHE4NZ/l1Yu8OWu8huA9a6yfzBZ6hrh40iPy?=
- =?us-ascii?Q?SWJrp421OhoxK4P6ZtjcnJFfss05MpEA8QnrRvWY4OocWnn1ElmVOGUz9KjJ?=
- =?us-ascii?Q?IslMSwE3IK+lNNrd14+W7Uue839tTpf2QyTn5QAAOL1KCr5LtcFV6XXKxhSy?=
- =?us-ascii?Q?d2fzDH1h13N860nf1zIEjTiNBlTvwjfVcQBm1AEgziwcnJBGk1chZomyO5Qt?=
- =?us-ascii?Q?rsq8d41r7up4MW+bwVQVA3QFaXYZ0NGd4UXIaRnzpaTH8NF7K4L6Pm1PU5zm?=
- =?us-ascii?Q?T16r1J8clTTWVBgDbds9IRtJSsCIGK3G6tPGHhkjLycQD54oYEutVHEtXB4z?=
- =?us-ascii?Q?8EH2ePcY5eqJT3ITsjrJtBdRzHU9n7pcgaxrCgKvHYr7pncAW5eRvgYqKCno?=
- =?us-ascii?Q?Nhhy1VCTwGd0uXi/KGIK5SwYdbXekJCffvffzMkx+Gt6d4ELTcthEfQnU8SW?=
- =?us-ascii?Q?Db91p+4eSeu5kvROsDcuuBR0OfyXdl8bfkEhmW8XOpqJbzcluxDTsv1fQlGI?=
- =?us-ascii?Q?fJZs8OU7iWF4LXQWnIGpSKPxDxZgJ38o/KE650Gg1J4f5dgiyezYSpwo4nCf?=
- =?us-ascii?Q?dR8G1xR56pRkxu96H7shtmUNYMFthW+jXwfUhl65g27xFtevbfYKtbSojzaq?=
- =?us-ascii?Q?zrFN2nFX/kPbZfxOg6FDML4pMewJy05kVHpIvUVnKEsjjgyVxML7vmubFC8s?=
- =?us-ascii?Q?MaNi3LGuTkseMZf5NYnS0sFXYQWoQl+tE92UM5IDPM16y9FAw5gZ8Sxc1Zg2?=
- =?us-ascii?Q?sQBl5Ir8+eUj0Ogx40HyAQRjiheeoiSZxSLPqHYsgFqDk39mt4Injj4ln3k0?=
- =?us-ascii?Q?CgcxfnHErcxDrKXT9ISATw63utxdQ9YSyPZLdekdLBFK96FfFzZD20vrNT/c?=
- =?us-ascii?Q?8kFwPmWEvrxnXCcUUvgkAr1NYEuRE0HmMjqWu5MHD/Kz13V4PV3RN/QnTeen?=
- =?us-ascii?Q?7PDW17qbx/8NYrIv0QJxffnXo/e8RdfWF8ocH/JyYuz2vE1tYawL3QAr1w0O?=
- =?us-ascii?Q?VHkHk/iDR5PxfXRGVZFrCV0tQwBUBLFkZN8x3FVz0zO8WcGBmwyjkxPip10x?=
- =?us-ascii?Q?k/htRetqi4ESQ0ZybWS6+9praeiCGTvLrH/WTDXGer93HC7cVl5P9jyfCw7g?=
- =?us-ascii?Q?1DhbTrDJbiCIloaK2XGxbS/ogAlxFLn7W2nPXOnUffsy5yQGEyCuGIPxdo3+?=
- =?us-ascii?Q?3rGvQKOt7Irr5GIX5d3+Autg9S7x5GRA2BnkTio7Qc9EyFB4SNmNOY41hauz?=
- =?us-ascii?Q?Wmzbs258jexKkMdTng/tXFK6gjo0pbGVGqZuL9nK2NSPvjJY5e4Vz58XiK4d?=
- =?us-ascii?Q?McxbWR12LvZtrqwhGbI7KzDX+olLtxpklCDjPB5qEbSvH4ZMkUy+/MSoF8e8?=
- =?us-ascii?Q?IO2AmjiTALEuAuxAnGh1TUJLK7LayVJXMd3Xsg7SlGII4VbKj9/rRPs1bLVw?=
- =?us-ascii?Q?fa1Xb4JrBjBdkDjUOKvbd7DN7csscsAzknicjn2Wwg4g1t1rMOUpJ2rI8kyQ?=
- =?us-ascii?Q?CetWPZm1eQT1YicQ1I+LbDW7AhM=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7d416287-513b-434c-2c16-08d9d1b06704
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Jan 2022 07:36:22.5067 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jhcMVHb9w60nTv/fP3vM3qKavqBW1/HRS7X04akIZ83kiJPPkHKhBdzbkKJIA9G7Mvq78sZVJktdNTp7Ata++/yeC1TC978N6D76R4T1SUs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR10MB5752
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10219
- signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- malwarescore=0
- mlxlogscore=999 adultscore=0 phishscore=0 mlxscore=0 spamscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2110150000 definitions=main-2201070053
-X-Proofpoint-ORIG-GUID: xce09MwIYd2QMjqQ1wlrdNxo9H4WtWZC
-X-Proofpoint-GUID: xce09MwIYd2QMjqQ1wlrdNxo9H4WtWZC
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220106_233629_859902_502D7E29 
-X-CRM114-Status: GOOD (  16.35  )
+X-CRM114-CacheID: sfid-20220106_235349_336484_1880FFCD 
+X-CRM114-Status: GOOD (  41.79  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -173,70 +87,294 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Unfortunately this code has stumbled into some deep C standards
-nonsense.  These two structs have a 3 byte struct hole at the end.  If
-you partially initialize a struct then the C standard specifies that
-all the struct holes are zeroed out.  But when you initialize all the
-members of the struct, as this code does, then struct holes may be left
-with uninitialized stack data.  This is from C11 section 6.7.9 and how
-it is implemented in GCC.
+On Tue, 2022-01-04 at 11:44 +0100, AngeloGioacchino Del Regno wrote:
+> Il 27/12/21 09:36, Axe Yang ha scritto:
+> > Add support for eint irq when MSDC is used as an SDIO host. This
+> > feature requires SDIO device support async irq function. With this
+> > feature,SDIO host can be awakened by SDIO card in suspend state,
+> > without additional pin.
+> > 
+> > MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
+> > turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
+> > resume, switch GPIO function back to DAT1 mode then turn on clock.
+> > 
+> > Some device tree property should be added or modified in msdc node
+> > to support SDIO eint irq. Pinctrls named state_dat1 and state_eint
+> > are mandatory. And cap-sdio-async-int flag is necessary since this
+> > feature depends on asynchronous interrupt:
+> > 	&mmcX {
+> > 		...
+> > 		pinctrl-names = "default", "state_uhs", "state_eint",
+> > 						"state_dat1";
+> > 		...
+> > 		pinctrl-2 = <&mmc2_pins_eint>;
+> > 		pinctrl-3 = <&mmc2_pins_dat1>;
+> > 		...
+> > 		cap-sdio-async-int;
+> > 		...
+> > 	};
+> > 
+> > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> 
+> Hello Axe,
+> I agree on Andy's review, and I have some more comments...
+> 
+> > ---
+> >   drivers/mmc/host/mtk-sd.c | 113
+> > ++++++++++++++++++++++++++++++++++++--
+> >   1 file changed, 107 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> > index 4dfc246c5f95..8f23349f2963 100644
+> > --- a/drivers/mmc/host/mtk-sd.c
+> > +++ b/drivers/mmc/host/mtk-sd.c
+> > @@ -1,6 +1,6 @@
+> >   // SPDX-License-Identifier: GPL-2.0-only
+> >   /*
+> > - * Copyright (c) 2014-2015 MediaTek Inc.
+> > + * Copyright (c) 2014-2021 MediaTek Inc.
+> >    * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
+> >    */
+> >   
+> > @@ -432,9 +432,13 @@ struct msdc_host {
+> >   	struct pinctrl *pinctrl;
+> >   	struct pinctrl_state *pins_default;
+> >   	struct pinctrl_state *pins_uhs;
+> > +	struct pinctrl_state *pins_eint;
+> > +	struct pinctrl_state *pins_dat1;
+> >   	struct delayed_work req_timeout;
+> >   	int irq;		/* host interrupt */
+> 
+> int eint_irq; should be here, under the host interrupt, for the sake
+> of perfection.
 
-Anyway, add some memsets to prevent exposing uninitialized stack data
-with the user.  Debugfs is root only so the real life impact of these
-leaks is very small.
+Will fix it in next version.
 
-Fixes: 1966a5078f2d ("mt76: mt7915: add mu-mimo and ofdma debugfs knobs")
-Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
----
- .../net/wireless/mediatek/mt76/mt7915/mcu.c   | 21 ++++++++++---------
- 1 file changed, 11 insertions(+), 10 deletions(-)
+> 
+> >   	struct reset_control *reset;
+> > +	int eint_irq;		/* device interrupt */
+> > +	int sdio_irq_cnt;	/* irq enable cnt */
+> >   
+> >   	struct clk *src_clk;	/* msdc source clock */
+> >   	struct clk *h_clk;      /* msdc h_clk */
+> > @@ -1519,10 +1523,12 @@ static void msdc_enable_sdio_irq(struct
+> > mmc_host *mmc, int enb)
+> >   	__msdc_enable_sdio_irq(host, enb);
+> >   	spin_unlock_irqrestore(&host->lock, flags);
+> >   
+> > -	if (enb)
+> > -		pm_runtime_get_noresume(host->dev);
+> > -	else
+> > -		pm_runtime_put_noidle(host->dev);
+> > +	if (mmc->card && !mmc->card->cccr.enable_async_int) {
+> > +		if (enb)
+> 
+> If you are going to rename `enb` to `enable, this means that you're
+> changing the
+> function signature... so, please, do that as a separated commit.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 0911b6f973b5..19c340c65465 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -2999,10 +2999,11 @@ int mt7915_mcu_muru_debug_set(struct mt7915_dev *dev, bool enabled)
- 	struct {
- 		__le32 cmd;
- 		u8 enable;
--	} data = {
--		.cmd = cpu_to_le32(MURU_SET_TXC_TX_STATS_EN),
--		.enable = enabled,
--	};
-+	} data;
-+
-+	memset(&data, 0, sizeof(data));
-+	data.cmd = cpu_to_le32(MURU_SET_TXC_TX_STATS_EN);
-+	data.enable = enabled;
- 
- 	return mt76_mcu_send_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL), &data,
- 				sizeof(data), false);
-@@ -3014,15 +3015,15 @@ int mt7915_mcu_muru_debug_get(struct mt7915_phy *phy, void *ms)
- 	struct sk_buff *skb;
- 	struct mt7915_mcu_muru_stats *mu_stats =
- 				(struct mt7915_mcu_muru_stats *)ms;
--	int ret;
--
- 	struct {
- 		__le32 cmd;
- 		u8 band_idx;
--	} req = {
--		.cmd = cpu_to_le32(MURU_GET_TXC_TX_STATS),
--		.band_idx = phy != &dev->phy,
--	};
-+	} req;
-+	int ret;
-+
-+	memset(&req, 0, sizeof(req));
-+	req.cmd = cpu_to_le32(MURU_GET_TXC_TX_STATS);
-+	req.band_idx = phy != &dev->phy;
- 
- 	ret = mt76_mcu_send_and_get_msg(&dev->mt76, MCU_EXT_CMD(MURU_CTRL),
- 					&req, sizeof(req), true, &skb);
--- 
-2.20.1
+Okay, will keep 'enb' in this commit.
 
+> 
+> > +			pm_runtime_get_noresume(host->dev);
+> > +		else
+> > +			pm_runtime_put_noidle(host->dev);
+> > +	}
+> >   }
+> >   
+> >   static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32
+> > intsts)
+> > @@ -2380,6 +2386,49 @@ static const struct mmc_host_ops mt_msdc_ops
+> > = {
+> >   	.hw_reset = msdc_hw_reset,
+> >   };
+> >   
+> > +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
+> > +{
+> > +	unsigned long flags;
+> > +	struct msdc_host *host = (struct msdc_host *)dev_id;
+> > +	struct mmc_host *mmc = mmc_from_priv(host);
+> > +
+> > +	spin_lock_irqsave(&host->lock, flags);
+> > +	if (likely(host->sdio_irq_cnt > 0)) {
+> > +		disable_irq_nosync(host->eint_irq);
+> > +		disable_irq_wake(host->eint_irq);
+> > +		host->sdio_irq_cnt--;
+> > +	}
+> > +	spin_unlock_irqrestore(&host->lock, flags);
+> > +
+> > +	sdio_signal_irq(mmc);
+> > +
+> > +	return IRQ_HANDLED;
+> > +}
+> > +
+> > +static int msdc_request_dat1_eint_irq(struct msdc_host *host)
+> > +{
+> > +	struct gpio_desc *desc;
+> > +	int ret = 0;
+> > +	int irq;
+> > +
+> > +	desc = devm_gpiod_get_index(host->dev, "eint", 0, GPIOD_IN);
+> > +	if (IS_ERR(desc))
+> > +		return PTR_ERR(desc);
+> > +
+> > +	irq = gpiod_to_irq(desc);
+> > +	if (irq >= 0) {
+> > +		irq_set_status_flags(irq, IRQ_NOAUTOEN);
+> > +		ret = devm_request_threaded_irq(host->dev, irq, NULL,
+> > msdc_sdio_eint_irq,
+> > +						IRQF_TRIGGER_LOW |
+> > IRQF_ONESHOT,
+> > +						"sdio-eint", host);
+> 
+> I think you may have misunderstood what Andy tried to say in his
+> review: your call
+> to the function irq_set_status_flags() is using the right flag -- the
+> suggestion
+> here is to add the IRQF_NO_AUTOEN flag to the call to
+> devm_request_threaded_irq()
+> (ex: IRQF_TRIGGER_LOW | IRQF_ONESHOT | IRQF_NO_AUTOEN) and remove the
+> now redundant
+> call to irq_set_status_flags().
 
+Thank you for explanation. Will fix it in next version.
+
+> 
+> 
+> > +	} else {
+> > +		ret = irq;
+> > +	}
+> > +
+> > +	host->eint_irq = irq;
+> > +	return ret;
+> > +}
+> > +
+> >   static const struct cqhci_host_ops msdc_cmdq_ops = {
+> >   	.enable         = msdc_cqe_enable,
+> >   	.disable        = msdc_cqe_disable,
+> > @@ -2534,6 +2583,19 @@ static int msdc_drv_probe(struct
+> > platform_device *pdev)
+> >   		goto host_free;
+> >   	}
+> >   
+> > +	/* Support for SDIO eint irq */
+> > +	host->pins_eint = pinctrl_lookup_state(host->pinctrl,
+> > "state_eint");
+> > +	if (IS_ERR(host->pins_eint)) {
+> > +		dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
+> > +	} else {
+> > +		host->pins_dat1 = pinctrl_lookup_state(host->pinctrl,
+> > "state_dat1");
+> > +		if (IS_ERR(host->pins_dat1)) {
+> > +			ret = PTR_ERR(host->pins_dat1);
+> > +			dev_err(&pdev->dev, "Cannot find pinctrl
+> > dat1!\n");
+> > +			goto host_free;
+> > +		}
+> > +	}
+> > +
+> >   	msdc_of_property_parse(pdev, host);
+> >   
+> >   	host->dev = &pdev->dev;
+> > @@ -2621,6 +2683,16 @@ static int msdc_drv_probe(struct
+> > platform_device *pdev)
+> >   	if (ret)
+> >   		goto release;
+> >   
+> > +	if (!IS_ERR(host->pins_eint) && !IS_ERR(host->pins_dat1)) {
+> > +		ret = msdc_request_dat1_eint_irq(host);
+> > +		if (ret) {
+> > +			dev_err(host->dev, "Failed to register data1
+> > eint irq!\n");
+> > +			goto release;
+> > +		}
+> > +
+> > +		pinctrl_select_state(host->pinctrl, host->pins_dat1);
+> > +	}
+> > +
+> >   	pm_runtime_set_active(host->dev);
+> >   	pm_runtime_set_autosuspend_delay(host->dev,
+> > MTK_MMC_AUTOSUSPEND_DELAY);
+> >   	pm_runtime_use_autosuspend(host->dev);
+> > @@ -2740,21 +2812,50 @@ static void msdc_restore_reg(struct
+> > msdc_host *host)
+> >   
+> >   static int __maybe_unused msdc_runtime_suspend(struct device
+> > *dev)
+> >   {
+> > +	unsigned long flags;
+> >   	struct mmc_host *mmc = dev_get_drvdata(dev);
+> >   	struct msdc_host *host = mmc_priv(mmc);
+> >   
+> >   	msdc_save_reg(host);
+> > +
+> > +	if (!IS_ERR(host->pins_eint)) {
+> > +		disable_irq(host->irq);
+> > +		pinctrl_select_state(host->pinctrl, host->pins_eint);
+> > +		spin_lock_irqsave(&host->lock, flags);
+> > +		if (host->sdio_irq_cnt == 0) {
+> > +			enable_irq(host->eint_irq);
+> > +			enable_irq_wake(host->eint_irq);
+> > +			host->sdio_irq_cnt++;
+> > +		}
+> > +		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> > +		spin_unlock_irqrestore(&host->lock, flags);
+> > +	}
+> >   	msdc_gate_clock(host);
+> >   	return 0;
+> >   }
+> >   
+> >   static int __maybe_unused msdc_runtime_resume(struct device *dev)
+> >   {
+> > +	unsigned long flags;
+> >   	struct mmc_host *mmc = dev_get_drvdata(dev);
+> >   	struct msdc_host *host = mmc_priv(mmc);
+> >   
+> >   	msdc_ungate_clock(host);
+> >   	msdc_restore_reg(host);
+> > +	if (!IS_ERR(host->pins_eint)) {
+> > +		spin_lock_irqsave(&host->lock, flags);
+> > +		if (host->sdio_irq_cnt > 0) {
+> > +			disable_irq_nosync(host->eint_irq);
+> > +			disable_irq_wake(host->eint_irq);
+> > +			host->sdio_irq_cnt--;
+> > +			sdr_set_bits(host->base + SDC_CFG,
+> > SDC_CFG_SDIOIDE);
+> > +		} else {
+> > +			sdr_clr_bits(host->base + MSDC_INTEN,
+> > MSDC_INTEN_SDIOIRQ);
+> > +		}
+> > +		spin_unlock_irqrestore(&host->lock, flags);
+> > +		pinctrl_select_state(host->pinctrl, host->pins_uhs);
+> > +		enable_irq(host->irq);
+> > +	}
+> >   	return 0;
+> >   }
+> >   
+> > @@ -2778,7 +2879,7 @@ static int __maybe_unused msdc_resume(struct
+> > device *dev)
+> >   }
+> >   
+> >   static const struct dev_pm_ops msdc_dev_pm_ops = {
+> > -	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
+> > +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
+> 
+> Just a nitpick: msdc_{suspend,resume} are now noirq, so you should
+> change the
+> function names to msdc_suspend_noirq, msdc_resume_noirq.
+
+Will fix it in next version. Thank you for your suggestion.
+
+> 
+> >   	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume,
+> > NULL)
+> >   };
+> >   
+> > 
+> 
+> Regards,
+> - Angelo
+> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
