@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31582C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jan 2022 02:48:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57083C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jan 2022 02:48:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=h8Qla7AAL/I8YgCg7XKq9uPZCoiAECB6JguOSD+tHnw=; b=PxBJqnEmLksxdZ
-	X7CVp3acV22chqhpOs5g+T6dsYVq1doBoktgtiRyeupl5TS0GvXGfbfIiXPcagYM1GZpclx07gH7n
-	LdfH65HC5LRSNgyQ7JCF5+q3HavquUzi9N5I+bro53Vzq2MLijWIbfUHA3f/540FWZSdy853lYun7
-	bAgTJN9ExxsY+SiKQfz+fxZMxCJFI8ASMsLW4uxKHOgyQeCOo4l2XhUmvJFXZPFeyXIF2pGQnQ9mP
-	AuiF9LSb8yraV89iYM9w60ukvOYAtjXzUvpywG0258ULvOrlmgmB+dde9FwWF5sH0m8HP0l6NA1SX
-	BJF9zmAZYiUb9qZwkWiA==;
+	List-Owner; bh=jAf3vDc876HYXTCrlWn33ArVnSfKz1AfkOdeRI+9qmI=; b=V8RQ+nzfRg6OzQ
+	wxrC+XbeFSgVkUMOHaRqtNJrXU7XKV5mN+zPzQVibtRhSro1WiSe6U53T90N/NJmlPnuxdjM8NHM8
+	v1al/t2nn5Fwxwmm+MFfCu4opKmdevIwYWvd5J2+JG0ae/vRx+KkcZcf/QtYKwWs+/dUh11d/mf1G
+	AVUX5euX9E4jRzoSzgnZgBGRbNP/qTAeNlwLoJdVorq07MEyb3+iqqyAAvhW5nPHu1WGrhxxjiKVw
+	j1ZF7OcaNJJ9XVFe1B5iifV+x+UMvjluc/a/JFgUrbOds+8V/Az2N1/We3+kzLgrpkkLuXSjpaUBF
+	YdWDVpUnbM+iFT0bMfeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n6OFR-007Fow-Db; Sun, 09 Jan 2022 02:47:57 +0000
+	id 1n6OG9-007GC9-5T; Sun, 09 Jan 2022 02:48:41 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n6OFP-007Flr-0g; Sun, 09 Jan 2022 02:47:56 +0000
-X-UUID: a5451d02c9bb432e80deae74bff7c195-20220108
+ id 1n6OG7-007GB3-3q; Sun, 09 Jan 2022 02:48:40 +0000
+X-UUID: e2e63ad61d004f0e88f856bc1fbce98b-20220108
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=qpe4QHGv436udwYcsS4TR6MTDVMBeSbobKaupT8IJ8A=; 
- b=CNi6sNlKN+wMADxWAppot3PnPRgTqv/ModlobbM6jSvupR2O80ziW/7ywrywQYE8koX0jO8awAHpelNfieONeoadQGjYkltKXdAdE1Ghnfdr/gVUwo4hnrGJQMy13MnYI5xGv9ZsbD+klrvYdCSwmaJQsemDzBsDZCn8bl8L7Co=;
-X-UUID: a5451d02c9bb432e80deae74bff7c195-20220108
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ bh=qlJvrm9XIk8Kawkl//6ihgSHy7alnGfFMB7oe/H5SBQ=; 
+ b=uRR/zKLJVW9hiO7huJnSZHOUb1X1mWD1A7O9eASpWy3sfjOY+6ys5mLgFIy91Ws5LyhDrUf8DW3XJXQ0iQ5FWJ0wZvotivOil4q4qGqLI4l8xaLjad8hdITVibcZ/c0cj8YtEyNB5nrq8mYws5DdCPBR0Yvoq1PQ6Bz05/iAFQY=;
+X-UUID: e2e63ad61d004f0e88f856bc1fbce98b-20220108
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 492742669; Sat, 08 Jan 2022 19:47:50 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sat, 8 Jan 2022 18:47:49 -0800
+ with ESMTP id 1955485108; Sat, 08 Jan 2022 19:48:31 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 8 Jan 2022 18:48:30 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Sun, 9 Jan 2022 10:47:47 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Sun, 9 Jan 2022 10:48:28 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Sun, 9 Jan 2022 10:47:46 +0800
-Message-ID: <694747210c8da8ae4fc282cd90152e5c81945da5.camel@mediatek.com>
-Subject: Re: [PATCH v3 22/33] iommu/mediatek: Add PCIe support
+ Transport; Sun, 9 Jan 2022 10:48:27 +0800
+Message-ID: <22faee018a36a49e4a507b69d087432c8cd689ec.camel@mediatek.com>
+Subject: Re: [PATCH v3 09/33] iommu/mediatek: Remove for_each_m4u in
+ tlb_sync_all
 From: Yong Wu <yong.wu@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>, "Robin
- Murphy" <robin.murphy@arm.com>
-CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Tomasz Figa
- <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux-foundation.org>, Hsin-Yi Wang <hsinyi@chromium.org>,
- <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <chao.hao@mediatek.com>,
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CC: Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, Tomasz Figa <tfiga@chromium.org>,
+ <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, <youlin.pei@mediatek.com>,
+ <anan.sun@mediatek.com>, <chao.hao@mediatek.com>,
  <yen-chang.chen@mediatek.com>
-Date: Sun, 9 Jan 2022 10:47:46 +0800
-In-Reply-To: <3b5e7072-0935-4383-27a1-dd8d623cc608@collabora.com>
+Date: Sun, 9 Jan 2022 10:48:27 +0800
+In-Reply-To: <bfa33e94-c2e5-5dab-c9af-b674e1669daa@collabora.com>
 References: <20210923115840.17813-1-yong.wu@mediatek.com>
- <20210923115840.17813-23-yong.wu@mediatek.com>
- <3b5e7072-0935-4383-27a1-dd8d623cc608@collabora.com>
+ <20210923115840.17813-10-yong.wu@mediatek.com>
+ <bfa33e94-c2e5-5dab-c9af-b674e1669daa@collabora.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220108_184755_086838_51A8D63A 
-X-CRM114-Status: GOOD (  32.09  )
+X-CRM114-CacheID: sfid-20220108_184839_181549_ECDA3193 
+X-CRM114-Status: GOOD (  23.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,138 +87,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2022-01-04 at 16:54 +0100, AngeloGioacchino Del Regno wrote:
+On Tue, 2022-01-04 at 16:55 +0100, AngeloGioacchino Del Regno wrote:
 > Il 23/09/21 13:58, Yong Wu ha scritto:
-> > Currently the code for of_iommu_configure_dev_id is like this:
+> > The tlb_sync_all is called from these three functions:
+> > a) flush_iotlb_all: it will be called for each a iommu HW.
+> > b) tlb_flush_range_sync: it already has for_each_m4u.
+> > c) in irq: When IOMMU HW translation fault, Only need flush itself.
 > > 
-> > static int of_iommu_configure_dev_id(struct device_node *master_np,
-> >                                       struct device *dev,
-> >                                       const u32 *id)
-> > {
-> >         struct of_phandle_args iommu_spec = { .args_count = 1 };
-> > 
-> >         err = of_map_id(master_np, *id, "iommu-map",
-> >                         "iommu-map-mask", &iommu_spec.np,
-> >                         iommu_spec.args);
-> > ...
-> > }
-> > 
-> > It supports only one id output. BUT our PCIe HW has two ID(one is
-> > for
-> > writing, the other is for reading). I'm not sure if we should
-> > change
-> > of_map_id to support output MAX_PHANDLE_ARGS.
-> > 
-> > Here add the solution in ourselve drivers. If it's pcie case,
-> > enable one
-> > more bit.
-> > 
-> > Not all infra iommu support PCIe, thus add a PCIe support flag
-> > here.
+> > Thus, No need for_each_m4u in this tlb_sync_all. Remove it.
 > > 
 > > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > > ---
-> >   drivers/iommu/mtk_iommu.c | 21 ++++++++++++++++++++-
-> >   1 file changed, 20 insertions(+), 1 deletion(-)
+> >   drivers/iommu/mtk_iommu.c | 18 +++++++-----------
+> >   1 file changed, 7 insertions(+), 11 deletions(-)
 > > 
 > > diff --git a/drivers/iommu/mtk_iommu.c b/drivers/iommu/mtk_iommu.c
-> > index 37d6dfb4feab..3f1fd8036345 100644
+> > index 6f4f6624e3ac..0b4c30baa864 100644
 > > --- a/drivers/iommu/mtk_iommu.c
 > > +++ b/drivers/iommu/mtk_iommu.c
-> > @@ -20,6 +20,7 @@
-> >   #include <linux/of_address.h>
-> >   #include <linux/of_irq.h>
-> >   #include <linux/of_platform.h>
-> > +#include <linux/pci.h>
-> >   #include <linux/platform_device.h>
-> >   #include <linux/pm_runtime.h>
-> >   #include <linux/regmap.h>
-> > @@ -132,6 +133,7 @@
-> >   #define MTK_IOMMU_TYPE_MM		(0x0 << 13)
-> >   #define MTK_IOMMU_TYPE_INFRA		(0x1 << 13)
-> >   #define MTK_IOMMU_TYPE_MASK		(0x3 << 13)
-> > +#define IFA_IOMMU_PCIe_SUPPORT		BIT(15)
+> > @@ -206,19 +206,15 @@ static struct mtk_iommu_domain
+> > *to_mtk_domain(struct iommu_domain *dom)
+> >   
+> >   static void mtk_iommu_tlb_flush_all(struct mtk_iommu_data *data)
+> >   {
+> > -	struct list_head *head = data->hw_list;
+> > -
+> > -	for_each_m4u(data, head) {
+> > -		if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> > -			continue;
+> > +	if (pm_runtime_get_if_in_use(data->dev) <= 0)
+> > +		return;
+> >   
+> > -		writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+> > -			       data->base + data->plat_data-
+> > >inv_sel_reg);
+> > -		writel_relaxed(F_ALL_INVLD, data->base +
+> > REG_MMU_INVALIDATE);
+> > -		wmb(); /* Make sure the tlb flush all done */
+> > +	writel_relaxed(F_INVLD_EN1 | F_INVLD_EN0,
+> > +		       data->base + data->plat_data->inv_sel_reg);
+> > +	writel_relaxed(F_ALL_INVLD, data->base + REG_MMU_INVALIDATE);
+> > +	wmb(); /* Make sure the tlb flush all done */
 > 
-> This definition looks like "breaking" the naming convention that's
-> used in this
-> driver... what about MTK_INFRA_IOMMU_PCIE_SUPPORT?
+> There aren't a lot of writes here - not anymore, since you are no
+> longer doing
+> this for_each_m4u()...
+> ...so, please change writel_relaxed() to writel() calls, allowing you
+> to also
+> remove the write barrier at the end (since in the non relaxed
+> version, order is already ensured).
 
-OK for me. I noticed the "PCIE" should called to "PCIe", thus renamed
-this.
+In the "writel", the "__iowmb()" runs before "write_relaxed". Then how
+to guarantee the last register was wrote into the HW. Here the flush
+all don't have sync(waiting it complete)
 
 > 
 > >   
-> >   #define MTK_IOMMU_HAS_FLAG(pdata, _x)	(!!(((pdata)->flags) &
-> > (_x)))
+> > -		pm_runtime_put(data->dev);
+> > -	}
+> > +	pm_runtime_put(data->dev);
+> >   }
 > >   
-> > @@ -401,8 +403,11 @@ static int mtk_iommu_config(struct
-> > mtk_iommu_data *data, struct device *dev,
-> >   				larb_mmu->mmu &=
-> > ~MTK_SMI_MMU_EN(portid);
-> >   		} else if (MTK_IOMMU_IS_TYPE(data->plat_data,
-> > MTK_IOMMU_TYPE_INFRA)) {
-> >   			peri_mmuen_msk = BIT(portid);
-> > -			peri_mmuen = enable ? peri_mmuen_msk : 0;
-> > +			/* PCIdev has only one output id, enable the
-> > next writing bit for PCIe */
-> > +			if (dev_is_pci(dev))
-> > +				peri_mmuen_msk |= BIT(portid + 1);
-> >   
-> > +			peri_mmuen = enable ? peri_mmuen_msk : 0;
-> >   			ret = regmap_update_bits(data->pericfg,
-> > PERICFG_IOMMU_1,
-> >   						 peri_mmuen_msk,
-> > peri_mmuen);
-> >   			if (ret)
-> > @@ -977,6 +982,15 @@ static int mtk_iommu_probe(struct
-> > platform_device *pdev)
-> >   		ret = component_master_add_with_match(dev,
-> > &mtk_iommu_com_ops, match);
-> >   		if (ret)
-> >   			goto out_bus_set_null;
-> > +	} else if (MTK_IOMMU_IS_TYPE(data->plat_data,
-> > MTK_IOMMU_TYPE_INFRA) &&
-> > +		   MTK_IOMMU_HAS_FLAG(data->plat_data,
-> > IFA_IOMMU_PCIe_SUPPORT)) {
-> > +		#ifdef CONFIG_PCI
-> 
-> Please fix the indentation of this ifdef (do not indent).
-
-Thanks. Will fix this.
-
-> 
-> > +		if (!iommu_present(&pci_bus_type)) {
-> > +			ret = bus_set_iommu(&pci_bus_type,
-> > &mtk_iommu_ops);
-> > +			if (ret) /* PCIe fail don't affect
-> > platform_bus. */
-> > +				goto out_list_del;
-> > +		}
-> > +		#endif
-> >   	}
-> >   	return ret;
-> >   
-> > @@ -1007,6 +1021,11 @@ static int mtk_iommu_remove(struct
-> > platform_device *pdev)
-> >   	if (MTK_IOMMU_IS_TYPE(data->plat_data, MTK_IOMMU_TYPE_MM)) {
-> >   		device_link_remove(data->smicomm_dev, &pdev->dev);
-> >   		component_master_del(&pdev->dev, &mtk_iommu_com_ops);
-> > +	} else if (MTK_IOMMU_IS_TYPE(data->plat_data,
-> > MTK_IOMMU_TYPE_INFRA) &&
-> > +		   MTK_IOMMU_HAS_FLAG(data->plat_data,
-> > IFA_IOMMU_PCIe_SUPPORT)) {
-> > +		#ifdef CONFIG_PCI
-> 
-> ditto.
-> 
-> > +		bus_set_iommu(&pci_bus_type, NULL);
-> > +		#endif
-> >   	}
-> >   	pm_runtime_disable(&pdev->dev);
-> >   	devm_free_irq(&pdev->dev, data->irq, data);
+> >   static void mtk_iommu_tlb_flush_range_sync(unsigned long iova,
+> > size_t size,
 > > 
-> 
-> 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
