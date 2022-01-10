@@ -4,106 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FC56C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 21:46:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6054C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 23:35:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6EmecPxAP9BiFR2iNpDqUs/xX3+ONO+8Jt0BtKWguUA=; b=2c1OP7xQbJcTlIOFYaMmm0riTa
-	uP0/OrOnlBWD8i1ZvbH1aLI2QGxz5HGpkrZg3qIQn3Yg/OgVPRDqHAAdQ9oNUk3ahXB/FHYLNwmcY
-	8ghQPsqUT9XiiThIzB/EEFsdWe+CnRJlmjljuERJNzPUk0/T0rk2rDG5PuNLWP2ILg4tbr4jcx3ty
-	MGpnTb/O7yqFgozWRxv0+wgtn/OOA+PTMYOtv7UmJ5iKpYf8nad9ku/ikBEeehGryzGyg/S9A3Lh2
-	ADMsmDYK2FsrS7Vn9xu1uhnnWkvOMzXxduIy8WSjsVhd/1gNuCFwl7M+jAf8qIyBIfKiA7a4i0NxE
-	JIf9I+XA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=IY6PF2fH7+ToQ0bDLNEcDtNB0LArT8NfLnE1akaqbps=; b=1T+3aPl4f9OtWo
+	5MXNd0GE90BBCOWPp4ta+SVNzlqJN7TQyEWlcRPKUp8XAxDNFYMaxH7EehG9jsMN2MH4vNbr2dg5o
+	qLDI4IBFEb+UNoDxtbUoGw866sUtEB35q0TOLG+vxc6g61UtbTZT1jUzzT1acd+RvSjr2QacDCkjn
+	u8cAAbBnjuXpYzWotr4aa0WVju5WJh5H5ksQSrLRfCmOsk4pVE2mrmguWcy6BJFZAyBKbW3kKyHrL
+	v5kotUM3H++hIzL1hyk4AnTvRsmNkDoBQPxoLqgeXERIbGecdOWSjwZiIbB8c7GXtE5m0g04WMb2n
+	ncRAcumv2URcItBQn+xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n72Ur-00DUax-I1; Mon, 10 Jan 2022 21:46:33 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1n74Bu-00Dujh-LC; Mon, 10 Jan 2022 23:35:06 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n72Ud-00DUXJ-V8
- for linux-mediatek@lists.infradead.org; Mon, 10 Jan 2022 21:46:23 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n72TM-0001u6-SR; Mon, 10 Jan 2022 22:45:00 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1n72TB-009atw-Vd; Mon, 10 Jan 2022 22:44:49 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n72TA-0003wz-UN; Mon, 10 Jan 2022 22:44:48 +0100
-Date: Mon, 10 Jan 2022 22:44:48 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, kvm@vger.kernel.org,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Amit Kucheria <amitk@kernel.org>, alsa-devel@alsa-project.org,
- Liam Girdwood <lgirdwood@gmail.com>, Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-phy@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
- "David S. Miller" <davem@davemloft.net>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, Kamal Dasu <kdasu.kdev@gmail.com>,
- Jiri Slaby <jirislaby@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Tony Luck <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-serial@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- platform-driver-x86@vger.kernel.org, linux-pwm@vger.kernel.org,
- Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
- Corey Minyard <minyard@acm.org>, linux-pm@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, linux-gpio@vger.kernel.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Eric Auger <eric.auger@redhat.com>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- openipmi-developer@lists.sourceforge.net, Jaroslav Kysela <perex@perex.cz>,
- Benson Leung <bleung@chromium.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org, linux-edac@vger.kernel.org,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Richard Weinberger <richard@nod.at>,
- Mun Yew Tham <mun.yew.tham@intel.com>, Hans de Goede <hdegoede@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
- James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>,
- Sebastian Reichel <sre@kernel.org>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>, netdev@vger.kernel.org
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-Message-ID: <20220110214448.rp4pcjlaqbjlggvj@pengutronix.de>
-References: <20220110195449.12448-1-s.shtylyov@omp.ru>
- <20220110195449.12448-2-s.shtylyov@omp.ru>
- <20220110201014.mtajyrfcfznfhyqm@pengutronix.de>
- <Ydyf93VD8FrV7GH+@smile.fi.intel.com>
+ id 1n74Bq-00Duhd-KN
+ for linux-mediatek@lists.infradead.org; Mon, 10 Jan 2022 23:35:05 +0000
+Received: by mail-pl1-x635.google.com with SMTP id h1so14455541pls.11
+ for <linux-mediatek@lists.infradead.org>; Mon, 10 Jan 2022 15:35:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=baylibre-com.20210112.gappssmtp.com; s=20210112;
+ h=from:to:cc:subject:in-reply-to:references:date:message-id
+ :mime-version; bh=untIlPwKye6Bj6rhidldiVYqKmoKu4ryqg7eSnKyIu8=;
+ b=AV+9sVlY+jfGr17KZUGGQK7PqQeflhlorxwlxmtvqLrz+Pggb9fDd1PTk3y+8C1Ix1
+ za11MN2QkjEbL+lEDgSmBPwrWjcYcUB6+CbGaAvkG0f4PI793CTIKdV1aHkRpR9InDu0
+ dTPpPbYmeCO61bvmKlEF5Oc1/6LP9eC9lWQQUw3hHoL7ceMPWL32xuTQiYa6t1g2ilrb
+ lnXofrUoozVFfOaFN7PZr6ueIV3b4hajLMAe/LdUmyDwZSjm4KqtlZbIGahAW8oh6+D+
+ 2Lesp2RQT9yUO6PS1CwcVtMcbk4AukVh2/GuZNdoOHuTAnMczkGWVHGThdLhKdTwAua1
+ 95uQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:in-reply-to:references:date
+ :message-id:mime-version;
+ bh=untIlPwKye6Bj6rhidldiVYqKmoKu4ryqg7eSnKyIu8=;
+ b=lDJTGwfoOzJoTio8aM3itrbzS0IxPidlk0yIZ//ULzn8kithThFEaA9x6chVR02Tz6
+ xn/UUg1NN8nvm9AaDmrJpS8vHe8OUt9oBOkJh6dFh7I4VugnJ6b5rQi/8YZfsa0aNQuJ
+ kw7/fIQrK3WFlCe7yKP/PfzRzXI/vTCyMCpWPMdH3eA1u5nED8nDXOPNmM5H3+7F0je3
+ IBiYOdt2K9VBSUAyCyb7QQ4HY4Uj1ndx8puGWGLAboOSzw2iA0dfyRfKkKjQ6EpRW2Th
+ U1U/n18dqgQTetavten+zsNLPjmiEHJXotU/Mc/DyVJwpc1T2QthVsN/lRkWavhqvtTj
+ dTWA==
+X-Gm-Message-State: AOAM533UZskiR10T54uD9NdRC6iQ6AvXo37hH8jgo6jQQf+sJvShm87u
+ iq3vYwb5YctwpiNPQPjWdMUqVj3Dy+GZt7oz
+X-Google-Smtp-Source: ABdhPJwhTjPcZNSiS+Bsm5vKFEVcBbZFlnnv92MQj0X2uwN96nfPk5PErDe8ZpR+u2InJIqB07Y6HA==
+X-Received: by 2002:a17:903:2442:b0:14a:54e3:3905 with SMTP id
+ l2-20020a170903244200b0014a54e33905mr268165pls.55.1641857700358; 
+ Mon, 10 Jan 2022 15:35:00 -0800 (PST)
+Received: from localhost (c-71-197-186-152.hsd1.wa.comcast.net.
+ [71.197.186.152])
+ by smtp.gmail.com with ESMTPSA id u20sm4432122pfi.220.2022.01.10.15.34.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 10 Jan 2022 15:34:59 -0800 (PST)
+From: Kevin Hilman <khilman@baylibre.com>
+To: Jitao Shi <jitao.shi@mediatek.com>, Thierry Reding
+ <thierry.reding@gmail.com>, Sam Ravnborg <sam@ravnborg.org>, David Airlie
+ <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp
+ Zabel <p.zabel@pengutronix.de>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org, stonea168@163.com,
+ huijuan.xie@mediatek.com, shuijing.li@mediatek.com,
+ liangxu.xu@mediatek.com, xinlei.li@mediatek.com, Jitao Shi
+ <jitao.shi@mediatek.com>
+Subject: Re: [PATCH v3 1/2] drm/panel: panel-boe-tv101wum-nl6: tune the
+ power sequence to avoid leakage
+In-Reply-To: <20211116094930.11470-2-jitao.shi@mediatek.com>
+References: <20211116094930.11470-1-jitao.shi@mediatek.com>
+ <20211116094930.11470-2-jitao.shi@mediatek.com>
+Date: Mon, 10 Jan 2022 15:34:59 -0800
+Message-ID: <7hee5fupuk.fsf@baylibre.com>
 MIME-Version: 1.0
-In-Reply-To: <Ydyf93VD8FrV7GH+@smile.fi.intel.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_134620_180162_8D1B3DA9 
-X-CRM114-Status: GOOD (  43.72  )
+X-CRM114-CacheID: sfid-20220110_153502_751309_1AD64978 
+X-CRM114-Status: GOOD (  27.72  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,125 +92,223 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4224303399404718189=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Jitao Shi <jitao.shi@mediatek.com> writes:
 
---===============4224303399404718189==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="e2is76odjewy3gr2"
-Content-Disposition: inline
+> "auo,kd101n80-45na" 2st LCD SPEC update, need to modify the timing
+> between IOVCC and mipi data.
+> The 2st version of SPEC modifies the timing requirements from IOVCC to
+> Mipi Data. IOVCC is now required to take precedence over MIPI DATA,
+> otherwise there is a risk of leakage. It is recommended that the time
+> for MIPI to enter LP11 be postponed after IOVCC (delay20ms).
 
+Similar to what Daniel said on v2:  You're changing the behavior of
+*all* users of this panel driver with this patch, in order to fix a
+single user (in the next patch.)
 
---e2is76odjewy3gr2
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Change-Id: Ic5212e2145a7dbf2efef9e5585904a93e1bc5a28
 
-On Mon, Jan 10, 2022 at 11:07:03PM +0200, Andy Shevchenko wrote:
-> On Mon, Jan 10, 2022 at 09:10:14PM +0100, Uwe Kleine-K=F6nig wrote:
-> > On Mon, Jan 10, 2022 at 10:54:48PM +0300, Sergey Shtylyov wrote:
-> > > This patch is based on the former Andy Shevchenko's patch:
-> > >=20
-> > > https://lore.kernel.org/lkml/20210331144526.19439-1-andriy.shevchenko=
-@linux.intel.com/
-> > >=20
-> > > Currently platform_get_irq_optional() returns an error code even if I=
-RQ
-> > > resource simply has not been found. It prevents the callers from being
-> > > error code agnostic in their error handling:
-> > >=20
-> > > 	ret =3D platform_get_irq_optional(...);
-> > > 	if (ret < 0 && ret !=3D -ENXIO)
-> > > 		return ret; // respect deferred probe
-> > > 	if (ret > 0)
-> > > 		...we get an IRQ...
-> > >=20
-> > > All other *_optional() APIs seem to return 0 or NULL in case an optio=
-nal
-> > > resource is not available. Let's follow this good example, so that the
-> > > callers would look like:
-> > >=20
-> > > 	ret =3D platform_get_irq_optional(...);
-> > > 	if (ret < 0)
-> > > 		return ret;
-> > > 	if (ret > 0)
-> > > 		...we get an IRQ...
-> >=20
-> > The difference to gpiod_get_optional (and most other *_optional) is that
-> > you can use the NULL value as if it were a valid GPIO.
->=20
-> The problem is not only there, but also in the platform_get_irq() and that
-> problem is called vIRQ0. Or as Linus put it "_cookie_" for IRQ, which nev=
-er
-> ever should be 0.
+Please drop gerrit IDs from upstream submissions.
 
-IMHO it's best to avoid yielding zero for a value that should be
-interpreted as an (virtual) irq. Then callers don't even have to
-consider if it's a valid value or not.
+Kevin
 
-> > As this isn't given with for irqs, I don't think changing the return
-> > value has much sense. In my eyes the problem with platform_get_irq() and
-> > platform_get_irq_optional() is that someone considered it was a good
-> > idea that a global function emits an error message. The problem is,
-> > that's only true most of the time. (Sometimes the caller can handle an
-> > error (here: the absence of an irq) just fine, sometimes the generic
-> > error message just isn't as good as a message by the caller could be.
-> > (here: The caller could emit "TX irq not found" which is a much nicer
-> > message than "IRQ index 5 not found".)
-> >=20
-> > My suggestion would be to keep the return value of
-> > platform_get_irq_optional() as is, but rename it to
-> > platform_get_irq_silent() to get rid of the expectation invoked by the
-> > naming similarity that motivated you to change
-> > platform_get_irq_optional().
->=20
-> This won't fix the issue with vIRQ0.
-
-Is the patch about vIRQ0, or did you only start to consider it when I
-said that for gpio NULL is a dummy value? If the former, the commit log
-should better mention that.
-
-Anyhow, I still think renaming platform_get_irq_optional() to
-platform_get_irq_silent() is a good idea and the patches in this thread
-are not.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---e2is76odjewy3gr2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHcqM0ACgkQwfwUeK3K
-7Amxygf+NmX8BzaqLoc9m8fsv49CkQqQKbXt9a0l2gES1hAm8NL2nbgjydEJDcPs
-QJ5X1TL08pb9wPoYcUF7uSwjJx2Vp0f+FEiMtDk2kj5xI38T+86tnyuQw1tNg4Ss
-52foCYQJVIIgIAeMyIvWk14oUMsy4JV/SuT+GZImMq+aM/5+wIF02NZoGzXofThL
-mUNzp+vgTNNhZpF7c0D4orD7SDOCOn2fA/uu2UGk1Nh6m+lgW5qIw5Z0KFPTalKH
-kU/JuEOBD6kdEr84D9EM6SB2l+dOBVJ20F5DL1JItM4qkAK9thM+3ecLPF610K1e
-+N5e1XZXSLS6gpWGBjS9bxMbdZ6Qpg==
-=FQR4
------END PGP SIGNATURE-----
-
---e2is76odjewy3gr2--
-
-
---===============4224303399404718189==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> ---
+>  drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c | 88 +++++++++++++++++++-------
+>  include/drm/panel_boe_tv101wum_nl6.h           | 28 ++++++++
+>  2 files changed, 94 insertions(+), 22 deletions(-)
+>  create mode 100644 include/drm/panel_boe_tv101wum_nl6.h
+>
+> diff --git a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+> index db9d0b86d542..02efee06c430 100644
+> --- a/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+> +++ b/drivers/gpu/drm/panel/panel-boe-tv101wum-nl6.c
+> @@ -49,7 +49,7 @@ struct boe_panel {
+>  	struct regulator *avee;
+>  	struct regulator *avdd;
+>  	struct gpio_desc *enable_gpio;
+> -
+> +	int powered_refcnt;
+>  	bool prepared;
+>  };
+>  
+> @@ -488,19 +488,15 @@ static int boe_panel_enter_sleep_mode(struct boe_panel *boe)
+>  	return 0;
+>  }
+>  
+> -static int boe_panel_unprepare(struct drm_panel *panel)
+> +static int boe_panel_power_off(struct drm_panel *panel)
+>  {
+>  	struct boe_panel *boe = to_boe_panel(panel);
+> -	int ret;
+>  
+> -	if (!boe->prepared)
+> -		return 0;
+> +	if (WARN_ON(boe->powered_refcnt == 0))
+> +		return -EINVAL;
+>  
+> -	ret = boe_panel_enter_sleep_mode(boe);
+> -	if (ret < 0) {
+> -		dev_err(panel->dev, "failed to set panel off: %d\n", ret);
+> -		return ret;
+> -	}
+> +	if (--boe->powered_refcnt != 0)
+> +		return 0;
+>  
+>  	msleep(150);
+>  
+> @@ -520,17 +516,45 @@ static int boe_panel_unprepare(struct drm_panel *panel)
+>  		regulator_disable(boe->pp1800);
+>  	}
+>  
+> +	return 0;
+> +}
+> +
+> +int panel_unprepare_power(struct drm_panel *panel)
+> +{
+> +	if (of_device_is_compatible(panel->dev->of_node, "auo,kd101n80-45na"))
+> +		return boe_panel_power_off(panel);
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(panel_unprepare_power);
+> +
+> +static int boe_panel_unprepare(struct drm_panel *panel)
+> +{
+> +	struct boe_panel *boe = to_boe_panel(panel);
+> +	int ret;
+> +
+> +	if (!boe->prepared)
+> +		return 0;
+> +
+> +	ret = boe_panel_enter_sleep_mode(boe);
+> +	if (ret < 0) {
+> +		dev_err(panel->dev, "failed to set panel off: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	boe_panel_power_off(panel);
+> +
+>  	boe->prepared = false;
+>  
+>  	return 0;
+>  }
+>  
+> -static int boe_panel_prepare(struct drm_panel *panel)
+> +static int boe_panel_power_on(struct drm_panel *panel)
+>  {
+>  	struct boe_panel *boe = to_boe_panel(panel);
+>  	int ret;
+>  
+> -	if (boe->prepared)
+> +	if (++boe->powered_refcnt != 1)
+>  		return 0;
+>  
+>  	gpiod_set_value(boe->enable_gpio, 0);
+> @@ -558,18 +582,8 @@ static int boe_panel_prepare(struct drm_panel *panel)
+>  	gpiod_set_value(boe->enable_gpio, 1);
+>  	usleep_range(6000, 10000);
+>  
+> -	ret = boe_panel_init_dcs_cmd(boe);
+> -	if (ret < 0) {
+> -		dev_err(panel->dev, "failed to init panel: %d\n", ret);
+> -		goto poweroff;
+> -	}
+> -
+> -	boe->prepared = true;
+> -
+>  	return 0;
+>  
+> -poweroff:
+> -	regulator_disable(boe->avee);
+>  poweroffavdd:
+>  	regulator_disable(boe->avdd);
+>  poweroff1v8:
+> @@ -580,6 +594,36 @@ static int boe_panel_prepare(struct drm_panel *panel)
+>  	return ret;
+>  }
+>  
+> +int panel_prepare_power(struct drm_panel *panel)
+> +{
+> +	if (of_device_is_compatible(panel->dev->of_node, "auo,kd101n80-45na"))
+> +		return boe_panel_power_on(panel);
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL(panel_prepare_power);
+> +
+> +static int boe_panel_prepare(struct drm_panel *panel)
+> +{
+> +	struct boe_panel *boe = to_boe_panel(panel);
+> +	int ret;
+> +
+> +	boe_panel_power_on(panel);
+> +
+> +	if (boe->prepared)
+> +		return 0;
+> +
+> +	ret = boe_panel_init_dcs_cmd(boe);
+> +	if (ret < 0) {
+> +		dev_err(panel->dev, "failed to init panel: %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	boe->prepared = true;
+> +
+> +	return 0;
+> +}
+> +
+>  static int boe_panel_enable(struct drm_panel *panel)
+>  {
+>  	msleep(130);
+> diff --git a/include/drm/panel_boe_tv101wum_nl6.h b/include/drm/panel_boe_tv101wum_nl6.h
+> new file mode 100644
+> index 000000000000..72abe3eb7840
+> --- /dev/null
+> +++ b/include/drm/panel_boe_tv101wum_nl6.h
+> @@ -0,0 +1,28 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2018 MediaTek Inc.
+> + * Author: Jitao Shi <jitao.shi@mediatek.com>
+> + */
+> +
+> +#ifndef __PANEL_BOE_TV101WUM_NL6_H__
+> +#define __PANEL_BOE_TV101WUM_NL6_H__
+> +
+> +#include <linux/types.h>
+> +#include <drm/drm_panel.h>
+> +
+> +#if defined(CONFIG_DRM_PANEL_BOE_TV101WUM_NL6)
+> +int panel_unprepare_power(struct drm_panel *panel);
+> +int panel_prepare_power(struct drm_panel *panel);
+> +#else
+> +int panel_unprepare_power(struct drm_panel *panel)
+> +{
+> +	return 0;
+> +}
+> +
+> +int panel_prepare_power(struct drm_panel *panel)
+> +{
+> +	return 0;
+> +}
+> +#endif
+> +#endif /* __PANEL_BOE_TV101WUM_NL6_H__ */
+> +
+> -- 
+> 2.12.5
+>
+>
+> _______________________________________________
+> Linux-mediatek mailing list
+> Linux-mediatek@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============4224303399404718189==--
-
