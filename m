@@ -4,55 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6B3BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun,  9 Jan 2022 19:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C645C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 00:44:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:Cc:Date:
-	In-Reply-To:From:Subject:Mime-Version:Reply-To:Content-ID:Content-Description
-	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4J5jlnc9s9jCONmY/Hgmg18sWx+30oPSOu9/z0Qt4EA=; b=SSxVFnn5Ll2KZe
-	+UU4g3nh+RbryWdSp/9HwzZHwyT1hQ/7fxN7lpixvRxfy3kEmnrDO6gAhMUU1TgPYkcZC7LeVe2U2
-	5XB+lIXwfUqgPfm1tySl3SGxEooNnxNxklIWPioaR//LK5z9C0viGyWNWF7/ZAKa9BoK/yRiV3q85
-	VlYVxZDMnjq2auBaVFs8iQp0oJDCaHpqMepVyN+keKxxHTEIgcQm0xp5q8IDM50YIWVHmUnKuul70
-	LpZQiIf+zGWn7RqCZ7XgOCCcFbBkuzc82/IsesE89FSHh3kNNcVeNWFvzHZIvTrBYg/Wkhbnwyf5Z
-	D+Oxop9V6X0KwLQ9Sidw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vOUC5RCowM30wxDq91VBf3NojljGmI/VPLAy5ldY4Qc=; b=nZBa9D1wTOQ5Hg
+	mhPYL+DKUEAj+rgN0YF9llB8oJHePXyCQiwyCHEIu2V1fi1ZXdvmQ0ng974lDntlV34oTTvm+kfrs
+	U7VMTGEww+s/f+KUtBWi9EA53H8yz8fzhZteXgTotCX1P/XLEqoytuowkVxbpSjD9LpeH6FMGBqQQ
+	pWKCw6R0CGQp/NNmWv/pzJund3eA4A4NSZaQduJqZMZUjWH8z0Pbtk9pZO1tJBC6kztjexDrPc44d
+	hl/mJFQfU1srSmWKkp0FiN1MoLT2aW1Ly+we9CZ3/O6XMdWEUBvUQwf7WEw4uDHYzHvpRdgBnVdjm
+	rfkbp+OcIHrLlI5yRv8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n6dzq-008JGp-57; Sun, 09 Jan 2022 19:36:54 +0000
-Received: from coyote.holtmann.net ([212.227.132.17] helo=mail.holtmann.org)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n6dzm-008JFs-Ne
- for linux-mediatek@lists.infradead.org; Sun, 09 Jan 2022 19:36:52 +0000
-Received: from smtpclient.apple (p4fefca45.dip0.t-ipconnect.de [79.239.202.69])
- by mail.holtmann.org (Postfix) with ESMTPSA id 31AC5CED27;
- Sun,  9 Jan 2022 20:36:44 +0100 (CET)
-Mime-Version: 1.0 (Mac OS X Mail 15.0 \(3693.40.0.1.81\))
-Subject: Re: [PATCH v5 1/5] Bluetooth: btmtksdio: rename btsdio_mtk_reg_read
-From: Marcel Holtmann <marcel@holtmann.org>
-In-Reply-To: <a22b710e69551c3503203f73ea898504cb634815.1641755121.git.objelf@gmail.com>
-Date: Sun, 9 Jan 2022 20:36:43 +0100
-Cc: Johan Hedberg <johan.hedberg@gmail.com>,
- =?utf-8?B?Ik1hcmstWVcgQ2hlbiAo6Zmz5o+a5paHKSI=?= <Mark-YW.Chen@mediatek.com>, 
- Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Deren.Wu@mediatek.com, km.lin@mediatek.com,
- robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, ted.huang@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, jemele@google.com,
- abhishekpandit@google.com, Michael Sun <michaelfsun@google.com>,
- Miao-chen Chou <mcchou@chromium.org>, shawnku@google.com,
- linux-bluetooth <linux-bluetooth@vger.kernel.org>,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Message-Id: <39A8FEA2-D5AA-4D3D-9A14-E9EC187D300A@holtmann.org>
-References: <a22b710e69551c3503203f73ea898504cb634815.1641755121.git.objelf@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>
-X-Mailer: Apple Mail (2.3693.40.0.1.81)
+	id 1n6imu-008dCi-IW; Mon, 10 Jan 2022 00:43:52 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n6img-008dC9-Fd; Mon, 10 Jan 2022 00:43:39 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id A4C37B80FC0;
+ Mon, 10 Jan 2022 00:43:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A11D9C36AE3;
+ Mon, 10 Jan 2022 00:43:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1641775415;
+ bh=DmH7M5tRFpzsUho15Vfl8GOzZSKDrQsO+NphZsKjRzY=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=dVEQZVvw4+aXfmrbaCeha9pUXDgrzWIW/lGiTDSlDegUr2oI2qMe8fIDAYm/kdmNK
+ d9Hk/N1IsETmVVGyvi+mcg/wzrwYJgFidWGrlHR9CsVlUjvGAXH5+oU9pcJqUioNAa
+ h4ZFdoeg5IGfWBgXJsNaE9xJMgftF7XIgPyMrhLhS2c3DMfAHuV0W3oUSXmEWWLvaY
+ khC0FtMPJlv95ncdlj8eMudEbFLVhwhVbH6EkRs4dWwXEH3VAQnAsLj0ihOW7T6bm6
+ Yb/AgSabCfvfUOeVzSQ3gIL5u3ZQQM8FGDzi8bfPPPjPheHgWXsm+A/1Du+VVXZq3G
+ 774u8bbBnKV+g==
+Date: Sun, 9 Jan 2022 16:43:33 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: trix@redhat.com
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, matthias.bgg@gmail.com,
+ linux@armlinux.org.uk, nathan@kernel.org, ndesaulniers@google.com,
+ opensource@vdorst.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev
+Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: fix error checking in
+ mtk_mac_config()
+Message-ID: <20220109164333.61dc2e89@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
+In-Reply-To: <20220108155003.3991055-1-trix@redhat.com>
+References: <20220108155003.3991055-1-trix@redhat.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220109_113650_973169_F1A9D570 
-X-CRM114-Status: UNSURE (   9.24  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220109_164338_701372_8D8D80D5 
+X-CRM114-Status: GOOD (  20.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,23 +75,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Sean,
-
-> Using "btmtksdio" as the prefix instead of "btsdio"
+On Sat,  8 Jan 2022 07:50:03 -0800 trix@redhat.com wrote:
+> From: Tom Rix <trix@redhat.com>
 > 
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+> Clang static analysis reports this problem
+> mtk_eth_soc.c:394:7: warning: Branch condition evaluates
+>   to a garbage value
+>                 if (err)
+>                     ^~~
+> 
+> err is not initialized and only conditionally set.
+> Check err consistently with the rest of mtk_mac_config(),
+> after even possible setting.
+> 
+> Fixes: 7e538372694b ("net: ethernet: mediatek: Re-add support SGMII")
+> Signed-off-by: Tom Rix <trix@redhat.com>
 > ---
-> v5: new created to make the series better
-> ---
-> drivers/bluetooth/btmtksdio.c | 6 +++---
-> 1 file changed, 3 insertions(+), 3 deletions(-)
+>  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 +++++++-----
+>  1 file changed, 7 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index b67b4323cff08..a27e548488584 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -385,14 +385,16 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+>  		       0 : mac->id;
+>  
+>  		/* Setup SGMIISYS with the determined property */
+> -		if (state->interface != PHY_INTERFACE_MODE_SGMII)
+> +		if (state->interface != PHY_INTERFACE_MODE_SGMII) {
+>  			err = mtk_sgmii_setup_mode_force(eth->sgmii, sid,
+>  							 state);
+> -		else if (phylink_autoneg_inband(mode))
+> +			if (err)
+> +				goto init_err;
+> +		} else if (phylink_autoneg_inband(mode)) {
+>  			err = mtk_sgmii_setup_mode_an(eth->sgmii, sid);
+> -
+> -		if (err)
+> -			goto init_err;
+> +			if (err)
+> +				goto init_err;
+> +		}
+>  
+>  		regmap_update_bits(eth->ethsys, ETHSYS_SYSCFG0,
+>  				   SYSCFG0_SGMII_MASK, val);
 
-all 5 patches have been applied to bluetooth-next tree.
-
-Regards
-
-Marcel
-
+Why not init err to 0 before the if or add an else err = 0; branch?
 
 _______________________________________________
 Linux-mediatek mailing list
