@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C645C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 00:44:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5568C433FE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 00:59:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vOUC5RCowM30wxDq91VBf3NojljGmI/VPLAy5ldY4Qc=; b=nZBa9D1wTOQ5Hg
-	mhPYL+DKUEAj+rgN0YF9llB8oJHePXyCQiwyCHEIu2V1fi1ZXdvmQ0ng974lDntlV34oTTvm+kfrs
-	U7VMTGEww+s/f+KUtBWi9EA53H8yz8fzhZteXgTotCX1P/XLEqoytuowkVxbpSjD9LpeH6FMGBqQQ
-	pWKCw6R0CGQp/NNmWv/pzJund3eA4A4NSZaQduJqZMZUjWH8z0Pbtk9pZO1tJBC6kztjexDrPc44d
-	hl/mJFQfU1srSmWKkp0FiN1MoLT2aW1Ly+we9CZ3/O6XMdWEUBvUQwf7WEw4uDHYzHvpRdgBnVdjm
-	rfkbp+OcIHrLlI5yRv8w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=tvJTDyvwrwZb1d7RM9P+uAws4uGt3Pojf/Qre45m9TI=; b=y9E17/r7J8QllU
+	sswQkJ1Xq8LcjAjcTRYjFQ3O5IrFql9EcTWQGU2tVnG9VryXYv53KCixb34Wga6vzmRfJ80COAnT+
+	us5+6w2O7liKh7Cq8CZ4Gw3bzzZJTzJiyc0wkdtMqFVTsEO2OBHABZEZaxrnX8LtVSVX93sn5J9Jc
+	dgHYo6nivCAj7a7jytcxTBOUKa1zDyC2oynFL2LT2+TfJ1EaYtf4F0qNo8Gs0fGsuTNK5BIUyaiMO
+	iwXyUZdkrUjzeWJI/BdqtmXZVlLjxUGGGv54CXOeShePrlcnGCp1sBAsM9y6djY4jfbtru6EPQeR6
+	8DEqVk9jQ+qTRommpwYA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n6imu-008dCi-IW; Mon, 10 Jan 2022 00:43:52 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1n6j2C-008ezf-2V; Mon, 10 Jan 2022 00:59:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n6img-008dC9-Fd; Mon, 10 Jan 2022 00:43:39 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id A4C37B80FC0;
- Mon, 10 Jan 2022 00:43:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A11D9C36AE3;
- Mon, 10 Jan 2022 00:43:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641775415;
- bh=DmH7M5tRFpzsUho15Vfl8GOzZSKDrQsO+NphZsKjRzY=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=dVEQZVvw4+aXfmrbaCeha9pUXDgrzWIW/lGiTDSlDegUr2oI2qMe8fIDAYm/kdmNK
- d9Hk/N1IsETmVVGyvi+mcg/wzrwYJgFidWGrlHR9CsVlUjvGAXH5+oU9pcJqUioNAa
- h4ZFdoeg5IGfWBgXJsNaE9xJMgftF7XIgPyMrhLhS2c3DMfAHuV0W3oUSXmEWWLvaY
- khC0FtMPJlv95ncdlj8eMudEbFLVhwhVbH6EkRs4dWwXEH3VAQnAsLj0ihOW7T6bm6
- Yb/AgSabCfvfUOeVzSQ3gIL5u3ZQQM8FGDzi8bfPPPjPheHgWXsm+A/1Du+VVXZq3G
- 774u8bbBnKV+g==
-Date: Sun, 9 Jan 2022 16:43:33 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: trix@redhat.com
-Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
- Mark-MC.Lee@mediatek.com, davem@davemloft.net, matthias.bgg@gmail.com,
- linux@armlinux.org.uk, nathan@kernel.org, ndesaulniers@google.com,
- opensource@vdorst.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org, llvm@lists.linux.dev
-Subject: Re: [PATCH] net: ethernet: mtk_eth_soc: fix error checking in
- mtk_mac_config()
-Message-ID: <20220109164333.61dc2e89@kicinski-fedora-PC1C0HJN.hsd1.ca.comcast.net>
-In-Reply-To: <20220108155003.3991055-1-trix@redhat.com>
-References: <20220108155003.3991055-1-trix@redhat.com>
+ id 1n6j1z-008ewE-7r; Mon, 10 Jan 2022 00:59:29 +0000
+X-UUID: 2c49dcd022d24efb886776fa942a4d46-20220109
+X-UUID: 2c49dcd022d24efb886776fa942a4d46-20220109
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <chun-jie.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2052161533; Sun, 09 Jan 2022 17:59:22 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 9 Jan 2022 16:59:20 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 10 Jan 2022 08:59:18 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 10 Jan 2022 08:59:18 +0800
+From: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Stephen Boyd
+ <sboyd@kernel.org>, Nicolas Boichat <drinkcat@chromium.org>, Rob Herring
+ <robh+dt@kernel.org>
+CC: <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <linux-clk@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <srv_heupstream@mediatek.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [v2 0/3] Integrate vppsys with mtk-mmsys in MT8195
+Date: Mon, 10 Jan 2022 08:58:59 +0800
+Message-ID: <20220110005902.27148-1-chun-jie.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220109_164338_701372_8D8D80D5 
-X-CRM114-Status: GOOD (  20.60  )
+X-CRM114-CacheID: sfid-20220109_165927_306862_78A8B199 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,53 +74,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat,  8 Jan 2022 07:50:03 -0800 trix@redhat.com wrote:
-> From: Tom Rix <trix@redhat.com>
-> 
-> Clang static analysis reports this problem
-> mtk_eth_soc.c:394:7: warning: Branch condition evaluates
->   to a garbage value
->                 if (err)
->                     ^~~
-> 
-> err is not initialized and only conditionally set.
-> Check err consistently with the rest of mtk_mac_config(),
-> after even possible setting.
-> 
-> Fixes: 7e538372694b ("net: ethernet: mediatek: Re-add support SGMII")
-> Signed-off-by: Tom Rix <trix@redhat.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_eth_soc.c | 12 +++++++-----
->  1 file changed, 7 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index b67b4323cff08..a27e548488584 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -385,14 +385,16 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
->  		       0 : mac->id;
->  
->  		/* Setup SGMIISYS with the determined property */
-> -		if (state->interface != PHY_INTERFACE_MODE_SGMII)
-> +		if (state->interface != PHY_INTERFACE_MODE_SGMII) {
->  			err = mtk_sgmii_setup_mode_force(eth->sgmii, sid,
->  							 state);
-> -		else if (phylink_autoneg_inband(mode))
-> +			if (err)
-> +				goto init_err;
-> +		} else if (phylink_autoneg_inband(mode)) {
->  			err = mtk_sgmii_setup_mode_an(eth->sgmii, sid);
-> -
-> -		if (err)
-> -			goto init_err;
-> +			if (err)
-> +				goto init_err;
-> +		}
->  
->  		regmap_update_bits(eth->ethsys, ETHSYS_SYSCFG0,
->  				   SYSCFG0_SGMII_MASK, val);
+This patch series is based on 5.16-rc6.
 
-Why not init err to 0 before the if or add an else err = 0; branch?
+change since v1:
+- remove vppsys in clock document
+- unregister clock when fail to add clock provider
+
+Chun-Jie Chen (3):
+  clk: mediatek: Add error handle when fail to register clock provider
+  dt-bindings: ARM: Mediatek: Remove vppsys in MT8195 clock document
+  clk: mediatek: Integrate vppsys with mtk-mmsys in MT8195
+
+ .../arm/mediatek/mediatek,mt8195-clock.yaml   | 16 -------
+ drivers/clk/mediatek/clk-mt8195-apmixedsys.c  |  5 ++-
+ drivers/clk/mediatek/clk-mt8195-apusys_pll.c  |  5 ++-
+ drivers/clk/mediatek/clk-mt8195-topckgen.c    |  5 ++-
+ drivers/clk/mediatek/clk-mt8195-vdo0.c        |  5 ++-
+ drivers/clk/mediatek/clk-mt8195-vdo1.c        |  5 ++-
+ drivers/clk/mediatek/clk-mt8195-vpp0.c        | 42 ++++++++++++-------
+ drivers/clk/mediatek/clk-mt8195-vpp1.c        | 42 ++++++++++++-------
+ drivers/clk/mediatek/clk-mtk.c                | 14 ++++++-
+ drivers/clk/mediatek/clk-mtk.h                |  1 +
+ 10 files changed, 89 insertions(+), 51 deletions(-)
+
+--
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
