@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D77B7C4332F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 09:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18F6EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 09:15:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qnSucjK+gKarN9a1MgXHdB7vRW2F0h9h6MQ4SOUkkak=; b=lfuh9I5p5TOaHu
-	VYRNptdF0BgGGmuS6yCykMOR/bCp661czMUBeG4giTFh0lPwxh6icm1bJ1JHGo84K270FAVJSj5m7
-	AYv3bVNB6btC45AwoZDcRIQfIz+/o0RARWvzNRWoZszwOjVyRck8bzuqBYhXHirSzVv+Fy3TIn/hh
-	q9ELGvkCquZtTv4zdxZxgNSDiyMIbyGm49ElOGMOmRUJ5/7DXsbk9UrjEyoH2bZgA8AS4mLQmQ/mZ
-	yzCnlCBOJxz1mVjmqM7yN9rtE641QeWlQaM/KRblN48JD2Hm9UBgHlVYaGRKckRClbVj9llngdxy4
-	H0gOkv0O1zJfXHOFKKLQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vb+0THo3B4sx8QD0zEvUTEJ+t5PUcZhF48GbFY6y1fI=; b=tCyibz4lA9yDai
+	FR1E9jODt8qIwLHQIml5xtTj3x8invRUpU6171ov9MvPRkHPJFNbQEsYLPXwis6bpZgxsJcgkJoDQ
+	PgGyzaM+C4RRBPIOlw+QgTqgZdG8csYnxN94sd3sIVvlU91yn6NxW8AhAJhBYJ55f3sDSeXLOK2Un
+	NU0+XztF9ByhOl/oaJ0Mm5Avvfv+nlIjGovdTPng0qc4BqaTkSG5sabcQKAWwyV93jAGMJreJb2Qb
+	3IqdC+7WgAMi3OYFTUKjogQeJ8pDGx8Zh4FllmYLJasTrQrBEGfV0L9Pn6fLjI/SEQ1kU0JOCV+bu
+	/n3fyLhOM5wdpQL47O1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n6qd7-00AAmP-5c; Mon, 10 Jan 2022 09:06:17 +0000
+	id 1n6qmI-00AFpv-Pt; Mon, 10 Jan 2022 09:15:46 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n6qOG-00A2sk-GK; Mon, 10 Jan 2022 08:50:57 +0000
-X-UUID: d11f530e8726441ea05ce334d7e46d2b-20220110
-X-UUID: d11f530e8726441ea05ce334d7e46d2b-20220110
+ id 1n6qU3-00A68d-HI; Mon, 10 Jan 2022 08:56:57 +0000
+X-UUID: d6535ec343774ad9918838de3fe8f464-20220110
+X-UUID: d6535ec343774ad9918838de3fe8f464-20220110
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <guodong.liu@mediatek.com>)
+ (envelope-from <nancy.lin@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 327060513; Mon, 10 Jan 2022 01:50:53 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 10 Jan 2022 00:48:45 -0800
+ with ESMTP id 2094175578; Mon, 10 Jan 2022 01:56:52 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 10 Jan 2022 00:46:53 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 10 Jan 2022 16:48:44 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 10 Jan 2022 16:48:43 +0800
-From: Guodong Liu <guodong.liu@mediatek.com>
-To: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, 
- Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>
-CC: <linux-iio@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 10 Jan 2022 16:46:49 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 10 Jan 2022 16:46:48 +0800
+From: Nancy.Lin <nancy.lin@mediatek.com>
+To: CK Hu <ck.hu@mediatek.com>
+CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
+ <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
+ <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
+ "Nancy . Lin" <nancy.lin@mediatek.com>, Yongqiang Niu
+ <yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guodong Liu
- <guodong.liu@mediatek.com>
-Subject: [PATCH v1 1/2] dt-bindings: iio: adc: Add compatible for Mediatek
- MT8186
-Date: Mon, 10 Jan 2022 16:48:40 +0800
-Message-ID: <20220110084841.575-1-guodong.liu@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
+Subject: [PATCH v11 21/22] drm/mediatek: add mediatek-drm of vdosys1 support
+ for MT8195
+Date: Mon, 10 Jan 2022 16:46:44 +0800
+Message-ID: <20220110084645.31191-22-nancy.lin@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220110084645.31191-1-nancy.lin@mediatek.com>
+References: <20220110084645.31191-1-nancy.lin@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_005056_599163_C0429EFA 
-X-CRM114-Status: UNSURE (   8.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220110_005655_611218_D016358C 
+X-CRM114-Status: GOOD (  10.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,28 +79,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This commit adds dt-binding documentation of auxadc for Mediatek MT8186 SoC
-Platform.
+Add driver data of mt8195 vdosys1 to mediatek-drm.
 
-Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
+Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
 ---
- .../devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml      | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-index b939f9652e3a..65581ad4b816 100644
---- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-@@ -34,6 +34,7 @@ properties:
-       - items:
-           - enum:
-               - mediatek,mt8183-auxadc
-+              - mediatek,mt8186-auxadc
-               - mediatek,mt8195-auxadc
-               - mediatek,mt8516-auxadc
-           - const: mediatek,mt8173-auxadc
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index 36430f956b4f..e851c56f00b1 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -190,6 +190,14 @@ static const enum mtk_ddp_comp_id mt8195_mtk_ddp_main[] = {
+ 	DDP_COMPONENT_DP_INTF0,
+ };
+ 
++static const enum mtk_ddp_comp_id mt8195_mtk_ddp_ext[] = {
++	DDP_COMPONENT_OVL_ADAPTOR,
++	DDP_COMPONENT_MERGE5,
++	DDP_COMPONENT_DP_INTF1,
++};
++
++static const int mt8195_vdosys1_mtk_cmdq_mbox[] = {-1, 0, -1};
++
+ static const struct mtk_mmsys_driver_data mt2701_mmsys_driver_data = {
+ 	.main_path = mt2701_mtk_ddp_main,
+ 	.main_len = ARRAY_SIZE(mt2701_mtk_ddp_main),
+@@ -254,6 +262,14 @@ static const struct mtk_mmsys_driver_data mt8195_vdosys0_driver_data = {
+ 	.mmsys_dev_num = 2,
+ };
+ 
++static const struct mtk_mmsys_driver_data mt8195_vdosys1_driver_data = {
++	.ext_path = mt8195_mtk_ddp_ext,
++	.ext_len = ARRAY_SIZE(mt8195_mtk_ddp_ext),
++	.mmsys_id = 1,
++	.mmsys_dev_num = 2,
++	.mbox_index = mt8195_vdosys1_mtk_cmdq_mbox,
++};
++
+ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	{ .compatible = "mediatek,mt2701-mmsys",
+ 	  .data = &mt2701_mmsys_driver_data},
+@@ -271,6 +287,8 @@ static const struct of_device_id mtk_drm_of_ids[] = {
+ 	  .data = &mt8192_mmsys_driver_data},
+ 	{ .compatible = "mediatek,mt8195-vdosys0",
+ 	  .data = &mt8195_vdosys0_driver_data},
++	{ .compatible = "mediatek,mt8195-vdosys1",
++	  .data = &mt8195_vdosys1_driver_data},
+ 	{ }
+ };
+ MODULE_DEVICE_TABLE(of, mtk_drm_of_ids);
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
