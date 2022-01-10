@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE7B1C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 09:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D34C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 10 Jan 2022 09:17:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mbEXez6fJNM4IegAy5nqnUmKQqXV0krOEnNFobL+4dI=; b=TFp/2nhrSqW/sn
-	IeY/5a3U4uSki6VJQUNgGj6nOW/OKWFtKnEujmKZR65Eu5f4NkjaA5ZSqnZPo3DzI0Jye8yxndLIe
-	PUeBpH6D52IRkJjViVupV9M/+BACXLiL7ttNOG6lEbfgjDe2yJ/+C72qK+4P4aDYXplmwFjpFI8PT
-	1n4YNdtyK3Xh5hCcWwAcQIlGs67LhXy/0/awOv0B9bc7vMEnt6mpeeRQ5dYtuxlPeSuhA3PQTU05Z
-	tAkM4kCpEDjNvUTE0Xjk1Kgl4ma1nneYGBu9xptdOZAtv5cs0Am7ZCEk/uzCSSHpHGDYL31NTPm9T
-	0ow4/sI2+5lNmMJEqIaQ==;
+	List-Owner; bh=/Dei9HF3ZkEbiz0eOBr+T9FqCtObv8SioVrHrto1p2w=; b=wL4YQvji5BkEQc
+	GvsDqtVWMQ6qCcPublBc829UAVDxN2nT6hF44TJgXtxHVzD/aDGxB7UnPyy8/VWvBeViA4LrIKnhb
+	gGN8FK473lU/U7tHiqJd2XmUObixGq6Ir6GaKVbqFBUGihMysTbvPFpD5CZTPhmhAAB+JbMOPD/kL
+	ugg0xX+NZ6XU3kBwVEPIKQQRO+CPClKhB/CZEdlkd/thcyAWZ7avKA6b7INGHegYO0lT8ykTkwvtd
+	2F/FCiD1HflEjmvY5A6bafkbG0k5+qXfQVLYom570X27AGvKOyQJ1uTX1grodr8tVz8WpNsau5PdE
+	s7gvjxHKa1w8mVO6kC4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n6qmb-00AG0T-2k; Mon, 10 Jan 2022 09:16:05 +0000
+	id 1n6qna-00AGcS-LB; Mon, 10 Jan 2022 09:17:06 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n6qU5-00A68d-8D; Mon, 10 Jan 2022 08:56:58 +0000
-X-UUID: 228fa1b0e83f458ea409642739cb3a1c-20220110
-X-UUID: 228fa1b0e83f458ea409642739cb3a1c-20220110
+ id 1n6qU2-00A67u-EN; Mon, 10 Jan 2022 08:56:55 +0000
+X-UUID: 1109052424cb4336a088101024e75d42-20220110
+X-UUID: 1109052424cb4336a088101024e75d42-20220110
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <nancy.lin@mediatek.com>)
+ (envelope-from <guodong.liu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 378779235; Mon, 10 Jan 2022 01:56:52 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 437060197; Mon, 10 Jan 2022 01:56:52 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 10 Jan 2022 00:46:52 -0800
+ 15.0.1497.2; Mon, 10 Jan 2022 00:48:47 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 10 Jan 2022 16:46:48 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 10 Jan 2022 16:46:48 +0800
-From: Nancy.Lin <nancy.lin@mediatek.com>
-To: CK Hu <ck.hu@mediatek.com>
-CC: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel
- <p.zabel@pengutronix.de>, David Airlie <airlied@linux.ie>, Daniel Vetter
- <daniel@ffwll.ch>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, "jason-jh . lin" <jason-jh.lin@mediatek.com>,
- "Nancy . Lin" <nancy.lin@mediatek.com>, Yongqiang Niu
- <yongqiang.niu@mediatek.com>, <dri-devel@lists.freedesktop.org>,
- <linux-mediatek@lists.infradead.org>, <devicetree@vger.kernel.org>,
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 10 Jan 2022 16:48:45 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 10 Jan 2022 16:48:45 +0800
+From: Guodong Liu <guodong.liu@mediatek.com>
+To: Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, 
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>
+CC: <linux-iio@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <singo.chang@mediatek.com>, <srv_heupstream@mediatek.com>
-Subject: [PATCH v11 17/22] drm/mediatek: add mediatek-drm plane color encoding
- info
-Date: Mon, 10 Jan 2022 16:46:40 +0800
-Message-ID: <20220110084645.31191-18-nancy.lin@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220110084645.31191-1-nancy.lin@mediatek.com>
-References: <20220110084645.31191-1-nancy.lin@mediatek.com>
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Guodong Liu
+ <guodong.liu@mediatek.com>
+Subject: [PATCH v1 2/2] iio: adc: mt8186: Add compatible node for mt8186
+Date: Mon, 10 Jan 2022 16:48:41 +0800
+Message-ID: <20220110084841.575-2-guodong.liu@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220110084841.575-1-guodong.liu@mediatek.com>
+References: <20220110084841.575-1-guodong.liu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_005657_322323_A7B7FDE5 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20220110_005654_517569_95C442B8 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,43 +75,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add plane color encoding information for color space conversion.
-It's a preparation for adding support for mt8195 ovl_adaptor mdp_rdma
-csc control.
+This commit adds mt8186 compatible node.
 
-Signed-off-by: Nancy.Lin <nancy.lin@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Signed-off-by: Guodong Liu <guodong.liu@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_plane.c | 1 +
- drivers/gpu/drm/mediatek/mtk_drm_plane.h | 1 +
- 2 files changed, 2 insertions(+)
+ drivers/iio/adc/mt6577_auxadc.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.c b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-index 734a1fb052df..81bd5d6e8df5 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.c
-@@ -137,6 +137,7 @@ static void mtk_plane_update_new_state(struct drm_plane_state *new_state,
- 	mtk_plane_state->pending.width = drm_rect_width(&new_state->dst);
- 	mtk_plane_state->pending.height = drm_rect_height(&new_state->dst);
- 	mtk_plane_state->pending.rotation = new_state->rotation;
-+	mtk_plane_state->pending.color_encoding = new_state->color_encoding;
- }
- 
- static void mtk_plane_atomic_async_update(struct drm_plane *plane,
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_plane.h b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-index d454bece9535..2d5ec66e3df1 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_plane.h
-@@ -24,6 +24,7 @@ struct mtk_plane_pending_state {
- 	bool				dirty;
- 	bool				async_dirty;
- 	bool				async_config;
-+	enum drm_color_encoding		color_encoding;
+diff --git a/drivers/iio/adc/mt6577_auxadc.c b/drivers/iio/adc/mt6577_auxadc.c
+index d4fccd52ef08..fb08d761589a 100644
+--- a/drivers/iio/adc/mt6577_auxadc.c
++++ b/drivers/iio/adc/mt6577_auxadc.c
+@@ -46,6 +46,11 @@ struct mt6577_auxadc_device {
+ 	const struct mtk_auxadc_compatible *dev_comp;
  };
  
- struct mtk_plane_state {
++static const struct mtk_auxadc_compatible mt8186_compat = {
++	.sample_data_cali = false,
++	.check_global_idle = false,
++};
++
+ static const struct mtk_auxadc_compatible mt8173_compat = {
+ 	.sample_data_cali = false,
+ 	.check_global_idle = true,
+@@ -334,6 +339,7 @@ static const struct of_device_id mt6577_auxadc_of_match[] = {
+ 	{ .compatible = "mediatek,mt2712-auxadc", .data = &mt8173_compat},
+ 	{ .compatible = "mediatek,mt7622-auxadc", .data = &mt8173_compat},
+ 	{ .compatible = "mediatek,mt8173-auxadc", .data = &mt8173_compat},
++	{ .compatible = "mediatek,mt8186-auxadc", .data = &mt8186_compat},
+ 	{ .compatible = "mediatek,mt6765-auxadc", .data = &mt6765_compat},
+ 	{ }
+ };
 -- 
-2.18.0
+2.25.1
 
 
 _______________________________________________
