@@ -4,40 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A560DC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:01:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A424C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:02:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
 	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zT7In0PyrClGgV/+nI7sxtnbrC6ldtBRaVP9VebkJFU=; b=ura+ZbInilvGh23MG+bU2Bs8Rl
-	CyddBUh2+ccL1dRXWn5GYvsKrtzsJXxeNYWHjz8rO6B3dppLErnUZgwObbeKx0Gx/GdV3/HPSoJMM
-	aAwBwmdHddkyzCuTA0A/5tzNoX6xWnqymHdY8LCYy63eYwlbJ2x16f8buT5H+I/Hilfu7cL09r8ja
-	94jUVbSi+tqE0/lc+D1UTbuii7A0FiHg9XH5GE7ycK4MKsxz0+cGmBvtWLMlUVGu9r19Y+RxqAfws
-	DsWFPeVN/8Abel2rLK3c+449ome1LDtvbgQEYTRuIz/Zmua7MCUFWWaV3KFh5VLDL8xkjMWSGyHRb
-	4lvT10vw==;
+	bh=AAx4Ygj5WSeVTldQ+0IS/JLfAWLZi5bWOmOImD0nYbg=; b=We8oiqh4vlpVbghVczwLwcn7zG
+	yVbKZUKCdC7BxorHp5kU/UdvdTC0itw3WZhzvnrxd2xQ74WGy/Hvsw68vPt94s1f7Q0BLc8CzJDdS
+	rtb9wwWEE1cQ6fc2oQkdWSOTdPkd2IwP8X0c+JbbvstQe1OUSyA0MCyOyGKuHVJivWn79s37plOtq
+	Ck4U2rSUjAN1dNtm17kKDHVlBQvZClCnJzWuse/jFAd4uqThPa4qaFJxqnMs7s5S1+cXZeIODV/zX
+	Vh26ogh+2ntd+ezJACVEPfgyLrchUrwmWxYvhx6o2N0iPEA9wMrmcge6cUoT/Yn7Dm0A9skllr5Rm
+	tFCu83sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7Etq-00FurA-J6; Tue, 11 Jan 2022 11:01:10 +0000
+	id 1n7Euo-00FvQ9-3r; Tue, 11 Jan 2022 11:02:10 +0000
 Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7Eqe-00FsY6-Nm; Tue, 11 Jan 2022 10:57:57 +0000
+ id 1n7Eqf-00FsYt-GN; Tue, 11 Jan 2022 10:57:59 +0000
 Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 790DD1F43A3B
+ (Authenticated sender: kholk11) with ESMTPSA id 53B6C1F43A3E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1641898671;
- bh=KxdiyTxbtyGUISJQVKvbV00ATKClSLfkB7WwAzdixIk=;
+ s=mail; t=1641898672;
+ bh=aSvQDDZiVNuGLK0+g5pmKJt4zz1QTtvk8bu0eYABcYE=;
  h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=GHv2Q9Hw9O1BbymA6bPBFesiEoq1kePtT66PJ1DjL9T0Lyuw7pmEQejYX27zrEz4u
- KhuGOzv6vfpDCj5CFrlLnkHBLvzkie3LTBvtrB16YGEWmRcK/Bb2hzvlZVkXsnrFML
- iNuniQCr123u7ZPxvdmcegl9TU+3TZrthSVp7dxcsRMQ/9BZl2LREPItzri5GxaZkm
- /WHSAxGZI10qwOxlOJSRyKR/BAco+r212N+f+NrpdwlLsuvMd58CuxENW+9OLhpIjG
- Rd277bNW5X4zdn5WskZtet5CNVidobI8eHXVog2CXJQkuYeC57x3eV1/JA61Xbmop0
- jQiPE2Mahk5rQ==
-Subject: Re: [PATCH v9 05/15] iommu/mediatek: Add device_link between the
- consumer and the larb devices
+ b=RRn+gK/K6Oe8djLMwl7E0Zru4jSSkxXRUnWQAAfuLZ0AiA2fLNRpLyLimSJNIhMtu
+ GbCmYibe3IdiVyevThwQNpRh3KXcNGbfn7j01ofTIwJnEZPN+qORhigdQ1iVcg8nuS
+ ZON68CYWhNbbK5oABT+8xs7E9Oa1MWcR2JGP5Ca0LTcwd+YSk54BB4Kg+Jvof5vkRI
+ KzK0frlA9SUROFZNEy2aduPWb5c4FqbSQVdv4RPrj69rUl14uTz3hOMqtH/l+MnsL2
+ j7/wUm/JmNhovDWBm9IYHFOnL+5nul/9tnRNeWUnNgejZYTwTHVe0t2PjmYKrTa4Vh
+ NmwUYMSMA4pBg==
+Subject: Re: [PATCH v9 04/15] iommu/mediatek: Add probe_defer for smi-larb
 To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
  <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
  Rob Herring <robh+dt@kernel.org>,
@@ -59,18 +58,18 @@ Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
  iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
  Robin Murphy <robin.murphy@arm.com>
 References: <20211112105509.12010-1-yong.wu@mediatek.com>
- <20211112105509.12010-6-yong.wu@mediatek.com>
+ <20211112105509.12010-5-yong.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <cb4054ae-4646-ee61-162f-96112ef6dbcf@collabora.com>
-Date: Tue, 11 Jan 2022 11:57:47 +0100
+Message-ID: <eaf59017-49d2-6579-a106-44bd2a21e5af@collabora.com>
+Date: Tue, 11 Jan 2022 11:57:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <20211112105509.12010-6-yong.wu@mediatek.com>
+In-Reply-To: <20211112105509.12010-5-yong.wu@mediatek.com>
 Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_025753_009196_6D2F4189 
-X-CRM114-Status: GOOD (  21.65  )
+X-CRM114-CacheID: sfid-20220111_025753_768076_BCEFEAF6 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,51 +87,21 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 Il 12/11/21 11:54, Yong Wu ha scritto:
-> MediaTek IOMMU-SMI diagram is like below. all the consumer connect with
-> smi-larb, then connect with smi-common.
+> Prepare for adding device_link.
 > 
->          M4U
->           |
->      smi-common
->           |
->    -------------
->    |         |    ...
->    |         |
-> larb1     larb2
->    |         |
-> vdec       venc
+> The iommu consumer should use device_link to connect with the
+> smi-larb(supplier). then the smi-larb should run before the iommu
+> consumer. Here we delay the iommu driver until the smi driver is ready,
+> then all the iommu consumers always are after the smi driver.
 > 
-> When the consumer works, it should enable the smi-larb's power which
-> also need enable the smi-common's power firstly.
+> When there is no this patch, if some consumer drivers run before
+> smi-larb, the supplier link_status is DL_DEV_NO_DRIVER(0) in the
+> device_link_add, then device_links_driver_bound will use WARN_ON
+> to complain that the link_status of supplier is not right.
 > 
-> Thus, First of all, use the device link connect the consumer and the
-> smi-larbs. then add device link between the smi-larb and smi-common.
+> device_is_bound may be more elegant here. but it is not allowed to
+> EXPORT from https://lore.kernel.org/patchwork/patch/1334670/.
 > 
-> This patch adds device_link between the consumer and the larbs.
-> 
-> When device_link_add, I add the flag DL_FLAG_STATELESS to avoid calling
-> pm_runtime_xx to keep the original status of clocks. It can avoid two
-> issues:
-> 1) Display HW show fastlogo abnormally reported in [1]. At the beggining,
-> all the clocks are enabled before entering kernel, but the clocks for
-> display HW(always in larb0) will be gated after clk_enable and clk_disable
-> called from device_link_add(->pm_runtime_resume) and rpm_idle. The clock
-> operation happened before display driver probe. At that time, the display
-> HW will be abnormal.
-> 
-> 2) A deadlock issue reported in [2]. Use DL_FLAG_STATELESS to skip
-> pm_runtime_xx to avoid the deadlock.
-> 
-> Corresponding, DL_FLAG_AUTOREMOVE_CONSUMER can't be added, then
-> device_link_removed should be added explicitly.
-> 
-> Meanwhile, Currently we don't have a device connect with 2 larbs at the
-> same time. Disallow this case, print the error log.
-> 
-> [1] https://lore.kernel.org/linux-mediatek/1564213888.22908.4.camel@mhfsdcap03/
-> [2] https://lore.kernel.org/patchwork/patch/1086569/
-> 
-> Suggested-by: Tomasz Figa <tfiga@chromium.org>
 > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
 
