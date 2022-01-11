@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1C2C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 755DEC433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:08:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=X1z65yVa09mNmu//vdH74l9T6MsoEE/2XHmEcaugG5U=; b=FNJjsubH7IWxnhcG5NvD165R1+
-	gNao8pvGtX6avEgGiHDJRtFrLOxkgcoMehfCsIAUhM9IuONvIofrzJ4Io54mI9iFRGZdIdeqOd/s/
-	S7DXR1ArIU/9bS4OCSV/GSPOG/t7mou5LAAmgZnyqHxyCNDnsvdPPwu1FI/iaZ3Joo7fUpITSusGF
-	ygroVzcNRv6NMWsEHeWrn3ush5J7JThx0Nh7ucEdCPXeswXQ2NmLK22dGXQsm584CJzWDvcITAsKv
-	9GgJvjsIuNUBM5OViAHvi/M3D20i3Q9Z6FE6iqDaJm1rPDWCEgdsk+y9meNA1JnRNY22zI3paIa+S
-	ffHixYIQ==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=UuFCwnffzd+quhbEToG3XVCxB8jZD6Ldkr6gzvrOkqI=; b=cVI1x8yeO13hASzN6060FRHBdW
+	86PYgPb/NAd22iAKnYweDK4FqNXfgyXd3Ra+rLevldgOmv93+26H/p70DGljmd1/jHQBs8XWnZcR0
+	M/50Pfsmkg+c/s41EwhPMdbTbe7LriO2C78SaHnyEl4PvW64AzQi668r9LJL3hzw2or//Eiq7YKDq
+	iODc1zSMDh4vZHdGUnVZFxd9Vmk0kqT+z9SMOTxAZboVynZGLvxX7trGJzTVM8P/amkkfh3PQGaA9
+	zOCAhmqx+j7DERNho8IpxsTOaM/agaoPoY6m/PY4EdvOc+hnQ4rS+63Aa0wrqayaAXNt6v4Wdxk9f
+	osebZHXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7EyS-00Fx88-Ct; Tue, 11 Jan 2022 11:05:56 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1n7F0X-00Fy3w-6a; Tue, 11 Jan 2022 11:08:05 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7EvO-00FvkV-SC
- for linux-mediatek@lists.infradead.org; Tue, 11 Jan 2022 11:02:48 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id D4023615A2;
- Tue, 11 Jan 2022 11:02:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B638DC36AE9;
- Tue, 11 Jan 2022 11:02:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1641898965;
- bh=bpDyuPCSeMVqJyeugkA7wQopRLRWRBPLU2LF5wLNe8w=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=B0JjGXgMGBwLwKbWaaEtu9QTD3QigaJQOdps+TZWdEkW6WFieqW4J9e3+UIsFrfBM
- NI0K5G08992uKy502/kb+TgYY/J/u6q2/2A4egeEpzevxrbua5DbAgH97Ptfna71Bp
- vW+U52aTuLF9fov697XcyMNLSPnMW6MeZZWGosBxy/Ss5Lh+cqpGEI9MENKvL85t+N
- 3uJ5wb4T3bE7b9jN87/l9EzZhGfQ2agOrY8F0FxXOKIrU+xSOB8Sws0iPVz8zrBcqN
- Tru4X9WDWzOMzyJRQga9IPQsy9dTiB7juVdSH28g2sPUF0252y455I9/vUDKe1KrLz
- zwZg8zIrQaM9Q==
-Date: Tue, 11 Jan 2022 12:02:41 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Sven Eckelmann <sven@narfation.org>
-Cc: lorenzo.bianconi@redhat.com, sean.wang@mediatek.com, nbd@nbd.name,
- jf@simonwunderlich.de, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Deren Wu <deren.wu@mediatek.com>
-Subject: Re: mt76: MT7921K monitor mode not working
-Message-ID: <Yd1j0UFVkDC50x8D@lore-desk>
-References: <YapTmM3EztojTS9F@lore-desk--annotate> <12706913.cppxkphV4n@ripper>
- <YbusBazb4GAC6YQl@lore-desk> <34944167.qDeGz8lmHr@ripper>
+ id 1n7EyX-00FxAF-AK; Tue, 11 Jan 2022 11:06:02 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 776741F43F66
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641899160;
+ bh=HrxQbDIhsm2WebOMeG8xU6zQC8Wui+ntZtYG/xinG4Q=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=mcIZ0zhem1thW68bzJExY3avXN7EdpgHkyph9+8oWf9bj/33fOSbjg4qd3H/M6fRs
+ nc8RFw18/KAN9dPVSFtGuaJBwxgLe9IyXJTi9o5fbyf4XTN4qXo80wNOMfGac9dOMD
+ KOKw9B/JPZ+F6cQfey1fAOpAruW51SbNuRQL03Tzi4U9hyOCkc4tGW7Y3GQ1rCe534
+ U6MUszzl6/7RFG5bG3EItCHKc/EWd7yHe9TQt2UkzM1/xbIms7aAGD9tfCCEYQrXOn
+ 5UM64bnOr5t69Jtci7NR+W+3GACpnbVfuF9BvxwZ8B30bNMpZjvuPDxTIKzTd284l2
+ ynLAwX/H23wKw==
+Subject: Re: [PATCH v2] drm/mediatek: mtk_dsi: Avoid EPROBE_DEFER loop with
+ external bridge
+To: CK Hu <ck.hu@mediatek.com>, dri-devel@lists.freedesktop.org
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, chunkuang.hu@kernel.org,
+ p.zabel@pengutronix.de, airlied@linux.ie, daniel@ffwll.ch,
+ matthias.bgg@gmail.com, kernel@collabora.com, andrzej.hajda@intel.com
+References: <20220104095954.10313-1-angelogioacchino.delregno@collabora.com>
+ <c0279078032bae61e6c1d70be74d1fb8c528083f.camel@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <8a87c97e-fd58-bc73-44a6-0055b86cd7ea@collabora.com>
+Date: Tue, 11 Jan 2022 12:05:56 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-In-Reply-To: <34944167.qDeGz8lmHr@ripper>
+In-Reply-To: <c0279078032bae61e6c1d70be74d1fb8c528083f.camel@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_030247_002150_6AB7874D 
-X-CRM114-Status: GOOD (  15.40  )
+X-CRM114-CacheID: sfid-20220111_030601_555733_257236F8 
+X-CRM114-Status: GOOD (  21.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,76 +67,52 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7307108025063863665=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Il 06/01/22 06:22, CK Hu ha scritto:
+> Hi, Angelo:
+> 
+> On Tue, 2022-01-04 at 10:59 +0100, AngeloGioacchino Del Regno wrote:
+>> DRM bridge drivers are now attaching their DSI device at probe time,
+>> which requires us to register our DSI host in order to let the bridge
+>> to probe: this recently started producing an endless -EPROBE_DEFER
+>> loop on some machines that are using external bridges, like the
+>> parade-ps8640, found on the ACER Chromebook R13.
+>>
+>> Now that the DSI hosts/devices probe sequence is documented, we can
+>> do adjustments to the mtk_dsi driver as to both fix now and make sure
+>> to avoid this situation in the future: for this, following what is
+>> documented in drm_bridge.c, move the mtk_dsi component_add() to the
+>> mtk_dsi_ops.attach callback and delete it in the detach callback;
+>> keeping in mind that we are registering a drm_bridge for our DSI,
+>> which is only used/attached if the DSI Host is bound, it wouldn't
+>> make sense to keep adding our bridge at probe time (as it would
+>> be useless to have it if mtk_dsi_ops.attach() fails!), so also move
+>> that one to the dsi host attach function (and remove it in detach).
+> 
+> This patch looks good to me, but please add 'Fixes' tag to note to
+> which patch this patch want to fix.
+> 
+> Regards,
+> CK
+> 
 
---===============7307108025063863665==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="jWgpeJokEZ4CKhaP"
-Content-Disposition: inline
+Hello,
+unfortunately I couldn't find a valid commit for a Fixes tag. This
+started being an issue at some point, when the DRM API was changed to
+adhere to the documented probe sequence: the MediaTek DSI driver was
+not the only one that got broken/affected by these changes.
 
+If you have any advice on which commit should be tagged, I'm open for
+any kind of suggestion.
 
---jWgpeJokEZ4CKhaP
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-> Hi,
->=20
-> On Thursday, 16 December 2021 22:13:41 CET Lorenzo Bianconi wrote:
-> > can you please try the patch below to see if it fixes the crash/hang in=
- monitor
-> > mode?
->=20
-> I have tested it now. But it seems like it was already applied. Otherwise=
- I=20
-> would have provided my Tested-by.
->=20
-> The only problem I have with the monitor mode is the missing beacons (and=
-=20
-> maybe more frames which I haven't yet identified).
->=20
-> Kind regards,
-> 	Sven
-
-Hi Sven,
-
-can you please test my latest patch?
-https://patchwork.kernel.org/project/linux-wireless/patch/f6ad709b1a64152b5=
-955e71b7eef9f9c4c7f127e.1641893305.git.lorenzo@kernel.org/
-This patch will automatically set/clear runtime-pm/deep-sleep adding/removi=
-ng a
-monitor vif.
-
-Regards,
-Lorenzo
-
---jWgpeJokEZ4CKhaP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYd1j0QAKCRA6cBh0uS2t
-rM6kAP9hz6s1QHJtutAXCkq6/VTbZpOGXDHIodyEESZicFRlIAD/WkjRu83dUNWg
-A2ZzAcHLlxpJGttwvqBE9SDQHoyfQw0=
-=Cn3t
------END PGP SIGNATURE-----
-
---jWgpeJokEZ4CKhaP--
-
-
---===============7307108025063863665==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============7307108025063863665==--
-
