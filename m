@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26C85C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 01:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B2F3C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 01:41:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=8rIC3L+xS1MeeWd8AkH9Y3KJRRrr/9WflizSkhz8oOE=; b=3rGnOSiKlbAC+4
-	1VEFz+N7Lwbu0LH8yX1pui201twwTrJmIjDoKK0dCMOn3f0nq6ClzfIJnUWDPdbcOdDA19VGEMcJ8
-	iC4Z8mishnzWY/eFArpGmc82FGX0/0WlaG1wNkdScv/gWyqyya53gDH3v+A4TRw3sOsunNy4Lf4a+
-	6eGn55SiLQLz4G+Q46uG8OZUf4Ceb3n02IZMgmctQlPLszTm9E6iBvUvg940UwLWZbxPYXBUAOpC4
-	r1CKeALIK/dBDLm/pAi9PAfH2FiTmQF67MfojfybjCs9uPUDvZWv9xx2N9mPdCuf8WLroIZYow9pl
-	WWKnBKnJS5YwhIpzHcGA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JMKlbnNig+QfUxbKBKEpsmx1QGUN+89/VEj96DWGy78=; b=KUWvLA55m4UmZL
+	e2CDozvHyGi+MUX+D5zv3qMmVXN0CNiOM32EOj4DVvDjMFg9C2ecUJT7JsWs9keSGeYppiqSRYdn3
+	jhrwrRUAqvw3gFtv+mTyb66HNMN9cwungfA5TerC7ljNnAKD4PO2FAawkMEWdGvWMibVa46iHWxE3
+	lk2ZcqnmgYivcCid2iemce3FqoRdSL2+h4epL4uEXn/kPY40Hkxl2gqzx1oB4rOaP0kuaZQIF21Bg
+	bzF5XX9nVvXW6Z8GPjJgL+Kp8fFTRBN34SaVuPLb7msG/L8QHz9wkVAVNk5pXJ/TkwV12prB2Lewr
+	FyyTVjPti7QQxr8BZqKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n76AK-00EDzu-Da; Tue, 11 Jan 2022 01:41:36 +0000
+	id 1n76AV-00EE4U-Np; Tue, 11 Jan 2022 01:41:47 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n769r-00EDtH-Tx; Tue, 11 Jan 2022 01:41:09 +0000
-X-UUID: 7967cf8d760f4879b1d979fd72e2c634-20220110
-X-UUID: 7967cf8d760f4879b1d979fd72e2c634-20220110
+ id 1n769s-00EDtZ-U0; Tue, 11 Jan 2022 01:41:10 +0000
+X-UUID: 6f49d8597bf745089162dd99aa28ad52-20220110
+X-UUID: 6f49d8597bf745089162dd99aa28ad52-20220110
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 611606805; Mon, 10 Jan 2022 18:41:04 -0700
+ with ESMTP id 1093613515; Mon, 10 Jan 2022 18:41:04 -0700
 Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Mon, 10 Jan 2022 17:41:03 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
  (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 11 Jan 2022 09:40:50 +0800
+ Tue, 11 Jan 2022 09:40:54 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 11 Jan 2022 09:40:49 +0800
+ Transport; Tue, 11 Jan 2022 09:40:53 +0800
 From: Axe Yang <axe.yang@mediatek.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
  Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
@@ -53,15 +53,17 @@ CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
  <linux-mmc@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v2 0/3]mmc: mediatek: add support for SDIO async irq 
-Date: Tue, 11 Jan 2022 09:40:43 +0800
-Message-ID: <20220111014046.5864-1-axe.yang@mediatek.com>
+Subject: [PATCH v2 3/3] mmc: mediatek: add support for SDIO eint irq
+Date: Tue, 11 Jan 2022 09:40:46 +0800
+Message-ID: <20220111014046.5864-4-axe.yang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220111014046.5864-1-axe.yang@mediatek.com>
+References: <20220111014046.5864-1-axe.yang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_174107_998891_86711B83 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20220110_174109_028038_7C674B08 
+X-CRM114-Status: GOOD (  26.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,30 +80,262 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Change in v2:
-- change flag name from 'cap-sdio-async-int' to 'cap-sdio-async-irq'
-- change corresponding macro names from xxx_INT to xxx_IRQ
-- resort new member in msdc_host structure
-- refine function msdc_request_dat1_eint_irq()
-- rename msdc_{suspend,resume} function names, add suffix '_noirq'
-- add MMC_CAP2_NO_SDIO judgement before parse eint related pin setting
+Add support for eint irq when MSDC is used as an SDIO host. This
+feature requires SDIO device support async irq function. With this
+feature,SDIO host can be awakened by SDIO card in suspend state,
+without additional pin.
 
-Axe Yang (3):
-  dt-bindings: mmc: add cap-sdio-async-irq flag
-  mmc: core: Add support for SDIO async interrupt
-  mmc: mediatek: add support for SDIO eint irq
+MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
+turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
+resume, switch GPIO function back to DAT1 mode then turn on clock.
 
- .../bindings/mmc/mmc-controller.yaml          |   5 +
- drivers/mmc/core/host.c                       |   2 +
- drivers/mmc/core/sdio.c                       |  17 +++
- drivers/mmc/host/mtk-sd.c                     | 124 ++++++++++++++++--
- include/linux/mmc/card.h                      |   3 +-
- include/linux/mmc/host.h                      |   1 +
- include/linux/mmc/sdio.h                      |   5 +
- 7 files changed, 148 insertions(+), 9 deletions(-)
+Some device tree property should be added or modified in msdc node
+to support SDIO eint irq. Pinctrls named state_dat1 and state_eint
+are mandatory. And cap-sdio-async-irq flag is necessary since this
+feature depends on asynchronous interrupt:
+        &mmcX {
+                ...
+                pinctrl-names = "default", "state_uhs", "state_eint",
+                                "state_dat1";
+                ...
+                pinctrl-2 = <&mmc2_pins_eint>;
+                pinctrl-3 = <&mmc2_pins_dat1>;
+                ...
+                cap-sdio-async-irq;
+                ...
+        };
 
+Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+---
+ drivers/mmc/host/mtk-sd.c | 124 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 116 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 65037e1d7723..d78e05c89c29 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -1,6 +1,6 @@
+ // SPDX-License-Identifier: GPL-2.0-only
+ /*
+- * Copyright (c) 2014-2015 MediaTek Inc.
++ * Copyright (c) 2014-2022 MediaTek Inc.
+  * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
+  */
+ 
+@@ -9,6 +9,7 @@
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/dma-mapping.h>
++#include <linux/gpio/consumer.h>
+ #include <linux/iopoll.h>
+ #include <linux/ioport.h>
+ #include <linux/irq.h>
+@@ -440,8 +441,12 @@ struct msdc_host {
+ 	struct pinctrl *pinctrl;
+ 	struct pinctrl_state *pins_default;
+ 	struct pinctrl_state *pins_uhs;
++	struct pinctrl_state *pins_eint;
++	struct pinctrl_state *pins_dat1;
+ 	struct delayed_work req_timeout;
+ 	int irq;		/* host interrupt */
++	int eint_irq;		/* device interrupt */
++	int sdio_irq_cnt;	/* irq enable cnt */
+ 	struct reset_control *reset;
+ 
+ 	struct clk *src_clk;	/* msdc source clock */
+@@ -465,6 +470,7 @@ struct msdc_host {
+ 	bool hs400_tuning;	/* hs400 mode online tuning */
+ 	bool internal_cd;	/* Use internal card-detect logic */
+ 	bool cqhci;		/* support eMMC hw cmdq */
++	bool sdio_eint_ready;	/* Ready to support SDIO eint interrupt */
+ 	struct msdc_save_para save_para; /* used when gate HCLK */
+ 	struct msdc_tune_para def_tune_para; /* default tune setting */
+ 	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+@@ -1527,10 +1533,12 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+ 	__msdc_enable_sdio_irq(host, enb);
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+-	if (enb)
+-		pm_runtime_get_noresume(host->dev);
+-	else
+-		pm_runtime_put_noidle(host->dev);
++	if (mmc->card && !mmc->card->cccr.enable_async_irq) {
++		if (enb)
++			pm_runtime_get_noresume(host->dev);
++		else
++			pm_runtime_put_noidle(host->dev);
++	}
+ }
+ 
+ static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
+@@ -2461,6 +2469,49 @@ static const struct mmc_host_ops mt_msdc_ops = {
+ 	.hw_reset = msdc_hw_reset,
+ };
+ 
++static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
++{
++	unsigned long flags;
++	struct msdc_host *host = (struct msdc_host *)dev_id;
++	struct mmc_host *mmc = mmc_from_priv(host);
++
++	spin_lock_irqsave(&host->lock, flags);
++	if (likely(host->sdio_irq_cnt > 0)) {
++		disable_irq_nosync(host->eint_irq);
++		disable_irq_wake(host->eint_irq);
++		host->sdio_irq_cnt--;
++	}
++	spin_unlock_irqrestore(&host->lock, flags);
++
++	sdio_signal_irq(mmc);
++
++	return IRQ_HANDLED;
++}
++
++static int msdc_request_dat1_eint_irq(struct msdc_host *host)
++{
++	struct gpio_desc *desc;
++	int irq, ret;
++
++	desc = devm_gpiod_get(host->dev, "eint", GPIOD_IN);
++	if (IS_ERR(desc))
++		return PTR_ERR(desc);
++
++	ret = gpiod_to_irq(desc);
++	if (ret < 0)
++		return ret;
++
++	irq = ret;
++	ret = devm_request_threaded_irq(host->dev, irq, NULL, msdc_sdio_eint_irq,
++					IRQF_TRIGGER_LOW | IRQF_ONESHOT | IRQF_NO_AUTOEN,
++					"sdio-eint", host);
++
++	if (!ret)
++		host->eint_irq = irq;
++
++	return ret;
++}
++
+ static const struct cqhci_host_ops msdc_cmdq_ops = {
+ 	.enable         = msdc_cqe_enable,
+ 	.disable        = msdc_cqe_disable,
+@@ -2631,6 +2682,23 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 		goto host_free;
+ 	}
+ 
++	if (!(mmc->caps2 & MMC_CAP2_NO_SDIO)) {
++		/* Support for SDIO eint irq */
++		host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
++		if (IS_ERR(host->pins_eint)) {
++			dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
++		} else {
++			host->pins_dat1 = pinctrl_lookup_state(host->pinctrl, "state_dat1");
++			if (IS_ERR(host->pins_dat1)) {
++				ret = dev_err_probe(&pdev->dev, PTR_ERR(host->pins_dat1),
++						    "Cannot find pinctrl dat1!\n");
++				goto host_free;
++			}
++
++			host->sdio_eint_ready = true;
++		}
++	}
++
+ 	msdc_of_property_parse(pdev, host);
+ 
+ 	host->dev = &pdev->dev;
+@@ -2722,6 +2790,16 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		goto release;
+ 
++	if (host->sdio_eint_ready) {
++		ret = msdc_request_dat1_eint_irq(host);
++		if (ret) {
++			dev_err(host->dev, "Failed to register data1 eint irq!\n");
++			goto release;
++		}
++
++		pinctrl_select_state(host->pinctrl, host->pins_dat1);
++	}
++
+ 	pm_runtime_set_active(host->dev);
+ 	pm_runtime_set_autosuspend_delay(host->dev, MTK_MMC_AUTOSUSPEND_DELAY);
+ 	pm_runtime_use_autosuspend(host->dev);
+@@ -2841,16 +2919,31 @@ static void msdc_restore_reg(struct msdc_host *host)
+ 
+ static int __maybe_unused msdc_runtime_suspend(struct device *dev)
+ {
++	unsigned long flags;
+ 	struct mmc_host *mmc = dev_get_drvdata(dev);
+ 	struct msdc_host *host = mmc_priv(mmc);
+ 
+ 	msdc_save_reg(host);
++
++	if (host->sdio_eint_ready) {
++		disable_irq(host->irq);
++		pinctrl_select_state(host->pinctrl, host->pins_eint);
++		spin_lock_irqsave(&host->lock, flags);
++		if (host->sdio_irq_cnt == 0) {
++			enable_irq(host->eint_irq);
++			enable_irq_wake(host->eint_irq);
++			host->sdio_irq_cnt++;
++		}
++		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++		spin_unlock_irqrestore(&host->lock, flags);
++	}
+ 	msdc_gate_clock(host);
+ 	return 0;
+ }
+ 
+ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+ {
++	unsigned long flags;
+ 	struct mmc_host *mmc = dev_get_drvdata(dev);
+ 	struct msdc_host *host = mmc_priv(mmc);
+ 	int ret;
+@@ -2860,10 +2953,25 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+ 		return ret;
+ 
+ 	msdc_restore_reg(host);
++
++	if (host->sdio_eint_ready) {
++		spin_lock_irqsave(&host->lock, flags);
++		if (host->sdio_irq_cnt > 0) {
++			disable_irq_nosync(host->eint_irq);
++			disable_irq_wake(host->eint_irq);
++			host->sdio_irq_cnt--;
++			sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
++		} else {
++			sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
++		}
++		spin_unlock_irqrestore(&host->lock, flags);
++		pinctrl_select_state(host->pinctrl, host->pins_uhs);
++		enable_irq(host->irq);
++	}
+ 	return 0;
+ }
+ 
+-static int __maybe_unused msdc_suspend(struct device *dev)
++static int __maybe_unused msdc_suspend_noirq(struct device *dev)
+ {
+ 	struct mmc_host *mmc = dev_get_drvdata(dev);
+ 	int ret;
+@@ -2877,13 +2985,13 @@ static int __maybe_unused msdc_suspend(struct device *dev)
+ 	return pm_runtime_force_suspend(dev);
+ }
+ 
+-static int __maybe_unused msdc_resume(struct device *dev)
++static int __maybe_unused msdc_resume_noirq(struct device *dev)
+ {
+ 	return pm_runtime_force_resume(dev);
+ }
+ 
+ static const struct dev_pm_ops msdc_dev_pm_ops = {
+-	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
++	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend_noirq, msdc_resume_noirq)
+ 	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
+ };
+ 
 -- 
-2.18.0
+2.25.1
 
 
 _______________________________________________
