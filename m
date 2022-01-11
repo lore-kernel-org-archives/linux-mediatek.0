@@ -4,73 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FC45C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:04:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F1C2C433FE
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:06:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4rDaXsilFXG6VuztvzZj4aceNJoO3CMwQEv7e8j3IqM=; b=KYxbZhJtKOow16RBaiRTzVuVyC
-	/waQW+1rYuXCOoYXzUReHBltpnTMthHD/uy4ZvINUR9kNs8IM/AKvtZHUMvC+JJWNdrGz/f3aqDoY
-	CBrr817NR/WfUN0i3sk019McLvX6qzt193ynxpiqmYN3NSyqOR7OcVNik8J1OxWquaWbhXsQikZj3
-	Zf4wYc6ZMSyMgV1xNwKBlKwJt2w8OrZLZAV8gL3TelaZE9Ep4eiyNGLiLadHoTzZJPe3zm+lKO7DI
-	iNtRRbwMON1YlyXAFv17tFMRa5eY44EbnKdF6+rN91x2EYBs+1hA9xYaumiIy8Y8oIy+x09B2r7ZH
-	/ua0GF8w==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=X1z65yVa09mNmu//vdH74l9T6MsoEE/2XHmEcaugG5U=; b=FNJjsubH7IWxnhcG5NvD165R1+
+	gNao8pvGtX6avEgGiHDJRtFrLOxkgcoMehfCsIAUhM9IuONvIofrzJ4Io54mI9iFRGZdIdeqOd/s/
+	S7DXR1ArIU/9bS4OCSV/GSPOG/t7mou5LAAmgZnyqHxyCNDnsvdPPwu1FI/iaZ3Joo7fUpITSusGF
+	ygroVzcNRv6NMWsEHeWrn3ush5J7JThx0Nh7ucEdCPXeswXQ2NmLK22dGXQsm584CJzWDvcITAsKv
+	9GgJvjsIuNUBM5OViAHvi/M3D20i3Q9Z6FE6iqDaJm1rPDWCEgdsk+y9meNA1JnRNY22zI3paIa+S
+	ffHixYIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7ExA-00FwVl-3D; Tue, 11 Jan 2022 11:04:36 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1n7EyS-00Fx88-Ct; Tue, 11 Jan 2022 11:05:56 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7Eqi-00Fsdy-Ji; Tue, 11 Jan 2022 10:58:03 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 9E9241F43A23
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1641898675;
- bh=wGR7oi2bLZenrRXTXE28i4i6d2Ekxsg5WZGuvas3jHY=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=Elc7ksex3MqC7VFRbmEfNUXzNvwhk3UEccDOC/u1znbgRXDZTYLQdp/SSiOJ5SEAs
- 1KmcNwdqFZFAJDabwwHyatfRD2zhbhAguiP1XMOqqBDB3qeFl7V1OHP3VBZ/jvitd4
- 6+MgYh6T+cbVegQp6IxnBOF+F95uaD4zdLm3d1lalgGHMCcec+egpC8Fbk/+jEW8dp
- qffAVj3LFRjOTVG7Imi1WW9tlZVKBcd+ux0un1J7gGzXYV8ADM3uzotHqlFQ+v7hGS
- T14MeN/OpRqSiQ+UceKM2Zv0VP7lHG/fD3ibwIs1PyI7Isl0VgfMgbAIJolt18vMOg
- m2gaQsbvPNOtQ==
-Subject: Re: [PATCH v9 02/15] iommu/mediatek-v1: Free the existed fwspec if
- the master dev already has
-To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
- dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
- anthony.huang@mediatek.com, youlin.pei@mediatek.com,
- Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org,
- mingyuan.ma@mediatek.com, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
- libo.kang@mediatek.com, yi.kuo@mediatek.com,
- linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
- Tiffany Lin <tiffany.lin@mediatek.com>, anan.sun@mediatek.com,
- srv_heupstream@mediatek.com, acourbot@chromium.org,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>
-References: <20211112105509.12010-1-yong.wu@mediatek.com>
- <20211112105509.12010-3-yong.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <db984e48-a0fc-0802-0ce6-69d542c08771@collabora.com>
-Date: Tue, 11 Jan 2022 11:57:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1n7EvO-00FvkV-SC
+ for linux-mediatek@lists.infradead.org; Tue, 11 Jan 2022 11:02:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id D4023615A2;
+ Tue, 11 Jan 2022 11:02:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B638DC36AE9;
+ Tue, 11 Jan 2022 11:02:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1641898965;
+ bh=bpDyuPCSeMVqJyeugkA7wQopRLRWRBPLU2LF5wLNe8w=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=B0JjGXgMGBwLwKbWaaEtu9QTD3QigaJQOdps+TZWdEkW6WFieqW4J9e3+UIsFrfBM
+ NI0K5G08992uKy502/kb+TgYY/J/u6q2/2A4egeEpzevxrbua5DbAgH97Ptfna71Bp
+ vW+U52aTuLF9fov697XcyMNLSPnMW6MeZZWGosBxy/Ss5Lh+cqpGEI9MENKvL85t+N
+ 3uJ5wb4T3bE7b9jN87/l9EzZhGfQ2agOrY8F0FxXOKIrU+xSOB8Sws0iPVz8zrBcqN
+ Tru4X9WDWzOMzyJRQga9IPQsy9dTiB7juVdSH28g2sPUF0252y455I9/vUDKe1KrLz
+ zwZg8zIrQaM9Q==
+Date: Tue, 11 Jan 2022 12:02:41 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Sven Eckelmann <sven@narfation.org>
+Cc: lorenzo.bianconi@redhat.com, sean.wang@mediatek.com, nbd@nbd.name,
+ jf@simonwunderlich.de, linux-wireless@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Deren Wu <deren.wu@mediatek.com>
+Subject: Re: mt76: MT7921K monitor mode not working
+Message-ID: <Yd1j0UFVkDC50x8D@lore-desk>
+References: <YapTmM3EztojTS9F@lore-desk--annotate> <12706913.cppxkphV4n@ripper>
+ <YbusBazb4GAC6YQl@lore-desk> <34944167.qDeGz8lmHr@ripper>
 MIME-Version: 1.0
-In-Reply-To: <20211112105509.12010-3-yong.wu@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <34944167.qDeGz8lmHr@ripper>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_025756_860741_11E1290D 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20220111_030247_002150_6AB7874D 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,52 +68,76 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============7307108025063863665=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 12/11/21 11:54, Yong Wu ha scritto:
-> When the iommu master device enters of_iommu_xlate, the ops may be
-> NULL(iommu dev is defered), then it will initialize the fwspec here:
-> 
-> [<c0c9c5bc>] (dev_iommu_fwspec_set) from [<c06bda80>]
-> (iommu_fwspec_init+0xbc/0xd4)
-> [<c06bd9c4>] (iommu_fwspec_init) from [<c06c0db4>]
-> (of_iommu_xlate+0x7c/0x12c)
-> [<c06c0d38>] (of_iommu_xlate) from [<c06c10e8>]
-> (of_iommu_configure+0x144/0x1e8)
-> 
-> BUT the mtk_iommu_v1.c only supports arm32, the probing flow still is a bit
-> weird. We always expect create the fwspec internally. otherwise it will
-> enter here and return fail.
-> 
-> static int mtk_iommu_create_mapping(struct device *dev,
-> 				    struct of_phandle_args *args)
-> {
->          ...
-> 	if (!fwspec) {
-> 	        ....
-> 	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
->                  >>>>>>>>>>Enter here. return fail.<<<<<<<<<<<<
-> 		return -EINVAL;
-> 	}
-> 	...
-> }
-> 
-> Thus, Free the existed fwspec if the master device already has fwspec.
-> 
-> This issue is reported at:
-> https://lore.kernel.org/linux-mediatek/trinity-7d9ebdc9-4849-4d93-bfb5-429dcb4ee449-1626253158870@3c-app-gmx-bs01/
-> 
-> Reported-by: Frank Wunderlich <frank-w@public-files.de>
-> Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
-> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+--===============7307108025063863665==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jWgpeJokEZ4CKhaP"
+Content-Disposition: inline
 
+
+--jWgpeJokEZ4CKhaP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+> Hi,
+>=20
+> On Thursday, 16 December 2021 22:13:41 CET Lorenzo Bianconi wrote:
+> > can you please try the patch below to see if it fixes the crash/hang in=
+ monitor
+> > mode?
+>=20
+> I have tested it now. But it seems like it was already applied. Otherwise=
+ I=20
+> would have provided my Tested-by.
+>=20
+> The only problem I have with the monitor mode is the missing beacons (and=
+=20
+> maybe more frames which I haven't yet identified).
+>=20
+> Kind regards,
+> 	Sven
+
+Hi Sven,
+
+can you please test my latest patch?
+https://patchwork.kernel.org/project/linux-wireless/patch/f6ad709b1a64152b5=
+955e71b7eef9f9c4c7f127e.1641893305.git.lorenzo@kernel.org/
+This patch will automatically set/clear runtime-pm/deep-sleep adding/removi=
+ng a
+monitor vif.
+
+Regards,
+Lorenzo
+
+--jWgpeJokEZ4CKhaP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYd1j0QAKCRA6cBh0uS2t
+rM6kAP9hz6s1QHJtutAXCkq6/VTbZpOGXDHIodyEESZicFRlIAD/WkjRu83dUNWg
+A2ZzAcHLlxpJGttwvqBE9SDQHoyfQw0=
+=Cn3t
+-----END PGP SIGNATURE-----
+
+--jWgpeJokEZ4CKhaP--
+
+
+--===============7307108025063863665==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============7307108025063863665==--
+
