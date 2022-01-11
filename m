@@ -4,52 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17D8FC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 10:53:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10DB6C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 10:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2rU8VlC9Qw+q93wR3rJrIFub8lf21z5Ms/tdshBVUic=; b=OjwuzqjeR9pV8nOSlknx8sx1mf
-	ka5h/wJhn1w4pDf0QZX/R9k+cXFG42tQcx/8GLp7tNIOFTdPXSMJLjF1czJFUeCs049UyPHIqua6M
-	pgPiZ7Izilg2WM8oqWPWFyE5BWZUmXpHjj7XZ+QgCL28Z01/8p0dTmwT6f50iP1OwstEOXZp5gUei
-	XB0E2kh1p2j9iz8yNZXItcwpDtTatlAXeSjMUvBbAvqEpnfiRuT8yPFw5LvoId/FXqCT1X0nuZka8
-	9qgmay2G/tFg+5TyhsK1CHpKvKOBcFLROTRTOPTmJoPMNHX68lwr9xX9R9CUMBEDqnkIlwdniS+ZH
-	rH1lWyDg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KvVJdrlIzE/lES33MH/lx4a3hR+uKy8JLpI5dY2Rpn4=; b=3PH5P/N2Wk+nzRm7E8saLGLEmN
+	d+NO3N+tUY7WotVy9izONsATNNSr+xZv56UNI27vcumfwQcqYpHvmnZA3kl5fxpha8F2ShUqoeUhQ
+	QJMr+UksSL46JQrhfvyY1M6I5DAHhnX4bbu2VI5BYCC9pRZuu7kzFvHHn8L0ItwTCMoz4iZ7Zv/ND
+	JRRHUtZukmsqvS1VbMdvm13xg5f3i/tnrl6jyMdg5939Dj6zL2kC9B3GAIafk6JTfbtzlweGsJGaz
+	q0VDEQKQimJgnxow7UxX6qEnBo+SdKicpzIHuouXCJZApyxzwSsLrz0bSWo5cZwDbeczrz82OBIMB
+	gaj70cRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7EmG-00FrKq-BI; Tue, 11 Jan 2022 10:53:20 +0000
-Received: from dvalin.narfation.org ([2a00:17d8:100::8b1])
+	id 1n7Er1-00Fsy1-Cr; Tue, 11 Jan 2022 10:58:15 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7EmD-00FrJX-5A
- for linux-mediatek@lists.infradead.org; Tue, 11 Jan 2022 10:53:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=narfation.org;
- s=20121; t=1641898392;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=QTd0FTuJ1zu6nHPFav2wUHpH9/BRDgLmM7wW3sL7Nzg=;
- b=oLaJMtpsujuEk1zQOAC161mq515hFcZJP0N4CTep3ceeV82BQPW7UOZULiv7/I3y9iqfg5
- 22iPeccgyDnpA/IhQ6rhgPJA1QUJ5aH5wJ3KFpB5obAXLZQDZx2ohrzjr4uoUFYKwQ96sE
- eG0o/PRHkgrGQVFu3NLX9/CDwdtCac4=
-From: Sven Eckelmann <sven@narfation.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: lorenzo.bianconi@redhat.com, sean.wang@mediatek.com, nbd@nbd.name,
- jf@simonwunderlich.de, linux-wireless@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Deren Wu <deren.wu@mediatek.com>
-Subject: Re: mt76: MT7921K monitor mode not working
-Date: Tue, 11 Jan 2022 11:53:09 +0100
-Message-ID: <34944167.qDeGz8lmHr@ripper>
-In-Reply-To: <YbusBazb4GAC6YQl@lore-desk>
-References: <YapTmM3EztojTS9F@lore-desk--annotate>
- <12706913.cppxkphV4n@ripper> <YbusBazb4GAC6YQl@lore-desk>
+ id 1n7EqR-00FsLQ-E9; Tue, 11 Jan 2022 10:57:40 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id BCEA41F43A23
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641898657;
+ bh=AnrcqKE4XACqfTEKBdzJAV+YhQuBaL3ashwC8Npkc5I=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=T91Pm299omhIhyxST+Gatc1uRwa3a0bysXNGmBFyko7I+QoIqFFGtn5opN9dZE2WA
+ 4KFRmlC/ff1RCaQAYqZUgVKJa0V07DxGMx6tnDB2q70H5wgPAOmVvCBKaqbzlzzy39
+ 51qWTtkJ9lUoZc1zca8sTI6VyAh86u2ofP1l/jh18RIP8gOPyifhPskmEestq49I0A
+ x/Eh8ETp838KE2tRTH3tVPq7g2kG7TpBuFf3vOj4CEIQHljSq8tnfaUfzcD2FXV04d
+ POujJ+S821mXOecIWRgB4u47moT9ahriffHiaS/v3rgxXOR/S7gqAVOwvRR2rsaFhF
+ UdGEKjjfK8/qQ==
+Subject: Re: [PATCH v9 15/15] arm64: dts: mediatek: Get rid of mediatek, larb
+ for MM nodes
+To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
+ dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
+ anthony.huang@mediatek.com, youlin.pei@mediatek.com,
+ Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
+ Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ mingyuan.ma@mediatek.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ libo.kang@mediatek.com, yi.kuo@mediatek.com,
+ linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, anan.sun@mediatek.com,
+ srv_heupstream@mediatek.com, acourbot@chromium.org,
+ linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
+ Robin Murphy <robin.murphy@arm.com>
+References: <20211112105509.12010-1-yong.wu@mediatek.com>
+ <20211112105509.12010-16-yong.wu@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <231368ef-2619-9556-68fd-45c11e8f7290@collabora.com>
+Date: Tue, 11 Jan 2022 11:57:32 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
+In-Reply-To: <20211112105509.12010-16-yong.wu@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_025317_391981_E9E6EC14 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220111_025739_638852_E9F1DE19 
+X-CRM114-Status: GOOD (  10.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,80 +82,23 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3140941322788277144=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============3140941322788277144==
-Content-Type: multipart/signed; boundary="nextPart1995525.QtnH1V4xGb"; micalg="pgp-sha512"; protocol="application/pgp-signature"
+Il 12/11/21 11:55, Yong Wu ha scritto:
+> After adding device_link between the IOMMU consumer and smi,
+> the mediatek,larb is unnecessary now.
+> 
+> CC: Matthias Brugger <matthias.bgg@gmail.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: Evan Green <evgreen@chromium.org>
 
---nextPart1995525.QtnH1V4xGb
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Sven Eckelmann <sven@narfation.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: lorenzo.bianconi@redhat.com, sean.wang@mediatek.com, nbd@nbd.name, jf@simonwunderlich.de, linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, Deren Wu <deren.wu@mediatek.com>
-Subject: Re: mt76: MT7921K monitor mode not working
-Date: Tue, 11 Jan 2022 11:53:09 +0100
-Message-ID: <34944167.qDeGz8lmHr@ripper>
-In-Reply-To: <YbusBazb4GAC6YQl@lore-desk>
-References: <YapTmM3EztojTS9F@lore-desk--annotate> <12706913.cppxkphV4n@ripper> <YbusBazb4GAC6YQl@lore-desk>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Hi,
-
-On Thursday, 16 December 2021 22:13:41 CET Lorenzo Bianconi wrote:
-> can you please try the patch below to see if it fixes the crash/hang in monitor
-> mode?
-
-I have tested it now. But it seems like it was already applied. Otherwise I 
-would have provided my Tested-by.
-
-The only problem I have with the monitor mode is the missing beacons (and 
-maybe more frames which I haven't yet identified).
-
-Kind regards,
-	Sven
---nextPart1995525.QtnH1V4xGb
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEF10rh2Elc9zjMuACXYcKB8Eme0YFAmHdYZUACgkQXYcKB8Em
-e0bz6hAAvN8XCN4JT8UAOQ2mqUvc4un4LFdZErMfVY3E0PFPX68IdIw3xVlZZbVx
-4KHkCAO6lsfcQnYytpxljYCA+m0iT/A5WLObqwmNTevZ4pXW2IO2bK2Jpt8FaSCd
-8PZfw1YeTzHT8oryQXXpc+3T6X6i9/txs3IYxdA3aCW28bLugJzaJrV68JI73PPm
-lSsCUAlEiUtPmWmWmNuD0XIbPgVc7tCF72ghX3lMK6r39vx1EuKfzhePOh6FQBLg
-Hvjbyhs5xKU7nAYsaV5ZODmDl+lbXmxTlqfHqlNnRwnoxiD1CMwZJdWk1Sy0mfxB
-6vNCJJykja0isJwvTb0lkFP9emgPiDspzGf78dgPRSs+tHwNsVrdU2Rx7xYYGYU9
-pQVT4b1E1rot7z5u9fo9rQewVvsKC1ayLyijhjred0A2gZmtqEBp/wpxbcmAy6k+
-Ab66IjYWZF/iuuqjyCSinRJFeqQbqi96F5sX/qwutSXZPwZSMCt8R7+TenB9JrDq
-bQnsiIaDkmr5QZk+LuBKr07OX+zt4qtkygSHeHXZHsd+TrFn7WgmIJ/yanzNGauW
-Gf+AnT3uLwdfhuD7g34q+LustQrgfrjTNX+Hrs7VeV8uG1cM9Rhs4l5i19HE29JC
-fYCgmDPSX1k7xwJqKwxEszClcDjIKiIeQ42482hPsWTcT0emHso=
-=trR3
------END PGP SIGNATURE-----
-
---nextPart1995525.QtnH1V4xGb--
-
-
-
-
-
---===============3140941322788277144==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3140941322788277144==--
-
-
-
-
