@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC7F0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 01:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892A8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 06:42:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Bw7fgUKMHWEv4u32HKkV81B/UVO5AXc874tp7PmkVqs=; b=PsYdVvLKIvMR/g
-	W4fRvi0LBjD/0irPpbtOEYIZxJLRr9j9QtWgKUBrRpUlAeGtt5yPMPx911jmGeWm/yNrKpK72NwHr
-	N6wKH+JA00yzw6cG0ORqeYU91vMbU1PSLlonpwLp+Z9L8LW9/1CLIVGio6mT6Rzs5KLkc+OOPlF2j
-	DzmMDAJ77jkxY6dGgWsHZrzNmbuyTiXz9Wo2VLFE5MGlqr60gFebiSjbtnW76N3JMW1ZeXnEyt7h+
-	Mb8ZPzgI+98OvcHiFtsk76qiEKAy58LFYMNSyh3oSpwBrMm9w8mCdTMAsMuDb8xtc4WJF9B5H5LRG
-	UER1DPzPit1yyEnd1qXw==;
+	List-Owner; bh=BiH3QvT7jFvliPlupf9tSwoc2kdSbl3WJl5c4DuuTSA=; b=lHYfPasgMQ5Wez
+	acWLglTSM6aokHNcEYjJ5LQ3T2DUzkv7xNKky+svdbG7Vqbfp9Q8eSAt1qq4bFkizFq/GMxaWj89w
+	4QCxoprPw3ysNxZBFDVP0dTt8zFulHDIRTfieCXMI7sCxNX4mt8z6l7XNKZc8+g87+qCZYIYPhxhj
+	OHDi74PUnWPVtacyKyXCqj7ucunhpeu7LvFEimopRsREksw+lebIFEk6+5mfybzbDnQh83x28vT8V
+	BUneoDBkIjlHhXBDOU+tuMHa47GlJ5Tc/PjduDBW7ajej3dD1CcTrCgYprrhEQct8JJJpAcMg5dlt
+	c0snLyUyvLmSozKvSufg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n76HZ-00EFpi-T7; Tue, 11 Jan 2022 01:49:05 +0000
+	id 1n7Aqu-00EvaR-Bg; Tue, 11 Jan 2022 06:41:52 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n76HW-00EFoD-B9; Tue, 11 Jan 2022 01:49:04 +0000
-X-UUID: d9cd3b465ddb4f4db20dce5a799066f4-20220110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=A9dZHK7o6uDJ+ezxdVvtTqNKB5+FlQTaCobZopYWpSw=; 
- b=BHnp9YSUvVY9f0eXqB9T7ZyffC2rJ5QvJ5pin4qJwbH4ntS9hIXUg1Ifq2HVj5TIO4pupNdKfNbeqQIq58b/hQ9+oRz1+0mafUIsHBlpaJ8I++55laKRPB0SrAC0/L0xCbu3QAcmDnKc/KkqS754FWcgFax/dVq5Ctxs9Mu1DSs=;
-X-UUID: d9cd3b465ddb4f4db20dce5a799066f4-20220110
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <leilk.liu@mediatek.com>)
+ id 1n7Aqr-00EvZQ-Tu; Tue, 11 Jan 2022 06:41:51 +0000
+X-UUID: 8714b17deda24554937e428dffde55be-20220110
+X-UUID: 8714b17deda24554937e428dffde55be-20220110
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 541465221; Mon, 10 Jan 2022 18:48:59 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 10 Jan 2022 17:48:57 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 11 Jan 2022 09:48:50 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ with ESMTP id 98186046; Mon, 10 Jan 2022 23:41:45 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 10 Jan 2022 22:40:00 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 11 Jan 2022 14:39:58 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 11 Jan 2022 09:48:49 +0800
-Message-ID: <f9ee59dab63c33001b196e56fd55aa890948ddcd.camel@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: spi: Convert spi-mt65xx &
- spi-slave-mt27xx to json-schema
-From: Leilk Liu <leilk.liu@mediatek.com>
-To: Rob Herring <robh@kernel.org>
-CC: <linux-arm-kernel@lists.infradead.org>, Rob Herring <robh+dt@kernel.org>, 
- Mark Brown <broonie@kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <linux-mediatek@lists.infradead.org>
-Date: Tue, 11 Jan 2022 09:48:49 +0800
-In-Reply-To: <1641833339.690847.1067453.nullmailer@robh.at.kernel.org>
-References: <20220110053744.30323-1-leilk.liu@mediatek.com>
- <1641833339.690847.1067453.nullmailer@robh.at.kernel.org>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ Transport; Tue, 11 Jan 2022 14:39:57 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
+ <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, "Tomasz
+ Figa" <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <iommu@lists.linux-foundation.org>, <yong.wu@mediatek.com>,
+ <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <lc.kan@mediatek.com>,
+ <yi.kuo@mediatek.com>, <anthony.huang@mediatek.com>, "AngeloGioacchino Del
+ Regno" <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v2 4/6] memory: mtk-smi: Fix the return value for
+ clk_bulk_prepare_enable
+Date: Tue, 11 Jan 2022 14:39:02 +0800
+Message-ID: <20220111063904.7583-5-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220111063904.7583-1-yong.wu@mediatek.com>
+References: <20220111063904.7583-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_174902_433877_96B15F7D 
-X-CRM114-Status: GOOD (  20.30  )
+X-CRM114-CacheID: sfid-20220110_224149_991836_FAD5A7D6 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,73 +80,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2022-01-10 at 10:48 -0600, Rob Herring wrote:
-> On Mon, 10 Jan 2022 13:37:43 +0800, Leilk Liu wrote:
-> > Convert Mediatek ARM SOC's SPI Master & Slave controller binding
-> > to json-schema format.
-> > 
-> > Signed-off-by: Leilk Liu <leilk.liu@mediatek.com>
-> > ---
-> >  .../bindings/spi/mediatek,spi-mt65xx.yaml     | 96
-> > +++++++++++++++++++
-> >  .../spi/mediatek,spi-slave-mt27xx.yaml        | 69 +++++++++++++
-> >  .../devicetree/bindings/spi/spi-mt65xx.txt    | 68 -------------
-> >  .../bindings/spi/spi-slave-mt27xx.txt         | 33 -------
-> >  4 files changed, 165 insertions(+), 101 deletions(-)
-> >  create mode 100644
-> > Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> >  create mode 100644
-> > Documentation/devicetree/bindings/spi/mediatek,spi-slave-
-> > mt27xx.yaml
-> >  delete mode 100644 Documentation/devicetree/bindings/spi/spi-
-> > mt65xx.txt
-> >  delete mode 100644 Documentation/devicetree/bindings/spi/spi-
-> > slave-mt27xx.txt
-> > 
-> 
-> My bot found errors running 'make DT_CHECKER_FLAGS=-m
-> dt_binding_check'
-> on your patch (DT_CHECKER_FLAGS is new in v5.13):
-> 
-> yamllint warnings/errors:
-> 
-> dtschema/dtc warnings/errors:
-> /builds/robherring/linux-dt-
-> review/Documentation/devicetree/bindings/spi/mediatek,spi-slave-
-> mt27xx.yaml: properties:compatible:oneOf: [{'const':
-> 'mediatek,mt2712-spi-slave'}, {'const': 'mediatek,mt8195-spi-slave'}] 
-> should not be valid under {'items': {'propertyNames': {'const':
-> 'const'}, 'required': ['const']}}
-> 	hint: Use 'enum' rather than 'oneOf' + 'const' entries
-> 	from schema $id: 
-> http://devicetree.org/meta-schemas/keywords.yaml#
-> /builds/robherring/linux-dt-
-> review/Documentation/devicetree/bindings/spi/mediatek,spi-slave-
-> mt27xx.yaml: ignoring, error in schema: properties: compatible: oneOf
-> Documentation/devicetree/bindings/spi/mediatek,spi-slave-
-> mt27xx.example.dt.yaml:0:0: /example-0/spi@10013000: failed to match
-> any schema with compatible: ['mediatek,mt2712-spi-slave']
-> 
-> doc reference errors (make refcheckdocs):
-> 
-> See https://patchwork.ozlabs.org/patch/1577767
-> 
-> This check can fail if there are any dependencies. The base for a
-> patch
-> series is generally the most recent rc1.
-> 
-> If you already ran 'make dt_binding_check' and didn't see the above
-> error(s), then make sure 'yamllint' is installed and dt-schema is up
-> to
-> date:
-> 
-> pip3 install dtschema --upgrade
-> 
-> Please check and re-submit.
+The successful return value for clk_bulk_prepare_enable is 0, rather than
+"< 0". Fix this.
 
-OK, I'll re-send it, thanks
+Fixes: 0e14917c57f9 ("memory: mtk-smi: Use clk_bulk clock ops")
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+---
+ drivers/memory/mtk-smi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index b883dcc0bbfa..e7b1a22b12ea 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -480,7 +480,7 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
+ 	int ret;
+ 
+ 	ret = clk_bulk_prepare_enable(larb->smi.clk_num, larb->smi.clks);
+-	if (ret < 0)
++	if (ret)
+ 		return ret;
+ 
+ 	/* Configure the basic setting for this larb */
+-- 
+2.18.0
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
