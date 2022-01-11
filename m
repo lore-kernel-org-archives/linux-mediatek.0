@@ -4,51 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87DEFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 07:49:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43B40C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 07:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:To:From:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OTZcMG79Z5dYQylbpGAJUyk7N8KnSSEVIWi8E1/R3Yg=; b=kAy4MSIXISG6Q2
-	qfRV+2GAwj0RxCygYhiZQN2IJ/BsdQukRwVfangNgARhgqZXmjAh3Mqa8mSwGCPFjoxGfKaNKDnAA
-	VnyefHSpCf0M2Rnho4PGOJUZkL+VmU5+SHFWt3WV1bR9j+D2WxDqXB/5riuzjKlKf5gyaPReB67sH
-	PgzTcDusGqgCS654bJKwy20PUjggWMXiDcrnC007NVpo1BeseQTlUCAmFYZVCa3GavxjWvRChljbH
-	ATERMIyGxfvnfwjOa+T/Kqz6cnHaJfgrr9DxjYzAFs1p3ifVLeYTDP15kLUMLt9OQkceasWcUq+F1
-	grbWireipX+iMp47uNHg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=46SauTyit4sWt2JRMPfuc5e5tF4z9rL9nm6H+Pyr3gA=; b=oDPMjhvPAjBfAM
+	/X8cSO/SVHyi9xxZUB+7FUxKzvnB5ZuvuM5JfO6TkNhVMNa3Ws/J1HSzO57NWZ8ugAh+LTRL7ISPV
+	bJ4A+INrm6j/eu8iNlJ36isIgFv1tVqhdswkTY5Ubqxups08Tdr6ghS5Qxw9IXGk61Dsp0w51lbGG
+	y8zLswa1cnMLo+9pHBrJZ++FywmHe9lmOu7TI7e/Y1JXAeet4XYyxLcUOfwct16rAyZUaEEKSW9bK
+	9ezwo5o7nBrwX0eJCeHqTAKA07cwPvzhkgIuSV/8xpVSAkKcaQWTwn+c8oFnGd2OcSvCGUI+T74nO
+	O6WELxsseF841XC6ikZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7BuS-00FBJo-RJ; Tue, 11 Jan 2022 07:49:36 +0000
-Received: from mail.betterbiz.pl ([45.86.209.138])
+	id 1n7ByD-00FCTy-Ba; Tue, 11 Jan 2022 07:53:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7BuQ-00FBIu-36
- for linux-mediatek@lists.infradead.org; Tue, 11 Jan 2022 07:49:35 +0000
-Received: by mail.betterbiz.pl (Postfix, from userid 1001)
- id C057D82ECD; Tue, 11 Jan 2022 02:45:44 -0500 (EST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=betterbiz.pl; s=mail;
- t=1641887373; bh=07NAgW1e0WiNB9zqagiM2BnwZfWBCpNa2E4+ccxBPgw=;
- h=Date:From:To:Subject:From;
- b=yqC6OaBar8bbPGtFTUKgcBKfceq9TRB0dULewEbzoVzHVoYb0DkB98PBtSY/keZez
- pCLbFDLbAg8XWtSJrFGdwVtkmF9+lR4JbnzSecsMN2cJm1NMb9nKR6DmlffnI8c+jS
- ePKwDe3lODkTnLce9xjcseYaYzU4Xm3z2sP7OfM6iYGyE6UBCzoGiynMz6rPPZ8/ih
- w9PDJqitI+/yFQqaGnuAogu5AKxx64sCzJBqypf6oaDRv2RAff9bnS19NmF4nCtEiK
- v9z1oXT6vqphvoihYkp+3M7zrnZ7gKp9pMfKaXVmThONF/rfsNxMUe9wkxN/faI5RQ
- MJ7NOIc6C3BRg==
-Received: by mail.betterbiz.pl for <linux-mediatek@lists.infradead.org>;
- Tue, 11 Jan 2022 07:45:38 GMT
-Message-ID: <20220111024500-0.1.o.10j5.0.gwvmza8o7k@betterbiz.pl>
-Date: Tue, 11 Jan 2022 07:45:38 GMT
-From: "Jakub Daroch" <jakub.daroch@betterbiz.pl>
-To: <linux-mediatek@lists.infradead.org>
-Subject: Wycena paneli fotowoltaicznych
-X-Mailer: mail.betterbiz.pl
+ id 1n7ByA-00FCRc-Kd
+ for linux-mediatek@lists.infradead.org; Tue, 11 Jan 2022 07:53:27 +0000
+X-UUID: ae3d1956515641e9a9fe141662f87183-20220111
+X-UUID: ae3d1956515641e9a9fe141662f87183-20220111
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <bo.jiao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 759761650; Tue, 11 Jan 2022 00:53:22 -0700
+Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 10 Jan 2022 23:51:17 -0800
+Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
+ (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 11 Jan 2022 15:51:15 +0800
+Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
+ MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
+ 15.0.1497.2 via Frontend Transport; Tue, 11 Jan 2022 15:51:14 +0800
+From: Bo Jiao <bo.jiao@mediatek.com>
+To: Felix Fietkau <nbd@nbd.name>
+CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
+ <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
+ <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
+ Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
+Subject: [PATCH 4/5] mt76: mt7915: add Kconfig entry for MT7986
+Date: Tue, 11 Jan 2022 15:51:07 +0800
+Message-ID: <d63ae1dfe22f90e0a9fa4ccc01152e82287ea0da.1641886298.git.Bo.Jiao@mediatek.com>
+X-Mailer: git-send-email 2.17.0
+In-Reply-To: <351271a274dc236f027c58487df6b21c7dbf9fd0.1641886298.git.Bo.Jiao@mediatek.com>
+References: <351271a274dc236f027c58487df6b21c7dbf9fd0.1641886298.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_234934_164331_B1D0CB9D 
-X-CRM114-Status: UNSURE (   1.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220110_235326_715054_39C2652D 
+X-CRM114-Status: GOOD (  10.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,17 +69,45 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RHppZcWEIGRvYnJ5LAoKZG9zdHJ6ZWdhbSBtb8W8bGl3b8WbxIcgd3Nww7PFgnByYWN5IHogUGHF
-hHN0d2EgZmlybcSFLgoKxZp3aWFkY3p5bXkga29tcGxla3Nvd8SFIG9ic8WCdWfEmSBpbndlc3R5
-Y2ppIHcgZm90b3dvbHRhaWvEmSwga3TDs3JhIG9ibmnFvGEga29zenR5IGVuZXJnaWkgZWxla3Ry
-eWN6bmVqIG5hd2V0IG8gOTAlLgoKQ3p5IHPEhSBQYcWEc3R3byB6YWludGVyZXNvd2FuaSB3ZXJ5
-ZmlrYWNqxIUgd3N0xJlwbnljaCBwcm9wb3p5Y2ppPwoKClBvemRyYXdpYW0sCkpha3ViIERhcm9j
-aAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-bWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRl
-awo=
+From: Bo Jiao <Bo.Jiao@mediatek.com>
+
+This enables building support for the MT7986 SoC built-in WLAN chip.
+
+Signed-off-by: Ryder Lee <ryder.lee@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7915/Kconfig | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
+index b8b98cb..8db1ddc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/mt7915/Kconfig
+@@ -11,3 +11,14 @@ config MT7915E
+ 	  OFDMA, spatial reuse and dual carrier modulation.
+ 
+ 	  To compile this driver as a module, choose M here.
++
++config MT7986_WMAC
++	bool "MT7986 (SoC) WMAC support"
++	depends on MT7915E
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	select REGMAP
++	default y
++	help
++	  This adds support for the built-in WMAC on MT7986 SoC devices
++	  which has the same feature set as a MT7915, but enables 6E
++	  support.
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
