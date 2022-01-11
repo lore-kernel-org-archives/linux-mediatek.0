@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892A8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 06:42:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B017C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 06:42:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BiH3QvT7jFvliPlupf9tSwoc2kdSbl3WJl5c4DuuTSA=; b=lHYfPasgMQ5Wez
-	acWLglTSM6aokHNcEYjJ5LQ3T2DUzkv7xNKky+svdbG7Vqbfp9Q8eSAt1qq4bFkizFq/GMxaWj89w
-	4QCxoprPw3ysNxZBFDVP0dTt8zFulHDIRTfieCXMI7sCxNX4mt8z6l7XNKZc8+g87+qCZYIYPhxhj
-	OHDi74PUnWPVtacyKyXCqj7ucunhpeu7LvFEimopRsREksw+lebIFEk6+5mfybzbDnQh83x28vT8V
-	BUneoDBkIjlHhXBDOU+tuMHa47GlJ5Tc/PjduDBW7ajej3dD1CcTrCgYprrhEQct8JJJpAcMg5dlt
-	c0snLyUyvLmSozKvSufg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=B4PKamrzgvOATBScIHOe6/xjSQEy/aSLRQ7otMxiGmc=; b=4EXoRSlIh5FDm9
+	OBWXJrRx5SA84DYZo858zkjNnWIeKse2aAAi7Nuzw2IBeiQTP84m8AqXRSua0xs6j9NCcACelVAoE
+	5zJvziijf+Zu3co6mqYLyuKUpzDUlaez8vERFr+4/O1wu61suV5PZyGotZa5GbohgpkOpsTHwDqDO
+	t79Hn36IiQdky3uTx3kH1BRMkQBwbvAMM1aVcMOOdVfNpXUW6Ofy25SsxoOolUs6OMP9SaxcuVNZz
+	7R06Jya8XSlwBjANUMsYYD9iDASLr92WL875GBwYIml/BAl0fzl/NIIzbCFgqvKBM5KsDk9IeXRRO
+	h7XNOmC8Ez6qnaHPfpTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7Aqu-00EvaR-Bg; Tue, 11 Jan 2022 06:41:52 +0000
+	id 1n7Ar4-00Evcj-HM; Tue, 11 Jan 2022 06:42:02 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7Aqr-00EvZQ-Tu; Tue, 11 Jan 2022 06:41:51 +0000
-X-UUID: 8714b17deda24554937e428dffde55be-20220110
-X-UUID: 8714b17deda24554937e428dffde55be-20220110
+ id 1n7Aqr-00EvZK-Si; Tue, 11 Jan 2022 06:41:51 +0000
+X-UUID: f7b1c9f0312042009791b11b2510b190-20220110
+X-UUID: f7b1c9f0312042009791b11b2510b190-20220110
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 98186046; Mon, 10 Jan 2022 23:41:45 -0700
+ with ESMTP id 2043502385; Mon, 10 Jan 2022 23:41:45 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 10 Jan 2022 22:40:00 -0800
+ 15.0.1497.2; Mon, 10 Jan 2022 22:39:12 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Tue, 11 Jan 2022 14:39:58 +0800
+ 15.2.792.15; Tue, 11 Jan 2022 14:39:11 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 11 Jan 2022 14:39:57 +0800
+ Transport; Tue, 11 Jan 2022 14:39:09 +0800
 From: Yong Wu <yong.wu@mediatek.com>
 To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
  <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
@@ -52,18 +52,16 @@ CC: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
  <youlin.pei@mediatek.com>, <anan.sun@mediatek.com>, <lc.kan@mediatek.com>,
  <yi.kuo@mediatek.com>, <anthony.huang@mediatek.com>, "AngeloGioacchino Del
  Regno" <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH v2 4/6] memory: mtk-smi: Fix the return value for
- clk_bulk_prepare_enable
-Date: Tue, 11 Jan 2022 14:39:02 +0800
-Message-ID: <20220111063904.7583-5-yong.wu@mediatek.com>
+Subject: [PATCH v2 0/6] MT8186 SMI SUPPORT
+Date: Tue, 11 Jan 2022 14:38:58 +0800
+Message-ID: <20220111063904.7583-1-yong.wu@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220111063904.7583-1-yong.wu@mediatek.com>
-References: <20220111063904.7583-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220110_224149_991836_FAD5A7D6 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20220110_224149_964406_36F7FCE3 
+X-CRM114-Status: UNSURE (   9.82  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +78,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The successful return value for clk_bulk_prepare_enable is 0, rather than
-"< 0". Fix this.
+This patchset adds mt8186 smi support, mainly adds a sleep control function.
 
-Fixes: 0e14917c57f9 ("memory: mtk-smi: Use clk_bulk clock ops")
-Signed-off-by: Yong Wu <yong.wu@mediatek.com>
----
- drivers/memory/mtk-smi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Change note:
+v2: a) Add two patches for the "make dtbs_check" warning.
+    b) Seperate the "sleep control" into two functions.
+       And add a "TODO" comment while sleep control fails.
 
-diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
-index b883dcc0bbfa..e7b1a22b12ea 100644
---- a/drivers/memory/mtk-smi.c
-+++ b/drivers/memory/mtk-smi.c
-@@ -480,7 +480,7 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
- 	int ret;
- 
- 	ret = clk_bulk_prepare_enable(larb->smi.clk_num, larb->smi.clks);
--	if (ret < 0)
-+	if (ret)
- 		return ret;
- 
- 	/* Configure the basic setting for this larb */
+v1: https://lore.kernel.org/linux-mediatek/20211203064027.14993-1-yong.wu@mediatek.com/
+    Base on v5.16-rc1.
+
+Yong Wu (6):
+  dt-bindings: memory: mtk-smi: Fix larb-id dtbs_check warning
+  dt-bindings: memory: mtk-smi: Fix the larb clock/clock-names dtbs
+    warning
+  dt-bindings: memory: mediatek: Add mt8186 support
+  memory: mtk-smi: Fix the return value for clk_bulk_prepare_enable
+  memory: mtk-smi: Add sleep ctrl function
+  memory: mtk-smi: mt8186: Add smi support
+
+ .../mediatek,smi-common.yaml                  |  4 +-
+ .../memory-controllers/mediatek,smi-larb.yaml | 10 ++--
+ drivers/memory/mtk-smi.c                      | 50 ++++++++++++++++++-
+ 3 files changed, 57 insertions(+), 7 deletions(-)
+
 -- 
 2.18.0
+
 
 
 _______________________________________________
