@@ -4,71 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C310EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 17:53:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30E8CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 19:15:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xDr7tdLUFfiJE6u/ljoZU7n1J8equgdearXyi2/LL04=; b=amL5obLfILqfc4
-	0mUDFnVGPbBNxdCuD490O+02mGycvvjxkJg8BQFx0MRvzif9CkxJB0NmMz41pLa6bABFpjOKFVdqA
-	GfhoFT2vH6vCp8L9unEuiFfSUG2qDDneI4IlERS4gjnrFGCiK+yg2C//sXhXOzu9Q4Uky+F53Wplm
-	4rTevrvGaBQA3P2JDtXxd6ddBgJ53fbQ1qLPZSGI00EKwvj3OVaMbwqVvqGD/RZx5JC7oEKxohi7g
-	sIRqsboM/KqWnyVYPnb7D5+sWIpoSWvek77y+W2FuW/rLq4lD+Am4oN/hHQs42KIiBJU/B5XB9dhQ
-	8I+UJJdz6NkMLIwpcSqw==;
+	List-Owner; bh=QE+Tw/9xMFpXmPlc2csf9hYc368ImwiskvBb+yt6w0w=; b=scTmCfz3nEY9Lp
+	MzCmn8ab3XxHd2PC5ubPEDBANExPHKhhrr0QuFUoX5cf+jdnxICJWzf3ITIBvOwRb0W84cUf05mMI
+	ZToA5nVuq1XQRN99BqURdX9k7H/gwSACgyIGBBq4DBof3mqizaostVm8WHsUxZY8CoVFYgahu3Zlp
+	PJon29Us7l4awzLnEFSUbcK0w5so2lfcVzD9lOWD+/JpOuob3SCd6cuiv9HVK0UnV/diHCiqZFopG
+	DQ+fdY71R9OrhxNoP61b/+KJNffg03qWKsnq8gkrYf7MJ7VZgLUuhuCYrleuHOyrAQZF4943IbQ2h
+	9kj/j/J0bU7Dld3wSo2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7LKR-00H93b-OC; Tue, 11 Jan 2022 17:53:03 +0000
-Received: from mail-oi1-f171.google.com ([209.85.167.171])
+	id 1n7Mc9-00HP0P-03; Tue, 11 Jan 2022 19:15:25 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7LIU-00H845-W9; Tue, 11 Jan 2022 17:51:04 +0000
-Received: by mail-oi1-f171.google.com with SMTP id w188so54928oiw.13;
- Tue, 11 Jan 2022 09:51:02 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=FCQPITei3COem8cmVAANSwaWxSLVAkkDF2YSEJ/o+O4=;
- b=WsEDs2nJM38N+NSrhbSt4jPexXcNuEH0p/9fD7w8P4v5hmA/igrtUUNaBmHsB5YTKC
- hcHjv4ov/l+aka84+FbaO3jarTB1RdF+A8BTiXaRusOrqQ/kJHP5SvUUQgW4Hd/ADY0J
- Oisq7pN/59TN0qN6apHKlandGNJkWBk4EQDMHAr2buxX5K9SXNUNl8s+6r1cQZgOuqOx
- TTr8/D5KVPg8rH6UkKQoYF/t7PiJqCBhQtlwdYpaQW+LHOXLa+4dX8vP4RhftjyMDiaX
- d+UbsWVQuAoZaRoVIpVODPgV/WjB+IXc3xXNm0YSB0TT8lXHXIFz6DwPqJCLvASe1p+z
- nE5A==
-X-Gm-Message-State: AOAM532XCma17PGQVa1ucGH34FSbsFPDAEEvyVhdR6fFWv5SlqoT2yOv
- L/ekkmmdoWSuhCfNLu8if2XO0xDAhQ==
-X-Google-Smtp-Source: ABdhPJzRyceLnQnI7OQ9vNM9e7mwGoZsEmJTGCoevf0mvD9EDvtFFVOamMtqqTkLJJ2l6jnWh/xgMQ==
-X-Received: by 2002:a05:6808:1290:: with SMTP id
- a16mr2549347oiw.116.1641923461627; 
- Tue, 11 Jan 2022 09:51:01 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id s1sm2020749ooo.11.2022.01.11.09.51.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Jan 2022 09:51:01 -0800 (PST)
-Received: (nullmailer pid 3227467 invoked by uid 1000);
- Tue, 11 Jan 2022 17:51:00 -0000
-Date: Tue, 11 Jan 2022 11:51:00 -0600
-From: Rob Herring <robh@kernel.org>
-To: Rob Herring <robh@kernel.org>
-Cc: Felix Fietkau <nbd@nbd.name>, netdev@vger.kernel.org,
- Ryder Lee <ryder.lee@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
- devicetree@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
- linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
- "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: net: wireless: mt76: Fix 8-bit property sizes
-Message-ID: <Yd3DhO7bel0NH5UL@robh.at.kernel.org>
-References: <20220107030419.2380198-1-robh@kernel.org>
+ id 1n7Mbv-00HOxg-Qk; Tue, 11 Jan 2022 19:15:13 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: nfraprado) with ESMTPSA id 0A3BC1F447B6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1641928508;
+ bh=GtBWQubh7MRSfsrJwouzQ1KZLx9kkRfXx1s3sYvQ1W8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=FqgYA820nG/BheP0MtLycz0Xh86cW9CV7nbyfTgJaj+3HrenpVEcCXZ18TCqs/7qg
+ 4W04n5wreMasp0sdnxAo6AmMlVk0IwAwR7Mk+IOrNPh35ATUdxiKA1RBDE3bfEsy9+
+ keW7SGu4QwoyuOesqaFH2qCvd9kXw6W86G1SEgAHP1urdkjUNsqdHxa8EnSMxPw1VR
+ 2vHAITsjYtD29gbpqgQM6t8EhqnjuQFDdr9wWStY9uFWjfoN20RdTEeV4tZ37YR2OP
+ U3gcgc9tgoOuGp7xhLW/UijDulnXXnPPjsiIRg5JgHJaCREMloJN6lu67xGZIUs/Zs
+ KLcpWbJ1xvysQ==
+Date: Tue, 11 Jan 2022 14:15:01 -0500
+From: =?utf-8?B?TsOtY29sYXMgRi4gUi4gQS4=?= Prado <nfraprado@collabora.com>
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Rob Herring <robh+dt@kernel.org>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ chun-jie.chen@mediatek.com, devicetree@vger.kernel.org,
+ drinkcat@chromium.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com
+Subject: Re: [PATCH v2 1/5] arm64: dts: mediatek: Correct uart clock of MT8192
+Message-ID: <20220111191501.dspzjabuuohinufz@notapiano>
+References: <20220106032420.11544-1-allen-kh.cheng@mediatek.com>
+ <20220106032420.11544-2-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220107030419.2380198-1-robh@kernel.org>
+In-Reply-To: <20220106032420.11544-2-allen-kh.cheng@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_095103_106518_9987BD01 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20220111_111512_239594_FE96DAB0 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,26 +67,47 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 06 Jan 2022 21:04:17 -0600, Rob Herring wrote:
-> The '/bits/ 8' notation applies the next <> list of values. Another <> list
-> is encoded as 32-bits by default. IOW, each <> list needs to be preceeded
-> with '/bits/ 8'.
-> 
-> While the dts format allows this, as a rule we don't mix sizes for DT
-> properties since all size information is lost in the dtb file.
-> 
-> Signed-off-by: Rob Herring <robh@kernel.org>
-> ---
->  .../devicetree/bindings/net/wireless/mediatek,mt76.yaml       | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+Hi Allen,
 
-Applied, thanks!
+thank you for improving the commit message! However, please see my comment
+below.
+
+On Thu, Jan 06, 2022 at 11:24:16AM +0800, allen-kh.cheng wrote:
+> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+> =
+
+> When the initial devicetree for mt8192 was added in 48489980e27e ("arm64:
+> dts: Add Mediatek SoC MT8192 and evaluation board dts and Makefile"), the
+> clock driver for mt8192 was not yet upstream, so the clock property nodes
+> were set to the clk26m clock as a placeholder.
+> =
+
+> Given that the clock driver has since been added through 710573dee31b ("c=
+lk:
+> mediatek: Add MT8192 basic clocks support"), as well as its dt-bindings
+> through f35f1a23e0e1 ("clk: mediatek: Add dt-bindings of MT8192 clocks") =
+and
+> devicetree nodes through 5d2b897bc6f5 ("arm64: dts: mediatek: Add mt8192
+> clock controllers"), fix the uart clock property to point to the actual
+
+This sentence is incomplete. It is missing "clock." at the end. Could you p=
+lease
+add it?
+
+Same thing for all other patches in this series.
+
+After fixing that typo in the commit message of all patches, please add my
+reviewed-by in all patches:
+
+Reviewed-by: N=EDcolas F. R. A. Prado <nfraprado@collabora.com>
+
+Thanks,
+N=EDcolas
 
 _______________________________________________
 Linux-mediatek mailing list
