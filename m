@@ -4,76 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19290C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4968CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 11:48:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iRSQcXdvFa5WQlSREqMOyoC9A2BOfSki5xDtMfxvlHI=; b=n5qUP7Pgvaeibw
-	+624KYE4SRbgNfAN56ChFQHbbFRAvN/p2VbrOFJoIVC7X/AOXF28nrJDqHeNQMqQZHJby7eEoOVqk
-	Mk9RTLvrkUujDubqOe98IOnwxvXmc5Qp849SPrFtlHRRzR2rIbpshtDRnKRwsVUdWsDpcjsg5M/Sc
-	E6aIByf0piDBwg4px2lZfSdVsslUB44ze1YijmyDDS1Jm+qCBrEX5yrtQg2+0C8mDVujoksCvbgJ6
-	ONf/FktN9iFJnmsbGmY/VF5GBDw2p+/i/0fHlvuzXeouiSDvyAem94eKujcZyoKTl36d8NQXXHds5
-	1YoQha7qB79Inw0Z0wng==;
+	List-Owner; bh=VFqNpvtWvB/AN0BrddzS0THZO0RPzeIHIPJK3N1uUQo=; b=Xpz96NyqJs/Uj9
+	Rt+rcMjAN3I/BBCp8MsrkUm/vGPiybqR3iLtIzK5uSj0LdA/qQh0YTrQqQTJdXa67yVOdXjiiE6Hc
+	UsS1q195yUKGCgQ5bxbtGqR0ZKqiAlR+qGL8rAvx9dI7YTz0grWww2RAGmsJubFYJ/dJqNpUFuPVR
+	vNvL+i7W9JKmW7pIq7p+L+JhJLkKwQZo9jNFJPgqOxxyLsxKVvP2oLnfL9IyJl05U7XBwcTGy8P8/
+	jczPL3hb16XvECVuLnIUWVac7U8EVC4Z6CBc9qRwu3NZPKRvXfajNP9AQ7zK2FFrake7JHglO1RUQ
+	hXcahQG9gxUeeDuJMWeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7FH3-00G1MB-9N; Tue, 11 Jan 2022 11:25:09 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1n7FdU-00G73Y-UI; Tue, 11 Jan 2022 11:48:20 +0000
+Received: from mga03.intel.com ([134.134.136.65])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7FF4-00G0GD-Cp
- for linux-mediatek@lists.infradead.org; Tue, 11 Jan 2022 11:23:08 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id g5so7509624plo.12
- for <linux-mediatek@lists.infradead.org>; Tue, 11 Jan 2022 03:23:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=MO9C+/y7rlHj27Tk0Qv7Ks5nBGk0gl8cyNWfCGutHPg=;
- b=XMNyqW3ffjGD7aCP26DsYfNkvK9ie+mUzx3cG++ZVjFOqppMcKCPt/SaXT9UO5JD6W
- 13iklO18M+gyAsiV7wMHy5puKvT6Pt4MaWcgg5Rj/64i+CICBfFPyisF5bhP4SCLrPMJ
- 7dpzceifRZu8dB+5qU1lNWREKlqsVtIhxetVA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=MO9C+/y7rlHj27Tk0Qv7Ks5nBGk0gl8cyNWfCGutHPg=;
- b=RGq3QlCZP3vpg9hNdbQoxY9A78Is2ezjauhQK5wajo0pc9vR6yLWJqucUgsK2lfKey
- ld7Sj337w+C4EuCN+Hbbsjidt1xp9sBrwhxR21V6GmfkFShj2eRJd/JWgRvYg7cn8mxy
- A2QCdeXciGiB9S6L2f+35wNcXmWwMGpvOG6nW9obJ44g+0msEE/WxMd4UkZznhru7+qt
- D82ra1KBh2Z5pbO7Jd4cI66exOtSGPz25kT9DWe1ZwNvhU4S1nlZZMpSZbkduq1UpFpM
- 7VxC87AZ8y2gKcuLENqiuw2DOr4B1OCNpTbhavbAiVc7nfX1UXA4LadLBJ4t50OpRh54
- oJuQ==
-X-Gm-Message-State: AOAM5322ALBXrHItpW4o2vjWfeNcmlLzIpgo3Zin2d455LrCOx9uMI2L
- 6KLFr7EtvogM4GS53cfqC4fQoQ==
-X-Google-Smtp-Source: ABdhPJyjOgTnrtdJ0sLFZX6lDQMnLzWQ2b3meTpTPAGNIGTegsNduPt3LuE/Tfw99opR/kwqXQcJHg==
-X-Received: by 2002:a17:902:9a02:b0:14a:6a3:6c68 with SMTP id
- v2-20020a1709029a0200b0014a06a36c68mr4116724plp.138.1641900185952; 
- Tue, 11 Jan 2022 03:23:05 -0800 (PST)
-Received: from wenstp920.tpe.corp.google.com
- ([2401:fa00:1:10:e7ee:1824:8575:bc5c])
- by smtp.gmail.com with ESMTPSA id f9sm2053845pjh.18.2022.01.11.03.23.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Jan 2022 03:23:05 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-mediatek@lists.infradead.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>,
- Guodong Liu <guodong.liu@mediatek.com>
-Subject: [PATCH 7/7] pinctrl: mediatek: paris: Support generic
- PIN_CONFIG_DRIVE_STRENGTH_UA
-Date: Tue, 11 Jan 2022 19:22:44 +0800
-Message-Id: <20220111112244.1483783-8-wenst@chromium.org>
-X-Mailer: git-send-email 2.34.1.575.g55b058a8bb-goog
-In-Reply-To: <20220111112244.1483783-1-wenst@chromium.org>
-References: <20220111112244.1483783-1-wenst@chromium.org>
+ id 1n7FdI-00G71x-Mc; Tue, 11 Jan 2022 11:48:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1641901688; x=1673437688;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=JuYmIBkvpvdVhi31jq6e1BbQrmM5iNvrfA4jT6YwXCQ=;
+ b=cNivgiFt2A7qge6l1u3Wi6lCAsZHmEvyS5ss+jDuwz2EskVrEBAnUjil
+ QmAEBFP38XTn7BSNIYqf/qGWuusADKHW/usPKnnHvzKMU/unk/bKtC1C7
+ U4zUvr9P4/p4/X7ne5rn77froT1t/iyk5D5Y9/WMcZnRQpTCBMGKZz51R
+ x2oXV6t71FMO+kR6fbf0Nzoe+DJo3lWZu3ZsACQpVnAPAIYCOmoCj9ZeJ
+ axgOgZVNLXU04m2y3hZDoGbp+EHaNRk9Gz/yeG6W9jltYfgTkd/OfIPEQ
+ iGEZWU9EfTYPURUnDFwsvqjcP2TzDqLch9S92FfyfhUQTGRXy5cUA79Gt Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10223"; a="243421332"
+X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="243421332"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2022 03:48:08 -0800
+X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="490353874"
+Received: from smile.fi.intel.com ([10.237.72.61])
+ by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Jan 2022 03:48:03 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1n7Fc0-009D0g-4e; Tue, 11 Jan 2022 13:46:48 +0200
+Date: Tue, 11 Jan 2022 13:46:47 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Lucas Stach <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
+ Tian Tao <tiantao6@hisilicon.com>, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 3/3] mmc: mediatek: add support for SDIO eint irq
+Message-ID: <Yd1uJ+dX2CTEJfYY@smile.fi.intel.com>
+References: <20220111014046.5864-1-axe.yang@mediatek.com>
+ <20220111014046.5864-4-axe.yang@mediatek.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20220111014046.5864-4-axe.yang@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_032306_467958_0767D70A 
-X-CRM114-Status: GOOD (  18.96  )
+X-CRM114-CacheID: sfid-20220111_034808_819326_C5415A82 
+X-CRM114-Status: GOOD (  23.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,148 +91,157 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some of the MediaTek chips that utilize the Paris pinctrl driver library
-support a lower drive strength (<= 1mA) than the standard drive strength
-settings (2~16 mA) on certain pins. This was previously supported by the
-custom MTK_PIN_CONFIG_DRV_ADV parameter along with the
-"mediatek,drive-strength-adv" device tree property.
+On Tue, Jan 11, 2022 at 09:40:46AM +0800, Axe Yang wrote:
+> Add support for eint irq when MSDC is used as an SDIO host. This
 
-The drive strength values for this hardware are 125, 250, 500, and 1000 mA,
-and can be readily described by the existing "drive-strength-microamp",
-which then gets parsed by the generic pinconf library into the parameter
-PIN_CONFIG_DRIVE_STRENGTH_UA.
+IRQ
 
-Add support for PIN_CONFIG_DRIVE_STRENGTH_UA while keeping the old
-custom parameter around for backward compatibility.
+> feature requires SDIO device support async irq function. With this
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
+IRQ
 
-The indentation in the switch/case blocks is getting somewhat out of
-control. I also have some cleanup changes to reverse the logic of the
-if/break statements. Not sure if it should be done before or after this
-patch though.
+> feature,SDIO host can be awakened by SDIO card in suspend state,
 
----
- drivers/pinctrl/mediatek/pinctrl-paris.c | 84 ++++++++++++++++++++++++
- 1 file changed, 84 insertions(+)
+feature, SDIO
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-index 678c8aa33012..5a94903ae372 100644
---- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-@@ -48,6 +48,53 @@ static const char * const mtk_gpio_functions[] = {
- 	"func12", "func13", "func14", "func15",
- };
- 
-+/*
-+ * This section supports converting to/from custom MTK_PIN_CONFIG_DRV_ADV
-+ * and standard PIN_CONFIG_DRIVE_STRENGTH_UA pin configs.
-+ *
-+ * The custom value encodes three hardware bits as follows:
-+ *
-+ *   |           Bits           |
-+ *   | 2 (E1) | 1 (E0) | 0 (EN) | drive strength (uA)
-+ *   ------------------------------------------------
-+ *   |    x   |    x   |    0   | disabled, use standard drive strength
-+ *   -------------------------------------
-+ *   |    0   |    0   |    1   |  125 uA
-+ *   |    0   |    1   |    1   |  250 uA
-+ *   |    1   |    0   |    1   |  500 uA
-+ *   |    1   |    1   |    1   | 1000 uA
-+ */
-+static const int mtk_drv_adv_uA[] = { 125, 250, 500, 1000 };
-+
-+static int mtk_drv_adv_to_uA(int val)
-+{
-+	/* This should never happen. */
-+	if (WARN_ON_ONCE(val < 0 || val > 7))
-+		return -EINVAL;
-+
-+	/* Bit 0 simply enables this hardware part */
-+	if (!(val & BIT(0)))
-+		return -EINVAL;
-+
-+	return mtk_drv_adv_uA[(val >> 1)];
-+}
-+
-+static int mtk_drv_uA_to_adv(int val)
-+{
-+	switch (val) {
-+	case 125:
-+		return 0x1;
-+	case 250:
-+		return 0x3;
-+	case 500:
-+		return 0x5;
-+	case 1000:
-+		return 0x7;
-+	}
-+
-+	return -EINVAL;
-+}
-+
- static int mtk_pinmux_gpio_request_enable(struct pinctrl_dev *pctldev,
- 					  struct pinctrl_gpio_range *range,
- 					  unsigned int pin)
-@@ -151,11 +198,38 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
- 
- 		break;
- 	case PIN_CONFIG_DRIVE_STRENGTH:
-+		if (hw->soc->adv_drive_get) {
-+			err = hw->soc->adv_drive_get(hw, desc, &ret);
-+			if (!err) {
-+				err = mtk_drv_adv_to_uA(ret);
-+				if (err > 0) {
-+					/* PIN_CONFIG_DRIVE_STRENGTH_UA used */
-+					err = -EINVAL;
-+					break;
-+				}
-+			}
-+		}
-+
- 		if (hw->soc->drive_get)
- 			err = hw->soc->drive_get(hw, desc, &ret);
- 		else
- 			err = -ENOTSUPP;
- 		break;
-+	case PIN_CONFIG_DRIVE_STRENGTH_UA:
-+		if (hw->soc->adv_drive_get) {
-+			err = hw->soc->adv_drive_get(hw, desc, &ret);
-+			if (err)
-+				break;
-+			err = mtk_drv_adv_to_uA(ret);
-+			if (err < 0)
-+				break;
-+
-+			ret = err;
-+			err = 0;
-+		} else {
-+			err = -ENOTSUPP;
-+		}
-+		break;
- 	case MTK_PIN_CONFIG_TDSEL:
- 	case MTK_PIN_CONFIG_RDSEL:
- 		reg = (param == MTK_PIN_CONFIG_TDSEL) ?
-@@ -271,6 +345,16 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
- 		else
- 			err = -ENOTSUPP;
- 		break;
-+	case PIN_CONFIG_DRIVE_STRENGTH_UA:
-+		if (hw->soc->adv_drive_set) {
-+			err = mtk_drv_uA_to_adv(arg);
-+			if (err < 0)
-+				break;
-+			err = hw->soc->adv_drive_set(hw, desc, err);
-+		} else {
-+			err = -ENOTSUPP;
-+		}
-+		break;
- 	case MTK_PIN_CONFIG_TDSEL:
- 	case MTK_PIN_CONFIG_RDSEL:
- 		reg = (param == MTK_PIN_CONFIG_TDSEL) ?
+> without additional pin.
+> 
+> MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
+> turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
+> resume, switch GPIO function back to DAT1 mode then turn on clock.
+> 
+> Some device tree property should be added or modified in msdc node
+
+MSDC
+
+> to support SDIO eint irq. Pinctrls named state_dat1 and state_eint
+
+IRQ
+
+> are mandatory. And cap-sdio-async-irq flag is necessary since this
+> feature depends on asynchronous interrupt:
+>         &mmcX {
+>                 ...
+>                 pinctrl-names = "default", "state_uhs", "state_eint",
+>                                 "state_dat1";
+>                 ...
+>                 pinctrl-2 = <&mmc2_pins_eint>;
+>                 pinctrl-3 = <&mmc2_pins_dat1>;
+>                 ...
+>                 cap-sdio-async-irq;
+>                 ...
+>         };
+
+...
+
+> - * Copyright (c) 2014-2015 MediaTek Inc.
+> + * Copyright (c) 2014-2022 MediaTek Inc.
+
+Shouldn't it be rather like
+
+ * Copyright (c) 2014-2015,2022 MediaTek Inc.
+
+?
+
+...
+
+> +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
+> +{
+> +	unsigned long flags;
+> +	struct msdc_host *host = (struct msdc_host *)dev_id;
+
+No casting is needed.
+
+> +	struct mmc_host *mmc = mmc_from_priv(host);
+
+Perhaps reversed xmas tree order
+
+	struct msdc_host *host = dev_id;
+	struct mmc_host *mmc = mmc_from_priv(host);
+	unsigned long flags;
+
+?
+
+But hey, why do you need flags?
+
+> +	spin_lock_irqsave(&host->lock, flags);
+> +	if (likely(host->sdio_irq_cnt > 0)) {
+> +		disable_irq_nosync(host->eint_irq);
+> +		disable_irq_wake(host->eint_irq);
+> +		host->sdio_irq_cnt--;
+> +	}
+> +	spin_unlock_irqrestore(&host->lock, flags);
+> +
+> +	sdio_signal_irq(mmc);
+> +
+> +	return IRQ_HANDLED;
+> +}
+
+...
+
+> +static int msdc_request_dat1_eint_irq(struct msdc_host *host)
+> +{
+> +	struct gpio_desc *desc;
+> +	int irq, ret;
+> +
+> +	desc = devm_gpiod_get(host->dev, "eint", GPIOD_IN);
+> +	if (IS_ERR(desc))
+> +		return PTR_ERR(desc);
+> +
+> +	ret = gpiod_to_irq(desc);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	irq = ret;
+> +	ret = devm_request_threaded_irq(host->dev, irq, NULL, msdc_sdio_eint_irq,
+> +					IRQF_TRIGGER_LOW | IRQF_ONESHOT | IRQF_NO_AUTOEN,
+> +					"sdio-eint", host);
+
+> +
+
+Redundant blank line.
+
+> +	if (!ret)
+> +		host->eint_irq = irq;
+> +
+> +	return ret;
+
+I guess I have already commented on this, i.e. use standard pattern
+
+	if (ret)
+		return ret;
+
+	...
+	return 0;
+
+> +}
+
+...
+
+> +		host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
+> +		if (IS_ERR(host->pins_eint)) {
+
+> +			dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
+
+In debug mode of pin control this will bring a duplicate message.
+
+> +		} else {
+> +			host->pins_dat1 = pinctrl_lookup_state(host->pinctrl, "state_dat1");
+> +			if (IS_ERR(host->pins_dat1)) {
+> +				ret = dev_err_probe(&pdev->dev, PTR_ERR(host->pins_dat1),
+> +						    "Cannot find pinctrl dat1!\n");
+> +				goto host_free;
+> +			}
+> +
+> +			host->sdio_eint_ready = true;
+> +		}
+> +	}
+
+
 -- 
-2.34.1.575.g55b058a8bb-goog
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
