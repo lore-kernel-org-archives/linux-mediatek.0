@@ -4,74 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F40A9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 17:23:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C310EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 11 Jan 2022 17:53:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=+U5LASb75iB5speyZxiQf7WzL9LVidQRJ58jnRqwWfU=; b=adu7uT0ojzV9eecSq8FqEZuJBr
-	tgyZ/LhqAnXy7HhRU5PjOlh7OCGeMnp2cT9wlLbndpEuOz0Sn6xE6yScNncXZHKRzTeCk7m2MLDOA
-	RIitMVwnaadnFJwL4/SKJBe9kchh2rUQkMxyLMUshRJqSekOvL94slOC+050/2f3wjI90VIuingTS
-	L/1WHHSubcypP+EFpmFwaoRJ5vrvX/lYg3aXm+4ak3OqT4OyqDo4/PoWcdOcvXsescliIw1E3RWq1
-	Ej6KluM4/Zs0pcL9GDQN9dci6mvHbyUIAu+VJqnHjn94jD2QaKbRndtDY4RzDDJ3a5wQklSWhMcCy
-	OdHD9c4A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xDr7tdLUFfiJE6u/ljoZU7n1J8equgdearXyi2/LL04=; b=amL5obLfILqfc4
+	0mUDFnVGPbBNxdCuD490O+02mGycvvjxkJg8BQFx0MRvzif9CkxJB0NmMz41pLa6bABFpjOKFVdqA
+	GfhoFT2vH6vCp8L9unEuiFfSUG2qDDneI4IlERS4gjnrFGCiK+yg2C//sXhXOzu9Q4Uky+F53Wplm
+	4rTevrvGaBQA3P2JDtXxd6ddBgJ53fbQ1qLPZSGI00EKwvj3OVaMbwqVvqGD/RZx5JC7oEKxohi7g
+	sIRqsboM/KqWnyVYPnb7D5+sWIpoSWvek77y+W2FuW/rLq4lD+Am4oN/hHQs42KIiBJU/B5XB9dhQ
+	8I+UJJdz6NkMLIwpcSqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7Ks4-00H2i7-4E; Tue, 11 Jan 2022 17:23:44 +0000
-Received: from mga01.intel.com ([192.55.52.88])
+	id 1n7LKR-00H93b-OC; Tue, 11 Jan 2022 17:53:03 +0000
+Received: from mail-oi1-f171.google.com ([209.85.167.171])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7Ks1-00H2gX-1C; Tue, 11 Jan 2022 17:23:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1641921820; x=1673457820;
- h=subject:to:cc:references:from:message-id:date:
- mime-version:in-reply-to:content-transfer-encoding;
- bh=gEUR+PS3VK1rPxJq6WRhpVCCJmBWIol2sYXcM1N0t6I=;
- b=anNagfXTEhdQvdxJASaJ0VM7we0CwbaH3KfAN13r/p6D9Ttyfb6VSZGl
- UXHS3Wcs/brj5ffTavfnV3NZBIrmm3/I0G7FNM+Ptpj/2l+UHiaeoKZXp
- joWqHn+hEKGcE40vt/eRDdapAqo4tdLLGrxcGLjkLyFPh4vL0N9MOPQLH
- nzXj3CixD1+QcW38ct0FGv2JTD5tY306vYkmZS3sPDgGB19mJUQMTZVbn
- +WvO3IU/giCrM8hdoGcakqx4Th/vPWTAMAwIn4YCugfX+ArKRfW1nsrSP
- 5DmTnrqlL53p03ONaQehxlFyQOkMHb/14Vc/gM4gPM/Xx+qkc+1mCHOdG w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10223"; a="267880298"
-X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="267880298"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2022 09:23:33 -0800
-X-IronPort-AV: E=Sophos;i="5.88,279,1635231600"; d="scan'208";a="592749789"
-Received: from cdoher2x-mobl1.amr.corp.intel.com (HELO [10.212.119.165])
- ([10.212.119.165])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Jan 2022 09:23:32 -0800
-Subject: Re: [PATCH] firmware: mediatek: add adsp ipc protocol interface
-To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-Cc: Linux-ALSA <alsa-devel@alsa-project.org>, tzungbi@google.com,
- cujomalainey@google.com, Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
- Kai Vehmanen <kai.vehmanen@linux.intel.com>,
- Daniel Baluta <daniel.baluta@nxp.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sound-open-firmware@alsa-project.org
-References: <20220111071011.5964-1-allen-kh.cheng@mediatek.com>
-From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
-Message-ID: <91eef4c9-adda-1921-16b5-af181b30d36e@linux.intel.com>
-Date: Tue, 11 Jan 2022 11:02:03 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.14.0
+ id 1n7LIU-00H845-W9; Tue, 11 Jan 2022 17:51:04 +0000
+Received: by mail-oi1-f171.google.com with SMTP id w188so54928oiw.13;
+ Tue, 11 Jan 2022 09:51:02 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=FCQPITei3COem8cmVAANSwaWxSLVAkkDF2YSEJ/o+O4=;
+ b=WsEDs2nJM38N+NSrhbSt4jPexXcNuEH0p/9fD7w8P4v5hmA/igrtUUNaBmHsB5YTKC
+ hcHjv4ov/l+aka84+FbaO3jarTB1RdF+A8BTiXaRusOrqQ/kJHP5SvUUQgW4Hd/ADY0J
+ Oisq7pN/59TN0qN6apHKlandGNJkWBk4EQDMHAr2buxX5K9SXNUNl8s+6r1cQZgOuqOx
+ TTr8/D5KVPg8rH6UkKQoYF/t7PiJqCBhQtlwdYpaQW+LHOXLa+4dX8vP4RhftjyMDiaX
+ d+UbsWVQuAoZaRoVIpVODPgV/WjB+IXc3xXNm0YSB0TT8lXHXIFz6DwPqJCLvASe1p+z
+ nE5A==
+X-Gm-Message-State: AOAM532XCma17PGQVa1ucGH34FSbsFPDAEEvyVhdR6fFWv5SlqoT2yOv
+ L/ekkmmdoWSuhCfNLu8if2XO0xDAhQ==
+X-Google-Smtp-Source: ABdhPJzRyceLnQnI7OQ9vNM9e7mwGoZsEmJTGCoevf0mvD9EDvtFFVOamMtqqTkLJJ2l6jnWh/xgMQ==
+X-Received: by 2002:a05:6808:1290:: with SMTP id
+ a16mr2549347oiw.116.1641923461627; 
+ Tue, 11 Jan 2022 09:51:01 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id s1sm2020749ooo.11.2022.01.11.09.51.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Jan 2022 09:51:01 -0800 (PST)
+Received: (nullmailer pid 3227467 invoked by uid 1000);
+ Tue, 11 Jan 2022 17:51:00 -0000
+Date: Tue, 11 Jan 2022 11:51:00 -0600
+From: Rob Herring <robh@kernel.org>
+To: Rob Herring <robh@kernel.org>
+Cc: Felix Fietkau <nbd@nbd.name>, netdev@vger.kernel.org,
+ Ryder Lee <ryder.lee@mediatek.com>, Kalle Valo <kvalo@kernel.org>,
+ devicetree@vger.kernel.org, Lorenzo Bianconi <lorenzo@kernel.org>,
+ linux-mediatek@lists.infradead.org, linux-wireless@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>, linux-kernel@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: net: wireless: mt76: Fix 8-bit property sizes
+Message-ID: <Yd3DhO7bel0NH5UL@robh.at.kernel.org>
+References: <20220107030419.2380198-1-robh@kernel.org>
 MIME-Version: 1.0
-In-Reply-To: <20220111071011.5964-1-allen-kh.cheng@mediatek.com>
-Content-Language: en-US
+Content-Disposition: inline
+In-Reply-To: <20220107030419.2380198-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_092341_150097_4BFEBB5D 
-X-CRM114-Status: GOOD (  20.87  )
+X-CRM114-CacheID: sfid-20220111_095103_106518_9987BD01 
+X-CRM114-Status: GOOD (  12.26  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,138 +85,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 06 Jan 2022 21:04:17 -0600, Rob Herring wrote:
+> The '/bits/ 8' notation applies the next <> list of values. Another <> list
+> is encoded as 32-bits by default. IOW, each <> list needs to be preceeded
+> with '/bits/ 8'.
+> 
+> While the dts format allows this, as a rule we don't mix sizes for DT
+> properties since all size information is lost in the dtb file.
+> 
+> Signed-off-by: Rob Herring <robh@kernel.org>
+> ---
+>  .../devicetree/bindings/net/wireless/mediatek,mt76.yaml       | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
 
-> +int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx, uint32_t msg)
-> +{
-> +	struct mtk_adsp_chan *dsp_chan;
-> +	int ret;
-> +
-> +	if (idx >= MTK_ADSP_MBOX_NUM)
-> +		return -EINVAL;
-> +
-> +	dsp_chan = &ipc->chans[idx];
-> +	ret = mbox_send_message(dsp_chan->ch, &msg);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	return 0;
-
-this can be simplified a bit without the 'ret' variable
-
-return mbox_send_message(dsp_chan->ch, &msg);
-
-> +}
-> +EXPORT_SYMBOL(mtk_adsp_ipc_send);
-
-
-> +static int mtk_adsp_ipc_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct mtk_adsp_ipc *dsp_ipc;
-> +	struct mtk_adsp_chan *dsp_chan;
-> +	struct mbox_client *cl;
-> +	char *chan_name;
-> +	int ret;
-> +	int i, j;
-> +
-> +	device_set_of_node_from_dev(&pdev->dev, pdev->dev.parent);
-> +
-> +	dsp_ipc = devm_kzalloc(dev, sizeof(*dsp_ipc), GFP_KERNEL);
-> +	if (!dsp_ipc)
-> +		return -ENOMEM;
-> +
-> +	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-> +		chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
-> +		if (!chan_name) {
-> +			ret = -ENOMEM;
-> +			goto out;
-> +		}
-
-in this case with the existing code you will free something that was not
-allocated. It's not super elegant, consider using different labels as
-suggested below.
-
-> +
-> +		dsp_chan = &dsp_ipc->chans[i];
-> +		cl = &dsp_chan->cl;
-> +		cl->dev = dev->parent;
-> +		cl->tx_block = false;
-> +		cl->knows_txdone = false;
-> +		cl->tx_prepare = NULL;
-> +		cl->rx_callback = mtk_adsp_ipc_recv;
-> +
-> +		dsp_chan->ipc = dsp_ipc;
-> +		dsp_chan->idx = i;
-> +		dsp_chan->ch = mbox_request_channel_byname(cl, chan_name);
-> +		if (IS_ERR(dsp_chan->ch)) {
-> +			ret = PTR_ERR(dsp_chan->ch);
-> +			if (ret != -EPROBE_DEFER)
-> +				dev_err(dev, "Failed to request mbox chan %d ret %d\n",
-> +					i, ret);
-> +			goto out;
-
-goto out_free;
-
-> +		}
-> +
-> +		dev_dbg(dev, "request mbox chan %s\n", chan_name);
-> +		kfree(chan_name);
-> +	}
-> +
-> +	dsp_ipc->dev = dev;
-> +	dev_set_drvdata(dev, dsp_ipc);
-> +	dev_dbg(dev, "MTK ADSP IPC initialized\n");
-> +
-> +	return 0;
-> +
-> +out:
-
-out_free:
-> +	kfree(chan_name);
-
-out:
-
-> +	for (j = 0; j < i; j++) {
-> +		dsp_chan = &dsp_ipc->chans[j];
-> +		mbox_free_channel(dsp_chan->ch);
-> +	}
-> +
-> +	return ret;
-> +}
-> +
-> +static int mtk_adsp_ipc_remove(struct platform_device *pdev)
-> +{
-> +	struct mtk_adsp_ipc *dsp_ipc = dev_get_drvdata(&pdev->dev);
-> +	struct mtk_adsp_chan *dsp_chan;
-> +	int i;
-> +
-> +	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-> +		dsp_chan = &dsp_ipc->chans[i];
-> +		mbox_free_channel(dsp_chan->ch);
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static struct platform_driver mtk_adsp_ipc_driver = {
-> +	.driver = {
-> +		.name = "mtk-adsp-ipc",
-> +	},
-> +	.probe = mtk_adsp_ipc_probe,
-> +	.remove = mtk_adsp_ipc_remove,
-> +};
-> +builtin_platform_driver(mtk_adsp_ipc_driver);
-> +
-> +MODULE_AUTHOR("Allen-KH Cheng <allen-kh.cheng@mediatek.com>");
-> +MODULE_DESCRIPTION("MTK ADSP IPC Driver");
-> +MODULE_LICENSE("GPL v2");
-
-the v2 here isn't useful, the license information can be found in the
-SPDX line.
-
-MODULE_LICENSE("GPL");
-
-
+Applied, thanks!
 
 _______________________________________________
 Linux-mediatek mailing list
