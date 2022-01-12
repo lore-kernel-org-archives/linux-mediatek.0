@@ -4,71 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 116BAC433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 10:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98234C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 10:17:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nLfJhWeM1ag6BNcLTPgTPdo/KbXy34gvUI6+eTR2Zu8=; b=YhuioIVubOZ2ph
-	ae3FFG90FiDcD9WDeKpWHobtgX8tWOBXpGxx8YbP4CMRCC/WqMFlNi0sTKvN0B1KXDhAlI6x3SMpe
-	x1XmBXx+6Imz1xjLxCSPx3X32vFA+LvI8lsxEMhswfawnrZKpPyMs3STIssLs4w1jWR8d4+1BCT5p
-	WavKxxT6gEVFTvwS0SHUpFIYZ39v8OMOM4Q/dJHMmUXrk66I35zNPkSySgrQ7cQC8o8b3ZB5tCqZI
-	6CC5ftWCv5xVFOM+6sTF0ISa/yt0QGNK/hKqXJSdDu6O+RKQkZ+lyBAfYJu1LNfCFXxRQWrPaLyhu
-	zQ7ok8RWoHpUczw6R0cg==;
+	List-Owner; bh=JF0NAsJNA3SVjgdM1JgzdFEtv41SyhvxNuZUAxwrLlc=; b=zx3rL40p8U+8B+
+	34HAZ/h62Z73YFM3mPKnbT5S8Lvad3y0nWWiDQQHbDfhGpCW6G4OYgqUZZaAJfG/W4ez2tY2NFtOP
+	BwqkjdzeS9cdadR3eP8xO+rCDqHsncQNEUNMRiGiqcs2HrYfu+OlRKprFEAWJlbKY+ouYwO3fxLTE
+	t2din5gSKiJYPf6m1fiqe5SL2+WcZSkXtXGEPaOGQOADDkbTD3lT17l7TDEOcYDvAF79xtGoh4c7k
+	UzGtnB/nYzKZEeg+lPic7DWXpdm4htgeYoXtGzGt4RplwJ4H1h/qRsrfqpIiVEoJZIdFJkQ0H21pq
+	ydOYGJCWwYkKtAhtwH9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7abv-001zyk-JF; Wed, 12 Jan 2022 10:12:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n7ahL-0022Uz-V8; Wed, 12 Jan 2022 10:17:44 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7aPz-001utz-4b; Wed, 12 Jan 2022 09:59:50 +0000
-X-UUID: efc1d97fa1be4d2abd53d3cf271df469-20220112
-X-UUID: efc1d97fa1be4d2abd53d3cf271df469-20220112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 927032125; Wed, 12 Jan 2022 02:59:44 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 01:49:42 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Wed, 12 Jan 2022 17:49:40 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 12 Jan 2022 17:49:38 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, Daniel Vetter
- <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
- <irui.wang@mediatek.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Steve Cho <stevecho@chromium.org>, 
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v18,
- 09/19] media: mtk-vcodec: Add irq interface for multi hardware
-Date: Wed, 12 Jan 2022 17:49:13 +0800
-Message-ID: <20220112094923.16839-10-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220112094923.16839-1-yunfei.dong@mediatek.com>
-References: <20220112094923.16839-1-yunfei.dong@mediatek.com>
+ id 1n7ab1-001zYi-FZ
+ for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 10:11:13 +0000
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 9332F3F1E4
+ for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 10:11:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1641982269;
+ bh=hFTGw3RKSwc/q5rISEyTidCT2dMSfG1tgduzWghD4aY=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=jFEJe7hEmSE9lZwlAcn3eurFShVIHucioQDnCZ+vItBeYbbOjFk1eiFRg+Ls+Y6Af
+ gYwD8zJ9unK8Jw5iRWcg7uKALOV67ER/Fwl/4hABO7zwBvakGLPt4EvSHToB28eH1b
+ RjvxOdeLRaq6oebK3iKzo/KKJVsVFxcYf2JQMslegi9o3ewE7Yn8J8vWoJBABXlphG
+ MsHUtMKAmyXEP331ihzZBdrPEbMPwXsPD9BVDUQYnkmdDEU6evATDWKy2hwO3VU7+a
+ LQeG8l4FBRFAOYBZYh9r4rKtSq039FZYUP1ZUEb1TDHDJkyVwxvKGgF0zxfXbDw+DT
+ LIuupLvpvTBuA==
+Received: by mail-ed1-f70.google.com with SMTP id
+ q15-20020a056402518f00b003f87abf9c37so1812142edd.15
+ for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 02:11:09 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=hFTGw3RKSwc/q5rISEyTidCT2dMSfG1tgduzWghD4aY=;
+ b=k3wkxzb18bXyDDGGrInNhqs7UZpDP+HI3yhNlrhhtXDA8ccBjaxcWbLlj5XXlRpdtY
+ 3poXWKfONHW+dv7bPoz1ok0sg4CAaDR+UGVqDWuBe6mmRaSzZttmuKti9ZkPUnNYUoId
+ mGa1z9C2VfH92AlhG0462IqXpauWc1A6bdJsa0rA0mWW2QmwPz0kfdYoRiu6/v9UwdS/
+ lkx7YHYsvhSgW1UDInVZM8Rv6itT3U6b7K4F+ZeEKxwL1tjLmvwZFUk6wg01HaHcGJ3d
+ apxMPDWGN1pATzO98e+P8m4sZOqNI0i+mdRoTmj9vPSHKmjb3jnyDFSh6FgtpS6tFuhU
+ p7GA==
+X-Gm-Message-State: AOAM530guDZmZwiWxqi8e0wSUq12gcMWawK4//4e74MaWInoAM0M4Erl
+ uklx8JrkU18rgdezzd0H69MGbb9d9ZeB25UfQWT2JZzCYr/ZAfzyxU0pPiFv8hNnaHG1LTNQWAv
+ 7a52Rc6fG20I023qjEwSFyBetCnr0SEuZtBHa/MC4MOAdQShOkA==
+X-Received: by 2002:aa7:d60f:: with SMTP id c15mr8344903edr.197.1641982269281; 
+ Wed, 12 Jan 2022 02:11:09 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzAkZIIY2ouEWvjM2UFpm4JbXirsTAwA2NAyMnQsItvL764zEjLqhJIHuRjBZytND7lxY0dyA==
+X-Received: by 2002:aa7:d60f:: with SMTP id c15mr8344880edr.197.1641982269143; 
+ Wed, 12 Jan 2022 02:11:09 -0800 (PST)
+Received: from [192.168.0.29] (xdsl-188-155-168-84.adslplus.ch.
+ [188.155.168.84])
+ by smtp.gmail.com with ESMTPSA id 21sm4338800ejx.83.2022.01.12.02.11.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 12 Jan 2022 02:11:08 -0800 (PST)
+Message-ID: <82e235d9-4e57-a4e4-66af-84277f9b9da6@canonical.com>
+Date: Wed, 12 Jan 2022 11:11:07 +0100
 MIME-Version: 1.0
-X-MTK: N
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.1
+Subject: Re: [PATCH v2 1/6] dt-bindings: memory: mtk-smi: Fix larb-id
+ dtbs_check warning
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
+ anan.sun@mediatek.com, lc.kan@mediatek.com, yi.kuo@mediatek.com,
+ anthony.huang@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20220111063904.7583-1-yong.wu@mediatek.com>
+ <20220111063904.7583-2-yong.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220111063904.7583-2-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_015947_371541_73AB40F3 
-X-CRM114-Status: GOOD (  25.31  )
+X-CRM114-CacheID: sfid-20220112_021111_717449_0B4A0706 
+X-CRM114-Status: GOOD (  14.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,327 +113,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds irq interface for multi hardware.
+On 11/01/2022 07:38, Yong Wu wrote:
+> Mute the warning from "make dtbs_check":
+> 
+> larb@14016000: 'mediatek,larb-id' is a required property
+> 	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
+> larb@15001000: 'mediatek,larb-id' is a required property
+> 	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
+> larb@16010000: 'mediatek,larb-id' is a required property
+> 	arch/arm64/boot/dts/mediatek/mt8167-pumpkin.dt.yaml
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 33 ++++++++++++++++---
- .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   |  2 +-
- .../platform/mtk-vcodec/mtk_vcodec_drv.h      | 25 ++++++++++----
- .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  4 +--
- .../platform/mtk-vcodec/mtk_vcodec_intr.c     | 27 +++++++--------
- .../platform/mtk-vcodec/mtk_vcodec_intr.h     |  4 +--
- .../platform/mtk-vcodec/vdec/vdec_h264_if.c   |  2 +-
- .../mtk-vcodec/vdec/vdec_h264_req_if.c        |  2 +-
- .../platform/mtk-vcodec/vdec/vdec_vp8_if.c    |  2 +-
- .../platform/mtk-vcodec/vdec/vdec_vp9_if.c    |  2 +-
- .../platform/mtk-vcodec/venc/venc_h264_if.c   |  2 +-
- .../platform/mtk-vcodec/venc/venc_vp8_if.c    |  2 +-
- 12 files changed, 69 insertions(+), 38 deletions(-)
+Please explain why larb-id is not necessary on mediatek,mt8167-smi-larb.
+IOW, what logical error was there (except the dtschema pointed out issue).
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index f03f99108929..9802e5cc535f 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -24,6 +24,19 @@
- #include "mtk_vcodec_util.h"
- #include "mtk_vcodec_fw.h"
- 
-+static int mtk_vcodec_get_hw_count(struct mtk_vcodec_dev *dev)
-+{
-+	switch (dev->vdec_pdata->hw_arch) {
-+	case MTK_VDEC_PURE_SINGLE_CORE:
-+		return MTK_VDEC_ONE_CORE;
-+	case MTK_VDEC_LAT_SINGLE_CORE:
-+		return MTK_VDEC_ONE_LAT_ONE_CORE;
-+	default:
-+		mtk_v4l2_err("hw arch %d not supported", dev->vdec_pdata->hw_arch);
-+		return MTK_VDEC_NO_HW;
-+	}
-+}
-+
- static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
- {
- 	struct mtk_vcodec_dev *dev = priv;
-@@ -55,7 +68,7 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
- 	writel((readl(vdec_misc_addr) & ~VDEC_IRQ_CLR),
- 		dev->reg_base[VDEC_MISC] + VDEC_IRQ_CFG_REG);
- 
--	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-+	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED, 0);
- 
- 	mtk_v4l2_debug(3,
- 			"mtk_vcodec_dec_irq_handler :wake up ctx %d, dec_done_status=%x",
-@@ -128,7 +141,7 @@ static int fops_vcodec_open(struct file *file)
- {
- 	struct mtk_vcodec_dev *dev = video_drvdata(file);
- 	struct mtk_vcodec_ctx *ctx = NULL;
--	int ret = 0;
-+	int ret = 0, i, hw_count;
- 	struct vb2_queue *src_vq;
- 
- 	ctx = kzalloc(sizeof(*ctx), GFP_KERNEL);
-@@ -142,14 +155,24 @@ static int fops_vcodec_open(struct file *file)
- 	v4l2_fh_add(&ctx->fh);
- 	INIT_LIST_HEAD(&ctx->list);
- 	ctx->dev = dev;
--	init_waitqueue_head(&ctx->queue);
--	mutex_init(&ctx->lock);
-+	if (ctx->dev->vdec_pdata->is_subdev_supported) {
-+		hw_count = mtk_vcodec_get_hw_count(dev);
-+		if (!hw_count || !dev->subdev_prob_done) {
-+			ret = -EINVAL;
-+			goto err_ctrls_setup;
-+		}
- 
--	if (dev->vdec_pdata->is_subdev_supported && dev->subdev_prob_done) {
- 		ret = dev->subdev_prob_done(dev);
- 		if (ret)
- 			goto err_ctrls_setup;
-+
-+		for (i = 0; i < hw_count; i++)
-+			init_waitqueue_head(&ctx->queue[i]);
-+	} else {
-+		init_waitqueue_head(&ctx->queue[0]);
- 	}
-+	mutex_init(&ctx->lock);
-+
- 	ctx->type = MTK_INST_DECODER;
- 	ret = dev->vdec_pdata->ctrls_setup(ctx);
- 	if (ret) {
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-index dbcb65dae01f..2cd65a083994 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_hw.c
-@@ -84,7 +84,7 @@ static irqreturn_t mtk_vdec_hw_irq_handler(int irq, void *priv)
- 	writel(dec_done_status | VDEC_IRQ_CFG, vdec_misc_addr);
- 	writel(dec_done_status & ~VDEC_IRQ_CLR, vdec_misc_addr);
- 
--	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-+	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED, dev->hw_idx);
- 
- 	mtk_v4l2_debug(3, "wake up ctx %d, dec_done_status=%x",
- 		ctx->id, dec_done_status);
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index 17e7deee10b5..7023a572c64b 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -104,6 +104,16 @@ enum mtk_vdec_hw_id {
- 	MTK_VDEC_HW_MAX,
- };
- 
-+/*
-+ * enum mtk_vdec_hw_count - Supported hardware count
-+ */
-+enum mtk_vdec_hw_count {
-+	MTK_VDEC_NO_HW = 0,
-+	MTK_VDEC_ONE_CORE,
-+	MTK_VDEC_ONE_LAT_ONE_CORE,
-+	MTK_VDEC_MAX_HW_COUNT,
-+};
-+
- /*
-  * struct mtk_video_fmt - Structure used to store information about pixelformats
-  */
-@@ -293,9 +303,9 @@ struct mtk_vcodec_ctx {
- 	struct vdec_pic_info picinfo;
- 	int dpb_size;
- 
--	int int_cond;
--	int int_type;
--	wait_queue_head_t queue;
-+	int int_cond[MTK_VDEC_HW_MAX];
-+	int int_type[MTK_VDEC_HW_MAX];
-+	wait_queue_head_t queue[MTK_VDEC_HW_MAX];
- 	unsigned int irq_status;
- 
- 	struct v4l2_ctrl_handler ctrl_hdl;
-@@ -504,11 +514,12 @@ static inline struct mtk_vcodec_ctx *ctrl_to_ctx(struct v4l2_ctrl *ctrl)
- }
- 
- /* Wake up context wait_queue */
--static inline void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason)
-+static inline void wake_up_ctx(struct mtk_vcodec_ctx *ctx, unsigned int reason,
-+	unsigned int hw_id)
- {
--	ctx->int_cond = 1;
--	ctx->int_type = reason;
--	wake_up_interruptible(&ctx->queue);
-+	ctx->int_cond[hw_id] = 1;
-+	ctx->int_type[hw_id] = reason;
-+	wake_up_interruptible(&ctx->queue[hw_id]);
- }
- 
- #endif /* _MTK_VCODEC_DRV_H_ */
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-index 027546108f44..347f0d87e2ff 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
-@@ -103,7 +103,7 @@ static irqreturn_t mtk_vcodec_enc_irq_handler(int irq, void *priv)
- 
- 	clean_irq_status(ctx->irq_status, addr);
- 
--	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED);
-+	wake_up_ctx(ctx, MTK_INST_IRQ_RECEIVED, 0);
- 	return IRQ_HANDLED;
- }
- 
-@@ -129,7 +129,7 @@ static int fops_vcodec_open(struct file *file)
- 	v4l2_fh_add(&ctx->fh);
- 	INIT_LIST_HEAD(&ctx->list);
- 	ctx->dev = dev;
--	init_waitqueue_head(&ctx->queue);
-+	init_waitqueue_head(&ctx->queue[0]);
- 
- 	ctx->type = MTK_INST_ENCODER;
- 	ret = mtk_vcodec_enc_ctrls_setup(ctx);
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-index 70580c2525ba..677fbba09934 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.c
-@@ -11,34 +11,31 @@
- #include "mtk_vcodec_intr.h"
- #include "mtk_vcodec_util.h"
- 
--int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx  *ctx, int command,
--				 unsigned int timeout_ms)
-+int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx,
-+	int command, unsigned int timeout_ms, unsigned int hw_id)
- {
--	wait_queue_head_t *waitqueue;
- 	long timeout_jiff, ret;
- 	int status = 0;
- 
--	waitqueue = (wait_queue_head_t *)&ctx->queue;
- 	timeout_jiff = msecs_to_jiffies(timeout_ms);
--
--	ret = wait_event_interruptible_timeout(*waitqueue,
--				ctx->int_cond,
-+	ret = wait_event_interruptible_timeout(ctx->queue[hw_id],
-+				ctx->int_cond[hw_id],
- 				timeout_jiff);
- 
- 	if (!ret) {
- 		status = -1;	/* timeout */
--		mtk_v4l2_err("[%d] ctx->type=%d, cmd=%d, wait_event_interruptible_timeout time=%ums out %d %d!",
--			     ctx->id, ctx->type, command, timeout_ms,
--			     ctx->int_cond, ctx->int_type);
-+		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec timeout=%ums (%d %d)",
-+				ctx->id, command, ctx->type, timeout_ms,
-+				ctx->int_cond[hw_id], ctx->int_type[hw_id]);
- 	} else if (-ERESTARTSYS == ret) {
--		mtk_v4l2_err("[%d] ctx->type=%d, cmd=%d, wait_event_interruptible_timeout interrupted by a signal %d %d",
--			     ctx->id, ctx->type, command, ctx->int_cond,
--			     ctx->int_type);
- 		status = -1;
-+		mtk_v4l2_err("[%d] cmd=%d, type=%d, dec inter fail (%d %d)",
-+				ctx->id, command, ctx->type,
-+				ctx->int_cond[hw_id], ctx->int_type[hw_id]);
- 	}
- 
--	ctx->int_cond = 0;
--	ctx->int_type = 0;
-+	ctx->int_cond[hw_id] = 0;
-+	ctx->int_type[hw_id] = 0;
- 
- 	return status;
- }
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-index 638cd1f3526a..2bf4cabfaa43 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_intr.h
-@@ -12,7 +12,7 @@
- struct mtk_vcodec_ctx;
- 
- /* timeout is ms */
--int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *data, int command,
--				unsigned int timeout_ms);
-+int mtk_vcodec_wait_for_done_ctx(struct mtk_vcodec_ctx *ctx,
-+				int command, unsigned int timeout_ms, unsigned int hw_id);
- 
- #endif /* _MTK_VCODEC_INTR_H_ */
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-index 40d6e6c5ac7a..481655bb6016 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_if.c
-@@ -413,7 +413,7 @@ static int vdec_h264_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 		/* wait decoder done interrupt */
- 		err = mtk_vcodec_wait_for_done_ctx(inst->ctx,
- 						   MTK_INST_IRQ_RECEIVED,
--						   WAIT_INTR_TIMEOUT_MS);
-+						   WAIT_INTR_TIMEOUT_MS, 0);
- 		if (err)
- 			goto err_free_fb_out;
- 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-index fada4d146703..43542de11e9c 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_h264_req_if.c
-@@ -727,7 +727,7 @@ static int vdec_h264_slice_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 	/* wait decoder done interrupt */
- 	err = mtk_vcodec_wait_for_done_ctx(inst->ctx,
- 					   MTK_INST_IRQ_RECEIVED,
--					   WAIT_INTR_TIMEOUT_MS);
-+					   WAIT_INTR_TIMEOUT_MS, 0);
- 	if (err)
- 		goto err_free_fb_out;
- 	vpu_dec_end(vpu);
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-index e5393f841080..88c046731754 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp8_if.c
-@@ -488,7 +488,7 @@ static int vdec_vp8_decode(void *h_vdec, struct mtk_vcodec_mem *bs,
- 
- 	/* wait decoder done interrupt */
- 	mtk_vcodec_wait_for_done_ctx(inst->ctx, MTK_INST_IRQ_RECEIVED,
--				     WAIT_INTR_TIMEOUT_MS);
-+				     WAIT_INTR_TIMEOUT_MS, 0);
- 
- 	if (inst->vsi->load_data)
- 		load_dec_table(inst);
-diff --git a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-index 71cdc3ddafcb..70b8383f7c8e 100644
---- a/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_if.c
-@@ -539,7 +539,7 @@ static bool vp9_wait_dec_end(struct vdec_vp9_inst *inst)
- 
- 	mtk_vcodec_wait_for_done_ctx(inst->ctx,
- 			MTK_INST_IRQ_RECEIVED,
--			WAIT_INTR_TIMEOUT_MS);
-+			WAIT_INTR_TIMEOUT_MS, 0);
- 
- 	if (ctx->irq_status & MTK_VDEC_IRQ_STATUS_DEC_SUCCESS)
- 		return true;
-diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-index bf03888a824f..4d9b8798dffe 100644
---- a/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc/venc_h264_if.c
-@@ -335,7 +335,7 @@ static unsigned int h264_enc_wait_venc_done(struct venc_h264_inst *inst)
- 	struct mtk_vcodec_ctx *ctx = (struct mtk_vcodec_ctx *)inst->ctx;
- 
- 	if (!mtk_vcodec_wait_for_done_ctx(ctx, MTK_INST_IRQ_RECEIVED,
--					  WAIT_INTR_TIMEOUT_MS)) {
-+					  WAIT_INTR_TIMEOUT_MS, 0)) {
- 		irq_status = ctx->irq_status;
- 		mtk_vcodec_debug(inst, "irq_status %x <-", irq_status);
- 	}
-diff --git a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-index 6b66957d5192..56ce58f761f1 100644
---- a/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-+++ b/drivers/media/platform/mtk-vcodec/venc/venc_vp8_if.c
-@@ -222,7 +222,7 @@ static unsigned int vp8_enc_wait_venc_done(struct venc_vp8_inst *inst)
- 	struct mtk_vcodec_ctx *ctx = (struct mtk_vcodec_ctx *)inst->ctx;
- 
- 	if (!mtk_vcodec_wait_for_done_ctx(ctx, MTK_INST_IRQ_RECEIVED,
--					  WAIT_INTR_TIMEOUT_MS)) {
-+					  WAIT_INTR_TIMEOUT_MS, 0)) {
- 		irq_status = ctx->irq_status;
- 		mtk_vcodec_debug(inst, "isr return %x", irq_status);
- 	}
--- 
-2.25.1
+> 
+> Fixes: 27bb0e42855a ("dt-bindings: memory: mediatek: Convert SMI to DT schema")
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  .../bindings/memory-controllers/mediatek,smi-larb.yaml           | 1 -
+>  1 file changed, 1 deletion(-)
+> 
 
+
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
