@@ -4,71 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16E92C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 02:05:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F906C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 02:16:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2yh2XpJp77Q73saA7pzBhf6ASfATbSFB286YTZWLPx8=; b=OjXX3dcwzruvRc
-	H3JVHIIH/Z1CwZZtapQz6MsRNOLaEH3dDuXWQ7FeGaYhrDmdsIUPsKLN9WZJF529ixEhiay4NuUJp
-	NSgdwzQv/EQxA50jfhQtz1Y1VIt4ephWpNVK1I+aYsUKm0E53+Y4PqxV/C45bwesZv/IQfqh7APIX
-	ePFay1bUQGKXcTvFyH6nWB2B2JVn4vXrKcFV3GkRbnLstB9ZPOj1IUcHjcOLDB81yKTMhPDAJN3LB
-	csSFC6uTFnP+lCSykvclLflhb4Ut/ZZ16Cmmb0qv12CHwkT2ti5kbvkAcJPSgdEhpFlKlR72ODLeW
-	teYz1bTmEKmdrsd3yW6Q==;
+	List-Owner; bh=GfvqsmMpT2/NLsraGZu94tJB9K8FqgPhYhn2p2c9SMU=; b=QO3ij6Q74jTaMG
+	Sk9rE8HrDpIrD55SxVcHFwQ/aLSM/XYjlktIDNeJj6H5/Bay9r493yR8VjYELF2opMFkEiwfjCuhT
+	xoCjAgzm5M56sR/S3oWkSlLlBWcaVbiWffm5ANPMt820WessybEqZDiVC8sr5ArnmmPmaPfjH54Zi
+	LhF1uVH7yjgrN2Pt270u9ohX5K0yZGV8sOtIN2qYREC/bKDc1kfpqJjSQj/Uj+mBTjabk/0y7wz4e
+	WG4EAx8ervWs4wRfHV9DON2oaMHqLESWSmA2i1lkuYwL4DIcbHooDhIw9s5EJJZ3Rf9etLtGQpWfe
+	jKEmToOZQr8FNueMXYtQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7T10-000mTH-4i; Wed, 12 Jan 2022 02:05:30 +0000
-Received: from mail-oi1-f179.google.com ([209.85.167.179])
+	id 1n7TBk-000ow8-QB; Wed, 12 Jan 2022 02:16:36 +0000
+Received: from mailout.easymail.ca ([64.68.200.34])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7T0k-000mNd-NN; Wed, 12 Jan 2022 02:05:16 +0000
-Received: by mail-oi1-f179.google.com with SMTP id w188so1509001oiw.13;
- Tue, 11 Jan 2022 18:05:13 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=7yYE6Cs10Esq3OViO3ltPRe5e9ugTO3WijsMpNxMlOs=;
- b=VyifrIzuM29K8Q04O7O8yHn80qd42y6tKsj5R313YYHR49sPN/AfrR0jOWgDpGAt2R
- kQloW/3M9ojB6kG2qgkYBnfJW6iWq8PELeQncavwehLiqHhbZDGJSKsvVaLkP5qBf7m3
- dTn3XkE/lOMDNbI2VnkloagRYgj7IrAu8i4xflI5VGqQ3Azr9gn6LB6II/5sBwGwMs7N
- DDOnWeo+v8cVZ6Tw5SBiXkRfevRZMmmQ1mJM8MmsTjgGlh290Kf8thEK3rMdAFiX8oM0
- e2i5DlWtmFrSp2Vb++yCrMVIeT+zyu/q2UwyWJ3wH/kE/v654U7X95srJgMUHg45A69n
- Qylw==
-X-Gm-Message-State: AOAM531H+ZJYhIxphH65XudW6b9Hp6HZcn+HmQfF9GqA82EQdIpow9ay
- C5RWP4rjzhBBhRhXfFWs4SNsCSrZ0g==
-X-Google-Smtp-Source: ABdhPJwZSetCrwyoCTRuxp0BWKa6Ycop3qtlZUE4Xdi6xWhx3gEMoXb6UUGZRi5pGMZWrEgL2mwrhQ==
-X-Received: by 2002:a05:6808:1710:: with SMTP id
- bc16mr3653978oib.179.1641953113423; 
- Tue, 11 Jan 2022 18:05:13 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id t26sm1998929oic.51.2022.01.11.18.05.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Jan 2022 18:05:12 -0800 (PST)
-Received: (nullmailer pid 3920878 invoked by uid 1000);
- Wed, 12 Jan 2022 02:05:11 -0000
-Date: Tue, 11 Jan 2022 20:05:11 -0600
-From: Rob Herring <robh@kernel.org>
-To: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Enric Balletbo Serra <eballetbo@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Nicolas Boichat <drinkcat@chromium.org>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-Subject: Re: [v1 1/2] dt-bindings: power: Add MT8186 power domains
-Message-ID: <Yd43V1woRMAcXOfS@robh.at.kernel.org>
-References: <20220108131953.16744-1-chun-jie.chen@mediatek.com>
- <20220108131953.16744-2-chun-jie.chen@mediatek.com>
+ id 1n7TBh-000ouW-J8
+ for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 02:16:35 +0000
+Received: from localhost (localhost [127.0.0.1])
+ by mailout.easymail.ca (Postfix) with ESMTP id B311DC81BD;
+ Wed, 12 Jan 2022 02:16:28 +0000 (UTC)
+X-Virus-Scanned: Debian amavisd-new at emo01-pco.easydns.vpn
+Received: from mailout.easymail.ca ([127.0.0.1])
+ by localhost (emo01-pco.easydns.vpn [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qn6YbSJUGugb; Wed, 12 Jan 2022 02:16:27 +0000 (UTC)
+Received: from mail.gonehiking.org (c-24-9-64-241.hsd1.co.comcast.net
+ [24.9.64.241])
+ by mailout.easymail.ca (Postfix) with ESMTPA id 5EE66C8193;
+ Wed, 12 Jan 2022 02:16:27 +0000 (UTC)
+Received: from [192.168.1.4] (internal [192.168.1.4])
+ by mail.gonehiking.org (Postfix) with ESMTP id 755513EE4B;
+ Tue, 11 Jan 2022 19:16:26 -0700 (MST)
+Message-ID: <fed8a57f-8003-5759-a74a-3ddbf867152b@gonehiking.org>
+Date: Tue, 11 Jan 2022 19:16:26 -0700
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220108131953.16744-2-chun-jie.chen@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.1
+Subject: Re: [Bug] mt7921e driver in 5.16 causes kernel panic
+Content-Language: en-US
+To: sean.wang@mediatek.com
+Cc: greearb@candelatech.com, nbd@nbd.name, lorenzo.bianconi83@gmail.com,
+ Ryder.Lee@mediatek.com, Shayne.Chen@mediatek.com, kvalo@kernel.org,
+ davem@davemloft.net, kuba@kernel.org, matthias.bgg@gmail.com,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <c3a66426-e6a0-4fd2-dc09-85181c96b755@gonehiking.org--annotate>
+ <1641948556-23414-1-git-send-email-sean.wang@mediatek.com>
+From: Khalid Aziz <khalid@gonehiking.org>
+In-Reply-To: <1641948556-23414-1-git-send-email-sean.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_180514_795201_C517D30A 
-X-CRM114-Status: GOOD (  16.42  )
+X-CRM114-CacheID: sfid-20220111_181633_751568_99D94747 
+X-CRM114-Status: GOOD (  22.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,78 +70,74 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
+Reply-To: khalid@gonehiking.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 08, 2022 at 09:19:52PM +0800, Chun-Jie Chen wrote:
-> Add power domains dt-bindings for MT8186.
+On 1/11/22 17:49, sean.wang@mediatek.com wrote:
+> From: Sean Wang <sean.wang@mediatek.com>
 > 
-> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> ---
->  .../power/mediatek,power-controller.yaml      |  1 +
->  include/dt-bindings/power/mt8186-power.h      | 32 +++++++++++++++++++
->  2 files changed, 33 insertions(+)
->  create mode 100644 include/dt-bindings/power/mt8186-power.h
+>> On 1/11/22 16:31, Ben Greear wrote:
+>>> On 1/11/22 3:17 PM, Khalid Aziz wrote:
+>>>> I am seeing an intermittent bug in mt7921e driver. When the driver
+>>>> module is loaded and is being initialized, almost every other time it
+>>>> seems to write to some wild memory location. This results in driver
+>>>> failing to initialize with message "Timeout for driver own" and at
+>>>> the same time I start to see "Bad page state" messages for random
+>>>> processes. Here is the relevant part of dmesg:
+>>>
+>>> Please see if this helps?
+>>>
+>>> From: Ben Greear <greearb@candelatech.com>
+>>>
+>>> If the nic fails to start, it is possible that the reset_work has
+>>> already been scheduled.  Ensure the work item is canceled so we do not
+>>> have use-after-free crash in case cleanup is called before the work
+>>> item is executed.
+>>>
+>>> This fixes crash on my x86_64 apu2 when mt7921k radio fails to work.
+>>> Radio still fails, but OS does not crash.
+>>>
+>>> Signed-off-by: Ben Greear <greearb@candelatech.com>
+>>> ---
+>>>    drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
+>>>    1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>>> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>>> index 6073bedaa1c08..9b33002dcba4a 100644
+>>> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>>> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>>> @@ -272,6 +272,7 @@ static void mt7921_stop(struct ieee80211_hw *hw)
+>>>
+>>>        cancel_delayed_work_sync(&dev->pm.ps_work);
+>>>        cancel_work_sync(&dev->pm.wake_work);
+>>> +    cancel_work_sync(&dev->reset_work);
+>>>        mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
+>>>
+>>>        mt7921_mutex_acquire(dev);
+>>
+>> Hi Ben,
+>>
+>> Unfortunately that did not help. I still saw the same messages and a kernel panic. I do not see this bug if I power down the laptop before booting it up, so mt7921_stop() would make sense as the reasonable place to fix it.
 > 
-> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> index d6ebd77d28a7..135c6f722091 100644
-> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
-> @@ -26,6 +26,7 @@ properties:
->        - mediatek,mt8167-power-controller
->        - mediatek,mt8173-power-controller
->        - mediatek,mt8183-power-controller
-> +      - mediatek,mt8186-power-controller
->        - mediatek,mt8192-power-controller
->        - mediatek,mt8195-power-controller
->  
-> diff --git a/include/dt-bindings/power/mt8186-power.h b/include/dt-bindings/power/mt8186-power.h
-> new file mode 100644
-> index 000000000000..ca8ea2d24801
-> --- /dev/null
-> +++ b/include/dt-bindings/power/mt8186-power.h
-> @@ -0,0 +1,32 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
+> Hi, Khalid
+> 
+> Could you try the patch below? It should be helpful to your issue
+> 
+> https://patchwork.kernel.org/project/linux-wireless/patch/70e27cbc652cbdb78277b9c691a3a5ba02653afb.1641540175.git.objelf@gmail.com/
 
-Dual license please.
+Hi Sean,
 
-> +/*
-> + * Copyright (c) 2022 MediaTek Inc.
-> + * Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
-> + */
-> +
-> +#ifndef _DT_BINDINGS_POWER_MT8186_POWER_H
-> +#define _DT_BINDINGS_POWER_MT8186_POWER_H
-> +
-> +#define MT8186_POWER_DOMAIN_MFG0			0
-> +#define MT8186_POWER_DOMAIN_MFG1			1
-> +#define MT8186_POWER_DOMAIN_MFG2			2
-> +#define MT8186_POWER_DOMAIN_MFG3			3
-> +#define MT8186_POWER_DOMAIN_SSUSB			4
-> +#define MT8186_POWER_DOMAIN_SSUSB_P1			5
-> +#define MT8186_POWER_DOMAIN_DIS				6
-> +#define MT8186_POWER_DOMAIN_IMG				7
-> +#define MT8186_POWER_DOMAIN_IMG2			8
-> +#define MT8186_POWER_DOMAIN_IPE				9
-> +#define MT8186_POWER_DOMAIN_CAM				10
-> +#define MT8186_POWER_DOMAIN_CAM_RAWA			11
-> +#define MT8186_POWER_DOMAIN_CAM_RAWB			12
-> +#define MT8186_POWER_DOMAIN_VENC			13
-> +#define MT8186_POWER_DOMAIN_VDEC			14
-> +#define MT8186_POWER_DOMAIN_WPE				15
-> +#define MT8186_POWER_DOMAIN_CONN_ON			16
-> +#define MT8186_POWER_DOMAIN_CSIRX_TOP			17
-> +#define MT8186_POWER_DOMAIN_ADSP_AO			18
-> +#define MT8186_POWER_DOMAIN_ADSP_INFRA			19
-> +#define MT8186_POWER_DOMAIN_ADSP_TOP			20
-> +
-> +#endif /* _DT_BINDINGS_POWER_MT8186_POWER_H */
-> -- 
-> 2.18.0
-> 
-> 
+That worked! I tried 5 reboots back-to-back after applying your patch 
+without powering down my laptop. There were no error messages, kernel 
+came up every time and wifi worked.
+
+Thanks,
+Khalid
+
 
 _______________________________________________
 Linux-mediatek mailing list
