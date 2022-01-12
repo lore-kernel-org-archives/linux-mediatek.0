@@ -4,126 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 130F5C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 10:27:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78C2CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 10:28:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rXQhxZ0L5FXkkiGXB8XDISwkpyp241zrdrxWPsc0tXQ=; b=3urO3nRrJ97yu8
-	qbQVdJOgQXrZHqdUeYxho9qS4DL3rZuHWwrT9D09wDAU/fZR0uENn3hvsmKj8eRoff9NItLZADaiF
-	YNBurcJY5I0I1oDXk7q+c+JaB101EiW6esIBgtC3QqaC1xqMQcf26Ramung09pTOvkwkZ4IdnKe2y
-	iOPara6LDrhv3TpUhnjlmqCvEcvLec8ULi78zfix6wxH6rLzJKTDtfqjvuBHUz6KAYNcGsVR6Bsj2
-	N+ZDq7WwwjSP/ugTz6YMZc41XUZDUh8WZwtSodxRwGvPc5E7fgO+9V4N097dErzlC4EaDOa6lNIiv
-	KVA1xjRi1uTMrpbqDLUA==;
+	List-Owner; bh=rXWt8NP7WBZSa2caAalzSKnXQuguGJBAFerxlINhel4=; b=LcNmsvAbHgUaiP
+	To43vRtX29pUULFghQIuLPw/XSdPlZZrQiBxCWaQa+EDf1uogJrk96l5a8pesvIcB87IixDo+F8sn
+	wLeMGxYCrB6l5Whk/DEdkb9CMlxyxuL9we8L8uVKbMaDibTNq3u8HBhWDwdFs+mVjPWcMQ0Mbliwi
+	CpMuw7pH5CSJk6BbxqdfdyKhUzJ8TgIou1mWSzORiUp+UYuvpg70zSQdEKm/OUc0SlWHcymkBj6/q
+	X6ZqEk3l8l1sVMsFzeSsTC8LlG3HCnCWY8rXhrjPSRVB7WwxyB+edQjHA/O0V5p4sv/3e2pGAFd24
+	wCl0L5aar2pEsOrloudA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7ar1-0026Ps-Ie; Wed, 12 Jan 2022 10:27:43 +0000
-Received: from mail-ua1-f42.google.com ([209.85.222.42])
+	id 1n7arO-0026Y3-9p; Wed, 12 Jan 2022 10:28:06 +0000
+Received: from smtp-relay-internal-1.canonical.com ([185.125.188.123])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7aqd-0026Hp-QM; Wed, 12 Jan 2022 10:27:21 +0000
-Received: by mail-ua1-f42.google.com with SMTP id y4so3856032uad.1;
- Wed, 12 Jan 2022 02:27:18 -0800 (PST)
+ id 1n7arL-0026WN-Gw
+ for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 10:28:05 +0000
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 2F8D93FFDB
+ for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 10:28:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1641983282;
+ bh=QRI3RyqVgPy+I4GidDpfSQY18QjzUt/rAxNK//Q3/V4=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=Y1fNjQm7w8ub4ZmMRDuneay/9gYtEqous4JlodGBJscrJyHmdFuvRyo14jy6wKSvY
+ V+9zPbFYSD/HIiBBFFIUlsP3XBHT8FEwl886jLinoFVKartxi89F8fVvh6htIqII74
+ ZVDQ4UzsefUGTSEE4oKAi+Xkk+hQwAYmlpsa/AGdoYVEbW7UluARh4dW6+hhAWmUwb
+ qN7btD0U7yr1fGtw8rJZRrrMhfB/LXEkIS/LiSdp0kGBL+At50xn7wmPoht+F44fRF
+ AQ1BDAlT1PpE4A++eXpfAPgurJL3ekOOkwmUZoL02um/eUPUaBR3oYJyIBLXoo8Jbl
+ oLBYVQAGtG4LQ==
+Received: by mail-ed1-f72.google.com with SMTP id
+ y18-20020a056402271200b003fa16a5debcso1856493edd.14
+ for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 02:28:02 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=bq/EV5whRByTBzcA7NkMG0ZHqS/XeQEEEioGL5IxVZo=;
- b=OmgMeYt/HiVkEr4DWMm9NeD1Ff9krW60PVIQgVbUBNVhgLI9uPlh6tEzdSVRYtVwOA
- tmuuTcr8tMrX1q199EQ8f3JEeyJmTUp8cOMGah7nqrACbjUpRIOcfMBmt+EUFOSoZTgu
- ei2PQDXNR+p7u2d2ZfRhuU1m6D4/cWDCRGhud6eO9mnKYgj+tcbS4TdV3pkD7MYET3YU
- cAwEoOZ1zQHSC1s4eGiMK75OOusYwWaVuHvidTBCcSx62BL44p8PuGep44QM2rRZ98Gi
- /C7FyLnwBShKFTrje8qvv/bKZ0ofySokZCxK1COXWn31KxORTqew3DKv7jxeODzDfqVp
- pQlg==
-X-Gm-Message-State: AOAM5314/S1wgUseTEsO2zFhpicCJcb2RtCKB9Uous1oayZrqpOUXiOc
- nlMiQJVQhHSg4US1LJOobZYJjPCCszlI44VT
-X-Google-Smtp-Source: ABdhPJzsx3C3SLY8VwcswehbfLmU9Ei+QTEwNapX+i6TAx3XwclCQ7xOtxlniSCRMvxOcLF0HXY+XA==
-X-Received: by 2002:ab0:3b16:: with SMTP id n22mr2950526uaw.72.1641983237257; 
- Wed, 12 Jan 2022 02:27:17 -0800 (PST)
-Received: from mail-ua1-f42.google.com (mail-ua1-f42.google.com.
- [209.85.222.42])
- by smtp.gmail.com with ESMTPSA id f23sm1011476vsl.0.2022.01.12.02.27.14
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=QRI3RyqVgPy+I4GidDpfSQY18QjzUt/rAxNK//Q3/V4=;
+ b=rm49YZTdTmqIFq62oo1cjhPiMPNIcJ+5dig+b5w7xpwSN9TkdZ8c9YfrXx3XAjgvNG
+ HzWmT8RJOffSZtnZqb+d3dCvABD7yE16CqnrNhZvwD5YjPCde1AUyKM6+nHwUX1EI93H
+ 6RUwT13NwJjLiEA/l3BQzvYIf59Z2b8PV3dhd1VpU6eNpK8BddjSelXO6776V6fft4pT
+ M6BNmdHxtoh6GoFXdfPqSwao3GkSigE5jJg3m4+G0rWGzBDK3lKixPYhUJBzhwsiQFVl
+ 8SpM2wOtOBJ2VHdmcl9Zsa2bLkgZ4/Blpr+PIqfJ8TML439poo/3D+/kYdRS7LjVxkCi
+ 19+A==
+X-Gm-Message-State: AOAM533VW/IkVnXiPLI4U5aRoNhnLNjEOrq5kOZfK84DQcEYig+GJRdy
+ 4EThvylNkXFOSJuSmBkxEK2AHTNyeW4trWfDOg0BFFbNpSAc2KBPVxX8cEfD1828iZ1ZmnKa2wr
+ iDwBQ9ipIXPz0/SqNO9OQHnho1CMcZ9M80DDY+PTKhgih3xe08Q==
+X-Received: by 2002:aa7:d554:: with SMTP id u20mr8492733edr.322.1641983281841; 
+ Wed, 12 Jan 2022 02:28:01 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxNl0142m+NR0mNOStdmmNLcUcWydkHPUn0K/3hwATxqUffiAMouRTvD80ezk7JLym0RGyLwA==
+X-Received: by 2002:aa7:d554:: with SMTP id u20mr8492708edr.322.1641983281648; 
+ Wed, 12 Jan 2022 02:28:01 -0800 (PST)
+Received: from [192.168.0.29] (xdsl-188-155-168-84.adslplus.ch.
+ [188.155.168.84])
+ by smtp.gmail.com with ESMTPSA id e16sm5905001edu.15.2022.01.12.02.28.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Jan 2022 02:27:15 -0800 (PST)
-Received: by mail-ua1-f42.google.com with SMTP id u6so3940768uaq.0;
- Wed, 12 Jan 2022 02:27:14 -0800 (PST)
-X-Received: by 2002:a05:6102:21dc:: with SMTP id
- r28mr3809205vsg.57.1641983234508; 
- Wed, 12 Jan 2022 02:27:14 -0800 (PST)
+ Wed, 12 Jan 2022 02:28:00 -0800 (PST)
+Message-ID: <22935ffa-469c-a609-c30b-919ba85b842c@canonical.com>
+Date: Wed, 12 Jan 2022 11:27:59 +0100
 MIME-Version: 1.0
-References: <20220110195449.12448-1-s.shtylyov@omp.ru>
- <20220110195449.12448-2-s.shtylyov@omp.ru>
- <20220110201014.mtajyrfcfznfhyqm@pengutronix.de> <YdyilpjC6rtz6toJ@lunn.ch>
- <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
- <20220112085009.dbasceh3obfok5dc@pengutronix.de>
-In-Reply-To: <20220112085009.dbasceh3obfok5dc@pengutronix.de>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 12 Jan 2022 11:27:02 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
-Message-ID: <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>, 
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org, 
- Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- Liam Girdwood <lgirdwood@gmail.com>, 
- Guenter Roeck <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>, 
- Miquel Raynal <miquel.raynal@bootlin.com>, linux-phy@lists.infradead.org, 
- Jiri Slaby <jirislaby@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>, 
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, 
- Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
- Bartosz Golaszewski <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Tony Luck <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>, 
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
- "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, 
- Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- platform-driver-x86@vger.kernel.org, 
- Linux PWM List <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, 
- Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, 
- Linux PM list <linux-pm@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>, 
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Alex Williamson <alex.williamson@redhat.com>, 
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Eric Auger <eric.auger@redhat.com>, 
- Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, 
- openipmi-developer@lists.sourceforge.net, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Benson Leung <bleung@chromium.org>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- linux-edac@vger.kernel.org, Sergey Shtylyov <s.shtylyov@omp.ru>, 
- Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>, 
- Hans de Goede <hdegoede@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>, 
- Linux MMC List <linux-mmc@vger.kernel.org>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-spi <linux-spi@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Vinod Koul <vkoul@kernel.org>, 
- James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, 
- Sebastian Reichel <sre@kernel.org>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
- linux-mediatek@lists.infradead.org, 
- Brian Norris <computersforpeace@gmail.com>, netdev@vger.kernel.org
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.1
+Subject: Re: [PATCH v2 5/6] memory: mtk-smi: Add sleep ctrl function
+Content-Language: en-US
+To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>,
+ Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ Tomasz Figa <tfiga@chromium.org>, linux-mediatek@lists.infradead.org,
+ srv_heupstream@mediatek.com, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ iommu@lists.linux-foundation.org, youlin.pei@mediatek.com,
+ anan.sun@mediatek.com, lc.kan@mediatek.com, yi.kuo@mediatek.com,
+ anthony.huang@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20220111063904.7583-1-yong.wu@mediatek.com>
+ <20220111063904.7583-6-yong.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220111063904.7583-6-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_022719_916175_F937F880 
-X-CRM114-Status: GOOD (  41.92  )
+X-CRM114-CacheID: sfid-20220112_022803_757752_39E95665 
+X-CRM114-Status: GOOD (  31.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,68 +107,117 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgVXdlLAoKT24gV2VkLCBKYW4gMTIsIDIwMjIgYXQgOTo1MSBBTSBVd2UgS2xlaW5lLUvDtm5p
-Zwo8dS5rbGVpbmUta29lbmlnQHBlbmd1dHJvbml4LmRlPiB3cm90ZToKPiBPbiBXZWQsIEphbiAx
-MiwgMjAyMiBhdCAwOTozMzo0OEFNICswMTAwLCBHZWVydCBVeXR0ZXJob2V2ZW4gd3JvdGU6Cj4g
-PiBPbiBNb24sIEphbiAxMCwgMjAyMiBhdCAxMDoyMCBQTSBBbmRyZXcgTHVubiA8YW5kcmV3QGx1
-bm4uY2g+IHdyb3RlOgo+ID4gPiBPbiBNb24sIEphbiAxMCwgMjAyMiBhdCAwOToxMDoxNFBNICsw
-MTAwLCBVd2UgS2xlaW5lLUvDtm5pZyB3cm90ZToKPiA+ID4gPiBPbiBNb24sIEphbiAxMCwgMjAy
-MiBhdCAxMDo1NDo0OFBNICswMzAwLCBTZXJnZXkgU2h0eWx5b3Ygd3JvdGU6Cj4gPiA+ID4gPiBU
-aGlzIHBhdGNoIGlzIGJhc2VkIG9uIHRoZSBmb3JtZXIgQW5keSBTaGV2Y2hlbmtvJ3MgcGF0Y2g6
-Cj4gPiA+ID4gPgo+ID4gPiA+ID4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGttbC8yMDIxMDMz
-MTE0NDUyNi4xOTQzOS0xLWFuZHJpeS5zaGV2Y2hlbmtvQGxpbnV4LmludGVsLmNvbS8KPiA+ID4g
-PiA+Cj4gPiA+ID4gPiBDdXJyZW50bHkgcGxhdGZvcm1fZ2V0X2lycV9vcHRpb25hbCgpIHJldHVy
-bnMgYW4gZXJyb3IgY29kZSBldmVuIGlmIElSUQo+ID4gPiA+ID4gcmVzb3VyY2Ugc2ltcGx5IGhh
-cyBub3QgYmVlbiBmb3VuZC4gSXQgcHJldmVudHMgdGhlIGNhbGxlcnMgZnJvbSBiZWluZwo+ID4g
-PiA+ID4gZXJyb3IgY29kZSBhZ25vc3RpYyBpbiB0aGVpciBlcnJvciBoYW5kbGluZzoKPiA+ID4g
-PiA+Cj4gPiA+ID4gPiAgICAgcmV0ID0gcGxhdGZvcm1fZ2V0X2lycV9vcHRpb25hbCguLi4pOwo+
-ID4gPiA+ID4gICAgIGlmIChyZXQgPCAwICYmIHJldCAhPSAtRU5YSU8pCj4gPiA+ID4gPiAgICAg
-ICAgICAgICByZXR1cm4gcmV0OyAvLyByZXNwZWN0IGRlZmVycmVkIHByb2JlCj4gPiA+ID4gPiAg
-ICAgaWYgKHJldCA+IDApCj4gPiA+ID4gPiAgICAgICAgICAgICAuLi53ZSBnZXQgYW4gSVJRLi4u
-Cj4gPiA+ID4gPgo+ID4gPiA+ID4gQWxsIG90aGVyICpfb3B0aW9uYWwoKSBBUElzIHNlZW0gdG8g
-cmV0dXJuIDAgb3IgTlVMTCBpbiBjYXNlIGFuIG9wdGlvbmFsCj4gPiA+ID4gPiByZXNvdXJjZSBp
-cyBub3QgYXZhaWxhYmxlLiBMZXQncyBmb2xsb3cgdGhpcyBnb29kIGV4YW1wbGUsIHNvIHRoYXQg
-dGhlCj4gPiA+ID4gPiBjYWxsZXJzIHdvdWxkIGxvb2sgbGlrZToKPiA+ID4gPiA+Cj4gPiA+ID4g
-PiAgICAgcmV0ID0gcGxhdGZvcm1fZ2V0X2lycV9vcHRpb25hbCguLi4pOwo+ID4gPiA+ID4gICAg
-IGlmIChyZXQgPCAwKQo+ID4gPiA+ID4gICAgICAgICAgICAgcmV0dXJuIHJldDsKPiA+ID4gPiA+
-ICAgICBpZiAocmV0ID4gMCkKPiA+ID4gPiA+ICAgICAgICAgICAgIC4uLndlIGdldCBhbiBJUlEu
-Li4KPiA+ID4gPgo+ID4gPiA+IFRoZSBkaWZmZXJlbmNlIHRvIGdwaW9kX2dldF9vcHRpb25hbCAo
-YW5kIG1vc3Qgb3RoZXIgKl9vcHRpb25hbCkgaXMgdGhhdAo+ID4gPiA+IHlvdSBjYW4gdXNlIHRo
-ZSBOVUxMIHZhbHVlIGFzIGlmIGl0IHdlcmUgYSB2YWxpZCBHUElPLgo+ID4gPiA+Cj4gPiA+ID4g
-QXMgdGhpcyBpc24ndCBnaXZlbiB3aXRoIGZvciBpcnFzLCBJIGRvbid0IHRoaW5rIGNoYW5naW5n
-IHRoZSByZXR1cm4KPiA+ID4gPiB2YWx1ZSBoYXMgbXVjaCBzZW5zZS4KPiA+ID4KPiA+ID4gV2Ug
-YWN0dWFsbHkgd2FudCBwbGF0Zm9ybV9nZXRfaXJxX29wdGlvbmFsKCkgdG8gbG9vayBkaWZmZXJl
-bnQgdG8gYWxsCj4gPiA+IHRoZSBvdGhlciBfb3B0aW9uYWwoKSBtZXRob2RzIGJlY2F1c2UgaXQg
-aXMgbm90IGVxdWl2YWxlbnQuIElmIGl0Cj4gPiA+IGxvb2tzIHRoZSBzYW1lLCBkZXZlbG9wZXJz
-IHdpbGwgYXNzdW1lIGl0IGlzIHRoZSBzYW1lLCBhbmQgZ2V0Cj4gPiA+IHRoZW1zZWx2ZXMgaW50
-byB0cm91YmxlLgo+ID4KPiA+IERldmVsb3BlcnMgYWxyZWFkeSBhc3N1bWUgaXQgaXMgdGhlIHNh
-bWUsIGFuZCB0aHVzIGZvcmdldCB0aGV5IGhhdmUKPiA+IHRvIGNoZWNrIGFnYWluc3QgLUVOWElP
-IGluc3RlYWQgb2YgemVyby4KPgo+IElzIHRoaXMgYW4gYWNrIGZvciByZW5hbWluZyBwbGF0Zm9y
-bV9nZXRfaXJxX29wdGlvbmFsKCkgdG8KPiBwbGF0Zm9ybV9nZXRfaXJxX3NpbGVudCgpPwoKTm8g
-aXQgaXNuJ3QgOy0pCgpJZiBhbiBvcHRpb25hbCBJUlEgaXMgbm90IHByZXNlbnQsIGRyaXZlcnMg
-ZWl0aGVyIGp1c3QgaWdub3JlIGl0IChlLmcuCmZvciBkZXZpY2VzIHRoYXQgY2FuIGhhdmUgbXVs
-dGlwbGUgaW50ZXJydXB0cyBvciBhIHNpbmdsZSBtdXhlZCBJUlEpLApvciB0aGV5IGhhdmUgdG8g
-cmVzb3J0IHRvIHBvbGxpbmcuIEZvciB0aGUgbGF0dGVyLCBmYWxsLWJhY2sgaGFuZGxpbmcKaXMg
-bmVlZGVkIGVsc2V3aGVyZSBpbiB0aGUgZHJpdmVyLgpUbyBtZSBpdCBzb3VuZHMgbXVjaCBtb3Jl
-IGxvZ2ljYWwgZm9yIHRoZSBkcml2ZXIgdG8gY2hlY2sgaWYgYW4Kb3B0aW9uYWwgaXJxIGlzIG5v
-bi16ZXJvIChhdmFpbGFibGUpIG9yIHplcm8gKG5vdCBhdmFpbGFibGUpLCB0aGFuIHRvCnNwcmlu
-a2xlIGFyb3VuZCBjaGVja3MgZm9yIC1FTlhJTy4gSW4gYWRkaXRpb24sIHlvdSBoYXZlIHRvIHJl
-bWVtYmVyCnRoYXQgdGhpcyBvbmUgcmV0dXJucyAtRU5YSU8sIHdoaWxlIG90aGVyIEFQSXMgdXNl
-IC1FTk9FTlQgb3IgLUVOT1NZUwoob3Igc29tZSBvdGhlciBlcnJvciBjb2RlKSB0byBpbmRpY2F0
-ZSBhYnNlbmNlLiBJIHRob3VnaHQgbm90IGhhdmluZwp0byBjYXJlIGFib3V0IHRoZSBhY3R1YWwg
-ZXJyb3IgY29kZSB3YXMgdGhlIG1haW4gcmVhc29uIGJlaGluZCB0aGUKaW50cm9kdWN0aW9uIG9m
-IHRoZSAqX29wdGlvbmFsKCkgQVBJcy4KCkdye29ldGplLGVldGluZ31zLAoKICAgICAgICAgICAg
-ICAgICAgICAgICAgR2VlcnQKCi0tCkdlZXJ0IFV5dHRlcmhvZXZlbiAtLSBUaGVyZSdzIGxvdHMg
-b2YgTGludXggYmV5b25kIGlhMzIgLS0gZ2VlcnRAbGludXgtbTY4ay5vcmcKCkluIHBlcnNvbmFs
-IGNvbnZlcnNhdGlvbnMgd2l0aCB0ZWNobmljYWwgcGVvcGxlLCBJIGNhbGwgbXlzZWxmIGEgaGFj
-a2VyLiBCdXQKd2hlbiBJJ20gdGFsa2luZyB0byBqb3VybmFsaXN0cyBJIGp1c3Qgc2F5ICJwcm9n
-cmFtbWVyIiBvciBzb21ldGhpbmcgbGlrZSB0aGF0LgogICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgIC0tIExpbnVzIFRvcnZhbGRzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0
-ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On 11/01/2022 07:39, Yong Wu wrote:
+> Sleep control means that when the larb goes to sleep, we should wait a bit
+> until all the current commands are finished. Thus, when the larb runtime
+> suspends, we need to enable this function to wait until all the existed
+> commands are finished. When the larb resumes, just disable this function.
+> This function only improves the safety of bus. Add a new flag for this
+> function. Prepare for mt8186.
+> 
+> Signed-off-by: Anan Sun <anan.sun@mediatek.com>
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> ---
+>  drivers/memory/mtk-smi.c | 35 ++++++++++++++++++++++++++++++++++-
+>  1 file changed, 34 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index e7b1a22b12ea..d8552f4caba4 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -8,6 +8,7 @@
+>  #include <linux/device.h>
+>  #include <linux/err.h>
+>  #include <linux/io.h>
+> +#include <linux/iopoll.h>
+>  #include <linux/module.h>
+>  #include <linux/of.h>
+>  #include <linux/of_platform.h>
+> @@ -32,6 +33,10 @@
+>  #define SMI_DUMMY			0x444
+>  
+>  /* SMI LARB */
+> +#define SMI_LARB_SLP_CON                0xc
+> +#define SLP_PROT_EN                     BIT(0)
+> +#define SLP_PROT_RDY                    BIT(16)
+> +
+>  #define SMI_LARB_CMD_THRT_CON		0x24
+>  #define SMI_LARB_THRT_RD_NU_LMT_MSK	GENMASK(7, 4)
+>  #define SMI_LARB_THRT_RD_NU_LMT		(5 << 4)
+> @@ -81,6 +86,7 @@
+>  
+>  #define MTK_SMI_FLAG_THRT_UPDATE	BIT(0)
+>  #define MTK_SMI_FLAG_SW_FLAG		BIT(1)
+> +#define MTK_SMI_FLAG_SLEEP_CTL		BIT(2)
+>  #define MTK_SMI_CAPS(flags, _x)		(!!((flags) & (_x)))
+>  
+>  struct mtk_smi_reg_pair {
+> @@ -371,6 +377,26 @@ static const struct of_device_id mtk_smi_larb_of_ids[] = {
+>  	{}
+>  };
+>  
+> +static int mtk_smi_larb_sleep_ctrl_enable(struct mtk_smi_larb *larb)
+> +{
+> +	int ret;
+> +	u32 tmp;
+> +
+> +	writel_relaxed(SLP_PROT_EN, larb->base + SMI_LARB_SLP_CON);
+> +	ret = readl_poll_timeout_atomic(larb->base + SMI_LARB_SLP_CON,
+> +					tmp, !!(tmp & SLP_PROT_RDY), 10, 1000);
+> +	if (ret) {
+> +		/* TODO: Reset this larb if it fails here. */
+> +		dev_warn(larb->smi.dev, "sleep ctrl is not ready(0x%x).\n", tmp);
+> +	}
+> +	return ret;
+> +}
+> +
+> +static void mtk_smi_larb_sleep_ctrl_disable(struct mtk_smi_larb *larb)
+> +{
+> +	writel_relaxed(0, larb->base + SMI_LARB_SLP_CON);
+> +}
+> +
+>  static int mtk_smi_device_link_common(struct device *dev, struct device **com_dev)
+>  {
+>  	struct platform_device *smi_com_pdev;
+> @@ -483,6 +509,9 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	if (MTK_SMI_CAPS(larb->larb_gen->flags_general, MTK_SMI_FLAG_SLEEP_CTL))
+> +		mtk_smi_larb_sleep_ctrl_disable(larb);
+> +
+>  	/* Configure the basic setting for this larb */
+>  	larb_gen->config_port(dev);
+>  
+> @@ -492,9 +521,13 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
+>  static int __maybe_unused mtk_smi_larb_suspend(struct device *dev)
+>  {
+>  	struct mtk_smi_larb *larb = dev_get_drvdata(dev);
+> +	int ret = 0;
+> +
+> +	if (MTK_SMI_CAPS(larb->larb_gen->flags_general, MTK_SMI_FLAG_SLEEP_CTL))
+> +		ret = mtk_smi_larb_sleep_ctrl_enable(larb);
+>  
+>  	clk_bulk_disable_unprepare(larb->smi.clk_num, larb->smi.clks);
+> -	return 0;
+> +	return ret;
+
+I am wondering whether disabling clocks in error case is a proper step.
+On suspend error, the PM core won't run any further callbacks on this
+device. This means, it won't be resumed and your clocks stay disabled. I
+think you should return early and leave the device in active state in
+case of error.
+
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
