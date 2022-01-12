@@ -4,72 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BE91C433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 01:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C00ECC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 01:45:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q3f25oady5QacC7rh9sUOcrl+4HtFwtcgZOK+tVcqWU=; b=Mujn2iRgrYNpeF
-	cjlOB6ZQaZqZ9RquLVcqkFIuXvQnXcr/qyXbmZBLq5KjEgtQbIh+bBU31SR1uiNKgqgNVg9lbri/Z
-	me7F7z75gYKcJ9Gy9nEUr3zWDdnA9tar2wZlgm3jIDvYN4mbi+1f/4d2TP3Nwb/rELH3Yq5TjqS+j
-	tevYjzu3ikvhDutXIazdCcUcnyCs6ZP3cT2WHSt1/qDN//u4SUHjI2WStPW74RxZ4/nyUnZyimjlL
-	JNPVtOkdORXkTzFLza2pDRD+haTTZ3P7LTh+AIxoiLUm/nyXECYT2lP3tgcRhiMJ6EqXsms3e18d/
-	QYbv1NDp3i9HcaVWNYEQ==;
+	List-Owner; bh=57eeAIsUqeOO8ctjwCQoGwEvsVvZ9fKcG2lUA6xa7hY=; b=gMMDAJMduSHAyW
+	I1gWAE75ekGjzeNudrgOuAFbQv7+jyCffnNRuLAVL854tkLaz2xDkDexMqniTcCwu8daWMxjuVQ3K
+	9UBvJ8U9LWnQmjWJpQYaf8GxAC0oIyhb8gM9LHOwPzjqzqrsoKRq3szpmOHFA53RfNcDHJZaD4zXG
+	62xeCbOSLa1HTko8NQVFCoh8N96s35ogcOyQstBSaolxFedYW/xSYNx4qyGQWdczkLdtDOjOdqMlH
+	JM5v+9pxEM6d/h0iEebUKIhN9FUxMiuuu8dgl2eltrZnbFqa4qtuBy08YtweuarF/dJCyZvp26z53
+	5HSVEULZPa5I30SKry7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7Sgq-000fOY-24; Wed, 12 Jan 2022 01:44:40 +0000
-Received: from mail-ot1-f50.google.com ([209.85.210.50])
+	id 1n7Si1-000fmr-JC; Wed, 12 Jan 2022 01:45:53 +0000
+Received: from mail-ot1-f46.google.com ([209.85.210.46])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7Sgn-000fN6-5s; Wed, 12 Jan 2022 01:44:38 +0000
-Received: by mail-ot1-f50.google.com with SMTP id
- c3-20020a9d6c83000000b00590b9c8819aso896819otr.6; 
- Tue, 11 Jan 2022 17:44:36 -0800 (PST)
+ id 1n7Shy-000fl9-12; Wed, 12 Jan 2022 01:45:51 +0000
+Received: by mail-ot1-f46.google.com with SMTP id
+ t4-20020a05683022e400b00591aaf48277so852598otc.13; 
+ Tue, 11 Jan 2022 17:45:49 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to;
- bh=8FJYBnTRh9rd8jwZmCF0yeW+9K4P/KfA/YEfvfZuWPU=;
- b=uVB0EXabNkI05/ZDwiJwFGu7YdsZZm0Mg/4cr+lYH7/hdJW1iQnXnHkfakJMHcXGYg
- DfIAriIXwwG/ZY4XbntKk1Ek8z/p/d1/Z7BPytsx1pPnh2KiOYL3UHASh8JixiX5UWrC
- mUKbesyUlKw6L3PSXgnGBrkQcEHe9N5W6tEF4W0h2xesquIf/4lepVjIxQIh9k3Re45M
- Zp93MAe9gpDerP/IusSyzRXWk8ELh0IAK9CaMAb6iumarquqI0GVra4mi1S5OJq1vncu
- yc6jLYLluTJQ/nwr1ir+1Fzj9cUKpZzI5uf2f3hO/kYTRXBIkX1CaaPRCwB7bEK43s6q
- GMyg==
-X-Gm-Message-State: AOAM532Mrd2GAqtD8PE12K0dTuQbz6fgYQo51HA2OCxiPX5vMlssakv9
- VqvFapqQV0GQvfRXQLBZ6g==
-X-Google-Smtp-Source: ABdhPJyJdqYCZBTnyRZAAQSUb2Fy0wPfx3w1meJoDKPyViA5DIUnR5fzgQIssWX4qg5Urx6Twwq+Sg==
-X-Received: by 2002:a05:6830:2706:: with SMTP id
- j6mr5193697otu.24.1641951876052; 
- Tue, 11 Jan 2022 17:44:36 -0800 (PST)
+ bh=auPBZIGqkRu4jbT6MtHpI7dAZqPiNO/igFKYp+QNdq8=;
+ b=Vpo2M/8o8EdsuEx0VHoABAi+1szL6JM/Q/fmR9A0BufG+jQtoPnwXdw8YGRgt8Fye8
+ WXPDoosOtlBkwHRaJlKSozYyuqukqyaGHTgGoM2XHipSIRSXJ2SefxHBW5jRCK8m7IQd
+ tEdt+hdSc1fb3gKU+9K4Riewyzy0mRN+7JaCKX1Gb/UdjfYaDVp3wzkJSlN2xiJFniym
+ nS1bw8jYk2aE4dhPS2MfvQ73HCQGRL+spGJelC2Tr8pGh+FqoDiJAarUGasG00Sr1bHg
+ jE2IbGgbd+jzIrWG8CUXjDyJSqThyNJgM0y3U/vECd4wgESFbzO6pqTfPrj07r/Dya/M
+ 7pBA==
+X-Gm-Message-State: AOAM5302au2vmztt/v689SU7Asba+njSNL8cDhrjskucCbTAV/rvuEma
+ RJRrUIZ+UKjP8qem773yqw==
+X-Google-Smtp-Source: ABdhPJzMDVWOj9+lKA02JctrkIDbu8daIh0sw3J8ORBid5N5iLpuPv97D7EQ3IVri4nmi7yrt9UgRA==
+X-Received: by 2002:a9d:7f82:: with SMTP id t2mr5350884otp.87.1641951949381;
+ Tue, 11 Jan 2022 17:45:49 -0800 (PST)
 Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
  [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id bn17sm665232oib.7.2022.01.11.17.44.34
+ by smtp.gmail.com with ESMTPSA id w15sm642991ott.49.2022.01.11.17.45.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Jan 2022 17:44:35 -0800 (PST)
-Received: (nullmailer pid 3889527 invoked by uid 1000);
- Wed, 12 Jan 2022 01:44:34 -0000
-Date: Tue, 11 Jan 2022 19:44:34 -0600
+ Tue, 11 Jan 2022 17:45:48 -0800 (PST)
+Received: (nullmailer pid 3891376 invoked by uid 1000);
+ Wed, 12 Jan 2022 01:45:47 -0000
+Date: Tue, 11 Jan 2022 19:45:47 -0600
 From: Rob Herring <robh@kernel.org>
 To: Johnson Wang <johnson.wang@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, lee.jones@linaro.org,
- broonie@kernel.org, robh+dt@kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 3/4] dt-bindings: mfd: Add compatible for the MediaTek
- MT6366 PMIC
-Message-ID: <Yd4ygpoi7KrzU012@robh.at.kernel.org>
+Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, broonie@kernel.org,
+ linux-kernel@vger.kernel.org, robh+dt@kernel.org, lee.jones@linaro.org
+Subject: Re: [PATCH 4/4] dt-bindings: regulator: Add MT6358 regulators
+Message-ID: <Yd4yy2emxSSh80UW@robh.at.kernel.org>
 References: <20220106065407.16036-1-johnson.wang@mediatek.com>
- <20220106065407.16036-4-johnson.wang@mediatek.com>
+ <20220106065407.16036-5-johnson.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20220106065407.16036-4-johnson.wang@mediatek.com>
+In-Reply-To: <20220106065407.16036-5-johnson.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_174437_242925_D384E5AF 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20220111_174550_106756_ED9E3726 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,16 +83,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 06 Jan 2022 14:54:06 +0800, Johnson Wang wrote:
-> This adds compatible for the MediaTek MT6366 PMIC.
+On Thu, 06 Jan 2022 14:54:07 +0800, Johnson Wang wrote:
+> Add buck_vcore_sshub and ldo_vsram_others_sshub
+> regulators to binding document for MT6358 and MT6366.
 > 
 > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
 > ---
->  Documentation/devicetree/bindings/mfd/mt6397.txt | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  .../bindings/regulator/mt6358-regulator.txt   | 22 ++++++++++++++-----
+>  1 file changed, 17 insertions(+), 5 deletions(-)
 > 
 
-Acked-by: Rob Herring <robh@kernel.org>
+Reviewed-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
