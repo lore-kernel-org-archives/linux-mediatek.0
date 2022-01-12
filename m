@@ -4,80 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56423C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 09:31:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F19AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 09:50:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:To:Subject:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=PF3gHQwvejOjPikUtJbdWgq8SsCjuPc9IuWhp3aRor4=; b=ZjU/e+lF9BSP6xkS8AQQbgO23J
-	j54oCuS5tdLvAqvMtUzeArwoKY0QJNndJMYfTCigh4RbmwPrJz33mlNY/5keu09Fcw87paujgy6ji
-	WOW5Gj1SL8xtZR/sAlCQG9prWtWJJMUfi/mlU5Q/dwEzAuMYlzXKDn9Hcw3K5SqgC8A2RJYhmlGsq
-	30iFYHVj97hd8bStJdIfocl6qVxJ6bIbn0lg/HYld0Kmb2/I3vw7ih793mgXVZvagrQWDJdF3NgoH
-	tFNHE6MDazCYt3ruzQl9VLeRb43XjWlEnRuJrbsAiMFPkToruXt4B11UAWldtCVAPoCXIaGo+bwlJ
-	EAJBvd8A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vqSOF9p0Raj/7pCTrHDSIoSG1VK2VnJD0QQKO5MbRXI=; b=ong3JhWDTCKzmt
+	BZmqnyGQvLh6VPJ00cMIILc8KZF6/dJYoGFiVCAWViPNzWcY0t6wS1e5X83kBtug1aPLEVvhs/WM3
+	toSGhASxiECH2qQ3g9A2nqA5HNxREFGENcPKPz6mqmmBjOLkCB5SKNIORzpG6Mc/iTA0iOIcwW5rb
+	EPyrmaxaktsqEkc+rHpZAE+yBU1lq8kSZ0bB1luaCgmJqGOuznSnF03hcOpUVQ1IiD9zV7tjEAu5M
+	Nkw1LPqz3/LrYrYSjKGL9UH9RaI1dxDknMVAX8wduqf2qUGXhADK2gFZ6kdX7H6jtOI45FyVxHlGI
+	G3UGWpREJRBK93w4RwWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7Zyp-001mMf-4o; Wed, 12 Jan 2022 09:31:43 +0000
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+	id 1n7aGP-001pc4-5y; Wed, 12 Jan 2022 09:49:53 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7Zyl-001mM6-KD
- for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 09:31:41 +0000
-Received: by mail-wr1-x42c.google.com with SMTP id e9so3070888wra.2
- for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 01:31:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=baylibre-com.20210112.gappssmtp.com; s=20210112;
- h=subject:to:references:from:organization:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=HHiZYhE79k1sBF2oLIK2NuqiDzQ4Rp7gKFX5X0YEjPo=;
- b=kzsLpi+mBQPB6AdzmOIAbGkmOFzfOVUsyYSJL2qfQvrQUQ4hHib8wkqCiFzLz6d0nI
- LGp14pihQkvSCQk/qvutd2SJQ/uV541NY7YHkZ7hHkvfxHoNnMzOpqE2iBjdOhz2vKgG
- F9XfelclKZCDMaGflhGdZQse7O7/D+R7dDt008g9HrgDtYgIXeS0IOpe/wjOt/o35XTu
- lMpMnIWSbmroaybyFf8OWr0cNJiZQZVpU4GrPCAJ9qsgl0xCPnEFNuEq1Aqn2BCzn35+
- FQ8xvcP1yqrOUzI0MhbAoux3ajVEsAS/VJX3t0fabNWvlYEm/p+3WABJ7YTyyh/r/UNP
- tAuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:subject:to:references:from:organization
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=HHiZYhE79k1sBF2oLIK2NuqiDzQ4Rp7gKFX5X0YEjPo=;
- b=qpwSMj5YyHrcUzFGS1oufODCEJcrOE9bgzUpoTTqLEFJwcj7+XHFZ0uzTsMKRdWJfP
- MQK/98O6j1ulKQGi0Q9EflgtKBLjEBE6dyS7OcOMXMjXdh1GorjmV5pGWsJVOfAAWEct
- os10PgvtvVVxLhekX3yuMX4PRTXTFwy6g29Zxa5oZth7XVPIhj9AN1cOTRaGKKBI0rUV
- 2lfom7aQVZIpsiU/g7idNNeavuJ3bCMkoxxVj/WZb2+m4lPmNCYlPoKla1r2OiT58MDr
- s70D3ZxWLyjR4pRYfU9XPIMHjWtQIbh9plj3IKLJ7xGm8X1zkCCHgCn/3VSBxPnDDTcK
- PkbQ==
-X-Gm-Message-State: AOAM532cq1Zho6DHzwSdMrJlBVTlXnAKCkhoSDIQqOYlBeQvOROxn0sO
- /1tiAEW+jupOdKL2keO658xBvsbt5AiX/g==
-X-Google-Smtp-Source: ABdhPJw+wQ73sm86XdksHrK8EVuUmHjoE98fvd0YYIAzZZ/OcX9kwLi4ITnfqsYfSpPDVmxT5xi1nQ==
-X-Received: by 2002:a5d:688c:: with SMTP id h12mr7384125wru.421.1641979897599; 
- Wed, 12 Jan 2022 01:31:37 -0800 (PST)
-Received: from ?IPv6:2001:861:44c0:66c0:381b:6e50:a892:5269?
- ([2001:861:44c0:66c0:381b:6e50:a892:5269])
- by smtp.gmail.com with ESMTPSA id g18sm4703765wmq.5.2022.01.12.01.31.37
- for <linux-mediatek@lists.infradead.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Jan 2022 01:31:37 -0800 (PST)
-Subject: Re: [PATCH v7 0/3] force hsa hbp hfp packets multiple of lanenum to
- avoid screen shift
-To: linux-mediatek@lists.infradead.org
-References: <20210915223117.7857-1-jitao.shi@mediatek.com>
-From: Neil Armstrong <narmstrong@baylibre.com>
-Organization: Baylibre
-Message-ID: <e7124006-4ef9-1b0f-5cfe-1d849b33a233@baylibre.com>
-Date: Wed, 12 Jan 2022 10:31:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+ id 1n7aG5-001pPE-Ps; Wed, 12 Jan 2022 09:49:36 +0000
+X-UUID: cadea623154e4753be31e592df9b57ee-20220112
+X-UUID: cadea623154e4753be31e592df9b57ee-20220112
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <yunfei.dong@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 922657614; Wed, 12 Jan 2022 02:49:29 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 01:49:28 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 17:49:27 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 12 Jan 2022 17:49:26 +0800
+From: Yunfei Dong <yunfei.dong@mediatek.com>
+To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
+ <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
+ Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
+CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
+ <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
+ <frkoenig@chromium.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Benjamin Gaignard <benjamin.gaignard@collabora.com>, Daniel Vetter
+ <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
+ <irui.wang@mediatek.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Steve Cho <stevecho@chromium.org>, 
+ <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v18,
+ 01/19] media: mtk-vcodec: Get numbers of register bases from DT
+Date: Wed, 12 Jan 2022 17:49:05 +0800
+Message-ID: <20220112094923.16839-2-yunfei.dong@mediatek.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20220112094923.16839-1-yunfei.dong@mediatek.com>
+References: <20220112094923.16839-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <20210915223117.7857-1-jitao.shi@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_013139_766643_29E9EE01 
-X-CRM114-Status: GOOD (  14.16  )
+X-CRM114-CacheID: sfid-20220112_014933_867721_DFF80478 
+X-CRM114-Status: GOOD (  18.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,51 +85,80 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Different platforms may have different numbers of register bases. Gets the
+numbers of register bases from dts (sizeof(u32) * 4 bytes for each).
 
-On 16/09/2021 00:31, Jitao Shi wrote:
-> Changes since v6:
->  - Add "bool hs_packet_end_aligned" in "struct mipi_dsi_device" to control the dsi aligned.
->  - Config the "hs_packet_end_aligned" in ANX7725 .attach().
-> 
-> Changes since v5:
->  - Search the anx7625 compatible as flag to control dsi output aligned.
-> 
-> Changes since v4:
->  - Move "dt-bindings: drm/bridge: anx7625: add force_dsi_end_without_null" before
->    "drm/mediatek: force hsa hbp hfp packets multiple of lanenum to avoid".
-> 
->  - Retitle "dt-bindings: drm/bridge: anx7625: add force_dsi_end_without_null".
-> 
-> Jitao Shi (3):
->   drm/dsi: transer dsi hs packet aligned
->   drm/mediatek: implment the dsi hs packets aligned
->   drm/bridge: anx7625: config hs packets end aligned to avoid screen
->     shift
-> 
->  drivers/gpu/drm/bridge/analogix/anx7625.c |  1 +
->  drivers/gpu/drm/mediatek/mtk_dsi.c        | 10 ++++++++++
->  include/drm/drm_mipi_dsi.h                |  2 ++
->  3 files changed, 13 insertions(+)
-> 
+Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+---
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 37 ++++++++++++++-----
+ 1 file changed, 28 insertions(+), 9 deletions(-)
 
-It seems this patchset hasn't been viewed by DRM maintainers & reviewers at all.
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 40c39e1e596b..e1a82e233971 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -75,6 +75,30 @@ static irqreturn_t mtk_vcodec_dec_irq_handler(int irq, void *priv)
+ 	return IRQ_HANDLED;
+ }
+ 
++static int mtk_vcodec_get_reg_bases(struct mtk_vcodec_dev *dev)
++{
++	struct platform_device *pdev = dev->plat_dev;
++	int reg_num, i;
++
++	/* Sizeof(u32) * 4 bytes for each register base. */
++	reg_num = of_property_count_elems_of_size(pdev->dev.of_node, "reg",
++		sizeof(u32) * 4);
++	if (reg_num <= 0 || reg_num > NUM_MAX_VDEC_REG_BASE) {
++		dev_err(&pdev->dev, "Invalid register property size: %d\n", reg_num);
++		return -EINVAL;
++	}
++
++	for (i = 0; i < reg_num; i++) {
++		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
++		if (IS_ERR(dev->reg_base[i]))
++			return PTR_ERR(dev->reg_base[i]);
++
++		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
++	}
++
++	return 0;
++}
++
+ static int fops_vcodec_open(struct file *file)
+ {
+ 	struct mtk_vcodec_dev *dev = video_drvdata(file);
+@@ -203,7 +227,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	struct resource *res;
+ 	phandle rproc_phandle;
+ 	enum mtk_vcodec_fw_type fw_type;
+-	int i, ret;
++	int ret;
+ 
+ 	dev = devm_kzalloc(&pdev->dev, sizeof(*dev), GFP_KERNEL);
+ 	if (!dev)
+@@ -235,14 +259,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		goto err_dec_pm;
+ 	}
+ 
+-	for (i = 0; i < NUM_MAX_VDEC_REG_BASE; i++) {
+-		dev->reg_base[i] = devm_platform_ioremap_resource(pdev, i);
+-		if (IS_ERR((__force void *)dev->reg_base[i])) {
+-			ret = PTR_ERR((__force void *)dev->reg_base[i]);
+-			goto err_res;
+-		}
+-		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+-	}
++	ret = mtk_vcodec_get_reg_bases(dev);
++	if (ret)
++		goto err_res;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+ 	if (res == NULL) {
+-- 
+2.25.1
 
-Could you please resend a v8 with :
-- a more complete explanation about this "hs_packet_end_aligned" in cover-letter and patch subject and why ?
-Most of reviewers don't have access to MIPI spec, and we need an explanation about what are
-the consequence of adding this flag.
-- drm bridge maintainers in CC aswell, because almost only bridge maintainers/reviewers worry about DSI
-- fix typos in subject & commit messsage like:
-transer -> transfer
-implment -> implement
-These typos should have been fixed way before a V7 patchset version.
-
-Furthermore, could you help us understanding the impact of adding hs_packet_end_aligned to these
-bridge drivers when used with DSI transceivers drivers not supporting this flag ?
-Can't you simply enable aligned packet whatever ? is it an issue if packet are aligned for some receivers ?
-
-Neil
 
 _______________________________________________
 Linux-mediatek mailing list
