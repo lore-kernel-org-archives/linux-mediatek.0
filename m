@@ -4,69 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18A7C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 08:53:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B76C3C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 09:19:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3LPkGv8vvxYG9IUs+r7p1fj5I284LEbztA0NrLmn09A=; b=RMkF/glYA+hvcu
-	OXxjuqzvnaFhwrhNCk7Z16KsHq+BNEpSL9leBrwAY5PYaesAkgL6wmHA0atTGhL/fUceyyI5FQ5Z/
-	EyMMBUBRLPHp3Je0u1V9jU3u6dcpiAv2cQ4Ti14FJlV3Qb3GGmTEik3YtNOP5eZ/cN1p79TL96XRD
-	WZ5EbdERFUNmEHv3gVqfsDo/dmhg46u8e33OSiRwxSKX/gN2U/FTcnI/nb5C4JCUqVVSGkf8k4BFx
-	sQL1aMdyxvCaYn0lo+aI0YMd4HbZx3Q7Y75v6DK7Qnc+Sx21IkBIF3rTogiTdGUENricHjLt/7WLZ
-	6P7ZDpz2cLUXySwhpz3Q==;
+	List-Owner; bh=cLoV/F5xgp9mbYDmeMDznx0RKqd2RINEn9XpZO2C+Q8=; b=4WTl1HDttNyJch
+	Dk63zWATpkZ4lLXjfApe8S6ANfezJsja+CAcB8KNS45/4RKw/+tKfiyTyRgoUttKvy9Zp4ftq5c3N
+	CfGdg2NauKdIFjLidpOohhFmG4583k71RaOzRB8kcxOM7M0i4c5zs8zDmGuNsktYlRlt2mqfuSMDx
+	C6izSs1Vf1cdOIJUYx9ZEP4oCmlZGQc1njClwcsGQeBCmIbYVutS4x6xgXmVGH+lUFO9n5h9onpYq
+	Ni6GxfiF6pEAl4BEcvlrjtRwEhN1I54g9JrQNI1JenFGuzlLO4a5mSM3Ap6CSmVQHYUonlPEF2Ryu
+	t0IZf55Y952xbdbxEexw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7ZOC-001dRo-1O; Wed, 12 Jan 2022 08:53:52 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1n7Zmz-001kEA-7J; Wed, 12 Jan 2022 09:19:29 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7ZO5-001dN4-GE
- for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 08:53:47 +0000
-Received: by mail-lf1-x132.google.com with SMTP id x7so5603893lfu.8
- for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 00:53:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QX44NtMzpgo+l2Ho0SHw53qmGi3kaH4gIg9bfUEaJf8=;
- b=GwrhxtFMs32fVtJhHB7d1TFxrETcq3mcE7NxamZu/6SOWSIdtZ4+Srz4LvEcSQmDB9
- LGFQ2vBPVGkMp3fk+4mJMplM1VhKxsHdEqD7JU4j3PciOrX6Zd64Jq9V2eEXn6NbELug
- K4bzHQ4527hYt4Ei4Xt8net4BaK/oZ4fiVvYM=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=QX44NtMzpgo+l2Ho0SHw53qmGi3kaH4gIg9bfUEaJf8=;
- b=4Eu2tbi9L3LPst7PGknWhvFgO+PYDl9aLBdejdFQ0OPw979ua6emh+j4Jjbn98DGOS
- o8aGdn6X68pPtoU4ZgeEGc+ueGaHzAl2E1kNIucIm6m4UeDkJg2+dQlWvV1shwQC+hjD
- i+YBP/76ZMsY4QSOzOo2Ga4JOWGPLq+8sz8EDyxiK6EH7c5xhpOEXNsh36+UKvoFG/fE
- nHiPxoJOMem3sW5SJfCoxzjM4HIUi7YHstxwwlhbuPHvrZwNvP2fqj1ekCnsta9boocq
- ivTG2uIzg78WpBvHHV+uBrlhR+CumD5gUVWW3pTYBIQHNTmIjU1Yzwo/Onm7bbrgrCZX
- d9Zw==
-X-Gm-Message-State: AOAM532GyfhnsBf/LuH/h7Q+xgn/QzBz8DDsjisU/xKOqBRIensz2v+t
- SiG451+7VJLEXCdYgn4dFj5ytakgEhlezYPuUMKEfA==
-X-Google-Smtp-Source: ABdhPJxEbYrAx/hnpV9Nn6yck1TYbHCWYGr7VZUmUHpP5vookcO09X5JJ9gm0O/ez/CfSZpUBOe1UT3KZO6sItHHMFc=
-X-Received: by 2002:a2e:7f1a:: with SMTP id a26mr5747639ljd.414.1641977622599; 
- Wed, 12 Jan 2022 00:53:42 -0800 (PST)
+ id 1n7Zmw-001kDb-PB
+ for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 09:19:28 +0000
+X-UUID: 1f678aeeb1704c62913e1445ceadc0d4-20220112
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=RUbBjSRoXhJxZ34F8uCc8t9/YbQanu87DWvjRxaFHt8=; 
+ b=SU9wXPEO7JH5umOobDKyezuf1cd0zIfM8zOEh4NNnUCXyQHTX7wdwXBH6jgM46F9HlsidCxjKrVUr63xjOPq+f8/6F9vo1qH1TJZdZvlrE+adC8kB26jIYSyIgE+6rXLhc4VvGY5mNrE8VTQUeC6St4dnSTl9dabsmToP+G3gBI=;
+X-UUID: 1f678aeeb1704c62913e1445ceadc0d4-20220112
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1172357487; Wed, 12 Jan 2022 02:19:24 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 01:09:22 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 12 Jan 2022 17:09:20 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Wed, 12 Jan 2022 17:09:19 +0800
+Message-ID: <ff81bc1fe1f1c2060fcf03ba14f1bef584c47599.camel@mediatek.com>
+Subject: Re: [PATCH v5 25/32] iommu/mtk: Migrate to aggregate driver
+From: Yong Wu <yong.wu@mediatek.com>
+To: Stephen Boyd <swboyd@chromium.org>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, Douglas Anderson
+ <dianders@chromium.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-msm@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <freedreno@lists.freedesktop.org>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, Rob Clark <robdclark@gmail.com>, Russell King
+ <rmk+kernel@arm.linux.org.uk>, Saravana Kannan <saravanak@google.com>,
+ <linux-mediatek@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ <youlin.pei@mediatek.com>
+Date: Wed, 12 Jan 2022 17:09:19 +0800
+In-Reply-To: <CAE-0n53Y3WRy4_QvUm9k9wjjWV7adMDQcK_+1ji4+W25SSeGwg@mail.gmail.com>
+References: <20220106214556.2461363-1-swboyd@chromium.org>
+ <20220106214556.2461363-26-swboyd@chromium.org>
+ <1a3b368eb891ca55c33265397cffab0b9f128737.camel@mediatek.com>
+ <CAE-0n53Y3WRy4_QvUm9k9wjjWV7adMDQcK_+1ji4+W25SSeGwg@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220111112244.1483783-1-wenst@chromium.org>
- <20220111112244.1483783-8-wenst@chromium.org>
-In-Reply-To: <20220111112244.1483783-8-wenst@chromium.org>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 12 Jan 2022 16:53:31 +0800
-Message-ID: <CAGXv+5Gq0uH-eA799f1MRgzeUU9fsfi-Xz0XyW7ZJW==i_mcYg@mail.gmail.com>
-Subject: Re: [PATCH 7/7] pinctrl: mediatek: paris: Support generic
- PIN_CONFIG_DRIVE_STRENGTH_UA
-To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Zhiyong Tao <zhiyong.tao@mediatek.com>, Guodong Liu <guodong.liu@mediatek.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_005345_602184_277FD097 
-X-CRM114-Status: GOOD (  34.56  )
+X-CRM114-CacheID: sfid-20220112_011926_856498_44CD3FE0 
+X-CRM114-Status: GOOD (  49.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,164 +88,221 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 11, 2022 at 7:23 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
->
-> Some of the MediaTek chips that utilize the Paris pinctrl driver library
-> support a lower drive strength (<= 1mA) than the standard drive strength
-> settings (2~16 mA) on certain pins. This was previously supported by the
-> custom MTK_PIN_CONFIG_DRV_ADV parameter along with the
-> "mediatek,drive-strength-adv" device tree property.
->
-> The drive strength values for this hardware are 125, 250, 500, and 1000 mA,
-> and can be readily described by the existing "drive-strength-microamp",
-> which then gets parsed by the generic pinconf library into the parameter
-> PIN_CONFIG_DRIVE_STRENGTH_UA.
+On Tue, 2022-01-11 at 16:27 -0800, Stephen Boyd wrote:
+> Quoting Yong Wu (2022-01-11 04:22:23)
+> > Hi Stephen,
+> > 
+> > Thanks for helping update here.
+> > 
+> > On Thu, 2022-01-06 at 13:45 -0800, Stephen Boyd wrote:
+> > > Use an aggregate driver instead of component ops so that we can
+> > > get
+> > > proper driver probe ordering of the aggregate device with respect
+> > > to
+> > > all
+> > > the component devices that make up the aggregate device.
+> > > 
+> > > Cc: Yong Wu <yong.wu@mediatek.com>
+> > > Cc: Joerg Roedel <joro@8bytes.org>
+> > > Cc: Will Deacon <will@kernel.org>
+> > > Cc: Daniel Vetter <daniel.vetter@ffwll.ch>
+> > > Cc: "Rafael J. Wysocki" <rafael@kernel.org>
+> > > Cc: Rob Clark <robdclark@gmail.com>
+> > > Cc: Russell King <rmk+kernel@arm.linux.org.uk>
+> > > Cc: Saravana Kannan <saravanak@google.com>
+> > > Signed-off-by: Stephen Boyd <swboyd@chromium.org>
+> > 
+> > When I test this on mt8195 which have two IOMMU HWs(calling
+> > component_aggregate_regsiter twice), it will abort like this. Then
+> > what
+> > should we do if we have two instances?
+> > 
+> 
+> Thanks for testing it out. We can't register the struct driver more
+> than
+> once but this driver is calling the component_aggregate_register()
+> function from the driver probe and there are two devices bound to the
+> mtk-iommu driver so we try to register it more than once. Sigh!
+> 
+> I see a couple options. One is to do a deep copy of the driver
+> structure
+> and change the driver name. Then it's a one to one relationship
+> between
+> device and driver. That's not very great because it leaves around
+> junk
+> so it should probably be avoided.
+> 
+> Another option is to reference count the driver registration calls
+> when
+> component_aggregate_register() is called multiple times. Then we
+> would
+> only register the driver once and keep it pinned until the last
+> unregister call is made, but still remove devices that are created
+> for
+> the match table.
+> 
+> Can you try the attached patch? It is based on the next version of
+> this
+> patch series so the include part of the patch may not apply cleanly.
+> 
+> ---8<---
+> diff --git a/drivers/base/component.c b/drivers/base/component.c
+> index 64ad7478c67a..97f253a41bdf 100644
+> --- a/drivers/base/component.c
+> +++ b/drivers/base/component.c
+> @@ -492,15 +492,30 @@ static struct aggregate_device
+> *__aggregate_find(struct device *parent)
+>  	return dev ? to_aggregate_device(dev) : NULL;
+>  }
+> 
+> +static DEFINE_MUTEX(aggregate_mutex);
+> +
+>  static int aggregate_driver_register(struct aggregate_driver *adrv)
+>  {
+> -	adrv->driver.bus = &aggregate_bus_type;
+> -	return driver_register(&adrv->driver);
+> +	int ret = 0;
+> +
+> +	mutex_lock(&aggregate_mutex);
+> +	if (!refcount_inc_not_zero(&adrv->count)) {
+> +		adrv->driver.bus = &aggregate_bus_type;
+> +		ret = driver_register(&adrv->driver);
+> +		if (!ret)
+> +			refcount_inc(&adrv->count);
 
-So I am actually unsure how to implement support for this properly.
-My intention was to map "mediatek,drive-strength-adv" to
-"drive-strength-microamp". This implies using the advanced mode if
-the property is present, and vice versa.
+This should be refcount_set(&adrv->count, 1)?
 
-(Also unsure if such a binding would be acceptable.)
+Otherwise, it will warning like this:
 
-However the pin configs are passed in one-by-one within the driver, so
-it doesn't seem viable to check for the absence of a certain parameter.
-This might involve a bit more rewriting.
+[    2.654526] ------------[ cut here ]------------
+[    2.655558] refcount_t: addition on 0; use-after-free.
+[    2.656219] WARNING: CPU: 7 PID: 74 at ../v5.16-
+rc1/kernel/mediatek/lib/refcount.c:25
+refcount_warn_saturate+0x128/0x148
+...
+[    2.672227] Call trace:
+[    2.672539]  refcount_warn_saturate+0x128/0x148
+[    2.673118]  component_aggregate_register+0x388/0x390
+[    2.673763]  mtk_iommu_probe+0x638/0x690
 
-ChenYu
+[    2.686467] ------------[ cut here ]------------
+[    2.687049] refcount_t: saturated; leaking memory.
+[    2.687666] WARNING: CPU: 5 PID: 74 at ../v5.16-
+rc1/kernel/mediatek/lib/refcount.c:19 refcount_warn_saturate+0xfc/0x148
 
-> Add support for PIN_CONFIG_DRIVE_STRENGTH_UA while keeping the old
-> custom parameter around for backward compatibility.
->
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->
-> The indentation in the switch/case blocks is getting somewhat out of
-> control. I also have some cleanup changes to reverse the logic of the
-> if/break statements. Not sure if it should be done before or after this
-> patch though.
->
-> ---
->  drivers/pinctrl/mediatek/pinctrl-paris.c | 84 ++++++++++++++++++++++++
->  1 file changed, 84 insertions(+)
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index 678c8aa33012..5a94903ae372 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -48,6 +48,53 @@ static const char * const mtk_gpio_functions[] = {
->         "func12", "func13", "func14", "func15",
+[    2.703805] Call trace:
+[    2.704117]  refcount_warn_saturate+0xfc/0x148
+[    2.704685]  component_aggregate_register+0x1fc/0x390
+[    2.705330]  mtk_iommu_probe+0x638/0x690
+
+> +	}
+> +	mutex_unlock(&aggregate_mutex);
+> +
+> +	return ret;
+>  }
+> 
+>  static void aggregate_driver_unregister(struct aggregate_driver
+> *adrv)
+>  {
+> -	driver_unregister(&adrv->driver);
+> +	if (refcount_dec_and_mutex_lock(&adrv->count,
+> &aggregate_mutex)) {
+> +		driver_unregister(&adrv->driver);
+> +		mutex_unlock(&aggregate_mutex);
+> +	}
+>  }
+> 
+>  static struct aggregate_device *aggregate_device_add(struct device
+> *parent,
+> diff --git a/include/linux/component.h b/include/linux/component.h
+> index 53d81203c095..b061341938aa 100644
+> --- a/include/linux/component.h
+> +++ b/include/linux/component.h
+> @@ -4,6 +4,7 @@
+> 
+>  #include <linux/stddef.h>
+>  #include <linux/device.h>
+> +#include <linux/refcount.h>
+> 
+>  struct aggregate_device;
+> 
+> @@ -66,6 +67,7 @@ struct device *aggregate_device_parent(const struct
+> aggregate_device *adev);
+> 
+>  /**
+>   * struct aggregate_driver - Aggregate driver (made up of other
+> drivers)
+> + * @count: driver registration refcount
+>   * @driver: device driver
+>   */
+>  struct aggregate_driver {
+> @@ -101,6 +103,7 @@ struct aggregate_driver {
+>  	 */
+>  	void (*shutdown)(struct aggregate_device *adev);
+> 
+> +	refcount_t		count;
+>  	struct device_driver	driver;
 >  };
->
-> +/*
-> + * This section supports converting to/from custom MTK_PIN_CONFIG_DRV_ADV
-> + * and standard PIN_CONFIG_DRIVE_STRENGTH_UA pin configs.
-> + *
-> + * The custom value encodes three hardware bits as follows:
-> + *
-> + *   |           Bits           |
-> + *   | 2 (E1) | 1 (E0) | 0 (EN) | drive strength (uA)
-> + *   ------------------------------------------------
-> + *   |    x   |    x   |    0   | disabled, use standard drive strength
-> + *   -------------------------------------
-> + *   |    0   |    0   |    1   |  125 uA
-> + *   |    0   |    1   |    1   |  250 uA
-> + *   |    1   |    0   |    1   |  500 uA
-> + *   |    1   |    1   |    1   | 1000 uA
-> + */
-> +static const int mtk_drv_adv_uA[] = { 125, 250, 500, 1000 };
-> +
-> +static int mtk_drv_adv_to_uA(int val)
-> +{
-> +       /* This should never happen. */
-> +       if (WARN_ON_ONCE(val < 0 || val > 7))
-> +               return -EINVAL;
-> +
-> +       /* Bit 0 simply enables this hardware part */
-> +       if (!(val & BIT(0)))
-> +               return -EINVAL;
-> +
-> +       return mtk_drv_adv_uA[(val >> 1)];
-> +}
-> +
-> +static int mtk_drv_uA_to_adv(int val)
-> +{
-> +       switch (val) {
-> +       case 125:
-> +               return 0x1;
-> +       case 250:
-> +               return 0x3;
-> +       case 500:
-> +               return 0x5;
-> +       case 1000:
-> +               return 0x7;
-> +       }
-> +
-> +       return -EINVAL;
-> +}
-> +
->  static int mtk_pinmux_gpio_request_enable(struct pinctrl_dev *pctldev,
->                                           struct pinctrl_gpio_range *range,
->                                           unsigned int pin)
-> @@ -151,11 +198,38 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
->
->                 break;
->         case PIN_CONFIG_DRIVE_STRENGTH:
-> +               if (hw->soc->adv_drive_get) {
-> +                       err = hw->soc->adv_drive_get(hw, desc, &ret);
-> +                       if (!err) {
-> +                               err = mtk_drv_adv_to_uA(ret);
-> +                               if (err > 0) {
-> +                                       /* PIN_CONFIG_DRIVE_STRENGTH_UA used */
-> +                                       err = -EINVAL;
-> +                                       break;
-> +                               }
-> +                       }
-> +               }
-> +
->                 if (hw->soc->drive_get)
->                         err = hw->soc->drive_get(hw, desc, &ret);
->                 else
->                         err = -ENOTSUPP;
->                 break;
-> +       case PIN_CONFIG_DRIVE_STRENGTH_UA:
-> +               if (hw->soc->adv_drive_get) {
-> +                       err = hw->soc->adv_drive_get(hw, desc, &ret);
-> +                       if (err)
-> +                               break;
-> +                       err = mtk_drv_adv_to_uA(ret);
-> +                       if (err < 0)
-> +                               break;
-> +
-> +                       ret = err;
-> +                       err = 0;
-> +               } else {
-> +                       err = -ENOTSUPP;
-> +               }
-> +               break;
->         case MTK_PIN_CONFIG_TDSEL:
->         case MTK_PIN_CONFIG_RDSEL:
->                 reg = (param == MTK_PIN_CONFIG_TDSEL) ?
-> @@ -271,6 +345,16 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
->                 else
->                         err = -ENOTSUPP;
->                 break;
-> +       case PIN_CONFIG_DRIVE_STRENGTH_UA:
-> +               if (hw->soc->adv_drive_set) {
-> +                       err = mtk_drv_uA_to_adv(arg);
-> +                       if (err < 0)
-> +                               break;
-> +                       err = hw->soc->adv_drive_set(hw, desc, err);
-> +               } else {
-> +                       err = -ENOTSUPP;
-> +               }
-> +               break;
->         case MTK_PIN_CONFIG_TDSEL:
->         case MTK_PIN_CONFIG_RDSEL:
->                 reg = (param == MTK_PIN_CONFIG_TDSEL) ?
-> --
-> 2.34.1.575.g55b058a8bb-goog
->
+
+After this patch, the aggregate_driver flow looks ok. But our driver
+still aborts like this:
+
+[    2.721316] Unable to handle kernel NULL pointer dereference at
+virtual address 0000000000000000
+...
+[    2.731658] pc : mtk_smi_larb_config_port_gen2_general+0xa4/0x138
+[    2.732434] lr : mtk_smi_larb_resume+0x54/0x98
+...
+[    2.742457] Call trace:
+[    2.742768]  mtk_smi_larb_config_port_gen2_general+0xa4/0x138
+[    2.743496]  pm_generic_runtime_resume+0x2c/0x48
+[    2.744090]  __genpd_runtime_resume+0x30/0xa8
+[    2.744648]  genpd_runtime_resume+0x94/0x2c8
+[    2.745191]  __rpm_callback+0x44/0x150
+[    2.745669]  rpm_callback+0x6c/0x78
+[    2.746114]  rpm_resume+0x314/0x558
+[    2.746559]  __pm_runtime_resume+0x3c/0x88
+[    2.747080]  pm_runtime_get_suppliers+0x7c/0x110
+[    2.747668]  __driver_probe_device+0x4c/0xe8
+[    2.748212]  driver_probe_device+0x44/0x130
+[    2.748745]  __device_attach_driver+0x98/0xd0
+[    2.749300]  bus_for_each_drv+0x68/0xd0
+[    2.749787]  __device_attach+0xec/0x148
+[    2.750277]  device_attach+0x14/0x20
+[    2.750733]  bus_rescan_devices_helper+0x50/0x90
+[    2.751319]  bus_for_each_dev+0x7c/0xd8
+[    2.751806]  bus_rescan_devices+0x20/0x30
+[    2.752315]  __component_add+0x7c/0xa0
+[    2.752795]  component_add+0x14/0x20
+[    2.753253]  mtk_smi_larb_probe+0xe0/0x120
+
+This is because the device runtime_resume is called before the bind
+operation(In our case this detailed function is mtk_smi_larb_bind).
+The issue doesn't happen without this patchset. I'm not sure the right
+sequence. If we should fix in mediatek driver, the patch could be:
+
+
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index b883dcc0bbfa..288841555067 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -483,8 +483,9 @@ static int __maybe_unused
+mtk_smi_larb_resume(struct device *dev)
+        if (ret < 0)
+                return ret;
+
+-       /* Configure the basic setting for this larb */
+-       larb_gen->config_port(dev);
++       /* Configure the basic setting for this larb after it binds
+with iommu */
++       if (larb->mmu)
++               larb_gen->config_port(dev);
+
+        return 0;
+ }
+
+
+Another nitpick, the title should be: iommu/mediatek: xxxx
 
 _______________________________________________
 Linux-mediatek mailing list
