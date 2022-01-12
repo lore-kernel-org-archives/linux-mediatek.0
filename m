@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6F09C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 10:11:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65974C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 10:11:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xbJsGLLphMeE6RJNDsCa/S0EvSfKTgCTC2E31mN95Jc=; b=Z/l88UuuzuwQjw
-	tx5CUFjvO3EiuDaDoHHEhKaBOiRgbKBLToBmW79aRPbQVkeNPm9aS9SUFIj/4n/LMx3IZm1vcAh8F
-	+8YJOaypQvK0QEsw6slxrVSawNEp8jpGmXwdOq1uSOa+C7tqE065wYwXvTmtz8Kbh0zkBeva3vDAH
-	88eUfWRk05dQvOdVdJ7m4noZW34Gphkd1dg5s3kEsnEm71FC2V3q3DTg2TU5dtJdvZ+sRhFss8dKJ
-	26LGaCFUPDI7lwGj4mWEms/WYaSH3cZ3c5i0RVXlt5BpVaJUmWgxXnzcPB4U/4Gcl3M3ZfBLtuFl2
-	Xb1O4HFmez86nQu8lFjQ==;
+	List-Owner; bh=jzOCRBrkApGe6R4H59b1O9LJcrqRlxIZgXJvAVWgTmw=; b=ER0hF5glZMpQw+
+	rhtcsWQ39QpjDsZospgMfFXpDkXqfFfQW8kFRexBU4L6QRyz7JtJJsCizrF/lAtjcgihkwFEQXCUv
+	eCA8K1EFcKZREP+UkLe2GDe45EnfvOvsRdinpyjara3W12oJYR6GwGT69alg108f/4AlQIfazZazH
+	zw1lODr7ndSi0ugZlwo+vIKz3Q1CB2rmpRv+Op/4UcUySQWW4eFLvE4wU/1QNgCAqlvvbTeYcB3q6
+	OOI8j147cAzfRwqC/8ncVZ3nWwWqPU2HD858pGnymwxv66BQDywbGShBowH0oecvIkUrFX7eiri84
+	v7mHPpN7rOQDcoGDKhOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7aba-001zpE-RW; Wed, 12 Jan 2022 10:11:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n7abe-001zqh-2a; Wed, 12 Jan 2022 10:11:50 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7aPv-001unz-Hy; Wed, 12 Jan 2022 09:59:46 +0000
-X-UUID: 75132e52e832428e8424e5250a97ccb0-20220112
-X-UUID: 75132e52e832428e8424e5250a97ccb0-20220112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1n7aPx-001utz-M9; Wed, 12 Jan 2022 09:59:47 +0000
+X-UUID: 3c162ba9d5584c2a9357be6c51a69476-20220112
+X-UUID: 3c162ba9d5584c2a9357be6c51a69476-20220112
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 740560297; Wed, 12 Jan 2022 02:59:36 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 01:49:38 -0800
+ with ESMTP id 210852867; Wed, 12 Jan 2022 02:59:44 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 01:49:49 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Wed, 12 Jan 2022 17:49:36 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 17:49:48 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Wed, 12 Jan 2022 17:49:35 +0800
+ Transport; Wed, 12 Jan 2022 17:49:46 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -59,18 +58,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
 Subject: [PATCH v18,
- 07/19] dt-bindings: media: mtk-vcodec: Separate video encoder and
- decoder dt-bindings
-Date: Wed, 12 Jan 2022 17:49:11 +0800
-Message-ID: <20220112094923.16839-8-yunfei.dong@mediatek.com>
+ 14/19] media: mtk-vcodec: Support 34bits dma address for vdec
+Date: Wed, 12 Jan 2022 17:49:18 +0800
+Message-ID: <20220112094923.16839-15-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220112094923.16839-1-yunfei.dong@mediatek.com>
 References: <20220112094923.16839-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_015943_644775_C36A61AD 
-X-CRM114-Status: GOOD (  18.91  )
+X-CRM114-CacheID: sfid-20220112_015945_815443_3AAAD1A4 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,531 +85,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Separate decoder and encoder document for the dts are big difference.
+Use the dma_set_mask_and_coherent helper to set vdec
+DMA bit mask to support 34bits iova space(16GB) that
+the mt8192 iommu HW support.
+
+Whole the iova range separate to 0~4G/4G~8G/8G~12G/12G~16G,
+regarding which iova range VDEC actually locate, it
+depends on the dma-ranges property of vdec dtsi node.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: Rob Herring <robh@kernel.org>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../media/mediatek,vcodec-decoder.yaml        | 176 +++++++++++++++++
- .../media/mediatek,vcodec-encoder.yaml        | 187 ++++++++++++++++++
- .../bindings/media/mediatek-vcodec.txt        | 131 ------------
- 3 files changed, 363 insertions(+), 131 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
- delete mode 100644 Documentation/devicetree/bindings/media/mediatek-vcodec.txt
+ drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-new file mode 100644
-index 000000000000..df1d677098fd
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-decoder.yaml
-@@ -0,0 +1,176 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 10215ccc85f7..1c2b96b4930b 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -322,6 +322,14 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
++	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL)) {
++		ret = dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
++		if (ret) {
++			mtk_v4l2_err("Failed to set mask");
++			goto err_core_workq;
++		}
++	}
 +
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,vcodec-decoder.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Video Decode Accelerator
-+
-+maintainers:
-+  - Yunfei Dong <yunfei.dong@mediatek.com>
-+
-+description: |+
-+  Mediatek Video Decode is the video decode hardware present in Mediatek
-+  SoCs which supports high resolution decoding functionalities.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8173-vcodec-dec
-+      - mediatek,mt8183-vcodec-dec
-+
-+  reg:
-+    maxItems: 12
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    maxItems: 8
-+
-+  clock-names:
-+    items:
-+      - const: vcodecpll
-+      - const: univpll_d2
-+      - const: clk_cci400_sel
-+      - const: vdec_sel
-+      - const: vdecpll
-+      - const: vencpll
-+      - const: venc_lt_sel
-+      - const: vdec_bus_clk_src
-+
-+  assigned-clocks: true
-+
-+  assigned-clock-parents: true
-+
-+  assigned-clock-rates: true
-+
-+  power-domains:
-+    maxItems: 1
-+
-+  iommus:
-+    minItems: 1
-+    maxItems: 32
-+    description: |
-+      List of the hardware port in respective IOMMU block for current Socs.
-+      Refer to bindings/iommu/mediatek,iommu.yaml.
-+
-+  dma-ranges:
-+    maxItems: 1
-+    description: |
-+      Describes the physical address space of IOMMU maps to memory.
-+
-+  mediatek,larb:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    maxItems: 1
-+    description: |
-+      Must contain the local arbiters in the current Socs.
-+
-+  mediatek,vpu:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    maxItems: 1
-+    description:
-+      Describes point to vpu.
-+
-+  mediatek,scp:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    maxItems: 1
-+    description:
-+      Describes point to scp.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - iommus
-+  - assigned-clocks
-+  - assigned-clock-parents
-+
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8183-vcodec-dec
-+
-+    then:
-+      required:
-+        - mediatek,scp
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8173-vcodec-dec
-+
-+    then:
-+      required:
-+        - mediatek,vpu
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/memory/mt8173-larb-port.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    #include <dt-bindings/power/mt8173-power.h>
-+
-+    vcodec_dec: vcodec@16000000 {
-+      compatible = "mediatek,mt8173-vcodec-dec";
-+      reg = <0x16000000 0x100>,   /*VDEC_SYS*/
-+          <0x16020000 0x1000>,  /*VDEC_MISC*/
-+          <0x16021000 0x800>,   /*VDEC_LD*/
-+          <0x16021800 0x800>,   /*VDEC_TOP*/
-+          <0x16022000 0x1000>,  /*VDEC_CM*/
-+          <0x16023000 0x1000>,  /*VDEC_AD*/
-+          <0x16024000 0x1000>,  /*VDEC_AV*/
-+          <0x16025000 0x1000>,  /*VDEC_PP*/
-+          <0x16026800 0x800>,   /*VP8_VD*/
-+          <0x16027000 0x800>,   /*VP6_VD*/
-+          <0x16027800 0x800>,   /*VP8_VL*/
-+          <0x16028400 0x400>;   /*VP9_VD*/
-+      interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
-+      mediatek,larb = <&larb1>;
-+      iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
-+             <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
-+             <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
-+             <&iommu M4U_PORT_HW_VDEC_PRED_RD_EXT>,
-+             <&iommu M4U_PORT_HW_VDEC_PRED_WR_EXT>,
-+             <&iommu M4U_PORT_HW_VDEC_UFO_EXT>,
-+             <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
-+             <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
-+      mediatek,vpu = <&vpu>;
-+      power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
-+      clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
-+             <&topckgen CLK_TOP_UNIVPLL_D2>,
-+             <&topckgen CLK_TOP_CCI400_SEL>,
-+             <&topckgen CLK_TOP_VDEC_SEL>,
-+             <&topckgen CLK_TOP_VCODECPLL>,
-+             <&apmixedsys CLK_APMIXED_VENCPLL>,
-+             <&topckgen CLK_TOP_VENC_LT_SEL>,
-+             <&topckgen CLK_TOP_VCODECPLL_370P5>;
-+      clock-names = "vcodecpll",
-+                  "univpll_d2",
-+                  "clk_cci400_sel",
-+                  "vdec_sel",
-+                  "vdecpll",
-+                  "vencpll",
-+                  "venc_lt_sel",
-+                  "vdec_bus_clk_src";
-+      assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
-+                      <&topckgen CLK_TOP_CCI400_SEL>,
-+                      <&topckgen CLK_TOP_VDEC_SEL>,
-+                      <&apmixedsys CLK_APMIXED_VCODECPLL>,
-+                      <&apmixedsys CLK_APMIXED_VENCPLL>;
-+      assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
-+                             <&topckgen CLK_TOP_UNIVPLL_D2>,
-+                             <&topckgen CLK_TOP_VCODECPLL>;
-+      assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-new file mode 100644
-index 000000000000..b72c1a50e89e
---- /dev/null
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-@@ -0,0 +1,187 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/media/mediatek,vcodec-encoder.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek Video Encode Accelerator
-+
-+maintainers:
-+  - Yunfei Dong <yunfei.dong@mediatek.com>
-+
-+description: |+
-+  Mediatek Video Encode is the video encode hardware present in Mediatek
-+  SoCs which supports high resolution encoding functionalities.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - mediatek,mt8173-vcodec-enc-vp8
-+      - mediatek,mt8173-vcodec-enc
-+      - mediatek,mt8183-vcodec-enc
-+      - mediatek,mt8192-vcodec-enc
-+      - mediatek,mt8195-vcodec-enc
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    minItems: 1
-+    maxItems: 5
-+
-+  clock-names:
-+    minItems: 1
-+    maxItems: 5
-+
-+  assigned-clocks: true
-+
-+  assigned-clock-parents: true
-+
-+  iommus:
-+    minItems: 1
-+    maxItems: 32
-+    description: |
-+      List of the hardware port in respective IOMMU block for current Socs.
-+      Refer to bindings/iommu/mediatek,iommu.yaml.
-+
-+  dma-ranges:
-+    maxItems: 1
-+    description: |
-+      Describes the physical address space of IOMMU maps to memory.
-+
-+  mediatek,larb:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    maxItems: 1
-+    description: |
-+      Must contain the local arbiters in the current Socs.
-+
-+  mediatek,vpu:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    maxItems: 1
-+    description:
-+      Describes point to vpu.
-+
-+  mediatek,scp:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    maxItems: 1
-+    description:
-+      Describes point to scp.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - iommus
-+  - assigned-clocks
-+  - assigned-clock-parents
-+
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8183-vcodec-enc
-+              - mediatek,mt8192-vcodec-enc
-+
-+    then:
-+      required:
-+        - mediatek,scp
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8173-vcodec-enc-vp8
-+              - mediatek,mt8173-vcodec-enc
-+
-+    then:
-+      required:
-+        - mediatek,vpu
-+
-+  - if:
-+      properties:
-+        compatible:
-+          enum:
-+            - mediatek,mt8173-vcodec-enc
-+            - mediatek,mt8192-vcodec-enc
-+            - mediatek,mt8173-vcodec-enc
-+
-+    then:
-+      properties:
-+        clock:
-+          items:
-+            minItems: 1
-+            maxItems: 1
-+        clock-names:
-+          items:
-+            - const: venc_sel
-+    else:  # for vp8 hw decoder
-+      properties:
-+        clock:
-+          items:
-+            minItems: 1
-+            maxItems: 1
-+        clock-names:
-+          items:
-+            - const: venc_lt_sel
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/clock/mt8173-clk.h>
-+    #include <dt-bindings/memory/mt8173-larb-port.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    vcodec_enc_avc: vcodec@18002000 {
-+      compatible = "mediatek,mt8173-vcodec-enc";
-+      reg = <0x18002000 0x1000>;
-+      interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
-+      iommus = <&iommu M4U_PORT_VENC_RCPU>,
-+             <&iommu M4U_PORT_VENC_REC>,
-+             <&iommu M4U_PORT_VENC_BSDMA>,
-+             <&iommu M4U_PORT_VENC_SV_COMV>,
-+             <&iommu M4U_PORT_VENC_RD_COMV>,
-+             <&iommu M4U_PORT_VENC_CUR_LUMA>,
-+             <&iommu M4U_PORT_VENC_CUR_CHROMA>,
-+             <&iommu M4U_PORT_VENC_REF_LUMA>,
-+             <&iommu M4U_PORT_VENC_REF_CHROMA>,
-+             <&iommu M4U_PORT_VENC_NBM_RDMA>,
-+             <&iommu M4U_PORT_VENC_NBM_WDMA>;
-+      mediatek,larb = <&larb3>;
-+      mediatek,vpu = <&vpu>;
-+      clocks = <&topckgen CLK_TOP_VENC_SEL>;
-+      clock-names = "venc_sel";
-+      assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
-+      assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
-+    };
-+
-+    vcodec_enc_vp8: vcodec@19002000 {
-+      compatible = "mediatek,mt8173-vcodec-enc-vp8";
-+      reg =  <0x19002000 0x1000>;	/* VENC_LT_SYS */
-+      interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
-+      iommus = <&iommu M4U_PORT_VENC_RCPU_SET2>,
-+             <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
-+             <&iommu M4U_PORT_VENC_BSDMA_SET2>,
-+             <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
-+             <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
-+             <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
-+             <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
-+             <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
-+             <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
-+      mediatek,larb = <&larb5>;
-+      mediatek,vpu = <&vpu>;
-+      clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-+      clock-names = "venc_lt_sel";
-+      assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
-+      assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>;
-+    };
-diff --git a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt b/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-deleted file mode 100644
-index 665a9508708e..000000000000
---- a/Documentation/devicetree/bindings/media/mediatek-vcodec.txt
-+++ /dev/null
-@@ -1,131 +0,0 @@
--Mediatek Video Codec
--
--Mediatek Video Codec is the video codec hw present in Mediatek SoCs which
--supports high resolution encoding and decoding functionalities.
--
--Required properties:
--- compatible : must be one of the following string:
--  "mediatek,mt8173-vcodec-enc-vp8" for mt8173 vp8 encoder.
--  "mediatek,mt8173-vcodec-enc" for mt8173 avc encoder.
--  "mediatek,mt8183-vcodec-enc" for MT8183 encoder.
--  "mediatek,mt8173-vcodec-dec" for MT8173 decoder.
--  "mediatek,mt8192-vcodec-enc" for MT8192 encoder.
--  "mediatek,mt8183-vcodec-dec" for MT8183 decoder.
--  "mediatek,mt8195-vcodec-enc" for MT8195 encoder.
--- reg : Physical base address of the video codec registers and length of
--  memory mapped region.
--- interrupts : interrupt number to the cpu.
--- mediatek,larb : must contain the local arbiters in the current Socs.
--- clocks : list of clock specifiers, corresponding to entries in
--  the clock-names property.
--- clock-names: avc encoder must contain "venc_sel", vp8 encoder must
--  contain "venc_lt_sel", decoder must contain "vcodecpll", "univpll_d2",
--  "clk_cci400_sel", "vdec_sel", "vdecpll", "vencpll", "venc_lt_sel",
--  "vdec_bus_clk_src".
--- iommus : should point to the respective IOMMU block with master port as
--  argument, see Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
--  for details.
--- dma-ranges : describes the dma address range space that the codec hw access.
--One of the two following nodes:
--- mediatek,vpu : the node of the video processor unit, if using VPU.
--- mediatek,scp : the node of the SCP unit, if using SCP.
--
--
--Example:
--
--vcodec_dec: vcodec@16000000 {
--    compatible = "mediatek,mt8173-vcodec-dec";
--    reg = <0 0x16000000 0 0x100>,   /*VDEC_SYS*/
--          <0 0x16020000 0 0x1000>,  /*VDEC_MISC*/
--          <0 0x16021000 0 0x800>,   /*VDEC_LD*/
--          <0 0x16021800 0 0x800>,   /*VDEC_TOP*/
--          <0 0x16022000 0 0x1000>,  /*VDEC_CM*/
--          <0 0x16023000 0 0x1000>,  /*VDEC_AD*/
--          <0 0x16024000 0 0x1000>,  /*VDEC_AV*/
--          <0 0x16025000 0 0x1000>,  /*VDEC_PP*/
--          <0 0x16026800 0 0x800>,   /*VP8_VD*/
--          <0 0x16027000 0 0x800>,   /*VP6_VD*/
--          <0 0x16027800 0 0x800>,   /*VP8_VL*/
--          <0 0x16028400 0 0x400>;   /*VP9_VD*/
--    interrupts = <GIC_SPI 204 IRQ_TYPE_LEVEL_LOW>;
--    mediatek,larb = <&larb1>;
--    iommus = <&iommu M4U_PORT_HW_VDEC_MC_EXT>,
--             <&iommu M4U_PORT_HW_VDEC_PP_EXT>,
--             <&iommu M4U_PORT_HW_VDEC_AVC_MV_EXT>,
--             <&iommu M4U_PORT_HW_VDEC_PRED_RD_EXT>,
--             <&iommu M4U_PORT_HW_VDEC_PRED_WR_EXT>,
--             <&iommu M4U_PORT_HW_VDEC_UFO_EXT>,
--             <&iommu M4U_PORT_HW_VDEC_VLD_EXT>,
--             <&iommu M4U_PORT_HW_VDEC_VLD2_EXT>;
--    mediatek,vpu = <&vpu>;
--    power-domains = <&scpsys MT8173_POWER_DOMAIN_VDEC>;
--    clocks = <&apmixedsys CLK_APMIXED_VCODECPLL>,
--             <&topckgen CLK_TOP_UNIVPLL_D2>,
--             <&topckgen CLK_TOP_CCI400_SEL>,
--             <&topckgen CLK_TOP_VDEC_SEL>,
--             <&topckgen CLK_TOP_VCODECPLL>,
--             <&apmixedsys CLK_APMIXED_VENCPLL>,
--             <&topckgen CLK_TOP_VENC_LT_SEL>,
--             <&topckgen CLK_TOP_VCODECPLL_370P5>;
--    clock-names = "vcodecpll",
--                  "univpll_d2",
--                  "clk_cci400_sel",
--                  "vdec_sel",
--                  "vdecpll",
--                  "vencpll",
--                  "venc_lt_sel",
--                  "vdec_bus_clk_src";
--    assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>,
--                      <&topckgen CLK_TOP_CCI400_SEL>,
--                      <&topckgen CLK_TOP_VDEC_SEL>,
--                      <&apmixedsys CLK_APMIXED_VCODECPLL>,
--                      <&apmixedsys CLK_APMIXED_VENCPLL>;
--    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>,
--                             <&topckgen CLK_TOP_UNIVPLL_D2>,
--                             <&topckgen CLK_TOP_VCODECPLL>;
--    assigned-clock-rates = <0>, <0>, <0>, <1482000000>, <800000000>;
--  };
--
--vcodec_enc_avc: vcodec@18002000 {
--    compatible = "mediatek,mt8173-vcodec-enc";
--    reg = <0 0x18002000 0 0x1000>;
--    interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_LOW>;
--    iommus = <&iommu M4U_PORT_VENC_RCPU>,
--             <&iommu M4U_PORT_VENC_REC>,
--             <&iommu M4U_PORT_VENC_BSDMA>,
--             <&iommu M4U_PORT_VENC_SV_COMV>,
--             <&iommu M4U_PORT_VENC_RD_COMV>,
--             <&iommu M4U_PORT_VENC_CUR_LUMA>,
--             <&iommu M4U_PORT_VENC_CUR_CHROMA>,
--             <&iommu M4U_PORT_VENC_REF_LUMA>,
--             <&iommu M4U_PORT_VENC_REF_CHROMA>,
--             <&iommu M4U_PORT_VENC_NBM_RDMA>,
--             <&iommu M4U_PORT_VENC_NBM_WDMA>;
--    mediatek,larb = <&larb3>;
--    mediatek,vpu = <&vpu>;
--    clocks = <&topckgen CLK_TOP_VENC_SEL>;
--    clock-names = "venc_sel";
--    assigned-clocks = <&topckgen CLK_TOP_VENC_SEL>;
--    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL>;
--  };
--
--vcodec_enc_vp8: vcodec@19002000 {
--    compatible = "mediatek,mt8173-vcodec-enc-vp8";
--    reg =  <0 0x19002000 0 0x1000>;	/* VENC_LT_SYS */
--    interrupts = <GIC_SPI 202 IRQ_TYPE_LEVEL_LOW>;
--    iommus = <&iommu M4U_PORT_VENC_RCPU_SET2>,
--             <&iommu M4U_PORT_VENC_REC_FRM_SET2>,
--             <&iommu M4U_PORT_VENC_BSDMA_SET2>,
--             <&iommu M4U_PORT_VENC_SV_COMA_SET2>,
--             <&iommu M4U_PORT_VENC_RD_COMA_SET2>,
--             <&iommu M4U_PORT_VENC_CUR_LUMA_SET2>,
--             <&iommu M4U_PORT_VENC_CUR_CHROMA_SET2>,
--             <&iommu M4U_PORT_VENC_REF_LUMA_SET2>,
--             <&iommu M4U_PORT_VENC_REC_CHROMA_SET2>;
--    mediatek,larb = <&larb5>;
--    mediatek,vpu = <&vpu>;
--    clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
--    clock-names = "venc_lt_sel";
--    assigned-clocks = <&topckgen CLK_TOP_VENC_LT_SEL>;
--    assigned-clock-parents = <&topckgen CLK_TOP_VCODECPLL_370P5>;
--  };
+ 	for (i = 0; i < MTK_VDEC_HW_MAX; i++)
+ 		mutex_init(&dev->dec_mutex[i]);
+ 	mutex_init(&dev->dev_mutex);
 -- 
 2.25.1
 
