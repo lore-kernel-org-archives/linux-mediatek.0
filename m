@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB0EC433FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 11:47:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DFCC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 11:51:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aYOod0ivCLLPD0NCxJ1NtGLGbP+Bnfp+HoSjiTM3T2A=; b=ZyyxEj0N1nfzlb
-	94T29d3aCvTvXEJfbf98jTJMi10x85WOh9Q06t119lfKBqoT8qtN5/KF+vyxy0Ks6sFYNQK5I87PA
-	eLjxHyCigUREKTEcbsZsVF2lO6ec3NLZgD5kY3uvnt8vKV2ysqhG9bs4eevIaxpS8ywQuMvtse+oP
-	q3M14zY1SWl5SbkCjkgG3dnnezQ/mgRJjl3dQ11InyyBj6x/1GI2AU53Qur89G9UnSFQ5DIO2d0++
-	Ov+OdrUjrNjE6945Phd+mwn8PjPenTqGMWlnNu44yHPI3z8/KOHkYB73bUSLESTyKCL7ol9c0yHYB
-	/YA5WCAhf8hiecccsz6w==;
+	List-Owner; bh=K/6S7jWfOOZdY/ZqrGtWxgh6ZtCDWIeKUqYNEHy6SRE=; b=helNK1YA+nnBrv
+	se15x9kkA/wE99u3XjsYmf4ujN2SN+kZUecJHMA1i29ixOcKtuY8KGu3rvWozNqc6YQ1DitTwCWbh
+	+O5iq1Tzrmm5YMH2kn0B33frII0H2riuX0PAOmzJKg0yJsqimO9uaMwMDu/wi/4ME6yrz9eWUgS6o
+	YU5R0OutGt7Cu6VVrA8VF0JMJklcC03t/evT9drXe70pGo3X2k+kpdh+8EMHKzo7j+7lE/Nfx2hJ+
+	qWby/nZzEa/Z8BupYM55v+m1wsIqO1YOZHUVfkbEeMcN2/d5I8M9S4WpMYrjFwx7t99QiENi6zTMS
+	GSnKZMHJm/BpX9xiZJVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7c64-002LPr-Lv; Wed, 12 Jan 2022 11:47:20 +0000
+	id 1n7c9x-002MWT-Lw; Wed, 12 Jan 2022 11:51:21 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7c5d-002LJc-Ml; Wed, 12 Jan 2022 11:46:55 +0000
-X-UUID: ecb676e3b4fa481783b3d46ec1cb07a6-20220112
-X-UUID: ecb676e3b4fa481783b3d46ec1cb07a6-20220112
+ id 1n7c9k-002MRV-55; Wed, 12 Jan 2022 11:51:09 +0000
+X-UUID: 9d5c70fadc3840eca38d850607dac544-20220112
+X-UUID: 9d5c70fadc3840eca38d850607dac544-20220112
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
+ (envelope-from <tinghan.shen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 345808939; Wed, 12 Jan 2022 04:46:51 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 03:37:26 -0800
+ with ESMTP id 584789758; Wed, 12 Jan 2022 04:51:03 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 03:47:44 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 19:37:24 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Wed, 12 Jan 2022 19:47:42 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 12 Jan 2022 19:37:24 +0800
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
- <cujomalainey@google.com>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
- Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Kevin Hilman <khilman@baylibre.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
- <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v12 1/2] dt-bindings: mediatek: add adsp-mbox document
-Date: Wed, 12 Jan 2022 19:37:22 +0800
-Message-ID: <20220112113723.32041-2-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220112113723.32041-1-allen-kh.cheng@mediatek.com>
-References: <20220112113723.32041-1-allen-kh.cheng@mediatek.com>
+ Frontend Transport; Wed, 12 Jan 2022 19:47:42 +0800
+From: Tinghan Shen <tinghan.shen@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Linus Walleij
+ <linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Tinghan
+ Shen <tinghan.shen@mediatek.com>, Paolo Bonzini <pbonzini@redhat.com>, Sean
+ Christopherson <seanjc@google.com>, <maciej.szmigiero@oracle.com>, David
+ Matlack <dmatlack@google.com>, "Jing Zhang" <jingzhangos@google.com>, Marc
+ Zyngier <maz@kernel.org>, "Bartosz Golaszewski" <bgolaszewski@baylibre.com>,
+ Sean Wang <sean.wang@mediatek.com>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-gpio@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, <ryder.lee@kernel.org>,
+ <wenst@chromium.org>, <chunfeng.yun@mediatek.com>
+Subject: [PATCH v9 2/3] dt-bindings: pinctrl: mt8195: Add mediatek,
+ drive-strength-adv property
+Date: Wed, 12 Jan 2022 19:47:23 +0800
+Message-ID: <20220112114724.1953-3-tinghan.shen@mediatek.com>
+X-Mailer: git-send-email 2.15.GIT
+In-Reply-To: <20220112114724.1953-1-tinghan.shen@mediatek.com>
+References: <20220112114724.1953-1-tinghan.shen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_034653_758496_B7F0D2EA 
-X-CRM114-Status: GOOD (  13.65  )
+X-CRM114-CacheID: sfid-20220112_035108_229035_9B046F69 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,74 +82,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Extend driving support for I2C pins on SoC mt8195.
+This property is already documented in mediatek,mt8183-pinctrl.yaml.
 
-This patch adds document for mediatek adsp mbox
-
-Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52 +++++++++++++++++++
- 1 file changed, 52 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+ .../bindings/pinctrl/pinctrl-mt8195.yaml      | 35 +++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-new file mode 100644
-index 000000000000..25756837797f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-@@ -0,0 +1,52 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+index 328ea59c5466..4db4899af6b1 100644
+--- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
++++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
+@@ -98,6 +98,32 @@ patternProperties:
+           drive-strength:
+             enum: [2, 4, 6, 8, 10, 12, 14, 16]
+ 
++          mediatek,drive-strength-adv:
++            description: |
++              Describe the specific driving setup property.
++              For I2C pins, the existing generic driving setup can only support
++              2/4/6/8/10/12/14/16mA driving. But in specific driving setup, they
++              can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
++              driving setup, the existing generic setup will be disabled.
++              The specific driving setup is controlled by E1E0EN.
++              When E1=0/E0=0, the strength is 0.125mA.
++              When E1=0/E0=1, the strength is 0.25mA.
++              When E1=1/E0=0, the strength is 0.5mA.
++              When E1=1/E0=1, the strength is 1mA.
++              EN is used to enable or disable the specific driving setup.
++              Valid arguments are described as below:
++              0: (E1, E0, EN) = (0, 0, 0)
++              1: (E1, E0, EN) = (0, 0, 1)
++              2: (E1, E0, EN) = (0, 1, 0)
++              3: (E1, E0, EN) = (0, 1, 1)
++              4: (E1, E0, EN) = (1, 0, 0)
++              5: (E1, E0, EN) = (1, 0, 1)
++              6: (E1, E0, EN) = (1, 1, 0)
++              7: (E1, E0, EN) = (1, 1, 1)
++              So the valid arguments are from 0 to 7.
++            $ref: /schemas/types.yaml#/definitions/uint32
++            enum: [0, 1, 2, 3, 4, 5, 6, 7]
 +
-+title: Mediatek ADSP mailbox
+           bias-pull-down:
+             description: |
+               For pull down type is normal, it don't need add RSEL & R1R0 define
+@@ -268,4 +294,13 @@ examples:
+           bias-pull-down;
+         };
+       };
 +
-+maintainers:
-+  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-+
-+description: |
-+  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
-+  to ommunicate with ADSP by passing messages through two mailbox channels.
-+  The MTK ADSP mailbox IPC also provides the ability for one processor to
-+  signal the other processor using interrupts.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8195-adsp-mbox
-+
-+  "#mbox-cells":
-+    const: 0
-+
-+  reg:
-+    description:
-+      Physical address base for dsp mbox registers.
-+
-+  interrupts:
-+    description:
-+      adsp mbox interrupt
-+
-+required:
-+  - compatible
-+  - "#mbox-cells"
-+  - reg
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    adsp_mailbox0:mailbox@10816000 {
-+        compatible = "mediatek,mt8195-adsp-mbox";
-+        #mbox-cells = <0>;
-+        reg = <0x10816000 0x1000>;
-+        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
-+    };
++      i2c0-pins {
++        pins {
++          pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
++                   <PINMUX_GPIO9__FUNC_SCL0>;
++          bias-disable;
++          mediatek,drive-strength-adv = <7>;
++        };
++      };
+     };
 -- 
 2.18.0
 
