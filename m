@@ -4,77 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46735C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 00:27:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7AE0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 00:49:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HANda1U2nHV+F/rYOTnmeLPlZ05iuFooI4fL7LS2+ec=; b=bYclkgHEb5dauP
-	qE8sBazgYqNn8oL3cfn1bMcLeEJBhb/RW02hEDp9nwvaHp0fy+HdwGK+ikKZO0N0eXJM8FqXtmCIS
-	JBVQ7LVb1Qmi7m7cGqmAk9BOhhpvgsfx4citiB1er7qEyCm/9V205TOPeE/qsSC77buKdMc9maAoM
-	CSo+rTSjw64v/7tYwJf8BHUbafkJSHRRA322BjBd8gMAgyl/G5s+i8CaJKghUrkWRXqVTq/65yjzL
-	yuSO4mwMTFUL7iBCZSTMMfBL25hYzLugu76wllWOCbLMJyHeV9HVGGCZFp0WmZ0OOhhojrUWFTc6L
-	BBMaUOiQsCaHuMovqjhQ==;
+	List-Owner; bh=kXtXoYr4NAC0qd9ROn0Ch3qKBxzrbvD7jDTfXupvpdw=; b=OBuu1wuBGa9G7M
+	FwH4n4JiWkvR2smXxytd8UV4v09OFaBtuZXtC2ru4mrc8Lo8jiNaGQ9W138ewlEMB+j01dznrHDfu
+	sMzCaQDLvPvhAP7b+rlnAzcCLjrgPk9ze3LM1RnY01LBnOKurEbJ0DcW8oaTug3xKOEMXx46vl6zF
+	ywyQDpwXBLCfhym9KOztaVu2izdFOuK89zq3uIZrWse33/0CEjhonXQIb1JPeJ6sYYD8phjQyNx+e
+	9NBGCX1uY/Zv9PAb/IKlFkMfkMHAbDxFDT8oA7sVf6+YIxp7mzYSCjKdbfW9w/2ahO5MwVN8dmouB
+	riITvsctR+LWJkvF/YEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7RUD-000WzR-98; Wed, 12 Jan 2022 00:27:33 +0000
-Received: from mail-ot1-x32d.google.com ([2607:f8b0:4864:20::32d])
+	id 1n7RpQ-000XkH-Bz; Wed, 12 Jan 2022 00:49:28 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7RUA-000Wya-BT
- for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 00:27:31 +0000
-Received: by mail-ot1-x32d.google.com with SMTP id
- s21-20020a05683004d500b0058f585672efso751121otd.3
- for <linux-mediatek@lists.infradead.org>; Tue, 11 Jan 2022 16:27:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:in-reply-to:references:from:user-agent:date:message-id
- :subject:to:cc;
- bh=WqByNvxB5TcaW37Y3dlNFQ4WDapy73RgUbY3JV8R/nQ=;
- b=Pcoj/iXfbGJfWcIvlDjYxDGNtQ6l6QyPoulOtlEiTUr5+rwykzE32gle+eyWjLEf6V
- aDFqeAnq8m+llM+znbg/GvewwRMzWDJ9fZn1pun7dzKyqxWdaTlIDaXWKJWNQKSElAsL
- Rp0PxAx2y4y6/mfKf/CHzr6gVSbkSXFUA6qxA=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:in-reply-to:references:from
- :user-agent:date:message-id:subject:to:cc;
- bh=WqByNvxB5TcaW37Y3dlNFQ4WDapy73RgUbY3JV8R/nQ=;
- b=mmk+aO7esJ00fTzcBJkQ86+rxX27GTEVzW3ecpAdFqyk4YNb04x6FlYg1F8xGEiISO
- yxhWyG6oszhxbxBLSYQjam7EhrzGKiQEbA8PmlDkwsvzkZLVLWZk+gqJHMRtqO9FImIa
- T07/8N/CGmF2KTd+6dCo+33m/sWd/i2gBDjElhrgFgVs+N+LRHfN0nQkuYBEqLlXJ6gt
- p3qGEzyrsQHfA9do90rBtm9Mi/Hssng4lH0C7e6aTGl0vTs1LKuXbl+vGxuW8gh2uGNU
- uPjC+ufz5ebXXfvEQhlcgy2K5a0kCPKvM+0CYNG4ITrEX3vK4zanKDQrSqTdp51opc4H
- QYVA==
-X-Gm-Message-State: AOAM530rUCVIpM6vkVD3r9BOhdM7SktKAI/xFFMYRqeKFeJ12WYdusim
- 8Iiz/G3zwbVSYyFlhpO/2I7LWsVt0BPLGbQU1vHL8Q==
-X-Google-Smtp-Source: ABdhPJxMczP+5jJCLefJZ3uSBIgyN09xnry//vRiu7iBKwt4wRbi9Gfl3WZkmpKPRfcVfBsVXDB2sCr3tXuwJ4WGhuA=
-X-Received: by 2002:a9d:2243:: with SMTP id o61mr5053528ota.126.1641947248080; 
- Tue, 11 Jan 2022 16:27:28 -0800 (PST)
-Received: from 753933720722 named unknown by gmailapi.google.com with
- HTTPREST; Tue, 11 Jan 2022 16:27:27 -0800
+ id 1n7RpL-000XjL-S9
+ for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 00:49:27 +0000
+X-UUID: d6414f3c019e46729d30e2cc2498ac70-20220111
+X-UUID: d6414f3c019e46729d30e2cc2498ac70-20220111
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1186434433; Tue, 11 Jan 2022 17:49:20 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 11 Jan 2022 16:49:18 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 08:49:17 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 12 Jan 2022 08:49:16 +0800
+From: <sean.wang@mediatek.com>
+To: <khalid@gonehiking.org>
+CC: <greearb@candelatech.com>, <nbd@nbd.name>, <lorenzo.bianconi83@gmail.com>, 
+ <Ryder.Lee@mediatek.com>, <Shayne.Chen@mediatek.com>,
+ <Sean.Wang@mediatek.com>, <kvalo@kernel.org>, <davem@davemloft.net>,
+ <kuba@kernel.org>, <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <netdev@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, Sean Wang <sean.wang@mediatek.com>
+Subject: Re: [Bug] mt7921e driver in 5.16 causes kernel panic
+Date: Wed, 12 Jan 2022 08:49:16 +0800
+Message-ID: <1641948556-23414-1-git-send-email-sean.wang@mediatek.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <c3a66426-e6a0-4fd2-dc09-85181c96b755@gonehiking.org--annotate>
+References: <c3a66426-e6a0-4fd2-dc09-85181c96b755@gonehiking.org--annotate>
 MIME-Version: 1.0
-In-Reply-To: <1a3b368eb891ca55c33265397cffab0b9f128737.camel@mediatek.com>
-References: <20220106214556.2461363-1-swboyd@chromium.org>
- <20220106214556.2461363-26-swboyd@chromium.org>
- <1a3b368eb891ca55c33265397cffab0b9f128737.camel@mediatek.com>
-From: Stephen Boyd <swboyd@chromium.org>
-User-Agent: alot/0.9.1
-Date: Tue, 11 Jan 2022 16:27:27 -0800
-Message-ID: <CAE-0n53Y3WRy4_QvUm9k9wjjWV7adMDQcK_+1ji4+W25SSeGwg@mail.gmail.com>
-Subject: Re: [PATCH v5 25/32] iommu/mtk: Migrate to aggregate driver
-To: Yong Wu <yong.wu@mediatek.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Douglas Anderson <dianders@chromium.org>, 
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
- dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, 
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
- Daniel Vetter <daniel.vetter@ffwll.ch>, "Rafael J. Wysocki" <rafael@kernel.org>,
- Rob Clark <robdclark@gmail.com>, Russell King <rmk+kernel@arm.linux.org.uk>, 
- Saravana Kannan <saravanak@google.com>, linux-mediatek@lists.infradead.org
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_162730_453756_46B7D916 
-X-CRM114-Status: GOOD (  27.63  )
+X-CRM114-CacheID: sfid-20220111_164923_947639_3083E075 
+X-CRM114-Status: GOOD (  23.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,119 +75,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Yong Wu (2022-01-11 04:22:23)
-> Hi Stephen,
+From: Sean Wang <sean.wang@mediatek.com>
+
+>On 1/11/22 16:31, Ben Greear wrote:
+>> On 1/11/22 3:17 PM, Khalid Aziz wrote:
+>>> I am seeing an intermittent bug in mt7921e driver. When the driver
+>>> module is loaded and is being initialized, almost every other time it
+>>> seems to write to some wild memory location. This results in driver
+>>> failing to initialize with message "Timeout for driver own" and at
+>>> the same time I start to see "Bad page state" messages for random
+>>> processes. Here is the relevant part of dmesg:
+>>
+>> Please see if this helps?
+>>
+>> From: Ben Greear <greearb@candelatech.com>
+>>
+>> If the nic fails to start, it is possible that the reset_work has
+>> already been scheduled.  Ensure the work item is canceled so we do not
+>> have use-after-free crash in case cleanup is called before the work
+>> item is executed.
+>>
+>> This fixes crash on my x86_64 apu2 when mt7921k radio fails to work.
+>> Radio still fails, but OS does not crash.
+>>
+>> Signed-off-by: Ben Greear <greearb@candelatech.com>
+>> ---
+>>   drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>> index 6073bedaa1c08..9b33002dcba4a 100644
+>> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+>> @@ -272,6 +272,7 @@ static void mt7921_stop(struct ieee80211_hw *hw)
+>>
+>>       cancel_delayed_work_sync(&dev->pm.ps_work);
+>>       cancel_work_sync(&dev->pm.wake_work);
+>> +    cancel_work_sync(&dev->reset_work);
+>>       mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
+>>
+>>       mt7921_mutex_acquire(dev);
 >
-> Thanks for helping update here.
+>Hi Ben,
 >
-> On Thu, 2022-01-06 at 13:45 -0800, Stephen Boyd wrote:
-> > Use an aggregate driver instead of component ops so that we can get
-> > proper driver probe ordering of the aggregate device with respect to
-> > all
-> > the component devices that make up the aggregate device.
-> >
-> > Cc: Yong Wu <yong.wu@mediatek.com>
-> > Cc: Joerg Roedel <joro@8bytes.org>
-> > Cc: Will Deacon <will@kernel.org>
-> > Cc: Daniel Vetter <daniel.vetter@ffwll.ch>
-> > Cc: "Rafael J. Wysocki" <rafael@kernel.org>
-> > Cc: Rob Clark <robdclark@gmail.com>
-> > Cc: Russell King <rmk+kernel@arm.linux.org.uk>
-> > Cc: Saravana Kannan <saravanak@google.com>
-> > Signed-off-by: Stephen Boyd <swboyd@chromium.org>
+>Unfortunately that did not help. I still saw the same messages and a kernel panic. I do not see this bug if I power down the laptop before booting it up, so mt7921_stop() would make sense as the reasonable place to fix it.
+
+Hi, Khalid
+
+Could you try the patch below? It should be helpful to your issue
+
+https://patchwork.kernel.org/project/linux-wireless/patch/70e27cbc652cbdb78277b9c691a3a5ba02653afb.1641540175.git.objelf@gmail.com/
+
 >
-> When I test this on mt8195 which have two IOMMU HWs(calling
-> component_aggregate_regsiter twice), it will abort like this. Then what
-> should we do if we have two instances?
+>Thanks,
+>Khalid
 >
-
-Thanks for testing it out. We can't register the struct driver more than
-once but this driver is calling the component_aggregate_register()
-function from the driver probe and there are two devices bound to the
-mtk-iommu driver so we try to register it more than once. Sigh!
-
-I see a couple options. One is to do a deep copy of the driver structure
-and change the driver name. Then it's a one to one relationship between
-device and driver. That's not very great because it leaves around junk
-so it should probably be avoided.
-
-Another option is to reference count the driver registration calls when
-component_aggregate_register() is called multiple times. Then we would
-only register the driver once and keep it pinned until the last
-unregister call is made, but still remove devices that are created for
-the match table.
-
-Can you try the attached patch? It is based on the next version of this
-patch series so the include part of the patch may not apply cleanly.
-
----8<---
-diff --git a/drivers/base/component.c b/drivers/base/component.c
-index 64ad7478c67a..97f253a41bdf 100644
---- a/drivers/base/component.c
-+++ b/drivers/base/component.c
-@@ -492,15 +492,30 @@ static struct aggregate_device
-*__aggregate_find(struct device *parent)
- 	return dev ? to_aggregate_device(dev) : NULL;
- }
-
-+static DEFINE_MUTEX(aggregate_mutex);
-+
- static int aggregate_driver_register(struct aggregate_driver *adrv)
- {
--	adrv->driver.bus = &aggregate_bus_type;
--	return driver_register(&adrv->driver);
-+	int ret = 0;
-+
-+	mutex_lock(&aggregate_mutex);
-+	if (!refcount_inc_not_zero(&adrv->count)) {
-+		adrv->driver.bus = &aggregate_bus_type;
-+		ret = driver_register(&adrv->driver);
-+		if (!ret)
-+			refcount_inc(&adrv->count);
-+	}
-+	mutex_unlock(&aggregate_mutex);
-+
-+	return ret;
- }
-
- static void aggregate_driver_unregister(struct aggregate_driver *adrv)
- {
--	driver_unregister(&adrv->driver);
-+	if (refcount_dec_and_mutex_lock(&adrv->count, &aggregate_mutex)) {
-+		driver_unregister(&adrv->driver);
-+		mutex_unlock(&aggregate_mutex);
-+	}
- }
-
- static struct aggregate_device *aggregate_device_add(struct device *parent,
-diff --git a/include/linux/component.h b/include/linux/component.h
-index 53d81203c095..b061341938aa 100644
---- a/include/linux/component.h
-+++ b/include/linux/component.h
-@@ -4,6 +4,7 @@
-
- #include <linux/stddef.h>
- #include <linux/device.h>
-+#include <linux/refcount.h>
-
- struct aggregate_device;
-
-@@ -66,6 +67,7 @@ struct device *aggregate_device_parent(const struct
-aggregate_device *adev);
-
- /**
-  * struct aggregate_driver - Aggregate driver (made up of other drivers)
-+ * @count: driver registration refcount
-  * @driver: device driver
-  */
- struct aggregate_driver {
-@@ -101,6 +103,7 @@ struct aggregate_driver {
- 	 */
- 	void (*shutdown)(struct aggregate_device *adev);
-
-+	refcount_t		count;
- 	struct device_driver	driver;
- };
+>
 
 _______________________________________________
 Linux-mediatek mailing list
