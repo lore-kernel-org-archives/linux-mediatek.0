@@ -4,109 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02988C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 08:53:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C18A7C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 08:53:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F741uagwlledtvX2KHubTth6Hbt06AQjyON/tp41gx8=; b=lK5ayzhkEl1HNcrB3oOOzjBRx1
-	646SAnheTMrXoL26tbxW214zfykpkAkA4MjHgtaMR56lr+C+qRgHgpff5oswv0PWFGx5Vw1flDLau
-	rJCimXsax6sRB8v69ypdw6/4+soPNLa8DicMfuCJsaFxN+FAQQgnkl+9McNtTjI0NsZhMxutsOqmb
-	VaN1vfmZKB5nPbi9eppyjRzh9FymZid5B9wmJag6YlmOU6fhuLbyBp11X2k7q1RGN7X6dyfvRdgTO
-	TqGKWXBIvQOLSa98A1/53AJMlzzd2mB6rzSO2JsceX1HoXYV66sXHgWsTo2slwHfb42GizAxp0JpI
-	1GxApfgQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=3LPkGv8vvxYG9IUs+r7p1fj5I284LEbztA0NrLmn09A=; b=RMkF/glYA+hvcu
+	OXxjuqzvnaFhwrhNCk7Z16KsHq+BNEpSL9leBrwAY5PYaesAkgL6wmHA0atTGhL/fUceyyI5FQ5Z/
+	EyMMBUBRLPHp3Je0u1V9jU3u6dcpiAv2cQ4Ti14FJlV3Qb3GGmTEik3YtNOP5eZ/cN1p79TL96XRD
+	WZ5EbdERFUNmEHv3gVqfsDo/dmhg46u8e33OSiRwxSKX/gN2U/FTcnI/nb5C4JCUqVVSGkf8k4BFx
+	sQL1aMdyxvCaYn0lo+aI0YMd4HbZx3Q7Y75v6DK7Qnc+Sx21IkBIF3rTogiTdGUENricHjLt/7WLZ
+	6P7ZDpz2cLUXySwhpz3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7ZOA-001dRb-UG; Wed, 12 Jan 2022 08:53:50 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1n7ZOC-001dRo-1O; Wed, 12 Jan 2022 08:53:52 +0000
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7ZO1-001dMc-JB
- for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 08:53:43 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n7ZLN-0005mh-UE; Wed, 12 Jan 2022 09:50:57 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1n7ZL6-009rFV-QA; Wed, 12 Jan 2022 09:50:40 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n7ZL5-00061g-Dl; Wed, 12 Jan 2022 09:50:39 +0100
-Date: Wed, 12 Jan 2022 09:50:09 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, kvm@vger.kernel.org,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-phy@lists.infradead.org, Jiri Slaby <jirislaby@kernel.org>,
- "David S. Miller" <davem@davemloft.net>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Tony Luck <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-serial@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- platform-driver-x86@vger.kernel.org, linux-pwm@vger.kernel.org,
- Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
- Corey Minyard <minyard@acm.org>, linux-pm@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, linux-gpio@vger.kernel.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Eric Auger <eric.auger@redhat.com>, Takashi Iwai <tiwai@suse.com>,
- Jaroslav Kysela <perex@perex.cz>, openipmi-developer@lists.sourceforge.net,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Benson Leung <bleung@chromium.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org, linux-edac@vger.kernel.org,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Richard Weinberger <richard@nod.at>,
- Mun Yew Tham <mun.yew.tham@intel.com>, Hans de Goede <hdegoede@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- linux-spi@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
- Vinod Koul <vkoul@kernel.org>, James Morse <james.morse@arm.com>,
- Zha Qipeng <qipeng.zha@intel.com>, Sebastian Reichel <sre@kernel.org>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>, netdev@vger.kernel.org
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-Message-ID: <20220112085009.dbasceh3obfok5dc@pengutronix.de>
-References: <20220110195449.12448-1-s.shtylyov@omp.ru>
- <20220110195449.12448-2-s.shtylyov@omp.ru>
- <20220110201014.mtajyrfcfznfhyqm@pengutronix.de>
- <YdyilpjC6rtz6toJ@lunn.ch>
- <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ id 1n7ZO5-001dN4-GE
+ for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 08:53:47 +0000
+Received: by mail-lf1-x132.google.com with SMTP id x7so5603893lfu.8
+ for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 00:53:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QX44NtMzpgo+l2Ho0SHw53qmGi3kaH4gIg9bfUEaJf8=;
+ b=GwrhxtFMs32fVtJhHB7d1TFxrETcq3mcE7NxamZu/6SOWSIdtZ4+Srz4LvEcSQmDB9
+ LGFQ2vBPVGkMp3fk+4mJMplM1VhKxsHdEqD7JU4j3PciOrX6Zd64Jq9V2eEXn6NbELug
+ K4bzHQ4527hYt4Ei4Xt8net4BaK/oZ4fiVvYM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QX44NtMzpgo+l2Ho0SHw53qmGi3kaH4gIg9bfUEaJf8=;
+ b=4Eu2tbi9L3LPst7PGknWhvFgO+PYDl9aLBdejdFQ0OPw979ua6emh+j4Jjbn98DGOS
+ o8aGdn6X68pPtoU4ZgeEGc+ueGaHzAl2E1kNIucIm6m4UeDkJg2+dQlWvV1shwQC+hjD
+ i+YBP/76ZMsY4QSOzOo2Ga4JOWGPLq+8sz8EDyxiK6EH7c5xhpOEXNsh36+UKvoFG/fE
+ nHiPxoJOMem3sW5SJfCoxzjM4HIUi7YHstxwwlhbuPHvrZwNvP2fqj1ekCnsta9boocq
+ ivTG2uIzg78WpBvHHV+uBrlhR+CumD5gUVWW3pTYBIQHNTmIjU1Yzwo/Onm7bbrgrCZX
+ d9Zw==
+X-Gm-Message-State: AOAM532GyfhnsBf/LuH/h7Q+xgn/QzBz8DDsjisU/xKOqBRIensz2v+t
+ SiG451+7VJLEXCdYgn4dFj5ytakgEhlezYPuUMKEfA==
+X-Google-Smtp-Source: ABdhPJxEbYrAx/hnpV9Nn6yck1TYbHCWYGr7VZUmUHpP5vookcO09X5JJ9gm0O/ez/CfSZpUBOe1UT3KZO6sItHHMFc=
+X-Received: by 2002:a2e:7f1a:: with SMTP id a26mr5747639ljd.414.1641977622599; 
+ Wed, 12 Jan 2022 00:53:42 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+References: <20220111112244.1483783-1-wenst@chromium.org>
+ <20220111112244.1483783-8-wenst@chromium.org>
+In-Reply-To: <20220111112244.1483783-8-wenst@chromium.org>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 12 Jan 2022 16:53:31 +0800
+Message-ID: <CAGXv+5Gq0uH-eA799f1MRgzeUU9fsfi-Xz0XyW7ZJW==i_mcYg@mail.gmail.com>
+Subject: Re: [PATCH 7/7] pinctrl: mediatek: paris: Support generic
+ PIN_CONFIG_DRIVE_STRENGTH_UA
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, Guodong Liu <guodong.liu@mediatek.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_005341_663614_D14E0C26 
-X-CRM114-Status: GOOD (  35.14  )
+X-CRM114-CacheID: sfid-20220112_005345_602184_277FD097 
+X-CRM114-Status: GOOD (  34.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,113 +78,171 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8524030794428685129=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Tue, Jan 11, 2022 at 7:23 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+>
+> Some of the MediaTek chips that utilize the Paris pinctrl driver library
+> support a lower drive strength (<= 1mA) than the standard drive strength
+> settings (2~16 mA) on certain pins. This was previously supported by the
+> custom MTK_PIN_CONFIG_DRV_ADV parameter along with the
+> "mediatek,drive-strength-adv" device tree property.
+>
+> The drive strength values for this hardware are 125, 250, 500, and 1000 mA,
+> and can be readily described by the existing "drive-strength-microamp",
+> which then gets parsed by the generic pinconf library into the parameter
+> PIN_CONFIG_DRIVE_STRENGTH_UA.
 
---===============8524030794428685129==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xmww6gsp5dtrk3ed"
-Content-Disposition: inline
+So I am actually unsure how to implement support for this properly.
+My intention was to map "mediatek,drive-strength-adv" to
+"drive-strength-microamp". This implies using the advanced mode if
+the property is present, and vice versa.
 
+(Also unsure if such a binding would be acceptable.)
 
---xmww6gsp5dtrk3ed
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+However the pin configs are passed in one-by-one within the driver, so
+it doesn't seem viable to check for the absence of a certain parameter.
+This might involve a bit more rewriting.
 
-On Wed, Jan 12, 2022 at 09:33:48AM +0100, Geert Uytterhoeven wrote:
-> Hi Andrew,
->=20
-> On Mon, Jan 10, 2022 at 10:20 PM Andrew Lunn <andrew@lunn.ch> wrote:
-> > On Mon, Jan 10, 2022 at 09:10:14PM +0100, Uwe Kleine-K=F6nig wrote:
-> > > On Mon, Jan 10, 2022 at 10:54:48PM +0300, Sergey Shtylyov wrote:
-> > > > This patch is based on the former Andy Shevchenko's patch:
-> > > >
-> > > > https://lore.kernel.org/lkml/20210331144526.19439-1-andriy.shevchen=
-ko@linux.intel.com/
-> > > >
-> > > > Currently platform_get_irq_optional() returns an error code even if=
- IRQ
-> > > > resource simply has not been found. It prevents the callers from be=
-ing
-> > > > error code agnostic in their error handling:
-> > > >
-> > > >     ret =3D platform_get_irq_optional(...);
-> > > >     if (ret < 0 && ret !=3D -ENXIO)
-> > > >             return ret; // respect deferred probe
-> > > >     if (ret > 0)
-> > > >             ...we get an IRQ...
-> > > >
-> > > > All other *_optional() APIs seem to return 0 or NULL in case an opt=
-ional
-> > > > resource is not available. Let's follow this good example, so that =
-the
-> > > > callers would look like:
-> > > >
-> > > >     ret =3D platform_get_irq_optional(...);
-> > > >     if (ret < 0)
-> > > >             return ret;
-> > > >     if (ret > 0)
-> > > >             ...we get an IRQ...
-> > >
-> > > The difference to gpiod_get_optional (and most other *_optional) is t=
-hat
-> > > you can use the NULL value as if it were a valid GPIO.
-> > >
-> > > As this isn't given with for irqs, I don't think changing the return
-> > > value has much sense.
-> >
-> > We actually want platform_get_irq_optional() to look different to all
-> > the other _optional() methods because it is not equivalent. If it
-> > looks the same, developers will assume it is the same, and get
-> > themselves into trouble.
->=20
-> Developers already assume it is the same, and thus forget they have
-> to check against -ENXIO instead of zero.
+ChenYu
 
-Is this an ack for renaming platform_get_irq_optional() to
-platform_get_irq_silent()?
-
-And then a coccinelle or sparse or ... hook that catches people testing
-the return value against 0 would be great.
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---xmww6gsp5dtrk3ed
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHeljYACgkQwfwUeK3K
-7AljMgf/RPunUgCLZTRo6HVoWGaeXoeKF+2cGlwuAsz4Z00TAkiSHfoaeZtHOlTi
-q5shu1KHHU618Mhtt6XvXodObLXVJs41ty1v6SytKsW7BJQt5naWkyRnggT5tFWu
-ggmVGMBXOmKX/wp2DCDa7dah1/SOrnFqP53whp6ZTB6oejvTyXmM97J3490sqGq5
-MsUAM2Z9/yyDuSZevN858NdTs3OZGSfWvvhFoG4EurYBcNo4znZgjQ6JgBbg3L5J
-/m2yKP4XrG0hiM86Q5XlzUdX3r5ERS4K78HS9ywkjsC/gmXD3i3XQGIjcG5VMN7F
-HGppnegV30H+5MPW7Ws6xs2xopwryw==
-=d8xy
------END PGP SIGNATURE-----
-
---xmww6gsp5dtrk3ed--
-
-
---===============8524030794428685129==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> Add support for PIN_CONFIG_DRIVE_STRENGTH_UA while keeping the old
+> custom parameter around for backward compatibility.
+>
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>
+> The indentation in the switch/case blocks is getting somewhat out of
+> control. I also have some cleanup changes to reverse the logic of the
+> if/break statements. Not sure if it should be done before or after this
+> patch though.
+>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-paris.c | 84 ++++++++++++++++++++++++
+>  1 file changed, 84 insertions(+)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index 678c8aa33012..5a94903ae372 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -48,6 +48,53 @@ static const char * const mtk_gpio_functions[] = {
+>         "func12", "func13", "func14", "func15",
+>  };
+>
+> +/*
+> + * This section supports converting to/from custom MTK_PIN_CONFIG_DRV_ADV
+> + * and standard PIN_CONFIG_DRIVE_STRENGTH_UA pin configs.
+> + *
+> + * The custom value encodes three hardware bits as follows:
+> + *
+> + *   |           Bits           |
+> + *   | 2 (E1) | 1 (E0) | 0 (EN) | drive strength (uA)
+> + *   ------------------------------------------------
+> + *   |    x   |    x   |    0   | disabled, use standard drive strength
+> + *   -------------------------------------
+> + *   |    0   |    0   |    1   |  125 uA
+> + *   |    0   |    1   |    1   |  250 uA
+> + *   |    1   |    0   |    1   |  500 uA
+> + *   |    1   |    1   |    1   | 1000 uA
+> + */
+> +static const int mtk_drv_adv_uA[] = { 125, 250, 500, 1000 };
+> +
+> +static int mtk_drv_adv_to_uA(int val)
+> +{
+> +       /* This should never happen. */
+> +       if (WARN_ON_ONCE(val < 0 || val > 7))
+> +               return -EINVAL;
+> +
+> +       /* Bit 0 simply enables this hardware part */
+> +       if (!(val & BIT(0)))
+> +               return -EINVAL;
+> +
+> +       return mtk_drv_adv_uA[(val >> 1)];
+> +}
+> +
+> +static int mtk_drv_uA_to_adv(int val)
+> +{
+> +       switch (val) {
+> +       case 125:
+> +               return 0x1;
+> +       case 250:
+> +               return 0x3;
+> +       case 500:
+> +               return 0x5;
+> +       case 1000:
+> +               return 0x7;
+> +       }
+> +
+> +       return -EINVAL;
+> +}
+> +
+>  static int mtk_pinmux_gpio_request_enable(struct pinctrl_dev *pctldev,
+>                                           struct pinctrl_gpio_range *range,
+>                                           unsigned int pin)
+> @@ -151,11 +198,38 @@ static int mtk_pinconf_get(struct pinctrl_dev *pctldev,
+>
+>                 break;
+>         case PIN_CONFIG_DRIVE_STRENGTH:
+> +               if (hw->soc->adv_drive_get) {
+> +                       err = hw->soc->adv_drive_get(hw, desc, &ret);
+> +                       if (!err) {
+> +                               err = mtk_drv_adv_to_uA(ret);
+> +                               if (err > 0) {
+> +                                       /* PIN_CONFIG_DRIVE_STRENGTH_UA used */
+> +                                       err = -EINVAL;
+> +                                       break;
+> +                               }
+> +                       }
+> +               }
+> +
+>                 if (hw->soc->drive_get)
+>                         err = hw->soc->drive_get(hw, desc, &ret);
+>                 else
+>                         err = -ENOTSUPP;
+>                 break;
+> +       case PIN_CONFIG_DRIVE_STRENGTH_UA:
+> +               if (hw->soc->adv_drive_get) {
+> +                       err = hw->soc->adv_drive_get(hw, desc, &ret);
+> +                       if (err)
+> +                               break;
+> +                       err = mtk_drv_adv_to_uA(ret);
+> +                       if (err < 0)
+> +                               break;
+> +
+> +                       ret = err;
+> +                       err = 0;
+> +               } else {
+> +                       err = -ENOTSUPP;
+> +               }
+> +               break;
+>         case MTK_PIN_CONFIG_TDSEL:
+>         case MTK_PIN_CONFIG_RDSEL:
+>                 reg = (param == MTK_PIN_CONFIG_TDSEL) ?
+> @@ -271,6 +345,16 @@ static int mtk_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+>                 else
+>                         err = -ENOTSUPP;
+>                 break;
+> +       case PIN_CONFIG_DRIVE_STRENGTH_UA:
+> +               if (hw->soc->adv_drive_set) {
+> +                       err = mtk_drv_uA_to_adv(arg);
+> +                       if (err < 0)
+> +                               break;
+> +                       err = hw->soc->adv_drive_set(hw, desc, err);
+> +               } else {
+> +                       err = -ENOTSUPP;
+> +               }
+> +               break;
+>         case MTK_PIN_CONFIG_TDSEL:
+>         case MTK_PIN_CONFIG_RDSEL:
+>                 reg = (param == MTK_PIN_CONFIG_TDSEL) ?
+> --
+> 2.34.1.575.g55b058a8bb-goog
+>
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============8524030794428685129==--
-
