@@ -4,61 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7AE0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 00:49:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 482BCC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 01:28:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kXtXoYr4NAC0qd9ROn0Ch3qKBxzrbvD7jDTfXupvpdw=; b=OBuu1wuBGa9G7M
-	FwH4n4JiWkvR2smXxytd8UV4v09OFaBtuZXtC2ru4mrc8Lo8jiNaGQ9W138ewlEMB+j01dznrHDfu
-	sMzCaQDLvPvhAP7b+rlnAzcCLjrgPk9ze3LM1RnY01LBnOKurEbJ0DcW8oaTug3xKOEMXx46vl6zF
-	ywyQDpwXBLCfhym9KOztaVu2izdFOuK89zq3uIZrWse33/0CEjhonXQIb1JPeJ6sYYD8phjQyNx+e
-	9NBGCX1uY/Zv9PAb/IKlFkMfkMHAbDxFDT8oA7sVf6+YIxp7mzYSCjKdbfW9w/2ahO5MwVN8dmouB
-	riITvsctR+LWJkvF/YEg==;
+	List-Owner; bh=WPmga/81/BXTYJd4a7wlwUj38opoH9YGk3XyEqjI+QQ=; b=bgTKIB2ml0NoaI
+	KM0i40831l6fDj54s5S9TS+BOZ1ox3E+IDgQEkkUYFkhWXoal8l0WSAVTZ4E7xzWAKjXdEtKgbz/7
+	91UleoKvKRaHKapNbg8qtvO0o7KIevH5AGYCew9MQ4ydrZhG7SeCm+iboWH+tFzvU3n8DS9/wkq+I
+	dn9zgu4bXaCS1T69EWm9fh5MZIckU0bO67hffiuzOwFj/0G0McMzvpS31zGOVJUEqywcHwkUNxUGL
+	htFleMUR9NUViCTm7aPYadcxHzxcJu5hf4KMR+XB+NGvACgiZ6VtAe5kTf0jBDpT9edL/OtXQ/esq
+	AG6zDPUNjNgInby7888w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7RpQ-000XkH-Bz; Wed, 12 Jan 2022 00:49:28 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n7SQt-000cnY-HI; Wed, 12 Jan 2022 01:28:11 +0000
+Received: from mail-ot1-f43.google.com ([209.85.210.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7RpL-000XjL-S9
- for linux-mediatek@lists.infradead.org; Wed, 12 Jan 2022 00:49:27 +0000
-X-UUID: d6414f3c019e46729d30e2cc2498ac70-20220111
-X-UUID: d6414f3c019e46729d30e2cc2498ac70-20220111
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1186434433; Tue, 11 Jan 2022 17:49:20 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 11 Jan 2022 16:49:18 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 08:49:17 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 12 Jan 2022 08:49:16 +0800
-From: <sean.wang@mediatek.com>
-To: <khalid@gonehiking.org>
-CC: <greearb@candelatech.com>, <nbd@nbd.name>, <lorenzo.bianconi83@gmail.com>, 
- <Ryder.Lee@mediatek.com>, <Shayne.Chen@mediatek.com>,
- <Sean.Wang@mediatek.com>, <kvalo@kernel.org>, <davem@davemloft.net>,
- <kuba@kernel.org>, <matthias.bgg@gmail.com>, <linux-kernel@vger.kernel.org>,
- <netdev@vger.kernel.org>, <linux-wireless@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, Sean Wang <sean.wang@mediatek.com>
-Subject: Re: [Bug] mt7921e driver in 5.16 causes kernel panic
-Date: Wed, 12 Jan 2022 08:49:16 +0800
-Message-ID: <1641948556-23414-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <c3a66426-e6a0-4fd2-dc09-85181c96b755@gonehiking.org--annotate>
-References: <c3a66426-e6a0-4fd2-dc09-85181c96b755@gonehiking.org--annotate>
+ id 1n7SQr-000cmP-8e; Wed, 12 Jan 2022 01:28:10 +0000
+Received: by mail-ot1-f43.google.com with SMTP id
+ r7-20020a05683001c700b005906f5b0969so862320ota.5; 
+ Tue, 11 Jan 2022 17:28:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=mBfKQkR2L8qDoUKsf/7Yn6Ct6cSR0Xt75+chDiQTRgI=;
+ b=YkF+OKz/UylLPe/di3KkPuj+nBE/bynb900tgD1NSrMPDILjdfjSOfsFlmrMOVrK8n
+ /RhFBGbr3/93aZsaIFw3/YQJQf+r7pkPxcB9wt4yJh5dSJ4dXXPg2oWgSkuSysS6KCup
+ hDlnRQdEV2Ym6Y77nERKqUBG9EEBqrmdOXDMj8u0R1oUHcTiELr7y7x1C655UWl0osxp
+ oXLbGQCf3llSjf+bX0lqwJMhXdO5obwNo8jem4VRhKKFydTy9cVOwy/r88ovmTlmX0ah
+ IWjENC23FQxK4oSj6sdNN/SQveTUORoy/WBKrcmz0himSqNfFxQ28yp7L/6/lzQm9WZE
+ 7BdQ==
+X-Gm-Message-State: AOAM532Olv6XrZ01RBhCbta/YubXtjaxlticO8JuAjHF/w48C6UMvB+u
+ 5oSltulWx2/CwYToWLAoiw==
+X-Google-Smtp-Source: ABdhPJzsDgBBXjQuiqaoPL/a/LZz+jn3IcBHOG9zON4EBu3FE4uxwCuLLOxCJdO65wl6bZoTuewA9Q==
+X-Received: by 2002:a05:6830:1e9c:: with SMTP id
+ n28mr5057237otr.321.1641950887973; 
+ Tue, 11 Jan 2022 17:28:07 -0800 (PST)
+Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
+ [66.90.148.213])
+ by smtp.gmail.com with ESMTPSA id t23sm2368919otd.77.2022.01.11.17.28.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 11 Jan 2022 17:28:07 -0800 (PST)
+Received: (nullmailer pid 3865794 invoked by uid 1000);
+ Wed, 12 Jan 2022 01:28:06 -0000
+Date: Tue, 11 Jan 2022 19:28:06 -0600
+From: Rob Herring <robh@kernel.org>
+To: Sam Shih <sam.shih@mediatek.com>
+Cc: Ryder Lee <ryder.lee@kernel.org>, linux-watchdog@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, John Crispin <john@phrozen.org>,
+ Guenter Roeck <linux@roeck-us.net>, Philipp Zabel <p.zabel@pengutronix.de>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ Rob Herring <robh+dt@kernel.org>, devicetree@vger.kernel.org,
+ Wim Van Sebroeck <wim@linux-watchdog.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH 1/2] dt-bindings: reset: mt7986: Add reset-controller
+ header file
+Message-ID: <Yd4uplioThv8eJJE@robh.at.kernel.org>
+References: <20220105100456.7126-1-sam.shih@mediatek.com>
+ <20220105100456.7126-2-sam.shih@mediatek.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <20220105100456.7126-2-sam.shih@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220111_164923_947639_3083E075 
-X-CRM114-Status: GOOD (  23.28  )
+X-CRM114-CacheID: sfid-20220111_172809_333055_9A43DC9C 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,63 +88,18 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
+On Wed, 05 Jan 2022 18:04:55 +0800, Sam Shih wrote:
+> Add infracfg, toprgu, and ethsys reset-controller header file
+> for MT7986 platform.
+> 
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> ---
+>  include/dt-bindings/reset/mt7986-resets.h | 55 +++++++++++++++++++++++
+>  1 file changed, 55 insertions(+)
+>  create mode 100644 include/dt-bindings/reset/mt7986-resets.h
+> 
 
->On 1/11/22 16:31, Ben Greear wrote:
->> On 1/11/22 3:17 PM, Khalid Aziz wrote:
->>> I am seeing an intermittent bug in mt7921e driver. When the driver
->>> module is loaded and is being initialized, almost every other time it
->>> seems to write to some wild memory location. This results in driver
->>> failing to initialize with message "Timeout for driver own" and at
->>> the same time I start to see "Bad page state" messages for random
->>> processes. Here is the relevant part of dmesg:
->>
->> Please see if this helps?
->>
->> From: Ben Greear <greearb@candelatech.com>
->>
->> If the nic fails to start, it is possible that the reset_work has
->> already been scheduled.  Ensure the work item is canceled so we do not
->> have use-after-free crash in case cleanup is called before the work
->> item is executed.
->>
->> This fixes crash on my x86_64 apu2 when mt7921k radio fails to work.
->> Radio still fails, but OS does not crash.
->>
->> Signed-off-by: Ben Greear <greearb@candelatech.com>
->> ---
->>   drivers/net/wireless/mediatek/mt76/mt7921/main.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> index 6073bedaa1c08..9b33002dcba4a 100644
->> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
->> @@ -272,6 +272,7 @@ static void mt7921_stop(struct ieee80211_hw *hw)
->>
->>       cancel_delayed_work_sync(&dev->pm.ps_work);
->>       cancel_work_sync(&dev->pm.wake_work);
->> +    cancel_work_sync(&dev->reset_work);
->>       mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
->>
->>       mt7921_mutex_acquire(dev);
->
->Hi Ben,
->
->Unfortunately that did not help. I still saw the same messages and a kernel panic. I do not see this bug if I power down the laptop before booting it up, so mt7921_stop() would make sense as the reasonable place to fix it.
-
-Hi, Khalid
-
-Could you try the patch below? It should be helpful to your issue
-
-https://patchwork.kernel.org/project/linux-wireless/patch/70e27cbc652cbdb78277b9c691a3a5ba02653afb.1641540175.git.objelf@gmail.com/
-
->
->Thanks,
->Khalid
->
->
+Acked-by: Rob Herring <robh@kernel.org>
 
 _______________________________________________
 Linux-mediatek mailing list
