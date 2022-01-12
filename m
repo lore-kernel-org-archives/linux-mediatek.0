@@ -4,63 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07699C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 15:47:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A058C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 15:48:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MWjS6LsJpSupntlDQBD7iWmeukd/mJvqyaWNye1iDfU=; b=PF3VSBo2iMmfSS
-	Y7xIKi+Rfia4MdBwJSb7FqPs/f1dnAqtU+ppJfyeNdSpXVE69eW3IqPucB3v9VA9lIDFwbNZOI+/x
-	7OrYzeSgu2a9RoPnMCuyJ/uELn/NIW/BbAeU+zc2fPFHUq+kVTBomnGG4WvcPeD2xqMmV1dmFeS6a
-	26tNA7YC1MM3i936kJxwgAoJldahPbtP+swGMvc0kB6NhKk9rTIIKtTYnsvw2bqDoDIAKEen3V4Kp
-	Sge1jJHDCrGz37EAWPl8igyTOCiV64BIAr0WOAi5WLTYlxxHlcD+W1kneN98bfSNSHVa9h05Ld2yu
-	6M45pEjjMUjuRV8AEzkA==;
+	List-Owner; bh=FE1HIwpw8H49Q/RwFPqhLsckReVEP3BxWSx8P+qJTMw=; b=2GWSEyfp7U1yZh
+	slIlYHBuWqHndZK7K5kfmpT9PiBzbehO1oZF4tIRl+wdSJKqJQRVdCCzYhfEEUjzJEmRHIme9p884
+	ZuIr5v3eog02yweTQs2rEAzP7f6+HFgoegKsXo9M7Q8B1Eowgwzk5HmGdhNoZqsvOZlSgHUOi9iGf
+	HIR8f7uD7G4wLkIDCyxmdb7eUDOwMqNGwjTmP3WQDjtof+MpsJ8zdnk83wvPrUmXJmDWo3BfI0Mpz
+	feInGtxVM6YuDw/+Jh93TIiinYNZGknw1nBSyJQf1rNhpfrqAkFBnQa2UInHT19IV+AsuafeOWCLC
+	Hbfw0wO7i5yhDSGXzsHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7fqk-002z0H-8S; Wed, 12 Jan 2022 15:47:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n7frh-002zI6-A0; Wed, 12 Jan 2022 15:48:45 +0000
+Received: from mail-qt1-f170.google.com ([209.85.160.170])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7fqY-002yxU-9g; Wed, 12 Jan 2022 15:47:35 +0000
-X-UUID: ba50ed99085a4ee4bc3e1244beb78f41-20220112
-X-UUID: ba50ed99085a4ee4bc3e1244beb78f41-20220112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 832652675; Wed, 12 Jan 2022 08:47:31 -0700
-Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 07:37:28 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 23:37:27 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 12 Jan 2022 23:37:27 +0800
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
- <narmstrong@baylibre.com>, <robert.foss@linaro.org>,
- <andrzej.hajda@intel.com>, <daniel@ffwll.ch>, <airlied@linux.ie>,
- <p.zabel@pengutronix.de>
-CC: <xji@analogixsemi.com>, <jitao.shi@mediatek.com>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>
-Subject: [v8,
- PATCH 1/3] drm/dsi: transfer DSI HS packets ending at the same time
-Date: Wed, 12 Jan 2022 23:36:37 +0800
-Message-ID: <20220112153639.12343-2-rex-bc.chen@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220112153639.12343-1-rex-bc.chen@mediatek.com>
-References: <20220112153639.12343-1-rex-bc.chen@mediatek.com>
+ id 1n7frQ-002zB8-6f; Wed, 12 Jan 2022 15:48:29 +0000
+Received: by mail-qt1-f170.google.com with SMTP id b14so539781qtb.12;
+ Wed, 12 Jan 2022 07:48:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kircZLJvKwRq35Roqu4N6EMju+IOfz7v3tu0eijvuOU=;
+ b=6N4kvboz9XZjLT9AlcVMXCqFaDRYqNIXoVHbvgaef0S3/TwZVSLyisLYmX6rbZ1c4z
+ 0Yltj2xGV0ApzGxf6NdD4lgd5/OkAnJoaLf0FLJUFchhs9oo9sih4QmvZBFkN0cHPNS2
+ doJjQCFFgfgp+3L5BwEaHa0oERVn/tjgj6kBGsUll7sbU12AZoypWtKzmuUpQ7g5JkVL
+ CYqwIhUpqAmI4b1LHeWqBgfEK23DV/yCBoSW8JUlpn7yA+56FjB9XWrzdUhtvl2uSiF3
+ Wg0rot0/yZDU//GitmrGG3F/yjx4nO4tkXjUUCyWxrEp30VKA6L+E6nm2VZ3l6yDD9u7
+ 7wxw==
+X-Gm-Message-State: AOAM530RWjBk4ziPQWxTwFakH3hJgAdLhZOZSAzGYF50CuD+rYUyq7P1
+ Q0bUXsyquewQay5ZQ4ksESqOJ6JNUDH9FfmjRkY=
+X-Google-Smtp-Source: ABdhPJxfYKk7N1kK4CG7HmXjc71yVz5vqxe5I1MLV5trX7z8Y3w5M287yv5s5mrOzbSUgk5scgell01Doa8kJvJe/HQ=
+X-Received: by 2002:a05:622a:178e:: with SMTP id
+ s14mr61437qtk.302.1642002505776; 
+ Wed, 12 Jan 2022 07:48:25 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220110195449.12448-1-s.shtylyov@omp.ru>
+ <20220110195449.12448-2-s.shtylyov@omp.ru>
+ <20220110201014.mtajyrfcfznfhyqm@pengutronix.de> <YdyilpjC6rtz6toJ@lunn.ch>
+ <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <Yd7Z3Qwevb/lEwQZ@lunn.ch>
+ <CAMuHMdV2cGvqMppwt9xhpze=pcnHfTozDZMjwT1DkivLD+_nbQ@mail.gmail.com>
+ <CAJZ5v0iyAHtDe1kFObQorXOX0Xraxac0j29Dh+8sq7zxzbsmcQ@mail.gmail.com>
+ <78a17bae-435b-e35e-b2dc-1166777725a0@omp.ru>
+ <e6487826-7683-2f29-c057-e5d7b913800c@redhat.com>
+In-Reply-To: <e6487826-7683-2f29-c057-e5d7b913800c@redhat.com>
+From: "Rafael J. Wysocki" <rafael@kernel.org>
+Date: Wed, 12 Jan 2022 16:48:14 +0100
+Message-ID: <CAJZ5v0iy7DhWniXhcf+CGriaGpzg0txOTETrwLPr1kZbZKos1g@mail.gmail.com>
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+To: Hans de Goede <hdegoede@redhat.com>
+Cc: Sergey Shtylyov <s.shtylyov@omp.ru>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Geert Uytterhoeven <geert@linux-m68k.org>, Andrew Lunn <andrew@lunn.ch>, 
+ =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Vignesh Raghavendra <vigneshr@ti.com>,
+ KVM list <kvm@vger.kernel.org>, 
+ linux-iio@vger.kernel.org, Linus Walleij <linus.walleij@linaro.org>, 
+ Amit Kucheria <amitk@kernel.org>, 
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, 
+ Guenter Roeck <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>, 
+ Miquel Raynal <miquel.raynal@bootlin.com>, linux-phy@lists.infradead.org, 
+ Jiri Slaby <jirislaby@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, 
+ Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Tony Luck <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, 
+ Zhang Rui <rui.zhang@intel.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ Platform Driver <platform-driver-x86@vger.kernel.org>, 
+ Linux PWM List <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, 
+ Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, 
+ Linux PM list <linux-pm@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>, 
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>, 
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Eric Auger <eric.auger@redhat.com>, 
+ Takashi Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>, 
+ openipmi-developer@lists.sourceforge.net, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Benson Leung <bleung@chromium.org>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ "open list:EDAC-CORE" <linux-edac@vger.kernel.org>,
+ Richard Weinberger <richard@nod.at>, 
+ Mun Yew Tham <mun.yew.tham@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>, 
+ Linux MMC List <linux-mmc@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-spi <linux-spi@vger.kernel.org>, 
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, 
+ James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, 
+ Sebastian Reichel <sre@kernel.org>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ "moderated list:ARM/Mediatek SoC..." <linux-mediatek@lists.infradead.org>, 
+ Brian Norris <computersforpeace@gmail.com>, netdev <netdev@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_074734_367714_FEEA667E 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20220112_074828_279663_507995F2 
+X-CRM114-Status: GOOD (  41.69  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,54 +140,103 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since a HS transmission is composed of an arbitrary number
-of bytes that may not be an integer multiple of lanes, some
-lanes may run out of data before others.
-(Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+On Wed, Jan 12, 2022 at 4:14 PM Hans de Goede <hdegoede@redhat.com> wrote:
+>
+> Hi,
+>
+> On 1/12/22 16:05, Sergey Shtylyov wrote:
+> > On 1/12/22 5:41 PM, Rafael J. Wysocki wrote:
+> >
+> > [...]
+> >>>>> If an optional IRQ is not present, drivers either just ignore it (e.g.
+> >>>>> for devices that can have multiple interrupts or a single muxed IRQ),
+> >>>>> or they have to resort to polling. For the latter, fall-back handling
+> >>>>> is needed elsewhere in the driver.
+> >>>>> To me it sounds much more logical for the driver to check if an
+> >>>>> optional irq is non-zero (available) or zero (not available), than to
+> >>>>> sprinkle around checks for -ENXIO. In addition, you have to remember
+> >>>>> that this one returns -ENXIO, while other APIs use -ENOENT or -ENOSYS
+> >>>>> (or some other error code) to indicate absence. I thought not having
+> >>>>> to care about the actual error code was the main reason behind the
+> >>>>> introduction of the *_optional() APIs.
+> >>>>Hi,
+> >>>> The *_optional() functions return an error code if there has been a
+> >>>> real error which should be reported up the call stack. This excludes
+> >>>> whatever error code indicates the requested resource does not exist,
+> >>>> which can be -ENODEV etc. If the device does not exist, a magic cookie
+> >>>> is returned which appears to be a valid resources but in fact is
+> >>>> not. So the users of these functions just need to check for an error
+> >>>> code, and fail the probe if present.
+> >>>
+> >>> Agreed.
+> >>>
+> >>> Note that in most (all?) other cases, the return type is a pointer
+> >>> (e.g. to struct clk), and NULL is the magic cookie.
+> >>>
+> >>>> You seems to be suggesting in binary return value: non-zero
+> >>>> (available) or zero (not available)
+> >>>
+> >>> Only in case of success. In case of a real failure, an error code
+> >>> must be returned.
+> >>>
+> >>>> This discards the error code when something goes wrong. That is useful
+> >>>> information to have, so we should not be discarding it.
+> >>>
+> >>> No, the error code must be retained in case of failure.
+> >>>
+> >>>> IRQ don't currently have a magic cookie value. One option would be to
+> >>>> add such a magic cookie to the subsystem. Otherwise, since 0 is
+> >>>> invalid, return 0 to indicate the IRQ does not exist.
+> >>>
+> >>> Exactly. And using 0 means the similar code can be used as for other
+> >>> subsystems, where NULL would be returned.
+> >>>
+> >>> The only remaining difference is the "dummy cookie can be passed
+> >>> to other functions" behavior.  Which is IMHO a valid difference,
+> >>> as unlike with e.g. clk_prepare_enable(), you do pass extra data to
+> >>> request_irq(), and sometimes you do need to handle the absence of
+> >>> the interrupt using e.g. polling.
+> >>>
+> >>>> The request for a script checking this then makes sense. However, i
+> >>>> don't know how well coccinelle/sparse can track values across function
+> >>>> calls. They probably can check for:
+> >>>>
+> >>>>    ret = irq_get_optional()
+> >>>>    if (ret < 0)
+> >>>>       return ret;
+> >>>>
+> >>>> A missing if < 0 statement somewhere later is very likely to be an
+> >>>> error. A comparison of <= 0 is also likely to be an error. A check for
+> >>>>> 0 before calling any other IRQ functions would be good. I'm
+> >>>> surprised such a check does not already existing in the IRQ API, but
+> >>>> there are probably historical reasons for that.
+> >>>
+> >>> There are still a few platforms where IRQ 0 does exist.
+> >>
+> >> Not just a few even.  This happens on a reasonably recent x86 PC:
+> >>
+> >> rafael@gratch:~/work/linux-pm> head -2 /proc/interrupts
+> >>            CPU0       CPU1       CPU2       CPU3       CPU4       CPU5
+> >>   0:         10          0          0          0          0          0
+> >>  IR-IO-APIC    2-edge
+> >> timer
+> >
+> >    IIRC Linus has proclaimed that IRQ0 was valid for the i8253 driver (living in
+> > arch/x86/); IRQ0 only was frowned upon when returned by platform_get_irq() and its
+> > ilk.
+> >
+> > MBR, Sergey
+>
+> Right, platform_get_irq() has this:
+>
+>         WARN(ret == 0, "0 is an invalid IRQ number\n");
+>
+> So given that platform_get_irq() returning 0 is not expected, it seems
+> reasonable for platform_get_irq_optional() to use 0 as a special
+> "no irq available" return value, matching the NULL returned by
+> gpiod_get_optional().
 
-However, for some DSI RX devices (for example, anx7625),
-there is a limitation that packet number should be the same
-on all DSI lanes. In other words, they need to end a HS at
-the same time.
-
-Because this limitation is for some specific DSI RX devices,
-it is more reasonable to put the enable control in these
-DSI RX drivers. If DSI TX driver knows the information,
-they can adjust the setting for this situation.
-
-Therefore, add a flag to control this situation beacuse the
-mipi DSI specification is not forbidden this situation.
-
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
----
- include/drm/drm_mipi_dsi.h | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
-index 147e51b6d241..df4d15345326 100644
---- a/include/drm/drm_mipi_dsi.h
-+++ b/include/drm/drm_mipi_dsi.h
-@@ -177,6 +177,8 @@ struct mipi_dsi_device_info {
-  * @lp_rate: maximum lane frequency for low power mode in hertz, this should
-  * be set to the real limits of the hardware, zero is only accepted for
-  * legacy drivers
-+ * @hs_packet_end_aligned: transfer DSI HS packets ending at the same time
-+ * for all DSI lanes
-  */
- struct mipi_dsi_device {
- 	struct mipi_dsi_host *host;
-@@ -189,6 +191,7 @@ struct mipi_dsi_device {
- 	unsigned long mode_flags;
- 	unsigned long hs_rate;
- 	unsigned long lp_rate;
-+	bool hs_packet_end_aligned;
- };
- 
- #define MIPI_DSI_MODULE_PREFIX "mipi-dsi:"
--- 
-2.18.0
-
+Sounds reasonable to me.
 
 _______________________________________________
 Linux-mediatek mailing list
