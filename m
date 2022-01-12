@@ -4,62 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57C62C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 11:59:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 631EAC4332F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 12:29:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D1J4VhX54r+miDhvGFsU9K624YexLkuU2gBKBEZMvGQ=; b=Zp7kof9gTNyLZq
-	aYtXCLShWyVb6mVWAi5YDz6Lfjc2dTiHturl64IgF7C83qx3eVySR2jaboiogL5vcfz1gcVSR2rM7
-	t1krmgibby9AlcZcNipWmTQWtFytvW8+viOA/Jl6vfRvt+mpCG8xskJA1fT5S+e4dFvME8C2AdY6N
-	G7u4I4yImM8Z93WyKuwBVtNY3lJ08s3j2ndpi16Wbwc5YaIxALSVudaxyC4HYbz64KEdBMuihBO9N
-	4BJam7diLJkRm9FowqPNyAqEuTVC2Tu+fbIjFle0ka0EBRn0gWExlciLOzpxBUAh/Wr1jecjHPHeH
-	byDaWOchCvjX6FRwN1hg==;
+	List-Owner; bh=3KYP5zr2lNX4Ge4qA17i5vo7SCbjTr2QMgXxYufzgNE=; b=AVNrUTY6Rk2k6t
+	FxxoaivarAmtr5Neh6XrIggZvmpxIT478nSBoT2nx7e5fjPp0M33ZwNLlMd0oY1F87eahyvoTPgZ8
+	mXIcMDxqEJqUJr2oIVzIjXIVVF5bvpVP1TpxbGPUd0gZeCT9bY6J1sK2LSVhcgFfybSbvYF2luyp7
+	HEvv82j+NJxObSBsPrgmzg3SWCvBeYKvZZ4Ot6wsxsoJsyFNV/Dcp//ZXPnaNHySUmI35Y3tODr+D
+	JaqeAXDTCaMGPio0S1LP2WYsBC18fRJFh8MP2EiqjE613YGOoqS+4dMM29mkaGIXJa3pxpxwWPsFg
+	z0JNan2xZUterDZAtF1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7cHI-002PfY-4G; Wed, 12 Jan 2022 11:58:56 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n7ckz-002UH9-Hj; Wed, 12 Jan 2022 12:29:37 +0000
+Received: from mga06.intel.com ([134.134.136.31])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7cGO-002PAd-TH; Wed, 12 Jan 2022 11:58:02 +0000
-X-UUID: 95b1ea973a834474a19473d82a3530ea-20220112
-X-UUID: 95b1ea973a834474a19473d82a3530ea-20220112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1905890460; Wed, 12 Jan 2022 04:57:56 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 03:55:48 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 12 Jan 2022 19:55:46 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 12 Jan 2022 19:55:46 +0800
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
- <robh+dt@kernel.org>, <nfraprado@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
- <drinkcat@chromium.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee
- <ryder.lee@kernel.org>, Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v3 4/5] arm64: dts: mediatek: Correct I2C clock of MT8192
-Date: Wed, 12 Jan 2022 19:55:41 +0800
-Message-ID: <20220112115542.10606-5-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220112115542.10606-1-allen-kh.cheng@mediatek.com>
-References: <20220112115542.10606-1-allen-kh.cheng@mediatek.com>
+ id 1n7ckw-002UGQ-72; Wed, 12 Jan 2022 12:29:35 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1641990574; x=1673526574;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=7u2c/+u/7900R51hbSn1pNSHHzU5y3Q///2YVkNposY=;
+ b=j3c7xL3T2Cx1Zsd+ppfFG6/CLjSSvIJEAw4QTVLA6tB2AraYJYhd2MhQ
+ ZzwteHKVxIL0j09G0CGrLjs+Yro29FNWzMSWriqRlEDzj0tuAV+6MAFce
+ FxTZzPfLKL4DYBDV/MG/fFU2d3uqphYsKxOsBZpYCZm676LIkOEOk1zA9
+ GHKd9J8xpYg0QAEoK5ZNSMQlG6vUCblq0FvaR7feDvp7FDMvq+JraGwJw
+ W9CyF2x/uvu0S31lIiDY42CwPpi3G+glyavjQR2Zi03QCWHNKWIQ/lEsp
+ eSrSqKHqfOgdBq6Q9asQ14gg6ZzaY/nwB0wugaZ2F5mzvSs3JUVVIJWL4 Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10224"; a="304460712"
+X-IronPort-AV: E=Sophos;i="5.88,282,1635231600"; d="scan'208";a="304460712"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2022 04:29:31 -0800
+X-IronPort-AV: E=Sophos;i="5.88,282,1635231600"; d="scan'208";a="691367097"
+Received: from smile.fi.intel.com ([10.237.72.61])
+ by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2022 04:29:15 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1n7cjO-009gDi-VM; Wed, 12 Jan 2022 14:27:58 +0200
+Date: Wed, 12 Jan 2022 14:27:58 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Guenter Roeck <groeck@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ linux-phy@lists.infradead.org, Jiri Slaby <jirislaby@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Tony Luck <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ platform-driver-x86@vger.kernel.org,
+ Linux PWM List <linux-pwm@vger.kernel.org>,
+ Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
+ Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Eric Auger <eric.auger@redhat.com>, Takashi Iwai <tiwai@suse.com>,
+ Jaroslav Kysela <perex@perex.cz>, openipmi-developer@lists.sourceforge.net,
+ Benson Leung <bleung@chromium.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-edac@vger.kernel.org, Sergey Shtylyov <s.shtylyov@omp.ru>,
+ Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>,
+ Hans de Goede <hdegoede@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-spi <linux-spi@vger.kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, James Morse <james.morse@arm.com>,
+ Zha Qipeng <qipeng.zha@intel.com>, Sebastian Reichel <sre@kernel.org>,
+ Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+ linux-mediatek@lists.infradead.org,
+ Brian Norris <computersforpeace@gmail.com>, netdev@vger.kernel.org
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+Message-ID: <Yd7JTvfblG0Ge4AN@smile.fi.intel.com>
+References: <20220110195449.12448-1-s.shtylyov@omp.ru>
+ <20220110195449.12448-2-s.shtylyov@omp.ru>
+ <20220110201014.mtajyrfcfznfhyqm@pengutronix.de>
+ <YdyilpjC6rtz6toJ@lunn.ch>
+ <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
 MIME-Version: 1.0
-X-MTK: N
+Content-Disposition: inline
+In-Reply-To: <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_035801_003042_5556897C 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20220112_042934_351989_812E4B1A 
+X-CRM114-Status: GOOD (  39.13  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,94 +134,93 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQWxsZW4tS0ggQ2hlbmcgPEFsbGVuLUtILkNoZW5nQG1lZGlhdGVrLmNvbT4KCldoZW4g
-dGhlIGluaXRpYWwgZGV2aWNldHJlZSBmb3IgbXQ4MTkyIHdhcyBhZGRlZCBpbiA0ODQ4OTk4MGUy
-N2UgKCJhcm02NDoKZHRzOiBBZGQgTWVkaWF0ZWsgU29DIE1UODE5MiBhbmQgZXZhbHVhdGlvbiBi
-b2FyZCBkdHMgYW5kIE1ha2VmaWxlIiksIHRoZQpjbG9jayBkcml2ZXIgZm9yIG10ODE5MiB3YXMg
-bm90IHlldCB1cHN0cmVhbSwgc28gdGhlIGNsb2NrIHByb3BlcnR5IG5vZGVzCndlcmUgc2V0IHRv
-IHRoZSBjbGsyNm0gY2xvY2sgYXMgYSBwbGFjZWhvbGRlci4KCkdpdmVuIHRoYXQgdGhlIGNsb2Nr
-IGRyaXZlciBoYXMgc2luY2UgYmVlbiBhZGRlZCB0aHJvdWdoIDcxMDU3M2RlZTMxYiAoImNsazoK
-bWVkaWF0ZWs6IEFkZCBNVDgxOTIgYmFzaWMgY2xvY2tzIHN1cHBvcnQiKSwgYXMgd2VsbCBhcyBp
-dHMgZHQtYmluZGluZ3MKdGhyb3VnaCBmMzVmMWEyM2UwZTEgKCJjbGs6IG1lZGlhdGVrOiBBZGQg
-ZHQtYmluZGluZ3Mgb2YgTVQ4MTkyIGNsb2NrcyIpIGFuZApkZXZpY2V0cmVlIG5vZGVzIHRocm91
-Z2ggNWQyYjg5N2JjNmY1ICgiYXJtNjQ6IGR0czogbWVkaWF0ZWs6IEFkZCBtdDgxOTIKY2xvY2sg
-Y29udHJvbGxlcnMiKSwgZml4IHRoZSBJMkMgY2xvY2sgcHJvcGVydHkgdG8gcG9pbnQgdG8gdGhl
-IGFjdHVhbApjbG9jay4KClNpZ25lZC1vZmYtYnk6IEFsbGVuLUtIIENoZW5nIDxBbGxlbi1LSC5D
-aGVuZ0BtZWRpYXRlay5jb20+ClJldmlld2VkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8
-bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
-ay9tdDgxOTIuZHRzaSB8IDMwICsrKysrKysrKysrKysrKystLS0tLS0tLQogMSBmaWxlIGNoYW5n
-ZWQsIDIwIGluc2VydGlvbnMoKyksIDEwIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRz
-L21lZGlhdGVrL210ODE5Mi5kdHNpCmluZGV4IDg1ODRhMjA0NDBjNS4uMWViNTg3NGMwOWE5IDEw
-MDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi5kdHNpCisrKyBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kKQEAgLTQ4Niw3ICs0ODYs
-OCBAQAogCQkJcmVnID0gPDAgMHgxMWNiMDAwMCAwIDB4MTAwMD4sCiAJCQkgICAgICA8MCAweDEw
-MjE3MzAwIDAgMHg4MD47CiAJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTE1IElSUV9UWVBFX0xF
-VkVMX0hJR0ggMD47Ci0JCQljbG9ja3MgPSA8JmNsazI2bT4sIDwmY2xrMjZtPjsKKwkJCWNsb2Nr
-cyA9IDwmaW1wX2lpY193cmFwX2UgQ0xLX0lNUF9JSUNfV1JBUF9FX0kyQzM+LAorCQkJCSA8Jmlu
-ZnJhY2ZnIENMS19JTkZSQV9BUF9ETUE+OwogCQkJY2xvY2stbmFtZXMgPSAibWFpbiIsICJkbWEi
-OwogCQkJY2xvY2stZGl2ID0gPDE+OwogCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CkBAIC01MDUs
-NyArNTA2LDggQEAKIAkJCXJlZyA9IDwwIDB4MTFkMDAwMDAgMCAweDEwMDA+LAogCQkJICAgICAg
-PDAgMHgxMDIxNzYwMCAwIDB4MTgwPjsKIAkJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxMTkgSVJR
-X1RZUEVfTEVWRUxfSElHSCAwPjsKLQkJCWNsb2NrcyA9IDwmY2xrMjZtPiwgPCZjbGsyNm0+Owor
-CQkJY2xvY2tzID0gPCZpbXBfaWljX3dyYXBfcyBDTEtfSU1QX0lJQ19XUkFQX1NfSTJDNz4sCisJ
-CQkJIDwmaW5mcmFjZmcgQ0xLX0lORlJBX0FQX0RNQT47CiAJCQljbG9jay1uYW1lcyA9ICJtYWlu
-IiwgImRtYSI7CiAJCQljbG9jay1kaXYgPSA8MT47CiAJCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsK
-QEAgLTUxOCw3ICs1MjAsOCBAQAogCQkJcmVnID0gPDAgMHgxMWQwMTAwMCAwIDB4MTAwMD4sCiAJ
-CQkgICAgICA8MCAweDEwMjE3NzgwIDAgMHgxODA+OwogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJ
-IDEyMCBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+OwotCQkJY2xvY2tzID0gPCZjbGsyNm0+LCA8JmNs
-azI2bT47CisJCQljbG9ja3MgPSA8JmltcF9paWNfd3JhcF9zIENMS19JTVBfSUlDX1dSQVBfU19J
-MkM4PiwKKwkJCQkgPCZpbmZyYWNmZyBDTEtfSU5GUkFfQVBfRE1BPjsKIAkJCWNsb2NrLW5hbWVz
-ID0gIm1haW4iLCAiZG1hIjsKIAkJCWNsb2NrLWRpdiA9IDwxPjsKIAkJCSNhZGRyZXNzLWNlbGxz
-ID0gPDE+OwpAQCAtNTMxLDcgKzUzNCw4IEBACiAJCQlyZWcgPSA8MCAweDExZDAyMDAwIDAgMHgx
-MDAwPiwKIAkJCSAgICAgIDwwIDB4MTAyMTc5MDAgMCAweDE4MD47CiAJCQlpbnRlcnJ1cHRzID0g
-PEdJQ19TUEkgMTIxIElSUV9UWVBFX0xFVkVMX0hJR0ggMD47Ci0JCQljbG9ja3MgPSA8JmNsazI2
-bT4sIDwmY2xrMjZtPjsKKwkJCWNsb2NrcyA9IDwmaW1wX2lpY193cmFwX3MgQ0xLX0lNUF9JSUNf
-V1JBUF9TX0kyQzk+LAorCQkJCSA8JmluZnJhY2ZnIENMS19JTkZSQV9BUF9ETUE+OwogCQkJY2xv
-Y2stbmFtZXMgPSAibWFpbiIsICJkbWEiOwogCQkJY2xvY2stZGl2ID0gPDE+OwogCQkJI2FkZHJl
-c3MtY2VsbHMgPSA8MT47CkBAIC01NTAsNyArNTU0LDggQEAKIAkJCXJlZyA9IDwwIDB4MTFkMjAw
-MDAgMCAweDEwMDA+LAogCQkJICAgICAgPDAgMHgxMDIxNzEwMCAwIDB4ODA+OwogCQkJaW50ZXJy
-dXB0cyA9IDxHSUNfU1BJIDExMyBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+OwotCQkJY2xvY2tzID0g
-PCZjbGsyNm0+LCA8JmNsazI2bT47CisJCQljbG9ja3MgPSA8JmltcF9paWNfd3JhcF93cyBDTEtf
-SU1QX0lJQ19XUkFQX1dTX0kyQzE+LAorCQkJCSA8JmluZnJhY2ZnIENMS19JTkZSQV9BUF9ETUE+
-OwogCQkJY2xvY2stbmFtZXMgPSAibWFpbiIsICJkbWEiOwogCQkJY2xvY2stZGl2ID0gPDE+Owog
-CQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CkBAIC01NjMsNyArNTY4LDggQEAKIAkJCXJlZyA9IDww
-IDB4MTFkMjEwMDAgMCAweDEwMDA+LAogCQkJICAgICAgPDAgMHgxMDIxNzE4MCAwIDB4MTgwPjsK
-IAkJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxMTQgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKLQkJ
-CWNsb2NrcyA9IDwmY2xrMjZtPiwgPCZjbGsyNm0+OworCQkJY2xvY2tzID0gPCZpbXBfaWljX3dy
-YXBfd3MgQ0xLX0lNUF9JSUNfV1JBUF9XU19JMkMyPiwKKwkJCQkgPCZpbmZyYWNmZyBDTEtfSU5G
-UkFfQVBfRE1BPjsKIAkJCWNsb2NrLW5hbWVzID0gIm1haW4iLCAiZG1hIjsKIAkJCWNsb2NrLWRp
-diA9IDwxPjsKIAkJCSNhZGRyZXNzLWNlbGxzID0gPDE+OwpAQCAtNTc2LDcgKzU4Miw4IEBACiAJ
-CQlyZWcgPSA8MCAweDExZDIyMDAwIDAgMHgxMDAwPiwKIAkJCSAgICAgIDwwIDB4MTAyMTczODAg
-MCAweDE4MD47CiAJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTE2IElSUV9UWVBFX0xFVkVMX0hJ
-R0ggMD47Ci0JCQljbG9ja3MgPSA8JmNsazI2bT4sIDwmY2xrMjZtPjsKKwkJCWNsb2NrcyA9IDwm
-aW1wX2lpY193cmFwX3dzIENMS19JTVBfSUlDX1dSQVBfV1NfSTJDND4sCisJCQkJIDwmaW5mcmFj
-ZmcgQ0xLX0lORlJBX0FQX0RNQT47CiAJCQljbG9jay1uYW1lcyA9ICJtYWluIiwgImRtYSI7CiAJ
-CQljbG9jay1kaXYgPSA8MT47CiAJCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKQEAgLTU5NSw3ICs2
-MDIsOCBAQAogCQkJcmVnID0gPDAgMHgxMWUwMDAwMCAwIDB4MTAwMD4sCiAJCQkgICAgICA8MCAw
-eDEwMjE3NTAwIDAgMHg4MD47CiAJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTE3IElSUV9UWVBF
-X0xFVkVMX0hJR0ggMD47Ci0JCQljbG9ja3MgPSA8JmNsazI2bT4sIDwmY2xrMjZtPjsKKwkJCWNs
-b2NrcyA9IDwmaW1wX2lpY193cmFwX3cgQ0xLX0lNUF9JSUNfV1JBUF9XX0kyQzU+LAorCQkJCSA8
-JmluZnJhY2ZnIENMS19JTkZSQV9BUF9ETUE+OwogCQkJY2xvY2stbmFtZXMgPSAibWFpbiIsICJk
-bWEiOwogCQkJY2xvY2stZGl2ID0gPDE+OwogCQkJI2FkZHJlc3MtY2VsbHMgPSA8MT47CkBAIC02
-MTQsNyArNjIyLDggQEAKIAkJCXJlZyA9IDwwIDB4MTFmMDAwMDAgMCAweDEwMDA+LAogCQkJICAg
-ICAgPDAgMHgxMDIxNzA4MCAwIDB4ODA+OwogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDExMiBJ
-UlFfVFlQRV9MRVZFTF9ISUdIIDA+OwotCQkJY2xvY2tzID0gPCZjbGsyNm0+LCA8JmNsazI2bT47
-CisJCQljbG9ja3MgPSA8JmltcF9paWNfd3JhcF9uIENMS19JTVBfSUlDX1dSQVBfTl9JMkMwPiwK
-KwkJCQkgPCZpbmZyYWNmZyBDTEtfSU5GUkFfQVBfRE1BPjsKIAkJCWNsb2NrLW5hbWVzID0gIm1h
-aW4iLCAiZG1hIjsKIAkJCWNsb2NrLWRpdiA9IDwxPjsKIAkJCSNhZGRyZXNzLWNlbGxzID0gPDE+
-OwpAQCAtNjI3LDcgKzYzNiw4IEBACiAJCQlyZWcgPSA8MCAweDExZjAxMDAwIDAgMHgxMDAwPiwK
-IAkJCSAgICAgIDwwIDB4MTAyMTc1ODAgMCAweDgwPjsKIAkJCWludGVycnVwdHMgPSA8R0lDX1NQ
-SSAxMTggSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKLQkJCWNsb2NrcyA9IDwmY2xrMjZtPiwgPCZj
-bGsyNm0+OworCQkJY2xvY2tzID0gPCZpbXBfaWljX3dyYXBfbiBDTEtfSU1QX0lJQ19XUkFQX05f
-STJDNj4sCisJCQkJIDwmaW5mcmFjZmcgQ0xLX0lORlJBX0FQX0RNQT47CiAJCQljbG9jay1uYW1l
-cyA9ICJtYWluIiwgImRtYSI7CiAJCQljbG9jay1kaXYgPSA8MT47CiAJCQkjYWRkcmVzcy1jZWxs
-cyA9IDwxPjsKLS0gCjIuMTguMAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0Bs
-aXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlz
-dGluZm8vbGludXgtbWVkaWF0ZWsK
+On Wed, Jan 12, 2022 at 11:27:02AM +0100, Geert Uytterhoeven wrote:
+> On Wed, Jan 12, 2022 at 9:51 AM Uwe Kleine-K=F6nig
+> <u.kleine-koenig@pengutronix.de> wrote:
+> > On Wed, Jan 12, 2022 at 09:33:48AM +0100, Geert Uytterhoeven wrote:
+> > > On Mon, Jan 10, 2022 at 10:20 PM Andrew Lunn <andrew@lunn.ch> wrote:
+> > > > On Mon, Jan 10, 2022 at 09:10:14PM +0100, Uwe Kleine-K=F6nig wrote:
+> > > > > On Mon, Jan 10, 2022 at 10:54:48PM +0300, Sergey Shtylyov wrote:
+> > > > > > This patch is based on the former Andy Shevchenko's patch:
+> > > > > >
+> > > > > > https://lore.kernel.org/lkml/20210331144526.19439-1-andriy.shev=
+chenko@linux.intel.com/
+> > > > > >
+> > > > > > Currently platform_get_irq_optional() returns an error code eve=
+n if IRQ
+> > > > > > resource simply has not been found. It prevents the callers fro=
+m being
+> > > > > > error code agnostic in their error handling:
+> > > > > >
+> > > > > >     ret =3D platform_get_irq_optional(...);
+> > > > > >     if (ret < 0 && ret !=3D -ENXIO)
+> > > > > >             return ret; // respect deferred probe
+> > > > > >     if (ret > 0)
+> > > > > >             ...we get an IRQ...
+> > > > > >
+> > > > > > All other *_optional() APIs seem to return 0 or NULL in case an=
+ optional
+> > > > > > resource is not available. Let's follow this good example, so t=
+hat the
+> > > > > > callers would look like:
+> > > > > >
+> > > > > >     ret =3D platform_get_irq_optional(...);
+> > > > > >     if (ret < 0)
+> > > > > >             return ret;
+> > > > > >     if (ret > 0)
+> > > > > >             ...we get an IRQ...
+> > > > >
+> > > > > The difference to gpiod_get_optional (and most other *_optional) =
+is that
+> > > > > you can use the NULL value as if it were a valid GPIO.
+> > > > >
+> > > > > As this isn't given with for irqs, I don't think changing the ret=
+urn
+> > > > > value has much sense.
+> > > >
+> > > > We actually want platform_get_irq_optional() to look different to a=
+ll
+> > > > the other _optional() methods because it is not equivalent. If it
+> > > > looks the same, developers will assume it is the same, and get
+> > > > themselves into trouble.
+> > >
+> > > Developers already assume it is the same, and thus forget they have
+> > > to check against -ENXIO instead of zero.
+> >
+> > Is this an ack for renaming platform_get_irq_optional() to
+> > platform_get_irq_silent()?
+> =
+
+> No it isn't ;-)
+> =
+
+> If an optional IRQ is not present, drivers either just ignore it (e.g.
+> for devices that can have multiple interrupts or a single muxed IRQ),
+> or they have to resort to polling. For the latter, fall-back handling
+> is needed elsewhere in the driver.
+> To me it sounds much more logical for the driver to check if an
+> optional irq is non-zero (available) or zero (not available), than to
+> sprinkle around checks for -ENXIO. In addition, you have to remember
+> that this one returns -ENXIO, while other APIs use -ENOENT or -ENOSYS
+> (or some other error code) to indicate absence. I thought not having
+> to care about the actual error code was the main reason behind the
+> introduction of the *_optional() APIs.
+
+For the record, I'm on the same page with Geert.
+
+-- =
+
+With Best Regards,
+Andy Shevchenko
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
