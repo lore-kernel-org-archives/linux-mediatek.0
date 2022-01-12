@@ -4,65 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFA81C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 11:30:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0D0EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 11:30:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=OUL3DMbqIwZ3Esw1U2bKgv3JTP4Xx00jq6GqEHs7Wgo=; b=SrJ37H6sniqk42
-	7HDao2LeCUGdwgFrZc+KabxV7ixeNsiza+e2mGWTx1sgy98ibMhv9+7UxE85pjM9ayIoRif4oC/qE
-	/GNbIGXsQMhoDnIAj/AATEN6J0s8bdCGUA4QLy+jNLUpLB7XCEDRAjPw1sf+gizuuXe3lPC34gIVI
-	MAlUoAu809TnGoDrDL+6icPe197cEhZiTO+PX8K+EWNJfKiBtEA8i4Il3n9bsb5iPb6/M9nvMZ32N
-	6YcNBWB4aFugzmy986X8+XcX4Z6Y6Zes1KXDUqTnhdwRYwhQELxeXXvqdMdnap2ConsfJqn8AW4qX
-	xc3zRLMhryEWZ0M3cBtw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=SaAsL4m9ZOJFfoz58yL2kDi2L4a4IdEE2oHWxSbXYvE=; b=3HlW2xjABgNi7M
+	ixDZRFwD+gIgv93b9k31x8/8UgpFhvqs8684QEgtlE3AVjC6ZzaBhEH3sF3NCv8Iy02G9NLordd9Z
+	YtZxWvE3xj2PlYsvEcv9ULP+63nvNTkN+QHJEHvGu59fp7wtHhERjLvYjfSq3U/NrvG/3Vtd7HOiZ
+	JYGxRgmGt80I8GXj1Gn5ffW0MIHxWZ6p0AXXxl0HNaiytXEjfkCqDEzBSmfUUw7/NXzi/VdffZrje
+	x3JVTN6gpb4F3H+gtNkB2qjytYTzPxW74wydfL9A7U9fJwkobdtXxDMI05F61HgEpD+2DkFzHM/Gc
+	CZMnSWtqiB4L+Sv5+ZYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7bpU-002HMJ-In; Wed, 12 Jan 2022 11:30:12 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n7bpw-002HVf-D1; Wed, 12 Jan 2022 11:30:40 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7bpP-002HKo-LY; Wed, 12 Jan 2022 11:30:10 +0000
-X-UUID: da09e1fbb28843349c356078893d2c04-20220112
-X-UUID: da09e1fbb28843349c356078893d2c04-20220112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ id 1n7bpt-002HTG-RD; Wed, 12 Jan 2022 11:30:39 +0000
+X-UUID: 032ed38d0e54467a9e5cc67fb6514670-20220112
+X-UUID: 032ed38d0e54467a9e5cc67fb6514670-20220112
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1916535374; Wed, 12 Jan 2022 04:29:59 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 03:29:57 -0800
+ with ESMTP id 738034011; Wed, 12 Jan 2022 04:30:31 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 03:30:29 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Wed, 12 Jan 2022 19:29:56 +0800
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Wed, 12 Jan 2022 19:30:27 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Wed, 12 Jan 2022 19:29:56 +0800
+ Frontend Transport; Wed, 12 Jan 2022 19:30:27 +0800
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-CC: Kevin Hilman <khilman@baylibre.com>, Linux-ALSA
- <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
+To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
  <cujomalainey@google.com>, Pierre-Louis Bossart
  <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
  Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
+ Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+ <tiwai@suse.com>, Kevin Hilman <khilman@baylibre.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
  <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH] firmware: mediatek: add adsp ipc protocol interface
-Date: Wed, 12 Jan 2022 19:29:54 +0800
-Message-ID: <20220112112954.27128-1-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v11 2/2] mailbox: mediatek: add support for adsp mailbox
+ controller
+Date: Wed, 12 Jan 2022 19:30:24 +0800
+Message-ID: <20220112113024.27448-3-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220112113024.27448-1-allen-kh.cheng@mediatek.com>
+References: <20220112113024.27448-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_033007_773240_6AAAFB93 
-X-CRM114-Status: GOOD (  26.64  )
+X-CRM114-CacheID: sfid-20220112_033037_919121_AB0FE0B8 
+X-CRM114-Status: GOOD (  22.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,293 +85,231 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-Some of mediatek processors contain
-the Tensilica HiFix DSP for audio processing.
-
-The communication between Host CPU and DSP firmware is
-taking place using a shared memory area for message passing.
-
-ADSP IPC protocol offers (send/recv) interfaces using
-mediatek-mailbox APIs.
-
-We use two mbox channels to implement a request-reply protocol.
+This patch is to for MediaTek ADSP IPC mailbox controller driver
+It is used to send short messages between processors with adsp
 
 Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 ---
- drivers/firmware/Kconfig                      |   1 +
- drivers/firmware/Makefile                     |   1 +
- drivers/firmware/mediatek/Kconfig             |   9 ++
- drivers/firmware/mediatek/Makefile            |   2 +
- drivers/firmware/mediatek/mtk-adsp-ipc.c      | 137 ++++++++++++++++++
- .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++++
- 6 files changed, 215 insertions(+)
- create mode 100644 drivers/firmware/mediatek/Kconfig
- create mode 100644 drivers/firmware/mediatek/Makefile
- create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
- create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
+ drivers/mailbox/Kconfig            |   7 ++
+ drivers/mailbox/Makefile           |   2 +
+ drivers/mailbox/mtk-adsp-mailbox.c | 176 +++++++++++++++++++++++++++++
+ 3 files changed, 185 insertions(+)
+ create mode 100644 drivers/mailbox/mtk-adsp-mailbox.c
 
-diff --git a/drivers/firmware/Kconfig b/drivers/firmware/Kconfig
-index 75cb91055c17..f3578c60cff0 100644
---- a/drivers/firmware/Kconfig
-+++ b/drivers/firmware/Kconfig
-@@ -299,6 +299,7 @@ source "drivers/firmware/cirrus/Kconfig"
- source "drivers/firmware/google/Kconfig"
- source "drivers/firmware/efi/Kconfig"
- source "drivers/firmware/imx/Kconfig"
-+source "drivers/firmware/mediatek/Kconfig"
- source "drivers/firmware/meson/Kconfig"
- source "drivers/firmware/psci/Kconfig"
- source "drivers/firmware/smccc/Kconfig"
-diff --git a/drivers/firmware/Makefile b/drivers/firmware/Makefile
-index 4e58cb474a68..88fbdc110100 100644
---- a/drivers/firmware/Makefile
-+++ b/drivers/firmware/Makefile
-@@ -34,6 +34,7 @@ obj-$(CONFIG_GOOGLE_FIRMWARE)	+= google/
- obj-$(CONFIG_EFI)		+= efi/
- obj-$(CONFIG_UEFI_CPER)		+= efi/
- obj-y				+= imx/
-+obj-y				+= mediatek/
- obj-y				+= psci/
- obj-y				+= smccc/
- obj-y				+= tegra/
-diff --git a/drivers/firmware/mediatek/Kconfig b/drivers/firmware/mediatek/Kconfig
-new file mode 100644
-index 000000000000..6d1e580b967b
---- /dev/null
-+++ b/drivers/firmware/mediatek/Kconfig
-@@ -0,0 +1,9 @@
-+# SPDX-License-Identifier: GPL-2.0-only
-+config MTK_ADSP_IPC
-+	tristate "MTK ADSP IPC Protocol driver"
-+	depends on MTK_ADSP_MBOX
+diff --git a/drivers/mailbox/Kconfig b/drivers/mailbox/Kconfig
+index d9cd3606040e..3e5bb745437d 100644
+--- a/drivers/mailbox/Kconfig
++++ b/drivers/mailbox/Kconfig
+@@ -238,6 +238,13 @@ config STM32_IPCC
+ 	  with hardware for Inter-Processor Communication Controller (IPCC)
+ 	  between processors. Say Y here if you want to have this support.
+ 
++config MTK_ADSP_MBOX
++	tristate "MediaTek ADSP Mailbox Controller"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
 +	help
-+	  Say yes here to add support for the MediaTek ADSP IPC
-+	  between host AP (Linux) and the firmware running on ADSP.
-+	  ADSP exists on some mtk processors.
-+	  Client might use shared memory to exchange information with ADSP side.
-diff --git a/drivers/firmware/mediatek/Makefile b/drivers/firmware/mediatek/Makefile
++	  Say yes here to add support for MediaTek ADSP mailbox controller
++	  driver. It is used to send short messages between processors with dsp.
++
+ config MTK_CMDQ_MBOX
+ 	tristate "MediaTek CMDQ Mailbox Support"
+ 	depends on ARCH_MEDIATEK || COMPILE_TEST
+diff --git a/drivers/mailbox/Makefile b/drivers/mailbox/Makefile
+index 338cc05e5431..fc9376117111 100644
+--- a/drivers/mailbox/Makefile
++++ b/drivers/mailbox/Makefile
+@@ -49,6 +49,8 @@ obj-$(CONFIG_TEGRA_HSP_MBOX)	+= tegra-hsp.o
+ 
+ obj-$(CONFIG_STM32_IPCC) 	+= stm32-ipcc.o
+ 
++obj-$(CONFIG_MTK_ADSP_MBOX)	+= mtk-adsp-mailbox.o
++
+ obj-$(CONFIG_MTK_CMDQ_MBOX)	+= mtk-cmdq-mailbox.o
+ 
+ obj-$(CONFIG_ZYNQMP_IPI_MBOX)	+= zynqmp-ipi-mailbox.o
+diff --git a/drivers/mailbox/mtk-adsp-mailbox.c b/drivers/mailbox/mtk-adsp-mailbox.c
 new file mode 100644
-index 000000000000..4e840b65650d
+index 000000000000..b8174f155f8d
 --- /dev/null
-+++ b/drivers/firmware/mediatek/Makefile
-@@ -0,0 +1,2 @@
-+# SPDX-License-Identifier: GPL-2.0
-+obj-$(CONFIG_MTK_ADSP_IPC)		+= mtk-adsp-ipc.o
-diff --git a/drivers/firmware/mediatek/mtk-adsp-ipc.c b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-new file mode 100644
-index 000000000000..b45f16cec063
---- /dev/null
-+++ b/drivers/firmware/mediatek/mtk-adsp-ipc.c
-@@ -0,0 +1,137 @@
++++ b/drivers/mailbox/mtk-adsp-mailbox.c
+@@ -0,0 +1,176 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
-+ * Copyright (c) 2022 MediaTek Corporation. All rights reserved.
++ * Copyright (c) 2021 MediaTek Corporation. All rights reserved.
 + * Author: Allen-KH Cheng <allen-kh.cheng@mediatek.com>
 + */
 +
-+#include <linux/firmware/mediatek/mtk-adsp-ipc.h>
++#include <linux/interrupt.h>
++#include <linux/io.h>
++#include <linux/iopoll.h>
 +#include <linux/kernel.h>
-+#include <linux/mailbox_client.h>
++#include <linux/mailbox_controller.h>
 +#include <linux/module.h>
-+#include <linux/of_platform.h>
-+#include <linux/platform_device.h>
++#include <linux/of_device.h>
 +#include <linux/slab.h>
 +
-+int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx, uint32_t msg)
++struct mtk_adsp_mbox_priv {
++	struct device *dev;
++	struct mbox_controller mbox;
++	void __iomem *va_mboxreg;
++	const struct mtk_adsp_mbox_cfg *cfg;
++};
++
++struct mtk_adsp_mbox_cfg {
++	u32 set_in;
++	u32 set_out;
++	u32 clr_in;
++	u32 clr_out;
++};
++
++static struct mtk_adsp_mbox_priv *get_mtk_adsp_mbox_priv(struct mbox_controller *mbox)
 +{
-+	struct mtk_adsp_chan *dsp_chan;
-+	int ret;
++	return container_of(mbox, struct mtk_adsp_mbox_priv, mbox);
++}
 +
-+	if (idx >= MTK_ADSP_MBOX_NUM)
++static irqreturn_t mtk_adsp_mbox_irq(int irq, void *data)
++{
++	struct mbox_chan *chan = data;
++	struct mtk_adsp_mbox_priv *priv = get_mtk_adsp_mbox_priv(chan->mbox);
++	u32 op = readl(priv->va_mboxreg + priv->cfg->set_out);
++
++	writel(op, priv->va_mboxreg + priv->cfg->clr_out);
++
++	return IRQ_WAKE_THREAD;
++}
++
++static irqreturn_t mtk_adsp_mbox_isr(int irq, void *data)
++{
++	struct mbox_chan *chan = data;
++
++	mbox_chan_received_data(chan, NULL);
++
++	return IRQ_HANDLED;
++}
++
++static struct mbox_chan *mtk_adsp_mbox_xlate(struct mbox_controller *mbox,
++					     const struct of_phandle_args *sp)
++{
++	return &mbox->chans[sp->args[0]];
++}
++
++static int mtk_adsp_mbox_startup(struct mbox_chan *chan)
++{
++	struct mtk_adsp_mbox_priv *priv = get_mtk_adsp_mbox_priv(chan->mbox);
++
++	/* Clear DSP mbox command */
++	writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_in);
++	writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_out);
++
++	return 0;
++}
++
++static void mtk_adsp_mbox_shutdown(struct mbox_chan *chan)
++{
++	struct mtk_adsp_mbox_priv *priv = get_mtk_adsp_mbox_priv(chan->mbox);
++
++	/* Clear DSP mbox command */
++	writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_in);
++	writel(0xFFFFFFFF, priv->va_mboxreg + priv->cfg->clr_out);
++}
++
++static int mtk_adsp_mbox_send_data(struct mbox_chan *chan, void *data)
++{
++	struct mtk_adsp_mbox_priv *priv = get_mtk_adsp_mbox_priv(chan->mbox);
++	u32 *msg = data;
++
++	writel(*msg, priv->va_mboxreg + priv->cfg->set_in);
++
++	return 0;
++}
++
++static bool mtk_adsp_mbox_last_tx_done(struct mbox_chan *chan)
++{
++	struct mtk_adsp_mbox_priv *priv = get_mtk_adsp_mbox_priv(chan->mbox);
++
++	return readl(priv->va_mboxreg + priv->cfg->set_in) == 0;
++}
++
++static const struct mbox_chan_ops mtk_adsp_mbox_chan_ops = {
++	.send_data	= mtk_adsp_mbox_send_data,
++	.startup	= mtk_adsp_mbox_startup,
++	.shutdown	= mtk_adsp_mbox_shutdown,
++	.last_tx_done	= mtk_adsp_mbox_last_tx_done,
++};
++
++static int mtk_adsp_mbox_probe(struct platform_device *pdev)
++{
++	struct device *dev = &pdev->dev;
++	struct mtk_adsp_mbox_priv *priv;
++	const struct mtk_adsp_mbox_cfg *cfg;
++	struct mbox_controller *mbox;
++	int ret, irq;
++
++	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
++	if (!priv)
++		return -ENOMEM;
++
++	mbox = &priv->mbox;
++	mbox->dev = dev;
++	mbox->ops = &mtk_adsp_mbox_chan_ops;
++	mbox->txdone_irq = false;
++	mbox->txdone_poll = true;
++	mbox->of_xlate = mtk_adsp_mbox_xlate;
++	mbox->num_chans = 1;
++	mbox->chans = devm_kzalloc(dev, sizeof(*mbox->chans), GFP_KERNEL);
++	if (!mbox->chans)
++		return -ENOMEM;
++
++	priv->va_mboxreg = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(priv->va_mboxreg))
++		return PTR_ERR(priv->va_mboxreg);
++
++	cfg = of_device_get_match_data(dev);
++	if (!cfg)
 +		return -EINVAL;
++	priv->cfg = cfg;
 +
-+	dsp_chan = &ipc->chans[idx];
-+	ret = mbox_send_message(dsp_chan->ch, &msg);
++	irq = platform_get_irq(pdev, 0);
++	if (irq < 0)
++		return irq;
++
++	ret = devm_request_threaded_irq(dev, irq, mtk_adsp_mbox_irq,
++					mtk_adsp_mbox_isr, IRQF_TRIGGER_NONE,
++					dev_name(dev), mbox->chans);
 +	if (ret < 0)
 +		return ret;
 +
-+	return 0;
-+}
-+EXPORT_SYMBOL(mtk_adsp_ipc_send);
++	platform_set_drvdata(pdev, priv);
 +
-+static void mtk_adsp_ipc_recv(struct mbox_client *c, void *msg)
-+{
-+	struct mtk_adsp_chan *chan = container_of(c, struct mtk_adsp_chan, cl);
-+	struct device *dev = c->dev;
-+
-+	switch (chan->idx) {
-+	case MTK_ADSP_MBOX_REPLY:
-+		chan->ipc->ops->handle_reply(chan->ipc);
-+		break;
-+	case MTK_ADSP_MBOX_REQUEST:
-+		chan->ipc->ops->handle_request(chan->ipc);
-+		break;
-+	default:
-+		dev_err(dev, "Wrong mbox chan %d \n", chan->idx);
-+		break;
-+	}
++	return devm_mbox_controller_register(dev, &priv->mbox);
 +}
 +
-+static int mtk_adsp_ipc_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_adsp_ipc *dsp_ipc;
-+	struct mtk_adsp_chan *dsp_chan;
-+	struct mbox_client *cl;
-+	char *chan_name;
-+	int ret;
-+	int i, j;
++static const struct mtk_adsp_mbox_cfg mt8195_adsp_mbox_cfg = {
++	.set_in		= 0x00,
++	.set_out	= 0x1c,
++	.clr_in		= 0x04,
++	.clr_out	= 0x20,
++};
 +
-+	device_set_of_node_from_dev(&pdev->dev, pdev->dev.parent);
++static const struct of_device_id mtk_adsp_mbox_of_match[] = {
++	{ .compatible = "mediatek,mt8195-adsp-mbox", .data = &mt8195_adsp_mbox_cfg },
++	{},
++};
++MODULE_DEVICE_TABLE(of, mtk_adsp_mbox_of_match);
 +
-+	dsp_ipc = devm_kzalloc(dev, sizeof(*dsp_ipc), GFP_KERNEL);
-+	if (!dsp_ipc)
-+		return -ENOMEM;
-+
-+	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-+		chan_name = kasprintf(GFP_KERNEL, "mbox%d", i);
-+		if (!chan_name) {
-+			ret = -ENOMEM;
-+			goto out;
-+		}
-+
-+		dsp_chan = &dsp_ipc->chans[i];
-+		cl = &dsp_chan->cl;
-+		cl->dev = dev->parent;
-+		cl->tx_block = false;
-+		cl->knows_txdone = false;
-+		cl->tx_prepare = NULL;
-+		cl->rx_callback = mtk_adsp_ipc_recv;
-+
-+		dsp_chan->ipc = dsp_ipc;
-+		dsp_chan->idx = i;
-+		dsp_chan->ch = mbox_request_channel_byname(cl, chan_name);
-+		if (IS_ERR(dsp_chan->ch)) {
-+			ret = PTR_ERR(dsp_chan->ch);
-+			if (ret != -EPROBE_DEFER)
-+				dev_err(dev, "Failed to request mbox chan %d ret %d\n",
-+					i, ret);
-+			goto out;
-+		}
-+
-+		dev_dbg(dev, "request mbox chan %s\n", chan_name);
-+		kfree(chan_name);
-+	}
-+
-+	dsp_ipc->dev = dev;
-+	dev_set_drvdata(dev, dsp_ipc);
-+	dev_dbg(dev, "MTK ADSP IPC initialized\n");
-+
-+	return 0;
-+
-+out:
-+	kfree(chan_name);
-+	for (j = 0; j < i; j++) {
-+		dsp_chan = &dsp_ipc->chans[j];
-+		mbox_free_channel(dsp_chan->ch);
-+	}
-+
-+	return ret;
-+}
-+
-+static int mtk_adsp_ipc_remove(struct platform_device *pdev)
-+{
-+	struct mtk_adsp_ipc *dsp_ipc = dev_get_drvdata(&pdev->dev);
-+	struct mtk_adsp_chan *dsp_chan;
-+	int i;
-+
-+	for (i = 0; i < MTK_ADSP_MBOX_NUM; i++) {
-+		dsp_chan = &dsp_ipc->chans[i];
-+		mbox_free_channel(dsp_chan->ch);
-+	}
-+
-+	return 0;
-+}
-+
-+static struct platform_driver mtk_adsp_ipc_driver = {
++static struct platform_driver mtk_adsp_mbox_driver = {
++	.probe		= mtk_adsp_mbox_probe,
 +	.driver = {
-+		.name = "mtk-adsp-ipc",
++		.name	= "mtk_adsp_mbox",
++		.of_match_table = mtk_adsp_mbox_of_match,
 +	},
-+	.probe = mtk_adsp_ipc_probe,
-+	.remove = mtk_adsp_ipc_remove,
 +};
-+builtin_platform_driver(mtk_adsp_ipc_driver);
++module_platform_driver(mtk_adsp_mbox_driver);
 +
-+MODULE_AUTHOR("Allen-KH Cheng <allen-kh.cheng@mediatek.com>");
-+MODULE_DESCRIPTION("MTK ADSP IPC Driver");
++MODULE_AUTHOR("Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>");
++MODULE_DESCRIPTION("MTK ADSP Mailbox Controller");
 +MODULE_LICENSE("GPL v2");
-diff --git a/include/linux/firmware/mediatek/mtk-adsp-ipc.h b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
-new file mode 100644
-index 000000000000..08e3c7d3b405
---- /dev/null
-+++ b/include/linux/firmware/mediatek/mtk-adsp-ipc.h
-@@ -0,0 +1,65 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/*
-+ * Copyright (c) 2021 MediaTek Inc.
-+ */
-+
-+#ifndef MTK_ADSP_IPC_H
-+#define MTK_ADSP_IPC_H
-+
-+#include <linux/device.h>
-+#include <linux/types.h>
-+#include <linux/mailbox_controller.h>
-+#include <linux/mailbox_client.h>
-+
-+#define MTK_ADSP_IPC_REQ 0
-+#define MTK_ADSP_IPC_RSP 1
-+#define MTK_ADSP_IPC_OP_REQ 0x1
-+#define MTK_ADSP_IPC_OP_RSP 0x2
-+
-+enum {
-+	MTK_ADSP_MBOX_REPLY,
-+	MTK_ADSP_MBOX_REQUEST,
-+	MTK_ADSP_MBOX_NUM,
-+};
-+
-+struct mtk_adsp_ipc;
-+
-+struct mtk_adsp_ipc_ops {
-+	void (*handle_reply)(struct mtk_adsp_ipc *ipc);
-+	void (*handle_request)(struct mtk_adsp_ipc *ipc);
-+};
-+
-+struct mtk_adsp_chan {
-+	struct mtk_adsp_ipc *ipc;
-+	struct mbox_client cl;
-+	struct mbox_chan *ch;
-+	char *name;
-+	int idx;
-+};
-+
-+struct mtk_adsp_ipc {
-+	struct mtk_adsp_chan chans[MTK_ADSP_MBOX_NUM];
-+	struct device *dev;
-+	struct mtk_adsp_ipc_ops *ops;
-+	void *private_data;
-+};
-+
-+static inline void mtk_adsp_ipc_set_data(struct mtk_adsp_ipc *ipc, void *data)
-+{
-+	if (!ipc)
-+		return;
-+
-+	ipc->private_data = data;
-+}
-+
-+static inline void *mtk_adsp_ipc_get_data(struct mtk_adsp_ipc *ipc)
-+{
-+	if (!ipc)
-+		return NULL;
-+
-+	return ipc->private_data;
-+}
-+
-+int mtk_adsp_ipc_send(struct mtk_adsp_ipc *ipc, unsigned int idx, uint32_t op);
-+
-+#endif /* MTK_ADSP_IPC_H */
 -- 
 2.18.0
 
