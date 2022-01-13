@@ -4,74 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC78C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 06:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60FFBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 06:36:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=J1+HVcU8UYDJIyhshsuylSZ6dMTL78PKsZk3eM+FFJk=; b=gMGblTLpkwXuTC
-	ATTtf+W/jj4sWg46whIFbbLn5UvnGYfUS8PENzE+fib5fYfbbR6bPnFeLplaGUQaKdxCqX2j1hUiH
-	poCHmF9Ph3yx9Lk05ZGsZX5RAJco+2kdPBbhBaAnLwZDZjSaQk6QATzeoa1lBXbiRH/9TOoB0iX0O
-	1N143maOPdnL4FIGST8BxZd3Hm0K/5XC3i38n+DQqxIZXpobYVgEggCbvEZOXMomT0cPorpm/GWHg
-	r79oV1M7OEi4/0ronoqfRMIBytqK/nr7oMZsOcJg1q/dD9KDrOEMg0Mf2EAFElNsfV60tvk+eQ/fo
-	PtVqLrTMZhr3whlTNgBQ==;
+	List-Owner; bh=gV/aAcKH1pV6WNW6QPABu0v4hcH62qo2F46nTVqHGhw=; b=cBDKa7rLMpdtNy
+	ycTaedQrV3LBe2F0QUq+Qag1oJujrBoq1wSTqYJMn0ZAb//h2Qy4V/u2pJnZ2Spcd8MPESmEH3/HD
+	iraQJcLuizsUN2MbANpNiNOBhxbBff7GNklriLZtuSFx60yYGCCV1A9yUdL05XxHqUSLYCnRDTdDJ
+	pHWq9FYr25skYwwbgnkdOOGhKpB1Q6YGsUxfou30JYiWYNz6b9tDiiFw1OxCsoOtFlwgWHFatVD9y
+	QoWWyTle97XnoVqqh18cM+oWYZWat3zu/iNwLV8k4yAX3Ty5icdYYaR/O/xt+G51ty0gb4oBhnbdF
+	JhiPtTaYW2dyHIV/8Vtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7tFo-004lym-I2; Thu, 13 Jan 2022 06:06:32 +0000
+	id 1n7tiq-004pPK-Jg; Thu, 13 Jan 2022 06:36:32 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7tFm-004lvu-67; Thu, 13 Jan 2022 06:06:31 +0000
-X-UUID: d63d6242a4eb43158f6d3db2756e254e-20220112
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=2Sy4hTg/M9n1zs5XJPrRvs8QK/b/lz4vRiW0yqoizuU=; 
- b=jfDW376IuGxfaSnc1+JglzDrIMt93ru6NXG4uzwvdJdFzfX0aDafB9XX8Pzb7i79UgBbdmCZIfEcNkCQ1FsBbPxczwGOGG1u/wpZWJGslxRKKP9ZAiILfJEhZeFdu8ScqMfytKz+9QZIq+5+wMvDcNGvXijMN1MhCOECKjiw0tE=;
-X-UUID: d63d6242a4eb43158f6d3db2756e254e-20220112
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <yong.wu@mediatek.com>)
+ id 1n7tif-004pOn-5q; Thu, 13 Jan 2022 06:36:22 +0000
+X-UUID: 0e77111760d44e0cbe5c38d8f665fd67-20220112
+X-UUID: 0e77111760d44e0cbe5c38d8f665fd67-20220112
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 314976407; Wed, 12 Jan 2022 23:06:25 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 22:06:23 -0800
+ with ESMTP id 372125185; Wed, 12 Jan 2022 23:36:19 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 22:36:17 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 13 Jan 2022 14:06:21 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Thu, 13 Jan 2022 14:36:16 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Jan 2022 14:06:20 +0800
-Message-ID: <1eb2bc6432aa5a1c0371542457a86764df77153b.camel@mediatek.com>
-Subject: Re: [PATCH v2 2/6] dt-bindings: memory: mtk-smi: Fix the larb
- clock/clock-names dtbs warning
-From: Yong Wu <yong.wu@mediatek.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, Rob Herring
- <robh+dt@kernel.org>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Krzysztof Kozlowski
- <krzk@kernel.org>, Joerg Roedel <joro@8bytes.org>, Will Deacon
- <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Tomasz Figa
- <tfiga@chromium.org>, <linux-mediatek@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <iommu@lists.linux-foundation.org>, <youlin.pei@mediatek.com>,
- <anan.sun@mediatek.com>, <lc.kan@mediatek.com>, <yi.kuo@mediatek.com>,
- <anthony.huang@mediatek.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Date: Thu, 13 Jan 2022 14:06:20 +0800
-In-Reply-To: <b8b8fe77-2ea8-d05c-5fa2-d4cae01baba5@canonical.com>
-References: <20220111063904.7583-1-yong.wu@mediatek.com>
- <20220111063904.7583-3-yong.wu@mediatek.com>
- <b8b8fe77-2ea8-d05c-5fa2-d4cae01baba5@canonical.com>
+ Transport; Thu, 13 Jan 2022 14:36:15 +0800
+Message-ID: <6598ee7223a429d40e9a2f833a189f6d9592f04e.camel@mediatek.com>
+Subject: Re: [PATCH v3 0/5] Update MT8192 Clock Setting
+From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
+ <robh+dt@kernel.org>, <nfraprado@collabora.com>
+CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
+ <chun-jie.chen@mediatek.com>, <devicetree@vger.kernel.org>,
+ <drinkcat@chromium.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+ <srv_heupstream@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee
+ <ryder.lee@kernel.org>
+Date: Thu, 13 Jan 2022 14:36:16 +0800
+In-Reply-To: <d36d276a-c3be-431b-3636-c313cabda3d4@gmail.com>
+References: <20220112115542.10606-1-allen-kh.cheng@mediatek.com>
+ <d36d276a-c3be-431b-3636-c313cabda3d4@gmail.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_220630_272736_581D83F5 
-X-CRM114-Status: GOOD (  24.57  )
+X-CRM114-CacheID: sfid-20220112_223621_258138_1D230A7D 
+X-CRM114-Status: GOOD (  19.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,87 +77,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-01-12 at 11:18 +0100, Krzysztof Kozlowski wrote:
-> On 11/01/2022 07:39, Yong Wu wrote:
-> > Mute the warning from "make dtbs_check":
-> > 
-> > larb@14017000: clock-names: ['apb', 'smi'] is too short
-> > 	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-
-> > burnet.dt.yaml
-> > 	...
-> > 
-> > larb@16010000: clock-names: ['apb', 'smi'] is too short
-> > 	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-
-> > burnet.dt.yaml
-> > 
-> > larb@17010000: clock-names: ['apb', 'smi'] is too short
-> > 	arch/arm64/boot/dts/mediatek/mt8183-evb.dt.yaml
-> > 	arch/arm64/boot/dts/mediatek/mt8183-kukui-jacuzzi-
-> > burnet.dt.yaml
-> > 
-> > If a platform's larb supports gals, there will be some larbs have
-> > one
-> > more "gals" clock while the others still only need "apb"/"smi"
-> > clocks,
-> > then the minItems for clock and clock-names are 2.
-> > 
-> > Fixes: 27bb0e42855a ("dt-bindings: memory: mediatek: Convert SMI to
-> > DT schema")
-> > Signed-off-by: Yong Wu <yong.wu@mediatek.com>
-> > ---
-> >  .../bindings/memory-controllers/mediatek,smi-larb.yaml      | 6
-> > +++---
-> >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > 
-> > diff --git a/Documentation/devicetree/bindings/memory-
-> > controllers/mediatek,smi-larb.yaml
-> > b/Documentation/devicetree/bindings/memory-
-> > controllers/mediatek,smi-larb.yaml
-> > index 80907e357892..884c0c74e5e4 100644
-> > --- a/Documentation/devicetree/bindings/memory-
-> > controllers/mediatek,smi-larb.yaml
-> > +++ b/Documentation/devicetree/bindings/memory-
-> > controllers/mediatek,smi-larb.yaml
-> > @@ -80,10 +80,10 @@ allOf:
-> >      then:
-> >        properties:
-> >          clock:
+On Wed, 2022-01-12 at 17:51 +0100, Matthias Brugger wrote:
 > 
-> Separate patch:
-> This should be clocks. The same in second if. Now it is simply not
-> working...
+> On 12/01/2022 12:55, allen-kh.cheng wrote:
+> > From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+> > 
+> > This patch is base on v5.16-rc8,
+> > series "Mediatek MT8192 clock support"[1], [2] annd [3].
+> > [1] 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/list/?series=521127__;!!CTRNKA9wMg0ARbw!y4P6pz_u9M3axQ-m02SGlirjXL2ZKklxIqILLsUy4wXY9bVdhpSWqgRL0Me352sLvBo6xw$
+> >  
+> > [2] 
+> > https://urldefense.com/v3/__https://patchwork.kernel.org/project/linux-mediatek/patch/20210727023205.20319-2-chun-jie.chen@mediatek.com/__;!!CTRNKA9wMg0ARbw!y4P6pz_u9M3axQ-m02SGlirjXL2ZKklxIqILLsUy4wXY9bVdhpSWqgRL0Me352vbYrxOog$
+> >  
+> > [3] 
+> > https://urldefense.com/v3/__https://lore.kernel.org/all/20210825011120.30481-1-chun-jie.chen@mediatek.com/__;!!CTRNKA9wMg0ARbw!y4P6pz_u9M3axQ-m02SGlirjXL2ZKklxIqILLsUy4wXY9bVdhpSWqgRL0Me352sfbDoBBA$
+> >  
 > 
-> > -          items:
+> Please update that list to only who the patches that are not yet
+> upstream. That 
+> will help me to understand if I can take them right now or if we have
+> to wait 
+> for something to get applied first.
 > 
-> Putting min/maxItems under items is wrong. The second if also needs
-> the
-> fixing. Please make it a separate patch before this one.
+> Thanks,
+> Matthias
 
-Oh. I will use a new patch for renaming "clock" to "clocks" and
-removing the "items".
+Hi Matthias,
+
+There is no patches we need to wait related to this serial.
+
+I will update the list in next version.
 
 Thanks.
 
 > 
-> The schema was clearly not tested before...
-> 
-> 
-> > -            minItems: 3
-> > -            maxItems: 3
-> > +          minItems: 2
-> > +          maxItems: 3
-> >          clock-names:
-> > +          minItems: 2
-> >            items:
-> >              - const: apb
-> >              - const: smi
 > > 
-> 
-> 
-> Best regards,
-> Krzysztof
+> > changes since v2:
+> >   - add missing "clock" at the end of commit message
+> > 
+> > changes since v1:
+> >   - update the commit message
+> > 
+> > Allen-KH Cheng (5):
+> >    arm64: dts: mediatek: Correct uart clock of MT8192
+> >    arm64: dts: mediatek: Correct SPI clock of MT8192
+> >    arm64: dts: mediatek: Correct Nor Flash clock of MT8192
+> >    arm64: dts: mediatek: Correct I2C clock of MT8192
+> >    arm64: dts: mediatek: Correct system timer clock of MT8192
+> > 
+> >   arch/arm64/boot/dts/mediatek/mt8192.dtsi | 92 +++++++++++++----
+> > -------
+> >   1 file changed, 52 insertions(+), 40 deletions(-)
+> > 
+
+
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
