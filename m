@@ -4,67 +4,122 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAAC8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 13:56:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E59CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 14:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3tg9QZl4FdlWxdk7tGwb1Gt+IXszHrOnabdo2VqKF+g=; b=GCHDGLMEmMyLpFoC1e7fRjqy6k
-	RvpgE25qNNpIRIzCVqDlVXKVpTLgauwfNlGKtCPYv4P0WUTbcHZhpQl03Mk3X3jWto0z7enUQnu6b
-	QCMo2aXlLY9Lw5idafYRxQOHRmQ+SNq46Tzo36FQ0RYSywRI/lWSB3D2SUwqqjzZYfdaUOpUULQkO
-	ZQxNRMg6U5wwWbTZv5TFz1idzTjpI9Y0jeHLsR06znpZ/3sqZUSYygT1B65/Pzz4wPaSbiUhVTLdV
-	h5SDEVhmMW3zoOAxfmte8xeBJ2iq8Y6KdFLJQX+VsUdl4l+CHk0C9JstkeHOyf1S8ybB3PJPZ1pOZ
-	sZQgI2yA==;
+	bh=IS9uyq8MQAvWWOAN2el3ydAZ/QLVy7QbODhdBRHxDSc=; b=PPC++WfKMfKU8L71I6EvPdTrwI
+	hZL+MXqg6k0xq97PxKsY2KUmH/f/Nt84SW6URZeXRofCLJw07Yd3H4+QGEGBk2KfTyM277zdY5sfN
+	VoyyEXiU/ypK8740N/8UEUhoPlmKdpy0jMKViqDNjzEmexT9jaYTlgdxXjI8jjr72s/czTGtcWWoO
+	JGOb33oCm9SpSHZuhzbJh8JMbe+ey29xPNOa7A8/wkNYZZefTX2gdZjGp+exhoCQ918HUjUb4YX/A
+	Eg0GJik9UMmNpx7bUK1y7SWBk0HuoF7L4MRMFjvQ6FnqpljhJN6gEaci0jpHCRCeMpRpI8xKlusEA
+	TvVl70qw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n80a0-006BcO-Sh; Thu, 13 Jan 2022 13:55:52 +0000
+	id 1n81MQ-006GQE-Uc; Thu, 13 Jan 2022 14:45:54 +0000
 Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n80Zy-006BbM-Gu
- for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 13:55:51 +0000
+ id 1n81MN-006GOd-Ct; Thu, 13 Jan 2022 14:45:52 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id BC4B5B821C2;
- Thu, 13 Jan 2022 13:55:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE1CBC36AE3;
- Thu, 13 Jan 2022 13:55:46 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id E19ACB822A0;
+ Thu, 13 Jan 2022 14:45:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AA3CC36AEB;
+ Thu, 13 Jan 2022 14:45:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642082147;
- bh=0yi7miC80eJvdinhs4soCLQBE+jBvBlyWx4ILlEeeWE=;
+ s=k20201202; t=1642085148;
+ bh=qGUpScSrM6PHOQ9896+ovOSrylwTkuQlIpt7KlyEp5s=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=EKR7zTs1UbVjV6WgKd8Pdgo1Gaxb8V6w+tZTFqHaSXQGZeYBwBnDtdREShXrd6+1J
- qryYtFba27ZDpbTdjqdUZD083OhCfDDqHe1HsXt9v/c+IsDbH+y4sUJDINmyO1v/CM
- +TXYRQrHahmrwVUS5IVxVV1C0DOh9LP6S5MkTG2bh6Pm9qbeECJ38zRYhqFBvtyx1H
- tiQvrQI0Lrpfla/nqSwZUqFIFkHUMozyF0+34j/BeCkkN2Y62FRx9fZj8LJYwOngyE
- +0aHAtWItLffWjoFXNqPGpzpEb3F9xvDDfj7RrK3D5+lzYUUHDC65C6ftRfmzQ8G6O
- la4xCymo5Dndg==
-Date: Thu, 13 Jan 2022 14:55:43 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Bo Jiao <bo.jiao@mediatek.com>
-Subject: Re: [PATCH v2 3/5] mt76: mt7915: add support for MT7986
-Message-ID: <YeAvXzG6ueZWxoGa@lore-desk>
-References: <cover.1641901681.git.Bo.Jiao@mediatek.com>
- <8b2098132192c0381e41ac78a47b7318d5c28b04.1641901681.git.Bo.Jiao@mediatek.com>
- <Yd7ZKb7Qsh4lGA5E@lore-desk>
- <2ab2731dc44494dbfe89363638cdcaf49351afbe.camel@mediatek.com>
- <Yd/8mXumr25iESux@lore-desk>
+ b=rIF3lS/tm9sqFT+BginWJM2+mt1t0i+1rbRTwFGO/b5RO54FFqysidEmT2WSnXujo
+ cGDZLPUBbnFnBovZVRCzJE12OIxe0UaqPbmDiXkUfgTiIFTn2YGRAzH3LqjFaP+tZD
+ stowk5nOSDH2HzMR+0nMTCmGiZrfOpEXlbtFzEEyyHKSnxaKn6wp5i+0CBOwWaYud8
+ h6IHjIqf66cMB/zCEPF7AQwqZAp9MkoApoumfwu6VFfqqNiQcfv/H1IDJvKTA9xbou
+ r4uQpom3hKk5szByYDLACU4vgN5e9UWDsM5Igx38QRWaZyToUoz1pHBLnnGGGgQZOi
+ t54X3kfj11igw==
+Date: Thu, 13 Jan 2022 14:45:30 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ linux-phy@lists.infradead.org, Jiri Slaby <jirislaby@kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Kamal Dasu <kdasu.kdev@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Zhang Rui <rui.zhang@intel.com>, platform-driver-x86@vger.kernel.org,
+ Linux PWM List <linux-pwm@vger.kernel.org>,
+ Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
+ Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ John Garry <john.garry@huawei.com>, Takashi Iwai <tiwai@suse.com>,
+ Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Sergey Shtylyov <s.shtylyov@omp.ru>, Borislav Petkov <bp@alien8.de>,
+ Eric Auger <eric.auger@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ openipmi-developer@lists.sourceforge.net,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Benson Leung <bleung@chromium.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
+ Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ netdev@vger.kernel.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>,
+ linux-spi <linux-spi@vger.kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, James Morse <james.morse@arm.com>,
+ Zha Qipeng <qipeng.zha@intel.com>, Sebastian Reichel <sre@kernel.org>,
+ Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+ linux-mediatek@lists.infradead.org,
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+Message-ID: <YeA7CjOyJFkpuhz/@sirena.org.uk>
+References: <20220110195449.12448-1-s.shtylyov@omp.ru>
+ <20220110195449.12448-2-s.shtylyov@omp.ru>
+ <20220110201014.mtajyrfcfznfhyqm@pengutronix.de>
+ <YdyilpjC6rtz6toJ@lunn.ch>
+ <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <Yd/8mXumr25iESux@lore-desk>
+In-Reply-To: <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
+X-Cookie: Slow day.  Practice crawling.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_055550_751329_96BEC008 
-X-CRM114-Status: GOOD (  24.14  )
+X-CRM114-CacheID: sfid-20220113_064551_745961_5C5F4457 
+X-CRM114-Status: GOOD (  23.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,89 +131,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4153764074252695685=="
+Content-Type: multipart/mixed; boundary="===============2005456800547166789=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---===============4153764074252695685==
+--===============2005456800547166789==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="deosE2qSAUpl8QTU"
+	protocol="application/pgp-signature"; boundary="W6TsDGUCC61npB/4"
 Content-Disposition: inline
 
 
---deosE2qSAUpl8QTU
-Content-Type: text/plain; charset=us-ascii
+--W6TsDGUCC61npB/4
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> > On Wed, 2022-01-12 at 14:35 +0100, Lorenzo Bianconi wrote:
-> > > >=20
-> > > > @@ -302,6 +316,15 @@ struct mt7915_dev {
-> > > >  		u8 table_mask;
-> > > >  		u8 n_agrt;
-> > > >  	} twt;
-> > > > +
-> > > > +	struct reset_control *rstc;
-> > > > +	void __iomem *dcm;
-> > > > +	void __iomem *sku;
-> > > > +
-> > > > +	struct {
-> > > > +		bool is_7975;
-> > > > +		bool is_7976;
-> > > > +	} adie[MT7986_MAX_ADIE_NUM];
-> > >=20
-> > > do we really need it? Can we just read data from chip when necessary?
-> > > it is not
-> > > access in the hot-path, right?
-> > > I think it is easier and more readable.
-> >=20
-> > Adie registers are inaccessible after wfsys power on so we need some
-> > places to store chip configuration.
-> > We will modify it to make it more readable.
-> > + u32 adie;
->=20
-> what I mean is just continue reading these values after the first time (t=
-hat is
-> in common for both approaches).
+On Thu, Jan 13, 2022 at 12:08:31PM +0100, Uwe Kleine-K=F6nig wrote:
 
-ok, sorry I misread your reply. Anyway it seems to me we need these values =
-just
-in mt7986_wmac_enable() (or in routines called by mt7986_wmac_enable). Righ=
-t?
-If so maybe we can just store them in a local struct in mt7986_wmac_enable(=
-).
-What do you think?
+> This is all very unfortunate. In my eyes b) is the most sensible
+> sense, but the past showed that we don't agree here. (The most annoying
+> part of regulator_get is the warning that is emitted that regularily
+> makes customers ask what happens here and if this is fixable.)
 
-Regards,
-Lorenzo
+Fortunately it can be fixed, and it's safer to clearly specify things.
+The prints are there because when the description is wrong enough to
+cause things to blow up we can fail to boot or run messily and
+forgetting to describe some supplies (or typoing so they haven't done
+that) and people were having a hard time figuring out what might've
+happened.
 
->=20
-> Regards,
-> Lorenzo
->=20
-> >=20
-> > thanks,
-> > Peter
-> >=20
+> I think at least c) is easy to resolve because
+> platform_get_irq_optional() isn't that old yet and mechanically
+> replacing it by platform_get_irq_silent() should be easy and safe.
+> And this is orthogonal to the discussion if -ENOXIO is a sensible return
+> value and if it's as easy as it could be to work with errors on irq
+> lookups.
 
+It'd certainly be good to name anything that doesn't correspond to one
+of the existing semantics for the API (!) something different rather
+than adding yet another potentially overloaded meaning.
 
-
---deosE2qSAUpl8QTU
+--W6TsDGUCC61npB/4
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYeAvXwAKCRA6cBh0uS2t
-rGbtAQDszbOeIxttHkVRqWbN0gIDFX47nidjwe49+fUAMinPyAD/RspZ1yRoxMxk
-O7mDViAVXOkX/CzjlfI3W738AK/nYAA=
-=4ixS
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHgOwoACgkQJNaLcl1U
+h9DB2wf+MsmuWAbFkx7w6dSqBFg+5BMfRX917lHiCsn2CYARHwyaPL5M5EVrbehK
+70/euCaJWItviAfkx+6AAOYCmbHs8mt+zpvgLriDTnZOumRiZfiGXMZHt85uxFOg
++CON0NcPugM2d7SZyRdxLTQBcBJt3wzMoV71nZv43fG+BMfssZy/ADYB75p648wU
+r7n86P+i3Kh+8hkINY1UdrfNXf7GkWehj0fZhkQ6PO+sH6jH8JFft+mMsKvTkCfp
+th2g66aUCkHb8ML7wNc5DEOQZlW9A7QyBKZpFWcduJs7uD92dqsoRJ7ch05zM3z/
+HtLt6l6YJ3XD702pvFQA2C4cb/OGkA==
+=d1L9
 -----END PGP SIGNATURE-----
 
---deosE2qSAUpl8QTU--
+--W6TsDGUCC61npB/4--
 
 
---===============4153764074252695685==
+--===============2005456800547166789==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -169,5 +201,5 @@ Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
 
---===============4153764074252695685==--
+--===============2005456800547166789==--
 
