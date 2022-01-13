@@ -4,66 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EFDFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 22:44:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D976DC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 22:45:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4bPepXpOmR6P6tM0x7Z52LO5P8jhCt9kXHHjIumJ8SU=; b=gRFXIIy9oQDerL
-	g55PUHpN0wZJPpMYnzaTIgzPLj8dT8nCgpd4JMj2EiAHc28o9dF50QXH5mnpDpw1tyEYUXRELbEI2
-	aqa97HdHof380DA1FfCB7iKKBQIrcQtXWesinX0vTM3QJkd36QiO52T4mBkiueTIHoGgIK+JB7tAz
-	HGVUMyKii90sXfS5F62n1IpoYiw8otPMoBRTaRYAl2tp4EMAaBj9av/qCZrW1Kss0hAEJ2jxwb0Fe
-	q0ZLPx1YeauDpGz6vPokXuFdUj0M731X6Xam0Q8fTL2wVfDoarDOnP3xToL7Y8FZCcZ/brG5PVDbG
-	rBSiGIqFZ7NXMjE/HTeg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=77+ZxFQaHMKvL5p8BEiws6LVigLp5uhO6+VEB2R2D3U=; b=XIxeNkDFC24Yg9GysRyEq2kcaC
+	LJttOyHdBjaEIR/fMtCfJ8PfgM7GC1Z4sqJehLCtmT9DbsnjuguFTzIhqXaX3u9k5Ij+J0Laj307O
+	CaKXlDz66c4GfL/7o+YZJxr9TOlmUPNcnF1ww05xN/Y4oNGyusYqkOlZYRhks1qRxTuCX7Vr0v3Us
+	FZPR2YNk1pYBBolIJe3VmzLjiHHOTqFmxJOSA6THRjvhkRSqbGZjRJXJVBFy7GPheMwsKYJVlPVBj
+	8h+U3W6igU/qRwD50KiDlqYMy2r38FQtC1Yy+5bfQZIr6WCYLFvDu7PMZ3SWIR0iOuXrU5DWIqoxN
+	uMWb1cRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n88p8-007ENX-Ot; Thu, 13 Jan 2022 22:44:02 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n88qI-007EX7-Dt; Thu, 13 Jan 2022 22:45:14 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n88p3-007EN5-8s
- for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 22:44:01 +0000
-X-UUID: c199958fd67a482a8b98b07b028299ef-20220113
-X-UUID: c199958fd67a482a8b98b07b028299ef-20220113
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
- (envelope-from <sean.wang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1666054791; Thu, 13 Jan 2022 15:43:55 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Jan 2022 14:43:53 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Fri, 14 Jan 2022 06:43:39 +0800
-Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 14 Jan 2022 06:43:39 +0800
-From: <sean.wang@mediatek.com>
-To: <lorenzo.bianconi@redhat.com>
-CC: <nbd@nbd.name>, <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
- <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
- <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
- <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
- <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
- <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
- <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
- <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
- <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
- <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 2/3] mt76: sdio: honor the largest Tx buffer the hardware
- can support
-Date: Fri, 14 Jan 2022 06:43:38 +0800
-Message-ID: <1642113818-9675-1-git-send-email-sean.wang@mediatek.com>
-X-Mailer: git-send-email 1.7.9.5
-In-Reply-To: <Yd/sYYP1XJ3J8RuR@lore-desk--annotate>
-References: <Yd/sYYP1XJ3J8RuR@lore-desk--annotate>
+ id 1n88q4-007EUf-DR
+ for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 22:45:02 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1n88oe-0007pY-PW; Thu, 13 Jan 2022 23:43:32 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1n88oS-00A973-DR; Thu, 13 Jan 2022 23:43:19 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1n88oR-0000VL-8T; Thu, 13 Jan 2022 23:43:19 +0100
+Date: Thu, 13 Jan 2022 23:43:19 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: Mark Brown <broonie@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+ linux-spi <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Zhang Rui <rui.zhang@intel.com>, platform-driver-x86@vger.kernel.org,
+ Linux PWM List <linux-pwm@vger.kernel.org>,
+ Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
+ Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ John Garry <john.garry@huawei.com>, Takashi Iwai <tiwai@suse.com>,
+ Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Borislav Petkov <bp@alien8.de>, Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ openipmi-developer@lists.sourceforge.net,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Benson Leung <bleung@chromium.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
+ Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, James Morse <james.morse@arm.com>,
+ Zha Qipeng <qipeng.zha@intel.com>, Sebastian Reichel <sre@kernel.org>,
+ Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+ linux-mediatek@lists.infradead.org,
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH] driver core: platform: Rename
+ platform_get_irq_optional() to platform_get_irq_silent()
+Message-ID: <20220113224319.akljsjtu7ps75vun@pengutronix.de>
+References: <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
+ <YeA7CjOyJFkpuhz/@sirena.org.uk>
+ <20220113194358.xnnbhsoyetihterb@pengutronix.de>
+ <YeCI47ltlWzjzjYy@sirena.org.uk>
+ <1df04d74-8aa2-11f1-54e9-34d0e8f4e58b@omp.ru>
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <1df04d74-8aa2-11f1-54e9-34d0e8f4e58b@omp.ru>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_144357_345843_3B8AC68F 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20220113_144500_627777_DB010607 
+X-CRM114-Status: GOOD (  30.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,59 +133,107 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2057822823457123174=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Sean Wang <sean.wang@mediatek.com>
 
-<snip>
->> @@ -299,6 +301,17 @@ int mt76s_hw_init(struct mt76_dev *dev, struct
->> sdio_func *func, int hw_ver)  }  EXPORT_SYMBOL_GPL(mt76s_hw_init);
->>
->> +u32 mt76s_get_xmit_buf_sz(struct mt76_dev *dev, u32 dev_max_len) {
->> +	struct sdio_func *func = dev->sdio.func;
->> +	u32 host_max_len = min_t(u32, func->card->host->max_req_size,
->> +				 func->cur_blksize *
->> +				 func->card->host->max_blk_count);
->> +
->> +	return min_t(u32, host_max_len, dev_max_len); }
->> +EXPORT_SYMBOL_GPL(mt76s_get_xmit_buf_sz);
->
->I think we can squash this patch with the previous one and move the code above in mt76s_init(). Agree?
+--===============2057822823457123174==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="7tuoe52njhyotvsc"
+Content-Disposition: inline
 
-these comments you have in the patchset all look fine to me, I will post v2 soon.
 
-	Sean
->
->Regards,
->Lorenzo
->
->> +
->>  int mt76s_alloc_rx_queue(struct mt76_dev *dev, enum mt76_rxq_id qid)
->> {
->>	struct mt76_queue *q = &dev->q_rx[qid]; diff --git
->> a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> index a04cd2444247..9fcf507e09bd 100644
->> --- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> +++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
->> @@ -254,7 +254,7 @@ static int mt76s_tx_run_queue(struct mt76_dev *dev, struct mt76_queue *q)
->>		}
->>
->>		pad = roundup(e->skb->len, 4) - e->skb->len;
->> -		if (len + e->skb->len + pad + 4 > MT76S_XMIT_BUF_SZ)
->> +		if (len + e->skb->len + pad + 4 > dev->sdio.xmit_buf_sz)
->>			break;
->>
->>		if (mt76s_tx_pick_quota(sdio, mcu, e->buf_sz, &pse_sz,
->> --
->> 2.25.1
->>
->
+--7tuoe52njhyotvsc
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Jan 13, 2022 at 11:57:43PM +0300, Sergey Shtylyov wrote:
+> On 1/13/22 11:17 PM, Mark Brown wrote:
+>=20
+> >> The subsystems regulator, clk and gpio have the concept of a dummy
+> >> resource. For regulator, clk and gpio there is a semantic difference
+> >> between the regular _get() function and the _get_optional() variant.
+> >> (One might return the dummy resource, the other won't. Unfortunately
+> >> which one implements which isn't the same for these three.) The
+> >> difference between platform_get_irq() and platform_get_irq_optional() =
+is
+> >> only that the former might emit an error message and the later won't.
+>=20
+>    This is only a current difference but I'm still going to return 0 ISO
+> -ENXIO from latform_get_irq_optional(), no way I'd leave that -ENXIO there
+> alone... :-)
+
+This would address a bit of the critic in my commit log. But as 0 isn't
+a dummy value like the dummy values that exist for clk, gpiod and
+regulator I still think that the naming is a bad idea because it's not
+in the spirit of the other *_get_optional functions.
+
+Seeing you say that -ENXIO is a bad return value for
+platform_get_irq_optional() and 0 should be used instead, I wonder why
+not changing platform_get_irq() to return 0 instead of -ENXIO, too.
+This question is for now only about a sensible semantic. That actually
+changing platform_get_irq() is probably harder than changing
+platform_get_irq_optional() is a different story.
+
+If only platform_get_irq_optional() is changed and given that the
+callers have to do something like:
+
+	if (this_irq_exists()):
+		... (e.g. request_irq)
+	else:
+		... (e.g. setup polling)
+
+I really think it's a bad idea that this_irq_exists() has to be
+different for platform_get_irq() vs. platform_get_irq_optional().
+
+> > Reviewed-by: Mark Brown <broonie@kernel.org>
+>=20
+>    Hm... I'm seeing a tag bit not seeing the patch itself...
+
+See https://lore.kernel.org/all/20220113194358.xnnbhsoyetihterb@pengutronix=
+=2Ede/
+
+This is just a tree-wide
+s/platform_get_irq_optional/platform_get_irq_silent/ + a macro to not
+break callers of platform_get_irq_optional().
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--7tuoe52njhyotvsc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHgqwMACgkQwfwUeK3K
+7AlyrggAnnNuI35GvxF5VtWAxjQVEMBwQAZzFN2zmbCN56PVqEEi+hrB3o4qCrg5
+RVngj3mJZBBvnB/EPzv0cg7FWq2/jPiopb8JGnPMf2HyN6pE6vQRw/vgdCAw1tSa
+Z1uE/p+FA63qrrD0UrCjr+6bQaobnf20ljmXq6EmZ6oPXvcQLnTureudQD0YJdII
+xZcTKIPC5wH7+yFedZzk1AovNre37jVzG74IzyB6Bbk4Jl22v8GJ8Nq3VUP7x2jE
+Ps6AsNLRubU3vuJ1T43P8/yY0B7PRiyRHvXS+N/qCCf44UuRmpvKziXUP2vnspWR
+9RIT5bkqqtknA+dRrLt/xWijFiViOQ==
+=EM1y
+-----END PGP SIGNATURE-----
+
+--7tuoe52njhyotvsc--
+
+
+--===============2057822823457123174==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============2057822823457123174==--
+
