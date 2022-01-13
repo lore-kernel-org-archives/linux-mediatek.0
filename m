@@ -4,44 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB7B8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:12:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E9FDC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:16:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
-	Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OA3IB5yFlikcp0VyekH0qLKCs5QZUKDG+G2LR0o7M1w=; b=gAcUX/u5qro8VS0orI6700liVI
-	mxe1DMUrONFrOSt39poBxNDond/u7JCjjxU50Edio4ts/CyKpkARxvBu1qgjew8Axaodw4Lk1eD/s
-	d+16QuGk6qOJE2ffbUlUHydVronvIBERMLo7zvUJiOFmt2S+6sLxfqOYzwQzrAFTQerOiexZdj2lo
-	2Izf6omgNlDpBRcEGWnVQnPyGvYLRkTmSZ56yPjin2EBywtvhrhwk1unHXN8efnpAhXOwoLKHL6eq
-	UTeAfDgunVFdIeSX2KgLldJOtVhkzJQ8dCnChq2rQV3uL8+MElPx6Tc6TBfY2EEGly08ZglLtT8pc
-	z7h+XFxw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qcpGPtXzw29rxM1+0BgBIVqFKlQ5wBr/eM3iVN1PNrE=; b=uPle5/ySl9dTUB
+	IFpevh1lPUcKHMJFkm9mPy3nnE4YdtF9gVTqza8q1tokdhriAoOGeI4/1/DAefx9HtvLR6DaTTLUd
+	W3dFKHuj3f5oBxEuX6BD+ID/LypJpHwoL4VxS2jmBxg5ns9hKf0Xa1RTxwUiOsQRf5GudQJnIzzgr
+	PzyOs1LmTMFmZxSwaaX5/pGsFhsec/JP3iErCrZ/8x/4d2Uqc9m+xRxE+P5G1HNYXR3PYfE5Dt9Sa
+	lvct37z08m5GoR0648sdTXIofMgiabiki6N0qFbKiUviBhEGl8fdZqXzaijjUfS8FyzrZAWapxxxq
+	M4YjTPV/BS1SKWbsGGNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7x5J-005OaT-Pz; Thu, 13 Jan 2022 10:11:57 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1n7x9N-005PG4-9a; Thu, 13 Jan 2022 10:16:09 +0000
+Received: from ewsoutbound.kpnmail.nl ([195.121.94.167])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7x57-005OXx-VI; Thu, 13 Jan 2022 10:11:47 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id E4E661F4585E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642068704;
- bh=D/XYC6ZGl5zYQW2bPb5HgmDBOTYg/Taj7564Kp6Xo1w=;
- h=Subject:From:To:Cc:References:Date:In-Reply-To:From;
- b=mE4sw4YvYqPtPCeGgdYDQbOGYr1D0sRwnP4JUyOyjhZj86DL2KdqFn53kzdPhLzVf
- Bw1VvaPOhimlqvAni2KTggbrrVF2tMVgZUYZ8GT3HumFLMHl/swIw8OEmuB63xYT9D
- ry4EVMAhrR1d8HMl2egIRfzRMjosarxVeMM5DKaB83CPATfsl/FDKcekgbGiXopEIL
- MnHuCbLxWgj6rZKBy6qsMzCkq0MxYh4lCNn7zCBOc/+l8UBmSPACrlbKg9pzt44nrH
- jFeTmjYUIPMAWJwQeXwYslmZrcg0H+P/WZvI2jlUHmT8gdPkXem6ziG4wdUDcl9DH5
- E8ZqIX9/NoQSw==
+ id 1n7x99-005PDB-IN
+ for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 10:15:57 +0000
+X-KPN-MessageId: b2220258-7459-11ec-9a2e-005056abbe64
+Received: from smtp.kpnmail.nl (unknown [10.31.155.37])
+ by ewsoutbound.so.kpn.org (Halon) with ESMTPS
+ id b2220258-7459-11ec-9a2e-005056abbe64;
+ Thu, 13 Jan 2022 11:15:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=xs4all01;
+ h=content-type:from:to:subject:mime-version:date:message-id;
+ bh=gDVXsjFxRvpjVOimhsqczbSYEgs92OjIY8q3HQ0xZLo=;
+ b=HBr/18+Ajg3wdobbfWiqxNHvlD5i0q1fqXDA/Hd6sXbGh1VIvyCHpK08n/9w1Gb+CSo6G3/2+QYgh
+ 6D7DjgaCmpgmWNmn42nFiXcnqeWwFneTX2hFv5YkafeaAN8dL5/bS7kJYqwLF8oFL5LOH/DYFC2Xaw
+ z5khnE9cYoIjJOWI43E5RtaLFz99+hrR107PUMVKQcoBO0na3FMPXEDUkQMcWIBcGs658HYp913aLt
+ m6IiJ6/e/+N1z5xEO4Xds2vDDKkwI7t77pHPUpFWQ7yyyhuh9s9mbSvIdLJyIvhMqWnqKIHrw38aaX
+ rjz44ENw3ycdGfIor0BEqqupi6EIUCw==
+X-KPN-VerifiedSender: Yes
+X-CMASSUN: 33|E3dVle7ORv8LVtMgyR7kL3/O5bzeh7Y0MMGEunRsfjRJEHWcSAEdfVoLox9zTgP
+ iTmLz1DX0F5kFZJzXWyZNow==
+X-Originating-IP: 193.91.129.219
+Received: from [192.168.2.10] (cdb815bc1.dhcp.as2116.net [193.91.129.219])
+ by smtp.xs4all.nl (Halon) with ESMTPSA
+ id c77cf44a-7459-11ec-83ab-005056ab1411;
+ Thu, 13 Jan 2022 11:15:50 +0100 (CET)
+Message-ID: <fa9b2b73-c6bb-5737-93ac-ba2ab6b3b771@xs4all.nl>
+Date: Thu, 13 Jan 2022 11:15:48 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.4.1
 Subject: Re: [PATCH v9 12/15] media: mtk-vcodec: enc: Remove
  mtk_vcodec_release_enc_pm
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
- Rob Herring <robh+dt@kernel.org>,
+Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yong Wu <yong.wu@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Joerg Roedel <joro@8bytes.org>, Rob Herring <robh+dt@kernel.org>,
  Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
  David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
 Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
@@ -62,16 +77,12 @@ Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
 References: <20211112105509.12010-1-yong.wu@mediatek.com>
  <20211112105509.12010-13-yong.wu@mediatek.com>
  <68c3a573-8453-38e9-93b2-2067bedcd06f@collabora.com>
-Message-ID: <4bd9e849-96dd-6f1c-2841-979459366ee5@collabora.com>
-Date: Thu, 13 Jan 2022 11:11:40 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
-MIME-Version: 1.0
-In-Reply-To: <68c3a573-8453-38e9-93b2-2067bedcd06f@collabora.com>
-Content-Language: en-US
+ <4bd9e849-96dd-6f1c-2841-979459366ee5@collabora.com>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+In-Reply-To: <4bd9e849-96dd-6f1c-2841-979459366ee5@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_021146_200065_E9BB81C0 
-X-CRM114-Status: GOOD (  12.33  )
+X-CRM114-CacheID: sfid-20220113_021556_321075_297F84AA 
+X-CRM114-Status: GOOD (  14.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,40 +94,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 11/01/22 11:57, AngeloGioacchino Del Regno ha scritto:
-> Il 12/11/21 11:55, Yong Wu ha scritto:
->> After this patchset, mtk_vcodec_release_enc_pm has only one line.
->> then remove that function, use pm_runtime_disable instead.
+On 13/01/2022 11:11, AngeloGioacchino Del Regno wrote:
+> Il 11/01/22 11:57, AngeloGioacchino Del Regno ha scritto:
+>> Il 12/11/21 11:55, Yong Wu ha scritto:
+>>> After this patchset, mtk_vcodec_release_enc_pm has only one line.
+>>> then remove that function, use pm_runtime_disable instead.
+>>>
+>>> meanwhile, mtk_vcodec_init_enc_pm only operate for the clocks,
+>>> rename it from the _pm to _clk.
+>>>
+>>> No functional change.
+>>>
+>>> CC: Tiffany Lin <tiffany.lin@mediatek.com>
+>>> CC: Irui Wang <irui.wang@mediatek.com>
+>>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 >>
->> meanwhile, mtk_vcodec_init_enc_pm only operate for the clocks,
->> rename it from the _pm to _clk.
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 >>
->> No functional change.
->>
->> CC: Tiffany Lin <tiffany.lin@mediatek.com>
->> CC: Irui Wang <irui.wang@mediatek.com>
->> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > 
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Hello Yong,
+> the mtk-vcodec patches were merged in Yunfei's vcodec patch series and Hans has
+> scheduled that for v5.18.
 > 
+> Can you please send a v10 and drop patches 10/15, 11/15, 12/15 (all of the
+> media: mtk-vcodec: *) from this series?
+> 
+> For the records, I think that after sending v10 this series is ready to be merged,
+> as it was well reviewed and also tested on many MTK platforms.
 
-Hello Yong,
-the mtk-vcodec patches were merged in Yunfei's vcodec patch series and Hans has
-scheduled that for v5.18.
+Good to know. When I have the v10 I'll try to prioritize reviewing it and running
+my usual tests.
 
-Can you please send a v10 and drop patches 10/15, 11/15, 12/15 (all of the
-media: mtk-vcodec: *) from this series?
+Yong, please make sure you run 'checkpatch.pl --strict' over the v10 patches and fix
+any issues (using common sense).
 
-For the records, I think that after sending v10 this series is ready to be merged,
-as it was well reviewed and also tested on many MTK platforms.
+Regards,
 
-Thank you,
-- Angelo
+	Hans
+
+> 
+> Thank you,
+> - Angelo
+
 
 _______________________________________________
 Linux-mediatek mailing list
