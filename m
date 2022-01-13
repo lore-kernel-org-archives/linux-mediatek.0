@@ -4,70 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59225C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 04:30:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32A01C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 04:30:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tuMV9mXvKM9oiN4BeCoO1AYuQjLJ64ITVeuAfXX3358=; b=KAqJl2QcZVcrvH
-	BQW8iEHe12n6wYFiv8BMS4iuxdmeIeU1UzwTrEjJNllD69kiKo+1Tb4bmg3wC2HqvbKYTa1SEjjTL
-	S/1LXu1QNmP+oUhPNUU3lme7JiGQP49Cb+a/KOF6N8DrGjDZXr/9P4YvgwHqHD7Kfb+QuGzoEut8a
-	iIGGx9jEiM3JnWCqGMvHovOoxjWxc9g9AklKhYxLVnL8KbB70T20buRrxHK6eGQ85HGpUQsmJ/sqH
-	4D8En5vqpAZkcEJqOoCj50HQSNTSjNGTuifEUoeZ95hy8hgj1Vc6dR2w9BHGfo7KBoJQuzkM2yZgB
-	TGfylAvPfCv2cBV2YQ1g==;
+	List-Owner; bh=p3Y+B8J9c7IKJSuK3FG/DMr2dOTNW6OeKZfu18c0bnk=; b=S0GRB91dxFn4dj
+	fWXXGsYEY+7nXTq9cdxKCR83QLNDkmFE6i6/yo0RF10WfUJ1LgTnghFrxw3oa6LihRBO573yp15UW
+	e7phYlbCz/Tz2PsH1wS04jbA0SP0EJ0p4xt35Ex6i5S7zS72t983SrBelSJGZvZBWR4Nx2GxDSo7e
+	GImHzEkJFfruoOZrXe9L7AZWXuscHiRnNQ8vFfKBQHOJNgSRAQ4Qv/Dwtfcy43vfoIfKmZMHd7DUb
+	nGO4V5yZas7GY5YlxjfZ+TiVqiu9jewNMuiAwcI+MHCY+C6WpYaXPfC/qGwC192syEeFTaln3pkUW
+	ramCFXTHGCHSYZTi283g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7rkP-004bcw-Iz; Thu, 13 Jan 2022 04:30:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n7rkT-004bf6-FU; Thu, 13 Jan 2022 04:30:05 +0000
+Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7rcA-004YEU-FI; Thu, 13 Jan 2022 04:21:31 +0000
-X-UUID: d1c807f5e2494c04866f3958b099ba39-20220112
-X-UUID: d1c807f5e2494c04866f3958b099ba39-20220112
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <yunfei.dong@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2039464977; Wed, 12 Jan 2022 21:21:26 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 20:11:24 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 13 Jan 2022 12:11:22 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Jan 2022 12:11:20 +0800
-From: Yunfei Dong <yunfei.dong@mediatek.com>
-To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
- <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
- Shih" <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Tomasz Figa <tfiga@google.com>
-CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
- <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>, Fritz Koenig
- <frkoenig@chromium.org>, Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>, Daniel Vetter
- <daniel@ffwll.ch>, dri-devel <dri-devel@lists.freedesktop.org>, Irui Wang
- <irui.wang@mediatek.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Steve Cho <stevecho@chromium.org>, 
- <linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v19, 16/19] media: mtk-vcodec: Add core dec and dec end ipi msg
-Date: Thu, 13 Jan 2022 12:10:52 +0800
-Message-ID: <20220113041055.25213-17-yunfei.dong@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220113041055.25213-1-yunfei.dong@mediatek.com>
-References: <20220113041055.25213-1-yunfei.dong@mediatek.com>
+ id 1n7rgD-004Zu0-KV
+ for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 04:25:43 +0000
+Received: by mail-oi1-x22a.google.com with SMTP id x193so6257223oix.0
+ for <linux-mediatek@lists.infradead.org>; Wed, 12 Jan 2022 20:25:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:in-reply-to:references:from:user-agent:date:message-id
+ :subject:to:cc;
+ bh=hOJyvOSbThwu+QP4lcC5VRMHJ9Gf10Mr2Em/YOYWYbk=;
+ b=AKNXIEa3uoJszAFx/Q8Df9Kg5xa2u6fKenb78GUjwdXWtnCteJh6avAiS8oevT+s+k
+ NHaj16xl+Qwpi5gJy++7R7G6iwvQJHH+vGP4Lm+68/0d0ThWDP+DDzM02nwmlHeL6P20
+ e75y/SI2FfHqxsUfa+CudWEm56BTNYGveV2+s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from
+ :user-agent:date:message-id:subject:to:cc;
+ bh=hOJyvOSbThwu+QP4lcC5VRMHJ9Gf10Mr2Em/YOYWYbk=;
+ b=z2fSLqRUuE3dZZfeB7PTzklJHVrVUlPYenVqMomRT4vjkUq0c0+qtNTgDTK9swLial
+ Gn0crrLoWlMo33feb5oe9YHQ7mp7ZcWeR1Depif3lJhLBL2noq452Qsj/H+k9e56deNR
+ ZETGmJK1omIXkofGwGhBfHypU8CREt5nRAWg76E3WNcltYGH8xJewSR5rGkN/S14NVvs
+ ybGj4d/eiZByyW/GD+pYquN4a27V325CVqMwSQJ6jWi3EIewekNiawRpeK+sC/3q6SUy
+ bK4dMiNYsU3MTB+9rfK8Sfjt132TenmkVWr9p/vFL6QgJuLzCqrbtvxnO/3g5xwFD8C5
+ FTFQ==
+X-Gm-Message-State: AOAM531vEDBjzK7gTIcfoSmucJVHqV6zjGuzzxOKPOMauPUupPDcw6s8
+ 76MuJhftgwY+zpK6qjBX6t66UDh9s094Sgq7MqlqTw==
+X-Google-Smtp-Source: ABdhPJxrvJfe4npB2ZG64Di6xVANLUpa34m0XDfE47xF6cHvLcUVRQzP10HeZhAPB9Nbe7sVFir4+/cMqLM98w7inas=
+X-Received: by 2002:aca:a953:: with SMTP id s80mr7557861oie.164.1642047939842; 
+ Wed, 12 Jan 2022 20:25:39 -0800 (PST)
+Received: from 753933720722 named unknown by gmailapi.google.com with
+ HTTPREST; Wed, 12 Jan 2022 20:25:39 -0800
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <ff81bc1fe1f1c2060fcf03ba14f1bef584c47599.camel@mediatek.com>
+References: <20220106214556.2461363-1-swboyd@chromium.org>
+ <20220106214556.2461363-26-swboyd@chromium.org>
+ <1a3b368eb891ca55c33265397cffab0b9f128737.camel@mediatek.com>
+ <CAE-0n53Y3WRy4_QvUm9k9wjjWV7adMDQcK_+1ji4+W25SSeGwg@mail.gmail.com>
+ <ff81bc1fe1f1c2060fcf03ba14f1bef584c47599.camel@mediatek.com>
+From: Stephen Boyd <swboyd@chromium.org>
+User-Agent: alot/0.9.1
+Date: Wed, 12 Jan 2022 20:25:39 -0800
+Message-ID: <CAE-0n53FAHDmCznJ35Xh2aTwXBVwukAM3ioKx8SU9VowSaQSqA@mail.gmail.com>
+Subject: Re: [PATCH v5 25/32] iommu/mtk: Migrate to aggregate driver
+To: Yong Wu <yong.wu@mediatek.com>
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Douglas Anderson <dianders@chromium.org>, 
+ linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org, 
+ dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, 
+ Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, 
+ Daniel Vetter <daniel.vetter@ffwll.ch>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Rob Clark <robdclark@gmail.com>, Russell King <rmk+kernel@arm.linux.org.uk>, 
+ Saravana Kannan <saravanak@google.com>, linux-mediatek@lists.infradead.org, 
+ iommu@lists.linux-foundation.org, youlin.pei@mediatek.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_202130_535089_A44A4D87 
-X-CRM114-Status: GOOD (  12.83  )
+X-CRM114-CacheID: sfid-20220112_202541_744012_41F14C2D 
+X-CRM114-Status: GOOD (  24.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,103 +94,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add core dec and dec end ipi msg:
-AP_IPIMSG_DEC_CORE/AP_IPIMSG_DEC_CORE_END.
+Quoting Yong Wu (2022-01-12 01:09:19)
+> On Tue, 2022-01-11 at 16:27 -0800, Stephen Boyd wrote:
+> > ---8<---
+> > diff --git a/drivers/base/component.c b/drivers/base/component.c
+> > index 64ad7478c67a..97f253a41bdf 100644
+> > --- a/drivers/base/component.c
+> > +++ b/drivers/base/component.c
+> > @@ -492,15 +492,30 @@ static struct aggregate_device
+> > *__aggregate_find(struct device *parent)
+> >       return dev ? to_aggregate_device(dev) : NULL;
+> >  }
+> >
+> > +static DEFINE_MUTEX(aggregate_mutex);
+> > +
+> >  static int aggregate_driver_register(struct aggregate_driver *adrv)
+> >  {
+> > -     adrv->driver.bus = &aggregate_bus_type;
+> > -     return driver_register(&adrv->driver);
+> > +     int ret = 0;
+> > +
+> > +     mutex_lock(&aggregate_mutex);
+> > +     if (!refcount_inc_not_zero(&adrv->count)) {
+> > +             adrv->driver.bus = &aggregate_bus_type;
+> > +             ret = driver_register(&adrv->driver);
+> > +             if (!ret)
+> > +                     refcount_inc(&adrv->count);
+>
+> This should be refcount_set(&adrv->count, 1)?
+>
+> Otherwise, it will warning like this:
 
-Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../media/platform/mtk-vcodec/vdec_ipi_msg.h   |  4 ++++
- .../media/platform/mtk-vcodec/vdec_vpu_if.c    | 12 ++++++++++++
- .../media/platform/mtk-vcodec/vdec_vpu_if.h    | 18 ++++++++++++++++++
- 3 files changed, 34 insertions(+)
+Yeah I'll fix it, thanks.
 
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-index 5f45a537beb4..9d8079c4f976 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_ipi_msg.h
-@@ -18,12 +18,16 @@ enum vdec_ipi_msgid {
- 	AP_IPIMSG_DEC_END = 0xA002,
- 	AP_IPIMSG_DEC_DEINIT = 0xA003,
- 	AP_IPIMSG_DEC_RESET = 0xA004,
-+	AP_IPIMSG_DEC_CORE = 0xA005,
-+	AP_IPIMSG_DEC_CORE_END = 0xA006,
- 
- 	VPU_IPIMSG_DEC_INIT_ACK = 0xB000,
- 	VPU_IPIMSG_DEC_START_ACK = 0xB001,
- 	VPU_IPIMSG_DEC_END_ACK = 0xB002,
- 	VPU_IPIMSG_DEC_DEINIT_ACK = 0xB003,
- 	VPU_IPIMSG_DEC_RESET_ACK = 0xB004,
-+	VPU_IPIMSG_DEC_CORE_ACK = 0xB005,
-+	VPU_IPIMSG_DEC_CORE_END_ACK = 0xB006,
- };
- 
- /**
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-index 5dffc459a33d..bfd8e87dceff 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.c
-@@ -85,6 +85,8 @@ static void vpu_dec_ipi_handler(void *data, unsigned int len, void *priv)
- 		case VPU_IPIMSG_DEC_END_ACK:
- 		case VPU_IPIMSG_DEC_DEINIT_ACK:
- 		case VPU_IPIMSG_DEC_RESET_ACK:
-+		case VPU_IPIMSG_DEC_CORE_ACK:
-+		case VPU_IPIMSG_DEC_CORE_END_ACK:
- 			break;
- 
- 		default:
-@@ -191,11 +193,21 @@ int vpu_dec_start(struct vdec_vpu_inst *vpu, uint32_t *data, unsigned int len)
- 	return err;
- }
- 
-+int vpu_dec_core(struct vdec_vpu_inst *vpu)
-+{
-+	return vcodec_send_ap_ipi(vpu, AP_IPIMSG_DEC_CORE);
-+}
-+
- int vpu_dec_end(struct vdec_vpu_inst *vpu)
- {
- 	return vcodec_send_ap_ipi(vpu, AP_IPIMSG_DEC_END);
- }
- 
-+int vpu_dec_core_end(struct vdec_vpu_inst *vpu)
-+{
-+	return vcodec_send_ap_ipi(vpu, AP_IPIMSG_DEC_CORE_END);
-+}
-+
- int vpu_dec_deinit(struct vdec_vpu_inst *vpu)
- {
- 	return vcodec_send_ap_ipi(vpu, AP_IPIMSG_DEC_DEINIT);
-diff --git a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-index c2ed5b6cab8b..ae24b75d1649 100644
---- a/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-+++ b/drivers/media/platform/mtk-vcodec/vdec_vpu_if.h
-@@ -82,4 +82,22 @@ int vpu_dec_deinit(struct vdec_vpu_inst *vpu);
-  */
- int vpu_dec_reset(struct vdec_vpu_inst *vpu);
- 
-+/**
-+ * vpu_dec_core - core start decoding, basically the function will be invoked once
-+ *                 every frame.
-+ *
-+ * @vpu : instance for vdec_vpu_inst
-+ */
-+int vpu_dec_core(struct vdec_vpu_inst *vpu);
-+
-+/**
-+ * vpu_dec_core_end - core end decoding, basically the function will be invoked once
-+ *               when core HW decoding done and receive interrupt successfully. The
-+ *               decoder in VPU will updata hardware information and deinit hardware
-+ *               and check if there is a new decoded frame available to display.
-+ *
-+ * @vpu : instance for vdec_vpu_inst
-+ */
-+int vpu_dec_core_end(struct vdec_vpu_inst *vpu);
-+
- #endif
--- 
-2.25.1
+>
+> [    2.654526] ------------[ cut here ]------------
+> [    2.655558] refcount_t: addition on 0; use-after-free.
+>
+> After this patch, the aggregate_driver flow looks ok. But our driver
+> still aborts like this:
+>
+> [    2.721316] Unable to handle kernel NULL pointer dereference at
+> virtual address 0000000000000000
+> ...
+> [    2.731658] pc : mtk_smi_larb_config_port_gen2_general+0xa4/0x138
+> [    2.732434] lr : mtk_smi_larb_resume+0x54/0x98
+> ...
+> [    2.742457] Call trace:
+> [    2.742768]  mtk_smi_larb_config_port_gen2_general+0xa4/0x138
+> [    2.743496]  pm_generic_runtime_resume+0x2c/0x48
+> [    2.744090]  __genpd_runtime_resume+0x30/0xa8
+> [    2.744648]  genpd_runtime_resume+0x94/0x2c8
+> [    2.745191]  __rpm_callback+0x44/0x150
+> [    2.745669]  rpm_callback+0x6c/0x78
+> [    2.746114]  rpm_resume+0x314/0x558
+> [    2.746559]  __pm_runtime_resume+0x3c/0x88
+> [    2.747080]  pm_runtime_get_suppliers+0x7c/0x110
+> [    2.747668]  __driver_probe_device+0x4c/0xe8
+> [    2.748212]  driver_probe_device+0x44/0x130
+> [    2.748745]  __device_attach_driver+0x98/0xd0
+> [    2.749300]  bus_for_each_drv+0x68/0xd0
+> [    2.749787]  __device_attach+0xec/0x148
+> [    2.750277]  device_attach+0x14/0x20
+> [    2.750733]  bus_rescan_devices_helper+0x50/0x90
+> [    2.751319]  bus_for_each_dev+0x7c/0xd8
+> [    2.751806]  bus_rescan_devices+0x20/0x30
+> [    2.752315]  __component_add+0x7c/0xa0
+> [    2.752795]  component_add+0x14/0x20
+> [    2.753253]  mtk_smi_larb_probe+0xe0/0x120
+>
+> This is because the device runtime_resume is called before the bind
+> operation(In our case this detailed function is mtk_smi_larb_bind).
+> The issue doesn't happen without this patchset. I'm not sure the right
+> sequence. If we should fix in mediatek driver, the patch could be:
 
+Oh, the runtime PM is moved around with these patches. The aggregate
+device is runtime PM enabled before the probe is called, and there are
+supplier links made to each component, so each component is runtime
+resumed before the aggregate probe function is called. It means that all
+the component drivers need to have their resources ready to power on
+before their component_bind() callback is made. Thinking more about it
+that may be wrong if something from the aggregate device is needed to
+fully power on the component. Is that what is happening here?
+
+>
+>
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index b883dcc0bbfa..288841555067 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -483,8 +483,9 @@ static int __maybe_unused
+> mtk_smi_larb_resume(struct device *dev)
+>         if (ret < 0)
+>                 return ret;
+>
+> -       /* Configure the basic setting for this larb */
+> -       larb_gen->config_port(dev);
+> +       /* Configure the basic setting for this larb after it binds
+> with iommu */
+> +       if (larb->mmu)
+> +               larb_gen->config_port(dev);
+>
+>         return 0;
+>  }
+>
+>
+> Another nitpick, the title should be: iommu/mediatek: xxxx
+>
+
+Fixed it.
 
 _______________________________________________
 Linux-mediatek mailing list
