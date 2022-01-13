@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED095C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 07:01:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E2DFC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 07:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q4NGWlcmbTkD7yDc4tbYbuMANPq5kX0cwxdNxwzwENY=; b=o10k8QpfaXlVFp
-	85oNNNmhYmnAcD1qF1Whr4zvmf0tEophXmDBZ0QzuyAy5V7zQWWzKznanQgGIcgeBaJka5V/Nznet
-	Q5BW09Rvdkh0VaHj99uztCzkF4J3XPgRk3tbwfH1wrkgFwEB0EmLNXld7QpI3gANwIyctPBYVIzD7
-	QV/cftB7nSXpB7ABROII2eig0tbwaC4jsTPRvRLHtJFnWgzw9RJdC7iu3DVuMuQEXaaw7Y/hy9kvt
-	sEMotBllGAADpS/ol7dMTHx7x9DU2PJgHcrkpGUM7OulSA/MTAi2jjTWES0UNRl3tqdsf3tv34Kri
-	OQCEQFeDHgDnP3xBhKJw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=B3FIWvZ8Zq/DAdqRKGP12pJU5lYJrQsWuaKamIik/EE=; b=BvkvxCgI3mpTGk
+	NmmVkDi4lTiW2TgoHewn9dft75kClYAjQXNFOpRf7jEwRrUzzuLzKh0nbFuO4BVwCLU2ItGkgu7Sb
+	Lef4hjbRrfosajvyovRp5Tn1fch5p5gj1YULpqtjg1QYrmUTts/ZgZ/WNZveGBLsrDQSQZeuFyuDN
+	uu9QRYzHwy6kyUxjBGgLVmvTbpbV9ZIygFR96XEJatmMKZI+k2TH0MooyLgSI1LlTbqIrInaskW45
+	Ibgjpq3w7dz7C588a3+zdfWynBQ0ZEzxRsldursror1WYfweUtTbpKPtdVgLnKEOdsCgOxR3jBun1
+	ceEEiF4ptcZmEA2ej58A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7u7C-004uRS-Ri; Thu, 13 Jan 2022 07:01:42 +0000
+	id 1n7uE7-004wV0-R2; Thu, 13 Jan 2022 07:08:51 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7u6T-004u4h-F2; Thu, 13 Jan 2022 07:00:58 +0000
-X-UUID: 1b7e824c566a4f699dfd46ee5cdd0c64-20220113
-X-UUID: 1b7e824c566a4f699dfd46ee5cdd0c64-20220113
+ id 1n7uDn-004wS5-R9; Thu, 13 Jan 2022 07:08:33 +0000
+X-UUID: a7b78c31b2a14bbfa1b175493dcc9835-20220113
+X-UUID: a7b78c31b2a14bbfa1b175493dcc9835-20220113
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 10674215; Thu, 13 Jan 2022 00:00:52 -0700
+ with ESMTP id 1012280559; Thu, 13 Jan 2022 00:08:27 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 22:58:27 -0800
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 12 Jan 2022 22:58:25 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 13 Jan 2022 14:58:25 +0800
+ 15.2.792.15; Thu, 13 Jan 2022 14:58:23 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 13 Jan 2022 14:58:24 +0800
+ Frontend Transport; Thu, 13 Jan 2022 14:58:23 +0800
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring
  <robh+dt@kernel.org>, <nfraprado@collabora.com>
@@ -49,17 +49,16 @@ CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
  <srv_heupstream@mediatek.com>, Chen-Yu Tsai <wenst@chromium.org>, Ryder Lee
  <ryder.lee@kernel.org>, Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v4 2/5] arm64: dts: mediatek: Correct SPI clock of MT8192
-Date: Thu, 13 Jan 2022 14:58:19 +0800
-Message-ID: <20220113065822.11809-3-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v4 0/5] Update MT8192 Clock Setting
+Date: Thu, 13 Jan 2022 14:58:17 +0800
+Message-ID: <20220113065822.11809-1-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220113065822.11809-1-allen-kh.cheng@mediatek.com>
-References: <20220113065822.11809-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_230057_529260_3B5D66D4 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20220112_230831_904910_F6943460 
+X-CRM114-Status: UNSURE (   7.48  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,87 +70,39 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQWxsZW4tS0ggQ2hlbmcgPEFsbGVuLUtILkNoZW5nQG1lZGlhdGVrLmNvbT4KCldoZW4g
-dGhlIGluaXRpYWwgZGV2aWNldHJlZSBmb3IgbXQ4MTkyIHdhcyBhZGRlZCBpbiA0ODQ4OTk4MGUy
-N2UgKCJhcm02NDoKZHRzOiBBZGQgTWVkaWF0ZWsgU29DIE1UODE5MiBhbmQgZXZhbHVhdGlvbiBi
-b2FyZCBkdHMgYW5kIE1ha2VmaWxlIiksIHRoZQpjbG9jayBkcml2ZXIgZm9yIG10ODE5MiB3YXMg
-bm90IHlldCB1cHN0cmVhbSwgc28gdGhlIGNsb2NrIHByb3BlcnR5IG5vZGVzCndlcmUgc2V0IHRv
-IHRoZSBjbGsyNm0gY2xvY2sgYXMgYSBwbGFjZWhvbGRlci4KCkdpdmVuIHRoYXQgdGhlIGNsb2Nr
-IGRyaXZlciBoYXMgc2luY2UgYmVlbiBhZGRlZCB0aHJvdWdoIDcxMDU3M2RlZTMxYiAoImNsazoK
-bWVkaWF0ZWs6IEFkZCBNVDgxOTIgYmFzaWMgY2xvY2tzIHN1cHBvcnQiKSwgYXMgd2VsbCBhcyBp
-dHMgZHQtYmluZGluZ3MKdGhyb3VnaCBmMzVmMWEyM2UwZTEgKCJjbGs6IG1lZGlhdGVrOiBBZGQg
-ZHQtYmluZGluZ3Mgb2YgTVQ4MTkyIGNsb2NrcyIpIGFuZApkZXZpY2V0cmVlIG5vZGVzIHRocm91
-Z2ggNWQyYjg5N2JjNmY1ICgiYXJtNjQ6IGR0czogbWVkaWF0ZWs6IEFkZCBtdDgxOTIKY2xvY2sg
-Y29udHJvbGxlcnMiKSwgZml4IHRoZSBTUEkgY2xvY2sgcHJvcGVydHkgdG8gcG9pbnQgdG8gdGhl
-IGFjdHVhbApjbG9jay4KClNpZ25lZC1vZmYtYnk6IEFsbGVuLUtIIENoZW5nIDxBbGxlbi1LSC5D
-aGVuZ0BtZWRpYXRlay5jb20+ClJldmlld2VkLWJ5OiBOw61jb2xhcyBGLiBSLiBBLiBQcmFkbyA8
-bmZyYXByYWRvQGNvbGxhYm9yYS5jb20+Ci0tLQogYXJjaC9hcm02NC9ib290L2R0cy9tZWRpYXRl
-ay9tdDgxOTIuZHRzaSB8IDQ4ICsrKysrKysrKysrKy0tLS0tLS0tLS0tLQogMSBmaWxlIGNoYW5n
-ZWQsIDI0IGluc2VydGlvbnMoKyksIDI0IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2FyY2gv
-YXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kgYi9hcmNoL2FybTY0L2Jvb3QvZHRz
-L21lZGlhdGVrL210ODE5Mi5kdHNpCmluZGV4IGNmYjY3Y2M0MGMyYy4uNDdkMDU2Y2M1ZGFkIDEw
-MDY0NAotLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE5Mi5kdHNpCisrKyBi
-L2FyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTkyLmR0c2kKQEAgLTM1NSw5ICszNTUs
-OSBAQAogCQkJI3NpemUtY2VsbHMgPSA8MD47CiAJCQlyZWcgPSA8MCAweDExMDBhMDAwIDAgMHgx
-MDAwPjsKIAkJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxNTkgSVJRX1RZUEVfTEVWRUxfSElHSCAw
-PjsKLQkJCWNsb2NrcyA9IDwmY2xrMjZtPiwKLQkJCQkgPCZjbGsyNm0+LAotCQkJCSA8JmNsazI2
-bT47CisJCQljbG9ja3MgPSA8JnRvcGNrZ2VuIENMS19UT1BfTUFJTlBMTF9ENV9END4sCisJCQkJ
-IDwmdG9wY2tnZW4gQ0xLX1RPUF9TUElfU0VMPiwKKwkJCQkgPCZpbmZyYWNmZyBDTEtfSU5GUkFf
-U1BJMD47CiAJCQljbG9jay1uYW1lcyA9ICJwYXJlbnQtY2xrIiwgInNlbC1jbGsiLCAic3BpLWNs
-ayI7CiAJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwogCQl9OwpAQCAtMzY5LDkgKzM2OSw5IEBACiAJ
-CQkjc2l6ZS1jZWxscyA9IDwwPjsKIAkJCXJlZyA9IDwwIDB4MTEwMTAwMDAgMCAweDEwMDA+Owog
-CQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE2MCBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+OwotCQkJ
-Y2xvY2tzID0gPCZjbGsyNm0+LAotCQkJCSA8JmNsazI2bT4sCi0JCQkJIDwmY2xrMjZtPjsKKwkJ
-CWNsb2NrcyA9IDwmdG9wY2tnZW4gQ0xLX1RPUF9NQUlOUExMX0Q1X0Q0PiwKKwkJCQkgPCZ0b3Bj
-a2dlbiBDTEtfVE9QX1NQSV9TRUw+LAorCQkJCSA8JmluZnJhY2ZnIENMS19JTkZSQV9TUEkxPjsK
-IAkJCWNsb2NrLW5hbWVzID0gInBhcmVudC1jbGsiLCAic2VsLWNsayIsICJzcGktY2xrIjsKIAkJ
-CXN0YXR1cyA9ICJkaXNhYmxlZCI7CiAJCX07CkBAIC0zODMsOSArMzgzLDkgQEAKIAkJCSNzaXpl
-LWNlbGxzID0gPDA+OwogCQkJcmVnID0gPDAgMHgxMTAxMjAwMCAwIDB4MTAwMD47CiAJCQlpbnRl
-cnJ1cHRzID0gPEdJQ19TUEkgMTYxIElSUV9UWVBFX0xFVkVMX0hJR0ggMD47Ci0JCQljbG9ja3Mg
-PSA8JmNsazI2bT4sCi0JCQkJIDwmY2xrMjZtPiwKLQkJCQkgPCZjbGsyNm0+OworCQkJY2xvY2tz
-ID0gPCZ0b3Bja2dlbiBDTEtfVE9QX01BSU5QTExfRDVfRDQ+LAorCQkJCSA8JnRvcGNrZ2VuIENM
-S19UT1BfU1BJX1NFTD4sCisJCQkJIDwmaW5mcmFjZmcgQ0xLX0lORlJBX1NQSTI+OwogCQkJY2xv
-Y2stbmFtZXMgPSAicGFyZW50LWNsayIsICJzZWwtY2xrIiwgInNwaS1jbGsiOwogCQkJc3RhdHVz
-ID0gImRpc2FibGVkIjsKIAkJfTsKQEAgLTM5Nyw5ICszOTcsOSBAQAogCQkJI3NpemUtY2VsbHMg
-PSA8MD47CiAJCQlyZWcgPSA8MCAweDExMDEzMDAwIDAgMHgxMDAwPjsKIAkJCWludGVycnVwdHMg
-PSA8R0lDX1NQSSAxNjIgSVJRX1RZUEVfTEVWRUxfSElHSCAwPjsKLQkJCWNsb2NrcyA9IDwmY2xr
-MjZtPiwKLQkJCQkgPCZjbGsyNm0+LAotCQkJCSA8JmNsazI2bT47CisJCQljbG9ja3MgPSA8JnRv
-cGNrZ2VuIENMS19UT1BfTUFJTlBMTF9ENV9END4sCisJCQkJIDwmdG9wY2tnZW4gQ0xLX1RPUF9T
-UElfU0VMPiwKKwkJCQkgPCZpbmZyYWNmZyBDTEtfSU5GUkFfU1BJMz47CiAJCQljbG9jay1uYW1l
-cyA9ICJwYXJlbnQtY2xrIiwgInNlbC1jbGsiLCAic3BpLWNsayI7CiAJCQlzdGF0dXMgPSAiZGlz
-YWJsZWQiOwogCQl9OwpAQCAtNDExLDkgKzQxMSw5IEBACiAJCQkjc2l6ZS1jZWxscyA9IDwwPjsK
-IAkJCXJlZyA9IDwwIDB4MTEwMTgwMDAgMCAweDEwMDA+OwogCQkJaW50ZXJydXB0cyA9IDxHSUNf
-U1BJIDE2MyBJUlFfVFlQRV9MRVZFTF9ISUdIIDA+OwotCQkJY2xvY2tzID0gPCZjbGsyNm0+LAot
-CQkJCSA8JmNsazI2bT4sCi0JCQkJIDwmY2xrMjZtPjsKKwkJCWNsb2NrcyA9IDwmdG9wY2tnZW4g
-Q0xLX1RPUF9NQUlOUExMX0Q1X0Q0PiwKKwkJCQkgPCZ0b3Bja2dlbiBDTEtfVE9QX1NQSV9TRUw+
-LAorCQkJCSA8JmluZnJhY2ZnIENMS19JTkZSQV9TUEk0PjsKIAkJCWNsb2NrLW5hbWVzID0gInBh
-cmVudC1jbGsiLCAic2VsLWNsayIsICJzcGktY2xrIjsKIAkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7
-CiAJCX07CkBAIC00MjUsOSArNDI1LDkgQEAKIAkJCSNzaXplLWNlbGxzID0gPDA+OwogCQkJcmVn
-ID0gPDAgMHgxMTAxOTAwMCAwIDB4MTAwMD47CiAJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgMTY0
-IElSUV9UWVBFX0xFVkVMX0hJR0ggMD47Ci0JCQljbG9ja3MgPSA8JmNsazI2bT4sCi0JCQkJIDwm
-Y2xrMjZtPiwKLQkJCQkgPCZjbGsyNm0+OworCQkJY2xvY2tzID0gPCZ0b3Bja2dlbiBDTEtfVE9Q
-X01BSU5QTExfRDVfRDQ+LAorCQkJCSA8JnRvcGNrZ2VuIENMS19UT1BfU1BJX1NFTD4sCisJCQkJ
-IDwmaW5mcmFjZmcgQ0xLX0lORlJBX1NQSTU+OwogCQkJY2xvY2stbmFtZXMgPSAicGFyZW50LWNs
-ayIsICJzZWwtY2xrIiwgInNwaS1jbGsiOwogCQkJc3RhdHVzID0gImRpc2FibGVkIjsKIAkJfTsK
-QEAgLTQzOSw5ICs0MzksOSBAQAogCQkJI3NpemUtY2VsbHMgPSA8MD47CiAJCQlyZWcgPSA8MCAw
-eDExMDFkMDAwIDAgMHgxMDAwPjsKIAkJCWludGVycnVwdHMgPSA8R0lDX1NQSSAxNjUgSVJRX1RZ
-UEVfTEVWRUxfSElHSCAwPjsKLQkJCWNsb2NrcyA9IDwmY2xrMjZtPiwKLQkJCQkgPCZjbGsyNm0+
-LAotCQkJCSA8JmNsazI2bT47CisJCQljbG9ja3MgPSA8JnRvcGNrZ2VuIENMS19UT1BfTUFJTlBM
-TF9ENV9END4sCisJCQkJIDwmdG9wY2tnZW4gQ0xLX1RPUF9TUElfU0VMPiwKKwkJCQkgPCZpbmZy
-YWNmZyBDTEtfSU5GUkFfU1BJNj47CiAJCQljbG9jay1uYW1lcyA9ICJwYXJlbnQtY2xrIiwgInNl
-bC1jbGsiLCAic3BpLWNsayI7CiAJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwogCQl9OwpAQCAtNDUz
-LDkgKzQ1Myw5IEBACiAJCQkjc2l6ZS1jZWxscyA9IDwwPjsKIAkJCXJlZyA9IDwwIDB4MTEwMWUw
-MDAgMCAweDEwMDA+OwogCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDE2NiBJUlFfVFlQRV9MRVZF
-TF9ISUdIIDA+OwotCQkJY2xvY2tzID0gPCZjbGsyNm0+LAotCQkJCSA8JmNsazI2bT4sCi0JCQkJ
-IDwmY2xrMjZtPjsKKwkJCWNsb2NrcyA9IDwmdG9wY2tnZW4gQ0xLX1RPUF9NQUlOUExMX0Q1X0Q0
-PiwKKwkJCQkgPCZ0b3Bja2dlbiBDTEtfVE9QX1NQSV9TRUw+LAorCQkJCSA8JmluZnJhY2ZnIENM
-S19JTkZSQV9TUEk3PjsKIAkJCWNsb2NrLW5hbWVzID0gInBhcmVudC1jbGsiLCAic2VsLWNsayIs
-ICJzcGktY2xrIjsKIAkJCXN0YXR1cyA9ICJkaXNhYmxlZCI7CiAJCX07Ci0tIAoyLjE4LjAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRp
-YXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+
+This patch is base on v5.16-rc8,
+
+changes since v3:
+ - update that list(remove already upstream patch)
+
+changes since v2:
+ - add missing "clock" at the end of commit message
+
+changes since v1:
+ - update the commit message
+
+Allen-KH Cheng (5):
+  arm64: dts: mediatek: Correct uart clock of MT8192
+  arm64: dts: mediatek: Correct SPI clock of MT8192
+  arm64: dts: mediatek: Correct Nor Flash clock of MT8192
+  arm64: dts: mediatek: Correct I2C clock of MT8192
+  arm64: dts: mediatek: Correct system timer clock of MT8192
+
+ arch/arm64/boot/dts/mediatek/mt8192.dtsi | 92 +++++++++++++-----------
+ 1 file changed, 52 insertions(+), 40 deletions(-)
+
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
