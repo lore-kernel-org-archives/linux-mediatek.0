@@ -4,64 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A915FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:10:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB7B8C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:12:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ms7jIAqojH4D1dXIYlT+bJQhAwUOnUdnWsepbYhD+RA=; b=PATisFa+pJ/Bhq
-	YrqUPiDQiLPLRdqDnhSNN1VyRF34xap7FfwV2uuf+0YWfDWKCnu/cVDSS0lgcz+R8kpNEp9vIReDv
-	1iIZA/OXiWbIvtBNCWXbwxof3fmtgM2mFHDIudHDTCbHC6MnWGAuK1SsLcLlvCDtQyIqTpDiRAXuB
-	5Yw58LEVfTIejNeo/fi7n2NZiFr6DcHH1mDgYc5POvy2L/P/xkuC23Q5vY2eVI3zYm+oekw3wWrE2
-	weWwJgtHHXTa/lP6oLRxfxojmiXnGUzNY7BVst3uQD8atjEEMFWmfoXBaqZnzZSCAajbWJ7Kq3xCe
-	HQIUYzCtlDOSUvMMCp6A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:References:
+	Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OA3IB5yFlikcp0VyekH0qLKCs5QZUKDG+G2LR0o7M1w=; b=gAcUX/u5qro8VS0orI6700liVI
+	mxe1DMUrONFrOSt39poBxNDond/u7JCjjxU50Edio4ts/CyKpkARxvBu1qgjew8Axaodw4Lk1eD/s
+	d+16QuGk6qOJE2ffbUlUHydVronvIBERMLo7zvUJiOFmt2S+6sLxfqOYzwQzrAFTQerOiexZdj2lo
+	2Izf6omgNlDpBRcEGWnVQnPyGvYLRkTmSZ56yPjin2EBywtvhrhwk1unHXN8efnpAhXOwoLKHL6eq
+	UTeAfDgunVFdIeSX2KgLldJOtVhkzJQ8dCnChq2rQV3uL8+MElPx6Tc6TBfY2EEGly08ZglLtT8pc
+	z7h+XFxw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7x46-005OQ2-Vn; Thu, 13 Jan 2022 10:10:42 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n7x5J-005OaT-Pz; Thu, 13 Jan 2022 10:11:57 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7x44-005ONF-QZ
- for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 10:10:42 +0000
-X-UUID: 7173af9a8b1745daba67db3a75efc8e1-20220113
-X-UUID: 7173af9a8b1745daba67db3a75efc8e1-20220113
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
- (envelope-from <chui-hao.chiu@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1036401180; Thu, 13 Jan 2022 03:10:32 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Jan 2022 02:10:31 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 13 Jan 2022 18:10:29 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Jan 2022 18:10:29 +0800
-Message-ID: <2ab2731dc44494dbfe89363638cdcaf49351afbe.camel@mediatek.com>
-Subject: Re: [PATCH v2 3/5] mt76: mt7915: add support for MT7986
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-CC: Felix Fietkau <nbd@nbd.name>, linux-wireless
- <linux-wireless@vger.kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, "Xing
- Song" <xing.song@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
- <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Bo Jiao <bo.jiao@mediatek.com>
-Date: Thu, 13 Jan 2022 18:10:29 +0800
-In-Reply-To: <Yd7ZKb7Qsh4lGA5E@lore-desk>
-References: <cover.1641901681.git.Bo.Jiao@mediatek.com>
- <8b2098132192c0381e41ac78a47b7318d5c28b04.1641901681.git.Bo.Jiao@mediatek.com>
- <Yd7ZKb7Qsh4lGA5E@lore-desk>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1n7x57-005OXx-VI; Thu, 13 Jan 2022 10:11:47 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id E4E661F4585E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1642068704;
+ bh=D/XYC6ZGl5zYQW2bPb5HgmDBOTYg/Taj7564Kp6Xo1w=;
+ h=Subject:From:To:Cc:References:Date:In-Reply-To:From;
+ b=mE4sw4YvYqPtPCeGgdYDQbOGYr1D0sRwnP4JUyOyjhZj86DL2KdqFn53kzdPhLzVf
+ Bw1VvaPOhimlqvAni2KTggbrrVF2tMVgZUYZ8GT3HumFLMHl/swIw8OEmuB63xYT9D
+ ry4EVMAhrR1d8HMl2egIRfzRMjosarxVeMM5DKaB83CPATfsl/FDKcekgbGiXopEIL
+ MnHuCbLxWgj6rZKBy6qsMzCkq0MxYh4lCNn7zCBOc/+l8UBmSPACrlbKg9pzt44nrH
+ jFeTmjYUIPMAWJwQeXwYslmZrcg0H+P/WZvI2jlUHmT8gdPkXem6ziG4wdUDcl9DH5
+ E8ZqIX9/NoQSw==
+Subject: Re: [PATCH v9 12/15] media: mtk-vcodec: enc: Remove
+ mtk_vcodec_release_enc_pm
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Joerg Roedel <joro@8bytes.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
+ dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
+ anthony.huang@mediatek.com, youlin.pei@mediatek.com,
+ Irui Wang <irui.wang@mediatek.com>, Evan Green <evgreen@chromium.org>,
+ Eizan Miyamoto <eizan@chromium.org>, Matthias Kaehlcke <mka@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, mingyuan.ma@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, libo.kang@mediatek.com,
+ yi.kuo@mediatek.com, linux-mediatek@lists.infradead.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ anan.sun@mediatek.com, srv_heupstream@mediatek.com, acourbot@chromium.org,
+ linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
+ Robin Murphy <robin.murphy@arm.com>
+References: <20211112105509.12010-1-yong.wu@mediatek.com>
+ <20211112105509.12010-13-yong.wu@mediatek.com>
+ <68c3a573-8453-38e9-93b2-2067bedcd06f@collabora.com>
+Message-ID: <4bd9e849-96dd-6f1c-2841-979459366ee5@collabora.com>
+Date: Thu, 13 Jan 2022 11:11:40 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
-X-MTK: N
+In-Reply-To: <68c3a573-8453-38e9-93b2-2067bedcd06f@collabora.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_021040_897646_63C6D0A3 
-X-CRM114-Status: GOOD (  14.21  )
+X-CRM114-CacheID: sfid-20220113_021146_200065_E9BB81C0 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,40 +83,40 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2022-01-12 at 14:35 +0100, Lorenzo Bianconi wrote:
-> > 
-> > @@ -302,6 +316,15 @@ struct mt7915_dev {
-> >  		u8 table_mask;
-> >  		u8 n_agrt;
-> >  	} twt;
-> > +
-> > +	struct reset_control *rstc;
-> > +	void __iomem *dcm;
-> > +	void __iomem *sku;
-> > +
-> > +	struct {
-> > +		bool is_7975;
-> > +		bool is_7976;
-> > +	} adie[MT7986_MAX_ADIE_NUM];
+Il 11/01/22 11:57, AngeloGioacchino Del Regno ha scritto:
+> Il 12/11/21 11:55, Yong Wu ha scritto:
+>> After this patchset, mtk_vcodec_release_enc_pm has only one line.
+>> then remove that function, use pm_runtime_disable instead.
+>>
+>> meanwhile, mtk_vcodec_init_enc_pm only operate for the clocks,
+>> rename it from the _pm to _clk.
+>>
+>> No functional change.
+>>
+>> CC: Tiffany Lin <tiffany.lin@mediatek.com>
+>> CC: Irui Wang <irui.wang@mediatek.com>
+>> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
 > 
-> do we really need it? Can we just read data from chip when necessary?
-> it is not
-> access in the hot-path, right?
-> I think it is easier and more readable.
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
 
-Adie registers are inaccessible after wfsys power on so we need some
-places to store chip configuration.
-We will modify it to make it more readable.
-+ u32 adie;
+Hello Yong,
+the mtk-vcodec patches were merged in Yunfei's vcodec patch series and Hans has
+scheduled that for v5.18.
 
-thanks,
-Peter
+Can you please send a v10 and drop patches 10/15, 11/15, 12/15 (all of the
+media: mtk-vcodec: *) from this series?
 
+For the records, I think that after sending v10 this series is ready to be merged,
+as it was well reviewed and also tested on many MTK platforms.
+
+Thank you,
+- Angelo
 
 _______________________________________________
 Linux-mediatek mailing list
