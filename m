@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90EDEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:04:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A915FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:10:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qJtB/MZSTpVHxnsBM++svXURtvkjvk7q70PaNdVyWLA=; b=WLQToK82BgO7wmMkhvUu2EReBk
-	JkB4QltnFevTAFwX36+HxEwnBOesBBWRr2JhX7bvRUSnUPfWepZkE+hob+jsPhl1/wWA7DO5IhEpW
-	NU9d/7C28M2AnVZCuzD+fHW9sHg5hAO+32jXdEDuJimd+P8xV1P8QMv8brrMfr4M+bRXDxSXUpXdV
-	bRRXQ2dwj0owPko/zijgQG2mnnTyjd4NlTAk4a/9FP+E/KnMSCKC6xYtbtNU71sIYsSGvnQGPNP2j
-	qD4ArC/8DO2kzWXkY0ZE6V1NDi+KkQNfhmiAyr9M9/VczMd7ywExL57aSqaVWJYKlOE87AG7U34NK
-	C0QrvlXw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Ms7jIAqojH4D1dXIYlT+bJQhAwUOnUdnWsepbYhD+RA=; b=PATisFa+pJ/Bhq
+	YrqUPiDQiLPLRdqDnhSNN1VyRF34xap7FfwV2uuf+0YWfDWKCnu/cVDSS0lgcz+R8kpNEp9vIReDv
+	1iIZA/OXiWbIvtBNCWXbwxof3fmtgM2mFHDIudHDTCbHC6MnWGAuK1SsLcLlvCDtQyIqTpDiRAXuB
+	5Yw58LEVfTIejNeo/fi7n2NZiFr6DcHH1mDgYc5POvy2L/P/xkuC23Q5vY2eVI3zYm+oekw3wWrE2
+	weWwJgtHHXTa/lP6oLRxfxojmiXnGUzNY7BVst3uQD8atjEEMFWmfoXBaqZnzZSCAajbWJ7Kq3xCe
+	HQIUYzCtlDOSUvMMCp6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7wy0-005MKT-8u; Thu, 13 Jan 2022 10:04:24 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1n7x46-005OQ2-Vn; Thu, 13 Jan 2022 10:10:42 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7wwt-005Lnr-6v; Thu, 13 Jan 2022 10:03:16 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 1C4741F4585C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642068193;
- bh=z6Fpv+ojSruJtKvGcPH7kOYeobLJWz00NiG70Q+tJBQ=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=H6rciqMQ+aIyqB7yph7vl+C/moxOxZT3EWo6xzZ1kyXmcfvIHLOexyV/uy7GKUJ0l
- uN3lMkyv6piipk/ZpY7mpYjDIlGujep1CcLX4qFrN7cPyvTBN+8W8VZRY7PmR1iXfn
- K2r9BAo/1qJTHIz0KyV8RUKt+6lwbfe3OSgHOJg9gkDrmXQeYnEhpGo2dcR2tQCXYK
- +xQNuvxohNSN84bhfQ1JYJ9Gyjc4QnxEqEIqBgIQvgWSACN3UBjKVErUMjYvPHFEc+
- T/gLU5fSYLcvGxPM5Rh6u/LjesuDOnvZvnkns5Tm4YKreimqKWD0xbVoSjEzCHNQ/9
- K2guIAsxypswQ==
-Subject: Re: [PATCH v4 1/5] arm64: dts: mediatek: Correct uart clock of MT8192
-To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- nfraprado@collabora.com
-Cc: Project_Global_Chrome_Upstream_Group@mediatek.com,
- chun-jie.chen@mediatek.com, devicetree@vger.kernel.org,
- drinkcat@chromium.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com, Chen-Yu Tsai <wenst@chromium.org>,
- Ryder Lee <ryder.lee@kernel.org>
-References: <20220113065822.11809-1-allen-kh.cheng@mediatek.com>
- <20220113065822.11809-2-allen-kh.cheng@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <3eeea0ce-0551-1186-7011-9bda27d62b98@collabora.com>
-Date: Thu, 13 Jan 2022 11:03:11 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1n7x44-005ONF-QZ
+ for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 10:10:42 +0000
+X-UUID: 7173af9a8b1745daba67db3a75efc8e1-20220113
+X-UUID: 7173af9a8b1745daba67db3a75efc8e1-20220113
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ (envelope-from <chui-hao.chiu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1036401180; Thu, 13 Jan 2022 03:10:32 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Jan 2022 02:10:31 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Thu, 13 Jan 2022 18:10:29 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Thu, 13 Jan 2022 18:10:29 +0800
+Message-ID: <2ab2731dc44494dbfe89363638cdcaf49351afbe.camel@mediatek.com>
+Subject: Re: [PATCH v2 3/5] mt76: mt7915: add support for MT7986
+From: Peter Chiu <chui-hao.chiu@mediatek.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+CC: Felix Fietkau <nbd@nbd.name>, linux-wireless
+ <linux-wireless@vger.kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, "Xing
+ Song" <xing.song@mediatek.com>, Sujuan Chen <sujuan.chen@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Evelyn Tsai
+ <evelyn.tsai@mediatek.com>, linux-mediatek
+ <linux-mediatek@lists.infradead.org>, Bo Jiao <bo.jiao@mediatek.com>
+Date: Thu, 13 Jan 2022 18:10:29 +0800
+In-Reply-To: <Yd7ZKb7Qsh4lGA5E@lore-desk>
+References: <cover.1641901681.git.Bo.Jiao@mediatek.com>
+ <8b2098132192c0381e41ac78a47b7318d5c28b04.1641901681.git.Bo.Jiao@mediatek.com>
+ <Yd7ZKb7Qsh4lGA5E@lore-desk>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <20220113065822.11809-2-allen-kh.cheng@mediatek.com>
-Content-Language: en-US
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_020315_456186_63809FC6 
-X-CRM114-Status: GOOD (  13.87  )
+X-CRM114-CacheID: sfid-20220113_021040_897646_63C6D0A3 
+X-CRM114-Status: GOOD (  14.21  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,29 +73,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SWwgMTMvMDEvMjIgMDc6NTgsIGFsbGVuLWtoLmNoZW5nIGhhIHNjcml0dG86Cj4gRnJvbTogQWxs
-ZW4tS0ggQ2hlbmcgPEFsbGVuLUtILkNoZW5nQG1lZGlhdGVrLmNvbT4KPiAKPiBXaGVuIHRoZSBp
-bml0aWFsIGRldmljZXRyZWUgZm9yIG10ODE5MiB3YXMgYWRkZWQgaW4gNDg0ODk5ODBlMjdlICgi
-YXJtNjQ6Cj4gZHRzOiBBZGQgTWVkaWF0ZWsgU29DIE1UODE5MiBhbmQgZXZhbHVhdGlvbiBib2Fy
-ZCBkdHMgYW5kIE1ha2VmaWxlIiksIHRoZQo+IGNsb2NrIGRyaXZlciBmb3IgbXQ4MTkyIHdhcyBu
-b3QgeWV0IHVwc3RyZWFtLCBzbyB0aGUgY2xvY2sgcHJvcGVydHkgbm9kZXMKPiB3ZXJlIHNldCB0
-byB0aGUgY2xrMjZtIGNsb2NrIGFzIGEgcGxhY2Vob2xkZXIuCj4gCj4gR2l2ZW4gdGhhdCB0aGUg
-Y2xvY2sgZHJpdmVyIGhhcyBzaW5jZSBiZWVuIGFkZGVkIHRocm91Z2ggNzEwNTczZGVlMzFiICgi
-Y2xrOgo+IG1lZGlhdGVrOiBBZGQgTVQ4MTkyIGJhc2ljIGNsb2NrcyBzdXBwb3J0IiksIGFzIHdl
-bGwgYXMgaXRzIGR0LWJpbmRpbmdzCj4gdGhyb3VnaCBmMzVmMWEyM2UwZTEgKCJjbGs6IG1lZGlh
-dGVrOiBBZGQgZHQtYmluZGluZ3Mgb2YgTVQ4MTkyIGNsb2NrcyIpIGFuZAo+IGRldmljZXRyZWUg
-bm9kZXMgdGhyb3VnaCA1ZDJiODk3YmM2ZjUgKCJhcm02NDogZHRzOiBtZWRpYXRlazogQWRkIG10
-ODE5Mgo+IGNsb2NrIGNvbnRyb2xsZXJzIiksIGZpeCB0aGUgdWFydCBjbG9jayBwcm9wZXJ0eSB0
-byBwb2ludCB0byB0aGUgYWN0dWFsCj4gY2xvY2suCj4gCj4gU2lnbmVkLW9mZi1ieTogQWxsZW4t
-S0ggQ2hlbmcgPEFsbGVuLUtILkNoZW5nQG1lZGlhdGVrLmNvbT4KPiBSZXZpZXdlZC1ieTogTsOt
-Y29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgoKUmV2aWV3ZWQt
-Ynk6IEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIDxhbmdlbG9naW9hY2NoaW5vLmRlbHJlZ25v
-QGNvbGxhYm9yYS5jb20+CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1tZWRpYXRlawo=
+On Wed, 2022-01-12 at 14:35 +0100, Lorenzo Bianconi wrote:
+> > 
+> > @@ -302,6 +316,15 @@ struct mt7915_dev {
+> >  		u8 table_mask;
+> >  		u8 n_agrt;
+> >  	} twt;
+> > +
+> > +	struct reset_control *rstc;
+> > +	void __iomem *dcm;
+> > +	void __iomem *sku;
+> > +
+> > +	struct {
+> > +		bool is_7975;
+> > +		bool is_7976;
+> > +	} adie[MT7986_MAX_ADIE_NUM];
+> 
+> do we really need it? Can we just read data from chip when necessary?
+> it is not
+> access in the hot-path, right?
+> I think it is easier and more readable.
+
+Adie registers are inaccessible after wfsys power on so we need some
+places to store chip configuration.
+We will modify it to make it more readable.
++ u32 adie;
+
+thanks,
+Peter
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
