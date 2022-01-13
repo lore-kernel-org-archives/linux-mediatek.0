@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC28C4332F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 937ACC433F5
 	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 04:12:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,33 +12,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZbQiDYxfLAZCt8T8RN6EO/9k7iedkGvJnK7div7nj9U=; b=uSXpMUj6zD92dS
-	myLS8pEcZdlvwUxFQ6aRd1d9qh4W6LToisBZXWnXoSwBWxxohC/0sWy4rEkenGqK7rzrw+GPKqBft
-	G1HTWZgaITiMI/UGcFNEoB4pTdVjEfyjO3C2lfTdAyYidX7NVEQMUCgJYCVapZmQLHKRGGQCyQ//P
-	Q/kJGdx5EpBa50OvGc6fGJO7MMkcWhipHgXKU2TLPOB9wt2WM7M3xl2W4RYisS/xFzZ2jrWH6qYSI
-	KA32OwZh13g/rFPm00gXN9DqoDF9K0L4qeEtSbIXgWyVG6Tjw4LXoSTMuaxZ4btONmrYsdf/+KV3P
-	9QT0Pe2uvMR0tbuvd1zQ==;
+	List-Owner; bh=pYjQZPO9j6+qPT7zmVlK22ve3RC5S3HcBi0ihKi1pBw=; b=EbJE2rs4/ZQpBZ
+	JlIoeFRexdJ2riv9y7o3bvKbWjbP0IhAGAeHzRyeEec4alY9E32pFkPwvg3+NdY3vkasVkUuvWi/a
+	X6+9a2HL8etr3ms56ibpzInEBhHbyPAJxefVxYg2BZajhB3eHPn0nzBk84or69PkpqFqes4USHLmp
+	5nAVHit57bNEGBOcYB4lYf8UYr259kTB7aH9sMVWb6nrmaKvh/pUE1zsvaTjgm5ZCuR3bE2EKthoG
+	swXO4RBremoInuilog2j1ovjKugoRNU1/vA+wlpTd4q717pzbluOD7jElNcOk31wEpgbuh6XlrYPd
+	2l4D3RqQqO5dUdpqNpVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7rTC-004TgZ-3b; Thu, 13 Jan 2022 04:12:14 +0000
+	id 1n7rTD-004Th1-1P; Thu, 13 Jan 2022 04:12:15 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7rSI-004T84-9w; Thu, 13 Jan 2022 04:11:19 +0000
-X-UUID: 6ed73f50e8fc41588a708c9dbace807d-20220112
-X-UUID: 6ed73f50e8fc41588a708c9dbace807d-20220112
+ id 1n7rSI-004T8q-9q; Thu, 13 Jan 2022 04:11:20 +0000
+X-UUID: 3f66ce2d4581455da0b1fee6bd0f2284-20220112
+X-UUID: 3f66ce2d4581455da0b1fee6bd0f2284-20220112
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1728863340; Wed, 12 Jan 2022 21:11:11 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1899324034; Wed, 12 Jan 2022 21:11:11 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
  15.0.1497.2; Wed, 12 Jan 2022 20:11:10 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Jan 2022 12:11:08 +0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Thu, 13 Jan 2022 12:11:02 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Jan 2022 12:11:06 +0800
+ Transport; Thu, 13 Jan 2022 12:11:00 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -57,17 +57,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v19, 07/19] media: mtk-vcodec: Support MT8192
-Date: Thu, 13 Jan 2022 12:10:43 +0800
-Message-ID: <20220113041055.25213-8-yunfei.dong@mediatek.com>
+Subject: [PATCH v19, 03/19] media: mtk-vcodec: Refactor vcodec pm interface
+Date: Thu, 13 Jan 2022 12:10:39 +0800
+Message-ID: <20220113041055.25213-4-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220113041055.25213-1-yunfei.dong@mediatek.com>
 References: <20220113041055.25213-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_201118_366398_098EA283 
-X-CRM114-Status: GOOD (  11.65  )
+X-CRM114-CacheID: sfid-20220112_201118_389334_B1542E58 
+X-CRM114-Status: GOOD (  16.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,68 +84,148 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adds MT8192's compatible "mediatek,mt8192-vcodec-dec".
-Adds MT8192's device private data mtk_lat_sig_core_pdata.
+Using the needed params for pm init/release function and remove unused
+param mtkdev in 'struct mtk_vcodec_pm'.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
+Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Steve Cho <stevecho@chromium.org>
 ---
- .../media/platform/mtk-vcodec/mtk_vcodec_dec.h   |  1 +
- .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c     |  4 ++++
- .../mtk-vcodec/mtk_vcodec_dec_stateless.c        | 16 ++++++++++++++++
- 3 files changed, 21 insertions(+)
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  6 ++---
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 23 ++++++++-----------
+ .../platform/mtk-vcodec/mtk_vcodec_dec_pm.h   |  4 ++--
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  1 -
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   |  1 -
+ 5 files changed, 14 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-index e08886a600a3..66cd6d2242c3 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
-@@ -68,6 +68,7 @@ extern const struct v4l2_m2m_ops mtk_vdec_m2m_ops;
- extern const struct media_device_ops mtk_vcodec_media_ops;
- extern const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata;
- extern const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata;
-+extern const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata;
- 
- 
- /*
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-index b9f612fb630e..201ae71d0899 100644
+index 30257e4f989b..b9f612fb630e 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
-@@ -392,6 +392,10 @@ static const struct of_device_id mtk_vcodec_match[] = {
- 		.compatible = "mediatek,mt8183-vcodec-dec",
- 		.data = &mtk_vdec_8183_pdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8192-vcodec-dec",
-+		.data = &mtk_lat_sig_core_pdata,
-+	},
- 	{},
+@@ -246,7 +246,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	if (IS_ERR(dev->fw_handler))
+ 		return PTR_ERR(dev->fw_handler);
+ 
+-	ret = mtk_vcodec_init_dec_pm(dev);
++	ret = mtk_vcodec_init_dec_pm(dev->plat_dev, &dev->pm);
+ 	if (ret < 0) {
+ 		dev_err(&pdev->dev, "Failed to get mt vcodec clock source");
+ 		goto err_dec_pm;
+@@ -377,7 +377,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ err_dec_alloc:
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ err_res:
+-	mtk_vcodec_release_dec_pm(dev);
++	mtk_vcodec_release_dec_pm(&dev->pm);
+ err_dec_pm:
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+ 	return ret;
+@@ -416,7 +416,7 @@ static int mtk_vcodec_dec_remove(struct platform_device *pdev)
+ 		video_unregister_device(dev->vfd_dec);
+ 
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+-	mtk_vcodec_release_dec_pm(dev);
++	mtk_vcodec_release_dec_pm(&dev->pm);
+ 	mtk_vcodec_fw_release(dev->fw_handler);
+ 	return 0;
+ }
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+index 6038db96f71c..5ba54bb813c8 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.c
+@@ -13,18 +13,14 @@
+ #include "mtk_vcodec_dec_pm.h"
+ #include "mtk_vcodec_util.h"
+ 
+-int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
++int mtk_vcodec_init_dec_pm(struct platform_device *pdev, struct mtk_vcodec_pm *pm)
+ {
+ 	struct device_node *node;
+-	struct platform_device *pdev;
+-	struct mtk_vcodec_pm *pm;
++	struct platform_device *larb_pdev;
+ 	struct mtk_vcodec_clk *dec_clk;
+ 	struct mtk_vcodec_clk_info *clk_info;
+ 	int i = 0, ret = 0;
+ 
+-	pdev = mtkdev->plat_dev;
+-	pm = &mtkdev->pm;
+-	pm->mtkdev = mtkdev;
+ 	dec_clk = &pm->vdec_clk;
+ 	node = of_parse_phandle(pdev->dev.of_node, "mediatek,larb", 0);
+ 	if (!node) {
+@@ -32,13 +28,12 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+ 		return -1;
+ 	}
+ 
+-	pdev = of_find_device_by_node(node);
++	larb_pdev = of_find_device_by_node(node);
+ 	of_node_put(node);
+-	if (WARN_ON(!pdev)) {
++	if (WARN_ON(!larb_pdev))
+ 		return -1;
+-	}
+-	pm->larbvdec = &pdev->dev;
+-	pdev = mtkdev->plat_dev;
++
++	pm->larbvdec = &larb_pdev->dev;
+ 	pm->dev = &pdev->dev;
+ 
+ 	dec_clk->clk_num =
+@@ -82,10 +77,10 @@ int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *mtkdev)
+ 	return ret;
+ }
+ 
+-void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev)
++void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm)
+ {
+-	pm_runtime_disable(dev->pm.dev);
+-	put_device(dev->pm.larbvdec);
++	pm_runtime_disable(pm->dev);
++	put_device(pm->larbvdec);
+ }
+ 
+ int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm)
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+index 280aeaefdb65..08769c7648eb 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_pm.h
+@@ -9,8 +9,8 @@
+ 
+ #include "mtk_vcodec_drv.h"
+ 
+-int mtk_vcodec_init_dec_pm(struct mtk_vcodec_dev *dev);
+-void mtk_vcodec_release_dec_pm(struct mtk_vcodec_dev *dev);
++int mtk_vcodec_init_dec_pm(struct platform_device *pdev, struct mtk_vcodec_pm *pm);
++void mtk_vcodec_release_dec_pm(struct mtk_vcodec_pm *pm);
+ 
+ int mtk_vcodec_dec_pw_on(struct mtk_vcodec_pm *pm);
+ void mtk_vcodec_dec_pw_off(struct mtk_vcodec_pm *pm);
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+index 1d2370608d0d..0fa9d85114b9 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
+@@ -195,7 +195,6 @@ struct mtk_vcodec_pm {
+ 	struct mtk_vcodec_clk	venc_clk;
+ 	struct device	*larbvenc;
+ 	struct device	*dev;
+-	struct mtk_vcodec_dev	*mtkdev;
  };
  
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-index 3d9f47555884..183cd67a334a 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-@@ -357,3 +357,19 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata = {
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
- };
-+
-+const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata = {
-+	.chip = MTK_MT8192,
-+	.init_vdec_params = mtk_init_vdec_params,
-+	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
-+	.vdec_vb2_ops = &mtk_vdec_request_vb2_ops,
-+	.vdec_formats = mtk_video_formats,
-+	.num_formats = NUM_FORMATS,
-+	.default_out_fmt = &mtk_video_formats[DEFAULT_OUT_FMT_IDX],
-+	.default_cap_fmt = &mtk_video_formats[DEFAULT_CAP_FMT_IDX],
-+	.vdec_framesizes = mtk_vdec_framesizes,
-+	.num_framesizes = NUM_SUPPORTED_FRAMESIZE,
-+	.uses_stateless_api = true,
-+	.worker = mtk_vdec_worker,
-+	.flush_decoder = mtk_vdec_flush_decoder,
-+};
+ /**
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+index 1b2e4930ed27..0c8c8f86788c 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_pm.c
+@@ -26,7 +26,6 @@ int mtk_vcodec_init_enc_pm(struct mtk_vcodec_dev *mtkdev)
+ 	pdev = mtkdev->plat_dev;
+ 	pm = &mtkdev->pm;
+ 	memset(pm, 0, sizeof(struct mtk_vcodec_pm));
+-	pm->mtkdev = mtkdev;
+ 	pm->dev = &pdev->dev;
+ 	dev = &pdev->dev;
+ 	enc_clk = &pm->venc_clk;
 -- 
 2.25.1
 
