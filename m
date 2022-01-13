@@ -4,124 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B83C433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 23:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F84C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 23:27:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h9idl65NcgD44X8WBUEgdjyZAblNs38IcOhnYqlDtC8=; b=n7mkcvV4FkRUC9PZKuBvVGn2Xq
-	L1KBMdK2qD+3635fQC9YwOY5hC56cNZk/ha5W9Gxlb7Fo5X9Y3iF9UMSYzcMRLfkKZhkWDfpDo4IL
-	pXWqT0FYuOPQFHIZ3ilWNszV8lLHLegEnbaEtQUshN4FuJTxby0KCMQOGIE/yZmTI/0W1JZJGIeHD
-	YUeTlX/LqRZLAO7ygSNywcw8Bx+JLCuPZf//5JgXk15qGCKfyQXW//anY3NVvmKFawxJeK6tltEpw
-	tU3sw/j+ovUQHSGGphBai3+Bs5TJpf7e7amNTSpCeAqxXRvK2uFK/1UPXFLyHqTH1KeVvtmbkNBCr
-	BZzFuwgA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=zCkq4DgARgD4D/2UuKFVU0tH6II0btQ+4jZxNMaU1kw=; b=nATbDBneMtktX1
+	eJYAl9POg6UXDaawmCwdfvkgHZK/wM6MUi4FxWmdXOahbWPsRI1cU3+DYv4tb6iXfomkmAUvDIbSq
+	8qdwMRv+0YmbQyOvz2I0fURST/N2qShw4KLLKDSM0wd6YovjgtchW5xVyxtU/O1IK4fh8Fvs5bBR1
+	ehPB9+mOIybZx320I5nIZnszw5Pe2+FacsFYGgFcFlBG7kaM6ciHM5r9Z41BbhyU72OeNAOcLuQT8
+	9umLddplryfVp5X29URxAnR7GuWzI3Cl8YkHbXpCDniR3lFi+pTJ9Q9qVFu7+yvTrK8Y6QOD5+RvV
+	zKRMXfnZ+PeJdYNVnYyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n89CS-007Gi0-8g; Thu, 13 Jan 2022 23:08:08 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1n89Uy-007HU4-QF; Thu, 13 Jan 2022 23:27:16 +0000
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n89CF-007Gg2-Nh
- for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 23:07:57 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n89An-0001YX-LN; Fri, 14 Jan 2022 00:06:25 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1n89Ai-00A99J-Gv; Fri, 14 Jan 2022 00:06:19 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n89Ah-0001rZ-FS; Fri, 14 Jan 2022 00:06:19 +0100
-Date: Fri, 14 Jan 2022 00:06:19 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Florian Fainelli <f.fainelli@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, Andrew Lunn <andrew@lunn.ch>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-phy@lists.infradead.org, netdev@vger.kernel.org,
- linux-spi <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- Zhang Rui <rui.zhang@intel.com>, platform-driver-x86@vger.kernel.org,
- Linux PWM List <linux-pwm@vger.kernel.org>,
- Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
- Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Takashi Iwai <tiwai@suse.com>,
- Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Borislav Petkov <bp@alien8.de>,
- Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- openipmi-developer@lists.sourceforge.net,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Benson Leung <bleung@chromium.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
- Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Linux MMC List <linux-mmc@vger.kernel.org>,
- Joakim Zhang <qiangqing.zhang@nxp.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Vinod Koul <vkoul@kernel.org>, James Morse <james.morse@arm.com>,
- Zha Qipeng <qipeng.zha@intel.com>, Sebastian Reichel <sre@kernel.org>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
-Subject: Re: [PATCH] driver core: platform: Rename
- platform_get_irq_optional() to platform_get_irq_silent()
-Message-ID: <20220113230619.m736tqd6u44vhuu5@pengutronix.de>
-References: <YdyilpjC6rtz6toJ@lunn.ch>
- <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
- <20220112085009.dbasceh3obfok5dc@pengutronix.de>
- <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
- <YeA7CjOyJFkpuhz/@sirena.org.uk>
- <20220113194358.xnnbhsoyetihterb@pengutronix.de>
- <745c601f-c782-0904-f786-c9bfced8f11c@gmail.com>
+ id 1n89Um-007HR0-A5
+ for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 23:27:05 +0000
+Received: by mail-lf1-x12d.google.com with SMTP id b14so6441535lff.3
+ for <linux-mediatek@lists.infradead.org>; Thu, 13 Jan 2022 15:27:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Br5WfYiTc37TH3IA3cWwwQvBdeV/BPdpfjqxoTbjUg8=;
+ b=W5TpqtMMfX5D0g3MqtnYghqkOFySoHX8V7Y3CDIEk/QzE1qbCwAEJgPpiJrTJPckV+
+ 6N2Vqv9WJ3XylOrXOadOYeXgV1y464f5VNQVaG+8o2Glkx36tVcTGtTSSygXE9SjYxv1
+ RnoyaBK5nCwB6EOFL7/mwCLnckkE1s60MGfxHeQCmCJhhJZOBIv+VRduC1HOrb6bkNsL
+ FVwFtXFQXUD8Gx/cQQ5XhZOwds/VF/zUQ0OARSiZM0Xy9Ppb3w6T0wwLrYPxiySAyUbE
+ 20XLOCa+lmlXMZ8C2ul6MEW+k28ADcena2T1vx5h/MaIhRGddm0bLJivZ074kU2ydzvf
+ 0q+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Br5WfYiTc37TH3IA3cWwwQvBdeV/BPdpfjqxoTbjUg8=;
+ b=nka8UROv2DTUY8LdZ+nCJXxacSLSDDfwLTOWGc6mTtvIE1j5mEEtFj5GSOtIpvwNJX
+ GtpgbRDReJ/fPiGo8xFSX/RUCuWh+dBeWlmTi0QPujbkkxmvM6E6WmbousAn6ZAwU5mf
+ yjUAUOiXuI9Tvjv9qapm/J7Vg1tH3azpR6iLF7Q09g3M1jkvQHI3r+rARkMC4qnyv7Nf
+ iRjew8lNLqGdo1bRywhgltXVt0qfkcRsvAWB20wfOnWEI484ZkmJGHC8zAyeFmTuZtgG
+ 4KO7+WDeyGPv4pOQ12ScNpceUPxveN2HEGWe7z216oLPy+Wm3eeZzAe1JGFikPxr9sRj
+ QsKA==
+X-Gm-Message-State: AOAM533XeVk1op+wPxjHIoSaKNbTDMg4jZ68ECSBnmwtY4Ker3cNP8Fs
+ hRgzebK/EyS+jHvpU7wYrbQ1RN7/ABZEpCktxpVF4w==
+X-Google-Smtp-Source: ABdhPJxQ6vukwqgYAso2HtDl4olPJlAPhHEDkugkY9sHGK03iZx+0X4RXJF67ZQjXjdGFfz53L/S+5nppyW0SRY2Ae4=
+X-Received: by 2002:a2e:9346:: with SMTP id m6mr4880056ljh.130.1642116419137; 
+ Thu, 13 Jan 2022 15:26:59 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <745c601f-c782-0904-f786-c9bfced8f11c@gmail.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+References: <CAO_48GF=ttKqSOm9GRoA3Mq+-RQOtRjWp449XPcz-wH=kjaTjw@mail.gmail.com>
+ <20220113123406.11520-1-guangming.cao@mediatek.com>
+ <4f88205c1b344aea8608960e2f85b8f4@intel.com>
+ <e657f5257cbf4955817b0bbf037de9f9@intel.com>
+ <24157767-dc29-bbdd-5428-d89ecc6b9606@amd.com>
+In-Reply-To: <24157767-dc29-bbdd-5428-d89ecc6b9606@amd.com>
+From: John Stultz <john.stultz@linaro.org>
+Date: Thu, 13 Jan 2022 15:26:47 -0800
+Message-ID: <CALAqxLXRtYDNQ8y1efVGa4SwUH_oAaHviZFjsOVSNFmUHnCCeQ@mail.gmail.com>
+Subject: Re: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
+To: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>
+Cc: "Ruhl, Michael J" <michael.j.ruhl@intel.com>, 
+ "guangming.cao@mediatek.com" <guangming.cao@mediatek.com>, 
+ "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>, 
+ "libo.kang@mediatek.com" <libo.kang@mediatek.com>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+ "yf.wang@mediatek.com" <yf.wang@mediatek.com>, 
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+ "lmark@codeaurora.org" <lmark@codeaurora.org>, 
+ "benjamin.gaignard@linaro.org" <benjamin.gaignard@linaro.org>, 
+ "bo.song@mediatek.com" <bo.song@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+ "labbott@redhat.com" <labbott@redhat.com>,
+ "mingyuan.ma@mediatek.com" <mingyuan.ma@mediatek.com>, 
+ "jianjiao.zeng@mediatek.com" <jianjiao.zeng@mediatek.com>, 
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_150755_963482_57C8D982 
-X-CRM114-Status: GOOD (  54.47  )
+X-CRM114-CacheID: sfid-20220113_152704_384542_EB975BC8 
+X-CRM114-Status: GOOD (  19.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,172 +98,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1020079334035131591=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
---===============1020079334035131591==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ea4rbv6vfrsr5m67"
-Content-Disposition: inline
-
-
---ea4rbv6vfrsr5m67
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Thu, Jan 13, 2022 at 01:42:57PM -0800, Florian Fainelli wrote:
->=20
->=20
-> On 1/13/2022 11:43 AM, Uwe Kleine-K=F6nig wrote:
-> > The subsystems regulator, clk and gpio have the concept of a dummy
-> > resource. For regulator, clk and gpio there is a semantic difference
-> > between the regular _get() function and the _get_optional() variant.
-> > (One might return the dummy resource, the other won't. Unfortunately
-> > which one implements which isn't the same for these three.) The
-> > difference between platform_get_irq() and platform_get_irq_optional() is
-> > only that the former might emit an error message and the later won't.
-> >=20
-> > To prevent people's expectations that there is a semantic difference
-> > between these too, rename platform_get_irq_optional() to
-> > platform_get_irq_silent() to make the actual difference more obvious.
-> >=20
-> > The #define for the old name can and should be removed once all patches
-> > currently in flux still relying on platform_get_irq_optional() are
-> > fixed.
-> >=20
-> > Signed-off-by: Uwe Kleine-K=F6nig <u.kleine-koenig@pengutronix.de>
-> > ---
-> > Hello,
-> >=20
-> > On Thu, Jan 13, 2022 at 02:45:30PM +0000, Mark Brown wrote:
-> > > On Thu, Jan 13, 2022 at 12:08:31PM +0100, Uwe Kleine-K=F6nig wrote:
-> > >=20
-> > > > This is all very unfortunate. In my eyes b) is the most sensible
-> > > > sense, but the past showed that we don't agree here. (The most anno=
-ying
-> > > > part of regulator_get is the warning that is emitted that regularily
-> > > > makes customers ask what happens here and if this is fixable.)
-> > >=20
-> > > Fortunately it can be fixed, and it's safer to clearly specify things.
-> > > The prints are there because when the description is wrong enough to
-> > > cause things to blow up we can fail to boot or run messily and
-> > > forgetting to describe some supplies (or typoing so they haven't done
-> > > that) and people were having a hard time figuring out what might've
-> > > happened.
-> >=20
-> > Yes, that's right. I sent a patch for such a warning in 2019 and pinged
-> > occationally. Still waiting for it to be merged :-\
-> > (https://lore.kernel.org/r/20190625100412.11815-1-u.kleine-koenig@pengu=
-tronix.de)
-> >=20
-> > > > I think at least c) is easy to resolve because
-> > > > platform_get_irq_optional() isn't that old yet and mechanically
-> > > > replacing it by platform_get_irq_silent() should be easy and safe.
-> > > > And this is orthogonal to the discussion if -ENOXIO is a sensible r=
-eturn
-> > > > value and if it's as easy as it could be to work with errors on irq
-> > > > lookups.
-> > >=20
-> > > It'd certainly be good to name anything that doesn't correspond to one
-> > > of the existing semantics for the API (!) something different rather
-> > > than adding yet another potentially overloaded meaning.
-> >=20
-> > It seems we're (at least) three who agree about this. Here is a patch
-> > fixing the name.
->=20
-> From an API naming perspective this does not make much sense anymore with
-> the name chosen, it is understood that whent he function is called
-> platform_get_irq_optional(), optional applies to the IRQ. An optional IRQ=
- is
-> something people can reason about because it makes sense.
-
-The problem I see is that the semantic is different to the other
-available *_get_optional() functions. And this isn't fixable for irqs.
-So better don't use that naming scheme.
-
-> What is a a "silent" IRQ however? It does not apply to the object it is
-> trying to fetch to anymore, but to the message that may not be printed in
-> case the resource failed to be obtained, because said resource is optiona=
-l.
-> Woah, that's quite a stretch.
-
-I'm surprised that the semantic isn't obvious, but ok, I can accept
-that.Can you maek a constructive suggestion here? What name pair would
-you choose for the two functions functions under discussion?
-
-(BTW, my favourite would be that platform_get_irq() doesn't emit an
-error message and the caller is reliable for emitting that. But I think
-it's too late for this approach.)
-
-> Following the discussion and original 2 patches set from Sergey, it is not
-> entirely clear to me anymore what is it that we are trying to fix.
-
-(I think) Sergey's focus is:
-
-	platform_get_irq_optional() returning -ENXIO is ugly, other
-	functions return -ENOENT and other *_get_optional() functions
-	return NULL for "This resource doesn't exist". So let's return 0
-	in this case.
-
-My focus is:
-
-	There cannot be an "optional irq" where the driver doesn't have
-	to care if the irq actually exist or not. So the pattern with
-	*_get_optional() isn't sensible for irqs and if changing the
-	returned value meaning "This resource doesn't exist" is sensible
-	for platform_get_irq_optional(), I claim it's sensible for
-	platform_get_irq(), too.
-
-	So the semantic difference between platform_get_irq() and
-	platform_get_irq_optional() is only that one emits an error
-	message and the other doesn't. So this function pair should use
-	a different naming than get + get_optional as this naming evokes
-	expectations that must be wrong as there cannot be a dummy irq
-	value.
-
-> I nearly forgot, I would paint it blue, sky blue, not navy blue, not light
-> blue ;)
-
-no way. green is the ultimate blue for platform_get_irq() :-)
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---ea4rbv6vfrsr5m67
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHgsGcACgkQwfwUeK3K
-7AmCGgf+KUjAbnx/+md2hoJgWXkf2TARYfElER6NhM1xxoNKhleR2n9Y2SomZoh7
-GcsuunNU5jXbVHMH53qA3p34MwFiUjtH8qugReIosuYo9kAjJHcR/uAXVZVx8a5W
-593KJ+wnpGGjBIajlW4L9XKhKUGIgCjx5n9pZTnS/9TD0T5RY7pvpN1XdyHhqHzO
-owFdQFBvf7vN9Md4mdzl3usr15hf3ZFkobzBuDjMwour/CoOVu6yOVe+ihkXfa4o
-SQua8+L+ooV6dgRrG0kq9oYU/xDTMEPJCK1Ap8ff2rb9KDCaRwljavHmmk6Thff9
-7uYWNCwmj3gTXd6TD4b3BK+FIBMfSQ==
-=oNtc
------END PGP SIGNATURE-----
-
---ea4rbv6vfrsr5m67--
-
-
---===============1020079334035131591==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1020079334035131591==--
-
+T24gVGh1LCBKYW4gMTMsIDIwMjIgYXQgNTowNSBBTSBDaHJpc3RpYW4gS8O2bmlnCjxjaHJpc3Rp
+YW4ua29lbmlnQGFtZC5jb20+IHdyb3RlOgo+IEFtIDEzLjAxLjIyIHVtIDE0OjAwIHNjaHJpZWIg
+UnVobCwgTWljaGFlbCBKOgo+ID4+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4gPj4gRnJv
+bTogZHJpLWRldmVsIDxkcmktZGV2ZWwtYm91bmNlc0BsaXN0cy5mcmVlZGVza3RvcC5vcmc+IE9u
+IEJlaGFsZiBPZgo+ID4+IFJ1aGwsIE1pY2hhZWwgSgo+ID4+PiAtLS0tLU9yaWdpbmFsIE1lc3Nh
+Z2UtLS0tLQo+ID4+PiBGcm9tOiBkcmktZGV2ZWwgPGRyaS1kZXZlbC1ib3VuY2VzQGxpc3RzLmZy
+ZWVkZXNrdG9wLm9yZz4gT24gQmVoYWxmIE9mCj4gPj4+IGd1YW5nbWluZy5jYW9AbWVkaWF0ZWsu
+Y29tCj4gPj4+ICsgICAvKgo+ID4+PiArICAgICogSW52YWxpZCBzaXplIGNoZWNrLiBUaGUgImxl
+biIgc2hvdWxkIGJlIGxlc3MgdGhhbiB0b3RhbHJhbS4KPiA+Pj4gKyAgICAqCj4gPj4+ICsgICAg
+KiBXaXRob3V0IHRoaXMgY2hlY2ssIG9uY2UgdGhlIGludmFsaWQgc2l6ZSBhbGxvY2F0aW9uIHJ1
+bnMgb24gYSBwcm9jZXNzCj4gPj4+IHRoYXQKPiA+Pj4gKyAgICAqIGNhbid0IGJlIGtpbGxlZCBi
+eSBPT00gZmxvdyhzdWNoIGFzICJncmFsbG9jIiBvbiBBbmRyb2lkIGRldmljZXMpLCBpdAo+ID4+
+PiB3aWxsCj4gPj4+ICsgICAgKiBjYXVzZSBhIGtlcm5lbCBleGNlcHRpb24sIGFuZCB0byBtYWtl
+IG1hdHRlcnMgd29yc2UsIHdlIGNhbid0IGZpbmQKPiA+Pj4gd2hvIGFyZSB1c2luZwo+ID4+PiAr
+ICAgICogc28gbWFueSBtZW1vcnkgd2l0aCAiZG1hX2J1Zl9kZWJ1Z19zaG93IiBzaW5jZSB0aGUg
+cmVsZXZhbnQKPiA+Pj4gZG1hLWJ1ZiBoYXNuJ3QgZXhwb3J0ZWQuCj4gPj4+ICsgICAgKi8KPiA+
+Pj4gKyAgIGlmIChsZW4gPj4gUEFHRV9TSElGVCA+IHRvdGFscmFtX3BhZ2VzKCkpCj4gPj4gSWYg
+eW91ciAiaGVhcCIgaXMgZnJvbSBjbWEsIGlzIHRoaXMgc3RpbGwgYSB2YWxpZCBjaGVjaz8KPiA+
+IEFuZCB0aGlua2luZyBhIGJpdCBmdXJ0aGVyLCBpZiBJIGNyZWF0ZSBhIGhlYXAgZnJvbSBzb21l
+dGhpbmcgZWxzZSAoc2F5IGRldmljZSBtZW1vcnkpLAo+ID4geW91IHdpbGwgbmVlZCB0byBiZSBh
+YmxlIHRvIGZpZ3VyZSBvdXQgdGhlIG1heGltdW0gYWxsb3dhYmxlIGNoZWNrIGZvciB0aGUgc3Bl
+Y2lmaWMKPiA+IGhlYXAuCj4gPgo+ID4gTWF5YmUgdGhlIGhlYXAgbmVlZHMgYSBjYWxsYmFjayBm
+b3IgbWF4IHNpemU/Cj4KPiBXZWxsIHdlIGN1cnJlbnRseSBtYWludGFpbiBhIHNlcGFyYXRlIGFs
+bG9jYXRvciBhbmQgZG9uJ3QgdXNlIGRtYS1oZWFwLAo+IGJ1dCB5ZXMgd2UgaGF2ZSBzeXN0ZW1z
+IHdpdGggMTZHaUIgZGV2aWNlIGFuZCBvbmx5IDhHaUIgc3lzdGVtIG1lbW9yeSBzbwo+IHRoYXQg
+Y2hlY2sgaGVyZSBpcyBjZXJ0YWlubHkgbm90IGNvcnJlY3QuCgpHb29kIHBvaW50LgoKPiBJbiBn
+ZW5lcmFsIEkgd291bGQgcmF0aGVyIGxldCB0aGUgc3lzdGVtIHJ1biBpbnRvIC1FTk9NRU0gb3Ig
+LUVJTlZBTAo+IGZyb20gdGhlIGFsbG9jYXRvciBpbnN0ZWFkLgoKUHJvYmFibHkgdGhlIHNpbXBs
+ZXIgc29sdXRpb24gaXMgdG8gcHVzaCB0aGUgYWxsb2NhdGlvbiBjaGVjayB0byB0aGUKaGVhcCBk
+cml2ZXIsIHJhdGhlciB0aGFuIGRvaW5nIGl0IGF0IHRoZSB0b3AgbGV2ZWwgaGVyZS4KCkZvciBD
+TUEgb3Igb3RoZXIgY29udGlndW91cyBoZWFwcywgbGV0dGluZyB0aGUgYWxsb2NhdG9yIGZhaWwg
+aXMgZmFzdAplbm91Z2guIEZvciBub25jb250aWd1b3VzIGJ1ZmZlcnMsIGxpa2UgdGhlIHN5c3Rl
+bSBoZWFwLCB0aGUKYWxsb2NhdGlvbiBjYW4gYnVybiBhIGxvdCBvZiB0aW1lIGFuZCBjb25zdW1l
+IGEgbG90IG9mIG1lbW9yeSAoY2F1c2luZwpvdGhlciB0cm91YmxlKSBiZWZvcmUgYSBsYXJnZSBh
+bGxvY2F0aW9uIG1pZ2h0IG5hdHVyYWxseSBmYWlsLgoKdGhhbmtzCi1qb2huCgpfX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWls
+aW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
+aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
