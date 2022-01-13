@@ -4,86 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C6BFC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 16:32:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 733BBC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 18:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ajdT4dekX9oIuRdhmTcv+M6PM9kanJDe+IsJzcLiAkc=; b=GbBT9VdvUiU7dj
-	Hh2uJmj6Oj0Fz0kgY/5mArTKOqdQBXe13p5aRGP8oKMWELmLq0qYy9SOPFecvBph7GevWt5MADbbT
-	QdQStboVyd/dKmvjz5wbJcZicl74N0m4lIWy8mBgOMo1sfA06pO62zlAvfUidzxjDZGfwBbXwEFsC
-	ufTCo8Cg0DzorDAM6aJ1o97Lu5i5/VkWd7Kic5qZQo5F40c+PP+S5gM9IJpbrp+VquV8dU2hHSCEh
-	od3kYF83l3Ok63MKkt9GUG0TJXEkDX8zPySZv+Tu4rna+x79NLl/YgPIJi1S3OhcTA5ny9JA3/U62
-	9i9UssLJZNt5Q+pQIb/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:Cc:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=bBdnljTMN7nhploar2KCwtLaz+Fjs3l+73eBfWLq9Xg=; b=O4yx121n+F/B4C6wGE5bbjlO6J
+	m6RjAhdAlITuQUTqbrdQcYJZzo26U1TCvRX3v6bdksazNzW+H/jPpSCTsdJvYtDFanEW9OM+aTSye
+	4bGufcBxulKQvR5zq76UPZhorn3dFy5J8XkG4B3LXAmUfGic6rhrfJjISFzyW6qKnhiH7Y9AHXWk5
+	CKBmWUXjJrlZV9bETOh9nqZiZmYBrInMCdpY6U728g5qO28gkG0KU37osIARhfWMzJ1W2oweUWPDJ
+	pHhhQgRWfT42PoST5GeShxpxpd56GF64SzWckDxjBz9XkQrYJRbRm/egaUyn/BirSyzkYp7JohvrF
+	zHDSZ+4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n831Q-006bQ2-TX; Thu, 13 Jan 2022 16:32:20 +0000
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+	id 1n851d-006sTh-4N; Thu, 13 Jan 2022 18:40:41 +0000
+Received: from mga05.intel.com ([192.55.52.43])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8317-006bJY-7W; Thu, 13 Jan 2022 16:32:04 +0000
-Received: by mail-wr1-x435.google.com with SMTP id e9so11171801wra.2;
- Thu, 13 Jan 2022 08:32:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=stJa+t6N7piCO/G9WOrqhozs1aIJeDJMCX2Hc5YW/E4=;
- b=maMcAzeBBfspfDIjpKaMxzI5mlxkmJd8BsYGLHKd274zOBEBxERbjDYCCSm9t9mFer
- e0nC3OgbAcstei0ExP0dOqEC7bu6xECBBLdA0IkDM7cGVmVju9N4skvu+h6UucLMkjiC
- FvpdQoFAMnxg5oCt2BtBBoosRZEqZDascNyUYCx3KUjy0ZFEgKXIPouUbRsBRYeDLgsu
- EusPagXiugBX2ZQTjLlNzbGdkhmyvUh+JCE3WYj4/pjyTFEZ6KrmkAKoO0uBafcGfqN8
- a4Gyb8NH3RCzdDHK9+06EMolyGzt0xnndvHQrsK8PZrF0X8D8y8wBtFEhtvlOzRgIywF
- 33qA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=stJa+t6N7piCO/G9WOrqhozs1aIJeDJMCX2Hc5YW/E4=;
- b=KGnOGgayOGl4esEZ2rO1EbqMxmT9Arm5xngdpC/3HpB3MtU4v4y9zjf5tS1P9Kai1F
- YlZT8LZEqBDVT947Hsl6ouga4BZjeWL/BHKyGVbCZEUWjBhIQNz7y8Yiq41sq3MBcLtM
- cIn/ZDe9cOckyRiwn8P5OfklGipD6WoiuvateFcrP0bChv8CpIWVXLMPSjlPl1NekU/Q
- kpk/47v/MPpjqsJbOEQkylGLdaykd7xaFM4tm8kq4FNtFTkQJT3q4jBAMT3bgZN0nftd
- mEUGaN43XiuBeWd6cOEx22xFYvrKIwu4p0AYW01DiTnVFbJchf/pMPncjbX3BHTuPB92
- hRKw==
-X-Gm-Message-State: AOAM532ZpQfYorZqFbNOTALJBFl51Ic7GBNP59hpcXhDr5ix1JXyBtwp
- 67H8Wa7dWSGHEahKGZ2yf9Q=
-X-Google-Smtp-Source: ABdhPJzJBCLgIXVpW2ER0o2F54q3owOxB0C/KPwuwCJi9K//QZFSw+IEmYjjLP1k4kYswRx5CQH2kw==
-X-Received: by 2002:adf:d08b:: with SMTP id y11mr4616297wrh.384.1642091519264; 
- Thu, 13 Jan 2022 08:31:59 -0800 (PST)
-Received: from [192.168.0.18] (81.172.62.207.dyn.user.ono.com. [81.172.62.207])
- by smtp.gmail.com with ESMTPSA id y17sm2880846wrr.84.2022.01.13.08.31.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Jan 2022 08:31:58 -0800 (PST)
-Message-ID: <18f7a647-6153-6d38-dff1-727b9592b01e@gmail.com>
-Date: Thu, 13 Jan 2022 17:31:57 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v9 2/3] dt-bindings: pinctrl: mt8195: Add
- mediatek,drive-strength-adv property
-Content-Language: en-US
-To: Tinghan Shen <tinghan.shen@mediatek.com>, Rob Herring
- <robh+dt@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- David Matlack <dmatlack@google.com>, Jing Zhang <jingzhangos@google.com>,
- Marc Zyngier <maz@kernel.org>,
- Bartosz Golaszewski <bgolaszewski@baylibre.com>,
- Sean Wang <sean.wang@mediatek.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ id 1n851a-006sSe-9y; Thu, 13 Jan 2022 18:40:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642099238; x=1673635238;
+ h=subject:to:cc:references:from:message-id:date:
+ mime-version:in-reply-to:content-transfer-encoding;
+ bh=qqcMZ1IZfmNOmWmFj956qQSZ+kRWR/NKW/CT4jJutuk=;
+ b=GdSkDkuk4caq0+8ShWmQrK9/i1zbKChL9OlgGAjts9AsnCkGu4Fc8KW5
+ VLb+gBFCnemO2nfIpO7ItxFXUbz34wQPWiDOFM3pTLJhqZwrXABIrsaHu
+ b8rsMOevUv7s+qUpqOC8qHdJ/bNUj2lakCtfumbIuXKvYxYOovoJUAGJm
+ A0xJldai6bvMU+1FzNDddhzKznb/6l632ztwenxmdj5BWqKAcQ4VbgHZu
+ ReioVnzrNLU5SsAoG7JOgjDXqqhcl+pdxaTtzIShJvL1uLzAGOdhlYE+R
+ VbS1PKSQ9dOVq/2cgnoSfxG4IDSmo7kYScA9Ut0yK5U1DGpNgurOPvWWK w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10226"; a="330435389"
+X-IronPort-AV: E=Sophos;i="5.88,286,1635231600"; d="scan'208";a="330435389"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2022 10:40:35 -0800
+X-IronPort-AV: E=Sophos;i="5.88,286,1635231600"; d="scan'208";a="620700515"
+Received: from ypchen-mobl.amr.corp.intel.com (HELO [10.212.66.70])
+ ([10.212.66.70])
+ by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2022 10:40:34 -0800
+Subject: Re: [PATCH v3 1/1] firmware: mediatek: add adsp ipc protocol interface
+To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ Linux-ALSA <alsa-devel@alsa-project.org>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, cujomalainey@google.com,
+ Kevin Hilman <khilman@baylibre.com>, Takashi Iwai <tiwai@suse.com>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ Project_Global_Chrome_Upstream_Group@mediatek.com, tzungbi@google.com,
  linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com, ryder.lee@kernel.org,
- wenst@chromium.org, chunfeng.yun@mediatek.com
-References: <20220112114724.1953-1-tinghan.shen@mediatek.com>
- <20220112114724.1953-3-tinghan.shen@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <20220112114724.1953-3-tinghan.shen@mediatek.com>
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Daniel Baluta <daniel.baluta@nxp.com>, linux-kernel@vger.kernel.org,
+ sound-open-firmware@alsa-project.org
+References: <20220113082234.29013-1-allen-kh.cheng@mediatek.com>
+ <20220113082234.29013-2-allen-kh.cheng@mediatek.com>
+From: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+Message-ID: <32e116f5-7b71-2fe0-ad43-3fbc71a651a5@linux.intel.com>
+Date: Thu, 13 Jan 2022 12:40:33 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.14.0
+MIME-Version: 1.0
+In-Reply-To: <20220113082234.29013-2-allen-kh.cheng@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_083201_342520_4C519258 
-X-CRM114-Status: GOOD (  18.89  )
+X-CRM114-CacheID: sfid-20220113_104038_395402_DB8FC9C1 
+X-CRM114-Status: GOOD (  10.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,83 +84,33 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-[dopping Maciej, Paolo and Sean Christopherson]
 
-On 12/01/2022 12:47, Tinghan Shen wrote:
-> Extend driving support for I2C pins on SoC mt8195.
-> This property is already documented in mediatek,mt8183-pinctrl.yaml.
+
+On 1/13/22 2:22 AM, allen-kh.cheng wrote:
+> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 > 
-> Signed-off-by: Tinghan Shen <tinghan.shen@mediatek.com>
-> Reviewed-by: Rob Herring <robh@kernel.org>
-
-Looks good to me. Linus please let me know when you are queuing this patch and 
-I'll take the rest of the series. Another option is, that you provide an 
-Acked-by and I can take the whole set through my branch.
-
-Regards,
-Matthias
-
-> ---
->   .../bindings/pinctrl/pinctrl-mt8195.yaml      | 35 +++++++++++++++++++
->   1 file changed, 35 insertions(+)
+> Some of mediatek processors contain
+> the Tensilica HiFix DSP for audio processing.
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-> index 328ea59c5466..4db4899af6b1 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/pinctrl-mt8195.yaml
-> @@ -98,6 +98,32 @@ patternProperties:
->             drive-strength:
->               enum: [2, 4, 6, 8, 10, 12, 14, 16]
->   
-> +          mediatek,drive-strength-adv:
-> +            description: |
-> +              Describe the specific driving setup property.
-> +              For I2C pins, the existing generic driving setup can only support
-> +              2/4/6/8/10/12/14/16mA driving. But in specific driving setup, they
-> +              can support 0.125/0.25/0.5/1mA adjustment. If we enable specific
-> +              driving setup, the existing generic setup will be disabled.
-> +              The specific driving setup is controlled by E1E0EN.
-> +              When E1=0/E0=0, the strength is 0.125mA.
-> +              When E1=0/E0=1, the strength is 0.25mA.
-> +              When E1=1/E0=0, the strength is 0.5mA.
-> +              When E1=1/E0=1, the strength is 1mA.
-> +              EN is used to enable or disable the specific driving setup.
-> +              Valid arguments are described as below:
-> +              0: (E1, E0, EN) = (0, 0, 0)
-> +              1: (E1, E0, EN) = (0, 0, 1)
-> +              2: (E1, E0, EN) = (0, 1, 0)
-> +              3: (E1, E0, EN) = (0, 1, 1)
-> +              4: (E1, E0, EN) = (1, 0, 0)
-> +              5: (E1, E0, EN) = (1, 0, 1)
-> +              6: (E1, E0, EN) = (1, 1, 0)
-> +              7: (E1, E0, EN) = (1, 1, 1)
-> +              So the valid arguments are from 0 to 7.
-> +            $ref: /schemas/types.yaml#/definitions/uint32
-> +            enum: [0, 1, 2, 3, 4, 5, 6, 7]
-> +
->             bias-pull-down:
->               description: |
->                 For pull down type is normal, it don't need add RSEL & R1R0 define
-> @@ -268,4 +294,13 @@ examples:
->             bias-pull-down;
->           };
->         };
-> +
-> +      i2c0-pins {
-> +        pins {
-> +          pinmux = <PINMUX_GPIO8__FUNC_SDA0>,
-> +                   <PINMUX_GPIO9__FUNC_SCL0>;
-> +          bias-disable;
-> +          mediatek,drive-strength-adv = <7>;
-> +        };
-> +      };
->       };
+> The communication between Host CPU and DSP firmware is
+> taking place using a shared memory area for message passing.
 > 
+> ADSP IPC protocol offers (send/recv) interfaces using
+> mediatek-mailbox APIs.
+> 
+> We use two mbox channels to implement a request-reply protocol.
+> 
+> Reviewed-by: Curtis Malainey <cujomalainey@chromium.org>
+> Reviewed-by: Tzung-Bi Shih <tzungbi@google.com>
+> Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+
+Reviewed-by: Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>
+
 
 _______________________________________________
 Linux-mediatek mailing list
