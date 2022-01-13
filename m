@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D0F9C433FE
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 04:12:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC28C4332F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 04:12:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YX2jT7ml3Ldr5H/grTXHZyyVcWfgU/mXAoJ898GQuCI=; b=sIL6Yl71SgYbmM
-	qyUccANgV2HeyVmRWe94s6wrOk89FrsPNbP4Zfj+D+xTAwbaUIQ0dxALmpva0NmXyA9NEYUEusqwR
-	5zgqh7A8XC/dNvNyXxG1CfBMH0os/HaxiOhoZN3o0vsBi0q4r/S/i1TYdzmN9j6U54ovRl0RLAYwX
-	rtAdIG9VOnIyvcBdtUv4FAn7NdRseyofoQSf6HdLn3b4mHs5HIBLCOWzSx/ALmuK91NZ/huH1P4SI
-	p0fjZOregoiHhKX6PG0AvHi6z4DnO0NHn6PJAvb8vIx1hdbeYEGS/kF3woMAM+MP2bzkulMRJ9dr+
-	ZUM4zyfSrOWCzC423yaQ==;
+	List-Owner; bh=ZbQiDYxfLAZCt8T8RN6EO/9k7iedkGvJnK7div7nj9U=; b=uSXpMUj6zD92dS
+	myLS8pEcZdlvwUxFQ6aRd1d9qh4W6LToisBZXWnXoSwBWxxohC/0sWy4rEkenGqK7rzrw+GPKqBft
+	G1HTWZgaITiMI/UGcFNEoB4pTdVjEfyjO3C2lfTdAyYidX7NVEQMUCgJYCVapZmQLHKRGGQCyQ//P
+	Q/kJGdx5EpBa50OvGc6fGJO7MMkcWhipHgXKU2TLPOB9wt2WM7M3xl2W4RYisS/xFzZ2jrWH6qYSI
+	KA32OwZh13g/rFPm00gXN9DqoDF9K0L4qeEtSbIXgWyVG6Tjw4LXoSTMuaxZ4btONmrYsdf/+KV3P
+	9QT0Pe2uvMR0tbuvd1zQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7rSq-004TXo-16; Thu, 13 Jan 2022 04:11:52 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n7rTC-004TgZ-3b; Thu, 13 Jan 2022 04:12:14 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7rSG-004T8Y-2t; Thu, 13 Jan 2022 04:11:18 +0000
-X-UUID: 682567da00ec497e9f9e685e0818b946-20220112
-X-UUID: 682567da00ec497e9f9e685e0818b946-20220112
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ id 1n7rSI-004T84-9w; Thu, 13 Jan 2022 04:11:19 +0000
+X-UUID: 6ed73f50e8fc41588a708c9dbace807d-20220112
+X-UUID: 6ed73f50e8fc41588a708c9dbace807d-20220112
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <yunfei.dong@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 682492421; Wed, 12 Jan 2022 21:11:14 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1728863340; Wed, 12 Jan 2022 21:11:11 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Wed, 12 Jan 2022 20:11:13 -0800
+ 15.0.1497.2; Wed, 12 Jan 2022 20:11:10 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Thu, 13 Jan 2022 12:11:11 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Jan 2022 12:11:08 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Thu, 13 Jan 2022 12:11:09 +0800
+ Transport; Thu, 13 Jan 2022 12:11:06 +0800
 From: Yunfei Dong <yunfei.dong@mediatek.com>
 To: Yunfei Dong <yunfei.dong@mediatek.com>, Alexandre Courbot
  <acourbot@chromium.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, "Tzung-Bi
@@ -58,17 +57,17 @@ CC: George Sun <george.sun@mediatek.com>, Xiaoyong Lu
  <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <srv_heupstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>
-Subject: [PATCH v19, 09/19] media: mtk-vcodec: Use pure single core for MT8183
-Date: Thu, 13 Jan 2022 12:10:45 +0800
-Message-ID: <20220113041055.25213-10-yunfei.dong@mediatek.com>
+Subject: [PATCH v19, 07/19] media: mtk-vcodec: Support MT8192
+Date: Thu, 13 Jan 2022 12:10:43 +0800
+Message-ID: <20220113041055.25213-8-yunfei.dong@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20220113041055.25213-1-yunfei.dong@mediatek.com>
 References: <20220113041055.25213-1-yunfei.dong@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_201116_204144_833DD6F9 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20220112_201118_366398_098EA283 
+X-CRM114-Status: GOOD (  11.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,81 +84,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Separates different architecture for hardware: pure_sin_core
-and lat_sin_core. MT8183 is pure single core. Uses .hw_arch to
-distinguish.
+Adds MT8192's compatible "mediatek,mt8192-vcodec-dec".
+Adds MT8192's device private data mtk_lat_sig_core_pdata.
 
 Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- .../platform/mtk-vcodec/mtk_vcodec_dec_stateful.c      |  1 +
- .../platform/mtk-vcodec/mtk_vcodec_dec_stateless.c     |  2 ++
- drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h     | 10 ++++++++++
- 3 files changed, 13 insertions(+)
+ .../media/platform/mtk-vcodec/mtk_vcodec_dec.h   |  1 +
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c     |  4 ++++
+ .../mtk-vcodec/mtk_vcodec_dec_stateless.c        | 16 ++++++++++++++++
+ 3 files changed, 21 insertions(+)
 
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-index c7f9259ad094..04ca43c77e5f 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateful.c
-@@ -626,4 +626,5 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata = {
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
- 	.is_subdev_supported = false,
-+	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
+index e08886a600a3..66cd6d2242c3 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec.h
+@@ -68,6 +68,7 @@ extern const struct v4l2_m2m_ops mtk_vdec_m2m_ops;
+ extern const struct media_device_ops mtk_vcodec_media_ops;
+ extern const struct mtk_vcodec_dec_pdata mtk_vdec_8173_pdata;
+ extern const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata;
++extern const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata;
+ 
+ 
+ /*
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index b9f612fb630e..201ae71d0899 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -392,6 +392,10 @@ static const struct of_device_id mtk_vcodec_match[] = {
+ 		.compatible = "mediatek,mt8183-vcodec-dec",
+ 		.data = &mtk_vdec_8183_pdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8192-vcodec-dec",
++		.data = &mtk_lat_sig_core_pdata,
++	},
+ 	{},
  };
+ 
 diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-index 3294c8957ae5..23d997ac114d 100644
+index 3d9f47555884..183cd67a334a 100644
 --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
 +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_stateless.c
-@@ -357,6 +357,7 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata = {
+@@ -357,3 +357,19 @@ const struct mtk_vcodec_dec_pdata mtk_vdec_8183_pdata = {
  	.worker = mtk_vdec_worker,
  	.flush_decoder = mtk_vdec_flush_decoder,
- 	.is_subdev_supported = false,
-+	.hw_arch = MTK_VDEC_PURE_SINGLE_CORE,
  };
- 
- /* This platform data is used for one lat and one core architecture. */
-@@ -375,4 +376,5 @@ const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata = {
- 	.worker = mtk_vdec_worker,
- 	.flush_decoder = mtk_vdec_flush_decoder,
- 	.is_subdev_supported = true,
-+	.hw_arch = MTK_VDEC_LAT_SINGLE_CORE,
- };
-diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-index ab2004242c43..17e7deee10b5 100644
---- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-+++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_drv.h
-@@ -324,6 +324,14 @@ enum mtk_chip {
- 	MTK_MT8195,
- };
- 
-+/*
-+ * enum mtk_vdec_hw_arch - Used to separate different hardware architecture
-+ */
-+enum mtk_vdec_hw_arch {
-+	MTK_VDEC_PURE_SINGLE_CORE,
-+	MTK_VDEC_LAT_SINGLE_CORE,
-+};
 +
- /**
-  * struct mtk_vcodec_dec_pdata - compatible data for each IC
-  * @init_vdec_params: init vdec params
-@@ -342,6 +350,7 @@ enum mtk_chip {
-  * @num_framesizes: count of video decoder frame sizes
-  *
-  * @chip: chip this decoder is compatible with
-+ * @hw_arch: hardware arch is used to separate pure_sin_core and lat_sin_core
-  *
-  * @is_subdev_supported: whether support parent-node architecture(subdev)
-  * @uses_stateless_api: whether the decoder uses the stateless API with requests
-@@ -364,6 +373,7 @@ struct mtk_vcodec_dec_pdata {
- 	const int num_framesizes;
- 
- 	enum mtk_chip chip;
-+	enum mtk_vdec_hw_arch hw_arch;
- 
- 	bool is_subdev_supported;
- 	bool uses_stateless_api;
++const struct mtk_vcodec_dec_pdata mtk_lat_sig_core_pdata = {
++	.chip = MTK_MT8192,
++	.init_vdec_params = mtk_init_vdec_params,
++	.ctrls_setup = mtk_vcodec_dec_ctrls_setup,
++	.vdec_vb2_ops = &mtk_vdec_request_vb2_ops,
++	.vdec_formats = mtk_video_formats,
++	.num_formats = NUM_FORMATS,
++	.default_out_fmt = &mtk_video_formats[DEFAULT_OUT_FMT_IDX],
++	.default_cap_fmt = &mtk_video_formats[DEFAULT_CAP_FMT_IDX],
++	.vdec_framesizes = mtk_vdec_framesizes,
++	.num_framesizes = NUM_SUPPORTED_FRAMESIZE,
++	.uses_stateless_api = true,
++	.worker = mtk_vdec_worker,
++	.flush_decoder = mtk_vdec_flush_decoder,
++};
 -- 
 2.25.1
 
