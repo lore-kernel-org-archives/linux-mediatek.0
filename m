@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F80AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:19:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 183DEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KIoxRloG54NTKumTVETQme/QsIJtKm2rzD5h4V6yMug=; b=gifpDqPho1e8Mw3M5Q5vGqphh3
-	X8WxjJwDJlsfXDKemSDn55hO29b7JuGQ10iDmcW7qnT4kt7x3HhtLFiIXuF+57Wu4v7NCAXet0cEz
-	irFf6pwV7JR7scIxY2kMJQdrmNWZ403nSuVi5aXD9vYAj+hEttmD4fUReaYclXGAZP0TNUXS0+te+
-	zpxed2eM3L97lOG/Tmdz4PPUB0tP60B6ZdfZYqlwU5Kr2pylaUale0cmudm3uFh1qaY1ODjRFWajp
-	kQ1d2sYh/EeF9h6EYM6N6J5LJYBPz90MKBuuBl/pH5+Eg9MDQzY5ojGohnN3R3uy6rmNJBu/R7+f3
-	HXLOLwdQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CNWlvMxbMREsMn4axI9wrFWLgVnpFum7lphYKOpXozY=; b=zbfSZOG2HcbuE2
+	xtIQSAOgTDpwGqX/zALaKL50hqZygSkabJQ1r2DMk9DjSCjp2KDkP8zm1Jn2F7CLm8bOujYo8UvJm
+	8QHNTVJh2EJVc3WGxX5HIoPtvXf5VcNtVKBixv5y+XUPhE0w3Y/F3lF+yMCsMNvTObu/J0CbfDIov
+	Spc3Xi8xzaqRtOf58Hzv/qcNFmF2dQuX8UA13y2r6xCLItelNARb6qL4MDIPV0ofw63U+ag+eLXjY
+	15Ik0HVYbi/nsfoZoScUolP2297CgMFi1aCXhLx4V4c4ThuyRPSmegmXmuvSSnp7ghpsQ7ZIxURE8
+	y3VDCcvi/b1ZHAoc1Dxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7xCN-005Pyj-E1; Thu, 13 Jan 2022 10:19:15 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1n7xfZ-005WSY-Vh; Thu, 13 Jan 2022 10:49:25 +0000
+Received: from mga01.intel.com ([192.55.52.88])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7xCK-005Pxt-1Y
- for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 10:19:13 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id BBB3FB81ECB;
- Thu, 13 Jan 2022 10:19:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AC7EC36AE3;
- Thu, 13 Jan 2022 10:19:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642069149;
- bh=11HpoOh79JImMu5a+CtI+2j1zpNTutiJy7Ap/Qb5gg0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=p29KM/aLH7N+JAphxB1qVFmPiDXN8RjhOy1d39xx4d5oKjblr5GzGtRhjoxrMWzBU
- /UuSs5tuG/05fkdEUi5ChDqtIo/QJoxMch50XxeK4pRyaINS7LSBDLNxVo96OX0svx
- TYdZaaMyyWVq/ofRXOfWDLvW8EcrKRISSnE6LftbDoGJgDjuCRgQPSoPxoQSIXPE1b
- 8SwDVm1CgCuiCxKEM9zb9rX8eP+aZgdKI06yL4l2C87nO5yVZpmCMHo27V6UBKvHvB
- CQDp4KSEyN1acGiEzaf9W4XmPz7wHRmHHRyt+143KVNm7YkX77Z2GfdJyEmPWm1XAa
- 4VZ7Yk2tTmQiw==
-Date: Thu, 13 Jan 2022 11:19:05 +0100
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>,
- Evelyn Tsai <evelyn.tsai@mediatek.com>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- Bo Jiao <bo.jiao@mediatek.com>
-Subject: Re: [PATCH v2 3/5] mt76: mt7915: add support for MT7986
-Message-ID: <Yd/8mXumr25iESux@lore-desk>
-References: <cover.1641901681.git.Bo.Jiao@mediatek.com>
- <8b2098132192c0381e41ac78a47b7318d5c28b04.1641901681.git.Bo.Jiao@mediatek.com>
- <Yd7ZKb7Qsh4lGA5E@lore-desk>
- <2ab2731dc44494dbfe89363638cdcaf49351afbe.camel@mediatek.com>
+ id 1n7xfN-005WOe-OA; Thu, 13 Jan 2022 10:49:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642070953; x=1673606953;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=UTYhz+JLVLGh52BwP1c/i/glpIIbyehr0ElDLiBRGfE=;
+ b=N7ehVD3OVNtNd2u/wPc5RpAvWtWARGUSiYAdYeCNWBsnL8AAWsLXNJXC
+ V5TB5S5aKpq40jk+7ebBVW2zYJtNag6xIp2oXrJJ5zhyGQ5IiCQscuwwh
+ XwHV8C5whEho9NXHfMThvzZ5ky26K7ygv4oQcwIcFNqaXUHF5YsN0IEV9
+ lB5T/LohROQ9JdQ3YpLaMT3TSZEBCxAIAxPLe5Y2nkI3cLwXi0RqoE5eH
+ idYsJPiOP3qJGaHcqpxeX8uPgjc+seX1mwn6W/Z6Enn6D4QQUrd8XbAFY
+ Imh68lrbTiyhPt1OtPDAbNgu8aIvzGECdQqzjEhG4alKOL6W4sbliQf08 g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10225"; a="268334516"
+X-IronPort-AV: E=Sophos;i="5.88,284,1635231600"; d="scan'208";a="268334516"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2022 02:49:12 -0800
+X-IronPort-AV: E=Sophos;i="5.88,284,1635231600"; d="scan'208";a="593310113"
+Received: from smile.fi.intel.com ([10.237.72.61])
+ by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jan 2022 02:49:07 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1n7xe5-00A9zW-RM; Thu, 13 Jan 2022 12:47:53 +0200
+Date: Thu, 13 Jan 2022 12:47:53 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>,
+ Lucas Stach <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
+ Tian Tao <tiantao6@hisilicon.com>, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 3/3] mmc: mediatek: add support for SDIO eint irq
+Message-ID: <YeADWXPGPW253ssR@smile.fi.intel.com>
+References: <20220111014046.5864-1-axe.yang@mediatek.com>
+ <20220111014046.5864-4-axe.yang@mediatek.com>
+ <Yd1uJ+dX2CTEJfYY@smile.fi.intel.com>
+ <83670f12a4eda1d8aecde3c0bf225642106d1267.camel@mediatek.com>
 MIME-Version: 1.0
-In-Reply-To: <2ab2731dc44494dbfe89363638cdcaf49351afbe.camel@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <83670f12a4eda1d8aecde3c0bf225642106d1267.camel@mediatek.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_021912_253560_8E1F43C2 
-X-CRM114-Status: GOOD (  21.15  )
+X-CRM114-CacheID: sfid-20220113_024913_853189_0B18BACB 
+X-CRM114-Status: GOOD (  17.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,84 +88,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1687402837765496827=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, Jan 13, 2022 at 03:58:52PM +0800, Axe Yang wrote:
 
---===============1687402837765496827==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cvfcff8cOfewXKH7"
-Content-Disposition: inline
+> But for the comment for 'dev_dbg', can you explain more about that?
 
+Sure.
 
---cvfcff8cOfewXKH7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On Tue, 2022-01-11 at 13:46 +0200, Andy Shevchenko wrote:
+> > On Tue, Jan 11, 2022 at 09:40:46AM +0800, Axe Yang wrote:
 
-> On Wed, 2022-01-12 at 14:35 +0100, Lorenzo Bianconi wrote:
-> > >=20
-> > > @@ -302,6 +316,15 @@ struct mt7915_dev {
-> > >  		u8 table_mask;
-> > >  		u8 n_agrt;
-> > >  	} twt;
-> > > +
-> > > +	struct reset_control *rstc;
-> > > +	void __iomem *dcm;
-> > > +	void __iomem *sku;
-> > > +
-> > > +	struct {
-> > > +		bool is_7975;
-> > > +		bool is_7976;
-> > > +	} adie[MT7986_MAX_ADIE_NUM];
-> >=20
-> > do we really need it? Can we just read data from chip when necessary?
-> > it is not
-> > access in the hot-path, right?
-> > I think it is easier and more readable.
->=20
-> Adie registers are inaccessible after wfsys power on so we need some
-> places to store chip configuration.
-> We will modify it to make it more readable.
-> + u32 adie;
+...
 
-what I mean is just continue reading these values after the first time (tha=
-t is
-in common for both approaches).
+> > > +		host->pins_eint = pinctrl_lookup_state(host->pinctrl,
+> > > "state_eint");
+> > > +		if (IS_ERR(host->pins_eint)) {
+> > > +			dev_dbg(&pdev->dev, "Cannot find pinctrl
+> > > eint!\n");
+> > 
+> > In debug mode of pin control this will bring a duplicate message.
+> 
+> Can you explain more about this comment?
+> I don't understand what the 'duplicate message' refers for.
 
-Regards,
-Lorenzo
+Have you chance to read the implementation of pinctrl_lookup_state()?
 
->=20
-> thanks,
-> Peter
->=20
-
---cvfcff8cOfewXKH7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCYd/8mQAKCRA6cBh0uS2t
-rGVEAQCHrAHThMVJZHLoWahbCNC98g2po/d7grDNMgd+uxWRPgD9Ec6DtqPdJcYF
-DXkzu4YqSEGJ6gSqxKP0Yf9A1u7q6w0=
-=ALze
------END PGP SIGNATURE-----
-
---cvfcff8cOfewXKH7--
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
---===============1687402837765496827==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1687402837765496827==--
-
