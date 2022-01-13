@@ -4,121 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C792C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 12 Jan 2022 21:45:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7770AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 00:15:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s3VHPF5kwSrEKvYbmU+K2S9aAOc7mifNwt8f3sDd83I=; b=KrFV9WrNE3KkOnV2PcjdjCmiql
-	KQhsUTH1p2UHw9q/b6McIU1zU7Dk0sHu51fM3rJyG0PnlUwyuE5yWVOqFcXFD7xtErCGzNUXv7HZD
-	A7Rb5SxFjnzSgMkOtFRSWNSrMWS0VcW/dgU3hB8IGBvvFD9156vKsfcBy9DTUOp8zjA9LHRojMp9v
-	qM2OzUncpg1kALvNZXphO4NX67uWa8Nd88phW5WPwoSJBROjf8KkrPXuVEyKHbf8VmvJYBkx+aNRj
-	9EFZltuyk9p87+yRH6vhBrX9YuyJh7/n7yZyem4cl2RLYzjd3rxsqkYViv6Zy1MPtWYd/fXrGbCKP
-	EOztde9A==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jT0QrMdcWYAaJQ6TokqU9jtGqgiaQGJ1ItDC63VauvQ=; b=mHTz8YGaoLGn/XvomFQXSKAtw2
+	VUqfG4eEkRCoEXKNvsQafPV9g1DxBs3eUlTsRBZvgVreWTPvMt0kJMq+vLP1E+8jhpv3UEwiGTI8V
+	2sUq8XJ5xYvRfbVn4nKBQatT1ho5urSWHFsCTeH/m3yJ2zQ4xc2siTOCeK/tIa/pPjFJh+8biAec7
+	TTLAbf4//H7iExKSn8EF7pJyUjexIB8ELU5KjWerHDFgWIdBtp0FhiYKTf15HXzHIxjXXuO2JP2uG
+	28EhkwLNvV/nWza3XN3TwD+ahMt07HGZoJ51r/yIgWdmUGxJy9faO/5kVDwAu07g5hD/71DSXSNRS
+	DO1q3epw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7lRF-003sMU-N3; Wed, 12 Jan 2022 21:45:49 +0000
-Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
+	id 1n7nlT-0048vY-S2; Thu, 13 Jan 2022 00:14:51 +0000
+Received: from mga04.intel.com ([192.55.52.120])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7lRC-003sLD-I5; Wed, 12 Jan 2022 21:45:48 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 83260B820E0;
- Wed, 12 Jan 2022 21:45:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6540C36AE5;
- Wed, 12 Jan 2022 21:45:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642023943;
- bh=Rl4cYWMV8h1J8XxpmCmzqZfaoBMwLhpNARBfd20DoT4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Khszb13U1jmu+m7bsIzdnnnT1iCYGXg5GGE42/oJuMQsK9Yn6UuauPQmmihxCed8g
- I1F6FNxWdahiv8HObXLZ1MgG9aNbNh1vuWd5lPBPEE8jOf+os+a0Eg3ZNc61OeDpAd
- oG1pZPxuhBAj0VIDmNNIk5GiF3ZYFM98qq+jWT/t93oYg9ih3f230JowrUn42Y60WL
- bkt6CNPh+5WsNOS7M+9MpTJWTFF/zRWDIyY+MuNMqob1T2eWMhLpwtYRPlw8g7cffu
- gO+N6rZqa7cTguyMABuPC7x4dDwKst9lAVidnA7ik+1nWq+j4fbnhftwUHOLMDmzq6
- MQ+g/36gi+i7A==
-Date: Wed, 12 Jan 2022 21:45:25 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Geert Uytterhoeven <geert@linux-m68k.org>, Andrew Lunn <andrew@lunn.ch>,
- Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>,
- Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-phy@lists.infradead.org, netdev@vger.kernel.org,
- linux-spi <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>,
- openipmi-developer@lists.sourceforge.net,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Jaroslav Kysela <perex@perex.cz>,
- Linux PWM List <linux-pwm@vger.kernel.org>,
- Hans de Goede <hdegoede@redhat.com>, Robert Richter <rric@kernel.org>,
- Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>,
- Linux PM list <linux-pm@vger.kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Alex Williamson <alex.williamson@redhat.com>,
- Borislav Petkov <bp@alien8.de>, Sebastian Reichel <sre@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Takashi Iwai <tiwai@suse.com>, platform-driver-x86@vger.kernel.org,
- Benson Leung <bleung@chromium.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
- Mun Yew Tham <mun.yew.tham@intel.com>, Eric Auger <eric.auger@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Linux MMC List <linux-mmc@vger.kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Vinod Koul <vkoul@kernel.org>,
- James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Richard Weinberger <richard@nod.at>,
- Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
- linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-Message-ID: <Yd9L9SZ+g13iyKab@sirena.org.uk>
-References: <20220110195449.12448-1-s.shtylyov@omp.ru>
- <20220110195449.12448-2-s.shtylyov@omp.ru>
- <20220110201014.mtajyrfcfznfhyqm@pengutronix.de>
- <YdyilpjC6rtz6toJ@lunn.ch>
- <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
- <20220112085009.dbasceh3obfok5dc@pengutronix.de>
- <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ id 1n7nlG-0048uM-Kv; Thu, 13 Jan 2022 00:14:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642032878; x=1673568878;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=y/0xIRJO01WCYcv/IxxYLw14Xe4i+98WUNn/NpPdXXo=;
+ b=DeUaYaFrAGTD/Ml8ObltukATQDO5XXKHj8qPawapcubBWlmXd8jue4LL
+ Mb35ECWH5Ujq6A5YtRUibltjQF53Ey8tRCkxcBJky5ukLtCS7et8CMtPp
+ b0luyCA2rgyiV0MlLamgs3DzzvO134RVCSphgwJYOdkiaDMVZ7InzC8Fi
+ moLK5fDNnDl3bBuL6HIDm1/YDke7qdWBTgA9rp1n+zHHLQrzPiRKc2fd6
+ WXf4GZLyH8+FHdOJdr0+KtUOG5d3l5MnrrjT4jdhsaLi+iKXC1wGK3zpw
+ dzkcBjQjuy37GtRMKWiA1NLCVGcBUMmvKuFNuX20GS30+7QbpfyOGExMb A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10225"; a="242701150"
+X-IronPort-AV: E=Sophos;i="5.88,284,1635231600"; d="scan'208";a="242701150"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Jan 2022 16:14:35 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.88,284,1635231600"; d="scan'208";a="490933939"
+Received: from orsmsx606.amr.corp.intel.com ([10.22.229.19])
+ by orsmga002.jf.intel.com with ESMTP; 12 Jan 2022 16:14:35 -0800
+Received: from orsmsx607.amr.corp.intel.com (10.22.229.20) by
+ ORSMSX606.amr.corp.intel.com (10.22.229.19) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20; Wed, 12 Jan 2022 16:14:34 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx607.amr.corp.intel.com (10.22.229.20) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2308.20 via Frontend Transport; Wed, 12 Jan 2022 16:14:34 -0800
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.174)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2308.20; Wed, 12 Jan 2022 16:14:33 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jHHWEmxZ+WTqw8qUJIoh9sbGptMEJYw+Ye/mzvNROkZKlmh/TA9WrllCagBi3Odobfl8L3EvXUeCQQ7C78jxomZ6hC4Uo2UOrkobufVQtIHnb4F2cwNHX14EKojBURb1EybphCjuASHZjKK9chzzwY86nDmLY6mInkr9HuwZYfHXPZm9QTXzNceF7+3FEy6Oa84yP0qiqGHYfXXIGY3xAnVtHtVZeD2+Z/jrsKxJuJvs/9sLnZdvYijDJ2bUCuqyCClqsGlQv4E3SwOkVCAwC/bOa7mcluEgIynE8xHptfUJq8DpQESswNS8EmaCNKsVe5Nxbxw6De/loCMjWeSKFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UmkpOvizy0p2JGtwIARgRsPotcSL9LuSrqEgBv8uqD8=;
+ b=Z0+pCLAjAfgK35DG+BEg7cqxf4ZGx/5xUaC2pwyTKq6cDNf+2uVw3zLX41U3z7gmN7H5y4Z1aJbArlm4ImnOsyrtx8YESVXk6GeicLitCiqWh7Mhu0BK4tqgA4hUpFwYpI52S8JSEowBODCJhbiYE8Ei8c+UrFZo7WJhK45nbaf5E0n2BLKs7JYvobGi2DgJdpLG9ni86aa7WrdYay18+/M5wl2088dNzXhdic7qLGz4EGkgccoDhspYoJGRnhEisbM+eEQKxqcF7MvT0yqupWXe5Z8KlrYVsXJmzcP0joupscKPlL1NgKZASNjV9NdKA02Q8K4CWAcGGLfE0Be+XA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from DM6PR11MB3180.namprd11.prod.outlook.com (2603:10b6:5:9::13) by
+ DM5PR11MB1913.namprd11.prod.outlook.com (2603:10b6:3:10b::20) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.4888.10; Thu, 13 Jan 2022 00:14:21 +0000
+Received: from DM6PR11MB3180.namprd11.prod.outlook.com
+ ([fe80::b47a:6157:f9b5:b01d]) by DM6PR11MB3180.namprd11.prod.outlook.com
+ ([fe80::b47a:6157:f9b5:b01d%3]) with mapi id 15.20.4867.012; Thu, 13 Jan 2022
+ 00:14:21 +0000
+Message-ID: <2f0fd4a9-4d24-a6b7-12ae-51763f304761@intel.com>
+Date: Thu, 13 Jan 2022 01:14:14 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.4.1
+Subject: Re: [v8, PATCH 1/3] drm/dsi: transfer DSI HS packets ending at the
+ same time
+Content-Language: en-US
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, <chunkuang.hu@kernel.org>,
+ <matthias.bgg@gmail.com>, <narmstrong@baylibre.com>,
+ <robert.foss@linaro.org>, <daniel@ffwll.ch>, <airlied@linux.ie>,
+ <p.zabel@pengutronix.de>
+CC: <xji@analogixsemi.com>, <jitao.shi@mediatek.com>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+References: <20220112153639.12343-1-rex-bc.chen@mediatek.com>
+ <20220112153639.12343-2-rex-bc.chen@mediatek.com>
+From: Andrzej Hajda <andrzej.hajda@intel.com>
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173, 80-298
+ Gdansk - KRS 101882 - NIP 957-07-52-316
+In-Reply-To: <20220112153639.12343-2-rex-bc.chen@mediatek.com>
+X-ClientProxiedBy: LO4P123CA0458.GBRP123.PROD.OUTLOOK.COM
+ (2603:10a6:600:1aa::13) To DM6PR11MB3180.namprd11.prod.outlook.com
+ (2603:10b6:5:9::13)
 MIME-Version: 1.0
-In-Reply-To: <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
-X-Cookie: Bridge ahead.  Pay troll.
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: d28fd337-ee7f-46a3-9b89-08d9d629a574
+X-MS-TrafficTypeDiagnostic: DM5PR11MB1913:EE_
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-Microsoft-Antispam-PRVS: <DM5PR11MB1913F0D9696C90A3ADF8B955EB539@DM5PR11MB1913.namprd11.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: IXxT+BaGnmSCjIFFgfseB7pQam/pTli0RZsRmNbLcDa+ueWTPnuHF8jA1PZrOxT1olO/TwrdwTkNPxElJi95APjgZL+ZiNDlCPmDncfsI55kFwRB1QB+AmEYJLCV4gbHiS9zYOxDr0qRjqiieoi5j39v4+eQ+mIO/eJYyjRNg/9lZUglO+kCpwJyXXuFaB/c80E4u95AR1h3JAsVRZJlKtb9Ez5KSuUl7E8XU770Ouuz1v43sHbGLziztEJCmCjO4eIWIZLOckQBSwk010U+PcDf7miMQOj3bL9Y1tQ9gJIGKUEACrFIssCOFse3xRPQQwF2QTZaTLOHky3/RncWHDPLVudw+qf49wZOpTcp834Ov82/NCslg5WAjOW2sh4jpbdyxuADdRyGmewaaelWGFpXvT1HiYiFhuAShu1IdBmN9Q7aaq6gYdM3voM44oX3Y4UQouonzy6wiUe4LdxtHQ7aZHlUg/oC/DbJOIShlRWwXnrlQvAyEYcOA77ULHicHUgN3ERIgU3KPM9PPbUosoPNOfApI61gWNZyNpxYUIEO7tMCEVUuvjzIUubSmsfo3FjOmxR4kj/nk8HMrK3uQoYg8wsQzRLlAQKCPpBsl2+M1QsbzVmaOIAAsHBTuKtVtmHm4ssNu8X02dxodAS4ZqH9TxhDtt8zNncEHVDxG+OBg9079dInHC/Fm0GnR1LCBC8wui1ZgWZub/MGFLK3SJX0TyFL/jIYJxHNewpQY+k=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3180.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(366004)(186003)(26005)(4326008)(86362001)(44832011)(83380400001)(8676002)(31696002)(2616005)(7416002)(6512007)(6486002)(5660300002)(66946007)(66556008)(66476007)(2906002)(316002)(38100700002)(8936002)(36916002)(6666004)(6506007)(53546011)(36756003)(31686004)(508600001)(82960400001)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?T3JBb0tuZXZTTVJHVHQzNzkzV3VYK045akpWRHZudE9vRnFYTDRGd0xIWDBD?=
+ =?utf-8?B?TW5wTkxnd1BYZk4rRFM3dXVsZ3JIaDl0QjU3MXRaUjdjejRQbWVzbENtSmJZ?=
+ =?utf-8?B?TkhzNHE3Z0xLVm45djIzMzdIUy9sby9ESnhUVWZITUVNK2lwKzNOQkNyMlV1?=
+ =?utf-8?B?REY1TnpMdExOUTZxWHJsQkhWZE5MT2Q1ZmgrTzNXV0txSFRIelY3eDFZckpv?=
+ =?utf-8?B?V2grU2tvVjBzWGhhbE95K2NHM2tkZnZFN050KzROWjg2TGJhWWprcjR2RHlr?=
+ =?utf-8?B?VTdwOG5aeGkxWitnK2d0RmJiVFZPSWZyRVFrcXdpd20yNzdKWkJpWWVOeVQ2?=
+ =?utf-8?B?NlhtSXhPSndBcDh0ZklWeTFUU2pUcVZla21JbDdJdWk0Q243UTBTS25NcG83?=
+ =?utf-8?B?QS9ZREplUWxiT2w2UHA3Y3JiMkowMERXUmN5UFZCREpRZXFvTjdqMFdzd2dj?=
+ =?utf-8?B?U3hHSjdNejhlUVZ2MWt0T3VmeXhDWTR6c2Y3TnpUWEJ5ZkFsNlNzbGZTL2FS?=
+ =?utf-8?B?cFhmcDdFcFVoZ05RclF5S2d1WktpY1FWNzE1MlJBY3NGeldPVmpPV0FjRi9Q?=
+ =?utf-8?B?WnBWT3NsR3RtaFFrUit5T1JnWFg3L1Vsc2hURDNXRUVyZm9LZVhyNk8wT1ZY?=
+ =?utf-8?B?ZHBKanBDR2hFWFYrYkRvYlk2VFUwRldaOUkweUdkb2FsdXNUcEZSYkVlVEtE?=
+ =?utf-8?B?OHFCS3daRTB2eG1rM2ZjUHRXeTZveTJxbjBDVGxyeC9nSEphWnZ5Z1VsVVFt?=
+ =?utf-8?B?ZTJSUS9VVVB4bnFiYlpaUzNRMjFhd0twNzBFMWt4RkpLRm5LMDBDeGxnY1Iw?=
+ =?utf-8?B?UTBlQ2ZhQW5xMkdES3ErazlSTkJWbWpoaGxOM3VaV3JWcmloQmpJZ2xmV0pR?=
+ =?utf-8?B?dlhCNjJYbnBOYnoxTi9nc2kyQTlNTElTWGJQTW1EdHl2Zno0dHl1VEdhTnJr?=
+ =?utf-8?B?RHpLSzMvY1ZLMGpaeGZRa3FlOGs2TjFoZHVzQVlPQ1pUVVFJVEsvOHlndEJp?=
+ =?utf-8?B?bzlrSURuUFc4RUxQc2RHYnpTZGpoUTR2dktUdCtHU2xtc25vUm5NR3ZsSSs1?=
+ =?utf-8?B?MnB6U3N1VEUyVjEvVHlHTU5mSVBRbWJYWTlsOXVpbExURmI3R2FDR2xZUVVG?=
+ =?utf-8?B?VXV2bmJ4MUpTV2JvZHZHVW9jeFQxeW9FdFora3QzcVR2Mnl2NCt6WU9jMHNZ?=
+ =?utf-8?B?cjQwNmFSclM3R0ZOcUhXVXJhVS9HK0txYThIQUQ1MXMzR0poY1JRNmo5cUdS?=
+ =?utf-8?B?RDhhVXVPbjNYVlkvWFhseTgvcEVvYUx1SVh3ZFZIY0lQejhsemVNYk1VdlhI?=
+ =?utf-8?B?SllwbC9CODkxaTkvQVlBS1NBbDdhSGxuTGZzR0Yxd0VrN0tvN011WDhGWG93?=
+ =?utf-8?B?Y3hTeXNhaTlnWUtSZk9hTEFzRE1od2pNNjN6ZTNFakptcWR5SGRVdFpKZkJi?=
+ =?utf-8?B?cm81UGlUMFNBWEh0VjdKOXJ4TlZGSjVXZmVSSTRON0ZGN0g2c01MUjlXQlkw?=
+ =?utf-8?B?TVdUZUs0ZXBqRXdaeDF4bW1wbGVDMkJ5REcvQVhYZG9xeWJvNVdmWGUwdy9G?=
+ =?utf-8?B?NXMwTmxBK0JheHlrMkYxVnl4VCtMZUpjRVZRS0ppeENDWENlRXdPam1naFhJ?=
+ =?utf-8?B?WDlkdUlUOHJjSmdkdEk1aUlJSkM4SVpob3hnOW80Y3lSZjM2QmcxbG5mTzlY?=
+ =?utf-8?B?cHgzZ0txS0ttWGJ5UGdsY1Bra3lUa3k2bHB3SW5RMWxUeUM2LzMvbUU0RzJF?=
+ =?utf-8?B?cjJLcE02a3M5YkhTdkc0d013bUNTU1JXRlpBMnk0N0hWVkxnNHlmckJMSzBS?=
+ =?utf-8?B?UVhHWG9ScnU3dTBxQ3pZWmZ6bmhiTEtEWlRPQm0reVNQbXVITHk2YnlNNUZR?=
+ =?utf-8?B?dXYrZlNtbGxyVVpLUWlXZGJja3lLTkxSSGtIdnFPWCsyVnBaaGhndEhLL0lK?=
+ =?utf-8?B?N2xKMXJkRVl1YUh3d3FYMjZONExmcXdmeUVaYnphTW5XZXovUENUbFZTYlhk?=
+ =?utf-8?B?TkM4aGsxRUxxT2krdkFOdVROSjJIR3U5T1FlK2JFUkM4aXNrNnBGTzFqOUUy?=
+ =?utf-8?B?Y083Zm9rbzFOMmtrTVY3TG9QdkJlemV1Vm43Ly9BTldDSFBiOUgxQk1BWndT?=
+ =?utf-8?B?d0JpeXRIRFlGVVdXZzJJQTVOL0VsaUdReGxremlDZjFSWStZVHE1dGJlS1FV?=
+ =?utf-8?Q?j/7MMH1tUIaRmBAQEvKh4z8=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: d28fd337-ee7f-46a3-9b89-08d9d629a574
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3180.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2022 00:14:21.0021 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HJTgJ+qJyaI8PaXaPuVSgP/tWNKulWKacQAZ7T9IU0tbYp9hiCikRci3n7ZT4XWi22Vc/1E4ehNfVFOQAEqLEw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR11MB1913
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220112_134546_925507_E5DF53F5 
-X-CRM114-Status: GOOD (  25.19  )
+X-CRM114-CacheID: sfid-20220112_161438_776608_B7FC27B3 
+X-CRM114-Status: GOOD (  27.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,81 +179,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5365040944425466870=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============5365040944425466870==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bKSGz4pQDpFpvPus"
-Content-Disposition: inline
-
-
---bKSGz4pQDpFpvPus
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jan 12, 2022 at 10:31:21PM +0100, Uwe Kleine-K=F6nig wrote:
-> On Wed, Jan 12, 2022 at 11:27:02AM +0100, Geert Uytterhoeven wrote:
-
-(Do we really need *all* the CCs here?)
-
-> That convinces me, that platform_get_irq_optional() is a bad name. The
-> only difference to platform_get_irq is that it's silent. And returning
-> a dummy irq value (which would make it aligned with the other _optional
-> functions) isn't possible.
-
-There is regulator_get_optional() which is I believe the earliest of
-these APIs, it doesn't return a dummy either (and is silent too) - this
-is because regulator_get() does return a dummy since it's the vastly
-common case that regulators must be physically present and them not
-being found is due to there being an error in the system description.
-It's unfortunate that we've ended up with these two different senses for
-_optional(), people frequently get tripped up by it.
-
-> > To me it sounds much more logical for the driver to check if an
-> > optional irq is non-zero (available) or zero (not available), than to
-> > sprinkle around checks for -ENXIO. In addition, you have to remember
-> > that this one returns -ENXIO, while other APIs use -ENOENT or -ENOSYS
-> > (or some other error code) to indicate absence. I thought not having
-> > to care about the actual error code was the main reason behind the
-> > introduction of the *_optional() APIs.
-
-> No, the main benefit of gpiod_get_optional() (and clk_get_optional()) is
-> that you can handle an absent GPIO (or clk) as if it were available.
-
-Similarly for the regulator API, kind of.
-
---bKSGz4pQDpFpvPus
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmHfS/QACgkQJNaLcl1U
-h9BO/wf/X52fQIYQFCYJDsHS4pHQDXMDv8aCyyoEen4dO7d7t6fuflAYrOGj/MXP
-UkHWhHmjH5EJrD5XQQmsOLQV5qXKD/mmvAuXQzNA/aUITdBah/r9xt3Y2nYb4+zR
-Nm3ZzFmvTZVLATEdRt39LZxBwD/gCkwQpEd1tSBKsiNsq2k9eyGs6zff3Aj5xUzC
-+9zfg/GCQOESdU+jRATqvdl69QGdA5N6dPgzgIQEtecGNmx02jn8bEqmaN0SX1NZ
-zQXn1ChOAI4lWDhW4uAEnD4aF8hUN//xR2DiHIjNuGFgb7vTKdJgbI0iG2iH30Nm
-zgsgo5YMgTHurpX6yL8pMaJC54r/Pg==
-=MHmO
------END PGP SIGNATURE-----
-
---bKSGz4pQDpFpvPus--
+On 12.01.2022 16:36, Rex-BC Chen wrote:
+> Since a HS transmission is composed of an arbitrary number
+> of bytes that may not be an integer multiple of lanes, some
+> lanes may run out of data before others.
+> (Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+>
+> However, for some DSI RX devices (for example, anx7625),
+> there is a limitation that packet number should be the same
+> on all DSI lanes. In other words, they need to end a HS at
+> the same time.
 
 
---===============5365040944425466870==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Is it documented in anx7625 manual? Is it confirmed with hw team?
+
+If not, how it was detected? Have you tried to find workaround for it by 
+inspecting registers, maybe it is just matter of clock gating deferral, 
+timings or sth similar ???.
+
+>
+> Because this limitation is for some specific DSI RX devices,
+> it is more reasonable to put the enable control in these
+> DSI RX drivers. If DSI TX driver knows the information,
+> they can adjust the setting for this situation.
+>
+> Therefore, add a flag to control this situation beacuse the
+> mipi DSI specification is not forbidden this situation.
+
+
+I am not sure what you mean here.
+
+I have an impression (according t 6.1.3 of spec) that devices should 
+allow transmission of arbitrary number of bytes, so this is bug in hw/fw.
+
+The question if it can be fixed. If not patches are welcome.
+
+
+>
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> ---
+>   include/drm/drm_mipi_dsi.h | 2 ++
+>   1 file changed, 2 insertions(+)
+>
+> diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+> index 147e51b6d241..df4d15345326 100644
+> --- a/include/drm/drm_mipi_dsi.h
+> +++ b/include/drm/drm_mipi_dsi.h
+> @@ -177,6 +177,8 @@ struct mipi_dsi_device_info {
+>    * @lp_rate: maximum lane frequency for low power mode in hertz, this should
+>    * be set to the real limits of the hardware, zero is only accepted for
+>    * legacy drivers
+> + * @hs_packet_end_aligned: transfer DSI HS packets ending at the same time
+> + * for all DSI lanes
+>    */
+>   struct mipi_dsi_device {
+>   	struct mipi_dsi_host *host;
+> @@ -189,6 +191,7 @@ struct mipi_dsi_device {
+>   	unsigned long mode_flags;
+>   	unsigned long hs_rate;
+>   	unsigned long lp_rate;
+> +	bool hs_packet_end_aligned;
+
+
+Maybe it would be better to add another mode_flag.
+
+
+Regards
+
+Andrzej
+
+
+
+>   };
+>   
+>   #define MIPI_DSI_MODULE_PREFIX "mipi-dsi:"
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============5365040944425466870==--
-
