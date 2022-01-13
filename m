@@ -4,76 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD1A3C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 10:51:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3C03C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 11:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gfrPL7rQOLW7u0auazS26O5w2kRNrBqobmjZyH8pges=; b=j6rUFE5ZkstKPj
-	CN600ZHFBZ3ARS0dtsry34LeC/JCFkIC2+6UQeZsTrU7SZjf1fyhwGkBAdWL3b6gYywVzPtmzDZAN
-	mqFAxynpf28FRXLn1lAJttgFA3T+DX81u/Oka1EqE1BGby6yUgv5JFjieDmangTmwil+W4Pp2PpOg
-	+fBKEREjVOAE8qtsU/sHUZYfDVbA4nYDJLBknlb8PFzxFo+HeicFTCDEwUOpkbOytnM+jJtWE3bR4
-	Zu7YtK0kSIXUko/id55JJ98DOMEZAqZM1CuX0vi+r1hAjZGjWidkY9sRjTiG5OOpy40O961HYW3e2
-	uDFITOGTSwKYjmhDsetg==;
+	List-Owner; bh=1Ikx5FFBdBk9PizOl+BUW2J4VWUbO+KwwKZso7Pn5vs=; b=wWlKL9MsKC9hlr
+	jlT29YiwkF7WN0McPCW7ZZgMBF1N9R9EoOaz9VbBRmZw6P+DW11XOhv5VxW675yeHeSdWn9XoIdYV
+	JV+mCMGvqrAZM5fisBgrcjEGEvj5ftMj03bQ0dR9XTZn4b6fqseTwbfqLp9J82HoODm20/M0h2TmX
+	ryI0JEjJIDDkMd1/2P3tdujaFcHLMVvEugZDHCazwti03a+msXnkEFOdkcE6lsWpAzfk2byUfX7Y1
+	+OYEHcBWtets0cXEp2KKiQ2MDO5kkQ56IHgN93HNAEdxh6jE+vr3eFVDknXcajnEa2+a3QSEUw1bZ
+	qDjscRKMg4oc748Xv4dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7xhB-005WwL-13; Thu, 13 Jan 2022 10:51:05 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1n7xzQ-005ZpQ-G8; Thu, 13 Jan 2022 11:09:56 +0000
+Received: from mail-dm6nam10on20731.outbound.protection.outlook.com
+ ([2a01:111:f400:7e88::731]
+ helo=NAM10-DM6-obe.outbound.protection.outlook.com)
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7xgx-005Wrg-Hh
- for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 10:50:54 +0000
-Received: by mail-lf1-x132.google.com with SMTP id o15so17929495lfo.11
- for <linux-mediatek@lists.infradead.org>; Thu, 13 Jan 2022 02:50:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=NYdzsGyEzIJrHP8JYJwpG+jE5+s3oneWhUEBd32KPfc=;
- b=DhhsZ4FcY1ymdPypyg+ee+pcqdiHSzGlYLuwyZma/jDW9t3eFFml3cIDRE+Xfvh99+
- +4oBLTJzqus8vayylwYSGzQKdoQjicyTib8TNKHtenL7vge/5KER7iSIJlAE22OHhGJe
- x26kaaSxBgB6/8hltdzilL4tnDFYGvTapV+X0GXSpKGaE1H9QCc424YeLyw+l6/UYVla
- wQtNgHr259qGkouEiYzjKPAtE/9phQmnDoID2v36ht4co+cvmhsonWjWDetrDg23Ae8Y
- oYC9lNdWL0QXBuHtQ0w3FPum0JejOV6lgCawUm6ESNZY8+czHxksEfkBGAloMBHoU6PX
- K0CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=NYdzsGyEzIJrHP8JYJwpG+jE5+s3oneWhUEBd32KPfc=;
- b=OcrUJlgqYXaISps+i/LOH33UuZPJQ4QVMMg3H4mPSOkk7tqaOTuh5oLHA9HIFy2srQ
- opazkWvbVCzNjdC2/ImREyhG9JQ7OiPSfqCTNcWtbgScCXJDkFSpfmORRvYyoh3GWApL
- N3Agkrn92abMu+5eeA2vCUjq0zpItZXhva9dDVRq4hAMIbNF2m604nGJ0GuyBCXtazJk
- Oys2FibeD5fuz7ygeDbj0AjUXYBt2L48u/kn1BeASo5mVnnmMBxa8pj/baego4wk8IpJ
- YmfyY4V7oWFdcErysvp3gS9gnurZdBcBSxgoaZ6guEsrbzf+F8YNVs4NbvsYSh7sylOu
- GQ7A==
-X-Gm-Message-State: AOAM532YzWNnR/q2ZkfpMuzz4cMmSTliiw6l16WQR1HzU34DJyFPv6sK
- WfUaSbhU33iHqjB9jVWA/mrEQvhYcmaLYSx6ETpDOA==
-X-Google-Smtp-Source: ABdhPJyhIUaFCImjQEUT36hwyszgx3JmEnCBpsaSjbzQZGA3S2YuSL/rPG5RGeiNf1e3gQIc9S9mjOGoHwjjuLtLZ6g=
-X-Received: by 2002:a2e:9ec9:: with SMTP id h9mr2544065ljk.122.1642071048268; 
- Thu, 13 Jan 2022 02:50:48 -0800 (PST)
+ id 1n7xzN-005ZoU-8q; Thu, 13 Jan 2022 11:09:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Y1iLPUIyd1jzGHuKBENxNFKSR72+tlrtrqWejTWpV22rSvZSr9vTCCl+TUlvVWybyGzf3IvYAusupTMvrk7ijIMzclXuNeuv1UgZxGnS5iLOZlfqOP5RJpqfMjGfvDTZU7CO7sTjcD7qdGoatNmNFZs2cddhvFEfyLe3SqmCmtZbTEGymXTZQB49iuxQDqgd+2/cGNm5Zh8zR0ujtQ/RMOkHktVruE893GFdhC9GNtyQZkkqb3DxCSg3Q7ci3mf2vbeuvU1Bcihufzh2baQ/4FSZHZweJ4GjaBpvBjbgCGgx4p7yNkQPHCYv5J9mf4bv18c0M9Hu5/MJMnJRM+6Zmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=1PaQYlNOv43X1+3BPIn9V/3jqu6v7Z4NB5vDWwMukI4=;
+ b=VpfBu+rNcbF928gLqJdky5NT5tum7ULUMfyQ0IDKwKBH7eSTnNog5skI9pl+B6pNklQsqRK+bbapeHp5F7vXIChWzQ+1OGEEs1Knajbv/upk8dyUgpf/XKj1Lj8wG3Fz2Id1XkZqig6eoqaOyih5z4hUUxtoqQyMb9tM8aDGN8cixw0rY8xmZAS7N0oCVod7xtzwIXZZHCeScG3rEA9973cKnQaXpp+b6KRSbDaHenK6xXnRJs8jYZGa90DFPhewG3VbmiQpAcbEy3ar/PCUVfBkCHmUKfxNN4QCZqBeN2NUWHFfxBSYwaOEX5B+3lrKgbQpvaXcnxrmL8vWOt6/LQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=analogixsemi.com; dmarc=pass action=none
+ header.from=analogixsemi.com; dkim=pass header.d=analogixsemi.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=Analogixsemi.onmicrosoft.com; s=selector2-Analogixsemi-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=1PaQYlNOv43X1+3BPIn9V/3jqu6v7Z4NB5vDWwMukI4=;
+ b=PosGQM/D5B4+OSAIe7qLC9nv3NPA4GBH8sCRb55BAYyNf79DGxG45PHJtIhm6hpihsV7KCJ3ppZVtTQBcurX56LCH8LSIjv6g3eOCFNAOG2x1q1kfioEGwbj672D2w8/yjIj34cSVMR5cOz4rD2gQ1W2ma2Sj86BEB3XFFNZF9Q=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=analogixsemi.com;
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com (2603:10b6:a03:229::8)
+ by BN0PR04MB7934.namprd04.prod.outlook.com (2603:10b6:408:151::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4888.9; Thu, 13 Jan
+ 2022 11:09:48 +0000
+Received: from BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::8c2c:1b0f:8516:a941]) by BY5PR04MB6739.namprd04.prod.outlook.com
+ ([fe80::8c2c:1b0f:8516:a941%4]) with mapi id 15.20.4888.011; Thu, 13 Jan 2022
+ 11:09:48 +0000
+Date: Thu, 13 Jan 2022 19:09:41 +0800
+From: Xin Ji <xji@analogixsemi.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, narmstrong@baylibre.com,
+ robert.foss@linaro.org, daniel@ffwll.ch, airlied@linux.ie,
+ p.zabel@pengutronix.de
+Cc: jitao.shi@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+Subject: Re: [v8, PATCH 1/3] drm/dsi: transfer DSI HS packets ending at the
+ same time
+Message-ID: <20220113110941.GA2480843@anxtwsw-Precision-3640-Tower>
+References: <20220112153639.12343-1-rex-bc.chen@mediatek.com>
+ <20220112153639.12343-2-rex-bc.chen@mediatek.com>
+ <2f0fd4a9-4d24-a6b7-12ae-51763f304761@intel.com>
+Content-Disposition: inline
+In-Reply-To: <2f0fd4a9-4d24-a6b7-12ae-51763f304761@intel.com>
+X-ClientProxiedBy: HK2PR03CA0056.apcprd03.prod.outlook.com
+ (2603:1096:202:17::26) To BY5PR04MB6739.namprd04.prod.outlook.com
+ (2603:10b6:a03:229::8)
 MIME-Version: 1.0
-References: <c05749d0-4c24-8763-a459-27257b2524ed@amd.com>
- <20220105063643.119874-1-guangming.cao@mediatek.com>
-In-Reply-To: <20220105063643.119874-1-guangming.cao@mediatek.com>
-From: Sumit Semwal <sumit.semwal@linaro.org>
-Date: Thu, 13 Jan 2022 16:20:36 +0530
-Message-ID: <CAO_48GF=ttKqSOm9GRoA3Mq+-RQOtRjWp449XPcz-wH=kjaTjw@mail.gmail.com>
-Subject: Re: [PATCH v2] dma-buf: dma-heap: Add a size check for allocation
-To: guangming.cao@mediatek.com
-Cc: christian.koenig@amd.com, brian.starkey@arm.com, 
- benjamin.gaignard@linaro.org, bo.song@mediatek.com, 
- dri-devel@lists.freedesktop.org, jianjiao.zeng@mediatek.com, 
- john.stultz@linaro.org, labbott@redhat.com, libo.kang@mediatek.com, 
- linaro-mm-sig@lists.linaro.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, lmark@codeaurora.org, 
- matthias.bgg@gmail.com, mingyuan.ma@mediatek.com, wsd_upstream@mediatek.com, 
- yf.wang@mediatek.com
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 1b6869c7-1625-4697-5e8f-08d9d6853651
+X-MS-TrafficTypeDiagnostic: BN0PR04MB7934:EE_
+X-Microsoft-Antispam-PRVS: <BN0PR04MB79349927338C469F4BFB70ADC7539@BN0PR04MB7934.namprd04.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: kCjVDB2T8iiugSAcKm7fvxBxopnwVu5yGnHiqPE73T3PKGP5mlO/oK0NURjFLaOaGUoBfxWTdWAaoQdXvOl+5Mi733iif/ZKJz5VXBHfyC5W1FYxErtUbYQvGn3LJNTid+CHE9o3aUrLyPxfuzB58/C3nT/oNX5HQCVojP4W0NIAvtRIpauYUJDevyVBYF5fUPfSvFqHd334zIq0Nxn1BoD8KOX+MutLzrbS30oqZpA+coRYHykUNEZa+ZaLTs6yrZguOQLSKYFmrA1o5hUBt5mFIEVfEFpvzv9Wd4MaQB7aLScjDUYrKs8QVe6/fS9GhTMlTjqQcvbNO4BTWJ+5W2X0OFsfsHu4Wh6FN0TlNcfSf38WxA+sBXd6jWTglgxJuNt2ArKdhoHHbTZdaXrN7TtnqdVJ8DIJZJUozOBaZxzvGSBQWXEUg0O+rfsZp8A4KSkhT8K0uY0y8qXN08odONNRZnALSfOxMJtS+bcTuTYkisjJj+yOM6fwkUwXPrPXQeziQaPX2HL1LHNY7ZwQKdnAybrrp0Q4rNgsHUt5T46F2A2BC1FpWAUgx2BOrYSnt2VN2kvKtOuFyC1SeJMwOuoY0tR+uqATpxac8MEyhU5KPGIHt23Pojw3YYBfoREph2fGi2Xxq3pIL2z9ptjjc5Ckf3Hf60CD+LMtZm3uqHcrrSjhoyX/CVTkBvts+noqX6iDSnlCTWmtPoirTDysTQ==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR04MB6739.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(7916004)(366004)(33656002)(4326008)(186003)(6666004)(55236004)(26005)(110136005)(7416002)(52116002)(508600001)(83380400001)(66476007)(66946007)(5660300002)(8676002)(9686003)(6512007)(2906002)(33716001)(8936002)(86362001)(66556008)(6486002)(6506007)(1076003)(53546011)(38100700002)(38350700002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ZKBKNnJ+rZ96N9F2QxS7ecwmvJD2qENePFVKV3eF5FoQgymqie1A2sF0lfoF?=
+ =?us-ascii?Q?IuWknPjisqvABGvug46soLIziKothESZanqkBWzZN5H9ceWFx99TG2FTys66?=
+ =?us-ascii?Q?FBSlNNeg4rHGYSbjChL2EPIF+AWN7z9CyyFSS1eGxm/SspjDIOHBt2B4piv+?=
+ =?us-ascii?Q?qy3vF5GKt8KsQCyuOE78wimCrD9PSw6hWppSqQAQoGWTjGFDtIk0khHFQ63b?=
+ =?us-ascii?Q?sr+eZWkYJxyoK6a+QZXTDEgqnZz8hyXk+O1NlsOEBUgyFh54/ixNgbHH4Q8i?=
+ =?us-ascii?Q?QrE9NeeHhFxJ5PnqdLCamPpBytkXPfGvI0ZiesEi2u7LtJ/mIbTtajaz7oEk?=
+ =?us-ascii?Q?Ad4Jdsb9LsThAqvYbLd1Yqcy3ecRY1JeoC0doEvOFGTfdrnwgVX7DkHFQCyG?=
+ =?us-ascii?Q?9RVfZcS92NBWhFFz0RlxXRS+0nTRmf5+gd91sfd1XvMsLswDYxKAfOBqLYqS?=
+ =?us-ascii?Q?JW9iiZ+/9KXXhw3IbFvrz7v7X0innaBfFniPAAcTxAD3W82bqjjPLXNqb/DJ?=
+ =?us-ascii?Q?+fuuBR4gWoAl7enqsj6kyqNO7VE/nYG4sO8d2nLsQ7+yM0NPSGHGpoI03n4l?=
+ =?us-ascii?Q?AtRwH5pIt9TdEwd1JistmuLEq/ZuhYeATIR64Hy6dMm6D9vFFXKaealiFeaK?=
+ =?us-ascii?Q?uQuBsX6tigIe2+9XQp00g8tHl3O1sMPzbNb5r5zGYZrkCl40cvL9QdRDuTla?=
+ =?us-ascii?Q?69G0qn6A+n7c14yGW7B+enwzpZLChcPBvP2Z9k2aHKWUd64nEygMzIBvaK+N?=
+ =?us-ascii?Q?DTND0KKNH87x9ds7o7Hd74vibud1kquCkawunQJ0ZAtTtEfEMCCvM1dzR2Ex?=
+ =?us-ascii?Q?t21TDhmNb2SLrXYh6aGhN6VysGTBYFoxZKZ1eB55gi5MtmW+cJlgAsRLnt7a?=
+ =?us-ascii?Q?DAO9eBGfUyLfkzQ0ZFT24aGezzrhA02hyhuw+FkPV29/G62scn5OjBqRnHrr?=
+ =?us-ascii?Q?Ai/w4tZ3L9PPyEE0yq8BApgSYMCYj5TWOdougmlh19lK2pYcWkHuW7YX2lbg?=
+ =?us-ascii?Q?RqtetSgKbkTtwSrERyosyD0D12SliDy19tTXOR0QhNdxAguXpfTtY8dA2rMr?=
+ =?us-ascii?Q?DW9QdPXTmukQbQhmK9+vx+KiN5DwHbYcjLdVyYrX11GfOI8z8jznnv53RebJ?=
+ =?us-ascii?Q?j222mx8yyJb5xhjggc9lwqbcrJ4oca8MHR4TuUCcii2tYKrv+p46UNoRI5ML?=
+ =?us-ascii?Q?91jSw1ESWE4PgrOcgFZ00wXzp7YrlDcReJTivKc5gGRRyU47mP/q9J9ApFby?=
+ =?us-ascii?Q?Un1D/EilhYQy1oZ0qkognCf9boC/pSTEUnTz5nq9DZDinzHP5E1RgRtnMaK3?=
+ =?us-ascii?Q?X5mz93qnqyRvC/J/C8+uJc7mFFmPpTJN9Ib1LujbE8mtMLZVBQ/drdZYF5sh?=
+ =?us-ascii?Q?MFBcaAHJ7G7oYGTeGUYeQr4ohiTS0fLgy+N1gkiGt/FN11XEeeDLdBx4hlhs?=
+ =?us-ascii?Q?xkBO0J8JjgkFkK6y3eva9OGdSxVuqCMuVlDF/EhgH0PSryj2N+FdiHh+uSK0?=
+ =?us-ascii?Q?R5PLjH6kozLnYYrZJ6guxNDNQNm1SFxRD1hHZkLs6/K5p6ym10jhsosdg199?=
+ =?us-ascii?Q?b11aDls+3BlvAD7S7L2b0qmD3w71o+umOXQhwWqVsONIjFwhg53GHBDGoHb3?=
+ =?us-ascii?Q?XKSjW9sepYBsF+FJZK6L5Hs=3D?=
+X-OriginatorOrg: analogixsemi.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1b6869c7-1625-4697-5e8f-08d9d6853651
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR04MB6739.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jan 2022 11:09:48.3994 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: b099b0b4-f26c-4cf5-9a0f-d5be9acab205
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: YTML3jCppFanrSPEez2+mv8aPUHDFAMTa8/1JZE9RSUBgEk0jxJ54yUGlSbh8pP0v/v5AGvHQYaNLtUz3iYbNg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN0PR04MB7934
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_025051_625005_9EDD8EA8 
-X-CRM114-Status: GOOD (  40.64  )
+X-CRM114-CacheID: sfid-20220113_030953_433901_3E15E837 
+X-CRM114-Status: GOOD (  31.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,77 +140,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gR3VhbmdtaW5nLAoKT24gV2VkLCA1IEphbiAyMDIyIGF0IDEyOjA1LCA8Z3VhbmdtaW5n
-LmNhb0BtZWRpYXRlay5jb20+IHdyb3RlOgo+Cj4gRnJvbTogR3VhbmdtaW5nLkNhbyA8Z3Vhbmdt
-aW5nLmNhb0BtZWRpYXRlay5jb20+Cj4KPiBPbiBUdWUsIDIwMjItMDEtMDQgYXQgMDg6NDcgKzAx
-MDAsIENocmlzdGlhbiBL6bCKaWcgd3JvdGU6Cj4gPiBBbSAwMy4wMS4yMiB1bSAxOTo1NyBzY2hy
-aWViIEpvaG4gU3R1bHR6Ogo+ID4gPiBPbiBNb24sIERlYyAyNywgMjAyMSBhdCAxOjUyIEFNIDxn
-dWFuZ21pbmcuY2FvQG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4gPiA+ID4gRnJvbTogR3VhbmdtaW5n
-IDxHdWFuZ21pbmcuQ2FvQG1lZGlhdGVrLmNvbT4KPiA+ID4gPgo+ID4gPgo+ID4gPiBUaGFua3Mg
-Zm9yIHN1Ym1pdHRpbmcgdGhpcyEKPiA+ID4KPiA+ID4gPiBBZGQgYSBzaXplIGNoZWNrIGZvciBh
-bGxjYXRpb24gc2luY2UgdGhlIGFsbG9jYXRpb24gc2l6ZSBpcwo+ID4gPgo+ID4gPiBuaXQ6ICJh
-bGxvY2F0aW9uIiBhYm92ZS4KPiA+ID4KPiA+ID4gPiBhbHdheXMgbGVzcyB0aGFuIHRoZSB0b3Rh
-bCBEUkFNIHNpemUuCj4gPiA+Cj4gPiA+IEluIGdlbmVyYWwsIGl0IG1pZ2h0IGJlIGdvb2QgdG8g
-YWRkIG1vcmUgY29udGV4dCB0byB0aGUgY29tbWl0Cj4gPiA+IG1lc3NhZ2UKPiA+ID4gdG8gYmV0
-dGVyIGFuc3dlciAqd2h5KiB0aGlzIGNoYW5nZSBpcyBuZWVkZWQgcmF0aGVyIHRoYW4gd2hhdCB0
-aGUKPiA+ID4gY2hhbmdlIGlzIGRvaW5nLiAgaWU6IFdoYXQgbmVnYXRpdmUgdGhpbmcgaGFwcGVu
-cyB3aXRob3V0IHRoaXMKPiA+ID4gY2hhbmdlPwo+ID4gPiBBbmQgc28gaG93IGRvZXMgdGhpcyBj
-aGFuZ2UgYXZvaWQgb3IgaW1wcm92ZSB0aGluZ3M/Cj4gPgo+ID4gQ29tcGxldGVseSBhZ3JlZSwg
-anVzdCBvbmUgbGl0dGxlIGFkZGl0aW9uOiBDb3VsZCB5b3UgYWxzbyBhZGQgdGhpcwo+ID4gd2h5
-Cj4gPiBhcyBjb21tZW50IHRvIHRoZSBjb2RlPwo+ID4KPiA+IFdoZW4gd2Ugc3R1bWJsZSBvdmVy
-IHRoaXMgZml2ZSB5ZWFycyBmcm9tIG5vdyBpdCBpcyBhYnNvbHV0ZWx5IG5vdAo+ID4gb2J2aW91
-cyB3aHkgd2UgZG8gdGhpcy4KPiA+Cj4gPiBUaGFua3MsCj4gPiBDaHJpc3RpYW4uCj4gPgo+IFRo
-YW5rcyBmb3IgeW91ciByZXBseSEKPiBJIHdpbGwgdXBkYXRlIHRoZSByZWxhdGVkIHJlYXNvbiBp
-biB0aGUgcGF0Y2ggbGF0ZXIuCj4KPiBUaGUgcmVhc29uIGZvciBhZGRpbmcgdGhpcyBjaGVjayBp
-cyB0aGF0IHdlIG1ldCBhIGNhc2UgdGhhdCB0aGUgdXNlcgo+IHNlbnQgYW4gaW52YWxpZCBzaXpl
-KEl0IHNlZW1zIGl0J3MgYSBuZWdhdGl2ZSB2YWx1ZSwgTVNCIGlzIDB4ZmYsIGl0J3MKPiBsYXJn
-ZXIgdGhhbiBEUkFNIHNpemUgYWZ0ZXIgY29udmVydCBpdCB0byBzaXplX3QpIHRvIGRtYS1oZWFw
-IHRvIGFsbG9jCj4gbWVtb3J5LCBhbmQgdGhpcyBhbGxvY2F0aW9uIHdhcyBydW5uaW5nIG9uIGEg
-cHJvY2VzcyhzdWNoIGFzICJncmFsbG9jIgo+IG9uIEFuZHJvaWQgZGV2aWNlKSBjYW4ndCBiZSBr
-aWxsZWQgYnkgT09NIGZsb3csIGFuZCB3ZSBhbHNvIGNvdWxkbid0Cj4gZmluZCB0aGUgcmVsYXRl
-ZCBkbWFidWYgaW4gImRtYV9idWZfZGVidWdfc2hvdyIgYmVjYXVzZSB0aGUgcmVsYXRlZAo+IGRt
-YWJ1ZiB3YXMgbm90IGV4cG9ydGVkIHlldCBzaW5jZSB0aGUgYWxsb2NhdGlvbiBpcyBzdGlsbCBv
-biBnb2luZy4KPgo+IFNpbmNlIHRoaXMgaW52YWxpZCBhcmd1bWVudCBjYXNlIGNhbiBiZSBwcmV2
-ZW50ZWQgYXQgZG1hLWhlYXAgc2lkZSwgc28sCj4gSSBhZGRlZCB0aGlzIHNpemUgY2hlY2ssIGFu
-ZCBtb3Jlb3ZlciwgdG8gbGV0IGRlYnVnIGl0IGVhc2lseSwgSSBhbHNvCj4gYWRkZWQgbG9ncyB3
-aGVuIHNpemUgaXMgYmlnZ2VyIHRoYW4gYSB0aHJlc2hvbGQgd2Ugc2V0IGluIG10ayBzeXN0ZW0K
-PiBoZWFwLgo+IElmIHlvdSB0aGluayB0aGF0IHByaW50IGxvZ3MgaW4gZG1hLWhlYXAgZnJhbWV3
-b3JrIGlzIGJldHRlciwgSSB3aWxsCj4gdXBkYXRlIGl0IGluIG5leHQgdmVyc2lvbi4KPgo+IElm
-IHlvdSBoYXZlIGJldHRlciBzb2x1dGlvbihzdWNoIGFzIGR1bXAgdGhlIHNpemUgdW5kZXIgYWxs
-b2NhdGluZwo+IGluICJkbWFfYnVmX2RlYnVnX3Nob3ciLCB3aGljaCBtYXliZSBuZWVkIGFkZCBn
-bG9iYWwgdmFyaWFibGUgdG8gcmVjb3JkCj4gaXQpLCBwbGVhc2Uga2luZGx5IGxldCBtZSBrbm93
-LgoKVGhhbmsgeW91IGZvciB0aGUgcGF0Y2ghCgpJIHRoaW5rIGp1c3QgYWRkaW5nIHRoZSByZWFz
-b25pbmcgYWJvdmUgYXMgdGhlIGNvbW1pdCBtZXNzYWdlIGFuZCBhCmNvbW1lbnQgaW4gdGhlIGNv
-ZGUgc2hvdWxkIGJlIGVub3VnaCBmb3Igbm93OyB0aGUgZGVidWcgcGFydHMgbWF5IGJlCmVhc3kg
-dG8gYWRkIGluIGNhc2Ugc29tZW9uZSBydW5zIGludG8gaXNzdWVzLgoKPiBUaGFua3MgOikKPiBH
-dWFuZ21pbmcKCkJlc3QsClN1bWl0LgoKPgo+ID4gPgo+ID4gPgo+ID4gPiA+IFNpZ25lZC1vZmYt
-Ynk6IEd1YW5nbWluZyA8R3VhbmdtaW5nLkNhb0BtZWRpYXRlay5jb20+Cj4gPiA+ID4gU2lnbmVk
-LW9mZi1ieTogamlhbmppYW8gemVuZyA8amlhbmppYW8uemVuZ0BtZWRpYXRlay5jb20+Cj4gPiA+
-ID4gLS0tCj4gPiA+ID4gdjI6IDEuIHVwZGF0ZSBzaXplIGxpbWl0YXRpb24gYXMgdG90YWxfZHJh
-bSBwYWdlIHNpemUuCj4gPiA+ID4gICAgICAyLiB1cGRhdGUgY29tbWl0IG1lc3NhZ2UKPiA+ID4g
-PiAtLS0KPiA+ID4gPiAgIGRyaXZlcnMvZG1hLWJ1Zi9kbWEtaGVhcC5jIHwgMiArKwo+ID4gPiA+
-ICAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKQo+ID4gPiA+Cj4gPiA+ID4gZGlmZiAt
-LWdpdCBhL2RyaXZlcnMvZG1hLWJ1Zi9kbWEtaGVhcC5jIGIvZHJpdmVycy9kbWEtYnVmL2RtYS0K
-PiA+ID4gPiBoZWFwLmMKPiA+ID4gPiBpbmRleCA1NmJmNWFkMDFhZDUuLmUzOWQyYmU5OGQ2OSAx
-MDA2NDQKPiA+ID4gPiAtLS0gYS9kcml2ZXJzL2RtYS1idWYvZG1hLWhlYXAuYwo+ID4gPiA+ICsr
-KyBiL2RyaXZlcnMvZG1hLWJ1Zi9kbWEtaGVhcC5jCj4gPiA+ID4gQEAgLTU1LDYgKzU1LDggQEAg
-c3RhdGljIGludCBkbWFfaGVhcF9idWZmZXJfYWxsb2Moc3RydWN0Cj4gPiA+ID4gZG1hX2hlYXAg
-KmhlYXAsIHNpemVfdCBsZW4sCj4gPiA+ID4gICAgICAgICAgc3RydWN0IGRtYV9idWYgKmRtYWJ1
-ZjsKPiA+ID4gPiAgICAgICAgICBpbnQgZmQ7Cj4gPiA+ID4KPiA+ID4gPiArICAgICAgIGlmIChs
-ZW4gLyBQQUdFX1NJWkUgPiB0b3RhbHJhbV9wYWdlcygpKQo+ID4gPiA+ICsgICAgICAgICAgICAg
-ICByZXR1cm4gLUVJTlZBTDsKPiA+ID4KPiA+ID4gVGhpcyBzZWVtcyBzYW5lLiBJIGtub3cgSU9O
-IHVzZWQgdG8gaGF2ZSBzb21lIDEvMiBvZiBtZW1vcnkgY2FwIHRvCj4gPiA+IGF2b2lkIHVubmVj
-ZXNzYXJ5IG1lbW9yeSBwcmVzc3VyZSBvbiBjcmF6eSBhbGxvY2F0aW9ucy4KPiA+ID4KPiA+ID4g
-Q291bGQgeW91IHNlbmQgYWdhaW4gd2l0aCBhbiBpbXByb3ZlZCBjb21taXQgbWVzc2FnZT8KPiA+
-ID4KPiA+ID4gdGhhbmtzCj4gPiA+IC1qb2huCj4gPgo+ID4KCgoKLS0KVGhhbmtzIGFuZCByZWdh
-cmRzLAoKU3VtaXQgU2Vtd2FsIChoZSAvIGhpbSkKVGVjaCBMZWFkIC0gTENHLCBWZXJ0aWNhbCBU
-ZWNobm9sb2dpZXMKTGluYXJvLm9yZyDilIIgT3BlbiBzb3VyY2Ugc29mdHdhcmUgZm9yIEFSTSBT
-b0NzCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
-dGVrCg==
+Hi Andrzej Hajda,
+
+On Thu, Jan 13, 2022 at 01:14:14AM +0100, Andrzej Hajda wrote:
+> Hi,
+> 
+> On 12.01.2022 16:36, Rex-BC Chen wrote:
+> > Since a HS transmission is composed of an arbitrary number
+> > of bytes that may not be an integer multiple of lanes, some
+> > lanes may run out of data before others.
+> > (Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+> > 
+> > However, for some DSI RX devices (for example, anx7625),
+> > there is a limitation that packet number should be the same
+> > on all DSI lanes. In other words, they need to end a HS at
+> > the same time.
+> 
+> 
+> Is it documented in anx7625 manual? Is it confirmed with hw team?
+We have application note, and it is confirmed by designer, hw team.
+> 
+> If not, how it was detected? Have you tried to find workaround for it by
+> inspecting registers, maybe it is just matter of clock gating deferral,
+> timings or sth similar ???.
+> 
+> > 
+> > Because this limitation is for some specific DSI RX devices,
+> > it is more reasonable to put the enable control in these
+> > DSI RX drivers. If DSI TX driver knows the information,
+> > they can adjust the setting for this situation.
+> > 
+> > Therefore, add a flag to control this situation beacuse the
+> > mipi DSI specification is not forbidden this situation.
+> 
+> 
+> I am not sure what you mean here.
+> 
+> I have an impression (according t 6.1.3 of spec) that devices should allow
+> transmission of arbitrary number of bytes, so this is bug in hw/fw.
+This is anx7625 bridge chip design limitation.
+
+> 
+> The question if it can be fixed. If not patches are welcome.
+> 
+> 
+> > 
+> > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > Reviewed-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+> > ---
+> >   include/drm/drm_mipi_dsi.h | 2 ++
+> >   1 file changed, 2 insertions(+)
+> > 
+> > diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+> > index 147e51b6d241..df4d15345326 100644
+> > --- a/include/drm/drm_mipi_dsi.h
+> > +++ b/include/drm/drm_mipi_dsi.h
+> > @@ -177,6 +177,8 @@ struct mipi_dsi_device_info {
+> >    * @lp_rate: maximum lane frequency for low power mode in hertz, this should
+> >    * be set to the real limits of the hardware, zero is only accepted for
+> >    * legacy drivers
+> > + * @hs_packet_end_aligned: transfer DSI HS packets ending at the same time
+> > + * for all DSI lanes
+> >    */
+> >   struct mipi_dsi_device {
+> >   	struct mipi_dsi_host *host;
+> > @@ -189,6 +191,7 @@ struct mipi_dsi_device {
+> >   	unsigned long mode_flags;
+> >   	unsigned long hs_rate;
+> >   	unsigned long lp_rate;
+> > +	bool hs_packet_end_aligned;
+> 
+> 
+> Maybe it would be better to add another mode_flag.
+mode_flag should be OK.
+
+Thanks,
+Xin
+> 
+> 
+> Regards
+> 
+> Andrzej
+> 
+> 
+> 
+> >   };
+> >   #define MIPI_DSI_MODULE_PREFIX "mipi-dsi:"
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
