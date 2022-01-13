@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E4C1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 08:21:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1F01C433EF
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 08:23:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aYOod0ivCLLPD0NCxJ1NtGLGbP+Bnfp+HoSjiTM3T2A=; b=A4Q+M6vHjx0WHm
-	lTQQ0jLrQ4LHhe2W+npuWVX4WW1dF5jwd/xE89a9vl0N4e5ssaA/h393T7deJKHqqRII5WRYQmNb4
-	wwEIfttIK+TqumsTqu1twF1lwSMK/OtdZZXj5DSfzs0e3195SlNnJvh4B/szp6j9G1NhTMmg5snB8
-	REgSmj08WAdx4k58LzRdpnB40u2KPVs5jTwjXsJ9BaSVWoN99ak0EBFRFCtvi4lt01kvcV0MlFb3K
-	bwOxRAHIwONioaMuU+/TG1e65FIgP2UZNJpSCd5qALKjMTF3HNFYXsXDQyNQBMJ2KbJApEj6pUZlM
-	WbTVLQHM37cHO+3gj3hw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9QupWoCw3skyap4jQ6pU5Z3ZkHxCKSddzFifEn5DIiI=; b=RJJidwTVo4fzQJ
+	VEfiYJaKwGzch8cELpYqQf9DCO5/4u6Nc6AffDSKaZR8/+P+ugDiViJzzPdop9R/hvKy1RUjcr942
+	7t6YhcOHgud755GkshyLDPjySH7d9rLPeQyQGlV8p/OxG4K/Zn1S5eRGPw/6C+XtuMIlQC5UtycHI
+	YcGyzMyAnu1z3xSwIFk0IO6S0UtNPcEKAKG1l06CaJeSKXOet9fxEixLkQ0kHKOj9WpIX1X7N4NpR
+	OyR7yNTCHuvSq8lFGBHTuBM3CRjklnVAuhksKiJGabSkECL0EUd35fdZL/e3EHuPS/uuKeRVeAC6Y
+	l8qIJ0tSLxI3NlR208Ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7vMd-00556o-Co; Thu, 13 Jan 2022 08:21:43 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n7vNm-0055ef-P4; Thu, 13 Jan 2022 08:22:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7vMG-0054zH-Pw; Thu, 13 Jan 2022 08:21:22 +0000
-X-UUID: 1255092ff31f44d1bacbd5ff45636df1-20220113
-X-UUID: 1255092ff31f44d1bacbd5ff45636df1-20220113
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ id 1n7vNZ-0055Z0-AJ; Thu, 13 Jan 2022 08:22:42 +0000
+X-UUID: b674ae9a99d546b38e3a7ff788b13ee9-20220113
+X-UUID: b674ae9a99d546b38e3a7ff788b13ee9-20220113
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1288324629; Thu, 13 Jan 2022 01:21:15 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 734629480; Thu, 13 Jan 2022 01:22:39 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Jan 2022 00:21:13 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Thu, 13 Jan 2022 16:21:05 +0800
+ 15.0.1497.2; Thu, 13 Jan 2022 00:22:37 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 13 Jan 2022 16:22:36 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Thu, 13 Jan 2022 16:21:05 +0800
+ Frontend Transport; Thu, 13 Jan 2022 16:22:36 +0800
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
+To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
+CC: Kevin Hilman <khilman@baylibre.com>, Linux-ALSA
+ <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
  <cujomalainey@google.com>, Pierre-Louis Bossart
  <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
  Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>, "Mark
- Brown" <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
- <tiwai@suse.com>, Kevin Hilman <khilman@baylibre.com>,
+ <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>,
  <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
  <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v13 1/2] dt-bindings: mediatek: add adsp-mbox document
-Date: Thu, 13 Jan 2022 16:21:02 +0800
-Message-ID: <20220113082103.27911-2-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v3 0/1] firmware: mtk: add adsp ipc protocol for sof
+Date: Thu, 13 Jan 2022 16:22:33 +0800
+Message-ID: <20220113082234.29013-1-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220113082103.27911-1-allen-kh.cheng@mediatek.com>
-References: <20220113082103.27911-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_002120_860984_34F1B663 
-X-CRM114-Status: GOOD (  12.57  )
+X-CRM114-CacheID: sfid-20220113_002241_392784_557B39FD 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,72 +81,33 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
 
-This patch adds document for mediatek adsp mbox
+This patch provides mtk adsp ipc support for sof.
 
-Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
----
- .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52 +++++++++++++++++++
- 1 file changed, 52 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
+ADSP IPC protocol offers (send/recv) interfaces using mediatek-mailbox APIs.
 
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-new file mode 100644
-index 000000000000..25756837797f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-@@ -0,0 +1,52 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek ADSP mailbox
-+
-+maintainers:
-+  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-+
-+description: |
-+  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
-+  to ommunicate with ADSP by passing messages through two mailbox channels.
-+  The MTK ADSP mailbox IPC also provides the ability for one processor to
-+  signal the other processor using interrupts.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8195-adsp-mbox
-+
-+  "#mbox-cells":
-+    const: 0
-+
-+  reg:
-+    description:
-+      Physical address base for dsp mbox registers.
-+
-+  interrupts:
-+    description:
-+      adsp mbox interrupt
-+
-+required:
-+  - compatible
-+  - "#mbox-cells"
-+  - reg
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    adsp_mailbox0:mailbox@10816000 {
-+        compatible = "mediatek,mt8195-adsp-mbox";
-+        #mbox-cells = <0>;
-+        reg = <0x10816000 0x1000>;
-+        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
-+    };
+changes since v2:
+- add out tag for two memroy free phases
+
+changes since v1:
+- add comments for mtk_adsp_ipc_send and mtk_adsp_ipc_recv
+- remove unuseful MODULE_LICENSE
+- change label name to out_free
+
+Allen-KH Cheng (1):
+  firmware: mediatek: add adsp ipc protocol interface
+
+ drivers/firmware/Kconfig                      |   1 +
+ drivers/firmware/Makefile                     |   1 +
+ drivers/firmware/mediatek/Kconfig             |   9 +
+ drivers/firmware/mediatek/Makefile            |   2 +
+ drivers/firmware/mediatek/mtk-adsp-ipc.c      | 160 ++++++++++++++++++
+ .../linux/firmware/mediatek/mtk-adsp-ipc.h    |  65 +++++++
+ 6 files changed, 238 insertions(+)
+ create mode 100644 drivers/firmware/mediatek/Kconfig
+ create mode 100644 drivers/firmware/mediatek/Makefile
+ create mode 100644 drivers/firmware/mediatek/mtk-adsp-ipc.c
+ create mode 100644 include/linux/firmware/mediatek/mtk-adsp-ipc.h
+
 -- 
 2.18.0
 
