@@ -4,99 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD25DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 13:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68B95C433F5
+	for <linux-mediatek@archiver.kernel.org>; Thu, 13 Jan 2022 13:06:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9SRphFsLWnjuGGOksd4DusUfrpKMU/J1NQO37otumh8=; b=gjyDdsWveaiNgS
-	tFJJxOgDTL3e6proDJZvsTum4nuoyOO0C3EbayTxeTuZ3yQGq9UooGTDrsPiVs3qsrJeCqm0FeUos
-	Kffus3uJlfZz5v84Lx6c6WZRxueyz3lraNjKL98NOvWmmLqzfO9UH5/OhhQAN+L+lIrxUIRTPIW+V
-	XZlphDKIp3GP3NkZH8bPsPL7bay4tWrifTCx9zM4F2JVK6zjqXJ555OXCZTRfVPU5mTtAB51SNrU2
-	xOMkxQArdiwfJrX6EzBVGW4acJHQfeQEBgps5FAkvHpoJpcO2szeAJwGjQVA7cGImLsfWG45eWlhF
-	zgZMO4BWkz75Lo21YX/A==;
+	List-Owner; bh=C2TjKwi5DcZeOZ4+hyV6NhPjlqzCiUUr/FGg6umO924=; b=ZuMrsd8mBTKQSU
+	Zx4/Mo75FM8AlYqhxnK3FfMsoyGBZNBm4elQlyw7aQE/NNYELHC230NYva3ta/1gtJC5bo1VFpZXj
+	hCFUHHigtelF4JMUiI1ugO9tA10kL4LDUZYkYRZZEBdXLzcF+hy1nLA0euxSfoyYIuJWrb8WNphYm
+	+dsrDeYZs7tpa5e0BuqLyqwXtIvsgUKl6su9bYpgLdArcevNJolumURzs4j78DtAfy8NtfSNW4ODi
+	g4N/4G/oOeiOt9b+6B4rp2dMofTKKjlrzhaeilwaympGaxgclpWmpTgz/wQIHwHtVeP/zN+abhLvn
+	DFrlTGZhO1Bmh5wvYxwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n7zkC-00601f-2U; Thu, 13 Jan 2022 13:02:20 +0000
-Received: from mga11.intel.com ([192.55.52.93])
+	id 1n7zoE-0061SW-Ao; Thu, 13 Jan 2022 13:06:30 +0000
+Received: from ewsoutbound.kpnmail.nl ([195.121.94.167])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n7zis-005zY5-7t; Thu, 13 Jan 2022 13:00:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1642078858; x=1673614858;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=32/jYdeCU2X6mvfWD1NZQLh3feFmBCWh91f1bLsYOlw=;
- b=iAplYQSt+vUYR+EiuE/zCeUaylhb1VpQw9O2lRNsN+HqHfNM5irrzFk2
- R5jUsk1v5QphLMDCSVR1Nj9gW5XnX5t2ZWDdjqW6o38JMApZF9YgxwOru
- uGWhD6dffG6kZmuNVIOvcRhClxIDBZMUXKXTgFXvUSeqk2PYuc1ODzvqn
- m+Q5Gn1PjxuLzRP6N6GE3xcdnYMT90jvNK3g9CYklEkx/DevyTW5ctK+w
- H8xo5Czf26XQHMTnzSvx4ij8DR76CQb8pQOGQiWrWPz59WsRpwy91qPMz
- bU2t+mlxVwYgTCgbQS0TGA0rlMS/F+7Ctzz6ZyrJF3zyhhiVB7CDdwd0j Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10225"; a="241561690"
-X-IronPort-AV: E=Sophos;i="5.88,286,1635231600"; d="scan'208";a="241561690"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jan 2022 05:00:52 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.88,286,1635231600"; d="scan'208";a="473208325"
-Received: from orsmsx605.amr.corp.intel.com ([10.22.229.18])
- by orsmga003.jf.intel.com with ESMTP; 13 Jan 2022 05:00:47 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX605.amr.corp.intel.com (10.22.229.18) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Thu, 13 Jan 2022 05:00:47 -0800
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2308.20; Thu, 13 Jan 2022 05:00:46 -0800
-Received: from orsmsx611.amr.corp.intel.com ([10.22.229.24]) by
- ORSMSX611.amr.corp.intel.com ([10.22.229.24]) with mapi id 15.01.2308.020;
- Thu, 13 Jan 2022 05:00:46 -0800
-From: "Ruhl, Michael J" <michael.j.ruhl@intel.com>
-To: "Ruhl, Michael J" <michael.j.ruhl@intel.com>, "guangming.cao@mediatek.com"
- <guangming.cao@mediatek.com>, "sumit.semwal@linaro.org"
- <sumit.semwal@linaro.org>
-CC: "jianjiao.zeng@mediatek.com" <jianjiao.zeng@mediatek.com>,
- "lmark@codeaurora.org" <lmark@codeaurora.org>, "wsd_upstream@mediatek.com"
- <wsd_upstream@mediatek.com>, "christian.koenig@amd.com"
- <christian.koenig@amd.com>, "linux-kernel@vger.kernel.org"
- <linux-kernel@vger.kernel.org>, "dri-devel@lists.freedesktop.org"
- <dri-devel@lists.freedesktop.org>, "yf.wang@mediatek.com"
- <yf.wang@mediatek.com>, "linaro-mm-sig@lists.linaro.org"
- <linaro-mm-sig@lists.linaro.org>, "linux-mediatek@lists.infradead.org"
- <linux-mediatek@lists.infradead.org>, "libo.kang@mediatek.com"
- <libo.kang@mediatek.com>, "benjamin.gaignard@linaro.org"
- <benjamin.gaignard@linaro.org>, "bo.song@mediatek.com"
- <bo.song@mediatek.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "labbott@redhat.com" <labbott@redhat.com>, "mingyuan.ma@mediatek.com"
- <mingyuan.ma@mediatek.com>, "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>, "linux-media@vger.kernel.org"
- <linux-media@vger.kernel.org>
-Subject: RE: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
-Thread-Topic: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
-Thread-Index: AQHYCHnKJjUnVmCmlECrXD1d8qRuLKxg6T0QgAAAbjA=
-Date: Thu, 13 Jan 2022 13:00:46 +0000
-Message-ID: <e657f5257cbf4955817b0bbf037de9f9@intel.com>
-References: <CAO_48GF=ttKqSOm9GRoA3Mq+-RQOtRjWp449XPcz-wH=kjaTjw@mail.gmail.com>
- <20220113123406.11520-1-guangming.cao@mediatek.com>
- <4f88205c1b344aea8608960e2f85b8f4@intel.com>
-In-Reply-To: <4f88205c1b344aea8608960e2f85b8f4@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-dlp-product: dlpe-windows
-dlp-reaction: no-action
-dlp-version: 11.6.200.16
-x-originating-ip: [10.1.200.100]
+ id 1n7znf-0061IE-HX
+ for linux-mediatek@lists.infradead.org; Thu, 13 Jan 2022 13:05:58 +0000
+X-KPN-MessageId: 7231cf3a-7471-11ec-9a2e-005056abbe64
+Received: from smtp.kpnmail.nl (unknown [10.31.155.37])
+ by ewsoutbound.so.kpn.org (Halon) with ESMTPS
+ id 7231cf3a-7471-11ec-9a2e-005056abbe64;
+ Thu, 13 Jan 2022 14:05:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=xs4all01;
+ h=content-type:from:to:subject:mime-version:date:message-id;
+ bh=8tarm9Eb2y0/4J8TWFMDOhVvR61nl2RNq4vCSEnRqMs=;
+ b=c/Zkifzu63OHemWejBDo8h2ACmUytM5X8rOL2ThWoirMgkKL+PpsM8zIDqnfe56no560NqAMlTS/d
+ PUv2zs0cNhdlGecj/xXMtNjOet1e9c8R6ruLneDvLebx+vpY34e9kAWdOu6BpbrlUn8eSNLAuHMr2P
+ JmbcCTGOZ73xmhfKIPtalRV8cWnwzSSB1/mdmfSFTO3o5takA2rVaRie3tEYycAX7vatcGDX2+aqd3
+ w/MzTmobswtua7Jh/E/hF6qDrPBK1CF4ReX9sMbmAd+QDFptvspXs58W0VioHqweriN2GIhT0bOIvU
+ 0V0qBPWoEMScwjAmwS+4fJtSlfP/BXg==
+X-KPN-VerifiedSender: No
+X-CMASSUN: 33|SkHocp79pq2s1h7HGJF5ETDSzAV9Gk+XSv+yl7/l4u7ozfQ8zlQl05YyLtTqFcm
+ vHE1B3bvHwCBPHQrpa+0rmQ==
+X-Originating-IP: 193.91.129.219
+Received: from [192.168.2.10] (cdb815bc1.dhcp.as2116.net [193.91.129.219])
+ by smtp.xs4all.nl (Halon) with ESMTPSA
+ id 87f19937-7471-11ec-83ab-005056ab1411;
+ Thu, 13 Jan 2022 14:05:51 +0100 (CET)
+Message-ID: <d66a7182-825f-b9a3-afc9-c0117ea846a2@xs4all.nl>
+Date: Thu, 13 Jan 2022 14:05:49 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Firefox/91.0 Thunderbird/91.4.1
+Subject: Re: [PATCH v2 09/13] media: mtk-vcodec: Drop unnecessary call to
+ platform_get_resource()
+Content-Language: en-US
+To: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ linux-media@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Rob Herring <robh+dt@kernel.org>,
+ Andy Shevchenko <andy.shevchenko@gmail.com>,
+ Prabhakar <prabhakar.csengg@gmail.com>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20220111002314.15213-1-prabhakar.mahadev-lad.rj@bp.renesas.com>
+ <20220111002314.15213-10-prabhakar.mahadev-lad.rj@bp.renesas.com>
+From: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+In-Reply-To: <20220111002314.15213-10-prabhakar.mahadev-lad.rj@bp.renesas.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_050058_355349_EC9AADA1 
-X-CRM114-Status: GOOD (  15.47  )
+X-CRM114-CacheID: sfid-20220113_050555_910778_AC4E9560 
+X-CRM114-Status: GOOD (  20.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,107 +87,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hi Prabhakar,
 
->-----Original Message-----
->From: dri-devel <dri-devel-bounces@lists.freedesktop.org> On Behalf Of
->Ruhl, Michael J
->Sent: Thursday, January 13, 2022 7:58 AM
->To: guangming.cao@mediatek.com; sumit.semwal@linaro.org
->Cc: jianjiao.zeng@mediatek.com; lmark@codeaurora.org;
->wsd_upstream@mediatek.com; christian.koenig@amd.com; linux-
->kernel@vger.kernel.org; dri-devel@lists.freedesktop.org;
->yf.wang@mediatek.com; linaro-mm-sig@lists.linaro.org; linux-
->mediatek@lists.infradead.org; libo.kang@mediatek.com;
->benjamin.gaignard@linaro.org; bo.song@mediatek.com;
->matthias.bgg@gmail.com; labbott@redhat.com;
->mingyuan.ma@mediatek.com; linux-arm-kernel@lists.infradead.org; linux-
->media@vger.kernel.org
->Subject: RE: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
->
->
->>-----Original Message-----
->>From: dri-devel <dri-devel-bounces@lists.freedesktop.org> On Behalf Of
->>guangming.cao@mediatek.com
->>Sent: Thursday, January 13, 2022 7:34 AM
->>To: sumit.semwal@linaro.org
->>Cc: linux-arm-kernel@lists.infradead.org; mingyuan.ma@mediatek.com;
->>Guangming <Guangming.Cao@mediatek.com>;
->>wsd_upstream@mediatek.com; linux-kernel@vger.kernel.org; dri-
->>devel@lists.freedesktop.org; linaro-mm-sig@lists.linaro.org;
->>yf.wang@mediatek.com; libo.kang@mediatek.com;
->>benjamin.gaignard@linaro.org; bo.song@mediatek.com;
->>matthias.bgg@gmail.com; linux-mediatek@lists.infradead.org;
->>lmark@codeaurora.org; labbott@redhat.com; christian.koenig@amd.com;
->>jianjiao.zeng@mediatek.com; linux-media@vger.kernel.org
->>Subject: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
->>
->>From: Guangming <Guangming.Cao@mediatek.com>
->>
->>Add a size check for allocation since the allocation size is
->>always less than the total DRAM size.
->>
->>Without this check, once the invalid size allocation runs on a process that
->>can't be killed by OOM flow(such as "gralloc" on Android devices), it will
->>cause a kernel exception, and to make matters worse, we can't find who are
->>using
->>so many memory with "dma_buf_debug_show" since the relevant dma-buf
->>hasn't exported.
->>
->>To make OOM issue easier, maybe need dma-buf framework to dump the
->>buffer size
->>under allocating in "dma_buf_debug_show".
->>
->>Signed-off-by: Guangming <Guangming.Cao@mediatek.com>
->>Signed-off-by: jianjiao zeng <jianjiao.zeng@mediatek.com>
->>---
->>v3: 1. update patch, use right shift to replace division.
->>    2. update patch, add reason in code and commit message.
->>v2: 1. update size limitation as total_dram page size.
->>    2. update commit message
->>---
->> drivers/dma-buf/dma-heap.c | 10 ++++++++++
->> 1 file changed, 10 insertions(+)
->>
->>diff --git a/drivers/dma-buf/dma-heap.c b/drivers/dma-buf/dma-heap.c
->>index 56bf5ad01ad5..1fd382712584 100644
->>--- a/drivers/dma-buf/dma-heap.c
->>+++ b/drivers/dma-buf/dma-heap.c
->>@@ -55,6 +55,16 @@ static int dma_heap_buffer_alloc(struct dma_heap
->>*heap, size_t len,
->> 	struct dma_buf *dmabuf;
->> 	int fd;
->>
->>+	/*
->>+	 * Invalid size check. The "len" should be less than totalram.
->>+	 *
->>+	 * Without this check, once the invalid size allocation runs on a process
->>that
->>+	 * can't be killed by OOM flow(such as "gralloc" on Android devices), it
->>will
->>+	 * cause a kernel exception, and to make matters worse, we can't find
->>who are using
->>+	 * so many memory with "dma_buf_debug_show" since the relevant
->>dma-buf hasn't exported.
->>+	 */
->>+	if (len >> PAGE_SHIFT > totalram_pages())
->
->If your "heap" is from cma, is this still a valid check?
+I'm skipping this patch since if I am not mistaken this patch fixes this as well
+(as part of a larger overhaul):
 
-And thinking a bit further, if I create a heap from something else (say device memory),
-you will need to be able to figure out the maximum allowable check for the specific
-heap.
+https://patchwork.linuxtv.org/project/linux-media/patch/20220113041055.25213-9-yunfei.dong@mediatek.com/
 
-Maybe the heap needs a callback for max size?
+I posted a PR for that series, so that's on the way in.
 
-m
->M
->
->>+		return -EINVAL;
->> 	/*
->> 	 * Allocations from all heaps have to begin
->> 	 * and end on page boundaries.
->>--
->>2.17.1
+Please confirm so I can mark your patch as Superseded.
+
+Regards,
+
+	Hans
+
+On 11/01/2022 01:23, Lad Prabhakar wrote:
+> mtk_vcodec_probe() calls platform_get_resource(pdev, IORESOURCE_IRQ, ..)
+> to check if IRQ resource exists and later calls platform_get_irq(pdev, ..)
+> to get the actual IRQ.
+> 
+> This patch drops an unnecessary call to platform_get_resource() and
+> checks the return value of platform_get_irq(pdev, ..) to check if the
+> IRQ line is valid.
+> 
+> Signed-off-by: Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>
+> ---
+> v1->v2
+> * No change.
+> ---
+>  .../media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c    | 11 ++++-------
+>  .../media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c    | 10 +++-------
+>  2 files changed, 7 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> index 40c39e1e596b..1509c2a4de84 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+> @@ -200,7 +200,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>  {
+>  	struct mtk_vcodec_dev *dev;
+>  	struct video_device *vfd_dec;
+> -	struct resource *res;
+>  	phandle rproc_phandle;
+>  	enum mtk_vcodec_fw_type fw_type;
+>  	int i, ret;
+> @@ -244,14 +243,12 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>  		mtk_v4l2_debug(2, "reg[%d] base=%p", i, dev->reg_base[i]);
+>  	}
+>  
+> -	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+> -	if (res == NULL) {
+> -		dev_err(&pdev->dev, "failed to get irq resource");
+> -		ret = -ENOENT;
+> +	ret = platform_get_irq(pdev, 0);
+> +	if (ret < 0)
+>  		goto err_res;
+> -	}
+>  
+> -	dev->dec_irq = platform_get_irq(pdev, 0);
+> +	dev->dec_irq = ret;
+> +
+>  	irq_set_status_flags(dev->dec_irq, IRQ_NOAUTOEN);
+>  	ret = devm_request_irq(&pdev->dev, dev->dec_irq,
+>  			mtk_vcodec_dec_irq_handler, 0, pdev->name, dev);
+> diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> index aeaecb8d416e..86e70d826754 100644
+> --- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> +++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+> @@ -236,7 +236,6 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>  {
+>  	struct mtk_vcodec_dev *dev;
+>  	struct video_device *vfd_enc;
+> -	struct resource *res;
+>  	phandle rproc_phandle;
+>  	enum mtk_vcodec_fw_type fw_type;
+>  	int ret;
+> @@ -280,14 +279,11 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+>  		goto err_res;
+>  	}
+>  
+> -	res = platform_get_resource(pdev, IORESOURCE_IRQ, 0);
+> -	if (res == NULL) {
+> -		dev_err(&pdev->dev, "failed to get irq resource");
+> -		ret = -ENOENT;
+> +	ret = platform_get_irq(pdev, 0);
+> +	if (ret < 0)
+>  		goto err_res;
+> -	}
+>  
+> -	dev->enc_irq = platform_get_irq(pdev, 0);
+> +	dev->enc_irq = ret;
+>  	irq_set_status_flags(dev->enc_irq, IRQ_NOAUTOEN);
+>  	ret = devm_request_irq(&pdev->dev, dev->enc_irq,
+>  			       mtk_vcodec_enc_irq_handler,
 
 
 _______________________________________________
