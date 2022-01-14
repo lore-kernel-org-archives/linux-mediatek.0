@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BBC7C433EF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA063C433F5
 	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 02:54:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,54 +12,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=afaUYwO77dNVJlRk6fnceNnyiHuc6HB9uSlYKcr55aQ=; b=2Dogpc5LoYhsIr
-	t/Gu/vugW88SCBBVuA4L+8dRf0oeXRECzabjCO0TV2/wQDwFAS58JeppJRb/Un/MjuqmRaPFmgWR2
-	26RxK6G5txrHWj7abArTRYXsyNl2iVFwUFMVz2giZvR26eRK07bAK+rjgu+sGjora6rq3DzAZawby
-	Xe3dUivRk5EJekRxUAi6bx5Ss32yF1kWzgLPsNCj/6cKMsvRY8QcfzqIQH6LnNGu7tawTTs7pNjJd
-	o8XpgKwJzAxIF7QY43wwB5TWrp2RsrsRYBWmcWjNkJBEv5Ffd7ocSDuBI4ffu8S4US4F1sEcNc46+
-	dJeBJMo4KEyxs1EKbSMA==;
+	List-Owner; bh=oF+ZCi/gfPs3/Nz2ijNXFVWbYQXkVr5i2T4p3FyVqBA=; b=3j0HMQoFK9Id2x
+	ynKDNMfiSJw7M549Yz78KNpFDa4LCdOS++a1vO/nq5hpjhSe79Fcz42ZNb7RZF3NpxEM01TUV+6KH
+	CT9Z5trkiswzWScpxuYSGpnZcZxCGvPFMwqNSjAOBEOpoL+8ayGg4OCXV9sc4ytj3cyxXd8ugWccE
+	q4DrUO4SXL+QRi69+nFEgbc/1YF65R7mGG1MoodK+s1NC6AHMeZcu+JW1rVkwHFmhbLVJ4OFQZX0K
+	O4b7lVzzCCZN4fRte/XUEXWMUnuahQzJrDWCksjlkUDzHz57be7zADhesJnqRECj30nl18TtoNYBW
+	WYjtz5B1P2Pk8gOw8DbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8Cj1-007XSv-IF; Fri, 14 Jan 2022 02:53:59 +0000
+	id 1n8Cj0-007XS7-0Q; Fri, 14 Jan 2022 02:53:58 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8Cix-007XPm-B0
- for linux-mediatek@lists.infradead.org; Fri, 14 Jan 2022 02:53:56 +0000
-X-UUID: 0b36ba0804b048c99ed0fb6e8adb2b22-20220113
-X-UUID: 0b36ba0804b048c99ed0fb6e8adb2b22-20220113
+ id 1n8Ciw-007XPg-Fd
+ for linux-mediatek@lists.infradead.org; Fri, 14 Jan 2022 02:53:55 +0000
+X-UUID: d1086a22d3cb42c4a2610e1e7d5cec67-20220113
+X-UUID: d1086a22d3cb42c4a2610e1e7d5cec67-20220113
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <bo.jiao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1354180108; Thu, 13 Jan 2022 19:53:49 -0700
+ with ESMTP id 157401797; Thu, 13 Jan 2022 19:53:49 -0700
 Received: from MTKMBS34N1.mediatek.inc (172.27.4.172) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 13 Jan 2022 18:53:35 -0800
+ 15.0.1497.2; Thu, 13 Jan 2022 18:53:36 -0800
 Received: from MTKCAS32.mediatek.inc (172.27.4.184) by MTKMBS34N1.mediatek.inc
  (172.27.4.172) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
  Fri, 14 Jan 2022 10:53:27 +0800
 Received: from mcddlt001.gcn.mediatek.inc (10.19.240.15) by
  MTKCAS32.mediatek.inc (172.27.4.170) with Microsoft SMTP Server id
- 15.0.1497.2 via Frontend Transport; Fri, 14 Jan 2022 10:53:26 +0800
+ 15.0.1497.2 via Frontend Transport; Fri, 14 Jan 2022 10:53:27 +0800
 From: Bo Jiao <bo.jiao@mediatek.com>
 To: Felix Fietkau <nbd@nbd.name>
 CC: linux-wireless <linux-wireless@vger.kernel.org>, Ryder Lee
  <ryder.lee@mediatek.com>, Xing Song <xing.song@mediatek.com>, Sujuan Chen
  <sujuan.chen@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, "Evelyn
  Tsai" <evelyn.tsai@mediatek.com>, linux-mediatek
- <linux-mediatek@lists.infradead.org>, Peter Chiu
- <chui-hao.chiu@mediatek.com>, <devicetree@vger.kernel.org>
-Subject: [PATCH v3 1/4] dt-bindings: net: wireless: mt76: document bindings
- for MT7986
-Date: Fri, 14 Jan 2022 10:53:20 +0800
-Message-ID: <c6a6ddd797269ea92698f612d6b7c66c9ec03765.1642128031.git.Bo.Jiao@mediatek.com>
+ <linux-mediatek@lists.infradead.org>, Bo Jiao <Bo.Jiao@mediatek.com>
+Subject: [PATCH v3 2/4] mt76: redefine mt76_for_each_q_rx to adapt mt7986
+ changes
+Date: Fri, 14 Jan 2022 10:53:21 +0800
+Message-ID: <23bf57eed95568e7e7ac5e32947c81351378fa72.1642128031.git.Bo.Jiao@mediatek.com>
 X-Mailer: git-send-email 2.17.0
 In-Reply-To: <cover.1642128031.git.Bo.Jiao@mediatek.com>
 References: <cover.1642128031.git.Bo.Jiao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220113_185355_413048_1D704D01 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20220113_185354_552807_6FA799A4 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,89 +75,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Peter Chiu <chui-hao.chiu@mediatek.com>
+From: Bo Jiao <Bo.Jiao@mediatek.com>
 
-Add an entry for MT7986 SoC.
+Check ndesc of q_rx to avoid potential hole in iteration.
+This is an intermediate patch to add mt7986 support.
 
-Signed-off-by: Peter Chiu <chui-hao.chiu@mediatek.com>
-Cc: devicetree@vger.kernel.org
+Signed-off-by: Sujuan Chen <sujuan.chen@mediatek.com>
+Signed-off-by: Bo Jiao <Bo.Jiao@mediatek.com>
+Reviewed-by: Ryder Lee <ryder.lee@mediatek.com>
 ---
-v3:
- - fix yamllint warnings and errors
- - add 'minItems: 1' to keep 1 reg entry being valid
+v2:
+- redefine mt76_for_each_q_rx().
 ---
- .../bindings/net/wireless/mediatek,mt76.yaml  | 31 +++++++++++++++++--
- 1 file changed, 28 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-index 1489d3c..d630a7e 100644
---- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-+++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
-@@ -18,7 +18,7 @@ description: |
-   wireless device. The node is expected to be specified as a child
-   node of the PCI controller to which the wireless chip is connected.
-   Alternatively, it can specify the wireless part of the MT7628/MT7688
--  or MT7622 SoC.
-+  or MT7622/MT7986 SoC.
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 14f60fc..af6f9fc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -899,8 +899,8 @@ static inline u16 mt76_rev(struct mt76_dev *dev)
+ #define mt76_queue_reset(dev, ...)	(dev)->mt76.queue_ops->reset_q(&((dev)->mt76), __VA_ARGS__)
  
- allOf:
-   - $ref: ieee80211.yaml#
-@@ -29,9 +29,11 @@ properties:
-       - mediatek,mt76
-       - mediatek,mt7628-wmac
-       - mediatek,mt7622-wmac
-+      - mediatek,mt7986-wmac
+ #define mt76_for_each_q_rx(dev, i)	\
+-	for (i = 0; i < ARRAY_SIZE((dev)->q_rx) && \
+-		    (dev)->q_rx[i].ndesc; i++)
++	for (i = 0; i < ARRAY_SIZE((dev)->q_rx); i++)	\
++		if ((dev)->q_rx[i].ndesc)
  
-   reg:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 3
- 
-   interrupts:
-     maxItems: 1
-@@ -39,6 +41,17 @@ properties:
-   power-domains:
-     maxItems: 1
- 
-+  memory-region:
-+    maxItems: 1
-+
-+  resets:
-+    maxItems: 1
-+    description:
-+      Specify the consys reset for mt7986.
-+
-+  reset-name:
-+    const: consys
-+
-   mediatek,infracfg:
-     $ref: /schemas/types.yaml#/definitions/phandle
-     description:
-@@ -165,7 +178,7 @@ required:
-   - compatible
-   - reg
- 
--additionalProperties: false
-+unevaluatedProperties: false
- 
- examples:
-   - |
-@@ -231,3 +244,15 @@ examples:
- 
-       power-domains = <&scpsys 3>;
-     };
-+
-+  - |
-+    wifi@18000000 {
-+        compatible = "mediatek,mt7986-wmac";
-+        resets = <&watchdog 23>;
-+        reset-names = "consys";
-+        reg = <0x18000000 0x1000000>,
-+              <0x10003000 0x1000>,
-+              <0x11d10000 0x1000>;
-+        interrupts = <GIC_SPI 213 IRQ_TYPE_LEVEL_HIGH>;
-+        memory-region = <&wmcpu_emi>;
-+    };
+ struct mt76_dev *mt76_alloc_device(struct device *pdev, unsigned int size,
+ 				   const struct ieee80211_ops *ops,
 -- 
 2.18.0
 
