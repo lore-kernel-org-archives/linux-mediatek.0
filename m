@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47418C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 11:47:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C9A2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 11:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aYOod0ivCLLPD0NCxJ1NtGLGbP+Bnfp+HoSjiTM3T2A=; b=z5DM5YVpXs8Unn
-	nyCb2m6dO1sfCyXe4cwXqUbD5ruwuIsJnS5lhe4uDg6P5QwHijvQ13xKcE+0AZF8Cua4qVn0TL11X
-	VVs2n8DkUEnSKsQtSkutIOn5c+FgJD1MZYiu6qANVhDd3meklrOIjYFLsxKVpLw46bxb3fayjfvGz
-	cWQvp8HdaMNaQ9DGbqcpTbxI0qA8z61vvsPdPml4JtF+WdLnaH9p9klPaHqimoeR0vO6DwUrXlck+
-	/+6x5MSb77TpoZ32FqehFnpfUs9e+e8HugMlV03s6PWwgo2PV+Lt7Yw5xwGETZx0mIsXjrxNh0dDH
-	Yz4UtM01jhTOqqbJSEMA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=WTK4YX6DRwp4eKp3wIpWAGcdivGNkippwgIhkZN3r3k=; b=V4Fmz9/aNQXRTZ
+	IFyaFeIO8dung/PDVlkrW0Bp5ZPuqcF/MMAeH7QAbXrVPcZDyt0ZHsYuP3TIQBeGh/aXLqVBle3u8
+	+7z+fdOPLzF3dSS5dJeSvbNFGkmP7Gnsvv3A20+TnsQIxSBwYmDpvyxCxhsFcjMrnzAsdjHVB37Q9
+	/QQ0SsL6moPThjxIIDDOIKYagdkKYYwiOf+nYRSGNcMKriinBPs5DIoMnXaFkAt1e2Tf6ovH9Rsx/
+	2MegcVN9zPWVkUz9t3AwVUx2F5UwujY/yojWmmEqx2IhxbLj4buMveHR/Q/KlnOKvo0liwi+EdyQB
+	cR4gLn/c4MXO6wFEdSqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8L2t-008ycN-T2; Fri, 14 Jan 2022 11:47:03 +0000
+	id 1n8L2u-008ycT-ME; Fri, 14 Jan 2022 11:47:04 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8L2X-008yZD-Ng; Fri, 14 Jan 2022 11:46:44 +0000
-X-UUID: bb5fcc7c529241f79dd479f0a4991a73-20220114
-X-UUID: bb5fcc7c529241f79dd479f0a4991a73-20220114
+ id 1n8L2X-008yZF-Nf; Fri, 14 Jan 2022 11:46:44 +0000
+X-UUID: bb3a1b65ac5b419597d03efdf4fbb5cd-20220114
+X-UUID: bb3a1b65ac5b419597d03efdf4fbb5cd-20220114
 Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
  (envelope-from <allen-kh.cheng@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1280625194; Fri, 14 Jan 2022 04:46:37 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 559798168; Fri, 14 Jan 2022 04:46:37 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Jan 2022 03:46:36 -0800
+ 15.0.1497.2; Fri, 14 Jan 2022 03:46:35 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 14 Jan 2022 19:46:35 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Jan 2022 19:46:34 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 14 Jan 2022 19:46:35 +0800
+ Frontend Transport; Fri, 14 Jan 2022 19:46:34 +0800
 From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
 To: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
  Matthias Brugger <matthias.bgg@gmail.com>
@@ -55,17 +54,15 @@ CC: Linux-ALSA <alsa-devel@alsa-project.org>, <tzungbi@google.com>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
  <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v14 1/2] dt-bindings: mediatek: add adsp-mbox document
-Date: Fri, 14 Jan 2022 19:46:32 +0800
-Message-ID: <20220114114633.742-2-allen-kh.cheng@mediatek.com>
+Subject: [PATCH v14 0/2] mtk: add ADSP mailbox controller support for MT8195
+Date: Fri, 14 Jan 2022 19:46:31 +0800
+Message-ID: <20220114114633.742-1-allen-kh.cheng@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220114114633.742-1-allen-kh.cheng@mediatek.com>
-References: <20220114114633.742-1-allen-kh.cheng@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_034641_826383_0832D1F5 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20220114_034641_826483_EAD49B40 
+X-CRM114-Status: GOOD (  12.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,84 +74,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-
-This patch adds document for mediatek adsp mbox
-
-Signed-off-by: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
----
- .../bindings/mailbox/mtk,adsp-mbox.yaml       | 52 +++++++++++++++++++
- 1 file changed, 52 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-
-diff --git a/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-new file mode 100644
-index 000000000000..25756837797f
---- /dev/null
-+++ b/Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
-@@ -0,0 +1,52 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/mailbox/mtk,adsp-mbox.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Mediatek ADSP mailbox
-+
-+maintainers:
-+  - Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-+
-+description: |
-+  The MTK ADSP mailbox Inter-Processor Communication (IPC) enables the SoC
-+  to ommunicate with ADSP by passing messages through two mailbox channels.
-+  The MTK ADSP mailbox IPC also provides the ability for one processor to
-+  signal the other processor using interrupts.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8195-adsp-mbox
-+
-+  "#mbox-cells":
-+    const: 0
-+
-+  reg:
-+    description:
-+      Physical address base for dsp mbox registers.
-+
-+  interrupts:
-+    description:
-+      adsp mbox interrupt
-+
-+required:
-+  - compatible
-+  - "#mbox-cells"
-+  - reg
-+  - interrupts
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+
-+    adsp_mailbox0:mailbox@10816000 {
-+        compatible = "mediatek,mt8195-adsp-mbox";
-+        #mbox-cells = <0>;
-+        reg = <0x10816000 0x1000>;
-+        interrupts = <GIC_SPI 702 IRQ_TYPE_LEVEL_HIGH 0>;
-+    };
--- 
-2.18.0
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+RnJvbTogQWxsZW4tS0ggQ2hlbmcgPEFsbGVuLUtILkNoZW5nQG1lZGlhdGVrLmNvbT4KCk1lZGlh
+dGVrIEFEU1AgSVBDIGlzIHVzZWQgdG8gc2VuZCBub3RpZmljYXRpb24gb3Igc2hvcnQgbWVzc2Fn
+ZSBiZXR3ZWVuIHByb2Nlc3NvcnMgd2l0aCBkc3AuwrcKCkl0IHdpbGwgcGxhY2UgdGhlIG1lc3Nh
+Z2UgdG8gdGhlIHNoYXJlIGJ1ZmZlciBhbmQgd2lsbCBhY2Nlc3MgdGhlIEFEU1AgbWFpbGJveCBy
+ZWdpc3RlcnMgdG8ga2ljayBkc3AuCgpUd28gbWFpbGJveGVzIHVzZWQgdG8gc2VuZCBub3RpZmlj
+YXRpb24gb3Igc2hvcnQgbWVzc2FnZSBiZXR3ZWVuIHByb2Nlc3NvcnMgd2l0aCBkc3AKCmNoYW5n
+ZXMgc2luY2UgdjEzOgotIHJlYmFzZSBvbiB2NS4xNi1yYzgKLSBhZGQgYmFjayBwdHIgY2hlY2sg
+ZnJvbSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEKCmNoYW5nZXMgc2luY2UgdjEyOgotIHJlbW92
+ZSBvZl9kZXZpY2VfZ2V0X21hdGNoX2RhdGEgcHRyIGNoZWNrOgogIG9mX2RldmljZV9nZXRfbWF0
+Y2hfZGF0YShkZXYpIHdpbGwgbmV2ZXIgZ29pbmcgdG8gcmV0dXJuIE5VTEwuCiAgZHJpdmVyIHBy
+b2JlIHdpdGggY29tcGF0aWJsZSBtZWRpYXRlayxtdDgxOTUtYWRzcC1tYm94LgoKY2hhbmdlcyBz
+aW5jZSB2MTE6Ci0gcmVtb3ZlIHVudXNlZnVsIE1PRFVMRV9MSUNFTlNFCgpjaGFuZ2VzIHNpbmNl
+IHYxMDoKLSBzcGxpdCB1cCB2OSBpbnRvIHR3byBzZXBhcmF0ZSBzdWJtaXNzaW9ucwogIGh0dHBz
+Oi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVjdC9saW51eC1tZWRpYXRlay9wYXRjaC8yMDIy
+MDExMTA3MTAxMS41OTY0LTEtYWxsZW4ta2guY2hlbmdAbWVkaWF0ZWsuY29tLwoKY2hhbmdlcyBz
+aW5jZSB2OToKLSByZW5hbWUgYWRzcF9tYm94X2NoYW5fb3BzIHRvIG10a19hZHNwX21ib3hfY2hh
+bl9vcHMKCmNoYW5nZXMgc2luY2Ugdjg6Ci0gcmVtb3ZlIHN0cnVjdCBhZHNwX21ib3hfY2hfaW5m
+bwotIGFkZCBnZXRfbXRrX2Fkc3BfbWJveF9wcml2Ci0gdXNlIG10a19hZHNwX21ib3hfcHJpdiB2
+YV9tYm94cmVnIGFkZHJlc3MgaW4gYWRzcCBtYm94IGRyaXZlcgotIGFkZCBzdHJ1Y3QgbXRrX2Fk
+c3BfbWJveF9jZmcgZm9yIERTUCBtYm94IHJlZ2lzdGVyIG9mZnNldAotIHJlbW92ZSBhZHNwIG1i
+b3ggcmVnaXN0ZXIgb2Zmc2V0IGhhcmQgY29kZSBkZWZpbmUKLSByZW1vdmUgbXRrLWFkc3AtaXBj
+LmggcmVmZXJlbmNlIGluIGFkc3AgbWJveCBkcml2ZXIKCmNoYW5nZXMgc2luY2Ugdjc6Ci0gYWRk
+IG10ayBwcmVmaXggZm9yIGFkc3AgaXBjIGZ1bmN0aW9ucwotIHJlbmFtZSBhZHNwX21ib3hfY2hf
+aW5mbyB0byBtdGtfYWRzcF9tYm94X2NoX2luZm8KLSByZW1vdmUgaW5jb3JyZWN0IHJldmlld2Vy
+cyBpbiBjb21taXQgbWVzc2FnZQoKY2hhbmdlcyBzaW5jZSB2NjoKLSBkdC1iaW5kaW5nczogY2hh
+bmdlIGV4YW1wbGUgZHRzaSBub2RlLgotIHJlbmFtZSBjb25maWcgTVRLX0FEU1BfSVBDX01CT1gg
+dG8gTVRLX0FEU1BfTUJPWAotIHJlbW92ZSB1bnVzZWQgdmFyaWFibGUKLSBhZGQgcmV2aWV3ZXJz
+CgpjaGFuZ2VzIHNpbmNlIHY1OgotIHJlbW92ZSBzb21lIHJlZHVuZGFudCBjb2RlCgpjaGFuZ2Vz
+IHNpbmNlIHY0OgotIHVzZSBzd2l0Y2ggLi4uIGNhc2UgaW4gYWRzcF9pcGNfcmVjdgotIGFkZCBl
+cnJvciBoYW5kbGluZyBwYXRoIGZvciBjaGFuX25hbWUgcG9pbnRlcgotIHJlZmluZSBzb21lIGNv
+ZGUgdG8gYmUgY29uY2lzZQoKY2hhbmdlcyBzaW5jZSB2MzoKLSByZW9yZGVyIE1US19BRFNQX0lQ
+Q19NQk9YIGNvbmZpZwotIHJlbW92ZSBzb21lIHJlZHVuZGFudCBjb2RlCi0gcmVtb3ZlIGxvY2sg
+aW4gbXRrLWFkc3AtbWFpbGJveAoKY2hhbmdlcyBzaW5jZSB2MjoKLSBzZXBhcmF0ZSBhZHNwX21h
+aWxib3ggaW50byB0d28gaW5zdGFuY2VzCgpjaGFuZ2VzIHNpbmNlIHYxOgotIGZpeCBkdF9iaW5k
+aW5nX2NoZWNrIGVycm9yCgpBbGxlbi1LSCBDaGVuZyAoMik6CiAgZHQtYmluZGluZ3M6IG1lZGlh
+dGVrOiBhZGQgYWRzcC1tYm94IGRvY3VtZW50CiAgbWFpbGJveDogbWVkaWF0ZWs6IGFkZCBzdXBw
+b3J0IGZvciBhZHNwIG1haWxib3ggY29udHJvbGxlcgoKIC4uLi9iaW5kaW5ncy9tYWlsYm94L210
+ayxhZHNwLW1ib3gueWFtbCAgICAgICB8ICA1MiArKysrKysKIGRyaXZlcnMvbWFpbGJveC9LY29u
+ZmlnICAgICAgICAgICAgICAgICAgICAgICB8ICAgNyArCiBkcml2ZXJzL21haWxib3gvTWFrZWZp
+bGUgICAgICAgICAgICAgICAgICAgICAgfCAgIDIgKwogZHJpdmVycy9tYWlsYm94L210ay1hZHNw
+LW1haWxib3guYyAgICAgICAgICAgIHwgMTc1ICsrKysrKysrKysrKysrKysrKwogNCBmaWxlcyBj
+aGFuZ2VkLCAyMzYgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IERvY3VtZW50YXRp
+b24vZGV2aWNldHJlZS9iaW5kaW5ncy9tYWlsYm94L210ayxhZHNwLW1ib3gueWFtbAogY3JlYXRl
+IG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWFpbGJveC9tdGstYWRzcC1tYWlsYm94LmMKCi0tIAoyLjE4
+LjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlh
+dGVrCg==
