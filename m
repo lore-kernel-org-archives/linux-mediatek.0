@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3882C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 12:49:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6BA0C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 12:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
 	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cnWhNZTqJ339LCYKiDiCe7UX3Rth/XD7Bjs/XWj/9Fo=; b=GJhEII+6sebP05
-	Ub1pd0CCAmKVL++j02d/qDdrBGN7OphsLBjbTQXeMaCKjv0i4hCS5gnydNhmoRnhheNAxbfAro/Qf
-	Ab0JWxMVIkISGl2Z9GoWQHr6uW96q8Xg7xNANXR86P/ZqhBuj9LoiuLDRUWjhcQJvnaawmOFvL1k/
-	A6B6IhyEuVt9vpdcEgrsX50nV4w16qL4nms8BYMYhVf4y3aq7PpiDuUleU+jkGBggivD2xC8FrVA9
-	VNdBkVol7GE6Mm5SIbT4X7QHyeDPhvnFVhlGGRY7HR+p42VUS4zDSxbhb8+MbaPsqk+68qZu8pIlP
-	1AQSFBi7DXdGaqyKlx6A==;
+	List-Owner; bh=cebNxigbEIhSIJUb6mDTZVXy/Rn1J0T2cjMQXVT+ews=; b=H3TY+jXmWBZPSn
+	1oqjecsKB6YvZtznZ+aqW2nW3PHu9xuNOhB+bgcyTbou9vKxwawnIhz7cJoYvnoL0lc7P1O/Su+SR
+	5w+wovZq0IId0baprHFJvIjmU7Gyre4a1lY9tZ0NtLg7kvARHE0aA+Crey0JzLVn7dKhcNz1eoH/L
+	effgs223brwsR0pzopZ+9mabKF3uWOnn3tONk43EYwHTyHsYjICBk5JAt+q1NbOxUSWLtQsIyXzTe
+	hOHmtl3xKQi27HI+PrKI0kxCItbqqSPf8vrs2eaXUChHPezi8h/ntkzKqipcBK7tBZOBgJg/OzLZ8
+	dhs49mDrt+QsIL2YWypA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8M19-0096ds-69; Fri, 14 Jan 2022 12:49:19 +0000
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+	id 1n8M84-00988k-43; Fri, 14 Jan 2022 12:56:28 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8M0x-0096bX-3l; Fri, 14 Jan 2022 12:49:08 +0000
-Received: by mail-wr1-x434.google.com with SMTP id v6so15412053wra.8;
- Fri, 14 Jan 2022 04:49:06 -0800 (PST)
+ id 1n8M7r-00985p-5y; Fri, 14 Jan 2022 12:56:16 +0000
+Received: by mail-wr1-x433.google.com with SMTP id x4so15466282wru.7;
+ Fri, 14 Jan 2022 04:56:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
  h=message-id:date:mime-version:user-agent:subject:content-language:to
  :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Abw46UALerxLsOmPP7C+wt8VRbuUvbjsYrXsJ3w0t5c=;
- b=MeKHaejy0QtUUqCztMf3ob7n3XvMH/3w+xXtQmf02LV7ZaNDwigUfJWPzL4qwGdle1
- 8tkQBWlfE3fN/aTqlFxcA5KM6qlh6Zwbxg2jdiKrSQ22OA7xUkCC96cX1+qfg2Qg3djr
- +Y7LLdPNkCRswSc1M6zVTBBcRBTzZl738w4IYUmzDPI+8yGrqUMyLG14KoEHx728JSGI
- 9Wi8hYiELCgZWiv9p17KMgCJmNUrCUFRIvpHilaR1E0b4jwA+US+PA+UMCMfPY2HtPOM
- hb570ojMTpFgox2Z9ZdnL8GgGUM8sPFrxZDerxkVqMzWLwwQV7HL0wnfAzTfoHBKtV9S
- yLWw==
+ bh=d3ibwPAPVt4HA/SbrQ1xEvUJPH+rbcSyYMnJxKURgvY=;
+ b=fb5npDbIVbXCAmGa3aSg1k8zmuohBbb7KypbIegherNH93fveoZq8HcfrgdsuNvXz8
+ CDw9aC3OJl/FCnBGvwgMykySe9jqF3hjX6uVUTPOGTork74gr4LptbeOXg08D4FANiN4
+ m8uPEJXzq0ezfHyXFI8iPMWd6idfe7hf+JY5QpD66LC7d0MXsfE9Ghd81R/poIn9XgZa
+ aZ+6o7lhptWt3VmwrOFdjmES0DdKYFnKYEFl7Y2Pbve5Qp/2x9SlYO4Y1AM7Ejq6Mgvg
+ hzG7CLkkWKgGMP6j+arp8RUt0N9V2cVDdsz3waJaB/vNQgiuNQ/ZWDdROzQuPi0Ykuxa
+ 0+hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
  h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
  :content-language:to:cc:references:from:in-reply-to
  :content-transfer-encoding;
- bh=Abw46UALerxLsOmPP7C+wt8VRbuUvbjsYrXsJ3w0t5c=;
- b=7obHrbNpInHYs5IYVfsVO3rcXvag4DYbTzvU6kWgfXtbjNM3HfQgoiCRH+p8VZHxBM
- OhVnS4YyR4IcbQYcu5Zad+T2ROQE4bywULb1ckjaiPRTEnCyrQuZnILU24s2AY3KaphX
- nkbVqGm65F9AvCmTSSXTkzDjepSjkaXAGff081Dnhl01fQe7QxnLv9GL6UfoFrvy54ro
- vMJaynFaH8L61RuuL1+Cvx6WE6VWcmzgV5CCjNmUB9krY3vf2fGAPzMyIRuzhmLTfxLK
- dqxXH4mdxXJOvjYbWQgZxlvVEb2w7BKU/2S/I9sVqrKVRyCquNk8rwnDmr0wXWu4yan8
- 56QA==
-X-Gm-Message-State: AOAM530iW4nmF7IUzCpHBZ+4nr75aoCvd3Glk5lbfSvoE03x/auwznNZ
- nmoZGGs/N1qFA09tnOkIevk=
-X-Google-Smtp-Source: ABdhPJzN1iStMrlaWrjW6Yw96OxXnti/SKJXgawksZJN6YpUIg0QPKmcFSJe8rRFAgN4+ke5fGtnxg==
-X-Received: by 2002:a05:6000:1a87:: with SMTP id
- f7mr8504210wry.150.1642164545786; 
- Fri, 14 Jan 2022 04:49:05 -0800 (PST)
+ bh=d3ibwPAPVt4HA/SbrQ1xEvUJPH+rbcSyYMnJxKURgvY=;
+ b=g6UhX5VjXoNzSfJOVsHGcM3F2EzGUe/Z5HYdnuZJhWjBsCSUmV4S8+KxYTma/n3lNT
+ xfmhZiBfshSUc+kDCJRNeOIO/9Macaf6EPyG4mJAe2PtX5MCIcgv55QWXRWDPw6/oAQk
+ n8IcaPzErEKZqs6q397HSiXPCkQrBPJ7U/VktZizAxu1KTN5VqqTRsUw0FYjObEzenM1
+ o6gtiwUG/HG0gXNIAPdfMkEcWK3TsyZ6A0VYTtSeipJrixrgyxRdtnJbNtXY9kAO621I
+ o2bO1F9A6Z7HQDYvylgMG4kXvQNolf9WvwURfArwe9prbZcKJS+U5FFbnwub7jBksVoX
+ dXCw==
+X-Gm-Message-State: AOAM533CR6s2eIzW1khXuzGc/hVrge0JiW3O6/dt3UXWDfuzDWGqqTRE
+ buB5H6opI9K39r4odn2UL3sUX1yfIro=
+X-Google-Smtp-Source: ABdhPJxo8QEjs5Q0X+ZWAwcHSYac8AQTrcqIp/pFDeME41NkNSzQHoy2PCkOg4lwKdONf8ZqSIFXjA==
+X-Received: by 2002:a5d:6dd1:: with SMTP id d17mr8741857wrz.520.1642164973553; 
+ Fri, 14 Jan 2022 04:56:13 -0800 (PST)
 Received: from [192.168.0.22] ([37.223.145.74])
- by smtp.gmail.com with ESMTPSA id ay39sm5203745wmb.29.2022.01.14.04.49.04
+ by smtp.gmail.com with ESMTPSA id g15sm5358083wrm.2.2022.01.14.04.56.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Jan 2022 04:49:05 -0800 (PST)
-Message-ID: <ae307028-979b-7e58-dd6f-f1d52520859b@gmail.com>
-Date: Fri, 14 Jan 2022 13:49:04 +0100
+ Fri, 14 Jan 2022 04:56:13 -0800 (PST)
+Message-ID: <68895a40-559b-13ce-d433-f9b32c648323@gmail.com>
+Date: Fri, 14 Jan 2022 13:56:11 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
-Subject: Re: [v1 1/2] dt-bindings: power: Add MT8186 power domains
+Subject: Re: [PATCH v4] dt-bindings: dsp: mediatek: add mt8195 dsp document
 Content-Language: en-US
-To: Rob Herring <robh@kernel.org>, Chun-Jie Chen <chun-jie.chen@mediatek.com>
-Cc: Enric Balletbo Serra <eballetbo@gmail.com>,
- Nicolas Boichat <drinkcat@chromium.org>,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- srv_heupstream@mediatek.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220108131953.16744-1-chun-jie.chen@mediatek.com>
- <20220108131953.16744-2-chun-jie.chen@mediatek.com>
- <Yd43V1woRMAcXOfS@robh.at.kernel.org>
+To: Rob Herring <robh@kernel.org>, YC Hung <yc.hung@mediatek.com>
+Cc: robh+dt@kernel.org, broonie@kernel.org, daniel.baluta@nxp.com,
+ trevor.wu@mediatek.com, tiwai@suse.com, alsa-devel@alsa-project.org,
+ devicetree@vger.kernel.org, cezary.rojewski@intel.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, allen-kh.cheng@mediatek.com
+References: <20220106064847.15588-1-yc.hung@mediatek.com>
+ <Yd4yNkeGlzdULNlv@robh.at.kernel.org>
 From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <Yd43V1woRMAcXOfS@robh.at.kernel.org>
+In-Reply-To: <Yd4yNkeGlzdULNlv@robh.at.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_044907_194404_5C5C62D5 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20220114_045615_265008_7FBF23C5 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,80 +95,41 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 
 
-On 12/01/2022 03:05, Rob Herring wrote:
-> On Sat, Jan 08, 2022 at 09:19:52PM +0800, Chun-Jie Chen wrote:
->> Add power domains dt-bindings for MT8186.
+On 12/01/2022 02:43, Rob Herring wrote:
+> On Thu, 06 Jan 2022 14:48:48 +0800, YC Hung wrote:
+>> From: "YC Hung" <yc.hung@mediatek.com>
 >>
->> Signed-off-by: Chun-Jie Chen <chun-jie.chen@mediatek.com>
+>> This patch adds mt8195 dsp document. The dsp is used for Sound Open
+>> Firmware driver node. It includes registers,  clocks, memory regions,
+>> and mailbox for dsp.
+>>
+>> Signed-off-by: yc.hung <yc.hung@mediatek.com>
 >> ---
->>   .../power/mediatek,power-controller.yaml      |  1 +
->>   include/dt-bindings/power/mt8186-power.h      | 32 +++++++++++++++++++
->>   2 files changed, 33 insertions(+)
->>   create mode 100644 include/dt-bindings/power/mt8186-power.h
+>> Changes since v3:
+>>    Fix patch v3 error : v3 only provide difference between v3 and v2.
 >>
->> diff --git a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
->> index d6ebd77d28a7..135c6f722091 100644
->> --- a/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
->> +++ b/Documentation/devicetree/bindings/power/mediatek,power-controller.yaml
->> @@ -26,6 +26,7 @@ properties:
->>         - mediatek,mt8167-power-controller
->>         - mediatek,mt8173-power-controller
->>         - mediatek,mt8183-power-controller
->> +      - mediatek,mt8186-power-controller
->>         - mediatek,mt8192-power-controller
->>         - mediatek,mt8195-power-controller
->>   
->> diff --git a/include/dt-bindings/power/mt8186-power.h b/include/dt-bindings/power/mt8186-power.h
->> new file mode 100644
->> index 000000000000..ca8ea2d24801
->> --- /dev/null
->> +++ b/include/dt-bindings/power/mt8186-power.h
->> @@ -0,0 +1,32 @@
->> +/* SPDX-License-Identifier: GPL-2.0-only */
+>> Changes since v2:
+>>    Remove useless watchdog interrupt.
+>>    Add commit message more detail description.
+>>
+>> Changes since v1:
+>>    Rename yaml file name as mediatek,mt8195-dsp.yaml
+>>    Refine descriptions for mailbox, memory-region and drop unused labels
+>>    in examples.
+>> ---
+>>   .../bindings/dsp/mediatek,mt8195-dsp.yaml     | 105 ++++++++++++++++++
+>>   1 file changed, 105 insertions(+)
+>>   create mode 100644 Documentation/devicetree/bindings/dsp/mediatek,mt8195-dsp.yaml
+>>
 > 
-> Dual license please.
+> Reviewed-by: Rob Herring <robh@kernel.org>
 > 
 
-Other then that series looks good.
+Rob, it seems we don't have a maintainer for this bindings. Shall I as MediaTek 
+SoC maintainer take them through my branch?
 
 Regards,
 Matthias
-
->> +/*
->> + * Copyright (c) 2022 MediaTek Inc.
->> + * Author: Chun-Jie Chen <chun-jie.chen@mediatek.com>
->> + */
->> +
->> +#ifndef _DT_BINDINGS_POWER_MT8186_POWER_H
->> +#define _DT_BINDINGS_POWER_MT8186_POWER_H
->> +
->> +#define MT8186_POWER_DOMAIN_MFG0			0
->> +#define MT8186_POWER_DOMAIN_MFG1			1
->> +#define MT8186_POWER_DOMAIN_MFG2			2
->> +#define MT8186_POWER_DOMAIN_MFG3			3
->> +#define MT8186_POWER_DOMAIN_SSUSB			4
->> +#define MT8186_POWER_DOMAIN_SSUSB_P1			5
->> +#define MT8186_POWER_DOMAIN_DIS				6
->> +#define MT8186_POWER_DOMAIN_IMG				7
->> +#define MT8186_POWER_DOMAIN_IMG2			8
->> +#define MT8186_POWER_DOMAIN_IPE				9
->> +#define MT8186_POWER_DOMAIN_CAM				10
->> +#define MT8186_POWER_DOMAIN_CAM_RAWA			11
->> +#define MT8186_POWER_DOMAIN_CAM_RAWB			12
->> +#define MT8186_POWER_DOMAIN_VENC			13
->> +#define MT8186_POWER_DOMAIN_VDEC			14
->> +#define MT8186_POWER_DOMAIN_WPE				15
->> +#define MT8186_POWER_DOMAIN_CONN_ON			16
->> +#define MT8186_POWER_DOMAIN_CSIRX_TOP			17
->> +#define MT8186_POWER_DOMAIN_ADSP_AO			18
->> +#define MT8186_POWER_DOMAIN_ADSP_INFRA			19
->> +#define MT8186_POWER_DOMAIN_ADSP_TOP			20
->> +
->> +#endif /* _DT_BINDINGS_POWER_MT8186_POWER_H */
->> -- 
->> 2.18.0
->>
->>
 
 _______________________________________________
 Linux-mediatek mailing list
