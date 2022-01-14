@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2F88C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 09:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BA1C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 09:24:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k96c64OPodIB+tU+zhUKilE7a2WHUknq1dDKTOPLDI8=; b=LT4zi4m6nx0Quz
-	0zrQWaTc9ridpV+yueSUQdqHpzXD8zgstuOMPt0dmD9u8QBQImOIH78+gbHZdgJX6pLnNs2q5/ArF
-	7Bpt4kg+XUxPcS/jV2cKYZfQ4YBAIv82G8zECqJrz3fwf/tA4861B6HaRGLVkvyZ3n5ggF1WxRmDq
-	bYqBsGfHBQt0q9vGmxFMZWj2riOjuZs5Fk15tRLIZpfQqQKd1WONN3w3Twi6Q84HDuqpAEv8BcOIJ
-	UggeObDpmCGVaIND6bJfNvDu7EmDh6CalNOd5P2y8pWJqdzSORr2Z2fo/Zdrw81hLtMYex8hZBhh2
-	Cgd20rOm346kA3iSflEg==;
+	List-Owner; bh=dCxd5rKCEksxyh97tnQvwnWrkHyoBfW3XNLJvYTFZbk=; b=McKoqNbuZJP7fc
+	EiyACHWNU5hNUflRMvONM22x/bYFkhJpwfTyEBZngG1kPFxy5V8/IfObgS2A6/eWoDD/KK5KNwAxu
+	BrUfioum/bNT7xhT5SeO3hspt140+BsRkc1iq1KGcBeHmfTrElbOMJuHgMFLe2/nQPKz5ru+iBKVs
+	zsCUnICVswNxa9hCmTT67QBsopEJNuV21mx1zeJM1CghxpSVCeAvrx6eNMiicrH2J419oKKOcdiZR
+	lqqt9h92YR+VnCVMhBK5vBEvWaa5/LfQ8K2en04Yv9mZWIWyfyy+XCX4pmJMrdvRz2qrQWbTN5X2S
+	5KHwEFI/3ZKbYFmUfXpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8IoK-008T9k-U0; Fri, 14 Jan 2022 09:23:52 +0000
+	id 1n8Ioa-008TGm-VQ; Fri, 14 Jan 2022 09:24:08 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8Io6-008T4i-C0; Fri, 14 Jan 2022 09:23:39 +0000
-X-UUID: 82f6a00f69c342d39655d6c08dac7e6b-20220114
-X-UUID: 82f6a00f69c342d39655d6c08dac7e6b-20220114
+ id 1n8Io7-008T54-5G; Fri, 14 Jan 2022 09:23:40 +0000
+X-UUID: e443c54ae5224a27943cf3991674ce50-20220114
+X-UUID: e443c54ae5224a27943cf3991674ce50-20220114
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1803454787; Fri, 14 Jan 2022 02:23:33 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 932818307; Fri, 14 Jan 2022 02:23:33 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Jan 2022 01:21:28 -0800
+ 15.0.1497.2; Fri, 14 Jan 2022 01:21:27 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Fri, 14 Jan 2022 17:21:26 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Jan 2022 17:21:26 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Fri, 14 Jan 2022 17:21:26 +0800
@@ -50,17 +49,17 @@ CC: <xji@analogixsemi.com>, <devicetree@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
  <rex-bc.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
-Subject: [v9,2/3] drm/mediatek: implement the DSI hs packets aligned
-Date: Fri, 14 Jan 2022 17:21:09 +0800
-Message-ID: <20220114092110.12137-3-rex-bc.chen@mediatek.com>
+Subject: [v9,1/3] drm/dsi: transfer DSI HS packets ending at the same time
+Date: Fri, 14 Jan 2022 17:21:08 +0800
+Message-ID: <20220114092110.12137-2-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
 References: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_012338_455151_0EB95AA6 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20220114_012339_231321_C6F26B2A 
+X-CRM114-Status: GOOD (  10.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +76,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some DSI RX devices require the packets on all lanes aligned at the end.
-Otherwise, there will be some issues of shift or scroll for screen.
+Since a HS transmission is composed of an arbitrary number
+of bytes that may not be an integer multiple of lanes, some
+lanes may run out of data before others.
+(Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+
+However, for some DSI RX devices (for example, anx7625),
+there is a limitation that packet number should be the same
+on all DSI lanes. In other words, they need to end a HS at
+the same time.
+
+Because this limitation is for some specific DSI RX devices,
+it is more reasonable to put the enable control in these
+DSI RX drivers. If DSI TX driver knows the information,
+they can adjust the setting for this situation.
 
 Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
 Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ include/drm/drm_mipi_dsi.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 5d90d2eb0019..ccdda15f5a66 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -195,6 +195,8 @@ struct mtk_dsi {
- 	struct clk *hs_clk;
+diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
+index 147e51b6d241..342dfe5a0874 100644
+--- a/include/drm/drm_mipi_dsi.h
++++ b/include/drm/drm_mipi_dsi.h
+@@ -137,6 +137,8 @@ struct mipi_dsi_host *of_find_mipi_dsi_host_by_node(struct device_node *node);
+ #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
+ /* transmit data in low power */
+ #define MIPI_DSI_MODE_LPM		BIT(11)
++/* transmit data ending in the same hsync for all lanes */
++#define MIPI_DSI_HS_PKT_END_ALIGNED	BIT(12)
  
- 	u32 data_rate;
-+	/* force dsi line end without dsi_null data */
-+	bool hs_packet_end_aligned;
- 
- 	unsigned long mode_flags;
- 	enum mipi_dsi_pixel_format format;
-@@ -500,6 +502,13 @@ static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
- 		DRM_WARN("HFP + HBP less than d-phy, FPS will under 60Hz\n");
- 	}
- 
-+	if (dsi->hs_packet_end_aligned) {
-+		horizontal_sync_active_byte = roundup(horizontal_sync_active_byte, dsi->lanes) - 2;
-+		horizontal_frontporch_byte = roundup(horizontal_frontporch_byte, dsi->lanes) - 2;
-+		horizontal_backporch_byte = roundup(horizontal_backporch_byte, dsi->lanes) - 2;
-+		horizontal_backporch_byte -= (vm->hactive * dsi_tmp_buf_bpp + 2) % dsi->lanes;
-+	}
-+
- 	writel(horizontal_sync_active_byte, dsi->regs + DSI_HSA_WC);
- 	writel(horizontal_backporch_byte, dsi->regs + DSI_HBP_WC);
- 	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
-@@ -794,6 +803,9 @@ static int mtk_dsi_host_attach(struct mipi_dsi_host *host,
- 	dsi->lanes = device->lanes;
- 	dsi->format = device->format;
- 	dsi->mode_flags = device->mode_flags;
-+	dsi->hs_packet_end_aligned = (dsi->mode_flags &
-+				      MIPI_DSI_HS_PKT_END_ALIGNED)
-+				     ? true : false;
- 
- 	return 0;
- }
+ enum mipi_dsi_pixel_format {
+ 	MIPI_DSI_FMT_RGB888,
 -- 
 2.18.0
 
