@@ -4,56 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 299F2C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 10:28:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE11AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 10:31:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5rptMqgxkd515/g6t1+OnLy4h+y9cpQEA/IdopgvRyE=; b=bO6MMoJgOX0T8PI0TUQzrXT+vQ
-	ilEy5ZxgtrvSo7J9BrJWtZSpyH/6Rbx5uypbaUq6A+QOIqubb7ZUQONYkwYlZpTj6mBCFjG246yIB
-	MDVjkHeN4TAf8N3IdzFSUdC+qESCI6mliqdLDxlo13xx5/ioQcXrWVwUrgLTdvRL2akk00SalRxC9
-	TF3l+was6K2XLNPELCDCXbr4wRJM1lW1hUJo1+1I1o5l9645z95fEAL6yNBtBkhfQOPgEJGoAvUxZ
-	6bzf2Zf74YZP0CLZmeIjRG+SM5EVBzZC4b2fZRNmTSanKI3SX+phTsw6TDNncaaEJVwo9FJwAIHDs
-	TenfAC7w==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JBzy9bKxUug490KlOjVmKcfLbM+4ZUK1mFD/y5Lymys=; b=DJKXISXhG6LPW0
+	nzxkpqOce4Q6PGCeq3fRepqna8BIWGeVBGWcbV9gHtwH6KCcB/vfLQHaJMnV0cxFKDJw0QQEw04EE
+	bVzGVqgNdysHNmOtHyImGMur/00hwN0wXfy0zEQG9xzihKEdSgxFnjolkoVKNlckBvboBg79Lffus
+	dVLRAGJp15ZjEA2ul4remUhZ8EjdVVe7hTflG/OZrSCSm4y2SVOnqoyv07NWKb9PIWiWqp7jPqVX0
+	mi5iehuyKM1M/apKIk0Iqy0ZkxLj3WWGEnXHHiSqTsFSSC+TcW+0DLYi/v2GRaq/I817pDT9KOHeH
+	tbvy55CtimoKicW1sR7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9PFG-00EUrS-LK; Mon, 17 Jan 2022 10:28:14 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1n9PIi-00EVjX-Gd; Mon, 17 Jan 2022 10:31:48 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9PEy-00EUjV-VQ; Mon, 17 Jan 2022 10:27:59 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 899521F436F7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642415275;
- bh=Cmf+ki9Vk24rB2D48FhsSedDY9YmalEmBmnVGnqctrk=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=cZN2aNglRujf2txUQPNOsSikL1Qj/rX9KtqAToPUgaHafbV1bl8jpSDlXrQ9kPDP/
- lxOV7RCedjnOMCKGDws0KlV3uOr9EBMopUw/sqdwVIs0bSwjWGlLCf21WV/+eowj6G
- 6xsQUvlB5N4oLr2dl8LZ7MJheM6rzHBLGXVOBEUmvKQpMfR7SKK1LhQrUiFevKoCAq
- wJz2h1UDAqFfJczhwAj4cdeTv0DFKYj1NBKIfi1+lfwzYeN5bbQi3OVZxdSlXNQ2ig
- NeweolKaAqHKnlm+PLVxKS0UnM6yk0QcvKXpWRz4AfKup1xfL6KJIr6W+FzAKVKO7s
- zEXZWrv9u8JjQ==
-Subject: Re: [PATCH v10 00/13] Clean up "mediatek,larb"
-To: Yong Wu <yong.wu@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Hans Verkuil <hverkuil@xs4all.nl>,
- Joerg Roedel <jroedel@suse.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20220117070510.17642-1-yong.wu@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <06e5e76c-557a-20a5-b8dd-37b25b3384a3@collabora.com>
-Date: Mon, 17 Jan 2022 11:27:51 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1n9PIO-00EVeJ-Qg; Mon, 17 Jan 2022 10:31:30 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id
+ p1-20020a1c7401000000b00345c2d068bdso23199821wmc.3; 
+ Mon, 17 Jan 2022 02:31:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:content-language:to:cc
+ :references:from:subject:in-reply-to:content-transfer-encoding;
+ bh=drzE6YehBAfCGTYeantFOUyrCID0+zzbF12IY9CFxQU=;
+ b=UsHAOnftmCpjQS/OuNWUiYgvd7+GGI/3R5IkZpLRWZ8K7UCklqlJCeUomcEY44dnbt
+ NMgY/zUrPvahx3gssaevse2KppcEe+b19m1UfgYZh/tIcFztpd4mo6147HLRcx2kzZMW
+ C6fCjG6wzM3apbi+ayP2pvhlbcBZfS96FDE62pBoJX6vexu2r0QRlRauqzZ2sUqOLOSj
+ 50IEoNuO7SHvH1hvgb96hjPjZITzaCX+g/D7f03uBs4WXoZeAwZouFNZP5ravrW6ojvx
+ hBQusJHloYz1q5Bk3bpVhZ31CYE4WivdbvW+h39rsWKKxkwBxMRXQKRGVnK1klcGoeBi
+ b5gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent
+ :content-language:to:cc:references:from:subject:in-reply-to
+ :content-transfer-encoding;
+ bh=drzE6YehBAfCGTYeantFOUyrCID0+zzbF12IY9CFxQU=;
+ b=GrG5FN0X/Cow8wgnREGWCrsk7uZMT7aDFoZfa/eOfrYZdjVbjlGJ0MFZHoUSClGSCQ
+ LJlviIeMq/KTnWhdxgUcE3ga9DC//rlxQ/HfEtiSRnM7Ici/OFI5Y26SmPCfXalUoGpu
+ zAPbkKYaGugtDMYDZ1hHddAZYwyowbPCyuxZfcJvtdQFc8sFtCdVf9TyuF27IRkPxVxq
+ rXIC4DWxDFpgvt2OH18NBl9P4yPW5pGPdSXVYhdySJLvqWtAth1F+ubExq5Al8Y3dW8z
+ XwfD/YjdlP1Uf10Ts7Ep48qsczdNuj7Ip745yc/7Slpz64dDBzgDjDIfcmqclak0RzQ2
+ DuTA==
+X-Gm-Message-State: AOAM530EeNRU4k3DS2qlFkNmPlu69qEZ+S3T9jnzRTauQdMTn8QZZN2n
+ KG2PJ+TeAhxKEvG+6iWnrP0=
+X-Google-Smtp-Source: ABdhPJzPgzWevB3vn/b9crfzsgD7xhyUdvEZ8B8T4+GHOzdrlM6GpVQRKNrcl/xex+H0dhGUZ3EGfg==
+X-Received: by 2002:a5d:47ad:: with SMTP id 13mr19798499wrb.545.1642415486661; 
+ Mon, 17 Jan 2022 02:31:26 -0800 (PST)
+Received: from [192.168.0.14] ([37.223.145.74])
+ by smtp.gmail.com with ESMTPSA id b15sm9890257wrr.50.2022.01.17.02.31.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Jan 2022 02:31:26 -0800 (PST)
+Message-ID: <9949a1f7-1ed5-a137-c7b9-2ef8d8e1caf8@gmail.com>
+Date: Fri, 14 Jan 2022 16:46:41 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220117070510.17642-1-yong.wu@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
 Content-Language: en-US
+To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ angelogioacchino.delregno@collabora.com,
+ Project_Global_Chrome_Upstream_Group@mediatek.com
+References: <20220107104633.7500-1-johnson.wang@mediatek.com>
+ <20220107104633.7500-2-johnson.wang@mediatek.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+Subject: Re: [PATCH v2 1/2] soc: mediatek: pwrap: add pwrap driver for MT8186
+ SoC
+In-Reply-To: <20220107104633.7500-2-johnson.wang@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_022757_320619_6646808E 
-X-CRM114-Status: GOOD (  32.55  )
+X-CRM114-CacheID: sfid-20220117_023128_972908_0883A327 
+X-CRM114-Status: GOOD (  16.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,175 +89,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
- dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
- anthony.huang@mediatek.com, youlin.pei@mediatek.com,
- Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, mingyuan.ma@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, libo.kang@mediatek.com,
- yi.kuo@mediatek.com, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, anan.sun@mediatek.com,
- srv_heupstream@mediatek.com, acourbot@chromium.org,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/01/22 08:04, Yong Wu ha scritto:
-> MediaTek IOMMU block diagram always like below:
-> 
->          M4U
->           |
->      smi-common
->           |
->    -------------
->    |         |  ...
->    |         |
-> larb1     larb2
->    |         |
-> vdec       venc
-> 
-> All the consumer connect with smi-larb, then connect with smi-common.
-> 
-> When the consumer works, it should enable the smi-larb's power which also
-> need enable the smi-common's power firstly.
-> 
-> Thus, Firstly, use the device link connect the consumer and the
-> smi-larbs. then add device link between the smi-larb and smi-common.
-> 
-> After adding the device_link, then "mediatek,larb" property can be removed.
-> the iommu consumer don't need call the mtk_smi_larb_get/put to enable
-> the power and clock of smi-larb and smi-common.
-> 
-> Base on the media branch [1] and a jpeg dtbinding patchset[2] that already got
-> the necessary R-b.
-> 
-> [1] git://linuxtv.org/hverkuil/media_tree.git tags/br-v5.18d
-> [2] https://lore.kernel.org/linux-mediatek/20211206130425.184420-1-hsinyi@chromium.org/
-> 
-> Change notes:
-> v10: a) Rebase on the media tree. Respin the "media: mtk-vcodec:" patches.
->       b) Add Joerg's Ack for iommu patches.
-> 
-> v9: https://lore.kernel.org/linux-mediatek/20211112105509.12010-1-yong.wu@mediatek.com/
->      1) Add return -ENODEV when the dev is null.
->      2) Add more strict about the case that a iommu consume device use the ports in
->      different larbs. Don't allow this case.
->      3) Remove two codec interface: mtk_vcodec_release_enc/dec_pm since it only has one
->      line now.
-> 
-> v8: https://lore.kernel.org/linux-mediatek/20210929013719.25120-1-yong.wu@mediatek.com/
->      1) Rebase on v5.15-rc1.
->      2) Don't rebase the below mdp patchset that may still need more discuss.
->      https://lore.kernel.org/linux-mediatek/20210709022324.1607884-1-eizan@chromium.org/
->      3) Add Frank's Tested-by. Remove Dafna's Tested-by as he requested.
-> 
-> v7: https://lore.kernel.org/linux-mediatek/20210730025238.22456-1-yong.wu@mediatek.com/
->      1) Fix a arm32 boot fail issue. reported from Frank.
->      2) Add a return fail in the mtk drm. suggested by Dafna.
-> 
-> v6: https://lore.kernel.org/linux-mediatek/20210714025626.5528-1-yong.wu@mediatek.com/
->      1) rebase on v5.14-rc1.
->      2) Fix the issue commented in v5 from Dafna and Hsin-Yi.
->      3) Remove the patches about using pm_runtime_resume_and_get since they have
->         already been merged by other patches.
-> 
-> v5: https://lore.kernel.org/linux-mediatek/20210410091128.31823-1-yong.wu@mediatek.com/
->      1) Base v5.12-rc2.
->      2) Remove changing the mtk-iommu to module_platform_driver patch, It have already been a
->      independent patch.
-> 
-> v4: https://lore.kernel.org/linux-mediatek/1590826218-23653-1-git-send-email-yong.wu@mediatek.com/
->      base on v5.7-rc1.
->    1) Move drm PM patch before smi patchs.
->    2) Change builtin_platform_driver to module_platform_driver since we may need
->       build as module.
->    3) Rebase many patchset as above.
-> 
-> v3: https://lore.kernel.org/linux-iommu/1567503456-24725-1-git-send-email-yong.wu@mediatek.com/
->      1) rebase on v5.3-rc1 and the latest mt8183 patchset.
->      2) Use device_is_bound to check whether the driver is ready from Matthias.
->      3) Add DL_FLAG_STATELESS flag when calling device_link_add and explain the
->     reason in the commit message[3/14].
->      4) Add a display patch[12/14] into this series. otherwise it may affect
->     display HW fastlogo even though it don't happen in mt8183.
->     
-> v2: https://lore.kernel.org/linux-iommu/1560171313-28299-1-git-send-email-yong.wu@mediatek.com/
->     1) rebase on v5.2-rc1.
->     2) Move adding device_link between the consumer and smi-larb into
-> iommu_add_device from Robin.
->     3) add DL_FLAG_AUTOREMOVE_CONSUMER even though the smi is built-in from Evan.
->     4) Remove the shutdown callback in iommu.
-> 
-> v1: https://lore.kernel.org/linux-iommu/1546318276-18993-1-git-send-email-yong.wu@mediatek.com/
-> 
-> Yong Wu (12):
->    dt-binding: mediatek: Get rid of mediatek,larb for multimedia HW
->    iommu/mediatek-v1: Free the existed fwspec if the master dev already
->      has
->    iommu/mediatek: Return ENODEV if the device is NULL
->    iommu/mediatek: Add probe_defer for smi-larb
->    iommu/mediatek: Add device_link between the consumer and the larb
->      devices
->    media: mtk-jpeg: Get rid of mtk_smi_larb_get/put
->    media: mtk-mdp: Get rid of mtk_smi_larb_get/put
->    drm/mediatek: Get rid of mtk_smi_larb_get/put
->    media: mtk-vcodec: Get rid of mtk_smi_larb_get/put
->    memory: mtk-smi: Get rid of mtk_smi_larb_get/put
->    arm: dts: mediatek: Get rid of mediatek,larb for MM nodes
->    arm64: dts: mediatek: Get rid of mediatek,larb for MM nodes
-> 
-> Yongqiang Niu (1):
->    drm/mediatek: Add pm runtime support for ovl and rdma
-> 
->   .../display/mediatek/mediatek,disp.txt        |  9 ----
->   .../media/mediatek,vcodec-decoder.yaml        |  7 ---
->   .../media/mediatek,vcodec-encoder.yaml        |  8 ----
->   .../bindings/media/mediatek-jpeg-decoder.yaml |  9 ----
->   .../bindings/media/mediatek-jpeg-encoder.yaml |  9 ----
->   .../bindings/media/mediatek-mdp.txt           |  8 ----
->   arch/arm/boot/dts/mt2701.dtsi                 |  2 -
->   arch/arm/boot/dts/mt7623n.dtsi                |  5 ---
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi      | 16 -------
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  6 ---
->   drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  8 +++-
->   drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |  9 +++-
->   drivers/gpu/drm/mediatek/mtk_drm_crtc.c       | 15 ++++---
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.c   | 36 +--------------
->   drivers/gpu/drm/mediatek/mtk_drm_ddp_comp.h   |  1 -
->   drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  5 +--
->   drivers/iommu/mtk_iommu.c                     | 34 ++++++++++++++
->   drivers/iommu/mtk_iommu_v1.c                  | 42 ++++++++++++++++-
->   .../media/platform/mtk-jpeg/mtk_jpeg_core.c   | 45 +------------------
->   .../media/platform/mtk-jpeg/mtk_jpeg_core.h   |  2 -
->   drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 40 -----------------
->   drivers/media/platform/mtk-mdp/mtk_mdp_comp.h |  2 -
->   drivers/media/platform/mtk-mdp/mtk_mdp_core.c |  1 -
->   .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  |  2 -
->   .../platform/mtk-vcodec/mtk_vcodec_dec_hw.c   |  1 -
->   .../platform/mtk-vcodec/mtk_vcodec_dec_pm.c   | 41 +++--------------
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  3 --
->   .../platform/mtk-vcodec/mtk_vcodec_enc.c      |  1 -
->   .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  2 -
->   .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 45 +++----------------
->   drivers/memory/mtk-smi.c                      | 14 ------
->   include/soc/mediatek/smi.h                    | 20 ---------
->   32 files changed, 115 insertions(+), 333 deletions(-)
+
+
+On 07/01/2022 11:46, Johnson Wang wrote:
+> MT8186 are highly integrated SoC and use PMIC_MT6366 for
+> power management. This patch adds pwrap master driver to
+> access PMIC_MT6366.
 > 
 
-Hello Hans, Matthias,
-on my side, this series is totally ready for merge, hence, green light from here.
+It seems this new arbiter is significantly different from the version 1. Please 
+explain that in the commit message.
 
-Can you please take it for 5.18?
+> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> ---
+>   drivers/soc/mediatek/mtk-pmic-wrap.c | 72 ++++++++++++++++++++++++++++
+>   1 file changed, 72 insertions(+)
+> 
+> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> index 952bc554f443..78866ebf7f04 100644
+> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> @@ -30,6 +30,7 @@
+>   #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) & 0x00000001)
+>   #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
+>   #define PWRAP_STATE_INIT_DONE0		BIT(21)
+> +#define PWRAP_STATE_INIT_DONE0_V2	BIT(22)
 
-Thank you,
-Angelo
+That's a strange name, does it come from the datasheet description?
+
+>   #define PWRAP_STATE_INIT_DONE1		BIT(15)
+>   
+>   /* macro for WACS FSM */
+> @@ -77,6 +78,8 @@
+>   #define PWRAP_CAP_INT1_EN	BIT(3)
+>   #define PWRAP_CAP_WDT_SRC1	BIT(4)
+>   #define PWRAP_CAP_ARB		BIT(5)
+> +#define PWRAP_CAP_MONITOR_V2	BIT(6)
+
+Not used capability, please delete.
+
+
+Regards,
+Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
