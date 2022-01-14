@@ -4,53 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B34AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 14:48:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80396C433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 14:55:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3MnyAJ7FMVKmRTrfZTAmcvcqeiFKH8hfLHrQdBLs17c=; b=ZdxEe1d7EQS8VM
-	We3lBmYbrz9I3LaSVjRGU0ptyB9fhg2tDAEGqX9euvJ01cRKOZ6aS7uR4pRLQ6NWBDHpc/rgXc81o
-	n+sAwAR86R0Xs8dodpJFvdTvtpsWR7vT7yBnAAS6cWXhCSijNG/bbG3FPTlBcBJy3l4TwhFKb8FH2
-	hyaoQE9k7nbWhNszEjyQAIKpVStqX3w06gX0pZU5biQJZiG/RlvtN+Lbbn4BfK+YijJejvsiCPXgQ
-	fp6OGr3Numt0kwcZ4/GZPHxfPzvnewyYL5N64k+8KjkPd7+l+k9kzjMo7hZFFt/BlADMuX8htomXo
-	Cc74emw3D/ygD++DrcHw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=p4m2H31dtFsIco1z3iQTd2YhebN+zWIBOSRZdvmdoTc=; b=XVj6frT3mr9v9L
+	8bVL869q5NG7hh2edwD0SCYT2MhtE5WmRxeGXIpVjRTsvie+9z6PBY2qoJEwZsI8WLnnB9iLH/In9
+	Nh1fB1EZFPXmDQxwWi6nKA2967pBYA0YLjpms63AkJdxqilpBtjRd5Z4aCYXu1eug1OkOQ4voV+lN
+	L3N0prH4CBLB+LoNWQHiUzCTlL4B07K4/lTGYl3x/XxWDn/Vc23GVFqfcDfUTgUsGisW2pwnB1LH7
+	FfqIWUyzidGsaYsy6vN+L2HlwBFg28VXwMIuxgQX0kTIC+YY6xOuHUOqXfPgZTlF5vLwNZBAf2qE/
+	U/PabwQ6b9tvMon/Mneg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8Ns4-009Qzo-EI; Fri, 14 Jan 2022 14:48:04 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+	id 1n8Nys-009SFb-RO; Fri, 14 Jan 2022 14:55:06 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8Nrq-009Qu8-4m; Fri, 14 Jan 2022 14:47:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id A6C881F46A72
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642171668;
- bh=cTHqww4IZbi5PdxScVJ5RmgEFWGNWZU4AMAqnvnN1vM=;
- h=From:To:Cc:Subject:Date:From;
- b=D8AJQ4G4r14QCgGUpRCWn6AKwg2pAfphNZFKn9dWfT35vWJoI66KVSW7wOn/gXH8F
- 8+A7uBI3Sn2tDAHAu12zTel7evWbULUfMEnbsbcxcD7qYOmoOwRj5QuEa6f11pCGRl
- 5TKGmqC9UO3H/KHxP4s6DO9sC+IGFySuqpp0mit5cnsdk9mYk37bFOnzi4dGPnKHZv
- ANmplostgKQQYVTggvCRI3XtxFzRbJFVi+xojzgODipky/Se7m9u57A3wmx0z3RvM+
- VgAMkZairRwIwTkLmvYFbS+bM97KSZJjTomHxGawqHkf0W88KMMwmKbb8P1u8d1H3U
- 7bYait9ekDf5w==
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: bjorn.andersson@linaro.org
-Cc: mathieu.poirier@linaro.org, matthias.bgg@gmail.com, pihsun@chromium.org,
- linux-remoteproc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH] rpmsg: mtk_rpmsg: Fix circular locking dependency
-Date: Fri, 14 Jan 2022 15:47:37 +0100
-Message-Id: <20220114144737.375621-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.33.1
+ id 1n8Nyq-009SFC-4v
+ for linux-mediatek@lists.infradead.org; Fri, 14 Jan 2022 14:55:05 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id B77DA60D2C
+ for <linux-mediatek@lists.infradead.org>; Fri, 14 Jan 2022 14:55:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D6FAC36AEA
+ for <linux-mediatek@lists.infradead.org>; Fri, 14 Jan 2022 14:55:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642172103;
+ bh=fbzOrTcVWMHwe8NYnOOThh9M+LxWh8BhoTufPAeLL6E=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=nlVXNMjUzBWNq4IxYeuN2mw8Wv4CrnNXoRY6u66IKapqxTIh5Emf+PsXXvDTGOKMf
+ O4/QworesZCDhNpxLBG15pfRGYqqHCARFXXfIhnxM74/9fouF9oJ19CsaMRnKjwI1D
+ oLdAc52+jfaf73als9uhk+U3EVsExqXbrhK9JjVHrTExcEsSi04blEEEEFvmhVtpbC
+ wt5GP09lO8pbpEqOOq3p0NILqazeSnDIzJ1myjfmTKaQ2guNUMYTAA510UOoFTizeC
+ avIfXk9DI7saisRdD7oJAZHGUkZS2rBbb2+tjIto8rWgAH/HqoGjRTjNLGBl6CQRQt
+ DP0MYpbn+ayyQ==
+Received: by mail-wm1-f52.google.com with SMTP id
+ q141-20020a1ca793000000b00347b48dfb53so6034092wme.0
+ for <linux-mediatek@lists.infradead.org>; Fri, 14 Jan 2022 06:55:03 -0800 (PST)
+X-Gm-Message-State: AOAM533oWI7+r3A6I9Qi8BKr4YCi17ikon79c53ZGpHsEIgS6SW1VfHN
+ hK2D2jek/FT2D7tG5iZ7J/uHKUL/BrfI3CIGCw==
+X-Google-Smtp-Source: ABdhPJwzXGgS37nQ5WIH5CwwyXmiIQINFU1EYMnT4phUgv1K8CLRkJexdtqgS+VKPxqrb7/prMlfSArv7Vo8g3DOlFQ=
+X-Received: by 2002:a50:a6d4:: with SMTP id f20mr9330026edc.303.1642172101511; 
+ Fri, 14 Jan 2022 06:55:01 -0800 (PST)
 MIME-Version: 1.0
+References: <20220114062408.9077-1-guochun.mao@mediatek.com>
+ <20220114062408.9077-2-guochun.mao@mediatek.com>
+In-Reply-To: <20220114062408.9077-2-guochun.mao@mediatek.com>
+From: Rob Herring <robh+dt@kernel.org>
+Date: Fri, 14 Jan 2022 08:54:49 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqK+Mx4juudKmdpaSPyqxgATQZs9Bf052WWoOJQgb_3oJA@mail.gmail.com>
+Message-ID: <CAL_JsqK+Mx4juudKmdpaSPyqxgATQZs9Bf052WWoOJQgb_3oJA@mail.gmail.com>
+Subject: Re: [PATCH v1 1/4] dt-bindings: spi: add mt8186-nor compatible string
+To: Guochun Mao <guochun.mao@mediatek.com>
+Cc: Mark Brown <broonie@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Zhen Zhang <zhen.zhang@mediatek.com>, Bayi Cheng <bayi.cheng@mediatek.com>, 
+ Chuanhong Guo <gch981213@gmail.com>, 
+ "moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+ srv_heupstream <srv_heupstream@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_064750_465956_3766E0E7 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20220114_065504_294092_CE77A3FE 
+X-CRM114-Status: GOOD (  17.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,52 +84,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-During execution of the worker that's used to register rpmsg devices
-we are safely locking the channels mutex but, when creating a new
-endpoint for such devices, we are registering a IPI on the SCP, which
-then makes the SCP to trigger an interrupt, lock its own mutex and in
-turn register more subdevices.
-This creates a circular locking dependency situation, as the mtk_rpmsg
-channels_lock will then depend on the SCP IPI lock.
+On Fri, Jan 14, 2022 at 12:24 AM <guochun.mao@mediatek.com> wrote:
+>
+> From: Guochun Mao <guochun.mao@mediatek.com>
 
-[   18.014514]  Possible unsafe locking scenario:
-[   18.014515]        CPU0                    CPU1
-[   18.014517]        ----                    ----
-[   18.045467]   lock(&mtk_subdev->channels_lock);
-[   18.045474]                                lock(&scp->ipi_desc[i].lock);
-[   18.228399]                                lock(&mtk_subdev->channels_lock);
-[   18.228405]   lock(&scp->ipi_desc[i].lock);
-[   18.264405]
+Use get_maintainers.pl and send to the right lists.
 
-To solve this, simply unlock the channels_lock mutex before calling
-mtk_rpmsg_register_device() and relock it right after, as safety is
-still ensured by the locking mechanism that happens right after
-through SCP.
-Notably, mtk_rpmsg_register_device() does not even require locking.
+> Add MT8186 spi-nor controller support.
+> MT8186 needs a new clock name, axi_s, for spi nor axi slave bus clock.
+>
+> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+> Signed-off-by: Zhen Zhang <zhen.zhang@mediatek.com>
+> ---
+>  .../devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml         | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+> index 4e4694e3d539..1a678751bcca 100644
+> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml
+> @@ -30,6 +30,7 @@ properties:
+>                - mediatek,mt7622-nor
+>                - mediatek,mt7623-nor
+>                - mediatek,mt7629-nor
+> +              - mediatek,mt8186-nor
+>                - mediatek,mt8192-nor
+>                - mediatek,mt8195-nor
+>            - enum:
+> @@ -49,6 +50,8 @@ properties:
+>        - description: clock used for controller
+>        - description: clock used for nor dma bus. this depends on hardware
+>                       design, so this is optional.
+> +      - description: clock used for controller axi slave bus. this depens
+> +                     on hardwre design, so this is optional.
 
-Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/rpmsg/mtk_rpmsg.c | 2 ++
- 1 file changed, 2 insertions(+)
+typos.
 
-diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
-index 5b4404b8be4c..d1213c33da20 100644
---- a/drivers/rpmsg/mtk_rpmsg.c
-+++ b/drivers/rpmsg/mtk_rpmsg.c
-@@ -234,7 +234,9 @@ static void mtk_register_device_work_function(struct work_struct *register_work)
- 		if (info->registered)
- 			continue;
- 
-+		mutex_unlock(&subdev->channels_lock);
- 		ret = mtk_rpmsg_register_device(subdev, &info->info);
-+		mutex_lock(&subdev->channels_lock);
- 		if (ret) {
- 			dev_err(&pdev->dev, "Can't create rpmsg_device\n");
- 			continue;
--- 
-2.33.1
-
+>
+>    clock-names:
+>      minItems: 2
+> @@ -56,6 +59,7 @@ properties:
+>        - const: spi
+>        - const: sf
+>        - const: axi
+> +      - const: axi_s
+>
+>  required:
+>    - compatible
+> --
+> 2.25.1
+>
 
 _______________________________________________
 Linux-mediatek mailing list
