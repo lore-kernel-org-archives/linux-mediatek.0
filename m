@@ -4,61 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99DA2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 09:59:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40946C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 10:04:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bIyZhV6UjfvKDK65GOf6bwLhfixkd0hD0IU7pmzXW0E=; b=wh4CGHBaKId6ky2LN0vdo3qRd3
-	UuFbVPez5sRrLJ+OrcBB47PVsIWtsWa9wezdc2TZVJtlhj5K1VXHDj2uRK/H1YL+TX/PzDP6nwmmP
-	zsunlugEk0I0qHf7/sb4qrZi7u6rwmUMC9l6F4mBmkC3diE2/158sTHWTPEV2TNTR1TtCXOcxFfaU
-	QpU9IPvsg88TG7m7kzdnogY8Xt5yccESIiSdjWtHkwK9w09ET2/1AA9udNgMsg/NR049YGQys4eZQ
-	BM9KXkKLkYLivMa96NhmEfcFo1ukSq9ewPtTYPZq8veSc2Z7+dvh5oEQF8k05cdYOtcm89TvKcYSs
-	LZnNSDUQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=m0FOlPam4nL/0WLuzyOSct62bCXslfxKSzbJu9z36mo=; b=e0I8Hozeujl0x7
+	btZS49iVPhj59iRozIJAOAgD5+cgw1+mDtqSJ6t+oGVjXECHVTsriaSWJwl2xy0U5WplvCvs+IWYh
+	rBoPSd2dbwEd8tek/HBzplZtD7/zxtDRA2Ov0OaqPf4jYE9E8eZepSv6TCa4VNCPneOqrT7YHY0zm
+	Ulp6VcaQY/wE7FE0dWPa3XJbtWVtfoJO768ACh3NF8GlGPqofmbkCk9aXw2lWptcZdzeiVtdAigFA
+	3ZfH0go0SiOFnC0M+p+wIoLzz416zRdCGxusRJg1ZidBYCLP2OUfCzEV6Zf6kbROkN4TmCofWpymd
+	TpZC4304tJKtE4zk5NhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8JMr-008ccv-GS; Fri, 14 Jan 2022 09:59:33 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1n8JRy-008dYG-UB; Fri, 14 Jan 2022 10:04:50 +0000
+Received: from mail-pl1-f177.google.com ([209.85.214.177])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8JMe-008cXn-Na; Fri, 14 Jan 2022 09:59:22 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 926421F4673C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642154359;
- bh=+9biWWnH3dbRTPlizbAy98vfhQMljlSloRSnoFf9s1k=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=LXPvUEKGzuX2+nziPgpVruS368mLNhyyvpWaPM5R66bcq7ptwAUkcyVXOCrgnlbLs
- DTcjGd97r9pd0Mwpo/8UzPTy5fFpHlLSis61jnG9ufUR1f8nB/27zX90LWiX8VapFO
- mEz/c/qs9lgJIr7v/qQi0gJaNoNL17sRB5TyoOa8sqQ5v/Ko7MwMTHIYkAV2RItT8a
- YnTbh6ZAShGuxyYy6A0f5RwzSDkDF6nBOX4Tmqno9FeCPo90/1TwCJg5y7kOmtGqFU
- taR8IAbXtSjvNbjPAM6DVCW3UtwhMGsDl6/zHMBPiBlyJ9dFbh0+PiWw/aH/LCpTXn
- YQE+vsRBE1cbA==
-Subject: Re: [v9, 1/3] drm/dsi: transfer DSI HS packets ending at the same time
-To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
- matthias.bgg@gmail.com, narmstrong@baylibre.com, robert.foss@linaro.org,
- andrzej.hajda@intel.com, daniel@ffwll.ch, airlied@linux.ie,
- p.zabel@pengutronix.de
-Cc: xji@analogixsemi.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- Jitao Shi <jitao.shi@mediatek.com>
-References: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
- <20220114092110.12137-2-rex-bc.chen@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <6874ebff-3b20-807d-0fa5-ba21986bb787@collabora.com>
-Date: Fri, 14 Jan 2022 10:59:16 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1n8JRj-008dWH-B5; Fri, 14 Jan 2022 10:04:36 +0000
+Received: by mail-pl1-f177.google.com with SMTP id t18so12853194plg.9;
+ Fri, 14 Jan 2022 02:04:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=LMpobQFf1iaA0D70o2w2ggZn7pjngkhXQg858+CLGTw=;
+ b=nWHczXWz1+QGEExXkCjV6UYdGJepXd1Wdg6Q0OhdybhAg/uTAfFhCRNkk+UYPEv06Y
+ 047rLK+I1BomZMtxBOlLOhDAunsF+ifKRd5yeoBhrE3XD22SPGvax3f3mtR5FdkP9hdQ
+ /6Y0tzWieJq/UYyb18wYXDxG5rINyGC9xSYkjUKQdcsnED9iBGfr5oIUWtjps1Y+vIVT
+ dmZ+bynpq7UGUxaogXT+9LLAlfVrRDrjkQYCYsSr5vevVs1GFI907koAQRVdnw1OGU0Y
+ kfxZsXg3e7ZPEMhzXWY/O8jXHgJpAyEBbntQ8AV6/c+Ck7JK/CHRUkiXqH1HVIT7rEGD
+ 8meQ==
+X-Gm-Message-State: AOAM530dFwFE8Xg28Dc4/W7JRSQ8gUv1vcqQbvQ6pQ9YOs77wjDtjimj
+ WXuLhKZ5gK2pQ49u6ki5odqExedE+JFesLWP
+X-Google-Smtp-Source: ABdhPJxIhgniHuPNeN9cI5V/BJ2eKwDvM8AK7zPcVGWMQ9LQZFsigV0uF6Lp+GyeNBCJfiNG0dpyxw==
+X-Received: by 2002:a17:90a:a105:: with SMTP id
+ s5mr9832151pjp.170.1642154673944; 
+ Fri, 14 Jan 2022 02:04:33 -0800 (PST)
+Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com.
+ [209.85.216.41])
+ by smtp.gmail.com with ESMTPSA id d11sm5326870pfu.211.2022.01.14.02.04.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Jan 2022 02:04:33 -0800 (PST)
+Received: by mail-pj1-f41.google.com with SMTP id
+ b1-20020a17090a990100b001b14bd47532so13742274pjp.0; 
+ Fri, 14 Jan 2022 02:04:33 -0800 (PST)
+X-Received: by 2002:a67:e905:: with SMTP id c5mr3767888vso.68.1642154342466;
+ Fri, 14 Jan 2022 01:59:02 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20220114092110.12137-2-rex-bc.chen@mediatek.com>
-Content-Language: en-US
+References: <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
+ <YeA7CjOyJFkpuhz/@sirena.org.uk>
+ <20220113194358.xnnbhsoyetihterb@pengutronix.de>
+ <YeCI47ltlWzjzjYy@sirena.org.uk>
+ <1df04d74-8aa2-11f1-54e9-34d0e8f4e58b@omp.ru>
+ <20220113224319.akljsjtu7ps75vun@pengutronix.de>
+In-Reply-To: <20220113224319.akljsjtu7ps75vun@pengutronix.de>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Fri, 14 Jan 2022 10:58:51 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdWjo36UGde3g5ysdXpLJn=mrPp31SDODuQNPUqoc-ARrQ@mail.gmail.com>
+Message-ID: <CAMuHMdWjo36UGde3g5ysdXpLJn=mrPp31SDODuQNPUqoc-ARrQ@mail.gmail.com>
+Subject: Re: [PATCH] driver core: platform: Rename platform_get_irq_optional()
+ to platform_get_irq_silent()
+To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Sergey Shtylyov <s.shtylyov@omp.ru>, Mark Brown <broonie@kernel.org>,
+ Andrew Lunn <andrew@lunn.ch>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, Vignesh Raghavendra <vigneshr@ti.com>,
+ KVM list <kvm@vger.kernel.org>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org, 
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Jaroslav Kysela <perex@perex.cz>, 
+ Guenter Roeck <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>, 
+ linux-phy@lists.infradead.org, netdev <netdev@vger.kernel.org>, 
+ linux-spi <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>, 
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Kamal Dasu <kdasu.kdev@gmail.com>, 
+ Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>, 
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Zhang Rui <rui.zhang@intel.com>, platform-driver-x86@vger.kernel.org, 
+ Linux PWM List <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, 
+ Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, 
+ Linux PM list <linux-pm@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, John Garry <john.garry@huawei.com>,
+ Takashi Iwai <tiwai@suse.com>, Peter Korsgaard <peter@korsgaard.com>, 
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, 
+ Borislav Petkov <bp@alien8.de>, Jakub Kicinski <kuba@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ openipmi-developer@lists.sourceforge.net, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Benson Leung <bleung@chromium.org>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+ linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>, 
+ Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>, 
+ Eric Auger <eric.auger@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>, 
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, 
+ James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, 
+ Sebastian Reichel <sre@kernel.org>,
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ linux-mediatek@lists.infradead.org, 
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_015920_938431_D1736AD3 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20220114_020435_399355_511E3DC2 
+X-CRM114-Status: GOOD (  38.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,53 +144,56 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 14/01/22 10:21, Rex-BC Chen ha scritto:
-> Since a HS transmission is composed of an arbitrary number
-> of bytes that may not be an integer multiple of lanes, some
-> lanes may run out of data before others.
-> (Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
-> 
-> However, for some DSI RX devices (for example, anx7625),
-> there is a limitation that packet number should be the same
-> on all DSI lanes. In other words, they need to end a HS at
-> the same time.
-> 
-> Because this limitation is for some specific DSI RX devices,
-> it is more reasonable to put the enable control in these
-> DSI RX drivers. If DSI TX driver knows the information,
-> they can adjust the setting for this situation.
-> 
-> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
-> ---
->   include/drm/drm_mipi_dsi.h | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
-> index 147e51b6d241..342dfe5a0874 100644
-> --- a/include/drm/drm_mipi_dsi.h
-> +++ b/include/drm/drm_mipi_dsi.h
-> @@ -137,6 +137,8 @@ struct mipi_dsi_host *of_find_mipi_dsi_host_by_node(struct device_node *node);
->   #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
->   /* transmit data in low power */
->   #define MIPI_DSI_MODE_LPM		BIT(11)
-> +/* transmit data ending in the same hsync for all lanes */
-> +#define MIPI_DSI_HS_PKT_END_ALIGNED	BIT(12)
->   
->   enum mipi_dsi_pixel_format {
->   	MIPI_DSI_FMT_RGB888,
-> 
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+SGkgVXdlLAoKT24gVGh1LCBKYW4gMTMsIDIwMjIgYXQgMTE6NDMgUE0gVXdlIEtsZWluZS1Lw7Zu
+aWcKPHUua2xlaW5lLWtvZW5pZ0BwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4gT24gVGh1LCBKYW4g
+MTMsIDIwMjIgYXQgMTE6NTc6NDNQTSArMDMwMCwgU2VyZ2V5IFNodHlseW92IHdyb3RlOgo+ID4g
+T24gMS8xMy8yMiAxMToxNyBQTSwgTWFyayBCcm93biB3cm90ZToKPiA+ID4+IFRoZSBzdWJzeXN0
+ZW1zIHJlZ3VsYXRvciwgY2xrIGFuZCBncGlvIGhhdmUgdGhlIGNvbmNlcHQgb2YgYSBkdW1teQo+
+ID4gPj4gcmVzb3VyY2UuIEZvciByZWd1bGF0b3IsIGNsayBhbmQgZ3BpbyB0aGVyZSBpcyBhIHNl
+bWFudGljIGRpZmZlcmVuY2UKPiA+ID4+IGJldHdlZW4gdGhlIHJlZ3VsYXIgX2dldCgpIGZ1bmN0
+aW9uIGFuZCB0aGUgX2dldF9vcHRpb25hbCgpIHZhcmlhbnQuCj4gPiA+PiAoT25lIG1pZ2h0IHJl
+dHVybiB0aGUgZHVtbXkgcmVzb3VyY2UsIHRoZSBvdGhlciB3b24ndC4gVW5mb3J0dW5hdGVseQo+
+ID4gPj4gd2hpY2ggb25lIGltcGxlbWVudHMgd2hpY2ggaXNuJ3QgdGhlIHNhbWUgZm9yIHRoZXNl
+IHRocmVlLikgVGhlCj4gPiA+PiBkaWZmZXJlbmNlIGJldHdlZW4gcGxhdGZvcm1fZ2V0X2lycSgp
+IGFuZCBwbGF0Zm9ybV9nZXRfaXJxX29wdGlvbmFsKCkgaXMKPiA+ID4+IG9ubHkgdGhhdCB0aGUg
+Zm9ybWVyIG1pZ2h0IGVtaXQgYW4gZXJyb3IgbWVzc2FnZSBhbmQgdGhlIGxhdGVyIHdvbid0Lgo+
+ID4KPiA+ICAgIFRoaXMgaXMgb25seSBhIGN1cnJlbnQgZGlmZmVyZW5jZSBidXQgSSdtIHN0aWxs
+IGdvaW5nIHRvIHJldHVybiAwIElTTwo+ID4gLUVOWElPIGZyb20gbGF0Zm9ybV9nZXRfaXJxX29w
+dGlvbmFsKCksIG5vIHdheSBJJ2QgbGVhdmUgdGhhdCAtRU5YSU8gdGhlcmUKPiA+IGFsb25lLi4u
+IDotKQo+Cj4gVGhpcyB3b3VsZCBhZGRyZXNzIGEgYml0IG9mIHRoZSBjcml0aWMgaW4gbXkgY29t
+bWl0IGxvZy4gQnV0IGFzIDAgaXNuJ3QKPiBhIGR1bW15IHZhbHVlIGxpa2UgdGhlIGR1bW15IHZh
+bHVlcyB0aGF0IGV4aXN0IGZvciBjbGssIGdwaW9kIGFuZAo+IHJlZ3VsYXRvciBJIHN0aWxsIHRo
+aW5rIHRoYXQgdGhlIG5hbWluZyBpcyBhIGJhZCBpZGVhIGJlY2F1c2UgaXQncyBub3QKPiBpbiB0
+aGUgc3Bpcml0IG9mIHRoZSBvdGhlciAqX2dldF9vcHRpb25hbCBmdW5jdGlvbnMuCj4KPiBTZWVp
+bmcgeW91IHNheSB0aGF0IC1FTlhJTyBpcyBhIGJhZCByZXR1cm4gdmFsdWUgZm9yCj4gcGxhdGZv
+cm1fZ2V0X2lycV9vcHRpb25hbCgpIGFuZCAwIHNob3VsZCBiZSB1c2VkIGluc3RlYWQsIEkgd29u
+ZGVyIHdoeQo+IG5vdCBjaGFuZ2luZyBwbGF0Zm9ybV9nZXRfaXJxKCkgdG8gcmV0dXJuIDAgaW5z
+dGVhZCBvZiAtRU5YSU8sIHRvby4KPiBUaGlzIHF1ZXN0aW9uIGlzIGZvciBub3cgb25seSBhYm91
+dCBhIHNlbnNpYmxlIHNlbWFudGljLiBUaGF0IGFjdHVhbGx5Cj4gY2hhbmdpbmcgcGxhdGZvcm1f
+Z2V0X2lycSgpIGlzIHByb2JhYmx5IGhhcmRlciB0aGFuIGNoYW5naW5nCj4gcGxhdGZvcm1fZ2V0
+X2lycV9vcHRpb25hbCgpIGlzIGEgZGlmZmVyZW50IHN0b3J5Lgo+Cj4gSWYgb25seSBwbGF0Zm9y
+bV9nZXRfaXJxX29wdGlvbmFsKCkgaXMgY2hhbmdlZCBhbmQgZ2l2ZW4gdGhhdCB0aGUKPiBjYWxs
+ZXJzIGhhdmUgdG8gZG8gc29tZXRoaW5nIGxpa2U6Cj4KPiAgICAgICAgIGlmICh0aGlzX2lycV9l
+eGlzdHMoKSk6Cj4gICAgICAgICAgICAgICAgIC4uLiAoZS5nLiByZXF1ZXN0X2lycSkKPiAgICAg
+ICAgIGVsc2U6Cj4gICAgICAgICAgICAgICAgIC4uLiAoZS5nLiBzZXR1cCBwb2xsaW5nKQo+Cj4g
+SSByZWFsbHkgdGhpbmsgaXQncyBhIGJhZCBpZGVhIHRoYXQgdGhpc19pcnFfZXhpc3RzKCkgaGFz
+IHRvIGJlCj4gZGlmZmVyZW50IGZvciBwbGF0Zm9ybV9nZXRfaXJxKCkgdnMuIHBsYXRmb3JtX2dl
+dF9pcnFfb3B0aW9uYWwoKS4KCkZvciBwbGF0Zm9ybV9nZXRfaXJxKCksIHRoZSBJUlEgYmVpbmcg
+YWJzZW50IGlzIGFuIGVycm9yIGNvbmRpdGlvbiwKaGVuY2UgaXQgc2hvdWxkIHJldHVybiBhbiBl
+cnJvciBjb2RlLgpGb3IgcGxhdGZvcm1fZ2V0X2lycV9vcHRpb25hbCgpLCB0aGUgSVJRIGJlaW5n
+IGFic2VudCBpcyBub3QgYW4gZXJyb3IKY29uZGl0aW9uLCBoZW5jZSBpdCBzaG91bGQgbm90IHJl
+dHVybiBhbiBlcnJvciBjb2RlLCBhbmQgMCBpcyBPSy4KCkdye29ldGplLGVldGluZ31zLAoKICAg
+ICAgICAgICAgICAgICAgICAgICAgR2VlcnQKCi0tCkdlZXJ0IFV5dHRlcmhvZXZlbiAtLSBUaGVy
+ZSdzIGxvdHMgb2YgTGludXggYmV5b25kIGlhMzIgLS0gZ2VlcnRAbGludXgtbTY4ay5vcmcKCklu
+IHBlcnNvbmFsIGNvbnZlcnNhdGlvbnMgd2l0aCB0ZWNobmljYWwgcGVvcGxlLCBJIGNhbGwgbXlz
+ZWxmIGEgaGFja2VyLiBCdXQKd2hlbiBJJ20gdGFsa2luZyB0byBqb3VybmFsaXN0cyBJIGp1c3Qg
+c2F5ICJwcm9ncmFtbWVyIiBvciBzb21ldGhpbmcgbGlrZSB0aGF0LgogICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgIC0tIExpbnVzIFRvcnZhbGRzCgpfX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QKTGlu
+dXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
+Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
