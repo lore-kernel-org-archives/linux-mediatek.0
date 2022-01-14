@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BA1C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 09:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83311C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 09:24:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dCxd5rKCEksxyh97tnQvwnWrkHyoBfW3XNLJvYTFZbk=; b=McKoqNbuZJP7fc
-	EiyACHWNU5hNUflRMvONM22x/bYFkhJpwfTyEBZngG1kPFxy5V8/IfObgS2A6/eWoDD/KK5KNwAxu
-	BrUfioum/bNT7xhT5SeO3hspt140+BsRkc1iq1KGcBeHmfTrElbOMJuHgMFLe2/nQPKz5ru+iBKVs
-	zsCUnICVswNxa9hCmTT67QBsopEJNuV21mx1zeJM1CghxpSVCeAvrx6eNMiicrH2J419oKKOcdiZR
-	lqqt9h92YR+VnCVMhBK5vBEvWaa5/LfQ8K2en04Yv9mZWIWyfyy+XCX4pmJMrdvRz2qrQWbTN5X2S
-	5KHwEFI/3ZKbYFmUfXpg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=aJRHnVEIjyyeb872xbVem35C5Jim34/GXWlaD+qnayY=; b=iwkCibv3grzBNB
+	LraeF/3xLdpIn6aB9soDhiIKDugHZPACwatipLY99RYsR4QGdYZW3ux/RziBK3BOGkX1pVeBW1mO1
+	0jUweG8u2Q+MaLl2NB6ZCs57a2sPTYNWsGyWGZLtLTd9Sabv5upavAZvy2IR7yo4LXRKi9l0K2waw
+	a1BV0pdSpbnPQZTS7G4xjRvuQ/suCfmscix2DpEL0imlQ8E0+1UVJo/QF10fmDj5fVQe4GnXyLoYI
+	3oejl4OFG8ZqLg1ydKcTL3zc6RolpO+x00OfrCQ48V3Hu30Gcw7koFQKm3L4A0QyIrodB7yKTtnkW
+	Icb1RQuqF1YjwzMsWXng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8Ioa-008TGm-VQ; Fri, 14 Jan 2022 09:24:08 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n8Ip2-008TWn-KE; Fri, 14 Jan 2022 09:24:36 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8Io7-008T54-5G; Fri, 14 Jan 2022 09:23:40 +0000
-X-UUID: e443c54ae5224a27943cf3991674ce50-20220114
-X-UUID: e443c54ae5224a27943cf3991674ce50-20220114
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1n8IoJ-008T8p-GP; Fri, 14 Jan 2022 09:23:52 +0000
+X-UUID: 223fb2b9ad59402595e351c19fc4cb9f-20220114
+X-UUID: 223fb2b9ad59402595e351c19fc4cb9f-20220114
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <rex-bc.chen@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 932818307; Fri, 14 Jan 2022 02:23:33 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Jan 2022 01:21:27 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Fri, 14 Jan 2022 17:21:26 +0800
+ with ESMTP id 1876568068; Fri, 14 Jan 2022 02:23:47 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Jan 2022 01:21:26 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 14 Jan 2022 17:21:24 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Fri, 14 Jan 2022 17:21:26 +0800
+ Frontend Transport; Fri, 14 Jan 2022 17:21:24 +0800
 From: Rex-BC Chen <rex-bc.chen@mediatek.com>
 To: <chunkuang.hu@kernel.org>, <matthias.bgg@gmail.com>,
  <narmstrong@baylibre.com>, <robert.foss@linaro.org>,
@@ -48,18 +48,19 @@ CC: <xji@analogixsemi.com>, <devicetree@vger.kernel.org>,
  <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
  <linux-kernel@vger.kernel.org>,
  <Project_Global_Chrome_Upstream_Group@mediatek.com>, Rex-BC Chen
- <rex-bc.chen@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>
-Subject: [v9,1/3] drm/dsi: transfer DSI HS packets ending at the same time
-Date: Fri, 14 Jan 2022 17:21:08 +0800
-Message-ID: <20220114092110.12137-2-rex-bc.chen@mediatek.com>
+ <rex-bc.chen@mediatek.com>
+Subject: [v9,
+ 0/3] force hsa hbp hfp packets multiple of lanenum to avoid screen
+ shift
+Date: Fri, 14 Jan 2022 17:21:07 +0800
+Message-ID: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
 X-Mailer: git-send-email 2.18.0
-In-Reply-To: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
-References: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_012339_231321_C6F26B2A 
-X-CRM114-Status: GOOD (  10.01  )
+X-CRM114-CacheID: sfid-20220114_012351_580459_B014F679 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,40 +77,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Since a HS transmission is composed of an arbitrary number
-of bytes that may not be an integer multiple of lanes, some
-lanes may run out of data before others.
-(Defined in 6.1.3 of mipi_DSI_specification_v.01-02-00)
+Changes since v8:
+ - Use mode_flags to control this limitation instead of "hs_packet_end_aligned".
+ - Add new bit definition "MIPI_DSI_HS_PKT_END_ALIGNED" for mode_flags.
 
-However, for some DSI RX devices (for example, anx7625),
-there is a limitation that packet number should be the same
-on all DSI lanes. In other words, they need to end a HS at
-the same time.
+Changes since v7:
+ - Rebase to kernel 5.16
+ - Add tags of reviewed-by and acked-by.
+ - Add detailed commit message for flag "hs_packet_end_aligned" in DSI common driver.
 
-Because this limitation is for some specific DSI RX devices,
-it is more reasonable to put the enable control in these
-DSI RX drivers. If DSI TX driver knows the information,
-they can adjust the setting for this situation.
+Changes since v6:
+ - Add "bool hs_packet_end_aligned" in "struct mipi_dsi_device" to control the dsi aligned.
+ - Config the "hs_packet_end_aligned" in ANX7725 .attach().
 
-Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
----
- include/drm/drm_mipi_dsi.h | 2 ++
- 1 file changed, 2 insertions(+)
+Changes since v5:
+ - Search the anx7625 compatible as flag to control dsi output aligned.
 
-diff --git a/include/drm/drm_mipi_dsi.h b/include/drm/drm_mipi_dsi.h
-index 147e51b6d241..342dfe5a0874 100644
---- a/include/drm/drm_mipi_dsi.h
-+++ b/include/drm/drm_mipi_dsi.h
-@@ -137,6 +137,8 @@ struct mipi_dsi_host *of_find_mipi_dsi_host_by_node(struct device_node *node);
- #define MIPI_DSI_CLOCK_NON_CONTINUOUS	BIT(10)
- /* transmit data in low power */
- #define MIPI_DSI_MODE_LPM		BIT(11)
-+/* transmit data ending in the same hsync for all lanes */
-+#define MIPI_DSI_HS_PKT_END_ALIGNED	BIT(12)
- 
- enum mipi_dsi_pixel_format {
- 	MIPI_DSI_FMT_RGB888,
+Changes since v4:
+ - Move "dt-bindings: drm/bridge: anx7625: add force_dsi_end_without_null" before
+   "drm/mediatek: force hsa hbp hfp packets multiple of lanenum to avoid".
+ - Retitle "dt-bindings: drm/bridge: anx7625: add force_dsi_end_without_null".
+
+Rex-BC Chen (3):
+  drm/dsi: transfer DSI HS packets ending at the same time
+  drm/mediatek: implement the DSI hs packets aligned
+  drm/bridge: anx7625: config hs packets end aligned to avoid screen shift
+
+ drivers/gpu/drm/bridge/analogix/anx7625.c |  3 ++-
+ drivers/gpu/drm/mediatek/mtk_dsi.c        | 12 ++++++++++++
+ include/drm/drm_mipi_dsi.h                |  2 ++
+ 3 files changed, 16 insertions(+), 1 deletion(-)
+
 -- 
 2.18.0
 
