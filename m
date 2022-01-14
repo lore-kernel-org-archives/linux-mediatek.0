@@ -4,60 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A59EEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 09:52:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA384C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 09:57:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/DbKHdcaMqd8rFcyu0DLQ7jWqLNxxFtQ3HqWRuE02Ko=; b=k9T14w0EWnPuhMJjRkmUQZ5iqK
-	EB3/MPLm0NRiTayRfxlBA7fQqPGkrZ5+3dAM6HY601EcvzKZD/a7q4mqkXArkZTDTWSyL3Esu19fY
-	9Em4xuOD7j4v1a2RA48XHE3MIifoXjG69z5QFFy7WLfE7vsHqx2lNfoy3wet1Hz7EorIOQmKvv3jr
-	sWgHhS6g7hsl1ZLqeN35P8KMdT9hHdv1Q9zpQa8nVzDCpHNJ70e3WJ0NAd3UBXyMYmf+NS2XCrfas
-	rfQrrB8Br5+o/gL5rYvPLqkUd2amw8W+Ge1upiFoA0fRk0m+yuoWGDw3JmSgOE/vOckBUcYrJjxPr
-	aMJ8O+QQ==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=J2W7ChHKIUa/dUhSm8FcxL45i5f9PU13+Q7InvYWOVo=; b=HO7pLWXQ4MSnSU0S6OUf4wSA1N
+	LsBv4sdvrG2dBHbRpMbt0SZAp4vjmilyP+ZS1P6LCZhCibnT2rEYS1DmWKvc3GZ2HGnbloUvJ71b7
+	oyar7YiSs9xUyhz/mFCYZ2vQ3e3Eb0KQJOqa6tc8Zd4k8gblVtHB+RIQl2jhcSYhlxVwErl1FvWuw
+	h5KTKEJKuEWNawqozid0qv345CkziYJwY6pWObnvzyOgyxEh37gEoqAHy+iZcgV8sdV+XSLYh7bJJ
+	oCR/+BQg9ZvJNAnk/sZCpKM1stwG+Z7afaTGX/4sHbt8cKj2pVzpBqPhQEhWboRnRFMCCDqeMhBVG
+	cSV0uOUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8JFx-008bje-Qy; Fri, 14 Jan 2022 09:52:25 +0000
-Received: from dvalin.narfation.org ([2a00:17d8:100::8b1])
+	id 1n8JKx-008cDk-Sf; Fri, 14 Jan 2022 09:57:35 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8JFv-008bhD-2Q
- for linux-mediatek@lists.infradead.org; Fri, 14 Jan 2022 09:52:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=narfation.org;
- s=20121; t=1642153937;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=wLaupujYUIyWM+riOpBqKRJ0S0xnm+HoiMPD+r7hoME=;
- b=a7FxUdecDzVAATA4GGXFCiZpb3d591RfqPYPCRADWRzxVViyw6rFh6U9IxyC+BLcvxwHNE
- 38o5ct9TUNWJH9IOe//zjTjnTmpii1gbTG6wypQUT1OfhBuDW/t6EOhuurNWebl6tfpmNK
- JKc8LdquZK2Epbmp1UkN3R0bZAMhxHk=
-From: Sven Eckelmann <sven@narfation.org>
-To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk,
- Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>,
- Deren Wu <Deren.Wu@mediatek.com>
-Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>,
- Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>,
- YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>,
- KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>,
- CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>,
- Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com,
- linux-firmware <linux-firmware@kernel.org>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- linux-mediatek <linux-mediatek@lists.infradead.org>,
- linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
-Date: Fri, 14 Jan 2022 10:52:14 +0100
-Message-ID: <46921394.S1zCe5f9UI@ripper>
-In-Reply-To: <8badb0ca1c11e2060d997c199d20da8a1e0e59bf.1642141259.git.deren.wu@mediatek.com>
-References: <8badb0ca1c11e2060d997c199d20da8a1e0e59bf.1642141259.git.deren.wu@mediatek.com>
+ id 1n8JKl-008cC9-Rv; Fri, 14 Jan 2022 09:57:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 5DC0C1F4673C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1642154242;
+ bh=Y9ZEklpVcSHZrMGoj2Y3KVzohZyX3zxs0Ezly9VHhpg=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=JnrT35XwaOs6lYaGiXSrOqPHkN1N7cCn85YEnAVyYjWHUz4/qyKT5UdXY8jtWX9Kr
+ l2XdD8n7/lKmhUafoc8Iv+Mksvn9vjkYB8juOV0gCHudna0OsFDhwPtHYxkADBO74J
+ bTZyEzpPLpLh7qqnBiM0ANBdxV2Ljb2EQ5lyKKciRpJpFuslb2WAehkTIgqNrGieiJ
+ PZcObstdy5bnRWgOr8IHO/ZiPODEkx7zHt9HyMiDFMZ+imWNQLjvxKjVLiqjWSeikV
+ O2da0RvCN1fOb3ISg47GotgLR8e5Ud65ryMPNbEKegWaGAUXLYYxEfh14vZNzlX4KA
+ jBhexYGY3iZtg==
+Subject: Re: [v9, 3/3] drm/bridge: anx7625: config hs packets end aligned to
+ avoid screen shift
+To: Rex-BC Chen <rex-bc.chen@mediatek.com>, chunkuang.hu@kernel.org,
+ matthias.bgg@gmail.com, narmstrong@baylibre.com, robert.foss@linaro.org,
+ andrzej.hajda@intel.com, daniel@ffwll.ch, airlied@linux.ie,
+ p.zabel@pengutronix.de
+Cc: xji@analogixsemi.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org,
+ Project_Global_Chrome_Upstream_Group@mediatek.com,
+ Jitao Shi <jitao.shi@mediatek.com>
+References: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
+ <20220114092110.12137-4-rex-bc.chen@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <cd19a827-d132-1011-9445-7e425817102a@collabora.com>
+Date: Fri, 14 Jan 2022 10:57:18 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
 MIME-Version: 1.0
+In-Reply-To: <20220114092110.12137-4-rex-bc.chen@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_015223_462545_99A13505 
-X-CRM114-Status: UNSURE (   8.04  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220114_015724_076028_F146FE04 
+X-CRM114-Status: GOOD (  15.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,86 +71,42 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6594984400310934020=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---===============6594984400310934020==
-Content-Type: multipart/signed; boundary="nextPart3643850.YqUZ2QbrSU"; micalg="pgp-sha512"; protocol="application/pgp-signature"
-
---nextPart3643850.YqUZ2QbrSU
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"; protected-headers="v1"
-From: Sven Eckelmann <sven@narfation.org>
-To: jwboyer@kernel.org, dwmw2@infradead.org, ben@decadent.org.uk, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo.bianconi@redhat.com>, Deren Wu <Deren.Wu@mediatek.com>
-Cc: Mark-YW Chen <Mark-YW.Chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Soul Huang <Soul.Huang@mediatek.com>, YN Chen <YN.Chen@mediatek.com>, Deren Wu <Deren.Wu@mediatek.com>, KM Lin <km.lin@mediatek.com>, Robin Chiu <robin.chiu@mediatek.com>, CH Yeh <ch.yeh@mediatek.com>, Posh Sun <posh.sun@mediatek.com>, Eric Liang <Eric.Liang@mediatek.com>, jemele@google.com, linux-firmware <linux-firmware@kernel.org>, linux-wireless <linux-wireless@vger.kernel.org>, linux-mediatek <linux-mediatek@lists.infradead.org>, linux-kernel <linux-kernel@vger.kernel.org>, Deren Wu <deren.wu@mediatek.com>
-Subject: Re: [PATCH] linux-firmware: update firmware for MT7921 WiFi device
-Date: Fri, 14 Jan 2022 10:52:14 +0100
-Message-ID: <46921394.S1zCe5f9UI@ripper>
-In-Reply-To: <8badb0ca1c11e2060d997c199d20da8a1e0e59bf.1642141259.git.deren.wu@mediatek.com>
-References: <8badb0ca1c11e2060d997c199d20da8a1e0e59bf.1642141259.git.deren.wu@mediatek.com>
-
-On Friday, 14 January 2022 07:51:24 CET Deren Wu wrote:
-> From: Deren Wu <deren.wu@mediatek.com>
+Il 14/01/22 10:21, Rex-BC Chen ha scritto:
+> This device requires the packets on lanes aligned at the end to fix
+> screen shift or scroll.
 > 
-> Update binary firmware for MT7921 WiFi devices
+> Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+> ---
+>   drivers/gpu/drm/bridge/analogix/anx7625.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> File: mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin
-> Version: 20220110230855a
-> File: mediatek/WIFI_RAM_CODE_MT7961_1.bin
-> Version: 20220110230951
+> diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> index 2346dbcc505f..fe32ab0878ae 100644
+> --- a/drivers/gpu/drm/bridge/analogix/anx7625.c
+> +++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+> @@ -1673,7 +1673,8 @@ static int anx7625_attach_dsi(struct anx7625_data *ctx)
+>   	dsi->format = MIPI_DSI_FMT_RGB888;
+>   	dsi->mode_flags = MIPI_DSI_MODE_VIDEO	|
+>   		MIPI_DSI_MODE_VIDEO_SYNC_PULSE	|
+> -		MIPI_DSI_MODE_VIDEO_HSE;
+> +		MIPI_DSI_MODE_VIDEO_HSE	|
+> +		MIPI_DSI_HS_PKT_END_ALIGNED;
+>   
+>   	ret = devm_mipi_dsi_attach(dev, dsi);
+>   	if (ret) {
 > 
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
 
-This is not a regression but I've just tested whether this firmware fixes the 
-problem of missing beacons [1] in monitor mode: No, it doesn't.
-
-Kind regards,
-	Sven
-
-[1] https://lore.kernel.org/all/Yd170LnF5Y2D8by5@lore-desk/
-
---nextPart3643850.YqUZ2QbrSU
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part.
-Content-Transfer-Encoding: 7Bit
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEF10rh2Elc9zjMuACXYcKB8Eme0YFAmHhR84ACgkQXYcKB8Em
-e0YKzRAAyOYq/uNn8TEz9bXXXHShuKspeRz7GT2vYp4yOB0WWjE3lXAzUXkujwoF
-s0DV7YDb9sK2l1/JDqUVnilfGR1o5aDXe76eo5ICDqiqzAgbrWdjdPmROvYDBp2t
-us7JDNoNbWS4t377TiRZFhDX3Il8uSmSUzsWM1bo7kLNB6Vv0OFDeOjc3CHJC3of
-Va02Xfo7+rhz6n/qVxjnDLOa86VctR6was3LBpZ8lBXPvhNfIW/x/VdjJcdpTqLu
-zsVHYGdLASOMsWJhbDIHeJVKlF/AODgI6/OXWcQVbbrrTu69oecIF8KbEbM3rGYp
-T0kZisepJrL456NEt7M+GYD61LXzPnEOgymoqLyG+YNT+4S+bqTlt6aXU+CmkxPq
-Xe5tIwMl5XZdTwBY8n8tM1fg2BrCZ8W43lCGgOyRUKrqvABhJuwcuHXegru2SKY3
-zb6k4uxib1S9WZrHC3Z/0VSEithnMusMQ0h3AHzmtpOItw/HnUOxvhCx1DhX60D8
-tUretH3qCtkgV473tSgmuo6io1FKS5loowOE1vmQsTRFZlEcm33smPKkhhfvnTrX
-GxXubSwkQj1rO17tt8vFKrlhosPHC75CWjjsqkvTD5qgBQFyey580uLBoIQ2w39R
-Jx89RD5VPyNoSsSU8JJDlk0a4GNFGpGhCISoMQQ+JlH41iRSovQ=
-=QAbs
------END PGP SIGNATURE-----
-
---nextPart3643850.YqUZ2QbrSU--
-
-
-
-
-
---===============6594984400310934020==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============6594984400310934020==--
-
-
-
-
