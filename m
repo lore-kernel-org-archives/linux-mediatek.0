@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 168EAC433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 08:23:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CC25C433F5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 08:36:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=q7MZE4LXsLXUZXbBGV5e5/ytl9FND9UpQyOZVk4HgPM=; b=Tg9P+6b7WxyJRS
-	f7xF/WFATSx2Hev4TNr6rn1CMaiEg4xzle0cN2+Oe8z/TxWLb9WnImgWFGtCjcRKoYG69dmq9t2tF
-	lPKvH8fMXo3N6+Ke9GdAR6upB+Dkwwllro1WQcpJDaQdrL5IlXz95pGbl47WKRWWWwM2jUlnZKMoL
-	8YB7ZY5PRXZc8UIoFh6BzOt1afp+oZyDYcXN/nCdAYw2Y2mmdEPnlFB5IlZ1lO76pF/SuBkMwNpf2
-	3gQJp/lov4ze2acZWE9OgpC3T/ChUFvKCySRZ+TeXuwCLjt+bQTtKRjYDJEPXyCWdIJ4ZhVNEyQFg
-	7whMdRMgVO/OB9nhpGZQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZwzULJvp97LhoYWpQAE8paEHDlB2SclffjTomoisjO0=; b=FTNTeeV10WNNtr
+	vdmMuKzkj+J2X4Vi0CEYbA81hEwyMIeN5DrbLDxtbJI9EN2KxJx4nhTut8uURYnfId44TXlJB8xrh
+	MKHUBU/OSltc4vbWGSV0CVKFSZQ5Qz/hvXWL5NqbUdEjyYy2sRfnsE+MOuV5jWtvc9q/h+kv0L3/1
+	lsRWgEflN3il2A1hoHXJZjmGSOyiHEoB5g5DZZwz20UKrTj7nnvdmx5PjOyTPF6j3gmGMfJPUgmrq
+	sWbqycgXv4TVxgc0CR7a3QSSgLWYX5HnyxwNR/IyuQWcd9ED1X36JjEkaNuFcHZeTUqJFk1C6RzPL
+	QF1VHI5nYy7OOt0R7ehA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8HrR-008Dyu-V4; Fri, 14 Jan 2022 08:23:01 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8HrE-008Dtq-NC; Fri, 14 Jan 2022 08:22:50 +0000
-Received: from localhost.localdomain (unknown [124.16.141.244])
- by APP-05 (Coremail) with SMTP id zQCowACXe0HKMuFhEsoxBg--.41354S2;
- Fri, 14 Jan 2022 16:22:34 +0800 (CST)
-From: Xu Wang <vulab@iscas.ac.cn>
-To: minghsiu.tsai@mediatek.com, houlong.wei@mediatek.com,
- andrew-ct.chen@mediatek.com, mchehab@kernel.org, matthias.bgg@gmail.com
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH] media: mtk-mdp: Remove redundant 'flush_workqueue()' calls
-Date: Fri, 14 Jan 2022 08:22:14 +0000
-Message-Id: <20220114082214.41817-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1n8I4N-008HdN-4Y; Fri, 14 Jan 2022 08:36:23 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n8I4J-008HcO-6O; Fri, 14 Jan 2022 08:36:21 +0000
+X-UUID: 0a1f229c03d04eda8990725258c5374d-20220114
+X-UUID: 0a1f229c03d04eda8990725258c5374d-20220114
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 947165651; Fri, 14 Jan 2022 01:36:15 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Jan 2022 00:36:13 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Fri, 14 Jan 2022 16:36:12 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Fri, 14 Jan 2022 16:36:11 +0800
+From: Miles Chen <miles.chen@mediatek.com>
+To: <sboyd@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+CC: <chun-jie.chen@mediatek.com>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-clk@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-mediatek@lists.infradead.org>, <miles.chen@mediatek.com>,
+ <mturquette@baylibre.com>, <wenst@chromium.org>
+Subject: Re: [PATCH 1/3] clk: mediatek: export mtk_clk_simple_probe
+Date: Fri, 14 Jan 2022 16:36:10 +0800
+Message-ID: <20220114083611.19633-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220114021206.43FB7C36AEA@smtp.kernel.org>
+References: <20220114021206.43FB7C36AEA@smtp.kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: zQCowACXe0HKMuFhEsoxBg--.41354S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrKF17Xw17ZF1DZF4rKr1xKrg_yoWDWrb_Cr
- WIgF4xWrWfGwnYkryxtF1fuFyjy3yq9r1FyaySgr4qg3yrWw1UtrZrZr4DX3yDXa1jvF1U
- AFW2gayxurnxGjkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUIcSsGvfJTRUUUb2kYjsxI4VWkCwAYFVCjjxCrM7AC8VAFwI0_Gr0_Xr1l1xkIjI8I
- 6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM2
- 8CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW7JVWDJwA2z4x0Y4vE2Ix0
- cI8IcVCY1x0267AKxVWxJVW8Jr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I
- 8E87Iv6xkF7I0E14v26rxl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI
- 64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1Y6r17McIj6I8E87Iv67AKxVWUJVW8Jw
- Am72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lc2xSY4AK67AK6r43MxAIw28I
- cxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2
- IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI
- 42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42
- IY6xAIw20EY4v20xvaj40_Wr1j6rW3Jr1lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2
- z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7IU8Hv3UUUUUU==
-X-Originating-IP: [124.16.141.244]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgkGA10Tf6iqfAAAsF
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_002249_192195_04FBDA00 
-X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-CacheID: sfid-20220114_003619_265415_E51BCC2D 
+X-CRM114-Status: UNSURE (   6.63  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,34 +73,11 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-'destroy_workqueue()' already drains the queue before destroying it, so
-there is no need to flush it explicitly.
+> Please send a cover letter for multi-patch series.
 
-Remove the redundant 'flush_workqueue()' calls.
+Sorry for that, I will submit a cover letter in next version.
 
-Signed-off-by: Xu Wang <vulab@iscas.ac.cn>
----
- drivers/media/platform/mtk-mdp/mtk_mdp_core.c | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-index 3d38793aaa25..fbd6e06a0567 100644
---- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
-@@ -246,10 +246,8 @@ static int mtk_mdp_remove(struct platform_device *pdev)
- 	mtk_mdp_unregister_m2m_device(mdp);
- 	v4l2_device_unregister(&mdp->v4l2_dev);
- 
--	flush_workqueue(mdp->wdt_wq);
- 	destroy_workqueue(mdp->wdt_wq);
- 
--	flush_workqueue(mdp->job_wq);
- 	destroy_workqueue(mdp->job_wq);
- 
- 	list_for_each_entry_safe(comp, comp_temp, &mdp->comp_list, node) {
--- 
-2.25.1
-
+Miles
 
 _______________________________________________
 Linux-mediatek mailing list
