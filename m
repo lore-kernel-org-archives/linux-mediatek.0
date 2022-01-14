@@ -4,62 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0909C433F5
-	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 22:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0734AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Fri, 14 Jan 2022 23:57:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OAJqj6i4ySYXcALnYv7+950Itc/ZWwwukTdOAZZGJTs=; b=rO91DoDIx4HUyO
-	AEO5tAdrOFdGnYNNMSZ3RGLflV2cJSuhYNBvrP2WD9pJGLYM+7jj9Lag/ApRKoWEwI+HufWjcRVWq
-	+m2bNBXLzb8UikzfjqWIZYAQgQHshipCEOqAKTzz4xBx6CTqQKus2kufs94rA7mcsV+idOow5uScA
-	GyIzaiH2ZajT383ZESMAKNxrM1HhlqjR4RTrCtTdFuZ95ZomvAO1WDFY2aFGIT72tr+fyXjKJGYxx
-	8aQHcScnVYKpb9pBP1/8KSCVGvPibc7z65f2JftRJFsBcIGirYgE5Enw5QQo+z2aRWPOsHHlakIG0
-	cIzi9lDU/IGcIUU7pWZw==;
+	List-Owner; bh=wAgA9aljaSVkWQtvO6bU1O4ylG0jXswBvZ9IdZFZ4Ow=; b=lPoNQyO5NTKVWT
+	evr1kVScZFTWEoVy51EnZQxOcsmq47xR+0XMns7YhP7bnpdXoco61WR2/wdFfa7bGb7RonIK7vRic
+	y2HmoQcuviuEVQO0HeJoYJH95+hEqJ64xLwfN6F6xW+RGf8utcnaOL82DQspACakXTqHJtgUMcRon
+	IJXS8koAuRGkEjAMBCrN58+nih8Z+t1rCq7fNKeX0dzYRV33G0XhX5Z+qdMiTsfeQqhQROfHofghN
+	2rPdREoHGa5O73Z0F6bMJlLWN5eo/BuPeo1iBtthqBqkjrp83XU405PBacA7LmQW/5y/4hE/+iwEE
+	I+hbLsHhbQ6IkP22KQQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8VU4-00AM21-Sh; Fri, 14 Jan 2022 22:55:48 +0000
-Received: from sin.source.kernel.org ([145.40.73.55])
+	id 1n8WR9-00ATQg-CC; Fri, 14 Jan 2022 23:56:51 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8VTs-00ALzK-LX; Fri, 14 Jan 2022 22:55:38 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id 51B25CE24B0;
- Fri, 14 Jan 2022 22:55:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0C6DC36AEA;
- Fri, 14 Jan 2022 22:55:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642200932;
- bh=M532S7NuMc5guV+TrEqveWTIocIumpQzI6P1DHrrZQU=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=QyvA0f0qY8QqYZAbFV5Wq3fsZiJDeU8KPnsow24DmPU8jvx14aHeNQg0j43ajNB1p
- 1YONEyYEnDapqSU03zz0pTXoGuAzazVB43mPssU0R1YMRJAFXQ2TrolvckB3m93tUL
- xdmf7oosQeSw+6r1S1OR+P/gHkZrK/RqCHVeOZMAOOmi0DIIK9WqcgsG37sOefnbri
- FudkYswGSXsBWn1gGnyxeh4NT2s2WPusa14xJXrePX6zrKrEwIiI0LDaZ6MtFeS+6W
- lWaU7H3iw28P4FlAwNNjsnhxF5mH6CehCndbXcz+lmNWHFx5rUSkOik9aZ4hNjPeRW
- RPt44RAJSd2Mg==
+ id 1n8WR5-00ATOg-0m
+ for linux-mediatek@lists.infradead.org; Fri, 14 Jan 2022 23:56:49 +0000
+X-UUID: 9dbb297f94cb45ce9bdc2c2f453fc49a-20220114
+X-UUID: 9dbb297f94cb45ce9bdc2c2f453fc49a-20220114
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <sean.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 420635412; Fri, 14 Jan 2022 16:56:40 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Jan 2022 15:56:38 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sat, 15 Jan 2022 07:56:36 +0800
+Received: from mtkswgap22.mediatek.inc (172.21.77.33) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Sat, 15 Jan 2022 07:56:36 +0800
+From: <sean.wang@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo.bianconi@redhat.com>
+CC: <sean.wang@mediatek.com>, <Soul.Huang@mediatek.com>,
+ <YN.Chen@mediatek.com>, <Leon.Yen@mediatek.com>,
+ <Eric-SY.Chang@mediatek.com>, <Mark-YW.Chen@mediatek.com>,
+ <Deren.Wu@mediatek.com>, <km.lin@mediatek.com>, <jenhao.yang@mediatek.com>,
+ <robin.chiu@mediatek.com>, <Eddie.Chen@mediatek.com>, <ch.yeh@mediatek.com>,
+ <posh.sun@mediatek.com>, <ted.huang@mediatek.com>, <Eric.Liang@mediatek.com>, 
+ <Stella.Chang@mediatek.com>, <Tom.Chou@mediatek.com>,
+ <steve.lee@mediatek.com>, <jsiuda@google.com>, <frankgor@google.com>,
+ <jemele@google.com>, <abhishekpandit@google.com>, <shawnku@google.com>,
+ <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v2 2/2] mt76: mt7921s: run sleep mode by default
+Date: Sat, 15 Jan 2022 07:56:33 +0800
+Message-ID: <ddbc5499b76989c7d67fcbc31eb19ff535156dfa.1642204233.git.objelf@gmail.com>
+X-Mailer: git-send-email 1.7.9.5
+In-Reply-To: <c09673a115c39f7af692efb984a5dc0c75238a64.1642204233.git.objelf@gmail.com>
+References: <c09673a115c39f7af692efb984a5dc0c75238a64.1642204233.git.objelf@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <eb6d11af-ff48-a366-d428-77bcaa250a8a@arm.com>
-References: <20220110181330.3224-1-alyssa.rosenzweig@collabora.com>
- <eb6d11af-ff48-a366-d428-77bcaa250a8a@arm.com>
-Subject: Re: [PATCH] clk: mediatek: Disable ACP to fix 3D on MT8192
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: Michael Turquette <mturquette@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>,
- linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- Nick Fan <Nick.Fan@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
-To: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- Robin Murphy <robin.murphy@arm.com>, linux-mediatek@lists.infradead.org
-Date: Fri, 14 Jan 2022 14:55:30 -0800
-User-Agent: alot/0.10
-Message-Id: <20220114225532.B0C6DC36AEA@smtp.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_145536_907801_DA7749FF 
-X-CRM114-Status: GOOD (  23.50  )
+X-CRM114-CacheID: sfid-20220114_155647_098750_B8AE6812 
+X-CRM114-Status: UNSURE (   9.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,43 +80,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Robin Murphy (2022-01-14 05:23:51)
-> On 2022-01-10 18:13, Alyssa Rosenzweig wrote:
-> > Set a mysterious chicken bit in the MT8192 clock driver (!) to get the
-> > Mali GPU on MT8192 to work. This workaround is from the downstream Mali
-> > driver shipped in ChromeOS. The change there is unsuitable for mainline
-> > but good as a reference for the hardware behaviour:
-> > 
-> > https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/2781271/5
-> > 
-> > That links to an internal Google issue tracker which I assume has more
-> > information on the bug. I would appreciate if someone from Google or
-> > MediaTek could explain what this change actually does and why it's
-> > necessary on MT8192.
-> > 
-> > At any rate, this register logically belongs to the MT8192 "infra" clock
-> > device, so it makes sense to set it there too. This avoids adding any
-> > platform-specific hacks to the 3D driver, either mainline (Panfrost) or
-> > legacy (kbase).
-> 
-> Does this really have anything to do with clocks? My (uninformed) 
-> impression is that the infracfg blocks are general amalgamations of 
-> configuration registers that simply happen to contain clock and reset 
-> controls among other functionality. In particular, "ACP" usually refers 
-> to the Accelerator Coherency Port of a CPU cluster or DSU, and given the 
-> stated symptom of the issue affected by it, my first guess would be that 
-> this bit might indeed control routing of GPU traffic either to the ACP 
-> or the (presumably non-coherent) main interconnect.
-> 
-> If that is the case, I think this would logically belong as a 
-> SoC-specific quirk in panfrost, where we'd need to retrieve the syscon 
-> regmap for ourselves (see around line 800 of drivers/iommu/mtk_iommu.c 
-> for a similar example).
+From: Sean Wang <sean.wang@mediatek.com>
 
-What's the benefit of putting this into the GPU driver? Is it going to
-be runtime managed? It seems most logically related to the SoC or
-interconnect, for which there isn't any device driver but there could
-be.
+Apply sleep mode by default to reduce power consumption as possible.
+
+Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+---
+v1 -> v2: rebase on the top of
+	  ("mt76: mt7921: toggle runtime-pm adding a monitor vif")
+---
+ drivers/net/wireless/mediatek/mt76/mt7921/init.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+index 6059d8a0f227..fa6af85bba7b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
+@@ -226,14 +226,10 @@ int mt7921_register_device(struct mt7921_dev *dev)
+ 	dev->pm.idle_timeout = MT7921_PM_TIMEOUT;
+ 	dev->pm.stats.last_wake_event = jiffies;
+ 	dev->pm.stats.last_doze_event = jiffies;
+-
+-	/* TODO: mt7921s run sleep mode on default  */
+-	if (mt76_is_mmio(&dev->mt76)) {
+-		dev->pm.enable_user = true;
+-		dev->pm.enable = true;
+-		dev->pm.ds_enable_user = true;
+-		dev->pm.ds_enable = true;
+-	}
++	dev->pm.enable_user = true;
++	dev->pm.enable = true;
++	dev->pm.ds_enable_user = true;
++	dev->pm.ds_enable = true;
+ 
+ 	if (mt76_is_sdio(&dev->mt76))
+ 		hw->extra_tx_headroom += MT_SDIO_TXD_SIZE + MT_SDIO_HDR_SIZE;
+-- 
+2.25.1
+
 
 _______________________________________________
 Linux-mediatek mailing list
