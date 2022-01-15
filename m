@@ -4,124 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AEB0C433F5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jan 2022 15:47:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0EBBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jan 2022 17:49:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+W4aH9djS0I2eeVrbFJP4U5cU01OvrT6wjsmDyKna6Q=; b=vO5kmwhkLWUYqlOOJE40IiKx2C
-	2DSVvaouN6oNOa/fILLWGrXK8ibWka/2OLTi02qdPJXcctydxrnKDJC7ZfLtck4Xy78WUvKPsJfM1
-	yd8cTOyY+pMc8M4fEd7TZ1az/6lUsmpaiSNCCbrnB/J/95Qzu17naqP+pWPSecnpiY/Ih3rKXtzg6
-	w8llhHnBMhl3kpDoWRiHk4OksJ3LugOip1rA+XvbYBDdnaEV5eB1oyUmvK84hepNT/rWy1TsyGwaq
-	IUEqll2XVP6r+JXXHGKXxzA+n7jpo00vY4TVzwQ4qwNYZ++EzefdgiU6hcnBJOuBhmGxUzLPh6L1V
-	4mHf26EA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ix0dcfsXRmVct9OLFL13+o+VN/W/sIXzsQdi90SKeek=; b=v4gz3G/Q1yVkVl
+	LokOq73osPIpCFN1f1rm0c8V//8cRS8NP4LAOqj9CTChZZvAEevcV55JPTQlrvXTDgTmA4BL/Uo2W
+	8+YZPThMdDjoHpKT06kORk8uTd3fE7kVcFnr362I72B9i0//AdujdlNgnrzMuTlDw44XxHZEYZUCg
+	0WZFcHccApjJ92xE16z5OM3anvdJghVWxC5nSq1BZHzI8CEd17C8+RUy5Jnf5Gs3KeJMZxN0BI9q2
+	po1UYOqnL/Amr3Hlki9yVHkXVHRM06HqgGL256vqhe4/uqY1wO4kkilkMacaAjR8wCZrzOmL816L3
+	OQvqLoz1fi5+LJisxziw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8lHC-00BEnP-My; Sat, 15 Jan 2022 15:47:34 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1n8nBN-00BQIh-P3; Sat, 15 Jan 2022 17:49:41 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8lGp-00BElL-KB
- for linux-mediatek@lists.infradead.org; Sat, 15 Jan 2022 15:47:13 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n8lFV-0004H5-7B; Sat, 15 Jan 2022 16:45:49 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1n8lFP-00ASzb-U2; Sat, 15 Jan 2022 16:45:43 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n8lFO-00051O-P0; Sat, 15 Jan 2022 16:45:42 +0100
-Date: Sat, 15 Jan 2022 16:45:39 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-phy@lists.infradead.org, netdev@vger.kernel.org,
- linux-spi <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>,
- Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Kishon Vijay Abraham I <kishon@ti.com>,
- Geert Uytterhoeven <geert@linux-m68k.org>,
- "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
- Zhang Rui <rui.zhang@intel.com>, platform-driver-x86@vger.kernel.org,
- Linux PWM List <linux-pwm@vger.kernel.org>,
- Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
- Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
- Liam Girdwood <lgirdwood@gmail.com>,
- John Garry <john.garry@huawei.com>, Takashi Iwai <tiwai@suse.com>,
- Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- openipmi-developer@lists.sourceforge.net,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Benson Leung <bleung@chromium.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
- Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>,
- Eric Auger <eric.auger@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Linux MMC List <linux-mmc@vger.kernel.org>,
- Joakim Zhang <qiangqing.zhang@nxp.com>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Vinod Koul <vkoul@kernel.org>,
- James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>,
- Sebastian Reichel <sre@kernel.org>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
-Subject: Re: [PATCH] driver core: platform: Rename
- platform_get_irq_optional() to platform_get_irq_silent()
-Message-ID: <20220115154539.j3tsz5ioqexq2yuu@pengutronix.de>
-References: <YdyilpjC6rtz6toJ@lunn.ch>
- <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
- <20220112085009.dbasceh3obfok5dc@pengutronix.de>
- <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
- <YeA7CjOyJFkpuhz/@sirena.org.uk>
- <20220113194358.xnnbhsoyetihterb@pengutronix.de>
- <YeF05vBOzkN+xYCq@smile.fi.intel.com>
+ id 1n8nBK-00BQHZ-5b
+ for linux-mediatek@lists.infradead.org; Sat, 15 Jan 2022 17:49:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1642268975;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=5Ub1hbMwAGMv83XYOlhCXiwUBfOTPfG3vBCU3vhpmD4=;
+ b=LnEno+ZEVtcKdth7EwZiAzeiJWxMXZTG3dti/5Y6JRG4tygFDpRlUN9vQCkwXc+YTsq45l
+ nApgg1UwA0fd3H2qsfU6vYspzBv5TmXY9GFcciBZNRhGpetj2ra9RMH2nmPYVVxurXs9LW
+ gYzZ1+bbqb+ndjdMv5Vz5fCJ4yY3maM=
+Received: from mail-oi1-f199.google.com (mail-oi1-f199.google.com
+ [209.85.167.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-630-zrXf0on_OteQ_QmVX069RQ-1; Sat, 15 Jan 2022 12:49:33 -0500
+X-MC-Unique: zrXf0on_OteQ_QmVX069RQ-1
+Received: by mail-oi1-f199.google.com with SMTP id
+ q127-20020aca5c85000000b002c724c26e41so8592447oib.1
+ for <linux-mediatek@lists.infradead.org>; Sat, 15 Jan 2022 09:49:33 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=5Ub1hbMwAGMv83XYOlhCXiwUBfOTPfG3vBCU3vhpmD4=;
+ b=JVNK5UNIl3uct6skQAdieowH5rXznVYjB30Msihua8veELzTRUS+nFgV9NPEj3Ki3p
+ GnJNdjmDDux9uNU6tyTDE+p4GKrxCmZfktsLQ/5jq2M8n5G/KVkIq+ROCerifLOxoMbW
+ Tx2UiPQWPbl81RhjrBFKPju2GF797R+2OKbd7Agq5gfbEoWloctjUe6LCB4sBXiRJKmD
+ s7U/A5hgthYPj+oNDbr3gkdUhOGkFp/wfRzQtVKFo36Q/4atIRAqng4kTN32pWB8iQ4T
+ +N/vhUM9pOoGVAFxA8+OCchj7eh/nbx6iAA1ytex7cZt8eQup9G42711+RdXK8r1Go7H
+ WdJQ==
+X-Gm-Message-State: AOAM530w1MvVjJwSt+WSQ64XE8sUZeUYq1NRIVq9MXuFH0d4Xtwg1oOZ
+ 8+6UCjV/TrjFS1/lHNBvXP/7qggqf663ehKkfFR/rkBadMinDMUkGeFDyykXB7UNk18uRWxVxPf
+ EB/0E12Y49a6LZoPog1ssXEiDP0XvU3bN
+X-Received: by 2002:a9d:6d90:: with SMTP id x16mr10349762otp.104.1642268973022; 
+ Sat, 15 Jan 2022 09:49:33 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxR+KmHmEAcU1CSZCeT7bkPUleD6/z8y+Ucc7A0A1vb7OVK0PdYFegZBJKcQW1fj3jjvlhqdQ==
+X-Received: by 2002:a9d:6d90:: with SMTP id x16mr10349749otp.104.1642268972841; 
+ Sat, 15 Jan 2022 09:49:32 -0800 (PST)
+Received: from localhost.localdomain.com (024-205-208-113.res.spectrum.com.
+ [24.205.208.113])
+ by smtp.gmail.com with ESMTPSA id w20sm3239438oti.69.2022.01.15.09.49.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 15 Jan 2022 09:49:32 -0800 (PST)
+From: trix@redhat.com
+To: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
+ matthias.bgg@gmail.com, nathan@kernel.org, ndesaulniers@google.com,
+ opensource@vdorst.com
+Cc: netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ llvm@lists.linux.dev, Tom Rix <trix@redhat.com>
+Subject: [PATCH v2] net: ethernet: mtk_eth_soc: fix error checking in
+ mtk_mac_config()
+Date: Sat, 15 Jan 2022 09:49:18 -0800
+Message-Id: <20220115174918.297002-1-trix@redhat.com>
+X-Mailer: git-send-email 2.26.3
 MIME-Version: 1.0
-In-Reply-To: <YeF05vBOzkN+xYCq@smile.fi.intel.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=trix@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220115_074711_674441_95A4AB69 
-X-CRM114-Status: GOOD (  24.84  )
+X-CRM114-CacheID: sfid-20220115_094938_334225_3A42D845 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,75 +98,48 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1526283123413107126=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+From: Tom Rix <trix@redhat.com>
 
---===============1526283123413107126==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="mnfl5t4f2jujrfil"
-Content-Disposition: inline
+Clang static analysis reports this problem
+mtk_eth_soc.c:394:7: warning: Branch condition evaluates
+  to a garbage value
+                if (err)
+                    ^~~
 
+err is not initialized and only conditionally set.
+So intitialize err.
 
---mnfl5t4f2jujrfil
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Fixes: 7e538372694b ("net: ethernet: mediatek: Re-add support SGMII")
+Signed-off-by: Tom Rix <trix@redhat.com>
+---
+v2: change to initializing
 
-On Fri, Jan 14, 2022 at 03:04:38PM +0200, Andy Shevchenko wrote:
-> On Thu, Jan 13, 2022 at 08:43:58PM +0100, Uwe Kleine-K=F6nig wrote:
-> > > It'd certainly be good to name anything that doesn't correspond to one
-> > > of the existing semantics for the API (!) something different rather
-> > > than adding yet another potentially overloaded meaning.
-> >=20
-> > It seems we're (at least) three who agree about this. Here is a patch
-> > fixing the name.
->=20
-> And similar number of people are on the other side.
+drivers/net/ethernet/mediatek/mtk_eth_soc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-If someone already opposed to the renaming (and not only the name) I
-must have missed that.
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index b67b4323cff08..f02d07ec5ccbf 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -267,7 +267,7 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
+ 					   phylink_config);
+ 	struct mtk_eth *eth = mac->hw;
+ 	u32 mcr_cur, mcr_new, sid, i;
+-	int val, ge_mode, err;
++	int val, ge_mode, err = 0;
+ 
+ 	/* MT76x8 has no hardware settings between for the MAC */
+ 	if (!MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628) &&
+-- 
+2.26.3
 
-So you think it's a good idea to keep the name
-platform_get_irq_optional() despite the "not found" value returned by it
-isn't usable as if it were a normal irq number?
-
-Best regards
-Uwe
-
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---mnfl5t4f2jujrfil
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHi7CAACgkQwfwUeK3K
-7Amk1Af+OGhV4pVxDlJ2WwWFaBKwiBIjR7bWdeEaB12BZSu0W8TKVHCkQccpBTeZ
-z1hmQuzkqQZgDZBqVGEY7F83TV48hJu7BXSgw8s+T2DM7xwVxOgrHTmdaO1UC/dA
-tiSqmXQ7Y6Dr3w8KBadxWgjskUIaIENF9gNwxn4h6Lhz8oe+c0X+UyYTCsRYmm/C
-mikgWg6chyJ/FhT3cm63ssx7a2/IpP0DL1CUsun16lMjNKVoG0c/Am/SN63YRl6h
-/e7bt4AbNeyttS/D+BRB81YpGQrApMakc70eSqV4d4OHkpb5XSLpDGZnufaomGjg
-FD2yOfvrufmMvz2CsVv3HRaeCS7dng==
-=vWbN
------END PGP SIGNATURE-----
-
---mnfl5t4f2jujrfil--
-
-
---===============1526283123413107126==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============1526283123413107126==--
-
