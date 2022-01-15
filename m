@@ -4,93 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25125C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jan 2022 01:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 577C2C433F5
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jan 2022 07:40:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fO58j/jXC6opEoTVlucTThKLMcAKOuGiPzBs8UrNCdM=; b=qVkDSzCLyHxS7K
-	RTI2CYvqH2l15TmohWXlNVoMfRG+1EYLNfLdO4aK/NzxZHqROLvVFQXCzs4/GhbxRP9NwDuQitnFq
-	5viwuqPEgiSD+GH+FVu7waEV+yj15itpCrbIqczUf6anupe0+mySvrIsCXgmxY6unn5eI4NmAbLLy
-	S5ov1OsuC/uMD4smTC2x9EspTh7/6AcUmkt24j1HZaSdDvWXBGV5tPocc5w8flKKo95Ac4xlJCihQ
-	/VXzFgzHrnubRRaeiA1kOMy9rNwOKLT7xKtWJpDsLH19n2wGbaOQjl81JR1g5/SG4fd50PwBgASFT
-	ud2lUoAlF8DZtWjEaVLA==;
+	List-Owner; bh=VdcD1tUpuCirsEXGhmlHDuXGc6/bYrvDl0ATF5NIuVM=; b=kYLhNd8zcx9k9L
+	QxzR/GpM19x4b8yahGhmMhi3GXy2EPhvyyDX1HIC7VjJWXfLShyrAdR/Het2lJIKwuq4AfG0vw/96
+	NtIbbRSCGqRwmhJwbxsDJbMrpg9xT2zs6ihW0jA1un3D5iTO3ZhZIx0bJeQizFCQ7U8cAAZtyDiT2
+	u0ZSbKKkPqIDziHkir5pcUKRe+JOUZgNen7gVdFermkUTGHMlRnSRb1MXdxjpyhqBL47/1tN0UoJe
+	8N/IFN8C9WSByFbgCvVtWR0x1SvKJVqwnUl5Se5QX5fHDWlFYcuUd/q0mKom8SOHOL7x7OybZ3eO2
+	CP8epFc6ym58VD+g8i2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8Xho-00AWv0-Bh; Sat, 15 Jan 2022 01:18:08 +0000
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+	id 1n8dfR-00Am7z-OF; Sat, 15 Jan 2022 07:40:06 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8Xhb-00AWt8-Ip
- for linux-mediatek@lists.infradead.org; Sat, 15 Jan 2022 01:17:57 +0000
-Received: by mail-lf1-x133.google.com with SMTP id m3so21618192lfu.0
- for <linux-mediatek@lists.infradead.org>; Fri, 14 Jan 2022 17:17:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=DSUCsXvUq5CC+YLJR6sM+UncKVzG/eChv6GRiJ5ewuo=;
- b=Km7B94yItHq7aVfP1T9NUkUg0CfyYu53x8ocQbPhc+dKDkm2Z3Qdmqq6lhxvM80Pks
- 16ttYCCVWt7dbiTvfB/TJxujAvsC6cSa06GEpsKkkuaeQlcM8M+t4u99s5lARvhfxInW
- Ci1oy5mNVTaPwV+2dSBlSscKmvmZ+mg0LMkcK6MV3GSRb+XMtxMOJgcgXRxQrrOziDKZ
- Bc7zRC9XKZDw0XoE+bVrA4iEkQtZ7fVhKAaqedPN8V6l0oR6BZz+wRBmSzU31XZDthCr
- spefGhSvdjB+tbrWX7EjLUw/q7lrjUel8Kaldz+FP/57vDBGGjvW2MPQW/bngKKnr/RE
- IoZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=DSUCsXvUq5CC+YLJR6sM+UncKVzG/eChv6GRiJ5ewuo=;
- b=I/ALFOAS7+/RgAipthJRUitvDvc7a2zQth4K0WyPLSjXYpXU4Yf/KybbfQZApZEdF1
- aicEI9JwoG/mYEoN+ydg0yqqq8UQkoHJ2hG6zGljInPU4rDh2oijPLG2lrqZP+zNzSTm
- kqCzLpWSY0Bl7ZvNazLCvDAMgMEXZ5LzgX8LF8RtjlxD/XAYq49XLae9CGJZqFVeI62e
- 4mwRqneCNunOPkRTypU09kBcT908nmnQCOtGSg7fPwaMyK63K7NyC5revDw3I0wjE4Vn
- Hxv7sGFXfwMouC+cjLZ9SQ7qScDoeMP/R7CQl95GO4H/ADPIdBk9j1xeNQKp0RbGwNVa
- pGIQ==
-X-Gm-Message-State: AOAM531rA0JFJgHYmTLOxKAbJkbvCnN9IUdgcvbBbO8HvZ7mnG4zUEiH
- KXnJxLaMOJpBvW5UbYXrtVf6y+zjCunEJsx1BXzYvg==
-X-Google-Smtp-Source: ABdhPJySDowHRxGMfXN2K9VReVwH+SUfch9JrimtyE5ccTX6eX5LjL8lOKhq1C4RF1mflvPlwsqfGtTGOZn0hxrfPFg=
-X-Received: by 2002:a05:6512:3e1f:: with SMTP id
- i31mr4004663lfv.661.1642209473081; 
- Fri, 14 Jan 2022 17:17:53 -0800 (PST)
+ id 1n8dfL-00Am6q-W4
+ for linux-mediatek@lists.infradead.org; Sat, 15 Jan 2022 07:40:04 +0000
+X-UUID: d5f975add9d44e96bd687d82702224ee-20220115
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=cX6msMFI9lOTPA5oXlL+F5Bai2aRWhqlCoq+W52/0CA=; 
+ b=gM/9nBYWbED1qgA0o5clOxt1NHtKUTmMoOs9yM4JXjnLifWfM8ZqBjQcfMeS1nJ4spDpvOR2McKmKeVvbU9JS7Ny1SHleG5eYfC2oMRp4OsKwhF9eXhU6RYvblskUMbg8clg6b5Sd2wvpRFxhANUaCBBMeJL0ajy8/alDhvyvsQ=;
+X-UUID: d5f975add9d44e96bd687d82702224ee-20220115
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <yong.wu@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1372784437; Sat, 15 Jan 2022 00:39:57 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Fri, 14 Jan 2022 23:39:55 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Sat, 15 Jan 2022 15:39:54 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Sat, 15 Jan 2022 15:39:53 +0800
+Message-ID: <fc7207eb9958c487fec5679da73d8f3595cc7bb1.camel@mediatek.com>
+Subject: Re: [PATCH v5 25/32] iommu/mtk: Migrate to aggregate driver
+From: Yong Wu <yong.wu@mediatek.com>
+To: Stephen Boyd <swboyd@chromium.org>
+CC: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, Douglas Anderson
+ <dianders@chromium.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-msm@vger.kernel.org>, <dri-devel@lists.freedesktop.org>,
+ <freedreno@lists.freedesktop.org>, Joerg Roedel <joro@8bytes.org>, "Will
+ Deacon" <will@kernel.org>, Daniel Vetter <daniel.vetter@ffwll.ch>, "Rafael J.
+ Wysocki" <rafael@kernel.org>, Rob Clark <robdclark@gmail.com>, Russell King
+ <rmk+kernel@arm.linux.org.uk>, Saravana Kannan <saravanak@google.com>,
+ <linux-mediatek@lists.infradead.org>, <iommu@lists.linux-foundation.org>,
+ <youlin.pei@mediatek.com>
+Date: Sat, 15 Jan 2022 15:39:52 +0800
+In-Reply-To: <CAE-0n53ao52UX3sJ67UQ3dgj0-DZ0xTeo-NrmW5YVAuXfAnxZw@mail.gmail.com>
+References: <20220106214556.2461363-1-swboyd@chromium.org>
+ <20220106214556.2461363-26-swboyd@chromium.org>
+ <1a3b368eb891ca55c33265397cffab0b9f128737.camel@mediatek.com>
+ <CAE-0n53Y3WRy4_QvUm9k9wjjWV7adMDQcK_+1ji4+W25SSeGwg@mail.gmail.com>
+ <ff81bc1fe1f1c2060fcf03ba14f1bef584c47599.camel@mediatek.com>
+ <CAE-0n53FAHDmCznJ35Xh2aTwXBVwukAM3ioKx8SU9VowSaQSqA@mail.gmail.com>
+ <69a10908622512c60790f97942731a8ab989b727.camel@mediatek.com>
+ <CAE-0n53ao52UX3sJ67UQ3dgj0-DZ0xTeo-NrmW5YVAuXfAnxZw@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <CAO_48GF=ttKqSOm9GRoA3Mq+-RQOtRjWp449XPcz-wH=kjaTjw@mail.gmail.com>
- <20220113123406.11520-1-guangming.cao@mediatek.com>
- <4f88205c1b344aea8608960e2f85b8f4@intel.com>
- <e657f5257cbf4955817b0bbf037de9f9@intel.com>
- <24157767-dc29-bbdd-5428-d89ecc6b9606@amd.com>
- <CALAqxLXRtYDNQ8y1efVGa4SwUH_oAaHviZFjsOVSNFmUHnCCeQ@mail.gmail.com>
- <6b8182a1-7cdc-7369-5c34-e6d0c24efcca@amd.com>
- <82faa62f1bc946cf2f9ee2f7d15c567162238eab.camel@mediatek.com>
-In-Reply-To: <82faa62f1bc946cf2f9ee2f7d15c567162238eab.camel@mediatek.com>
-From: John Stultz <john.stultz@linaro.org>
-Date: Fri, 14 Jan 2022 17:17:39 -0800
-Message-ID: <CALAqxLUSjHoLpgFLcvqmDfv7Uip2VwHS5d_5x2nzw=P3rA2NDA@mail.gmail.com>
-Subject: Re: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
-To: "Guangming.Cao" <guangming.cao@mediatek.com>
-Cc: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- "Ruhl, Michael J" <michael.j.ruhl@intel.com>, 
- "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>, 
- "libo.kang@mediatek.com" <libo.kang@mediatek.com>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
- "yf.wang@mediatek.com" <yf.wang@mediatek.com>, 
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
- "lmark@codeaurora.org" <lmark@codeaurora.org>, 
- "benjamin.gaignard@linaro.org" <benjamin.gaignard@linaro.org>, 
- "bo.song@mediatek.com" <bo.song@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
- "labbott@redhat.com" <labbott@redhat.com>,
- "mingyuan.ma@mediatek.com" <mingyuan.ma@mediatek.com>, 
- "jianjiao.zeng@mediatek.com" <jianjiao.zeng@mediatek.com>, 
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220114_171755_694199_20F8C2B6 
-X-CRM114-Status: GOOD (  30.40  )
+X-CRM114-CacheID: sfid-20220114_234001_455727_1F9F96F4 
+X-CRM114-Status: GOOD (  37.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,54 +87,157 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-T24gRnJpLCBKYW4gMTQsIDIwMjIgYXQgNDowNCBBTSBHdWFuZ21pbmcuQ2FvCjxndWFuZ21pbmcu
-Y2FvQG1lZGlhdGVrLmNvbT4gd3JvdGU6Cj4KPiBPbiBGcmksIDIwMjItMDEtMTQgYXQgMDg6MTYg
-KzAxMDAsIENocmlzdGlhbiBLw7ZuaWcgd3JvdGU6Cj4gPiBBbSAxNC4wMS4yMiB1bSAwMDoyNiBz
-Y2hyaWViIEpvaG4gU3R1bHR6Ogo+ID4gPiBPbiBUaHUsIEphbiAxMywgMjAyMiBhdCA1OjA1IEFN
-IENocmlzdGlhbiBLw7ZuaWcKPiA+ID4gPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4gd3JvdGU6
-Cj4gPiA+ID4gQW0gMTMuMDEuMjIgdW0gMTQ6MDAgc2NocmllYiBSdWhsLCBNaWNoYWVsIEo6Cj4g
-PiA+ID4gPiA+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tCj4gPiA+ID4gPiA+IEZyb206IGRy
-aS1kZXZlbCA8ZHJpLWRldmVsLWJvdW5jZXNAbGlzdHMuZnJlZWRlc2t0b3Aub3JnPiBPbgo+ID4g
-PiA+ID4gPiBCZWhhbGYgT2YKPiA+ID4gPiA+ID4gUnVobCwgTWljaGFlbCBKCj4gPiA+ID4gPiA+
-ID4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0KPiA+ID4gPiA+ID4gPiBGcm9tOiBkcmktZGV2
-ZWwgPGRyaS1kZXZlbC1ib3VuY2VzQGxpc3RzLmZyZWVkZXNrdG9wLm9yZz4KPiA+ID4gPiA+ID4g
-PiBPbiBCZWhhbGYgT2YKPiA+ID4gPiA+ID4gPiBndWFuZ21pbmcuY2FvQG1lZGlhdGVrLmNvbQo+
-ID4gPiA+ID4gPiA+ICsgICAvKgo+ID4gPiA+ID4gPiA+ICsgICAgKiBJbnZhbGlkIHNpemUgY2hl
-Y2suIFRoZSAibGVuIiBzaG91bGQgYmUgbGVzcyB0aGFuCj4gPiA+ID4gPiA+ID4gdG90YWxyYW0u
-Cj4gPiA+ID4gPiA+ID4gKyAgICAqCj4gPiA+ID4gPiA+ID4gKyAgICAqIFdpdGhvdXQgdGhpcyBj
-aGVjaywgb25jZSB0aGUgaW52YWxpZCBzaXplIGFsbG9jYXRpb24KPiA+ID4gPiA+ID4gPiBydW5z
-IG9uIGEgcHJvY2Vzcwo+ID4gPiA+ID4gPiA+IHRoYXQKPiA+ID4gPiA+ID4gPiArICAgICogY2Fu
-J3QgYmUga2lsbGVkIGJ5IE9PTSBmbG93KHN1Y2ggYXMgImdyYWxsb2MiIG9uCj4gPiA+ID4gPiA+
-ID4gQW5kcm9pZCBkZXZpY2VzKSwgaXQKPiA+ID4gPiA+ID4gPiB3aWxsCj4gPiA+ID4gPiA+ID4g
-KyAgICAqIGNhdXNlIGEga2VybmVsIGV4Y2VwdGlvbiwgYW5kIHRvIG1ha2UgbWF0dGVycyB3b3Jz
-ZSwKPiA+ID4gPiA+ID4gPiB3ZSBjYW4ndCBmaW5kCj4gPiA+ID4gPiA+ID4gd2hvIGFyZSB1c2lu
-Zwo+ID4gPiA+ID4gPiA+ICsgICAgKiBzbyBtYW55IG1lbW9yeSB3aXRoICJkbWFfYnVmX2RlYnVn
-X3Nob3ciIHNpbmNlIHRoZQo+ID4gPiA+ID4gPiA+IHJlbGV2YW50Cj4gPiA+ID4gPiA+ID4gZG1h
-LWJ1ZiBoYXNuJ3QgZXhwb3J0ZWQuCj4gPiA+ID4gPiA+ID4gKyAgICAqLwo+ID4gPiA+ID4gPiA+
-ICsgICBpZiAobGVuID4+IFBBR0VfU0hJRlQgPiB0b3RhbHJhbV9wYWdlcygpKQo+ID4gPiA+ID4g
-Pgo+ID4gPiA+ID4gPiBJZiB5b3VyICJoZWFwIiBpcyBmcm9tIGNtYSwgaXMgdGhpcyBzdGlsbCBh
-IHZhbGlkIGNoZWNrPwo+ID4gPiA+ID4KPiA+ID4gPiA+IEFuZCB0aGlua2luZyBhIGJpdCBmdXJ0
-aGVyLCBpZiBJIGNyZWF0ZSBhIGhlYXAgZnJvbSBzb21ldGhpbmcKPiA+ID4gPiA+IGVsc2UgKHNh
-eSBkZXZpY2UgbWVtb3J5KSwKPiA+ID4gPiA+IHlvdSB3aWxsIG5lZWQgdG8gYmUgYWJsZSB0byBm
-aWd1cmUgb3V0IHRoZSBtYXhpbXVtIGFsbG93YWJsZQo+ID4gPiA+ID4gY2hlY2sgZm9yIHRoZSBz
-cGVjaWZpYwo+ID4gPiA+ID4gaGVhcC4KPiA+ID4gPiA+Cj4gPiA+ID4gPiBNYXliZSB0aGUgaGVh
-cCBuZWVkcyBhIGNhbGxiYWNrIGZvciBtYXggc2l6ZT8KPiBZZXMsIEkgYWdyZWUgd2l0aCB0aGlz
-IHNvbHV0aW9uLgo+IElmIGRtYS1oZWFwIGZyYW1ld29yayBzdXBwb3J0IHRoaXMgdmlhIGFkZGlu
-ZyBhIGNhbGxiYWNrIHRvIHN1cHBvcnQgaXQsCj4gc2VlbXMgaXQncyBtb3JlIGNsZWFyIHRoYW4g
-YWRkaW5nIGEgbGltaXRhdGlvbiBpbiBkbWEtaGVhcCBmcmFtZXdvcmsKPiBzaW5jZSBlYWNoIGhl
-YXAgbWF5YmUgaGFzIGRpZmZlcmVudCBsaW1pdGF0aW9uLgo+IElmIHlvdSBwcmVmZXIgYWRkaW5n
-IGNhbGxiYWNrLCBJIGNhbiB1cGRhdGUgdGhpcyBwYXRjaCBhbmQgYWRkIHRvdGFscmFtCj4gbGlt
-aXRhdGlvbiB0byBzeXN0ZW0gZG1hLWhlYXAuCgpJZiB0aGUgbWF4IHZhbHVlIGlzIHBlci1oZWFw
-LCB3aHkgbm90IGVuZm9yY2UgdGhhdCB2YWx1ZSBpbiB0aGUKcGVyLWhlYXAgYWxsb2NhdGlvbiBm
-dW5jdGlvbj8KCk1vdmluZyB0aGUgY2hlY2sgdG8gdGhlIGhlYXAgYWxsb2MgdG8gbWUgc2VlbXMg
-c2ltcGxlciB0byBtZSB0aGFuCmFkZGluZyBjb21wbGV4aXR5IHRvIHRoZSBpbmZyYXN0cnVjdHVy
-ZSB0byBhZGQgYSBoZWFwIG1heF9zaXplCmNhbGxiYWNrLiBJcyB0aGVyZSBzb21lIG90aGVyIHVz
-ZSBmb3IgdGhlIGNhbGxiYWNrIHRoYXQgeW91IGVudmlzaW9uPwoKdGhhbmtzCi1qb2huCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRl
-ayBtYWlsaW5nIGxpc3QKTGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+On Fri, 2022-01-14 at 15:30 -0600, Stephen Boyd wrote:
+> Quoting Yong Wu (2022-01-14 01:06:31)
+> > On Wed, 2022-01-12 at 20:25 -0800, Stephen Boyd wrote:
+> > > > 
+> > > > [    2.654526] ------------[ cut here ]------------
+> > > > [    2.655558] refcount_t: addition on 0; use-after-free.
+> > > > 
+> > > > After this patch, the aggregate_driver flow looks ok. But our
+> > > > driver
+> > > > still aborts like this:
+> > > > 
+> > > > [    2.721316] Unable to handle kernel NULL pointer dereference
+> > > > at
+> > > > virtual address 0000000000000000
+> > > > ...
+> > > > [    2.731658] pc :
+> > > > mtk_smi_larb_config_port_gen2_general+0xa4/0x138
+> > > > [    2.732434] lr : mtk_smi_larb_resume+0x54/0x98
+> > > > ...
+> > > > [    2.742457] Call trace:
+> > > > [    2.742768]  mtk_smi_larb_config_port_gen2_general+0xa4/0x13
+> > > > 8
+> > > > [    2.743496]  pm_generic_runtime_resume+0x2c/0x48
+> > > > [    2.744090]  __genpd_runtime_resume+0x30/0xa8
+> > > > [    2.744648]  genpd_runtime_resume+0x94/0x2c8
+> > > > [    2.745191]  __rpm_callback+0x44/0x150
+> > > > [    2.745669]  rpm_callback+0x6c/0x78
+> > > > [    2.746114]  rpm_resume+0x314/0x558
+> > > > [    2.746559]  __pm_runtime_resume+0x3c/0x88
+> > > > [    2.747080]  pm_runtime_get_suppliers+0x7c/0x110
+> > > > [    2.747668]  __driver_probe_device+0x4c/0xe8
+> > > > [    2.748212]  driver_probe_device+0x44/0x130
+> > > > [    2.748745]  __device_attach_driver+0x98/0xd0
+> > > > [    2.749300]  bus_for_each_drv+0x68/0xd0
+> > > > [    2.749787]  __device_attach+0xec/0x148
+> > > > [    2.750277]  device_attach+0x14/0x20
+> > > > [    2.750733]  bus_rescan_devices_helper+0x50/0x90
+> > > > [    2.751319]  bus_for_each_dev+0x7c/0xd8
+> > > > [    2.751806]  bus_rescan_devices+0x20/0x30
+> > > > [    2.752315]  __component_add+0x7c/0xa0
+> > > > [    2.752795]  component_add+0x14/0x20
+> > > > [    2.753253]  mtk_smi_larb_probe+0xe0/0x120
+> > > > 
+> > > > This is because the device runtime_resume is called before the
+> > > > bind
+> > > > operation(In our case this detailed function is
+> > > > mtk_smi_larb_bind).
+> > > > The issue doesn't happen without this patchset. I'm not sure
+> > > > the
+> > > > right
+> > > > sequence. If we should fix in mediatek driver, the patch could
+> > > > be:
+> > > 
+> > > Oh, the runtime PM is moved around with these patches. The
+> > > aggregate
+> > > device is runtime PM enabled before the probe is called,
+> > 
+> > In our case, the component device may probe before the aggregate
+> > device. thus the component device runtime PM has already been
+> > enabled
+> > when aggregate device probe.
+> 
+> This is always the case. The component device always probes before
+> the
+> aggregate device because the component device registers with the
+> component framework. But the component device can decide to enable
+> runtime PM during driver probe or during component bind.
+> 
+> > 
+> > > and there are
+> > > supplier links made to each component, so each component is
+> > > runtime
+> > > resumed before the aggregate probe function is called.
+> > 
+> > Yes. This is the current flow.
+> 
+> Got it.
+> 
+> > 
+> > > It means that all
+> > > the component drivers need to have their resources ready to power
+> > > on
+> > > before their component_bind() callback is made.
+> > 
+> > Sorry, I don't understand here well. In this case, The component
+> > drivers prepare the resource for power on in the component_bind
+> > since
+> > the resource comes from the aggregate driver. Thus, we expect the
+> > component_bind run before the runtime resume callback.
+> 
+> What resource comes from the aggregate device that the component
+> device manages in runtime PM?
+
+Here the aggregate device is the iommu device. It knows who enabled the
+iommu from the dtsi, then transfers this information to the
+component(smi_larb) devices. smi_larb will configure the registers to
+enable iommu for these masters in the runtime resume.
+
+> > 
+> > Another solution is moving the component's pm_runtime_enable into
+> > the
+> > component_bind(It's mtk_smi_larb_bind here), then the runtime
+> > callback
+> > is called after component_bind in which the resource for power on
+> > is
+> > ready.
+> 
+> This sounds more correct to me. I'm not an expert on runtime PM
+> though
+> as I always have to read the code to remember how it works. if the
+> device isn't ready for runtime PM until the component bind function
+> is
+> called then runtime PM shouldn't be enabled on the component device.
+
+Anyway, We should update the SMI driver for this case. I prepare a
+patch into this patchset or I send it independently? which way is
+better?
+
+The patch could be:
+
+diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+index b883dcc0bbfa..88854c2270a1 100644
+--- a/drivers/memory/mtk-smi.c
++++ b/drivers/memory/mtk-smi.c
+@@ -175,6 +175,8 @@ mtk_smi_larb_bind(struct device *dev, struct device
+*master, void *data)
+                        larb->larbid = i;
+                        larb->mmu = &larb_mmu[i].mmu;
+                        larb->bank = larb_mmu[i].bank;
++
++                       pm_runtime_enable(dev);
+                        return 0;
+                }
+        }
+@@ -450,7 +452,6 @@ static int mtk_smi_larb_probe(struct
+platform_device *pdev)
+        if (ret < 0)
+                return ret;
+
+-       pm_runtime_enable(dev);
+        platform_set_drvdata(pdev, larb);
+        ret = component_add(dev, &mtk_smi_larb_component_ops);
+        if (ret)
+
+Thanks.
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
