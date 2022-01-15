@@ -4,108 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 212A2C433EF
-	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jan 2022 21:06:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF7AAC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 15 Jan 2022 22:40:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Mpohpa+rMbX2rM6cVNKgXJJgKbI2sqKYtgkgHZrQYwc=; b=3KgY9sxY2qXaHb5UNb0NJcWTff
-	qRIv5UgQY+gAbWZzl548AszgwAOXeS9dMtjD4K8zGIsFlTbSYfSGK27Lo/DUq6SCOJezvVoQgyE0E
-	t2J/ZjVuvnrWrvHq+caAXgYqyQTJ9sXKVvwQu5XmEmyvoy5uHhJqESTEWuV7jUDiHlmQV+DZ3E1jl
-	E7ShEUYAuuxzE5xrYS6ZC9A8V/5fF+nsXvrdTNcgoFBVRoGahO22wIZlMmMO5sRLH6E7sQKjO96/X
-	bO5Z9PL5z6Uc4lLGHuz1vXjopuxMUTsJq/B3BZjsrIC3TgIt0cc5WqI0nrgMaXP5+hJAZHm1Z37sG
-	PpdJwj/A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=2u4j0YiaF4pI7qascj1s2XaT6fYrPbOE7cjhUIAjXm0=; b=mLWaMNxhHFly97
+	HFuNoApw8+3C57Sagp43quTx0D47FxJcORrYyvr9ovcUlz8751lqTirXo04ospP8BctN1XWh+zNAl
+	QbL80KjNAb3zzrTTY8qrokc1BLnwtgS6sJ3QzwiWOTn2LxTj4mPdTok3mTQTsMN8W5xRNAGJCnTxJ
+	28rVLN5pi16C+QEUWQpmMhtXN9NaRE2OWyVhRnVPPUD+mGsnLudACxui9UlAAF1MBzjg/ttfDugSM
+	yhDAQQU4mMQGTaZoJeIOfhZBV+gLyW5Mv5QwIyAbYfZKny4EqMdNEC4h4Q9CktFDBOycKMqROvZY5
+	ycxgBGhQPiwRw69Chw+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8qFZ-00BZI5-SV; Sat, 15 Jan 2022 21:06:13 +0000
-Received: from mxout04.lancloud.ru ([45.84.86.114])
+	id 1n8rio-00BcnQ-Og; Sat, 15 Jan 2022 22:40:30 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8qFV-00BZH5-16; Sat, 15 Jan 2022 21:06:11 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout04.lancloud.ru 21DDC20ADE46
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-Subject: Re: [PATCH] driver core: platform: Rename platform_get_irq_optional()
- to platform_get_irq_silent()
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>, "Geert
- Uytterhoeven" <geert@linux-m68k.org>
-CC: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, <linux-iio@vger.kernel.org>, "Linus
- Walleij" <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, "ALSA
- Development Mailing List" <alsa-devel@alsa-project.org>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Jaroslav Kysela <perex@perex.cz>,
- Guenter Roeck <groeck@chromium.org>, Thierry Reding
- <thierry.reding@gmail.com>, MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>, Miquel Raynal
- <miquel.raynal@bootlin.com>, <linux-phy@lists.infradead.org>, Jiri Slaby
- <jirislaby@kernel.org>, <openipmi-developer@lists.sourceforge.net>, "Khuong
- Dinh" <khuong@os.amperecomputing.com>, Florian Fainelli
- <f.fainelli@gmail.com>, Matthias Schiffer
- <matthias.schiffer@ew.tq-group.com>, Joakim Zhang <qiangqing.zhang@nxp.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Lee Jones <lee.jones@linaro.org>, "Bartosz
- Golaszewski" <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- "Tony Luck" <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>,
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, "open
- list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, Jakub Kicinski
- <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Linux PWM List
- <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, "Saravanan
- Sekar" <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, Linux PM list
- <linux-pm@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>, Mark Gross
- <markgross@kernel.org>, "open list:GPIO SUBSYSTEM"
- <linux-gpio@vger.kernel.org>, Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>, "Sebastian
- Reichel" <sre@kernel.org>, Eric Auger <eric.auger@redhat.com>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>,
- <platform-driver-x86@vger.kernel.org>, Benson Leung <bleung@chromium.org>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>,
- <linux-edac@vger.kernel.org>, Mun Yew Tham <mun.yew.tham@intel.com>, "Hans de
- Goede" <hdegoede@redhat.com>, netdev <netdev@vger.kernel.org>, "Yoshihiro
- Shimoda" <yoshihiro.shimoda.uh@renesas.com>, Cornelia Huck
- <cohuck@redhat.com>, Linux MMC List <linux-mmc@vger.kernel.org>, "Liam
- Girdwood" <lgirdwood@gmail.com>, linux-spi <linux-spi@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Vinod Koul
- <vkoul@kernel.org>, James Morse <james.morse@arm.com>, Zha Qipeng
- <qipeng.zha@intel.com>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Richard Weinberger <richard@nod.at>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
- <niklas.soderlund@ragnatech.se>, <linux-mediatek@lists.infradead.org>, "Brian
- Norris" <computersforpeace@gmail.com>, "David S. Miller"
- <davem@davemloft.net>
-References: <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
- <YeA7CjOyJFkpuhz/@sirena.org.uk>
- <20220113194358.xnnbhsoyetihterb@pengutronix.de>
- <YeCI47ltlWzjzjYy@sirena.org.uk>
- <1df04d74-8aa2-11f1-54e9-34d0e8f4e58b@omp.ru>
- <20220113224319.akljsjtu7ps75vun@pengutronix.de>
- <CAMuHMdWjo36UGde3g5ysdXpLJn=mrPp31SDODuQNPUqoc-ARrQ@mail.gmail.com>
- <20220115152102.m47snsdrw2elagak@pengutronix.de>
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Organization: Open Mobile Platform
-Message-ID: <77cea138-977a-1454-4808-bd16dd7d2734@omp.ru>
-Date: Sun, 16 Jan 2022 00:06:00 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1n8rib-00Bckz-DV; Sat, 15 Jan 2022 22:40:18 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 9B0C760F93;
+ Sat, 15 Jan 2022 22:40:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id BB962C36AEF;
+ Sat, 15 Jan 2022 22:40:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642286409;
+ bh=Qx7Mbou3OUJYVeFc8vcOaRUy+O0fyL6IWMuhV13wurM=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=A4Odjf9MV0BIBOOj5Zkz4nD8JegwqQxr4d34G76MgNSSvSz/Krqfon68q21DEYiau
+ jr0FR5Yu1MD4VFY8PT6w6UlmdNQktEVqeqT9mt0rTTi3I/cIvonTCl80wwvf4DjFZv
+ Bew96mMAEfMK/0RNGRU296mssYSxeY8wyuq9N6R63pskBH4s3F5wDgOQ2l1eW4Pbs5
+ 09Hxi9mX0wyx59qvMvhuwfE9WH/oM87C3Wg8O9+Qv3INsgD4DDbFpPE50X2Ywo0XfJ
+ KsD99Oei/agZ8hwUFqJbzNfLUVDb3cqNGrAIoxNTXM8qDFub37OOoARb/PiapfskVf
+ TxZ4LKNnbXwJg==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 980F3F6079F; Sat, 15 Jan 2022 22:40:09 +0000 (UTC)
 MIME-Version: 1.0
-In-Reply-To: <20220115152102.m47snsdrw2elagak@pengutronix.de>
-Content-Language: en-US
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+Subject: Re: [PATCH v2] net: ethernet: mtk_eth_soc: fix error checking in
+ mtk_mac_config()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <164228640961.24744.3226248987693729352.git-patchwork-notify@kernel.org>
+Date: Sat, 15 Jan 2022 22:40:09 +0000
+References: <20220115174918.297002-1-trix@redhat.com>
+In-Reply-To: <20220115174918.297002-1-trix@redhat.com>
+To: Tom Rix <trix@redhat.com>
+Cc: nbd@nbd.name, john@phrozen.org, sean.wang@mediatek.com,
+ Mark-MC.Lee@mediatek.com, davem@davemloft.net, kuba@kernel.org,
+ matthias.bgg@gmail.com, nathan@kernel.org, ndesaulniers@google.com,
+ opensource@vdorst.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220115_130609_472883_B0B8D2CB 
-X-CRM114-Status: GOOD (  24.82  )
+X-CRM114-CacheID: sfid-20220115_144017_567255_F9C342EC 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,88 +75,37 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/15/22 6:21 PM, Uwe Kleine-K=F6nig wrote:
+Hello:
 
-[...]
->>>>>> The subsystems regulator, clk and gpio have the concept of a dummy
->>>>>> resource. For regulator, clk and gpio there is a semantic difference
->>>>>> between the regular _get() function and the _get_optional() variant.
->>>>>> (One might return the dummy resource, the other won't. Unfortunately
->>>>>> which one implements which isn't the same for these three.) The
->>>>>> difference between platform_get_irq() and platform_get_irq_optional(=
-) is
->>>>>> only that the former might emit an error message and the later won't.
->>>>
->>>>    This is only a current difference but I'm still going to return 0 I=
-SO
->>>> -ENXIO from latform_get_irq_optional(), no way I'd leave that -ENXIO t=
-here
->>>> alone... :-)
->>>
->>> This would address a bit of the critic in my commit log. But as 0 isn't
->>> a dummy value like the dummy values that exist for clk, gpiod and
->>> regulator I still think that the naming is a bad idea because it's not
->>> in the spirit of the other *_get_optional functions.
->>>
->>> Seeing you say that -ENXIO is a bad return value for
->>> platform_get_irq_optional() and 0 should be used instead, I wonder why
->>> not changing platform_get_irq() to return 0 instead of -ENXIO, too.
->>> This question is for now only about a sensible semantic. That actually
->>> changing platform_get_irq() is probably harder than changing
->>> platform_get_irq_optional() is a different story.
->>>
->>> If only platform_get_irq_optional() is changed and given that the
->>> callers have to do something like:
->>>
->>>         if (this_irq_exists()):
->>>                 ... (e.g. request_irq)
->>>         else:
->>>                 ... (e.g. setup polling)
->>>
->>> I really think it's a bad idea that this_irq_exists() has to be
->>> different for platform_get_irq() vs. platform_get_irq_optional().
->>
->> For platform_get_irq(), the IRQ being absent is an error condition,
->> hence it should return an error code.
->> For platform_get_irq_optional(), the IRQ being absent is not an error
->> condition, hence it should not return an error code, and 0 is OK.
-> =
+This patch was applied to netdev/net.git (master)
+by David S. Miller <davem@davemloft.net>:
 
-> Please show a few examples how this simplifies the code. If it's only
+On Sat, 15 Jan 2022 09:49:18 -0800 you wrote:
+> From: Tom Rix <trix@redhat.com>
+> 
+> Clang static analysis reports this problem
+> mtk_eth_soc.c:394:7: warning: Branch condition evaluates
+>   to a garbage value
+>                 if (err)
+>                     ^~~
+> 
+> [...]
 
-   As for platform_get_irq(), returning -ENXIO simplifies things a lot: you=
- don't
-have to check for 0 at every freaking call site and have s/th like (every
-time!):
+Here is the summary with links:
+  - [v2] net: ethernet: mtk_eth_soc: fix error checking in mtk_mac_config()
+    https://git.kernel.org/netdev/net/c/214b3369ab9b
 
-	irq =3D platform_get_irq();
-	if (irq <=3D 0)
-		return irq ?: -ENXIO; // any error code you choose
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-instead of just:
 
-	irq =3D platform_get_irq();
-	if (irq < 0)
-		return irq;
-
-This scales better in my book.
-
-> that a driver has to check for =3D=3D 0 instead of =3D=3D -ENXIO, than th=
-at's
-> not a good enough motivation to make platform_get_irq_optional()
-> different to platform_get_irq().
-
-   Again, it scales better... good motivation in my eyes.
-
-> Best regards
-> Uwe
-
-MBR, Sergey
 
 _______________________________________________
 Linux-mediatek mailing list
