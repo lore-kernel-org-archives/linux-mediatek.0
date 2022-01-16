@@ -4,71 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D26FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jan 2022 00:49:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AA3EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jan 2022 14:19:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yrL1yviNOQfibmvO1Pln/smqTThcHqlO96dpn6M8eTM=; b=Sfr9E1hoN396ZH
-	bGzc7JBms5dOxJU/ACUsYN6ACltsVv0XIVuHOVquPTlAejYSpp21MJEvmjdi/3T6vjlo8eZz9aR9E
-	2kCkZTDPO4IorYydpEWBpO/e0C/CawPvLdxtJbbVSiYyAdoDvc43bzlSqUIoAq8CTvnm7nSqvkuZv
-	e+x6b2qVL8P6rQ5iSKWhWRKtAi4DW1UOqYV/P1Qms57oEeV470dLi5nHEl0ZQbewuiPODFPEo5+gd
-	u0+Xlgd3sPhq3uOmpQ7tK+YBH4SR8goRhL35go3XF2rAptxLMknGi7t39tsm/GQNGXFesK246WofU
-	/OyNx9s+1Ty1lvFmqhlA==;
+	List-Owner; bh=K8DcYekQyUBpid0SxBaJAVUpS8oL8j5dPqpeQmUg0zE=; b=Ke4OT2a6VLvsxI
+	pfhwuHH0YGlvNkArvtRTjKisxKp4OYI4Xi78OgUFEp1a+Zdt4aPfAyXTPofz1ekBYW7IBKodbPSXQ
+	8jsAsp4w3ZNm0s6TQKiAVmB9FglI5Yb2W4elIkUphw131xH8oh/N+Q5ZpsC+cl8LtPRH7eyFzdxqw
+	c+uemAEDGGTZcLplYhPpCsRZbLGR+1a3izOXhVJvOkCKHEtCx0Tkms0CMDD9Z24cnN+9Vm2NlK7gW
+	AL3Z+IPX2EhEcgHNHhvddE3t6Tc4FtAYrQd3b+557RYkiqIJgY4cepQUphErXPoJQa/K0MoIN4EoY
+	REn1L7/LSykeEQRQz3Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n8tja-00BikP-4B; Sun, 16 Jan 2022 00:49:26 +0000
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+	id 1n96NI-00CX5D-0D; Sun, 16 Jan 2022 14:19:16 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n8tjW-00BijX-Fx
- for linux-mediatek@lists.infradead.org; Sun, 16 Jan 2022 00:49:24 +0000
-Received: by mail-ot1-x32b.google.com with SMTP id
- a10-20020a9d260a000000b005991bd6ae3eso1421412otb.11
- for <linux-mediatek@lists.infradead.org>; Sat, 15 Jan 2022 16:49:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6p/O50RxDfDXj8F2gSC4MowoUivvHCS0e3BL4NSTAKw=;
- b=Nqgh49Px5R7DO0fvkf4emRtIOPPQB1ttBHl54nYcwmBVbUpKe7zRYYoEOON3g2eQPv
- QJOJItR3O3Dc+BAkBVkFgpFYEBSupFrLgugavxkviSYjapY90x4yxiPniMP4TsU7ItsM
- P2Jfc6yQwusXu2K+yPH3ShITezD8pC5FidTndQN/5MHwQZl8Sxh56IHann3//4D3Phgp
- KifPPZDSt8Of2hhf/y49TMj2RTdZWeWz9x0noEmw9TSBoDfyVUX++qf/tlx+EQwGKV4/
- uhinoC1O4mN8heUYf240pRmcE3Jq7LY1bJ7l4hAxYIKBNJkfdY1WC691m8M1M7zG29Qr
- KrUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6p/O50RxDfDXj8F2gSC4MowoUivvHCS0e3BL4NSTAKw=;
- b=k6a6T58iaaP/ncg6CO3FKHApju8dVBsTLNLvFyt8xZ8WfmW41IX8HhuIimu+8AS0cA
- pimZVKR/SFcHOnt1W807V3G2c5sY6P7LNgD3dkazfZWLsHxPH4KqWZAeq8aveNJ2Jh4B
- vzuFVhReRlyJzSU3LGa5O8kwsbdbgzaU996a6dIGeAYU2pXsckI2AE1GiV+/nXTAZh7Z
- q3mLw/QQiotascacB/YZmXlD+p2swh1yhyOM98VhZuGAk92aM17MtzN3gZ2F03vRiqDE
- w70bZAGaV1Hdu4Y4xGWiUTfdFrBuEsLHyCOnagEBNCmJkc91Qe/1cQE68wW+aRC9UR3i
- xpzw==
-X-Gm-Message-State: AOAM532Z3jVueSS+VAq7kG2bDIXjF4ehWpinUPNiDCzCsR0IKu/j/Vew
- ucC0nWWWnRBFEE7JtZ2mIvb6Z9JxjcWSBo7sjFwq6w==
-X-Google-Smtp-Source: ABdhPJxTODp48xHCKhFaUN9ucAxJTdT/iwAFvpUSSRbtaQ4yeE5aXxbrG02X11dyWHsA3S9x2XjGL7EAntPOyAudiKo=
-X-Received: by 2002:a9d:465:: with SMTP id 92mr11681452otc.35.1642294161540;
- Sat, 15 Jan 2022 16:49:21 -0800 (PST)
+ id 1n96NE-00CX4b-1U; Sun, 16 Jan 2022 14:19:13 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 2F7EB60F14;
+ Sun, 16 Jan 2022 14:19:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D360C36AE7;
+ Sun, 16 Jan 2022 14:19:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+ s=korg; t=1642342750;
+ bh=KujYZ44NbqHewC3hStYnBx16eqgxm1SsBiD7vgCzy1A=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=sKsNPdg/t/aehm0kbBx0+iaMt7Vs15thP7mY+lgsvv2wpHp7hhFp/CL3s/+VFunx8
+ VMGsJpG9T+206AG5qxqWiAVL+YwMP+lMdgO6G29sYG5yQOnXi5Wp9YcaTPGre6QZaH
+ 1Q5W85dO5PtMcGij5VwJ57avVdKo6t7UZumaWiEk=
+Date: Sun, 16 Jan 2022 15:19:06 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
+Cc: Sergey Shtylyov <s.shtylyov@omp.ru>,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
+ linux-kernel@vger.kernel.org, Andrew Lunn <andrew@lunn.ch>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, Jiri Slaby <jirislaby@kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Amit Kucheria <amitk@kernel.org>, alsa-devel@alsa-project.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Sebastian Reichel <sre@kernel.org>, linux-phy@lists.infradead.org,
+ Thierry Reding <thierry.reding@gmail.com>,
+ linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
+ linux-gpio@vger.kernel.org, Miquel Raynal <miquel.raynal@bootlin.com>,
+ Guenter Roeck <groeck@chromium.org>, Lee Jones <lee.jones@linaro.org>,
+ openipmi-developer@lists.sourceforge.net,
+ Saravanan Sekar <sravanhome@gmail.com>,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ kvm@vger.kernel.org, Kamal Dasu <kdasu.kdev@gmail.com>,
+ Richard Weinberger <richard@nod.at>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ bcm-kernel-feedback-list@broadcom.com, linux-serial@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Jaroslav Kysela <perex@perex.cz>,
+ platform-driver-x86@vger.kernel.org, linux-pwm@vger.kernel.org,
+ John Garry <john.garry@huawei.com>,
+ Robert Richter <rric@kernel.org>, Zha Qipeng <qipeng.zha@intel.com>,
+ Corey Minyard <minyard@acm.org>, linux-pm@vger.kernel.org,
+ Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Benson Leung <bleung@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-edac@vger.kernel.org,
+ Tony Luck <tony.luck@intel.com>, Mun Yew Tham <mun.yew.tham@intel.com>,
+ Eric Auger <eric.auger@redhat.com>, netdev@vger.kernel.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, linux-spi@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
+ James Morse <james.morse@arm.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+ linux-mediatek@lists.infradead.org,
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+ (summary)
+Message-ID: <YeQpWu2sUVOSaT9I@kroah.com>
+References: <20220110195449.12448-1-s.shtylyov@omp.ru>
+ <20220110195449.12448-2-s.shtylyov@omp.ru>
+ <20220115183643.6zxalxqxrhkfgdfq@pengutronix.de>
 MIME-Version: 1.0
-References: <20220111112244.1483783-1-wenst@chromium.org>
-In-Reply-To: <20220111112244.1483783-1-wenst@chromium.org>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Sun, 16 Jan 2022 01:49:10 +0100
-Message-ID: <CACRpkdZCtEwZiVwoW+QNL4nTf-10fBDRfGkwVJavf1n_w-8q_Q@mail.gmail.com>
-Subject: Re: [PATCH 0/7] pinctrl: mediatek: Fixes and minor improvements
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Zhiyong Tao <zhiyong.tao@mediatek.com>, Guodong Liu <guodong.liu@mediatek.com>
+Content-Disposition: inline
+In-Reply-To: <20220115183643.6zxalxqxrhkfgdfq@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220115_164922_555268_CFA2817A 
-X-CRM114-Status: UNSURE (   7.50  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220116_061912_237198_54F17C78 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,21 +115,27 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 11, 2022 at 12:22 PM Chen-Yu Tsai <wenst@chromium.org> wrote:
+On Sat, Jan 15, 2022 at 07:36:43PM +0100, Uwe Kleine-K=F6nig wrote:
+> A possible compromise: We can have both. We rename
+> platform_get_irq_optional() to platform_get_irq_silent() (or
+> platform_get_irq_silently() if this is preferred) and once all users are
+> are changed (which can be done mechanically), we reintroduce a
+> platform_get_irq_optional() with Sergey's suggested semantic (i.e.
+> return 0 on not-found, no error message printking).
 
-> Here are some fixes and minor improvements to generic pinconf and the
-> Mediatek Paris pinctrl driver.
+Please do not do that as anyone trying to forward-port an old driver
+will miss the abi change of functionality and get confused.  Make
+build-breaking changes, if the way a function currently works is
+changed in order to give people a chance.
 
-Looks good to me, can you rebase this on v5.17-rc1 once it is out
-and I will queue it!
+thanks,
 
-Yours,
-Linus Walleij
+greg k-h
 
 _______________________________________________
 Linux-mediatek mailing list
