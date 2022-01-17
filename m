@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77A6AC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 06:03:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF578C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 06:03:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Ic7HHvEffdv98QukJwGNJRj0I4olpbdBiKtFq/s2FAg=; b=P9SEtBaPf9rDe1
-	edVWhphKROPTEaQHvE7428PNypAOg//yeqpG5B9h/surcZCPU8Yk5d3WDnkhlLmjLK/y+QEoBNfYv
-	t8P0ruVw3Sm+aYK2vidCCROtqkD0kZUFVrX1P2/xB2LwXTb1EENZhws9JupcBv33XZ2yEpn1Nbrrg
-	6RQgwc56q3DqhFHi6JC9EjTqbGDk3CYSdMZXxyxiNivERD3kohNnttIiHi99+OjEDKwrIpLq4jCAm
-	UxYJWn0pO7NC3M4r70UM6qIsCwPyuU4TDauPW1/Z3AIhwcbzGZ2Ovv5zopTJWBV/7qBdYKAV1S/lv
-	ZGd6yjRcGb8f9Gsv2QeQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=6e5yq6Ug5CeeNtQdXkC/jC9qOivSwSxTdKcOwYuJOaI=; b=hk9wMfBo+G79eC
+	5398SqaZVSdhhkdDqO1g9gEG3hGsaMdXaD7Pfg6T7qmfsSuD9Pomxd2QhtUphwTo7bplKrS4SS6xl
+	6dhY0JVWo2lQ7oN9Kf7d+85YQXQjJtHa53kS7vBN7fafCzK0ngWYC/hgv0HJdyy3eQKd26RJVehO3
+	FEgns61rcd9EhdVRqcl/RRoZ0dVtp/Qhhtdn7pmDn+trKXgRNkafIOvpoG8YpAe8qePn3XbCbWdEQ
+	VRugkAIqO9ZY1PephnHG1k84HHlQO8Hfs0h+FID9cw8qOlyN6r27Crf17Fq1ocJFR3f9VApCzX/E5
+	g1dcCZmT8JzRgMla4Xvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9L73-00DYcE-QZ; Mon, 17 Jan 2022 06:03:29 +0000
+	id 1n9L7H-00DYfm-G0; Mon, 17 Jan 2022 06:03:43 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9L6l-00DYUz-SY; Mon, 17 Jan 2022 06:03:13 +0000
-X-UUID: 9bcd66e2c43d4f2dae232101a5c7c2fb-20220116
-X-UUID: 9bcd66e2c43d4f2dae232101a5c7c2fb-20220116
+ id 1n9L6m-00DYVR-Lg; Mon, 17 Jan 2022 06:03:15 +0000
+X-UUID: 401486385c774670acfb636334c2d910-20220116
+X-UUID: 401486385c774670acfb636334c2d910-20220116
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <roy-cw.yeh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 2143126771; Sun, 16 Jan 2022 23:03:10 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ with ESMTP id 1784752211; Sun, 16 Jan 2022 23:03:10 -0700
+Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 21:53:08 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 17 Jan 2022 13:53:07 +0800
+ 15.0.1497.2; Sun, 16 Jan 2022 21:53:22 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
+ (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Mon, 17 Jan 2022 13:53:08 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 17 Jan 2022 13:53:07 +0800
+ Frontend Transport; Mon, 17 Jan 2022 13:53:08 +0800
 From: roy-cw.yeh <roy-cw.yeh@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -54,15 +53,18 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Fabien Parent
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v1 00/14] Add mdp support for mt8195
-Date: Mon, 17 Jan 2022 13:52:40 +0800
-Message-ID: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
+Subject: [PATCH v1 06/14] media: platform: mtk-mdp3: Modify mtk-img-ipi.h for
+ MT8195 SCP
+Date: Mon, 17 Jan 2022 13:52:46 +0800
+Message-ID: <20220117055254.9777-7-roy-cw.yeh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
+References: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_220311_936665_892A0CD1 
-X-CRM114-Status: GOOD (  13.37  )
+X-CRM114-CacheID: sfid-20220116_220312_725386_718217F5 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,101 +83,384 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-Add a chip independence architecture to make
-mt8195 mdp driver compatible with previous soc.
+1. Modify struct member to 4 byte-alignment for MT8195 SCP limitation
+2. Add new struct for hw engine adding in MT8195
 
-Add dual-pipe feature and memory reconfiguration
-to increase mdp performance.
+Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+---
+ drivers/media/platform/mtk-mdp3/mtk-img-ipi.h | 219 +++++++++++++++---
+ 1 file changed, 181 insertions(+), 38 deletions(-)
 
-Add below patch to support MDP driver on MT8195
-  [PATCH v1 1/14] soc: mediatek: mmsys: expand MDP enum for chip independence
-    architecture
-  [PATCH v1 2/14] soc: mediatek: mutex: expand parameter for mdp mutex function
-  [PATCH v1 3/14] soc: mediatek: mmsys: support mt8195 vppsys0/1
-  [PATCH v1 4/14] soc: mediatek: mutex: support mt8195 vppsys0/1
-  [PATCH v1 5/14] media: platform: mtk-mdp3: add chip independence architecture
-  [PATCH v1 6/14] media: platform: mtk-mdp3: Modify mtk-img-ipi.h for MT8195 SCP
-  [PATCH v1 7/14] media: platform: mtk-mdp3: Add platform configuration for MT8195
-  [PATCH v1 8/14] media: platform: mtk-mdp3: Add engine setting for MT8195
-  [PATCH v1 9/14] media: platform: mtk-mdp3: Add support MT8195
-  [PATCH v1 10/14] media: platform: mtk-mdp3: Add dual pipe feature support
-  [PATCH v1 11/14] media: platform: mtk-mdp3: Revise frame change criteria
-  [PATCH v1 12/14] media: platform: mtk-mdp3: Reconfigure shared memory
-  [PATCH v1 13/14] arm64: dts: mt8195: add mdp3 node
-  [PATCH v1 14/14] dt-bindings: media: mediatek: mdp3: add yaml for new modules added in
-    mt8195
-
- .../bindings/arm/mediatek/mediatek,mmsys.yaml |    2 +
- .../bindings/media/mediatek,mdp3-aal.yaml     |   56 +
- .../bindings/media/mediatek,mdp3-color.yaml   |   56 +
- .../bindings/media/mediatek,mdp3-fg.yaml      |   55 +
- .../bindings/media/mediatek,mdp3-hdr.yaml     |   55 +
- .../bindings/media/mediatek,mdp3-merge.yaml   |   54 +
- .../bindings/media/mediatek,mdp3-ovl.yaml     |   53 +
- .../bindings/media/mediatek,mdp3-pad.yaml     |   56 +
- .../bindings/media/mediatek,mdp3-rdma.yaml    |   28 +
- .../bindings/media/mediatek,mdp3-rsz.yaml     |    2 +
- .../bindings/media/mediatek,mdp3-split.yaml   |   58 +
- .../bindings/media/mediatek,mdp3-stitch.yaml  |   53 +
- .../bindings/media/mediatek,mdp3-tcc.yaml     |   54 +
- .../bindings/media/mediatek,mdp3-tdshp.yaml   |   61 +
- .../bindings/media/mediatek,mdp3-wrot.yaml    |    3 +
- .../bindings/soc/mediatek/mediatek,mutex.yaml |    6 +
- arch/arm64/boot/dts/mediatek/mt8195.dtsi      |  633 +++++++
- drivers/media/platform/mtk-mdp3/mdp_reg_aal.h |   24 +
- .../media/platform/mtk-mdp3/mdp_reg_color.h   |   29 +
- drivers/media/platform/mtk-mdp3/mdp_reg_fg.h  |   23 +
- drivers/media/platform/mtk-mdp3/mdp_reg_hdr.h |   31 +
- .../media/platform/mtk-mdp3/mdp_reg_merge.h   |   23 +
- drivers/media/platform/mtk-mdp3/mdp_reg_ovl.h |   24 +
- drivers/media/platform/mtk-mdp3/mdp_reg_pad.h |   20 +
- .../media/platform/mtk-mdp3/mdp_reg_rdma.h    |   31 +
- drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h |    2 +
- .../media/platform/mtk-mdp3/mdp_reg_tdshp.h   |  116 ++
- .../media/platform/mtk-mdp3/mdp_reg_wrot.h    |   18 +
- drivers/media/platform/mtk-mdp3/mt8183_mdp.h  |  411 +++++
- drivers/media/platform/mtk-mdp3/mt8195_mdp.h  |  683 ++++++++
- drivers/media/platform/mtk-mdp3/mtk-img-ipi.h |  219 ++-
- .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   |  782 +++++++--
- .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.h   |    4 +
- .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 1453 +++++++++++++++--
- .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |   90 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  118 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |   42 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |   27 +
- .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  356 ++--
- .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |  292 ++--
- .../media/platform/mtk-mdp3/mtk-mdp3-vpu.c    |  106 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-vpu.h    |    9 +
- drivers/soc/mediatek/mt8195-mmsys.h           |   23 +
- drivers/soc/mediatek/mtk-mmsys.c              |   22 +
- drivers/soc/mediatek/mtk-mmsys.h              |    3 +
- drivers/soc/mediatek/mtk-mutex.c              |   79 +-
- include/linux/soc/mediatek/mtk-mmsys.h        |   92 +-
- include/linux/soc/mediatek/mtk-mutex.h        |    2 +-
- 48 files changed, 5648 insertions(+), 791 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
- create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_aal.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_color.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_fg.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_hdr.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_merge.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_ovl.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_pad.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_tdshp.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mt8183_mdp.h
- create mode 100644 drivers/media/platform/mtk-mdp3/mt8195_mdp.h
-
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-img-ipi.h b/drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
+index f8560dad87da..8dd0bcdee431 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
++++ b/drivers/media/platform/mtk-mdp3/mtk-img-ipi.h
+@@ -42,14 +42,14 @@ struct img_sw_addr {
+ 
+ struct img_plane_format {
+ 	u32 size;
+-	u16 stride;
++	u32 stride;
+ } __packed;
+ 
+ struct img_pix_format {
+-	u16 width;
+-	u16 height;
++	u32 width;
++	u32 height;
+ 	u32 colorformat; /* enum mdp_color */
+-	u16 ycbcr_prof; /* enum mdp_ycbcr_profile */
++	u32 ycbcr_prof; /* enum mdp_ycbcr_profile */
+ 	struct img_plane_format plane_fmt[IMG_MAX_PLANES];
+ } __packed;
+ 
+@@ -63,10 +63,10 @@ struct img_image_buffer {
+ #define IMG_SUBPIXEL_SHIFT	20
+ 
+ struct img_crop {
+-	s16 left;
+-	s16 top;
+-	u16 width;
+-	u16 height;
++	s32 left;
++	s32 top;
++	u32 width;
++	u32 height;
+ 	u32 left_subpix;
+ 	u32 top_subpix;
+ 	u32 width_subpix;
+@@ -78,27 +78,29 @@ struct img_crop {
+ #define IMG_CTRL_FLAG_SHARPNESS	BIT(4)
+ #define IMG_CTRL_FLAG_HDR	BIT(5)
+ #define IMG_CTRL_FLAG_DRE	BIT(6)
++#define IMG_CTRL_FLAG_RSZ	BIT(7)
+ 
+ struct img_input {
+ 	struct img_image_buffer buffer;
+-	u16 flags; /* HDR, DRE, dither */
++	u32 flags; /* HDR, DRE, dither */
+ } __packed;
+ 
+ struct img_output {
+ 	struct img_image_buffer buffer;
+ 	struct img_crop crop;
+-	s16 rotation;
+-	u16 flags; /* H-flip, sharpness, dither */
++	s32 rotation;
++	u32 flags; /* H-flip, sharpness, dither */
++	u64 pqid;
+ } __packed;
+ 
+ struct img_ipi_frameparam {
+ 	u32 index;
+ 	u32 frame_no;
+ 	u64 timestamp;
+-	u8 type; /* enum mdp_stream_type */
+-	u8 state;
+-	u8 num_inputs;
+-	u8 num_outputs;
++	u32 type; /* enum mdp_stream_type */
++	u32 state;
++	u32 num_inputs;
++	u32 num_outputs;
+ 	u64 drv_data;
+ 	struct img_input inputs[IMG_MAX_HW_INPUTS];
+ 	struct img_output outputs[IMG_MAX_HW_OUTPUTS];
+@@ -106,6 +108,7 @@ struct img_ipi_frameparam {
+ 	struct img_addr subfrm_data;
+ 	struct img_sw_addr config_data;
+ 	struct img_sw_addr self_data;
++	u32 frame_change;
+ } __packed;
+ 
+ struct img_sw_buffer {
+@@ -114,51 +117,51 @@ struct img_sw_buffer {
+ } __packed;
+ 
+ struct img_ipi_param {
+-	u8 usage;
++	u32 usage;
+ 	struct img_sw_buffer frm_param;
+ } __packed;
+ 
+ struct img_frameparam {
+ 	struct list_head list_entry;
+ 	struct img_ipi_frameparam frameparam;
+-};
++} __packed;
+ 
+ /* ISP-MDP generic output information */
+ 
+ struct img_comp_frame {
+-	u32 output_disable:1;
+-	u32 bypass:1;
+-	u16 in_width;
+-	u16 in_height;
+-	u16 out_width;
+-	u16 out_height;
++	u32 output_disable;
++	u32 bypass;
++	u32 in_width;
++	u32 in_height;
++	u32 out_width;
++	u32 out_height;
+ 	struct img_crop crop;
+-	u16 in_total_width;
+-	u16 out_total_width;
++	u32 in_total_width;
++	u32 out_total_width;
+ } __packed;
+ 
+ struct img_region {
+-	s16 left;
+-	s16 right;
+-	s16 top;
+-	s16 bottom;
++	s32 left;
++	s32 right;
++	s32 top;
++	s32 bottom;
+ } __packed;
+ 
+ struct img_offset {
+-	s16 left;
+-	s16 top;
++	s32 left;
++	s32 top;
+ 	u32 left_subpix;
+ 	u32 top_subpix;
+ } __packed;
+ 
+ struct img_comp_subfrm {
+-	u32 tile_disable:1;
++	u32 tile_disable;
+ 	struct img_region in;
+ 	struct img_region out;
+ 	struct img_offset luma;
+ 	struct img_offset chroma;
+-	s16 out_vertical; /* Output vertical index */
+-	s16 out_horizontal; /* Output horizontal index */
++	s32 out_vertical; /* Output vertical index */
++	s32 out_horizontal; /* Output horizontal index */
+ } __packed;
+ 
+ #define IMG_MAX_SUBFRAMES	14
+@@ -169,10 +172,13 @@ struct mdp_rdma_subfrm {
+ 	u32 src;
+ 	u32 clip;
+ 	u32 clip_ofst;
++	u32 in_tile_xleft;
++	u32 in_tile_ytop;
+ } __packed;
+ 
+ struct mdp_rdma_data {
+ 	u32 src_ctrl;
++	u32 comp_ctrl;
+ 	u32 control;
+ 	u32 iova[IMG_MAX_PLANES];
+ 	u32 iova_end[IMG_MAX_PLANES];
+@@ -182,13 +188,72 @@ struct mdp_rdma_data {
+ 	u32 ufo_dec_y;
+ 	u32 ufo_dec_c;
+ 	u32 transform;
++	u32 dmabuf_con0;
++	u32 ultra_th_high_con0;
++	u32 ultra_th_low_con0;
++	u32 dmabuf_con1;
++	u32 ultra_th_high_con1;
++	u32 ultra_th_low_con1;
++	u32 dmabuf_con2;
++	u32 ultra_th_high_con2;
++	u32 ultra_th_low_con2;
++	u32 dmabuf_con3;
+ 	struct mdp_rdma_subfrm subfrms[IMG_MAX_SUBFRAMES];
+ } __packed;
+ 
++struct mdp_fg_subfrm {
++	u32 info_0;
++	u32 info_1;
++} __packed;
++
++struct mdp_fg_data {
++	u32 ctrl_0;
++	u32 ck_en;
++	struct mdp_fg_subfrm subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
++struct mdp_hdr_subfrm {
++	u32 win_size;
++	u32 src;
++	u32 clip_ofst0;
++	u32 clip_ofst1;
++	u32 hist_ctrl_0;
++	u32 hist_ctrl_1;
++	u32 hdr_top;
++	u32 hist_addr;
++} __packed;
++
++struct mdp_hdr_data {
++	u32 top;
++	u32 relay;
++	struct mdp_hdr_subfrm   subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
++struct mdp_aal_subfrm {
++	u32 src;
++	u32 clip;
++	u32 clip_ofst;
++} __packed;
++
++struct mdp_aal_data {
++	u32 cfg_main;
++	u32 cfg;
++	struct mdp_aal_subfrm   subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
+ struct mdp_rsz_subfrm {
+ 	u32 control2;
+ 	u32 src;
+ 	u32 clip;
++	u32 hdmirx_en;
++	u32 luma_h_int_ofst;
++	u32 luma_h_sub_ofst;
++	u32 luma_v_int_ofst;
++	u32 luma_v_sub_ofst;
++	u32 chroma_h_int_ofst;
++	u32 chroma_h_sub_ofst;
++	u32 rsz_switch;
++	u32 merge_cfg;
+ } __packed;
+ 
+ struct mdp_rsz_data {
+@@ -196,9 +261,70 @@ struct mdp_rsz_data {
+ 	u32 coeff_step_y;
+ 	u32 control1;
+ 	u32 control2;
++	u32 etc_control;
++	u32 prz_enable;
++	u32 ibse_softclip;
++	u32 tap_adapt;
++	u32 ibse_gaincontrol1;
++	u32 ibse_gaincontrol2;
++	u32 ibse_ylevel_1;
++	u32 ibse_ylevel_2;
++	u32 ibse_ylevel_3;
++	u32 ibse_ylevel_4;
++	u32 ibse_ylevel_5;
+ 	struct mdp_rsz_subfrm subfrms[IMG_MAX_SUBFRAMES];
+ } __packed;
+ 
++struct mdp_tdshp_subfrm {
++	u32 src;
++	u32 clip;
++	u32 clip_ofst;
++	u32 hist_cfg_0;
++	u32 hist_cfg_1;
++} __packed;
++
++struct mdp_tdshp_data {
++	u32 cfg;
++	struct mdp_tdshp_subfrm subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
++struct mdp_color_subfrm {
++	u32 in_hsize;
++	u32 in_vsize;
++} __packed;
++
++struct mdp_color_data {
++	u32 start;
++	struct mdp_color_subfrm subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
++struct mdp_ovl_subfrm {
++	u32 L0_src_size;
++	u32 roi_size;
++} __packed;
++
++struct mdp_ovl_data {
++	u32 L0_con;
++	u32 src_con;
++	struct mdp_ovl_subfrm subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
++struct mdp_pad_subfrm {
++	u32 pic_size;
++} __packed;
++
++struct mdp_pad_data {
++	struct mdp_pad_subfrm subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
++struct mdp_tcc_subfrm {
++	u32 pic_size;
++} __packed;
++
++struct mdp_tcc_data {
++	struct mdp_tcc_subfrm subfrms[IMG_MAX_SUBFRAMES];
++} __packed;
++
+ struct mdp_wrot_subfrm {
+ 	u32 offset[IMG_MAX_PLANES];
+ 	u32 src;
+@@ -214,6 +340,14 @@ struct mdp_wrot_data {
+ 	u32 mat_ctrl;
+ 	u32 fifo_test;
+ 	u32 filter;
++	u32 pre_ultra;
++	u32 framesize;
++	u32 afbc_yuvtrans;
++	u32 scan_10bit;
++	u32 pending_zero;
++	u32 bit_number;
++	u32 pvric;
++	u32 vpp02vpp1;
+ 	struct mdp_wrot_subfrm subfrms[IMG_MAX_SUBFRAMES];
+ } __packed;
+ 
+@@ -241,8 +375,8 @@ struct isp_data {
+ } __packed;
+ 
+ struct img_compparam {
+-	u16 type; /* enum mdp_comp_type */
+-	u16 id; /* enum mtk_mdp_comp_id */
++	u32 type; /* enum mdp_comp_id */
++	u32 id; /* engine alias_id */
+ 	u32 input;
+ 	u32 outputs[IMG_MAX_HW_OUTPUTS];
+ 	u32 num_outputs;
+@@ -251,7 +385,15 @@ struct img_compparam {
+ 	u32 num_subfrms;
+ 	union {
+ 		struct mdp_rdma_data rdma;
++		struct mdp_fg_data fg;
++		struct mdp_hdr_data hdr;
++		struct mdp_aal_data aal;
+ 		struct mdp_rsz_data rsz;
++		struct mdp_tdshp_data tdshp;
++		struct mdp_color_data color;
++		struct mdp_ovl_data ovl;
++		struct mdp_pad_data pad;
++		struct mdp_tcc_data tcc;
+ 		struct mdp_wrot_data wrot;
+ 		struct mdp_wdma_data wdma;
+ 		struct isp_data isp;
+@@ -263,12 +405,13 @@ struct img_compparam {
+ struct img_mux {
+ 	u32 reg;
+ 	u32 value;
+-};
++	u32 vpp_id;
++} __packed;
+ 
+ struct img_mmsys_ctrl {
+ 	struct img_mux sets[IMG_MAX_COMPONENTS * 2];
+ 	u32 num_sets;
+-};
++} __packed;
+ 
+ struct img_config {
+ 	struct img_compparam components[IMG_MAX_COMPONENTS];
 -- 
 2.18.0
 
