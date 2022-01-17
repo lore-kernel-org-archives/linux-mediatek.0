@@ -4,73 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3058C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:36:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1064C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 08:31:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LBFQfQxZy6Fr+rBuvtm+YkcEb82KF6GtONW3qrnS4+E=; b=naskfMtTQbA0fE
-	9ZvgpwK48XW37BI6Zd0mk2KnhCRl+4/oMHJK7HPmN3yR/hvrEvOAopXMyHXzUGTIakhvdDnDQFBaO
-	GMTIUy/e9Ux8iLJw3EneRhjjhY4NlXrlvLjsaamPwvELGTbjN9SvxsHGf4lMZRF8DU8yWGgy8UuAR
-	V6bQ7QhpZNSoksOGFie5LIFWYQc0Wekf1ulVs8dCHU2lwuMmVarpYyg4HWyEmahTvvIVPNHmpKzaY
-	BsmCJfh9iDe/SG2VotvkvaniF8jUlZhn1fWHVCl3yJ0mMJF4K/pfUl/PFQYfKK3JbacueiPBZ45rG
-	o5BqoM6WihYLn6px8uNQ==;
+	List-Owner; bh=WYXrttazpRA9YmqHGUCHE8ByhdVSfnA0QVW+SuntkvM=; b=GvMeA5r3rv6yMr
+	x2oBB3GGzGc4rZZriXlHZ4dI/K51C2kjYEOaZytI3C1o7KbTzi28+ZmH3f3biHmHwezIQcyYYOfIW
+	8G0f3T436N0kipk0HZORzjgF6bbwRod+/cMAOg5talDcAbUg9zIm/D7+aAwVwuxUzmrGU06QTjBEz
+	N9O2jReUModJdkf5kWykZP3sgqFN4NFrEkePjB3o6Hbay7whDmhEfVcgNGEN1Xgl/R9pD5UGK6dn9
+	0W+VDJYMb21G7AfnlF3JN6mA5bxkm0R1II905G7dLY/ITUhdzOn4k2s9FpyvpL+K5WEBEPxVGS4uA
+	Io5Go2sRiiqRiymFULYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9MYb-00DvvH-LS; Mon, 17 Jan 2022 07:36:01 +0000
+	id 1n9NQX-00E4Qe-Nz; Mon, 17 Jan 2022 08:31:45 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9MYZ-00DvuH-9y; Mon, 17 Jan 2022 07:36:00 +0000
-X-UUID: 491c1599af0745a28588a37b8be78e91-20220117
+ id 1n9NQV-00E4Ox-Qe; Mon, 17 Jan 2022 08:31:45 +0000
+X-UUID: 8fcde6dc4f814fd28edeeef2b739275b-20220117
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
  s=dk; 
  h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=H6ReXx4yE6tld3maYxfIDGQtHTSOvcYmQuJ0B+XGa1k=; 
- b=JgzmT8vTAakjCHOW8Abbm80GiNHjHNgv2TAkS72qtNFaSq6NsLlxpjTv261hKxn9uVVUKkhHe9ADVlfUP7Xqtf1uHq1I0HuQsMztoTZEOBIBGMis7ZfipEinAvhiqtsIs5HagZ783z8VRP1BVtDkSoJkYVf7UDORFHcyDWP2Wis=;
-X-UUID: 491c1599af0745a28588a37b8be78e91-20220117
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw01.mediatek.com
+ bh=4h8rypqWIwwluDWBclX35RTaohbQNkowObVextLcY2g=; 
+ b=lC+wdZsMFTyx0LFVx/S79ZqTWLmyKsvNezFm+kQD372I4ZOTTGw9JuAIKyKeh+P6XilT7RKDUYQZByrplSOQRiQ59wIIIhxs8Qbgu3akExymBwAXX5tI5SlLFekY/saI9bhrZBARObgIXwmmgZROSDVav33mOeA7JJhQL1kiWPM=;
+X-UUID: 8fcde6dc4f814fd28edeeef2b739275b-20220117
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
  (envelope-from <axe.yang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1143419954; Mon, 17 Jan 2022 00:35:57 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 23:35:56 -0800
+ with ESMTP id 1917176044; Mon, 17 Jan 2022 01:31:39 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Jan 2022 00:30:27 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 17 Jan 2022 15:35:54 +0800
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Jan 2022 16:30:26 +0800
 Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 15:35:53 +0800
-Message-ID: <2205eedc9ecd10f83994138974b261baa0aee55a.camel@mediatek.com>
-Subject: Re: [PATCH v2 3/3] mmc: mediatek: add support for SDIO eint irq
+ Transport; Mon, 17 Jan 2022 16:30:25 +0800
+Message-ID: <efc06609571d7b6a1d5327fa37661af8ddce8675.camel@mediatek.com>
+Subject: Re: [PATCH 2/3] mmc: core: Add support for SDIO async interrupt
 From: Axe Yang <axe.yang@mediatek.com>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-CC: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>, "Yoshihiro
- Shimoda" <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Wolfram Sang <wsa+renesas@sang-engineering.com>, "Lucas
- Stach" <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>, Andrew Jeffery
+To: Macpaul Lin <macpaul.lin@mediatek.com>, Ulf Hansson
+ <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, Chaotian Jing
+ =?UTF-8?Q?=28=E4=BA=95=E6=9C=9D=E5=A4=A9=29?= <Chaotian.Jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Adrian Hunter
+ <adrian.hunter@intel.com>
+CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
+ <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
+ <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>, Andrew Jeffery
  <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim
  <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>, Tian Tao
- <tiantao6@hisilicon.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Date: Mon, 17 Jan 2022 15:35:53 +0800
-In-Reply-To: <Yd1uJ+dX2CTEJfYY@smile.fi.intel.com>
-References: <20220111014046.5864-1-axe.yang@mediatek.com>
- <20220111014046.5864-4-axe.yang@mediatek.com>
- <Yd1uJ+dX2CTEJfYY@smile.fi.intel.com>
+ <tiantao6@hisilicon.com>, "angelogioacchino.delregno@collabora.com"
+ <angelogioacchino.delregno@collabora.com>, "linux-mmc@vger.kernel.org"
+ <linux-mmc@vger.kernel.org>, "devicetree@vger.kernel.org"
+ <devicetree@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+ <linux-mediatek@lists.infradead.org>
+Date: Mon, 17 Jan 2022 16:30:25 +0800
+In-Reply-To: <60f3d381-1af4-d002-e179-9550672dae5b@mediatek.com>
+References: <20220117071220.17330-1-axe.yang@mediatek.com>
+ <20220117071220.17330-3-axe.yang@mediatek.com>
+ <60f3d381-1af4-d002-e179-9550672dae5b@mediatek.com>
 X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_233559_390067_44829BCA 
-X-CRM114-Status: GOOD (  28.69  )
+X-CRM114-CacheID: sfid-20220117_003143_914148_AE84F192 
+X-CRM114-Status: GOOD (  15.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,168 +92,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Andy, patchset v3 is uploaded. I fixed most of the defect you pointed
-out.
-And in msdc_sdio_eint_irq(), you asked why do we need flags, the flags
-is for spin lock irq save/restore, so I keep it.
-
-On Tue, 2022-01-11 at 13:46 +0200, Andy Shevchenko wrote:
-> On Tue, Jan 11, 2022 at 09:40:46AM +0800, Axe Yang wrote:
-> > Add support for eint irq when MSDC is used as an SDIO host. This
-> 
-> IRQ
-> 
-> > feature requires SDIO device support async irq function. With this
-> 
-> IRQ
-> 
-> > feature,SDIO host can be awakened by SDIO card in suspend state,
-> 
-> feature, SDIO
-> 
-> > without additional pin.
+On Mon, 2022-01-17 at 16:14 +0800, Macpaul Lin wrote:
+> On 1/17/22 3:12 PM, Axe Yang wrote:
+> > If cap-sdio-async-irq flag is set in host dts node, parse EAI
+> > information from SDIO CCCR interrupt externsion segment. If async
+> > interrupt is supported by SDIO card then send command to card to
+> > enable it and set enable_async_irq flag in sdio_cccr structure to
+> > 1.
+> > The parse flow is implemented in sdio_read_cccr().
 > > 
-> > MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
-> > turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
-> > resume, switch GPIO function back to DAT1 mode then turn on clock.
-> > 
-> > Some device tree property should be added or modified in msdc node
+> > Acked-by: AngeloGioacchino Del Regno <
+> > angelogioacchino.delregno@collabora.com>
+> > Signed-off-by: Axe Yang <axe.yang@mediatek.com>
 > 
-> MSDC
+> [deleted...]
 > 
-> > to support SDIO eint irq. Pinctrls named state_dat1 and state_eint
+> It seems the prefix "[PATCH v3]" didn't applied to subject of each
+> patch 
+> in v3 series. Please remember to keep the version aligned in the
+> same 
+> patch set. Use "git format-patch --subject-prefix=[PATCH v3]" to
+> help 
+> you to keep the version number aligned is suggested.
 > 
-> IRQ
-> 
-> > are mandatory. And cap-sdio-async-irq flag is necessary since this
-> > feature depends on asynchronous interrupt:
-> >         &mmcX {
-> >                 ...
-> >                 pinctrl-names = "default", "state_uhs",
-> > "state_eint",
-> >                                 "state_dat1";
-> >                 ...
-> >                 pinctrl-2 = <&mmc2_pins_eint>;
-> >                 pinctrl-3 = <&mmc2_pins_dat1>;
-> >                 ...
-> >                 cap-sdio-async-irq;
-> >                 ...
-> >         };
-> 
-> ...
-> 
-> > - * Copyright (c) 2014-2015 MediaTek Inc.
-> > + * Copyright (c) 2014-2022 MediaTek Inc.
-> 
-> Shouldn't it be rather like
-> 
->  * Copyright (c) 2014-2015,2022 MediaTek Inc.
-> 
-> ?
-> 
-> ...
-> 
-> > +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
-> > +{
-> > +	unsigned long flags;
-> > +	struct msdc_host *host = (struct msdc_host *)dev_id;
-> 
-> No casting is needed.
-> 
-> > +	struct mmc_host *mmc = mmc_from_priv(host);
-> 
-> Perhaps reversed xmas tree order
-> 
-> 	struct msdc_host *host = dev_id;
-> 	struct mmc_host *mmc = mmc_from_priv(host);
-> 	unsigned long flags;
-> 
-> ?
-> 
-> But hey, why do you need flags?
+> Thanks!
+> Macpaul Lin
 
-falgs is for spin lock irq save/restore. 
-
-> 
-> > +	spin_lock_irqsave(&host->lock, flags);
-> > +	if (likely(host->sdio_irq_cnt > 0)) {
-> > +		disable_irq_nosync(host->eint_irq);
-> > +		disable_irq_wake(host->eint_irq);
-> > +		host->sdio_irq_cnt--;
-> > +	}
-> > +	spin_unlock_irqrestore(&host->lock, flags);
-> > +
-> > +	sdio_signal_irq(mmc);
-> > +
-> > +	return IRQ_HANDLED;
-> > +}
-> 
-> ...
-> 
-> > +static int msdc_request_dat1_eint_irq(struct msdc_host *host)
-> > +{
-> > +	struct gpio_desc *desc;
-> > +	int irq, ret;
-> > +
-> > +	desc = devm_gpiod_get(host->dev, "eint", GPIOD_IN);
-> > +	if (IS_ERR(desc))
-> > +		return PTR_ERR(desc);
-> > +
-> > +	ret = gpiod_to_irq(desc);
-> > +	if (ret < 0)
-> > +		return ret;
-> > +
-> > +	irq = ret;
-> > +	ret = devm_request_threaded_irq(host->dev, irq, NULL,
-> > msdc_sdio_eint_irq,
-> > +					IRQF_TRIGGER_LOW | IRQF_ONESHOT
-> > | IRQF_NO_AUTOEN,
-> > +					"sdio-eint", host);
-> > +
-> 
-> Redundant blank line.
-> 
-> > +	if (!ret)
-> > +		host->eint_irq = irq;
-> > +
-> > +	return ret;
-> 
-> I guess I have already commented on this, i.e. use standard pattern
-> 
-> 	if (ret)
-> 		return ret;
-> 
-> 	...
-> 	return 0;
-> 
-> > +}
-> 
-> ...
-> 
-> > +		host->pins_eint = pinctrl_lookup_state(host->pinctrl,
-> > "state_eint");
-> > +		if (IS_ERR(host->pins_eint)) {
-> > +			dev_dbg(&pdev->dev, "Cannot find pinctrl
-> > eint!\n");
-> 
-> In debug mode of pin control this will bring a duplicate message.
-> 
-> > +		} else {
-> > +			host->pins_dat1 = pinctrl_lookup_state(host-
-> > >pinctrl, "state_dat1");
-> > +			if (IS_ERR(host->pins_dat1)) {
-> > +				ret = dev_err_probe(&pdev->dev,
-> > PTR_ERR(host->pins_dat1),
-> > +						    "Cannot find
-> > pinctrl dat1!\n");
-> > +				goto host_free;
-> > +			}
-> > +
-> > +			host->sdio_eint_ready = true;
-> > +		}
-> > +	}
-> 
-> 
+Patches have been resent. Thanks.
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
