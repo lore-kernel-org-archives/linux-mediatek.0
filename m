@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5342C433FE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:25:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5D7AC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:26:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TtBG11FK+NcrjRq5x80WlYXiWNIBTurRnHAASQnHs4U=; b=AwzViv27Bzc1eR
-	irP7Cjd7/YenS6t6lX+Qe+IUMdweTcJTgWv3NrqfT7/dyWgJKiQiQ7LkclEkcuJbSQwda7KTUkUhr
-	OuoZQavxtqH9RbhxRv7zY0z6ZfePkCmgGBBUx6tnUKlGW7j+BVwOTcZnWao7JHjFvNeISiA5EyfZd
-	GqrdQDPs2h+lr6CNPnyR033Txa8OjsyzWYykIsqUSjS/mQodlPZqZga7H+H8oWskrTg3ks4UCgjXn
-	LIehmvbPrr7zwrLkus+8F+k1p/5kfOdNAC6fqjt1ASWo2XTHhq2BExCqf4p9HkUMXt6WeSl+uUw9n
-	GRrRGjlLhVSGKPsf8EZw==;
+	List-Owner; bh=8UDWU7FInLWGFTdk4/Qzy4WE23jkqoDhiqhkjVGuGbY=; b=2mlolZCF0XspjM
+	bO81nyQl2E521/pBIHUHqnb3mr3oqIYOjt1qNa7SUDyrFG8dnrw0VUlqskk1gEp+gwuEqIP6O9Sbl
+	oVRB6NCDDlfieT7MeIaqfmIZp8FCHalZ3i8ZEex/juJXRUPL+bz1PZf7BlmB3DmRRPUd8FrvEfxrN
+	wyPoTirJtRYQ64tVuWPR1iQ9zPO7kemaBNg2zK1Z52Uc2i8epkHzurCceTVGzWdT+zcqUdKXuVnMK
+	f+6cps+K1AA90KCYWkpoNERWadhlf7oK8FtO7HcSzlZnfE50GYkGXPqWSgZdGBWbQCX32//vcLnIF
+	5mDK0kgWh1fnuoMhC7bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9MOj-00Dryc-1m; Mon, 17 Jan 2022 07:25:49 +0000
+	id 1n9MPG-00DsF2-Aj; Mon, 17 Jan 2022 07:26:22 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9MFt-00DnjO-2G; Mon, 17 Jan 2022 07:16:43 +0000
-X-UUID: cb83c08615e640a7baab8b73973ad200-20220117
-X-UUID: cb83c08615e640a7baab8b73973ad200-20220117
+ id 1n9MFt-00Dnk5-Bk; Mon, 17 Jan 2022 07:16:44 +0000
+X-UUID: 365981b739a6473295e83f9c51eb60e9-20220117
+X-UUID: 365981b739a6473295e83f9c51eb60e9-20220117
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
+ (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 222926884; Mon, 17 Jan 2022 00:16:17 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 775726241; Mon, 17 Jan 2022 00:16:17 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 23:12:39 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 17 Jan 2022 15:12:31 +0800
+ 15.0.1497.2; Sun, 16 Jan 2022 23:07:17 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 17 Jan 2022 15:07:16 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 15:12:29 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
- <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
- <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
- <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- Yong Mao <yong.mao@mediatek.com>
-Subject: [PATCH 3/3] mmc: mediatek: add support for SDIO eint IRQ
-Date: Mon, 17 Jan 2022 15:12:20 +0800
-Message-ID: <20220117071220.17330-4-axe.yang@mediatek.com>
+ Transport; Mon, 17 Jan 2022 15:07:14 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, <angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <dkirjanov@suse.de>, Rob Herring
+ <robh@kernel.org>
+Subject: [PATCH net-next v12 5/7] net: dt-bindings: dwmac: Convert
+ mediatek-dwmac to DT schema
+Date: Mon, 17 Jan 2022 15:07:04 +0800
+Message-ID: <20220117070706.17853-6-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220117071220.17330-1-axe.yang@mediatek.com>
-References: <20220117071220.17330-1-axe.yang@mediatek.com>
+In-Reply-To: <20220117070706.17853-1-biao.huang@mediatek.com>
+References: <20220117070706.17853-1-biao.huang@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_231641_280367_BA0C75D3 
-X-CRM114-Status: GOOD (  26.63  )
+X-CRM114-CacheID: sfid-20220116_231641_590159_758A91FB 
+X-CRM114-Status: GOOD (  23.87  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,262 +81,281 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for eint IRQ when MSDC is used as an SDIO host. This
-feature requires SDIO device support async IRQ function. With this
-feature, SDIO host can be awakened by SDIO card in suspend state,
-without additional pin.
+Convert mediatek-dwmac to DT schema, and delete old mediatek-dwmac.txt.
+And there are some changes in .yaml than .txt, others almost keep the same:
+  1. compatible "const: snps,dwmac-4.20".
+  2. delete "snps,reset-active-low;" in example, since driver remove this
+     property long ago.
+  3. add "snps,reset-delay-us = <0 10000 10000>" in example.
+  4. the example is for rgmii interface, keep related properties only.
 
-MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
-turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
-resume, switch GPIO function back to DAT1 mode then turn on clock.
-
-Some device tree property should be added or modified in MSDC node
-to support SDIO eint IRQ. Pinctrls named state_dat1 and state_eint
-are mandatory. And cap-sdio-async-irq flag is necessary since this
-feature depends on asynchronous interrupt:
-        &mmcX {
-                ...
-                pinctrl-names = "default", "state_uhs", "state_eint",
-                                "state_dat1";
-                ...
-                pinctrl-2 = <&mmc2_pins_eint>;
-                pinctrl-3 = <&mmc2_pins_dat1>;
-                ...
-                cap-sdio-async-irq;
-                ...
-        };
-
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+Signed-off-by: Biao Huang <biao.huang@mediatek.com>
+Reviewed-by: Rob Herring <robh@kernel.org>
 ---
- drivers/mmc/host/mtk-sd.c | 125 +++++++++++++++++++++++++++++++++++---
- 1 file changed, 117 insertions(+), 8 deletions(-)
+ .../bindings/net/mediatek-dwmac.txt           |  91 ----------
+ .../bindings/net/mediatek-dwmac.yaml          | 155 ++++++++++++++++++
+ 2 files changed, 155 insertions(+), 91 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 65037e1d7723..cbdbcce99fd9 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -1,6 +1,6 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /*
-- * Copyright (c) 2014-2015 MediaTek Inc.
-+ * Copyright (c) 2022 MediaTek Inc.
-  * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
-  */
- 
-@@ -9,6 +9,7 @@
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/dma-mapping.h>
-+#include <linux/gpio/consumer.h>
- #include <linux/iopoll.h>
- #include <linux/ioport.h>
- #include <linux/irq.h>
-@@ -440,8 +441,12 @@ struct msdc_host {
- 	struct pinctrl *pinctrl;
- 	struct pinctrl_state *pins_default;
- 	struct pinctrl_state *pins_uhs;
-+	struct pinctrl_state *pins_eint;
-+	struct pinctrl_state *pins_dat1;
- 	struct delayed_work req_timeout;
- 	int irq;		/* host interrupt */
-+	int eint_irq;		/* device interrupt */
-+	int sdio_irq_cnt;	/* irq enable cnt */
- 	struct reset_control *reset;
- 
- 	struct clk *src_clk;	/* msdc source clock */
-@@ -465,6 +470,7 @@ struct msdc_host {
- 	bool hs400_tuning;	/* hs400 mode online tuning */
- 	bool internal_cd;	/* Use internal card-detect logic */
- 	bool cqhci;		/* support eMMC hw cmdq */
-+	bool sdio_eint_ready;	/* Ready to support SDIO eint interrupt */
- 	struct msdc_save_para save_para; /* used when gate HCLK */
- 	struct msdc_tune_para def_tune_para; /* default tune setting */
- 	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
-@@ -1527,10 +1533,12 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
- 	__msdc_enable_sdio_irq(host, enb);
- 	spin_unlock_irqrestore(&host->lock, flags);
- 
--	if (enb)
--		pm_runtime_get_noresume(host->dev);
--	else
--		pm_runtime_put_noidle(host->dev);
-+	if (mmc->card && !mmc->card->cccr.enable_async_irq) {
-+		if (enb)
-+			pm_runtime_get_noresume(host->dev);
-+		else
-+			pm_runtime_put_noidle(host->dev);
-+	}
- }
- 
- static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
-@@ -2461,6 +2469,50 @@ static const struct mmc_host_ops mt_msdc_ops = {
- 	.hw_reset = msdc_hw_reset,
- };
- 
-+static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
-+{
-+	struct msdc_host *host = dev_id;
-+	struct mmc_host *mmc = mmc_from_priv(host);
-+	unsigned long flags;
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt b/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+deleted file mode 100644
+index afbcaebf062e..000000000000
+--- a/Documentation/devicetree/bindings/net/mediatek-dwmac.txt
++++ /dev/null
+@@ -1,91 +0,0 @@
+-MediaTek DWMAC glue layer controller
+-
+-This file documents platform glue layer for stmmac.
+-Please see stmmac.txt for the other unchanged properties.
+-
+-The device node has following properties.
+-
+-Required properties:
+-- compatible:  Should be "mediatek,mt2712-gmac" for MT2712 SoC
+-- reg:  Address and length of the register set for the device
+-- interrupts:  Should contain the MAC interrupts
+-- interrupt-names: Should contain a list of interrupt names corresponding to
+-	the interrupts in the interrupts property, if available.
+-	Should be "macirq" for the main MAC IRQ
+-- clocks: Must contain a phandle for each entry in clock-names.
+-- clock-names: The name of the clock listed in the clocks property. These are
+-	"axi", "apb", "mac_main", "ptp_ref", "rmii_internal" for MT2712 SoC.
+-- mac-address: See ethernet.txt in the same directory
+-- phy-mode: See ethernet.txt in the same directory
+-- mediatek,pericfg: A phandle to the syscon node that control ethernet
+-	interface and timing delay.
+-
+-Optional properties:
+-- mediatek,tx-delay-ps: TX clock delay macro value. Default is 0.
+-	It should be defined for RGMII/MII interface.
+-	It should be defined for RMII interface when the reference clock is from MT2712 SoC.
+-- mediatek,rx-delay-ps: RX clock delay macro value. Default is 0.
+-	It should be defined for RGMII/MII interface.
+-	It should be defined for RMII interface.
+-Both delay properties need to be a multiple of 170 for RGMII interface,
+-or will round down. Range 0~31*170.
+-Both delay properties need to be a multiple of 550 for MII/RMII interface,
+-or will round down. Range 0~31*550.
+-
+-- mediatek,rmii-rxc: boolean property, if present indicates that the RMII
+-	reference clock, which is from external PHYs, is connected to RXC pin
+-	on MT2712 SoC.
+-	Otherwise, is connected to TXC pin.
+-- mediatek,rmii-clk-from-mac: boolean property, if present indicates that
+-	MT2712 SoC provides the RMII reference clock, which outputs to TXC pin only.
+-- mediatek,txc-inverse: boolean property, if present indicates that
+-	1. tx clock will be inversed in MII/RGMII case,
+-	2. tx clock inside MAC will be inversed relative to reference clock
+-	   which is from external PHYs in RMII case, and it rarely happen.
+-	3. the reference clock, which outputs to TXC pin will be inversed in RMII case
+-	   when the reference clock is from MT2712 SoC.
+-- mediatek,rxc-inverse: boolean property, if present indicates that
+-	1. rx clock will be inversed in MII/RGMII case.
+-	2. reference clock will be inversed when arrived at MAC in RMII case, when
+-	   the reference clock is from external PHYs.
+-	3. the inside clock, which be sent to MAC, will be inversed in RMII case when
+-	   the reference clock is from MT2712 SoC.
+-- assigned-clocks: mac_main and ptp_ref clocks
+-- assigned-clock-parents: parent clocks of the assigned clocks
+-
+-Example:
+-	eth: ethernet@1101c000 {
+-		compatible = "mediatek,mt2712-gmac";
+-		reg = <0 0x1101c000 0 0x1300>;
+-		interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
+-		interrupt-names = "macirq";
+-		phy-mode ="rgmii-rxid";
+-		mac-address = [00 55 7b b5 7d f7];
+-		clock-names = "axi",
+-			      "apb",
+-			      "mac_main",
+-			      "ptp_ref",
+-			      "rmii_internal";
+-		clocks = <&pericfg CLK_PERI_GMAC>,
+-			 <&pericfg CLK_PERI_GMAC_PCLK>,
+-			 <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-			 <&topckgen CLK_TOP_ETHER_50M_SEL>,
+-			 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+-		assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
+-				  <&topckgen CLK_TOP_ETHER_50M_SEL>,
+-				  <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
+-		assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
+-					 <&topckgen CLK_TOP_APLL1_D3>,
+-					 <&topckgen CLK_TOP_ETHERPLL_50M>;
+-		power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
+-		mediatek,pericfg = <&pericfg>;
+-		mediatek,tx-delay-ps = <1530>;
+-		mediatek,rx-delay-ps = <1530>;
+-		mediatek,rmii-rxc;
+-		mediatek,txc-inverse;
+-		mediatek,rxc-inverse;
+-		snps,txpbl = <1>;
+-		snps,rxpbl = <1>;
+-		snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
+-		snps,reset-active-low;
+-	};
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+new file mode 100644
+index 000000000000..8ad6e19661b8
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+@@ -0,0 +1,155 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/mediatek-dwmac.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	spin_lock_irqsave(&host->lock, flags);
-+	if (likely(host->sdio_irq_cnt > 0)) {
-+		disable_irq_nosync(host->eint_irq);
-+		disable_irq_wake(host->eint_irq);
-+		host->sdio_irq_cnt--;
-+	}
-+	spin_unlock_irqrestore(&host->lock, flags);
++title: MediaTek DWMAC glue layer controller
 +
-+	sdio_signal_irq(mmc);
++maintainers:
++  - Biao Huang <biao.huang@mediatek.com>
 +
-+	return IRQ_HANDLED;
-+}
++description:
++  This file documents platform glue layer for stmmac.
 +
-+static int msdc_request_dat1_eint_irq(struct msdc_host *host)
-+{
-+	struct gpio_desc *desc;
-+	int irq, ret;
++# We need a select here so we don't match all nodes with 'snps,dwmac'
++select:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - mediatek,mt2712-gmac
++  required:
++    - compatible
 +
-+	desc = devm_gpiod_get(host->dev, "eint", GPIOD_IN);
-+	if (IS_ERR(desc))
-+		return PTR_ERR(desc);
++allOf:
++  - $ref: "snps,dwmac.yaml#"
 +
-+	ret = gpiod_to_irq(desc);
-+	if (ret < 0)
-+		return ret;
++properties:
++  compatible:
++    items:
++      - enum:
++          - mediatek,mt2712-gmac
++      - const: snps,dwmac-4.20a
 +
-+	irq = ret;
-+	ret = devm_request_threaded_irq(host->dev, irq, NULL, msdc_sdio_eint_irq,
-+					IRQF_TRIGGER_LOW | IRQF_ONESHOT | IRQF_NO_AUTOEN,
-+					"sdio-eint", host);
-+	if (ret)
-+		return ret;
++  clocks:
++    items:
++      - description: AXI clock
++      - description: APB clock
++      - description: MAC Main clock
++      - description: PTP clock
++      - description: RMII reference clock provided by MAC
 +
-+	host->eint_irq = irq;
++  clock-names:
++    items:
++      - const: axi
++      - const: apb
++      - const: mac_main
++      - const: ptp_ref
++      - const: rmii_internal
 +
-+	return 0;
-+}
++  mediatek,pericfg:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      The phandle to the syscon node that control ethernet
++      interface and timing delay.
 +
- static const struct cqhci_host_ops msdc_cmdq_ops = {
- 	.enable         = msdc_cqe_enable,
- 	.disable        = msdc_cqe_disable,
-@@ -2631,6 +2683,23 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 		goto host_free;
- 	}
- 
-+	if (!(mmc->caps2 & MMC_CAP2_NO_SDIO)) {
-+		/* Support for SDIO eint irq */
-+		host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
-+		if (IS_ERR(host->pins_eint)) {
-+			dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
-+		} else {
-+			host->pins_dat1 = pinctrl_lookup_state(host->pinctrl, "state_dat1");
-+			if (IS_ERR(host->pins_dat1)) {
-+				ret = dev_err_probe(&pdev->dev, PTR_ERR(host->pins_dat1),
-+						    "Cannot find pinctrl dat1!\n");
-+				goto host_free;
-+			}
++  mediatek,tx-delay-ps:
++    description:
++      The internal TX clock delay (provided by this driver) in nanoseconds.
++      For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
++      or will round down. Range 0~31*170.
++      For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
++      or will round down. Range 0~31*550.
 +
-+			host->sdio_eint_ready = true;
-+		}
-+	}
++  mediatek,rx-delay-ps:
++    description:
++      The internal RX clock delay (provided by this driver) in nanoseconds.
++      For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
++      or will round down. Range 0~31*170.
++      For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
++      or will round down. Range 0~31*550.
 +
- 	msdc_of_property_parse(pdev, host);
- 
- 	host->dev = &pdev->dev;
-@@ -2722,6 +2791,16 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto release;
- 
-+	if (host->sdio_eint_ready) {
-+		ret = msdc_request_dat1_eint_irq(host);
-+		if (ret) {
-+			dev_err(host->dev, "Failed to register data1 eint irq!\n");
-+			goto release;
-+		}
++  mediatek,rmii-rxc:
++    type: boolean
++    description:
++      If present, indicates that the RMII reference clock, which is from external
++      PHYs, is connected to RXC pin. Otherwise, is connected to TXC pin.
 +
-+		pinctrl_select_state(host->pinctrl, host->pins_dat1);
-+	}
++  mediatek,rmii-clk-from-mac:
++    type: boolean
++    description:
++      If present, indicates that MAC provides the RMII reference clock, which
++      outputs to TXC pin only.
 +
- 	pm_runtime_set_active(host->dev);
- 	pm_runtime_set_autosuspend_delay(host->dev, MTK_MMC_AUTOSUSPEND_DELAY);
- 	pm_runtime_use_autosuspend(host->dev);
-@@ -2841,16 +2920,31 @@ static void msdc_restore_reg(struct msdc_host *host)
- 
- static int __maybe_unused msdc_runtime_suspend(struct device *dev)
- {
-+	unsigned long flags;
- 	struct mmc_host *mmc = dev_get_drvdata(dev);
- 	struct msdc_host *host = mmc_priv(mmc);
- 
- 	msdc_save_reg(host);
++  mediatek,txc-inverse:
++    type: boolean
++    description:
++      If present, indicates that
++      1. tx clock will be inversed in MII/RGMII case,
++      2. tx clock inside MAC will be inversed relative to reference clock
++         which is from external PHYs in RMII case, and it rarely happen.
++      3. the reference clock, which outputs to TXC pin will be inversed in RMII case
++         when the reference clock is from MAC.
 +
-+	if (host->sdio_eint_ready) {
-+		disable_irq(host->irq);
-+		pinctrl_select_state(host->pinctrl, host->pins_eint);
-+		spin_lock_irqsave(&host->lock, flags);
-+		if (host->sdio_irq_cnt == 0) {
-+			enable_irq(host->eint_irq);
-+			enable_irq_wake(host->eint_irq);
-+			host->sdio_irq_cnt++;
-+		}
-+		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-+		spin_unlock_irqrestore(&host->lock, flags);
-+	}
- 	msdc_gate_clock(host);
- 	return 0;
- }
- 
- static int __maybe_unused msdc_runtime_resume(struct device *dev)
- {
-+	unsigned long flags;
- 	struct mmc_host *mmc = dev_get_drvdata(dev);
- 	struct msdc_host *host = mmc_priv(mmc);
- 	int ret;
-@@ -2860,10 +2954,25 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
- 		return ret;
- 
- 	msdc_restore_reg(host);
++  mediatek,rxc-inverse:
++    type: boolean
++    description:
++      If present, indicates that
++      1. rx clock will be inversed in MII/RGMII case.
++      2. reference clock will be inversed when arrived at MAC in RMII case, when
++         the reference clock is from external PHYs.
++      3. the inside clock, which be sent to MAC, will be inversed in RMII case when
++         the reference clock is from MAC.
 +
-+	if (host->sdio_eint_ready) {
-+		spin_lock_irqsave(&host->lock, flags);
-+		if (host->sdio_irq_cnt > 0) {
-+			disable_irq_nosync(host->eint_irq);
-+			disable_irq_wake(host->eint_irq);
-+			host->sdio_irq_cnt--;
-+			sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-+		} else {
-+			sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-+		}
-+		spin_unlock_irqrestore(&host->lock, flags);
-+		pinctrl_select_state(host->pinctrl, host->pins_uhs);
-+		enable_irq(host->irq);
-+	}
- 	return 0;
- }
- 
--static int __maybe_unused msdc_suspend(struct device *dev)
-+static int __maybe_unused msdc_suspend_noirq(struct device *dev)
- {
- 	struct mmc_host *mmc = dev_get_drvdata(dev);
- 	int ret;
-@@ -2877,13 +2986,13 @@ static int __maybe_unused msdc_suspend(struct device *dev)
- 	return pm_runtime_force_suspend(dev);
- }
- 
--static int __maybe_unused msdc_resume(struct device *dev)
-+static int __maybe_unused msdc_resume_noirq(struct device *dev)
- {
- 	return pm_runtime_force_resume(dev);
- }
- 
- static const struct dev_pm_ops msdc_dev_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend_noirq, msdc_resume_noirq)
- 	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
- };
- 
++required:
++  - compatible
++  - reg
++  - interrupts
++  - interrupt-names
++  - clocks
++  - clock-names
++  - phy-mode
++  - mediatek,pericfg
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt2712-clk.h>
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    #include <dt-bindings/power/mt2712-power.h>
++
++    eth: ethernet@1101c000 {
++        compatible = "mediatek,mt2712-gmac", "snps,dwmac-4.20a";
++        reg = <0x1101c000 0x1300>;
++        interrupts = <GIC_SPI 237 IRQ_TYPE_LEVEL_LOW>;
++        interrupt-names = "macirq";
++        phy-mode ="rgmii-rxid";
++        mac-address = [00 55 7b b5 7d f7];
++        clock-names = "axi",
++                      "apb",
++                      "mac_main",
++                      "ptp_ref",
++                      "rmii_internal";
++        clocks = <&pericfg CLK_PERI_GMAC>,
++                 <&pericfg CLK_PERI_GMAC_PCLK>,
++                 <&topckgen CLK_TOP_ETHER_125M_SEL>,
++                 <&topckgen CLK_TOP_ETHER_50M_SEL>,
++                 <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
++        assigned-clocks = <&topckgen CLK_TOP_ETHER_125M_SEL>,
++                          <&topckgen CLK_TOP_ETHER_50M_SEL>,
++                          <&topckgen CLK_TOP_ETHER_50M_RMII_SEL>;
++        assigned-clock-parents = <&topckgen CLK_TOP_ETHERPLL_125M>,
++                                 <&topckgen CLK_TOP_APLL1_D3>,
++                                 <&topckgen CLK_TOP_ETHERPLL_50M>;
++        power-domains = <&scpsys MT2712_POWER_DOMAIN_AUDIO>;
++        mediatek,pericfg = <&pericfg>;
++        mediatek,tx-delay-ps = <1530>;
++        snps,txpbl = <1>;
++        snps,rxpbl = <1>;
++        snps,reset-gpio = <&pio 87 GPIO_ACTIVE_LOW>;
++        snps,reset-delays-us = <0 10000 10000>;
++    };
 -- 
 2.25.1
 
