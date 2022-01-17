@@ -4,66 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 601D8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:17:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DE22C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:18:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LgPFLMFtXgh4/A3VcBF7CM+qsTw6rSc7SCdQT+KT/mE=; b=N5PPz78QIoYUvb
-	9WuFbgqH/yFgenBaVg5Gx6NgeWelKNhgCot1Ku8pFsboSaNWDokTZCqWIsxSvCWTH9TyUMTLTz3gZ
-	dqokIy1t2BcBBGaQW56WLUAWpginM4smLAIHMwnYJHKIi5F6RDYPeBeUTUlXmKVfre958SMcRDEU8
-	rqaXvLVG1mxlPS4Z55ZbdQD4/yzohe3yD1r2kFG1erivm59TTHtzdoD8NQEfi0JoH33jmsCRnl/xT
-	1jhUMp2gqNzaWTrmTHyEvqo8NXUim9UfWPLdP11k8kfAhqNwVZGattGzW+K1gB/Yx9MXqLTKxBARS
-	KsOpwa8OV0VK/eYB+Jsg==;
+	List-Owner; bh=+TN4ILWSPh3P7gz3Hmu31vjOGx8dxpoUAiiEPSAXpF8=; b=Y2cVoVI9FrDrmx
+	6QJMom5rch10wE/jHNWUTrRa25dllkMwnTfJlM+eO+XnFsDdtvzBYlYY5LFEM9A6aKsBp6YUiF5kp
+	TbOzeDSthkLGSmDv0DDtMOJdXPAcJb13Q145UYRUHtQJ+8HVV3S6NAQJT1KDy/aNB+bfBKjfaGDXo
+	1bquXwmj+gtgNXSqOq+msoRZBNYy5rQpQ9SH8Uwv2lxcI/u6QBs76pjQX5sfAIrjCJNwTh36uFlTE
+	pwa/j7rwd1oNCT0KnpqK7JFCi1LL9h2fsAxq+2s1qgL3/89NDDwgAsqfp5Wt9s9rk8S46UjAFolu/
+	6rg8FqKU+OnkgwQrMJ1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9MGf-00DoDi-0u; Mon, 17 Jan 2022 07:17:29 +0000
+	id 1n9MHk-00Dokh-Gs; Mon, 17 Jan 2022 07:18:36 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9MCJ-00Dlyj-8d; Mon, 17 Jan 2022 07:13:00 +0000
-X-UUID: 534adad9e31a43209db84873b360239c-20220117
-X-UUID: 534adad9e31a43209db84873b360239c-20220117
+ id 1n9MCK-00DlyZ-6Y; Mon, 17 Jan 2022 07:13:01 +0000
+X-UUID: e0dfc4fb5e90491b88c13842fcf16083-20220117
+X-UUID: e0dfc4fb5e90491b88c13842fcf16083-20220117
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1431700410; Mon, 17 Jan 2022 00:12:53 -0700
-Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ with ESMTP id 1087617698; Mon, 17 Jan 2022 00:12:53 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 23:12:31 -0800
+ 15.0.1497.2; Sun, 16 Jan 2022 23:06:51 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 17 Jan 2022 15:12:29 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 17 Jan 2022 15:06:49 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 15:12:28 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
- <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
- <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
- <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH 2/3] mmc: core: Add support for SDIO async interrupt
-Date: Mon, 17 Jan 2022 15:12:19 +0800
-Message-ID: <20220117071220.17330-3-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220117071220.17330-1-axe.yang@mediatek.com>
-References: <20220117071220.17330-1-axe.yang@mediatek.com>
+ Transport; Mon, 17 Jan 2022 15:06:47 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
+ <hverkuil@xs4all.nl>, Joerg Roedel <jroedel@suse.de>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>
+Subject: [PATCH v10 07/13] media: mtk-mdp: Get rid of mtk_smi_larb_get/put
+Date: Mon, 17 Jan 2022 15:05:04 +0800
+Message-ID: <20220117070510.17642-8-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220117070510.17642-1-yong.wu@mediatek.com>
+References: <20220117070510.17642-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_231259_358950_E086D8BE 
-X-CRM114-Status: GOOD (  17.43  )
+X-CRM114-CacheID: sfid-20220116_231300_281829_BBE1B237 
+X-CRM114-Status: GOOD (  16.74  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,112 +68,156 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
+ dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
+ anthony.huang@mediatek.com, youlin.pei@mediatek.com,
+ Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
+ Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ mingyuan.ma@mediatek.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ libo.kang@mediatek.com, yi.kuo@mediatek.com,
+ linux-mediatek@lists.infradead.org, Houlong Wei <houlong.wei@mediatek.com>,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ yong.wu@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ anan.sun@mediatek.com, srv_heupstream@mediatek.com, acourbot@chromium.org,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, linux-kernel@vger.kernel.org,
+ Tomasz Figa <tfiga@chromium.org>, iommu@lists.linux-foundation.org,
+ Daniel Vetter <daniel@ffwll.ch>, Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If cap-sdio-async-irq flag is set in host dts node, parse EAI
-information from SDIO CCCR interrupt externsion segment. If async
-interrupt is supported by SDIO card then send command to card to
-enable it and set enable_async_irq flag in sdio_cccr structure to 1.
-The parse flow is implemented in sdio_read_cccr().
+MediaTek IOMMU has already added the device_link between the consumer
+and smi-larb device. If the mdp device calls the pm_runtime_get_sync,
+the smi-larb's pm_runtime_get_sync also be called automatically.
 
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+CC: Minghsiu Tsai <minghsiu.tsai@mediatek.com>
+CC: Houlong Wei <houlong.wei@mediatek.com>
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Reviewed-by: Evan Green <evgreen@chromium.org>
+Reviewed-by: Houlong Wei <houlong.wei@mediatek.com>
+Reviewed-by: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/mmc/core/host.c  |  2 ++
- drivers/mmc/core/sdio.c  | 17 +++++++++++++++++
- include/linux/mmc/card.h |  3 ++-
- include/linux/mmc/host.h |  1 +
- include/linux/mmc/sdio.h |  5 +++++
- 5 files changed, 27 insertions(+), 1 deletion(-)
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.c | 40 -------------------
+ drivers/media/platform/mtk-mdp/mtk_mdp_comp.h |  2 -
+ drivers/media/platform/mtk-mdp/mtk_mdp_core.c |  1 -
+ 3 files changed, 43 deletions(-)
 
-diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
-index cf140f4ec864..a972241548b4 100644
---- a/drivers/mmc/core/host.c
-+++ b/drivers/mmc/core/host.c
-@@ -410,6 +410,8 @@ int mmc_of_parse(struct mmc_host *host)
- 	if (device_property_read_bool(dev, "no-mmc-hs400"))
- 		host->caps2 &= ~(MMC_CAP2_HS400_1_8V | MMC_CAP2_HS400_1_2V |
- 				 MMC_CAP2_HS400_ES);
-+	if (device_property_read_bool(dev, "cap-sdio-async-irq"))
-+		host->caps2 |= MMC_CAP2_SDIO_ASYNC_IRQ;
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+index b3426a551bea..1e3833f1c9ae 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.c
+@@ -9,7 +9,6 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/of_platform.h>
+-#include <soc/mediatek/smi.h>
  
- 	/* Must be after "non-removable" check */
- 	if (device_property_read_u32(dev, "fixed-emmc-driver-type", &drv_type) == 0) {
-diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
-index 41164748723d..771fb5d18585 100644
---- a/drivers/mmc/core/sdio.c
-+++ b/drivers/mmc/core/sdio.c
-@@ -225,6 +225,23 @@ static int sdio_read_cccr(struct mmc_card *card, u32 ocr)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_C;
- 			if (data & SDIO_DRIVE_SDTD)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_D;
-+
-+			if (card->host->caps2 & MMC_CAP2_SDIO_ASYNC_IRQ) {
-+				ret = mmc_io_rw_direct(card, 0, 0, SDIO_CCCR_INTERRUPT_EXT, 0,
-+						       &data);
-+				if (ret)
-+					goto out;
-+
-+				if (data & SDIO_INTERRUPT_EXT_SAI) {
-+					data |= SDIO_INTERRUPT_EXT_EAI;
-+					ret = mmc_io_rw_direct(card, 1, 0, SDIO_CCCR_INTERRUPT_EXT,
-+							       data, NULL);
-+					if (ret)
-+						goto out;
-+
-+					card->cccr.enable_async_irq = 1;
-+				}
-+			}
- 		}
+ #include "mtk_mdp_comp.h"
  
- 		/* if no uhs mode ensure we check for high speed */
-diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
-index 37f975875102..4df9182bc0e6 100644
---- a/include/linux/mmc/card.h
-+++ b/include/linux/mmc/card.h
-@@ -219,7 +219,8 @@ struct sdio_cccr {
- 				wide_bus:1,
- 				high_power:1,
- 				high_speed:1,
--				disable_cd:1;
-+				disable_cd:1,
-+				enable_async_irq:1;
+@@ -18,14 +17,6 @@ void mtk_mdp_comp_clock_on(struct device *dev, struct mtk_mdp_comp *comp)
+ {
+ 	int i, err;
+ 
+-	if (comp->larb_dev) {
+-		err = mtk_smi_larb_get(comp->larb_dev);
+-		if (err)
+-			dev_err(dev,
+-				"failed to get larb, err %d. type:%d\n",
+-				err, comp->type);
+-	}
+-
+ 	for (i = 0; i < ARRAY_SIZE(comp->clk); i++) {
+ 		if (IS_ERR(comp->clk[i]))
+ 			continue;
+@@ -46,17 +37,12 @@ void mtk_mdp_comp_clock_off(struct device *dev, struct mtk_mdp_comp *comp)
+ 			continue;
+ 		clk_disable_unprepare(comp->clk[i]);
+ 	}
+-
+-	if (comp->larb_dev)
+-		mtk_smi_larb_put(comp->larb_dev);
+ }
+ 
+ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
+ 		      struct mtk_mdp_comp *comp,
+ 		      enum mtk_mdp_comp_type comp_type)
+ {
+-	struct device_node *larb_node;
+-	struct platform_device *larb_pdev;
+ 	int ret;
+ 	int i;
+ 
+@@ -77,32 +63,6 @@ int mtk_mdp_comp_init(struct device *dev, struct device_node *node,
+ 			break;
+ 	}
+ 
+-	/* Only DMA capable components need the LARB property */
+-	comp->larb_dev = NULL;
+-	if (comp->type != MTK_MDP_RDMA &&
+-	    comp->type != MTK_MDP_WDMA &&
+-	    comp->type != MTK_MDP_WROT)
+-		return 0;
+-
+-	larb_node = of_parse_phandle(node, "mediatek,larb", 0);
+-	if (!larb_node) {
+-		dev_err(dev,
+-			"Missing mediadek,larb phandle in %pOF node\n", node);
+-		ret = -EINVAL;
+-		goto put_dev;
+-	}
+-
+-	larb_pdev = of_find_device_by_node(larb_node);
+-	if (!larb_pdev) {
+-		dev_warn(dev, "Waiting for larb device %pOF\n", larb_node);
+-		of_node_put(larb_node);
+-		ret = -EPROBE_DEFER;
+-		goto put_dev;
+-	}
+-	of_node_put(larb_node);
+-
+-	comp->larb_dev = &larb_pdev->dev;
+-
+ 	return 0;
+ 
+ put_dev:
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+index 7897766c96bb..ae41dd3cd72a 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_comp.h
+@@ -26,14 +26,12 @@ enum mtk_mdp_comp_type {
+  * @node:	list node to track sibing MDP components
+  * @dev_node:	component device node
+  * @clk:	clocks required for component
+- * @larb_dev:	SMI device required for component
+  * @type:	component type
+  */
+ struct mtk_mdp_comp {
+ 	struct list_head	node;
+ 	struct device_node	*dev_node;
+ 	struct clk		*clk[2];
+-	struct device		*larb_dev;
+ 	enum mtk_mdp_comp_type	type;
  };
  
- struct sdio_cis {
-diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-index 7afb57cab00b..502a5418264c 100644
---- a/include/linux/mmc/host.h
-+++ b/include/linux/mmc/host.h
-@@ -402,6 +402,7 @@ struct mmc_host {
- #define MMC_CAP2_CRYPTO		0
- #endif
- #define MMC_CAP2_ALT_GPT_TEGRA	(1 << 28)	/* Host with eMMC that has GPT entry at a non-standard location */
-+#define MMC_CAP2_SDIO_ASYNC_IRQ	(1 << 29)	/* SDIO host supports asynchronous interrupt */
+diff --git a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+index 976aa1f4829b..70a8eab16863 100644
+--- a/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
++++ b/drivers/media/platform/mtk-mdp/mtk_mdp_core.c
+@@ -17,7 +17,6 @@
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/workqueue.h>
+-#include <soc/mediatek/smi.h>
  
- 	int			fixed_drv_type;	/* fixed driver type for non-removable media */
- 
-diff --git a/include/linux/mmc/sdio.h b/include/linux/mmc/sdio.h
-index 2a05d1ac4f0e..1ef400f28642 100644
---- a/include/linux/mmc/sdio.h
-+++ b/include/linux/mmc/sdio.h
-@@ -159,6 +159,11 @@
- #define  SDIO_DTSx_SET_TYPE_A	(1 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_C	(2 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_D	(3 << SDIO_DRIVE_DTSx_SHIFT)
-+
-+#define SDIO_CCCR_INTERRUPT_EXT	0x16
-+#define SDIO_INTERRUPT_EXT_SAI	(1 << 0)
-+#define SDIO_INTERRUPT_EXT_EAI	(1 << 1)
-+
- /*
-  * Function Basic Registers (FBR)
-  */
+ #include "mtk_mdp_core.h"
+ #include "mtk_mdp_m2m.h"
 -- 
-2.25.1
+2.18.0
 
 
 _______________________________________________
