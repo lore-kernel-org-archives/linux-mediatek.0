@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA41CC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 05:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42EF5C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 05:53:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Yd2wn5W1KVDGrV0KyExNYMf3TqXaCmLIeRqNE/1kw9U=; b=21KXUjIkWr4Ddi
-	RMMGZFMA7WVrSfZLTUNozXOpImLi2tzkmjn8XxFO8plbNxWHOMrvcFc8qxb/SS3UNh5tXPmoC0v6i
-	cqBN9K8vgiQ+fyVIwU42ietR/2BVBwynrFwhfNEnTjQ9jbJWiGdNWQJ6I/Kb9U6iAWFmxav2IHr8D
-	yDhpfDKv2yvBet4DA/a31TFIiZlKYz1evDmUDXbKBYSKnyYsThhz3gzHEPoJHv+a1ytB61Tx6q41u
-	ZL+kGRxlH3Kyg7azR5fkHN4zoZ8EDbNCQx19OQe0LKi8xr6cHCtgx7l2UymDcRwzDgtq7yPcHzhNl
-	aegi0Q5H1JkFjpqSSh4g==;
+	List-Owner; bh=fKlcAbpH9U/wbF52qY7vwE1KOfg3zoozmE9WQAhD0B4=; b=aUxpvFKwnOCxeI
+	l8egZsH7Lo3RBfnnp32cgcDTL5KnuqNKB9McRRxAKzuweU06K6qQWYPYfatMSTwjzrt+kX/fD27fO
+	oHrIHA2IoAUdV5B52GegpJV8i+ZK2VYwXGZl5FEz+j2z/keKM69SYKd/E1ltcvOb2u4eGfFhCTZHi
+	X1hdIDDBb2z9/02rOMMTgXRnbrV7byCJyzVUNMJJ1Iki/IjM6a1uOFQ+d9VQolmNIzGRwbj9mBRC/
+	hoGqzrWBQB92saX2bCTLI5ReF/pt9avaYw/MT3Ew+HPdq2HlyqkbdX7ONglJ9duvjfaUp8DyO3Mxx
+	SbpdhFC8d9E++Y6ITJAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9KpZ-00DUiZ-Qu; Mon, 17 Jan 2022 05:45:25 +0000
+	id 1n9KxT-00DVrX-EJ; Mon, 17 Jan 2022 05:53:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9KpO-00DUhI-Bn; Mon, 17 Jan 2022 05:45:15 +0000
-X-UUID: 03e8143850ca4bb3907d8e0459718a7c-20220116
-X-UUID: 03e8143850ca4bb3907d8e0459718a7c-20220116
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
+ id 1n9Kx9-00DVjX-7V; Mon, 17 Jan 2022 05:53:16 +0000
+X-UUID: 9fa8f31e06014f5887cfea446c2c765b-20220116
+X-UUID: 9fa8f31e06014f5887cfea446c2c765b-20220116
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
+ (envelope-from <roy-cw.yeh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 77228836; Sun, 16 Jan 2022 22:45:03 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 21:45:02 -0800
+ with ESMTP id 911852896; Sun, 16 Jan 2022 22:53:12 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 16 Jan 2022 21:53:10 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Mon, 17 Jan 2022 13:45:00 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 13:45:00 +0800
-Message-ID: <73221aee8a6144384309c1b2e01acdb8c1531c5c.camel@mediatek.com>
-Subject: Re: [PATCH v14 2/2] mailbox: mediatek: add support for adsp mailbox
- controller
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Curtis Malainey <cujomalainey@google.com>
-CC: Jassi Brar <jassisinghbrar@gmail.com>, Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, Linux-ALSA
- <alsa-devel@alsa-project.org>, Tzung-Bi Shih <tzungbi@google.com>,
- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>, Liam Girdwood
- <lgirdwood@gmail.com>, Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, 
- Kai Vehmanen <kai.vehmanen@linux.intel.com>, Daniel Baluta
- <daniel.baluta@nxp.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela
- <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Chen-Yu Tsai
- <wenst@chromium.org>, Kevin Hilman <khilman@baylibre.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, "Linux Kernel Mailing
- List" <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <sound-open-firmware@alsa-project.org>
-Date: Mon, 17 Jan 2022 13:45:00 +0800
-In-Reply-To: <CAOReqxiSAhrSjXVW=D+ndXko95qLuHGkkNs5Wf-yVEcv1YompQ@mail.gmail.com>
-References: <20220114114633.742-1-allen-kh.cheng@mediatek.com>
- <20220114114633.742-3-allen-kh.cheng@mediatek.com>
- <CAOReqxiSAhrSjXVW=D+ndXko95qLuHGkkNs5Wf-yVEcv1YompQ@mail.gmail.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 17 Jan 2022 13:53:09 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Mon, 17 Jan 2022 13:53:09 +0800
+From: roy-cw.yeh <roy-cw.yeh@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu
+ <chunkuang.hu@kernel.org>
+CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Fabien Parent
+ <fparent@baylibre.com>, "Roy-CW . Yeh" <roy-cw.yeh@mediatek.com>, "jason-jh .
+ lin" <jason-jh.lin@mediatek.com>, daoyuan huang <daoyuan.huang@mediatek.com>, 
+ Ping-Hsun Wu <ping-hsun.wu@mediatek.com>, Moudy Ho <moudy.ho@mediatek.com>,
+ "river . cheng" <river.cheng@mediatek.com>, Enric Balletbo i Serra
+ <enric.balletbo@collabora.com>, Yongqiang Niu <yongqiang.niu@mediatek.com>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH v1 11/14] media: platform: mtk-mdp3: Revise frame change
+ criteria
+Date: Mon, 17 Jan 2022 13:52:51 +0800
+Message-ID: <20220117055254.9777-12-roy-cw.yeh@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
+References: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_214514_444457_8DD32A71 
-X-CRM114-Status: GOOD (  13.81  )
+X-CRM114-CacheID: sfid-20220116_215315_312663_003BC2B1 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +82,155 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2022-01-14 at 08:57 -0800, Curtis Malainey wrote:
-> > +
-> > +static struct mtk_adsp_mbox_priv *get_mtk_adsp_mbox_priv(struct
-> > mbox_controller *mbox)
-> > +{
-> > +       return container_of(mbox, struct mtk_adsp_mbox_priv, mbox);
-> > +}
-> 
-> this could probably be inline
-> 
+From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-Hi Curtis,
+frame_change will trigger MDP SCP to re-calculate path and parameter.
+MDP fails when it doesn't get correct parameters to process frame,
+and it will activate by the following conditions:
 
-I check the symbol table of kernel.
+1. first frame
+2. Scenario changes (single/dual pipe)
+3. input size changes
+4. input format changes
+5. output size changes (crop included)
 
-get_mtk_adsp_mbox_priv is decided to inline by compiler.
+Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
+---
+ .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |  2 ++
+ .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    | 22 +++++++++++++++----
+ .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   | 19 ++++++++++++++++
+ .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |  9 ++++++++
+ 4 files changed, 48 insertions(+), 4 deletions(-)
 
-I think it's ok use inline this function.
-
-on other hand, compile will not use inline definition of
-mtk_adsp_mbox_xlate for the mbox_controller's implement 
-(I also check the symbole of kernel)
-
-I will update next version for get_mtk_adsp_mbox_priv.
-
-Thank.
-
-> 
-> > +
-> > +static struct mbox_chan *mtk_adsp_mbox_xlate(struct
-> > mbox_controller *mbox,
-> > +                                            const struct
-> > of_phandle_args *sp)
-> > +{
-> > +       return mbox->chans;
-> > +}
-> 
-> also could probably benefit from inline
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+index 0fb932ad3560..0eb08ce69781 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
+@@ -11,6 +11,7 @@
+ #include <media/v4l2-mem2mem.h>
+ #include <linux/soc/mediatek/mtk-mmsys.h>
+ #include <linux/soc/mediatek/mtk-mutex.h>
++#include "mtk-mdp3-regs.h"
+ #include "mtk-mdp3-comp.h"
+ #include "mtk-mdp3-vpu.h"
+ 
+@@ -96,6 +97,7 @@ struct mdp_dev {
+ 	atomic_t				suspended;
+ 	atomic_t				job_count;
+ 	atomic_t				cmdq_count[MDP_CMDQ_NUM];
++	struct mdp_framechange_param		prev_image;
+ };
+ 
+ struct mdp_pipe_info {
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+index 72a1864d880c..9afe56882208 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
+@@ -77,6 +77,7 @@ static void mdp_m2m_worker(struct work_struct *work)
+ 	struct vb2_v4l2_buffer *src_vb, *dst_vb;
+ 	struct img_ipi_frameparam param = {0};
+ 	struct mdp_cmdq_param task = {0};
++	struct mdp_framechange_param cur_frame = {0};
+ 	enum vb2_buffer_state vb_state = VB2_BUF_STATE_ERROR;
+ 	int ret;
+ 
+@@ -90,20 +91,33 @@ static void mdp_m2m_worker(struct work_struct *work)
+ 	param.type = ctx->curr_param.type;
+ 	param.num_inputs = 1;
+ 	param.num_outputs = 1;
+-	param.frame_change = (ctx->frame_count[MDP_M2M_SRC] == 0);
+ 
+ 	frame = ctx_get_frame(ctx, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
+ 	src_vb = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
+ 	mdp_set_src_config(&param.inputs[0], frame, &src_vb->vb2_buf);
+ 	mdp_set_scenario(ctx->mdp_dev, &param, frame);
+-	if (param.frame_change)
+-		dev_info(&ctx->mdp_dev->pdev->dev,
+-			 "MDP Scenario: %d\n", param.type);
+ 
+ 	frame = ctx_get_frame(ctx, V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
+ 	dst_vb = v4l2_m2m_next_dst_buf(ctx->m2m_ctx);
+ 	mdp_set_dst_config(&param.outputs[0], frame, &dst_vb->vb2_buf);
+ 
++	cur_frame.scenario = param.type;
++	cur_frame.frame_count = ctx->frame_count[MDP_M2M_SRC];
++	memcpy(&cur_frame.in, &param.inputs[0], sizeof(cur_frame.in));
++	memcpy(&cur_frame.out, &param.outputs[0], sizeof(cur_frame.out));
++
++	if (mdp_is_framechange(&ctx->mdp_dev->prev_image, &cur_frame)) {
++		memcpy(&ctx->mdp_dev->prev_image, &cur_frame,
++		       sizeof(struct mdp_framechange_param));
++		param.frame_change = true;
++	} else {
++		param.frame_change = false;
++	}
++
++	if (param.frame_change)
++		dev_dbg(&ctx->mdp_dev->pdev->dev,
++			"MDP Scenario: %d\n", param.type);
++
+ 	param.timestamp = src_vb->vb2_buf.timestamp;
+ 
+ 	ret = mdp_vpu_process(&ctx->vpu, &param);
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+index c0a7e3569853..ccd9c338ff49 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
+@@ -429,6 +429,25 @@ static u32 mdp_fmt_get_plane_size(const struct mdp_format *fmt,
+ 	return 0;
+ }
+ 
++bool mdp_is_framechange(struct mdp_framechange_param *prev,
++			struct mdp_framechange_param *cur)
++{
++	if (cur->frame_count == 0 ||
++	    prev->scenario != cur->scenario ||
++	    prev->in.buffer.format.colorformat != cur->in.buffer.format.colorformat ||
++	    prev->in.buffer.format.width != cur->in.buffer.format.width ||
++	    prev->in.buffer.format.height != cur->in.buffer.format.height ||
++	    prev->out.buffer.format.width != cur->out.buffer.format.width ||
++	    prev->out.buffer.format.height != cur->out.buffer.format.height ||
++	    prev->out.crop.left != cur->out.crop.left ||
++	    prev->out.crop.top != cur->out.crop.top ||
++	    prev->out.crop.width != cur->out.crop.width ||
++	    prev->out.crop.height != cur->out.crop.height)
++		return true;
++
++	return false;
++}
++
+ void mdp_set_scenario(struct mdp_dev *mdp,
+ 		      struct img_ipi_frameparam *param,
+ 		      struct mdp_frame *frame)
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
+index 3547ce10948f..436d5c899bc5 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
+@@ -397,6 +397,13 @@ struct mdp_frameparam {
+ 	enum v4l2_quantization		quant;
+ };
+ 
++struct mdp_framechange_param {
++	u8 scenario;
++	u32 frame_count;
++	struct img_input in;
++	struct img_output out;
++};
++
+ int mdp_enum_fmt_mplane(struct v4l2_fmtdesc *f);
+ const struct mdp_format *mdp_try_fmt_mplane(struct v4l2_format *f,
+ 					    struct mdp_frameparam *param,
+@@ -408,6 +415,8 @@ int mdp_try_crop(struct mdp_m2m_ctx *ctx, struct v4l2_rect *r,
+ int mdp_check_scaling_ratio(const struct v4l2_rect *crop,
+ 			    const struct v4l2_rect *compose, s32 rotation,
+ 	const struct mdp_limit *limit);
++bool mdp_is_framechange(struct mdp_framechange_param *prev,
++			struct mdp_framechange_param *cur);
+ void mdp_set_scenario(struct mdp_dev *mdp,
+ 		      struct img_ipi_frameparam *param,
+ 		      struct mdp_frame *frame);
+-- 
+2.18.0
 
 
 _______________________________________________
