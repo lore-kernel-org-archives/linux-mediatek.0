@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA443C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DEC8C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:16:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=pt2ijldyg0gNr3yYtPxUZLtD3sIQk7EuDfvz3tMwpwQ=; b=YfVEY3Pd9nHZvv
-	H/j8qs4g47uEyEdj9NIepMinfWbjxV6TYPlQGC0nXZZH+dEFMf+SQoILihgoOZskn73t33SC4gJ/j
-	JjL/sepBclttsRMnKiIq7tVMKLKiM4iE9H+oFKLlG8P/ZywBzb+onwO96PTFr/A3BPWlIUer2KN9g
-	zKIc7RGNCAxjzUxyPhklBrLktxBq2TvjjIPsajfO81r+1UM+KV2VFplYISOSuSVhLOEWNmtQ7i1JU
-	efCOmyD7zxCkuVavty+OyvOQQjLgymU+UZPtYBdA5PZT3W1mrY6Hg3Yu8stkWWjrIDKJLM70UZVrv
-	dObaaP8hEiJ7/Qn95K7A==;
+	List-Owner; bh=MQbbrz8xm+9oSJJP3D5+hud8uNNUBlmSuKcNigphpJQ=; b=OHMqGxEy5qeoWq
+	C9P7xojPQ10bGWOjdWiixlxACgvbxZPfEp4w4fd1o1CVs53RGBQYsDEi0tXfJTV51cJCFfwIGu0LQ
+	Juv7G6z4PgbmtqHEu9GaAGodmHSfB537cPxqfF0XsmSgpn2Oan+8RrCXfk1vnAhNlpR74JFYZdRE1
+	l8cQhHgqJ7dXupQ99QfqJM5BhaAEGH/OEurS5l1dXr10XD6JPax8Wv194+CvQ+rWAKf5KbMvYSbhj
+	pFLO51QIHC+ywMpHEQgeLrbkzByabnTUzJN9C/yTS8uz5SyeP0fc0DdJE9Iid+VIFG9nIP4R4XKGq
+	Z635oNydzxh9zDiUIV0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9MEr-00DnKE-By; Mon, 17 Jan 2022 07:15:37 +0000
+	id 1n9MFL-00Dnap-7z; Mon, 17 Jan 2022 07:16:07 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9MCG-00DlyZ-CW; Mon, 17 Jan 2022 07:12:58 +0000
-X-UUID: 24dfa01630be4301a37ecda67561a7e8-20220117
-X-UUID: 24dfa01630be4301a37ecda67561a7e8-20220117
+ id 1n9MCH-00Dlyj-Di; Mon, 17 Jan 2022 07:12:59 +0000
+X-UUID: 46abeb7134ac406f8d70d13df9a6d23f-20220117
+X-UUID: 46abeb7134ac406f8d70d13df9a6d23f-20220117
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
+ (envelope-from <biao.huang@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1158234656; Mon, 17 Jan 2022 00:12:53 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 643695697; Mon, 17 Jan 2022 00:12:53 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 23:12:27 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 17 Jan 2022 15:12:27 +0800
+ 15.0.1497.2; Sun, 16 Jan 2022 23:07:11 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 17 Jan 2022 15:07:10 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 15:12:25 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
- <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
- <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
- <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v3 0/3]mmc: mediatek: add support for SDIO async IRQ 
-Date: Mon, 17 Jan 2022 15:12:17 +0800
-Message-ID: <20220117071220.17330-1-axe.yang@mediatek.com>
+ Transport; Mon, 17 Jan 2022 15:07:08 +0800
+From: Biao Huang <biao.huang@mediatek.com>
+To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
+ <robh+dt@kernel.org>, <angelogioacchino.delregno@collabora.com>
+CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
+ <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
+ <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
+ <macpaul.lin@mediatek.com>, <dkirjanov@suse.de>
+Subject: [PATCH net-next v12 0/7] MediaTek Ethernet Patches on MT8195
+Date: Mon, 17 Jan 2022 15:06:59 +0800
+Message-ID: <20220117070706.17853-1-biao.huang@mediatek.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_231256_489243_DDEE6929 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20220116_231257_558243_E850B4DD 
+X-CRM114-Status: GOOD (  17.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,31 +77,109 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Changes in v12:
+1. add a new patch "stmmac: dwmac-mediatek: re-arrange clock setting" to
+   this series, to simplify clock handling in driver, which benefits to
+   binding file mediatek-dwmac.yaml.
+2. modify dt-binding description in patch "net: dt-bindings: dwmac: add
+   support for mt8195" as Rob's comments in v10 series, put mac_cg to the
+   end of clock list.
+3. there are small changes in patch "stmmac: dwmac-mediatek: add support
+   for mt8195", @AngeloGioacchino, please review it kindly.
+
+Changes in v11:
+1. add reivewed-by in "net: dt-bindings: dwmac: Convert mediatek-dwmac to
+   DT schema" as Rob's comments.
+2. fall back "net: dt-bindings: dwmac: add support for mt8195" to v8 version
+   as mentioned in previous reply(https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20211216055328.15953-7-biao.huang@mediatek.com/):
+   2.1 there is already a special clock named "rmii_internal", which need to
+       be put to the end of the clock list(driver special handling),
+       so we can't simply put new "mac_cg" for mt8195 to the end of the clock
+       list.
+   2.2 we prefer the if-then schema, which will make mt8195 clock list clearer
+       with some duplicated information.
+   2.3 we expect the future IC will follow mt2712 or mt8195, so we only need
+       add new IC name to compatible list for future IC, and will not make the
+       clock list binding files worse.
+
+Changes in v10:
+1. add detailed description in "arm64: dts: mt2712: update ethernet
+   device node" to make the modifications clearer as Matthias's comments.
+2. modify dt-binding description as Rob's comments, and "make dtbs_check" runs
+   pass locally with "arm64: dts: mt2712: update ethernet device node"
+   in this series.
+
+Changes in v9:
+1. remove oneOf for 1 entry as Rob's comments.
+2. add new clocks to the end of existing clocks to simplify
+   the binding as Rob's comments.
+
+Changes in v8:
+1. add acked-by in "stmmac: dwmac-mediatek: add platform level clocks
+   management" patch
+
+Changes in v7:
+1. fix uninitialized warning as Jakub's comments.
+
+Changes in v6:
+1. update commit message as Jakub's comments.
+2. split mt8195 eth dts patch("arm64: dts: mt8195: add ethernet device
+   node") from this series, since mt8195 dtsi/dts basic patches is still
+   under reviewing.
+   https://patchwork.kernel.org/project/linux-mediatek/list/?series=579071
+   we'll resend mt8195 eth dts patch once all the dependent patches are
+   accepted.
+
+Changes in v5:
+1. remove useless inclusion in dwmac-mediatek.c as Angelo's comments.
+2. add acked-by in "net-next: stmmac: dwmac-mediatek: add support for
+   mt8195" patch
+
+Changes in v4:
+1. add changes in commit message in "net-next: dt-bindings: dwmac:
+   Convert mediatek-dwmac to DT schema" patch.
+2. remove ethernet-controller.yaml since snps,dwmac.yaml already include it.
 
 Changes in v3:
-- correct abbreviations with capital letters in commit message
-- replace copyright year with 2022 in mtk-sd.c
-- remove unnessary pointer casting
-- adjust variable order to reversed xmas tree
-- remove a redundant blank line
-- refine if statement, following standard pattern
+1. Add prefix "net-next" to support new IC as Denis's suggestion.
+2. Split dt-bindings to two patches, one for conversion, and the other for
+   new IC.
+3. add a new patch to update device node in mt2712-evb.dts to accommodate to
+   changes in driver.
+4. remove unnecessary wrapper as Angelo's suggestion.
+5. Add acked-by in "net-next: stmmac: dwmac-mediatek: Reuse more common
+   features" patch.
 
-Axe Yang (3):
-  dt-bindings: mmc: add cap-sdio-async-irq flag
-  mmc: core: Add support for SDIO async interrupt
-  mmc: mediatek: add support for SDIO eint IRQ
+Changes in v2:
+1. fix errors/warnings in mediatek-dwmac.yaml with upgraded dtschema tools
 
- .../bindings/mmc/mmc-controller.yaml          |   5 +
- drivers/mmc/core/host.c                       |   2 +
- drivers/mmc/core/sdio.c                       |  17 +++
- drivers/mmc/host/mtk-sd.c                     | 125 ++++++++++++++++--
- include/linux/mmc/card.h                      |   3 +-
- include/linux/mmc/host.h                      |   1 +
- include/linux/mmc/sdio.h                      |   5 +
- 7 files changed, 149 insertions(+), 9 deletions(-)
+Changes in v1:
+This series include 5 patches:
+1. add platform level clocks management for dwmac-mediatek
+2. resue more common features defined in stmmac_platform.c
+3. add ethernet entry for mt8195
 
--- 
-2.25.1
+Biao Huang (7):
+  stmmac: dwmac-mediatek: add platform level clocks management
+  stmmac: dwmac-mediatek: Reuse more common features
+  stmmac: dwmac-mediatek: re-arrange clock setting
+  arm64: dts: mt2712: update ethernet device node
+  net: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema
+  stmmac: dwmac-mediatek: add support for mt8195
+  net: dt-bindings: dwmac: add support for mt8195
+
+ .../bindings/net/mediatek-dwmac.txt           |  91 ----
+ .../bindings/net/mediatek-dwmac.yaml          | 175 ++++++++
+ arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |   1 +
+ arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  14 +-
+ .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 389 +++++++++++++++---
+ 5 files changed, 526 insertions(+), 144 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
+ create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+
+--
+2.18.0
+
 
 
 _______________________________________________
