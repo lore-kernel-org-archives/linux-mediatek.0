@@ -4,75 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FD2DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 15:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4176BC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 16:59:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aoLl38a49Ytc8F7mFoAyWkAOwbgRyjWQgRZBlbvUczQ=; b=IhrfwOKTlxodPN
-	8mFAQc0JQy4xLfLUXc2YbdUkAoCphK/jn6ekDPt8bfQKchGjBI84ce9I3KBtLBmNzjwyE1HjbtKxg
-	P6TchGHT9LjVa2MedaL9zfyoPbhvcpn8aedbz3f4DYvlmyc+6FAXAREMd+md4xCaB83WbPqJHkyZy
-	AtZiG9XOc+qIIY7in5Xkz9W6xOrjIGLHM+RmWRs55Vh3k4w02Tbq55D5f5sJZy5EaZqupd3rbEHP+
-	wMjjVhLDr0wpyISrXZHdDq8o3ZKS+ssis+2RijkVqozsfPYHOKE5FQLavI7ryLaIvDsNTpTlsQvvX
-	m7Unkm0uXBI4iNkDZSFw==;
+	List-Owner; bh=q8YrsTVu4dXBk9KgVMJI+iZQ40k5wvV2019kdZMyyHc=; b=0E41qOX+ijZ1vD
+	kB9ApznU1RM95Up9lJiNSzge1x5ZR8nAQtK4UvhE+JAY7zGAjdnnyWAcVCetf6tNccil1ENJH5ske
+	VdEbUsTWhMAGfsS2jS4ra0fFipdl7frrfGiU9QLQaMrmBLdxbuimESvzyvGMsPUox2wujzlkqkQ7G
+	dcJwc2zk76g/p1i3maQi+wYgeN/g8kb//qDvU3ryJarZ1XtLtdXD/oS9C0IMBL4EO0CK+lRMEW3zd
+	9p3C2i+/krpO2HaRRTSLVjAVTbsVTnTIHXajssaFgIqhv62dii3qhxidZmeh8McnBPwdMyBdfESNm
+	ABBbMo9KeOaCFa0R0mrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9U3F-00FPFN-R9; Mon, 17 Jan 2022 15:36:09 +0000
-Received: from mail-ot1-f49.google.com ([209.85.210.49])
+	id 1n9VLq-00FeoP-49; Mon, 17 Jan 2022 16:59:26 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9U2t-00FP8G-Oc; Mon, 17 Jan 2022 15:35:49 +0000
-Received: by mail-ot1-f49.google.com with SMTP id
- g1-20020a9d6481000000b00592d01f2b6eso16179559otl.5; 
- Mon, 17 Jan 2022 07:35:47 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:from:to:cc:in-reply-to:references:subject:date
- :message-id;
- bh=uz9rWH9EExEde9e83L6Ci5xDXHmn67olZ/Bo1AaALIk=;
- b=kovswACzom6KoF6GvNUZtHmaL7x7OyFkdLvRwNt711DAgeWDDXdBL3rA7leZhd1SU4
- LRYdy3KIBo9S8heJiYssvlERICTJvqMtBwHjsj3HQSZRF+HMrKPKy4C3Jw0Y2vmgha4A
- 8xyk8VhAkrvIvpCBcZLkYHf8TC/Ys/Idm2mj2dATPG9C9xrWFBFldpk9W1gpCbC3e/Lf
- 184qSEkKanh7Dq0WX10fbnFkkyzXXa0BUDiAcILDaw0h7HocBMIGuHdLnY8RVh+ij6Nw
- QcYSlyiYwejOr0G4F91t9GZT93SZF1gqvSVvCvX8LzafhBqWNM9mHvHIyF7JIdiT5Gx3
- YVbg==
-X-Gm-Message-State: AOAM533yEs9Ev5SJ065hD3fq29rXwXK0oRYr/GPlUKRl1m5JSThDAxyC
- QDSKJA5/voiTh7pm3Gugng==
-X-Google-Smtp-Source: ABdhPJzAopoamav84cvKKv308QfSUylWTMQX34XDs9D8wI7eeXkkB7i7iaF0ajflyRA76l5dpV6RKg==
-X-Received: by 2002:a05:6830:1f56:: with SMTP id
- u22mr9420465oth.138.1642433746928; 
- Mon, 17 Jan 2022 07:35:46 -0800 (PST)
-Received: from robh.at.kernel.org (66-90-148-213.dyn.grandenetworks.net.
- [66.90.148.213])
- by smtp.gmail.com with ESMTPSA id bg17sm7015383oib.25.2022.01.17.07.35.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Jan 2022 07:35:45 -0800 (PST)
-Received: (nullmailer pid 3923087 invoked by uid 1000);
- Mon, 17 Jan 2022 15:35:42 -0000
-From: Rob Herring <robh@kernel.org>
-To: Biao Huang <biao.huang@mediatek.com>
-Cc: srv_heupstream@mediatek.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- angelogioacchino.delregno@collabora.com, macpaul.lin@mediatek.com,
- linux-kernel@vger.kernel.org, Rob Herring <robh+dt@kernel.org>,
- Giuseppe Cavallaro <peppe.cavallaro@st.com>, Jakub Kicinski <kuba@kernel.org>,
- davem@davemloft.net, Jose Abreu <joabreu@synopsys.com>,
- linux-stm32@st-md-mailman.stormreply.com,
- Matthias Brugger <matthias.bgg@gmail.com>, netdev@vger.kernel.org,
- Alexandre Torgue <alexandre.torgue@foss.st.com>, dkirjanov@suse.de,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>
-In-Reply-To: <20220117070706.17853-8-biao.huang@mediatek.com>
-References: <20220117070706.17853-1-biao.huang@mediatek.com>
- <20220117070706.17853-8-biao.huang@mediatek.com>
-Subject: Re: [PATCH net-next v12 7/7] net: dt-bindings: dwmac: add support for
- mt8195
-Date: Mon, 17 Jan 2022 09:35:42 -0600
-Message-Id: <1642433742.934070.3923086.nullmailer@robh.at.kernel.org>
+ id 1n9VLR-00FeVv-6d; Mon, 17 Jan 2022 16:59:03 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id DCDD1B8113A;
+ Mon, 17 Jan 2022 16:58:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1EDFBC36AF2;
+ Mon, 17 Jan 2022 16:58:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642438738;
+ bh=yXNyj5w8WPn/dUWK5qhdWXLoj5pVBSY3hqJPXa2z4tY=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=pBwFXJh7I16xBKBvnY+P0MEHpQd4FRruBXzAXY0H0plMkUA4lqc5VfMIk41ZkTo5C
+ SvwfhaUiuo2P5DPau2sO5fGMQpvsXTN1H2XnllfW6ECAGii6CKl5Y2TVS6h2T9cp+d
+ untEUPcrBZncXnhTGR2HlMZtAy6/SGwMJLGki+HVQKbu3s7w5ypwXmnsxA8ITHL3Sw
+ rxIzSX6DoReIMths0NjnGSJ4tYg9IvBXpuSBVn3UwA0q/lzBV8x7PmP8sGboydpubH
+ JucI1OLtnHps2XYHTGyerFgaqemjfu/0Mf+Urd6EJA/5B+GlUMYwUP2IWIbjgBXwY3
+ WtIhbR97U6jCg==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: Sam Protsenko <semen.protsenko@linaro.org>,
+ Sylwester Nawrocki <s.nawrocki@samsung.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ Sasha Levin <sashal@kernel.org>, tomasz.figa@gmail.com,
+ cw00.choi@samsung.com, mturquette@baylibre.com, sboyd@kernel.org,
+ matthias.bgg@gmail.com, linux-samsung-soc@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.16 02/52] clk: samsung: exynos850: Register clocks
+ early
+Date: Mon, 17 Jan 2022 11:58:03 -0500
+Message-Id: <20220117165853.1470420-2-sashal@kernel.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220117165853.1470420-1-sashal@kernel.org>
+References: <20220117165853.1470420-1-sashal@kernel.org>
+MIME-Version: 1.0
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_073547_823362_3C4F2F97 
-X-CRM114-Status: GOOD (  10.87  )
+X-CRM114-CacheID: sfid-20220117_085901_552196_2C88DA0D 
+X-CRM114-Status: GOOD (  21.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,45 +76,160 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Jan 2022 15:07:06 +0800, Biao Huang wrote:
-> Add binding document for the ethernet on mt8195.
-> 
-> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
-> ---
->  .../bindings/net/mediatek-dwmac.yaml          | 28 ++++++++++++++++---
->  1 file changed, 24 insertions(+), 4 deletions(-)
-> 
+From: Sam Protsenko <semen.protsenko@linaro.org>
 
-Running 'make dtbs_check' with the schema in this patch gives the
-following warnings. Consider if they are expected or the schema is
-incorrect. These may not be new warnings.
+[ Upstream commit bcda841f9bf2cddcf2f000cba96f2e27f6f2bdbf ]
 
-Note that it is not yet a requirement to have 0 warnings for dtbs_check.
-This will change in the future.
+Some clocks must be registered before init calls. For example MCT clock
+(from CMU_PERI) is needed for MCT timer driver, which is registered
+with TIMER_OF_DECLARE(). By the time we get to core_initcall() used for
+clk-exynos850 platform driver init, it's already too late. Inability to
+get "mct" clock in MCT driver leads to kernel panic, as functions
+registered with *_OF_DECLARE() can't do deferred calls. MCT timer driver
+can't be fixed either, as it's acting as a clock source and it's
+essential to register it in start_kernel() -> time_init().
 
-Full log is available here: https://patchwork.ozlabs.org/patch/1580608
+Let's register CMU_PERI clocks early, using CLK_OF_DECLARE(). CMU_TOP
+generates clocks needed for CMU_PERI, but it's already registered early.
 
+While at it, let's cleanup the code a bit, by extracting everything
+related to CMU initialization and registration to the separate function.
 
-ethernet@1101c000: clock-names: ['axi', 'apb', 'mac_main', 'ptp_ref'] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+Similar issue was discussed at [1] and addressed in commit 1f7db7bbf031
+("clk: renesas: cpg-mssr: Add early clock support"), as well as in
+drivers/clk/mediatek/clk-mt2712.c.
 
-ethernet@1101c000: clocks: [[27, 34], [27, 37], [6, 154], [6, 155]] is too short
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+[1] https://patchwork.kernel.org/project/linux-renesas-soc/patch/20180829132954.64862-2-chris.brandt@renesas.com/
 
-ethernet@1101c000: compatible: ['mediatek,mt2712-gmac'] does not contain items matching the given schema
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+Signed-off-by: Sam Protsenko <semen.protsenko@linaro.org>
+Signed-off-by: Sylwester Nawrocki <s.nawrocki@samsung.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Link: https://lore.kernel.org/r/20211122144206.23134-1-semen.protsenko@linaro.org
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/clk/samsung/clk-exynos850.c | 70 ++++++++++++++++++++---------
+ 1 file changed, 49 insertions(+), 21 deletions(-)
 
-ethernet@1101c000: compatible: 'oneOf' conditional failed, one must be fixed:
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
-
-ethernet@1101c000: Unevaluated properties are not allowed ('compatible', 'reg', 'interrupts', 'interrupt-names', 'mac-address', 'clock-names', 'clocks', 'power-domains', 'snps,axi-config', 'snps,mtl-rx-config', 'snps,mtl-tx-config', 'snps,txpbl', 'snps,rxpbl', 'clk_csr', 'phy-mode', 'phy-handle', 'snps,reset-gpio', 'mdio' were unexpected)
-	arch/arm64/boot/dts/mediatek/mt2712-evb.dt.yaml
+diff --git a/drivers/clk/samsung/clk-exynos850.c b/drivers/clk/samsung/clk-exynos850.c
+index 2294989e244c5..79cce8ba88831 100644
+--- a/drivers/clk/samsung/clk-exynos850.c
++++ b/drivers/clk/samsung/clk-exynos850.c
+@@ -60,6 +60,43 @@ static void __init exynos850_init_clocks(struct device_node *np,
+ 	iounmap(reg_base);
+ }
+ 
++/**
++ * exynos850_register_cmu - Register specified Exynos850 CMU domain
++ * @dev:	Device object; may be NULL if this function is not being
++ *		called from platform driver probe function
++ * @np:		CMU device tree node
++ * @cmu:	CMU data
++ *
++ * Register specified CMU domain, which includes next steps:
++ *
++ * 1. Enable parent clock of @cmu CMU
++ * 2. Set initial registers configuration for @cmu CMU clocks
++ * 3. Register @cmu CMU clocks using Samsung clock framework API
++ */
++static void __init exynos850_register_cmu(struct device *dev,
++		struct device_node *np, const struct samsung_cmu_info *cmu)
++{
++	/* Keep CMU parent clock running (needed for CMU registers access) */
++	if (cmu->clk_name) {
++		struct clk *parent_clk;
++
++		if (dev)
++			parent_clk = clk_get(dev, cmu->clk_name);
++		else
++			parent_clk = of_clk_get_by_name(np, cmu->clk_name);
++
++		if (IS_ERR(parent_clk)) {
++			pr_err("%s: could not find bus clock %s; err = %ld\n",
++			       __func__, cmu->clk_name, PTR_ERR(parent_clk));
++		} else {
++			clk_prepare_enable(parent_clk);
++		}
++	}
++
++	exynos850_init_clocks(np, cmu->clk_regs, cmu->nr_clk_regs);
++	samsung_cmu_register_one(np, cmu);
++}
++
+ /* ---- CMU_TOP ------------------------------------------------------------- */
+ 
+ /* Register Offset definitions for CMU_TOP (0x120e0000) */
+@@ -347,10 +384,10 @@ static const struct samsung_cmu_info top_cmu_info __initconst = {
+ 
+ static void __init exynos850_cmu_top_init(struct device_node *np)
+ {
+-	exynos850_init_clocks(np, top_clk_regs, ARRAY_SIZE(top_clk_regs));
+-	samsung_cmu_register_one(np, &top_cmu_info);
++	exynos850_register_cmu(NULL, np, &top_cmu_info);
+ }
+ 
++/* Register CMU_TOP early, as it's a dependency for other early domains */
+ CLK_OF_DECLARE(exynos850_cmu_top, "samsung,exynos850-cmu-top",
+ 	       exynos850_cmu_top_init);
+ 
+@@ -615,6 +652,15 @@ static const struct samsung_cmu_info peri_cmu_info __initconst = {
+ 	.clk_name		= "dout_peri_bus",
+ };
+ 
++static void __init exynos850_cmu_peri_init(struct device_node *np)
++{
++	exynos850_register_cmu(NULL, np, &peri_cmu_info);
++}
++
++/* Register CMU_PERI early, as it's needed for MCT timer */
++CLK_OF_DECLARE(exynos850_cmu_peri, "samsung,exynos850-cmu-peri",
++	       exynos850_cmu_peri_init);
++
+ /* ---- CMU_CORE ------------------------------------------------------------ */
+ 
+ /* Register Offset definitions for CMU_CORE (0x12000000) */
+@@ -779,24 +825,9 @@ static int __init exynos850_cmu_probe(struct platform_device *pdev)
+ {
+ 	const struct samsung_cmu_info *info;
+ 	struct device *dev = &pdev->dev;
+-	struct device_node *np = dev->of_node;
+ 
+ 	info = of_device_get_match_data(dev);
+-	exynos850_init_clocks(np, info->clk_regs, info->nr_clk_regs);
+-	samsung_cmu_register_one(np, info);
+-
+-	/* Keep bus clock running, so it's possible to access CMU registers */
+-	if (info->clk_name) {
+-		struct clk *bus_clk;
+-
+-		bus_clk = clk_get(dev, info->clk_name);
+-		if (IS_ERR(bus_clk)) {
+-			pr_err("%s: could not find bus clock %s; err = %ld\n",
+-			       __func__, info->clk_name, PTR_ERR(bus_clk));
+-		} else {
+-			clk_prepare_enable(bus_clk);
+-		}
+-	}
++	exynos850_register_cmu(dev, dev->of_node, info);
+ 
+ 	return 0;
+ }
+@@ -806,9 +837,6 @@ static const struct of_device_id exynos850_cmu_of_match[] = {
+ 	{
+ 		.compatible = "samsung,exynos850-cmu-hsi",
+ 		.data = &hsi_cmu_info,
+-	}, {
+-		.compatible = "samsung,exynos850-cmu-peri",
+-		.data = &peri_cmu_info,
+ 	}, {
+ 		.compatible = "samsung,exynos850-cmu-core",
+ 		.data = &core_cmu_info,
+-- 
+2.34.1
 
 
 _______________________________________________
