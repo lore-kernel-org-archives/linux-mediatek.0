@@ -4,67 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2827C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 10:51:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FA9C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 11:50:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tt4sjhpve7k7B358Pjq0XMm4rIFec38NBMUeOYKCVyI=; b=ln4QVjq+Ii15vJ8atvXPpGcYg0
-	UHza6bwZaDfVf/nSnmpIx7cHvTUb8XYwb6JZX2xHoQ5vU9Js04QOnJcc2xSqv54sKfVkXgyNiRxr+
-	7GxyF4Z1pINtQHw6nqCo3GwkDiQljLxw7AgpiSFpw0Cy6egeT/6z3hHSW0mD97WoF/Kqn5OcgGsPc
-	O3bPucR9yrwTTNRdmHBqg0UWxy//R0AZePJ7zGFSz/tD+900GH3plRgn4Bb7HtGkwC/lLlswIAPyq
-	mLFY3bnW4DVaw0pA0Ip7fE+UTAOcMLAVeub+y+IfFLAi64tKL0qDzwsuwENU7AeDzTkkR3xhbUtfA
-	g2ou3/NA==;
+	bh=6Oqumi2vEbfbgct3s4fvzb2nLZ/dvLTr0+zzCTI4X0Y=; b=PrZ1L8SMrIuqrmw8yPfcXgJoVJ
+	dYsJKVPMCHQeOWypZOHSaEjuzC58iZkpg10uPfPhagFSz75YBm1JmyMdeVi+hhSpl12+O2GZWHHgU
+	Ft0Iy0prA0Syqfr1BiWgvdPYtc8YYp4WN1lEn+86O604jNK4tTjQuEqGjumofb5itwATwmciW82BY
+	F6OG7kuSpNcJgHzdhmVgz6UagNpyLYR+kTELZGWbx3P4kLr5neTmagzYvLqaFa8lkVR12YYN2Lm21
+	0oRkJd1N/2Y7Gw8L0q0eKzZzbEEe0OCoKwW+RcJsvrEnyFmxqBD3nOAPVVLUfs/YqdZUByDFDoReE
+	Z/sYrNVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9PbA-00EZ1J-Ju; Mon, 17 Jan 2022 10:50:52 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1n9QWS-00EhoI-Ik; Mon, 17 Jan 2022 11:50:04 +0000
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9Paw-00EYyT-Th; Mon, 17 Jan 2022 10:50:41 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 65E1A1F42063
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642416637;
- bh=ptiEFjXjhoBJsX0S13oN/2lvPYOFqtq8gyPRviCgm60=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=FAEGTZraxddVLjoujpmzgnSd9KLr7FjNwLAV+yAVPuClpARIKHBMsOh88ehA+L2wh
- dHlXJJveXAvt4RLAPcPesyOeKew9lEp/oDUV0pszTBhSMFiER5h8AMZGEHknf3MXQk
- 9VOHG91RQaO2i2UxtGbs3Xgv81febwN8b0fDsv6prWFwpXeui1I9/WMjV1297JlSCB
- 7bzZCVCJtbPgHaWrq9jOZorTTJOR+aB3kC35KYpNa/DDa7Bzk1J/PCfguV3EvJoLu/
- GF4FVoxZHbBFs4vKcVBW0k8ezmHPmQdEFlt6vVi7sHs7rH681frfna3h58rqpt//BA
- sGLUXDUSXr8kw==
-Subject: Re: [PATCH 3/3] mmc: mediatek: add support for SDIO eint IRQ
-To: Axe Yang <axe.yang@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
- Rob Herring <robh+dt@kernel.org>, Chaotian Jing
- <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Adrian Hunter <adrian.hunter@intel.com>
-Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Satya Tangirala <satyat@google.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
- <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
- Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
- Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
- Tian Tao <tiantao6@hisilicon.com>, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Yong Mao <yong.mao@mediatek.com>
-References: <20220117071220.17330-1-axe.yang@mediatek.com>
- <20220117071220.17330-4-axe.yang@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <754779eb-71f9-2083-a204-1d98b4a04a08@collabora.com>
-Date: Mon, 17 Jan 2022 11:50:33 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1n9QWO-00Ehms-VK; Mon, 17 Jan 2022 11:50:02 +0000
+Received: by mail-wm1-x333.google.com with SMTP id
+ o7-20020a05600c510700b00347e10f66d1so7858080wms.0; 
+ Mon, 17 Jan 2022 03:50:00 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=message-id:date:mime-version:user-agent:subject:content-language:to
+ :cc:references:from:in-reply-to:content-transfer-encoding;
+ bh=Qh9qlD7Xxyuod6l2VHcORITt556iH0cP6xXy3RESnzc=;
+ b=Mlh7ovtSMXfYuLtZJBDHb8iGlTGgdK+kw1r5kJiXwtkbGmEsnjbmlZKUV5ho5ALXtc
+ ErsaGGPcarRlcH0t4J9vPlE7jazy1cyw4hGIdk5wDin+9M1XbOFs7iX0+erqOXDuyLDU
+ N13wuTcAslvW26atfDB8z2bt5QcgcQx0NvYODdDPvmJu5WOEdUigB3+CL6bozU4yXHIO
+ z5RuHGs7a1T0dgtc9eifrjqDUx3C7Cj1uVvulqDbFgE7j4WbdpSwVcPr5oIJjqyg57+1
+ JsTSCgmyV7thCpmP1yut4igRrUJ/m74v/GBfEAf36/FiwfUXtIG2YDJO9iRXKAcSCsHW
+ HgNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=Qh9qlD7Xxyuod6l2VHcORITt556iH0cP6xXy3RESnzc=;
+ b=p1FRX5xgIxDUQRihC0H0kRNLYevCyKN14ToxK9txF2MQZr0KFy9fYcP0RkGdWUrT4d
+ hXCbKIOSw+vwS13V/4goKPb8hLLKsozrNETXawkKBg2ImaS6dAphErcz9lybsFX2XMyx
+ ZJR/AWVbh1AgnpWgGmfJzU299YTSKQQJknxItqwFPA7Fw+6d8KOfYSPhS/g/m5r36q6D
+ 20idu86Jss/maTvRP4w1SYY7NvnU6vYPozr9Koz2VDh4DPZFuH10fiGF2XAhqw0oVxhe
+ 5WRvHYXHjKQQNfoo5+LIab3jsUaFAid/3ikzFbETesftYo5z//+tES0OY69iXyfeLBTB
+ jJPQ==
+X-Gm-Message-State: AOAM531kLDXQr6aP8WQ5qet3Y01OM2+Nbz/dVoSWmhWZ03bFHkx6dT2x
+ oKK6q+dnViJQvser2JHHMO8=
+X-Google-Smtp-Source: ABdhPJxnzn9RYFSiRwIN27xe7uwz9Ej9yjcj/6lztBm/AGx+ZaPHnqv2QULOgW5amVoWsoNmN1+5pg==
+X-Received: by 2002:a5d:453a:: with SMTP id j26mr15627235wra.348.1642420199348; 
+ Mon, 17 Jan 2022 03:49:59 -0800 (PST)
+Received: from [192.168.0.14] ([37.223.145.74])
+ by smtp.gmail.com with ESMTPSA id n7sm13895148wms.46.2022.01.17.03.49.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Jan 2022 03:49:58 -0800 (PST)
+Message-ID: <c8fc24a2-9ee3-75a2-0928-95a217d9dfdf@gmail.com>
+Date: Mon, 17 Jan 2022 12:49:56 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220117071220.17330-4-axe.yang@mediatek.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [PATCH v10 00/13] Clean up "mediatek,larb"
 Content-Language: en-US
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yong Wu <yong.wu@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Joerg Roedel <jroedel@suse.de>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
+ David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
+References: <20220117070510.17642-1-yong.wu@mediatek.com>
+ <06e5e76c-557a-20a5-b8dd-37b25b3384a3@collabora.com>
+From: Matthias Brugger <matthias.bgg@gmail.com>
+In-Reply-To: <06e5e76c-557a-20a5-b8dd-37b25b3384a3@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_025039_278807_1777FAD6 
-X-CRM114-Status: GOOD (  36.56  )
+X-CRM114-CacheID: sfid-20220117_035001_062181_5C6FA1E1 
+X-CRM114-Status: GOOD (  24.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,286 +88,167 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
+ dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
+ anthony.huang@mediatek.com, youlin.pei@mediatek.com,
+ Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
+ Matthias Kaehlcke <mka@chromium.org>, mingyuan.ma@mediatek.com,
+ linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, libo.kang@mediatek.com,
+ yi.kuo@mediatek.com, linux-mediatek@lists.infradead.org,
+ Hsin-Yi Wang <hsinyi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, anan.sun@mediatek.com,
+ srv_heupstream@mediatek.com, acourbot@chromium.org,
+ linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
+ Robin Murphy <robin.murphy@arm.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/01/22 08:12, Axe Yang ha scritto:
-> Add support for eint IRQ when MSDC is used as an SDIO host. This
-> feature requires SDIO device support async IRQ function. With this
-> feature, SDIO host can be awakened by SDIO card in suspend state,
-> without additional pin.
-> 
-> MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
-> turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
-> resume, switch GPIO function back to DAT1 mode then turn on clock.
-> 
-> Some device tree property should be added or modified in MSDC node
-> to support SDIO eint IRQ. Pinctrls named state_dat1 and state_eint
-> are mandatory. And cap-sdio-async-irq flag is necessary since this
-> feature depends on asynchronous interrupt:
->          &mmcX {
->                  ...
->                  pinctrl-names = "default", "state_uhs", "state_eint",
->                                  "state_dat1";
->                  ...
->                  pinctrl-2 = <&mmc2_pins_eint>;
->                  pinctrl-3 = <&mmc2_pins_dat1>;
->                  ...
->                  cap-sdio-async-irq;
->                  ...
->          };
-> 
-> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
-> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
-> ---
->   drivers/mmc/host/mtk-sd.c | 125 +++++++++++++++++++++++++++++++++++---
->   1 file changed, 117 insertions(+), 8 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-> index 65037e1d7723..cbdbcce99fd9 100644
-> --- a/drivers/mmc/host/mtk-sd.c
-> +++ b/drivers/mmc/host/mtk-sd.c
-> @@ -1,6 +1,6 @@
->   // SPDX-License-Identifier: GPL-2.0-only
->   /*
-> - * Copyright (c) 2014-2015 MediaTek Inc.
-> + * Copyright (c) 2022 MediaTek Inc.
->    * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
->    */
->   
-> @@ -9,6 +9,7 @@
->   #include <linux/clk.h>
->   #include <linux/delay.h>
->   #include <linux/dma-mapping.h>
-> +#include <linux/gpio/consumer.h>
->   #include <linux/iopoll.h>
->   #include <linux/ioport.h>
->   #include <linux/irq.h>
-> @@ -440,8 +441,12 @@ struct msdc_host {
->   	struct pinctrl *pinctrl;
->   	struct pinctrl_state *pins_default;
->   	struct pinctrl_state *pins_uhs;
-> +	struct pinctrl_state *pins_eint;
-> +	struct pinctrl_state *pins_dat1;
->   	struct delayed_work req_timeout;
->   	int irq;		/* host interrupt */
-> +	int eint_irq;		/* device interrupt */
-> +	int sdio_irq_cnt;	/* irq enable cnt */
->   	struct reset_control *reset;
->   
->   	struct clk *src_clk;	/* msdc source clock */
-> @@ -465,6 +470,7 @@ struct msdc_host {
->   	bool hs400_tuning;	/* hs400 mode online tuning */
->   	bool internal_cd;	/* Use internal card-detect logic */
->   	bool cqhci;		/* support eMMC hw cmdq */
-> +	bool sdio_eint_ready;	/* Ready to support SDIO eint interrupt */
->   	struct msdc_save_para save_para; /* used when gate HCLK */
->   	struct msdc_tune_para def_tune_para; /* default tune setting */
->   	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
-> @@ -1527,10 +1533,12 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
->   	__msdc_enable_sdio_irq(host, enb);
->   	spin_unlock_irqrestore(&host->lock, flags);
->   
-> -	if (enb)
-> -		pm_runtime_get_noresume(host->dev);
-> -	else
-> -		pm_runtime_put_noidle(host->dev);
-> +	if (mmc->card && !mmc->card->cccr.enable_async_irq) {
-> +		if (enb)
-> +			pm_runtime_get_noresume(host->dev);
-> +		else
-> +			pm_runtime_put_noidle(host->dev);
-> +	}
->   }
->   
->   static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
-> @@ -2461,6 +2469,50 @@ static const struct mmc_host_ops mt_msdc_ops = {
->   	.hw_reset = msdc_hw_reset,
->   };
->   
-> +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
-> +{
-> +	struct msdc_host *host = dev_id;
-> +	struct mmc_host *mmc = mmc_from_priv(host);
-> +	unsigned long flags;
-> +
-> +	spin_lock_irqsave(&host->lock, flags);
-> +	if (likely(host->sdio_irq_cnt > 0)) {
-> +		disable_irq_nosync(host->eint_irq);
-> +		disable_irq_wake(host->eint_irq);
-> +		host->sdio_irq_cnt--;
-> +	}
-> +	spin_unlock_irqrestore(&host->lock, flags);
-> +
-> +	sdio_signal_irq(mmc);
-> +
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int msdc_request_dat1_eint_irq(struct msdc_host *host)
-> +{
-> +	struct gpio_desc *desc;
-> +	int irq, ret;
-> +
-> +	desc = devm_gpiod_get(host->dev, "eint", GPIOD_IN);
-> +	if (IS_ERR(desc))
-> +		return PTR_ERR(desc);
-> +
-> +	ret = gpiod_to_irq(desc);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	irq = ret;
-> +	ret = devm_request_threaded_irq(host->dev, irq, NULL, msdc_sdio_eint_irq,
-> +					IRQF_TRIGGER_LOW | IRQF_ONESHOT | IRQF_NO_AUTOEN,
-> +					"sdio-eint", host);
-> +	if (ret)
-> +		return ret;
-> +
-> +	host->eint_irq = irq;
-> +
-> +	return 0;
-> +}
-> +
->   static const struct cqhci_host_ops msdc_cmdq_ops = {
->   	.enable         = msdc_cqe_enable,
->   	.disable        = msdc_cqe_disable,
-> @@ -2631,6 +2683,23 @@ static int msdc_drv_probe(struct platform_device *pdev)
->   		goto host_free;
->   	}
->   
-> +	if (!(mmc->caps2 & MMC_CAP2_NO_SDIO)) {
-
-Please, also check for the async irq capability here:
-
-if (!(mmc->caps2 & MMC_CAP2_NO_SDIO) && (mmc->caps2 & MMC_CAP2_SDIO_ASYNC_IRQ)) {
-
-...because if we have "state_eint" specified in DT, but we didn't *also* specify
-cap-sdio-async-irq, then clearly we don't want to use this functionality - hence
-it becomes useless to register the interrupt handler for that because we're never
-enabling the CCCR_INTERRUPT_EXT on the card (from drivers/mmc/core/host.c).
-
-Regards,
-Angelo
-
-> +		/* Support for SDIO eint irq */
-> +		host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
-> +		if (IS_ERR(host->pins_eint)) {
-> +			dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
-> +		} else {
-> +			host->pins_dat1 = pinctrl_lookup_state(host->pinctrl, "state_dat1");
-> +			if (IS_ERR(host->pins_dat1)) {
-> +				ret = dev_err_probe(&pdev->dev, PTR_ERR(host->pins_dat1),
-> +						    "Cannot find pinctrl dat1!\n");
-> +				goto host_free;
-> +			}
-> +
-> +			host->sdio_eint_ready = true;
-> +		}
-> +	}
-> +
->   	msdc_of_property_parse(pdev, host);
->   
->   	host->dev = &pdev->dev;
-> @@ -2722,6 +2791,16 @@ static int msdc_drv_probe(struct platform_device *pdev)
->   	if (ret)
->   		goto release;
->   
-> +	if (host->sdio_eint_ready) {
-> +		ret = msdc_request_dat1_eint_irq(host);
-> +		if (ret) {
-> +			dev_err(host->dev, "Failed to register data1 eint irq!\n");
-> +			goto release;
-> +		}
-> +
-> +		pinctrl_select_state(host->pinctrl, host->pins_dat1);
-> +	}
-> +
->   	pm_runtime_set_active(host->dev);
->   	pm_runtime_set_autosuspend_delay(host->dev, MTK_MMC_AUTOSUSPEND_DELAY);
->   	pm_runtime_use_autosuspend(host->dev);
-> @@ -2841,16 +2920,31 @@ static void msdc_restore_reg(struct msdc_host *host)
->   
->   static int __maybe_unused msdc_runtime_suspend(struct device *dev)
->   {
-> +	unsigned long flags;
->   	struct mmc_host *mmc = dev_get_drvdata(dev);
->   	struct msdc_host *host = mmc_priv(mmc);
->   
->   	msdc_save_reg(host);
-> +
-> +	if (host->sdio_eint_ready) {
-> +		disable_irq(host->irq);
-> +		pinctrl_select_state(host->pinctrl, host->pins_eint);
-> +		spin_lock_irqsave(&host->lock, flags);
-> +		if (host->sdio_irq_cnt == 0) {
-> +			enable_irq(host->eint_irq);
-> +			enable_irq_wake(host->eint_irq);
-> +			host->sdio_irq_cnt++;
-> +		}
-> +		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +		spin_unlock_irqrestore(&host->lock, flags);
-> +	}
->   	msdc_gate_clock(host);
->   	return 0;
->   }
->   
->   static int __maybe_unused msdc_runtime_resume(struct device *dev)
->   {
-> +	unsigned long flags;
->   	struct mmc_host *mmc = dev_get_drvdata(dev);
->   	struct msdc_host *host = mmc_priv(mmc);
->   	int ret;
-> @@ -2860,10 +2954,25 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
->   		return ret;
->   
->   	msdc_restore_reg(host);
-> +
-> +	if (host->sdio_eint_ready) {
-> +		spin_lock_irqsave(&host->lock, flags);
-> +		if (host->sdio_irq_cnt > 0) {
-> +			disable_irq_nosync(host->eint_irq);
-> +			disable_irq_wake(host->eint_irq);
-> +			host->sdio_irq_cnt--;
-> +			sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
-> +		} else {
-> +			sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
-> +		}
-> +		spin_unlock_irqrestore(&host->lock, flags);
-> +		pinctrl_select_state(host->pinctrl, host->pins_uhs);
-> +		enable_irq(host->irq);
-> +	}
->   	return 0;
->   }
->   
-> -static int __maybe_unused msdc_suspend(struct device *dev)
-> +static int __maybe_unused msdc_suspend_noirq(struct device *dev)
->   {
->   	struct mmc_host *mmc = dev_get_drvdata(dev);
->   	int ret;
-> @@ -2877,13 +2986,13 @@ static int __maybe_unused msdc_suspend(struct device *dev)
->   	return pm_runtime_force_suspend(dev);
->   }
->   
-> -static int __maybe_unused msdc_resume(struct device *dev)
-> +static int __maybe_unused msdc_resume_noirq(struct device *dev)
->   {
->   	return pm_runtime_force_resume(dev);
->   }
->   
->   static const struct dev_pm_ops msdc_dev_pm_ops = {
-> -	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
-> +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend_noirq, msdc_resume_noirq)
->   	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
->   };
->   
-> 
-
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+CgpPbiAxNy8wMS8yMDIyIDExOjI3LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToK
+PiBJbCAxNy8wMS8yMiAwODowNCwgWW9uZyBXdSBoYSBzY3JpdHRvOgo+PiBNZWRpYVRlayBJT01N
+VSBibG9jayBkaWFncmFtIGFsd2F5cyBsaWtlIGJlbG93Ogo+Pgo+PiDCoMKgwqDCoMKgwqDCoMKg
+IE00VQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+PiDCoMKgwqDCoCBzbWktY29tbW9uCj4+IMKg
+wqDCoMKgwqDCoMKgwqDCoCB8Cj4+IMKgwqAgLS0tLS0tLS0tLS0tLQo+PiDCoMKgIHzCoMKgwqDC
+oMKgwqDCoMKgIHzCoCAuLi4KPj4gwqDCoCB8wqDCoMKgwqDCoMKgwqDCoCB8Cj4+IGxhcmIxwqDC
+oMKgwqAgbGFyYjIKPj4gwqDCoCB8wqDCoMKgwqDCoMKgwqDCoCB8Cj4+IHZkZWPCoMKgwqDCoMKg
+wqAgdmVuYwo+Pgo+PiBBbGwgdGhlIGNvbnN1bWVyIGNvbm5lY3Qgd2l0aCBzbWktbGFyYiwgdGhl
+biBjb25uZWN0IHdpdGggc21pLWNvbW1vbi4KPj4KPj4gV2hlbiB0aGUgY29uc3VtZXIgd29ya3Ms
+IGl0IHNob3VsZCBlbmFibGUgdGhlIHNtaS1sYXJiJ3MgcG93ZXIgd2hpY2ggYWxzbwo+PiBuZWVk
+IGVuYWJsZSB0aGUgc21pLWNvbW1vbidzIHBvd2VyIGZpcnN0bHkuCj4+Cj4+IFRodXMsIEZpcnN0
+bHksIHVzZSB0aGUgZGV2aWNlIGxpbmsgY29ubmVjdCB0aGUgY29uc3VtZXIgYW5kIHRoZQo+PiBz
+bWktbGFyYnMuIHRoZW4gYWRkIGRldmljZSBsaW5rIGJldHdlZW4gdGhlIHNtaS1sYXJiIGFuZCBz
+bWktY29tbW9uLgo+Pgo+PiBBZnRlciBhZGRpbmcgdGhlIGRldmljZV9saW5rLCB0aGVuICJtZWRp
+YXRlayxsYXJiIiBwcm9wZXJ0eSBjYW4gYmUgcmVtb3ZlZC4KPj4gdGhlIGlvbW11IGNvbnN1bWVy
+IGRvbid0IG5lZWQgY2FsbCB0aGUgbXRrX3NtaV9sYXJiX2dldC9wdXQgdG8gZW5hYmxlCj4+IHRo
+ZSBwb3dlciBhbmQgY2xvY2sgb2Ygc21pLWxhcmIgYW5kIHNtaS1jb21tb24uCj4+Cj4+IEJhc2Ug
+b24gdGhlIG1lZGlhIGJyYW5jaCBbMV0gYW5kIGEganBlZyBkdGJpbmRpbmcgcGF0Y2hzZXRbMl0g
+dGhhdCBhbHJlYWR5IGdvdAo+PiB0aGUgbmVjZXNzYXJ5IFItYi4KPj4KPj4gWzFdIGdpdDovL2xp
+bnV4dHYub3JnL2h2ZXJrdWlsL21lZGlhX3RyZWUuZ2l0IHRhZ3MvYnItdjUuMThkCj4+IFsyXSAK
+Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMTEyMDYxMzA0MjUu
+MTg0NDIwLTEtaHNpbnlpQGNocm9taXVtLm9yZy8gCj4+Cj4+Cj4+IENoYW5nZSBub3RlczoKPj4g
+djEwOiBhKSBSZWJhc2Ugb24gdGhlIG1lZGlhIHRyZWUuIFJlc3BpbiB0aGUgIm1lZGlhOiBtdGst
+dmNvZGVjOiIgcGF0Y2hlcy4KPj4gwqDCoMKgwqDCoCBiKSBBZGQgSm9lcmcncyBBY2sgZm9yIGlv
+bW11IHBhdGNoZXMuCj4+Cj4+IHY5OiAKPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgt
+bWVkaWF0ZWsvMjAyMTExMTIxMDU1MDkuMTIwMTAtMS15b25nLnd1QG1lZGlhdGVrLmNvbS8gCj4+
+Cj4+IMKgwqDCoMKgIDEpIEFkZCByZXR1cm4gLUVOT0RFViB3aGVuIHRoZSBkZXYgaXMgbnVsbC4K
+Pj4gwqDCoMKgwqAgMikgQWRkIG1vcmUgc3RyaWN0IGFib3V0IHRoZSBjYXNlIHRoYXQgYSBpb21t
+dSBjb25zdW1lIGRldmljZSB1c2UgdGhlIAo+PiBwb3J0cyBpbgo+PiDCoMKgwqDCoCBkaWZmZXJl
+bnQgbGFyYnMuIERvbid0IGFsbG93IHRoaXMgY2FzZS4KPj4gwqDCoMKgwqAgMykgUmVtb3ZlIHR3
+byBjb2RlYyBpbnRlcmZhY2U6IG10a192Y29kZWNfcmVsZWFzZV9lbmMvZGVjX3BtIHNpbmNlIGl0
+IAo+PiBvbmx5IGhhcyBvbmUKPj4gwqDCoMKgwqAgbGluZSBub3cuCj4+Cj4+IHY4OiAKPj4gaHR0
+cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMTA5MjkwMTM3MTkuMjUxMjAt
+MS15b25nLnd1QG1lZGlhdGVrLmNvbS8gCj4+Cj4+IMKgwqDCoMKgIDEpIFJlYmFzZSBvbiB2NS4x
+NS1yYzEuCj4+IMKgwqDCoMKgIDIpIERvbid0IHJlYmFzZSB0aGUgYmVsb3cgbWRwIHBhdGNoc2V0
+IHRoYXQgbWF5IHN0aWxsIG5lZWQgbW9yZSBkaXNjdXNzLgo+PiAgICAgIAo+PiBodHRwczovL2xv
+cmUua2VybmVsLm9yZy9saW51eC1tZWRpYXRlay8yMDIxMDcwOTAyMjMyNC4xNjA3ODg0LTEtZWl6
+YW5AY2hyb21pdW0ub3JnLyAKPj4KPj4gwqDCoMKgwqAgMykgQWRkIEZyYW5rJ3MgVGVzdGVkLWJ5
+LiBSZW1vdmUgRGFmbmEncyBUZXN0ZWQtYnkgYXMgaGUgcmVxdWVzdGVkLgo+Pgo+PiB2NzogCj4+
+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhdGVrLzIwMjEwNzMwMDI1MjM4LjIy
+NDU2LTEteW9uZy53dUBtZWRpYXRlay5jb20vIAo+Pgo+PiDCoMKgwqDCoCAxKSBGaXggYSBhcm0z
+MiBib290IGZhaWwgaXNzdWUuIHJlcG9ydGVkIGZyb20gRnJhbmsuCj4+IMKgwqDCoMKgIDIpIEFk
+ZCBhIHJldHVybiBmYWlsIGluIHRoZSBtdGsgZHJtLiBzdWdnZXN0ZWQgYnkgRGFmbmEuCj4+Cj4+
+IHY2OiAKPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMTA3MTQw
+MjU2MjYuNTUyOC0xLXlvbmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKgwqAgMSkgcmVi
+YXNlIG9uIHY1LjE0LXJjMS4KPj4gwqDCoMKgwqAgMikgRml4IHRoZSBpc3N1ZSBjb21tZW50ZWQg
+aW4gdjUgZnJvbSBEYWZuYSBhbmQgSHNpbi1ZaS4KPj4gwqDCoMKgwqAgMykgUmVtb3ZlIHRoZSBw
+YXRjaGVzIGFib3V0IHVzaW5nIHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQgc2luY2UgdGhleSBo
+YXZlCj4+IMKgwqDCoMKgwqDCoMKgIGFscmVhZHkgYmVlbiBtZXJnZWQgYnkgb3RoZXIgcGF0Y2hl
+cy4KPj4KPj4gdjU6IAo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYXRlay8y
+MDIxMDQxMDA5MTEyOC4zMTgyMy0xLXlvbmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKg
+wqAgMSkgQmFzZSB2NS4xMi1yYzIuCj4+IMKgwqDCoMKgIDIpIFJlbW92ZSBjaGFuZ2luZyB0aGUg
+bXRrLWlvbW11IHRvIG1vZHVsZV9wbGF0Zm9ybV9kcml2ZXIgcGF0Y2gsIEl0IGhhdmUgCj4+IGFs
+cmVhZHkgYmVlbiBhCj4+IMKgwqDCoMKgIGluZGVwZW5kZW50IHBhdGNoLgo+Pgo+PiB2NDogCj4+
+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhdGVrLzE1OTA4MjYyMTgtMjM2NTMt
+MS1naXQtc2VuZC1lbWFpbC15b25nLnd1QG1lZGlhdGVrLmNvbS8gCj4+Cj4+IMKgwqDCoMKgIGJh
+c2Ugb24gdjUuNy1yYzEuCj4+IMKgwqAgMSkgTW92ZSBkcm0gUE0gcGF0Y2ggYmVmb3JlIHNtaSBw
+YXRjaHMuCj4+IMKgwqAgMikgQ2hhbmdlIGJ1aWx0aW5fcGxhdGZvcm1fZHJpdmVyIHRvIG1vZHVs
+ZV9wbGF0Zm9ybV9kcml2ZXIgc2luY2Ugd2UgbWF5IG5lZWQKPj4gwqDCoMKgwqDCoCBidWlsZCBh
+cyBtb2R1bGUuCj4+IMKgwqAgMykgUmViYXNlIG1hbnkgcGF0Y2hzZXQgYXMgYWJvdmUuCj4+Cj4+
+IHYzOiAKPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtaW9tbXUvMTU2NzUwMzQ1Ni0y
+NDcyNS0xLWdpdC1zZW5kLWVtYWlsLXlvbmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKg
+wqAgMSkgcmViYXNlIG9uIHY1LjMtcmMxIGFuZCB0aGUgbGF0ZXN0IG10ODE4MyBwYXRjaHNldC4K
+Pj4gwqDCoMKgwqAgMikgVXNlIGRldmljZV9pc19ib3VuZCB0byBjaGVjayB3aGV0aGVyIHRoZSBk
+cml2ZXIgaXMgcmVhZHkgZnJvbSBNYXR0aGlhcy4KPj4gwqDCoMKgwqAgMykgQWRkIERMX0ZMQUdf
+U1RBVEVMRVNTIGZsYWcgd2hlbiBjYWxsaW5nIGRldmljZV9saW5rX2FkZCBhbmQgZXhwbGFpbiB0
+aGUKPj4gwqDCoMKgIHJlYXNvbiBpbiB0aGUgY29tbWl0IG1lc3NhZ2VbMy8xNF0uCj4+IMKgwqDC
+oMKgIDQpIEFkZCBhIGRpc3BsYXkgcGF0Y2hbMTIvMTRdIGludG8gdGhpcyBzZXJpZXMuIG90aGVy
+d2lzZSBpdCBtYXkgYWZmZWN0Cj4+IMKgwqDCoCBkaXNwbGF5IEhXIGZhc3Rsb2dvIGV2ZW4gdGhv
+dWdoIGl0IGRvbid0IGhhcHBlbiBpbiBtdDgxODMuCj4+IHYyOiAKPj4gaHR0cHM6Ly9sb3JlLmtl
+cm5lbC5vcmcvbGludXgtaW9tbXUvMTU2MDE3MTMxMy0yODI5OS0xLWdpdC1zZW5kLWVtYWlsLXlv
+bmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKgIDEpIHJlYmFzZSBvbiB2NS4yLXJjMS4K
+Pj4gwqDCoMKgIDIpIE1vdmUgYWRkaW5nIGRldmljZV9saW5rIGJldHdlZW4gdGhlIGNvbnN1bWVy
+IGFuZCBzbWktbGFyYiBpbnRvCj4+IGlvbW11X2FkZF9kZXZpY2UgZnJvbSBSb2Jpbi4KPj4gwqDC
+oMKgIDMpIGFkZCBETF9GTEFHX0FVVE9SRU1PVkVfQ09OU1VNRVIgZXZlbiB0aG91Z2ggdGhlIHNt
+aSBpcyBidWlsdC1pbiBmcm9tIEV2YW4uCj4+IMKgwqDCoCA0KSBSZW1vdmUgdGhlIHNodXRkb3du
+IGNhbGxiYWNrIGluIGlvbW11Lgo+Pgo+PiB2MTogCj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
+L2xpbnV4LWlvbW11LzE1NDYzMTgyNzYtMTg5OTMtMS1naXQtc2VuZC1lbWFpbC15b25nLnd1QG1l
+ZGlhdGVrLmNvbS8gCj4+Cj4+Cj4+IFlvbmcgV3UgKDEyKToKPj4gwqDCoCBkdC1iaW5kaW5nOiBt
+ZWRpYXRlazogR2V0IHJpZCBvZiBtZWRpYXRlayxsYXJiIGZvciBtdWx0aW1lZGlhIEhXCj4+IMKg
+wqAgaW9tbXUvbWVkaWF0ZWstdjE6IEZyZWUgdGhlIGV4aXN0ZWQgZndzcGVjIGlmIHRoZSBtYXN0
+ZXIgZGV2IGFscmVhZHkKPj4gwqDCoMKgwqAgaGFzCj4+IMKgwqAgaW9tbXUvbWVkaWF0ZWs6IFJl
+dHVybiBFTk9ERVYgaWYgdGhlIGRldmljZSBpcyBOVUxMCj4+IMKgwqAgaW9tbXUvbWVkaWF0ZWs6
+IEFkZCBwcm9iZV9kZWZlciBmb3Igc21pLWxhcmIKPj4gwqDCoCBpb21tdS9tZWRpYXRlazogQWRk
+IGRldmljZV9saW5rIGJldHdlZW4gdGhlIGNvbnN1bWVyIGFuZCB0aGUgbGFyYgo+PiDCoMKgwqDC
+oCBkZXZpY2VzCj4+IMKgwqAgbWVkaWE6IG10ay1qcGVnOiBHZXQgcmlkIG9mIG10a19zbWlfbGFy
+Yl9nZXQvcHV0Cj4+IMKgwqAgbWVkaWE6IG10ay1tZHA6IEdldCByaWQgb2YgbXRrX3NtaV9sYXJi
+X2dldC9wdXQKPj4gwqDCoCBkcm0vbWVkaWF0ZWs6IEdldCByaWQgb2YgbXRrX3NtaV9sYXJiX2dl
+dC9wdXQKPj4gwqDCoCBtZWRpYTogbXRrLXZjb2RlYzogR2V0IHJpZCBvZiBtdGtfc21pX2xhcmJf
+Z2V0L3B1dAo+PiDCoMKgIG1lbW9yeTogbXRrLXNtaTogR2V0IHJpZCBvZiBtdGtfc21pX2xhcmJf
+Z2V0L3B1dAo+PiDCoMKgIGFybTogZHRzOiBtZWRpYXRlazogR2V0IHJpZCBvZiBtZWRpYXRlayxs
+YXJiIGZvciBNTSBub2Rlcwo+PiDCoMKgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBHZXQgcmlkIG9m
+IG1lZGlhdGVrLGxhcmIgZm9yIE1NIG5vZGVzCj4+Cj4+IFlvbmdxaWFuZyBOaXUgKDEpOgo+PiDC
+oMKgIGRybS9tZWRpYXRlazogQWRkIHBtIHJ1bnRpbWUgc3VwcG9ydCBmb3Igb3ZsIGFuZCByZG1h
+Cj4+Cj4+IMKgIC4uLi9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0wqDCoMKgwqDC
+oMKgwqAgfMKgIDkgLS0tLQo+PiDCoCAuLi4vbWVkaWEvbWVkaWF0ZWssdmNvZGVjLWRlY29kZXIu
+eWFtbMKgwqDCoMKgwqDCoMKgIHzCoCA3IC0tLQo+PiDCoCAuLi4vbWVkaWEvbWVkaWF0ZWssdmNv
+ZGVjLWVuY29kZXIueWFtbMKgwqDCoMKgwqDCoMKgIHzCoCA4IC0tLS0KPj4gwqAgLi4uL2JpbmRp
+bmdzL21lZGlhL21lZGlhdGVrLWpwZWctZGVjb2Rlci55YW1sIHzCoCA5IC0tLS0KPj4gwqAgLi4u
+L2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLWpwZWctZW5jb2Rlci55YW1sIHzCoCA5IC0tLS0KPj4g
+wqAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLW1kcC50eHTCoMKgwqDCoMKgwqDCoMKgwqDC
+oCB8wqAgOCAtLS0tCj4+IMKgIGFyY2gvYXJtL2Jvb3QvZHRzL210MjcwMS5kdHNpwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDIgLQo+PiDCoCBhcmNoL2FybS9ib290L2R0cy9t
+dDc2MjNuLmR0c2nCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDUgLS0tCj4+IMKg
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0c2nCoMKgwqDCoMKgIHwgMTYg
+LS0tLS0tLQo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5kdHNpwqDC
+oMKgwqDCoCB8wqAgNiAtLS0KPj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
+X292bC5jwqDCoMKgwqDCoMKgIHzCoCA4ICsrKy0KPj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlh
+dGVrL210a19kaXNwX3JkbWEuY8KgwqDCoMKgwqAgfMKgIDkgKysrLQo+PiDCoCBkcml2ZXJzL2dw
+dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmPCoMKgwqDCoMKgwqAgfCAxNSArKysrLS0tCj4+
+IMKgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmPCoMKgIHwgMzYg
+Ky0tLS0tLS0tLS0tLS0tCj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
+cF9jb21wLmjCoMKgIHzCoCAxIC0KPj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
+cm1fZHJ2LmPCoMKgwqDCoMKgwqDCoCB8wqAgNSArLS0KPj4gwqAgZHJpdmVycy9pb21tdS9tdGtf
+aW9tbXUuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAzNCArKysr
+KysrKysrKysrKwo+PiDCoCBkcml2ZXJzL2lvbW11L210a19pb21tdV92MS5jwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDQyICsrKysrKysrKysrKysrKystCj4+IMKgIC4uLi9t
+ZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmPCoMKgIHwgNDUgKy0tLS0tLS0t
+LS0tLS0tLS0tLQo+PiDCoCAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29y
+ZS5owqDCoCB8wqAgMiAtCj4+IMKgIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcC9tdGtf
+bWRwX2NvbXAuYyB8IDQwIC0tLS0tLS0tLS0tLS0tLS0tCj4+IMKgIGRyaXZlcnMvbWVkaWEvcGxh
+dGZvcm0vbXRrLW1kcC9tdGtfbWRwX2NvbXAuaCB8wqAgMiAtCj4+IMKgIGRyaXZlcnMvbWVkaWEv
+cGxhdGZvcm0vbXRrLW1kcC9tdGtfbWRwX2NvcmUuYyB8wqAgMSAtCj4+IMKgIC4uLi9wbGF0Zm9y
+bS9tdGstdmNvZGVjL210a192Y29kZWNfZGVjX2Rydi5jwqAgfMKgIDIgLQo+PiDCoCAuLi4vcGxh
+dGZvcm0vbXRrLXZjb2RlYy9tdGtfdmNvZGVjX2RlY19ody5jwqDCoCB8wqAgMSAtCj4+IMKgIC4u
+Li9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNfZGVjX3BtLmPCoMKgIHwgNDEgKysrLS0t
+LS0tLS0tLS0tLS0KPj4gwqAgLi4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kcnYu
+aMKgwqDCoMKgwqAgfMKgIDMgLS0KPj4gwqAgLi4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zj
+b2RlY19lbmMuY8KgwqDCoMKgwqAgfMKgIDEgLQo+PiDCoCAuLi4vcGxhdGZvcm0vbXRrLXZjb2Rl
+Yy9tdGtfdmNvZGVjX2VuY19kcnYuY8KgIHzCoCAyIC0KPj4gwqAgLi4uL3BsYXRmb3JtL210ay12
+Y29kZWMvbXRrX3Zjb2RlY19lbmNfcG0uY8KgwqAgfCA0NSArKystLS0tLS0tLS0tLS0tLS0tCj4+
+IMKgIGRyaXZlcnMvbWVtb3J5L210ay1zbWkuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCB8IDE0IC0tLS0tLQo+PiDCoCBpbmNsdWRlL3NvYy9tZWRpYXRlay9zbWku
+aMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMjAgLS0tLS0tLS0tCj4+
+IMKgIDMyIGZpbGVzIGNoYW5nZWQsIDExNSBpbnNlcnRpb25zKCspLCAzMzMgZGVsZXRpb25zKC0p
+Cj4+Cj4gCj4gSGVsbG8gSGFucywgTWF0dGhpYXMsCj4gb24gbXkgc2lkZSwgdGhpcyBzZXJpZXMg
+aXMgdG90YWxseSByZWFkeSBmb3IgbWVyZ2UsIGhlbmNlLCBncmVlbiBsaWdodCBmcm9tIGhlcmUu
+Cj4gCj4gQ2FuIHlvdSBwbGVhc2UgdGFrZSBpdCBmb3IgNS4xOD8KPiAKCkBIYW5zOiBJIHVuZGVy
+c3RhbmQgeW91IHRha2UgdGhlIHNlcmllcyB0aHJvdWdoIHlvdXIgdHJlZS4gUGxlYXNlIGxldCBt
+ZSBrbm93IAp3aGVuIHlvdSBkbyBzby4gSSdsbCB0YWtlIGNhcmUgb2YgcGF0Y2ggMTIgYW5kIDEz
+LCB3aGljaCBzaG91bGQgZ28gdGhyb3VnaCBteSB0cmVlLgoKVGhhbmtzIQpNYXR0aGlhcwoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
+ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
