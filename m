@@ -4,42 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94547C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 05:53:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B2DEC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 05:54:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nEqlNZU2YpHwNP4iDG4+FKB4VK8iq6QHmQDuACNc9Ac=; b=hVCeebH4ygeims
-	//wWxzsczK8I6a6QKo/1JnewC/0n8L5XAAm3urdfXGOYhWEJOkMId+IMw8GyIbH7k07CWwNob6AM6
-	V0iaLArd7rX5YL4DEQnAI582UZ5tgCVydL/+LL3cd+jJnRKI7TCwLcfeKTC3IbtBnI0gPzWCDw5mB
-	Voraal6VMaxzPx/gu/OxEZwjDJQj1lkbeo6bcgzvvMBiAKHSVeQa6X60AE9pXwRCalFkH+rkJeIgh
-	zFJelNZ3E+gPP9AMlzT70S6GcVo+OGvyNjukiQsg1BPIdONVOfGySZNVMKLvLm1DqHmbhwhd/DWff
-	zN+6KUV2Lpjaa7F3Y7xA==;
+	List-Owner; bh=P/bPTj9w4ggSnXdnliABuyIibnS0sRzlK8cfTc1fXbE=; b=B6CwmRtEyhRJ6f
+	0NbLFu4IcOoKWK1zC2lBONTkyPxWRmluUgZ3jYbPMz39HoOdcs2PIWzcpct1TWiVqbfuxrguUbD1v
+	CVX2k8GvLOuDcn8xQjv5NkImP7hJUILPgXYxNu49zDrBkfSSGwFEQK/ozGL6FuLVcTiQJyRMjwZeM
+	r3ioDOsAITYmRDxL3dHzxxCvyN2VFzoQOp8xjsdlv7tkH2/aMthhYpmsDIqv89Zfu7cBILvT012Kw
+	5fOFcuxM/XaVUzWRRw41DNgJTwNUT9ADdH4tMkSsVOa+FLh5oW6uaU+dnY6fUNCkcBKdov4U2205T
+	9me9RkUh4VCwOjXsCTWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9Kxe-00DVuu-Vi; Mon, 17 Jan 2022 05:53:46 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n9Kxq-00DVzl-QD; Mon, 17 Jan 2022 05:53:58 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9KxB-00DVkN-9o; Mon, 17 Jan 2022 05:53:18 +0000
-X-UUID: 1161aa509fd74812b5d3e26ca16de2fc-20220116
-X-UUID: 1161aa509fd74812b5d3e26ca16de2fc-20220116
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ id 1n9Kx9-00DVjg-Vt; Mon, 17 Jan 2022 05:53:19 +0000
+X-UUID: ee5196abf4874697b9b6e2613080415d-20220116
+X-UUID: ee5196abf4874697b9b6e2613080415d-20220116
+Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw02.mediatek.com
  (envelope-from <roy-cw.yeh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1394536819; Sun, 16 Jan 2022 22:53:10 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ with ESMTP id 1658398149; Sun, 16 Jan 2022 22:53:12 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
  MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 21:53:09 -0800
+ 15.0.1497.2; Sun, 16 Jan 2022 21:53:11 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 17 Jan 2022 13:53:08 +0800
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Jan 2022 13:53:09 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Mon, 17 Jan 2022 13:53:07 +0800
+ Frontend Transport; Mon, 17 Jan 2022 13:53:09 +0800
 From: roy-cw.yeh <roy-cw.yeh@mediatek.com>
 To: Rob Herring <robh+dt@kernel.org>, Matthias Brugger
  <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
@@ -54,17 +53,18 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Fabien Parent
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v1 04/14] soc: mediatek: mutex: support mt8195 vppsys0/1
-Date: Mon, 17 Jan 2022 13:52:44 +0800
-Message-ID: <20220117055254.9777-5-roy-cw.yeh@mediatek.com>
+Subject: [PATCH v1 14/14] dt-bindings: media: mediatek: mdp3: add yaml for new
+ modules added in mt8195
+Date: Mon, 17 Jan 2022 13:52:54 +0800
+Message-ID: <20220117055254.9777-15-roy-cw.yeh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
 References: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_215317_370285_341F767E 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20220116_215316_091140_CA0A8A1D 
+X-CRM114-Status: GOOD (  15.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,98 +83,830 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-Add mt8195 mdp mutex info to driver data of mtk-mutex
+Add yaml for new modules added in mt8195
 
 Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
 ---
- drivers/soc/mediatek/mtk-mutex.c | 53 ++++++++++++++++++++++++++++++++
- 1 file changed, 53 insertions(+)
+This patch is base on [1]
+[1] dt-bindings: arm: mediatek: move out common module from display folder
+- https://patchwork.kernel.org/project/linux-mediatek/patch/20220107101425.6917-8-jason-jh.lin@mediatek.com/
+---
+ .../bindings/arm/mediatek/mediatek,mmsys.yaml |  2 +
+ .../bindings/media/mediatek,mdp3-aal.yaml     | 56 +++++++++++++++++
+ .../bindings/media/mediatek,mdp3-color.yaml   | 56 +++++++++++++++++
+ .../bindings/media/mediatek,mdp3-fg.yaml      | 55 +++++++++++++++++
+ .../bindings/media/mediatek,mdp3-hdr.yaml     | 55 +++++++++++++++++
+ .../bindings/media/mediatek,mdp3-merge.yaml   | 54 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-ovl.yaml     | 53 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-pad.yaml     | 56 +++++++++++++++++
+ .../bindings/media/mediatek,mdp3-rdma.yaml    | 28 +++++++++
+ .../bindings/media/mediatek,mdp3-rsz.yaml     |  2 +
+ .../bindings/media/mediatek,mdp3-split.yaml   | 58 ++++++++++++++++++
+ .../bindings/media/mediatek,mdp3-stitch.yaml  | 53 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-tcc.yaml     | 54 ++++++++++++++++
+ .../bindings/media/mediatek,mdp3-tdshp.yaml   | 61 +++++++++++++++++++
+ .../bindings/media/mediatek,mdp3-wrot.yaml    |  3 +
+ .../bindings/soc/mediatek/mediatek,mutex.yaml |  6 ++
+ 16 files changed, 652 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
 
-diff --git a/drivers/soc/mediatek/mtk-mutex.c b/drivers/soc/mediatek/mtk-mutex.c
-index 7da0f44b6f9a..dd6ef45b582a 100644
---- a/drivers/soc/mediatek/mtk-mutex.c
-+++ b/drivers/soc/mediatek/mtk-mutex.c
-@@ -186,6 +186,23 @@
- #define MT8183_MDP_PIPE_WPEI                   (MT8183_MUTEX_MDP_START + 2)
- #define MT8183_MDP_PIPE_WPEI2                  (MT8183_MUTEX_MDP_START + 3)
+diff --git a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+index 763c62323a74..9e59c8b738bb 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek/mediatek,mmsys.yaml
+@@ -31,6 +31,8 @@ properties:
+               - mediatek,mt8183-mmsys
+               - mediatek,mt8192-mmsys
+               - mediatek,mt8365-mmsys
++              - mediatek,mt8195-vppsys0
++              - mediatek,mt8195-vppsys1
+           - const: syscon
+       - items:
+           - const: mediatek,mt7623-mmsys
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
+new file mode 100644
+index 000000000000..ba4590031f34
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-aal.yaml
+@@ -0,0 +1,56 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-aal.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 AAL Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components is responsible for backlight power saving
++  and sunlight visibility improving.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-aal0
++        - mediatek,mt8195-mdp3-aal1
++        - mediatek,mt8195-mdp3-aal2
++        - mediatek,mt8195-mdp3-aal3
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_aal0: mdp_aal0@14005000 {
++      compatible = "mediatek,mt8195-mdp3-aal0";
++      reg = <0 0x14005000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x5000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_AAL>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
+new file mode 100644
+index 000000000000..5c0d8e686909
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-color.yaml
+@@ -0,0 +1,56 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-color.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 COLOR Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to adjust hue, luma and saturation
++  to get better picture quality.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-color0
++        - mediatek,mt8195-mdp3-color1
++        - mediatek,mt8195-mdp3-color2
++        - mediatek,mt8195-mdp3-color3
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_color0: mdp_color0@14008000 {
++      compatible = "mediatek,mt8195-mdp3-color0";
++      reg = <0 0x14008000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x8000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_COLOR>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+new file mode 100644
+index 000000000000..d9cb1cb966e6
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-fg.yaml
+@@ -0,0 +1,55 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-fg.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 FG Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to add film grain according to AV1 spec.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-fg0
++        - mediatek,mt8195-mdp3-fg1
++        - mediatek,mt8195-mdp3-fg2
++        - mediatek,mt8195-mdp3-fg3
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_fg0: mdp_fg0@14002000 {
++      compatible = "mediatek,mt8195-mdp3-fg0";
++      reg = <0 0x14002000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x2000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_FG>;
++    };
+\ No newline at end of file
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+new file mode 100644
+index 000000000000..fbb2af5f5b25
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-hdr.yaml
+@@ -0,0 +1,55 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-hdr.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 HDR Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to perform HDR to SDR
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-hdr0
++        - mediatek,mt8195-mdp3-hdr1
++        - mediatek,mt8195-mdp3-hdr2
++        - mediatek,mt8195-mdp3-hdr3
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_hdr0: mdp_hdr0@14004000
++      compatible = "mediatek,mt8195-mdp3-hdr0";
++      reg = <0 0x14004000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x4000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_HDR>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
+new file mode 100644
+index 000000000000..4e37cb0abe46
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-merge.yaml
+@@ -0,0 +1,54 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-merge.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 MERGE Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to merge
++  two slice-per-line inputs into one side-by-side output.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-merge2
++        - mediatek,mt8195-mdp3-merge3
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    svpp2_mdp3_merge: svpp2_mdp_merge@14f1a000 {
++      compatible = "mediatek,mt8195-mdp3-merge2";
++      reg = <0 0x14f1a000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_14f1XXXX 0xa000 0x1000>;
++      clocks = <&vppsys1 CLK_VPP1_SVPP2_VPP_MERGE>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
+new file mode 100644
+index 000000000000..6be6da6b159b
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-ovl.yaml
+@@ -0,0 +1,53 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-ovl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 OVL Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to perform alpha blending from the memory.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-ovl0
++        - mediatek,mt8195-mdp3-ovl1
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_ovl0: mdp_ovl0@14009000 {
++      compatible = "mediatek,mt8195-mdp3-ovl0";
++      reg = <0 0x14009000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x9000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_OVL>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
+new file mode 100644
+index 000000000000..883963a4861f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-pad.yaml
+@@ -0,0 +1,56 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-pad.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 PADDING Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to insert
++  pre-defined color or alpha value to arbitrary side of image.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-pad0
++        - mediatek,mt8195-mdp3-pad1
++        - mediatek,mt8195-mdp3-pad2
++        - mediatek,mt8195-mdp3-pad3
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_pad0: mdp_pad0@1400a000 {
++      compatible = "mediatek,mt8195-mdp3-pad0";
++      reg = <0 0x1400a000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xa000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_PADDING>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+index 002503383934..3b0779e8bfc2 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rdma.yaml
+@@ -26,6 +26,18 @@ properties:
+           # MDP3 controller node
+           - const: mediatek,mt8183-mdp3
+           - const: mediatek,mt8183-mdp3-rdma0
++          # MDP3 controller node
++          - const: mediatek,mt8195-mdp3
++          - const: mediatek,mt8183-mdp3-rdma0
++          # MDP3 controller node
++          - const: mediatek,mt8195-mdp3
++          - const: mediatek,mt8195-mdp3-rdma1
++          # MDP3 controller node
++          - const: mediatek,mt8195-mdp3
++          - const: mediatek,mt8195-mdp3-rdma2
++          # MDP3 controller node
++          - const: mediatek,mt8195-mdp3
++          - const: mediatek,mt8195-mdp3-rdma3
+       - items:
+           # normal RDMA conponent
+           - const: mediatek,mt8183-mdp3-rdma0
+@@ -46,12 +58,28 @@ properties:
+           - mediatek,mt8183-mdp3-dl1
+       - enum:
+           - mediatek,mt8183-mdp3-dl2
++      - enum:
++          - mediatek,mt8195-mdp3-dl1
++      - enum:
++          - mediatek,mt8195-mdp3-dl2
+       - enum:
+           # MDP direct-link output path selection, create a
+           # component for path connectedness of HW pipe control
+           - mediatek,mt8183-mdp3-path1
+       - enum:
+           - mediatek,mt8183-mdp3-path2
++      - enum:
++          - mediatek,mt8195-mdp3-path1
++      - enum:
++          - mediatek,mt8195-mdp3-path2
++      - enum:
++          - mediatek,mt8195-mdp3-path3
++      - enum:
++          - mediatek,mt8195-mdp3-path4
++      - enum:
++          - mediatek,mt8195-mdp3-path5
++      - enum:
++          - mediatek,mt8195-mdp3-path6
+       - enum:
+           # Input DMA of ISP PASS2 (DIP) module for raw image input
+           - mediatek,mt8183-mdp3-imgi
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+index cd4cf1531535..714038c9bab9 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-rsz.yaml
+@@ -18,6 +18,8 @@ properties:
+       - enum:
+           - mediatek,mt8183-mdp3-rsz0
+           - mediatek,mt8183-mdp3-rsz1
++          - mediatek,mt8195-mdp3-rsz2
++          - mediatek,mt8195-mdp3-rsz3
  
-+#define MT8195_MUTEX_MDP_MOD_MASK		0xFFFFFFFF
-+#define MT8195_MUTEX_MDP_MOD1_MASK		0x000000FF
-+#define MT8195_MUTEX_MDP_SOF_MASK		0x00000007
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
+new file mode 100644
+index 000000000000..f3eb9cc92fd9
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-split.yaml
+@@ -0,0 +1,58 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-solit.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+#define	MT8195_MDP_PIPE_WPEI			0
-+#define	MT8195_MDP_PIPE_WPEI2			1
-+#define	MT8195_MDP_PIPE_RDMA0			2
-+#define	MT8195_MDP_PIPE_VPP1_SOUT		3
++title: Mediatek Media Data Path 3 SPLIT Device Tree Bindings
 +
-+#define	MT8195_MDP_PIPE_RDMA1			1
-+#define	MT8195_MDP_PIPE_RDMA2			2
-+#define	MT8195_MDP_PIPE_RDMA3			3
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
 +
-+#define	MT8195_MDP_PIPE_SPLIT			2
-+#define	MT8195_MDP_PIPE_SPLIT2			3
-+#define	MT8195_MDP_PIPE_VPP0_SOUT		4
++description: |
++  One of Media Data Path 3 (MDP3) components used to split hdmi rx into two stream
 +
- struct mtk_mutex {
- 	int id;
- 	bool claimed;
-@@ -388,6 +405,22 @@ static const unsigned int mt8195_mutex_sof[DDP_MUTEX_SOF_MAX] = {
- 		MT8195_MUTEX_SOF_DP_INTF1 | MT8195_MUTEX_EOF_DP_INTF1,
- };
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-split
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    vpp_split0: vpp_split0@14f06000 {
++      compatible = "mediatek,mt8195-mdp3-split";
++      reg = <0 0x14f06000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_14f0XXXX 0x6000 0x1000>;
++      clocks = <&vppsys1 CLK_VPP1_VPP_SPLIT>,
++               <&vppsys1 CLK_VPP1_HDMI_META>,
++               <&vppsys1 CLK_VPP1_VPP_SPLIT_HDMI>,
++               <&vppsys1 CLK_VPP1_DGI_IN>,
++               <&vppsys1 CLK_VPP1_DGI_OUT>,
++               <&vppsys1 CLK_VPP1_VPP_SPLIT_DGI>,
++               <&vppsys1 CLK_VPP1_VPP_SPLIT_26M>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+new file mode 100644
+index 000000000000..31cf3592c16f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-stitch.yaml
+@@ -0,0 +1,53 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-stitch.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 STITCH Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to combine multiple video frame
++  with overlapping fields of view to produce a segmented panorame.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-stitch
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_stitch0: mdp_stich0@14003000 {
++      compatible = "mediatek,mt8195-mdp3-stitch";
++      reg = <0 0x14003000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x3000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_STITCH>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+new file mode 100644
+index 000000000000..b5d6b0214fe0
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tcc.yaml
+@@ -0,0 +1,54 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-tcc.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 TCC Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to support
++  HDR gamma curve conversion HDR displays.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-tcc0
++        - mediatek,mt8195-mdp3-tcc1
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_tcc0: mdp_tcc0@1400b000 {
++      compatible = "mediatek,mt8195-mdp3-tcc0";
++      reg = <0 0x1400b000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0xb000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_TCC>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+new file mode 100644
+index 000000000000..d967abd5fb7d
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-tdshp.yaml
+@@ -0,0 +1,61 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/mediatek,mdp3-tdshp.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Mediatek Media Data Path 3 TDSHP Device Tree Bindings
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++
++description: |
++  One of Media Data Path 3 (MDP3) components used to improve image sharpness and contrast.
++
++properties:
++  compatible:
++    items:
++      - enum:
++        - mediatek,mt8195-mdp3-tdshp0
++        - mediatek,mt8195-mdp3-tdshp1
++        - mediatek,mt8195-mdp3-tdshp2
++        - mediatek,mt8195-mdp3-tdshp3
++
++  mediatek,mdp3-id:
++    $ref: /schemas/types.yaml#/definitions/uint32
++    maxItems: 1
++    description: |
++      HW index to distinguish same functionality modules.
++
++  reg:
++    maxItems: 1
++
++  mediatek,gce-client-reg:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: |
++      sub-system id corresponding to the global command engine (GCE)
++      register address.
++      $ref: /schemas/mailbox/mtk-gce.txt
++
++  clocks:
++    minItems: 1
++
++required:
++  - compatible
++  - reg
++  - mediatek,gce-client-reg
++  - clocks
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt8195-clk.h>
++    #include <dt-bindings/gce/mt8195-gce.h>
++
++    mdp3_tdshp0: mdp_tdshp0@14007000 {
++      compatible = "mediatek,mt8195-mdp3-tdshp0";
++      reg = <0 0x14007000 0 0x1000>;
++      mediatek,gce-client-reg = <&gce0 SUBSYS_1400XXXX 0x7000 0x1000>;
++      clocks = <&vppsys0 CLK_VPP0_MDP_TDSHP>;
++    };
+diff --git a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+index 7b0f9c4fffd7..d2e015bc09a2 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,mdp3-wrot.yaml
+@@ -17,6 +17,9 @@ properties:
+     items:
+       - enum:
+           - mediatek,mt8183-mdp3-wrot0
++          - mediatek,mt8195-mdp3-wrot1
++          - mediatek,mt8195-mdp3-wrot2
++          - mediatek,mt8195-mdp3-wrot3
  
-+static const unsigned int mt8195_mutex_vpp0_offset[MDP_PIPE_MAX] = {
-+	[MDP_PIPE_WPEI] = MT8195_MDP_PIPE_WPEI,
-+	[MDP_PIPE_WPEI2] = MT8195_MDP_PIPE_WPEI2,
-+	[MDP_PIPE_RDMA0] = MT8195_MDP_PIPE_RDMA0,
-+	[MDP_PIPE_VPP1_SOUT] = MT8195_MDP_PIPE_VPP1_SOUT,
-+};
-+
-+static const unsigned int mt8195_mutex_vpp1_offset[MDP_PIPE_MAX] = {
-+	[MDP_PIPE_SPLIT] = MT8195_MDP_PIPE_SPLIT,
-+	[MDP_PIPE_SPLIT2] = MT8195_MDP_PIPE_SPLIT2,
-+	[MDP_PIPE_RDMA1] = MT8195_MDP_PIPE_RDMA1,
-+	[MDP_PIPE_RDMA2] = MT8195_MDP_PIPE_RDMA2,
-+	[MDP_PIPE_RDMA3] = MT8195_MDP_PIPE_RDMA3,
-+	[MDP_PIPE_VPP0_SOUT] = MT8195_MDP_PIPE_SPLIT,
-+};
-+
- static const struct mtk_mutex_data mt2701_mutex_driver_data = {
- 	.mutex_mod = mt2701_mutex_mod,
- 	.mutex_sof = mt2712_mutex_sof,
-@@ -444,6 +477,22 @@ static const struct mtk_mutex_data mt8195_mutex_driver_data = {
- 	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
- };
+   reg:
+     maxItems: 1
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+index a7ba7ebb9c53..26d69e0320ab 100644
+--- a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
++++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mutex.yaml
+@@ -31,6 +31,12 @@ properties:
+           - const: mediatek,mt8183-disp-mutex
+       - items:
+           - const: mediatek,mt8192-disp-mutex
++      - items:
++          - const: mediatek,mt8192-disp-mutex
++      - items:
++          - const: mediatek,mt8195-vpp0-mutex
++      - items:
++          - const: mediatek,mt8195-vpp1-mutex
  
-+static const struct mtk_mutex_data mt8195_vpp0_mutex_driver_data = {
-+	.mutex_mod_reg = MT8195_DISP_MUTEX0_MOD0,
-+	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
-+	.mutex_mdp_offset = mt8195_mutex_vpp0_offset,
-+	.mutex_mdp_mod_mask = MT8195_MUTEX_MDP_MOD_MASK,
-+	.mutex_mdp_sof_mask = MT8195_MUTEX_MDP_SOF_MASK,
-+};
-+
-+static const struct mtk_mutex_data mt8195_vpp1_mutex_driver_data = {
-+	.mutex_mod_reg = MT8195_DISP_MUTEX0_MOD0,
-+	.mutex_sof_reg = MT8195_DISP_MUTEX0_SOF,
-+	.mutex_mdp_offset = mt8195_mutex_vpp1_offset,
-+	.mutex_mdp_mod_mask = MT8195_MUTEX_MDP_MOD_MASK,
-+	.mutex_mdp_sof_mask = MT8195_MUTEX_MDP_SOF_MASK,
-+};
-+
- struct mtk_mutex *mtk_mutex_get(struct device *dev)
- {
- 	struct mtk_mutex_ctx *mtx = dev_get_drvdata(dev);
-@@ -777,6 +826,10 @@ static const struct of_device_id mutex_driver_dt_match[] = {
- 	  .data = &mt8192_mutex_driver_data},
- 	{ .compatible = "mediatek,mt8195-disp-mutex",
- 	  .data = &mt8195_mutex_driver_data},
-+	{ .compatible = "mediatek,mt8195-vpp0-mutex",
-+	  .data = &mt8195_vpp0_mutex_driver_data},
-+	{ .compatible = "mediatek,mt8195-vpp1-mutex",
-+	  .data = &mt8195_vpp1_mutex_driver_data},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mutex_driver_dt_match);
+   reg:
+     maxItems: 1
 -- 
 2.18.0
 
