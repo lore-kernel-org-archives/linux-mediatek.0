@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DE1FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 06:07:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16A4FC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 06:07:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7NUm6Lh3+Y82KqrLavnvlqca4zmJhvI5dx/4S30vjmY=; b=eu8UY/BEBE80h1
-	5fcNqqxBqohyIPiBB9HJE9gbBWdFc7iuYI9gmNzOBw/SHkrea9ewyb/PBoP2AceLdX2qMwsV5HKNA
-	tAWdwaEhsV3PMi6HqnBA5jF0r2B8i922PhcsmE89joi9g1v6+fkJf88h6PwKOhWj/FjfNLRqrPVeB
-	Vmam6405XiIdelOmz4AHcrcyw8YwAW6nSiLeVyLsgJTeRq+PNpO0vM1mX9i3Hf8zgQgnmLG6t+0ji
-	TIoW4PYHwcHhImLJI8q4jvdIawLgJswrozgpHaB7FFJCmhX+VVy8G/mw/u2ZAuWrGOHhslyqK3lDM
-	E2rJWYgbGhVogpaCwvNA==;
+	List-Owner; bh=XQxKnZbPQXaIvDiiAWDMRwUFM4bjS2KxhXWPLE8usMs=; b=3rzlh1tFHLW5Gs
+	jwXKwl4SDS02ucIzFLM9OMa/g0ORdpCi0gSj826qjKItcEIzUyNX3ctkbssmDL8VdThruU6AQo5jJ
+	wFRwvf4qV5SNdfWibOulPDAIcqzyXb+jCis+ubaoLilE2njLSCfylKIK1X8YEcEutefliZ0G1DzE0
+	lhrFkfjrY2+yENjGaanCNOtM0WpUMksPVTXrFOGy2H6OhjAkJv7z9NBR4rdbCf/O+NDAQq4j+O+AK
+	gDNqSiK5cUjChr/+MXI4qvMKA5VKvlH9tLXO6grtpL/yDY7yZf/Kh1Wub1U8SpK0ZrX3hCPXymlKO
+	0RL+vqwZjSJkqLd+HsQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9LAM-00DaVb-Ez; Mon, 17 Jan 2022 06:06:54 +0000
+	id 1n9LB1-00Dat9-RD; Mon, 17 Jan 2022 06:07:35 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9L6v-00DYUz-Ci; Mon, 17 Jan 2022 06:03:27 +0000
-X-UUID: 3c427f1011fc4ccc9934043ead200718-20220116
-X-UUID: 3c427f1011fc4ccc9934043ead200718-20220116
+ id 1n9L6y-00DYVR-7c; Mon, 17 Jan 2022 06:03:30 +0000
+X-UUID: 1fca916eb6604caa83e88fa6d907588a-20220116
+X-UUID: 1fca916eb6604caa83e88fa6d907588a-20220116
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <roy-cw.yeh@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 960089337; Sun, 16 Jan 2022 23:03:10 -0700
-Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ with ESMTP id 1368360435; Sun, 16 Jan 2022 23:03:10 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 21:53:10 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
- (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Mon, 17 Jan 2022 13:53:09 +0800
+ 15.0.1497.2; Sun, 16 Jan 2022 21:53:09 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Mon, 17 Jan 2022 13:53:08 +0800
 Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
  Frontend Transport; Mon, 17 Jan 2022 13:53:08 +0800
@@ -53,17 +54,18 @@ CC: Mauro Carvalho Chehab <mchehab@kernel.org>, Fabien Parent
  <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
  <linux-media@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
  <linux-mediatek@lists.infradead.org>
-Subject: [PATCH v1 09/14] media: platform: mtk-mdp3: Add support MT8195
-Date: Mon, 17 Jan 2022 13:52:49 +0800
-Message-ID: <20220117055254.9777-10-roy-cw.yeh@mediatek.com>
+Subject: [PATCH v1 08/14] media: platform: mtk-mdp3: Add engine setting for
+ MT8195
+Date: Mon, 17 Jan 2022 13:52:48 +0800
+Message-ID: <20220117055254.9777-9-roy-cw.yeh@mediatek.com>
 X-Mailer: git-send-email 2.18.0
 In-Reply-To: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
 References: <20220117055254.9777-1-roy-cw.yeh@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_220321_520374_95443FE3 
-X-CRM114-Status: GOOD (  17.98  )
+X-CRM114-CacheID: sfid-20220116_220324_362243_65BB0AD3 
+X-CRM114-Status: GOOD (  13.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,1393 +84,1352 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: "Roy-CW.Yeh" <roy-cw.yeh@mediatek.com>
 
-Add support MT8195
+Add engine setting and related header files for MT8195
 
 Signed-off-by: Roy-CW.Yeh <roy-cw.yeh@mediatek.com>
 ---
- .../media/platform/mtk-mdp3/mtk-mdp3-cmdq.c   | 438 ++++++++++++++++--
- .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 345 +++++++++++++-
- .../media/platform/mtk-mdp3/mtk-mdp3-comp.h   |   3 +-
- .../media/platform/mtk-mdp3/mtk-mdp3-core.c   |  67 ++-
- .../media/platform/mtk-mdp3/mtk-mdp3-core.h   |   2 +
- .../media/platform/mtk-mdp3/mtk-mdp3-m2m.c    |   6 +
- .../media/platform/mtk-mdp3/mtk-mdp3-regs.c   |  86 +++-
- .../media/platform/mtk-mdp3/mtk-mdp3-regs.h   |   2 +
- 8 files changed, 883 insertions(+), 66 deletions(-)
+ drivers/media/platform/mtk-mdp3/mdp_reg_aal.h |  24 +
+ .../media/platform/mtk-mdp3/mdp_reg_color.h   |  29 +
+ drivers/media/platform/mtk-mdp3/mdp_reg_fg.h  |  23 +
+ drivers/media/platform/mtk-mdp3/mdp_reg_hdr.h |  31 +
+ .../media/platform/mtk-mdp3/mdp_reg_merge.h   |  23 +
+ drivers/media/platform/mtk-mdp3/mdp_reg_ovl.h |  24 +
+ drivers/media/platform/mtk-mdp3/mdp_reg_pad.h |  20 +
+ .../media/platform/mtk-mdp3/mdp_reg_rdma.h    |  31 +
+ drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h |   2 +
+ .../media/platform/mtk-mdp3/mdp_reg_tdshp.h   | 116 +++
+ .../media/platform/mtk-mdp3/mdp_reg_wrot.h    |  18 +
+ .../media/platform/mtk-mdp3/mtk-mdp3-comp.c   | 705 +++++++++++++++++-
+ 12 files changed, 1033 insertions(+), 13 deletions(-)
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_aal.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_color.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_fg.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_hdr.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_merge.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_ovl.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_pad.h
+ create mode 100644 drivers/media/platform/mtk-mdp3/mdp_reg_tdshp.h
 
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-index 879a120f78d9..ce9326cc790f 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-cmdq.c
-@@ -5,12 +5,15 @@
-  */
- 
- #include <linux/platform_device.h>
-+#include <linux/kernel.h>
- #include "mtk-mdp3-cmdq.h"
- #include "mtk-mdp3-comp.h"
- #include "mtk-mdp3-core.h"
- #include "mtk-mdp3-m2m.h"
- 
- #define MDP_PATH_MAX_COMPS	IMG_MAX_COMPONENTS
-+#define BYTE_PER_MB_Y				(4)
-+#define BYTE_PER_MB_C				(2)
- 
- struct mdp_path {
- 	struct mdp_dev		*mdp_dev;
-@@ -26,12 +29,18 @@ struct mdp_path {
- 	((ctx)->comp->ops && (ctx)->comp->ops->op)
- #define call_op(ctx, op, ...) \
- 	(has_op(ctx, op) ? (ctx)->comp->ops->op(ctx, ##__VA_ARGS__) : 0)
--
- struct mdp_path_subfrm {
- 	s32	mutex_id;
- 	u32	mutex_mod;
-+	u32	mutex_mod2;
- 	s32	sofs[MDP_PATH_MAX_COMPS];
- 	u32	num_sofs;
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_aal.h b/drivers/media/platform/mtk-mdp3/mdp_reg_aal.h
+new file mode 100644
+index 000000000000..2275a06fbdf9
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_aal.h
+@@ -0,0 +1,24 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
 +
-+	s32	mutex2_id;
-+	u32	mutex2_mod;
-+	u32	mutex2_mod2;
-+	s32	sof2s[MDP_PATH_MAX_COMPS];
-+	u32	num_sof2s;
++#ifndef __MDP_REG_AAL_H__
++#define __MDP_REG_AAL_H__
++
++#define MDP_AAL_EN                            (0x000)
++#define MDP_AAL_CFG                           (0x020)
++#define MDP_AAL_SIZE                          (0x030)
++#define MDP_AAL_OUTPUT_SIZE                   (0x034)
++#define MDP_AAL_OUTPUT_OFFSET                 (0x038)
++#define MDP_AAL_CFG_MAIN                      (0x200)
++
++#define MDP_AAL_EN_MASK                       (0x01)
++#define MDP_AAL_CFG_MASK                      (0x70FF00B3)
++#define MDP_AAL_SIZE_MASK                     (0x1FFF1FFF)
++#define MDP_AAL_OUTPUT_SIZE_MASK              (0x1FFF1FFF)
++#define MDP_AAL_OUTPUT_OFFSET_MASK            (0x0FF00FF)
++#define MDP_AAL_CFG_MAIN_MASK                 (0x0FE)
++
++#endif  // __MDP_REG_AAL_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_color.h b/drivers/media/platform/mtk-mdp3/mdp_reg_color.h
+new file mode 100644
+index 000000000000..54d917a20362
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_color.h
+@@ -0,0 +1,29 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP_REG_COLOR_H__
++#define __MDP_REG_COLOR_H__
++
++#define DISP_COLOR_WIN_X_MAIN                (0x40C)
++#define DISP_COLOR_WIN_Y_MAIN                (0x410)
++#define DISP_COLOR_START                     (0xC00)
++#define DISP_COLOR_INTEN                     (0xC04)
++#define DISP_COLOR_OUT_SEL                   (0xC0C)
++#define DISP_COLOR_INTERNAL_IP_WIDTH         (0xC50)
++#define DISP_COLOR_INTERNAL_IP_HEIGHT        (0xC54)
++#define DISP_COLOR_CM1_EN                    (0xC60)
++#define DISP_COLOR_CM2_EN                    (0xCA0)
++// MASK
++#define DISP_COLOR_WIN_X_MAIN_MASK           (0xFFFFFFFF)
++#define DISP_COLOR_WIN_Y_MAIN_MASK           (0xFFFFFFFF)
++#define DISP_COLOR_START_MASK                (0x0FF013F)
++#define DISP_COLOR_INTEN_MASK                (0x07)
++#define DISP_COLOR_OUT_SEL_MASK              (0x0777)
++#define DISP_COLOR_INTERNAL_IP_WIDTH_MASK    (0x03FFF)
++#define DISP_COLOR_INTERNAL_IP_HEIGHT_MASK   (0x03FFF)
++#define DISP_COLOR_CM1_EN_MASK               (0x03)
++#define DISP_COLOR_CM2_EN_MASK               (0x017)
++#endif  // __MDP_REG_COLOR_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_fg.h b/drivers/media/platform/mtk-mdp3/mdp_reg_fg.h
+new file mode 100644
+index 000000000000..34f68554c0bb
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_fg.h
+@@ -0,0 +1,23 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP_REG_FG_H__
++#define __MDP_REG_FG_H__
++
++#define MDP_FG_TRIGGER          (0x0)
++#define MDP_FG_FG_CTRL_0        (0x20)
++#define MDP_FG_FG_CK_EN         (0x24)
++#define MDP_FG_TILE_INFO_0      (0x418)
++#define MDP_FG_TILE_INFO_1      (0x41c)
++
++/* MASK */
++#define MDP_FG_TRIGGER_MASK          (0x00000007)
++#define MDP_FG_FG_CTRL_0_MASK        (0x00000033)
++#define MDP_FG_FG_CK_EN_MASK         (0x0000000F)
++#define MDP_FG_TILE_INFO_0_MASK      (0xFFFFFFFF)
++#define MDP_FG_TILE_INFO_1_MASK      (0xFFFFFFFF)
++
++#endif  //__MDP_REG_FG_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_hdr.h b/drivers/media/platform/mtk-mdp3/mdp_reg_hdr.h
+new file mode 100644
+index 000000000000..06d0d3a6a139
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_hdr.h
+@@ -0,0 +1,31 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP_REG_HDR_H__
++#define __MDP_REG_HDR_H__
++
++#define MDP_HDR_TOP                 (0x000)
++#define MDP_HDR_RELAY               (0x004)
++#define MDP_HDR_SIZE_0              (0x014)
++#define MDP_HDR_SIZE_1              (0x018)
++#define MDP_HDR_SIZE_2              (0x01C)
++#define MDP_HDR_HIST_CTRL_0         (0x020)
++#define MDP_HDR_HIST_CTRL_1         (0x024)
++#define MDP_HDR_HIST_ADDR           (0x0DC)
++#define MDP_HDR_TILE_POS            (0x118)
++
++// MASK
++#define MDP_HDR_RELAY_MASK          (0x01)
++#define MDP_HDR_TOP_MASK            (0xFF0FEB6D)
++#define MDP_HDR_SIZE_0_MASK         (0x1FFF1FFF)
++#define MDP_HDR_SIZE_1_MASK         (0x1FFF1FFF)
++#define MDP_HDR_SIZE_2_MASK         (0x1FFF1FFF)
++#define MDP_HDR_HIST_CTRL_0_MASK    (0x1FFF1FFF)
++#define MDP_HDR_HIST_CTRL_1_MASK    (0x1FFF1FFF)
++#define MDP_HDR_HIST_ADDR_MASK      (0xBF3F2F3F)
++#define MDP_HDR_TILE_POS_MASK       (0x1FFF1FFF)
++
++#endif // __MDP_REG_HDR_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_merge.h b/drivers/media/platform/mtk-mdp3/mdp_reg_merge.h
+new file mode 100644
+index 000000000000..d53d58d4ea05
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_merge.h
+@@ -0,0 +1,23 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP_REG_MERGE_H__
++#define __MDP_REG_MERGE_H__
++
++#define VPP_MERGE_ENABLE	(0x000)
++#define VPP_MERGE_CFG_0		(0x010)
++#define VPP_MERGE_CFG_4		(0x020)
++#define VPP_MERGE_CFG_12	(0x040)
++#define VPP_MERGE_CFG_24	(0x070)
++#define VPP_MERGE_CFG_25	(0x074)
++
++#define VPP_MERGE_ENABLE_MASK	(0xFFFFFFFF)
++#define VPP_MERGE_CFG_0_MASK	(0xFFFFFFFF)
++#define VPP_MERGE_CFG_4_MASK	(0xFFFFFFFF)
++#define VPP_MERGE_CFG_12_MASK	(0xFFFFFFFF)
++#define VPP_MERGE_CFG_24_MASK	(0xFFFFFFFF)
++#define VPP_MERGE_CFG_25_MASK	(0xFFFFFFFF)
++#endif
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_ovl.h b/drivers/media/platform/mtk-mdp3/mdp_reg_ovl.h
+new file mode 100644
+index 000000000000..35aa10c763bd
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_ovl.h
+@@ -0,0 +1,24 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP_REG_OVL_H__
++#define __MDP_REG_OVL_H__
++
++#define OVL_EN                          (0x00c)
++#define OVL_ROI_SIZE                    (0x020)
++#define OVL_DATAPATH_CON                (0x024)
++#define OVL_SRC_CON                     (0x02c)
++#define OVL_L0_CON                      (0x030)
++#define OVL_L0_SRC_SIZE                 (0x038)
++
++#define OVL_DATAPATH_CON_MASK           (0x0FFFFFFF)
++#define OVL_EN_MASK                     (0xB07D07B1)
++#define OVL_L0_CON_MASK                 (0xFFFFFFFF)
++#define OVL_L0_SRC_SIZE_MASK            (0x1FFF1FFF)
++#define OVL_ROI_SIZE_MASK               (0x1FFF1FFF)
++#define OVL_SRC_CON_MASK                (0x0000031F)
++
++#endif  //__MDP_REG_OVL_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_pad.h b/drivers/media/platform/mtk-mdp3/mdp_reg_pad.h
+new file mode 100644
+index 000000000000..f4d6d06a74be
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_pad.h
+@@ -0,0 +1,20 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP_REG_PAD_H__
++#define __MDP_REG_PAD_H__
++
++#define VPP_PADDING0_PADDING_CON        (0x000)
++#define VPP_PADDING0_PADDING_PIC_SIZE   (0x004)
++#define VPP_PADDING0_W_PADDING_SIZE     (0x008)
++#define VPP_PADDING0_H_PADDING_SIZE     (0x00c)
++
++#define VPP_PADDING0_PADDING_CON_MASK      (0x00000007)
++#define VPP_PADDING0_PADDING_PIC_SIZE_MASK (0xFFFFFFFF)
++#define VPP_PADDING0_W_PADDING_SIZE_MASK   (0x1FFF1FFF)
++#define VPP_PADDING0_H_PADDING_SIZE_MASK   (0x1FFF1FFF)
++
++#endif  // __MDP_REG_PAD_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h b/drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
+index 59d9aae40be6..06dea03ae029 100644
+--- a/drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_rdma.h
+@@ -12,12 +12,14 @@
+ #define MDP_RDMA_CON                    0x020
+ #define MDP_RDMA_GMCIF_CON              0x028
+ #define MDP_RDMA_SRC_CON                0x030
++#define MDP_RDMA_COMP_CON               0x038
+ #define MDP_RDMA_MF_BKGD_SIZE_IN_BYTE   0x060
+ #define MDP_RDMA_MF_BKGD_SIZE_IN_PXL    0x068
+ #define MDP_RDMA_MF_SRC_SIZE            0x070
+ #define MDP_RDMA_MF_CLIP_SIZE           0x078
+ #define MDP_RDMA_MF_OFFSET_1            0x080
+ #define MDP_RDMA_SF_BKGD_SIZE_IN_BYTE   0x090
++#define MDP_RDMA_MF_BKGD_H_SIZE_IN_PXL  0x098
+ #define MDP_RDMA_SRC_END_0              0x100
+ #define MDP_RDMA_SRC_END_1              0x108
+ #define MDP_RDMA_SRC_END_2              0x110
+@@ -25,7 +27,20 @@
+ #define MDP_RDMA_SRC_OFFSET_1           0x120
+ #define MDP_RDMA_SRC_OFFSET_2           0x128
+ #define MDP_RDMA_SRC_OFFSET_0_P         0x148
++#define MDP_RDMA_SRC_OFFSET_HP          0x150
+ #define MDP_RDMA_TRANSFORM_0            0x200
++#define MDP_RDMA_DMABUF_CON_0           0x240
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_0    0x248
++#define MDP_RDMA_ULTRA_TH_LOW_CON_0     0x250
++#define MDP_RDMA_DMABUF_CON_1           0x258
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_1    0x260
++#define MDP_RDMA_ULTRA_TH_LOW_CON_1     0x268
++#define MDP_RDMA_DMABUF_CON_2           0x270
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_2    0x278
++#define MDP_RDMA_ULTRA_TH_LOW_CON_2     0x280
++#define MDP_RDMA_DMABUF_CON_3           0x288
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_3    0x290
++#define MDP_RDMA_ULTRA_TH_LOW_CON_3     0x298
+ #define MDP_RDMA_RESV_DUMMY_0           0x2a0
+ #define MDP_RDMA_MON_STA_1              0x408
+ #define MDP_RDMA_SRC_BASE_0             0xf00
+@@ -40,12 +55,14 @@
+ #define MDP_RDMA_CON_MASK                   0x00001110
+ #define MDP_RDMA_GMCIF_CON_MASK             0xfffb3771
+ #define MDP_RDMA_SRC_CON_MASK               0xf3ffffff
++#define MDP_RDMA_COMP_CON_MASK              0xffffc000
+ #define MDP_RDMA_MF_BKGD_SIZE_IN_BYTE_MASK  0x001fffff
+ #define MDP_RDMA_MF_BKGD_SIZE_IN_PXL_MASK   0x001fffff
+ #define MDP_RDMA_MF_SRC_SIZE_MASK           0x1fff1fff
+ #define MDP_RDMA_MF_CLIP_SIZE_MASK          0x1fff1fff
+ #define MDP_RDMA_MF_OFFSET_1_MASK           0x003f001f
+ #define MDP_RDMA_SF_BKGD_SIZE_IN_BYTE_MASK  0x001fffff
++#define MDP_RDMA_MF_BKGD_H_SIZE_IN_PXL_MASK 0x007fffff
+ #define MDP_RDMA_SRC_END_0_MASK             0xffffffff
+ #define MDP_RDMA_SRC_END_1_MASK             0xffffffff
+ #define MDP_RDMA_SRC_END_2_MASK             0xffffffff
+@@ -53,7 +70,21 @@
+ #define MDP_RDMA_SRC_OFFSET_1_MASK          0xffffffff
+ #define MDP_RDMA_SRC_OFFSET_2_MASK          0xffffffff
+ #define MDP_RDMA_SRC_OFFSET_0_P_MASK        0xffffffff
++#define MDP_RDMA_SRC_OFFSET_HP_MASK         0xffffffff
+ #define MDP_RDMA_TRANSFORM_0_MASK           0xff110777
++#define MDP_RDMA_DMABUF_CON_0_MASK          0x0fff00ff
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_0_MASK   0x3fffffff
++#define MDP_RDMA_ULTRA_TH_LOW_CON_0_MASK    0x3fffffff
++#define MDP_RDMA_DMABUF_CON_1_MASK          0x0f7f007f
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_1_MASK   0x3fffffff
++#define MDP_RDMA_ULTRA_TH_LOW_CON_1_MASK    0x3fffffff
++#define MDP_RDMA_DMABUF_CON_2_MASK          0x0f3f003f
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_2_MASK   0x3fffffff
++#define MDP_RDMA_ULTRA_TH_LOW_CON_2_MASK    0x3fffffff
++#define MDP_RDMA_DMABUF_CON_3_MASK          0x0f3f003f
++#define MDP_RDMA_ULTRA_TH_HIGH_CON_3_MASK   0x3fffffff
++#define MDP_RDMA_ULTRA_TH_LOW_CON_3_MASK    0x3fffffff
++
+ #define MDP_RDMA_RESV_DUMMY_0_MASK          0xffffffff
+ #define MDP_RDMA_MON_STA_1_MASK             0xffffffff
+ #define MDP_RDMA_SRC_BASE_0_MASK            0xffffffff
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h b/drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
+index 051fdb020741..942fd4393eba 100644
+--- a/drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_rsz.h
+@@ -20,6 +20,7 @@
+ #define PRZ_LUMA_VERTICAL_SUBPIXEL_OFFSET                 0x02c
+ #define PRZ_CHROMA_HORIZONTAL_INTEGER_OFFSET              0x030
+ #define PRZ_CHROMA_HORIZONTAL_SUBPIXEL_OFFSET             0x034
++#define RSZ_ETC_CONTROL                                   0x22c
+ 
+ /* MASK */
+ #define PRZ_ENABLE_MASK                                   0x00010001
+@@ -35,5 +36,6 @@
+ #define PRZ_LUMA_VERTICAL_SUBPIXEL_OFFSET_MASK            0x001fffff
+ #define PRZ_CHROMA_HORIZONTAL_INTEGER_OFFSET_MASK         0x0000ffff
+ #define PRZ_CHROMA_HORIZONTAL_SUBPIXEL_OFFSET_MASK        0x001fffff
++#define RSZ_ETC_CONTROL_MASK                              0xff770000
+ 
+ #endif // __MDP_REG_RSZ_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_tdshp.h b/drivers/media/platform/mtk-mdp3/mdp_reg_tdshp.h
+new file mode 100644
+index 000000000000..7907266ac7c7
+--- /dev/null
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_tdshp.h
+@@ -0,0 +1,116 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/*
++ * Copyright (c) 2021 MediaTek Inc.
++ * Author: Ping-Hsun Wu <ping-hsun.wu@mediatek.com>
++ */
++
++#ifndef __MDP_REG_TDSHP_H__
++#define __MDP_REG_TDSHP_H__
++
++#define MDP_HIST_CFG_00              (0x064)
++#define MDP_HIST_CFG_01              (0x068)
++#define MDP_TDSHP_CTRL               (0x100)
++#define MDP_TDSHP_CFG                (0x110)
++#define MDP_TDSHP_INPUT_SIZE         (0x120)
++#define MDP_TDSHP_OUTPUT_OFFSET      (0x124)
++#define MDP_TDSHP_OUTPUT_SIZE        (0x128)
++#define MDP_LUMA_HIST_INIT_00        (0x200)
++#define MDP_LUMA_HIST_INIT_01        (0x204)
++#define MDP_LUMA_HIST_INIT_02        (0x208)
++#define MDP_LUMA_HIST_INIT_03        (0x20C)
++#define MDP_LUMA_HIST_INIT_04        (0x210)
++#define MDP_LUMA_HIST_INIT_05        (0x214)
++#define MDP_LUMA_HIST_INIT_06        (0x218)
++#define MDP_LUMA_HIST_INIT_07        (0x21C)
++#define MDP_LUMA_HIST_INIT_08        (0x220)
++#define MDP_LUMA_HIST_INIT_09        (0x224)
++#define MDP_LUMA_HIST_INIT_10        (0x228)
++#define MDP_LUMA_HIST_INIT_11        (0x22C)
++#define MDP_LUMA_HIST_INIT_12        (0x230)
++#define MDP_LUMA_HIST_INIT_13        (0x234)
++#define MDP_LUMA_HIST_INIT_14        (0x238)
++#define MDP_LUMA_HIST_INIT_15        (0x23C)
++#define MDP_LUMA_HIST_INIT_16        (0x240)
++#define MDP_LUMA_SUM_INIT            (0x244)
++#define MDP_DC_TWO_D_W1_RESULT_INIT  (0x260)
++#define MDP_CONTOUR_HIST_INIT_00     (0x398)
++#define MDP_CONTOUR_HIST_INIT_01     (0x39C)
++#define MDP_CONTOUR_HIST_INIT_02     (0x3A0)
++#define MDP_CONTOUR_HIST_INIT_03     (0x3A4)
++#define MDP_CONTOUR_HIST_INIT_04     (0x3A8)
++#define MDP_CONTOUR_HIST_INIT_05     (0x3AC)
++#define MDP_CONTOUR_HIST_INIT_06     (0x3B0)
++#define MDP_CONTOUR_HIST_INIT_07     (0x3B4)
++#define MDP_CONTOUR_HIST_INIT_08     (0x3B8)
++#define MDP_CONTOUR_HIST_INIT_09     (0x3BC)
++#define MDP_CONTOUR_HIST_INIT_10     (0x3C0)
++#define MDP_CONTOUR_HIST_INIT_11     (0x3C4)
++#define MDP_CONTOUR_HIST_INIT_12     (0x3C8)
++#define MDP_CONTOUR_HIST_INIT_13     (0x3CC)
++#define MDP_CONTOUR_HIST_INIT_14     (0x3D0)
++#define MDP_CONTOUR_HIST_INIT_15     (0x3D4)
++#define MDP_CONTOUR_HIST_INIT_16     (0x3D8)
++
++// MASK
++#define MDP_HIST_CFG_00_MASK            (0xFFFFFFFF)
++#define MDP_HIST_CFG_01_MASK            (0xFFFFFFFF)
++#define MDP_LUMA_HIST_00_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_01_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_02_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_03_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_04_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_05_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_06_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_07_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_08_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_09_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_10_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_11_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_12_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_13_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_14_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_15_MASK           (0x07FFFFFF)
++#define MDP_LUMA_HIST_16_MASK           (0x07FFFFFF)
++#define MDP_TDSHP_CTRL_MASK             (0x07)
++#define MDP_TDSHP_CFG_MASK              (0x03F7)
++#define MDP_TDSHP_INPUT_SIZE_MASK       (0x1FFF1FFF)
++#define MDP_TDSHP_OUTPUT_OFFSET_MASK    (0x0FF00FF)
++#define MDP_TDSHP_OUTPUT_SIZE_MASK      (0x1FFF1FFF)
++#define MDP_LUMA_HIST_INIT_00_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_01_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_02_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_03_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_04_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_05_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_06_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_07_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_08_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_09_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_10_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_11_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_12_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_13_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_14_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_15_MASK      (0x07FFFFFF)
++#define MDP_LUMA_HIST_INIT_16_MASK      (0x07FFFFFF)
++#define MDP_LUMA_SUM_INIT_MASK          (0xFFFFFFFF)
++#define MDP_DC_TWO_D_W1_RESULT_INIT_MASK   (0x007FFFFF)
++#define MDP_CONTOUR_HIST_INIT_00_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_01_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_02_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_03_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_04_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_05_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_06_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_07_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_08_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_09_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_10_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_11_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_12_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_13_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_14_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_15_MASK      (0x07FFFFFF)
++#define MDP_CONTOUR_HIST_INIT_16_MASK      (0x07FFFFFF)
++
++#endif  // __MDP_REG_TDSHP_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h b/drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
+index 39b8785f89eb..81a7c46c1aef 100644
+--- a/drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
++++ b/drivers/media/platform/mtk-mdp3/mdp_reg_wrot.h
+@@ -11,23 +11,32 @@
+ #define VIDO_MAIN_BUF_SIZE          0x008
+ #define VIDO_SOFT_RST               0x010
+ #define VIDO_SOFT_RST_STAT          0x014
++#define VIDO_INT                    0x01c
+ #define VIDO_CROP_OFST              0x020
+ #define VIDO_TAR_SIZE               0x024
++#define VIDO_FRAME_SIZE             0x028
+ #define VIDO_OFST_ADDR              0x02c
+ #define VIDO_STRIDE                 0x030
++#define VIDO_BKGD                   0x034
+ #define VIDO_OFST_ADDR_C            0x038
+ #define VIDO_STRIDE_C               0x03c
++#define VIDO_CTRL_2                 0x048
+ #define VIDO_DITHER                 0x054
+ #define VIDO_STRIDE_V               0x06c
+ #define VIDO_OFST_ADDR_V            0x068
+ #define VIDO_RSV_1                  0x070
++#define VIDO_DMA_PREULTRA           0x074
+ #define VIDO_IN_SIZE                0x078
+ #define VIDO_ROT_EN                 0x07c
+ #define VIDO_FIFO_TEST              0x080
+ #define VIDO_MAT_CTRL               0x084
++#define VIDO_PVRIC                  0x0d8
++#define VIDO_SCAN_10BIT             0x0dc
++#define VIDO_PENDING_ZERO           0x0e0
+ #define VIDO_BASE_ADDR              0xf00
+ #define VIDO_BASE_ADDR_C            0xf04
+ #define VIDO_BASE_ADDR_V            0xf08
++#define VIDO_AFBC_YUVTRANS          0xf2c
+ 
+ /* MASK */
+ #define VIDO_CTRL_MASK                  0xf530711f
+@@ -36,6 +45,7 @@
+ #define VIDO_SOFT_RST_STAT_MASK         0x00000001
+ #define VIDO_TAR_SIZE_MASK              0x1fff1fff
+ #define VIDO_CROP_OFST_MASK             0x1fff1fff
++#define VIDO_INT_MASK                   0x00000007
+ #define VIDO_OFST_ADDR_MASK             0x0fffffff
+ #define VIDO_STRIDE_MASK                0x0000ffff
+ #define VIDO_OFST_ADDR_C_MASK           0x0fffffff
+@@ -51,5 +61,13 @@
+ #define VIDO_BASE_ADDR_MASK             0xffffffff
+ #define VIDO_BASE_ADDR_C_MASK           0xffffffff
+ #define VIDO_BASE_ADDR_V_MASK           0xffffffff
++#define VIDO_DMA_PREULTRA_MASK          0x00ffffff
++#define VIDO_FRAME_SIZE_MASK            0xffffffff
++#define VIDO_BKGD_MASK                  0xffffffff
++#define VIDO_CTRL_2_MASK                0x0000000f
++#define VIDO_PVRIC_MASK                 0x00000003
++#define VIDO_SCAN_10BIT_MASK            0x0000000f
++#define VIDO_PENDING_ZERO_MASK          0x07ffffff
++#define VIDO_AFBC_YUVTRANS_MASK         0x00000001
+ 
+ #endif  // __MDP_REG_WROT_H__
+diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+index fdf072e48238..8ca9c7e325e1 100644
+--- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
++++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
+@@ -15,6 +15,14 @@
+ #include "mdp_reg_rdma.h"
+ #include "mdp_reg_ccorr.h"
+ #include "mdp_reg_rsz.h"
++#include "mdp_reg_fg.h"
++#include "mdp_reg_aal.h"
++#include "mdp_reg_tdshp.h"
++#include "mdp_reg_hdr.h"
++#include "mdp_reg_color.h"
++#include "mdp_reg_ovl.h"
++#include "mdp_reg_pad.h"
++#include "mdp_reg_merge.h"
+ #include "mdp_reg_wrot.h"
+ #include "mdp_reg_wdma.h"
+ #include "mdp_reg_isp.h"
+@@ -107,7 +115,10 @@ static int config_rdma_frame(struct mdp_comp_ctx *ctx,
+ {
+ 	const struct mdp_rdma_data *rdma = &ctx->param->rdma;
+ 	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
++	u32 width = ctx->input->buffer.format.width;
++	u32 height = ctx->input->buffer.format.height;
+ 	u32 colorformat = ctx->input->buffer.format.colorformat;
++	u32 write_mask = 0;
+ 	bool block10bit = MDP_COLOR_IS_10BIT_PACKED(colorformat);
+ 	bool en_ufo = MDP_COLOR_IS_UFP(colorformat);
+ 	phys_addr_t base = ctx->comp->reg_base;
+@@ -132,7 +143,7 @@ static int config_rdma_frame(struct mdp_comp_ctx *ctx,
+ 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_SRC_CON, rdma->src_ctrl,
+ 		     0x03C8FE0F);
+ 
+-	if (mdp_cfg)
++	if (mdp_cfg) {
+ 		if (mdp_cfg->rdma_support_10bit && en_ufo) {
+ 			/* Setup source buffer base */
+ 			MM_REG_WRITE(cmd, subsys_id,
+@@ -148,8 +159,47 @@ static int config_rdma_frame(struct mdp_comp_ctx *ctx,
+ 					     rdma->mf_bkgd_in_pxl, 0x001FFFFF);
+ 		}
+ 
+-	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_CON, rdma->control,
+-		     0x1110);
++		if (mdp_cfg->rdma_support_extend_ufo)
++			write_mask |= 0xB0000000;
++
++		if (mdp_cfg->rdma_support_afbc)
++			write_mask |= 0x0603000;
++
++		if (mdp_cfg->rdma_support_hyfbc &&
++		    (MDP_COLOR_IS_HYFBC_COMPRESS(colorformat))) {
++			/* Setup source buffer base */
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_UFO_DEC_LENGTH_BASE_Y,
++				     rdma->ufo_dec_y, 0xFFFFFFFF);
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_UFO_DEC_LENGTH_BASE_C,
++				     rdma->ufo_dec_c, 0xFFFFFFFF);
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_MF_BKGD_SIZE_IN_PXL,
++				     ((width + 31) >> 5) << 5, 0x1FFFFF);
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_MF_BKGD_H_SIZE_IN_PXL,
++				     ((height + 7) >> 3) << 3, 0x1FFFFF);
++
++			/* Setup Compression Control */
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_COMP_CON,
++				     rdma->comp_ctrl, write_mask);
++		} else if (mdp_cfg->rdma_support_afbc &&
++		    (MDP_COLOR_IS_COMPRESS(colorformat))) {
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_MF_BKGD_SIZE_IN_PXL,
++				     ((width + 31) >> 5) << 5, 0x1FFFFF);
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_MF_BKGD_H_SIZE_IN_PXL,
++				     ((height + 7) >> 3) << 3, 0x1FFFFF);
++
++			/* Setup Compression Control */
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_COMP_CON,
++				     rdma->comp_ctrl, write_mask);
++		} else {
++			/* Setup Compression Control */
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_COMP_CON,
++				     rdma->comp_ctrl, write_mask);
++		}
++	}
++
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_CON,
++		     rdma->control, 0x1130);
++
+ 	/* Setup source buffer base */
+ 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_SRC_BASE_0, rdma->iova[0],
+ 		     0xFFFFFFFF);
+@@ -173,6 +223,29 @@ static int config_rdma_frame(struct mdp_comp_ctx *ctx,
+ 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_TRANSFORM_0,
+ 		     rdma->transform, 0x0F110000);
+ 
++	if (mdp_cfg->rdma_esl_setting) {
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_DMABUF_CON_0,
++			     rdma->dmabuf_con0, 0x0FFF00FF);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_ULTRA_TH_HIGH_CON_0,
++			     rdma->ultra_th_high_con0, 0x3FFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_ULTRA_TH_LOW_CON_0,
++			     rdma->ultra_th_low_con0, 0x3FFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_DMABUF_CON_1,
++			     rdma->dmabuf_con1, 0x0F7F007F);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_ULTRA_TH_HIGH_CON_1,
++			     rdma->ultra_th_high_con1, 0x3FFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_ULTRA_TH_LOW_CON_1,
++			     rdma->ultra_th_low_con1, 0x3FFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_DMABUF_CON_2,
++			     rdma->dmabuf_con2, 0x0F3F003F);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_ULTRA_TH_HIGH_CON_2,
++			     rdma->ultra_th_high_con2, 0x3FFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_ULTRA_TH_LOW_CON_2,
++			     rdma->ultra_th_low_con2, 0x3FFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_DMABUF_CON_3,
++			     rdma->dmabuf_con3, 0x0F3F003F);
++	}
++
+ 	return 0;
+ }
+ 
+@@ -189,7 +262,18 @@ static int config_rdma_subfrm(struct mdp_comp_ctx *ctx,
+ 	u8 subsys_id = ctx->comp->subsys_id;
+ 
+ 	/* Enable RDMA */
+-	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_EN, BIT(0), BIT(0));
++	MM_REG_WRITE_MASK(cmd, subsys_id, base, MDP_RDMA_EN, BIT(0), BIT(0));
++
++	if (mdp_cfg->rdma_support_afbc ||
++	    mdp_cfg->rdma_support_hyfbc) {
++		if (MDP_COLOR_IS_COMPRESS(colorformat) ||
++		    MDP_COLOR_IS_HYFBC_COMPRESS(colorformat)) {
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_SRC_OFFSET_0_P,
++				     subfrm->in_tile_xleft, 0xFFFFFFFF);
++			MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_SRC_OFFSET_HP,
++				     subfrm->in_tile_ytop, 0xFFFFFFFF);
++		}
++	}
+ 
+ 	/* Set Y pixel offset */
+ 	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_SRC_OFFSET_0,
+@@ -234,15 +318,27 @@ static int wait_rdma_event(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
+ 	u8 subsys_id = ctx->comp->subsys_id;
+ 	int evt = -1;
+ 
+-	if (id == MDP_COMP_RDMA0)
++	switch (id) {
++	case MDP_COMP_RDMA0:
+ 		evt = mdp_get_event_idx(ctx->comp->mdp_dev, RDMA0_DONE);
+-	else
+-		dev_err(dev, "Do not support RDMA1_DONE event\n");
++		break;
++	case MDP_COMP_RDMA1:
++		evt = mdp_get_event_idx(ctx->comp->mdp_dev, RDMA1_DONE);
++		break;
++	case MDP_COMP_RDMA2:
++		evt = mdp_get_event_idx(ctx->comp->mdp_dev, RDMA2_DONE);
++		break;
++	case MDP_COMP_RDMA3:
++		evt = mdp_get_event_idx(ctx->comp->mdp_dev, RDMA3_DONE);
++		break;
++	default:
++		dev_err(dev, "Invalid Engine!\n");
++	}
+ 
+ 	if (evt > 0)
+ 		MM_REG_WAIT(cmd, evt);
+ 	/* Disable RDMA */
+-	MM_REG_WRITE(cmd, subsys_id, base, MDP_RDMA_EN, 0x0, BIT(0));
++	MM_REG_WRITE_MASK(cmd, subsys_id, base, MDP_RDMA_EN, 0x0, BIT(0));
+ 	return 0;
+ }
+ 
+@@ -256,6 +352,75 @@ static const struct mdp_comp_ops rdma_ops = {
+ 	.post_process = NULL,
  };
  
- static bool is_output_disable(const struct img_compparam *param, u32 count)
-@@ -76,8 +85,11 @@ static int mdp_path_subfrm_require(struct mdp_path_subfrm *subfrm,
- 	const struct mtk_mdp_driver_data *data = path->mdp_dev->mdp_data;
- 	struct device *dev = &path->mdp_dev->pdev->dev;
- 	struct mtk_mutex **mutex = path->mdp_dev->mdp_mutex;
--	s32 mutex_id = -1;
-+	struct mtk_mutex **mutex2 = path->mdp_dev->mdp_mutex2;
-+	s32 mutex_id = MDP_PIPE_NONE;
-+	s32 mutex2_id = MDP_PIPE_NONE;
- 	u32 mutex_sof = 0;
-+	u32 mutex2_sof = 0;
- 	int index, j;
- 	enum mtk_mdp_comp_id public_id = MDP_COMP_NONE;
- 
-@@ -85,57 +97,225 @@ static int mdp_path_subfrm_require(struct mdp_path_subfrm *subfrm,
- 	memset(subfrm, 0, sizeof(*subfrm));
- 
- 	for (index = 0; index < config->num_components; index++) {
-+		if (is_dummy_engine(path->mdp_dev, config->components[index].type))
-+			continue;
++static const struct mdp_comp_ops split_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = NULL,
++	.config_frame = NULL,
++	.config_subfrm = NULL,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
 +
- 		ctx = &path->comps[index];
- 		if (is_output_disable(ctx->param, count))
- 			continue;
- 
- 		public_id = path->comps[index].comp->public_id;
- 		switch (public_id) {
--		case MDP_COMP_AAL0:
-+		case MDP_COMP_ISP_IMGI:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_IMGI);
-+			mutex_id = data->pipe_info[j].mutex_id;
-+			break;
-+		case MDP_COMP_WPEI:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_WPEI);
-+			mutex_id = data->pipe_info[j].mutex_id;
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
- 			break;
--		case MDP_COMP_CCORR0:
-+		case MDP_COMP_WPEI2:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_WPEI2);
-+			mutex_id = data->pipe_info[j].mutex_id;
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
- 			break;
--		case MDP_COMP_WDMA:
-+		case MDP_COMP_RDMA0:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_RDMA0);
-+			mutex_id = data->pipe_info[j].mutex_id;
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
--			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_WDMA;
-+			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_RDMA0;
- 			break;
--		case MDP_COMP_WROT0:
-+		case MDP_COMP_VPP1_SOUT:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_VPP1_SOUT);
-+			mutex_id = data->pipe_info[j].mutex_id;
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
--			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_WROT0;
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
- 			break;
--		case MDP_COMP_TDSHP0:
-+		case MDP_COMP_FG0:
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
--			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_TDSHP0;
- 			break;
--		case MDP_COMP_RSZ1:
-+		case MDP_COMP_STITCH:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_HDR0:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_AAL0:
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
--			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_RSZ1;
- 			break;
- 		case MDP_COMP_RSZ0:
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
- 			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_RSZ0;
- 			break;
--		case MDP_COMP_RDMA0:
--			j = mdp_get_mutex_idx(data, MDP_PIPE_RDMA0);
--			mutex_id = data->pipe_info[j].mutex_id;
-+		case MDP_COMP_TDSHP0:
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
--			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_RDMA0;
-+			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_TDSHP0;
- 			break;
--		case MDP_COMP_ISP_IMGI:
--			j = mdp_get_mutex_idx(data, MDP_PIPE_IMGI);
--			mutex_id = data->pipe_info[j].mutex_id;
-+		case MDP_COMP_COLOR0:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
- 			break;
--		case MDP_COMP_WPEI:
--			j = mdp_get_mutex_idx(data, MDP_PIPE_WPEI);
--			mutex_id = data->pipe_info[j].mutex_id;
-+		case MDP_COMP_OVL0:
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
- 			break;
--		case MDP_COMP_WPEI2:
--			j = mdp_get_mutex_idx(data, MDP_PIPE_WPEI2);
--			mutex_id = data->pipe_info[j].mutex_id;
-+		case MDP_COMP_PAD0:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_TCC0:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_CCORR0:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_WDMA:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_WDMA;
-+			break;
-+		case MDP_COMP_WROT0:
-+			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_WROT0;
-+			break;
-+		case MDP_COMP_SPLIT:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_SPLIT);
-+			mutex2_id = data->pipe_info[j].mutex_id;
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_SPLIT;
-+			mutex2_sof = data->pipe_info[j].sof;
-+			break;
-+		case MDP_COMP_SPLIT2:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_SPLIT2);
-+			mutex2_id = data->pipe_info[j].mutex_id;
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_SPLIT2;
-+			mutex2_sof = data->pipe_info[j].sof;
-+			break;
-+		case MDP_COMP_RDMA1:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_RDMA1);
-+			mutex2_id = data->pipe_info[j].mutex_id;
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_RDMA1;
-+			break;
-+		case MDP_COMP_RDMA2:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_RDMA2);
-+			mutex2_id = data->pipe_info[j].mutex_id;
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_RDMA2;
-+			break;
-+		case MDP_COMP_RDMA3:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_RDMA3);
-+			mutex2_id = data->pipe_info[j].mutex_id;
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_RDMA3;
-+			break;
-+		case MDP_COMP_VPP0_SOUT:
-+			j = mdp_get_mutex_idx(data, MDP_PIPE_VPP0_SOUT);
-+			mutex2_id = data->pipe_info[j].mutex_id;
- 			subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
-+			break;
-+		case MDP_COMP_TCC1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_FG1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_FG2:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_FG3:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_HDR1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_HDR2:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_HDR3:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_AAL1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_AAL2:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_AAL3:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_RSZ1:
-+			if (data->comp_data[public_id].mutex.mmsys_id) {
-+				subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+				subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_RSZ1;
-+			} else {
-+				subfrm->mutex_mod |= data->comp_data[public_id].mutex.mod;
-+				subfrm->sofs[subfrm->num_sofs++] = MDP_COMP_RSZ1;
-+			}
-+			break;
-+		case MDP_COMP_RSZ2:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_RSZ2;
-+			break;
-+		case MDP_COMP_RSZ3:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_RSZ3;
-+			break;
-+		case MDP_COMP_TDSHP1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_TDSHP1;
-+			break;
-+		case MDP_COMP_TDSHP2:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_TDSHP2;
-+			break;
-+		case MDP_COMP_TDSHP3:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_TDSHP3;
-+			break;
-+		case MDP_COMP_COLOR1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_COLOR2:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_COLOR3:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_OVL1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_PAD1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_PAD2:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_PAD3:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			break;
-+		case MDP_COMP_WROT1:
-+			subfrm->mutex2_mod |= data->comp_data[public_id].mutex.mod;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_WROT1;
-+			break;
-+		case MDP_COMP_WROT2:
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_WROT2;
-+			break;
-+		case MDP_COMP_WROT3:
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
-+			subfrm->sof2s[subfrm->num_sof2s++] = MDP_COMP_WROT3;
-+			break;
-+		case MDP_COMP_VDO0DL0:
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
-+			break;
-+		case MDP_COMP_VDO1DL0:
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
-+			break;
-+		case MDP_COMP_VDO0DL1:
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
-+			break;
-+		case MDP_COMP_VDO1DL1:
-+			subfrm->mutex2_mod2 |= data->comp_data[public_id].mutex.mod2;
- 			break;
- 		default:
- 			break;
-@@ -143,17 +323,23 @@ static int mdp_path_subfrm_require(struct mdp_path_subfrm *subfrm,
- 	}
- 
- 	subfrm->mutex_id = mutex_id;
--	if (-1 == mutex_id) {
-+	subfrm->mutex2_id = mutex2_id;
++static const struct mdp_comp_ops stitch_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = NULL,
++	.config_frame = NULL,
++	.config_subfrm = NULL,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
 +
-+	if (mutex_id == MDP_PIPE_NONE && mutex2_id == MDP_PIPE_NONE) {
- 		dev_err(dev, "No mutex assigned");
- 		return -EINVAL;
- 	}
- 
- 	/* Set mutex modules */
--	if (subfrm->mutex_mod) {
-+	if (subfrm->mutex_mod || subfrm->mutex_mod2) {
- 		mtk_mutex_add_mod_by_cmdq(mutex[mutex_id], subfrm->mutex_mod,
--					  0, mutex_sof, cmd);
-+					  subfrm->mutex_mod2, mutex_sof, cmd);
- 	}
- 
-+	if (subfrm->mutex2_mod || subfrm->mutex2_mod2) {
-+		mtk_mutex_add_mod_by_cmdq(mutex2[mutex2_id], subfrm->mutex2_mod,
-+					  subfrm->mutex2_mod2, mutex2_sof, cmd);
-+	}
- 	return 0;
- }
- 
-@@ -163,14 +349,16 @@ static int mdp_path_subfrm_run(const struct mdp_path_subfrm *subfrm,
- {
- 	struct device *dev = &path->mdp_dev->pdev->dev;
- 	struct mtk_mutex **mutex = path->mdp_dev->mdp_mutex;
-+	struct mtk_mutex **mutex2 = path->mdp_dev->mdp_mutex2;
- 	s32 mutex_id = subfrm->mutex_id;
-+	s32 mutex2_id = subfrm->mutex2_id;
- 
--	if (-1 == mutex_id) {
-+	if (mutex_id == MDP_PIPE_NONE && mutex2_id == MDP_PIPE_NONE) {
- 		dev_err(dev, "Incorrect mutex id");
- 		return -EINVAL;
- 	}
- 
--	if (subfrm->mutex_mod) {
-+	if (subfrm->mutex_mod || subfrm->mutex_mod2) {
- 		int index, evt;
- 
- 		/* Wait WROT SRAM shared to DISP RDMA */
-@@ -235,6 +423,71 @@ static int mdp_path_subfrm_run(const struct mdp_path_subfrm *subfrm,
- 				MM_REG_WAIT(cmd, evt);
- 		}
- 	}
-+
-+	if (subfrm->mutex2_mod || subfrm->mutex2_mod2) {
-+		int index, evt;
-+
-+		/* Clear SOF event for each engine */
-+		for (index = 0; index < subfrm->num_sof2s; index++) {
-+			switch (subfrm->sof2s[index]) {
-+			case MDP_COMP_RDMA1:
-+				evt = mdp_get_event_idx(path->mdp_dev, RDMA1_SOF);
-+				break;
-+			case MDP_COMP_RDMA2:
-+				evt = mdp_get_event_idx(path->mdp_dev, RDMA2_SOF);
-+				break;
-+			case MDP_COMP_RDMA3:
-+				evt = mdp_get_event_idx(path->mdp_dev, RDMA3_SOF);
-+				break;
-+			case MDP_COMP_WROT1:
-+				evt = mdp_get_event_idx(path->mdp_dev, WROT1_SOF);
-+				break;
-+			case MDP_COMP_WROT2:
-+				evt = mdp_get_event_idx(path->mdp_dev, WROT2_SOF);
-+				break;
-+			case MDP_COMP_WROT3:
-+				evt = mdp_get_event_idx(path->mdp_dev, WROT3_SOF);
-+				break;
-+			default:
-+				evt = -1;
-+				break;
-+			}
-+			if (evt > 0)
-+				MM_REG_CLEAR(cmd, evt);
-+		}
-+
-+		/* Enable the mutex */
-+		mtk_mutex_enable_by_cmdq(mutex2[mutex2_id], cmd);
-+
-+		/* Wait SOF events and clear mutex modules (optional) */
-+		for (index = 0; index < subfrm->num_sof2s; index++) {
-+			switch (subfrm->sof2s[index]) {
-+			case MDP_COMP_RDMA1:
-+				evt = mdp_get_event_idx(path->mdp_dev, RDMA1_SOF);
-+				break;
-+			case MDP_COMP_RDMA2:
-+				evt = mdp_get_event_idx(path->mdp_dev, RDMA2_SOF);
-+				break;
-+			case MDP_COMP_RDMA3:
-+				evt = mdp_get_event_idx(path->mdp_dev, RDMA3_SOF);
-+				break;
-+			case MDP_COMP_WROT1:
-+				evt = mdp_get_event_idx(path->mdp_dev, WROT1_SOF);
-+				break;
-+			case MDP_COMP_WROT2:
-+				evt = mdp_get_event_idx(path->mdp_dev, WROT2_SOF);
-+				break;
-+			case MDP_COMP_WROT3:
-+				evt = mdp_get_event_idx(path->mdp_dev, WROT3_SOF);
-+				break;
-+			default:
-+				evt = -1;
-+				break;
-+			}
-+			if (evt > 0)
-+				MM_REG_WAIT(cmd, evt);
-+		}
-+	}
- 	return 0;
- }
- 
-@@ -247,6 +500,9 @@ static int mdp_path_ctx_init(struct mdp_dev *mdp, struct mdp_path *path)
- 		return -EINVAL;
- 
- 	for (index = 0; index < config->num_components; index++) {
-+		if (is_dummy_engine(mdp, config->components[index].type))
-+			continue;
-+
- 		ret = mdp_comp_ctx_init(mdp, &path->comps[index],
- 					&config->components[index],
- 					path->param);
-@@ -276,13 +532,21 @@ static int mdp_path_config_subfrm(struct mmsys_cmdq_cmd *cmd,
- 	/* Enable mux settings */
- 	for (index = 0; index < ctrl->num_sets; index++) {
- 		set = &ctrl->sets[index];
--		mmsys_dev = path->mdp_dev->mdp_mmsys;
-+		if (data->mdp_cfg->mdp_version_8195) {
-+			if (set->vpp_id)
-+				mmsys_dev = path->mdp_dev->mdp_mmsys2;
-+			else
-+				mmsys_dev = path->mdp_dev->mdp_mmsys;
-+		}
- 
- 		mtk_mmsys_write_reg_by_cmdq(mmsys_dev, cmd,
- 					    set->reg, set->value, 0xFFFFFFFF);
- 	}
- 	/* Config sub-frame information */
- 	for (index = (config->num_components - 1); index >= 0; index--) {
-+		if (is_dummy_engine(path->mdp_dev, config->components[index].type))
-+			continue;
-+
- 		ctx = &path->comps[index];
- 		if (is_output_disable(ctx->param, count))
- 			continue;
-@@ -296,6 +560,9 @@ static int mdp_path_config_subfrm(struct mmsys_cmdq_cmd *cmd,
- 		return ret;
- 	/* Wait components done */
- 	for (index = 0; index < config->num_components; index++) {
-+		if (is_dummy_engine(path->mdp_dev, config->components[index].type))
-+			continue;
-+
- 		ctx = &path->comps[index];
- 		if (is_output_disable(ctx->param, count))
- 			continue;
-@@ -305,6 +572,9 @@ static int mdp_path_config_subfrm(struct mmsys_cmdq_cmd *cmd,
- 	}
- 	/* Advance to the next sub-frame */
- 	for (index = 0; index < config->num_components; index++) {
-+		if (is_dummy_engine(path->mdp_dev, config->components[index].type))
-+			continue;
-+
- 		ctx = &path->comps[index];
- 		ret = call_op(ctx, advance_subfrm, cmd, count);
- 		if (ret)
-@@ -313,7 +583,12 @@ static int mdp_path_config_subfrm(struct mmsys_cmdq_cmd *cmd,
- 	/* Disable mux settings */
- 	for (index = 0; index < ctrl->num_sets; index++) {
- 		set = &ctrl->sets[index];
--		mmsys_dev = path->mdp_dev->mdp_mmsys;
-+		if (data->mdp_cfg->mdp_version_8195) {
-+			if (set->vpp_id)
-+				mmsys_dev = path->mdp_dev->mdp_mmsys2;
-+			else
-+				mmsys_dev = path->mdp_dev->mdp_mmsys;
-+		}
- 
- 		mtk_mmsys_write_reg_by_cmdq(mmsys_dev, cmd,
- 					    set->reg, 0, 0xFFFFFFFF);
-@@ -332,6 +607,9 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mmsys_cmdq_cmd *cmd,
- 	/* Config path frame */
- 	/* Reset components */
- 	for (index = 0; index < config->num_components; index++) {
-+		if (is_dummy_engine(mdp, config->components[index].type))
-+			continue;
-+
- 		ctx = &path->comps[index];
- 		ret = call_op(ctx, init_comp, cmd);
- 		if (ret)
-@@ -342,6 +620,9 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mmsys_cmdq_cmd *cmd,
- 		const struct v4l2_rect *compose =
- 			path->composes[ctx->param->outputs[0]];
- 
-+		if (is_dummy_engine(mdp, config->components[index].type))
-+			continue;
-+
- 		ctx = &path->comps[index];
- 		ret = call_op(ctx, config_frame, cmd, compose);
- 		if (ret)
-@@ -356,6 +637,9 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mmsys_cmdq_cmd *cmd,
- 	}
- 	/* Post processing information */
- 	for (index = 0; index < config->num_components; index++) {
-+		if (is_dummy_engine(mdp, config->components[index].type))
-+			continue;
-+
- 		ctx = &path->comps[index];
- 		ret = call_op(ctx, post_process, cmd);
- 		if (ret)
-@@ -364,6 +648,60 @@ static int mdp_path_config(struct mdp_dev *mdp, struct mmsys_cmdq_cmd *cmd,
- 	return 0;
- }
- 
-+static int mdp_hyfbc_config(struct mdp_dev *mdp, struct mmsys_cmdq_cmd *cmd,
-+			    struct mdp_path *path, struct mdp_cmdq_param *param)
++static int init_fg(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
 +{
-+	struct device *dev = &mdp->pdev->dev;
-+	const struct img_config *config = path->config;
-+	struct mdp_m2m_ctx *ctx;
-+	struct mdp_comp_ctx *comp_ctx = &path->comps[0];
-+	const struct mdp_rdma_data *rdma = &comp_ctx->param->rdma;
-+	struct hyfbc_init_info hyfbc;
-+	struct mdp_frame *frame;
-+	u32 wrot_id;
-+	int ret;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
 +
-+	ctx = (struct mdp_m2m_ctx *)param->mdp_ctx;
-+	frame = &ctx->curr_param.output;
-+
-+	if (!MDP_COLOR_IS_HYFBC_COMPRESS(frame->mdp_fmt->mdp_color) ||
-+	    frame->format.fmt.pix_mp.width % 32 == 0)
-+		return 0;
-+
-+	// First engine should be rdma engine
-+	if (!is_rdma(mdp, config->components[0].type)) {
-+		dev_dbg(dev, "Not RDMA engine id, end patch.");
-+		return 0;
-+	}
-+
-+	wrot_id = config->components[(config->num_components - 1)].type;
-+
-+	hyfbc.is10b = (MDP_COLOR_IS_10BIT(frame->mdp_fmt->mdp_color));
-+	hyfbc.width_in_mb = DIV_ROUND_UP(frame->format.fmt.pix_mp.width, 16);
-+	hyfbc.height_in_mb = DIV_ROUND_UP(frame->format.fmt.pix_mp.height, 16);
-+	hyfbc.w_stride_in_mb = DIV_ROUND_UP(ALIGN(frame->stride.width, 32), 16);
-+	hyfbc.h_stride_in_mb = DIV_ROUND_UP(ALIGN(frame->stride.height, 32), 16);
-+	hyfbc.byte_per_mb = BYTE_PER_MB_Y;
-+	hyfbc.pa_base = rdma->ufo_dec_y;
-+
-+	ret = mdp_hyfbc_init(mdp, cmd, &hyfbc, wrot_id);
-+	if (ret) {
-+		dev_err(dev, "mdp_hyfbc_init: y patch fail.");
-+		return ret;
-+	}
-+
-+	hyfbc.byte_per_mb = BYTE_PER_MB_C;
-+	hyfbc.pa_base = rdma->ufo_dec_c;
-+
-+	ret = mdp_hyfbc_init(mdp, cmd, &hyfbc, wrot_id);
-+	if (ret) {
-+		dev_err(dev, "mdp_hyfbc_init: c patch fail.");
-+		return ret;
-+	}
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_FG_TRIGGER,
++		     (0x00000001 << 2), 0x00000004);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_FG_TRIGGER,
++		     0x00000000, 0x00000004);
 +
 +	return 0;
 +}
 +
- static void mdp_auto_release_work(struct work_struct *work)
- {
- 	struct mdp_cmdq_cb_param *cb_param;
-@@ -376,6 +714,10 @@ static void mdp_auto_release_work(struct work_struct *work)
- 
- 	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
- 	mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
-+
-+	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA1);
-+	if (i >= 0)
-+		mtk_mutex_unprepare(mdp->mdp_mutex2[mdp->mdp_data->pipe_info[i].mutex_id]);
- 	mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
- 			    cb_param->num_comps);
- 
-@@ -419,6 +761,11 @@ static void mdp_handle_cmdq_callback(struct cmdq_cb_data data)
- 		dev_err(dev, "%s:queue_work fail!\n", __func__);
- 		i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
- 		mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
-+
-+		i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA1);
-+		if (i >= 0)
-+			mtk_mutex_unprepare(mdp->mdp_mutex2[mdp->mdp_data->pipe_info[i].mutex_id]);
-+
- 		mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
- 				    cb_param->num_comps);
- 
-@@ -481,8 +828,22 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
- 	mtk_mutex_prepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
- 
--	for (i = 0; i < param->config->num_components; i++)
-+	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA1);
-+	if (i >= 0)
-+		mtk_mutex_prepare(mdp->mdp_mutex2[mdp->mdp_data->pipe_info[i].mutex_id]);
-+
-+	for (i = 0; i < param->config->num_components; i++) {
-+		if (is_dummy_engine(mdp, path->config->components[i].type))
-+			continue;
-+
- 		mdp_comp_clock_on(&mdp->pdev->dev, path->comps[i].comp);
-+	}
-+
-+	if (mdp->mdp_data->mdp_cfg->mdp_version_8195) {
-+		ret = mdp_hyfbc_config(mdp, &cmd, path, param);
-+		if (ret)
-+			goto err_destroy_pkt;
-+	}
- 
- 	ret = mdp_path_config(mdp, &cmd, path);
- 	if (ret) {
-@@ -503,9 +864,13 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- 		goto err_destroy_pkt;
- 	}
- 
--	for (i = 0; i < param->config->num_components; i++)
-+	for (i = 0; i < param->config->num_components; i++) {
-+		if (is_dummy_engine(mdp, path->config->components[i].type))
-+			continue;
-+
- 		memcpy(&comps[i], path->comps[i].comp,
- 		       sizeof(struct mdp_comp));
-+	}
- 	cb_param->mdp = mdp;
- 	cb_param->user_cmdq_cb = param->cmdq_cb;
- 	cb_param->user_cb_data = param->cb_data;
-@@ -528,6 +893,11 @@ int mdp_cmdq_send(struct mdp_dev *mdp, struct mdp_cmdq_param *param)
- err_clock_off:
- 	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA0);
- 	mtk_mutex_unprepare(mdp->mdp_mutex[mdp->mdp_data->pipe_info[i].mutex_id]);
-+
-+	i = mdp_get_mutex_idx(mdp->mdp_data, MDP_PIPE_RDMA1);
-+	if (i >= 0)
-+		mtk_mutex_unprepare(mdp->mdp_mutex2[mdp->mdp_data->pipe_info[i].mutex_id]);
-+
- 	mdp_comp_clocks_off(&mdp->pdev->dev, cb_param->comps,
- 			    cb_param->num_comps);
- err_destroy_pkt:
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
-index 8ca9c7e325e1..3d5cbd0e3805 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.c
-@@ -27,6 +27,10 @@
- #include "mdp_reg_wdma.h"
- #include "mdp_reg_isp.h"
- 
-+#define is_wrot(id) \
-+	((mdp)->mdp_data->comp_data[id].match.type == MDP_COMP_TYPE_WROT)
-+#define byte2pixel(byte) ((byte) / 2)
-+
- s32 get_comp_inner_id(struct mdp_dev *mdp_dev, enum mtk_mdp_comp_id id)
- {
- 	if (!mdp_dev)
-@@ -57,6 +61,20 @@ enum mtk_mdp_comp_id get_comp_public_id(struct mdp_dev *mdp_dev, s32 inner_id)
- 	return public_id;
- }
- 
-+bool is_dummy_engine(struct mdp_dev *mdp_dev, s32 inner_id)
++static int config_fg_frame(struct mdp_comp_ctx *ctx,
++			   struct mmsys_cmdq_cmd *cmd,
++			   const struct v4l2_rect *compose)
 +{
-+	enum mtk_mdp_comp_id public_id = get_comp_public_id(mdp_dev, inner_id);
++	const struct mdp_fg_data *fg = &ctx->param->fg;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
 +
-+	return (mdp_dev->mdp_data->comp_data[public_id].match.type == MDP_COMP_TYPE_DUMMY);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_FG_FG_CTRL_0, fg->ctrl_0, 0x1);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_FG_FG_CK_EN, fg->ck_en, 0x7);
++	return 0;
 +}
 +
-+bool is_rdma(struct mdp_dev *mdp_dev, s32 inner_id)
++static int config_fg_subfrm(struct mdp_comp_ctx *ctx,
++			    struct mmsys_cmdq_cmd *cmd, u32 index)
 +{
-+	enum mtk_mdp_comp_id public_id = get_comp_public_id(mdp_dev, inner_id);
++	const struct mdp_fg_subfrm *subfrm = &ctx->param->fg.subfrms[index];
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
 +
-+	return (mdp_dev->mdp_data->comp_data[public_id].match.type == MDP_COMP_TYPE_RDMA);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_FG_TILE_INFO_0, subfrm->info_0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_FG_TILE_INFO_1, subfrm->info_1, 0xFFFFFFFF);
++
++	return 0;
 +}
 +
- static const struct mdp_platform_config *__get_plat_cfg(const struct mdp_comp_ctx *ctx)
- {
- 	if (!ctx)
-@@ -423,14 +441,40 @@ static const struct mdp_comp_ops fg_ops = {
- 
++static const struct mdp_comp_ops fg_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_fg,
++	.config_frame = config_fg_frame,
++	.config_subfrm = config_fg_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
++
  static int init_rsz(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
  {
+ 	phys_addr_t base = ctx->comp->reg_base;
+@@ -274,9 +439,13 @@ static int config_rsz_frame(struct mdp_comp_ctx *ctx,
+ 			    const struct v4l2_rect *compose)
+ {
+ 	const struct mdp_rsz_data *rsz = &ctx->param->rsz;
 +	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
  	phys_addr_t base = ctx->comp->reg_base;
  	u8 subsys_id = ctx->comp->subsys_id;
-+	u32 value, mask, alias_id;
  
- 	/* Reset RSZ */
- 	MM_REG_WRITE(cmd, subsys_id, base, PRZ_ENABLE, 0x10000, BIT(16));
- 	MM_REG_WRITE(cmd, subsys_id, base, PRZ_ENABLE, 0x0, BIT(16));
- 	/* Enable RSZ */
- 	MM_REG_WRITE(cmd, subsys_id, base, PRZ_ENABLE, BIT(0), BIT(0));
++	if (mdp_cfg && mdp_cfg->rsz_etc_control)
++		MM_REG_WRITE(cmd, subsys_id, base, RSZ_ETC_CONTROL, 0x0, 0xFFFFFFFF);
 +
-+	if (mdp_cfg && mdp_cfg->mdp_version_8195) {
-+		const struct mtk_mdp_driver_data *data = ctx->comp->mdp_dev->mdp_data;
-+
-+		value = (1 << 25);
-+		mask = (1 << 25);
-+		alias_id = data->config_table[CONFIG_VPP1_HW_DCM_1ST_DIS0];
-+		mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys2,
-+					   cmd, alias_id, value, mask);
-+
-+		alias_id = data->config_table[CONFIG_VPP1_HW_DCM_2ND_DIS0];
-+		mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys2,
-+					   cmd, alias_id, value, mask);
-+
-+		value = (1 << 4 | 1 << 5);
-+		mask = (1 << 4 | 1 << 5);
-+		alias_id = data->config_table[CONFIG_VPP1_HW_DCM_1ST_DIS1];
-+		mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys2,
-+					   cmd, alias_id, value, mask);
-+
-+		alias_id = data->config_table[CONFIG_VPP1_HW_DCM_2ND_DIS1];
-+		mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys2,
-+					   cmd, alias_id, value, mask);
-+	}
- 	return 0;
- }
- 
-@@ -501,6 +545,48 @@ static int config_rsz_subfrm(struct mdp_comp_ctx *ctx,
- 	MM_REG_WRITE(cmd, subsys_id, base, PRZ_OUTPUT_IMAGE, subfrm->clip,
- 		     0xFFFFFFFF);
- 
-+	if (mdp_cfg && mdp_cfg->mdp_version_8195) {
-+		struct mdp_comp *merge;
-+		const struct mtk_mdp_driver_data *data = ctx->comp->mdp_dev->mdp_data;
-+		enum mtk_mdp_comp_id id = ctx->comp->public_id;
-+		u32 alias_id;
-+
-+		switch (id) {
-+		case MDP_COMP_RSZ2:
-+			merge = ctx->comp->mdp_dev->comp[MDP_COMP_MERGE2];
-+
-+			alias_id = data->config_table[CONFIG_SVPP2_BUF_BF_RSZ_SWITCH];
-+			mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys2,
-+						   cmd, alias_id,
-+						   subfrm->rsz_switch, 0xFFFFFFFF);
-+			break;
-+		case MDP_COMP_RSZ3:
-+			merge = ctx->comp->mdp_dev->comp[MDP_COMP_MERGE3];
-+
-+			alias_id = data->config_table[CONFIG_SVPP3_BUF_BF_RSZ_SWITCH];
-+			mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys2,
-+						   cmd, alias_id,
-+						   subfrm->rsz_switch, 0xFFFFFFFF);
-+			break;
-+		default:
-+			goto subfrm_done;
-+		}
-+		MM_REG_WRITE(cmd, merge->subsys_id, merge->reg_base,
-+			     VPP_MERGE_CFG_0, subfrm->merge_cfg, 0xFFFFFFFF);
-+		MM_REG_WRITE(cmd, merge->subsys_id, merge->reg_base,
-+			     VPP_MERGE_CFG_4, subfrm->merge_cfg, 0xFFFFFFFF);
-+		MM_REG_WRITE(cmd, merge->subsys_id, merge->reg_base,
-+			     VPP_MERGE_CFG_24, subfrm->merge_cfg, 0xFFFFFFFF);
-+		MM_REG_WRITE(cmd, merge->subsys_id, merge->reg_base,
-+			     VPP_MERGE_CFG_25, subfrm->merge_cfg, 0xFFFFFFFF);
-+
-+		MM_REG_WRITE(cmd, merge->subsys_id, merge->reg_base,
-+			     VPP_MERGE_CFG_12, 0x1, 0xFFFFFFFF); // bypass mode
-+		MM_REG_WRITE(cmd, merge->subsys_id, merge->reg_base,
-+			     VPP_MERGE_ENABLE, 0x1, 0xFFFFFFFF);
-+	}
-+
-+subfrm_done:
- 	return 0;
- }
- 
-@@ -1020,10 +1106,12 @@ static int config_wrot_frame(struct mdp_comp_ctx *ctx,
- {
- 	const struct mdp_wrot_data *wrot = &ctx->param->wrot;
- 	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
-+	const struct mtk_mdp_driver_data *data = ctx->comp->mdp_dev->mdp_data;
- 	phys_addr_t base = ctx->comp->reg_base;
- 	u8 subsys_id = ctx->comp->subsys_id;
- 	bool comp;
- 	u32 colorformat = ctx->outputs[0]->buffer.format.colorformat;
-+	u32 alias_id;
- 
- 	/* Write frame base address */
- 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_BASE_ADDR, wrot->iova[0],
-@@ -1084,11 +1172,36 @@ static int config_wrot_frame(struct mdp_comp_ctx *ctx,
- 	if (wrot->fifo_test != 0)
- 		MM_REG_WRITE(cmd, subsys_id, base, VIDO_FIFO_TEST,
- 			     wrot->fifo_test, 0xFFF);
--	/* Filter enable */
--	if (mdp_cfg && mdp_cfg->wrot_filter_constraint)
--		MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE,
--			     wrot->filter, 0x77);
--
-+	if (mdp_cfg) {
-+		/* Filter enable */
-+		if (mdp_cfg->wrot_filter_constraint)
-+			MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE,
-+				     wrot->filter, 0x77);
-+
-+		if (mdp_cfg->mdp_version_8195) {
-+			/* Turn off WROT dma dcm */
-+			MM_REG_WRITE(cmd, subsys_id, base, VIDO_ROT_EN,
-+				     (0x1 << 23) + (0x1 << 20), 0x900000);
-+
-+			if (wrot->vpp02vpp1) {
-+				// Disable DCM (VPP02VPP1_RELAY)
-+				alias_id = data->config_table[CONFIG_VPP0_HW_DCM_1ST_DIS0];
-+				mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys,
-+							   cmd, alias_id, 0x4000,
-+							   0xFFFFFFFF);
-+				// Set default size
-+				alias_id = data->config_table[CONFIG_VPP0_DL_IRELAY_WR];
-+				mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys2,
-+							   cmd, alias_id, 0x0,
-+							   0xFFFFFFFF);
-+			} else {
-+				alias_id = data->config_table[CONFIG_VPP0_HW_DCM_1ST_DIS0];
-+				mtk_mmsys_mdp_write_config(ctx->comp->mdp_dev->mdp_mmsys,
-+							   cmd, alias_id, 0x0,
-+							   0xFFFFFFFF);
-+			}
-+		}
-+	}
- 	return 0;
- }
- 
-@@ -1566,17 +1679,30 @@ static const struct mdp_comp_ops camin_ops = {
+ 	if (ctx->param->frame.bypass) {
+ 		/* Disable RSZ */
+ 		MM_REG_WRITE(cmd, subsys_id, base, PRZ_ENABLE, 0x0, BIT(0));
+@@ -363,6 +532,473 @@ static const struct mdp_comp_ops rsz_ops = {
+ 	.post_process = NULL,
  };
  
- static const struct mdp_comp_ops *mdp_comp_ops[MDP_COMP_TYPE_COUNT] = {
--	[MDP_COMP_TYPE_RDMA] =		&rdma_ops,
--	[MDP_COMP_TYPE_RSZ] =		&rsz_ops,
--	[MDP_COMP_TYPE_WROT] =		&wrot_ops,
--	[MDP_COMP_TYPE_WDMA] =		&wdma_ops,
--	[MDP_COMP_TYPE_PATH1] =		NULL,
--	[MDP_COMP_TYPE_PATH2] =		NULL,
--	[MDP_COMP_TYPE_CCORR] =		&ccorr_ops,
--	[MDP_COMP_TYPE_IMGI] =		&imgi_ops,
--	[MDP_COMP_TYPE_EXTO] =		NULL,
--	[MDP_COMP_TYPE_DL_PATH1] =	&camin_ops,
--	[MDP_COMP_TYPE_DL_PATH2] =	&camin_ops,
-+	[MDP_COMP_TYPE_WPEI]     = &camin_ops,
-+	[MDP_COMP_TYPE_SPLIT]    = &split_ops,
-+	[MDP_COMP_TYPE_STITCH]   = &stitch_ops,
-+	[MDP_COMP_TYPE_RDMA]     = &rdma_ops,
-+	[MDP_COMP_TYPE_FG]       = &fg_ops,
-+	[MDP_COMP_TYPE_HDR]      = &hdr_ops,
-+	[MDP_COMP_TYPE_AAL]      = &aal_ops,
-+	[MDP_COMP_TYPE_RSZ]      = &rsz_ops,
-+	[MDP_COMP_TYPE_TDSHP]    = &tdshp_ops,
-+	[MDP_COMP_TYPE_COLOR]    = &color_ops,
-+	[MDP_COMP_TYPE_OVL]      = &ovl_ops,
-+	[MDP_COMP_TYPE_PAD]      = &pad_ops,
-+	[MDP_COMP_TYPE_TCC]      = &tcc_ops,
-+	[MDP_COMP_TYPE_WROT]     = &wrot_ops,
-+	[MDP_COMP_TYPE_WDMA]     = &wdma_ops,
-+	[MDP_COMP_TYPE_MERGE]    = NULL,
-+	[MDP_COMP_TYPE_PATH1]    = NULL,
-+	[MDP_COMP_TYPE_PATH2]    = NULL,
-+	[MDP_COMP_TYPE_CCORR]    = &ccorr_ops,
-+	[MDP_COMP_TYPE_IMGI]     = &imgi_ops,
-+	[MDP_COMP_TYPE_EXTO]     = NULL,
-+	[MDP_COMP_TYPE_DL_PATH1] = &camin_ops,
-+	[MDP_COMP_TYPE_DL_PATH2] = &camin_ops,
-+	[MDP_COMP_TYPE_DUMMY]    = NULL,
- };
- 
- static const struct of_device_id mdp_comp_dt_ids[] = {
-@@ -2070,3 +2196,190 @@ int mdp_comp_ctx_init(struct mdp_dev *mdp, struct mdp_comp_ctx *ctx,
- 		ctx->outputs[i] = &frame->outputs[param->outputs[i]];
- 	return 0;
- }
-+
-+int mdp_hyfbc_init(struct mdp_dev *mdp, struct mmsys_cmdq_cmd *cmd,
-+		   struct hyfbc_init_info *hyfbc, u32 wrot)
++static int init_aal(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
 +{
-+	struct mtk_mutex **mutex = mdp->mdp_mutex;
-+	struct mtk_mutex **mutex2 = mdp->mdp_mutex2;
-+	enum mtk_mdp_comp_id mtk_wrot = MDP_COMP_NONE;
-+	phys_addr_t base;
-+	u16 subsys_id;
-+	u32 offset;
-+	u32 mutex_id;
-+	u32 mutex2_id;
-+	u32 alias_id;
-+	int evt;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
 +
-+	mtk_wrot = get_comp_public_id(mdp, wrot);
-+	if (!is_wrot(mtk_wrot)) {
-+		dev_err(&mdp->pdev->dev, "Invalid wrot inner id %d", wrot);
-+		return -EINVAL;
-+	}
-+
-+	base = mdp->comp[mtk_wrot]->reg_base;
-+	subsys_id = mdp->comp[mtk_wrot]->subsys_id;
-+	offset = hyfbc->width_in_mb * hyfbc->byte_per_mb;
-+
-+	/* Reset WROT */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_SOFT_RST,
-+		     0x01, 0x00000001);
-+	MM_REG_POLL(cmd, subsys_id, base, VIDO_SOFT_RST_STAT,
-+		    0x01, 0x00000001);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_SOFT_RST,
-+		     0x00, 0x00000001);
-+	MM_REG_POLL(cmd, subsys_id, base, VIDO_SOFT_RST_STAT,
-+		    0x00, 0x00000001);
-+
-+	/* Write frame base address */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_BASE_ADDR,
-+		     (hyfbc->pa_base + offset), 0xFFFFFFFF);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_BASE_ADDR_C,
-+		     0x0, 0xFFFFFFFF);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_BASE_ADDR_V,
-+		     0x0, 0xFFFFFFFF);
-+
-+	/* Write frame related registers */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_CTRL,
-+		     0x5020, 0xF131512F);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_BKGD,
-+		     ((hyfbc->is10b) ? 0xC8E438 : 0x18f4f8), 0xFFFFFFFF);
-+
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_SCAN_10BIT,
-+		     0x0, 0x0000000F);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_PENDING_ZERO,
-+		     0x0, 0x04000000);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_CTRL_2,
-+		     0x0, 0x00000007);
-+
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_PVRIC,
-+		     0x0, 0x03);
-+	/* Write pre-ultra threshold */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_DMA_PREULTRA,
-+		     0x8804c, 0x00FFFFFF);
-+	/* Write frame Y pitch */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_STRIDE,
-+		     (hyfbc->w_stride_in_mb * hyfbc->byte_per_mb), 0x0000FFFF);
-+	/* Write frame UV pitch */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_STRIDE_C,
-+		     0x0, 0x0000FFFF);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_STRIDE_V,
-+		     0x0, 0x0000FFFF);
-+	/* Write matrix control */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAT_CTRL,
-+		     0x60, 0x000000F3);
-+
-+	/* Set the fixed ALPHA as 0xFF */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_DITHER,
-+		     0xFF000000, 0xFF000000);
-+	/* Set VIDO_EOL_SEL */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_RSV_1,
-+		     0x80000000, 0x80000000);
-+	/* Set VIDO_FIFO_TEST */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_FIFO_TEST,
-+		     0x200, 0x00000FFF);
-+
-+	/* Filter enable */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE,
-+		     0x0, 0x00000077);
-+
-+	/* Turn off WROT dma dcm */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_ROT_EN,
-+		     (0x1 << 23) + (0x1 << 20), 0x00900000);
-+
-+	alias_id = mdp->mdp_data->config_table[CONFIG_VPP0_HW_DCM_1ST_DIS0];
-+	mtk_mmsys_mdp_write_config(mdp->mdp_mmsys, cmd,
-+				   alias_id, 0x0, 0xFFFFFFFF);
-+
-+	/* Set mutex modules */
-+	switch (mtk_wrot) {
-+	case MDP_COMP_WROT0:
-+		mutex_id = 2;
-+		mtk_mutex_add_mod_by_cmdq(mutex[mutex_id],
-+					  0x800, 0x0, 0x0, cmd);
-+		break;
-+	case MDP_COMP_WROT1:
-+		mutex2_id = 1;
-+		mtk_mutex_add_mod_by_cmdq(mutex2[mutex2_id],
-+					  0x80000000, 0x0, 0x0, cmd);
-+		break;
-+	case MDP_COMP_WROT2:
-+		mutex2_id = 2;
-+		mtk_mutex_add_mod_by_cmdq(mutex2[mutex2_id],
-+					  0x0, 0x1, 0x0, cmd);
-+		break;
-+	case MDP_COMP_WROT3:
-+		mutex2_id = 3;
-+		mtk_mutex_add_mod_by_cmdq(mutex2[mutex2_id],
-+					  0x0, 0x2, 0x0, cmd);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	/* Write Y pixel offset */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_OFST_ADDR,
-+		     0x0, 0x0FFFFFFF);
-+	/* Write U pixel offset */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_OFST_ADDR_C,
-+		     0x0, 0x0FFFFFFF);
-+	/* Write V pixel offset */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_OFST_ADDR_V,
-+		     0x0, 0x0FFFFFFF);
-+	/* Write source size */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_IN_SIZE,
-+		     (hyfbc->height_in_mb << 16) | byte2pixel(hyfbc->byte_per_mb), 0xFFFFFFFF);
-+	/* Write target size */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_TAR_SIZE,
-+		     (hyfbc->height_in_mb << 16) | byte2pixel(hyfbc->byte_per_mb), 0xFFFFFFFF);
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_CROP_OFST, 0x0,
-+		     0xFFFFFFFF);
-+
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE,
-+		     ((byte2pixel(hyfbc->byte_per_mb) << 16) | 0x400), 0xFFFF7F00);
-+
-+	/* Enable WROT */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_ROT_EN, 0x01, 0x00000001);
-+
-+	switch (mtk_wrot) {
-+	case MDP_COMP_WROT0:
-+		evt = mdp_get_event_idx(mdp, WROT0_SOF);
-+		MM_REG_CLEAR(cmd, evt);
-+		mtk_mutex_enable_by_cmdq(mutex[mutex_id], cmd);
-+		MM_REG_WAIT(cmd, evt);
-+		evt = mdp_get_event_idx(mdp, WROT0_DONE);
-+		MM_REG_WAIT(cmd, evt);
-+		break;
-+	case MDP_COMP_WROT1:
-+		evt = mdp_get_event_idx(mdp, WROT1_SOF);
-+		MM_REG_CLEAR(cmd, evt);
-+		mtk_mutex_enable_by_cmdq(mutex2[mutex2_id], cmd);
-+		MM_REG_WAIT(cmd, evt);
-+		evt = mdp_get_event_idx(mdp, WROT1_DONE);
-+		MM_REG_WAIT(cmd, evt);
-+		break;
-+	case MDP_COMP_WROT2:
-+		evt = mdp_get_event_idx(mdp, WROT2_SOF);
-+		MM_REG_CLEAR(cmd, evt);
-+		mtk_mutex_enable_by_cmdq(mutex2[mutex2_id], cmd);
-+		MM_REG_WAIT(cmd, evt);
-+		evt = mdp_get_event_idx(mdp, WROT2_DONE);
-+		MM_REG_WAIT(cmd, evt);
-+		break;
-+	case MDP_COMP_WROT3:
-+		evt = mdp_get_event_idx(mdp, WROT3_SOF);
-+		MM_REG_CLEAR(cmd, evt);
-+		mtk_mutex_enable_by_cmdq(mutex2[mutex2_id], cmd);
-+		MM_REG_WAIT(cmd, evt);
-+		evt = mdp_get_event_idx(mdp, WROT3_DONE);
-+		MM_REG_WAIT(cmd, evt);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	/* Disable WROT */
-+	MM_REG_WRITE(cmd, subsys_id, base, VIDO_ROT_EN, 0x00, 0x00000001);
++	// Always set MDP_AAL enable to 1
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_AAL_EN, 0x1, 0x1);
 +
 +	return 0;
 +}
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
-index 05a60771d4bc..391e9014dc99 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-comp.h
-@@ -222,7 +222,8 @@ void mdp_comp_clocks_off(struct device *dev, struct mdp_comp *comps, int num);
- int mdp_comp_ctx_init(struct mdp_dev *mdp, struct mdp_comp_ctx *ctx,
- 		      const struct img_compparam *param,
- 		      const struct img_ipi_frameparam *frame);
--
-+int mdp_hyfbc_init(struct mdp_dev *mdp, struct mmsys_cmdq_cmd *cmd,
-+		   struct hyfbc_init_info *hyfbc, u32 wrot);
- int mdp_get_event_idx(struct mdp_dev *mdp, enum mdp_comp_event event);
- 
- #endif  /* __MTK_MDP3_COMP_H__ */
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-index bef8da6fff1c..d8161be8c556 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.c
-@@ -44,6 +44,9 @@ static const struct of_device_id mdp_of_ids[] = {
- 	{ .compatible = "mediatek,mt8183-mdp3",
- 	  .data = &mt8183_mdp_driver_data,
- 	},
-+	{ .compatible = "mediatek,mt8195-mdp3",
-+	  .data = &mt8195_mdp_driver_data,
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mdp_of_ids);
-@@ -150,7 +153,7 @@ static int mdp_probe(struct platform_device *pdev)
- 	struct device *dev = &pdev->dev;
- 	struct mdp_dev *mdp;
- 	struct device_node *mdp_node;
--	struct platform_device *mm_pdev;
-+	struct platform_device *mm_pdev, *mm_pdev2;
- 	u32 event_ofst;
- 	int ret, i, mutex_id;
- 
-@@ -162,13 +165,28 @@ static int mdp_probe(struct platform_device *pdev)
- 
- 	mdp->pdev = pdev;
- 	mdp->mdp_data = of_device_get_match_data(&pdev->dev);
 +
-+	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
-+		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
-+
- 	mm_pdev = __get_pdev_by_name(pdev, "mediatek,mmsys");
- 	if (!mm_pdev) {
--		ret = -ENODEV;
--		goto err_return;
-+		if (mdp->mdp_data->mdp_cfg->support_multi_larb) {
-+			platform_set_drvdata(pdev, mdp);
-+			goto success_return;
-+		} else {
-+			ret = -ENODEV;
-+			goto err_return;
-+		}
- 	}
- 	mdp->mdp_mmsys = &mm_pdev->dev;
- 
-+	mm_pdev2 = __get_pdev_by_name(pdev, "mediatek,mmsys2");
-+	if (!mm_pdev2)
-+		dev_err(dev, "Failed to get mdp mmsys2\n");
-+	else
-+		mdp->mdp_mmsys2 = &mm_pdev2->dev;
-+
- 	mdp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,mm-mutex", 0);
- 	if (!mdp_node) {
- 		ret = -ENODEV;
-@@ -200,17 +218,43 @@ static int mdp_probe(struct platform_device *pdev)
- 		goto err_return;
- 	}
- 
-+	mdp_node = of_parse_phandle(pdev->dev.of_node, "mediatek,mm-mutex2", 0);
-+	if (!mdp_node) {
-+		dev_err(dev, "Failed to get mdp mm-mutex2\n");
-+	} else {
-+		mm_pdev2 = of_find_device_by_node(mdp_node);
-+		of_node_put(mdp_node);
-+		if (WARN_ON(!mm_pdev2)) {
-+			ret = -ENODEV;
-+			goto err_return;
-+		}
-+	}
-+
- 	for (i = 0; i < mdp->mdp_data->pipe_info_len; i++) {
- 		mutex_id = mdp->mdp_data->pipe_info[i].mutex_id;
--		if (mdp->mdp_mutex[mutex_id])
--			continue;
--
--		mdp->mdp_mutex[mutex_id] =
--			mtk_mutex_mdp_get(&mm_pdev->dev, mdp->mdp_data->pipe_info[i].pipe_id);
- 
--		if (!mdp->mdp_mutex[mutex_id]) {
--			ret = -ENODEV;
--			goto err_return;
-+		if (mdp->mdp_data->pipe_info[i].mmsys_id != 0) {
-+			if (mdp->mdp_mutex2[mutex_id])
-+				continue;
-+			mdp->mdp_mutex2[mutex_id] =
-+				mtk_mutex_mdp_get(&mm_pdev2->dev,
-+						  mdp->mdp_data->pipe_info[i].pipe_id);
-+
-+			if (!mdp->mdp_mutex2[mutex_id]) {
-+				ret = -ENODEV;
-+				goto err_return;
-+			}
-+		} else {
-+			if (mdp->mdp_mutex[mutex_id])
-+				continue;
-+			mdp->mdp_mutex[mutex_id] =
-+				mtk_mutex_mdp_get(&mm_pdev->dev,
-+						  mdp->mdp_data->pipe_info[i].pipe_id);
-+
-+			if (!mdp->mdp_mutex[mutex_id]) {
-+				ret = -ENODEV;
-+				goto err_return;
-+			}
- 		}
- 	}
- 
-@@ -273,6 +317,7 @@ static int mdp_probe(struct platform_device *pdev)
- 		goto err_unregister_device;
- 	}
- 
-+success_return:
- 	dev_dbg(dev, "mdp-%d registered successfully\n", pdev->id);
- 	return 0;
- 
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
-index c668e317f947..8ee70763a18f 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-core.h
-@@ -60,7 +60,9 @@ struct mtk_mdp_driver_data {
- struct mdp_dev {
- 	struct platform_device			*pdev;
- 	struct device				*mdp_mmsys;
-+	struct device				*mdp_mmsys2;
- 	struct mtk_mutex			*mdp_mutex[MDP_PIPE_MAX];
-+	struct mtk_mutex			*mdp_mutex2[MDP_PIPE_MAX];
- 	struct mdp_comp				*comp[MDP_MAX_COMP_COUNT];
- 	const struct mtk_mdp_driver_data	*mdp_data;
- 	s32					event[MDP_MAX_EVENT_COUNT];
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-index ca1c19c41950..1e749bb2b338 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-m2m.c
-@@ -90,6 +90,7 @@ static void mdp_m2m_worker(struct work_struct *work)
- 	param.type = ctx->curr_param.type;
- 	param.num_inputs = 1;
- 	param.num_outputs = 1;
-+	param.frame_change = (ctx->frame_count[MDP_M2M_SRC] == 0);
- 
- 	frame = ctx_get_frame(ctx, V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
- 	src_vb = v4l2_m2m_next_src_buf(ctx->m2m_ctx);
-@@ -328,6 +329,11 @@ static int mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- 		ctx->curr_param.ycbcr_enc = f->fmt.pix_mp.ycbcr_enc;
- 		ctx->curr_param.quant = f->fmt.pix_mp.quantization;
- 		ctx->curr_param.xfer_func = f->fmt.pix_mp.xfer_func;
-+
-+		if (MDP_COLOR_IS_HYFBC_COMPRESS(fmt->mdp_color)) {
-+			frame->stride.width = ((f->fmt.pix_mp.width + 63) >> 6) << 6;
-+			frame->stride.height = ((f->fmt.pix_mp.height + 31) >> 5) << 5;
-+		}
- 	} else {
- 		capture->compose.left = 0;
- 		capture->compose.top = 0;
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-index 83e91735202b..8c2b74c67273 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.c
-@@ -147,6 +147,47 @@ int mdp_enum_fmt_mplane(struct v4l2_fmtdesc *f)
- 	return 0;
- }
- 
-+static u32 mdp_fmt_get_hyfbc_plane_size(u32 width,
-+					u32 height, u32 color, unsigned int plane)
++static int config_aal_frame(struct mdp_comp_ctx *ctx,
++			    struct mmsys_cmdq_cmd *cmd,
++			    const struct v4l2_rect *compose)
 +{
-+	u32 y_data_size = 0;
-+	u32 c_data_size = 0;
-+	u32 y_header_size = 0;
-+	u32 c_header_size = 0;
-+	u32 y_data_ofst = 0;
-+	u32 c_data_ofst = 0;
-+	u32 c_header_ofst = 0;
++	const struct mdp_aal_data *aal = &ctx->param->aal;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
 +
-+	y_data_size = (((width + 63) >> 6) << 6) * (((height + 63) >> 6) << 6);
-+	y_header_size = y_data_size >> 6;
-+	if (MDP_COLOR_IS_10BIT_PACKED(color))
-+		y_data_size = (y_data_size * 6) >> 2;
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_AAL_CFG_MAIN, aal->cfg_main, 0x80);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_AAL_CFG, aal->cfg, 0x1);
 +
-+	c_data_size = y_data_size >> 1;
-+	c_header_size = (((y_header_size >> 1) + 63) >> 6) << 6;
-+
-+	// Setup source buffer base
-+	y_data_ofst = ((y_header_size + 4095) >> 12) << 12; // align 4k
-+	c_data_ofst = ((y_data_ofst + y_data_size + c_header_size + 4095) >> 12) << 12; // align 4k
-+	c_header_ofst = c_data_ofst - c_header_size;
-+
-+	if (plane == 0)
-+		return c_header_ofst;
-+	else
-+		return (c_data_ofst + c_data_size);
++	return 0;
 +}
 +
-+static u32 mdp_fmt_get_afbc_plane_size(u32 width, u32 height, u32 color)
++static int config_aal_subfrm(struct mdp_comp_ctx *ctx,
++			     struct mmsys_cmdq_cmd *cmd, u32 index)
 +{
-+	u32 align_w = ((width + 31) >> 5) << 5;
-+	u32 align_h = ((height + 31) >> 5) << 5;
++	const struct mdp_aal_subfrm *subfrm = &ctx->param->aal.subfrms[index];
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
 +
-+	if (MDP_COLOR_IS_10BIT_PACKED(color))
-+		return ((align_w >> 4) * (align_h >> 4) * (16 + 512));
-+	else
-+		return ((align_w >> 4) * (align_h >> 4) * (16 + 384));
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_AAL_SIZE,
++		     subfrm->src, MDP_AAL_SIZE_MASK);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_AAL_OUTPUT_OFFSET,
++		     subfrm->clip_ofst, 0x00FF00FF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_AAL_OUTPUT_SIZE,
++		     subfrm->clip, MDP_AAL_OUTPUT_SIZE_MASK);
++
++	return 0;
 +}
 +
- const struct mdp_format *mdp_try_fmt_mplane(struct v4l2_format *f,
- 					    struct mdp_frameparam *param,
- 					    u32 ctx_id)
-@@ -211,11 +252,17 @@ const struct mdp_format *mdp_try_fmt_mplane(struct v4l2_format *f,
- 			bpl = min_bpl;
- 		si = (bpl * pix_mp->height * fmt->depth[i]) / fmt->row_depth[i];
- 
-+		if (MDP_COLOR_IS_HYFBC_COMPRESS(fmt->mdp_color)) {
-+			si = mdp_fmt_get_hyfbc_plane_size(pix_mp->width,
-+							  pix_mp->height, fmt->mdp_color, i);
-+		} else if (MDP_COLOR_IS_COMPRESS(fmt->mdp_color)) {
-+			si = mdp_fmt_get_afbc_plane_size(pix_mp->width,
-+							 pix_mp->height, fmt->mdp_color);
-+		}
++static const struct mdp_comp_ops aal_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_aal,
++	.config_frame = config_aal_frame,
++	.config_subfrm = config_aal_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
 +
- 		pix_mp->plane_fmt[i].bytesperline = bpl;
- 		if (pix_mp->plane_fmt[i].sizeimage < si)
- 			pix_mp->plane_fmt[i].sizeimage = si;
--		dev_dbg(dev, "%d: p%u, bpl:%u (%u), sizeimage:%u (%u)", ctx_id,
--			i, bpl, min_bpl, pix_mp->plane_fmt[i].sizeimage, si);
- 	}
- 
- 	return fmt;
-@@ -324,8 +371,14 @@ static u32 mdp_fmt_get_stride(const struct mdp_format *fmt,
- 	enum mdp_color c = fmt->mdp_color;
- 	u32 stride;
- 
--	stride = (bytesperline * MDP_COLOR_BITS_PER_PIXEL(c))
--		/ fmt->row_depth[0];
-+	if (MDP_COLOR_IS_COMPRESS(c)) {
-+		bytesperline = ((bytesperline + 31) >> 5) << 5;
-+		stride = (bytesperline * MDP_COLOR_BITS_PER_PIXEL(c))
-+			/ fmt->row_depth[0];
-+	} else {
-+		stride = (bytesperline * MDP_COLOR_BITS_PER_PIXEL(c))
-+			/ fmt->row_depth[0];
++static int init_hdr(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
++{
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	// Always set MDP_HDR enable to 1
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_TOP, 1, 0x1);
++
++	return 0;
++}
++
++static int config_hdr_frame(struct mdp_comp_ctx *ctx,
++			    struct mmsys_cmdq_cmd *cmd,
++			    const struct v4l2_rect *compose)
++{
++	const struct mdp_hdr_data *hdr = &ctx->param->hdr;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_TOP,
++		     hdr->top, 0x30000000);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_RELAY,
++		     hdr->relay, 0x1);
++
++	return 0;
++}
++
++static int config_hdr_subfrm(struct mdp_comp_ctx *ctx,
++			     struct mmsys_cmdq_cmd *cmd, u32 index)
++{
++	const struct mdp_hdr_subfrm *subfrm = &ctx->param->hdr.subfrms[index];
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_TILE_POS,
++		     subfrm->win_size, MDP_HDR_TILE_POS_MASK);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_SIZE_0,
++		     subfrm->src, 0x1FFF1FFF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_SIZE_1,
++		     subfrm->clip_ofst0, 0x1FFF1FFF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_SIZE_2,
++		     subfrm->clip_ofst1, 0x1FFF1FFF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_HIST_CTRL_0,
++		     subfrm->hist_ctrl_0, 0x00003FFF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_HIST_CTRL_1,
++		     subfrm->hist_ctrl_1, 0x00003FFF);
++
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_TOP,
++		     subfrm->hdr_top, 0x00000060);
++	// enable hist_clr_en
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HDR_HIST_ADDR,
++		     subfrm->hist_addr, 0x00000200);
++
++	return 0;
++}
++
++static const struct mdp_comp_ops hdr_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_hdr,
++	.config_frame = config_hdr_frame,
++	.config_subfrm = config_hdr_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
++
++static void reset_luma_hist(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
++{
++	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	// reset LUMA HIST
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_00, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_01, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_02, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_03, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_04, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_05, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_06, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_07, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_08, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_09, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_10, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_11, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_12, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_13, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_14, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_15, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_HIST_INIT_16, 0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     MDP_LUMA_SUM_INIT, 0, 0xFFFFFFFF);
++
++	if (mdp_cfg && mdp_cfg->tdshp_1_1) {
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_DC_TWO_D_W1_RESULT_INIT, 0, 0xFFFFFFFF);
 +	}
- 	if (plane == 0)
- 		return stride;
- 	if (plane < MDP_COLOR_GET_PLANE_COUNT(c)) {
-@@ -398,6 +451,19 @@ static void mdp_prepare_buffer(struct img_image_buffer *b,
- 			mdp_fmt_get_plane_size(frame->mdp_fmt, stride,
- 					       pix_mp->height, i) -
- 					       vb->planes[i].data_offset;
 +
-+		if (MDP_COLOR_IS_HYFBC_COMPRESS(b->format.colorformat)) {
-+			b->format.plane_fmt[i].size =
-+				mdp_fmt_get_hyfbc_plane_size(pix_mp->width,
-+							     pix_mp->height,
-+							     b->format.colorformat, i);
-+		} else if (MDP_COLOR_IS_COMPRESS(b->format.colorformat)) {
-+			b->format.plane_fmt[i].size =
-+				mdp_fmt_get_afbc_plane_size(pix_mp->width,
-+							    pix_mp->height,
-+							    b->format.colorformat);
-+		}
++	if (mdp_cfg && mdp_cfg->tdshp_dyn_contrast_version == 2) {
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_00, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_01, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_02, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_03, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_04, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_05, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_06, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_07, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_08, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_09, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_10, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_11, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_12, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_13, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_14, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_15, 0, 0xFFFFFFFF);
++		MM_REG_WRITE(cmd, subsys_id, base,
++			     MDP_CONTOUR_HIST_INIT_16, 0, 0xFFFFFFFF);
++	}
++}
 +
- 		b->iova[i] = vb2_dma_contig_plane_dma_addr(vb, i) +
- 			     vb->planes[i].data_offset;
- 	}
-@@ -409,6 +475,18 @@ static void mdp_prepare_buffer(struct img_image_buffer *b,
- 		b->format.plane_fmt[i].size =
- 			mdp_fmt_get_plane_size(frame->mdp_fmt, stride,
- 					       pix_mp->height, i);
++static int init_tdshp(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
++{
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
 +
-+		if (MDP_COLOR_IS_HYFBC_COMPRESS(b->format.colorformat)) {
-+			b->format.plane_fmt[i].size =
-+				mdp_fmt_get_hyfbc_plane_size(pix_mp->width,
-+							     pix_mp->height,
-+							     b->format.colorformat, i);
-+		} else if (MDP_COLOR_IS_COMPRESS(b->format.colorformat)) {
-+			b->format.plane_fmt[i].size =
-+				mdp_fmt_get_afbc_plane_size(pix_mp->width,
-+							    pix_mp->height,
-+							    b->format.colorformat);
-+		}
- 		b->iova[i] = b->iova[i - 1] + b->format.plane_fmt[i - 1].size;
- 	}
- 	b->usage = frame->usage;
-diff --git a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
-index 4a25f86bfaa5..1ef32b747233 100644
---- a/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
-+++ b/drivers/media/platform/mtk-mdp3/mtk-mdp3-regs.h
-@@ -355,6 +355,8 @@ struct mdp_frame {
- 	u32			dre:1;
- 	u32			sharpness:1;
- 	u32			dither:1;
-+	/* H and V stride, only for HYFBC format */
-+	struct v4l2_rect	stride;
- };
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_TDSHP_CTRL, 0x00000001,
++		     0x00000001);
++	// Enable fifo
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_TDSHP_CFG, 0x00000002,
++		     0x00000002);
++	reset_luma_hist(ctx, cmd);
++
++	return 0;
++}
++
++static int config_tdshp_frame(struct mdp_comp_ctx *ctx,
++			      struct mmsys_cmdq_cmd *cmd,
++			      const struct v4l2_rect *compose)
++{
++	const struct mdp_tdshp_data *tdshp = &ctx->param->tdshp;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_TDSHP_CFG, tdshp->cfg, 0x00000001);
++
++	return 0;
++}
++
++static int config_tdshp_subfrm(struct mdp_comp_ctx *ctx,
++			       struct mmsys_cmdq_cmd *cmd, u32 index)
++{
++	const struct mdp_tdshp_subfrm *subfrm = &ctx->param->tdshp.subfrms[index];
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_TDSHP_INPUT_SIZE,
++		     subfrm->src, MDP_TDSHP_INPUT_SIZE_MASK);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_TDSHP_OUTPUT_OFFSET,
++		     subfrm->clip_ofst, 0x00FF00FF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_TDSHP_OUTPUT_SIZE,
++		     subfrm->clip, MDP_TDSHP_OUTPUT_SIZE_MASK);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HIST_CFG_00,
++		     subfrm->hist_cfg_0, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base, MDP_HIST_CFG_01,
++		     subfrm->hist_cfg_1, 0xFFFFFFFF);
++
++	return 0;
++}
++
++static const struct mdp_comp_ops tdshp_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_tdshp,
++	.config_frame = config_tdshp_frame,
++	.config_subfrm = config_tdshp_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
++
++static int init_color(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
++{
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_START, 0x1, 0x3);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_WIN_X_MAIN, 0xFFFF0000, 0xFFFFFFFF);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_WIN_Y_MAIN, 0xFFFF0000, 0xFFFFFFFF);
++
++	// R2Y/Y2R are disabled in MDP
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_CM1_EN, 0x0, 0x1);
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_CM2_EN, 0x0, 0x1);
++
++	//enable interrupt
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_INTEN, 0x00000007, 0x00000007);
++
++	//Set 10bit->8bit Rounding
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_OUT_SEL, 0x333, 0x333);
++
++	return 0;
++}
++
++static int config_color_frame(struct mdp_comp_ctx *ctx,
++			      struct mmsys_cmdq_cmd *cmd,
++			      const struct v4l2_rect *compose)
++{
++	const struct mdp_color_data *color = &ctx->param->color;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base,
++		     DISP_COLOR_START, color->start, DISP_COLOR_START_MASK);
++
++	return 0;
++}
++
++static int config_color_subfrm(struct mdp_comp_ctx *ctx,
++			       struct mmsys_cmdq_cmd *cmd, u32 index)
++{
++	const struct mdp_color_subfrm *subfrm = &ctx->param->color.subfrms[index];
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, DISP_COLOR_INTERNAL_IP_WIDTH,
++		     subfrm->in_hsize, 0x00003FFF);
++	MM_REG_WRITE(cmd, subsys_id, base, DISP_COLOR_INTERNAL_IP_HEIGHT,
++		     subfrm->in_vsize, 0x00003FFF);
++
++	return 0;
++}
++
++static const struct mdp_comp_ops color_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_color,
++	.config_frame = config_color_frame,
++	.config_subfrm = config_color_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
++
++static int init_ovl(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
++{
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, OVL_EN,
++		     0x1, OVL_EN_MASK);
++	//Relay Mode
++	MM_REG_WRITE(cmd, subsys_id, base, OVL_SRC_CON,
++		     0x200, OVL_SRC_CON_MASK);
++	//Connect OVL, enable smi_id mode
++	MM_REG_WRITE(cmd, subsys_id, base, OVL_DATAPATH_CON,
++		     0x1, OVL_DATAPATH_CON_MASK);
++
++	return 0;
++}
++
++static int config_ovl_frame(struct mdp_comp_ctx *ctx,
++			    struct mmsys_cmdq_cmd *cmd,
++			    const struct v4l2_rect *compose)
++{
++	const struct mdp_ovl_data *ovl = &ctx->param->ovl;
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	//Layer0 for PQ-direct-in
++	MM_REG_WRITE(cmd, subsys_id, base, OVL_L0_CON,
++		     ovl->L0_con, 0x30000000);
++	//Enable Layer0
++	MM_REG_WRITE(cmd, subsys_id, base, OVL_SRC_CON,
++		     ovl->src_con, 0x1);
++
++	return 0;
++}
++
++static int config_ovl_subfrm(struct mdp_comp_ctx *ctx,
++			     struct mmsys_cmdq_cmd *cmd, u32 index)
++{
++	const struct mdp_ovl_subfrm *subfrm = &ctx->param->ovl.subfrms[index];
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	//Setup Layer0 source size
++	MM_REG_WRITE(cmd, subsys_id, base, OVL_L0_SRC_SIZE,
++		     subfrm->L0_src_size, OVL_L0_SRC_SIZE_MASK);
++	//Setup ROI size (output size)
++	MM_REG_WRITE(cmd, subsys_id, base, OVL_ROI_SIZE,
++		     subfrm->roi_size, OVL_ROI_SIZE_MASK);
++
++	return 0;
++}
++
++static const struct mdp_comp_ops ovl_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_ovl,
++	.config_frame = config_ovl_frame,
++	.config_subfrm = config_ovl_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
++
++static int init_pad(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
++{
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, VPP_PADDING0_PADDING_CON,
++		     0x2, VPP_PADDING0_PADDING_CON_MASK);
++	//Clear padding area
++	MM_REG_WRITE(cmd, subsys_id, base, VPP_PADDING0_W_PADDING_SIZE,
++		     0x0, VPP_PADDING0_W_PADDING_SIZE_MASK);
++	MM_REG_WRITE(cmd, subsys_id, base, VPP_PADDING0_H_PADDING_SIZE,
++		     0x0, VPP_PADDING0_H_PADDING_SIZE_MASK);
++
++	return 0;
++}
++
++static int config_pad_frame(struct mdp_comp_ctx *ctx,
++			    struct mmsys_cmdq_cmd *cmd,
++			    const struct v4l2_rect *compose)
++{
++	return 0;
++}
++
++static int config_pad_subfrm(struct mdp_comp_ctx *ctx,
++			     struct mmsys_cmdq_cmd *cmd, u32 index)
++{
++	const struct mdp_pad_subfrm *subfrm = &ctx->param->pad.subfrms[index];
++	phys_addr_t base = ctx->comp->reg_base;
++	u16 subsys_id = ctx->comp->subsys_id;
++
++	MM_REG_WRITE(cmd, subsys_id, base, VPP_PADDING0_PADDING_PIC_SIZE,
++		     subfrm->pic_size, VPP_PADDING0_PADDING_CON_MASK);
++
++	return 0;
++}
++
++static const struct mdp_comp_ops pad_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_pad,
++	.config_frame = config_pad_frame,
++	.config_subfrm = config_pad_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
++
++static int init_tcc(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
++{
++	return 0;
++}
++
++static int config_tcc_frame(struct mdp_comp_ctx *ctx,
++			    struct mmsys_cmdq_cmd *cmd,
++			    const struct v4l2_rect *compose)
++{
++	return 0;
++}
++
++static int config_tcc_subfrm(struct mdp_comp_ctx *ctx,
++			     struct mmsys_cmdq_cmd *cmd, u32 index)
++{
++	return 0;
++}
++
++static const struct mdp_comp_ops tcc_ops = {
++	.get_comp_flag = get_comp_flag,
++	.init_comp = init_tcc,
++	.config_frame = config_tcc_frame,
++	.config_subfrm = config_tcc_subfrm,
++	.wait_comp_event = NULL,
++	.advance_subfrm = NULL,
++	.post_process = NULL,
++};
+ static int init_wrot(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
+ {
+ 	phys_addr_t base = ctx->comp->reg_base;
+@@ -371,6 +1007,8 @@ static int init_wrot(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
+ 	/* Reset WROT */
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_SOFT_RST, BIT(0), BIT(0));
+ 	MM_REG_POLL(cmd, subsys_id, base, VIDO_SOFT_RST_STAT, BIT(0), BIT(0));
++	/* Reset setting */
++	MM_REG_WRITE(cmd, subsys_id, base, VIDO_CTRL, 0x0, 0xFFFFFFFF);
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_SOFT_RST, 0x0, BIT(0));
+ 	MM_REG_POLL(cmd, subsys_id, base, VIDO_SOFT_RST_STAT, 0x0, BIT(0));
+ 	return 0;
+@@ -384,6 +1022,8 @@ static int config_wrot_frame(struct mdp_comp_ctx *ctx,
+ 	const struct mdp_platform_config *mdp_cfg = __get_plat_cfg(ctx);
+ 	phys_addr_t base = ctx->comp->reg_base;
+ 	u8 subsys_id = ctx->comp->subsys_id;
++	bool comp;
++	u32 colorformat = ctx->outputs[0]->buffer.format.colorformat;
  
- static inline bool mdp_target_is_crop(u32 target)
+ 	/* Write frame base address */
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_BASE_ADDR, wrot->iova[0],
+@@ -392,9 +1032,38 @@ static int config_wrot_frame(struct mdp_comp_ctx *ctx,
+ 		     0xFFFFFFFF);
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_BASE_ADDR_V, wrot->iova[2],
+ 		     0xFFFFFFFF);
++
++	if (mdp_cfg) {
++		if (mdp_cfg->wrot_support_afbc) {
++			comp = MDP_COLOR_IS_COMPRESS(colorformat);
++			if (comp) {
++				MM_REG_WRITE(cmd, subsys_id, base, VIDO_FRAME_SIZE,
++					     wrot->framesize, 0xFFFFFFFF);
++				MM_REG_WRITE(cmd, subsys_id, base, VIDO_AFBC_YUVTRANS,
++					     wrot->afbc_yuvtrans, 0x1);
++			}
++			MM_REG_WRITE(cmd, subsys_id, base, VIDO_PVRIC,  wrot->pvric, 0x03);
++		}
++
++		if (mdp_cfg->wrot_support_10bit) {
++			MM_REG_WRITE(cmd, subsys_id, base, VIDO_SCAN_10BIT,
++				     wrot->scan_10bit, 0x0000000F);
++			MM_REG_WRITE(cmd, subsys_id, base, VIDO_PENDING_ZERO,
++				     wrot->pending_zero, 0x04000000);
++		}
++		if (mdp_cfg->mdp_version_6885)
++			MM_REG_WRITE(cmd, subsys_id, base, VIDO_CTRL_2,
++				     wrot->bit_number, 0x00000007);
++	}
++
+ 	/* Write frame related registers */
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_CTRL, wrot->control,
+ 		     0xF131510F);
++
++	/* Write pre-ultra threshold */
++	MM_REG_WRITE(cmd, subsys_id, base, VIDO_DMA_PREULTRA, wrot->pre_ultra,
++		     0x00FFFFFF);
++
+ 	/* Write frame Y pitch */
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_STRIDE, wrot->stride[0],
+ 		     0x0000FFFF);
+@@ -447,7 +1116,6 @@ static int config_wrot_subfrm(struct mdp_comp_ctx *ctx,
+ 		     0x1FFF1FFF);
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_CROP_OFST, subfrm->clip_ofst,
+ 		     0x1FFF1FFF);
+-
+ 	MM_REG_WRITE(cmd, subsys_id, base, VIDO_MAIN_BUF_SIZE,
+ 		     subfrm->main_buf, 0x1FFF7F00);
+ 
+@@ -466,11 +1134,22 @@ static int wait_wrot_event(struct mdp_comp_ctx *ctx, struct mmsys_cmdq_cmd *cmd)
+ 	u8 subsys_id = ctx->comp->subsys_id;
+ 	int evt = -1;
+ 
+-	if (id == MDP_COMP_WROT0)
++	switch (id) {
++	case MDP_COMP_WROT0:
+ 		evt = mdp_get_event_idx(ctx->comp->mdp_dev, WROT0_DONE);
+-	else
+-		dev_err(dev, "Do not support WROT1_DONE event\n");
+-
++		break;
++	case MDP_COMP_WROT1:
++		evt = mdp_get_event_idx(ctx->comp->mdp_dev, WROT1_DONE);
++		break;
++	case MDP_COMP_WROT2:
++		evt = mdp_get_event_idx(ctx->comp->mdp_dev, WROT2_DONE);
++		break;
++	case MDP_COMP_WROT3:
++		evt = mdp_get_event_idx(ctx->comp->mdp_dev, WROT3_DONE);
++		break;
++	default:
++		dev_err(dev, "Invalid Engine!\n");
++	}
+ 	if (evt > 0)
+ 		MM_REG_WAIT(cmd, evt);
+ 
 -- 
 2.18.0
 
