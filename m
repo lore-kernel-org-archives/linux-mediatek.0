@@ -4,67 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA89C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 08:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27C5CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 08:42:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LgPFLMFtXgh4/A3VcBF7CM+qsTw6rSc7SCdQT+KT/mE=; b=IEGX98UVYio+N6
-	LilGi/Df0BbMA90THCibE6/avUEk6gsCF1xDeFUajQ15DziHoIHDy/G1WF9CVzroT01VpZxTBl6Cw
-	rQpQyZf8Bl/9BelW7Mbm4ExzZhTzjphs5h4NThTgbPn1D1onIsi1AmUwhdVPd13OwGzxv6B/BaFVj
-	50p7DA2x4OryxMBkY4ycOa3unejxKsVu4i5UC4eNR8aW18yx1cHsCU85ilGsg3PHwC0hBYFrAWUY4
-	BXv49HoxdW1uG2cAWwW2jP6ds5d7+WNLgO4HVYQYa8M8e9Pc3isLwdYQktJMBWNbpIba/lnzR0nSY
-	TLVZ+u2GrtXUkZTrsGsw==;
+	List-Owner; bh=3SjlcsbpMtjGAmgHdbQ/WoUn3PieQqaHCCX/iv6D3ZU=; b=JXW4kIrme0yc4+
+	wjoVW7hWRhJK8RLVfYiMZwt5hbKfvXPyGKS81IUv2xBW9Pb5ApIfaqx86K9SEZf/h5i2fwqfJ+P6j
+	T+93aQo2W1KZ6H18sU+T6arFsCPDnxP1EMFcZVB7sR1WH11iDmCSVU7HslPZNp1CcRKuU6x/426zn
+	EV9rddXozS59lfYJ1uo6kh+4kRox9NJQ6aXjoQGRXvuK6MvSV9IuAxiyk5B47JelueIITsGABYpiD
+	X3Sw3v+qn905kyMKm5oSwnOasDkPYIkgODtLqETJkpjpKTXkBiOk3UJzdkAHuGVaMco4Ep989W7bx
+	rtnHTBJr0l3dL5PjhKyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9NTq-00E5am-31; Mon, 17 Jan 2022 08:35:10 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n9Nam-00E7nx-LV; Mon, 17 Jan 2022 08:42:20 +0000
+Received: from mail-ua1-f49.google.com ([209.85.222.49])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9NTH-00E5L5-09; Mon, 17 Jan 2022 08:34:37 +0000
-X-UUID: c33c3fdc862f48feada7f95a12c3985a-20220117
-X-UUID: c33c3fdc862f48feada7f95a12c3985a-20220117
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <axe.yang@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 128392827; Mon, 17 Jan 2022 01:34:20 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 17 Jan 2022 00:25:57 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 17 Jan 2022 16:25:56 +0800
-Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 16:25:54 +0800
-From: Axe Yang <axe.yang@mediatek.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>,
- Chaotian Jing <chaotian.jing@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, Adrian Hunter <adrian.hunter@intel.com>
-CC: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, Satya Tangirala
- <satyat@google.com>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Axe Yang
- <axe.yang@mediatek.com>, Lucas Stach <dev@lynxeye.de>, Eric Biggers
- <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd
- <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu
- <huyue2@yulong.com>, Tian Tao <tiantao6@hisilicon.com>,
- <angelogioacchino.delregno@collabora.com>, <linux-mmc@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-Subject: [RESEND v3 2/3] mmc: core: Add support for SDIO async interrupt
-Date: Mon, 17 Jan 2022 16:25:38 +0800
-Message-ID: <20220117082539.18713-3-axe.yang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220117082539.18713-1-axe.yang@mediatek.com>
-References: <20220117082539.18713-1-axe.yang@mediatek.com>
+ id 1n9NaT-00E7dO-Iu; Mon, 17 Jan 2022 08:42:03 +0000
+Received: by mail-ua1-f49.google.com with SMTP id y4so29126846uad.1;
+ Mon, 17 Jan 2022 00:41:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=HSt6CNnm0GlM6Pd+PH2cbsXZ5sf+8uWh7XWO1e+2zQ0=;
+ b=nhRoIW+5v6LbSJaT0GVz3gPoK/7RjHmn8OVlN03hyyXajW1HWw+0DuZOt+FjcM3Lh8
+ bBVUXSOe1imD0HhkVDuHuyyRavYTnYcDPUHramEbpoWScvhyL/iyZTu96uBUGpVwXxox
+ 3lBC3NyPHJMSctAMTKNVQPDmYuY+ezQgj61G1GP/ozaa5DzrvGgkuLt4PCExKVI+1Opp
+ YUXTtHCRHM0mdJLk9bZotB1PO44KOdSU0AdgY+1fkffnJXKp9tpDhpRWQhLqxoevsyov
+ rIX6RJhX0W7rGwVRc38WpYOPwMFf1da8rD6G+2jdrdOaj9Ow67Pqvp24jDvBU7FdG65k
+ F11g==
+X-Gm-Message-State: AOAM530RpfUsOZO/ysRD0dKLKvke89g3FaD012fL+YqWa6orNSgQcrRi
+ FUKVic2JhVaK6w0uM4d+w+zIG1U3cVGeJw==
+X-Google-Smtp-Source: ABdhPJzuxk3rHwrZmVHcw1Ocpf3lNZ6BhZL/ezPOd8vsr6LaH2/H5n1Lplj53q4qjKVCTYyxgJjYOQ==
+X-Received: by 2002:a05:6102:1d6:: with SMTP id
+ s22mr6766198vsq.80.1642408914779; 
+ Mon, 17 Jan 2022 00:41:54 -0800 (PST)
+Received: from mail-ua1-f47.google.com (mail-ua1-f47.google.com.
+ [209.85.222.47])
+ by smtp.gmail.com with ESMTPSA id o143sm425284vke.37.2022.01.17.00.41.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Jan 2022 00:41:54 -0800 (PST)
+Received: by mail-ua1-f47.google.com with SMTP id m15so29060484uap.6;
+ Mon, 17 Jan 2022 00:41:54 -0800 (PST)
+X-Received: by 2002:ab0:4d42:: with SMTP id k2mr5629977uag.78.1642408914153;
+ Mon, 17 Jan 2022 00:41:54 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220110201014.mtajyrfcfznfhyqm@pengutronix.de>
+ <YdyilpjC6rtz6toJ@lunn.ch>
+ <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <29f0c65d-77f2-e5b2-f6cc-422add8a707d@omp.ru>
+ <20220114092557.jrkfx7ihg26ekzci@pengutronix.de>
+ <61b80939-357d-14f5-df99-b8d102a4e1a1@omp.ru>
+ <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
+ <c9026f17-2b3f-ee94-0ea3-5630f981fbc1@omp.ru>
+In-Reply-To: <c9026f17-2b3f-ee94-0ea3-5630f981fbc1@omp.ru>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Mon, 17 Jan 2022 09:41:42 +0100
+X-Gmail-Original-Message-ID: <CAMuHMdXVbRudGs69f9ZzaP1PXhteDNZiXA658eMFAwP4nr9r3w@mail.gmail.com>
+Message-ID: <CAMuHMdXVbRudGs69f9ZzaP1PXhteDNZiXA658eMFAwP4nr9r3w@mail.gmail.com>
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>, 
+ Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>, 
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org, 
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Jaroslav Kysela <perex@perex.cz>, 
+ Guenter Roeck <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>, 
+ Miquel Raynal <miquel.raynal@bootlin.com>, linux-phy@lists.infradead.org, 
+ Jiri Slaby <jirislaby@kernel.org>, openipmi-developer@lists.sourceforge.net, 
+ "David S. Miller" <davem@davemloft.net>,
+ Khuong Dinh <khuong@os.amperecomputing.com>, 
+ Florian Fainelli <f.fainelli@gmail.com>, 
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, 
+ Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>, 
+ Bartosz Golaszewski <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Zhang Rui <rui.zhang@intel.com>, 
+ Linux PWM List <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, 
+ Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, 
+ Linux PM list <linux-pm@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, John Garry <john.garry@huawei.com>,
+ Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>, 
+ Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>, 
+ Alex Williamson <alex.williamson@redhat.com>, Mark Brown <broonie@kernel.org>, 
+ Borislav Petkov <bp@alien8.de>, Sebastian Reichel <sre@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai <tiwai@suse.com>, 
+ platform-driver-x86@vger.kernel.org, Benson Leung <bleung@chromium.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>, linux-edac@vger.kernel.org, 
+ Tony Luck <tony.luck@intel.com>, Mun Yew Tham <mun.yew.tham@intel.com>, 
+ Eric Auger <eric.auger@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>, 
+ Linux MMC List <linux-mmc@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ linux-spi <linux-spi@vger.kernel.org>, 
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, 
+ James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Richard Weinberger <richard@nod.at>, 
+ =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
+ linux-mediatek@lists.infradead.org, 
+ Brian Norris <computersforpeace@gmail.com>, netdev@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_003435_062968_B321F9E1 
-X-CRM114-Status: GOOD (  17.29  )
+X-CRM114-CacheID: sfid-20220117_004201_667157_DD8678F1 
+X-CRM114-Status: GOOD (  36.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,115 +140,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If cap-sdio-async-irq flag is set in host dts node, parse EAI
-information from SDIO CCCR interrupt externsion segment. If async
-interrupt is supported by SDIO card then send command to card to
-enable it and set enable_async_irq flag in sdio_cccr structure to 1.
-The parse flow is implemented in sdio_read_cccr().
-
-Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Axe Yang <axe.yang@mediatek.com>
----
- drivers/mmc/core/host.c  |  2 ++
- drivers/mmc/core/sdio.c  | 17 +++++++++++++++++
- include/linux/mmc/card.h |  3 ++-
- include/linux/mmc/host.h |  1 +
- include/linux/mmc/sdio.h |  5 +++++
- 5 files changed, 27 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/mmc/core/host.c b/drivers/mmc/core/host.c
-index cf140f4ec864..a972241548b4 100644
---- a/drivers/mmc/core/host.c
-+++ b/drivers/mmc/core/host.c
-@@ -410,6 +410,8 @@ int mmc_of_parse(struct mmc_host *host)
- 	if (device_property_read_bool(dev, "no-mmc-hs400"))
- 		host->caps2 &= ~(MMC_CAP2_HS400_1_8V | MMC_CAP2_HS400_1_2V |
- 				 MMC_CAP2_HS400_ES);
-+	if (device_property_read_bool(dev, "cap-sdio-async-irq"))
-+		host->caps2 |= MMC_CAP2_SDIO_ASYNC_IRQ;
- 
- 	/* Must be after "non-removable" check */
- 	if (device_property_read_u32(dev, "fixed-emmc-driver-type", &drv_type) == 0) {
-diff --git a/drivers/mmc/core/sdio.c b/drivers/mmc/core/sdio.c
-index 41164748723d..771fb5d18585 100644
---- a/drivers/mmc/core/sdio.c
-+++ b/drivers/mmc/core/sdio.c
-@@ -225,6 +225,23 @@ static int sdio_read_cccr(struct mmc_card *card, u32 ocr)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_C;
- 			if (data & SDIO_DRIVE_SDTD)
- 				card->sw_caps.sd3_drv_type |= SD_DRIVER_TYPE_D;
-+
-+			if (card->host->caps2 & MMC_CAP2_SDIO_ASYNC_IRQ) {
-+				ret = mmc_io_rw_direct(card, 0, 0, SDIO_CCCR_INTERRUPT_EXT, 0,
-+						       &data);
-+				if (ret)
-+					goto out;
-+
-+				if (data & SDIO_INTERRUPT_EXT_SAI) {
-+					data |= SDIO_INTERRUPT_EXT_EAI;
-+					ret = mmc_io_rw_direct(card, 1, 0, SDIO_CCCR_INTERRUPT_EXT,
-+							       data, NULL);
-+					if (ret)
-+						goto out;
-+
-+					card->cccr.enable_async_irq = 1;
-+				}
-+			}
- 		}
- 
- 		/* if no uhs mode ensure we check for high speed */
-diff --git a/include/linux/mmc/card.h b/include/linux/mmc/card.h
-index 37f975875102..4df9182bc0e6 100644
---- a/include/linux/mmc/card.h
-+++ b/include/linux/mmc/card.h
-@@ -219,7 +219,8 @@ struct sdio_cccr {
- 				wide_bus:1,
- 				high_power:1,
- 				high_speed:1,
--				disable_cd:1;
-+				disable_cd:1,
-+				enable_async_irq:1;
- };
- 
- struct sdio_cis {
-diff --git a/include/linux/mmc/host.h b/include/linux/mmc/host.h
-index 7afb57cab00b..502a5418264c 100644
---- a/include/linux/mmc/host.h
-+++ b/include/linux/mmc/host.h
-@@ -402,6 +402,7 @@ struct mmc_host {
- #define MMC_CAP2_CRYPTO		0
- #endif
- #define MMC_CAP2_ALT_GPT_TEGRA	(1 << 28)	/* Host with eMMC that has GPT entry at a non-standard location */
-+#define MMC_CAP2_SDIO_ASYNC_IRQ	(1 << 29)	/* SDIO host supports asynchronous interrupt */
- 
- 	int			fixed_drv_type;	/* fixed driver type for non-removable media */
- 
-diff --git a/include/linux/mmc/sdio.h b/include/linux/mmc/sdio.h
-index 2a05d1ac4f0e..1ef400f28642 100644
---- a/include/linux/mmc/sdio.h
-+++ b/include/linux/mmc/sdio.h
-@@ -159,6 +159,11 @@
- #define  SDIO_DTSx_SET_TYPE_A	(1 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_C	(2 << SDIO_DRIVE_DTSx_SHIFT)
- #define  SDIO_DTSx_SET_TYPE_D	(3 << SDIO_DRIVE_DTSx_SHIFT)
-+
-+#define SDIO_CCCR_INTERRUPT_EXT	0x16
-+#define SDIO_INTERRUPT_EXT_SAI	(1 << 0)
-+#define SDIO_INTERRUPT_EXT_EAI	(1 << 1)
-+
- /*
-  * Function Basic Registers (FBR)
-  */
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-mediatek mailing list
-Linux-mediatek@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-mediatek
+T24gU2F0LCBKYW4gMTUsIDIwMjIgYXQgOToyMiBQTSBTZXJnZXkgU2h0eWx5b3YgPHMuc2h0eWx5
+b3ZAb21wLnJ1PiB3cm90ZToKPiBPbiAxLzE0LzIyIDExOjIyIFBNLCBVd2UgS2xlaW5lLUvDtm5p
+ZyB3cm90ZToKPiA+IFlvdSBoYXZlIHRvIHVuZGVyc3RhbmQgdGhhdCBmb3IgY2xrIChhbmQgcmVn
+dWxhdG9yIGFuZCBncGlvZCkgTlVMTCBpcyBhCj4gPiB2YWxpZCBkZXNjcmlwdG9yIHRoYXQgY2Fu
+IGFjdHVhbGx5IGJlIHVzZWQsIGl0IGp1c3QgaGFzIG5vIGVmZmVjdC4gU28KPiA+IHRoaXMgaXMg
+YSBjb252ZW5pZW5jZSB2YWx1ZSBmb3IgdGhlIGNhc2UgIklmIHRoZSBjbGsvcmVndWxhdG9yL2dw
+aW9kIGluCj4gPiBxdWVzdGlvbiBpc24ndCBhdmFpbGFibGUsIHRoZXJlIGlzIG5vdGhpbmcgdG8g
+ZG8iLiBUaGlzIGlzIHdoYXQgbWFrZXMKPiA+IGNsa19nZXRfb3B0aW9uYWwoKSBhbmQgdGhlIG90
+aGVycyByZWFsbHkgdXNlZnVsIGFuZCBqdXN0aWZpZXMgdGhlaXIKPiA+IGV4aXN0ZW5jZS4gVGhp
+cyBkb2Vzbid0IGFwcGx5IHRvIHBsYXRmb3JtX2dldF9pcnFfb3B0aW9uYWwoKS4KPgo+ICAgIEkg
+ZG8gdW5kZXJzdGFuZCB0aGF0LiBIb3dldmVyLCBJUlFzIGFyZSBhIGRpZmZlcmVudCBiZWFzdCB3
+aXRoIHRoZWlyCj4gb3duIGp1c3RpZmljYXRpb25zLi4uCgo+ID4gY2xrX2dldF9vcHRpb25hbCgp
+IGlzIHNhbmUgYW5kIHNlbnNpYmxlIGZvciBjYXNlcyB3aGVyZSB0aGUgY2xrIG1pZ2h0IGJlCj4g
+PiBhYnNlbnQgYW5kIGl0IGhlbHBzIHlvdSBiZWNhdXNlIHlvdSBkb24ndCBoYXZlIHRvIGRpZmZl
+cmVudGlhdGUgYmV0d2Vlbgo+ID4gIm5vdCBmb3VuZCIgYW5kICJ0aGVyZSBpcyBhbiBhY3R1YWwg
+cmVzb3VyY2UiLgo+ID4KPiA+IFRoZSByZWFzb24gZm9yIHBsYXRmb3JtX2dldF9pcnFfb3B0aW9u
+YWwoKSdzIGV4aXN0ZW5jZSBpcyBqdXN0IHRoYXQKPiA+IHBsYXRmb3JtX2dldF9pcnEoKSBlbWl0
+cyBhbiBlcnJvciBtZXNzYWdlIHdoaWNoIGlzIHdyb25nIG9yIHN1Ym9wdGltYWwKPgo+ICAgIEkg
+dGhpbmsgeW91IGFyZSB2ZXJ5IHdyb25nIGhlcmUuIFRoZSByZWFsIHJlYXNvbiBpcyB0byBzaW1w
+bGlmeSB0aGUKPiBjYWxsZXJzLgoKSW5kZWVkLgoKRXZlbiBmb3IgY2xvY2tzLCB5b3UgY2Fubm90
+IGFzc3VtZSB0aGF0IHlvdSBjYW4gYWx3YXlzIGJsaW5kbHkgdXNlCnRoZSByZXR1cm5lZCBkdW1t
+eSAoYWN0dWFsbHkgYSBOVUxMIHBvaW50ZXIpIHRvIGNhbGwgaW50byB0aGUgY2xrCkFQSS4gIFdo
+aWxlIHRoaXMgd29ya3MgZmluZSBmb3Igc2ltcGxlIHVzZSBjYXNlcywgd2hlcmUgeW91IGp1c3QK
+d2FudCB0byBlbmFibGUvZGlzYWJsZSBhbiBvcHRpb25hbCBjbG9jayAoY2xrX3ByZXBhcmVfZW5h
+YmxlKCkgYW5kCmNsa19kaXNhYmxlX3VucHJlcGFyZSgpKSwgaXQgZG9lcyBub3Qgd29yayBmb3Ig
+bW9yZSBjb21wbGV4IHVzZSBjYXNlcy4KCkNvbnNpZGVyIGEgZGV2aWNlIHdpdGggbXVsdGlwbGUg
+Y2xvY2sgaW5wdXRzLCBzb21lIG9mIHRoZW0gb3B0aW9uYWwsCndoZXJlIHRoZSBkZXZpY2UgZHJp
+dmVyIGhhcyB0byBmaW5kLCBzZWxlY3QgYW5kIGNvbmZpZ3VyZSBhIHN1aXRhYmxlCmNsb2NrIHRv
+IG9wZXJhdGUgYXQgYSBjZXJ0YWluIGNsb2NrIGZyZXF1ZW5jeS4gVGhlIGRyaXZlciBjYW4gY2Fs
+bApjbGtfZ2V0X3JhdGUoTlVMTCkgZmluZSwgYnV0IHdpbGwgYWx3YXlzIHJlY2VpdmUgYSB6ZXJv
+IHJhdGUsIHNvIGl0CmhhcyB0byBjaGVjayBmb3IgdGhpcyAocmVnYXJkbGVzcyBvZiB0aGlzIGJl
+aW5nIGEgZHVtbXkgY2xvY2sgb3Igbm90LApiZWNhdXNlIHRoaXMgY291bGQgYmUgYW4gdW5wb3B1
+bGF0ZWQgY2xvY2sgY3J5c3RhbCwgd2hpY2ggd291bGQgYmUKZGVzY3JpYmVkIGluIERUIGFzIGEg
+KHByZXNlbnQpIGZpeGVkLXJhdGUgY2xvY2sgd2l0aCBjbG9jay1mcmVxdWVuY3kKPSA8MD4pLgpG
+b3IgY29uZmlndXJpbmcgdGhlIGNsb2NrIHJhdGUsIHRoZSBkcml2ZXIgZG9lcyBuZWVkIHRvIGNo
+ZWNrCmV4cGxpY2l0bHkgZm9yIHRoZSBwcmVzZW5jZSBvZiBhIGR1bW15IGNsb2NrLCBhcyBjbGtf
+c2V0X3JhdGUoTlVMTCwKcmF0ZSkgcmV0dXJucyAwICgic3VjY2VzcyIpLCB3aGlsZSBvYnZpb3Vz
+bHkgaXQgZGlkbid0IGRvIGFueXRoaW5nLAphbmQgdGh1cyBjb25maWd1cmluZyB0aGUgZGV2aWNl
+IHRvIHVzZSB0aGF0IGNsb2NrIHdvdWxkIGNhdXNlIGJyZWFrYWdlLgoKWW91IGNhbiBjaGVjayBp
+ZiB0aGUgY2xvY2sgaXMgYSByZWFsIGNsb2NrIG9yIGEgZHVtbXkgdXNpbmcKImlmIChjbGspIC4u
+LiIuCkFuZCB5b3UnZCB1c2UgdGhlIHNhbWUgcGF0dGVybiB3aXRoIHBsYXRmb3JtX2lycV9nZXRf
+b3B0aW9uYWwoKSBpZiBpdAp3b3VsZCByZXR1cm4gMCBpZiB0aGUgSVJRIHdhcyBub3QgZm91bmQ6
+ICJpZiAoaXJxKSAuLi4iLgoKR3J7b2V0amUsZWV0aW5nfXMsCgogICAgICAgICAgICAgICAgICAg
+ICAgICBHZWVydAoKLS0KR2VlcnQgVXl0dGVyaG9ldmVuIC0tIFRoZXJlJ3MgbG90cyBvZiBMaW51
+eCBiZXlvbmQgaWEzMiAtLSBnZWVydEBsaW51eC1tNjhrLm9yZwoKSW4gcGVyc29uYWwgY29udmVy
+c2F0aW9ucyB3aXRoIHRlY2huaWNhbCBwZW9wbGUsIEkgY2FsbCBteXNlbGYgYSBoYWNrZXIuIEJ1
+dAp3aGVuIEknbSB0YWxraW5nIHRvIGpvdXJuYWxpc3RzIEkganVzdCBzYXkgInByb2dyYW1tZXIi
+IG9yIHNvbWV0aGluZyBsaWtlIHRoYXQuCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+LS0gTGludXMgVG9ydmFsZHMKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LW1lZGlhdGVrIG1haWxpbmcgbGlzdApMaW51eC1tZWRpYXRla0BsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtbWVkaWF0ZWsK
