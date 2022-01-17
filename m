@@ -4,105 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D76DEC433F5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 16 Jan 2022 18:15:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA5F2C433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 02:18:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=YRRC3S3xTevqlmtKEM7mCjj6GICCmANLHMeyzNIcLZY=; b=XT2Xr1QJH/WxB9DZDjaBkX3vOV
-	PztbHF7Vej7hIhaXzHEv5YXccUbnJ9g4BmYkT9J7ALSD2nSjJ7Tw6Jk5Qjl8M9jvTO+vMeLNQUVTH
-	aHuTFhE4yebFHw5lZkErKzRj6e+R3JH4RXOa724HVO9wDvvRwVJcKHCkrrgMgiaejCmAWb8BlQgiC
-	gUqL9Bj7uwDEYG+GrHe3HZabSjlW7I4BwMp4P6xd6VMTvPR3xeCo+WNTeLvwwM3Ucrv+DE2cBPJQj
-	BKe/iHy3nCH2HuUAL3ZuDr26N0vLApq/It6dsAOFhkifwet0o7/Qa2//gOvQ1zwf4fADmJkpDwv12
-	3QTj/DNw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UuUh04ZvUsM0rB0vTok5+W+2pYlQ5APC/vc7+7FBCx4=; b=muHW4tpeezXLwi
+	x3jtLIb2EnlZzYFNqkRcoEMUi83atdsefuB6UVpqR52tEOaUlfr8K+gnXPQTKIaIi+XFdcp79B80y
+	RYSCFX/i5fBl2So6E3q20RnNiifhU/C1q3tBtLIJWfR324mdANaDwUnmAewtdm6THqDCzlf+S9JrZ
+	S9k922ghTZkmFmVkSY9NPvadlwezBGO4K/O0mP5RgFB1WXFIphFIm/3wYePcsw8xWMz3ePwH7Idsc
+	/XI13OJ3Sil27eiGplUu9G2t1/FOQsuNvTa/P2wRibOjx81MITM8c6x6d/UHOTeomPdYqU7T2T5gx
+	JZZpT9aKy7Jzyn2lXHCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9A45-00Co5J-Op; Sun, 16 Jan 2022 18:15:41 +0000
-Received: from mxout02.lancloud.ru ([45.84.86.82])
+	id 1n9HbP-00DGEA-G5; Mon, 17 Jan 2022 02:18:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9A40-00Co3i-Di; Sun, 16 Jan 2022 18:15:39 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout02.lancloud.ru 20CE0205BB5A
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
-CC: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, <linux-iio@vger.kernel.org>, "Linus
- Walleij" <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, "ALSA
- Development Mailing List" <alsa-devel@alsa-project.org>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Jaroslav Kysela <perex@perex.cz>,
- Guenter Roeck <groeck@chromium.org>, Thierry Reding
- <thierry.reding@gmail.com>, MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>, Miquel Raynal
- <miquel.raynal@bootlin.com>, <linux-phy@lists.infradead.org>, Jiri Slaby
- <jirislaby@kernel.org>, <openipmi-developer@lists.sourceforge.net>, "David S.
- Miller" <davem@davemloft.net>, Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>, Matthias Schiffer
- <matthias.schiffer@ew.tq-group.com>, Joakim Zhang <qiangqing.zhang@nxp.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>, "Bartosz
- Golaszewski" <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, Geert Uytterhoeven
- <geert@linux-m68k.org>, "open list:SERIAL DRIVERS"
- <linux-serial@vger.kernel.org>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, bcm-kernel-feedback-list
- <bcm-kernel-feedback-list@broadcom.com>, Zhang Rui <rui.zhang@intel.com>,
- Linux PWM List <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, 
- Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>,
- Linux PM list <linux-pm@vger.kernel.org>, Liam Girdwood
- <lgirdwood@gmail.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, John Garry
- <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>, "William
- Breathitt Gray" <vilhelm.gray@gmail.com>, Mark Gross <markgross@kernel.org>,
- Hans de Goede <hdegoede@redhat.com>, Alex Williamson
- <alex.williamson@redhat.com>, Mark Brown <broonie@kernel.org>, "Borislav
- Petkov" <bp@alien8.de>, Sebastian Reichel <sre@kernel.org>, Jakub Kicinski
- <kuba@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Takashi Iwai
- <tiwai@suse.com>, <platform-driver-x86@vger.kernel.org>, Benson Leung
- <bleung@chromium.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- <linux-edac@vger.kernel.org>, Tony Luck <tony.luck@intel.com>, Mun Yew Tham
- <mun.yew.tham@intel.com>, Eric Auger <eric.auger@redhat.com>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>, "open list:GPIO SUBSYSTEM"
- <linux-gpio@vger.kernel.org>, Cornelia Huck <cohuck@redhat.com>, "Linux MMC
- List" <linux-mmc@vger.kernel.org>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, linux-spi <linux-spi@vger.kernel.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>, Vinod Koul
- <vkoul@kernel.org>, James Morse <james.morse@arm.com>, Zha Qipeng
- <qipeng.zha@intel.com>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Richard Weinberger <richard@nod.at>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
- <niklas.soderlund@ragnatech.se>, <linux-mediatek@lists.infradead.org>, "Brian
- Norris" <computersforpeace@gmail.com>, <netdev@vger.kernel.org>
-References: <20220110201014.mtajyrfcfznfhyqm@pengutronix.de>
- <YdyilpjC6rtz6toJ@lunn.ch>
- <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
- <20220112085009.dbasceh3obfok5dc@pengutronix.de>
- <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <29f0c65d-77f2-e5b2-f6cc-422add8a707d@omp.ru>
- <20220114092557.jrkfx7ihg26ekzci@pengutronix.de>
- <61b80939-357d-14f5-df99-b8d102a4e1a1@omp.ru>
- <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Organization: Open Mobile Platform
-Message-ID: <57af1851-9341-985e-7b28-d2ba86770ecb@omp.ru>
-Date: Sun, 16 Jan 2022 21:15:20 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1n9HbK-00DGDX-HR
+ for linux-mediatek@lists.infradead.org; Mon, 17 Jan 2022 02:18:33 +0000
+X-UUID: f23ee1c0deed436ca4873ae1a37dd612-20220116
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=mcv14FXwpeuGqmFlD+a0NStalcTmRyIh7HIvXWtaWss=; 
+ b=crwcPGk7oFuInIdUPUe7beUh4/Q2ZN4m1Se4HQ6oxikrP+5fv6d1mnsv9u4pOBmV+DgSedwThpceq92nw8a+NBxAIUlYW6ykEbw8LT6Q39emVBrUL+DPsIlubzZakfRYWQGQ1FVhbRstmsMKRiD5Pnp3L/1J1StB3FLk46tLFrQ=;
+X-UUID: f23ee1c0deed436ca4873ae1a37dd612-20220116
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <guochun.mao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1513493068; Sun, 16 Jan 2022 19:18:26 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Sun, 16 Jan 2022 18:08:24 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Mon, 17 Jan 2022 10:08:23 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 17 Jan 2022 10:08:22 +0800
+Message-ID: <20787c8167f6ae96ce36e98692a5f729996d7d43.camel@mediatek.com>
+Subject: Re: [PATCH v1 1/4] dt-bindings: spi: add mt8186-nor compatible string
+From: Guochun Mao <guochun.mao@mediatek.com>
+To: Rob Herring <robh+dt@kernel.org>
+CC: Mark Brown <broonie@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Zhen Zhang <zhen.zhang@mediatek.com>, Bayi Cheng
+ <bayi.cheng@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>, Bin Zhang
+ <bin.zhang@mediatek.com>, "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>, srv_heupstream
+ <srv_heupstream@mediatek.com>
+Date: Mon, 17 Jan 2022 10:08:22 +0800
+In-Reply-To: <CAL_JsqK+Mx4juudKmdpaSPyqxgATQZs9Bf052WWoOJQgb_3oJA@mail.gmail.com>
+References: <20220114062408.9077-1-guochun.mao@mediatek.com>
+ <20220114062408.9077-2-guochun.mao@mediatek.com>
+ <CAL_JsqK+Mx4juudKmdpaSPyqxgATQZs9Bf052WWoOJQgb_3oJA@mail.gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-In-Reply-To: <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
-Content-Language: en-US
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT01.lancloud.ru (fd00:f066::141) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_101536_869969_7CCEBFE5 
-X-CRM114-Status: GOOD (  23.31  )
+X-CRM114-CacheID: sfid-20220116_181831_996584_20481339 
+X-CRM114-Status: GOOD (  20.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,90 +78,108 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello!
 
-On 1/14/22 11:22 PM, Uwe Kleine-K=F6nig wrote:
+Hi Rob,
 
->>>>>>> To me it sounds much more logical for the driver to check if an
->>>>>>> optional irq is non-zero (available) or zero (not available), than =
-to
->>>>>>> sprinkle around checks for -ENXIO. In addition, you have to remember
->>>>>>> that this one returns -ENXIO, while other APIs use -ENOENT or -ENOS=
-YS
->>>>>>> (or some other error code) to indicate absence. I thought not having
->>>>>>> to care about the actual error code was the main reason behind the
->>>>>>> introduction of the *_optional() APIs.
->>>>>
->>>>>> No, the main benefit of gpiod_get_optional() (and clk_get_optional()=
-) is
->>>>>> that you can handle an absent GPIO (or clk) as if it were available.
->>>>
->>>>    Hm, I've just looked at these and must note that they match 1:1 with
->>>> platform_get_irq_optional(). Unfortunately, we can't however behave the
->>>> same way in request_irq() -- because it has to support IRQ0 for the sa=
-ke
->>>> of i8253 drivers in arch/...
->>>
->>> Let me reformulate your statement to the IMHO equivalent:
->>>
->>> 	If you set aside the differences between
->>> 	platform_get_irq_optional() and gpiod_get_optional(),
->>
->>    Sorry, I should make it clear this is actually the diff between a wou=
-ld-be
->> platform_get_irq_optional() after my patch, not the current code...
-> =
+Thanks for your comments.
 
-> The similarity is that with your patch both gpiod_get_optional() and
-> platform_get_irq_optional() return NULL and 0 on not-found. The relevant
-> difference however is that for a gpiod NULL is a dummy value, while for
-> irqs it's not. So the similarity is only syntactically, but not
-> semantically.
 
-   I have noting to say here, rather than optional IRQ could well have a di=
-fferent
-meaning than for clk/gpio/etc.
+On Fri, 2022-01-14 at 08:54 -0600, Rob Herring wrote:
+> On Fri, Jan 14, 2022 at 12:24 AM <guochun.mao@mediatek.com> wrote:
+> > 
+> > From: Guochun Mao <guochun.mao@mediatek.com>
+> 
+> Use get_maintainers.pl and send to the right lists.
+> 
 
-[...]
->>> However for an interupt this cannot work. You will always have to check
->>> if the irq is actually there or not because if it's not you cannot just
->>> ignore that. So there is no benefit of an optional irq.
->>>
->>> Leaving error message reporting aside, the introduction of
->>> platform_get_irq_optional() allows to change
->>>
->>> 	irq =3D platform_get_irq(...);
->>> 	if (irq < 0 && irq !=3D -ENXIO) {
->>> 		return irq;
->>> 	} else if (irq >=3D 0) {
->>
->>    Rather (irq > 0) actually, IRQ0 is considered invalid (but still retu=
-rned).
-> =
+I have already used get_maintainers.pl to get maintainers list.
+It shows like this,
 
-> This is a topic I don't feel strong for, so I'm sloppy here. If changing
-> this is all that is needed to convince you of my point ...
+./scripts/get_maintainer.pl 00*
 
-   Note that we should absolutely (and first of all) stop returning 0 from =
-platform_get_irq()
-on a "real" IRQ0. Handling that "still good" zero absolutely doesn't scale =
-e.g. for the subsystems
-(like libata) which take 0 as an indication that the polling mode should be=
- used... We can't afford
-to be sloppy here. ;-)
+Mark Brown <broonie@kernel.org> (maintainer:SPI SUBSYSTEM)
+Rob Herring <robh+dt@kernel.org> (maintainer:OPEN FIRMWARE AND
+FLATTENED DEVICE TREE BINDINGS)
+Matthias Brugger <matthias.bgg@gmail.com> (maintainer:ARM/Mediatek SoC
+support)
+Bayi Cheng <bayi.cheng@mediatek.com> (in file)
+Chuanhong Guo <gch981213@gmail.com> (in file)
+linux-spi@vger.kernel.org (open list:SPI SUBSYSTEM)
+devicetree@vger.kernel.org (open list:OPEN FIRMWARE AND FLATTENED
+DEVICE TREE BINDINGS)
+linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC
+support)
+linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC
+support)
+linux-kernel@vger.kernel.org (open list)
 
-[...]
+If you think I need add more reviewers,
+could you give me the names who I need to add to these mails?
+thanks.
 
-> Best regards
-> Uwe
+> > Add MT8186 spi-nor controller support.
+> > MT8186 needs a new clock name, axi_s, for spi nor axi slave bus
+> > clock.
+> > 
+> > Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
+> > Signed-off-by: Zhen Zhang <zhen.zhang@mediatek.com>
+> > ---
+> >  .../devicetree/bindings/spi/mediatek,spi-mtk-nor.yaml         | 4
+> > ++++
+> >  1 file changed, 4 insertions(+)
+> > 
+> > diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-
+> > mtk-nor.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-
+> > mtk-nor.yaml
+> > index 4e4694e3d539..1a678751bcca 100644
+> > --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-
+> > nor.yaml
+> > +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mtk-
+> > nor.yaml
+> > @@ -30,6 +30,7 @@ properties:
+> >                - mediatek,mt7622-nor
+> >                - mediatek,mt7623-nor
+> >                - mediatek,mt7629-nor
+> > +              - mediatek,mt8186-nor
+> >                - mediatek,mt8192-nor
+> >                - mediatek,mt8195-nor
+> >            - enum:
+> > @@ -49,6 +50,8 @@ properties:
+> >        - description: clock used for controller
+> >        - description: clock used for nor dma bus. this depends on
+> > hardware
+> >                       design, so this is optional.
+> > +      - description: clock used for controller axi slave bus. this
+> > depens
+> > +                     on hardwre design, so this is optional.
+> 
+> typos.
+> 
 
-MBR, Sergey
+I'll fix it next version.
 
+thanks.
+
+
+> > 
+> >    clock-names:
+> >      minItems: 2
+> > @@ -56,6 +59,7 @@ properties:
+> >        - const: spi
+> >        - const: sf
+> >        - const: axi
+> > +      - const: axi_s
+> > 
+> >  required:
+> >    - compatible
+> > --
+> > 2.25.1
+> > 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
