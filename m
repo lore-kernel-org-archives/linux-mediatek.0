@@ -4,79 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FA9C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 11:50:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4546AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 11:51:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6Oqumi2vEbfbgct3s4fvzb2nLZ/dvLTr0+zzCTI4X0Y=; b=PrZ1L8SMrIuqrmw8yPfcXgJoVJ
-	dYsJKVPMCHQeOWypZOHSaEjuzC58iZkpg10uPfPhagFSz75YBm1JmyMdeVi+hhSpl12+O2GZWHHgU
-	Ft0Iy0prA0Syqfr1BiWgvdPYtc8YYp4WN1lEn+86O604jNK4tTjQuEqGjumofb5itwATwmciW82BY
-	F6OG7kuSpNcJgHzdhmVgz6UagNpyLYR+kTELZGWbx3P4kLr5neTmagzYvLqaFa8lkVR12YYN2Lm21
-	0oRkJd1N/2Y7Gw8L0q0eKzZzbEEe0OCoKwW+RcJsvrEnyFmxqBD3nOAPVVLUfs/YqdZUByDFDoReE
-	Z/sYrNVA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=F8zTE9I6/jj4yH8xwl8HUcjor9nNnixSNT1nhbqjtDI=; b=g3D2fL7MtHktc3q9uBpLNkEEFl
+	Ls2POoQVcbVDEEe1Je3Cu0RDoEap1LKq46cvxS4fczMdhAXNJFInkjRB4S26axtSbAAYKO7R12z4j
+	9xoDRes6u15wVEq+/fK0LZ7Aaqd2FNS5jS/4BovCH9DBjAVdxEgdSurV0wy3n7IvSxmjwksQTV7MY
+	JrRfBCSCk6hZrZ06abIz87r7ju/HmcxIHyUdwbyRB61x58wrQNJIHBb/T7TwRbnOefbRJpBJeoVwx
+	PTG6EbfolSi1uCR1nQQD0qc8/TN53iQKtbHP9WnSOVy6a5XoUzXmGNaHsKkXIUzLs5hSW2/OZWzo3
+	4hRvc/Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9QWS-00EhoI-Ik; Mon, 17 Jan 2022 11:50:04 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1n9QXl-00EiEC-9W; Mon, 17 Jan 2022 11:51:25 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9QWO-00Ehms-VK; Mon, 17 Jan 2022 11:50:02 +0000
-Received: by mail-wm1-x333.google.com with SMTP id
- o7-20020a05600c510700b00347e10f66d1so7858080wms.0; 
- Mon, 17 Jan 2022 03:50:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Qh9qlD7Xxyuod6l2VHcORITt556iH0cP6xXy3RESnzc=;
- b=Mlh7ovtSMXfYuLtZJBDHb8iGlTGgdK+kw1r5kJiXwtkbGmEsnjbmlZKUV5ho5ALXtc
- ErsaGGPcarRlcH0t4J9vPlE7jazy1cyw4hGIdk5wDin+9M1XbOFs7iX0+erqOXDuyLDU
- N13wuTcAslvW26atfDB8z2bt5QcgcQx0NvYODdDPvmJu5WOEdUigB3+CL6bozU4yXHIO
- z5RuHGs7a1T0dgtc9eifrjqDUx3C7Cj1uVvulqDbFgE7j4WbdpSwVcPr5oIJjqyg57+1
- JsTSCgmyV7thCpmP1yut4igRrUJ/m74v/GBfEAf36/FiwfUXtIG2YDJO9iRXKAcSCsHW
- HgNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Qh9qlD7Xxyuod6l2VHcORITt556iH0cP6xXy3RESnzc=;
- b=p1FRX5xgIxDUQRihC0H0kRNLYevCyKN14ToxK9txF2MQZr0KFy9fYcP0RkGdWUrT4d
- hXCbKIOSw+vwS13V/4goKPb8hLLKsozrNETXawkKBg2ImaS6dAphErcz9lybsFX2XMyx
- ZJR/AWVbh1AgnpWgGmfJzU299YTSKQQJknxItqwFPA7Fw+6d8KOfYSPhS/g/m5r36q6D
- 20idu86Jss/maTvRP4w1SYY7NvnU6vYPozr9Koz2VDh4DPZFuH10fiGF2XAhqw0oVxhe
- 5WRvHYXHjKQQNfoo5+LIab3jsUaFAid/3ikzFbETesftYo5z//+tES0OY69iXyfeLBTB
- jJPQ==
-X-Gm-Message-State: AOAM531kLDXQr6aP8WQ5qet3Y01OM2+Nbz/dVoSWmhWZ03bFHkx6dT2x
- oKK6q+dnViJQvser2JHHMO8=
-X-Google-Smtp-Source: ABdhPJxnzn9RYFSiRwIN27xe7uwz9Ej9yjcj/6lztBm/AGx+ZaPHnqv2QULOgW5amVoWsoNmN1+5pg==
-X-Received: by 2002:a5d:453a:: with SMTP id j26mr15627235wra.348.1642420199348; 
- Mon, 17 Jan 2022 03:49:59 -0800 (PST)
-Received: from [192.168.0.14] ([37.223.145.74])
- by smtp.gmail.com with ESMTPSA id n7sm13895148wms.46.2022.01.17.03.49.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Jan 2022 03:49:58 -0800 (PST)
-Message-ID: <c8fc24a2-9ee3-75a2-0928-95a217d9dfdf@gmail.com>
-Date: Mon, 17 Jan 2022 12:49:56 +0100
+ id 1n9QXU-00Ei9V-Se
+ for linux-mediatek@lists.infradead.org; Mon, 17 Jan 2022 11:51:11 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1n9QVx-0000fx-Mn; Mon, 17 Jan 2022 12:49:33 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1n9QVo-00AoYK-L6; Mon, 17 Jan 2022 12:49:23 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1n9QVn-0001x3-Fg; Mon, 17 Jan 2022 12:49:23 +0100
+Date: Mon, 17 Jan 2022 12:49:23 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ linux-phy@lists.infradead.org, Jiri Slaby <jirislaby@kernel.org>,
+ openipmi-developer@lists.sourceforge.net,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>, Kamal Dasu <kdasu.kdev@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Tony Luck <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Linux PWM List <linux-pwm@vger.kernel.org>,
+ Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
+ Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Sebastian Reichel <sre@kernel.org>, Eric Auger <eric.auger@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, platform-driver-x86@vger.kernel.org,
+ Benson Leung <bleung@chromium.org>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-edac@vger.kernel.org, Sergey Shtylyov <s.shtylyov@omp.ru>,
+ Mun Yew Tham <mun.yew.tham@intel.com>, Hans de Goede <hdegoede@redhat.com>,
+ netdev <netdev@vger.kernel.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-spi <linux-spi@vger.kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, James Morse <james.morse@arm.com>,
+ Zha Qipeng <qipeng.zha@intel.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Richard Weinberger <richard@nod.at>,
+ Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
+ linux-mediatek@lists.infradead.org,
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+Message-ID: <20220117114923.d5vajgitxneec7j7@pengutronix.de>
+References: <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <29f0c65d-77f2-e5b2-f6cc-422add8a707d@omp.ru>
+ <20220114092557.jrkfx7ihg26ekzci@pengutronix.de>
+ <61b80939-357d-14f5-df99-b8d102a4e1a1@omp.ru>
+ <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
+ <c9026f17-2b3f-ee94-0ea3-5630f981fbc1@omp.ru>
+ <CAMuHMdXVbRudGs69f9ZzaP1PXhteDNZiXA658eMFAwP4nr9r3w@mail.gmail.com>
+ <20220117092444.opoedfcf5k5u6otq@pengutronix.de>
+ <CAMuHMdUgZUeraHadRAi2Z=DV+NuNBrKPkmAKsvFvir2MuquVoA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v10 00/13] Clean up "mediatek,larb"
-Content-Language: en-US
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Yong Wu <yong.wu@mediatek.com>, Hans Verkuil <hverkuil@xs4all.nl>,
- Joerg Roedel <jroedel@suse.de>, Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20220117070510.17642-1-yong.wu@mediatek.com>
- <06e5e76c-557a-20a5-b8dd-37b25b3384a3@collabora.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <06e5e76c-557a-20a5-b8dd-37b25b3384a3@collabora.com>
+In-Reply-To: <CAMuHMdUgZUeraHadRAi2Z=DV+NuNBrKPkmAKsvFvir2MuquVoA@mail.gmail.com>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_035001_062181_5C6FA1E1 
-X-CRM114-Status: GOOD (  24.89  )
+X-CRM114-CacheID: sfid-20220117_035109_140642_7CD2FE83 
+X-CRM114-Status: GOOD (  63.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,167 +130,244 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
- dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
- anthony.huang@mediatek.com, youlin.pei@mediatek.com,
- Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, mingyuan.ma@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, libo.kang@mediatek.com,
- yi.kuo@mediatek.com, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, anan.sun@mediatek.com,
- srv_heupstream@mediatek.com, acourbot@chromium.org,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============8089239644367236678=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAxNy8wMS8yMDIyIDExOjI3LCBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyB3cm90ZToK
-PiBJbCAxNy8wMS8yMiAwODowNCwgWW9uZyBXdSBoYSBzY3JpdHRvOgo+PiBNZWRpYVRlayBJT01N
-VSBibG9jayBkaWFncmFtIGFsd2F5cyBsaWtlIGJlbG93Ogo+Pgo+PiDCoMKgwqDCoMKgwqDCoMKg
-IE00VQo+PiDCoMKgwqDCoMKgwqDCoMKgwqAgfAo+PiDCoMKgwqDCoCBzbWktY29tbW9uCj4+IMKg
-wqDCoMKgwqDCoMKgwqDCoCB8Cj4+IMKgwqAgLS0tLS0tLS0tLS0tLQo+PiDCoMKgIHzCoMKgwqDC
-oMKgwqDCoMKgIHzCoCAuLi4KPj4gwqDCoCB8wqDCoMKgwqDCoMKgwqDCoCB8Cj4+IGxhcmIxwqDC
-oMKgwqAgbGFyYjIKPj4gwqDCoCB8wqDCoMKgwqDCoMKgwqDCoCB8Cj4+IHZkZWPCoMKgwqDCoMKg
-wqAgdmVuYwo+Pgo+PiBBbGwgdGhlIGNvbnN1bWVyIGNvbm5lY3Qgd2l0aCBzbWktbGFyYiwgdGhl
-biBjb25uZWN0IHdpdGggc21pLWNvbW1vbi4KPj4KPj4gV2hlbiB0aGUgY29uc3VtZXIgd29ya3Ms
-IGl0IHNob3VsZCBlbmFibGUgdGhlIHNtaS1sYXJiJ3MgcG93ZXIgd2hpY2ggYWxzbwo+PiBuZWVk
-IGVuYWJsZSB0aGUgc21pLWNvbW1vbidzIHBvd2VyIGZpcnN0bHkuCj4+Cj4+IFRodXMsIEZpcnN0
-bHksIHVzZSB0aGUgZGV2aWNlIGxpbmsgY29ubmVjdCB0aGUgY29uc3VtZXIgYW5kIHRoZQo+PiBz
-bWktbGFyYnMuIHRoZW4gYWRkIGRldmljZSBsaW5rIGJldHdlZW4gdGhlIHNtaS1sYXJiIGFuZCBz
-bWktY29tbW9uLgo+Pgo+PiBBZnRlciBhZGRpbmcgdGhlIGRldmljZV9saW5rLCB0aGVuICJtZWRp
-YXRlayxsYXJiIiBwcm9wZXJ0eSBjYW4gYmUgcmVtb3ZlZC4KPj4gdGhlIGlvbW11IGNvbnN1bWVy
-IGRvbid0IG5lZWQgY2FsbCB0aGUgbXRrX3NtaV9sYXJiX2dldC9wdXQgdG8gZW5hYmxlCj4+IHRo
-ZSBwb3dlciBhbmQgY2xvY2sgb2Ygc21pLWxhcmIgYW5kIHNtaS1jb21tb24uCj4+Cj4+IEJhc2Ug
-b24gdGhlIG1lZGlhIGJyYW5jaCBbMV0gYW5kIGEganBlZyBkdGJpbmRpbmcgcGF0Y2hzZXRbMl0g
-dGhhdCBhbHJlYWR5IGdvdAo+PiB0aGUgbmVjZXNzYXJ5IFItYi4KPj4KPj4gWzFdIGdpdDovL2xp
-bnV4dHYub3JnL2h2ZXJrdWlsL21lZGlhX3RyZWUuZ2l0IHRhZ3MvYnItdjUuMThkCj4+IFsyXSAK
-Pj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMTEyMDYxMzA0MjUu
-MTg0NDIwLTEtaHNpbnlpQGNocm9taXVtLm9yZy8gCj4+Cj4+Cj4+IENoYW5nZSBub3RlczoKPj4g
-djEwOiBhKSBSZWJhc2Ugb24gdGhlIG1lZGlhIHRyZWUuIFJlc3BpbiB0aGUgIm1lZGlhOiBtdGst
-dmNvZGVjOiIgcGF0Y2hlcy4KPj4gwqDCoMKgwqDCoCBiKSBBZGQgSm9lcmcncyBBY2sgZm9yIGlv
-bW11IHBhdGNoZXMuCj4+Cj4+IHY5OiAKPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgt
-bWVkaWF0ZWsvMjAyMTExMTIxMDU1MDkuMTIwMTAtMS15b25nLnd1QG1lZGlhdGVrLmNvbS8gCj4+
-Cj4+IMKgwqDCoMKgIDEpIEFkZCByZXR1cm4gLUVOT0RFViB3aGVuIHRoZSBkZXYgaXMgbnVsbC4K
-Pj4gwqDCoMKgwqAgMikgQWRkIG1vcmUgc3RyaWN0IGFib3V0IHRoZSBjYXNlIHRoYXQgYSBpb21t
-dSBjb25zdW1lIGRldmljZSB1c2UgdGhlIAo+PiBwb3J0cyBpbgo+PiDCoMKgwqDCoCBkaWZmZXJl
-bnQgbGFyYnMuIERvbid0IGFsbG93IHRoaXMgY2FzZS4KPj4gwqDCoMKgwqAgMykgUmVtb3ZlIHR3
-byBjb2RlYyBpbnRlcmZhY2U6IG10a192Y29kZWNfcmVsZWFzZV9lbmMvZGVjX3BtIHNpbmNlIGl0
-IAo+PiBvbmx5IGhhcyBvbmUKPj4gwqDCoMKgwqAgbGluZSBub3cuCj4+Cj4+IHY4OiAKPj4gaHR0
-cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMTA5MjkwMTM3MTkuMjUxMjAt
-MS15b25nLnd1QG1lZGlhdGVrLmNvbS8gCj4+Cj4+IMKgwqDCoMKgIDEpIFJlYmFzZSBvbiB2NS4x
-NS1yYzEuCj4+IMKgwqDCoMKgIDIpIERvbid0IHJlYmFzZSB0aGUgYmVsb3cgbWRwIHBhdGNoc2V0
-IHRoYXQgbWF5IHN0aWxsIG5lZWQgbW9yZSBkaXNjdXNzLgo+PiAgICAgIAo+PiBodHRwczovL2xv
-cmUua2VybmVsLm9yZy9saW51eC1tZWRpYXRlay8yMDIxMDcwOTAyMjMyNC4xNjA3ODg0LTEtZWl6
-YW5AY2hyb21pdW0ub3JnLyAKPj4KPj4gwqDCoMKgwqAgMykgQWRkIEZyYW5rJ3MgVGVzdGVkLWJ5
-LiBSZW1vdmUgRGFmbmEncyBUZXN0ZWQtYnkgYXMgaGUgcmVxdWVzdGVkLgo+Pgo+PiB2NzogCj4+
-IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhdGVrLzIwMjEwNzMwMDI1MjM4LjIy
-NDU2LTEteW9uZy53dUBtZWRpYXRlay5jb20vIAo+Pgo+PiDCoMKgwqDCoCAxKSBGaXggYSBhcm0z
-MiBib290IGZhaWwgaXNzdWUuIHJlcG9ydGVkIGZyb20gRnJhbmsuCj4+IMKgwqDCoMKgIDIpIEFk
-ZCBhIHJldHVybiBmYWlsIGluIHRoZSBtdGsgZHJtLiBzdWdnZXN0ZWQgYnkgRGFmbmEuCj4+Cj4+
-IHY2OiAKPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMTA3MTQw
-MjU2MjYuNTUyOC0xLXlvbmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKgwqAgMSkgcmVi
-YXNlIG9uIHY1LjE0LXJjMS4KPj4gwqDCoMKgwqAgMikgRml4IHRoZSBpc3N1ZSBjb21tZW50ZWQg
-aW4gdjUgZnJvbSBEYWZuYSBhbmQgSHNpbi1ZaS4KPj4gwqDCoMKgwqAgMykgUmVtb3ZlIHRoZSBw
-YXRjaGVzIGFib3V0IHVzaW5nIHBtX3J1bnRpbWVfcmVzdW1lX2FuZF9nZXQgc2luY2UgdGhleSBo
-YXZlCj4+IMKgwqDCoMKgwqDCoMKgIGFscmVhZHkgYmVlbiBtZXJnZWQgYnkgb3RoZXIgcGF0Y2hl
-cy4KPj4KPj4gdjU6IAo+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYXRlay8y
-MDIxMDQxMDA5MTEyOC4zMTgyMy0xLXlvbmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKg
-wqAgMSkgQmFzZSB2NS4xMi1yYzIuCj4+IMKgwqDCoMKgIDIpIFJlbW92ZSBjaGFuZ2luZyB0aGUg
-bXRrLWlvbW11IHRvIG1vZHVsZV9wbGF0Zm9ybV9kcml2ZXIgcGF0Y2gsIEl0IGhhdmUgCj4+IGFs
-cmVhZHkgYmVlbiBhCj4+IMKgwqDCoMKgIGluZGVwZW5kZW50IHBhdGNoLgo+Pgo+PiB2NDogCj4+
-IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhdGVrLzE1OTA4MjYyMTgtMjM2NTMt
-MS1naXQtc2VuZC1lbWFpbC15b25nLnd1QG1lZGlhdGVrLmNvbS8gCj4+Cj4+IMKgwqDCoMKgIGJh
-c2Ugb24gdjUuNy1yYzEuCj4+IMKgwqAgMSkgTW92ZSBkcm0gUE0gcGF0Y2ggYmVmb3JlIHNtaSBw
-YXRjaHMuCj4+IMKgwqAgMikgQ2hhbmdlIGJ1aWx0aW5fcGxhdGZvcm1fZHJpdmVyIHRvIG1vZHVs
-ZV9wbGF0Zm9ybV9kcml2ZXIgc2luY2Ugd2UgbWF5IG5lZWQKPj4gwqDCoMKgwqDCoCBidWlsZCBh
-cyBtb2R1bGUuCj4+IMKgwqAgMykgUmViYXNlIG1hbnkgcGF0Y2hzZXQgYXMgYWJvdmUuCj4+Cj4+
-IHYzOiAKPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtaW9tbXUvMTU2NzUwMzQ1Ni0y
-NDcyNS0xLWdpdC1zZW5kLWVtYWlsLXlvbmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKg
-wqAgMSkgcmViYXNlIG9uIHY1LjMtcmMxIGFuZCB0aGUgbGF0ZXN0IG10ODE4MyBwYXRjaHNldC4K
-Pj4gwqDCoMKgwqAgMikgVXNlIGRldmljZV9pc19ib3VuZCB0byBjaGVjayB3aGV0aGVyIHRoZSBk
-cml2ZXIgaXMgcmVhZHkgZnJvbSBNYXR0aGlhcy4KPj4gwqDCoMKgwqAgMykgQWRkIERMX0ZMQUdf
-U1RBVEVMRVNTIGZsYWcgd2hlbiBjYWxsaW5nIGRldmljZV9saW5rX2FkZCBhbmQgZXhwbGFpbiB0
-aGUKPj4gwqDCoMKgIHJlYXNvbiBpbiB0aGUgY29tbWl0IG1lc3NhZ2VbMy8xNF0uCj4+IMKgwqDC
-oMKgIDQpIEFkZCBhIGRpc3BsYXkgcGF0Y2hbMTIvMTRdIGludG8gdGhpcyBzZXJpZXMuIG90aGVy
-d2lzZSBpdCBtYXkgYWZmZWN0Cj4+IMKgwqDCoCBkaXNwbGF5IEhXIGZhc3Rsb2dvIGV2ZW4gdGhv
-dWdoIGl0IGRvbid0IGhhcHBlbiBpbiBtdDgxODMuCj4+IHYyOiAKPj4gaHR0cHM6Ly9sb3JlLmtl
-cm5lbC5vcmcvbGludXgtaW9tbXUvMTU2MDE3MTMxMy0yODI5OS0xLWdpdC1zZW5kLWVtYWlsLXlv
-bmcud3VAbWVkaWF0ZWsuY29tLyAKPj4KPj4gwqDCoMKgIDEpIHJlYmFzZSBvbiB2NS4yLXJjMS4K
-Pj4gwqDCoMKgIDIpIE1vdmUgYWRkaW5nIGRldmljZV9saW5rIGJldHdlZW4gdGhlIGNvbnN1bWVy
-IGFuZCBzbWktbGFyYiBpbnRvCj4+IGlvbW11X2FkZF9kZXZpY2UgZnJvbSBSb2Jpbi4KPj4gwqDC
-oMKgIDMpIGFkZCBETF9GTEFHX0FVVE9SRU1PVkVfQ09OU1VNRVIgZXZlbiB0aG91Z2ggdGhlIHNt
-aSBpcyBidWlsdC1pbiBmcm9tIEV2YW4uCj4+IMKgwqDCoCA0KSBSZW1vdmUgdGhlIHNodXRkb3du
-IGNhbGxiYWNrIGluIGlvbW11Lgo+Pgo+PiB2MTogCj4+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
-L2xpbnV4LWlvbW11LzE1NDYzMTgyNzYtMTg5OTMtMS1naXQtc2VuZC1lbWFpbC15b25nLnd1QG1l
-ZGlhdGVrLmNvbS8gCj4+Cj4+Cj4+IFlvbmcgV3UgKDEyKToKPj4gwqDCoCBkdC1iaW5kaW5nOiBt
-ZWRpYXRlazogR2V0IHJpZCBvZiBtZWRpYXRlayxsYXJiIGZvciBtdWx0aW1lZGlhIEhXCj4+IMKg
-wqAgaW9tbXUvbWVkaWF0ZWstdjE6IEZyZWUgdGhlIGV4aXN0ZWQgZndzcGVjIGlmIHRoZSBtYXN0
-ZXIgZGV2IGFscmVhZHkKPj4gwqDCoMKgwqAgaGFzCj4+IMKgwqAgaW9tbXUvbWVkaWF0ZWs6IFJl
-dHVybiBFTk9ERVYgaWYgdGhlIGRldmljZSBpcyBOVUxMCj4+IMKgwqAgaW9tbXUvbWVkaWF0ZWs6
-IEFkZCBwcm9iZV9kZWZlciBmb3Igc21pLWxhcmIKPj4gwqDCoCBpb21tdS9tZWRpYXRlazogQWRk
-IGRldmljZV9saW5rIGJldHdlZW4gdGhlIGNvbnN1bWVyIGFuZCB0aGUgbGFyYgo+PiDCoMKgwqDC
-oCBkZXZpY2VzCj4+IMKgwqAgbWVkaWE6IG10ay1qcGVnOiBHZXQgcmlkIG9mIG10a19zbWlfbGFy
-Yl9nZXQvcHV0Cj4+IMKgwqAgbWVkaWE6IG10ay1tZHA6IEdldCByaWQgb2YgbXRrX3NtaV9sYXJi
-X2dldC9wdXQKPj4gwqDCoCBkcm0vbWVkaWF0ZWs6IEdldCByaWQgb2YgbXRrX3NtaV9sYXJiX2dl
-dC9wdXQKPj4gwqDCoCBtZWRpYTogbXRrLXZjb2RlYzogR2V0IHJpZCBvZiBtdGtfc21pX2xhcmJf
-Z2V0L3B1dAo+PiDCoMKgIG1lbW9yeTogbXRrLXNtaTogR2V0IHJpZCBvZiBtdGtfc21pX2xhcmJf
-Z2V0L3B1dAo+PiDCoMKgIGFybTogZHRzOiBtZWRpYXRlazogR2V0IHJpZCBvZiBtZWRpYXRlayxs
-YXJiIGZvciBNTSBub2Rlcwo+PiDCoMKgIGFybTY0OiBkdHM6IG1lZGlhdGVrOiBHZXQgcmlkIG9m
-IG1lZGlhdGVrLGxhcmIgZm9yIE1NIG5vZGVzCj4+Cj4+IFlvbmdxaWFuZyBOaXUgKDEpOgo+PiDC
-oMKgIGRybS9tZWRpYXRlazogQWRkIHBtIHJ1bnRpbWUgc3VwcG9ydCBmb3Igb3ZsIGFuZCByZG1h
-Cj4+Cj4+IMKgIC4uLi9kaXNwbGF5L21lZGlhdGVrL21lZGlhdGVrLGRpc3AudHh0wqDCoMKgwqDC
-oMKgwqAgfMKgIDkgLS0tLQo+PiDCoCAuLi4vbWVkaWEvbWVkaWF0ZWssdmNvZGVjLWRlY29kZXIu
-eWFtbMKgwqDCoMKgwqDCoMKgIHzCoCA3IC0tLQo+PiDCoCAuLi4vbWVkaWEvbWVkaWF0ZWssdmNv
-ZGVjLWVuY29kZXIueWFtbMKgwqDCoMKgwqDCoMKgIHzCoCA4IC0tLS0KPj4gwqAgLi4uL2JpbmRp
-bmdzL21lZGlhL21lZGlhdGVrLWpwZWctZGVjb2Rlci55YW1sIHzCoCA5IC0tLS0KPj4gwqAgLi4u
-L2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLWpwZWctZW5jb2Rlci55YW1sIHzCoCA5IC0tLS0KPj4g
-wqAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLW1kcC50eHTCoMKgwqDCoMKgwqDCoMKgwqDC
-oCB8wqAgOCAtLS0tCj4+IMKgIGFyY2gvYXJtL2Jvb3QvZHRzL210MjcwMS5kdHNpwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDIgLQo+PiDCoCBhcmNoL2FybS9ib290L2R0cy9t
-dDc2MjNuLmR0c2nCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDUgLS0tCj4+IMKg
-IGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTczLmR0c2nCoMKgwqDCoMKgIHwgMTYg
-LS0tLS0tLQo+PiDCoCBhcmNoL2FybTY0L2Jvb3QvZHRzL21lZGlhdGVrL210ODE4My5kdHNpwqDC
-oMKgwqDCoCB8wqAgNiAtLS0KPj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNw
-X292bC5jwqDCoMKgwqDCoMKgIHzCoCA4ICsrKy0KPj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlh
-dGVrL210a19kaXNwX3JkbWEuY8KgwqDCoMKgwqAgfMKgIDkgKysrLQo+PiDCoCBkcml2ZXJzL2dw
-dS9kcm0vbWVkaWF0ZWsvbXRrX2RybV9jcnRjLmPCoMKgwqDCoMKgwqAgfCAxNSArKysrLS0tCj4+
-IMKgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmPCoMKgIHwgMzYg
-Ky0tLS0tLS0tLS0tLS0tCj4+IMKgIGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rk
-cF9jb21wLmjCoMKgIHzCoCAxIC0KPj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19k
-cm1fZHJ2LmPCoMKgwqDCoMKgwqDCoCB8wqAgNSArLS0KPj4gwqAgZHJpdmVycy9pb21tdS9tdGtf
-aW9tbXUuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAzNCArKysr
-KysrKysrKysrKwo+PiDCoCBkcml2ZXJzL2lvbW11L210a19pb21tdV92MS5jwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDQyICsrKysrKysrKysrKysrKystCj4+IMKgIC4uLi9t
-ZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmPCoMKgIHwgNDUgKy0tLS0tLS0t
-LS0tLS0tLS0tLQo+PiDCoCAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcvbXRrX2pwZWdfY29y
-ZS5owqDCoCB8wqAgMiAtCj4+IMKgIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcC9tdGtf
-bWRwX2NvbXAuYyB8IDQwIC0tLS0tLS0tLS0tLS0tLS0tCj4+IMKgIGRyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vbXRrLW1kcC9tdGtfbWRwX2NvbXAuaCB8wqAgMiAtCj4+IMKgIGRyaXZlcnMvbWVkaWEv
-cGxhdGZvcm0vbXRrLW1kcC9tdGtfbWRwX2NvcmUuYyB8wqAgMSAtCj4+IMKgIC4uLi9wbGF0Zm9y
-bS9tdGstdmNvZGVjL210a192Y29kZWNfZGVjX2Rydi5jwqAgfMKgIDIgLQo+PiDCoCAuLi4vcGxh
-dGZvcm0vbXRrLXZjb2RlYy9tdGtfdmNvZGVjX2RlY19ody5jwqDCoCB8wqAgMSAtCj4+IMKgIC4u
-Li9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNfZGVjX3BtLmPCoMKgIHwgNDEgKysrLS0t
-LS0tLS0tLS0tLS0KPj4gwqAgLi4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kcnYu
-aMKgwqDCoMKgwqAgfMKgIDMgLS0KPj4gwqAgLi4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zj
-b2RlY19lbmMuY8KgwqDCoMKgwqAgfMKgIDEgLQo+PiDCoCAuLi4vcGxhdGZvcm0vbXRrLXZjb2Rl
-Yy9tdGtfdmNvZGVjX2VuY19kcnYuY8KgIHzCoCAyIC0KPj4gwqAgLi4uL3BsYXRmb3JtL210ay12
-Y29kZWMvbXRrX3Zjb2RlY19lbmNfcG0uY8KgwqAgfCA0NSArKystLS0tLS0tLS0tLS0tLS0tCj4+
-IMKgIGRyaXZlcnMvbWVtb3J5L210ay1zbWkuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCB8IDE0IC0tLS0tLQo+PiDCoCBpbmNsdWRlL3NvYy9tZWRpYXRlay9zbWku
-aMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMjAgLS0tLS0tLS0tCj4+
-IMKgIDMyIGZpbGVzIGNoYW5nZWQsIDExNSBpbnNlcnRpb25zKCspLCAzMzMgZGVsZXRpb25zKC0p
-Cj4+Cj4gCj4gSGVsbG8gSGFucywgTWF0dGhpYXMsCj4gb24gbXkgc2lkZSwgdGhpcyBzZXJpZXMg
-aXMgdG90YWxseSByZWFkeSBmb3IgbWVyZ2UsIGhlbmNlLCBncmVlbiBsaWdodCBmcm9tIGhlcmUu
-Cj4gCj4gQ2FuIHlvdSBwbGVhc2UgdGFrZSBpdCBmb3IgNS4xOD8KPiAKCkBIYW5zOiBJIHVuZGVy
-c3RhbmQgeW91IHRha2UgdGhlIHNlcmllcyB0aHJvdWdoIHlvdXIgdHJlZS4gUGxlYXNlIGxldCBt
-ZSBrbm93IAp3aGVuIHlvdSBkbyBzby4gSSdsbCB0YWtlIGNhcmUgb2YgcGF0Y2ggMTIgYW5kIDEz
-LCB3aGljaCBzaG91bGQgZ28gdGhyb3VnaCBteSB0cmVlLgoKVGhhbmtzIQpNYXR0aGlhcwoKX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0
-ZWsgbWFpbGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
-L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+
+--===============8089239644367236678==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="p6yh245p57zhiyck"
+Content-Disposition: inline
+
+
+--p6yh245p57zhiyck
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Jan 17, 2022 at 11:35:52AM +0100, Geert Uytterhoeven wrote:
+> Hi Uwe,
+>=20
+> On Mon, Jan 17, 2022 at 10:24 AM Uwe Kleine-K=F6nig
+> <u.kleine-koenig@pengutronix.de> wrote:
+> > On Mon, Jan 17, 2022 at 09:41:42AM +0100, Geert Uytterhoeven wrote:
+> > > On Sat, Jan 15, 2022 at 9:22 PM Sergey Shtylyov <s.shtylyov@omp.ru> w=
+rote:
+> > > > On 1/14/22 11:22 PM, Uwe Kleine-K=F6nig wrote:
+> > > > > You have to understand that for clk (and regulator and gpiod) NUL=
+L is a
+> > > > > valid descriptor that can actually be used, it just has no effect=
+=2E So
+> > > > > this is a convenience value for the case "If the clk/regulator/gp=
+iod in
+> > > > > question isn't available, there is nothing to do". This is what m=
+akes
+> > > > > clk_get_optional() and the others really useful and justifies the=
+ir
+> > > > > existence. This doesn't apply to platform_get_irq_optional().
+> > > >
+> > > >    I do understand that. However, IRQs are a different beast with t=
+heir
+> > > > own justifications...
+> > >
+> > > > > clk_get_optional() is sane and sensible for cases where the clk m=
+ight be
+> > > > > absent and it helps you because you don't have to differentiate b=
+etween
+> > > > > "not found" and "there is an actual resource".
+> > > > >
+> > > > > The reason for platform_get_irq_optional()'s existence is just th=
+at
+> > > > > platform_get_irq() emits an error message which is wrong or subop=
+timal
+> > > >
+> > > >    I think you are very wrong here. The real reason is to simplify =
+the
+> > > > callers.
+> > >
+> > > Indeed.
+> >
+> > The commit that introduced platform_get_irq_optional() said:
+> >
+> >         Introduce a new platform_get_irq_optional() that works much like
+> >         platform_get_irq() but does not output an error on failure to
+> >         find the interrupt.
+> >
+> > So the author of 8973ea47901c81a1912bd05f1577bed9b5b52506 failed to
+> > mention the real reason? Or look at
+> > 31a8d8fa84c51d3ab00bf059158d5de6178cf890:
+> >
+> >         [...] use platform_get_irq_optional() to get second/third IRQ
+> >         which are optional to avoid below error message during probe:
+> >         [...]
+> >
+> > Look through the output of
+> >
+> >         git log -Splatform_get_irq_optional
+> >
+> > to find several more of these.
+>=20
+> Commit 8973ea47901c81a1 ("driver core: platform: Introduce
+> platform_get_irq_optional()") and the various fixups fixed the ugly
+> printing of error messages that were not applicable.
+> In hindsight, probably commit 7723f4c5ecdb8d83 ("driver core:
+> platform: Add an error message to platform_get_irq*()") should have
+> been reverted instead, until a platform_get_irq_optional() with proper
+> semantics was introduced.
+
+ack.
+
+> But as we were all in a hurry to kill the non-applicable error
+> message, we went for the quick and dirty fix.
+>=20
+> > Also I fail to see how a caller of (today's) platform_get_irq_optional()
+> > is simpler than a caller of platform_get_irq() given that there is no
+> > semantic difference between the two. Please show me a single
+> > conversion from platform_get_irq to platform_get_irq_optional that
+> > yielded a simplification.
+>=20
+> That's exactly why we want to change the latter to return 0 ;-)
+
+OK. So you agree to my statement "The reason for
+platform_get_irq_optional()'s existence is just that platform_get_irq()
+emits an error message [...]". Actually you don't want to oppose but
+say: It's unfortunate that the silent variant of platform_get_irq() took
+the obvious name of a function that could have an improved return code
+semantic.
+
+So my suggestion to rename todays platform_get_irq_optional() to
+platform_get_irq_silently() and then introducing
+platform_get_irq_optional() with your suggested semantic seems
+intriguing and straigt forward to me.
+
+Another thought: platform_get_irq emits an error message for all
+problems. Wouldn't it be consistent to let platform_get_irq_optional()
+emit an error message for all problems but "not found"?
+Alternatively remove the error printk from platform_get_irq().
+
+> > So you need some more effort to convince me of your POV.
+> >
+> > > Even for clocks, you cannot assume that you can always blindly use
+> > > the returned dummy (actually a NULL pointer) to call into the clk
+> > > API.  While this works fine for simple use cases, where you just
+> > > want to enable/disable an optional clock (clk_prepare_enable() and
+> > > clk_disable_unprepare()), it does not work for more complex use cases.
+> >
+> > Agreed. But for clks and gpiods and regulators the simple case is quite
+> > usual. For irqs it isn't.
+>=20
+> It is for devices that can have either separate interrupts, or a single
+> multiplexed interrupt.
+>=20
+> The logic in e.g. drivers/tty/serial/sh-sci.c and
+> drivers/spi/spi-rspi.c could be simplified and improved (currently
+> it doesn't handle deferred probe) if platform_get_irq_optional()
+> would return 0 instead of -ENXIO.
+
+Looking at sh-sci.c the irq handling logic could be improved even
+without a changed platform_get_irq_optional():
+
+diff --git a/drivers/tty/serial/sh-sci.c b/drivers/tty/serial/sh-sci.c
+index 968967d722d4..c7dc9fb84844 100644
+--- a/drivers/tty/serial/sh-sci.c
++++ b/drivers/tty/serial/sh-sci.c
+@@ -2873,11 +2873,13 @@ static int sci_init_single(struct platform_device *=
+dev,
+ 	 * interrupt ID numbers, or muxed together with another interrupt.
+ 	 */
+ 	if (sci_port->irqs[0] < 0)
+-		return -ENXIO;
++		return sci_port->irqs[0];
+=20
+-	if (sci_port->irqs[1] < 0)
++	if (sci_port->irqs[1] =3D=3D -ENXIO)
+ 		for (i =3D 1; i < ARRAY_SIZE(sci_port->irqs); i++)
+ 			sci_port->irqs[i] =3D sci_port->irqs[0];
++	else if (sci_port->irqs[1] < 0)
++		return sci_port->irqs[1];
+=20
+ 	sci_port->params =3D sci_probe_regmap(p);
+ 	if (unlikely(sci_port->params =3D=3D NULL))
+
+And then the code flow is actively irritating. sci_init_single() copies
+irqs[0] to all other irqs[i] and then sci_request_irq() loops over the
+already requested irqs and checks for duplicates. A single place that
+identifies the exact set of required irqs would already help a lot.
+
+Also for spi-rspi.c I don't see how platform_get_irq_byname_optional()
+returning 0 instead of -ENXIO would help. Please talk in patches.
+
+Preferably first simplify in-driver logic to make the conversion to the
+new platform_get_irq_optional() actually reviewable.
+
+> > And if you cannot blindly use the dummy, then you're not the targetted
+> > caller of *_get_optional() and should better use *_get() and handle
+> > -ENODEV explicitly.
+>=20
+> No, because the janitors tend to consolidate error message handling,
+> by moving the printing up, inside the *_get() methods.  That's exactly
+> what happened here.
+
+This is in my eyes the root cause of the issues at hand. Moving the
+error message handling into a get function is only right for most of the
+callers. So the more conservative approach would be to introduce a noisy
+variant of the get function and convert all users that benefit
+separately while the unreviewed callers and those that don't want an
+error message can happily continue to use the silent variant.
+
+> So there are three reasons: because the absence of an optional IRQ
+> is not an error, and thus that should not cause (a) an error code
+> to be returned, and (b) an error message to be printed, and (c)
+> because it can simplify the logic in device drivers.
+
+I don't agree to (a). If the value signaling not-found is -ENXIO or 0
+(or -ENODEV) doesn't matter much. I wouldn't deviate from the return
+code semantics of platform_get_irq() just for having to check against 0
+instead of -ENXIO. Zero is then just another magic value.
+(c) still has to be proven, see above.
+
+> Commit 8973ea47901c81a1 ("driver core: platform: Introduce
+> platform_get_irq_optional()") fixed (b), but didn't address (a) and
+> (c).
+
+Yes, it fixed (b) and picked a bad name for that.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--p6yh245p57zhiyck
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHlV8AACgkQwfwUeK3K
+7Am0GQf8CoKYtZsyB2Veq4tA4dVxwehDrqSNzD0/oee9gQ2W8Ug3o/BHJYBwahzq
+EvMyo3JUywFfBFS6fqP6q+5CXaw3qhcVdLIQIYR1NbdbDku9fPpYgUlMeO8FLj0S
+AjA1gReJzZffpqQa+j6sWHbwoCmV4ZWTYuhi2tnY6gxes4QcBTcXhrlPtPvEcvRj
+xiaHDNvm4yBJjau7t98dhCCfb9ioYwkuGybaTVJenP6u4ZB5QxTAKBsVZsaYscE9
+K/bTKX+pt+MFJrjy6AN6Qq4JYNuQK8v7MawD5u/q9qZHAELmMQaNyWTpBBDKqjGv
+Z8p6bAtXmJy2dTalO786GdRxwAWrMQ==
+=gT+3
+-----END PGP SIGNATURE-----
+
+--p6yh245p57zhiyck--
+
+
+--===============8089239644367236678==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============8089239644367236678==--
+
