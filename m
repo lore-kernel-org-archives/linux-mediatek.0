@@ -4,80 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3BECC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 17:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F7C7C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 19:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tAnPRfekg/o84gnkOYmqiOyIH2LGmW4gkBg9r3/KYEk=; b=rDPIARp1nQgOYJ
-	E5paev+kjjHu69fuhbOwQHt6swAeZcsJVfnOpmGPczk8ooAwKqfZe+Er/9ZldwLMaSNxX0ZGre2LG
-	zXEutT+lm872BdufmAHkY/boApNpDO1TGsy9k/kN4zGRe2NiEwN55smgEpFHSkWjiBvkelxAT0+dk
-	YYETNtqoamp03v3Q5E9vvTdiRcwqBvkfTxNOazOH2MlBK8MJ3NXZ4hkPH0e93Qb3mEc4vWcIRj/J3
-	FscyBN2CbC1WcYLf22wuJKWcREklCpVbGoC/TLS8Wmd/kvFYtAoatFAJBxDAgpNbYHAKltv4W83yr
-	p/fB1cywkaLSsgvAbXfQ==;
+	List-Owner; bh=3owa3QEQEX0olI8tJ0gWI5pJche49UsDnZVuzpKQpaU=; b=xpCs9BEkdOJe2T
+	BgZiHEW4L7WRiPWppWSMqnYBqm/eaLcGDgo0NzLfiMViRRVm2YjwtWXUkKT9q4WPY3s8DfLB9pURs
+	RQZoBz60GscS9CIKS/yO7grlyXkNN+tB+023oPWoP/uzc0/6CGzxtID6LRz4ZwrmBWCVMiX7rPLYc
+	IT2C98wodaSYm9x/v9QBWlBP2NFHkuZE+b6fuWjxI+Dflw5kfmtFzK2R38ZPql69eavaI/HjFruK3
+	1ESkGPL38oMgvx3dO4BUtScC0XYiX5Dr2kVDLKa1i90Jv1lyl9s5+RXleRkYzaTy71phsVEDUbjhv
+	7BsHWgV3BiLid+L+hVvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9VqZ-00Fvk8-MV; Mon, 17 Jan 2022 17:31:11 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1n9XWu-00GBsL-80; Mon, 17 Jan 2022 19:19:00 +0000
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9VmE-00Ftdf-Pr
- for linux-mediatek@lists.infradead.org; Mon, 17 Jan 2022 17:26:44 +0000
-Received: by mail-pf1-x432.google.com with SMTP id q25so5032844pfl.8
- for <linux-mediatek@lists.infradead.org>; Mon, 17 Jan 2022 09:26:41 -0800 (PST)
+ id 1n9XWq-00GBrI-Sr
+ for linux-mediatek@lists.infradead.org; Mon, 17 Jan 2022 19:18:58 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id w21so22854595uan.7
+ for <linux-mediatek@lists.infradead.org>; Mon, 17 Jan 2022 11:18:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=9xoC5BsgBs/Mu4qr+hvIn82GqzQBroS+8rFaa/f2Y/Q=;
- b=dAYvjWk1j+16Hngzm2LLt+t7e+CbrlYiMl4l4BmVmHKl2cbhj0iER34yXKF/X3bwGW
- Qr5VUfV5ZxX0PyqVwyZSLOJuU82BuGOipjVoVD2fdcluplrY9NGJ8XkBHiqsNueKrjI4
- WVvWljGrn7QsFeKYApaJw4uO0IajmBOQ1EsdVjXaiA81MRnTAnyBgG8B/t0G6W2FMr+U
- uu22lpYcvFc0WzKKSciststJXXRh+sDHBDOpcZfFncQzOx50NzGsWMCujhd2pvtTmemW
- 4A98ORWnlHXEzY+6l+1Ss9H48dp9XalcXo28uTEC8KE/mHx78E+PGoZVlfV7YsXZzq46
- j/fQ==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vjIp+UiqOSyx1wj8+g5PpQdrfx2cigslZ1HN9GuuKpo=;
+ b=k0CQ2BuChSX3ouSjKHcFaRNDMkbsOesrlL29L5az9lJ9/1ktY84vG3+v/Lakm4jKNU
+ RliGgEg4I/c0G7Bug565ulDJPXP7R7FM/LLuzVJ2HigfhjyaIYIPO23tPUZhLS5abj+p
+ fTblXAD6q3hh7vYlCJefU4J56xQD0qNNeebT56o4fGsz4t6gUaftpaHUYTb6oTQMrePc
+ tEgxcPmTMeqJXBMA7mRlpLUiprlfkPN3tyOlDVmxHXQiluax8S7Mh9bU+9gJ+wDZOMmc
+ 3XV3wJgaxlujBi9H/Eikg8Jl5eztQ5mz4dM6XJ6GTFF93WjRIvY7NdjA75RPK6mDBG/J
+ ABcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20210112;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=9xoC5BsgBs/Mu4qr+hvIn82GqzQBroS+8rFaa/f2Y/Q=;
- b=YGNb6Eir1afxhoM+rTqWDf5oNFqSRoFbJBps832sO3vYDebxKHLOaBTHariM523+uX
- oVzvLXLTEpZAbmucurqhcBIrm4iWiSJK7mmutuKRbCN8lskuLttbkTZkllndyTP4DJx8
- 2vyHr6/xkxYCLxzmrj87eL1kkICL/KSq9xjQ9VabuGFehi1oO5LSv2O24yJmkzBkQpuk
- bm/KNjyyukZJIFjBF0hj+M/tKYPY1ygpPO6jBjVbH2ujnUjPvWbhuihm2enLXfEOLBlt
- Om2Gc5Xu38bnYFy8MTtPGTkE8AtT2sokiMgpNNw2fc4OLP7Y1fGgY123AEFFv5eo1ClP
- HjTg==
-X-Gm-Message-State: AOAM531AdmC3zP3CVnxuBKu+i6rs4CEXdPQw32vpseGX/tps14keXW6+
- 3TXM1SEV5z+zPQiMA9Ldt9Bs4A==
-X-Google-Smtp-Source: ABdhPJwVHQsaIzkL9JzjnuMFHxnugQ0rALeKq6btNIsXwiYFKnL0G1gx7VsQK7B3fGJ4eP7Cw23AjA==
-X-Received: by 2002:a63:7e14:: with SMTP id z20mr19653366pgc.194.1642440400571; 
- Mon, 17 Jan 2022 09:26:40 -0800 (PST)
-Received: from p14s (S0106889e681aac74.cg.shawcable.net. [68.147.0.187])
- by smtp.gmail.com with ESMTPSA id l18sm14832167pfu.63.2022.01.17.09.26.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Jan 2022 09:26:39 -0800 (PST)
-Date: Mon, 17 Jan 2022 10:26:37 -0700
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: "allen-kh.cheng" <allen-kh.cheng@mediatek.com>
-Cc: Ohad Ben-Cohen <ohad@wizery.com>,
- Bjorn Andersson <bjorn.andersson@linaro.org>,
- Rob Herring <robh+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Tinghan Shen <tinghan.shen@mediatek.com>,
- Project_Global_Chrome_Upstream_Group@mediatek.com,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-remoteproc@vger.kernel.org
-Subject: Re: [PATCH v4 0/2] Add SCP support for mt8186
-Message-ID: <20220117172637.GB1119324@p14s>
-References: <20220105094125.6917-1-allen-kh.cheng@mediatek.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vjIp+UiqOSyx1wj8+g5PpQdrfx2cigslZ1HN9GuuKpo=;
+ b=Lb2z+NUKqF8ASO/mAZajnllRol1dJMakyR4uUkeogRmw+mdu0RDOUWzjoLolTs3+3o
+ zHRJhtfbVmBlAaOE/1AOhcCnzKrtNrDvkRMGwQScholkmh4D9U6l5UGhqOfX3xEd/Bxf
+ ydiW2ZHKCBV2IiI8RnLpzUNV/O3FQNfmImhvj79QcIb4GsYQ1Hut4WC3fgxbHp1Em9RV
+ DW7jujYQjh/Cyl/c/Jf94QvNuDprooBCjFefShCTZx5+xuRDeAZ+xk4bzM9MY6tx38qC
+ dMhDFzph/P88BUCMbp8iNzb5X/s5VvUD6xg6sZfkB0ynar9KtYCPx0vadVZ1NcHer0Y+
+ qOOQ==
+X-Gm-Message-State: AOAM531qzAp50HGe06zg3fnV64c2VntskGoz+CsUS6YPrWlKG/JmZUpj
+ oQdyINduGUMm2XUhJOjKpu6DZaijEEojiSSSUj81bQ==
+X-Google-Smtp-Source: ABdhPJz+X5MWtFkAgJasTOUIrA63AKIAhp56lHfcVLzDXVRUTOiKujTw8cigGH8PWhBTGZvMxIIzXHwASWHW+A1Toz4=
+X-Received: by 2002:a67:dd90:: with SMTP id i16mr8097549vsk.86.1642447134814; 
+ Mon, 17 Jan 2022 11:18:54 -0800 (PST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20220105094125.6917-1-allen-kh.cheng@mediatek.com>
+References: <20220117165853.1470420-1-sashal@kernel.org>
+ <20220117165853.1470420-2-sashal@kernel.org>
+ <b75a0bc9-0423-83cc-11e1-d5e08952cc93@canonical.com>
+In-Reply-To: <b75a0bc9-0423-83cc-11e1-d5e08952cc93@canonical.com>
+From: Sam Protsenko <semen.protsenko@linaro.org>
+Date: Mon, 17 Jan 2022 21:18:43 +0200
+Message-ID: <CAPLW+4mPnktJTBeokhbmSGTZTqOa3-rkpThYHZ-Y0=_40bbLtA@mail.gmail.com>
+Subject: Re: [PATCH AUTOSEL 5.16 02/52] clk: samsung: exynos850: Register
+ clocks early
+To: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+Cc: Sasha Levin <sashal@kernel.org>, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org, 
+ Sylwester Nawrocki <s.nawrocki@samsung.com>, tomasz.figa@gmail.com,
+ cw00.choi@samsung.com, 
+ mturquette@baylibre.com, sboyd@kernel.org, matthias.bgg@gmail.com, 
+ linux-samsung-soc@vger.kernel.org, linux-clk@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_092642_868719_7627F6F7 
-X-CRM114-Status: GOOD (  13.48  )
+X-CRM114-CacheID: sfid-20220117_111856_976559_D23933DC 
+X-CRM114-Status: GOOD (  24.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,38 +89,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 05, 2022 at 05:41:23PM +0800, allen-kh.cheng wrote:
-> From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
-> 
-> changes since v3:
->  - use rproc-next
-> 
-> changes since v2:
->  - remove redundant SoB
-> 
-> changes since v1:
->  - use mt8192_power_on_sram() helper
->  - add MT8186_SCP_L1_SRAM_PD_P1 in mtk_common.h
->  - add MT8186_SCP_L1_SRAM_PD_P2 in mtk_common.h
-> 
-> Based on rproc-next
-> 
-> Allen-KH Cheng (2):
->   dt-bindings: remoteproc: mediatek: Add binding for mt8186 scp
->   remoteproc: mediatek: Support mt8186 scp
-> 
->  .../bindings/remoteproc/mtk,scp.yaml          |  1 +
->  drivers/remoteproc/mtk_common.h               |  3 ++
->  drivers/remoteproc/mtk_scp.c                  | 35 +++++++++++++++++++
->  3 files changed, 39 insertions(+)
+On Mon, 17 Jan 2022 at 19:11, Krzysztof Kozlowski
+<krzysztof.kozlowski@canonical.com> wrote:
+>
+> On 17/01/2022 17:58, Sasha Levin wrote:
+> > From: Sam Protsenko <semen.protsenko@linaro.org>
+> >
+> > [ Upstream commit bcda841f9bf2cddcf2f000cba96f2e27f6f2bdbf ]
+> >
+> > Some clocks must be registered before init calls. For example MCT clock
+> > (from CMU_PERI) is needed for MCT timer driver, which is registered
+> > with TIMER_OF_DECLARE(). By the time we get to core_initcall() used for
+> > clk-exynos850 platform driver init, it's already too late. Inability to
+> > get "mct" clock in MCT driver leads to kernel panic, as functions
+> > registered with *_OF_DECLARE() can't do deferred calls. MCT timer driver
+> > can't be fixed either, as it's acting as a clock source and it's
+> > essential to register it in start_kernel() -> time_init().
+> >
+> > Let's register CMU_PERI clocks early, using CLK_OF_DECLARE(). CMU_TOP
+> > generates clocks needed for CMU_PERI, but it's already registered early.
+> >
+> > While at it, let's cleanup the code a bit, by extracting everything
+> > related to CMU initialization and registration to the separate function.
+> >
+> > Similar issue was discussed at [1] and addressed in commit 1f7db7bbf031
+> > ("clk: renesas: cpg-mssr: Add early clock support"), as well as in
+> > drivers/clk/mediatek/clk-mt2712.c.
+> >
+> > [1] https://patchwork.kernel.org/project/linux-renesas-soc/patch/20180829132954.64862-2-chris.brandt@renesas.com/
+> >
+> > Signed-off-by: Sam Protsenko <semen.protsenko@linaro.org>
+> > Signed-off-by: Sylwester Nawrocki <s.nawrocki@samsung.com>
+> > Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+> > Link: https://lore.kernel.org/r/20211122144206.23134-1-semen.protsenko@linaro.org
+> > Signed-off-by: Sasha Levin <sashal@kernel.org>
+> > ---
+> >  drivers/clk/samsung/clk-exynos850.c | 70 ++++++++++++++++++++---------
+> >  1 file changed, 49 insertions(+), 21 deletions(-)
+> >
+>
+> I propose to skip this one.
+>
+> Backporting it to v5.16 does not hurt but also does not bring any
+> benefits for the upstream kernel users. There is no support for
+> mentioned Exynos850 in v5.16.
+>
+> It could have only meaning for some downstream, out-of-tree kernels
+> which apply Exynos850 support on top of v5.16, but then they can just
+> take this patch as well.
+>
 
-Both patches in this set are giving me a checkpatch warning that is impossible
-to miss.  I deleting this patchset from my queue.   
+Agreed. DTS patches will be merged only in v5.17, hopefully. Till that
+time the whole clock driver is floating with no users. That's
+historical thing -- I didn't have "Ack" to submit board dts at the
+time, and SoC dts couldn't be applied without users (board dts). So I
+focused on driver work, isolated. Not much sense to backport something
+without having real users.
 
-> 
-> -- 
-> 2.18.0
-> 
+>
+> Best regards,
+> Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
