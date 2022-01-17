@@ -4,80 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE11AC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 10:31:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBF49C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 10:38:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JBzy9bKxUug490KlOjVmKcfLbM+4ZUK1mFD/y5Lymys=; b=DJKXISXhG6LPW0
-	nzxkpqOce4Q6PGCeq3fRepqna8BIWGeVBGWcbV9gHtwH6KCcB/vfLQHaJMnV0cxFKDJw0QQEw04EE
-	bVzGVqgNdysHNmOtHyImGMur/00hwN0wXfy0zEQG9xzihKEdSgxFnjolkoVKNlckBvboBg79Lffus
-	dVLRAGJp15ZjEA2ul4remUhZ8EjdVVe7hTflG/OZrSCSm4y2SVOnqoyv07NWKb9PIWiWqp7jPqVX0
-	mi5iehuyKM1M/apKIk0Iqy0ZkxLj3WWGEnXHHiSqTsFSSC+TcW+0DLYi/v2GRaq/I817pDT9KOHeH
-	tbvy55CtimoKicW1sR7Q==;
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pzwk+pGmNPsn+qgVvLn8h37NslvYlVHQSekvcEMNHZM=; b=q3OAD0t1gsxjT+Ttih45C+LkWS
+	kj38a6HzXTk9ABGl0GHMkMRJx0YcGQxotYuWalUmaSE35Z0fQMv1Er0seEIEySmgAfdw12pONEDSG
+	0oFhSj0GobFmUPiAVqTsMNIviYUdeyGG8WCBpIdFa+Kg7EGYjPq+HybjO7laMh4NWX8dblDyy861l
+	kc21fzq8nwERYdlQz3IWgOr8Q5GdzHvuDTw6yhTiUr9DBHIP7DdlGQ0dsCZDxBEwxgpxeOzARfsht
+	hSPOP17I1RwcZ3K2jA7cujSGx9ZXpy67BYvqw2H4T6GOr9W8pFQiRC1cd4ZjFGjsN+wfTkCiKru4F
+	KtjdsORA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9PIi-00EVjX-Gd; Mon, 17 Jan 2022 10:31:48 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1n9PPE-00EWoB-Lo; Mon, 17 Jan 2022 10:38:32 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9PIO-00EVeJ-Qg; Mon, 17 Jan 2022 10:31:30 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id
- p1-20020a1c7401000000b00345c2d068bdso23199821wmc.3; 
- Mon, 17 Jan 2022 02:31:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:content-language:to:cc
- :references:from:subject:in-reply-to:content-transfer-encoding;
- bh=drzE6YehBAfCGTYeantFOUyrCID0+zzbF12IY9CFxQU=;
- b=UsHAOnftmCpjQS/OuNWUiYgvd7+GGI/3R5IkZpLRWZ8K7UCklqlJCeUomcEY44dnbt
- NMgY/zUrPvahx3gssaevse2KppcEe+b19m1UfgYZh/tIcFztpd4mo6147HLRcx2kzZMW
- C6fCjG6wzM3apbi+ayP2pvhlbcBZfS96FDE62pBoJX6vexu2r0QRlRauqzZ2sUqOLOSj
- 50IEoNuO7SHvH1hvgb96hjPjZITzaCX+g/D7f03uBs4WXoZeAwZouFNZP5ravrW6ojvx
- hBQusJHloYz1q5Bk3bpVhZ31CYE4WivdbvW+h39rsWKKxkwBxMRXQKRGVnK1klcGoeBi
- b5gg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent
- :content-language:to:cc:references:from:subject:in-reply-to
- :content-transfer-encoding;
- bh=drzE6YehBAfCGTYeantFOUyrCID0+zzbF12IY9CFxQU=;
- b=GrG5FN0X/Cow8wgnREGWCrsk7uZMT7aDFoZfa/eOfrYZdjVbjlGJ0MFZHoUSClGSCQ
- LJlviIeMq/KTnWhdxgUcE3ga9DC//rlxQ/HfEtiSRnM7Ici/OFI5Y26SmPCfXalUoGpu
- zAPbkKYaGugtDMYDZ1hHddAZYwyowbPCyuxZfcJvtdQFc8sFtCdVf9TyuF27IRkPxVxq
- rXIC4DWxDFpgvt2OH18NBl9P4yPW5pGPdSXVYhdySJLvqWtAth1F+ubExq5Al8Y3dW8z
- XwfD/YjdlP1Uf10Ts7Ep48qsczdNuj7Ip745yc/7Slpz64dDBzgDjDIfcmqclak0RzQ2
- DuTA==
-X-Gm-Message-State: AOAM530EeNRU4k3DS2qlFkNmPlu69qEZ+S3T9jnzRTauQdMTn8QZZN2n
- KG2PJ+TeAhxKEvG+6iWnrP0=
-X-Google-Smtp-Source: ABdhPJzPgzWevB3vn/b9crfzsgD7xhyUdvEZ8B8T4+GHOzdrlM6GpVQRKNrcl/xex+H0dhGUZ3EGfg==
-X-Received: by 2002:a5d:47ad:: with SMTP id 13mr19798499wrb.545.1642415486661; 
- Mon, 17 Jan 2022 02:31:26 -0800 (PST)
-Received: from [192.168.0.14] ([37.223.145.74])
- by smtp.gmail.com with ESMTPSA id b15sm9890257wrr.50.2022.01.17.02.31.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Jan 2022 02:31:26 -0800 (PST)
-Message-ID: <9949a1f7-1ed5-a137-c7b9-2ef8d8e1caf8@gmail.com>
-Date: Fri, 14 Jan 2022 16:46:41 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Content-Language: en-US
-To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ id 1n9PP1-00EWko-QE; Mon, 17 Jan 2022 10:38:21 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id AA09C1F437BF
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1642415898;
+ bh=jqiDzA7U4dHZTbnAE4kudgIyEogo59g2smc2wtyjBCQ=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=Q6wzCvc9qE0otYn2eiO7z1qOqwYBxHD2hj+a9xD+ZDbEhnoPnsww9q5sCVT0Ri90b
+ +awd9SB778AgeVBUFaDcC2d0vYHLTDNlR6B3P2Qs40ImprpGrZj8dfJigFwyVREDlB
+ g+YfVxD6EYxW0Q5gDY/5uEiedsqHf6Tg+ke3OIAPMgmjecb6RHfPaUpW/BjD0FrJXH
+ c3nEvZFMef538HdXkXk6pHUNI0NdpJsV6hl8eGnrD32iqbvqg+2UjZgGn90oO/QuXf
+ iX2yVyXjgpyM+Z8D6uzegZMrImvaYVEwywN/L9gHGyuYDgS96jvjZKHOkElscpyKyC
+ wR3X2XAYjOkoQ==
+Subject: Re: [PATCH net-next v12 3/7] stmmac: dwmac-mediatek: re-arrange clock
+ setting
+To: Biao Huang <biao.huang@mediatek.com>, davem@davemloft.net,
+ Jakub Kicinski <kuba@kernel.org>, Rob Herring <robh+dt@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+ Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Jose Abreu <joabreu@synopsys.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, netdev@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220107104633.7500-1-johnson.wang@mediatek.com>
- <20220107104633.7500-2-johnson.wang@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-Subject: Re: [PATCH v2 1/2] soc: mediatek: pwrap: add pwrap driver for MT8186
- SoC
-In-Reply-To: <20220107104633.7500-2-johnson.wang@mediatek.com>
+ linux-stm32@st-md-mailman.stormreply.com, srv_heupstream@mediatek.com,
+ macpaul.lin@mediatek.com, dkirjanov@suse.de
+References: <20220117070706.17853-1-biao.huang@mediatek.com>
+ <20220117070706.17853-4-biao.huang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <2c62f337-5eb4-e525-7e3a-289435315c09@collabora.com>
+Date: Mon, 17 Jan 2022 11:38:14 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
+MIME-Version: 1.0
+In-Reply-To: <20220117070706.17853-4-biao.huang@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_023128_972908_0883A327 
-X-CRM114-Status: GOOD (  16.70  )
+X-CRM114-CacheID: sfid-20220117_023820_023989_03452474 
+X-CRM114-Status: GOOD (  17.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,48 +78,48 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-
-On 07/01/2022 11:46, Johnson Wang wrote:
-> MT8186 are highly integrated SoC and use PMIC_MT6366 for
-> power management. This patch adds pwrap master driver to
-> access PMIC_MT6366.
+Il 17/01/22 08:07, Biao Huang ha scritto:
+> The rmii_internal clock is needed only when PHY
+> interface is RMII, and reference clock is from MAC.
 > 
-
-It seems this new arbiter is significantly different from the version 1. Please 
-explain that in the commit message.
-
-> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> Re-arrange the clock setting as following:
+> 1. the optional "rmii_internal" is controlled by devm_clk_get(),
+> 2. other clocks still be configured by devm_clk_bulk_get().
+> 
+> Signed-off-by: Biao Huang <biao.huang@mediatek.com>
 > ---
->   drivers/soc/mediatek/mtk-pmic-wrap.c | 72 ++++++++++++++++++++++++++++
->   1 file changed, 72 insertions(+)
+>   .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 72 +++++++++++++------
+>   1 file changed, 49 insertions(+), 23 deletions(-)
 > 
-> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> index 952bc554f443..78866ebf7f04 100644
-> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
-> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
-> @@ -30,6 +30,7 @@
->   #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) & 0x00000001)
->   #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
->   #define PWRAP_STATE_INIT_DONE0		BIT(21)
-> +#define PWRAP_STATE_INIT_DONE0_V2	BIT(22)
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> index 8747aa4403e8..2678d2deb26a 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> @@ -49,14 +49,15 @@ struct mac_delay_struct {
+>   struct mediatek_dwmac_plat_data {
+>   	const struct mediatek_dwmac_variant *variant;
+>   	struct mac_delay_struct mac_delay;
+> +	struct clk *rmii_internal_clk;
+>   	struct clk_bulk_data *clks;
+> -	struct device_node *np;
+>   	struct regmap *peri_regmap;
+> +	struct device_node *np;
+>   	struct device *dev;
+>   	phy_interface_t phy_mode;
+> -	int num_clks_to_config;
+>   	bool rmii_clk_from_mac;
+>   	bool rmii_rxc;
+> +	int num_clks;
 
-That's a strange name, does it come from the datasheet description?
+I don't see any need to get a num_clks here, at this point: since all functions
+reading this are getting passed a pointer to this entire structure, you can
+simply always access plat->variant->num_clks.
 
->   #define PWRAP_STATE_INIT_DONE1		BIT(15)
->   
->   /* macro for WACS FSM */
-> @@ -77,6 +78,8 @@
->   #define PWRAP_CAP_INT1_EN	BIT(3)
->   #define PWRAP_CAP_WDT_SRC1	BIT(4)
->   #define PWRAP_CAP_ARB		BIT(5)
-> +#define PWRAP_CAP_MONITOR_V2	BIT(6)
-
-Not used capability, please delete.
-
+Please, drop the addition of num_clks in this struct.
 
 Regards,
-Matthias
+Angelo
+
 
 _______________________________________________
 Linux-mediatek mailing list
