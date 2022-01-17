@@ -4,54 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D723DC433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 12:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B3C8C4332F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 12:06:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4zDPJTOXOycNBjItJbtFmWjCoXZRb4Hv0Zrc44TT90Q=; b=YTx1bGTn+Yjefr
-	jKAEy1U5rPqOqTCql2GeW+ZE2WIWhyntCfhnVM6KmGMSfLYw5OXwsJZlDvnjAipj4plDa/x+uscxy
-	7oVHtyRr7QDnWGtdY8RwQ/7RpJ6LW9oihM2b4ra+n2bkyQtgUjC0DlcwHyNu3yL0YGIn8ZaLSjHGq
-	oecvoCR6Nbn4NFRDbcEFlEW389iVuGOGSA/P4okBBN4oEo2mHNOJIjFv2vDGXR4mbxwX8lodylon+
-	h0uZHJzA9piPCBKYmH3vXFWZwkOuFyBCUYjiNu/F5jp2pF9k7wNdea/9wQssqyNypSwMVRcDGLjVh
-	XNRzRYlVNZKIYnCEhVng==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=f5WdYJwPS4BY55DiDiUxeeobbZ5h+qmBWr41ol48bTk=; b=a5GZJB3FjcjaP+
+	7Gy/ZagRpOBHnWi9OeXUpw6vX5jWp8U9qahWUCpLzNRGTvJ3T0ZtVg6lOVgumzxFz3ITgeEB+ZCvs
+	3vBEqlmsbp60T0COhaFnnufN6m7lZLb3RItVZpmd2ElcnfowVz69KsOX1LzZ8w8RA8eq+1VsorEtp
+	58ziKx0QxtbSa29crE1g/qa/12jEBP9X7ilenyhuyih23V7rwkALNNDf3EDXLuwz3jssukJcr1stC
+	0fXre0stWBe80WL90edud2yq0JrNIwSl0z/D7ZCKk5FifkfRJavey9Qy0GDVuUf8YXIrYkOYFCT5z
+	XXlw/25i7vrWuoe8p96g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9Ql8-00ElPo-Vc; Mon, 17 Jan 2022 12:05:14 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1n9QmO-00Elzy-GH; Mon, 17 Jan 2022 12:06:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9Qkp-00ElI8-3B; Mon, 17 Jan 2022 12:04:58 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id F05A761159;
- Mon, 17 Jan 2022 12:04:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FFEFC36AE3;
- Mon, 17 Jan 2022 12:04:47 +0000 (UTC)
-Message-ID: <6044093c-a3e3-135d-9c14-016d64dcef1f@xs4all.nl>
-Date: Mon, 17 Jan 2022 13:04:45 +0100
+ id 1n9QmJ-00ElvZ-0a; Mon, 17 Jan 2022 12:06:30 +0000
+X-UUID: 786b29150e4b4112a966cea814014193-20220117
+X-UUID: 786b29150e4b4112a966cea814014193-20220117
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <irui.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 2008430025; Mon, 17 Jan 2022 05:06:24 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Jan 2022 04:06:22 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Jan 2022 20:06:20 +0800
+Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Mon, 17 Jan 2022 20:06:19 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
+ <tzungbi@chromium.org>, Alexandre Courbot <acourbot@chromium.org>, "Tiffany
+ Lin" <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Tomasz Figa <tfiga@google.com>, Yong Wu <yong.wu@mediatek.com>,
+ <angelogioacchino.delregno@collabora.com>
+CC: Hsin-Yi Wang <hsinyi@chromium.org>, Maoguang Meng
+ <maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Fritz Koenig <frkoenig@chromium.org>, 
+ Irui Wang <irui.wang@mediatek.com>, <linux-media@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <srv_heupstream@mediatek.com>,
+ <linux-mediatek@lists.infradead.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Subject: [PATCH v2, 00/10] Enable two H264 encoder cores on MT8195
+Date: Mon, 17 Jan 2022 20:06:05 +0800
+Message-ID: <20220117120615.21687-1-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.4.1
-Subject: Re: [PATCH v10 00/13] Clean up "mediatek,larb"
-Content-Language: en-US
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Yong Wu <yong.wu@mediatek.com>, Joerg Roedel <jroedel@suse.de>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>,
- David Airlie <airlied@linux.ie>, Mauro Carvalho Chehab <mchehab@kernel.org>
-References: <20220117070510.17642-1-yong.wu@mediatek.com>
- <06e5e76c-557a-20a5-b8dd-37b25b3384a3@collabora.com>
- <c8fc24a2-9ee3-75a2-0928-95a217d9dfdf@gmail.com>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-In-Reply-To: <c8fc24a2-9ee3-75a2-0928-95a217d9dfdf@gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_040455_276093_1510C7FE 
-X-CRM114-Status: GOOD (  25.34  )
+X-CRM114-CacheID: sfid-20220117_040627_114386_3123E021 
+X-CRM114-Status: GOOD (  14.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,170 +75,103 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
- dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
- anthony.huang@mediatek.com, youlin.pei@mediatek.com,
- Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
- Matthias Kaehlcke <mka@chromium.org>, mingyuan.ma@mediatek.com,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- Philipp Zabel <p.zabel@pengutronix.de>, libo.kang@mediatek.com,
- yi.kuo@mediatek.com, linux-mediatek@lists.infradead.org,
- Hsin-Yi Wang <hsinyi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- linux-arm-kernel@lists.infradead.org, anan.sun@mediatek.com,
- srv_heupstream@mediatek.com, acourbot@chromium.org,
- linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
- iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
- Robin Murphy <robin.murphy@arm.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTWF0dGhpYXMsCgpPbiAxLzE3LzIyIDEyOjQ5LCBNYXR0aGlhcyBCcnVnZ2VyIHdyb3RlOgo+
-IAo+IAo+IE9uIDE3LzAxLzIwMjIgMTE6MjcsIEFuZ2Vsb0dpb2FjY2hpbm8gRGVsIFJlZ25vIHdy
-b3RlOgo+PiBJbCAxNy8wMS8yMiAwODowNCwgWW9uZyBXdSBoYSBzY3JpdHRvOgo+Pj4gTWVkaWFU
-ZWsgSU9NTVUgYmxvY2sgZGlhZ3JhbSBhbHdheXMgbGlrZSBiZWxvdzoKPj4+Cj4+PiDCoMKgwqDC
-oMKgwqDCoMKgIE00VQo+Pj4gwqDCoMKgwqDCoMKgwqDCoMKgIHwKPj4+IMKgwqDCoMKgIHNtaS1j
-b21tb24KPj4+IMKgwqDCoMKgwqDCoMKgwqDCoCB8Cj4+PiDCoMKgIC0tLS0tLS0tLS0tLS0KPj4+
-IMKgwqAgfMKgwqDCoMKgwqDCoMKgwqAgfMKgIC4uLgo+Pj4gwqDCoCB8wqDCoMKgwqDCoMKgwqDC
-oCB8Cj4+PiBsYXJiMcKgwqDCoMKgIGxhcmIyCj4+PiDCoMKgIHzCoMKgwqDCoMKgwqDCoMKgIHwK
-Pj4+IHZkZWPCoMKgwqDCoMKgwqAgdmVuYwo+Pj4KPj4+IEFsbCB0aGUgY29uc3VtZXIgY29ubmVj
-dCB3aXRoIHNtaS1sYXJiLCB0aGVuIGNvbm5lY3Qgd2l0aCBzbWktY29tbW9uLgo+Pj4KPj4+IFdo
-ZW4gdGhlIGNvbnN1bWVyIHdvcmtzLCBpdCBzaG91bGQgZW5hYmxlIHRoZSBzbWktbGFyYidzIHBv
-d2VyIHdoaWNoIGFsc28KPj4+IG5lZWQgZW5hYmxlIHRoZSBzbWktY29tbW9uJ3MgcG93ZXIgZmly
-c3RseS4KPj4+Cj4+PiBUaHVzLCBGaXJzdGx5LCB1c2UgdGhlIGRldmljZSBsaW5rIGNvbm5lY3Qg
-dGhlIGNvbnN1bWVyIGFuZCB0aGUKPj4+IHNtaS1sYXJicy4gdGhlbiBhZGQgZGV2aWNlIGxpbmsg
-YmV0d2VlbiB0aGUgc21pLWxhcmIgYW5kIHNtaS1jb21tb24uCj4+Pgo+Pj4gQWZ0ZXIgYWRkaW5n
-IHRoZSBkZXZpY2VfbGluaywgdGhlbiAibWVkaWF0ZWssbGFyYiIgcHJvcGVydHkgY2FuIGJlIHJl
-bW92ZWQuCj4+PiB0aGUgaW9tbXUgY29uc3VtZXIgZG9uJ3QgbmVlZCBjYWxsIHRoZSBtdGtfc21p
-X2xhcmJfZ2V0L3B1dCB0byBlbmFibGUKPj4+IHRoZSBwb3dlciBhbmQgY2xvY2sgb2Ygc21pLWxh
-cmIgYW5kIHNtaS1jb21tb24uCj4+Pgo+Pj4gQmFzZSBvbiB0aGUgbWVkaWEgYnJhbmNoIFsxXSBh
-bmQgYSBqcGVnIGR0YmluZGluZyBwYXRjaHNldFsyXSB0aGF0IGFscmVhZHkgZ290Cj4+PiB0aGUg
-bmVjZXNzYXJ5IFItYi4KPj4+Cj4+PiBbMV0gZ2l0Oi8vbGludXh0di5vcmcvaHZlcmt1aWwvbWVk
-aWFfdHJlZS5naXQgdGFncy9ici12NS4xOGQKPj4+IFsyXSBodHRwczovL2xvcmUua2VybmVsLm9y
-Zy9saW51eC1tZWRpYXRlay8yMDIxMTIwNjEzMDQyNS4xODQ0MjAtMS1oc2lueWlAY2hyb21pdW0u
-b3JnLwo+Pj4KPj4+IENoYW5nZSBub3RlczoKPj4+IHYxMDogYSkgUmViYXNlIG9uIHRoZSBtZWRp
-YSB0cmVlLiBSZXNwaW4gdGhlICJtZWRpYTogbXRrLXZjb2RlYzoiIHBhdGNoZXMuCj4+PiDCoMKg
-wqDCoMKgIGIpIEFkZCBKb2VyZydzIEFjayBmb3IgaW9tbXUgcGF0Y2hlcy4KPj4+Cj4+PiB2OTog
-aHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMjAyMTExMTIxMDU1MDkuMTIw
-MTAtMS15b25nLnd1QG1lZGlhdGVrLmNvbS8KPj4+IMKgwqDCoMKgIDEpIEFkZCByZXR1cm4gLUVO
-T0RFViB3aGVuIHRoZSBkZXYgaXMgbnVsbC4KPj4+IMKgwqDCoMKgIDIpIEFkZCBtb3JlIHN0cmlj
-dCBhYm91dCB0aGUgY2FzZSB0aGF0IGEgaW9tbXUgY29uc3VtZSBkZXZpY2UgdXNlIHRoZSBwb3J0
-cyBpbgo+Pj4gwqDCoMKgwqAgZGlmZmVyZW50IGxhcmJzLiBEb24ndCBhbGxvdyB0aGlzIGNhc2Uu
-Cj4+PiDCoMKgwqDCoCAzKSBSZW1vdmUgdHdvIGNvZGVjIGludGVyZmFjZTogbXRrX3Zjb2RlY19y
-ZWxlYXNlX2VuYy9kZWNfcG0gc2luY2UgaXQgb25seSBoYXMgb25lCj4+PiDCoMKgwqDCoCBsaW5l
-IG5vdy4KPj4+Cj4+PiB2ODogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsv
-MjAyMTA5MjkwMTM3MTkuMjUxMjAtMS15b25nLnd1QG1lZGlhdGVrLmNvbS8KPj4+IMKgwqDCoMKg
-IDEpIFJlYmFzZSBvbiB2NS4xNS1yYzEuCj4+PiDCoMKgwqDCoCAyKSBEb24ndCByZWJhc2UgdGhl
-IGJlbG93IG1kcCBwYXRjaHNldCB0aGF0IG1heSBzdGlsbCBuZWVkIG1vcmUgZGlzY3Vzcy4KPj4+
-IMKgwqDCoMKgIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhdGVrLzIwMjEwNzA5
-MDIyMzI0LjE2MDc4ODQtMS1laXphbkBjaHJvbWl1bS5vcmcvCj4+PiDCoMKgwqDCoCAzKSBBZGQg
-RnJhbmsncyBUZXN0ZWQtYnkuIFJlbW92ZSBEYWZuYSdzIFRlc3RlZC1ieSBhcyBoZSByZXF1ZXN0
-ZWQuCj4+Pgo+Pj4gdjc6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LW1lZGlhdGVrLzIw
-MjEwNzMwMDI1MjM4LjIyNDU2LTEteW9uZy53dUBtZWRpYXRlay5jb20vCj4+PiDCoMKgwqDCoCAx
-KSBGaXggYSBhcm0zMiBib290IGZhaWwgaXNzdWUuIHJlcG9ydGVkIGZyb20gRnJhbmsuCj4+PiDC
-oMKgwqDCoCAyKSBBZGQgYSByZXR1cm4gZmFpbCBpbiB0aGUgbXRrIGRybS4gc3VnZ2VzdGVkIGJ5
-IERhZm5hLgo+Pj4KPj4+IHY2OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1tZWRpYXRl
-ay8yMDIxMDcxNDAyNTYyNi41NTI4LTEteW9uZy53dUBtZWRpYXRlay5jb20vCj4+PiDCoMKgwqDC
-oCAxKSByZWJhc2Ugb24gdjUuMTQtcmMxLgo+Pj4gwqDCoMKgwqAgMikgRml4IHRoZSBpc3N1ZSBj
-b21tZW50ZWQgaW4gdjUgZnJvbSBEYWZuYSBhbmQgSHNpbi1ZaS4KPj4+IMKgwqDCoMKgIDMpIFJl
-bW92ZSB0aGUgcGF0Y2hlcyBhYm91dCB1c2luZyBwbV9ydW50aW1lX3Jlc3VtZV9hbmRfZ2V0IHNp
-bmNlIHRoZXkgaGF2ZQo+Pj4gwqDCoMKgwqDCoMKgwqAgYWxyZWFkeSBiZWVuIG1lcmdlZCBieSBv
-dGhlciBwYXRjaGVzLgo+Pj4KPj4+IHY1OiBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1t
-ZWRpYXRlay8yMDIxMDQxMDA5MTEyOC4zMTgyMy0xLXlvbmcud3VAbWVkaWF0ZWsuY29tLwo+Pj4g
-wqDCoMKgwqAgMSkgQmFzZSB2NS4xMi1yYzIuCj4+PiDCoMKgwqDCoCAyKSBSZW1vdmUgY2hhbmdp
-bmcgdGhlIG10ay1pb21tdSB0byBtb2R1bGVfcGxhdGZvcm1fZHJpdmVyIHBhdGNoLCBJdCBoYXZl
-IGFscmVhZHkgYmVlbiBhCj4+PiDCoMKgwqDCoCBpbmRlcGVuZGVudCBwYXRjaC4KPj4+Cj4+PiB2
-NDogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvbGludXgtbWVkaWF0ZWsvMTU5MDgyNjIxOC0yMzY1
-My0xLWdpdC1zZW5kLWVtYWlsLXlvbmcud3VAbWVkaWF0ZWsuY29tLwo+Pj4gwqDCoMKgwqAgYmFz
-ZSBvbiB2NS43LXJjMS4KPj4+IMKgwqAgMSkgTW92ZSBkcm0gUE0gcGF0Y2ggYmVmb3JlIHNtaSBw
-YXRjaHMuCj4+PiDCoMKgIDIpIENoYW5nZSBidWlsdGluX3BsYXRmb3JtX2RyaXZlciB0byBtb2R1
-bGVfcGxhdGZvcm1fZHJpdmVyIHNpbmNlIHdlIG1heSBuZWVkCj4+PiDCoMKgwqDCoMKgIGJ1aWxk
-IGFzIG1vZHVsZS4KPj4+IMKgwqAgMykgUmViYXNlIG1hbnkgcGF0Y2hzZXQgYXMgYWJvdmUuCj4+
-Pgo+Pj4gdjM6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LWlvbW11LzE1Njc1MDM0NTYt
-MjQ3MjUtMS1naXQtc2VuZC1lbWFpbC15b25nLnd1QG1lZGlhdGVrLmNvbS8KPj4+IMKgwqDCoMKg
-IDEpIHJlYmFzZSBvbiB2NS4zLXJjMSBhbmQgdGhlIGxhdGVzdCBtdDgxODMgcGF0Y2hzZXQuCj4+
-PiDCoMKgwqDCoCAyKSBVc2UgZGV2aWNlX2lzX2JvdW5kIHRvIGNoZWNrIHdoZXRoZXIgdGhlIGRy
-aXZlciBpcyByZWFkeSBmcm9tIE1hdHRoaWFzLgo+Pj4gwqDCoMKgwqAgMykgQWRkIERMX0ZMQUdf
-U1RBVEVMRVNTIGZsYWcgd2hlbiBjYWxsaW5nIGRldmljZV9saW5rX2FkZCBhbmQgZXhwbGFpbiB0
-aGUKPj4+IMKgwqDCoCByZWFzb24gaW4gdGhlIGNvbW1pdCBtZXNzYWdlWzMvMTRdLgo+Pj4gwqDC
-oMKgwqAgNCkgQWRkIGEgZGlzcGxheSBwYXRjaFsxMi8xNF0gaW50byB0aGlzIHNlcmllcy4gb3Ro
-ZXJ3aXNlIGl0IG1heSBhZmZlY3QKPj4+IMKgwqDCoCBkaXNwbGF5IEhXIGZhc3Rsb2dvIGV2ZW4g
-dGhvdWdoIGl0IGRvbid0IGhhcHBlbiBpbiBtdDgxODMuCj4+PiB2MjogaHR0cHM6Ly9sb3JlLmtl
-cm5lbC5vcmcvbGludXgtaW9tbXUvMTU2MDE3MTMxMy0yODI5OS0xLWdpdC1zZW5kLWVtYWlsLXlv
-bmcud3VAbWVkaWF0ZWsuY29tLwo+Pj4gwqDCoMKgIDEpIHJlYmFzZSBvbiB2NS4yLXJjMS4KPj4+
-IMKgwqDCoCAyKSBNb3ZlIGFkZGluZyBkZXZpY2VfbGluayBiZXR3ZWVuIHRoZSBjb25zdW1lciBh
-bmQgc21pLWxhcmIgaW50bwo+Pj4gaW9tbXVfYWRkX2RldmljZSBmcm9tIFJvYmluLgo+Pj4gwqDC
-oMKgIDMpIGFkZCBETF9GTEFHX0FVVE9SRU1PVkVfQ09OU1VNRVIgZXZlbiB0aG91Z2ggdGhlIHNt
-aSBpcyBidWlsdC1pbiBmcm9tIEV2YW4uCj4+PiDCoMKgwqAgNCkgUmVtb3ZlIHRoZSBzaHV0ZG93
-biBjYWxsYmFjayBpbiBpb21tdS4KPj4+Cj4+PiB2MTogaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
-bGludXgtaW9tbXUvMTU0NjMxODI3Ni0xODk5My0xLWdpdC1zZW5kLWVtYWlsLXlvbmcud3VAbWVk
-aWF0ZWsuY29tLwo+Pj4KPj4+IFlvbmcgV3UgKDEyKToKPj4+IMKgwqAgZHQtYmluZGluZzogbWVk
-aWF0ZWs6IEdldCByaWQgb2YgbWVkaWF0ZWssbGFyYiBmb3IgbXVsdGltZWRpYSBIVwo+Pj4gwqDC
-oCBpb21tdS9tZWRpYXRlay12MTogRnJlZSB0aGUgZXhpc3RlZCBmd3NwZWMgaWYgdGhlIG1hc3Rl
-ciBkZXYgYWxyZWFkeQo+Pj4gwqDCoMKgwqAgaGFzCj4+PiDCoMKgIGlvbW11L21lZGlhdGVrOiBS
-ZXR1cm4gRU5PREVWIGlmIHRoZSBkZXZpY2UgaXMgTlVMTAo+Pj4gwqDCoCBpb21tdS9tZWRpYXRl
-azogQWRkIHByb2JlX2RlZmVyIGZvciBzbWktbGFyYgo+Pj4gwqDCoCBpb21tdS9tZWRpYXRlazog
-QWRkIGRldmljZV9saW5rIGJldHdlZW4gdGhlIGNvbnN1bWVyIGFuZCB0aGUgbGFyYgo+Pj4gwqDC
-oMKgwqAgZGV2aWNlcwo+Pj4gwqDCoCBtZWRpYTogbXRrLWpwZWc6IEdldCByaWQgb2YgbXRrX3Nt
-aV9sYXJiX2dldC9wdXQKPj4+IMKgwqAgbWVkaWE6IG10ay1tZHA6IEdldCByaWQgb2YgbXRrX3Nt
-aV9sYXJiX2dldC9wdXQKPj4+IMKgwqAgZHJtL21lZGlhdGVrOiBHZXQgcmlkIG9mIG10a19zbWlf
-bGFyYl9nZXQvcHV0Cj4+PiDCoMKgIG1lZGlhOiBtdGstdmNvZGVjOiBHZXQgcmlkIG9mIG10a19z
-bWlfbGFyYl9nZXQvcHV0Cj4+PiDCoMKgIG1lbW9yeTogbXRrLXNtaTogR2V0IHJpZCBvZiBtdGtf
-c21pX2xhcmJfZ2V0L3B1dAo+Pj4gwqDCoCBhcm06IGR0czogbWVkaWF0ZWs6IEdldCByaWQgb2Yg
-bWVkaWF0ZWssbGFyYiBmb3IgTU0gbm9kZXMKPj4+IMKgwqAgYXJtNjQ6IGR0czogbWVkaWF0ZWs6
-IEdldCByaWQgb2YgbWVkaWF0ZWssbGFyYiBmb3IgTU0gbm9kZXMKPj4+Cj4+PiBZb25ncWlhbmcg
-Tml1ICgxKToKPj4+IMKgwqAgZHJtL21lZGlhdGVrOiBBZGQgcG0gcnVudGltZSBzdXBwb3J0IGZv
-ciBvdmwgYW5kIHJkbWEKPj4+Cj4+PiDCoCAuLi4vZGlzcGxheS9tZWRpYXRlay9tZWRpYXRlayxk
-aXNwLnR4dMKgwqDCoMKgwqDCoMKgIHzCoCA5IC0tLS0KPj4+IMKgIC4uLi9tZWRpYS9tZWRpYXRl
-ayx2Y29kZWMtZGVjb2Rlci55YW1swqDCoMKgwqDCoMKgwqAgfMKgIDcgLS0tCj4+PiDCoCAuLi4v
-bWVkaWEvbWVkaWF0ZWssdmNvZGVjLWVuY29kZXIueWFtbMKgwqDCoMKgwqDCoMKgIHzCoCA4IC0t
-LS0KPj4+IMKgIC4uLi9iaW5kaW5ncy9tZWRpYS9tZWRpYXRlay1qcGVnLWRlY29kZXIueWFtbCB8
-wqAgOSAtLS0tCj4+PiDCoCAuLi4vYmluZGluZ3MvbWVkaWEvbWVkaWF0ZWstanBlZy1lbmNvZGVy
-LnlhbWwgfMKgIDkgLS0tLQo+Pj4gwqAgLi4uL2JpbmRpbmdzL21lZGlhL21lZGlhdGVrLW1kcC50
-eHTCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgOCAtLS0tCj4+PiDCoCBhcmNoL2FybS9ib290L2R0
-cy9tdDI3MDEuZHRzacKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAyIC0KPj4+
-IMKgIGFyY2gvYXJtL2Jvb3QvZHRzL210NzYyM24uZHRzacKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCB8wqAgNSAtLS0KPj4+IMKgIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4
-MTczLmR0c2nCoMKgwqDCoMKgIHwgMTYgLS0tLS0tLQo+Pj4gwqAgYXJjaC9hcm02NC9ib290L2R0
-cy9tZWRpYXRlay9tdDgxODMuZHRzacKgwqDCoMKgwqAgfMKgIDYgLS0tCj4+PiDCoCBkcml2ZXJz
-L2dwdS9kcm0vbWVkaWF0ZWsvbXRrX2Rpc3Bfb3ZsLmPCoMKgwqDCoMKgwqAgfMKgIDggKysrLQo+
-Pj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kaXNwX3JkbWEuY8KgwqDCoMKgwqAg
-fMKgIDkgKysrLQo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVrL210a19kcm1fY3J0Yy5j
-wqDCoMKgwqDCoMKgIHwgMTUgKysrKy0tLQo+Pj4gwqAgZHJpdmVycy9ncHUvZHJtL21lZGlhdGVr
-L210a19kcm1fZGRwX2NvbXAuY8KgwqAgfCAzNiArLS0tLS0tLS0tLS0tLS0KPj4+IMKgIGRyaXZl
-cnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2RkcF9jb21wLmjCoMKgIHzCoCAxIC0KPj4+IMKg
-IGRyaXZlcnMvZ3B1L2RybS9tZWRpYXRlay9tdGtfZHJtX2Rydi5jwqDCoMKgwqDCoMKgwqAgfMKg
-IDUgKy0tCj4+PiDCoCBkcml2ZXJzL2lvbW11L210a19pb21tdS5jwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IDM0ICsrKysrKysrKysrKysrCj4+PiDCoCBkcml2ZXJz
-L2lvbW11L210a19pb21tdV92MS5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
-IDQyICsrKysrKysrKysrKysrKystCj4+PiDCoCAuLi4vbWVkaWEvcGxhdGZvcm0vbXRrLWpwZWcv
-bXRrX2pwZWdfY29yZS5jwqDCoCB8IDQ1ICstLS0tLS0tLS0tLS0tLS0tLS0KPj4+IMKgIC4uLi9t
-ZWRpYS9wbGF0Zm9ybS9tdGstanBlZy9tdGtfanBlZ19jb3JlLmjCoMKgIHzCoCAyIC0KPj4+IMKg
-IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vbXRrLW1kcC9tdGtfbWRwX2NvbXAuYyB8IDQwIC0tLS0t
-LS0tLS0tLS0tLS0tCj4+PiDCoCBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL210ay1tZHAvbXRrX21k
-cF9jb21wLmggfMKgIDIgLQo+Pj4gwqAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9tdGstbWRwL210
-a19tZHBfY29yZS5jIHzCoCAxIC0KPj4+IMKgIC4uLi9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192
-Y29kZWNfZGVjX2Rydi5jwqAgfMKgIDIgLQo+Pj4gwqAgLi4uL3BsYXRmb3JtL210ay12Y29kZWMv
-bXRrX3Zjb2RlY19kZWNfaHcuY8KgwqAgfMKgIDEgLQo+Pj4gwqAgLi4uL3BsYXRmb3JtL210ay12
-Y29kZWMvbXRrX3Zjb2RlY19kZWNfcG0uY8KgwqAgfCA0MSArKystLS0tLS0tLS0tLS0tLQo+Pj4g
-wqAgLi4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zjb2RlY19kcnYuaMKgwqDCoMKgwqAgfMKg
-IDMgLS0KPj4+IMKgIC4uLi9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNfZW5jLmPCoMKg
-wqDCoMKgIHzCoCAxIC0KPj4+IMKgIC4uLi9wbGF0Zm9ybS9tdGstdmNvZGVjL210a192Y29kZWNf
-ZW5jX2Rydi5jwqAgfMKgIDIgLQo+Pj4gwqAgLi4uL3BsYXRmb3JtL210ay12Y29kZWMvbXRrX3Zj
-b2RlY19lbmNfcG0uY8KgwqAgfCA0NSArKystLS0tLS0tLS0tLS0tLS0tCj4+PiDCoCBkcml2ZXJz
-L21lbW9yeS9tdGstc21pLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgfCAxNCAtLS0tLS0KPj4+IMKgIGluY2x1ZGUvc29jL21lZGlhdGVrL3NtaS5owqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCAyMCAtLS0tLS0tLS0KPj4+IMKgIDMyIGZp
-bGVzIGNoYW5nZWQsIDExNSBpbnNlcnRpb25zKCspLCAzMzMgZGVsZXRpb25zKC0pCj4+Pgo+Pgo+
-PiBIZWxsbyBIYW5zLCBNYXR0aGlhcywKPj4gb24gbXkgc2lkZSwgdGhpcyBzZXJpZXMgaXMgdG90
-YWxseSByZWFkeSBmb3IgbWVyZ2UsIGhlbmNlLCBncmVlbiBsaWdodCBmcm9tIGhlcmUuCj4+Cj4+
-IENhbiB5b3UgcGxlYXNlIHRha2UgaXQgZm9yIDUuMTg/Cj4+Cj4gCj4gQEhhbnM6IEkgdW5kZXJz
-dGFuZCB5b3UgdGFrZSB0aGUgc2VyaWVzIHRocm91Z2ggeW91ciB0cmVlLiBQbGVhc2UgbGV0IG1l
-IGtub3cgd2hlbiB5b3UgZG8gc28uIEknbGwgdGFrZSBjYXJlIG9mIHBhdGNoIDEyIGFuZCAxMywg
-d2hpY2ggc2hvdWxkIGdvIHRocm91Z2ggbXkgdHJlZS4KCldpbGwgZG8uIEkgaG9wZSB0byBzZW5k
-IHRoZSBQUiBpbiB0aGUgbmV4dCBmZXcgZGF5cy4KClJlZ2FyZHMsCgoJSGFucwoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtbWVkaWF0ZWsgbWFp
-bGluZyBsaXN0CkxpbnV4LW1lZGlhdGVrQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1tZWRpYXRlawo=
+MT8195 has two H264 encoder cores, they have their own power-domains,
+clocks, interrupts, register base. The two H264 encoder cores can work
+together to achieve higher performance, it's a core mode called
+frame-racing, one core has 4K@30fps performance, two cores can achieve
+4K@60fps.
+The two encoder core encoding process looks like this:
+
+    VENC Core0: frm#0....frm#2....frm#4....
+    VENC Core1: ..frm#1....frm#3....frm#5....
+
+This series of patches are used to enable the two H264 encoder cores,
+encoding process will be changed:
+As-Is: Synchronous
+V4L2_VIDIOC_QBUF#0 --> device_run(triger encoder) --> wait encoder IRQ -->
+encoding done with result --> job_finish
+V4l2_VIDIOC_QBUF#1 --> device_run(triger encoder) --> wait encoder IRQ -->
+encoding done with result --> job_finish
+...
+
+To-Be: Asynchronous
+V4L2_VIDIOC_QBUF#0 --> device_run(triger encoder) --> job_finish
+..V4l2_VIDIOC_QBUF#1 --> device_run(triger encoder) --> job_finish
+(venc core0 may encode done here, done the encoding result to client)
+V4L2_VIDIOC_QBUF#2 --> device_run(triger encoder) --> job_finish.
+
+There is no "wait encoder IRQ" synchronous call during frame-racing mode
+encoding process, it can full use the two encoder cores to achieve higher
+performance.
+
+---
+This series patches dependent on:
+[1]: the latest linux stage tree: https://git.linuxtv.org/media_stage.git
+
+mtk decoder patches
+[2]: https://patchwork.linuxtv.org/project/linux-media/list/?series=7105
+[3]: https://patchwork.linuxtv.org/project/linux-media/list/?series=7131
+
+new yaml included files
+[4]:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=551641
+[5]:
+https://patchwork.kernel.org/project/linux-mediatek/list/?series=580579
+
+---
+---
+changes compared with v1:
+- of_platform_populate was used in place of the component framework.
+- new yaml file for venc cores.
+- some modifications for patch v1's review comments.
+---
+
+Irui Wang (10):
+  media: mtk-vcodec: Use core type to indicate h264 and vp8 enc
+  media: mtk-vcodec: export encoder functions
+  dt-bindings: media: mtk-vcodec: Adds encoder cores dt-bindings for
+    mt8195
+  media: mtk-vcodec: Enable venc dual core usage
+  media: mtk-vcodec: mtk-vcodec: Rewrite venc power manage interface
+  media: mtk-vcodec: Add venc power on/off interface
+  media: mtk-vcodec: Rewrite venc clock interface
+  media: mtk-vcodec: Add more extra processing for dual-core mode
+  media: mtk-vcodec: Add dual core mode encode process
+  media: mtk-vcodec: Done encode result to client
+
+ .../media/mediatek,vcodec-encoder-core.yaml   | 214 +++++++++++++++++
+ drivers/media/platform/mtk-vcodec/Makefile    |   4 +-
+ .../platform/mtk-vcodec/mtk_vcodec_drv.h      |  44 +++-
+ .../platform/mtk-vcodec/mtk_vcodec_enc.c      | 109 ++++++---
+ .../platform/mtk-vcodec/mtk_vcodec_enc.h      |   7 +-
+ .../platform/mtk-vcodec/mtk_vcodec_enc_core.c | 187 +++++++++++++++
+ .../platform/mtk-vcodec/mtk_vcodec_enc_core.h |  36 +++
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  | 118 ++++++----
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.c   | 187 +++++++++++++--
+ .../platform/mtk-vcodec/mtk_vcodec_enc_pm.h   |  11 +-
+ .../platform/mtk-vcodec/mtk_vcodec_util.c     |  19 ++
+ .../platform/mtk-vcodec/mtk_vcodec_util.h     |   5 +
+ .../platform/mtk-vcodec/venc/venc_h264_if.c   | 216 +++++++++++++++---
+ .../platform/mtk-vcodec/venc/venc_vp8_if.c    |   3 +-
+ .../media/platform/mtk-vcodec/venc_drv_if.c   |  79 +++++--
+ .../media/platform/mtk-vcodec/venc_drv_if.h   |   7 +
+ .../media/platform/mtk-vcodec/venc_vpu_if.c   |  10 +-
+ .../media/platform/mtk-vcodec/venc_vpu_if.h   |   3 +-
+ 18 files changed, 1097 insertions(+), 162 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/media/mediatek,vcodec-encoder-core.yaml
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.c
+ create mode 100644 drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_core.h
+
+-- 
+2.18.0
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
