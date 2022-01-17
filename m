@@ -4,63 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DEC8C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:16:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D3CC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 07:17:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=MQbbrz8xm+9oSJJP3D5+hud8uNNUBlmSuKcNigphpJQ=; b=OHMqGxEy5qeoWq
-	C9P7xojPQ10bGWOjdWiixlxACgvbxZPfEp4w4fd1o1CVs53RGBQYsDEi0tXfJTV51cJCFfwIGu0LQ
-	Juv7G6z4PgbmtqHEu9GaAGodmHSfB537cPxqfF0XsmSgpn2Oan+8RrCXfk1vnAhNlpR74JFYZdRE1
-	l8cQhHgqJ7dXupQ99QfqJM5BhaAEGH/OEurS5l1dXr10XD6JPax8Wv194+CvQ+rWAKf5KbMvYSbhj
-	pFLO51QIHC+ywMpHEQgeLrbkzByabnTUzJN9C/yTS8uz5SyeP0fc0DdJE9Iid+VIFG9nIP4R4XKGq
-	Z635oNydzxh9zDiUIV0g==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Or3HkOrelLzw7kbT1TD9Ur2+3GQNV3uqfLo5zuiphD4=; b=eyd5A08TgIgD0G
+	9vpFR/f7tCsTzSuOAHkETb0iFDqRNaGIv2mxHFp2kVfPCVLwXcXxegYTeeYOBDzbp8KThj6xKrHo7
+	HZn3AEXx2ZD1W05561U8+1tKR8nN7htEjSEhbcTTiOxhvLxqmfw5p2RK0UcwDi2XDwkxDZFXg6j7a
+	N1q0LL6cHlRvjr4+M7QiJpNVaGJ7cAe5C6wNzv2YPrt9Yp5XQ/m+xp/HiBcPiLy/2CIR+Dmka16HV
+	W7iOWAzFdWLp+2YsbCNAXIpMuLMTgilT5P6kQOR3AkhZ12QQshDwwRG1GktuS74blyUP5FNFMxdzR
+	bTF/zRfXxsA52opwaHDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9MFL-00Dnap-7z; Mon, 17 Jan 2022 07:16:07 +0000
+	id 1n9MGd-00DoCy-Ch; Mon, 17 Jan 2022 07:17:27 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9MCH-00Dlyj-Di; Mon, 17 Jan 2022 07:12:59 +0000
-X-UUID: 46abeb7134ac406f8d70d13df9a6d23f-20220117
-X-UUID: 46abeb7134ac406f8d70d13df9a6d23f-20220117
+ id 1n9MCI-00DlyZ-KG; Mon, 17 Jan 2022 07:13:00 +0000
+X-UUID: b37a59fda9ce44cd8e4bd5fa027fe292-20220117
+X-UUID: b37a59fda9ce44cd8e4bd5fa027fe292-20220117
 Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
- (envelope-from <biao.huang@mediatek.com>)
+ (envelope-from <yong.wu@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 643695697; Mon, 17 Jan 2022 00:12:53 -0700
+ with ESMTP id 1510428832; Mon, 17 Jan 2022 00:12:53 -0700
 Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
  MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 23:07:11 -0800
+ 15.0.1497.2; Sun, 16 Jan 2022 23:05:53 -0800
 Received: from mtkcas11.mediatek.inc (172.21.101.40) by
  mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 17 Jan 2022 15:07:10 +0800
+ 15.2.792.15; Mon, 17 Jan 2022 15:05:51 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas11.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 15:07:08 +0800
-From: Biao Huang <biao.huang@mediatek.com>
-To: <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, <angelogioacchino.delregno@collabora.com>
-CC: Matthias Brugger <matthias.bgg@gmail.com>, Giuseppe Cavallaro
- <peppe.cavallaro@st.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Jose Abreu <joabreu@synopsys.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Biao Huang <biao.huang@mediatek.com>,
- <netdev@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>,
- <linux-stm32@st-md-mailman.stormreply.com>, <srv_heupstream@mediatek.com>,
- <macpaul.lin@mediatek.com>, <dkirjanov@suse.de>
-Subject: [PATCH net-next v12 0/7] MediaTek Ethernet Patches on MT8195
-Date: Mon, 17 Jan 2022 15:06:59 +0800
-Message-ID: <20220117070706.17853-1-biao.huang@mediatek.com>
-X-Mailer: git-send-email 2.25.1
+ Transport; Mon, 17 Jan 2022 15:05:49 +0800
+From: Yong Wu <yong.wu@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, Hans Verkuil
+ <hverkuil@xs4all.nl>, Joerg Roedel <jroedel@suse.de>, Rob Herring
+ <robh+dt@kernel.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@canonical.com>, David Airlie <airlied@linux.ie>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>
+Subject: [PATCH v10 02/13] iommu/mediatek-v1: Free the existed fwspec if the
+ master dev already has
+Date: Mon, 17 Jan 2022 15:04:59 +0800
+Message-ID: <20220117070510.17642-3-yong.wu@mediatek.com>
+X-Mailer: git-send-email 2.18.0
+In-Reply-To: <20220117070510.17642-1-yong.wu@mediatek.com>
+References: <20220117070510.17642-1-yong.wu@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_231257_558243_E850B4DD 
-X-CRM114-Status: GOOD (  17.62  )
+X-CRM114-CacheID: sfid-20220116_231258_719285_0AC59E5A 
+X-CRM114-Status: GOOD (  16.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,114 +69,90 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, Will Deacon <will.deacon@arm.com>,
+ dri-devel@lists.freedesktop.org, yf.wang@mediatek.com,
+ anthony.huang@mediatek.com, youlin.pei@mediatek.com,
+ Evan Green <evgreen@chromium.org>, Eizan Miyamoto <eizan@chromium.org>,
+ Matthias Kaehlcke <mka@chromium.org>, linux-arm-kernel@lists.infradead.org,
+ mingyuan.ma@mediatek.com, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, Philipp Zabel <p.zabel@pengutronix.de>,
+ libo.kang@mediatek.com, yi.kuo@mediatek.com,
+ linux-mediatek@lists.infradead.org, Hsin-Yi Wang <hsinyi@chromium.org>,
+ Tiffany Lin <tiffany.lin@mediatek.com>, yong.wu@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ anan.sun@mediatek.com, srv_heupstream@mediatek.com, acourbot@chromium.org,
+ linux-kernel@vger.kernel.org, Tomasz Figa <tfiga@chromium.org>,
+ iommu@lists.linux-foundation.org, Daniel Vetter <daniel@ffwll.ch>,
+ Robin Murphy <robin.murphy@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Changes in v12:
-1. add a new patch "stmmac: dwmac-mediatek: re-arrange clock setting" to
-   this series, to simplify clock handling in driver, which benefits to
-   binding file mediatek-dwmac.yaml.
-2. modify dt-binding description in patch "net: dt-bindings: dwmac: add
-   support for mt8195" as Rob's comments in v10 series, put mac_cg to the
-   end of clock list.
-3. there are small changes in patch "stmmac: dwmac-mediatek: add support
-   for mt8195", @AngeloGioacchino, please review it kindly.
+When the iommu master device enters of_iommu_xlate, the ops may be
+NULL(iommu dev is defered), then it will initialize the fwspec here:
 
-Changes in v11:
-1. add reivewed-by in "net: dt-bindings: dwmac: Convert mediatek-dwmac to
-   DT schema" as Rob's comments.
-2. fall back "net: dt-bindings: dwmac: add support for mt8195" to v8 version
-   as mentioned in previous reply(https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20211216055328.15953-7-biao.huang@mediatek.com/):
-   2.1 there is already a special clock named "rmii_internal", which need to
-       be put to the end of the clock list(driver special handling),
-       so we can't simply put new "mac_cg" for mt8195 to the end of the clock
-       list.
-   2.2 we prefer the if-then schema, which will make mt8195 clock list clearer
-       with some duplicated information.
-   2.3 we expect the future IC will follow mt2712 or mt8195, so we only need
-       add new IC name to compatible list for future IC, and will not make the
-       clock list binding files worse.
+[<c0c9c5bc>] (dev_iommu_fwspec_set) from [<c06bda80>]
+(iommu_fwspec_init+0xbc/0xd4)
+[<c06bd9c4>] (iommu_fwspec_init) from [<c06c0db4>]
+(of_iommu_xlate+0x7c/0x12c)
+[<c06c0d38>] (of_iommu_xlate) from [<c06c10e8>]
+(of_iommu_configure+0x144/0x1e8)
 
-Changes in v10:
-1. add detailed description in "arm64: dts: mt2712: update ethernet
-   device node" to make the modifications clearer as Matthias's comments.
-2. modify dt-binding description as Rob's comments, and "make dtbs_check" runs
-   pass locally with "arm64: dts: mt2712: update ethernet device node"
-   in this series.
+BUT the mtk_iommu_v1.c only supports arm32, the probing flow still is a bit
+weird. We always expect create the fwspec internally. otherwise it will
+enter here and return fail.
 
-Changes in v9:
-1. remove oneOf for 1 entry as Rob's comments.
-2. add new clocks to the end of existing clocks to simplify
-   the binding as Rob's comments.
+static int mtk_iommu_create_mapping(struct device *dev,
+				    struct of_phandle_args *args)
+{
+        ...
+	if (!fwspec) {
+	        ....
+	} else if (dev_iommu_fwspec_get(dev)->ops != &mtk_iommu_ops) {
+                >>>>>>>>>>Enter here. return fail.<<<<<<<<<<<<
+		return -EINVAL;
+	}
+	...
+}
 
-Changes in v8:
-1. add acked-by in "stmmac: dwmac-mediatek: add platform level clocks
-   management" patch
+Thus, Free the existed fwspec if the master device already has fwspec.
 
-Changes in v7:
-1. fix uninitialized warning as Jakub's comments.
+This issue is reported at:
+https://lore.kernel.org/linux-mediatek/trinity-7d9ebdc9-4849-4d93-bfb5-429dcb4ee449-1626253158870@3c-app-gmx-bs01/
 
-Changes in v6:
-1. update commit message as Jakub's comments.
-2. split mt8195 eth dts patch("arm64: dts: mt8195: add ethernet device
-   node") from this series, since mt8195 dtsi/dts basic patches is still
-   under reviewing.
-   https://patchwork.kernel.org/project/linux-mediatek/list/?series=579071
-   we'll resend mt8195 eth dts patch once all the dependent patches are
-   accepted.
+Reported-by: Frank Wunderlich <frank-w@public-files.de>
+Tested-by: Frank Wunderlich <frank-w@public-files.de> # BPI-R2/MT7623
+Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+Acked-by: Joerg Roedel <jroedel@suse.de>
+Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/iommu/mtk_iommu_v1.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-Changes in v5:
-1. remove useless inclusion in dwmac-mediatek.c as Angelo's comments.
-2. add acked-by in "net-next: stmmac: dwmac-mediatek: add support for
-   mt8195" patch
-
-Changes in v4:
-1. add changes in commit message in "net-next: dt-bindings: dwmac:
-   Convert mediatek-dwmac to DT schema" patch.
-2. remove ethernet-controller.yaml since snps,dwmac.yaml already include it.
-
-Changes in v3:
-1. Add prefix "net-next" to support new IC as Denis's suggestion.
-2. Split dt-bindings to two patches, one for conversion, and the other for
-   new IC.
-3. add a new patch to update device node in mt2712-evb.dts to accommodate to
-   changes in driver.
-4. remove unnecessary wrapper as Angelo's suggestion.
-5. Add acked-by in "net-next: stmmac: dwmac-mediatek: Reuse more common
-   features" patch.
-
-Changes in v2:
-1. fix errors/warnings in mediatek-dwmac.yaml with upgraded dtschema tools
-
-Changes in v1:
-This series include 5 patches:
-1. add platform level clocks management for dwmac-mediatek
-2. resue more common features defined in stmmac_platform.c
-3. add ethernet entry for mt8195
-
-Biao Huang (7):
-  stmmac: dwmac-mediatek: add platform level clocks management
-  stmmac: dwmac-mediatek: Reuse more common features
-  stmmac: dwmac-mediatek: re-arrange clock setting
-  arm64: dts: mt2712: update ethernet device node
-  net: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema
-  stmmac: dwmac-mediatek: add support for mt8195
-  net: dt-bindings: dwmac: add support for mt8195
-
- .../bindings/net/mediatek-dwmac.txt           |  91 ----
- .../bindings/net/mediatek-dwmac.yaml          | 175 ++++++++
- arch/arm64/boot/dts/mediatek/mt2712-evb.dts   |   1 +
- arch/arm64/boot/dts/mediatek/mt2712e.dtsi     |  14 +-
- .../ethernet/stmicro/stmmac/dwmac-mediatek.c  | 389 +++++++++++++++---
- 5 files changed, 526 insertions(+), 144 deletions(-)
- delete mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.txt
- create mode 100644 Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-
---
+diff --git a/drivers/iommu/mtk_iommu_v1.c b/drivers/iommu/mtk_iommu_v1.c
+index be22fcf988ce..1467ba1e4417 100644
+--- a/drivers/iommu/mtk_iommu_v1.c
++++ b/drivers/iommu/mtk_iommu_v1.c
+@@ -425,6 +425,15 @@ static struct iommu_device *mtk_iommu_probe_device(struct device *dev)
+ 	struct mtk_iommu_data *data;
+ 	int err, idx = 0;
+ 
++	/*
++	 * In the deferred case, free the existed fwspec.
++	 * Always initialize the fwspec internally.
++	 */
++	if (fwspec) {
++		iommu_fwspec_free(dev);
++		fwspec = dev_iommu_fwspec_get(dev);
++	}
++
+ 	while (!of_parse_phandle_with_args(dev->of_node, "iommus",
+ 					   "#iommu-cells",
+ 					   idx, &iommu_spec)) {
+-- 
 2.18.0
-
 
 
 _______________________________________________
