@@ -4,133 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C53C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 10:42:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2827C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 10:51:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zR7/EKquaFEu58t5a+v86y4FIv8H/OG9HEk8Fi23ImM=; b=a6Vikz1ZBI0l/G
-	J08UqAG4Gqw3NKc0XO5v/cD/bG38Vc13M5X48fkqAdeZhOw56bzPuc2vPEvAp0zZZLj8gxs6HPXGb
-	FvU6b7AbGW1PV8Pchs7iOoI3Z5n/suc4DjrbfOarcMkuNWIVOgJmy9DuXIidDN7eZkBVKDlOfJlvx
-	1W+izBBpXkNvNfmVzik/aXYZy6hnSCW3B2vugJ4z+yVAgHLkTiKojc7E19iGzHnc4yv37UTtDjIJw
-	7zgcAgLVeOc78B0/kde1fg2xj3XlU4m1iEop6jkQZzSRPrJYyEDDSCPSLUm60ZpYASZSEgPijN1Nb
-	jua16F7FPq/wOJTTumnQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tt4sjhpve7k7B358Pjq0XMm4rIFec38NBMUeOYKCVyI=; b=ln4QVjq+Ii15vJ8atvXPpGcYg0
+	UHza6bwZaDfVf/nSnmpIx7cHvTUb8XYwb6JZX2xHoQ5vU9Js04QOnJcc2xSqv54sKfVkXgyNiRxr+
+	7GxyF4Z1pINtQHw6nqCo3GwkDiQljLxw7AgpiSFpw0Cy6egeT/6z3hHSW0mD97WoF/Kqn5OcgGsPc
+	O3bPucR9yrwTTNRdmHBqg0UWxy//R0AZePJ7zGFSz/tD+900GH3plRgn4Bb7HtGkwC/lLlswIAPyq
+	mLFY3bnW4DVaw0pA0Ip7fE+UTAOcMLAVeub+y+IfFLAi64tKL0qDzwsuwENU7AeDzTkkR3xhbUtfA
+	g2ou3/NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9PSf-00EXZq-Fx; Mon, 17 Jan 2022 10:42:05 +0000
-Received: from mail-qk1-f173.google.com ([209.85.222.173])
+	id 1n9PbA-00EZ1J-Ju; Mon, 17 Jan 2022 10:50:52 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9PSP-00EXWg-SQ; Mon, 17 Jan 2022 10:41:51 +0000
-Received: by mail-qk1-f173.google.com with SMTP id 193so18395340qkh.13;
- Mon, 17 Jan 2022 02:41:44 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=8wbyaDOKHzyncR/a8atHHiwf57S6QrlnXekhvOqZ5Zc=;
- b=ctHkskrZJjPwrMYuvujLTJu1OjIkvYeA0k1b2ovJ4FdGxJd5nqc2nWOYMjoU//LGeZ
- qgukoFljEKwRlKc1FLc/7dKppx6sQoY7KD5znCg1zCbbC1t6D5pSIV/oZ13FPC0KfOVJ
- g28l62oku45cRhlpMX1rd36gLh+1K07jjlOOtz+umR3j4dwqlw48IEfv4Jo1QqQJ8IW2
- 4CQjuk2kRLA67tg07S1NK3GFTN8a9hdrzAT/jT8Byqx89Wmpxgp7NTEyw+6bAw4qova2
- vD2dj0Yslr0jSRtptg2iSS4E2RfU4LQZooF/9nB6XKeH94MzWVRAS0Umf9SEpsVLflfW
- Aj1g==
-X-Gm-Message-State: AOAM533OyiOQ0A6WNzpqUrNE6nguV7sL/XavU3faQ/bZJEm4M41MYmyO
- Vs64vWjwhiml0p4avLPM7gb18fP23KXtnHT0
-X-Google-Smtp-Source: ABdhPJyuBtMGTg6BoOMljm7UP5owanPIlR6Ho/q30R1RkqGHxHq+iPE46nCtq2l3nU+Kp8q2E3eyzg==
-X-Received: by 2002:a05:620a:1906:: with SMTP id
- bj6mr14568287qkb.94.1642416103402; 
- Mon, 17 Jan 2022 02:41:43 -0800 (PST)
-Received: from mail-yb1-f176.google.com (mail-yb1-f176.google.com.
- [209.85.219.176])
- by smtp.gmail.com with ESMTPSA id z5sm8252302qti.57.2022.01.17.02.41.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Jan 2022 02:41:43 -0800 (PST)
-Received: by mail-yb1-f176.google.com with SMTP id g81so44420692ybg.10;
- Mon, 17 Jan 2022 02:41:43 -0800 (PST)
-X-Received: by 2002:ab0:4d42:: with SMTP id k2mr5738849uag.78.1642415764003;
- Mon, 17 Jan 2022 02:36:04 -0800 (PST)
-MIME-Version: 1.0
-References: <20220112085009.dbasceh3obfok5dc@pengutronix.de>
- <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <29f0c65d-77f2-e5b2-f6cc-422add8a707d@omp.ru>
- <20220114092557.jrkfx7ihg26ekzci@pengutronix.de>
- <61b80939-357d-14f5-df99-b8d102a4e1a1@omp.ru>
- <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
- <c9026f17-2b3f-ee94-0ea3-5630f981fbc1@omp.ru>
- <CAMuHMdXVbRudGs69f9ZzaP1PXhteDNZiXA658eMFAwP4nr9r3w@mail.gmail.com>
- <20220117092444.opoedfcf5k5u6otq@pengutronix.de>
-In-Reply-To: <20220117092444.opoedfcf5k5u6otq@pengutronix.de>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 17 Jan 2022 11:35:52 +0100
-X-Gmail-Original-Message-ID: <CAMuHMdUgZUeraHadRAi2Z=DV+NuNBrKPkmAKsvFvir2MuquVoA@mail.gmail.com>
-Message-ID: <CAMuHMdUgZUeraHadRAi2Z=DV+NuNBrKPkmAKsvFvir2MuquVoA@mail.gmail.com>
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Sergey Shtylyov <s.shtylyov@omp.ru>, Andrew Lunn <andrew@lunn.ch>, 
- Ulf Hansson <ulf.hansson@linaro.org>, Vignesh Raghavendra <vigneshr@ti.com>,
- KVM list <kvm@vger.kernel.org>, 
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org, 
- Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, 
- ALSA Development Mailing List <alsa-devel@alsa-project.org>,
- Jaroslav Kysela <perex@perex.cz>, 
- Guenter Roeck <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
- MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>, 
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- Miquel Raynal <miquel.raynal@bootlin.com>, 
- linux-phy@lists.infradead.org, netdev <netdev@vger.kernel.org>, 
- linux-spi <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>, 
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>, 
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, 
- Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, 
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Kishon Vijay Abraham I <kishon@ti.com>, 
- bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, 
- "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, 
- Zhang Rui <rui.zhang@intel.com>, platform-driver-x86@vger.kernel.org, 
- Linux PWM List <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, 
- Saravanan Sekar <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, 
- Linux PM list <linux-pm@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, John Garry <john.garry@huawei.com>,
- Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>, 
- Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>, 
- Alex Williamson <alex.williamson@redhat.com>, Mark Brown <broonie@kernel.org>, 
- Borislav Petkov <bp@alien8.de>, Takashi Iwai <tiwai@suse.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- openipmi-developer@lists.sourceforge.net, 
+ id 1n9Paw-00EYyT-Th; Mon, 17 Jan 2022 10:50:41 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 65E1A1F42063
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1642416637;
+ bh=ptiEFjXjhoBJsX0S13oN/2lvPYOFqtq8gyPRviCgm60=;
+ h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
+ b=FAEGTZraxddVLjoujpmzgnSd9KLr7FjNwLAV+yAVPuClpARIKHBMsOh88ehA+L2wh
+ dHlXJJveXAvt4RLAPcPesyOeKew9lEp/oDUV0pszTBhSMFiER5h8AMZGEHknf3MXQk
+ 9VOHG91RQaO2i2UxtGbs3Xgv81febwN8b0fDsv6prWFwpXeui1I9/WMjV1297JlSCB
+ 7bzZCVCJtbPgHaWrq9jOZorTTJOR+aB3kC35KYpNa/DDa7Bzk1J/PCfguV3EvJoLu/
+ GF4FVoxZHbBFs4vKcVBW0k8ezmHPmQdEFlt6vVi7sHs7rH681frfna3h58rqpt//BA
+ sGLUXDUSXr8kw==
+Subject: Re: [PATCH 3/3] mmc: mediatek: add support for SDIO eint IRQ
+To: Axe Yang <axe.yang@mediatek.com>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Rob Herring <robh+dt@kernel.org>, Chaotian Jing
+ <chaotian.jing@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Adrian Hunter <adrian.hunter@intel.com>
+Cc: Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Benson Leung <bleung@chromium.org>, 
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Linux ARM <linux-arm-kernel@lists.infradead.org>, 
- linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>, 
- Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>, 
- Eric Auger <eric.auger@redhat.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>, 
- Linux MMC List <linux-mmc@vger.kernel.org>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, 
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- Vinod Koul <vkoul@kernel.org>, 
- James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, 
- Sebastian Reichel <sre@kernel.org>,
- =?UTF-8?Q?Niklas_S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>, 
- linux-mediatek@lists.infradead.org, 
- Brian Norris <computersforpeace@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach
+ <dev@lynxeye.de>, Eric Biggers <ebiggers@google.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Stephen Boyd <swboyd@chromium.org>,
+ Kiwoong Kim <kwmad.kim@samsung.com>, Yue Hu <huyue2@yulong.com>,
+ Tian Tao <tiantao6@hisilicon.com>, linux-mmc@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Yong Mao <yong.mao@mediatek.com>
+References: <20220117071220.17330-1-axe.yang@mediatek.com>
+ <20220117071220.17330-4-axe.yang@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Message-ID: <754779eb-71f9-2083-a204-1d98b4a04a08@collabora.com>
+Date: Mon, 17 Jan 2022 11:50:33 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.13.0
+MIME-Version: 1.0
+In-Reply-To: <20220117071220.17330-4-axe.yang@mediatek.com>
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_024149_931197_CD48B9CF 
-X-CRM114-Status: GOOD (  50.86  )
+X-CRM114-CacheID: sfid-20220117_025039_278807_1777FAD6 
+X-CRM114-Status: GOOD (  36.56  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,96 +76,286 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgVXdlLAoKT24gTW9uLCBKYW4gMTcsIDIwMjIgYXQgMTA6MjQgQU0gVXdlIEtsZWluZS1Lw7Zu
-aWcKPHUua2xlaW5lLWtvZW5pZ0BwZW5ndXRyb25peC5kZT4gd3JvdGU6Cj4gT24gTW9uLCBKYW4g
-MTcsIDIwMjIgYXQgMDk6NDE6NDJBTSArMDEwMCwgR2VlcnQgVXl0dGVyaG9ldmVuIHdyb3RlOgo+
-ID4gT24gU2F0LCBKYW4gMTUsIDIwMjIgYXQgOToyMiBQTSBTZXJnZXkgU2h0eWx5b3YgPHMuc2h0
-eWx5b3ZAb21wLnJ1PiB3cm90ZToKPiA+ID4gT24gMS8xNC8yMiAxMToyMiBQTSwgVXdlIEtsZWlu
-ZS1Lw7ZuaWcgd3JvdGU6Cj4gPiA+ID4gWW91IGhhdmUgdG8gdW5kZXJzdGFuZCB0aGF0IGZvciBj
-bGsgKGFuZCByZWd1bGF0b3IgYW5kIGdwaW9kKSBOVUxMIGlzIGEKPiA+ID4gPiB2YWxpZCBkZXNj
-cmlwdG9yIHRoYXQgY2FuIGFjdHVhbGx5IGJlIHVzZWQsIGl0IGp1c3QgaGFzIG5vIGVmZmVjdC4g
-U28KPiA+ID4gPiB0aGlzIGlzIGEgY29udmVuaWVuY2UgdmFsdWUgZm9yIHRoZSBjYXNlICJJZiB0
-aGUgY2xrL3JlZ3VsYXRvci9ncGlvZCBpbgo+ID4gPiA+IHF1ZXN0aW9uIGlzbid0IGF2YWlsYWJs
-ZSwgdGhlcmUgaXMgbm90aGluZyB0byBkbyIuIFRoaXMgaXMgd2hhdCBtYWtlcwo+ID4gPiA+IGNs
-a19nZXRfb3B0aW9uYWwoKSBhbmQgdGhlIG90aGVycyByZWFsbHkgdXNlZnVsIGFuZCBqdXN0aWZp
-ZXMgdGhlaXIKPiA+ID4gPiBleGlzdGVuY2UuIFRoaXMgZG9lc24ndCBhcHBseSB0byBwbGF0Zm9y
-bV9nZXRfaXJxX29wdGlvbmFsKCkuCj4gPiA+Cj4gPiA+ICAgIEkgZG8gdW5kZXJzdGFuZCB0aGF0
-LiBIb3dldmVyLCBJUlFzIGFyZSBhIGRpZmZlcmVudCBiZWFzdCB3aXRoIHRoZWlyCj4gPiA+IG93
-biBqdXN0aWZpY2F0aW9ucy4uLgo+ID4KPiA+ID4gPiBjbGtfZ2V0X29wdGlvbmFsKCkgaXMgc2Fu
-ZSBhbmQgc2Vuc2libGUgZm9yIGNhc2VzIHdoZXJlIHRoZSBjbGsgbWlnaHQgYmUKPiA+ID4gPiBh
-YnNlbnQgYW5kIGl0IGhlbHBzIHlvdSBiZWNhdXNlIHlvdSBkb24ndCBoYXZlIHRvIGRpZmZlcmVu
-dGlhdGUgYmV0d2Vlbgo+ID4gPiA+ICJub3QgZm91bmQiIGFuZCAidGhlcmUgaXMgYW4gYWN0dWFs
-IHJlc291cmNlIi4KPiA+ID4gPgo+ID4gPiA+IFRoZSByZWFzb24gZm9yIHBsYXRmb3JtX2dldF9p
-cnFfb3B0aW9uYWwoKSdzIGV4aXN0ZW5jZSBpcyBqdXN0IHRoYXQKPiA+ID4gPiBwbGF0Zm9ybV9n
-ZXRfaXJxKCkgZW1pdHMgYW4gZXJyb3IgbWVzc2FnZSB3aGljaCBpcyB3cm9uZyBvciBzdWJvcHRp
-bWFsCj4gPiA+Cj4gPiA+ICAgIEkgdGhpbmsgeW91IGFyZSB2ZXJ5IHdyb25nIGhlcmUuIFRoZSBy
-ZWFsIHJlYXNvbiBpcyB0byBzaW1wbGlmeSB0aGUKPiA+ID4gY2FsbGVycy4KPiA+Cj4gPiBJbmRl
-ZWQuCj4KPiBUaGUgY29tbWl0IHRoYXQgaW50cm9kdWNlZCBwbGF0Zm9ybV9nZXRfaXJxX29wdGlv
-bmFsKCkgc2FpZDoKPgo+ICAgICAgICAgSW50cm9kdWNlIGEgbmV3IHBsYXRmb3JtX2dldF9pcnFf
-b3B0aW9uYWwoKSB0aGF0IHdvcmtzIG11Y2ggbGlrZQo+ICAgICAgICAgcGxhdGZvcm1fZ2V0X2ly
-cSgpIGJ1dCBkb2VzIG5vdCBvdXRwdXQgYW4gZXJyb3Igb24gZmFpbHVyZSB0bwo+ICAgICAgICAg
-ZmluZCB0aGUgaW50ZXJydXB0Lgo+Cj4gU28gdGhlIGF1dGhvciBvZiA4OTczZWE0NzkwMWM4MWEx
-OTEyYmQwNWYxNTc3YmVkOWI1YjUyNTA2IGZhaWxlZCB0bwo+IG1lbnRpb24gdGhlIHJlYWwgcmVh
-c29uPyBPciBsb29rIGF0Cj4gMzFhOGQ4ZmE4NGM1MWQzYWIwMGJmMDU5MTU4ZDVkZTYxNzhjZjg5
-MDoKPgo+ICAgICAgICAgWy4uLl0gdXNlIHBsYXRmb3JtX2dldF9pcnFfb3B0aW9uYWwoKSB0byBn
-ZXQgc2Vjb25kL3RoaXJkIElSUQo+ICAgICAgICAgd2hpY2ggYXJlIG9wdGlvbmFsIHRvIGF2b2lk
-IGJlbG93IGVycm9yIG1lc3NhZ2UgZHVyaW5nIHByb2JlOgo+ICAgICAgICAgWy4uLl0KPgo+IExv
-b2sgdGhyb3VnaCB0aGUgb3V0cHV0IG9mCj4KPiAgICAgICAgIGdpdCBsb2cgLVNwbGF0Zm9ybV9n
-ZXRfaXJxX29wdGlvbmFsCj4KPiB0byBmaW5kIHNldmVyYWwgbW9yZSBvZiB0aGVzZS4KCkNvbW1p
-dCA4OTczZWE0NzkwMWM4MWExICgiZHJpdmVyIGNvcmU6IHBsYXRmb3JtOiBJbnRyb2R1Y2UKcGxh
-dGZvcm1fZ2V0X2lycV9vcHRpb25hbCgpIikgYW5kIHRoZSB2YXJpb3VzIGZpeHVwcyBmaXhlZCB0
-aGUgdWdseQpwcmludGluZyBvZiBlcnJvciBtZXNzYWdlcyB0aGF0IHdlcmUgbm90IGFwcGxpY2Fi
-bGUuCkluIGhpbmRzaWdodCwgcHJvYmFibHkgY29tbWl0IDc3MjNmNGM1ZWNkYjhkODMgKCJkcml2
-ZXIgY29yZToKcGxhdGZvcm06IEFkZCBhbiBlcnJvciBtZXNzYWdlIHRvIHBsYXRmb3JtX2dldF9p
-cnEqKCkiKSBzaG91bGQgaGF2ZQpiZWVuIHJldmVydGVkIGluc3RlYWQsIHVudGlsIGEgcGxhdGZv
-cm1fZ2V0X2lycV9vcHRpb25hbCgpIHdpdGggcHJvcGVyCnNlbWFudGljcyB3YXMgaW50cm9kdWNl
-ZC4gIEJ1dCBhcyB3ZSB3ZXJlIGFsbCBpbiBhIGh1cnJ5IHRvIGtpbGwKdGhlIG5vbi1hcHBsaWNh
-YmxlIGVycm9yIG1lc3NhZ2UsIHdlIHdlbnQgZm9yIHRoZSBxdWljayBhbmQgZGlydHkgZml4LgoK
-PiBBbHNvIEkgZmFpbCB0byBzZWUgaG93IGEgY2FsbGVyIG9mICh0b2RheSdzKSBwbGF0Zm9ybV9n
-ZXRfaXJxX29wdGlvbmFsKCkKPiBpcyBzaW1wbGVyIHRoYW4gYSBjYWxsZXIgb2YgcGxhdGZvcm1f
-Z2V0X2lycSgpIGdpdmVuIHRoYXQgdGhlcmUgaXMgbm8KPiBzZW1hbnRpYyBkaWZmZXJlbmNlIGJl
-dHdlZW4gdGhlIHR3by4gUGxlYXNlIHNob3cgbWUgYSBzaW5nbGUKPiBjb252ZXJzaW9uIGZyb20g
-cGxhdGZvcm1fZ2V0X2lycSB0byBwbGF0Zm9ybV9nZXRfaXJxX29wdGlvbmFsIHRoYXQKPiB5aWVs
-ZGVkIGEgc2ltcGxpZmljYXRpb24uCgpUaGF0J3MgZXhhY3RseSB3aHkgd2Ugd2FudCB0byBjaGFu
-Z2UgdGhlIGxhdHRlciB0byByZXR1cm4gMCA7LSkKCj4gU28geW91IG5lZWQgc29tZSBtb3JlIGVm
-Zm9ydCB0byBjb252aW5jZSBtZSBvZiB5b3VyIFBPVi4KPgo+ID4gRXZlbiBmb3IgY2xvY2tzLCB5
-b3UgY2Fubm90IGFzc3VtZSB0aGF0IHlvdSBjYW4gYWx3YXlzIGJsaW5kbHkgdXNlCj4gPiB0aGUg
-cmV0dXJuZWQgZHVtbXkgKGFjdHVhbGx5IGEgTlVMTCBwb2ludGVyKSB0byBjYWxsIGludG8gdGhl
-IGNsawo+ID4gQVBJLiAgV2hpbGUgdGhpcyB3b3JrcyBmaW5lIGZvciBzaW1wbGUgdXNlIGNhc2Vz
-LCB3aGVyZSB5b3UganVzdAo+ID4gd2FudCB0byBlbmFibGUvZGlzYWJsZSBhbiBvcHRpb25hbCBj
-bG9jayAoY2xrX3ByZXBhcmVfZW5hYmxlKCkgYW5kCj4gPiBjbGtfZGlzYWJsZV91bnByZXBhcmUo
-KSksIGl0IGRvZXMgbm90IHdvcmsgZm9yIG1vcmUgY29tcGxleCB1c2UgY2FzZXMuCj4KPiBBZ3Jl
-ZWQuIEJ1dCBmb3IgY2xrcyBhbmQgZ3Bpb2RzIGFuZCByZWd1bGF0b3JzIHRoZSBzaW1wbGUgY2Fz
-ZSBpcyBxdWl0ZQo+IHVzdWFsLiBGb3IgaXJxcyBpdCBpc24ndC4KCkl0IGlzIGZvciBkZXZpY2Vz
-IHRoYXQgY2FuIGhhdmUgZWl0aGVyIHNlcGFyYXRlIGludGVycnVwdHMsIG9yIGEgc2luZ2xlCm11
-bHRpcGxleGVkIGludGVycnVwdC4KClRoZSBsb2dpYyBpbiBlLmcuIGRyaXZlcnMvdHR5L3Nlcmlh
-bC9zaC1zY2kuYyBhbmQKZHJpdmVycy9zcGkvc3BpLXJzcGkuYyBjb3VsZCBiZSBzaW1wbGlmaWVk
-IGFuZCBpbXByb3ZlZCAoY3VycmVudGx5Cml0IGRvZXNuJ3QgaGFuZGxlIGRlZmVycmVkIHByb2Jl
-KSBpZiBwbGF0Zm9ybV9nZXRfaXJxX29wdGlvbmFsKCkKd291bGQgcmV0dXJuIDAgaW5zdGVhZCBv
-ZiAtRU5YSU8uCgo+IEFuZCBpZiB5b3UgY2Fubm90IGJsaW5kbHkgdXNlIHRoZSBkdW1teSwgdGhl
-biB5b3UncmUgbm90IHRoZSB0YXJnZXR0ZWQKPiBjYWxsZXIgb2YgKl9nZXRfb3B0aW9uYWwoKSBh
-bmQgc2hvdWxkIGJldHRlciB1c2UgKl9nZXQoKSBhbmQgaGFuZGxlCj4gLUVOT0RFViBleHBsaWNp
-dGx5LgoKTm8sIGJlY2F1c2UgdGhlIGphbml0b3JzIHRlbmQgdG8gY29uc29saWRhdGUgZXJyb3Ig
-bWVzc2FnZSBoYW5kbGluZywKYnkgbW92aW5nIHRoZSBwcmludGluZyB1cCwgaW5zaWRlIHRoZSAq
-X2dldCgpIG1ldGhvZHMuICBUaGF0J3MgZXhhY3RseQp3aGF0IGhhcHBlbmVkIGhlcmUuClNvIHRo
-ZXJlIGFyZSB0aHJlZSByZWFzb25zOiBiZWNhdXNlIHRoZSBhYnNlbmNlIG9mIGFuIG9wdGlvbmFs
-IElSUQppcyBub3QgYW4gZXJyb3IsIGFuZCB0aHVzIHRoYXQgc2hvdWxkIG5vdCBjYXVzZSAoYSkg
-YW4gZXJyb3IgY29kZQp0byBiZSByZXR1cm5lZCwgYW5kIChiKSBhbiBlcnJvciBtZXNzYWdlIHRv
-IGJlIHByaW50ZWQsIGFuZCAoYykKYmVjYXVzZSBpdCBjYW4gc2ltcGxpZnkgdGhlIGxvZ2ljIGlu
-IGRldmljZSBkcml2ZXJzLgoKQ29tbWl0IDg5NzNlYTQ3OTAxYzgxYTEgKCJkcml2ZXIgY29yZTog
-cGxhdGZvcm06IEludHJvZHVjZQpwbGF0Zm9ybV9nZXRfaXJxX29wdGlvbmFsKCkiKSBmaXhlZCAo
-YiksIGJ1dCBkaWRuJ3QgYWRkcmVzcyAoYSkgYW5kCihjKS4KCkdye29ldGplLGVldGluZ31zLAoK
-ICAgICAgICAgICAgICAgICAgICAgICAgR2VlcnQKCi0tCkdlZXJ0IFV5dHRlcmhvZXZlbiAtLSBU
-aGVyZSdzIGxvdHMgb2YgTGludXggYmV5b25kIGlhMzIgLS0gZ2VlcnRAbGludXgtbTY4ay5vcmcK
-CkluIHBlcnNvbmFsIGNvbnZlcnNhdGlvbnMgd2l0aCB0ZWNobmljYWwgcGVvcGxlLCBJIGNhbGwg
-bXlzZWxmIGEgaGFja2VyLiBCdXQKd2hlbiBJJ20gdGFsa2luZyB0byBqb3VybmFsaXN0cyBJIGp1
-c3Qgc2F5ICJwcm9ncmFtbWVyIiBvciBzb21ldGhpbmcgbGlrZSB0aGF0LgogICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgIC0tIExpbnVzIFRvcnZhbGRzCgpfX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1tZWRpYXRlayBtYWlsaW5nIGxpc3QK
-TGludXgtbWVkaWF0ZWtAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
-Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LW1lZGlhdGVrCg==
+Il 17/01/22 08:12, Axe Yang ha scritto:
+> Add support for eint IRQ when MSDC is used as an SDIO host. This
+> feature requires SDIO device support async IRQ function. With this
+> feature, SDIO host can be awakened by SDIO card in suspend state,
+> without additional pin.
+> 
+> MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
+> turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
+> resume, switch GPIO function back to DAT1 mode then turn on clock.
+> 
+> Some device tree property should be added or modified in MSDC node
+> to support SDIO eint IRQ. Pinctrls named state_dat1 and state_eint
+> are mandatory. And cap-sdio-async-irq flag is necessary since this
+> feature depends on asynchronous interrupt:
+>          &mmcX {
+>                  ...
+>                  pinctrl-names = "default", "state_uhs", "state_eint",
+>                                  "state_dat1";
+>                  ...
+>                  pinctrl-2 = <&mmc2_pins_eint>;
+>                  pinctrl-3 = <&mmc2_pins_dat1>;
+>                  ...
+>                  cap-sdio-async-irq;
+>                  ...
+>          };
+> 
+> Signed-off-by: Axe Yang <axe.yang@mediatek.com>
+> Signed-off-by: Yong Mao <yong.mao@mediatek.com>
+> ---
+>   drivers/mmc/host/mtk-sd.c | 125 +++++++++++++++++++++++++++++++++++---
+>   1 file changed, 117 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+> index 65037e1d7723..cbdbcce99fd9 100644
+> --- a/drivers/mmc/host/mtk-sd.c
+> +++ b/drivers/mmc/host/mtk-sd.c
+> @@ -1,6 +1,6 @@
+>   // SPDX-License-Identifier: GPL-2.0-only
+>   /*
+> - * Copyright (c) 2014-2015 MediaTek Inc.
+> + * Copyright (c) 2022 MediaTek Inc.
+>    * Author: Chaotian.Jing <chaotian.jing@mediatek.com>
+>    */
+>   
+> @@ -9,6 +9,7 @@
+>   #include <linux/clk.h>
+>   #include <linux/delay.h>
+>   #include <linux/dma-mapping.h>
+> +#include <linux/gpio/consumer.h>
+>   #include <linux/iopoll.h>
+>   #include <linux/ioport.h>
+>   #include <linux/irq.h>
+> @@ -440,8 +441,12 @@ struct msdc_host {
+>   	struct pinctrl *pinctrl;
+>   	struct pinctrl_state *pins_default;
+>   	struct pinctrl_state *pins_uhs;
+> +	struct pinctrl_state *pins_eint;
+> +	struct pinctrl_state *pins_dat1;
+>   	struct delayed_work req_timeout;
+>   	int irq;		/* host interrupt */
+> +	int eint_irq;		/* device interrupt */
+> +	int sdio_irq_cnt;	/* irq enable cnt */
+>   	struct reset_control *reset;
+>   
+>   	struct clk *src_clk;	/* msdc source clock */
+> @@ -465,6 +470,7 @@ struct msdc_host {
+>   	bool hs400_tuning;	/* hs400 mode online tuning */
+>   	bool internal_cd;	/* Use internal card-detect logic */
+>   	bool cqhci;		/* support eMMC hw cmdq */
+> +	bool sdio_eint_ready;	/* Ready to support SDIO eint interrupt */
+>   	struct msdc_save_para save_para; /* used when gate HCLK */
+>   	struct msdc_tune_para def_tune_para; /* default tune setting */
+>   	struct msdc_tune_para saved_tune_para; /* tune result of CMD21/CMD19 */
+> @@ -1527,10 +1533,12 @@ static void msdc_enable_sdio_irq(struct mmc_host *mmc, int enb)
+>   	__msdc_enable_sdio_irq(host, enb);
+>   	spin_unlock_irqrestore(&host->lock, flags);
+>   
+> -	if (enb)
+> -		pm_runtime_get_noresume(host->dev);
+> -	else
+> -		pm_runtime_put_noidle(host->dev);
+> +	if (mmc->card && !mmc->card->cccr.enable_async_irq) {
+> +		if (enb)
+> +			pm_runtime_get_noresume(host->dev);
+> +		else
+> +			pm_runtime_put_noidle(host->dev);
+> +	}
+>   }
+>   
+>   static irqreturn_t msdc_cmdq_irq(struct msdc_host *host, u32 intsts)
+> @@ -2461,6 +2469,50 @@ static const struct mmc_host_ops mt_msdc_ops = {
+>   	.hw_reset = msdc_hw_reset,
+>   };
+>   
+> +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
+> +{
+> +	struct msdc_host *host = dev_id;
+> +	struct mmc_host *mmc = mmc_from_priv(host);
+> +	unsigned long flags;
+> +
+> +	spin_lock_irqsave(&host->lock, flags);
+> +	if (likely(host->sdio_irq_cnt > 0)) {
+> +		disable_irq_nosync(host->eint_irq);
+> +		disable_irq_wake(host->eint_irq);
+> +		host->sdio_irq_cnt--;
+> +	}
+> +	spin_unlock_irqrestore(&host->lock, flags);
+> +
+> +	sdio_signal_irq(mmc);
+> +
+> +	return IRQ_HANDLED;
+> +}
+> +
+> +static int msdc_request_dat1_eint_irq(struct msdc_host *host)
+> +{
+> +	struct gpio_desc *desc;
+> +	int irq, ret;
+> +
+> +	desc = devm_gpiod_get(host->dev, "eint", GPIOD_IN);
+> +	if (IS_ERR(desc))
+> +		return PTR_ERR(desc);
+> +
+> +	ret = gpiod_to_irq(desc);
+> +	if (ret < 0)
+> +		return ret;
+> +
+> +	irq = ret;
+> +	ret = devm_request_threaded_irq(host->dev, irq, NULL, msdc_sdio_eint_irq,
+> +					IRQF_TRIGGER_LOW | IRQF_ONESHOT | IRQF_NO_AUTOEN,
+> +					"sdio-eint", host);
+> +	if (ret)
+> +		return ret;
+> +
+> +	host->eint_irq = irq;
+> +
+> +	return 0;
+> +}
+> +
+>   static const struct cqhci_host_ops msdc_cmdq_ops = {
+>   	.enable         = msdc_cqe_enable,
+>   	.disable        = msdc_cqe_disable,
+> @@ -2631,6 +2683,23 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>   		goto host_free;
+>   	}
+>   
+> +	if (!(mmc->caps2 & MMC_CAP2_NO_SDIO)) {
+
+Please, also check for the async irq capability here:
+
+if (!(mmc->caps2 & MMC_CAP2_NO_SDIO) && (mmc->caps2 & MMC_CAP2_SDIO_ASYNC_IRQ)) {
+
+...because if we have "state_eint" specified in DT, but we didn't *also* specify
+cap-sdio-async-irq, then clearly we don't want to use this functionality - hence
+it becomes useless to register the interrupt handler for that because we're never
+enabling the CCCR_INTERRUPT_EXT on the card (from drivers/mmc/core/host.c).
+
+Regards,
+Angelo
+
+> +		/* Support for SDIO eint irq */
+> +		host->pins_eint = pinctrl_lookup_state(host->pinctrl, "state_eint");
+> +		if (IS_ERR(host->pins_eint)) {
+> +			dev_dbg(&pdev->dev, "Cannot find pinctrl eint!\n");
+> +		} else {
+> +			host->pins_dat1 = pinctrl_lookup_state(host->pinctrl, "state_dat1");
+> +			if (IS_ERR(host->pins_dat1)) {
+> +				ret = dev_err_probe(&pdev->dev, PTR_ERR(host->pins_dat1),
+> +						    "Cannot find pinctrl dat1!\n");
+> +				goto host_free;
+> +			}
+> +
+> +			host->sdio_eint_ready = true;
+> +		}
+> +	}
+> +
+>   	msdc_of_property_parse(pdev, host);
+>   
+>   	host->dev = &pdev->dev;
+> @@ -2722,6 +2791,16 @@ static int msdc_drv_probe(struct platform_device *pdev)
+>   	if (ret)
+>   		goto release;
+>   
+> +	if (host->sdio_eint_ready) {
+> +		ret = msdc_request_dat1_eint_irq(host);
+> +		if (ret) {
+> +			dev_err(host->dev, "Failed to register data1 eint irq!\n");
+> +			goto release;
+> +		}
+> +
+> +		pinctrl_select_state(host->pinctrl, host->pins_dat1);
+> +	}
+> +
+>   	pm_runtime_set_active(host->dev);
+>   	pm_runtime_set_autosuspend_delay(host->dev, MTK_MMC_AUTOSUSPEND_DELAY);
+>   	pm_runtime_use_autosuspend(host->dev);
+> @@ -2841,16 +2920,31 @@ static void msdc_restore_reg(struct msdc_host *host)
+>   
+>   static int __maybe_unused msdc_runtime_suspend(struct device *dev)
+>   {
+> +	unsigned long flags;
+>   	struct mmc_host *mmc = dev_get_drvdata(dev);
+>   	struct msdc_host *host = mmc_priv(mmc);
+>   
+>   	msdc_save_reg(host);
+> +
+> +	if (host->sdio_eint_ready) {
+> +		disable_irq(host->irq);
+> +		pinctrl_select_state(host->pinctrl, host->pins_eint);
+> +		spin_lock_irqsave(&host->lock, flags);
+> +		if (host->sdio_irq_cnt == 0) {
+> +			enable_irq(host->eint_irq);
+> +			enable_irq_wake(host->eint_irq);
+> +			host->sdio_irq_cnt++;
+> +		}
+> +		sdr_clr_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +		spin_unlock_irqrestore(&host->lock, flags);
+> +	}
+>   	msdc_gate_clock(host);
+>   	return 0;
+>   }
+>   
+>   static int __maybe_unused msdc_runtime_resume(struct device *dev)
+>   {
+> +	unsigned long flags;
+>   	struct mmc_host *mmc = dev_get_drvdata(dev);
+>   	struct msdc_host *host = mmc_priv(mmc);
+>   	int ret;
+> @@ -2860,10 +2954,25 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+>   		return ret;
+>   
+>   	msdc_restore_reg(host);
+> +
+> +	if (host->sdio_eint_ready) {
+> +		spin_lock_irqsave(&host->lock, flags);
+> +		if (host->sdio_irq_cnt > 0) {
+> +			disable_irq_nosync(host->eint_irq);
+> +			disable_irq_wake(host->eint_irq);
+> +			host->sdio_irq_cnt--;
+> +			sdr_set_bits(host->base + SDC_CFG, SDC_CFG_SDIOIDE);
+> +		} else {
+> +			sdr_clr_bits(host->base + MSDC_INTEN, MSDC_INTEN_SDIOIRQ);
+> +		}
+> +		spin_unlock_irqrestore(&host->lock, flags);
+> +		pinctrl_select_state(host->pinctrl, host->pins_uhs);
+> +		enable_irq(host->irq);
+> +	}
+>   	return 0;
+>   }
+>   
+> -static int __maybe_unused msdc_suspend(struct device *dev)
+> +static int __maybe_unused msdc_suspend_noirq(struct device *dev)
+>   {
+>   	struct mmc_host *mmc = dev_get_drvdata(dev);
+>   	int ret;
+> @@ -2877,13 +2986,13 @@ static int __maybe_unused msdc_suspend(struct device *dev)
+>   	return pm_runtime_force_suspend(dev);
+>   }
+>   
+> -static int __maybe_unused msdc_resume(struct device *dev)
+> +static int __maybe_unused msdc_resume_noirq(struct device *dev)
+>   {
+>   	return pm_runtime_force_resume(dev);
+>   }
+>   
+>   static const struct dev_pm_ops msdc_dev_pm_ops = {
+> -	SET_SYSTEM_SLEEP_PM_OPS(msdc_suspend, msdc_resume)
+> +	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(msdc_suspend_noirq, msdc_resume_noirq)
+>   	SET_RUNTIME_PM_OPS(msdc_runtime_suspend, msdc_runtime_resume, NULL)
+>   };
+>   
+> 
+
+
+
+_______________________________________________
+Linux-mediatek mailing list
+Linux-mediatek@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-mediatek
