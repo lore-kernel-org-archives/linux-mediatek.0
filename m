@@ -4,93 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40612C433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 11:57:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0919EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 12:02:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:References:CC:To:From:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=T5f2Rf0njG5k5w6mxY8uDWT3rou2NFFibrO6SrAXTOs=; b=TCTyHKZLUAI97cJFfJRzh8ag8o
-	+hXCbIPx+UCq10C0jc3y6AbQE5zNHoYXHVVdaUfCbjlm9Mn3ApDvAn0ZPvl1f7sSNihkt7oRW5zzG
-	XWHP3UHXWllvpT7fLqZJQQ5o0Q3l/mfuPXOplsYnwU/dFqZnNC8teD9SmLewnKK8VJGl1+Ohpsiot
-	MuRL31BZvBgFIxDn5QjtO9FPYqP/8/7HJZWu7n/VkqZK4fTbPS7YyABuQt8upORObp8iyK7+H9i17
-	ynYsNj2FNl0/bEaoUYzcZDxBUSEBGWPioCk4O015RiUx/NOJcNghOSjPmaq7JMP1I7DNyshM3V0MH
-	jHehwcvQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Uu4Iv2TDhG3ON2zIH2+VTvg7VetZAOKnBLIUzL7ywbw=; b=eob53MlyRuWSv0
+	/23D3o0rsGflBfLEXnIqhBDatwNZKfPtyqlin0Frvok+dbgXTRWjOo0icd1w0PueuOTr1q4SOvVaP
+	a7qPa8CYrw8zxq2dbJcCF0QAFu4a+lNPwQz9xOQmhkBe399zybmBtoO1bbf4mtvAz2pUdR2PGVUXJ
+	C8sifVCH7ayn7C9MzRRJdiK+CDXMU2IM57mvArQOklipDWqca14etwFltnJnbRvckQ8ldFDT80AjE
+	5gSyHuYqwr6oAXrlk4tY/7wkFnZQgizEKBcyY9+GNL0D+2c/YFQoRZDV1/Kl2PYTOrgXB007mT0fC
+	UbYpwra4lVpGBLuGSKjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9Qdx-00EjhQ-Cy; Mon, 17 Jan 2022 11:57:49 +0000
-Received: from mxout04.lancloud.ru ([45.84.86.114])
+	id 1n9Qi1-00Ekev-78; Mon, 17 Jan 2022 12:02:01 +0000
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9Qds-00EjeJ-RT; Mon, 17 Jan 2022 11:57:47 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout04.lancloud.ru 2B84620D27D1
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, <linux-kernel@vger.kernel.org>
-CC: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Corey Minyard
- <minyard@acm.org>, Pengutronix Kernel Team <kernel@pengutronix.de>, "William
- Breathitt Gray" <vilhelm.gray@gmail.com>, Khuong Dinh
- <khuong@os.amperecomputing.com>, Borislav Petkov <bp@alien8.de>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, Tony Luck <tony.luck@intel.com>,
- "James Morse" <james.morse@arm.com>, Robert Richter <rric@kernel.org>, Mun
- Yew Tham <mun.yew.tham@intel.com>, Linus Walleij <linus.walleij@linaro.org>,
- "Bartosz Golaszewski" <brgl@bgdev.pl>, Thierry Reding
- <thierry.reding@gmail.com>, =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?=
- <u.kleine-koenig@pengutronix.de>, Lee Jones <lee.jones@linaro.org>, Kamal
- Dasu <kdasu.kdev@gmail.com>, Florian Fainelli <f.fainelli@gmail.com>,
- <bcm-kernel-feedback-list@broadcom.com>, "Peter Korsgaard"
- <peter@korsgaard.com>, Andrew Lunn <andrew@lunn.ch>, Ulf Hansson
- <ulf.hansson@linaro.org>, Brian Norris <computersforpeace@gmail.com>, "Miquel
- Raynal" <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>,
- Vignesh Raghavendra <vigneshr@ti.com>, "David S. Miller"
- <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Joakim Zhang
- <qiangqing.zhang@nxp.com>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, Kishon Vijay Abraham I <kishon@ti.com>,
- Vinod Koul <vkoul@kernel.org>, Benson Leung <bleung@chromium.org>, "Guenter
- Roeck" <groeck@chromium.org>, Zha Qipeng <qipeng.zha@intel.com>, Hans de
- Goede <hdegoede@redhat.com>, Mark Gross <markgross@kernel.org>, Saravanan
- Sekar <sravanhome@gmail.com>, Sebastian Reichel <sre@kernel.org>, John Garry
- <john.garry@huawei.com>, Mark Brown <broonie@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
- <niklas.soderlund@ragnatech.se>, Daniel Lezcano <daniel.lezcano@linaro.org>,
- Amit Kucheria <amitk@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Jiri Slaby
- <jirislaby@kernel.org>, Eric Auger <eric.auger@redhat.com>, Alex Williamson
- <alex.williamson@redhat.com>, Cornelia Huck <cohuck@redhat.com>, "Liam
- Girdwood" <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, "Takashi
- Iwai" <tiwai@suse.com>, <openipmi-developer@lists.sourceforge.net>,
- <linux-iio@vger.kernel.org>, <linux-edac@vger.kernel.org>,
- <linux-gpio@vger.kernel.org>, <linux-pwm@vger.kernel.org>,
- <linux-i2c@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mmc@vger.kernel.org>, <linux-mtd@lists.infradead.org>,
- <netdev@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
- <linux-phy@lists.infradead.org>, <platform-driver-x86@vger.kernel.org>,
- <linux-pm@vger.kernel.org>, <linux-spi@vger.kernel.org>,
- <linux-mediatek@lists.infradead.org>, <linux-serial@vger.kernel.org>,
- <kvm@vger.kernel.org>, <alsa-devel@alsa-project.org>, Matthias Schiffer
- <matthias.schiffer@ew.tq-group.com>
-References: <20220110195449.12448-1-s.shtylyov@omp.ru>
- <20220110195449.12448-2-s.shtylyov@omp.ru>
-Organization: Open Mobile Platform
-Message-ID: <770fb569-03c8-78f9-c174-94b31e866017@omp.ru>
-Date: Mon, 17 Jan 2022 14:57:32 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1n9Qhl-00Ekag-Eb
+ for linux-mediatek@lists.infradead.org; Mon, 17 Jan 2022 12:01:46 +0000
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 5579A402A9
+ for <linux-mediatek@lists.infradead.org>; Mon, 17 Jan 2022 12:01:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1642420903;
+ bh=bAUdRzIm9/2z1tZx93HbZGiaxfI165En29R890ewPoU=;
+ h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+ In-Reply-To:Content-Type;
+ b=mf03TZJAsVjsA3aP7BLfJ0QB1zDJNULYvE+MFaDLUrQPJOaaHQhBF6nP4MursdAM7
+ I8rZGThFm4prf9/j24+r3x0ciwingE5Mu9mLwa5Nh0QR/O19q+fZG9AeiLk5r5YD1U
+ 0Ha3jYPPTbeyxqfFUDvMcA+JBniE/lNlxrQY9CnMRn7xyuzHpxz6YNTQkJkA7FkZyF
+ V1EJXrIv6V12m333qT+SNOMZtlHzBsIcA2fo9VE0b657NqiTJ7GYiBMkaK6qS7XH3W
+ C7tOHt+hwbFLUrEa4HzU1b4J3R5bmfZz6ONDYVGOSx4GhgM62bjhP1zydsrva3cBEL
+ /GHczjry0T8Dw==
+Received: by mail-ed1-f71.google.com with SMTP id
+ bs4-20020a056402304400b004032af6b7ebso748058edb.16
+ for <linux-mediatek@lists.infradead.org>; Mon, 17 Jan 2022 04:01:43 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+ :content-language:to:cc:references:from:in-reply-to
+ :content-transfer-encoding;
+ bh=bAUdRzIm9/2z1tZx93HbZGiaxfI165En29R890ewPoU=;
+ b=5jtqcmmPE1QFEG0301VU754quS9a48aJtHjAt+CrYLa/dATG1I2l2evnRP6Vq7YGAC
+ 61cqlkMxy+sMoHWgGERZ8q0mdnTVldpoy6+EXtDLvAq8cwWw5pNOiQLAr3jREqL4Wkq8
+ OVxjfzTrXHdqZCUv2kLIdO+Dg7SQuD79vx7MnatxBXG8zLSVwDMI706U5z4/7oFWaGir
+ s7cyfZmayRXU1TElQEgZZ+YNdi2SdhkPCGLJKe4QYI6ivUlE1FLc6zyHGrwLCu9r3V1S
+ pt8nu4PVwFYkWhocat2pOkk4i2WtYVvjpRvvsZhkPiU02odWA4SjEaAXBOaKC/lloMmh
+ OdMg==
+X-Gm-Message-State: AOAM533B3QBguMLhUCnBYEebe8KLS4iAFmOeLOjRyK1WtL1XXMLP3XzL
+ fhrXqAsScizsYm0GEwNxKiMUn1M6+mp9hTS4c/Faa99iNKiXjBY1Poajq37+DdiRkCkFGCw1RlP
+ Um38XLQ2wwWJEyIPfBR2YF6JO22YJcSob+ZYE60Ml2o8+JvMqhA==
+X-Received: by 2002:a17:906:e249:: with SMTP id
+ gq9mr14818943ejb.258.1642420902682; 
+ Mon, 17 Jan 2022 04:01:42 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwdZgJNSpG3yPSHuygPWHopeMLD3qUZtx1G/vR+ammoYPGm5EgWxjMpAsCvVrMFa/M0hof7+A==
+X-Received: by 2002:a17:906:e249:: with SMTP id
+ gq9mr14818904ejb.258.1642420902250; 
+ Mon, 17 Jan 2022 04:01:42 -0800 (PST)
+Received: from [192.168.0.37] (xdsl-188-155-168-84.adslplus.ch.
+ [188.155.168.84])
+ by smtp.gmail.com with ESMTPSA id r15sm1766230ejz.39.2022.01.17.04.01.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Jan 2022 04:01:41 -0800 (PST)
+Message-ID: <7370f18b-e273-69f2-1cc9-a42495e04874@canonical.com>
+Date: Mon, 17 Jan 2022 13:01:40 +0100
 MIME-Version: 1.0
-In-Reply-To: <20220110195449.12448-2-s.shtylyov@omp.ru>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.1
+Subject: Re: [PATCH v3 5/7] memory: mtk-smi: Fix the return value for
+ clk_bulk_prepare_enable
 Content-Language: en-US
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Joerg Roedel <joro@8bytes.org>, Tomasz Figa <tfiga@chromium.org>,
+ linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, iommu@lists.linux-foundation.org,
+ youlin.pei@mediatek.com, anan.sun@mediatek.com, lc.kan@mediatek.com,
+ yi.kuo@mediatek.com, anthony.huang@mediatek.com,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+References: <20220113111057.29918-1-yong.wu@mediatek.com>
+ <20220113111057.29918-6-yong.wu@mediatek.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@canonical.com>
+In-Reply-To: <20220113111057.29918-6-yong.wu@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_035745_290483_27329FB0 
-X-CRM114-Status: GOOD (  29.78  )
+X-CRM114-CacheID: sfid-20220117_040145_708150_BF8EFFC0 
+X-CRM114-Status: GOOD (  19.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,157 +113,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/10/22 10:54 PM, Sergey Shtylyov wrote:
+On 13/01/2022 12:10, Yong Wu wrote:
+> Function clk_bulk_prepare_enable() returns 0 for success or a negative
+> number for error. Fix this code style issue.
 
-> This patch is based on the former Andy Shevchenko's patch:
+The message does not really make sense. If negative is returned, then
+the check (ret < 0) was correct.
+
+I guess you wanted to say that common code style is to check for any
+non-zero return value, just like it's implementation in clk.h does.
+
+I'll adjust the commit msg when applying.
+
 > 
-> https://lore.kernel.org/lkml/20210331144526.19439-1-andriy.shevchenko@linux.intel.com/
+> Signed-off-by: Yong Wu <yong.wu@mediatek.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/memory/mtk-smi.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Currently platform_get_irq_optional() returns an error code even if IRQ
-> resource simply has not been found. It prevents the callers from being
-> error code agnostic in their error handling:
+> diff --git a/drivers/memory/mtk-smi.c b/drivers/memory/mtk-smi.c
+> index b883dcc0bbfa..e7b1a22b12ea 100644
+> --- a/drivers/memory/mtk-smi.c
+> +++ b/drivers/memory/mtk-smi.c
+> @@ -480,7 +480,7 @@ static int __maybe_unused mtk_smi_larb_resume(struct device *dev)
+>  	int ret;
+>  
+>  	ret = clk_bulk_prepare_enable(larb->smi.clk_num, larb->smi.clks);
+> -	if (ret < 0)
+> +	if (ret)
+>  		return ret;
+>  
+>  	/* Configure the basic setting for this larb */
 > 
-> 	ret = platform_get_irq_optional(...);
-> 	if (ret < 0 && ret != -ENXIO)
-> 		return ret; // respect deferred probe
-> 	if (ret > 0)
-> 		...we get an IRQ...
-> 
-> All other *_optional() APIs seem to return 0 or NULL in case an optional
-> resource is not available. Let's follow this good example, so that the
-> callers would look like:
-> 
-> 	ret = platform_get_irq_optional(...);
-> 	if (ret < 0)
-> 		return ret;
-> 	if (ret > 0)
-> 		...we get an IRQ...
-> 
-> Reported-by: Matthias Schiffer <matthias.schiffer@ew.tq-group.com>
-> Signed-off-by: Sergey Shtylyov <s.shtylyov@omp.ru>
-[...]
 
-   Please don't merge this as yet, I'm going thru this patch once again
-and have already found some sloppy code. :-/
 
-> diff --git a/drivers/char/ipmi/bt-bmc.c b/drivers/char/ipmi/bt-bmc.c
-> index 7450904e330a..fdc63bfa5be4 100644
-> --- a/drivers/char/ipmi/bt-bmc.c
-> +++ b/drivers/char/ipmi/bt-bmc.c
-> @@ -382,12 +382,14 @@ static int bt_bmc_config_irq(struct bt_bmc *bt_bmc,
->  	bt_bmc->irq = platform_get_irq_optional(pdev, 0);
->  	if (bt_bmc->irq < 0)
->  		return bt_bmc->irq;
-> +	if (!bt_bmc->irq)
-> +		return 0;
-
-   Hm, this is sloppy. Will recast and rebase to the -next branch.
-
->  
->  	rc = devm_request_irq(dev, bt_bmc->irq, bt_bmc_irq, IRQF_SHARED,
->  			      DEVICE_NAME, bt_bmc);
->  	if (rc < 0) {
->  		dev_warn(dev, "Unable to request IRQ %d\n", bt_bmc->irq);
-> -		bt_bmc->irq = rc;
-> +		bt_bmc->irq = 0;
-
-   This change isn't needed...
-
->  		return rc;
->  	}
->  
-[...]
-> diff --git a/drivers/edac/xgene_edac.c b/drivers/edac/xgene_edac.c
-> index 2ccd1db5e98f..0d1bdd27cd78 100644
-> --- a/drivers/edac/xgene_edac.c
-> +++ b/drivers/edac/xgene_edac.c
-> @@ -1917,7 +1917,7 @@ static int xgene_edac_probe(struct platform_device *pdev)
->  
->  		for (i = 0; i < 3; i++) {
->  			irq = platform_get_irq_optional(pdev, i);
-
-   Is *_optinal() even correct here?
-
-> -			if (irq < 0) {
-> +			if (irq <= 0) {
->  				dev_err(&pdev->dev, "No IRQ resource\n");
->  				rc = -EINVAL;
->  				goto out_err;
-[...]
-> diff --git a/drivers/mtd/nand/raw/brcmnand/brcmnand.c b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-> index f75929783b94..ac222985efde 100644
-> --- a/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-> +++ b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-> @@ -1521,7 +1521,7 @@ static irqreturn_t brcmnand_ctlrdy_irq(int irq, void *data)
->  
->  	/* check if you need to piggy back on the ctrlrdy irq */
->  	if (ctrl->edu_pending) {
-> -		if (irq == ctrl->irq && ((int)ctrl->edu_irq >= 0))
-> +		if (irq == ctrl->irq && ((int)ctrl->edu_irq > 0))
-
-   Note to self: the cast to *int* isn't needed, the edu_irq field is *int* already...
-
-[...]
-> diff --git a/drivers/power/supply/mp2629_charger.c b/drivers/power/supply/mp2629_charger.c
-> index bdf924b73e47..51289700a7ac 100644
-> --- a/drivers/power/supply/mp2629_charger.c
-> +++ b/drivers/power/supply/mp2629_charger.c
-> @@ -581,9 +581,9 @@ static int mp2629_charger_probe(struct platform_device *pdev)
->  	platform_set_drvdata(pdev, charger);
->  
->  	irq = platform_get_irq_optional(to_platform_device(dev->parent), 0);
-
-   Again, is *_optional() even correct here?
-
-> -	if (irq < 0) {
-> +	if (irq <= 0) {
->  		dev_err(dev, "get irq fail: %d\n", irq);
-> -		return irq;
-> +		return irq < 0 ? irq : -ENXIO;
->  	}
->  
->  	for (i = 0; i < MP2629_MAX_FIELD; i++) {
-[...]
-> diff --git a/drivers/thermal/rcar_gen3_thermal.c b/drivers/thermal/rcar_gen3_thermal.c
-> index 43eb25b167bc..776cfed4339c 100644
-> --- a/drivers/thermal/rcar_gen3_thermal.c
-> +++ b/drivers/thermal/rcar_gen3_thermal.c
-> @@ -430,7 +430,7 @@ static int rcar_gen3_thermal_request_irqs(struct rcar_gen3_thermal_priv *priv,
->  
->  	for (i = 0; i < 2; i++) {
->  		irq = platform_get_irq_optional(pdev, i);
-> -		if (irq < 0)
-> +		if (irq <= 0)
->  			return irq;
-
-   Sloppy code again? We shouldn't return 0...
-
-[...]
-> diff --git a/drivers/vfio/platform/vfio_platform.c b/drivers/vfio/platform/vfio_platform.c
-> index 68a1c87066d7..cd7494933563 100644
-> --- a/drivers/vfio/platform/vfio_platform.c
-> +++ b/drivers/vfio/platform/vfio_platform.c
-> @@ -32,8 +32,12 @@ static struct resource *get_platform_resource(struct vfio_platform_device *vdev,
->  static int get_platform_irq(struct vfio_platform_device *vdev, int i)
->  {
->  	struct platform_device *pdev = (struct platform_device *) vdev->opaque;
-> +	int ret;
->  
-> -	return platform_get_irq_optional(pdev, i);
-> +	ret = platform_get_irq_optional(pdev, i);
-> +	if (ret < 0)
-> +		return ret;
-> +	return ret > 0 ? ret : -ENXIO;
-
-   Could be expressed more concisely:
-
-	return ret ? : -ENXIO;
-
-just like vfio_amba.c does it...
-
-[...]
-
-MBR, Sergey
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-mediatek mailing list
