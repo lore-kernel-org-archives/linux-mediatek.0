@@ -4,70 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CAF4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 02:34:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C595C433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 05:03:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+omjfoZKyK9OhvzYR3tMRrIoMAUsP36CdsK1N3292l4=; b=LD1jygNjBqHrRH
-	YMzXcDEfcxvvIWgAMNkcOcEQzQr7QK9AD++ce8Ra/hI4WjwIlZwicxmjJl9jONbbR3tdNee3D0Krt
-	ttVFrOMiOWUOKK9EohCgeWnLMZrJ+adJQK6t3HUTIRYaabbcF543ar0Nz+MBwbDqQkbeSkmb5uoM9
-	dD6qz06CW3geRBWdOLu1njROT2Jn6MkX0NhrM50Z1W7wGqjbeJNJew1HPawAjvedcrSRBO3+rZPAz
-	rEpcnhzvB4crVo2LZCeR0JJv5xeESsvDCmlT2adxhe4CJQkXFh14zH2CvqoqMSc+wMy6X/q5UMTSt
-	jrLW+k23og2Q1IoR+gIg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=c8/U7l5Rf/C05Y/3ecjWR0LqavZDg5bF1ylohHGl3og=; b=T0fKJd9aehWZzp
+	zrxTGoJaagQlOa7Pys/oyeeVtV3EOga0H7P5ljxuvRdRTjR7vdLRuup/aJ6KwDuJ3MlVRyy3ERy+B
+	kM8H5h5wQQsjyupPjNQqAW7pS4P6esoOBN1cnRsphV8Ws1qNxhf1s53U5nTJq6TC1R5JOCLWyawJM
+	rdG4STDWDuM+DvR0FFfq4esN9XwpeR5+7z/BXDWYFTngMhTPtBvCvFSmWa3YIPaWjZO7oOIxrFJFc
+	Gka6BHf52inJOD59CtOr0MVOI7dP5ySukT83GWSnJ9TD8z6TBgydylW6DYfpqfut2LQ3rXdhKrNbG
+	TDRJi75JXZACEEz2vyqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9HqN-00DHH5-5r; Mon, 17 Jan 2022 02:34:03 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n9KB9-00DQ2j-SQ; Mon, 17 Jan 2022 05:03:39 +0000
+Received: from mail-ua1-x931.google.com ([2607:f8b0:4864:20::931])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9HqK-00DHGa-FM
- for linux-mediatek@lists.infradead.org; Mon, 17 Jan 2022 02:34:02 +0000
-X-UUID: aa6d7b2512284858b62b417c0724887c-20220116
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
- s=dk; 
- h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
- bh=vEGv9FKi6ZTbSEGH0cwjIijAUScGh3ANjMxvizIzLWQ=; 
- b=oP0JU5Y60e9FrGj0meS/xMJgsog0NBOGMoH8MTGdBkus0OpruLtkORiGDnKiKTcMQXyzNHp3L3NY3JZjPuSsvuIZmZKe13NGRjnECCUXMPj8W40IxE3RT3hpWFCvJZpg5HgNNkLCIE6suSZBEojnzUNA25SYLlnhNUJHSLXOMyk=;
-X-UUID: aa6d7b2512284858b62b417c0724887c-20220116
-Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
- (envelope-from <guochun.mao@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1621641283; Sun, 16 Jan 2022 19:33:57 -0700
-Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Sun, 16 Jan 2022 18:30:06 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- 15.2.792.15; Mon, 17 Jan 2022 10:30:04 +0800
-Received: from mhfsdcap04 (10.17.3.154) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Mon, 17 Jan 2022 10:30:04 +0800
-Message-ID: <53b6b78f48728f5a802707375092911ffa407289.camel@mediatek.com>
-Subject: Re: [PATCH v1 2/4] spi: spi-mtk-nor: improve device table for
- adding more capabilities
-From: Guochun Mao <guochun.mao@mediatek.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Mark
- Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>
-CC: Zhen Zhang <zhen.zhang@mediatek.com>, Bayi Cheng
- <bayi.cheng@mediatek.com>, Chuanhong Guo <gch981213@gmail.com>, Bin Zhang
- <bin.zhang@mediatek.com>, Rex-BC Chen <rex-bc.chen@mediatek.com>,
- <linux-mediatek@lists.infradead.org>, <srv_heupstream@mediatek.com>
-Date: Mon, 17 Jan 2022 10:30:04 +0800
-In-Reply-To: <698a603b-574c-01ca-9e6b-edecdbc5959e@collabora.com>
-References: <20220114062408.9077-1-guochun.mao@mediatek.com>
- <20220114062408.9077-3-guochun.mao@mediatek.com>
- <698a603b-574c-01ca-9e6b-edecdbc5959e@collabora.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1n9KAx-00DQ13-DV; Mon, 17 Jan 2022 05:03:28 +0000
+Received: by mail-ua1-x931.google.com with SMTP id c36so28250612uae.13;
+ Sun, 16 Jan 2022 21:03:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FiX6saUHa8tVXRR2pHw4nDfUBFLj+hL82kG5LF2eBdE=;
+ b=Pe8h9X12WGtdQqLsjvkYCgh9YwVwNQuiyWCD+D2ElDyMJEpxjbgr+/kWvuhVCNuBSd
+ lCwAseOQfu1D7csJyUCRDAFi3oWkZ+40OCZTXmHZ0zlm/8LRQJ5Azerhk43bixsiq+ND
+ eRDh0lAxFiQvOT1siqzq+AP472Sr+UMTMpAVWUlczMTRqZk9JOxp6Ad9R6HLJeE8i2IK
+ ON4rwGJc3vUyue1cZwO2b6nYWD1xrObw2ydur/Zcn/e9UzlSPOs8c4oS4fKbJSP8ut4J
+ b5j4Jn43pvSZ/Y55Qj6o4ujfNItonT+WjEKYL5qrTmiywCLAW1C8+oylFsQAx9l6P0E2
+ Bn8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=FiX6saUHa8tVXRR2pHw4nDfUBFLj+hL82kG5LF2eBdE=;
+ b=eJBHvO9Cg6F3gXJEPYVVDmvikkcB036nIcMm06e9U1DNSubbR3MrBQgEffKl252+ZC
+ sJrn4VZljP66avtLl6O7CB8OcTxZwicRpEcz0z5OvzD5SBE1EZUqflDCPh1l4ucY6aEX
+ R1ImkMdIa+QQhzadHmP+TQ2q49EMHBeb8wqzdj+N/ACEkkO3cze7/JNFPRmsEfzqBcgF
+ SqjUONP3V59Hn0sDWTZ0IvUnBPEidOT565U0I4BNYDKtdAxGJYBOyBbAhbPFWMdBgh0D
+ BUicWNAo3RRd20ywE16/b8ZXdkXMlHnUEnrdN6wiQ562+Uk6bR8MsdZlVV27F/ENFSAA
+ mA5g==
+X-Gm-Message-State: AOAM530NPv9oW3BtxJ1mECrJJSvymujSsgZ5yBRyAUKCumqBhIheDjlD
+ 6NhI0HiI1bHyHHCw9knISu0=
+X-Google-Smtp-Source: ABdhPJz76tG0q0wKXnD43AKOEaEGErm27DJnaqkJ7NI14WMk3UwR/gAtlSgheL3vdfuM0t+KzW6FhA==
+X-Received: by 2002:a9f:25b6:: with SMTP id 51mr7935322uaf.111.1642395806522; 
+ Sun, 16 Jan 2022 21:03:26 -0800 (PST)
+Received: from kubuntu-desktop.. ([67.8.38.84])
+ by smtp.gmail.com with ESMTPSA id k77sm1012686vka.20.2022.01.16.21.03.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 16 Jan 2022 21:03:26 -0800 (PST)
+From: Julian Braha <julianbraha@gmail.com>
+To: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, tiwai@suse.com,
+ matthias.bgg@gmail.com, trevor.wu@mediatek.com, tzungbi@google.com,
+ geert+renesas@glider.be
+Cc: alsa-devel@alsa-project.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ fazilyildiran@gmail.com
+Subject: [PATCH] ASoC: mediatek: fix unmet dependency on GPIOLIB for
+ SND_SOC_DMIC
+Date: Mon, 17 Jan 2022 00:03:24 -0500
+Message-Id: <20220117050324.68371-1-julianbraha@gmail.com>
+X-Mailer: git-send-email 2.32.0
 MIME-Version: 1.0
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220116_183400_551974_2373EF98 
-X-CRM114-Status: GOOD (  27.46  )
+X-CRM114-CacheID: sfid-20220116_210327_484443_6BEBBB3D 
+X-CRM114-Status: GOOD (  11.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,132 +88,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Angelo,
+When SND_SOC_MT8195_MT6359_RT1011_RT5682 is selected,
+and GPIOLIB is not selected,
+Kbuild gives the following warning:
 
-Thanks for your comments.
+WARNING: unmet direct dependencies detected for SND_SOC_DMIC
+  Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && GPIOLIB [=n]
+  Selected by [y]:
+  - SND_SOC_MT8195_MT6359_RT1011_RT5682 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=y] && SND_SOC_MT8195 [=y] && MTK_PMIC_WRAP [=y]
 
-On Fri, 2022-01-14 at 11:40 +0100, AngeloGioacchino Del Regno wrote:
-> Il 14/01/22 07:24, guochun.mao@mediatek.com ha scritto:
-> > From: Guochun Mao <guochun.mao@mediatek.com>
-> 
-> Hello Guochun,
-> 
-> thanks for the patch! However, I have some comments...
-> 
-> > 
-> > Define a structure for adding more capabilities.
-> 
-> Please also mention that you're adding the extra_dummy_bit feature
-> in the commit description.
-> 
-> > 
-> > +struct mtk_nor_caps {
-> > +	u32 dma_bits;
-> 
-> dma_bits can be u8: I really don't think that we'll ever see more
-> than
-> 0xff bits...
-> 
+This is because SND_SOC_MT8195_MT6359_RT1011_RT5682
+selects SND_SOC_DMIC without selecting or depending on
+GPIOLIB, depsite SND_SOC_DMIC depending on GPIOLIB.
 
-I'll fix it next version.
+This unmet dependency bug was detected by Kismet,
+a static analysis tool for Kconfig. Please advise
+if this is not the appropriate solution.
 
-> > +	u32 extra_dummy_bit;
-> 
-> This one looks a bit strange, can you please add a comment explaining
-> the
-> reason why we have this "extra dummy bit"?
-> 
+Signed-off-by: Julian Braha <julianbraha@gmail.com>
+---
+ sound/soc/mediatek/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-This one is adding for mt8186, which extra_dummy_bit is set to be 1.
-Due to the IP design, it need a extra_dummy bit when reading nor
-flash's register(status/config...).
+diff --git a/sound/soc/mediatek/Kconfig b/sound/soc/mediatek/Kconfig
+index 9306b7ca2644..0d154350f180 100644
+--- a/sound/soc/mediatek/Kconfig
++++ b/sound/soc/mediatek/Kconfig
+@@ -216,7 +216,7 @@ config SND_SOC_MT8195_MT6359_RT1019_RT5682
+ 
+ config SND_SOC_MT8195_MT6359_RT1011_RT5682
+ 	tristate "ASoC Audio driver for MT8195 with MT6359 RT1011 RT5682 codec"
+-	depends on I2C
++	depends on I2C && GPIOLIB
+ 	depends on SND_SOC_MT8195 && MTK_PMIC_WRAP
+ 	select SND_SOC_MT6359
+ 	select SND_SOC_RT1011
+-- 
+2.32.0
 
-Do you think I should move the modification to another patch
-"[PATCH v1 3/4]spi:spi-mtk-nor:add new soc mt8186 sopport" ?
-Or I just add this comment here?
 
-> > 
-> >   	// trigger op
-> > -	writel(prg_len * BITS_PER_BYTE, sp->base +
-> > MTK_NOR_REG_PRG_CNT);
-> > +	if (rx_len)
-> > +		writel(prg_len * BITS_PER_BYTE + sp->caps-
-> > >extra_dummy_bit,
-> > +		       sp->base + MTK_NOR_REG_PRG_CNT);
-> > +	else
-> > +		writel(prg_len * BITS_PER_BYTE, sp->base +
-> > MTK_NOR_REG_PRG_CNT);
-> > +
-> >   	ret = mtk_nor_cmd_exec(sp, MTK_NOR_CMD_PROGRAM,
-> >   			       prg_len * BITS_PER_BYTE);
-> >   	if (ret)
-> > @@ -743,9 +754,19 @@ static const struct spi_controller_mem_ops
-> > mtk_nor_mem_ops = {
-> >   	.exec_op = mtk_nor_exec_op
-> >   };
-> >   
-> > +const struct mtk_nor_caps mtk_nor_caps_mt8173 = {
-> > +	.dma_bits = 32,
-> > +	.extra_dummy_bit = 0,
-> > +};
-> > +
-> > +const struct mtk_nor_caps mtk_nor_caps_mt8192 = {
-> > +	.dma_bits = 36,
-> > +	.extra_dummy_bit = 0,
-> > +};
-> > +
-> >   static const struct of_device_id mtk_nor_match[] = {
-> > -	{ .compatible = "mediatek,mt8192-nor", .data = (void *)36 },
-> > -	{ .compatible = "mediatek,mt8173-nor", .data = (void *)32 },
-> > +	{ .compatible = "mediatek,mt8173-nor", .data =
-> > &mtk_nor_caps_mt8173 },
-> > +	{ .compatible = "mediatek,mt8192-nor", .data =
-> > &mtk_nor_caps_mt8192 },
-> >   	{ /* sentinel */ }
->   };
-> >   MODULE_DEVICE_TABLE(of, mtk_nor_match);
-> > @@ -754,10 +775,10 @@ static int mtk_nor_probe(struct
-> > platform_device *pdev)
-> >   {
-> >   	struct spi_controller *ctlr;
-> >   	struct mtk_nor *sp;
-> > +	struct mtk_nor_caps *caps;
-> >   	void __iomem *base;
-> >   	struct clk *spi_clk, *ctlr_clk, *axi_clk;
-> >   	int ret, irq;
-> > -	unsigned long dma_bits;
-> >   
-> >   	base = devm_platform_ioremap_resource(pdev, 0);
-> >   	if (IS_ERR(base))
-> > @@ -775,9 +796,11 @@ static int mtk_nor_probe(struct
-> > platform_device *pdev)
-> >   	if (IS_ERR(axi_clk))
-> >   		return PTR_ERR(axi_clk);
->   
-> > -	dma_bits = (unsigned long)of_device_get_match_data(&pdev->dev);
-> > -	if (dma_set_mask_and_coherent(&pdev->dev,
-> > DMA_BIT_MASK(dma_bits))) {
-> > -		dev_err(&pdev->dev, "failed to set dma mask(%lu)\n",
-> > dma_bits);
-> > +	caps = (struct mtk_nor_caps *)of_device_get_match_data(&pdev-
-> > >dev);
-> > +	if (dma_set_mask_and_coherent(&pdev->dev,
-> > +				      DMA_BIT_MASK(caps->dma_bits))) {
-> 
-> While you're at it, can you please also make this return the right
-> value?
-> The function dma_set_mask_and_coherent() may return an error code, so
-> it's
-> worth it to just return that.
-> 
-> P.S.: 83 columns is ok
-> 
-
-ok, I'll fix it next version.
-Thanks.
-
-BR,
-Guochun
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
