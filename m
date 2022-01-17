@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93D3CC433F5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 17:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1560BC433F5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 17 Jan 2022 17:17:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K90qUI0a1rT77BicD9jWZcw7ZmYryB2QbLKeM/o74e4=; b=Lpwqxa/7HFhfUY
-	Wv7Dg4DF57QCxzZj9qUfDMiBi1E05Di5mDQGrh3+nePI2/xu1WjxAjV4kQg5wKZRtafyPGS2ohN3g
-	Z3nahOs4MjcGVWJ/JVjnjQb8tesVSlksrO4dCs6b2yZ3ovkqtjhJ3DZTrnbgtuBvjPo255nNO2O8Q
-	3UxCTpSZ+JxxNuKSQLqbxeir7RvQc18BNoS5dbGYMvoHIWsvKNTxrJoDHU0noEDlUD3XBpDCrKlHb
-	twRkNNGxXEJuFbO/sItf7uJXBAhP/Kr/yS8ZuvvbxK1yqU1xhmssfmLVdyGcfDMoqv10vlfO5ZaSk
-	nE8qVxWlOiA2HLPaq6mg==;
+	List-Owner; bh=WQTxbHFgwKjU/9P1Ov/A4Rn2IGvz7lpEogDi+3Cxtjc=; b=InXylqFN60yvCb
+	WLNDXZNFkuAHw/4ZbNL9nd1xNUARNTkjD+gZKqjokjPpU2ObJAaxoy+FQrYx+IZ2dHvwEaZGwmxh4
+	jkjYDf0+MlkI9O7bDIN3MXknI70/ZKTVGCfAG4urdgOC5Pwz7+yef6gYNyqykY0Myy2Jf9iAY8baT
+	vdPnwODheH8zKy/JtBlCtLAAMKi+UXrsOkBdzAnihu2yQ2e0ILNL0YJHUmuhT9Q42RYRgALdhBflU
+	lEte7tjsevruJU2oCX9zAo/2F2bmRRNWX4gfab6E56vyqBisnAgCdcEZ81vacqkazdQ2oiMflZTuR
+	1QcFqJudCxIwKSWB6t0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9VdJ-00FpIm-TI; Mon, 17 Jan 2022 17:17:30 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1n9VdQ-00FpLF-DT; Mon, 17 Jan 2022 17:17:36 +0000
+Received: from ams.source.kernel.org ([2604:1380:4601:e00::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9VR4-00FiWo-UH; Mon, 17 Jan 2022 17:04:52 +0000
+ id 1n9VR6-00FiXz-IC; Mon, 17 Jan 2022 17:04:54 +0000
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 8129EB81136;
- Mon, 17 Jan 2022 17:04:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7DD8C36AE3;
- Mon, 17 Jan 2022 17:04:46 +0000 (UTC)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 44FC0B81148;
+ Mon, 17 Jan 2022 17:04:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5206C36AEF;
+ Mon, 17 Jan 2022 17:04:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642439088;
- bh=ZqzrJaiaGVNMXGWL+p/VujNjJlhpChX0ptTIT8Wsttc=;
+ s=k20201202; t=1642439090;
+ bh=zqxVLJAQDSMqLlm3O2uF0y8g2XadcjGY1EzyOllkM8s=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=LQ5br7MEbpARGWWkcTUkcqnM7Dqo53FRLNqc4x+dSeJd3iMHGDft6ShRq3P6tL3iM
- srKBVRI3eeiX+zJtYAcdtA9nHW/NMWNi6a/4g+neHxilleckPQZSjY7g4I6sJ1XP9Z
- n0g0cQfU2YYqepbSLL0jnvAEssnt3kJo0/tKDTxeh4anvs1220MTgcTywROL+Zk3MB
- 5bo2HxGENvA8Y1JJw+mqIwowyDgnVgHMw0cvSS7iyzOxT7stChAb9r7ZlBIVfuSFjR
- ROWScPLnxmQpZ3zb0uZCThcYzHTBEGWquBEJp4Og/nY76OAONiIdzq2u/gMhSVBgR8
- tQ72AoPHTzHBw==
+ b=aLlbxPOEs1E77MUZyICq9PH5P18U2qgG8emlrxLq51MwhTYGuuwMnsMHYjxxV4KHD
+ MrC9qsgEy3ID+HNTt94e0ZByeWRqolFDZCuP/upFPN2kg0M9mSbuLas1HoUum2tbQu
+ qwjc4DCRi676H3qtz4YQguuWSTHCExhtY5Llzss5U4IP8sZhxqn07l/a/HSJi6+oji
+ /i5C3DNJFw9f5FwkGqQpxDGFy3A7tdQFZfD4CbHl98mqKSqpGdKNMrajFHi3+PgIfo
+ LSx0TZqvICHydMn7ciBfSv6d0qO0b1QXaYnYPdYQuiFge3M6eZHS2rrlDxhXOsqRlu
+ UHBhWEnHYqYuw==
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Tzung-Bi Shih <tzungbi@google.com>, Mark Brown <broonie@kernel.org>,
- Sasha Levin <sashal@kernel.org>, lgirdwood@gmail.com, perex@perex.cz,
- tiwai@suse.com, matthias.bgg@gmail.com, jiaxin.yu@mediatek.com,
- rikard.falkeborn@gmail.com, alsa-devel@alsa-project.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.10 32/34] ASoC: mediatek: mt8183: fix device_node
- leak
-Date: Mon, 17 Jan 2022 12:03:22 -0500
-Message-Id: <20220117170326.1471712-32-sashal@kernel.org>
+Cc: Miaoqian Lin <linmq006@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Vinod Koul <vkoul@kernel.org>, Sasha Levin <sashal@kernel.org>,
+ chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@linux.ie,
+ daniel@ffwll.ch, matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.10 33/34] phy: mediatek: Fix missing check in
+ mtk_mipi_tx_probe
+Date: Mon, 17 Jan 2022 12:03:23 -0500
+Message-Id: <20220117170326.1471712-33-sashal@kernel.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220117170326.1471712-1-sashal@kernel.org>
 References: <20220117170326.1471712-1-sashal@kernel.org>
@@ -60,8 +61,8 @@ MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_090451_188152_4F29C05F 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20220117_090452_778767_E05A44C0 
+X-CRM114-Status: GOOD (  11.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,56 +79,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Tzung-Bi Shih <tzungbi@google.com>
+From: Miaoqian Lin <linmq006@gmail.com>
 
-[ Upstream commit cb006006fe6221f092fadaffd3f219288304c9ad ]
+[ Upstream commit 399c91c3f30531593e5ff6ca7b53f47092128669 ]
 
-Fixes the device_node leak.
+The of_device_get_match_data() function may return NULL.
+Add check to prevent potential null dereference.
 
-Signed-off-by: Tzung-Bi Shih <tzungbi@google.com>
-Link: https://lore.kernel.org/r/20211224064719.2031210-3-tzungbi@google.com
-Signed-off-by: Mark Brown <broonie@kernel.org>
+Signed-off-by: Miaoqian Lin <linmq006@gmail.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://lore.kernel.org/r/20211224082103.7658-1-linmq006@gmail.com
+Signed-off-by: Vinod Koul <vkoul@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c         | 6 +++++-
- sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c | 7 ++++++-
- 2 files changed, 11 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_mipi_tx.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-index 20d31b69a5c00..9cc0f26b08fbc 100644
---- a/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-da7219-max98357.c
-@@ -787,7 +787,11 @@ static int mt8183_da7219_max98357_dev_probe(struct platform_device *pdev)
- 		return ret;
- 	}
+diff --git a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+index 8cee2591e7284..ccc742dc78bd9 100644
+--- a/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
++++ b/drivers/gpu/drm/mediatek/mtk_mipi_tx.c
+@@ -147,6 +147,8 @@ static int mtk_mipi_tx_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
  
--	return devm_snd_soc_register_card(&pdev->dev, card);
-+	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+
-+	of_node_put(platform_node);
-+	of_node_put(hdmi_codec);
-+	return ret;
- }
+ 	mipi_tx->driver_data = of_device_get_match_data(dev);
++	if (!mipi_tx->driver_data)
++		return -ENODEV;
  
- #ifdef CONFIG_OF
-diff --git a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-index 79ba2f2d84522..14ce8b93597f3 100644
---- a/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-+++ b/sound/soc/mediatek/mt8183/mt8183-mt6358-ts3a227-max98357.c
-@@ -720,7 +720,12 @@ mt8183_mt6358_ts3a227_max98357_dev_probe(struct platform_device *pdev)
- 				 __func__, ret);
- 	}
- 
--	return devm_snd_soc_register_card(&pdev->dev, card);
-+	ret = devm_snd_soc_register_card(&pdev->dev, card);
-+
-+	of_node_put(platform_node);
-+	of_node_put(ec_codec);
-+	of_node_put(hdmi_codec);
-+	return ret;
- }
- 
- #ifdef CONFIG_OF
+ 	mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+ 	mipi_tx->regs = devm_ioremap_resource(dev, mem);
 -- 
 2.34.1
 
