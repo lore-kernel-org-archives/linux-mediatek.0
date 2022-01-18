@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FFBDC433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 14:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20C67C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 14:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bRpDCymuiMtW/E6FBVSmE7FEbcOLIs67S2oXJZx+D3c=; b=1k2CBBMc4roRhv
-	LCt8e0sBJbssYOW8MiLeDCIsI3cWR4lHhvkaynC2vYBfJgOn6S+jz1hWvk+SUXG6jqJ405Ar529Bu
-	jqhgIwK6aV3UR8xe8N/8Ss79W7YgIF5y1uO8HdRKjPdH45rn4QHzmEwqIrtJpou7k+4cqeJ/06ifO
-	H0isfP30ZrpvPuRj5VfQVsxXtLNe7Gsp1NmGvDbSO4dHCtmmpGMpztSTAMM7mXkhw7rhHmMZb9Y1L
-	LPMg0WZT7Tf3UF3j0WieatiocZG73PdjIkoX5yyGpcRPle1TMbNDdL7eXCFP8nh6EJ5kCgC1nczWh
-	glRqQRuJmzusqRbYLEOQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kjsfp+vg0sg6USQP/JvOPKM/UYhw6EFTduraGL8U+ZU=; b=FvvnZMOgRnxXpc
+	CFbMca91rQMA+sSs4Itz4Wg76Em2vhcAaNxZVLOJ+mbtnjEkW5CCu7/SzqGj1FxIRhQjUz5JlpM0U
+	Xk95yEL3OaxE2kEMEFo+W8EuwCnMRvSaGNoX7VulCmCkQmuDpO5cofjGYvUFGOBe90wrPwKGWoRAe
+	m4gYQy+3Rr96QK9u4Rue+qL80YMAU0itrWq17M93yqI19OJlHIlGWPmGzwMwoAWFf/q24EdaOr8lI
+	O4L/CekaHpLqilfNdpj4DmFX+qX1GepEZYvUBMzseEx3H77S+I8xXFV9yg2RBCs1RyVuixEZI9ct8
+	3xwV05RXZphI/tCHuowA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9pHN-001olh-TC; Tue, 18 Jan 2022 14:16:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1n9pL6-001pXv-D8; Tue, 18 Jan 2022 14:20:00 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9pHG-001og8-Jh
- for linux-mediatek@lists.infradead.org; Tue, 18 Jan 2022 14:16:04 +0000
-X-UUID: 2f34c36586184c7d8c30360a371d2dfc-20220118
-X-UUID: 2f34c36586184c7d8c30360a371d2dfc-20220118
-Received: from mtkcas67.mediatek.inc [(172.29.193.45)] by mailgw01.mediatek.com
+ id 1n9pL4-001pX5-C4
+ for linux-mediatek@lists.infradead.org; Tue, 18 Jan 2022 14:19:59 +0000
+X-UUID: eeee9014912444f7bdf99d1126fd24d0-20220118
+X-UUID: eeee9014912444f7bdf99d1126fd24d0-20220118
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
  (envelope-from <guochun.mao@mediatek.com>)
  (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 857296629; Tue, 18 Jan 2022 07:15:51 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Tue, 18 Jan 2022 06:15:49 -0800
+ with ESMTP id 1818536008; Tue, 18 Jan 2022 07:19:53 -0700
+Received: from mtkmbs10n1.mediatek.inc (172.21.101.34) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 18 Jan 2022 06:19:51 -0800
 Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 18 Jan 2022 22:15:47 +0800
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
+ 15.2.792.15; Tue, 18 Jan 2022 22:19:50 +0800
 Received: from localhost.localdomain (10.17.3.154) by mtkcas10.mediatek.inc
  (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 18 Jan 2022 22:15:46 +0800
+ Transport; Tue, 18 Jan 2022 22:19:49 +0800
 From: <guochun.mao@mediatek.com>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Mark
  Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>
@@ -52,16 +52,14 @@ CC: Matthias Brugger <matthias.bgg@gmail.com>, Zhen Zhang
  <guochun.mao@mediatek.com>
 Subject: [PATCH 2/4] spi: spi-mtk-nor: improve device table for adding more
  capabilities
-Date: Tue, 18 Jan 2022 22:15:40 +0800
-Message-ID: <20220118141542.2510-3-guochun.mao@mediatek.com>
+Date: Tue, 18 Jan 2022 22:19:40 +0800
+Message-ID: <20220118141942.2624-2-guochun.mao@mediatek.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20220118141542.2510-1-guochun.mao@mediatek.com>
-References: <20220118141542.2510-1-guochun.mao@mediatek.com>
 MIME-Version: 1.0
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_061602_741670_B9D71DD8 
-X-CRM114-Status: GOOD (  18.30  )
+X-CRM114-CacheID: sfid-20220118_061958_444206_A3AC61F6 
+X-CRM114-Status: GOOD (  18.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,6 +83,7 @@ Add a item extra_dummy_bit for new SoCs, due to design changed.
 
 Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
 Signed-off-by: Zhen Zhang <zhen.zhang@mediatek.com>
+Change-Id: I6f36e6fe1c752e57e85818758f742fb0e575bf7f
 ---
  drivers/spi/spi-mtk-nor.c | 48 +++++++++++++++++++++++++++++++--------
  1 file changed, 39 insertions(+), 9 deletions(-)
