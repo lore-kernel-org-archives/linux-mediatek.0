@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4F4C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 14:53:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D71EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 15:16:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nH+F5AEU18v49BlaboQjiDGDrmW5FK91kUcP0/O1FPI=; b=iSIYVuZUWV6RTfy0hn4I8G31b+
-	4EH/xdq68RorWHBI0X7zf1g2nlCg1CKiOhgkhOZ1BG4tajCblzXHyl76P8sDATm5wERiousW0Hm3U
-	PMXSJfmFxhBJETiOy8m4yWUXaNu6jftO7ytuctbgfAZe66zXICzwyM5uZ6jTIilEw4e4RYmwH+bjK
-	/Y4WG3tUtoDds2etBzCRyT0cSRbVfDOeQCp0S5IEf336Bd2Kcbb4CbhqDSiJC46VCNzwxcVnyQvyS
-	ZKUrMD9nV4dMXJT0QtXVbpPXN5oqZmetfW0L07j8nOR6VL5LUfXfoPYc9uVxm6JtsPnld/1nojNUw
-	z32Gwkcw==;
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=WOAz8RDmUmydqeSPzgDTIVjCwWAw3BALTdb+iVLk/so=; b=kARq+DVtn48QR5
+	5PhpA8o6vUYc5RxcFSYEU6/guXKLdWQYT/ygjkjeVqkSeI13Q2I+CrMcKeMXP7QvvAId3KjhQ0NxB
+	Rm7F2C8VEIawM/wFEjwBs+tzlQuyWvehzbToabupWYJbkZ7gevpvYstJpce/Bo53YBufNxffJkNW2
+	kqqbrpEanqgOHHkA6tKhhIV66VSiFIZ1Hj+aQRpW4ynxtoR5c+KTt/Bc5UKqpowBIF0jWUrnKRcBY
+	Je4T81JowQYSEnKzoZSevcHtQ1uBmfwuoJzojiksHpjbh9I7DugPMuJp3A1tsD/YxeLNRRiqMZGWK
+	8qBwqxYqklEDIKH53VRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9prr-001tri-Id; Tue, 18 Jan 2022 14:53:51 +0000
-Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
- by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9prp-001tqY-2k
- for linux-mediatek@lists.infradead.org; Tue, 18 Jan 2022 14:53:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 1536E1F43F73
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642517626;
- bh=ZNaX/A42dWxgeoOMmsN9zg5S+iY7KKP8MfwY9TtdMlg=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=E77IBzzN3ChFnj4rWQxucnOEENtDBpzSy+Xv1HGd0/RpJmBUtI811J8xE7gtosowh
- TpMdgZ3s4jHvIrvOSHyDqQeDZmQ5nAXFHnZ4pyAkmR9Lg+YtigXrcJjICKdFxreTxC
- bs3tEkK96ikCHuJ/2LAQoRL1Xz6Parc8NmkOG57r7NLrxB/GUsBX9ERXy3L2Xirine
- qQ7TqmYvU6dokZqmi6XXJfpHgjsQ7yYq1abOU8ZG2RiyoFbwv87R1XDT2Y2j2i/H8W
- xHhjUDvQ4lsc46JTEI78m3MLpEfjuVjp+Y5yS25eYzQk4JauGKYhSSbcVMvr7HxLNQ
- l3B4jurQDSLBQ==
-Subject: Re: [PATCH v2 3/4] spi: spi-mtk-nor: add new soc mt8186 support
-To: guochun.mao@mediatek.com, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- Zhen Zhang <zhen.zhang@mediatek.com>, Bayi Cheng <bayi.cheng@mediatek.com>,
- Chuanhong Guo <gch981213@gmail.com>, Bin Zhang <bin.zhang@mediatek.com>,
- linux-mediatek@lists.infradead.org, srv_heupstream@mediatek.com,
- project_global_chrome_upstream_group@mediatek.com
-References: <20220118142820.2729-1-guochun.mao@mediatek.com>
- <20220118142820.2729-4-guochun.mao@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <b1302443-68cb-b7d8-6a17-c1783ce3ff55@collabora.com>
-Date: Tue, 18 Jan 2022 15:53:43 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+	id 1n9qDg-0022em-BS; Tue, 18 Jan 2022 15:16:24 +0000
+Received: from foss.arm.com ([217.140.110.172])
+ by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n9pzf-001xvC-OZ; Tue, 18 Jan 2022 15:01:57 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A0D0B1FB;
+ Tue, 18 Jan 2022 07:01:54 -0800 (PST)
+Received: from [10.57.67.190] (unknown [10.57.67.190])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 723883F766;
+ Tue, 18 Jan 2022 07:01:52 -0800 (PST)
+Message-ID: <69525223-7d90-5714-bbe9-4d7f0b9a293d@arm.com>
+Date: Tue, 18 Jan 2022 15:01:46 +0000
 MIME-Version: 1.0
-In-Reply-To: <20220118142820.2729-4-guochun.mao@mediatek.com>
-Content-Language: en-US
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH] clk: mediatek: Disable ACP to fix 3D on MT8192
+Content-Language: en-GB
+To: Chen-Yu Tsai <wenst@chromium.org>,
+ Alyssa Rosenzweig <alyssa@collabora.com>, Stephen Boyd <sboyd@kernel.org>
+Cc: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ linux-mediatek@lists.infradead.org,
+ Michael Turquette <mturquette@baylibre.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu
+ <weiyi.lu@mediatek.com>, linux-clk@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, Nick Fan <Nick.Fan@mediatek.com>,
+ Nicolas Boichat <drinkcat@chromium.org>
+References: <20220110181330.3224-1-alyssa.rosenzweig@collabora.com>
+ <eb6d11af-ff48-a366-d428-77bcaa250a8a@arm.com> <YeF/AYZ0DuKGwLLk@maud>
+ <CAGXv+5H9BsNUdiY6zMH6THKKMvRdPypNtUEVviMHQEjgNGDk_A@mail.gmail.com>
+From: Robin Murphy <robin.murphy@arm.com>
+In-Reply-To: <CAGXv+5H9BsNUdiY6zMH6THKKMvRdPypNtUEVviMHQEjgNGDk_A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_065349_288129_62604138 
-X-CRM114-Status: GOOD (  15.35  )
+X-CRM114-CacheID: sfid-20220118_070155_964952_F63A22CE 
+X-CRM114-Status: GOOD (  22.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,46 +71,67 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/01/22 15:28, guochun.mao@mediatek.com ha scritto:
-> From: Guochun Mao <guochun.mao@mediatek.com>
+On 2022-01-18 07:19, Chen-Yu Tsai wrote:
+> Hi,
 > 
-> Add compatible mediatek,mt8186-nor implementation.
+> On Fri, Jan 14, 2022 at 9:47 PM Alyssa Rosenzweig <alyssa@collabora.com> wrote:
+>>
+>>>> That links to an internal Google issue tracker which I assume has more
+>>>> information on the bug. I would appreciate if someone from Google or
+>>>> MediaTek could explain what this change actually does and why it's
+>>>> necessary on MT8192.
+>>>>
+>>>> At any rate, this register logically belongs to the MT8192 "infra" clock
+>>>> device, so it makes sense to set it there too. This avoids adding any
+>>>> platform-specific hacks to the 3D driver, either mainline (Panfrost) or
+>>>> legacy (kbase).
+>>>
+>>> Does this really have anything to do with clocks?
+>>
+>> I have no idea. MediaTek, Google, please explain.
+>>
+>>> In particular, "ACP" usually refers to the Accelerator Coherency Port
+>>> of a CPU cluster or DSU, and given the stated symptom of the issue
+>>> affected by it, my first guess would be that this bit might indeed
+>>> control routing of GPU traffic either to the ACP or the (presumably
+>>> non-coherent) main interconnect.
+>>
+>> I'd easily believe that.
 > 
-> Signed-off-by: Guochun Mao <guochun.mao@mediatek.com>
-> Signed-off-by: Zhen Zhang <zhen.zhang@mediatek.com>
+> As Robin guessed, "ACP" here does refer to the Accelerator Coherency Port.
+> And the bit in infracfg toggles whether ACP is used or not.
+> 
+> Explanation from MediaTek in verbatim:
+> 
+> -------------------------------------------------------------------------
+> The ACP path on MT8192 is just for experimental only.
+> We are not intended to enable ACP by design.
+> 
+> But due to an unexpected operation, it was accidently opened by default.
+> So we need a patch to disable the ACP for MT8192.
+> -------------------------------------------------------------------------
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Aha! That's great, thanks ChenYu!
 
-> ---
->   drivers/spi/spi-mtk-nor.c | 6 ++++++
->   1 file changed, 6 insertions(+)
-> 
-> diff --git a/drivers/spi/spi-mtk-nor.c b/drivers/spi/spi-mtk-nor.c
-> index f5ff01f61f42..e44fdf7c9e4b 100644
-> --- a/drivers/spi/spi-mtk-nor.c
-> +++ b/drivers/spi/spi-mtk-nor.c
-> @@ -765,6 +765,11 @@ const struct mtk_nor_caps mtk_nor_caps_mt8173 = {
->   	.extra_dummy_bit = 0,
->   };
->   
-> +const struct mtk_nor_caps mtk_nor_caps_mt8186 = {
-> +	.dma_bits = 32,
-> +	.extra_dummy_bit = 1,
-> +};
-> +
->   const struct mtk_nor_caps mtk_nor_caps_mt8192 = {
->   	.dma_bits = 36,
->   	.extra_dummy_bit = 0,
-> @@ -772,6 +777,7 @@ const struct mtk_nor_caps mtk_nor_caps_mt8192 = {
->   
->   static const struct of_device_id mtk_nor_match[] = {
->   	{ .compatible = "mediatek,mt8173-nor", .data = &mtk_nor_caps_mt8173 },
-> +	{ .compatible = "mediatek,mt8186-nor", .data = &mtk_nor_caps_mt8186 },
->   	{ .compatible = "mediatek,mt8192-nor", .data = &mtk_nor_caps_mt8192 },
->   	{ /* sentinel */ }
->   };
-> 
+Stephen, my thinking here is that if this feature controls the GPU 
+interconnect, and only matters when the GPU is going to be used (as 
+strongly implied by the downstream implementation), then the GPU driver 
+is the only interested party and may as well take responsibility if 
+there's no better alternative.
 
+I'd agree that if there was already a "base" infracfg driver doing 
+general system-wide set-and-forget configuration then it would equally 
+well fit in there, but that doesn't seem to be the case. Short of trying 
+to abuse the bp_infracfg data in the mtk-pm-domains driver (which 
+doesn't seem like a particularly pleasant idea), the code to poke a bit 
+into a syscon regmap is going to be pretty much the same wherever we add 
+it. There's already a bit of a pattern for MTK drivers to look up and 
+poke their own infracfg bits directly as needed, so between that and the 
+downstream implementation for this particular bit, leaving it to 
+Panfrost seems like the least surprising option.
+
+Cheers,
+Robin.
 
 _______________________________________________
 Linux-mediatek mailing list
