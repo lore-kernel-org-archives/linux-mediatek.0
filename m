@@ -4,63 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 288A3C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 18:16:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80F1C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 20:22:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y77cgKWiOkFCqmKjem1SWuXy+hMQaOfJPmCbtpuJaZA=; b=F6CdCTmFkjxeHZ
-	lSox8A14135wp4dHkb7OMqAZmCd6kAuse3KlrtzZxLCIJuVmxURdUHOXpNUmkEtkj6Z3rsilipw1u
-	dnZof8GdkzPGSMIkWOTUE3KHbxobsEoTHuDkDedtNTgH7+v24sehjTRkThk2yRjLwTvMElsyOiwrO
-	Wa1gb4N3+deICPdvZFkvfKeCBn6OJfc0kZSSYBJg4mNd30Dr37qvyxUzR1qtTzpMJuaudtcJ1fmuE
-	TMefEQHT9VzXYgZqCRbhxS92e3xYThVmHFZgYebkMAgH+rEcZpIY8WBrbnSoIoK0ausyf2+NOeHHr
-	eZhpKiOuTdcePQtbr0Tw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=OY7Ww+tAD7fjcect53zpzatygYNAkABVDaZveAyGrFk=; b=Ln9tXQrvJJzJlFfSgLn2Ztv6/X
+	ks4VAWbZ5yT/MpE66DkKTVbZuCAtOnzZ0/rt7HKszzSKwR/Hehe/++qBGm2bnCHbnAEXoAXSNhkIX
+	ZfZI08DlM2CWUFW7olkUyMqRTZsu/3IeL/L/nygxR5HsFhLNeXhKrFFjw4NlTnPrombfzeaJ7vVK5
+	O/8LGZJxUerdcdjjvy9vjr2APFrh1NQCdgn64XNnGJX4S6IhLde2atYnic0EwA38YWGRA5njbyoTm
+	rclSgEKkx98tRiYyizye1Vh7oN/WsPhOLHX7uBw/Dg08aBrByvPvSrgC8p7X9CTGw1ZdAr9uT543v
+	Lm3dDk0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9t2C-002XyE-9H; Tue, 18 Jan 2022 18:16:44 +0000
-Received: from mailout.easymail.ca ([64.68.200.34])
+	id 1n9uzX-002s9Q-4q; Tue, 18 Jan 2022 20:22:07 +0000
+Received: from mxout02.lancloud.ru ([45.84.86.82])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9t28-002Xxa-Gs
- for linux-mediatek@lists.infradead.org; Tue, 18 Jan 2022 18:16:43 +0000
-Received: from localhost (localhost [127.0.0.1])
- by mailout.easymail.ca (Postfix) with ESMTP id 0F519B4EB5;
- Tue, 18 Jan 2022 18:16:35 +0000 (UTC)
-X-Virus-Scanned: Debian amavisd-new at emo04-pco.easydns.vpn
-Received: from mailout.easymail.ca ([127.0.0.1])
- by localhost (emo04-pco.easydns.vpn [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id URevQUGPMCfL; Tue, 18 Jan 2022 18:16:34 +0000 (UTC)
-Received: from [192.168.1.126] (unknown [71.205.29.0])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mailout.easymail.ca (Postfix) with ESMTPSA id 93E9CAA893;
- Tue, 18 Jan 2022 18:16:32 +0000 (UTC)
-Message-ID: <d291f592-d84a-2ffe-7f75-df77890efce8@gonehiking.org>
-Date: Tue, 18 Jan 2022 11:16:09 -0700
+ id 1n9uzQ-002s6e-Db; Tue, 18 Jan 2022 20:22:04 +0000
+Received: from LanCloud
+DKIM-Filter: OpenDKIM Filter v2.11.0 mxout02.lancloud.ru 27A6E20B359D
+Received: from LanCloud
+Received: from LanCloud
+Received: from LanCloud
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
+CC: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, <linux-iio@vger.kernel.org>, "Linus
+ Walleij" <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, "ALSA
+ Development Mailing List" <alsa-devel@alsa-project.org>, Jaroslav Kysela
+ <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>, Thierry Reding
+ <thierry.reding@gmail.com>, MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>, "open list:GPIO SUBSYSTEM"
+ <linux-gpio@vger.kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>,
+ <linux-phy@lists.infradead.org>, <netdev@vger.kernel.org>, linux-spi
+ <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>, Khuong Dinh
+ <khuong@os.amperecomputing.com>, Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>, Kamal Dasu
+ <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski
+ <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>, "Kishon Vijay
+ Abraham I" <kishon@ti.com>, Geert Uytterhoeven <geert@linux-m68k.org>, "open
+ list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, bcm-kernel-feedback-list
+ <bcm-kernel-feedback-list@broadcom.com>, Zhang Rui <rui.zhang@intel.com>,
+ <platform-driver-x86@vger.kernel.org>, Linux PWM List
+ <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, "Saravanan
+ Sekar" <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, Linux PM list
+ <linux-pm@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, John Garry <john.garry@huawei.com>,
+ Takashi Iwai <tiwai@suse.com>, Peter Korsgaard <peter@korsgaard.com>,
+ "William Breathitt Gray" <vilhelm.gray@gmail.com>, Mark Gross
+ <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>, Alex Williamson
+ <alex.williamson@redhat.com>, Mark Brown <broonie@kernel.org>, "Borislav
+ Petkov" <bp@alien8.de>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, <openipmi-developer@lists.sourceforge.net>, "Andy
+ Shevchenko" <andriy.shevchenko@linux.intel.com>, Benson Leung
+ <bleung@chromium.org>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ "Linux ARM" <linux-arm-kernel@lists.infradead.org>,
+ <linux-edac@vger.kernel.org>, Tony Luck <tony.luck@intel.com>, Richard
+ Weinberger <richard@nod.at>, "Mun Yew Tham" <mun.yew.tham@intel.com>, Eric
+ Auger <eric.auger@redhat.com>, "Greg Kroah-Hartman"
+ <gregkh@linuxfoundation.org>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>, Cornelia Huck <cohuck@redhat.com>, "Linux
+ MMC List" <linux-mmc@vger.kernel.org>, Joakim Zhang
+ <qiangqing.zhang@nxp.com>, Linux Kernel Mailing List
+ <linux-kernel@vger.kernel.org>, Linux-Renesas
+ <linux-renesas-soc@vger.kernel.org>, Vinod Koul <vkoul@kernel.org>, "James
+ Morse" <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, "Sebastian
+ Reichel" <sre@kernel.org>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
+ <niklas.soderlund@ragnatech.se>, <linux-mediatek@lists.infradead.org>, "Brian
+ Norris" <computersforpeace@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>
+References: <CAMuHMdWK3RKVXRzMASN4HaYfLckdS7rBvSopafq+iPADtGEUzA@mail.gmail.com>
+ <20220112085009.dbasceh3obfok5dc@pengutronix.de>
+ <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <29f0c65d-77f2-e5b2-f6cc-422add8a707d@omp.ru>
+ <20220114092557.jrkfx7ihg26ekzci@pengutronix.de>
+ <61b80939-357d-14f5-df99-b8d102a4e1a1@omp.ru>
+ <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
+ <57af1851-9341-985e-7b28-d2ba86770ecb@omp.ru>
+ <20220117084732.cdy2sash5hxp4lwo@pengutronix.de>
+From: Sergey Shtylyov <s.shtylyov@omp.ru>
+Organization: Open Mobile Platform
+Message-ID: <68d3bb7a-7572-7495-d295-e1d512ef509e@omp.ru>
+Date: Tue, 18 Jan 2022 23:21:45 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.1
-Subject: Re: [PATCH] mt76: mt7921e: fix possible probe failure after reboot
+In-Reply-To: <20220117084732.cdy2sash5hxp4lwo@pengutronix.de>
 Content-Language: en-US
-To: sean.wang@mediatek.com, nbd@nbd.name, lorenzo.bianconi@redhat.com
-Cc: Soul.Huang@mediatek.com, YN.Chen@mediatek.com, Leon.Yen@mediatek.com,
- Eric-SY.Chang@mediatek.com, Mark-YW.Chen@mediatek.com,
- Deren.Wu@mediatek.com, km.lin@mediatek.com, jenhao.yang@mediatek.com,
- robin.chiu@mediatek.com, Eddie.Chen@mediatek.com, ch.yeh@mediatek.com,
- posh.sun@mediatek.com, ted.huang@mediatek.com, Eric.Liang@mediatek.com,
- Stella.Chang@mediatek.com, Tom.Chou@mediatek.com, steve.lee@mediatek.com,
- jsiuda@google.com, frankgor@google.com, jemele@google.com,
- abhishekpandit@google.com, shawnku@google.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <70e27cbc652cbdb78277b9c691a3a5ba02653afb.1641540175.git.objelf@gmail.com>
-From: Khalid Aziz <khalid@gonehiking.org>
-In-Reply-To: <70e27cbc652cbdb78277b9c691a3a5ba02653afb.1641540175.git.objelf@gmail.com>
+X-Originating-IP: [192.168.11.198]
+X-ClientProxiedBy: LFEXT01.lancloud.ru (fd00:f066::141) To
+ LFEX1907.lancloud.ru (fd00:f066::207)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_101640_745329_3C2A366A 
-X-CRM114-Status: GOOD (  32.54  )
+X-CRM114-CacheID: sfid-20220118_122200_863165_78C5137D 
+X-CRM114-Status: GOOD (  34.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,392 +115,162 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/7/22 12:30 AM, sean.wang@mediatek.com wrote:
-> From: Sean Wang <sean.wang@mediatek.com>
->
-> It doesn't guarantee the mt7921e gets started with ASPM L0 after each
-> machine reboot on every platform.
->
-> If mt7921e gets started with not ASPM L0, it would be possible that the
-> driver encounters time to time failure in mt7921_pci_probe, like a
-> weird chip identifier is read
->
-> [  215.514503] mt7921e 0000:05:00.0: ASIC revision: feed0000
-> [  216.604741] mt7921e: probe of 0000:05:00.0 failed with error -110
->
-> or failing to init hardware because the driver is not allowed to access the
-> register until the device is in ASPM L0 state. So, we call
-> __mt7921e_mcu_drv_pmctrl in early mt7921_pci_probe to force the device
-> to bring back to the L0 state for we can safely access registers in any
-> case.
->
-> In the patch, we move all functions from dma.c to pci.c and register mt76
-> bus operation earilier, that is the __mt7921e_mcu_drv_pmctrl depends on.
->
-> Fixes: bf3747ae2e25 ("mt76: mt7921: enable aspm by default")
-> Reported-by: Kai-Chuan Hsieh <kaichuan.hsieh@canonical.com>
-> Co-developed-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
+Hello!
 
+On 1/17/22 11:47 AM, Uwe Kleine-K=F6nig wrote:
 
-Tested-by: Khalid Aziz <khalid@gonehiking.org>
+[...]
+>>>>>>>>> To me it sounds much more logical for the driver to check if an
+>>>>>>>>> optional irq is non-zero (available) or zero (not available), tha=
+n to
+>>>>>>>>> sprinkle around checks for -ENXIO. In addition, you have to remem=
+ber
+>>>>>>>>> that this one returns -ENXIO, while other APIs use -ENOENT or -EN=
+OSYS
+>>>>>>>>> (or some other error code) to indicate absence. I thought not hav=
+ing
+>>>>>>>>> to care about the actual error code was the main reason behind the
+>>>>>>>>> introduction of the *_optional() APIs.
+>>>>>>>
+>>>>>>>> No, the main benefit of gpiod_get_optional() (and clk_get_optional=
+()) is
+>>>>>>>> that you can handle an absent GPIO (or clk) as if it were availabl=
+e.
+>>>>>>
+>>>>>>    Hm, I've just looked at these and must note that they match 1:1 w=
+ith
+>>>>>> platform_get_irq_optional(). Unfortunately, we can't however behave =
+the
+>>>>>> same way in request_irq() -- because it has to support IRQ0 for the =
+sake
+>>>>>> of i8253 drivers in arch/...
+>>>>>
+>>>>> Let me reformulate your statement to the IMHO equivalent:
+>>>>>
+>>>>> 	If you set aside the differences between
+>>>>> 	platform_get_irq_optional() and gpiod_get_optional(),
+>>>>
+>>>>    Sorry, I should make it clear this is actually the diff between a w=
+ould-be
+>>>> platform_get_irq_optional() after my patch, not the current code...
+>>>
+>>> The similarity is that with your patch both gpiod_get_optional() and
+>>> platform_get_irq_optional() return NULL and 0 on not-found. The relevant
+>>> difference however is that for a gpiod NULL is a dummy value, while for
+>>> irqs it's not. So the similarity is only syntactically, but not
+>>> semantically.
+>>
+>>    I have noting to say here, rather than optional IRQ could well have a=
+ different
+>> meaning than for clk/gpio/etc.
+>>
+>> [...]
+>>>>> However for an interupt this cannot work. You will always have to che=
+ck
+>>>>> if the irq is actually there or not because if it's not you cannot ju=
+st
+>>>>> ignore that. So there is no benefit of an optional irq.
+>>>>>
+>>>>> Leaving error message reporting aside, the introduction of
+>>>>> platform_get_irq_optional() allows to change
+>>>>>
+>>>>> 	irq =3D platform_get_irq(...);
+>>>>> 	if (irq < 0 && irq !=3D -ENXIO) {
+>>>>> 		return irq;
+>>>>> 	} else if (irq >=3D 0) {
+>>>>
+>>>>    Rather (irq > 0) actually, IRQ0 is considered invalid (but still re=
+turned).
+>>>
+>>> This is a topic I don't feel strong for, so I'm sloppy here. If changing
+>>> this is all that is needed to convince you of my point ...
+>>
+>>    Note that we should absolutely (and first of all) stop returning 0 fr=
+om platform_get_irq()
+>> on a "real" IRQ0. Handling that "still good" zero absolutely doesn't sca=
+le e.g. for the subsystems
+>> (like libata) which take 0 as an indication that the polling mode should=
+ be used... We can't afford
+>> to be sloppy here. ;-)
+> =
 
---
-Khalid
-> ---
->   .../net/wireless/mediatek/mt76/mt7921/dma.c   | 119 -----------------
->   .../wireless/mediatek/mt76/mt7921/mt7921.h    |   1 +
->   .../net/wireless/mediatek/mt76/mt7921/pci.c   | 124 ++++++++++++++++++
->   .../wireless/mediatek/mt76/mt7921/pci_mcu.c   |  18 ++-
->   4 files changed, 139 insertions(+), 123 deletions(-)
->
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-> index cdff1fd52d93..39d6ce4ecddd 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/dma.c
-> @@ -78,110 +78,6 @@ static void mt7921_dma_prefetch(struct mt7921_dev *dev)
->   	mt76_wr(dev, MT_WFDMA0_TX_RING17_EXT_CTRL, PREFETCH(0x380, 0x4));
->   }
->   
-> -static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
-> -{
-> -	static const struct {
-> -		u32 phys;
-> -		u32 mapped;
-> -		u32 size;
-> -	} fixed_map[] = {
-> -		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
-> -		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
-> -		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
-> -		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
-> -		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
-> -		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
-> -		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
-> -		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
-> -		{ 0x00400000, 0x80000, 0x10000 }, /* WF_MCU_SYSRAM */
-> -		{ 0x00410000, 0x90000, 0x10000 }, /* WF_MCU_SYSRAM (configure register) */
-> -		{ 0x40000000, 0x70000, 0x10000 }, /* WF_UMAC_SYSRAM */
-> -		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
-> -		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
-> -		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
-> -		{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
-> -		{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
-> -		{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
-> -		{ 0x7c060000, 0xe0000, 0x10000 }, /* CONN_INFRA, conn_host_csr_top */
-> -		{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
-> -		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
-> -		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
-> -		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
-> -		{ 0x820cc000, 0x0e000, 0x1000 }, /* WF_UMAC_TOP (PP) */
-> -		{ 0x820cd000, 0x0f000, 0x1000 }, /* WF_MDP_TOP */
-> -		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
-> -		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
-> -		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
-> -		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
-> -		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
-> -		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
-> -		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
-> -		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
-> -		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
-> -		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
-> -		{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
-> -		{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
-> -		{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
-> -		{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
-> -		{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
-> -		{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
-> -		{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
-> -		{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
-> -		{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
-> -	};
-> -	int i;
-> -
-> -	if (addr < 0x100000)
-> -		return addr;
-> -
-> -	for (i = 0; i < ARRAY_SIZE(fixed_map); i++) {
-> -		u32 ofs;
-> -
-> -		if (addr < fixed_map[i].phys)
-> -			continue;
-> -
-> -		ofs = addr - fixed_map[i].phys;
-> -		if (ofs > fixed_map[i].size)
-> -			continue;
-> -
-> -		return fixed_map[i].mapped + ofs;
-> -	}
-> -
-> -	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
-> -	    (addr >= 0x70000000 && addr < 0x78000000) ||
-> -	    (addr >= 0x7c000000 && addr < 0x7c400000))
-> -		return mt7921_reg_map_l1(dev, addr);
-> -
-> -	dev_err(dev->mt76.dev, "Access currently unsupported address %08x\n",
-> -		addr);
-> -
-> -	return 0;
-> -}
-> -
-> -static u32 mt7921_rr(struct mt76_dev *mdev, u32 offset)
-> -{
-> -	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> -	u32 addr = __mt7921_reg_addr(dev, offset);
-> -
-> -	return dev->bus_ops->rr(mdev, addr);
-> -}
-> -
-> -static void mt7921_wr(struct mt76_dev *mdev, u32 offset, u32 val)
-> -{
-> -	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> -	u32 addr = __mt7921_reg_addr(dev, offset);
-> -
-> -	dev->bus_ops->wr(mdev, addr, val);
-> -}
-> -
-> -static u32 mt7921_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
-> -{
-> -	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> -	u32 addr = __mt7921_reg_addr(dev, offset);
-> -
-> -	return dev->bus_ops->rmw(mdev, addr, mask, val);
-> -}
-> -
->   static int mt7921_dma_disable(struct mt7921_dev *dev, bool force)
->   {
->   	if (force) {
-> @@ -341,23 +237,8 @@ int mt7921_wpdma_reinit_cond(struct mt7921_dev *dev)
->   
->   int mt7921_dma_init(struct mt7921_dev *dev)
->   {
-> -	struct mt76_bus_ops *bus_ops;
->   	int ret;
->   
-> -	dev->phy.dev = dev;
-> -	dev->phy.mt76 = &dev->mt76.phy;
-> -	dev->mt76.phy.priv = &dev->phy;
-> -	dev->bus_ops = dev->mt76.bus;
-> -	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
-> -			       GFP_KERNEL);
-> -	if (!bus_ops)
-> -		return -ENOMEM;
-> -
-> -	bus_ops->rr = mt7921_rr;
-> -	bus_ops->wr = mt7921_wr;
-> -	bus_ops->rmw = mt7921_rmw;
-> -	dev->mt76.bus = bus_ops;
-> -
->   	mt76_dma_attach(&dev->mt76);
->   
->   	ret = mt7921_dma_disable(dev, true);
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> index 8b674e042568..63e3c7ef5e89 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-> @@ -443,6 +443,7 @@ int mt7921e_mcu_init(struct mt7921_dev *dev);
->   int mt7921s_wfsys_reset(struct mt7921_dev *dev);
->   int mt7921s_mac_reset(struct mt7921_dev *dev);
->   int mt7921s_init_reset(struct mt7921_dev *dev);
-> +int __mt7921e_mcu_drv_pmctrl(struct mt7921_dev *dev);
->   int mt7921e_mcu_drv_pmctrl(struct mt7921_dev *dev);
->   int mt7921e_mcu_fw_pmctrl(struct mt7921_dev *dev);
->   
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> index 1ae0d5826ca7..a0c82d19c4d9 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-> @@ -121,6 +121,110 @@ static void mt7921e_unregister_device(struct mt7921_dev *dev)
->   	mt76_free_device(&dev->mt76);
->   }
->   
-> +static u32 __mt7921_reg_addr(struct mt7921_dev *dev, u32 addr)
-> +{
-> +	static const struct {
-> +		u32 phys;
-> +		u32 mapped;
-> +		u32 size;
-> +	} fixed_map[] = {
-> +		{ 0x820d0000, 0x30000, 0x10000 }, /* WF_LMAC_TOP (WF_WTBLON) */
-> +		{ 0x820ed000, 0x24800, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_MIB) */
-> +		{ 0x820e4000, 0x21000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_TMAC) */
-> +		{ 0x820e7000, 0x21e00, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_DMA) */
-> +		{ 0x820eb000, 0x24200, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_LPON) */
-> +		{ 0x820e2000, 0x20800, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_AGG) */
-> +		{ 0x820e3000, 0x20c00, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_ARB) */
-> +		{ 0x820e5000, 0x21400, 0x0800 }, /* WF_LMAC_TOP BN0 (WF_RMAC) */
-> +		{ 0x00400000, 0x80000, 0x10000 }, /* WF_MCU_SYSRAM */
-> +		{ 0x00410000, 0x90000, 0x10000 }, /* WF_MCU_SYSRAM (configure register) */
-> +		{ 0x40000000, 0x70000, 0x10000 }, /* WF_UMAC_SYSRAM */
-> +		{ 0x54000000, 0x02000, 0x1000 }, /* WFDMA PCIE0 MCU DMA0 */
-> +		{ 0x55000000, 0x03000, 0x1000 }, /* WFDMA PCIE0 MCU DMA1 */
-> +		{ 0x58000000, 0x06000, 0x1000 }, /* WFDMA PCIE1 MCU DMA0 (MEM_DMA) */
-> +		{ 0x59000000, 0x07000, 0x1000 }, /* WFDMA PCIE1 MCU DMA1 */
-> +		{ 0x7c000000, 0xf0000, 0x10000 }, /* CONN_INFRA */
-> +		{ 0x7c020000, 0xd0000, 0x10000 }, /* CONN_INFRA, WFDMA */
-> +		{ 0x7c060000, 0xe0000, 0x10000 }, /* CONN_INFRA, conn_host_csr_top */
-> +		{ 0x80020000, 0xb0000, 0x10000 }, /* WF_TOP_MISC_OFF */
-> +		{ 0x81020000, 0xc0000, 0x10000 }, /* WF_TOP_MISC_ON */
-> +		{ 0x820c0000, 0x08000, 0x4000 }, /* WF_UMAC_TOP (PLE) */
-> +		{ 0x820c8000, 0x0c000, 0x2000 }, /* WF_UMAC_TOP (PSE) */
-> +		{ 0x820cc000, 0x0e000, 0x1000 }, /* WF_UMAC_TOP (PP) */
-> +		{ 0x820cd000, 0x0f000, 0x1000 }, /* WF_MDP_TOP */
-> +		{ 0x820ce000, 0x21c00, 0x0200 }, /* WF_LMAC_TOP (WF_SEC) */
-> +		{ 0x820cf000, 0x22000, 0x1000 }, /* WF_LMAC_TOP (WF_PF) */
-> +		{ 0x820e0000, 0x20000, 0x0400 }, /* WF_LMAC_TOP BN0 (WF_CFG) */
-> +		{ 0x820e1000, 0x20400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_TRB) */
-> +		{ 0x820e9000, 0x23400, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_WTBLOFF) */
-> +		{ 0x820ea000, 0x24000, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_ETBF) */
-> +		{ 0x820ec000, 0x24600, 0x0200 }, /* WF_LMAC_TOP BN0 (WF_INT) */
-> +		{ 0x820f0000, 0xa0000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_CFG) */
-> +		{ 0x820f1000, 0xa0600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_TRB) */
-> +		{ 0x820f2000, 0xa0800, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_AGG) */
-> +		{ 0x820f3000, 0xa0c00, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_ARB) */
-> +		{ 0x820f4000, 0xa1000, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_TMAC) */
-> +		{ 0x820f5000, 0xa1400, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_RMAC) */
-> +		{ 0x820f7000, 0xa1e00, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_DMA) */
-> +		{ 0x820f9000, 0xa3400, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_WTBLOFF) */
-> +		{ 0x820fa000, 0xa4000, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_ETBF) */
-> +		{ 0x820fb000, 0xa4200, 0x0400 }, /* WF_LMAC_TOP BN1 (WF_LPON) */
-> +		{ 0x820fc000, 0xa4600, 0x0200 }, /* WF_LMAC_TOP BN1 (WF_INT) */
-> +		{ 0x820fd000, 0xa4800, 0x0800 }, /* WF_LMAC_TOP BN1 (WF_MIB) */
-> +	};
-> +	int i;
-> +
-> +	if (addr < 0x100000)
-> +		return addr;
-> +
-> +	for (i = 0; i < ARRAY_SIZE(fixed_map); i++) {
-> +		u32 ofs;
-> +
-> +		if (addr < fixed_map[i].phys)
-> +			continue;
-> +
-> +		ofs = addr - fixed_map[i].phys;
-> +		if (ofs > fixed_map[i].size)
-> +			continue;
-> +
-> +		return fixed_map[i].mapped + ofs;
-> +	}
-> +
-> +	if ((addr >= 0x18000000 && addr < 0x18c00000) ||
-> +	    (addr >= 0x70000000 && addr < 0x78000000) ||
-> +	    (addr >= 0x7c000000 && addr < 0x7c400000))
-> +		return mt7921_reg_map_l1(dev, addr);
-> +
-> +	dev_err(dev->mt76.dev, "Access currently unsupported address %08x\n",
-> +		addr);
-> +
-> +	return 0;
-> +}
-> +
-> +static u32 mt7921_rr(struct mt76_dev *mdev, u32 offset)
-> +{
-> +	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> +	u32 addr = __mt7921_reg_addr(dev, offset);
-> +
-> +	return dev->bus_ops->rr(mdev, addr);
-> +}
-> +
-> +static void mt7921_wr(struct mt76_dev *mdev, u32 offset, u32 val)
-> +{
-> +	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> +	u32 addr = __mt7921_reg_addr(dev, offset);
-> +
-> +	dev->bus_ops->wr(mdev, addr, val);
-> +}
-> +
-> +static u32 mt7921_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
-> +{
-> +	struct mt7921_dev *dev = container_of(mdev, struct mt7921_dev, mt76);
-> +	u32 addr = __mt7921_reg_addr(dev, offset);
-> +
-> +	return dev->bus_ops->rmw(mdev, addr, mask, val);
-> +}
-> +
->   static int mt7921_pci_probe(struct pci_dev *pdev,
->   			    const struct pci_device_id *id)
->   {
-> @@ -152,6 +256,7 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->   		.fw_own = mt7921e_mcu_fw_pmctrl,
->   	};
->   
-> +	struct mt76_bus_ops *bus_ops;
->   	struct mt7921_dev *dev;
->   	struct mt76_dev *mdev;
->   	int ret;
-> @@ -189,6 +294,25 @@ static int mt7921_pci_probe(struct pci_dev *pdev,
->   
->   	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
->   	tasklet_init(&dev->irq_tasklet, mt7921_irq_tasklet, (unsigned long)dev);
-> +
-> +	dev->phy.dev = dev;
-> +	dev->phy.mt76 = &dev->mt76.phy;
-> +	dev->mt76.phy.priv = &dev->phy;
-> +	dev->bus_ops = dev->mt76.bus;
-> +	bus_ops = devm_kmemdup(dev->mt76.dev, dev->bus_ops, sizeof(*bus_ops),
-> +			       GFP_KERNEL);
-> +	if (!bus_ops)
-> +		return -ENOMEM;
-> +
-> +	bus_ops->rr = mt7921_rr;
-> +	bus_ops->wr = mt7921_wr;
-> +	bus_ops->rmw = mt7921_rmw;
-> +	dev->mt76.bus = bus_ops;
-> +
-> +	ret = __mt7921e_mcu_drv_pmctrl(dev);
-> +	if (ret)
-> +		return ret;
-> +
->   	mdev->rev = (mt7921_l1_rr(dev, MT_HW_CHIPID) << 16) |
->   		    (mt7921_l1_rr(dev, MT_HW_REV) & 0xff);
->   	dev_info(mdev->dev, "ASIC revision: %04x\n", mdev->rev);
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
-> index f9e350b67fdc..36669e5aeef3 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci_mcu.c
-> @@ -59,10 +59,8 @@ int mt7921e_mcu_init(struct mt7921_dev *dev)
->   	return err;
->   }
->   
-> -int mt7921e_mcu_drv_pmctrl(struct mt7921_dev *dev)
-> +int __mt7921e_mcu_drv_pmctrl(struct mt7921_dev *dev)
->   {
-> -	struct mt76_phy *mphy = &dev->mt76.phy;
-> -	struct mt76_connac_pm *pm = &dev->pm;
->   	int i, err = 0;
->   
->   	for (i = 0; i < MT7921_DRV_OWN_RETRY_COUNT; i++) {
-> @@ -75,9 +73,21 @@ int mt7921e_mcu_drv_pmctrl(struct mt7921_dev *dev)
->   	if (i == MT7921_DRV_OWN_RETRY_COUNT) {
->   		dev_err(dev->mt76.dev, "driver own failed\n");
->   		err = -EIO;
-> -		goto out;
->   	}
->   
-> +	return err;
-> +}
-> +
-> +int mt7921e_mcu_drv_pmctrl(struct mt7921_dev *dev)
-> +{
-> +	struct mt76_phy *mphy = &dev->mt76.phy;
-> +	struct mt76_connac_pm *pm = &dev->pm;
-> +	int err;
-> +
-> +	err = __mt7921e_mcu_drv_pmctrl(dev);
-> +	if (err < 0)
-> +		goto out;
-> +
->   	mt7921_wpdma_reinit_cond(dev);
->   	clear_bit(MT76_STATE_PM, &mphy->state);
->   
+> Then maybe do that really first?
 
+   I'm doing it first already:
 
+https://lore.kernel.org/all/5e001ec1-d3f1-bcb8-7f30-a6301fd9930c@omp.ru/
+
+   This series is atop of the above patch...
+
+> I didn't recheck, but is this what the
+> driver changes in your patch is about?
+
+   Partly, yes. We can afford to play with the meaning of 0 after the above=
+ patch.
+
+> After some more thoughts I wonder if your focus isn't to align
+> platform_get_irq_optional to (clk|gpiod|regulator)_get_optional, but to
+> simplify return code checking. Because with your change we have:
+> =
+
+>  - < 0 -> error
+>  - =3D=3D 0 -> no irq
+>  - > 0 -> irq
+
+   Mainly, yes. That's why the code examples were given in the description.
+
+> For my part I'd say this doesn't justify the change, but at least I
+> could better life with the reasoning. If you start at:
+> =
+
+> 	irq =3D platform_get_irq_optional(...)
+> 	if (irq < 0 && irq !=3D -ENXIO)
+> 		return irq
+> 	else if (irq > 0)
+> 		setup_irq(irq);
+> 	else
+> 		setup_polling()
+> =
+
+> I'd change that to
+> =
+
+> 	irq =3D platform_get_irq_optional(...)
+> 	if (irq > 0) /* or >=3D 0 ? */
+
+   Not >=3D 0, no...
+
+> 		setup_irq(irq)
+> 	else if (irq =3D=3D -ENXIO)
+> 		setup_polling()
+> 	else
+> 		return irq
+> =
+
+> This still has to mention -ENXIO, but this is ok and checking for 0 just
+> hardcodes a different return value.
+
+   I think comparing with 0 is simpler (and shorter) than with -ENXIO, if y=
+ou
+consider the RISC CPUs, like e.g. MIPS...
+
+> Anyhow, I think if you still want to change platform_get_irq_optional
+> you should add a few patches converting some drivers which demonstrates
+> the improvement for the callers.
+
+   Mhm, I did include all the drivers where the IRQ checks have to be modif=
+ied,
+not sure what else you want me to touch...
+
+> Best regards
+> Uwe
+
+MBR, Sergey
 
 _______________________________________________
 Linux-mediatek mailing list
