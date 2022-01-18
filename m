@@ -4,108 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DDD1C4332F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 09:19:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F088C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 09:20:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wi6t3lMyLO/YgVjoO1Gnu57IFgyiUhS1O+lar25UKeA=; b=JIuoN0GJdWiXcJJOYutdI7wfC5
-	qlFz4wELZLl1y/TFZaaKdBOnEOGB2pljhyZ+jqhOL7U+nqDLsmr/L3EmoUfyaY0M3LABkRQmujc5E
-	gW4MX2wtcWYYgQjy1z/d5ONFIEDPXEqbJtFhgtKLZKdjYHtVXDCgSACdCnUMVe6VobL5JxeCsHH2f
-	dsI5WuHtyTqf/KjkziyUZTBe9RwSj8t9ICVLKQSU9joM2pnbpbH09ZfktBb24LFNcP3xJRyl4icEn
-	yv6YFO4K7KG6LyzhSfhBoXA/vWP2BOHAZ8Qi3+V549+zrt/hTtycOiVeQsqbDx0DNgL+JpiyPK1s8
-	5M9cr1FA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mbBgxU/nrdTQ7UHrmW/WCAfYtq4epifWJKm4OVfwxEQ=; b=rZ6B3JYIN6eMc2
+	rVvGvxQhNZzZwG5M6/JNpdvK5VFhk4aruO2ArzvOb38f6ZVKH/Mi2JnM/kv0l0nYxAKX93ET9BcTk
+	ztlaOefuKLMFcqqq35rPkUNpCvSdYNnPcRU2MuyuTGsCVt71LN5hDKtKTFsVxmren1BntReZKl4Uw
+	EmMI6iGVPmYrEueJJpuqr7ao0ThEZFiH1zkVhx3PEb8bXag2O/wBf8NGF/Xe8UgBVvFTWn8kV3g8y
+	vyZb2cA8dOAw5zZa/15Px0fG2t3c67hDItZZU47gZ6lYlp0VbgpYuRN5C1HFOQgRNCkpLkpyBrL6C
+	vcfGvKIOfZgV4z6SSvHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9keU-000rnR-PK; Tue, 18 Jan 2022 09:19:42 +0000
-Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
+	id 1n9kej-000rsz-0F; Tue, 18 Jan 2022 09:19:57 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9keG-000rjX-WD
- for linux-mediatek@lists.infradead.org; Tue, 18 Jan 2022 09:19:30 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.ext.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n9kdD-0006Nd-T3; Tue, 18 Jan 2022 10:18:23 +0100
-Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
- (envelope-from <ukl@pengutronix.de>)
- id 1n9kdA-00Ayd5-Tc; Tue, 18 Jan 2022 10:18:20 +0100
-Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
- (envelope-from <ukl@pengutronix.de>)
- id 1n9kd9-0003a7-SE; Tue, 18 Jan 2022 10:18:19 +0100
-Date: Tue, 18 Jan 2022 10:18:19 +0100
-From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, kvm@vger.kernel.org,
- "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
- Linus Walleij <linus.walleij@linaro.org>,
- Amit Kucheria <amitk@kernel.org>, alsa-devel@alsa-project.org,
- Liam Girdwood <lgirdwood@gmail.com>, Guenter Roeck <groeck@chromium.org>,
- Thierry Reding <thierry.reding@gmail.com>,
- linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
- Miquel Raynal <miquel.raynal@bootlin.com>,
- linux-phy@lists.infradead.org, Lee Jones <lee.jones@linaro.org>,
- Khuong Dinh <khuong@os.amperecomputing.com>,
- Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
- Joakim Zhang <qiangqing.zhang@nxp.com>, Kamal Dasu <kdasu.kdev@gmail.com>,
- Jiri Slaby <jirislaby@kernel.org>, Bartosz Golaszewski <brgl@bgdev.pl>,
- Daniel Lezcano <daniel.lezcano@linaro.org>,
- Tony Luck <tony.luck@intel.com>, Kishon Vijay Abraham I <kishon@ti.com>,
- bcm-kernel-feedback-list@broadcom.com, linux-serial@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- platform-driver-x86@vger.kernel.org, linux-pwm@vger.kernel.org,
- Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
- Corey Minyard <minyard@acm.org>, linux-pm@vger.kernel.org,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
- William Breathitt Gray <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, linux-gpio@vger.kernel.org,
- Alex Williamson <alex.williamson@redhat.com>,
- Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
- Eric Auger <eric.auger@redhat.com>, Takashi Iwai <tiwai@suse.com>,
- Jaroslav Kysela <perex@perex.cz>, openipmi-developer@lists.sourceforge.net,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Benson Leung <bleung@chromium.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- linux-arm-kernel@lists.infradead.org, linux-edac@vger.kernel.org,
- Sergey Shtylyov <s.shtylyov@omp.ru>, Richard Weinberger <richard@nod.at>,
- Mun Yew Tham <mun.yew.tham@intel.com>,
- Hans de Goede <hdegoede@redhat.com>, netdev@vger.kernel.org,
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
- linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
- James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>,
- Sebastian Reichel <sre@kernel.org>,
- Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
- linux-mediatek@lists.infradead.org,
- Brian Norris <computersforpeace@gmail.com>,
- "David S. Miller" <davem@davemloft.net>
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
- (summary)
-Message-ID: <20220118091819.zzxpffrxbckoxiys@pengutronix.de>
-References: <20220110195449.12448-1-s.shtylyov@omp.ru>
- <20220110195449.12448-2-s.shtylyov@omp.ru>
- <20220115183643.6zxalxqxrhkfgdfq@pengutronix.de>
- <YeQpWu2sUVOSaT9I@kroah.com>
+ id 1n9keO-000rlI-3k; Tue, 18 Jan 2022 09:19:38 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id j7so28155358edr.4;
+ Tue, 18 Jan 2022 01:19:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SB0wh1JvYuxb1nJDI7PyGganrQILU5xtGUXZvsW6ko0=;
+ b=Eb3i4SvXu8XdwLGqOWL+zhPFAIwvhYqMVIWvCZjfeZ5ZrgYQD20Lhib1bopL3XrTDl
+ YRO+tDpWXFKJmz+2BkS0nLE4ds0vw8VwIQblDXUFEDBghIwU93IgPJ5g8rXupxy2Wh2u
+ NQfas8Nf0ifp3WNIDFayWkEArYkMRkZ3Rg+hab33gvawGk3aYLJDkfjrZtwqVsSohRkQ
+ MbVlMgd+APnIHBIVW4drs9yPcKC9Fq5Z2axKha6s2Q/zUly2ttNFau2Ze08+VZyS4OHp
+ 2PiRK8RbKEPnCZUwEYIkOE5cun6lc2SmJTZ+9eRdXHaC2yFnmBl3Q1ZSnBsaujANHhuL
+ jiig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SB0wh1JvYuxb1nJDI7PyGganrQILU5xtGUXZvsW6ko0=;
+ b=JRnylz/fsD85A4rhyFUF2+eNdjc05o7bTTatSB+CIRSvhQsonWXfHYJfsiMAdq1wlC
+ Fi5IN24LKe75UcM4fh1zgHfBAYhLFiHdZYRx6ONs6mpTYjt9pGdkW9SEhab6UzpyJsXR
+ RnUOR+oHtT4M314jZfmGF0+YDBVsHyJH5x27IodZQWLqcob5Ihsi/tUaYToSbSPLEuJi
+ rU3RR74TtLAskG3PTm59p+PkFFeb/y3krUHPz6jqkE0rrnNzg4epr+4DEMadjytbAYb4
+ 21buFTHOUndSBUEXmpl8lIT2Gg/x1dfl16L92xq/+6t5KLwDgws8Htzpe/4my5UrBOOd
+ tVrw==
+X-Gm-Message-State: AOAM532A7z3YxJ2knuWLu5/cA+6asoG03kd1zs3awOh07Q1I0aarLWPA
+ 8/fovgaKtJDVnbqO6hZA7O/nTBvXy/RyupAVVkY=
+X-Google-Smtp-Source: ABdhPJxSbMd+HQ6M+bgVFr1+OvobdOGajiL40zRQ24757+JEdYZ/E9oYJtr25sD0StBm4K7Oyl/FGS1x2frkSyRibbQ=
+X-Received: by 2002:a17:907:6ea3:: with SMTP id
+ sh35mr5517133ejc.497.1642497573955; 
+ Tue, 18 Jan 2022 01:19:33 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <YeQpWu2sUVOSaT9I@kroah.com>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: ukl@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
+References: <20220117082539.18713-1-axe.yang@mediatek.com>
+ <20220117082539.18713-4-axe.yang@mediatek.com>
+In-Reply-To: <20220117082539.18713-4-axe.yang@mediatek.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 18 Jan 2022 11:18:57 +0200
+Message-ID: <CAHp75VdkKYujGZOdGkLK-tzC9q+RjkX59fFZe5cHajGOnDdL2w@mail.gmail.com>
+Subject: Re: [RESEND v3 3/3] mmc: mediatek: add support for SDIO eint IRQ
+To: Axe Yang <axe.yang@mediatek.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ Adrian Hunter <adrian.hunter@intel.com>, 
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Satya Tangirala <satyat@google.com>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+ Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, 
+ Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, 
+ Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>,
+ Yue Hu <huyue2@yulong.com>, 
+ Tian Tao <tiantao6@hisilicon.com>, angelogioacchino.delregno@collabora.com, 
+ linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Yong Mao <yong.mao@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_011929_053146_B1F5402D 
-X-CRM114-Status: GOOD (  22.47  )
+X-CRM114-CacheID: sfid-20220118_011936_200553_0927AC4B 
+X-CRM114-Status: GOOD (  17.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,73 +90,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3302224935052016758=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Mon, Jan 17, 2022 at 7:33 PM Axe Yang <axe.yang@mediatek.com> wrote:
+>
+> Add support for eint IRQ when MSDC is used as an SDIO host. This
+> feature requires SDIO device support async IRQ function. With this
+> feature, SDIO host can be awakened by SDIO card in suspend state,
+> without additional pin.
+>
+> MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
+> turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
+> resume, switch GPIO function back to DAT1 mode then turn on clock.
+>
+> Some device tree property should be added or modified in MSDC node
+> to support SDIO eint IRQ. Pinctrls named state_dat1 and state_eint
+> are mandatory. And cap-sdio-async-irq flag is necessary since this
+> feature depends on asynchronous interrupt:
+>         &mmcX {
+>                 ...
+>                 pinctrl-names = "default", "state_uhs", "state_eint",
+>                                 "state_dat1";
+>                 ...
+>                 pinctrl-2 = <&mmc2_pins_eint>;
+>                 pinctrl-3 = <&mmc2_pins_dat1>;
+>                 ...
+>                 cap-sdio-async-irq;
+>                 ...
+>         };
 
---===============3302224935052016758==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4nmi7jsy4ulpuolr"
-Content-Disposition: inline
+...
 
+> +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
+> +{
+> +       struct msdc_host *host = dev_id;
+> +       struct mmc_host *mmc = mmc_from_priv(host);
 
---4nmi7jsy4ulpuolr
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> +       unsigned long flags;
 
-On Sun, Jan 16, 2022 at 03:19:06PM +0100, Greg Kroah-Hartman wrote:
-> On Sat, Jan 15, 2022 at 07:36:43PM +0100, Uwe Kleine-K=F6nig wrote:
-> > A possible compromise: We can have both. We rename
-> > platform_get_irq_optional() to platform_get_irq_silent() (or
-> > platform_get_irq_silently() if this is preferred) and once all users are
-> > are changed (which can be done mechanically), we reintroduce a
-> > platform_get_irq_optional() with Sergey's suggested semantic (i.e.
-> > return 0 on not-found, no error message printking).
->=20
-> Please do not do that as anyone trying to forward-port an old driver
-> will miss the abi change of functionality and get confused.  Make
-> build-breaking changes, if the way a function currently works is
-> changed in order to give people a chance.
+Same Q as per v2. Why do you need this?
 
-Fine for me. I assume this is a Nack for Sergey's patch?
+Yes, you did the first step to the answer, but I want you to go deeper
+and tell me why you need the spin_lock_irqsave() variant.
 
-Best regards
-Uwe
+> +       spin_lock_irqsave(&host->lock, flags);
+> +       if (likely(host->sdio_irq_cnt > 0)) {
+> +               disable_irq_nosync(host->eint_irq);
+> +               disable_irq_wake(host->eint_irq);
+> +               host->sdio_irq_cnt--;
+> +       }
+> +       spin_unlock_irqrestore(&host->lock, flags);
+> +
+> +       sdio_signal_irq(mmc);
+> +
+> +       return IRQ_HANDLED;
+> +}
 
---=20
-Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
-Industrial Linux Solutions                 | https://www.pengutronix.de/ |
-
---4nmi7jsy4ulpuolr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHmhdgACgkQwfwUeK3K
-7AlOfwf/RajwcOGZOaXu4/Hu0uIDDH01Izth3e7+cbt0DvzofBxZhrwLi6+7R8Ii
-FDvio63jvvz41IZoKpB3Sp3cJe6N5nHxfoeVbVFx1oDC5ZSb3xpzIKBpz6usYWSK
-mpEzG1FLl/zHhNcFBvzOrkoJNhHOKKqTkCMQ9+SMFB2QpzY2GlhGyeloYsR5wRlS
-36dfdheA3MnzMe+YgqcykvdU78oW4Ajcnq+31xfkY4u4FtLXz44Pz4j32buAaqtw
-/Ryrr0NnSSAdwMkNMebBf3XX8emOhXd3w/ActLJA50YN3K1ePF1ViBaNwB6wIGGA
-DmnwP6lCav2JoRm3yOWVlcLDeltVJA==
-=IrhS
------END PGP SIGNATURE-----
-
---4nmi7jsy4ulpuolr--
-
-
---===============3302224935052016758==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+With Best Regards,
+Andy Shevchenko
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
-
---===============3302224935052016758==--
-
