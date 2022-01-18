@@ -4,68 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5071C43217
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 02:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 903D0C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 02:44:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vye9V3aYnbaCQ6ZtyFJHotn+y1UvC2obdrHn/zmnDzk=; b=KpKe1aQyoN5eOM
-	N92Ygw9tTRr3uPmc99Z+KCwY9qUuor/fayKpZre96H9+MD8dqsz9lkHnNjYlik6WorYmHJ/MkjIuD
-	xqf1KDW79ic4vqvp9Gqd7Wxc5AzwonZzLnWKiVv3Yds0ubfzNz680GPRhwTmy447mOzX/Ew6jvvrN
-	Ml68MnDAZSxLL+DSgrv06LZ3ZaVcR3VZS/JPyXetRV48iQ1v9JYAWxyoaCw7It1SE0GnedjC12XGE
-	YFcQIlSnq6Iu+hE8NaLbBkjuYBx/GgnDP7WYjn9LLb29Kv5YhrRqG8LPX7fNkZhLWls52GTdqjGi2
-	n2mMuDTUM1+SC+XBtM2w==;
+	List-Owner; bh=KklMYJYrIKuxVlMUd8GrSq9JQzro9lmwJEnUti6KmwE=; b=sQ0iVnTPtQramw
+	BqzWoxdbrArjqu4WOom5dpj9YPo1hRhTxoJ3hpjZePnOSr8tXGwgzd++8NqXijWj6lTXQJNjdceJ4
+	K7s+bt9CFXDzU5uWxLTu5PZkKhp2YUXJEqojil9RjimqUpbocHsIzAhO5P6GxcTZo9C4P+zROEpSu
+	yXHOrPchk4uZxdx3+LtceICeKcYsI7xSUnSC3I8NQSZ1gZXO/cOFkybZsRF56hiCCyZaLaEGDiQbn
+	ackfNRzvW95YO58AAYAIyasQeB8RugUNUXF0mApGiGGwhT+E+sjp3m6K33QFVQC6zxH8e9q+C21xr
+	SCo2pD2++2Zatb65oafA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9eSM-00H4RH-F4; Tue, 18 Jan 2022 02:42:46 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n9eTW-00H56o-HS; Tue, 18 Jan 2022 02:43:58 +0000
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9eFQ-00GxL8-T3; Tue, 18 Jan 2022 02:29:28 +0000
-X-UUID: 90564539207a48758dc1cd33d7f1d520-20220117
-X-UUID: 90564539207a48758dc1cd33d7f1d520-20220117
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <rex-bc.chen@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 1909828086; Mon, 17 Jan 2022 19:29:19 -0700
-Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
- MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 17 Jan 2022 18:29:17 -0800
-Received: from mtkcas10.mediatek.inc (172.21.101.39) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
- Tue, 18 Jan 2022 10:29:15 +0800
-Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
- Transport; Tue, 18 Jan 2022 10:29:15 +0800
-Message-ID: <1bd816c2f26cd8e42debf066a57e24eb5e2f580d.camel@mediatek.com>
-Subject: Re: [v9,2/3] drm/mediatek: implement the DSI hs packets aligned
-From: Rex-BC Chen <rex-bc.chen@mediatek.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, <chunkuang.hu@kernel.org>,
- <matthias.bgg@gmail.com>, <narmstrong@baylibre.com>,
- <robert.foss@linaro.org>, <daniel@ffwll.ch>, <airlied@linux.ie>,
- <p.zabel@pengutronix.de>
-CC: <xji@analogixsemi.com>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <linux-kernel@vger.kernel.org>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
- <jitao.shi@mediatek.com>
-Date: Tue, 18 Jan 2022 10:29:15 +0800
-In-Reply-To: <86b76e9f-96b0-7d54-bd38-449745e30aa2@intel.com>
-References: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
- <20220114092110.12137-3-rex-bc.chen@mediatek.com>
- <4076cb55-4546-6bbd-1a1f-19395dcd9ccd@collabora.com>
- <f858dd4aaa35fa3eb969baf887f038c3593232e5.camel@mediatek.com>
- <86b76e9f-96b0-7d54-bd38-449745e30aa2@intel.com>
-X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
+ id 1n9eFW-00GxPi-1c; Tue, 18 Jan 2022 02:29:32 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id 7B70761157;
+ Tue, 18 Jan 2022 02:29:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 38BC2C36AEB;
+ Tue, 18 Jan 2022 02:29:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642472969;
+ bh=Y52+VQDFKWPukWVOcP0x5AwatEYKIO8IinShTBqBvuM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=JsUk3Lif2Vr4eWJnuI2LfkDi8WvjrE67ebK5OrM66XG8igcU6t5Yv1c06BrA61y6U
+ k47ynu5yBCTTaDAJ4+/TaGewem7nurcwA/LpYCS8WRSHVKnyyoPMtOYOlagsMWvRHg
+ eIK+3F6ezTrRdYgoQ/efyyRD5pRFRvZ1ykqPUTY+37dWxOzS/L7WOy2h46VpdqrVuz
+ FkHpTpfoSEM30AfDoqQ9U1O/Tk6+ZPvnK6Jk0QjU6wlRvqq5IPBbUJU8XGtWP24Wyb
+ ectnVMEM07aUjBHA2IoD5iSgJD8DkWmJLXUd5CUT9jjD4w+QTEKNoDCzaTbuVMkuLN
+ hZ2INO/WbAYBw==
+From: Sasha Levin <sashal@kernel.org>
+To: linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Ulf Hansson <ulf.hansson@linaro.org>, Sasha Levin <sashal@kernel.org>,
+ chaotian.jing@mediatek.com, matthias.bgg@gmail.com,
+ linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 5.16 184/217] mmc: mtk-sd: Use readl_poll_timeout
+ instead of open-coded polling
+Date: Mon, 17 Jan 2022 21:19:07 -0500
+Message-Id: <20220118021940.1942199-184-sashal@kernel.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20220118021940.1942199-1-sashal@kernel.org>
+References: <20220118021940.1942199-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-MTK: N
+X-stable: review
+X-Patchwork-Hint: Ignore
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_182925_060270_2707B3DC 
-X-CRM114-Status: GOOD (  30.36  )
+X-CRM114-CacheID: sfid-20220117_182930_281611_C9D1BF35 
+X-CRM114-Status: GOOD (  16.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,119 +78,177 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello Andrzej,
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Thanks for your review.
-I will give the explanation for this in next version.
+[ Upstream commit ffaea6ebfe9ce06ebb3a54811a47688f2b0893cd ]
 
-BRs,
-Rex-BC hen
+Replace all instances of open-coded while loops for polling registers
+with calls to readl_poll_timeout() and, while at it, also fix some
+possible infinite loop instances.
 
-On Fri, 2022-01-14 at 12:11 +0100, Andrzej Hajda wrote:
-> On 14.01.2022 11:20, Rex-BC Chen wrote:
-> > Hello AngeloGioacchino,
-> > 
-> > Thanks for your review.
-> > I will modify this in next version.
-> > 
-> > BRs,
-> > Rex-BC Chen
-> > 
-> > On Fri, 2022-01-14 at 10:36 +0100, AngeloGioacchino Del Regno
-> > wrote:
-> > > Il 14/01/22 10:21, Rex-BC Chen ha scritto:
-> > > > Some DSI RX devices require the packets on all lanes aligned at
-> > > > the
-> > > > end.
-> > > > Otherwise, there will be some issues of shift or scroll for
-> > > > screen.
-> > > > 
-> > > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
-> > > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
-> > > 
-> > > Hello,
-> > > thanks for the patch! However, there's something to improve...
-> > > 
-> > > > ---
-> > > >    drivers/gpu/drm/mediatek/mtk_dsi.c | 12 ++++++++++++
-> > > >    1 file changed, 12 insertions(+)
-> > > > 
-> > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > > b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > > index 5d90d2eb0019..ccdda15f5a66 100644
-> > > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> > > > @@ -195,6 +195,8 @@ struct mtk_dsi {
-> > > >    	struct clk *hs_clk;
-> > > >    
-> > > >    	u32 data_rate;
-> > > > +	/* force dsi line end without dsi_null data */
-> > > > +	bool hs_packet_end_aligned;
-> > > 
-> > > There's no need to introduce a new variable here...
-> > > >    
-> > > >    	unsigned long mode_flags;
-> > > >    	enum mipi_dsi_pixel_format format;
-> > > > @@ -500,6 +502,13 @@ static void
-> > > > mtk_dsi_config_vdo_timing(struct
-> > > > mtk_dsi *dsi)
-> > > >    		DRM_WARN("HFP + HBP less than d-phy, FPS will
-> > > > under
-> > > > 60Hz\n");
-> > > >    	}
-> > > >    
-> > > > +	if (dsi->hs_packet_end_aligned) {
-> > > 
-> > > You can simply check mode_flags here:
-> > > 	if (dsi->mode_flags & MIPI_DSI_HS_PKT_END_ALIGNED) {
-> > > 
-> > > > +		horizontal_sync_active_byte =
-> > > > roundup(horizontal_sync_active_byte, dsi->lanes) - 2;
-> > > > +		horizontal_frontporch_byte =
-> > > > roundup(horizontal_frontporch_byte, dsi->lanes) - 2;
-> > > > +		horizontal_backporch_byte =
-> > > > roundup(horizontal_backporch_byte, dsi->lanes) - 2;
-> > > > +		horizontal_backporch_byte -= (vm->hactive *
-> > > > dsi_tmp_buf_bpp + 2) % dsi->lanes;
-> > > > +	}
-> > > > +
-> 
-> 
-> And if you could add comment explaining the magic here it would be
-> nice.
-> 
-> 
-> Regards
-> 
-> Andrzej
-> 
-> 
-> > > >    	writel(horizontal_sync_active_byte, dsi->regs +
-> > > > DSI_HSA_WC);
-> > > >    	writel(horizontal_backporch_byte, dsi->regs +
-> > > > DSI_HBP_WC);
-> > > >    	writel(horizontal_frontporch_byte, dsi->regs +
-> > > > DSI_HFP_WC);
-> > > > @@ -794,6 +803,9 @@ static int mtk_dsi_host_attach(struct
-> > > > mipi_dsi_host *host,
-> > > >    	dsi->lanes = device->lanes;
-> > > >    	dsi->format = device->format;
-> > > >    	dsi->mode_flags = device->mode_flags;
-> > > > +	dsi->hs_packet_end_aligned = (dsi->mode_flags &
-> > > > +				      MIPI_DSI_HS_PKT_END_ALIGN
-> > > > ED)
-> > > > +				     ? true : false;
-> > > 
-> > > ...so there's no need for this one, either.
-> > > 
-> > > >    
-> > > >    	return 0;
-> > > >    }
-> > > > 
-> > > 
-> > > Regards,
-> > > - Angelo
-> > > 
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Link: https://lore.kernel.org/r/20211216125748.179602-1-angelogioacchino.delregno@collabora.com
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/mmc/host/mtk-sd.c | 64 ++++++++++++++++++++++++---------------
+ 1 file changed, 39 insertions(+), 25 deletions(-)
+
+diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
+index 632775217d35c..d5a9c269d4926 100644
+--- a/drivers/mmc/host/mtk-sd.c
++++ b/drivers/mmc/host/mtk-sd.c
+@@ -636,12 +636,11 @@ static void msdc_reset_hw(struct msdc_host *host)
+ 	u32 val;
+ 
+ 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_RST);
+-	while (readl(host->base + MSDC_CFG) & MSDC_CFG_RST)
+-		cpu_relax();
++	readl_poll_timeout(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
+ 
+ 	sdr_set_bits(host->base + MSDC_FIFOCS, MSDC_FIFOCS_CLR);
+-	while (readl(host->base + MSDC_FIFOCS) & MSDC_FIFOCS_CLR)
+-		cpu_relax();
++	readl_poll_timeout(host->base + MSDC_FIFOCS, val,
++			   !(val & MSDC_FIFOCS_CLR), 0, 0);
+ 
+ 	val = readl(host->base + MSDC_INT);
+ 	writel(val, host->base + MSDC_INT);
+@@ -814,8 +813,9 @@ static void msdc_gate_clock(struct msdc_host *host)
+ 	clk_disable_unprepare(host->h_clk);
+ }
+ 
+-static void msdc_ungate_clock(struct msdc_host *host)
++static int msdc_ungate_clock(struct msdc_host *host)
+ {
++	u32 val;
+ 	int ret;
+ 
+ 	clk_prepare_enable(host->h_clk);
+@@ -825,11 +825,11 @@ static void msdc_ungate_clock(struct msdc_host *host)
+ 	ret = clk_bulk_prepare_enable(MSDC_NR_CLOCKS, host->bulk_clks);
+ 	if (ret) {
+ 		dev_err(host->dev, "Cannot enable pclk/axi/ahb clock gates\n");
+-		return;
++		return ret;
+ 	}
+ 
+-	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+-		cpu_relax();
++	return readl_poll_timeout(host->base + MSDC_CFG, val,
++				  (val & MSDC_CFG_CKSTB), 1, 20000);
+ }
+ 
+ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+@@ -840,6 +840,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+ 	u32 div;
+ 	u32 sclk;
+ 	u32 tune_reg = host->dev_comp->pad_tune_reg;
++	u32 val;
+ 
+ 	if (!hz) {
+ 		dev_dbg(host->dev, "set mclk to 0\n");
+@@ -920,8 +921,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
+ 	else
+ 		clk_prepare_enable(clk_get_parent(host->src_clk));
+ 
+-	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
+-		cpu_relax();
++	readl_poll_timeout(host->base + MSDC_CFG, val, (val & MSDC_CFG_CKSTB), 0, 0);
+ 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
+ 	mmc->actual_clock = sclk;
+ 	host->mclk = hz;
+@@ -1231,13 +1231,13 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
+ static inline bool msdc_cmd_is_ready(struct msdc_host *host,
+ 		struct mmc_request *mrq, struct mmc_command *cmd)
+ {
+-	/* The max busy time we can endure is 20ms */
+-	unsigned long tmo = jiffies + msecs_to_jiffies(20);
++	u32 val;
++	int ret;
+ 
+-	while ((readl(host->base + SDC_STS) & SDC_STS_CMDBUSY) &&
+-			time_before(jiffies, tmo))
+-		cpu_relax();
+-	if (readl(host->base + SDC_STS) & SDC_STS_CMDBUSY) {
++	/* The max busy time we can endure is 20ms */
++	ret = readl_poll_timeout_atomic(host->base + SDC_STS, val,
++					!(val & SDC_STS_CMDBUSY), 1, 20000);
++	if (ret) {
+ 		dev_err(host->dev, "CMD bus busy detected\n");
+ 		host->error |= REQ_CMD_BUSY;
+ 		msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq, cmd);
+@@ -1245,12 +1245,10 @@ static inline bool msdc_cmd_is_ready(struct msdc_host *host,
+ 	}
+ 
+ 	if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
+-		tmo = jiffies + msecs_to_jiffies(20);
+ 		/* R1B or with data, should check SDCBUSY */
+-		while ((readl(host->base + SDC_STS) & SDC_STS_SDCBUSY) &&
+-				time_before(jiffies, tmo))
+-			cpu_relax();
+-		if (readl(host->base + SDC_STS) & SDC_STS_SDCBUSY) {
++		ret = readl_poll_timeout_atomic(host->base + SDC_STS, val,
++						!(val & SDC_STS_SDCBUSY), 1, 20000);
++		if (ret) {
+ 			dev_err(host->dev, "Controller busy detected\n");
+ 			host->error |= REQ_CMD_BUSY;
+ 			msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq, cmd);
+@@ -1376,6 +1374,8 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 	    (MSDC_INT_XFER_COMPL | MSDC_INT_DATCRCERR | MSDC_INT_DATTMO
+ 	     | MSDC_INT_DMA_BDCSERR | MSDC_INT_DMA_GPDCSERR
+ 	     | MSDC_INT_DMA_PROTECT);
++	u32 val;
++	int ret;
+ 
+ 	spin_lock_irqsave(&host->lock, flags);
+ 	done = !host->data;
+@@ -1392,8 +1392,14 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
+ 				readl(host->base + MSDC_DMA_CFG));
+ 		sdr_set_field(host->base + MSDC_DMA_CTRL, MSDC_DMA_CTRL_STOP,
+ 				1);
+-		while (readl(host->base + MSDC_DMA_CFG) & MSDC_DMA_CFG_STS)
+-			cpu_relax();
++
++		ret = readl_poll_timeout_atomic(host->base + MSDC_DMA_CFG, val,
++						!(val & MSDC_DMA_CFG_STS), 1, 20000);
++		if (ret) {
++			dev_dbg(host->dev, "DMA stop timed out\n");
++			return false;
++		}
++
+ 		sdr_clr_bits(host->base + MSDC_INTEN, data_ints_mask);
+ 		dev_dbg(host->dev, "DMA stop\n");
+ 
+@@ -2674,7 +2680,11 @@ static int msdc_drv_probe(struct platform_device *pdev)
+ 	spin_lock_init(&host->lock);
+ 
+ 	platform_set_drvdata(pdev, mmc);
+-	msdc_ungate_clock(host);
++	ret = msdc_ungate_clock(host);
++	if (ret) {
++		dev_err(&pdev->dev, "Cannot ungate clocks!\n");
++		goto release_mem;
++	}
+ 	msdc_init_hw(host);
+ 
+ 	if (mmc->caps2 & MMC_CAP2_CQE) {
+@@ -2833,8 +2843,12 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
+ {
+ 	struct mmc_host *mmc = dev_get_drvdata(dev);
+ 	struct msdc_host *host = mmc_priv(mmc);
++	int ret;
++
++	ret = msdc_ungate_clock(host);
++	if (ret)
++		return ret;
+ 
+-	msdc_ungate_clock(host);
+ 	msdc_restore_reg(host);
+ 	return 0;
+ }
+-- 
+2.34.1
 
 
 _______________________________________________
