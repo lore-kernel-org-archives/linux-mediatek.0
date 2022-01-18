@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D71EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 15:16:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88412C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 15:18:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WOAz8RDmUmydqeSPzgDTIVjCwWAw3BALTdb+iVLk/so=; b=kARq+DVtn48QR5
-	5PhpA8o6vUYc5RxcFSYEU6/guXKLdWQYT/ygjkjeVqkSeI13Q2I+CrMcKeMXP7QvvAId3KjhQ0NxB
-	Rm7F2C8VEIawM/wFEjwBs+tzlQuyWvehzbToabupWYJbkZ7gevpvYstJpce/Bo53YBufNxffJkNW2
-	kqqbrpEanqgOHHkA6tKhhIV66VSiFIZ1Hj+aQRpW4ynxtoR5c+KTt/Bc5UKqpowBIF0jWUrnKRcBY
-	Je4T81JowQYSEnKzoZSevcHtQ1uBmfwuoJzojiksHpjbh9I7DugPMuJp3A1tsD/YxeLNRRiqMZGWK
-	8qBwqxYqklEDIKH53VRQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7JC9bWCD/RfR1XN828PrxYVSUh5fZyBM1HCnR6urqd0=; b=Z6BXOHGBxReLXs
+	cB9Trv4yUSlN6b7UoNEB+jq8HGqzCQ+6O7ZiCi2UoyoAPehwaU/QekcSjA/XZZy0SZQhMqrDBcWkP
+	OvhQJA0UTmiWAERT6nGH/kCA4MRpg8FXQ87Hchiy51SwApHma6GjgOc7fd7aTFdPbDkVqh/1DxD9K
+	giuFrewSMhat2RxE/91g5QqQ0jkqzRgNYss4zHFsV8d0BqoIFFvmExcHoDzgKv3UYPxtAVGzcnELd
+	85eWZc9ChYVTvggl2BcjPSJAXt54mqrIX18pAgjUM5Wdz9A5UIueVshWGVQixoC7W7FXNVcgy82vo
+	pFQFdrfIaApYE/UbRW2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9qDg-0022em-BS; Tue, 18 Jan 2022 15:16:24 +0000
-Received: from foss.arm.com ([217.140.110.172])
- by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9pzf-001xvC-OZ; Tue, 18 Jan 2022 15:01:57 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id A0D0B1FB;
- Tue, 18 Jan 2022 07:01:54 -0800 (PST)
-Received: from [10.57.67.190] (unknown [10.57.67.190])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 723883F766;
- Tue, 18 Jan 2022 07:01:52 -0800 (PST)
-Message-ID: <69525223-7d90-5714-bbe9-4d7f0b9a293d@arm.com>
-Date: Tue, 18 Jan 2022 15:01:46 +0000
+	id 1n9qFd-0023IB-B4; Tue, 18 Jan 2022 15:18:25 +0000
+Received: from bhuna.collabora.co.uk ([2a00:1098:0:82:1000:25:2eeb:e3e3])
+ by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
+ id 1n9q52-0020DU-7A; Tue, 18 Jan 2022 15:07:29 +0000
+Received: from benjamin-XPS-13-9310.. (unknown
+ [IPv6:2a01:e0a:120:3210:5aac:9ca0:e459:1f09])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ (Authenticated sender: benjamin.gaignard)
+ by bhuna.collabora.co.uk (Postfix) with ESMTPSA id 094531F43FCF;
+ Tue, 18 Jan 2022 15:07:25 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1642518445;
+ bh=kcrKD5Lb4gNWfTjfNnB/gFNCNh+zasxQp0W3HPwbaz0=;
+ h=From:To:Cc:Subject:Date:From;
+ b=DGAF/BR7fGDn8mG6BppEiTu3g4eO7nd/N7901D40JmjlHXP8s2AU804QYHmPXOSkc
+ JsTU06IBE5hKL0L9Eb8T02BULIzirVylDOGndQg/H6/ZUWVfQFZk9GLBd8w3H1+wot
+ fFRP1xDFK1R5ehrgfPeBS+W837CnWvlsjvWt9S/c2ZMyuxYCiDFpOPcrVYQzln2Tk7
+ LIb2oH15UTwNTbTK4kulQOQMAToRMqrfiePaxEhwhMcNZcM7HbjYkMHE/IvJahSa08
+ Cl37Z6HWc6kvWvt07UiMnZY+5Z//dShe02vWHyUKYpzIM1ow1DiPHp01gBjC/HNRO9
+ +i25L23fssfMg==
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.co.uk
+Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ kernel@collabora.com, Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH] media: platform: mtk-vcodec: Do not force /dev/videoX node
+ number
+Date: Tue, 18 Jan 2022 16:07:17 +0100
+Message-Id: <20220118150717.706074-1-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] clk: mediatek: Disable ACP to fix 3D on MT8192
-Content-Language: en-GB
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Alyssa Rosenzweig <alyssa@collabora.com>, Stephen Boyd <sboyd@kernel.org>
-Cc: Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
- linux-mediatek@lists.infradead.org,
- Michael Turquette <mturquette@baylibre.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu
- <weiyi.lu@mediatek.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, Nick Fan <Nick.Fan@mediatek.com>,
- Nicolas Boichat <drinkcat@chromium.org>
-References: <20220110181330.3224-1-alyssa.rosenzweig@collabora.com>
- <eb6d11af-ff48-a366-d428-77bcaa250a8a@arm.com> <YeF/AYZ0DuKGwLLk@maud>
- <CAGXv+5H9BsNUdiY6zMH6THKKMvRdPypNtUEVviMHQEjgNGDk_A@mail.gmail.com>
-From: Robin Murphy <robin.murphy@arm.com>
-In-Reply-To: <CAGXv+5H9BsNUdiY6zMH6THKKMvRdPypNtUEVviMHQEjgNGDk_A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_070155_964952_F63A22CE 
-X-CRM114-Status: GOOD (  22.02  )
+X-CRM114-CacheID: sfid-20220118_070728_449417_64223E57 
+X-CRM114-Status: GOOD (  13.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,72 +67,112 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2022-01-18 07:19, Chen-Yu Tsai wrote:
-> Hi,
-> 
-> On Fri, Jan 14, 2022 at 9:47 PM Alyssa Rosenzweig <alyssa@collabora.com> wrote:
->>
->>>> That links to an internal Google issue tracker which I assume has more
->>>> information on the bug. I would appreciate if someone from Google or
->>>> MediaTek could explain what this change actually does and why it's
->>>> necessary on MT8192.
->>>>
->>>> At any rate, this register logically belongs to the MT8192 "infra" clock
->>>> device, so it makes sense to set it there too. This avoids adding any
->>>> platform-specific hacks to the 3D driver, either mainline (Panfrost) or
->>>> legacy (kbase).
->>>
->>> Does this really have anything to do with clocks?
->>
->> I have no idea. MediaTek, Google, please explain.
->>
->>> In particular, "ACP" usually refers to the Accelerator Coherency Port
->>> of a CPU cluster or DSU, and given the stated symptom of the issue
->>> affected by it, my first guess would be that this bit might indeed
->>> control routing of GPU traffic either to the ACP or the (presumably
->>> non-coherent) main interconnect.
->>
->> I'd easily believe that.
-> 
-> As Robin guessed, "ACP" here does refer to the Accelerator Coherency Port.
-> And the bit in infracfg toggles whether ACP is used or not.
-> 
-> Explanation from MediaTek in verbatim:
-> 
-> -------------------------------------------------------------------------
-> The ACP path on MT8192 is just for experimental only.
-> We are not intended to enable ACP by design.
-> 
-> But due to an unexpected operation, it was accidently opened by default.
-> So we need a patch to disable the ACP for MT8192.
-> -------------------------------------------------------------------------
+Let's v4l2 framework use a free /dev/videoX node for decode and encoder.
+For the decoder call video_register_device() before register the media
+controller device so the mapping between ins correctly done.
+Since the registering sequence has changed rework exiting errors case too.
 
-Aha! That's great, thanks ChenYu!
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+---
+ .../platform/mtk-vcodec/mtk_vcodec_dec_drv.c  | 27 +++++++++----------
+ .../platform/mtk-vcodec/mtk_vcodec_enc_drv.c  |  2 +-
+ 2 files changed, 13 insertions(+), 16 deletions(-)
 
-Stephen, my thinking here is that if this feature controls the GPU 
-interconnect, and only matters when the GPU is going to be used (as 
-strongly implied by the downstream implementation), then the GPU driver 
-is the only interested party and may as well take responsibility if 
-there's no better alternative.
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+index 86b639d82be8..a4a3f9631d04 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_dec_drv.c
+@@ -374,7 +374,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	if (IS_ERR((__force void *)dev->m2m_dev_dec)) {
+ 		mtk_v4l2_err("Failed to init mem2mem dec device");
+ 		ret = PTR_ERR((__force void *)dev->m2m_dev_dec);
+-		goto err_dec_mem_init;
++		goto err_dec_alloc;
+ 	}
+ 
+ 	dev->decode_workqueue =
+@@ -391,10 +391,16 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 					   &pdev->dev);
+ 		if (ret) {
+ 			mtk_v4l2_err("Main device of_platform_populate failed.");
+-			goto err_event_workq;
++			goto err_reg_cont;
+ 		}
+ 	}
+ 
++	ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, -1);
++	if (ret) {
++		mtk_v4l2_err("Failed to register video device");
++		goto err_reg_cont;
++	}
++
+ 	if (dev->vdec_pdata->uses_stateless_api) {
+ 		dev->mdev_dec.dev = &pdev->dev;
+ 		strscpy(dev->mdev_dec.model, MTK_VCODEC_DEC_NAME,
+@@ -408,7 +414,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 							 MEDIA_ENT_F_PROC_VIDEO_DECODER);
+ 		if (ret) {
+ 			mtk_v4l2_err("Failed to register media controller");
+-			goto err_reg_cont;
++			goto err_dec_mem_init;
+ 		}
+ 
+ 		ret = media_device_register(&dev->mdev_dec);
+@@ -419,30 +425,21 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 
+ 		mtk_v4l2_debug(0, "media registered as /dev/media%d", vfd_dec->minor);
+ 	}
+-	ret = video_register_device(vfd_dec, VFL_TYPE_VIDEO, 0);
+-	if (ret) {
+-		mtk_v4l2_err("Failed to register video device");
+-		goto err_dec_reg;
+-	}
+ 
+ 	mtk_v4l2_debug(0, "decoder registered as /dev/video%d", vfd_dec->minor);
+ 
+ 	return 0;
+ 
+-err_dec_reg:
+-	if (dev->vdec_pdata->uses_stateless_api)
+-		media_device_unregister(&dev->mdev_dec);
+ err_media_reg:
+-	if (dev->vdec_pdata->uses_stateless_api)
+-		v4l2_m2m_unregister_media_controller(dev->m2m_dev_dec);
++	v4l2_m2m_unregister_media_controller(dev->m2m_dev_dec);
++err_dec_mem_init:
++	video_unregister_device(vfd_dec);
+ err_reg_cont:
+ 	if (dev->vdec_pdata->uses_stateless_api)
+ 		media_device_cleanup(&dev->mdev_dec);
+ 	destroy_workqueue(dev->decode_workqueue);
+ err_event_workq:
+ 	v4l2_m2m_release(dev->m2m_dev_dec);
+-err_dec_mem_init:
+-	video_unregister_device(vfd_dec);
+ err_dec_alloc:
+ 	v4l2_device_unregister(&dev->v4l2_dev);
+ err_core_workq:
+diff --git a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+index 507ad1ea2104..3975613b75b3 100644
+--- a/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
++++ b/drivers/media/platform/mtk-vcodec/mtk_vcodec_enc_drv.c
+@@ -350,7 +350,7 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	if (of_get_property(pdev->dev.of_node, "dma-ranges", NULL))
+ 		dma_set_mask_and_coherent(&pdev->dev, DMA_BIT_MASK(34));
+ 
+-	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, 1);
++	ret = video_register_device(vfd_enc, VFL_TYPE_VIDEO, -1);
+ 	if (ret) {
+ 		mtk_v4l2_err("Failed to register video device");
+ 		goto err_enc_reg;
+-- 
+2.30.2
 
-I'd agree that if there was already a "base" infracfg driver doing 
-general system-wide set-and-forget configuration then it would equally 
-well fit in there, but that doesn't seem to be the case. Short of trying 
-to abuse the bp_infracfg data in the mtk-pm-domains driver (which 
-doesn't seem like a particularly pleasant idea), the code to poke a bit 
-into a syscon regmap is going to be pretty much the same wherever we add 
-it. There's already a bit of a pattern for MTK drivers to look up and 
-poke their own infracfg bits directly as needed, so between that and the 
-downstream implementation for this particular bit, leaving it to 
-Panfrost seems like the least surprising option.
-
-Cheers,
-Robin.
 
 _______________________________________________
 Linux-mediatek mailing list
