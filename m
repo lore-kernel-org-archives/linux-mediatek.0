@@ -4,64 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00223C433FE
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 04:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7555EC4332F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 07:20:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PnAJEt4op8845VzBSWQtaUky/i1q6Frxkan1izdGb/8=; b=Oca+9Vv18e06b6
-	LpULOO25SO8RUfKnzTKvCP/+cmUzgd/Dd9zh37OfgQMlmjcqWC2oWhNoIRymV0x32Wh9Z6aeh8/pz
-	GQB0oYb4bU+gCbG7tTWcEHY5RomndUVazSbc4rbVU4ZnwIFWseAZ6M4qJaRX6QOwmjhV84ZB4nzmT
-	byHZiXk9cGnFpGpNo4XI3U59yXZmz2gnqjI2KBbV9ZOk9o5z4onjwIdFaWrvFcv5bjl3wVto/nrRW
-	MgvNIRhw1fXdB2YwhOVBHvmTW2L9q5Js+EbnQooyR8MVayokeyV0JZsz872rrXZuB/vlS+qtFXvmi
-	3Tke2Egl6HfinxU0VH2A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=afOC+ez+mtAKwbPcCEJDIxRwi1wf0DUvgZ51ZZDt/aU=; b=zFxvwffeH2FKQ9
+	APL1DY5BJNvUBzzsMZ5iWmtV4U6LObxU5L/TKkcSzFlpJAMBN5w5x7P7FLjBelQ54CIxuW3VkrVgz
+	10tdMBDrESjjzMuBGm1JmkQ23jrH2kxZYnDHCUx6jKBg7XN90euOK4KjGKDCCjXkTlG4814kT6q6q
+	qTNuc48Y3QvXgL20Ebk4dhEXSdlH7rycKIs4SP4JplNr/BUzk9PijQaw8tS4Sep3fEytn19jeZ54U
+	CpeU6tusLvkqifcgbSnkqw5VVF4ifsznjE2NsJGF/Ef8Z5XXOoipD3f6BwKzUpHa3pTToeFMAX6rz
+	6PCK5ugQekfSfiLEJBew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9gMi-000EVp-Sh; Tue, 18 Jan 2022 04:45:04 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1n9imZ-000ZN6-QG; Tue, 18 Jan 2022 07:19:55 +0000
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9gMC-000ELx-VH; Tue, 18 Jan 2022 04:44:34 +0000
-X-UUID: 3315271b7a4b4167ab656e06f0bb1a5a-20220117
-X-UUID: 3315271b7a4b4167ab656e06f0bb1a5a-20220117
-Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
- (envelope-from <allen-kh.cheng@mediatek.com>)
- (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
- with ESMTP id 785762762; Mon, 17 Jan 2022 21:44:31 -0700
-Received: from mtkexhb02.mediatek.inc (172.21.101.103) by
- MTKMBS62DR.mediatek.inc (172.29.94.18) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Mon, 17 Jan 2022 20:44:29 -0800
-Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb02.mediatek.inc
- (172.21.101.103) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
- Tue, 18 Jan 2022 12:44:21 +0800
-Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas11.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
- Frontend Transport; Tue, 18 Jan 2022 12:44:21 +0800
-From: allen-kh.cheng <allen-kh.cheng@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, Mark Brown <broonie@kernel.org>
-CC: Kevin Hilman <khilman@baylibre.com>, Linux-ALSA
- <alsa-devel@alsa-project.org>, <tzungbi@google.com>, Chen-Yu Tsai
- <wenst@chromium.org>, <cujomalainey@google.com>, Pierre-Louis Bossart
- <pierre-louis.bossart@linux.intel.com>, Liam Girdwood <lgirdwood@gmail.com>,
- Ranjani Sridharan <ranjani.sridharan@linux.intel.com>, Kai Vehmanen
- <kai.vehmanen@linux.intel.com>, Daniel Baluta <daniel.baluta@nxp.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- <Project_Global_Chrome_Upstream_Group@mediatek.com>,
- <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
- <sound-open-firmware@alsa-project.org>, Allen-KH Cheng
- <Allen-KH.Cheng@mediatek.com>
-Subject: [PATCH v16 0/2] mtk: add ADSP mailbox controller for MT8195
-Date: Tue, 18 Jan 2022 12:44:17 +0800
-Message-ID: <20220118044419.944-1-allen-kh.cheng@mediatek.com>
-X-Mailer: git-send-email 2.18.0
+ id 1n9imX-000ZMP-1j
+ for linux-mediatek@lists.infradead.org; Tue, 18 Jan 2022 07:19:54 +0000
+Received: by mail-lf1-x133.google.com with SMTP id m1so67013470lfq.4
+ for <linux-mediatek@lists.infradead.org>; Mon, 17 Jan 2022 23:19:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=QErlBlCXc+a1jsNeHhAG3QvKs8DThEwDqqGrTQJEmKM=;
+ b=Cjars/H6j45gYLQkoPMsEllTMBG70C1LHa06SGInYCzXmoS9ijngx+PwY1cWhsnV69
+ 67f28Y8J8i3CWhggCTKFSIppeyJizkiI/eHKsQ1CvQl3hxZl7oDW9MzjhA1XilWmuXdd
+ OuqkvduOPVXfWSYLn/rrthFHAgqKX1wsAIhy8=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=QErlBlCXc+a1jsNeHhAG3QvKs8DThEwDqqGrTQJEmKM=;
+ b=6mwXWkJdfkZP4vmHdRZHuhMFkogriFNQ3QjMszE6FNUHrbfXKZr6e7w36Fec91LfNY
+ 5ni4x6p4lne4Nb21HcnotIvwCjMahVeHS+tqGjLJeu3m8K1ROTM/znljV/rkyGRYUHH/
+ aRIOeAkc/NrBc+5XArhvp4UIde9APd8pqjSggWhl8XkfNSI3XvsMZtpw4WxCfzORGN3o
+ VcmiYCiE7kns9+mOMAxsccyvFXwa0ZYqyt2kfmDT7UaJdSwTZYH+wf//4UabgPJ5n6e9
+ 23hyD1R6mQO3i0/nsKoK6kvq+lvN/Aa0Aa31/izY4Tp3pW+ttI4vnK3uJQthidPuQSl3
+ P/QA==
+X-Gm-Message-State: AOAM530y17JBEonSxaEn07GY7+bO/EuVK00iUCvmav8g03Fj/IblI53T
+ pRNIQ9Jl2wHuM2GkJhkZK+DdwSaJiqqjma4zR5ViWg==
+X-Google-Smtp-Source: ABdhPJwXqSU3eM+obWywWHyddOWfpjQDK/HtlFI7KumYOm8sZXw1tbMN6njQNPqs6dDTjFNH7waDHttj7UPplBOmsPg=
+X-Received: by 2002:a2e:b70a:: with SMTP id j10mr15365829ljo.376.1642490391444; 
+ Mon, 17 Jan 2022 23:19:51 -0800 (PST)
 MIME-Version: 1.0
-X-MTK: N
+References: <20220110181330.3224-1-alyssa.rosenzweig@collabora.com>
+ <eb6d11af-ff48-a366-d428-77bcaa250a8a@arm.com> <YeF/AYZ0DuKGwLLk@maud>
+In-Reply-To: <YeF/AYZ0DuKGwLLk@maud>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Tue, 18 Jan 2022 15:19:40 +0800
+Message-ID: <CAGXv+5H9BsNUdiY6zMH6THKKMvRdPypNtUEVviMHQEjgNGDk_A@mail.gmail.com>
+Subject: Re: [PATCH] clk: mediatek: Disable ACP to fix 3D on MT8192
+To: Alyssa Rosenzweig <alyssa@collabora.com>
+Cc: Robin Murphy <robin.murphy@arm.com>, 
+ Alyssa Rosenzweig <alyssa.rosenzweig@collabora.com>,
+ linux-mediatek@lists.infradead.org, 
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Ikjoon Jang <ikjn@chromium.org>, 
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>, Weiyi Lu <weiyi.lu@mediatek.com>, 
+ linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Nick Fan <Nick.Fan@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_204433_088041_D65B3071 
-X-CRM114-Status: GOOD (  14.78  )
+X-CRM114-CacheID: sfid-20220117_231953_130998_CBF0F20E 
+X-CRM114-Status: GOOD (  23.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,92 +85,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Allen-KH Cheng <Allen-KH.Cheng@mediatek.com>
+Hi,
 
-Mediatek ADSP IPC is used to send notification or short message 
-between processors with dsp. It will place the message to the
-share buffer and will access the ADSP mailbox registers to kick
-dsp. Two mailboxes used to send notification or short message 
-between processors with dsp
+On Fri, Jan 14, 2022 at 9:47 PM Alyssa Rosenzweig <alyssa@collabora.com> wrote:
+>
+> > > That links to an internal Google issue tracker which I assume has more
+> > > information on the bug. I would appreciate if someone from Google or
+> > > MediaTek could explain what this change actually does and why it's
+> > > necessary on MT8192.
+> > >
+> > > At any rate, this register logically belongs to the MT8192 "infra" clock
+> > > device, so it makes sense to set it there too. This avoids adding any
+> > > platform-specific hacks to the 3D driver, either mainline (Panfrost) or
+> > > legacy (kbase).
+> >
+> > Does this really have anything to do with clocks?
+>
+> I have no idea. MediaTek, Google, please explain.
+>
+> > In particular, "ACP" usually refers to the Accelerator Coherency Port
+> > of a CPU cluster or DSU, and given the stated symptom of the issue
+> > affected by it, my first guess would be that this bit might indeed
+> > control routing of GPU traffic either to the ACP or the (presumably
+> > non-coherent) main interconnect.
+>
+> I'd easily believe that.
 
-changes since v14:
-- add paragraphs to describe the config symbols fully
+As Robin guessed, "ACP" here does refer to the Accelerator Coherency Port.
+And the bit in infracfg toggles whether ACP is used or not.
 
-changes since v14:
-- add inline for get_mtk_adsp_mbox_priv
+Explanation from MediaTek in verbatim:
 
-changes since v13:
-- rebase on v5.16-rc8
-- add back ptr check from of_device_get_match_data
+-------------------------------------------------------------------------
+The ACP path on MT8192 is just for experimental only.
+We are not intended to enable ACP by design.
 
-changes since v12:
-- remove of_device_get_match_data ptr check:
-  of_device_get_match_data(dev) will never going to return NULL.
-  driver probe with compatible mediatek,mt8195-adsp-mbox.
-
-changes since v11:
-- remove useless MODULE_LICENSE
-
-changes since v10:
-- split up v9 into two separate submissions
-
-changes since v9:
-- rename adsp_mbox_chan_ops to mtk_adsp_mbox_chan_ops
-
-changes since v8:
-- remove struct adsp_mbox_ch_info
-- add get_mtk_adsp_mbox_priv
-- use mtk_adsp_mbox_priv va_mboxreg address in adsp mbox driver
-- add struct mtk_adsp_mbox_cfg for DSP mbox register offset
-- remove adsp mbox register offset hard code define
-- remove mtk-adsp-ipc.h reference in adsp mbox driver
-
-changes since v7:
-- add mtk prefix for adsp ipc functions
-- rename adsp_mbox_ch_info to mtk_adsp_mbox_ch_info
-- remove incorrect reviewers in commit message
-
-changes since v6:
-- dt-bindings: change example dtsi node.
-- rename config MTK_ADSP_IPC_MBOX to MTK_ADSP_MBOX
-- remove unused variable
-- add reviewers
-
-changes since v5:
-- remove some redundant code
-
-changes since v4:
-- use switch ... case in adsp_ipc_recv
-- add error handling path for chan_name pointer
-- refine some code to be concise
-
-changes since v3:
-- reorder MTK_ADSP_IPC_MBOX config
-- remove some redundant code
-- remove lock in mtk-adsp-mailbox
-
-changes since v2:
-- separate adsp_mailbox into two instances
-
-changes since v1:
-- fix dt_binding_check error
+But due to an unexpected operation, it was accidently opened by default.
+So we need a patch to disable the ACP for MT8192.
+-------------------------------------------------------------------------
 
 
-Allen-KH Cheng (2):
-  dt-bindings: mediatek: add adsp-mbox document
-  mailbox: mediatek: add support for adsp mailbox controller
+Regards
+ChenYu
 
- .../bindings/mailbox/mtk,adsp-mbox.yaml       |  52 ++++++
- drivers/mailbox/Kconfig                       |   9 +
- drivers/mailbox/Makefile                      |   2 +
- drivers/mailbox/mtk-adsp-mailbox.c            | 175 ++++++++++++++++++
- 4 files changed, 238 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mailbox/mtk,adsp-mbox.yaml
- create mode 100644 drivers/mailbox/mtk-adsp-mailbox.c
-
--- 
-2.18.0
-
+> > If that is the case, I think this would logically belong as a SoC-specific
+> > quirk in panfrost, where we'd need to retrieve the syscon regmap for
+> > ourselves (see around line 800 of drivers/iommu/mtk_iommu.c for a similar
+> > example).
+>
+> Alright. Doing this in panfrost seems ugly but if that's the right place
+> for it, that's the right place for it.
 
 _______________________________________________
 Linux-mediatek mailing list
