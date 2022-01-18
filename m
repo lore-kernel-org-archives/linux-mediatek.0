@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4897FC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 03:07:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBB96C433EF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 03:08:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bs3ue1xBuH6dTTVdif2lp2ZMidIR7KDEkrgAjO1gc5U=; b=q4VomrIb5yqSBT
-	iPnYuR1I64P/Yl+/Xs+BpnWp83W/yIaVi+3LkJdNFPo52zBmig0+UERAZR1b803bD6ghEsuDsC9C9
-	ghpJRbnIA991gyRoe4suLiBrEXRUNrDxMwNwU0K84fFVnXpG+bkt2SH9hVSve1ldeiF3ShPOxZKBm
-	PsOJQuShdAbMVIzZCjT5XnluMBfp6fQvk7hsCJ34ofL7gLHnpI7L2E5Dlxduo5DPty9d3DCCL71J0
-	HHZ0W/If4bpcGTCdujKNxPo382rZ1LqpzJH6F+sXqZGMqBoibKXeG6kmD6bemGlMptDheGHCd++IL
-	kebuOIKo/sducUCCDd5A==;
+	List-Owner; bh=8P1ppYgOEU34C9zZZ4rimiqeI5u9z36XXammzx0MdBg=; b=MsOMyOUFa/pOvW
+	B8CYsyETqSEWC9HityGhhSnJIfTWqsUILbtf7C2oQkSFFFuMvRa4OjVPSc/s+5D7++pOsEnCWrhjO
+	hnv6DoRVhHbX/Yz318apTaMRsjklX2a7S4UnUzkco2AdiCeITFWoFIWxDsDXWL8Onjnp3DSW93Ysu
+	aaDmAmhLJvR5KXFOaNMt62Cc0kgMhZZWFfy+cOnBa3sPlbjbLu4TxuiY/5L1LFMH/PdtcpjxE3X/h
+	wYpA0TaknnvW2bmDRs1ltpU1VJMlSLvdm9Pn7Gc9Ml3rRpoTNuiOCaB4vfcQllDvmP+AKtC08LZ8V
+	GPuD0Ibdpw3N4QIeB1nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9epw-00HIuc-4C; Tue, 18 Jan 2022 03:07:08 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1n9erL-00HJbl-HY; Tue, 18 Jan 2022 03:08:35 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9eOh-00H2Jo-Fm; Tue, 18 Jan 2022 02:39:02 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 3618BB81249;
- Tue, 18 Jan 2022 02:38:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9F02C36B03;
- Tue, 18 Jan 2022 02:38:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642473537;
- bh=GZb47qHmSv7cX/4Xhz3PXUcBlwC+TvbzP2UWzUtTigY=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ifpzBr5G3KLKiKV2ovfPsQDTtYp+p9VyuFWV54lzbHFWR3l95gtAIGxP0t5V4Feb/
- EKp1EE3PESxRbx774OJuBqk+ew0/iqYQXDIqMBsB1/F0maeFvyAKsiXVKZ8IK6Ay9P
- /1tgVhrw9rZOFydeBK7I2hzMGToyVhD5nv9c1O/U9Pn6IpqhcyMz1EEoz6uC8xD02X
- Nl+KyXqwW2hnM3cOjhrZQoeV+FYi2Sb1USX+RdT9Rai756+2Hb+PV/ntG48eavgXqk
- XF/7ETdZASA5nlxKg1ngP9b57M+6sE763dg1dYzqoiwdx+SzP8ZnyXj82TSU5H+DjT
- OL83MPbLqUdPA==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Ulf Hansson <ulf.hansson@linaro.org>, Sasha Levin <sashal@kernel.org>,
- chaotian.jing@mediatek.com, matthias.bgg@gmail.com,
- linux-mmc@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.15 157/188] mmc: mtk-sd: Use readl_poll_timeout
- instead of open-coded polling
-Date: Mon, 17 Jan 2022 21:31:21 -0500
-Message-Id: <20220118023152.1948105-157-sashal@kernel.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220118023152.1948105-1-sashal@kernel.org>
-References: <20220118023152.1948105-1-sashal@kernel.org>
+ id 1n9eQT-00H3GB-Pw; Tue, 18 Jan 2022 02:40:52 +0000
+X-UUID: b794d6f5ee0f42b6ade9c44465c85824-20220117
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com;
+ s=dk; 
+ h=Content-Transfer-Encoding:MIME-Version:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID;
+ bh=Y9GSvZM5x+TIy2NFydfg35BhFJAYHi5jhhj+uG920dU=; 
+ b=Vk5Mee33V9gSoUC+qH46rzcjeqxmycqugCRts6lqxb2gzrQZGmVjEXrAKGoFetjOZqPpR7OPCwbee0dh+5uqFDqZ1aW9/HpeTA/iyK1qOHlJOI6lbPpMaIhMs3AFGh4MBp1e+z936wcf4FF78pYZ9GO/nBYp/jMS88jJHyHJ5EU=;
+X-UUID: b794d6f5ee0f42b6ade9c44465c85824-20220117
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <zhiyong.tao@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1968358415; Mon, 17 Jan 2022 19:40:44 -0700
+Received: from MTKMBS07N2.mediatek.inc (172.21.101.141) by
+ MTKMBS62N1.mediatek.inc (172.29.193.41) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Jan 2022 18:36:49 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n2.mediatek.inc (172.21.101.141) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 18 Jan 2022 10:36:47 +0800
+Received: from mhfsdcap04 (10.17.3.154) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 18 Jan 2022 10:36:47 +0800
+Message-ID: <b1d5ca006860c85edd971ea9e20880ec8ba7f842.camel@mediatek.com>
+Subject: Re: [PATCH 7/7] pinctrl: mediatek: paris: Support generic
+ PIN_CONFIG_DRIVE_STRENGTH_UA
+From: zhiyong.tao <zhiyong.tao@mediatek.com>
+To: Chen-Yu Tsai <wenst@chromium.org>, Sean Wang <sean.wang@kernel.org>,
+ "Linus Walleij" <linus.walleij@linaro.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>
+CC: <linux-mediatek@lists.infradead.org>, <linux-gpio@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ Guodong Liu <guodong.liu@mediatek.com>, <hui.liu@mediatek.com>,
+ <light.hsieh@mediatek.com>
+Date: Tue, 18 Jan 2022 10:36:47 +0800
+In-Reply-To: <20220111112244.1483783-8-wenst@chromium.org>
+References: <20220111112244.1483783-1-wenst@chromium.org>
+ <20220111112244.1483783-8-wenst@chromium.org>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_183859_855554_CFE28C71 
-X-CRM114-Status: GOOD (  16.44  )
+X-CRM114-CacheID: sfid-20220117_184049_915014_76503919 
+X-CRM114-Status: GOOD (  33.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,179 +81,175 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Tue, 2022-01-11 at 19:22 +0800, Chen-Yu Tsai wrote:
+> Some of the MediaTek chips that utilize the Paris pinctrl driver
+> library
+> support a lower drive strength (<= 1mA) than the standard drive
+> strength
+> settings (2~16 mA) on certain pins. This was previously supported by
+> the
+> custom MTK_PIN_CONFIG_DRV_ADV parameter along with the
+> "mediatek,drive-strength-adv" device tree property.
+> 
+> The drive strength values for this hardware are 125, 250, 500, and
+> 1000 mA,
+> and can be readily described by the existing "drive-strength-
+> microamp",
+> which then gets parsed by the generic pinconf library into the
+> parameter
+> PIN_CONFIG_DRIVE_STRENGTH_UA.
+> 
+> Add support for PIN_CONFIG_DRIVE_STRENGTH_UA while keeping the old
+> custom parameter around for backward compatibility.
+> 
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+> 
+> The indentation in the switch/case blocks is getting somewhat out of
+> control. I also have some cleanup changes to reverse the logic of the
+> if/break statements. Not sure if it should be done before or after
+> this
+> patch though.
+> 
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-paris.c | 84
+> ++++++++++++++++++++++++
+>  1 file changed, 84 insertions(+)
+> 
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index 678c8aa33012..5a94903ae372 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -48,6 +48,53 @@ static const char * const mtk_gpio_functions[] = {
+>  	"func12", "func13", "func14", "func15",
+>  };
+>  
+> +/*
+> + * This section supports converting to/from custom
+> MTK_PIN_CONFIG_DRV_ADV
+> + * and standard PIN_CONFIG_DRIVE_STRENGTH_UA pin configs.
+> + *
+> + * The custom value encodes three hardware bits as follows:
+> + *
+> + *   |           Bits           |
+> + *   | 2 (E1) | 1 (E0) | 0 (EN) | drive strength (uA)
+> + *   ------------------------------------------------
+> + *   |    x   |    x   |    0   | disabled, use standard drive
+> strength
+> + *   -------------------------------------
+> + *   |    0   |    0   |    1   |  125 uA
+> + *   |    0   |    1   |    1   |  250 uA
+> + *   |    1   |    0   |    1   |  500 uA
+> + *   |    1   |    1   |    1   | 1000 uA
+> + */
+> +static const int mtk_drv_adv_uA[] = { 125, 250, 500, 1000 };
+> +
+> +static int mtk_drv_adv_to_uA(int val)
+> +{
+> +	/* This should never happen. */
+> +	if (WARN_ON_ONCE(val < 0 || val > 7))
+> +		return -EINVAL;
+> +
+> +	/* Bit 0 simply enables this hardware part */
+> +	if (!(val & BIT(0)))
+> +		return -EINVAL;
+> +
+> +	return mtk_drv_adv_uA[(val >> 1)];
+> +}
+> +
+> +static int mtk_drv_uA_to_adv(int val)
+> +{
+> +	switch (val) {
+> +	case 125:
+> +		return 0x1;
+> +	case 250:
+> +		return 0x3;
+> +	case 500:
+> +		return 0x5;
+> +	case 1000:
+> +		return 0x7;
+> +	}
+> +
+> +	return -EINVAL;
+> +}
+> +
+>  static int mtk_pinmux_gpio_request_enable(struct pinctrl_dev
+> *pctldev,
+>  					  struct pinctrl_gpio_range
+> *range,
+>  					  unsigned int pin)
+> @@ -151,11 +198,38 @@ static int mtk_pinconf_get(struct pinctrl_dev
+> *pctldev,
+>  
+>  		break;
+>  	case PIN_CONFIG_DRIVE_STRENGTH:
+> +		if (hw->soc->adv_drive_get) {
+> +			err = hw->soc->adv_drive_get(hw, desc, &ret);
+> +			if (!err) {
+> +				err = mtk_drv_adv_to_uA(ret);
+> +				if (err > 0) {
+> +					/* PIN_CONFIG_DRIVE_STRENGTH_UA
+> used */
+> +					err = -EINVAL;
+> +					break;
+> +				}
+> +			}
+> +		}
+> +
+Hi Chen-Yu,
 
-[ Upstream commit ffaea6ebfe9ce06ebb3a54811a47688f2b0893cd ]
+PIN_CONFIG_DRIVE_STRENGTH is seems used for 2/4/6/8ma, it is not used
+for 125/250/500/1000ma. why you change here?
 
-Replace all instances of open-coded while loops for polling registers
-with calls to readl_poll_timeout() and, while at it, also fix some
-possible infinite loop instances.
+Thanks.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Link: https://lore.kernel.org/r/20211216125748.179602-1-angelogioacchino.delregno@collabora.com
-Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/mmc/host/mtk-sd.c | 64 ++++++++++++++++++++++++---------------
- 1 file changed, 39 insertions(+), 25 deletions(-)
+>  		if (hw->soc->drive_get)
+>  			err = hw->soc->drive_get(hw, desc, &ret);
+>  		else
+>  			err = -ENOTSUPP;
+>  		break;
+> +	case PIN_CONFIG_DRIVE_STRENGTH_UA:
+> +		if (hw->soc->adv_drive_get) {
+> +			err = hw->soc->adv_drive_get(hw, desc, &ret);
+> +			if (err)
+> +				break;
+> +			err = mtk_drv_adv_to_uA(ret);
+> +			if (err < 0)
+> +				break;
+> +
+> +			ret = err;
+> +			err = 0;
+> +		} else {
+> +			err = -ENOTSUPP;
+> +		}
+> +		break;
 
-diff --git a/drivers/mmc/host/mtk-sd.c b/drivers/mmc/host/mtk-sd.c
-index 9e6dab7e34242..1ac92015992ed 100644
---- a/drivers/mmc/host/mtk-sd.c
-+++ b/drivers/mmc/host/mtk-sd.c
-@@ -628,12 +628,11 @@ static void msdc_reset_hw(struct msdc_host *host)
- 	u32 val;
- 
- 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_RST);
--	while (readl(host->base + MSDC_CFG) & MSDC_CFG_RST)
--		cpu_relax();
-+	readl_poll_timeout(host->base + MSDC_CFG, val, !(val & MSDC_CFG_RST), 0, 0);
- 
- 	sdr_set_bits(host->base + MSDC_FIFOCS, MSDC_FIFOCS_CLR);
--	while (readl(host->base + MSDC_FIFOCS) & MSDC_FIFOCS_CLR)
--		cpu_relax();
-+	readl_poll_timeout(host->base + MSDC_FIFOCS, val,
-+			   !(val & MSDC_FIFOCS_CLR), 0, 0);
- 
- 	val = readl(host->base + MSDC_INT);
- 	writel(val, host->base + MSDC_INT);
-@@ -806,8 +805,9 @@ static void msdc_gate_clock(struct msdc_host *host)
- 	clk_disable_unprepare(host->h_clk);
- }
- 
--static void msdc_ungate_clock(struct msdc_host *host)
-+static int msdc_ungate_clock(struct msdc_host *host)
- {
-+	u32 val;
- 	int ret;
- 
- 	clk_prepare_enable(host->h_clk);
-@@ -817,11 +817,11 @@ static void msdc_ungate_clock(struct msdc_host *host)
- 	ret = clk_bulk_prepare_enable(MSDC_NR_CLOCKS, host->bulk_clks);
- 	if (ret) {
- 		dev_err(host->dev, "Cannot enable pclk/axi/ahb clock gates\n");
--		return;
-+		return ret;
- 	}
- 
--	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
--		cpu_relax();
-+	return readl_poll_timeout(host->base + MSDC_CFG, val,
-+				  (val & MSDC_CFG_CKSTB), 1, 20000);
- }
- 
- static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
-@@ -832,6 +832,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
- 	u32 div;
- 	u32 sclk;
- 	u32 tune_reg = host->dev_comp->pad_tune_reg;
-+	u32 val;
- 
- 	if (!hz) {
- 		dev_dbg(host->dev, "set mclk to 0\n");
-@@ -912,8 +913,7 @@ static void msdc_set_mclk(struct msdc_host *host, unsigned char timing, u32 hz)
- 	else
- 		clk_prepare_enable(clk_get_parent(host->src_clk));
- 
--	while (!(readl(host->base + MSDC_CFG) & MSDC_CFG_CKSTB))
--		cpu_relax();
-+	readl_poll_timeout(host->base + MSDC_CFG, val, (val & MSDC_CFG_CKSTB), 0, 0);
- 	sdr_set_bits(host->base + MSDC_CFG, MSDC_CFG_CKPDN);
- 	mmc->actual_clock = sclk;
- 	host->mclk = hz;
-@@ -1223,13 +1223,13 @@ static bool msdc_cmd_done(struct msdc_host *host, int events,
- static inline bool msdc_cmd_is_ready(struct msdc_host *host,
- 		struct mmc_request *mrq, struct mmc_command *cmd)
- {
--	/* The max busy time we can endure is 20ms */
--	unsigned long tmo = jiffies + msecs_to_jiffies(20);
-+	u32 val;
-+	int ret;
- 
--	while ((readl(host->base + SDC_STS) & SDC_STS_CMDBUSY) &&
--			time_before(jiffies, tmo))
--		cpu_relax();
--	if (readl(host->base + SDC_STS) & SDC_STS_CMDBUSY) {
-+	/* The max busy time we can endure is 20ms */
-+	ret = readl_poll_timeout_atomic(host->base + SDC_STS, val,
-+					!(val & SDC_STS_CMDBUSY), 1, 20000);
-+	if (ret) {
- 		dev_err(host->dev, "CMD bus busy detected\n");
- 		host->error |= REQ_CMD_BUSY;
- 		msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq, cmd);
-@@ -1237,12 +1237,10 @@ static inline bool msdc_cmd_is_ready(struct msdc_host *host,
- 	}
- 
- 	if (mmc_resp_type(cmd) == MMC_RSP_R1B || cmd->data) {
--		tmo = jiffies + msecs_to_jiffies(20);
- 		/* R1B or with data, should check SDCBUSY */
--		while ((readl(host->base + SDC_STS) & SDC_STS_SDCBUSY) &&
--				time_before(jiffies, tmo))
--			cpu_relax();
--		if (readl(host->base + SDC_STS) & SDC_STS_SDCBUSY) {
-+		ret = readl_poll_timeout_atomic(host->base + SDC_STS, val,
-+						!(val & SDC_STS_SDCBUSY), 1, 20000);
-+		if (ret) {
- 			dev_err(host->dev, "Controller busy detected\n");
- 			host->error |= REQ_CMD_BUSY;
- 			msdc_cmd_done(host, MSDC_INT_CMDTMO, mrq, cmd);
-@@ -1367,6 +1365,8 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
- 	    (MSDC_INT_XFER_COMPL | MSDC_INT_DATCRCERR | MSDC_INT_DATTMO
- 	     | MSDC_INT_DMA_BDCSERR | MSDC_INT_DMA_GPDCSERR
- 	     | MSDC_INT_DMA_PROTECT);
-+	u32 val;
-+	int ret;
- 
- 	spin_lock_irqsave(&host->lock, flags);
- 	done = !host->data;
-@@ -1383,8 +1383,14 @@ static bool msdc_data_xfer_done(struct msdc_host *host, u32 events,
- 				readl(host->base + MSDC_DMA_CFG));
- 		sdr_set_field(host->base + MSDC_DMA_CTRL, MSDC_DMA_CTRL_STOP,
- 				1);
--		while (readl(host->base + MSDC_DMA_CFG) & MSDC_DMA_CFG_STS)
--			cpu_relax();
-+
-+		ret = readl_poll_timeout_atomic(host->base + MSDC_DMA_CFG, val,
-+						!(val & MSDC_DMA_CFG_STS), 1, 20000);
-+		if (ret) {
-+			dev_dbg(host->dev, "DMA stop timed out\n");
-+			return false;
-+		}
-+
- 		sdr_clr_bits(host->base + MSDC_INTEN, data_ints_mask);
- 		dev_dbg(host->dev, "DMA stop\n");
- 
-@@ -2598,7 +2604,11 @@ static int msdc_drv_probe(struct platform_device *pdev)
- 	spin_lock_init(&host->lock);
- 
- 	platform_set_drvdata(pdev, mmc);
--	msdc_ungate_clock(host);
-+	ret = msdc_ungate_clock(host);
-+	if (ret) {
-+		dev_err(&pdev->dev, "Cannot ungate clocks!\n");
-+		goto release_mem;
-+	}
- 	msdc_init_hw(host);
- 
- 	if (mmc->caps2 & MMC_CAP2_CQE) {
-@@ -2757,8 +2767,12 @@ static int __maybe_unused msdc_runtime_resume(struct device *dev)
- {
- 	struct mmc_host *mmc = dev_get_drvdata(dev);
- 	struct msdc_host *host = mmc_priv(mmc);
-+	int ret;
-+
-+	ret = msdc_ungate_clock(host);
-+	if (ret)
-+		return ret;
- 
--	msdc_ungate_clock(host);
- 	msdc_restore_reg(host);
- 	return 0;
- }
--- 
-2.34.1
+Hi Chen-Yu,
+For PIN_CONFIG_DRIVE_STRENGTH_UA case, How can we use in dts node ?
+Thanks.
 
-
+>  	case MTK_PIN_CONFIG_TDSEL:
+>  	case MTK_PIN_CONFIG_RDSEL:
+>  		reg = (param == MTK_PIN_CONFIG_TDSEL) ?
+> @@ -271,6 +345,16 @@ static int mtk_pinconf_set(struct pinctrl_dev
+> *pctldev, unsigned int pin,
+>  		else
+>  			err = -ENOTSUPP;
+>  		break;
+> +	case PIN_CONFIG_DRIVE_STRENGTH_UA:
+> +		if (hw->soc->adv_drive_set) {
+> +			err = mtk_drv_uA_to_adv(arg);
+> +			if (err < 0)
+> +				break;
+> +			err = hw->soc->adv_drive_set(hw, desc, err);
+> +		} else {
+> +			err = -ENOTSUPP;
+> +		}
+> +		break;
+>  	case MTK_PIN_CONFIG_TDSEL:
+>  	case MTK_PIN_CONFIG_RDSEL:
+>  		reg = (param == MTK_PIN_CONFIG_TDSEL) ?
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
