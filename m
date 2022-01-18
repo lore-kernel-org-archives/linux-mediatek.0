@@ -4,81 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04725C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 13:18:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D9D4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 13:34:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=csg3jXmd8aBNeXyeYHZuuW/zlExmpuMWAriE2jL/1Q0=; b=fEyBywRtK/5Gbt
-	Ja4KFZiL3/AJnG+5WHBieQpKtrLDrMfYqLUtGimoYV6mZMXqXQwRYwi1cFGqnjGoqmTa4ow+3KD+C
-	eFnS8hcDwbmU+SrJF0BVBRyaKfq+/IsWiJjiF3TyigfA6H5RRo6tChphekyQIOLF7KhpRBSNmlqfT
-	5VCv3n+3ZJxmKtY3oqBlQrJdg3mTSjU82IcGwOBLb+bv5n5MRQ2fhxgzh8mrh5oS4kv0Il70XkLqU
-	0wdbKG+vTaWpu3Zmx0cBxGJNB40js7M8xV6usSGtpCQztMJkQXaClJeLjsc8OSFo1ZSEjqTVtBfeZ
-	P5xzevF3ibLimj14ykRg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MEmdFsLYLCKPXLyUIPdb9VrykBFeXSLpDO8tsbQwz/c=; b=tVU/uAfVip1SGe
+	RhxwJGvKGYQlRYlvcjwbfOs21MYHBQgIgbIgzbcp2H9DDX+IXaoLPllULSmk2ox4cS51YvrhuOtbd
+	plKO6xcGl/oCpvlyOjC19lkwY7KYxTF6VkPpW5/QhhwO/7vTI9aUYTYPfAAr452qUadQ+xClhkZJn
+	0auxGoVq4qw0kHHUJOqj8ACe0uzBI6as3Vx0X3yUIXDqCXuhA0/Mbx3WBJ6TQQYdfwwwG6r5laupV
+	HGUMhVCgAoKWe8Lgqd8ebdDO0NJVkXch2nFReO/aDMe4P25LiQdrVrAZOwZjtx8hH2yXAtnaeDbGp
+	uGxtEOJvjFV/sBcfNa2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9oND-001cma-DL; Tue, 18 Jan 2022 13:18:07 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1n9ocm-001fYf-CY; Tue, 18 Jan 2022 13:34:12 +0000
+Received: from bhuna.collabora.co.uk ([46.235.227.227])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9oMn-001cXf-PE; Tue, 18 Jan 2022 13:17:44 +0000
-Received: by mail-wm1-x336.google.com with SMTP id n8so878508wmk.3;
- Tue, 18 Jan 2022 05:17:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=message-id:date:mime-version:user-agent:subject:content-language:to
- :cc:references:from:in-reply-to:content-transfer-encoding;
- bh=Q7VK09hbhq9EF54NXn3wG/WGVYjtOlKUjjiSI8lz1ck=;
- b=dGRXIOV4goUxOIaWV646IpZ8F1nDyXNUH/J3l5cyAa9AB5BDE96BztzhhahUYB3BIL
- jlGpO8yZnafBRe6gFpFy94a+OwASwyI9BOyMwuucVNHWjxgNjcUAC6FbVaveZwJJSuzl
- BTVqJDrDh9X8BaS/TqAd8SlAazmgFHpsbcpBeCDoOERQHqlETvSeDuttPLMzml0UyTTx
- 7c3RRFEfSoj55Orxijj/drBvI/BqtV5USJrqhVSoLcTsl4zkYl8SH2bREz30Kgy6TM0+
- UfrpNLDnFm4YDLpJ3SGVpoF1ZWlrmmt5ny7kNpOmpHuD3Z62qKn2sJk2XX0Vlw0W7RE9
- QwIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
- :content-language:to:cc:references:from:in-reply-to
- :content-transfer-encoding;
- bh=Q7VK09hbhq9EF54NXn3wG/WGVYjtOlKUjjiSI8lz1ck=;
- b=vpjU2Qg/u9U2CMJEhDE5cFImfcV0kJebzqzfSEcdYkWCNvox28ISfMUafYNPXLjQ58
- tEblXoK03RIDUCwH+qDYR8XaQ6Hj/4fyFbFJyY+M+kEAsZyGMaVLxhsuPYnUEsIZt8m7
- a+uSIFW7LWerOyTNQBw04RcgGJ7iOZGAYcxZ0Gkh8zBhgmeyApTIr+Kz3fewfqx114Eq
- eIGZ0RKseJUBrWsA9mo6LLI8Rul0ilFACMRd6twxlsC3yvuSJpJWg507siLQijxtDOLd
- NqKwbD+sHGQW4bXLlcUnFyBK/nlm52+qa/ann7k64FAJkr3lVnmjTQB6K4arafOJ5OFZ
- 9Qgg==
-X-Gm-Message-State: AOAM532Vb39gY9Ma3HRKYkzXScsVp161kOp4QVwG+iCv/VpPgeXHuQT6
- 02/KiNQtxcu56hllPSnIrUyNHvPMBp57dw==
-X-Google-Smtp-Source: ABdhPJw1UPBVre/JNKUC+L4E+4ziUHkUgPD9UeI112aZ+x3y/3f7KSt7xQVyvz+AmxisjpUlbcMjwg==
-X-Received: by 2002:adf:ffc7:: with SMTP id x7mr23088441wrs.623.1642511859529; 
- Tue, 18 Jan 2022 05:17:39 -0800 (PST)
-Received: from [192.168.1.145] ([207.188.161.251])
- by smtp.gmail.com with ESMTPSA id c8sm2938627wmq.34.2022.01.18.05.17.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Jan 2022 05:17:38 -0800 (PST)
-Message-ID: <f5486d12-b048-c062-e571-cf39da7e4c1b@gmail.com>
-Date: Tue, 18 Jan 2022 14:17:37 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.0
-Subject: Re: [PATCH v2 1/2] soc: mediatek: pwrap: add pwrap driver for MT8186
- SoC
-Content-Language: en-US
-To: Johnson Wang <johnson.wang@mediatek.com>, robh+dt@kernel.org
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ id 1n9oca-001fX0-0J; Tue, 18 Jan 2022 13:34:01 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ (Authenticated sender: kholk11) with ESMTPSA id 276141F43EF3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+ s=mail; t=1642512835;
+ bh=dyzC6UDmMXDPgDAbF5EHytgo8xi3QjCJwOmX3JXKm64=;
+ h=From:To:Cc:Subject:Date:From;
+ b=eNT0A23wVjHpGk/5uTLMZb/Z5SEaGBovtyUKak0cbUjmQaoRa+JHGaytB3jNQf98l
+ V4s3OoxyFz0EBHnK8+9tBXLY7LOleKZGV38LiHMoZciuXbaJFw6XJmk6iLtyeukKY8
+ hlzQDxF7zBpcGhm7HWNjY1DE3dr9wPVZhLJ6Dn41eZ8u7YYvgqeI+xUWQT7XGce/fi
+ LOguWwYGY36i4OKW2syBzyNQbSbXAtYEOz1WKZUotbvtN+v6GG2uEqoEt13Ocj7G8h
+ Y28t5/nzv1CEHdFC6pGozlab8NYL69ArYOZMtQQlgR5aHjXjJ8Mv4LAhQYD7ITgqsI
+ FKeDu/gV/2j3A==
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunfeng.yun@mediatek.com
+Cc: mathias.nyman@intel.com, gregkh@linuxfoundation.org,
+ matthias.bgg@gmail.com, linux-usb@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- angelogioacchino.delregno@collabora.com,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220107104633.7500-1-johnson.wang@mediatek.com>
- <20220107104633.7500-2-johnson.wang@mediatek.com>
- <9949a1f7-1ed5-a137-c7b9-2ef8d8e1caf8@gmail.com>
- <544f5085fc8597ce9ce3eb7dc1b5d08fb1ac8755.camel@mediatek.com>
-From: Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <544f5085fc8597ce9ce3eb7dc1b5d08fb1ac8755.camel@mediatek.com>
+ linux-kernel@vger.kernel.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] usb: host: xhci-mtk: Simplify supplies handling with
+ regulator_bulk
+Date: Tue, 18 Jan 2022 14:33:48 +0100
+Message-Id: <20220118133348.111860-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.33.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_051741_903945_637A64D5 
-X-CRM114-Status: GOOD (  25.38  )
+X-CRM114-CacheID: sfid-20220118_053400_223511_4DE4681B 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,88 +63,143 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Remove the custom functions xhci_mtk_ldos_{enable,disable}() by
+switching to using regulator_bulk to perform the very same thing,
+as the regulators are always either both enabled or both disabled.
 
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/usb/host/xhci-mtk.c | 56 ++++++++++++-------------------------
+ drivers/usb/host/xhci-mtk.h |  4 +--
+ 2 files changed, 20 insertions(+), 40 deletions(-)
 
-On 18/01/2022 10:25, Johnson Wang wrote:
-> Hi Matthias,
-> 
-> On Fri, 2022-01-14 at 16:46 +0100, Matthias Brugger wrote:
->>
->> On 07/01/2022 11:46, Johnson Wang wrote:
->>> MT8186 are highly integrated SoC and use PMIC_MT6366 for
->>> power management. This patch adds pwrap master driver to
->>> access PMIC_MT6366.
->>>
->>
->> It seems this new arbiter is significantly different from the version
->> 1. Please
->> explain that in the commit message.
->>
->>> Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
->>> ---
->>>    drivers/soc/mediatek/mtk-pmic-wrap.c | 72
->>> ++++++++++++++++++++++++++++
->>>    1 file changed, 72 insertions(+)
->>>
->>> diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> b/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> index 952bc554f443..78866ebf7f04 100644
->>> --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
->>> @@ -30,6 +30,7 @@
->>>    #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) &
->>> 0x00000001)
->>>    #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
->>>    #define PWRAP_STATE_INIT_DONE0		BIT(21)
->>> +#define PWRAP_STATE_INIT_DONE0_V2	BIT(22)
->>
->> That's a strange name, does it come from the datasheet description?
-> 
-> Thanks for your review.
-> 
-> No, there is only PWRAP_STATE_INIT_DONE0 in MT8186 datasheet.
-> However, it's the 22nd bit in MT8186 and the 21st bit in other SoCs.
-> So we changed its name to avoid redefinition of PWRAP_STATE_INIT_DONE0.
-> 
-> Could you give us some suggestion on proper definition naming?
-> Do you think PWRAP_STATE_INIT_DONE0_MT8186 will be a better choice?
-> 
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 62c835d446be..3b81931e5b77 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -395,31 +395,6 @@ static int xhci_mtk_clks_get(struct xhci_hcd_mtk *mtk)
+ 	return devm_clk_bulk_get_optional(mtk->dev, BULK_CLKS_NUM, clks);
+ }
+ 
+-static int xhci_mtk_ldos_enable(struct xhci_hcd_mtk *mtk)
+-{
+-	int ret;
+-
+-	ret = regulator_enable(mtk->vbus);
+-	if (ret) {
+-		dev_err(mtk->dev, "failed to enable vbus\n");
+-		return ret;
+-	}
+-
+-	ret = regulator_enable(mtk->vusb33);
+-	if (ret) {
+-		dev_err(mtk->dev, "failed to enable vusb33\n");
+-		regulator_disable(mtk->vbus);
+-		return ret;
+-	}
+-	return 0;
+-}
+-
+-static void xhci_mtk_ldos_disable(struct xhci_hcd_mtk *mtk)
+-{
+-	regulator_disable(mtk->vbus);
+-	regulator_disable(mtk->vusb33);
+-}
+-
+ static void xhci_mtk_quirks(struct device *dev, struct xhci_hcd *xhci)
+ {
+ 	struct usb_hcd *hcd = xhci_to_hcd(xhci);
+@@ -475,6 +450,10 @@ static int xhci_mtk_setup(struct usb_hcd *hcd)
+ 	return ret;
+ }
+ 
++static const char * const xhci_mtk_supply_names[] = {
++	"vusb33", "vbus",
++};
++
+ static const struct xhci_driver_overrides xhci_mtk_overrides __initconst = {
+ 	.reset = xhci_mtk_setup,
+ 	.add_endpoint = xhci_mtk_add_ep,
+@@ -507,17 +486,18 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	mtk->dev = dev;
+-	mtk->vbus = devm_regulator_get(dev, "vbus");
+-	if (IS_ERR(mtk->vbus)) {
+-		dev_err(dev, "fail to get vbus\n");
+-		return PTR_ERR(mtk->vbus);
+-	}
++	mtk->num_supplies = ARRAY_SIZE(xhci_mtk_supply_names);
++	mtk->supplies = devm_kcalloc(dev, mtk->num_supplies,
++				     sizeof(*mtk->supplies), GFP_KERNEL);
++	if (!mtk->supplies)
++		return -ENOMEM;
+ 
+-	mtk->vusb33 = devm_regulator_get(dev, "vusb33");
+-	if (IS_ERR(mtk->vusb33)) {
+-		dev_err(dev, "fail to get vusb33\n");
+-		return PTR_ERR(mtk->vusb33);
+-	}
++	regulator_bulk_set_supply_names(mtk->supplies, xhci_mtk_supply_names,
++					mtk->num_supplies);
++
++	ret = devm_regulator_bulk_get(dev, mtk->num_supplies, mtk->supplies);
++	if (ret)
++		return dev_err_probe(dev, ret, "Failed to get regulators\n");
+ 
+ 	ret = xhci_mtk_clks_get(mtk);
+ 	if (ret)
+@@ -558,7 +538,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	pm_runtime_enable(dev);
+ 	pm_runtime_get_sync(dev);
+ 
+-	ret = xhci_mtk_ldos_enable(mtk);
++	ret = regulator_bulk_enable(mtk->num_supplies, mtk->supplies);
+ 	if (ret)
+ 		goto disable_pm;
+ 
+@@ -667,7 +647,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ 	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
+ 
+ disable_ldos:
+-	xhci_mtk_ldos_disable(mtk);
++	regulator_bulk_disable(mtk->num_supplies, mtk->supplies);
+ 
+ disable_pm:
+ 	pm_runtime_put_noidle(dev);
+@@ -695,7 +675,7 @@ static int xhci_mtk_remove(struct platform_device *pdev)
+ 	usb_put_hcd(hcd);
+ 	xhci_mtk_sch_exit(mtk);
+ 	clk_bulk_disable_unprepare(BULK_CLKS_NUM, mtk->clks);
+-	xhci_mtk_ldos_disable(mtk);
++	regulator_bulk_disable(mtk->num_supplies, mtk->supplies);
+ 
+ 	pm_runtime_disable(dev);
+ 	pm_runtime_put_noidle(dev);
+diff --git a/drivers/usb/host/xhci-mtk.h b/drivers/usb/host/xhci-mtk.h
+index 4b1ea89f959a..9b78cd2ba0ac 100644
+--- a/drivers/usb/host/xhci-mtk.h
++++ b/drivers/usb/host/xhci-mtk.h
+@@ -150,9 +150,9 @@ struct xhci_hcd_mtk {
+ 	int num_u3_ports;
+ 	int u2p_dis_msk;
+ 	int u3p_dis_msk;
+-	struct regulator *vusb33;
+-	struct regulator *vbus;
+ 	struct clk_bulk_data clks[BULK_CLKS_NUM];
++	struct regulator_bulk_data *supplies;
++	u8 num_supplies;
+ 	unsigned int has_ippc:1;
+ 	unsigned int lpm_support:1;
+ 	unsigned int u2_lpm_disable:1;
+-- 
+2.33.1
 
-Is this a difference that only will show up on the PMIC-wrapper of MT8186 or 
-will other SoCs include the same IP? If not, then PWRAP_STATE_INIT_DONE0_MT8186 
-should be fine. Otherwise we would need a better name.
-
->>
->>>    #define PWRAP_STATE_INIT_DONE1		BIT(15)
->>>    
->>>    /* macro for WACS FSM */
->>> @@ -77,6 +78,8 @@
->>>    #define PWRAP_CAP_INT1_EN	BIT(3)
->>>    #define PWRAP_CAP_WDT_SRC1	BIT(4)
->>>    #define PWRAP_CAP_ARB		BIT(5)
->>> +#define PWRAP_CAP_MONITOR_V2	BIT(6)
->>
->> Not used capability, please delete.
->>
->>
->> Regards,
->> Matthias
-> 
-> PWRAP_CAP_MONITOR_V2 is not used right now.
-> We can remove it in next version.
-> But this capability will be added when we need it.
-> 
-
-That's OK, we should add capability definitions once they are added to the 
-driver, not before that.
-
-Thanks,
-Matthias
 
 _______________________________________________
 Linux-mediatek mailing list
