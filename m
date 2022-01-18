@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F4BC433F5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 02:40:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5071C43217
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 02:42:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Y9cI2eHfuhawgvO8sDXnfC2GufIwCgARlrHLqvuOW74=; b=TQpsrz9RX/l689
-	s7tkVQstIThmR4eBv4/qfTuGfSVYaBDhV+8t5W3NB4Pq82A2H7mqDCC12sA4prv+eBHm6v78JYHkJ
-	U4JcNtqoacT8lflSqliMiUfeKq6sBkdpQYdqip/hzEtJO13GaOojIGjdLmWMJD6m2Y+UvmJtCFCcp
-	61IjPlnO5KaEZMsKpj+oo7Qf+EQmCKgIRqhhLx3+UUkqjhmxxd/0kHdFOoSyc1o9kkRj2Ay0BkLUX
-	h/2wD0v++sziUAmywUv+aFFqWc8AIIkD1hjZRHTGP4olsc0agl/5ljbU5ESsb7FSv+H7igNei2DtM
-	A6qCq/5VwgpPoSCJE7zg==;
+	List-Owner; bh=Vye9V3aYnbaCQ6ZtyFJHotn+y1UvC2obdrHn/zmnDzk=; b=KpKe1aQyoN5eOM
+	N92Ygw9tTRr3uPmc99Z+KCwY9qUuor/fayKpZre96H9+MD8dqsz9lkHnNjYlik6WorYmHJ/MkjIuD
+	xqf1KDW79ic4vqvp9Gqd7Wxc5AzwonZzLnWKiVv3Yds0ubfzNz680GPRhwTmy447mOzX/Ew6jvvrN
+	Ml68MnDAZSxLL+DSgrv06LZ3ZaVcR3VZS/JPyXetRV48iQ1v9JYAWxyoaCw7It1SE0GnedjC12XGE
+	YFcQIlSnq6Iu+hE8NaLbBkjuYBx/GgnDP7WYjn9LLb29Kv5YhrRqG8LPX7fNkZhLWls52GTdqjGi2
+	n2mMuDTUM1+SC+XBtM2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9eQF-00H36r-8W; Tue, 18 Jan 2022 02:40:35 +0000
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+	id 1n9eSM-00H4RH-F4; Tue, 18 Jan 2022 02:42:46 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9eER-00GwjG-Eg; Tue, 18 Jan 2022 02:28:25 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id C2E3860AB1;
- Tue, 18 Jan 2022 02:28:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3C1CC36AEF;
- Tue, 18 Jan 2022 02:28:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642472902;
- bh=v+u+FK55eeNns6Q4kPKeSccsEGXeFL+oJr9NAaPDubA=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eh40pJBmfGjObfNL8T8grpl6u2nXgr+ZxOR1yeUXkXCBQ8Jx9xhJKRWG4cK18Gvxn
- FWNcVY7K0Qy2HHntcW1q6CsMwWxggReF4xt8AnSoc3MgW3yPgK4GpsAL6TDA9RqQ+1
- QNo9YjdDEYLRIfsZrMMcGczB0L6i9rsdWSd1CuPPBagI2GTEvMCQJ70dI1krnP4I2v
- D0MbIFC4JVMZqObvSqH+JVYtsPlHpcvyzucta94FNkxTt/rYkNoqJq6qLWPRG2Zdnh
- HJEbL7UnIVza6GwOYdQff/6h8JRbmI/TWIr+FWq0kw/ibNuBit3oG4ttj5/eDL2LQa
- 8sPFEDMpi0wkQ==
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Deren Wu <deren.wu@mediatek.com>, Felix Fietkau <nbd@nbd.name>,
- Sasha Levin <sashal@kernel.org>, lorenzo.bianconi83@gmail.com,
- ryder.lee@mediatek.com, kvalo@kernel.org, davem@davemloft.net,
- kuba@kernel.org, matthias.bgg@gmail.com, sean.wang@mediatek.com,
- Soul.Huang@mediatek.com, linux-wireless@vger.kernel.org,
- netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 5.16 157/217] mt76: mt7921: fix network buffer leak by
- txs missing
-Date: Mon, 17 Jan 2022 21:18:40 -0500
-Message-Id: <20220118021940.1942199-157-sashal@kernel.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220118021940.1942199-1-sashal@kernel.org>
-References: <20220118021940.1942199-1-sashal@kernel.org>
+ id 1n9eFQ-00GxL8-T3; Tue, 18 Jan 2022 02:29:28 +0000
+X-UUID: 90564539207a48758dc1cd33d7f1d520-20220117
+X-UUID: 90564539207a48758dc1cd33d7f1d520-20220117
+Received: from mtkcas68.mediatek.inc [(172.29.94.19)] by mailgw02.mediatek.com
+ (envelope-from <rex-bc.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1909828086; Mon, 17 Jan 2022 19:29:19 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Mon, 17 Jan 2022 18:29:17 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.2.792.3; 
+ Tue, 18 Jan 2022 10:29:15 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 18 Jan 2022 10:29:15 +0800
+Message-ID: <1bd816c2f26cd8e42debf066a57e24eb5e2f580d.camel@mediatek.com>
+Subject: Re: [v9,2/3] drm/mediatek: implement the DSI hs packets aligned
+From: Rex-BC Chen <rex-bc.chen@mediatek.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, <chunkuang.hu@kernel.org>,
+ <matthias.bgg@gmail.com>, <narmstrong@baylibre.com>,
+ <robert.foss@linaro.org>, <daniel@ffwll.ch>, <airlied@linux.ie>,
+ <p.zabel@pengutronix.de>
+CC: <xji@analogixsemi.com>, <devicetree@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <linux-kernel@vger.kernel.org>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>, Jitao Shi
+ <jitao.shi@mediatek.com>
+Date: Tue, 18 Jan 2022 10:29:15 +0800
+In-Reply-To: <86b76e9f-96b0-7d54-bd38-449745e30aa2@intel.com>
+References: <20220114092110.12137-1-rex-bc.chen@mediatek.com>
+ <20220114092110.12137-3-rex-bc.chen@mediatek.com>
+ <4076cb55-4546-6bbd-1a1f-19395dcd9ccd@collabora.com>
+ <f858dd4aaa35fa3eb969baf887f038c3593232e5.camel@mediatek.com>
+ <86b76e9f-96b0-7d54-bd38-449745e30aa2@intel.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220117_182823_629455_74E5BFC3 
-X-CRM114-Status: GOOD (  14.25  )
+X-CRM114-CacheID: sfid-20220117_182925_060270_2707B3DC 
+X-CRM114-Status: GOOD (  30.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,118 +82,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Deren Wu <deren.wu@mediatek.com>
+Hello Andrzej,
 
-[ Upstream commit e0bf699ad8e52330d848144a9624a067ad588bd6 ]
+Thanks for your review.
+I will give the explanation for this in next version.
 
-TXS in mt7921 may be forwared to tx_done event. Should try to catch
-TXS information in tx_done event as well.
+BRs,
+Rex-BC hen
 
-Signed-off-by: Deren Wu <deren.wu@mediatek.com>
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- .../net/wireless/mediatek/mt76/mt7921/mac.c   |  2 +-
- .../net/wireless/mediatek/mt76/mt7921/mcu.c   | 14 ++++++++++
- .../net/wireless/mediatek/mt76/mt7921/mcu.h   | 27 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt7921/mt7921.h    |  1 +
- 4 files changed, 43 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-index 27550385c35f9..4df272f93dd47 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
-@@ -1072,7 +1072,7 @@ mt7921_mac_add_txs_skb(struct mt7921_dev *dev, struct mt76_wcid *wcid, int pid,
- 	return !!skb;
- }
- 
--static void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data)
-+void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data)
- {
- 	struct mt7921_sta *msta = NULL;
- 	struct mt76_wcid *wcid;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 6ada1ebe7d68b..46ec9f713d772 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -418,6 +418,17 @@ mt7921_mcu_low_power_event(struct mt7921_dev *dev, struct sk_buff *skb)
- 	trace_lp_event(dev, event->state);
- }
- 
-+static void
-+mt7921_mcu_tx_done_event(struct mt7921_dev *dev, struct sk_buff *skb)
-+{
-+	struct mt7921_mcu_tx_done_event *event;
-+
-+	skb_pull(skb, sizeof(struct mt7921_mcu_rxd));
-+	event = (struct mt7921_mcu_tx_done_event *)skb->data;
-+
-+	mt7921_mac_add_txs(dev, event->txs);
-+}
-+
- static void
- mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
- {
-@@ -445,6 +456,9 @@ mt7921_mcu_rx_unsolicited_event(struct mt7921_dev *dev, struct sk_buff *skb)
- 	case MCU_EVENT_LP_INFO:
- 		mt7921_mcu_low_power_event(dev, skb);
- 		break;
-+	case MCU_EVENT_TX_DONE:
-+		mt7921_mcu_tx_done_event(dev, skb);
-+		break;
- 	default:
- 		break;
- 	}
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-index edc0c73f8c01c..68cb0ce013dbd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.h
-@@ -91,6 +91,33 @@ enum {
- 	MCU_EVENT_COREDUMP = 0xf0,
- };
- 
-+struct mt7921_mcu_tx_done_event {
-+	u8 pid;
-+	u8 status;
-+	__le16 seq;
-+
-+	u8 wlan_idx;
-+	u8 tx_cnt;
-+	__le16 tx_rate;
-+
-+	u8 flag;
-+	u8 tid;
-+	u8 rsp_rate;
-+	u8 mcs;
-+
-+	u8 bw;
-+	u8 tx_pwr;
-+	u8 reason;
-+	u8 rsv0[1];
-+
-+	__le32 delay;
-+	__le32 timestamp;
-+	__le32 applied_flag;
-+	u8 txs[28];
-+
-+	u8 rsv1[32];
-+} __packed;
-+
- /* ext event table */
- enum {
- 	MCU_EXT_EVENT_RATE_REPORT = 0x87,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index e9c7c3a195076..7a6c38fbb940a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -463,4 +463,5 @@ int mt7921s_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 			   struct mt76_tx_info *tx_info);
- void mt7921s_tx_complete_skb(struct mt76_dev *mdev, struct mt76_queue_entry *e);
- bool mt7921s_tx_status_data(struct mt76_dev *mdev, u8 *update);
-+void mt7921_mac_add_txs(struct mt7921_dev *dev, void *data);
- #endif
--- 
-2.34.1
+On Fri, 2022-01-14 at 12:11 +0100, Andrzej Hajda wrote:
+> On 14.01.2022 11:20, Rex-BC Chen wrote:
+> > Hello AngeloGioacchino,
+> > 
+> > Thanks for your review.
+> > I will modify this in next version.
+> > 
+> > BRs,
+> > Rex-BC Chen
+> > 
+> > On Fri, 2022-01-14 at 10:36 +0100, AngeloGioacchino Del Regno
+> > wrote:
+> > > Il 14/01/22 10:21, Rex-BC Chen ha scritto:
+> > > > Some DSI RX devices require the packets on all lanes aligned at
+> > > > the
+> > > > end.
+> > > > Otherwise, there will be some issues of shift or scroll for
+> > > > screen.
+> > > > 
+> > > > Signed-off-by: Jitao Shi <jitao.shi@mediatek.com>
+> > > > Signed-off-by: Rex-BC Chen <rex-bc.chen@mediatek.com>
+> > > 
+> > > Hello,
+> > > thanks for the patch! However, there's something to improve...
+> > > 
+> > > > ---
+> > > >    drivers/gpu/drm/mediatek/mtk_dsi.c | 12 ++++++++++++
+> > > >    1 file changed, 12 insertions(+)
+> > > > 
+> > > > diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > index 5d90d2eb0019..ccdda15f5a66 100644
+> > > > --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> > > > @@ -195,6 +195,8 @@ struct mtk_dsi {
+> > > >    	struct clk *hs_clk;
+> > > >    
+> > > >    	u32 data_rate;
+> > > > +	/* force dsi line end without dsi_null data */
+> > > > +	bool hs_packet_end_aligned;
+> > > 
+> > > There's no need to introduce a new variable here...
+> > > >    
+> > > >    	unsigned long mode_flags;
+> > > >    	enum mipi_dsi_pixel_format format;
+> > > > @@ -500,6 +502,13 @@ static void
+> > > > mtk_dsi_config_vdo_timing(struct
+> > > > mtk_dsi *dsi)
+> > > >    		DRM_WARN("HFP + HBP less than d-phy, FPS will
+> > > > under
+> > > > 60Hz\n");
+> > > >    	}
+> > > >    
+> > > > +	if (dsi->hs_packet_end_aligned) {
+> > > 
+> > > You can simply check mode_flags here:
+> > > 	if (dsi->mode_flags & MIPI_DSI_HS_PKT_END_ALIGNED) {
+> > > 
+> > > > +		horizontal_sync_active_byte =
+> > > > roundup(horizontal_sync_active_byte, dsi->lanes) - 2;
+> > > > +		horizontal_frontporch_byte =
+> > > > roundup(horizontal_frontporch_byte, dsi->lanes) - 2;
+> > > > +		horizontal_backporch_byte =
+> > > > roundup(horizontal_backporch_byte, dsi->lanes) - 2;
+> > > > +		horizontal_backporch_byte -= (vm->hactive *
+> > > > dsi_tmp_buf_bpp + 2) % dsi->lanes;
+> > > > +	}
+> > > > +
+> 
+> 
+> And if you could add comment explaining the magic here it would be
+> nice.
+> 
+> 
+> Regards
+> 
+> Andrzej
+> 
+> 
+> > > >    	writel(horizontal_sync_active_byte, dsi->regs +
+> > > > DSI_HSA_WC);
+> > > >    	writel(horizontal_backporch_byte, dsi->regs +
+> > > > DSI_HBP_WC);
+> > > >    	writel(horizontal_frontporch_byte, dsi->regs +
+> > > > DSI_HFP_WC);
+> > > > @@ -794,6 +803,9 @@ static int mtk_dsi_host_attach(struct
+> > > > mipi_dsi_host *host,
+> > > >    	dsi->lanes = device->lanes;
+> > > >    	dsi->format = device->format;
+> > > >    	dsi->mode_flags = device->mode_flags;
+> > > > +	dsi->hs_packet_end_aligned = (dsi->mode_flags &
+> > > > +				      MIPI_DSI_HS_PKT_END_ALIGN
+> > > > ED)
+> > > > +				     ? true : false;
+> > > 
+> > > ...so there's no need for this one, either.
+> > > 
+> > > >    
+> > > >    	return 0;
+> > > >    }
+> > > > 
+> > > 
+> > > Regards,
+> > > - Angelo
+> > > 
 
 
 _______________________________________________
