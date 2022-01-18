@@ -4,81 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F088C433EF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 09:20:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25EA4C433F5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 18 Jan 2022 09:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:CC:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mbBgxU/nrdTQ7UHrmW/WCAfYtq4epifWJKm4OVfwxEQ=; b=rZ6B3JYIN6eMc2
-	rVvGvxQhNZzZwG5M6/JNpdvK5VFhk4aruO2ArzvOb38f6ZVKH/Mi2JnM/kv0l0nYxAKX93ET9BcTk
-	ztlaOefuKLMFcqqq35rPkUNpCvSdYNnPcRU2MuyuTGsCVt71LN5hDKtKTFsVxmren1BntReZKl4Uw
-	EmMI6iGVPmYrEueJJpuqr7ao0ThEZFiH1zkVhx3PEb8bXag2O/wBf8NGF/Xe8UgBVvFTWn8kV3g8y
-	vyZb2cA8dOAw5zZa/15Px0fG2t3c67hDItZZU47gZ6lYlp0VbgpYuRN5C1HFOQgRNCkpLkpyBrL6C
-	vcfGvKIOfZgV4z6SSvHw==;
+	List-Owner; bh=PCNi/1Rh86k+5y/2zc9AxL5fxVTCZdKmYe/9i35yDuM=; b=BTQi6ph3wI8272
+	+t5GsKSY99+RYLYxu8mat+QYcOS+ND8rDeXEuY/zUMgvPRZApTnLlR9VI+2ROviO5c+1X81nw7vgo
+	Us8U1MLJvFC4zmThYoIgfVmEroZi6qvH5995HsZFLrguddr3bWObDdGVq2rBoWESzJMZDXtLtu6Ry
+	37jEnEwnKq0F97cx9pldIMwVHscChFLhRNORg85DCNbHM2PpQjN1O5sixoT9wuC1o6FqsxCOg0Xzg
+	jMztfA5uTdik+kXUh8adoaiBma9dEoD85Bf/qLa0s3BZNfGUZ7BycHyUOaNVdB40L1PF7BwSmhGpT
+	74OiJMqChdgfjre+aLgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1n9kej-000rsz-0F; Tue, 18 Jan 2022 09:19:57 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1n9kkU-000tcg-Fu; Tue, 18 Jan 2022 09:25:54 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1n9keO-000rlI-3k; Tue, 18 Jan 2022 09:19:38 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id j7so28155358edr.4;
- Tue, 18 Jan 2022 01:19:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20210112;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SB0wh1JvYuxb1nJDI7PyGganrQILU5xtGUXZvsW6ko0=;
- b=Eb3i4SvXu8XdwLGqOWL+zhPFAIwvhYqMVIWvCZjfeZ5ZrgYQD20Lhib1bopL3XrTDl
- YRO+tDpWXFKJmz+2BkS0nLE4ds0vw8VwIQblDXUFEDBghIwU93IgPJ5g8rXupxy2Wh2u
- NQfas8Nf0ifp3WNIDFayWkEArYkMRkZ3Rg+hab33gvawGk3aYLJDkfjrZtwqVsSohRkQ
- MbVlMgd+APnIHBIVW4drs9yPcKC9Fq5Z2axKha6s2Q/zUly2ttNFau2Ze08+VZyS4OHp
- 2PiRK8RbKEPnCZUwEYIkOE5cun6lc2SmJTZ+9eRdXHaC2yFnmBl3Q1ZSnBsaujANHhuL
- jiig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SB0wh1JvYuxb1nJDI7PyGganrQILU5xtGUXZvsW6ko0=;
- b=JRnylz/fsD85A4rhyFUF2+eNdjc05o7bTTatSB+CIRSvhQsonWXfHYJfsiMAdq1wlC
- Fi5IN24LKe75UcM4fh1zgHfBAYhLFiHdZYRx6ONs6mpTYjt9pGdkW9SEhab6UzpyJsXR
- RnUOR+oHtT4M314jZfmGF0+YDBVsHyJH5x27IodZQWLqcob5Ihsi/tUaYToSbSPLEuJi
- rU3RR74TtLAskG3PTm59p+PkFFeb/y3krUHPz6jqkE0rrnNzg4epr+4DEMadjytbAYb4
- 21buFTHOUndSBUEXmpl8lIT2Gg/x1dfl16L92xq/+6t5KLwDgws8Htzpe/4my5UrBOOd
- tVrw==
-X-Gm-Message-State: AOAM532A7z3YxJ2knuWLu5/cA+6asoG03kd1zs3awOh07Q1I0aarLWPA
- 8/fovgaKtJDVnbqO6hZA7O/nTBvXy/RyupAVVkY=
-X-Google-Smtp-Source: ABdhPJxSbMd+HQ6M+bgVFr1+OvobdOGajiL40zRQ24757+JEdYZ/E9oYJtr25sD0StBm4K7Oyl/FGS1x2frkSyRibbQ=
-X-Received: by 2002:a17:907:6ea3:: with SMTP id
- sh35mr5517133ejc.497.1642497573955; 
- Tue, 18 Jan 2022 01:19:33 -0800 (PST)
+ id 1n9kkP-000taJ-LN; Tue, 18 Jan 2022 09:25:52 +0000
+X-UUID: 2c91aef4e179466dabaa03a35201a581-20220118
+X-UUID: 2c91aef4e179466dabaa03a35201a581-20220118
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw01.mediatek.com
+ (envelope-from <johnson.wang@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 1357388764; Tue, 18 Jan 2022 02:25:45 -0700
+Received: from mtkexhb01.mediatek.inc (172.21.101.102) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Tue, 18 Jan 2022 01:25:38 -0800
+Received: from mtkcas11.mediatek.inc (172.21.101.40) by mtkexhb01.mediatek.inc
+ (172.21.101.102) with Microsoft SMTP Server (TLS) id 15.0.1497.2;
+ Tue, 18 Jan 2022 17:25:25 +0800
+Received: from mtksdccf07 (172.21.84.99) by mtkcas11.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via Frontend
+ Transport; Tue, 18 Jan 2022 17:25:25 +0800
+Message-ID: <544f5085fc8597ce9ce3eb7dc1b5d08fb1ac8755.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/2] soc: mediatek: pwrap: add pwrap driver for
+ MT8186 SoC
+From: Johnson Wang <johnson.wang@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, <robh+dt@kernel.org>
+CC: <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>, 
+ <angelogioacchino.delregno@collabora.com>,
+ <Project_Global_Chrome_Upstream_Group@mediatek.com>
+Date: Tue, 18 Jan 2022 17:25:25 +0800
+In-Reply-To: <9949a1f7-1ed5-a137-c7b9-2ef8d8e1caf8@gmail.com>
+References: <20220107104633.7500-1-johnson.wang@mediatek.com>
+ <20220107104633.7500-2-johnson.wang@mediatek.com>
+ <9949a1f7-1ed5-a137-c7b9-2ef8d8e1caf8@gmail.com>
+X-Mailer: Evolution 3.28.5-0ubuntu0.18.04.2 
 MIME-Version: 1.0
-References: <20220117082539.18713-1-axe.yang@mediatek.com>
- <20220117082539.18713-4-axe.yang@mediatek.com>
-In-Reply-To: <20220117082539.18713-4-axe.yang@mediatek.com>
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Tue, 18 Jan 2022 11:18:57 +0200
-Message-ID: <CAHp75VdkKYujGZOdGkLK-tzC9q+RjkX59fFZe5cHajGOnDdL2w@mail.gmail.com>
-Subject: Re: [RESEND v3 3/3] mmc: mediatek: add support for SDIO eint IRQ
-To: Axe Yang <axe.yang@mediatek.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh+dt@kernel.org>, 
- Chaotian Jing <chaotian.jing@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, 
- Adrian Hunter <adrian.hunter@intel.com>, 
- Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
- Satya Tangirala <satyat@google.com>, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
- Wolfram Sang <wsa+renesas@sang-engineering.com>, Lucas Stach <dev@lynxeye.de>, 
- Eric Biggers <ebiggers@google.com>, Andrew Jeffery <andrew@aj.id.au>, 
- Stephen Boyd <swboyd@chromium.org>, Kiwoong Kim <kwmad.kim@samsung.com>,
- Yue Hu <huyue2@yulong.com>, 
- Tian Tao <tiantao6@hisilicon.com>, angelogioacchino.delregno@collabora.com, 
- linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Yong Mao <yong.mao@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_011936_200553_0927AC4B 
-X-CRM114-Status: GOOD (  17.41  )
+X-CRM114-CacheID: sfid-20220118_012549_772665_F8916CCA 
+X-CRM114-Status: GOOD (  25.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,63 +75,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 17, 2022 at 7:33 PM Axe Yang <axe.yang@mediatek.com> wrote:
->
-> Add support for eint IRQ when MSDC is used as an SDIO host. This
-> feature requires SDIO device support async IRQ function. With this
-> feature, SDIO host can be awakened by SDIO card in suspend state,
-> without additional pin.
->
-> MSDC driver will time-share the SDIO DAT1 pin. During suspend, MSDC
-> turn off clock and switch SDIO DAT1 pin to GPIO mode. And during
-> resume, switch GPIO function back to DAT1 mode then turn on clock.
->
-> Some device tree property should be added or modified in MSDC node
-> to support SDIO eint IRQ. Pinctrls named state_dat1 and state_eint
-> are mandatory. And cap-sdio-async-irq flag is necessary since this
-> feature depends on asynchronous interrupt:
->         &mmcX {
->                 ...
->                 pinctrl-names = "default", "state_uhs", "state_eint",
->                                 "state_dat1";
->                 ...
->                 pinctrl-2 = <&mmc2_pins_eint>;
->                 pinctrl-3 = <&mmc2_pins_dat1>;
->                 ...
->                 cap-sdio-async-irq;
->                 ...
->         };
+Hi Matthias,
 
-...
+On Fri, 2022-01-14 at 16:46 +0100, Matthias Brugger wrote:
+> 
+> On 07/01/2022 11:46, Johnson Wang wrote:
+> > MT8186 are highly integrated SoC and use PMIC_MT6366 for
+> > power management. This patch adds pwrap master driver to
+> > access PMIC_MT6366.
+> > 
+> 
+> It seems this new arbiter is significantly different from the version
+> 1. Please 
+> explain that in the commit message.
+> 
+> > Signed-off-by: Johnson Wang <johnson.wang@mediatek.com>
+> > ---
+> >   drivers/soc/mediatek/mtk-pmic-wrap.c | 72
+> > ++++++++++++++++++++++++++++
+> >   1 file changed, 72 insertions(+)
+> > 
+> > diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > index 952bc554f443..78866ebf7f04 100644
+> > --- a/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > +++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+> > @@ -30,6 +30,7 @@
+> >   #define PWRAP_GET_WACS_REQ(x)		(((x) >> 19) &
+> > 0x00000001)
+> >   #define PWRAP_STATE_SYNC_IDLE0		BIT(20)
+> >   #define PWRAP_STATE_INIT_DONE0		BIT(21)
+> > +#define PWRAP_STATE_INIT_DONE0_V2	BIT(22)
+> 
+> That's a strange name, does it come from the datasheet description?
 
-> +static irqreturn_t msdc_sdio_eint_irq(int irq, void *dev_id)
-> +{
-> +       struct msdc_host *host = dev_id;
-> +       struct mmc_host *mmc = mmc_from_priv(host);
+Thanks for your review.
 
-> +       unsigned long flags;
+No, there is only PWRAP_STATE_INIT_DONE0 in MT8186 datasheet.
+However, it's the 22nd bit in MT8186 and the 21st bit in other SoCs.
+So we changed its name to avoid redefinition of PWRAP_STATE_INIT_DONE0.
 
-Same Q as per v2. Why do you need this?
+Could you give us some suggestion on proper definition naming?
+Do you think PWRAP_STATE_INIT_DONE0_MT8186 will be a better choice?
 
-Yes, you did the first step to the answer, but I want you to go deeper
-and tell me why you need the spin_lock_irqsave() variant.
+> 
+> >   #define PWRAP_STATE_INIT_DONE1		BIT(15)
+> >   
+> >   /* macro for WACS FSM */
+> > @@ -77,6 +78,8 @@
+> >   #define PWRAP_CAP_INT1_EN	BIT(3)
+> >   #define PWRAP_CAP_WDT_SRC1	BIT(4)
+> >   #define PWRAP_CAP_ARB		BIT(5)
+> > +#define PWRAP_CAP_MONITOR_V2	BIT(6)
+> 
+> Not used capability, please delete.
+> 
+> 
+> Regards,
+> Matthias
 
-> +       spin_lock_irqsave(&host->lock, flags);
-> +       if (likely(host->sdio_irq_cnt > 0)) {
-> +               disable_irq_nosync(host->eint_irq);
-> +               disable_irq_wake(host->eint_irq);
-> +               host->sdio_irq_cnt--;
-> +       }
-> +       spin_unlock_irqrestore(&host->lock, flags);
-> +
-> +       sdio_signal_irq(mmc);
-> +
-> +       return IRQ_HANDLED;
-> +}
+PWRAP_CAP_MONITOR_V2 is not used right now.
+We can remove it in next version.
+But this capability will be added when we need it.
 
--- 
-With Best Regards,
-Andy Shevchenko
+Thanks.
+
 
 _______________________________________________
 Linux-mediatek mailing list
