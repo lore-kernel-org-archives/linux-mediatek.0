@@ -4,95 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3ACDC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 10:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36A5EC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 10:57:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=z42Vjf+Jae7CcvogbO+AsGAquZdTSDbfKnd+ygLWpWM=; b=NX2dd8P6SwzqXQA3B7Uv09CBR2
-	IA+UKec9A527ogFminNkg6HMkxC2eI8EIMu4LpJS8UGa/Cxt189nzL+d+S6g4xQ9YNz7JhYaMGr3m
-	gaweqppGpiv7uaedhp5A52GGQRq9F+nceQjAyhA4uUBpomF+fZ2gnNBXaQRIHXWEG6f2se0SH4MqC
-	xg9EEbNv7R9ZL1uPZBO6ikSsLvyLLAQKUVQD6GAsbLetFPTRGQFa7Lah/ipdIa79a4yip+/aYhABb
-	M9KlYKA0+q9a8y0j6U+RrZ+OgLZ997M/pNNrLOwcYM9EQ16p36obq5RxsR0AZaJT6ACGlIR2pTEvQ
-	Pt4PrSjQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UMk7JxL5fbDuYKFZP1Dk6LIQ9TQbK1wDDQyfa09JAEY=; b=p6qdAxc6jKYBlE
+	dbr1ACPwncWoqVvZlarTy8bhFhI7He3wGj4ZgD9Lh63rxLcYArDoRPZ0wBRgiQEh2DrrGaMUsx54N
+	1bbJNg7LW3RRIH8aSOrLnVmnTqcq33b+OKqy71oWUnLzfcd7PM2ILXZs2qQEk093Wyx4aYzrrsmNC
+	5zEx24KFIpTRChWAOrPUxwE/Hi33QvgzDuoNYDKIYCM61qNUtCsjk8S+5/1jw9oJOWpyz1O6tSoxU
+	6H4Z6E06luqJyMKn704xepnoL1cimGyaDgNIgKWRtWJ+bMJFTrSy/adPn0rSXwGe6JwafSMbpxHKG
+	92qzCwspUVM8NsOdthMw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA8df-00529P-0V; Wed, 19 Jan 2022 10:56:27 +0000
-Received: from mxout03.lancloud.ru ([45.84.86.113])
+	id 1nA8eC-0052LS-Lu; Wed, 19 Jan 2022 10:57:00 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA8da-00526A-OW; Wed, 19 Jan 2022 10:56:25 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout03.lancloud.ru A788320EEBBF
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
- (summary)
-To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>
-CC: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, <kvm@vger.kernel.org>, "Rafael J.
- Wysocki" <rafael@kernel.org>, <linux-iio@vger.kernel.org>, Linus Walleij
- <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
- <alsa-devel@alsa-project.org>, Liam Girdwood <lgirdwood@gmail.com>, "Guenter
- Roeck" <groeck@chromium.org>, Thierry Reding <thierry.reding@gmail.com>,
- <linux-mtd@lists.infradead.org>, <linux-i2c@vger.kernel.org>, Miquel Raynal
- <miquel.raynal@bootlin.com>, <linux-phy@lists.infradead.org>, Lee Jones
- <lee.jones@linaro.org>, Khuong Dinh <khuong@os.amperecomputing.com>, "Florian
- Fainelli" <f.fainelli@gmail.com>, Matthias Schiffer
- <matthias.schiffer@ew.tq-group.com>, Joakim Zhang <qiangqing.zhang@nxp.com>,
- Kamal Dasu <kdasu.kdev@gmail.com>, Jiri Slaby <jirislaby@kernel.org>,
- "Bartosz Golaszewski" <brgl@bgdev.pl>, Daniel Lezcano
- <daniel.lezcano@linaro.org>, "Tony Luck" <tony.luck@intel.com>, Kishon Vijay
- Abraham I <kishon@ti.com>, <bcm-kernel-feedback-list@broadcom.com>,
- <linux-serial@vger.kernel.org>, Jakub Kicinski <kuba@kernel.org>, Zhang Rui
- <rui.zhang@intel.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- <platform-driver-x86@vger.kernel.org>, <linux-pwm@vger.kernel.org>, Robert
- Richter <rric@kernel.org>, "Saravanan Sekar" <sravanhome@gmail.com>, Corey
- Minyard <minyard@acm.org>, <linux-pm@vger.kernel.org>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, "John Garry" <john.garry@huawei.com>, Peter Korsgaard
- <peter@korsgaard.com>, "William Breathitt Gray" <vilhelm.gray@gmail.com>,
- Mark Gross <markgross@kernel.org>, <linux-gpio@vger.kernel.org>, Alex
- Williamson <alex.williamson@redhat.com>, Mark Brown <broonie@kernel.org>,
- Borislav Petkov <bp@alien8.de>, Eric Auger <eric.auger@redhat.com>, Takashi
- Iwai <tiwai@suse.com>, Jaroslav Kysela <perex@perex.cz>,
- <openipmi-developer@lists.sourceforge.net>, Andy Shevchenko
- <andriy.shevchenko@linux.intel.com>, Benson Leung <bleung@chromium.org>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- <linux-arm-kernel@lists.infradead.org>, <linux-edac@vger.kernel.org>,
- "Richard Weinberger" <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>, 
- "Hans de Goede" <hdegoede@redhat.com>, <netdev@vger.kernel.org>, Yoshihiro
- Shimoda <yoshihiro.shimoda.uh@renesas.com>, Cornelia Huck
- <cohuck@redhat.com>, <linux-mmc@vger.kernel.org>,
- <linux-kernel@vger.kernel.org>, <linux-spi@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>, Vinod Koul <vkoul@kernel.org>, James
- Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, Sebastian
- Reichel <sre@kernel.org>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
- <niklas.soderlund@ragnatech.se>, <linux-mediatek@lists.infradead.org>, Brian
- Norris <computersforpeace@gmail.com>, "David S. Miller" <davem@davemloft.net>
-References: <20220110195449.12448-1-s.shtylyov@omp.ru>
- <20220110195449.12448-2-s.shtylyov@omp.ru>
- <20220115183643.6zxalxqxrhkfgdfq@pengutronix.de> <YeQpWu2sUVOSaT9I@kroah.com>
- <20220118091819.zzxpffrxbckoxiys@pengutronix.de>
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Organization: Open Mobile Platform
-Message-ID: <b6038ec2-da4a-de92-b845-cac2be0efcd1@omp.ru>
-Date: Wed, 19 Jan 2022 13:56:12 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1nA8dz-0052HS-LE; Wed, 19 Jan 2022 10:56:48 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 51E68B8198E;
+ Wed, 19 Jan 2022 10:56:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8AC1C004E1;
+ Wed, 19 Jan 2022 10:56:45 +0000 (UTC)
+Authentication-Results: smtp.kernel.org;
+ dkim=pass (1024-bit key) header.d=zx2c4.com header.i=@zx2c4.com
+ header.b="clSmDhQ9"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=zx2c4.com; s=20210105; 
+ t=1642589801;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=c6OIpweiYSlg1CO1oV/4/fX9PmbGWaJgEcK1s5L/UCM=;
+ b=clSmDhQ9v6mwT8AqA/7PddiliXjzCnVuKqGHWuRMScEBMvlsnTy8g6e1Y6cMjyqzqjVYOt
+ +xUXZMczZX6IXfAgbWAYUOdoJ2GpYjNYh3LGTJpoIkSRLGNNrO6HqGrfX+Sey4uOmMExW0
+ 8PRRZeAuWLXdS31lzH9DCVM+ZQdLbGg=
+Received: by mail.zx2c4.com (ZX2C4 Mail Server) with ESMTPSA id bbab6ecf
+ (TLSv1.3:AEAD-AES256-GCM-SHA384:256:NO); 
+ Wed, 19 Jan 2022 10:56:41 +0000 (UTC)
+Received: by mail-yb1-f171.google.com with SMTP id g14so6148112ybs.8;
+ Wed, 19 Jan 2022 02:56:40 -0800 (PST)
+X-Gm-Message-State: AOAM5337/dXppxbRqttz3YU74SULNWELzfn1Exp5F/wcSXZjnCfUqOqn
+ bypcX0/lSbeI2LcQMby6eeYqAQPW55xbYkCMklc=
+X-Google-Smtp-Source: ABdhPJwSrhUa6tV1Vuk+5uZ3ov5nQgpookiKOhJa3YUNCmP6fIkNz2Lw1CO4IK9upJuph+xxqIgYgHP4KC7FjLDB5Tw=
+X-Received: by 2002:a25:bc52:: with SMTP id d18mr9639032ybk.255.1642589799667; 
+ Wed, 19 Jan 2022 02:56:39 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20220118091819.zzxpffrxbckoxiys@pengutronix.de>
-Content-Language: en-US
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+Received: by 2002:a05:7110:209:b0:11c:1b85:d007 with HTTP; Wed, 19 Jan 2022
+ 02:56:39 -0800 (PST)
+In-Reply-To: <CAHmME9pQcUxs87EwQwBZNDA4ZzqugTggH+uiNPh=mv5zjp3g3A@mail.gmail.com>
+References: <CAHmME9oX+4Ek81xy0nBOegqABH0xYqyONAqinsu7GZ7AaQaqYQ@mail.gmail.com>
+ <20220119100615.5059-1-miles.chen@mediatek.com>
+ <CAHmME9pQcUxs87EwQwBZNDA4ZzqugTggH+uiNPh=mv5zjp3g3A@mail.gmail.com>
+From: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Date: Wed, 19 Jan 2022 11:56:39 +0100
+X-Gmail-Original-Message-ID: <CAHmME9pPKjRLmR6zpYFZT7rOOfHsG2ESnDi+QQrDJuGLo1X4JQ@mail.gmail.com>
+Message-ID: <CAHmME9pPKjRLmR6zpYFZT7rOOfHsG2ESnDi+QQrDJuGLo1X4JQ@mail.gmail.com>
+Subject: Re: [PATCH] lib/crypto: blake2s: fix a CFI failure
+To: Miles Chen <miles.chen@mediatek.com>
+Cc: ardb@kernel.org, davem@davemloft.net, gregkh@linuxfoundation.org, 
+ herbert@gondor.apana.org.au, linux-arm-kernel@lists.infradead.org, 
+ linux-crypto@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, nathan@kernel.org, 
+ ndesaulniers@google.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_025623_180112_99F5C2C8 
-X-CRM114-Status: GOOD (  15.79  )
+X-CRM114-CacheID: sfid-20220119_025647_858672_24DD370E 
+X-CRM114-Status: GOOD (  15.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,35 +85,29 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="windows-1252"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/18/22 12:18 PM, Uwe Kleine-K=F6nig wrote:
-> On Sun, Jan 16, 2022 at 03:19:06PM +0100, Greg Kroah-Hartman wrote:
->> On Sat, Jan 15, 2022 at 07:36:43PM +0100, Uwe Kleine-K=F6nig wrote:
->>> A possible compromise: We can have both. We rename
->>> platform_get_irq_optional() to platform_get_irq_silent() (or
->>> platform_get_irq_silently() if this is preferred) and once all users are
->>> are changed (which can be done mechanically), we reintroduce a
->>> platform_get_irq_optional() with Sergey's suggested semantic (i.e.
->>> return 0 on not-found, no error message printking).
->>
->> Please do not do that as anyone trying to forward-port an old driver
->> will miss the abi change of functionality and get confused.  Make
->> build-breaking changes, if the way a function currently works is
->> changed in order to give people a chance.
-> =
+On 1/19/22, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
+> Hi Miles,
+>
+> Okay. Keep me posted.
+>
+> Just FYI, as mentioned, I'm unable to reproduce this, and you haven't
+> provided any further minimized guidance on how I might reproduce this,
+> so it'll sit in the "not a bug" bin until I have another clue on how
+> to reproduce. Alternatively, Nick and Nathan are now on this thread
+> and they usually have good luck teasing out compiler issues and such,
+> so maybe they'll have an idea. But I'm afraid with the information I
+> currently have, I'm at a dead end.
+>
+> Jason
+>
 
-> Fine for me. I assume this is a Nack for Sergey's patch?
-
-   Which patch do you mean? I'm starting to get really muddled... :-(
-
-> Best regards
-> Uwe
-
-MBR, Sergey
+We're back in business! I was able to reproduce this using FullLTO
+rather than ThinLTO.
 
 _______________________________________________
 Linux-mediatek mailing list
