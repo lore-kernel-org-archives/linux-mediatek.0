@@ -4,79 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F36C6C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 04:06:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44CEBC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 05:57:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ItkbB+I9xN6SCg2Kx0JLHC/C8tS4rYJHvgyT02l+Zhc=; b=RNlW5M1S6k58Fy
-	7uqYnIpMg3VjAWqV5jnKTFk11XRWU2qEVdC1Cy8H0aEZ1WPVR5ACKTmG4eWutFzIBCnlpn2zFeQ4p
-	4SWtFw3zpgRBHcY3pemzxZ4XdPfqod401PToI0nPowrSNvTYBGI2J4fVCPHabxcabPu6/WquxVw4e
-	wHJIwV9FUcZm0zgMSJ94WWIX17Kv2xt7zvWfF9aCnYJUHVB5khsBCaRlM+cGZQ3mIZPiCjXOdi0cY
-	/N/r9yKWXM1kOA0Lpyzu/ZTfmI+zZanDNBKMBvVQl2u7WYApXeBBual7OxHRVam6gQ4r2t35UhKDW
-	BRDckpqH71WoxwVriCtA==;
+	List-Owner; bh=tx9PgeecBftD9YZrob/iQ56xb/MSkL/c2q0WUpm8muc=; b=v8bPXqYcBgxlDV
+	16lBSC7GNYCroiEN3WlM1IDY2tkXM0P2cUd+Bvrtqts4Ug74BIEABzi23EphdvCDLv3+wJ/JOmk7N
+	Cl6JjmdtWrM2c5b65A7CzLELbXtKpZEj31VnFtq9r32PXmePP+k0T/ZdXx31WumvdqU5RAvL8wX3k
+	nFtSbD8yBb1JsODY+vB7chwjKwdfL25RJL6Rin4JbuuUP0KxbUK/ZoVfFaFAPIckV7Z0zGRi/udlS
+	zD3ORqcUTNA/UmPOz7/ajrYxz6FmncGfO4VgqZe3RlHCIVkyAW9Zx65c0YC+VJxVwCzcsFt1djPZE
+	LuHqxAwGiY20kfDuoMJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA2F0-003igq-6i; Wed, 19 Jan 2022 04:06:34 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1nA3yR-003tMa-JP; Wed, 19 Jan 2022 05:57:35 +0000
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA2Ew-003ifg-Th; Wed, 19 Jan 2022 04:06:32 +0000
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 20INx3mT022260; 
- Wed, 19 Jan 2022 04:06:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=from : to : cc :
- subject : date : message-id : in-reply-to : references : mime-version :
- content-type : content-transfer-encoding; s=corp-2021-07-09;
- bh=Is0RxxFusS17EU4y8KEr+vNiOrU+GXKq+9bew6VJxEI=;
- b=QMR7bTqrOki/WC4guc/q8gseADxVFLpL/wxXO7JYN3ixr6tSBhDPdKsoJV3FXTvfgtJ+
- xI0GHJBFmOPSUMO5SUb2+zBc8wHTOVcUvCUycCJPq44y6RHNyAKYyfekp3NLGM0r7ncO
- GgFkk4LUCHld6HolSVzfr5sT0zMsXgfPrc+uXT11xZlIlqcnrvMEXwXozIrQqnoGGCYg
- p5li0RW4o3U89y/r6Vy0Hq+lxhAb9GBKrTLJSrlRRW2GGwJKdiOhPZIb8cv/xaOqJwhz
- lIYamnnhEUcNkPE8o85cRVFUsdLnuZL/D8p9i0L71SWnWnABvBowwmw8jCkuRWzuEaz0 Xg== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by mx0b-00069f02.pphosted.com with ESMTP id 3dnc52uv8s-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 19 Jan 2022 04:06:23 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 20J42A5N091561;
- Wed, 19 Jan 2022 04:06:22 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by userp3020.oracle.com with ESMTP id 3dkqqpnr9u-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 19 Jan 2022 04:06:22 +0000
-Received: from userp3020.oracle.com (userp3020.oracle.com [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 20J46HQ7110383;
- Wed, 19 Jan 2022 04:06:22 GMT
-Received: from ca-mkp.mkp.ca.oracle.com (ca-mkp.ca.oracle.com [10.156.108.201])
- by userp3020.oracle.com with ESMTP id 3dkqqpnr68-5;
- Wed, 19 Jan 2022 04:06:21 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: Miaoqian Lin <linmq006@gmail.com>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
- linux-kernel@vger.kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-scsi@vger.kernel.org,
- Stanley Chu <stanley.chu@mediatek.com>,
- "James E.J. Bottomley" <jejb@linux.ibm.com>,
- Avri Altman <avri.altman@wdc.com>, Alim Akhtar <alim.akhtar@samsung.com>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] scsi: ufs: ufs-mediatek : Fix NULL vs IS_ERR checking
- in ufs_mtk_init_va09_pwr_ctrl
-Date: Tue, 18 Jan 2022 23:06:13 -0500
-Message-Id: <164256513503.31841.2498520978130234851.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <20211222070930.9449-1-linmq006@gmail.com>
-References: <CAGXv+5GF1WOeXVtnknAa4GYXE3Hd-UzcCBCyQzT6KY3tJCrVGA@mail.gmail.com>
- <20211222070930.9449-1-linmq006@gmail.com>
+ id 1nA3yP-003tLX-8y
+ for linux-mediatek@lists.infradead.org; Wed, 19 Jan 2022 05:57:34 +0000
+Received: by mail-lf1-x136.google.com with SMTP id o12so4779629lfu.12
+ for <linux-mediatek@lists.infradead.org>; Tue, 18 Jan 2022 21:57:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=180p+GQo845oNXpNatB24v9mg/wSi3AnjTHWzy7lW5Q=;
+ b=UMqQVImtdZBindUj0UKw3O5evttBaDA8C0gzixzt987uQXT8Y5eu/XzX82QJPB1v23
+ hEQEO1o+ew6SPORt1AWDbFZAMBA92ijdtJ/2jla70icSIGsX1pWs+rHcXMKrEPkJSoQK
+ jLBPjtEkJPK0cfb3/43ILnt6EnITHPad14/tU=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=180p+GQo845oNXpNatB24v9mg/wSi3AnjTHWzy7lW5Q=;
+ b=DhJTZA2r2ZfE/KqhQxSds5vmtn8Nryi41gHF1DU7FWCIRIdMbXFli9CiSQ/HmgHg9S
+ 2blLTXGlblsADQ50HpsS2GgKKzhP4ZnBatPSH1B+VDqnwbvuaNQpK10wHBctnCwfEP8V
+ x3XvBayU7yX7xHpWy0EqR0X0MOIldhEHflR7SEJijBXe7OGThR7IoEGDG++4R6Nil2Cz
+ onyLnUWhy5Hv5pC8oYlVBIIpTWBnTSLkojrpxb3z8Z57rcoNbL2eStLbpSQdmQJzwU4T
+ Yzbj2KmfZTNCGPWYeBl/Y3h/igT1shFdixwRPSAfJ6CwXvBevjSF+3/FBml+ugYEnTSg
+ +j+A==
+X-Gm-Message-State: AOAM532A8lXLrGLDKKS6YYEsVw3Frl1DhheoQRar/kda5hS2SnZFtNaQ
+ O9aMYrcuezgSFFF6dzwxF7Ini+S+LUgcE94QGK3qgA==
+X-Google-Smtp-Source: ABdhPJwmAbYBsIM1/e9VW3yeneVaeA59D14d9Js8kiEwjDiXSmFYOjsOytWEf0XP24p3zVI6PrzW1M84bl2PP9RLYm0=
+X-Received: by 2002:ac2:5bc9:: with SMTP id u9mr24297297lfn.371.1642571849473; 
+ Tue, 18 Jan 2022 21:57:29 -0800 (PST)
 MIME-Version: 1.0
-X-Proofpoint-GUID: aLqOXzXBfJv9DFzSfV1-xmycvzNoXC2E
-X-Proofpoint-ORIG-GUID: aLqOXzXBfJv9DFzSfV1-xmycvzNoXC2E
+References: <20220111112244.1483783-1-wenst@chromium.org>
+ <20220111112244.1483783-3-wenst@chromium.org>
+ <eca4a0c18fe75536c8276410628b9459c040dce2.camel@mediatek.com>
+In-Reply-To: <eca4a0c18fe75536c8276410628b9459c040dce2.camel@mediatek.com>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 19 Jan 2022 13:57:18 +0800
+Message-ID: <CAGXv+5GHVtCO9tN7B0O2c5V_Bk61-LL79LvbE1CRbyBfnvKSGQ@mail.gmail.com>
+Subject: Re: [PATCH 2/7] pinctrl: mediatek: paris: Fix PIN_CONFIG_BIAS_DISABLE
+ readback
+To: Guodong Liu <guodong.liu@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, 
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
+ Hui Liu <hui.liu@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_200630_990245_A150E9DF 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20220118_215733_326706_7AEB605E 
+X-CRM114-Status: GOOD (  23.93  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,20 +84,76 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 22 Dec 2021 07:09:30 +0000, Miaoqian Lin wrote:
+On Wed, Jan 19, 2022 at 9:42 AM Guodong Liu <guodong.liu@mediatek.com> wrote:
+>
+> -----Original Message-----
+> From: Chen-Yu Tsai <wenst@chromium.org>
+> To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <
+> linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
+> Cc: Chen-Yu Tsai <wenst@chromium.org>,
+> linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+> linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+> Zhiyong Tao <zhiyong.tao@mediatek.com>, Guodong Liu <
+> guodong.liu@mediatek.com>
+> Subject: [PATCH 2/7] pinctrl: mediatek: paris: Fix
+> PIN_CONFIG_BIAS_DISABLE readback
+> Date: Tue, 11 Jan 2022 19:22:39 +0800
+>
+> When reading back pin bias settings, if the pin is not in a
+> bias-disabled state, the function should return -EINVAL.
+>
+> Fix this in the mediatek-paris pinctrl library so that the read back
+> state is not littered with bogus a "input bias disabled" combined with
+> "pull up" or "pull down" states.
+>
+> Fixes: 805250982bb5 ("pinctrl: mediatek: add pinctrl-paris that
+> implements the vendor dt-bindings")
+> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> ---
+>  drivers/pinctrl/mediatek/pinctrl-paris.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> index f9f9110f2107..1ca598ea7ba7 100644
+> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
+> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
+> @@ -97,8 +97,8 @@ static int mtk_pinconf_get(struct pinctrl_dev
+> *pctldev,
+>                         if (err)
+>                                 goto out;
+>                         if (param == PIN_CONFIG_BIAS_DISABLE) {
+> -                               if (ret == MTK_PUPD_SET_R1R0_00)
+> -                                       ret = MTK_DISABLE;
+> +                               if (ret != MTK_PUPD_SET_R1R0_00)
+> +                                       err = -EINVAL;
+> Hi Chen-Yu
+>
+> When tht API "hw->soc->bias_get_combo(hw, desc, &pullup, &ret)" is
+> called,
+> The ret vaule of may be MTK_DISABLE OR MTK_PUPD_SET_R1R0_00 or  (pullen
+> == 0),  All those cases are expected to be as "bias-disable".
+> We advices to keep original code,
+> +                               if (ret == MTK_PUPD_SET_R1R0_00)
+> +
+>                                 ret = MTK_DISABLE;
+> +                               if (ret != MTK_DISABLE)
+> +                                       err = -EINVAL;
 
-> The function regulator_get() return error pointer,
-> use IS_ERR() to check if has error.
-> 
-> 
+IIUC you are suggesting to assign MTK_DISABLE to ret in the other two cases,
+and then check if ret == MTK_DISABLE.
 
-Applied to 5.17/scsi-queue, thanks!
+Thanks for pointing that out.
 
-[1/1] scsi: ufs: ufs-mediatek : Fix NULL vs IS_ERR checking in ufs_mtk_init_va09_pwr_ctrl
-      https://git.kernel.org/mkp/scsi/c/3ba880a12df5
+ChenYu
 
--- 
-Martin K. Petersen	Oracle Linux Engineering
+> Thanks
+>                         } else if (param == PIN_CONFIG_BIAS_PULL_UP) {
+>                                 /* When desire to get pull-up value,
+> return
+>                                  *  error if current setting is pull-
+> down
+>
 
 _______________________________________________
 Linux-mediatek mailing list
