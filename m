@@ -4,73 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24391C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 11:28:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98D56C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 11:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Varj1dpJvpOVp/aknjGrxC1VZIgltKV8CEAJ3efso/8=; b=t/XebwvQkSu1PC5IySLgQlRCMz
-	1qSIIjiRkNH0VGaIodzCVqps57gVeHxXUh/9F1w3xYgSgLWBCMXR8+K08x1StMuouVCYLN20b4Ecs
-	MOZBAAcurI/JU7Pr4tNaTilva7Of2S3I8Ioi+riZpAn+T9N2wex8nNO7AfpWbTtmFjHkVp2/vtVBh
-	KG5X8EQVc92b/dVNadS2u9BAIdTWwj6ihChfb/Cgta/HLbmy/OiciFXYwE7FGG5a6SsyOUueWgxaZ
-	zX3w1j6FzebwaxD1LxjUvzhfXsg2/RaypJad90jCoYKRj/RNWBfJUbHJ3r+Bvuye5/qGd6ynqG9Mc
-	XWxGbYqQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MwXwf6jXnQohSRqzJZ1iSQWSJ6eKDoX+tIB6t5CogDI=; b=toi61UNSLRaExPk86kSdmUr23W
+	wHqzsIEkapjIzLyNH7CYKOnwk5evKo889Q07/xD9DKwbhKbgGPPbVIYa3P/PYxb0CbLD4zmy5ftrm
+	c/MUN6GqmtuiCQLzdT/yJSsh2+kIjGrd9786SMV5U4brBq70p4gnhNjcBXCp3xLQp1oYQ9mTdzS0T
+	oMm83yLufdc3f6bN/A6sEZRVjkw0wkl5s0B5FnbUjHjOlg/9HWkehw30mSZNO3xoslwleOQUYvva9
+	00QKvc4NFSE1iZM5yxyoiMbm4LgXNwEHozknBAiJKq55xMA0n9P6Wfd6QztJcAJv4S8XRO71TvGpv
+	ZMKTTxAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA98p-0059ar-Hq; Wed, 19 Jan 2022 11:28:39 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nA9GZ-005C6l-D9; Wed, 19 Jan 2022 11:36:39 +0000
+Received: from metis.ext.pengutronix.de ([2001:67c:670:201:290:27ff:fe1d:cc33])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA98S-0059Tl-NS; Wed, 19 Jan 2022 11:28:18 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id BB5251F42FBE
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642591694;
- bh=lb7PPlcJ+GrMTYv/gT1LuwvO/b872pTbvdtVBiWTWtY=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=FI84BMt5ymarsviUxIfVek2WSCGHenxzSp/V9xEAzp/naQnjWaEE+ph6KJ6URxnyD
- RjALW9mRrRtOVSDRt2UCx+WddhsLIP0AuL8h9bhZ7eTRkJIiGQJzVm1Dsq6uWiqkCH
- qUaCGhR4O6thcK62LABbAbE+uuRBLPvny0QyHADtXFHau/npGxjNZtqUEBGoouI7Xe
- oPsRthgEao7In+tmmKBXwvRYEcs/s1dET5oae7hb4/rfuEvWI4nMFw1IwEeFsm8hyv
- uFxBBCN76vlf16ErqiU2bk7H2nOiPSZb/GkltZyqWBqdeqmuEOO09BOM3Jqb2DkrI/
- yvOQqSY7fAr0g==
-Subject: Re: [PATCH v5, 15/15] media: mtk-vcodec: support stateless VP9
- decoding
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
- Alexandre Courbot <acourbot@chromium.org>,
- Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tzung-Bi Shih
- <tzungbi@chromium.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring
- <robh+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Tomasz Figa <tfiga@google.com>
-Cc: George Sun <george.sun@mediatek.com>,
- Xiaoyong Lu <xiaoyong.lu@mediatek.com>, Hsin-Yi Wang <hsinyi@chromium.org>,
- Fritz Koenig <frkoenig@chromium.org>,
- Dafna Hirschfeld <dafna.hirschfeld@collabora.com>,
- Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- Daniel Vetter <daniel@ffwll.ch>, dri-devel
- <dri-devel@lists.freedesktop.org>, Irui Wang <irui.wang@mediatek.com>,
- Steve Cho <stevecho@chromium.org>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, srv_heupstream@mediatek.com,
+ id 1nA9GM-005C49-BK
+ for linux-mediatek@lists.infradead.org; Wed, 19 Jan 2022 11:36:29 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.ext.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nA9DT-0000wY-2d; Wed, 19 Jan 2022 12:33:27 +0100
+Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nA9DH-00BAYF-T8; Wed, 19 Jan 2022 12:33:15 +0100
+Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
+ (envelope-from <ukl@pengutronix.de>)
+ id 1nA9DG-00031i-Rx; Wed, 19 Jan 2022 12:33:14 +0100
+Date: Wed, 19 Jan 2022 12:33:14 +0100
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, kvm@vger.kernel.org,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>,
+ Amit Kucheria <amitk@kernel.org>, alsa-devel@alsa-project.org,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Guenter Roeck <groeck@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ linux-mtd@lists.infradead.org, linux-i2c@vger.kernel.org,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ linux-phy@lists.infradead.org, linux-spi@vger.kernel.org,
+ Lee Jones <lee.jones@linaro.org>, openipmi-developer@lists.sourceforge.net,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Kamal Dasu <kdasu.kdev@gmail.com>, Jiri Slaby <jirislaby@kernel.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ bcm-kernel-feedback-list@broadcom.com, linux-serial@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ Jaroslav Kysela <perex@perex.cz>, linux-pwm@vger.kernel.org,
+ Hans de Goede <hdegoede@redhat.com>, Robert Richter <rric@kernel.org>,
+ Saravanan Sekar <sravanhome@gmail.com>,
+ Corey Minyard <minyard@acm.org>, linux-pm@vger.kernel.org,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ John Garry <john.garry@huawei.com>, Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, linux-gpio@vger.kernel.org,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Sebastian Reichel <sre@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Takashi Iwai <tiwai@suse.com>, platform-driver-x86@vger.kernel.org,
+ Benson Leung <bleung@chromium.org>,
+ linux-arm-kernel@lists.infradead.org, linux-edac@vger.kernel.org,
+ Tony Luck <tony.luck@intel.com>, Mun Yew Tham <mun.yew.tham@intel.com>,
+ Eric Auger <eric.auger@redhat.com>, netdev@vger.kernel.org,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>, linux-mmc@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, linux-kernel@vger.kernel.org,
+ linux-renesas-soc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
+ James Morse <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Richard Weinberger <richard@nod.at>,
+ Niklas =?utf-8?Q?S=C3=B6derlund?= <niklas.soderlund@ragnatech.se>,
  linux-mediatek@lists.infradead.org,
- Project_Global_Chrome_Upstream_Group@mediatek.com
-References: <20220117094001.20049-1-yunfei.dong@mediatek.com>
- <20220117094001.20049-16-yunfei.dong@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <275affff-12d9-4659-e900-aa9c306e6701@collabora.com>
-Date: Wed, 19 Jan 2022 12:28:09 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+ (summary)
+Message-ID: <20220119113314.tpqfdgi6nurmzfun@pengutronix.de>
+References: <20220110195449.12448-1-s.shtylyov@omp.ru>
+ <20220110195449.12448-2-s.shtylyov@omp.ru>
+ <20220115183643.6zxalxqxrhkfgdfq@pengutronix.de>
+ <YeQpWu2sUVOSaT9I@kroah.com>
+ <20220118091819.zzxpffrxbckoxiys@pengutronix.de>
+ <b6038ec2-da4a-de92-b845-cac2be0efcd1@omp.ru>
 MIME-Version: 1.0
-In-Reply-To: <20220117094001.20049-16-yunfei.dong@mediatek.com>
-Content-Language: en-US
+In-Reply-To: <b6038ec2-da4a-de92-b845-cac2be0efcd1@omp.ru>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: ukl@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-mediatek@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_032816_987347_2F4B2614 
-X-CRM114-Status: GOOD (  14.80  )
+X-CRM114-CacheID: sfid-20220119_033626_423488_5F934746 
+X-CRM114-Status: GOOD (  25.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,39 +122,84 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6051810923734096629=="
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 17/01/22 10:40, Yunfei Dong ha scritto:
-> Add support for VP9 decoding using the stateless API,
-> as supported by MT8192. And the drivers is lat and core architecture.
-> 
-> Signed-off-by: Yunfei Dong <yunfei.dong@mediatek.com>
-> Signed-off-by: George Sun <george.sun@mediatek.com>
-> ---
->   drivers/media/platform/mtk-vcodec/Makefile    |    1 +
->   .../mtk-vcodec/mtk_vcodec_dec_stateless.c     |   26 +-
->   .../platform/mtk-vcodec/mtk_vcodec_drv.h      |    1 +
->   .../mtk-vcodec/vdec/vdec_vp9_req_lat_if.c     | 1973 +++++++++++++++++
->   .../media/platform/mtk-vcodec/vdec_drv_if.c   |    4 +
->   .../media/platform/mtk-vcodec/vdec_drv_if.h   |    1 +
->   6 files changed, 2003 insertions(+), 3 deletions(-)
->   create mode 100644 drivers/media/platform/mtk-vcodec/vdec/vdec_vp9_req_lat_if.c
-> 
 
-Hello Yunfei,
-this driver is based on an older version of the VP9 stateless decoder uAPI,
-hence this is not applicable upstream.
+--===============6051810923734096629==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hygdbs7bafily54q"
+Content-Disposition: inline
 
-The latest linux-next tag (as of today) already contains the new and
-accepted code; can you please rebase over that one?
 
-Thanks,
-Angelo
+--hygdbs7bafily54q
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+Hello Sergey,
+
+On Wed, Jan 19, 2022 at 01:56:12PM +0300, Sergey Shtylyov wrote:
+> On 1/18/22 12:18 PM, Uwe Kleine-K=F6nig wrote:
+> > On Sun, Jan 16, 2022 at 03:19:06PM +0100, Greg Kroah-Hartman wrote:
+> >> On Sat, Jan 15, 2022 at 07:36:43PM +0100, Uwe Kleine-K=F6nig wrote:
+> >>> A possible compromise: We can have both. We rename
+> >>> platform_get_irq_optional() to platform_get_irq_silent() (or
+> >>> platform_get_irq_silently() if this is preferred) and once all users =
+are
+> >>> are changed (which can be done mechanically), we reintroduce a
+> >>> platform_get_irq_optional() with Sergey's suggested semantic (i.e.
+> >>> return 0 on not-found, no error message printking).
+> >>
+> >> Please do not do that as anyone trying to forward-port an old driver
+> >> will miss the abi change of functionality and get confused.  Make
+> >> build-breaking changes, if the way a function currently works is
+> >> changed in order to give people a chance.
+> >=20
+> > Fine for me. I assume this is a Nack for Sergey's patch?
+>=20
+>    Which patch do you mean? I'm starting to get really muddled... :-(
+
+I'm talking about "[PATCH 1/2] platform: make
+platform_get_irq_optional() optional" because "trying to forward-port an
+old driver will miss the abi" applies to it.
+
+Best regards
+Uwe
+
+--=20
+Pengutronix e.K.                           | Uwe Kleine-K=F6nig            |
+Industrial Linux Solutions                 | https://www.pengutronix.de/ |
+
+--hygdbs7bafily54q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmHn9vcACgkQwfwUeK3K
+7Anutgf9H+FHDCwHTQEg3PqL/MwBWEgm2ezhN3NYztqf3gciss+k2d18HSOoYC3U
+FVex76yzow2RaobKMmgXEqSv3MLbHgTm5YExNMaYIM5QuLAVJka/5uiXKJFMEsbE
+GvlbYU/QbcQ/pUw5PTRvi07XghgBpKALgy+DTeK/4cOMQSsHBG8z8q2PSA5T/YX4
+vqrrdvv7F0rIJR0pMUIVWZ0c15DeKt6fy53S9JW/ZQnBS/I7v1mJvP3kKo2+eEo6
+nmF3qMmYbnrzxpAXhhWoB67zMIC+fhq6cYyhS5LuiHRcyM/xej00L+S/ZfXHpRR3
+VTjGawN4GYEia7SPEAsh/CHlO3t4Vw==
+=2ru9
+-----END PGP SIGNATURE-----
+
+--hygdbs7bafily54q--
+
+
+--===============6051810923734096629==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-mediatek mailing list
 Linux-mediatek@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-mediatek
+
+--===============6051810923734096629==--
+
