@@ -4,106 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6672EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 19:50:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672F5C433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 20:05:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
-	Message-ID:From:References:CC:To:Subject:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=EhCkmGTFMZyvemdTVDZpJs+GGH7XJU1g+GlZtvKsnLM=; b=HEMQ4cD6t+5fgpkg6E5xhX16N2
-	kSS72+KAwVah9DVnEyThX1YJee1MgYiciDNaMuxu86by8+224PvkALnSAgO/jSv+C8lTg2iax5alu
-	/GD3LDts6QzsXLCBxBgSrcyDJ/GJT88cSNAo1fQARQf3poqSEqNZIjL3+3xBbyMZ0SQvesPbWoNt2
-	LnMI6EhotphnJZrV1MHl+fjN3dLfEhUtPYBC59fgv6U13kBVwT3+LipxsJONW6YTQy8injbzil64s
-	s7gieHfyPXrTi2WUq9bUcVeoHySJvnTsrqhJFrLyHEDeFxTdbbd0Vku1uaZpXMqw9CkyXd/FPdd4Z
-	jXLeDgmw==;
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NmkSsAvr2E9z/4I18Nd5hw4qCHPaFJwg5rBXJDepJpo=; b=NWVd1GYuUJCnFv
+	djJ/IAw8fYdKQhtZPDEXnV+mp62+VKFlKYjCaCn9OdvZ1sMQ8czzVY25iyQLanPffxQxawYQtFwCa
+	zYMXTPLh7HCAN58wbUMjWKczQ+csFXsNsZc7/gR0B9rG0crt4TMlrrqwSjTs9cS2W3fSxI6uNxA71
+	/22SKnE21pYzxT0VHUc4E0xbJevSsFhiXkWZ4/wzda/TUH/Z+M2AqvMmA1n9xXdfYcI99ma8Heevn
+	pe4GRMSV0paqNbwtaGa3xWybmZNuSz3qG+d3Gn5JQAPk7rPx51S7JCf5IkH2dIzjiiSWbBlqirQ3h
+	e1uucaXQVZnstPqHpiFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAGyL-0078sH-1K; Wed, 19 Jan 2022 19:50:21 +0000
-Received: from mxout04.lancloud.ru ([45.84.86.114])
+	id 1nAHD9-007Cph-0D; Wed, 19 Jan 2022 20:05:39 +0000
+Received: from ams.source.kernel.org ([145.40.68.75])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAGxz-0078jF-1r; Wed, 19 Jan 2022 19:50:01 +0000
-Received: from LanCloud
-DKIM-Filter: OpenDKIM Filter v2.11.0 mxout04.lancloud.ru 1999620B0896
-Received: from LanCloud
-Received: from LanCloud
-Received: from LanCloud
-Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>
-CC: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
- Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, <linux-iio@vger.kernel.org>, "Linus
- Walleij" <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, "ALSA
- Development Mailing List" <alsa-devel@alsa-project.org>, Jaroslav Kysela
- <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>, Thierry Reding
- <thierry.reding@gmail.com>, MTD Maling List <linux-mtd@lists.infradead.org>,
- Linux I2C <linux-i2c@vger.kernel.org>, "open list:GPIO SUBSYSTEM"
- <linux-gpio@vger.kernel.org>, Miquel Raynal <miquel.raynal@bootlin.com>,
- <linux-phy@lists.infradead.org>, <netdev@vger.kernel.org>, linux-spi
- <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>, Khuong Dinh
- <khuong@os.amperecomputing.com>, Florian Fainelli <f.fainelli@gmail.com>,
- Matthias Schiffer <matthias.schiffer@ew.tq-group.com>, Kamal Dasu
- <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>, Bartosz Golaszewski
- <brgl@bgdev.pl>, Daniel Lezcano <daniel.lezcano@linaro.org>, "Kishon Vijay
- Abraham I" <kishon@ti.com>, Geert Uytterhoeven <geert@linux-m68k.org>, "open
- list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, bcm-kernel-feedback-list
- <bcm-kernel-feedback-list@broadcom.com>, Zhang Rui <rui.zhang@intel.com>,
- <platform-driver-x86@vger.kernel.org>, Linux PWM List
- <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, "Saravanan
- Sekar" <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, Linux PM list
- <linux-pm@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, "Mauro
- Carvalho Chehab" <mchehab@kernel.org>, John Garry <john.garry@huawei.com>,
- Takashi Iwai <tiwai@suse.com>, Peter Korsgaard <peter@korsgaard.com>,
- "William Breathitt Gray" <vilhelm.gray@gmail.com>, Mark Gross
- <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>, Alex Williamson
- <alex.williamson@redhat.com>, Mark Brown <broonie@kernel.org>, "Borislav
- Petkov" <bp@alien8.de>, Jakub Kicinski <kuba@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, <openipmi-developer@lists.sourceforge.net>, "Benson
- Leung" <bleung@chromium.org>, Pengutronix Kernel Team
- <kernel@pengutronix.de>, Linux ARM <linux-arm-kernel@lists.infradead.org>,
- <linux-edac@vger.kernel.org>, Tony Luck <tony.luck@intel.com>, "Richard
- Weinberger" <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>, "Eric
- Auger" <eric.auger@redhat.com>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Yoshihiro Shimoda
- <yoshihiro.shimoda.uh@renesas.com>, Cornelia Huck <cohuck@redhat.com>, "Linux
- MMC List" <linux-mmc@vger.kernel.org>, Joakim Zhang
- <qiangqing.zhang@nxp.com>, Linux Kernel Mailing List
- <linux-kernel@vger.kernel.org>, Linux-Renesas
- <linux-renesas-soc@vger.kernel.org>, Vinod Koul <vkoul@kernel.org>, "James
- Morse" <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, "Sebastian
- Reichel" <sre@kernel.org>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
- <niklas.soderlund@ragnatech.se>, <linux-mediatek@lists.infradead.org>, "Brian
- Norris" <computersforpeace@gmail.com>, "David S. Miller"
- <davem@davemloft.net>
-References: <20220112085009.dbasceh3obfok5dc@pengutronix.de>
- <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
- <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
- <Yd9L9SZ+g13iyKab@sirena.org.uk>
- <29f0c65d-77f2-e5b2-f6cc-422add8a707d@omp.ru>
- <20220114092557.jrkfx7ihg26ekzci@pengutronix.de>
- <61b80939-357d-14f5-df99-b8d102a4e1a1@omp.ru>
- <20220114202226.ugzklxv4wzr6egwj@pengutronix.de>
- <57af1851-9341-985e-7b28-d2ba86770ecb@omp.ru>
- <20220117084732.cdy2sash5hxp4lwo@pengutronix.de>
- <YehfP23nMd4wn48K@smile.fi.intel.com>
-From: Sergey Shtylyov <s.shtylyov@omp.ru>
-Organization: Open Mobile Platform
-Message-ID: <fabb8166-e3a9-c48e-073b-cdbbe8c62714@omp.ru>
-Date: Wed, 19 Jan 2022 22:49:52 +0300
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.1
+ id 1nAHCw-007CnO-MC; Wed, 19 Jan 2022 20:05:27 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id 5E19EB81B40;
+ Wed, 19 Jan 2022 20:05:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15995C004E1;
+ Wed, 19 Jan 2022 20:05:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642622724;
+ bh=WETv3X7CMWAxiJd6kJ5202hY9BumADpmPipnmE7jRRc=;
+ h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+ b=lkxTmAKMPE8VYox3ea1nm1pTyRDVTfcSYa4zu5NpReRB/HVyyySaeaqJv1pL6Go6P
+ jwH/VIrLLsgpX6hQajFl0rk1UJw2cv4fgiF6eICwqk6EVctGrasCPdITThNTVngKlN
+ PsDbwSaZZPopGwv4gOMfN2Foz4QKCnlpwWqdJdU8IG7LJTCLrOREMUV3mYynTTPdvG
+ YpIv6kZRYY8ZMJzV+SgcNFErhV6Cybu7sRa5FPVvh5qwXp0UVvedK5RJ5AsN1v/KL4
+ tliaQ60cxW060PwOC+zG68URG3Z1qik71YDq/ajKltn0HIvL8cVxAHc5CUSdpMxrjX
+ ToMx034KO3y8A==
 MIME-Version: 1.0
-In-Reply-To: <YehfP23nMd4wn48K@smile.fi.intel.com>
-Content-Language: en-US
-X-Originating-IP: [192.168.11.198]
-X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
- LFEX1907.lancloud.ru (fd00:f066::207)
+In-Reply-To: <20220119123658.10095-2-sam.shih@mediatek.com>
+References: <20220119123658.10095-1-sam.shih@mediatek.com>
+ <20220119123658.10095-2-sam.shih@mediatek.com>
+Subject: Re: [PATCH 1/1] clk: mediatek: relicense mt7986 clock driver to
+ GPL-2.0
+From: Stephen Boyd <sboyd@kernel.org>
+Cc: John Crispin <john@phrozen.org>, Sam Shih <sam.shih@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+ Michael Turquette <mturquette@baylibre.com>, Ryder Lee <ryder.lee@kernel.org>,
+ Sam Shih <sam.shih@mediatek.com>, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Date: Wed, 19 Jan 2022 12:05:22 -0800
+User-Agent: alot/0.10
+Message-Id: <20220119200524.15995C004E1@smtp.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_114959_503237_F5B7FBEF 
-X-CRM114-Status: GOOD (  18.52  )
+X-CRM114-CacheID: sfid-20220119_120526_890498_AE1AE091 
+X-CRM114-Status: GOOD (  10.05  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,57 +76,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 1/19/22 9:58 PM, Andy Shevchenko wrote:
-
-[...]
->> Because with your change we have:
->>
->>  - < 0 -> error
->>  - == 0 -> no irq
->>  - > 0 -> irq
->>
->> For my part I'd say this doesn't justify the change, but at least I
->> could better life with the reasoning. If you start at:
->>
->> 	irq = platform_get_irq_optional(...)
->> 	if (irq < 0 && irq != -ENXIO)
->> 		return irq
->> 	else if (irq > 0)
->> 		setup_irq(irq);
->> 	else
->> 		setup_polling()
->>
->> I'd change that to
->>
->> 	irq = platform_get_irq_optional(...)
->> 	if (irq > 0) /* or >= 0 ? */
->> 		setup_irq(irq)
->> 	else if (irq == -ENXIO)
->> 		setup_polling()
->> 	else
->> 		return irq
->>
->> This still has to mention -ENXIO, but this is ok and checking for 0 just
->> hardcodes a different return value.
+Quoting Sam Shih (2022-01-19 04:36:58)
+> The previous mt7986 clock drivers were incorrectly marked as GPL-1.0.
+> This patch changes the driver to the standard GPL-2.0 license.
 > 
-> It's what we are against of. The idea is to have
-> 
-> 	irq = platform_get_irq_optional(...)
-> 	if (irq < 0) // we do not care about special cookies here
-> 		return irq;
-> 
-> 	if (irq)
-> 		setup_irq(irq)
-> 	else
-> 		setup_polling()
-> 
-> See the difference? Your code is convoluted.
+> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
+> ---
 
-   ... and it's longer when you look at the translated code! :-)
-
-[...]
-
-MBR, Sergey
+Applied to clk-next
 
 _______________________________________________
 Linux-mediatek mailing list
