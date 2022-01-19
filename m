@@ -4,59 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39CA9C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 09:11:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88F48C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 09:14:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:Cc:To:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/79wC92oPGe//CeKSolCIykC+Z3B+CCRSQqe+nHO+2U=; b=LNJdZEXB1KsAfFNCYHV8JzLa1L
-	9fdQykeWl0rY/YJ24vlLynvRrCzY4KuznB/T2p0Akd6F13Cdb0bPTiO/24dBvCmnd72izvG1XjovG
-	8D+6btBf0TXpkw9saoP1N9mFm/ldngqtAZujewR3TXe1FwKTDPH19i/ilap67NGwZ3BM6aOjALDwU
-	o754KaPd7LXR9HxlwwVWL8NfRlnUSb5Gna6imVe2y7wcplL8lNsqbIEwSZIMLG+R6kr3X3Zdsc6hk
-	ekmY74MqM038fgmbVtfP4LkpHdYV2aABWl4knAseTnhXr62ZQ/DaXnNWz9dy/2c+QtzSmAi7ulP94
-	e5K+ITYg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=0c8plYySlWrAB+bQYrokTZi2WmXGN508Nt99UKA2Etw=; b=ZUfx32/KHrprPG
+	F+siC9TzYGLmf5YeSDa7z5RAYdGS9CgjleY6Wotf/JzGMmXyTiDadA2CTr+YunqsFrdl514UPMiTg
+	8w2yHKzZzzcu8Iuj7nTYxtwO0mS7aGr/mCp4NxpU1h1hzeu3nOToIBq8//ihP3bf+4ODPBhaTcubO
+	vQdMLDRDWhme5SjyYlFXnqhpkTbq4nEA57qBq4u1rcze4DD+kjlyz0CEk1RgxbDfQWIyELSX2ksGL
+	UHdIdtqEsdA+ru4Vp0Q9UkiqieDyEJSiGjjNvGu9xLYx75nKjCJ6Xj6tP/VMcmusmA0+y85qRvUqd
+	C/tE3HwtzFr2xI7W+j8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA6zh-004TPW-W9; Wed, 19 Jan 2022 09:11:06 +0000
-Received: from bhuna.collabora.co.uk ([46.235.227.227])
+	id 1nA72p-004Uwu-QU; Wed, 19 Jan 2022 09:14:19 +0000
+Received: from dfw.source.kernel.org ([139.178.84.217])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA6zO-004TFn-Tb; Wed, 19 Jan 2022 09:10:48 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1])
- (Authenticated sender: kholk11) with ESMTPSA id 093B71F44374
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
- s=mail; t=1642583445;
- bh=IY0TsKf1sV4zasOINyvJyjE0S/SNcaARx1RJpjSFlFk=;
- h=Subject:To:Cc:References:From:Date:In-Reply-To:From;
- b=QRaDfysl0CJDjDqq1df7gr4YfD5pUJ/xuCpGRFmr/VcaXM2I9N53LwquKHDYsicm9
- p0IsntKGidGnWVE05v4hmWB8wS9PTjB99UvQSIPgTPPy40CVnW0iH9YhJwCCa3DDKM
- NZA+cqg9iWPcNvyxUzggA3YC/HR8UICU3F5w1Z9U585EGhnX6yGOtRPH5H87a5EQto
- b9NmHyS42x44nQs1ffP9pSYOYqbAhEtIxBB6gvJC+4vKPOwvWtCAA8ty4Xy3r45Rwz
- 6dV6zIaSzdsR7PIMUXo0MxYAfM7CiNBTgfZohfRLss/VCUib54N/Sq+2XZuRgpFxDw
- p7ri8JuH97fxw==
-Subject: Re: [PATCH] media: platform: mtk-vcodec: Do not force /dev/videoX
- node number
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- tiffany.lin@mediatek.com, andrew-ct.chen@mediatek.com, mchehab@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.co.uk
-Cc: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com
-References: <20220118150717.706074-1-benjamin.gaignard@collabora.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Message-ID: <72ac959b-ad5f-8f4e-38d1-3da9d9866290@collabora.com>
-Date: Wed, 19 Jan 2022 10:10:42 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.13.0
+ id 1nA72c-004Ush-3o; Wed, 19 Jan 2022 09:14:07 +0000
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by dfw.source.kernel.org (Postfix) with ESMTPS id AECED6149E;
+ Wed, 19 Jan 2022 09:14:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0961DC340EC;
+ Wed, 19 Jan 2022 09:14:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1642583644;
+ bh=UT1ycB5MKQguCeHT4CqkfeYkeSTVnUZkbqsNKDB91DE=;
+ h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+ b=O4idI1zwFEP43IR30nHcX2e6/3IXYhwq/luJfzjA4gl23cMKxwgg3Uhqnwxwg8Jhb
+ fINRWL54KrR0TjT4IBUl2nKlbuE/QROsbaQ4EPkSdFzVNeQKD5uU/Jie9HG1YaSKzH
+ TW5SsCImZ2f3f2F17Eto6pkCff0Ny5bgbD408iFwwzFjOI4vTajrsIS+gjP2BDRvhv
+ CbUnhFkgC8CC5jTOFcIIVtAxJ+r9yTegF4kJWqT13dqvpWPyM/plJXOUN8iKJvBlPx
+ 6VdMBXbgGG2TrYmEULBA3XQ8PHPDvx68WrrPwfQp21n1MS/Jt0PE5CshfjDHOHFVyL
+ eAL8x/HukYJ6Q==
+Received: by mail-wm1-f42.google.com with SMTP id
+ i187-20020a1c3bc4000000b0034d2ed1be2aso11370876wma.1; 
+ Wed, 19 Jan 2022 01:14:03 -0800 (PST)
+X-Gm-Message-State: AOAM5326KrGHocKoBo/KKHCMixkZc+UC2/1KtXr+az2bk3KRshLy8ngD
+ IzbNljbL4Cn0ujBa/xwnROWsk3YfEhDxDHknB9c=
+X-Google-Smtp-Source: ABdhPJwCrAQgxYS+mSM5rThnIjL7BrcKp/O0rhZ0fCrotJ58xV1UBxwc+zZAx8OHuLmlHLQeNbsXBBo+N7eqth/eSbQ=
+X-Received: by 2002:a5d:6210:: with SMTP id y16mr26324324wru.454.1642583642257; 
+ Wed, 19 Jan 2022 01:14:02 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20220118150717.706074-1-benjamin.gaignard@collabora.com>
-Content-Language: en-US
+References: <20220119082447.1675-1-miles.chen@mediatek.com>
+ <CAHmME9pv4WWATjdqZgwrtHDmq3sX4ABfB9PoNT9Z4tSEduR2Lw@mail.gmail.com>
+ <CAMj1kXEuWRUbCqDBnxiWRaERt6OGL8ufQ1Q7naAGHqKK1oQB1w@mail.gmail.com>
+In-Reply-To: <CAMj1kXEuWRUbCqDBnxiWRaERt6OGL8ufQ1Q7naAGHqKK1oQB1w@mail.gmail.com>
+From: Ard Biesheuvel <ardb@kernel.org>
+Date: Wed, 19 Jan 2022 10:13:51 +0100
+X-Gmail-Original-Message-ID: <CAMj1kXGUtg1BOauCjxB+S7yMTPArQrPnHf5jnfhOihL-FHrFZA@mail.gmail.com>
+Message-ID: <CAMj1kXGUtg1BOauCjxB+S7yMTPArQrPnHf5jnfhOihL-FHrFZA@mail.gmail.com>
+Subject: Re: [PATCH] lib/crypto: blake2s: fix a CFI failure
+To: "Jason A. Donenfeld" <Jason@zx2c4.com>
+Cc: =?UTF-8?B?TWlsZXMgQ2hlbiAo6Zmz5rCR5qi6KQ==?= <miles.chen@mediatek.com>, 
+ Herbert Xu <herbert@gondor.apana.org.au>,
+ "David S. Miller" <davem@davemloft.net>, 
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Linux Crypto Mailing List <linux-crypto@vger.kernel.org>, 
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, 
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-mediatek@lists.infradead.org, 
+ Eric Biggers <ebiggers@google.com>, Sami Tolvanen <samitolvanen@google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_011047_189428_52C98FBE 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20220119_011406_255403_B4B9646A 
+X-CRM114-Status: GOOD (  29.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,32 +84,65 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>, 
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il 18/01/22 16:07, Benjamin Gaignard ha scritto:
-> Let's v4l2 framework use a free /dev/videoX node for decode and encoder.
-> For the decoder call video_register_device() before register the media
-> controller device so the mapping between ins correctly done.
-> Since the registering sequence has changed rework exiting errors case too.
-> 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+On Wed, 19 Jan 2022 at 10:09, Ard Biesheuvel <ardb@kernel.org> wrote:
+>
+> (+ Sami, Eric)
+>
+> On Wed, 19 Jan 2022 at 10:00, Jason A. Donenfeld <Jason@zx2c4.com> wrote:
+> >
+> > Hi Miles,
+> >
+> > Thanks for the patch. Could you let me know which architecture and
+> > compiler this was broken on? If I had to guess, I'd wager arm32, and
+> > you hit this by enabling optimized blake2s?
+> >
+> > If so, I'm not sure the problem is with weak symbols. Why should CFI
+> > break weak symbols? Rather, perhaps the issue is that the function is
+> > defined in blake2s-core.S? Are there some CFI macros we need for that
+> > definition?
+> >
+>
+> We should try to understand why CFI thinks the prototypes of the two
+> symbols are different. There are still a number of issues with CFI, so
+> papering over them by reverting stuff that we want for good reasons is
+> not the way to go imo.
+>
+> In the short term, you can work around it by avoiding the indirect
+> call to blake2s_compress, e.g.,
+>
+> diff --git a/lib/crypto/blake2s.c b/lib/crypto/blake2s.c
+> index 93f2ae051370..fef2ff678431 100644
+> --- a/lib/crypto/blake2s.c
+> +++ b/lib/crypto/blake2s.c
+> @@ -16,9 +16,15 @@
+>  #include <linux/init.h>
+>  #include <linux/bug.h>
+>
+> +static void __blake2s_compress(struct blake2s_state *state, const u8 *block,
+> +                              size_t nblocks, const u32 inc)
+> +{
+> +       return blake2s_compress(state, block, nblocks, inc);
+> +}
+> +
+>  void blake2s_update(struct blake2s_state *state, const u8 *in, size_t inlen)
+>  {
+> -       __blake2s_update(state, in, inlen, blake2s_compress);
+> +       __blake2s_update(state, in, inlen, __blake2s_compress);
+>  }
+>  EXPORT_SYMBOL(blake2s_update);
 
-Hello Benjamin,
-please add the following Fixes tags to this commit:
+Ehm, maybe not. As Jason points out, the typedef does not have quite
+the right type, so that is most likely the culprit, and this
+workaround would trigger CFI in exactly the same way.
 
-Fixes: 590577a4e525 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Decoder 
-Driver")
-
-Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video Encoder 
-Driver")
-
-After that..
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-
+Interestingly, the compiler does not seem to mind, right? Or are you
+seeing any build time warnings on the reference to blake2s_compress in
+the call to __blake2s_update() ?
 
 _______________________________________________
 Linux-mediatek mailing list
