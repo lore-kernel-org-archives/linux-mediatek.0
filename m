@@ -4,94 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D054EC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 20:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3915AC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 20:56:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=89bIDjo81rojQvg3aUIiTV6y4Fd1rHqAdQeLCU4fXkM=; b=inDVck82hzlBWp
-	VYcCmJdWyf9ZZLVR2uekfU14PwuoUMrUQ/pks3kbgiDkNk5kujZbD6758Uld2EvTvNqc/ZU4CBsjj
-	LH7/lNuvI7ohnDEpzQQQXzAOsimxaWiY2nnrPNcHMzFvewdYyO9oJPox6vnvz2NgC8WmfBVbv2VkO
-	uHoqakMw5qtGtoj+pusPpw1zSkFqf/TsnLJIOffPjRfSvbnohGUUBea4yoCjXoY+03m60jNy79Cq2
-	3YbvJwQ6LfHZW4zcKQW7i73AHBZqJxrid1Ibg4MELsPA3Vvp9jp0p97/Zk9qnerSneaoIfRTecFMY
-	fuOo1SzSaIsEbdrd5f/g==;
+	List-Owner; bh=X+MBFop3iBHV7ohjmd/iHxf/yelxt+bSpDPh289RM5E=; b=1Y8yIVSb5CfOkp
+	9Ewr3blD6qv8KJ52qg66uNO3irRROz1065sCQ5ILa0iNtkp+qBugwdDxUuQjL2CpmU9rQ8/+KAIeA
+	OfVuyPfTdXfjwWBuB+gJIh2ZS0MIb3GQyTSJIMqWEcJPtFAaLij5TUQek7oIHThIYdr2bcMgiUVtT
+	BjQqLinKQ53jgmThVe1ZWg8U6GHLNqdqg9v1QUTixyZjfu7YCk+uytAgXTw/NIN5QZgpJCcxcYkXW
+	8/0jYu3+SB3Kfl/X6xIU41DSDXDrUvt5YIwAbD0DONppCKCPWhjhKi2qAPqgYbAaqMagV2uC/2pVE
+	YkLSx+8xIe5cci+Kr+fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAHiN-007Kq2-F1; Wed, 19 Jan 2022 20:37:55 +0000
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+	id 1nAI0W-007Q8j-U4; Wed, 19 Jan 2022 20:56:40 +0000
+Received: from mga17.intel.com ([192.55.52.151])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAHiA-007KlH-0v
- for linux-mediatek@lists.infradead.org; Wed, 19 Jan 2022 20:37:43 +0000
-Received: by mail-lf1-x135.google.com with SMTP id o12so12927896lfu.12
- for <linux-mediatek@lists.infradead.org>; Wed, 19 Jan 2022 12:37:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SVNoxQMp637bgUGyLKUQMTT6jCUfGMhBKrAhjOzC1jA=;
- b=Vw/hy5bg5C+CCYO+oJtgWYZCGRowuXfpuM1y/pli43kr+OiB3OWzkR6ZyW+nfXxt/s
- VAn2AjX3mL+nlHsEF9z/pBhrlFgPcsEA0h1sAo1ZC4YcWsIWZ0jeb+wpDXa+U2omlUCF
- pf/73OVbaBLU61/xMVSHktQI827IhnQn2hI4w8Tkbj/fmE8A6Xntpo4ktyfN/ATLaSyR
- OmbGO1wuYpDN6JCPJ6apqXqpoeOCB/ZbqWFXSeJZIDyaqZ4S0vxFtOgFaUm3xw+cnlGx
- I1oFnxocUDYadU9R73MgSd6PbQAJyeaWf6JpFnbLe1rT3w0y4YtI4EsZ5WHxq0hL/Blm
- wwzA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SVNoxQMp637bgUGyLKUQMTT6jCUfGMhBKrAhjOzC1jA=;
- b=nXMWcv7nopz97Cv7dxhTzc0jVsnf+8nHCUbp/BSv2ZDjQFQtwbkRSyiLIsiSKALuNw
- 3swBeY2L8Fi+R9Ojvczy1dQNVoQMJmLzLqUfbxsOCy50jdZrVdRxBs2lHyrzhY+7I8A/
- ph9juDPUbEdivMkC1xGsKRwuL1gBzDHC+TeEZ5kCY5y5Qsrc+dfZOccg90yk9cJoPYyz
- lSHhPQ0q+zxuQ7sBPWaHJx+mglUy1kXfuKKiTFAuJB5FGmm91jkC5JtS49qilVkmpAeG
- 9igK93rEi0poejwkfsB2ycAG5EYmoAnenbDtoTEiZ95DIE0xKSBeI6awhpfvuSGGps4e
- owgw==
-X-Gm-Message-State: AOAM5327d0c4G/vF8xVPTKTOaTNGoIxv1Qx0kkevWjIhIdY4fr7Yh05V
- cQ/wY3goIALg6SPv6t6aC7cmAlxDH3Nc0ALAWn6kpg==
-X-Google-Smtp-Source: ABdhPJwjspQiMNHOBlTaaj+hdTY9hJrpsFobebo94UsQ78o3vrS70VesOp4vSiK9m1G+NqmP7oa+dvJBc2Sn675qSo0=
-X-Received: by 2002:a05:6512:329b:: with SMTP id
- p27mr30040874lfe.36.1642624659492; 
- Wed, 19 Jan 2022 12:37:39 -0800 (PST)
+ id 1nAI0T-007Q6B-Pn; Wed, 19 Jan 2022 20:56:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1642625797; x=1674161797;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=Zn3K2EdVeDLJCMJ0xbcykPqu/tTiNlke9kM/JdHhcyA=;
+ b=UKP5BPWQ+uw2sBH+BM1UqeeTghbHvgaSjb/HR8XqV2m/L0x+YVEmxOGG
+ flhgx042uwtvDmyFlbH1w3PHokLzPGv6z+k+i45vi98jaPXt+vr175APx
+ AbZt1GcjiOufYlT52vxr4qzItwd0SVdtcN8WG3VZf89UFYd8sgki/FTZ0
+ nAJVaJF3b9itTPyNWKR/tIDClRlUTOZwB+qhiCz2ulEGjz2iqqn3ekqLu
+ wBY0+mwl9tNWjORFuFbtJE0r88oQiNJ8px6dZJvxRVbsCoXYnnCWjk+qF
+ bKdDmFFe8Dlc4vZoy0A9phMp1kTFErGo9dZCebUQjx5RAQ/pMMDiEL2gZ w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10231"; a="225862990"
+X-IronPort-AV: E=Sophos;i="5.88,300,1635231600"; d="scan'208";a="225862990"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jan 2022 12:56:37 -0800
+X-IronPort-AV: E=Sophos;i="5.88,300,1635231600"; d="scan'208";a="615845335"
+Received: from smile.fi.intel.com ([10.237.72.61])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jan 2022 12:56:21 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.95)
+ (envelope-from <andriy.shevchenko@linux.intel.com>)
+ id 1nAHz3-00CGxM-Ht; Wed, 19 Jan 2022 22:55:09 +0200
+Date: Wed, 19 Jan 2022 22:55:09 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Sergey Shtylyov <s.shtylyov@omp.ru>
+Cc: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>,
+ Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-iio@vger.kernel.org,
+ Linus Walleij <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>,
+ ALSA Development Mailing List <alsa-devel@alsa-project.org>,
+ Jaroslav Kysela <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>,
+ Thierry Reding <thierry.reding@gmail.com>,
+ MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ Miquel Raynal <miquel.raynal@bootlin.com>,
+ linux-phy@lists.infradead.org, netdev@vger.kernel.org,
+ linux-spi <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>,
+ Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Matthias Schiffer <matthias.schiffer@ew.tq-group.com>,
+ Kamal Dasu <kdasu.kdev@gmail.com>, Lee Jones <lee.jones@linaro.org>,
+ Bartosz Golaszewski <brgl@bgdev.pl>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>,
+ Kishon Vijay Abraham I <kishon@ti.com>,
+ Geert Uytterhoeven <geert@linux-m68k.org>,
+ "open list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>,
+ Zhang Rui <rui.zhang@intel.com>, platform-driver-x86@vger.kernel.org,
+ Linux PWM List <linux-pwm@vger.kernel.org>,
+ Robert Richter <rric@kernel.org>, Saravanan Sekar <sravanhome@gmail.com>,
+ Corey Minyard <minyard@acm.org>, Linux PM list <linux-pm@vger.kernel.org>,
+ Liam Girdwood <lgirdwood@gmail.com>,
+ John Garry <john.garry@huawei.com>, Takashi Iwai <tiwai@suse.com>,
+ Peter Korsgaard <peter@korsgaard.com>,
+ William Breathitt Gray <vilhelm.gray@gmail.com>,
+ Mark Gross <markgross@kernel.org>, Hans de Goede <hdegoede@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Mark Brown <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ openipmi-developer@lists.sourceforge.net,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Benson Leung <bleung@chromium.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Linux ARM <linux-arm-kernel@lists.infradead.org>,
+ linux-edac@vger.kernel.org, Tony Luck <tony.luck@intel.com>,
+ Richard Weinberger <richard@nod.at>, Mun Yew Tham <mun.yew.tham@intel.com>,
+ Eric Auger <eric.auger@redhat.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Linux MMC List <linux-mmc@vger.kernel.org>,
+ Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ Vinod Koul <vkoul@kernel.org>, James Morse <james.morse@arm.com>,
+ Zha Qipeng <qipeng.zha@intel.com>, Sebastian Reichel <sre@kernel.org>,
+ Niklas =?iso-8859-1?Q?S=F6derlund?= <niklas.soderlund@ragnatech.se>,
+ linux-mediatek@lists.infradead.org,
+ Brian Norris <computersforpeace@gmail.com>,
+ "David S. Miller" <davem@davemloft.net>
+Subject: Re: [PATCH] driver core: platform: Rename
+ platform_get_irq_optional() to platform_get_irq_silent()
+Message-ID: <Yeh6rdBjEMiavLfh@smile.fi.intel.com>
+References: <CAMuHMdWsMGPiQaPS0-PJ_+Mc5VQ37YdLfbHr_aS40kB+SfW-aw@mail.gmail.com>
+ <20220112213121.5ruae5mxwj6t3qiy@pengutronix.de>
+ <Yd9L9SZ+g13iyKab@sirena.org.uk>
+ <20220113110831.wvwbm75hbfysbn2d@pengutronix.de>
+ <YeA7CjOyJFkpuhz/@sirena.org.uk>
+ <20220113194358.xnnbhsoyetihterb@pengutronix.de>
+ <YeF05vBOzkN+xYCq@smile.fi.intel.com>
+ <20220115154539.j3tsz5ioqexq2yuu@pengutronix.de>
+ <YehdsUPiOTwgZywq@smile.fi.intel.com>
+ <b7edb713-dd91-14e7-34ff-d8fb559e8e92@omp.ru>
 MIME-Version: 1.0
-References: <CAO_48GF=ttKqSOm9GRoA3Mq+-RQOtRjWp449XPcz-wH=kjaTjw@mail.gmail.com>
- <20220113123406.11520-1-guangming.cao@mediatek.com>
- <4f88205c1b344aea8608960e2f85b8f4@intel.com>
- <e657f5257cbf4955817b0bbf037de9f9@intel.com>
- <24157767-dc29-bbdd-5428-d89ecc6b9606@amd.com>
- <CALAqxLXRtYDNQ8y1efVGa4SwUH_oAaHviZFjsOVSNFmUHnCCeQ@mail.gmail.com>
- <6b8182a1-7cdc-7369-5c34-e6d0c24efcca@amd.com>
- <82faa62f1bc946cf2f9ee2f7d15c567162238eab.camel@mediatek.com>
- <CALAqxLUSjHoLpgFLcvqmDfv7Uip2VwHS5d_5x2nzw=P3rA2NDA@mail.gmail.com>
- <f09938519f1fcf51f20a0de5eb4063b0ff1a1e87.camel@mediatek.com>
-In-Reply-To: <f09938519f1fcf51f20a0de5eb4063b0ff1a1e87.camel@mediatek.com>
-From: John Stultz <john.stultz@linaro.org>
-Date: Wed, 19 Jan 2022 12:37:27 -0800
-Message-ID: <CALAqxLUtK8V9LgC-DY+tkzFYyWfzF+JhbrLZk6UhEG57HQBDSA@mail.gmail.com>
-Subject: Re: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
-To: "Guangming.Cao" <guangming.cao@mediatek.com>
-Cc: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- "Ruhl, Michael J" <michael.j.ruhl@intel.com>, 
- "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
- "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>, 
- "libo.kang@mediatek.com" <libo.kang@mediatek.com>, 
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
- "yf.wang@mediatek.com" <yf.wang@mediatek.com>, 
- "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
- "lmark@codeaurora.org" <lmark@codeaurora.org>, 
- "benjamin.gaignard@linaro.org" <benjamin.gaignard@linaro.org>, 
- "bo.song@mediatek.com" <bo.song@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
- "labbott@redhat.com" <labbott@redhat.com>,
- "mingyuan.ma@mediatek.com" <mingyuan.ma@mediatek.com>, 
- "jianjiao.zeng@mediatek.com" <jianjiao.zeng@mediatek.com>, 
- "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
+Content-Disposition: inline
+In-Reply-To: <b7edb713-dd91-14e7-34ff-d8fb559e8e92@omp.ru>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_123742_076893_B6B01340 
-X-CRM114-Status: GOOD (  29.06  )
+X-CRM114-CacheID: sfid-20220119_125637_891772_FB2868B7 
+X-CRM114-Status: GOOD (  26.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,71 +145,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 19, 2022 at 1:58 AM Guangming.Cao
-<guangming.cao@mediatek.com> wrote:
-> On Fri, 2022-01-14 at 17:17 -0800, John Stultz wrote:
-> > If the max value is per-heap, why not enforce that value in the
-> > per-heap allocation function?
-> >
-> > Moving the check to the heap alloc to me seems simpler to me than
-> > adding complexity to the infrastructure to add a heap max_size
-> > callback. Is there some other use for the callback that you envision?
-> >
->
-> If you think max the value is per-heap, why not add an optional
-> callback for dma-heap to solve this issue(prevent consuming too much
-> time for a doomed to fail allocation), if the dma-heap doesn't have a
-> special size check, just use the default value(totalram) in dma-heap
-> framework to do the size check.
+On Wed, Jan 19, 2022 at 10:47:06PM +0300, Sergey Shtylyov wrote:
+> On 1/19/22 9:51 PM, Andy Shevchenko wrote:
 
-As the totalram default isn't correct for all heaps (or necessarily
-even most heaps), so those heaps would need to implement the callback.
+> >>>>> It'd certainly be good to name anything that doesn't correspond to one
+> >>>>> of the existing semantics for the API (!) something different rather
+> >>>>> than adding yet another potentially overloaded meaning.
+> >>>>
+> >>>> It seems we're (at least) three who agree about this. Here is a patch
+> >>>> fixing the name.
+> >>>
+> >>> And similar number of people are on the other side.
+> >>
+> >> If someone already opposed to the renaming (and not only the name) I
+> >> must have missed that.
+> >>
+> >> So you think it's a good idea to keep the name
+> >> platform_get_irq_optional() despite the "not found" value returned by it
+> >> isn't usable as if it were a normal irq number?
+> > 
+> > I meant that on the other side people who are in favour of Sergey's patch.
+> > Since that I commented already that I opposed the renaming being a standalone
+> > change.
+> > 
+> > Do you agree that we have several issues with platform_get_irq*() APIs?
+> > 
+> > 1. The unfortunate naming
+> 
+>    Mmm, "what's in a name?"... is this the topmost prio issue?
 
-I'm just not sure adding complexity to the framework to address this
-is useful. Instead of an additional check in the allocation function,
-heap implementers will need to assess if the default logic in a
-framework is correct, and then possibly implement the callback.
+The order is arbitrary.
 
-> Yes, for linux dma-heaps, only system-heap needs it, so adding it in
-> system heap is the simplest. However, there are many vendor dma-heaps
-> like system-heap which won't be uploaded to linux codebase, and maybe
-> have same limitation, all these heaps need to add the same limitation.
+> > 2. The vIRQ0 handling: a) WARN() followed by b) returned value 0
+> 
+>    This is the most severe issue, I think...
+> 
+> > 3. The specific cookie for "IRQ not found, while no error happened" case
 
-My worry is that without seeing these vendor heaps, this is a bit of a
-theoretical concern. We don't have the data on how common this is.
-I very much hope that vendors can start submitting their heaps
-upstream (along with drivers that benefit from the heaps). Then we can
-really assess what makes the most sense for the community maintained
-code.
-
-
-> I just think it's boring. However, If you think discussing these absent
-> cases based on current linux code is meaningless, I also agree to it.
-
-So, as a rule, the upstream kernel doesn't create/maintain logic to
-accommodate out of tree code.
-
-Now, I agree there is the potential for some duplication in the checks
-in the allocation logic, but until it affects the upstream kernel,
-community maintainers can't really make an appropriate evaluation.
-
-As a contra-example, if the allocation is some extreme hotpath, adding
-an extra un-inlinable function pointer traversal for the size callback
-may actually have a negative impact. This isn't likely but again, if
-we cannot demonstrate it one way or the other against the upstream
-tree, we can't figure out what the best solution might be.
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
-> So, to summarize, if you still think adding it in system_heap.c is
-> better, I also agree and I will update the patch to add it in
-> system_heap.c
-
-I think this is the best solution for now. As this is not part of an
-userland ABI, we can always change it in the future once we see the
-need.
-
-thanks
--john
 
 _______________________________________________
 Linux-mediatek mailing list
