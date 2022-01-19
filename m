@@ -4,70 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44CEBC433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 05:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5E7FC433EF
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 08:33:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tx9PgeecBftD9YZrob/iQ56xb/MSkL/c2q0WUpm8muc=; b=v8bPXqYcBgxlDV
-	16lBSC7GNYCroiEN3WlM1IDY2tkXM0P2cUd+Bvrtqts4Ug74BIEABzi23EphdvCDLv3+wJ/JOmk7N
-	Cl6JjmdtWrM2c5b65A7CzLELbXtKpZEj31VnFtq9r32PXmePP+k0T/ZdXx31WumvdqU5RAvL8wX3k
-	nFtSbD8yBb1JsODY+vB7chwjKwdfL25RJL6Rin4JbuuUP0KxbUK/ZoVfFaFAPIckV7Z0zGRi/udlS
-	zD3ORqcUTNA/UmPOz7/ajrYxz6FmncGfO4VgqZe3RlHCIVkyAW9Zx65c0YC+VJxVwCzcsFt1djPZE
-	LuHqxAwGiY20kfDuoMJQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:CC
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=j/CWzrzCbsM6HqPE6KmHCLqO0tCC5ktLiL2/6EeufcQ=; b=a0mv2BJTZ8o1pN
+	bD0qxJWtp05GvESlRp3q7rglJcwTcZ9KdjRL3t6mYnM9C0ca0fHE6h/+vNAhJAXC4pTorJPnhVCzW
+	79c4H3SCXa5fJf8xJIjYGuci/VNgjn7M1pSVG8U/d4xCu3sffFNZBtXUkIlIzj4Zb4nkuSkKm3oZZ
+	CtcFTghw4SvfxGS97mRqT7Wr9x2MoZr53dHHghUvJJmV6+hyHbQEg7I8vCPnotBaz8vsE7CNsOFY2
+	e+vs4GNL/xutao35mlFGE8NekIP7qeU0VWh9Cygz0VT7Dohmsa4IKffdzqPr++PYpln1FjKfVi8BC
+	O35WfIGkG3sXrAoKTyhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nA3yR-003tMa-JP; Wed, 19 Jan 2022 05:57:35 +0000
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+	id 1nA6P4-004Ki9-Qn; Wed, 19 Jan 2022 08:33:14 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nA3yP-003tLX-8y
- for linux-mediatek@lists.infradead.org; Wed, 19 Jan 2022 05:57:34 +0000
-Received: by mail-lf1-x136.google.com with SMTP id o12so4779629lfu.12
- for <linux-mediatek@lists.infradead.org>; Tue, 18 Jan 2022 21:57:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=chromium.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=180p+GQo845oNXpNatB24v9mg/wSi3AnjTHWzy7lW5Q=;
- b=UMqQVImtdZBindUj0UKw3O5evttBaDA8C0gzixzt987uQXT8Y5eu/XzX82QJPB1v23
- hEQEO1o+ew6SPORt1AWDbFZAMBA92ijdtJ/2jla70icSIGsX1pWs+rHcXMKrEPkJSoQK
- jLBPjtEkJPK0cfb3/43ILnt6EnITHPad14/tU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20210112;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=180p+GQo845oNXpNatB24v9mg/wSi3AnjTHWzy7lW5Q=;
- b=DhJTZA2r2ZfE/KqhQxSds5vmtn8Nryi41gHF1DU7FWCIRIdMbXFli9CiSQ/HmgHg9S
- 2blLTXGlblsADQ50HpsS2GgKKzhP4ZnBatPSH1B+VDqnwbvuaNQpK10wHBctnCwfEP8V
- x3XvBayU7yX7xHpWy0EqR0X0MOIldhEHflR7SEJijBXe7OGThR7IoEGDG++4R6Nil2Cz
- onyLnUWhy5Hv5pC8oYlVBIIpTWBnTSLkojrpxb3z8Z57rcoNbL2eStLbpSQdmQJzwU4T
- Yzbj2KmfZTNCGPWYeBl/Y3h/igT1shFdixwRPSAfJ6CwXvBevjSF+3/FBml+ugYEnTSg
- +j+A==
-X-Gm-Message-State: AOAM532A8lXLrGLDKKS6YYEsVw3Frl1DhheoQRar/kda5hS2SnZFtNaQ
- O9aMYrcuezgSFFF6dzwxF7Ini+S+LUgcE94QGK3qgA==
-X-Google-Smtp-Source: ABdhPJwmAbYBsIM1/e9VW3yeneVaeA59D14d9Js8kiEwjDiXSmFYOjsOytWEf0XP24p3zVI6PrzW1M84bl2PP9RLYm0=
-X-Received: by 2002:ac2:5bc9:: with SMTP id u9mr24297297lfn.371.1642571849473; 
- Tue, 18 Jan 2022 21:57:29 -0800 (PST)
+ id 1nA6P0-004KhQ-LR; Wed, 19 Jan 2022 08:33:13 +0000
+X-UUID: a011f2104c6044f08dcf06ec105b0b45-20220119
+X-UUID: a011f2104c6044f08dcf06ec105b0b45-20220119
+Received: from mtkcas66.mediatek.inc [(172.29.193.44)] by mailgw02.mediatek.com
+ (envelope-from <miles.chen@mediatek.com>)
+ (musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-SHA384 256/256)
+ with ESMTP id 130821519; Wed, 19 Jan 2022 01:33:08 -0700
+Received: from mtkmbs07n1.mediatek.inc (172.21.101.16) by
+ MTKMBS62N2.mediatek.inc (172.29.193.42) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 Jan 2022 00:24:49 -0800
+Received: from mtkcas10.mediatek.inc (172.21.101.39) by
+ mtkmbs07n1.mediatek.inc (172.21.101.16) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Wed, 19 Jan 2022 16:24:47 +0800
+Received: from mtksdccf07.mediatek.inc (172.21.84.99) by mtkcas10.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.0.1497.2 via
+ Frontend Transport; Wed, 19 Jan 2022 16:24:47 +0800
+From: <miles.chen@mediatek.com>
+To: Herbert Xu <herbert@gondor.apana.org.au>, "David S. Miller"
+ <davem@davemloft.net>, Matthias Brugger <matthias.bgg@gmail.com>, "Jason A.
+ Donenfeld" <Jason@zx2c4.com>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Ard Biesheuvel <ardb@kernel.org>
+CC: Miles Chen <miles.chen@mediatek.com>, <linux-crypto@vger.kernel.org>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-mediatek@lists.infradead.org>
+Subject: [PATCH] lib/crypto: blake2s: fix a CFI failure
+Date: Wed, 19 Jan 2022 16:24:46 +0800
+Message-ID: <20220119082447.1675-1-miles.chen@mediatek.com>
+X-Mailer: git-send-email 2.18.0
 MIME-Version: 1.0
-References: <20220111112244.1483783-1-wenst@chromium.org>
- <20220111112244.1483783-3-wenst@chromium.org>
- <eca4a0c18fe75536c8276410628b9459c040dce2.camel@mediatek.com>
-In-Reply-To: <eca4a0c18fe75536c8276410628b9459c040dce2.camel@mediatek.com>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 19 Jan 2022 13:57:18 +0800
-Message-ID: <CAGXv+5GHVtCO9tN7B0O2c5V_Bk61-LL79LvbE1CRbyBfnvKSGQ@mail.gmail.com>
-Subject: Re: [PATCH 2/7] pinctrl: mediatek: paris: Fix PIN_CONFIG_BIAS_DISABLE
- readback
-To: Guodong Liu <guodong.liu@mediatek.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linus.walleij@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-mediatek@lists.infradead.org, 
- linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
- Hui Liu <hui.liu@mediatek.com>, Light Hsieh <light.hsieh@mediatek.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220118_215733_326706_7AEB605E 
-X-CRM114-Status: GOOD (  23.93  )
+X-CRM114-CacheID: sfid-20220119_003310_737417_112C652E 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,76 +72,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 19, 2022 at 9:42 AM Guodong Liu <guodong.liu@mediatek.com> wrote:
->
-> -----Original Message-----
-> From: Chen-Yu Tsai <wenst@chromium.org>
-> To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <
-> linus.walleij@linaro.org>, Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: Chen-Yu Tsai <wenst@chromium.org>,
-> linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-> linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-> Zhiyong Tao <zhiyong.tao@mediatek.com>, Guodong Liu <
-> guodong.liu@mediatek.com>
-> Subject: [PATCH 2/7] pinctrl: mediatek: paris: Fix
-> PIN_CONFIG_BIAS_DISABLE readback
-> Date: Tue, 11 Jan 2022 19:22:39 +0800
->
-> When reading back pin bias settings, if the pin is not in a
-> bias-disabled state, the function should return -EINVAL.
->
-> Fix this in the mediatek-paris pinctrl library so that the read back
-> state is not littered with bogus a "input bias disabled" combined with
-> "pull up" or "pull down" states.
->
-> Fixes: 805250982bb5 ("pinctrl: mediatek: add pinctrl-paris that
-> implements the vendor dt-bindings")
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
-> ---
->  drivers/pinctrl/mediatek/pinctrl-paris.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> index f9f9110f2107..1ca598ea7ba7 100644
-> --- a/drivers/pinctrl/mediatek/pinctrl-paris.c
-> +++ b/drivers/pinctrl/mediatek/pinctrl-paris.c
-> @@ -97,8 +97,8 @@ static int mtk_pinconf_get(struct pinctrl_dev
-> *pctldev,
->                         if (err)
->                                 goto out;
->                         if (param == PIN_CONFIG_BIAS_DISABLE) {
-> -                               if (ret == MTK_PUPD_SET_R1R0_00)
-> -                                       ret = MTK_DISABLE;
-> +                               if (ret != MTK_PUPD_SET_R1R0_00)
-> +                                       err = -EINVAL;
-> Hi Chen-Yu
->
-> When tht API "hw->soc->bias_get_combo(hw, desc, &pullup, &ret)" is
-> called,
-> The ret vaule of may be MTK_DISABLE OR MTK_PUPD_SET_R1R0_00 or  (pullen
-> == 0),  All those cases are expected to be as "bias-disable".
-> We advices to keep original code,
-> +                               if (ret == MTK_PUPD_SET_R1R0_00)
-> +
->                                 ret = MTK_DISABLE;
-> +                               if (ret != MTK_DISABLE)
-> +                                       err = -EINVAL;
+From: Miles Chen <miles.chen@mediatek.com>
 
-IIUC you are suggesting to assign MTK_DISABLE to ret in the other two cases,
-and then check if ret == MTK_DISABLE.
+With CONFIG_CFI_CLANG=y, we observe a CFI failure of
+blake2s_compress_generic.
 
-Thanks for pointing that out.
+Reverting commit 6048fdcc5f26 ("lib/crypto: blake2s: include as built-in")
+is a solution for this problem. So I looked into the patch
+and I think it is caused by the weak symbols use by blake2s_compress().
 
-ChenYu
+To fix it, remove the weak symbol and use CRYPTO_ARCH_HAVE_LIB_BLAKE2S
+to select blake2s_compress_arch/blake2s_compress_generic.
 
-> Thanks
->                         } else if (param == PIN_CONFIG_BIAS_PULL_UP) {
->                                 /* When desire to get pull-up value,
-> return
->                                  *  error if current setting is pull-
-> down
->
+log:
+[    0.000000][    T0] Kernel panic - not syncing: CFI failure (target: blake2s_compress_generic+0x0/0x1444)
+[    0.000000][    T0] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.16.0-mainline-06981-g076c855b846e #1
+[    0.000000][    T0] Hardware name: MT6873 (DT)
+[    0.000000][    T0] Call trace:
+[    0.000000][    T0]  dump_backtrace+0xfc/0x1dc
+[    0.000000][    T0]  dump_stack_lvl+0xa8/0x11c
+[    0.000000][    T0]  panic+0x194/0x464
+[    0.000000][    T0]  __cfi_check_fail+0x54/0x58
+[    0.000000][    T0]  __cfi_slowpath_diag+0x354/0x4b0
+[    0.000000][    T0]  blake2s_update+0x14c/0x178
+[    0.000000][    T0]  _extract_entropy+0xf4/0x29c
+[    0.000000][    T0]  crng_initialize_primary+0x24/0x94
+[    0.000000][    T0]  rand_initialize+0x2c/0x6c
+[    0.000000][    T0]  start_kernel+0x2f8/0x65c
+[    0.000000][    T0]  __primary_switched+0xc4/0x7be4
+[    0.000000][    T0] Rebooting in 5 seconds..
+
+Fixes: 6048fdcc5f26 ("lib/crypto: blake2s: include as built-in")
+Signed-off-by: Miles Chen <miles.chen@mediatek.com>
+---
+ lib/crypto/blake2s-generic.c | 3 +--
+ lib/crypto/blake2s.c         | 6 ++++++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/lib/crypto/blake2s-generic.c b/lib/crypto/blake2s-generic.c
+index 75ccb3e633e6..22fa3ea1689e 100644
+--- a/lib/crypto/blake2s-generic.c
++++ b/lib/crypto/blake2s-generic.c
+@@ -38,8 +38,7 @@ static inline void blake2s_increment_counter(struct blake2s_state *state,
+ }
+ 
+ void blake2s_compress(struct blake2s_state *state, const u8 *block,
+-		      size_t nblocks, const u32 inc)
+-		      __weak __alias(blake2s_compress_generic);
++		      size_t nblocks, const u32 inc);
+ 
+ void blake2s_compress_generic(struct blake2s_state *state, const u8 *block,
+ 			      size_t nblocks, const u32 inc)
+diff --git a/lib/crypto/blake2s.c b/lib/crypto/blake2s.c
+index 93f2ae051370..4055aa593ec4 100644
+--- a/lib/crypto/blake2s.c
++++ b/lib/crypto/blake2s.c
+@@ -16,6 +16,12 @@
+ #include <linux/init.h>
+ #include <linux/bug.h>
+ 
++#if IS_ENABLED(CONFIG_CRYPTO_ARCH_HAVE_LIB_BLAKE2S)
++#  define blake2s_compress blake2s_compress_arch
++#else
++#  define blake2s_compress blake2s_compress_generic
++#endif
++
+ void blake2s_update(struct blake2s_state *state, const u8 *in, size_t inlen)
+ {
+ 	__blake2s_update(state, in, inlen, blake2s_compress);
+-- 
+2.18.0
+
 
 _______________________________________________
 Linux-mediatek mailing list
