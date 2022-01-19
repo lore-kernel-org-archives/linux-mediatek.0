@@ -4,60 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCEF8C433F5
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 18:03:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65A67C433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 18:29:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jlibdgKQHlHtn8mvGBioiL8TWIByXk4rhcfC+Px57Z8=; b=g9KrIIJkZGMHb6
-	QhIdm/JHeJSXSKxmvU/D9tBIEPptYpvzDmde5bNEyMbuf/ySd070AjfxBrwr1M/ZqThciZIj8sp+n
-	M0FVGc87NolU1oivnlCaHbuUbvfEFPCvXbqdVL0whzRohdnh0K93deu+0RUOOpVVnwGUHCliGrrTz
-	YtTFz8KXJqYw6i0FQN/gs1hYlKwRB6y518Cm6seU/nVPvW8tnxEFn0WbFry/GUHBDBU+Os7vd4AyZ
-	33G9StSqu0+UPLb/YDSCFvslHp9EYTLVPZa1Jkq+vduj/sRWfKdJY75ScD6q457TWwUC03KAvMq6Q
-	sWEUVhLIkD2stNz30tDA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:
+	Message-ID:References:CC:To:Subject:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=/oWe4mixDUlwtceEK6Pz8Ykjr21co35MqX7xxDtjuTA=; b=DsHrwx8w0L/hWWlmIu8W3q0dix
+	fvbP1qNltnuiYBtiuI9hgn/3OOS4ZT+Ti9NR6HGD7qF/+rlspzd18vyrPzsqTyNM9ovmbgwwKUNpE
+	zYK4Mw7NurfS60CmodliPDIVyerkEnJ8Hz65Dl++w93lBplGRXu3jGgP5c/T1oQBv0p76bSzyiHRd
+	sJmaHZ45X5tP0I+QhilwHMYSkiev0rjE/WP+kRtYGgHx/iMDq5RoxauiwWVtWNbe2OAODLFwXV6tc
+	WkPALNFeQwqLI4+b0Xup6xrGLf3prbYpYQb03Rb//eK/mCAzpD4UTqo6Vyaq5rJtGI67BJJR+FR/q
+	zoho377g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAFIH-006hXw-UN; Wed, 19 Jan 2022 18:02:49 +0000
-Received: from dfw.source.kernel.org ([139.178.84.217])
+	id 1nAFiN-006ojS-EH; Wed, 19 Jan 2022 18:29:47 +0000
+Received: from mxout01.lancloud.ru ([45.84.86.81])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAFI4-006hTD-IU; Wed, 19 Jan 2022 18:02:37 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 277D161659;
- Wed, 19 Jan 2022 18:02:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0858EC340E1;
- Wed, 19 Jan 2022 18:02:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642615355;
- bh=lFbFmk/aY3Awpx6kg8ejVPc7bOfnP/ly0j3vvYiYSLk=;
- h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
- b=X13pX4fJy3fRJZKI7F7MRVUE9FDrT6nBmOjzxghhUmAx2oa89pVuGluI1ZYQomcy6
- J+u9NeebYvDBhaYmNBCPyWnAjj843aXJvGQIg5lEMex3rGmpPraZKtS0Sx3GixOSWu
- vOFCHvDwIjpsucj9Dm3JF8fyjUVl+U1NJKul284TSlhz9ilYs39lj11XWUJ/f0eAWA
- aoMRjTtdGCjJ1nOQKkTsTFwusUiXG8pCTiSkWRpA4jWRHdLqZ9X43k7TEqlfTQxDbf
- s7aV3RXj48GWZ8ij+1oHhON0CDe042M5476jVs1mtL2ADTwQ7m1iF2hjoGebAbAjNd
- 8fitwOsx/LB2w==
-From: Mark Brown <broonie@kernel.org>
-To: tiwai@suse.com, lgirdwood@gmail.com, Julian Braha <julianbraha@gmail.com>,
- matthias.bgg@gmail.com, tzungbi@google.com, geert+renesas@glider.be,
- perex@perex.cz, trevor.wu@mediatek.com
-Cc: linux-mediatek@lists.infradead.org, alsa-devel@alsa-project.org,
- linux-kernel@vger.kernel.org, fazilyildiran@gmail.com,
- linux-arm-kernel@lists.infradead.org
-In-Reply-To: <20220117050324.68371-1-julianbraha@gmail.com>
-References: <20220117050324.68371-1-julianbraha@gmail.com>
-Subject: Re: [PATCH] ASoC: mediatek: fix unmet dependency on GPIOLIB for
- SND_SOC_DMIC
-Message-Id: <164261535273.2816847.12797426159265748718.b4-ty@kernel.org>
-Date: Wed, 19 Jan 2022 18:02:32 +0000
+ id 1nAFiI-006ofc-Qt; Wed, 19 Jan 2022 18:29:45 +0000
+Received: from LanCloud
+DKIM-Filter: OpenDKIM Filter v2.11.0 mxout01.lancloud.ru EF8112090480
+Received: from LanCloud
+Received: from LanCloud
+Received: from LanCloud
+From: Sergey Shtylyov <s.shtylyov@omp.ru>
+Subject: Re: [PATCH 1/2] platform: make platform_get_irq_optional() optional
+To: =?UTF-8?Q?Uwe_Kleine-K=c3=b6nig?= <u.kleine-koenig@pengutronix.de>, "Geert
+ Uytterhoeven" <geert@linux-m68k.org>
+CC: Andrew Lunn <andrew@lunn.ch>, Ulf Hansson <ulf.hansson@linaro.org>,
+ Vignesh Raghavendra <vigneshr@ti.com>, KVM list <kvm@vger.kernel.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, <linux-iio@vger.kernel.org>, "Linus
+ Walleij" <linus.walleij@linaro.org>, Amit Kucheria <amitk@kernel.org>, "ALSA
+ Development Mailing List" <alsa-devel@alsa-project.org>, Jaroslav Kysela
+ <perex@perex.cz>, Guenter Roeck <groeck@chromium.org>, Thierry Reding
+ <thierry.reding@gmail.com>, MTD Maling List <linux-mtd@lists.infradead.org>,
+ Linux I2C <linux-i2c@vger.kernel.org>, Miquel Raynal
+ <miquel.raynal@bootlin.com>, <linux-phy@lists.infradead.org>, linux-spi
+ <linux-spi@vger.kernel.org>, Jiri Slaby <jirislaby@kernel.org>, "David S.
+ Miller" <davem@davemloft.net>, Khuong Dinh <khuong@os.amperecomputing.com>,
+ Florian Fainelli <f.fainelli@gmail.com>, Matthias Schiffer
+ <matthias.schiffer@ew.tq-group.com>, Kamal Dasu <kdasu.kdev@gmail.com>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, Lee Jones
+ <lee.jones@linaro.org>, Bartosz Golaszewski <brgl@bgdev.pl>, Daniel Lezcano
+ <daniel.lezcano@linaro.org>, Kishon Vijay Abraham I <kishon@ti.com>,
+ bcm-kernel-feedback-list <bcm-kernel-feedback-list@broadcom.com>, "open
+ list:SERIAL DRIVERS" <linux-serial@vger.kernel.org>, Jakub Kicinski
+ <kuba@kernel.org>, Zhang Rui <rui.zhang@intel.com>,
+ <platform-driver-x86@vger.kernel.org>, Linux PWM List
+ <linux-pwm@vger.kernel.org>, Robert Richter <rric@kernel.org>, "Saravanan
+ Sekar" <sravanhome@gmail.com>, Corey Minyard <minyard@acm.org>, Linux PM list
+ <linux-pm@vger.kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, "Mauro
+ Carvalho Chehab" <mchehab@kernel.org>, John Garry <john.garry@huawei.com>,
+ Peter Korsgaard <peter@korsgaard.com>, William Breathitt Gray
+ <vilhelm.gray@gmail.com>, Mark Gross <markgross@kernel.org>, Hans de Goede
+ <hdegoede@redhat.com>, Alex Williamson <alex.williamson@redhat.com>, "Mark
+ Brown" <broonie@kernel.org>, Borislav Petkov <bp@alien8.de>, Takashi Iwai
+ <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ <openipmi-developer@lists.sourceforge.net>, Andy Shevchenko
+ <andriy.shevchenko@linux.intel.com>, Benson Leung <bleung@chromium.org>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>, Linux ARM
+ <linux-arm-kernel@lists.infradead.org>, <linux-edac@vger.kernel.org>, "Tony
+ Luck" <tony.luck@intel.com>, Richard Weinberger <richard@nod.at>, Mun Yew
+ Tham <mun.yew.tham@intel.com>, Eric Auger <eric.auger@redhat.com>, netdev
+ <netdev@vger.kernel.org>, "open list:GPIO SUBSYSTEM"
+ <linux-gpio@vger.kernel.org>, Cornelia Huck <cohuck@redhat.com>, "Linux MMC
+ List" <linux-mmc@vger.kernel.org>, Joakim Zhang <qiangqing.zhang@nxp.com>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Linux-Renesas
+ <linux-renesas-soc@vger.kernel.org>, Vinod Koul <vkoul@kernel.org>, "James
+ Morse" <james.morse@arm.com>, Zha Qipeng <qipeng.zha@intel.com>, "Sebastian
+ Reichel" <sre@kernel.org>, =?UTF-8?Q?Niklas_S=c3=b6derlund?=
+ <niklas.soderlund@ragnatech.se>, <linux-mediatek@lists.infradead.org>, "Brian
+ Norris" <computersforpeace@gmail.com>, Yoshihiro Shimoda
+ <yoshihiro.shimoda.uh@renesas.com>
+References: <20220117092444.opoedfcf5k5u6otq@pengutronix.de>
+ <CAMuHMdUgZUeraHadRAi2Z=DV+NuNBrKPkmAKsvFvir2MuquVoA@mail.gmail.com>
+ <20220117114923.d5vajgitxneec7j7@pengutronix.de>
+ <CAMuHMdWCKERO20R2iVHq8P=BaoauoBAtiampWzfMRYihi3Sb0g@mail.gmail.com>
+ <20220117170609.yxaamvqdkivs56ju@pengutronix.de>
+ <CAMuHMdXbuZqEpYivyS6hkaRN+CwTOGaHq_OROwVAWvDD6OXODQ@mail.gmail.com>
+ <20220118090913.pjumkq4zf4iqtlha@pengutronix.de>
+ <CAMuHMdUW8+Y_=uszD+JOZO3Lpa9oDayk+GO+cg276i2f2T285w@mail.gmail.com>
+ <20220118120806.pbjsat4ulg3vnhsh@pengutronix.de>
+ <CAMuHMdWkwV9XE_R5FZ=jPtDwLpDbEngG6+X2JmiDJCZJZvUjYA@mail.gmail.com>
+ <20220118142945.6y3rmvzt44pjpr4z@pengutronix.de>
+ <6370798a-7a7e-243d-99f9-09bf772ddbac@omp.ru>
+Organization: Open Mobile Platform
+Message-ID: <96ff907a-4ad2-5b2e-9bcc-09592d65a6df@omp.ru>
+Date: Wed, 19 Jan 2022 21:29:28 +0300
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.10.1
 MIME-Version: 1.0
+In-Reply-To: <6370798a-7a7e-243d-99f9-09bf772ddbac@omp.ru>
+Content-Language: en-US
+X-Originating-IP: [192.168.11.198]
+X-ClientProxiedBy: LFEXT02.lancloud.ru (fd00:f066::142) To
+ LFEX1907.lancloud.ru (fd00:f066::207)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_100236_677466_B2CF89FE 
-X-CRM114-Status: GOOD (  14.28  )
+X-CRM114-CacheID: sfid-20220119_102943_261986_D758C455 
+X-CRM114-Status: GOOD (  15.99  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,45 +121,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 17 Jan 2022 00:03:24 -0500, Julian Braha wrote:
-> When SND_SOC_MT8195_MT6359_RT1011_RT5682 is selected,
-> and GPIOLIB is not selected,
-> Kbuild gives the following warning:
+On 1/19/22 7:12 PM, Sergey Shtylyov wrote:
+
+[...]
+>>> So there's still a need for two functions.
+>>
+>> Or a single function not emitting an error message together with the
+>> callers being responsible for calling dev_err().
+>>
+>> So the options in my preference order (first is best) are:
+>>
+>>  - Remove the printk from platform_get_irq() and remove
+>>    platform_get_irq_optional();
 > 
-> WARNING: unmet direct dependencies detected for SND_SOC_DMIC
->   Depends on [n]: SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && GPIOLIB [=n]
->   Selected by [y]:
->   - SND_SOC_MT8195_MT6359_RT1011_RT5682 [=y] && SOUND [=y] && !UML && SND [=y] && SND_SOC [=y] && I2C [=y] && SND_SOC_MT8195 [=y] && MTK_PMIC_WRAP [=y]
+>    Strong NAK here:
+> - dev_err() in our function saves a lot of (repeatable!) comments;
+
+   s/comments/code/.
+   Actually, I think I can accept the removal of dev_err_probe() in platform_get_irq()
+as this is not a common practice anyway (yet? :-))...
+
+> - we've already discussed that it's more optimal to check againt 0 than
+
+   Against. :-)
+
+>   against -ENXIO in the callers.
+
+   And we also aim to be the error code agnostic in the callers...
+
+>>  - Rename platform_get_irq_optional() to platform_get_irq_silently()
 > 
-> [...]
+>    NAK as well. We'd better off complaining about irq < 0 in this function.
 
-Applied to
+>>  - Keep platform_get_irq_optional() as is
+> 
+>    NAK, it's suboptimal in the call sites.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-linus
+   s/in/on/.
 
-Thanks!
+[...]
 
-[1/1] ASoC: mediatek: fix unmet dependency on GPIOLIB for SND_SOC_DMIC
-      commit: 579b2c8f72d974f27d85bbd53846f34675ee3b01
+>> Best regards
+>> Uwe
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+MBR, Sergey
 
 _______________________________________________
 Linux-mediatek mailing list
