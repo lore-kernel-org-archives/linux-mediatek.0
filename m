@@ -4,62 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672F5C433EF
-	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 20:05:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D054EC433F5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 19 Jan 2022 20:38:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NmkSsAvr2E9z/4I18Nd5hw4qCHPaFJwg5rBXJDepJpo=; b=NWVd1GYuUJCnFv
-	djJ/IAw8fYdKQhtZPDEXnV+mp62+VKFlKYjCaCn9OdvZ1sMQ8czzVY25iyQLanPffxQxawYQtFwCa
-	zYMXTPLh7HCAN58wbUMjWKczQ+csFXsNsZc7/gR0B9rG0crt4TMlrrqwSjTs9cS2W3fSxI6uNxA71
-	/22SKnE21pYzxT0VHUc4E0xbJevSsFhiXkWZ4/wzda/TUH/Z+M2AqvMmA1n9xXdfYcI99ma8Heevn
-	pe4GRMSV0paqNbwtaGa3xWybmZNuSz3qG+d3Gn5JQAPk7rPx51S7JCf5IkH2dIzjiiSWbBlqirQ3h
-	e1uucaXQVZnstPqHpiFg==;
+	List-Owner; bh=89bIDjo81rojQvg3aUIiTV6y4Fd1rHqAdQeLCU4fXkM=; b=inDVck82hzlBWp
+	VYcCmJdWyf9ZZLVR2uekfU14PwuoUMrUQ/pks3kbgiDkNk5kujZbD6758Uld2EvTvNqc/ZU4CBsjj
+	LH7/lNuvI7ohnDEpzQQQXzAOsimxaWiY2nnrPNcHMzFvewdYyO9oJPox6vnvz2NgC8WmfBVbv2VkO
+	uHoqakMw5qtGtoj+pusPpw1zSkFqf/TsnLJIOffPjRfSvbnohGUUBea4yoCjXoY+03m60jNy79Cq2
+	3YbvJwQ6LfHZW4zcKQW7i73AHBZqJxrid1Ibg4MELsPA3Vvp9jp0p97/Zk9qnerSneaoIfRTecFMY
+	fuOo1SzSaIsEbdrd5f/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1nAHD9-007Cph-0D; Wed, 19 Jan 2022 20:05:39 +0000
-Received: from ams.source.kernel.org ([145.40.68.75])
+	id 1nAHiN-007Kq2-F1; Wed, 19 Jan 2022 20:37:55 +0000
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by bombadil.infradead.org with esmtps (Exim 4.94.2 #2 (Red Hat Linux))
- id 1nAHCw-007CnO-MC; Wed, 19 Jan 2022 20:05:27 +0000
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id 5E19EB81B40;
- Wed, 19 Jan 2022 20:05:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15995C004E1;
- Wed, 19 Jan 2022 20:05:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1642622724;
- bh=WETv3X7CMWAxiJd6kJ5202hY9BumADpmPipnmE7jRRc=;
- h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
- b=lkxTmAKMPE8VYox3ea1nm1pTyRDVTfcSYa4zu5NpReRB/HVyyySaeaqJv1pL6Go6P
- jwH/VIrLLsgpX6hQajFl0rk1UJw2cv4fgiF6eICwqk6EVctGrasCPdITThNTVngKlN
- PsDbwSaZZPopGwv4gOMfN2Foz4QKCnlpwWqdJdU8IG7LJTCLrOREMUV3mYynTTPdvG
- YpIv6kZRYY8ZMJzV+SgcNFErhV6Cybu7sRa5FPVvh5qwXp0UVvedK5RJ5AsN1v/KL4
- tliaQ60cxW060PwOC+zG68URG3Z1qik71YDq/ajKltn0HIvL8cVxAHc5CUSdpMxrjX
- ToMx034KO3y8A==
+ id 1nAHiA-007KlH-0v
+ for linux-mediatek@lists.infradead.org; Wed, 19 Jan 2022 20:37:43 +0000
+Received: by mail-lf1-x135.google.com with SMTP id o12so12927896lfu.12
+ for <linux-mediatek@lists.infradead.org>; Wed, 19 Jan 2022 12:37:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=SVNoxQMp637bgUGyLKUQMTT6jCUfGMhBKrAhjOzC1jA=;
+ b=Vw/hy5bg5C+CCYO+oJtgWYZCGRowuXfpuM1y/pli43kr+OiB3OWzkR6ZyW+nfXxt/s
+ VAn2AjX3mL+nlHsEF9z/pBhrlFgPcsEA0h1sAo1ZC4YcWsIWZ0jeb+wpDXa+U2omlUCF
+ pf/73OVbaBLU61/xMVSHktQI827IhnQn2hI4w8Tkbj/fmE8A6Xntpo4ktyfN/ATLaSyR
+ OmbGO1wuYpDN6JCPJ6apqXqpoeOCB/ZbqWFXSeJZIDyaqZ4S0vxFtOgFaUm3xw+cnlGx
+ I1oFnxocUDYadU9R73MgSd6PbQAJyeaWf6JpFnbLe1rT3w0y4YtI4EsZ5WHxq0hL/Blm
+ wwzA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20210112;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=SVNoxQMp637bgUGyLKUQMTT6jCUfGMhBKrAhjOzC1jA=;
+ b=nXMWcv7nopz97Cv7dxhTzc0jVsnf+8nHCUbp/BSv2ZDjQFQtwbkRSyiLIsiSKALuNw
+ 3swBeY2L8Fi+R9Ojvczy1dQNVoQMJmLzLqUfbxsOCy50jdZrVdRxBs2lHyrzhY+7I8A/
+ ph9juDPUbEdivMkC1xGsKRwuL1gBzDHC+TeEZ5kCY5y5Qsrc+dfZOccg90yk9cJoPYyz
+ lSHhPQ0q+zxuQ7sBPWaHJx+mglUy1kXfuKKiTFAuJB5FGmm91jkC5JtS49qilVkmpAeG
+ 9igK93rEi0poejwkfsB2ycAG5EYmoAnenbDtoTEiZ95DIE0xKSBeI6awhpfvuSGGps4e
+ owgw==
+X-Gm-Message-State: AOAM5327d0c4G/vF8xVPTKTOaTNGoIxv1Qx0kkevWjIhIdY4fr7Yh05V
+ cQ/wY3goIALg6SPv6t6aC7cmAlxDH3Nc0ALAWn6kpg==
+X-Google-Smtp-Source: ABdhPJwjspQiMNHOBlTaaj+hdTY9hJrpsFobebo94UsQ78o3vrS70VesOp4vSiK9m1G+NqmP7oa+dvJBc2Sn675qSo0=
+X-Received: by 2002:a05:6512:329b:: with SMTP id
+ p27mr30040874lfe.36.1642624659492; 
+ Wed, 19 Jan 2022 12:37:39 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20220119123658.10095-2-sam.shih@mediatek.com>
-References: <20220119123658.10095-1-sam.shih@mediatek.com>
- <20220119123658.10095-2-sam.shih@mediatek.com>
-Subject: Re: [PATCH 1/1] clk: mediatek: relicense mt7986 clock driver to
- GPL-2.0
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: John Crispin <john@phrozen.org>, Sam Shih <sam.shih@mediatek.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>, Ryder Lee <ryder.lee@kernel.org>,
- Sam Shih <sam.shih@mediatek.com>, linux-arm-kernel@lists.infradead.org,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Date: Wed, 19 Jan 2022 12:05:22 -0800
-User-Agent: alot/0.10
-Message-Id: <20220119200524.15995C004E1@smtp.kernel.org>
+References: <CAO_48GF=ttKqSOm9GRoA3Mq+-RQOtRjWp449XPcz-wH=kjaTjw@mail.gmail.com>
+ <20220113123406.11520-1-guangming.cao@mediatek.com>
+ <4f88205c1b344aea8608960e2f85b8f4@intel.com>
+ <e657f5257cbf4955817b0bbf037de9f9@intel.com>
+ <24157767-dc29-bbdd-5428-d89ecc6b9606@amd.com>
+ <CALAqxLXRtYDNQ8y1efVGa4SwUH_oAaHviZFjsOVSNFmUHnCCeQ@mail.gmail.com>
+ <6b8182a1-7cdc-7369-5c34-e6d0c24efcca@amd.com>
+ <82faa62f1bc946cf2f9ee2f7d15c567162238eab.camel@mediatek.com>
+ <CALAqxLUSjHoLpgFLcvqmDfv7Uip2VwHS5d_5x2nzw=P3rA2NDA@mail.gmail.com>
+ <f09938519f1fcf51f20a0de5eb4063b0ff1a1e87.camel@mediatek.com>
+In-Reply-To: <f09938519f1fcf51f20a0de5eb4063b0ff1a1e87.camel@mediatek.com>
+From: John Stultz <john.stultz@linaro.org>
+Date: Wed, 19 Jan 2022 12:37:27 -0800
+Message-ID: <CALAqxLUtK8V9LgC-DY+tkzFYyWfzF+JhbrLZk6UhEG57HQBDSA@mail.gmail.com>
+Subject: Re: [PATCH v3] dma-buf: dma-heap: Add a size check for allocation
+To: "Guangming.Cao" <guangming.cao@mediatek.com>
+Cc: =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ "Ruhl, Michael J" <michael.j.ruhl@intel.com>, 
+ "sumit.semwal@linaro.org" <sumit.semwal@linaro.org>, 
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
+ "wsd_upstream@mediatek.com" <wsd_upstream@mediatek.com>, 
+ "libo.kang@mediatek.com" <libo.kang@mediatek.com>, 
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
+ "yf.wang@mediatek.com" <yf.wang@mediatek.com>, 
+ "linaro-mm-sig@lists.linaro.org" <linaro-mm-sig@lists.linaro.org>, 
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+ "lmark@codeaurora.org" <lmark@codeaurora.org>, 
+ "benjamin.gaignard@linaro.org" <benjamin.gaignard@linaro.org>, 
+ "bo.song@mediatek.com" <bo.song@mediatek.com>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
+ "labbott@redhat.com" <labbott@redhat.com>,
+ "mingyuan.ma@mediatek.com" <mingyuan.ma@mediatek.com>, 
+ "jianjiao.zeng@mediatek.com" <jianjiao.zeng@mediatek.com>, 
+ "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20220119_120526_890498_AE1AE091 
-X-CRM114-Status: GOOD (  10.05  )
+X-CRM114-CacheID: sfid-20220119_123742_076893_B6B01340 
+X-CRM114-Status: GOOD (  29.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,14 +108,71 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Quoting Sam Shih (2022-01-19 04:36:58)
-> The previous mt7986 clock drivers were incorrectly marked as GPL-1.0.
-> This patch changes the driver to the standard GPL-2.0 license.
-> 
-> Signed-off-by: Sam Shih <sam.shih@mediatek.com>
-> ---
+On Wed, Jan 19, 2022 at 1:58 AM Guangming.Cao
+<guangming.cao@mediatek.com> wrote:
+> On Fri, 2022-01-14 at 17:17 -0800, John Stultz wrote:
+> > If the max value is per-heap, why not enforce that value in the
+> > per-heap allocation function?
+> >
+> > Moving the check to the heap alloc to me seems simpler to me than
+> > adding complexity to the infrastructure to add a heap max_size
+> > callback. Is there some other use for the callback that you envision?
+> >
+>
+> If you think max the value is per-heap, why not add an optional
+> callback for dma-heap to solve this issue(prevent consuming too much
+> time for a doomed to fail allocation), if the dma-heap doesn't have a
+> special size check, just use the default value(totalram) in dma-heap
+> framework to do the size check.
 
-Applied to clk-next
+As the totalram default isn't correct for all heaps (or necessarily
+even most heaps), so those heaps would need to implement the callback.
+
+I'm just not sure adding complexity to the framework to address this
+is useful. Instead of an additional check in the allocation function,
+heap implementers will need to assess if the default logic in a
+framework is correct, and then possibly implement the callback.
+
+> Yes, for linux dma-heaps, only system-heap needs it, so adding it in
+> system heap is the simplest. However, there are many vendor dma-heaps
+> like system-heap which won't be uploaded to linux codebase, and maybe
+> have same limitation, all these heaps need to add the same limitation.
+
+My worry is that without seeing these vendor heaps, this is a bit of a
+theoretical concern. We don't have the data on how common this is.
+I very much hope that vendors can start submitting their heaps
+upstream (along with drivers that benefit from the heaps). Then we can
+really assess what makes the most sense for the community maintained
+code.
+
+
+> I just think it's boring. However, If you think discussing these absent
+> cases based on current linux code is meaningless, I also agree to it.
+
+So, as a rule, the upstream kernel doesn't create/maintain logic to
+accommodate out of tree code.
+
+Now, I agree there is the potential for some duplication in the checks
+in the allocation logic, but until it affects the upstream kernel,
+community maintainers can't really make an appropriate evaluation.
+
+As a contra-example, if the allocation is some extreme hotpath, adding
+an extra un-inlinable function pointer traversal for the size callback
+may actually have a negative impact. This isn't likely but again, if
+we cannot demonstrate it one way or the other against the upstream
+tree, we can't figure out what the best solution might be.
+
+
+> So, to summarize, if you still think adding it in system_heap.c is
+> better, I also agree and I will update the patch to add it in
+> system_heap.c
+
+I think this is the best solution for now. As this is not part of an
+userland ABI, we can always change it in the future once we see the
+need.
+
+thanks
+-john
 
 _______________________________________________
 Linux-mediatek mailing list
